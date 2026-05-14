@@ -62,6 +62,7 @@
   <section class="page-head">
     <h1>Research Center</h1>
     <p>Every pitching matchup on tonight's slate, autopsied. We pull season, career, platoon splits, recent form, and head-to-head history against this specific opponent — then surface the quirks the market sometimes ignores.</p>
+    <p class="market-line" style="margin-top:8px;">Lines shown are <strong>DraftKings</strong> only (the takeable game-line book in your state). PrizePicks &amp; Sleeper run a separate player-prop pipeline.</p>
   </section>
 
   <div id="summary" class="summary-bar"></div>
@@ -146,7 +147,10 @@ function renderMatchup(g) {
         <span class="muted">${g.time || ""} -- ${g.park || ""}</span>
       </div>
       <div class="market-line">
-        Market: ${market.ml_away >= 0 ? "+" + market.ml_away : market.ml_away} ${away} / ${market.ml_home >= 0 ? "+" + market.ml_home : market.ml_home} ${home} / Total ${market.total ?? "--"}
+        <strong>${(market.book || "no-book").toUpperCase()}:</strong>
+        ${market.ml_away >= 0 ? "+" + market.ml_away : market.ml_away} ${away} /
+        ${market.ml_home >= 0 ? "+" + market.ml_home : market.ml_home} ${home} /
+        Total ${market.total ?? "--"}
         &nbsp;|&nbsp; ${renderTeam(g.away, away)} ${renderTeam(g.home, home)}
       </div>
       <div class="pitcher-grid" style="margin-top:14px;">

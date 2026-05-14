@@ -82,6 +82,7 @@ def run_pipeline(games: List[Dict[str, Any]]) -> Dict[str, Any]:
                 "home_ml": g.get("market_ml_home"),
                 "away_ml": g.get("market_ml_away"),
                 "total": g.get("market_total"),
+                "book": g.get("market_book"),
             },
             "recommendations": proj.recommendations,
         }
@@ -175,10 +176,28 @@ def _american_to_int(price: Any) -> Optional[int]:
         return None
 
 
-def _consensus_odds(event: Dict[str, Any], home_name: str, away_name: str) -> Dict[str, Any]:
-    """Average prices across books for h2h + totals. Returns {ml_home, ml_away, total}."""
-    h2h_h, h2h_a, tot_pts = [], [], []
+# Books Brandon can actually bet at in his state. Game lines come from
+# DraftKings (the only traditional sportsbook of the three). PrizePicks and
+# Sleeper are DFS pick-em — player props only, no h2h/totals — and need a
+# separate pipeline (see TODO in matchup_engine.py / props.html).
+TAKEABLE_BOOKS = ["draftkings"]
+
+
+def _consensus_odds(event: Dict[str, Any], home_name: str, away_name: str,
+                    books: Optional[List[str]] = None) -> Dict[str, Any]:
+    """Return price snapshot from the configured takeable books only.
+
+    Default: DraftKings. We use *the price Brandon can actually bet*, not a
+    cross-market average — model edges must compare to the actual line he'll
+    take. If DK isn't pricing the event, returns None values and the slate
+    falls back to defaults.
+    """
+    books = books or TAKEABLE_BOOKS
+    h2h_h, h2h_a, tot_pts, used_books = [], [], [], []
     for bk in event.get("bookmakers", []):
+        if bk.get("key") not in books:
+            continue
+        used_books.append(bk["key"])
         for m in bk.get("markets", []):
             if m["key"] == "h2h":
                 for o in m.get("outcomes", []):
@@ -192,6 +211,7 @@ def _consensus_odds(event: Dict[str, Any], home_name: str, away_name: str) -> Di
         "ml_home": avg(h2h_h),
         "ml_away": avg(h2h_a),
         "total": round(sum(tot_pts) / len(tot_pts), 1) if tot_pts else None,
+        "book": "+".join(used_books) if used_books else None,
     }
 
 
@@ -258,7 +278,9 @@ def build_real_slate() -> Optional[List[Dict[str, Any]]]:
         return None
 
     try:
-        odds_events = df.fetch_mlb_odds()
+        # Restrict to takeable books to (a) avoid wasting API quota fetching
+        # books Brandon can't use and (b) ensure prices reflect what he'll bet.
+        odds_events = df.fetch_mlb_odds(bookmakers=",".join(TAKEABLE_BOOKS))
     except RuntimeError as e:
         print(f"  [x] odds fetch skipped: {e}")
         odds_events = []
@@ -294,6 +316,7 @@ def build_real_slate() -> Optional[List[Dict[str, Any]]]:
             "market_total": prices["total"] or 8.5,
             "market_ml_away": prices["ml_away"] or 100,
             "market_ml_home": prices["ml_home"] or -110,
+            "market_book": prices.get("book"),
             "away": _team_dict_real(away_tid, away_code),
             "home": _team_dict_real(home_tid, home_code),
             "away_pitcher": _pitcher_dict_real(away_pid, away_pname),

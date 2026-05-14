@@ -201,6 +201,7 @@ def build_all_matchups(today_json_path: Optional[str] = None) -> Dict[str, Any]:
             "ml_home": game.get("market_ml_home"),
             "ml_away": game.get("market_ml_away"),
             "total": game.get("market_total"),
+            "book": game.get("market_book"),
         }
         matchups.append(m)
 
