@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Player Props | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body class="page-props">
+<header class="topbar">
+  <div class="brand">
+    <a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a>
+    <span class="tagline">by bpleone</span>
+  </div>
+  <nav class="mainnav">
+    <a href="index.html">Dashboard</a>
+    <a href="play-of-day.html">Play of the Day</a>
+    <a href="mlb.html">MLB</a>
+    <a href="models.html">Models</a>
+    <a href="ml-lab.html">ML Lab</a>
+    <a href="live.html">Live</a>
+    <a href="simulator.html">Sim</a>
+    <a href="backtest.html">Backtest</a>
+    <a href="linemaker.html">Linemaker</a>
+    <a href="arbitrage.html">Arb</a>
+    <a href="bankroll.html">Bankroll</a>
+    <a href="props.html" class="active">Props</a>
+    <a href="learn.html">Learn</a>
+  </nav>
+  <div class="topbar-actions"><div class="ticker" id="liveTicker">LIVE</div></div>
+</header>
+
+<main class="container">
+
+  <section class="page-head">
+    <h1>Player Props — Today's Edges</h1>
+    <p>Player props are the most inefficient market in sports betting. Books can't sharpen 1,000+ markets a day with the same precision they sharpen the moneyline. Our prop model attacks where the books are weakest.</p>
+  </section>
+
+  <section class="metric-strip">
+    <div class="metric"><span class="metric-num">217</span><span class="metric-label">Props Modeled</span></div>
+    <div class="metric"><span class="metric-num">38</span><span class="metric-label">+3% Edges</span></div>
+    <div class="metric"><span class="metric-num">12</span><span class="metric-label">+5% Edges</span></div>
+    <div class="metric"><span class="metric-num">59.1%</span><span class="metric-label">Season Hit %</span></div>
+    <div class="metric"><span class="metric-num">+9.4%</span><span class="metric-label">Season ROI</span></div>
+    <div class="metric"><span class="metric-num">+3.1%</span><span class="metric-label">Avg CLV</span></div>
+  </section>
+
+  <section class="card" style="margin-bottom: 28px;">
+    <div class="card-head"><span>🎯 Tonight's Top Prop Edges</span></div>
+    <div class="filterbar">
+      <label>Type:</label>
+      <select><option>All</option><option>Strikeouts</option><option>Total Bases</option><option>HR</option><option>H+R+RBI</option><option>Walks</option></select>
+      <label>Min Edge:</label>
+      <select><option>+3%</option><option>+5%</option><option>+8%</option></select>
+      <label>Team:</label>
+      <select><option>All</option><option>NYY</option><option>LAD</option><option>BOS</option><option>NYM</option></select>
+    </div>
+    <div class="table-wrap">
+      <table class="data-table" id="propsTable">
+        <thead>
+          <tr><th>Player</th><th>Team</th><th>Prop</th><th>Best Market</th><th>Model Fair</th><th>Edge</th><th>Side</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>📊 Edge Distribution — Tonight</span></div>
+      <canvas id="propEdgesChart" height="220"></canvas>
+      <p class="caption">Top 8 player prop edges by magnitude.</p>
+    </div>
+    <div class="card">
+      <div class="card-head"><span>🧠 How we project props</span></div>
+      <p style="color:var(--text-2)">For each player prop we project a full distribution, not a point estimate. Inputs include:</p>
+      <ul style="color:var(--text-2); padding-left: 18px; font-size: 13px; line-height: 1.7;">
+        <li><strong>Rolling 30-day stats</strong> regressed toward career baseline with shrinkage</li>
+        <li><strong>Opposing pitcher arsenal</strong> — projected pitch mix and the hitter's xwOBA vs. each pitch</li>
+        <li><strong>Park &amp; weather</strong> adjustments specific to the prop (HR props weight wind more heavily)</li>
+        <li><strong>Lineup position</strong> projection (top-of-order = more PAs)</li>
+        <li><strong>Game total / pace</strong> impact (high totals create more counting-stat chances)</li>
+        <li><strong>Pull/spray tendencies</strong> vs. defensive alignment</li>
+      </ul>
+      <p style="color:var(--text-2); margin-top: 12px;">Output is P(prop) plus a Poisson-style or gamma distribution from which we compute the fair price.</p>
+    </div>
+  </section>
+
+  <section class="card" style="margin-bottom: 28px;">
+    <div class="card-head"><span>🃏 Featured Players — Tonight's Lineup Spotlights</span></div>
+    <div class="grid-3" style="margin-bottom: 0;">
+      <div class="factor" style="flex-direction:column; align-items:flex-start; gap: 4px;">
+        <span class="pill purple">SLUGGER</span>
+        <h3 style="margin:6px 0 4px;">Aaron Judge</h3>
+        <span class="muted">NYY • RF • R</span>
+        <p style="font-size:13px; color: var(--text-2); margin: 8px 0 0;">vs LHP Crochet. Career .298/.428/.612 vs LHP. Model: <strong style="color:var(--accent)">2.21 expected TB</strong> tonight.</p>
+      </div>
+      <div class="factor" style="flex-direction:column; align-items:flex-start; gap: 4px;">
+        <span class="pill purple">UNICORN</span>
+        <h3 style="margin:6px 0 4px;">Shohei Ohtani</h3>
+        <span class="muted">LAD • DH • L</span>
+        <p style="font-size:13px; color: var(--text-2); margin: 8px 0 0;">vs RHP Darvish. 31% barrel rate vs FB. Park-adjusted HR/PA: 6.8%. Model: <strong style="color:var(--accent)">+250 fair</strong>, book at +260.</p>
+      </div>
+      <div class="factor" style="flex-direction:column; align-items:flex-start; gap: 4px;">
+        <span class="pill purple">ACE</span>
+        <h3 style="margin:6px 0 4px;">Yamamoto</h3>
+        <span class="muted">LAD • SP • R</span>
+        <p style="font-size:13px; color: var(--text-2); margin: 8px 0 0;">vs SDP lineup with 35.1% K rate proj. Model: <strong style="color:var(--accent)">7.4 expected K</strong>, line at 6.5.</p>
+      </div>
+      <div class="factor" style="flex-direction:column; align-items:flex-start; gap: 4px;">
+        <span class="pill purple">SPEED</span>
+        <h3 style="margin:6px 0 4px;">Bobby Witt Jr.</h3>
+        <span class="muted">KCR • SS • R</span>
+        <p style="font-size:13px; color: var(--text-2); margin: 8px 0 0;">82nd percentile sprint speed. Stolen base attempts O0.5 priced at +130 vs model -110.</p>
+      </div>
+      <div class="factor" style="flex-direction:column; align-items:flex-start; gap: 4px;">
+        <span class="pill purple">CONTACT</span>
+        <h3 style="margin:6px 0 4px;">Luis Arraez</h3>
+        <span class="muted">SDP • 1B • L</span>
+        <p style="font-size:13px; color: var(--text-2); margin: 8px 0 0;">Hits prop O0.5 nearly free. Career .329 BA. Profitable spot vs Yamamoto's slider-heavy mix.</p>
+      </div>
+      <div class="factor" style="flex-direction:column; align-items:flex-start; gap: 4px;">
+        <span class="pill purple">WORKHORSE</span>
+        <h3 style="margin:6px 0 4px;">Tarik Skubal</h3>
+        <span class="muted">DET • SP • L</span>
+        <p style="font-size:13px; color: var(--text-2); margin: 8px 0 0;">12.7 K/9 vs current matchup. Model: <strong style="color:var(--accent)">8.1 K</strong>, line at 6.5.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="card-head"><span>🎓 Prop Strategy</span></div>
+    <p style="color: var(--text-2)">Props are different from sides/totals. Three rules:</p>
+    <ol style="color: var(--text-2); padding-left: 20px; line-height: 1.8;">
+      <li><strong>Shop hard.</strong> Prop lines and prices vary book-to-book more than any other market. A 6.5 Ks line at –115 vs. a 7.5 line at +100 across the same player can swing your edge 8–12%.</li>
+      <li><strong>Beware juice creep.</strong> Books charge more vig on props (often 10–15% built-in) than on standard markets (~4.5%). Your model probability needs to clear vig + edge to be a play.</li>
+      <li><strong>Mix-and-match correlations.</strong> Skip same-game-parlays. Books bake their projections into SGP pricing and the implied juice is brutal. Bet legs independently, sized via Kelly.</li>
+    </ol>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="foot-cols">
+    <div><div class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></div><p class="muted">Quant sports analytics.</p></div>
+    <div><h4>Product</h4><a href="play-of-day.html">Play of the Day</a><a href="mlb.html">MLB</a><a href="props.html">Props</a></div>
+    <div><h4>Learn</h4><a href="learn.html">Academy</a></div>
+    <div><h4>Company</h4><a href="about.html">About</a></div>
+  </div>
+  <div class="foot-bot"><span>© 2026 bpleone.com</span><span>Built in SoCal ☀️</span></div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/ml-models.js"></script>
+<script src="js/charts.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

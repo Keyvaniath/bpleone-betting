@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MLB Analytics | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body class="page-mlb">
+<header class="topbar">
+  <div class="brand">
+    <a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a>
+    <span class="tagline">by bpleone</span>
+  </div>
+  <nav class="mainnav">
+    <a href="index.html">Dashboard</a>
+    <a href="play-of-day.html">Play of the Day</a>
+    <a href="mlb.html" class="active">MLB</a>
+    <a href="models.html">Models</a>
+    <a href="ml-lab.html">ML Lab</a>
+    <a href="live.html">Live</a>
+    <a href="simulator.html">Sim</a>
+    <a href="backtest.html">Backtest</a>
+    <a href="linemaker.html">Linemaker</a>
+    <a href="arbitrage.html">Arb</a>
+    <a href="bankroll.html">Bankroll</a>
+    <a href="props.html">Props</a>
+    <a href="learn.html">Learn</a>
+  </nav>
+  <div class="topbar-actions">
+    <div class="ticker" id="liveTicker">LIVE</div>
+  </div>
+</header>
+
+<main class="container">
+
+  <section class="page-head">
+    <h1>MLB Analytics Hub</h1>
+    <p>Every game, every market, modeled. We score the full slate on moneyline, run line, total, first-5, and 200+ player props daily — and surface only the edges that survive vig and variance.</p>
+  </section>
+
+  <section class="metric-strip">
+    <div class="metric"><span class="metric-num">14</span><span class="metric-label">Games Today</span></div>
+    <div class="metric"><span class="metric-num">17</span><span class="metric-label">Edges Found</span></div>
+    <div class="metric"><span class="metric-num">9</span><span class="metric-label">+EV Plays</span></div>
+    <div class="metric"><span class="metric-num">62.1%</span><span class="metric-label">Season Hit %</span></div>
+    <div class="metric"><span class="metric-num">+8.2%</span><span class="metric-label">Season ROI</span></div>
+    <div class="metric"><span class="metric-num">+3.1%</span><span class="metric-label">Avg CLV</span></div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <h2>Full Slate — Modeled</h2>
+      <div class="filterbar">
+        <label>Min Edge:</label>
+        <select><option>Any</option><option>+2%</option><option>+3%</option><option>+5%</option></select>
+        <label>Bet Type:</label>
+        <select><option>All</option><option>Moneyline</option><option>Run Line</option><option>Total</option></select>
+        <label>Confidence:</label>
+        <select><option>All</option><option>High</option><option>Medium</option><option>Low</option></select>
+      </div>
+    </div>
+    <div class="table-wrap">
+      <table class="data-table" id="slateTable">
+        <thead>
+          <tr>
+            <th>Time</th><th>Matchup</th><th>Starters</th><th>Model ML</th><th>Market ML</th>
+            <th>Edge</th><th>Model O/U</th><th>Market O/U</th><th>Recommendation</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>📈 Top Prop Edges Today</span></div>
+      <canvas id="propEdgesChart" height="220"></canvas>
+      <p class="caption">Top 8 player prop edges. Yankees-Red Sox slate generating outsized prop value tonight.</p>
+    </div>
+    <div class="card">
+      <div class="card-head"><span>🔥 Last-10 Form by Team</span></div>
+      <canvas id="trendStreakChart" height="220"></canvas>
+      <p class="caption">Win count out of last 10. LAD and PHI red-hot; TBR and SDP cooling.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <h2>Team Trends — 30 Day Look</h2>
+      <a href="trends.html" class="link-arrow">All trends →</a>
+    </div>
+    <div class="table-wrap">
+      <table class="data-table" id="trendsTable">
+        <thead><tr><th>Team</th><th>ATS</th><th>O/U</th><th>Last 10</th><th>Run Diff</th><th>Streak</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="card" style="margin-bottom: 28px;">
+    <div class="card-head"><span>🌎 Park Factor & Weather Adjustments</span></div>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead><tr><th>Game</th><th>Park</th><th>Park Factor</th><th>Wind</th><th>Temp</th><th>Adj. Total</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td class="matchup">SDP @ LAD</td><td>Dodger Stadium</td><td>0.96</td><td>8mph in</td><td>68°F</td><td>7.7</td><td>Marine layer, neutral</td></tr>
+          <tr><td class="matchup">BOS @ NYY</td><td>Yankee Stadium</td><td>1.08</td><td>12mph LF→RF</td><td>71°F</td><td>9.2</td><td>HR boost, wind helps lefties</td></tr>
+          <tr><td class="matchup">CIN @ COL</td><td>Coors Field</td><td>1.20</td><td>4mph out</td><td>74°F</td><td>11.6</td><td>Altitude + dry air = totals up</td></tr>
+          <tr><td class="matchup">TEX @ HOU</td><td>Minute Maid</td><td>1.01</td><td>Indoor</td><td>72°F</td><td>7.5</td><td>Roof closed, neutral</td></tr>
+          <tr><td class="matchup">TOR @ TBR</td><td>Tropicana</td><td>0.93</td><td>Indoor</td><td>72°F</td><td>7.4</td><td>Roof closed, pitcher-friendly</td></tr>
+          <tr><td class="matchup">NYM @ PHI</td><td>Citizens Bank</td><td>1.06</td><td>9mph out to RF</td><td>78°F</td><td>9.1</td><td>Wind aids HR to short RF</td></tr>
+          <tr><td class="matchup">ATL @ STL</td><td>Busch Stadium</td><td>0.98</td><td>5mph in</td><td>74°F</td><td>8.4</td><td>Slight pitcher tilt</td></tr>
+          <tr><td class="matchup">CHC @ WSH</td><td>Nationals Park</td><td>0.99</td><td>6mph LF</td><td>70°F</td><td>8.2</td><td>Mostly neutral</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="card" style="margin-bottom: 28px;">
+    <div class="card-head"><span>⚾ Pitcher Matchup Grid (Tonight's Starters)</span></div>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead><tr><th>Pitcher</th><th>Team</th><th>Throws</th><th>ERA</th><th>FIP</th><th>xFIP</th><th>K/9</th><th>BB/9</th><th>HR/9</th><th>Whiff%</th></tr></thead>
+        <tbody>
+          <tr><td class="matchup">Yoshinobu Yamamoto</td><td>LAD</td><td>R</td><td>2.94</td><td>2.78</td><td>2.89</td><td>10.4</td><td>2.1</td><td>0.7</td><td>32.4%</td></tr>
+          <tr><td class="matchup">Yu Darvish</td><td>SDP</td><td>R</td><td>4.18</td><td>4.05</td><td>4.12</td><td>9.1</td><td>2.8</td><td>1.3</td><td>27.8%</td></tr>
+          <tr><td class="matchup">Gerrit Cole</td><td>NYY</td><td>R</td><td>3.06</td><td>3.21</td><td>3.18</td><td>11.2</td><td>2.4</td><td>1.0</td><td>30.9%</td></tr>
+          <tr><td class="matchup">Garrett Crochet</td><td>BOS</td><td>L</td><td>3.34</td><td>3.10</td><td>3.05</td><td>11.8</td><td>2.0</td><td>0.9</td><td>33.7%</td></tr>
+          <tr><td class="matchup">Zack Wheeler</td><td>PHI</td><td>R</td><td>2.91</td><td>3.02</td><td>3.11</td><td>10.0</td><td>1.9</td><td>0.8</td><td>30.1%</td></tr>
+          <tr><td class="matchup">Kodai Senga</td><td>NYM</td><td>R</td><td>3.62</td><td>3.55</td><td>3.71</td><td>10.5</td><td>3.2</td><td>0.9</td><td>31.5%</td></tr>
+          <tr><td class="matchup">Spencer Strider</td><td>ATL</td><td>R</td><td>3.21</td><td>2.95</td><td>2.84</td><td>13.4</td><td>2.5</td><td>1.0</td><td>34.1%</td></tr>
+          <tr><td class="matchup">Andre Pallante</td><td>STL</td><td>R</td><td>4.40</td><td>4.55</td><td>4.62</td><td>7.1</td><td>3.0</td><td>1.1</td><td>22.4%</td></tr>
+          <tr><td class="matchup">Jacob deGrom</td><td>TEX</td><td>R</td><td>2.55</td><td>2.40</td><td>2.62</td><td>12.5</td><td>1.8</td><td>0.7</td><td>33.9%</td></tr>
+          <tr><td class="matchup">Framber Valdez</td><td>HOU</td><td>L</td><td>3.04</td><td>3.18</td><td>3.22</td><td>9.4</td><td>2.6</td><td>0.6</td><td>29.0%</td></tr>
+          <tr><td class="matchup">Hunter Greene</td><td>CIN</td><td>R</td><td>3.15</td><td>3.30</td><td>3.40</td><td>11.0</td><td>3.0</td><td>1.1</td><td>30.8%</td></tr>
+          <tr><td class="matchup">Kyle Freeland</td><td>COL</td><td>L</td><td>5.12</td><td>4.75</td><td>4.80</td><td>6.3</td><td>2.7</td><td>1.4</td><td>20.6%</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>📅 Coming Up — Next 7 Days</span></div>
+      <ul style="list-style:none; padding:0; margin:0; font-size: 13px;">
+        <li style="display:flex; justify-content:space-between; padding:9px 0; border-bottom:1px solid var(--line-soft);"><span>Wed 5/14</span><span class="muted">15 games • Yankees @ Mariners highlight</span></li>
+        <li style="display:flex; justify-content:space-between; padding:9px 0; border-bottom:1px solid var(--line-soft);"><span>Thu 5/15</span><span class="muted">11 games • Skubal vs. Crochet</span></li>
+        <li style="display:flex; justify-content:space-between; padding:9px 0; border-bottom:1px solid var(--line-soft);"><span>Fri 5/16</span><span class="muted">15 games • Series openers</span></li>
+        <li style="display:flex; justify-content:space-between; padding:9px 0; border-bottom:1px solid var(--line-soft);"><span>Sat 5/17</span><span class="muted">15 games • National TV: Dodgers/Mets</span></li>
+        <li style="display:flex; justify-content:space-between; padding:9px 0; border-bottom:1px solid var(--line-soft);"><span>Sun 5/18</span><span class="muted">15 games • Sunday Night Baseball</span></li>
+        <li style="display:flex; justify-content:space-between; padding:9px 0; border-bottom:1px solid var(--line-soft);"><span>Mon 5/19</span><span class="muted">11 games • Off-day for 4 clubs</span></li>
+        <li style="display:flex; justify-content:space-between; padding:9px 0;"><span>Tue 5/20</span><span class="muted">15 games • Interleague kicks off</span></li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-head"><span>📐 Model Inputs (live)</span></div>
+      <ul style="list-style:none; padding:0; margin:0; font-size: 13px;">
+        <li style="display:flex; justify-content:space-between; padding:9px 0; border-bottom:1px solid var(--line-soft);"><span class="muted">Team true-talent priors</span><span class="positive">✓ updated</span></li>
+        <li style="display:flex; justify-content:space-between; padding:9px 0; border-bottom:1px solid var(--line-soft);"><span class="muted">Starting pitcher xFIP</span><span class="positive">✓ Statcast 2026</span></li>
+        <li style="display:flex; justify-content:space-between; padding:9px 0; border-bottom:1px solid var(--line-soft);"><span class="muted">Bullpen rest & usage</span><span class="positive">✓ last 5 days</span></li>
+        <li style="display:flex; justify-content:space-between; padding:9px 0; border-bottom:1px solid var(--line-soft);"><span class="muted">Lineup confirmations</span><span class="positive">✓ 14/14 confirmed</span></li>
+        <li style="display:flex; justify-content:space-between; padding:9px 0; border-bottom:1px solid var(--line-soft);"><span class="muted">Weather + wind</span><span class="positive">✓ NOAA refresh 15m</span></li>
+        <li style="display:flex; justify-content:space-between; padding:9px 0; border-bottom:1px solid var(--line-soft);"><span class="muted">Umpire history</span><span class="positive">✓ 5-yr zone data</span></li>
+        <li style="display:flex; justify-content:space-between; padding:9px 0; border-bottom:1px solid var(--line-soft);"><span class="muted">Park factors (3-yr)</span><span class="positive">✓ regressed</span></li>
+        <li style="display:flex; justify-content:space-between; padding:9px 0;"><span class="muted">Market consensus</span><span class="positive">✓ 6 books polled</span></li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="foot-cols">
+    <div><div class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></div><p class="muted">Quantitative sports betting analytics.</p></div>
+    <div><h4>Product</h4><a href="play-of-day.html">Play of the Day</a><a href="mlb.html">MLB</a><a href="models.html">Models</a><a href="props.html">Props</a></div>
+    <div><h4>Learn</h4><a href="learn.html">Academy</a></div>
+    <div><h4>Company</h4><a href="about.html">About</a><a href="track-record.html">Track Record</a></div>
+  </div>
+  <div class="foot-bot"><span>© 2026 bpleone.com</span><span>Built in SoCal ☀️</span></div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/ml-models.js"></script>
+<script src="js/charts.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

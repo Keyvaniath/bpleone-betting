@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Models & Calculators | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body class="page-models">
+<header class="topbar">
+  <div class="brand">
+    <a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a>
+    <span class="tagline">by bpleone</span>
+  </div>
+  <nav class="mainnav">
+    <a href="index.html">Dashboard</a>
+    <a href="play-of-day.html">Play of the Day</a>
+    <a href="mlb.html">MLB</a>
+    <a href="models.html" class="active">Models</a>
+    <a href="ml-lab.html">ML Lab</a>
+    <a href="live.html">Live</a>
+    <a href="simulator.html">Sim</a>
+    <a href="backtest.html">Backtest</a>
+    <a href="linemaker.html">Linemaker</a>
+    <a href="arbitrage.html">Arb</a>
+    <a href="bankroll.html">Bankroll</a>
+    <a href="props.html">Props</a>
+    <a href="learn.html">Learn</a>
+  </nav>
+  <div class="topbar-actions"><div class="ticker" id="liveTicker">LIVE</div></div>
+</header>
+
+<main class="container">
+
+  <section class="page-head">
+    <h1>Models & Calculators</h1>
+    <p>Under the hood. Every probability we publish comes out of one of these models, and every calculator below is what a sharp uses to size a bet correctly. No black boxes.</p>
+  </section>
+
+  <section class="grid-3">
+    <div class="card">
+      <div class="card-head"><span class="pill green">CORE</span><span class="muted">v3.4</span></div>
+      <h3>Bayesian Game Engine</h3>
+      <p style="color: var(--text-2)">Hierarchical Bayesian model. Each team's true talent is a posterior distribution updated nightly with shrinkage to league average. Starter, lineup, park, bullpen, weather, and umpire are independent multiplicative adjustments.</p>
+      <p class="caption"><strong>Inputs:</strong> 14 factors • <strong>Backtested:</strong> 2018–2025 (12,400 games) • <strong>OOS hit rate:</strong> 55.4% on MLs at –110 vig.</p>
+    </div>
+    <div class="card">
+      <div class="card-head"><span class="pill blue">RUNS</span><span class="muted">v2.1</span></div>
+      <h3>Poisson Run Distribution</h3>
+      <p style="color: var(--text-2)">Generates a joint distribution over total runs given each team's expected run lambda. Used for totals, run lines, first-5 totals, and NRFI/YRFI markets.</p>
+      <p class="caption"><strong>Outputs:</strong> P(total &gt; k) for any k, half-line pushes handled, mean = 8.1 ± 2.2 across slate.</p>
+    </div>
+    <div class="card">
+      <div class="card-head"><span class="pill purple">PROPS</span><span class="muted">v1.7</span></div>
+      <h3>Player Prop Projection</h3>
+      <p style="color: var(--text-2)">Gradient-boosted regression on player rolling stats vs. opposing pitcher arsenal, park-adjusted. Outputs a distribution per prop market (Ks, TB, H+R+RBI, HR, BB).</p>
+      <p class="caption"><strong>Tracked:</strong> 12 prop markets • <strong>Hit rate:</strong> 59.1% on +EV plays only.</p>
+    </div>
+    <div class="card">
+      <div class="card-head"><span class="pill gold">FLOW</span><span class="muted">v1.4</span></div>
+      <h3>Sharp Flow Detector</h3>
+      <p style="color: var(--text-2)">Pattern matcher on line movement vs. ticket-handle splits. Steam moves and reverse-line-movement signals fire when handle &gt; tickets by ≥ 20%.</p>
+      <p class="caption"><strong>Sources:</strong> 6 books polled every 60s • <strong>Backtest:</strong> sharp side outperforms public side by +3.1% ROI.</p>
+    </div>
+    <div class="card">
+      <div class="card-head"><span class="pill red">RISK</span><span class="muted">v2.0</span></div>
+      <h3>Kelly Bankroll Manager</h3>
+      <p style="color: var(--text-2)">Fractional Kelly criterion (default ¼-Kelly), capped at 5 units per play. Designed to maximize geometric growth without ruin risk over realistic 1,000+ play horizons.</p>
+      <p class="caption"><strong>Default:</strong> 0.25 × full Kelly • <strong>Drawdown:</strong> &lt; 18% peak-to-trough over 95% of simulated seasons.</p>
+    </div>
+    <div class="card">
+      <div class="card-head"><span class="pill green">SIMS</span><span class="muted">10k</span></div>
+      <h3>Monte Carlo Game Sim</h3>
+      <p style="color: var(--text-2)">For high-edge plays, we run 10,000 game simulations using the Bayesian inputs as parameters. The simulation distribution is what produces our final win probability.</p>
+      <p class="caption"><strong>Runtime:</strong> ~80ms per game • <strong>Bootstrap CI on win prob:</strong> ± 1.2%.</p>
+    </div>
+  </section>
+
+  <section class="card" style="margin-bottom: 28px;">
+    <div class="card-head"><span>🧮 Live Calculator — EV, Implied Probability, Kelly Stake</span></div>
+    <div class="grid-2" style="margin-bottom: 0;">
+      <div>
+        <h3 style="margin-bottom: 16px;">Inputs</h3>
+        <label style="display:block; margin-bottom: 12px;">
+          <span class="muted" style="display:block; margin-bottom:4px;">Your Estimated Win Probability (%)</span>
+          <input id="calcProb" type="number" min="1" max="99" step="0.1" value="64" style="width:100%; padding:11px 14px; background:var(--bg-1); border:1px solid var(--line); color:var(--text); border-radius:8px; font-family:'JetBrains Mono', monospace; font-size: 16px;">
+        </label>
+        <label style="display:block; margin-bottom: 12px;">
+          <span class="muted" style="display:block; margin-bottom:4px;">Market Price (American odds)</span>
+          <input id="calcPrice" type="number" step="1" value="-148" style="width:100%; padding:11px 14px; background:var(--bg-1); border:1px solid var(--line); color:var(--text); border-radius:8px; font-family:'JetBrains Mono', monospace; font-size: 16px;">
+        </label>
+        <label style="display:block; margin-bottom: 12px;">
+          <span class="muted" style="display:block; margin-bottom:4px;">Bankroll ($)</span>
+          <input id="calcBankroll" type="number" step="100" value="5000" style="width:100%; padding:11px 14px; background:var(--bg-1); border:1px solid var(--line); color:var(--text); border-radius:8px; font-family:'JetBrains Mono', monospace; font-size: 16px;">
+        </label>
+        <label style="display:block; margin-bottom: 12px;">
+          <span class="muted" style="display:block; margin-bottom:4px;">Kelly Fraction (1.0 = full Kelly, 0.25 = quarter)</span>
+          <input id="calcFrac" type="number" step="0.05" min="0.05" max="1" value="0.25" style="width:100%; padding:11px 14px; background:var(--bg-1); border:1px solid var(--line); color:var(--text); border-radius:8px; font-family:'JetBrains Mono', monospace; font-size: 16px;">
+        </label>
+      </div>
+      <div>
+        <h3 style="margin-bottom: 16px;">Outputs</h3>
+        <div class="factor-grid" style="grid-template-columns: 1fr; gap: 10px;">
+          <div class="factor"><span class="f-name">Decimal Odds</span><span class="f-val" id="calcDecimal">—</span></div>
+          <div class="factor"><span class="f-name">Implied Win Probability</span><span class="f-val" id="calcImplied">—</span></div>
+          <div class="factor"><span class="f-name">Fair Price (your prob)</span><span class="f-val" id="calcFair">—</span></div>
+          <div class="factor"><span class="f-name">Expected Value (per $1)</span><span class="f-val" id="calcEV">—</span></div>
+          <div class="factor"><span class="f-name">Kelly Stake (% bankroll)</span><span class="f-val" id="calcKelly">—</span></div>
+          <div class="factor"><span class="f-name">Recommended Stake ($)</span><span class="f-val" id="calcDollars">—</span></div>
+        </div>
+        <p class="caption" style="margin-top: 12px;">Positive EV = the bet is profitable in expectation. Negative Kelly = pass — the market has it right or you're picking the wrong side.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="card" style="margin-bottom: 28px;">
+    <div class="card-head"><span>📈 Bankroll Simulator — Kelly vs. Flat</span></div>
+    <canvas id="bankrollChart" height="220"></canvas>
+    <p class="caption">60-bet simulation at 55% win rate, –110 vig. ¼-Kelly compounds while 2% flat staking grows linearly. Kelly's advantage scales with edge size.</p>
+  </section>
+
+  <section class="card" style="margin-bottom: 28px;">
+    <div class="card-head"><span>🧪 Backtest Results — by Bet Type</span></div>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead><tr><th>Bet Type</th><th>Plays</th><th>Hit %</th><th>ROI</th><th>Avg CLV</th><th>Sharpe</th><th>Max DD</th></tr></thead>
+        <tbody>
+          <tr><td class="matchup">MLB Moneyline</td><td>1,842</td><td>55.4%</td><td class="positive">+6.2%</td><td>+2.1%</td><td>1.74</td><td>-14.2u</td></tr>
+          <tr><td class="matchup">MLB Run Line</td><td>1,206</td><td>53.1%</td><td class="positive">+4.8%</td><td>+1.6%</td><td>1.32</td><td>-18.4u</td></tr>
+          <tr><td class="matchup">MLB Total</td><td>1,544</td><td>55.4%</td><td class="positive">+5.7%</td><td>+2.4%</td><td>1.58</td><td>-12.1u</td></tr>
+          <tr><td class="matchup">F5 Total</td><td>702</td><td>54.7%</td><td class="positive">+4.1%</td><td>+1.9%</td><td>1.28</td><td>-9.8u</td></tr>
+          <tr><td class="matchup">NRFI</td><td>608</td><td>57.8%</td><td class="positive">+7.3%</td><td>+2.8%</td><td>1.81</td><td>-8.2u</td></tr>
+          <tr><td class="matchup">Player Props</td><td>3,210</td><td>59.1%</td><td class="positive">+9.4%</td><td>+3.1%</td><td>2.05</td><td>-11.6u</td></tr>
+          <tr><td class="matchup">Parlays (2-leg)</td><td>184</td><td>34.2%</td><td class="negative">-3.1%</td><td>-0.2%</td><td>—</td><td>-22.4u</td></tr>
+          <tr><td class="matchup">Same-Game Parlays</td><td>96</td><td>22.1%</td><td class="negative">-12.4%</td><td>-1.8%</td><td>—</td><td>-18.6u</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="caption">Parlays bleed money — we publish them only as "fun" plays, never as +EV recommendations. Stick to straight bets with positive CLV.</p>
+  </section>
+
+  <section class="card">
+    <div class="card-head"><span>📦 What's in the model</span></div>
+    <div class="grid-2" style="margin-bottom:0;">
+      <div>
+        <h3>Pitcher Inputs</h3>
+        <ul style="color:var(--text-2); font-size:14px; padding-left: 18px;">
+          <li>3-year park-adjusted xFIP (regressed)</li>
+          <li>Pitch arsenal whiff rates vs. RHB/LHB</li>
+          <li>Recent velocity trend (last 5 starts)</li>
+          <li>Pitch count fatigue curve</li>
+          <li>Times-through-order penalty</li>
+          <li>Catcher framing of battery mate</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Hitter / Lineup Inputs</h3>
+        <ul style="color:var(--text-2); font-size:14px; padding-left: 18px;">
+          <li>Park-adjusted wRC+ vs. RHP / LHP</li>
+          <li>Platoon split exposure (lineup-weighted)</li>
+          <li>Recent xwOBA last 14d (regressed)</li>
+          <li>Pitch-type performance (FB/SL/CB/CH)</li>
+          <li>Speed metrics (sprint, BsR) for tag-up & extra-base scoring</li>
+          <li>Confirmed lineup vs. projected (penalty if regulars sit)</li>
+        </ul>
+      </div>
+      <div style="margin-top: 18px;">
+        <h3>Bullpen Inputs</h3>
+        <ul style="color:var(--text-2); font-size:14px; padding-left: 18px;">
+          <li>High-leverage reliever availability (rest, IP last 3d)</li>
+          <li>Bullpen weighted ERA-FIP delta</li>
+          <li>Closer save situation projection</li>
+        </ul>
+      </div>
+      <div style="margin-top: 18px;">
+        <h3>Environmental Inputs</h3>
+        <ul style="color:var(--text-2); font-size:14px; padding-left: 18px;">
+          <li>3-year park factors (HR + run)</li>
+          <li>NOAA-sourced live wind, temp, humidity</li>
+          <li>Umpire 5-year called strike rate, zone size</li>
+          <li>Travel + timezone fatigue</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="foot-cols">
+    <div><div class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></div><p class="muted">Quant sports analytics.</p></div>
+    <div><h4>Product</h4><a href="play-of-day.html">Play of the Day</a><a href="mlb.html">MLB</a><a href="models.html">Models</a></div>
+    <div><h4>Learn</h4><a href="learn.html">Academy</a></div>
+    <div><h4>Company</h4><a href="about.html">About</a><a href="track-record.html">Track Record</a></div>
+  </div>
+  <div class="foot-bot"><span>© 2026 bpleone.com</span><span>Built in SoCal ☀️</span></div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/ml-models.js"></script>
+<script src="js/charts.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

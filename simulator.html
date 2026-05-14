@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Game Simulator | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body class="page-sim">
+<header class="topbar">
+  <div class="brand">
+    <a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a>
+    <span class="tagline">by bpleone</span>
+  </div>
+  <nav class="mainnav">
+    <a href="index.html">Dashboard</a>
+    <a href="play-of-day.html">Play of the Day</a>
+    <a href="mlb.html">MLB</a>
+    <a href="models.html">Models</a>
+    <a href="ml-lab.html">ML Lab</a>
+    <a href="live.html">Live</a>
+    <a href="simulator.html" class="active">Sim</a>
+    <a href="backtest.html">Backtest</a>
+    <a href="linemaker.html">Linemaker</a>
+    <a href="arbitrage.html">Arb</a>
+    <a href="bankroll.html">Bankroll</a>
+    <a href="props.html">Props</a>
+    <a href="learn.html">Learn</a>
+  </nav>
+  <div class="topbar-actions"><div class="ticker" id="liveTicker">LIVE</div></div>
+</header>
+
+<main class="container">
+
+  <section class="page-head">
+    <h1>Monte Carlo Game Simulator</h1>
+    <p>Plug in two teams. We simulate the game 10,000 times — pitch by pitch, batter by batter — and show you the full distribution of outcomes, fair prices on every market, and live edge vs. the book.</p>
+  </section>
+
+  <section class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>⚙️ Game Inputs</span></div>
+
+      <label style="display:block; margin-bottom: 12px;">
+        <span class="muted" style="display:block; margin-bottom:4px;">Away Team Talent (wRC+ avg, 100 = league)</span>
+        <input id="awayWRC" type="number" min="60" max="160" value="104" style="width:100%; padding:10px 12px; background:var(--bg-1); border:1px solid var(--line); color:var(--text); border-radius:8px; font-family:'JetBrains Mono', monospace;">
+      </label>
+      <label style="display:block; margin-bottom: 12px;">
+        <span class="muted" style="display:block; margin-bottom:4px;">Home Team Talent (wRC+ avg)</span>
+        <input id="homeWRC" type="number" min="60" max="160" value="124" style="width:100%; padding:10px 12px; background:var(--bg-1); border:1px solid var(--line); color:var(--text); border-radius:8px; font-family:'JetBrains Mono', monospace;">
+      </label>
+      <label style="display:block; margin-bottom: 12px;">
+        <span class="muted" style="display:block; margin-bottom:4px;">Away Starter xFIP (4.0 = average, lower is better)</span>
+        <input id="awayXFIP" type="number" min="2.0" max="6.0" step="0.05" value="4.12" style="width:100%; padding:10px 12px; background:var(--bg-1); border:1px solid var(--line); color:var(--text); border-radius:8px; font-family:'JetBrains Mono', monospace;">
+      </label>
+      <label style="display:block; margin-bottom: 12px;">
+        <span class="muted" style="display:block; margin-bottom:4px;">Home Starter xFIP</span>
+        <input id="homeXFIP" type="number" min="2.0" max="6.0" step="0.05" value="2.89" style="width:100%; padding:10px 12px; background:var(--bg-1); border:1px solid var(--line); color:var(--text); border-radius:8px; font-family:'JetBrains Mono', monospace;">
+      </label>
+      <label style="display:block; margin-bottom: 12px;">
+        <span class="muted" style="display:block; margin-bottom:4px;">Park Factor (0.85 = Petco, 1.20 = Coors)</span>
+        <input id="parkFactor" type="number" min="0.80" max="1.25" step="0.01" value="0.91" style="width:100%; padding:10px 12px; background:var(--bg-1); border:1px solid var(--line); color:var(--text); border-radius:8px; font-family:'JetBrains Mono', monospace;">
+      </label>
+      <label style="display:block; margin-bottom: 12px;">
+        <span class="muted" style="display:block; margin-bottom:4px;">Wind (mph, + = blowing out, - = blowing in)</span>
+        <input id="wind" type="number" min="-20" max="20" step="1" value="-6" style="width:100%; padding:10px 12px; background:var(--bg-1); border:1px solid var(--line); color:var(--text); border-radius:8px; font-family:'JetBrains Mono', monospace;">
+      </label>
+      <label style="display:block; margin-bottom: 12px;">
+        <span class="muted" style="display:block; margin-bottom:4px;">Market Total (the over/under line)</span>
+        <input id="marketTotal" type="number" min="5" max="14" step="0.5" value="8.0" style="width:100%; padding:10px 12px; background:var(--bg-1); border:1px solid var(--line); color:var(--text); border-radius:8px; font-family:'JetBrains Mono', monospace;">
+      </label>
+      <label style="display:block; margin-bottom: 12px;">
+        <span class="muted" style="display:block; margin-bottom:4px;">Market Home ML (American odds)</span>
+        <input id="marketHomeML" type="number" min="-500" max="500" step="1" value="-148" style="width:100%; padding:10px 12px; background:var(--bg-1); border:1px solid var(--line); color:var(--text); border-radius:8px; font-family:'JetBrains Mono', monospace;">
+      </label>
+      <label style="display:block; margin-bottom: 12px;">
+        <span class="muted" style="display:block; margin-bottom:4px;">Number of simulations</span>
+        <input id="nSims" type="number" min="100" max="50000" step="100" value="10000" style="width:100%; padding:10px 12px; background:var(--bg-1); border:1px solid var(--line); color:var(--text); border-radius:8px; font-family:'JetBrains Mono', monospace;">
+      </label>
+      <button class="btn-primary big" id="runBtn" style="width:100%;">▶ Run Simulation</button>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span>📊 Run Distribution</span><span class="muted" id="simStatus">Idle</span></div>
+      <canvas id="distChart" height="200"></canvas>
+      <div class="factor-grid" style="grid-template-columns: repeat(2, 1fr); margin-top: 16px;">
+        <div class="factor"><span class="f-name">Home Win %</span><span class="f-val" id="resHomeWin">—</span></div>
+        <div class="factor"><span class="f-name">Away Win %</span><span class="f-val" id="resAwayWin">—</span></div>
+        <div class="factor"><span class="f-name">Avg Total Runs</span><span class="f-val" id="resAvgTotal">—</span></div>
+        <div class="factor"><span class="f-name">Avg Home Runs</span><span class="f-val" id="resAvgHome">—</span></div>
+        <div class="factor"><span class="f-name">P(Over Market)</span><span class="f-val" id="resPOver">—</span></div>
+        <div class="factor"><span class="f-name">P(Home -1.5)</span><span class="f-val" id="resCover15">—</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card" style="margin-bottom: 28px;">
+    <div class="card-head"><span>💰 Fair Prices vs. Market</span></div>
+    <div class="table-wrap">
+      <table class="data-table" id="pricesTable">
+        <thead><tr><th>Market</th><th>Side</th><th>Model Prob</th><th>Fair Price</th><th>Market Price</th><th>Edge</th><th>Kelly</th><th>Play</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="card-head"><span>📈 Win Probability Path</span></div>
+    <canvas id="convergenceChart" height="180"></canvas>
+    <p class="caption">As more simulations run, the home-win probability estimate converges. This is your model's bootstrap confidence interval — narrower = more certain.</p>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="foot-cols">
+    <div><div class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></div></div>
+    <div><h4>Tools</h4><a href="simulator.html">Simulator</a><a href="backtest.html">Backtest</a><a href="linemaker.html">Linemaker</a><a href="bankroll.html">Bankroll</a></div>
+    <div><h4>Research</h4><a href="play-of-day.html">Play of the Day</a><a href="mlb.html">MLB</a><a href="trends.html">Trends</a></div>
+    <div><h4>Learn</h4><a href="learn.html">Academy</a><a href="about.html">About</a></div>
+  </div>
+  <div class="foot-bot"><span>© 2026 bpleone.com</span><span>Built in SoCal ☀️</span></div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/ml-models.js"></script>
+<script src="js/simulator.js"></script>
+<script src="js/charts.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

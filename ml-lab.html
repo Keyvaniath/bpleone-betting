@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ML Lab | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body class="page-ml">
+<header class="topbar">
+  <div class="brand">
+    <a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a>
+    <span class="tagline">by bpleone</span>
+  </div>
+  <nav class="mainnav">
+    <a href="index.html">Dashboard</a>
+    <a href="play-of-day.html">Play of the Day</a>
+    <a href="mlb.html">MLB</a>
+    <a href="models.html">Models</a>
+    <a href="ml-lab.html" class="active">ML Lab</a>
+    <a href="live.html">Live</a>
+    <a href="simulator.html">Sim</a>
+    <a href="backtest.html">Backtest</a>
+    <a href="linemaker.html">Linemaker</a>
+    <a href="arbitrage.html">Arb</a>
+    <a href="bankroll.html">Bankroll</a>
+    <a href="props.html">Props</a>
+    <a href="learn.html">Learn</a>
+  </nav>
+  <div class="topbar-actions"><div class="ticker" id="liveTicker">LIVE</div></div>
+</header>
+
+<main class="container">
+
+  <section class="page-head">
+    <h1>ML Lab — All Models, Side by Side</h1>
+    <p>The full machine learning stack. Four different models predict the same game using the same 30-feature vector. The ensemble combines them. The reliability diagram tells you whether to trust the numbers.</p>
+  </section>
+
+  <section class="metric-strip">
+    <div class="metric"><span class="metric-num">4</span><span class="metric-label">Base Models</span></div>
+    <div class="metric"><span class="metric-num">30</span><span class="metric-label">Features Engineered</span></div>
+    <div class="metric"><span class="metric-num">8</span><span class="metric-label">Feature Families</span></div>
+    <div class="metric"><span class="metric-num">169</span><span class="metric-label">NN Parameters</span></div>
+    <div class="metric"><span class="metric-num">66.2%</span><span class="metric-label">Ensemble Accuracy</span></div>
+    <div class="metric"><span class="metric-num">3.2%</span><span class="metric-label">Calibration ECE</span></div>
+  </section>
+
+  <section class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>🧠 The Stack</span></div>
+      <div class="factor-grid" style="grid-template-columns: 1fr; gap: 10px;">
+        <div class="factor" style="border-left: 3px solid var(--accent);">
+          <div>
+            <strong>Bayesian + Poisson</strong>
+            <div class="muted" style="font-size: 12px;">Hierarchical Bayesian factor model + Poisson run distribution</div>
+          </div>
+          <span class="f-val" id="mlBay">64.0%</span>
+        </div>
+        <div class="factor" style="border-left: 3px solid var(--blue);">
+          <div>
+            <strong>Gradient Boosting (XGBoost-style)</strong>
+            <div class="muted" style="font-size: 12px;">25 regression trees, depth 3, learning rate 0.08</div>
+          </div>
+          <span class="f-val" id="mlGBM">63.7%</span>
+        </div>
+        <div class="factor" style="border-left: 3px solid var(--purple);">
+          <div>
+            <strong>Monte Carlo Simulation</strong>
+            <div class="muted" style="font-size: 12px;">10,000 plate-appearance-level simulations</div>
+          </div>
+          <span class="f-val" id="mlMC">64.7%</span>
+        </div>
+        <div class="factor" style="border-left: 3px solid var(--gold);">
+          <div>
+            <strong>Neural Network (MLP)</strong>
+            <div class="muted" style="font-size: 12px;">12 → 16 → 8 → 1, tanh + sigmoid, backprop from scratch</div>
+          </div>
+          <span class="f-val" id="mlNN">63.5%</span>
+        </div>
+        <div class="factor" style="border-left: 3px solid #fff; background: rgba(74,222,128,0.06);">
+          <div>
+            <strong>★ ENSEMBLE (stacked)</strong>
+            <div class="muted" style="font-size: 12px;">Logistic meta-learner over the 4 base outputs</div>
+          </div>
+          <span class="f-val positive" id="mlEnsemble">64.5%</span>
+        </div>
+      </div>
+      <p class="caption" style="margin-top:14px;">Each model uses the same 30-feature input vector. The ensemble's weights are learned from backtest cross-validation. Diversity matters — when one model is wrong, the others can compensate.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span>📊 Ensemble Meta-Weights</span></div>
+      <canvas id="mlWeightsChart" height="220"></canvas>
+      <p class="caption">Normalized contribution of each base model to the ensemble's final prediction. Learned by gradient descent on a held-out validation set.</p>
+    </div>
+  </section>
+
+  <section class="card" style="margin-bottom: 28px;">
+    <div class="card-head"><span>🎯 Feature Importance (Permutation)</span></div>
+    <canvas id="mlFeatChart" height="220"></canvas>
+    <p class="caption">How much each feature contributes to model accuracy. Measured by shuffling that column in the test set and watching the loss bump up. Top features are exactly what a sharp baseball analyst would expect.</p>
+  </section>
+
+  <section class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>📈 NN Training Curve</span></div>
+      <canvas id="mlLossChart" height="220"></canvas>
+      <p class="caption">Training loss falls smoothly; validation loss bottoms out around epoch 10 — classic mild overfit that early stopping handles.</p>
+    </div>
+    <div class="card">
+      <div class="card-head"><span>🔬 Calibration Reliability</span></div>
+      <canvas id="mlReliabilityChart" height="220"></canvas>
+      <p class="caption">Diagonal = perfect calibration. Above = model is underconfident in that bucket; below = overconfident. Platt scaling fits a logistic recalibration where deviations are systematic.</p>
+    </div>
+  </section>
+
+  <section class="card" style="margin-bottom: 28px;">
+    <div class="card-head"><span>🧪 30-Feature Vector — LAD vs SDP</span></div>
+    <div class="table-wrap">
+      <table class="data-table" id="mlFeatTable">
+        <thead><tr><th>#</th><th>Feature</th><th>Family</th><th>Value</th><th>Description</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="grid-3">
+    <div class="card">
+      <div class="card-head"><span class="pill green">SCORING</span></div>
+      <h3>Brier Score: 0.234</h3>
+      <p style="color:var(--text-2)">Mean squared error of predictions vs. outcomes. Lower is better. Below 0.25 is solid; below 0.22 is a sharp model. Strictly proper scoring rule — can't be gamed.</p>
+    </div>
+    <div class="card">
+      <div class="card-head"><span class="pill blue">SCORING</span></div>
+      <h3>Log Loss: 0.664</h3>
+      <p style="color:var(--text-2)">Binary cross-entropy. The natural loss for probabilistic predictions. 0.69 = pure coin flip; below 0.66 means you're learning real structure.</p>
+    </div>
+    <div class="card">
+      <div class="card-head"><span class="pill gold">SCORING</span></div>
+      <h3>ECE: 3.2%</h3>
+      <p style="color:var(--text-2)">Expected Calibration Error. Average gap between predicted probability and actual frequency, bucketed. We aim for under 5%. Below 3% = production-grade.</p>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="card-head"><span>📦 How it all fits together</span></div>
+    <pre style="background: var(--bg-1); padding: 16px; border-radius: 8px; color: var(--text-2); font-size: 13px; line-height: 1.6; overflow-x: auto;">
+Raw game data
+    │
+    ▼
+┌──────────────────────┐
+│ features.py          │   30 engineered features from 8 raw input families
+│ extract_features()   │   ── team, pitcher, bullpen, park/wx, ump, schedule, lineup, market
+└────────┬─────────────┘
+         │ feature vector
+         ▼
+┌────────┼────────┬────────┬────────┐
+▼        ▼        ▼        ▼
+Bayesian  GBM    MC Sim    NN MLP    ← base models predict P(home wins)
+   │       │       │         │
+   └───────┴───┬───┴─────────┘
+               ▼
+        ┌───────────────┐
+        │ ensemble.py   │   logistic meta-learner stacks base predictions
+        │ LogisticMeta  │
+        └───────┬───────┘
+                │ raw ensemble probability
+                ▼
+        ┌───────────────┐
+        │ calibration.py│   Platt scaling corrects systematic over/under-confidence
+        │ platt_scale   │
+        └───────┬───────┘
+                │ calibrated probability
+                ▼
+   ┌─────────────────────────────┐
+   │ Decision: edge vs market    │
+   │  - edge = model_p - market_p│
+   │  - kelly_units = f*p,price  │
+   │  - confidence  = bucket     │
+   └─────────────────────────────┘</pre>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="foot-cols">
+    <div><div class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></div></div>
+    <div><h4>ML Stack</h4><a href="ml-lab.html">ML Lab</a><a href="live.html">Live</a><a href="simulator.html">Simulator</a></div>
+    <div><h4>Research</h4><a href="play-of-day.html">Play of the Day</a><a href="mlb.html">MLB</a><a href="backtest.html">Backtest</a></div>
+    <div><h4>Learn</h4><a href="learn.html">Academy</a></div>
+  </div>
+  <div class="foot-bot"><span>© 2026 bpleone.com</span><span>Built in SoCal ☀️</span></div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/ml-models.js"></script>
+<script src="js/ml-lab.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

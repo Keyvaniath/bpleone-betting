@@ -1,0 +1,321 @@
+/* EdgeStat extras: wires up linemaker / backtest / arbitrage / bankroll pages.
+   Reads JSON artifacts from /data/ if available, otherwise uses sensible
+   default mock data that mirrors what the Python pipeline outputs.
+*/
+
+window.EdgeStatExtras = (function () {
+
+  // -------- helpers --------
+  async function fetchJSON(path) {
+    try {
+      const res = await fetch(path, { cache: 'no-store' });
+      if (!res.ok) return null;
+      return await res.json();
+    } catch { return null; }
+  }
+
+  function fmtPrice(p) { return p > 0 ? '+' + p : String(p); }
+  function fmtPct(p, dec = 2) { return (p >= 0 ? '+' : '') + p.toFixed(dec) + '%'; }
+  function fmtMoney(d) { return '$' + (Math.round(d * 100) / 100).toLocaleString(); }
+
+  // ---------- Linemaker page ----------
+  async function renderLinemaker() {
+    const data = await fetchJSON('data/linemaker.json') || {
+      matchup: 'LAD vs SDP', fair_prob_a: 0.62,
+      open: { price_a: -184, price_b: 152 },
+      current: { price_a: -231, price_b: 188 },
+      handle: { a: 5449, b: 4576, imbalance_pct: 54.4 },
+      exposure: { pl_if_a_wins: 7665.63, pl_if_b_wins: 1421.99, expected_pl: 5293.05 },
+      moves: [],
+    };
+    document.getElementById('lmOpen').textContent = fmtPrice(data.open.price_a);
+    document.getElementById('lmCurrent').textContent = fmtPrice(data.current.price_a);
+    document.getElementById('lmMoves').textContent = data.moves.length || 14;
+    document.getElementById('lmHandle').textContent = fmtMoney(data.handle.a + data.handle.b);
+    document.getElementById('lmImbal').textContent = data.handle.imbalance_pct + '%';
+    document.getElementById('lmHold').textContent = '4.5%';
+    document.getElementById('lmPlA').textContent = fmtMoney(data.exposure.pl_if_a_wins);
+    document.getElementById('lmPlB').textContent = fmtMoney(data.exposure.pl_if_b_wins);
+    document.getElementById('lmExpPl').textContent = fmtMoney(data.exposure.expected_pl);
+    document.getElementById('lmHandleA').textContent = fmtMoney(data.handle.a);
+    document.getElementById('lmHandleB').textContent = fmtMoney(data.handle.b);
+    document.getElementById('lmImbalDetail').textContent = data.handle.imbalance_pct + '%';
+
+    // Line movement chart - use the move log if present.
+    const moves = data.moves.length > 0 ? data.moves : [
+      { price_a: data.open.price_a, price_b: data.open.price_b, imbalance_pct: 50, trigger: 'open' },
+      { price_a: -190, price_b: 158, imbalance_pct: 54, trigger: 'public' },
+      { price_a: -205, price_b: 170, imbalance_pct: 58, trigger: 'SHARP' },
+      { price_a: -218, price_b: 180, imbalance_pct: 56, trigger: 'public' },
+      { price_a: data.current.price_a, price_b: data.current.price_b, imbalance_pct: data.handle.imbalance_pct, trigger: 'final' },
+    ];
+    new Chart(document.getElementById('lineMovChart').getContext('2d'), {
+      type: 'line',
+      data: {
+        labels: moves.map((_, i) => `M${i}`),
+        datasets: [
+          { label: 'LAD price', data: moves.map(m => m.price_a), borderColor: '#4ade80', backgroundColor: 'rgba(74,222,128,0.1)', tension: 0.25, pointRadius: 3 },
+          { label: 'SDP price', data: moves.map(m => m.price_b), borderColor: '#60a5fa', backgroundColor: 'rgba(96,165,250,0.1)', tension: 0.25, pointRadius: 3 },
+        ]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { labels: { color: '#9fb0c8' } } },
+        scales: { x: { ticks: { color: '#9fb0c8' }, grid: { color: '#1f2a3a' } },
+                  y: { ticks: { color: '#9fb0c8' }, grid: { color: '#1f2a3a' } } }
+      }
+    });
+
+    // Moves table
+    const tbody = document.querySelector('#movesTable tbody');
+    if (tbody) {
+      tbody.innerHTML = moves.map((m, i) => `<tr>
+        <td>${m.trigger === 'open' ? 'OPEN' : 'M' + i}</td>
+        <td>${m.trigger === 'SHARP' ? '<span class="pill gold">SHARP</span>' : m.trigger === 'open' ? '—' : 'public'}</td>
+        <td>${fmtPrice(m.price_a)}</td>
+        <td>${fmtPrice(m.price_b)}</td>
+        <td>${m.imbalance_pct || 50}%</td>
+        <td>${m.handle_a ? fmtMoney(m.handle_a) : '—'}</td>
+        <td>${m.handle_b ? fmtMoney(m.handle_b) : '—'}</td>
+      </tr>`).join('');
+    }
+  }
+
+  // ---------- Backtest page ----------
+  async function renderBacktest() {
+    const data = await fetchJSON('data/backtest.json') || {
+      metrics: { n_plays: 51, hit_pct: 62.75, roi_pct: 26.14, avg_clv_pct: 2.08,
+                 total_units: 18.45, final_bankroll: 118.45, max_drawdown: 5.27 },
+      bankroll_path: Array.from({ length: 52 }, (_, i) => 100 + Math.sin(i / 8) * 4 + i * 0.36),
+      drawdown_path: Array.from({ length: 52 }, (_, i) => Math.max(0, Math.sin(i / 4) * -2 + (i > 25 ? 0 : 1.5))),
+      recent_bets: [],
+    };
+    document.getElementById('btPlays').textContent = data.metrics.n_plays;
+    document.getElementById('btHit').textContent = data.metrics.hit_pct + '%';
+    document.getElementById('btROI').textContent = fmtPct(data.metrics.roi_pct, 1);
+    document.getElementById('btCLV').textContent = fmtPct(data.metrics.avg_clv_pct, 2);
+    document.getElementById('btUnits').textContent = (data.metrics.total_units >= 0 ? '+' : '') + data.metrics.total_units + 'u';
+    document.getElementById('btDD').textContent = '-' + data.metrics.max_drawdown.toFixed(1) + 'u';
+
+    // Bankroll chart
+    new Chart(document.getElementById('btBankrollChart').getContext('2d'), {
+      type: 'line',
+      data: {
+        labels: data.bankroll_path.map((_, i) => i),
+        datasets: [{
+          label: 'Bankroll (units)',
+          data: data.bankroll_path,
+          borderColor: '#4ade80',
+          backgroundColor: 'rgba(74,222,128,0.1)',
+          tension: 0.25, fill: true, pointRadius: 0
+        }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { labels: { color: '#9fb0c8' } } },
+        scales: { x: { ticks: { color: '#9fb0c8' }, grid: { color: '#1f2a3a' } },
+                  y: { ticks: { color: '#9fb0c8' }, grid: { color: '#1f2a3a' } } }
+      }
+    });
+
+    // Drawdown chart
+    new Chart(document.getElementById('btDdChart').getContext('2d'), {
+      type: 'line',
+      data: {
+        labels: data.drawdown_path.map((_, i) => i),
+        datasets: [{
+          label: 'Drawdown (units)',
+          data: data.drawdown_path.map(d => -Math.abs(d)),
+          borderColor: '#f87171',
+          backgroundColor: 'rgba(248,113,113,0.1)',
+          tension: 0.2, fill: true, pointRadius: 0
+        }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { labels: { color: '#9fb0c8' } } },
+        scales: { x: { ticks: { color: '#9fb0c8' }, grid: { color: '#1f2a3a' } },
+                  y: { ticks: { color: '#9fb0c8' }, grid: { color: '#1f2a3a' } } }
+      }
+    });
+
+    // Recent bets table
+    const tbody = document.querySelector('#btTable tbody');
+    if (tbody) {
+      const bets = data.recent_bets.length > 0 ? data.recent_bets.slice(0, 30) :
+        // Fallback synthetic recent bets
+        Array.from({ length: 25 }, (_, i) => ({
+          day: `D${180 - i}`, matchup: ['LAD@SDP','BOS@NYY','ATL@PHI','HOU@TEX','CHC@WSH','CIN@COL'][i % 6],
+          side: ['LAD ML','BOS ML','ATL ML','UNDER 8.5','OVER 10.5','CHC ML'][i % 6],
+          stake: (Math.random()*1.5 + 0.4).toFixed(2),
+          price: [-148, +120, -176, -110, -110, -126][i % 6],
+          close: [-160, +112, -188, -105, -118, -134][i % 6],
+          edge: (Math.random()*5 + 2).toFixed(2),
+          result: Math.random() < 0.6 ? 'WIN' : 'LOSS',
+          pl: 0, clv: (Math.random()*4 - 0.5).toFixed(2)
+        }));
+      // Compute pl from result + stake + price
+      bets.forEach(b => {
+        if (typeof b.pl === 'number' && b.pl !== 0) return;
+        const dec = b.price > 0 ? 1 + b.price/100 : 1 + 100/Math.abs(b.price);
+        b.pl = b.result === 'WIN' ? +(b.stake * (dec - 1)).toFixed(2) : -+(b.stake).toFixed(2);
+      });
+      tbody.innerHTML = bets.map(b => `<tr>
+        <td>${b.day}</td><td class="matchup">${b.matchup}</td><td>${b.side}</td>
+        <td>${fmtPrice(b.price)}</td><td>${fmtPrice(b.close)}</td>
+        <td>${b.stake}u</td><td class="edge-pos">+${b.edge}%</td>
+        <td class="${b.result === 'WIN' ? 'positive' : 'negative'}">${b.result}</td>
+        <td class="${b.pl >= 0 ? 'positive' : 'negative'}">${b.pl >= 0 ? '+' : ''}${b.pl}u</td>
+        <td>${b.clv}%</td>
+      </tr>`).join('');
+    }
+  }
+
+  // ---------- Arbitrage page ----------
+  async function renderArbitrage() {
+    const data = await fetchJSON('data/arbitrage.json') || {
+      arbs: [], middles: [], low_vig: [],
+    };
+    document.getElementById('arbCount').textContent = data.arbs.length;
+    document.getElementById('midCount').textContent = data.middles.length;
+    document.getElementById('lvCount').textContent = data.low_vig.length;
+
+    const arbsBody = document.querySelector('#arbsTable tbody');
+    if (arbsBody) {
+      arbsBody.innerHTML = data.arbs.slice(0, 12).map(a => `<tr>
+        <td class="matchup">${a.market}</td>
+        <td>${a.side_a}</td><td>${a.side_b}</td>
+        <td>${a.implied_sum_pct || '—'}%</td>
+        <td class="edge-pos">+${a.profit_pct}%</td>
+        <td>${a.stake_split ? a.stake_split[0]+'% / '+a.stake_split[1]+'%' : '—'}</td>
+      </tr>`).join('');
+    }
+
+    const midsBody = document.querySelector('#midsTable tbody');
+    if (midsBody) {
+      midsBody.innerHTML = data.middles.slice(0, 10).map(m => `<tr>
+        <td class="matchup">${m.market}</td>
+        <td><span class="pill gold">${m.type || 'MIDDLE'}</span></td>
+        <td>${m.side_a}</td><td>${m.side_b}</td>
+        <td>${m.middle_window}</td>
+      </tr>`).join('');
+    }
+
+    const lvBody = document.querySelector('#lvTable tbody');
+    if (lvBody) {
+      lvBody.innerHTML = data.low_vig.slice(0, 15).map(lv => `<tr>
+        <td class="matchup">${lv.market}</td>
+        <td>${lv.side_a}</td><td>${lv.side_b}</td>
+        <td class="positive">${lv.vig_pct}%</td>
+      </tr>`).join('');
+    }
+  }
+
+  // ---------- Bankroll page ----------
+  function runBankrollMC(opts) {
+    const dec = opts.price > 0 ? 1 + opts.price / 100 : 1 + 100 / Math.abs(opts.price);
+    const fullKelly = (dec - 1) * opts.prob - (1 - opts.prob);
+    const f = Math.max(0, fullKelly / (dec - 1)) * opts.kellyFrac;
+    const finals = [];
+    const maxDDs = [];
+    let n_ruined = 0;
+    const paths = [];
+    for (let i = 0; i < opts.sims; i++) {
+      let bank = 100;
+      let peak = 100;
+      let max_dd = 0;
+      const path = [bank];
+      let ruined = false;
+      for (let j = 0; j < opts.plays; j++) {
+        const stake = bank * f;
+        const won = Math.random() < opts.prob;
+        bank += won ? stake * (dec - 1) : -stake;
+        path.push(bank);
+        peak = Math.max(peak, bank);
+        const dd = (peak - bank) / peak * 100;
+        max_dd = Math.max(max_dd, dd);
+        if (bank <= 25) ruined = true;
+      }
+      finals.push(bank);
+      maxDDs.push(max_dd);
+      if (ruined) n_ruined++;
+      if (i < 25) paths.push(path);
+    }
+    finals.sort((a, b) => a - b);
+    maxDDs.sort((a, b) => a - b);
+    return {
+      median: finals[Math.floor(opts.sims / 2)],
+      mean: finals.reduce((s, v) => s + v, 0) / opts.sims,
+      p10: finals[Math.floor(opts.sims * 0.10)],
+      p90: finals[Math.floor(opts.sims * 0.90)],
+      medMaxDD: maxDDs[Math.floor(opts.sims / 2)],
+      p90MaxDD: maxDDs[Math.floor(opts.sims * 0.90)],
+      ruinProb: n_ruined / opts.sims * 100,
+      roi: (finals.reduce((s, v) => s + v, 0) / opts.sims - 100),
+      paths,
+    };
+  }
+
+  function renderBankroll() {
+    const runBtn = document.getElementById('bkRunBtn');
+    if (!runBtn) return;
+    let pathChart = null;
+    function run() {
+      const opts = {
+        prob: parseFloat(document.getElementById('bkProb').value),
+        price: parseInt(document.getElementById('bkPrice').value),
+        kellyFrac: parseFloat(document.getElementById('bkKelly').value),
+        plays: parseInt(document.getElementById('bkPlays').value),
+        sims: parseInt(document.getElementById('bkSims').value),
+      };
+      document.getElementById('bkStatus').textContent = `Running ${opts.sims} sims…`;
+      runBtn.disabled = true;
+      setTimeout(() => {
+        const t0 = performance.now();
+        const r = runBankrollMC(opts);
+        const ms = performance.now() - t0;
+        document.getElementById('bkStatus').textContent = `Done — ${opts.sims} sims in ${ms.toFixed(0)}ms`;
+        document.getElementById('bkMedian').textContent = '$' + r.median.toFixed(0);
+        document.getElementById('bkMean').textContent = '$' + r.mean.toFixed(0);
+        document.getElementById('bkP10').textContent = '$' + r.p10.toFixed(0);
+        document.getElementById('bkP90').textContent = '$' + r.p90.toFixed(0);
+        document.getElementById('bkMedDD').textContent = r.medMaxDD.toFixed(1) + '%';
+        document.getElementById('bkP90DD').textContent = r.p90MaxDD.toFixed(1) + '%';
+        document.getElementById('bkRuin').textContent = r.ruinProb.toFixed(2) + '%';
+        document.getElementById('bkROI').textContent = (r.roi >= 0 ? '+' : '') + r.roi.toFixed(1) + '%';
+
+        if (pathChart) pathChart.destroy();
+        pathChart = new Chart(document.getElementById('bkPathChart').getContext('2d'), {
+          type: 'line',
+          data: {
+            labels: r.paths[0].map((_, i) => i),
+            datasets: r.paths.map((p, i) => ({
+              label: 'Path ' + (i + 1),
+              data: p,
+              borderColor: `hsla(${(i*37) % 360}, 60%, 60%, 0.5)`,
+              backgroundColor: 'transparent', borderWidth: 1.2, pointRadius: 0, tension: 0.1
+            }))
+          },
+          options: {
+            responsive: true, maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            scales: { x: { ticks: { color: '#9fb0c8' }, grid: { color: '#1f2a3a' } },
+                      y: { ticks: { color: '#9fb0c8' }, grid: { color: '#1f2a3a' } } }
+          }
+        });
+        runBtn.disabled = false;
+      }, 30);
+    }
+    runBtn.addEventListener('click', run);
+    run();
+  }
+
+  return { renderLinemaker, renderBacktest, renderArbitrage, renderBankroll };
+})();
+
+document.addEventListener('DOMContentLoaded', () => {
+  if (document.body.classList.contains('page-linemaker')) EdgeStatExtras.renderLinemaker();
+  if (document.body.classList.contains('page-backtest'))  EdgeStatExtras.renderBacktest();
+  if (document.body.classList.contains('page-arb'))       EdgeStatExtras.renderArbitrage();
+  if (document.body.classList.contains('page-bankroll'))  EdgeStatExtras.renderBankroll();
+});

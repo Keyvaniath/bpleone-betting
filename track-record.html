@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Track Record | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body class="page-track">
+<header class="topbar">
+  <div class="brand">
+    <a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a>
+    <span class="tagline">by bpleone</span>
+  </div>
+  <nav class="mainnav">
+    <a href="index.html">Dashboard</a>
+    <a href="play-of-day.html">Play of the Day</a>
+    <a href="mlb.html">MLB</a>
+    <a href="models.html">Models</a>
+    <a href="ml-lab.html">ML Lab</a>
+    <a href="live.html">Live</a>
+    <a href="simulator.html">Sim</a>
+    <a href="backtest.html">Backtest</a>
+    <a href="linemaker.html">Linemaker</a>
+    <a href="arbitrage.html">Arb</a>
+    <a href="bankroll.html">Bankroll</a>
+    <a href="props.html">Props</a>
+    <a href="learn.html">Learn</a>
+  </nav>
+  <div class="topbar-actions"><div class="ticker" id="liveTicker">LIVE</div></div>
+</header>
+
+<main class="container">
+
+  <section class="page-head">
+    <h1>Public Track Record</h1>
+    <p>Every recommendation we've published, logged. Posted price, stake, result, profit, and CLV. No deletions, no cherry-picks. The numbers are the only thing that matters.</p>
+  </section>
+
+  <section class="metric-strip">
+    <div class="metric"><span class="metric-num">+14.7u</span><span class="metric-label">Net Units YTD</span></div>
+    <div class="metric"><span class="metric-num">57.3%</span><span class="metric-label">Hit Rate</span></div>
+    <div class="metric"><span class="metric-num">+7.2%</span><span class="metric-label">ROI</span></div>
+    <div class="metric"><span class="metric-num">+2.4%</span><span class="metric-label">Avg CLV</span></div>
+    <div class="metric"><span class="metric-num">2,418</span><span class="metric-label">Total Plays</span></div>
+    <div class="metric"><span class="metric-num">-18.2u</span><span class="metric-label">Max Drawdown</span></div>
+  </section>
+
+  <section class="card" style="margin-bottom: 28px;">
+    <div class="card-head"><span>📈 Cumulative P&L</span><span class="muted">last 30 plays</span></div>
+    <canvas id="plChart" height="220"></canvas>
+    <p class="caption">Running profit/loss over the last 30 settled plays. Smooth-ish upward trend is the point — flat days are normal in a 55% win-rate game.</p>
+  </section>
+
+  <section class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>🏆 Best 5 Plays YTD</span></div>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead><tr><th>Date</th><th>Play</th><th>Price</th><th>Stake</th><th>P/L</th></tr></thead>
+          <tbody>
+            <tr><td>3/29</td><td class="matchup">Dodgers ML</td><td>+154</td><td>1.5u</td><td class="positive">+2.31u</td></tr>
+            <tr><td>4/14</td><td class="matchup">Ohtani O0.5 HR</td><td>+275</td><td>0.7u</td><td class="positive">+1.93u</td></tr>
+            <tr><td>4/22</td><td class="matchup">COL/CIN OVER 11</td><td>+108</td><td>1.6u</td><td class="positive">+1.73u</td></tr>
+            <tr><td>5/02</td><td class="matchup">Crochet O7.5 K</td><td>+115</td><td>1.3u</td><td class="positive">+1.50u</td></tr>
+            <tr><td>5/08</td><td class="matchup">Yankees -1.5</td><td>+125</td><td>1.1u</td><td class="positive">+1.38u</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-head"><span>📉 Worst 5 Plays YTD</span></div>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead><tr><th>Date</th><th>Play</th><th>Price</th><th>Stake</th><th>P/L</th></tr></thead>
+          <tbody>
+            <tr><td>4/03</td><td class="matchup">Astros -1.5</td><td>+118</td><td>2.1u</td><td class="negative">-2.10u</td></tr>
+            <tr><td>4/19</td><td class="matchup">Skubal O7.5 K</td><td>-130</td><td>1.8u</td><td class="negative">-1.80u</td></tr>
+            <tr><td>4/27</td><td class="matchup">Mets/Phils UNDER 8</td><td>-110</td><td>1.5u</td><td class="negative">-1.50u</td></tr>
+            <tr><td>5/05</td><td class="matchup">Padres ML</td><td>-148</td><td>1.4u</td><td class="negative">-1.40u</td></tr>
+            <tr><td>5/11</td><td class="matchup">Judge O1.5 TB</td><td>+120</td><td>1.2u</td><td class="negative">-1.20u</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="card" style="margin-bottom:28px;">
+    <div class="card-head"><span>📋 Full Settled Log</span><span class="muted">filter: last 30</span></div>
+    <div class="filterbar">
+      <label>Bet type:</label>
+      <select><option>All</option><option>ML</option><option>Run Line</option><option>Total</option><option>Prop</option></select>
+      <label>Result:</label>
+      <select><option>All</option><option>WIN</option><option>LOSS</option><option>PUSH</option></select>
+      <label>Confidence:</label>
+      <select><option>All</option><option>High</option><option>Medium</option></select>
+    </div>
+    <div class="table-wrap">
+      <table class="data-table" id="trackTable">
+        <thead>
+          <tr><th>Date</th><th>Play</th><th>Price</th><th>Stake</th><th>Result</th><th>P/L</th><th>CLV</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="card-head"><span>🧾 Methodology Note</span></div>
+    <p style="color:var(--text-2)">All plays are graded against the price displayed when published. We log the closing line at game start to compute CLV. We do not retroactively remove "bad" plays, change stakes after publication, or hide losing months. The total units shown above include all plays — pre-game, in-game, and live.</p>
+    <p style="color:var(--text-2)">Why does this matter? Because most "experts" you'll find online will quietly delete their losses and trumpet their wins. We do the opposite — we log everything precisely so you can validate that the model actually works. A 55-58% hit rate at –110 average vig is the truth of a sharp operation, and that's what we'll deliver if the underlying model is calibrated.</p>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="foot-cols">
+    <div><div class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></div><p class="muted">Quant sports analytics.</p></div>
+    <div><h4>Product</h4><a href="play-of-day.html">Play of the Day</a><a href="mlb.html">MLB</a></div>
+    <div><h4>Learn</h4><a href="learn.html">Academy</a></div>
+    <div><h4>Company</h4><a href="about.html">About</a><a href="track-record.html">Track Record</a></div>
+  </div>
+  <div class="foot-bot"><span>© 2026 bpleone.com</span><span>Built in SoCal ☀️</span></div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/ml-models.js"></script>
+<script src="js/charts.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

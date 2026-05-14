@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="EdgeStat by bpleone - Advanced sports betting analytics, ML-driven probability models, and the Play of the Day. Built for sharp bettors.">
+<title>EdgeStat | bpleone — Sports Betting Analytics & ML</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <a href="index.html" class="logo">
+      <span class="logo-mark">⟁</span>
+      <span class="logo-text">Edge<span class="accent">Stat</span></span>
+    </a>
+    <span class="tagline">by bpleone</span>
+  </div>
+  <nav class="mainnav">
+    <a href="index.html" class="active">Dashboard</a>
+    <a href="play-of-day.html">Play of the Day</a>
+    <a href="mlb.html">MLB</a>
+    <a href="models.html">Models</a>
+    <a href="ml-lab.html">ML Lab</a>
+    <a href="live.html">Live</a>
+    <a href="simulator.html">Sim</a>
+    <a href="backtest.html">Backtest</a>
+    <a href="linemaker.html">Linemaker</a>
+    <a href="arbitrage.html">Arb</a>
+    <a href="bankroll.html">Bankroll</a>
+    <a href="props.html">Props</a>
+    <a href="learn.html">Learn</a>
+  </nav>
+  <div class="topbar-actions">
+    <div class="ticker" id="liveTicker">LIVE • Connecting feeds…</div>
+    <button class="btn-primary" onclick="window.location='play-of-day.html'">Today's Play →</button>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <div class="kicker">ALGORITHMIC SPORTS INTELLIGENCE</div>
+      <h1>The market is a number. <span class="accent">We trade the gap.</span></h1>
+      <p class="lede">EdgeStat is a quantitative sports-betting research desk. We model every game, expose where the books mis-price the market, and surface the highest-edge play in the league each morning. Think of it as Unusual Whales — for the diamond, the gridiron, and the hardwood.</p>
+      <div class="hero-stats">
+        <div class="stat"><div class="stat-value">+14.7<span class="unit">u</span></div><div class="stat-label">YTD Net Units</div></div>
+        <div class="stat"><div class="stat-value">57.3<span class="unit">%</span></div><div class="stat-label">Model Hit Rate</div></div>
+        <div class="stat"><div class="stat-value">7.2<span class="unit">%</span></div><div class="stat-label">Average ROI</div></div>
+        <div class="stat"><div class="stat-value">2,418</div><div class="stat-label">Closed Plays</div></div>
+      </div>
+      <div class="hero-cta">
+        <a href="play-of-day.html" class="btn-primary big">View Today's Play of the Day</a>
+        <a href="learn.html" class="btn-ghost big">Learn How It Works</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-card">
+        <div class="hero-card-head">
+          <span class="dot live"></span>
+          <span>LIVE MODEL CONFIDENCE — MLB Slate</span>
+        </div>
+        <canvas id="heroChart" height="220"></canvas>
+        <div class="hero-card-foot">
+          <span class="muted">Last refresh: <span id="lastRefresh">just now</span></span>
+          <span class="muted">Source: EdgeStat Bayesian v3.4</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KEY METRICS STRIP -->
+  <section class="metric-strip">
+    <div class="metric"><span class="metric-num" id="mEdges">17</span><span class="metric-label">Edges Found Today</span></div>
+    <div class="metric"><span class="metric-num" id="mGames">14</span><span class="metric-label">MLB Games Modeled</span></div>
+    <div class="metric"><span class="metric-num" id="mPlusEV">9</span><span class="metric-label">+EV Plays Filtered</span></div>
+    <div class="metric"><span class="metric-num" id="mSharp">3</span><span class="metric-label">Sharp Money Alerts</span></div>
+    <div class="metric"><span class="metric-num" id="mClv">+2.4%</span><span class="metric-label">Avg Closing Line Value</span></div>
+    <div class="metric"><span class="metric-num" id="mKelly">1.7u</span><span class="metric-label">Recommended Stake (Kelly)</span></div>
+  </section>
+
+  <!-- PLAY OF THE DAY PREVIEW -->
+  <section class="card-row">
+    <div class="card big-card play-card">
+      <div class="card-head">
+        <span class="pill gold">★ PLAY OF THE DAY</span>
+        <span class="muted">May 13, 2026 • 7:05pm ET</span>
+      </div>
+      <h2 class="play-title">Dodgers <span class="accent">ML</span> vs. Padres</h2>
+      <div class="play-grid">
+        <div class="play-stat">
+          <div class="stat-label">Model Price</div>
+          <div class="stat-value-big">-178</div>
+        </div>
+        <div class="play-stat">
+          <div class="stat-label">Book Price</div>
+          <div class="stat-value-big">-148</div>
+        </div>
+        <div class="play-stat">
+          <div class="stat-label">Implied Edge</div>
+          <div class="stat-value-big positive">+5.4%</div>
+        </div>
+        <div class="play-stat">
+          <div class="stat-label">Confidence</div>
+          <div class="stat-value-big">High</div>
+        </div>
+        <div class="play-stat">
+          <div class="stat-label">Kelly Stake</div>
+          <div class="stat-value-big">1.7u</div>
+        </div>
+        <div class="play-stat">
+          <div class="stat-label">Win Prob</div>
+          <div class="stat-value-big">64.0%</div>
+        </div>
+      </div>
+      <p class="play-summary">Our 12-factor starter+lineup+park+bullpen ensemble prices LAD at a 64% win expectancy. The market is at 59.7%. The wedge is driven by an underrated platoon advantage versus the SDP righty and a top-3 LAD bullpen ERA-FIP delta. Sharp money signal triggered at <strong>11:42am ET</strong>.</p>
+      <a href="play-of-day.html" class="btn-primary">Full Breakdown →</a>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span class="pill blue">SHARP MONEY FLOW</span><span class="muted">last 60 min</span></div>
+      <ul class="flow-list">
+        <li><span class="team">YANKEES -1.5</span><span class="flow up">+78% handle</span></li>
+        <li><span class="team">BRAVES ML</span><span class="flow up">+62% handle</span></li>
+        <li><span class="team">CUBS / WSH U8.5</span><span class="flow up">+54% handle</span></li>
+        <li><span class="team">METS ML</span><span class="flow down">-31% handle</span></li>
+        <li><span class="team">ASTROS -1.5</span><span class="flow up">+44% handle</span></li>
+      </ul>
+      <a href="trends.html" class="link-arrow">View all flow →</a>
+    </div>
+  </section>
+
+  <!-- ANALYTICS PANELS -->
+  <section class="grid-3">
+    <div class="card">
+      <div class="card-head"><span>📈 Model vs. Market</span></div>
+      <canvas id="modelMarketChart" height="200"></canvas>
+      <p class="caption">14-day rolling edge between EdgeStat moneyline model and consensus market.</p>
+    </div>
+    <div class="card">
+      <div class="card-head"><span>💸 Closing Line Value</span></div>
+      <canvas id="clvChart" height="200"></canvas>
+      <p class="caption">Average CLV across all settled plays. Positive CLV is the leading indicator of long-term ROI.</p>
+    </div>
+    <div class="card">
+      <div class="card-head"><span>🎯 Hit Rate by Bet Type</span></div>
+      <canvas id="hitChart" height="200"></canvas>
+      <p class="caption">Hit rate on settled plays segmented by bet type. Player props lead our portfolio.</p>
+    </div>
+  </section>
+
+  <!-- TODAY'S SLATE -->
+  <section class="section">
+    <div class="section-head">
+      <h2>Today's MLB Slate — Modeled</h2>
+      <a href="mlb.html" class="link-arrow">Full board →</a>
+    </div>
+    <div class="table-wrap">
+      <table class="data-table" id="slateTable">
+        <thead>
+          <tr>
+            <th>Time</th>
+            <th>Matchup</th>
+            <th>Starters</th>
+            <th>Model ML</th>
+            <th>Market ML</th>
+            <th>Edge</th>
+            <th>Model O/U</th>
+            <th>Market O/U</th>
+            <th>Recommendation</th>
+          </tr>
+        </thead>
+        <tbody><!-- filled by JS --></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- WHAT YOU GET -->
+  <section class="section feature-section">
+    <h2>What you get with EdgeStat</h2>
+    <div class="features">
+      <div class="feature">
+        <div class="feature-icon">🧠</div>
+        <h3>Bayesian Game Engine</h3>
+        <p>A hierarchical Bayesian model that updates each team's true talent in real time using starter, lineup, park, weather, bullpen rest, and umpire factors.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">📊</div>
+        <h3>Probability Surfaces</h3>
+        <p>Every line — moneyline, runline, total, first-5, player props — is given a fair price. We expose the gap between our number and the book's.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🐋</div>
+        <h3>Sharp Flow Tracker</h3>
+        <p>Real-time detection of "steam moves" and reverse-line movement, so you see when smart money has hit the market — like Unusual Whales for sportsbooks.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🎓</div>
+        <h3>EdgeStat Academy</h3>
+        <p>Free curriculum: Kelly criterion, expected value, variance, CLV, market efficiency, and how to actually grow a bankroll instead of "vibes" betting.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">📅</div>
+        <h3>Play of the Day</h3>
+        <p>One play. Highest-edge, highest-confidence — every day. Full transparency on price, model probability, Kelly stake, and rationale.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🧾</div>
+        <h3>Public Track Record</h3>
+        <p>Every play we recommend is logged with timestamp, price, result, and CLV. No cherry-picked screenshots. Numbers don't lie.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section class="section newsletter">
+    <div class="newsletter-card">
+      <h2>Get the morning edge.</h2>
+      <p>Daily 7:30am ET digest: Play of the Day, sharp flow alerts, slate breakdown. Free, no spam.</p>
+      <form onsubmit="event.preventDefault(); window.subscribe(this);">
+        <input type="email" placeholder="your@email.com" required>
+        <button class="btn-primary" type="submit">Subscribe</button>
+      </form>
+      <p class="muted" id="subMsg" style="margin-top:8px;"></p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="foot-cols">
+    <div>
+      <div class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></div>
+      <p class="muted">Quantitative sports betting analytics. For research and entertainment. 21+. Please gamble responsibly. 1-800-GAMBLER.</p>
+    </div>
+    <div>
+      <h4>Product</h4>
+      <a href="play-of-day.html">Play of the Day</a>
+      <a href="mlb.html">MLB</a>
+      <a href="models.html">Models</a>
+      <a href="props.html">Props</a>
+    </div>
+    <div>
+      <h4>Learn</h4>
+      <a href="learn.html">EdgeStat Academy</a>
+      <a href="learn.html#kelly">Kelly Criterion</a>
+      <a href="learn.html#ev">Expected Value</a>
+      <a href="learn.html#clv">Closing Line Value</a>
+    </div>
+    <div>
+      <h4>Company</h4>
+      <a href="about.html">About</a>
+      <a href="track-record.html">Track Record</a>
+      <a href="mailto:brandonpleone@gmail.com">Contact</a>
+    </div>
+  </div>
+  <div class="foot-bot">
+    <span>© 2026 bpleone.com — EdgeStat. All rights reserved.</span>
+    <span>Built in SoCal ☀️</span>
+  </div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/ml-models.js"></script>
+<script src="js/charts.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arbitrage / Middles / Scalps | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="page-arb">
+<header class="topbar">
+  <div class="brand">
+    <a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a>
+    <span class="tagline">by bpleone</span>
+  </div>
+  <nav class="mainnav">
+    <a href="index.html">Dashboard</a>
+    <a href="play-of-day.html">Play of the Day</a>
+    <a href="mlb.html">MLB</a>
+    <a href="models.html">Models</a>
+    <a href="ml-lab.html">ML Lab</a>
+    <a href="live.html">Live</a>
+    <a href="simulator.html">Sim</a>
+    <a href="backtest.html">Backtest</a>
+    <a href="linemaker.html">Linemaker</a>
+    <a href="arbitrage.html" class="active">Arb</a>
+    <a href="bankroll.html">Bankroll</a>
+    <a href="props.html">Props</a>
+    <a href="learn.html">Learn</a>
+  </nav>
+  <div class="topbar-actions"><div class="ticker" id="liveTicker">LIVE</div></div>
+</header>
+
+<main class="container">
+
+  <section class="page-head">
+    <h1>Arbitrage, Middles & Scalps</h1>
+    <p>Cross-book line discrepancies are mathematical free money — when you can find them. We scan every major book every 60 seconds and surface true arbitrage opportunities, middling windows, and reduced-juice 2-way markets. Note: books ban arb-only bettors fast, so size carefully and mix in regular action.</p>
+  </section>
+
+  <section class="metric-strip">
+    <div class="metric"><span class="metric-num" id="arbCount">5</span><span class="metric-label">Live Arbs</span></div>
+    <div class="metric"><span class="metric-num" id="midCount">3</span><span class="metric-label">Middle Opportunities</span></div>
+    <div class="metric"><span class="metric-num" id="lvCount">22</span><span class="metric-label">Reduced-Juice Markets</span></div>
+    <div class="metric"><span class="metric-num">31</span><span class="metric-label">Quotes Scanned</span></div>
+    <div class="metric"><span class="metric-num">6</span><span class="metric-label">Books Polled</span></div>
+    <div class="metric"><span class="metric-num">60s</span><span class="metric-label">Refresh Rate</span></div>
+  </section>
+
+  <section class="card" style="margin-bottom: 28px;">
+    <div class="card-head"><span class="pill green">★ ARBITRAGE</span><span class="muted">guaranteed profit, both books must accept full size</span></div>
+    <div class="table-wrap">
+      <table class="data-table" id="arbsTable">
+        <thead><tr><th>Market</th><th>Side A</th><th>Side B</th><th>Implied Sum</th><th>Profit %</th><th>Stake Split</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <p class="caption" style="margin-top:14px;">A true arb pays a small but guaranteed profit. The "Stake Split" tells you the optimal % to put on each side so payouts equalize. Real-world snag: books cap bet size and ban frequent arbers. Use these sparingly, mix in -EV plays to look like a normal bettor.</p>
+  </section>
+
+  <section class="card" style="margin-bottom: 28px;">
+    <div class="card-head"><span class="pill gold">◆ MIDDLE</span><span class="muted">risk = juice paid, payoff = double win if game lands in the window</span></div>
+    <div class="table-wrap">
+      <table class="data-table" id="midsTable">
+        <thead><tr><th>Market</th><th>Type</th><th>Side A</th><th>Side B</th><th>Middle Window</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <p class="caption" style="margin-top:14px;">A middle is when you can bet OVER at one line and UNDER at another. If the game total lands BETWEEN them, both bets win — a "middle hit." You risk a small loss (the combined juice) and win a payoff if it middles. In MLB, totals middles cash ~7% of the time historically, which is enough to make zero-juice middles +EV.</p>
+  </section>
+
+  <section class="card" style="margin-bottom: 28px;">
+    <div class="card-head"><span class="pill blue">▾ LOW VIG (under 3%)</span><span class="muted">cheapest 2-way pairings across books</span></div>
+    <div class="table-wrap">
+      <table class="data-table" id="lvTable">
+        <thead><tr><th>Market</th><th>Side A</th><th>Side B</th><th>Combined Vig</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <p class="caption" style="margin-top:14px;">Standard markets carry 4-5% vig. By splitting one side at book A and the other at book B, you can routinely find pairings with under 3% combined vig — meaning your model only needs a small edge to clear it. Pinnacle is usually one side of every low-vig pair.</p>
+  </section>
+
+  <section class="card">
+    <div class="card-head"><span>🎓 The reality check</span></div>
+    <p style="color:var(--text-2)">Arb betting looks too good to be true on paper. In practice:</p>
+    <ul style="color:var(--text-2); padding-left:20px; line-height:1.7;">
+      <li><strong>Limits matter.</strong> A $50 arb is real money in volume, but most books will cap your stake at $200-$1,000 within a few weeks of betting only arbs.</li>
+      <li><strong>Books talk to each other.</strong> A line move on Pinnacle triggers immediate moves on others. Arb windows often last 30-90 seconds before they close.</li>
+      <li><strong>Bonuses change the math.</strong> When books offer "bet $200, get $200" promos, the +EV math on arbs becomes massive temporarily. Hunt these.</li>
+      <li><strong>Pinnacle is your friend.</strong> They have the sharpest book and accept arbers. Most arb sides should be there.</li>
+      <li><strong>Mix in action.</strong> If 100% of your bets are arbs, you'll be banned. Sprinkle in -EV parlays so you look square. Cost of doing business.</li>
+    </ul>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="foot-cols">
+    <div><div class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></div></div>
+    <div><h4>Tools</h4><a href="simulator.html">Simulator</a><a href="backtest.html">Backtest</a><a href="arbitrage.html">Arbitrage</a></div>
+    <div><h4>Research</h4><a href="play-of-day.html">Play of the Day</a><a href="mlb.html">MLB</a></div>
+    <div><h4>Learn</h4><a href="learn.html">Academy</a></div>
+  </div>
+  <div class="foot-bot"><span>© 2026 bpleone.com</span><span>Built in SoCal ☀️</span></div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/extras.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

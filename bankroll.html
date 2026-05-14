@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bankroll & Risk | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body class="page-bankroll">
+<header class="topbar">
+  <div class="brand">
+    <a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a>
+    <span class="tagline">by bpleone</span>
+  </div>
+  <nav class="mainnav">
+    <a href="index.html">Dashboard</a>
+    <a href="play-of-day.html">Play of the Day</a>
+    <a href="mlb.html">MLB</a>
+    <a href="models.html">Models</a>
+    <a href="ml-lab.html">ML Lab</a>
+    <a href="live.html">Live</a>
+    <a href="simulator.html">Sim</a>
+    <a href="backtest.html">Backtest</a>
+    <a href="linemaker.html">Linemaker</a>
+    <a href="arbitrage.html">Arb</a>
+    <a href="bankroll.html" class="active">Bankroll</a>
+    <a href="props.html">Props</a>
+    <a href="learn.html">Learn</a>
+  </nav>
+  <div class="topbar-actions"><div class="ticker" id="liveTicker">LIVE</div></div>
+</header>
+
+<main class="container">
+
+  <section class="page-head">
+    <h1>Bankroll Risk Lab</h1>
+    <p>Monte Carlo every betting question that matters: where will my bankroll likely be in 200 plays? What's my worst plausible drawdown? Am I sized right for my win rate? This is the math your survival depends on.</p>
+  </section>
+
+  <section class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>⚙️ Profile Inputs</span></div>
+      <label style="display:block; margin-bottom: 12px;">
+        <span class="muted" style="display:block; margin-bottom:4px;">Win Probability (your typical edge)</span>
+        <input id="bkProb" type="number" min="0.50" max="0.65" step="0.01" value="0.55" style="width:100%; padding:10px 12px; background:var(--bg-1); border:1px solid var(--line); color:var(--text); border-radius:8px; font-family:'JetBrains Mono', monospace;">
+      </label>
+      <label style="display:block; margin-bottom: 12px;">
+        <span class="muted" style="display:block; margin-bottom:4px;">Avg Price (American odds)</span>
+        <input id="bkPrice" type="number" step="1" value="-110" style="width:100%; padding:10px 12px; background:var(--bg-1); border:1px solid var(--line); color:var(--text); border-radius:8px; font-family:'JetBrains Mono', monospace;">
+      </label>
+      <label style="display:block; margin-bottom: 12px;">
+        <span class="muted" style="display:block; margin-bottom:4px;">Kelly Fraction</span>
+        <input id="bkKelly" type="number" min="0.05" max="1" step="0.05" value="0.25" style="width:100%; padding:10px 12px; background:var(--bg-1); border:1px solid var(--line); color:var(--text); border-radius:8px; font-family:'JetBrains Mono', monospace;">
+      </label>
+      <label style="display:block; margin-bottom: 12px;">
+        <span class="muted" style="display:block; margin-bottom:4px;">Number of Plays</span>
+        <input id="bkPlays" type="number" min="20" max="1000" step="10" value="200" style="width:100%; padding:10px 12px; background:var(--bg-1); border:1px solid var(--line); color:var(--text); border-radius:8px; font-family:'JetBrains Mono', monospace;">
+      </label>
+      <label style="display:block; margin-bottom: 12px;">
+        <span class="muted" style="display:block; margin-bottom:4px;">Monte Carlo Iterations</span>
+        <input id="bkSims" type="number" min="100" max="5000" step="100" value="1500" style="width:100%; padding:10px 12px; background:var(--bg-1); border:1px solid var(--line); color:var(--text); border-radius:8px; font-family:'JetBrains Mono', monospace;">
+      </label>
+      <button class="btn-primary big" id="bkRunBtn" style="width:100%;">▶ Run Monte Carlo</button>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span>📊 Outcome Distribution</span><span class="muted" id="bkStatus">Idle</span></div>
+      <div class="factor-grid" style="grid-template-columns: 1fr 1fr; gap: 10px;">
+        <div class="factor"><span class="f-name">Median Final</span><span class="f-val" id="bkMedian">—</span></div>
+        <div class="factor"><span class="f-name">Mean Final</span><span class="f-val" id="bkMean">—</span></div>
+        <div class="factor"><span class="f-name">P10 (bad luck)</span><span class="f-val negative" id="bkP10">—</span></div>
+        <div class="factor"><span class="f-name">P90 (good luck)</span><span class="f-val positive" id="bkP90">—</span></div>
+        <div class="factor"><span class="f-name">Median Max DD</span><span class="f-val" id="bkMedDD">—</span></div>
+        <div class="factor"><span class="f-name">P90 Max DD</span><span class="f-val negative" id="bkP90DD">—</span></div>
+        <div class="factor"><span class="f-name">Ruin Probability</span><span class="f-val" id="bkRuin">—</span></div>
+        <div class="factor"><span class="f-name">Expected ROI</span><span class="f-val positive" id="bkROI">—</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card" style="margin-bottom: 28px;">
+    <div class="card-head"><span>📈 Sample Bankroll Paths</span></div>
+    <canvas id="bkPathChart" height="240"></canvas>
+    <p class="caption">25 simulated bankroll paths over the plays-of-interest horizon. The spread shows you what variance actually feels like at your edge & sizing.</p>
+  </section>
+
+  <section class="card" style="margin-bottom: 28px;">
+    <div class="card-head"><span>🔥 Kelly Fraction Heatmap</span></div>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead><tr><th>Win %</th><th>10% Kelly</th><th>20% Kelly</th><th>25% Kelly</th><th>33% Kelly</th><th>50% Kelly</th><th>75% Kelly</th><th>Full Kelly</th></tr></thead>
+        <tbody>
+          <tr><td>51%</td><td>$100</td><td>$100</td><td>$100</td><td>$100</td><td>$100</td><td>$100</td><td>$100</td></tr>
+          <tr><td>53%</td><td>$100</td><td>$101</td><td>$101</td><td>$101</td><td>$101</td><td>$101</td><td>$102</td></tr>
+          <tr><td>55%</td><td>$104</td><td>$108</td><td class="positive"><strong>$110</strong></td><td>$112</td><td>$117</td><td>$120</td><td>$119</td></tr>
+          <tr><td>57%</td><td>$117</td><td>$134</td><td class="positive"><strong>$142</strong></td><td>$156</td><td>$182</td><td>$209</td><td>$216</td></tr>
+          <tr><td>59%</td><td>$136</td><td>$179</td><td class="positive"><strong>$202</strong></td><td>$242</td><td>$328</td><td>$429</td><td>$448</td></tr>
+          <tr><td>61%</td><td>$170</td><td>$273</td><td class="positive"><strong>$339</strong></td><td>$463</td><td>$795</td><td>$1,287</td><td>$1,427</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="caption">Median final bankroll after 200 plays starting at $100. Higher Kelly fractions = higher expected return AND higher drawdowns. ¼-Kelly (highlighted) is the sharp's sweet spot.</p>
+  </section>
+
+  <section class="grid-3">
+    <div class="card">
+      <div class="card-head"><span class="pill green">RULE 1</span></div>
+      <h3>One unit = 1% of bankroll</h3>
+      <p style="color:var(--text-2)">Period. If you have $5,000, 1u = $50. Most plays should be 0.5–1.5u. Cap any single play at 3u. This trade-off keeps you alive through cold streaks.</p>
+    </div>
+    <div class="card">
+      <div class="card-head"><span class="pill green">RULE 2</span></div>
+      <h3>Re-baseline monthly</h3>
+      <p style="color:var(--text-2)">If your bankroll grows 20%, raise your unit. If it drops 20%, cut it. This is how Kelly self-regulates: more risk after winning, less after losing — counterintuitive but mathematically optimal.</p>
+    </div>
+    <div class="card">
+      <div class="card-head"><span class="pill green">RULE 3</span></div>
+      <h3>Reserve fund first</h3>
+      <p style="color:var(--text-2)">Keep 6 months of personal expenses outside your bankroll. The money in your betting account should be money you can lose without it affecting your life. If you can't lose all of it tomorrow, your bankroll is too big.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="foot-cols">
+    <div><div class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></div></div>
+    <div><h4>Tools</h4><a href="simulator.html">Simulator</a><a href="bankroll.html">Bankroll</a></div>
+    <div><h4>Research</h4><a href="play-of-day.html">Play of the Day</a><a href="mlb.html">MLB</a></div>
+    <div><h4>Learn</h4><a href="learn.html">Academy</a></div>
+  </div>
+  <div class="foot-bot"><span>© 2026 bpleone.com</span><span>Built in SoCal ☀️</span></div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/ml-models.js"></script>
+<script src="js/extras.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

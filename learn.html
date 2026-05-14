@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EdgeStat Academy — Learn to Bet Sharply</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="page-learn">
+<header class="topbar">
+  <div class="brand">
+    <a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a>
+    <span class="tagline">by bpleone</span>
+  </div>
+  <nav class="mainnav">
+    <a href="index.html">Dashboard</a>
+    <a href="play-of-day.html">Play of the Day</a>
+    <a href="mlb.html">MLB</a>
+    <a href="models.html">Models</a>
+    <a href="ml-lab.html">ML Lab</a>
+    <a href="live.html">Live</a>
+    <a href="simulator.html">Sim</a>
+    <a href="backtest.html">Backtest</a>
+    <a href="linemaker.html">Linemaker</a>
+    <a href="arbitrage.html">Arb</a>
+    <a href="bankroll.html">Bankroll</a>
+    <a href="props.html">Props</a>
+    <a href="learn.html" class="active">Learn</a>
+  </nav>
+</header>
+
+<main class="container">
+
+  <section class="page-head">
+    <h1>EdgeStat Academy</h1>
+    <p>The exact mental model and math used by sharp sports bettors — taught from scratch. Read this in order and you'll know more than 99% of bettors who light money on fire every weekend.</p>
+  </section>
+
+  <div class="learn-layout">
+    <aside>
+      <div class="toc">
+        <h4>Curriculum</h4>
+        <a href="#intro">0. Why most bettors lose</a>
+        <a href="#odds">1. Reading odds</a>
+        <a href="#implied">2. Implied probability & vig</a>
+        <a href="#ev">3. Expected Value</a>
+        <a href="#kelly">4. Kelly Criterion</a>
+        <a href="#variance">5. Variance & sample size</a>
+        <a href="#clv">6. Closing Line Value</a>
+        <a href="#markets">7. Market efficiency</a>
+        <a href="#sharps">8. How sharps think</a>
+        <a href="#mistakes">9. Top 10 mistakes</a>
+        <a href="#mlb">10. MLB-specific edges</a>
+        <a href="#bankroll">11. Bankroll management</a>
+        <a href="#glossary">12. Glossary</a>
+      </div>
+    </aside>
+
+    <article class="learn-content">
+
+      <h2 id="intro">0. Why Most Bettors Lose</h2>
+      <p>Sports betting is a market. There are two prices on every bet: yours and the book's. Both have edges baked in. The book builds in a 4–5% vig (sometimes 10%+ on props). You're trying to find spots where your true probability of winning is high enough to clear that vig and still profit.</p>
+      <p>The average bettor loses because they bet for entertainment, react to recency bias, chase losses, and stake non-systematically. The sharp bettor wins for the opposite reasons. This page teaches you to think like the second group.</p>
+
+      <div class="callout"><strong>The whole game in one sentence:</strong> If your estimated win probability is materially higher than the book's implied probability after vig, bet — sized appropriately. Repeat 1,000+ times. Profit shows up after the variance smooths out.</div>
+
+      <h2 id="odds">1. Reading Odds</h2>
+      <p>Three formats:</p>
+      <ul>
+        <li><strong>American (US):</strong> –150 means risk $150 to win $100. +150 means risk $100 to win $150.</li>
+        <li><strong>Decimal (rest of world):</strong> 2.50 means a $1 bet pays $2.50 total (profit + stake).</li>
+        <li><strong>Fractional (UK):</strong> 3/2 means risk $2 to win $3.</li>
+      </ul>
+      <p>Conversion:</p>
+      <pre><code>American → Decimal:
+   if odds > 0:   decimal = 1 + odds/100
+   if odds < 0:   decimal = 1 + 100/abs(odds)
+
+Decimal → Implied Probability:
+   prob = 1 / decimal</code></pre>
+
+      <h2 id="implied">2. Implied Probability & Vig</h2>
+      <p>The "implied probability" of an odds line is what the price says about the win likelihood. <code>–150</code> implies 60%. <code>+150</code> implies 40%. Add both sides of a moneyline and you'll get a number greater than 100% — the overage is the book's <strong>vig</strong> (a.k.a. juice).</p>
+      <p>To get the <strong>vig-free</strong> probability, divide each side by the sum:</p>
+      <pre><code>p_home_raw = 60.0%
+p_away_raw = 45.5%
+sum         = 105.5%
+p_home_fair = 60.0 / 105.5 = 56.9%
+p_away_fair = 45.5 / 105.5 = 43.1%</code></pre>
+      <p>The fair price is the market's true probability estimate. If your model says the home team is 60%+, you have an edge worth measuring.</p>
+
+      <h2 id="ev">3. Expected Value (EV)</h2>
+      <p>EV is the average profit (or loss) per dollar bet, over the long run, given your win probability and the price.</p>
+      <pre><code>EV per $1 = p_win × (decimal - 1) - (1 - p_win)
+          = 0.64 × (1.676 - 1) - 0.36
+          = +0.072</code></pre>
+      <p>That's +7.2 cents of expected value for every dollar bet. Over 1,000 plays at $100 each, expectation is +$7,200 — assuming your model probability is correct. If it isn't, EV is negative and you bleed money no matter how lucky you get short-term.</p>
+
+      <div class="callout"><strong>Rule:</strong> Only place bets with a clearly positive EV after vig. EdgeStat's threshold is +2% edge minimum to enter a play, +5% to call it a "core" recommendation, +6% to call it Play of the Day.</div>
+
+      <h2 id="kelly">4. The Kelly Criterion</h2>
+      <p>Once you know you have an edge, the next question is: how much should I bet? The math-optimal answer is the Kelly fraction, which maximizes the geometric growth rate of your bankroll:</p>
+      <pre><code>f* = (b × p - q) / b
+
+where:
+  b = decimal odds - 1
+  p = your win probability
+  q = 1 - p</code></pre>
+      <p>Example: $5,000 bankroll, you estimate 60% win prob at +120 (decimal 2.20).</p>
+      <pre><code>b = 1.20
+p = 0.60
+q = 0.40
+f* = (1.20 × 0.60 - 0.40) / 1.20
+   = 0.267    → 26.7% of bankroll</code></pre>
+      <p>That's $1,335 on one bet — way too aggressive for most people. <strong>Sharps use fractional Kelly</strong>, typically ¼-Kelly, which cuts the recommended stake to ~6.7% of bankroll ($335) and slashes variance roughly 75% while preserving most of the long-run growth.</p>
+
+      <h2 id="variance">5. Variance and Sample Size</h2>
+      <p>A 55% sports bettor will go on multi-week losing streaks. A 60% bettor will too. The market is noisy, and the difference between "good" and "lucky" only shows up after 500+ plays.</p>
+      <p>Quick rule of thumb: at 55% hit rate, the standard error on your hit-rate estimate after <em>n</em> bets is roughly √(0.55 × 0.45 / n). After 100 plays that's ±5%. After 1,000 plays, ±1.6%. <strong>Don't make decisions on small samples.</strong></p>
+
+      <h2 id="clv">6. Closing Line Value (CLV)</h2>
+      <p>The most important leading indicator of long-term profit. CLV measures the gap between the price you got and the closing price (the last price before the game starts).</p>
+      <p>If you bet Dodgers ML at –148 and the line closes –165, you beat the close by ~7% in implied probability. That's positive CLV. <strong>Bettors who consistently beat the close are profitable bettors</strong> — even in months where they get unlucky on results.</p>
+      <p>EdgeStat's published target: <strong>+2.5% average CLV</strong>. We log every play and publish the CLV on each.</p>
+
+      <h2 id="markets">7. Market Efficiency</h2>
+      <p>Not all sports markets are equally sharp. Loosely ranked from sharpest to softest:</p>
+      <ol>
+        <li><strong>NFL sides, NBA sides:</strong> brutally sharp, billions of dollars settling them, very hard to beat</li>
+        <li><strong>NFL/NBA totals:</strong> still sharp but slightly softer</li>
+        <li><strong>MLB ML / RL:</strong> sharp on big games, softer on day games and small-market teams</li>
+        <li><strong>NHL:</strong> moderately sharp</li>
+        <li><strong>MLB / NBA player props:</strong> very soft. Books can't manually sharpen all 1,000+ daily props.</li>
+        <li><strong>Same-game parlays:</strong> trap. Heavy juice. Avoid.</li>
+        <li><strong>Niche sports:</strong> WNBA, NCAA-T, MLS — softer but lower limits.</li>
+      </ol>
+
+      <h2 id="sharps">8. How Sharps Actually Think</h2>
+      <p>They don't think "I feel like the Dodgers will win." They think:</p>
+      <ul>
+        <li>"My model says 64.0%, market says 59.7%. Edge = +4.3%."</li>
+        <li>"At –148, EV is +5.4 cents per dollar. Kelly stake at ¼ is 1.7 units."</li>
+        <li>"I beat the close last time on this team — model is calibrated."</li>
+        <li>"If I lose three in a row, my bankroll drawdown is –4.8u, well within tolerance."</li>
+      </ul>
+      <p>It's emotionless and probabilistic. The fun part is being right on average, not on any individual play.</p>
+
+      <h2 id="mistakes">9. Top 10 Mistakes to Stop Making</h2>
+      <ol>
+        <li><strong>Parlays.</strong> Multi-leg parlays compound the vig. A 4-leg parlay at –110 each leg has ~25% built-in juice. Bet the legs separately.</li>
+        <li><strong>Same-game parlays.</strong> Even worse. Books price out the correlations to their benefit.</li>
+        <li><strong>Chasing losses.</strong> Bet sizes should be a function of edge, not how much you lost yesterday.</li>
+        <li><strong>Bet without a model.</strong> If you can't articulate your win-probability number, you don't actually have a bet — you have a hunch.</li>
+        <li><strong>Single-book betting.</strong> Always shop. The price difference between books is often bigger than your edge.</li>
+        <li><strong>Public-side bias.</strong> 70% of public tickets on a side ≠ side will win. Often it's the fade.</li>
+        <li><strong>Bet too big.</strong> Stake > ¼-Kelly without warrant. Variance kills you before edge can save you.</li>
+        <li><strong>Bet too small.</strong> If you actually have +6% edge, betting 0.25u is leaving money on the table.</li>
+        <li><strong>Ignore CLV.</strong> Results are noisy; CLV is your true signal.</li>
+        <li><strong>No record keeping.</strong> If you don't log every play with price, stake, and outcome, you're guessing about your own performance.</li>
+      </ol>
+
+      <h2 id="mlb">10. MLB-Specific Edges</h2>
+      <p>MLB is our flagship sport because the inefficiencies are exploitable. Specific edges:</p>
+      <ul>
+        <li><strong>Day games after night games:</strong> bullpens are exhausted, totals over.</li>
+        <li><strong>Ace-vs.-back-end-starter mismatches:</strong> public lines lag, especially on the spread (-1.5 / +1.5).</li>
+        <li><strong>Wind at Wrigley:</strong> 10+mph out = OVER tilt; 8+mph in = UNDER tilt. Books only partially adjust.</li>
+        <li><strong>Marine layer in San Diego / San Francisco:</strong> evening games trend UNDER.</li>
+        <li><strong>Coors Field:</strong> nearly always OVER. But sharps will fade public-loved overs if wind blows in.</li>
+        <li><strong>Umpire selection:</strong> wide-zone umps lower totals; tight-zone umps push more walks/runs.</li>
+        <li><strong>First-5 totals:</strong> remove bullpen variance, get cleaner pitcher-vs-pitcher exposure.</li>
+        <li><strong>NRFI:</strong> bet against teams with weak top-of-order vs. dominant starters.</li>
+      </ul>
+
+      <h2 id="bankroll">11. Bankroll Management</h2>
+      <p>Three rules:</p>
+      <ol>
+        <li><strong>One unit = 1% of bankroll, max.</strong> If you have $5,000, 1u = $50. Most plays should be 0.5–1.5u.</li>
+        <li><strong>Re-baseline monthly.</strong> If your bankroll grows 20%, raise your unit size. If it drops 20%, cut it. This is how Kelly self-regulates.</li>
+        <li><strong>Reserve fund.</strong> Keep 6 months of personal expenses outside of your bankroll. You should not need this money for rent.</li>
+      </ol>
+      <div class="callout"><strong>Reality check:</strong> at a 55% hit rate with –110 vig and ¼-Kelly staking, your bankroll grows ~3–5% per month with maximum 18% drawdowns. Anyone promising more is selling something.</div>
+
+      <h2 id="glossary">12. Glossary</h2>
+      <p><strong>ATS:</strong> against the spread. Win/loss record on point spreads.<br>
+      <strong>Bankroll:</strong> total funds set aside for betting.<br>
+      <strong>CLV:</strong> closing line value — gap between your price and the closing price.<br>
+      <strong>Cover:</strong> winning a spread bet by the spread amount.<br>
+      <strong>EV:</strong> expected value.<br>
+      <strong>Edge:</strong> your modeled win probability minus the market's implied probability.<br>
+      <strong>F5:</strong> first 5 innings. MLB market that excludes the bullpen.<br>
+      <strong>Handle:</strong> total dollars wagered on a market.<br>
+      <strong>Hold:</strong> book's profit margin on a market.<br>
+      <strong>Implied probability:</strong> what the odds price says about win likelihood (before vig adjustment).<br>
+      <strong>Juice / Vig:</strong> the book's built-in fee on a bet.<br>
+      <strong>Kelly Criterion:</strong> stake-sizing formula that maximizes long-run bankroll growth.<br>
+      <strong>Line shopping:</strong> comparing prices across multiple books and taking the best.<br>
+      <strong>NRFI / YRFI:</strong> No Run / Yes Run First Inning.<br>
+      <strong>O/U:</strong> over/under (total).<br>
+      <strong>Push:</strong> tie — stake returned.<br>
+      <strong>Reverse line movement (RLM):</strong> line moves opposite to the public ticket %.<br>
+      <strong>Run Line:</strong> MLB spread, fixed at ±1.5.<br>
+      <strong>Sharp / Square:</strong> professional bettor / recreational bettor.<br>
+      <strong>Steam:</strong> sudden coordinated line movement triggered by sharp money.<br>
+      <strong>Unit (u):</strong> standard bet size, typically 1% of bankroll.<br>
+      <strong>wOBA / wRC+:</strong> weighted on-base average / weighted runs created plus.<br>
+      <strong>xFIP:</strong> pitcher's fielding-independent ERA, normalized for HR/FB ratio.<br>
+      <strong>xwOBA:</strong> expected wOBA based on exit velocity and launch angle.</p>
+
+    </article>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="foot-cols">
+    <div><div class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></div><p class="muted">Quant sports analytics.</p></div>
+    <div><h4>Product</h4><a href="play-of-day.html">Play of the Day</a><a href="mlb.html">MLB</a></div>
+    <div><h4>Learn</h4><a href="learn.html">Academy</a></div>
+    <div><h4>Company</h4><a href="about.html">About</a><a href="track-record.html">Track Record</a></div>
+  </div>
+  <div class="foot-bot"><span>© 2026 bpleone.com</span><span>Built in SoCal ☀️</span></div>
+</footer>
+</body>
+</html>

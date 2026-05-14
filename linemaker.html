@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Linemaker | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body class="page-linemaker">
+<header class="topbar">
+  <div class="brand">
+    <a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a>
+    <span class="tagline">by bpleone</span>
+  </div>
+  <nav class="mainnav">
+    <a href="index.html">Dashboard</a>
+    <a href="play-of-day.html">Play of the Day</a>
+    <a href="mlb.html">MLB</a>
+    <a href="models.html">Models</a>
+    <a href="ml-lab.html">ML Lab</a>
+    <a href="live.html">Live</a>
+    <a href="simulator.html">Sim</a>
+    <a href="backtest.html">Backtest</a>
+    <a href="linemaker.html" class="active">Linemaker</a>
+    <a href="arbitrage.html">Arb</a>
+    <a href="bankroll.html">Bankroll</a>
+    <a href="props.html">Props</a>
+    <a href="learn.html">Learn</a>
+  </nav>
+  <div class="topbar-actions"><div class="ticker" id="liveTicker">LIVE</div></div>
+</header>
+
+<main class="container">
+
+  <section class="page-head">
+    <h1>The Linemaker — Inside the Book</h1>
+    <p>This is what happens on the other side of every bet. Books open a line that builds in vig, then re-shade it as money flows in. We replay a full day of action on LAD/SDP — opening line, every wager, every move, final exposure — so you can see exactly how the book thinks.</p>
+  </section>
+
+  <section class="metric-strip">
+    <div class="metric"><span class="metric-num" id="lmOpen">-184</span><span class="metric-label">Opening Line (LAD)</span></div>
+    <div class="metric"><span class="metric-num" id="lmCurrent">-231</span><span class="metric-label">Current Line</span></div>
+    <div class="metric"><span class="metric-num" id="lmMoves">14</span><span class="metric-label">Total Moves</span></div>
+    <div class="metric"><span class="metric-num" id="lmHandle">$10,025</span><span class="metric-label">Total Handle</span></div>
+    <div class="metric"><span class="metric-num" id="lmImbal">54%</span><span class="metric-label">Handle on LAD</span></div>
+    <div class="metric"><span class="metric-num" id="lmHold">4.5%</span><span class="metric-label">Target Hold</span></div>
+  </section>
+
+  <section class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>📉 Line Movement Over Time</span></div>
+      <canvas id="lineMovChart" height="220"></canvas>
+      <p class="caption">Each step is the line response to incoming wagers. Sharp money (large bets) moves the line more than public money.</p>
+    </div>
+    <div class="card">
+      <div class="card-head"><span>📚 Book's Live Exposure</span></div>
+      <div class="factor-grid" style="grid-template-columns: 1fr; gap: 10px;">
+        <div class="factor"><span class="f-name">If LAD wins: book P/L</span><span class="f-val positive" id="lmPlA">+$7,665</span></div>
+        <div class="factor"><span class="f-name">If SDP wins: book P/L</span><span class="f-val positive" id="lmPlB">+$1,422</span></div>
+        <div class="factor"><span class="f-name">Expected P/L (fair prob)</span><span class="f-val positive" id="lmExpPl">+$5,293</span></div>
+        <div class="factor"><span class="f-name">Handle on LAD</span><span class="f-val" id="lmHandleA">$5,449</span></div>
+        <div class="factor"><span class="f-name">Handle on SDP</span><span class="f-val" id="lmHandleB">$4,576</span></div>
+        <div class="factor"><span class="f-name">Imbalance</span><span class="f-val" id="lmImbalDetail">54.4%</span></div>
+      </div>
+      <p class="caption" style="margin-top:12px;">A perfectly balanced book wins the vig regardless of outcome. This book is slightly home-loaded — exposure is positive either way, but bigger if LAD wins.</p>
+    </div>
+  </section>
+
+  <section class="card" style="margin-bottom: 28px;">
+    <div class="card-head"><span>📋 Move-by-Move Log</span></div>
+    <div class="table-wrap">
+      <table class="data-table" id="movesTable">
+        <thead><tr><th>Step</th><th>Trigger</th><th>LAD Price</th><th>SDP Price</th><th>Imbalance</th><th>Handle A</th><th>Handle B</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="card-head"><span>💡 How books actually do it</span></div>
+    <p style="color:var(--text-2)">Sportsbooks don't try to predict winners — they try to balance their book. The goal is to take roughly equal money on both sides at the vig'd price, so the house pockets the juice regardless of outcome. Every bet that arrives moves them away from that balance, so the line adjusts.</p>
+    <p style="color:var(--text-2)">But balance isn't always achievable. Public bettors flock to favorites and over totals; books deliberately shade those lines (price them slightly worse for the popular side) to compensate. That's where sharps live — they take the unloved side at a price that's better than fair.</p>
+    <p style="color:var(--text-2)"><strong>The kicker:</strong> when sharp money hits, the book doesn't fade it — they follow it. A steam move on one book triggers the entire market to adjust. That's why you see same-direction line moves across all six major books within 60 seconds.</p>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="foot-cols">
+    <div><div class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></div></div>
+    <div><h4>Tools</h4><a href="simulator.html">Simulator</a><a href="backtest.html">Backtest</a><a href="linemaker.html">Linemaker</a></div>
+    <div><h4>Research</h4><a href="play-of-day.html">Play of the Day</a><a href="mlb.html">MLB</a></div>
+    <div><h4>Learn</h4><a href="learn.html">Academy</a></div>
+  </div>
+  <div class="foot-bot"><span>© 2026 bpleone.com</span><span>Built in SoCal ☀️</span></div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/ml-models.js"></script>
+<script src="js/extras.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
