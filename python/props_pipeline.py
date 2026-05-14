@@ -219,7 +219,8 @@ def _team_k_rate(team_id: Optional[int]) -> Optional[float]:
 LEAGUE_K_RATE = 0.22  # rough MLB-wide K%
 
 
-def project_pitcher_ks(pid: int, line: float, opp_team_id: Optional[int] = None) -> Tuple[float, Dict[str, Any]]:
+def project_pitcher_ks(pid: int, line: float, opp_team_id: Optional[int] = None,
+                       umpire_k_mult: float = 1.0) -> Tuple[float, Dict[str, Any]]:
     """P(K >= ceil(line)).
 
     v2 (Statcast-enabled): uses xK% blended with traditional K/9, expected
@@ -285,7 +286,7 @@ def project_pitcher_ks(pid: int, line: float, opp_team_id: Optional[int] = None)
         opp_mult = (opp_k / LEAGUE_K_RATE) if opp_k else 1.0
         # Cap the adjustment to +/- 25% to keep extreme matchups from runaway.
         opp_mult = max(0.75, min(1.25, opp_mult))
-        adj_k_rate = blended_k_rate * opp_mult
+        adj_k_rate = blended_k_rate * opp_mult * umpire_k_mult
         expected_ks = adj_k_rate * expected_bf
 
         line_int = int(math.ceil(line))
@@ -540,7 +541,7 @@ def build_props(markets: Optional[List[str]] = None, max_games: int = MAX_GAMES)
         game_pk = pk_by_pair.get((e.get("home_team", ""), e.get("away_team", "")))
         lineups = sr.game_lineups(game_pk) if game_pk else {"home": {}, "away": {}}
         lineup_posted = bool(lineups["home"] or lineups["away"])
-        # Park + weather for HR adjustments. Best-effort.
+        # Park + weather + umpire for adjustments. Best-effort.
         venue = None
         for d in mlb_sched:
             for g in d.get("games", []):
@@ -558,6 +559,11 @@ def build_props(markets: Optional[List[str]] = None, max_games: int = MAX_GAMES)
             carry_index = wx.get("carry_index") if not wx.get("indoor") else None
         except Exception:
             carry_index = None
+        try:
+            from umpires import k_multiplier
+            umpire_k_mult = k_multiplier(game_pk) if game_pk else 1.0
+        except Exception:
+            umpire_k_mult = 1.0
         payload = fetch_event_props(eid, markets)
         bks = payload.get("bookmakers", [])
         if not bks:
@@ -598,7 +604,7 @@ def build_props(markets: Optional[List[str]] = None, max_games: int = MAX_GAMES)
                         if batter_order is None:
                             lineup_status = "not-in-lineup"
                 if market_key == "pitcher_strikeouts":
-                    p_over, dbg = project_pitcher_ks(pid, line, opp_team_id)
+                    p_over, dbg = project_pitcher_ks(pid, line, opp_team_id, umpire_k_mult)
                 elif market_key == "batter_home_runs":
                     p_over, dbg = project_batter_hr(pid, line, batter_order,
                                                     carry_index=carry_index,

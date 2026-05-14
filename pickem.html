@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pick-Em (PrizePicks) | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .pp-row { display:grid; grid-template-columns: 1.4fr 0.6fr 1.2fr 0.7fr 0.7fr 0.7fr 0.9fr 1fr 1fr;
+            gap: 12px; padding:10px 14px; border-bottom:1px solid rgba(255,255,255,0.04);
+            font-family:'JetBrains Mono',monospace; font-size:12px; align-items:center; }
+  .pp-row.head { background: rgba(255,255,255,0.05); color: var(--muted, #888); font-size:11px;
+                 text-transform:uppercase; letter-spacing:0.04em; font-family: inherit; }
+  .pp-row .name { font-weight:600; color: var(--text, #ddd); font-family: inherit; }
+  .pp-row .pp-line { color:#58c878; font-weight:600; }
+  .pp-row .dk-line { color: var(--muted,#888); }
+  .pp-row .softer { color:#58c878; font-weight:600; }
+  .pp-row .harder { color:#e35a5a; }
+  .pp-row .prob-bar { display:flex; gap:3px; align-items:center; }
+  .pp-row .prob-bar .bar { background: rgba(88,200,120,0.2); height:14px; border-radius:2px;
+                           min-width: 4px; }
+  .pp-row .qualifies { color: #58c878; }
+  .pp-row .qualifies-some { color: #d4a04a; }
+  .pp-row .qualifies-none { color: var(--muted,#888); }
+  .filterbar select { padding: 4px 8px; font-size: 13px; }
+  .empty { color: var(--muted,#888); font-style:italic; font-size:13px; padding:20px; text-align:center; }
+  .pp-legend { display:flex; gap:18px; padding: 10px 14px; background: rgba(255,255,255,0.02);
+               font-family:'JetBrains Mono',monospace; font-size:11px; color: var(--muted,#888);
+               margin-bottom: 14px; border-radius: 6px; }
+</style>
+</head>
+<body class="page-pickem">
+<header class="topbar">
+  <div class="brand">
+    <a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a>
+    <span class="tagline">by bpleone</span>
+  </div>
+  <nav class="mainnav">
+    <a href="index.html">Dashboard</a>
+    <a href="play-of-day.html">Play of the Day</a>
+    <a href="mlb.html">MLB</a>
+    <a href="research.html">Research</a>
+    <a href="parlays.html">Parlays</a>
+    <a href="pickem.html" class="active">Pick-Em</a>
+    <a href="learning.html">Learning</a>
+    <a href="models.html">Models</a>
+    <a href="ml-lab.html">ML Lab</a>
+    <a href="live.html">Live</a>
+    <a href="simulator.html">Sim</a>
+    <a href="backtest.html">Backtest</a>
+    <a href="linemaker.html">Linemaker</a>
+    <a href="arbitrage.html">Arb</a>
+    <a href="bankroll.html">Bankroll</a>
+    <a href="props.html">Props</a>
+    <a href="learn.html">Learn</a>
+  </nav>
+  <div class="topbar-actions"><div class="ticker" id="liveTicker">LIVE</div></div>
+</header>
+
+<main class="container">
+
+  <section class="page-head">
+    <h1>Pick-Em (PrizePicks)</h1>
+    <p>PrizePicks runs a pick-em model: combine 2-6 legs into a Power Play, all must hit to cash. We pull their daily MLB projections, run our model at PP's line, and flag where PP is materially softer than DraftKings on the same player + market.</p>
+    <p class="muted" style="font-size:12px; margin-top:6px;">Sleeper Picks coming once you can hand us a Bearer token from your account (their endpoint is auth-gated).</p>
+  </section>
+
+  <section class="metric-strip" id="pickemMetrics">
+    <div class="metric"><span class="metric-num" data-key="raw">--</span><span class="metric-label">Raw PP Props</span></div>
+    <div class="metric"><span class="metric-num" data-key="modeled">--</span><span class="metric-label">Modeled (4 markets)</span></div>
+    <div class="metric"><span class="metric-num" data-key="qualifies">--</span><span class="metric-label">Power-Play Eligible</span></div>
+    <div class="metric"><span class="metric-num" data-key="softer">--</span><span class="metric-label">PP Softer than DK</span></div>
+    <div class="metric"><span class="metric-num" data-key="refresh">--</span><span class="metric-label">Refresh (UTC)</span></div>
+    <div class="metric"><span class="metric-num">PP</span><span class="metric-label">Book</span></div>
+  </section>
+
+  <div class="pp-legend">
+    <span><strong>Power Play breakevens per leg:</strong></span>
+    <span>2-leg: 57.7%</span>
+    <span>3-leg: 58.5%</span>
+    <span>4-leg: 56.2%</span>
+    <span>5-leg: 54.9%</span>
+    <span>6-leg: 55.9%</span>
+  </div>
+
+  <section class="card" style="margin-bottom: 24px;">
+    <div class="card-head"><span>PrizePicks Props (sorted by PP advantage)</span><span class="muted" id="pickemRefreshed"></span></div>
+    <div class="filterbar">
+      <label>Market:</label>
+      <select id="filterMarket">
+        <option value="">All</option>
+        <option value="pitcher_strikeouts">Pitcher Ks</option>
+        <option value="batter_hits">Hits</option>
+        <option value="batter_total_bases">Total Bases</option>
+        <option value="batter_home_runs">Home Runs</option>
+      </select>
+      <label>Min Model %:</label>
+      <select id="filterProb">
+        <option value="0">All</option>
+        <option value="55">55%+</option>
+        <option value="60">60%+</option>
+        <option value="65">65%+</option>
+        <option value="70">70%+</option>
+      </select>
+      <label>Show:</label>
+      <select id="filterAdv">
+        <option value="">All</option>
+        <option value="softer">PP Softer than DK</option>
+        <option value="dk-match">Also on DK</option>
+      </select>
+    </div>
+    <div class="pp-row head">
+      <span>Player</span><span>Mkt</span><span>Stat</span><span>PP Line</span><span>DK Line</span><span>Δ</span><span>Favor</span><span>Model %</span><span>Power-play OK</span>
+    </div>
+    <div id="ppList"><p class="empty">Loading PrizePicks board...</p></div>
+  </section>
+
+</main>
+
+<script>
+const MARKET_LABEL = { pitcher_strikeouts:"P Ks", batter_hits:"Hits", batter_total_bases:"TB", batter_home_runs:"HR" };
+let state = { all: [], market: "", prob: 0, adv: "" };
+
+function setMetric(k, v) {
+  const el = document.querySelector(`#pickemMetrics [data-key="${k}"]`);
+  if (el) el.textContent = v;
+}
+
+function probBar(prob) {
+  const pct = Math.min(100, Math.max(0, Math.round(prob * 100)));
+  const color = prob >= 0.65 ? "#58c878" : prob >= 0.55 ? "#d4a04a" : "#888";
+  return `<div class="prob-bar"><span class="bar" style="width:${pct * 0.9}px; background:${color};"></span><span>${(prob*100).toFixed(1)}%</span></div>`;
+}
+
+function qualifies(p) {
+  const ovr = Object.keys(p.power_play_qualifies_over || {}).length;
+  const und = Object.keys(p.power_play_qualifies_under || {}).length;
+  if (!ovr && !und) return `<span class="qualifies-none">no</span>`;
+  const sides = [];
+  if (ovr) sides.push(`OVER (${Math.max(...Object.keys(p.power_play_qualifies_over).map(Number))}-leg)`);
+  if (und) sides.push(`UNDER (${Math.max(...Object.keys(p.power_play_qualifies_under).map(Number))}-leg)`);
+  return `<span class="qualifies">${sides.join(" / ")}</span>`;
+}
+
+function renderList() {
+  const list = document.getElementById("ppList");
+  let rows = state.all.slice();
+  if (state.market) rows = rows.filter(r => r.market === state.market);
+  if (state.prob) {
+    rows = rows.filter(r => Math.max(r.model_prob_over, r.model_prob_under) * 100 >= state.prob);
+  }
+  if (state.adv === "softer") rows = rows.filter(r => r.pp_advantage);
+  if (state.adv === "dk-match") rows = rows.filter(r => r.dk_line != null);
+  if (!rows.length) {
+    list.innerHTML = `<p class="empty">No props match the current filters.</p>`;
+    return;
+  }
+  list.innerHTML = rows.slice(0, 250).map(p => {
+    const bestProb = Math.max(p.model_prob_over, p.model_prob_under);
+    const bestSide = p.model_prob_over >= p.model_prob_under ? "OVER" : "UNDER";
+    const dkCell = p.dk_line != null ? p.dk_line.toFixed(1) : "--";
+    const deltaCell = p.delta != null
+      ? `<span class="${p.pp_advantage ? 'softer' : ''}">${p.delta >= 0 ? "+" : ""}${p.delta}</span>`
+      : "--";
+    const favorCell = p.pp_softer_for ? `<span class="softer">${p.pp_softer_for}</span>` : "--";
+    return `<div class="pp-row">
+      <span class="name">${p.player}</span>
+      <span>${MARKET_LABEL[p.market] || p.market}</span>
+      <span class="muted">${p.stat_type}</span>
+      <span class="pp-line">${p.pp_line}</span>
+      <span class="dk-line">${dkCell}</span>
+      <span>${deltaCell}</span>
+      <span>${favorCell}</span>
+      <span>${probBar(bestProb)} <span style="font-size:10px; color:#888;">${bestSide}</span></span>
+      <span>${qualifies(p)}</span>
+    </div>`;
+  }).join("");
+}
+
+fetch("data/pickem.json", { cache: "no-cache" })
+  .then(r => r.json())
+  .then(payload => {
+    state.all = payload.props || [];
+    setMetric("raw", payload.raw_pp_props ?? "--");
+    setMetric("modeled", payload.modeled_props ?? "--");
+    setMetric("qualifies", state.all.filter(p =>
+      Object.keys(p.power_play_qualifies_over || {}).length ||
+      Object.keys(p.power_play_qualifies_under || {}).length).length);
+    setMetric("softer", state.all.filter(p => p.pp_advantage).length);
+    setMetric("refresh", (payload.generated_at || "").slice(11, 16));
+    document.getElementById("pickemRefreshed").textContent =
+      payload.generated_at ? `refreshed ${payload.generated_at.replace("T", " ")} UTC` : "";
+    renderList();
+    document.getElementById("filterMarket").addEventListener("change", e => { state.market = e.target.value; renderList(); });
+    document.getElementById("filterProb").addEventListener("change", e => { state.prob = parseFloat(e.target.value); renderList(); });
+    document.getElementById("filterAdv").addEventListener("change", e => { state.adv = e.target.value; renderList(); });
+  })
+  .catch(err => {
+    document.getElementById("ppList").innerHTML =
+      `<p class="empty">pickem.json not loaded yet -- daily pipeline writes this at the 6 AM ET cron.</p>`;
+    console.error(err);
+  });
+</script>
+
+</body>
+</html>

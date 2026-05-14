@@ -66,6 +66,12 @@ jobs:
         working-directory: python
         run: python parlays.py
 
+      # Pull PrizePicks daily board, compare to DK, run model at PP's lines.
+      - name: Run pick-em (PrizePicks) integration
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        working-directory: python
+        run: python pickem.py
+
       - name: Commit + push if data changed
         run: |
           git config user.name  "edgestat-bot"

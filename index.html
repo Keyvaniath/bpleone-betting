@@ -23,6 +23,7 @@
     <a href="mlb.html">MLB</a>
     <a href="research.html">Research</a>
     <a href="parlays.html">Parlays</a>
+    <a href="pickem.html">Pick-Em</a>
     <a href="learning.html">Learning</a>
     <a href="models.html">Models</a>
     <a href="ml-lab.html">ML Lab</a>
@@ -298,14 +299,28 @@ fetch("data/today.json", { cache: "no-cache" })
     setStat(1, "Model Prob", (pod.model_prob * 100).toFixed(1) + "%");
     setStat(2, "Edge", "+" + Number(pod.edge_pct).toFixed(2) + "%", " positive");
     setStat(3, "Confidence", pod.confidence || "--");
-    setStat(4, "Kelly Stake", Number(pod.kelly_units).toFixed(1) + "u");
+    // Cap displayed Kelly until calibration has ~30 settled records;
+    // raw Kelly on a phantom +30%+ edge would be reckless.
+    const isPreCal = (pod.edge_pct || 0) >= 15;   // anything > +15% is suspect pre-calibration
+    const displayKelly = isPreCal ? "<= 0.5u" : Number(pod.kelly_units).toFixed(1) + "u";
+    setStat(4, "Kelly Stake", displayKelly);
     setStat(5, "Side", pod.label || "--");
-    // Summary line
+    // Summary line — honest about calibration state
     const summary = document.querySelector(".play-card .play-summary");
-    if (summary) summary.innerHTML =
-      `Highest-edge play on tonight's slate: <strong>${pod.matchup}</strong> ${pod.label} at ${pod.market_price >= 0 ? "+" + pod.market_price : pod.market_price}. ` +
-      `Model probability ${(pod.model_prob * 100).toFixed(1)}% beats market implied probability, opening a ${pod.edge_pct}% edge. ` +
-      `Recommended ${pod.kelly_units}u Kelly stake. Last refresh ${(d.generated_at || "").replace("T", " ")} UTC.`;
+    if (summary) {
+      const honestNote = isPreCal
+        ? `<br><br><strong style="color:#d4a04a;">Calibration disclaimer:</strong> raw edge is ${pod.edge_pct}%, which is well above what a properly calibrated baseball model produces (most +EV plays sit in the +2% to +8% range). Treat this as a research signal, not a sized bet. The self-learning loop needs ~30 settled records per market before bias correction fires.`
+        : "";
+      summary.innerHTML =
+        `Highest-edge play on tonight's slate: <strong>${pod.matchup}</strong> ${pod.label} at ${pod.market_price >= 0 ? "+" + pod.market_price : pod.market_price}. ` +
+        `Model probability ${(pod.model_prob * 100).toFixed(1)}% vs market implied. Last refresh ${(d.generated_at || "").replace("T", " ")} UTC.` +
+        honestNote;
+    }
+    // Banner pill for calibration state
+    const headPill = document.querySelector(".play-card .card-head .pill");
+    if (headPill && isPreCal) {
+      headPill.innerHTML = "&#9733; PLAY OF THE DAY <span style='font-size:9px; margin-left:6px; opacity:0.7;'>(model in calibration)</span>";
+    }
 
     // Key metrics strip
     const games = d.games || [];

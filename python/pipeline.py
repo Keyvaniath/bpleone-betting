@@ -87,6 +87,8 @@ def run_pipeline(games: List[Dict[str, Any]]) -> Dict[str, Any]:
             "weather": {k: v for k, v in (g.get("ctx") or {}).items()
                         if k in ("temp_f", "wind_mph", "is_indoor", "wind_dir_deg",
                                  "carry_index", "precip_pct")},
+            "umpire": {k: v for k, v in (g.get("ctx") or {}).items()
+                       if k in ("ump_name", "ump_label", "ump_k_mult")},
             "recommendations": proj.recommendations,
         }
         out_games.append(record)
@@ -327,6 +329,13 @@ def build_real_slate() -> Optional[List[Dict[str, Any]]]:
         ctx_wind = wx.get("wind_mph", 0)
         ctx_indoor = bool(wx.get("indoor"))
         carry = wx.get("carry_index")  # -1..+1 wind-to-CF signal (None if indoor)
+        # Home Plate umpire tendency
+        try:
+            from umpires import get_home_plate_umpire
+            ump = get_home_plate_umpire(g["gamePk"]) or {}
+        except Exception:
+            ump = {}
+        ump_zone_size = (float(ump.get("k_mult", 1.0)) - 1.0)  # +0.04 = wider zone
         slate.append({
             "time": _et_time(g["time"]),
             "park": g["venue"],
@@ -339,9 +348,11 @@ def build_real_slate() -> Optional[List[Dict[str, Any]]]:
             "away_pitcher": _pitcher_dict_real(away_pid, away_pname),
             "home_pitcher": _pitcher_dict_real(home_pid, home_pname),
             "ctx": {"park_factor": park_factor, "temp_f": ctx_temp, "wind_mph": ctx_wind,
-                    "umpire_zone_size": 0.0, "is_indoor": ctx_indoor,
+                    "umpire_zone_size": ump_zone_size, "is_indoor": ctx_indoor,
                     "wind_dir_deg": wx.get("wind_dir_deg"), "carry_index": carry,
-                    "precip_pct": wx.get("precip_pct"), "forecast_hour": wx.get("forecast_hour")},
+                    "precip_pct": wx.get("precip_pct"), "forecast_hour": wx.get("forecast_hour"),
+                    "ump_name": ump.get("name"), "ump_label": ump.get("label"),
+                    "ump_k_mult": ump.get("k_mult")},
             # Metadata for downstream tools (matchup engine, quirks, research page).
             # Stripped before passing to the model.
             "_meta": {

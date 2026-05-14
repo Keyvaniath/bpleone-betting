@@ -206,6 +206,8 @@ def build_all_matchups(today_json_path: Optional[str] = None) -> Dict[str, Any]:
         m["weather"] = {k: v for k, v in (game.get("ctx") or {}).items()
                         if k in ("temp_f", "wind_mph", "is_indoor", "wind_dir_deg",
                                  "carry_index", "precip_pct")}
+        m["umpire"] = {k: v for k, v in (game.get("ctx") or {}).items()
+                       if k in ("ump_name", "ump_label", "ump_k_mult")}
         matchups.append(m)
 
     payload = {
