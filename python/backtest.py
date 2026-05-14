@@ -327,4 +327,3 @@ if __name__ == "__main__":
     for k, v in result.metrics.items():
         print(f"  {k:>16}: {v}")
     write_backtest(result)
-te_backtest(result)

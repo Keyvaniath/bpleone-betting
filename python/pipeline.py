@@ -2,7 +2,7 @@
 EdgeStat - daily pipeline.
 
 End-to-end:
-  1. Pull schedule + odds from APIs.
+  1. Pull schedule + odds from APIs (real data) or fall back to DEMO_SLATE.
   2. Hydrate per-game context (pitchers, parks, weather, umpire).
   3. Run mlb_model.project_game() on each.
   4. Filter to +EV plays above edge threshold.
@@ -10,18 +10,42 @@ End-to-end:
   6. Write a JSON manifest the front-end can hot-reload.
 
 Cron it at 7:00 ET every morning and re-run hourly to catch line moves.
+
+`python pipeline.py` tries real data first (needs ODDS_API_KEY). Pass --demo to
+force synthetic data.
 """
 from __future__ import annotations
 
 import json
 import os
+import sys
 import datetime as dt
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Optional
 
 from mlb_model import project_game, GameInput, TeamFactor, PitcherFactor, GameContext
 
 
 OUT_PATH = os.path.join(os.path.dirname(__file__), "..", "data", "today.json")
+
+# MLB full team name → 3-letter code used across the model and front-end.
+TEAM_CODE = {
+    "Arizona Diamondbacks": "ARI", "Atlanta Braves": "ATL", "Baltimore Orioles": "BAL",
+    "Boston Red Sox": "BOS", "Chicago Cubs": "CHC", "Chicago White Sox": "CHW",
+    "Cincinnati Reds": "CIN", "Cleveland Guardians": "CLE", "Colorado Rockies": "COL",
+    "Detroit Tigers": "DET", "Houston Astros": "HOU", "Kansas City Royals": "KCR",
+    "Los Angeles Angels": "LAA", "Los Angeles Dodgers": "LAD", "Miami Marlins": "MIA",
+    "Milwaukee Brewers": "MIL", "Minnesota Twins": "MIN", "New York Mets": "NYM",
+    "New York Yankees": "NYY", "Oakland Athletics": "OAK", "Athletics": "OAK",
+    "Philadelphia Phillies": "PHI", "Pittsburgh Pirates": "PIT",
+    "San Diego Padres": "SDP", "San Francisco Giants": "SFG", "Seattle Mariners": "SEA",
+    "St. Louis Cardinals": "STL", "Tampa Bay Rays": "TBR", "Texas Rangers": "TEX",
+    "Toronto Blue Jays": "TOR", "Washington Nationals": "WSN",
+}
+
+# League-average proxies used when we don't have a paid stats feed (FanGraphs).
+# The model is robust to these because most of the edge comes from price + pitcher + park.
+LEAGUE_AVG_TEAM = {"offensive_wrc_plus": 100, "bullpen_era_fip_delta": 0.0, "rest_days": 1}
+LEAGUE_AVG_PITCHER = {"xfip": 4.10, "k_per_9": 8.6, "bb_per_9": 3.1, "hand": "R"}
 
 
 # --- Static lookup tables. In production these come from your DB / nightly refresh ---
@@ -91,7 +115,7 @@ def write_manifest(manifest: Dict[str, Any], path: str = OUT_PATH) -> None:
     os.makedirs(os.path.dirname(path), exist_ok=True)
     with open(path, "w") as f:
         json.dump(manifest, f, indent=2)
-    print(f"Wrote manifest → {path}")
+    print(f"Wrote manifest -> {path}")
     print(f"  Games: {len(manifest['games'])}")
     if manifest.get("play_of_day"):
         pod = manifest["play_of_day"]
@@ -132,7 +156,123 @@ DEMO_SLATE = [
 ]
 
 
+def _et_time(iso_utc: str) -> str:
+    """'2026-05-14T16:35:00Z' → '12:35p ET'. Naive offset (UTC-4 EDT)."""
+    try:
+        t = dt.datetime.fromisoformat(iso_utc.replace("Z", "+00:00"))
+        et = t.astimezone(dt.timezone(dt.timedelta(hours=-4)))
+        hour = et.hour % 12 or 12
+        ampm = "p" if et.hour >= 12 else "a"
+        return f"{hour}:{et.minute:02d}{ampm} ET"
+    except Exception:
+        return "TBD"
+
+
+def _american_to_int(price: Any) -> Optional[int]:
+    try:
+        return int(round(float(price)))
+    except Exception:
+        return None
+
+
+def _consensus_odds(event: Dict[str, Any], home_name: str, away_name: str) -> Dict[str, Any]:
+    """Average prices across books for h2h + totals. Returns {ml_home, ml_away, total}."""
+    h2h_h, h2h_a, tot_pts = [], [], []
+    for bk in event.get("bookmakers", []):
+        for m in bk.get("markets", []):
+            if m["key"] == "h2h":
+                for o in m.get("outcomes", []):
+                    if o["name"] == home_name: h2h_h.append(o["price"])
+                    elif o["name"] == away_name: h2h_a.append(o["price"])
+            elif m["key"] == "totals":
+                for o in m.get("outcomes", []):
+                    if "point" in o: tot_pts.append(o["point"])
+    avg = lambda xs: round(sum(xs) / len(xs)) if xs else None
+    return {
+        "ml_home": avg(h2h_h),
+        "ml_away": avg(h2h_a),
+        "total": round(sum(tot_pts) / len(tot_pts), 1) if tot_pts else None,
+    }
+
+
+def build_real_slate() -> Optional[List[Dict[str, Any]]]:
+    """Build today's slate from MLB Stats API + The Odds API. None on any failure."""
+    import data_fetcher as df
+    try:
+        sched = df.fetch_today_schedule()
+    except Exception as e:
+        print(f"  [x] schedule fetch failed: {e}")
+        return None
+    if not sched:
+        print("  [x] no games on today's schedule")
+        return None
+
+    try:
+        odds_events = df.fetch_mlb_odds()
+    except RuntimeError as e:
+        print(f"  [x] odds fetch skipped: {e}")
+        odds_events = []
+    except Exception as e:
+        print(f"  [x] odds fetch failed: {e}")
+        odds_events = []
+
+    # Index odds by (home, away) name pair.
+    odds_by_pair = {}
+    for ev in odds_events:
+        odds_by_pair[(ev["home_team"], ev["away_team"])] = ev
+
+    slate = []
+    for g in sched:
+        # Skip in-progress / completed games — we want pre-game projections.
+        if g.get("status") not in ("Scheduled", "Pre-Game", "Warmup", "Delayed Start: Rain"):
+            continue
+        home_name, away_name = g["home"], g["away"]
+        home_code = TEAM_CODE.get(home_name, home_name[:3].upper())
+        away_code = TEAM_CODE.get(away_name, away_name[:3].upper())
+        ev = odds_by_pair.get((home_name, away_name))
+        prices = _consensus_odds(ev, home_name, away_name) if ev else {"ml_home": None, "ml_away": None, "total": None}
+
+        # Probable pitchers (best effort).
+        pitchers = {"home": None, "away": None}
+        try:
+            pitchers = df.fetch_probable_pitchers(g["gamePk"]) or pitchers
+        except Exception:
+            pass
+
+        from pipeline import PARK_FACTORS  # noqa
+        park_factor = PARK_FACTORS.get(g["venue"], 1.00)
+        slate.append({
+            "time": _et_time(g["time"]),
+            "park": g["venue"],
+            "market_total": prices["total"] or 8.5,
+            "market_ml_away": prices["ml_away"] or 100,
+            "market_ml_home": prices["ml_home"] or -110,
+            "away": {"code": away_code, **LEAGUE_AVG_TEAM},
+            "home": {"code": home_code, **LEAGUE_AVG_TEAM},
+            "away_pitcher": {**LEAGUE_AVG_PITCHER, "name": pitchers.get("away") or "TBD"},
+            "home_pitcher": {**LEAGUE_AVG_PITCHER, "name": pitchers.get("home") or "TBD"},
+            "ctx": {"park_factor": park_factor, "temp_f": 70, "wind_mph": 0, "umpire_zone_size": 0.0, "is_indoor": False},
+        })
+    return slate or None
+
+
+def build_slate(force_demo: bool = False) -> List[Dict[str, Any]]:
+    """Try real data first; fall back to DEMO_SLATE so the front-end never breaks."""
+    if force_demo:
+        print("  -> demo mode (forced)")
+        return DEMO_SLATE
+    print("  -> attempting real data pull")
+    real = build_real_slate()
+    if real:
+        print(f"  [ok] real slate: {len(real)} games")
+        return real
+    print("  -> falling back to DEMO_SLATE")
+    return DEMO_SLATE
+
+
 if __name__ == "__main__":
-    manifest = run_pipeline(DEMO_SLATE)
+    slate = build_slate(force_demo="--demo" in sys.argv)
+    manifest = run_pipeline(slate)
     write_manifest(manifest)
-    print(json.dumps(manifest["play_of_day"], indent=2))
+    if manifest.get("play_of_day"):
+        print(json.dumps(manifest["play_of_day"], indent=2))

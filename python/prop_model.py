@@ -360,6 +360,3 @@ if __name__ == "__main__":
     with open("../data/props_projections.json", "w") as f:
         json.dump({"slate": out, "metrics": metrics}, f, indent=2)
     print("\nWrote ../data/props_projections.json")
-open("../data/props_projections.json", "w") as f:
-        json.dump({"slate": out, "metrics": metrics}, f, indent=2)
-    print("\nWrote ../data/props_projections.json")

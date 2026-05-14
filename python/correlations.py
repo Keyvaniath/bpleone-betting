@@ -187,4 +187,3 @@ if __name__ == "__main__":
     with open("../data/correlations.json", "w") as f:
         json.dump(payload, f, indent=2)
     print("\nWrote ../data/correlations.json")
-ations.json")
