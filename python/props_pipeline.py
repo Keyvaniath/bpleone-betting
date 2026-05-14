@@ -220,7 +220,13 @@ LEAGUE_K_RATE = 0.22  # rough MLB-wide K%
 
 
 def project_pitcher_ks(pid: int, line: float, opp_team_id: Optional[int] = None) -> Tuple[float, Dict[str, Any]]:
-    """P(K >= ceil(line)). Adjusts for opposing team's K rate; weights season + recent form."""
+    """P(K >= ceil(line)).
+
+    v2 (Statcast-enabled): uses xK% blended with traditional K/9, expected
+    batters faced (BF) instead of innings, opp-team K-rate multiplier, and
+    recent-form weighting. Falls back to v1 (K/9 only) if Statcast lookup
+    returns nothing.
+    """
     season = sr.pitcher_season(pid) if pid else {}
     if not season or not season.get("inningsPitched"):
         return 0.50, {"reason": "no-data", "low_confidence": True}
@@ -232,9 +238,18 @@ def project_pitcher_ks(pid: int, line: float, opp_team_id: Optional[int] = None)
         avg_ip_per_start = ip / starts
         expected_ip = max(4.5, min(7.0, avg_ip_per_start))
         season_k9 = float(season.get("strikeoutsPer9Inn", 8.6) or 8.6)
+        season_bf = float(season.get("battersFaced", 0) or 0)
 
-        # Recent-form weighting: blend season K/9 with last 3 starts.
-        # 60% recent + 40% season gives the model responsiveness without overfitting to noise.
+        # Statcast-derived K% (more stable + predictive than K/9).
+        try:
+            import statcast as sc
+            sc_p = sc.pitcher_stats(pid) or {}
+        except Exception:
+            sc_p = {}
+        statcast_k_pct = sc_p.get("k_percent")
+        statcast_whiff = sc_p.get("whiff_percent")
+
+        # Recent-form K/9 blend.
         recent = sr.pitcher_recent_form(pid, n=3)
         recent_k9 = recent.get("k9") if recent and recent.get("k9") else None
         if recent_k9 is not None and recent.get("starts", 0) >= 2:
@@ -242,27 +257,53 @@ def project_pitcher_ks(pid: int, line: float, opp_team_id: Optional[int] = None)
             recent_ip = recent.get("ip", 0)
             recent_starts = recent.get("starts", 0)
             recent_ip_per_start = (recent_ip / recent_starts) if recent_starts else avg_ip_per_start
-            # Blend expected IP too -- if pitcher has been getting yanked early lately, lower expectation.
             blended_ip = 0.6 * max(3.0, min(7.5, recent_ip_per_start)) + 0.4 * expected_ip
         else:
             blended_k9 = season_k9
             blended_ip = expected_ip
 
-        expected_ks = blended_k9 * blended_ip / 9.0
+        # Expected batters faced this start. Use season's BF/IP ratio (typically ~4.3) * expected_ip.
+        bf_per_ip = (season_bf / ip) if ip > 0 else 4.3
+        expected_bf = bf_per_ip * blended_ip
+
+        # Strikeout projection: prefer Statcast xK%, fall back to K/9 if missing.
+        if statcast_k_pct is not None:
+            # Blend xK% (Statcast, season) with implied K rate from blended K/9.
+            blended_k_rate_from_k9 = blended_k9 / bf_per_ip / 9.0 * 9.0  # = blended_k9 / bf_per_ip
+            blended_k_rate_from_k9 = blended_k_rate_from_k9 / 100.0 * 100.0  # noop, kept for readability
+            # Actually simpler: K rate per BF from K/9: blended_k9 * (1 IP / bf_per_ip) / 9 = blended_k9 / (9*bf_per_ip)
+            k_rate_from_k9 = blended_k9 / (9.0 * (bf_per_ip if bf_per_ip > 0 else 4.3))
+            k_rate_statcast = statcast_k_pct / 100.0
+            blended_k_rate = 0.5 * k_rate_statcast + 0.5 * k_rate_from_k9
+            model_version = "v2-statcast"
+        else:
+            blended_k_rate = blended_k9 / (9.0 * (bf_per_ip if bf_per_ip > 0 else 4.3))
+            model_version = "v1-k9-only"
+
+        # Opp-team K rate adjustment.
         opp_k = _team_k_rate(opp_team_id)
         opp_mult = (opp_k / LEAGUE_K_RATE) if opp_k else 1.0
-        expected_ks_adj = expected_ks * opp_mult
+        # Cap the adjustment to +/- 25% to keep extreme matchups from runaway.
+        opp_mult = max(0.75, min(1.25, opp_mult))
+        adj_k_rate = blended_k_rate * opp_mult
+        expected_ks = adj_k_rate * expected_bf
+
         line_int = int(math.ceil(line))
-        p_over = poisson_p_at_least(expected_ks_adj, line_int)
+        p_over = poisson_p_at_least(expected_ks, line_int)
         return p_over, {
+            "model_version": model_version,
             "season_k9": round(season_k9, 2),
-            "recent_k9": round(recent_k9, 2) if recent_k9 else None,
             "blended_k9": round(blended_k9, 2),
+            "recent_k9": round(recent_k9, 2) if recent_k9 else None,
+            "statcast_k_pct": statcast_k_pct,
+            "statcast_whiff_pct": statcast_whiff,
             "starts": int(starts),
             "expected_ip": round(blended_ip, 2),
+            "expected_bf": round(expected_bf, 1),
+            "blended_k_rate": round(blended_k_rate, 4),
             "opp_k_rate": round(opp_k, 3) if opp_k else None,
             "opp_mult": round(opp_mult, 3),
-            "expected_ks_adj": round(expected_ks_adj, 2),
+            "expected_ks": round(expected_ks, 2),
             "line_int": line_int,
         }
     except Exception as e:
@@ -297,37 +338,113 @@ def _expected_pa(order: Optional[int]) -> float:
     return 4.2
 
 
-def project_batter_hr(pid: int, line: float, order: Optional[int] = None) -> Tuple[float, Dict[str, Any]]:
+def _statcast_batter(pid: int) -> Dict[str, Any]:
+    """Best-effort Statcast lookup. {} on miss."""
+    try:
+        import statcast as sc
+        return sc.batter_stats(pid) or {}
+    except Exception:
+        return {}
+
+
+def _ab_per_pa(s: Dict[str, Any]) -> float:
+    """Estimate AB rate from PA (PA includes BB/HBP/SAC). Default 0.88."""
+    pa = s.get("plateAppearances")
+    ab = s.get("atBats")
+    if pa and ab and pa > 0:
+        return float(ab) / float(pa)
+    return 0.88
+
+
+def project_batter_hr(pid: int, line: float, order: Optional[int] = None,
+                       carry_index: Optional[float] = None,
+                       park_factor: Optional[float] = None) -> Tuple[float, Dict[str, Any]]:
+    """P(HR >= ceil(line)). v2: barrel% as primary signal; barrels convert to HR ~50%.
+
+    Adjusts for park factor + wind carry when known.
+    """
     s = _batter_season(pid)
-    pa, hr = s.get("plateAppearances"), s.get("homeRuns")
+    pa = s.get("plateAppearances")
+    hr = s.get("homeRuns")
     if not pa or pa < 30 or hr is None:
         return 0.04, {"reason": "thin-sample", "pa": pa, "hr": hr, "low_confidence": True}
-    hr_per_pa = float(hr) / float(pa)
+
+    sc_b = _statcast_batter(pid)
+    barrel_pct = sc_b.get("barrel_batted_rate")  # % of batted-ball events
     expected_pa_g = _expected_pa(order)
-    expected_hr = hr_per_pa * expected_pa_g
+    ab_pa = _ab_per_pa(s)
+    # Expected batted-ball events = AB * (1 - K%) ≈ AB * 0.75 league avg.
+    # Use Statcast K% if available, else season K rate proxy.
+    k_pct = sc_b.get("k_percent")
+    ab_g = expected_pa_g * ab_pa
+    if k_pct is not None:
+        bbe_g = ab_g * (1.0 - k_pct / 100.0)
+    else:
+        bbe_g = ab_g * 0.75
+    # Park + wind multiplier for HR rate (carry_index in [-1, +1]).
+    env_mult = 1.0
+    if park_factor is not None:
+        env_mult *= park_factor
+    if carry_index is not None:
+        env_mult *= 1.0 + 0.15 * carry_index   # +/- 15% from wind direction
+
+    if barrel_pct is not None and barrel_pct > 0:
+        # Barrels -> HR conversion is ~50% league-wide.
+        expected_hr_statcast = (barrel_pct / 100.0) * bbe_g * 0.50 * env_mult
+        # Blend with season HR/PA for stability.
+        hr_per_pa = float(hr) / float(pa)
+        expected_hr_season = hr_per_pa * expected_pa_g * env_mult
+        expected_hr = 0.5 * expected_hr_statcast + 0.5 * expected_hr_season
+        model_version = "v2-statcast-barrel"
+    else:
+        hr_per_pa = float(hr) / float(pa)
+        expected_hr = hr_per_pa * expected_pa_g * env_mult
+        model_version = "v1-season-hr-pa"
+
     line_int = int(math.ceil(line))
     p_over = poisson_p_at_least(expected_hr, line_int)
-    return p_over, {"pa": pa, "hr": hr, "hr_per_pa": round(hr_per_pa, 4),
-                    "batting_order": order, "expected_pa": expected_pa_g,
-                    "expected_hr": round(expected_hr, 3), "line_int": line_int}
+    return p_over, {
+        "model_version": model_version,
+        "pa": pa, "hr": hr,
+        "batting_order": order, "expected_pa": expected_pa_g,
+        "barrel_pct": barrel_pct, "k_pct_statcast": k_pct,
+        "park_factor": park_factor, "carry_index": carry_index, "env_mult": round(env_mult, 3),
+        "expected_hr": round(expected_hr, 3), "line_int": line_int,
+    }
 
 
 def project_batter_hits(pid: int, line: float, order: Optional[int] = None) -> Tuple[float, Dict[str, Any]]:
+    """P(hits >= ceil(line)). v2: uses xBA when available (removes BABIP luck)."""
     s = _batter_season(pid)
     pa, hits = s.get("plateAppearances"), s.get("hits")
     if not pa or pa < 30 or hits is None:
         return 0.27, {"reason": "thin-sample", "pa": pa, "hits": hits, "low_confidence": True}
-    h_per_pa = float(hits) / float(pa)
+    sc_b = _statcast_batter(pid)
+    xba = sc_b.get("xba")
     expected_pa_g = _expected_pa(order)
-    expected_h = h_per_pa * expected_pa_g
+    ab_g = expected_pa_g * _ab_per_pa(s)
+    season_ba = float(hits) / float(s.get("atBats", pa) or pa)
+    if xba is not None and xba > 0:
+        # 60% xBA + 40% actual; xBA leads but season hitting matters.
+        blended_ba = 0.6 * xba + 0.4 * season_ba
+        model_version = "v2-statcast-xba"
+    else:
+        blended_ba = season_ba
+        model_version = "v1-season-ba"
+    expected_h = blended_ba * ab_g
     line_int = int(math.ceil(line))
     p_over = poisson_p_at_least(expected_h, line_int)
-    return p_over, {"pa": pa, "hits": hits, "h_per_pa": round(h_per_pa, 4),
-                    "batting_order": order, "expected_pa": expected_pa_g,
-                    "expected_hits": round(expected_h, 3), "line_int": line_int}
+    return p_over, {
+        "model_version": model_version,
+        "pa": pa, "hits": hits,
+        "season_ba": round(season_ba, 3), "xba": xba, "blended_ba": round(blended_ba, 3),
+        "batting_order": order, "expected_pa": expected_pa_g, "ab_g": round(ab_g, 2),
+        "expected_hits": round(expected_h, 3), "line_int": line_int,
+    }
 
 
 def project_batter_tb(pid: int, line: float, order: Optional[int] = None) -> Tuple[float, Dict[str, Any]]:
+    """P(TB >= ceil(line)). v2: uses xSLG when available."""
     s = _batter_season(pid)
     pa = s.get("plateAppearances")
     if not pa or pa < 30:
@@ -338,14 +455,29 @@ def project_batter_tb(pid: int, line: float, order: Optional[int] = None) -> Tup
     hr = float(s.get("homeRuns", 0) or 0)
     singles = hits - doubles - triples - hr
     tb = singles + 2 * doubles + 3 * triples + 4 * hr
-    tb_per_pa = tb / float(pa)
+    ab_season = float(s.get("atBats", pa) or pa)
+    season_slg = tb / ab_season if ab_season else 0.0
+
+    sc_b = _statcast_batter(pid)
+    xslg = sc_b.get("xslg")
     expected_pa_g = _expected_pa(order)
-    expected_tb = tb_per_pa * expected_pa_g
+    ab_g = expected_pa_g * _ab_per_pa(s)
+    if xslg is not None and xslg > 0:
+        blended_slg = 0.6 * xslg + 0.4 * season_slg
+        model_version = "v2-statcast-xslg"
+    else:
+        blended_slg = season_slg
+        model_version = "v1-season-slg"
+    expected_tb = blended_slg * ab_g
     line_int = int(math.ceil(line))
     p_over = poisson_p_at_least(expected_tb, line_int)
-    return p_over, {"pa": pa, "tb_season": int(tb), "tb_per_pa": round(tb_per_pa, 4),
-                    "batting_order": order, "expected_pa": expected_pa_g,
-                    "expected_tb": round(expected_tb, 3), "line_int": line_int}
+    return p_over, {
+        "model_version": model_version,
+        "pa": pa, "tb_season": int(tb),
+        "season_slg": round(season_slg, 3), "xslg": xslg, "blended_slg": round(blended_slg, 3),
+        "batting_order": order, "expected_pa": expected_pa_g, "ab_g": round(ab_g, 2),
+        "expected_tb": round(expected_tb, 3), "line_int": line_int,
+    }
 
 
 # -------------------- Main loop --------------------
@@ -406,9 +538,26 @@ def build_props(markets: Optional[List[str]] = None, max_games: int = MAX_GAMES)
         home_team_id = sr.team_id(e.get("home_team", ""))
         away_team_id = sr.team_id(e.get("away_team", ""))
         game_pk = pk_by_pair.get((e.get("home_team", ""), e.get("away_team", "")))
-        # Pull lineup once per game (cached 15min in stats_repo).
         lineups = sr.game_lineups(game_pk) if game_pk else {"home": {}, "away": {}}
         lineup_posted = bool(lineups["home"] or lineups["away"])
+        # Park + weather for HR adjustments. Best-effort.
+        venue = None
+        for d in mlb_sched:
+            for g in d.get("games", []):
+                if g.get("gamePk") == game_pk:
+                    venue = (g.get("venue") or {}).get("name")
+                    break
+        try:
+            from pipeline import PARK_FACTORS
+            park_factor = PARK_FACTORS.get(venue, 1.00) if venue else 1.00
+        except Exception:
+            park_factor = 1.00
+        try:
+            from weather import get_weather
+            wx = get_weather(venue or "") if venue else {}
+            carry_index = wx.get("carry_index") if not wx.get("indoor") else None
+        except Exception:
+            carry_index = None
         payload = fetch_event_props(eid, markets)
         bks = payload.get("bookmakers", [])
         if not bks:
@@ -451,7 +600,9 @@ def build_props(markets: Optional[List[str]] = None, max_games: int = MAX_GAMES)
                 if market_key == "pitcher_strikeouts":
                     p_over, dbg = project_pitcher_ks(pid, line, opp_team_id)
                 elif market_key == "batter_home_runs":
-                    p_over, dbg = project_batter_hr(pid, line, batter_order)
+                    p_over, dbg = project_batter_hr(pid, line, batter_order,
+                                                    carry_index=carry_index,
+                                                    park_factor=park_factor)
                 elif market_key == "batter_hits":
                     p_over, dbg = project_batter_hits(pid, line, batter_order)
                 elif market_key == "batter_total_bases":
