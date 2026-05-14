@@ -35,35 +35,37 @@
 <main class="container">
 
   <section class="page-head">
-    <h1>Player Props — Today's Edges</h1>
+    <h1>Player Props -- Today's Edges</h1>
     <p>Player props are the most inefficient market in sports betting. Books can't sharpen 1,000+ markets a day with the same precision they sharpen the moneyline. Our prop model attacks where the books are weakest.</p>
+    <p class="market-line" style="margin-top:8px;">Lines from <strong>DraftKings</strong> (your takeable book). PrizePicks &amp; Sleeper lines are coming -- both run a different DFS pick-em model.</p>
+    <p class="muted" style="font-size:12px; margin-top:6px;">Model v1: pitcher_strikeouts + batter_home_runs. Projections use season stats + opponent-team K-rate. Calibration in progress -- treat as research, not gospel. Low-confidence plays (thin sample, suspect edges) are filtered to SKIP.</p>
   </section>
 
-  <section class="metric-strip">
-    <div class="metric"><span class="metric-num">217</span><span class="metric-label">Props Modeled</span></div>
-    <div class="metric"><span class="metric-num">38</span><span class="metric-label">+3% Edges</span></div>
-    <div class="metric"><span class="metric-num">12</span><span class="metric-label">+5% Edges</span></div>
-    <div class="metric"><span class="metric-num">59.1%</span><span class="metric-label">Season Hit %</span></div>
-    <div class="metric"><span class="metric-num">+9.4%</span><span class="metric-label">Season ROI</span></div>
-    <div class="metric"><span class="metric-num">+3.1%</span><span class="metric-label">Avg CLV</span></div>
+  <section class="metric-strip" id="propsMetricStrip">
+    <div class="metric"><span class="metric-num" data-key="analyzed">--</span><span class="metric-label">Props Analyzed</span></div>
+    <div class="metric"><span class="metric-num" data-key="playable">--</span><span class="metric-label">Playable Edges</span></div>
+    <div class="metric"><span class="metric-num" data-key="big_edges">--</span><span class="metric-label">+10% Edges</span></div>
+    <div class="metric"><span class="metric-num" data-key="games">--</span><span class="metric-label">Games Covered</span></div>
+    <div class="metric"><span class="metric-num" data-key="generated">--</span><span class="metric-label">Last Refresh (UTC)</span></div>
+    <div class="metric"><span class="metric-num">DK</span><span class="metric-label">Book</span></div>
   </section>
 
   <section class="card" style="margin-bottom: 28px;">
-    <div class="card-head"><span>🎯 Tonight's Top Prop Edges</span></div>
+    <div class="card-head"><span>Tonight's Top Prop Edges (DraftKings)</span><span class="muted" id="propsRefreshed"></span></div>
     <div class="filterbar">
-      <label>Type:</label>
-      <select><option>All</option><option>Strikeouts</option><option>Total Bases</option><option>HR</option><option>H+R+RBI</option><option>Walks</option></select>
+      <label>Market:</label>
+      <select id="filterMarket"><option value="">All</option><option value="pitcher_strikeouts">Pitcher Ks</option><option value="batter_home_runs">Batter HR</option></select>
       <label>Min Edge:</label>
-      <select><option>+3%</option><option>+5%</option><option>+8%</option></select>
-      <label>Team:</label>
-      <select><option>All</option><option>NYY</option><option>LAD</option><option>BOS</option><option>NYM</option></select>
+      <select id="filterEdge"><option value="3">+3%</option><option value="5">+5%</option><option value="10">+10%</option></select>
+      <label>Side:</label>
+      <select id="filterSide"><option value="">All</option><option value="OVER">Over</option><option value="UNDER">Under</option><option value="SKIP">Skipped</option></select>
     </div>
     <div class="table-wrap">
       <table class="data-table" id="propsTable">
         <thead>
-          <tr><th>Player</th><th>Team</th><th>Prop</th><th>Best Market</th><th>Model Fair</th><th>Edge</th><th>Side</th></tr>
+          <tr><th>Player</th><th>Matchup</th><th>Market</th><th>Line</th><th>DK O / U</th><th>Model %</th><th>Edge</th><th>Side</th></tr>
         </thead>
-        <tbody></tbody>
+        <tbody><tr><td colspan="8" class="muted" style="text-align:center; padding:24px;">Loading props...</td></tr></tbody>
       </table>
     </div>
   </section>
@@ -90,44 +92,9 @@
   </section>
 
   <section class="card" style="margin-bottom: 28px;">
-    <div class="card-head"><span>🃏 Featured Players — Tonight's Lineup Spotlights</span></div>
-    <div class="grid-3" style="margin-bottom: 0;">
-      <div class="factor" style="flex-direction:column; align-items:flex-start; gap: 4px;">
-        <span class="pill purple">SLUGGER</span>
-        <h3 style="margin:6px 0 4px;">Aaron Judge</h3>
-        <span class="muted">NYY • RF • R</span>
-        <p style="font-size:13px; color: var(--text-2); margin: 8px 0 0;">vs LHP Crochet. Career .298/.428/.612 vs LHP. Model: <strong style="color:var(--accent)">2.21 expected TB</strong> tonight.</p>
-      </div>
-      <div class="factor" style="flex-direction:column; align-items:flex-start; gap: 4px;">
-        <span class="pill purple">UNICORN</span>
-        <h3 style="margin:6px 0 4px;">Shohei Ohtani</h3>
-        <span class="muted">LAD • DH • L</span>
-        <p style="font-size:13px; color: var(--text-2); margin: 8px 0 0;">vs RHP Darvish. 31% barrel rate vs FB. Park-adjusted HR/PA: 6.8%. Model: <strong style="color:var(--accent)">+250 fair</strong>, book at +260.</p>
-      </div>
-      <div class="factor" style="flex-direction:column; align-items:flex-start; gap: 4px;">
-        <span class="pill purple">ACE</span>
-        <h3 style="margin:6px 0 4px;">Yamamoto</h3>
-        <span class="muted">LAD • SP • R</span>
-        <p style="font-size:13px; color: var(--text-2); margin: 8px 0 0;">vs SDP lineup with 35.1% K rate proj. Model: <strong style="color:var(--accent)">7.4 expected K</strong>, line at 6.5.</p>
-      </div>
-      <div class="factor" style="flex-direction:column; align-items:flex-start; gap: 4px;">
-        <span class="pill purple">SPEED</span>
-        <h3 style="margin:6px 0 4px;">Bobby Witt Jr.</h3>
-        <span class="muted">KCR • SS • R</span>
-        <p style="font-size:13px; color: var(--text-2); margin: 8px 0 0;">82nd percentile sprint speed. Stolen base attempts O0.5 priced at +130 vs model -110.</p>
-      </div>
-      <div class="factor" style="flex-direction:column; align-items:flex-start; gap: 4px;">
-        <span class="pill purple">CONTACT</span>
-        <h3 style="margin:6px 0 4px;">Luis Arraez</h3>
-        <span class="muted">SDP • 1B • L</span>
-        <p style="font-size:13px; color: var(--text-2); margin: 8px 0 0;">Hits prop O0.5 nearly free. Career .329 BA. Profitable spot vs Yamamoto's slider-heavy mix.</p>
-      </div>
-      <div class="factor" style="flex-direction:column; align-items:flex-start; gap: 4px;">
-        <span class="pill purple">WORKHORSE</span>
-        <h3 style="margin:6px 0 4px;">Tarik Skubal</h3>
-        <span class="muted">DET • SP • L</span>
-        <p style="font-size:13px; color: var(--text-2); margin: 8px 0 0;">12.7 K/9 vs current matchup. Model: <strong style="color:var(--accent)">8.1 K</strong>, line at 6.5.</p>
-      </div>
+    <div class="card-head"><span>Top Plays Right Now</span><span class="muted">filtered by edge + confidence</span></div>
+    <div class="grid-3" id="topPlaysGrid" style="margin-bottom: 0;">
+      <p class="muted" style="grid-column: 1/-1; text-align:center; padding:16px;">Loading top plays...</p>
     </div>
   </section>
 
@@ -157,5 +124,94 @@
 <script src="js/ml-models.js"></script>
 <script src="js/charts.js"></script>
 <script src="js/main.js"></script>
+
+<script>
+// Real props loader — populates table, top-plays, and metric strip from data/props.json.
+const MARKET_LABEL = { pitcher_strikeouts: "Pitcher Ks", batter_home_runs: "Batter HR" };
+
+function fmtPrice(p) { return p == null ? "--" : (p >= 0 ? "+" + p : String(p)); }
+
+function setMetric(key, val) {
+  const el = document.querySelector(`#propsMetricStrip [data-key="${key}"]`);
+  if (el) el.textContent = val;
+}
+
+function renderTopPlays(rows) {
+  const grid = document.getElementById("topPlaysGrid");
+  const playable = rows.filter(r => r.play !== "SKIP");
+  if (!playable.length) {
+    grid.innerHTML = `<p class="muted" style="grid-column:1/-1; text-align:center; padding:16px;">No playable edges right now. Model passed every prop.</p>`;
+    return;
+  }
+  grid.innerHTML = playable.slice(0, 6).map(r => `
+    <div class="factor" style="flex-direction:column; align-items:flex-start; gap:4px;">
+      <span class="pill ${r.play === "OVER" ? "green" : "red"}">${r.play} ${r.line}</span>
+      <h3 style="margin:6px 0 4px;">${r.player}</h3>
+      <span class="muted">${r.matchup} -- ${MARKET_LABEL[r.market] || r.market}</span>
+      <p style="font-size:13px; color: var(--text-2); margin: 8px 0 0;">
+        DK ${fmtPrice(r.dk_over)} / ${fmtPrice(r.dk_under)} -- model ${(r.play === "OVER" ? r.model_prob_over : r.model_prob_under * 100).toFixed?.(1) ?? (r.model_prob_over * 100).toFixed(1)}% --
+        <strong style="color:var(--accent)">edge +${r.best_edge_pct?.toFixed?.(1) ?? r.best_edge_pct}%</strong>
+      </p>
+    </div>`).join("");
+}
+
+let propsState = { all: [], market: "", edge: 3, side: "" };
+function renderTable() {
+  const tbody = document.querySelector("#propsTable tbody");
+  const filtered = propsState.all.filter(r =>
+    (!propsState.market || r.market === propsState.market) &&
+    (!propsState.side || r.play === propsState.side) &&
+    (Math.abs(r.best_edge_pct || 0) >= propsState.edge)
+  );
+  if (!filtered.length) {
+    tbody.innerHTML = `<tr><td colspan="8" class="muted" style="text-align:center; padding:24px;">No rows match the current filters.</td></tr>`;
+    return;
+  }
+  tbody.innerHTML = filtered.map(r => {
+    const modelPct = ((r.play === "UNDER" ? r.model_prob_under : r.model_prob_over) * 100).toFixed(1);
+    const sideStyle = r.play === "OVER" ? "color:#58c878" : r.play === "UNDER" ? "color:#e35a5a" : "color:#888";
+    const conf = r.low_confidence ? ' <span class="muted" title="thin sample / suspect projection">(low conf)</span>' : "";
+    return `<tr>
+      <td><strong>${r.player}</strong>${conf}</td>
+      <td class="muted">${r.matchup}</td>
+      <td>${MARKET_LABEL[r.market] || r.market}</td>
+      <td>${r.line}</td>
+      <td>${fmtPrice(r.dk_over)} / ${fmtPrice(r.dk_under)}</td>
+      <td>${modelPct}%</td>
+      <td>${r.best_edge_pct == null ? "--" : (r.best_edge_pct >= 0 ? "+" : "") + r.best_edge_pct.toFixed(1) + "%"}</td>
+      <td style="${sideStyle}; font-weight:600;">${r.play}</td>
+    </tr>`;
+  }).join("");
+}
+
+function bindFilters() {
+  document.getElementById("filterMarket").addEventListener("change", e => { propsState.market = e.target.value; renderTable(); });
+  document.getElementById("filterEdge").addEventListener("change", e => { propsState.edge = parseFloat(e.target.value); renderTable(); });
+  document.getElementById("filterSide").addEventListener("change", e => { propsState.side = e.target.value; renderTable(); });
+}
+
+fetch("data/props.json", { cache: "no-cache" })
+  .then(r => r.json())
+  .then(payload => {
+    const all = payload.top_edges || [];
+    propsState.all = all;
+    setMetric("analyzed", all.length);
+    setMetric("playable", all.filter(r => r.play !== "SKIP").length);
+    setMetric("big_edges", all.filter(r => (r.best_edge_pct || 0) >= 10 && r.play !== "SKIP").length);
+    setMetric("games", (payload.games || []).length);
+    setMetric("generated", (payload.generated_at || "").slice(11, 16));
+    document.getElementById("propsRefreshed").textContent =
+      payload.generated_at ? `refreshed ${payload.generated_at.replace("T", " ")} UTC` : "";
+    renderTopPlays(all);
+    renderTable();
+    bindFilters();
+  })
+  .catch(err => {
+    document.querySelector("#propsTable tbody").innerHTML =
+      `<tr><td colspan="8" class="muted" style="text-align:center; padding:24px;">props.json not loaded yet -- the daily pipeline writes this on the 6 AM ET cron.</td></tr>`;
+    console.error(err);
+  });
+</script>
+
 </body>
 </html>

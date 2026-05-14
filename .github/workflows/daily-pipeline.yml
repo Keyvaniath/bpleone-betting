@@ -32,11 +32,21 @@ jobs:
       - name: Install deps
         run: pip install -r python/requirements.txt
 
-      - name: Run daily pipeline (real data → today.json)
+      - name: Run daily pipeline (real data → today.json + matchups.json)
         env:
           ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
         working-directory: python
         run: python pipeline.py
+
+      # Player-props refresh: only at the 6 AM ET run (10:00 UTC) to fit the
+      # free Odds API tier (~480 credits/month at 8 games * 2 markets * 30 days).
+      # Lift this gate when ODDS_API_KEY moves to a paid tier.
+      - name: Run player-props pipeline (DraftKings, morning only)
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        env:
+          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+        working-directory: python
+        run: python props_pipeline.py
 
       - name: Commit + push if data changed
         run: |
