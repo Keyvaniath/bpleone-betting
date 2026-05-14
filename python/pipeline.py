@@ -195,9 +195,59 @@ def _consensus_odds(event: Dict[str, Any], home_name: str, away_name: str) -> Di
     }
 
 
+def _team_dict_real(team_id_or_none: Optional[int], code: str) -> Dict[str, Any]:
+    """Build TeamFactor dict from real season stats, falling back to league avg."""
+    import stats_repo as sr
+    if not team_id_or_none:
+        return {"code": code, **LEAGUE_AVG_TEAM}
+    try:
+        off = sr.team_offensive_index(team_id_or_none)
+        bp = sr.team_bullpen_delta(team_id_or_none)
+    except Exception:
+        return {"code": code, **LEAGUE_AVG_TEAM}
+    return {"code": code, "offensive_wrc_plus": off, "bullpen_era_fip_delta": bp, "rest_days": 1}
+
+
+def _fip_from_season(s: Dict[str, Any]) -> Optional[float]:
+    """FIP = (13*HR + 3*BB - 2*K)/IP + 3.10. Returns None if IP=0."""
+    ip = s.get("inningsPitched")
+    if not ip:
+        return None
+    try:
+        hr = s.get("homeRuns", 0) or 0
+        bb = s.get("baseOnBalls", 0) or 0
+        k = s.get("strikeOuts", 0) or 0
+        return round((13 * hr + 3 * bb - 2 * k) / ip + 3.10, 2)
+    except Exception:
+        return None
+
+
+def _pitcher_dict_real(pid: Optional[int], name: Optional[str]) -> Dict[str, Any]:
+    """Build PitcherFactor dict from real season stats."""
+    import stats_repo as sr
+    if not pid:
+        return {**LEAGUE_AVG_PITCHER, "name": name or "TBD"}
+    try:
+        s = sr.pitcher_season(pid)
+        hand = sr.pitcher_hand(pid)
+    except Exception:
+        return {**LEAGUE_AVG_PITCHER, "name": name or "TBD"}
+    if not s:
+        return {**LEAGUE_AVG_PITCHER, "name": name or "TBD"}
+    fip = _fip_from_season(s)
+    return {
+        "name": name or "TBD",
+        "xfip": fip if fip is not None else s.get("era", LEAGUE_AVG_PITCHER["xfip"]),
+        "k_per_9": s.get("strikeoutsPer9Inn", LEAGUE_AVG_PITCHER["k_per_9"]),
+        "bb_per_9": s.get("walksPer9Inn", LEAGUE_AVG_PITCHER["bb_per_9"]),
+        "hand": hand or "R",
+    }
+
+
 def build_real_slate() -> Optional[List[Dict[str, Any]]]:
     """Build today's slate from MLB Stats API + The Odds API. None on any failure."""
     import data_fetcher as df
+    import stats_repo as sr
     try:
         sched = df.fetch_today_schedule()
     except Exception as e:
@@ -216,30 +266,27 @@ def build_real_slate() -> Optional[List[Dict[str, Any]]]:
         print(f"  [x] odds fetch failed: {e}")
         odds_events = []
 
-    # Index odds by (home, away) name pair.
     odds_by_pair = {}
     for ev in odds_events:
         odds_by_pair[(ev["home_team"], ev["away_team"])] = ev
 
     slate = []
     for g in sched:
-        # Skip in-progress / completed games — we want pre-game projections.
         if g.get("status") not in ("Scheduled", "Pre-Game", "Warmup", "Delayed Start: Rain"):
             continue
         home_name, away_name = g["home"], g["away"]
         home_code = TEAM_CODE.get(home_name, home_name[:3].upper())
         away_code = TEAM_CODE.get(away_name, away_name[:3].upper())
+        home_tid = sr.team_id(home_name)
+        away_tid = sr.team_id(away_name)
         ev = odds_by_pair.get((home_name, away_name))
         prices = _consensus_odds(ev, home_name, away_name) if ev else {"ml_home": None, "ml_away": None, "total": None}
 
-        # Probable pitchers (best effort).
-        pitchers = {"home": None, "away": None}
-        try:
-            pitchers = df.fetch_probable_pitchers(g["gamePk"]) or pitchers
-        except Exception:
-            pass
+        # Probable pitchers with IDs (preferred) or names only (fallback).
+        pp = sr.probable_pitchers_for_game(g["gamePk"]) or {"home": {}, "away": {}}
+        home_pid, home_pname = pp["home"].get("id"), pp["home"].get("name")
+        away_pid, away_pname = pp["away"].get("id"), pp["away"].get("name")
 
-        from pipeline import PARK_FACTORS  # noqa
         park_factor = PARK_FACTORS.get(g["venue"], 1.00)
         slate.append({
             "time": _et_time(g["time"]),
@@ -247,11 +294,20 @@ def build_real_slate() -> Optional[List[Dict[str, Any]]]:
             "market_total": prices["total"] or 8.5,
             "market_ml_away": prices["ml_away"] or 100,
             "market_ml_home": prices["ml_home"] or -110,
-            "away": {"code": away_code, **LEAGUE_AVG_TEAM},
-            "home": {"code": home_code, **LEAGUE_AVG_TEAM},
-            "away_pitcher": {**LEAGUE_AVG_PITCHER, "name": pitchers.get("away") or "TBD"},
-            "home_pitcher": {**LEAGUE_AVG_PITCHER, "name": pitchers.get("home") or "TBD"},
+            "away": _team_dict_real(away_tid, away_code),
+            "home": _team_dict_real(home_tid, home_code),
+            "away_pitcher": _pitcher_dict_real(away_pid, away_pname),
+            "home_pitcher": _pitcher_dict_real(home_pid, home_pname),
             "ctx": {"park_factor": park_factor, "temp_f": 70, "wind_mph": 0, "umpire_zone_size": 0.0, "is_indoor": False},
+            # Metadata for downstream tools (matchup engine, quirks, research page).
+            # Stripped before passing to the model.
+            "_meta": {
+                "gamePk": g["gamePk"],
+                "home_team_id": home_tid, "away_team_id": away_tid,
+                "home_pitcher_id": home_pid, "away_pitcher_id": away_pid,
+                "home_pitcher_name": home_pname, "away_pitcher_name": away_pname,
+                "venue": g["venue"],
+            },
         })
     return slate or None
 
@@ -276,3 +332,12 @@ if __name__ == "__main__":
     write_manifest(manifest)
     if manifest.get("play_of_day"):
         print(json.dumps(manifest["play_of_day"], indent=2))
+
+    # Also write the matchup research digest. Failures here shouldn't break the
+    # daily refresh — the slate JSON is the critical artifact.
+    try:
+        from matchup_engine import build_all_matchups, write_matchups
+        m_payload = build_all_matchups()
+        write_matchups(m_payload)
+    except Exception as e:
+        print(f"  [x] matchup digest skipped: {e}")
