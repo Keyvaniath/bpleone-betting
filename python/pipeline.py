@@ -84,6 +84,9 @@ def run_pipeline(games: List[Dict[str, Any]]) -> Dict[str, Any]:
                 "total": g.get("market_total"),
                 "book": g.get("market_book"),
             },
+            "weather": {k: v for k, v in (g.get("ctx") or {}).items()
+                        if k in ("temp_f", "wind_mph", "is_indoor", "wind_dir_deg",
+                                 "carry_index", "precip_pct")},
             "recommendations": proj.recommendations,
         }
         out_games.append(record)
@@ -99,13 +102,17 @@ def run_pipeline(games: List[Dict[str, Any]]) -> Dict[str, Any]:
     return manifest
 
 
+_MODEL_CTX_KEYS = {"park_factor", "temp_f", "wind_mph", "is_indoor", "umpire_zone_size"}
+
+
 def _to_input(g: Dict[str, Any]) -> GameInput:
+    ctx = {k: v for k, v in g["ctx"].items() if k in _MODEL_CTX_KEYS}
     return GameInput(
         away=TeamFactor(**g["away"]),
         home=TeamFactor(**g["home"]),
         away_pitcher=PitcherFactor(**g["away_pitcher"]),
         home_pitcher=PitcherFactor(**g["home_pitcher"]),
-        ctx=GameContext(**g["ctx"]),
+        ctx=GameContext(**ctx),
         market_total=g.get("market_total", 8.5),
         market_ml_away=g.get("market_ml_away", 100),
         market_ml_home=g.get("market_ml_home", -110),
@@ -310,6 +317,16 @@ def build_real_slate() -> Optional[List[Dict[str, Any]]]:
         away_pid, away_pname = pp["away"].get("id"), pp["away"].get("name")
 
         park_factor = PARK_FACTORS.get(g["venue"], 1.00)
+        # Weather for ctx (mlb_model uses temp_f + wind_mph for run-environment).
+        try:
+            from weather import get_weather
+            wx = get_weather(g["venue"], g.get("time"))
+        except Exception:
+            wx = {}
+        ctx_temp = wx.get("temp_f", 70)
+        ctx_wind = wx.get("wind_mph", 0)
+        ctx_indoor = bool(wx.get("indoor"))
+        carry = wx.get("carry_index")  # -1..+1 wind-to-CF signal (None if indoor)
         slate.append({
             "time": _et_time(g["time"]),
             "park": g["venue"],
@@ -321,7 +338,10 @@ def build_real_slate() -> Optional[List[Dict[str, Any]]]:
             "home": _team_dict_real(home_tid, home_code),
             "away_pitcher": _pitcher_dict_real(away_pid, away_pname),
             "home_pitcher": _pitcher_dict_real(home_pid, home_pname),
-            "ctx": {"park_factor": park_factor, "temp_f": 70, "wind_mph": 0, "umpire_zone_size": 0.0, "is_indoor": False},
+            "ctx": {"park_factor": park_factor, "temp_f": ctx_temp, "wind_mph": ctx_wind,
+                    "umpire_zone_size": 0.0, "is_indoor": ctx_indoor,
+                    "wind_dir_deg": wx.get("wind_dir_deg"), "carry_index": carry,
+                    "precip_pct": wx.get("precip_pct"), "forecast_hour": wx.get("forecast_hour")},
             # Metadata for downstream tools (matchup engine, quirks, research page).
             # Stripped before passing to the model.
             "_meta": {

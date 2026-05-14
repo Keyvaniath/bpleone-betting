@@ -220,31 +220,46 @@ LEAGUE_K_RATE = 0.22  # rough MLB-wide K%
 
 
 def project_pitcher_ks(pid: int, line: float, opp_team_id: Optional[int] = None) -> Tuple[float, Dict[str, Any]]:
-    """P(K >= ceil(line)). Adjusts for opposing team's K rate; gates on sample size."""
+    """P(K >= ceil(line)). Adjusts for opposing team's K rate; weights season + recent form."""
     season = sr.pitcher_season(pid) if pid else {}
     if not season or not season.get("inningsPitched"):
         return 0.50, {"reason": "no-data", "low_confidence": True}
     try:
         ip = float(season.get("inningsPitched", 0) or 0)
         starts = float(season.get("gamesStarted", 0) or 0)
-        # Quality gate: need >= 3 starts AND >= 15 IP for a real read.
         if starts < 3 or ip < 15:
             return 0.50, {"reason": "thin-sample", "starts": starts, "ip": ip, "low_confidence": True}
         avg_ip_per_start = ip / starts
-        # Cap at 7 IP (rare deeper), floor at 4.5 (today's bullpens give starters 4.5+ minimum).
         expected_ip = max(4.5, min(7.0, avg_ip_per_start))
-        k9 = float(season.get("strikeoutsPer9Inn", 8.6) or 8.6)
-        expected_ks = k9 * expected_ip / 9.0
-        # Opposing team K-rate adjustment.
+        season_k9 = float(season.get("strikeoutsPer9Inn", 8.6) or 8.6)
+
+        # Recent-form weighting: blend season K/9 with last 3 starts.
+        # 60% recent + 40% season gives the model responsiveness without overfitting to noise.
+        recent = sr.pitcher_recent_form(pid, n=3)
+        recent_k9 = recent.get("k9") if recent and recent.get("k9") else None
+        if recent_k9 is not None and recent.get("starts", 0) >= 2:
+            blended_k9 = 0.6 * recent_k9 + 0.4 * season_k9
+            recent_ip = recent.get("ip", 0)
+            recent_starts = recent.get("starts", 0)
+            recent_ip_per_start = (recent_ip / recent_starts) if recent_starts else avg_ip_per_start
+            # Blend expected IP too -- if pitcher has been getting yanked early lately, lower expectation.
+            blended_ip = 0.6 * max(3.0, min(7.5, recent_ip_per_start)) + 0.4 * expected_ip
+        else:
+            blended_k9 = season_k9
+            blended_ip = expected_ip
+
+        expected_ks = blended_k9 * blended_ip / 9.0
         opp_k = _team_k_rate(opp_team_id)
         opp_mult = (opp_k / LEAGUE_K_RATE) if opp_k else 1.0
         expected_ks_adj = expected_ks * opp_mult
         line_int = int(math.ceil(line))
         p_over = poisson_p_at_least(expected_ks_adj, line_int)
         return p_over, {
-            "k9": round(k9, 2), "starts": int(starts),
-            "expected_ip": round(expected_ip, 2),
-            "expected_ks_raw": round(expected_ks, 2),
+            "season_k9": round(season_k9, 2),
+            "recent_k9": round(recent_k9, 2) if recent_k9 else None,
+            "blended_k9": round(blended_k9, 2),
+            "starts": int(starts),
+            "expected_ip": round(blended_ip, 2),
             "opp_k_rate": round(opp_k, 3) if opp_k else None,
             "opp_mult": round(opp_mult, 3),
             "expected_ks_adj": round(expected_ks_adj, 2),
@@ -270,35 +285,49 @@ def _batter_season(pid: int) -> Dict[str, Any]:
     return sr._coerce_stat(splits[0]["stat"])
 
 
-def project_batter_hr(pid: int, line: float) -> Tuple[float, Dict[str, Any]]:
+# Expected PAs by batting-order slot (typical 9-inning game; data from FanGraphs analysis).
+PA_BY_ORDER = {1: 4.65, 2: 4.55, 3: 4.45, 4: 4.35, 5: 4.25,
+               6: 4.15, 7: 4.05, 8: 3.95, 9: 3.85}
+
+
+def _expected_pa(order: Optional[int]) -> float:
+    """Expected PAs given batting-order slot. Falls back to 4.2 (mid-order avg)."""
+    if order and 1 <= order <= 9:
+        return PA_BY_ORDER[order]
+    return 4.2
+
+
+def project_batter_hr(pid: int, line: float, order: Optional[int] = None) -> Tuple[float, Dict[str, Any]]:
     s = _batter_season(pid)
     pa, hr = s.get("plateAppearances"), s.get("homeRuns")
     if not pa or pa < 30 or hr is None:
         return 0.04, {"reason": "thin-sample", "pa": pa, "hr": hr, "low_confidence": True}
     hr_per_pa = float(hr) / float(pa)
-    expected_hr = hr_per_pa * 4.2
+    expected_pa_g = _expected_pa(order)
+    expected_hr = hr_per_pa * expected_pa_g
     line_int = int(math.ceil(line))
     p_over = poisson_p_at_least(expected_hr, line_int)
     return p_over, {"pa": pa, "hr": hr, "hr_per_pa": round(hr_per_pa, 4),
+                    "batting_order": order, "expected_pa": expected_pa_g,
                     "expected_hr": round(expected_hr, 3), "line_int": line_int}
 
 
-def project_batter_hits(pid: int, line: float) -> Tuple[float, Dict[str, Any]]:
-    """P(player gets >= ceil(line) hits). Uses BABIP-aware H/PA from season."""
+def project_batter_hits(pid: int, line: float, order: Optional[int] = None) -> Tuple[float, Dict[str, Any]]:
     s = _batter_season(pid)
     pa, hits = s.get("plateAppearances"), s.get("hits")
     if not pa or pa < 30 or hits is None:
         return 0.27, {"reason": "thin-sample", "pa": pa, "hits": hits, "low_confidence": True}
     h_per_pa = float(hits) / float(pa)
-    expected_h = h_per_pa * 4.2
+    expected_pa_g = _expected_pa(order)
+    expected_h = h_per_pa * expected_pa_g
     line_int = int(math.ceil(line))
     p_over = poisson_p_at_least(expected_h, line_int)
     return p_over, {"pa": pa, "hits": hits, "h_per_pa": round(h_per_pa, 4),
+                    "batting_order": order, "expected_pa": expected_pa_g,
                     "expected_hits": round(expected_h, 3), "line_int": line_int}
 
 
-def project_batter_tb(pid: int, line: float) -> Tuple[float, Dict[str, Any]]:
-    """P(player gets >= ceil(line) total bases). TB/PA from singles + 2*2B + 3*3B + 4*HR."""
+def project_batter_tb(pid: int, line: float, order: Optional[int] = None) -> Tuple[float, Dict[str, Any]]:
     s = _batter_season(pid)
     pa = s.get("plateAppearances")
     if not pa or pa < 30:
@@ -310,10 +339,12 @@ def project_batter_tb(pid: int, line: float) -> Tuple[float, Dict[str, Any]]:
     singles = hits - doubles - triples - hr
     tb = singles + 2 * doubles + 3 * triples + 4 * hr
     tb_per_pa = tb / float(pa)
-    expected_tb = tb_per_pa * 4.2
+    expected_pa_g = _expected_pa(order)
+    expected_tb = tb_per_pa * expected_pa_g
     line_int = int(math.ceil(line))
     p_over = poisson_p_at_least(expected_tb, line_int)
     return p_over, {"pa": pa, "tb_season": int(tb), "tb_per_pa": round(tb_per_pa, 4),
+                    "batting_order": order, "expected_pa": expected_pa_g,
                     "expected_tb": round(expected_tb, 3), "line_int": line_int}
 
 
@@ -346,11 +377,38 @@ def build_props(markets: Optional[List[str]] = None, max_games: int = MAX_GAMES)
     if corrections:
         print(f"  -> applying calibration corrections: {corrections}")
 
+    # Pull MLB schedule once to map Odds event_id -> MLB gamePk for lineup lookups.
+    today_iso = dt.date.today().isoformat()
+    mlb_sched = []
+    if requests is not None:
+        try:
+            mlb_sched = requests.get(
+                "https://statsapi.mlb.com/api/v1/schedule",
+                params={"sportId": 1, "date": today_iso},
+                timeout=10,
+            ).json().get("dates", [])
+        except Exception:
+            mlb_sched = []
+    # Build (home_name, away_name) -> gamePk index.
+    pk_by_pair: Dict[Tuple[str, str], int] = {}
+    for d in mlb_sched:
+        for g in d.get("games", []):
+            try:
+                home = g["teams"]["home"]["team"]["name"]
+                away = g["teams"]["away"]["team"]["name"]
+                pk_by_pair[(home, away)] = g["gamePk"]
+            except Exception:
+                pass
+
     out_games = []
     for e in events:
         eid = e["id"]
         home_team_id = sr.team_id(e.get("home_team", ""))
         away_team_id = sr.team_id(e.get("away_team", ""))
+        game_pk = pk_by_pair.get((e.get("home_team", ""), e.get("away_team", "")))
+        # Pull lineup once per game (cached 15min in stats_repo).
+        lineups = sr.game_lineups(game_pk) if game_pk else {"home": {}, "away": {}}
+        lineup_posted = bool(lineups["home"] or lineups["away"])
         payload = fetch_event_props(eid, markets)
         bks = payload.get("bookmakers", [])
         if not bks:
@@ -376,16 +434,31 @@ def build_props(markets: Optional[List[str]] = None, max_games: int = MAX_GAMES)
                 pid = resolve_player_id(player_name)
                 # Determine which side this player plays for so we know the OPP team.
                 opp_team_id = _player_opp_team(pid, home_team_id, away_team_id)
+                # Lineup status (batter markets only): None=bench, {}=not posted, {order, side, pos}=in
+                batter_order = None
+                lineup_status = "unknown"
+                if market_key.startswith("batter_"):
+                    if not lineup_posted:
+                        lineup_status = "lineup-not-posted"
+                    elif pid:
+                        for side_key in ("home", "away"):
+                            if pid in lineups[side_key]:
+                                batter_order = lineups[side_key][pid].get("order")
+                                lineup_status = f"in-lineup-{batter_order}"
+                                break
+                        if batter_order is None:
+                            lineup_status = "not-in-lineup"
                 if market_key == "pitcher_strikeouts":
                     p_over, dbg = project_pitcher_ks(pid, line, opp_team_id)
                 elif market_key == "batter_home_runs":
-                    p_over, dbg = project_batter_hr(pid, line)
+                    p_over, dbg = project_batter_hr(pid, line, batter_order)
                 elif market_key == "batter_hits":
-                    p_over, dbg = project_batter_hits(pid, line)
+                    p_over, dbg = project_batter_hits(pid, line, batter_order)
                 elif market_key == "batter_total_bases":
-                    p_over, dbg = project_batter_tb(pid, line)
+                    p_over, dbg = project_batter_tb(pid, line, batter_order)
                 else:
                     continue
+                dbg["lineup_status"] = lineup_status
                 # Apply calibration correction from yesterday's outcomes.
                 cf = corrections.get(market_key, 1.0)
                 p_over_raw = p_over
@@ -416,12 +489,18 @@ def build_props(markets: Optional[List[str]] = None, max_games: int = MAX_GAMES)
                     if eg is not None and eg > best_edge:
                         best_side, best_edge = side, eg
                 low_conf = bool(dbg.get("low_confidence"))
-                # Bench-player heuristic: on 0.5-line hitter markets, very long
-                # OVER prices (+200+) imply the player isn't in the lineup.
-                # Until we wire confirmed lineups, mark these low-confidence.
-                if market_key.startswith("batter_") and line <= 0.5 and over_p is not None and over_p > 200:
-                    low_conf = True
-                    row["bench_flag"] = True
+                # Lineup-aware filter (preferred when MLB has posted the card):
+                # confirmed-not-in-lineup => hard SKIP. lineup-not-posted falls back
+                # to the long-odds bench heuristic.
+                if market_key.startswith("batter_"):
+                    if lineup_status == "not-in-lineup":
+                        low_conf = True
+                        row["bench_flag"] = True
+                    elif lineup_status == "lineup-not-posted":
+                        # Fallback heuristic when lineup hasn't dropped yet.
+                        if line <= 0.5 and over_p is not None and over_p > 200:
+                            low_conf = True
+                            row["bench_flag"] = True
                 # If projection is thin or edge is suspiciously huge, downgrade.
                 if low_conf or best_edge >= 35.0:
                     row["play"] = "SKIP"

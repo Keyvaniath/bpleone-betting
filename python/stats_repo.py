@@ -292,6 +292,60 @@ def pitcher_hand(pid: int) -> str:
 
 # -------------------- Probable pitcher resolution --------------------
 
+def game_lineups(game_pk: int) -> Dict[str, Any]:
+    """Return {'home': {batter_id: {name, order, pos}, ...}, 'away': {...}}.
+    Empty until teams post lineups (~1-2 hours pre-game).
+    Cached short (15 min) since lineups can update late.
+    """
+    # Short TTL so we pick up late lineup changes; use a non-stats cache slot.
+    cache_name = f"lineup_{game_pk}"
+    cache_path = _cache_path(cache_name)
+    fresh = False
+    if os.path.exists(cache_path):
+        if time.time() - os.path.getmtime(cache_path) < 900:  # 15 min
+            try:
+                with open(cache_path) as f:
+                    return json.load(f)
+            except Exception:
+                pass
+    payload = None
+    if requests is not None:
+        try:
+            r = requests.get(f"https://statsapi.mlb.com/api/v1/game/{game_pk}/boxscore", timeout=10)
+            if r.ok:
+                payload = r.json()
+        except Exception:
+            pass
+    out: Dict[str, Any] = {"home": {}, "away": {}}
+    if payload:
+        for side in ("home", "away"):
+            team = payload.get("teams", {}).get(side, {})
+            order = team.get("battingOrder", []) or []
+            for i, pid in enumerate(order):
+                p = team.get("players", {}).get(f"ID{pid}", {})
+                out[side][int(pid)] = {
+                    "name": p.get("person", {}).get("fullName"),
+                    "order": i + 1,
+                    "pos": (p.get("position", {}) or {}).get("abbreviation"),
+                }
+    _cache_put(cache_name, out)
+    return out
+
+
+def player_is_in_lineup(pid: int, game_pk: int, home_team_id: Optional[int],
+                       away_team_id: Optional[int]) -> Optional[Dict[str, Any]]:
+    """Returns {side, order, pos} if confirmed in lineup, None if not, {} if no lineup posted yet."""
+    lineups = game_lineups(game_pk)
+    if not (lineups["home"] or lineups["away"]):
+        return {}  # not posted yet -- caller should use heuristic
+    for side in ("home", "away"):
+        if pid in lineups[side]:
+            entry = dict(lineups[side][pid])
+            entry["side"] = side
+            return entry
+    return None  # lineup posted but player not in it (bench)
+
+
 def probable_pitchers_for_game(game_pk: int) -> Dict[str, Dict[str, Any]]:
     """Return {'home': {id, name}, 'away': {id, name}} for a game."""
     payload = _get(

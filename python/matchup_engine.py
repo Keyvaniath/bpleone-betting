@@ -203,6 +203,9 @@ def build_all_matchups(today_json_path: Optional[str] = None) -> Dict[str, Any]:
             "total": game.get("market_total"),
             "book": game.get("market_book"),
         }
+        m["weather"] = {k: v for k, v in (game.get("ctx") or {}).items()
+                        if k in ("temp_f", "wind_mph", "is_indoor", "wind_dir_deg",
+                                 "carry_index", "precip_pct")}
         matchups.append(m)
 
     payload = {

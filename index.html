@@ -270,5 +270,72 @@
 <script src="js/ml-models.js"></script>
 <script src="js/charts.js"></script>
 <script src="js/main.js"></script>
+
+<script>
+// Live data overrides for the hero, Play of Day, and key metrics.
+// Pulls from data/today.json + data/track_record.json (no mocks).
+fetch("data/today.json", { cache: "no-cache" })
+  .then(r => r.json())
+  .then(d => {
+    const pod = d.play_of_day;
+    if (!pod) return;
+    // Title
+    const titleEl = document.querySelector(".play-card .play-title");
+    if (titleEl) titleEl.innerHTML = `${pod.matchup} <span class="accent">${pod.label || ""}</span>`;
+    // Header date + time
+    const headMuted = document.querySelector(".play-card .card-head .muted");
+    if (headMuted) headMuted.textContent = `${(d.generated_at || "").slice(0,10)} -- ${pod.time || ""}`;
+    // Stats
+    const stats = document.querySelectorAll(".play-card .play-stat");
+    const setStat = (idx, label, val, posClass) => {
+      if (!stats[idx]) return;
+      stats[idx].querySelector(".stat-label").textContent = label;
+      const v = stats[idx].querySelector(".stat-value-big");
+      v.textContent = val;
+      v.className = "stat-value-big" + (posClass || "");
+    };
+    setStat(0, "Market Price", pod.market_price >= 0 ? "+" + pod.market_price : String(pod.market_price));
+    setStat(1, "Model Prob", (pod.model_prob * 100).toFixed(1) + "%");
+    setStat(2, "Edge", "+" + Number(pod.edge_pct).toFixed(2) + "%", " positive");
+    setStat(3, "Confidence", pod.confidence || "--");
+    setStat(4, "Kelly Stake", Number(pod.kelly_units).toFixed(1) + "u");
+    setStat(5, "Side", pod.label || "--");
+    // Summary line
+    const summary = document.querySelector(".play-card .play-summary");
+    if (summary) summary.innerHTML =
+      `Highest-edge play on tonight's slate: <strong>${pod.matchup}</strong> ${pod.label} at ${pod.market_price >= 0 ? "+" + pod.market_price : pod.market_price}. ` +
+      `Model probability ${(pod.model_prob * 100).toFixed(1)}% beats market implied probability, opening a ${pod.edge_pct}% edge. ` +
+      `Recommended ${pod.kelly_units}u Kelly stake. Last refresh ${(d.generated_at || "").replace("T", " ")} UTC.`;
+
+    // Key metrics strip
+    const games = d.games || [];
+    const edges = games.flatMap(g => g.recommendations || []);
+    const m = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
+    m("mGames", games.length);
+    m("mEdges", edges.length);
+    m("mPlusEV", edges.filter(r => (r.edge_pct || 0) >= 3).length);
+    m("mKelly", (pod.kelly_units || 0).toFixed(1) + "u");
+    m("lastRefresh", (d.generated_at || "").replace("T", " ") + " UTC");
+  })
+  .catch(err => console.error("today.json load failed:", err));
+
+// Also pull live track-record metrics for the hero stat row.
+fetch("data/track_record.json", { cache: "no-cache" })
+  .then(r => r.json())
+  .then(tr => {
+    const props = tr.props || [];
+    const games = tr.games || [];
+    const allHits = [...props, ...games].filter(r => r.play_hit !== undefined ? r.play_hit !== null : r.over_hit !== null);
+    if (!allHits.length) return;
+    const won = allHits.filter(r => r.play_hit === true).length;
+    const total = allHits.filter(r => r.play_hit !== null).length;
+    const heroStats = document.querySelectorAll(".hero-stats .stat-value");
+    // Update if there's at least some real data; otherwise leave the static "+14.7u" placeholders.
+    if (heroStats[1] && total > 0) heroStats[1].innerHTML = `${(won / total * 100).toFixed(1)}<span class="unit">%</span>`;
+    if (heroStats[3]) heroStats[3].textContent = String(total);
+  })
+  .catch(() => {}); // No track record yet -- leave placeholders.
+</script>
+
 </body>
 </html>
