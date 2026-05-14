@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parlays | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .parlay-card { padding: 16px 18px; margin-bottom: 14px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; }
+  .parlay-head { display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; }
+  .parlay-head .title { font-weight:600; font-size:14px; }
+  .parlay-head .pill { font-family:'JetBrains Mono',monospace; font-size:11px; padding:3px 8px; border-radius:4px; background: rgba(88,200,120,0.1); color:#58c878; }
+  .parlay-head .pill.warn { background: rgba(227,90,90,0.1); color:#e35a5a; }
+  .leg-row { font-family:'JetBrains Mono',monospace; font-size:12px; line-height:1.7; padding:4px 0; border-top:1px solid rgba(255,255,255,0.04); display:grid; grid-template-columns: 1fr auto auto; gap:14px; }
+  .leg-row:first-of-type { border-top:none; }
+  .leg-row .label { color: var(--text, #ddd); }
+  .leg-row .matchup { color: var(--muted, #888); font-size:11px; }
+  .leg-row .price { color: var(--text-secondary, #aaa); }
+  .leg-row .prob { color: #58c878; }
+  .parlay-foot { font-family:'JetBrains Mono',monospace; font-size:11px; color: var(--muted, #888); margin-top:8px; display:flex; gap:18px; }
+  .empty { color: var(--muted,#888); font-style:italic; font-size:13px; padding:20px; text-align:center; }
+</style>
+</head>
+<body class="page-parlays">
+<header class="topbar">
+  <div class="brand">
+    <a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a>
+    <span class="tagline">by bpleone</span>
+  </div>
+  <nav class="mainnav">
+    <a href="index.html">Dashboard</a>
+    <a href="play-of-day.html">Play of the Day</a>
+    <a href="mlb.html">MLB</a>
+    <a href="research.html">Research</a>
+    <a href="parlays.html" class="active">Parlays</a>
+    <a href="models.html">Models</a>
+    <a href="ml-lab.html">ML Lab</a>
+    <a href="live.html">Live</a>
+    <a href="simulator.html">Sim</a>
+    <a href="backtest.html">Backtest</a>
+    <a href="linemaker.html">Linemaker</a>
+    <a href="arbitrage.html">Arb</a>
+    <a href="bankroll.html">Bankroll</a>
+    <a href="props.html">Props</a>
+    <a href="learn.html">Learn</a>
+  </nav>
+  <div class="topbar-actions"><div class="ticker" id="liveTicker">LIVE</div></div>
+</header>
+
+<main class="container">
+
+  <section class="page-head">
+    <h1>Parlays</h1>
+    <p>Multi-leg combinations from today's highest-edge game lines and player props. Cross-game parlays multiply independent probabilities; same-game parlays apply a correlation haircut.</p>
+    <p class="muted" style="font-size:12px; margin-top:6px;">Suppression rules: each leg's solo edge must be 3-25% (anything higher is likely pre-calibration model noise); parlay EV must be 8-50%. As calibration data accumulates, both gates loosen.</p>
+  </section>
+
+  <section class="metric-strip" id="parlayMetrics">
+    <div class="metric"><span class="metric-num" data-key="legs">--</span><span class="metric-label">Qualifying Legs</span></div>
+    <div class="metric"><span class="metric-num" data-key="total">--</span><span class="metric-label">Parlays Surfaced</span></div>
+    <div class="metric"><span class="metric-num" data-key="best_edge">--</span><span class="metric-label">Best Edge</span></div>
+    <div class="metric"><span class="metric-num" data-key="best_price">--</span><span class="metric-label">Best Price</span></div>
+    <div class="metric"><span class="metric-num" data-key="refresh">--</span><span class="metric-label">Refresh (UTC)</span></div>
+    <div class="metric"><span class="metric-num">DK</span><span class="metric-label">Book</span></div>
+  </section>
+
+  <section class="card" style="margin-bottom: 24px;">
+    <div class="card-head"><span>Top Parlay Suggestions</span><span class="muted" id="parlayRefreshed"></span></div>
+    <div class="filterbar">
+      <label>Legs:</label>
+      <select id="filterLegs"><option value="">All</option><option value="2">2-leg</option><option value="3">3-leg</option></select>
+      <label>Type:</label>
+      <select id="filterSGP"><option value="">All</option><option value="cross">Cross-game</option><option value="sgp">Same-game (SGP)</option></select>
+    </div>
+    <div id="parlayList">
+      <p class="empty">Loading parlays...</p>
+    </div>
+  </section>
+
+</main>
+
+<script>
+function fmtPrice(p) { if (p == null) return "--"; return p >= 0 ? "+" + p : String(p); }
+function fmtPct(x, d=1) { return x == null ? "--" : (x >= 0 ? "+" : "") + Number(x).toFixed(d) + "%"; }
+
+let state = { all: [], filterLegs: "", filterSGP: "" };
+
+function setMetric(key, val) {
+  const el = document.querySelector(`#parlayMetrics [data-key="${key}"]`);
+  if (el) el.textContent = val;
+}
+
+function renderParlay(c) {
+  const legs = c.legs.map(l => `
+    <div class="leg-row">
+      <div><span class="label">${l.label}</span><div class="matchup">${l.matchup || ""} -- ${l.market || ""}</div></div>
+      <div class="price">${fmtPrice(l.price)}</div>
+      <div class="prob">${(l.model_prob * 100).toFixed(1)}%</div>
+    </div>`).join("");
+  const pillCls = c.sgp ? "pill warn" : "pill";
+  const pillTxt = c.sgp ? `SGP (haircut ${(c.correlation_haircut * 100).toFixed(0)}%)` : "cross-game";
+  return `<div class="parlay-card">
+    <div class="parlay-head">
+      <span class="title">${c.n_legs}-leg parlay</span>
+      <span class="${pillCls}">${pillTxt}</span>
+    </div>
+    ${legs}
+    <div class="parlay-foot">
+      <span>Parlay price: <strong>${fmtPrice(c.parlay_price)}</strong></span>
+      <span>Model prob: <strong>${(c.parlay_prob * 100).toFixed(1)}%</strong></span>
+      <span>EV: <strong style="color:#58c878;">${fmtPct(c.edge_pct)}</strong></span>
+    </div>
+  </div>`;
+}
+
+function renderList() {
+  const list = document.getElementById("parlayList");
+  let rows = state.all.slice();
+  if (state.filterLegs) rows = rows.filter(c => String(c.n_legs) === state.filterLegs);
+  if (state.filterSGP === "sgp") rows = rows.filter(c => c.sgp);
+  if (state.filterSGP === "cross") rows = rows.filter(c => !c.sgp);
+  list.innerHTML = rows.length
+    ? rows.map(renderParlay).join("")
+    : `<p class="empty">No parlays match the current filters. As the calibration loop builds up data over the next week, more plays will qualify.</p>`;
+}
+
+fetch("data/parlays.json", { cache: "no-cache" })
+  .then(r => r.json())
+  .then(payload => {
+    state.all = payload.parlays || [];
+    setMetric("legs", payload.legs_evaluated ?? "--");
+    setMetric("total", state.all.length);
+    setMetric("best_edge", state.all[0] ? fmtPct(state.all[0].edge_pct) : "--");
+    setMetric("best_price", state.all[0] ? fmtPrice(state.all[0].parlay_price) : "--");
+    setMetric("refresh", (payload.generated_at || "").slice(11, 16));
+    document.getElementById("parlayRefreshed").textContent =
+      payload.generated_at ? `refreshed ${payload.generated_at.replace("T", " ")} UTC` : "";
+    renderList();
+    document.getElementById("filterLegs").addEventListener("change", e => { state.filterLegs = e.target.value; renderList(); });
+    document.getElementById("filterSGP").addEventListener("change", e => { state.filterSGP = e.target.value; renderList(); });
+  })
+  .catch(err => {
+    document.getElementById("parlayList").innerHTML =
+      `<p class="empty">parlays.json not loaded yet -- the daily pipeline writes this after props refresh.</p>`;
+    console.error(err);
+  });
+</script>
+
+</body>
+</html>

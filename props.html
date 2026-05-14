@@ -18,6 +18,8 @@
     <a href="play-of-day.html">Play of the Day</a>
     <a href="mlb.html">MLB</a>
     <a href="research.html">Research</a>
+    <a href="parlays.html">Parlays</a>
+    <a href="learning.html">Learning</a>
     <a href="models.html">Models</a>
     <a href="ml-lab.html">ML Lab</a>
     <a href="live.html">Live</a>
@@ -38,7 +40,7 @@
     <h1>Player Props -- Today's Edges</h1>
     <p>Player props are the most inefficient market in sports betting. Books can't sharpen 1,000+ markets a day with the same precision they sharpen the moneyline. Our prop model attacks where the books are weakest.</p>
     <p class="market-line" style="margin-top:8px;">Lines from <strong>DraftKings</strong> (your takeable book). PrizePicks &amp; Sleeper lines are coming -- both run a different DFS pick-em model.</p>
-    <p class="muted" style="font-size:12px; margin-top:6px;">Model v1: pitcher_strikeouts + batter_home_runs. Projections use season stats + opponent-team K-rate. Calibration in progress -- treat as research, not gospel. Low-confidence plays (thin sample, suspect edges) are filtered to SKIP.</p>
+    <p class="muted" style="font-size:12px; margin-top:6px;">Model v1.1: pitcher_strikeouts, batter_home_runs, batter_hits, batter_total_bases. Projections use season stats + opponent-team K-rate + bench-player heuristic. Calibration loop is live -- each day's outcomes feed back into tomorrow's bias correction (see <a href="learning.html" style="color:#58c878;">Learning</a>). Low-confidence plays filtered to SKIP.</p>
   </section>
 
   <section class="metric-strip" id="propsMetricStrip">
@@ -54,7 +56,7 @@
     <div class="card-head"><span>Tonight's Top Prop Edges (DraftKings)</span><span class="muted" id="propsRefreshed"></span></div>
     <div class="filterbar">
       <label>Market:</label>
-      <select id="filterMarket"><option value="">All</option><option value="pitcher_strikeouts">Pitcher Ks</option><option value="batter_home_runs">Batter HR</option></select>
+      <select id="filterMarket"><option value="">All</option><option value="pitcher_strikeouts">Pitcher Ks</option><option value="batter_home_runs">Batter HR</option><option value="batter_hits">Batter Hits</option><option value="batter_total_bases">Batter Total Bases</option></select>
       <label>Min Edge:</label>
       <select id="filterEdge"><option value="3">+3%</option><option value="5">+5%</option><option value="10">+10%</option></select>
       <label>Side:</label>

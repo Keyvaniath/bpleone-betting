@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Self-Learning | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .market-row { display:grid; grid-template-columns: 180px repeat(7, 1fr); gap: 12px; align-items:center; padding:10px 14px; border-bottom:1px solid rgba(255,255,255,0.06); font-family:'JetBrains Mono',monospace; font-size:12px; }
+  .market-row.head { background: rgba(255,255,255,0.04); color: var(--muted, #888); font-size:11px; text-transform:uppercase; letter-spacing:0.04em; }
+  .market-row .name { font-weight:600; color: var(--text, #ddd); font-family: inherit; font-size:13px; }
+  .badge { padding:2px 8px; border-radius:4px; font-family:'JetBrains Mono',monospace; font-size:10px; }
+  .badge.good { background: rgba(88,200,120,0.15); color:#58c878; }
+  .badge.bad { background: rgba(227,90,90,0.15); color:#e35a5a; }
+  .badge.flat { background: rgba(255,255,255,0.06); color: var(--muted,#888); }
+  .recent-row { display:grid; grid-template-columns: 100px 200px 1fr auto auto auto; gap:14px; padding:8px 14px; border-bottom:1px solid rgba(255,255,255,0.04); font-family:'JetBrains Mono',monospace; font-size:12px; align-items:center; }
+  .recent-row .hit { color:#58c878; font-weight:600; }
+  .recent-row .miss { color:#e35a5a; font-weight:600; }
+  .recent-row.head { background: rgba(255,255,255,0.04); color: var(--muted, #888); font-size:11px; text-transform:uppercase; }
+  .empty { color: var(--muted,#888); font-style:italic; font-size:13px; padding:20px; text-align:center; }
+</style>
+</head>
+<body class="page-learning">
+<header class="topbar">
+  <div class="brand">
+    <a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a>
+    <span class="tagline">by bpleone</span>
+  </div>
+  <nav class="mainnav">
+    <a href="index.html">Dashboard</a>
+    <a href="play-of-day.html">Play of the Day</a>
+    <a href="mlb.html">MLB</a>
+    <a href="research.html">Research</a>
+    <a href="parlays.html">Parlays</a>
+    <a href="learning.html" class="active">Learning</a>
+    <a href="models.html">Models</a>
+    <a href="ml-lab.html">ML Lab</a>
+    <a href="live.html">Live</a>
+    <a href="simulator.html">Sim</a>
+    <a href="backtest.html">Backtest</a>
+    <a href="linemaker.html">Linemaker</a>
+    <a href="arbitrage.html">Arb</a>
+    <a href="bankroll.html">Bankroll</a>
+    <a href="props.html">Props</a>
+    <a href="learn.html">Learn</a>
+  </nav>
+  <div class="topbar-actions"><div class="ticker" id="liveTicker">LIVE</div></div>
+</header>
+
+<main class="container">
+
+  <section class="page-head">
+    <h1>Self-Learning Loop</h1>
+    <p>Every night a job pulls the box scores of every game from yesterday's slate, settles each projection (hit / miss / push), and writes the result to a growing track record. The next morning, a calibration runner re-reads the trailing 30 days, computes per-market bias, Brier score, log loss, and ECE, then writes a correction factor that the next day's projections multiply through. The model only gets smarter.</p>
+    <p class="muted" style="font-size:12px; margin-top:6px;">No corrections fire until a market has at least 30 settled records. Caps at +/- 25% per refresh to avoid runaway adjustment. Day 1: trust the priors. Day 30: trust the data.</p>
+  </section>
+
+  <section class="card" style="margin-bottom:24px;">
+    <div class="card-head"><span>Calibration by Market</span><span class="muted" id="calRefreshed"></span></div>
+    <div class="market-row head">
+      <span>Market</span><span>n</span><span>ROI</span><span>Hit rate</span><span>Model implied</span><span>Bias</span><span>ECE</span><span>Correction</span>
+    </div>
+    <div id="marketList"><p class="empty">Loading...</p></div>
+  </section>
+
+  <section class="card" style="margin-bottom:24px;">
+    <div class="card-head"><span>Game-Line Calibration (Over/Under)</span></div>
+    <div id="gameOverall"><p class="empty">Loading...</p></div>
+  </section>
+
+  <section class="card">
+    <div class="card-head"><span>Recently Settled (last 50)</span><span class="muted" id="recentCount"></span></div>
+    <div class="recent-row head">
+      <span>Date</span><span>Player / Game</span><span>Bet</span><span>Line / Actual</span><span>Play</span><span>Result</span>
+    </div>
+    <div id="recentList"><p class="empty">Loading...</p></div>
+  </section>
+
+</main>
+
+<script>
+function badge(text, cls) { return `<span class="badge ${cls}">${text}</span>`; }
+function fmtPct(x, d=2) { return x == null ? "--" : (x >= 0 ? "+" : "") + Number(x).toFixed(d) + "%"; }
+
+function biasLabel(bias) {
+  if (bias == null) return badge("--", "flat");
+  if (Math.abs(bias - 1) < 0.05) return badge(bias.toFixed(3), "good");
+  return badge(bias.toFixed(3), bias > 1 ? "bad" : "bad");
+}
+
+function renderMarkets(cal) {
+  const list = document.getElementById("marketList");
+  const markets = cal.markets || {};
+  const keys = Object.keys(markets);
+  if (!keys.length) {
+    list.innerHTML = `<p class="empty">No settled records yet. The first calibration data appears after tomorrow morning's outcomes ingestion runs.</p>`;
+    return;
+  }
+  list.innerHTML = keys.map(k => {
+    const m = markets[k];
+    const roiCls = (m.roi_pct || 0) > 0 ? "good" : (m.roi_pct || 0) < 0 ? "bad" : "flat";
+    return `<div class="market-row">
+      <span class="name">${k.replace(/_/g, " ")}</span>
+      <span>${m.n || 0}</span>
+      <span>${badge(fmtPct(m.roi_pct), roiCls)}</span>
+      <span>${m.actual_over_rate != null ? (m.actual_over_rate * 100).toFixed(1) + "%" : "--"}</span>
+      <span>${m.implied_over_rate != null ? (m.implied_over_rate * 100).toFixed(1) + "%" : "--"}</span>
+      <span>${biasLabel(m.bias)}</span>
+      <span>${m.ece != null ? m.ece.toFixed(3) : "--"}</span>
+      <span>${m.correction_factor != null ? badge(m.correction_factor.toFixed(3), m.correction_factor === 1 ? "flat" : "good") : "--"}</span>
+    </div>`;
+  }).join("");
+}
+
+function renderGameOverall(cal) {
+  const list = document.getElementById("gameOverall");
+  const g = cal.games_overall || {};
+  if (!g.n) {
+    list.innerHTML = `<p class="empty">No settled game totals yet.</p>`;
+    return;
+  }
+  list.innerHTML = `<div class="market-row" style="grid-template-columns: 180px repeat(7, 1fr);">
+    <span class="name">Game totals (O/U)</span>
+    <span>${g.n}</span>
+    <span>${badge(fmtPct(g.roi_pct), (g.roi_pct||0) > 0 ? "good" : "bad")}</span>
+    <span>${g.actual_over_rate != null ? (g.actual_over_rate * 100).toFixed(1) + "%" : "--"}</span>
+    <span>${g.implied_over_rate != null ? (g.implied_over_rate * 100).toFixed(1) + "%" : "--"}</span>
+    <span>${biasLabel(g.bias)}</span>
+    <span>${g.ece != null ? g.ece.toFixed(3) : "--"}</span>
+    <span>${g.correction_factor != null ? badge(g.correction_factor.toFixed(3), "flat") : "--"}</span>
+  </div>`;
+}
+
+function renderRecent(tr) {
+  const list = document.getElementById("recentList");
+  const all = [...(tr.props || []).map(r => ({ ...r, kind: "prop" })),
+               ...(tr.games || []).map(r => ({ ...r, kind: "game" }))];
+  all.sort((a, b) => (b.date || "").localeCompare(a.date || ""));
+  const recent = all.slice(0, 50);
+  document.getElementById("recentCount").textContent = `${all.length} settled total`;
+  if (!recent.length) {
+    list.innerHTML = `<p class="empty">No settled records yet. The outcomes ingestion job runs every morning.</p>`;
+    return;
+  }
+  list.innerHTML = recent.map(r => {
+    if (r.kind === "prop") {
+      const hit = r.play_hit;
+      const resCls = hit === true ? "hit" : hit === false ? "miss" : "";
+      const resTxt = hit === true ? "WIN" : hit === false ? "LOSS" : "SKIP";
+      return `<div class="recent-row">
+        <span>${r.date}</span>
+        <span>${r.player || "?"}</span>
+        <span>${(r.market || "").replace(/_/g, " ")} ${r.line}</span>
+        <span>actual ${r.actual} vs ${r.line}</span>
+        <span>${r.play}</span>
+        <span class="${resCls}">${resTxt}</span>
+      </div>`;
+    }
+    const over = r.over_hit;
+    const resTxt = over === true ? "OVER" : over === false ? "UNDER" : "?";
+    return `<div class="recent-row">
+      <span>${r.date}</span>
+      <span>${r.matchup || "?"}</span>
+      <span>Total ${r.market_total}</span>
+      <span>${r.actual_total} vs ${r.market_total}</span>
+      <span>--</span>
+      <span>${resTxt}</span>
+    </div>`;
+  }).join("");
+}
+
+Promise.all([
+  fetch("data/calibration_live.json", { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
+  fetch("data/track_record.json", { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
+]).then(([cal, tr]) => {
+  document.getElementById("calRefreshed").textContent =
+    cal.generated_at ? `last calibration ${cal.generated_at.replace("T", " ")} UTC` : "no calibration yet";
+  renderMarkets(cal);
+  renderGameOverall(cal);
+  renderRecent(tr);
+});
+</script>
+
+</body>
+</html>

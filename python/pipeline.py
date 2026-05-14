@@ -357,10 +357,18 @@ if __name__ == "__main__":
         print(json.dumps(manifest["play_of_day"], indent=2))
 
     # Also write the matchup research digest. Failures here shouldn't break the
-    # daily refresh — the slate JSON is the critical artifact.
+    # daily refresh -- the slate JSON is the critical artifact.
     try:
         from matchup_engine import build_all_matchups, write_matchups
         m_payload = build_all_matchups()
         write_matchups(m_payload)
     except Exception as e:
         print(f"  [x] matchup digest skipped: {e}")
+
+    # Snapshot today's projections so tomorrow's outcomes job can settle them.
+    try:
+        from snapshot import snapshot_today
+        paths = snapshot_today()
+        print(f"  [ok] snapshotted {len(paths)} files to data/history/")
+    except Exception as e:
+        print(f"  [x] snapshot skipped: {e}")

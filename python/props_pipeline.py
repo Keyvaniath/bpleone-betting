@@ -37,10 +37,15 @@ ODDS_BASE = "https://api.the-odds-api.com/v4"
 OUT_PATH = os.path.join(os.path.dirname(__file__), "..", "data", "props.json")
 
 # Markets we model. Each adds 1 credit per event call.
-DEFAULT_MARKETS = ["pitcher_strikeouts", "batter_home_runs"]
+# Free tier: keep at 2 markets * 8 games to fit 500/month.
+# $20 tier (20k/month): can lift to all 4 markets * all games * 3x daily.
+DEFAULT_MARKETS = ["pitcher_strikeouts", "batter_home_runs",
+                   "batter_hits", "batter_total_bases"]
 
-# Quota cap. Lift when user upgrades the Odds API tier.
-MAX_GAMES = 8
+# Quota cap. Honors EDGESTAT_PROPS_MAX_GAMES env var so the workflow can run
+# the same code on free vs paid tier without code changes.
+# Free tier safe: 8. Paid ($20 tier, 20k credits/month): 32 (= all games).
+MAX_GAMES = int(os.environ.get("EDGESTAT_PROPS_MAX_GAMES", "16"))
 
 # Books takeable in the user's state for game lines; player props use DK only.
 PROP_BOOK = "draftkings"
@@ -249,38 +254,67 @@ def project_pitcher_ks(pid: int, line: float, opp_team_id: Optional[int] = None)
         return 0.50, {"reason": f"exception: {e}", "low_confidence": True}
 
 
-def project_batter_hr(pid: int, line: float) -> Tuple[float, Dict[str, Any]]:
-    """P(player hits >= ceil(line) HRs in this game)."""
+def _batter_season(pid: int) -> Dict[str, Any]:
+    """Cached season hitting line."""
     if not pid:
-        return 0.04, {"reason": "no-id"}
-    try:
-        season = sr._get(
-            f"{sr.MLB_BASE}/people/{pid}/stats?stats=season&group=hitting&season={dt.date.today().year}",
-            f"bhit_{pid}_{dt.date.today().year}",
-        )
-        if not season or not season.get("stats"):
-            return 0.04, {"reason": "no-data"}
-        splits = season["stats"][0].get("splits", [])
-        if not splits:
-            return 0.04, {"reason": "no-splits"}
-        s = sr._coerce_stat(splits[0]["stat"])
-        pa = s.get("plateAppearances")
-        hr = s.get("homeRuns")
-        if not pa or pa < 10 or hr is None:
-            return 0.04, {"reason": "thin-sample", "pa": pa, "hr": hr}
-        hr_per_pa = float(hr) / float(pa)
-        # Expected PA for a starter: ~4.2; pinch hitters less.
-        # Use 4.2 unless batting low in the order (no signal here yet -> assume starter).
-        expected_pa = 4.2
-        expected_hr = hr_per_pa * expected_pa
-        line_int = int(math.ceil(line))  # over 0.5 -> need at least 1
-        p_over = poisson_p_at_least(expected_hr, line_int)
-        return p_over, {
-            "pa": pa, "hr": hr, "hr_per_pa": round(hr_per_pa, 4),
-            "expected_hr": round(expected_hr, 3), "line_int": line_int,
-        }
-    except Exception:
-        return 0.04, {"reason": "exception"}
+        return {}
+    season = sr._get(
+        f"{sr.MLB_BASE}/people/{pid}/stats?stats=season&group=hitting&season={dt.date.today().year}",
+        f"bhit_{pid}_{dt.date.today().year}",
+    )
+    if not season or not season.get("stats"):
+        return {}
+    splits = season["stats"][0].get("splits", [])
+    if not splits:
+        return {}
+    return sr._coerce_stat(splits[0]["stat"])
+
+
+def project_batter_hr(pid: int, line: float) -> Tuple[float, Dict[str, Any]]:
+    s = _batter_season(pid)
+    pa, hr = s.get("plateAppearances"), s.get("homeRuns")
+    if not pa or pa < 30 or hr is None:
+        return 0.04, {"reason": "thin-sample", "pa": pa, "hr": hr, "low_confidence": True}
+    hr_per_pa = float(hr) / float(pa)
+    expected_hr = hr_per_pa * 4.2
+    line_int = int(math.ceil(line))
+    p_over = poisson_p_at_least(expected_hr, line_int)
+    return p_over, {"pa": pa, "hr": hr, "hr_per_pa": round(hr_per_pa, 4),
+                    "expected_hr": round(expected_hr, 3), "line_int": line_int}
+
+
+def project_batter_hits(pid: int, line: float) -> Tuple[float, Dict[str, Any]]:
+    """P(player gets >= ceil(line) hits). Uses BABIP-aware H/PA from season."""
+    s = _batter_season(pid)
+    pa, hits = s.get("plateAppearances"), s.get("hits")
+    if not pa or pa < 30 or hits is None:
+        return 0.27, {"reason": "thin-sample", "pa": pa, "hits": hits, "low_confidence": True}
+    h_per_pa = float(hits) / float(pa)
+    expected_h = h_per_pa * 4.2
+    line_int = int(math.ceil(line))
+    p_over = poisson_p_at_least(expected_h, line_int)
+    return p_over, {"pa": pa, "hits": hits, "h_per_pa": round(h_per_pa, 4),
+                    "expected_hits": round(expected_h, 3), "line_int": line_int}
+
+
+def project_batter_tb(pid: int, line: float) -> Tuple[float, Dict[str, Any]]:
+    """P(player gets >= ceil(line) total bases). TB/PA from singles + 2*2B + 3*3B + 4*HR."""
+    s = _batter_season(pid)
+    pa = s.get("plateAppearances")
+    if not pa or pa < 30:
+        return 0.30, {"reason": "thin-sample", "pa": pa, "low_confidence": True}
+    hits = float(s.get("hits", 0) or 0)
+    doubles = float(s.get("doubles", 0) or 0)
+    triples = float(s.get("triples", 0) or 0)
+    hr = float(s.get("homeRuns", 0) or 0)
+    singles = hits - doubles - triples - hr
+    tb = singles + 2 * doubles + 3 * triples + 4 * hr
+    tb_per_pa = tb / float(pa)
+    expected_tb = tb_per_pa * 4.2
+    line_int = int(math.ceil(line))
+    p_over = poisson_p_at_least(expected_tb, line_int)
+    return p_over, {"pa": pa, "tb_season": int(tb), "tb_per_pa": round(tb_per_pa, 4),
+                    "expected_tb": round(expected_tb, 3), "line_int": line_int}
 
 
 # -------------------- Main loop --------------------
@@ -302,6 +336,15 @@ def build_props(markets: Optional[List[str]] = None, max_games: int = MAX_GAMES)
     # Sort by commence_time, take soonest N to respect quota.
     events.sort(key=lambda e: e.get("commence_time", ""))
     events = events[:max_games]
+
+    # Load calibration corrections from yesterday's outcomes settlement.
+    try:
+        from calibration_runner import load_corrections
+        corrections = load_corrections()
+    except Exception:
+        corrections = {}
+    if corrections:
+        print(f"  -> applying calibration corrections: {corrections}")
 
     out_games = []
     for e in events:
@@ -337,8 +380,19 @@ def build_props(markets: Optional[List[str]] = None, max_games: int = MAX_GAMES)
                     p_over, dbg = project_pitcher_ks(pid, line, opp_team_id)
                 elif market_key == "batter_home_runs":
                     p_over, dbg = project_batter_hr(pid, line)
+                elif market_key == "batter_hits":
+                    p_over, dbg = project_batter_hits(pid, line)
+                elif market_key == "batter_total_bases":
+                    p_over, dbg = project_batter_tb(pid, line)
                 else:
                     continue
+                # Apply calibration correction from yesterday's outcomes.
+                cf = corrections.get(market_key, 1.0)
+                p_over_raw = p_over
+                if cf != 1.0:
+                    p_over = max(0.001, min(0.999, p_over * cf))
+                    dbg["correction_applied"] = round(cf, 4)
+                    dbg["p_over_raw"] = round(p_over_raw, 4)
                 row: Dict[str, Any] = {
                     "player": player_name,
                     "player_id": pid,
@@ -362,6 +416,12 @@ def build_props(markets: Optional[List[str]] = None, max_games: int = MAX_GAMES)
                     if eg is not None and eg > best_edge:
                         best_side, best_edge = side, eg
                 low_conf = bool(dbg.get("low_confidence"))
+                # Bench-player heuristic: on 0.5-line hitter markets, very long
+                # OVER prices (+200+) imply the player isn't in the lineup.
+                # Until we wire confirmed lineups, mark these low-confidence.
+                if market_key.startswith("batter_") and line <= 0.5 and over_p is not None and over_p > 200:
+                    low_conf = True
+                    row["bench_flag"] = True
                 # If projection is thin or edge is suspiciously huge, downgrade.
                 if low_conf or best_edge >= 35.0:
                     row["play"] = "SKIP"
