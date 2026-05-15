@@ -44,6 +44,13 @@ jobs:
         working-directory: python
         run: python calibration_runner.py
 
+      # Where-is-the-model-wrong analysis: per-market residuals, histograms,
+      # per-player systematic patterns. Surfaces /residuals.html.
+      - name: Compute residual analysis
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        working-directory: python
+        run: python residuals.py
+
       - name: Run daily pipeline (real data → today.json + matchups.json + snapshot)
         env:
           ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
