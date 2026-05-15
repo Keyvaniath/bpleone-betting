@@ -70,6 +70,14 @@
     <div id="overridesBox" style="padding: 14px;"></div>
   </section>
 
+  <section id="historyCard" class="card" style="margin-bottom: 18px; display: none;">
+    <div class="card-head"><span>Override History</span><span class="muted" id="histCount"></span></div>
+    <div style="padding: 4px 14px 14px;">
+      <p class="muted" style="font-size: 12px; margin: 6px 0 12px 0;">Every change to <code>runtime_config.json</code> is logged here. The "did we change something?" half of the closed loop -- pair with <a href="training.html">/training</a> activity to see if a tweak helped.</p>
+      <div id="histList"></div>
+    </div>
+  </section>
+
   <section class="card" style="margin-bottom: 18px;">
     <div class="card-head"><span>All Knobs</span><span class="muted" id="totalKnobs"></span></div>
     <div class="knob-row head">
@@ -110,6 +118,32 @@ const GROUPS = [
   { prefix: "anomalies.",    title: "Anomaly Detector" },
   { prefix: "rationales.",   title: "Rationale Generation" },
 ];
+
+// Load override history
+fetch("data/config_history.json", { cache: "no-cache" })
+  .then(r => r.json())
+  .then(h => {
+    const entries = (h.entries || []).slice().reverse();
+    if (!entries.length) return;
+    document.getElementById("historyCard").style.display = "block";
+    document.getElementById("histCount").textContent = `${entries.length} change${entries.length===1?'':'s'} logged`;
+    const typeColor = { override_added: "#58c878", override_changed: "#d4a04a", override_removed: "#e35a5a" };
+    const typeLabel = { override_added: "added", override_changed: "changed", override_removed: "removed" };
+    document.getElementById("histList").innerHTML = entries.slice(0, 20).map(e => {
+      const color = typeColor[e.type] || "#888";
+      const label = typeLabel[e.type] || e.type;
+      const oldStr = e.old === null || e.old === undefined ? "<em>unset</em>" : JSON.stringify(e.old);
+      const newStr = e.new === null || e.new === undefined ? "<em>unset</em>" : JSON.stringify(e.new);
+      return `<div style="display:grid; grid-template-columns: 160px 80px 1.4fr 1fr 1fr; gap: 12px; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-family:'JetBrains Mono',monospace; font-size: 11px; align-items: center;">
+        <span class="muted">${(e.ts || '').replace('T', ' ')}</span>
+        <span style="color: ${color}; text-transform: uppercase; font-weight: 600;">${label}</span>
+        <span style="color: var(--text);">${e.key}</span>
+        <span style="color: var(--muted, #888);">${oldStr}</span>
+        <span style="color: ${color};">${newStr}</span>
+      </div>`;
+    }).join("");
+  })
+  .catch(() => {});
 
 // Load recommendations first (independent of config snapshot)
 fetch("data/param_recommendations.json", { cache: "no-cache" })

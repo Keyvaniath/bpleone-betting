@@ -46,6 +46,13 @@ jobs:
         working-directory: python
         run: python config.py dump
 
+      # Diff data/runtime_config.json against the last seen snapshot. Any
+      # change since prior cron (override added / removed / changed) is
+      # appended to data/config_history.json for the audit trail.
+      - name: Log config override changes
+        working-directory: python
+        run: python config_history.py
+
       # Settle yesterday's projections BEFORE generating today's, so today's
       # projections incorporate the latest calibration corrections.
       - name: Settle yesterday's outcomes
