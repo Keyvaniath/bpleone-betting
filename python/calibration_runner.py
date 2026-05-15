@@ -34,7 +34,17 @@ TR_PATH = os.path.join(DATA_DIR, "track_record.json")
 CAL_PATH = os.path.join(DATA_DIR, "calibration_live.json")
 
 LOOKBACK_DAYS = 30
-MIN_SAMPLE_FOR_CORRECTION = 30   # don't trust correction with < 30 outcomes
+# Old behavior was a hard cutoff: zero correction below n=30, then full bias
+# correction once you crossed. That meant the first 29 settled outcomes literally
+# could not move the model -- a multi-week wasted-learning window.
+#
+# New behavior: Bayesian shrinkage with an n_prior anchor of N_PRIOR=30.
+#   effective_cf = (n / (n + N_PRIOR)) * raw_cf + (N_PRIOR / (n + N_PRIOR)) * 1.0
+# So at n=0 the correction is exactly 1.0 (trust prior, no change), and as n
+# grows the model trusts the empirical bias more. By n=30 we're 50/50, by
+# n=120 we're 80/20 toward the data. No more hard cutoff.
+N_PRIOR = 30                     # how strongly to anchor toward "no correction" (1.0)
+MIN_SAMPLE_FOR_ANY_CORRECTION = 3  # below this, still bypass entirely (too noisy)
 MAX_CORRECTION = 1.25            # cap correction at ±25% to avoid runaway adjustment
 MIN_CORRECTION = 1.0 / 1.25
 
@@ -74,7 +84,18 @@ def compute_metrics(records: List[Dict[str, Any]], today: Optional[dt.date] = No
     ll /= n
     implied_rate = sum_p / n
     actual_rate = sum_actual / n
-    bias = implied_rate / actual_rate if actual_rate > 0 else 1.0
+    # Bias = (implied OVER rate) / (actual OVER rate). On thin samples
+    # actual_rate can be 0 (every OVER missed) or 1 (every OVER hit), which
+    # would divide by zero / give infinite bias. Use add-one Laplace smoothing
+    # against a 50/50 prior so the bias is well-defined and bounded:
+    #
+    #   smoothed_bias = (sum_p + 0.5) / (sum_actual + 0.5)
+    #
+    # Example: 4 props, sum_p=2.09 (avg 0.52), sum_actual=0 (all missed)
+    #   raw: undefined; smoothed: 2.59/0.5 = 5.18 -> capped to MAX_CORRECTION
+    # Example: 4 props, sum_p=2.09, sum_actual=4 (all hit)
+    #   raw: 0.52; smoothed: 2.59/4.5 = 0.576 -> shrink OVER (model underconfident)
+    bias = (sum_p + 0.5) / (sum_actual + 0.5)
     # ECE
     ece = 0.0
     for b in bins:
@@ -134,16 +155,27 @@ def compute_metrics(records: List[Dict[str, Any]], today: Optional[dt.date] = No
 
 
 def correction_factor(metrics: Dict[str, Any]) -> float:
-    """Translate bias into a multiplicative correction. 1.0 = no change."""
+    """Translate bias into a multiplicative correction with Bayesian shrinkage.
+
+    Shrinkage formula:
+        effective_cf = (n / (n + N_PRIOR)) * raw_cf + (N_PRIOR / (n + N_PRIOR)) * 1.0
+
+    - n=0 or n<MIN_SAMPLE_FOR_ANY_CORRECTION -> 1.0 (no change, trust prior)
+    - n=N_PRIOR -> half data, half prior
+    - n>>N_PRIOR -> mostly trust empirical bias
+    - raw_cf is still capped to [MIN_CORRECTION, MAX_CORRECTION] BEFORE shrinkage
+      so a thin-sample outlier can't drive the shrunk correction past the cap.
+    """
     n = metrics.get("n", 0)
-    if n < MIN_SAMPLE_FOR_CORRECTION:
+    if n < MIN_SAMPLE_FOR_ANY_CORRECTION:
         return 1.0
     bias = metrics.get("bias", 1.0)
     if not bias or bias <= 0:
         return 1.0
-    # We want to DIVIDE next model_prob_over by bias to correct.
-    # Cap to avoid runaway.
-    return max(MIN_CORRECTION, min(MAX_CORRECTION, 1.0 / bias))
+    raw_cf = max(MIN_CORRECTION, min(MAX_CORRECTION, 1.0 / bias))
+    w = n / (n + N_PRIOR)
+    shrunk = w * raw_cf + (1.0 - w) * 1.0
+    return round(shrunk, 4)
 
 
 def run(today: Optional[dt.date] = None) -> Dict[str, Any]:
@@ -166,6 +198,10 @@ def run(today: Optional[dt.date] = None) -> Dict[str, Any]:
         subset = [r for r in props if r.get("market") == market_key]
         m = compute_metrics(subset, today)
         m["correction_factor"] = correction_factor(m)
+        # Make the shrinkage transparent: how much of the raw bias is we trusting?
+        n = m.get("n", 0)
+        m["data_weight"] = round(n / (n + N_PRIOR), 4) if n > 0 else 0.0
+        m["raw_correction"] = round(max(MIN_CORRECTION, min(MAX_CORRECTION, 1.0 / m.get("bias", 1.0))), 4) if m.get("bias") else 1.0
         markets[market_key] = m
 
     # Game-line over/under metrics
@@ -187,6 +223,13 @@ def run(today: Optional[dt.date] = None) -> Dict[str, Any]:
     payload = {
         "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
         "lookback_days": LOOKBACK_DAYS,
+        "shrinkage_n_prior": N_PRIOR,
+        "shrinkage_min_n": MIN_SAMPLE_FOR_ANY_CORRECTION,
+        "shrinkage_note": (
+            f"Per-market correction = data_weight * raw_correction + (1 - data_weight) * 1.0; "
+            f"data_weight = n / (n + {N_PRIOR}). Below n={MIN_SAMPLE_FOR_ANY_CORRECTION} the factor is forced to 1.0. "
+            f"Caps at +/- 25%."
+        ),
         "markets": markets,
         "games_overall": games_overall,
     }

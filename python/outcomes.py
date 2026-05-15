@@ -241,6 +241,8 @@ def settle_date(date_iso: str) -> Dict[str, Any]:
     settled_props: List[Dict[str, Any]] = []
     if props_snap:
         for prop in props_snap.get("top_edges", []):
+            if prop.get("is_demo"):
+                continue
             pk = pid_to_pk.get(prop.get("player_id"))
             if pk is None:
                 continue
@@ -267,6 +269,11 @@ def settle_date(date_iso: str) -> Dict[str, Any]:
             except Exception:
                 pass
         for game in today_snap.get("games", []):
+            # Skip games tagged is_demo=True by pipeline.build_slate's fallback;
+            # those matchups are fictional and cannot be settled against real
+            # MLB outcomes (this caused 0 game settlements on 2026-05-14).
+            if game.get("is_demo"):
+                continue
             pk = match_to_pk.get(game.get("matchup"))
             if pk is None:
                 continue
