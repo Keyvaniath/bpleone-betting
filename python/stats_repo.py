@@ -316,6 +316,43 @@ def pitcher_vs_batter(pid: int, bid: int) -> Dict[str, Any]:
     return out
 
 
+def pitcher_gbfb_profile(pid: int, season: Optional[int] = None) -> Dict[str, Any]:
+    """Return GB% / FB% / LD% profile if computable from season stats.
+
+    MLB Stats API doesn't expose batted-ball type splits directly, but
+    'groundOutsToAirouts' is a proxy ratio:
+      GO/AO < 0.80   = fly-ball-leaning pitcher (vulnerable in HR parks)
+      GO/AO 0.80-1.20 = neutral
+      GO/AO > 1.20  = ground-ball pitcher (limits HR damage)
+    """
+    season = season or dt.date.today().year
+    s = pitcher_season(pid, season)
+    if not s:
+        return {}
+    go_ao = s.get("groundOutsToAirouts")
+    if go_ao is None:
+        return {}
+    try:
+        go_ao_f = float(go_ao)
+    except (TypeError, ValueError):
+        return {}
+    if go_ao_f >= 1.40:
+        label = "extreme GB"
+    elif go_ao_f >= 1.20:
+        label = "GB-leaning"
+    elif go_ao_f <= 0.70:
+        label = "extreme FB"
+    elif go_ao_f <= 0.85:
+        label = "FB-leaning"
+    else:
+        label = "neutral"
+    return {
+        "go_ao_ratio": round(go_ao_f, 2),
+        "label": label,
+        "hr_per_9": s.get("homeRunsPer9"),
+    }
+
+
 def pitcher_hand(pid: int) -> str:
     """L or R from /people/{id}."""
     payload = _get(f"{MLB_BASE}/people/{pid}", f"phand_{pid}")

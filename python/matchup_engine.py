@@ -85,6 +85,11 @@ def _pitcher_block(pid: Optional[int], name: Optional[str], opp_team_id: Optiona
         pc_hist = pitcher_pitch_history(pid) or {}
     except Exception:
         pc_hist = {}
+    # GB/FB tendency profile
+    try:
+        gbfb = sr.pitcher_gbfb_profile(pid) or {}
+    except Exception:
+        gbfb = {}
 
     return {
         "id": pid,
@@ -98,6 +103,7 @@ def _pitcher_block(pid: Optional[int], name: Optional[str], opp_team_id: Optiona
         },
         "recent": recent,
         "pitch_count_history": pc_hist,
+        "gbfb_profile": gbfb,
         "vs_opp_this_season": vs_team,
         "arsenal": [{
             "pitch": p.get("pitch_name"),

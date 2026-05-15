@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Audit | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .audit-row { display:grid; grid-template-columns: 1.6fr 1.2fr 1fr auto; gap: 14px; padding:10px 14px;
+               border-bottom: 1px solid rgba(255,255,255,0.04); font-family:'JetBrains Mono',monospace; font-size:12px; }
+  .audit-row.head { background: rgba(255,255,255,0.04); color: var(--muted, #888); font-size:11px; text-transform:uppercase; }
+  .audit-row.head, .audit-row { align-items:center; }
+  .fresh-fresh { color: #58c878; }
+  .fresh-stale { color: #d4a04a; }
+  .fresh-old   { color: #e35a5a; }
+  .fresh-na    { color: var(--muted,#888); }
+  .meta { color: var(--muted, #888); font-size:11px; }
+</style>
+</head>
+<body class="page-audit">
+<header class="topbar">
+  <div class="brand">
+    <a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a>
+    <span class="tagline">by bpleone</span>
+  </div>
+  <nav class="mainnav">
+    <a href="index.html">Dashboard</a>
+    <a href="play-of-day.html">Play of the Day</a>
+    <a href="mlb.html">MLB</a>
+    <a href="research.html">Research</a>
+    <a href="parlays.html">Parlays</a>
+    <a href="pickem.html">Pick-Em</a>
+    <a href="brief.html">Brief</a>
+    <a href="learning.html">Learning</a>
+    <a href="audit.html" class="active">Audit</a>
+    <a href="models.html">Models</a>
+    <a href="ml-lab.html">ML Lab</a>
+    <a href="live.html">Live</a>
+    <a href="simulator.html">Sim</a>
+    <a href="backtest.html">Backtest</a>
+    <a href="linemaker.html">Linemaker</a>
+    <a href="arbitrage.html">Arb</a>
+    <a href="bankroll.html">Bankroll</a>
+    <a href="props.html">Props</a>
+    <a href="learn.html">Learn</a>
+  </nav>
+  <div class="topbar-actions"><div class="ticker" id="liveTicker">LIVE</div></div>
+</header>
+
+<main class="container">
+
+  <section class="page-head">
+    <h1>Data Audit / Health</h1>
+    <p>Freshness check on every data artifact + signal source. Greens are fresh (within expected interval), ambers are stale, reds need attention.</p>
+  </section>
+
+  <section class="card" style="margin-bottom:24px;">
+    <div class="card-head"><span>Artifact Freshness</span><span class="muted" id="auditTime"></span></div>
+    <div class="audit-row head">
+      <span>Artifact</span><span>Generated</span><span>Age</span><span>Status</span>
+    </div>
+    <div id="auditList"><p class="muted" style="padding:14px;">Loading...</p></div>
+  </section>
+
+  <section class="card">
+    <div class="card-head"><span>Pipeline Schedule</span></div>
+    <div style="padding:14px;">
+      <p style="margin:0 0 10px 0;"><strong>Daily MLB Pipeline:</strong> 6 AM / 1 PM / 6 PM ET (10:00 / 17:00 / 22:00 UTC)</p>
+      <ul style="margin:0; padding-left:20px; font-size:13px;">
+        <li>6 AM run: full chain (outcomes → calibration → schedule → odds → matchups → snapshot → props → parlays → pickem → sleeper → injuries → team form → bullpen → NRFI → F5 → lineup quality → run line → travel → pitch matchup → series → CLV → top plays → daily summary → notify)</li>
+        <li>1 PM + 6 PM runs: lighter (game lines + matchups + snapshot + parlays + CLV + top plays + brief)</li>
+      </ul>
+      <p style="margin:10px 0 0 0;"><strong>Live In-Progress Games Poll:</strong> every 10 min during 3 PM - 2 AM ET</p>
+    </div>
+  </section>
+
+</main>
+
+<script>
+const FILES = [
+  { path: "data/today.json",          label: "Slate (today.json)",                expected_h: 8 },
+  { path: "data/matchups.json",       label: "Matchups + lineups + arsenal",      expected_h: 8 },
+  { path: "data/props.json",          label: "DK player props",                   expected_h: 8 },
+  { path: "data/parlays.json",        label: "Parlays",                           expected_h: 8 },
+  { path: "data/pickem.json",         label: "PrizePicks comparison",             expected_h: 24 },
+  { path: "data/sleeper.json",        label: "Sleeper (auth-gated)",              expected_h: 48 },
+  { path: "data/injuries_live.json",  label: "30-team IL tracker",                expected_h: 24 },
+  { path: "data/team_form.json",      label: "Team form (last 10)",               expected_h: 24 },
+  { path: "data/bullpen_workload.json", label: "Bullpen workload",                expected_h: 24 },
+  { path: "data/nrfi.json",           label: "NRFI / YRFI",                       expected_h: 8 },
+  { path: "data/first_five.json",     label: "First-5 totals",                    expected_h: 8 },
+  { path: "data/run_line.json",       label: "Run line (-1.5 / +1.5)",            expected_h: 8 },
+  { path: "data/travel.json",         label: "Travel + rest",                     expected_h: 24 },
+  { path: "data/pitch_matchup.json",  label: "Arsenal vs lineup handedness",      expected_h: 24 },
+  { path: "data/series_context.json", label: "Series momentum",                   expected_h: 24 },
+  { path: "data/lineup_quality.json", label: "Lineup quality (xwOBA)",            expected_h: 24 },
+  { path: "data/pythagorean.json",    label: "Pythagorean (luck) per team",       expected_h: 24 },
+  { path: "data/clv_log.json",        label: "CLV log",                           expected_h: 8 },
+  { path: "data/top_plays.json",      label: "Top plays aggregator",              expected_h: 8 },
+  { path: "data/track_record.json",   label: "Settled track record",              expected_h: 48 },
+  { path: "data/calibration_live.json", label: "Calibration corrections",         expected_h: 48 },
+  { path: "data/daily_summary.md",    label: "Daily brief (markdown)",            expected_h: 8 },
+  { path: "data/live_state.json",     label: "Live in-game state",                expected_h: 1 },
+];
+
+function freshClass(ageH, expectedH) {
+  if (ageH == null) return "fresh-na";
+  if (ageH <= expectedH) return "fresh-fresh";
+  if (ageH <= expectedH * 2) return "fresh-stale";
+  return "fresh-old";
+}
+
+async function loadOne(f) {
+  try {
+    const r = await fetch(f.path + "?_=" + Date.now(), { method: "HEAD", cache: "no-cache" });
+    if (!r.ok) return { ...f, status: "MISSING", lastMod: null, ageH: null };
+    const lastMod = r.headers.get("Last-Modified");
+    if (!lastMod) return { ...f, status: "?", lastMod: null, ageH: null };
+    const ageMs = Date.now() - new Date(lastMod).getTime();
+    const ageH = ageMs / (1000 * 60 * 60);
+    return { ...f, status: "ok", lastMod, ageH };
+  } catch {
+    return { ...f, status: "ERR", lastMod: null, ageH: null };
+  }
+}
+
+function fmtAge(ageH) {
+  if (ageH == null) return "?";
+  if (ageH < 1) return Math.round(ageH * 60) + "m";
+  if (ageH < 24) return ageH.toFixed(1) + "h";
+  return (ageH / 24).toFixed(1) + "d";
+}
+
+(async () => {
+  const list = document.getElementById("auditList");
+  const rows = await Promise.all(FILES.map(loadOne));
+  list.innerHTML = rows.map(r => {
+    const cls = r.status === "MISSING" || r.status === "ERR"
+      ? "fresh-old"
+      : freshClass(r.ageH, r.expected_h);
+    const status = r.status === "MISSING" ? "missing"
+                : r.status === "ERR" ? "error"
+                : r.status === "?" ? "no headers"
+                : (r.ageH <= r.expected_h ? "fresh" : r.ageH <= r.expected_h*2 ? "stale" : "stale!");
+    return `<div class="audit-row">
+      <span><strong>${r.label}</strong><div class="meta">${r.path}</div></span>
+      <span class="meta">${r.lastMod || "--"}</span>
+      <span class="${cls}">${fmtAge(r.ageH)}</span>
+      <span class="${cls}">${status}</span>
+    </div>`;
+  }).join("");
+  document.getElementById("auditTime").textContent = "checked just now";
+})();
+</script>
+
+</body>
+</html>
