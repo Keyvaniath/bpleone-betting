@@ -46,12 +46,12 @@
   </section>
 
   <section class="metric-strip">
-    <div class="metric"><span class="metric-num">+14.7u</span><span class="metric-label">Net Units YTD</span></div>
-    <div class="metric"><span class="metric-num">57.3%</span><span class="metric-label">Hit Rate</span></div>
-    <div class="metric"><span class="metric-num">+7.2%</span><span class="metric-label">ROI</span></div>
-    <div class="metric"><span class="metric-num">+2.4%</span><span class="metric-label">Avg CLV</span></div>
-    <div class="metric"><span class="metric-num">2,418</span><span class="metric-label">Total Plays</span></div>
-    <div class="metric"><span class="metric-num">-18.2u</span><span class="metric-label">Max Drawdown</span></div>
+    <div class="metric"><span class="metric-num" id="trkNet">--</span><span class="metric-label">Net Units YTD</span></div>
+    <div class="metric"><span class="metric-num" id="trkHit">--</span><span class="metric-label">Hit Rate</span></div>
+    <div class="metric"><span class="metric-num" id="trkRoi">--</span><span class="metric-label">ROI</span></div>
+    <div class="metric"><span class="metric-num" id="trkClv">--</span><span class="metric-label">Avg CLV</span></div>
+    <div class="metric"><span class="metric-num" id="trkPlays">--</span><span class="metric-label">Total Plays</span></div>
+    <div class="metric"><span class="metric-num" id="trkDD">--</span><span class="metric-label">Max Drawdown</span></div>
   </section>
 
   <section class="card" style="margin-bottom: 28px;">
@@ -147,14 +147,45 @@ fetch("data/track_record.json", { cache: "no-cache" })
     const graded = props.filter(p => p.play_hit !== null && p.play_hit !== undefined);
     const wins = graded.filter(p => p.play_hit === true).length;
     const losses = graded.filter(p => p.play_hit === false).length;
+
+    // Compute real metric strip from settled plays.
+    const payoutUnits = price => price >= 0 ? price / 100 : 100 / Math.abs(price);
+    let net = 0, running = 0, dd = 0;
+    for (const p of graded) {
+      const price = p.play === "OVER" ? p.dk_over : p.play === "UNDER" ? p.dk_under : -110;
+      const delta = p.play_hit === true ? payoutUnits(price ?? -110) : -1;
+      net += delta;
+      running += delta;
+      if (running < dd) dd = running;
+    }
+    const hitPct = graded.length ? (wins / graded.length) * 100 : null;
+    const roi = graded.length ? (net / graded.length) * 100 : null;
+    const fmtSigned = (v, d = 1, suf = "") => v == null ? "--" : (v >= 0 ? "+" : "") + v.toFixed(d) + suf;
+    const setText = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
+    setText("trkNet",   graded.length ? fmtSigned(net,    1, "u") : "--");
+    setText("trkHit",   hitPct != null ? hitPct.toFixed(1) + "%"   : "--");
+    setText("trkRoi",   roi    != null ? fmtSigned(roi,   1, "%")   : "--");
+    setText("trkPlays", String(graded.length));
+    setText("trkDD",    graded.length ? fmtSigned(dd, 1, "u") : "--");
+    // CLV separately from clv_log so the tile reflects what was actually captured.
+    fetch("data/clv_log.json", { cache: "no-cache" }).then(r => r.json())
+      .then(c => {
+        const recs = (c.records || []).filter(r => r.clv_pct != null);
+        if (!recs.length) return;
+        const avg = recs.reduce((s, r) => s + Number(r.clv_pct), 0) / recs.length;
+        setText("trkClv", fmtSigned(avg, 2, "%"));
+      }).catch(() => {});
+
     const note = document.createElement("p");
     note.className = "muted";
     note.style.fontSize = "12px";
     note.style.marginTop = "8px";
     if (graded.length === 0) {
       note.innerHTML = `<strong>Real track record:</strong> no settled plays yet -- the outcomes ingestion job runs every morning at 6 AM ET and will populate this page once the first night's games complete.`;
+    } else if (graded.length < 30) {
+      note.innerHTML = `<strong>Real track record (model in calibration):</strong> ${graded.length}/30 graded plays, ${wins} wins / ${losses} losses (${hitPct.toFixed(1)}% hit). Last settled ${tr.last_settled_date || "?"}. Best 5 / Worst 5 / P&L panels below are demo seeds until enough real outcomes accumulate -- ignore those for now and look at the Live Settled Plays section.`;
     } else {
-      note.innerHTML = `<strong>Real track record:</strong> ${graded.length} graded plays, ${wins} wins / ${losses} losses (${(wins/graded.length*100).toFixed(1)}% hit rate). Last settled date ${tr.last_settled_date || "?"}.`;
+      note.innerHTML = `<strong>Real track record:</strong> ${graded.length} graded plays, ${wins} wins / ${losses} losses (${hitPct.toFixed(1)}% hit rate). Last settled date ${tr.last_settled_date || "?"}.`;
     }
     head.appendChild(note);
 
