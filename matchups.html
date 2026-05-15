@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Best Matchups Tonight | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .mu-row { display:grid; grid-template-columns: 50px 1.4fr 1.4fr 1fr 1fr 1fr 1fr;
+            gap: 12px; padding:8px 14px; border-bottom:1px solid rgba(255,255,255,0.04);
+            font-family:'JetBrains Mono',monospace; font-size:12px; align-items:center; }
+  .mu-row.head { background: rgba(255,255,255,0.04); color: var(--muted, #888); font-size:11px;
+                 text-transform:uppercase; letter-spacing:0.04em; }
+  .lev { color: #58c878; font-weight:600; }
+  .fade { color: #e35a5a; font-weight:600; }
+  .neutral { color: var(--muted, #888); }
+  .summary-bar { display:flex; gap:14px; padding:10px 14px;
+                 font-family:'JetBrains Mono',monospace; font-size:12px;
+                 background: rgba(255,255,255,0.02); margin-bottom: 14px; }
+  .summary-bar .pill { padding:4px 10px; background: rgba(255,255,255,0.05); border-radius:4px; }
+</style>
+</head>
+<body class="page-matchups">
+<header class="topbar">
+  <div class="brand">
+    <a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a>
+    <span class="tagline">by bpleone</span>
+  </div>
+  <nav class="mainnav">
+    <a href="index.html">Dashboard</a>
+    <a href="play-of-day.html">Play of the Day</a>
+    <a href="mlb.html">MLB</a>
+    <a href="research.html">Research</a>
+    <a href="matchups.html" class="active">Best Matchups</a>
+    <a href="parlays.html">Parlays</a>
+    <a href="pickem.html">Pick-Em</a>
+    <a href="brief.html">Brief</a>
+    <a href="learning.html">Learning</a>
+    <a href="audit.html">Audit</a>
+    <a href="models.html">Models</a>
+    <a href="ml-lab.html">ML Lab</a>
+    <a href="live.html">Live</a>
+    <a href="simulator.html">Sim</a>
+    <a href="backtest.html">Backtest</a>
+    <a href="linemaker.html">Linemaker</a>
+    <a href="arbitrage.html">Arb</a>
+    <a href="bankroll.html">Bankroll</a>
+    <a href="props.html">Props</a>
+    <a href="learn.html">Learn</a>
+  </nav>
+  <div class="topbar-actions"><div class="ticker" id="liveTicker">LIVE</div></div>
+</header>
+
+<main class="container">
+
+  <section class="page-head">
+    <h1>Best Matchups Tonight</h1>
+    <p>For every batter in every confirmed lineup, we compute their expected xwOBA against the actual pitch arsenal of tonight's opposing starter. League average ~.320. Above .380 = leverage. Below .270 = fade.</p>
+    <p class="muted" style="font-size:12px; margin-top:6px;">Math: Σ over pitch types of (pitcher's usage % of pitch X) × (batter's career xwOBA vs pitch X). Source: Baseball Savant pitch-arsenal-stats leaderboards (free).</p>
+  </section>
+
+  <section class="card">
+    <div class="card-head"><span>Batter-vs-Pitcher xwOBA Matchups</span><span class="muted" id="mRefresh"></span></div>
+    <div class="summary-bar" id="mSummary"></div>
+    <div class="filterbar" style="padding: 6px 14px;">
+      <label>Show:</label>
+      <select id="mFilter">
+        <option value="all">All</option>
+        <option value="leverage">Leverage only (xwOBA >= .380)</option>
+        <option value="fade">Fade only (xwOBA <= .270)</option>
+      </select>
+      <label>Search:</label>
+      <input type="text" id="mSearch" placeholder="player name or matchup" style="padding:6px 10px; background:#0f1418; border:1px solid rgba(255,255,255,0.08); color:var(--text,#ddd); border-radius:4px; font-size:12px; width:240px;">
+    </div>
+    <div class="mu-row head">
+      <span>#</span><span>Batter</span><span>vs SP</span><span>Matchup</span><span>xwOBA</span><span>Δ vs Lg</span><span>Career H2H</span>
+    </div>
+    <div id="mList"><p class="muted" style="padding:14px;">Loading...</p></div>
+  </section>
+
+</main>
+
+<script>
+let mState = { all: [], filter: "all", search: "" };
+function renderMatchups() {
+  const list = document.getElementById("mList");
+  let rows = mState.all.slice();
+  if (mState.filter === "leverage") rows = rows.filter(r => r.leverage === "leverage");
+  if (mState.filter === "fade") rows = rows.filter(r => r.leverage === "fade");
+  if (mState.search) {
+    const q = mState.search.toLowerCase();
+    rows = rows.filter(r => (r.batter || "").toLowerCase().includes(q)
+                          || (r.matchup || "").toLowerCase().includes(q)
+                          || (r.vs_pitcher || "").toLowerCase().includes(q));
+  }
+  if (!rows.length) {
+    list.innerHTML = `<p class="muted" style="padding:14px;">No matchups match the filter (lineups may not be posted yet).</p>`;
+    return;
+  }
+  list.innerHTML = rows.slice(0, 120).map((r, i) => {
+    const cls = r.leverage === "leverage" ? "lev" : r.leverage === "fade" ? "fade" : "neutral";
+    const h2h = r.h2h && r.h2h.ab ? `${r.h2h.hits}/${r.h2h.ab} (${r.h2h.ops || "?"} OPS, ${r.h2h.hr}HR)` : "no sample";
+    return `<div class="mu-row">
+      <span class="muted">${i + 1}</span>
+      <span><strong>${r.batter}</strong> <span class="muted" style="font-size:10px;">${r.matchup} (${r.order})</span></span>
+      <span>${r.vs_pitcher}</span>
+      <span class="${cls}">${r.leverage.toUpperCase()}</span>
+      <span>${r.matchup_xwoba.toFixed(3)}</span>
+      <span class="${r.delta_vs_league > 0 ? 'lev' : 'fade'}">${r.delta_vs_league >= 0 ? '+' : ''}${r.delta_vs_league.toFixed(3)}</span>
+      <span class="muted" style="font-size:10px;">${h2h}</span>
+    </div>`;
+  }).join("");
+}
+
+fetch("data/best_matchups.json", { cache: "no-cache" })
+  .then(r => r.json())
+  .then(payload => {
+    mState.all = payload.matchups || [];
+    document.getElementById("mRefresh").textContent =
+      payload.generated_at ? `refreshed ${payload.generated_at.replace("T", " ")} UTC` : "";
+    document.getElementById("mSummary").innerHTML = `
+      <span class="pill">Batters scored: <strong>${payload.total || 0}</strong></span>
+      <span class="pill" style="color:#58c878;">Leverage spots: <strong>${payload.leverage_count || 0}</strong></span>
+      <span class="pill" style="color:#e35a5a;">Fade spots: <strong>${payload.fade_count || 0}</strong></span>
+      <span class="pill muted">League baseline: <strong>${payload.league_xwoba_baseline}</strong></span>`;
+    renderMatchups();
+    document.getElementById("mFilter").addEventListener("change", e => { mState.filter = e.target.value; renderMatchups(); });
+    document.getElementById("mSearch").addEventListener("input", e => { mState.search = e.target.value; renderMatchups(); });
+  })
+  .catch(err => {
+    document.getElementById("mList").innerHTML =
+      `<p class="muted" style="padding:14px;">best_matchups.json not loaded yet -- the daily pipeline writes this once lineups are posted.</p>`;
+    console.error(err);
+  });
+</script>
+
+</body>
+</html>

@@ -171,6 +171,12 @@ jobs:
         working-directory: python
         run: python research_depth.py
 
+      # Best batter-vs-pitcher xwOBA matchups (leverage / fade spots).
+      - name: Score best matchups (batter-vs-pitch xwOBA)
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        working-directory: python
+        run: python best_matchups.py
+
       # Model trainer: walk-forward optimization once enough outcomes accumulate.
       - name: Train + tune model parameters
         if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
