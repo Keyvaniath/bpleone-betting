@@ -269,11 +269,23 @@ def build_all_matchups(today_json_path: Optional[str] = None) -> Dict[str, Any]:
             away_list = sorted([{"id": pid, **info} for pid, info in lups.get("away", {}).items()],
                                 key=lambda x: x.get("order", 99))
             # H2H: each batter vs the OPPOSING starting pitcher (career)
+            # + Statcast pitch-type matchup score for that pitcher's arsenal
             def with_h2h(batters, opp_pitcher_pid):
                 out = []
+                try:
+                    import statcast as sc
+                    opp_arsenal = sc.pitcher_arsenal(opp_pitcher_pid) if opp_pitcher_pid else []
+                except Exception:
+                    sc, opp_arsenal = None, []
                 for b in batters:
                     h2h = sr.pitcher_vs_batter(opp_pitcher_pid, b["id"]) if opp_pitcher_pid else {}
-                    out.append({**b, "vs_pitcher_career": h2h})
+                    bvp = sc.batter_vs_pitch(b["id"]) if (sc and b.get("id")) else []
+                    matchup = sc.matchup_xwoba(opp_arsenal, bvp) if (sc and opp_arsenal and bvp) else {}
+                    out.append({
+                        **b,
+                        "vs_pitcher_career": h2h,
+                        "vs_pitcher_xwoba_matchup": matchup,
+                    })
                 return out
             m["lineups"] = {
                 "home_posted": bool(lups.get("home")),

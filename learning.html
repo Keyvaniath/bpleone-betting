@@ -181,7 +181,43 @@ Promise.all([
   fetch("data/calibration_live.json", { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
   fetch("data/track_record.json", { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
   fetch("data/clv_log.json", { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
-]).then(([cal, tr, clv]) => {
+  fetch("data/trained_params.json", { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
+]).then(([cal, tr, clv, trained]) => {
+  // Training progress banner
+  if (trained && trained.total_settled_props != null) {
+    const banner = document.createElement("section");
+    banner.className = "card";
+    banner.style.marginBottom = "24px";
+    const trainable = (trained.markets_trainable_now || []);
+    const warmup = (trained.markets_in_warmup || []);
+    const perMarket = Object.entries(trained.per_market || {})
+      .filter(([k, v]) => v.n)
+      .map(([k, v]) => {
+        const cls = v.trainable ? "good" : "flat";
+        return `<div class="market-row" style="grid-template-columns: 180px repeat(5, 1fr);">
+          <span class="name">${k.replace(/_/g, " ")}</span>
+          <span>${v.n} samples</span>
+          <span>RMSE ${v.rmse_projection ?? "--"}</span>
+          <span>Brier ${v.brier ?? "--"}</span>
+          <span>Bias corr ${v.fitted_bias_correction ?? "--"}</span>
+          <span>${badge(v.trainable ? "TRAINABLE" : "warmup (" + (50 - v.n) + " more)", cls)}</span>
+        </div>`;
+      }).join("");
+    banner.innerHTML = `
+      <div class="card-head"><span>Model Training Status</span>
+        <span class="muted">${trained.total_settled_props} settled props total; threshold ${trained.min_train_sample} per market</span>
+      </div>
+      <p class="caption" style="padding:10px 14px; margin:0;">
+        Trainable now: <strong>${trainable.length ? trainable.join(", ") : "none yet"}</strong> &middot;
+        Warming up: <strong>${warmup.length}</strong> markets
+      </p>
+      <div class="market-row head" style="grid-template-columns: 180px repeat(5, 1fr);">
+        <span>Market</span><span>Sample</span><span>Projection RMSE</span><span>Brier</span><span>Bias correction</span><span>Training status</span>
+      </div>
+      ${perMarket || '<p class="empty">No outcome data yet.</p>'}`;
+    const main = document.querySelector("main.container");
+    if (main && main.firstElementChild) main.insertBefore(banner, main.firstElementChild.nextSibling);
+  }
   document.getElementById("calRefreshed").textContent =
     cal.generated_at ? `last calibration ${cal.generated_at.replace("T", " ")} UTC` : "no calibration yet";
 

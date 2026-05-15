@@ -207,6 +207,100 @@ def pitcher_arsenal(pid: int) -> List[Dict[str, Any]]:
     return pitcher_arsenal_all().get(pid, [])
 
 
+def batter_vs_pitch_all(season: Optional[int] = None) -> Dict[int, List[Dict[str, Any]]]:
+    """Return {player_id: [{pitch_type, pitch_name, est_woba, est_ba, est_slg,
+                            whiff_pct, k_pct, hard_hit_pct, pitches}]}."""
+    season = season or dt.date.today().year
+    cache_name = f"batter_vs_pitch_{season}"
+    c = _cache_get(cache_name)
+    if c is not None:
+        return {int(k): v for k, v in c.items()}
+    url = "https://baseballsavant.mlb.com/leaderboard/pitch-arsenal-stats"
+    params = {
+        "type": "batter", "year": str(season), "min": "20",
+        "pitchType": "", "hand": "", "csv": "true",
+    }
+    if requests is None:
+        return {}
+    try:
+        r = requests.get(url, params=params, headers=HEADERS, timeout=30)
+        if not r.ok:
+            return {}
+        text = r.text.lstrip("﻿")
+    except Exception:
+        return {}
+    out: Dict[int, List[Dict[str, Any]]] = {}
+    reader = csv.DictReader(io.StringIO(text))
+    for row in reader:
+        try:
+            pid = int(row.get("player_id") or 0)
+        except (ValueError, TypeError):
+            continue
+        if not pid:
+            continue
+        entry: Dict[str, Any] = {}
+        for k, v in row.items():
+            if v in (None, ""):
+                entry[k] = None
+            else:
+                try:
+                    entry[k] = float(v)
+                except ValueError:
+                    entry[k] = v
+        out.setdefault(pid, []).append(entry)
+    _cache_put(cache_name, {str(k): v for k, v in out.items()})
+    return out
+
+
+def batter_vs_pitch(pid: int) -> List[Dict[str, Any]]:
+    return batter_vs_pitch_all().get(pid, [])
+
+
+def matchup_xwoba(pitcher_arsenal_list: List[Dict[str, Any]],
+                   batter_vs_pitch_list: List[Dict[str, Any]]) -> Dict[str, Any]:
+    """Compute weighted xwOBA for a specific pitcher-vs-batter matchup.
+
+    Sum over pitch types of (pitcher_usage_pct/100) * (batter_xwoba_vs_that_type).
+    If batter has no record vs a pitch type, fall back to league avg (.320).
+    """
+    if not pitcher_arsenal_list or not batter_vs_pitch_list:
+        return {}
+    batter_by_pt = {p.get("pitch_type"): p for p in batter_vs_pitch_list
+                    if p.get("pitch_type")}
+    total_usage = 0.0
+    weighted = 0.0
+    breakdown = []
+    for ap in pitcher_arsenal_list:
+        pt = ap.get("pitch_type")
+        usage = ap.get("pitch_usage") or 0
+        if not pt or usage <= 0:
+            continue
+        usage_frac = usage / 100.0
+        b = batter_by_pt.get(pt) or {}
+        b_xwoba = b.get("est_woba")
+        if b_xwoba is None or b_xwoba == "":
+            b_xwoba = 0.320   # league average fallback
+        b_xwoba = float(b_xwoba)
+        total_usage += usage_frac
+        weighted += b_xwoba * usage_frac
+        breakdown.append({
+            "pitch": ap.get("pitch_name"),
+            "pitch_type": pt,
+            "pitcher_usage_pct": usage,
+            "batter_xwoba_vs": b_xwoba,
+            "pitcher_xwoba_allowed_overall": ap.get("est_woba") or ap.get("xwoba"),
+        })
+    if total_usage <= 0:
+        return {}
+    matchup = weighted / total_usage
+    return {
+        "matchup_xwoba": round(matchup, 4),
+        "league_xwoba_baseline": 0.320,
+        "delta_vs_league": round(matchup - 0.320, 4),
+        "breakdown": breakdown,
+    }
+
+
 def batter_stats(pid: int) -> Dict[str, Any]:
     """Return Statcast dict for a batter. {} if not in leaderboard."""
     return batter_leaderboard().get(pid, {})
