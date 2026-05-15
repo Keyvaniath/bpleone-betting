@@ -1,13 +1,13 @@
 # EdgeStat Daily Brief - 2026-05-15
 
-_Generated at 2026-05-15T04:18:14 UTC. All game-line prices are from DraftKings. Pick-em opportunities from PrizePicks._
+_Generated at 2026-05-15T04:29:09 UTC. All game-line prices are from DraftKings. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
 **NYY @ NYM - NYY_ML**
 - Market: +100
-- Model probability: 88.4%
-- Raw edge: +76.9%
+- Model probability: 87.9%
+- Raw edge: +75.72%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
@@ -21,37 +21,37 @@ _Generated at 2026-05-15T04:18:14 UTC. All game-line prices are from DraftKings.
 | 6:45p ET | TOR @ DET | Comerica Park | 60F 6mph | UNDER_8.5 +61.45% |
 | 7:10p ET | CIN @ CLE | Progressive Field | 55F 6mph | UNDER_8.5 +10.34% |
 | 7:10p ET | MIA @ TBR | Tropicana Field | indoor | UNDER_8.5 +34.92% |
-| 7:10p ET | MIL @ MIN | Target Field | 71F 10mph | UNDER_8.5 +13.72% |
+| 7:10p ET | MIL @ MIN | Target Field | 70F 0mph | UNDER_8.5 +30.01% |
 | 7:15p ET | BOS @ ATL | Truist Park | 70F 0mph | ATL_ML +62.28% |
-| 7:15p ET | NYY @ NYM | Citi Field | 70F 0mph | NYY_ML +76.9% |
-| 7:40p ET | CHC @ CHW | Rate Field | 70F 0mph | OVER_8.5 +16.64% |
+| 7:15p ET | NYY @ NYM | Citi Field | 55F 2mph | NYY_ML +75.72% |
+| 7:40p ET | CHC @ CHW | Rate Field | 60F 10mph | OVER_8.5 +25.73% |
 | 8:10p ET | TEX @ HOU | Daikin Park | indoor | HOU_ML +23.34% |
-| 8:15p ET | KCR @ STL | Busch Stadium | 70F 0mph | UNDER_8.5 +6.77% |
+| 8:15p ET | KCR @ STL | Busch Stadium | 72F 7mph | STL_ML +3.72% |
 | 8:40p ET | ARI @ COL | Coors Field | 70F 0mph | OVER_8.5 +72.67% |
-| 9:38p ET | LAD @ LAA | Angel Stadium | 60F 5mph | LAD_ML +74.67% |
+| 9:38p ET | LAD @ LAA | Angel Stadium | 70F 0mph | LAD_ML +74.65% |
 | 9:40p ET | SDP @ SEA | T-Mobile Park | indoor | UNDER_8.5 +58.89% |
-| 9:40p ET | SFG @ OAK | Sutter Health Park | 73F 8mph | OAK_ML +56.92% |
+| 9:40p ET | SFG @ OAK | Sutter Health Park | 70F 0mph | OAK_ML +56.14% |
 
 ## Parlays - top 5
 
 - **2-leg @ +264 (prob 41.1%, EV +49.95%)**
   - PHI @ PIT UNDER_8.5 (-110, model 63.7%)
   - TEX @ HOU HOU_ML (-110, model 64.6%)
-- **3-leg @ +596 (prob 21.5%, EV +49.75%)**
-  - MIL @ MIN UNDER_8.5 (-110, model 59.6%)
-  - TEX @ HOU HOU_ML (-110, model 64.6%)
-  - KCR @ STL UNDER_8.5 (-110, model 55.9%)
+- **3-leg @ +596 (prob 21.5%, EV +49.81%)**
+  - CIN @ CLE UNDER_8.5 (-110, model 57.8%)
+  - MIL @ MIN MIN_ML (-110, model 57.9%)
+  - SDP @ SEA SEA_ML (-110, model 64.4%)
 - **2-leg @ +264 (prob 41.0%, EV +49.44%)**
   - PHI @ PIT UNDER_8.5 (-110, model 63.7%)
   - SDP @ SEA SEA_ML (-110, model 64.4%)
-- **3-leg @ +629 (prob 20.5%, EV +49.36%)**
-  - MIL @ MIN MIN_ML (-110, model 58.2%)
-  - CHC @ CHW CHC_ML (+100, model 54.5%)
+- **3-leg @ +629 (prob 20.4%, EV +48.76%)**
+  - MIL @ MIN MIN_ML (-110, model 57.9%)
+  - CHC @ CHW CHC_ML (+100, model 54.6%)
   - TEX @ HOU HOU_ML (-110, model 64.6%)
-- **3-leg @ +596 (prob 21.4%, EV +49.24%)**
-  - MIL @ MIN UNDER_8.5 (-110, model 59.6%)
-  - KCR @ STL UNDER_8.5 (-110, model 55.9%)
-  - SDP @ SEA SEA_ML (-110, model 64.4%)
+- **3-leg @ +629 (prob 20.4%, EV +48.63%)**
+  - CIN @ CLE UNDER_8.5 (-110, model 57.8%)
+  - CHC @ CHW CHC_ML (+100, model 54.6%)
+  - TEX @ HOU HOU_ML (-110, model 64.6%)
 
 ## Self-Learning Loop
 
@@ -69,16 +69,16 @@ Cumulative graded plays: 6. Wins: 1. Hit rate: 16.7%.
 | ARI @ COL | 12.5% | +700 | 10.4 | -155 | +155 |
 | BAL @ WSN | 24.8% | +303 | 6.98 | +334 | -334 |
 | BOS @ ATL | 48.4% | +106 | 3.63 | -312 | +312 |
-| CHC @ CHW | 37.5% | +167 | 4.91 | +202 | -202 |
+| CHC @ CHW | 37.5% | +167 | 5.1 | +201 | -201 |
 | CIN @ CLE | 50.3% | -101 | 3.57 | +151 | -151 |
-| KCR @ STL | 47.7% | +110 | 3.7 | +148 | -148 |
-| LAD @ LAA | 15.2% | +557 | 9.59 | +1347 | -1347 |
+| KCR @ STL | 47.7% | +110 | 3.73 | +144 | -144 |
+| LAD @ LAA | 15.2% | +557 | 9.41 | +1348 | -1348 |
 | MIA @ TBR | 50.6% | -103 | 3.4 | +175 | -175 |
-| MIL @ MIN | 42.5% | +135 | 4.32 | +127 | -127 |
-| NYY @ NYM | 76.6% | -327 | 1.33 | +1737 | -1737 |
+| MIL @ MIN | 42.5% | +135 | 4.28 | +131 | -131 |
+| NYY @ NYM | 76.6% | -327 | 1.33 | +1657 | -1657 |
 | PHI @ PIT | 40.3% | +148 | 4.62 | -167 | +167 |
 | SDP @ SEA | 44.2% | +126 | 4.08 | +106 | -106 |
-| SFG @ OAK | 46.2% | +116 | 3.86 | -264 | +264 |
+| SFG @ OAK | 46.2% | +116 | 3.86 | -252 | +252 |
 | TEX @ HOU | 47.7% | +110 | 3.7 | -107 | +107 |
 | TOR @ DET | 71.3% | -249 | 1.64 | +176 | -176 |
 
