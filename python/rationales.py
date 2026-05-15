@@ -270,6 +270,15 @@ def _drivers_for_batter(pid: int, market: str, line: float, prob_over: Optional[
     if inj:
         caveats.append(f"INJURY: {inj.get('status', 'flagged')} -- {inj.get('description', 'see injuries page')}")
 
+    # Lineup confirmation gate signal (passed through from props.json if present)
+    ls = (player or {}).get("lineup_status")
+    if ls == "pending":
+        caveats.append("Lineup not yet posted -- ~10% scratch risk; treat projection as conditional")
+    elif ls == "scratched":
+        caveats.append("NOT IN POSTED LINEUP -- skip; player is scratched today")
+    elif ls == "confirmed":
+        drivers.append("Lineup CONFIRMED -- starting today, no scratch risk")
+
     return {"drivers": drivers, "caveats": caveats}
 
 

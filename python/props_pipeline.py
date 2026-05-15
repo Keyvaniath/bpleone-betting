@@ -875,6 +875,26 @@ def _build_props_from_bovada(markets: List[str], max_games: int) -> Dict[str, An
                 if edge_over >= 3:
                     play, best_edge_pct = "OVER", round(edge_over, 2)
 
+        # Lineup confirmation gate: batter props only. PENDING if the team's
+        # lineup hasn't posted yet (player might scratch). Pitcher props are
+        # always confirmed once probable pitcher is announced.
+        lineup_status = None
+        if market_key.startswith("batter_") and ctx:
+            try:
+                lu = sr.game_lineups(ctx["gamePk"]) or {"home": {}, "away": {}}
+                has_any_lineup = bool(lu.get("home")) or bool(lu.get("away"))
+                in_lineup = (pid in (lu.get("home") or {})) or (pid in (lu.get("away") or {}))
+                if not has_any_lineup:
+                    lineup_status = "pending"
+                elif in_lineup:
+                    lineup_status = "confirmed"
+                else:
+                    lineup_status = "scratched"   # team posted, this player isn't in it
+            except Exception:
+                lineup_status = "pending"
+        elif market_key.startswith("pitcher_"):
+            lineup_status = "confirmed" if ctx and ctx.get("opp_pitcher_id") is not None else "pending"
+
         rows.append({
             "player": clean_name,
             "player_id": pid,
@@ -887,9 +907,10 @@ def _build_props_from_bovada(markets: List[str], max_games: int) -> Dict[str, An
             "model_projection": round(model_proj, 3) if isinstance(model_proj, (int, float)) else None,
             "vegas_line": line,
             "projection_vs_line": round(model_proj - line, 2) if isinstance(model_proj, (int, float)) else None,
-            "play": play,
-            "best_edge_pct": best_edge_pct,
-            "low_confidence": low_confidence,
+            "play": play if lineup_status != "scratched" else "SKIP",
+            "best_edge_pct": best_edge_pct if lineup_status != "scratched" else None,
+            "low_confidence": low_confidence or (lineup_status == "pending"),
+            "lineup_status": lineup_status,
             "book": "bovada",
             "debug": {**dbg, "model_version": dbg.get("model_version", "bovada-v1")},
         })
