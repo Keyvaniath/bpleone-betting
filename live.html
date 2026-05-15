@@ -218,6 +218,79 @@ function renderLiveGames() {
 }
 renderLiveGames();
 setInterval(renderLiveGames, 60000);   // auto-refresh every minute client-side
+
+// Live CLV: line-drift trajectory per game (Bovada live moneyline + total)
+function renderLiveClv() {
+  fetch("data/live_clv.json", { cache: "no-cache" })
+    .then(r => r.json())
+    .then(d => {
+      const main = document.querySelector("main.container");
+      if (!main) return;
+      let section = document.getElementById("liveClvSection");
+      if (!section) {
+        section = document.createElement("section");
+        section.id = "liveClvSection";
+        section.className = "card";
+        section.style.marginBottom = "24px";
+        const liveNow = document.getElementById("liveNowSection");
+        if (liveNow && liveNow.parentNode) {
+          liveNow.parentNode.insertBefore(section, liveNow.nextSibling);
+        } else {
+          main.appendChild(section);
+        }
+      }
+      const games = d.games || {};
+      const entries = Object.entries(games);
+      if (!entries.length) {
+        section.innerHTML = `<div class="card-head"><span>Live Line Movement (CLV)</span><span class="muted">polled ${d.polled_at || "?"}</span></div>
+          <p class="muted" style="padding:14px;">No tracked games yet -- the live-games cron writes here every 10 min once games start.</p>`;
+        return;
+      }
+      // Sort: live first, then pre, then final
+      entries.sort(([, a], [, b]) => {
+        const order = (g) => {
+          const last = (g.snapshots || []).slice(-1)[0] || {};
+          return last.state === "live" ? 0 : last.state === "pre" ? 1 : 2;
+        };
+        return order(a) - order(b);
+      });
+      const rows = entries.map(([k, g]) => {
+        const snaps = g.snapshots || [];
+        const first = snaps[0] || {};
+        const last = snaps[snaps.length - 1] || {};
+        const state = last.state || "?";
+        const stateColor = state === "live" ? "#58c878" : state === "final" ? "#888" : "#d4a04a";
+        // Mini line of the moneyline trajectory
+        const mlTrail = snaps.map(s => s.home_ml).filter(v => v != null);
+        const totalTrail = snaps.map(s => s.total).filter(v => v != null);
+        const mlMove = mlTrail.length >= 2 ? (mlTrail[mlTrail.length-1] - mlTrail[0]) : 0;
+        const totMove = totalTrail.length >= 2 ? (totalTrail[totalTrail.length-1] - totalTrail[0]) : 0;
+        const clvPP = g.clv_home_ml_pp;
+        const clvTotal = g.clv_total;
+        const liveSummary = state === "live" ? (last.notes || "live") : (state === "final" ? "final" : "pre-game");
+        return `<div style="display:grid; grid-template-columns: 1.4fr 0.7fr 1fr 1fr 1fr 1fr; gap:14px; padding:10px 14px; border-bottom:1px solid rgba(255,255,255,0.04); font-family:'JetBrains Mono',monospace; font-size:12px; align-items:center;">
+          <span><strong>${g.matchup}</strong></span>
+          <span style="color:${stateColor};">${state.toUpperCase()}</span>
+          <span class="muted">${snaps.length} snap${snaps.length===1?'':'s'} &middot; ${liveSummary}</span>
+          <span>ML: ${first.home_ml ?? '--'} &rarr; <strong>${last.home_ml ?? '--'}</strong> ${mlMove ? `<span style="color:${mlMove<0?'#58c878':'#e35a5a'};">(${mlMove>=0?'+':''}${mlMove})</span>` : ''}</span>
+          <span>Total: ${first.total ?? '--'} &rarr; <strong>${last.total ?? '--'}</strong> ${totMove ? `<span style="color:${totMove<0?'#58c878':'#e35a5a'};">(${totMove>=0?'+':''}${totMove})</span>` : ''}</span>
+          <span>${clvPP != null ? `CLV: <strong style="color:${clvPP<0?'#58c878':'#e35a5a'}">${clvPP>=0?'+':''}${clvPP}pp</strong>` : '<span class="muted">pending close</span>'}</span>
+        </div>`;
+      }).join("");
+      section.innerHTML = `<div class="card-head">
+        <span>Live Line Movement (CLV)</span>
+        <span class="muted">polled ${d.polled_at || "?"} UTC &middot; ${entries.length} games tracked</span>
+      </div>
+      <div style="display:grid; grid-template-columns: 1.4fr 0.7fr 1fr 1fr 1fr 1fr; gap:14px; padding:6px 14px; color: var(--muted, #888); font-size: 10px; text-transform: uppercase;">
+        <span>Matchup</span><span>State</span><span>Tracking</span><span>Home ML</span><span>Total</span><span>True CLV</span>
+      </div>
+      ${rows}
+      <p class="muted" style="font-size:11px; padding: 10px 14px 0;">CLV (pp) = difference in implied home win % between OPENING snapshot and CLOSING snapshot (final). Negative = line moved toward home (you got the better side opening). Only computed once a game finalizes.</p>`;
+    })
+    .catch(err => console.error("live_clv load failed:", err));
+}
+renderLiveClv();
+setInterval(renderLiveClv, 60000);
 </script>
 </body>
 </html>
