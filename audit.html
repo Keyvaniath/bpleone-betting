@@ -56,6 +56,11 @@
     <p>Freshness check on every data artifact + signal source. Greens are fresh (within expected interval), ambers are stale, reds need attention.</p>
   </section>
 
+  <section id="healthSummary" class="card" style="margin-bottom:24px; display:none;">
+    <div class="card-head"><span>Pipeline Health Audit</span><span class="muted" id="healthRefresh"></span></div>
+    <div id="healthSummaryBody" style="padding:14px;"></div>
+  </section>
+
   <section class="card" style="margin-bottom:24px;">
     <div class="card-head"><span>Artifact Freshness</span><span class="muted" id="auditTime"></span></div>
     <div class="audit-row head">
@@ -153,6 +158,36 @@ function fmtAge(ageH) {
   }).join("");
   document.getElementById("auditTime").textContent = "checked just now";
 })();
+
+// Pipeline health snapshot from data/pipeline_health.json (server-side audit).
+fetch("data/pipeline_health.json", { cache: "no-cache" })
+  .then(r => r.json())
+  .then(p => {
+    const section = document.getElementById("healthSummary");
+    const body = document.getElementById("healthSummaryBody");
+    const ts = document.getElementById("healthRefresh");
+    if (!section || !body) return;
+    section.style.display = "block";
+    if (ts) ts.textContent = `audited ${(p.generated_at || "").replace("T", " ")} UTC`;
+    const colorByStatus = {
+      ok: "#58c878", critical: "#e35a5a", warning: "#d4a04a", degraded: "#d4a04a",
+    };
+    const headerColor = colorByStatus[p.overall_status] || "#888";
+    const counts = `OK: ${p.n_ok}/${p.total_artifacts} &middot; empty: ${p.n_empty} &middot; stale: ${p.n_stale} &middot; demo: ${p.n_demo} &middot; missing: ${p.n_missing} &middot; parse_err: ${p.n_parse_error}`;
+    const flagged = (p.artifacts || []).filter(a => a.status !== "ok");
+    const issues = flagged.length
+      ? `<div style="margin-top: 12px;"><strong style="color:#d4a04a;">Issues:</strong><ul style="margin:6px 0 0 0; padding-left:18px; line-height:1.6;">
+        ${flagged.map(a => `<li style="font-family:'JetBrains Mono',monospace; font-size:12px;"><span style="color:${a.status === 'demo' || a.status === 'parse_error' ? '#e35a5a' : '#d4a04a'};">[${a.status}]</span> ${a.label} (${a.file}) -- ${a.notes}</li>`).join("")}
+      </ul></div>`
+      : `<p class="muted" style="margin: 8px 0 0 0;">All artifacts healthy.</p>`;
+    body.innerHTML = `
+      <div style="display:flex; gap:18px; align-items:baseline; flex-wrap:wrap;">
+        <span style="font-size:22px; font-weight:700; color:${headerColor}; text-transform:uppercase; font-family:'JetBrains Mono',monospace;">${p.overall_status}</span>
+        <span style="font-family:'JetBrains Mono',monospace; font-size:12px; color: var(--text-2, #aaa);">${counts}</span>
+      </div>
+      ${issues}`;
+  })
+  .catch(() => {});
 </script>
 
 </body>
