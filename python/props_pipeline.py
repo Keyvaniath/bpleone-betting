@@ -745,6 +745,18 @@ def build_props(markets: Optional[List[str]] = None, max_games: int = MAX_GAMES)
                     p_over = max(0.001, min(0.999, p_over * cf))
                     dbg["correction_applied"] = round(cf, 4)
                     dbg["p_over_raw"] = round(p_over_raw, 4)
+                # Surface the model's explicit projection of the stat value so
+                # the UI can show "Model expects X" alongside the book's line.
+                projection_keys = ("expected_ks", "expected_hr", "expected_hits",
+                                   "expected_tb", "expected_runs", "expected_rbis",
+                                   "expected_singles", "expected_doubles",
+                                   "expected_hrr")
+                model_projection = None
+                for k in projection_keys:
+                    v = dbg.get(k)
+                    if v is not None:
+                        model_projection = v
+                        break
                 row: Dict[str, Any] = {
                     "player": player_name,
                     "player_id": pid,
@@ -754,6 +766,10 @@ def build_props(markets: Optional[List[str]] = None, max_games: int = MAX_GAMES)
                     "dk_under": under_p,
                     "model_prob_over": round(p_over, 4),
                     "model_prob_under": round(1.0 - p_over, 4),
+                    "model_projection": model_projection,
+                    "vegas_line": line,
+                    "projection_vs_line": (round(model_projection - line, 2)
+                                            if model_projection is not None else None),
                     "debug": dbg,
                 }
                 # Compute edges for both sides (only one will be positive).

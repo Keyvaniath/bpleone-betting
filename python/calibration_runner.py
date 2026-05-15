@@ -109,14 +109,23 @@ def compute_metrics(records: List[Dict[str, Any]], today: Optional[dt.date] = No
             plays_lost += 1
     roi_pct = (roi_pl / roi_stake * 100.0) if roi_stake > 0 else 0.0
 
+    # Per-projection RMSE: how far is the model's expected stat value from actual?
+    proj_samples = [r for r in sample
+                    if r.get("model_projection") is not None and r.get("actual") is not None]
+    rmse = None
+    if proj_samples:
+        sq = sum((r["actual"] - r["model_projection"]) ** 2 for r in proj_samples)
+        rmse = round((sq / len(proj_samples)) ** 0.5, 3)
     return {
         "n": n,
+        "n_with_projection": len(proj_samples),
         "implied_over_rate": round(implied_rate, 4),
         "actual_over_rate": round(actual_rate, 4),
         "bias": round(bias, 4),
         "brier": round(brier, 4),
         "log_loss": round(ll, 4),
         "ece": round(ece, 4),
+        "rmse": rmse,
         "plays_n": plays_won + plays_lost,
         "plays_won": plays_won,
         "plays_lost": plays_lost,

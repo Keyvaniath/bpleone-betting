@@ -161,6 +161,10 @@ def settle_prop(prop: Dict[str, Any], outcomes_for_game: Dict[str, Any]) -> Opti
         "actual": actual,
         "over_hit": bool(over_won),
         "model_prob_over": prop.get("model_prob_over"),
+        "model_projection": prop.get("model_projection"),
+        "projection_vs_actual": (round(actual - prop["model_projection"], 2)
+                                  if prop.get("model_projection") is not None else None),
+        "model_version": (prop.get("debug") or {}).get("model_version"),
         "dk_over": prop.get("dk_over"),
         "dk_under": prop.get("dk_under"),
         "play": prop.get("play"),

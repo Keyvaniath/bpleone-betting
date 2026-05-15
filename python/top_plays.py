@@ -95,6 +95,8 @@ def collect_top_plays(n: int = 12) -> Dict[str, Any]:
             "line": r.get("line"),
             "market_price": r.get("dk_over") if r.get("play") == "OVER" else r.get("dk_under"),
             "model_prob": prob,
+            "model_projection": r.get("model_projection"),
+            "projection_vs_line": r.get("projection_vs_line"),
             "edge_pct": edge,
             "quality_score": _quality_score(prob, edge, r.get("low_confidence", False)),
             "is_precal": edge >= 15,

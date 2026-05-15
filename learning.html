@@ -60,7 +60,7 @@
   <section class="card" style="margin-bottom:24px;">
     <div class="card-head"><span>Calibration by Market</span><span class="muted" id="calRefreshed"></span></div>
     <div class="market-row head">
-      <span>Market</span><span>n</span><span>ROI</span><span>Hit rate</span><span>Model implied</span><span>Bias</span><span>ECE</span><span>Correction</span>
+      <span>Market</span><span>n</span><span>ROI</span><span>Hit rate</span><span>Model implied</span><span>Bias</span><span>ECE</span><span>RMSE</span>
     </div>
     <div id="marketList"><p class="empty">Loading...</p></div>
   </section>
@@ -109,7 +109,7 @@ function renderMarkets(cal) {
       <span>${m.implied_over_rate != null ? (m.implied_over_rate * 100).toFixed(1) + "%" : "--"}</span>
       <span>${biasLabel(m.bias)}</span>
       <span>${m.ece != null ? m.ece.toFixed(3) : "--"}</span>
-      <span>${m.correction_factor != null ? badge(m.correction_factor.toFixed(3), m.correction_factor === 1 ? "flat" : "good") : "--"}</span>
+      <span title="root-mean-square error of model projection vs actual stat (lower = sharper model)">${m.rmse != null ? m.rmse : "--"}</span>
     </div>`;
   }).join("");
 }
@@ -149,11 +149,17 @@ function renderRecent(tr) {
       const hit = r.play_hit;
       const resCls = hit === true ? "hit" : hit === false ? "miss" : "";
       const resTxt = hit === true ? "WIN" : hit === false ? "LOSS" : "SKIP";
+      // Model probability we assigned (over_hit-aware)
+      const modelP = r.model_prob_over != null
+        ? (r.over_hit
+            ? (r.model_prob_over * 100).toFixed(1) + "% (gave OVER)"
+            : ((1 - r.model_prob_over) * 100).toFixed(1) + "% (gave UNDER)")
+        : "--";
       return `<div class="recent-row">
         <span>${r.date}</span>
         <span>${r.player || "?"}</span>
         <span>${(r.market || "").replace(/_/g, " ")} ${r.line}</span>
-        <span>actual ${r.actual} vs ${r.line}</span>
+        <span><strong>actual ${r.actual}</strong> vs line ${r.line} (model ${modelP})</span>
         <span>${r.play}</span>
         <span class="${resCls}">${resTxt}</span>
       </div>`;
@@ -164,7 +170,7 @@ function renderRecent(tr) {
       <span>${r.date}</span>
       <span>${r.matchup || "?"}</span>
       <span>Total ${r.market_total}</span>
-      <span>${r.actual_total} vs ${r.market_total}</span>
+      <span>actual ${r.actual_total} vs ${r.market_total} (model fair ${r.model_fair_total ?? "?"})</span>
       <span>--</span>
       <span>${resTxt}</span>
     </div>`;

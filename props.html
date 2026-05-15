@@ -67,9 +67,9 @@
     <div class="table-wrap">
       <table class="data-table" id="propsTable">
         <thead>
-          <tr><th>Player</th><th>Matchup</th><th>Market</th><th>Line</th><th>DK O / U</th><th>Model %</th><th>Edge</th><th>Side</th></tr>
+          <tr><th>Player</th><th>Matchup</th><th>Market</th><th>DK Line</th><th>Model Proj</th><th>DK O / U</th><th>Model %</th><th>Edge</th><th>Side</th></tr>
         </thead>
-        <tbody><tr><td colspan="8" class="muted" style="text-align:center; padding:24px;">Loading props...</td></tr></tbody>
+        <tbody><tr><td colspan="9" class="muted" style="text-align:center; padding:24px;">Loading props...</td></tr></tbody>
       </table>
     </div>
   </section>
@@ -175,7 +175,6 @@ function renderTable() {
     const modelPct = ((r.play === "UNDER" ? r.model_prob_under : r.model_prob_over) * 100).toFixed(1);
     const sideStyle = r.play === "OVER" ? "color:#58c878" : r.play === "UNDER" ? "color:#e35a5a" : "color:#888";
     const conf = r.low_confidence ? ' <span class="muted" title="thin sample / suspect projection">(low conf)</span>' : "";
-    // Model version badge -- v2-statcast = uses Savant data; v1 = season stats only
     const mv = r.debug && r.debug.model_version;
     let badge = "";
     if (mv && mv.startsWith("v2-statcast")) {
@@ -183,15 +182,24 @@ function renderTable() {
     } else if (mv && mv.startsWith("v1")) {
       badge = `<span title="${mv}" style="font-size:10px; padding:1px 5px; margin-left:4px; border-radius:3px; background:rgba(255,255,255,0.06); color:#888;">v1</span>`;
     }
-    // Honest framing -- mark edges > 15% as pre-calibration suspect
     const edgeNum = r.best_edge_pct || 0;
     const isPreCal = edgeNum >= 15 && r.play !== "SKIP";
     const edgeMarker = isPreCal ? ' <span title="pre-calibration noise" style="color:#d4a04a;">⚠</span>' : '';
+    // Model projection vs line -- the core "what does the model say?" signal
+    const mp = r.model_projection;
+    const pvl = r.projection_vs_line;
+    let projCell = "--";
+    if (mp != null) {
+      const arrow = pvl != null && pvl > 0 ? ' <span style="color:#58c878;">▲</span>' :
+                    pvl != null && pvl < 0 ? ' <span style="color:#e35a5a;">▼</span>' : '';
+      projCell = `<strong>${mp.toFixed(2)}</strong>${arrow}<div class="muted" style="font-size:10px;">${pvl != null ? (pvl >= 0 ? "+" : "") + pvl.toFixed(2) : ""}</div>`;
+    }
     return `<tr>
       <td><strong>${r.player}</strong>${badge}${conf}</td>
       <td class="muted">${r.matchup}</td>
       <td>${MARKET_LABEL[r.market] || r.market}</td>
       <td>${r.line}</td>
+      <td>${projCell}</td>
       <td>${fmtPrice(r.dk_over)} / ${fmtPrice(r.dk_under)}</td>
       <td>${modelPct}%</td>
       <td>${r.best_edge_pct == null ? "--" : (r.best_edge_pct >= 0 ? "+" : "") + r.best_edge_pct.toFixed(1) + "%"}${edgeMarker}</td>
