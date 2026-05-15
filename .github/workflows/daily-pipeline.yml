@@ -86,6 +86,12 @@ jobs:
         working-directory: python
         run: python injury_tracker.py
 
+      # CLV computation: compare today's morning snapshot to the latest (near
+      # closing) lines. Best run at 6 PM ET, but no harm running every cron.
+      - name: Compute Closing Line Value
+        working-directory: python
+        run: python clv.py
+
       # Generate the daily markdown brief from all of today's artifacts.
       - name: Generate daily summary brief
         working-directory: python

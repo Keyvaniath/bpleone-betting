@@ -174,9 +174,33 @@ function renderRecent(tr) {
 Promise.all([
   fetch("data/calibration_live.json", { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
   fetch("data/track_record.json", { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
-]).then(([cal, tr]) => {
+  fetch("data/clv_log.json", { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
+]).then(([cal, tr, clv]) => {
   document.getElementById("calRefreshed").textContent =
     cal.generated_at ? `last calibration ${cal.generated_at.replace("T", " ")} UTC` : "no calibration yet";
+
+  // CLV banner above the existing sections
+  const records = (clv.records || []).filter(r => (r.market || "").endsWith("_ML") && r.clv_pct != null);
+  if (records.length) {
+    const clvs = records.map(r => r.clv_pct);
+    const avg = clvs.reduce((a, b) => a + b, 0) / clvs.length;
+    const positive = clvs.filter(c => c > 0).length;
+    const summary = document.createElement("section");
+    summary.className = "card";
+    summary.style.marginBottom = "24px";
+    summary.innerHTML = `
+      <div class="card-head"><span>Closing Line Value (sharp betting's leading indicator)</span><span class="muted">${records.length} ML records</span></div>
+      <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:16px; padding:14px; font-family:'JetBrains Mono',monospace; font-size:13px;">
+        <div><div class="muted" style="font-size:11px;">Avg CLV</div><div style="font-size:22px; color:${avg > 0 ? '#58c878' : '#e35a5a'};">${avg >= 0 ? "+" : ""}${avg.toFixed(2)}%</div></div>
+        <div><div class="muted" style="font-size:11px;">% Positive CLV</div><div style="font-size:22px;">${(positive/records.length*100).toFixed(1)}%</div></div>
+        <div><div class="muted" style="font-size:11px;">Best CLV</div><div style="font-size:22px; color:#58c878;">+${Math.max(...clvs).toFixed(2)}%</div></div>
+        <div><div class="muted" style="font-size:11px;">Worst CLV</div><div style="font-size:22px; color:#e35a5a;">${Math.min(...clvs).toFixed(2)}%</div></div>
+      </div>
+      <p class="caption" style="margin-top:6px;">CLV measures how much your line moved between when we recommended it and the closing line. Positive CLV across a large sample correlates almost perfectly with long-term ROI -- it's how sharps prove they're beating the market.</p>`;
+    const main = document.querySelector("main.container");
+    if (main && main.firstElementChild) main.insertBefore(summary, main.firstElementChild.nextSibling);
+  }
+
   renderMarkets(cal);
   renderGameOverall(cal);
   renderRecent(tr);
