@@ -109,6 +109,11 @@ jobs:
         working-directory: python
         run: python first_five.py
 
+      # Lineup quality aggregator: sum each confirmed batter's xwOBA x PA.
+      - name: Score confirmed lineup quality
+        working-directory: python
+        run: python lineup_quality.py
+
       # CLV computation: compare today's morning snapshot to the latest (near
       # closing) lines. Best run at 6 PM ET, but no harm running every cron.
       - name: Compute Closing Line Value
