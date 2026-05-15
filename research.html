@@ -165,6 +165,24 @@ function renderWeather(w) {
   </div>`;
 }
 
+function renderExtraMarkets(matchup) {
+  const nrfi = nrfiByMatchup[matchup];
+  const f5 = f5ByMatchup[matchup];
+  if (!nrfi && !f5) return "";
+  const parts = [];
+  if (nrfi) {
+    const pn = (nrfi.p_nrfi * 100).toFixed(1);
+    const py = (nrfi.p_yrfi * 100).toFixed(1);
+    const lean = nrfi.p_nrfi >= 0.55 ? "NRFI lean" : nrfi.p_yrfi >= 0.55 ? "YRFI lean" : "neutral";
+    const leanColor = nrfi.p_nrfi >= 0.55 ? "#58c878" : nrfi.p_yrfi >= 0.55 ? "#e35a5a" : "#888";
+    parts.push(`<span><strong>NRFI:</strong> ${pn}% (fair ${nrfi.fair_nrfi_price >= 0 ? '+' : ''}${nrfi.fair_nrfi_price}) / YRFI ${py}% <span style="color:${leanColor};">(${lean})</span></span>`);
+  }
+  if (f5) {
+    parts.push(`<span><strong>F5 fair total:</strong> ${f5.fair_total} (P over 4.5 = ${(f5.over_4_5 * 100).toFixed(0)}%, over 5.5 = ${(f5.over_5_5 * 100).toFixed(0)}%)</span>`);
+  }
+  return `<div class="market-line" style="font-size:11px; margin-top:4px;">${parts.join(' &nbsp;|&nbsp; ')}</div>`;
+}
+
 function renderBullpens(bp, home, away) {
   if (!bp) return "";
   const fmt = (t, code) => {
@@ -243,6 +261,7 @@ function renderMatchup(g) {
       ${renderWeather(g.weather)}
       ${renderUmpire(g.umpire)}
       ${renderBullpens(g.bullpens, home, away)}
+      ${renderExtraMarkets(g.matchup)}
       ${renderLineups(g.lineups, home, away)}
       <div class="pitcher-grid" style="margin-top:14px;">
         ${renderPitcher(g.away_pitcher, away)}
@@ -269,6 +288,20 @@ fetch("data/injuries_live.json", { cache: "no-cache" })
   .then(r => r.json())
   .then(d => { injuriesData = d.teams || {}; })
   .catch(() => {});
+
+// NRFI + F5 feeds (loaded once, looked up by matchup)
+let nrfiByMatchup = {};
+let f5ByMatchup = {};
+fetch("data/nrfi.json", { cache: "no-cache" })
+  .then(r => r.json())
+  .then(d => {
+    (d.games || []).forEach(g => { nrfiByMatchup[g.matchup] = g; });
+  }).catch(() => {});
+fetch("data/first_five.json", { cache: "no-cache" })
+  .then(r => r.json())
+  .then(d => {
+    (d.games || []).forEach(g => { f5ByMatchup[g.matchup] = g; });
+  }).catch(() => {});
 
 fetch("data/matchups.json", { cache: "no-cache" })
   .then(r => r.json())

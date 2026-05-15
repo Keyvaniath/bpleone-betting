@@ -99,6 +99,16 @@ jobs:
         working-directory: python
         run: python bullpen.py
 
+      # NRFI / YRFI projections (No Runs First Inning).
+      - name: Project NRFI / YRFI per game
+        working-directory: python
+        run: python nrfi.py
+
+      # First-5 (F5) totals -- isolates starting pitcher edge from bullpen.
+      - name: Project First-5 totals per game
+        working-directory: python
+        run: python first_five.py
+
       # CLV computation: compare today's morning snapshot to the latest (near
       # closing) lines. Best run at 6 PM ET, but no harm running every cron.
       - name: Compute Closing Line Value
