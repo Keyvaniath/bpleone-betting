@@ -49,6 +49,10 @@ def build_summary() -> str:
     inj = _load("injuries_live.json")
     form = _load("team_form.json")
     bp = _load("bullpen_workload.json")
+    nrfi = _load("nrfi.json")
+    f5 = _load("first_five.json")
+    rl = _load("run_line.json")
+    travel = _load("travel.json")
 
     date = (today.get("generated_at") or "")[:10] or dt.date.today().isoformat()
     lines = []
@@ -145,6 +149,51 @@ def build_summary() -> str:
             lines.append(f"Cumulative graded plays: {graded}. Wins: {wins}. "
                          f"Hit rate: {wins/graded*100:.1f}%.")
             lines.append("")
+
+    # --- Auxiliary markets: NRFI / F5 / RL ---
+    nrfi_games = nrfi.get("games") or []
+    f5_games = f5.get("games") or []
+    rl_games = rl.get("games") or []
+    if nrfi_games or f5_games or rl_games:
+        lines.append("## Auxiliary Markets (Model Fair Prices)")
+        lines.append("")
+        lines.append("| Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |")
+        lines.append("|---|---|---|---|---|---|")
+        nrfi_by_m = {g["matchup"]: g for g in nrfi_games}
+        f5_by_m = {g["matchup"]: g for g in f5_games}
+        rl_by_m = {g["matchup"]: g for g in rl_games}
+        matchups = set(nrfi_by_m) | set(f5_by_m) | set(rl_by_m)
+        for matchup in sorted(matchups):
+            n = nrfi_by_m.get(matchup) or {}
+            f = f5_by_m.get(matchup) or {}
+            r = rl_by_m.get(matchup) or {}
+            nrfi_str = f"{n.get('p_nrfi', 0) * 100:.1f}%" if n else "--"
+            nrfi_fair = (f"+{n['fair_nrfi_price']}" if n.get('fair_nrfi_price', 0) >= 0
+                         else str(n.get('fair_nrfi_price', '--'))) if n else "--"
+            f5_str = f.get('fair_total', '--')
+            rl_h = ((f"+{r['fair_home_minus_15']}" if r.get('fair_home_minus_15', 0) >= 0
+                     else str(r.get('fair_home_minus_15')))) if r else "--"
+            rl_a = ((f"+{r['fair_away_plus_15']}" if r.get('fair_away_plus_15', 0) >= 0
+                     else str(r.get('fair_away_plus_15')))) if r else "--"
+            lines.append(f"| {matchup} | {nrfi_str} | {nrfi_fair} | {f5_str} | {rl_h} | {rl_a} |")
+        lines.append("")
+
+    # --- Travel / Rest ---
+    travel_games = travel.get("games") or []
+    flagged = []
+    for g in travel_games:
+        h = g.get("home") or {}
+        a = g.get("away") or {}
+        for side, info in (("home", h), ("away", a)):
+            tz = abs(info.get("tz_change_hours") or 0)
+            if tz >= 2 or (info.get("rest_days") == 0 and tz >= 1):
+                flagged.append((g.get("matchup"), side, info.get("travel_note", "?")))
+    if flagged:
+        lines.append("## Travel / Rest Flags")
+        lines.append("")
+        for matchup, side, note in flagged[:8]:
+            lines.append(f"- **{matchup}** ({side}): {note}")
+        lines.append("")
 
     # --- Hot / cold teams ---
     teams_form = form.get("teams") or {}

@@ -64,6 +64,34 @@ _Generated at 2026-05-15T02:44:58 UTC. All game-line prices are from DraftKings.
 
 Cumulative graded plays: 6. Wins: 1. Hit rate: 16.7%.
 
+## Auxiliary Markets (Model Fair Prices)
+
+| Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
+|---|---|---|---|---|---|
+| ARI @ COL | 12.5% | +700 | 10.4 | -160 | +160 |
+| BAL @ WSN | 24.8% | +303 | 6.98 | +334 | -334 |
+| BOS @ ATL | 48.4% | +106 | 3.65 | -315 | +315 |
+| CHC @ CHW | 37.5% | +167 | 5.1 | +201 | -201 |
+| CIN @ CLE | 50.3% | -101 | 3.57 | +151 | -151 |
+| KCR @ STL | 47.7% | +110 | 3.7 | +148 | -148 |
+| LAD @ LAA | 15.2% | +557 | 9.41 | +1348 | -1348 |
+| MIA @ TBR | 50.6% | -103 | 3.4 | +175 | -175 |
+| MIL @ MIN | 42.5% | +135 | 4.32 | +127 | -127 |
+| NYY @ NYM | 76.6% | -327 | 1.33 | +1657 | -1657 |
+| PHI @ PIT | 40.3% | +148 | 4.62 | -167 | +167 |
+| SDP @ SEA | 44.2% | +126 | 4.08 | +106 | -106 |
+| SFG @ OAK | 46.2% | +116 | 3.99 | -242 | +242 |
+| TEX @ HOU | 47.7% | +110 | 3.7 | -107 | +107 |
+| TOR @ DET | 71.3% | -249 | 1.64 | +176 | -176 |
+
+## Travel / Rest Flags
+
+- **KCR @ STL** (home): travel + back-to-back (+2h tz shift)
+- **ARI @ COL** (home): travel + back-to-back (-2h tz shift)
+- **LAD @ LAA** (home): travel + back-to-back (-3h tz shift)
+- **SDP @ SEA** (home): travel + back-to-back (-2h tz shift)
+- **SDP @ SEA** (away): travel + back-to-back (-2h tz shift)
+
 ## Team Form (last 10)
 
 **Hot:** NYM 7-3 (W3, +18), MIL 7-3 (W1, +17), TB 8-2 (L1, +16), ATL 6-4 (L1, +15), SEA 6-4 (W1, +14)
@@ -72,12 +100,14 @@ Cumulative graded plays: 6. Wins: 1. Hit rate: 16.7%.
 
 ## Gassed Bullpens (> 8.0 IP in 2 days)
 
-- PIT: 11.1 IP across 2 games
-- SD: 9.2 IP across 2 games
-- MIA: 9.3 IP across 2 games
-- CIN: 9.0 IP across 2 games
-- COL: 11.3 IP across 2 games
-- WSH: 10.2 IP across 2 games
+- ATH: 8.2 IP across 3 games
+- PIT: 12.1 IP across 3 games
+- SD: 15.5 IP across 3 games
+- SEA: 8.6 IP across 3 games
+- STL: 8.6 IP across 3 games
+- ATL: 11.5 IP across 3 games
+- CWS: 10.5 IP across 3 games
+- MIA: 11.3 IP across 3 games
 
 ---
 
