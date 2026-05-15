@@ -46,11 +46,11 @@
   </section>
 
   <section class="metric-strip">
-    <div class="metric"><span class="metric-num" id="liveCurrent">99.5%</span><span class="metric-label">Current Home Win %</span></div>
-    <div class="metric"><span class="metric-num" id="livePreGame">49.4%</span><span class="metric-label">Pre-Game Home %</span></div>
-    <div class="metric"><span class="metric-num" id="liveSwing">+50.1pp</span><span class="metric-label">Win Prob Swing</span></div>
-    <div class="metric"><span class="metric-num" id="liveBigEvent">+7.2pp</span><span class="metric-label">Biggest Single Event</span></div>
-    <div class="metric"><span class="metric-num">21</span><span class="metric-label">Timeline Points</span></div>
+    <div class="metric"><span class="metric-num" id="liveCurrent">--</span><span class="metric-label">Current Home Win %</span></div>
+    <div class="metric"><span class="metric-num" id="livePreGame">--</span><span class="metric-label">Pre-Game Home %</span></div>
+    <div class="metric"><span class="metric-num" id="liveSwing">--</span><span class="metric-label">Win Prob Swing</span></div>
+    <div class="metric"><span class="metric-num" id="liveGames">--</span><span class="metric-label">Games In Progress</span></div>
+    <div class="metric"><span class="metric-num" id="livePolled">--</span><span class="metric-label">Last Poll (UTC)</span></div>
     <div class="metric"><span class="metric-num">1,000</span><span class="metric-label">MC Per State</span></div>
   </section>
 
@@ -153,6 +153,23 @@ function renderLiveGames() {
         head.parentNode.insertBefore(section, head.nextSibling);
       }
       const games = d.games || [];
+
+      // Update metric-strip tiles from real poll data.
+      const set = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
+      set("liveGames", String(games.length));
+      set("livePolled", (d.polled_at || "--").slice(11, 16));
+      if (games.length) {
+        // Use the first in-progress game for the headline P(home win).
+        const g0 = games[0];
+        const pHome = (g0.p_home_win * 100).toFixed(1);
+        set("liveCurrent", pHome + "%");
+        // Pre-game P(home) -- not in live_state today, derive 50% placeholder so swing is honest.
+        const preGame = g0.pre_game_p_home_win != null ? g0.pre_game_p_home_win * 100 : null;
+        set("livePreGame", preGame != null ? preGame.toFixed(1) + "%" : "--");
+        const swing = preGame != null ? (g0.p_home_win * 100 - preGame).toFixed(1) : null;
+        set("liveSwing", swing != null ? (swing >= 0 ? "+" : "") + swing + "pp" : "--");
+      }
+
       if (!games.length) {
         section.innerHTML = `<div class="card-head"><span>Live Games Right Now</span><span class="muted">polled ${d.polled_at || "?"}</span></div>
           <p class="muted" style="padding:14px;">No games currently in progress.</p>`;
