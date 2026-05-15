@@ -193,6 +193,49 @@
 <script src="js/main.js"></script>
 <script>
 // Live slate loader: replaces mock metrics + table from today.json + matchups.json.
+// Team form overlay -- builds a Hot/Cold panel and inserts after slate
+let teamFormData = {};
+fetch("data/team_form.json", { cache: "no-cache" })
+  .then(r => r.json())
+  .then(d => {
+    teamFormData = d.teams || {};
+    const sorted = Object.entries(teamFormData).sort((a, b) => (b[1].run_diff||0) - (a[1].run_diff||0));
+    if (!sorted.length) return;
+    const hot = sorted.slice(0, 5);
+    const cold = sorted.slice(-5).reverse();
+    const rowsHot = hot.map(([name, t]) => `
+      <div style="display:grid; grid-template-columns: 1.4fr auto auto auto; gap:8px; padding:5px 0;
+                  border-bottom:1px solid rgba(255,255,255,0.04); font-family:'JetBrains Mono',monospace; font-size:12px;">
+        <span><strong>${t.abbr || name}</strong> <span class="muted" style="font-size:10px;">${name}</span></span>
+        <span style="color:#58c878;">${t.wins}-${t.losses}</span>
+        <span style="color:#58c878;">+${t.run_diff}</span>
+        <span class="muted">${t.streak}</span>
+      </div>`).join("");
+    const rowsCold = cold.map(([name, t]) => `
+      <div style="display:grid; grid-template-columns: 1.4fr auto auto auto; gap:8px; padding:5px 0;
+                  border-bottom:1px solid rgba(255,255,255,0.04); font-family:'JetBrains Mono',monospace; font-size:12px;">
+        <span><strong>${t.abbr || name}</strong> <span class="muted" style="font-size:10px;">${name}</span></span>
+        <span style="color:#e35a5a;">${t.wins}-${t.losses}</span>
+        <span style="color:#e35a5a;">${t.run_diff}</span>
+        <span class="muted">${t.streak}</span>
+      </div>`).join("");
+    const panel = document.createElement("section");
+    panel.className = "grid-2";
+    panel.style.marginBottom = "24px";
+    panel.innerHTML = `
+      <div class="card">
+        <div class="card-head"><span>Hot Teams (last 10)</span><span class="muted">by run diff</span></div>
+        <div style="padding:8px 0;">${rowsHot}</div>
+      </div>
+      <div class="card">
+        <div class="card-head"><span>Cold Teams (last 10)</span><span class="muted">by run diff</span></div>
+        <div style="padding:8px 0;">${rowsCold}</div>
+      </div>`;
+    const section = document.querySelector(".section");
+    if (section) section.parentNode.insertBefore(panel, section.nextSibling);
+  })
+  .catch(() => {});
+
 fetch("data/today.json", { cache: "no-cache" })
   .then(r => r.json())
   .then(d => {
