@@ -806,6 +806,30 @@ def _build_props_from_bovada(markets: List[str], max_games: int) -> Dict[str, An
                 model_proj = dbg2.get("expected_tb") or dbg2.get("expected")
                 dbg.update(dbg2)
                 modeled += 1
+            elif pid and market_key == "batter_singles":
+                order = _lookup_order(pid, ctx)
+                p_over, dbg2 = project_batter_singles(pid, line, order)
+                model_proj = dbg2.get("expected") or dbg2.get("expected_1b")
+                dbg.update(dbg2)
+                modeled += 1
+            elif pid and market_key == "batter_doubles":
+                order = _lookup_order(pid, ctx)
+                p_over, dbg2 = project_batter_doubles(pid, line, order)
+                model_proj = dbg2.get("expected") or dbg2.get("expected_2b")
+                dbg.update(dbg2)
+                modeled += 1
+            elif pid and market_key == "batter_runs_scored":
+                order = _lookup_order(pid, ctx)
+                p_over, dbg2 = project_batter_runs(pid, line, order)
+                model_proj = dbg2.get("expected") or dbg2.get("expected_r")
+                dbg.update(dbg2)
+                modeled += 1
+            elif pid and market_key == "batter_rbis":
+                order = _lookup_order(pid, ctx)
+                p_over, dbg2 = project_batter_rbis(pid, line, order)
+                model_proj = dbg2.get("expected") or dbg2.get("expected_rbi")
+                dbg.update(dbg2)
+                modeled += 1
             else:
                 skipped += 1
         except Exception as e:
@@ -818,20 +842,31 @@ def _build_props_from_bovada(markets: List[str], max_games: int) -> Dict[str, An
             p_over = max(0.001, min(0.999, p_over * cf))
             dbg["correction_applied"] = round(cf, 4)
 
-        # Edge / play recommendation
+        # Edge / play recommendation. Handle both 2-sided (over+under priced)
+        # and 1-sided "yes/no" markets (over priced only, common on Bovada).
         play = "SKIP"
         best_edge_pct = None
         low_confidence = dbg.get("low_confidence", p_over is None)
-        if p_over is not None and over_p is not None and under_p is not None:
-            # Implied probabilities (already vig-included)
-            imp_over = (-over_p) / ((-over_p) + 100) if over_p < 0 else 100 / (over_p + 100)
-            imp_under = (-under_p) / ((-under_p) + 100) if under_p < 0 else 100 / (under_p + 100)
+        def _implied(price):
+            if price is None: return None
+            return (-price) / ((-price) + 100) if price < 0 else 100 / (price + 100)
+        imp_over = _implied(over_p)
+        imp_under = _implied(under_p)
+        if p_over is not None and imp_over is not None:
             edge_over = (p_over - imp_over) / imp_over * 100 if imp_over > 0 else 0
-            edge_under = ((1 - p_over) - imp_under) / imp_under * 100 if imp_under > 0 else 0
-            if edge_over >= 3 and edge_over > edge_under:
-                play, best_edge_pct = "OVER", round(edge_over, 2)
-            elif edge_under >= 3 and edge_under > edge_over:
-                play, best_edge_pct = "UNDER", round(edge_under, 2)
+            edge_under = None
+            if imp_under is not None and imp_under > 0:
+                edge_under = ((1 - p_over) - imp_under) / imp_under * 100
+            # Two-sided: pick the bigger edge
+            if edge_under is not None:
+                if edge_over >= 3 and edge_over > edge_under:
+                    play, best_edge_pct = "OVER", round(edge_over, 2)
+                elif edge_under >= 3 and edge_under > edge_over:
+                    play, best_edge_pct = "UNDER", round(edge_under, 2)
+            else:
+                # One-sided yes/no market: only OVER playable
+                if edge_over >= 3:
+                    play, best_edge_pct = "OVER", round(edge_over, 2)
 
         rows.append({
             "player": clean_name,
@@ -903,7 +938,10 @@ def build_props(markets: Optional[List[str]] = None, max_games: int = MAX_GAMES)
             use_bovada_fallback = True
 
     if use_bovada_fallback:
-        return _build_props_from_bovada(markets, max_games)
+        # Bovada has no quota -- always pull the FULL market list, ignoring the
+        # SAFE-tier default that's tuned for Odds API credits.
+        bovada_markets = list(set(markets) | set(_DEFAULT_MARKETS_FULL))
+        return _build_props_from_bovada(bovada_markets, max_games)
 
     # Sort by commence_time, take soonest N to respect quota.
     events.sort(key=lambda e: e.get("commence_time", ""))

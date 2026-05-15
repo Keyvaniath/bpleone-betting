@@ -206,12 +206,28 @@ def fetch_game_lines() -> Dict[str, Dict[str, Any]]:
 # -------------------- Player Props --------------------
 
 PROP_MARKET_MAP = {
-    # Bovada description (lowercased) -> our market_key
-    "total strikeouts (pitcher)": "pitcher_strikeouts",
-    "strikeouts": "pitcher_strikeouts",
+    # Bovada description prefix (lowercased) -> our market_key.
+    # Order matters: more-specific prefixes first so substring matches don't
+    # collide (e.g., "alternate strikeouts" should still hit pitcher_strikeouts).
+    "alternate strikeouts": "pitcher_strikeouts",
+    "total strikeouts": "pitcher_strikeouts",
     "total bases": "batter_total_bases",
-    "hits": "batter_hits",
+    "total doubles": "batter_doubles",
+    "total hits, runs and rbis": "batter_hits_runs_rbis",
+    # Bovada writes these as "Player to record a/2+/3+ Hit/Run/RBI"
+    "player to record 2+ hits": "batter_hits",
+    "player to record a hit": "batter_hits",
+    "player to record 2+ runs": "batter_runs_scored",
+    "player to record a run": "batter_runs_scored",
+    "player to record 2+ rbis": "batter_rbis",
+    "player to record a rbi": "batter_rbis",
+    "player to record a single": "batter_singles",
+    "player to hit 2+ home runs": "batter_home_runs",
+    "player to hit a home run": "batter_home_runs",
+    # Fallback bare-word matchers
+    "strikeouts": "pitcher_strikeouts",
     "home runs": "batter_home_runs",
+    "hits": "batter_hits",
     "runs scored": "batter_runs_scored",
     "rbis": "batter_rbis",
     "doubles": "batter_doubles",
@@ -219,17 +235,44 @@ PROP_MARKET_MAP = {
 }
 
 
+def _implicit_line_from_desc(mdesc: str) -> Optional[float]:
+    """For Bovada yes/no markets like 'Player to record a Hit' (line=0.5) or
+    'Player to record 2+ Hits' (line=1.5), extract the implicit threshold."""
+    d = mdesc.lower()
+    # "Player to record a X" / "Player to hit a X" -> implicit line = 0.5
+    if " a hit" in d or " a run" in d or " a rbi" in d or " a single" in d or " a stolen" in d:
+        return 0.5
+    if "hit a home run" in d:
+        return 0.5
+    # "Player to record 2+ X" / "Player to hit 2+ X" -> implicit line = 1.5
+    if "2+ hits" in d:
+        return 1.5
+    if "2+ runs" in d:
+        return 1.5
+    if "2+ rbi" in d:
+        return 1.5
+    if "2+ home runs" in d:
+        return 1.5
+    return None
+
+
 def parse_player_props(event: Dict[str, Any]) -> List[Dict[str, Any]]:
-    """Return prop rows for a single event: [{player, market, line, over_amer, under_amer, book}]."""
+    """Return prop rows for a single event: [{player, market, line, over_amer, under_amer, book}].
+
+    Handles three Bovada prop shapes:
+      1. Over/Under with explicit handicap (e.g. "Total Strikeouts - Aaron Nola")
+      2. One-sided yes/no with implicit line (e.g. "Player to record a Hit"
+         -> implicit line=0.5; only OVER priced, UNDER stays None)
+      3. Single-side market with player in market description
+    """
     rows: List[Dict[str, Any]] = []
     for grp in (event.get("displayGroups") or []):
         gd = (grp.get("description") or "").lower()
         if "prop" not in gd and "player" not in gd and "pitcher" not in gd:
             continue
         for m in grp.get("markets") or []:
-            mdesc = (m.get("description") or "").lower().strip()
-            # Bovada market descriptions like "Total Strikeouts - {Pitcher}"
-            # or sometimes "Total Bases" with outcome being the player name.
+            mdesc_raw = m.get("description") or ""
+            mdesc = mdesc_raw.lower().strip()
             market_key = None
             for prefix, key in PROP_MARKET_MAP.items():
                 if prefix in mdesc:
@@ -238,54 +281,73 @@ def parse_player_props(event: Dict[str, Any]) -> List[Dict[str, Any]]:
             if not market_key:
                 continue
             outs = m.get("outcomes") or []
-            # Outcomes are Over/Under per player. Bovada sometimes encodes the
-            # player name in the market description ("Total Bases - Bryce Harper"),
-            # sometimes in the outcome description.
             player_in_desc = None
-            if " - " in (m.get("description") or ""):
-                player_in_desc = m["description"].split(" - ", 1)[1].strip()
+            if " - " in mdesc_raw:
+                player_in_desc = mdesc_raw.split(" - ", 1)[1].strip()
 
-            # Group outcomes into over/under pairs by line.
-            by_line: Dict[float, Dict[str, Any]] = {}
-            for o in outs:
-                price = o.get("price") or {}
-                hcap = price.get("handicap")
-                try:
-                    line = float(hcap) if hcap is not None else None
-                except Exception:
-                    line = None
-                if line is None:
-                    continue
-                name = (o.get("description") or "").lower()
-                amer = _american(price)
-                key = line
-                if key not in by_line:
-                    by_line[key] = {"line": line}
-                if "over" in name:
-                    by_line[key]["over_amer"] = amer
-                    by_line[key]["over_raw"] = o.get("description")
-                elif "under" in name:
-                    by_line[key]["under_amer"] = amer
-                    by_line[key]["under_raw"] = o.get("description")
-                # Some markets just have one outcome per player
-                if not ("over" in name or "under" in name) and amer is not None:
-                    by_line[key]["one_side"] = {"player": o.get("description"), "amer": amer}
+            implicit_line = _implicit_line_from_desc(mdesc)
 
-            for line, pair in by_line.items():
-                # Player name comes from market description or outcome description
-                player = player_in_desc
-                if not player and pair.get("one_side"):
-                    player = pair["one_side"]["player"]
-                if not player:
-                    continue
-                rows.append({
-                    "player": player.strip(),
-                    "market": market_key,
-                    "line": line,
-                    "over_amer": pair.get("over_amer"),
-                    "under_amer": pair.get("under_amer"),
-                    "book": "bovada",
-                })
+            # Shape (a): grouped by handicap -> over/under per line.
+            # Shape (b): no handicap, one outcome per player -> implicit line.
+            has_hcaps = any((o.get("price") or {}).get("handicap") is not None for o in outs)
+
+            if has_hcaps:
+                # Group outcomes into over/under pairs by line.
+                by_line: Dict[float, Dict[str, Any]] = {}
+                for o in outs:
+                    price = o.get("price") or {}
+                    hcap = price.get("handicap")
+                    try:
+                        line = float(hcap) if hcap is not None else None
+                    except Exception:
+                        line = None
+                    if line is None:
+                        continue
+                    name = (o.get("description") or "").lower()
+                    amer = _american(price)
+                    key = line
+                    if key not in by_line:
+                        by_line[key] = {"line": line}
+                    if "over" in name:
+                        by_line[key]["over_amer"] = amer
+                    elif "under" in name:
+                        by_line[key]["under_amer"] = amer
+                    elif amer is not None:
+                        by_line[key]["one_side"] = {"player": o.get("description"), "amer": amer}
+
+                for line, pair in by_line.items():
+                    player = player_in_desc
+                    if not player and pair.get("one_side"):
+                        player = pair["one_side"]["player"]
+                    if not player:
+                        continue
+                    rows.append({
+                        "player": player.strip(),
+                        "market": market_key,
+                        "line": line,
+                        "over_amer": pair.get("over_amer") or (pair.get("one_side") or {}).get("amer"),
+                        "under_amer": pair.get("under_amer"),
+                        "book": "bovada",
+                    })
+            elif implicit_line is not None:
+                # Shape (b): yes/no markets. Each outcome = one player priced
+                # for the OVER side; we leave under_amer=None.
+                for o in outs:
+                    price = o.get("price") or {}
+                    amer = _american(price)
+                    if amer is None:
+                        continue
+                    player = o.get("description")
+                    if not player:
+                        continue
+                    rows.append({
+                        "player": player.strip(),
+                        "market": market_key,
+                        "line": implicit_line,
+                        "over_amer": amer,
+                        "under_amer": None,   # implicit -- yes/no market
+                        "book": "bovada",
+                    })
     return rows
 
 
