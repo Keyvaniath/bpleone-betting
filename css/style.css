@@ -2,6 +2,20 @@
    Dark, sharp, finance-grade UI. Inspired by Unusual Whales / Bloomberg terminals.
 */
 
+/* CHART.JS GLOBAL GROWTH GUARD
+   Chart.js with responsive:true + maintainAspectRatio:false (our base config)
+   will try to fill its parent container's height. If the parent has no
+   explicit height, it loops: canvas grows -> page taller -> canvas grows...
+   This caps every chart at ~320px max so the loop can never escape the page.
+   Charts that legitimately want to be larger can override with inline style
+   on their wrapping div. */
+canvas {
+  max-height: 320px !important;
+}
+/* Donut/gauge centered overlays are positioned relative to a wrapper div
+   that already sets height (e.g., 220px); keep that pattern. */
+.hero-card canvas { max-height: 240px !important; }
+
 :root {
   --bg-0: #07090d;
   --bg-1: #0c1118;
