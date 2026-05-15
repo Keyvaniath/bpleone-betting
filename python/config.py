@@ -70,6 +70,17 @@ SCHEMA: Dict[str, Dict[str, Any]] = {
         "min": 1, "max": 30,
         "desc": "Below this many settled outcomes, correction is forced to 1.0 (no change).",
     },
+    "calibration.time_decay_enabled": {
+        "default": False,
+        "type": "bool",
+        "desc": "If true, weight each settled record by exp-decay on its age when computing market bias. Older records carry less weight -- model adapts faster to current conditions. OFF by default; enable when track_record has 90+ days of data so decay actually changes the answer.",
+    },
+    "calibration.time_decay_halflife_days": {
+        "default": 14,
+        "type": "int",
+        "min": 3, "max": 60,
+        "desc": "Half-life for exp-decay weighting. A 14-day record gets 0.5 weight; a 28-day record gets 0.25.",
+    },
 
     # -------- Per-player bias overrides (player_bias.py) --------
     "player_bias.min_player_n": {

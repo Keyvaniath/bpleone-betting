@@ -54,6 +54,22 @@
       "current": 1,
       "is_overridden": false
     },
+    "calibration.time_decay_enabled": {
+      "default": false,
+      "type": "bool",
+      "desc": "If true, weight each settled record by exp-decay on its age when computing market bias. Older records carry less weight -- model adapts faster to current conditions. OFF by default; enable when track_record has 90+ days of data so decay actually changes the answer.",
+      "current": false,
+      "is_overridden": false
+    },
+    "calibration.time_decay_halflife_days": {
+      "default": 14,
+      "type": "int",
+      "min": 3,
+      "max": 60,
+      "desc": "Half-life for exp-decay weighting. A 14-day record gets 0.5 weight; a 28-day record gets 0.25.",
+      "current": 14,
+      "is_overridden": false
+    },
     "player_bias.min_player_n": {
       "default": 3,
       "type": "int",

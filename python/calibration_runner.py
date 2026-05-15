@@ -51,6 +51,8 @@ try:
     N_PRIOR_PER_MARKET = _cfg.get("calibration.n_prior_per_market")
     MIN_SAMPLE_FOR_ANY_CORRECTION = _cfg.get("calibration.min_sample_for_any_correction")
     MAX_CORRECTION = _cfg.get("calibration.max_correction")
+    TIME_DECAY_ENABLED = _cfg.get("calibration.time_decay_enabled")
+    TIME_DECAY_HALFLIFE_DAYS = _cfg.get("calibration.time_decay_halflife_days")
 except Exception:
     N_PRIOR_DEFAULT = 8
     N_PRIOR_PER_MARKET = {
@@ -60,8 +62,25 @@ except Exception:
     }
     MIN_SAMPLE_FOR_ANY_CORRECTION = 1
     MAX_CORRECTION = 1.35
+    TIME_DECAY_ENABLED = False
+    TIME_DECAY_HALFLIFE_DAYS = 14
 N_PRIOR = N_PRIOR_DEFAULT
 MIN_CORRECTION = 1.0 / MAX_CORRECTION
+
+
+def _time_weight(date_str: str, today: dt.date) -> float:
+    """Exponential decay weight by record age. Half-life set by config.
+    Weight = 0.5 ^ (age_days / halflife). Recent records weighted ~1, older
+    records weighted progressively less. Returns 1.0 if decay disabled or
+    date can't be parsed (safe default = uniform weighting)."""
+    if not TIME_DECAY_ENABLED:
+        return 1.0
+    try:
+        d = dt.date.fromisoformat(date_str)
+        age = max(0, (today - d).days)
+        return 0.5 ** (age / max(1, TIME_DECAY_HALFLIFE_DAYS))
+    except Exception:
+        return 1.0
 
 
 def _within_window(date_str: str, today: dt.date, n_days: int) -> bool:
@@ -81,24 +100,33 @@ def compute_metrics(records: List[Dict[str, Any]], today: Optional[dt.date] = No
     if n == 0:
         return {"n": 0}
 
-    # Brier / log loss on model_prob_over vs over_hit
+    # Brier / log loss on model_prob_over vs over_hit. When time-decay is
+    # enabled, each record's contribution to bias / hit rate / rate calcs
+    # is weighted by exp-decay on its age. Brier / log loss themselves are
+    # reported on the unweighted sample so they're directly comparable
+    # across configurations.
     brier = 0.0
     ll = 0.0
     eps = 1e-9
-    sum_p, sum_actual = 0.0, 0.0
+    sum_p, sum_actual = 0.0, 0.0     # weighted sums (for bias estimate)
+    sum_w = 0.0                       # total weight
     bins: List[List[Tuple[float, int]]] = [[] for _ in range(10)]
     for r in sample:
         p = float(r["model_prob_over"])
         y = 1 if r.get("over_hit") else 0
         brier += (p - y) ** 2
         ll += -(y * math.log(max(eps, p)) + (1 - y) * math.log(max(eps, 1 - p)))
-        sum_p += p
-        sum_actual += y
+        w = _time_weight(r.get("date") or "", today)
+        sum_p += p * w
+        sum_actual += y * w
+        sum_w += w
         bins[min(9, int(p * 10))].append((p, y))
     brier /= n
     ll /= n
-    implied_rate = sum_p / n
-    actual_rate = sum_actual / n
+    # When decay disabled, sum_w == n and the math reduces to old behavior.
+    eff_n = sum_w if sum_w > 0 else max(1, n)
+    implied_rate = sum_p / eff_n
+    actual_rate = sum_actual / eff_n
     # Bias = (implied OVER rate) / (actual OVER rate). On thin samples
     # actual_rate can be 0 (every OVER missed) or 1 (every OVER hit), which
     # would divide by zero / give infinite bias. Use add-one Laplace smoothing
