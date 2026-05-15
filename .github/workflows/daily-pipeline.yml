@@ -114,6 +114,17 @@ jobs:
         working-directory: python
         run: python lineup_quality.py
 
+      # Run-line (-1.5 / +1.5) projections via Skellam normal approximation.
+      - name: Project run lines
+        working-directory: python
+        run: python run_line.py
+
+      # Travel + rest day signal per team.
+      - name: Compute travel + rest day signal
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        working-directory: python
+        run: python travel.py
+
       # CLV computation: compare today's morning snapshot to the latest (near
       # closing) lines. Best run at 6 PM ET, but no harm running every cron.
       - name: Compute Closing Line Value

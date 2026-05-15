@@ -180,7 +180,8 @@ function renderWeather(w) {
 function renderExtraMarkets(matchup) {
   const nrfi = nrfiByMatchup[matchup];
   const f5 = f5ByMatchup[matchup];
-  if (!nrfi && !f5) return "";
+  const rl = runLineByMatchup[matchup];
+  if (!nrfi && !f5 && !rl) return "";
   const parts = [];
   if (nrfi) {
     const pn = (nrfi.p_nrfi * 100).toFixed(1);
@@ -190,9 +191,29 @@ function renderExtraMarkets(matchup) {
     parts.push(`<span><strong>NRFI:</strong> ${pn}% (fair ${nrfi.fair_nrfi_price >= 0 ? '+' : ''}${nrfi.fair_nrfi_price}) / YRFI ${py}% <span style="color:${leanColor};">(${lean})</span></span>`);
   }
   if (f5) {
-    parts.push(`<span><strong>F5 fair total:</strong> ${f5.fair_total} (P over 4.5 = ${(f5.over_4_5 * 100).toFixed(0)}%, over 5.5 = ${(f5.over_5_5 * 100).toFixed(0)}%)</span>`);
+    parts.push(`<span><strong>F5 fair total:</strong> ${f5.fair_total} (P O4.5 = ${(f5.over_4_5 * 100).toFixed(0)}%, O5.5 = ${(f5.over_5_5 * 100).toFixed(0)}%)</span>`);
+  }
+  if (rl) {
+    parts.push(`<span><strong>RL:</strong> home -1.5 fair ${rl.fair_home_minus_15 >= 0 ? '+' : ''}${rl.fair_home_minus_15} (${(rl.p_home_minus_15 * 100).toFixed(0)}%) / away +1.5 fair ${rl.fair_away_plus_15 >= 0 ? '+' : ''}${rl.fair_away_plus_15} (${(rl.p_away_plus_15 * 100).toFixed(0)}%)</span>`);
   }
   return `<div class="market-line" style="font-size:11px; margin-top:4px;">${parts.join(' &nbsp;|&nbsp; ')}</div>`;
+}
+
+function renderTravel(matchup, home, away) {
+  const t = travelByMatchup[matchup];
+  if (!t) return "";
+  const home_t = t.home || {};
+  const away_t = t.away || {};
+  if (!home_t.travel_note && !away_t.travel_note) return "";
+  const tag = (info) => {
+    if (!info || !info.travel_note) return "";
+    const flag = (info.tz_change_hours || 0);
+    const color = Math.abs(flag) >= 2 ? "#e35a5a" : "var(--muted, #888)";
+    return `<span style="color:${color};">${info.travel_note}</span>`;
+  };
+  return `<div class="market-line" style="font-size:11px; margin-top:4px;">
+    Travel: <strong>${away}</strong> ${tag(away_t)} | <strong>${home}</strong> ${tag(home_t)}
+  </div>`;
 }
 
 function renderBullpens(bp, home, away) {
@@ -273,6 +294,7 @@ function renderMatchup(g) {
       ${renderWeather(g.weather)}
       ${renderUmpire(g.umpire)}
       ${renderBullpens(g.bullpens, home, away)}
+      ${renderTravel(g.matchup, home, away)}
       ${renderExtraMarkets(g.matchup)}
       ${renderLineups(g.lineups, home, away)}
       <div class="pitcher-grid" style="margin-top:14px;">
@@ -301,19 +323,23 @@ fetch("data/injuries_live.json", { cache: "no-cache" })
   .then(d => { injuriesData = d.teams || {}; })
   .catch(() => {});
 
-// NRFI + F5 feeds (loaded once, looked up by matchup)
+// NRFI + F5 + run-line + travel feeds (loaded once, looked up by matchup)
 let nrfiByMatchup = {};
 let f5ByMatchup = {};
+let runLineByMatchup = {};
+let travelByMatchup = {};
 fetch("data/nrfi.json", { cache: "no-cache" })
   .then(r => r.json())
-  .then(d => {
-    (d.games || []).forEach(g => { nrfiByMatchup[g.matchup] = g; });
-  }).catch(() => {});
+  .then(d => { (d.games || []).forEach(g => { nrfiByMatchup[g.matchup] = g; }); }).catch(() => {});
 fetch("data/first_five.json", { cache: "no-cache" })
   .then(r => r.json())
-  .then(d => {
-    (d.games || []).forEach(g => { f5ByMatchup[g.matchup] = g; });
-  }).catch(() => {});
+  .then(d => { (d.games || []).forEach(g => { f5ByMatchup[g.matchup] = g; }); }).catch(() => {});
+fetch("data/run_line.json", { cache: "no-cache" })
+  .then(r => r.json())
+  .then(d => { (d.games || []).forEach(g => { runLineByMatchup[g.matchup] = g; }); }).catch(() => {});
+fetch("data/travel.json", { cache: "no-cache" })
+  .then(r => r.json())
+  .then(d => { (d.games || []).forEach(g => { travelByMatchup[g.matchup] = g; }); }).catch(() => {});
 
 fetch("data/matchups.json", { cache: "no-cache" })
   .then(r => r.json())
