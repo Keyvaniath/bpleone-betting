@@ -79,6 +79,12 @@ def _pitcher_block(pid: Optional[int], name: Optional[str], opp_team_id: Optiona
         arsenal = sc.pitcher_arsenal(pid) or []
     except Exception:
         arsenal = []
+    # Recent pitch-count history
+    try:
+        from pitch_counts import pitcher_pitch_history
+        pc_hist = pitcher_pitch_history(pid) or {}
+    except Exception:
+        pc_hist = {}
 
     return {
         "id": pid,
@@ -91,6 +97,7 @@ def _pitcher_block(pid: Optional[int], name: Optional[str], opp_team_id: Optiona
             "vsR": _line(splits.get("vsR", {})),
         },
         "recent": recent,
+        "pitch_count_history": pc_hist,
         "vs_opp_this_season": vs_team,
         "arsenal": [{
             "pitch": p.get("pitch_name"),

@@ -273,6 +273,18 @@ def project_pitcher_ks(pid: int, line: float, opp_team_id: Optional[int] = None,
             blended_k9 = season_k9
             blended_ip = expected_ip
 
+        # Pitch-count-aware IP refinement: if recent pitch counts are low,
+        # the pitcher is being pulled early -- shrink expected IP.
+        try:
+            from pitch_counts import pitcher_pitch_history
+            pc = pitcher_pitch_history(pid) or {}
+            if pc.get("avg_pc"):
+                pc_implied_ip = pc["avg_pc"] / 15.0   # ~15 pitches per inning
+                blended_ip = 0.4 * pc_implied_ip + 0.6 * blended_ip
+                blended_ip = max(3.0, min(7.5, blended_ip))
+        except Exception:
+            pc = {}
+
         # Expected batters faced this start. Use season's BF/IP ratio (typically ~4.3) * expected_ip.
         bf_per_ip = (season_bf / ip) if ip > 0 else 4.3
         expected_bf = bf_per_ip * blended_ip

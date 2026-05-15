@@ -112,6 +112,17 @@ function recentLine(r) {
     </div>`;
 }
 
+function pitchCountLine(pc) {
+  if (!pc || !pc.avg_pc) return "";
+  const trendColor = pc.trend > 5 ? "#58c878" : pc.trend < -5 ? "#e35a5a" : "var(--muted, #888)";
+  const trendSym = pc.trend > 0 ? "+" : "";
+  return `
+    <div class="stat-line">
+      <span class="label">PC last ${pc.n_starts}</span>
+      <span class="val">avg ${pc.avg_pc}, max ${pc.max_pc}, last ${pc.last_pc} <span style="color:${trendColor};">(trend ${trendSym}${pc.trend})</span></span>
+    </div>`;
+}
+
 function renderPitcher(p, sideLabel) {
   if (!p || !p.id) {
     return `<div class="pitcher-block">
@@ -127,6 +138,7 @@ function renderPitcher(p, sideLabel) {
       <div class="stat-line"><strong>Career:</strong></div>
       ${pitcherStatLine(p.career)}
       ${recentLine(p.recent)}
+      ${pitchCountLine(p.pitch_count_history)}
       ${vsTeamLine(p.vs_opp_this_season)}
       ${renderArsenal(p.arsenal)}
       ${p.narrative && p.narrative.length ? `<ul class="narrative">${p.narrative.map(n => `<li>${n}</li>`).join("")}</ul>` : ""}
