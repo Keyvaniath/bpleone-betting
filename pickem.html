@@ -56,6 +56,7 @@
     <a href="arbitrage.html">Arb</a>
     <a href="bankroll.html">Bankroll</a>
     <a href="props.html">Props</a>
+    <a href="player.html">Player</a>
     <a href="learn.html">Learn</a>
   </nav>
   <div class="topbar-actions"><div class="ticker" id="liveTicker">LIVE</div></div>
@@ -181,7 +182,7 @@ function renderList() {
     const ratKey = `${p.player_id}_${p.market}_${p.pp_line}`;
     return `<div>
       <div class="pp-row" data-rat-key="${ratKey}" style="cursor:pointer;" onclick="toggleRationale('${ratKey}', this)">
-        <span class="name">${p.player}</span>
+        <span class="name"><a href="player.html?id=${p.player_id}" style="color: inherit; text-decoration: underline; text-decoration-color: rgba(255,255,255,0.15);" onclick="event.stopPropagation()">${p.player}</a></span>
         <span>${MARKET_LABEL[p.market] || p.market}</span>
         <span class="muted">${p.stat_type}</span>
         <span class="pp-line">${p.pp_line}</span>

@@ -35,6 +35,7 @@
     <a href="arbitrage.html">Arb</a>
     <a href="bankroll.html">Bankroll</a>
     <a href="props.html" class="active">Props</a>
+    <a href="player.html">Player</a>
     <a href="learn.html">Learn</a>
   </nav>
   <div class="topbar-actions"><div class="ticker" id="liveTicker">LIVE</div></div>
@@ -204,7 +205,7 @@ function renderTable() {
     }
     const ratKey = `${r.player_id}_${r.market}_${r.line}`;
     return `<tr style="cursor:pointer;" onclick="toggleRationaleRow('${ratKey}', this)">
-      <td><strong>${r.player}</strong>${badge}${conf}</td>
+      <td><strong><a href="player.html?id=${r.player_id}" style="color: inherit; text-decoration: underline; text-decoration-color: rgba(255,255,255,0.15);" onclick="event.stopPropagation()">${r.player}</a></strong>${badge}${conf}</td>
       <td class="muted">${r.matchup}</td>
       <td>${MARKET_LABEL[r.market] || r.market}</td>
       <td>${r.line}</td>

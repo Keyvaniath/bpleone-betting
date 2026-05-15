@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Player Deep-Dive | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .player-hero { padding: 22px 24px; margin-bottom: 18px; border-radius: 10px; background: var(--bg-2); border: 1px solid var(--line); }
+  .player-hero h1 { font-size: 32px; margin: 0 0 4px; }
+  .player-hero .meta { color: var(--text-2); font-family: 'JetBrains Mono', monospace; font-size: 12px; }
+  .stat-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; margin: 16px 0 0; }
+  .stat-cell { padding: 10px 12px; background: rgba(255,255,255,0.02); border-radius: 6px; border: 1px solid var(--line-soft); }
+  .stat-cell .label { font-size: 10px; text-transform: uppercase; color: var(--text-3); letter-spacing: 0.05em; }
+  .stat-cell .val { font-size: 18px; font-weight: 700; color: var(--text); margin-top: 4px; font-family: 'JetBrains Mono', monospace; }
+  .prop-row { display: grid; grid-template-columns: 1.4fr 0.7fr 1fr 0.7fr 0.9fr auto; gap: 14px; padding: 10px 14px; border-bottom: 1px solid rgba(255,255,255,0.04); font-family: 'JetBrains Mono', monospace; font-size: 12px; align-items: center; }
+  .prop-row.head { background: rgba(255,255,255,0.04); color: var(--muted, #888); font-size: 10px; text-transform: uppercase; font-family: inherit; }
+  .driver-list { padding: 14px 18px; background: rgba(255,255,255,0.02); border-radius: 6px; }
+  .driver-list ul { padding-left: 18px; margin: 6px 0; list-style: none; line-height: 1.7; }
+  .driver-list li { font-family: 'JetBrains Mono', monospace; font-size: 12px; }
+  .driver-list li.driver { color: var(--text); }
+  .driver-list li.caveat { color: #d4a04a; }
+  .empty { color: var(--muted, #888); font-style: italic; padding: 24px; text-align: center; }
+</style>
+</head>
+<body class="page-player">
+<header class="topbar">
+  <div class="brand">
+    <a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a>
+    <span class="tagline">by bpleone</span>
+  </div>
+  <nav class="mainnav">
+    <a href="index.html">Dashboard</a>
+    <a href="play-of-day.html">Play of the Day</a>
+    <a href="mlb.html">MLB</a>
+    <a href="research.html">Research</a>
+    <a href="matchups.html">Best Matchups</a>
+    <a href="parlays.html">Parlays</a>
+    <a href="pickem.html">Pick-Em</a>
+    <a href="brief.html">Brief</a>
+    <a href="learning.html">Learning</a>
+    <a href="training.html">Training</a>
+    <a href="residuals.html">Residuals</a>
+    <a href="audit.html">Audit</a>
+    <a href="models.html">Models</a>
+    <a href="ml-lab.html">ML Lab</a>
+    <a href="live.html">Live</a>
+    <a href="simulator.html">Sim</a>
+    <a href="backtest.html">Backtest</a>
+    <a href="linemaker.html">Linemaker</a>
+    <a href="arbitrage.html">Arb</a>
+    <a href="bankroll.html">Bankroll</a>
+    <a href="props.html">Props</a>
+    <a href="learn.html">Learn</a>
+  </nav>
+  <div class="topbar-actions"><div class="ticker" id="liveTicker">LIVE</div></div>
+</header>
+
+<main class="container">
+
+  <section class="page-head">
+    <h1>Player Deep-Dive</h1>
+    <p>Every prop the model has surfaced for this player today + the per-prop rationale that drove each projection. Pass <code>?id=PLAYER_ID</code> in the URL or search below.</p>
+    <div style="margin-top: 12px;">
+      <input id="playerSearch" placeholder="Search by player name..." style="width: 320px; padding: 8px 12px; background: var(--bg-2); border: 1px solid var(--line); color: var(--text); border-radius: 6px; font-family: inherit; font-size: 14px;">
+      <span class="muted" id="searchHint" style="margin-left: 12px; font-size: 12px;"></span>
+    </div>
+  </section>
+
+  <div id="playerView"><p class="empty">Pass <code>?id=605400</code> in the URL (e.g., 605400 = Aaron Nola) or search above.</p></div>
+
+</main>
+
+<script>
+const params = new URLSearchParams(location.search);
+const idParam = params.get("id");
+
+Promise.all([
+  fetch("data/rationales.json", { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
+  fetch("data/pickem.json", { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
+  fetch("data/props.json", { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
+]).then(([rat, pickem, propsJson]) => {
+  const allProps = [...(propsJson.top_edges || []), ...(pickem.props || []).map(p => ({...p, line: p.pp_line}))];
+
+  // Build player index (id -> {name, team, props})
+  const byId = {};
+  for (const p of allProps) {
+    if (!p.player_id) continue;
+    const k = p.player_id;
+    if (!byId[k]) byId[k] = { id: k, name: p.player, team: p.team, props: [] };
+    byId[k].props.push(p);
+  }
+
+  // Search box wiring
+  const list = Object.values(byId);
+  const input = document.getElementById("playerSearch");
+  const hint = document.getElementById("searchHint");
+  hint.textContent = `${list.length} players with open props today`;
+  input.addEventListener("input", e => {
+    const q = e.target.value.toLowerCase().trim();
+    if (q.length < 2) return;
+    const match = list.find(p => p.name && p.name.toLowerCase().includes(q));
+    if (match) location.search = "?id=" + match.id;
+  });
+
+  if (!idParam) return;
+  const player = byId[idParam];
+  if (!player) {
+    document.getElementById("playerView").innerHTML =
+      `<p class="empty">No open props for player_id ${idParam} today.</p>`;
+    return;
+  }
+  renderPlayer(player, rat.by_key || {});
+});
+
+function renderPlayer(player, rationales) {
+  const props = player.props.sort((a,b) => {
+    const ap = Math.max(a.model_prob_over || 0, a.model_prob_under || 0);
+    const bp = Math.max(b.model_prob_over || 0, b.model_prob_under || 0);
+    return bp - ap;
+  });
+
+  // Hero: name, team, count
+  const teamLabel = player.team ? ` <span class="muted">(${player.team})</span>` : "";
+  let html = `
+    <section class="player-hero">
+      <h1>${player.name}${teamLabel}</h1>
+      <div class="meta">${props.length} open props today &middot; click any prop to see model rationale</div>
+    </section>
+    <section class="card" style="margin-bottom: 18px;">
+      <div class="card-head"><span>Open Props</span></div>
+      <div class="prop-row head">
+        <span>Market</span><span>Line</span><span>Model %</span><span>Side</span><span>Source</span><span></span>
+      </div>`;
+
+  props.forEach((p, idx) => {
+    const probOver = p.model_prob_over;
+    const probUnder = p.model_prob_under != null ? p.model_prob_under : (probOver != null ? 1 - probOver : null);
+    const bestProb = Math.max(probOver || 0, probUnder || 0);
+    const side = (probOver || 0) >= (probUnder || 0) ? "OVER" : "UNDER";
+    const line = p.line != null ? p.line : p.pp_line;
+    const market = (p.market || "").replace(/_/g, " ");
+    const src = p.book || (p.dk_over != null ? "DK" : "PP");
+    const k = `${player.id}_${p.market}_${line}`;
+    const r = rationales[k];
+    html += `<div class="prop-row" data-prop-idx="${idx}" style="cursor:pointer;" onclick="toggleProp(${idx})">
+      <span>${market}</span>
+      <span>${line}</span>
+      <span>${(bestProb*100).toFixed(1)}%</span>
+      <span style="color:${side === 'OVER' ? '#58c878' : '#e35a5a'}; font-weight:600;">${side}</span>
+      <span class="muted">${src}</span>
+      <span>${r ? '▾' : '<span class="muted" style="font-size:10px;">no rationale</span>'}</span>
+    </div>
+    <div id="prop-detail-${idx}" style="display:none;">
+      ${r ? renderRationale(r) : '<p class="empty">No rationale generated for this prop -- it falls outside the top 500 covered today.</p>'}
+    </div>`;
+  });
+
+  html += `</section>`;
+  document.getElementById("playerView").innerHTML = html;
+}
+
+function renderRationale(r) {
+  const drivers = (r.drivers || []).map(d => `<li class="driver">+ ${d}</li>`).join("");
+  const caveats = (r.caveats || []).map(c => `<li class="caveat">! ${c}</li>`).join("");
+  return `<div class="driver-list">
+    <div style="font-weight:600; color: var(--accent); margin-bottom: 6px;">${r.headline || ''}</div>
+    <ul>${drivers}${caveats}</ul>
+    <div style="margin-top: 10px; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.06); font-family: 'JetBrains Mono', monospace; font-size: 12px;">
+      <strong>Bottom line:</strong> ${r.verdict || ''}
+    </div>
+  </div>`;
+}
+
+window.toggleProp = function(idx) {
+  const el = document.getElementById(`prop-detail-${idx}`);
+  if (!el) return;
+  el.style.display = el.style.display === "block" ? "none" : "block";
+};
+</script>
+
+</body>
+</html>
