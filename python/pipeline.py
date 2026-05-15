@@ -226,6 +226,10 @@ def _consensus_odds(event: Dict[str, Any], home_name: str, away_name: str,
     take. If DK isn't pricing the event, returns None values and the slate
     falls back to defaults.
     """
+    # Fast path: pipeline.py shoehorned a Bovada-fallback shape into this event.
+    if event and event.get("_bovada_prices"):
+        return event["_bovada_prices"]
+
     books = books or TAKEABLE_BOOKS
     h2h_h, h2h_a, tot_pts, used_books = [], [], [], []
     for bk in event.get("bookmakers", []):
@@ -325,6 +329,31 @@ def build_real_slate() -> Optional[List[Dict[str, Any]]]:
     odds_by_pair = {}
     for ev in odds_events:
         odds_by_pair[(ev["home_team"], ev["away_team"])] = ev
+
+    # FALLBACK: if Odds API returned nothing (quota exhausted / key dead),
+    # pull from Bovada -- public, no-auth, no cloud-IP block. Market efficient
+    # (within ~2-3 cents of DK on liquid markets). Tagged with book='bovada'
+    # so consumers know the source.
+    if not odds_by_pair:
+        print("  -> primary odds source empty; trying Bovada fallback")
+        try:
+            from bovada import fetch_game_lines as bovada_game_lines
+            bv = bovada_game_lines()
+            for mu, d in bv.items():
+                # Shim Bovada's shape into the same dict pipeline expects below.
+                # _consensus_odds reads ev['bookmakers'][0]['markets'][...].
+                # Easier: synthesize a 'prices'-compatible event here.
+                fake_ev = {
+                    "home_team": d["home_name"], "away_team": d["away_name"],
+                    "_bovada_prices": {
+                        "ml_home": d["home_ml"], "ml_away": d["away_ml"],
+                        "total": d["total"], "book": "bovada",
+                    },
+                }
+                odds_by_pair[(d["home_name"], d["away_name"])] = fake_ev
+            print(f"  [ok] Bovada fallback: {len(odds_by_pair)} games loaded")
+        except Exception as e:
+            print(f"  [x] Bovada fallback failed: {e}")
 
     slate = []
     for g in sched:
