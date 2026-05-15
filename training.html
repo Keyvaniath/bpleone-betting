@@ -101,6 +101,17 @@
     </div>
   </div>
 
+  <section id="progressCard" class="card" style="margin-bottom: 24px; display:none;">
+    <div class="card-head"><span>Per-Market Training Progress + ETA</span><span class="muted" id="progRefresh"></span></div>
+    <div style="padding: 4px 0;">
+      <p class="muted" style="font-size: 12px; padding: 6px 16px 12px;">For each market: how many samples settled, daily settlement rate, current Bayesian data-weight, and ETA to the next milestone (embryonic &lt;50 &middot; learning &lt;200 &middot; directional &lt;500 &middot; tight &lt;1000 &middot; stable).</p>
+      <div style="display:grid; grid-template-columns: 200px 80px 80px 110px 100px 100px 1fr; gap: 14px; padding: 8px 16px; border-bottom: 1px solid rgba(255,255,255,0.04); color: var(--muted, #888); font-size: 10px; text-transform: uppercase;">
+        <span>Market</span><span>n</span><span>Rate/d</span><span>Stage</span><span>Weight</span><span>Next</span><span>ETA</span>
+      </div>
+      <div id="progList"></div>
+    </div>
+  </section>
+
   <section id="loopValueCard" class="card" style="margin-bottom: 24px; display:none;">
     <div class="card-head"><span>Self-Learning Loop Value-Add</span><span class="muted" id="lvRefresh"></span></div>
     <div style="padding: 14px;">
@@ -210,6 +221,33 @@ const TIER_COLORS = {
   "yellow":           { bg: "rgba(212,160,74,0.10)", border: "rgba(212,160,74,0.40)", fg: "#d4a04a" },
   "red":              { bg: "rgba(227,90,90,0.10)",  border: "rgba(227,90,90,0.45)",  fg: "#e35a5a" },
 };
+
+// Training Progress + ETA panel
+fetch("data/training_progress.json", { cache: "no-cache" })
+  .then(r => r.json())
+  .then(p => {
+    const rows = p.by_market || [];
+    if (!rows.length) return;
+    document.getElementById("progressCard").style.display = "block";
+    document.getElementById("progRefresh").textContent = (p.generated_at || "").replace("T", " ") + " UTC";
+    const stageColor = { embryonic:"#e35a5a", learning:"#e35a5a", directional:"#d4a04a", tight:"#88c878", stable:"#58c878" };
+    document.getElementById("progList").innerHTML = rows.map(r => {
+      const sc = stageColor[r.stage] || "#888";
+      const eta = r.eta_days !== null
+        ? `<span style="color: var(--text-2, #aaa);">+${r.eta_days}d (~${r.eta_date})</span>`
+        : `<span class="muted">already past all milestones</span>`;
+      return `<div style="display:grid; grid-template-columns: 200px 80px 80px 110px 100px 100px 1fr; gap: 14px; padding: 8px 16px; border-bottom: 1px solid rgba(255,255,255,0.04); font-family:'JetBrains Mono',monospace; font-size: 12px; align-items: center;">
+        <span>${r.market.replace(/_/g, ' ')}</span>
+        <span>${r.n_settled}</span>
+        <span>${r.daily_rate}/d</span>
+        <span style="padding: 2px 8px; border-radius: 3px; background: ${sc}22; color: ${sc}; font-size: 10px; text-transform: uppercase; text-align: center;">${r.stage}</span>
+        <span>${(r.weight_now*100).toFixed(1)}%</span>
+        <span>${r.next_milestone ?? '—'}</span>
+        <span>${eta}</span>
+      </div>`;
+    }).join("");
+  })
+  .catch(() => {});
 
 // Self-Learning Loop Value-Add card
 fetch("data/loop_value.json", { cache: "no-cache" })

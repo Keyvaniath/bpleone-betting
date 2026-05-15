@@ -146,6 +146,14 @@ jobs:
         working-directory: python
         run: python loop_value.py
 
+      # Per-market training progress + ETA to next sample milestone. Turns
+      # "the model is training" into concrete dates ("market X hits the
+      # 500-record threshold on June 4 -- expect material correction").
+      - name: Project training progress + ETA
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        working-directory: python
+        run: python training_progress.py
+
       # Per-player bias overrides: bespoke multipliers for players the
       # market-level bias correction can't fix (z >= 2 systematic outliers).
       - name: Compute per-player bias overrides
