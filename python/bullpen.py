@@ -93,12 +93,26 @@ def fetch_team_bullpen_load(team_id: int) -> Dict[str, Any]:
                             rec["pitches"] += int(pc)
                         except (TypeError, ValueError):
                             pass
+    relievers_sorted = [{"name": n, **info} for n, info in
+                         sorted(relievers.items(), key=lambda kv: -kv[1]["ip"])]
+    # Closer availability heuristic: the top-usage reliever (or top-2) is
+    # likely the closer / setup man. If they pitched in the last 2 days at
+    # full effort (>= 1 IP or >= 20 pitches), they may be down today.
+    top_2 = relievers_sorted[:2]
+    closer_warning = []
+    for r in top_2:
+        # Real high-leverage usage: 2 outings with >= 2 IP combined, OR
+        # 1 outing with >= 25 pitches (closer's typical full workload).
+        if r.get("appearances", 0) >= 2 and r.get("ip", 0) >= 2.0:
+            closer_warning.append(r["name"])
+        elif r.get("pitches", 0) >= 25 and r.get("appearances", 0) == 1:
+            closer_warning.append(r["name"])
     return {
         "games_inspected": games_inspected,
         "total_relief_ip": round(total_relief_ip, 1),
         "gassed": total_relief_ip >= GASSED_THRESHOLD_IP,
-        "relievers": [{"name": n, **info} for n, info in
-                      sorted(relievers.items(), key=lambda kv: -kv[1]["ip"])][:8],
+        "high_leverage_unavailable": closer_warning,
+        "relievers": relievers_sorted[:8],
     }
 
 
