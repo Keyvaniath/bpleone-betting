@@ -199,6 +199,43 @@ function renderExtraMarkets(matchup) {
   return `<div class="market-line" style="font-size:11px; margin-top:4px;">${parts.join(' &nbsp;|&nbsp; ')}</div>`;
 }
 
+function renderSeriesContext(matchup) {
+  const s = seriesByMatchup[matchup];
+  if (!s || s.series_number === 1) return "";
+  const recent = s.prior_results || [];
+  const recap = recent.map(r => `${r.home_score}-${r.away_score} (${r.winner})`).join(", ");
+  return `<div class="market-line" style="font-size:11px; margin-top:4px;">
+    <strong>Series:</strong> Game ${s.series_number} -- ${s.note}${recap ? ` -- prior: ${recap}` : ""}
+  </div>`;
+}
+
+function renderPitchMatchup(matchup) {
+  const p = pitchMatchupByMatchup[matchup];
+  if (!p) return "";
+  const h = p.home_pitcher_vs_away_lineup || {};
+  const a = p.away_pitcher_vs_home_lineup || {};
+  const flag = (block) => {
+    const score = block.leverage_score || 0;
+    if (score >= 10) return `<span style="color:#e35a5a;">HIGH LEVERAGE</span> (fade pitcher)`;
+    if (score >= 5) return `<span style="color:#d4a04a;">moderate leverage</span>`;
+    if (score <= -5) return `<span style="color:#58c878;">elite stuff</span> (fade offense)`;
+    return `<span class="muted">neutral</span>`;
+  };
+  const showOne = (block) => {
+    if (!block.pitcher_name || (block.leverage_score || 0) === 0) return "";
+    return `<div style="font-size:10px; padding:2px 0;">
+      <strong>${block.pitcher_name}</strong> vs opp lineup: ${flag(block)} (score ${block.leverage_score})
+      ${block.worst_pitch ? ` -- worst: ${block.worst_pitch.pitch} xwOBA ${block.worst_pitch.xwoba.toFixed(3)}` : ""}
+    </div>`;
+  };
+  const lines = (showOne(a) + showOne(h)).trim();
+  if (!lines) return "";
+  return `<div class="market-line" style="font-size:11px; margin-top:4px; line-height:1.5;">
+    <strong>Pitcher Arsenal vs Lineup:</strong>
+    ${lines}
+  </div>`;
+}
+
 function renderTravel(matchup, home, away) {
   const t = travelByMatchup[matchup];
   if (!t) return "";
@@ -295,6 +332,8 @@ function renderMatchup(g) {
       ${renderUmpire(g.umpire)}
       ${renderBullpens(g.bullpens, home, away)}
       ${renderTravel(g.matchup, home, away)}
+      ${renderSeriesContext(g.matchup)}
+      ${renderPitchMatchup(g.matchup)}
       ${renderExtraMarkets(g.matchup)}
       ${renderLineups(g.lineups, home, away)}
       <div class="pitcher-grid" style="margin-top:14px;">
@@ -340,6 +379,15 @@ fetch("data/run_line.json", { cache: "no-cache" })
 fetch("data/travel.json", { cache: "no-cache" })
   .then(r => r.json())
   .then(d => { (d.games || []).forEach(g => { travelByMatchup[g.matchup] = g; }); }).catch(() => {});
+
+let pitchMatchupByMatchup = {};
+let seriesByMatchup = {};
+fetch("data/pitch_matchup.json", { cache: "no-cache" })
+  .then(r => r.json())
+  .then(d => { (d.games || []).forEach(g => { pitchMatchupByMatchup[g.matchup] = g; }); }).catch(() => {});
+fetch("data/series_context.json", { cache: "no-cache" })
+  .then(r => r.json())
+  .then(d => { (d.games || []).forEach(g => { seriesByMatchup[g.matchup] = g; }); }).catch(() => {});
 
 fetch("data/matchups.json", { cache: "no-cache" })
   .then(r => r.json())

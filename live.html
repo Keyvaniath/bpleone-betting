@@ -134,22 +134,68 @@ Sharpest live-betting edges:
 <script src="js/ml-lab.js"></script>
 <script src="js/main.js"></script>
 <script>
-// Live in-game model overlay
-fetch("data/live_game.json", { cache: "no-cache" })
-  .then(r => r.json())
-  .then(d => {
-    const head = document.querySelector("main.container .page-head");
-    if (!head) return;
-    const timeline = d.timeline || d.events || [];
-    const final = timeline[timeline.length - 1] || {};
-    const note = document.createElement("p");
-    note.className = "muted";
-    note.style.fontSize = "12px";
-    note.style.marginTop = "8px";
-    note.innerHTML = `<strong>Live model engine:</strong> ${timeline.length} PBP timeline points generated, computing forward Monte Carlo win expectancy at each base-out state. Real live games will stream via MLB Stats API gumbo feed (TODO: wire when next game is in progress).`;
-    head.appendChild(note);
-  })
-  .catch(err => console.error("live_game load failed:", err));
+// Live in-game state from data/live_state.json (refreshed every 10 min by live-games workflow)
+function renderLiveGames() {
+  fetch("data/live_state.json", { cache: "no-cache" })
+    .then(r => r.json())
+    .then(d => {
+      const head = document.querySelector("main.container .page-head");
+      if (!head) return;
+      // Build a "Live Right Now" section after the page head
+      let section = document.getElementById("liveNowSection");
+      if (!section) {
+        section = document.createElement("section");
+        section.id = "liveNowSection";
+        section.className = "card";
+        section.style.marginBottom = "24px";
+        head.parentNode.insertBefore(section, head.nextSibling);
+      }
+      const games = d.games || [];
+      if (!games.length) {
+        section.innerHTML = `<div class="card-head"><span>Live Games Right Now</span><span class="muted">polled ${d.polled_at || "?"}</span></div>
+          <p class="muted" style="padding:14px;">No games currently in progress.</p>`;
+        return;
+      }
+      const rows = games.map(g => {
+        const s = g.state || {};
+        const pwin = (g.p_home_win * 100).toFixed(1);
+        const pawin = (100 - g.p_home_win * 100).toFixed(1);
+        const homeColor = g.p_home_win >= 0.5 ? "#58c878" : "#888";
+        const awayColor = g.p_home_win < 0.5 ? "#58c878" : "#888";
+        const basesArr = [];
+        if (s.on_first) basesArr.push("1B");
+        if (s.on_second) basesArr.push("2B");
+        if (s.on_third) basesArr.push("3B");
+        const bases = basesArr.length ? basesArr.join("/") : "empty";
+        return `<div style="display:grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap:14px; padding:12px 14px;
+                            border-bottom:1px solid rgba(255,255,255,0.06); font-family:'JetBrains Mono',monospace;">
+          <div>
+            <div><strong>${g.away}</strong></div>
+            <div style="font-size:24px; color:${awayColor};">${g.away_runs}</div>
+          </div>
+          <div>
+            <div><strong>${g.home}</strong></div>
+            <div style="font-size:24px; color:${homeColor};">${g.home_runs}</div>
+          </div>
+          <div>
+            <div class="muted" style="font-size:11px;">STATE</div>
+            <div>${s.inning_state} ${s.inning}, ${s.outs}o</div>
+            <div class="muted" style="font-size:11px;">bases: ${bases}</div>
+          </div>
+          <div>
+            <div class="muted" style="font-size:11px;">P(WIN)</div>
+            <div style="font-size:18px;">${g.home}: <span style="color:${homeColor};">${pwin}%</span></div>
+            <div style="font-size:13px; color:${awayColor};">${g.away}: ${pawin}%</div>
+          </div>
+        </div>
+        ${g.last_play ? `<div style="padding:6px 14px; font-size:11px; color:var(--muted, #888); border-bottom:1px solid rgba(255,255,255,0.06);">Last: ${g.last_play}</div>` : ""}`;
+      }).join("");
+      section.innerHTML = `<div class="card-head"><span>Live Games Right Now (${games.length})</span><span class="muted">polled ${d.polled_at || "?"} UTC -- refreshes every 10 min</span></div>${rows}`;
+    })
+    .catch(err => console.error("live_state load failed:", err));
+}
+renderLiveGames();
+setInterval(renderLiveGames, 60000);   // auto-refresh every minute client-side
 </script>
 </body>
 </html>
