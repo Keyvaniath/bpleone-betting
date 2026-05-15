@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Model Config | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .knob-row { display: grid; grid-template-columns: 2.4fr 0.7fr 0.7fr 1fr 3fr; gap: 14px; padding: 12px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-family: 'JetBrains Mono', monospace; font-size: 12px; align-items: start; }
+  .knob-row.head { background: rgba(255,255,255,0.04); color: var(--muted, #888); font-size: 10px; text-transform: uppercase; }
+  .knob-row .key { color: var(--text); font-weight: 600; word-break: break-all; }
+  .knob-row .default { color: var(--muted, #888); }
+  .knob-row .current { color: var(--accent, #4ade80); font-weight: 600; }
+  .knob-row .current.overridden { color: #d4a04a; }
+  .knob-row .desc { color: var(--text-2, #aaa); font-family: inherit; font-size: 12px; line-height: 1.4; }
+  .knob-row .type { color: #888; font-size: 10px; }
+  .knob-row .group-header { grid-column: 1 / -1; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold, #d4a04a); padding: 16px 0 8px; border-bottom: 1px solid rgba(212,160,74,0.3); margin-bottom: 4px; }
+  .copy-snippet { font-family: 'JetBrains Mono', monospace; font-size: 11px; background: rgba(0,0,0,0.4); padding: 14px; border-radius: 6px; border: 1px solid var(--line); white-space: pre; overflow-x: auto; color: var(--text-2); }
+  .pill { padding: 2px 8px; border-radius: 4px; font-size: 10px; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; }
+  .pill.default { background: rgba(255,255,255,0.05); color: var(--muted, #888); }
+  .pill.overridden { background: rgba(212,160,74,0.15); color: #d4a04a; }
+</style>
+</head>
+<body class="page-config">
+<header class="topbar">
+  <div class="brand">
+    <a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a>
+    <span class="tagline">by bpleone</span>
+  </div>
+  <nav class="mainnav">
+    <a href="index.html">Dashboard</a>
+    <a href="play-of-day.html">Play of the Day</a>
+    <a href="mlb.html">MLB</a>
+    <a href="parlays.html">Parlays</a>
+    <a href="pickem.html">Pick-Em</a>
+    <a href="brief.html">Brief</a>
+    <a href="learning.html">Learning</a>
+    <a href="training.html">Training</a>
+    <a href="config.html" class="active">Config</a>
+    <a href="residuals.html">Residuals</a>
+    <a href="audit.html">Audit</a>
+    <a href="live.html">Live</a>
+    <a href="props.html">Props</a>
+    <a href="player.html">Player</a>
+    <a href="learn.html">Learn</a>
+  </nav>
+  <div class="topbar-actions"><div class="ticker" id="liveTicker">LIVE</div></div>
+</header>
+
+<main class="container">
+
+  <section class="page-head">
+    <h1>Model Config</h1>
+    <p>Every tunable parameter, all in one place. Defaults come from <code>python/config.py</code>; overrides live in <code>data/runtime_config.json</code> and apply on the next cron without a code change.</p>
+    <p class="muted" style="font-size: 12px; margin-top: 8px;">
+      To override a value: edit <code>data/runtime_config.json</code> in the GitHub web editor, add a key/value, commit. Next pipeline run picks it up. To revert: remove the key.
+    </p>
+  </section>
+
+  <section class="card" style="margin-bottom: 18px;">
+    <div class="card-head"><span>Active Overrides</span><span class="muted" id="overrideCount"></span></div>
+    <div id="overridesBox" style="padding: 14px;"></div>
+  </section>
+
+  <section class="card" style="margin-bottom: 18px;">
+    <div class="card-head"><span>All Knobs</span><span class="muted" id="totalKnobs"></span></div>
+    <div class="knob-row head">
+      <span>Key</span><span>Default</span><span>Current</span><span>Type</span><span>Description</span>
+    </div>
+    <div id="knobList"><p class="muted" style="padding:14px;">Loading config...</p></div>
+  </section>
+
+  <section class="card">
+    <div class="card-head"><span>How to Override</span></div>
+    <div style="padding: 14px; line-height: 1.7;">
+      <p style="margin: 0 0 12px 0;">Open <a href="https://github.com/Keyvaniath/bpleone-betting/blob/main/data/runtime_config.json" target="_blank">data/runtime_config.json</a> on GitHub. Click the pencil icon to edit. Add the key + value, commit. Next pipeline run applies it.</p>
+      <p style="margin: 0 0 10px 0; font-size: 13px;">Example: be more aggressive with calibration (trust data at n=5 instead of n=8):</p>
+      <div class="copy-snippet">{
+  "calibration.n_prior_default": 5,
+  "live_edges.edge_threshold_pp": 3.0,
+  "plays.kelly_fraction": 0.5
+}</div>
+      <p class="muted" style="font-size: 12px; margin-top: 14px;">
+        Reload this page after the next cron to see the override flagged in amber. Remove any key from the JSON to revert that knob to its default.
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<script>
+const GROUPS = [
+  { prefix: "calibration.",  title: "Bayesian Calibration" },
+  { prefix: "player_bias.",  title: "Per-Player Bias Overrides" },
+  { prefix: "live_edges.",   title: "Live Edge Alerts" },
+  { prefix: "plays.",        title: "Play Selection" },
+  { prefix: "parlays.",      title: "Parlay Engine" },
+  { prefix: "trainer.",      title: "Model Trainer" },
+  { prefix: "props.",        title: "Props Pipeline" },
+  { prefix: "backfill.",     title: "Historical Backfill" },
+  { prefix: "walk_forward.", title: "Walk-Forward Backtest" },
+  { prefix: "anomalies.",    title: "Anomaly Detector" },
+  { prefix: "rationales.",   title: "Rationale Generation" },
+];
+
+fetch("data/config_snapshot.json", { cache: "no-cache" })
+  .then(r => r.json())
+  .then(snap => {
+    const keys = snap.keys || {};
+    const allKeys = Object.keys(keys);
+    document.getElementById("totalKnobs").textContent = `${allKeys.length} parameters tracked`;
+    // Overrides box
+    const overridden = allKeys.filter(k => keys[k].is_overridden);
+    document.getElementById("overrideCount").textContent = `${overridden.length} override${overridden.length===1?'':'s'} active`;
+    const ovrBox = document.getElementById("overridesBox");
+    if (!overridden.length) {
+      ovrBox.innerHTML = `<p class="muted">No overrides active. Every parameter is at its default. Edit <code>data/runtime_config.json</code> to override.</p>`;
+    } else {
+      ovrBox.innerHTML = `<table style="width:100%; font-family:'JetBrains Mono',monospace; font-size: 12px;">
+        ${overridden.map(k => `<tr>
+          <td style="padding:4px 14px 4px 0;"><strong>${k}</strong></td>
+          <td style="padding:4px 14px; color: var(--muted, #888);">default: ${JSON.stringify(keys[k].default)}</td>
+          <td style="padding:4px 14px; color: #d4a04a;">→ ${JSON.stringify(keys[k].current)}</td>
+        </tr>`).join("")}
+      </table>`;
+    }
+    // Grouped knob list
+    const groupedHtml = GROUPS.map(g => {
+      const groupKeys = allKeys.filter(k => k.startsWith(g.prefix)).sort();
+      if (!groupKeys.length) return "";
+      const rows = groupKeys.map(k => {
+        const v = keys[k];
+        const isOver = v.is_overridden;
+        const currentDisplay = typeof v.current === 'object'
+          ? JSON.stringify(v.current).slice(0, 120)
+          : String(v.current);
+        const defaultDisplay = typeof v.default === 'object'
+          ? JSON.stringify(v.default).slice(0, 120)
+          : String(v.default);
+        return `<div class="knob-row">
+          <span class="key">${k}</span>
+          <span class="default" title="${defaultDisplay}">${defaultDisplay.slice(0, 30)}${defaultDisplay.length > 30 ? '…' : ''}</span>
+          <span class="current ${isOver ? 'overridden' : ''}" title="${currentDisplay}">${currentDisplay.slice(0, 30)}${currentDisplay.length > 30 ? '…' : ''}${isOver ? ' <span class=\"pill overridden\">override</span>' : ''}</span>
+          <span class="type">${v.type}${v.min !== undefined ? ` [${v.min}, ${v.max}]` : ''}</span>
+          <span class="desc">${v.desc}</span>
+        </div>`;
+      }).join("");
+      return `<div class="knob-row group-header">${g.title}</div>${rows}`;
+    }).join("");
+    document.getElementById("knobList").innerHTML = groupedHtml;
+  })
+  .catch(err => {
+    document.getElementById("knobList").innerHTML = `<p class="muted" style="padding:14px;">config_snapshot.json not loaded yet -- runs as part of daily pipeline. Run <code>python python/config.py dump</code> to generate locally.</p>`;
+    console.error(err);
+  });
+</script>
+
+</body>
+</html>

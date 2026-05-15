@@ -47,10 +47,16 @@ DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 TR_PATH = os.path.join(DATA_DIR, "track_record.json")
 OUT_PATH = os.path.join(DATA_DIR, "player_bias.json")
 
-MIN_PLAYER_N = 3
-Z_THRESHOLD = 2.0
-MAX_BOOST = 1.20      # cap +/- 20%
-MIN_BOOST = 1.0 / 1.20
+try:
+    import config as _cfg
+    MIN_PLAYER_N = _cfg.get("player_bias.min_player_n")
+    Z_THRESHOLD = _cfg.get("player_bias.z_threshold")
+    MAX_BOOST = _cfg.get("player_bias.max_boost")
+except Exception:
+    MIN_PLAYER_N = 3
+    Z_THRESHOLD = 2.0
+    MAX_BOOST = 1.20
+MIN_BOOST = 1.0 / MAX_BOOST
 
 
 def run() -> Dict[str, Any]:

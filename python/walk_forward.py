@@ -45,9 +45,14 @@ DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 TR_PATH = os.path.join(DATA_DIR, "track_record.json")
 OUT_PATH = os.path.join(DATA_DIR, "walk_forward.json")
 
-WINDOW_DAYS = 3              # rolling-window width
-STRIDE_DAYS = 1              # advance by 1 day per step
-MIN_WINDOW_SAMPLES = 30      # need >= 30 in a window to evaluate
+try:
+    import config as _cfg
+    WINDOW_DAYS = _cfg.get("walk_forward.window_days")
+    MIN_WINDOW_SAMPLES = _cfg.get("walk_forward.min_window_samples")
+except Exception:
+    WINDOW_DAYS = 3
+    MIN_WINDOW_SAMPLES = 30
+STRIDE_DAYS = 1
 
 
 def _load_tr() -> Dict[str, Any]:

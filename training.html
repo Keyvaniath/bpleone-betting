@@ -40,6 +40,7 @@
     <a href="brief.html">Brief</a>
     <a href="learning.html">Learning</a>
     <a href="training.html" class="active">Training</a>
+    <a href="config.html">Config</a>
     <a href="residuals.html">Residuals</a>
     <a href="audit.html">Audit</a>
     <a href="models.html">Models</a>
@@ -98,6 +99,12 @@
       <div class="weight">weight 15% &middot; markets ROI&gt;0</div>
     </div>
   </div>
+
+  <section id="feedbackCard" class="card" style="margin-bottom: 24px; display:none;">
+    <div class="card-head"><span>Recent Loop Activity -- What Changed Since Last Refresh</span><span class="muted" id="fbRefresh"></span></div>
+    <div id="fbBody" style="padding: 6px 0;"></div>
+    <p class="muted" style="font-size: 11px; padding: 0 16px 14px;">One entry per cron run. Shows confidence delta, which markets had their correction_factor move, new player-level overrides, and any new anomalies. This is the proof the loop is ticking forward, not stuck.</p>
+  </section>
 
   <section id="walkFwdCard" class="card" style="margin-bottom: 24px; display:none;">
     <div class="card-head"><span>Walk-Forward Backtest -- Is the Loop Actually Training?</span><span class="muted" id="wfRefresh"></span></div>
@@ -162,7 +169,8 @@ Promise.all([
   fetch("data/anomalies.json", { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
   fetch("data/walk_forward.json", { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
   fetch("data/player_bias.json", { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
-]).then(([conf, cal, tr, res, anom, wf, pb]) => {
+  fetch("data/training_feedback.json", { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
+]).then(([conf, cal, tr, res, anom, wf, pb, fb]) => {
   // Hero score
   if (conf && conf.score != null) {
     const c = TIER_COLORS[conf.tier] || TIER_COLORS.yellow;
@@ -279,6 +287,41 @@ Promise.all([
         </div>
         ${rows}
       </div>`;
+  }
+
+  // Recent Loop Activity feed (training_feedback.json)
+  if (fb && fb.entries && fb.entries.length) {
+    document.getElementById("feedbackCard").style.display = "block";
+    document.getElementById("fbRefresh").textContent = `refreshed ${(fb.generated_at || "").replace("T", " ")} UTC`;
+    const last5 = fb.entries.slice(-5).reverse();
+    const rows = last5.map(e => {
+      const cd = e.confidence_delta;
+      const cdHtml = cd === null || cd === undefined
+        ? `<span class="muted">--</span>`
+        : `<span style="color: ${cd > 0 ? '#58c878' : cd < 0 ? '#e35a5a' : 'var(--muted, #888)'};">${cd > 0 ? '+' : ''}${cd}</span>`;
+      const moves = e.calibration_moves || [];
+      const movesHtml = moves.length
+        ? moves.slice(0, 4).map(m => `<span style="display:inline-block; padding:1px 6px; background:rgba(212,160,74,0.10); border-radius:3px; margin: 1px 4px 1px 0; font-size:10px; color:#d4a04a;">${m.market.replace(/_/g,' ')} ${m.cf_delta !== null ? (m.cf_delta > 0 ? '+' : '') + m.cf_delta : ''}${m.n_added ? ` (+${m.n_added}n)` : ''}</span>`).join("")
+        : `<span class="muted" style="font-size:11px;">no calibration moves</span>`;
+      const pbHtml = (e.new_player_overrides || []).length
+        ? e.new_player_overrides.map(p => `<span style="display:inline-block; padding:1px 6px; background:rgba(88,200,120,0.10); border-radius:3px; margin: 1px 4px 1px 0; font-size:10px; color:#58c878;">+ ${p}</span>`).join("")
+        : "";
+      const remHtml = (e.removed_player_overrides || []).length
+        ? e.removed_player_overrides.map(p => `<span style="display:inline-block; padding:1px 6px; background:rgba(227,90,90,0.10); border-radius:3px; margin: 1px 4px 1px 0; font-size:10px; color:#e35a5a;">- ${p}</span>`).join("")
+        : "";
+      const anomHtml = (e.new_anomalies || []).length
+        ? e.new_anomalies.map(a => `<span style="display:inline-block; padding:1px 6px; background:rgba(227,90,90,0.10); border-radius:3px; margin: 1px 4px 1px 0; font-size:10px; color:#e35a5a;">! ${a.replace('|', ' / ').replace(/_/g, ' ')}</span>`).join("")
+        : "";
+      return `<div style="padding: 12px 16px; border-bottom: 1px solid rgba(255,255,255,0.05);">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 6px;">
+          <div style="font-family:'JetBrains Mono',monospace; font-size: 11px; color: var(--muted, #888);">${(e.ts || "").replace("T", " ")}</div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size: 12px;">confidence ${e.confidence_score ?? '--'} ${cdHtml}</div>
+        </div>
+        <div style="font-size: 13px; line-height: 1.6; color: var(--text);">${e.summary || ""}</div>
+        ${moves.length || pbHtml || remHtml || anomHtml ? `<div style="margin-top: 8px;">${movesHtml}${pbHtml}${remHtml}${anomHtml}</div>` : ""}
+      </div>`;
+    }).join("");
+    document.getElementById("fbBody").innerHTML = rows;
   }
 
   // Per-player bias panel

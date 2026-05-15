@@ -31,8 +31,11 @@ from typing import Any, Dict, List, Tuple
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 TR_PATH = os.path.join(DATA_DIR, "track_record.json")
 OUT_PATH = os.path.join(DATA_DIR, "trained_params.json")
-MIN_TRAIN_SAMPLE = 15   # AGGRESSIVE: was 50, now 15. User chose faster learning
-                        # over safety: "we are okay with misses we just want data."
+try:
+    import config as _cfg
+    MIN_TRAIN_SAMPLE = _cfg.get("trainer.min_train_sample")
+except Exception:
+    MIN_TRAIN_SAMPLE = 15
 
 
 def _load_tr() -> Dict[str, Any]:
