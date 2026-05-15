@@ -110,5 +110,23 @@
 <script src="js/data.js"></script>
 <script src="js/extras.js"></script>
 <script src="js/main.js"></script>
+<script>
+// Arbitrage live overlay
+fetch("data/arbitrage.json", { cache: "no-cache" })
+  .then(r => r.json())
+  .then(d => {
+    const head = document.querySelector("main.container .page-head");
+    if (!head) return;
+    const arbs = d.arbitrages || d.arbs || (Array.isArray(d) ? d : []);
+    const middles = d.middles || [];
+    const note = document.createElement("p");
+    note.className = "muted";
+    note.style.fontSize = "12px";
+    note.style.marginTop = "8px";
+    note.innerHTML = `<strong>Scanner status:</strong> ${arbs.length} arbitrage opportunit${arbs.length===1?"y":"ies"} surfaced from synthetic-line scan, ${middles.length} middle opportunities. Real cross-book scanning activates once you have line feeds from 2+ takeable books (currently DK only).`;
+    head.appendChild(note);
+  })
+  .catch(err => console.error("arbitrage load failed:", err));
+</script>
 </body>
 </html>

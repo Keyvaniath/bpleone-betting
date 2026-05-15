@@ -62,7 +62,7 @@
   <section class="page-head">
     <h1>Pick-Em (PrizePicks)</h1>
     <p>PrizePicks runs a pick-em model: combine 2-6 legs into a Power Play, all must hit to cash. We pull their daily MLB projections, run our model at PP's line, and flag where PP is materially softer than DraftKings on the same player + market.</p>
-    <p class="muted" style="font-size:12px; margin-top:6px;">Sleeper Picks coming once you can hand us a Bearer token from your account (their endpoint is auth-gated).</p>
+    <p class="muted" style="font-size:12px; margin-top:6px;" id="sleeperStatus">Sleeper Picks coming once you can hand us a Bearer token from your account (their endpoint is auth-gated).</p>
   </section>
 
   <section class="metric-strip" id="pickemMetrics">
@@ -176,6 +176,19 @@ function renderList() {
     </div>`;
   }).join("");
 }
+
+// Sleeper status pill
+fetch("data/sleeper.json", { cache: "no-cache" })
+  .then(r => r.json())
+  .then(s => {
+    const el = document.getElementById("sleeperStatus");
+    if (!el) return;
+    if (s.warning === "needs_auth") {
+      el.innerHTML = `<strong style="color:#d4a04a;">Sleeper Picks:</strong> auth-gated. Add a SLEEPER_TOKEN repo secret (see python/sleeper.py docstring) and Sleeper lines will appear alongside PrizePicks on the next refresh.`;
+    } else if (s.raw_projections) {
+      el.innerHTML = `<strong style="color:#58c878;">Sleeper Picks:</strong> live (${s.raw_projections} projections, ${s.matched_to_dk} matched to DK).`;
+    }
+  }).catch(() => {});
 
 fetch("data/pickem.json", { cache: "no-cache" })
   .then(r => r.json())

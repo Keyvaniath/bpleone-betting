@@ -126,5 +126,35 @@
 <script src="js/ml-models.js"></script>
 <script src="js/extras.js"></script>
 <script src="js/main.js"></script>
+<script>
+// Live track-record overlay
+Promise.all([
+  fetch("data/track_record.json", { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
+  fetch("data/calibration_live.json", { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
+]).then(([tr, cal]) => {
+  const props = tr.props || [];
+  const games = tr.games || [];
+  const hits = props.filter(p => p.play_hit === true).length;
+  const losses = props.filter(p => p.play_hit === false).length;
+  const totalGraded = hits + losses;
+  const hitRate = totalGraded ? (hits / totalGraded * 100).toFixed(1) + "%" : "--";
+  const markets = Object.keys(cal.markets || {}).length;
+  const banner = document.createElement("section");
+  banner.className = "card";
+  banner.style.marginBottom = "24px";
+  banner.innerHTML = `
+    <div class="card-head"><span>Live Track Record (real outcomes)</span><span class="muted">${tr.last_settled_date ? "last settled " + tr.last_settled_date : "no settled data yet -- first run tomorrow"}</span></div>
+    <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:16px; padding:14px 6px; font-family:'JetBrains Mono',monospace; font-size:13px;">
+      <div><div class="muted" style="font-size:11px;">Settled props</div><div style="font-size:22px;">${props.length}</div></div>
+      <div><div class="muted" style="font-size:11px;">Settled games</div><div style="font-size:22px;">${games.length}</div></div>
+      <div><div class="muted" style="font-size:11px;">Graded plays</div><div style="font-size:22px;">${totalGraded}</div></div>
+      <div><div class="muted" style="font-size:11px;">Hit rate</div><div style="font-size:22px; color:#58c878;">${hitRate}</div></div>
+      <div><div class="muted" style="font-size:11px;">Markets calibrated</div><div style="font-size:22px;">${markets}</div></div>
+    </div>
+    <p class="caption" style="margin-top:8px;">Real track record starts populating after the first night of settled outcomes. The walk-forward equity curve below is the synthetic 90-day benchmark used to validate model behavior before live data accumulated.</p>`;
+  const main = document.querySelector("main.container");
+  if (main && main.firstElementChild) main.insertBefore(banner, main.firstElementChild.nextSibling);
+}).catch(err => console.error("track-record load failed:", err));
+</script>
 </body>
 </html>

@@ -37,14 +37,39 @@ PP_API = "https://api.prizepicks.com/projections"
 OUT_PATH = os.path.join(os.path.dirname(__file__), "..", "data", "pickem.json")
 
 # Browser-style headers required (the bare requests UA gets 403'd by Cloudflare).
-PP_HEADERS = {
-    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
-                  "(KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
-    "Accept": "application/json",
-    "Accept-Language": "en-US,en;q=0.9",
-    "Origin": "https://app.prizepicks.com",
-    "Referer": "https://app.prizepicks.com/",
-}
+# Multiple variants so we can retry with different fingerprints when one fails.
+PP_HEADER_VARIANTS = [
+    {
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
+                      "(KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+        "Accept": "application/json, text/plain, */*",
+        "Accept-Language": "en-US,en;q=0.9",
+        "Accept-Encoding": "gzip, deflate, br",
+        "Origin": "https://app.prizepicks.com",
+        "Referer": "https://app.prizepicks.com/",
+        "Sec-Fetch-Dest": "empty",
+        "Sec-Fetch-Mode": "cors",
+        "Sec-Fetch-Site": "same-site",
+    },
+    {
+        "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_4 like Mac OS X) AppleWebKit/605.1.15 "
+                      "(KHTML, like Gecko) Version/17.4 Mobile/15E148 Safari/604.1",
+        "Accept": "application/json",
+        "Accept-Language": "en-US,en;q=0.9",
+        "Origin": "https://app.prizepicks.com",
+        "Referer": "https://app.prizepicks.com/",
+    },
+    {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+                      "(KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36 Edg/125.0.0.0",
+        "Accept": "*/*",
+        "Accept-Language": "en-US,en;q=0.5",
+        "Origin": "https://app.prizepicks.com",
+        "Referer": "https://app.prizepicks.com/",
+    },
+]
+# Backwards-compat alias used elsewhere
+PP_HEADERS = PP_HEADER_VARIANTS[0]
 
 # PrizePicks stat_type -> our internal market key.
 STAT_MAP = {
@@ -61,15 +86,35 @@ PP_BREAKEVEN_BY_LEGS = {2: 0.577, 3: 0.585, 4: 0.562, 5: 0.549, 6: 0.559}
 
 
 def fetch_pp_projections() -> Tuple[List[Dict[str, Any]], List[Dict[str, Any]]]:
-    """Return (data, included). data = projections, included = players + game refs."""
+    """Return (data, included). data = projections, included = players + game refs.
+
+    Tries multiple header fingerprints because Cloudflare often blocks the first
+    attempt from cloud-data-center IPs (GitHub Actions runners). Local machines
+    typically succeed on the first try.
+    """
     if requests is None:
         return [], []
-    r = requests.get(PP_API, params={"league_id": 2, "per_page": 500},
-                     headers=PP_HEADERS, timeout=15)
-    if not r.ok:
-        return [], []
-    j = r.json()
-    return j.get("data", []), j.get("included", [])
+    import time as _t
+    last_status = None
+    for i, headers in enumerate(PP_HEADER_VARIANTS):
+        try:
+            r = requests.get(PP_API, params={"league_id": 2, "per_page": 500},
+                             headers=headers, timeout=15)
+            last_status = r.status_code
+            if r.ok:
+                try:
+                    j = r.json()
+                except Exception:
+                    continue
+                if (j.get("data") or []):
+                    return j.get("data", []), j.get("included", [])
+        except Exception:
+            pass
+        # Backoff between variants
+        _t.sleep(0.6 + i * 0.4)
+    print(f"  [x] PrizePicks: all {len(PP_HEADER_VARIANTS)} header variants failed (last status: {last_status}). "
+          f"Cloudflare is blocking this IP -- proxy or local-cron required.")
+    return [], []
 
 
 def _index_players(included: List[Dict[str, Any]]) -> Dict[str, Dict[str, Any]]:

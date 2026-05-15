@@ -211,5 +211,77 @@
 <script src="js/ml-models.js"></script>
 <script src="js/charts.js"></script>
 <script src="js/main.js"></script>
+<script>
+// Live data overlay: pulls today.json + matchups.json to overwrite the hero
+// + factor decomposition with the actual Play of Day for this slate.
+fetch("data/today.json", { cache: "no-cache" })
+  .then(r => r.json())
+  .then(d => {
+    const pod = d.play_of_day;
+    if (!pod) return;
+    // Find matching game in slate
+    const game = (d.games || []).find(g => g.matchup === pod.matchup);
+    const park = game ? game.park : "";
+    const wx = game ? game.weather : {};
+    const ump = game ? game.umpire : {};
+    // Hero block
+    const head = document.querySelector(".play-hero");
+    if (head) {
+      const muted = head.querySelector(".muted");
+      if (muted) muted.textContent = `${(d.generated_at || "").slice(0, 10)} - ${pod.time || ""} - ${park}`;
+      const h1 = head.querySelector("h1");
+      if (h1) h1.innerHTML = `${pod.matchup} <span class="accent">${pod.label}</span>`;
+      const lede = head.querySelector(".lede");
+      if (lede) {
+        let parts = [`Market price ${pod.market_price >= 0 ? "+" + pod.market_price : pod.market_price}`];
+        if (game && game.market) parts.push(`Total ${game.market.total}, book ${game.market.book}`);
+        if (wx && wx.temp_f != null) parts.push(`${wx.temp_f}F, wind ${wx.wind_mph}mph`);
+        if (ump && ump.ump_name) parts.push(`HP umpire: ${ump.ump_name}`);
+        lede.textContent = parts.join(" - ");
+      }
+    }
+    // Stat tiles
+    const stats = document.querySelectorAll(".play-hero .play-stat");
+    const setStat = (idx, label, val, cls) => {
+      if (!stats[idx]) return;
+      stats[idx].querySelector(".stat-label").textContent = label;
+      const v = stats[idx].querySelector(".stat-value-big");
+      v.textContent = val;
+      v.className = "stat-value-big" + (cls || "");
+    };
+    const mp = pod.market_price;
+    const isPreCal = (pod.edge_pct || 0) >= 15;
+    setStat(0, "Market Price", mp >= 0 ? "+" + mp : String(mp));
+    setStat(1, "Model Prob", (pod.model_prob * 100).toFixed(1) + "%");
+    setStat(2, "Edge", (pod.edge_pct >= 0 ? "+" : "") + Number(pod.edge_pct).toFixed(2) + "%", " positive");
+    setStat(3, "Confidence", isPreCal ? "calibrating" : (pod.confidence || "--"));
+    setStat(4, "Kelly (capped)", isPreCal ? "<= 0.5u" : Number(pod.kelly_units).toFixed(1) + "u");
+    setStat(5, "Side", pod.label || "--");
+    // Confidence donut centerpiece
+    const donutBig = document.querySelector("#confDonut")?.parentElement?.querySelector("div[style*=transform]")?.firstElementChild;
+    if (donutBig) donutBig.innerHTML = `${(pod.model_prob * 100).toFixed(0)}<span style="font-size:22px;">%</span>`;
+    // Replace narrative
+    const narrCard = document.querySelectorAll(".grid-2 .card")[0];
+    if (narrCard) {
+      const ps = narrCard.querySelectorAll("p");
+      if (ps[0]) ps[0].innerHTML = `Tonight's highest-edge play is <strong>${pod.matchup} ${pod.label}</strong> at ${mp >= 0 ? "+" + mp : mp}. The model prices it at ${(pod.model_prob*100).toFixed(1)}% vs market implied ${(100*(mp<0 ? -mp/(-mp+100) : 100/(mp+100))).toFixed(1)}%.`;
+      if (ps[1]) {
+        let bits = [];
+        if (game && game.model) bits.push(`Model fair total ${game.model.fair_total} vs market ${game.market.total}`);
+        if (wx && wx.carry_index != null) {
+          bits.push(`wind carry index ${wx.carry_index} (${wx.carry_index > 0.15 ? "out -- helps OVER" : wx.carry_index < -0.15 ? "in -- helps UNDER" : "neutral"})`);
+        }
+        if (ump && ump.ump_label) bits.push(`HP ump ${ump.ump_name} (${ump.ump_label}, K mult ${ump.ump_k_mult})`);
+        ps[1].textContent = bits.join(". ") + ".";
+      }
+      if (ps[2]) ps[2].innerHTML = isPreCal
+        ? `<strong style="color:#d4a04a;">Calibration note:</strong> raw edge of ${pod.edge_pct}% is well above the +2 to +8% band a properly-calibrated baseball model produces. Treat this as research signal, not gospel; bias corrections fire after ~30 settled records per market.`
+        : `Model is bias-corrected from ${(d.generated_at || "").slice(0,10)} calibration data; this play is within the historical hit-rate band.`;
+      const callout = narrCard.querySelector(".callout");
+      if (callout) callout.innerHTML = `<strong>Bottom line:</strong> ${pod.matchup} ${pod.label}, ${isPreCal ? "<= 0.5u (pre-calibration)" : pod.kelly_units + "u Kelly"}.`;
+    }
+  })
+  .catch(err => console.error("today.json load failed:", err));
+</script>
 </body>
 </html>

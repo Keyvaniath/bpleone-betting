@@ -132,5 +132,24 @@
 <script src="js/simulator.js"></script>
 <script src="js/charts.js"></script>
 <script src="js/main.js"></script>
+<script>
+// Wire the simulator's default scenario to today's Play of Day if available.
+fetch("data/today.json", { cache: "no-cache" })
+  .then(r => r.json())
+  .then(d => {
+    const pod = d.play_of_day;
+    if (!pod) return;
+    const head = document.querySelector("main.container .page-head");
+    if (head) {
+      const note = document.createElement("p");
+      note.className = "muted";
+      note.style.fontSize = "12px";
+      note.style.marginTop = "8px";
+      note.innerHTML = `<strong>Today's flagship matchup:</strong> ${pod.matchup} at ${pod.market_price >= 0 ? "+" + pod.market_price : pod.market_price}, model probability ${(pod.model_prob * 100).toFixed(1)}%. The simulator below runs 10,000 PA-level Monte Carlo trials per click.`;
+      head.appendChild(note);
+    }
+  })
+  .catch(err => console.error("today.json load failed:", err));
+</script>
 </body>
 </html>

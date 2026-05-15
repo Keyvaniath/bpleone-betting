@@ -40,6 +40,7 @@
   <section class="page-head">
     <h1>Models & Calculators</h1>
     <p>Under the hood. Every probability we publish comes out of one of these models, and every calculator below is what a sharp uses to size a bet correctly. No black boxes.</p>
+    <p class="muted" style="font-size:12px; margin-top:6px;">Hit-rate and ROI numbers below reflect the synthetic walk-forward benchmark used to validate model architecture. <strong>Live hit rate</strong> from real outcomes accumulates on the <a href="learning.html" style="color:#58c878;">Learning</a> page and bias-corrects daily projections via the self-learning loop.</p>
   </section>
 
   <section class="grid-3">
@@ -56,10 +57,10 @@
       <p class="caption"><strong>Outputs:</strong> P(total &gt; k) for any k, half-line pushes handled, mean = 8.1 ± 2.2 across slate.</p>
     </div>
     <div class="card">
-      <div class="card-head"><span class="pill purple">PROPS</span><span class="muted">v1.7</span></div>
+      <div class="card-head"><span class="pill purple">PROPS</span><span class="muted">v2 (Statcast)</span></div>
       <h3>Player Prop Projection</h3>
-      <p style="color: var(--text-2)">Gradient-boosted regression on player rolling stats vs. opposing pitcher arsenal, park-adjusted. Outputs a distribution per prop market (Ks, TB, H+R+RBI, HR, BB).</p>
-      <p class="caption"><strong>Tracked:</strong> 12 prop markets • <strong>Hit rate:</strong> 59.1% on +EV plays only.</p>
+      <p style="color: var(--text-2)">Blends Baseball Savant Statcast metrics (xK% / xBA / xSLG / barrel%) with season K-9 / H-PA and a recent-form weight (last 3 starts). Per-prop Poisson over expected batters faced or expected ABs. Park factor + wind carry adjusts HR projections directly.</p>
+      <p class="caption"><strong>Markets:</strong> pitcher_strikeouts, batter_hits, batter_total_bases, batter_home_runs • <strong>Inputs:</strong> Statcast leaderboards + MLB Stats API + DraftKings odds + lineups + umpire tendency.</p>
     </div>
     <div class="card">
       <div class="card-head"><span class="pill gold">FLOW</span><span class="muted">v1.4</span></div>

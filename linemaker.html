@@ -104,5 +104,23 @@
 <script src="js/ml-models.js"></script>
 <script src="js/extras.js"></script>
 <script src="js/main.js"></script>
+<script>
+// Linemaker live overlay: shows the linemaker simulation results from python/linemaker.py
+fetch("data/linemaker.json", { cache: "no-cache" })
+  .then(r => r.json())
+  .then(d => {
+    const head = document.querySelector("main.container .page-head");
+    if (!head) return;
+    const moves = d.line_moves || d.moves || [];
+    const final = d.final || {};
+    const note = document.createElement("p");
+    note.className = "muted";
+    note.style.fontSize = "12px";
+    note.style.marginTop = "8px";
+    note.innerHTML = `<strong>Bookmaker sim:</strong> ${moves.length} re-shades simulated, final price ${final.current_price_a ? (final.current_price_a >= 0 ? "+" + final.current_price_a : final.current_price_a) : "?"}/${final.current_price_b ? (final.current_price_b >= 0 ? "+" + final.current_price_b : final.current_price_b) : "?"}, handle imbalance ${final.imbalance_pct?.toFixed?.(1) ?? "?"}%. This is the bookie's-eye view of how a line moves in response to incoming action.`;
+    head.appendChild(note);
+  })
+  .catch(err => console.error("linemaker load failed:", err));
+</script>
 </body>
 </html>

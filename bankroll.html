@@ -141,5 +141,24 @@
 <script src="js/ml-models.js"></script>
 <script src="js/extras.js"></script>
 <script src="js/main.js"></script>
+<script>
+// Bankroll MC + Kelly heatmap live overlay
+Promise.all([
+  fetch("data/bankroll_mc.json", { cache: "no-cache" }).then(r => r.json()).catch(() => null),
+  fetch("data/kelly_heatmap.json", { cache: "no-cache" }).then(r => r.json()).catch(() => null),
+]).then(([mc, kh]) => {
+  if (!mc) return;
+  const head = document.querySelector("main.container .page-head");
+  if (head && mc.metrics) {
+    const note = document.createElement("p");
+    note.className = "muted";
+    note.style.fontSize = "12px";
+    note.style.marginTop = "8px";
+    const m = mc.metrics;
+    note.innerHTML = `<strong>Live simulation params:</strong> p_win=${mc.params?.p_win ?? "?"}, price=${mc.params?.american_price ?? "?"}, plays=${mc.params?.n_plays ?? "?"}, Kelly fraction=${mc.params?.kelly_fraction ?? "?"}. Median ending bankroll: ${m.median_pct?.toFixed?.(1) ?? "?"}%, 5th percentile: ${m.p5_pct?.toFixed?.(1) ?? "?"}%, ruin probability: ${m.ruin_prob != null ? (m.ruin_prob*100).toFixed(1) + "%" : "?"}.`;
+    head.appendChild(note);
+  }
+}).catch(err => console.error("bankroll load failed:", err));
+</script>
 </body>
 </html>

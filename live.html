@@ -132,5 +132,23 @@ Sharpest live-betting edges:
 <script src="js/data.js"></script>
 <script src="js/ml-lab.js"></script>
 <script src="js/main.js"></script>
+<script>
+// Live in-game model overlay
+fetch("data/live_game.json", { cache: "no-cache" })
+  .then(r => r.json())
+  .then(d => {
+    const head = document.querySelector("main.container .page-head");
+    if (!head) return;
+    const timeline = d.timeline || d.events || [];
+    const final = timeline[timeline.length - 1] || {};
+    const note = document.createElement("p");
+    note.className = "muted";
+    note.style.fontSize = "12px";
+    note.style.marginTop = "8px";
+    note.innerHTML = `<strong>Live model engine:</strong> ${timeline.length} PBP timeline points generated, computing forward Monte Carlo win expectancy at each base-out state. Real live games will stream via MLB Stats API gumbo feed (TODO: wire when next game is in progress).`;
+    head.appendChild(note);
+  })
+  .catch(err => console.error("live_game load failed:", err));
+</script>
 </body>
 </html>

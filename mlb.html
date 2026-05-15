@@ -190,5 +190,48 @@
 <script src="js/ml-models.js"></script>
 <script src="js/charts.js"></script>
 <script src="js/main.js"></script>
+<script>
+// Live slate loader: replaces mock metrics + table from today.json + matchups.json.
+fetch("data/today.json", { cache: "no-cache" })
+  .then(r => r.json())
+  .then(d => {
+    const games = d.games || [];
+    const allRecs = games.flatMap(g => g.recommendations || []);
+    // Metrics strip
+    const metrics = document.querySelectorAll(".metric-strip .metric-num");
+    if (metrics[0]) metrics[0].textContent = games.length;
+    if (metrics[1]) metrics[1].textContent = allRecs.length;
+    if (metrics[2]) metrics[2].textContent = allRecs.filter(r => (r.edge_pct || 0) >= 3).length;
+    // Table
+    const tbody = document.querySelector("#slateTable tbody");
+    if (!tbody) return;
+    if (!games.length) {
+      tbody.innerHTML = `<tr><td colspan="9" class="muted" style="text-align:center; padding:24px;">No games on the slate.</td></tr>`;
+      return;
+    }
+    tbody.innerHTML = games.map(g => {
+      const m = g.market || {}, mod = g.model || {}, wx = g.weather || {}, u = g.umpire || {};
+      const recs = (g.recommendations || []).slice().sort((a, b) => (b.edge_pct || 0) - (a.edge_pct || 0));
+      const top = recs[0];
+      const edgeStr = top ? (top.edge_pct >= 0 ? "+" : "") + Number(top.edge_pct).toFixed(1) + "%" : "--";
+      const isPreCal = top && (top.edge_pct || 0) >= 15;
+      const recMark = isPreCal ? '<span title="pre-cal" style="color:#d4a04a;"> calibrating</span>' : '';
+      const wxMark = wx.is_indoor ? "indoor" :
+                     wx.temp_f != null ? `${wx.temp_f}F wind ${wx.wind_mph}mph` : "";
+      return `<tr>
+        <td>${g.time || ""}</td>
+        <td><strong>${g.matchup}</strong><div class="muted" style="font-size:11px;">${g.park || ""}${wxMark ? ' - ' + wxMark : ''}${u.ump_name ? ' - HP ' + u.ump_name : ''}</div></td>
+        <td class="muted" style="font-size:11px;">--</td>
+        <td>${mod.fair_home_ml != null ? (mod.fair_home_ml >= 0 ? "+" + mod.fair_home_ml : mod.fair_home_ml) : "--"}</td>
+        <td>${m.home_ml != null ? (m.home_ml >= 0 ? "+" + m.home_ml : m.home_ml) : "--"}</td>
+        <td><strong>${edgeStr}</strong>${recMark}</td>
+        <td>${mod.fair_total ?? "--"}</td>
+        <td>${m.total ?? "--"}</td>
+        <td>${top ? top.label : "--"}</td>
+      </tr>`;
+    }).join("");
+  })
+  .catch(err => console.error("today.json load failed:", err));
+</script>
 </body>
 </html>
