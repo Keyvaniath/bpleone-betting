@@ -150,6 +150,29 @@ function renderWeather(w) {
   </div>`;
 }
 
+function renderUmpire(u) {
+  if (!u || !u.ump_name) return "";
+  const tag = u.ump_label && u.ump_label !== "no tendency data"
+    ? ` <span style="color:${u.ump_k_mult > 1.02 ? '#58c878' : u.ump_k_mult < 0.98 ? '#e35a5a' : '#888'};">(${u.ump_label}, K mult ${u.ump_k_mult})</span>`
+    : "";
+  return `<div class="market-line" style="font-size:11px; margin-top:4px;">HP Umpire: ${u.ump_name}${tag}</div>`;
+}
+
+function renderLineups(l, home, away) {
+  if (!l) return "";
+  if (!l.home_posted && !l.away_posted) {
+    return `<div class="market-line" style="font-size:11px; margin-top:4px; color:#888;">Lineups: not yet posted (typically 1-2 hours pre-game).</div>`;
+  }
+  const fmt = (arr, code) => {
+    if (!arr || !arr.length) return `<span class="muted">${code}: TBD</span>`;
+    return `<span><strong>${code}:</strong> ${arr.slice(0, 9).map(p => `${p.order}. ${p.name?.split(' ').slice(-1)[0] || '?'} (${p.pos || '?'})`).join(", ")}</span>`;
+  };
+  return `<div class="market-line" style="font-size:10px; margin-top:6px; line-height:1.6;">
+    <div>${fmt(l.away, away)}</div>
+    <div>${fmt(l.home, home)}</div>
+  </div>`;
+}
+
 function renderMatchup(g) {
   const [away, home] = g.matchup.split(" @ ");
   const market = g.market || {};
@@ -167,6 +190,8 @@ function renderMatchup(g) {
         &nbsp;|&nbsp; ${renderTeam(g.away, away)} ${renderTeam(g.home, home)}
       </div>
       ${renderWeather(g.weather)}
+      ${renderUmpire(g.umpire)}
+      ${renderLineups(g.lineups, home, away)}
       <div class="pitcher-grid" style="margin-top:14px;">
         ${renderPitcher(g.away_pitcher, away)}
         ${renderPitcher(g.home_pitcher, home)}

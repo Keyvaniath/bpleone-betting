@@ -208,6 +208,22 @@ def build_all_matchups(today_json_path: Optional[str] = None) -> Dict[str, Any]:
                                  "carry_index", "precip_pct")}
         m["umpire"] = {k: v for k, v in (game.get("ctx") or {}).items()
                        if k in ("ump_name", "ump_label", "ump_k_mult")}
+        # Confirmed lineups (when posted ~1-2hrs pre-game) for both sides
+        gpk = meta.get("gamePk")
+        try:
+            lups = sr.game_lineups(gpk) if gpk else {"home": {}, "away": {}}
+            m["lineups"] = {
+                "home_posted": bool(lups.get("home")),
+                "away_posted": bool(lups.get("away")),
+                "home": sorted(
+                    [{"id": pid, **info} for pid, info in lups.get("home", {}).items()],
+                    key=lambda x: x.get("order", 99)),
+                "away": sorted(
+                    [{"id": pid, **info} for pid, info in lups.get("away", {}).items()],
+                    key=lambda x: x.get("order", 99)),
+            }
+        except Exception:
+            m["lineups"] = {"home_posted": False, "away_posted": False, "home": [], "away": []}
         matchups.append(m)
 
     payload = {

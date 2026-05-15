@@ -37,10 +37,20 @@ ODDS_BASE = "https://api.the-odds-api.com/v4"
 OUT_PATH = os.path.join(os.path.dirname(__file__), "..", "data", "props.json")
 
 # Markets we model. Each adds 1 credit per event call.
-# Free tier: keep at 2 markets * 8 games to fit 500/month.
-# $20 tier (20k/month): can lift to all 4 markets * all games * 3x daily.
-DEFAULT_MARKETS = ["pitcher_strikeouts", "batter_home_runs",
-                   "batter_hits", "batter_total_bases"]
+# Override via EDGESTAT_PROPS_MARKETS env var (comma-separated).
+# Free tier safe (~480 credits/month): 4 markets * 8 games * 1x daily.
+# Paid $20 tier (20k credits/month): all 8 markets * 16 games * 3x daily.
+_DEFAULT_MARKETS_SAFE = ["pitcher_strikeouts", "batter_home_runs",
+                          "batter_hits", "batter_total_bases"]
+_DEFAULT_MARKETS_FULL = ["pitcher_strikeouts", "batter_home_runs",
+                          "batter_hits", "batter_total_bases",
+                          "batter_singles", "batter_doubles",
+                          "batter_runs_scored", "batter_rbis"]
+_env_markets = os.environ.get("EDGESTAT_PROPS_MARKETS", "").strip()
+if _env_markets:
+    DEFAULT_MARKETS = [m.strip() for m in _env_markets.split(",") if m.strip()]
+else:
+    DEFAULT_MARKETS = _DEFAULT_MARKETS_SAFE
 
 # Quota cap. Honors EDGESTAT_PROPS_MAX_GAMES env var so the workflow can run
 # the same code on free vs paid tier without code changes.
@@ -717,6 +727,14 @@ def build_props(markets: Optional[List[str]] = None, max_games: int = MAX_GAMES)
                     p_over, dbg = project_batter_hits(pid, line, batter_order)
                 elif market_key == "batter_total_bases":
                     p_over, dbg = project_batter_tb(pid, line, batter_order)
+                elif market_key == "batter_singles":
+                    p_over, dbg = project_batter_singles(pid, line, batter_order)
+                elif market_key == "batter_doubles":
+                    p_over, dbg = project_batter_doubles(pid, line, batter_order)
+                elif market_key == "batter_runs_scored":
+                    p_over, dbg = project_batter_runs(pid, line, batter_order)
+                elif market_key == "batter_rbis":
+                    p_over, dbg = project_batter_rbis(pid, line, batter_order)
                 else:
                     continue
                 dbg["lineup_status"] = lineup_status
