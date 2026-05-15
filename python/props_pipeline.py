@@ -313,7 +313,14 @@ def project_pitcher_ks(pid: int, line: float, opp_team_id: Optional[int] = None,
 
         line_int = int(math.ceil(line))
         p_over = poisson_p_at_least(expected_ks, line_int)
+        # Pure-statcast and pure-season projections for the grid-search trainer.
+        xstat_proj = ((statcast_k_pct / 100.0) * expected_bf
+                       if statcast_k_pct is not None else None)
+        season_k_rate = season_k9 / (9.0 * (bf_per_ip if bf_per_ip > 0 else 4.3))
+        season_proj = season_k_rate * expected_bf
         return p_over, {
+            "xstat_proj": round(xstat_proj, 2) if xstat_proj is not None else None,
+            "season_proj": round(season_proj, 2),
             "model_version": model_version,
             "season_k9": round(season_k9, 2),
             "blended_k9": round(blended_k9, 2),
@@ -460,7 +467,11 @@ def project_batter_hits(pid: int, line: float, order: Optional[int] = None) -> T
     expected_h = blended_ba * ab_g
     line_int = int(math.ceil(line))
     p_over = poisson_p_at_least(expected_h, line_int)
+    xstat_proj = (xba * ab_g) if (xba is not None and xba > 0) else None
+    season_proj = season_ba * ab_g
     return p_over, {
+        "xstat_proj": round(xstat_proj, 3) if xstat_proj is not None else None,
+        "season_proj": round(season_proj, 3),
         "model_version": model_version,
         "pa": pa, "hits": hits,
         "season_ba": round(season_ba, 3), "xba": xba, "blended_ba": round(blended_ba, 3),
@@ -592,6 +603,11 @@ def project_batter_tb(pid: int, line: float, order: Optional[int] = None) -> Tup
     xslg = sc_b.get("xslg")
     expected_pa_g = _expected_pa(order)
     ab_g = expected_pa_g * _ab_per_pa(s)
+    # Log BOTH the pure-Statcast TB projection and the pure-season TB
+    # projection in debug. This lets model_trainer.py grid-search the blend
+    # weight over a range of options instead of relying on the heuristic.
+    xstat_proj = (xslg * ab_g) if (xslg is not None and xslg > 0) else None
+    season_proj = season_slg * ab_g
     if xslg is not None and xslg > 0:
         blended_slg = 0.6 * xslg + 0.4 * season_slg
         model_version = "v2-statcast-xslg"
@@ -602,6 +618,8 @@ def project_batter_tb(pid: int, line: float, order: Optional[int] = None) -> Tup
     line_int = int(math.ceil(line))
     p_over = poisson_p_at_least(expected_tb, line_int)
     return p_over, {
+        "xstat_proj": round(xstat_proj, 3) if xstat_proj is not None else None,
+        "season_proj": round(season_proj, 3),
         "model_version": model_version,
         "pa": pa, "tb_season": int(tb),
         "season_slg": round(season_slg, 3), "xslg": xslg, "blended_slg": round(blended_slg, 3),
