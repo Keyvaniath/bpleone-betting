@@ -80,10 +80,8 @@
     </div>
   </section>
 
-  <!-- DraftKings Odds API status banner (hidden by default; JS unhides when book=null) -->
-  <section id="apiDownBanner" style="display:none; margin: 0 0 18px 0; padding: 12px 16px; border-radius: 8px; background: rgba(227,90,90,0.08); border: 1px solid rgba(227,90,90,0.45); font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #e35a5a;">
-    <strong>⚠ DraftKings odds feed is down (Odds API 401).</strong> Every game below is showing the model's <em>fair price</em> against a placeholder &minus;110, not against a real book. <strong>Edges shown today are not real edges</strong> &mdash; they're the gap between the model and a reference price. The real book lines (and real edges) come back as soon as the Odds API quota / paid tier is restored.
-  </section>
+  <!-- Odds-source status banner (JS sets color + copy based on actual book in today.json) -->
+  <section id="apiDownBanner" style="display:none; margin: 0 0 18px 0; padding: 12px 16px; border-radius: 8px; font-family: 'JetBrains Mono', monospace; font-size: 13px;"></section>
 
   <!-- KEY METRICS STRIP -->
   <section class="metric-strip">
@@ -399,12 +397,22 @@ fetch("data/today.json", { cache: "no-cache" })
     m("mKelly", isPreCal ? "<= 0.5u" : rawKelly.toFixed(1) + "u");
     m("lastRefresh", (d.generated_at || "").replace("T", " ") + " UTC");
 
-    // Show the "Odds API down" banner if NO game has a real book attached.
-    // game.market.book is the DraftKings tag when the odds fetch succeeds.
-    const anyRealBook = games.some(g => g.market && g.market.book);
-    if (!anyRealBook && games.length > 0) {
-      const banner = document.getElementById("apiDownBanner");
-      if (banner) banner.style.display = "block";
+    // Source-aware banner: detect which book the pipeline used today.
+    // - 'draftkings' (or anything not in fallback list) -> hide banner
+    // - 'bovada' -> amber "primary feed down, Bovada fallback in use" banner
+    // - null on every game -> red "no real lines" banner
+    const banner = document.getElementById("apiDownBanner");
+    if (banner && games.length > 0) {
+      const books = new Set(games.map(g => g.market?.book).filter(Boolean));
+      const allBovada = books.size === 1 && books.has("bovada");
+      const anyReal = books.size > 0;
+      if (!anyReal) {
+        banner.style.cssText += ";display:block; background: rgba(227,90,90,0.08); border: 1px solid rgba(227,90,90,0.45); color: #e35a5a;";
+        banner.innerHTML = `<strong>&#9888; No real odds today.</strong> Every game below is showing the model's <em>fair price</em> against a placeholder &minus;110. Edges are model-vs-reference, not real book edges. Restores when the Odds API quota / paid tier is back OR the Bovada fallback fetches successfully.`;
+      } else if (allBovada) {
+        banner.style.cssText += ";display:block; background: rgba(212,160,74,0.08); border: 1px solid rgba(212,160,74,0.45); color: #d4a04a;";
+        banner.innerHTML = `<strong>&#9888; DK primary feed unavailable</strong> &mdash; using <strong>Bovada</strong> public lines as fallback. Bovada is market-efficient (within ~2-3 cents of DK on liquid markets), so the edges below are real edges against a real book. Restoring the Odds API paid tier would re-enable DK-canonical pricing, but the loop keeps learning either way.`;
+      }
     }
   })
   .catch(err => console.error("today.json load failed:", err));
