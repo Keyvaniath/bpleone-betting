@@ -102,6 +102,15 @@ jobs:
         working-directory: python
         run: python daily_summary.py
 
+      # Push to Discord / Slack if webhook URLs are configured as repo secrets.
+      - name: Notify channels (Discord / Slack)
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        working-directory: python
+        run: python notify.py
+
       - name: Commit + push if data changed
         run: |
           git config user.name  "edgestat-bot"

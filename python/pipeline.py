@@ -55,8 +55,33 @@ PARK_FACTORS = {
     "Fenway Park": 1.05, "Citizens Bank Park": 1.06, "Truist Park": 1.02,
     "Coors Field": 1.20, "Wrigley Field": 1.00, "Citi Field": 0.95,
     "Oracle Park": 0.89, "Globe Life Field": 1.04, "Minute Maid Park": 1.01,
-    "Tropicana Field": 0.93, "Rogers Centre": 1.03, "Great American Ball Park": 1.12,
-    "Busch Stadium": 0.98, "Chase Field": 1.02, "Nationals Park": 0.99,
+    "Daikin Park": 1.01, "Tropicana Field": 0.93, "Rogers Centre": 1.03,
+    "Great American Ball Park": 1.12, "Busch Stadium": 0.98, "Chase Field": 1.02,
+    "Nationals Park": 0.99, "Oriole Park at Camden Yards": 1.04,
+    "Comerica Park": 0.97, "Progressive Field": 0.99,
+    "American Family Field": 1.04, "Target Field": 1.00,
+    "Kauffman Stadium": 0.98, "Angel Stadium": 1.00,
+    "Oakland Coliseum": 0.93, "Sutter Health Park": 1.05,
+    "T-Mobile Park": 0.92, "Rate Field": 1.03, "loanDepot park": 0.94,
+    "PNC Park": 0.95, "UNIQLO Field at Dodger Stadium": 0.96,
+}
+
+# Park HR factor split by batter handedness. Multiplier on overall park factor.
+# Yankee Stadium's RF short porch favors LHB; Fenway's Green Monster favors RHB.
+# 1.00 = no platoon effect; >1 favors hitters of this hand.
+PARK_HANDEDNESS = {
+    "Yankee Stadium":       {"L": 1.12, "R": 0.98},   # short RF porch -> LHB HRs
+    "Fenway Park":          {"L": 0.96, "R": 1.10},   # Green Monster -> RHB doubles/HRs
+    "Citizens Bank Park":   {"L": 1.08, "R": 1.02},   # short RF
+    "Citi Field":           {"L": 0.95, "R": 0.97},   # both suppress
+    "Oracle Park":          {"L": 0.82, "R": 0.95},   # Triples Alley kills LHB HRs
+    "Coors Field":          {"L": 1.18, "R": 1.20},   # thin air for all
+    "Great American Ball Park": {"L": 1.14, "R": 1.10},  # tiny park
+    "Tropicana Field":      {"L": 0.94, "R": 0.93},
+    "Petco Park":           {"L": 0.90, "R": 0.92},   # pitcher's park
+    "Dodger Stadium":       {"L": 0.97, "R": 0.95},
+    "UNIQLO Field at Dodger Stadium": {"L": 0.97, "R": 0.95},
+    "T-Mobile Park":        {"L": 0.91, "R": 0.93},   # marine air
 }
 
 

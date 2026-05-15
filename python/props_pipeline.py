@@ -369,7 +369,8 @@ def _ab_per_pa(s: Dict[str, Any]) -> float:
 
 def project_batter_hr(pid: int, line: float, order: Optional[int] = None,
                        carry_index: Optional[float] = None,
-                       park_factor: Optional[float] = None) -> Tuple[float, Dict[str, Any]]:
+                       park_factor: Optional[float] = None,
+                       park_hand_mult: Optional[float] = None) -> Tuple[float, Dict[str, Any]]:
     """P(HR >= ceil(line)). v2: barrel% as primary signal; barrels convert to HR ~50%.
 
     Adjusts for park factor + wind carry when known.
@@ -392,12 +393,14 @@ def project_batter_hr(pid: int, line: float, order: Optional[int] = None,
         bbe_g = ab_g * (1.0 - k_pct / 100.0)
     else:
         bbe_g = ab_g * 0.75
-    # Park + wind multiplier for HR rate (carry_index in [-1, +1]).
+    # Park + wind + handedness multiplier for HR rate.
     env_mult = 1.0
     if park_factor is not None:
         env_mult *= park_factor
     if carry_index is not None:
         env_mult *= 1.0 + 0.15 * carry_index   # +/- 15% from wind direction
+    if park_hand_mult is not None:
+        env_mult *= park_hand_mult             # park-handedness platoon factor
 
     if barrel_pct is not None and barrel_pct > 0:
         # Barrels -> HR conversion is ~50% league-wide.
@@ -663,10 +666,12 @@ def build_props(markets: Optional[List[str]] = None, max_games: int = MAX_GAMES)
                     venue = (g.get("venue") or {}).get("name")
                     break
         try:
-            from pipeline import PARK_FACTORS
+            from pipeline import PARK_FACTORS, PARK_HANDEDNESS
             park_factor = PARK_FACTORS.get(venue, 1.00) if venue else 1.00
+            park_hand_dict = PARK_HANDEDNESS.get(venue, {}) if venue else {}
         except Exception:
             park_factor = 1.00
+            park_hand_dict = {}
         try:
             from weather import get_weather
             wx = get_weather(venue or "") if venue else {}
@@ -720,9 +725,20 @@ def build_props(markets: Optional[List[str]] = None, max_games: int = MAX_GAMES)
                 if market_key == "pitcher_strikeouts":
                     p_over, dbg = project_pitcher_ks(pid, line, opp_team_id, umpire_k_mult)
                 elif market_key == "batter_home_runs":
+                    # Look up batter handedness for park-handedness adjustment
+                    batter_hand = None
+                    park_hand_mult = None
+                    if pid and park_hand_dict:
+                        try:
+                            batter_hand = sr.pitcher_hand(pid)  # function works for any player
+                        except Exception:
+                            pass
+                        if batter_hand in ("L", "R"):
+                            park_hand_mult = park_hand_dict.get(batter_hand)
                     p_over, dbg = project_batter_hr(pid, line, batter_order,
                                                     carry_index=carry_index,
-                                                    park_factor=park_factor)
+                                                    park_factor=park_factor,
+                                                    park_hand_mult=park_hand_mult)
                 elif market_key == "batter_hits":
                     p_over, dbg = project_batter_hits(pid, line, batter_order)
                 elif market_key == "batter_total_bases":
