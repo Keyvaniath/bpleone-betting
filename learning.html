@@ -66,6 +66,11 @@
     <div id="loopStatus" style="padding:14px; font-family:'JetBrains Mono',monospace; font-size:12px; line-height:1.7;">Loading...</div>
   </section>
 
+  <section id="perfTrendCard" class="card" style="margin-bottom:24px; display:none;">
+    <div class="card-head"><span>Performance Trend (Daily)</span><span class="muted" id="perfTrendRefresh"></span></div>
+    <div id="perfTrendBody" style="padding:14px;"></div>
+  </section>
+
   <section class="card" style="margin-bottom:24px;">
     <div class="card-head"><span>Calibration by Market</span><span class="muted" id="calRefreshed"></span></div>
     <div class="market-row head">
@@ -301,6 +306,42 @@ Promise.all([
   renderGameOverall(cal);
   renderRecent(tr);
 });
+
+// Performance-over-time panel
+fetch("data/perf_trend.json", { cache: "no-cache" })
+  .then(r => r.json())
+  .then(p => {
+    const card = document.getElementById("perfTrendCard");
+    const body = document.getElementById("perfTrendBody");
+    const ref = document.getElementById("perfTrendRefresh");
+    if (!card || !body) return;
+    if (!(p.by_date || []).length) return;
+    card.style.display = "block";
+    if (ref) ref.textContent = `refreshed ${(p.generated_at || "").replace("T", " ")} UTC`;
+    const rows = (p.by_date || []).slice(-30).map(d => `
+      <div style="display:grid; grid-template-columns: 100px 80px 80px 90px 90px 90px; gap:14px; padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.04); font-family:'JetBrains Mono',monospace; font-size:12px;">
+        <span>${d.date}</span>
+        <span>${d.n}</span>
+        <span>${d.graded || 0}</span>
+        <span>${d.hit_rate != null ? (d.hit_rate * 100).toFixed(1) + "%" : "--"}</span>
+        <span>${d.brier ?? "--"}</span>
+        <span>${d.mae_residual ?? "--"}</span>
+      </div>
+    `).join("");
+    const t = p.trends || {};
+    const trendsRow = t.days_used
+      ? `<p class="muted" style="font-family:'JetBrains Mono',monospace; font-size:11px; margin: 14px 0 0 0;">
+          Over ${t.days_used} days &middot; Brier slope ${t.brier_slope?.toFixed?.(4) ?? "--"} (negative = improving) &middot; MAE slope ${t.mae_slope?.toFixed?.(4) ?? "--"} (negative = sharper)
+        </p>`
+      : `<p class="muted" style="font-size:11px; margin: 14px 0 0 0;">${t.note || ""}</p>`;
+    body.innerHTML = `
+      <div style="display:grid; grid-template-columns: 100px 80px 80px 90px 90px 90px; gap:14px; padding:6px 0; color:var(--muted,#888); font-size:10px; text-transform:uppercase;">
+        <span>Date</span><span>n</span><span>graded</span><span>hit %</span><span>Brier</span><span>MAE</span>
+      </div>
+      ${rows}
+      ${trendsRow}`;
+  })
+  .catch(() => {});
 </script>
 
 </body>
