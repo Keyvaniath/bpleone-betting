@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Residuals | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .market-block { padding: 18px 20px; margin-bottom: 18px; }
+  .market-head { display:flex; justify-content:space-between; align-items:baseline; margin-bottom:12px; }
+  .market-head h2 { margin:0; font-size:18px; }
+  .market-head .pill { padding: 3px 10px; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 11px; }
+  .pill-shrink { background: rgba(227,90,90,0.12); color: #e35a5a; border: 1px solid rgba(227,90,90,0.3); }
+  .pill-boost  { background: rgba(88,200,120,0.12); color: #58c878; border: 1px solid rgba(88,200,120,0.3); }
+  .pill-ok     { background: rgba(212,160,74,0.10); color: #d4a04a; border: 1px solid rgba(212,160,74,0.3); }
+  .stats-row { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; padding: 10px 0; font-family: 'JetBrains Mono', monospace; font-size: 12px; }
+  .stats-row .label { color: var(--muted, #888); font-size: 10px; text-transform: uppercase; }
+  .stats-row .val { font-size: 18px; font-weight: 600; color: var(--text, #ddd); }
+  .hist-wrap { margin: 14px 0 8px 0; }
+  .hist-axis { display: flex; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--muted, #888); margin-top: 4px; }
+  .hist-bars { display: flex; gap: 2px; align-items: end; height: 80px; background: rgba(255,255,255,0.02); padding: 4px; border-radius: 4px; }
+  .hist-bar { flex: 1; background: rgba(88,200,120,0.4); border-radius: 2px 2px 0 0; min-height: 1px; transition: background 0.2s; }
+  .hist-bar.over { background: rgba(227,90,90,0.4); }
+  .hist-bar:hover { background: rgba(88,200,120,0.7); }
+  .hist-zero-line { position: relative; height: 0; border-top: 1px dashed rgba(212,160,74,0.5); margin-top: -41px; pointer-events: none; }
+  .miss-row { display: grid; grid-template-columns: 80px 1fr 80px 80px 80px 80px; gap: 12px; font-family: 'JetBrains Mono', monospace; font-size: 12px; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+  .miss-row .negative { color: #e35a5a; }
+  .miss-row .positive { color: #58c878; }
+  .miss-head { color: var(--muted, #888); font-size: 10px; text-transform: uppercase; }
+  .empty { color: var(--muted, #888); font-style: italic; padding: 20px; text-align: center; }
+  .player-row { display: grid; grid-template-columns: 200px 180px 60px 100px 100px auto; gap: 12px; align-items: center; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.04); font-family: 'JetBrains Mono', monospace; font-size: 12px; }
+  .player-row .name { font-family: inherit; color: var(--text, #ddd); font-weight: 600; }
+</style>
+</head>
+<body class="page-residuals">
+<header class="topbar">
+  <div class="brand">
+    <a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a>
+    <span class="tagline">by bpleone</span>
+  </div>
+  <nav class="mainnav">
+    <a href="index.html">Dashboard</a>
+    <a href="play-of-day.html">Play of the Day</a>
+    <a href="mlb.html">MLB</a>
+    <a href="research.html">Research</a>
+    <a href="matchups.html">Best Matchups</a>
+    <a href="parlays.html">Parlays</a>
+    <a href="pickem.html">Pick-Em</a>
+    <a href="brief.html">Brief</a>
+    <a href="learning.html">Learning</a>
+    <a href="residuals.html" class="active">Residuals</a>
+    <a href="audit.html">Audit</a>
+    <a href="models.html">Models</a>
+    <a href="ml-lab.html">ML Lab</a>
+    <a href="live.html">Live</a>
+    <a href="sim.html">Sim</a>
+    <a href="backtest.html">Backtest</a>
+    <a href="linemaker.html">Linemaker</a>
+    <a href="arbitrage.html">Arb</a>
+    <a href="bankroll.html">Bankroll</a>
+    <a href="props.html">Props</a>
+    <a href="learn.html">Learn</a>
+  </nav>
+  <div class="topbar-actions"><div class="ticker" id="liveTicker">LIVE</div></div>
+</header>
+
+<main class="container">
+
+  <section class="page-head">
+    <h1>Model Residuals</h1>
+    <p>Calibration gives you one bias number per market. Residuals (actual &minus; predicted) tell you <em>where</em> the model is systematically wrong. Mean residual &lt; 0 means the model is over-predicting; &gt; 0 means under-predicting. The histogram shows how the misses are distributed; the worst-misses table shows which exact plays broke the model.</p>
+    <p class="muted" style="font-size:12px; margin-top:6px;">Refreshed every morning by <code>python/residuals.py</code> after outcomes settle. Trailing 30-day window. See also <a href="learning.html" style="color:#58c878;">Self-Learning</a> for the bias correction that actually fires on tomorrow's projections.</p>
+  </section>
+
+  <section id="overallStrip" style="margin-bottom: 18px;"></section>
+
+  <div id="marketBlocks"><p class="empty">Loading residuals...</p></div>
+
+  <section class="card" style="margin-top: 24px;">
+    <div class="card-head"><span>Per-Player Systematic Patterns</span><span class="muted" id="playerCount"></span></div>
+    <div class="player-row miss-head">
+      <span>Player</span><span>Market</span><span>n</span><span>Mean residual</span><span>MAE</span><span>Suggested action</span>
+    </div>
+    <div id="playerList"><p class="empty">Loading player patterns...</p></div>
+  </section>
+
+</main>
+
+<script>
+function pillCls(s) {
+  if (s === "shrink") return "pill-shrink";
+  if (s === "boost") return "pill-boost";
+  return "pill-ok";
+}
+
+function renderHistogram(hist) {
+  if (!hist || !hist.counts || !hist.counts.length) return "<p class='empty'>Not enough samples for histogram</p>";
+  const maxCount = Math.max(...hist.counts);
+  const bars = hist.counts.map((c, i) => {
+    const lo = hist.edges[i];
+    const hi = hist.edges[i + 1];
+    const center = (lo + hi) / 2;
+    const overSide = center < 0; // negative residual = model over-predicted
+    const heightPct = maxCount > 0 ? (c / maxCount) * 100 : 0;
+    return `<div class="hist-bar ${overSide ? 'over' : ''}" style="height:${heightPct}%;" title="bin ${lo} to ${hi}: ${c} obs"></div>`;
+  }).join("");
+  return `
+    <div class="hist-wrap">
+      <div class="hist-bars">${bars}</div>
+      <div class="hist-zero-line"></div>
+      <div class="hist-axis">
+        <span>${hist.edges[0]}</span>
+        <span>0 (perfect)</span>
+        <span>${hist.edges[hist.edges.length - 1]}</span>
+      </div>
+    </div>`;
+}
+
+function renderMarketBlock(mk, s) {
+  const dir = s.direction || "";
+  let pillClass = "pill-ok";
+  if (dir.includes("OVER")) pillClass = "pill-shrink";
+  if (dir.includes("UNDER")) pillClass = "pill-boost";
+  const worst = (s.worst_misses || []).slice(0, 5);
+  const worstRows = worst.map(w => {
+    const cls = (w.residual || 0) < 0 ? "negative" : "positive";
+    return `<div class="miss-row">
+      <span>${w.date || ""}</span>
+      <span>${w.player || "?"}</span>
+      <span>${w.line ?? "?"}</span>
+      <span>${w.projection ?? "?"}</span>
+      <span>${w.actual ?? "?"}</span>
+      <span class="${cls}">${w.residual >= 0 ? "+" : ""}${w.residual}</span>
+    </div>`;
+  }).join("");
+  const bands = s.by_projection_band || {};
+  const bandRows = Object.entries(bands).map(([k, v]) =>
+    `<span title="n=${v.n}, MAE=${v.mae}">${k}: <strong>${v.mean_residual >= 0 ? "+" : ""}${v.mean_residual}</strong></span>`
+  ).join(" · ");
+  return `
+    <div class="card market-block">
+      <div class="market-head">
+        <h2>${mk.replace(/_/g, " ")}</h2>
+        <span class="pill ${pillClass}">${dir}</span>
+      </div>
+      <div class="stats-row">
+        <div><div class="label">n</div><div class="val">${s.n}</div></div>
+        <div><div class="label">mean</div><div class="val">${s.mean_residual >= 0 ? "+" : ""}${s.mean_residual}</div></div>
+        <div><div class="label">median</div><div class="val">${s.median_residual >= 0 ? "+" : ""}${s.median_residual}</div></div>
+        <div><div class="label">MAE</div><div class="val">${s.mae}</div></div>
+        <div><div class="label">RMSE</div><div class="val">${s.rmse}</div></div>
+        <div><div class="label">std</div><div class="val">${s.std_residual}</div></div>
+      </div>
+      ${renderHistogram(s.histogram)}
+      ${bandRows ? `<div class="muted" style="font-family:'JetBrains Mono',monospace; font-size:11px; margin: 12px 0 8px;">By projection band: ${bandRows}</div>` : ""}
+      ${worstRows ? `
+        <div class="miss-head" style="margin-top: 14px;">Worst misses (top 5 by |residual|)</div>
+        <div class="miss-row miss-head">
+          <span>Date</span><span>Player</span><span>Line</span><span>Proj</span><span>Actual</span><span>Residual</span>
+        </div>
+        ${worstRows}` : ""}
+    </div>`;
+}
+
+function renderOverall(p) {
+  const el = document.getElementById("overallStrip");
+  if (!el) return;
+  el.innerHTML = `
+    <div class="card" style="padding: 14px 18px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; gap:18px; flex-wrap:wrap;">
+        <span style="font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--text-2,#aaa);">
+          <strong>${p.total_props_analyzed || 0}</strong> props analyzed over the trailing <strong>${p.lookback_days}</strong> days
+          across <strong>${Object.keys(p.markets || {}).length}</strong> market(s).
+          ${(p.player_systematic || []).length} per-player patterns with n &geq; ${p.min_player_n}.
+        </span>
+        <span class="muted" style="font-size:11px;">refreshed ${(p.generated_at || "").replace("T", " ")} UTC</span>
+      </div>
+    </div>`;
+}
+
+function renderPlayers(rows) {
+  const list = document.getElementById("playerList");
+  const cnt = document.getElementById("playerCount");
+  if (cnt) cnt.textContent = `${rows.length} pattern${rows.length === 1 ? "" : "s"}`;
+  if (!rows.length) {
+    list.innerHTML = `<p class="empty">No players have settled enough plays yet to flag a systematic pattern. Patterns surface once a player has 2+ settled records.</p>`;
+    return;
+  }
+  list.innerHTML = rows.map(r => {
+    const cls = pillCls(r.suggests);
+    return `<div class="player-row">
+      <span class="name">${r.player}</span>
+      <span>${(r.market || "").replace(/_/g, " ")}</span>
+      <span>${r.n}</span>
+      <span class="${r.mean_residual < 0 ? "negative" : r.mean_residual > 0 ? "positive" : ""}">${r.mean_residual >= 0 ? "+" : ""}${r.mean_residual}</span>
+      <span>${r.mae}</span>
+      <span class="pill ${cls}">${r.suggests}</span>
+    </div>`;
+  }).join("");
+}
+
+fetch("data/residuals.json", { cache: "no-cache" })
+  .then(r => r.json())
+  .then(p => {
+    renderOverall(p);
+    const markets = p.markets || {};
+    const keys = Object.keys(markets);
+    const blocks = document.getElementById("marketBlocks");
+    if (!keys.length) {
+      blocks.innerHTML = `<p class="empty">No settled records yet. Residuals populate once outcomes.py settles tonight's games tomorrow morning.</p>`;
+      return;
+    }
+    blocks.innerHTML = keys.map(k => renderMarketBlock(k, markets[k])).join("");
+    renderPlayers(p.player_systematic || []);
+  })
+  .catch(err => {
+    document.getElementById("marketBlocks").innerHTML =
+      `<p class="empty">residuals.json not loaded yet -- the daily pipeline writes this after outcomes settle.</p>`;
+    console.error(err);
+  });
+</script>
+
+</body>
+</html>
