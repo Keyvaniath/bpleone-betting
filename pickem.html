@@ -177,19 +177,52 @@ function renderList() {
       ? `<span class="${p.pp_advantage ? 'softer' : ''}">${p.delta >= 0 ? "+" : ""}${p.delta}</span>`
       : "--";
     const favorCell = p.pp_softer_for ? `<span class="softer">${p.pp_softer_for}</span>` : "--";
-    return `<div class="pp-row">
-      <span class="name">${p.player}</span>
-      <span>${MARKET_LABEL[p.market] || p.market}</span>
-      <span class="muted">${p.stat_type}</span>
-      <span class="pp-line">${p.pp_line}</span>
-      <span class="dk-line">${dkCell}</span>
-      <span>${deltaCell}</span>
-      <span>${favorCell}</span>
-      <span>${probBar(bestProb)} <span style="font-size:10px; color:#888;">${bestSide}</span></span>
-      <span>${qualifies(p)}</span>
+    const ratKey = `${p.player_id}_${p.market}_${p.pp_line}`;
+    return `<div>
+      <div class="pp-row" data-rat-key="${ratKey}" style="cursor:pointer;" onclick="toggleRationale('${ratKey}', this)">
+        <span class="name">${p.player}</span>
+        <span>${MARKET_LABEL[p.market] || p.market}</span>
+        <span class="muted">${p.stat_type}</span>
+        <span class="pp-line">${p.pp_line}</span>
+        <span class="dk-line">${dkCell}</span>
+        <span>${deltaCell}</span>
+        <span>${favorCell}</span>
+        <span>${probBar(bestProb)} <span style="font-size:10px; color:#888;">${bestSide}</span></span>
+        <span>${qualifies(p)}</span>
+      </div>
+      <div class="rat-panel" data-rat-panel="${ratKey}" style="display:none; padding: 10px 16px; background: rgba(255,255,255,0.02); border-left: 2px solid var(--accent); font-size: 12px; line-height: 1.6;"></div>
     </div>`;
   }).join("");
 }
+
+// Lazy-load rationales.json once; cache it for click handlers.
+let RATIONALES = null;
+function loadRationalesOnce() {
+  if (RATIONALES !== null) return Promise.resolve(RATIONALES);
+  return fetch("data/rationales.json", { cache: "no-cache" })
+    .then(r => r.json())
+    .then(p => { RATIONALES = p.by_key || {}; return RATIONALES; })
+    .catch(() => { RATIONALES = {}; return {}; });
+}
+window.toggleRationale = function(key, rowEl) {
+  const panel = document.querySelector(`[data-rat-panel="${key}"]`);
+  if (!panel) return;
+  if (panel.style.display === "block") { panel.style.display = "none"; return; }
+  loadRationalesOnce().then(rat => {
+    const r = rat[key];
+    if (!r) {
+      panel.innerHTML = `<span class="muted">No rationale generated yet for this prop. The daily pipeline writes rationales for the top 300 props by edge + top 200 PrizePicks props by confidence.</span>`;
+    } else {
+      const drivers = (r.drivers || []).map(d => `<li style="color: var(--text);">+ ${d}</li>`).join("");
+      const caveats = (r.caveats || []).map(c => `<li style="color: #d4a04a;">! ${c}</li>`).join("");
+      panel.innerHTML = `
+        <div style="font-weight:600; margin-bottom: 6px; color: var(--accent);">${r.headline}</div>
+        <ul style="padding-left: 16px; margin: 4px 0; list-style: none;">${drivers}${caveats}</ul>
+        <div style="margin-top: 8px; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.06); font-family:'JetBrains Mono', monospace;"><strong>Bottom line:</strong> ${r.verdict}</div>`;
+    }
+    panel.style.display = "block";
+  });
+};
 
 // Sleeper status pill
 fetch("data/sleeper.json", { cache: "no-cache" })

@@ -202,7 +202,8 @@ function renderTable() {
                     pvl != null && pvl < 0 ? ' <span style="color:#e35a5a;">▼</span>' : '';
       projCell = `<strong>${mp.toFixed(2)}</strong>${arrow}<div class="muted" style="font-size:10px;">${pvl != null ? (pvl >= 0 ? "+" : "") + pvl.toFixed(2) : ""}</div>`;
     }
-    return `<tr>
+    const ratKey = `${r.player_id}_${r.market}_${r.line}`;
+    return `<tr style="cursor:pointer;" onclick="toggleRationaleRow('${ratKey}', this)">
       <td><strong>${r.player}</strong>${badge}${conf}</td>
       <td class="muted">${r.matchup}</td>
       <td>${MARKET_LABEL[r.market] || r.market}</td>
@@ -212,9 +213,44 @@ function renderTable() {
       <td>${modelPct}%</td>
       <td>${r.best_edge_pct == null ? "--" : (r.best_edge_pct >= 0 ? "+" : "") + r.best_edge_pct.toFixed(1) + "%"}${edgeMarker}</td>
       <td style="${sideStyle}; font-weight:600;">${r.play}</td>
+    </tr>
+    <tr class="rat-row" data-rat-row="${ratKey}" style="display:none;">
+      <td colspan="9" style="padding: 10px 16px; background: rgba(255,255,255,0.02); border-left: 2px solid var(--accent); font-size: 12px; line-height: 1.6;">
+        <div data-rat-content="${ratKey}"><span class="muted">Loading rationale...</span></div>
+      </td>
     </tr>`;
   }).join("");
 }
+
+let PROPS_RATIONALES = null;
+function loadPropsRationales() {
+  if (PROPS_RATIONALES !== null) return Promise.resolve(PROPS_RATIONALES);
+  return fetch("data/rationales.json", { cache: "no-cache" })
+    .then(r => r.json())
+    .then(p => { PROPS_RATIONALES = p.by_key || {}; return PROPS_RATIONALES; })
+    .catch(() => { PROPS_RATIONALES = {}; return {}; });
+}
+window.toggleRationaleRow = function(key, rowEl) {
+  const panelRow = document.querySelector(`[data-rat-row="${key}"]`);
+  if (!panelRow) return;
+  if (panelRow.style.display === "table-row") { panelRow.style.display = "none"; return; }
+  loadPropsRationales().then(rat => {
+    const r = rat[key];
+    const content = document.querySelector(`[data-rat-content="${key}"]`);
+    if (!content) return;
+    if (!r) {
+      content.innerHTML = `<span class="muted">No rationale generated for this prop. Daily pipeline materializes rationales for the top 300 props by edge.</span>`;
+    } else {
+      const drivers = (r.drivers || []).map(d => `<li style="color: var(--text);">+ ${d}</li>`).join("");
+      const caveats = (r.caveats || []).map(c => `<li style="color: #d4a04a;">! ${c}</li>`).join("");
+      content.innerHTML = `
+        <div style="font-weight:600; margin-bottom: 6px; color: var(--accent);">${r.headline}</div>
+        <ul style="padding-left: 16px; margin: 4px 0; list-style: none;">${drivers}${caveats}</ul>
+        <div style="margin-top: 8px; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.06); font-family:'JetBrains Mono', monospace;"><strong>Bottom line:</strong> ${r.verdict}</div>`;
+    }
+    panelRow.style.display = "table-row";
+  });
+};
 
 function bindFilters() {
   document.getElementById("filterMarket").addEventListener("change", e => { propsState.market = e.target.value; renderTable(); });
