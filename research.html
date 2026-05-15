@@ -211,6 +211,13 @@ function renderSummary(games) {
     <div class="pill">Pitcher-vs-team H2H starts: <strong>${h2h}</strong></div>`;
 }
 
+// Injury feed -- shared across all game cards
+let injuriesData = {};
+fetch("data/injuries_live.json", { cache: "no-cache" })
+  .then(r => r.json())
+  .then(d => { injuriesData = d.teams || {}; })
+  .catch(() => {});
+
 fetch("data/matchups.json", { cache: "no-cache" })
   .then(r => r.json())
   .then(payload => {

@@ -80,6 +80,12 @@ jobs:
         working-directory: python
         run: python sleeper.py
 
+      # Daily injury tracker: 40-man roster IL pulls per team.
+      - name: Pull IL status (all 30 teams)
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        working-directory: python
+        run: python injury_tracker.py
+
       - name: Commit + push if data changed
         run: |
           git config user.name  "edgestat-bot"
