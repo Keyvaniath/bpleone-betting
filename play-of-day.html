@@ -314,14 +314,20 @@ fetch("data/today.json", { cache: "no-cache" })
       if (!stats[idx]) return;
       stats[idx].querySelector(".stat-label").textContent = label;
       const v = stats[idx].querySelector(".stat-value-big");
-      v.textContent = val;
+      // Use innerHTML so a small "(raw +X%)" parenthetical can render inline.
+      v.innerHTML = val;
       v.className = "stat-value-big" + (cls || "");
     };
     const mp = pod.market_price;
-    const isPreCal = (pod.edge_pct || 0) >= 15;
+    const rawEdge = Number(pod.edge_pct) || 0;
+    const isPreCal = rawEdge >= 15;
     setStat(0, "Market Price", mp >= 0 ? "+" + mp : String(mp));
     setStat(1, "Model Prob", (pod.model_prob * 100).toFixed(1) + "%");
-    setStat(2, "Edge", (pod.edge_pct >= 0 ? "+" : "") + Number(pod.edge_pct).toFixed(2) + "%", " positive");
+    // Cap headline edge in pre-cal so absurd +75% doesn't read as gospel.
+    const edgeStr = isPreCal
+      ? `+25%+ <span style="font-size:11px; opacity:0.6;">(raw +${rawEdge.toFixed(1)}%)</span>`
+      : (rawEdge >= 0 ? "+" : "") + rawEdge.toFixed(2) + "%";
+    setStat(2, "Edge", edgeStr, " positive");
     setStat(3, "Confidence", isPreCal ? "calibrating" : (pod.confidence || "--"));
     setStat(4, "Kelly (capped)", isPreCal ? "<= 0.5u" : Number(pod.kelly_units).toFixed(1) + "u");
     setStat(5, "Side", pod.label || "--");

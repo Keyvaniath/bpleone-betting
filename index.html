@@ -344,16 +344,24 @@ fetch("data/today.json", { cache: "no-cache" })
       if (!stats[idx]) return;
       stats[idx].querySelector(".stat-label").textContent = label;
       const v = stats[idx].querySelector(".stat-value-big");
-      v.textContent = val;
+      // Use innerHTML so we can render small parenthetical notes inline.
+      v.innerHTML = val;
       v.className = "stat-value-big" + (posClass || "");
     };
     setStat(0, "Market Price", pod.market_price >= 0 ? "+" + pod.market_price : String(pod.market_price));
     setStat(1, "Model Prob", (pod.model_prob * 100).toFixed(1) + "%");
-    setStat(2, "Edge", "+" + Number(pod.edge_pct).toFixed(2) + "%", " positive");
+    // Cap displayed edge in pre-calibration -- a raw +75% edge headline is
+    // misleading even though the underlying number is what the model spit out.
+    // Show "+25%+ (raw +75.7%)" so the real value is still visible on hover/in-text.
+    const rawEdge = Number(pod.edge_pct) || 0;
+    const isPreCal = rawEdge >= 15;
+    const edgeDisplay = isPreCal
+      ? `+25%+ <span style="font-size:11px; opacity:0.6;">(raw +${rawEdge.toFixed(1)}%)</span>`
+      : "+" + rawEdge.toFixed(2) + "%";
+    setStat(2, "Edge", edgeDisplay, " positive");
     setStat(3, "Confidence", pod.confidence || "--");
     // Cap displayed Kelly until calibration has ~30 settled records;
     // raw Kelly on a phantom +30%+ edge would be reckless.
-    const isPreCal = (pod.edge_pct || 0) >= 15;   // anything > +15% is suspect pre-calibration
     const displayKelly = isPreCal ? "<= 0.5u" : Number(pod.kelly_units).toFixed(1) + "u";
     setStat(4, "Kelly Stake", displayKelly);
     setStat(5, "Side", pod.label || "--");
@@ -493,21 +501,71 @@ fetch("data/top_plays.json", { cache: "no-cache" })
   .catch(err => console.error("top_plays load failed:", err));
 
 // Also pull live track-record metrics for the hero stat row.
+// Shows the REAL settled numbers — no mock placeholders. If a stat has
+// no settled outcomes yet, render "--" rather than a fake demo value.
 fetch("data/track_record.json", { cache: "no-cache" })
   .then(r => r.json())
   .then(tr => {
     const props = tr.props || [];
     const games = tr.games || [];
-    const allHits = [...props, ...games].filter(r => r.play_hit !== undefined ? r.play_hit !== null : r.over_hit !== null);
-    if (!allHits.length) return;
-    const won = allHits.filter(r => r.play_hit === true).length;
-    const total = allHits.filter(r => r.play_hit !== null).length;
+    const settled = [...props, ...games].filter(r =>
+      (r.play_hit !== undefined && r.play_hit !== null) ||
+      (r.over_hit !== undefined && r.over_hit !== null)
+    );
     const heroStats = document.querySelectorAll(".hero-stats .stat-value");
-    // Update if there's at least some real data; otherwise leave the static "+14.7u" placeholders.
-    if (heroStats[1] && total > 0) heroStats[1].innerHTML = `${(won / total * 100).toFixed(1)}<span class="unit">%</span>`;
+
+    // Helper: payout in units for a flat 1u stake at American odds `price`.
+    const payoutUnits = price => price >= 0 ? price / 100 : 100 / Math.abs(price);
+
+    // Compute real net units + ROI from settled props (assume 1u flat).
+    let netUnits = 0;
+    let total = settled.length;
+    let won = 0;
+    for (const r of settled) {
+      const hit = (r.play_hit === true) || (r.over_hit === true && r.play === "OVER") ||
+                  (r.over_hit === false && r.play === "UNDER");
+      if (hit) {
+        won++;
+        const price = r.play === "OVER" ? r.dk_over : r.play === "UNDER" ? r.dk_under : (r.market_price ?? -110);
+        netUnits += payoutUnits(price ?? -110);
+      } else {
+        netUnits -= 1;
+      }
+    }
+    const avgRoi = total > 0 ? (netUnits / total) * 100 : null;
+    const fmtSigned = (v, suffix = "") => v == null ? "--" : (v >= 0 ? "+" : "") + v.toFixed(1) + suffix;
+
+    // [0] YTD net units, [1] hit rate, [2] avg ROI, [3] closed plays
+    if (heroStats[0]) heroStats[0].innerHTML = total > 0
+      ? `${fmtSigned(netUnits)}<span class="unit">u</span>`
+      : `--<span class="unit">u</span>`;
+    if (heroStats[1]) heroStats[1].innerHTML = total > 0
+      ? `${(won / total * 100).toFixed(1)}<span class="unit">%</span>`
+      : `--<span class="unit">%</span>`;
+    if (heroStats[2]) heroStats[2].innerHTML = avgRoi != null
+      ? `${fmtSigned(avgRoi)}<span class="unit">%</span>`
+      : `--<span class="unit">%</span>`;
     if (heroStats[3]) heroStats[3].textContent = String(total);
+
+    // Tiny calibration progress note under the hero stats (only if pre-cal).
+    if (total > 0 && total < 30) {
+      const stats = document.querySelector(".hero-stats");
+      if (stats && !document.getElementById("calProgress")) {
+        const note = document.createElement("div");
+        note.id = "calProgress";
+        note.style.cssText = "grid-column: 1 / -1; font-family:'JetBrains Mono',monospace; font-size:11px; color:#d4a04a; padding:8px 0 0; opacity:0.9;";
+        note.innerHTML = `* model in calibration -- ${total}/30 settled outcomes before bias correction fires`;
+        stats.appendChild(note);
+      }
+    }
   })
-  .catch(() => {}); // No track record yet -- leave placeholders.
+  .catch(() => {
+    // No track record yet -- blank the placeholders so nothing pretends to be real.
+    document.querySelectorAll(".hero-stats .stat-value").forEach(el => {
+      const unit = el.querySelector(".unit")?.outerHTML || "";
+      el.innerHTML = `--${unit}`;
+    });
+  });
 </script>
 
 </body>
