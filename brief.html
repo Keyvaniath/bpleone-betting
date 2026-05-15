@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Brief | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .brief-doc { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+               max-width: 880px; margin: 0 auto; line-height: 1.6; color: var(--text, #ddd); }
+  .brief-doc h1 { font-size: 28px; margin-top: 0; }
+  .brief-doc h2 { font-size: 20px; margin-top: 32px; padding-bottom: 6px;
+                  border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .brief-doc h3 { font-size: 16px; }
+  .brief-doc table { width: 100%; border-collapse: collapse; margin: 14px 0;
+                     font-family: 'JetBrains Mono', monospace; font-size: 13px; }
+  .brief-doc th, .brief-doc td { padding: 8px 10px; border-bottom: 1px solid rgba(255,255,255,0.06); text-align: left; }
+  .brief-doc th { background: rgba(255,255,255,0.04); font-size: 11px;
+                  text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted, #888); }
+  .brief-doc blockquote { border-left: 3px solid #d4a04a; padding-left: 12px; margin: 14px 0;
+                          color: var(--text-2, #aaa); font-style: italic; }
+  .brief-doc ul, .brief-doc ol { padding-left: 20px; }
+  .brief-doc li { margin-bottom: 6px; }
+  .brief-doc code { background: rgba(255,255,255,0.06); padding: 1px 5px; border-radius: 3px;
+                    font-family: 'JetBrains Mono', monospace; font-size: 12px; }
+  .brief-doc strong { color: #58c878; }
+  .copy-btn { padding: 6px 14px; background: rgba(88,200,120,0.15); color: #58c878;
+              border: 1px solid #58c878; border-radius: 4px; cursor: pointer;
+              font-family: 'JetBrains Mono', monospace; font-size: 11px;
+              text-transform: uppercase; letter-spacing: 0.06em; }
+  .copy-btn:hover { background: rgba(88,200,120,0.25); }
+</style>
+</head>
+<body class="page-brief">
+<header class="topbar">
+  <div class="brand">
+    <a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a>
+    <span class="tagline">by bpleone</span>
+  </div>
+  <nav class="mainnav">
+    <a href="index.html">Dashboard</a>
+    <a href="play-of-day.html">Play of the Day</a>
+    <a href="mlb.html">MLB</a>
+    <a href="research.html">Research</a>
+    <a href="parlays.html">Parlays</a>
+    <a href="pickem.html">Pick-Em</a>
+    <a href="brief.html" class="active">Brief</a>
+    <a href="learning.html">Learning</a>
+    <a href="models.html">Models</a>
+    <a href="ml-lab.html">ML Lab</a>
+    <a href="live.html">Live</a>
+    <a href="simulator.html">Sim</a>
+    <a href="backtest.html">Backtest</a>
+    <a href="linemaker.html">Linemaker</a>
+    <a href="arbitrage.html">Arb</a>
+    <a href="bankroll.html">Bankroll</a>
+    <a href="props.html">Props</a>
+    <a href="learn.html">Learn</a>
+  </nav>
+  <div class="topbar-actions"><div class="ticker" id="liveTicker">LIVE</div></div>
+</header>
+
+<main class="container">
+
+  <section class="page-head">
+    <h1>Daily Brief</h1>
+    <p>Shareable markdown summary of today's slate, plays, pick-em opportunities, and self-learning loop status. Auto-generated at every cron refresh.</p>
+    <div style="margin-top:12px;">
+      <button class="copy-btn" id="copyBtn">Copy Markdown</button>
+      <a href="data/daily_summary.md" class="copy-btn" style="text-decoration:none; margin-left:8px;" download>Download .md</a>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="brief-doc" id="briefDoc">Loading brief...</div>
+  </section>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.0/marked.min.js"></script>
+<script>
+let rawMd = "";
+fetch("data/daily_summary.md", { cache: "no-cache" })
+  .then(r => r.text())
+  .then(md => {
+    rawMd = md;
+    document.getElementById("briefDoc").innerHTML = window.marked
+      ? window.marked.parse(md)
+      : md.replace(/\n/g, "<br>");
+  })
+  .catch(err => {
+    document.getElementById("briefDoc").innerHTML =
+      `<p>daily_summary.md not loaded yet -- the cron writes this after each refresh.</p>`;
+    console.error(err);
+  });
+
+document.getElementById("copyBtn").addEventListener("click", async () => {
+  if (!rawMd) return;
+  try {
+    await navigator.clipboard.writeText(rawMd);
+    const btn = document.getElementById("copyBtn");
+    const orig = btn.textContent;
+    btn.textContent = "Copied!";
+    setTimeout(() => { btn.textContent = orig; }, 1800);
+  } catch (e) {
+    alert("Clipboard write failed; use Download .md instead.");
+  }
+});
+</script>
+
+</body>
+</html>
