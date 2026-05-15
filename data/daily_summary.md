@@ -1,70 +1,83 @@
-# EdgeStat Daily Brief - 2026-05-14
+# EdgeStat Daily Brief - 2026-05-15
 
-_Generated at 2026-05-14T18:35:11 UTC. All game-line prices are from DraftKings. Pick-em opportunities from PrizePicks._
+_Generated at 2026-05-15T01:45:41 UTC. All game-line prices are from DraftKings. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
-**SFG @ LAD - LAD_ML**
-- Market: -186
-- Model probability: 74.4%
-- Raw edge: +14.32%
-- Recommended stake: 5.0u Kelly
+**SFG @ OAK - OAK_ML**
+- Market: -110
+- Model probability: 80.4%
+- Raw edge: +53.42%
+- Recommended stake: <= 0.5u (model calibrating)
 
-## Full Slate (1 games)
+> _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
+
+## Full Slate (15 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 10:10p ET | SFG @ LAD | UNIQLO Field at Dodger Stadium | 70F 0mph | LAD_ML +14.32% |
+| 6:40p ET | PHI @ PIT | PNC Park | 58F 6mph | PIT_ML +31.5% |
+| 6:45p ET | BAL @ WSN | Nationals Park | 61F 2mph | OVER_9.5 +38.75% |
+| 6:45p ET | TOR @ DET | Comerica Park | 59F 7mph | UNDER_8.0 +46.57% |
+| 7:10p ET | CIN @ CLE | Progressive Field | 58F 7mph | -- |
+| 7:10p ET | MIA @ TBR | Tropicana Field | indoor | UNDER_8.0 +22.2% |
+| 7:10p ET | MIL @ MIN | Target Field | 70F 0mph | UNDER_8.5 +30.01% |
+| 7:15p ET | BOS @ ATL | Truist Park | 70F 0mph | ATL_ML +42.06% |
+| 7:15p ET | NYY @ NYM | Citi Field | 70F 0mph | NYY_ML +47.81% |
+| 7:40p ET | CHC @ CHW | Rate Field | 70F 0mph | OVER_8.0 +22.6% |
+| 8:10p ET | TEX @ HOU | Daikin Park | indoor | HOU_ML +23.21% |
+| 8:15p ET | KCR @ STL | Busch Stadium | 59F 4mph | UNDER_8.5 +8.46% |
+| 8:40p ET | ARI @ COL | Coors Field | 74F 5mph | COL_ML +49.1% |
+| 9:38p ET | LAD @ LAA | Angel Stadium | 65F 3mph | LAD_ML +21.6% |
+| 9:40p ET | SDP @ SEA | T-Mobile Park | indoor | UNDER_7.5 +23.5% |
+| 9:40p ET | SFG @ OAK | Sutter Health Park | 67F 6mph | OAK_ML +53.42% |
 
-## PrizePicks - 27 lines softer than DraftKings
+## PrizePicks - 67 lines softer than DraftKings
 
 | Player | Market | PP line | DK line | Δ | Favor | Model % |
 |---|---|---|---|---|---|---|
 | Yordan Alvarez | Total Bases | 5.5 | 1.5 | +4.0 | UNDER | 96.4% |
+| Tyler O'Neill | Total Bases | 4.5 | 1.5 | +3.0 | UNDER | 99.7% |
+| Lourdes Gurriel Jr. | Total Bases | 4.5 | 1.5 | +3.0 | UNDER | 99.4% |
+| Ketel Marte | Total Bases | 5.5 | 2.5 | +3.0 | UNDER | 99.3% |
+| Geraldo Perdomo | Total Bases | 4.5 | 1.5 | +3.0 | UNDER | 99.3% |
+| James Wood | Total Bases | 4.5 | 1.5 | +3.0 | UNDER | 95.3% |
 | Aaron Judge | Total Bases | 4.5 | 1.5 | +3.0 | UNDER | 93.3% |
 | Ben Rice | Total Bases | 4.5 | 1.5 | +3.0 | UNDER | 93.1% |
 | Yordan Alvarez | Total Bases | 4.5 | 1.5 | +3.0 | UNDER | 90.4% |
-| Miguel Vargas | Total Bases | 3.5 | 1.5 | +2.0 | UNDER | 90.1% |
-| Andy Pages | Total Bases | 3.5 | 1.5 | +2.0 | UNDER | 87.4% |
-| Aaron Judge | Total Bases | 3.5 | 1.5 | +2.0 | UNDER | 83.0% |
-| Ben Rice | Total Bases | 3.5 | 1.5 | +2.0 | UNDER | 82.7% |
-| Yordan Alvarez | Total Bases | 3.5 | 1.5 | +2.0 | UNDER | 77.8% |
-| Yordan Alvarez | Total Bases | 0.5 | 1.5 | -1.0 | OVER | 91.0% |
-| Ben Rice | Total Bases | 0.5 | 1.5 | -1.0 | OVER | 88.5% |
-| Aaron Judge | Total Bases | 0.5 | 1.5 | -1.0 | OVER | 88.3% |
-| Tyler O'Neill | Hits | 1.5 | 0.5 | +1.0 | UNDER | 87.2% |
-| Andy Pages | Total Bases | 0.5 | 1.5 | -1.0 | OVER | 85.1% |
-| Munetaka Murakami | Hits | 1.5 | 0.5 | +1.0 | UNDER | 82.2% |
+| Ryan Waldschmidt | Total Bases | 4.5 | 1.5 | +3.0 | UNDER | 70.0% |
+| Zack Littell | Pitcher Strikeouts | 5.5 | 3.5 | +2.0 | UNDER | 98.7% |
+| Tyler O'Neill | Total Bases | 3.5 | 1.5 | +2.0 | UNDER | 98.5% |
+| Ketel Marte | Total Bases | 4.5 | 2.5 | +2.0 | UNDER | 97.4% |
+| Lourdes Gurriel Jr. | Total Bases | 3.5 | 1.5 | +2.0 | UNDER | 97.3% |
+| Geraldo Perdomo | Total Bases | 3.5 | 1.5 | +2.0 | UNDER | 96.8% |
 
 ## Parlays - top 5
 
-- **3-leg @ +356 (prob 32.8%, EV +49.74%)**
-  - MIL @ MIN MIN_ML (-110, model 58.0%)
-  - LAD @ LAA LAD_ML (-246, model 87.1%)
-  - SDP @ SEA SEA_ML (-143, model 65.0%)
-- **2-leg @ +169 (prob 55.7%, EV +49.62%)**
+- **2-leg @ +264 (prob 41.1%, EV +49.82%)**
   - MIA @ TBR UNDER_8.0 (-110, model 64.0%)
-  - LAD @ LAA LAD_ML (-246, model 87.1%)
-- **3-leg @ +519 (prob 24.1%, EV +49.46%)**
+  - CHC @ CHW OVER_8.0 (-110, model 64.2%)
+- **2-leg @ +167 (prob 56.2%, EV +49.82%)**
+  - TEX @ HOU HOU_ML (-110, model 64.5%)
+  - LAD @ LAA LAD_ML (-252, model 87.1%)
+- **2-leg @ +167 (prob 55.9%, EV +49.08%)**
+  - CHC @ CHW OVER_8.0 (-110, model 64.2%)
+  - LAD @ LAA LAD_ML (-252, model 87.1%)
+- **2-leg @ +167 (prob 55.7%, EV +48.59%)**
   - MIA @ TBR UNDER_8.0 (-110, model 64.0%)
-  - MIL @ MIN MIN_ML (-110, model 58.0%)
-  - SDP @ SEA SEA_ML (-143, model 65.0%)
-- **3-leg @ +676 (prob 19.2%, EV +49.02%)**
-  - TOR @ DET DET_ML (+113, model 52.2%)
-  - CHC @ CHW OVER_8.0 (-110, model 64.7%)
-  - KCR @ STL UNDER_8.5 (-110, model 56.8%)
-- **3-leg @ +676 (prob 19.2%, EV +48.92%)**
-  - TOR @ DET DET_ML (+113, model 52.2%)
-  - KCR @ STL UNDER_8.5 (-110, model 56.8%)
-  - SDP @ SEA UNDER_7.5 (-110, model 64.7%)
+  - LAD @ LAA LAD_ML (-252, model 87.1%)
+- **2-leg @ +282 (prob 37.2%, EV +42.21%)**
+  - Freddie Freeman OVER 1.5 batter_total_bases (+125, model 55.4%)
+  - BAL @ WSN BAL_ML (-143, model 67.2%)
 
 ## Self-Learning Loop
 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
-| batter hits | 16 | 31.2% | 54.8% | 1.753 | 1.000 |
-| batter total bases | 7 | 57.1% | 30.0% | 0.525 | 1.000 |
-| pitcher strikeouts | 1 | 0.0% | 32.1% | 1.000 | 1.000 |
+| batter hits | 1 | 0.0% | 27.0% | 1.000 | 1.000 |
+| batter total bases | 1 | 100.0% | 69.2% | 0.692 | 1.000 |
+
+Cumulative graded plays: 1. Wins: 1. Hit rate: 100.0%.
 
 ---
 
