@@ -138,6 +138,14 @@
     </div>
   </section>
 
+  <!-- TODAY'S TOP PLAYS (LIVE FROM data/top_plays.json) -->
+  <section class="card" style="margin-bottom: 28px;">
+    <div class="card-head"><span>Today's Top Plays - All Markets</span><span class="muted">DraftKings + PrizePicks + parlays, ranked by quality score</span></div>
+    <div id="topPlaysList" style="font-family:'JetBrains Mono',monospace; font-size:12px;">
+      <p class="muted" style="padding:14px;">Loading top plays...</p>
+    </div>
+  </section>
+
   <!-- ANALYTICS PANELS -->
   <section class="grid-3">
     <div class="card">
@@ -334,6 +342,55 @@ fetch("data/today.json", { cache: "no-cache" })
     m("lastRefresh", (d.generated_at || "").replace("T", " ") + " UTC");
   })
   .catch(err => console.error("today.json load failed:", err));
+
+// Top Plays loader -- ranked across all markets
+fetch("data/top_plays.json", { cache: "no-cache" })
+  .then(r => r.json())
+  .then(d => {
+    const list = document.getElementById("topPlaysList");
+    if (!list) return;
+    const plays = d.plays || [];
+    if (!plays.length) {
+      list.innerHTML = `<p class="muted" style="padding:14px;">No top plays meet the quality bar today.</p>`;
+      return;
+    }
+    const KIND_LABEL = {
+      game_line: "Game line", prop_dk: "DK prop",
+      prop_pp: "PP softer", parlay: "Parlay",
+    };
+    list.innerHTML = `<div style="display:grid; grid-template-columns: 100px 100px 1.8fr 1fr auto auto auto;
+                                  gap:10px; padding:8px 14px; background:rgba(255,255,255,0.04);
+                                  color:var(--muted,#888); font-size:11px; text-transform:uppercase; letter-spacing:0.04em;">
+      <span>Kind</span><span>Book</span><span>Target</span><span>Side / Line</span>
+      <span>Price</span><span>Model %</span><span>Edge</span>
+    </div>` +
+    plays.map(p => {
+      const target = p.player || p.matchup || "?";
+      const sideLine = p.kind === "prop_pp"
+        ? `${p.side || ""} PP ${p.pp_line} (DK ${p.dk_line ?? "--"})`
+        : p.kind === "parlay"
+          ? p.label
+          : `${p.side || p.label || ""} ${p.line ?? ""}`;
+      const price = p.market_price != null
+        ? (p.market_price >= 0 ? "+" + p.market_price : String(p.market_price))
+        : "--";
+      const edge = p.edge_pct != null
+        ? (p.edge_pct >= 0 ? "+" : "") + Number(p.edge_pct).toFixed(1) + "%"
+        : "--";
+      const precal = p.is_precal ? ' <span title="pre-calibration noise" style="color:#d4a04a;">⚠</span>' : '';
+      return `<div style="display:grid; grid-template-columns: 100px 100px 1.8fr 1fr auto auto auto;
+                          gap:10px; padding:8px 14px; border-bottom:1px solid rgba(255,255,255,0.04);">
+        <span style="color:var(--muted,#888);">${KIND_LABEL[p.kind] || p.kind}</span>
+        <span style="color:var(--muted,#888);">${p.book || ""}</span>
+        <span style="color:var(--text,#ddd);"><strong>${target}</strong>${p.market ? ` <span class="muted">${p.market.replace(/_/g,' ')}</span>` : ''}</span>
+        <span class="muted">${sideLine}</span>
+        <span>${price}</span>
+        <span style="color:#58c878;">${(p.model_prob*100).toFixed(1)}%</span>
+        <span>${edge}${precal}</span>
+      </div>`;
+    }).join("");
+  })
+  .catch(err => console.error("top_plays load failed:", err));
 
 // Also pull live track-record metrics for the hero stat row.
 fetch("data/track_record.json", { cache: "no-cache" })

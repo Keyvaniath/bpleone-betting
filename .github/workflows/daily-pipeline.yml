@@ -92,6 +92,11 @@ jobs:
         working-directory: python
         run: python clv.py
 
+      # Aggregate today's top plays across DraftKings, PrizePicks, and parlays.
+      - name: Aggregate Top Plays across all markets
+        working-directory: python
+        run: python top_plays.py
+
       # Generate the daily markdown brief from all of today's artifacts.
       - name: Generate daily summary brief
         working-directory: python
