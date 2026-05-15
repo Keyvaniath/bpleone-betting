@@ -389,10 +389,37 @@ fetch("data/today.json", { cache: "no-cache" })
     m("mGames", games.length);
     m("mEdges", edges.length);
     m("mPlusEV", edges.filter(r => (r.edge_pct || 0) >= 3).length);
-    m("mKelly", (pod.kelly_units || 0).toFixed(1) + "u");
+    // Cap Kelly stake in pre-cal so this tile matches the Play of the Day tile.
+    const rawKelly = Number(pod.kelly_units || 0);
+    m("mKelly", isPreCal ? "<= 0.5u" : rawKelly.toFixed(1) + "u");
     m("lastRefresh", (d.generated_at || "").replace("T", " ") + " UTC");
   })
   .catch(err => console.error("today.json load failed:", err));
+
+// Avg CLV tile -- pulls from data/clv_log.json so the metric strip
+// stops claiming a stale "+2.4%" CLV when the log has captured all-zeros.
+fetch("data/clv_log.json", { cache: "no-cache" })
+  .then(r => r.json())
+  .then(c => {
+    const recs = (c.records || []).filter(r => r.clv_pct != null);
+    const el = document.getElementById("mClv");
+    if (!el) return;
+    if (!recs.length) { el.textContent = "--"; return; }
+    const avg = recs.reduce((s, r) => s + Number(r.clv_pct), 0) / recs.length;
+    el.textContent = (avg >= 0 ? "+" : "") + avg.toFixed(2) + "%";
+  })
+  .catch(() => { const el = document.getElementById("mClv"); if (el) el.textContent = "--"; });
+
+// Sharp Money Alerts -- count any leg with a >=0.5% line-move snapshot.
+// Until we capture real line movement, show "--" instead of a fake "3".
+fetch("data/clv_log.json", { cache: "no-cache" })
+  .then(r => r.json())
+  .then(c => {
+    const recs = (c.records || []).filter(r => Math.abs(r.clv_pct || 0) >= 0.5);
+    const el = document.getElementById("mSharp");
+    if (el) el.textContent = recs.length ? String(recs.length) : "--";
+  })
+  .catch(() => { const el = document.getElementById("mSharp"); if (el) el.textContent = "--"; });
 
 // Edges-by-Type sortable panel (also loaded from top_plays.json -- richer view than the simple list above)
 let edgesState = { all: [], type: "", minProb: 0, playable: "", sort: "quality_score" };
