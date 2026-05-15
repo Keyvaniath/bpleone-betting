@@ -44,8 +44,14 @@ import stats_repo as sr
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 PROPS_PATH = os.path.join(DATA_DIR, "props.json")
 PICKEM_PATH = os.path.join(DATA_DIR, "pickem.json")
+TODAY_PATH = os.path.join(DATA_DIR, "today.json")
+INJURIES_PATH = os.path.join(DATA_DIR, "injuries_live.json")
 OUT_PATH = os.path.join(DATA_DIR, "rationales.json")
 CAL_PATH = os.path.join(DATA_DIR, "calibration_live.json")
+
+# Built once per run() call: { batter_team_code: {opp_pitcher_id, opp_team_id, venue, batter_pitcher_hand} }
+GAME_CTX: Dict[str, Dict[str, Any]] = {}
+INJURY_INDEX: Dict[int, Dict[str, Any]] = {}
 
 
 def _load(path: str) -> Dict[str, Any]:
@@ -104,6 +110,21 @@ def _drivers_for_pitcher_ks(pid: int, line: float, prob_over: Optional[float]) -
                 drivers.append(f"Last 3 starts: averaging {rec_k:.1f} Ks per start (below line {line})")
     except Exception:
         pass
+    # Pitcher platoon split: vs L / vs R
+    try:
+        splits = sr.pitcher_splits(pid) or {}
+        vsl = splits.get("vsL") or splits.get("vsLeft") or {}
+        vsr = splits.get("vsR") or splits.get("vsRight") or {}
+        if vsl.get("avg") or vsr.get("avg"):
+            l_avg = vsl.get("avg")
+            r_avg = vsr.get("avg")
+            if l_avg and r_avg:
+                drivers.append(f"Splits: vs L .{int(float(l_avg)*1000):03d} / vs R .{int(float(r_avg)*1000):03d} -- "
+                               + ("strong reverse split" if float(l_avg) < float(r_avg) - 0.030 else
+                                  "normal R-bias" if float(r_avg) < float(l_avg) - 0.030 else
+                                  "balanced"))
+    except Exception:
+        pass
     # Caveats
     if ip < 30:
         caveats.append(f"Only {ip:.1f} IP this season -- thin sample, projection has noise")
@@ -112,8 +133,86 @@ def _drivers_for_pitcher_ks(pid: int, line: float, prob_over: Optional[float]) -
     return {"drivers": drivers, "caveats": caveats}
 
 
+def _matchup_context(player: Dict[str, Any]) -> Dict[str, Any]:
+    """Look up the opp pitcher / venue / order for a batter prop via GAME_CTX.
+
+    GAME_CTX is keyed by team code (e.g., "PHI"). The player dict carries
+    `team` from Bovada (e.g., "PHI"). Returns {opp_pitcher_id, opp_pitcher_name,
+    venue, pitcher_hand} or {} if not found.
+    """
+    team = (player.get("team") or "").upper()
+    if not team or team not in GAME_CTX:
+        return {}
+    return GAME_CTX[team]
+
+
+def _drivers_for_matchup(bid: int, ctx: Dict[str, Any], market: str) -> List[str]:
+    """BvP H2H + arsenal-vs-batter signals -- the player-matchup drivers
+    that sharp prop bettors live on."""
+    drivers: List[str] = []
+    opp_pid = ctx.get("opp_pitcher_id")
+    opp_name = ctx.get("opp_pitcher_name")
+    if not opp_pid or not bid:
+        return drivers
+
+    # BvP career H2H
+    try:
+        h2h = sr.pitcher_vs_batter(opp_pid, bid) or {}
+        ab = h2h.get("ab", 0)
+        if ab >= 3:
+            avg = h2h.get("avg") or "?"
+            ops = h2h.get("ops") or "?"
+            hits = h2h.get("hits", 0)
+            hr = h2h.get("hr", 0)
+            so = h2h.get("so", 0)
+            line = f"Career vs {opp_name}: {hits}-for-{ab}"
+            if hr: line += f", {hr} HR"
+            if so >= 2: line += f", {so} K"
+            line += f" (.{avg.replace('0.','') if isinstance(avg, str) else int(avg*1000):03d} avg / .{ops.replace('0.','') if isinstance(ops, str) else int(ops*1000):03d} OPS)" if avg != "?" else ""
+            drivers.append(line)
+    except Exception:
+        pass
+
+    # Arsenal matchup (Statcast pitch-mix vs batter pitch-type strength)
+    if market in ("batter_hits", "batter_total_bases", "batter_home_runs",
+                   "batter_singles", "batter_doubles"):
+        try:
+            import statcast as sc
+            ars = sc.pitcher_arsenal(opp_pid)
+            bvp = sc.batter_vs_pitch(bid)
+            if ars and bvp:
+                mu = sc.matchup_xwoba(ars, bvp) or {}
+                w = mu.get("matchup_xwoba")
+                if w is not None:
+                    league = 0.320
+                    delta = w - league
+                    flav = ("ELITE matchup" if delta > 0.05 else
+                            "strong matchup" if delta > 0.02 else
+                            "neutral matchup" if abs(delta) <= 0.02 else
+                            "tough matchup" if delta > -0.05 else
+                            "BRUTAL matchup")
+                    drivers.append(
+                        f"Statcast arsenal matchup xwOBA {w:.3f} vs league .320 ({flav})"
+                    )
+                    # Surface the biggest pitch-type edge
+                    bkd = mu.get("breakdown") or []
+                    if bkd:
+                        # Pitch with highest batter xwOBA weighted by usage
+                        best = max(bkd, key=lambda r: (r.get("pitcher_usage_pct") or 0)
+                                   * ((r.get("batter_xwoba_vs") or 0) - league))
+                        if (best.get("pitcher_usage_pct") or 0) >= 10:
+                            pname = best.get("pitch_name") or best.get("pitch_type") or "primary pitch"
+                            drivers.append(
+                                f"Faces {pname} ({best.get('pitcher_usage_pct'):.0f}% of arsenal) -- batter slugs xwOBA {best.get('batter_xwoba_vs'):.3f} vs that pitch"
+                            )
+        except Exception:
+            pass
+
+    return drivers
+
+
 def _drivers_for_batter(pid: int, market: str, line: float, prob_over: Optional[float],
-                        season_field: str, label: str) -> Dict[str, Any]:
+                        player: Optional[Dict[str, Any]], season_field: str, label: str) -> Dict[str, Any]:
     drivers, caveats = [], []
     # Stats from people endpoint (uncached batter season)
     try:
@@ -147,6 +246,30 @@ def _drivers_for_batter(pid: int, market: str, line: float, prob_over: Optional[
             drivers.append(f"Barrel% {barrel:.1f}% -- {('elite' if barrel > 12 else 'above-avg' if barrel > 8 else 'avg')} contact quality")
     except Exception:
         pass
+
+    # Matchup drivers: BvP H2H + arsenal-vs-batter xwOBA + park
+    ctx = _matchup_context(player or {})
+    drivers.extend(_drivers_for_matchup(pid, ctx, market))
+    if ctx.get("park_factor") is not None and ctx["park_factor"] != 1.0:
+        pf = ctx["park_factor"]
+        if pf > 1.10:
+            drivers.append(f"Park: {ctx.get('venue','?')} (factor {pf:.2f}, hitter-friendly -- boosts {label})")
+        elif pf < 0.90:
+            drivers.append(f"Park: {ctx.get('venue','?')} (factor {pf:.2f}, pitcher-friendly -- suppresses {label})")
+        else:
+            drivers.append(f"Park: {ctx.get('venue','?')} (factor {pf:.2f}, neutral)")
+    # Lineup order
+    if ctx.get("batting_order"):
+        ord_ = ctx["batting_order"]
+        order_note = ("top-of-order -- more PAs expected" if ord_ <= 2
+                      else "middle of order -- RBI/run leverage" if ord_ <= 5
+                      else "bottom of order -- fewer PAs")
+        drivers.append(f"Batting #{ord_} ({order_note})")
+    # Injury awareness
+    inj = INJURY_INDEX.get(pid)
+    if inj:
+        caveats.append(f"INJURY: {inj.get('status', 'flagged')} -- {inj.get('description', 'see injuries page')}")
+
     return {"drivers": drivers, "caveats": caveats}
 
 
@@ -173,19 +296,19 @@ def build_rationale(p: Dict[str, Any], corrections: Dict[str, float]) -> Optiona
     if market == "pitcher_strikeouts":
         d = _drivers_for_pitcher_ks(pid, line, prob_over)
     elif market == "batter_hits":
-        d = _drivers_for_batter(pid, market, line, prob_over, "hits", "hits")
+        d = _drivers_for_batter(pid, market, line, prob_over, p, "hits", "hits")
     elif market == "batter_total_bases":
-        d = _drivers_for_batter(pid, market, line, prob_over, "totalBases", "total bases")
+        d = _drivers_for_batter(pid, market, line, prob_over, p, "totalBases", "total bases")
     elif market == "batter_home_runs":
-        d = _drivers_for_batter(pid, market, line, prob_over, "homeRuns", "HRs")
+        d = _drivers_for_batter(pid, market, line, prob_over, p, "homeRuns", "HRs")
     elif market == "batter_runs_scored":
-        d = _drivers_for_batter(pid, market, line, prob_over, "runs", "runs")
+        d = _drivers_for_batter(pid, market, line, prob_over, p, "runs", "runs")
     elif market == "batter_rbis":
-        d = _drivers_for_batter(pid, market, line, prob_over, "rbi", "RBIs")
+        d = _drivers_for_batter(pid, market, line, prob_over, p, "rbi", "RBIs")
     elif market == "batter_doubles":
-        d = _drivers_for_batter(pid, market, line, prob_over, "doubles", "doubles")
+        d = _drivers_for_batter(pid, market, line, prob_over, p, "doubles", "doubles")
     elif market == "batter_singles":
-        d = _drivers_for_batter(pid, market, line, prob_over, "hits", "singles")
+        d = _drivers_for_batter(pid, market, line, prob_over, p, "hits", "singles")
     else:
         d = {"drivers": [], "caveats": []}
 
@@ -220,7 +343,84 @@ def build_rationale(p: Dict[str, Any], corrections: Dict[str, float]) -> Optiona
     }
 
 
+def _build_game_ctx() -> Dict[str, Dict[str, Any]]:
+    """Pull today's MLB schedule with probable pitchers; build a
+    {team_code: {opp_pitcher_id, opp_pitcher_name, opp_team_id, venue,
+    park_factor}} index so each batter prop knows its matchup.
+
+    Hits MLB Stats API directly (cached schedule via stats_repo). today.json
+    strips pitcher IDs in the snapshot, so we can't read from there.
+    """
+    out: Dict[str, Dict[str, Any]] = {}
+    try:
+        from pipeline import PARK_FACTORS, TEAM_CODE
+    except Exception:
+        PARK_FACTORS, TEAM_CODE = {}, {}
+
+    import datetime as _dt
+    import requests
+    try:
+        sched = requests.get(
+            "https://statsapi.mlb.com/api/v1/schedule",
+            params={"sportId": 1, "date": _dt.date.today().isoformat(),
+                    "hydrate": "probablePitcher"},
+            timeout=10,
+        ).json()
+    except Exception:
+        return out
+
+    for date_block in sched.get("dates", []):
+        for g in date_block.get("games", []):
+            try:
+                home_name = g["teams"]["home"]["team"]["name"]
+                away_name = g["teams"]["away"]["team"]["name"]
+                home_code = TEAM_CODE.get(home_name, home_name[:3].upper())
+                away_code = TEAM_CODE.get(away_name, away_name[:3].upper())
+                home_pid = (g["teams"]["home"].get("probablePitcher") or {}).get("id")
+                home_pname = (g["teams"]["home"].get("probablePitcher") or {}).get("fullName")
+                away_pid = (g["teams"]["away"].get("probablePitcher") or {}).get("id")
+                away_pname = (g["teams"]["away"].get("probablePitcher") or {}).get("fullName")
+                home_tid = g["teams"]["home"]["team"]["id"]
+                away_tid = g["teams"]["away"]["team"]["id"]
+                venue = (g.get("venue") or {}).get("name") or ""
+                pf = PARK_FACTORS.get(venue, 1.00)
+                out[away_code] = {
+                    "opp_pitcher_id": home_pid, "opp_pitcher_name": home_pname,
+                    "opp_team_id": home_tid, "venue": venue, "park_factor": pf,
+                }
+                out[home_code] = {
+                    "opp_pitcher_id": away_pid, "opp_pitcher_name": away_pname,
+                    "opp_team_id": away_tid, "venue": venue, "park_factor": pf,
+                }
+            except Exception:
+                continue
+    return out
+
+
+def _build_injury_index() -> Dict[int, Dict[str, Any]]:
+    """From injuries_live.json, build {player_id: {status, description}}.
+
+    Schema: { teams: { team_name: { players: [{player_id, status, description, ...}] } } }
+    """
+    inj = _load(INJURIES_PATH)
+    out: Dict[int, Dict[str, Any]] = {}
+    teams = inj.get("teams") or {}
+    if isinstance(teams, dict):
+        for team_name, td in teams.items():
+            for p in (td.get("players") or []):
+                pid = p.get("player_id") or p.get("id")
+                if pid:
+                    out[int(pid)] = {
+                        "status": p.get("status") or p.get("injury_status") or "IL",
+                        "description": p.get("description") or p.get("note") or "",
+                    }
+    return out
+
+
 def run() -> Dict[str, Any]:
+    global GAME_CTX, INJURY_INDEX
+    GAME_CTX = _build_game_ctx()
+    INJURY_INDEX = _build_injury_index()
     cal = _load(CAL_PATH)
     corrections = {k: v.get("correction_factor", 1.0)
                    for k, v in (cal.get("markets") or {}).items()}
