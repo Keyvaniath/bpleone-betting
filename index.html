@@ -369,7 +369,7 @@ fetch("data/today.json", { cache: "no-cache" })
     const summary = document.querySelector(".play-card .play-summary");
     if (summary) {
       const honestNote = isPreCal
-        ? `<br><br><strong style="color:#d4a04a;">Calibration disclaimer:</strong> raw edge is ${pod.edge_pct}%, which is well above what a properly calibrated baseball model produces (most +EV plays sit in the +2% to +8% range). Treat this as a research signal, not a sized bet. The self-learning loop needs ~30 settled records per market before bias correction fires.`
+        ? `<br><br><strong style="color:#d4a04a;">Calibration disclaimer:</strong> raw edge is ${pod.edge_pct}%, which is well above what a properly calibrated baseball model produces (most +EV plays sit in the +2% to +8% range). Treat this as a research signal, not a sized bet. The self-learning loop needs ~30 settled records per market before bias correction fires. <a href="learning.html" style="color:#d4a04a; text-decoration: underline;">See per-market progress &rarr;</a>`
         : "";
       summary.innerHTML =
         `Highest-edge play on tonight's slate: <strong>${pod.matchup}</strong> ${pod.label} at ${pod.market_price >= 0 ? "+" + pod.market_price : pod.market_price}. ` +
@@ -575,13 +575,14 @@ fetch("data/track_record.json", { cache: "no-cache" })
     if (heroStats[3]) heroStats[3].textContent = String(total);
 
     // Tiny calibration progress note under the hero stats (only if pre-cal).
+    // Clickable -> learning.html so visitors can dig into per-market bias.
     if (total > 0 && total < 30) {
       const stats = document.querySelector(".hero-stats");
       if (stats && !document.getElementById("calProgress")) {
         const note = document.createElement("div");
         note.id = "calProgress";
         note.style.cssText = "grid-column: 1 / -1; font-family:'JetBrains Mono',monospace; font-size:11px; color:#d4a04a; padding:8px 0 0; opacity:0.9;";
-        note.innerHTML = `* model in calibration -- ${total}/30 settled outcomes before bias correction fires`;
+        note.innerHTML = `* model in calibration -- ${total}/30 settled outcomes before bias correction fires <a href="learning.html" style="color:#d4a04a; text-decoration: underline; margin-left:6px;">dig in &rarr;</a>`;
         stats.appendChild(note);
       }
     }
