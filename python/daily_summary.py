@@ -53,13 +53,34 @@ def build_summary() -> str:
     f5 = _load("first_five.json")
     rl = _load("run_line.json")
     travel = _load("travel.json")
+    confidence = _load("model_confidence.json")
+    anom = _load("anomalies.json")
+    health = _load("pipeline_health.json")
 
     date = (today.get("generated_at") or "")[:10] or dt.date.today().isoformat()
     lines = []
     lines.append(f"# EdgeStat Daily Brief - {date}")
     lines.append("")
+
+    # --- Model state header: confidence + pipeline health ---
+    if confidence.get("score") is not None:
+        tier = (confidence.get("tier") or "?").upper()
+        lines.append(f"**Model Confidence: {confidence['score']}/100 [{tier}]** -- {confidence.get('message', '')}")
+        lines.append("")
+    if health.get("overall_status") and health["overall_status"] != "ok":
+        lines.append(f"_Pipeline health: **{health['overall_status'].upper()}** "
+                     f"({health.get('n_ok', '?')}/{health.get('total_artifacts', '?')} artifacts ok; "
+                     f"{health.get('n_empty', 0)} empty, {health.get('n_stale', 0)} stale)._ ")
+        lines.append("")
+
+    # Pick the source label for game lines.
+    src_books = set((g.get("market") or {}).get("book") for g in (today.get("games") or []))
+    src_books.discard(None)
+    src_label = ("DraftKings" if "draftkings" in src_books else
+                 "Bovada (fallback -- DK primary unavailable)" if "bovada" in src_books else
+                 "placeholder -110 (no real book today)")
     lines.append(f"_Generated at {today.get('generated_at') or 'unknown'} UTC. "
-                 f"All game-line prices are from DraftKings. Pick-em opportunities from PrizePicks._")
+                 f"Game lines source: **{src_label}**. Pick-em opportunities from PrizePicks._")
     lines.append("")
 
     # --- Play of the Day ---
