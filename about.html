@@ -56,9 +56,9 @@
 
   <section class="card" style="margin-bottom:28px;">
     <h3>Our Process</h3>
-    <p style="color:var(--text-2)">Every morning the data pipeline runs at 6:00 AM ET. It pulls the previous night's box scores, refreshes team true-talent priors (Bayesian shrinkage to league mean), updates pitcher xFIP and lineup wRC+ off Statcast, and re-fits the bullpen rest curves. By 7:00 AM, every game on tonight's slate has a fair price for moneyline, run line, total, first-5, and a handful of player props.</p>
-    <p style="color:var(--text-2)">From 7:30 AM until first pitch, we poll six major books every 60 seconds. Anywhere the market disagrees with our number by 2%+ is logged as a potential edge. The biggest, highest-confidence edge becomes the Play of the Day, published by 8:00 AM. Sharp flow alerts fire all afternoon as steam moves hit the wire.</p>
-    <p style="color:var(--text-2)">After every game settles, results are logged and the model is re-trained. Hit rate, ROI, CLV all get rolled forward. No revisions. No cherry-picks.</p>
+    <p style="color:var(--text-2)">Every morning at 6:00 AM ET the data pipeline runs autonomously on GitHub Actions. It (1) settles yesterday's projections against final box scores from MLB Stats API, (2) recomputes per-market calibration metrics on the trailing 30 days, (3) pulls today's schedule, lineups, weather (Open-Meteo), home-plate umpire, and DraftKings odds (The Odds API), (4) layers Baseball Savant Statcast metrics (xK%, xBA, xSLG, barrel%), (5) writes today's fair prices for moneyline, total, and the four player-prop markets, plus a side-by-side PrizePicks comparison.</p>
+    <p style="color:var(--text-2)">Two more refreshes at 1 PM ET and 6 PM ET catch line moves and confirmed lineups. The parlay engine combines highest-edge legs into 2- and 3-leg suggestions with same-game correlation haircut. The model bias-corrects per market once 30+ outcomes have flowed -- so day 30 trusts the data; day 1 trusts the priors with caps.</p>
+    <p style="color:var(--text-2)">After every game settles, results append to track-record.json (in git history -- no revisions, no cherry-picks). Calibration runs nightly. Brier, log loss, ECE, and ROI roll forward continuously. The model only gets sharper.</p>
   </section>
 
   <section class="card" style="margin-bottom:28px;">
@@ -73,11 +73,14 @@
 
   <section class="card">
     <h3>Roadmap</h3>
+    <p class="muted" style="font-size:12px;">Last updated: May 2026.</p>
     <ul style="color:var(--text-2)">
-      <li><strong>Q3 2026:</strong> NBA model launch — expected April 2026, in alpha</li>
+      <li><strong>Shipped (May 2026):</strong> MLB game lines (DraftKings), 4 player-prop markets, Statcast integration, lineups, weather, umpires, calibration loop, parlays, PrizePicks comparison</li>
+      <li><strong>In progress:</strong> Sleeper Picks integration (auth-gated), residential-proxy for cloud PP fetches, full season of accumulated calibration data</li>
+      <li><strong>Q3 2026:</strong> NBA model launch -- most of the Python stack is sport-agnostic</li>
       <li><strong>Q4 2026:</strong> NFL model with EPA-based offensive/defensive ratings</li>
       <li><strong>Q1 2027:</strong> Personalized bet-tracking accounts for newsletter subscribers</li>
-      <li><strong>Q2 2027:</strong> Mobile app — push alerts for steam moves and Play of the Day</li>
+      <li><strong>Q2 2027:</strong> Mobile app -- push alerts for steam moves and Play of the Day</li>
       <li><strong>2027+:</strong> API access for power users and other analysts</li>
     </ul>
   </section>

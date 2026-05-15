@@ -184,5 +184,19 @@
 <script src="js/ml-models.js"></script>
 <script src="js/charts.js"></script>
 <script src="js/main.js"></script>
+<script>
+// Honest disclosure on trends page: real sharp-money handle data requires
+// a paid feed (Don Best, Sports Insights, etc). Add a banner that explains
+// the page's current state.
+const head = document.querySelector("main.container .page-head");
+if (head) {
+  const note = document.createElement("p");
+  note.className = "muted";
+  note.style.fontSize = "12px";
+  note.style.marginTop = "8px";
+  note.innerHTML = `<strong style="color:#d4a04a;">Data source note:</strong> ticket-handle splits and steam-move detection require a paid sharp-money feed (Don Best, Sports Insights, BetIQ). These tables are synthetic samples showing the analytical pattern; live sharp flow gets wired when you subscribe to a feed.`;
+  head.appendChild(note);
+}
+</script>
 </body>
 </html>

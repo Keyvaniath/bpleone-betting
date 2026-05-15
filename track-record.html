@@ -132,5 +132,49 @@
 <script src="js/ml-models.js"></script>
 <script src="js/charts.js"></script>
 <script src="js/main.js"></script>
+<script>
+// Real settled records overlay
+fetch("data/track_record.json", { cache: "no-cache" })
+  .then(r => r.json())
+  .then(tr => {
+    const head = document.querySelector("main.container .page-head");
+    if (!head) return;
+    const props = tr.props || [];
+    const games = tr.games || [];
+    const graded = props.filter(p => p.play_hit !== null && p.play_hit !== undefined);
+    const wins = graded.filter(p => p.play_hit === true).length;
+    const losses = graded.filter(p => p.play_hit === false).length;
+    const note = document.createElement("p");
+    note.className = "muted";
+    note.style.fontSize = "12px";
+    note.style.marginTop = "8px";
+    if (graded.length === 0) {
+      note.innerHTML = `<strong>Real track record:</strong> no settled plays yet -- the outcomes ingestion job runs every morning at 6 AM ET and will populate this page once the first night's games complete.`;
+    } else {
+      note.innerHTML = `<strong>Real track record:</strong> ${graded.length} graded plays, ${wins} wins / ${losses} losses (${(wins/graded.length*100).toFixed(1)}% hit rate). Last settled date ${tr.last_settled_date || "?"}.`;
+    }
+    head.appendChild(note);
+
+    // Also push a real-records section above any synthetic sample data
+    if (graded.length > 0) {
+      const section = document.createElement("section");
+      section.className = "card";
+      section.style.marginBottom = "24px";
+      const rows = graded.slice(-30).reverse().map(p => `
+        <div style="display:grid; grid-template-columns: 100px 220px 1fr auto auto; gap:14px; padding:8px 14px;
+                    border-bottom:1px solid rgba(255,255,255,0.04); font-family:'JetBrains Mono',monospace; font-size:12px;">
+          <span>${p.date}</span>
+          <span><strong>${p.player}</strong></span>
+          <span class="muted">${(p.market||"").replace(/_/g," ")} ${p.line} - actual ${p.actual} - ${p.play}</span>
+          <span>${p.edge_pct != null ? (p.edge_pct >= 0 ? "+" : "") + p.edge_pct + "%" : "--"}</span>
+          <span style="color:${p.play_hit === true ? "#58c878" : "#e35a5a"}; font-weight:600;">${p.play_hit === true ? "WIN" : "LOSS"}</span>
+        </div>`).join("");
+      section.innerHTML = `<div class="card-head"><span>Live Settled Plays (last 30)</span><span class="muted">${graded.length} total</span></div>${rows}`;
+      const after = head;
+      after.parentNode.insertBefore(section, after.nextSibling);
+    }
+  })
+  .catch(err => console.error("track-record load failed:", err));
+</script>
 </body>
 </html>

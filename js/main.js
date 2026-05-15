@@ -2,24 +2,47 @@
 
 (function() {
 
-  // ---- Live ticker ----
+  // ---- Live ticker (reads today.json + track_record.json for real lines) ----
   function startTicker() {
     const el = document.getElementById('liveTicker');
     if (!el) return;
-    const lines = [
-      '🟢 LIVE • LAD/SDP — model 64.0% LAD',
-      '⚡ STEAM • BRAVES ML -148 → -176',
-      '📊 NEW EDGE • YANKEES -1.5 +5.1%',
-      '🧾 SETTLED • PHILLIES ML WIN +1.2u',
-      '💡 ALERT • Coors O10.5 model 11.6 runs'
-    ];
-    let i = 0;
-    el.textContent = lines[0];
-    setInterval(() => {
-      i = (i+1) % lines.length;
-      el.style.opacity = '0';
-      setTimeout(() => { el.textContent = lines[i]; el.style.opacity = '1'; }, 200);
-    }, 3500);
+    el.textContent = '\u{1F7E2} LIVE - connecting feeds...';
+
+    Promise.all([
+      fetch('data/today.json', { cache: 'no-cache' }).then(r => r.json()).catch(() => ({})),
+      fetch('data/track_record.json', { cache: 'no-cache' }).then(r => r.json()).catch(() => ({})),
+      fetch('data/calibration_live.json', { cache: 'no-cache' }).then(r => r.json()).catch(() => ({})),
+    ]).then(([today, tr, cal]) => {
+      const lines = [];
+      const pod = today.play_of_day;
+      if (pod) {
+        lines.push(`\u{1F7E2} LIVE - ${pod.matchup} ${pod.label} - model ${(pod.model_prob*100).toFixed(1)}%`);
+      }
+      (today.games || []).forEach(g => {
+        const top = (g.recommendations || []).sort((a,b) => (b.edge_pct||0) - (a.edge_pct||0))[0];
+        if (top) {
+          const isPreCal = (top.edge_pct || 0) >= 15;
+          const tag = isPreCal ? 'CALIBRATING' : 'EDGE';
+          lines.push(`\u{1F4CA} ${tag} - ${g.matchup} ${top.label} +${Number(top.edge_pct).toFixed(1)}%`);
+        }
+      });
+      // Settled records (most recent few)
+      const props = (tr.props || []).slice(0, 3);
+      props.forEach(p => {
+        if (p.play_hit === true) lines.push(`\u{1F9FE} SETTLED - ${p.player} ${p.play} ${p.line} ${p.market.replace(/_/g,' ')} - HIT`);
+        if (p.play_hit === false) lines.push(`\u{1F9FE} SETTLED - ${p.player} ${p.play} ${p.line} ${p.market.replace(/_/g,' ')} - MISS`);
+      });
+      if (!lines.length) lines.push('\u{1F7E2} LIVE - no slate data yet');
+      let i = 0;
+      el.textContent = lines[0];
+      setInterval(() => {
+        i = (i+1) % lines.length;
+        el.style.opacity = '0';
+        setTimeout(() => { el.textContent = lines[i]; el.style.opacity = '1'; }, 200);
+      }, 3500);
+    }).catch(() => {
+      el.textContent = '\u{1F7E2} LIVE - data feed unavailable';
+    });
   }
 
   // ---- Last refresh stamp ----
