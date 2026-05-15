@@ -146,6 +146,47 @@
     </div>
   </section>
 
+  <!-- EDGES BY TYPE (sortable / filterable) -->
+  <section class="card" style="margin-bottom: 28px;">
+    <div class="card-head"><span>Today's Edges by Type</span><span class="muted">filter + sort across every market</span></div>
+    <div class="filterbar" style="padding: 8px 14px;">
+      <label>Type:</label>
+      <select id="edgesType">
+        <option value="">All markets</option>
+        <option value="game_line">Game lines</option>
+        <option value="prop_dk">DK props</option>
+        <option value="prop_pp">PrizePicks softer</option>
+        <option value="parlay">Parlays</option>
+      </select>
+      <label>Min Model %:</label>
+      <select id="edgesMinProb">
+        <option value="0">All</option>
+        <option value="55">55%+</option>
+        <option value="60">60%+</option>
+        <option value="65">65%+</option>
+      </select>
+      <label>Show:</label>
+      <select id="edgesPlayable">
+        <option value="">All</option>
+        <option value="playable">Playable only (no pre-cal)</option>
+      </select>
+      <label>Sort by:</label>
+      <select id="edgesSort">
+        <option value="quality_score">Quality score</option>
+        <option value="edge_pct">Edge %</option>
+        <option value="model_prob">Model %</option>
+      </select>
+    </div>
+    <div class="table-wrap">
+      <table class="data-table" id="edgesByType">
+        <thead>
+          <tr><th>Type</th><th>Book</th><th>Target</th><th>Market</th><th>Side / Line</th><th>Price</th><th>Model %</th><th>Edge</th><th>Score</th></tr>
+        </thead>
+        <tbody><tr><td colspan="9" class="muted" style="text-align:center; padding:24px;">Loading...</td></tr></tbody>
+      </table>
+    </div>
+  </section>
+
   <!-- ANALYTICS PANELS -->
   <section class="grid-3">
     <div class="card">
@@ -343,13 +384,70 @@ fetch("data/today.json", { cache: "no-cache" })
   })
   .catch(err => console.error("today.json load failed:", err));
 
+// Edges-by-Type sortable panel (also loaded from top_plays.json -- richer view than the simple list above)
+let edgesState = { all: [], type: "", minProb: 0, playable: "", sort: "quality_score" };
+function renderEdgesTable() {
+  const tbody = document.querySelector("#edgesByType tbody");
+  if (!tbody) return;
+  const KIND_LABEL = { game_line: "Game line", prop_dk: "DK prop", prop_pp: "PP softer", parlay: "Parlay" };
+  let rows = edgesState.all.slice();
+  if (edgesState.type) rows = rows.filter(r => r.kind === edgesState.type);
+  if (edgesState.minProb) rows = rows.filter(r => (r.model_prob || 0) * 100 >= edgesState.minProb);
+  if (edgesState.playable === "playable") rows = rows.filter(r => !r.is_precal);
+  rows.sort((a, b) => (b[edgesState.sort] || 0) - (a[edgesState.sort] || 0));
+  if (!rows.length) {
+    tbody.innerHTML = `<tr><td colspan="9" class="muted" style="text-align:center; padding:24px;">No edges match the current filters.</td></tr>`;
+    return;
+  }
+  tbody.innerHTML = rows.slice(0, 50).map(r => {
+    const target = r.player || r.matchup || "?";
+    const sideLine = r.kind === "prop_pp"
+      ? `${r.side || ""} PP ${r.pp_line} (DK ${r.dk_line ?? "--"})`
+      : r.kind === "parlay" ? `${r.label || ""}` : `${r.side || r.label || ""} ${r.line ?? ""}`;
+    const price = r.market_price != null
+      ? (r.market_price >= 0 ? "+" + r.market_price : String(r.market_price))
+      : "--";
+    const edge = r.edge_pct != null
+      ? (r.edge_pct >= 0 ? "+" : "") + Number(r.edge_pct).toFixed(1) + "%"
+      : "--";
+    const precal = r.is_precal ? ' <span title="pre-calibration noise" style="color:#d4a04a;">⚠</span>' : '';
+    return `<tr>
+      <td><span class="muted">${KIND_LABEL[r.kind] || r.kind}</span></td>
+      <td><span class="muted">${r.book || "--"}</span></td>
+      <td><strong>${target}</strong></td>
+      <td>${r.market ? r.market.replace(/_/g, " ") : (r.stat_type || "--")}</td>
+      <td>${sideLine}</td>
+      <td>${price}</td>
+      <td style="color:#58c878;">${(r.model_prob * 100).toFixed(1)}%</td>
+      <td>${edge}${precal}</td>
+      <td><strong>${(r.quality_score || 0).toFixed(0)}</strong></td>
+    </tr>`;
+  }).join("");
+}
+function loadEdgesData(plays) {
+  edgesState.all = plays;
+  ["edgesType", "edgesMinProb", "edgesPlayable", "edgesSort"].forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.addEventListener("change", e => {
+      if (id === "edgesType") edgesState.type = e.target.value;
+      else if (id === "edgesMinProb") edgesState.minProb = parseFloat(e.target.value);
+      else if (id === "edgesPlayable") edgesState.playable = e.target.value;
+      else if (id === "edgesSort") edgesState.sort = e.target.value;
+      renderEdgesTable();
+    });
+  });
+  renderEdgesTable();
+}
+
 // Top Plays loader -- ranked across all markets
 fetch("data/top_plays.json", { cache: "no-cache" })
   .then(r => r.json())
   .then(d => {
     const list = document.getElementById("topPlaysList");
-    if (!list) return;
     const plays = d.plays || [];
+    loadEdgesData(plays);   // populate sortable panel
+    if (!list) return;
     if (!plays.length) {
       list.innerHTML = `<p class="muted" style="padding:14px;">No top plays meet the quality bar today.</p>`;
       return;

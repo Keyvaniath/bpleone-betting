@@ -1,0 +1,46 @@
+name: Live In-Progress Games Poll
+
+# Runs every 10 min during the typical MLB game window (19:00 - 06:00 UTC =
+# 3 PM - 2 AM ET) to refresh live win-expectancy for games in progress.
+# Cheap operation: ~1 second per game, no Odds API quota cost.
+
+on:
+  schedule:
+    - cron: '*/10 19-23 * * *'   # every 10 min 3-7 PM ET window
+    - cron: '*/10 0-6 * * *'     # every 10 min 8 PM - 2 AM ET window
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  live:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install deps
+        run: pip install -r python/requirements.txt
+
+      - name: Poll live games
+        working-directory: python
+        run: python live_games.py
+
+      - name: Commit if state changed
+        run: |
+          git config user.name  "edgestat-bot"
+          git config user.email "actions@github.com"
+          git add data/live_state.json
+          if git diff --cached --quiet; then
+            echo "No live games or no state changes."
+          else
+            git commit -m "live(state): poll $(date -u +%FT%TZ)"
+            # Avoid race with daily cron pushes
+            git pull --rebase origin main || git rebase --abort
+            git push || echo "push failed, will retry next poll"
+          fi
