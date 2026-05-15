@@ -47,6 +47,8 @@ def build_summary() -> str:
     cal = _load("calibration_live.json")
     tr = _load("track_record.json")
     inj = _load("injuries_live.json")
+    form = _load("team_form.json")
+    bp = _load("bullpen_workload.json")
 
     date = (today.get("generated_at") or "")[:10] or dt.date.today().isoformat()
     lines = []
@@ -143,6 +145,34 @@ def build_summary() -> str:
             lines.append(f"Cumulative graded plays: {graded}. Wins: {wins}. "
                          f"Hit rate: {wins/graded*100:.1f}%.")
             lines.append("")
+
+    # --- Hot / cold teams ---
+    teams_form = form.get("teams") or {}
+    if teams_form:
+        sorted_by_diff = sorted(teams_form.items(), key=lambda kv: -(kv[1].get("run_diff") or 0))
+        hot = sorted_by_diff[:5]
+        cold = sorted_by_diff[-5:][::-1]
+        lines.append("## Team Form (last 10)")
+        lines.append("")
+        lines.append("**Hot:** " + ", ".join(
+            f"{t['abbr'] or n} {t['wins']}-{t['losses']} ({t['streak']}, {('+' if t['run_diff'] > 0 else '')}{t['run_diff']})"
+            for n, t in hot))
+        lines.append("")
+        lines.append("**Cold:** " + ", ".join(
+            f"{t['abbr'] or n} {t['wins']}-{t['losses']} ({t['streak']}, {t['run_diff']})"
+            for n, t in cold))
+        lines.append("")
+
+    # --- Gassed bullpens ---
+    gassed = bp.get("gassed_teams") or []
+    if gassed:
+        lines.append(f"## Gassed Bullpens (> {bp.get('gassed_threshold_ip', 8)} IP in 2 days)")
+        lines.append("")
+        for name in gassed[:8]:
+            t = (bp.get("teams") or {}).get(name) or {}
+            lines.append(f"- {t.get('abbr') or name}: {t.get('total_relief_ip')} IP "
+                         f"across {t.get('games_inspected')} games")
+        lines.append("")
 
     # --- Footer ---
     lines.append("---")

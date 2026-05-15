@@ -1,36 +1,24 @@
-# EdgeStat Daily Brief - 2026-05-15
+# EdgeStat Daily Brief - 2026-05-14
 
-_Generated at 2026-05-15T02:07:30 UTC. All game-line prices are from DraftKings. Pick-em opportunities from PrizePicks._
+_Generated at 2026-05-14T19:26:12 UTC. All game-line prices are from DraftKings. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
-**ARI @ COL - COL_ML**
-- Market: +109
-- Model probability: 71.3%
-- Raw edge: +49.1%
+**CIN @ COL - CIN_ML**
+- Market: -110
+- Model probability: 73.7%
+- Raw edge: +40.74%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
 
-## Full Slate (15 games)
+## Full Slate (3 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 6:40p ET | PHI @ PIT | PNC Park | 60F 5mph | PIT_ML +33.07% |
-| 6:45p ET | BAL @ WSN | Nationals Park | 62F 2mph | OVER_9.5 +39.51% |
-| 6:45p ET | TOR @ DET | Comerica Park | 60F 6mph | UNDER_8.0 +47.17% |
-| 7:10p ET | CIN @ CLE | Progressive Field | 55F 6mph | -- |
-| 7:10p ET | MIA @ TBR | Tropicana Field | indoor | UNDER_8.0 +22.2% |
-| 7:10p ET | MIL @ MIN | Target Field | 71F 10mph | UNDER_8.5 +13.72% |
-| 7:15p ET | BOS @ ATL | Truist Park | 66F 3mph | ATL_ML +42.26% |
-| 7:15p ET | NYY @ NYM | Citi Field | 55F 2mph | NYY_ML +44.18% |
-| 7:40p ET | CHC @ CHW | Rate Field | 60F 10mph | OVER_8.0 +30.88% |
-| 8:10p ET | TEX @ HOU | Daikin Park | indoor | HOU_ML +23.21% |
-| 8:15p ET | KCR @ STL | Busch Stadium | 59F 4mph | UNDER_8.5 +8.46% |
-| 8:40p ET | ARI @ COL | Coors Field | 74F 5mph | COL_ML +49.1% |
-| 9:38p ET | LAD @ LAA | Angel Stadium | 70F 0mph | LAD_ML +22.34% |
-| 9:40p ET | SDP @ SEA | T-Mobile Park | indoor | UNDER_7.5 +23.5% |
-| 9:40p ET | SFG @ OAK | Sutter Health Park | 70F 0mph | OAK_ML +35.81% |
+| 7:05p ET | SDP @ LAD | Petco Park | 62F -6mph | LAD_ML +25.43% |
+| 6:45p ET | BOS @ NYY | Yankee Stadium | 71F 12mph | OVER_9.0 +30.97% |
+| 9:40p ET | CIN @ COL | Coors Field | 74F 4mph | CIN_ML +40.74% |
 
 ## PrizePicks - 67 lines softer than DraftKings
 
@@ -78,6 +66,23 @@ _Generated at 2026-05-15T02:07:30 UTC. All game-line prices are from DraftKings.
 | batter total bases | 1 | 100.0% | 69.2% | 0.692 | 1.000 |
 
 Cumulative graded plays: 1. Wins: 1. Hit rate: 100.0%.
+
+## Team Form (last 10)
+
+**Hot:** NYM 7-3 (W3, +18), MIL 7-3 (W1, +17), TB 8-2 (L1, +16), ATL 6-4 (L1, +15), SEA 6-4 (W1, +14)
+
+**Cold:** HOU 3-7 (L1, -25), DET 2-8 (L3, -22), LAA 3-7 (L3, -21), COL 3-7 (L1, -19), MIA 4-6 (L1, -9)
+
+## Gassed Bullpens (> 5.0 IP in 2 days)
+
+- ATH: 8.2 IP across 3 games
+- PIT: 12.1 IP across 3 games
+- SD: 15.5 IP across 3 games
+- SEA: 8.6 IP across 3 games
+- SF: 5.5 IP across 2 games
+- STL: 8.6 IP across 3 games
+- TB: 7.0 IP across 2 games
+- TOR: 7.5 IP across 2 games
 
 ---
 
