@@ -161,6 +161,16 @@ jobs:
         working-directory: python
         run: python batter_form.py
 
+      # Pitcher days of rest (catches short rest / extra rest situations).
+      - name: Compute pitcher days of rest
+        working-directory: python
+        run: python pitcher_rest.py
+
+      # Research depth score per game (how complete our data stack is).
+      - name: Score research depth per game
+        working-directory: python
+        run: python research_depth.py
+
       # CLV computation: compare today's morning snapshot to the latest (near
       # closing) lines. Best run at 6 PM ET, but no harm running every cron.
       - name: Compute Closing Line Value
