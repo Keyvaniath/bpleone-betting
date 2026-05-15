@@ -630,9 +630,16 @@ fetch("data/top_plays.json", { cache: "no-cache" })
 fetch("data/track_record.json", { cache: "no-cache" })
   .then(r => r.json())
   .then(tr => {
-    const props = tr.props || [];
+    const propsAll = tr.props || [];
     const games = tr.games || [];
-    const settled = [...props, ...games].filter(r =>
+    // Split LIVE settlements (real production runs) from BACKFILL retro plays.
+    // Live = any record without source='backfill'. Backfill = source='backfill'.
+    // Hero stats show LIVE numbers (real wagering would have happened);
+    // backfill stats surface in a secondary note so visitors know the
+    // model has been calibration-trained on history.
+    const propsLive = propsAll.filter(p => p.source !== "backfill");
+    const propsBackfill = propsAll.filter(p => p.source === "backfill");
+    const settled = [...propsLive, ...games].filter(r =>
       (r.play_hit !== undefined && r.play_hit !== null) ||
       (r.over_hit !== undefined && r.over_hit !== null)
     );
@@ -671,17 +678,19 @@ fetch("data/track_record.json", { cache: "no-cache" })
       : `--<span class="unit">%</span>`;
     if (heroStats[3]) heroStats[3].textContent = String(total);
 
-    // Tiny calibration progress note under the hero stats (only if pre-cal).
-    // Clickable -> learning.html so visitors can dig into per-market bias.
-    if (total > 0 && total < 30) {
-      const stats = document.querySelector(".hero-stats");
-      if (stats && !document.getElementById("calProgress")) {
-        const note = document.createElement("div");
-        note.id = "calProgress";
-        note.style.cssText = "grid-column: 1 / -1; font-family:'JetBrains Mono',monospace; font-size:11px; color:#d4a04a; padding:8px 0 0; opacity:0.9;";
-        note.innerHTML = `* model in calibration -- ${total}/30 settled outcomes before bias correction fires <a href="learning.html" style="color:#d4a04a; text-decoration: underline; margin-left:6px;">dig in &rarr;</a>`;
-        stats.appendChild(note);
+    // Calibration progress note: shows shrinkage status + (if applicable)
+    // how many backfilled records the model has been calibration-trained on.
+    const stats = document.querySelector(".hero-stats");
+    if (stats && !document.getElementById("calProgress")) {
+      const note = document.createElement("div");
+      note.id = "calProgress";
+      note.style.cssText = "grid-column: 1 / -1; font-family:'JetBrains Mono',monospace; font-size:11px; color:#d4a04a; padding:8px 0 0; opacity:0.9;";
+      if (total > 0 && total < 30) {
+        note.innerHTML = `* model in calibration -- ${total}/30 LIVE settled outcomes before bias correction is fully data-driven <a href="learning.html" style="color:#d4a04a; text-decoration: underline; margin-left:6px;">dig in &rarr;</a>`;
+      } else if (propsBackfill.length > 0) {
+        note.innerHTML = `* hero stats above are LIVE plays only (${total} settled). Model is calibration-trained on <strong>${propsBackfill.length}</strong> retrospective backfilled outcomes; <a href="learning.html" style="color:#d4a04a; text-decoration: underline;">see per-market progress &rarr;</a>`;
       }
+      if (note.innerHTML) stats.appendChild(note);
     }
   })
   .catch(() => {
