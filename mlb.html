@@ -41,13 +41,50 @@
   </section>
 
   <section class="metric-strip">
-    <div class="metric"><span class="metric-num">14</span><span class="metric-label">Games Today</span></div>
-    <div class="metric"><span class="metric-num">17</span><span class="metric-label">Edges Found</span></div>
-    <div class="metric"><span class="metric-num">9</span><span class="metric-label">+EV Plays</span></div>
-    <div class="metric"><span class="metric-num">62.1%</span><span class="metric-label">Season Hit %</span></div>
-    <div class="metric"><span class="metric-num">+8.2%</span><span class="metric-label">Season ROI</span></div>
-    <div class="metric"><span class="metric-num">+3.1%</span><span class="metric-label">Avg CLV</span></div>
+    <div class="metric"><span class="metric-num" id="mlbGames">--</span><span class="metric-label">Games Today</span></div>
+    <div class="metric"><span class="metric-num" id="mlbEdges">--</span><span class="metric-label">Edges Found</span></div>
+    <div class="metric"><span class="metric-num" id="mlbEV">--</span><span class="metric-label">+EV Plays</span></div>
+    <div class="metric"><span class="metric-num" id="mlbHit">--</span><span class="metric-label">Season Hit %</span></div>
+    <div class="metric"><span class="metric-num" id="mlbROI">--</span><span class="metric-label">Season ROI</span></div>
+    <div class="metric"><span class="metric-num" id="mlbCLV">--</span><span class="metric-label">Avg CLV</span></div>
   </section>
+
+  <script>
+  (function() {
+    const set = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
+    // Slate counts from today.json
+    fetch("data/today.json", { cache: "no-cache" }).then(r => r.json()).then(d => {
+      const games = d.games || [];
+      const edges = games.flatMap(g => g.recommendations || []);
+      set("mlbGames", games.length);
+      set("mlbEdges", edges.length);
+      set("mlbEV", edges.filter(r => (r.edge_pct || 0) >= 3).length);
+    }).catch(() => {});
+    // Season metrics from track_record.json + clv_log.json
+    fetch("data/track_record.json", { cache: "no-cache" }).then(r => r.json()).then(tr => {
+      const props = (tr.props || []).filter(p => p.play_hit !== null && p.play_hit !== undefined);
+      if (!props.length) return;
+      const wins = props.filter(p => p.play_hit === true).length;
+      const payoutUnits = price => price >= 0 ? price / 100 : 100 / Math.abs(price);
+      const net = props.reduce((s, p) => {
+        if (p.play_hit === true) {
+          const price = p.play === "OVER" ? p.dk_over : p.play === "UNDER" ? p.dk_under : -110;
+          return s + payoutUnits(price ?? -110);
+        }
+        return s - 1;
+      }, 0);
+      const roi = (net / props.length) * 100;
+      set("mlbHit", (wins / props.length * 100).toFixed(1) + "%");
+      set("mlbROI", (roi >= 0 ? "+" : "") + roi.toFixed(1) + "%");
+    }).catch(() => {});
+    fetch("data/clv_log.json", { cache: "no-cache" }).then(r => r.json()).then(c => {
+      const recs = (c.records || []).filter(r => r.clv_pct != null);
+      if (!recs.length) return;
+      const avg = recs.reduce((s, r) => s + Number(r.clv_pct), 0) / recs.length;
+      set("mlbCLV", (avg >= 0 ? "+" : "") + avg.toFixed(2) + "%");
+    }).catch(() => {});
+  })();
+  </script>
 
   <section class="section">
     <div class="section-head">
