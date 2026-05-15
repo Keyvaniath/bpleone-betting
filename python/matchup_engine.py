@@ -73,6 +73,12 @@ def _pitcher_block(pid: Optional[int], name: Optional[str], opp_team_id: Optiona
     recent = sr.pitcher_recent_form(pid, n=3)
     hand = sr.pitcher_hand(pid)
     vs_team = sr.pitcher_vs_team(pid, opp_team_id) if opp_team_id else {"starts": 0}
+    # Statcast pitch arsenal (per-pitch usage + quality)
+    try:
+        import statcast as sc
+        arsenal = sc.pitcher_arsenal(pid) or []
+    except Exception:
+        arsenal = []
 
     return {
         "id": pid,
@@ -86,6 +92,15 @@ def _pitcher_block(pid: Optional[int], name: Optional[str], opp_team_id: Optiona
         },
         "recent": recent,
         "vs_opp_this_season": vs_team,
+        "arsenal": [{
+            "pitch": p.get("pitch_name"),
+            "type": p.get("pitch_type"),
+            "usage_pct": p.get("pitch_usage"),
+            "whiff_pct": p.get("whiff_percent"),
+            "k_pct": p.get("k_percent"),
+            "xwoba": p.get("est_woba"),
+            "hard_hit_pct": p.get("hard_hit_percent"),
+        } for p in arsenal[:6]],   # top 6 pitches
         "narrative": _narrative(name, hand, season, career, recent, splits, vs_team),
     }
 

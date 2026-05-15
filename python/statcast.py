@@ -151,6 +151,62 @@ def pitcher_stats(pid: int) -> Dict[str, Any]:
     return pitcher_leaderboard().get(pid, {})
 
 
+def pitcher_arsenal_all(season: Optional[int] = None) -> Dict[int, List[Dict[str, Any]]]:
+    """Return {player_id: [{pitch_type, pitch_name, pitches, usage_pct, whiff_pct, k_pct, xwoba, ...}]}.
+
+    Per-pitcher list of every pitch type they've thrown, with quality metrics.
+    Source: baseballsavant pitch-arsenal-stats leaderboard.
+    """
+    season = season or dt.date.today().year
+    cache_name = f"arsenal_{season}"
+    c = _cache_get(cache_name)
+    if c is not None:
+        return {int(k): v for k, v in c.items()}
+    url = "https://baseballsavant.mlb.com/leaderboard/pitch-arsenal-stats"
+    params = {
+        "type": "pitcher", "year": str(season), "min": "20",
+        "pitchType": "", "hand": "", "csv": "true",
+    }
+    if requests is None:
+        return {}
+    try:
+        r = requests.get(url, params=params, headers=HEADERS, timeout=30)
+        if not r.ok:
+            return {}
+        text = r.text.lstrip("﻿")
+    except Exception:
+        return {}
+    out: Dict[int, List[Dict[str, Any]]] = {}
+    reader = csv.DictReader(io.StringIO(text))
+    for row in reader:
+        try:
+            pid = int(row.get("player_id") or 0)
+        except (ValueError, TypeError):
+            continue
+        if not pid:
+            continue
+        entry: Dict[str, Any] = {}
+        for k, v in row.items():
+            if v in (None, ""):
+                entry[k] = None
+            else:
+                try:
+                    entry[k] = float(v)
+                except ValueError:
+                    entry[k] = v
+        out.setdefault(pid, []).append(entry)
+    # Sort each pitcher's pitches by usage descending
+    for pid in out:
+        out[pid].sort(key=lambda r: r.get("pitch_usage") or 0, reverse=True)
+    _cache_put(cache_name, {str(k): v for k, v in out.items()})
+    return out
+
+
+def pitcher_arsenal(pid: int) -> List[Dict[str, Any]]:
+    """Return list of {pitch_name, pitch_type, usage, whiff%, K%, xwoba} for pitcher."""
+    return pitcher_arsenal_all().get(pid, [])
+
+
 def batter_stats(pid: int) -> Dict[str, Any]:
     """Return Statcast dict for a batter. {} if not in leaderboard."""
     return batter_leaderboard().get(pid, {})

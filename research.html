@@ -128,8 +128,23 @@ function renderPitcher(p, sideLabel) {
       ${pitcherStatLine(p.career)}
       ${recentLine(p.recent)}
       ${vsTeamLine(p.vs_opp_this_season)}
+      ${renderArsenal(p.arsenal)}
       ${p.narrative && p.narrative.length ? `<ul class="narrative">${p.narrative.map(n => `<li>${n}</li>`).join("")}</ul>` : ""}
     </div>`;
+}
+
+function renderArsenal(arsenal) {
+  if (!arsenal || !arsenal.length) return "";
+  const rows = arsenal.map(p => `
+    <div style="display:grid; grid-template-columns: 1.4fr 0.6fr 0.7fr 0.7fr 0.7fr; gap:8px; font-size:10px; padding:2px 0;">
+      <span style="color:var(--text,#ddd);">${p.pitch || "?"} <span class="muted">(${p.type})</span></span>
+      <span class="muted">${p.usage_pct != null ? p.usage_pct.toFixed(1) + "%" : "--"}</span>
+      <span>${p.whiff_pct != null ? "W " + p.whiff_pct.toFixed(0) + "%" : "--"}</span>
+      <span>${p.k_pct != null ? "K " + p.k_pct.toFixed(0) + "%" : "--"}</span>
+      <span style="color:${p.xwoba && p.xwoba < 0.300 ? '#58c878' : p.xwoba && p.xwoba > 0.380 ? '#e35a5a' : 'var(--muted,#888)'};">xwOBA ${p.xwoba != null ? p.xwoba.toFixed(3) : "--"}</span>
+    </div>`).join("");
+  return `<div class="stat-line" style="margin-top:8px;"><strong>Arsenal (Statcast):</strong></div>
+          <div style="font-family:'JetBrains Mono',monospace;">${rows}</div>`;
 }
 
 function renderTeam(team, code) {
