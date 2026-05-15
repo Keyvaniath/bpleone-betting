@@ -1,6 +1,6 @@
 # EdgeStat Daily Brief - 2026-05-15
 
-_Generated at 2026-05-15T01:52:36 UTC. All game-line prices are from DraftKings. Pick-em opportunities from PrizePicks._
+_Generated at 2026-05-15T01:59:03 UTC. All game-line prices are from DraftKings. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
@@ -16,7 +16,7 @@ _Generated at 2026-05-15T01:52:36 UTC. All game-line prices are from DraftKings.
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 6:40p ET | PHI @ PIT | PNC Park | 58F 6mph | PIT_ML +31.39% |
+| 6:40p ET | PHI @ PIT | PNC Park | 58F 6mph | PIT_ML +33.08% |
 | 6:45p ET | BAL @ WSN | Nationals Park | 61F 2mph | OVER_9.5 +38.75% |
 | 6:45p ET | TOR @ DET | Comerica Park | 59F 7mph | UNDER_8.0 +46.57% |
 | 7:10p ET | CIN @ CLE | Progressive Field | 58F 7mph | -- |
@@ -24,9 +24,9 @@ _Generated at 2026-05-15T01:52:36 UTC. All game-line prices are from DraftKings.
 | 7:10p ET | MIL @ MIN | Target Field | 69F 5mph | UNDER_8.5 +22.99% |
 | 7:15p ET | BOS @ ATL | Truist Park | 66F 3mph | ATL_ML +42.26% |
 | 7:15p ET | NYY @ NYM | Citi Field | 58F 4mph | NYY_ML +44.92% |
-| 7:40p ET | CHC @ CHW | Rate Field | 64F 8mph | OVER_8.0 +30.9% |
+| 7:40p ET | CHC @ CHW | Rate Field | 64F 8mph | OVER_8.0 +30.78% |
 | 8:10p ET | TEX @ HOU | Daikin Park | indoor | HOU_ML +23.21% |
-| 8:15p ET | KCR @ STL | Busch Stadium | 59F 4mph | UNDER_8.5 +6.5% |
+| 8:15p ET | KCR @ STL | Busch Stadium | 59F 4mph | UNDER_8.5 +8.73% |
 | 8:40p ET | ARI @ COL | Coors Field | 74F 5mph | COL_ML +49.1% |
 | 9:38p ET | LAD @ LAA | Angel Stadium | 65F 3mph | LAD_ML +22.44% |
 | 9:40p ET | SDP @ SEA | T-Mobile Park | indoor | UNDER_7.5 +23.5% |
@@ -66,9 +66,9 @@ _Generated at 2026-05-15T01:52:36 UTC. All game-line prices are from DraftKings.
 - **2-leg @ +210 (prob 45.6%, EV +41.55%)**
   - JJ Bleday OVER 0.5 batter_hits (-121, model 67.9%)
   - BAL @ WSN BAL_ML (-143, model 67.2%)
-- **2-leg @ +306 (prob 34.8%, EV +41.19%)**
-  - Chase DeLauter OVER 1.5 batter_total_bases (+139, model 51.8%)
+- **2-leg @ +224 (prob 43.4%, EV +40.92%)**
   - BAL @ WSN BAL_ML (-143, model 67.2%)
+  - SDP @ SEA UNDER_7.5 (-110, model 64.7%)
 
 ## Self-Learning Loop
 
