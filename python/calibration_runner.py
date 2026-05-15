@@ -43,10 +43,15 @@ LOOKBACK_DAYS = 30
 # So at n=0 the correction is exactly 1.0 (trust prior, no change), and as n
 # grows the model trusts the empirical bias more. By n=30 we're 50/50, by
 # n=120 we're 80/20 toward the data. No more hard cutoff.
-N_PRIOR = 30                     # how strongly to anchor toward "no correction" (1.0)
-MIN_SAMPLE_FOR_ANY_CORRECTION = 3  # below this, still bypass entirely (too noisy)
-MAX_CORRECTION = 1.25            # cap correction at ±25% to avoid runaway adjustment
-MIN_CORRECTION = 1.0 / 1.25
+N_PRIOR = 8                      # AGGRESSIVE: was 30, now 8. Means n=8 hits 50/50
+                                 # data/prior weight (was n=30 for 50/50). User
+                                 # explicitly chose more aggressive learning over
+                                 # safety: "we are okay with misses we just want data."
+MIN_SAMPLE_FOR_ANY_CORRECTION = 1  # AGGRESSIVE: was 3, now 1. Even a single settled
+                                   # outcome contributes a (tiny) correction.
+MAX_CORRECTION = 1.35            # AGGRESSIVE: was 1.25, now 1.35 (+/-35%). The
+                                 # data is trusted to move further per refresh.
+MIN_CORRECTION = 1.0 / 1.35
 
 
 def _within_window(date_str: str, today: dt.date, n_days: int) -> bool:

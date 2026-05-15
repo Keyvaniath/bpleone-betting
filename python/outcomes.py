@@ -100,6 +100,9 @@ def batters_from_boxscore(bs: Dict[str, Any]) -> Dict[int, Dict[str, Any]]:
                 "pa": int(stats.get("plateAppearances") or 0),
                 "hits": hits,
                 "hr": hr,
+                "doubles": doubles,
+                "triples": triples,
+                "singles": singles,
                 "total_bases": tb,
                 "rbi": int(stats.get("rbi") or 0),
                 "runs": int(stats.get("runs") or 0),
@@ -144,6 +147,22 @@ def settle_prop(prop: Dict[str, Any], outcomes_for_game: Dict[str, Any]) -> Opti
         actual = (outcomes_for_game.get("batters", {}).get(pid) or {}).get("hits")
     elif market == "batter_total_bases":
         actual = (outcomes_for_game.get("batters", {}).get(pid) or {}).get("total_bases")
+    elif market == "batter_runs_scored":
+        actual = (outcomes_for_game.get("batters", {}).get(pid) or {}).get("runs")
+    elif market == "batter_rbis":
+        actual = (outcomes_for_game.get("batters", {}).get(pid) or {}).get("rbi")
+    elif market == "batter_doubles":
+        b = (outcomes_for_game.get("batters", {}).get(pid) or {})
+        # Box score doesn't include doubles directly; compute from totals.
+        # batters_from_boxscore captures doubles when present; use that.
+        actual = b.get("doubles")
+    elif market == "batter_singles":
+        b = (outcomes_for_game.get("batters", {}).get(pid) or {})
+        actual = b.get("singles") if "singles" in b else None
+    elif market == "batter_hits_runs_rbis":
+        b = (outcomes_for_game.get("batters", {}).get(pid) or {})
+        h = b.get("hits"); r_ = b.get("runs"); rbi = b.get("rbi")
+        actual = (h + r_ + rbi) if all(v is not None for v in (h, r_, rbi)) else None
     else:
         return None
     if actual is None:

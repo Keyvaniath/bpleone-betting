@@ -397,7 +397,7 @@ fetch("data/today.json", { cache: "no-cache" })
     // Banner pill for calibration state
     const headPill = document.querySelector(".play-card .card-head .pill");
     if (headPill && isPreCal) {
-      headPill.innerHTML = "&#9733; PLAY OF THE DAY <span style='font-size:9px; margin-left:6px; opacity:0.7;'>(model in calibration)</span>";
+      headPill.innerHTML = "&#9733; PLAY OF THE DAY <span style='font-size:9px; margin-left:6px; opacity:0.7;'>(self-training mode)</span>";
     }
 
     // Key metrics strip
@@ -687,10 +687,10 @@ fetch("data/track_record.json", { cache: "no-cache" })
       const note = document.createElement("div");
       note.id = "calProgress";
       note.style.cssText = "grid-column: 1 / -1; font-family:'JetBrains Mono',monospace; font-size:11px; color:#d4a04a; padding:8px 0 0; opacity:0.9;";
-      if (total > 0 && total < 30) {
-        note.innerHTML = `* model in calibration -- ${total}/30 LIVE settled outcomes before bias correction is fully data-driven <a href="learning.html" style="color:#d4a04a; text-decoration: underline; margin-left:6px;">dig in &rarr;</a>`;
+      if (total > 0 && total < 8) {
+        note.innerHTML = `* self-training mode -- ${total}/8 LIVE settled outcomes; corrections kick in fully at n=8 (was n=30). Misses are welcome; the loop learns from every settlement. <a href="learning.html" style="color:#d4a04a; text-decoration: underline; margin-left:6px;">dig in &rarr;</a>`;
       } else if (propsBackfill.length > 0) {
-        note.innerHTML = `* hero stats above are LIVE plays only (${total} settled). Model is calibration-trained on <strong>${propsBackfill.length}</strong> retrospective backfilled outcomes; <a href="learning.html" style="color:#d4a04a; text-decoration: underline;">see per-market progress &rarr;</a>`;
+        note.innerHTML = `* hero stats above are LIVE plays only (${total} settled). Model is self-training on <strong>${propsBackfill.length}</strong> backfilled outcomes + every new settlement; <a href="learning.html" style="color:#d4a04a; text-decoration: underline;">see per-market progress &rarr;</a>`;
       }
       if (note.innerHTML) stats.appendChild(note);
     }
