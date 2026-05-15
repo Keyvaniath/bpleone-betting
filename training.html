@@ -99,6 +99,18 @@
     </div>
   </div>
 
+  <section id="walkFwdCard" class="card" style="margin-bottom: 24px; display:none;">
+    <div class="card-head"><span>Walk-Forward Backtest -- Is the Loop Actually Training?</span><span class="muted" id="wfRefresh"></span></div>
+    <div id="wfBody" style="padding: 14px;"></div>
+    <p class="muted" style="font-size: 11px; padding: 0 16px 14px;">Slides a 3-day window across track_record. For each window, applies the bias correction fit from history ONLY (never future data). If the model is genuinely learning, Brier should shrink window over window.</p>
+  </section>
+
+  <section id="playerBiasCard" class="card" style="margin-bottom: 24px; display:none;">
+    <div class="card-head"><span>Per-Player Bias Overrides</span><span class="muted" id="pbCount"></span></div>
+    <p class="muted" style="font-size: 12px; padding: 6px 16px 0;">Players with z-score &gt;= 2 systematic residual where the market-level bias can't fix the structural error. props_pipeline applies these as a multiplicative override on top of the market-level correction.</p>
+    <div id="pbList" style="padding: 6px 0;"></div>
+  </section>
+
   <section class="card" style="margin-bottom: 24px;">
     <div class="card-head"><span>Per-Market Training Progress</span><span class="muted" id="trMarketCount"></span></div>
     <div class="market-bar head">
@@ -148,7 +160,9 @@ Promise.all([
   fetch("data/track_record.json", { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
   fetch("data/residuals.json", { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
   fetch("data/anomalies.json", { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
-]).then(([conf, cal, tr, res, anom]) => {
+  fetch("data/walk_forward.json", { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
+  fetch("data/player_bias.json", { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
+]).then(([conf, cal, tr, res, anom, wf, pb]) => {
   // Hero score
   if (conf && conf.score != null) {
     const c = TIER_COLORS[conf.tier] || TIER_COLORS.yellow;
@@ -225,6 +239,66 @@ Promise.all([
       <li>Park-specific bias slicing requires venue tagging on every record; will improve as backfill is re-run with park metadata.</li>
     </ul>`;
   document.getElementById("trKnowsDoesnt").innerHTML = knowsHtml;
+
+  // Walk-forward panel
+  if (wf && wf.by_market && Object.keys(wf.by_market).length) {
+    document.getElementById("walkFwdCard").style.display = "block";
+    document.getElementById("wfRefresh").textContent = `refreshed ${(wf.generated_at || "").replace("T", " ")} UTC`;
+    const sum = wf.summary || {};
+    const tile = (label, list, color) => `
+      <div style="padding: 10px 14px; background: rgba(255,255,255,0.02); border-radius: 6px; flex: 1; min-width: 200px;">
+        <div style="font-size:10px; text-transform:uppercase; color: ${color}; letter-spacing: 0.05em; margin-bottom: 6px;">${label} (${(list||[]).length})</div>
+        ${(list||[]).map(m => `<div style="font-family:'JetBrains Mono',monospace; font-size:11px; padding: 2px 0;">${m.market.replace(/_/g,' ')} <span style="float:right; color:${color};">Δbrier ${m.brier_delta >= 0 ? '+' : ''}${m.brier_delta}</span></div>`).join("") || '<span class="muted" style="font-size:11px;">none</span>'}
+      </div>`;
+    const tiles = `<div style="display:flex; gap:14px; flex-wrap:wrap;">
+      ${tile("Improving", sum.improving, "#58c878")}
+      ${tile("Flat", sum.flat, "#d4a04a")}
+      ${tile("Degrading", sum.degrading, "#e35a5a")}
+    </div>`;
+    // Per-market table: first vs last Brier
+    const rows = Object.entries(wf.by_market).map(([mk, wins]) => {
+      if (!wins || !wins.length) return "";
+      const first = wins[0], last = wins[wins.length - 1];
+      const delta = (first.brier ?? 0) - (last.brier ?? 0);
+      const cls = delta > 0.005 ? "good" : delta < -0.005 ? "bad" : "flat";
+      const arrow = delta > 0.005 ? "↓ improving" : delta < -0.005 ? "↑ degrading" : "→ flat";
+      const color = delta > 0.005 ? "#58c878" : delta < -0.005 ? "#e35a5a" : "var(--muted, #888)";
+      return `<div style="display:grid; grid-template-columns: 1.4fr 0.7fr 0.7fr 0.7fr 1fr; gap:14px; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.04); font-family:'JetBrains Mono',monospace; font-size: 12px;">
+        <span>${mk.replace(/_/g, " ")}</span>
+        <span>n=${wins.length}</span>
+        <span>${first.brier?.toFixed(4) ?? "--"}</span>
+        <span>${last.brier?.toFixed(4) ?? "--"}</span>
+        <span style="color: ${color};">${arrow} (Δ${delta.toFixed(4)})</span>
+      </div>`;
+    }).join("");
+    document.getElementById("wfBody").innerHTML = `
+      ${tiles}
+      <div style="margin-top: 18px;">
+        <div style="display:grid; grid-template-columns: 1.4fr 0.7fr 0.7fr 0.7fr 1fr; gap:14px; padding: 6px 0; color: var(--muted, #888); font-size: 10px; text-transform: uppercase;">
+          <span>Market</span><span>Windows</span><span>First Brier</span><span>Last Brier</span><span>Trend</span>
+        </div>
+        ${rows}
+      </div>`;
+  }
+
+  // Per-player bias panel
+  if (pb && pb.by_pid_market && Object.keys(pb.by_pid_market).length) {
+    document.getElementById("playerBiasCard").style.display = "block";
+    const entries = Object.entries(pb.by_pid_market);
+    document.getElementById("pbCount").textContent = `${entries.length} override${entries.length === 1 ? "" : "s"}`;
+    document.getElementById("pbList").innerHTML = entries.map(([k, v]) => {
+      const color = v.boost_factor > 1 ? "#58c878" : "#e35a5a";
+      const arrow = v.boost_factor > 1 ? "↑ boost" : "↓ shrink";
+      return `<div style="display:grid; grid-template-columns: 220px 200px 60px 80px 100px auto; gap:14px; padding: 6px 14px; border-bottom: 1px solid rgba(255,255,255,0.04); font-family:'JetBrains Mono',monospace; font-size: 12px; align-items:center;">
+        <span><a href="player.html?id=${v.player_id}" style="color: var(--text); text-decoration: underline; text-decoration-color: rgba(255,255,255,0.15);">${v.player}</a></span>
+        <span>${v.market.replace(/_/g, " ")}</span>
+        <span>n=${v.n}</span>
+        <span>z=${v.z_score}</span>
+        <span style="color: ${color};">${arrow} ${((v.boost_factor - 1) * 100).toFixed(1)}%</span>
+        <span class="muted" style="font-size: 10px;">${v.note}</span>
+      </div>`;
+    }).join("");
+  }
 });
 </script>
 
