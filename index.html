@@ -128,15 +128,14 @@
     </div>
 
     <div class="card">
-      <div class="card-head"><span class="pill blue">SHARP MONEY FLOW</span><span class="muted">last 60 min</span></div>
-      <ul class="flow-list">
-        <li><span class="team">YANKEES -1.5</span><span class="flow up">+78% handle</span></li>
-        <li><span class="team">BRAVES ML</span><span class="flow up">+62% handle</span></li>
-        <li><span class="team">CUBS / WSH U8.5</span><span class="flow up">+54% handle</span></li>
-        <li><span class="team">METS ML</span><span class="flow down">-31% handle</span></li>
-        <li><span class="team">ASTROS -1.5</span><span class="flow up">+44% handle</span></li>
+      <div class="card-head">
+        <span class="pill blue">LINE MOVEMENT (CLV)</span>
+        <span class="muted" id="clvPanelStamp">since morning open</span>
+      </div>
+      <ul class="flow-list" id="clvFlowList">
+        <li class="muted" style="text-align:center; padding:14px; font-style:italic;">Loading CLV captures...</li>
       </ul>
-      <a href="trends.html" class="link-arrow">View all flow →</a>
+      <a href="track-record.html" class="link-arrow">View full CLV log →</a>
     </div>
   </section>
 
@@ -398,17 +397,48 @@ fetch("data/today.json", { cache: "no-cache" })
 
 // Avg CLV tile -- pulls from data/clv_log.json so the metric strip
 // stops claiming a stale "+2.4%" CLV when the log has captured all-zeros.
+// ALSO populates the dashboard CLV / line-movement panel.
 fetch("data/clv_log.json", { cache: "no-cache" })
   .then(r => r.json())
   .then(c => {
     const recs = (c.records || []).filter(r => r.clv_pct != null);
     const el = document.getElementById("mClv");
-    if (!el) return;
-    if (!recs.length) { el.textContent = "--"; return; }
-    const avg = recs.reduce((s, r) => s + Number(r.clv_pct), 0) / recs.length;
-    el.textContent = (avg >= 0 ? "+" : "") + avg.toFixed(2) + "%";
+    if (el) {
+      if (!recs.length) { el.textContent = "--"; }
+      else {
+        const avg = recs.reduce((s, r) => s + Number(r.clv_pct), 0) / recs.length;
+        el.textContent = (avg >= 0 ? "+" : "") + avg.toFixed(2) + "%";
+      }
+    }
+
+    // Side-panel line-movement list (replaces the old fake "sharp flow" tile).
+    const list = document.getElementById("clvFlowList");
+    if (!list) return;
+    const stamp = document.getElementById("clvPanelStamp");
+    if (!recs.length) {
+      list.innerHTML = `<li class="muted" style="padding:14px; font-style:italic;">No CLV captures yet -- the 6 PM ET refresh writes closing prices and the morning's open captures the open. The first non-zero movement appears tomorrow.</li>`;
+      return;
+    }
+    // Sort by absolute movement, show the top 5 movers (anything that moved at all).
+    const moved = recs.filter(r => Math.abs(r.clv_pct) > 0.001)
+                      .sort((a, b) => Math.abs(b.clv_pct) - Math.abs(a.clv_pct))
+                      .slice(0, 5);
+    if (!moved.length) {
+      const lastDate = recs[recs.length - 1]?.date || "today";
+      if (stamp) stamp.textContent = lastDate;
+      list.innerHTML = `<li class="muted" style="padding:14px; font-style:italic;">${recs.length} line capture${recs.length===1?'':'s'} so far -- all unmoved. CLV starts showing real numbers once the closing-line refresh fires (6 PM ET cron).</li>`;
+      return;
+    }
+    if (stamp) stamp.textContent = "biggest moves";
+    list.innerHTML = moved.map(r => {
+      const isUp = r.clv_pct > 0;
+      return `<li><span class="team">${r.matchup} ${r.market.replace(/_/g,' ')}</span><span class="flow ${isUp ? 'up' : 'down'}">${isUp ? '+' : ''}${r.clv_pct.toFixed(2)}%</span></li>`;
+    }).join("");
   })
-  .catch(() => { const el = document.getElementById("mClv"); if (el) el.textContent = "--"; });
+  .catch(() => {
+    const el = document.getElementById("mClv"); if (el) el.textContent = "--";
+    const list = document.getElementById("clvFlowList"); if (list) list.innerHTML = `<li class="muted" style="padding:14px; font-style:italic;">clv_log.json not loaded yet.</li>`;
+  });
 
 // Sharp Money Alerts -- count any leg with a >=0.5% line-move snapshot.
 // Until we capture real line movement, show "--" instead of a fake "3".
