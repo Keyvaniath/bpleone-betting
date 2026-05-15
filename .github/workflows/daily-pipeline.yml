@@ -151,6 +151,15 @@ jobs:
         working-directory: python
         run: python param_recommender.py
 
+      # Override effect tracker: for each entry in config_history.json,
+      # compute pre/post 7-day Brier + hit rate from track_record. Lets the
+      # operator (and the recommender) see whether each tweak actually
+      # improved the model. Surfaces on /config.
+      - name: Measure override effects
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        working-directory: python
+        run: python override_effects.py
+
       # Pipeline health audit: empty/demo/stale-artifact detection.
       # Runs LAST so it captures the final state of every artifact.
       # Surfaces /audit.html.
