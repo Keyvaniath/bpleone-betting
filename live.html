@@ -291,6 +291,63 @@ function renderLiveClv() {
 }
 renderLiveClv();
 setInterval(renderLiveClv, 60000);
+
+// Live edge alerts: model live p_home_win vs book live implied prob.
+// When the model thinks the home team should be +X% and the book has them
+// at +Y%, the gap is a live-bet opportunity.
+function renderLiveEdges() {
+  fetch("data/live_edges.json", { cache: "no-cache" })
+    .then(r => r.json())
+    .then(d => {
+      const main = document.querySelector("main.container");
+      if (!main) return;
+      let section = document.getElementById("liveEdgesSection");
+      if (!section) {
+        section = document.createElement("section");
+        section.id = "liveEdgesSection";
+        section.className = "card";
+        section.style.marginBottom = "24px";
+        section.style.borderColor = "rgba(88,200,120,0.35)";
+        // Insert ABOVE the liveNowSection so edges grab the eyeball
+        const liveNow = document.getElementById("liveNowSection");
+        if (liveNow && liveNow.parentNode) {
+          liveNow.parentNode.insertBefore(section, liveNow);
+        } else {
+          main.appendChild(section);
+        }
+      }
+      const alerts = d.alerts || [];
+      if (!alerts.length) {
+        section.innerHTML = `<div class="card-head"><span>⚡ Live Edge Alerts</span><span class="muted">${d.n_alerts || 0} edges &middot; threshold ${d.edge_threshold_pp || 5}pp</span></div>
+          <p class="muted" style="padding:14px;">No live edges right now. The detector flags when the model's live win-probability diverges from the book's live implied probability by ≥ ${d.edge_threshold_pp || 5}pp.</p>`;
+        return;
+      }
+      const rows = alerts.map(a => {
+        const sideColor = a.side === "HOME" ? "#58c878" : "#22d3ee";
+        return `<div style="display:grid; grid-template-columns: 1.4fr 0.6fr 1.2fr 1fr 1fr 1fr 0.8fr; gap:14px; padding:12px 14px; border-bottom:1px solid rgba(255,255,255,0.04); font-family:'JetBrains Mono',monospace; font-size:12px; align-items:center;">
+          <span><strong>${a.matchup}</strong></span>
+          <span style="color:${sideColor}; font-weight:700;">${a.side}</span>
+          <span class="muted" style="font-size:11px;">${a.live_state}</span>
+          <span>Model: ${(a.model_p_home_win * 100).toFixed(1)}%<br><span class="muted" style="font-size:10px;">Book: ${(a.book_implied_p_home_win * 100).toFixed(1)}%</span></span>
+          <span><strong style="color:#58c878;">+${a.edge_pct}%</strong> edge</span>
+          <span>${a.current_ml >= 0 ? '+' : ''}${a.current_ml}<br><span class="muted" style="font-size:10px;">fair ${a.fair_ml >= 0 ? '+' : ''}${a.fair_ml}</span></span>
+          <span><strong>${a.recommend_stake_units}u</strong><br><span class="muted" style="font-size:10px;">¼-Kelly</span></span>
+        </div>`;
+      }).join("");
+      section.innerHTML = `<div class="card-head">
+          <span>⚡ Live Edge Alerts</span>
+          <span class="muted">${alerts.length} live edge${alerts.length===1?'':'s'} &middot; threshold ${d.edge_threshold_pp}pp &middot; refreshes every 10 min</span>
+        </div>
+        <div style="display:grid; grid-template-columns: 1.4fr 0.6fr 1.2fr 1fr 1fr 1fr 0.8fr; gap:14px; padding: 6px 14px; color: var(--muted, #888); font-size: 10px; text-transform: uppercase;">
+          <span>Matchup</span><span>Side</span><span>Game State</span><span>Probs</span><span>Edge</span><span>Live ML</span><span>Stake</span>
+        </div>
+        ${rows}
+        <p class="muted" style="font-size:11px; padding: 10px 14px 0;">Refreshes every 10 min during games. ¼-Kelly stake capped at 1.5u. Alert fires when |model_p_win − book_implied_p_win| ≥ ${d.edge_threshold_pp}pp.</p>`;
+    })
+    .catch(err => console.error("live_edges load failed:", err));
+}
+renderLiveEdges();
+setInterval(renderLiveEdges, 60000);
 </script>
 </body>
 </html>
