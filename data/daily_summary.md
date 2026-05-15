@@ -63,16 +63,16 @@ _Generated at 2026-05-15T18:53:03 UTC. Game lines source: **Bovada (fallback -- 
 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
-| batter hits | 12888 | 39.7% | 41.6% | 1.046 | 0.956 |
-| batter runs scored | 6441 | 37.2% | 38.7% | 1.039 | 0.963 |
-| batter doubles | 6441 | 14.8% | 15.9% | 1.069 | 0.935 |
-| batter rbis | 12882 | 19.7% | 23.1% | 1.170 | 0.855 |
-| batter singles | 6441 | 43.7% | 44.4% | 1.017 | 0.983 |
-| batter home runs | 6441 | 11.0% | 12.7% | 1.157 | 0.864 |
-| pitcher strikeouts | 2810 | 32.3% | 37.9% | 1.171 | 0.854 |
-| batter total bases | 12889 | 26.3% | 31.6% | 1.202 | 0.832 |
+| batter rbis | 13242 | 19.7% | 23.1% | 1.170 | 0.855 |
+| batter singles | 6621 | 43.6% | 44.4% | 1.020 | 0.981 |
+| pitcher strikeouts | 2880 | 32.4% | 38.1% | 1.176 | 0.851 |
+| batter total bases | 13244 | 26.3% | 31.6% | 1.203 | 0.831 |
+| batter runs scored | 6621 | 37.2% | 38.7% | 1.040 | 0.962 |
+| batter home runs | 6621 | 11.0% | 12.7% | 1.157 | 0.864 |
+| batter hits | 13244 | 39.7% | 41.6% | 1.048 | 0.955 |
+| batter doubles | 6621 | 14.9% | 15.9% | 1.067 | 0.937 |
 
-Cumulative graded plays: 67226. Wins: 49676. Hit rate: 73.9%.
+Cumulative graded plays: 118201. Wins: 87361. Hit rate: 73.9%.
 
 ## Auxiliary Markets (Model Fair Prices)
 
@@ -116,6 +116,19 @@ Cumulative graded plays: 67226. Wins: 49676. Hit rate: 73.9%.
 - CIN: 9.0 IP across 2 games
 - COL: 11.3 IP across 2 games
 - WSH: 10.2 IP across 2 games
+
+## Loop Activity (since last refresh)
+
+- Confidence delta: **+0.0**
+
+## Model Recommendations (operator review)
+
+_The model is suggesting 2 parameter tweaks based on its own performance. Apply via `data/runtime_config.json` on `/config`._
+
+- **[MEDIUM] `calibration.n_prior_default`** ↓ 8 -> **5**
+  - _1 market(s) have n>=200 but |residual|>0.4 -- prior is over-anchoring. Lowering N_PRIOR will let data correct faster._
+- **[MEDIUM] `live_edges.edge_threshold_pp`** ↓ 5.0 -> **3.5**
+  - _Zero live edge alerts in last 24h despite live props being priced. Threshold may be too tight to surface anything actionable._
 
 ---
 

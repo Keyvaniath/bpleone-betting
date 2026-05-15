@@ -99,6 +99,21 @@
     <p id="confidenceMessage" style="margin: 10px 0 0 0; font-size:12px; color:var(--text-2,#aaa);"></p>
   </section>
 
+  <!-- Recent Loop Activity: training_feedback.json + param_recommendations.json -->
+  <section id="loopActivityCard" style="display:none; margin: 0 0 18px 0; padding: 14px 18px; border-radius: 8px; font-family: 'JetBrains Mono', monospace; border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.02);">
+    <div style="display:flex; align-items:center; justify-content:space-between; gap: 18px; flex-wrap:wrap;">
+      <div style="display:flex; align-items:baseline; gap:14px; flex-wrap:wrap;">
+        <span style="font-size:11px; text-transform:uppercase; letter-spacing:0.1em; color: var(--muted, #888);">Loop Activity</span>
+        <span id="loopSummary" style="font-size:13px;"></span>
+      </div>
+      <div style="display:flex; gap:10px; align-items:center;">
+        <span id="loopRecsPill" style="display:none; padding:3px 10px; border-radius:4px; font-size:10px; text-transform:uppercase; letter-spacing:0.06em; background:#d4a04a; color:#1a1a1a; font-weight:700;"></span>
+        <a href="training.html" style="font-size:11px; color: var(--text-2, #aaa); text-decoration: underline;">/training</a>
+        <a href="config.html" style="font-size:11px; color: var(--text-2, #aaa); text-decoration: underline;">/config</a>
+      </div>
+    </div>
+  </section>
+
   <!-- KEY METRICS STRIP -->
   <section class="metric-strip">
     <div class="metric"><span class="metric-num" id="mEdges">17</span><span class="metric-label">Edges Found Today</span></div>
@@ -521,6 +536,36 @@ fetch("data/model_confidence.json", { cache: "no-cache" })
   })
   .catch(() => {});
 
+// Loop Activity card (training_feedback + recommendations)
+Promise.all([
+  fetch("data/training_feedback.json", { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
+  fetch("data/param_recommendations.json", { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
+]).then(([fb, rec]) => {
+  const card = document.getElementById("loopActivityCard");
+  if (!card) return;
+  const entries = (fb && fb.entries) || [];
+  const recs = (rec && rec.recommendations) || [];
+  if (!entries.length && !recs.length) return;
+  card.style.display = "block";
+  const latest = entries.length ? entries[entries.length - 1] : null;
+  const summary = document.getElementById("loopSummary");
+  if (latest) {
+    const cd = latest.confidence_delta;
+    const cdSpan = cd === null || cd === undefined
+      ? ""
+      : `<span style="color:${cd > 0 ? '#58c878' : cd < 0 ? '#e35a5a' : 'var(--muted, #888)'}; margin-right: 12px;">Δconf ${cd > 0 ? '+' : ''}${cd}</span>`;
+    summary.innerHTML = `${cdSpan}<span style="color: var(--text-2, #aaa);">${latest.summary || ''}</span>`;
+  } else {
+    summary.innerHTML = `<span class="muted">No activity logged yet.</span>`;
+  }
+  if (recs.length) {
+    const pill = document.getElementById("loopRecsPill");
+    pill.style.display = "inline-block";
+    pill.textContent = `${recs.length} rec${recs.length === 1 ? "" : "s"}`;
+    pill.title = recs.map(r => `${r.key}: ${r.current} → ${r.suggested}`).join("\n");
+  }
+}).catch(() => {});
+
 // Edges-by-Type sortable panel (also loaded from top_plays.json -- richer view than the simple list above)
 let edgesState = { all: [], type: "", minProb: 0, playable: "", sort: "quality_score" };
 function renderEdgesTable() {
@@ -705,5 +750,6 @@ fetch("data/track_record.json", { cache: "no-cache" })
   });
 </script>
 
+<script src="js/nav_badge.js"></script>
 </body>
 </html>
