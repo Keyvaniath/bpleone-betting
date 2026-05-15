@@ -35,11 +35,15 @@ jobs:
         working-directory: python
         run: python live_clv.py
 
+      - name: Compute live edges (model p_win vs book live ML)
+        working-directory: python
+        run: python live_edges.py
+
       - name: Commit if state changed
         run: |
           git config user.name  "edgestat-bot"
           git config user.email "actions@github.com"
-          git add data/live_state.json data/live_clv.json
+          git add data/live_state.json data/live_clv.json data/live_edges.json
           if git diff --cached --quiet; then
             echo "No live games or no state changes."
           else
