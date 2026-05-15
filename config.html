@@ -57,6 +57,26 @@
     </p>
   </section>
 
+  <section id="trustCard" class="card" style="margin-bottom: 18px; display: none;">
+    <div class="card-head"><span>Model Trust Score</span><span class="muted" id="trustRefresh"></span></div>
+    <div style="padding: 14px; display: flex; align-items: center; gap: 24px; flex-wrap: wrap;">
+      <div>
+        <div style="font-size: 11px; text-transform: uppercase; color: var(--muted, #888); letter-spacing: 0.08em;">Trust</div>
+        <div style="display: flex; align-items: baseline; gap: 10px; margin-top: 4px;">
+          <span id="trustScore" style="font-size: 38px; font-weight: 700; font-family: 'JetBrains Mono', monospace;">--</span>
+          <span id="trustTier" style="padding: 3px 10px; border-radius: 4px; font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700;">--</span>
+        </div>
+      </div>
+      <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; display: grid; grid-template-columns: repeat(3, auto); gap: 6px 20px; color: var(--text-2, #aaa);">
+        <span>Total recs:</span><span id="trustTotal" style="color: var(--text);">--</span><span></span>
+        <span>Applied:</span><span id="trustApplied" style="color: var(--text);">--</span><span>(<span id="trustIgnored">--</span> ignored)</span>
+        <span>Concluded:</span><span id="trustConcluded" style="color: var(--text);">--</span><span>(need 3+ for score)</span>
+      </div>
+      <div id="trustBreakdown" style="font-family: 'JetBrains Mono', monospace; font-size: 11px; display: flex; gap: 18px;"></div>
+    </div>
+    <p class="muted" style="font-size: 11px; padding: 0 16px 14px;">Trust = (improved recs) / (concluded recs). High trust = take suggestions more confidently. Concluded = applied long enough to measure with 50+ records pre and post.</p>
+  </section>
+
   <section id="recsCard" class="card" style="margin-bottom: 18px; display: none; border-color: rgba(212,160,74,0.35);">
     <div class="card-head"><span style="color: #d4a04a;">Model Recommendations</span><span class="muted" id="recsRefresh"></span></div>
     <div style="padding: 6px 14px 14px;">
@@ -187,6 +207,40 @@ fetch("data/config_history.json", { cache: "no-cache" })
         <span style="color: ${color};">${newStr}</span>
       </div>`;
     }).join("");
+  })
+  .catch(() => {});
+
+// Model trust score
+fetch("data/recommendation_trust.json", { cache: "no-cache" })
+  .then(r => r.json())
+  .then(t => {
+    if (!t || t.n_total_recs === undefined) return;
+    document.getElementById("trustCard").style.display = "block";
+    document.getElementById("trustRefresh").textContent = (t.generated_at || "").replace("T", " ") + " UTC";
+    const tierColors = {
+      "trusted":    {bg: "#58c878", fg: "#1a1a1a"},
+      "mixed":      {bg: "#d4a04a", fg: "#1a1a1a"},
+      "unreliable": {bg: "#e35a5a", fg: "#1a1a1a"},
+      "unproven":   {bg: "#888",    fg: "#1a1a1a"},
+    };
+    const c = tierColors[t.tier] || tierColors.unproven;
+    document.getElementById("trustScore").textContent = t.trust_score !== null ? (t.trust_score * 100).toFixed(0) + "%" : "--";
+    document.getElementById("trustScore").style.color = c.bg;
+    const tierEl = document.getElementById("trustTier");
+    tierEl.textContent = t.tier;
+    tierEl.style.background = c.bg;
+    tierEl.style.color = c.fg;
+    document.getElementById("trustTotal").textContent = t.n_total_recs;
+    document.getElementById("trustApplied").textContent = t.n_applied;
+    document.getElementById("trustIgnored").textContent = t.n_ignored;
+    document.getElementById("trustConcluded").textContent = t.n_concluded;
+    const bd = document.getElementById("trustBreakdown");
+    if (t.n_concluded > 0) {
+      bd.innerHTML = `
+        <span><span style="color:#58c878;">●</span> improved: <strong>${t.n_improved}</strong></span>
+        <span><span style="color:#d4a04a;">●</span> flat: <strong>${t.n_flat}</strong></span>
+        <span><span style="color:#e35a5a;">●</span> degraded: <strong>${t.n_degraded}</strong></span>`;
+    }
   })
   .catch(() => {});
 

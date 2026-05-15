@@ -1,0 +1,71 @@
+{
+  "generated_at": "2026-05-15T13:50:55",
+  "n_total_recs": 3,
+  "n_applied": 0,
+  "n_ignored": 3,
+  "n_concluded": 0,
+  "n_improved": 0,
+  "n_degraded": 0,
+  "n_flat": 0,
+  "trust_score": null,
+  "tier": "unproven",
+  "history": [
+    {
+      "hash": "calibration.n_prior_default|5",
+      "first_seen_ts": "2026-05-15T13:50:55",
+      "key": "calibration.n_prior_default",
+      "suggested": 5,
+      "current_when_seen": 8,
+      "severity": "medium",
+      "direction": "decrease",
+      "rationale": "1 market(s) have n>=200 but |residual|>0.4 -- prior is over-anchoring. Lowering N_PRIOR will let data correct faster.",
+      "applied_ts": null,
+      "applied_value": null,
+      "verdict": null,
+      "brier_delta": null,
+      "hit_rate_delta": null
+    },
+    {
+      "hash": "live_edges.edge_threshold_pp|3.5",
+      "first_seen_ts": "2026-05-15T13:50:55",
+      "key": "live_edges.edge_threshold_pp",
+      "suggested": 3.5,
+      "current_when_seen": 5.0,
+      "severity": "medium",
+      "direction": "decrease",
+      "rationale": "Zero live edge alerts in last 24h despite live props being priced. Threshold may be too tight to surface anything actionable.",
+      "applied_ts": null,
+      "applied_value": null,
+      "verdict": null,
+      "brier_delta": null,
+      "hit_rate_delta": null
+    },
+    {
+      "hash": "calibration.n_prior_per_market|{\"batter_hits\": 4, \"batter_home_runs\": 10, \"batter_rbis\": 8, \"batter_singles\": 4, \"batter_total_bases\": 4}",
+      "first_seen_ts": "2026-05-15T13:50:55",
+      "key": "calibration.n_prior_per_market",
+      "suggested": {
+        "batter_hits": 4,
+        "batter_total_bases": 4,
+        "batter_home_runs": 10,
+        "batter_rbis": 8,
+        "batter_singles": 4
+      },
+      "current_when_seen": {
+        "batter_hits": 6,
+        "batter_total_bases": 6,
+        "batter_home_runs": 12,
+        "batter_rbis": 10,
+        "batter_singles": 6
+      },
+      "severity": "medium",
+      "direction": "decrease",
+      "rationale": "5 market(s) plateau or degrading on learning curve despite n>=500. Loosen the per-market prior anchor so data carries more weight.",
+      "applied_ts": null,
+      "applied_value": null,
+      "verdict": null,
+      "brier_delta": null,
+      "hit_rate_delta": null
+    }
+  ]
+}

@@ -185,6 +185,15 @@ jobs:
         working-directory: python
         run: python override_effects.py
 
+      # Recommendation trust score: ties together param_recommendations history,
+      # config_history (which recs were applied), and override_effects (which
+      # applied recs actually improved metrics). Computes "model trust" pill
+      # for /config -- empirical credibility of the recommender over time.
+      - name: Score recommendation trust
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        working-directory: python
+        run: python recommendation_trust.py
+
       # Pipeline health audit: empty/demo/stale-artifact detection.
       # Runs LAST so it captures the final state of every artifact.
       # Surfaces /audit.html.
