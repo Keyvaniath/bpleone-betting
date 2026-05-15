@@ -225,17 +225,26 @@ def build_all_matchups(today_json_path: Optional[str] = None) -> Dict[str, Any]:
                        if k in ("ump_name", "ump_label", "ump_k_mult")}
         # Confirmed lineups (when posted ~1-2hrs pre-game) for both sides
         gpk = meta.get("gamePk")
+        home_pid = meta.get("home_pitcher_id")
+        away_pid = meta.get("away_pitcher_id")
         try:
             lups = sr.game_lineups(gpk) if gpk else {"home": {}, "away": {}}
+            home_list = sorted([{"id": pid, **info} for pid, info in lups.get("home", {}).items()],
+                                key=lambda x: x.get("order", 99))
+            away_list = sorted([{"id": pid, **info} for pid, info in lups.get("away", {}).items()],
+                                key=lambda x: x.get("order", 99))
+            # H2H: each batter vs the OPPOSING starting pitcher (career)
+            def with_h2h(batters, opp_pitcher_pid):
+                out = []
+                for b in batters:
+                    h2h = sr.pitcher_vs_batter(opp_pitcher_pid, b["id"]) if opp_pitcher_pid else {}
+                    out.append({**b, "vs_pitcher_career": h2h})
+                return out
             m["lineups"] = {
                 "home_posted": bool(lups.get("home")),
                 "away_posted": bool(lups.get("away")),
-                "home": sorted(
-                    [{"id": pid, **info} for pid, info in lups.get("home", {}).items()],
-                    key=lambda x: x.get("order", 99)),
-                "away": sorted(
-                    [{"id": pid, **info} for pid, info in lups.get("away", {}).items()],
-                    key=lambda x: x.get("order", 99)),
+                "home": with_h2h(home_list, away_pid),
+                "away": with_h2h(away_list, home_pid),
             }
         except Exception:
             m["lineups"] = {"home_posted": False, "away_posted": False, "home": [], "away": []}

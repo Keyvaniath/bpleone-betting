@@ -215,6 +215,71 @@
 <script>
 // Live data overlay: pulls today.json + matchups.json to overwrite the hero
 // + factor decomposition with the actual Play of Day for this slate.
+// Also pull matchups.json for pitcher arsenal + lineup + weather context
+let matchupsData = null;
+fetch("data/matchups.json", { cache: "no-cache" })
+  .then(r => r.json())
+  .then(m => { matchupsData = m; renderArsenalForPod(); })
+  .catch(() => {});
+
+function renderArsenalForPod() {
+  if (!matchupsData || !matchupsData.games) return;
+  // Find a place to insert the pitcher details below the existing grid
+  const existing = document.getElementById("podPitcherDetails");
+  if (existing) return;   // already rendered
+  // Wait for today.json to have completed and rewritten the matchup title
+  setTimeout(() => {
+    const titleEl = document.querySelector(".play-hero h1");
+    if (!titleEl) return;
+    const matchup = titleEl.textContent.trim().split(" ")[0] + " @ " +
+                    titleEl.textContent.trim().split(" ")[2];
+    const matchData = matchupsData.games.find(g => g.matchup && g.matchup.startsWith(titleEl.textContent.trim().split(" ")[0]));
+    if (!matchData) return;
+    const wrap = document.createElement("section");
+    wrap.id = "podPitcherDetails";
+    wrap.className = "card";
+    wrap.style.marginBottom = "24px";
+    const renderP = (p, label) => {
+      if (!p || !p.id) return `<div class="empty">${label}: TBD</div>`;
+      const arsenal = (p.arsenal || []).map(a => `
+        <div style="display:grid; grid-template-columns: 1.4fr 0.7fr 0.7fr 0.7fr 0.7fr; gap:6px; font-size:11px; padding:2px 0; font-family:'JetBrains Mono',monospace;">
+          <span><strong>${a.pitch || "?"}</strong> <span class="muted">${a.type || ""}</span></span>
+          <span class="muted">${a.usage_pct != null ? a.usage_pct.toFixed(1) + "%" : "--"}</span>
+          <span>${a.whiff_pct != null ? "Whiff " + a.whiff_pct.toFixed(0) + "%" : "--"}</span>
+          <span>${a.k_pct != null ? "K " + a.k_pct.toFixed(0) + "%" : "--"}</span>
+          <span style="color:${a.xwoba && a.xwoba < 0.300 ? '#58c878' : a.xwoba && a.xwoba > 0.380 ? '#e35a5a' : '#888'};">xwOBA ${a.xwoba != null ? a.xwoba.toFixed(3) : "--"}</span>
+        </div>`).join("");
+      const s = p.season || {};
+      const c = p.career || {};
+      const sl = p.splits || {};
+      return `<div>
+        <div style="font-weight:600; margin-bottom:8px;">${p.name} <span class="muted">(${label} -- ${p.hand}HP)</span></div>
+        <div style="font-family:'JetBrains Mono',monospace; font-size:12px;">
+          <div class="muted" style="font-size:10px;">SEASON</div>
+          <div>${s.ip ?? "?"} IP, ${s.era ?? "?"} ERA, ${s.fip ?? "?"} FIP, K/9 ${s.k9 ?? "?"}, BB/9 ${s.bb9 ?? "?"}</div>
+          <div class="muted" style="font-size:10px; margin-top:6px;">CAREER</div>
+          <div>${c.ip ?? "?"} IP, ${c.era ?? "?"} ERA, ${c.fip ?? "?"} FIP</div>
+          ${sl.vsL && Object.keys(sl.vsL).length ? `<div class="muted" style="font-size:10px; margin-top:6px;">PLATOON</div><div>vs L: OPS ${sl.vsL.ops?.toFixed?.(3) ?? "?"} / vs R: OPS ${sl.vsR?.ops?.toFixed?.(3) ?? "?"}</div>` : ""}
+        </div>
+        ${arsenal ? `<div class="muted" style="font-size:10px; margin-top:10px;">PITCH ARSENAL (Statcast)</div>${arsenal}` : ""}
+        ${p.narrative && p.narrative.length ? `<ul style="margin-top:10px; padding-left:0; list-style:none;">${p.narrative.map(n => `<li style="font-size:12px; padding:3px 0; border-top:1px solid rgba(255,255,255,0.04);">» ${n}</li>`).join("")}</ul>` : ""}
+      </div>`;
+    };
+    wrap.innerHTML = `
+      <div class="card-head"><span>Starting Pitcher Deep Dive</span><span class="muted">Statcast + career + platoon splits + auto-narrative</span></div>
+      <div style="display:grid; grid-template-columns: 1fr 1fr; gap:24px; padding:14px 4px;">
+        ${renderP(matchData.away_pitcher, "AWAY SP")}
+        ${renderP(matchData.home_pitcher, "HOME SP")}
+      </div>`;
+    const main = document.querySelector("main.container");
+    if (main && main.firstElementChild) {
+      // Insert after the play-hero
+      const heroSection = main.querySelector(".play-hero");
+      if (heroSection) heroSection.parentNode.insertBefore(wrap, heroSection.nextSibling);
+    }
+  }, 800);
+}
+
 fetch("data/today.json", { cache: "no-cache" })
   .then(r => r.json())
   .then(d => {

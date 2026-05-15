@@ -282,6 +282,40 @@ def pitcher_recent_form(pid: int, n: int = 3) -> Dict[str, Any]:
     return out
 
 
+def pitcher_vs_batter(pid: int, bid: int) -> Dict[str, Any]:
+    """Career H2H stats: this pitcher vs this specific batter. Cached 7 days."""
+    if not pid or not bid:
+        return {}
+    cache_name = f"pvb_{pid}_{bid}"
+    cached = _cache_get(cache_name)
+    if cached is not None:
+        return cached
+    payload = _get(
+        f"{MLB_BASE}/people/{bid}/stats?stats=vsPlayer&opposingPlayerId={pid}&group=hitting",
+        None,   # already managing cache here with longer TTL via custom key
+    )
+    out: Dict[str, Any] = {}
+    if payload and payload.get("stats"):
+        splits = payload["stats"][0].get("splits", [])
+        if splits:
+            s = _coerce_stat(splits[0]["stat"])
+            ab = s.get("atBats")
+            if ab and ab > 0:
+                out = {
+                    "ab": int(ab),
+                    "hits": int(s.get("hits", 0) or 0),
+                    "hr": int(s.get("homeRuns", 0) or 0),
+                    "bb": int(s.get("baseOnBalls", 0) or 0),
+                    "so": int(s.get("strikeOuts", 0) or 0),
+                    "avg": s.get("avg"),
+                    "obp": s.get("obp"),
+                    "slg": s.get("slg"),
+                    "ops": s.get("ops"),
+                }
+    _cache_put(cache_name, out)
+    return out
+
+
 def pitcher_hand(pid: int) -> str:
     """L or R from /people/{id}."""
     payload = _get(f"{MLB_BASE}/people/{pid}", f"phand_{pid}")

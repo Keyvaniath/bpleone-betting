@@ -178,13 +178,36 @@ function renderLineups(l, home, away) {
   if (!l.home_posted && !l.away_posted) {
     return `<div class="market-line" style="font-size:11px; margin-top:4px; color:#888;">Lineups: not yet posted (typically 1-2 hours pre-game).</div>`;
   }
-  const fmt = (arr, code) => {
-    if (!arr || !arr.length) return `<span class="muted">${code}: TBD</span>`;
-    return `<span><strong>${code}:</strong> ${arr.slice(0, 9).map(p => `${p.order}. ${p.name?.split(' ').slice(-1)[0] || '?'} (${p.pos || '?'})`).join(", ")}</span>`;
+  // Detailed lineup grid with career H2H vs opposing starter
+  const renderTeamLineup = (arr, code, opposingPitcherName) => {
+    if (!arr || !arr.length) return `<div style="font-size:11px; color:#888;">${code}: lineup TBD</div>`;
+    const rows = arr.slice(0, 9).map(p => {
+      const h2h = p.vs_pitcher_career || {};
+      const has = h2h.ab && h2h.ab > 0;
+      const ops = has ? Number(h2h.ops || 0).toFixed(3) : "--";
+      const opsColor = has && Number(h2h.ops) > 0.850 ? "#58c878"
+                       : has && Number(h2h.ops) < 0.600 && h2h.ab >= 5 ? "#e35a5a"
+                       : "var(--muted, #888)";
+      const h2hStr = has
+        ? `<span style="color:${opsColor};">${h2h.hits}/${h2h.ab} (${ops}, ${h2h.hr}HR ${h2h.so}K)</span>`
+        : `<span class="muted">no career sample</span>`;
+      return `<div style="display:grid; grid-template-columns: 26px 1fr 1.4fr; gap:8px; font-size:11px; padding:1px 0;">
+        <span class="muted">${p.order}.</span>
+        <span><strong>${p.name}</strong> <span class="muted">(${p.pos || '?'})</span></span>
+        <span>${h2hStr}</span>
+      </div>`;
+    }).join("");
+    return `<div style="font-family:'JetBrains Mono',monospace; margin-bottom:6px;">
+      <div style="font-size:11px; color:#58c878; margin-bottom:2px;"><strong>${code}</strong> -- career vs ${opposingPitcherName || "opp SP"}</div>
+      ${rows}
+    </div>`;
   };
-  return `<div class="market-line" style="font-size:10px; margin-top:6px; line-height:1.6;">
-    <div>${fmt(l.away, away)}</div>
-    <div>${fmt(l.home, home)}</div>
+  return `<div class="market-line" style="margin-top:10px;">
+    <strong style="font-size:11px;">Confirmed Lineups + Career H2H (career H/AB, OPS, HR, K vs today's opposing starter):</strong>
+  </div>
+  <div style="display:grid; grid-template-columns: 1fr 1fr; gap:14px; margin-top:6px;">
+    ${renderTeamLineup(l.away, away, "")}
+    ${renderTeamLineup(l.home, home, "")}
   </div>`;
 }
 
