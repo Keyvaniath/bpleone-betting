@@ -20,52 +20,52 @@ _Generated at 2026-05-14T19:26:12 UTC. All game-line prices are from DraftKings.
 | 6:45p ET | BOS @ NYY | Yankee Stadium | 71F 12mph | OVER_9.0 +30.97% |
 | 9:40p ET | CIN @ COL | Coors Field | 74F 4mph | CIN_ML +40.74% |
 
-## PrizePicks - 67 lines softer than DraftKings
+## PrizePicks - 42 lines softer than DraftKings
 
 | Player | Market | PP line | DK line | Δ | Favor | Model % |
 |---|---|---|---|---|---|---|
-| Yordan Alvarez | Total Bases | 5.5 | 1.5 | +4.0 | UNDER | 96.4% |
 | Tyler O'Neill | Total Bases | 4.5 | 1.5 | +3.0 | UNDER | 99.7% |
-| Lourdes Gurriel Jr. | Total Bases | 4.5 | 1.5 | +3.0 | UNDER | 99.4% |
-| Ketel Marte | Total Bases | 5.5 | 2.5 | +3.0 | UNDER | 99.3% |
-| Geraldo Perdomo | Total Bases | 4.5 | 1.5 | +3.0 | UNDER | 99.3% |
+| Samuel Basallo | Total Bases | 4.5 | 1.5 | +3.0 | UNDER | 96.4% |
+| Adley Rutschman | Total Bases | 4.5 | 1.5 | +3.0 | UNDER | 95.4% |
 | James Wood | Total Bases | 4.5 | 1.5 | +3.0 | UNDER | 95.3% |
-| Aaron Judge | Total Bases | 4.5 | 1.5 | +3.0 | UNDER | 93.3% |
-| Ben Rice | Total Bases | 4.5 | 1.5 | +3.0 | UNDER | 93.1% |
-| Yordan Alvarez | Total Bases | 4.5 | 1.5 | +3.0 | UNDER | 90.4% |
-| Ryan Waldschmidt | Total Bases | 4.5 | 1.5 | +3.0 | UNDER | 70.0% |
 | Zack Littell | Pitcher Strikeouts | 5.5 | 3.5 | +2.0 | UNDER | 98.7% |
 | Tyler O'Neill | Total Bases | 3.5 | 1.5 | +2.0 | UNDER | 98.5% |
-| Ketel Marte | Total Bases | 4.5 | 2.5 | +2.0 | UNDER | 97.4% |
-| Lourdes Gurriel Jr. | Total Bases | 3.5 | 1.5 | +2.0 | UNDER | 97.3% |
-| Geraldo Perdomo | Total Bases | 3.5 | 1.5 | +2.0 | UNDER | 96.8% |
+| Angel Martínez | Total Bases | 3.5 | 1.5 | +2.0 | UNDER | 90.7% |
+| Chase DeLauter | Total Bases | 3.5 | 1.5 | +2.0 | UNDER | 90.1% |
+| Liam Hicks | Total Bases | 3.5 | 1.5 | +2.0 | UNDER | 90.0% |
+| Samuel Basallo | Total Bases | 3.5 | 1.5 | +2.0 | UNDER | 89.2% |
+| CJ Abrams | Total Bases | 3.5 | 1.5 | +2.0 | UNDER | 89.1% |
+| Adley Rutschman | Total Bases | 3.5 | 1.5 | +2.0 | UNDER | 87.2% |
+| James Wood | Total Bases | 3.5 | 1.5 | +2.0 | UNDER | 86.9% |
+| Will Smith | Total Bases | 2.5 | 4.5 | -2.0 | OVER | 77.4% |
+| Zack Littell | Pitcher Strikeouts | 4.5 | 3.5 | +1.0 | UNDER | 95.7% |
 
 ## Parlays - top 5
 
-- **2-leg @ +169 (prob 55.7%, EV +49.5%)**
+- **2-leg @ +454 (prob 27.0%, EV +49.94%)**
+  - Willy Adames OVER 0.5 batter_hits (+110, model 59.3%)
+  - Steven Kwan UNDER 0.5 batter_hits (+164, model 45.6%)
+- **2-leg @ +534 (prob 23.6%, EV +49.73%)**
+  - Jakob Marsee UNDER 0.5 batter_hits (+140, model 51.8%)
+  - Steven Kwan UNDER 0.5 batter_hits (+164, model 45.6%)
+- **2-leg @ +301 (prob 37.3%, EV +49.53%)**
+  - Rafael Devers OVER 0.5 batter_hits (+110, model 58.3%)
   - MIA @ TBR UNDER_8.0 (-110, model 64.0%)
-  - LAD @ LAA LAD_ML (-246, model 87.0%)
-- **2-leg @ +282 (prob 37.2%, EV +42.27%)**
-  - Freddie Freeman OVER 1.5 batter_total_bases (+125, model 55.4%)
-  - BAL @ WSN BAL_ML (-143, model 67.2%)
-- **2-leg @ +215 (prob 45.0%, EV +41.8%)**
-  - Geraldo Perdomo UNDER 1.5 batter_total_bases (-117, model 67.0%)
-  - BAL @ WSN BAL_ML (-143, model 67.2%)
-- **2-leg @ +330 (prob 33.0%, EV +41.73%)**
-  - Freddie Freeman OVER 1.5 batter_total_bases (+125, model 55.4%)
-  - MIL @ MIN UNDER_8.5 (-110, model 59.6%)
-- **2-leg @ +210 (prob 45.6%, EV +41.62%)**
-  - JJ Bleday OVER 0.5 batter_hits (-121, model 67.9%)
-  - BAL @ WSN BAL_ML (-143, model 67.2%)
+- **2-leg @ +257 (prob 41.8%, EV +49.32%)**
+  - Casey Schmitt OVER 0.5 batter_hits (-115, model 65.4%)
+  - MIA @ TBR UNDER_8.0 (-110, model 64.0%)
+- **2-leg @ +274 (prob 39.8%, EV +49.02%)**
+  - Steven Kwan UNDER 0.5 batter_hits (+164, model 45.6%)
+  - LAD @ LAA LAD_ML (-240, model 87.3%)
 
 ## Self-Learning Loop
 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
-| batter hits | 3 | 0.0% | 48.7% | 1.000 | 1.000 |
-| batter total bases | 1 | 100.0% | 69.2% | 0.692 | 1.000 |
+| batter hits | 2 | 0.0% | 62.1% | 1.000 | 1.000 |
+| batter total bases | 4 | 0.0% | 52.2% | 1.000 | 1.000 |
 
-Cumulative graded plays: 1. Wins: 1. Hit rate: 100.0%.
+Cumulative graded plays: 6. Wins: 1. Hit rate: 16.7%.
 
 ## Team Form (last 10)
 
