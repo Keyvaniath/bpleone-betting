@@ -444,6 +444,110 @@ def project_batter_hits(pid: int, line: float, order: Optional[int] = None) -> T
     }
 
 
+def project_batter_runs(pid: int, line: float, order: Optional[int] = None) -> Tuple[float, Dict[str, Any]]:
+    """P(player scores >= ceil(line) runs)."""
+    s = _batter_season(pid)
+    pa = s.get("plateAppearances")
+    if not pa or pa < 30:
+        return 0.50, {"reason": "thin-sample", "pa": pa, "low_confidence": True}
+    runs = float(s.get("runs", 0) or 0)
+    runs_per_pa = runs / float(pa)
+    expected_pa_g = _expected_pa(order)
+    expected_runs = runs_per_pa * expected_pa_g
+    line_int = int(math.ceil(line))
+    p_over = poisson_p_at_least(expected_runs, line_int)
+    return p_over, {"model_version": "v1-season-runs", "pa": pa, "runs": runs,
+                    "batting_order": order, "expected_pa": expected_pa_g,
+                    "expected_runs": round(expected_runs, 3), "line_int": line_int}
+
+
+def project_batter_rbis(pid: int, line: float, order: Optional[int] = None) -> Tuple[float, Dict[str, Any]]:
+    """P(player drives in >= ceil(line) runs)."""
+    s = _batter_season(pid)
+    pa = s.get("plateAppearances")
+    if not pa or pa < 30:
+        return 0.50, {"reason": "thin-sample", "pa": pa, "low_confidence": True}
+    rbis = float(s.get("rbi", 0) or 0)
+    rbi_per_pa = rbis / float(pa)
+    expected_pa_g = _expected_pa(order)
+    expected_rbis = rbi_per_pa * expected_pa_g
+    line_int = int(math.ceil(line))
+    p_over = poisson_p_at_least(expected_rbis, line_int)
+    return p_over, {"model_version": "v1-season-rbi", "pa": pa, "rbi": rbis,
+                    "batting_order": order, "expected_pa": expected_pa_g,
+                    "expected_rbis": round(expected_rbis, 3), "line_int": line_int}
+
+
+def project_batter_hits_runs_rbis(pid: int, line: float, order: Optional[int] = None) -> Tuple[float, Dict[str, Any]]:
+    """P(H + R + RBI >= ceil(line)) -- one of PrizePicks' most popular markets."""
+    s = _batter_season(pid)
+    pa = s.get("plateAppearances")
+    if not pa or pa < 30:
+        return 0.50, {"reason": "thin-sample", "pa": pa, "low_confidence": True}
+    hits = float(s.get("hits", 0) or 0)
+    runs = float(s.get("runs", 0) or 0)
+    rbis = float(s.get("rbi", 0) or 0)
+    expected_pa_g = _expected_pa(order)
+    # Blend with Statcast where available for hits
+    sc_b = _statcast_batter(pid)
+    xba = sc_b.get("xba")
+    ab_g = expected_pa_g * _ab_per_pa(s)
+    season_ba = hits / float(s.get("atBats", pa) or pa)
+    blended_ba = 0.6 * xba + 0.4 * season_ba if xba else season_ba
+    exp_h = blended_ba * ab_g
+    exp_r = (runs / float(pa)) * expected_pa_g
+    exp_rbi = (rbis / float(pa)) * expected_pa_g
+    expected_hrr = exp_h + exp_r + exp_rbi
+    line_int = int(math.ceil(line))
+    p_over = poisson_p_at_least(expected_hrr, line_int)
+    return p_over, {"model_version": "v2-statcast-hrr" if xba else "v1-season-hrr",
+                    "pa": pa, "h": int(hits), "r": int(runs), "rbi": int(rbis),
+                    "batting_order": order, "expected_pa": expected_pa_g,
+                    "expected_h": round(exp_h, 2), "expected_r": round(exp_r, 2),
+                    "expected_rbi": round(exp_rbi, 2),
+                    "expected_hrr": round(expected_hrr, 3), "line_int": line_int}
+
+
+def project_batter_singles(pid: int, line: float, order: Optional[int] = None) -> Tuple[float, Dict[str, Any]]:
+    """P(singles >= ceil(line))."""
+    s = _batter_season(pid)
+    pa = s.get("plateAppearances")
+    if not pa or pa < 30:
+        return 0.40, {"reason": "thin-sample", "pa": pa, "low_confidence": True}
+    hits = float(s.get("hits", 0) or 0)
+    doubles = float(s.get("doubles", 0) or 0)
+    triples = float(s.get("triples", 0) or 0)
+    hr = float(s.get("homeRuns", 0) or 0)
+    singles = hits - doubles - triples - hr
+    rate = singles / float(s.get("atBats", pa) or pa)
+    expected_pa_g = _expected_pa(order)
+    ab_g = expected_pa_g * _ab_per_pa(s)
+    expected_1b = rate * ab_g
+    line_int = int(math.ceil(line))
+    p_over = poisson_p_at_least(expected_1b, line_int)
+    return p_over, {"model_version": "v1-season-1b", "pa": pa, "singles_season": int(singles),
+                    "batting_order": order, "expected_pa": expected_pa_g,
+                    "expected_singles": round(expected_1b, 3), "line_int": line_int}
+
+
+def project_batter_doubles(pid: int, line: float, order: Optional[int] = None) -> Tuple[float, Dict[str, Any]]:
+    """P(doubles >= ceil(line))."""
+    s = _batter_season(pid)
+    pa = s.get("plateAppearances")
+    if not pa or pa < 30:
+        return 0.25, {"reason": "thin-sample", "pa": pa, "low_confidence": True}
+    doubles = float(s.get("doubles", 0) or 0)
+    rate = doubles / float(s.get("atBats", pa) or pa)
+    expected_pa_g = _expected_pa(order)
+    ab_g = expected_pa_g * _ab_per_pa(s)
+    expected_2b = rate * ab_g
+    line_int = int(math.ceil(line))
+    p_over = poisson_p_at_least(expected_2b, line_int)
+    return p_over, {"model_version": "v1-season-2b", "pa": pa, "doubles_season": int(doubles),
+                    "batting_order": order, "expected_pa": expected_pa_g,
+                    "expected_doubles": round(expected_2b, 3), "line_int": line_int}
+
+
 def project_batter_tb(pid: int, line: float, order: Optional[int] = None) -> Tuple[float, Dict[str, Any]]:
     """P(TB >= ceil(line)). v2: uses xSLG when available."""
     s = _batter_season(pid)

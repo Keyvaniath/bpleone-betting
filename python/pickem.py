@@ -77,8 +77,13 @@ STAT_MAP = {
     "Hits": "batter_hits",
     "Total Bases": "batter_total_bases",
     "Home Runs": "batter_home_runs",
-    # The non-mapped PP markets (H+R+RBIs, Singles, Doubles, etc.) are still
-    # surfaced raw -- the user can eyeball them even without a model projection.
+    "Singles": "batter_singles",
+    "Doubles": "batter_doubles",
+    "Runs": "batter_runs",
+    "RBIs": "batter_rbis",
+    "Hits+Runs+RBIs": "batter_hrr",
+    # Unmodeled (raw display only): Walks, Stolen Bases, Plate Appearances,
+    # Hitter Fantasy Score, Hits Allowed, etc.
 }
 
 # Per-leg breakeven probability required for the corresponding PP Power Play.
@@ -182,7 +187,10 @@ def _project_at_line(market: str, pid: int, line: float, lineup_order: Optional[
     """Re-run our model at a specific line. Returns model_prob_over."""
     try:
         from props_pipeline import (project_pitcher_ks, project_batter_hr,
-                                    project_batter_hits, project_batter_tb)
+                                    project_batter_hits, project_batter_tb,
+                                    project_batter_runs, project_batter_rbis,
+                                    project_batter_hits_runs_rbis,
+                                    project_batter_singles, project_batter_doubles)
         if market == "pitcher_strikeouts":
             p, _ = project_pitcher_ks(pid, line)
         elif market == "batter_home_runs":
@@ -191,6 +199,16 @@ def _project_at_line(market: str, pid: int, line: float, lineup_order: Optional[
             p, _ = project_batter_hits(pid, line, lineup_order)
         elif market == "batter_total_bases":
             p, _ = project_batter_tb(pid, line, lineup_order)
+        elif market == "batter_singles":
+            p, _ = project_batter_singles(pid, line, lineup_order)
+        elif market == "batter_doubles":
+            p, _ = project_batter_doubles(pid, line, lineup_order)
+        elif market == "batter_runs":
+            p, _ = project_batter_runs(pid, line, lineup_order)
+        elif market == "batter_rbis":
+            p, _ = project_batter_rbis(pid, line, lineup_order)
+        elif market == "batter_hrr":
+            p, _ = project_batter_hits_runs_rbis(pid, line, lineup_order)
         else:
             return 0.5
         return p
