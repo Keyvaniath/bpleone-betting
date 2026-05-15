@@ -610,21 +610,124 @@ def project_batter_tb(pid: int, line: float, order: Optional[int] = None) -> Tup
     }
 
 
+# -------------------- Bovada Fallback --------------------
+
+def _resolve_player_id(name: str, _cache: Dict[str, Optional[int]] = {}) -> Optional[int]:
+    """Resolve a Bovada player name (e.g., 'Aaron Nola') to an MLB Stats API player_id.
+    Strips trailing team tag like '(PHI)' and caches lookups to avoid duplicate calls.
+    """
+    if not name:
+        return None
+    # Strip trailing parenthetical
+    clean = name.split(" (", 1)[0].strip()
+    if clean in _cache:
+        return _cache[clean]
+    if requests is None:
+        _cache[clean] = None
+        return None
+    try:
+        r = requests.get(
+            "https://statsapi.mlb.com/api/v1/people/search",
+            params={"names": clean, "sportId": 1},
+            timeout=8,
+        ).json()
+        people = r.get("people") or []
+        pid = people[0]["id"] if people else None
+    except Exception:
+        pid = None
+    _cache[clean] = pid
+    return pid
+
+
+def _build_props_from_bovada(markets: List[str], max_games: int) -> Dict[str, Any]:
+    """Bovada-sourced props.json. Same shape as the Odds-API path.
+
+    Limitations vs. primary path:
+      - No model projections yet (would need player_id-keyed batter/pitcher modeling
+        per row; deferred to a follow-up). best_edge_pct stays None.
+      - Player IDs resolved via MLB Stats API name-search; small risk of name collision.
+      - Tagged book='bovada' so downstream consumers can flag the source.
+
+    Despite the missing modeling, this gets REAL prop lines into props.json so
+    Brandon can at least see DK-equivalent prices, and outcomes.py will still settle
+    these (by player_id) once tonight's games finish. The model just won't have
+    projections-vs-actuals to learn from on the prop side until Odds API is restored
+    (or we wire full Bovada modeling).
+    """
+    try:
+        from bovada import fetch_player_props
+        bv = fetch_player_props()
+    except Exception as e:
+        print(f"  [x] Bovada props fetch failed: {e}")
+        return {"generated_at": dt.datetime.now().isoformat(timespec="seconds"),
+                "book": "bovada", "markets": markets, "games": [], "top_edges": [],
+                "warning": f"bovada-fetch-failed: {e}"}
+
+    # Filter to the markets we care about + resolve player_ids.
+    rows: List[Dict[str, Any]] = []
+    seen: set = set()
+    for r in bv:
+        if r["market"] not in markets:
+            continue
+        pid = _resolve_player_id(r["player"])
+        key = (pid, r["market"], r["line"])
+        if key in seen:
+            continue
+        seen.add(key)
+        rows.append({
+            "player": r["player"].split(" (", 1)[0].strip(),
+            "player_id": pid,
+            "market": r["market"],
+            "line": r["line"],
+            "dk_over": r.get("over_amer"),
+            "dk_under": r.get("under_amer"),
+            "matchup": r.get("matchup"),
+            "model_prob_over": None,
+            "model_projection": None,
+            "vegas_line": r["line"],
+            "projection_vs_line": None,
+            "play": "SKIP",  # No model -> no play recommendation
+            "best_edge_pct": None,
+            "low_confidence": True,
+            "book": "bovada",
+            "debug": {"model_version": "bovada-no-model"},
+        })
+    print(f"  [ok] Bovada props: {len(rows)} rows across {len(set(r['market'] for r in rows))} markets")
+    games_seen = sorted({r["matchup"] for r in rows if r.get("matchup")})
+    return {
+        "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
+        "book": "bovada",
+        "markets": markets,
+        "games": [{"matchup": g} for g in games_seen],
+        "top_edges": rows,
+        "warning": "bovada-fallback: real lines, no model projections (Odds API restoration unlocks full modeling)",
+    }
+
+
 # -------------------- Main loop --------------------
 
 def build_props(markets: Optional[List[str]] = None, max_games: int = MAX_GAMES) -> Dict[str, Any]:
-    """Walk events, pull DK props, project, compute edges."""
-    markets = markets or DEFAULT_MARKETS
-    if not _api_key():
-        print("  [x] ODDS_API_KEY not set; skipping props pipeline")
-        return {"generated_at": dt.datetime.now().isoformat(timespec="seconds"),
-                "games": [], "warning": "ODDS_API_KEY missing"}
+    """Walk events, pull DK props, project, compute edges.
 
-    events = fetch_events()
-    if not events:
-        print("  [x] no events from Odds API")
-        return {"generated_at": dt.datetime.now().isoformat(timespec="seconds"),
-                "games": [], "warning": "no events"}
+    Source priority:
+      1. The Odds API (paid DK feed) -- preferred, has player IDs
+      2. Bovada public coupon -- fallback when Odds API is dead. We resolve
+         player names -> MLB Stats API player IDs on the fly. Tagged book='bovada'.
+    """
+    markets = markets or DEFAULT_MARKETS
+    use_bovada_fallback = False
+    if not _api_key():
+        print("  [!] ODDS_API_KEY not set -- attempting Bovada fallback")
+        use_bovada_fallback = True
+        events = []
+    else:
+        events = fetch_events()
+        if not events:
+            print("  [!] Odds API returned no events -- attempting Bovada fallback")
+            use_bovada_fallback = True
+
+    if use_bovada_fallback:
+        return _build_props_from_bovada(markets, max_games)
 
     # Sort by commence_time, take soonest N to respect quota.
     events.sort(key=lambda e: e.get("commence_time", ""))
