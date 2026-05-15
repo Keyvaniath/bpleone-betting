@@ -671,6 +671,13 @@ def _build_props_from_bovada(markets: List[str], max_games: int) -> Dict[str, An
         corrections = {}
     if corrections:
         print(f"  -> applying calibration corrections: {corrections}")
+    try:
+        from model_trainer import load_trained_blends
+        trained_blends = load_trained_blends()
+    except Exception:
+        trained_blends = {}
+    if trained_blends:
+        print(f"  -> applying trained blends: {trained_blends}")
 
     # Today's MLB schedule -> {(home_name, away_name): {gamePk, venue, home_team_id, away_team_id}}
     today_iso = dt.date.today().isoformat()
@@ -955,6 +962,18 @@ def build_props(markets: Optional[List[str]] = None, max_games: int = MAX_GAMES)
         corrections = {}
     if corrections:
         print(f"  -> applying calibration corrections: {corrections}")
+
+    # Self-training: load per-market parameter overrides from model_trainer.
+    # If the trainer has graduated a market (n >= MIN_TRAIN_SAMPLE), use its
+    # statcast blend weight + fitted bias correction in addition to the
+    # calibration_runner correction. This is how the model self-tunes.
+    try:
+        from model_trainer import load_trained_blends
+        trained_blends = load_trained_blends()
+    except Exception:
+        trained_blends = {}
+    if trained_blends:
+        print(f"  -> applying trained blends: {trained_blends}")
 
     # Pull MLB schedule once to map Odds event_id -> MLB gamePk for lineup lookups.
     today_iso = dt.date.today().isoformat()

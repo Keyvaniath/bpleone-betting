@@ -31,7 +31,8 @@ from typing import Any, Dict, List, Tuple
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 TR_PATH = os.path.join(DATA_DIR, "track_record.json")
 OUT_PATH = os.path.join(DATA_DIR, "trained_params.json")
-MIN_TRAIN_SAMPLE = 50   # Need at least 50 settled props per market before training kicks in
+MIN_TRAIN_SAMPLE = 15   # AGGRESSIVE: was 50, now 15. User chose faster learning
+                        # over safety: "we are okay with misses we just want data."
 
 
 def _load_tr() -> Dict[str, Any]:
@@ -85,8 +86,8 @@ def evaluate_market(market: str, records: List[Dict[str, Any]]) -> Dict[str, Any
     actual = sum(1 for r in valid if r["over_hit"]) / n
     bias = implied / actual if actual > 0 else 1.0
     correction = 1.0 / bias if bias else 1.0
-    # Clamp correction to ±25%
-    correction = max(0.80, min(1.25, correction))
+    # Clamp correction to ±35% (matches calibration_runner aggressive band)
+    correction = max(1.0 / 1.35, min(1.35, correction))
     # Suggested blend weight: stub heuristic
     # If v2-statcast model_version dominates and ECE is low, increase Statcast weight.
     sc_count = sum(1 for r in valid if (r.get("model_version") or "").startswith("v2-statcast"))
@@ -124,6 +125,26 @@ def train_all() -> Dict[str, Any]:
         "markets_in_warmup": [m for m in out if not out[m].get("trainable")],
         "per_market": out,
     }
+
+
+def load_trained_blends(path: str = OUT_PATH) -> Dict[str, float]:
+    """Return {market_key: statcast_blend_weight} for markets that have trained.
+
+    Used by props_pipeline to override its hardcoded 0.5/0.6 Statcast blend
+    with the value the trainer found optimal. Empty dict if no trained data yet.
+    """
+    if not os.path.exists(path):
+        return {}
+    try:
+        with open(path) as f:
+            p = json.load(f)
+    except Exception:
+        return {}
+    out: Dict[str, float] = {}
+    for mk, m in (p.get("per_market") or {}).items():
+        if m.get("trainable") and m.get("suggested_statcast_blend") is not None:
+            out[mk] = float(m["suggested_statcast_blend"])
+    return out
 
 
 def write_trained(payload: Dict[str, Any], path: str = OUT_PATH) -> None:
