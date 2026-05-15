@@ -56,10 +56,14 @@ def build_compact_message() -> str:
         is_precal = (pod.get("edge_pct") or 0) >= 15
         precal_tag = " _(model in calibration)_" if is_precal else ""
         parts.append(f"**Play of the Day:** {pod['matchup']} - **{pod['label']}**{precal_tag}")
-        parts.append(f"  Market: {pod['market_price'] >= 0 and '+' + str(pod['market_price']) or pod['market_price']} | "
+        mp = pod['market_price']
+        mp_str = f"+{mp}" if mp >= 0 else str(mp)
+        kelly = pod.get("kelly_units", 0)
+        stake_str = "<= 0.5u" if is_precal else f"{kelly}u"
+        parts.append(f"  Market: {mp_str} | "
                      f"Model: {pod['model_prob']*100:.1f}% | "
                      f"Edge: +{pod['edge_pct']}% | "
-                     f"Stake: {'<= 0.5u' if is_precal else f'{pod['kelly_units']}u'}")
+                     f"Stake: {stake_str}")
         parts.append("")
 
     # Slate count
