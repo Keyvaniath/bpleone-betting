@@ -211,6 +211,57 @@ SCHEMA: Dict[str, Dict[str, Any]] = {
         "desc": "Skip windows with fewer than this many records.",
     },
 
+    # -------- Learning curves (learning_curves.py) --------
+    "learning_curves.window_days": {
+        "default": 7,
+        "type": "int",
+        "min": 3, "max": 30,
+        "desc": "Rolling window size for per-market Brier learning-curve chart.",
+    },
+    "learning_curves.stride_days": {
+        "default": 1,
+        "type": "int",
+        "min": 1, "max": 7,
+        "desc": "Window stride for learning-curve chart (1 = daily points).",
+    },
+    "learning_curves.min_per_window": {
+        "default": 20,
+        "type": "int",
+        "min": 5, "max": 200,
+        "desc": "Minimum records required in a window before plotting that point.",
+    },
+
+    # -------- Context calibration (context_calibration.py) --------
+    "context_calibration.enabled": {
+        "default": False,
+        "type": "bool",
+        "desc": "If true, props_pipeline applies context-conditional corrections (indoor/outdoor, day/night, etc.) on top of market + player bias. OFF by default until validated.",
+    },
+    "context_calibration.min_slice_n": {
+        "default": 80,
+        "type": "int",
+        "min": 20, "max": 500,
+        "desc": "Minimum settled records in a context slice before reporting a correction.",
+    },
+    "context_calibration.bias_threshold": {
+        "default": 0.04,
+        "type": "float",
+        "min": 0.01, "max": 0.20,
+        "desc": "Slice must show |extra_residual| >= this (above bulk-market bias) to qualify.",
+    },
+    "context_calibration.z_threshold": {
+        "default": 1.5,
+        "type": "float",
+        "min": 1.0, "max": 4.0,
+        "desc": "Z-score threshold (binomial std) for slice significance.",
+    },
+    "context_calibration.max_correction": {
+        "default": 1.20,
+        "type": "float",
+        "min": 1.05, "max": 1.50,
+        "desc": "Cap on slice-level correction (tighter than market-level because n is smaller).",
+    },
+
     # -------- Anomaly detector (anomalies.py) --------
     "anomalies.systematic_z_threshold": {
         "default": 2.0,

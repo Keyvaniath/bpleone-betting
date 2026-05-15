@@ -65,6 +65,8 @@ PB_PATH = os.path.join(DATA_DIR, "player_bias.json")
 ANOM_PATH = os.path.join(DATA_DIR, "anomalies.json")
 ALERTS_PATH = os.path.join(DATA_DIR, "live_alerts.json")
 TR_PATH = os.path.join(DATA_DIR, "track_record.json")
+LC_PATH = os.path.join(DATA_DIR, "learning_curves.json")
+CTX_PATH = os.path.join(DATA_DIR, "context_calibration.json")
 OUT_PATH = os.path.join(DATA_DIR, "param_recommendations.json")
 
 try:
@@ -322,6 +324,84 @@ def _check_walk_forward(wf: Dict[str, Any]) -> List[Dict[str, Any]]:
     return out
 
 
+def _check_per_market_n_prior(lc: Dict[str, Any], cal: Dict[str, Any]) -> List[Dict[str, Any]]:
+    """Per-market: if a specific market's learning curve is FLAT or RISING
+    despite n>500, that market's N_PRIOR is wrong. Suggest a per-market
+    override via calibration.n_prior_per_market dict."""
+    out = []
+    by_market = lc.get("by_market") or {}
+    cur_map = _get_default("calibration.n_prior_per_market", {}) or {}
+    if not isinstance(cur_map, dict):
+        cur_map = {}
+    cur_default = _get_default("calibration.n_prior_default", 8)
+    cal_markets = cal.get("markets") or {}
+
+    proposed: Dict[str, int] = {}
+    rationales: List[str] = []
+    affected_markets: List[Dict[str, Any]] = []
+    for market, curves in by_market.items():
+        brier = curves.get("brier") or []
+        if len(brier) < 5:
+            continue
+        cm = cal_markets.get(market) or {}
+        n = cm.get("n", 0)
+        if n < 500:
+            continue
+        # Trend: average first-3 vs last-3 windows
+        first3 = sum(brier[:3]) / 3
+        last3  = sum(brier[-3:]) / 3
+        delta  = last3 - first3   # negative = improving
+        cur_market_n = cur_map.get(market, cur_default)
+        # Case: NOT improving despite plenty of data -> lower N_PRIOR (trust data more)
+        if delta > -0.001 and cur_market_n > 4:
+            new_n = max(4, cur_market_n - 2)
+            proposed[market] = new_n
+            affected_markets.append({"market": market, "delta": round(delta, 4),
+                                     "n": n, "cur": cur_market_n, "new": new_n})
+            rationales.append(f"{market} not improving (Δbrier {delta:+.4f} over {len(brier)} windows, n={n})")
+
+    if proposed:
+        # Suggest the merged dict (existing values + new proposals)
+        suggested_map = {**cur_map, **proposed}
+        cur_summary = {k: cur_map.get(k, cur_default) for k in proposed.keys()}
+        out.append(_rec(
+            "calibration.n_prior_per_market",
+            cur_summary, {k: proposed[k] for k in proposed},
+            "decrease", "medium",
+            f"{len(proposed)} market(s) plateau or degrading on learning curve despite n>=500. Loosen the per-market prior anchor so data carries more weight.",
+            {
+                "affected": affected_markets,
+                "full_suggested_map": suggested_map,
+                "note": "Merge into existing dict if other overrides already set",
+            },
+        ))
+    return out
+
+
+def _check_context_calibration(ctx: Dict[str, Any]) -> List[Dict[str, Any]]:
+    """If 3+ slices have extra residual > 4pp the model needs context-conditional
+    correction. The recommendation is to introduce a context_calibration runtime
+    knob (not yet wired into props_pipeline -- this is a heads-up for the operator)."""
+    out = []
+    slices = ctx.get("slices") or []
+    big = [s for s in slices if abs(s.get("extra_residual", 0)) >= 0.04]
+    if len(big) >= 3:
+        # Group by dim
+        by_dim: Dict[str, int] = {}
+        for s in big:
+            by_dim[s["dim"]] = by_dim.get(s["dim"], 0) + 1
+        worst_dim = max(by_dim.items(), key=lambda kv: kv[1])[0]
+        out.append(_rec(
+            "context_calibration.enabled",
+            False, True,
+            "increase", "medium",
+            f"{len(big)} slices show >=4pp residual beyond bulk-market bias. Most-affected context: '{worst_dim}'. Enabling context-conditional corrections would add a third-tier multiplier (market * player * context) for matching props.",
+            {"big_slices": [{"market": s["market"], "dim": s["dim"], "val": s["slice_value"],
+                              "extra": s["extra_residual"], "z": s["z_score"]} for s in big[:8]]},
+        ))
+    return out
+
+
 def run() -> Dict[str, Any]:
     cal = _load(CAL_PATH)
     prev_cal = _load(PREV_CAL_PATH)
@@ -331,6 +411,8 @@ def run() -> Dict[str, Any]:
     anom = _load(ANOM_PATH)
     alerts = _load(ALERTS_PATH)
     tr = _load(TR_PATH)
+    lc = _load(LC_PATH)
+    ctx = _load(CTX_PATH)
 
     recs: List[Dict[str, Any]] = []
     recs.extend(_check_n_prior(cal, prev_cal, res))
@@ -339,6 +421,8 @@ def run() -> Dict[str, Any]:
     recs.extend(_check_player_bias(pb, anom))
     recs.extend(_check_kelly_fraction(tr))
     recs.extend(_check_walk_forward(wf))
+    recs.extend(_check_per_market_n_prior(lc, cal))
+    recs.extend(_check_context_calibration(ctx))
 
     # Dedupe by key (keep first / strongest)
     seen = set()

@@ -121,6 +121,22 @@ jobs:
         working-directory: python
         run: python walk_forward.py
 
+      # Per-market learning curves: 7-day rolling Brier + hit rate per market.
+      # Powers the line chart on /training showing whether each market is
+      # actually improving over time. The visible answer to "is the loop working?"
+      - name: Compute per-market learning curves
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        working-directory: python
+        run: python learning_curves.py
+
+      # Context-conditional bias detection: slices residuals by indoor/outdoor,
+      # day/night, L/R pitcher, home/road. Flags slices where the model is
+      # systematically off BEYOND what bulk-market calibration catches.
+      - name: Detect context-conditional biases
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        working-directory: python
+        run: python context_calibration.py
+
       # Per-player bias overrides: bespoke multipliers for players the
       # market-level bias correction can't fix (z >= 2 systematic outliers).
       - name: Compute per-player bias overrides

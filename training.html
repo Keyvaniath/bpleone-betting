@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Training Status | EdgeStat</title>
 <link rel="stylesheet" href="css/style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <style>
   .hero-score { display:flex; align-items:baseline; gap:18px; padding: 22px 24px; margin-bottom:22px; border-radius:10px; }
   .hero-score .score-num { font-size:64px; font-weight:700; line-height:1; font-family:'JetBrains Mono', monospace; }
@@ -100,6 +101,25 @@
     </div>
   </div>
 
+  <section id="curvesCard" class="card" style="margin-bottom: 24px; display:none;">
+    <div class="card-head"><span>Learning Curves -- Per-Market Brier Over Time</span><span class="muted" id="curvesRefresh"></span></div>
+    <div style="padding: 14px;">
+      <p class="muted" style="font-size: 12px; margin: 0 0 14px 0;">7-day rolling Brier score for each market. Lower is better -- if the model is genuinely learning, lines should slope DOWN over time. Toggle markets via the legend.</p>
+      <div style="position: relative; height: 320px;">
+        <canvas id="curvesChart" style="max-height: 320px !important;"></canvas>
+      </div>
+      <div id="curvesSummary" style="margin-top: 12px; font-family: 'JetBrains Mono', monospace; font-size: 11px; display: flex; gap: 18px; flex-wrap: wrap;"></div>
+    </div>
+  </section>
+
+  <section id="ctxCalibCard" class="card" style="margin-bottom: 24px; display:none;">
+    <div class="card-head"><span>Context-Conditional Biases</span><span class="muted" id="ctxCount"></span></div>
+    <div style="padding: 6px 14px 0;">
+      <p class="muted" style="font-size: 12px; margin: 0 0 8px 0;">After bulk market-level calibration, these slices still show structural bias. Indoor vs outdoor parks, day vs night games, L vs R pitcher handedness, home vs road -- the model is systematically off in these contexts beyond what the bulk correction catches. Extra residual = slice mean residual minus bulk-market mean residual.</p>
+    </div>
+    <div id="ctxList" style="padding: 0;"></div>
+  </section>
+
   <section id="feedbackCard" class="card" style="margin-bottom: 24px; display:none;">
     <div class="card-head"><span>Recent Loop Activity -- What Changed Since Last Refresh</span><span class="muted" id="fbRefresh"></span></div>
     <div id="fbBody" style="padding: 6px 0;"></div>
@@ -160,6 +180,101 @@ const TIER_COLORS = {
   "yellow":           { bg: "rgba(212,160,74,0.10)", border: "rgba(212,160,74,0.40)", fg: "#d4a04a" },
   "red":              { bg: "rgba(227,90,90,0.10)",  border: "rgba(227,90,90,0.45)",  fg: "#e35a5a" },
 };
+
+// Learning Curves chart -- per-market Brier over time
+fetch("data/learning_curves.json", { cache: "no-cache" })
+  .then(r => r.json())
+  .then(lc => {
+    const byMarket = lc.by_market || {};
+    const markets = Object.keys(byMarket).filter(m => (byMarket[m].labels || []).length > 0);
+    if (!markets.length) return;
+    document.getElementById("curvesCard").style.display = "block";
+    document.getElementById("curvesRefresh").textContent = `refreshed ${(lc.generated_at || "").replace("T", " ")} UTC`;
+    // Build unified label axis: union of all timestamps, sorted
+    const allLabels = Array.from(new Set(markets.flatMap(m => byMarket[m].labels))).sort();
+    const PALETTE = ["#d4a04a","#58c878","#e35a5a","#5aa3e3","#b35ae3","#e3a05a","#5ae3c0","#e35aa3","#a0e35a","#5a78e3"];
+    const datasets = markets.map((m, i) => {
+      const labels = byMarket[m].labels;
+      const brier = byMarket[m].brier;
+      const pointMap = new Map();
+      for (let j = 0; j < labels.length; j++) pointMap.set(labels[j], brier[j]);
+      const data = allLabels.map(l => pointMap.get(l) ?? null);
+      return {
+        label: m.replace(/_/g, " "),
+        data,
+        borderColor: PALETTE[i % PALETTE.length],
+        backgroundColor: PALETTE[i % PALETTE.length] + "22",
+        spanGaps: true,
+        tension: 0.25,
+        borderWidth: 2,
+        pointRadius: 0,
+        pointHoverRadius: 4,
+      };
+    });
+    const ctx = document.getElementById("curvesChart").getContext("2d");
+    new Chart(ctx, {
+      type: "line",
+      data: { labels: allLabels, datasets },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        interaction: { mode: "index", intersect: false },
+        plugins: {
+          legend: { position: "bottom", labels: { color: "#aaa", font: { size: 10 }, boxWidth: 14 } },
+          tooltip: { titleColor: "#fff", bodyColor: "#aaa", backgroundColor: "rgba(20,20,20,0.95)" },
+        },
+        scales: {
+          x: { ticks: { color: "#888", maxRotation: 0, autoSkip: true, maxTicksLimit: 10 }, grid: { color: "rgba(255,255,255,0.04)" } },
+          y: { ticks: { color: "#888" }, grid: { color: "rgba(255,255,255,0.04)" }, title: { text: "Brier (lower = better)", color: "#888", display: true } },
+        },
+      },
+    });
+    const summary = lc.summary || {};
+    const items = [];
+    if (summary.best_market) {
+      items.push(`<span><span style="color:#58c878;">↓ best:</span> ${summary.best_market.market.replace(/_/g,' ')} (Δ${summary.best_market.brier_delta >= 0 ? '+' : ''}${summary.best_market.brier_delta})</span>`);
+    }
+    if (summary.worst_market) {
+      items.push(`<span><span style="color:#e35a5a;">↑ worst:</span> ${summary.worst_market.market.replace(/_/g,' ')} (Δ${summary.worst_market.brier_delta >= 0 ? '+' : ''}${summary.worst_market.brier_delta})</span>`);
+    }
+    items.push(`<span class="muted">window: ${lc.window_days}d &middot; ${markets.length} markets</span>`);
+    document.getElementById("curvesSummary").innerHTML = items.join("");
+  })
+  .catch(() => {});
+
+// Context-conditional biases card
+fetch("data/context_calibration.json", { cache: "no-cache" })
+  .then(r => r.json())
+  .then(cc => {
+    const slices = cc.slices || [];
+    if (!slices.length) return;
+    document.getElementById("ctxCalibCard").style.display = "block";
+    document.getElementById("ctxCount").textContent = `${slices.length} significant slice${slices.length===1?'':'s'}`;
+    const dimLabel = (dim, val) => {
+      if (dim === "park_is_indoor") return val ? "indoor" : "outdoor";
+      if (dim === "is_night_game")  return val ? "night"  : "day";
+      if (dim === "is_home")        return val ? "home"   : "road";
+      if (dim === "opp_pitcher_throws") return "vs " + val + "HP";
+      return String(val);
+    };
+    const dimColor = (dim) => ({
+      "park_is_indoor": "#5aa3e3", "is_night_game": "#b35ae3",
+      "is_home": "#d4a04a", "opp_pitcher_throws": "#58c878"
+    }[dim] || "#888");
+    const rows = slices.slice(0, 30).map(s => {
+      const er = s.extra_residual;
+      const color = er > 0.02 ? "#e35a5a" : er < -0.02 ? "#58c878" : "#d4a04a";
+      return `<div style="display:grid; grid-template-columns: 180px 110px 80px 100px 110px 1fr; gap: 14px; padding: 10px 16px; border-bottom: 1px solid rgba(255,255,255,0.04); font-family:'JetBrains Mono',monospace; font-size: 12px; align-items: center;">
+        <span>${s.market.replace(/_/g, ' ')}</span>
+        <span style="padding: 2px 8px; border-radius: 3px; background: ${dimColor(s.dim)}22; color: ${dimColor(s.dim)}; font-size: 10px; text-transform: uppercase; text-align: center;">${dimLabel(s.dim, s.slice_value)}</span>
+        <span>n=${s.n}</span>
+        <span>z=${s.z_score}</span>
+        <span style="color: ${color};">${er > 0 ? '+' : ''}${(er*100).toFixed(2)}pp</span>
+        <span class="muted" style="font-size: 11px;">cf ${s.correction_factor}</span>
+      </div>`;
+    }).join("");
+    document.getElementById("ctxList").innerHTML = rows;
+  })
+  .catch(() => {});
 
 Promise.all([
   fetch("data/model_confidence.json", { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),

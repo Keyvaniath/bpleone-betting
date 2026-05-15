@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-05-15T12:48:49",
-  "n_recommendations": 2,
+  "generated_at": "2026-05-15T13:45:45",
+  "n_recommendations": 3,
   "recommendations": [
     {
       "key": "calibration.n_prior_default",
@@ -30,7 +30,78 @@
         "alerts_24h": 0,
         "props_priced": null
       }
+    },
+    {
+      "key": "calibration.n_prior_per_market",
+      "current": {
+        "batter_hits": 6,
+        "batter_total_bases": 6,
+        "batter_home_runs": 12,
+        "batter_rbis": 10,
+        "batter_singles": 6
+      },
+      "suggested": {
+        "batter_hits": 4,
+        "batter_total_bases": 4,
+        "batter_home_runs": 10,
+        "batter_rbis": 8,
+        "batter_singles": 4
+      },
+      "direction": "decrease",
+      "severity": "medium",
+      "rationale": "5 market(s) plateau or degrading on learning curve despite n>=500. Loosen the per-market prior anchor so data carries more weight.",
+      "evidence": {
+        "affected": [
+          {
+            "market": "batter_hits",
+            "delta": 0.0023,
+            "n": 13244,
+            "cur": 6,
+            "new": 4
+          },
+          {
+            "market": "batter_total_bases",
+            "delta": 0.0113,
+            "n": 13244,
+            "cur": 6,
+            "new": 4
+          },
+          {
+            "market": "batter_home_runs",
+            "delta": 0.0099,
+            "n": 6621,
+            "cur": 12,
+            "new": 10
+          },
+          {
+            "market": "batter_rbis",
+            "delta": 0.0055,
+            "n": 13242,
+            "cur": 10,
+            "new": 8
+          },
+          {
+            "market": "batter_singles",
+            "delta": 0.0003,
+            "n": 6621,
+            "cur": 6,
+            "new": 4
+          }
+        ],
+        "full_suggested_map": {
+          "pitcher_strikeouts": 10,
+          "batter_home_runs": 10,
+          "batter_rbis": 8,
+          "batter_total_bases": 4,
+          "batter_hits": 4,
+          "batter_singles": 4,
+          "batter_doubles": 8,
+          "batter_runs_scored": 8,
+          "batter_hits_runs_rbis": 8
+        },
+        "note": "Merge into existing dict if other overrides already set"
+      }
     }
   ],
-  "summary": "2 suggested overrides -- review on /config."
+  "summary": "3 suggested overrides -- review on /config."
 }
