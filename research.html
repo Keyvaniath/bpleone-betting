@@ -199,6 +199,36 @@ function renderExtraMarkets(matchup) {
   return `<div class="market-line" style="font-size:11px; margin-top:4px;">${parts.join(' &nbsp;|&nbsp; ')}</div>`;
 }
 
+function renderDepthBadge(matchup) {
+  const d = depthByMatchup[matchup];
+  if (!d) return "";
+  const color = d.depth_tier === "elite" ? "#58c878"
+              : d.depth_tier === "high" ? "#9bd34a"
+              : d.depth_tier === "medium" ? "#d4a04a" : "#e35a5a";
+  return `<span style="font-size:10px; padding:2px 6px; border-radius:3px;
+                       background: rgba(255,255,255,0.04); color: ${color}; margin-left:8px;">
+    research depth ${d.depth_score}% (${d.depth_tier})
+  </span>`;
+}
+
+function renderPitcherRest(matchup) {
+  const r = restByMatchup[matchup];
+  if (!r) return "";
+  const hr = r.home_rest || {};
+  const ar = r.away_rest || {};
+  if (!hr.label && !ar.label) return "";
+  const flag = (info) => {
+    if (!info || !info.label) return '';
+    const color = info.days_rest <= 3 ? '#e35a5a'
+                : info.days_rest >= 7 ? '#d4a04a'
+                : 'var(--muted, #888)';
+    return `<span style="color:${color};">${info.label}</span>`;
+  };
+  return `<div class="market-line" style="font-size:11px; margin-top:4px;">
+    Pitcher rest: ${r.away_pitcher || "?"} ${flag(ar)} | ${r.home_pitcher || "?"} ${flag(hr)}
+  </div>`;
+}
+
 function renderSeriesContext(matchup) {
   const s = seriesByMatchup[matchup];
   if (!s || s.series_number === 1) return "";
@@ -318,7 +348,7 @@ function renderMatchup(g) {
   return `
     <section class="card matchup-card">
       <div class="matchup-head">
-        <h2>${g.matchup}</h2>
+        <h2>${g.matchup}${renderDepthBadge(g.matchup)}</h2>
         <span class="muted">${g.time || ""} -- ${g.park || ""}</span>
       </div>
       <div class="market-line">
@@ -332,6 +362,7 @@ function renderMatchup(g) {
       ${renderUmpire(g.umpire)}
       ${renderBullpens(g.bullpens, home, away)}
       ${renderTravel(g.matchup, home, away)}
+      ${renderPitcherRest(g.matchup)}
       ${renderSeriesContext(g.matchup)}
       ${renderPitchMatchup(g.matchup)}
       ${renderExtraMarkets(g.matchup)}
@@ -382,12 +413,20 @@ fetch("data/travel.json", { cache: "no-cache" })
 
 let pitchMatchupByMatchup = {};
 let seriesByMatchup = {};
+let depthByMatchup = {};
+let restByMatchup = {};
 fetch("data/pitch_matchup.json", { cache: "no-cache" })
   .then(r => r.json())
   .then(d => { (d.games || []).forEach(g => { pitchMatchupByMatchup[g.matchup] = g; }); }).catch(() => {});
 fetch("data/series_context.json", { cache: "no-cache" })
   .then(r => r.json())
   .then(d => { (d.games || []).forEach(g => { seriesByMatchup[g.matchup] = g; }); }).catch(() => {});
+fetch("data/research_depth.json", { cache: "no-cache" })
+  .then(r => r.json())
+  .then(d => { (d.games || []).forEach(g => { depthByMatchup[g.matchup] = g; }); }).catch(() => {});
+fetch("data/pitcher_rest.json", { cache: "no-cache" })
+  .then(r => r.json())
+  .then(d => { (d.games || []).forEach(g => { restByMatchup[g.matchup] = g; }); }).catch(() => {});
 
 fetch("data/matchups.json", { cache: "no-cache" })
   .then(r => r.json())
