@@ -640,68 +640,244 @@ def _resolve_player_id(name: str, _cache: Dict[str, Optional[int]] = {}) -> Opti
 
 
 def _build_props_from_bovada(markets: List[str], max_games: int) -> Dict[str, Any]:
-    """Bovada-sourced props.json. Same shape as the Odds-API path.
+    """Bovada-sourced props.json with FULL model projections.
 
-    Limitations vs. primary path:
-      - No model projections yet (would need player_id-keyed batter/pitcher modeling
-        per row; deferred to a follow-up). best_edge_pct stays None.
-      - Player IDs resolved via MLB Stats API name-search; small risk of name collision.
-      - Tagged book='bovada' so downstream consumers can flag the source.
+    For each Bovada prop we:
+      1. Resolve player_id via MLB Stats API name-search
+      2. Find the player's game via today's MLB schedule
+      3. For pitchers: derive opp_team_id; for batters: look up batting order
+         from the live lineup (or use middle-of-order default if not yet posted)
+      4. Call the existing project_* functions to get model_prob_over
+      5. Compute the same edge / play recommendation as the Odds-API path
 
-    Despite the missing modeling, this gets REAL prop lines into props.json so
-    Brandon can at least see DK-equivalent prices, and outcomes.py will still settle
-    these (by player_id) once tonight's games finish. The model just won't have
-    projections-vs-actuals to learn from on the prop side until Odds API is restored
-    (or we wire full Bovada modeling).
+    Lines tagged book='bovada'; rows whose modeling fails (no lineup, thin sample,
+    etc.) are still kept with low_confidence=True so the row exists in props.json
+    and tonight's outcomes can still settle it.
     """
     try:
         from bovada import fetch_player_props
-        bv = fetch_player_props()
+        bv_raw = fetch_player_props()
     except Exception as e:
         print(f"  [x] Bovada props fetch failed: {e}")
         return {"generated_at": dt.datetime.now().isoformat(timespec="seconds"),
                 "book": "bovada", "markets": markets, "games": [], "top_edges": [],
                 "warning": f"bovada-fetch-failed: {e}"}
 
-    # Filter to the markets we care about + resolve player_ids.
-    rows: List[Dict[str, Any]] = []
+    # Load yesterday's calibration corrections so they apply here too.
+    try:
+        from calibration_runner import load_corrections
+        corrections = load_corrections()
+    except Exception:
+        corrections = {}
+    if corrections:
+        print(f"  -> applying calibration corrections: {corrections}")
+
+    # Today's MLB schedule -> {(home_name, away_name): {gamePk, venue, home_team_id, away_team_id}}
+    today_iso = dt.date.today().isoformat()
+    pk_by_pair: Dict[Tuple[str, str], Dict[str, Any]] = {}
+    if requests is not None:
+        try:
+            sched = requests.get(
+                "https://statsapi.mlb.com/api/v1/schedule",
+                params={"sportId": 1, "date": today_iso}, timeout=10,
+            ).json().get("dates", [])
+            for d in sched:
+                for g in d.get("games", []):
+                    home = g["teams"]["home"]["team"]["name"]
+                    away = g["teams"]["away"]["team"]["name"]
+                    pk_by_pair[(home, away)] = {
+                        "gamePk": g["gamePk"],
+                        "venue": (g.get("venue") or {}).get("name"),
+                        "home_team_id": g["teams"]["home"]["team"]["id"],
+                        "away_team_id": g["teams"]["away"]["team"]["id"],
+                    }
+        except Exception:
+            pass
+
+    # Reverse-index: TEAM_CODE -> full name, to resolve Bovada matchup tags.
+    try:
+        from pipeline import TEAM_CODE as TC, PARK_FACTORS, PARK_HANDEDNESS
+    except Exception:
+        TC, PARK_FACTORS, PARK_HANDEDNESS = {}, {}, {}
+    code_to_full = {v: k for k, v in TC.items()}
+
+    def matchup_to_game(mu: str) -> Optional[Dict[str, Any]]:
+        if not mu or " @ " not in mu:
+            return None
+        away_code, home_code = mu.split(" @ ")
+        away_full = code_to_full.get(away_code.strip())
+        home_full = code_to_full.get(home_code.strip())
+        if not (away_full and home_full):
+            return None
+        return pk_by_pair.get((home_full, away_full))
+
+    # Filter + dedupe to the markets we care about
+    filtered: List[Dict[str, Any]] = []
     seen: set = set()
-    for r in bv:
+    for r in bv_raw:
         if r["market"] not in markets:
             continue
-        pid = _resolve_player_id(r["player"])
-        key = (pid, r["market"], r["line"])
+        # Use player name + market + line as dedupe key (Bovada sometimes lists same prop twice)
+        key = (r["player"].split(" (", 1)[0].strip(), r["market"], r["line"])
         if key in seen:
             continue
         seen.add(key)
+        filtered.append(r)
+
+    print(f"  -> Bovada raw: {len(bv_raw)} -> {len(filtered)} after market filter")
+
+    rows: List[Dict[str, Any]] = []
+    modeled = 0
+    skipped = 0
+    for r in filtered:
+        clean_name = r["player"].split(" (", 1)[0].strip()
+        pid = _resolve_player_id(r["player"])
+        market_key = r["market"]
+        line = r["line"]
+        over_p = r.get("over_amer")
+        under_p = r.get("under_amer")
+        matchup = r.get("matchup")
+        ctx = matchup_to_game(matchup or "")
+        venue = ctx.get("venue") if ctx else None
+
+        # Park / weather / umpire context (best-effort)
+        park_factor = PARK_FACTORS.get(venue, 1.00) if venue else 1.00
+        park_hand_dict = PARK_HANDEDNESS.get(venue, {}) if venue else {}
+        try:
+            from weather import get_weather
+            wx = get_weather(venue) if venue else {}
+            carry_index = wx.get("carry_index") if not wx.get("indoor") else None
+        except Exception:
+            carry_index = None
+        try:
+            from umpires import k_multiplier
+            umpire_k_mult = k_multiplier(ctx["gamePk"]) if ctx else 1.0
+        except Exception:
+            umpire_k_mult = 1.0
+
+        # Try to project. Fall back gracefully if context is insufficient.
+        p_over: Optional[float] = None
+        model_proj: Optional[float] = None
+        dbg: Dict[str, Any] = {"source": "bovada"}
+        try:
+            if pid and market_key == "pitcher_strikeouts":
+                # Opponent team id: pitcher's team is parenthetical in name (e.g., "(PHI)")
+                opp_tid = None
+                if ctx:
+                    # Check pitcher's parent team to decide which side they're on
+                    pt = sr.pitcher_season(pid) or {}
+                    # If we can't tell, just pass both to opp_tid; project_pitcher_ks handles None
+                    # Use home_team_id as opp if pitcher is away, else away_team_id.
+                    # Heuristic: scan the raw name tag.
+                    raw = r.get("player", "")
+                    if "(" in raw and ")" in raw:
+                        code = raw[raw.find("(")+1:raw.find(")")].strip()
+                        full = code_to_full.get(code)
+                        if full and ctx.get("home_team_id") is not None:
+                            # If pitcher is HOME team, opp is AWAY team
+                            home_tid = ctx["home_team_id"]
+                            home_name = next((k for k, v in TC.items() if v == code), None)
+                            opp_tid = ctx["away_team_id"] if (home_name and full == home_name) else ctx["home_team_id"]
+                p_over, dbg2 = project_pitcher_ks(pid, line, opp_tid, umpire_k_mult)
+                model_proj = dbg2.get("expected_ks") or dbg2.get("expected_k") or dbg2.get("xK")
+                dbg.update(dbg2)
+                modeled += 1
+            elif pid and market_key == "batter_home_runs":
+                order = None
+                if ctx:
+                    lu = sr.game_lineups(ctx["gamePk"]) or {"home": {}, "away": {}}
+                    for side in ("home", "away"):
+                        if pid in (lu.get(side) or {}):
+                            order = lu[side][pid].get("order")
+                            break
+                p_over, dbg2 = project_batter_hr(pid, line, order, park_factor, carry_index, park_hand_dict.get("hr"))
+                model_proj = dbg2.get("expected_hr") or dbg2.get("expected")
+                dbg.update(dbg2)
+                modeled += 1
+            elif pid and market_key == "batter_hits":
+                order = _lookup_order(pid, ctx)
+                p_over, dbg2 = project_batter_hits(pid, line, order)
+                model_proj = dbg2.get("expected_hits") or dbg2.get("expected")
+                dbg.update(dbg2)
+                modeled += 1
+            elif pid and market_key == "batter_total_bases":
+                order = _lookup_order(pid, ctx)
+                p_over, dbg2 = project_batter_tb(pid, line, order)
+                model_proj = dbg2.get("expected_tb") or dbg2.get("expected")
+                dbg.update(dbg2)
+                modeled += 1
+            else:
+                skipped += 1
+        except Exception as e:
+            dbg["error"] = str(e)[:80]
+            skipped += 1
+
+        # Apply calibration correction (same as primary path)
+        cf = corrections.get(market_key, 1.0)
+        if p_over is not None and cf != 1.0:
+            p_over = max(0.001, min(0.999, p_over * cf))
+            dbg["correction_applied"] = round(cf, 4)
+
+        # Edge / play recommendation
+        play = "SKIP"
+        best_edge_pct = None
+        low_confidence = dbg.get("low_confidence", p_over is None)
+        if p_over is not None and over_p is not None and under_p is not None:
+            # Implied probabilities (already vig-included)
+            imp_over = (-over_p) / ((-over_p) + 100) if over_p < 0 else 100 / (over_p + 100)
+            imp_under = (-under_p) / ((-under_p) + 100) if under_p < 0 else 100 / (under_p + 100)
+            edge_over = (p_over - imp_over) / imp_over * 100 if imp_over > 0 else 0
+            edge_under = ((1 - p_over) - imp_under) / imp_under * 100 if imp_under > 0 else 0
+            if edge_over >= 3 and edge_over > edge_under:
+                play, best_edge_pct = "OVER", round(edge_over, 2)
+            elif edge_under >= 3 and edge_under > edge_over:
+                play, best_edge_pct = "UNDER", round(edge_under, 2)
+
         rows.append({
-            "player": r["player"].split(" (", 1)[0].strip(),
+            "player": clean_name,
             "player_id": pid,
-            "market": r["market"],
-            "line": r["line"],
-            "dk_over": r.get("over_amer"),
-            "dk_under": r.get("under_amer"),
-            "matchup": r.get("matchup"),
-            "model_prob_over": None,
-            "model_projection": None,
-            "vegas_line": r["line"],
-            "projection_vs_line": None,
-            "play": "SKIP",  # No model -> no play recommendation
-            "best_edge_pct": None,
-            "low_confidence": True,
+            "market": market_key,
+            "line": line,
+            "dk_over": over_p,
+            "dk_under": under_p,
+            "matchup": matchup,
+            "model_prob_over": round(p_over, 4) if p_over is not None else None,
+            "model_projection": round(model_proj, 3) if isinstance(model_proj, (int, float)) else None,
+            "vegas_line": line,
+            "projection_vs_line": round(model_proj - line, 2) if isinstance(model_proj, (int, float)) else None,
+            "play": play,
+            "best_edge_pct": best_edge_pct,
+            "low_confidence": low_confidence,
             "book": "bovada",
-            "debug": {"model_version": "bovada-no-model"},
+            "debug": {**dbg, "model_version": dbg.get("model_version", "bovada-v1")},
         })
-    print(f"  [ok] Bovada props: {len(rows)} rows across {len(set(r['market'] for r in rows))} markets")
+
+    rows.sort(key=lambda r: r.get("best_edge_pct") or 0, reverse=True)
     games_seen = sorted({r["matchup"] for r in rows if r.get("matchup")})
+    print(f"  [ok] Bovada props: modeled={modeled}, skipped={skipped}, total rows={len(rows)}")
     return {
         "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
         "book": "bovada",
         "markets": markets,
         "games": [{"matchup": g} for g in games_seen],
         "top_edges": rows,
-        "warning": "bovada-fallback: real lines, no model projections (Odds API restoration unlocks full modeling)",
+        "warning": ("bovada-fallback: real lines + full model projections "
+                    "(Odds API restoration would give DK-canonical pricing)"),
     }
+
+
+def _lookup_order(pid: int, ctx: Optional[Dict[str, Any]]) -> Optional[int]:
+    """Return batting order position (1-9) for a player in a given game context, or None."""
+    if not ctx:
+        return None
+    try:
+        lu = sr.game_lineups(ctx["gamePk"]) or {"home": {}, "away": {}}
+        for side in ("home", "away"):
+            if pid in (lu.get(side) or {}):
+                return lu[side][pid].get("order")
+    except Exception:
+        pass
+    return None
 
 
 # -------------------- Main loop --------------------
