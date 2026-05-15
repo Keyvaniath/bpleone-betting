@@ -83,6 +83,19 @@
   <!-- Odds-source status banner (JS sets color + copy based on actual book in today.json) -->
   <section id="apiDownBanner" style="display:none; margin: 0 0 18px 0; padding: 12px 16px; border-radius: 8px; font-family: 'JetBrains Mono', monospace; font-size: 13px;"></section>
 
+  <!-- Model Confidence card: 0-100 score + tier (production-ready / green-light / yellow / red) -->
+  <section id="confidenceCard" style="display:none; margin: 0 0 18px 0; padding: 14px 18px; border-radius: 8px; font-family: 'JetBrains Mono', monospace; border: 1px solid rgba(255,255,255,0.08);">
+    <div style="display:flex; align-items:center; justify-content:space-between; gap: 18px; flex-wrap:wrap;">
+      <div style="display:flex; align-items:baseline; gap:14px;">
+        <span id="confidenceLabel" style="font-size:11px; text-transform:uppercase; letter-spacing:0.1em; color:var(--muted,#888);">Model Confidence</span>
+        <span id="confidenceScore" style="font-size:32px; font-weight:700;">--</span>
+        <span id="confidenceTier" style="padding:4px 12px; border-radius:4px; font-size:11px; text-transform:uppercase; letter-spacing:0.08em;"></span>
+      </div>
+      <div style="display:flex; gap:14px; font-size:11px; color:var(--text-2,#aaa);" id="confidenceComponents"></div>
+    </div>
+    <p id="confidenceMessage" style="margin: 10px 0 0 0; font-size:12px; color:var(--text-2,#aaa);"></p>
+  </section>
+
   <!-- KEY METRICS STRIP -->
   <section class="metric-strip">
     <div class="metric"><span class="metric-num" id="mEdges">17</span><span class="metric-label">Edges Found Today</span></div>
@@ -472,6 +485,38 @@ fetch("data/clv_log.json", { cache: "no-cache" })
     if (el) el.textContent = recs.length ? String(recs.length) : "--";
   })
   .catch(() => { const el = document.getElementById("mSharp"); if (el) el.textContent = "--"; });
+
+// Model Confidence card (0-100 score + tier)
+fetch("data/model_confidence.json", { cache: "no-cache" })
+  .then(r => r.json())
+  .then(p => {
+    const card = document.getElementById("confidenceCard");
+    if (!card || !p.score) return;
+    card.style.display = "block";
+    const tierColors = {
+      "production-ready": { bg: "rgba(88,200,120,0.12)", border: "rgba(88,200,120,0.45)", fg: "#58c878" },
+      "green-light":      { bg: "rgba(88,200,120,0.08)", border: "rgba(88,200,120,0.35)", fg: "#58c878" },
+      "yellow":           { bg: "rgba(212,160,74,0.10)", border: "rgba(212,160,74,0.40)", fg: "#d4a04a" },
+      "red":              { bg: "rgba(227,90,90,0.10)",  border: "rgba(227,90,90,0.45)",  fg: "#e35a5a" },
+    };
+    const c = tierColors[p.tier] || tierColors.yellow;
+    card.style.background = c.bg;
+    card.style.borderColor = c.border;
+    document.getElementById("confidenceScore").textContent = p.score;
+    document.getElementById("confidenceScore").style.color = c.fg;
+    const tierEl = document.getElementById("confidenceTier");
+    tierEl.textContent = p.tier;
+    tierEl.style.background = c.fg;
+    tierEl.style.color = "#1a1a1a";
+    document.getElementById("confidenceMessage").textContent = p.message;
+    const comp = p.components || {};
+    document.getElementById("confidenceComponents").innerHTML = `
+      <span>Calibration: <strong>${(comp.calibration_quality * 100).toFixed(0)}</strong></span>
+      <span>Sample: <strong>${(comp.sample_sufficiency * 100).toFixed(0)}</strong></span>
+      <span>Stability: <strong>${(comp.residual_stability * 100).toFixed(0)}</strong></span>
+      <span>ROI: <strong>${(comp.roi_positivity * 100).toFixed(0)}</strong></span>`;
+  })
+  .catch(() => {});
 
 // Edges-by-Type sortable panel (also loaded from top_plays.json -- richer view than the simple list above)
 let edgesState = { all: [], type: "", minProb: 0, playable: "", sort: "quality_score" };

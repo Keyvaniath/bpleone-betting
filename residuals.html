@@ -96,6 +96,13 @@
     <p class="muted" style="font-size:11px; padding: 0 16px 14px;">LHB vs RHB residuals. Skew in one direction suggests the model isn't accounting for platoon splits sharply enough.</p>
   </section>
 
+  <section id="anomaliesCard" class="card" style="margin-top: 24px; display:none;">
+    <div class="card-head"><span>Anomalies &mdash; Players the Model Can't Pin Down</span><span class="muted" id="anomaliesCount"></span></div>
+    <p class="muted" style="font-size:12px; padding: 6px 16px 0; line-height: 1.5;">Systematic anomalies are player+market pairs where mean residual is &gt;2&sigma; from the market norm. These are players who need a model feature or special handling -- bias correction alone can't fix structural errors.</p>
+    <div id="anomalyList" style="padding: 6px 0;"></div>
+    <div id="outliersList" style="padding: 0 16px 14px;"></div>
+  </section>
+
 </main>
 
 <script>
@@ -252,6 +259,41 @@ fetch("data/residuals.json", { cache: "no-cache" })
     renderPlayers(p.player_systematic || []);
     renderGrouped("parkList", "parkCount", p.by_park || {}, "park");
     renderGrouped("handList", "handCount", p.by_handedness || {}, "handedness");
+    // Anomalies (separate fetch)
+    fetch("data/anomalies.json", { cache: "no-cache" })
+      .then(r => r.json())
+      .then(a => {
+        const sys = a.systematic || [];
+        const out = a.outlier_days || [];
+        if (!sys.length && !out.length) return;
+        document.getElementById("anomaliesCard").style.display = "block";
+        document.getElementById("anomaliesCount").textContent =
+          `${a.n_systematic} systematic / ${a.n_outliers} outlier days`;
+        document.getElementById("anomalyList").innerHTML = sys.length
+          ? sys.slice(0, 15).map(x => `<div class="player-row" style="grid-template-columns: 220px 200px 60px 110px 80px auto;">
+              <span class="name">${x.player}</span>
+              <span>${(x.market || "").replace(/_/g," ")}</span>
+              <span>${x.n}</span>
+              <span class="${x.mean_residual < 0 ? "negative" : "positive"}">${x.mean_residual >= 0 ? "+" : ""}${x.mean_residual}</span>
+              <span>z=${x.z_score}</span>
+              <span class="muted" style="font-size:10px;">${x.suggests}</span>
+            </div>`).join("")
+          : `<p class="empty" style="padding:14px;">No systematic anomalies yet.</p>`;
+        document.getElementById("outliersList").innerHTML = out.length
+          ? `<details style="margin-top:14px; font-family:'JetBrains Mono',monospace; font-size:11px;">
+               <summary style="cursor:pointer; color:#d4a04a;">Outlier days (single freak performances, |z| &geq; 3): ${out.length}</summary>
+               <div style="margin-top:8px; max-height:300px; overflow-y:auto;">
+                 ${out.slice(0, 30).map(o => `<div style="padding:4px 0; border-bottom:1px solid rgba(255,255,255,0.04);">
+                   <span style="display:inline-block; width:90px;">${o.date}</span>
+                   <span style="display:inline-block; width:180px;">${o.player}</span>
+                   <span style="display:inline-block; width:160px;">${(o.market||"").replace(/_/g," ")}</span>
+                   <span class="${o.residual < 0 ? "negative" : "positive"}">proj ${o.projection} -> actual ${o.actual} (z=${o.z_score})</span>
+                 </div>`).join("")}
+               </div>
+             </details>`
+          : "";
+      })
+      .catch(() => {});
   })
   .catch(err => {
     document.getElementById("marketBlocks").innerHTML =
