@@ -137,6 +137,15 @@ jobs:
         working-directory: python
         run: python context_calibration.py
 
+      # Self-learning loop value quantifier: compares calibrated picks
+      # against the picks the RAW (no-correction) model would have made on
+      # the same settled records. Direct empirical measure of what the
+      # calibration loop is buying us. Surfaces on /training.
+      - name: Quantify self-learning loop value
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        working-directory: python
+        run: python loop_value.py
+
       # Per-player bias overrides: bespoke multipliers for players the
       # market-level bias correction can't fix (z >= 2 systematic outliers).
       - name: Compute per-player bias overrides

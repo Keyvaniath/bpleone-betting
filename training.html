@@ -101,6 +101,36 @@
     </div>
   </div>
 
+  <section id="loopValueCard" class="card" style="margin-bottom: 24px; display:none;">
+    <div class="card-head"><span>Self-Learning Loop Value-Add</span><span class="muted" id="lvRefresh"></span></div>
+    <div style="padding: 14px;">
+      <p class="muted" style="font-size: 12px; margin: 0 0 14px 0;">What is calibration ACTUALLY buying you? Compares raw (no-correction) model picks vs calibrated picks on the same settled records. If the loop is worth anything, calibrated &gt; raw.</p>
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 16px;">
+        <div style="padding: 12px; background: rgba(255,255,255,0.02); border-radius: 6px;">
+          <div style="font-size: 10px; text-transform: uppercase; color: var(--muted, #888); letter-spacing: 0.08em;">Raw Hit Rate</div>
+          <div style="font-size: 22px; font-weight: 700; font-family: 'JetBrains Mono', monospace; margin-top: 4px;" id="lvRawHit">--</div>
+          <div style="font-size: 10px; color: var(--muted, #888); margin-top: 2px;">no correction applied</div>
+        </div>
+        <div style="padding: 12px; background: rgba(88,200,120,0.06); border-radius: 6px;">
+          <div style="font-size: 10px; text-transform: uppercase; color: var(--muted, #888); letter-spacing: 0.08em;">Calibrated Hit Rate</div>
+          <div style="font-size: 22px; font-weight: 700; font-family: 'JetBrains Mono', monospace; margin-top: 4px; color: #58c878;" id="lvCalHit">--</div>
+          <div style="font-size: 10px; color: var(--muted, #888); margin-top: 2px;">with current correction</div>
+        </div>
+        <div style="padding: 12px; background: rgba(212,160,74,0.06); border-radius: 6px;">
+          <div style="font-size: 10px; text-transform: uppercase; color: var(--muted, #888); letter-spacing: 0.08em;">Hit-Rate Uplift</div>
+          <div style="font-size: 22px; font-weight: 700; font-family: 'JetBrains Mono', monospace; margin-top: 4px; color: #d4a04a;" id="lvUplift">--</div>
+          <div style="font-size: 10px; color: var(--muted, #888); margin-top: 2px;">calibrated − raw</div>
+        </div>
+        <div style="padding: 12px; background: rgba(212,160,74,0.06); border-radius: 6px;">
+          <div style="font-size: 10px; text-transform: uppercase; color: var(--muted, #888); letter-spacing: 0.08em;">Brier Improvement</div>
+          <div style="font-size: 22px; font-weight: 700; font-family: 'JetBrains Mono', monospace; margin-top: 4px;" id="lvBrierDelta">--</div>
+          <div style="font-size: 10px; color: var(--muted, #888); margin-top: 2px;">lower is better</div>
+        </div>
+      </div>
+      <div id="lvByMarket" style="font-family: 'JetBrains Mono', monospace; font-size: 11px;"></div>
+    </div>
+  </section>
+
   <section id="curvesCard" class="card" style="margin-bottom: 24px; display:none;">
     <div class="card-head"><span>Learning Curves -- Per-Market Brier Over Time</span><span class="muted" id="curvesRefresh"></span></div>
     <div style="padding: 14px;">
@@ -180,6 +210,43 @@ const TIER_COLORS = {
   "yellow":           { bg: "rgba(212,160,74,0.10)", border: "rgba(212,160,74,0.40)", fg: "#d4a04a" },
   "red":              { bg: "rgba(227,90,90,0.10)",  border: "rgba(227,90,90,0.45)",  fg: "#e35a5a" },
 };
+
+// Self-Learning Loop Value-Add card
+fetch("data/loop_value.json", { cache: "no-cache" })
+  .then(r => r.json())
+  .then(lv => {
+    const raw = lv.raw, cal = lv.calibrated, va = lv.value_add;
+    if (!raw || !cal || !va) return;
+    document.getElementById("loopValueCard").style.display = "block";
+    document.getElementById("lvRefresh").textContent = `${lv.n_records.toLocaleString()} settled records · ${(lv.generated_at || "").replace("T", " ")} UTC`;
+    document.getElementById("lvRawHit").textContent = (raw.hit_rate * 100).toFixed(1) + "%";
+    document.getElementById("lvCalHit").textContent = (cal.hit_rate * 100).toFixed(1) + "%";
+    const upliftEl = document.getElementById("lvUplift");
+    upliftEl.textContent = (va.hit_rate_pp >= 0 ? "+" : "") + va.hit_rate_pp + "pp";
+    upliftEl.style.color = va.hit_rate_pp >= 0 ? "#58c878" : "#e35a5a";
+    const bdEl = document.getElementById("lvBrierDelta");
+    bdEl.textContent = (va.brier_delta > 0 ? "+" : "") + va.brier_delta;
+    bdEl.style.color = va.brier_delta < 0 ? "#58c878" : va.brier_delta > 0 ? "#e35a5a" : "var(--muted, #888)";
+    const byMarket = lv.by_market || [];
+    if (byMarket.length) {
+      const rows = byMarket.map(m => {
+        const color = m.delta_pp > 0 ? "#58c878" : m.delta_pp < 0 ? "#e35a5a" : "var(--muted, #888)";
+        return `<div style="display:grid; grid-template-columns: 220px 100px 100px 100px; gap: 14px; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.04);">
+          <span>${m.market.replace(/_/g, ' ')}</span>
+          <span class="muted">n=${m.n}</span>
+          <span>${(m.raw_hit_rate*100).toFixed(1)}% -> ${(m.cal_hit_rate*100).toFixed(1)}%</span>
+          <span style="color: ${color};">${m.delta_pp > 0 ? '+' : ''}${m.delta_pp}pp</span>
+        </div>`;
+      }).join("");
+      document.getElementById("lvByMarket").innerHTML = `<div style="margin-top: 8px;">
+        <div style="display:grid; grid-template-columns: 220px 100px 100px 100px; gap: 14px; padding: 6px 0; color: var(--muted, #888); font-size: 10px; text-transform: uppercase;">
+          <span>Market</span><span>n</span><span>Raw -> Cal Hit%</span><span>Uplift</span>
+        </div>
+        ${rows}
+      </div>`;
+    }
+  })
+  .catch(() => {});
 
 // Learning Curves chart -- per-market Brier over time
 fetch("data/learning_curves.json", { cache: "no-cache" })
