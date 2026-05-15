@@ -1,6 +1,10 @@
 # EdgeStat Daily Brief - 2026-05-15
 
-_Generated at 2026-05-15T08:24:06 UTC. All game-line prices are from DraftKings. Pick-em opportunities from PrizePicks._
+**Model Confidence: 73.7/100 [GREEN-LIGHT]** -- Model is healthy. Use capped Kelly (<=0.5u) until residual variance tightens further.
+
+_Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
+
+_Generated at 2026-05-15T08:38:09 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
@@ -26,44 +30,48 @@ _Generated at 2026-05-15T08:24:06 UTC. All game-line prices are from DraftKings.
 | 7:15p ET | NYY @ NYM | Citi Field | 56F 4mph | NYY_ML +46.26% |
 | 7:40p ET | CHC @ CHW | Rate Field | 64F 11mph | OVER_8.5 +30.4% |
 | 8:10p ET | TEX @ HOU | Daikin Park | indoor | HOU_ML +23.88% |
-| 8:15p ET | KCR @ STL | Busch Stadium | 70F 0mph | UNDER_8.5 +6.77% |
+| 8:15p ET | KCR @ STL | Busch Stadium | 73F 7mph | STL_ML +2.0% |
 | 8:40p ET | ARI @ COL | Coors Field | 72F 6mph | COL_ML +46.98% |
-| 9:38p ET | LAD @ LAA | Angel Stadium | 70F 0mph | LAD_ML +23.41% |
+| 9:38p ET | LAD @ LAA | Angel Stadium | 61F 5mph | LAD_ML +23.53% |
 | 9:40p ET | SDP @ SEA | T-Mobile Park | indoor | UNDER_7.0 +24.84% |
-| 9:40p ET | SFG @ OAK | Sutter Health Park | 70F 0mph | OAK_ML +40.85% |
+| 9:40p ET | SFG @ OAK | Sutter Health Park | 73F 8mph | OAK_ML +42.39% |
 
 ## Parlays - top 5
 
+- **3-leg @ +599 (prob 21.4%, EV +49.87%)**
+  - PHI @ PIT UNDER_8.0 (-110, model 57.2%)
+  - MIL @ MIN MIN_ML (-110, model 58.0%)
+  - TEX @ HOU HOU_ML (-109, model 64.6%)
+- **3-leg @ +597 (prob 21.5%, EV +49.76%)**
+  - TOR @ DET DET_ML (+109, model 52.1%)
+  - MIA @ TBR UNDER_8.0 (-110, model 64.0%)
+  - SDP @ SEA SEA_ML (-134, model 64.4%)
+- **3-leg @ +596 (prob 21.5%, EV +49.69%)**
+  - PHI @ PIT UNDER_8.0 (-110, model 57.2%)
+  - MIA @ TBR UNDER_8.0 (-110, model 64.0%)
+  - BOS @ ATL OVER_8.0 (-110, model 58.8%)
+- **3-leg @ +665 (prob 19.6%, EV +49.61%)**
+  - TOR @ DET DET_ML (+109, model 52.1%)
+  - MIL @ MIN MIN_ML (-110, model 58.0%)
+  - TEX @ HOU HOU_ML (-109, model 64.6%)
 - **2-leg @ +266 (prob 40.9%, EV +49.57%)**
   - MIL @ MIN UNDER_8.5 (-110, model 63.2%)
   - TEX @ HOU HOU_ML (-109, model 64.6%)
-- **2-leg @ +170 (prob 55.1%, EV +48.99%)**
-  - MIL @ MIN UNDER_8.5 (-110, model 63.2%)
-  - LAD @ LAA LAD_ML (-240, model 87.1%)
-- **2-leg @ +264 (prob 40.5%, EV +47.66%)**
-  - SDP @ SEA UNDER_7.0 (-110, model 65.4%)
-  - SFG @ OAK UNDER_9.5 (-110, model 62.0%)
-- **2-leg @ +264 (prob 40.5%, EV +47.53%)**
-  - MIA @ TBR UNDER_8.0 (-110, model 64.0%)
-  - MIL @ MIN UNDER_8.5 (-110, model 63.2%)
-- **2-leg @ +266 (prob 40.0%, EV +46.54%)**
-  - TEX @ HOU HOU_ML (-109, model 64.6%)
-  - SFG @ OAK UNDER_9.5 (-110, model 62.0%)
 
 ## Self-Learning Loop
 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
-| batter rbis | 5778 | 18.9% | 23.4% | 1.234 | 0.811 |
-| pitcher strikeouts | 1214 | 34.4% | 38.1% | 1.108 | 0.905 |
-| batter doubles | 2889 | 14.5% | 16.0% | 1.103 | 0.908 |
-| batter runs scored | 2889 | 35.4% | 38.8% | 1.095 | 0.914 |
-| batter home runs | 2889 | 9.9% | 13.0% | 1.304 | 0.802 |
-| batter hits | 5784 | 38.3% | 41.8% | 1.090 | 0.917 |
-| batter total bases | 5785 | 24.9% | 32.0% | 1.287 | 0.801 |
-| batter singles | 2889 | 42.5% | 44.4% | 1.044 | 0.958 |
+| pitcher strikeouts | 2810 | 32.3% | 37.9% | 1.171 | 0.855 |
+| batter doubles | 6441 | 14.8% | 15.9% | 1.069 | 0.935 |
+| batter total bases | 12889 | 26.3% | 31.6% | 1.202 | 0.832 |
+| batter runs scored | 6441 | 37.2% | 38.7% | 1.039 | 0.963 |
+| batter home runs | 6441 | 11.0% | 12.7% | 1.157 | 0.865 |
+| batter rbis | 12882 | 19.7% | 23.1% | 1.170 | 0.855 |
+| batter hits | 12888 | 39.7% | 41.6% | 1.046 | 0.956 |
+| batter singles | 6441 | 43.7% | 44.4% | 1.017 | 0.984 |
 
-Cumulative graded plays: 30110. Wins: 22410. Hit rate: 74.4%.
+Cumulative graded plays: 67226. Wins: 49676. Hit rate: 73.9%.
 
 ## Auxiliary Markets (Model Fair Prices)
 
@@ -74,14 +82,14 @@ Cumulative graded plays: 30110. Wins: 22410. Hit rate: 74.4%.
 | BOS @ ATL | 48.4% | +106 | 3.67 | -318 | +318 |
 | CHC @ CHW | 37.5% | +167 | 5.15 | +200 | -200 |
 | CIN @ CLE | 50.3% | -101 | 3.59 | +150 | -150 |
-| KCR @ STL | 47.7% | +110 | 3.7 | +148 | -148 |
-| LAD @ LAA | 15.2% | +557 | 9.41 | +1323 | -1323 |
+| KCR @ STL | 47.7% | +110 | 3.76 | +144 | -144 |
+| LAD @ LAA | 15.2% | +557 | 9.65 | +1332 | -1332 |
 | MIA @ TBR | 50.6% | -103 | 3.4 | +175 | -175 |
 | MIL @ MIN | 42.5% | +135 | 4.35 | +129 | -129 |
 | NYY @ NYM | 76.6% | -327 | 1.34 | +1708 | -1708 |
 | PHI @ PIT | 40.3% | +148 | 4.59 | -166 | +166 |
 | SDP @ SEA | 44.2% | +126 | 4.08 | +106 | -106 |
-| SFG @ OAK | 46.2% | +116 | 3.86 | -257 | +257 |
+| SFG @ OAK | 46.2% | +116 | 3.75 | -279 | +279 |
 | TEX @ HOU | 47.7% | +110 | 3.7 | -107 | +107 |
 | TOR @ DET | 71.3% | -249 | 1.62 | +177 | -177 |
 
