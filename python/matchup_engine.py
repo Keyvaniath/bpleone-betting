@@ -223,6 +223,28 @@ def build_all_matchups(today_json_path: Optional[str] = None) -> Dict[str, Any]:
                                  "carry_index", "precip_pct")}
         m["umpire"] = {k: v for k, v in (game.get("ctx") or {}).items()
                        if k in ("ump_name", "ump_label", "ump_k_mult")}
+        # Bullpen workload status (from data/bullpen_workload.json if available)
+        try:
+            with open(os.path.join(os.path.dirname(__file__), "..", "data",
+                                    "bullpen_workload.json")) as f:
+                bp = json.load(f)
+            bp_teams = bp.get("teams") or {}
+            home_tid = meta.get("home_team_id")
+            away_tid = meta.get("away_team_id")
+            home_bp = next((v for v in bp_teams.values() if v.get("team_id") == home_tid), None)
+            away_bp = next((v for v in bp_teams.values() if v.get("team_id") == away_tid), None)
+            m["bullpens"] = {
+                "home": {
+                    "ip_2d": home_bp.get("total_relief_ip") if home_bp else None,
+                    "gassed": home_bp.get("gassed") if home_bp else False,
+                } if home_bp else None,
+                "away": {
+                    "ip_2d": away_bp.get("total_relief_ip") if away_bp else None,
+                    "gassed": away_bp.get("gassed") if away_bp else False,
+                } if away_bp else None,
+            }
+        except Exception:
+            m["bullpens"] = None
         # Confirmed lineups (when posted ~1-2hrs pre-game) for both sides
         gpk = meta.get("gamePk")
         home_pid = meta.get("home_pitcher_id")

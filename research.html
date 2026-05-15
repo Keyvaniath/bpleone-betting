@@ -165,6 +165,19 @@ function renderWeather(w) {
   </div>`;
 }
 
+function renderBullpens(bp, home, away) {
+  if (!bp) return "";
+  const fmt = (t, code) => {
+    if (!t || t.ip_2d == null) return `<span class="muted">${code}: --</span>`;
+    const color = t.gassed ? "#e35a5a" : t.ip_2d > 6 ? "#d4a04a" : "#58c878";
+    const tag = t.gassed ? " GASSED" : "";
+    return `<span><strong>${code}:</strong> <span style="color:${color};">${t.ip_2d.toFixed(1)} IP/2d${tag}</span></span>`;
+  };
+  return `<div class="market-line" style="font-size:11px; margin-top:4px;">
+    Bullpen workload: ${fmt(bp.away, away)} | ${fmt(bp.home, home)}
+  </div>`;
+}
+
 function renderUmpire(u) {
   if (!u || !u.ump_name) return "";
   const tag = u.ump_label && u.ump_label !== "no tendency data"
@@ -229,6 +242,7 @@ function renderMatchup(g) {
       </div>
       ${renderWeather(g.weather)}
       ${renderUmpire(g.umpire)}
+      ${renderBullpens(g.bullpens, home, away)}
       ${renderLineups(g.lineups, home, away)}
       <div class="pitcher-grid" style="margin-top:14px;">
         ${renderPitcher(g.away_pitcher, away)}
