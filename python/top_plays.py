@@ -159,13 +159,17 @@ def write_top_plays(payload: Dict[str, Any], path: str = OUT_PATH) -> None:
     print(f"  Total plays evaluated: {payload.get('total_evaluated', 0)}")
     print(f"  Top {len(payload.get('plays', []))} surfaced")
     for p in payload.get("plays", [])[:5]:
-        precal = " (pre-cal)" if p.get("is_precal") else ""
-        target = (p.get("player") or p.get("matchup") or "?")[:30]
-        score = p.get("quality_score") or 0
-        edge = p.get("edge_pct")
-        edge_str = (f"+{edge}%" if edge is not None else "--")
-        print(f"  {p.get('kind',''):9} {p.get('book',''):10} {target:30} | "
-              f"score {score} | edge {edge_str}{precal}")
+        try:
+            precal = " (pre-cal)" if p.get("is_precal") else ""
+            kind = str(p.get("kind") or "")
+            book = str(p.get("book") or "")
+            target = str(p.get("player") or p.get("matchup") or "?")[:30]
+            score = p.get("quality_score") or 0
+            edge = p.get("edge_pct")
+            edge_str = f"+{edge}%" if edge is not None else "--"
+            print(f"  {kind:9} {book:10} {target:30} | score {score} | edge {edge_str}{precal}")
+        except Exception as e:
+            print(f"  (skipped row: {e})")
 
 
 if __name__ == "__main__":
