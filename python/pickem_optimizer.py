@@ -32,6 +32,7 @@ OUT_PATH = os.path.join(DATA_DIR, "pickem_optimizer.json")
 
 PAYOUTS = {2: 3.0, 3: 5.0, 4: 10.0, 5: 20.0, 6: 25.0}
 MIN_LEG_PROB = 0.60
+MAX_LEG_PROB = 0.85    # Cap individual leg probs -- nothing in sports is "100%"
 MAX_PER_SIZE = 5   # how many top combos per leg-count
 
 
@@ -70,6 +71,8 @@ def build_optimal_powerplays() -> Dict[str, Any]:
         if key in seen_players:
             continue
         seen_players.add(key)
+        # Cap raw prob to avoid unrealistic "100%" combos from thin-sample players.
+        capped_prob = min(prob, MAX_LEG_PROB)
         legs.append({
             "player": r.get("player"),
             "player_id": pid,
@@ -77,7 +80,8 @@ def build_optimal_powerplays() -> Dict[str, Any]:
             "stat_type": r.get("stat_type"),
             "side": side,
             "line": r.get("pp_line"),
-            "prob": round(prob, 4),
+            "prob": round(capped_prob, 4),
+            "prob_raw": round(prob, 4),
         })
     # Sort by prob descending so combinations explore highest-conviction first
     legs.sort(key=lambda l: -l["prob"])
