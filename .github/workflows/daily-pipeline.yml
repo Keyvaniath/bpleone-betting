@@ -87,6 +87,13 @@ jobs:
         working-directory: python
         run: python rationales.py
 
+      # Per-player gamelogs (last 14 games/starts) for the sparkline on
+      # the player deep-dive page. Caps at 350 players to respect API quota.
+      - name: Pull player gamelogs (last 14)
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        working-directory: python
+        run: python player_gamelogs.py
+
       # Drift detection: compare today's calibration vs yesterday's.
       # Alerts on >5% correction moves or sudden sample-count drops.
       - name: Detect calibration drift

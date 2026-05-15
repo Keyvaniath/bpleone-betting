@@ -79,7 +79,9 @@ Promise.all([
   fetch("data/rationales.json", { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
   fetch("data/pickem.json", { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
   fetch("data/props.json", { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
-]).then(([rat, pickem, propsJson]) => {
+  fetch("data/player_gamelogs.json", { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
+]).then(([rat, pickem, propsJson, gamelogs]) => {
+  window.GAMELOGS = gamelogs.by_player_id || {};
   const allProps = [...(propsJson.top_edges || []), ...(pickem.props || []).map(p => ({...p, line: p.pp_line}))];
 
   // Build player index (id -> {name, team, props})
@@ -113,6 +115,63 @@ Promise.all([
   renderPlayer(player, rat.by_key || {});
 });
 
+// Sparkline rendering: build an inline SVG of last-14 gamelog values for the
+// player's primary stat (TB for batter, K for pitcher). Returns SVG html.
+function sparkline(values, opts) {
+  if (!values || values.length === 0) return "";
+  const w = opts?.width || 220, h = opts?.height || 36;
+  const pad = 2;
+  const max = Math.max(1, ...values);
+  const step = (w - pad * 2) / Math.max(1, values.length - 1);
+  const pts = values.map((v, i) => {
+    const x = pad + i * step;
+    const y = h - pad - (v / max) * (h - pad * 2);
+    return `${x.toFixed(1)},${y.toFixed(1)}`;
+  }).join(" ");
+  const bars = values.map((v, i) => {
+    const x = pad + i * step;
+    const bh = (v / max) * (h - pad * 2);
+    return `<rect x="${(x - 2).toFixed(1)}" y="${(h - pad - bh).toFixed(1)}" width="4" height="${bh.toFixed(1)}" rx="1" fill="${opts?.color || '#58c878'}" opacity="0.6"></rect>`;
+  }).join("");
+  const avg = values.reduce((s, v) => s + v, 0) / values.length;
+  const avgY = h - pad - (avg / max) * (h - pad * 2);
+  return `<svg width="${w}" height="${h}" style="display:inline-block; vertical-align:middle;">
+    ${bars}
+    <line x1="${pad}" y1="${avgY.toFixed(1)}" x2="${w - pad}" y2="${avgY.toFixed(1)}" stroke="#d4a04a" stroke-dasharray="2,2" stroke-width="1"/>
+    <text x="${w - 4}" y="${(avgY - 3).toFixed(1)}" text-anchor="end" fill="#d4a04a" style="font-family:'JetBrains Mono',monospace; font-size:9px;">avg ${avg.toFixed(2)}</text>
+  </svg>`;
+}
+
+// Cross-prop correlation: if two props on the same player are highly
+// correlated, flag them. e.g. "2+ TB" implies "1+ Hit" implies "2+ Hits"
+// chains all hit the same outcome -- can't independently parlay.
+const CORRELATION_GROUPS = [
+  // (market list, label, threshold note)
+  [["batter_hits", "batter_total_bases", "batter_singles", "batter_doubles", "batter_hits_runs_rbis"],
+    "hits-family", "All hit-family markets resolve from the same plate appearances"],
+  [["batter_runs_scored", "batter_rbis"], "scoring-family", "Runs and RBIs are correlated -- if you cross one, you often cross the other"],
+  [["batter_home_runs", "batter_total_bases"], "hr+tb", "An HR auto-resolves TB >= 4 -- these are coupled"],
+];
+
+function findCorrelations(props) {
+  const corr = {};   // {market_key: [warning strings]}
+  for (const group of CORRELATION_GROUPS) {
+    const [markets, label, note] = group;
+    const present = props.filter(p => markets.includes(p.market));
+    if (present.length >= 2) {
+      for (const p of present) {
+        const k = `${p.market}_${p.line != null ? p.line : p.pp_line}`;
+        if (!corr[k]) corr[k] = [];
+        const others = present.filter(o => o !== p)
+          .map(o => `${o.market.replace(/_/g, " ")} ${o.line != null ? o.line : o.pp_line}`)
+          .join(", ");
+        corr[k].push(`Correlated with ${others} (${note})`);
+      }
+    }
+  }
+  return corr;
+}
+
 function renderPlayer(player, rationales) {
   const props = player.props.sort((a,b) => {
     const ap = Math.max(a.model_prob_over || 0, a.model_prob_under || 0);
@@ -120,12 +179,44 @@ function renderPlayer(player, rationales) {
     return bp - ap;
   });
 
-  // Hero: name, team, count
+  const correlations = findCorrelations(props);
+
+  // Gamelog for this player (if cached)
+  const glog = (window.GAMELOGS || {})[player.id] || (window.GAMELOGS || {})[String(player.id)];
+
+  // Hero: name, team, count + sparkline
   const teamLabel = player.team ? ` <span class="muted">(${player.team})</span>` : "";
+  let recentForm = "";
+  if (glog && glog.games && glog.games.length) {
+    const games = glog.games.slice().reverse(); // chronological for sparkline
+    let label, values, color;
+    if (glog.kind === "pitcher") {
+      label = "Last 14 starts: K per start";
+      values = games.map(g => g.k || 0);
+      color = "#22d3ee";
+    } else {
+      label = "Last 14 games: Total Bases per game";
+      values = games.map(g => g.tb || 0);
+      color = "#58c878";
+    }
+    const hr14 = games.reduce((s,g) => s + (g.hr || 0), 0);
+    const hits14 = games.reduce((s,g) => s + (g.hits || 0), 0);
+    const ks14 = games.reduce((s,g) => s + (g.k || 0), 0);
+    const summary = glog.kind === "pitcher"
+      ? `${ks14} K over last ${games.length} starts`
+      : `${hits14} H / ${hr14} HR over last ${games.length} games`;
+    recentForm = `
+      <div style="margin-top: 14px; padding: 12px 14px; background: rgba(255,255,255,0.02); border-radius: 6px;">
+        <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px;">${label}</div>
+        <div>${sparkline(values, { color })}</div>
+        <div class="muted" style="font-family:'JetBrains Mono',monospace; font-size:11px; margin-top: 4px;">${summary}</div>
+      </div>`;
+  }
   let html = `
     <section class="player-hero">
       <h1>${player.name}${teamLabel}</h1>
       <div class="meta">${props.length} open props today &middot; click any prop to see model rationale</div>
+      ${recentForm}
     </section>
     <section class="card" style="margin-bottom: 18px;">
       <div class="card-head"><span>Open Props</span></div>
@@ -143,8 +234,18 @@ function renderPlayer(player, rationales) {
     const src = p.book || (p.dk_over != null ? "DK" : "PP");
     const k = `${player.id}_${p.market}_${line}`;
     const r = rationales[k];
+    const corrKey = `${p.market}_${line}`;
+    const corrs = correlations[corrKey] || [];
+    const corrPill = corrs.length
+      ? `<span title="${corrs.join(' | ').replace(/"/g, '&quot;')}" style="font-size:9px; padding:1px 5px; margin-left:4px; border-radius:3px; background:rgba(212,160,74,0.15); color:#d4a04a;">CORR</span>`
+      : "";
+    const ls = p.lineup_status;
+    const lineupPill = ls === "confirmed" ? '<span title="lineup confirmed" style="font-size:9px; padding:1px 5px; margin-left:4px; border-radius:3px; background:rgba(88,200,120,0.15); color:#58c878;">L</span>'
+      : ls === "pending" ? '<span title="lineup not yet posted" style="font-size:9px; padding:1px 5px; margin-left:4px; border-radius:3px; background:rgba(212,160,74,0.15); color:#d4a04a;">PEND</span>'
+      : ls === "scratched" ? '<span title="player not in posted lineup" style="font-size:9px; padding:1px 5px; margin-left:4px; border-radius:3px; background:rgba(227,90,90,0.18); color:#e35a5a;">OUT</span>'
+      : '';
     html += `<div class="prop-row" data-prop-idx="${idx}" style="cursor:pointer;" onclick="toggleProp(${idx})">
-      <span>${market}</span>
+      <span>${market}${corrPill}${lineupPill}</span>
       <span>${line}</span>
       <span>${(bestProb*100).toFixed(1)}%</span>
       <span style="color:${side === 'OVER' ? '#58c878' : '#e35a5a'}; font-weight:600;">${side}</span>
@@ -152,6 +253,7 @@ function renderPlayer(player, rationales) {
       <span>${r ? '▾' : '<span class="muted" style="font-size:10px;">no rationale</span>'}</span>
     </div>
     <div id="prop-detail-${idx}" style="display:none;">
+      ${corrs.length ? `<div style="padding: 8px 14px; background: rgba(212,160,74,0.08); border-left: 2px solid #d4a04a; margin: 4px 0; font-family:'JetBrains Mono',monospace; font-size: 11px; color: #d4a04a;">⚠ ${corrs.join('. ')}.</div>` : ''}
       ${r ? renderRationale(r) : '<p class="empty">No rationale generated for this prop -- it falls outside the top 500 covered today.</p>'}
     </div>`;
   });

@@ -204,8 +204,13 @@ function renderTable() {
       projCell = `<strong>${mp.toFixed(2)}</strong>${arrow}<div class="muted" style="font-size:10px;">${pvl != null ? (pvl >= 0 ? "+" : "") + pvl.toFixed(2) : ""}</div>`;
     }
     const ratKey = `${r.player_id}_${r.market}_${r.line}`;
+    const ls = r.lineup_status;
+    const lineupPill = ls === "confirmed" ? '<span title="lineup confirmed" style="font-size:9px; padding:1px 5px; margin-left:4px; border-radius:3px; background:rgba(88,200,120,0.15); color:#58c878;">L</span>'
+      : ls === "pending" ? '<span title="lineup not yet posted" style="font-size:9px; padding:1px 5px; margin-left:4px; border-radius:3px; background:rgba(212,160,74,0.15); color:#d4a04a;">PEND</span>'
+      : ls === "scratched" ? '<span title="player not in posted lineup" style="font-size:9px; padding:1px 5px; margin-left:4px; border-radius:3px; background:rgba(227,90,90,0.18); color:#e35a5a;">OUT</span>'
+      : '';
     return `<tr style="cursor:pointer;" onclick="toggleRationaleRow('${ratKey}', this)">
-      <td><strong><a href="player.html?id=${r.player_id}" style="color: inherit; text-decoration: underline; text-decoration-color: rgba(255,255,255,0.15);" onclick="event.stopPropagation()">${r.player}</a></strong>${badge}${conf}</td>
+      <td><strong><a href="player.html?id=${r.player_id}" style="color: inherit; text-decoration: underline; text-decoration-color: rgba(255,255,255,0.15);" onclick="event.stopPropagation()">${r.player}</a></strong>${badge}${conf}${lineupPill}</td>
       <td class="muted">${r.matchup}</td>
       <td>${MARKET_LABEL[r.market] || r.market}</td>
       <td>${r.line}</td>

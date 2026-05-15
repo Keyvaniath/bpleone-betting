@@ -88,11 +88,33 @@ def evaluate_market(market: str, records: List[Dict[str, Any]]) -> Dict[str, Any
     correction = 1.0 / bias if bias else 1.0
     # Clamp correction to ±35% (matches calibration_runner aggressive band)
     correction = max(1.0 / 1.35, min(1.35, correction))
-    # Suggested blend weight: stub heuristic
-    # If v2-statcast model_version dominates and ECE is low, increase Statcast weight.
-    sc_count = sum(1 for r in valid if (r.get("model_version") or "").startswith("v2-statcast"))
-    suggested_blend = 0.5 + 0.05 * (sc_count / n - 0.5)
-    suggested_blend = max(0.4, min(0.7, suggested_blend))
+    # Grid search the Statcast-vs-Season blend weight that MINIMIZES RMSE
+    # on the projection. Each record carries debug.xstat (Statcast-derived
+    # projection) and debug.season_stat (season-only projection); the blend
+    # is w * statcast + (1 - w) * season. We scan w in [0.20, 0.30, ... 0.80]
+    # and pick the one with lowest RMSE.
+    blend_grid = [0.20, 0.30, 0.40, 0.50, 0.55, 0.60, 0.65, 0.70, 0.80]
+    best_w, best_rmse = 0.50, float("inf")
+    blend_records = [r for r in valid
+                     if isinstance((r.get("debug") or {}).get("xstat_proj"), (int, float))
+                     and isinstance((r.get("debug") or {}).get("season_proj"), (int, float))]
+    if len(blend_records) >= MIN_TRAIN_SAMPLE:
+        for w in blend_grid:
+            sse = 0.0
+            for r in blend_records:
+                d = r.get("debug") or {}
+                proj = w * d["xstat_proj"] + (1 - w) * d["season_proj"]
+                sse += (r["actual"] - proj) ** 2
+            rmse_w = math.sqrt(sse / len(blend_records))
+            if rmse_w < best_rmse:
+                best_rmse = rmse_w
+                best_w = w
+        suggested_blend = best_w
+    else:
+        # Fall back to the prior heuristic if records don't carry xstat/season splits
+        sc_count = sum(1 for r in valid if (r.get("model_version") or "").startswith("v2-statcast"))
+        suggested_blend = 0.5 + 0.05 * (sc_count / n - 0.5)
+        suggested_blend = max(0.40, min(0.70, suggested_blend))
     return {
         "n": n,
         "trainable": n >= MIN_TRAIN_SAMPLE,
@@ -103,7 +125,11 @@ def evaluate_market(market: str, records: List[Dict[str, Any]]) -> Dict[str, Any
         "actual_over_rate": round(actual, 4),
         "fitted_bias_correction": round(correction, 4),
         "suggested_statcast_blend": round(suggested_blend, 3),
-        "statcast_share_in_sample": round(sc_count / n, 3) if n else 0,
+        "blend_grid_searched": len(blend_records) >= MIN_TRAIN_SAMPLE,
+        "blend_search_rmse": round(best_rmse, 3) if best_rmse != float("inf") else None,
+        "statcast_share_in_sample": round(
+            sum(1 for r in valid if (r.get("model_version") or "").startswith("v2-statcast")) / n, 3
+        ) if n else 0,
     }
 
 

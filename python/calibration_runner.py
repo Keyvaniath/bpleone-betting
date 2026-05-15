@@ -43,14 +43,26 @@ LOOKBACK_DAYS = 30
 # So at n=0 the correction is exactly 1.0 (trust prior, no change), and as n
 # grows the model trusts the empirical bias more. By n=30 we're 50/50, by
 # n=120 we're 80/20 toward the data. No more hard cutoff.
-N_PRIOR = 8                      # AGGRESSIVE: was 30, now 8. Means n=8 hits 50/50
-                                 # data/prior weight (was n=30 for 50/50). User
-                                 # explicitly chose more aggressive learning over
-                                 # safety: "we are okay with misses we just want data."
-MIN_SAMPLE_FOR_ANY_CORRECTION = 1  # AGGRESSIVE: was 3, now 1. Even a single settled
-                                   # outcome contributes a (tiny) correction.
-MAX_CORRECTION = 1.35            # AGGRESSIVE: was 1.25, now 1.35 (+/-35%). The
-                                 # data is trusted to move further per refresh.
+N_PRIOR_DEFAULT = 8              # AGGRESSIVE: was 30, now 8.
+
+# Per-market N_PRIOR overrides. High-variance / rare markets (HR, RBIs) get
+# a slightly higher anchor; high-volume markets (hits, TB, singles) get even
+# more aggressive (lower anchor). Tuned from observed residual_std on the
+# 14-day backfill.
+N_PRIOR_PER_MARKET = {
+    "pitcher_strikeouts": 10,    # K props have wide outcome distribution
+    "batter_home_runs":   12,    # rare event, more shrinkage needed
+    "batter_rbis":        10,
+    "batter_total_bases":  6,    # frequent, smaller noise
+    "batter_hits":         6,
+    "batter_singles":      6,
+    "batter_doubles":      8,
+    "batter_runs_scored":  8,
+    "batter_hits_runs_rbis": 8,
+}
+N_PRIOR = N_PRIOR_DEFAULT        # Kept for backward-compat in correction_factor()
+MIN_SAMPLE_FOR_ANY_CORRECTION = 1
+MAX_CORRECTION = 1.35
 MIN_CORRECTION = 1.0 / 1.35
 
 
@@ -159,17 +171,14 @@ def compute_metrics(records: List[Dict[str, Any]], today: Optional[dt.date] = No
     }
 
 
-def correction_factor(metrics: Dict[str, Any]) -> float:
+def correction_factor(metrics: Dict[str, Any], market: Optional[str] = None) -> float:
     """Translate bias into a multiplicative correction with Bayesian shrinkage.
 
-    Shrinkage formula:
-        effective_cf = (n / (n + N_PRIOR)) * raw_cf + (N_PRIOR / (n + N_PRIOR)) * 1.0
+    Per-market N_PRIOR is used when `market` is provided -- different markets
+    have different residual variance, so they get different anchors.
 
-    - n=0 or n<MIN_SAMPLE_FOR_ANY_CORRECTION -> 1.0 (no change, trust prior)
-    - n=N_PRIOR -> half data, half prior
-    - n>>N_PRIOR -> mostly trust empirical bias
-    - raw_cf is still capped to [MIN_CORRECTION, MAX_CORRECTION] BEFORE shrinkage
-      so a thin-sample outlier can't drive the shrunk correction past the cap.
+    Shrinkage:
+        effective_cf = (n / (n + n_prior)) * raw_cf + (n_prior / (n + n_prior)) * 1.0
     """
     n = metrics.get("n", 0)
     if n < MIN_SAMPLE_FOR_ANY_CORRECTION:
@@ -177,8 +186,9 @@ def correction_factor(metrics: Dict[str, Any]) -> float:
     bias = metrics.get("bias", 1.0)
     if not bias or bias <= 0:
         return 1.0
+    n_prior = N_PRIOR_PER_MARKET.get(market, N_PRIOR_DEFAULT) if market else N_PRIOR_DEFAULT
     raw_cf = max(MIN_CORRECTION, min(MAX_CORRECTION, 1.0 / bias))
-    w = n / (n + N_PRIOR)
+    w = n / (n + n_prior)
     shrunk = w * raw_cf + (1.0 - w) * 1.0
     return round(shrunk, 4)
 
@@ -202,10 +212,12 @@ def run(today: Optional[dt.date] = None) -> Dict[str, Any]:
     for market_key in {r.get("market") for r in props if r.get("market")}:
         subset = [r for r in props if r.get("market") == market_key]
         m = compute_metrics(subset, today)
-        m["correction_factor"] = correction_factor(m)
+        m["correction_factor"] = correction_factor(m, market_key)
         # Make the shrinkage transparent: how much of the raw bias is we trusting?
         n = m.get("n", 0)
-        m["data_weight"] = round(n / (n + N_PRIOR), 4) if n > 0 else 0.0
+        n_prior_used = N_PRIOR_PER_MARKET.get(market_key, N_PRIOR_DEFAULT)
+        m["n_prior_used"] = n_prior_used
+        m["data_weight"] = round(n / (n + n_prior_used), 4) if n > 0 else 0.0
         m["raw_correction"] = round(max(MIN_CORRECTION, min(MAX_CORRECTION, 1.0 / m.get("bias", 1.0))), 4) if m.get("bias") else 1.0
         markets[market_key] = m
 
