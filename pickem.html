@@ -85,6 +85,11 @@
   </div>
 
   <section class="card" style="margin-bottom: 24px;">
+    <div class="card-head"><span>Optimal Power Plays</span><span class="muted" id="optRefresh"></span></div>
+    <div id="optimizerList" style="padding:14px;"><p class="muted">Loading optimizer...</p></div>
+  </section>
+
+  <section class="card" style="margin-bottom: 24px;">
     <div class="card-head"><span>PrizePicks Props (sorted by PP advantage)</span><span class="muted" id="pickemRefreshed"></span></div>
     <div class="filterbar">
       <label>Market:</label>
@@ -190,6 +195,35 @@ fetch("data/sleeper.json", { cache: "no-cache" })
       el.innerHTML = `<strong style="color:#58c878;">Sleeper Picks:</strong> live (${s.raw_projections} projections, ${s.matched_to_dk} matched to DK).`;
     }
   }).catch(() => {});
+
+// Power-play optimizer loader
+fetch("data/pickem_optimizer.json", { cache: "no-cache" })
+  .then(r => r.json())
+  .then(d => {
+    const list = document.getElementById("optimizerList");
+    document.getElementById("optRefresh").textContent =
+      d.generated_at ? `refreshed ${d.generated_at.replace("T"," ")} UTC` : "";
+    const sections = [];
+    for (const sizeKey of ["2_leg","3_leg","4_leg","5_leg","6_leg"]) {
+      const combos = (d.by_size || {})[sizeKey] || [];
+      if (!combos.length) continue;
+      const top = combos[0];
+      const legs = top.legs.map(l =>
+        `<div style="font-size:11px; padding:2px 0; font-family:'JetBrains Mono',monospace;">
+          ${l.side} ${l.line} <strong>${l.stat_type}</strong> -- ${l.player} (${(l.prob*100).toFixed(1)}%)
+        </div>`).join("");
+      sections.push(`<div style="margin-bottom:14px; padding:10px 12px; background: rgba(255,255,255,0.02); border-radius:6px;">
+        <div style="font-weight:600; margin-bottom:6px;">${top.size}-leg Power @ ${top.payout}x payout
+          <span style="color:${top.ev_pct > 0 ? '#58c878' : '#e35a5a'}; margin-left:8px;">EV ${top.ev_pct >= 0 ? "+" : ""}${top.ev_pct}%</span>
+          <span class="muted" style="font-size:11px; margin-left:6px;">(combined prob ${(top.combined_prob*100).toFixed(1)}%)</span>
+        </div>
+        ${legs}
+      </div>`);
+    }
+    list.innerHTML = sections.length ? sections.join("") :
+      `<p class="muted">No power plays meet the 60% leg-prob threshold today.</p>`;
+  })
+  .catch(() => {});
 
 fetch("data/pickem.json", { cache: "no-cache" })
   .then(r => r.json())

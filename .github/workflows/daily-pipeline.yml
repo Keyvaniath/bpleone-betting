@@ -72,6 +72,12 @@ jobs:
         working-directory: python
         run: python pickem.py
 
+      # PrizePicks Power-Play optimizer: build optimal 2-6 leg combinations.
+      - name: Optimize PrizePicks Power Plays
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        working-directory: python
+        run: python pickem_optimizer.py
+
       # Sleeper Picks integration. Stubs out gracefully when SLEEPER_TOKEN is unset.
       - name: Run Sleeper Picks integration (auth-gated)
         if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
