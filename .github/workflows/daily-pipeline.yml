@@ -135,6 +135,15 @@ jobs:
         working-directory: python
         run: python training_feedback.py
 
+      # Parameter recommender: analyzes calibration / walk-forward / track-record
+      # and writes data/param_recommendations.json with suggested config knob
+      # changes. /config.html renders these with one-click Apply links to
+      # runtime_config.json on GitHub. Suggestions only -- never auto-applied.
+      - name: Generate parameter recommendations
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        working-directory: python
+        run: python param_recommender.py
+
       # Pipeline health audit: empty/demo/stale-artifact detection.
       # Runs LAST so it captures the final state of every artifact.
       # Surfaces /audit.html.

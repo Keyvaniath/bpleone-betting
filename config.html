@@ -57,6 +57,14 @@
     </p>
   </section>
 
+  <section id="recsCard" class="card" style="margin-bottom: 18px; display: none; border-color: rgba(212,160,74,0.35);">
+    <div class="card-head"><span style="color: #d4a04a;">Model Recommendations</span><span class="muted" id="recsRefresh"></span></div>
+    <div style="padding: 6px 14px 14px;">
+      <p class="muted" style="font-size: 12px; margin: 0 0 12px 0;">Auto-generated each cron from calibration / walk-forward / track-record metrics. The model is suggesting these tweaks based on its own performance. <strong>You stay in control</strong> -- click <em>Apply</em> to open <code>runtime_config.json</code> on GitHub pre-filled with the change.</p>
+      <div id="recsList"></div>
+    </div>
+  </section>
+
   <section class="card" style="margin-bottom: 18px;">
     <div class="card-head"><span>Active Overrides</span><span class="muted" id="overrideCount"></span></div>
     <div id="overridesBox" style="padding: 14px;"></div>
@@ -102,6 +110,47 @@ const GROUPS = [
   { prefix: "anomalies.",    title: "Anomaly Detector" },
   { prefix: "rationales.",   title: "Rationale Generation" },
 ];
+
+// Load recommendations first (independent of config snapshot)
+fetch("data/param_recommendations.json", { cache: "no-cache" })
+  .then(r => r.json())
+  .then(rp => {
+    const recs = rp.recommendations || [];
+    if (!recs.length) return;
+    document.getElementById("recsCard").style.display = "block";
+    document.getElementById("recsRefresh").textContent = `${recs.length} recommendation${recs.length===1?'':'s'} ${(rp.generated_at||'').replace('T',' ')} UTC`;
+    const sevColor = { high: "#e35a5a", medium: "#d4a04a", low: "#58c878" };
+    document.getElementById("recsList").innerHTML = recs.map(r => {
+      const color = sevColor[r.severity] || "#888";
+      const arrow = r.direction === "increase" ? "↑" : r.direction === "decrease" ? "↓" : "→";
+      // Build a pre-filled runtime_config.json with this rec applied (best-effort -- merges into current overrides)
+      const ghEdit = `https://github.com/Keyvaniath/bpleone-betting/edit/main/data/runtime_config.json`;
+      const suggestedJson = JSON.stringify({ [r.key]: r.suggested });
+      const evJson = JSON.stringify(r.evidence || {}, null, 2);
+      return `<div style="padding: 12px 14px; margin-bottom: 10px; border-left: 3px solid ${color}; background: rgba(255,255,255,0.02); border-radius: 0 6px 6px 0;">
+        <div style="display:flex; justify-content:space-between; align-items:start; gap: 16px;">
+          <div style="flex: 1;">
+            <div style="font-family:'JetBrains Mono',monospace; font-size: 13px; font-weight: 600; margin-bottom: 4px;">
+              <span style="color: ${color};">[${r.severity.toUpperCase()}]</span> <span>${r.key}</span>
+            </div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size: 12px; color: var(--muted, #888); margin-bottom: 8px;">
+              ${JSON.stringify(r.current)} <span style="color: ${color};">${arrow}</span> <strong style="color: ${color};">${JSON.stringify(r.suggested)}</strong>
+            </div>
+            <div style="font-size: 12px; line-height: 1.5; color: var(--text-2, #aaa);">${r.rationale}</div>
+            <details style="margin-top: 8px; font-size: 11px;">
+              <summary class="muted" style="cursor: pointer;">evidence</summary>
+              <pre style="background: rgba(0,0,0,0.4); padding: 8px; border-radius: 4px; font-size: 10px; margin-top: 4px; overflow-x: auto;">${evJson}</pre>
+            </details>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 6px; min-width: 110px;">
+            <a href="${ghEdit}" target="_blank" style="padding: 6px 10px; background: ${color}; color: #1a1a1a; text-decoration: none; border-radius: 4px; font-size: 11px; font-weight: 600; text-align: center; text-transform: uppercase; letter-spacing: 0.05em;">Apply →</a>
+            <code style="font-size: 9px; padding: 4px 6px; background: rgba(0,0,0,0.4); border-radius: 3px; word-break: break-all; color: var(--muted, #888);">${suggestedJson}</code>
+          </div>
+        </div>
+      </div>`;
+    }).join("");
+  })
+  .catch(() => {});
 
 fetch("data/config_snapshot.json", { cache: "no-cache" })
   .then(r => r.json())
