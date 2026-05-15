@@ -678,6 +678,13 @@ def _build_props_from_bovada(markets: List[str], max_games: int) -> Dict[str, An
         trained_blends = {}
     if trained_blends:
         print(f"  -> applying trained blends: {trained_blends}")
+    try:
+        from player_bias import load_overrides as load_player_bias
+        player_bias = load_player_bias()
+    except Exception:
+        player_bias = {}
+    if player_bias:
+        print(f"  -> applying {len(player_bias)} per-player bias overrides")
 
     # Today's MLB schedule -> {(home_name, away_name): {gamePk, venue, home_team_id, away_team_id}}
     today_iso = dt.date.today().isoformat()
@@ -849,6 +856,15 @@ def _build_props_from_bovada(markets: List[str], max_games: int) -> Dict[str, An
             p_over = max(0.001, min(0.999, p_over * cf))
             dbg["correction_applied"] = round(cf, 4)
 
+        # Per-player bias override -- stacks on top of market-level correction.
+        # Players with z-score >= 2 systematic residual get a bespoke multiplier
+        # bounded to +/- 20%. Surfaces in debug for transparency.
+        pb_key = f"{pid}_{market_key}"
+        pb = player_bias.get(pb_key)
+        if pb is not None and pb != 1.0 and p_over is not None:
+            p_over = max(0.001, min(0.999, p_over * pb))
+            dbg["player_bias_applied"] = round(pb, 4)
+
         # Edge / play recommendation. Handle both 2-sided (over+under priced)
         # and 1-sided "yes/no" markets (over priced only, common on Bovada).
         play = "SKIP"
@@ -995,6 +1011,13 @@ def build_props(markets: Optional[List[str]] = None, max_games: int = MAX_GAMES)
         trained_blends = {}
     if trained_blends:
         print(f"  -> applying trained blends: {trained_blends}")
+    try:
+        from player_bias import load_overrides as load_player_bias
+        player_bias = load_player_bias()
+    except Exception:
+        player_bias = {}
+    if player_bias:
+        print(f"  -> applying {len(player_bias)} per-player bias overrides")
 
     # Pull MLB schedule once to map Odds event_id -> MLB gamePk for lineup lookups.
     today_iso = dt.date.today().isoformat()
@@ -1130,6 +1153,12 @@ def build_props(markets: Optional[List[str]] = None, max_games: int = MAX_GAMES)
                     p_over = max(0.001, min(0.999, p_over * cf))
                     dbg["correction_applied"] = round(cf, 4)
                     dbg["p_over_raw"] = round(p_over_raw, 4)
+                # Per-player bias override (stacks on calibration)
+                pb_key = f"{player_id}_{market_key}"
+                pb = player_bias.get(pb_key)
+                if pb is not None and pb != 1.0:
+                    p_over = max(0.001, min(0.999, p_over * pb))
+                    dbg["player_bias_applied"] = round(pb, 4)
                 # Surface the model's explicit projection of the stat value so
                 # the UI can show "Model expects X" alongside the book's line.
                 projection_keys = ("expected_ks", "expected_hr", "expected_hits",
