@@ -207,6 +207,46 @@ def run(today: Optional[dt.date] = None) -> Dict[str, Any]:
         })
     player_systematic.sort(key=lambda x: abs(x["mean_residual"]), reverse=True)
 
+    # Per-park / per-handedness slicing for systematic bias detection.
+    # We don't always have park/handedness on settled records, but where we
+    # do, surface "park X over-predicts by Y" so adjustments can be targeted.
+    park_residuals: Dict[str, Dict[str, Any]] = {}
+    hand_residuals: Dict[str, Dict[str, Any]] = {}
+    for r in enriched:
+        park = (r.get("park") or r.get("venue") or "").strip()
+        if park:
+            key = park
+            slot = park_residuals.setdefault(key, {"residuals": [], "by_market": {}})
+            slot["residuals"].append(r["residual"])
+            mk = r.get("market") or "?"
+            slot["by_market"].setdefault(mk, []).append(r["residual"])
+        # Handedness inferred via debug.batter_hand or debug.pitcher_hand if present
+        dbg = r.get("debug") or {}
+        hand = dbg.get("batter_hand") or dbg.get("pitcher_hand")
+        if hand:
+            slot = hand_residuals.setdefault(hand, {"residuals": [], "by_market": {}})
+            slot["residuals"].append(r["residual"])
+            mk = r.get("market") or "?"
+            slot["by_market"].setdefault(mk, []).append(r["residual"])
+
+    def _summarize(by_key: Dict[str, Dict[str, Any]]) -> Dict[str, Any]:
+        out = {}
+        for k, v in by_key.items():
+            vals = v["residuals"]
+            if not vals:
+                continue
+            out[k] = {
+                "n": len(vals),
+                "mean_residual": round(sum(vals) / len(vals), 3),
+                "mae": round(sum(abs(x) for x in vals) / len(vals), 3),
+                "by_market": {mk: {
+                    "n": len(mk_vals),
+                    "mean": round(sum(mk_vals) / len(mk_vals), 3),
+                } for mk, mk_vals in v["by_market"].items() if len(mk_vals) >= 5},
+            }
+        # Sort by |mean_residual| desc
+        return dict(sorted(out.items(), key=lambda kv: abs(kv[1]["mean_residual"]), reverse=True))
+
     payload = {
         "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
         "lookback_days": LOOKBACK_DAYS,
@@ -214,6 +254,8 @@ def run(today: Optional[dt.date] = None) -> Dict[str, Any]:
         "markets": markets,
         "player_systematic": player_systematic[:50],
         "total_props_analyzed": len(enriched),
+        "by_park": _summarize(park_residuals),
+        "by_handedness": _summarize(hand_residuals),
     }
     _write(payload)
     return payload

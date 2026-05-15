@@ -84,6 +84,18 @@
     <div id="playerList"><p class="empty">Loading player patterns...</p></div>
   </section>
 
+  <section class="card" style="margin-top: 24px;">
+    <div class="card-head"><span>Park-Specific Bias</span><span class="muted" id="parkCount"></span></div>
+    <div id="parkList" style="padding:6px 0;"><p class="empty">Loading park residuals...</p></div>
+    <p class="muted" style="font-size:11px; padding: 0 16px 14px;">Where does the model break per stadium? Parks with strong residuals suggest the model's park_factor multiplier is mis-calibrated for that venue.</p>
+  </section>
+
+  <section class="card" style="margin-top: 24px;">
+    <div class="card-head"><span>Handedness-Specific Bias</span><span class="muted" id="handCount"></span></div>
+    <div id="handList" style="padding:6px 0;"><p class="empty">Loading handedness residuals...</p></div>
+    <p class="muted" style="font-size:11px; padding: 0 16px 14px;">LHB vs RHB residuals. Skew in one direction suggests the model isn't accounting for platoon splits sharply enough.</p>
+  </section>
+
 </main>
 
 <script>
@@ -178,6 +190,32 @@ function renderOverall(p) {
     </div>`;
 }
 
+function renderGrouped(listId, countId, byKey, label) {
+  const list = document.getElementById(listId);
+  const cnt = document.getElementById(countId);
+  const entries = Object.entries(byKey);
+  if (cnt) cnt.textContent = `${entries.length} ${label}${entries.length === 1 ? "" : "s"}`;
+  if (!entries.length) {
+    list.innerHTML = `<p class="empty">No ${label} data yet -- backfill will populate this after the next 14-day run.</p>`;
+    return;
+  }
+  list.innerHTML = entries.slice(0, 15).map(([k, v]) => {
+    const cls = v.mean_residual < -0.1 ? "negative" : v.mean_residual > 0.1 ? "positive" : "";
+    const markets = Object.entries(v.by_market || {})
+      .sort((a, b) => Math.abs(b[1].mean) - Math.abs(a[1].mean))
+      .slice(0, 4)
+      .map(([mk, vv]) => `${mk.replace(/_/g, ' ')}: ${vv.mean >= 0 ? '+' : ''}${vv.mean} (n=${vv.n})`)
+      .join(" · ");
+    return `<div class="player-row" style="grid-template-columns: 260px 80px 110px 110px auto;">
+      <span class="name">${k}</span>
+      <span>${v.n}</span>
+      <span class="${cls}">${v.mean_residual >= 0 ? "+" : ""}${v.mean_residual}</span>
+      <span>${v.mae}</span>
+      <span class="muted" style="font-size:10px;">${markets || "(low-n)"}</span>
+    </div>`;
+  }).join("");
+}
+
 function renderPlayers(rows) {
   const list = document.getElementById("playerList");
   const cnt = document.getElementById("playerCount");
@@ -212,6 +250,8 @@ fetch("data/residuals.json", { cache: "no-cache" })
     }
     blocks.innerHTML = keys.map(k => renderMarketBlock(k, markets[k])).join("");
     renderPlayers(p.player_systematic || []);
+    renderGrouped("parkList", "parkCount", p.by_park || {}, "park");
+    renderGrouped("handList", "handCount", p.by_handedness || {}, "handedness");
   })
   .catch(err => {
     document.getElementById("marketBlocks").innerHTML =

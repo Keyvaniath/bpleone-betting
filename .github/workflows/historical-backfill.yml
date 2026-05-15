@@ -1,0 +1,68 @@
+name: Historical Backfill
+
+# Heavy one-shot job: walks last N days of completed MLB games, runs the
+# current model retroactively, and seeds track_record.json with hundreds-
+# to-thousands of settled (prediction, outcome) pairs. Lets the Bayesian
+# shrinkage in calibration_runner cross to data-driven correction without
+# waiting weeks for organic settlements to accumulate.
+#
+# Trigger manually via the Actions tab. Pass `days` (default 14, max 30).
+# Re-runs are idempotent (de-dupes on (date, player_id, market, line)).
+
+on:
+  workflow_dispatch:
+    inputs:
+      days:
+        description: 'How many days back to backfill (1-30)'
+        required: false
+        default: '14'
+
+permissions:
+  contents: write
+
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install deps
+        run: pip install -r python/requirements.txt
+
+      - name: Run historical backfill
+        working-directory: python
+        run: python historical_backfill.py --days ${{ github.event.inputs.days || '14' }}
+
+      - name: Recompute calibration on expanded track record
+        working-directory: python
+        run: python calibration_runner.py
+
+      - name: Recompute residuals with park/handedness slicing
+        working-directory: python
+        run: python residuals.py
+
+      - name: Commit + push if data changed
+        run: |
+          git config user.name  "edgestat-bot"
+          git config user.email "actions@github.com"
+          git add data/track_record.json data/calibration_live.json data/residuals.json
+          if git diff --cached --quiet; then
+            echo "No data changes -- nothing to commit."
+          else
+            git commit -m "chore(data): historical backfill ${{ github.event.inputs.days }}d $(date -u +%FT%TZ)"
+            for i in 1 2 3; do
+              git pull --rebase origin main || { git rebase --abort; sleep 3; continue; }
+              git push && exit 0
+              sleep 5
+            done
+            echo "push failed after retries"
+            exit 1
+          fi

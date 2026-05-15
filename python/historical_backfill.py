@@ -184,6 +184,7 @@ def backfill_day(date_iso: str) -> List[Dict[str, Any]]:
             continue
         home_team_id = bs.get("teams", {}).get("home", {}).get("team", {}).get("id")
         away_team_id = bs.get("teams", {}).get("away", {}).get("team", {}).get("id")
+        venue = (g.get("schedule", {}).get("venue") or {}).get("name") or ""
         for side in ("home", "away"):
             team = bs.get("teams", {}).get(side, {})
             opp_tid = away_team_id if side == "home" else home_team_id
@@ -231,6 +232,7 @@ def backfill_day(date_iso: str) -> List[Dict[str, Any]]:
                             "dk_under": None,
                             "edge_pct": None,
                             "low_confidence": False,
+                            "park": venue,
                         })
 
             # Batters: use the actual batting order from the boxscore
@@ -277,6 +279,7 @@ def backfill_day(date_iso: str) -> List[Dict[str, Any]]:
                             "dk_under": None,
                             "edge_pct": None,
                             "low_confidence": False,
+                            "park": venue,
                         })
     return records
 
