@@ -1,13 +1,13 @@
 # EdgeStat Daily Brief - 2026-05-15
 
-_Generated at 2026-05-15T01:45:41 UTC. All game-line prices are from DraftKings. Pick-em opportunities from PrizePicks._
+_Generated at 2026-05-15T01:52:36 UTC. All game-line prices are from DraftKings. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
-**SFG @ OAK - OAK_ML**
-- Market: -110
-- Model probability: 80.4%
-- Raw edge: +53.42%
+**ARI @ COL - COL_ML**
+- Market: +109
+- Model probability: 71.3%
+- Raw edge: +49.1%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
@@ -16,21 +16,21 @@ _Generated at 2026-05-15T01:45:41 UTC. All game-line prices are from DraftKings.
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 6:40p ET | PHI @ PIT | PNC Park | 58F 6mph | PIT_ML +31.5% |
+| 6:40p ET | PHI @ PIT | PNC Park | 58F 6mph | PIT_ML +31.39% |
 | 6:45p ET | BAL @ WSN | Nationals Park | 61F 2mph | OVER_9.5 +38.75% |
 | 6:45p ET | TOR @ DET | Comerica Park | 59F 7mph | UNDER_8.0 +46.57% |
 | 7:10p ET | CIN @ CLE | Progressive Field | 58F 7mph | -- |
 | 7:10p ET | MIA @ TBR | Tropicana Field | indoor | UNDER_8.0 +22.2% |
-| 7:10p ET | MIL @ MIN | Target Field | 70F 0mph | UNDER_8.5 +30.01% |
-| 7:15p ET | BOS @ ATL | Truist Park | 70F 0mph | ATL_ML +42.06% |
-| 7:15p ET | NYY @ NYM | Citi Field | 70F 0mph | NYY_ML +47.81% |
-| 7:40p ET | CHC @ CHW | Rate Field | 70F 0mph | OVER_8.0 +22.6% |
+| 7:10p ET | MIL @ MIN | Target Field | 69F 5mph | UNDER_8.5 +22.99% |
+| 7:15p ET | BOS @ ATL | Truist Park | 66F 3mph | ATL_ML +42.26% |
+| 7:15p ET | NYY @ NYM | Citi Field | 58F 4mph | NYY_ML +44.92% |
+| 7:40p ET | CHC @ CHW | Rate Field | 64F 8mph | OVER_8.0 +30.9% |
 | 8:10p ET | TEX @ HOU | Daikin Park | indoor | HOU_ML +23.21% |
-| 8:15p ET | KCR @ STL | Busch Stadium | 59F 4mph | UNDER_8.5 +8.46% |
+| 8:15p ET | KCR @ STL | Busch Stadium | 59F 4mph | UNDER_8.5 +6.5% |
 | 8:40p ET | ARI @ COL | Coors Field | 74F 5mph | COL_ML +49.1% |
-| 9:38p ET | LAD @ LAA | Angel Stadium | 65F 3mph | LAD_ML +21.6% |
+| 9:38p ET | LAD @ LAA | Angel Stadium | 65F 3mph | LAD_ML +22.44% |
 | 9:40p ET | SDP @ SEA | T-Mobile Park | indoor | UNDER_7.5 +23.5% |
-| 9:40p ET | SFG @ OAK | Sutter Health Park | 67F 6mph | OAK_ML +53.42% |
+| 9:40p ET | SFG @ OAK | Sutter Health Park | 70F 0mph | OAK_ML +35.81% |
 
 ## PrizePicks - 67 lines softer than DraftKings
 
@@ -54,28 +54,28 @@ _Generated at 2026-05-15T01:45:41 UTC. All game-line prices are from DraftKings.
 
 ## Parlays - top 5
 
-- **2-leg @ +264 (prob 41.1%, EV +49.82%)**
+- **2-leg @ +169 (prob 55.7%, EV +49.62%)**
   - MIA @ TBR UNDER_8.0 (-110, model 64.0%)
-  - CHC @ CHW OVER_8.0 (-110, model 64.2%)
-- **2-leg @ +167 (prob 56.2%, EV +49.82%)**
-  - TEX @ HOU HOU_ML (-110, model 64.5%)
-  - LAD @ LAA LAD_ML (-252, model 87.1%)
-- **2-leg @ +167 (prob 55.9%, EV +49.08%)**
-  - CHC @ CHW OVER_8.0 (-110, model 64.2%)
-  - LAD @ LAA LAD_ML (-252, model 87.1%)
-- **2-leg @ +167 (prob 55.7%, EV +48.59%)**
-  - MIA @ TBR UNDER_8.0 (-110, model 64.0%)
-  - LAD @ LAA LAD_ML (-252, model 87.1%)
+  - LAD @ LAA LAD_ML (-246, model 87.1%)
 - **2-leg @ +282 (prob 37.2%, EV +42.21%)**
   - Freddie Freeman OVER 1.5 batter_total_bases (+125, model 55.4%)
+  - BAL @ WSN BAL_ML (-143, model 67.2%)
+- **2-leg @ +215 (prob 45.0%, EV +41.73%)**
+  - Geraldo Perdomo UNDER 1.5 batter_total_bases (-117, model 67.0%)
+  - BAL @ WSN BAL_ML (-143, model 67.2%)
+- **2-leg @ +210 (prob 45.6%, EV +41.55%)**
+  - JJ Bleday OVER 0.5 batter_hits (-121, model 67.9%)
+  - BAL @ WSN BAL_ML (-143, model 67.2%)
+- **2-leg @ +306 (prob 34.8%, EV +41.19%)**
+  - Chase DeLauter OVER 1.5 batter_total_bases (+139, model 51.8%)
   - BAL @ WSN BAL_ML (-143, model 67.2%)
 
 ## Self-Learning Loop
 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
-| batter hits | 1 | 0.0% | 27.0% | 1.000 | 1.000 |
 | batter total bases | 1 | 100.0% | 69.2% | 0.692 | 1.000 |
+| batter hits | 1 | 0.0% | 27.0% | 1.000 | 1.000 |
 
 Cumulative graded plays: 1. Wins: 1. Hit rate: 100.0%.
 
