@@ -87,7 +87,12 @@
 
   <section class="card" style="margin-bottom: 24px;">
     <div class="card-head"><span>Optimal Power Plays</span><span class="muted" id="optRefresh"></span></div>
-    <div id="optimizerList" style="padding:14px;"><p class="muted">Loading optimizer...</p></div>
+    <div style="padding: 10px 14px 0 14px;">
+      <div style="padding:10px 14px; border-radius:6px; background:rgba(212,160,74,0.08); border:1px solid rgba(212,160,74,0.35); font-family:'JetBrains Mono',monospace; font-size:12px; color:#d4a04a; margin-bottom:14px;">
+        <strong>Pre-calibration cap in play.</strong> Every leg below is capped at 85% probability so a single thin-sample projection can't drive runaway compounding (e.g. 95% &times; 95% &times; ... &times; 95% would print absurd EVs). Combined probabilities and EVs are computed off the capped 0.85 floor, not the raw model. Treat these as candidate shapes, not sized bets, until <a href="learning.html" style="color:#d4a04a; text-decoration:underline;">per-market calibration</a> matures past 30 settled records.
+      </div>
+    </div>
+    <div id="optimizerList" style="padding:0 14px 14px 14px;"><p class="muted">Loading optimizer...</p></div>
   </section>
 
   <section class="card" style="margin-bottom: 24px;">
