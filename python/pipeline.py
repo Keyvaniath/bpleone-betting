@@ -392,17 +392,26 @@ def build_real_slate() -> Optional[List[Dict[str, Any]]]:
 
 
 def build_slate(force_demo: bool = False) -> List[Dict[str, Any]]:
-    """Try real data first; fall back to DEMO_SLATE so the front-end never breaks."""
+    """Try real data first. If real fails AND demo isn't forced, emit a sentinel
+    slate flagged with `is_demo: True` so downstream consumers (snapshot, outcomes,
+    calibration) can skip these records instead of silently treating fake matchups
+    as real settlements.
+
+    The previous behavior was to silently return DEMO_SLATE on any failure -- that
+    cost us yesterday's game-line settlements because outcomes.py tried to look up
+    "SDP @ LAD" in the real 2026-05-14 MLB schedule (where SDP actually played MIL).
+    """
     if force_demo:
         print("  -> demo mode (forced)")
-        return DEMO_SLATE
+        return [dict(g, is_demo=True) for g in DEMO_SLATE]
     print("  -> attempting real data pull")
     real = build_real_slate()
     if real:
         print(f"  [ok] real slate: {len(real)} games")
         return real
-    print("  -> falling back to DEMO_SLATE")
-    return DEMO_SLATE
+    print("  [!!] real-data pull failed -- returning DEMO_SLATE TAGGED is_demo=True")
+    print("        Downstream snapshot/outcomes/calibration will skip these records.")
+    return [dict(g, is_demo=True) for g in DEMO_SLATE]
 
 
 if __name__ == "__main__":

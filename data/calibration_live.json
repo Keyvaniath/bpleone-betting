@@ -1,13 +1,16 @@
 {
-  "generated_at": "2026-05-15T04:27:58",
+  "generated_at": "2026-05-15T00:23:57",
   "lookback_days": 30,
+  "shrinkage_n_prior": 30,
+  "shrinkage_min_n": 3,
+  "shrinkage_note": "Per-market correction = data_weight * raw_correction + (1 - data_weight) * 1.0; data_weight = n / (n + 30). Below n=3 the factor is forced to 1.0. Caps at +/- 25%.",
   "markets": {
     "batter_total_bases": {
       "n": 4,
       "n_with_projection": 4,
       "implied_over_rate": 0.5223,
       "actual_over_rate": 0.0,
-      "bias": 1.0,
+      "bias": 5.1786,
       "brier": 0.2743,
       "log_loss": 0.7422,
       "ece": 0.5223,
@@ -16,14 +19,16 @@
       "plays_won": 0,
       "plays_lost": 4,
       "roi_pct": -100.0,
-      "correction_factor": 1.0
+      "correction_factor": 0.9765,
+      "data_weight": 0.1176,
+      "raw_correction": 0.8
     },
     "batter_hits": {
       "n": 2,
       "n_with_projection": 2,
       "implied_over_rate": 0.6211,
       "actual_over_rate": 0.0,
-      "bias": 1.0,
+      "bias": 3.4846,
       "brier": 0.3862,
       "log_loss": 0.9719,
       "ece": 0.6211,
@@ -32,7 +37,9 @@
       "plays_won": 1,
       "plays_lost": 1,
       "roi_pct": 35.5,
-      "correction_factor": 1.0
+      "correction_factor": 1.0,
+      "data_weight": 0.0625,
+      "raw_correction": 0.8
     }
   },
   "games_overall": {

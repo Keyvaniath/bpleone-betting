@@ -54,14 +54,21 @@
 
   <section class="page-head">
     <h1>Self-Learning Loop</h1>
-    <p>Every night a job pulls the box scores of every game from yesterday's slate, settles each projection (hit / miss / push), and writes the result to a growing track record. The next morning, a calibration runner re-reads the trailing 30 days, computes per-market bias, Brier score, log loss, and ECE, then writes a correction factor that the next day's projections multiply through. The model only gets smarter.</p>
-    <p class="muted" style="font-size:12px; margin-top:6px;">No corrections fire until a market has at least 30 settled records. Caps at +/- 25% per refresh to avoid runaway adjustment. Day 1: trust the priors. Day 30: trust the data.</p>
+    <p>Every night a job pulls the box scores of every game from yesterday's slate, settles each projection (hit / miss / push), and appends it to a growing track record. The next morning, a calibration runner re-reads the trailing 30 days, computes per-market bias / Brier / log-loss / ECE, then writes a correction factor that the next day's projections multiply through. The model gets smarter every day it sees outcomes.</p>
+    <p class="muted" style="font-size:12px; margin-top:6px;">
+      <strong style="color:#58c878;">Bayesian shrinkage</strong> means the loop starts learning from <em>day 1</em>, not day 30. The effective correction = (n / (n + N_PRIOR)) &middot; raw_bias_correction + (N_PRIOR / (n + N_PRIOR)) &middot; 1.0. With N_PRIOR=30, at n=3 the data has 9% pull and the prior 91%; at n=30 it's 50/50; at n=120 it's 80% data, 20% prior. Bias formula uses Laplace smoothing so a thin sample with 0 hits doesn't divide by zero. Per-market correction is capped at &plusmn;25%.
+    </p>
+  </section>
+
+  <section id="loopStatusCard" class="card" style="margin-bottom:24px;">
+    <div class="card-head"><span>Loop Status</span><span class="muted" id="loopStatusRefresh"></span></div>
+    <div id="loopStatus" style="padding:14px; font-family:'JetBrains Mono',monospace; font-size:12px; line-height:1.7;">Loading...</div>
   </section>
 
   <section class="card" style="margin-bottom:24px;">
     <div class="card-head"><span>Calibration by Market</span><span class="muted" id="calRefreshed"></span></div>
     <div class="market-row head">
-      <span>Market</span><span>n</span><span>ROI</span><span>Hit rate</span><span>Model implied</span><span>Bias</span><span>ECE</span><span>RMSE</span>
+      <span>Market</span><span>n</span><span>ROI</span><span>Hit rate</span><span>Model implied</span><span>Bias</span><span>ECE</span><span title="Effective correction factor after Bayesian shrinkage. 1.0 = no change. <1 shrinks OVER probs; >1 boosts.">Correction</span>
     </div>
     <div id="marketList"><p class="empty">Loading...</p></div>
   </section>
@@ -102,6 +109,18 @@ function renderMarkets(cal) {
   list.innerHTML = keys.map(k => {
     const m = markets[k];
     const roiCls = (m.roi_pct || 0) > 0 ? "good" : (m.roi_pct || 0) < 0 ? "bad" : "flat";
+    // Correction factor display: show effective, with raw + data_weight in tooltip
+    const cf = m.correction_factor;
+    let cfCell;
+    if (cf == null) {
+      cfCell = badge("--", "flat");
+    } else if (Math.abs(cf - 1.0) < 0.001) {
+      cfCell = `<span class="badge flat" title="No correction applied -- ${(m.data_weight*100||0).toFixed(0)}% data weight (raw_cf=${m.raw_correction})">1.000</span>`;
+    } else {
+      const cls = cf < 1.0 ? "good" : "bad";
+      const dir = cf < 1.0 ? "shrinking OVER" : "boosting OVER";
+      cfCell = `<span class="badge ${cls}" title="${dir} by ${Math.abs((cf-1)*100).toFixed(2)}%. raw_cf=${m.raw_correction}, data_weight=${(m.data_weight*100).toFixed(0)}%">${cf.toFixed(3)}</span>`;
+    }
     return `<div class="market-row">
       <span class="name">${k.replace(/_/g, " ")}</span>
       <span>${m.n || 0}</span>
@@ -110,9 +129,41 @@ function renderMarkets(cal) {
       <span>${m.implied_over_rate != null ? (m.implied_over_rate * 100).toFixed(1) + "%" : "--"}</span>
       <span>${biasLabel(m.bias)}</span>
       <span>${m.ece != null ? m.ece.toFixed(3) : "--"}</span>
-      <span title="root-mean-square error of model projection vs actual stat (lower = sharper model)">${m.rmse != null ? m.rmse : "--"}</span>
+      <span>${cfCell}</span>
     </div>`;
   }).join("");
+}
+
+function renderLoopStatus(cal, tr) {
+  const el = document.getElementById("loopStatus");
+  if (!el) return;
+  const propsSettled = (tr.props || []).length;
+  const gamesSettled = (tr.games || []).length;
+  const lastDate = tr.last_settled_date || "--";
+  const markets = cal.markets || {};
+  const marketCount = Object.keys(markets).length;
+  const totalCorrected = Object.values(markets).filter(m => Math.abs((m.correction_factor || 1) - 1) > 0.001).length;
+  const refreshTs = (cal.generated_at || "").replace("T", " ");
+  const nPrior = cal.shrinkage_n_prior || 30;
+  // Health checks
+  const checks = [];
+  checks.push(`<span style="color:#58c878;">[ok]</span> outcomes feed: <strong>${propsSettled}</strong> props, <strong>${gamesSettled}</strong> games settled (last: ${lastDate})`);
+  if (gamesSettled === 0 && propsSettled > 0) {
+    checks.push(`<span style="color:#d4a04a;">[!]</span> Game-line settlement is 0 -- check that today.json snapshot has real matchups (not <code>is_demo: true</code>). First real game settlement appears the morning after a successful real-data pipeline run.`);
+  }
+  checks.push(`<span style="color:#58c878;">[ok]</span> calibration_runner ran ${refreshTs} -- ${marketCount} market(s) tracked, <strong>${totalCorrected}</strong> currently applying a non-trivial correction`);
+  if (marketCount > 0 && totalCorrected === 0) {
+    checks.push(`<span style="color:#888;">[--]</span> All markets currently at correction_factor = 1.0 (no shrinkage influence yet). With n_prior=${nPrior}, expect non-trivial corrections to emerge once any market crosses n &approx; 5.`);
+  }
+  for (const [k, m] of Object.entries(markets)) {
+    if (Math.abs((m.correction_factor || 1) - 1) > 0.001) {
+      const dir = m.correction_factor < 1 ? "shrink OVER" : "boost OVER";
+      checks.push(`<span style="color:#58c878;">[*]</span> <strong>${k.replace(/_/g, " ")}</strong>: ${dir} by ${Math.abs((m.correction_factor-1)*100).toFixed(2)}% next refresh (bias=${m.bias}, n=${m.n}, data_weight=${(m.data_weight*100).toFixed(0)}%)`);
+    }
+  }
+  el.innerHTML = checks.join("<br>");
+  const ts = document.getElementById("loopStatusRefresh");
+  if (ts) ts.textContent = refreshTs ? `refreshed ${refreshTs} UTC` : "";
 }
 
 function renderGameOverall(cal) {
@@ -244,6 +295,7 @@ Promise.all([
     if (main && main.firstElementChild) main.insertBefore(summary, main.firstElementChild.nextSibling);
   }
 
+  renderLoopStatus(cal, tr);
   renderMarkets(cal);
   renderGameOverall(cal);
   renderRecent(tr);
