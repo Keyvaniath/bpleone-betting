@@ -39,11 +39,19 @@ jobs:
         working-directory: python
         run: python live_edges.py
 
+      # Live prop tracker: pulls every DK/PP prop's current in-game stat
+      # line + status (WIN, LOSS, CASHING, SWEATING, LIVE, PRE).
+      # Frontend auto-refreshes every 60s so Brandon can see in real time
+      # which OVERs are cashing and which UNDERs are sweating.
+      - name: Track live prop status (DK + PrizePicks)
+        working-directory: python
+        run: python live_props.py
+
       - name: Commit if state changed
         run: |
           git config user.name  "edgestat-bot"
           git config user.email "actions@github.com"
-          git add data/live_state.json data/live_clv.json data/live_edges.json
+          git add data/live_state.json data/live_clv.json data/live_edges.json data/live_props.json
           if git diff --cached --quiet; then
             echo "No live games or no state changes."
           else

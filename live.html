@@ -48,6 +48,103 @@
     <p>Pre-game models tell you who should win. In-game models tell you the live fair price after every pitch. Built on a Monte Carlo simulator that integrates the base-out run-expectancy matrix. This is how live betting markets should be priced — and aren't.</p>
   </section>
 
+  <!-- Live prop tracker: shows each prop's current actual vs line, status, game state -->
+  <section id="liveTrackerCard" class="card" style="margin-bottom: 28px; display:none;">
+    <div class="card-head">
+      <span>📺 Live Prop Tracker</span>
+      <span class="muted" id="ltMeta">--</span>
+    </div>
+    <div style="padding: 6px 16px 14px;">
+      <div style="display:flex; gap:14px; flex-wrap:wrap; margin-bottom: 12px; font-family:'JetBrains Mono',monospace; font-size:11px;" id="ltSummary"></div>
+      <div style="display:flex; gap:8px; margin-bottom: 10px; font-size: 11px;">
+        <button class="ltf-btn" data-filter="in_progress" style="cursor:pointer; padding:4px 10px; background: var(--bg-2); border:1px solid var(--line); border-radius:4px; color: var(--text);">In progress</button>
+        <button class="ltf-btn" data-filter="won_so_far" style="cursor:pointer; padding:4px 10px; background: rgba(88,200,120,0.15); border:1px solid rgba(88,200,120,0.35); border-radius:4px; color: #58c878;">Cashing live</button>
+        <button class="ltf-btn" data-filter="lost_so_far" style="cursor:pointer; padding:4px 10px; background: rgba(227,90,90,0.15); border:1px solid rgba(227,90,90,0.35); border-radius:4px; color: #e35a5a;">Sweating</button>
+        <button class="ltf-btn" data-filter="won" style="cursor:pointer; padding:4px 10px; background: rgba(88,200,120,0.05); border:1px solid rgba(88,200,120,0.20); border-radius:4px; color: var(--text-2, #aaa);">Final WIN</button>
+        <button class="ltf-btn" data-filter="lost" style="cursor:pointer; padding:4px 10px; background: rgba(227,90,90,0.05); border:1px solid rgba(227,90,90,0.20); border-radius:4px; color: var(--text-2, #aaa);">Final LOSS</button>
+        <button class="ltf-btn" data-filter="" style="cursor:pointer; padding:4px 10px; background: rgba(212,160,74,0.10); border:1px solid rgba(212,160,74,0.30); border-radius:4px; color: #d4a04a;">All</button>
+      </div>
+      <div id="ltList" style="max-height: 480px; overflow-y: auto;"></div>
+    </div>
+  </section>
+
+  <script>
+  (function liveTracker(){
+    let _data = null;
+    let _filter = "in_progress";
+    function render() {
+      const card = document.getElementById("liveTrackerCard");
+      const list = document.getElementById("ltList");
+      const summary = document.getElementById("ltSummary");
+      const meta = document.getElementById("ltMeta");
+      if (!_data || !card || !list) return;
+      card.style.display = "block";
+      meta.textContent = `${_data.n_props} props · ${(_data.generated_at || "").replace("T", " ")} UTC`;
+      const stats = [
+        { k: "n_in_progress", lbl: "in-progress", color: "var(--text-2, #aaa)" },
+        { k: "n_won_so_far",  lbl: "cashing live", color: "#58c878" },
+        { k: "n_lost_so_far", lbl: "sweating", color: "#e35a5a" },
+        { k: "n_won",         lbl: "final WIN", color: "#58c878" },
+        { k: "n_lost",        lbl: "final LOSS", color: "#e35a5a" },
+      ];
+      summary.innerHTML = stats.map(s => `<span><span style="color:${s.color}; font-weight:700;">${_data[s.k] || 0}</span> ${s.lbl}</span>`).join(" · ");
+      const items = Object.values(_data.by_key || {});
+      const filtered = _filter ? items.filter(i => i.status === _filter) : items;
+      filtered.sort((a, b) => {
+        const order = { in_progress: 0, won_so_far: 1, lost_so_far: 2, won: 3, lost: 4, scheduled: 5, no_game: 6 };
+        return (order[a.status] ?? 9) - (order[b.status] ?? 9);
+      });
+      if (!filtered.length) {
+        list.innerHTML = `<p class="muted" style="padding:14px; text-align:center;">No props match this filter.</p>`;
+        return;
+      }
+      list.innerHTML = filtered.slice(0, 300).map(it => {
+        const colorMap = {
+          won: "#58c878", won_so_far: "#58c878",
+          lost: "#e35a5a", lost_so_far: "#e35a5a",
+          in_progress: "#d4a04a", scheduled: "var(--muted, #888)",
+          no_game: "var(--muted, #888)",
+        };
+        const c = colorMap[it.status] || "#888";
+        const statusLabel = {
+          won: "WIN", won_so_far: "CASHING", lost: "LOSS", lost_so_far: "DOWN",
+          in_progress: "LIVE", scheduled: "PRE", no_game: "—",
+        }[it.status] || it.status;
+        const lineLabel = `${(it.market || "").replace(/_/g, ' ')} ${it.play || ""} ${it.line}`;
+        const actualLabel = it.actual_so_far === null || it.actual_so_far === undefined ? "—" : it.actual_so_far;
+        return `<div style="display:grid; grid-template-columns: 1.6fr 1.6fr 80px 90px 120px 80px; gap:14px; padding:8px 0; border-bottom:1px solid rgba(255,255,255,0.04); font-family:'JetBrains Mono',monospace; font-size:12px; align-items:center;">
+          <span><a href="player.html?id=${it.player_id}" style="color: var(--text); text-decoration: underline; text-decoration-color: rgba(255,255,255,0.15);">${it.player}</a></span>
+          <span>${lineLabel}</span>
+          <span class="muted">${it.src}</span>
+          <span><strong>${actualLabel}</strong></span>
+          <span class="muted" style="font-size:11px;">${it.game_state || ""}</span>
+          <span style="padding: 2px 8px; border-radius: 3px; background: ${c}22; color: ${c}; font-size: 10px; font-weight: 700; text-align: center;">${statusLabel}</span>
+        </div>`;
+      }).join("");
+    }
+    fetch("data/live_props.json", { cache: "no-cache" })
+      .then(r => r.json())
+      .then(d => { _data = d; render(); })
+      .catch(() => {});
+    document.addEventListener("click", e => {
+      const btn = e.target.closest(".ltf-btn");
+      if (!btn) return;
+      _filter = btn.dataset.filter;
+      // Visual highlight
+      document.querySelectorAll(".ltf-btn").forEach(b => b.style.borderWidth = "1px");
+      btn.style.borderWidth = "2px";
+      render();
+    });
+    // Auto-refresh every 60s
+    setInterval(() => {
+      fetch("data/live_props.json", { cache: "no-cache" })
+        .then(r => r.json())
+        .then(d => { _data = d; render(); })
+        .catch(() => {});
+    }, 60000);
+  })();
+  </script>
+
   <section class="metric-strip">
     <div class="metric"><span class="metric-num" id="liveCurrent">--</span><span class="metric-label">Current Home Win %</span></div>
     <div class="metric"><span class="metric-num" id="livePreGame">--</span><span class="metric-label">Pre-Game Home %</span></div>

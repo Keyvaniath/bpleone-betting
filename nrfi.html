@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NRFI / YRFI Deep-Dive | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .nrfi-row { display: grid; grid-template-columns: 1.4fr 0.7fr 1.6fr 80px 80px 80px 80px 1fr; gap: 14px; padding: 12px 16px; border-bottom: 1px solid rgba(255,255,255,0.04); font-family: 'JetBrains Mono', monospace; font-size: 12px; align-items: center; }
+  .nrfi-row.head { background: rgba(255,255,255,0.04); color: var(--muted, #888); font-size: 10px; text-transform: uppercase; padding: 10px 16px; }
+  .nrfi-pill { padding: 2px 10px; border-radius: 4px; font-size: 10px; text-transform: uppercase; font-weight: 700; letter-spacing: 0.05em; }
+  .nrfi-pill.yrfi { background: rgba(88,200,120,0.18); color: #58c878; }
+  .nrfi-pill.nrfi { background: rgba(212,160,74,0.18); color: #d4a04a; }
+  .nrfi-pill.skip { background: rgba(255,255,255,0.05); color: var(--muted, #888); }
+</style>
+</head>
+<body class="page-nrfi">
+<header class="topbar">
+  <div class="brand">
+    <a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a>
+    <span class="tagline">by bpleone</span>
+  </div>
+  <nav class="mainnav">
+    <a href="index.html">Dashboard</a>
+    <a href="play-of-day.html">Play of the Day</a>
+    <a href="mlb.html">MLB</a>
+    <a href="research.html">Research</a>
+    <a href="matchups.html">Best Matchups</a>
+    <a href="parlays.html">Parlays</a>
+    <a href="pickem.html">Pick-Em</a>
+    <a href="nrfi.html" class="active">NRFI/YRFI</a>
+    <a href="brief.html">Brief</a>
+    <a href="learning.html">Learning</a>
+    <a href="training.html">Training</a>
+    <a href="residuals.html">Residuals</a>
+    <a href="audit.html">Audit</a>
+    <a href="live.html">Live</a>
+    <a href="props.html">Props</a>
+    <a href="player.html">Player</a>
+    <a href="learn.html">Learn</a>
+  </nav>
+  <div class="topbar-actions"><div class="ticker" id="liveTicker">LIVE</div></div>
+</header>
+
+<main class="container">
+
+  <section class="page-head">
+    <h1>NRFI / YRFI — First Inning Deep-Dive</h1>
+    <p>NRFI (No Runs First Inning) is one of the most efficient prop markets — sharp price tightening means edges are small but consistent. The model combines starter ERA + park factor + lineup quality + bullpen warmup pattern to produce a per-game fair price.</p>
+  </section>
+
+  <section class="metric-strip">
+    <div class="metric"><span class="metric-num" id="nrfiGames">--</span><span class="metric-label">Games Scored</span></div>
+    <div class="metric"><span class="metric-num" id="nrfiYrfiLeans">--</span><span class="metric-label">YRFI Leans</span></div>
+    <div class="metric"><span class="metric-num" id="nrfiNrfiLeans">--</span><span class="metric-label">NRFI Leans</span></div>
+    <div class="metric"><span class="metric-num" id="nrfiBaseline">--</span><span class="metric-label">League NRFI Baseline</span></div>
+    <div class="metric"><span class="metric-num" id="nrfiTopEdge">--</span><span class="metric-label">Top Edge</span></div>
+    <div class="metric"><span class="metric-num" id="nrfiRefresh">--</span><span class="metric-label">Last Refresh</span></div>
+  </section>
+
+  <section class="card" style="margin-bottom: 24px;">
+    <div class="card-head"><span>📊 Per-Game First-Inning Model</span><span class="muted" id="nrfiCount"></span></div>
+    <div class="nrfi-row head">
+      <span>Matchup</span><span>Time</span><span>Pitchers</span><span>P(NRFI)</span><span>P(YRFI)</span><span>Fair YRFI</span><span>Fair NRFI</span><span>Verdict</span>
+    </div>
+    <div id="nrfiList"><p class="muted" style="padding:14px;">Loading per-game first-inning projections…</p></div>
+  </section>
+
+  <section class="card" style="margin-bottom: 24px;">
+    <div class="card-head"><span>🧮 Model Inputs Explained</span></div>
+    <div style="padding: 14px; font-size: 13px; line-height: 1.7; color: var(--text-2, #aaa);">
+      <p>For each game's first inning, the model computes:</p>
+      <ol style="padding-left: 24px;">
+        <li><strong>P(scoreless top half)</strong> from the away pitcher's ERA blended with FIP, opponent lineup wOBA, and park factor. Using a Poisson-like inning-run distribution scaled by per-pitcher 1st-inning rate.</li>
+        <li><strong>P(scoreless bottom half)</strong> from the home pitcher's same blend.</li>
+        <li><strong>P(NRFI) = P(top scoreless) × P(bot scoreless)</strong> — independence assumption (reasonable for first inning since there's no momentum carry-over yet).</li>
+        <li><strong>Fair price</strong> from P → American odds, no vig added.</li>
+      </ol>
+      <p style="margin-top: 12px;">Lean YRFI when fair YRFI is &gt;5% cheaper than market YRFI; lean NRFI similarly. Below that, skip (NRFI markets are tight, so edges &lt;5% don't survive the vig).</p>
+    </div>
+  </section>
+
+  <section class="card" style="margin-bottom: 24px;">
+    <div class="card-head"><span>📒 First-Inning Trends (reference)</span><span class="muted" style="font-size:10px;">historical league baselines</span></div>
+    <div style="padding: 14px; font-family: 'JetBrains Mono', monospace; font-size: 12px;">
+      <p style="margin: 0 0 8px 0;">Historical reference patterns from open MLB literature:</p>
+      <ul style="padding-left: 24px; color: var(--text-2, #aaa);">
+        <li>League-wide NRFI rate hovers ~58% — books open the line near here.</li>
+        <li>Aces on the mound (xFIP &lt; 3.30) push NRFI to ~67%.</li>
+        <li>Coors Field opens YRFI ~74% — historical altitude bias.</li>
+        <li>1pm Wrigley wind-out: YRFI bias ~70%.</li>
+        <li>Bullpen game (no traditional SP for either side): YRFI bias ~67%.</li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<script src="js/nav_badge.js"></script>
+<script>
+fetch("data/nrfi.json", { cache: "no-cache" })
+  .then(r => r.json())
+  .then(d => {
+    const games = d.games || [];
+    const baseline = d.league_nrfi_baseline;
+    const setText = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
+    setText("nrfiGames", games.length);
+    setText("nrfiBaseline", baseline != null ? (baseline * 100).toFixed(1) + "%" : "--");
+    setText("nrfiRefresh", (d.generated_at || "").slice(11, 16) + " UTC");
+
+    // Compute fair-vs-baseline edge per game (NRFI lean if P(NRFI) >> league baseline)
+    const annotated = games.map(g => {
+      const edge_nrfi = (g.p_nrfi || 0) - (baseline || 0.58);
+      const edge_yrfi = (g.p_yrfi || 0) - (1 - (baseline || 0.58));
+      const verdict = edge_yrfi > 0.06 ? "YRFI" : edge_nrfi > 0.06 ? "NRFI" : "SKIP";
+      return { ...g, _edge_nrfi: edge_nrfi, _edge_yrfi: edge_yrfi, _verdict: verdict };
+    });
+    const yrfiLeans = annotated.filter(g => g._verdict === "YRFI").length;
+    const nrfiLeans = annotated.filter(g => g._verdict === "NRFI").length;
+    setText("nrfiYrfiLeans", yrfiLeans);
+    setText("nrfiNrfiLeans", nrfiLeans);
+
+    const topEdge = annotated.slice().sort((a, b) => Math.max(b._edge_yrfi, b._edge_nrfi) - Math.max(a._edge_yrfi, a._edge_nrfi))[0];
+    if (topEdge) {
+      const which = topEdge._edge_yrfi > topEdge._edge_nrfi ? "YRFI" : "NRFI";
+      const pct = which === "YRFI" ? topEdge._edge_yrfi : topEdge._edge_nrfi;
+      setText("nrfiTopEdge", `+${(pct * 100).toFixed(1)}% (${which})`);
+    }
+
+    setText("nrfiCount", `${games.length} games`);
+    document.getElementById("nrfiList").innerHTML = annotated.map(g => {
+      const pillCls = g._verdict === "YRFI" ? "yrfi" : g._verdict === "NRFI" ? "nrfi" : "skip";
+      const edge = g._verdict === "YRFI" ? g._edge_yrfi : g._verdict === "NRFI" ? g._edge_nrfi : 0;
+      const edgeLabel = edge > 0 ? ` +${(edge * 100).toFixed(1)}%` : "";
+      const pitchers = `${g.away_pitcher || "?"} (A) vs ${g.home_pitcher || "?"} (H)`;
+      const fmtPrice = p => p == null ? "--" : (p >= 0 ? "+" + p : String(p));
+      return `<div class="nrfi-row">
+        <span><strong>${g.matchup || "—"}</strong><br><span class="muted" style="font-size:10px;">${g.park || ""}</span></span>
+        <span class="muted">${g.time || "--"}</span>
+        <span>${pitchers}</span>
+        <span>${((g.p_nrfi || 0) * 100).toFixed(1)}%</span>
+        <span>${((g.p_yrfi || 0) * 100).toFixed(1)}%</span>
+        <span>${fmtPrice(g.fair_yrfi_price)}</span>
+        <span>${fmtPrice(g.fair_nrfi_price)}</span>
+        <span class="nrfi-pill ${pillCls}">${g._verdict}${edgeLabel}</span>
+      </div>`;
+    }).join("");
+  })
+  .catch(() => {
+    document.getElementById("nrfiList").innerHTML = `<p class="muted" style="padding:14px;">nrfi.json unavailable.</p>`;
+  });
+</script>
+
+</body>
+</html>

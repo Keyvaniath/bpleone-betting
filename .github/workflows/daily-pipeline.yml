@@ -80,13 +80,6 @@ jobs:
         working-directory: python
         run: python model_confidence.py
 
-      # Per-prop rationale: "why this play" with model factors, season stats,
-      # Statcast metrics, calibration disclaimers. Caps at top 300 by edge.
-      - name: Generate prop rationales
-        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
-        working-directory: python
-        run: python rationales.py
-
       # Per-player gamelogs (last 14 games/starts) for the sparkline on
       # the player deep-dive page. Caps at 350 players to respect API quota.
       # NOW enriched with venue + is_home + is_night per game so downstream
@@ -108,10 +101,21 @@ jobs:
       # splits from MLB Stats API (free), joins with matchups for BvP H2H +
       # pitch-arsenal xwOBA, derives park / day-night / travel / vs-umpire
       # from the enriched gamelog + track_record. Powers /player.html.
+      # MUST RUN BEFORE rationales.py so the rationales can fold breakdown
+      # signals (hot/cold, park splits, BvP) into each prop's drivers.
       - name: Build player breakdowns (splits + BvP + park + travel + umpire)
         if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
         working-directory: python
         run: python player_breakdown.py
+
+      # Per-prop rationale: "why this play" with model factors, season stats,
+      # Statcast metrics, calibration disclaimers + breakdown-enriched
+      # drivers (hot/cold, vs-handedness, park, BvP H2H, lineup spot, etc.).
+      # Caps at top 300 by edge.
+      - name: Generate prop rationales (breakdown-enriched)
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        working-directory: python
+        run: python rationales.py
 
       # Drift detection: compare today's calibration vs yesterday's.
       # Alerts on >5% correction moves or sudden sample-count drops.
@@ -166,6 +170,16 @@ jobs:
         if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
         working-directory: python
         run: python parlays.py
+
+      # Correlation-aware Same-Game Parlay (SGP) builder. For each game,
+      # finds top-EV 2-4 leg combos using a pairwise correlation matrix
+      # (e.g. same-player HR + TB are tightly coupled). Books charge ~25%
+      # extra on SGPs assuming legs are independent -- this surfaces the
+      # gap. Output: data/sgps.json -> /parlays.html top card.
+      - name: Build correlation-aware Same-Game Parlays
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        working-directory: python
+        run: python sgp_builder.py
 
       # Pull PrizePicks daily board, compare to DK, run model at PP's lines.
       - name: Run pick-em (PrizePicks) integration

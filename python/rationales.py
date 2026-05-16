@@ -294,7 +294,154 @@ MARKET_LABELS = {
 }
 
 
-def build_rationale(p: Dict[str, Any], corrections: Dict[str, float]) -> Optional[Dict[str, Any]]:
+def _drivers_from_breakdown(pid: int, market: str, opp_hand: Optional[str],
+                             breakdown_index: Dict[str, Any]) -> Dict[str, List[str]]:
+    """Pull rich signal from player_breakdowns.json (the deep-dive precompute).
+    Adds hot/cold trend, vs-handedness splits, park splits, BvP H2H, lineup
+    spot performance, situational splits, and per-player model accuracy.
+
+    Independent of the existing _drivers_for_batter -- this is a SECOND
+    layer that runs after the primary drivers and adds breakdown-derived
+    drivers if the JSON is present (graceful no-op otherwise)."""
+    drivers: List[str] = []
+    caveats: List[str] = []
+    bd = breakdown_index.get(str(pid)) or {}
+    if not bd:
+        return {"drivers": drivers, "caveats": caveats}
+
+    # 1. Hot/cold trend
+    hc = (bd.get("form") or {}).get("hot_cold") or ""
+    if "heating up" in hc:
+        drivers.append("Heating up: " + hc.split("heating up:")[1].strip())
+    elif "cooling" in hc:
+        caveats.append("Cooling off: " + hc.split("cooling:")[1].strip())
+
+    # 2. Last 7-day pop vs season
+    l7 = (bd.get("form") or {}).get("last_7") or {}
+    if l7.get("n_games", 0) >= 4:
+        if market == "batter_home_runs" and l7.get("hr", 0) >= 2:
+            drivers.append(f"Last 7d: {l7['hr']} HR in {l7['n_games']} games")
+        elif market == "batter_hits" and l7.get("avg") and l7["avg"] >= 0.300:
+            drivers.append(f"Last 7d: {l7['avg']:.3f} AVG in {l7['n_games']} games")
+        elif market == "batter_total_bases" and l7.get("slg") and l7["slg"] >= 0.450:
+            drivers.append(f"Last 7d: {l7['slg']:.3f} SLG in {l7['n_games']} games")
+
+    # 3. Vs handedness for tonight's pitcher
+    if opp_hand:
+        split_key = "vs_L" if opp_hand == "L" else "vs_R"
+        s = (bd.get("splits") or {}).get(split_key) or {}
+        if s.get("atBats"):
+            ab = int(s["atBats"])
+            ops = s.get("ops")
+            if ab >= 20 and ops:
+                try:
+                    ops_f = float(ops)
+                    if ops_f >= 0.850:
+                        drivers.append(f"Vs {opp_hand}HP this season: {ops} OPS in {ab} AB -- mashes this hand")
+                    elif ops_f <= 0.650:
+                        caveats.append(f"Vs {opp_hand}HP this season: {ops} OPS in {ab} AB -- struggles vs this hand")
+                except Exception:
+                    pass
+
+    # 4. Park splits at tonight's park
+    ps = bd.get("park_splits") or {}
+    here = ps.get("at_park") or {}
+    other = ps.get("at_other_parks") or {}
+    if here.get("n_games", 0) >= 3 and other.get("n_games", 0) >= 5:
+        if market in ("batter_hits", "batter_total_bases", "batter_singles"):
+            metric = "slg" if market == "batter_total_bases" else "avg"
+            h_v = here.get(metric)
+            o_v = other.get(metric)
+            if h_v is not None and o_v is not None:
+                delta = h_v - o_v
+                if delta >= 0.080:
+                    drivers.append(f"At {ps.get('park_name')}: {h_v:.3f} {metric.upper()} vs {o_v:.3f} elsewhere "
+                                    f"(+{delta:.3f} edge at this park)")
+                elif delta <= -0.080:
+                    caveats.append(f"At {ps.get('park_name')}: {h_v:.3f} {metric.upper()} vs {o_v:.3f} elsewhere "
+                                    f"({delta:.3f} -- struggles here)")
+
+    # 5. BvP career H2H
+    bvp = ((bd.get("tonight") or {}).get("bvp_career")) or {}
+    ab = bvp.get("ab", 0)
+    if ab >= 5:
+        ops = bvp.get("ops")
+        if ops is not None and ops >= 0.900:
+            drivers.append(f"Career H2H vs tonight's SP: {bvp.get('hits',0)}-for-{ab}, {ops:.3f} OPS")
+        elif ops is not None and ops <= 0.500:
+            caveats.append(f"Career H2H vs tonight's SP: {bvp.get('hits',0)}-for-{ab}, {ops:.3f} OPS -- pitcher owns him")
+
+    # 6. Lineup spot performance
+    spot = ((bd.get("tonight") or {}).get("lineup_order"))
+    lineup_spot = bd.get("lineup_spot") or {}
+    if spot and str(spot) in lineup_spot:
+        s = lineup_spot[str(spot)]
+        if s.get("atBats", 0) >= 20:
+            ops = s.get("ops")
+            try:
+                ops_f = float(ops) if ops else None
+                if ops_f is not None and ops_f >= 0.800:
+                    drivers.append(f"Hitting #{spot} (tonight's spot): {ops} OPS in {s['atBats']} AB -- comfortable here")
+                elif ops_f is not None and ops_f <= 0.600:
+                    caveats.append(f"Hitting #{spot} (tonight's spot): {ops} OPS in {s['atBats']} AB -- weak in this slot")
+            except Exception:
+                pass
+
+    # 7. Day/Night situational
+    sit = bd.get("situational") or {}
+    tonight = bd.get("tonight") or {}
+    # Approximate: if game_time has "p" (pm) and time >= 5pm, treat as night
+    game_time = (tonight.get("game_time") or "").lower()
+    is_night_game = "p" in game_time and any(h in game_time for h in ["5:", "6:", "7:", "8:", "9:", "10:"])
+    sit_key = "n" if is_night_game else "d"
+    s = sit.get(sit_key) or {}
+    if s.get("atBats", 0) >= 30:
+        ops = s.get("ops")
+        try:
+            ops_f = float(ops) if ops else None
+            other_key = "d" if sit_key == "n" else "n"
+            other_s = sit.get(other_key) or {}
+            other_ops = float(other_s.get("ops")) if other_s.get("ops") else None
+            if ops_f is not None and other_ops is not None and abs(ops_f - other_ops) >= 0.100:
+                if ops_f > other_ops:
+                    drivers.append(f"{'Night' if sit_key=='n' else 'Day'} games: {ops} OPS "
+                                    f"vs {other_ops:.3f} in {'day' if sit_key=='n' else 'night'} -- "
+                                    f"tonight's game suits him")
+                else:
+                    caveats.append(f"{'Night' if sit_key=='n' else 'Day'} games: {ops} OPS "
+                                    f"vs {other_ops:.3f} in {'day' if sit_key=='n' else 'night'} -- "
+                                    f"tonight is his weaker spot")
+        except Exception:
+            pass
+
+    # 8. Per-player model accuracy
+    acc = bd.get("model_accuracy") or {}
+    tier = acc.get("trust_tier")
+    n_props = acc.get("n_props", 0)
+    if tier == "trusted" and n_props >= 20:
+        drivers.append(f"Model accuracy on this player: {(acc.get('hit_rate',0)*100):.0f}% over {n_props} props "
+                        f"(TRUSTED tier)")
+    elif tier == "untrusted" and n_props >= 20:
+        caveats.append(f"Model accuracy on this player: only {(acc.get('hit_rate',0)*100):.0f}% over {n_props} props "
+                        f"(UNTRUSTED -- model has been wrong on this name)")
+
+    # 9. Pitch-type edge (top-1 from arsenal)
+    pt = bd.get("pitch_type") or []
+    if pt:
+        # Highest-edge row
+        ranked = sorted(pt, key=lambda r: (r.get("batter_xwoba_vs") or 0) - (r.get("pitcher_xwoba_allowed_overall") or 0), reverse=True)
+        top = ranked[0] if ranked else None
+        if top:
+            edge = (top.get("batter_xwoba_vs") or 0) - (top.get("pitcher_xwoba_allowed_overall") or 0)
+            if edge >= 0.050:
+                drivers.append(f"Pitch-type edge: {top.get('pitch')} ({top.get('pitcher_usage_pct'):.0f}% usage) -- "
+                                f"batter xwOBA {top.get('batter_xwoba_vs'):.3f} vs SP allows {top.get('pitcher_xwoba_allowed_overall'):.3f}")
+
+    return {"drivers": drivers, "caveats": caveats}
+
+
+def build_rationale(p: Dict[str, Any], corrections: Dict[str, float],
+                    breakdown_index: Optional[Dict[str, Any]] = None) -> Optional[Dict[str, Any]]:
     pid = p.get("player_id")
     market = p.get("market")
     line = p.get("line") if "line" in p else p.get("pp_line")
@@ -320,6 +467,15 @@ def build_rationale(p: Dict[str, Any], corrections: Dict[str, float]) -> Optiona
         d = _drivers_for_batter(pid, market, line, prob_over, p, "hits", "singles")
     else:
         d = {"drivers": [], "caveats": []}
+
+    # Layer 2: enriched drivers from player_breakdowns.json
+    if breakdown_index:
+        opp_hand = None
+        bd = breakdown_index.get(str(pid)) or {}
+        opp_hand = ((bd.get("tonight") or {}).get("vs_pitcher_hand"))
+        d2 = _drivers_from_breakdown(pid, market, opp_hand, breakdown_index)
+        d["drivers"].extend(d2["drivers"])
+        d["caveats"].extend(d2["caveats"])
 
     # Calibration disclaimer
     cf = corrections.get(market)
@@ -434,6 +590,18 @@ def run() -> Dict[str, Any]:
     corrections = {k: v.get("correction_factor", 1.0)
                    for k, v in (cal.get("markets") or {}).items()}
 
+    # Layer-2 enrichment: player breakdowns (built by player_breakdown.py)
+    # gives us hot/cold, vs-handedness, park splits, BvP H2H, lineup-spot,
+    # situational, and per-player model accuracy to fold into each rationale.
+    breakdowns_path = os.path.join(DATA_DIR, "player_breakdowns.json")
+    breakdown_index: Dict[str, Any] = {}
+    try:
+        if os.path.exists(breakdowns_path):
+            with open(breakdowns_path) as f:
+                breakdown_index = (json.load(f).get("by_id") or {})
+    except Exception:
+        breakdown_index = {}
+
     by_key: Dict[str, Dict[str, Any]] = {}
 
     # Each prop costs a few HTTP calls (season stats, statcast cache, recent form),
@@ -447,7 +615,7 @@ def run() -> Dict[str, Any]:
     props_sorted = sorted(props.get("top_edges", []),
                           key=lambda r: r.get("best_edge_pct") or 0, reverse=True)
     for p in props_sorted[:MAX_PROPS_RATIONALE]:
-        r = build_rationale(p, corrections)
+        r = build_rationale(p, corrections, breakdown_index)
         if r:
             by_key[_key(r["player_id"], r["market"], r["line"])] = r
 
@@ -467,7 +635,7 @@ def run() -> Dict[str, Any]:
         k = _key(p2["player_id"], p2["market"], p2["line"])
         if k in by_key:
             continue
-        r = build_rationale(p2, corrections)
+        r = build_rationale(p2, corrections, breakdown_index)
         if r:
             by_key[k] = r
             added += 1

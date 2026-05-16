@@ -66,6 +66,51 @@
     <div class="metric"><span class="metric-num">DK</span><span class="metric-label">Book</span></div>
   </section>
 
+  <!-- NEW: Correlation-aware Same-Game Parlays -->
+  <section id="sgpCard" class="card" style="margin-bottom: 24px; display:none;">
+    <div class="card-head"><span>🎯 Correlation-Aware Same-Game Parlays</span><span class="muted" id="sgpMeta">--</span></div>
+    <p class="muted" style="font-size: 12px; padding: 6px 16px 0;">Same-game leg combinations where the model's joint probability beats what naive-independence pricing implies. Books charge ~25% extra juice on SGPs assuming legs are independent; when same-player markets are tightly coupled (HR ↑ TB, hits ↑ singles, etc.), the real joint probability is higher than the book's implied price → +EV.</p>
+    <div id="sgpList" style="padding: 14px;"></div>
+  </section>
+
+  <script>
+  fetch("data/sgps.json", { cache: "no-cache" })
+    .then(r => r.json())
+    .then(d => {
+      const games = d.by_game || [];
+      if (!games.length) return;
+      document.getElementById("sgpCard").style.display = "block";
+      document.getElementById("sgpMeta").textContent = `${games.length} games · ${d.n_legs_total} legs · ${(d.generated_at || "").slice(11, 16)} UTC`;
+      document.getElementById("sgpList").innerHTML = games.slice(0, 10).map(g => {
+        const sugs = g.suggestions || [];
+        const rows = sugs.map(s => {
+          const evColor = s.ev_pct >= 15 ? "#58c878" : s.ev_pct >= 5 ? "#d4a04a" : "var(--text-2, #aaa)";
+          const legsHtml = s.legs.map(l => `<li style="font-size: 11px; padding: 2px 0;">${l.label}
+            <span class="muted" style="margin-left:6px;">model ${(l.model_prob*100).toFixed(1)}%</span></li>`).join("");
+          return `<div style="padding: 12px 14px; margin-bottom: 10px; border-left: 3px solid ${evColor}; background: rgba(255,255,255,0.02); border-radius: 0 6px 6px 0;">
+            <div style="display:flex; justify-content:space-between; align-items: center; margin-bottom: 8px;">
+              <span style="font-family:'JetBrains Mono',monospace; font-size: 13px; font-weight: 600;">
+                ${s.n_legs}-leg SGP — fair <span style="color: ${evColor};">${s.fair_american >= 0 ? '+' : ''}${s.fair_american}</span>
+              </span>
+              <span style="display:flex; gap: 10px; align-items: center;">
+                <span style="font-family:'JetBrains Mono',monospace; font-size: 11px; color: var(--muted, #888);">joint ${(s.joint_prob*100).toFixed(1)}% (ind ${(s.ind_prob*100).toFixed(1)}%, +${(s.correlation_boost*100).toFixed(1)}% corr)</span>
+                <span style="padding: 2px 10px; border-radius: 4px; background: ${evColor}22; color: ${evColor}; font-size: 11px; font-weight: 700;">EV ${s.ev_pct >= 0 ? '+' : ''}${s.ev_pct}%</span>
+              </span>
+            </div>
+            <ul style="margin: 0; padding-left: 18px; list-style: none; font-family:'JetBrains Mono',monospace; color: var(--text-2, #aaa);">${legsHtml}</ul>
+          </div>`;
+        }).join("");
+        return `<div style="margin-bottom: 18px;">
+          <div style="font-family:'JetBrains Mono',monospace; font-size: 12px; color: var(--muted, #888); margin-bottom: 6px;">
+            ${g.matchup} <span style="margin-left:8px;">${g.n_legs_available} qualifying legs</span>
+          </div>
+          ${rows}
+        </div>`;
+      }).join("");
+    })
+    .catch(() => {});
+  </script>
+
   <section class="card" style="margin-bottom: 24px;">
     <div class="card-head"><span>Top Parlay Suggestions</span><span class="muted" id="parlayRefreshed"></span></div>
     <div class="filterbar">
