@@ -303,6 +303,27 @@ jobs:
         working-directory: python
         run: python notify_discord.py
 
+      # Comprehensive pipeline audit -- LAST step so it sees final artifact
+      # state. Writes data/pipeline_audit.json with overall: green/yellow/red,
+      # per-artifact freshness, and findings. Surfaces on /audit.
+      - name: Run pipeline audit (last)
+        if: always()
+        working-directory: python
+        run: python pipeline_audit.py
+
+      # Failure notifier: if any prior step failed, post a Discord ping.
+      # if: failure() catches earlier failures so this fires only when needed.
+      - name: Notify on pipeline failure
+        if: failure()
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        run: |
+          if [ -n "$DISCORD_WEBHOOK_URL" ]; then
+            curl -s -X POST -H "Content-Type: application/json" \
+              -d "{\"content\": \"⚠️ **EdgeStat daily pipeline FAILED** at $(date -u +%FT%TZ). Check Actions log: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}\"}" \
+              "$DISCORD_WEBHOOK_URL"
+          fi
+
       # Pull PrizePicks daily board, compare to DK, run model at PP's lines.
       - name: Run pick-em (PrizePicks) integration
         if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'

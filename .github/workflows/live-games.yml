@@ -71,3 +71,14 @@ jobs:
             git pull --rebase origin main || git rebase --abort
             git push || echo "push failed, will retry next poll"
           fi
+
+      - name: Notify on live-poll failure
+        if: failure()
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        run: |
+          if [ -n "$DISCORD_WEBHOOK_URL" ]; then
+            curl -s -X POST -H "Content-Type: application/json" \
+              -d "{\"content\": \"⚠️ EdgeStat live-poll failed at $(date -u +%FT%TZ). Run: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}\"}" \
+              "$DISCORD_WEBHOOK_URL"
+          fi
