@@ -399,6 +399,12 @@ jobs:
         working-directory: python
         run: python streak_chart_data.py
 
+      # "Anyone HR in this game" probability + fair odds per game.
+      - name: Score Anyone-HR fair odds
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        working-directory: python
+        run: python anyone_hr.py
+
       # Auto-brief: tight markdown digest of tonight's slate.
       # Pulls from best_bets, slate_confidence, fatigue, weather, hot_streaks,
       # nrfi, sgps, bullpen, traps, portfolio, bankroll_sim. Powers /brief.
