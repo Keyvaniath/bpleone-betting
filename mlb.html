@@ -210,6 +210,79 @@
     });
   </script>
 
+  <!-- Pitcher fatigue overview (NEW) -->
+  <section id="pitcherFatigueCard" class="card" style="margin-bottom: 18px; display:none;">
+    <div class="card-head"><span>💧 Pitcher Fatigue + Early-Hook Risk</span><span class="muted" id="pfMeta">--</span></div>
+    <div style="padding: 6px 14px 14px;">
+      <p class="muted" style="font-size: 11px; margin: 0 0 10px 0;">Workload trend over last 5 starts + days rest + variance. HIGH early-hook risk = SP likely gets pulled early -> lean UNDER on K props, OVER on opposing team total/F5.</p>
+      <div style="display:grid; grid-template-columns: 1.6fr 80px 60px 60px 70px 70px 80px 1.5fr; gap: 14px; padding: 6px 0; color: var(--muted, #888); font-size: 10px; text-transform: uppercase;">
+        <span>Pitcher</span><span>Matchup</span><span>Grade</span><span>Rest</span><span>Last PC</span><span>Avg PC</span><span>Risk</span><span>Notes</span>
+      </div>
+      <div id="pfList"></div>
+    </div>
+  </section>
+
+  <!-- Weather-conditional HR multiplier (NEW) -->
+  <section id="weatherCondCard" class="card" style="margin-bottom: 18px; display:none;">
+    <div class="card-head"><span>🌬️ Weather-Conditional HR Adjustment</span><span class="muted" id="wcMeta">--</span></div>
+    <div style="padding: 6px 14px 14px;">
+      <p class="muted" style="font-size: 11px; margin: 0 0 10px 0;">Per-game HR-rate delta driven by wind direction × park orientation + temperature. >=+6% pushes OVERs on HR/TB; <=-6% pushes UNDERs.</p>
+      <div style="display:grid; grid-template-columns: 1.4fr 1.6fr 80px 80px 110px 90px 1fr; gap: 14px; padding: 6px 0; color: var(--muted, #888); font-size: 10px; text-transform: uppercase;">
+        <span>Matchup</span><span>Park</span><span>Temp</span><span>Wind</span><span>Direction</span><span>HR Δ%</span><span>Lean / reason</span>
+      </div>
+      <div id="wcList"></div>
+    </div>
+  </section>
+
+  <script>
+  fetch("data/pitcher_fatigue.json", { cache: "no-cache" })
+    .then(r => r.json())
+    .then(d => {
+      const rows = d.by_pitcher || [];
+      if (!rows.length) return;
+      document.getElementById("pitcherFatigueCard").style.display = "block";
+      document.getElementById("pfMeta").textContent = `${rows.length} SPs · ${(d.high_risk || []).length} high-risk · ${(d.generated_at || "").slice(11, 16)} UTC`;
+      const gradeColor = { A: "#58c878", B: "#88c878", C: "#d4a04a", D: "#e35a5a", F: "#e35a5a" };
+      const riskColor = { low: "#58c878", medium: "#d4a04a", high: "#e35a5a" };
+      document.getElementById("pfList").innerHTML = rows.map(r => `
+        <div style="display:grid; grid-template-columns: 1.6fr 80px 60px 60px 70px 70px 80px 1.5fr; gap: 14px; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.04); font-family:'JetBrains Mono',monospace; font-size: 11px; align-items: center;">
+          <span><a href="player.html?id=${r.id}" style="color: var(--text); text-decoration: underline; text-decoration-color: rgba(255,255,255,0.15);">${r.name}</a> <span class="muted">(${r.hand || '?'})</span></span>
+          <span class="muted">${r.matchup}</span>
+          <span style="padding: 2px 8px; border-radius: 3px; background: ${gradeColor[r.fatigue_grade]}22; color: ${gradeColor[r.fatigue_grade]}; text-align: center; font-weight: 700;">${r.fatigue_grade}</span>
+          <span>${r.days_rest != null ? r.days_rest + 'd' : '—'}</span>
+          <span>${r.last_pc || '—'}</span>
+          <span>${r.avg_pc != null ? r.avg_pc.toFixed(0) : '—'}</span>
+          <span style="padding: 2px 8px; border-radius: 3px; background: ${riskColor[r.early_hook_risk]}22; color: ${riskColor[r.early_hook_risk]}; text-align: center; font-weight: 700; text-transform: uppercase;">${r.early_hook_risk}</span>
+          <span style="font-size: 10px; color: var(--text-2, #aaa);">${r.fatigue_note}</span>
+        </div>`).join("");
+    })
+    .catch(() => {});
+  fetch("data/weather_conditional.json", { cache: "no-cache" })
+    .then(r => r.json())
+    .then(d => {
+      const rows = d.by_game || [];
+      if (!rows.length) return;
+      document.getElementById("weatherCondCard").style.display = "block";
+      document.getElementById("wcMeta").textContent = `${rows.length} games · ${(d.over_lean_games || []).length} OVER lean · ${(d.under_lean_games || []).length} UNDER lean`;
+      const leanColor = { OVER: "#58c878", UNDER: "#e35a5a", neutral: "var(--muted, #888)" };
+      document.getElementById("wcList").innerHTML = rows.map(r => {
+        const lc = leanColor[r.lean] || "#888";
+        const mult = r.hr_mult_delta_pct;
+        const multColor = mult > 5 ? "#58c878" : mult < -5 ? "#e35a5a" : "var(--text-2, #aaa)";
+        return `<div style="display:grid; grid-template-columns: 1.4fr 1.6fr 80px 80px 110px 90px 1fr; gap: 14px; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.04); font-family:'JetBrains Mono',monospace; font-size: 11px; align-items: center;">
+          <span><strong>${r.matchup}</strong></span>
+          <span class="muted">${r.park}</span>
+          <span>${r.is_indoor ? "indoor" : (r.temp_f ?? "—") + "°F"}</span>
+          <span>${r.is_indoor ? "—" : (r.wind_mph ?? "—") + " mph"}</span>
+          <span class="muted">${r.wind_label || "—"}</span>
+          <span style="color: ${multColor}; font-weight: 700;">${mult > 0 ? '+' : ''}${mult}%</span>
+          <span style="font-size: 10px;"><span style="color: ${lc}; font-weight: 700;">${r.lean}</span> · <span class="muted">${r.reason}</span></span>
+        </div>`;
+      }).join("");
+    })
+    .catch(() => {});
+  </script>
+
   <section class="card" style="margin-bottom: 28px;">
     <div class="card-head"><span>⚾ Pitcher Matchup Grid (Tonight's Starters)</span><span class="muted" id="pitcherGridMeta"></span></div>
     <div class="table-wrap">

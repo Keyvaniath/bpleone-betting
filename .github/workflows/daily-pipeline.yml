@@ -181,6 +181,40 @@ jobs:
         working-directory: python
         run: python sgp_builder.py
 
+      # Pitcher fatigue + early-hook risk grade. Powers /mlb panel.
+      - name: Grade pitcher fatigue + early-hook risk
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        working-directory: python
+        run: python pitcher_fatigue.py
+
+      # Weather-conditional HR-rate delta + OVER/UNDER lean per game.
+      - name: Score weather-conditional HR multiplier
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        working-directory: python
+        run: python weather_conditional.py
+
+      # Pre-game slate confidence (lineup confirms / weather / rookies / hooks).
+      # MUST run after pitcher_fatigue + weather_conditional so it sees them.
+      - name: Compute pre-game slate confidence
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        working-directory: python
+        run: python slate_confidence.py
+
+      # Lineup churn watcher: diff matchups.json vs prior snapshot.
+      # Runs in the live workflow too so churn surfaces between cron cycles.
+      - name: Detect lineup churn (post-publish scratches)
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        working-directory: python
+        run: python lineup_churn.py
+
+      # Composite Best Bets ranker: rolls up DK + PP + NRFI + SGPs into
+      # a single quality-scored list. Runs LAST so it sees the latest
+      # of every upstream artifact. Powers /best-bets.html.
+      - name: Compose Best Bets digest (composite ranker)
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        working-directory: python
+        run: python best_bets.py
+
       # Pull PrizePicks daily board, compare to DK, run model at PP's lines.
       - name: Run pick-em (PrizePicks) integration
         if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'

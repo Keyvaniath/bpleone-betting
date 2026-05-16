@@ -47,11 +47,17 @@ jobs:
         working-directory: python
         run: python live_props.py
 
+      # Lineup churn watcher: detects scratches between cron cycles, flags
+      # affected DK/PP props as STALE on /props + /pickem banners.
+      - name: Detect lineup churn since last poll
+        working-directory: python
+        run: python lineup_churn.py
+
       - name: Commit if state changed
         run: |
           git config user.name  "edgestat-bot"
           git config user.email "actions@github.com"
-          git add data/live_state.json data/live_clv.json data/live_edges.json data/live_props.json
+          git add data/live_state.json data/live_clv.json data/live_edges.json data/live_props.json data/lineup_churn.json
           if git diff --cached --quiet; then
             echo "No live games or no state changes."
           else
