@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hot Streaks | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="page-hot">
+<header class="topbar">
+  <div class="brand">
+    <a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a>
+    <span class="tagline">by bpleone</span>
+  </div>
+  <nav class="mainnav">
+    <a href="index.html">Dashboard</a>
+    <a href="best-bets.html">Best Bets</a>
+    <a href="my-bets.html">My Bets</a>
+    <a href="hedge.html">Hedge</a>
+    <a href="hot-streaks.html" class="active">Hot Streaks</a>
+    <a href="play-of-day.html">Play of the Day</a>
+    <a href="mlb.html">MLB</a>
+    <a href="parlays.html">Parlays</a>
+    <a href="pickem.html">Pick-Em</a>
+    <a href="nrfi.html">NRFI/YRFI</a>
+    <a href="brief.html">Brief</a>
+    <a href="training.html">Training</a>
+    <a href="live.html">Live</a>
+    <a href="bankroll.html">Bankroll</a>
+    <a href="props.html">Props</a>
+    <a href="player.html">Player</a>
+    <a href="learn.html">Learn</a>
+  </nav>
+  <div class="topbar-actions"><div class="ticker" id="liveTicker">LIVE</div></div>
+</header>
+
+<main class="container">
+  <section class="page-head">
+    <h1>Hot Streaks — Tonight's Slate Heatmap</h1>
+    <p>Players sorted by recent form delta vs season baseline. Hot batters (OPS up + HR rate up over last 7 games) and hot pitchers (K/9 up + ERA down) lead the prop-betting opportunity tonight.</p>
+  </section>
+
+  <section class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>🔥 Hottest Batters</span><span class="muted" id="hbMeta">--</span></div>
+      <div id="hbList" style="padding: 14px;"></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><span>🔥 Hottest Pitchers</span><span class="muted" id="hpMeta">--</span></div>
+      <div id="hpList" style="padding: 14px;"></div>
+    </div>
+  </section>
+
+  <section class="grid-2" style="margin-top: 18px;">
+    <div class="card">
+      <div class="card-head"><span>❄️ Coldest Batters</span><span class="muted" id="cbMeta">--</span></div>
+      <div id="cbList" style="padding: 14px;"></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><span>❄️ Coldest Pitchers</span><span class="muted" id="cpMeta">--</span></div>
+      <div id="cpList" style="padding: 14px;"></div>
+    </div>
+  </section>
+</main>
+
+<script src="js/nav_badge.js"></script>
+<script>
+fetch("data/hot_streaks.json", { cache: "no-cache" })
+  .then(r => r.json())
+  .then(d => {
+    const fmtBatter = (b, hot) => `<div style="display:grid; grid-template-columns: 1.6fr 60px 100px 80px; gap:10px; padding:8px 0; border-bottom:1px solid rgba(255,255,255,0.04); font-family:'JetBrains Mono',monospace; font-size:12px; align-items:center;">
+      <span><a href="player.html?id=${b.player_id}" style="color: var(--text); text-decoration: underline; text-decoration-color: rgba(255,255,255,0.15);">${b.name}</a></span>
+      <span style="color: ${hot ? '#58c878' : '#e35a5a'}; font-weight: 700;">${hot ? '+' : ''}${b.heat.toFixed(2)}</span>
+      <span class="muted">L7 OPS ${b.recent_ops.toFixed(3)}</span>
+      <span class="muted" style="font-size:10px;">${b.tonight_matchup || ''}</span>
+    </div>`;
+    const fmtPitcher = (p, hot) => `<div style="display:grid; grid-template-columns: 1.6fr 60px 100px 80px; gap:10px; padding:8px 0; border-bottom:1px solid rgba(255,255,255,0.04); font-family:'JetBrains Mono',monospace; font-size:12px; align-items:center;">
+      <span><a href="player.html?id=${p.player_id}" style="color: var(--text); text-decoration: underline; text-decoration-color: rgba(255,255,255,0.15);">${p.name}</a></span>
+      <span style="color: ${hot ? '#58c878' : '#e35a5a'}; font-weight: 700;">${hot ? '+' : ''}${p.heat.toFixed(2)}</span>
+      <span class="muted">L7 K/9 ${p.recent_k9}</span>
+      <span class="muted" style="font-size:10px;">${p.tonight_matchup || ''}</span>
+    </div>`;
+    document.getElementById("hbList").innerHTML = (d.hot_batters || []).map(b => fmtBatter(b, true)).join("");
+    document.getElementById("hpList").innerHTML = (d.hot_pitchers || []).map(p => fmtPitcher(p, true)).join("");
+    document.getElementById("cbList").innerHTML = (d.cold_batters || []).map(b => fmtBatter(b, false)).join("");
+    document.getElementById("cpList").innerHTML = (d.cold_pitchers || []).map(p => fmtPitcher(p, false)).join("");
+    document.getElementById("hbMeta").textContent = `${d.n_batters_scored} batters scored`;
+    document.getElementById("hpMeta").textContent = `${d.n_pitchers_scored} pitchers scored`;
+    document.getElementById("cbMeta").textContent = "lowest heat";
+    document.getElementById("cpMeta").textContent = "lowest heat";
+  })
+  .catch(() => {});
+</script>
+</body>
+</html>

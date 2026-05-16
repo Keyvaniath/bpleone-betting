@@ -72,11 +72,19 @@
     <p>Shareable markdown summary of today's slate, plays, pick-em opportunities, and self-learning loop status. Auto-generated at every cron refresh.</p>
     <div style="margin-top:12px;">
       <button class="copy-btn" id="copyBtn">Copy Markdown</button>
-      <a href="data/daily_summary.md" class="copy-btn" style="text-decoration:none; margin-left:8px;" download>Download .md</a>
+      <a href="data/auto_brief.md" class="copy-btn" style="text-decoration:none; margin-left:8px;" download>Download auto-brief</a>
+      <a href="data/daily_summary.md" class="copy-btn" style="text-decoration:none; margin-left:8px;" download>Download daily.md</a>
+      <button class="copy-btn" id="toggleBriefBtn" style="margin-left:8px;">Show full daily summary</button>
     </div>
   </section>
 
-  <section class="card">
+  <!-- AUTO-BRIEF (faster, more actionable) -->
+  <section class="card" id="autoBriefCard" style="margin-bottom: 18px;">
+    <div class="card-head"><span>⚡ Auto-Brief — tonight's slate at a glance</span><span class="muted" id="abMeta">--</span></div>
+    <div class="brief-doc" id="autoBriefDoc" style="padding: 14px;">Loading…</div>
+  </section>
+
+  <section class="card" id="dailySummaryCard" style="display:none;">
     <div class="brief-doc" id="briefDoc">Loading brief...</div>
   </section>
 
@@ -85,6 +93,27 @@
 <script src="https://cdn.jsdelivr.net/npm/marked@12.0.0/marked.min.js"></script>
 <script>
 let rawMd = "";
+// Auto-brief (concise, actionable)
+fetch("data/auto_brief.md?t=" + Date.now(), { cache: "no-cache" })
+  .then(r => r.text())
+  .then(md => {
+    document.getElementById("autoBriefDoc").innerHTML = window.marked
+      ? window.marked.parse(md)
+      : md.replace(/\n/g, "<br>");
+    document.getElementById("abMeta").textContent = "live · refreshes every cron";
+  })
+  .catch(() => {
+    document.getElementById("autoBriefDoc").textContent = "auto_brief.md not yet generated -- run python auto_brief.py";
+  });
+
+// Toggle full daily summary
+document.getElementById("toggleBriefBtn").addEventListener("click", () => {
+  const c = document.getElementById("dailySummaryCard");
+  const b = document.getElementById("toggleBriefBtn");
+  if (c.style.display === "none") { c.style.display = "block"; b.textContent = "Hide full daily summary"; }
+  else { c.style.display = "none"; b.textContent = "Show full daily summary"; }
+});
+
 fetch("data/daily_summary.md", { cache: "no-cache" })
   .then(r => r.text())
   .then(md => {

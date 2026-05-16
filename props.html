@@ -50,6 +50,83 @@
     <p class="muted" style="font-size:12px; margin-top:6px;">Model v1.1: pitcher_strikeouts, batter_home_runs, batter_hits, batter_total_bases. Projections use season stats + opponent-team K-rate + bench-player heuristic. Calibration loop is live -- each day's outcomes feed back into tomorrow's bias correction (see <a href="learning.html" style="color:#58c878;">Learning</a>). Low-confidence plays filtered to SKIP.</p>
   </section>
 
+  <!-- Lineup churn alert (NEW): scratched players whose props are now STALE -->
+  <section id="lineupChurnBanner" style="display:none; margin: 0 0 14px 0; padding: 10px 16px; border-radius: 8px; background: rgba(227,90,90,0.10); border: 1px solid rgba(227,90,90,0.45); font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #e35a5a;"></section>
+
+  <!-- Cross-book arb / shading detector (NEW): where PP is softer than DK on our side -->
+  <section id="arbCard" class="card" style="display:none; margin-bottom: 14px;">
+    <div class="card-head"><span>💵 Cross-Book Arb / Shading</span><span class="muted" id="arbMeta">--</span></div>
+    <div style="padding: 8px 14px 14px;">
+      <p class="muted" style="font-size: 11px; margin: 0 0 8px 0;">PrizePicks line softer than DraftKings on the side our model favors → bet PP for the better number. True arb = combined implied < 1 (rare, but flagged).</p>
+      <div id="arbList"></div>
+    </div>
+  </section>
+  <script>
+  fetch("data/cross_book_arb.json", { cache: "no-cache" })
+    .then(r => r.json())
+    .then(d => {
+      const alerts = d.alerts || [];
+      if (!alerts.length) return;
+      document.getElementById("arbCard").style.display = "block";
+      document.getElementById("arbMeta").textContent = `${d.n_alerts} alerts (${d.n_true_arb} true arb · ${d.n_shaded} shaded)`;
+      document.getElementById("arbList").innerHTML = alerts.slice(0, 25).map(a => {
+        const isArb = a.true_arb;
+        const color = isArb ? "#58c878" : "#d4a04a";
+        return `<div style="display:grid; grid-template-columns: 1.6fr 80px 80px 80px 110px 1fr; gap: 14px; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.04); font-family:'JetBrains Mono',monospace; font-size: 11px; align-items: center;">
+          <span><a href="player.html?id=${a.player_id || ''}" style="color: var(--text); text-decoration: underline; text-decoration-color: rgba(255,255,255,0.15);">${a.player}</a> ${a.play} ${a.line || ''} ${(a.market || '').replace(/_/g, ' ')}</span>
+          <span>DK ${a.dk_line}</span>
+          <span style="color: ${a.line_delta < 0 && a.play === 'OVER' || a.line_delta > 0 && a.play === 'UNDER' ? '#58c878' : 'var(--text-2,#aaa)'}; font-weight: 700;">PP ${a.pp_line}</span>
+          <span class="muted">Δ ${a.line_delta > 0 ? '+' : ''}${a.line_delta}</span>
+          <span style="padding: 2px 8px; border-radius: 3px; background: ${color}22; color: ${color}; font-size: 10px; font-weight: 700; text-align: center;">bet ${a.better_book}${isArb ? ' (TRUE ARB)' : ''}</span>
+          <span class="muted" style="font-size: 10px;">model ${a.model_prob ? (a.model_prob * 100).toFixed(0) + '%' : '—'}</span>
+        </div>`;
+      }).join("");
+    })
+    .catch(() => {});
+  </script>
+
+  <!-- Line timing alerts: act now vs wait based on cycle-over-cycle line movement -->
+  <section id="lineTimingCard" class="card" style="display:none; margin-bottom: 14px;">
+    <div class="card-head"><span>⏱️ Line Movement / Timing</span><span class="muted" id="ltMeta">--</span></div>
+    <div style="padding: 8px 14px 14px;">
+      <p class="muted" style="font-size: 11px; margin: 0 0 8px 0;">ACT NOW: price sharpening against our side, bet before more movement. WAIT: price drifting in our favor, let it run.</p>
+      <div id="ltList"></div>
+    </div>
+  </section>
+  <script>
+  fetch("data/line_timing.json", { cache: "no-cache" })
+    .then(r => r.json())
+    .then(d => {
+      const alerts = d.alerts || [];
+      if (!alerts.length) return;
+      document.getElementById("lineTimingCard").style.display = "block";
+      document.getElementById("ltMeta").textContent = `${d.n_act_now} ACT NOW · ${d.n_wait} WAIT · ${d.n_stable} STABLE`;
+      const sigColor = { "ACT NOW": "#e35a5a", "WAIT": "#58c878" };
+      document.getElementById("ltList").innerHTML = alerts.slice(0, 20).map(a => `<div style="display:grid; grid-template-columns: 80px 1.6fr 70px 70px 80px 1fr; gap: 14px; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.04); font-family:'JetBrains Mono',monospace; font-size: 11px;">
+        <span style="padding: 2px 8px; border-radius: 3px; background: ${sigColor[a.signal] || '#888'}22; color: ${sigColor[a.signal] || '#888'}; font-weight: 700; text-align: center; font-size: 10px;">${a.signal}</span>
+        <span><a href="player.html?id=${a.player_id || ''}" style="color: var(--text); text-decoration: underline; text-decoration-color: rgba(255,255,255,0.15);">${a.player}</a> ${a.our_play} ${a.line} ${(a.market || '').replace(/_/g, ' ')}</span>
+        <span class="muted">${a.src}</span>
+        <span>${a.prev_price}</span>
+        <span style="color: ${a.cents_moved < 0 ? '#e35a5a' : '#58c878'};">${a.curr_price} (${a.cents_moved > 0 ? '+' : ''}${a.cents_moved})</span>
+        <span class="muted" style="font-size: 10px;">${a.note}</span>
+      </div>`).join("");
+    })
+    .catch(() => {});
+  </script>
+  <script>
+  fetch("data/lineup_churn.json", { cache: "no-cache" })
+    .then(r => r.json())
+    .then(d => {
+      const aff = d.affected_props || [];
+      if (!aff.length) return;
+      const b = document.getElementById("lineupChurnBanner");
+      const names = Array.from(new Set(aff.map(a => a.player))).slice(0, 5);
+      b.style.display = "block";
+      b.innerHTML = `<strong>&#9888; LINEUP CHURN:</strong> ${aff.length} prop${aff.length===1?'':'s'} affected by scratches: <strong>${names.join(', ')}</strong>${aff.length > 5 ? ` (+${aff.length - names.length} more)` : ''}. These are flagged STALE -- model projection is based on a lineup the player isn't in.`;
+    })
+    .catch(() => {});
+  </script>
+
   <section id="apiDownBannerProps" style="display:none; margin: 0 0 18px 0; padding: 12px 16px; border-radius: 8px; background: rgba(227,90,90,0.08); border: 1px solid rgba(227,90,90,0.45); font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #e35a5a;">
     <strong>⚠ DraftKings props feed is down (Odds API 401).</strong> Today's props pipeline fetched zero markets. The grid below will be empty until the Odds API quota / paid tier is restored. Pickem (PrizePicks) data still works -- see <a href="pickem.html" style="color:#e35a5a; text-decoration:underline;">Pick-Em</a>.
   </section>
