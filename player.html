@@ -288,7 +288,12 @@ function renderPlayer(player, rationales) {
   if (bd) {
     html += renderTonightCard(bd);
     html += renderFormCard(bd);
+    html += renderYearByYearCard(bd);
     html += renderSplitsCard(bd);
+    html += renderSituationalCard(bd);
+    html += renderLineupSpotCard(bd);
+    html += renderPitchTypeCard(bd);
+    html += renderDaysRestCard(bd);
     html += renderAccuracyCard(bd);
     html += renderRecentPropsCard(bd);
   }
@@ -543,6 +548,183 @@ function renderRationale(r) {
       <strong>Bottom line:</strong> ${r.verdict || ''}
     </div>
   </div>`;
+}
+
+// === New deep-dive panels (PR #43) ===
+
+function renderYearByYearCard(bd) {
+  const yoy = bd.year_by_year || [];
+  if (!yoy.length) return "";
+  const isPitcher = bd.kind === "pitcher";
+  // Build delta lines for ops or era against the most-recent prior season
+  const fmt = (v) => v === null || v === undefined ? "—" : v;
+  const rows = yoy.map((y, idx) => {
+    if (isPitcher) {
+      return `<div style="display:grid; grid-template-columns: 80px 60px 70px 70px 70px 70px 70px; gap:14px; padding:6px 0; font-family:'JetBrains Mono',monospace; font-size:12px; border-bottom:1px solid rgba(255,255,255,0.04);">
+        <span><strong>${y.season}</strong></span>
+        <span class="muted">${y.gamesStarted ?? '—'} starts</span>
+        <span>${y.inningsPitched ?? '—'} IP</span>
+        <span>${y.era ?? '—'}</span>
+        <span>${y.whip ?? '—'}</span>
+        <span>${y.strikeoutsPer9Inn ?? y.strikeOutsPer9Inn ?? '—'}</span>
+        <span>${y.battingAverageAgainst ?? '—'}</span>
+      </div>`;
+    }
+    return `<div style="display:grid; grid-template-columns: 80px 60px 70px 70px 70px 60px 70px; gap:14px; padding:6px 0; font-family:'JetBrains Mono',monospace; font-size:12px; border-bottom:1px solid rgba(255,255,255,0.04);">
+      <span><strong>${y.season}</strong></span>
+      <span class="muted">${y.gamesPlayed ?? '—'} G</span>
+      <span>${fmt(y.avg)}</span>
+      <span>${fmt(y.obp)}</span>
+      <span>${fmt(y.slg)}</span>
+      <span>${y.homeRuns ?? '—'} HR</span>
+      <span>${fmt(y.ops)}</span>
+    </div>`;
+  }).join("");
+  const headers = isPitcher
+    ? `<span>Season</span><span>GS</span><span>IP</span><span>ERA</span><span>WHIP</span><span>K/9</span><span>BAA</span>`
+    : `<span>Season</span><span>G</span><span>AVG</span><span>OBP</span><span>SLG</span><span>HR</span><span>OPS</span>`;
+  return `<section class="card" style="margin-bottom: 18px;">
+    <div class="card-head"><span>📅 Year-Over-Year Trend</span><span class="muted">last ${yoy.length} seasons</span></div>
+    <div style="padding: 14px;">
+      <div style="display:grid; grid-template-columns: 80px 60px 70px 70px 70px ${isPitcher ? '70px 70px' : '60px 70px'}; gap:14px; padding:6px 0; color: var(--muted, #888); font-size: 10px; text-transform: uppercase;">
+        ${headers}
+      </div>
+      ${rows}
+    </div>
+  </section>`;
+}
+
+function renderSituationalCard(bd) {
+  const sit = bd.situational || {};
+  const codes = Object.keys(sit);
+  if (!codes.length) return "";
+  const isPitcher = bd.kind === "pitcher";
+  // Order: day, night, lo, risp, risp2, lc
+  const ordered = ["d", "n", "lo", "risp", "risp2", "lc"].filter(c => sit[c]);
+  const rows = ordered.map(c => {
+    const s = sit[c];
+    return `<div style="display:grid; grid-template-columns: 1.6fr 70px 70px 70px 70px 70px; gap:14px; padding:6px 0; font-family:'JetBrains Mono',monospace; font-size:12px; border-bottom:1px solid rgba(255,255,255,0.04);">
+      <span>${s.description}</span>
+      <span class="muted">${s.atBats ?? '—'} AB</span>
+      <span>${s.avg ?? '—'}</span>
+      <span>${s.obp ?? '—'}</span>
+      <span>${s.slg ?? '—'}</span>
+      <span>${s.ops ?? '—'}</span>
+    </div>`;
+  }).join("");
+  return `<section class="card" style="margin-bottom: 18px;">
+    <div class="card-head"><span>🎯 Situational Splits</span><span class="muted">Day vs Night, RISP, Late & Close, Leading Off</span></div>
+    <div style="padding: 14px;">
+      <div style="display:grid; grid-template-columns: 1.6fr 70px 70px 70px 70px 70px; gap:14px; padding:6px 0; color: var(--muted, #888); font-size: 10px; text-transform: uppercase;">
+        <span>Situation</span><span>AB</span><span>AVG</span><span>OBP</span><span>SLG</span><span>OPS</span>
+      </div>
+      ${rows}
+    </div>
+  </section>`;
+}
+
+function renderLineupSpotCard(bd) {
+  const ls = bd.lineup_spot || {};
+  const spots = Object.keys(ls).sort();
+  if (!spots.length) return "";
+  // Build mini-table of every spot played (1-9)
+  const rows = ["1","2","3","4","5","6","7","8","9"].map(spot => {
+    const s = ls[spot];
+    if (!s || !s.atBats) {
+      return `<div style="display:grid; grid-template-columns: 60px 60px 70px 70px 70px 70px; gap:14px; padding:6px 0; font-family:'JetBrains Mono',monospace; font-size:12px; border-bottom:1px solid rgba(255,255,255,0.04); color: var(--muted, #666);">
+        <span><strong>${spot}</strong></span><span>0 AB</span><span>—</span><span>—</span><span>—</span><span>—</span>
+      </div>`;
+    }
+    // Highlight best (highest OPS) spot
+    const ops = parseFloat(s.ops);
+    const isBest = !isNaN(ops) && ops >= 0.800;
+    return `<div style="display:grid; grid-template-columns: 60px 60px 70px 70px 70px 70px; gap:14px; padding:6px 0; font-family:'JetBrains Mono',monospace; font-size:12px; border-bottom:1px solid rgba(255,255,255,0.04); ${isBest ? 'background: rgba(88,200,120,0.05);' : ''}">
+      <span><strong>${spot}</strong></span>
+      <span class="muted">${s.atBats} AB</span>
+      <span>${s.avg}</span>
+      <span>${s.obp}</span>
+      <span>${s.slg}</span>
+      <span style="color:${isBest ? '#58c878' : 'inherit'};">${s.ops}</span>
+    </div>`;
+  }).join("");
+  return `<section class="card" style="margin-bottom: 18px;">
+    <div class="card-head"><span>🪜 Lineup Spot Performance</span><span class="muted">stats by batting order position</span></div>
+    <div style="padding: 14px;">
+      <div style="display:grid; grid-template-columns: 60px 60px 70px 70px 70px 70px; gap:14px; padding:6px 0; color: var(--muted, #888); font-size: 10px; text-transform: uppercase;">
+        <span>Spot</span><span>AB</span><span>AVG</span><span>OBP</span><span>SLG</span><span>OPS</span>
+      </div>
+      ${rows}
+    </div>
+  </section>`;
+}
+
+function renderPitchTypeCard(bd) {
+  const pt = bd.pitch_type || [];
+  if (!pt.length || bd.kind === "pitcher") return "";
+  const rows = pt.slice(0, 8).map(r => {
+    const x = r.batter_xwoba_vs;
+    const allow = r.pitcher_xwoba_allowed_overall;
+    // Edge signal: batter xwOBA vs this pitch type vs what the pitcher allows on average
+    const edge = (x != null && allow != null) ? (x - allow) : null;
+    const edgeColor = edge != null && edge > 0.030 ? "#58c878" : edge != null && edge < -0.030 ? "#e35a5a" : "var(--text-2, #aaa)";
+    return `<div style="display:grid; grid-template-columns: 1.5fr 70px 90px 100px 100px; gap:14px; padding:6px 0; font-family:'JetBrains Mono',monospace; font-size:12px; border-bottom:1px solid rgba(255,255,255,0.04);">
+      <span><strong>${r.pitch || r.pitch_type}</strong></span>
+      <span class="muted">${r.pitcher_usage_pct != null ? r.pitcher_usage_pct.toFixed(1) + '%' : '—'}</span>
+      <span>${x != null ? x.toFixed(3) : '—'}</span>
+      <span>${allow != null ? allow.toFixed(3) : '—'}</span>
+      <span style="color:${edgeColor};">${edge != null ? (edge >= 0 ? '+' : '') + edge.toFixed(3) : '—'}</span>
+    </div>`;
+  }).join("");
+  return `<section class="card" style="margin-bottom: 18px;">
+    <div class="card-head"><span>🎯 Pitch-Type Performance (Tonight's SP)</span><span class="muted">Statcast arsenal vs this batter's xwOBA</span></div>
+    <div style="padding: 14px;">
+      <div style="display:grid; grid-template-columns: 1.5fr 70px 90px 100px 100px; gap:14px; padding:6px 0; color: var(--muted, #888); font-size: 10px; text-transform: uppercase;">
+        <span>Pitch</span><span>Usage</span><span>Batter xwOBA</span><span>SP Allows</span><span>Edge</span>
+      </div>
+      ${rows}
+    </div>
+    <p class="muted" style="font-size:11px; padding:0 16px 14px;">Edge = batter xwOBA vs this pitch − pitcher's overall xwOBA allowed on this pitch. Positive (green) = batter likely to exploit this pitch tonight.</p>
+  </section>`;
+}
+
+function renderDaysRestCard(bd) {
+  if (bd.kind !== "pitcher") return "";
+  const dr = bd.days_rest || {};
+  const buckets = [
+    { key: "short", label: "Short rest (≤3 days)" },
+    { key: "normal", label: "Normal rest (4 days)" },
+    { key: "extra", label: "Extra rest (5 days)" },
+    { key: "long", label: "Long rest (6+ days)" },
+  ];
+  const anyData = buckets.some(b => dr[b.key]);
+  if (!anyData) return "";
+  const rows = buckets.map(b => {
+    const s = dr[b.key];
+    if (!s) {
+      return `<div style="display:grid; grid-template-columns: 1.8fr 60px 60px 70px 70px 70px; gap:14px; padding:6px 0; font-family:'JetBrains Mono',monospace; font-size:12px; border-bottom:1px solid rgba(255,255,255,0.04); color: var(--muted, #666);">
+        <span>${b.label}</span><span>0</span><span>—</span><span>—</span><span>—</span><span>—</span>
+      </div>`;
+    }
+    const era = s.era;
+    const eraColor = era != null && era < 3.50 ? "#58c878" : era != null && era > 4.50 ? "#e35a5a" : "var(--text-2, #aaa)";
+    return `<div style="display:grid; grid-template-columns: 1.8fr 60px 60px 70px 70px 70px; gap:14px; padding:6px 0; font-family:'JetBrains Mono',monospace; font-size:12px; border-bottom:1px solid rgba(255,255,255,0.04);">
+      <span><strong>${b.label}</strong></span>
+      <span class="muted">${s.n_starts}</span>
+      <span class="muted">${s.ip} IP</span>
+      <span style="color:${eraColor};">${era ?? '—'}</span>
+      <span>${s.k9 ?? '—'}</span>
+      <span>${s.bb9 ?? '—'}</span>
+    </div>`;
+  }).join("");
+  return `<section class="card" style="margin-bottom: 18px;">
+    <div class="card-head"><span>😴 Days-of-Rest Splits</span><span class="muted">recent starts bucketed by inter-start gap</span></div>
+    <div style="padding: 14px;">
+      <div style="display:grid; grid-template-columns: 1.8fr 60px 60px 70px 70px 70px; gap:14px; padding:6px 0; color: var(--muted, #888); font-size: 10px; text-transform: uppercase;">
+        <span>Bucket</span><span>GS</span><span>IP</span><span>ERA</span><span>K/9</span><span>BB/9</span>
+      </div>
+      ${rows}
+    </div>
+  </section>`;
 }
 
 window.toggleProp = function(idx) {

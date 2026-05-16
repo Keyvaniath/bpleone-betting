@@ -101,10 +101,10 @@ def _http_json(url: str) -> Optional[Dict[str, Any]]:
 
 
 def _fetch_splits(player_id: int, group: str = "hitting") -> Dict[str, Any]:
-    """Pull season + career + vs L/R + home/away splits from MLB Stats API.
-    The MLB Stats API requires single-stat-type calls for some types and
-    supports statSplits with sitCodes for L/R/home/away. We make 3 calls.
-    Returns {} on total failure -- safe to fall through."""
+    """Pull season + career + L/R + home/away splits from MLB Stats API.
+    The MLB Stats API requires multiple calls because stat types and
+    statSplits sitCodes can't all be combined. Returns {} on total failure --
+    safe to fall through."""
     out: Dict[str, Any] = {}
     season = dt.date.today().year
 
@@ -124,7 +124,7 @@ def _fetch_splits(player_id: int, group: str = "hitting") -> Dict[str, Any]:
         if splits:
             out["career"] = splits[-1].get("stat") or {}
 
-    # 3) Splits via sitCodes: vl=vs L, vr=vs R, h=home, a=away
+    # 3) L/R + home/away
     url = (f"{MLB_API}/people/{player_id}/stats?stats=statSplits&sitCodes=vl,vr,h,a"
            f"&group={group}&season={season}&sportId=1")
     data = _http_json(url)
@@ -141,6 +141,169 @@ def _fetch_splits(player_id: int, group: str = "hitting") -> Dict[str, Any]:
             elif code == "a":
                 out["away"] = stat
 
+    return out
+
+
+def _fetch_year_by_year(player_id: int, group: str = "hitting") -> List[Dict[str, Any]]:
+    """Year-over-year trend: last 3 seasons. Used for the YOY card."""
+    url = f"{MLB_API}/people/{player_id}/stats?stats=yearByYear&group={group}&sportId=1"
+    data = _http_json(url)
+    if not data or not data.get("stats"):
+        return []
+    splits = (data["stats"][0].get("splits") or [])
+    out = []
+    for sp in splits[-3:]:   # last 3 seasons
+        out.append({"season": sp.get("season"), **(sp.get("stat") or {})})
+    return out
+
+
+def _fetch_situational(player_id: int, group: str = "hitting") -> Dict[str, Any]:
+    """Game-state splits: RISP / RISP+2outs / Late&Close / Leading off / Day / Night.
+    Verified sitCodes (probed against the live API):
+      risp  = Scoring Position
+      risp2 = Scoring Position - 2 Outs
+      lc    = Late / Close
+      lo    = Leading Off Inning
+      d     = Day Games
+      n     = Night Games"""
+    season = dt.date.today().year
+    url = (f"{MLB_API}/people/{player_id}/stats?stats=statSplits"
+           f"&sitCodes=risp,risp2,lc,lo,d,n&group={group}&season={season}&sportId=1")
+    data = _http_json(url)
+    if not data or not data.get("stats"):
+        return {}
+    out: Dict[str, Any] = {}
+    for sp in data["stats"][0].get("splits") or []:
+        code = (sp.get("split") or {}).get("code")
+        desc = (sp.get("split") or {}).get("description")
+        if not code:
+            continue
+        out[code] = {"description": desc, **(sp.get("stat") or {})}
+    return out
+
+
+def _fetch_lineup_spot(player_id: int, group: str = "hitting") -> Dict[str, Any]:
+    """By batting-order position. sitCodes 1..9 = 1st through 9th in order."""
+    season = dt.date.today().year
+    url = (f"{MLB_API}/people/{player_id}/stats?stats=statSplits"
+           f"&sitCodes=1,2,3,4,5,6,7,8,9&group={group}&season={season}&sportId=1")
+    data = _http_json(url)
+    if not data or not data.get("stats"):
+        return {}
+    out: Dict[str, Any] = {}
+    for sp in data["stats"][0].get("splits") or []:
+        code = (sp.get("split") or {}).get("code")
+        if code in {"1","2","3","4","5","6","7","8","9"}:
+            out[code] = sp.get("stat") or {}
+    return out
+
+
+def _pitch_type_from_arsenal(tonight: Optional[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    """Pitch-type performance for tonight's batter matchup, derived from the
+    arsenal_xwoba breakdown we already cache per batter in matchups.json.
+    Each row: {pitch, pitcher_usage_pct, batter_xwoba_vs, pitcher_xwoba_allowed_overall}.
+
+    MLB Stats API doesn't expose vs-pitch-type splits directly; this approach
+    uses the Statcast-derived data already on the slate, which is more
+    actionable anyway (it's specific to TONIGHT's pitcher, not all pitchers)."""
+    if not tonight:
+        return []
+    ax = tonight.get("arsenal_xwoba") or {}
+    return ax.get("breakdown") or []
+
+
+def _ip_to_float(ip_val: Any) -> float:
+    """Convert MLB 'X.Y' inning notation (where Y is outs/3) to a real float.
+    '5.2' = 5 and 2/3 innings = 5.667. None / non-numeric -> 0."""
+    if ip_val is None:
+        return 0.0
+    if isinstance(ip_val, (int, float)):
+        return float(ip_val)
+    s = str(ip_val).strip()
+    try:
+        if "." in s:
+            whole, frac = s.split(".")
+            return int(whole) + int(frac) / 3.0
+        return float(s)
+    except Exception:
+        return 0.0
+
+
+def _park_splits_from_gamelog(games: List[Dict[str, Any]], tonight_park: Optional[str]) -> Dict[str, Any]:
+    """Slice player_gamelogs by park: tonight's park vs all-other-parks averages.
+    Surfaces 'do they crush at THIS park or struggle?' for tonight's slate."""
+    if not games or not tonight_park:
+        return {}
+    def _safe(g, key, d=0):
+        v = g.get(key)
+        return v if isinstance(v, (int, float)) else d
+    here, away = [], []
+    for g in games:
+        venue = (g.get("park") or g.get("venue") or "").strip()
+        if not venue:
+            continue
+        (here if tonight_park and venue.lower() == tonight_park.lower() else away).append(g)
+    def _agg(rows):
+        if not rows:
+            return None
+        ab = sum(_safe(g, "ab") for g in rows)
+        h = sum(_safe(g, "hits") for g in rows)
+        hr = sum(_safe(g, "hr") for g in rows)
+        tb = sum(_safe(g, "tb") for g in rows)
+        return {
+            "n_games": len(rows),
+            "ab": ab, "h": h, "hr": hr, "tb": tb,
+            "avg": round(h / ab, 3) if ab else None,
+            "slg": round(tb / ab, 3) if ab else None,
+            "hr_per_game": round(hr / len(rows), 3) if rows else None,
+        }
+    return {"at_park": _agg(here), "at_other_parks": _agg(away),
+            "park_name": tonight_park}
+
+
+def _days_rest_for_pitcher(games: List[Dict[str, Any]]) -> Dict[str, Any]:
+    """For pitchers: bucket starts by days-of-rest gap, then aggregate ERA / K9.
+    Buckets: <=3 (short), 4 (normal), 5 (extra), 6+ (long)."""
+    if not games:
+        return {}
+    dated = []
+    for g in games:
+        d = g.get("date") or g.get("game_date")
+        if not d:
+            continue
+        try:
+            dt_o = dt.date.fromisoformat(d)
+            dated.append((dt_o, g))
+        except Exception:
+            continue
+    dated.sort()
+    buckets: Dict[str, List[Dict[str, Any]]] = {"short": [], "normal": [], "extra": [], "long": []}
+    for i in range(1, len(dated)):
+        gap = (dated[i][0] - dated[i-1][0]).days
+        g = dated[i][1]
+        if gap <= 3:    buckets["short"].append(g)
+        elif gap == 4:  buckets["normal"].append(g)
+        elif gap == 5:  buckets["extra"].append(g)
+        else:           buckets["long"].append(g)
+    def _safe(g, key, d=0):
+        v = g.get(key)
+        return v if isinstance(v, (int, float)) else d
+    out: Dict[str, Any] = {}
+    for bucket_name, rows in buckets.items():
+        if not rows:
+            out[bucket_name] = None
+            continue
+        ip = sum(_ip_to_float(g.get("ip")) for g in rows)
+        er = sum(_safe(g, "er") for g in rows)
+        k = sum(_safe(g, "k") for g in rows)
+        bb = sum(_safe(g, "bb") for g in rows)
+        out[bucket_name] = {
+            "n_starts": len(rows),
+            "ip": round(ip, 1),
+            "era": round((er * 9) / ip, 2) if ip > 0 else None,
+            "k9":  round((k  * 9) / ip, 2) if ip > 0 else None,
+            "bb9": round((bb * 9) / ip, 2) if ip > 0 else None,
+        }
     return out
 
 
@@ -204,7 +367,8 @@ def _form_from_pitcher_gamelog(games: List[Dict[str, Any]], days: int) -> Dict[s
     def _safe(g, k, d=0):
         v = g.get(k)
         return v if isinstance(v, (int, float)) else d
-    ip = sum(_safe(g, "ip") for g in recent)
+    # ip can come as "5.2" string from MLB API; convert through _ip_to_float
+    ip = sum(_ip_to_float(g.get("ip")) for g in recent)
     er = sum(_safe(g, "er") for g in recent)
     k = sum(_safe(g, "k") for g in recent)
     bb = sum(_safe(g, "bb") for g in recent)
@@ -419,15 +583,28 @@ def run() -> Dict[str, Any]:
             form_7 = _form_from_gamelog(games, 7)
             form_14 = _form_from_gamelog(games, 14)
             form_30 = _form_from_gamelog(games, 30)
-        # API splits -- only on slate AND within budget
+        # API pulls -- only on slate AND within budget. Each on-slate player
+        # consumes 1 budget unit but triggers up to 4 API endpoints (splits,
+        # yoy, situational, lineup-spot, pitch-type). MLB Stats API is fast
+        # enough that batching this way is fine.
         splits: Dict[str, Any] = {}
+        yoy: List[Dict[str, Any]] = []
+        situational: Dict[str, Any] = {}
+        lineup_spot: Dict[str, Any] = {}
         if meta.get("on_slate") and api_budget > 0:
             group = "pitching" if kind == "pitcher" else "hitting"
             splits = _fetch_splits(pid, group) or {}
+            yoy = _fetch_year_by_year(pid, group) or []
+            situational = _fetch_situational(pid, group) or {}
+            lineup_spot = _fetch_lineup_spot(pid, group) or {}
             api_budget -= 1
         season = splits.get("season") or {}
         hot_cold = _hot_cold_label(form_14, season, kind)
         tonight = _tonight_for_player(matchups, pid, meta.get("name") or "") if meta.get("on_slate") else None
+        # Pitch-type performance: derived from cached arsenal_xwoba in tonight's matchup
+        pitch_type = _pitch_type_from_arsenal(tonight)
+        # Pitcher rest buckets (gamelog-only, no API)
+        rest_buckets = _days_rest_for_pitcher(games) if kind == "pitcher" else {}
         acc = _player_accuracy(tr_props, pid)
         # Active per-player bias override (if any)
         biases = []
@@ -459,6 +636,11 @@ def run() -> Dict[str, Any]:
                 "hot_cold": hot_cold,
             },
             "tonight": tonight,
+            "year_by_year": yoy,
+            "situational": situational,
+            "lineup_spot": lineup_spot,
+            "pitch_type": pitch_type,
+            "days_rest": rest_buckets,
             "model_accuracy": acc,
             "recent_props": mine,
             "active_bias_overrides": biases,
