@@ -591,12 +591,28 @@ jobs:
             echo "No data changes — nothing to commit."
           else
             git commit -m "chore(data): daily refresh $(date -u +%FT%TZ)"
-            # Rebase + retry to handle race with live-games workflow.
-            for i in 1 2 3; do
-              git pull --rebase origin main || { git rebase --abort; sleep 3; continue; }
-              git push && exit 0
+            # Robust retry: if rebase hits conflicts on data/*.json, just take
+            # OUR version (we just produced fresh data, ours is newer than remote)
+            for i in 1 2 3 4 5; do
+              git fetch origin main
+              # If our HEAD already includes origin/main, push directly
+              if git merge-base --is-ancestor origin/main HEAD; then
+                git push && { echo "pushed cleanly"; exit 0; }
+                sleep 3
+                continue
+              fi
+              # Attempt rebase; on conflict take our version for any data/*.json
+              if git rebase origin/main; then
+                git push && { echo "pushed after rebase"; exit 0; }
+              else
+                # Conflict path: take ours for data/, theirs for any code (rare)
+                git checkout --ours data/ 2>/dev/null || true
+                git add data/
+                git rebase --continue || git rebase --abort
+                git push && { echo "pushed after conflict resolution"; exit 0; }
+              fi
               sleep 5
             done
-            echo "push failed after retries"
+            echo "push failed after 5 retries"
             exit 1
           fi
