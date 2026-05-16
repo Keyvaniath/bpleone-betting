@@ -40,6 +40,19 @@ jobs:
         working-directory: python
         run: python smoke_tests.py
 
+      # Snapshot the active config (defaults + any runtime overrides) so
+      # /config.html can render the live knob table.
+      - name: Snapshot config
+        working-directory: python
+        run: python config.py dump
+
+      # Diff data/runtime_config.json against the last seen snapshot. Any
+      # change since prior cron (override added / removed / changed) is
+      # appended to data/config_history.json for the audit trail.
+      - name: Log config override changes
+        working-directory: python
+        run: python config_history.py
+
       # Settle yesterday's projections BEFORE generating today's, so today's
       # projections incorporate the latest calibration corrections.
       - name: Settle yesterday's outcomes
@@ -144,6 +157,31 @@ jobs:
         if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
         working-directory: python
         run: python multiplier_tuner.py
+
+      # Training feedback log: writes a "what changed this run" entry to
+      # training_feedback.json so /training renders a feed of recent activity.
+      - name: Log training feedback
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        working-directory: python
+        run: python training_feedback.py
+
+      # Parameter recommender: analyzes calibration / walk-forward / track-record
+      # and writes data/param_recommendations.json with suggested config knob
+      # changes. /config.html renders these with one-click Apply links to
+      # runtime_config.json on GitHub. Suggestions only -- never auto-applied.
+      - name: Generate parameter recommendations
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        working-directory: python
+        run: python param_recommender.py
+
+      # Override effect tracker: for each entry in config_history.json,
+      # compute pre/post 7-day Brier + hit rate from track_record. Lets the
+      # operator (and the recommender) see whether each tweak actually
+      # improved the model. Surfaces on /config.
+      - name: Measure override effects
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        working-directory: python
+        run: python override_effects.py
 
       # Pipeline health audit: empty/demo/stale-artifact detection.
       # Runs LAST so it captures the final state of every artifact.

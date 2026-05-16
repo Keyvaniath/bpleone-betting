@@ -34,7 +34,11 @@ LIVE_STATE_PATH = os.path.join(DATA_DIR, "live_state.json")
 LIVE_CLV_PATH = os.path.join(DATA_DIR, "live_clv.json")
 OUT_PATH = os.path.join(DATA_DIR, "live_edges.json")
 
-EDGE_THRESHOLD = 0.05    # 5 percentage points -- real live-bet edge
+try:
+    import config as _cfg
+    EDGE_THRESHOLD = _cfg.get("live_edges.edge_threshold_pp") / 100.0
+except Exception:
+    EDGE_THRESHOLD = 0.05    # 5 percentage points -- real live-bet edge
 
 
 def _load(p: str) -> Dict[str, Any]:

@@ -37,9 +37,15 @@ DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 TR_PATH = os.path.join(DATA_DIR, "track_record.json")
 OUT_PATH = os.path.join(DATA_DIR, "anomalies.json")
 
-MIN_PLAYER_SAMPLE = 3
-SYSTEMATIC_Z_THRESHOLD = 2.0
-OUTLIER_Z_THRESHOLD = 3.0
+try:
+    import config as _cfg
+    MIN_PLAYER_SAMPLE = _cfg.get("player_bias.min_player_n")
+    SYSTEMATIC_Z_THRESHOLD = _cfg.get("anomalies.systematic_z_threshold")
+    OUTLIER_Z_THRESHOLD = _cfg.get("anomalies.outlier_z_threshold")
+except Exception:
+    MIN_PLAYER_SAMPLE = 3
+    SYSTEMATIC_Z_THRESHOLD = 2.0
+    OUTLIER_Z_THRESHOLD = 3.0
 
 
 def run() -> Dict[str, Any]:

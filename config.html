@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Model Config | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .knob-row { display: grid; grid-template-columns: 2.4fr 0.7fr 0.7fr 1fr 3fr; gap: 14px; padding: 12px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); font-family: 'JetBrains Mono', monospace; font-size: 12px; align-items: start; }
+  .knob-row.head { background: rgba(255,255,255,0.04); color: var(--muted, #888); font-size: 10px; text-transform: uppercase; }
+  .knob-row .key { color: var(--text); font-weight: 600; word-break: break-all; }
+  .knob-row .default { color: var(--muted, #888); }
+  .knob-row .current { color: var(--accent, #4ade80); font-weight: 600; }
+  .knob-row .current.overridden { color: #d4a04a; }
+  .knob-row .desc { color: var(--text-2, #aaa); font-family: inherit; font-size: 12px; line-height: 1.4; }
+  .knob-row .type { color: #888; font-size: 10px; }
+  .knob-row .group-header { grid-column: 1 / -1; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold, #d4a04a); padding: 16px 0 8px; border-bottom: 1px solid rgba(212,160,74,0.3); margin-bottom: 4px; }
+  .copy-snippet { font-family: 'JetBrains Mono', monospace; font-size: 11px; background: rgba(0,0,0,0.4); padding: 14px; border-radius: 6px; border: 1px solid var(--line); white-space: pre; overflow-x: auto; color: var(--text-2); }
+  .pill { padding: 2px 8px; border-radius: 4px; font-size: 10px; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; }
+  .pill.default { background: rgba(255,255,255,0.05); color: var(--muted, #888); }
+  .pill.overridden { background: rgba(212,160,74,0.15); color: #d4a04a; }
+</style>
+</head>
+<body class="page-config">
+<header class="topbar">
+  <div class="brand">
+    <a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a>
+    <span class="tagline">by bpleone</span>
+  </div>
+  <nav class="mainnav">
+    <a href="index.html">Dashboard</a>
+    <a href="play-of-day.html">Play of the Day</a>
+    <a href="mlb.html">MLB</a>
+    <a href="parlays.html">Parlays</a>
+    <a href="pickem.html">Pick-Em</a>
+    <a href="brief.html">Brief</a>
+    <a href="learning.html">Learning</a>
+    <a href="training.html">Training</a>
+    <a href="config.html" class="active">Config</a>
+    <a href="residuals.html">Residuals</a>
+    <a href="audit.html">Audit</a>
+    <a href="live.html">Live</a>
+    <a href="props.html">Props</a>
+    <a href="player.html">Player</a>
+    <a href="learn.html">Learn</a>
+  </nav>
+  <div class="topbar-actions"><div class="ticker" id="liveTicker">LIVE</div></div>
+</header>
+
+<main class="container">
+
+  <section class="page-head">
+    <h1>Model Config</h1>
+    <p>Every tunable parameter, all in one place. Defaults come from <code>python/config.py</code>; overrides live in <code>data/runtime_config.json</code> and apply on the next cron without a code change.</p>
+    <p class="muted" style="font-size: 12px; margin-top: 8px;">
+      To override a value: edit <code>data/runtime_config.json</code> in the GitHub web editor, add a key/value, commit. Next pipeline run picks it up. To revert: remove the key.
+    </p>
+  </section>
+
+  <section id="recsCard" class="card" style="margin-bottom: 18px; display: none; border-color: rgba(212,160,74,0.35);">
+    <div class="card-head"><span style="color: #d4a04a;">Model Recommendations</span><span class="muted" id="recsRefresh"></span></div>
+    <div style="padding: 6px 14px 14px;">
+      <p class="muted" style="font-size: 12px; margin: 0 0 12px 0;">Auto-generated each cron from calibration / walk-forward / track-record metrics. The model is suggesting these tweaks based on its own performance. <strong>You stay in control</strong> -- click <em>Apply</em> to open <code>runtime_config.json</code> on GitHub pre-filled with the change.</p>
+      <div id="recsList"></div>
+    </div>
+  </section>
+
+  <section class="card" style="margin-bottom: 18px;">
+    <div class="card-head"><span>Active Overrides</span><span class="muted" id="overrideCount"></span></div>
+    <div id="overridesBox" style="padding: 14px;"></div>
+  </section>
+
+  <section id="historyCard" class="card" style="margin-bottom: 18px; display: none;">
+    <div class="card-head"><span>Override History</span><span class="muted" id="histCount"></span></div>
+    <div style="padding: 4px 14px 14px;">
+      <p class="muted" style="font-size: 12px; margin: 6px 0 12px 0;">Every change to <code>runtime_config.json</code> is logged here. The "did we change something?" half of the closed loop -- pair with <a href="training.html">/training</a> activity to see if a tweak helped.</p>
+      <div id="histList"></div>
+    </div>
+  </section>
+
+  <section id="effectsCard" class="card" style="margin-bottom: 18px; display: none;">
+    <div class="card-head"><span>Override Effects</span><span class="muted" id="effCount"></span></div>
+    <div style="padding: 4px 14px 14px;">
+      <p class="muted" style="font-size: 12px; margin: 6px 0 12px 0;">Empirical pre/post Brier + hit rate for each override. The "did it help?" half of the closed loop. Requires 50+ settled records on each side of the change to draw a conclusion (else <em>insufficient_data</em>).</p>
+      <div id="effList"></div>
+    </div>
+  </section>
+
+  <section class="card" style="margin-bottom: 18px;">
+    <div class="card-head"><span>All Knobs</span><span class="muted" id="totalKnobs"></span></div>
+    <div class="knob-row head">
+      <span>Key</span><span>Default</span><span>Current</span><span>Type</span><span>Description</span>
+    </div>
+    <div id="knobList"><p class="muted" style="padding:14px;">Loading config...</p></div>
+  </section>
+
+  <section class="card">
+    <div class="card-head"><span>How to Override</span></div>
+    <div style="padding: 14px; line-height: 1.7;">
+      <p style="margin: 0 0 12px 0;">Open <a href="https://github.com/Keyvaniath/bpleone-betting/blob/main/data/runtime_config.json" target="_blank">data/runtime_config.json</a> on GitHub. Click the pencil icon to edit. Add the key + value, commit. Next pipeline run applies it.</p>
+      <p style="margin: 0 0 10px 0; font-size: 13px;">Example: be more aggressive with calibration (trust data at n=5 instead of n=8):</p>
+      <div class="copy-snippet">{
+  "calibration.n_prior_default": 5,
+  "live_edges.edge_threshold_pp": 3.0,
+  "plays.kelly_fraction": 0.5
+}</div>
+      <p class="muted" style="font-size: 12px; margin-top: 14px;">
+        Reload this page after the next cron to see the override flagged in amber. Remove any key from the JSON to revert that knob to its default.
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<script>
+const GROUPS = [
+  { prefix: "calibration.",  title: "Bayesian Calibration" },
+  { prefix: "player_bias.",  title: "Per-Player Bias Overrides" },
+  { prefix: "live_edges.",   title: "Live Edge Alerts" },
+  { prefix: "plays.",        title: "Play Selection" },
+  { prefix: "parlays.",      title: "Parlay Engine" },
+  { prefix: "trainer.",      title: "Model Trainer" },
+  { prefix: "props.",        title: "Props Pipeline" },
+  { prefix: "backfill.",     title: "Historical Backfill" },
+  { prefix: "walk_forward.", title: "Walk-Forward Backtest" },
+  { prefix: "anomalies.",    title: "Anomaly Detector" },
+  { prefix: "rationales.",   title: "Rationale Generation" },
+];
+
+// Load override effects (paired with history below)
+fetch("data/override_effects.json", { cache: "no-cache" })
+  .then(r => r.json())
+  .then(p => {
+    const changes = (p.changes || []).slice().reverse();
+    if (!changes.length) return;
+    document.getElementById("effectsCard").style.display = "block";
+    document.getElementById("effCount").textContent = `${changes.length} change${changes.length===1?'':'s'} measured`;
+    const verdictColor = { improved: "#58c878", flat: "#d4a04a", degraded: "#e35a5a", insufficient_data: "#888" };
+    document.getElementById("effList").innerHTML = changes.slice(0, 20).map(c => {
+      const color = verdictColor[c.verdict] || "#888";
+      const b = c.brier_delta, h = c.hit_rate_delta;
+      const bStr = b === null || b === undefined ? "--" : (b > 0 ? "+" : "") + b;
+      const hStr = h === null || h === undefined ? "--" : ((h > 0 ? "+" : "") + (h * 100).toFixed(2) + "pp");
+      const preN = c.pre && c.pre.n;
+      const postN = c.post && c.post.n;
+      const oldStr = c.old === null || c.old === undefined ? "unset" : JSON.stringify(c.old);
+      const newStr = c.new === null || c.new === undefined ? "unset" : JSON.stringify(c.new);
+      return `<div style="padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">
+        <div style="display:flex; justify-content:space-between; align-items:center; gap: 12px;">
+          <div style="font-family:'JetBrains Mono',monospace; font-size: 11px; color: var(--muted, #888); flex-shrink:0;">${(c.ts || '').replace('T', ' ')}</div>
+          <div style="font-family:'JetBrains Mono',monospace; font-size: 12px; flex: 1; text-align: center;">
+            <span style="color: var(--text);">${c.key}</span>
+            <span style="color: var(--muted, #888); margin: 0 8px;">${oldStr} -> ${newStr}</span>
+          </div>
+          <div style="display:flex; gap: 14px; align-items:center;">
+            <span class="muted" style="font-size: 10px;">Brier <span style="color: ${b !== null && b !== undefined && b < 0 ? '#58c878' : b > 0 ? '#e35a5a' : 'var(--muted, #888)'};">${bStr}</span></span>
+            <span class="muted" style="font-size: 10px;">Hit% <span style="color: ${h !== null && h !== undefined && h > 0 ? '#58c878' : h < 0 ? '#e35a5a' : 'var(--muted, #888)'};">${hStr}</span></span>
+            <span class="muted" style="font-size: 10px;">n=${preN||0}/${postN||0}</span>
+            <span style="padding: 2px 8px; border-radius: 3px; font-size: 10px; text-transform: uppercase; font-weight: 600; background: ${color}; color: #1a1a1a;">${c.verdict.replace('_',' ')}</span>
+          </div>
+        </div>
+      </div>`;
+    }).join("");
+  })
+  .catch(() => {});
+
+// Load override history
+fetch("data/config_history.json", { cache: "no-cache" })
+  .then(r => r.json())
+  .then(h => {
+    const entries = (h.entries || []).slice().reverse();
+    if (!entries.length) return;
+    document.getElementById("historyCard").style.display = "block";
+    document.getElementById("histCount").textContent = `${entries.length} change${entries.length===1?'':'s'} logged`;
+    const typeColor = { override_added: "#58c878", override_changed: "#d4a04a", override_removed: "#e35a5a" };
+    const typeLabel = { override_added: "added", override_changed: "changed", override_removed: "removed" };
+    document.getElementById("histList").innerHTML = entries.slice(0, 20).map(e => {
+      const color = typeColor[e.type] || "#888";
+      const label = typeLabel[e.type] || e.type;
+      const oldStr = e.old === null || e.old === undefined ? "<em>unset</em>" : JSON.stringify(e.old);
+      const newStr = e.new === null || e.new === undefined ? "<em>unset</em>" : JSON.stringify(e.new);
+      return `<div style="display:grid; grid-template-columns: 160px 80px 1.4fr 1fr 1fr; gap: 12px; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-family:'JetBrains Mono',monospace; font-size: 11px; align-items: center;">
+        <span class="muted">${(e.ts || '').replace('T', ' ')}</span>
+        <span style="color: ${color}; text-transform: uppercase; font-weight: 600;">${label}</span>
+        <span style="color: var(--text);">${e.key}</span>
+        <span style="color: var(--muted, #888);">${oldStr}</span>
+        <span style="color: ${color};">${newStr}</span>
+      </div>`;
+    }).join("");
+  })
+  .catch(() => {});
+
+// Load recommendations first (independent of config snapshot)
+fetch("data/param_recommendations.json", { cache: "no-cache" })
+  .then(r => r.json())
+  .then(rp => {
+    const recs = rp.recommendations || [];
+    if (!recs.length) return;
+    document.getElementById("recsCard").style.display = "block";
+    document.getElementById("recsRefresh").textContent = `${recs.length} recommendation${recs.length===1?'':'s'} ${(rp.generated_at||'').replace('T',' ')} UTC`;
+    const sevColor = { high: "#e35a5a", medium: "#d4a04a", low: "#58c878" };
+    document.getElementById("recsList").innerHTML = recs.map(r => {
+      const color = sevColor[r.severity] || "#888";
+      const arrow = r.direction === "increase" ? "↑" : r.direction === "decrease" ? "↓" : "→";
+      // Build a pre-filled runtime_config.json with this rec applied (best-effort -- merges into current overrides)
+      const ghEdit = `https://github.com/Keyvaniath/bpleone-betting/edit/main/data/runtime_config.json`;
+      const suggestedJson = JSON.stringify({ [r.key]: r.suggested });
+      const evJson = JSON.stringify(r.evidence || {}, null, 2);
+      return `<div style="padding: 12px 14px; margin-bottom: 10px; border-left: 3px solid ${color}; background: rgba(255,255,255,0.02); border-radius: 0 6px 6px 0;">
+        <div style="display:flex; justify-content:space-between; align-items:start; gap: 16px;">
+          <div style="flex: 1;">
+            <div style="font-family:'JetBrains Mono',monospace; font-size: 13px; font-weight: 600; margin-bottom: 4px;">
+              <span style="color: ${color};">[${r.severity.toUpperCase()}]</span> <span>${r.key}</span>
+            </div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size: 12px; color: var(--muted, #888); margin-bottom: 8px;">
+              ${JSON.stringify(r.current)} <span style="color: ${color};">${arrow}</span> <strong style="color: ${color};">${JSON.stringify(r.suggested)}</strong>
+            </div>
+            <div style="font-size: 12px; line-height: 1.5; color: var(--text-2, #aaa);">${r.rationale}</div>
+            <details style="margin-top: 8px; font-size: 11px;">
+              <summary class="muted" style="cursor: pointer;">evidence</summary>
+              <pre style="background: rgba(0,0,0,0.4); padding: 8px; border-radius: 4px; font-size: 10px; margin-top: 4px; overflow-x: auto;">${evJson}</pre>
+            </details>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 6px; min-width: 110px;">
+            <a href="${ghEdit}" target="_blank" style="padding: 6px 10px; background: ${color}; color: #1a1a1a; text-decoration: none; border-radius: 4px; font-size: 11px; font-weight: 600; text-align: center; text-transform: uppercase; letter-spacing: 0.05em;">Apply →</a>
+            <code style="font-size: 9px; padding: 4px 6px; background: rgba(0,0,0,0.4); border-radius: 3px; word-break: break-all; color: var(--muted, #888);">${suggestedJson}</code>
+          </div>
+        </div>
+      </div>`;
+    }).join("");
+  })
+  .catch(() => {});
+
+fetch("data/config_snapshot.json", { cache: "no-cache" })
+  .then(r => r.json())
+  .then(snap => {
+    const keys = snap.keys || {};
+    const allKeys = Object.keys(keys);
+    document.getElementById("totalKnobs").textContent = `${allKeys.length} parameters tracked`;
+    // Overrides box
+    const overridden = allKeys.filter(k => keys[k].is_overridden);
+    document.getElementById("overrideCount").textContent = `${overridden.length} override${overridden.length===1?'':'s'} active`;
+    const ovrBox = document.getElementById("overridesBox");
+    if (!overridden.length) {
+      ovrBox.innerHTML = `<p class="muted">No overrides active. Every parameter is at its default. Edit <code>data/runtime_config.json</code> to override.</p>`;
+    } else {
+      ovrBox.innerHTML = `<table style="width:100%; font-family:'JetBrains Mono',monospace; font-size: 12px;">
+        ${overridden.map(k => `<tr>
+          <td style="padding:4px 14px 4px 0;"><strong>${k}</strong></td>
+          <td style="padding:4px 14px; color: var(--muted, #888);">default: ${JSON.stringify(keys[k].default)}</td>
+          <td style="padding:4px 14px; color: #d4a04a;">→ ${JSON.stringify(keys[k].current)}</td>
+        </tr>`).join("")}
+      </table>`;
+    }
+    // Grouped knob list
+    const groupedHtml = GROUPS.map(g => {
+      const groupKeys = allKeys.filter(k => k.startsWith(g.prefix)).sort();
+      if (!groupKeys.length) return "";
+      const rows = groupKeys.map(k => {
+        const v = keys[k];
+        const isOver = v.is_overridden;
+        const currentDisplay = typeof v.current === 'object'
+          ? JSON.stringify(v.current).slice(0, 120)
+          : String(v.current);
+        const defaultDisplay = typeof v.default === 'object'
+          ? JSON.stringify(v.default).slice(0, 120)
+          : String(v.default);
+        return `<div class="knob-row">
+          <span class="key">${k}</span>
+          <span class="default" title="${defaultDisplay}">${defaultDisplay.slice(0, 30)}${defaultDisplay.length > 30 ? '…' : ''}</span>
+          <span class="current ${isOver ? 'overridden' : ''}" title="${currentDisplay}">${currentDisplay.slice(0, 30)}${currentDisplay.length > 30 ? '…' : ''}${isOver ? ' <span class=\"pill overridden\">override</span>' : ''}</span>
+          <span class="type">${v.type}${v.min !== undefined ? ` [${v.min}, ${v.max}]` : ''}</span>
+          <span class="desc">${v.desc}</span>
+        </div>`;
+      }).join("");
+      return `<div class="knob-row group-header">${g.title}</div>${rows}`;
+    }).join("");
+    document.getElementById("knobList").innerHTML = groupedHtml;
+  })
+  .catch(err => {
+    document.getElementById("knobList").innerHTML = `<p class="muted" style="padding:14px;">config_snapshot.json not loaded yet -- runs as part of daily pipeline. Run <code>python python/config.py dump</code> to generate locally.</p>`;
+    console.error(err);
+  });
+</script>
+
+<script src="js/nav_badge.js"></script>
+</body>
+</html>

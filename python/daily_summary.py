@@ -56,6 +56,8 @@ def build_summary() -> str:
     confidence = _load("model_confidence.json")
     anom = _load("anomalies.json")
     health = _load("pipeline_health.json")
+    feedback = _load("training_feedback.json")
+    param_recs = _load("param_recommendations.json")
 
     date = (today.get("generated_at") or "")[:10] or dt.date.today().isoformat()
     lines = []
@@ -242,6 +244,48 @@ def build_summary() -> str:
             t = (bp.get("teams") or {}).get(name) or {}
             lines.append(f"- {t.get('abbr') or name}: {t.get('total_relief_ip')} IP "
                          f"across {t.get('games_inspected')} games")
+        lines.append("")
+
+    # --- Loop activity since last refresh ---
+    fb_entries = feedback.get("entries") or []
+    if fb_entries:
+        latest = fb_entries[-1]
+        lines.append("## Loop Activity (since last refresh)")
+        lines.append("")
+        cd = latest.get("confidence_delta")
+        cd_str = f"{'+' if (cd is not None and cd >= 0) else ''}{cd}" if cd is not None else "n/a"
+        lines.append(f"- Confidence delta: **{cd_str}**")
+        cm = latest.get("calibration_moves") or []
+        if cm:
+            top = sorted(cm, key=lambda m: abs(m.get("cf_delta") or 0), reverse=True)[:5]
+            for m in top:
+                d = m.get("cf_delta")
+                d_str = f"{'+' if (d is not None and d >= 0) else ''}{d}" if d is not None else "--"
+                n_add = m.get("n_added", 0)
+                lines.append(f"- {m['market'].replace('_', ' ')}: cf {d_str}"
+                             + (f" ({n_add} new settled)" if n_add else ""))
+        new_pb = latest.get("new_player_overrides") or []
+        if new_pb:
+            lines.append(f"- New player overrides: {', '.join(new_pb[:5])}")
+        new_anom = latest.get("new_anomalies") or []
+        if new_anom:
+            lines.append(f"- New anomalies flagged: {len(new_anom)}")
+        lines.append("")
+
+    # --- Model recommendations (operator review) ---
+    rec_list = param_recs.get("recommendations") or []
+    if rec_list:
+        lines.append("## Model Recommendations (operator review)")
+        lines.append("")
+        lines.append(f"_The model is suggesting {len(rec_list)} parameter tweak"
+                     f"{'s' if len(rec_list) != 1 else ''} based on its own performance. "
+                     f"Apply via `data/runtime_config.json` on `/config`._")
+        lines.append("")
+        for r in rec_list[:5]:
+            sev = (r.get("severity") or "").upper()
+            arrow = "↑" if r.get("direction") == "increase" else "↓" if r.get("direction") == "decrease" else "→"
+            lines.append(f"- **[{sev}] `{r['key']}`** {arrow} {r['current']} -> **{r['suggested']}**")
+            lines.append(f"  - _{r.get('rationale', '')}_")
         lines.append("")
 
     # --- Footer ---

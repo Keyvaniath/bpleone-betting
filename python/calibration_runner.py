@@ -43,27 +43,25 @@ LOOKBACK_DAYS = 30
 # So at n=0 the correction is exactly 1.0 (trust prior, no change), and as n
 # grows the model trusts the empirical bias more. By n=30 we're 50/50, by
 # n=120 we're 80/20 toward the data. No more hard cutoff.
-N_PRIOR_DEFAULT = 8              # AGGRESSIVE: was 30, now 8.
-
-# Per-market N_PRIOR overrides. High-variance / rare markets (HR, RBIs) get
-# a slightly higher anchor; high-volume markets (hits, TB, singles) get even
-# more aggressive (lower anchor). Tuned from observed residual_std on the
-# 14-day backfill.
-N_PRIOR_PER_MARKET = {
-    "pitcher_strikeouts": 10,    # K props have wide outcome distribution
-    "batter_home_runs":   12,    # rare event, more shrinkage needed
-    "batter_rbis":        10,
-    "batter_total_bases":  6,    # frequent, smaller noise
-    "batter_hits":         6,
-    "batter_singles":      6,
-    "batter_doubles":      8,
-    "batter_runs_scored":  8,
-    "batter_hits_runs_rbis": 8,
-}
-N_PRIOR = N_PRIOR_DEFAULT        # Kept for backward-compat in correction_factor()
-MIN_SAMPLE_FOR_ANY_CORRECTION = 1
-MAX_CORRECTION = 1.35
-MIN_CORRECTION = 1.0 / 1.35
+# All tunable parameters read from config.py at runtime so the operator can
+# override them via data/runtime_config.json without code changes.
+try:
+    import config as _cfg
+    N_PRIOR_DEFAULT = _cfg.get("calibration.n_prior_default")
+    N_PRIOR_PER_MARKET = _cfg.get("calibration.n_prior_per_market")
+    MIN_SAMPLE_FOR_ANY_CORRECTION = _cfg.get("calibration.min_sample_for_any_correction")
+    MAX_CORRECTION = _cfg.get("calibration.max_correction")
+except Exception:
+    N_PRIOR_DEFAULT = 8
+    N_PRIOR_PER_MARKET = {
+        "pitcher_strikeouts": 10, "batter_home_runs": 12, "batter_rbis": 10,
+        "batter_total_bases": 6, "batter_hits": 6, "batter_singles": 6,
+        "batter_doubles": 8, "batter_runs_scored": 8, "batter_hits_runs_rbis": 8,
+    }
+    MIN_SAMPLE_FOR_ANY_CORRECTION = 1
+    MAX_CORRECTION = 1.35
+N_PRIOR = N_PRIOR_DEFAULT
+MIN_CORRECTION = 1.0 / MAX_CORRECTION
 
 
 def _within_window(date_str: str, today: dt.date, n_days: int) -> bool:

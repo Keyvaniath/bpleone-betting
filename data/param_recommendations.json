@@ -1,0 +1,36 @@
+{
+  "generated_at": "2026-05-15T12:48:49",
+  "n_recommendations": 2,
+  "recommendations": [
+    {
+      "key": "calibration.n_prior_default",
+      "current": 8,
+      "suggested": 5,
+      "direction": "decrease",
+      "severity": "medium",
+      "rationale": "1 market(s) have n>=200 but |residual|>0.4 -- prior is over-anchoring. Lowering N_PRIOR will let data correct faster.",
+      "evidence": {
+        "stuck_markets": [
+          {
+            "market": "pitcher_strikeouts",
+            "n": 2880,
+            "mean_residual": -0.418
+          }
+        ]
+      }
+    },
+    {
+      "key": "live_edges.edge_threshold_pp",
+      "current": 5.0,
+      "suggested": 3.5,
+      "direction": "decrease",
+      "severity": "medium",
+      "rationale": "Zero live edge alerts in last 24h despite live props being priced. Threshold may be too tight to surface anything actionable.",
+      "evidence": {
+        "alerts_24h": 0,
+        "props_priced": null
+      }
+    }
+  ],
+  "summary": "2 suggested overrides -- review on /config."
+}
