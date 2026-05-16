@@ -48,6 +48,40 @@
     <p>Pre-game models tell you who should win. In-game models tell you the live fair price after every pitch. Built on a Monte Carlo simulator that integrates the base-out run-expectancy matrix. This is how live betting markets should be priced — and aren't.</p>
   </section>
 
+  <!-- Live K-pace alerts (NEW) -->
+  <section id="kPaceCard" class="card" style="margin-bottom: 18px; display:none;">
+    <div class="card-head"><span>⚡ Live K-Pace Alerts</span><span class="muted" id="kpMeta">--</span></div>
+    <div style="padding: 8px 14px 14px;">
+      <p class="muted" style="font-size: 11px; margin: 0 0 8px 0;">For SPs in-progress, projects total Ks if they finish a normal outing (5.5 IP) vs their prop line. Flags ON PACE FOR OVER / BEHIND PACE.</p>
+      <div id="kpList"></div>
+    </div>
+  </section>
+  <script>
+  fetch("data/k_pace.json", { cache: "no-cache" })
+    .then(r => r.json())
+    .then(d => {
+      const a = d.alerts || [];
+      if (!a.length) return;
+      document.getElementById("kPaceCard").style.display = "block";
+      document.getElementById("kpMeta").textContent = `${d.n_alerts} pitchers tracked live`;
+      const colors = { green: "#58c878", red: "#e35a5a", amber: "#d4a04a" };
+      document.getElementById("kpList").innerHTML = a.map(r => `<div style="display:grid; grid-template-columns: 1.4fr 80px 100px 80px 90px 120px; gap: 14px; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.04); font-family:'JetBrains Mono',monospace; font-size: 11px; align-items: center;">
+        <span><a href="player.html?id=${r.player_id}" style="color: var(--text); text-decoration: underline; text-decoration-color: rgba(255,255,255,0.15);">${r.player}</a></span>
+        <span class="muted">${r.matchup}</span>
+        <span>line ${r.line} ${r.play || ''}</span>
+        <span><strong>${r.ks_current}K</strong> / ${r.ip_current}IP</span>
+        <span class="muted">proj ${r.projected_total}</span>
+        <span style="padding: 2px 8px; border-radius: 3px; background: ${colors[r.color] || '#888'}22; color: ${colors[r.color] || '#888'}; font-weight: 700; text-align: center; font-size: 10px;">${r.label}</span>
+      </div>`).join("");
+    })
+    .catch(() => {});
+  // Auto-refresh every 60s
+  setInterval(() => {
+    fetch("data/k_pace.json?ts=" + Date.now())
+      .then(r => r.json()).then(() => location.reload()).catch(() => {});
+  }, 60000);
+  </script>
+
   <!-- Live prop tracker: shows each prop's current actual vs line, status, game state -->
   <section id="liveTrackerCard" class="card" style="margin-bottom: 28px; display:none;">
     <div class="card-head">

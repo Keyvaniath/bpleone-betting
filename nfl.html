@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NFL Desk | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="page-nfl">
+<header class="topbar">
+  <div class="brand">
+    <a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a>
+    <span class="tagline">by bpleone</span>
+  </div>
+  <nav class="mainnav">
+    <a href="index.html">Dashboard</a>
+    <a href="mlb.html">MLB</a>
+    <a href="nba.html">NBA</a>
+    <a href="nfl.html" class="active">NFL</a>
+    <a href="best-bets.html">Best Bets</a>
+    <a href="my-bets.html">My Bets</a>
+    <a href="learn.html">Learn</a>
+  </nav>
+  <div class="topbar-actions"><div class="ticker">LIVE</div></div>
+</header>
+<main class="container">
+  <section class="page-head">
+    <h1>NFL Desk — Coming Soon</h1>
+    <p id="nflStatus">Loading status…</p>
+  </section>
+  <section class="card">
+    <div class="card-head"><span>📋 Planned features</span></div>
+    <ul style="padding:14px 28px; color: var(--text-2,#aaa); line-height: 1.8;" id="nflFeatures"></ul>
+  </section>
+  <section class="card" style="margin-top: 18px;">
+    <div class="card-head"><span>🔧 Activation</span></div>
+    <div style="padding: 14px;">
+      <p>To activate: edit <code>data/runtime_config.json</code> and add <code>"nfl.enabled": true</code>. Pipeline will start producing weekly NFL artifacts.</p>
+    </div>
+  </section>
+</main>
+<script src="js/nav_badge.js"></script>
+<script>
+fetch("data/nfl_state.json", { cache: "no-cache" }).then(r => r.json()).then(d => {
+  document.getElementById("nflStatus").textContent = (d.enabled ? "ACTIVE — " : "Stubbed (not yet active). ") + (d.note || "");
+  document.getElementById("nflFeatures").innerHTML = (d.planned_features || []).map(f => `<li>${f}</li>`).join("");
+}).catch(() => {});
+</script>
+</body>
+</html>

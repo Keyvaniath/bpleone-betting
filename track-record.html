@@ -57,6 +57,84 @@
     <div class="metric"><span class="metric-num" id="trkDD">--</span><span class="metric-label">Max Drawdown</span></div>
   </section>
 
+  <!-- CLV per bet (NEW) -->
+  <section id="clvBetCard" class="card" style="margin-bottom: 18px; display:none;">
+    <div class="card-head"><span>📈 CLV Per Bet — beating the close</span><span class="muted" id="cpbMeta">--</span></div>
+    <div style="padding: 14px 18px;">
+      <p class="muted" style="font-size: 12px; margin: 0 0 12px 0;">Cumulative CLV is the gold-standard proof you bet sharp. Positive CLV = you got value, even on losing plays. Long-run CLV correlates with long-run ROI.</p>
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 14px;">
+        <div><div class="muted" style="font-size:10px;text-transform:uppercase;">Overall CLV</div><div id="cpbOverall" style="font-size:22px;font-weight:700;font-family:'JetBrains Mono',monospace;">--</div></div>
+        <div><div class="muted" style="font-size:10px;text-transform:uppercase;">Trailing 30d CLV</div><div id="cpb30d" style="font-size:22px;font-weight:700;font-family:'JetBrains Mono',monospace;">--</div></div>
+        <div><div class="muted" style="font-size:10px;text-transform:uppercase;">Props w/ CLV</div><div id="cpbN" style="font-size:22px;font-weight:700;font-family:'JetBrains Mono',monospace;">--</div></div>
+        <div><div class="muted" style="font-size:10px;text-transform:uppercase;">Total Settled</div><div id="cpbTotal" style="font-size:22px;font-weight:700;font-family:'JetBrains Mono',monospace;">--</div></div>
+      </div>
+      <div id="cpbMarkets"></div>
+    </div>
+  </section>
+
+  <!-- DOW P&L (NEW) -->
+  <section id="dowCard" class="card" style="margin-bottom: 18px; display:none;">
+    <div class="card-head"><span>📅 Day-of-Week Performance</span><span class="muted" id="dowMeta">--</span></div>
+    <div style="padding: 14px 18px;">
+      <p class="muted" style="font-size: 12px; margin: 0 0 12px 0;">Settled track record sliced by day-of-week. Use this to spot personal patterns (better on Tuesdays? bad on Sundays?).</p>
+      <div id="dowGrid"></div>
+    </div>
+  </section>
+
+  <script>
+  fetch("data/clv_per_bet.json", { cache: "no-cache" })
+    .then(r => r.json())
+    .then(d => {
+      if (!d.n_with_clv) return;
+      document.getElementById("clvBetCard").style.display = "block";
+      document.getElementById("cpbMeta").textContent = `${d.n_with_clv} props have CLV computable · ${(d.generated_at || "").slice(0, 10)}`;
+      const set = (id, v, color) => { const e = document.getElementById(id); if (!e) return; e.textContent = v; if (color) e.style.color = color; };
+      const fmt = (x) => x === null || x === undefined ? "--" : (x >= 0 ? "+" : "") + x + "%";
+      set("cpbOverall", fmt(d.avg_clv_pct), d.avg_clv_pct >= 0 ? "#58c878" : "#e35a5a");
+      set("cpb30d", fmt(d.trailing_30d_clv_pct), d.trailing_30d_clv_pct >= 0 ? "#58c878" : "#e35a5a");
+      set("cpbN", d.n_with_clv.toLocaleString());
+      set("cpbTotal", d.n_settled.toLocaleString());
+      const rows = (d.by_market || []).map(m => `<div style="display:grid; grid-template-columns: 1.6fr 60px 80px; gap: 14px; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.04); font-family:'JetBrains Mono',monospace; font-size: 12px;">
+        <span>${m.market.replace(/_/g, " ")}</span>
+        <span class="muted">n=${m.n}</span>
+        <span style="color: ${m.avg_clv_pct >= 0 ? '#58c878' : '#e35a5a'}; font-weight: 700;">${fmt(m.avg_clv_pct)}</span>
+      </div>`).join("");
+      document.getElementById("cpbMarkets").innerHTML = `<div style="margin-top: 14px;">
+        <div style="display:grid; grid-template-columns: 1.6fr 60px 80px; gap: 14px; padding: 6px 0; color: var(--muted, #888); font-size: 10px; text-transform: uppercase;">
+          <span>Market</span><span>n</span><span>Avg CLV</span>
+        </div>${rows}
+      </div>`;
+    }).catch(() => {});
+
+  fetch("data/dow_pl.json", { cache: "no-cache" })
+    .then(r => r.json())
+    .then(d => {
+      const days = d.by_day || [];
+      if (!days.some(x => x.n)) return;
+      document.getElementById("dowCard").style.display = "block";
+      document.getElementById("dowMeta").textContent = `${d.n_settled.toLocaleString()} settled bets`;
+      const rowFor = (day) => {
+        const roi = day.roi_pct;
+        const color = roi == null ? "var(--muted, #888)" : roi >= 5 ? "#58c878" : roi >= 0 ? "var(--text)" : "#e35a5a";
+        return `<div style="display:grid; grid-template-columns: 80px 80px 100px 100px 100px; gap: 14px; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.04); font-family:'JetBrains Mono',monospace; font-size: 12px;">
+          <span><strong>${day.dow}</strong></span>
+          <span class="muted">${day.n}</span>
+          <span>${day.hit_rate != null ? (day.hit_rate * 100).toFixed(1) + '%' : '—'}</span>
+          <span style="color: ${color};">${roi != null ? (roi >= 0 ? '+' : '') + roi + '%' : '—'}</span>
+          <span style="color: ${color};">${day.net_units >= 0 ? '+' : ''}${day.net_units}u</span>
+        </div>`;
+      };
+      const headers = `<div style="display:grid; grid-template-columns: 80px 80px 100px 100px 100px; gap: 14px; padding: 6px 0; color: var(--muted, #888); font-size: 10px; text-transform: uppercase;">
+        <span>Day</span><span>Bets</span><span>Hit %</span><span>ROI</span><span>Net</span>
+      </div>`;
+      let html = headers + days.map(rowFor).join("");
+      if (d.best_day && d.worst_day) {
+        html += `<p class="muted" style="margin-top: 14px; font-size: 12px;">Best day: <strong style="color: #58c878;">${d.best_day.dow}</strong> (${(d.best_day.hit_rate*100).toFixed(1)}% hit, +${d.best_day.roi_pct}% ROI) · Worst day: <strong style="color: #e35a5a;">${d.worst_day.dow}</strong> (${(d.worst_day.hit_rate*100).toFixed(1)}% hit, ${d.worst_day.roi_pct >= 0 ? '+' : ''}${d.worst_day.roi_pct}% ROI)</p>`;
+      }
+      document.getElementById("dowGrid").innerHTML = html;
+    }).catch(() => {});
+  </script>
+
   <section class="card" style="margin-bottom: 28px;">
     <div class="card-head"><span>📈 Cumulative P&L</span><span class="muted">last 30 plays</span></div>
     <canvas id="plChart" height="220"></canvas>

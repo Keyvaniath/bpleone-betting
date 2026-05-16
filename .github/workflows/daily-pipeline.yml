@@ -248,6 +248,61 @@ jobs:
         working-directory: python
         run: python line_timing.py
 
+      # Per-bet CLV tracker -- proves bets beat the close (sharpness proxy).
+      - name: Compute per-bet CLV
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        working-directory: python
+        run: python clv_per_bet.py
+
+      # Day-of-week P&L analysis from settled track_record.
+      - name: Day-of-week performance analysis
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        working-directory: python
+        run: python dow_pl.py
+
+      # Hot-streak heatmap for tonight's slate.
+      - name: Score hot streaks (cross-slate heatmap)
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        working-directory: python
+        run: python hot_streaks.py
+
+      # Cross-book arb / shading detector (DK vs PrizePicks).
+      - name: Detect cross-book arb opportunities
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        working-directory: python
+        run: python cross_book_arb.py
+
+      # Pitcher fastball velocity decay flag (injury proxy).
+      - name: Flag pitcher velocity decay
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        working-directory: python
+        run: python velocity_decay.py
+
+      # Daily picks CSV export.
+      - name: Export picks CSV
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        working-directory: python
+        run: python csv_export.py
+
+      # NBA + NFL stubs (will start producing real data when enabled in config)
+      - name: NBA stub artifact
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        working-directory: python
+        run: python nba_stub.py
+      - name: NFL stub artifact
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        working-directory: python
+        run: python nfl_stub.py
+
+      # Discord/Slack webhook digest (stubs when webhook env vars unset).
+      - name: Push nightly digest to chat webhooks
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        working-directory: python
+        run: python notify_discord.py
+
       # Pull PrizePicks daily board, compare to DK, run model at PP's lines.
       - name: Run pick-em (PrizePicks) integration
         if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'

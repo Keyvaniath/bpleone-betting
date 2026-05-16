@@ -108,6 +108,7 @@
 </main>
 
 <script src="js/nav_badge.js"></script>
+<script src="js/bet_tracker.js"></script>
 <script>
 (function(){
   let _data = null;
@@ -138,7 +139,15 @@
       const qt = tier(b.quality_score);
       const factorsHtml = (b.factors || []).slice(0, 3).map(f => `<li>+ ${f}</li>`).join("");
       const risksHtml = (b.risks || []).slice(0, 2).map(r => `<li>! ${r}</li>`).join("");
-      return `<div class="bet-card">
+      const betKey = `${b.source}|${b.player_id || 'na'}|${b.market || ''}|${b.line ?? ''}`;
+      return `<div class="bet-card"
+                   data-bet-key="${betKey}"
+                   data-bet-label="${(b.label || '').replace(/"/g, '&quot;')}"
+                   data-bet-pid="${b.player_id || ''}"
+                   data-bet-market="${b.market || ''}"
+                   data-bet-line="${b.line ?? ''}"
+                   data-bet-play="${b.play || ''}"
+                   data-bet-src="${b.source}">
         <span class="rank">${b.rank}</span>
         <div>
           <div style="font-size: 13px; margin-bottom: 4px;"><a href="${b.url_anchor || '#'}" style="color: var(--text); text-decoration: underline; text-decoration-color: rgba(255,255,255,0.15);">${b.label}</a></div>

@@ -53,6 +53,38 @@
   <!-- Lineup churn alert (NEW): scratched players whose props are now STALE -->
   <section id="lineupChurnBanner" style="display:none; margin: 0 0 14px 0; padding: 10px 16px; border-radius: 8px; background: rgba(227,90,90,0.10); border: 1px solid rgba(227,90,90,0.45); font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #e35a5a;"></section>
 
+  <!-- Cross-book arb / shading detector (NEW): where PP is softer than DK on our side -->
+  <section id="arbCard" class="card" style="display:none; margin-bottom: 14px;">
+    <div class="card-head"><span>💵 Cross-Book Arb / Shading</span><span class="muted" id="arbMeta">--</span></div>
+    <div style="padding: 8px 14px 14px;">
+      <p class="muted" style="font-size: 11px; margin: 0 0 8px 0;">PrizePicks line softer than DraftKings on the side our model favors → bet PP for the better number. True arb = combined implied < 1 (rare, but flagged).</p>
+      <div id="arbList"></div>
+    </div>
+  </section>
+  <script>
+  fetch("data/cross_book_arb.json", { cache: "no-cache" })
+    .then(r => r.json())
+    .then(d => {
+      const alerts = d.alerts || [];
+      if (!alerts.length) return;
+      document.getElementById("arbCard").style.display = "block";
+      document.getElementById("arbMeta").textContent = `${d.n_alerts} alerts (${d.n_true_arb} true arb · ${d.n_shaded} shaded)`;
+      document.getElementById("arbList").innerHTML = alerts.slice(0, 25).map(a => {
+        const isArb = a.true_arb;
+        const color = isArb ? "#58c878" : "#d4a04a";
+        return `<div style="display:grid; grid-template-columns: 1.6fr 80px 80px 80px 110px 1fr; gap: 14px; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.04); font-family:'JetBrains Mono',monospace; font-size: 11px; align-items: center;">
+          <span><a href="player.html?id=${a.player_id || ''}" style="color: var(--text); text-decoration: underline; text-decoration-color: rgba(255,255,255,0.15);">${a.player}</a> ${a.play} ${a.line || ''} ${(a.market || '').replace(/_/g, ' ')}</span>
+          <span>DK ${a.dk_line}</span>
+          <span style="color: ${a.line_delta < 0 && a.play === 'OVER' || a.line_delta > 0 && a.play === 'UNDER' ? '#58c878' : 'var(--text-2,#aaa)'}; font-weight: 700;">PP ${a.pp_line}</span>
+          <span class="muted">Δ ${a.line_delta > 0 ? '+' : ''}${a.line_delta}</span>
+          <span style="padding: 2px 8px; border-radius: 3px; background: ${color}22; color: ${color}; font-size: 10px; font-weight: 700; text-align: center;">bet ${a.better_book}${isArb ? ' (TRUE ARB)' : ''}</span>
+          <span class="muted" style="font-size: 10px;">model ${a.model_prob ? (a.model_prob * 100).toFixed(0) + '%' : '—'}</span>
+        </div>`;
+      }).join("");
+    })
+    .catch(() => {});
+  </script>
+
   <!-- Line timing alerts: act now vs wait based on cycle-over-cycle line movement -->
   <section id="lineTimingCard" class="card" style="display:none; margin-bottom: 14px;">
     <div class="card-head"><span>⏱️ Line Movement / Timing</span><span class="muted" id="ltMeta">--</span></div>
