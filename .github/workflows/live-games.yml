@@ -59,11 +59,20 @@ jobs:
         working-directory: python
         run: python k_pace_alerts.py
 
+      # Scratch + in-game removal alerts: fires Discord webhook the moment
+      # a player with open props is scratched pre-game or removed mid-game.
+      # State persisted in .scratch_alerted.json to avoid double-firing.
+      - name: Scratch / removal alerter (Discord ping)
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        working-directory: python
+        run: python scratch_alerts.py
+
       - name: Commit if state changed
         run: |
           git config user.name  "edgestat-bot"
           git config user.email "actions@github.com"
-          git add data/live_state.json data/live_clv.json data/live_edges.json data/live_props.json data/lineup_churn.json data/k_pace.json
+          git add data/live_state.json data/live_clv.json data/live_edges.json data/live_props.json data/lineup_churn.json data/k_pace.json data/scratch_alerts.json data/.scratch_alerted.json
           if git diff --cached --quiet; then
             echo "No live games or no state changes."
           else

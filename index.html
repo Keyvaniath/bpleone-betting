@@ -82,6 +82,42 @@
     </div>
   </section>
 
+  <!-- LIVE SCRATCH / REMOVAL ALERTS (NEW) -->
+  <section id="scratchAlertsBanner" style="display:none; margin: 0 0 14px 0;"></section>
+  <script>
+  fetch("data/scratch_alerts.json?t=" + Date.now(), { cache: "no-cache" })
+    .then(r => r.json())
+    .then(d => {
+      const alerts = d.alerts || [];
+      if (!alerts.length) return;
+      const b = document.getElementById("scratchAlertsBanner");
+      const items = alerts.map(a => {
+        const c = a.kind === "scratch" ? "#e35a5a" : "#d4a04a";
+        const icon = a.kind === "scratch" ? "⚠️" : "🚑";
+        const tag = a.kind === "scratch" ? "PRE-GAME SCRATCH" : "IN-GAME REMOVAL";
+        return `<div style="padding: 10px 14px; background: ${c}11; border: 1px solid ${c}55; border-radius: 6px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: ${c}; margin-bottom: 6px;">
+          ${icon} <strong>${tag}:</strong>
+          <a href="player.html?id=${a.player_id}" style="color: ${c}; text-decoration: underline;">${a.player}</a>
+          ${a.matchup ? '· ' + a.matchup : ''}
+          ${a.ab_before_removal !== undefined ? ' (after ' + a.ab_before_removal + ' AB)' : ''}
+          · ${a.n_affected_props} open prop${a.n_affected_props===1?'':'s'} affected
+        </div>`;
+      }).join("");
+      b.style.display = "block";
+      b.innerHTML = items;
+    })
+    .catch(() => {});
+  // Auto-refresh every 60 s to catch new alerts
+  setInterval(() => {
+    fetch("data/scratch_alerts.json?t=" + Date.now(), { cache: "no-cache" })
+      .then(r => r.json())
+      .then(d => {
+        if ((d.alerts || []).length) location.reload();
+      })
+      .catch(() => {});
+  }, 60000);
+  </script>
+
   <!-- Odds-source status banner (JS sets color + copy based on actual book in today.json) -->
   <section id="apiDownBanner" style="display:none; margin: 0 0 18px 0; padding: 12px 16px; border-radius: 8px; font-family: 'JetBrains Mono', monospace; font-size: 13px;"></section>
 
