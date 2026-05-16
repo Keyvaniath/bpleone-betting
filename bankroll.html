@@ -48,6 +48,140 @@
     <p>Monte Carlo every betting question that matters: where will my bankroll likely be in 200 plays? What's my worst plausible drawdown? Am I sized right for my win rate? This is the math your survival depends on.</p>
   </section>
 
+  <!-- TONIGHT'S PORTFOLIO SIMULATOR -->
+  <section id="tonightSimCard" class="card" style="margin-bottom: 24px; display:none;">
+    <div class="card-head">
+      <span>🎯 Tonight's Portfolio — Live Monte Carlo</span>
+      <span class="muted" id="tsMeta">--</span>
+    </div>
+    <div style="padding: 14px 18px;">
+      <p class="muted" style="font-size: 12px; margin: 0 0 12px 0;">10K MC simulation of TONIGHT's actual best_bets at your current bankroll + Kelly fraction. Shows the real-money expected outcome distribution.</p>
+      <div style="display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; margin-bottom: 16px;">
+        <div><div class="muted" style="font-size:10px;text-transform:uppercase;">Bankroll</div><div style="font-size:18px;font-family:'JetBrains Mono',monospace;" id="tsBank">--</div></div>
+        <div><div class="muted" style="font-size:10px;text-transform:uppercase;">Bets sized</div><div style="font-size:18px;font-family:'JetBrains Mono',monospace;" id="tsN">--</div></div>
+        <div><div class="muted" style="font-size:10px;text-transform:uppercase;">Stake</div><div style="font-size:18px;font-family:'JetBrains Mono',monospace;" id="tsStake">--</div></div>
+        <div><div class="muted" style="font-size:10px;text-transform:uppercase;">Expected P&L</div><div style="font-size:18px;font-weight:700;font-family:'JetBrains Mono',monospace;color:#58c878;" id="tsEv">--</div></div>
+        <div><div class="muted" style="font-size:10px;text-transform:uppercase;">P(profit)</div><div style="font-size:18px;font-weight:700;font-family:'JetBrains Mono',monospace;" id="tsPProf">--</div></div>
+        <div><div class="muted" style="font-size:10px;text-transform:uppercase;">P(big loss)</div><div style="font-size:18px;font-family:'JetBrains Mono',monospace;color:#e35a5a;" id="tsPRuin">--</div></div>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; padding: 10px 14px; background: rgba(255,255,255,0.02); border-radius: 6px; font-family:'JetBrains Mono',monospace; font-size: 12px;">
+        <div><div class="muted" style="font-size:9px;text-transform:uppercase;">Bad night (p05)</div><div style="color:#e35a5a;font-weight:700;" id="tsP05">--</div></div>
+        <div><div class="muted" style="font-size:9px;text-transform:uppercase;">p25</div><div id="tsP25">--</div></div>
+        <div><div class="muted" style="font-size:9px;text-transform:uppercase;">Median</div><div style="font-weight:700;" id="tsP50">--</div></div>
+        <div><div class="muted" style="font-size:9px;text-transform:uppercase;">p75</div><div id="tsP75">--</div></div>
+        <div><div class="muted" style="font-size:9px;text-transform:uppercase;">Good night (p95)</div><div style="color:#58c878;font-weight:700;" id="tsP95">--</div></div>
+      </div>
+      <div id="tsPortfolio" style="margin-top: 18px;"></div>
+    </div>
+  </section>
+
+  <!-- AUTO PORTFOLIO -->
+  <section id="autoPortCard" class="card" style="margin-bottom: 24px; display:none;">
+    <div class="card-head">
+      <span>🤖 Auto-Picked Portfolio (Slate-Aware)</span>
+      <span class="muted" id="apMeta">--</span>
+    </div>
+    <div style="padding: 14px 18px;">
+      <p class="muted" style="font-size: 12px; margin: 0 0 12px 0;" id="apRationale">--</p>
+      <div id="apList"></div>
+    </div>
+  </section>
+
+  <!-- SHARPE RANKINGS -->
+  <section id="sharpeCard" class="card" style="margin-bottom: 24px; display:none;">
+    <div class="card-head">
+      <span>📐 Risk-Adjusted Sharpe Ranking</span>
+      <span class="muted" id="srMeta">--</span>
+    </div>
+    <div style="padding: 14px 18px;">
+      <p class="muted" style="font-size: 12px; margin: 0 0 10px 0;">Sharpe = EV per $1 / std-dev of unit outcome. Re-ranks tonight's plays for risk-adjusted quality. ELITE plays have favorable EV with low variance — these survive sequence randomness best.</p>
+      <div id="srList"></div>
+    </div>
+  </section>
+
+  <script>
+  // Tonight's Portfolio simulator from data/bankroll_sim.json
+  fetch("data/bankroll_sim.json", { cache: "no-cache" })
+    .then(r => r.json())
+    .then(d => {
+      if (!d.n_bets) return;
+      document.getElementById("tonightSimCard").style.display = "block";
+      const setText = (id, v) => { const e = document.getElementById(id); if (e) e.textContent = v; };
+      setText("tsMeta", `${(d.generated_at || "").replace("T"," ")} UTC · ${d.n_trials.toLocaleString()} trials`);
+      setText("tsBank", "$" + d.bankroll);
+      setText("tsN", d.n_bets);
+      setText("tsStake", "$" + d.total_stake + " (" + d.stake_pct_of_bankroll + "%)");
+      setText("tsEv", (d.expected_pl >= 0 ? "+$" : "-$") + Math.abs(d.expected_pl) + " (ROI " + d.ev_roi_pct + "%)");
+      setText("tsPProf", (d.p_profit * 100).toFixed(1) + "%");
+      setText("tsPRuin", (d.p_significant_loss * 100).toFixed(2) + "%");
+      const p = d.percentiles || {};
+      setText("tsP05", "$" + p.p05);
+      setText("tsP25", "$" + p.p25);
+      setText("tsP50", "$" + p.p50);
+      setText("tsP75", "$" + p.p75);
+      setText("tsP95", "$" + p.p95);
+      const rows = (d.portfolio || []).map(b => `<div style="display:grid; grid-template-columns: 60px 1.6fr 60px 80px 80px 60px; gap: 14px; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.04); font-family:'JetBrains Mono',monospace; font-size: 11px;">
+        <span class="muted">#${b.rank}</span>
+        <span><a href="player.html?id=${b.player_id || ''}" style="color: var(--text); text-decoration: underline; text-decoration-color: rgba(255,255,255,0.15);">${b.label}</a></span>
+        <span>${(b.p_win * 100).toFixed(1)}%</span>
+        <span>$${b.stake}</span>
+        <span style="color: ${b.ev >= 0 ? '#58c878' : '#e35a5a'};">${b.ev >= 0 ? '+' : ''}$${b.ev}</span>
+        <span class="muted">${(b.hit_rate_sim * 100).toFixed(0)}% sim</span>
+      </div>`).join("");
+      document.getElementById("tsPortfolio").innerHTML = `<div style="display:grid; grid-template-columns: 60px 1.6fr 60px 80px 80px 60px; gap: 14px; padding: 6px 0; color: var(--muted, #888); font-size: 10px; text-transform: uppercase;">
+        <span>Rank</span><span>Bet</span><span>P(win)</span><span>Stake</span><span>EV</span><span>Sim hits</span>
+      </div>${rows}`;
+    })
+    .catch(() => {});
+
+  // Auto portfolio
+  fetch("data/portfolio.json", { cache: "no-cache" })
+    .then(r => r.json())
+    .then(d => {
+      if (!d.n_picked) return;
+      document.getElementById("autoPortCard").style.display = "block";
+      document.getElementById("apMeta").textContent = `Slate ${d.slate_tier} · ${d.n_picked} of ${d.n_candidates} picked · stake $${d.total_stake} (${d.stake_pct_of_bankroll}%)`;
+      document.getElementById("apRationale").textContent = d.rationale || "";
+      const rows = (d.picks || []).map(p => `<div style="display:grid; grid-template-columns: 60px 1.6fr 80px 80px 80px 80px 100px; gap: 12px; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.04); font-family:'JetBrains Mono',monospace; font-size: 11px;">
+        <span class="muted">#${p.rank}</span>
+        <span><a href="player.html?id=${p.player_id || ''}" style="color: var(--text); text-decoration: underline; text-decoration-color: rgba(255,255,255,0.15);">${p.label}</a></span>
+        <span style="color: #d4a04a;">${p.quality_score}</span>
+        <span>${(p.model_prob * 100).toFixed(1)}%</span>
+        <span>$${p.stake}</span>
+        <span style="color: ${p.ev >= 0 ? '#58c878' : '#e35a5a'};">${p.ev >= 0 ? '+' : ''}$${p.ev}</span>
+        <span class="muted">${p.matchup}</span>
+      </div>`).join("");
+      document.getElementById("apList").innerHTML = `<div style="display:grid; grid-template-columns: 60px 1.6fr 80px 80px 80px 80px 100px; gap: 12px; padding: 6px 0; color: var(--muted, #888); font-size: 10px; text-transform: uppercase;">
+        <span>Rank</span><span>Bet</span><span>Quality</span><span>Model%</span><span>Stake</span><span>EV</span><span>Game</span>
+      </div>${rows}`;
+    })
+    .catch(() => {});
+
+  // Sharpe rankings
+  fetch("data/sharpe_rankings.json", { cache: "no-cache" })
+    .then(r => r.json())
+    .then(d => {
+      if (!d.n_bets) return;
+      document.getElementById("sharpeCard").style.display = "block";
+      const tc = d.by_tier_counts || {};
+      document.getElementById("srMeta").textContent = `${d.n_bets} bets · ${tc.elite || 0} ELITE / ${tc.strong || 0} STRONG / ${tc.solid || 0} SOLID / ${tc.thin || 0} THIN`;
+      const tierColor = { elite: "#58c878", strong: "#88c878", solid: "#d4a04a", thin: "var(--muted, #888)" };
+      const rows = (d.rankings || []).slice(0, 25).map(r => `<div style="display:grid; grid-template-columns: 60px 1.6fr 80px 80px 80px 80px 60px; gap: 12px; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.04); font-family:'JetBrains Mono',monospace; font-size: 11px;">
+        <span class="muted">#${r.sharpe_rank}</span>
+        <span><a href="${r.url_anchor || '#'}" style="color: var(--text); text-decoration: underline; text-decoration-color: rgba(255,255,255,0.15);">${r.label}</a></span>
+        <span style="color: ${tierColor[r.sharpe_tier]}; font-weight: 700;">${r.sharpe}</span>
+        <span style="padding: 2px 8px; border-radius: 3px; background: ${tierColor[r.sharpe_tier]}22; color: ${tierColor[r.sharpe_tier]}; font-size: 9px; text-transform: uppercase; text-align: center;">${r.sharpe_tier}</span>
+        <span>${(r.model_prob * 100).toFixed(1)}%</span>
+        <span style="color: ${r.ev_per_dollar >= 0 ? '#58c878' : '#e35a5a'};">${r.ev_per_dollar >= 0 ? '+' : ''}$${r.ev_per_dollar}</span>
+        <span class="muted">${r.source}</span>
+      </div>`).join("");
+      document.getElementById("srList").innerHTML = `<div style="display:grid; grid-template-columns: 60px 1.6fr 80px 80px 80px 80px 60px; gap: 12px; padding: 6px 0; color: var(--muted, #888); font-size: 10px; text-transform: uppercase;">
+        <span>Rank</span><span>Bet</span><span>Sharpe</span><span>Tier</span><span>Model%</span><span>EV/$1</span><span>Src</span>
+      </div>${rows}`;
+    })
+    .catch(() => {});
+  </script>
+
   <section class="grid-2">
     <div class="card">
       <div class="card-head"><span>⚙️ Profile Inputs</span></div>

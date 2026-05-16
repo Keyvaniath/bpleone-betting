@@ -215,6 +215,39 @@ jobs:
         working-directory: python
         run: python best_bets.py
 
+      # Bullpen exhaustion -> late-inning OU lean per game.
+      - name: Score bullpen workload alerts
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        working-directory: python
+        run: python bullpen_alert.py
+
+      # Risk-adjusted Sharpe ranking of tonight's plays.
+      - name: Rank by Sharpe (EV / sigma)
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        working-directory: python
+        run: python sharpe_ranking.py
+
+      # Auto-portfolio: optimal multi-bet subset given bankroll + Kelly +
+      # slate-confidence-adjusted quality gate + per-game correlation cap.
+      - name: Build auto-portfolio
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        working-directory: python
+        run: python portfolio_optimizer.py
+
+      # 10K MC simulator of tonight's portfolio outcomes. Powers /bankroll
+      # "Tonight's Portfolio" card with real-money distribution.
+      - name: Monte Carlo tonight's portfolio
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        working-directory: python
+        run: python bankroll_simulator.py
+
+      # Line movement / bet-timing: ACT NOW vs WAIT alerts from price
+      # diffs cycle-over-cycle. Surfaces on /props.
+      - name: Detect line-movement timing signals
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        working-directory: python
+        run: python line_timing.py
+
       # Pull PrizePicks daily board, compare to DK, run model at PP's lines.
       - name: Run pick-em (PrizePicks) integration
         if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'

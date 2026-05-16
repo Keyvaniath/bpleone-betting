@@ -210,6 +210,38 @@
     });
   </script>
 
+  <!-- Bullpen exhaustion alerts (NEW) -->
+  <section id="bullpenAlertCard" class="card" style="margin-bottom: 18px; display:none;">
+    <div class="card-head"><span>🩹 Bullpen Status + Late-Inning OU Lean</span><span class="muted" id="baMeta">--</span></div>
+    <div style="padding: 6px 14px 14px;">
+      <p class="muted" style="font-size: 11px; margin: 0 0 10px 0;">GASSED pen (>=6 reliever IP last 2 days) -> late-inning OVERs more likely. FRESH (<4 IP) -> UNDERs.</p>
+      <div style="display:grid; grid-template-columns: 1.4fr 90px 90px 100px 1.4fr; gap: 14px; padding: 6px 0; color: var(--muted, #888); font-size: 10px; text-transform: uppercase;">
+        <span>Matchup</span><span>Away pen</span><span>Home pen</span><span>Late-game lean</span><span>Note</span>
+      </div>
+      <div id="baList"></div>
+    </div>
+  </section>
+  <script>
+  fetch("data/bullpen_alert.json", { cache: "no-cache" })
+    .then(r => r.json())
+    .then(d => {
+      const games = d.by_game || [];
+      if (!games.length) return;
+      document.getElementById("bullpenAlertCard").style.display = "block";
+      document.getElementById("baMeta").textContent = `${games.length} games · ${(d.gassed_teams || []).filter(t => t.length > 3).length} gassed pens`;
+      const stColor = { GASSED: "#e35a5a", WORN: "#d4a04a", FRESH: "#58c878", unknown: "var(--muted, #888)" };
+      const lnColor = { OVER: "#58c878", UNDER: "#e35a5a", neutral: "var(--muted, #888)" };
+      document.getElementById("baList").innerHTML = games.map(g => `<div style="display:grid; grid-template-columns: 1.4fr 90px 90px 100px 1.4fr; gap: 14px; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.04); font-family:'JetBrains Mono',monospace; font-size: 11px; align-items: center;">
+        <span><strong>${g.matchup}</strong></span>
+        <span style="padding: 2px 8px; border-radius: 3px; background: ${stColor[g.away_status]}22; color: ${stColor[g.away_status]}; text-align: center; font-weight: 700; font-size: 10px;">${g.away_status} ${g.away_ip != null ? '· '+g.away_ip+' IP' : ''}</span>
+        <span style="padding: 2px 8px; border-radius: 3px; background: ${stColor[g.home_status]}22; color: ${stColor[g.home_status]}; text-align: center; font-weight: 700; font-size: 10px;">${g.home_status} ${g.home_ip != null ? '· '+g.home_ip+' IP' : ''}</span>
+        <span style="padding: 2px 8px; border-radius: 3px; background: ${lnColor[g.late_inning_ou_lean]}22; color: ${lnColor[g.late_inning_ou_lean]}; text-align: center; font-weight: 700; font-size: 10px;">${g.late_inning_ou_lean}</span>
+        <span class="muted" style="font-size: 10px;">${g.note}</span>
+      </div>`).join("");
+    })
+    .catch(() => {});
+  </script>
+
   <!-- Pitcher fatigue overview (NEW) -->
   <section id="pitcherFatigueCard" class="card" style="margin-bottom: 18px; display:none;">
     <div class="card-head"><span>💧 Pitcher Fatigue + Early-Hook Risk</span><span class="muted" id="pfMeta">--</span></div>

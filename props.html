@@ -52,6 +52,35 @@
 
   <!-- Lineup churn alert (NEW): scratched players whose props are now STALE -->
   <section id="lineupChurnBanner" style="display:none; margin: 0 0 14px 0; padding: 10px 16px; border-radius: 8px; background: rgba(227,90,90,0.10); border: 1px solid rgba(227,90,90,0.45); font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #e35a5a;"></section>
+
+  <!-- Line timing alerts: act now vs wait based on cycle-over-cycle line movement -->
+  <section id="lineTimingCard" class="card" style="display:none; margin-bottom: 14px;">
+    <div class="card-head"><span>⏱️ Line Movement / Timing</span><span class="muted" id="ltMeta">--</span></div>
+    <div style="padding: 8px 14px 14px;">
+      <p class="muted" style="font-size: 11px; margin: 0 0 8px 0;">ACT NOW: price sharpening against our side, bet before more movement. WAIT: price drifting in our favor, let it run.</p>
+      <div id="ltList"></div>
+    </div>
+  </section>
+  <script>
+  fetch("data/line_timing.json", { cache: "no-cache" })
+    .then(r => r.json())
+    .then(d => {
+      const alerts = d.alerts || [];
+      if (!alerts.length) return;
+      document.getElementById("lineTimingCard").style.display = "block";
+      document.getElementById("ltMeta").textContent = `${d.n_act_now} ACT NOW · ${d.n_wait} WAIT · ${d.n_stable} STABLE`;
+      const sigColor = { "ACT NOW": "#e35a5a", "WAIT": "#58c878" };
+      document.getElementById("ltList").innerHTML = alerts.slice(0, 20).map(a => `<div style="display:grid; grid-template-columns: 80px 1.6fr 70px 70px 80px 1fr; gap: 14px; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.04); font-family:'JetBrains Mono',monospace; font-size: 11px;">
+        <span style="padding: 2px 8px; border-radius: 3px; background: ${sigColor[a.signal] || '#888'}22; color: ${sigColor[a.signal] || '#888'}; font-weight: 700; text-align: center; font-size: 10px;">${a.signal}</span>
+        <span><a href="player.html?id=${a.player_id || ''}" style="color: var(--text); text-decoration: underline; text-decoration-color: rgba(255,255,255,0.15);">${a.player}</a> ${a.our_play} ${a.line} ${(a.market || '').replace(/_/g, ' ')}</span>
+        <span class="muted">${a.src}</span>
+        <span>${a.prev_price}</span>
+        <span style="color: ${a.cents_moved < 0 ? '#e35a5a' : '#58c878'};">${a.curr_price} (${a.cents_moved > 0 ? '+' : ''}${a.cents_moved})</span>
+        <span class="muted" style="font-size: 10px;">${a.note}</span>
+      </div>`).join("");
+    })
+    .catch(() => {});
+  </script>
   <script>
   fetch("data/lineup_churn.json", { cache: "no-cache" })
     .then(r => r.json())
