@@ -49,46 +49,28 @@
     <div style="display:flex; align-items:center; gap:14px; margin-bottom: 14px;">
       <span class="pill gold">★ PLAY OF THE DAY</span>
       <span class="pill green">HIGH CONFIDENCE</span>
-      <span class="muted">May 13, 2026 — 7:05pm ET • Petco Park</span>
+      <span class="muted">loading tonight's play…</span>
     </div>
-    <h1>Los Angeles Dodgers <span class="accent">Moneyline</span></h1>
-    <p class="lede">vs. San Diego Padres • Yamamoto (LAD) vs. Darvish (SDP)</p>
+    <h1>Loading tonight's play <span class="accent">…</span></h1>
+    <p class="lede">tonight's highest-edge play — populated from today.json on page load</p>
 
     <div class="play-grid">
-      <div class="play-stat">
-        <div class="stat-label">Recommended Price</div>
-        <div class="stat-value-big">-148</div>
-      </div>
-      <div class="play-stat">
-        <div class="stat-label">Model Fair Price</div>
-        <div class="stat-value-big">-178</div>
-      </div>
-      <div class="play-stat">
-        <div class="stat-label">Implied Edge</div>
-        <div class="stat-value-big positive">+5.4%</div>
-      </div>
-      <div class="play-stat">
-        <div class="stat-label">Model Win Prob</div>
-        <div class="stat-value-big">64.0%</div>
-      </div>
-      <div class="play-stat">
-        <div class="stat-label">Market Implied</div>
-        <div class="stat-value-big">59.7%</div>
-      </div>
-      <div class="play-stat">
-        <div class="stat-label">Kelly Stake (¼)</div>
-        <div class="stat-value-big">1.7u</div>
-      </div>
+      <div class="play-stat"><div class="stat-label">loading…</div><div class="stat-value-big">--</div></div>
+      <div class="play-stat"><div class="stat-label">loading…</div><div class="stat-value-big">--</div></div>
+      <div class="play-stat"><div class="stat-label">loading…</div><div class="stat-value-big">--</div></div>
+      <div class="play-stat"><div class="stat-label">loading…</div><div class="stat-value-big">--</div></div>
+      <div class="play-stat"><div class="stat-label">loading…</div><div class="stat-value-big">--</div></div>
+      <div class="play-stat"><div class="stat-label">loading…</div><div class="stat-value-big">--</div></div>
     </div>
   </section>
 
   <section class="grid-2">
     <div class="card">
       <div class="card-head"><span>🧠 Why this play</span></div>
-      <p style="color:var(--text-2)">Our 12-factor ensemble — built on a hierarchical Bayesian framework that updates each team's true-talent rating after every game — prices the Dodgers as a 64.0% favorite tonight. The market disagrees: consensus moneyline of -148 implies just a 59.7% win probability after removing the vig.</p>
-      <p style="color:var(--text-2)">The gap is wide because the public is anchored on Darvish's name value while overlooking three quiet edges: Yamamoto's xFIP gap (2.89 vs Darvish's 4.12), LAD's MLB-best wRC+ vs RHP (+0.067 over league average), and a 0.87 ERA-FIP delta in LAD's bullpen vs. SDP's.</p>
-      <p style="color:var(--text-2)">Sharp money agrees. The ML opened at -138 and has steamed to -148 on just 36% of tickets but <strong style="color:var(--accent)">71% of handle</strong> — the textbook reverse-line-movement signal.</p>
-      <div class="callout"><strong>Bottom line:</strong> +5.4% edge, high confidence, recommended ¼-Kelly stake of 1.7 units.</div>
+      <p style="color:var(--text-2)">Loading tonight's rationale from today.json…</p>
+      <p style="color:var(--text-2)">Model + park + weather + umpire context populates here after fetch.</p>
+      <p style="color:var(--text-2)">Calibration disclaimer appears here if today's edge is pre-cal.</p>
+      <div class="callout"><strong>Bottom line:</strong> loading…</div>
     </div>
 
     <div class="card">
@@ -96,13 +78,13 @@
       <div style="position:relative; height: 220px;">
         <canvas id="confDonut"></canvas>
         <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); text-align:center;">
-          <div style="font-size: 42px; font-weight: 800; color: var(--accent); font-family:'JetBrains Mono', monospace;">64<span style="font-size:22px;">%</span></div>
+          <div style="font-size: 42px; font-weight: 800; color: var(--accent); font-family:'JetBrains Mono', monospace;">--<span style="font-size:22px;">%</span></div>
           <div style="font-size:12px; color: var(--text-3); text-transform:uppercase; letter-spacing:0.06em;">Win Probability</div>
         </div>
       </div>
       <div style="display:flex; justify-content:space-around; margin-top: 18px; font-size: 12px;">
-        <div><div class="muted">EV / $1</div><div class="positive" style="font-weight:700; font-family:'JetBrains Mono', monospace;">+$0.054</div></div>
-        <div><div class="muted">Break-Even %</div><div style="font-weight:700; font-family:'JetBrains Mono', monospace;">59.7%</div></div>
+        <div><div class="muted">EV / $1</div><div class="positive" style="font-weight:700; font-family:'JetBrains Mono', monospace;" id="ev1">--</div></div>
+        <div><div class="muted">Break-Even %</div><div style="font-weight:700; font-family:'JetBrains Mono', monospace;" id="breakEven">--</div></div>
         <div><div class="muted">CLV target</div><div style="font-weight:700; font-family:'JetBrains Mono', monospace;">≥ +2.5%</div></div>
       </div>
     </div>
@@ -120,7 +102,7 @@
       <div style="position:relative; height: 240px; width: 100%;">
         <canvas id="runDistChart"></canvas>
       </div>
-      <p class="caption">Joint Poisson distribution of total game runs given λ<sub>LAD</sub>=4.0, λ<sub>SDP</sub>=3.6. Mode at 7 runs; OVER 8.0 carries 38% probability.</p>
+      <p class="caption">Joint Poisson distribution of total game runs given the modeled team scoring rates. Populated from today.json on load.</p>
     </div>
     <div class="card">
       <div class="card-head"><span>📋 Game Conditions</span></div>
