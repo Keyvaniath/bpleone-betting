@@ -303,6 +303,22 @@ jobs:
         working-directory: python
         run: python notify_discord.py
 
+      # Trap-bet detector: post-best-bets pass that flags props with
+      # structural red flags (weather against, SP fatigue against K OVER,
+      # thin model sample, BvP pitcher-owns-batter, etc.).
+      - name: Trap detector
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        working-directory: python
+        run: python trap_detector.py
+
+      # Auto-brief: tight markdown digest of tonight's slate.
+      # Pulls from best_bets, slate_confidence, fatigue, weather, hot_streaks,
+      # nrfi, sgps, bullpen, traps, portfolio, bankroll_sim. Powers /brief.
+      - name: Generate auto-brief
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        working-directory: python
+        run: python auto_brief.py
+
       # Comprehensive pipeline audit -- LAST step so it sees final artifact
       # state. Writes data/pipeline_audit.json with overall: green/yellow/red,
       # per-artifact freshness, and findings. Surfaces on /audit.
