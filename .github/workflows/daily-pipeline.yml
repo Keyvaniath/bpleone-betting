@@ -341,6 +341,36 @@ jobs:
         working-directory: python
         run: python notify_discord.py
 
+      # Per-market learning curves: rolling Brier per market
+      - name: Compute learning curves
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        working-directory: python
+        run: python learning_curves.py
+
+      # Context-conditional bias slices (indoor/outdoor, L/R pitcher)
+      - name: Context-conditional calibration
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        working-directory: python
+        run: python context_calibration.py
+
+      # Loop value quantifier (raw vs calibrated A/B)
+      - name: Quantify loop value-add
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        working-directory: python
+        run: python loop_value.py
+
+      # Per-market training progress + ETA
+      - name: Training progress + ETA
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        working-directory: python
+        run: python training_progress.py
+
+      # Recommendation trust score
+      - name: Recommendation trust score
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        working-directory: python
+        run: python recommendation_trust.py
+
       # Trap-bet detector: post-best-bets pass that flags props with
       # structural red flags (weather against, SP fatigue against K OVER,
       # thin model sample, BvP pitcher-owns-batter, etc.).
