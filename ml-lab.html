@@ -55,9 +55,28 @@
     <div class="metric"><span class="metric-num">30</span><span class="metric-label">Features Engineered</span></div>
     <div class="metric"><span class="metric-num">8</span><span class="metric-label">Feature Families</span></div>
     <div class="metric"><span class="metric-num">169</span><span class="metric-label">NN Parameters</span></div>
-    <div class="metric"><span class="metric-num">66.2%</span><span class="metric-label">Ensemble Accuracy</span></div>
-    <div class="metric"><span class="metric-num">3.2%</span><span class="metric-label">Calibration ECE</span></div>
+    <div class="metric"><span class="metric-num" id="mlEnsAcc">--</span><span class="metric-label">Live Hit Rate</span></div>
+    <div class="metric"><span class="metric-num" id="mlEce">--</span><span class="metric-label">Avg Calibration ECE</span></div>
   </section>
+  <script>
+  // Live model accuracy + ECE: from track_record + calibration_live
+  (function(){
+    const setText = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
+    fetch("data/calibration_live.json", { cache: "no-cache" }).then(r => r.json()).then(c => {
+      const eces = Object.values(c.markets || {}).map(m => m.ece).filter(v => v != null);
+      if (eces.length) {
+        const avg = eces.reduce((a, b) => a + b, 0) / eces.length;
+        setText("mlEce", (avg * 100).toFixed(1) + "%");
+      }
+    }).catch(() => {});
+    fetch("data/track_record.json", { cache: "no-cache" }).then(r => r.json()).then(tr => {
+      const props = (tr.props || []).filter(p => p.play_hit === true || p.play_hit === false);
+      if (!props.length) return;
+      const hr = props.filter(p => p.play_hit === true).length / props.length * 100;
+      setText("mlEnsAcc", hr.toFixed(1) + "%");
+    }).catch(() => {});
+  })();
+  </script>
 
   <section class="grid-2">
     <div class="card">

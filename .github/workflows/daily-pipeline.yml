@@ -93,19 +93,42 @@ jobs:
         working-directory: python
         run: python model_confidence.py
 
-      # Per-prop rationale: "why this play" with model factors, season stats,
-      # Statcast metrics, calibration disclaimers. Caps at top 300 by edge.
-      - name: Generate prop rationales
-        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
-        working-directory: python
-        run: python rationales.py
-
       # Per-player gamelogs (last 14 games/starts) for the sparkline on
       # the player deep-dive page. Caps at 350 players to respect API quota.
+      # NOW enriched with venue + is_home + is_night per game so downstream
+      # park / day-night / travel splits work without extra API calls.
       - name: Pull player gamelogs (last 14)
         if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
         working-directory: python
         run: python player_gamelogs.py
+
+      # One-shot enrichment of track_record settled props with HP umpire +
+      # venue + day/night tags (where missing). Caps at 500 records per run
+      # to be polite to MLB Stats API. Idempotent + safe to repeat.
+      - name: Backfill track_record context (ump / venue / night)
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        working-directory: python
+        run: python backfill_context.py
+
+      # Per-player deep-dive precompute: aggregates season + career + L/R + H/A
+      # splits from MLB Stats API (free), joins with matchups for BvP H2H +
+      # pitch-arsenal xwOBA, derives park / day-night / travel / vs-umpire
+      # from the enriched gamelog + track_record. Powers /player.html.
+      # MUST RUN BEFORE rationales.py so the rationales can fold breakdown
+      # signals (hot/cold, park splits, BvP) into each prop's drivers.
+      - name: Build player breakdowns (splits + BvP + park + travel + umpire)
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        working-directory: python
+        run: python player_breakdown.py
+
+      # Per-prop rationale: "why this play" with model factors, season stats,
+      # Statcast metrics, calibration disclaimers + breakdown-enriched
+      # drivers (hot/cold, vs-handedness, park, BvP H2H, lineup spot, etc.).
+      # Caps at top 300 by edge.
+      - name: Generate prop rationales (breakdown-enriched)
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        working-directory: python
+        run: python rationales.py
 
       # Drift detection: compare today's calibration vs yesterday's.
       # Alerts on >5% correction moves or sudden sample-count drops.
@@ -185,6 +208,175 @@ jobs:
         if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
         working-directory: python
         run: python parlays.py
+
+      # Correlation-aware Same-Game Parlay (SGP) builder. For each game,
+      # finds top-EV 2-4 leg combos using a pairwise correlation matrix
+      # (e.g. same-player HR + TB are tightly coupled). Books charge ~25%
+      # extra on SGPs assuming legs are independent -- this surfaces the
+      # gap. Output: data/sgps.json -> /parlays.html top card.
+      - name: Build correlation-aware Same-Game Parlays
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        working-directory: python
+        run: python sgp_builder.py
+
+      # Pitcher fatigue + early-hook risk grade. Powers /mlb panel.
+      - name: Grade pitcher fatigue + early-hook risk
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        working-directory: python
+        run: python pitcher_fatigue.py
+
+      # Weather-conditional HR-rate delta + OVER/UNDER lean per game.
+      - name: Score weather-conditional HR multiplier
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        working-directory: python
+        run: python weather_conditional.py
+
+      # Pre-game slate confidence (lineup confirms / weather / rookies / hooks).
+      # MUST run after pitcher_fatigue + weather_conditional so it sees them.
+      - name: Compute pre-game slate confidence
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        working-directory: python
+        run: python slate_confidence.py
+
+      # Lineup churn watcher: diff matchups.json vs prior snapshot.
+      # Runs in the live workflow too so churn surfaces between cron cycles.
+      - name: Detect lineup churn (post-publish scratches)
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        working-directory: python
+        run: python lineup_churn.py
+
+      # Composite Best Bets ranker: rolls up DK + PP + NRFI + SGPs into
+      # a single quality-scored list. Runs LAST so it sees the latest
+      # of every upstream artifact. Powers /best-bets.html.
+      - name: Compose Best Bets digest (composite ranker)
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        working-directory: python
+        run: python best_bets.py
+
+      # Bullpen exhaustion -> late-inning OU lean per game.
+      - name: Score bullpen workload alerts
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        working-directory: python
+        run: python bullpen_alert.py
+
+      # Risk-adjusted Sharpe ranking of tonight's plays.
+      - name: Rank by Sharpe (EV / sigma)
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        working-directory: python
+        run: python sharpe_ranking.py
+
+      # Auto-portfolio: optimal multi-bet subset given bankroll + Kelly +
+      # slate-confidence-adjusted quality gate + per-game correlation cap.
+      - name: Build auto-portfolio
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        working-directory: python
+        run: python portfolio_optimizer.py
+
+      # 10K MC simulator of tonight's portfolio outcomes. Powers /bankroll
+      # "Tonight's Portfolio" card with real-money distribution.
+      - name: Monte Carlo tonight's portfolio
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        working-directory: python
+        run: python bankroll_simulator.py
+
+      # Line movement / bet-timing: ACT NOW vs WAIT alerts from price
+      # diffs cycle-over-cycle. Surfaces on /props.
+      - name: Detect line-movement timing signals
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        working-directory: python
+        run: python line_timing.py
+
+      # Per-bet CLV tracker -- proves bets beat the close (sharpness proxy).
+      - name: Compute per-bet CLV
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        working-directory: python
+        run: python clv_per_bet.py
+
+      # Day-of-week P&L analysis from settled track_record.
+      - name: Day-of-week performance analysis
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        working-directory: python
+        run: python dow_pl.py
+
+      # Hot-streak heatmap for tonight's slate.
+      - name: Score hot streaks (cross-slate heatmap)
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        working-directory: python
+        run: python hot_streaks.py
+
+      # Cross-book arb / shading detector (DK vs PrizePicks).
+      - name: Detect cross-book arb opportunities
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        working-directory: python
+        run: python cross_book_arb.py
+
+      # Pitcher fastball velocity decay flag (injury proxy).
+      - name: Flag pitcher velocity decay
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        working-directory: python
+        run: python velocity_decay.py
+
+      # Daily picks CSV export.
+      - name: Export picks CSV
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        working-directory: python
+        run: python csv_export.py
+
+      # NBA + NFL stubs (will start producing real data when enabled in config)
+      - name: NBA stub artifact
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        working-directory: python
+        run: python nba_stub.py
+      - name: NFL stub artifact
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        working-directory: python
+        run: python nfl_stub.py
+
+      # Discord/Slack webhook digest (stubs when webhook env vars unset).
+      - name: Push nightly digest to chat webhooks
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        working-directory: python
+        run: python notify_discord.py
+
+      # Trap-bet detector: post-best-bets pass that flags props with
+      # structural red flags (weather against, SP fatigue against K OVER,
+      # thin model sample, BvP pitcher-owns-batter, etc.).
+      - name: Trap detector
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        working-directory: python
+        run: python trap_detector.py
+
+      # Auto-brief: tight markdown digest of tonight's slate.
+      # Pulls from best_bets, slate_confidence, fatigue, weather, hot_streaks,
+      # nrfi, sgps, bullpen, traps, portfolio, bankroll_sim. Powers /brief.
+      - name: Generate auto-brief
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        working-directory: python
+        run: python auto_brief.py
+
+      # Comprehensive pipeline audit -- LAST step so it sees final artifact
+      # state. Writes data/pipeline_audit.json with overall: green/yellow/red,
+      # per-artifact freshness, and findings. Surfaces on /audit.
+      - name: Run pipeline audit (last)
+        if: always()
+        working-directory: python
+        run: python pipeline_audit.py
+
+      # Failure notifier: if any prior step failed, post a Discord ping.
+      # if: failure() catches earlier failures so this fires only when needed.
+      - name: Notify on pipeline failure
+        if: failure()
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        run: |
+          if [ -n "$DISCORD_WEBHOOK_URL" ]; then
+            curl -s -X POST -H "Content-Type: application/json" \
+              -d "{\"content\": \"⚠️ **EdgeStat daily pipeline FAILED** at $(date -u +%FT%TZ). Check Actions log: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}\"}" \
+              "$DISCORD_WEBHOOK_URL"
+          fi
 
       # Pull PrizePicks daily board, compare to DK, run model at PP's lines.
       - name: Run pick-em (PrizePicks) integration

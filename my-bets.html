@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Bets | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="page-my-bets">
+<header class="topbar">
+  <div class="brand">
+    <a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a>
+    <span class="tagline">by bpleone</span>
+  </div>
+  <nav class="mainnav">
+    <a href="index.html">Dashboard</a>
+    <a href="best-bets.html">Best Bets</a>
+    <a href="my-bets.html" class="active">My Bets</a>
+    <a href="play-of-day.html">Play of the Day</a>
+    <a href="mlb.html">MLB</a>
+    <a href="parlays.html">Parlays</a>
+    <a href="pickem.html">Pick-Em</a>
+    <a href="nrfi.html">NRFI/YRFI</a>
+    <a href="brief.html">Brief</a>
+    <a href="training.html">Training</a>
+    <a href="track-record.html">Track Record</a>
+    <a href="live.html">Live</a>
+    <a href="bankroll.html">Bankroll</a>
+    <a href="props.html">Props</a>
+    <a href="player.html">Player</a>
+    <a href="learn.html">Learn</a>
+  </nav>
+  <div class="topbar-actions"><div class="ticker" id="liveTicker">LIVE</div></div>
+</header>
+
+<main class="container">
+  <section class="page-head">
+    <h1>My Bets — Personal Ledger</h1>
+    <p>Every play you've tagged "BET" gets logged here. Local-only (lives in your browser's localStorage, no server). Use the TRACK pill next to any prop on /props, /pickem, /best-bets, or /play-of-day to record selections.</p>
+  </section>
+
+  <section class="metric-strip" id="myBetsMetrics">
+    <div class="metric"><span class="metric-num" id="mbBets">0</span><span class="metric-label">Bets Logged</span></div>
+    <div class="metric"><span class="metric-num" id="mbStaked">0u</span><span class="metric-label">Total Stake</span></div>
+    <div class="metric"><span class="metric-num" id="mbSkipped">0</span><span class="metric-label">Skipped</span></div>
+    <div class="metric"><span class="metric-num" id="mbDk">0</span><span class="metric-label">From DK</span></div>
+    <div class="metric"><span class="metric-num" id="mbPp">0</span><span class="metric-label">From PP</span></div>
+    <div class="metric"><span class="metric-num" id="mbNrfi">0</span><span class="metric-label">From NRFI/SGP</span></div>
+  </section>
+
+  <section class="card" style="margin-bottom: 18px;">
+    <div class="card-head"><span>📒 Ledger</span><span>
+      <button id="exportBtn" style="background: var(--bg-2); border: 1px solid var(--line); color: var(--text); padding: 4px 12px; border-radius: 4px; font-size: 11px; cursor: pointer; margin-right: 6px;">Export JSON</button>
+      <button id="clearBtn" style="background: rgba(227,90,90,0.15); border: 1px solid rgba(227,90,90,0.35); color: #e35a5a; padding: 4px 12px; border-radius: 4px; font-size: 11px; cursor: pointer;">Clear all</button>
+    </span></div>
+    <div id="ledgerList" style="padding: 14px;"></div>
+  </section>
+
+  <section class="card">
+    <div class="card-head"><span>ℹ️ How this works</span></div>
+    <div style="padding: 14px; font-size: 13px; line-height: 1.7; color: var(--text-2, #aaa);">
+      <ol style="padding-left: 24px; margin: 0;">
+        <li>On any page with a prop list (props.html, pickem.html, best-bets.html, play-of-day.html), each row has a TRACK pill on the right.</li>
+        <li>Click once: BET (you placed this bet).</li>
+        <li>Click twice: SKIPPED (you saw it and passed).</li>
+        <li>Click again: clears the tag.</li>
+        <li>Data lives in your browser only — no server, no account, no leak. Export with the button above to back it up.</li>
+        <li>A floating chip in the bottom-right shows total bets + units staked tonight.</li>
+      </ol>
+    </div>
+  </section>
+</main>
+
+<script src="js/bet_tracker.js"></script>
+<script src="js/nav_badge.js"></script>
+<script>
+function refresh() {
+  const all = window.EdgeStatBets ? window.EdgeStatBets.list() : {};
+  const entries = Object.entries(all).map(([k, v]) => ({ key: k, ...v }));
+  const bets = entries.filter(e => e.status === "bet");
+  const skipped = entries.filter(e => e.status === "skip");
+  const sum = bets.reduce((s, b) => s + (parseFloat(b.stake_units) || 1), 0);
+  document.getElementById("mbBets").textContent = bets.length;
+  document.getElementById("mbStaked").textContent = sum.toFixed(1) + "u";
+  document.getElementById("mbSkipped").textContent = skipped.length;
+  document.getElementById("mbDk").textContent   = bets.filter(b => b.source === "DK").length;
+  document.getElementById("mbPp").textContent   = bets.filter(b => b.source === "PP").length;
+  document.getElementById("mbNrfi").textContent = bets.filter(b => ["NRFI","SGP"].includes(b.source)).length;
+  bets.sort((a, b) => (b.ts || "").localeCompare(a.ts || ""));
+  document.getElementById("ledgerList").innerHTML = bets.length === 0
+    ? `<p class="muted" style="text-align:center; padding: 20px;">No bets logged yet. Tag plays with the TRACK pill on /props, /pickem, /best-bets, or /play-of-day.</p>`
+    : `<div style="display:grid; grid-template-columns: 140px 1.6fr 80px 80px 80px 80px; gap: 14px; padding: 8px 0; color: var(--muted, #888); font-size: 10px; text-transform: uppercase;">
+        <span>Tagged</span><span>Bet</span><span>Play</span><span>Line</span><span>Stake</span><span>Source</span>
+      </div>` + bets.map(b => `<div style="display:grid; grid-template-columns: 140px 1.6fr 80px 80px 80px 80px; gap: 14px; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.04); font-family:'JetBrains Mono',monospace; font-size: 12px;">
+        <span class="muted">${(b.ts || "").replace("T", " ").slice(0, 16)}</span>
+        <span><a href="player.html?id=${b.player_id || ''}" style="color: var(--text); text-decoration: underline; text-decoration-color: rgba(255,255,255,0.15);">${b.label || b.key}</a></span>
+        <span style="color: ${b.play === 'OVER' ? '#58c878' : b.play === 'UNDER' ? '#e35a5a' : 'var(--text-2, #aaa)'};">${b.play || ""}</span>
+        <span>${b.line ?? ""}</span>
+        <span>${b.stake_units || 1}u</span>
+        <span><span style="padding: 2px 8px; border-radius: 3px; background: rgba(255,255,255,0.05); font-size: 10px; font-weight: 700;">${b.source || ""}</span></span>
+      </div>`).join("");
+}
+refresh();
+document.getElementById("exportBtn").addEventListener("click", () => {
+  const data = window.EdgeStatBets.export();
+  const blob = new Blob([data], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `edgestat-bets-${new Date().toISOString().slice(0, 10)}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+});
+document.getElementById("clearBtn").addEventListener("click", () => {
+  if (confirm("Clear all logged bets? Cannot be undone.")) {
+    window.EdgeStatBets.clear();
+    refresh();
+  }
+});
+window.addEventListener("storage", refresh);
+</script>
+</body>
+</html>

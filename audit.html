@@ -59,6 +59,64 @@
     <p>Freshness check on every data artifact + signal source. Greens are fresh (within expected interval), ambers are stale, reds need attention.</p>
   </section>
 
+  <!-- NEW comprehensive pipeline audit (pipeline_audit.py output) -->
+  <section id="paCard" class="card" style="margin-bottom:24px; display:none;">
+    <div class="card-head"><span>📊 Pipeline Audit — Live</span><span class="muted" id="paMeta">--</span></div>
+    <div style="padding: 14px;">
+      <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 14px; flex-wrap: wrap;">
+        <div>
+          <div class="muted" style="font-size: 10px; text-transform: uppercase;">Overall</div>
+          <div id="paOverall" style="font-size: 32px; font-weight: 700; font-family: 'JetBrains Mono', monospace;">--</div>
+        </div>
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 13px;">
+          <div><span style="color: #58c878;">●</span> Green: <strong id="paGreen">--</strong></div>
+          <div><span style="color: #d4a04a;">●</span> Yellow: <strong id="paYellow">--</strong></div>
+          <div><span style="color: #e35a5a;">●</span> Red: <strong id="paRed">--</strong></div>
+        </div>
+        <div style="flex: 1;"></div>
+        <button id="paFilter" style="padding: 6px 12px; background: var(--bg-2); border: 1px solid var(--line); color: var(--text); border-radius: 4px; font-size: 11px; cursor: pointer;">Show only problems</button>
+      </div>
+      <div id="paList"></div>
+    </div>
+  </section>
+
+  <script>
+  let _paFilter = "problems";
+  fetch("data/pipeline_audit.json?t=" + Date.now(), { cache: "no-cache" })
+    .then(r => r.json())
+    .then(d => {
+      document.getElementById("paCard").style.display = "block";
+      const setText = (id, v, color) => { const e = document.getElementById(id); if (!e) return; e.textContent = v; if (color) e.style.color = color; };
+      const colors = { green: "#58c878", yellow: "#d4a04a", red: "#e35a5a" };
+      setText("paOverall", d.overall.toUpperCase(), colors[d.overall]);
+      setText("paGreen", d.n_green);
+      setText("paYellow", d.n_yellow);
+      setText("paRed", d.n_red);
+      setText("paMeta", `${d.total_tracked} artifacts tracked · ${(d.generated_at || "").replace("T", " ")} UTC`);
+      const render = () => {
+        const arts = (d.artifacts || []).filter(a => _paFilter === "all" ? true : a.status !== "green");
+        document.getElementById("paList").innerHTML = arts.map(a => {
+          const c = colors[a.status];
+          const age = a.age_minutes != null ? `${a.age_minutes} min ago` : "—";
+          return `<div style="display:grid; grid-template-columns: 60px 1.4fr 100px 100px 1fr; gap: 14px; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.04); font-family:'JetBrains Mono',monospace; font-size: 11px; align-items: center;">
+            <span style="padding: 2px 8px; border-radius: 3px; background: ${c}22; color: ${c}; font-weight: 700; text-align: center; text-transform: uppercase;">${a.status}</span>
+            <span><strong>${a.name}</strong>${a.optional ? ' <span class="muted" style="font-size:9px;">(optional)</span>' : ''}</span>
+            <span class="muted">${age}</span>
+            <span class="muted">${a.size_bytes ? a.size_bytes.toLocaleString() + 'B' : '—'}</span>
+            <span style="font-size: 11px; color: var(--text-2, #aaa);">${a.finding}</span>
+          </div>`;
+        }).join("");
+      };
+      render();
+      document.getElementById("paFilter").addEventListener("click", () => {
+        _paFilter = _paFilter === "problems" ? "all" : "problems";
+        document.getElementById("paFilter").textContent = _paFilter === "problems" ? "Show all artifacts" : "Show only problems";
+        render();
+      });
+    })
+    .catch(() => {});
+  </script>
+
   <section id="healthSummary" class="card" style="margin-bottom:24px; display:none;">
     <div class="card-head"><span>Pipeline Health Audit</span><span class="muted" id="healthRefresh"></span></div>
     <div id="healthSummaryBody" style="padding:14px;"></div>

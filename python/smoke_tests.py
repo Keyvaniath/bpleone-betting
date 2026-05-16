@@ -36,19 +36,44 @@ def warn(name: str, msg: str) -> None:
 
 
 def test_imports() -> None:
-    """Every critical module imports without error."""
-    modules = [
+    """Every critical module imports without error.
+
+    Two tiers: CORE (must always import) and EXTENDED (newer feature
+    modules, allowed to fail soft on missing deps but logged)."""
+    core_modules = [
         "probability", "features", "mlb_model", "data_fetcher",
         "stats_repo", "pipeline", "props_pipeline", "outcomes",
         "calibration_runner", "residuals", "perf_trend",
         "pipeline_health", "bovada", "snapshot",
     ]
-    for m in modules:
+    # Newer feature modules added in PR #40..#43. Soft-fail tolerated --
+    # we log them but don't abort the smoke test on these alone.
+    extended_modules = [
+        "rationales", "anomalies", "drift_detector", "walk_forward",
+        "player_bias", "model_trainer", "model_confidence",
+        "player_gamelogs", "player_breakdown", "backfill_context",
+        "live_props", "sgp_builder", "pitcher_fatigue",
+        "weather_conditional", "slate_confidence", "best_bets",
+        "lineup_churn", "bullpen_alert", "sharpe_ranking",
+        "portfolio_optimizer", "bankroll_simulator", "line_timing",
+        "clv_per_bet", "dow_pl", "hot_streaks", "cross_book_arb",
+        "velocity_decay", "csv_export", "nba_stub", "nfl_stub",
+        "notify_discord", "k_pace_alerts", "pipeline_audit",
+    ]
+    for m in core_modules:
         try:
             importlib.import_module(m)
             ok(f"import {m}", "loaded")
         except Exception as e:
             fail(f"import {m}", f"{type(e).__name__}: {e}")
+    for m in extended_modules:
+        try:
+            importlib.import_module(m)
+            ok(f"import {m}", "loaded (extended)")
+        except ModuleNotFoundError:
+            warn(f"import {m}", "module not present in this branch (may be on unmerged PR)")
+        except Exception as e:
+            warn(f"import {m}", f"{type(e).__name__}: {e}")
 
 
 def test_data_shapes() -> None:

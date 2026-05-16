@@ -58,6 +58,84 @@
     <div class="metric"><span class="metric-num" id="trkDD">--</span><span class="metric-label">Max Drawdown</span></div>
   </section>
 
+  <!-- CLV per bet (NEW) -->
+  <section id="clvBetCard" class="card" style="margin-bottom: 18px; display:none;">
+    <div class="card-head"><span>📈 CLV Per Bet — beating the close</span><span class="muted" id="cpbMeta">--</span></div>
+    <div style="padding: 14px 18px;">
+      <p class="muted" style="font-size: 12px; margin: 0 0 12px 0;">Cumulative CLV is the gold-standard proof you bet sharp. Positive CLV = you got value, even on losing plays. Long-run CLV correlates with long-run ROI.</p>
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 14px;">
+        <div><div class="muted" style="font-size:10px;text-transform:uppercase;">Overall CLV</div><div id="cpbOverall" style="font-size:22px;font-weight:700;font-family:'JetBrains Mono',monospace;">--</div></div>
+        <div><div class="muted" style="font-size:10px;text-transform:uppercase;">Trailing 30d CLV</div><div id="cpb30d" style="font-size:22px;font-weight:700;font-family:'JetBrains Mono',monospace;">--</div></div>
+        <div><div class="muted" style="font-size:10px;text-transform:uppercase;">Props w/ CLV</div><div id="cpbN" style="font-size:22px;font-weight:700;font-family:'JetBrains Mono',monospace;">--</div></div>
+        <div><div class="muted" style="font-size:10px;text-transform:uppercase;">Total Settled</div><div id="cpbTotal" style="font-size:22px;font-weight:700;font-family:'JetBrains Mono',monospace;">--</div></div>
+      </div>
+      <div id="cpbMarkets"></div>
+    </div>
+  </section>
+
+  <!-- DOW P&L (NEW) -->
+  <section id="dowCard" class="card" style="margin-bottom: 18px; display:none;">
+    <div class="card-head"><span>📅 Day-of-Week Performance</span><span class="muted" id="dowMeta">--</span></div>
+    <div style="padding: 14px 18px;">
+      <p class="muted" style="font-size: 12px; margin: 0 0 12px 0;">Settled track record sliced by day-of-week. Use this to spot personal patterns (better on Tuesdays? bad on Sundays?).</p>
+      <div id="dowGrid"></div>
+    </div>
+  </section>
+
+  <script>
+  fetch("data/clv_per_bet.json", { cache: "no-cache" })
+    .then(r => r.json())
+    .then(d => {
+      if (!d.n_with_clv) return;
+      document.getElementById("clvBetCard").style.display = "block";
+      document.getElementById("cpbMeta").textContent = `${d.n_with_clv} props have CLV computable · ${(d.generated_at || "").slice(0, 10)}`;
+      const set = (id, v, color) => { const e = document.getElementById(id); if (!e) return; e.textContent = v; if (color) e.style.color = color; };
+      const fmt = (x) => x === null || x === undefined ? "--" : (x >= 0 ? "+" : "") + x + "%";
+      set("cpbOverall", fmt(d.avg_clv_pct), d.avg_clv_pct >= 0 ? "#58c878" : "#e35a5a");
+      set("cpb30d", fmt(d.trailing_30d_clv_pct), d.trailing_30d_clv_pct >= 0 ? "#58c878" : "#e35a5a");
+      set("cpbN", d.n_with_clv.toLocaleString());
+      set("cpbTotal", d.n_settled.toLocaleString());
+      const rows = (d.by_market || []).map(m => `<div style="display:grid; grid-template-columns: 1.6fr 60px 80px; gap: 14px; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.04); font-family:'JetBrains Mono',monospace; font-size: 12px;">
+        <span>${m.market.replace(/_/g, " ")}</span>
+        <span class="muted">n=${m.n}</span>
+        <span style="color: ${m.avg_clv_pct >= 0 ? '#58c878' : '#e35a5a'}; font-weight: 700;">${fmt(m.avg_clv_pct)}</span>
+      </div>`).join("");
+      document.getElementById("cpbMarkets").innerHTML = `<div style="margin-top: 14px;">
+        <div style="display:grid; grid-template-columns: 1.6fr 60px 80px; gap: 14px; padding: 6px 0; color: var(--muted, #888); font-size: 10px; text-transform: uppercase;">
+          <span>Market</span><span>n</span><span>Avg CLV</span>
+        </div>${rows}
+      </div>`;
+    }).catch(() => {});
+
+  fetch("data/dow_pl.json", { cache: "no-cache" })
+    .then(r => r.json())
+    .then(d => {
+      const days = d.by_day || [];
+      if (!days.some(x => x.n)) return;
+      document.getElementById("dowCard").style.display = "block";
+      document.getElementById("dowMeta").textContent = `${d.n_settled.toLocaleString()} settled bets`;
+      const rowFor = (day) => {
+        const roi = day.roi_pct;
+        const color = roi == null ? "var(--muted, #888)" : roi >= 5 ? "#58c878" : roi >= 0 ? "var(--text)" : "#e35a5a";
+        return `<div style="display:grid; grid-template-columns: 80px 80px 100px 100px 100px; gap: 14px; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.04); font-family:'JetBrains Mono',monospace; font-size: 12px;">
+          <span><strong>${day.dow}</strong></span>
+          <span class="muted">${day.n}</span>
+          <span>${day.hit_rate != null ? (day.hit_rate * 100).toFixed(1) + '%' : '—'}</span>
+          <span style="color: ${color};">${roi != null ? (roi >= 0 ? '+' : '') + roi + '%' : '—'}</span>
+          <span style="color: ${color};">${day.net_units >= 0 ? '+' : ''}${day.net_units}u</span>
+        </div>`;
+      };
+      const headers = `<div style="display:grid; grid-template-columns: 80px 80px 100px 100px 100px; gap: 14px; padding: 6px 0; color: var(--muted, #888); font-size: 10px; text-transform: uppercase;">
+        <span>Day</span><span>Bets</span><span>Hit %</span><span>ROI</span><span>Net</span>
+      </div>`;
+      let html = headers + days.map(rowFor).join("");
+      if (d.best_day && d.worst_day) {
+        html += `<p class="muted" style="margin-top: 14px; font-size: 12px;">Best day: <strong style="color: #58c878;">${d.best_day.dow}</strong> (${(d.best_day.hit_rate*100).toFixed(1)}% hit, +${d.best_day.roi_pct}% ROI) · Worst day: <strong style="color: #e35a5a;">${d.worst_day.dow}</strong> (${(d.worst_day.hit_rate*100).toFixed(1)}% hit, ${d.worst_day.roi_pct >= 0 ? '+' : ''}${d.worst_day.roi_pct}% ROI)</p>`;
+      }
+      document.getElementById("dowGrid").innerHTML = html;
+    }).catch(() => {});
+  </script>
+
   <section class="card" style="margin-bottom: 28px;">
     <div class="card-head"><span>📈 Cumulative P&L</span><span class="muted">last 30 plays</span></div>
     <canvas id="plChart" height="220"></canvas>
@@ -66,31 +144,23 @@
 
   <section class="grid-2">
     <div class="card">
-      <div class="card-head"><span>🏆 Best 5 Plays YTD</span></div>
+      <div class="card-head"><span>🏆 Best 5 Plays</span><span class="muted" id="bestPlaysMeta">--</span></div>
       <div class="table-wrap">
         <table class="data-table">
           <thead><tr><th>Date</th><th>Play</th><th>Price</th><th>Stake</th><th>P/L</th></tr></thead>
-          <tbody>
-            <tr><td>3/29</td><td class="matchup">Dodgers ML</td><td>+154</td><td>1.5u</td><td class="positive">+2.31u</td></tr>
-            <tr><td>4/14</td><td class="matchup">Ohtani O0.5 HR</td><td>+275</td><td>0.7u</td><td class="positive">+1.93u</td></tr>
-            <tr><td>4/22</td><td class="matchup">COL/CIN OVER 11</td><td>+108</td><td>1.6u</td><td class="positive">+1.73u</td></tr>
-            <tr><td>5/02</td><td class="matchup">Crochet O7.5 K</td><td>+115</td><td>1.3u</td><td class="positive">+1.50u</td></tr>
-            <tr><td>5/08</td><td class="matchup">Yankees -1.5</td><td>+125</td><td>1.1u</td><td class="positive">+1.38u</td></tr>
+          <tbody id="bestPlaysBody">
+            <tr><td colspan="5" class="muted" style="padding:14px; text-align:center;">Loading…</td></tr>
           </tbody>
         </table>
       </div>
     </div>
     <div class="card">
-      <div class="card-head"><span>📉 Worst 5 Plays YTD</span></div>
+      <div class="card-head"><span>📉 Worst 5 Plays</span><span class="muted" id="worstPlaysMeta">--</span></div>
       <div class="table-wrap">
         <table class="data-table">
           <thead><tr><th>Date</th><th>Play</th><th>Price</th><th>Stake</th><th>P/L</th></tr></thead>
-          <tbody>
-            <tr><td>4/03</td><td class="matchup">Astros -1.5</td><td>+118</td><td>2.1u</td><td class="negative">-2.10u</td></tr>
-            <tr><td>4/19</td><td class="matchup">Skubal O7.5 K</td><td>-130</td><td>1.8u</td><td class="negative">-1.80u</td></tr>
-            <tr><td>4/27</td><td class="matchup">Mets/Phils UNDER 8</td><td>-110</td><td>1.5u</td><td class="negative">-1.50u</td></tr>
-            <tr><td>5/05</td><td class="matchup">Padres ML</td><td>-148</td><td>1.4u</td><td class="negative">-1.40u</td></tr>
-            <tr><td>5/11</td><td class="matchup">Judge O1.5 TB</td><td>+120</td><td>1.2u</td><td class="negative">-1.20u</td></tr>
+          <tbody id="worstPlaysBody">
+            <tr><td colspan="5" class="muted" style="padding:14px; text-align:center;">Loading…</td></tr>
           </tbody>
         </table>
       </div>
@@ -192,6 +262,68 @@ fetch("data/track_record.json", { cache: "no-cache" })
       note.innerHTML = `<strong>Real track record:</strong> ${graded.length} graded plays, ${wins} wins / ${losses} losses (${hitPct.toFixed(1)}% hit rate). Last settled date ${tr.last_settled_date || "?"}.`;
     }
     head.appendChild(note);
+
+    // Best / Worst 5 plays -- live from settled records
+    if (graded.length > 0) {
+      const withPL = graded.map(p => {
+        const price = p.play === "OVER" ? p.dk_over : p.play === "UNDER" ? p.dk_under : -110;
+        const pl = p.play_hit === true ? payoutUnits(price ?? -110) : -1;
+        return { ...p, _pl: pl, _price: price ?? -110 };
+      });
+      const bestRows = withPL.slice().sort((a, b) => b._pl - a._pl).slice(0, 5);
+      const worstRows = withPL.slice().sort((a, b) => a._pl - b._pl).slice(0, 5);
+      const renderRow = (p) => {
+        const pl = p._pl;
+        const cls = pl >= 0 ? "positive" : "negative";
+        const label = `${p.player || ""} ${p.play || ""} ${(p.market || "").replace(/_/g, " ")} ${p.line ?? ""}`.trim();
+        return `<tr>
+          <td>${p.date || ""}</td>
+          <td class="matchup">${label}</td>
+          <td>${p._price >= 0 ? "+" : ""}${p._price}</td>
+          <td>1.0u</td>
+          <td class="${cls}">${pl >= 0 ? "+" : ""}${pl.toFixed(2)}u</td>
+        </tr>`;
+      };
+      document.getElementById("bestPlaysBody").innerHTML = bestRows.map(renderRow).join("");
+      document.getElementById("worstPlaysBody").innerHTML = worstRows.map(renderRow).join("");
+      document.getElementById("bestPlaysMeta").textContent = `top 5 of ${graded.length}`;
+      document.getElementById("worstPlaysMeta").textContent = `bot 5 of ${graded.length}`;
+
+      // Cumulative P&L chart (last 30 plays)
+      const chart = document.getElementById("plChart");
+      if (chart && window.Chart) {
+        const last30 = withPL.slice(-30);
+        let run = 0;
+        const data = last30.map((p, i) => { run += p._pl; return run; });
+        const labels = last30.map((p, i) => p.date || String(i+1));
+        new Chart(chart.getContext("2d"), {
+          type: "line",
+          data: {
+            labels,
+            datasets: [{
+              label: "Cumulative units",
+              data,
+              borderColor: "#58c878",
+              backgroundColor: "rgba(88,200,120,0.10)",
+              fill: true,
+              tension: 0.25,
+              pointRadius: 2,
+            }],
+          },
+          options: {
+            responsive: true, maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            scales: {
+              x: { ticks: { color: "#888", maxTicksLimit: 8 }, grid: { color: "rgba(255,255,255,0.04)" } },
+              y: { ticks: { color: "#888" }, grid: { color: "rgba(255,255,255,0.04)" } },
+            },
+          },
+        });
+      }
+    } else {
+      document.getElementById("bestPlaysBody").innerHTML = `<tr><td colspan="5" class="muted" style="padding:14px; text-align:center;">No settled plays yet.</td></tr>`;
+      document.getElementById("worstPlaysBody").innerHTML = `<tr><td colspan="5" class="muted" style="padding:14px; text-align:center;">No settled plays yet.</td></tr>`;
+    }
 
     // Also push a real-records section above any synthetic sample data
     if (graded.length > 0) {

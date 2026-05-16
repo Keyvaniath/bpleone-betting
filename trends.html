@@ -53,13 +53,32 @@
   </section>
 
   <section class="metric-strip">
-    <div class="metric"><span class="metric-num">23</span><span class="metric-label">Steam Moves Today</span></div>
-    <div class="metric"><span class="metric-num">8</span><span class="metric-label">RLM Alerts</span></div>
-    <div class="metric"><span class="metric-num">71%</span><span class="metric-label">Sharp Win Rate</span></div>
-    <div class="metric"><span class="metric-num">3.1%</span><span class="metric-label">Avg Sharp CLV</span></div>
-    <div class="metric"><span class="metric-num">14</span><span class="metric-label">Games Tracked</span></div>
-    <div class="metric"><span class="metric-num">6</span><span class="metric-label">Books Polled</span></div>
+    <div class="metric"><span class="metric-num">--</span><span class="metric-label">Steam Moves Today</span></div>
+    <div class="metric"><span class="metric-num">--</span><span class="metric-label">RLM Alerts</span></div>
+    <div class="metric"><span class="metric-num">--</span><span class="metric-label">Sharp Win Rate</span></div>
+    <div class="metric"><span class="metric-num" id="trendsClv">--</span><span class="metric-label">Avg CLV (real)</span></div>
+    <div class="metric"><span class="metric-num" id="trendsGames">--</span><span class="metric-label">Games Today</span></div>
+    <div class="metric"><span class="metric-num">2</span><span class="metric-label">Books Polled</span></div>
   </section>
+
+  <script>
+  // Wire the two tiles we actually have data for; rest stay -- until paid feed wired.
+  fetch("data/today.json", { cache: "no-cache" })
+    .then(r => r.json())
+    .then(t => {
+      const el = document.getElementById("trendsGames");
+      if (el) el.textContent = String((t.games || []).length);
+    }).catch(() => {});
+  fetch("data/clv_log.json", { cache: "no-cache" })
+    .then(r => r.json())
+    .then(c => {
+      const recs = (c.records || []).filter(r => r.clv_pct != null);
+      if (!recs.length) return;
+      const avg = recs.reduce((s, r) => s + Number(r.clv_pct), 0) / recs.length;
+      const el = document.getElementById("trendsClv");
+      if (el) el.textContent = (avg >= 0 ? "+" : "") + avg.toFixed(2) + "%";
+    }).catch(() => {});
+  </script>
 
   <section class="card" style="margin-bottom: 28px;">
     <div class="card-head">
@@ -89,7 +108,7 @@
     <div class="card">
       <div class="card-head"><span>🔥 Last 10 Game Form by Team</span></div>
       <canvas id="trendStreakChart" height="220"></canvas>
-      <p class="caption">Win count of last 10. Hot teams: LAD, PHI. Cooling: TBR, SDP.</p>
+      <p class="caption">Win count of last 10 games per team (from data/team_form.json when populated).</p>
     </div>
     <div class="card">
       <div class="card-head"><span>📅 30-Day Team Trends</span></div>
@@ -104,7 +123,7 @@
 
   <section class="grid-2">
     <div class="card">
-      <div class="card-head"><span>📊 ATS Trends by Situation</span></div>
+      <div class="card-head"><span>📊 ATS Trends by Situation</span><span class="muted" style="font-size:10px;">historical league-wide reference patterns, not EdgeStat plays</span></div>
       <div class="table-wrap">
         <table class="data-table">
           <thead><tr><th>Situation</th><th>Record</th><th>ATS %</th><th>ROI</th></tr></thead>
@@ -122,7 +141,7 @@
       </div>
     </div>
     <div class="card">
-      <div class="card-head"><span>🌦️ Weather & Park Trends</span></div>
+      <div class="card-head"><span>🌦️ Weather & Park Trends</span><span class="muted" style="font-size:10px;">historical league-wide reference patterns, not EdgeStat plays</span></div>
       <div class="table-wrap">
         <table class="data-table">
           <thead><tr><th>Condition</th><th>O/U Record</th><th>Avg Total</th><th>Edge</th></tr></thead>

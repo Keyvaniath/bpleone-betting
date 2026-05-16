@@ -46,17 +46,55 @@
 
   <section class="page-head">
     <h1>Backtest Results — Walk-Forward</h1>
-    <p>Every model is just a hypothesis until you backtest it on real history. We replay 1,620 synthetic-but-realistic games through the EdgeStat pipeline with no look-ahead — retraining the model on prior days only — and report every metric that matters.</p>
+    <p>Real walk-forward backtest on the live track_record. Every day, the model is allowed to learn from prior days only — no look-ahead. Numbers below come straight from <code>data/track_record.json</code> and <code>data/walk_forward.json</code> at last refresh.</p>
   </section>
 
   <section class="metric-strip">
-    <div class="metric"><span class="metric-num" id="btPlays">51</span><span class="metric-label">Plays Recommended</span></div>
-    <div class="metric"><span class="metric-num" id="btHit">62.75%</span><span class="metric-label">Hit Rate</span></div>
-    <div class="metric"><span class="metric-num" id="btROI">+26.1%</span><span class="metric-label">ROI</span></div>
-    <div class="metric"><span class="metric-num" id="btCLV">+2.08%</span><span class="metric-label">Avg CLV</span></div>
-    <div class="metric"><span class="metric-num" id="btUnits">+18.5u</span><span class="metric-label">Total Units</span></div>
-    <div class="metric"><span class="metric-num" id="btDD">-5.3%</span><span class="metric-label">Max Drawdown</span></div>
+    <div class="metric"><span class="metric-num" id="btPlays">--</span><span class="metric-label">Plays Settled</span></div>
+    <div class="metric"><span class="metric-num" id="btHit">--</span><span class="metric-label">Hit Rate</span></div>
+    <div class="metric"><span class="metric-num" id="btROI">--</span><span class="metric-label">ROI</span></div>
+    <div class="metric"><span class="metric-num" id="btCLV">--</span><span class="metric-label">Avg CLV</span></div>
+    <div class="metric"><span class="metric-num" id="btUnits">--</span><span class="metric-label">Net Units</span></div>
+    <div class="metric"><span class="metric-num" id="btDD">--</span><span class="metric-label">Max Drawdown</span></div>
   </section>
+
+  <script>
+  // Live backtest metrics: pulled from track_record.json + clv_log.json + walk_forward.json
+  (function loadBtMetrics() {
+    const setText = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
+    fetch("data/track_record.json", { cache: "no-cache" })
+      .then(r => r.json())
+      .then(tr => {
+        const props = (tr.props || []).filter(p => p.play_hit === true || p.play_hit === false);
+        if (!props.length) return;
+        const wins = props.filter(p => p.play_hit === true).length;
+        const payoutUnits = price => price >= 0 ? price / 100 : 100 / Math.abs(price);
+        let net = 0, running = 0, dd = 0;
+        for (const p of props) {
+          const price = p.play === "OVER" ? p.dk_over : p.play === "UNDER" ? p.dk_under : -110;
+          const delta = p.play_hit === true ? payoutUnits(price ?? -110) : -1;
+          net += delta;
+          running += delta;
+          if (running < dd) dd = running;
+        }
+        const hr = wins / props.length * 100;
+        const roi = (net / props.length) * 100;
+        setText("btPlays", props.length.toLocaleString());
+        setText("btHit", hr.toFixed(2) + "%");
+        setText("btROI", (roi >= 0 ? "+" : "") + roi.toFixed(1) + "%");
+        setText("btUnits", (net >= 0 ? "+" : "") + net.toFixed(1) + "u");
+        setText("btDD", dd.toFixed(1) + "u");
+      }).catch(() => {});
+    fetch("data/clv_log.json", { cache: "no-cache" })
+      .then(r => r.json())
+      .then(c => {
+        const recs = (c.records || []).filter(r => r.clv_pct != null);
+        if (!recs.length) return;
+        const avg = recs.reduce((s, r) => s + Number(r.clv_pct), 0) / recs.length;
+        setText("btCLV", (avg >= 0 ? "+" : "") + avg.toFixed(2) + "%");
+      }).catch(() => {});
+  })();
+  </script>
 
   <section class="grid-2">
     <div class="card">
@@ -99,23 +137,68 @@
   </section>
 
   <section class="card">
-    <div class="card-head"><span>📊 Performance by Segment</span></div>
+    <div class="card-head"><span>📊 Performance by Market</span><span class="muted" id="segMeta">--</span></div>
     <div class="table-wrap">
       <table class="data-table">
-        <thead><tr><th>Segment</th><th>Plays</th><th>Hit %</th><th>ROI</th><th>Avg Edge</th><th>Avg CLV</th><th>Verdict</th></tr></thead>
-        <tbody>
-          <tr><td>Home favorites</td><td>184</td><td>56.0%</td><td class="positive">+6.4%</td><td>3.8%</td><td>+2.4%</td><td class="rec bet">CORE</td></tr>
-          <tr><td>Road dogs</td><td>148</td><td>52.7%</td><td class="positive">+4.1%</td><td>3.2%</td><td>+1.8%</td><td class="rec bet">CORE</td></tr>
-          <tr><td>Ace vs. back-end starter</td><td>96</td><td>61.5%</td><td class="positive">+9.2%</td><td>5.4%</td><td>+3.1%</td><td class="rec bet">STRONG</td></tr>
-          <tr><td>Day-after-night games</td><td>104</td><td>54.8%</td><td class="positive">+5.6%</td><td>3.6%</td><td>+2.0%</td><td class="rec bet">CORE</td></tr>
-          <tr><td>Coors Field overs</td><td>32</td><td>59.4%</td><td class="positive">+8.1%</td><td>4.4%</td><td>+2.8%</td><td class="rec bet">STRONG</td></tr>
-          <tr><td>Wrigley wind games</td><td>28</td><td>57.1%</td><td class="positive">+6.7%</td><td>4.0%</td><td>+2.5%</td><td class="rec bet">STRONG</td></tr>
-          <tr><td>Sunday day games</td><td>76</td><td>49.3%</td><td class="negative">-2.4%</td><td>2.6%</td><td>+0.4%</td><td class="rec pass">SKIP</td></tr>
-          <tr><td>SGPs</td><td>0</td><td>—</td><td>—</td><td>—</td><td>—</td><td class="rec pass">NEVER</td></tr>
+        <thead><tr><th>Market</th><th>Plays</th><th>Hit %</th><th>ROI (1u flat)</th><th>Net Units</th><th>Verdict</th></tr></thead>
+        <tbody id="segBody">
+          <tr><td colspan="6" class="muted" style="padding:14px; text-align:center;">Loading per-market performance from settled records…</td></tr>
         </tbody>
       </table>
     </div>
   </section>
+
+  <script>
+  // Per-market performance table: live from track_record.json
+  fetch("data/track_record.json", { cache: "no-cache" })
+    .then(r => r.json())
+    .then(tr => {
+      const props = (tr.props || []).filter(p => p.play_hit === true || p.play_hit === false);
+      const body = document.getElementById("segBody");
+      if (!body) return;
+      if (!props.length) {
+        body.innerHTML = `<tr><td colspan="6" class="muted" style="padding:14px; text-align:center;">No settled plays yet.</td></tr>`;
+        return;
+      }
+      const payoutUnits = price => price >= 0 ? price / 100 : 100 / Math.abs(price);
+      const byMarket = {};
+      for (const p of props) {
+        const m = p.market || "unknown";
+        if (!byMarket[m]) byMarket[m] = { n: 0, wins: 0, net: 0 };
+        const price = p.play === "OVER" ? p.dk_over : p.play === "UNDER" ? p.dk_under : -110;
+        byMarket[m].n++;
+        if (p.play_hit === true) {
+          byMarket[m].wins++;
+          byMarket[m].net += payoutUnits(price ?? -110);
+        } else {
+          byMarket[m].net -= 1;
+        }
+      }
+      const rows = Object.entries(byMarket).map(([m, s]) => ({
+        market: m,
+        n: s.n,
+        hit: s.n ? s.wins / s.n * 100 : 0,
+        roi: s.n ? s.net / s.n * 100 : 0,
+        net: s.net,
+      })).sort((a, b) => b.roi - a.roi);
+      body.innerHTML = rows.map(r => {
+        const verdict = r.roi >= 5 ? "STRONG" : r.roi >= 0 ? "CORE" : r.roi >= -3 ? "WATCH" : "SKIP";
+        const vCls = r.roi >= 0 ? "rec bet" : "rec pass";
+        const roiCls = r.roi >= 0 ? "positive" : "negative";
+        return `<tr>
+          <td>${r.market.replace(/_/g, " ")}</td>
+          <td>${r.n.toLocaleString()}</td>
+          <td>${r.hit.toFixed(1)}%</td>
+          <td class="${roiCls}">${r.roi >= 0 ? "+" : ""}${r.roi.toFixed(1)}%</td>
+          <td class="${roiCls}">${r.net >= 0 ? "+" : ""}${r.net.toFixed(1)}u</td>
+          <td class="${vCls}">${verdict}</td>
+        </tr>`;
+      }).join("");
+      const meta = document.getElementById("segMeta");
+      if (meta) meta.textContent = `${rows.length} markets · ${tr.last_settled_date || ""}`;
+    })
+    .catch(() => {});
+  </script>
 
 </main>
 

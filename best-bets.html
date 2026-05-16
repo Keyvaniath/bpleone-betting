@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Best Bets | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .bet-card { display:grid; grid-template-columns: 50px 1.6fr 1fr 70px 70px 80px; gap: 14px; padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.04); align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 12px; }
+  .bet-card.head { background: rgba(255,255,255,0.04); color: var(--muted, #888); font-size: 10px; text-transform: uppercase; }
+  .rank { font-weight: 700; font-size: 14px; }
+  .stars { color: #d4a04a; letter-spacing: 1px; }
+  .qpill { padding: 3px 10px; border-radius: 4px; font-size: 10px; text-transform: uppercase; font-weight: 700; }
+  .qpill.elite { background: rgba(88,200,120,0.20); color: #58c878; }
+  .qpill.strong { background: rgba(88,200,120,0.12); color: #58c878; }
+  .qpill.solid { background: rgba(212,160,74,0.15); color: #d4a04a; }
+  .qpill.fade { background: rgba(255,255,255,0.05); color: var(--muted, #888); }
+  .src-pill { padding: 2px 8px; border-radius: 3px; font-size: 10px; font-weight: 700; text-transform: uppercase; text-align: center; }
+  .src-pill.DK   { background: rgba(34,211,238,0.15); color: #22d3ee; }
+  .src-pill.PP   { background: rgba(212,160,74,0.15); color: #d4a04a; }
+  .src-pill.NRFI { background: rgba(88,200,120,0.12); color: #58c878; }
+  .src-pill.SGP  { background: rgba(178,93,231,0.18); color: #b25de7; }
+  .factors li { color: #58c878; padding: 2px 0; font-size: 11px; }
+  .risks li { color: #d4a04a; padding: 2px 0; font-size: 11px; }
+  .filter-bar { display: flex; gap: 8px; padding: 10px 0; flex-wrap: wrap; }
+  .filter-bar button { padding: 4px 12px; background: var(--bg-2); border: 1px solid var(--line); border-radius: 4px; color: var(--text); font-size: 11px; cursor: pointer; }
+  .filter-bar button.active { background: rgba(212,160,74,0.15); border-color: rgba(212,160,74,0.5); color: #d4a04a; }
+</style>
+</head>
+<body class="page-best">
+<header class="topbar">
+  <div class="brand">
+    <a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a>
+    <span class="tagline">by bpleone</span>
+  </div>
+  <nav class="mainnav">
+    <a href="index.html">Dashboard</a>
+    <a href="best-bets.html" class="active">Best Bets</a>
+    <a href="play-of-day.html">Play of the Day</a>
+    <a href="mlb.html">MLB</a>
+    <a href="research.html">Research</a>
+    <a href="matchups.html">Best Matchups</a>
+    <a href="parlays.html">Parlays</a>
+    <a href="pickem.html">Pick-Em</a>
+    <a href="nrfi.html">NRFI/YRFI</a>
+    <a href="brief.html">Brief</a>
+    <a href="learning.html">Learning</a>
+    <a href="training.html">Training</a>
+    <a href="residuals.html">Residuals</a>
+    <a href="audit.html">Audit</a>
+    <a href="live.html">Live</a>
+    <a href="props.html">Props</a>
+    <a href="player.html">Player</a>
+    <a href="learn.html">Learn</a>
+  </nav>
+  <div class="topbar-actions"><div class="ticker" id="liveTicker">LIVE</div></div>
+</header>
+
+<main class="container">
+
+  <section class="page-head">
+    <h1>Best Bets — Composite Quality Score</h1>
+    <p>Every market we score (DK props, PrizePicks softer lines, NRFI/YRFI, correlation-aware SGPs) ranked by a composite quality score (0-100) that incorporates edge, model confidence, per-player trust tier, lineup confirmation, weather alignment, and pitcher fatigue.</p>
+  </section>
+
+  <!-- Slate confidence tile -->
+  <section id="slateConfCard" class="card" style="margin-bottom: 18px; display: none;">
+    <div style="padding: 14px 18px; display: flex; align-items: center; gap: 24px; flex-wrap: wrap;">
+      <div>
+        <div class="muted" style="font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em;">Slate Confidence</div>
+        <div style="display:flex; align-items:baseline; gap: 10px; margin-top: 4px;">
+          <span id="slateScore" style="font-size: 38px; font-weight: 700; font-family:'JetBrains Mono',monospace;">--</span>
+          <span id="slateTier" style="padding: 3px 10px; border-radius: 4px; font-size: 10px; text-transform: uppercase; font-weight: 700;">--</span>
+        </div>
+      </div>
+      <div style="flex: 1;">
+        <div id="slateSummary" style="font-size: 13px; color: var(--text-2, #aaa); line-height: 1.6;"></div>
+        <div id="slateRec" style="margin-top: 8px; font-size: 13px; font-weight: 600;"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="metric-strip">
+    <div class="metric"><span class="metric-num" id="bbTotal">--</span><span class="metric-label">Bets Surfaced</span></div>
+    <div class="metric"><span class="metric-num" id="bbElite">--</span><span class="metric-label">Elite (88+)</span></div>
+    <div class="metric"><span class="metric-num" id="bbDk">--</span><span class="metric-label">DK Props</span></div>
+    <div class="metric"><span class="metric-num" id="bbPp">--</span><span class="metric-label">PP Softer</span></div>
+    <div class="metric"><span class="metric-num" id="bbNrfi">--</span><span class="metric-label">NRFI/YRFI</span></div>
+    <div class="metric"><span class="metric-num" id="bbSgp">--</span><span class="metric-label">SGPs</span></div>
+  </section>
+
+  <section class="card" style="margin-bottom: 24px;">
+    <div class="card-head"><span>📋 Ranked Best Bets</span><span class="muted" id="bbMeta">--</span></div>
+    <div class="filter-bar" style="padding: 10px 16px;">
+      <button class="bb-filter active" data-filter="">All sources</button>
+      <button class="bb-filter" data-filter="DK">DK only</button>
+      <button class="bb-filter" data-filter="PP">PrizePicks</button>
+      <button class="bb-filter" data-filter="NRFI">NRFI/YRFI</button>
+      <button class="bb-filter" data-filter="SGP">SGPs</button>
+      <button class="bb-filter" data-filter="elite">Elite (88+) only</button>
+    </div>
+    <div class="bet-card head">
+      <span>#</span><span>Bet</span><span>Source / Stars</span><span>Edge</span><span>Model%</span><span>Quality</span>
+    </div>
+    <div id="bbList"><p class="muted" style="padding:14px;">Loading best bets…</p></div>
+  </section>
+
+</main>
+
+<script src="js/nav_badge.js"></script>
+<script src="js/bet_tracker.js"></script>
+<script>
+(function(){
+  let _data = null;
+  let _filter = "";
+  function tier(qs) {
+    if (qs >= 88) return "elite";
+    if (qs >= 76) return "strong";
+    if (qs >= 62) return "solid";
+    return "fade";
+  }
+  function render() {
+    if (!_data) return;
+    const setText = (id, v) => { const e = document.getElementById(id); if (e) e.textContent = v; };
+    setText("bbTotal", _data.n_bets);
+    setText("bbElite", (_data.bets || []).filter(b => b.quality_score >= 88).length);
+    setText("bbDk", (_data.by_source || {}).DK || 0);
+    setText("bbPp", (_data.by_source || {}).PP || 0);
+    setText("bbNrfi", (_data.by_source || {}).NRFI || 0);
+    setText("bbSgp", (_data.by_source || {}).SGP || 0);
+    setText("bbMeta", `${_data.n_bets} of ${_data.total_candidates} candidates · ${(_data.generated_at || "").replace("T", " ")} UTC`);
+
+    let items = _data.bets || [];
+    if (_filter === "elite") items = items.filter(b => b.quality_score >= 88);
+    else if (_filter) items = items.filter(b => b.source === _filter);
+
+    document.getElementById("bbList").innerHTML = items.map(b => {
+      const star = "★".repeat(b.stars) + "☆".repeat(5 - b.stars);
+      const qt = tier(b.quality_score);
+      const factorsHtml = (b.factors || []).slice(0, 3).map(f => `<li>+ ${f}</li>`).join("");
+      const risksHtml = (b.risks || []).slice(0, 2).map(r => `<li>! ${r}</li>`).join("");
+      const betKey = `${b.source}|${b.player_id || 'na'}|${b.market || ''}|${b.line ?? ''}`;
+      return `<div class="bet-card"
+                   data-bet-key="${betKey}"
+                   data-bet-label="${(b.label || '').replace(/"/g, '&quot;')}"
+                   data-bet-pid="${b.player_id || ''}"
+                   data-bet-market="${b.market || ''}"
+                   data-bet-line="${b.line ?? ''}"
+                   data-bet-play="${b.play || ''}"
+                   data-bet-src="${b.source}">
+        <span class="rank">${b.rank}</span>
+        <div>
+          <div style="font-size: 13px; margin-bottom: 4px;"><a href="${b.url_anchor || '#'}" style="color: var(--text); text-decoration: underline; text-decoration-color: rgba(255,255,255,0.15);">${b.label}</a></div>
+          <ul class="factors" style="padding-left: 14px; margin: 0; list-style: none;">${factorsHtml}</ul>
+          <ul class="risks" style="padding-left: 14px; margin: 0; list-style: none;">${risksHtml}</ul>
+        </div>
+        <div style="display:flex; flex-direction: column; gap: 4px;">
+          <span class="src-pill ${b.source}">${b.source}</span>
+          <span class="stars">${star}</span>
+        </div>
+        <span>${b.edge_pct != null ? (b.edge_pct >= 0 ? '+' : '') + Number(b.edge_pct).toFixed(1) + '%' : '—'}</span>
+        <span>${b.model_prob != null ? (b.model_prob * 100).toFixed(1) + '%' : '—'}</span>
+        <span class="qpill ${qt}">${b.quality_score}/100</span>
+      </div>`;
+    }).join("");
+  }
+  fetch("data/best_bets.json", { cache: "no-cache" })
+    .then(r => r.json())
+    .then(d => { _data = d; render(); })
+    .catch(() => { document.getElementById("bbList").innerHTML = `<p class="muted" style="padding:14px;">best_bets.json unavailable. Run python best_bets.py to generate.</p>`; });
+  document.addEventListener("click", e => {
+    const btn = e.target.closest(".bb-filter");
+    if (!btn) return;
+    document.querySelectorAll(".bb-filter").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    _filter = btn.dataset.filter;
+    render();
+  });
+  // Slate confidence tile
+  fetch("data/slate_confidence.json", { cache: "no-cache" })
+    .then(r => r.json())
+    .then(s => {
+      if (s.score === undefined) return;
+      document.getElementById("slateConfCard").style.display = "block";
+      document.getElementById("slateScore").textContent = s.score;
+      const tier = s.tier || "medium";
+      const tEl = document.getElementById("slateTier");
+      tEl.textContent = tier.toUpperCase();
+      const colors = { high: "#58c878", medium: "#d4a04a", low: "#e35a5a" };
+      const c = colors[tier] || "#888";
+      tEl.style.background = c + "22";
+      tEl.style.color = c;
+      document.getElementById("slateScore").style.color = c;
+      document.getElementById("slateSummary").textContent = s.summary || "";
+      document.getElementById("slateRec").textContent = "Recommendation: " + (s.recommendation || "");
+      document.getElementById("slateRec").style.color = c;
+    })
+    .catch(() => {});
+})();
+</script>
+
+</body>
+</html>
