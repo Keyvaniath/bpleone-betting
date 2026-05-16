@@ -65,31 +65,23 @@
 
   <section class="grid-2">
     <div class="card">
-      <div class="card-head"><span>🏆 Best 5 Plays YTD</span></div>
+      <div class="card-head"><span>🏆 Best 5 Plays</span><span class="muted" id="bestPlaysMeta">--</span></div>
       <div class="table-wrap">
         <table class="data-table">
           <thead><tr><th>Date</th><th>Play</th><th>Price</th><th>Stake</th><th>P/L</th></tr></thead>
-          <tbody>
-            <tr><td>3/29</td><td class="matchup">Dodgers ML</td><td>+154</td><td>1.5u</td><td class="positive">+2.31u</td></tr>
-            <tr><td>4/14</td><td class="matchup">Ohtani O0.5 HR</td><td>+275</td><td>0.7u</td><td class="positive">+1.93u</td></tr>
-            <tr><td>4/22</td><td class="matchup">COL/CIN OVER 11</td><td>+108</td><td>1.6u</td><td class="positive">+1.73u</td></tr>
-            <tr><td>5/02</td><td class="matchup">Crochet O7.5 K</td><td>+115</td><td>1.3u</td><td class="positive">+1.50u</td></tr>
-            <tr><td>5/08</td><td class="matchup">Yankees -1.5</td><td>+125</td><td>1.1u</td><td class="positive">+1.38u</td></tr>
+          <tbody id="bestPlaysBody">
+            <tr><td colspan="5" class="muted" style="padding:14px; text-align:center;">Loading…</td></tr>
           </tbody>
         </table>
       </div>
     </div>
     <div class="card">
-      <div class="card-head"><span>📉 Worst 5 Plays YTD</span></div>
+      <div class="card-head"><span>📉 Worst 5 Plays</span><span class="muted" id="worstPlaysMeta">--</span></div>
       <div class="table-wrap">
         <table class="data-table">
           <thead><tr><th>Date</th><th>Play</th><th>Price</th><th>Stake</th><th>P/L</th></tr></thead>
-          <tbody>
-            <tr><td>4/03</td><td class="matchup">Astros -1.5</td><td>+118</td><td>2.1u</td><td class="negative">-2.10u</td></tr>
-            <tr><td>4/19</td><td class="matchup">Skubal O7.5 K</td><td>-130</td><td>1.8u</td><td class="negative">-1.80u</td></tr>
-            <tr><td>4/27</td><td class="matchup">Mets/Phils UNDER 8</td><td>-110</td><td>1.5u</td><td class="negative">-1.50u</td></tr>
-            <tr><td>5/05</td><td class="matchup">Padres ML</td><td>-148</td><td>1.4u</td><td class="negative">-1.40u</td></tr>
-            <tr><td>5/11</td><td class="matchup">Judge O1.5 TB</td><td>+120</td><td>1.2u</td><td class="negative">-1.20u</td></tr>
+          <tbody id="worstPlaysBody">
+            <tr><td colspan="5" class="muted" style="padding:14px; text-align:center;">Loading…</td></tr>
           </tbody>
         </table>
       </div>
@@ -191,6 +183,68 @@ fetch("data/track_record.json", { cache: "no-cache" })
       note.innerHTML = `<strong>Real track record:</strong> ${graded.length} graded plays, ${wins} wins / ${losses} losses (${hitPct.toFixed(1)}% hit rate). Last settled date ${tr.last_settled_date || "?"}.`;
     }
     head.appendChild(note);
+
+    // Best / Worst 5 plays -- live from settled records
+    if (graded.length > 0) {
+      const withPL = graded.map(p => {
+        const price = p.play === "OVER" ? p.dk_over : p.play === "UNDER" ? p.dk_under : -110;
+        const pl = p.play_hit === true ? payoutUnits(price ?? -110) : -1;
+        return { ...p, _pl: pl, _price: price ?? -110 };
+      });
+      const bestRows = withPL.slice().sort((a, b) => b._pl - a._pl).slice(0, 5);
+      const worstRows = withPL.slice().sort((a, b) => a._pl - b._pl).slice(0, 5);
+      const renderRow = (p) => {
+        const pl = p._pl;
+        const cls = pl >= 0 ? "positive" : "negative";
+        const label = `${p.player || ""} ${p.play || ""} ${(p.market || "").replace(/_/g, " ")} ${p.line ?? ""}`.trim();
+        return `<tr>
+          <td>${p.date || ""}</td>
+          <td class="matchup">${label}</td>
+          <td>${p._price >= 0 ? "+" : ""}${p._price}</td>
+          <td>1.0u</td>
+          <td class="${cls}">${pl >= 0 ? "+" : ""}${pl.toFixed(2)}u</td>
+        </tr>`;
+      };
+      document.getElementById("bestPlaysBody").innerHTML = bestRows.map(renderRow).join("");
+      document.getElementById("worstPlaysBody").innerHTML = worstRows.map(renderRow).join("");
+      document.getElementById("bestPlaysMeta").textContent = `top 5 of ${graded.length}`;
+      document.getElementById("worstPlaysMeta").textContent = `bot 5 of ${graded.length}`;
+
+      // Cumulative P&L chart (last 30 plays)
+      const chart = document.getElementById("plChart");
+      if (chart && window.Chart) {
+        const last30 = withPL.slice(-30);
+        let run = 0;
+        const data = last30.map((p, i) => { run += p._pl; return run; });
+        const labels = last30.map((p, i) => p.date || String(i+1));
+        new Chart(chart.getContext("2d"), {
+          type: "line",
+          data: {
+            labels,
+            datasets: [{
+              label: "Cumulative units",
+              data,
+              borderColor: "#58c878",
+              backgroundColor: "rgba(88,200,120,0.10)",
+              fill: true,
+              tension: 0.25,
+              pointRadius: 2,
+            }],
+          },
+          options: {
+            responsive: true, maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            scales: {
+              x: { ticks: { color: "#888", maxTicksLimit: 8 }, grid: { color: "rgba(255,255,255,0.04)" } },
+              y: { ticks: { color: "#888" }, grid: { color: "rgba(255,255,255,0.04)" } },
+            },
+          },
+        });
+      }
+    } else {
+      document.getElementById("bestPlaysBody").innerHTML = `<tr><td colspan="5" class="muted" style="padding:14px; text-align:center;">No settled plays yet.</td></tr>`;
+      document.getElementById("worstPlaysBody").innerHTML = `<tr><td colspan="5" class="muted" style="padding:14px; text-align:center;">No settled plays yet.</td></tr>`;
+    }
 
     // Also push a real-records section above any synthetic sample data
     if (graded.length > 0) {

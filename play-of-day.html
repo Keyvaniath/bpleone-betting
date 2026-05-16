@@ -124,71 +124,53 @@
     </div>
     <div class="card">
       <div class="card-head"><span>📋 Game Conditions</span></div>
-      <ul style="list-style:none; padding:0; margin:0; font-size: 14px;">
-        <li style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid var(--line-soft);"><span class="muted">Park</span><span>Petco (0.91 run factor)</span></li>
-        <li style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid var(--line-soft);"><span class="muted">Weather</span><span>62°F, marine layer, 6mph in</span></li>
-        <li style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid var(--line-soft);"><span class="muted">Umpire</span><span>Carlos Torres (wide zone)</span></li>
-        <li style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid var(--line-soft);"><span class="muted">LAD starter</span><span>Yamamoto (R) — 2.89 xFIP</span></li>
-        <li style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid var(--line-soft);"><span class="muted">SDP starter</span><span>Darvish (R) — 4.12 xFIP</span></li>
-        <li style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid var(--line-soft);"><span class="muted">LAD bullpen ERA</span><span>3.41 (top 5)</span></li>
-        <li style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid var(--line-soft);"><span class="muted">SDP bullpen ERA</span><span>4.28 (bot 10)</span></li>
-        <li style="display:flex; justify-content:space-between; padding:8px 0;"><span class="muted">Injury concerns</span><span>Betts day-to-day (probable)</span></li>
+      <ul id="gameCondList" style="list-style:none; padding:0; margin:0; font-size: 14px;">
+        <li class="muted" style="padding:8px 0; text-align:center;">Loading tonight's game conditions…</li>
       </ul>
     </div>
   </section>
 
   <section class="card" style="margin-bottom:28px;">
-    <div class="card-head"><span>💸 Multi-Book Line Shop</span><span class="muted">last refreshed 12 min ago</span></div>
+    <div class="card-head"><span>💸 Current Book Line</span><span class="muted" id="lineShopMeta">--</span></div>
     <div class="table-wrap">
       <table class="data-table">
-        <thead><tr><th>Book</th><th>LAD ML</th><th>SDP ML</th><th>Total</th><th>Vig</th><th>Edge vs. Model</th></tr></thead>
-        <tbody>
-          <tr><td class="matchup">Pinnacle</td><td>-152</td><td>+138</td><td>O/U 8.0 (-105/-115)</td><td>2.1%</td><td class="edge-pos">+4.9%</td></tr>
-          <tr><td class="matchup">DraftKings</td><td>-148</td><td>+126</td><td>O/U 8.0 (-110/-110)</td><td>4.5%</td><td class="edge-pos">+5.4%</td></tr>
-          <tr><td class="matchup">FanDuel</td><td>-146</td><td>+124</td><td>O/U 8.0 (-108/-112)</td><td>4.6%</td><td class="edge-pos">+5.6%</td></tr>
-          <tr><td class="matchup">Caesars</td><td>-150</td><td>+128</td><td>O/U 8.0 (-110/-110)</td><td>4.4%</td><td class="edge-pos">+5.1%</td></tr>
-          <tr><td class="matchup">BetMGM</td><td>-148</td><td>+126</td><td>O/U 8.0 (-115/-105)</td><td>4.5%</td><td class="edge-pos">+5.4%</td></tr>
-          <tr><td class="matchup">ESPN BET</td><td>-145</td><td>+122</td><td>O/U 8.0 (-110/-110)</td><td>4.7%</td><td class="edge-pos">+5.7%</td></tr>
+        <thead><tr><th>Book</th><th>Home ML</th><th>Away ML</th><th>Total</th><th>Model Edge</th></tr></thead>
+        <tbody id="lineShopBody">
+          <tr><td colspan="5" class="muted" style="padding:14px; text-align:center;">Loading current market line…</td></tr>
         </tbody>
       </table>
     </div>
-    <p class="caption">Shop for the best number. ESPN BET currently offers the strongest price (-145). Pinnacle (-152) is the sharp benchmark used to set model fair prices.</p>
+    <p class="caption">Single-book pricing for now (Bovada or DK depending on availability). Multi-book CSV shop is on the roadmap.</p>
   </section>
 
   <section class="card" style="margin-bottom:28px;">
-    <div class="card-head"><span>🐋 Sharp Money Signal</span></div>
-    <div class="grid-3" style="margin-bottom:0;">
+    <div class="card-head"><span>📉 Line Movement (CLV)</span><span class="muted" id="clvMeta">--</span></div>
+    <div class="grid-3" id="clvGrid" style="margin-bottom:0;">
       <div>
-        <div class="muted">Public Tickets</div>
-        <div style="font-size: 30px; font-weight: 800; color: var(--red); font-family:'JetBrains Mono', monospace;">36%</div>
-        <div class="caption">On Dodgers ML — public is fading</div>
+        <div class="muted">Opening Price</div>
+        <div style="font-size: 30px; font-weight: 800; color: var(--text-2); font-family:'JetBrains Mono', monospace;" id="clvOpen">--</div>
+        <div class="caption" id="clvOpenCap">--</div>
       </div>
       <div>
-        <div class="muted">Total Handle</div>
-        <div style="font-size: 30px; font-weight: 800; color: var(--accent); font-family:'JetBrains Mono', monospace;">71%</div>
-        <div class="caption">On Dodgers ML — sharp money</div>
+        <div class="muted">Closing Price</div>
+        <div style="font-size: 30px; font-weight: 800; color: var(--accent); font-family:'JetBrains Mono', monospace;" id="clvClose">--</div>
+        <div class="caption" id="clvCloseCap">--</div>
       </div>
       <div>
-        <div class="muted">Line Movement</div>
-        <div style="font-size: 30px; font-weight: 800; color: var(--gold); font-family:'JetBrains Mono', monospace;">-138 → -148</div>
-        <div class="caption">Reverse line move = steam</div>
+        <div class="muted">CLV vs Model</div>
+        <div style="font-size: 30px; font-weight: 800; color: var(--gold); font-family:'JetBrains Mono', monospace;" id="clvDelta">--</div>
+        <div class="caption" id="clvDeltaCap">--</div>
       </div>
     </div>
   </section>
 
   <section class="card" style="margin-bottom:28px;">
-    <div class="card-head"><span>🎲 Alternate Plays on This Game</span></div>
+    <div class="card-head"><span>🎲 Alternate Plays on This Game</span><span class="muted" id="altPlaysMeta">--</span></div>
     <div class="table-wrap">
       <table class="data-table">
-        <thead><tr><th>Market</th><th>Side</th><th>Best Price</th><th>Model</th><th>Edge</th><th>Recommendation</th></tr></thead>
-        <tbody>
-          <tr><td>Moneyline</td><td class="matchup">LAD</td><td>-145 (ESPN BET)</td><td>-178</td><td class="edge-pos">+5.4%</td><td class="rec bet">★ PLAY OF DAY — 1.7u</td></tr>
-          <tr><td>Run Line</td><td class="matchup">LAD -1.5</td><td>+118 (DraftKings)</td><td>+105</td><td class="edge-pos">+2.9%</td><td class="rec lean">LEAN — 0.5u</td></tr>
-          <tr><td>Total</td><td class="matchup">UNDER 8.0</td><td>-115 (Pinnacle)</td><td>-130</td><td class="edge-pos">+2.1%</td><td class="rec lean">LEAN — 0.5u</td></tr>
-          <tr><td>First-5 ML</td><td class="matchup">LAD F5</td><td>-138 (FanDuel)</td><td>-155</td><td class="edge-pos">+2.4%</td><td class="rec lean">LEAN — 0.5u</td></tr>
-          <tr><td>NRFI</td><td class="matchup">No Run 1st Inning</td><td>-130 (Caesars)</td><td>-148</td><td class="edge-pos">+3.1%</td><td class="rec bet">BET — 0.8u</td></tr>
-          <tr><td>Prop</td><td class="matchup">Yamamoto O6.5 Ks</td><td>-115 (BetMGM)</td><td>-160</td><td class="edge-pos">+5.7%</td><td class="rec bet">BET — 1.1u</td></tr>
-          <tr><td>Prop</td><td class="matchup">Ohtani O0.5 HR</td><td>+260 (FanDuel)</td><td>+210</td><td class="edge-pos">+6.1%</td><td class="rec bet">BET — 0.6u</td></tr>
+        <thead><tr><th>Market</th><th>Side</th><th>Price</th><th>Model %</th><th>Edge</th><th>Recommendation</th></tr></thead>
+        <tbody id="altPlaysBody">
+          <tr><td colspan="6" class="muted" style="padding:14px; text-align:center;">Loading alternate plays from today.json…</td></tr>
         </tbody>
       </table>
     </div>
@@ -359,8 +341,128 @@ fetch("data/today.json", { cache: "no-cache" })
       const callout = narrCard.querySelector(".callout");
       if (callout) callout.innerHTML = `<strong>Bottom line:</strong> ${pod.matchup} ${pod.label}, ${isPreCal ? "<= 0.5u (pre-calibration)" : pod.kelly_units + "u Kelly"}.`;
     }
+
+    // ---- Game Conditions live ----
+    const gcList = document.getElementById("gameCondList");
+    if (gcList && game) {
+      const items = [];
+      items.push(["Park", game.park || "—"]);
+      const w = game.weather || {};
+      if (w.is_indoor) {
+        items.push(["Weather", "Indoor / roof"]);
+      } else {
+        const dirs = ["N","NE","E","SE","S","SW","W","NW"];
+        const compass = w.wind_dir_deg !== undefined && w.wind_dir_deg !== null ? dirs[Math.round((w.wind_dir_deg % 360) / 45) % 8] : "";
+        items.push(["Weather", `${w.temp_f ?? "?"}°F, wind ${w.wind_mph ?? "?"}mph ${compass}, carry ${w.carry_index?.toFixed?.(2) ?? "—"}`]);
+      }
+      const u = game.umpire || {};
+      if (u.ump_name) items.push(["Umpire", `${u.ump_name}${u.ump_label ? ` (${u.ump_label})` : ""}${u.ump_k_mult ? ` · K×${u.ump_k_mult.toFixed(2)}` : ""}`]);
+      if (game.market) items.push(["Market book", `${game.market.book || "—"} · total ${game.market.total ?? "—"}`]);
+      if (game.model) {
+        items.push(["Model fair total", String(game.model.fair_total ?? "—")]);
+        items.push(["Model P(home win)", ((game.model.p_home_win ?? 0) * 100).toFixed(1) + "%"]);
+      }
+      // Pitchers from matchupsData if available
+      if (matchupsData && matchupsData.games) {
+        const md = matchupsData.games.find(g => g.matchup === pod.matchup);
+        if (md) {
+          if (md.away_pitcher && md.away_pitcher.name) {
+            const s = md.away_pitcher.season || {};
+            items.push(["Away SP", `${md.away_pitcher.name} (${md.away_pitcher.hand}HP) · ${s.era ?? "?"} ERA / ${s.fip ?? "?"} FIP / K9 ${s.k9 ?? "?"}`]);
+          }
+          if (md.home_pitcher && md.home_pitcher.name) {
+            const s = md.home_pitcher.season || {};
+            items.push(["Home SP", `${md.home_pitcher.name} (${md.home_pitcher.hand}HP) · ${s.era ?? "?"} ERA / ${s.fip ?? "?"} FIP / K9 ${s.k9 ?? "?"}`]);
+          }
+        }
+      }
+      gcList.innerHTML = items.map(([k, v]) =>
+        `<li style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid var(--line-soft);"><span class="muted">${k}</span><span>${v}</span></li>`
+      ).join("");
+    }
+
+    // ---- Current Book Line ----
+    const lineBody = document.getElementById("lineShopBody");
+    if (lineBody && game && game.market) {
+      const m = game.market;
+      const ml = pod.model_price;
+      const bk = pod.market_price;
+      const edge = (ml !== null && bk !== null && ml !== undefined && bk !== undefined)
+        ? ((bk < 0 ? -bk / (-bk + 100) : 100 / (bk + 100)) - (ml < 0 ? -ml / (-ml + 100) : 100 / (ml + 100))) * 100
+        : null;
+      lineBody.innerHTML = `<tr>
+        <td class="matchup">${m.book || "—"}</td>
+        <td>${m.home_ml ?? "—"}</td>
+        <td>${m.away_ml ?? "—"}</td>
+        <td>${m.total ?? "—"}</td>
+        <td class="${edge != null && edge > 0 ? 'edge-pos' : ''}">${edge != null ? (edge >= 0 ? '+' : '') + edge.toFixed(2) + '%' : '—'}</td>
+      </tr>`;
+      const meta = document.getElementById("lineShopMeta");
+      if (meta) meta.textContent = `refreshed ${(d.generated_at || "").replace("T", " ")} UTC`;
+    }
+
+    // ---- Alternate Plays ----
+    const altBody = document.getElementById("altPlaysBody");
+    if (altBody && game) {
+      const recs = (game.recommendations || []).slice().sort((a, b) => (b.edge_pct || 0) - (a.edge_pct || 0));
+      if (!recs.length) {
+        altBody.innerHTML = `<tr><td colspan="6" class="muted" style="padding:14px; text-align:center;">No alternate plays this game.</td></tr>`;
+      } else {
+        altBody.innerHTML = recs.slice(0, 8).map(r => {
+          const ep = r.edge_pct;
+          const cls = ep >= 5 ? "rec bet" : ep >= 3 ? "rec lean" : "rec skip";
+          const verdict = ep >= 5 ? `BET — ${(r.kelly_units ?? 0).toFixed(1)}u` : ep >= 3 ? `LEAN — ${(r.kelly_units ?? 0).toFixed(1)}u` : "SKIP";
+          const isPod = r.label && pod.label && r.label === pod.label && r.market === pod.market;
+          return `<tr>
+            <td>${r.market || "—"}</td>
+            <td class="matchup">${r.label || "—"}</td>
+            <td>${r.price ?? r.market_price ?? "—"}</td>
+            <td>${r.model_prob != null ? (r.model_prob * 100).toFixed(1) + "%" : "—"}</td>
+            <td class="${ep > 0 ? 'edge-pos' : ''}">${ep != null ? (ep >= 0 ? '+' : '') + ep.toFixed(2) + '%' : "—"}</td>
+            <td class="${cls}">${isPod ? '★ ' : ''}${verdict}</td>
+          </tr>`;
+        }).join("");
+      }
+      const meta = document.getElementById("altPlaysMeta");
+      if (meta) meta.textContent = `${recs.length} plays scored · refreshed ${(d.generated_at || "").slice(0, 10)}`;
+    }
   })
   .catch(err => console.error("today.json load failed:", err));
+
+// ---- Line Movement / CLV ----
+fetch("data/clv_log.json", { cache: "no-cache" })
+  .then(r => r.json())
+  .then(c => {
+    fetch("data/today.json", { cache: "no-cache" }).then(r => r.json()).then(t => {
+      const pod = t.play_of_day;
+      if (!pod) return;
+      const recs = (c.records || []).filter(r => r.matchup === pod.matchup);
+      const rec = recs[recs.length - 1];
+      const setText = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
+      if (!rec) {
+        setText("clvOpen", "—");
+        setText("clvClose", "—");
+        setText("clvDelta", "no log");
+        setText("clvOpenCap", "no opening snapshot for this matchup yet");
+        setText("clvCloseCap", "");
+        setText("clvDeltaCap", "");
+        return;
+      }
+      setText("clvOpen", rec.open_price ?? "—");
+      setText("clvClose", rec.close_price ?? "—");
+      const clv = rec.clv_pct;
+      if (clv != null) {
+        setText("clvDelta", (clv >= 0 ? "+" : "") + clv + "%");
+        document.getElementById("clvDelta").style.color = clv > 0 ? "#58c878" : clv < 0 ? "#e35a5a" : "var(--gold)";
+        setText("clvDeltaCap", clv >= 0 ? "you beat the close ✓" : "close beat your entry");
+      }
+      setText("clvOpenCap", `open: ${rec.open_implied_pct ?? "?"}% implied`);
+      setText("clvCloseCap", `close: ${rec.close_implied_pct ?? "?"}% implied`);
+      const meta = document.getElementById("clvMeta");
+      if (meta) meta.textContent = rec.date || "";
+    });
+  })
+  .catch(() => {});
 </script>
 </body>
 </html>

@@ -56,11 +56,11 @@
       <div class="kicker">ALGORITHMIC SPORTS INTELLIGENCE</div>
       <h1>The market is a number. <span class="accent">We trade the gap.</span></h1>
       <p class="lede">EdgeStat is a quantitative sports-betting research desk. We model every game, expose where the books mis-price the market, and surface the highest-edge play in the league each morning. Think of it as Unusual Whales — for the diamond, the gridiron, and the hardwood.</p>
-      <div class="hero-stats">
-        <div class="stat"><div class="stat-value">+14.7<span class="unit">u</span></div><div class="stat-label">YTD Net Units</div></div>
-        <div class="stat"><div class="stat-value">57.3<span class="unit">%</span></div><div class="stat-label">Model Hit Rate</div></div>
-        <div class="stat"><div class="stat-value">7.2<span class="unit">%</span></div><div class="stat-label">Average ROI</div></div>
-        <div class="stat"><div class="stat-value">2,418</div><div class="stat-label">Closed Plays</div></div>
+      <div class="hero-stats" id="heroStats">
+        <div class="stat"><div class="stat-value" id="hsNetUnits">--<span class="unit">u</span></div><div class="stat-label">YTD Net Units</div></div>
+        <div class="stat"><div class="stat-value" id="hsHitRate">--<span class="unit">%</span></div><div class="stat-label">Model Hit Rate</div></div>
+        <div class="stat"><div class="stat-value" id="hsROI">--<span class="unit">%</span></div><div class="stat-label">Average ROI</div></div>
+        <div class="stat"><div class="stat-value" id="hsClosed">--<span class="unit"></span></div><div class="stat-label">Closed Plays</div></div>
       </div>
       <div class="hero-cta">
         <a href="play-of-day.html" class="btn-primary big">View Today's Play of the Day</a>
@@ -113,36 +113,18 @@
     <div class="card big-card play-card">
       <div class="card-head">
         <span class="pill gold">★ PLAY OF THE DAY</span>
-        <span class="muted">May 13, 2026 • 7:05pm ET</span>
+        <span class="muted" id="podStamp">loading…</span>
       </div>
-      <h2 class="play-title">Dodgers <span class="accent">ML</span> vs. Padres</h2>
+      <h2 class="play-title" id="podTitle">Loading tonight's play…</h2>
       <div class="play-grid">
-        <div class="play-stat">
-          <div class="stat-label">Model Price</div>
-          <div class="stat-value-big">-178</div>
-        </div>
-        <div class="play-stat">
-          <div class="stat-label">Book Price</div>
-          <div class="stat-value-big">-148</div>
-        </div>
-        <div class="play-stat">
-          <div class="stat-label">Implied Edge</div>
-          <div class="stat-value-big positive">+5.4%</div>
-        </div>
-        <div class="play-stat">
-          <div class="stat-label">Confidence</div>
-          <div class="stat-value-big">High</div>
-        </div>
-        <div class="play-stat">
-          <div class="stat-label">Kelly Stake</div>
-          <div class="stat-value-big">1.7u</div>
-        </div>
-        <div class="play-stat">
-          <div class="stat-label">Win Prob</div>
-          <div class="stat-value-big">64.0%</div>
-        </div>
+        <div class="play-stat"><div class="stat-label">Model Price</div><div class="stat-value-big" id="podModelPrice">--</div></div>
+        <div class="play-stat"><div class="stat-label">Book Price</div><div class="stat-value-big" id="podBookPrice">--</div></div>
+        <div class="play-stat"><div class="stat-label">Implied Edge</div><div class="stat-value-big positive" id="podEdge">--</div></div>
+        <div class="play-stat"><div class="stat-label">Confidence</div><div class="stat-value-big" id="podConf">--</div></div>
+        <div class="play-stat"><div class="stat-label">Kelly Stake</div><div class="stat-value-big" id="podKelly">--</div></div>
+        <div class="play-stat"><div class="stat-label">Win Prob</div><div class="stat-value-big" id="podWinProb">--</div></div>
       </div>
-      <p class="play-summary">Our 12-factor starter+lineup+park+bullpen ensemble prices LAD at a 64% win expectancy. The market is at 59.7%. The wedge is driven by an underrated platoon advantage versus the SDP righty and a top-3 LAD bullpen ERA-FIP delta. Sharp money signal triggered at <strong>11:42am ET</strong>.</p>
+      <p class="play-summary" id="podSummary">Loading rationale from today.json…</p>
       <a href="play-of-day.html" class="btn-primary">Full Breakdown →</a>
     </div>
 
@@ -487,6 +469,72 @@ fetch("data/clv_log.json", { cache: "no-cache" })
     if (el) el.textContent = recs.length ? String(recs.length) : "--";
   })
   .catch(() => { const el = document.getElementById("mSharp"); if (el) el.textContent = "--"; });
+
+// Hero stats: pull from track_record + clv_log (live, no hardcoded numbers)
+(function loadHeroStats() {
+  const setText = (id, v) => { const el = document.getElementById(id); if (el) el.firstChild.textContent = v; };
+  fetch("data/track_record.json", { cache: "no-cache" })
+    .then(r => r.json())
+    .then(tr => {
+      const props = (tr.props || []).filter(p => p.play_hit === true || p.play_hit === false);
+      if (!props.length) return;
+      const wins = props.filter(p => p.play_hit === true).length;
+      const losses = props.length - wins;
+      const payoutUnits = price => price >= 0 ? price / 100 : 100 / Math.abs(price);
+      let net = 0;
+      for (const p of props) {
+        if (p.play_hit === true) {
+          const price = p.play === "OVER" ? p.dk_over : p.play === "UNDER" ? p.dk_under : -110;
+          net += payoutUnits(price ?? -110);
+        } else {
+          net -= 1;
+        }
+      }
+      const roi = (net / props.length) * 100;
+      const hr = wins / props.length * 100;
+      setText("hsNetUnits", (net >= 0 ? "+" : "") + net.toFixed(1));
+      setText("hsHitRate", hr.toFixed(1));
+      setText("hsROI", (roi >= 0 ? "+" : "") + roi.toFixed(1));
+      setText("hsClosed", props.length.toLocaleString());
+    })
+    .catch(() => {});
+})();
+
+// Play of the Day preview: pulled live from today.json
+(function loadPOD() {
+  fetch("data/today.json", { cache: "no-cache" })
+    .then(r => r.json())
+    .then(t => {
+      const pod = t.play_of_day;
+      if (!pod) return;
+      const titleEl = document.getElementById("podTitle");
+      if (titleEl) titleEl.innerHTML = `${pod.matchup} — <span class="accent">${pod.label || ""}</span>`;
+      const fmt = (p) => p === null || p === undefined ? "--" : (p >= 0 ? "+" : "") + p;
+      const stampEl = document.getElementById("podStamp");
+      if (stampEl) {
+        const stamp = (t.generated_at || "").slice(0, 10);
+        const time = pod.time || "tonight";
+        stampEl.textContent = `${stamp} • ${time}`;
+      }
+      const setText = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
+      setText("podModelPrice", fmt(pod.model_price));
+      setText("podBookPrice",  fmt(pod.market_price));
+      const edge = pod.edge_pct;
+      const edgeEl = document.getElementById("podEdge");
+      if (edgeEl) {
+        edgeEl.textContent = edge !== null && edge !== undefined ? (edge >= 0 ? "+" : "") + edge.toFixed(1) + "%" : "--";
+        edgeEl.classList.toggle("positive", edge !== null && edge !== undefined && edge >= 0);
+      }
+      const isPrecal = (pod.edge_pct ?? 0) >= 15;
+      setText("podConf", isPrecal ? "Calibrating" : (pod.confidence || (pod.edge_pct >= 5 ? "High" : pod.edge_pct >= 3 ? "Medium" : "Low")));
+      setText("podKelly", isPrecal ? "≤0.5u" : ((pod.kelly_units !== undefined && pod.kelly_units !== null) ? pod.kelly_units + "u" : "--"));
+      setText("podWinProb", (pod.model_prob !== undefined && pod.model_prob !== null) ? (pod.model_prob * 100).toFixed(1) + "%" : "--");
+      const summary = pod.summary || pod.rationale
+        || `${pod.matchup} — model prices ${pod.label || "this side"} at ${(pod.model_prob*100).toFixed(1)}% vs the book's implied. ${isPrecal ? "Edge above 15% triggers calibration mode (sub-Kelly sizing recommended)." : ""}`;
+      setText("podSummary", summary);
+    })
+    .catch(() => {});
+})();
 
 // Model Confidence card (0-100 score + tier)
 fetch("data/model_confidence.json", { cache: "no-cache" })
