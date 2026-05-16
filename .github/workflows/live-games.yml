@@ -68,11 +68,38 @@ jobs:
         working-directory: python
         run: python scratch_alerts.py
 
+      # Auto-detect "locked" props (already crossed the line + player done).
+      - name: Lock detector
+        working-directory: python
+        run: python lock_detector.py
+
+      # Bullpen warming + save-opportunity detector from MLB feed.
+      - name: Bullpen warming watcher
+        working-directory: python
+        run: python bullpen_warming.py
+
+      # Injury news scanner: MLB transactions feed, alerts on slate players.
+      - name: Injury news scanner (Discord ping)
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        working-directory: python
+        run: python injury_news.py
+
+      # Live-total drift: score-aware recompute of fair total vs market.
+      - name: Live total drift
+        working-directory: python
+        run: python live_total_drift.py
+
+      # Steam radar: multi-cycle line-move trajectory tracking.
+      - name: Steam-move radar
+        working-directory: python
+        run: python steam_detector.py
+
       - name: Commit if state changed
         run: |
           git config user.name  "edgestat-bot"
           git config user.email "actions@github.com"
-          git add data/live_state.json data/live_clv.json data/live_edges.json data/live_props.json data/lineup_churn.json data/k_pace.json data/scratch_alerts.json data/.scratch_alerted.json
+          git add data/live_state.json data/live_clv.json data/live_edges.json data/live_props.json data/lineup_churn.json data/k_pace.json data/scratch_alerts.json data/.scratch_alerted.json data/locked_props.json data/bullpen_warming.json data/injury_news.json data/.injury_news_seen.json data/live_total_drift.json data/steam_alerts.json data/.line_history.json
           if git diff --cached --quiet; then
             echo "No live games or no state changes."
           else

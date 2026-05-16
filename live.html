@@ -48,6 +48,138 @@
     <p>Pre-game models tell you who should win. In-game models tell you the live fair price after every pitch. Built on a Monte Carlo simulator that integrates the base-out run-expectancy matrix. This is how live betting markets should be priced — and aren't.</p>
   </section>
 
+  <!-- Locked / cashing props (NEW) -->
+  <section id="lockedCard" class="card" style="margin-bottom: 18px; display:none;">
+    <div class="card-head"><span>🔒 Locked Props</span><span class="muted" id="lockMeta">--</span></div>
+    <div style="padding: 8px 14px 14px;">
+      <p class="muted" style="font-size: 11px; margin: 0 0 8px 0;">Props already over their line where the player is done — these will cash. Consider PP/DK early-cashout if offered.</p>
+      <div id="lockList"></div>
+    </div>
+  </section>
+  <script>
+  fetch("data/locked_props.json?t=" + Date.now(), { cache: "no-cache" })
+    .then(r => r.json())
+    .then(d => {
+      const arr = d.locked || [];
+      if (!arr.length) return;
+      document.getElementById("lockedCard").style.display = "block";
+      document.getElementById("lockMeta").textContent = `${d.n_locked} locked, ${d.n_can_cashout} confirmed (player done)`;
+      document.getElementById("lockList").innerHTML = arr.map(l => `<div style="display:grid; grid-template-columns: 1.4fr 1.4fr 80px 80px 1fr 1fr; gap:14px; padding:8px 0; border-bottom:1px solid rgba(255,255,255,0.04); font-family:'JetBrains Mono',monospace; font-size:11px; align-items:center;">
+        <span><strong><a href="player.html?id=${l.player_id}" style="color: var(--text); text-decoration: underline; text-decoration-color: rgba(255,255,255,0.15);">${l.player}</a></strong></span>
+        <span>${(l.market||"").replace(/_/g," ")} ${l.play} ${l.line}</span>
+        <span style="color:#58c878; font-weight:700;">${l.actual_so_far}</span>
+        <span class="muted">${l.src}</span>
+        <span style="color: ${l.player_done ? '#58c878' : '#d4a04a'}; font-weight:700;">${l.player_done ? 'CONFIRMED' : 'PROVISIONAL'}</span>
+        <span class="muted" style="font-size:10px;">${l.suggested_action}</span>
+      </div>`).join("");
+    })
+    .catch(() => {});
+  </script>
+
+  <!-- Bullpen warming + save opps (NEW) -->
+  <section id="bpWarmCard" class="card" style="margin-bottom: 18px; display:none;">
+    <div class="card-head"><span>🚨 Bullpen Warming + Save Opps</span><span class="muted" id="bpwMeta">--</span></div>
+    <div style="padding: 8px 14px 14px;" id="bpwList"></div>
+  </section>
+  <script>
+  fetch("data/bullpen_warming.json?t=" + Date.now(), { cache: "no-cache" })
+    .then(r => r.json())
+    .then(d => {
+      const g = d.by_game || [];
+      if (!g.length) return;
+      document.getElementById("bpWarmCard").style.display = "block";
+      document.getElementById("bpwMeta").textContent = `${d.n_in_progress} live · ${d.n_save_opps} save opps · ${d.n_warming_signals} warming signals`;
+      document.getElementById("bpwList").innerHTML = g.map(x => {
+        const saveTag = x.is_save_opp ? '<span style="padding:2px 8px;border-radius:3px;background:rgba(212,160,74,0.18);color:#d4a04a;font-size:9px;font-weight:700;">SAVE OPP</span>' : '';
+        const sigs = (x.warming_signals || []).map(s => `<div style="font-size:10px;color:var(--text-2,#aaa);padding-left:8px;">> ${s}</div>`).join("");
+        return `<div style="padding:8px 0; border-bottom:1px solid rgba(255,255,255,0.04); font-family:'JetBrains Mono',monospace; font-size:11px;">
+          <div style="display:flex; justify-content:space-between;">
+            <span><strong>${x.matchup}</strong> · inn ${x.inning} ${x.inning_state} · ${x.score}</span>
+            <span>${saveTag}</span>
+          </div>
+          ${sigs}
+        </div>`;
+      }).join("");
+    })
+    .catch(() => {});
+  </script>
+
+  <!-- Injury news (NEW) -->
+  <section id="injCard" class="card" style="margin-bottom: 18px; display:none;">
+    <div class="card-head"><span>🏥 Injury News (last 3 days)</span><span class="muted" id="injMeta">--</span></div>
+    <div style="padding: 8px 14px 14px;" id="injList"></div>
+  </section>
+  <script>
+  fetch("data/injury_news.json?t=" + Date.now(), { cache: "no-cache" })
+    .then(r => r.json())
+    .then(d => {
+      const a = d.alerts || [];
+      if (!a.length) return;
+      document.getElementById("injCard").style.display = "block";
+      document.getElementById("injMeta").textContent = `${a.length} fresh alerts in ${d.scanned_window}`;
+      document.getElementById("injList").innerHTML = a.map(x => `<div style="display:grid; grid-template-columns:90px 1.4fr 1.4fr 2fr; gap:14px; padding:8px 0; border-bottom:1px solid rgba(255,255,255,0.04); font-family:'JetBrains Mono',monospace; font-size:11px;">
+        <span class="muted">${x.date || ""}</span>
+        <span><a href="player.html?id=${x.player_id}" style="color: var(--text); text-decoration: underline; text-decoration-color: rgba(255,255,255,0.15);">${x.player}</a> <span class="muted">(${x.team || ""})</span></span>
+        <span style="color:#e35a5a; font-weight: 700;">${x.type}</span>
+        <span class="muted">${x.description}</span>
+      </div>`).join("");
+    })
+    .catch(() => {});
+  </script>
+
+  <!-- Live total drift (NEW) -->
+  <section id="ltdCard" class="card" style="margin-bottom: 18px; display:none;">
+    <div class="card-head"><span>📊 Live Total Drift</span><span class="muted" id="ltdMeta">--</span></div>
+    <div style="padding: 8px 14px 14px;" id="ltdList"></div>
+  </section>
+  <script>
+  fetch("data/live_total_drift.json?t=" + Date.now(), { cache: "no-cache" })
+    .then(r => r.json())
+    .then(d => {
+      const g = d.by_game || [];
+      if (!g.length) return;
+      document.getElementById("ltdCard").style.display = "block";
+      document.getElementById("ltdMeta").textContent = `${d.n_games_live} live games`;
+      const lc = { OVER: "#58c878", UNDER: "#e35a5a", neutral: "var(--text-2, #aaa)" };
+      document.getElementById("ltdList").innerHTML = g.map(x => `<div style="display:grid; grid-template-columns:1.4fr 80px 70px 80px 80px 80px 80px 80px; gap:14px; padding:8px 0; border-bottom:1px solid rgba(255,255,255,0.04); font-family:'JetBrains Mono',monospace; font-size:11px; align-items:center;">
+        <span><strong>${x.matchup}</strong></span>
+        <span class="muted">inn ${x.inning} (${x.half})</span>
+        <span>${x.score}</span>
+        <span class="muted">open ${x.opening_fair_total}</span>
+        <span>now ${x.current_fair_total}</span>
+        <span style="color: ${x.drift_runs > 0 ? '#58c878' : x.drift_runs < 0 ? '#e35a5a' : 'var(--text-2,#aaa)'};">${x.drift_runs > 0 ? '+' : ''}${x.drift_runs}</span>
+        <span class="muted">mkt ${x.pre_game_market_total || '—'}</span>
+        <span style="padding:2px 8px; border-radius:3px; background:${lc[x.lean]}22; color:${lc[x.lean]}; font-weight:700; text-align:center; font-size:10px;">${x.lean}</span>
+      </div>`).join("");
+    })
+    .catch(() => {});
+  </script>
+
+  <!-- Steam alerts (NEW) -->
+  <section id="steamCard" class="card" style="margin-bottom: 18px; display:none;">
+    <div class="card-head"><span>♨️ Steam-Move Radar</span><span class="muted" id="steamMeta">--</span></div>
+    <div style="padding: 8px 14px 14px;" id="steamList"></div>
+  </section>
+  <script>
+  fetch("data/steam_alerts.json?t=" + Date.now(), { cache: "no-cache" })
+    .then(r => r.json())
+    .then(d => {
+      const a = d.alerts || [];
+      if (!a.length) return;
+      document.getElementById("steamCard").style.display = "block";
+      document.getElementById("steamMeta").textContent = `${d.n_alerts} alerts · ${d.n_props_tracked} props tracked`;
+      document.getElementById("steamList").innerHTML = a.map(x => `<div style="display:grid; grid-template-columns:1.4fr 1.4fr 60px 100px 80px 1fr; gap:14px; padding:8px 0; border-bottom:1px solid rgba(255,255,255,0.04); font-family:'JetBrains Mono',monospace; font-size:11px; align-items:center;">
+        <span><strong><a href="player.html?id=${x.player_id}" style="color: var(--text); text-decoration: underline; text-decoration-color: rgba(255,255,255,0.15);">${x.player}</a></strong></span>
+        <span>${(x.market||"").replace(/_/g," ")} ${x.line}</span>
+        <span style="color: ${x.side_moving === 'OVER' ? '#58c878' : '#e35a5a'}; font-weight: 700;">${x.side_moving}</span>
+        <span>${x.history.join(' → ')}</span>
+        <span style="color: ${x.cumulative_move_cents < 0 ? '#e35a5a' : '#58c878'};">${x.cumulative_move_cents > 0 ? '+' : ''}${x.cumulative_move_cents}c</span>
+        <span class="muted" style="font-size:10px;">${x.note}</span>
+      </div>`).join("");
+    })
+    .catch(() => {});
+  </script>
+
   <!-- Live K-pace alerts (NEW) -->
   <section id="kPaceCard" class="card" style="margin-bottom: 18px; display:none;">
     <div class="card-head"><span>⚡ Live K-Pace Alerts</span><span class="muted" id="kpMeta">--</span></div>
