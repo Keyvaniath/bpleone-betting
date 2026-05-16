@@ -379,6 +379,26 @@ jobs:
         working-directory: python
         run: python trap_detector.py
 
+      # Per-prop confidence interval via bootstrap (uncertainty band on the
+      # model probability for every best bet).
+      - name: Per-prop confidence intervals
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        working-directory: python
+        run: python per_prop_ci.py
+
+      # Weather drift detector: alerts when game-time wind/temp shifts
+      # materially vs morning forecast.
+      - name: Weather drift detector
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        working-directory: python
+        run: python forecast_weather_drift.py
+
+      # Per-player rolling-5-game streak chart data for /player sparklines.
+      - name: Build streak chart data
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        working-directory: python
+        run: python streak_chart_data.py
+
       # Auto-brief: tight markdown digest of tonight's slate.
       # Pulls from best_bets, slate_confidence, fatigue, weather, hot_streaks,
       # nrfi, sgps, bullpen, traps, portfolio, bankroll_sim. Powers /brief.
