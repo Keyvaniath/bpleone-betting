@@ -229,36 +229,140 @@ def _ip_to_float(ip_val: Any) -> float:
         return 0.0
 
 
-def _park_splits_from_gamelog(games: List[Dict[str, Any]], tonight_park: Optional[str]) -> Dict[str, Any]:
-    """Slice player_gamelogs by park: tonight's park vs all-other-parks averages.
-    Surfaces 'do they crush at THIS park or struggle?' for tonight's slate."""
+def _safe_num(g, key, default=0):
+    v = g.get(key)
+    return v if isinstance(v, (int, float)) else default
+
+
+def _park_splits_from_gamelog(games: List[Dict[str, Any]], tonight_park: Optional[str], is_pitcher: bool = False) -> Dict[str, Any]:
+    """Slice player_gamelogs by venue. With the enriched gamelog (PR #43), every
+    row tags `venue`. Surfaces 'do they crush at THIS park or struggle?'."""
     if not games or not tonight_park:
         return {}
-    def _safe(g, key, d=0):
-        v = g.get(key)
-        return v if isinstance(v, (int, float)) else d
     here, away = [], []
     for g in games:
-        venue = (g.get("park") or g.get("venue") or "").strip()
+        venue = (g.get("venue") or g.get("park") or "").strip()
         if not venue:
             continue
-        (here if tonight_park and venue.lower() == tonight_park.lower() else away).append(g)
+        (here if venue.lower() == tonight_park.lower() else away).append(g)
     def _agg(rows):
         if not rows:
             return None
-        ab = sum(_safe(g, "ab") for g in rows)
-        h = sum(_safe(g, "hits") for g in rows)
-        hr = sum(_safe(g, "hr") for g in rows)
-        tb = sum(_safe(g, "tb") for g in rows)
-        return {
-            "n_games": len(rows),
-            "ab": ab, "h": h, "hr": hr, "tb": tb,
-            "avg": round(h / ab, 3) if ab else None,
-            "slg": round(tb / ab, 3) if ab else None,
-            "hr_per_game": round(hr / len(rows), 3) if rows else None,
-        }
+        if is_pitcher:
+            ip = sum(_ip_to_float(g.get("ip")) for g in rows)
+            er = sum(_safe_num(g, "er") for g in rows)
+            k = sum(_safe_num(g, "k") for g in rows)
+            bb = sum(_safe_num(g, "bb") for g in rows)
+            return {"n_games": len(rows), "ip": round(ip, 1),
+                    "era": round((er * 9) / ip, 2) if ip > 0 else None,
+                    "k9":  round((k * 9) / ip, 2) if ip > 0 else None,
+                    "bb9": round((bb * 9) / ip, 2) if ip > 0 else None}
+        ab = sum(_safe_num(g, "ab") for g in rows)
+        h = sum(_safe_num(g, "hits") for g in rows)
+        hr = sum(_safe_num(g, "hr") for g in rows)
+        tb = sum(_safe_num(g, "tb") for g in rows)
+        return {"n_games": len(rows), "ab": ab, "h": h, "hr": hr, "tb": tb,
+                "avg": round(h / ab, 3) if ab else None,
+                "slg": round(tb / ab, 3) if ab else None,
+                "hr_per_game": round(hr / len(rows), 3) if rows else None}
     return {"at_park": _agg(here), "at_other_parks": _agg(away),
             "park_name": tonight_park}
+
+
+def _day_night_from_gamelog(games: List[Dict[str, Any]], is_pitcher: bool = False) -> Dict[str, Any]:
+    """Day vs night splits from the enriched gamelog (`is_night` tag)."""
+    if not games:
+        return {}
+    day_g, night_g = [], []
+    for g in games:
+        v = g.get("is_night")
+        if v is True:  night_g.append(g)
+        elif v is False: day_g.append(g)
+    def _agg(rows):
+        if not rows:
+            return None
+        if is_pitcher:
+            ip = sum(_ip_to_float(g.get("ip")) for g in rows)
+            er = sum(_safe_num(g, "er") for g in rows)
+            k = sum(_safe_num(g, "k") for g in rows)
+            return {"n": len(rows), "era": round((er * 9) / ip, 2) if ip > 0 else None,
+                    "k9": round((k * 9) / ip, 2) if ip > 0 else None}
+        ab = sum(_safe_num(g, "ab") for g in rows)
+        h = sum(_safe_num(g, "hits") for g in rows)
+        tb = sum(_safe_num(g, "tb") for g in rows)
+        return {"n": len(rows), "ab": ab, "avg": round(h / ab, 3) if ab else None,
+                "slg": round(tb / ab, 3) if ab else None}
+    return {"day": _agg(day_g), "night": _agg(night_g)}
+
+
+def _travel_from_gamelog(games: List[Dict[str, Any]], is_pitcher: bool = False) -> Dict[str, Any]:
+    """Slice games by inter-game gap: 0-day (back-to-back), 1-day (normal),
+    2+ day (rested). Plus day-after-night (early-arrival fatigue proxy)."""
+    if not games:
+        return {}
+    dated = []
+    for g in games:
+        d = g.get("date")
+        if not d:
+            continue
+        try:
+            dt_o = dt.date.fromisoformat(d)
+            dated.append((dt_o, g))
+        except Exception:
+            continue
+    dated.sort(key=lambda x: x[0])
+    b2b, normal, rested = [], [], []
+    day_after_night = []
+    for i in range(1, len(dated)):
+        gap = (dated[i][0] - dated[i-1][0]).days
+        g = dated[i][1]
+        if gap == 0:        b2b.append(g)
+        elif gap == 1:      normal.append(g)
+        else:               rested.append(g)
+        # day-after-night: yesterday was night, today is day
+        prev_night = dated[i-1][1].get("is_night") is True
+        today_day = dated[i][1].get("is_night") is False
+        if prev_night and today_day and gap <= 1:
+            day_after_night.append(g)
+    def _agg(rows):
+        if not rows:
+            return None
+        if is_pitcher:
+            ip = sum(_ip_to_float(g.get("ip")) for g in rows)
+            er = sum(_safe_num(g, "er") for g in rows)
+            return {"n": len(rows), "era": round((er * 9) / ip, 2) if ip > 0 else None}
+        ab = sum(_safe_num(g, "ab") for g in rows)
+        h = sum(_safe_num(g, "hits") for g in rows)
+        return {"n": len(rows), "ab": ab, "avg": round(h / ab, 3) if ab else None}
+    return {
+        "back_to_back": _agg(b2b),
+        "normal_gap_1d": _agg(normal),
+        "rested_2plus_d": _agg(rested),
+        "day_after_night": _agg(day_after_night),
+    }
+
+
+def _vs_umpire_from_tr(tr_props: List[Dict[str, Any]], pid: int) -> List[Dict[str, Any]]:
+    """If track_record records have an `ump` field (added at settle time --
+    populated forward-looking from outcomes.py going forward), aggregate
+    this player's hit rate by HP umpire. Returns sorted list of ump rows."""
+    mine = [r for r in tr_props if r.get("player_id") == pid
+            and r.get("ump") and (r.get("play_hit") is True or r.get("play_hit") is False)]
+    if not mine:
+        return []
+    by_ump: Dict[str, Dict[str, int]] = {}
+    for r in mine:
+        u = r["ump"]
+        if u not in by_ump:
+            by_ump[u] = {"n": 0, "wins": 0}
+        by_ump[u]["n"] += 1
+        if r["play_hit"] is True:
+            by_ump[u]["wins"] += 1
+    rows = [{"ump": u, "n": v["n"], "wins": v["wins"],
+              "hit_rate": round(v["wins"] / v["n"], 3) if v["n"] else None}
+            for u, v in by_ump.items() if v["n"] >= 2]
+    rows.sort(key=lambda x: -(x["hit_rate"] or 0))
+    return rows[:10]
 
 
 def _days_rest_for_pitcher(games: List[Dict[str, Any]]) -> Dict[str, Any]:
@@ -276,7 +380,7 @@ def _days_rest_for_pitcher(games: List[Dict[str, Any]]) -> Dict[str, Any]:
             dated.append((dt_o, g))
         except Exception:
             continue
-    dated.sort()
+    dated.sort(key=lambda x: x[0])
     buckets: Dict[str, List[Dict[str, Any]]] = {"short": [], "normal": [], "extra": [], "long": []}
     for i in range(1, len(dated)):
         gap = (dated[i][0] - dated[i-1][0]).days
@@ -605,6 +709,15 @@ def run() -> Dict[str, Any]:
         pitch_type = _pitch_type_from_arsenal(tonight)
         # Pitcher rest buckets (gamelog-only, no API)
         rest_buckets = _days_rest_for_pitcher(games) if kind == "pitcher" else {}
+        # NEW: park splits from enriched gamelog
+        tonight_park = (tonight or {}).get("park")
+        park_splits = _park_splits_from_gamelog(games, tonight_park, is_pitcher=(kind == "pitcher"))
+        # NEW: day vs night splits from enriched gamelog
+        day_night = _day_night_from_gamelog(games, is_pitcher=(kind == "pitcher"))
+        # NEW: travel + back-to-back from gamelog date gaps
+        travel = _travel_from_gamelog(games, is_pitcher=(kind == "pitcher"))
+        # NEW: vs-umpire from track_record (requires ump field on settled props)
+        vs_ump = _vs_umpire_from_tr(tr_props, pid)
         acc = _player_accuracy(tr_props, pid)
         # Active per-player bias override (if any)
         biases = []
@@ -641,6 +754,10 @@ def run() -> Dict[str, Any]:
             "lineup_spot": lineup_spot,
             "pitch_type": pitch_type,
             "days_rest": rest_buckets,
+            "park_splits": park_splits,
+            "day_night_gamelog": day_night,
+            "travel": travel,
+            "vs_umpire": vs_ump,
             "model_accuracy": acc,
             "recent_props": mine,
             "active_bias_overrides": biases,

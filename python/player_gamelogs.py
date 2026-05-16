@@ -65,9 +65,35 @@ def _player_ids_today() -> Dict[int, Dict[str, str]]:
     return out
 
 
-def _batter_gamelog(pid: int, n: int = GAMELOG_DEPTH) -> List[Dict[str, Any]]:
-    """Pull last N games batting gamelog via MLB Stats API. Cached in stats_repo."""
+# Lazily-populated team_id -> home_park_name map. Lets us tag venue per game
+# from the batter gamelog without N extra schedule-lookups per game.
+_TEAM_VENUES: Dict[int, str] = {}
+
+
+def _ensure_team_venues() -> None:
+    """One-shot fetch of team_id -> home_park_name. Free, single API call."""
+    global _TEAM_VENUES
+    if _TEAM_VENUES:
+        return
     import requests
+    try:
+        r = requests.get("https://statsapi.mlb.com/api/v1/teams",
+                         params={"sportId": 1}, timeout=10).json()
+        for t in r.get("teams") or []:
+            tid = t.get("id")
+            v = (t.get("venue") or {}).get("name")
+            if tid and v:
+                _TEAM_VENUES[tid] = v
+    except Exception:
+        pass
+
+
+def _batter_gamelog(pid: int, n: int = GAMELOG_DEPTH) -> List[Dict[str, Any]]:
+    """Pull last N games batting gamelog via MLB Stats API. Cached in stats_repo.
+    Enriched with venue + is_home + is_night so downstream park / day-night
+    splits can be derived without extra API calls."""
+    import requests
+    _ensure_team_venues()
     try:
         r = requests.get(
             f"https://statsapi.mlb.com/api/v1/people/{pid}/stats",
@@ -79,7 +105,14 @@ def _batter_gamelog(pid: int, n: int = GAMELOG_DEPTH) -> List[Dict[str, Any]]:
         for s in splits[-n:][::-1]:    # most recent first
             st = s.get("stat") or {}
             opp = (s.get("opponent") or {}).get("abbreviation") or "?"
+            opp_id = (s.get("opponent") or {}).get("id")
+            team_id = (s.get("team") or {}).get("id")
             d = s.get("date") or ""
+            is_home = bool(s.get("isHome"))
+            day_night = ((s.get("game") or {}).get("dayNight") or "").lower()
+            # Venue = home team's park
+            venue_team_id = team_id if is_home else opp_id
+            venue = _TEAM_VENUES.get(venue_team_id) if venue_team_id else None
             hits = int(st.get("hits") or 0)
             doubles = int(st.get("doubles") or 0)
             triples = int(st.get("triples") or 0)
@@ -89,6 +122,10 @@ def _batter_gamelog(pid: int, n: int = GAMELOG_DEPTH) -> List[Dict[str, Any]]:
             out.append({
                 "date": d,
                 "vs": opp,
+                "is_home": is_home,
+                "venue": venue,
+                "is_night": day_night == "night",
+                "game_pk": (s.get("game") or {}).get("gamePk"),
                 "ab": int(st.get("atBats") or 0),
                 "hits": hits,
                 "tb": tb,
@@ -97,6 +134,7 @@ def _batter_gamelog(pid: int, n: int = GAMELOG_DEPTH) -> List[Dict[str, Any]]:
                 "runs": int(st.get("runs") or 0),
                 "k": int(st.get("strikeOuts") or 0),
                 "bb": int(st.get("baseOnBalls") or 0),
+                "pa": int(st.get("plateAppearances") or 0),
             })
         return out
     except Exception:
@@ -104,8 +142,50 @@ def _batter_gamelog(pid: int, n: int = GAMELOG_DEPTH) -> List[Dict[str, Any]]:
 
 
 def _pitcher_gamelog(pid: int, n: int = GAMELOG_DEPTH) -> List[Dict[str, Any]]:
-    """Pull last N starts pitching gamelog. Pitchers start every 4-5 days,
-    so 14 games covers ~60 days of starts."""
+    """Pull last N starts pitching gamelog via MLB Stats API directly so we
+    can enrich with venue + is_home + is_night (the stats_repo wrapper
+    doesn't surface those). Falls back to sr if the direct call fails."""
+    import requests
+    _ensure_team_venues()
+    try:
+        r = requests.get(
+            f"https://statsapi.mlb.com/api/v1/people/{pid}/stats",
+            params={"stats": "gameLog", "group": "pitching", "season": dt.date.today().year},
+            timeout=10,
+        ).json()
+        splits = ((r.get("stats") or [{}])[0].get("splits") or [])
+        out = []
+        for s in splits[-n:][::-1]:
+            st = s.get("stat") or {}
+            opp = (s.get("opponent") or {}).get("abbreviation") or "?"
+            opp_id = (s.get("opponent") or {}).get("id")
+            team_id = (s.get("team") or {}).get("id")
+            d = s.get("date") or ""
+            is_home = bool(s.get("isHome"))
+            day_night = ((s.get("game") or {}).get("dayNight") or "").lower()
+            venue_team_id = team_id if is_home else opp_id
+            venue = _TEAM_VENUES.get(venue_team_id) if venue_team_id else None
+            # ip comes as "5.2" string -- keep raw, downstream normalizes
+            out.append({
+                "date": d,
+                "vs": opp,
+                "is_home": is_home,
+                "venue": venue,
+                "is_night": day_night == "night",
+                "game_pk": (s.get("game") or {}).get("gamePk"),
+                "ip": st.get("inningsPitched"),
+                "k": int(st.get("strikeOuts") or 0),
+                "er": int(st.get("earnedRuns") or 0),
+                "bb": int(st.get("baseOnBalls") or 0),
+                "h": int(st.get("hits") or 0),
+                "hr": int(st.get("homeRuns") or 0),
+                "bf": int(st.get("battersFaced") or 0),
+            })
+        if out:
+            return out
+    except Exception:
+        pass
+    # Fallback to stats_repo
     try:
         gl = sr.pitcher_gamelog(pid) or []
         out = []
@@ -113,6 +193,7 @@ def _pitcher_gamelog(pid: int, n: int = GAMELOG_DEPTH) -> List[Dict[str, Any]]:
             out.append({
                 "date": g.get("date"),
                 "vs": g.get("opp"),
+                "is_home": None, "venue": None, "is_night": None,
                 "ip": g.get("ip"),
                 "k": g.get("k"),
                 "er": g.get("er"),

@@ -89,16 +89,26 @@ jobs:
 
       # Per-player gamelogs (last 14 games/starts) for the sparkline on
       # the player deep-dive page. Caps at 350 players to respect API quota.
+      # NOW enriched with venue + is_home + is_night per game so downstream
+      # park / day-night / travel splits work without extra API calls.
       - name: Pull player gamelogs (last 14)
         if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
         working-directory: python
         run: python player_gamelogs.py
 
+      # One-shot enrichment of track_record settled props with HP umpire +
+      # venue + day/night tags (where missing). Caps at 500 records per run
+      # to be polite to MLB Stats API. Idempotent + safe to repeat.
+      - name: Backfill track_record context (ump / venue / night)
+        if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
+        working-directory: python
+        run: python backfill_context.py
+
       # Per-player deep-dive precompute: aggregates season + career + L/R + H/A
       # splits from MLB Stats API (free), joins with matchups for BvP H2H +
-      # pitch-arsenal xwOBA, and with track_record for player-specific model
-      # accuracy + trust tier. Powers /player.html.
-      - name: Build player breakdowns (splits + BvP + accuracy)
+      # pitch-arsenal xwOBA, derives park / day-night / travel / vs-umpire
+      # from the enriched gamelog + track_record. Powers /player.html.
+      - name: Build player breakdowns (splits + BvP + park + travel + umpire)
         if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
         working-directory: python
         run: python player_breakdown.py

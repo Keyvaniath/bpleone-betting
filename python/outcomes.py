@@ -132,6 +132,23 @@ def game_winner(bs: Dict[str, Any]) -> Optional[str]:
 
 # -------------------- Settlement --------------------
 
+def _hp_umpire_from_boxscore(bs: Dict[str, Any]) -> Optional[str]:
+    """Extract the home-plate umpire name from a finalized boxscore.
+    Returns None when the field is missing."""
+    officials = bs.get("officials") or []
+    for o in officials:
+        kind = ((o.get("officialType") or "")).lower()
+        if "home plate" in kind or "homeplate" in kind:
+            return ((o.get("official") or {}).get("fullName")) or None
+    return None
+
+
+def _venue_from_schedule(sched_entry: Dict[str, Any]) -> Optional[str]:
+    """Extract venue name from a schedule entry; falls back to None."""
+    v = (sched_entry.get("venue") or {}).get("name")
+    return v or None
+
+
 def settle_prop(prop: Dict[str, Any], outcomes_for_game: Dict[str, Any]) -> Optional[Dict[str, Any]]:
     """Return a settled record or None if we can't settle yet."""
     pid = prop.get("player_id")
@@ -190,6 +207,11 @@ def settle_prop(prop: Dict[str, Any], outcomes_for_game: Dict[str, Any]) -> Opti
         "edge_pct": prop.get("best_edge_pct"),
         "low_confidence": prop.get("low_confidence", False),
         "play_hit": _did_play_hit(prop.get("play"), over_won),
+        # NEW: tag context for player breakdowns. None when missing.
+        "ump": outcomes_for_game.get("ump"),
+        "venue": outcomes_for_game.get("venue"),
+        "game_pk": outcomes_for_game.get("game_pk"),
+        "is_night": outcomes_for_game.get("is_night"),
     }
 
 
@@ -243,11 +265,17 @@ def settle_date(date_iso: str) -> Dict[str, Any]:
     outcomes_by_pk: Dict[int, Dict[str, Any]] = {}
     for f in finals:
         bs = f["boxscore"]
+        sched = f.get("schedule") or {}
         outcomes_by_pk[f["gamePk"]] = {
             "pitchers": pitchers_from_boxscore(bs),
             "batters": batters_from_boxscore(bs),
             "total_runs": game_total(bs),
             "winner": game_winner(bs),
+            # NEW: context tags for downstream player-breakdown panels
+            "ump": _hp_umpire_from_boxscore(bs),
+            "venue": _venue_from_schedule(sched),
+            "game_pk": f["gamePk"],
+            "is_night": ((sched.get("dayNight") or "").lower() == "night"),
         }
     # Build a name -> gamePk join for props (props.json doesn't carry gamePk)
     # by matching player_id -> the unique gamePk that lists them
