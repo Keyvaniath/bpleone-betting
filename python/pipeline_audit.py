@@ -82,7 +82,7 @@ ARTIFACTS: List[Dict[str, Any]] = [
     {"name": "lineup_quality.json",       "cadence_mins":  8*60},
     {"name": "injuries_live.json",        "cadence_mins":  8*60},
     {"name": "travel.json",               "cadence_mins":  8*60},
-    {"name": "pythag.json",               "cadence_mins": 24*60},
+    {"name": "pythagorean.json",          "cadence_mins": 24*60},
     {"name": "transactions.json",         "cadence_mins": 24*60},
     {"name": "batter_form.json",          "cadence_mins":  8*60},
     {"name": "research_depth.json",       "cadence_mins":  8*60},
@@ -99,7 +99,7 @@ ARTIFACTS: List[Dict[str, Any]] = [
     {"name": "live_clv.json",             "cadence_mins":  20},
     {"name": "live_edges.json",           "cadence_mins":  20},
     {"name": "live_props.json",           "cadence_mins":  20},
-    {"name": "k_pace.json",               "cadence_mins":  20},
+    {"name": "k_pace.json",               "cadence_mins":  20, "optional": True},
     # Optional / stubs
     {"name": "nba_state.json",            "cadence_mins": 24*60, "optional": True},
     {"name": "nfl_state.json",            "cadence_mins": 24*60, "optional": True},
