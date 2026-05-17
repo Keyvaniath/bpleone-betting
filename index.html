@@ -221,6 +221,17 @@
     </div>
   </section>
 
+  <!-- Multi-sport top picks (cross-sport best of everything) -->
+  <section class="card" id="multiSportTopCard" style="margin-bottom: 28px; border-left: 3px solid #d4a04a;">
+    <div class="card-head">
+      <span>🌐 <strong>Today's Top Picks Across All Sports</strong></span>
+      <span class="muted" id="multiSportTopMeta">--</span>
+    </div>
+    <div style="padding: 4px 0;" id="multiSportTopList">
+      <p class="muted" style="padding:14px;">Loading cross-sport top picks…</p>
+    </div>
+  </section>
+
   <!-- NBA + NHL multi-sport cards -->
   <section style="margin-bottom: 28px; display:grid; grid-template-columns: 1fr 1fr; gap: 18px;" id="multiSportRow">
     <div class="card" id="nbaCard" style="display:none;">
@@ -445,6 +456,39 @@ Promise.all([
     document.getElementById("golfTourneyPotMeta").textContent = "—";
   }
 }).catch(()=>{});
+
+// Multi-sport top picks card
+fetch("data/multi_sport_top.json?t=" + Date.now(), { cache: "no-cache" })
+  .then(r => r.json())
+  .then(d => {
+    const picks = d.picks || [];
+    if (!picks.length) return;
+    const fmtAmer = (a) => a == null ? "—" : (a >= 0 ? "+" + a : String(a));
+    document.getElementById("multiSportTopMeta").textContent =
+      `${d.n_sports || 0} sport${d.n_sports===1?'':'s'} surfaced · refreshed ${(d.generated_at || '').slice(11,16)} UTC`;
+    document.getElementById("multiSportTopList").innerHTML = picks.map(p => `
+      <a href="${p.page}" style="display:flex; align-items:center; justify-content:space-between;
+                                  padding: 12px 16px; border-bottom: 1px solid rgba(255,255,255,0.04);
+                                  text-decoration:none; color: inherit;
+                                  border-left: 3px solid ${p.color};">
+        <div style="display:flex; align-items:center; gap:14px;">
+          <span style="background:${p.color}; color:#fff; padding:3px 9px; border-radius:4px;
+                       font-size:10px; font-weight:700; min-width:42px; text-align:center;">${p.sport}</span>
+          <div>
+            <div style="font-weight:600; font-size:13px;">${p.label || ''}</div>
+            <div class="muted" style="font-size:10px; margin-top:2px;">
+              ${p.confidence || 'MED'} conviction
+              ${p.model_prob != null ? '· model ' + (p.model_prob*100).toFixed(1) + '%' : ''}
+              ${p.reasoning ? '· ' + p.reasoning.slice(0, 80) : ''}
+            </div>
+          </div>
+        </div>
+        <div style="text-align:right; font-family: 'JetBrains Mono', monospace;
+                    color: ${p.color}; font-size: 16px; font-weight:700;">${fmtAmer(p.fair_american)}</div>
+      </a>
+    `).join("");
+  })
+  .catch(()=>{});
 
 // NBA + NHL scoreboard cards
 const renderSport = (data, cardId, titleId, metaId, bodyId, anchor, emoji) => {

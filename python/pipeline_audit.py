@@ -134,6 +134,10 @@ ARTIFACTS: List[Dict[str, Any]] = [
     {"name": "cs_pot_history.json",       "cadence_mins":  8*60},
     # Self-learning calibration across LoL + CS + KBO
     {"name": "esports_calibration.json",  "cadence_mins":  8*60},
+    # Multi-sport top picks aggregator + LoL parlays + CS map handicap
+    {"name": "multi_sport_top.json",      "cadence_mins":  8*60},
+    {"name": "lol_parlays.json",          "cadence_mins":  8*60},
+    {"name": "cs_maphandicap.json",       "cadence_mins":  8*60},
     # Optional / stubs
     {"name": "nfl_state.json",            "cadence_mins": 24*60, "optional": True},
     # Loop tracking (from PR #38/#39 -- present only after those merge)

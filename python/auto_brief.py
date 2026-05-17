@@ -212,6 +212,67 @@ def run() -> Dict[str, Any]:
                          f"{score} | P(home) {ph:.1f}% fair {g.get('fair_home_american','?'):+d} | {g.get('status','?')}")
         lines.append("")
 
+    # KBO scoreboard
+    kbo = _load(os.path.join(DATA_DIR, "kbo_state.json"))
+    kbo_props = _load(os.path.join(DATA_DIR, "kbo_props.json"))
+    kbo_pot = _load(os.path.join(DATA_DIR, "kbo_bestbet.json")).get("top_bet")
+    kbo_preds = kbo_props.get("predictions") or []
+    if kbo_preds:
+        lines.append(f"## KBO -- {kbo.get('season',2026)} Korean Baseball")
+        for g in kbo_preds[:5]:
+            ph = (g.get('p_home_win') if g.get('p_home_win') is not None else 0.5) * 100
+            lines.append(f"- {g.get('away_team')} @ {g.get('home_team')} | "
+                         f"P(home) {ph:.1f}% fair {g.get('fair_home_american','?'):+d} "
+                         f"| total {g.get('model_total','?')} R")
+        if kbo_pot:
+            lines.append(f"- **KBO POD:** {kbo_pot.get('label')} ({kbo_pot.get('confidence','MED')})")
+        lines.append("")
+
+    # LoL esports
+    lol_state = _load(os.path.join(DATA_DIR, "lol_state.json"))
+    lol_props = _load(os.path.join(DATA_DIR, "lol_props.json"))
+    lol_pot = _load(os.path.join(DATA_DIR, "lol_bestbet.json")).get("top_bet")
+    lol_preds = lol_props.get("predictions") or []
+    if lol_preds:
+        lines.append(f"## LoL Esports -- {lol_state.get('n_live',0)} live, {lol_state.get('n_upcoming',0)} upcoming")
+        for m in lol_preds[:5]:
+            pa = (m.get('p_series_a') if m.get('p_series_a') is not None else 0.5) * 100
+            lines.append(f"- [{m.get('league')}] {m.get('team_a')} vs {m.get('team_b')} BO{m.get('best_of',1)} | "
+                         f"P(A) {pa:.1f}% fair {m.get('fair_a_american','?'):+d}/{m.get('fair_b_american','?'):+d}")
+        if lol_pot:
+            lines.append(f"- **LoL POT:** {lol_pot.get('label')} ({lol_pot.get('confidence','MED')})")
+        lines.append("")
+
+    # CS esports
+    cs_state = _load(os.path.join(DATA_DIR, "cs_state.json"))
+    cs_props = _load(os.path.join(DATA_DIR, "cs_props.json"))
+    cs_pot = _load(os.path.join(DATA_DIR, "cs_bestbet.json")).get("top_bet")
+    cs_preds = cs_props.get("predictions") or []
+    if cs_preds:
+        lines.append(f"## CS Esports -- {cs_state.get('n_matches',0)} matches ({cs_state.get('data_source','?')})")
+        for m in cs_preds[:5]:
+            pa = (m.get('p_series_a') if m.get('p_series_a') is not None else 0.5) * 100
+            lines.append(f"- {m.get('team_a')} vs {m.get('team_b')} BO{m.get('best_of',3)} | "
+                         f"P(A) {pa:.1f}% fair {m.get('fair_a_american','?'):+d}/{m.get('fair_b_american','?'):+d}")
+        if cs_pot:
+            lines.append(f"- **CS POD:** {cs_pot.get('label')} ({cs_pot.get('confidence','MED')})")
+        lines.append("")
+
+    # Self-learning calibration block (new sports)
+    cal = _load(os.path.join(DATA_DIR, "esports_calibration.json"))
+    cal_sports = cal.get("sports") or {}
+    settled_total = sum(s.get("n_settled", 0) for s in cal_sports.values())
+    if settled_total > 0:
+        lines.append("## Self-learning calibration (esports + KBO)")
+        for sport in ("lol", "cs", "kbo"):
+            s = cal_sports.get(sport, {})
+            if s.get("n_settled", 0) > 0:
+                lines.append(f"- **{sport.upper()}:** {s['n_settled']} settled | brier {s.get('brier','?')} | ECE {s.get('ece','?')}")
+                reco = s.get("calibration_recommendation", {})
+                if reco.get("applied"):
+                    lines.append(f"   - {reco.get('note','')}")
+        lines.append("")
+
     text = "\n".join(lines)
     with open(OUT_PATH, "w", encoding="utf-8") as f:
         f.write(text)

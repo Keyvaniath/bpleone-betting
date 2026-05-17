@@ -6,7 +6,7 @@ _0% lineups confirmed · 9 rookie SPs_
 
 ## Slate
 - **15 games** scheduled
-- **25 best bets** scored: 0 DK · 0 PP · 13 NRFI · 6 SGP
+- **32 best bets** scored: 0 DK · 0 PP · 13 NRFI · 6 SGP
 - **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$45.99
 - **MC simulation:** EV +$172.18, 89% P(profit), p05 $-75.3 / p95 $401.95
 
@@ -71,3 +71,26 @@ _Lean late-inning OVER on these games; fade their save situations._
 
 ## NHL -- PLAYOFFS
 - Buffalo Sabres @ Montreal Canadiens (50-23-9 vs 48-24-10) 8-3 | P(home) 0.0% fair +0 | Final
+
+## KBO -- 2026 Korean Baseball
+- NC Dinos @ Lotte Giants | P(home) 51.0% fair -104 | total 9 R
+- Hanwha Eagles @ Kiwoom Heroes | P(home) 50.2% fair -101 | total 9 R
+- KIA Tigers @ LG Twins | P(home) 51.4% fair -106 | total 9 R
+- Samsung Lions @ Doosan Bears | P(home) 51.2% fair -105 | total 9 R
+- SSG Landers @ KT Wiz | P(home) 51.4% fair -106 | total 9 R
+
+## LoL Esports -- 0 live, 18 upcoming
+- [VCS] TP.HCM SN CyberCore Esports vs Saigon Warrior BO3 | P(A) 50.0% fair -100/-100
+- [VCS] Saigon 9Gaming vs Saigon MVKE Academy BO3 | P(A) 50.0% fair -100/-100
+- [LCK] Hanwha Life Esports vs kt Rolster BO3 | P(A) 53.7% fair -116/+116
+- [LPL] Beijing JDG Esports vs Invictus Gaming BO3 | P(A) 50.0% fair -100/-100
+- [LCK] KIWOOM DRX vs HANJIN BRION BO3 | P(A) 46.3% fair +116/-116
+- **LoL POT:** Hanwha Life Esports ML vs kt Rolster (LCK, BO3) (HIGH)
+
+## CS Esports -- 8 matches (fallback (top-30 cross-pairs))
+- Vitality vs MOUZ BO3 | P(A) 54.3% fair -119/+119
+- Spirit vs Falcons BO3 | P(A) 56.4% fair -130/+130
+- Aurora vs G2 BO3 | P(A) 54.3% fair -119/+119
+- FaZe vs Natus Vincere BO3 | P(A) 52.2% fair -109/+109
+- The MongolZ vs Astralis BO3 | P(A) 52.2% fair -109/+109
+- **CS POD:** Spirit ML vs Falcons (BO3) (HIGH)
