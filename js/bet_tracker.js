@@ -19,14 +19,20 @@
 (function () {
   const KEY = "edgestat:bets";
   const STAKE_DEFAULT = 1.0;
-
+  // Cache localStorage state during a tag pass to avoid hundreds of reads
+  // when a page has 150+ data-bet-key elements.
+  let _stateCache = null;
   function loadState() {
-    try { return JSON.parse(localStorage.getItem(KEY)) || {}; }
-    catch (e) { return {}; }
+    if (_stateCache !== null) return _stateCache;
+    try { _stateCache = JSON.parse(localStorage.getItem(KEY)) || {}; }
+    catch (e) { _stateCache = {}; }
+    return _stateCache;
   }
   function saveState(s) {
+    _stateCache = s;
     try { localStorage.setItem(KEY, JSON.stringify(s)); } catch (e) {}
   }
+  function invalidateCache() { _stateCache = null; }
 
   function keyFor(el) {
     return el.getAttribute("data-bet-key");
@@ -115,16 +121,21 @@
     else document.addEventListener("DOMContentLoaded", fn);
   }
   ready(function () {
-    // Initial tag + re-tag on dynamic content (rows added by fetch).
-    tagAll();
-    updateGlobalSummary();
-    // Re-tag every 2s instead of using MutationObserver.
-    // Reason: pages like golf.html / lol-players.html have 150-300 rows
-    // with data-bet-key, and innerHTML resets across multiple sections fire
-    // O(n) tagAll calls on EACH mutation when subtree:true, causing the
-    // renderer to hang. Polling is cheaper and bounded.
-    setInterval(tagAll, 2000);
+    // Only re-tag after fetch.then() resolves. Pages call window.EdgeStatBets.tagAll()
+    // after rendering rows. No setInterval or MutationObserver (those caused
+    // page hangs due to localStorage reads per data-bet-key element).
+    // Delay initial tag by 500ms so fetch().then() typically completes first.
+    setTimeout(function() {
+      tagAll();
+      updateGlobalSummary();
+    }, 500);
+    // Re-tag once more at 3s to catch slow fetches.
+    setTimeout(function() {
+      tagAll();
+    }, 3000);
   });
+  window.EdgeStatBets = window.EdgeStatBets || {};
+  window.EdgeStatBets.tagAll = tagAll;
 
   // Expose API for /my-bets page
   window.EdgeStatBets = {
