@@ -118,9 +118,12 @@
     // Initial tag + re-tag on dynamic content (rows added by fetch).
     tagAll();
     updateGlobalSummary();
-    // MutationObserver -- some pages render via fetch + innerHTML
-    const obs = new MutationObserver(() => tagAll());
-    obs.observe(document.body, { childList: true, subtree: true });
+    // Re-tag every 2s instead of using MutationObserver.
+    // Reason: pages like golf.html / lol-players.html have 150-300 rows
+    // with data-bet-key, and innerHTML resets across multiple sections fire
+    // O(n) tagAll calls on EACH mutation when subtree:true, causing the
+    // renderer to hang. Polling is cheaper and bounded.
+    setInterval(tagAll, 2000);
   });
 
   // Expose API for /my-bets page
