@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Live Now | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .live-row { display:grid; grid-template-columns: 60px 1.6fr 100px 80px 90px 80px 80px; gap:12px; padding:12px 14px; border-bottom:1px solid rgba(255,255,255,0.04); font-family:'JetBrains Mono',monospace; font-size:12px; align-items:center; }
+  .live-row.head { background:rgba(255,255,255,0.04); color:var(--muted,#888); font-size:10px; text-transform:uppercase; }
+  .live-row.live { background:rgba(212,160,74,0.06); border-left:2px solid #d4a04a; }
+  .live-row.sched { opacity: 0.7; }
+  .sport-pill { display:inline-block; padding:3px 9px; border-radius:4px; font-size:10px; font-weight:700; text-transform:uppercase; }
+  .sport-pill.MLB { background:#1e5db8; color:#fff; }
+  .sport-pill.NBA { background:#c43e3e; color:#fff; }
+  .sport-pill.NHL { background:#0080a3; color:#fff; }
+  .sport-pill.GOLF { background:#458a3a; color:#fff; }
+  .badge.live { color:#d4a04a; font-weight:700; }
+  .badge.final { color:#aaa; }
+  .badge.sched { color:#5096dc; }
+  .empty { padding: 14px; color: var(--muted, #888); text-align: center; font-style: italic; }
+</style>
+</head>
+<body class="page-live-now">
+<header class="topbar">
+  <div class="brand">
+    <a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a>
+    <span class="tagline">by bpleone</span>
+  </div>
+  <nav class="mainnav">
+    <a href="index.html">Dashboard</a>
+    <a href="live-now.html" class="active">Live Now</a>
+    <a href="play-of-day.html">Play of the Day</a>
+    <a href="pod-history.html">POD History</a>
+    <a href="mlb.html">MLB</a>
+    <a href="golf.html">Golf</a>
+    <a href="nba.html">NBA</a>
+    <a href="nhl.html">NHL</a>
+    <a href="best-bets.html">Best Bets</a>
+    <a href="brief.html">Brief</a>
+  </nav>
+  <div class="topbar-actions"><div class="ticker">LIVE</div></div>
+</header>
+
+<main class="container">
+
+  <section class="page-head">
+    <h1>Live Now — All Sports</h1>
+    <p id="liveStatus" class="muted">Unified scoreboard across MLB / NBA / NHL / PGA. Pulling latest…</p>
+  </section>
+
+  <section class="metric-strip">
+    <div class="metric"><span class="metric-num" id="m_live">--</span><span class="metric-label">Games In Progress</span></div>
+    <div class="metric"><span class="metric-num" id="m_today">--</span><span class="metric-label">Total Today</span></div>
+    <div class="metric"><span class="metric-num" id="m_final">--</span><span class="metric-label">Final</span></div>
+    <div class="metric"><span class="metric-num" id="m_sports">--</span><span class="metric-label">Sports Active</span></div>
+  </section>
+
+  <!-- In Progress -->
+  <section class="card" style="margin-bottom: 24px; border-left: 3px solid #d4a04a;">
+    <div class="card-head"><span>🔴 In Progress</span><span class="muted">live model win probabilities update with score</span></div>
+    <div class="live-row head">
+      <span>Sport</span><span>Matchup</span><span>Score</span><span>P(home)</span><span>Live Status</span><span>Home Fair</span><span>Away Fair</span>
+    </div>
+    <div id="inProgressList"><p class="empty">Loading…</p></div>
+  </section>
+
+  <!-- Upcoming today -->
+  <section class="card" style="margin-bottom: 24px;">
+    <div class="card-head"><span>⏱️ Upcoming Today</span></div>
+    <div class="live-row head">
+      <span>Sport</span><span>Matchup</span><span>Tip / Start</span><span>P(home)</span><span>Status</span><span>Home Fair</span><span>Away Fair</span>
+    </div>
+    <div id="upcomingList"><p class="empty">Loading…</p></div>
+  </section>
+
+  <!-- Recently finished -->
+  <section class="card" style="margin-bottom: 24px;">
+    <div class="card-head"><span>✅ Final Today</span></div>
+    <div class="live-row head">
+      <span>Sport</span><span>Matchup</span><span>Final</span><span>Winner</span><span>Status</span><span>Home</span><span>Away</span>
+    </div>
+    <div id="finalList"><p class="empty">Loading…</p></div>
+  </section>
+
+  <!-- Golf tournament card (different shape so handled separately) -->
+  <section class="card" id="golfLiveCard" style="display:none; margin-bottom: 24px; border-left: 3px solid #458a3a;">
+    <div class="card-head"><span>⛳ <strong id="golfLiveName">Loading PGA…</strong></span><span class="muted" id="golfLiveMeta">--</span></div>
+    <div style="padding: 14px 16px;" id="golfLiveBody"></div>
+  </section>
+
+</main>
+
+<script src="js/nav_badge.js"></script>
+<script>
+const fmtAmer = (a) => a == null ? "—" : (a >= 0 ? "+" + a : String(a));
+
+Promise.all([
+  fetch("data/nba_state.json?t=" + Date.now(), { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
+  fetch("data/nhl_state.json?t=" + Date.now(), { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
+  fetch("data/today.json?t=" + Date.now(), { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
+  fetch("data/live_state.json?t=" + Date.now(), { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
+  fetch("data/golf_state.json?t=" + Date.now(), { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
+  fetch("data/golf_bestbet.json?t=" + Date.now(), { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
+]).then(([nba, nhl, today, mlbLive, golf, golfBet]) => {
+
+  // Build unified game list (sport tag + normalized fields)
+  const games = [];
+  for (const g of (nba.games || [])) games.push({ ...g, sport: 'NBA' });
+  for (const g of (nhl.games || [])) games.push({ ...g, sport: 'NHL' });
+
+  // MLB games from today.json
+  for (const m of (today.games || [])) {
+    // Match against live_state for in-progress score (live_state keyed by game id)
+    const live = (mlbLive.games || []).find(lg =>
+      lg.matchup === `${m.away_team} @ ${m.home_team}` ||
+      lg.matchup === m.matchup
+    );
+    const state = live ? (live.is_final ? 'post' : live.is_in_progress ? 'in' : 'pre') : 'pre';
+    games.push({
+      sport: 'MLB',
+      matchup: m.matchup,
+      home_team: m.home_team,
+      away_team: m.away_team,
+      home_score: live ? live.home_score : null,
+      away_score: live ? live.away_score : null,
+      status: live ? (live.status || 'In Progress') : (m.game_time || 'Scheduled'),
+      state,
+      p_home_win: live && live.p_home_win != null ? live.p_home_win :
+                  (m.model_prob_home_ml != null ? m.model_prob_home_ml : 0.5),
+      fair_home_american: m.model_home_american,
+      fair_away_american: m.model_away_american,
+      clock: live ? live.clock : null,
+      period: live ? live.inning : null,
+    });
+  }
+
+  const live = games.filter(g => g.state === 'in');
+  const sched = games.filter(g => g.state === 'pre');
+  const final = games.filter(g => g.state === 'post');
+  const sportsActive = new Set(games.map(g => g.sport));
+
+  document.getElementById('m_live').textContent = live.length;
+  document.getElementById('m_today').textContent = games.length;
+  document.getElementById('m_final').textContent = final.length;
+  document.getElementById('m_sports').textContent = sportsActive.size;
+  document.getElementById('liveStatus').textContent =
+    `${live.length} live · ${sched.length} upcoming · ${final.length} final · across ${sportsActive.size} sport${sportsActive.size === 1 ? '' : 's'}`;
+
+  const renderRow = (g, cls = '') => {
+    const scoreText = g.state === 'pre' ? '—' :
+                      `${g.away_score ?? '?'}-${g.home_score ?? '?'}`;
+    const statusText = g.state === 'in' && g.clock ? `${g.clock} P${g.period || '?'}` :
+                       g.state === 'post' ? 'Final' : (g.status || '—');
+    const badgeClass = g.state === 'in' ? 'live' : g.state === 'post' ? 'final' : 'sched';
+    const winner = g.state === 'post' ?
+      (g.home_score > g.away_score ? g.home_team : g.home_score < g.away_score ? g.away_team : 'TIE') :
+      `${((g.p_home_win || 0.5) * 100).toFixed(1)}%`;
+    return `<div class="live-row ${cls}">
+      <span class="sport-pill ${g.sport}">${g.sport}</span>
+      <span><strong>${g.matchup}</strong></span>
+      <span style="font-weight:700;">${scoreText}</span>
+      <span>${winner}</span>
+      <span class="badge ${badgeClass}">${statusText}</span>
+      <span>${fmtAmer(g.fair_home_american)}</span>
+      <span>${fmtAmer(g.fair_away_american)}</span>
+    </div>`;
+  };
+
+  document.getElementById('inProgressList').innerHTML =
+    live.length ? live.map(g => renderRow(g, 'live')).join("") : '<p class="empty">No games in progress.</p>';
+  document.getElementById('upcomingList').innerHTML =
+    sched.length ? sched.slice(0, 30).map(g => renderRow(g, 'sched')).join("") : '<p class="empty">No upcoming games today.</p>';
+  document.getElementById('finalList').innerHTML =
+    final.length ? final.slice(0, 30).map(g => renderRow(g, 'final')).join("") : '<p class="empty">No completed games yet today.</p>';
+
+  // Golf tournament card (separate -- not a binary game)
+  const t = golf.active_tournament;
+  if (t && !t.is_complete) {
+    document.getElementById('golfLiveCard').style.display = 'block';
+    document.getElementById('golfLiveName').textContent = t.name;
+    document.getElementById('golfLiveMeta').textContent = `${t.status || ''} · ${golf.n_players || 0} players`;
+    const leader = golf.current_leader || {};
+    const pot = (golfBet.top_bet || {});
+    document.getElementById('golfLiveBody').innerHTML = `
+      <div style="display:grid; grid-template-columns: 1fr 1fr; gap:16px;">
+        <div>
+          <div class="muted" style="font-size:10px; text-transform:uppercase; letter-spacing:1px;">Leader</div>
+          <div style="font-size:18px; font-weight:700;">${leader.name || '—'}</div>
+          <div class="muted" style="font-size:11px;">${leader.total_to_par || '—'} · #${leader.order || '?'}</div>
+        </div>
+        <div>
+          <div class="muted" style="font-size:10px; text-transform:uppercase; letter-spacing:1px;">Top Bet</div>
+          <div style="font-size:18px; font-weight:700;">${pot.player ? `${pot.player} ${pot.type}` : '—'}</div>
+          <div class="muted" style="font-size:11px;">${pot.fair_american != null ? fmtAmer(pot.fair_american) + ' fair · model ' + ((pot.model_prob || 0)*100).toFixed(1) + '%' : '—'}</div>
+        </div>
+      </div>
+      <div style="margin-top: 10px;"><a href="golf.html" class="link-arrow">Full leaderboard →</a></div>
+    `;
+  }
+});
+
+// Auto-refresh every 2 minutes (this page is the live cockpit)
+setInterval(() => location.reload(), 2 * 60 * 1000);
+</script>
+
+</body>
+</html>
