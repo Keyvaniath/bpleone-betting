@@ -51,6 +51,14 @@
     <div class="metric"><span class="metric-num" id="golfNSims">--</span><span class="metric-label">MC Sims</span></div>
   </section>
 
+  <!-- Play of the Tournament -->
+  <section class="card" style="margin-bottom: 24px; border-left: 3px solid #d4a04a;">
+    <div class="card-head"><span>⛳ Play of the Tournament</span><span class="muted" id="potMeta">--</span></div>
+    <div id="potBox" style="padding: 16px;">
+      <p class="muted">Loading top bet…</p>
+    </div>
+  </section>
+
   <section class="card" style="margin-bottom: 24px;">
     <div class="card-head"><span>🏆 Live Leaderboard + Win Probabilities</span><span class="muted" id="golfMeta">--</span></div>
     <p class="muted" style="font-size: 11px; padding: 8px 16px 0;">Win / Top 5 / Top 10 / Top 20 probabilities and fair American odds from 5K Monte Carlo on remaining rounds. Refresh page during play to update.</p>
@@ -58,6 +66,20 @@
       <span>Pos</span><span>Player</span><span>Total</span><span>Thru</span><span>P(win)</span><span>Fair</span><span>P(top5)</span><span>P(top10)</span><span>P(top20)</span>
     </div>
     <div id="golfList"><p class="muted" style="padding:14px;">Loading…</p></div>
+  </section>
+
+  <!-- H2H matchups -->
+  <section class="card" style="margin-bottom: 24px;">
+    <div class="card-head"><span>⚔️ Head-to-Head Matchups</span><span class="muted">closest 20 from top 30 (435 pairs total)</span></div>
+    <p class="muted" style="font-size: 11px; padding: 8px 16px 0;">Probability that Player A finishes ahead of Player B for the tournament. Ties = push.</p>
+    <div id="h2hList"><p class="muted" style="padding:14px;">Loading H2H matchups…</p></div>
+  </section>
+
+  <!-- Make Cut + Top Nationality -->
+  <section class="card" style="margin-bottom: 24px;">
+    <div class="card-head"><span>🇺🇸 Top American / 🇪🇺 Top European</span><span class="muted" id="natMeta">--</span></div>
+    <p class="muted" style="font-size: 11px; padding: 8px 16px 0;">Probability the named player finishes highest among their nationality bucket.</p>
+    <div id="natList"><p class="muted" style="padding:14px;">Loading…</p></div>
   </section>
 
   <section class="card">
@@ -83,7 +105,10 @@
 Promise.all([
   fetch("data/golf_state.json?t=" + Date.now(), { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
   fetch("data/golf_props.json?t=" + Date.now(), { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
-]).then(([state, props]) => {
+  fetch("data/golf_h2h.json?t=" + Date.now(), { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
+  fetch("data/golf_makecut.json?t=" + Date.now(), { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
+  fetch("data/golf_bestbet.json?t=" + Date.now(), { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
+]).then(([state, props, h2h, makecut, bestbet]) => {
   const t = state.active_tournament;
   const setText = (id, v) => { const e = document.getElementById(id); if (e) e.textContent = v; };
 
@@ -130,6 +155,70 @@ Promise.all([
   }).join("");
   document.getElementById("golfList").innerHTML = rows || `<p class="muted" style="padding:14px;">No players in field.</p>`;
   document.getElementById("golfMeta").textContent = `${players.length} players · refresh: ${(props.generated_at || '').replace('T',' ')} UTC`;
+
+  // ---- Play of the Tournament ----
+  const pot = bestbet.top_bet;
+  if (pot) {
+    const ruRows = (bestbet.runners_up || []).map(r => `
+      <div style="display:flex; justify-content:space-between; padding:6px 0; border-top: 1px dashed rgba(255,255,255,0.06); font-size:12px;">
+        <span><span class="muted" style="font-size:10px;">${r.type}</span> <strong>${r.player}${r.opponent ? ` vs ${r.opponent}` : ''}</strong></span>
+        <span>${fmtAmer(r.fair_american)} <span class="muted">(${(r.model_prob*100).toFixed(1)}%)</span></span>
+      </div>`).join("");
+    document.getElementById("potBox").innerHTML = `
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:16px;">
+        <div style="flex:1;">
+          <div style="font-size:11px; color:#d4a04a; text-transform:uppercase; letter-spacing:1px; margin-bottom:6px;">${pot.confidence || 'MED'} CONVICTION · ${pot.type}</div>
+          <div style="font-size:22px; font-weight:700; margin-bottom:4px;">${pot.player}${pot.opponent ? ` vs ${pot.opponent}` : ''}</div>
+          <div class="muted" style="font-size:12px; margin-bottom:10px;">${pot.reasoning || ''}</div>
+        </div>
+        <div style="text-align:right;">
+          <div style="font-size:28px; font-weight:700; color:#d4a04a; font-family:'JetBrains Mono',monospace;">${fmtAmer(pot.fair_american)}</div>
+          <div class="muted" style="font-size:11px;">fair · model ${(pot.model_prob*100).toFixed(1)}%</div>
+          <button class="track-btn" data-bet-key="${pot.bet_key || ''}" data-bet-label="${(pot.bet_label || '').replace(/"/g,'&quot;')}" data-bet-play="${pot.type}" data-bet-src="GOLF_POT" style="margin-top:10px; padding:6px 14px; background:#d4a04a; color:#0a0a0a; border:none; border-radius:4px; cursor:pointer; font-size:11px; font-weight:700; text-transform:uppercase;">TRACK</button>
+        </div>
+      </div>
+      ${ruRows ? `<div style="margin-top:14px; padding-top:10px; border-top:1px solid rgba(255,255,255,0.06);"><div class="muted" style="font-size:10px; text-transform:uppercase; letter-spacing:1px; margin-bottom:4px;">Runners-up</div>${ruRows}</div>` : ''}
+    `;
+    document.getElementById("potMeta").textContent = `n=${bestbet.n_candidates || 0} candidates`;
+  } else {
+    document.getElementById("potBox").innerHTML = `<p class="muted">${bestbet.note || 'No Play of the Tournament right now.'}</p>`;
+  }
+
+  // ---- H2H matchups ----
+  const matchups = (h2h.matchups || []).slice(0, 20);
+  if (matchups.length) {
+    document.getElementById("h2hList").innerHTML = matchups.map(m => `
+      <div class="golf-row" style="grid-template-columns: 1.4fr 60px 1.4fr 60px 60px;">
+        <span><strong>${m.player_a}</strong> <span class="muted" style="font-size:10px;">#${m.a_pos || '?'} ${m.a_total || ''}</span></span>
+        <span style="text-align:center; color:#d4a04a; font-weight:700;">${fmtAmer(m.fair_a_american)}</span>
+        <span><strong>${m.player_b}</strong> <span class="muted" style="font-size:10px;">#${m.b_pos || '?'} ${m.b_total || ''}</span></span>
+        <span style="text-align:center; color:#d4a04a; font-weight:700;">${fmtAmer(m.fair_b_american)}</span>
+        <span class="muted" style="text-align:right;">${(m.p_a_beats_b * 100).toFixed(1)}%</span>
+      </div>
+    `).join("");
+  } else {
+    document.getElementById("h2hList").innerHTML = `<p class="muted" style="padding:14px;">${h2h.note || 'No H2H matchups available.'}</p>`;
+  }
+
+  // ---- Top American / Top European ----
+  const us = (makecut.players || []).filter(p => p.p_top_american != null).sort((a,b) => -(a.p_top_american) + (b.p_top_american)).slice(0, 8);
+  const eu = (makecut.players || []).filter(p => p.p_top_european != null).sort((a,b) => -(a.p_top_european) + (b.p_top_european)).slice(0, 8);
+  const renderRow = (p, kind) => {
+    const prob = kind === 'us' ? p.p_top_american : p.p_top_european;
+    const fair = kind === 'us' ? p.fair_top_american : p.fair_top_european;
+    return `<div class="golf-row" style="grid-template-columns: 30px 1.4fr 70px 80px 60px;">
+      <span class="muted">${kind === 'us' ? '🇺🇸' : '🇪🇺'}</span>
+      <span><strong>${p.name}</strong> <span class="muted" style="font-size:10px;">${p.country || ''} · #${p.current_pos || '?'}</span></span>
+      <span class="muted">${p.current_total || '—'}</span>
+      <span style="color:#d4a04a; font-weight:700;">${fmtAmer(fair)}</span>
+      <span>${(prob*100).toFixed(1)}%</span>
+    </div>`;
+  };
+  document.getElementById("natList").innerHTML =
+    (us.length ? `<div class="golf-row head" style="grid-template-columns: 30px 1.4fr 70px 80px 60px;"><span></span><span>Top American</span><span>Total</span><span>Fair</span><span>P</span></div>` + us.map(p => renderRow(p, 'us')).join("") : '') +
+    (eu.length ? `<div class="golf-row head" style="grid-template-columns: 30px 1.4fr 70px 80px 60px; margin-top:6px;"><span></span><span>Top European</span><span>Total</span><span>Fair</span><span>P</span></div>` + eu.map(p => renderRow(p, 'eu')).join("") : '') ||
+    `<p class="muted" style="padding:14px;">No nationality props available.</p>`;
+  document.getElementById("natMeta").textContent = `${us.length} US · ${eu.length} EU candidates`;
 });
 
 // Auto-refresh every 5 minutes while live

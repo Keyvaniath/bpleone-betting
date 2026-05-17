@@ -100,9 +100,12 @@ ARTIFACTS: List[Dict[str, Any]] = [
     {"name": "live_edges.json",           "cadence_mins":  20},
     {"name": "live_props.json",           "cadence_mins":  20},
     {"name": "k_pace.json",               "cadence_mins":  20, "optional": True},
-    # Golf desk (ESPN PGA Tour scoreboard + Monte Carlo win-prob)
+    # Golf desk (ESPN PGA Tour scoreboard + Monte Carlo win/H2H/makecut/POT)
     {"name": "golf_state.json",           "cadence_mins":  8*60},
     {"name": "golf_props.json",           "cadence_mins":  8*60},
+    {"name": "golf_h2h.json",             "cadence_mins":  8*60},
+    {"name": "golf_makecut.json",         "cadence_mins":  8*60},
+    {"name": "golf_bestbet.json",         "cadence_mins":  8*60},
     # Play-of-Day rolling history (snapshot + settle each cron)
     {"name": "pod_history.json",          "cadence_mins":  8*60},
     # Optional / stubs

@@ -431,6 +431,15 @@ jobs:
       - name: Monte Carlo golf winner probabilities
         working-directory: python
         run: python golf_winner_model.py
+      - name: Compute golf head-to-head matchup probabilities
+        working-directory: python
+        run: python golf_h2h.py
+      - name: Compute golf make-cut + top-nationality props
+        working-directory: python
+        run: python golf_makecut.py
+      - name: Select golf Play of the Tournament
+        working-directory: python
+        run: python golf_bestbet.py
 
       # Comprehensive pipeline audit -- LAST step so it sees final artifact
       # state. Writes data/pipeline_audit.json with overall: green/yellow/red,

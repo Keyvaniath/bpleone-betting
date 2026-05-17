@@ -38,11 +38,26 @@ jobs:
         working-directory: python
         run: python golf_winner_model.py
 
+      # Head-to-head matchup probabilities for top 30 (435 pairs)
+      - name: Recompute golf H2H matchups
+        working-directory: python
+        run: python golf_h2h.py
+
+      # Make-cut + top-nationality (Top American / Top European) props
+      - name: Recompute golf make-cut + nationality props
+        working-directory: python
+        run: python golf_makecut.py
+
+      # Pick the highest-quality bet of the tournament right now
+      - name: Re-select golf Play of the Tournament
+        working-directory: python
+        run: python golf_bestbet.py
+
       - name: Commit if state changed
         run: |
           git config user.name  "edgestat-bot"
           git config user.email "actions@github.com"
-          git add data/golf_state.json data/golf_props.json
+          git add data/golf_state.json data/golf_props.json data/golf_h2h.json data/golf_makecut.json data/golf_bestbet.json
           if git diff --cached --quiet; then
             echo "No golf state change."
           else
