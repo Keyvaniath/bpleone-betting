@@ -53,6 +53,13 @@
     <div id="potBox" style="padding: 16px;"><p class="muted">Loading top KBO bet…</p></div>
   </section>
 
+  <!-- Pitcher matchups -->
+  <section class="card" style="margin-bottom: 24px;">
+    <div class="card-head"><span>⚾ Starting Pitcher Matchups</span><span class="muted" id="spMeta">--</span></div>
+    <p class="muted" style="font-size: 11px; padding: 8px 16px 0;">SP rotation (3-man) cycles by day-of-year. Each starter's ERA delta vs league avg (4.30) feeds the opponent's run-lambda.</p>
+    <div id="spList"><p class="muted" style="padding:14px;">Loading…</p></div>
+  </section>
+
   <section class="card" style="margin-bottom: 24px;">
     <div class="card-head"><span>⚾ Today's KBO Board</span><span class="muted" id="kboMeta">--</span></div>
     <p class="muted" style="font-size: 11px; padding: 8px 16px 0;">Poisson runs model (50K Monte Carlo per game). Win prob includes home-field +0.2 runs. Self-learning ELO updates with each settled game.</p>
@@ -90,7 +97,8 @@ Promise.all([
   fetch("data/kbo_props.json?t=" + Date.now(), { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
   fetch("data/kbo_bestbet.json?t=" + Date.now(), { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
   fetch("data/kbo_elo.json?t=" + Date.now(), { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
-]).then(([state, props, bestbet, elo]) => {
+  fetch("data/kbo_pitcher_adj.json?t=" + Date.now(), { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
+]).then(([state, props, bestbet, elo, pitcherAdj]) => {
   const setText = (id, v) => { const e = document.getElementById(id); if (e) e.textContent = v; };
   setText("kboTitle", `KBO — ${state.season} Korean Baseball`);
   setText("kboStatus", `${state.n_games_today || 0} games today · source: ${state.data_source || '?'} · refresh: ${(state.generated_at || '').replace('T',' ')}`);
@@ -137,6 +145,29 @@ Promise.all([
       <span class="muted">${g.status || 'Scheduled'}</span>
     </div>`;
   }).join("") : `<p class="muted" style="padding:14px;">No KBO games scheduled.</p>`;
+
+  // Pitcher matchups
+  const spList = (pitcherAdj.adjustments || []);
+  if (spList.length) {
+    document.getElementById("spList").innerHTML = spList.map(a => {
+      const hs = a.home_starter || {};
+      const as = a.away_starter || {};
+      const hAdj = a.home_runs_against_adjustment || 0;
+      const aAdj = a.away_runs_against_adjustment || 0;
+      return `<div style="padding:10px 16px; border-bottom:1px solid rgba(255,255,255,0.04); font-family:'JetBrains Mono',monospace; font-size:12px;">
+        <div><strong>${a.matchup}</strong></div>
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 6px; font-size: 11px;">
+          <div>Home SP: <strong>${hs.name || '?'}</strong> <span class="muted">ERA ${hs.era != null ? hs.era.toFixed(2) : '?'}</span>
+               <span style="color:${hAdj < 0 ? '#58c878' : '#e35a5a'};">(${hAdj >= 0 ? '+' : ''}${hAdj} R/G vs avg)</span></div>
+          <div>Away SP: <strong>${as.name || '?'}</strong> <span class="muted">ERA ${as.era != null ? as.era.toFixed(2) : '?'}</span>
+               <span style="color:${aAdj < 0 ? '#58c878' : '#e35a5a'};">(${aAdj >= 0 ? '+' : ''}${aAdj} R/G vs avg)</span></div>
+        </div>
+      </div>`;
+    }).join("");
+    document.getElementById("spMeta").textContent = `${spList.length} games · league avg ERA ${pitcherAdj.league_avg_era || '?'}`;
+  } else {
+    document.getElementById("spList").innerHTML = `<p class="muted" style="padding:14px;">No pitcher data.</p>`;
+  }
 
   // Standings (sort teams by current ELO)
   const teams = elo.teams || {};

@@ -166,6 +166,10 @@ def run() -> Dict[str, Any]:
         "processed_match_ids": list(seen_ids)[-2000:],
     })
 
+    # Pitcher matchup adjustments
+    pitcher_adj = _load(os.path.join(DATA_DIR, "kbo_pitcher_adj.json"))
+    adj_by_matchup = {a["matchup"]: a for a in (pitcher_adj.get("adjustments") or [])}
+
     random.seed(7)
     preds: List[Dict[str, Any]] = []
     for m in matches:
@@ -174,6 +178,19 @@ def run() -> Dict[str, Any]:
         elo_a = elo.get(a, 1500)
         home_lambda = _expected_runs(elo_h, elo_a, is_home=True)
         away_lambda = _expected_runs(elo_a, elo_h, is_home=False)
+
+        # Apply starting-pitcher adjustment: home SP quality suppresses away_lambda
+        adj_key = f"{a} @ {h}"
+        adj = adj_by_matchup.get(adj_key) or {}
+        sp_adjustment = None
+        if adj:
+            # home SP "runs against" adjustment applies to away_lambda
+            away_lambda += adj.get("home_runs_against_adjustment", 0)
+            home_lambda += adj.get("away_runs_against_adjustment", 0)
+            away_lambda = max(1.5, away_lambda)
+            home_lambda = max(1.5, home_lambda)
+            sp_adjustment = adj.get("note")
+
         sim = _simulate_game(home_lambda, away_lambda, N_SIMS)
         p_home = sim["p_home_win"]
         median_total = sim["median_total_runs"]
@@ -188,6 +205,7 @@ def run() -> Dict[str, Any]:
             "p_away_win": round(1 - p_home, 4),
             "fair_home_american": _american(p_home),
             "fair_away_american": _american(1 - p_home),
+            "pitcher_matchup": sp_adjustment,
         })
 
     payload = {

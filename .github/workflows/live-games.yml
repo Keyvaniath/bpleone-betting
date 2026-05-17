@@ -131,6 +131,13 @@ jobs:
         working-directory: python
         run: python cs_model.py
 
+      # Esports + KBO live alerts (Discord ping on lead change / POT flip)
+      - name: Esports + KBO live alerts (Discord)
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        working-directory: python
+        run: python esports_alerts.py
+
       - name: Commit if state changed
         env:
           GIT_EDITOR: "true"
@@ -138,7 +145,7 @@ jobs:
         run: |
           git config user.name  "edgestat-bot"
           git config user.email "actions@github.com"
-          git add data/live_state.json data/live_clv.json data/live_edges.json data/live_props.json data/lineup_churn.json data/k_pace.json data/scratch_alerts.json data/.scratch_alerted.json data/locked_props.json data/bullpen_warming.json data/injury_news.json data/.injury_news_seen.json data/live_total_drift.json data/steam_alerts.json data/.line_history.json data/rebalance_events.json data/.rebalance_history.json data/nba_state.json data/nhl_state.json data/kbo_state.json data/kbo_props.json data/kbo_elo.json data/lol_state.json data/lol_props.json data/lol_elo.json data/cs_state.json data/cs_props.json data/cs_elo.json
+          git add data/live_state.json data/live_clv.json data/live_edges.json data/live_props.json data/lineup_churn.json data/k_pace.json data/scratch_alerts.json data/.scratch_alerted.json data/locked_props.json data/bullpen_warming.json data/injury_news.json data/.injury_news_seen.json data/live_total_drift.json data/steam_alerts.json data/.line_history.json data/rebalance_events.json data/.rebalance_history.json data/nba_state.json data/nhl_state.json data/kbo_state.json data/kbo_props.json data/kbo_elo.json data/lol_state.json data/lol_props.json data/lol_elo.json data/cs_state.json data/cs_props.json data/cs_elo.json data/esports_alerts.json data/.esports_alerted.json
           if git diff --cached --quiet; then
             echo "No live games or no state changes."
           else
