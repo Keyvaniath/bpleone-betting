@@ -77,7 +77,7 @@ jobs:
         run: |
           git config user.name  "edgestat-bot"
           git config user.email "actions@github.com"
-          git add data/golf_state.json data/golf_props.json data/golf_h2h.json data/golf_makecut.json data/golf_bestbet.json data/golf_pot_history.json data/golf_alerts.json data/.golf_alerted.json data/golf_parlays.json
+          git add -A data/    # tolerate missing files
           if git diff --cached --quiet; then
             echo "No golf state change."
           else
