@@ -58,11 +58,18 @@ jobs:
         working-directory: python
         run: python golf_pot_history.py
 
+      # Lead change / Top-5 churn / win-prob shifts / POT flip alerts -> Discord
+      - name: Golf live tournament alerts (Discord ping)
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        working-directory: python
+        run: python golf_alerts.py
+
       - name: Commit if state changed
         run: |
           git config user.name  "edgestat-bot"
           git config user.email "actions@github.com"
-          git add data/golf_state.json data/golf_props.json data/golf_h2h.json data/golf_makecut.json data/golf_bestbet.json data/golf_pot_history.json
+          git add data/golf_state.json data/golf_props.json data/golf_h2h.json data/golf_makecut.json data/golf_bestbet.json data/golf_pot_history.json data/golf_alerts.json data/.golf_alerted.json
           if git diff --cached --quiet; then
             echo "No golf state change."
           else
