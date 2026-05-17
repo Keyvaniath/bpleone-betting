@@ -29,6 +29,11 @@ ROUND_STD = 3.0
 SKILL_PER_STROKE = 0.4
 CUT_RANK = 65        # standard PGA Tour cut line (top 65 + ties)
 
+try:
+    from golf_winner_model import ELITE_PRIOR
+except Exception:
+    ELITE_PRIOR = {}
+
 
 # Common nationality buckets for top-X-nationality props
 AMERICAN_FLAGS = {"USA", "United States"}
@@ -97,7 +102,8 @@ def run() -> Dict[str, Any]:
 
     totals_now = [_to_par(p.get("total_to_par")) for p in field]
     median = sorted(totals_now)[len(totals_now) // 2]
-    means = [(cur - median) * SKILL_PER_STROKE for cur in totals_now]
+    means = [(cur - median) * SKILL_PER_STROKE + ELITE_PRIOR.get(field[i]["name"], 0.0)
+             for i, cur in enumerate(totals_now)]
 
     random.seed(43)
     makecut_counts = [0] * len(field)

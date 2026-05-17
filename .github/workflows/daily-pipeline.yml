@@ -614,6 +614,10 @@ jobs:
         run: python notify.py
 
       - name: Commit + push if data changed
+        env:
+          # Headless: never open EDITOR on rebase-continue / commit-edit
+          GIT_EDITOR: "true"
+          GIT_SEQUENCE_EDITOR: "true"
         run: |
           git config user.name  "edgestat-bot"
           git config user.email "actions@github.com"
@@ -636,10 +640,12 @@ jobs:
               if git rebase origin/main; then
                 git push && { echo "pushed after rebase"; exit 0; }
               else
-                # Conflict path: take ours for data/, theirs for any code (rare)
-                git checkout --ours data/ 2>/dev/null || true
-                git add data/
-                git rebase --continue || git rebase --abort
+                # Conflict path: take ours for everything, then continue with
+                # GIT_EDITOR=true so the rebase-continue commit message edit
+                # doesn't try to open an interactive editor.
+                git checkout --ours . 2>/dev/null || true
+                git add -A
+                GIT_EDITOR=true git rebase --continue || git rebase --abort
                 git push && { echo "pushed after conflict resolution"; exit 0; }
               fi
               sleep 5

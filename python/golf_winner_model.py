@@ -37,6 +37,57 @@ ROUND_STD = 3.0          # std dev of a single round score per player
 # Heuristic: better players (lower current total) get slight skill boost
 SKILL_PER_STROKE = 0.4   # extra strokes-better-than-field per stroke under par
 
+# OWGR-style elite player prior (strokes-per-round bonus applied on top of
+# position-based skill). Source: rough OWGR top-50 ranking as of 2026.
+# Negative = better-than-field expectation per round.
+ELITE_PRIOR = {
+    # Top tier - consistently world #1-5
+    "Scottie Scheffler":  -1.20,
+    "Rory McIlroy":       -1.10,
+    "Xander Schauffele":  -0.95,
+    "Jon Rahm":           -0.95,
+    "Ludvig Aberg":       -0.85,
+    # World 6-15
+    "Patrick Cantlay":    -0.75,
+    "Collin Morikawa":    -0.75,
+    "Wyndham Clark":      -0.70,
+    "Viktor Hovland":     -0.70,
+    "Hideki Matsuyama":   -0.65,
+    "Joaquin Niemann":    -0.60,
+    "Joaquín Niemann":    -0.60,
+    "Tommy Fleetwood":    -0.60,
+    "Brian Harman":       -0.55,
+    "Sahith Theegala":    -0.55,
+    "Min Woo Lee":        -0.55,
+    # World 16-30
+    "Tony Finau":         -0.45,
+    "Russell Henley":     -0.45,
+    "Justin Thomas":      -0.45,
+    "Jordan Spieth":      -0.45,
+    "Cameron Smith":      -0.40,
+    "Sungjae Im":         -0.40,
+    "Tyrrell Hatton":     -0.40,
+    "Sam Burns":          -0.40,
+    "Robert MacIntyre":   -0.40,
+    "Shane Lowry":        -0.40,
+    "Adam Scott":         -0.35,
+    "Akshay Bhatia":      -0.35,
+    "Will Zalatoris":     -0.35,
+    "Sepp Straka":        -0.35,
+    "Maverick McNealy":   -0.30,
+    "Aaron Rai":          -0.30,
+    "Keegan Bradley":     -0.30,
+    "Matt Fitzpatrick":   -0.30,
+    "Si Woo Kim":         -0.30,
+    "Tom Kim":            -0.30,
+    "Byeong Hun An":      -0.25,
+    "Justin Rose":        -0.25,
+    "Sergio Garcia":      -0.25,
+    "Brooks Koepka":      -0.25,
+    "Bryson DeChambeau":  -0.55,
+    "Dustin Johnson":     -0.20,
+}
+
 
 def _load(p):
     if not os.path.exists(p): return {}
@@ -125,10 +176,14 @@ def run() -> Dict[str, Any]:
         cur = _to_par_to_int(p.get("total_to_par"))
         # Lower than median = better -> means lower expected score per round
         skill = (cur - median_total) * SKILL_PER_STROKE
+        # Elite OWGR prior: world-top-30 players get an additive stroke bonus
+        # that captures pre-tournament skill not yet reflected in position.
+        elite = ELITE_PRIOR.get(p["name"], 0.0)
         player_means.append({
             "name": p["name"],
             "starting_total": cur,
-            "mean_per_round": 0 + skill,    # 0 = par; negative = better
+            "mean_per_round": skill + elite,    # 0 = par; negative = better
+            "elite_prior": elite,
         })
 
     random.seed(42)
