@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KBO Players | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .player-card { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.04); cursor:pointer; }
+  .player-card:hover { background: rgba(207,57,57,0.05); }
+  .player-card.expanded { background: rgba(207,57,57,0.07); border-left: 3px solid #cf3939; }
+  .kind-pill { display:inline-block; padding:2px 7px; border-radius:4px; font-size:9px; font-weight:700; text-transform:uppercase; }
+  .kind-pill.batter { background:#cf3939; color:#fff; }
+  .kind-pill.pitcher { background:#5096dc; color:#fff; }
+  .stat-block { display:grid; grid-template-columns: repeat(4, 1fr); gap:10px; margin-top:10px; font-size:12px; }
+  .prop-row { display:grid; grid-template-columns: 1.4fr 90px 90px 90px; gap:6px; padding:6px 0; font-family:'JetBrains Mono',monospace; font-size:11px; border-bottom:1px dashed rgba(255,255,255,0.04); }
+  .filter-bar { display:flex; gap:8px; padding:8px 16px; flex-wrap:wrap; }
+  .filter-pill { display:inline-block; padding:5px 12px; border-radius:14px; background:rgba(255,255,255,0.06); cursor:pointer; font-size:11px; }
+  .filter-pill.active { background:#cf3939; color:#fff; }
+</style>
+</head>
+<body class="page-kbo-players">
+<header class="topbar">
+  <div class="brand">
+    <a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a>
+    <span class="tagline">by bpleone</span>
+  </div>
+  <nav class="mainnav">
+    <a href="index.html">Dashboard</a>
+    <a href="live-now.html">Live Now</a>
+    <a href="lol.html">LoL</a>
+    <a href="lol-players.html">LoL Players</a>
+    <a href="cs.html">CS</a>
+    <a href="cs-players.html">CS Players</a>
+    <a href="kbo.html">KBO</a>
+    <a href="kbo-players.html" class="active">KBO Players</a>
+    <a href="best-bets.html">Best Bets</a>
+  </nav>
+  <div class="topbar-actions"><div class="ticker">LIVE</div></div>
+</header>
+
+<main class="container">
+
+  <section class="page-head">
+    <h1>KBO — Player Projections</h1>
+    <p id="kboPlayersStatus" class="muted">Loading 10-team roster of hitters + pitchers with per-game projections + props…</p>
+  </section>
+
+  <section class="metric-strip">
+    <div class="metric"><span class="metric-num" id="m_players">--</span><span class="metric-label">Players</span></div>
+    <div class="metric"><span class="metric-num" id="m_batters">--</span><span class="metric-label">Batters</span></div>
+    <div class="metric"><span class="metric-num" id="m_pitchers">--</span><span class="metric-label">Pitchers</span></div>
+    <div class="metric"><span class="metric-num" id="m_teams">--</span><span class="metric-label">Teams</span></div>
+  </section>
+
+  <section class="card" style="margin-bottom: 24px;">
+    <div class="card-head"><span>⚾ Filter by</span></div>
+    <div class="filter-bar" id="filterBar">
+      <span class="filter-pill active" data-filter="all">All</span>
+      <span class="filter-pill" data-kind="batter">Batters</span>
+      <span class="filter-pill" data-kind="pitcher">Pitchers</span>
+      <span class="filter-pill" data-filter="stars">Stars (OPS .900+ / ERA &lt; 3.50)</span>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="card-head"><span>📊 Roster (click for projections + props)</span><span class="muted" id="rosterMeta">--</span></div>
+    <div id="rosterList"><p class="muted" style="padding:14px;">Loading…</p></div>
+  </section>
+
+</main>
+
+<script src="js/nav_badge.js"></script>
+<script>
+let allPlayers = [];
+let currentFilters = { stars: false, kind: null };
+const fmtAmer = (a) => a == null ? "—" : (a >= 0 ? "+" + a : String(a));
+
+function renderRoster() {
+  let filtered = allPlayers;
+  if (currentFilters.stars) {
+    filtered = filtered.filter(p =>
+      (p.kind === "batter" && (p.ops || 0) >= 0.900) ||
+      (p.kind === "pitcher" && (p.era || 99) < 3.50)
+    );
+  }
+  if (currentFilters.kind) filtered = filtered.filter(p => p.kind === currentFilters.kind);
+
+  document.getElementById("rosterMeta").textContent = `${filtered.length} players shown`;
+  if (!filtered.length) { document.getElementById("rosterList").innerHTML = `<p class="muted" style="padding:14px;">No players match.</p>`; return; }
+
+  document.getElementById("rosterList").innerHTML = filtered.map((p, i) => {
+    const id = `proj_${i}`;
+    if (p.kind === "batter") {
+      const proj = p.projection_per_game || {};
+      const props = p.props || {};
+      return `<div class="player-card" onclick="this.classList.toggle('expanded'); document.getElementById('${id}').style.display = this.classList.contains('expanded') ? 'block' : 'none';">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <div>
+            <span style="font-size:14px; font-weight:700; margin-right:8px;">${p.name}</span>
+            <span class="kind-pill batter">Batter</span>
+            ${(p.ops || 0) >= 0.900 ? '<span style="background:linear-gradient(90deg, #cf3939, #d4a04a); color:#fff; padding:2px 7px; border-radius:4px; font-size:9px; font-weight:700; margin-left:6px;">SLUGGER</span>' : ''}
+          </div>
+          <div>
+            <span style="font-size:11px; color:#888;">${p.team}</span>
+            <span style="margin-left:8px; font-family:'JetBrains Mono', monospace; font-size:12px; font-weight:700; color:#cf3939;">.${(p.avg*1000).toFixed(0)} / ${(p.ops).toFixed(3)}</span>
+          </div>
+        </div>
+        <div class="stat-block">
+          <div><span class="muted" style="font-size:10px;">Exp Hits:</span> <strong>${proj.hits}</strong></div>
+          <div><span class="muted" style="font-size:10px;">Exp HRs:</span> <strong>${(proj.hrs || 0).toFixed(3)}</strong></div>
+          <div><span class="muted" style="font-size:10px;">Exp TB:</span> <strong>${proj.total_bases}</strong></div>
+          <div><span class="muted" style="font-size:10px;">Exp RBI:</span> <strong>${proj.rbis}</strong></div>
+        </div>
+        <div id="${id}" style="display:none; margin-top:12px;">
+          <div style="font-size:11px; text-transform:uppercase; color:#cf3939; margin-bottom:8px;">Common Props (per game)</div>
+          <div class="prop-row" style="font-weight:700;"><span>Market</span><span>Probability</span><span>Fair YES</span><span>Fair NO</span></div>
+          <div class="prop-row"><span>Hits a HR</span><span style="color:${props.hit_a_hr?.p >= 0.15 ? '#58c878' : ''}">${((props.hit_a_hr?.p || 0)*100).toFixed(1)}%</span><span>${fmtAmer(props.hit_a_hr?.fair_yes)}</span><span>${fmtAmer(props.hit_a_hr?.fair_no)}</span></div>
+          <div class="prop-row"><span>2+ hits</span><span style="color:${props.two_plus_hits?.p >= 0.55 ? '#58c878' : ''}">${((props.two_plus_hits?.p || 0)*100).toFixed(1)}%</span><span>${fmtAmer(props.two_plus_hits?.fair_over)}</span><span>${fmtAmer(props.two_plus_hits?.fair_under)}</span></div>
+          <div class="prop-row"><span>1+ RBI</span><span style="color:${props.one_plus_rbi?.p >= 0.55 ? '#58c878' : ''}">${((props.one_plus_rbi?.p || 0)*100).toFixed(1)}%</span><span>${fmtAmer(props.one_plus_rbi?.fair_yes)}</span><span>${fmtAmer(props.one_plus_rbi?.fair_no)}</span></div>
+          <div class="prop-row"><span>1+ TB</span><span style="color:${props.one_plus_tb?.p >= 0.55 ? '#58c878' : ''}">${((props.one_plus_tb?.p || 0)*100).toFixed(1)}%</span><span>${fmtAmer(props.one_plus_tb?.fair_yes)}</span><span>${fmtAmer(props.one_plus_tb?.fair_no)}</span></div>
+        </div>
+      </div>`;
+    } else {
+      const proj = p.projection_per_start || {};
+      const props = p.props || {};
+      return `<div class="player-card" onclick="this.classList.toggle('expanded'); document.getElementById('${id}').style.display = this.classList.contains('expanded') ? 'block' : 'none';">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <div>
+            <span style="font-size:14px; font-weight:700; margin-right:8px;">${p.name}</span>
+            <span class="kind-pill pitcher">Pitcher</span>
+            ${(p.era || 99) < 3.50 ? '<span style="background:linear-gradient(90deg, #5096dc, #58c878); color:#fff; padding:2px 7px; border-radius:4px; font-size:9px; font-weight:700; margin-left:6px;">ACE</span>' : ''}
+          </div>
+          <div>
+            <span style="font-size:11px; color:#888;">${p.team}</span>
+            <span style="margin-left:8px; font-family:'JetBrains Mono', monospace; font-size:12px; font-weight:700; color:#5096dc;">ERA ${p.era}</span>
+          </div>
+        </div>
+        <div class="stat-block">
+          <div><span class="muted" style="font-size:10px;">Exp IP:</span> <strong>${proj.ip}</strong></div>
+          <div><span class="muted" style="font-size:10px;">Exp K:</span> <strong>${proj.expected_k}</strong></div>
+          <div><span class="muted" style="font-size:10px;">Exp ER:</span> <strong>${proj.expected_er}</strong></div>
+          <div></div>
+        </div>
+        <div id="${id}" style="display:none; margin-top:12px;">
+          <div style="font-size:11px; text-transform:uppercase; color:#5096dc; margin-bottom:8px;">Pitching Props</div>
+          <div class="prop-row" style="font-weight:700;"><span>Market</span><span>Probability</span><span>Fair Over</span><span>Fair Under</span></div>
+          <div class="prop-row"><span>K OVER 5.5</span><span>${((props.k_over_55?.p || 0)*100).toFixed(1)}%</span><span>${fmtAmer(props.k_over_55?.fair_over)}</span><span>${fmtAmer(props.k_over_55?.fair_under)}</span></div>
+          <div class="prop-row"><span>K OVER 6.5</span><span>${((props.k_over_65?.p || 0)*100).toFixed(1)}%</span><span>${fmtAmer(props.k_over_65?.fair_over)}</span><span>${fmtAmer(props.k_over_65?.fair_under)}</span></div>
+          <div class="prop-row"><span>ER UNDER 2.5</span><span>${((props.er_under_2_5?.p || 0)*100).toFixed(1)}%</span><span></span><span></span></div>
+        </div>
+      </div>`;
+    }
+  }).join("");
+}
+
+fetch("data/kbo_player_props.json?t=" + Date.now(), { cache: "no-cache" })
+  .then(r => r.json())
+  .then(d => {
+    allPlayers = d.players || [];
+    document.getElementById("m_players").textContent = d.n_players || 0;
+    document.getElementById("m_batters").textContent = allPlayers.filter(p => p.kind === "batter").length;
+    document.getElementById("m_pitchers").textContent = allPlayers.filter(p => p.kind === "pitcher").length;
+    document.getElementById("m_teams").textContent = new Set(allPlayers.map(p => p.team)).size;
+    document.getElementById("kboPlayersStatus").textContent =
+      `${d.n_players} players · refresh: ${(d.generated_at || '').replace('T',' ')}`;
+    renderRoster();
+  })
+  .catch(err => {
+    document.getElementById("rosterList").innerHTML = `<p class="muted" style="padding:14px;">Could not load KBO player data (${err.message}).</p>`;
+  });
+
+document.getElementById("filterBar").addEventListener("click", e => {
+  const t = e.target.closest(".filter-pill");
+  if (!t) return;
+  if (t.dataset.filter === "all") { currentFilters = { stars: false, kind: null }; }
+  else if (t.dataset.filter === "stars") { currentFilters.stars = !currentFilters.stars; }
+  else if (t.dataset.kind) { currentFilters.kind = currentFilters.kind === t.dataset.kind ? null : t.dataset.kind; }
+  document.querySelectorAll("#filterBar .filter-pill").forEach(p => {
+    const active = (p.dataset.filter === "stars" && currentFilters.stars) ||
+                   (p.dataset.kind && p.dataset.kind === currentFilters.kind) ||
+                   (p.dataset.filter === "all" && !currentFilters.stars && !currentFilters.kind);
+    p.classList.toggle("active", !!active);
+  });
+  renderRoster();
+});
+</script>
+
+</body>
+</html>

@@ -141,6 +141,13 @@ ARTIFACTS: List[Dict[str, Any]] = [
     {"name": "cs_maphandicap.json",       "cadence_mins":  8*60},
     {"name": "kbo_pitcher_adj.json",      "cadence_mins":  8*60},
     {"name": "esports_alerts.json",       "cadence_mins":  8*60, "optional": True},
+    # Per-sport player detail + projections + prop fair odds
+    {"name": "lol_players.json",          "cadence_mins":  8*60},
+    {"name": "lol_player_props.json",     "cadence_mins":  8*60},
+    {"name": "cs_players.json",           "cadence_mins":  8*60},
+    {"name": "cs_player_props.json",      "cadence_mins":  8*60},
+    {"name": "kbo_players.json",          "cadence_mins":  8*60},
+    {"name": "kbo_player_props.json",     "cadence_mins":  8*60},
     # Optional / stubs
     {"name": "nfl_state.json",            "cadence_mins": 24*60, "optional": True},
     # Loop tracking (from PR #38/#39 -- present only after those merge)

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CS Players | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .player-card { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.04); cursor:pointer; }
+  .player-card:hover { background: rgba(255,165,30,0.05); }
+  .player-card.expanded { background: rgba(255,165,30,0.06); border-left: 3px solid #ffa51e; }
+  .role-pill { display:inline-block; padding:2px 7px; border-radius:4px; font-size:9px; font-weight:700; text-transform:uppercase; }
+  .role-pill.awp { background:#5096dc; color:#fff; }
+  .role-pill.rifler { background:#e35a5a; color:#fff; }
+  .role-pill.support { background:#58c878; color:#fff; }
+  .stat-block { display:grid; grid-template-columns: repeat(4, 1fr); gap:10px; margin-top:10px; font-size:12px; }
+  .prop-row { display:grid; grid-template-columns: 90px 80px 90px 90px; gap:6px; padding:6px 0; font-family:'JetBrains Mono',monospace; font-size:11px; border-bottom:1px dashed rgba(255,255,255,0.04); }
+  .filter-bar { display:flex; gap:8px; padding:8px 16px; flex-wrap:wrap; }
+  .filter-pill { display:inline-block; padding:5px 12px; border-radius:14px; background:rgba(255,255,255,0.06); cursor:pointer; font-size:11px; }
+  .filter-pill.active { background:#ffa51e; color:#0a0a0a; }
+</style>
+</head>
+<body class="page-cs-players">
+<header class="topbar">
+  <div class="brand">
+    <a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a>
+    <span class="tagline">by bpleone</span>
+  </div>
+  <nav class="mainnav">
+    <a href="index.html">Dashboard</a>
+    <a href="live-now.html">Live Now</a>
+    <a href="lol.html">LoL</a>
+    <a href="lol-players.html">LoL Players</a>
+    <a href="cs.html">CS</a>
+    <a href="cs-players.html" class="active">CS Players</a>
+    <a href="kbo.html">KBO</a>
+    <a href="kbo-players.html">KBO Players</a>
+    <a href="best-bets.html">Best Bets</a>
+  </nav>
+  <div class="topbar-actions"><div class="ticker">LIVE</div></div>
+</header>
+
+<main class="container">
+
+  <section class="page-head">
+    <h1>Counter-Strike — Player Projections</h1>
+    <p id="csPlayersStatus" class="muted">Loading top-team roster + per-BO3 projections + prop fair odds…</p>
+  </section>
+
+  <section class="metric-strip">
+    <div class="metric"><span class="metric-num" id="m_players">--</span><span class="metric-label">Players</span></div>
+    <div class="metric"><span class="metric-num" id="m_teams">--</span><span class="metric-label">Teams</span></div>
+    <div class="metric"><span class="metric-num" id="m_star">--</span><span class="metric-label">Stars (1.15+)</span></div>
+    <div class="metric"><span class="metric-num" id="m_awp">--</span><span class="metric-label">AWPers</span></div>
+  </section>
+
+  <section class="card" style="margin-bottom: 24px;">
+    <div class="card-head"><span>🔫 Filter by</span></div>
+    <div class="filter-bar" id="filterBar">
+      <span class="filter-pill active" data-filter="all">All</span>
+      <span class="filter-pill" data-filter="stars">Stars (1.15+)</span>
+      <span class="filter-pill" data-role="awp">AWPers</span>
+      <span class="filter-pill" data-role="rifler">Riflers</span>
+      <span class="filter-pill" data-role="support">Support / IGL</span>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="card-head"><span>📊 Roster (click for projections + props)</span><span class="muted" id="rosterMeta">--</span></div>
+    <div id="rosterList"><p class="muted" style="padding:14px;">Loading…</p></div>
+  </section>
+
+</main>
+
+<script src="js/nav_badge.js"></script>
+<script>
+let allPlayers = [];
+let currentFilters = { stars: false, role: null };
+const fmtAmer = (a) => a == null ? "—" : (a >= 0 ? "+" + a : String(a));
+
+function renderRoster() {
+  let filtered = allPlayers;
+  if (currentFilters.stars) filtered = filtered.filter(p => p.rating >= 1.15);
+  if (currentFilters.role) filtered = filtered.filter(p => p.role === currentFilters.role);
+  document.getElementById("rosterMeta").textContent = `${filtered.length} players shown`;
+  if (!filtered.length) { document.getElementById("rosterList").innerHTML = `<p class="muted" style="padding:14px;">No players match.</p>`; return; }
+
+  document.getElementById("rosterList").innerHTML = filtered.map((p, i) => {
+    const proj = p.projection_bo3 || {};
+    const props = p.props_bo3 || {};
+    const id = `proj_${i}`;
+    return `<div class="player-card" onclick="this.classList.toggle('expanded'); document.getElementById('${id}').style.display = this.classList.contains('expanded') ? 'block' : 'none';">
+      <div style="display:flex; justify-content:space-between; align-items:center;">
+        <div>
+          <span style="font-size:14px; font-weight:700; margin-right:8px;">${p.name}</span>
+          ${p.rating >= 1.20 ? '<span style="background:linear-gradient(90deg, #ffa51e, #e35a5a); color:#fff; padding:2px 7px; border-radius:4px; font-size:9px; font-weight:700;">SUPERSTAR</span>' : p.rating >= 1.15 ? '<span style="background:#ffa51e; color:#0a0a0a; padding:2px 7px; border-radius:4px; font-size:9px; font-weight:700;">STAR</span>' : ''}
+        </div>
+        <div>
+          <span class="role-pill ${p.role}">${p.role}</span>
+          <span style="margin-left:6px; font-size:11px; color:#888;">${p.team}</span>
+          <span style="margin-left:6px; font-family:'JetBrains Mono', monospace; font-size:12px; font-weight:700; color:#ffa51e;">${p.rating.toFixed(2)}</span>
+        </div>
+      </div>
+      <div class="stat-block">
+        <div><span class="muted" style="font-size:10px;">Exp K (BO3):</span> <strong>${proj.expected_kills}</strong></div>
+        <div><span class="muted" style="font-size:10px;">Exp D (BO3):</span> <strong>${proj.expected_deaths}</strong></div>
+        <div><span class="muted" style="font-size:10px;">ADR:</span> <strong>${proj.expected_adr}</strong></div>
+        <div><span class="muted" style="font-size:10px;">K/D:</span> <strong style="color:${proj.kd >= 1.2 ? '#58c878' : 'var(--text-2)'}">${proj.kd}</strong></div>
+      </div>
+      <div id="${id}" style="display:none; margin-top:12px;">
+        <div style="font-size:11px; text-transform:uppercase; color:#ffa51e; margin-bottom:8px;">Kill Props (BO3 series)</div>
+        <div class="prop-row" style="font-weight:700;"><span>Line</span><span>P(over)</span><span>Fair Over</span><span>Fair Under</span></div>
+        ${(props.kills || []).map(k => `<div class="prop-row">
+          <span>OVER ${k.line}</span>
+          <span style="color:${k.p_over >= 0.55 ? '#58c878' : '#e35a5a'}">${(k.p_over*100).toFixed(1)}%</span>
+          <span>${fmtAmer(k.fair_over)}</span>
+          <span>${fmtAmer(k.fair_under)}</span>
+        </div>`).join("")}
+        <div style="font-size:11px; text-transform:uppercase; color:#ffa51e; margin:12px 0 8px;">Death Props</div>
+        ${(props.deaths || []).map(d => `<div class="prop-row">
+          <span>UNDER ${d.line}</span>
+          <span style="color:${d.p_under >= 0.55 ? '#58c878' : '#e35a5a'}">${(d.p_under*100).toFixed(1)}%</span>
+          <span></span><span>${fmtAmer(d.fair_under)}</span>
+        </div>`).join("")}
+        <div style="margin-top:10px; font-size:11px; color:#888;">HLTV 2.1 rating: ${p.rating} · KAST% projected ${proj.expected_kast_pct}%</div>
+      </div>
+    </div>`;
+  }).join("");
+}
+
+fetch("data/cs_player_props.json?t=" + Date.now(), { cache: "no-cache" })
+  .then(r => r.json())
+  .then(d => {
+    allPlayers = d.players || [];
+    document.getElementById("m_players").textContent = d.n_players || 0;
+    document.getElementById("m_teams").textContent = new Set(allPlayers.map(p => p.team)).size;
+    document.getElementById("m_star").textContent = allPlayers.filter(p => p.rating >= 1.15).length;
+    document.getElementById("m_awp").textContent = allPlayers.filter(p => p.role === "awp").length;
+    document.getElementById("csPlayersStatus").textContent =
+      `${d.n_players} top players · refresh: ${(d.generated_at || '').replace('T',' ')}`;
+    renderRoster();
+  })
+  .catch(err => {
+    document.getElementById("rosterList").innerHTML = `<p class="muted" style="padding:14px;">Could not load player data (${err.message}).</p>`;
+  });
+
+document.getElementById("filterBar").addEventListener("click", e => {
+  const t = e.target.closest(".filter-pill");
+  if (!t) return;
+  if (t.dataset.filter === "all") {
+    currentFilters = { stars: false, role: null };
+  } else if (t.dataset.filter === "stars") {
+    currentFilters.stars = !currentFilters.stars;
+  } else if (t.dataset.role) {
+    currentFilters.role = currentFilters.role === t.dataset.role ? null : t.dataset.role;
+  }
+  document.querySelectorAll("#filterBar .filter-pill").forEach(p => {
+    const active = (p.dataset.filter === "stars" && currentFilters.stars) ||
+                   (p.dataset.role && p.dataset.role === currentFilters.role) ||
+                   (p.dataset.filter === "all" && !currentFilters.stars && !currentFilters.role);
+    p.classList.toggle("active", !!active);
+  });
+  renderRoster();
+});
+</script>
+
+</body>
+</html>

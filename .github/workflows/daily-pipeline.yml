@@ -352,6 +352,9 @@ jobs:
       - name: KBO POD rolling history
         working-directory: python
         run: python kbo_pot_history.py
+      - name: KBO player roster + per-game projections + prop fair odds
+        working-directory: python
+        run: python kbo_players.py
 
       # === League of Legends esports full stack ===
       - name: LoL Riot esports schedule pull
@@ -369,6 +372,12 @@ jobs:
       - name: LoL 2-3 leg parlay builder
         working-directory: python
         run: python lol_parlay.py
+      - name: LoL player roster pull (982 players from Riot API)
+        working-directory: python
+        run: python lol_players.py
+      - name: LoL per-player projections + prop fair odds
+        working-directory: python
+        run: python lol_player_proj.py
 
       # === Counter-Strike (CS2) full stack ===
       - name: CS Liquipedia + HLTV top-30 pull
@@ -386,6 +395,9 @@ jobs:
       - name: CS map handicap props (sweep / distance / total)
         working-directory: python
         run: python cs_maphandicap.py
+      - name: CS player roster + per-BO3 projections + prop fair odds
+        working-directory: python
+        run: python cs_players.py
 
       # === Self-learning calibration across LoL + CS + KBO ===
       - name: Esports + KBO reliability calibration
