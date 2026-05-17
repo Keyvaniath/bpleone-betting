@@ -47,6 +47,24 @@ def _http(url: str) -> Optional[Dict[str, Any]]:
         return None
 
 
+def _upcoming_from_calendar(lb: Dict[str, Any]) -> List[Dict[str, Any]]:
+    """ESPN scoreboard includes a calendar of all tournaments for the season.
+    Pick the next 3 not-yet-started ones so the UI can show 'next up'."""
+    cal = lb.get("leagues", [{}])[0].get("calendar") or []
+    now = dt.datetime.now(dt.timezone.utc).isoformat()
+    upcoming = []
+    for c in cal:
+        if c.get("startDate", "") > now:
+            upcoming.append({
+                "name": c.get("label"),
+                "start_date": c.get("startDate"),
+                "end_date": c.get("endDate"),
+            })
+            if len(upcoming) >= 3:
+                break
+    return upcoming
+
+
 def _parse_competitor(c: Dict[str, Any]) -> Dict[str, Any]:
     """Each ESPN competitor entry has athlete + score + linescores per round."""
     athlete = (c.get("athlete") or {})
@@ -93,13 +111,25 @@ def run() -> Dict[str, Any]:
             "active_tournament": None,
             "note": "No active PGA tournament right now",
             "field": [],
+            "upcoming": _upcoming_from_calendar(lb),
         }
         os.makedirs(DATA_DIR, exist_ok=True)
         with open(OUT_PATH, "w") as f:
             json.dump(out, f, indent=2)
         return out
 
-    ev = events[0]
+    # Prefer the first IN-PROGRESS event; if none, take the most recent
+    # COMPLETED event so we can settle. If everything is SCHEDULED then take
+    # the soonest upcoming (so the UI shows what's next).
+    in_progress = [e for e in events if (e.get("status") or {}).get("type", {}).get("state") == "in"]
+    if in_progress:
+        ev = in_progress[0]
+    else:
+        completed = [e for e in events if (e.get("status") or {}).get("type", {}).get("completed")]
+        if completed:
+            ev = completed[-1]    # most recent complete
+        else:
+            ev = events[0]    # default first event (probably scheduled)
     name = ev.get("name") or ev.get("shortName")
     status = (ev.get("status") or {}).get("type", {})
     course = ev.get("courses") or []
@@ -133,6 +163,7 @@ def run() -> Dict[str, Any]:
         },
         "n_players": len(field),
         "current_leader": leader,
+        "upcoming": _upcoming_from_calendar(lb),
         "field": field,
     }
     os.makedirs(DATA_DIR, exist_ok=True)

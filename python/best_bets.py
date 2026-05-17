@@ -313,6 +313,30 @@ def run() -> Dict[str, Any]:
             "risks": ["SGPs are correlated -- one bad leg sinks the parlay"],
         })
 
+    # Top golf parlay (cross-sport injection)
+    gp = _load(os.path.join(DATA_DIR, "golf_parlays.json"))
+    if (gp.get("parlays") or []):
+        for top_par in gp["parlays"][:2]:
+            amer = top_par.get("parlay_fair_american", 0)
+            legs_summary = "; ".join(l.get("label","") for l in (top_par.get("legs") or [])[:3])
+            q = min(100, 60 + int((top_par.get("ev_pct") or 0) * 0.3))
+            stars = 4 if (top_par.get("ev_pct") or 0) >= 5 else 3
+            candidates.append({
+                "source": "GOLF",
+                "label": f"GOLF {top_par.get('n_legs')}-leg parlay @ {('+' if amer >= 0 else '')}{amer}",
+                "team": None, "player": None, "player_id": None,
+                "market": "golf_parlay", "line": top_par.get("parlay_fair_decimal"),
+                "play": f"{top_par.get('n_legs')}-leg",
+                "model_prob": top_par.get("joint_prob"),
+                "edge_pct": top_par.get("ev_pct"),
+                "url_anchor": "golf.html",
+                "quality_score": q,
+                "stars": stars,
+                "factors": [f"Joint prob {(top_par.get('joint_prob') or 0)*100:.2f}% · {top_par.get('n_legs')} legs"] +
+                            [f"Leg: {l.get('label')}" for l in (top_par.get("legs") or [])[:3]],
+                "risks": ["Golf parlays uncorrelated -- 1 bad leg sinks it"],
+            })
+
     # Golf Play of the Tournament + runners-up (cross-sport injection)
     gb = _load(os.path.join(DATA_DIR, "golf_bestbet.json"))
     state = _load(os.path.join(DATA_DIR, "golf_state.json"))
@@ -325,7 +349,7 @@ def run() -> Dict[str, Any]:
             stars = 5 if conf == "HIGH" else 4 if conf == "MED" else 3
             candidates.append({
                 "source": "GOLF",
-                "label": f"⛳ {gc.get('player')}{' vs ' + gc.get('opponent') if gc.get('opponent') else ''} {gc.get('type')} @ {gc.get('fair_american','?')} ({t.get('name','PGA')})",
+                "label": f"GOLF {gc.get('player')}{' vs ' + gc.get('opponent') if gc.get('opponent') else ''} {gc.get('type')} @ {gc.get('fair_american','?')} ({t.get('name','PGA')})",
                 "team": None, "player": gc.get("player"), "player_id": None,
                 "market": f"golf_{(gc.get('type') or '').lower()}", "line": gc.get("fair_american"),
                 "play": gc.get("type"),

@@ -443,6 +443,9 @@ jobs:
       - name: Snapshot + settle Golf POT history
         working-directory: python
         run: python golf_pot_history.py
+      - name: Build golf 2-3-leg parlays
+        working-directory: python
+        run: python golf_parlay.py
 
       # Comprehensive pipeline audit -- LAST step so it sees final artifact
       # state. Writes data/pipeline_audit.json with overall: green/yellow/red,

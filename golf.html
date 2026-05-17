@@ -75,6 +75,13 @@
     <div id="h2hList"><p class="muted" style="padding:14px;">Loading H2H matchups…</p></div>
   </section>
 
+  <!-- 2-3 leg golf parlays -->
+  <section class="card" style="margin-bottom: 24px;">
+    <div class="card-head"><span>🎰 2-3 Leg Parlays</span><span class="muted" id="parlayMeta">--</span></div>
+    <p class="muted" style="font-size: 11px; padding: 8px 16px 0;">Top quality-scored parlays from WIN / TOP5 / TOP10 / H2H legs. Mostly-independent legs; same-player legs get a small correlation bump.</p>
+    <div id="parlayList"><p class="muted" style="padding:14px;">Loading parlays…</p></div>
+  </section>
+
   <!-- Make Cut + Top Nationality -->
   <section class="card" style="margin-bottom: 24px;">
     <div class="card-head"><span>🇺🇸 Top American / 🇪🇺 Top European</span><span class="muted" id="natMeta">--</span></div>
@@ -108,7 +115,8 @@ Promise.all([
   fetch("data/golf_h2h.json?t=" + Date.now(), { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
   fetch("data/golf_makecut.json?t=" + Date.now(), { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
   fetch("data/golf_bestbet.json?t=" + Date.now(), { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
-]).then(([state, props, h2h, makecut, bestbet]) => {
+  fetch("data/golf_parlays.json?t=" + Date.now(), { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
+]).then(([state, props, h2h, makecut, bestbet, parlays]) => {
   const t = state.active_tournament;
   const setText = (id, v) => { const e = document.getElementById(id); if (e) e.textContent = v; };
 
@@ -219,6 +227,27 @@ Promise.all([
     (eu.length ? `<div class="golf-row head" style="grid-template-columns: 30px 1.4fr 70px 80px 60px; margin-top:6px;"><span></span><span>Top European</span><span>Total</span><span>Fair</span><span>P</span></div>` + eu.map(p => renderRow(p, 'eu')).join("") : '') ||
     `<p class="muted" style="padding:14px;">No nationality props available.</p>`;
   document.getElementById("natMeta").textContent = `${us.length} US · ${eu.length} EU candidates`;
+
+  // ---- 2-3 leg golf parlays ----
+  const parList = parlays.parlays || [];
+  if (parList.length) {
+    document.getElementById("parlayList").innerHTML = parList.map((p, i) => {
+      const ams = (p.parlay_fair_american >= 0 ? '+' : '') + p.parlay_fair_american;
+      return `<div style="padding:12px 16px; border-bottom:1px solid rgba(255,255,255,0.04);">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+          <span><strong style="color:#d4a04a;">#${i+1} · ${p.n_legs}-leg parlay</strong> <span class="muted" style="font-size:11px;">joint ${(p.joint_prob*100).toFixed(2)}%</span></span>
+          <span style="font-family:'JetBrains Mono',monospace; color:#d4a04a; font-weight:700; font-size:14px;">${ams}</span>
+        </div>
+        <ul style="margin:0; padding-left:18px; font-size:12px; color: var(--text-2,#aaa);">
+          ${p.legs.map(l => `<li><span class="muted" style="font-size:10px;">[${l.kind}]</span> ${l.label}</li>`).join("")}
+        </ul>
+      </div>`;
+    }).join("");
+    document.getElementById("parlayMeta").textContent =
+      `${parlays.n_parlays || 0} top of ${parlays.n_parlays_evaluated || 0} evaluated`;
+  } else {
+    document.getElementById("parlayList").innerHTML = `<p class="muted" style="padding:14px;">${parlays.note || 'No parlays available.'}</p>`;
+  }
 });
 
 // Auto-refresh every 5 minutes while live
