@@ -220,6 +220,8 @@ ARTIFACTS: List[Dict[str, Any]] = [
     {"name": "player_trends_nhl.json",    "cadence_mins":  8*60},
     {"name": "portfolio_today.json",      "cadence_mins":  8*60},
     {"name": "drift_alerts.json",         "cadence_mins":  8*60, "optional": True},
+    {"name": "clv_multi.json",            "cadence_mins":  8*60},
+    {"name": "heat_cold_alerts.json",     "cadence_mins":  8*60},
     # Optional / stubs (placeholder, real nfl_state above)
     # Loop tracking (from PR #38/#39 -- present only after those merge)
     {"name": "config_snapshot.json",      "cadence_mins":  8*60, "optional": True},
