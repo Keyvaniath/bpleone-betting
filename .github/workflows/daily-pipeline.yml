@@ -391,6 +391,15 @@ jobs:
       - name: Daily prediction log (append + auto-settle from historicals)
         working-directory: python
         run: python daily_prediction_log.py
+      - name: Cross-sport anomaly detector (streak / residual / over-pct mismatches)
+        working-directory: python
+        run: python anomaly_detector.py
+      - name: NFL survivor pool helper (in-season picks ranked by tier)
+        working-directory: python
+        run: python survivor_pool.py
+      - name: Daily summary v2 markdown digest (all signals + portfolio + self-training)
+        working-directory: python
+        run: python daily_summary_v2.py
 
       # === Extended ESPN sport coverage (10 new sports) ===
       - name: WNBA live scoreboard
