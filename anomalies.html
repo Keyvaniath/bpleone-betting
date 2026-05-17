@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anomalies | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/nav.js"></script>
+<style>
+  .anomaly-card { padding: 14px 18px; border-bottom: 1px solid rgba(255,255,255,0.04); }
+  .anomaly-card.STREAK_MISMATCH { border-left: 3px solid #b450dc; background: rgba(180,80,220,0.04); }
+  .anomaly-card.RESIDUAL_DIVERGENCE { border-left: 3px solid #d4a04a; background: rgba(212,160,74,0.04); }
+  .anomaly-card.OVER_HEAVY_TEAM { border-left: 3px solid #58c878; background: rgba(88,200,120,0.04); }
+  .type-pill { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 9px; font-weight: 700; text-transform: uppercase; color: #fff; margin-right: 6px; }
+</style>
+</head>
+<body class="page-anomalies">
+<header class="topbar">
+  <div class="brand"><a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a><span class="tagline">by bpleone</span></div>
+  <nav class="mainnav"><!-- nav.js injects here --></nav>
+  <div class="topbar-actions"><div class="ticker">LIVE</div></div>
+</header>
+<main class="container">
+  <section class="page-head">
+    <h1>Anomaly Detector</h1>
+    <p class="muted" id="status">Loading cross-sport anomalies (streak mismatches, residual divergence, over-pct outliers)…</p>
+  </section>
+  <section class="metric-strip">
+    <div class="metric"><span class="metric-num" id="m_total">--</span><span class="metric-label">Anomalies</span></div>
+    <div class="metric"><span class="metric-num" id="m_streak">--</span><span class="metric-label">Streak Mismatch</span></div>
+    <div class="metric"><span class="metric-num" id="m_residual">--</span><span class="metric-label">Residual Divergence</span></div>
+    <div class="metric"><span class="metric-num" id="m_over">--</span><span class="metric-label">Over-Heavy</span></div>
+  </section>
+  <section class="card" style="margin-bottom: 24px;">
+    <div class="card-head"><span>📋 What this is</span></div>
+    <div style="padding: 14px 18px; font-size: 13px; line-height: 1.7; color: var(--text-2,#aaa);">
+      <p>Three classes of anomaly:</p>
+      <ul style="padding-left: 20px;">
+        <li><strong>Streak Mismatch:</strong> team on W5+ streak but model rates as coinflip (may be undervalued), or team on L5+ but model still favors them (overvalued)</li>
+        <li><strong>Residual Divergence:</strong> team has out/underperformed ELO-expected margin by ≥6 points across recent games — model bias may persist</li>
+        <li><strong>Over-Heavy Team:</strong> team has gone OVER their median total in ≥75% of last 10 games — lean OVER on their next game total</li>
+      </ul>
+    </div>
+  </section>
+  <section class="card">
+    <div class="card-head"><span>⚠️ Active Anomalies</span><span class="muted" id="meta">--</span></div>
+    <div id="alertsContainer"></div>
+  </section>
+</main>
+<script src="js/nav_badge.js"></script>
+<script>
+fetch("data/anomaly_alerts.json?t=" + Date.now(), { cache: "no-cache" })
+  .then(r => r.json())
+  .then(d => {
+    const alerts = d.alerts || [];
+    document.getElementById("status").textContent =
+      `${alerts.length} anomalies · refresh: ${(d.generated_at || '').replace('T',' ')}`;
+    document.getElementById("m_total").textContent = alerts.length;
+    document.getElementById("m_streak").textContent = (d.by_type || {}).STREAK_MISMATCH || 0;
+    document.getElementById("m_residual").textContent = (d.by_type || {}).RESIDUAL_DIVERGENCE || 0;
+    document.getElementById("m_over").textContent = (d.by_type || {}).OVER_HEAVY_TEAM || 0;
+    document.getElementById("meta").textContent = `${alerts.length} alerts · by sport: ${Object.entries(d.by_sport || {}).map(([s,n]) => s + ':' + n).join(', ')}`;
+    if (!alerts.length) { document.getElementById("alertsContainer").innerHTML = '<p class="muted" style="padding: 14px;">No active anomalies — model is well-aligned with current form.</p>'; return; }
+    const colors = {
+      STREAK_MISMATCH: "#b450dc",
+      RESIDUAL_DIVERGENCE: "#d4a04a",
+      OVER_HEAVY_TEAM: "#58c878",
+    };
+    document.getElementById("alertsContainer").innerHTML = alerts.map(a => `
+      <div class="anomaly-card ${a.type}">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+          <div>
+            <span class="type-pill" style="background:${colors[a.type] || '#888'}">${a.type.replace(/_/g,' ')}</span>
+            <strong style="font-size: 14px;">${a.team}</strong>
+            <span class="muted" style="font-size: 11px;">· ${a.sport}</span>
+          </div>
+          <span class="muted" style="font-size: 11px;">${a.matchup || ''}</span>
+        </div>
+        <div style="margin-top: 6px; font-size: 12px; color: var(--text-2, #aaa);">${a.detail}</div>
+      </div>
+    `).join("");
+  })
+  .catch(err => {
+    document.getElementById("alertsContainer").innerHTML = `<p class="muted" style="padding: 14px;">Could not load anomaly_alerts.json (${err.message}).</p>`;
+  });
+</script>
+</body>
+</html>

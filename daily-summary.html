@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Summary | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/nav.js"></script>
+<style>
+  .summary-md { padding: 18px 24px; font-size: 14px; line-height: 1.7; color: var(--text-2, #aaa); }
+  .summary-md h1 { color: var(--text, #eee); font-size: 24px; margin: 0 0 18px 0; }
+  .summary-md h2 { color: var(--accent, #d4a04a); font-size: 16px; margin: 22px 0 10px 0; padding-bottom: 6px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .summary-md h3 { color: var(--text, #eee); font-size: 14px; margin: 16px 0 8px 0; }
+  .summary-md ul { padding-left: 24px; margin: 8px 0; }
+  .summary-md li { margin: 4px 0; }
+  .summary-md strong { color: var(--text, #eee); }
+  .summary-md code { font-family: 'JetBrains Mono', monospace; font-size: 12px; background: rgba(255,255,255,0.06); padding: 1px 4px; border-radius: 3px; color: var(--accent, #d4a04a); }
+</style>
+</head>
+<body class="page-summary">
+<header class="topbar">
+  <div class="brand"><a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a><span class="tagline">by bpleone</span></div>
+  <nav class="mainnav"><!-- nav.js injects --></nav>
+  <div class="topbar-actions"><div class="ticker">LIVE</div></div>
+</header>
+<main class="container">
+  <section class="page-head">
+    <h1>Daily Summary — All Signals</h1>
+    <p class="muted" id="status">Loading consolidated brief…</p>
+  </section>
+  <section class="card">
+    <div class="card-head"><span>📰 Today's brief</span><span class="muted" id="meta">--</span></div>
+    <div class="summary-md" id="content">Loading…</div>
+  </section>
+</main>
+<script src="js/nav_badge.js"></script>
+<script>
+// Tiny markdown to HTML converter — handles ## headings, lists, bold, code
+function mdToHtml(md) {
+  const lines = md.split("\n");
+  let html = "";
+  let inList = false;
+  for (let line of lines) {
+    if (line.startsWith("# ")) {
+      if (inList) { html += "</ul>"; inList = false; }
+      html += `<h1>${line.slice(2)}</h1>`;
+    } else if (line.startsWith("## ")) {
+      if (inList) { html += "</ul>"; inList = false; }
+      html += `<h2>${line.slice(3)}</h2>`;
+    } else if (line.startsWith("### ")) {
+      if (inList) { html += "</ul>"; inList = false; }
+      html += `<h3>${line.slice(4)}</h3>`;
+    } else if (line.startsWith("- ") || line.startsWith("  - ")) {
+      if (!inList) { html += "<ul>"; inList = true; }
+      let item = line.replace(/^(\s*)- /, "");
+      // Bold + code
+      item = item.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
+      item = item.replace(/`([^`]+)`/g, "<code>$1</code>");
+      html += `<li>${item}</li>`;
+    } else {
+      if (inList) { html += "</ul>"; inList = false; }
+      let p = line.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
+                   .replace(/`([^`]+)`/g, "<code>$1</code>");
+      if (p.trim()) html += `<p>${p}</p>`;
+    }
+  }
+  if (inList) html += "</ul>";
+  return html;
+}
+
+fetch("data/daily_summary_v2.md?t=" + Date.now(), { cache: "no-cache" })
+  .then(r => r.text())
+  .then(md => {
+    document.getElementById("content").innerHTML = mdToHtml(md);
+    const date = (md.match(/# EdgeStat Daily Summary — (\S+)/) || [])[1];
+    document.getElementById("status").textContent = `Brief generated ${date || 'today'} · ${md.length} chars · ${(md.match(/\n## /g) || []).length} sections`;
+    document.getElementById("meta").textContent = `${(md.match(/\n## /g) || []).length} sections`;
+  })
+  .catch(err => {
+    document.getElementById("content").innerHTML = `<p class="muted">Could not load daily_summary_v2.md (${err.message}).</p>`;
+  });
+</script>
+</body>
+</html>

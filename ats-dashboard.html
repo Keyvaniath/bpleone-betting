@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ATS Dashboard | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/nav.js"></script>
+<style>
+  .sport-block { padding: 18px; margin-bottom: 24px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08); }
+  .team-row { display: grid; grid-template-columns: 1.5fr 100px 90px 90px; gap: 10px; padding: 6px 0; font-family: 'JetBrains Mono', monospace; font-size: 12px; border-bottom: 1px dashed rgba(255,255,255,0.05); }
+  .team-row.head { color: var(--muted, #888); text-transform: uppercase; font-size: 10px; }
+  .signal-pill { display: inline-block; padding: 1px 6px; border-radius: 3px; font-size: 9px; font-weight: 700; }
+  .UNDERRATED { background: rgba(88,200,120,0.18); color: #58c878; }
+  .OVERRATED { background: rgba(227,90,90,0.18); color: #e35a5a; }
+  .ALIGNED { background: rgba(255,255,255,0.05); color: var(--muted, #888); }
+</style>
+</head>
+<body class="page-ats">
+<header class="topbar">
+  <div class="brand"><a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a><span class="tagline">by bpleone</span></div>
+  <nav class="mainnav"><!-- nav.js injects --></nav>
+  <div class="topbar-actions"><div class="ticker">LIVE</div></div>
+</header>
+<main class="container">
+  <section class="page-head">
+    <h1>ATS Dashboard — Against The Spread by Team</h1>
+    <p class="muted" id="status">Loading model-cover% per team across 7 sports…</p>
+  </section>
+  <section class="card" style="margin-bottom: 24px;">
+    <div class="card-head"><span>📋 How this works</span></div>
+    <div style="padding:14px 18px; font-size:13px; line-height:1.7; color: var(--text-2,#aaa);">
+      <p>For every historical game, we back-compute the model's implied "spread" from ELO diff (ELO_diff / 25 = pts). Compared to actual margin, we tag each game as a team COVER, FAIL, or PUSH.</p>
+      <p>Teams that cover ≥65% of games signal <strong style="color:#58c878">MODEL UNDERRATES</strong>. Teams covering ≤35% signal <strong style="color:#e35a5a">MODEL OVERRATES</strong>. Use this to lean toward / fade specific teams.</p>
+    </div>
+  </section>
+  <div id="sportsContainer"></div>
+</main>
+<script src="js/nav_badge.js"></script>
+<script>
+const SPORTS = ["nba", "nhl", "wnba", "mls", "epl", "mlb", "cws"];
+const COLORS = {nba:"#c43e3e", nhl:"#0080a3", wnba:"#fa6e21", mls:"#2da748", epl:"#37003c", mlb:"#1e5db8", cws:"#cc0033"};
+Promise.all(SPORTS.map(s => fetch(`data/ats_tracker_${s}.json?t=${Date.now()}`, {cache:"no-cache"}).then(r => r.json()).catch(() => null))).then(results => {
+  const total_teams = results.filter(r => r).reduce((sum, r) => sum + (r.n_teams || 0), 0);
+  document.getElementById("status").textContent = `${total_teams} teams analyzed across ${SPORTS.length} sports`;
+  document.getElementById("sportsContainer").innerHTML = results.map((r, i) => {
+    if (!r || !r.teams) return '';
+    const sport = SPORTS[i];
+    const color = COLORS[sport] || "#888";
+    const teams = Object.values(r.teams).sort((a, b) => b.cover_pct - a.cover_pct);
+    return `<div class="sport-block" style="border-left: 3px solid ${color};">
+      <h2 style="margin:0 0 12px 0; color: ${color};">${sport.toUpperCase()} — ${r.n_teams} teams, ${r.n_games} games</h2>
+      <div class="team-row head"><span>Team</span><span>Cover Rec</span><span>Cover %</span><span>Signal</span></div>
+      ${teams.map(t => `<div class="team-row">
+        <span><strong>${t.name}</strong> <span class="muted">(${t.n_games}g)</span></span>
+        <span>${t.ats_record}</span>
+        <span style="color:${t.cover_pct >= 0.6 ? '#58c878' : t.cover_pct <= 0.4 ? '#e35a5a' : 'var(--text-2,#aaa)'}; font-weight: 700;">${(t.cover_pct*100).toFixed(0)}%</span>
+        <span><span class="signal-pill ${t.signal}">${t.signal.replace('MODEL_','')}</span></span>
+      </div>`).join("")}
+    </div>`;
+  }).join("");
+});
+</script>
+</body>
+</html>

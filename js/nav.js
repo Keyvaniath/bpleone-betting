@@ -34,7 +34,10 @@
     { href: "player.html",            label: "MLB Player Search" },
   ];
   const TOOLS = [
-    { href: "heat-map.html",            label: "Heat Map (hot/cold)" },
+    { href: "daily-summary.html",       label: "📰 Daily Summary" },
+    { href: "heat-map.html",            label: "🔥 Heat Map (hot/cold)" },
+    { href: "anomalies.html",           label: "⚠️ Anomalies" },
+    { href: "ats-dashboard.html",       label: "📊 ATS Dashboard" },
     { href: "backtest-dashboard.html",  label: "Backtest Dashboard" },
     { href: "reliability.html",         label: "Calibration" },
     { href: "audit.html",               label: "Audit" },
