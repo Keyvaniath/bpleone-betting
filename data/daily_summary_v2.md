@@ -1,9 +1,9 @@
 # EdgeStat Daily Summary — 2026-05-17
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.585)
-- **Total games on board:** 110
-- **Strong home favorites:** 6 | **Strong road dogs:** 1
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.586)
+- **Total games on board:** 112
+- **Strong home favorites:** 7 | **Strong road dogs:** 1
 
 ## 🎯 Top 5 Best Bets
 1. **ARI @ COL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
@@ -31,13 +31,13 @@
 - Hot teams: **24** | Cold teams: **37** | Over-heavy: 0 | Under-heavy: 22
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (6)
-- RESIDUAL_DIVERGENCE: **6**
+## ⚠️ Anomaly Detector (8)
+- RESIDUAL_DIVERGENCE: **8**
   - Indiana Fever (WNBA): Indiana Fever OUTPERFORMING expected margin by 9.6pts in recent games -- model bias may persist
   - Seattle Storm (WNBA): Seattle Storm UNDERPERFORMING expected margin by 9.0pts in recent games -- model bias may persist
   - Los Angeles Sparks (WNBA): Los Angeles Sparks UNDERPERFORMING expected margin by 11.8pts in recent games -- model bias may persist
   - Toronto Tempo (WNBA): Toronto Tempo OUTPERFORMING expected margin by 7.1pts in recent games -- model bias may persist
-  - Manchester United (EPL): Manchester United UNDERPERFORMING expected margin by 6.0pts in recent games -- model bias may persist
+  - Inter Miami CF (MLS): Inter Miami CF OUTPERFORMING expected margin by 6.9pts in recent games -- model bias may persist
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)

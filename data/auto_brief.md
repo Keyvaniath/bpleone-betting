@@ -1,7 +1,7 @@
 # Tonight's Slate Brief — 2026-05-17
 
-## Slate Quality: 45/100 (LOW)
-_0% lineups confirmed · 3 extreme-weather games · 9 rookie SPs_
+## Slate Quality: 54/100 (LOW)
+_0% lineups confirmed · 9 rookie SPs_
 **Recommendation:** Defensive sizing tonight; stick to highest-confidence plays.
 
 ## Slate
@@ -35,7 +35,7 @@ _0% lineups confirmed · 3 extreme-weather games · 9 rookie SPs_
    - Edge +25.0% looks big but only 0 settled props on this player — model unproven
 
 ## Weather leans
-- **OVER lean** (wind out + warm): CHC @ CHW, SFG @ OAK, KCR @ STL, TOR @ DET, MIL @ MIN
+- **OVER lean** (wind out + warm): TOR @ DET
 
 ## Hot streaks
 **Batters heating up:** Eric Haase (heat +8.52), Kyle Schwarber (heat +8.43), Daylen Lile (heat +6.11)
@@ -80,10 +80,10 @@ _Lean late-inning OVER on these games; fade their save situations._
 - KT Wiz @ NC Dinos | P(home) 50.5% fair -102 | total 10 R
 - **KBO POD:** OVER 8.5 (model 10 runs) (MED)
 
-## LoL Esports -- 0 live, 18 upcoming
+## LoL Esports -- 1 live, 18 upcoming
+- [LCK] kt Rolster vs Hanwha Life Esports BO3 | P(A) 46.3% fair +116/-116
 - [VCS] TP.HCM SN CyberCore Esports vs Saigon Warrior BO3 | P(A) 50.0% fair -100/-100
 - [VCS] Saigon 9Gaming vs Saigon MVKE Academy BO3 | P(A) 50.0% fair -100/-100
-- [LCK] Hanwha Life Esports vs kt Rolster BO3 | P(A) 53.7% fair -116/+116
 - [LPL] Beijing JDG Esports vs Invictus Gaming BO3 | P(A) 50.0% fair -100/-100
 - [LCK] KIWOOM DRX vs HANJIN BRION BO3 | P(A) 46.3% fair +116/-116
 - **LoL POT:** Hanwha Life Esports ML vs kt Rolster (LCK, BO3) (HIGH)
