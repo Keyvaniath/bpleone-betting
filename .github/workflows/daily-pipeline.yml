@@ -336,6 +336,29 @@ jobs:
         working-directory: python
         run: python nhl_pipeline.py
 
+      # === DEEP DATA LAYER (historicals + rosters + game logs + self-training) ===
+      - name: Pull last-14-days historical games per sport
+        working-directory: python
+        run: python historical_games.py
+      - name: Compute per-team form (L5/L10) per sport
+        working-directory: python
+        run: python multi_sport_team_form.py
+      - name: Compute head-to-head history per sport
+        working-directory: python
+        run: python head_to_head.py
+      - name: Self-training backtest (per-sport bias + calibration shift)
+        working-directory: python
+        run: python self_train.py
+      - name: Pull ESPN team rosters (NBA/WNBA/NHL/NFL) -- 4,618 players
+        working-directory: python
+        run: python espn_rosters.py
+      - name: Pull per-player game logs (last 20 games) for NBA/WNBA/NHL starters
+        working-directory: python
+        run: python espn_player_stats.py
+      - name: Generate REAL player prop projections from per-game averages
+        working-directory: python
+        run: python real_player_props.py
+
       # === Extended ESPN sport coverage (10 new sports) ===
       - name: WNBA live scoreboard
         working-directory: python

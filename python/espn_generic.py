@@ -174,6 +174,22 @@ def _parse_game(comp: Dict[str, Any], status: Dict[str, Any], cfg: Dict[str, Any
 SPORT_LABELS = {1: "preseason", 2: "regular", 3: "playoffs", 4: "offseason"}
 
 
+def _self_training_shift(sport_key: str) -> float:
+    """Load the calibrated bias shift from self_training_<sport>.json.
+    Returns the shift to ADD to model P(home win) (i.e. -bias)."""
+    path = os.path.join(DATA_DIR, f"self_training_{sport_key}.json")
+    if not os.path.exists(path):
+        return 0.0
+    try:
+        with open(path) as f: d = json.load(f)
+        reco = d.get("recommendation") or {}
+        if reco.get("applied"):
+            return float(reco.get("recommended_shift", 0))
+    except Exception:
+        pass
+    return 0.0
+
+
 def run(cfg: Dict[str, Any]) -> Dict[str, Any]:
     """cfg shape:
        {
@@ -189,6 +205,8 @@ def run(cfg: Dict[str, Any]) -> Dict[str, Any]:
     """
     sport_key = cfg["sport_key"]
     out_path = os.path.join(DATA_DIR, f"{sport_key}_state.json")
+    # Apply learned calibration shift
+    cal_shift = _self_training_shift(sport_key)
     url = f"{BASE_URL}/{cfg['espn_path']}/scoreboard"
     sb = _http(url)
     if not sb:
@@ -209,7 +227,16 @@ def run(cfg: Dict[str, Any]) -> Dict[str, Any]:
     for ev in events:
         comps = ev.get("competitions") or []
         if not comps: continue
-        games.append(_parse_game(comps[0], ev.get("status") or {}, cfg))
+        g = _parse_game(comps[0], ev.get("status") or {}, cfg)
+        # Apply self-training calibration shift to p_home_win
+        if cal_shift != 0 and g.get("state") != "post":
+            shifted = max(0.01, min(0.99, g["p_home_win"] + cal_shift))
+            g["p_home_win_raw"] = g["p_home_win"]
+            g["p_home_win"] = round(shifted, 4)
+            g["calibration_shift_pp"] = round(cal_shift * 100, 1)
+            g["fair_home_american"] = _american(shifted)
+            g["fair_away_american"] = _american(1 - shifted)
+        games.append(g)
 
     season = (sb.get("season") or {}).get("year") or dt.date.today().year
     season_type = (sb.get("season") or {}).get("type")
@@ -222,6 +249,8 @@ def run(cfg: Dict[str, Any]) -> Dict[str, Any]:
         "season_year": season,
         "season_status": season_label,
         "n_games_today": len(games),
+        "calibration_shift_pp": round(cal_shift * 100, 1) if cal_shift else 0,
+        "self_training_applied": cal_shift != 0,
         "games": games,
         "enabled": True,
         "note": f"{len(games)} game(s) on the board today ({season_label}).",
