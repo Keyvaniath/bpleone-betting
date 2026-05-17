@@ -1,7 +1,7 @@
 # Tonight's Slate Brief — 2026-05-17
 
-## Slate Quality: 54/100 (LOW)
-_0% lineups confirmed · 9 rookie SPs_
+## Slate Quality: 52/100 (LOW)
+_0% lineups confirmed · 1 extreme-weather games · 9 rookie SPs_
 **Recommendation:** Defensive sizing tonight; stick to highest-confidence plays.
 
 ## Slate
@@ -35,7 +35,7 @@ _0% lineups confirmed · 9 rookie SPs_
    - Edge +25.0% looks big but only 0 settled props on this player — model unproven
 
 ## Weather leans
-- **OVER lean** (wind out + warm): TOR @ DET
+- **OVER lean** (wind out + warm): KCR @ STL, TOR @ DET
 
 ## Hot streaks
 **Batters heating up:** Eric Haase (heat +8.52), Kyle Schwarber (heat +8.43), Daylen Lile (heat +6.11)
@@ -84,8 +84,8 @@ _Lean late-inning OVER on these games; fade their save situations._
 - [LCK] kt Rolster vs Hanwha Life Esports BO3 | P(A) 46.3% fair +116/-116
 - [VCS] TP.HCM SN CyberCore Esports vs Saigon Warrior BO3 | P(A) 50.0% fair -100/-100
 - [VCS] Saigon 9Gaming vs Saigon MVKE Academy BO3 | P(A) 50.0% fair -100/-100
-- [LPL] Beijing JDG Esports vs Invictus Gaming BO3 | P(A) 50.0% fair -100/-100
 - [LCK] KIWOOM DRX vs HANJIN BRION BO3 | P(A) 46.3% fair +116/-116
+- [CBLOL] FURIA vs LOUD BO5 | P(A) 50.0% fair -100/-100
 - **LoL POT:** Hanwha Life Esports ML vs kt Rolster (LCK, BO3) (HIGH)
 
 ## CS Esports -- 8 matches (fallback (top-30 cross-pairs))
