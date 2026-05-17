@@ -358,6 +358,18 @@ jobs:
       - name: Generate REAL player prop projections from per-game averages
         working-directory: python
         run: python real_player_props.py
+      - name: Per-team residual analysis (over/underrated)
+        working-directory: python
+        run: python team_residuals.py
+      - name: Player trends L5 vs L20 (heating up / cooling down)
+        working-directory: python
+        run: python player_trends.py
+      - name: Multi-sport portfolio builder (quality-weighted)
+        working-directory: python
+        run: python multi_sport_portfolio.py
+      - name: Drift detector v2 (prob shifts + model degradation)
+        working-directory: python
+        run: python drift_detector_v2.py
 
       # === Extended ESPN sport coverage (10 new sports) ===
       - name: WNBA live scoreboard

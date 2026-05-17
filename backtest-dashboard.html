@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Backtest Dashboard | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .sport-block { padding: 18px; margin-bottom: 24px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08); }
+  .metric-tile { display:grid; grid-template-columns: repeat(4, 1fr); gap:14px; margin-bottom:16px; }
+  .metric-tile .tile { padding: 10px; background: rgba(255,255,255,0.03); border-radius: 4px; }
+  .metric-tile .label { font-size: 10px; text-transform: uppercase; color: var(--muted, #888); }
+  .metric-tile .value { font-size: 22px; font-weight: 700; font-family: 'JetBrains Mono', monospace; }
+  .bin-row { display:grid; grid-template-columns: 80px 60px 90px 90px 90px 1fr; gap: 8px; padding: 5px 0; font-family: 'JetBrains Mono', monospace; font-size: 11px; border-bottom: 1px dashed rgba(255,255,255,0.05); }
+  .bin-row.head { color: var(--muted, #888); text-transform: uppercase; font-size: 10px; }
+  .bar { display:inline-block; height: 6px; background: rgba(255,255,255,0.08); border-radius: 3px; width: 120px; vertical-align: middle; position: relative; }
+  .bar > span { display:block; height: 6px; background: #d4a04a; border-radius: 3px; }
+  .reco-applied { background: rgba(88, 200, 120, 0.1); border-left: 3px solid #58c878; padding: 12px; margin-top:12px; }
+  .reco-pending { background: rgba(255, 255, 255, 0.04); border-left: 3px solid #888; padding: 12px; margin-top:12px; }
+</style>
+</head>
+<body class="page-backtest">
+<header class="topbar">
+  <div class="brand">
+    <a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a>
+    <span class="tagline">by bpleone</span>
+  </div>
+  <nav class="mainnav">
+    <a href="index.html">Dashboard</a>
+    <a href="reliability.html">Calibration</a>
+    <a href="backtest-dashboard.html" class="active">Backtest</a>
+    <a href="audit.html">Audit</a>
+    <a href="best-bets.html">Best Bets</a>
+  </nav>
+</header>
+<main class="container">
+  <section class="page-head">
+    <h1>Self-Training Backtest — Per-Sport Model Performance</h1>
+    <p class="muted" id="bt_status">Loading walk-forward backtest results from last 14 days of completed games…</p>
+  </section>
+  <section class="card" style="margin-bottom: 24px;">
+    <div class="card-head"><span>📋 What this shows</span></div>
+    <div style="padding: 14px 18px; font-size: 13px; line-height: 1.7; color: var(--text-2, #aaa);">
+      <p>For every historical game, we back-compute what the ELO model would have predicted using ONLY information available pre-game. The result is a per-sport calibration audit:</p>
+      <ul style="padding-left: 20px;">
+        <li><strong>Hit rate:</strong> % of times rounded P(home win) matched actual outcome</li>
+        <li><strong>Brier score:</strong> avg squared error between probability and outcome (lower = sharper)</li>
+        <li><strong>Bias:</strong> avg(predicted) − avg(actual). Positive = model favors home too much</li>
+        <li><strong>Reliability bins:</strong> for each 10% prob bucket, predicted hit rate vs actual</li>
+      </ul>
+      <p>When sample ≥ 30 and |bias| ≥ 2pp, the system <strong>auto-applies a calibration shift</strong> to future predictions.</p>
+    </div>
+  </section>
+  <div id="sportsContainer"></div>
+</main>
+
+<script src="js/nav_badge.js"></script>
+<script>
+const SPORTS = ["mlb", "cws", "mls", "epl", "wnba", "nba", "nhl"];
+const SPORT_COLORS = {
+  mlb: "#1e5db8", cws: "#cc0033", mls: "#2da748", epl: "#37003c",
+  wnba: "#fa6e21", nba: "#c43e3e", nhl: "#0080a3",
+};
+
+Promise.all(SPORTS.map(s =>
+  fetch(`data/self_training_${s}.json?t=${Date.now()}`, { cache: "no-cache" })
+    .then(r => r.json()).catch(() => ({ sport: s, n_games: 0 }))
+)).then(allResults => {
+  document.getElementById("bt_status").textContent =
+    `${allResults.filter(r => r.n_games > 0).length} sports backtested`;
+  document.getElementById("sportsContainer").innerHTML = allResults
+    .filter(r => r.n_games > 0)
+    .map(r => {
+      const color = SPORT_COLORS[r.sport] || "#888";
+      const reco = r.recommendation || {};
+      const recoHtml = reco.applied
+        ? `<div class="reco-applied">✅ <strong>Auto-corrected:</strong> ${reco.note || ''} <em>(shift ${reco.recommended_shift > 0 ? '+' : ''}${(reco.recommended_shift * 100).toFixed(1)}pp applied to live predictions)</em></div>`
+        : `<div class="reco-pending"><strong>No correction:</strong> ${reco.note || 'insufficient sample'}</div>`;
+      const bins = (r.reliability_bins || []).filter(b => b.n > 0);
+      const binsHtml = bins.length ? bins.map(b => {
+        const diff = (b.actual_avg - b.predicted_avg);
+        const w = Math.min(100, b.actual_avg * 100);
+        const diffClass = Math.abs(diff) <= 0.05 ? '' : (diff > 0 ? 'color:#58c878;' : 'color:#e35a5a;');
+        return `<div class="bin-row">
+          <span class="muted">${(b.lo*100).toFixed(0)}-${(b.hi*100).toFixed(0)}%</span>
+          <span>${b.n}</span>
+          <span>${(b.predicted_avg*100).toFixed(1)}%</span>
+          <span>${(b.actual_avg*100).toFixed(1)}%</span>
+          <span style="${diffClass}">${diff >= 0 ? '+' : ''}${(diff*100).toFixed(1)}pp</span>
+          <span><span class="bar"><span style="width:${w}%; background:${color}"></span></span></span>
+        </div>`;
+      }).join("") : '<p class="muted">No reliability bins yet.</p>';
+      return `<div class="sport-block" style="border-left: 3px solid ${color};">
+        <h2 style="margin: 0 0 12px 0; color: ${color};">${r.sport.toUpperCase()} — ${r.n_games} games</h2>
+        <div class="metric-tile">
+          <div class="tile"><div class="label">Hit rate</div><div class="value">${((r.hit_rate || 0)*100).toFixed(1)}%</div></div>
+          <div class="tile"><div class="label">Brier score</div><div class="value">${r.brier_score ?? '—'}</div></div>
+          <div class="tile"><div class="label">Log loss</div><div class="value">${r.log_loss ?? '—'}</div></div>
+          <div class="tile"><div class="label">Bias</div><div class="value" style="color:${Math.abs((r.bias || 0)) > 0.05 ? '#e35a5a' : '#58c878'}">${(r.bias || 0) > 0 ? '+' : ''}${((r.bias || 0)*100).toFixed(1)}pp</div></div>
+        </div>
+        ${recoHtml}
+        <div style="margin-top:16px;">
+          <h3 style="font-size:13px; text-transform:uppercase; color:var(--muted,#888); margin-bottom:8px;">Reliability bins</h3>
+          <div class="bin-row head"><span>Prob bin</span><span>n</span><span>Predicted</span><span>Actual</span><span>Δ</span><span>Bar</span></div>
+          ${binsHtml}
+        </div>
+      </div>`;
+    }).join("");
+});
+</script>
+</body>
+</html>

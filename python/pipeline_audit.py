@@ -207,6 +207,19 @@ ARTIFACTS: List[Dict[str, Any]] = [
     {"name": "self_training_mlb.json",    "cadence_mins":  8*60},
     {"name": "self_training_cws.json",    "cadence_mins":  8*60},
     {"name": "self_training_summary.json","cadence_mins":  8*60},
+    # Batch: team residuals + player trends + multi-sport portfolio + drift v2
+    {"name": "team_residuals_nba.json",   "cadence_mins":  8*60},
+    {"name": "team_residuals_nhl.json",   "cadence_mins":  8*60},
+    {"name": "team_residuals_wnba.json",  "cadence_mins":  8*60},
+    {"name": "team_residuals_mls.json",   "cadence_mins":  8*60},
+    {"name": "team_residuals_epl.json",   "cadence_mins":  8*60},
+    {"name": "team_residuals_mlb.json",   "cadence_mins":  8*60},
+    {"name": "team_residuals_cws.json",   "cadence_mins":  8*60},
+    {"name": "player_trends_nba.json",    "cadence_mins":  8*60},
+    {"name": "player_trends_wnba.json",   "cadence_mins":  8*60, "optional": True},
+    {"name": "player_trends_nhl.json",    "cadence_mins":  8*60},
+    {"name": "portfolio_today.json",      "cadence_mins":  8*60},
+    {"name": "drift_alerts.json",         "cadence_mins":  8*60, "optional": True},
     # Optional / stubs (placeholder, real nfl_state above)
     # Loop tracking (from PR #38/#39 -- present only after those merge)
     {"name": "config_snapshot.json",      "cadence_mins":  8*60, "optional": True},
