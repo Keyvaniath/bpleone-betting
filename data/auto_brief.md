@@ -1,7 +1,7 @@
 # Tonight's Slate Brief — 2026-05-17
 
-## Slate Quality: 49/100 (LOW)
-_0% lineups confirmed · 2 extreme-weather games · 9 rookie SPs_
+## Slate Quality: 54/100 (LOW)
+_0% lineups confirmed · 9 rookie SPs_
 **Recommendation:** Defensive sizing tonight; stick to highest-confidence plays.
 
 ## Slate
@@ -35,11 +35,11 @@ _0% lineups confirmed · 2 extreme-weather games · 9 rookie SPs_
    - Edge +25.0% looks big but only 0 settled props on this player — model unproven
 
 ## Weather leans
-- **OVER lean** (wind out + warm): KCR @ STL, SFG @ OAK, MIL @ MIN, ARI @ COL
+- **OVER lean** (wind out + warm): MIL @ MIN
 
 ## Hot streaks
 **Batters heating up:** Kyle Schwarber (heat +8.43), Daylen Lile (heat +6.11), Drake Baldwin (heat +5.91)
-**Pitchers on a run:** George Kirby (heat +5.86), Michael Lorenzen (heat +4.13), Grant Holmes (heat +3.77)
+**Pitchers on a run:** George Kirby (heat +5.86), Grant Holmes (heat +3.77), Brayan Bello (heat +2.94)
 
 ## Top correlation-aware SGPs
 - **CHC @ CHW** 2-leg @ -183 fair (joint 0.65, EV +25.0%)
@@ -73,12 +73,12 @@ _Lean late-inning OVER on these games; fade their save situations._
 - Buffalo Sabres @ Montreal Canadiens (50-23-9 vs 48-24-10) 8-3 | P(home) 0.0% fair +0 | Final
 
 ## KBO -- 2026 Korean Baseball
-- Lotte Giants @ Hanwha Eagles | P(home) 50.5% fair -102 | total 9 R
-- Kiwoom Heroes @ KIA Tigers | P(home) 65.7% fair -191 | total 9 R
-- LG Twins @ Samsung Lions | P(home) 51.4% fair -106 | total 9 R
-- Doosan Bears @ SSG Landers | P(home) 52.0% fair -108 | total 9 R
-- KT Wiz @ NC Dinos | P(home) 51.4% fair -106 | total 9 R
-- **KBO POD:** KIA Tigers ML vs Kiwoom Heroes (KBO) (MED)
+- Lotte Giants @ Hanwha Eagles | P(home) 49.6% fair +102 | total 10 R
+- Kiwoom Heroes @ KIA Tigers | P(home) 72.7% fair -266 | total 10 R
+- LG Twins @ Samsung Lions | P(home) 50.0% fair +100 | total 9 R
+- Doosan Bears @ SSG Landers | P(home) 51.2% fair -105 | total 9 R
+- KT Wiz @ NC Dinos | P(home) 50.5% fair -102 | total 10 R
+- **KBO POD:** OVER 8.5 (model 10 runs) (MED)
 
 ## LoL Esports -- 0 live, 18 upcoming
 - [VCS] TP.HCM SN CyberCore Esports vs Saigon Warrior BO3 | P(A) 50.0% fair -100/-100
