@@ -76,6 +76,40 @@ def _team_record(team_block: Dict[str, Any]) -> Dict[str, Any]:
     return out
 
 
+def _clock_to_seconds(clock_str: Optional[str]) -> int:
+    if not clock_str or ":" not in clock_str:
+        return 0
+    try:
+        parts = clock_str.split(":")
+        return int(int(parts[0]) * 60 + float(parts[1]))
+    except Exception:
+        return 0
+
+
+def _live_win_prob(p_prior: float, h_score: int, a_score: int,
+                    period: int, period_secs_left: int) -> float:
+    """NHL regulation = 3 periods x 20 min = 3600 sec. Score lead more
+    dominant because hockey has fewer goals than basketball has points."""
+    if period <= 0:
+        return p_prior
+    if period > 3:    # OT or shootout
+        diff = h_score - a_score
+        if diff == 0:
+            return 0.5    # OT in hockey -- coin flip
+        return 1 / (1 + math.exp(-diff * 0.8))
+
+    sec_left_total = period_secs_left + (3 - period) * 20 * 60
+    sec_left_total = max(0, sec_left_total)
+    frac_left = sec_left_total / 3600.0
+
+    diff = h_score - a_score
+    prior_logodds = math.log(p_prior / max(1e-6, 1 - p_prior))
+    # Hockey score: 1-goal lead = ~70% with 1 period left
+    score_logodds = diff * 0.6
+    blend = prior_logodds * frac_left + score_logodds * (1 - frac_left) * 1.8
+    return 1 / (1 + math.exp(-blend))
+
+
 def _parse_game(comp: Dict[str, Any], status: Dict[str, Any]) -> Dict[str, Any]:
     competitors = comp.get("competitors") or []
     home = next((c for c in competitors if c.get("homeAway") == "home"), competitors[0] if competitors else {})
@@ -83,17 +117,33 @@ def _parse_game(comp: Dict[str, Any], status: Dict[str, Any]) -> Dict[str, Any]:
 
     h_team = (home.get("team") or {}).get("displayName", "?")
     a_team = (away.get("team") or {}).get("displayName", "?")
-    h_score = home.get("score")
-    a_score = away.get("score")
+    h_score_raw = home.get("score")
+    a_score_raw = away.get("score")
+    try:
+        h_score = int(h_score_raw) if h_score_raw not in (None, "") else 0
+        a_score = int(a_score_raw) if a_score_raw not in (None, "") else 0
+    except Exception:
+        h_score = a_score = 0
 
     h_rec = _team_record(home)
     a_rec = _team_record(away)
 
     h_elo = _winpct_to_elo(h_rec["win_pct"])
     a_elo = _winpct_to_elo(a_rec["win_pct"])
-    p_home_win = _elo_winprob(h_elo, a_elo)
+    p_prior = _elo_winprob(h_elo, a_elo)
 
     state = (status.get("type") or {}).get("state")
+    period = (status.get("period") or 0)
+    clock = status.get("displayClock")
+    period_secs_left = _clock_to_seconds(clock) if state == "in" else 0
+
+    if state == "in" and (h_score or a_score):
+        p_home_win = _live_win_prob(p_prior, h_score, a_score, period, period_secs_left)
+    elif state == "post":
+        p_home_win = 1.0 if h_score > a_score else 0.0 if a_score > h_score else 0.5
+    else:
+        p_home_win = p_prior
+
     return {
         "id": comp.get("id"),
         "matchup": f"{a_team} @ {h_team}",
@@ -105,10 +155,11 @@ def _parse_game(comp: Dict[str, Any], status: Dict[str, Any]) -> Dict[str, Any]:
         "away_score": a_score,
         "status": (status.get("type") or {}).get("description"),
         "state": state,
-        "period": (status.get("period") or 0) if state != "pre" else None,
-        "clock": status.get("displayClock") if state != "pre" else None,
+        "period": period if state != "pre" else None,
+        "clock": clock if state != "pre" else None,
         "home_elo": round(h_elo, 1),
         "away_elo": round(a_elo, 1),
+        "p_home_win_pregame": round(p_prior, 4),
         "p_home_win": round(p_home_win, 4),
         "fair_home_american": _american(p_home_win),
         "fair_away_american": _american(1 - p_home_win),
