@@ -1,7 +1,7 @@
 # Tonight's Slate Brief — 2026-05-17
 
 ## Slate Quality: 49/100 (LOW)
-_0% lineups confirmed · 1 extreme-weather games · 9 rookie SPs_
+_0% lineups confirmed · 2 extreme-weather games · 9 rookie SPs_
 **Recommendation:** Defensive sizing tonight; stick to highest-confidence plays.
 
 ## Slate
@@ -63,8 +63,8 @@ _Lean late-inning OVER on these games; fade their save situations._
 ## Golf -- PGA Championship
 - **Leader:** Alex Smalley (-6) at #1
 - **Field:** 156 players  |  Status: In Progress
-- **Play of the Tournament:** Patrick Reed TOP5 @ +466 (model 17.7%, HIGH)
-   - P(top 5) 17.7% -- lower variance than outright but compelling line.
+- **Play of the Tournament:** Scottie Scheffler TOP10 @ +526 (model 16.0%, HIGH)
+   - P(top 10) 16.0% -- safest position-bet for #29.
 
 ## NBA -- PLAYOFFS
 - Cleveland Cavaliers @ Detroit Pistons (52-30 vs 60-22)  | P(home) 65.8% fair -192 | Scheduled
@@ -80,7 +80,7 @@ _Lean late-inning OVER on these games; fade their save situations._
 - KT Wiz @ NC Dinos | P(home) 50.5% fair -102 | total 10 R
 - **KBO POD:** OVER 8.5 (model 10 runs) (MED)
 
-## LoL Esports -- 1 live, 20 upcoming
+## LoL Esports -- 1 live, 22 upcoming
 - [LCK] HANJIN BRION vs KIWOOM DRX BO3 | P(A) 53.7% fair -116/+116
 - [VCS] TP.HCM SN CyberCore Esports vs Saigon Warrior BO3 | P(A) 50.0% fair -100/-100
 - [VCS] Saigon 9Gaming vs Saigon MVKE Academy BO3 | P(A) 50.0% fair -100/-100
