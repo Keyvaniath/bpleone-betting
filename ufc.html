@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UFC | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .fight-row { display:grid; grid-template-columns: 1.4fr 100px 100px 1.4fr 100px; gap:12px; padding:10px 14px; border-bottom:1px solid rgba(255,255,255,0.04); font-family:'JetBrains Mono',monospace; font-size:12px; align-items:center; }
+  .fight-row.head { background:rgba(255,255,255,0.04); color:var(--muted,#888); font-size:10px; text-transform:uppercase; }
+  .winner { color:#58c878; font-weight:700; }
+</style>
+</head>
+<body class="page-ufc">
+<header class="topbar">
+  <div class="brand">
+    <a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a>
+    <span class="tagline">by bpleone</span>
+  </div>
+  <nav class="mainnav">
+    <a href="index.html">Dashboard</a>
+    <a href="live-now.html">Live Now</a>
+    <a href="f1.html">F1</a>
+    <a href="ufc.html" class="active">UFC</a>
+    <a href="best-bets.html">Best Bets</a>
+  </nav>
+</header>
+<main class="container">
+  <section class="page-head">
+    <h1 id="ufcTitle">UFC — Loading…</h1>
+    <p id="ufcStatus" class="muted">Pulling UFC fight cards…</p>
+  </section>
+  <div id="eventsContainer"></div>
+</main>
+
+<script src="js/nav_badge.js"></script>
+<script>
+fetch("data/ufc_state.json?t=" + Date.now(), { cache: "no-cache" })
+  .then(r => r.json())
+  .then(d => {
+    document.getElementById("ufcTitle").textContent = `UFC — ${d.n_events || 0} active event(s)`;
+    document.getElementById("ufcStatus").textContent = `refresh: ${(d.generated_at || '').replace('T',' ')} UTC`;
+    document.getElementById("eventsContainer").innerHTML = (d.events || []).map(e => `
+      <section class="card" style="margin-bottom: 24px; border-left: 3px solid #d20a11;">
+        <div class="card-head"><span>🥊 <strong>${e.name}</strong></span><span class="muted">${e.status} · ${e.venue || 'TBD'}</span></div>
+        <p class="muted" style="font-size: 11px; padding: 8px 16px 0;">${e.n_fights} fights on card · ${(e.start_date || '').replace('T', ' ').slice(0, 16)} UTC</p>
+        <div class="fight-row head"><span>Fighter A</span><span>Record</span><span>Record</span><span>Fighter B</span><span>Status</span></div>
+        ${(e.fights || []).map(f => `<div class="fight-row">
+          <span class="${f.winner === f.fighter_a ? 'winner' : ''}"><strong>${f.fighter_a || '?'}</strong></span>
+          <span class="muted">${f.fighter_a_record || '?'}</span>
+          <span class="muted">${f.fighter_b_record || '?'}</span>
+          <span class="${f.winner === f.fighter_b ? 'winner' : ''}"><strong>${f.fighter_b || '?'}</strong></span>
+          <span class="muted">${f.status || '—'}</span>
+        </div>`).join("")}
+      </section>
+    `).join("");
+  })
+  .catch(err => {
+    document.getElementById("eventsContainer").innerHTML = `<p class="muted" style="padding:14px;">${err.message}</p>`;
+  });
+setInterval(() => location.reload(), 5 * 60 * 1000);
+</script>
+</body>
+</html>

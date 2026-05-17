@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formula 1 | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .driver-row { display:grid; grid-template-columns: 50px 1.4fr 1fr 100px; gap:12px; padding:10px 14px; border-bottom:1px solid rgba(255,255,255,0.04); font-family:'JetBrains Mono',monospace; font-size:12px; }
+  .driver-row.head { background:rgba(255,255,255,0.04); color:var(--muted,#888); font-size:10px; text-transform:uppercase; }
+  .pos-pill { display:inline-block; padding:2px 8px; border-radius:4px; font-size:11px; font-weight:700; background:#e10600; color:#fff; }
+</style>
+</head>
+<body class="page-f1">
+<header class="topbar">
+  <div class="brand">
+    <a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a>
+    <span class="tagline">by bpleone</span>
+  </div>
+  <nav class="mainnav">
+    <a href="index.html">Dashboard</a>
+    <a href="live-now.html">Live Now</a>
+    <a href="f1.html" class="active">F1</a>
+    <a href="ufc.html">UFC</a>
+    <a href="best-bets.html">Best Bets</a>
+  </nav>
+</header>
+<main class="container">
+  <section class="page-head">
+    <h1 id="raceTitle">Formula 1 — Loading…</h1>
+    <p id="raceStatus" class="muted">Pulling F1 race schedule + leaderboard…</p>
+  </section>
+  <div id="racesContainer"></div>
+</main>
+
+<script src="js/nav_badge.js"></script>
+<script>
+fetch("data/f1_state.json?t=" + Date.now(), { cache: "no-cache" })
+  .then(r => r.json())
+  .then(d => {
+    document.getElementById("raceTitle").textContent = `Formula 1 — ${d.n_races || 0} active race(s)`;
+    document.getElementById("raceStatus").textContent = `refresh: ${(d.generated_at || '').replace('T',' ')} UTC`;
+    document.getElementById("racesContainer").innerHTML = (d.races || []).map(r => `
+      <section class="card" style="margin-bottom: 24px; border-left: 3px solid #e10600;">
+        <div class="card-head"><span>🏎️ <strong>${r.name}</strong></span><span class="muted">${r.status} · ${r.venue || ''}</span></div>
+        <p class="muted" style="font-size: 11px; padding: 8px 16px 0;">Top 10 by current position. Race starts: ${(r.start_date || '').replace('T', ' ').slice(0, 16)} UTC</p>
+        <div class="driver-row head"><span>Pos</span><span>Driver</span><span>Team</span><span>Status</span></div>
+        ${(r.drivers || []).map(d => `<div class="driver-row">
+          <span class="pos-pill">P${d.position || '?'}</span>
+          <span><strong>${d.driver || '?'}</strong></span>
+          <span class="muted">${d.team || '—'}</span>
+          <span class="muted">${d.status || '—'}</span>
+        </div>`).join("")}
+      </section>
+    `).join("");
+  })
+  .catch(err => {
+    document.getElementById("racesContainer").innerHTML = `<p class="muted" style="padding:14px;">${err.message}</p>`;
+  });
+setInterval(() => location.reload(), 5 * 60 * 1000);
+</script>
+</body>
+</html>

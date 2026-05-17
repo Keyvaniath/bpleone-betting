@@ -336,6 +336,38 @@ jobs:
         working-directory: python
         run: python nhl_pipeline.py
 
+      # === Extended ESPN sport coverage (10 new sports) ===
+      - name: WNBA live scoreboard
+        working-directory: python
+        run: python wnba_pipeline.py
+      - name: MLS soccer scoreboard
+        working-directory: python
+        run: python mls_pipeline.py
+      - name: EPL soccer scoreboard
+        working-directory: python
+        run: python epl_pipeline.py
+      - name: UEFA Champions League scoreboard
+        working-directory: python
+        run: python ucl_pipeline.py
+      - name: NFL live scoreboard
+        working-directory: python
+        run: python nfl_pipeline.py
+      - name: NCAA Football scoreboard
+        working-directory: python
+        run: python ncaaf_pipeline.py
+      - name: NCAA Men's Basketball scoreboard
+        working-directory: python
+        run: python ncaab_pipeline.py
+      - name: NCAA Baseball / CWS scoreboard
+        working-directory: python
+        run: python cws_pipeline.py
+      - name: F1 race scoreboard
+        working-directory: python
+        run: python f1_pipeline.py
+      - name: UFC fight card scoreboard
+        working-directory: python
+        run: python ufc_pipeline.py
+
       # === KBO (Korean Baseball Organization) full stack ===
       - name: KBO live schedule pull
         working-directory: python
@@ -363,6 +395,14 @@ jobs:
       - name: Player POT rolling history (with auto-settle)
         working-directory: python
         run: python player_pot_history.py
+
+      # === Advanced features: DFS optimizer + picks export ===
+      - name: DFS Power-Play lineup optimizer
+        working-directory: python
+        run: python dfs_optimizer.py
+      - name: Picks CSV/JSON export
+        working-directory: python
+        run: python picks_export.py
 
       # === League of Legends esports full stack ===
       - name: LoL Riot esports schedule pull

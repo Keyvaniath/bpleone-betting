@@ -151,8 +151,22 @@ ARTIFACTS: List[Dict[str, Any]] = [
     # Cross-sport player POT (scans all 3 sport prop boards)
     {"name": "player_pot.json",           "cadence_mins":  8*60},
     {"name": "player_pot_history.json",   "cadence_mins":  8*60},
-    # Optional / stubs
-    {"name": "nfl_state.json",            "cadence_mins": 24*60, "optional": True},
+    # Extended ESPN sport coverage (10 new sports)
+    {"name": "wnba_state.json",           "cadence_mins":  8*60},
+    {"name": "mls_state.json",            "cadence_mins":  8*60},
+    {"name": "epl_state.json",            "cadence_mins":  8*60},
+    {"name": "ucl_state.json",            "cadence_mins":  8*60, "optional": True},
+    {"name": "nfl_state.json",            "cadence_mins":  8*60},
+    {"name": "ncaaf_state.json",          "cadence_mins":  8*60},
+    {"name": "ncaab_state.json",          "cadence_mins":  8*60, "optional": True},
+    {"name": "cws_state.json",            "cadence_mins":  8*60},
+    {"name": "f1_state.json",             "cadence_mins": 24*60, "optional": True},
+    {"name": "ufc_state.json",            "cadence_mins": 24*60, "optional": True},
+    # Advanced features
+    {"name": "dfs_optimizer.json",        "cadence_mins":  8*60},
+    {"name": "picks_export.json",         "cadence_mins":  8*60},
+    {"name": "picks_export.csv",          "cadence_mins":  8*60},
+    # Optional / stubs (placeholder, real nfl_state above)
     # Loop tracking (from PR #38/#39 -- present only after those merge)
     {"name": "config_snapshot.json",      "cadence_mins":  8*60, "optional": True},
     {"name": "config_history.json",       "cadence_mins":  8*60, "optional": True},

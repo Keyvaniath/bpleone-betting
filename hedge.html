@@ -5,6 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hedge Calculator | EdgeStat</title>
 <link rel="stylesheet" href="css/style.css">
+<style>
+  .calc-grid { display:grid; grid-template-columns: 1fr 1fr; gap: 24px; padding: 18px; }
+  .calc-input { display:block; margin-bottom: 12px; }
+  .calc-input label { font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted, #888); display: block; margin-bottom: 4px; }
+  .calc-input input { width: 100%; padding: 10px 12px; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.04); color: var(--text-1, #eee); border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 14px; box-sizing: border-box; }
+  .result-card { padding: 14px; background: rgba(212,160,74,0.06); border-left: 3px solid #d4a04a; border-radius: 4px; font-family: 'JetBrains Mono', monospace; }
+  .result-row { display:flex; justify-content:space-between; padding: 6px 0; border-bottom: 1px dashed rgba(255,255,255,0.06); font-size: 12px; }
+  .result-row strong { color: #d4a04a; }
+  .calc-mode { display:flex; gap:8px; margin-bottom:18px; flex-wrap:wrap; }
+  .mode-pill { padding: 6px 14px; border-radius: 14px; background: rgba(255,255,255,0.06); cursor:pointer; font-size:11px; text-transform:uppercase; }
+  .mode-pill.active { background: #d4a04a; color: #0a0a0a; font-weight:700; }
+</style>
 </head>
 <body class="page-hedge">
 <header class="topbar">
@@ -14,82 +26,81 @@
   </div>
   <nav class="mainnav">
     <a href="index.html">Dashboard</a>
-    <a href="live-now.html">Live Now</a>
-    <a href="best-bets.html">Best Bets</a>
-    <a href="my-bets.html">My Bets</a>
     <a href="hedge.html" class="active">Hedge</a>
-    <a href="play-of-day.html">Play of the Day</a>
-    <a href="pod-history.html">POD History</a>
-    <a href="mlb.html">MLB</a>
-    <a href="golf.html">Golf</a>
-    <a href="lol.html">LoL</a>
-    <a href="lol-players.html">LoL Players</a>
-    <a href="cs.html">CS</a>
-    <a href="cs-players.html">CS Players</a>
-    <a href="kbo.html">KBO</a>
-    <a href="kbo-players.html">KBO Players</a>
-    <a href="parlays.html">Parlays</a>
-    <a href="pickem.html">Pick-Em</a>
-    <a href="nrfi.html">NRFI/YRFI</a>
-    <a href="brief.html">Brief</a>
-    <a href="training.html">Training</a>
-    <a href="track-record.html">Track</a>
-    <a href="live.html">Live</a>
     <a href="bankroll.html">Bankroll</a>
-    <a href="props.html">Props</a>
-    <a href="player.html">Player</a>
-    <a href="learn.html">Learn</a>
+    <a href="arbitrage.html">Arb</a>
+    <a href="best-bets.html">Best Bets</a>
+    <a href="ufc.html">UFC</a>
+    <a href="f1.html">F1</a>
+    <a href="cws.html">CWS</a>
+    <a href="ncaab.html">NCAAB</a>
+    <a href="ncaaf.html">NCAAF</a>
+    <a href="ucl.html">UCL</a>
+    <a href="epl.html">EPL</a>
+    <a href="mls.html">MLS</a>
+    <a href="wnba.html">WNBA</a>
   </nav>
-  <div class="topbar-actions"><div class="ticker" id="liveTicker">LIVE</div></div>
 </header>
-
 <main class="container">
   <section class="page-head">
     <h1>Hedge Calculator</h1>
-    <p>You're +$X on an original bet. The line on the other side has shifted to Y. Should you hedge, and if so how much? This tool computes the equal-payout hedge, the break-even hedge, and the optimal Kelly-aware hedge given your model probability for the remaining outcome.</p>
+    <p class="muted">Compute optimal hedge stake to lock in guaranteed profit, equal payout across sides, or partial reduction of risk.</p>
   </section>
 
-  <section class="grid-2">
-    <div class="card">
-      <div class="card-head"><span>⚙️ Inputs</span></div>
-      <div style="padding: 14px;">
-        <label style="display:block; margin-bottom:12px;">
-          <span class="muted" style="font-size:11px; text-transform:uppercase;">Original stake (units)</span>
-          <input id="origStake" type="number" min="0.1" step="0.1" value="1.0" style="width:100%; padding:8px 12px; background:var(--bg-1); border:1px solid var(--line); color:var(--text); border-radius:6px; font-family:'JetBrains Mono',monospace; margin-top:4px;">
-        </label>
-        <label style="display:block; margin-bottom:12px;">
-          <span class="muted" style="font-size:11px; text-transform:uppercase;">Original price (American)</span>
-          <input id="origPrice" type="number" step="1" value="-110" style="width:100%; padding:8px 12px; background:var(--bg-1); border:1px solid var(--line); color:var(--text); border-radius:6px; font-family:'JetBrains Mono',monospace; margin-top:4px;">
-        </label>
-        <label style="display:block; margin-bottom:12px;">
-          <span class="muted" style="font-size:11px; text-transform:uppercase;">Current hedge price (American)</span>
-          <input id="hedgePrice" type="number" step="1" value="-185" style="width:100%; padding:8px 12px; background:var(--bg-1); border:1px solid var(--line); color:var(--text); border-radius:6px; font-family:'JetBrains Mono',monospace; margin-top:4px;">
-        </label>
-        <label style="display:block; margin-bottom:12px;">
-          <span class="muted" style="font-size:11px; text-transform:uppercase;">Model P(original wins) (optional, for optimal Kelly hedge)</span>
-          <input id="probWin" type="number" min="0" max="1" step="0.01" value="0.62" style="width:100%; padding:8px 12px; background:var(--bg-1); border:1px solid var(--line); color:var(--text); border-radius:6px; font-family:'JetBrains Mono',monospace; margin-top:4px;">
-        </label>
-        <button id="calcBtn" class="btn-primary big" style="width:100%;">▶ Compute hedge</button>
-      </div>
+  <section class="card" style="margin-bottom: 24px;">
+    <div class="card-head"><span>⚖️ Mode</span></div>
+    <div class="calc-mode" style="padding: 12px 18px;">
+      <span class="mode-pill active" data-mode="lock">LOCK PROFIT</span>
+      <span class="mode-pill" data-mode="equal">EQUAL PAYOUT</span>
+      <span class="mode-pill" data-mode="break_even">BREAK EVEN</span>
+      <span class="mode-pill" data-mode="partial">PARTIAL HEDGE</span>
     </div>
 
-    <div class="card">
-      <div class="card-head"><span>📊 Hedge Strategies</span></div>
-      <div style="padding: 14px;">
-        <div id="hedgeOut" style="display:grid; grid-template-columns: 1fr; gap: 10px;">
-          <p class="muted" style="text-align:center; padding: 14px;">Fill in inputs and click compute.</p>
+    <div class="calc-grid">
+      <div>
+        <div class="card-head" style="background: none; padding: 0 0 12px 0;"><span>Original Bet</span></div>
+        <div class="calc-input">
+          <label>Stake ($)</label>
+          <input type="number" id="origStake" value="100" step="10" />
+        </div>
+        <div class="calc-input">
+          <label>Odds (American)</label>
+          <input type="number" id="origOdds" value="250" />
+        </div>
+      </div>
+      <div>
+        <div class="card-head" style="background: none; padding: 0 0 12px 0;"><span>Hedge Bet (Other Side)</span></div>
+        <div class="calc-input">
+          <label>Hedge Odds (American)</label>
+          <input type="number" id="hedgeOdds" value="-200" />
+        </div>
+        <div class="calc-input" id="partialInput" style="display:none;">
+          <label>Partial Reduction (%)</label>
+          <input type="number" id="partialPct" value="50" min="0" max="100" />
         </div>
       </div>
     </div>
+
+    <div style="padding: 14px 18px;">
+      <button onclick="calculateHedge()" style="padding: 10px 24px; background: #d4a04a; color: #0a0a0a; border:none; border-radius: 4px; cursor: pointer; font-weight:700; text-transform:uppercase; letter-spacing:0.08em;">Calculate</button>
+    </div>
   </section>
 
-  <section class="card" style="margin-top: 18px;">
-    <div class="card-head"><span>📓 How the strategies differ</span></div>
-    <div style="padding: 14px; font-size: 13px; line-height: 1.7; color: var(--text-2, #aaa);">
-      <ul style="padding-left: 24px; margin: 0;">
-        <li><strong>Equal-payout hedge:</strong> Stake the hedge so you make the SAME profit regardless of outcome. Eliminates variance but caps upside.</li>
-        <li><strong>Break-even hedge:</strong> Stake the hedge so worst case = $0 (no loss either way). Keeps some upside on original side.</li>
-        <li><strong>Optimal Kelly hedge:</strong> Given your model probability for the original winning, compute the hedge stake that maximizes expected log bankroll. Often the answer is "don't hedge" if your model still favors the original.</li>
+  <section class="card" id="resultCard">
+    <div class="card-head"><span>📊 Result</span></div>
+    <div style="padding: 18px;" id="resultBox">
+      <p class="muted">Enter your bet details and click Calculate.</p>
+    </div>
+  </section>
+
+  <section class="card" style="margin-top: 24px;">
+    <div class="card-head"><span>📋 Hedge Modes Explained</span></div>
+    <div style="padding: 14px 18px; font-size: 13px; line-height: 1.7; color: var(--text-2,#aaa);">
+      <ul style="padding-left: 20px;">
+        <li><strong>LOCK PROFIT:</strong> Hedge a portion so both outcomes return identical net profit. Best when you have a live winning ticket.</li>
+        <li><strong>EQUAL PAYOUT:</strong> Stake the hedge so both outcomes return identical total payout (profit + stake).</li>
+        <li><strong>BREAK EVEN:</strong> Hedge enough that the worse outcome returns your original stake. Risk-free reduction.</li>
+        <li><strong>PARTIAL HEDGE:</strong> Apply X% of the full lock-profit hedge. Keep some upside while reducing variance.</li>
       </ul>
     </div>
   </section>
@@ -97,74 +108,69 @@
 
 <script src="js/nav_badge.js"></script>
 <script>
-function impliedProb(american) {
-  return american < 0 ? -american / (-american + 100) : 100 / (american + 100);
+function decimalFromAmerican(amer) {
+  amer = parseFloat(amer);
+  if (amer >= 100) return 1 + amer / 100;
+  if (amer <= -100) return 1 + 100 / Math.abs(amer);
+  return 1;
 }
-function decimalFromAmerican(american) {
-  return american < 0 ? 1 + 100 / Math.abs(american) : 1 + american / 100;
-}
-function compute() {
-  const S = Number(document.getElementById("origStake").value);
-  const O = Number(document.getElementById("origPrice").value);
-  const H = Number(document.getElementById("hedgePrice").value);
-  const p = Number(document.getElementById("probWin").value);
-  const dO = decimalFromAmerican(O);
-  const dH = decimalFromAmerican(H);
-  const profitIfOrigWins  = S * (dO - 1);          // gross profit on original
-  // Equal-payout hedge: stake X such that X*(dH-1) - S = profitIfOrigWins - X
-  // i.e. X*(dH-1) + X = profitIfOrigWins + S
-  // -> X * dH = profitIfOrigWins + S -> X = (profitIfOrigWins + S) / dH
-  const equalHedge = (profitIfOrigWins + S) / dH;
-  const equalPayout = equalHedge * (dH - 1) - S;
-  // Break-even hedge: stake X such that worst case (orig loses) = 0
-  // If orig loses: -S + X*(dH-1) >= 0 -> X = S / (dH - 1)
-  const breakEvenHedge = S / Math.max(0.0001, dH - 1);
-  const breakEvenPayoutIfOrigWins = profitIfOrigWins - breakEvenHedge;
-  // Optimal Kelly hedge given model prob p
-  // Expected log(bankroll after hedge of size X):
-  //   p * log(1 + profitIfOrigWins/B - X/B) + (1-p) * log(1 - S/B + X*(dH-1)/B)
-  // Simplification: assume bankroll B = 100 units. Numerical 1D maximize.
-  function expLog(X) {
-    const B = 100;
-    const finalIfOrig = (B + profitIfOrigWins - X) / B;
-    const finalIfHedg = (B - S + X * (dH - 1)) / B;
-    if (finalIfOrig <= 0 || finalIfHedg <= 0) return -1e9;
-    return p * Math.log(finalIfOrig) + (1 - p) * Math.log(finalIfHedg);
+
+let currentMode = "lock";
+document.querySelectorAll(".mode-pill").forEach(p => {
+  p.addEventListener("click", e => {
+    document.querySelectorAll(".mode-pill").forEach(x => x.classList.remove("active"));
+    p.classList.add("active");
+    currentMode = p.dataset.mode;
+    document.getElementById("partialInput").style.display = currentMode === "partial" ? "block" : "none";
+    calculateHedge();
+  });
+});
+
+function calculateHedge() {
+  const origStake = parseFloat(document.getElementById("origStake").value) || 0;
+  const origOdds = parseFloat(document.getElementById("origOdds").value) || 0;
+  const hedgeOdds = parseFloat(document.getElementById("hedgeOdds").value) || 0;
+  const partialPct = parseFloat(document.getElementById("partialPct").value) || 50;
+
+  const origDec = decimalFromAmerican(origOdds);
+  const hedgeDec = decimalFromAmerican(hedgeOdds);
+  const origPayout = origStake * origDec;
+
+  let hedgeStake = 0;
+  if (currentMode === "lock" || currentMode === "equal") {
+    hedgeStake = origPayout / hedgeDec;
+  } else if (currentMode === "break_even") {
+    hedgeStake = hedgeDec > 1 ? origStake / (hedgeDec - 1) : 0;
+  } else if (currentMode === "partial") {
+    const fullHedge = origPayout / hedgeDec;
+    hedgeStake = fullHedge * (partialPct / 100);
   }
-  let bestX = 0, bestE = expLog(0);
-  for (let x = 0; x <= 5 * S; x += S * 0.05) {
-    const e = expLog(x);
-    if (e > bestE) { bestE = e; bestX = x; }
-  }
-  const kellyPayoutIfOrig = profitIfOrigWins - bestX;
-  const kellyPayoutIfHedge = -S + bestX * (dH - 1);
-  document.getElementById("hedgeOut").innerHTML = `
-    <div style="padding: 12px 14px; background: rgba(88,200,120,0.06); border-left: 3px solid #58c878; border-radius: 0 6px 6px 0;">
-      <div style="font-weight: 700; color: #58c878; margin-bottom: 6px;">Equal-payout hedge</div>
-      <div style="font-family:'JetBrains Mono',monospace; font-size: 13px;">
-        Hedge stake: <strong>${equalHedge.toFixed(2)}u</strong> at ${H}<br>
-        Profit either way: <strong>${equalPayout.toFixed(2)}u</strong> (locked)
-      </div>
+
+  const hedgePayout = hedgeStake * hedgeDec;
+  const totalRisked = origStake + hedgeStake;
+  const profitIfOrigWins = origPayout - totalRisked;
+  const profitIfHedgeWins = hedgePayout - totalRisked;
+  const minProfit = Math.min(profitIfOrigWins, profitIfHedgeWins);
+  const maxProfit = Math.max(profitIfOrigWins, profitIfHedgeWins);
+
+  document.getElementById("resultBox").innerHTML = `
+    <div class="result-card">
+      <div class="result-row"><span>Hedge stake:</span><strong>$${hedgeStake.toFixed(2)}</strong></div>
+      <div class="result-row"><span>Total capital at risk:</span><strong>$${totalRisked.toFixed(2)}</strong></div>
+      <div class="result-row"><span>If original wins:</span><strong style="color:${profitIfOrigWins >= 0 ? '#58c878' : '#e35a5a'}">$${profitIfOrigWins.toFixed(2)} profit</strong></div>
+      <div class="result-row"><span>If hedge wins:</span><strong style="color:${profitIfHedgeWins >= 0 ? '#58c878' : '#e35a5a'}">$${profitIfHedgeWins.toFixed(2)} profit</strong></div>
+      <div class="result-row"><span>Guaranteed minimum:</span><strong style="color:${minProfit >= 0 ? '#58c878' : '#e35a5a'}; font-size:16px;">$${minProfit.toFixed(2)}</strong></div>
+      <div class="result-row"><span>Maximum upside:</span><strong>$${maxProfit.toFixed(2)}</strong></div>
     </div>
-    <div style="padding: 12px 14px; background: rgba(212,160,74,0.06); border-left: 3px solid #d4a04a; border-radius: 0 6px 6px 0;">
-      <div style="font-weight: 700; color: #d4a04a; margin-bottom: 6px;">Break-even hedge</div>
-      <div style="font-family:'JetBrains Mono',monospace; font-size: 13px;">
-        Hedge stake: <strong>${breakEvenHedge.toFixed(2)}u</strong> at ${H}<br>
-        Profit if original wins: <strong>${breakEvenPayoutIfOrigWins.toFixed(2)}u</strong><br>
-        Profit if hedge wins: <strong>~0u</strong>
-      </div>
-    </div>
-    <div style="padding: 12px 14px; background: rgba(178,93,231,0.06); border-left: 3px solid #b25de7; border-radius: 0 6px 6px 0;">
-      <div style="font-weight: 700; color: #b25de7; margin-bottom: 6px;">Kelly-optimal hedge (given p=${p.toFixed(2)})</div>
-      <div style="font-family:'JetBrains Mono',monospace; font-size: 13px;">
-        Hedge stake: <strong>${bestX.toFixed(2)}u</strong> at ${H}<br>
-        Profit if original wins: <strong>${kellyPayoutIfOrig.toFixed(2)}u</strong><br>
-        Profit if hedge wins:    <strong>${kellyPayoutIfHedge.toFixed(2)}u</strong>
-      </div>
-    </div>`;
+    <p class="muted" style="margin-top:12px; font-size:11px;">
+      ${currentMode === "lock" ? "Both outcomes return identical net profit." :
+        currentMode === "equal" ? "Both outcomes return identical total payout (gross)." :
+        currentMode === "break_even" ? "Worse outcome returns at least your original stake." :
+        `Applied ${partialPct}% of the full lock-profit hedge.`}
+    </p>
+  `;
 }
-document.getElementById("calcBtn").addEventListener("click", compute);
-compute();
+calculateHedge();
 </script>
 </body>
 </html>

@@ -452,6 +452,52 @@ def run() -> Dict[str, Any]:
                 "risks": ["Sweep is high-variance; underdog map-1 wins crush this"],
             })
 
+    # === 10 new ESPN sports injection (WNBA/MLS/EPL/UCL/NFL/NCAAF/NCAAB/CWS) ===
+    def _inject_espn_sport(source: str, file: str, url: str, sweet_min: float = 0.55, sweet_max: float = 0.72):
+        d = _load(os.path.join(DATA_DIR, file))
+        for g in (d.get("games") or [])[:5]:
+            if g.get("state") == "post": continue
+            ph = g.get("p_home_win") or 0
+            if sweet_min <= ph <= sweet_max:
+                candidates.append({
+                    "source": source,
+                    "label": f"{source} {g.get('home_team')} ML ({g.get('home_record','?')}) vs {g.get('away_team')}",
+                    "team": g.get("home_team"), "player": None, "player_id": None,
+                    "market": f"{source.lower()}_ml", "line": g.get("fair_home_american"),
+                    "play": "HOME",
+                    "model_prob": ph,
+                    "edge_pct": None,
+                    "url_anchor": url,
+                    "quality_score": 65,
+                    "stars": 3,
+                    "factors": [f"ELO {g.get('home_elo')} vs {g.get('away_elo')}; HFA included"],
+                    "risks": [f"{source} v1 ELO-only baseline; no player adjustments"],
+                })
+            elif (1 - sweet_max) <= ph <= (1 - sweet_min):
+                pa = 1 - ph
+                candidates.append({
+                    "source": source,
+                    "label": f"{source} {g.get('away_team')} ML ({g.get('away_record','?')}) at {g.get('home_team')}",
+                    "team": g.get("away_team"), "player": None, "player_id": None,
+                    "market": f"{source.lower()}_ml", "line": g.get("fair_away_american"),
+                    "play": "AWAY",
+                    "model_prob": pa,
+                    "edge_pct": None,
+                    "url_anchor": url,
+                    "quality_score": 63,
+                    "stars": 3,
+                    "factors": [f"Road team ELO {g.get('away_elo')} vs {g.get('home_elo')}"],
+                    "risks": [f"{source} v1 ELO-only baseline"],
+                })
+    _inject_espn_sport("WNBA",  "wnba_state.json",  "wnba.html")
+    _inject_espn_sport("MLS",   "mls_state.json",   "mls.html",   sweet_min=0.50, sweet_max=0.70)
+    _inject_espn_sport("EPL",   "epl_state.json",   "epl.html",   sweet_min=0.50, sweet_max=0.70)
+    _inject_espn_sport("UCL",   "ucl_state.json",   "ucl.html",   sweet_min=0.50, sweet_max=0.70)
+    _inject_espn_sport("NFL",   "nfl_state.json",   "nfl.html")
+    _inject_espn_sport("NCAAF", "ncaaf_state.json", "ncaaf.html")
+    _inject_espn_sport("NCAAB", "ncaab_state.json", "ncaab.html")
+    _inject_espn_sport("CWS",   "cws_state.json",   "cws.html")
+
     # NHL games (cross-sport injection): same sweet-spot logic as NBA
     nhl = _load(os.path.join(DATA_DIR, "nhl_state.json"))
     for g in (nhl.get("games") or [])[:8]:
@@ -550,7 +596,8 @@ def run() -> Dict[str, Any]:
         "n_bets": len(top),
         "total_candidates": len(candidates),
         "by_source": {s: sum(1 for c in top if c.get("source") == s)
-                       for s in ("DK", "PP", "NRFI", "SGP", "GOLF", "NBA", "NHL", "KBO", "LOL", "CS")},
+                       for s in ("DK", "PP", "NRFI", "SGP", "GOLF", "NBA", "NHL", "KBO", "LOL", "CS",
+                                  "WNBA", "MLS", "EPL", "UCL", "NFL", "NCAAF", "NCAAB", "CWS")},
         "bets": top,
     }
     os.makedirs(DATA_DIR, exist_ok=True)
