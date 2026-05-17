@@ -1,12 +1,14 @@
 name: Live In-Progress Games Poll
 
-# Runs every 10 min during the typical MLB game window (19:00 - 06:00 UTC =
-# 3 PM - 2 AM ET) to refresh live win-expectancy for games in progress.
+# Runs every 10 min across the full MLB game window (16:00 - 06:00 UTC =
+# 12 PM ET first-pitch through 2 AM ET West Coast night games) to refresh
+# live win-expectancy for games in progress.
 # Cheap operation: ~1 second per game, no Odds API quota cost.
+# Earlier window catches Sunday/Saturday day games starting at 12:15 PM ET.
 
 on:
   schedule:
-    - cron: '*/10 19-23 * * *'   # every 10 min 3-7 PM ET window
+    - cron: '*/10 16-23 * * *'   # every 10 min 12 PM - 7 PM ET window
     - cron: '*/10 0-6 * * *'     # every 10 min 8 PM - 2 AM ET window
   workflow_dispatch:
 
@@ -38,6 +40,12 @@ jobs:
       - name: Compute live edges (model p_win vs book live ML)
         working-directory: python
         run: python live_edges.py
+
+      # Live data accuracy audit -- compares local artifacts to MLB/ESPN APIs
+      # every cycle, surfaces feed degradation immediately.
+      - name: Data health check (live cross-verification)
+        working-directory: python
+        run: python data_health.py
 
       # Live prop tracker: pulls every DK/PP prop's current in-game stat
       # line + status (WIN, LOSS, CASHING, SWEATING, LIVE, PRE).
