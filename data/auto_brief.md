@@ -6,46 +6,59 @@ _0% lineups confirmed · 2 extreme-weather games · 9 rookie SPs_
 
 ## Slate
 - **15 games** scheduled
-- **9 best bets** scored: 0 DK · 0 PP · 5 NRFI · 0 SGP
-- **Auto-portfolio:** 1 picks, $50.0 stake (5.0%), expected +$15.69
-- **MC simulation:** EV +$38.83, 72% P(profit), p05 $-74.96 / p95 $154.91
+- **25 best bets** scored: 0 DK · 0 PP · 13 NRFI · 6 SGP
+- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$45.99
+- **MC simulation:** EV +$172.18, 89% P(profit), p05 $-75.3 / p95 $401.95
 
 ## Top 5 Best Bets
-1. **NYY @ NYM YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +22.8%)
-   - P(YRFI) 68.8% vs baseline 46.0%
-2. **⛳ Patrick Reed TOP5 @ 466 (PGA Championship)**  (78/100 *****, edge —)
-   - P(top 5) 17.7% -- lower variance than outright but compelling line.
-3. **⛳ Scottie Scheffler TOP10 @ 487 (PGA Championship)**  (78/100 *****, edge —)
-   - P(top 10) 17.0% -- safest position-bet for #30.
-4. **TEX @ HOU YRFI (1st-inning OVER 0.5)**  (76/100 ****, edge +16.6%)
-   - P(YRFI) 62.6% vs baseline 46.0%
-5. **BOS @ ATL NRFI (no run 1st inning)**  (71/100 ****, edge +11.1%)
-   - P(NRFI) 65.0% vs baseline 54.0%
+1. **ARI @ COL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +33.5%)
+   - P(YRFI) 79.5% vs baseline 46.0%
+2. **TOR @ DET YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +27.5%)
+   - P(YRFI) 73.5% vs baseline 46.0%
+3. **KCR @ STL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +25.6%)
+   - P(YRFI) 71.7% vs baseline 46.0%
+4. **CIN @ CLE YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +25.6%)
+   - P(YRFI) 71.6% vs baseline 46.0%
+5. **BAL @ WSN YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +21.9%)
+   - P(YRFI) 67.9% vs baseline 46.0%
 
-## ⚠️ Trap Warnings — 4 flagged
-- **NYY @ NYM YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +22.8% looks big but only 0 settled props on this player — model unproven
-- **TEX @ HOU YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +16.6% looks big but only 0 settled props on this player — model unproven
-- **BOS @ ATL NRFI (no run 1st inning)** (low):
-   - Edge +11.1% looks big but only 0 settled props on this player — model unproven
-- **SDP @ SEA YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +9.9% looks big but only 0 settled props on this player — model unproven
+## ⚠️ Trap Warnings — 19 flagged
+- **ARI @ COL YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +33.5% looks big but only 0 settled props on this player — model unproven
+- **TOR @ DET YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +27.5% looks big but only 0 settled props on this player — model unproven
+- **KCR @ STL YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +25.6% looks big but only 0 settled props on this player — model unproven
+- **CIN @ CLE YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +25.6% looks big but only 0 settled props on this player — model unproven
+- **CHC @ CHW 2-leg SGP @ -183** (low):
+   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
 
 ## Weather leans
 - **OVER lean** (wind out + warm): KCR @ STL, SFG @ OAK, TOR @ DET, MIL @ MIN, ARI @ COL
 
 ## Hot streaks
-**Batters heating up:** Drake Baldwin (heat +5.91), Nick Kurtz (heat +5.14), Harrison Bader (heat +4.81)
-**Pitchers on a run:** Eury Pérez (heat +9.75), José Soriano (heat +8.53), Carlos Rodón (heat +8.44)
+**Batters heating up:** Kyle Schwarber (heat +8.43), Drake Baldwin (heat +5.91), Colson Montgomery (heat +5.28)
+**Pitchers on a run:** Grant Holmes (heat +3.77), Brayan Bello (heat +2.94), Paul Skenes (heat +2.16)
+
+## Top correlation-aware SGPs
+- **CHC @ CHW** 2-leg @ -183 fair (joint 0.65, EV +25.0%)
+   - Erick Fedde UNDER 5.5 pitcher strikeouts
+   - Colin Rea UNDER 6.5 pitcher strikeouts
+- **BOS @ ATL** 2-leg @ -119 fair (joint 0.54, EV +25.0%)
+   - Brayan Bello UNDER 6.5 pitcher strikeouts
+   - Brayan Bello OVER 3.5 pitcher strikeouts
+- **MIA @ TBR** 2-leg @ -175 fair (joint 0.64, EV +25.0%)
+   - Drew Rasmussen OVER 3.5 pitcher strikeouts
+   - Eury Pérez OVER 4.5 pitcher strikeouts
 
 ## Bullpens GASSED tonight
-Athletics, Pittsburgh Pirates, San Diego Padres, Seattle Mariners, St. Louis Cardinals, Tampa Bay Rays, Toronto Blue Jays, Philadelphia Phillies
+Pittsburgh Pirates, San Diego Padres, St. Louis Cardinals, Tampa Bay Rays, Toronto Blue Jays, Philadelphia Phillies, Chicago White Sox, Miami Marlins
 _Lean late-inning OVER on these games; fade their save situations._
 
 ## NRFI/YRFI strong leans
-- **YRFI** (1st-inning OVER): NYY @ NYM, TEX @ HOU
-- **NRFI** (1st-inning UNDER): BOS @ ATL
+- **YRFI** (1st-inning OVER): ARI @ COL, TOR @ DET, KCR @ STL, CIN @ CLE, BAL @ WSN
+- **NRFI** (1st-inning UNDER): PHI @ PIT
 
 ## ⛳ Golf — PGA Championship
 - **Leader:** Alex Smalley (-6) at #1
