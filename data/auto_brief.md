@@ -1,8 +1,8 @@
 # Tonight's Slate Brief — 2026-05-17
 
-## Slate Quality: 55/100 (MEDIUM)
-_0% lineups confirmed · 9 rookie SPs_
-**Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
+## Slate Quality: 49/100 (LOW)
+_0% lineups confirmed · 2 extreme-weather games · 9 rookie SPs_
+**Recommendation:** Defensive sizing tonight; stick to highest-confidence plays.
 
 ## Slate
 - **15 games** scheduled
@@ -33,6 +33,9 @@ _0% lineups confirmed · 9 rookie SPs_
    - Edge +25.6% looks big but only 0 settled props on this player — model unproven
 - **CHC @ CHW 2-leg SGP @ -183** (low):
    - Edge +25.0% looks big but only 0 settled props on this player — model unproven
+
+## Weather leans
+- **OVER lean** (wind out + warm): CHC @ CHW, KCR @ STL, TOR @ DET, MIL @ MIN
 
 ## Hot streaks
 **Batters heating up:** Eric Haase (heat +8.52), Kyle Schwarber (heat +8.43), Daylen Lile (heat +6.11)
