@@ -171,6 +171,23 @@ def run() -> Dict[str, Any]:
         lines.append(f"{len(arb_alerts)} props softer on one book — see /props for details.")
         lines.append("")
 
+    # Golf (active PGA tournament + Play of the Tournament)
+    golf_state = _load(os.path.join(DATA_DIR, "golf_state.json"))
+    golf_bb = _load(os.path.join(DATA_DIR, "golf_bestbet.json"))
+    golf_t = golf_state.get("active_tournament") or {}
+    if golf_t.get("name") and not golf_t.get("is_complete"):
+        lines.append(f"## ⛳ Golf — {golf_t.get('name')}")
+        leader = golf_state.get("current_leader") or {}
+        lines.append(f"- **Leader:** {leader.get('name','?')} ({leader.get('total_to_par','?')}) at #{leader.get('order','?')}")
+        lines.append(f"- **Field:** {golf_state.get('n_players',0)} players  ·  Status: {golf_t.get('status','?')}")
+        pot = golf_bb.get("top_bet")
+        if pot:
+            opp = f" vs {pot.get('opponent')}" if pot.get("opponent") else ""
+            lines.append(f"- **Play of the Tournament:** {pot.get('player')}{opp} {pot.get('type')} @ "
+                         f"{pot.get('fair_american','?'):+d} (model {(pot.get('model_prob') or 0)*100:.1f}%, {pot.get('confidence','MED')})")
+            lines.append(f"   - {pot.get('reasoning','')}")
+        lines.append("")
+
     text = "\n".join(lines)
     with open(OUT_PATH, "w", encoding="utf-8") as f:
         f.write(text)

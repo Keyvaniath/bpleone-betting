@@ -6,7 +6,7 @@ _100% lineups confirmed · 7 rookie SPs_
 
 ## Slate
 - **8 games** scheduled
-- **11 best bets** scored: 0 DK · 0 PP · 5 NRFI · 6 SGP
+- **15 best bets** scored: 0 DK · 0 PP · 5 NRFI · 6 SGP
 - **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$25.49
 - **MC simulation:** EV +$38.83, 72% P(profit), p05 $-74.96 / p95 $154.91
 
@@ -62,3 +62,9 @@ _Lean late-inning OVER on these games; fade their save situations._
 ## NRFI/YRFI strong leans
 - **YRFI** (1st-inning OVER): NYY @ NYM, TEX @ HOU
 - **NRFI** (1st-inning UNDER): BOS @ ATL
+
+## ⛳ Golf — PGA Championship
+- **Leader:** Alex Smalley (-6) at #1
+- **Field:** 156 players  ·  Status: In Progress
+- **Play of the Tournament:** Maverick McNealy TOP5 @ +425 (model 19.1%, MED)
+   - P(top 5) 19.1% -- lower variance than outright but compelling line.
