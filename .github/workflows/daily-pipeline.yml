@@ -403,6 +403,12 @@ jobs:
       - name: MLB starting pitcher game logs (real per-start stats from MLB API)
         working-directory: python
         run: python mlb_pitcher_logs.py
+      - name: MLB pitcher matchup engine (K/ER prop projections per game)
+        working-directory: python
+        run: python mlb_pitcher_matchup.py
+      - name: Cross-signal convergence detector (everything-aligned plays)
+        working-directory: python
+        run: python convergence_detector.py
 
       # === Extended ESPN sport coverage (10 new sports) ===
       - name: WNBA live scoreboard

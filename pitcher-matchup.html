@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pitcher Matchup | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/nav.js"></script>
+<style>
+  .game-card { padding: 16px 18px; margin-bottom: 18px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08); }
+  .game-head { display: flex; justify-content: space-between; align-items: center; padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.06); margin-bottom: 12px; }
+  .matchup-title { font-size: 16px; font-weight: 700; color: var(--text, #eee); }
+  .pitcher-row { display: grid; grid-template-columns: 1fr 80px 80px 80px; gap: 12px; padding: 10px 0; font-family: 'JetBrains Mono', monospace; font-size: 12px; }
+  .pitcher-row.head { color: var(--muted, #888); text-transform: uppercase; font-size: 10px; padding: 6px 0; border-bottom: 1px dashed rgba(255,255,255,0.05); }
+  .play-box { background: rgba(212,160,74,0.08); border-left: 3px solid #d4a04a; padding: 10px 14px; margin-top: 10px; border-radius: 4px; }
+  .play-label { font-size: 10px; text-transform: uppercase; color: #d4a04a; font-weight: 700; letter-spacing: 1px; }
+  .play-text { font-size: 14px; font-weight: 600; margin-top: 4px; }
+  .play-odds { font-family: 'JetBrains Mono', monospace; font-size: 18px; color: #58c878; font-weight: 700; }
+  .er-box { background: rgba(88,200,120,0.06); border-left: 3px solid #58c878; padding: 10px 14px; margin-top: 8px; border-radius: 4px; }
+  .stat-block { display: inline-block; margin-right: 14px; }
+  .stat-label { font-size: 10px; color: var(--muted, #888); text-transform: uppercase; }
+  .stat-val { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--text, #eee); font-weight: 600; }
+</style>
+</head>
+<body class="page-pitcher-matchup">
+<header class="topbar">
+  <div class="brand"><a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a><span class="tagline">by bpleone</span></div>
+  <nav class="mainnav"><!-- nav.js injects --></nav>
+  <div class="topbar-actions"><div class="ticker">LIVE</div></div>
+</header>
+<main class="container">
+  <section class="page-head">
+    <h1>⚾ MLB Pitcher Matchup — K Prop Engine</h1>
+    <p class="muted" id="status">Loading tonight's pitcher slate…</p>
+  </section>
+  <section class="card" style="margin-bottom: 18px;">
+    <div class="card-head"><span>📋 How this works</span></div>
+    <div style="padding:14px 18px; font-size:13px; line-height:1.7; color: var(--text-2,#aaa);">
+      <p>For each game, both starters' last 8 starts feed a Poisson model. We sweep K lines 4.5/5.5/6.5/7.5 and surface the line where the model gives 58–78% P(over) — that's the sweet spot where the model has edge but isn't betting a coin flip.</p>
+      <p>The ER UNDER 2.5 box flags starters with sub-3.50 ERA where the model gives ≥55% P(under) — long pitcher quality plays.</p>
+    </div>
+  </section>
+  <section class="metric-strip">
+    <div class="metric"><span class="metric-num" id="m_games">--</span><span class="metric-label">Games</span></div>
+    <div class="metric"><span class="metric-num" id="m_k_plays">--</span><span class="metric-label">K Plays</span></div>
+    <div class="metric"><span class="metric-num" id="m_er_plays">--</span><span class="metric-label">ER Unders</span></div>
+    <div class="metric"><span class="metric-num" id="m_top_p">--</span><span class="metric-label">Top P(over)</span></div>
+  </section>
+  <div id="gamesContainer"></div>
+</main>
+<script src="js/nav_badge.js"></script>
+<script>
+const fmtAmer = (a) => a == null ? '—' : (a >= 0 ? '+' + a : String(a));
+fetch("data/mlb_pitcher_matchup.json?t=" + Date.now(), { cache: "no-cache" })
+  .then(r => r.json())
+  .then(data => {
+    const games = data.matchups || [];
+    document.getElementById("m_games").textContent = games.length;
+    document.getElementById("m_k_plays").textContent = data.n_with_k_play || 0;
+    document.getElementById("m_er_plays").textContent = data.n_with_er_play || 0;
+    const top = games.filter(g => g.best_k_play).map(g => g.best_k_play.p_over).sort((a, b) => b - a)[0];
+    document.getElementById("m_top_p").textContent = top ? (top * 100).toFixed(0) + '%' : '—';
+    document.getElementById("status").textContent = `${games.length} games · last refreshed ${(data.generated_at || '').slice(0, 19).replace('T', ' ')}`;
+
+    // Sort: games with best K play first, by p_over desc
+    games.sort((a, b) => {
+      const ap = a.best_k_play ? a.best_k_play.p_over : 0;
+      const bp = b.best_k_play ? b.best_k_play.p_over : 0;
+      return bp - ap;
+    });
+
+    document.getElementById("gamesContainer").innerHTML = games.map(g => {
+      const bestK = g.best_k_play;
+      const erList = g.er_under_2_5_candidates || [];
+      const homeERA = g.home_pitcher_era != null ? g.home_pitcher_era.toFixed(2) : '—';
+      const awayERA = g.away_pitcher_era != null ? g.away_pitcher_era.toFixed(2) : '—';
+      const homeK9 = g.home_pitcher_k_per_9 != null ? g.home_pitcher_k_per_9.toFixed(1) : '—';
+      const awayK9 = g.away_pitcher_k_per_9 != null ? g.away_pitcher_k_per_9.toFixed(1) : '—';
+      const homeAvgK = g.home_pitcher_avg_k != null ? g.home_pitcher_avg_k.toFixed(1) : '—';
+      const awayAvgK = g.away_pitcher_avg_k != null ? g.away_pitcher_avg_k.toFixed(1) : '—';
+
+      let bestKHtml = '';
+      if (bestK) {
+        bestKHtml = `<div class="play-box">
+          <div class="play-label">⭐ Best K Play — ${bestK.side}</div>
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-top:6px;">
+            <div><div class="play-text">${bestK.pitcher} OVER ${bestK.line} K</div>
+            <div class="muted" style="font-size:10px;">P(over) ${(bestK.p_over*100).toFixed(1)}% · K/9 ${bestK.k_per_9 != null ? bestK.k_per_9.toFixed(1) : '—'} · ERA ${bestK.era != null ? bestK.era.toFixed(2) : '—'}</div></div>
+            <div class="play-odds">${fmtAmer(bestK.fair_over)}</div>
+          </div></div>`;
+      }
+      let erHtml = '';
+      if (erList.length) {
+        erHtml = erList.map(e => `<div class="er-box">
+          <div class="play-label" style="color:#58c878;">ER UNDER 2.5 — ${e.side}</div>
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-top:6px;">
+            <div><div class="play-text">${e.pitcher} UNDER 2.5 ER</div>
+            <div class="muted" style="font-size:10px;">P(under) ${(e.p_under_2_5_er*100).toFixed(1)}% · ERA ${e.era.toFixed(2)}</div></div>
+            <div class="play-odds">${fmtAmer(e.fair_under)}</div>
+          </div></div>`).join('');
+      }
+      return `<div class="game-card">
+        <div class="game-head">
+          <div class="matchup-title">${g.matchup}</div>
+        </div>
+        <div class="pitcher-row head"><span>Pitcher</span><span>ERA</span><span>K/9</span><span>Avg K</span></div>
+        <div class="pitcher-row">
+          <span><strong>${g.away_pitcher || '—'}</strong> <span class="muted">(${g.away_team || '—'})</span></span>
+          <span style="color:${parseFloat(awayERA) < 3.5 ? '#58c878' : parseFloat(awayERA) > 5 ? '#e35a5a' : 'inherit'}">${awayERA}</span>
+          <span>${awayK9}</span>
+          <span>${awayAvgK}</span>
+        </div>
+        <div class="pitcher-row">
+          <span><strong>${g.home_pitcher || '—'}</strong> <span class="muted">(${g.home_team || '—'})</span></span>
+          <span style="color:${parseFloat(homeERA) < 3.5 ? '#58c878' : parseFloat(homeERA) > 5 ? '#e35a5a' : 'inherit'}">${homeERA}</span>
+          <span>${homeK9}</span>
+          <span>${homeAvgK}</span>
+        </div>
+        ${bestKHtml}
+        ${erHtml}
+      </div>`;
+    }).join("") || `<p class="muted" style="padding:14px;">No pitcher matchup data this slate.</p>`;
+  })
+  .catch(err => {
+    document.getElementById("gamesContainer").innerHTML = `<p class="muted" style="padding:14px;">Could not load mlb_pitcher_matchup.json (${err.message}).</p>`;
+  });
+</script>
+</body>
+</html>

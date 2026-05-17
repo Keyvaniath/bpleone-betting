@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Golf Live Tracker | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/nav.js"></script>
+<style>
+  .player-card { padding: 8px 14px; border-bottom: 1px solid rgba(255,255,255,0.04); font-family: 'JetBrains Mono', monospace; font-size: 12px; display: grid; grid-template-columns: 35px 1.4fr 70px 80px 80px 90px; gap: 10px; align-items: center; }
+  .player-card.head { background: rgba(255,255,255,0.05); color: var(--muted, #888); text-transform: uppercase; font-size: 10px; font-weight: 700; }
+  .player-card.leader { background: rgba(212,160,74,0.08); border-left: 3px solid #d4a04a; }
+  .player-card.alert { background: rgba(88,200,120,0.06); }
+  .refresh-pill { display: inline-block; padding: 4px 10px; border-radius: 999px; background: rgba(88,200,120,0.15); color: #58c878; font-size: 10px; font-weight: 700; margin-left: 8px; }
+  .pulse { animation: pulse 2s infinite; }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+</style>
+</head>
+<body class="page-golf-live">
+<header class="topbar">
+  <div class="brand"><a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a><span class="tagline">by bpleone</span></div>
+  <nav class="mainnav"><!-- nav.js injects --></nav>
+  <div class="topbar-actions"><div class="ticker">LIVE</div></div>
+</header>
+<main class="container">
+  <section class="page-head">
+    <h1 id="title">Golf Live Tracker — Loading…</h1>
+    <p id="status" class="muted">Pulling current PGA Tour leaderboard + win probabilities…</p>
+    <p style="margin-top:6px;"><span class="refresh-pill"><span class="pulse">●</span> Auto-refresh every 60s</span><span class="muted" style="margin-left:10px; font-size:11px;">Last update: <span id="lastUpdate">--</span></span></p>
+  </section>
+  <section class="metric-strip">
+    <div class="metric"><span class="metric-num" id="m_round">--</span><span class="metric-label">Round</span></div>
+    <div class="metric"><span class="metric-num" id="m_field">--</span><span class="metric-label">In Field</span></div>
+    <div class="metric"><span class="metric-num" id="m_leader">--</span><span class="metric-label">Leader Score</span></div>
+    <div class="metric"><span class="metric-num" id="m_topwin">--</span><span class="metric-label">Top Win %</span></div>
+  </section>
+  <section class="card" style="margin-bottom: 24px; border-left: 3px solid #d4a04a;">
+    <div class="card-head"><span>⛳ Play of the Tournament</span><span class="muted" id="potMeta">--</span></div>
+    <div id="potBox" style="padding: 14px 18px;"><p class="muted">Loading top bet…</p></div>
+  </section>
+  <section class="card">
+    <div class="card-head"><span>🏆 Live Leaderboard (top 40 by P(win))</span><span class="muted" id="meta">--</span></div>
+    <div class="player-card head">
+      <span>Pos</span><span>Player</span><span>Total</span><span>P(win)</span><span>P(top10)</span><span>Fair Win</span>
+    </div>
+    <div id="boardList"><p class="muted" style="padding:14px;">Loading…</p></div>
+  </section>
+</main>
+
+<script src="js/nav_badge.js"></script>
+<script>
+const fmtAmer = (a) => a == null ? "—" : (a >= 0 ? "+" + a : String(a));
+function load() {
+  Promise.all([
+    fetch("data/golf_state.json?t=" + Date.now(), {cache:"no-cache"}).then(r => r.json()).catch(() => ({})),
+    fetch("data/golf_props.json?t=" + Date.now(), {cache:"no-cache"}).then(r => r.json()).catch(() => ({})),
+    fetch("data/golf_bestbet.json?t=" + Date.now(), {cache:"no-cache"}).then(r => r.json()).catch(() => ({})),
+  ]).then(([state, props, bb]) => {
+    const t = state.active_tournament;
+    if (!t) {
+      document.getElementById("title").textContent = "Golf Live Tracker — No active event";
+      document.getElementById("status").textContent = state.note || "No PGA event right now.";
+      return;
+    }
+    document.getElementById("title").textContent = `${t.name} — ${t.status || ''}`;
+    document.getElementById("status").textContent = `${t.course || ''} · ${(t.start_date || '').slice(0,10)} → ${(t.end_date || '').slice(0,10)}`;
+    document.getElementById("lastUpdate").textContent = (state.generated_at || '').replace('T',' ').slice(0,19);
+    document.getElementById("m_round").textContent = t.round || '?';
+    document.getElementById("m_field").textContent = state.n_players || 0;
+    const leader = state.current_leader || {};
+    document.getElementById("m_leader").textContent = leader.total_to_par || '—';
+    const players = (props.players || []).slice(0, 40);
+    if (players.length) document.getElementById("m_topwin").textContent = (players[0].p_win * 100).toFixed(1) + '%';
+
+    // POT
+    const pot = bb.top_bet;
+    if (pot) {
+      document.getElementById("potBox").innerHTML = `
+        <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+          <div><div style="font-size:11px; color:#d4a04a; text-transform:uppercase;">${pot.confidence || 'MED'} · ${pot.type}</div>
+          <div style="font-size:20px; font-weight:700; margin-top:4px;">${pot.player}${pot.opponent ? ' vs ' + pot.opponent : ''}</div>
+          <div class="muted" style="font-size:11px; margin-top:4px;">${pot.reasoning || ''}</div></div>
+          <div style="text-align:right;"><div style="font-size:24px; font-weight:700; color:#d4a04a; font-family:'JetBrains Mono',monospace;">${fmtAmer(pot.fair_american)}</div>
+          <div class="muted" style="font-size:10px;">model ${(pot.model_prob*100).toFixed(1)}%</div></div>
+        </div>`;
+      document.getElementById("potMeta").textContent = `${bb.n_candidates || 0} candidates`;
+    } else {
+      document.getElementById("potBox").innerHTML = `<p class="muted">${bb.note || 'No qualifying play.'}</p>`;
+    }
+
+    // Leaderboard
+    document.getElementById("boardList").innerHTML = players.map((p, i) => {
+      const cls = i === 0 ? 'leader' : p.p_win >= 0.05 ? 'alert' : '';
+      return `<div class="player-card ${cls}">
+        <span class="muted">${p.current_pos || (i+1)}</span>
+        <span><strong>${p.name}</strong> <span class="muted" style="font-size:10px;">${p.country || ''}</span></span>
+        <span style="color:${(p.current_total || '').startsWith('-') ? '#58c878' : '#aaa'}">${p.current_total || '—'}</span>
+        <span style="font-weight:700; color:${p.p_win >= 0.05 ? '#58c878' : 'inherit'}">${(p.p_win*100).toFixed(2)}%</span>
+        <span>${(p.p_top10*100).toFixed(1)}%</span>
+        <span>${fmtAmer(p.fair_win_american)}</span>
+      </div>`;
+    }).join("");
+    document.getElementById("meta").textContent = `${players.length} of ${state.n_players || 0} · MC sims: ${(props.n_sims || 0).toLocaleString()}`;
+  }).catch(err => {
+    document.getElementById("boardList").innerHTML = `<p class="muted" style="padding:14px;">Could not load (${err.message}).</p>`;
+  });
+}
+load();
+setInterval(load, 60 * 1000);  // auto-refresh every 60s
+</script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Convergence Picks | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/nav.js"></script>
+<style>
+  .conv-card { padding: 16px 18px; margin-bottom: 18px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08); }
+  .conv-card.ELITE { border-left: 4px solid #d4a04a; background: rgba(212,160,74,0.04); }
+  .conv-card.HIGH { border-left: 4px solid #58c878; background: rgba(88,200,120,0.03); }
+  .conv-card.MED { border-left: 4px solid rgba(255,255,255,0.2); }
+  .conv-head { display: flex; justify-content: space-between; align-items: center; padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.06); margin-bottom: 12px; }
+  .matchup-title { font-size: 16px; font-weight: 700; color: var(--text, #eee); }
+  .tier-pill { padding: 4px 10px; border-radius: 999px; font-size: 10px; font-weight: 700; letter-spacing: 1px; }
+  .tier-pill.ELITE { background: rgba(212,160,74,0.18); color: #d4a04a; }
+  .tier-pill.HIGH { background: rgba(88,200,120,0.18); color: #58c878; }
+  .tier-pill.MED { background: rgba(255,255,255,0.08); color: var(--muted, #888); }
+  .signal-row { display: grid; grid-template-columns: 95px 60px 1fr; gap: 12px; padding: 7px 0; font-size: 12px; align-items: center; border-bottom: 1px dashed rgba(255,255,255,0.04); }
+  .signal-row:last-child { border-bottom: none; }
+  .signal-type { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 10px; padding: 3px 7px; border-radius: 3px; text-align: center; }
+  .signal-type.PREGAME { background: rgba(212,160,74,0.18); color: #d4a04a; }
+  .signal-type.HEAT_COLD { background: rgba(231,76,60,0.18); color: #e74c3c; }
+  .signal-type.ANOMALY { background: rgba(155,89,182,0.18); color: #c9a3e3; }
+  .signal-type.ATS { background: rgba(52,152,219,0.18); color: #6db4e8; }
+  .signal-type.PITCHER_K { background: rgba(88,200,120,0.18); color: #58c878; }
+  .signal-type.PITCHER_ER { background: rgba(46,204,113,0.18); color: #2ecc71; }
+  .signal-detail { color: var(--text-2, #aaa); font-family: 'JetBrains Mono', monospace; }
+  .level-HIGH { color: #58c878; font-weight: 700; font-size: 10px; }
+  .level-MED { color: #d4a04a; font-size: 10px; }
+  .level-LOW { color: var(--muted, #888); font-size: 10px; }
+</style>
+</head>
+<body class="page-convergence">
+<header class="topbar">
+  <div class="brand"><a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a><span class="tagline">by bpleone</span></div>
+  <nav class="mainnav"><!-- nav.js injects --></nav>
+  <div class="topbar-actions"><div class="ticker">LIVE</div></div>
+</header>
+<main class="container">
+  <section class="page-head">
+    <h1>🎯 Convergence Picks — Everything Aligned</h1>
+    <p class="muted" id="status">Loading multi-signal stacked plays…</p>
+  </section>
+  <section class="card" style="margin-bottom: 18px;">
+    <div class="card-head"><span>📋 How this works</span></div>
+    <div style="padding:14px 18px; font-size:13px; line-height:1.7; color: var(--text-2,#aaa);">
+      <p>For every game on tonight's slate, we stack signals from <strong>5 independent sources</strong>: pre-game alerts, heat/cold trends, model anomalies, against-the-spread tracking, and pitcher matchup edges.</p>
+      <p>Games with <strong style="color:#d4a04a">4+ signals = ELITE</strong> tier. <strong style="color:#58c878">3 signals = HIGH</strong>. Stacked signals from <em>independent models</em> are the highest-conviction setups — when 4 systems all flag the same matchup, that's your conviction floor.</p>
+    </div>
+  </section>
+  <section class="metric-strip">
+    <div class="metric"><span class="metric-num" id="m_total">--</span><span class="metric-label">Stacked Games</span></div>
+    <div class="metric"><span class="metric-num" id="m_elite">--</span><span class="metric-label">ELITE (4+)</span></div>
+    <div class="metric"><span class="metric-num" id="m_high">--</span><span class="metric-label">HIGH (3)</span></div>
+    <div class="metric"><span class="metric-num" id="m_med">--</span><span class="metric-label">MED (2)</span></div>
+  </section>
+  <div id="convContainer"></div>
+</main>
+<script src="js/nav_badge.js"></script>
+<script>
+fetch("data/convergence_alerts.json?t=" + Date.now(), { cache: "no-cache" })
+  .then(r => r.json())
+  .then(data => {
+    const conv = data.convergence || [];
+    document.getElementById("m_total").textContent = conv.length;
+    document.getElementById("m_elite").textContent = data.n_elite || 0;
+    document.getElementById("m_high").textContent = data.n_high || 0;
+    document.getElementById("m_med").textContent = data.n_med || 0;
+    document.getElementById("status").textContent = `${conv.length} games with 2+ converging signals · ${(data.generated_at || '').slice(0, 19).replace('T', ' ')}`;
+    document.getElementById("convContainer").innerHTML = conv.map(c => {
+      const sigs = (c.signals || []).map(s => `<div class="signal-row">
+        <span class="signal-type ${s.type}">${s.type.replace('_',' ')}</span>
+        <span class="level-${s.level}">${s.level}</span>
+        <span class="signal-detail">${s.detail}</span>
+      </div>`).join("");
+      return `<div class="conv-card ${c.tier}">
+        <div class="conv-head">
+          <div>
+            <div class="matchup-title">${c.matchup}</div>
+            <div class="muted" style="font-size: 11px; margin-top: 2px;">${c.sport} · ${c.n_signals} signal${c.n_signals === 1 ? '' : 's'} stacked</div>
+          </div>
+          <span class="tier-pill ${c.tier}">${c.tier}</span>
+        </div>
+        ${sigs}
+      </div>`;
+    }).join("") || `<p class="muted" style="padding:14px;">No games with 2+ converging signals tonight.</p>`;
+  })
+  .catch(err => {
+    document.getElementById("convContainer").innerHTML = `<p class="muted" style="padding:14px;">Could not load convergence_alerts.json (${err.message}).</p>`;
+  });
+</script>
+</body>
+</html>
