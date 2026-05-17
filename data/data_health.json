@@ -1,21 +1,22 @@
 {
-  "generated_at": "2026-05-17T23:05:42",
+  "generated_at": "2026-05-17T23:34:26",
   "overall": "red",
-  "n_green": 6,
+  "n_green": 4,
   "n_yellow": 1,
-  "n_red": 2,
+  "n_red": 4,
   "checks": [
     {
       "feed": "mlb",
       "status": "red",
       "findings": [
-        "MLB game count mismatch: local=1 vs MLB API=15"
+        "MLB game count mismatch: local=1 vs MLB API=15",
+        "MLB has 2 live games but live_state.json shows 2 (age 999min)"
       ],
       "upstream_count": 15,
       "local_count": 1,
       "upstream_live": 2,
-      "local_live": 3,
-      "live_state_age_min": 8
+      "local_live": 2,
+      "live_state_age_min": 999
     },
     {
       "feed": "nba",
@@ -26,18 +27,18 @@
       "upstream_count": 1,
       "local_count": 1,
       "upstream_live": 0,
-      "local_age_min": 7
+      "local_age_min": 999
     },
     {
       "feed": "wnba",
-      "status": "green",
+      "status": "red",
       "findings": [
-        "4 events matched (3 live)"
+        "WNBA has 3 live, local age 999min"
       ],
       "upstream_count": 4,
       "local_count": 4,
       "upstream_live": 3,
-      "local_age_min": 8
+      "local_age_min": 999
     },
     {
       "feed": "nhl",
@@ -48,18 +49,18 @@
       "upstream_count": 1,
       "local_count": 1,
       "upstream_live": 0,
-      "local_age_min": 7
+      "local_age_min": 999
     },
     {
       "feed": "mls",
-      "status": "green",
+      "status": "red",
       "findings": [
-        "2 events matched (1 live)"
+        "MLS has 1 live, local age 999min"
       ],
       "upstream_count": 2,
       "local_count": 2,
       "upstream_live": 1,
-      "local_age_min": 8
+      "local_age_min": 999
     },
     {
       "feed": "epl",
@@ -70,7 +71,7 @@
       "upstream_count": 6,
       "local_count": 6,
       "upstream_live": 0,
-      "local_age_min": 8
+      "local_age_min": 999
     },
     {
       "feed": "pitcher_matchup",
@@ -97,11 +98,11 @@
       "feed": "golf",
       "status": "green",
       "findings": [
-        "156 golfers tracked (1 active events)"
+        "156 golfers tracked (0 active events)"
       ],
       "upstream_players": 156,
       "local_players": 156,
-      "local_age_min": 8
+      "local_age_min": 999
     }
   ]
 }
