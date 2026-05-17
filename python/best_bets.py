@@ -313,6 +313,31 @@ def run() -> Dict[str, Any]:
             "risks": ["SGPs are correlated -- one bad leg sinks the parlay"],
         })
 
+    # Golf Play of the Tournament + runners-up (cross-sport injection)
+    gb = _load(os.path.join(DATA_DIR, "golf_bestbet.json"))
+    state = _load(os.path.join(DATA_DIR, "golf_state.json"))
+    t = state.get("active_tournament") or {}
+    if gb.get("top_bet") and not t.get("is_complete"):
+        golf_cands = [gb["top_bet"]] + (gb.get("runners_up") or [])[:3]
+        for gc in golf_cands:
+            conf = gc.get("confidence", "MED")
+            q = 78 if conf == "HIGH" else 68 if conf == "MED" else 58
+            stars = 5 if conf == "HIGH" else 4 if conf == "MED" else 3
+            candidates.append({
+                "source": "GOLF",
+                "label": f"⛳ {gc.get('player')}{' vs ' + gc.get('opponent') if gc.get('opponent') else ''} {gc.get('type')} @ {gc.get('fair_american','?')} ({t.get('name','PGA')})",
+                "team": None, "player": gc.get("player"), "player_id": None,
+                "market": f"golf_{(gc.get('type') or '').lower()}", "line": gc.get("fair_american"),
+                "play": gc.get("type"),
+                "model_prob": gc.get("model_prob"),
+                "edge_pct": None,
+                "url_anchor": "golf.html",
+                "quality_score": q,
+                "stars": stars,
+                "factors": [gc.get("reasoning", "")],
+                "risks": ["Golf outright variance is high; smaller stake recommended"],
+            })
+
     # Sort and rank
     candidates.sort(key=lambda c: -c.get("quality_score", 0))
     for i, c in enumerate(candidates[:50]):
@@ -324,7 +349,7 @@ def run() -> Dict[str, Any]:
         "n_bets": len(top),
         "total_candidates": len(candidates),
         "by_source": {s: sum(1 for c in top if c.get("source") == s)
-                       for s in ("DK", "PP", "NRFI", "SGP")},
+                       for s in ("DK", "PP", "NRFI", "SGP", "GOLF")},
         "bets": top,
     }
     os.makedirs(DATA_DIR, exist_ok=True)

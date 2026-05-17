@@ -53,11 +53,16 @@ jobs:
         working-directory: python
         run: python golf_bestbet.py
 
+      # Snapshot today's POT into rolling history + auto-settle if tournament finished
+      - name: Snapshot + settle Golf POT history
+        working-directory: python
+        run: python golf_pot_history.py
+
       - name: Commit if state changed
         run: |
           git config user.name  "edgestat-bot"
           git config user.email "actions@github.com"
-          git add data/golf_state.json data/golf_props.json data/golf_h2h.json data/golf_makecut.json data/golf_bestbet.json
+          git add data/golf_state.json data/golf_props.json data/golf_h2h.json data/golf_makecut.json data/golf_bestbet.json data/golf_pot_history.json
           if git diff --cached --quiet; then
             echo "No golf state change."
           else

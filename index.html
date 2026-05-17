@@ -194,6 +194,29 @@
     </div>
   </section>
 
+  <!-- TOURNAMENT IN PROGRESS (golf) -->
+  <section class="card" id="golfTourneyCard" style="margin-bottom: 28px; border-left: 3px solid #d4a04a; display:none;">
+    <div class="card-head">
+      <span>⛳ <strong id="golfTourneyName">Loading PGA Tour…</strong></span>
+      <span class="muted" id="golfTourneyMeta">--</span>
+    </div>
+    <div style="padding: 14px 16px; display:grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+      <div>
+        <div class="muted" style="font-size:10px; text-transform:uppercase; letter-spacing:1px;">Leader</div>
+        <div style="font-size:18px; font-weight:700;" id="golfTourneyLeader">--</div>
+        <div class="muted" style="font-size:11px;" id="golfTourneyLeaderScore">--</div>
+      </div>
+      <div>
+        <div class="muted" style="font-size:10px; text-transform:uppercase; letter-spacing:1px;">Play of the Tournament</div>
+        <div style="font-size:18px; font-weight:700;" id="golfTourneyPot">--</div>
+        <div class="muted" style="font-size:11px;" id="golfTourneyPotMeta">--</div>
+      </div>
+    </div>
+    <div style="padding: 0 16px 14px;">
+      <a href="golf.html" class="link-arrow">Full leaderboard + win probs →</a>
+    </div>
+  </section>
+
   <!-- TODAY'S TOP PLAYS (LIVE FROM data/top_plays.json) -->
   <section class="card" style="margin-bottom: 28px;">
     <div class="card-head"><span>Today's Top Plays - All Markets</span><span class="muted">DraftKings + PrizePicks + parlays, ranked by quality score</span></div>
@@ -379,6 +402,34 @@
 <script src="js/main.js"></script>
 
 <script>
+// Featured tournament card (golf) -- only shows if there's an active PGA event
+Promise.all([
+  fetch("data/golf_state.json", { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
+  fetch("data/golf_bestbet.json", { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
+]).then(([state, bestbet]) => {
+  const t = state.active_tournament;
+  if (!t || t.is_complete) return;
+  const card = document.getElementById("golfTourneyCard");
+  if (!card) return;
+  card.style.display = "block";
+  document.getElementById("golfTourneyName").textContent = t.name;
+  document.getElementById("golfTourneyMeta").textContent = `${t.status || ''} · ${state.n_players || 0} players`;
+  const leader = state.current_leader || {};
+  document.getElementById("golfTourneyLeader").textContent = leader.name || "—";
+  document.getElementById("golfTourneyLeaderScore").textContent =
+    `${leader.total_to_par || '—'} · #${leader.order || '?'}${leader.thru ? ' · thru ' + leader.thru : ''}`;
+  const pot = bestbet.top_bet;
+  if (pot) {
+    document.getElementById("golfTourneyPot").textContent =
+      `${pot.player}${pot.opponent ? ' vs ' + pot.opponent : ''}`;
+    document.getElementById("golfTourneyPotMeta").textContent =
+      `${pot.type} · ${(pot.fair_american >= 0 ? '+' : '') + pot.fair_american} · model ${(pot.model_prob*100).toFixed(1)}%`;
+  } else {
+    document.getElementById("golfTourneyPot").textContent = "No qualifying bet";
+    document.getElementById("golfTourneyPotMeta").textContent = "—";
+  }
+}).catch(()=>{});
+
 // Live data overrides for the hero, Play of Day, and key metrics.
 // Pulls from data/today.json + data/track_record.json (no mocks).
 fetch("data/today.json", { cache: "no-cache" })

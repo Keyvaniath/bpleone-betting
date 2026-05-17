@@ -106,6 +106,7 @@ ARTIFACTS: List[Dict[str, Any]] = [
     {"name": "golf_h2h.json",             "cadence_mins":  8*60},
     {"name": "golf_makecut.json",         "cadence_mins":  8*60},
     {"name": "golf_bestbet.json",         "cadence_mins":  8*60},
+    {"name": "golf_pot_history.json",     "cadence_mins":  8*60},
     # Play-of-Day rolling history (snapshot + settle each cron)
     {"name": "pod_history.json",          "cadence_mins":  8*60},
     # Optional / stubs

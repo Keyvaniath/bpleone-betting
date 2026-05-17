@@ -63,6 +63,16 @@
     <div id="podList"><p class="muted" style="padding:14px;">Loading…</p></div>
   </section>
 
+  <!-- Golf Play of the Tournament history -->
+  <section class="card" style="margin-bottom: 24px; border-left: 3px solid #d4a04a;">
+    <div class="card-head"><span>⛳ Golf Play of the Tournament — History</span><span class="muted" id="golfPotMeta">--</span></div>
+    <p class="muted" style="font-size:11px; padding:8px 16px 0;">Top weekly golf bet selected by the model. Auto-settles when the tournament finalizes (winner/top5/top10/H2H outcome).</p>
+    <div class="pod-row head" style="grid-template-columns: 90px 1.4fr 1fr 60px 70px 80px 80px 80px;">
+      <span>Date</span><span>Tournament</span><span>Bet</span><span>Conf</span><span>Type</span><span>Model</span><span>Fair</span><span>Result</span>
+    </div>
+    <div id="golfPotList"><p class="muted" style="padding:14px;">Loading…</p></div>
+  </section>
+
   <section class="card">
     <div class="card-head"><span>📋 What this is</span></div>
     <div style="padding:14px; font-size:13px; line-height:1.7; color: var(--text-2,#aaa);">
@@ -118,6 +128,35 @@ fetch("data/pod_history.json?t=" + Date.now(), { cache: "no-cache" })
   })
   .catch(err => {
     document.getElementById("podList").innerHTML = `<p class="muted" style="padding:14px;">Could not load pod_history.json (${err.message}).</p>`;
+  });
+
+// Golf POT history
+fetch("data/golf_pot_history.json?t=" + Date.now(), { cache: "no-cache" })
+  .then(r => r.json())
+  .then(d => {
+    document.getElementById("golfPotMeta").textContent =
+      `${d.total_pots || 0} POTs · ${d.n_settled || 0} settled · ${d.n_pending || 0} pending · ${d.hit_rate != null ? (d.hit_rate*100).toFixed(1)+'%' : '—'} hit · ${d.roi_pct != null ? (d.roi_pct >= 0 ? '+' : '') + d.roi_pct.toFixed(1)+'%' : '—'} ROI`;
+    const amer = (a) => a == null ? "—" : (a >= 0 ? "+" + a : String(a));
+    const rows = (d.history || []).map(h => {
+      const outcome = h.outcome || "PENDING";
+      const cls = outcome === "WIN" ? "win" : outcome === "LOSS" ? "loss" : "";
+      const pillCls = outcome === "WIN" ? "win" : outcome === "LOSS" ? "loss" : "pending";
+      return `<div class="pod-row ${cls}" style="grid-template-columns: 90px 1.4fr 1fr 60px 70px 80px 80px 80px;">
+        <span class="muted">${(h.date || '').slice(0,10)}</span>
+        <span><strong>${h.tournament || '—'}</strong></span>
+        <span><strong>${h.player}${h.opponent ? ' vs ' + h.opponent : ''}</strong></span>
+        <span class="muted">${h.confidence || '—'}</span>
+        <span class="muted">${h.type || '—'}</span>
+        <span>${(h.model_prob != null ? (h.model_prob*100).toFixed(1)+'%' : '—')}</span>
+        <span>${amer(h.fair_american)}</span>
+        <span class="pill ${pillCls}">${outcome}</span>
+      </div>`;
+    }).join("");
+    document.getElementById("golfPotList").innerHTML = rows ||
+      `<p class="muted" style="padding:14px;">No Golf POT history yet — first snapshot logs on next cron during an active tournament.</p>`;
+  })
+  .catch(err => {
+    document.getElementById("golfPotList").innerHTML = `<p class="muted" style="padding:14px;">Could not load golf_pot_history.json (${err.message}).</p>`;
   });
 </script>
 
