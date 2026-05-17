@@ -64,6 +64,12 @@
   </section>
 
   <section class="card" style="margin-bottom: 24px;">
+    <div class="card-head"><span>🎯 Map Handicap Props (sweep / distance / total)</span><span class="muted" id="handicapMeta">--</span></div>
+    <p class="muted" style="font-size: 11px; padding: 8px 16px 0;">P(sweep) = p^target. P(distance) = decisive last game. Map total OVER 2.5/4.5 based on series length.</p>
+    <div id="handicapList"><p class="muted" style="padding:14px;">Loading map props…</p></div>
+  </section>
+
+  <section class="card" style="margin-bottom: 24px;">
     <div class="card-head"><span>🏆 HLTV Top 30 (current ELO)</span></div>
     <div id="topTeamsList"></div>
   </section>
@@ -89,7 +95,8 @@ Promise.all([
   fetch("data/cs_state.json?t=" + Date.now(), { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
   fetch("data/cs_props.json?t=" + Date.now(), { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
   fetch("data/cs_bestbet.json?t=" + Date.now(), { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
-]).then(([state, props, bestbet]) => {
+  fetch("data/cs_maphandicap.json?t=" + Date.now(), { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
+]).then(([state, props, bestbet, handicap]) => {
   const setText = (id, v) => { const e = document.getElementById(id); if (e) e.textContent = v; };
   setText("csTitle", "Counter-Strike 2 — Live Esports Board");
   setText("csStatus", `${state.n_matches || 0} matches · source: ${state.data_source || '?'} · refresh: ${(state.generated_at || '').replace('T',' ')}`);
@@ -138,6 +145,24 @@ Promise.all([
       <span class="muted">${m.is_in_progress ? 'LIVE' : 'Upcoming'}</span>
     </div>`;
   }).join("") : `<p class="muted" style="padding:14px;">No matches available.</p>`;
+
+  // Map handicap list
+  const handMatches = handicap.matches || [];
+  if (handMatches.length) {
+    document.getElementById("handicapList").innerHTML = handMatches.map(m => `
+      <div style="padding: 10px 16px; border-bottom: 1px solid rgba(255,255,255,0.04); font-family:'JetBrains Mono',monospace; font-size:12px;">
+        <div style="margin-bottom: 4px;"><strong>${m.team_a}</strong> vs <strong>${m.team_b}</strong> <span class="muted">(BO${m.best_of})</span></div>
+        <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; font-size: 11px;">
+          <span>Sweep A: <strong style="color:#ffa51e;">${(m.p_sweep_a*100).toFixed(1)}%</strong> @ ${fmtAmer(m.fair_sweep_a_american)}</span>
+          <span>Sweep B: <strong style="color:#ffa51e;">${(m.p_sweep_b*100).toFixed(1)}%</strong> @ ${fmtAmer(m.fair_sweep_b_american)}</span>
+          <span>Goes Distance: <strong style="color:#ffa51e;">${(m.p_goes_distance*100).toFixed(1)}%</strong> @ ${fmtAmer(m.fair_distance_american)}</span>
+        </div>
+      </div>
+    `).join("");
+    document.getElementById("handicapMeta").textContent = `${handMatches.length} matches`;
+  } else {
+    document.getElementById("handicapList").innerHTML = `<p class="muted" style="padding:14px;">No map props.</p>`;
+  }
 
   // Top 30 list
   document.getElementById("topTeamsList").innerHTML = (state.top_teams || []).map((t, i) => `

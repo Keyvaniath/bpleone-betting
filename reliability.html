@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Self-Learning Calibration | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .cal-block { margin-bottom: 28px; padding: 16px 18px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.07); background: rgba(255,255,255,0.02); }
+  .cal-row { display:grid; grid-template-columns: 60px 1fr 80px 80px 80px 80px; gap: 12px; padding: 8px 0; border-bottom: 1px dashed rgba(255,255,255,0.05); font-family: 'JetBrains Mono', monospace; font-size: 12px; }
+  .cal-row.head { font-size: 10px; text-transform: uppercase; color: var(--muted,#888); }
+  .delta-good { color: #58c878; }
+  .delta-bad { color: #e35a5a; }
+  .bin-bar { display:inline-block; height:6px; background:rgba(255,255,255,0.08); border-radius:3px; vertical-align:middle; width:100px; position:relative; }
+  .bin-bar > span { display:block; height:6px; background: #d4a04a; border-radius:3px; }
+</style>
+</head>
+<body class="page-reliability">
+<header class="topbar">
+  <div class="brand">
+    <a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a>
+    <span class="tagline">by bpleone</span>
+  </div>
+  <nav class="mainnav">
+    <a href="index.html">Dashboard</a>
+    <a href="live-now.html">Live Now</a>
+    <a href="reliability.html" class="active">Calibration</a>
+    <a href="learning.html">Learning</a>
+    <a href="lol.html">LoL</a>
+    <a href="cs.html">CS</a>
+    <a href="kbo.html">KBO</a>
+    <a href="audit.html">Audit</a>
+  </nav>
+  <div class="topbar-actions"><div class="ticker">LIVE</div></div>
+</header>
+
+<main class="container">
+
+  <section class="page-head">
+    <h1>Self-Learning Calibration — LoL · CS · KBO</h1>
+    <p id="calStatus" class="muted">Loading per-sport reliability metrics…</p>
+  </section>
+
+  <section class="card" style="margin-bottom: 24px;">
+    <div class="card-head"><span>📊 How this works</span></div>
+    <div style="padding:14px; font-size:13px; line-height:1.7; color: var(--text-2,#aaa);">
+      <p>Each cron, every POT/POD pick logs its predicted probability. Once the match settles, the actual outcome (WIN/LOSS) is recorded. The self-learning loop then:</p>
+      <ul style="padding-left: 24px;">
+        <li>Bucketizes predictions into 10% bins (0-10%, 10-20%, ..., 90-100%)</li>
+        <li>Compares predicted hit rate vs actual within each bin (reliability diagram)</li>
+        <li>Computes Brier score (sum of (pred - actual)²) — lower = sharper</li>
+        <li>Computes ECE (Expected Calibration Error) — average |pred - actual| weighted by bin size</li>
+        <li>If the model is systematically over- or under-confident (≥20 settled bets), recommends a shift</li>
+      </ul>
+      <p>Once enough data accumulates (typically 30-50 settled bets per sport), the model will start applying corrections automatically. Until then, calibration metrics are surfaced as transparency.</p>
+    </div>
+  </section>
+
+  <div id="sportsBlocks"></div>
+
+</main>
+
+<script src="js/nav_badge.js"></script>
+<script>
+fetch("data/esports_calibration.json?t=" + Date.now(), { cache: "no-cache" })
+  .then(r => r.json())
+  .then(d => {
+    const sports = d.sports || {};
+    const totalSettled = Object.values(sports).reduce((s, sp) => s + (sp.n_settled || 0), 0);
+    document.getElementById("calStatus").textContent =
+      `${Object.keys(sports).length} sports tracked · ${totalSettled} settled bets across loop · refresh: ${(d.generated_at || '').replace('T',' ')}`;
+
+    const SPORT_LABELS = {lol: "League of Legends", cs: "Counter-Strike", kbo: "KBO (Korean Baseball)"};
+    const SPORT_COLORS = {lol: "#b450dc", cs: "#ffa51e", kbo: "#cf3939"};
+
+    document.getElementById("sportsBlocks").innerHTML = Object.entries(sports).map(([sport, data]) => {
+      const color = SPORT_COLORS[sport] || "#888";
+      const label = SPORT_LABELS[sport] || sport.toUpperCase();
+      const settled = data.n_settled || 0;
+      const total = data.n_total || 0;
+      const brier = data.brier;
+      const ll = data.log_loss;
+      const ece = data.ece;
+      const reco = data.calibration_recommendation || {};
+
+      let recoBox = '';
+      if (settled === 0) {
+        recoBox = `<p class="muted" style="margin:0;">No settled bets yet — first picks just entered the pipeline. Calibration metrics start populating after ~5 settled picks.</p>`;
+      } else if (reco.applied) {
+        recoBox = `<p style="color: ${reco.recommended_shift_pp > 0 ? '#58c878' : '#e35a5a'};">⚙ <strong>${reco.note}</strong></p>`;
+      } else {
+        recoBox = `<p class="muted">${reco.note || 'Insufficient data for shift recommendation.'}</p>`;
+      }
+
+      const bins = (data.reliability_bins || []).filter(b => b.n > 0);
+      const binsHtml = bins.length ? `
+        <div class="cal-row head" style="margin-top:12px;">
+          <span>Bin</span><span>Sample (n)</span><span>Predicted</span><span>Actual</span><span>Δ</span><span></span>
+        </div>` + bins.map(b => {
+          const expectedRate = b.expected_rate != null ? (b.expected_rate * 100).toFixed(1) + '%' : '—';
+          const actualRate = b.actual_rate != null ? (b.actual_rate * 100).toFixed(1) + '%' : '—';
+          const deltaClass = (b.delta || 0) > 0 ? 'delta-good' : (b.delta || 0) < 0 ? 'delta-bad' : '';
+          const barW = Math.min(100, ((b.actual_rate || 0) * 100));
+          return `<div class="cal-row">
+            <span class="muted">${(b.low*100).toFixed(0)}-${(b.high*100).toFixed(0)}%</span>
+            <span>${b.n} picks</span>
+            <span>${expectedRate}</span>
+            <span>${actualRate}</span>
+            <span class="${deltaClass}">${b.delta != null ? (b.delta >= 0 ? '+' : '') + (b.delta*100).toFixed(1) + 'pp' : '—'}</span>
+            <span><span class="bin-bar"><span style="width:${barW}%"></span></span></span>
+          </div>`;
+        }).join("") : '<p class="muted" style="padding:8px 0;">Reliability bins populate after first settled picks.</p>';
+
+      return `<div class="cal-block" style="border-left:3px solid ${color};">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+          <h2 style="margin:0; color:${color};">${label}</h2>
+          <span class="muted">${total} total · ${settled} settled</span>
+        </div>
+        <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap:14px; margin-bottom:14px;">
+          <div><div class="muted" style="font-size:10px; text-transform:uppercase;">Brier Score</div>
+               <div style="font-size:18px; font-weight:700;">${brier ?? '—'}</div></div>
+          <div><div class="muted" style="font-size:10px; text-transform:uppercase;">Log Loss</div>
+               <div style="font-size:18px; font-weight:700;">${ll ?? '—'}</div></div>
+          <div><div class="muted" style="font-size:10px; text-transform:uppercase;">ECE</div>
+               <div style="font-size:18px; font-weight:700;">${ece ?? '—'}</div></div>
+          <div><div class="muted" style="font-size:10px; text-transform:uppercase;">Sample</div>
+               <div style="font-size:18px; font-weight:700;">${settled} / ${total}</div></div>
+        </div>
+        ${recoBox}
+        ${binsHtml}
+      </div>`;
+    }).join("");
+  })
+  .catch(err => {
+    document.getElementById("sportsBlocks").innerHTML = `<p class="muted">Could not load calibration data: ${err.message}</p>`;
+  });
+</script>
+
+</body>
+</html>

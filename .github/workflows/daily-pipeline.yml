@@ -393,6 +393,9 @@ jobs:
       - name: Multi-sport top picks aggregator
         working-directory: python
         run: python multi_sport_top.py
+      - name: Multi-sport POT/POD history rollup
+        working-directory: python
+        run: python multi_sport_pot_rollup.py
 
       - name: NFL stub artifact
         if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'

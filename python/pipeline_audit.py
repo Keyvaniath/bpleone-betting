@@ -136,6 +136,7 @@ ARTIFACTS: List[Dict[str, Any]] = [
     {"name": "esports_calibration.json",  "cadence_mins":  8*60},
     # Multi-sport top picks aggregator + LoL parlays + CS map handicap
     {"name": "multi_sport_top.json",      "cadence_mins":  8*60},
+    {"name": "multi_sport_pot_rollup.json","cadence_mins":  8*60},
     {"name": "lol_parlays.json",          "cadence_mins":  8*60},
     {"name": "cs_maphandicap.json",       "cadence_mins":  8*60},
     # Optional / stubs

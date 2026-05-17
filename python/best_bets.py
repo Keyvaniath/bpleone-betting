@@ -388,6 +388,47 @@ def run() -> Dict[str, Any]:
     _inject_esport_pot("LOL", "lol_bestbet.json", "lol.html")
     _inject_esport_pot("CS",  "cs_bestbet.json",  "cs.html")
 
+    # LoL parlays
+    lol_par = _load(os.path.join(DATA_DIR, "lol_parlays.json"))
+    for par in (lol_par.get("parlays") or [])[:2]:
+        amer = par.get("parlay_fair_american", 0)
+        candidates.append({
+            "source": "LOL",
+            "label": f"LOL {par.get('n_legs')}-leg parlay @ {('+' if amer >= 0 else '')}{amer}",
+            "team": None, "player": None, "player_id": None,
+            "market": "lol_parlay", "line": par.get("parlay_fair_decimal"),
+            "play": f"{par.get('n_legs')}-leg",
+            "model_prob": par.get("joint_prob"),
+            "edge_pct": par.get("ev_pct"),
+            "url_anchor": "lol.html",
+            "quality_score": 70,
+            "stars": 4,
+            "factors": [f"Joint {(par.get('joint_prob') or 0)*100:.1f}% across {par.get('n_legs')} different series"] +
+                        [l.get("label","")[:60] for l in (par.get("legs") or [])[:3]],
+            "risks": ["LoL parlay legs assume independence; correlated upsets risk"],
+        })
+
+    # CS map handicap (sweep markets)
+    cs_handicap = _load(os.path.join(DATA_DIR, "cs_maphandicap.json"))
+    for m in (cs_handicap.get("matches") or [])[:5]:
+        # Sweep candidate for clear favorites with 25-45% sweep prob
+        p_sweep_a = m.get("p_sweep_a") or 0
+        if 0.28 <= p_sweep_a <= 0.50:
+            candidates.append({
+                "source": "CS",
+                "label": f"CS {m['team_a']} {(m.get('best_of',3)+1)//2}-0 SWEEP vs {m['team_b']}",
+                "team": m["team_a"], "player": None, "player_id": None,
+                "market": "cs_sweep", "line": m.get("fair_sweep_a_american"),
+                "play": "SWEEP",
+                "model_prob": p_sweep_a,
+                "edge_pct": None,
+                "url_anchor": "cs.html",
+                "quality_score": 65,
+                "stars": 3,
+                "factors": [f"ELO {m.get('elo_a','?')} vs {m.get('elo_b','?')} = sweep edge"],
+                "risks": ["Sweep is high-variance; underdog map-1 wins crush this"],
+            })
+
     # NHL games (cross-sport injection): same sweet-spot logic as NBA
     nhl = _load(os.path.join(DATA_DIR, "nhl_state.json"))
     for g in (nhl.get("games") or [])[:8]:

@@ -67,6 +67,13 @@
     <div id="lolList"><p class="muted" style="padding:14px;">Loading…</p></div>
   </section>
 
+  <!-- LoL Parlays -->
+  <section class="card" style="margin-bottom: 24px;">
+    <div class="card-head"><span>🎰 LoL 2-3 Leg Parlays</span><span class="muted" id="parlayMeta">--</span></div>
+    <p class="muted" style="font-size: 11px; padding: 8px 16px 0;">Joint probability across independent series. One leg per series max.</p>
+    <div id="parlayList"><p class="muted" style="padding:14px;">Loading parlays…</p></div>
+  </section>
+
   <section class="card">
     <div class="card-head"><span>📋 Model</span></div>
     <ul style="padding:14px 28px; color: var(--text-2,#aaa); line-height: 1.8;">
@@ -88,7 +95,8 @@ Promise.all([
   fetch("data/lol_state.json?t=" + Date.now(), { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
   fetch("data/lol_props.json?t=" + Date.now(), { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
   fetch("data/lol_bestbet.json?t=" + Date.now(), { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
-]).then(([state, props, bestbet]) => {
+  fetch("data/lol_parlays.json?t=" + Date.now(), { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
+]).then(([state, props, bestbet, parlays]) => {
   const setText = (id, v) => { const e = document.getElementById(id); if (e) e.textContent = v; };
   setText("lolTitle", "League of Legends — Live Esports Board");
   setText("lolStatus", `${state.n_matches_total || 0} major matches · ${state.n_live || 0} live · refresh: ${(state.generated_at || '').replace('T',' ')}`);
@@ -151,6 +159,26 @@ Promise.all([
     </div>`;
   }).join("");
   document.getElementById("lolMeta").textContent = `${matches.length} predictions · ${state.n_leagues || 0} leagues`;
+
+  // Parlays
+  const parList = parlays.parlays || [];
+  if (parList.length) {
+    document.getElementById("parlayList").innerHTML = parList.map((p, i) => {
+      const ams = (p.parlay_fair_american >= 0 ? '+' : '') + p.parlay_fair_american;
+      return `<div style="padding:12px 16px; border-bottom:1px solid rgba(255,255,255,0.04);">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+          <span><strong style="color:#b450dc;">#${i+1} · ${p.n_legs}-leg parlay</strong> <span class="muted" style="font-size:11px;">joint ${(p.joint_prob*100).toFixed(2)}%</span></span>
+          <span style="font-family:'JetBrains Mono',monospace; color:#b450dc; font-weight:700; font-size:14px;">${ams}</span>
+        </div>
+        <ul style="margin:0; padding-left:18px; font-size:12px; color: var(--text-2,#aaa);">
+          ${p.legs.map(l => `<li><span class="muted" style="font-size:10px;">[${l.kind}]</span> ${l.label}</li>`).join("")}
+        </ul>
+      </div>`;
+    }).join("");
+    document.getElementById("parlayMeta").textContent = `${parlays.n_parlays} top of ${parlays.n_parlays_evaluated} evaluated`;
+  } else {
+    document.getElementById("parlayList").innerHTML = `<p class="muted" style="padding:14px;">No parlays available.</p>`;
+  }
 });
 setInterval(() => location.reload(), 5 * 60 * 1000);
 </script>
