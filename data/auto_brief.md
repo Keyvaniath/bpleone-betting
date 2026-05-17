@@ -1,6 +1,6 @@
 # Tonight's Slate Brief — 2026-05-17
 
-## Slate Quality: 52/100 (LOW)
+## Slate Quality: 49/100 (LOW)
 _0% lineups confirmed · 1 extreme-weather games · 9 rookie SPs_
 **Recommendation:** Defensive sizing tonight; stick to highest-confidence plays.
 
@@ -35,7 +35,7 @@ _0% lineups confirmed · 1 extreme-weather games · 9 rookie SPs_
    - Edge +25.0% looks big but only 0 settled props on this player — model unproven
 
 ## Weather leans
-- **OVER lean** (wind out + warm): KCR @ STL, TOR @ DET
+- **OVER lean** (wind out + warm): KCR @ STL, SFG @ OAK, TOR @ DET
 
 ## Hot streaks
 **Batters heating up:** Eric Haase (heat +8.52), Kyle Schwarber (heat +8.43), Daylen Lile (heat +6.11)
@@ -80,13 +80,13 @@ _Lean late-inning OVER on these games; fade their save situations._
 - KT Wiz @ NC Dinos | P(home) 50.5% fair -102 | total 10 R
 - **KBO POD:** OVER 8.5 (model 10 runs) (MED)
 
-## LoL Esports -- 1 live, 18 upcoming
-- [LCK] kt Rolster vs Hanwha Life Esports BO3 | P(A) 46.3% fair +116/-116
+## LoL Esports -- 1 live, 20 upcoming
+- [LCK] HANJIN BRION vs KIWOOM DRX BO3 | P(A) 53.7% fair -116/+116
 - [VCS] TP.HCM SN CyberCore Esports vs Saigon Warrior BO3 | P(A) 50.0% fair -100/-100
 - [VCS] Saigon 9Gaming vs Saigon MVKE Academy BO3 | P(A) 50.0% fair -100/-100
-- [LCK] KIWOOM DRX vs HANJIN BRION BO3 | P(A) 46.3% fair +116/-116
 - [CBLOL] FURIA vs LOUD BO5 | P(A) 50.0% fair -100/-100
-- **LoL POT:** Hanwha Life Esports ML vs kt Rolster (LCK, BO3) (HIGH)
+- [LCS] Sentinels vs Dignitas BO3 | P(A) 50.0% fair -100/-100
+- **LoL POT:** kt Rolster ML vs NONGSHIM RED FORCE (LCK, BO3) (HIGH)
 
 ## CS Esports -- 8 matches (fallback (top-30 cross-pairs))
 - Vitality vs MOUZ BO3 | P(A) 54.3% fair -119/+119
@@ -102,3 +102,6 @@ _Lean late-inning OVER on these games; fade their save situations._
 - **[LOL]** Peyz OVER 4.5 Kills | model 61.3% fair -158 (ELITE)
 - **[LOL]** Hope OVER 4.5 Kills | model 61.3% fair -158 (ELITE)
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | model 61.0% fair -157 (ELITE)
+
+## Self-learning calibration (esports + KBO)
+- **LOL:** 1 settled | brier 0.2886 | ECE 0.5372
