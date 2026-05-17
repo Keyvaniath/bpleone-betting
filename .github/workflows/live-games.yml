@@ -101,6 +101,11 @@ jobs:
         working-directory: python
         run: python auto_rebalance.py
 
+      # NBA live scoreboard refresh (free ESPN; will catch in-game score updates)
+      - name: NBA live scoreboard
+        working-directory: python
+        run: python nba_pipeline.py
+
       - name: Commit if state changed
         env:
           GIT_EDITOR: "true"
@@ -108,7 +113,7 @@ jobs:
         run: |
           git config user.name  "edgestat-bot"
           git config user.email "actions@github.com"
-          git add data/live_state.json data/live_clv.json data/live_edges.json data/live_props.json data/lineup_churn.json data/k_pace.json data/scratch_alerts.json data/.scratch_alerted.json data/locked_props.json data/bullpen_warming.json data/injury_news.json data/.injury_news_seen.json data/live_total_drift.json data/steam_alerts.json data/.line_history.json data/rebalance_events.json data/.rebalance_history.json
+          git add data/live_state.json data/live_clv.json data/live_edges.json data/live_props.json data/lineup_churn.json data/k_pace.json data/scratch_alerts.json data/.scratch_alerted.json data/locked_props.json data/bullpen_warming.json data/injury_news.json data/.injury_news_seen.json data/live_total_drift.json data/steam_alerts.json data/.line_history.json data/rebalance_events.json data/.rebalance_history.json data/nba_state.json
           if git diff --cached --quiet; then
             echo "No live games or no state changes."
           else

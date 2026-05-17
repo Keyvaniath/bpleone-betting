@@ -323,10 +323,14 @@ jobs:
         run: python csv_export.py
 
       # NBA + NFL stubs (will start producing real data when enabled in config)
-      - name: NBA stub artifact
+      - name: NBA stub artifact (back-compat)
         if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
         working-directory: python
         run: python nba_stub.py
+      # Real NBA scoreboard (overrides stub on every run; free ESPN API)
+      - name: NBA live scoreboard + win probabilities
+        working-directory: python
+        run: python nba_pipeline.py
       - name: NFL stub artifact
         if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
         working-directory: python

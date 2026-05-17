@@ -313,6 +313,47 @@ def run() -> Dict[str, Any]:
             "risks": ["SGPs are correlated -- one bad leg sinks the parlay"],
         })
 
+    # NBA games (cross-sport injection): only pick games where one side has
+    # 55-72% win prob (avoiding heavy favorites and coinflips)
+    nba = _load(os.path.join(DATA_DIR, "nba_state.json"))
+    for g in (nba.get("games") or [])[:8]:
+        # Only suggest live or upcoming games
+        if g.get("state") == "post":
+            continue
+        ph = g.get("p_home_win") or 0
+        # Suggest the higher-prob side if it's in the sweet spot
+        if 0.55 <= ph <= 0.72:
+            candidates.append({
+                "source": "NBA",
+                "label": f"NBA {g.get('home_team')} ML ({g.get('home_record','?')}) vs {g.get('away_team')}",
+                "team": g.get("home_team"), "player": None, "player_id": None,
+                "market": "nba_ml", "line": g.get("fair_home_american"),
+                "play": "HOME",
+                "model_prob": ph,
+                "edge_pct": None,
+                "url_anchor": "nba.html",
+                "quality_score": 70,
+                "stars": 4,
+                "factors": [f"ELO {g.get('home_elo')} vs {g.get('away_elo')}; HFA included"],
+                "risks": ["NBA ML model uses season win-pct only; v1 baseline"],
+            })
+        elif 0.28 <= ph <= 0.45:
+            pa = 1 - ph
+            candidates.append({
+                "source": "NBA",
+                "label": f"NBA {g.get('away_team')} ML ({g.get('away_record','?')}) at {g.get('home_team')}",
+                "team": g.get("away_team"), "player": None, "player_id": None,
+                "market": "nba_ml", "line": g.get("fair_away_american"),
+                "play": "AWAY",
+                "model_prob": pa,
+                "edge_pct": None,
+                "url_anchor": "nba.html",
+                "quality_score": 68,
+                "stars": 4,
+                "factors": [f"Road team ELO {g.get('away_elo')} vs {g.get('home_elo')}"],
+                "risks": ["NBA ML model uses season win-pct only; v1 baseline"],
+            })
+
     # Top golf parlay (cross-sport injection)
     gp = _load(os.path.join(DATA_DIR, "golf_parlays.json"))
     if (gp.get("parlays") or []):
@@ -373,7 +414,7 @@ def run() -> Dict[str, Any]:
         "n_bets": len(top),
         "total_candidates": len(candidates),
         "by_source": {s: sum(1 for c in top if c.get("source") == s)
-                       for s in ("DK", "PP", "NRFI", "SGP", "GOLF")},
+                       for s in ("DK", "PP", "NRFI", "SGP", "GOLF", "NBA")},
         "bets": top,
     }
     os.makedirs(DATA_DIR, exist_ok=True)
