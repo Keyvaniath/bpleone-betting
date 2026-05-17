@@ -6,7 +6,7 @@ _0% lineups confirmed · 9 rookie SPs_
 
 ## Slate
 - **15 games** scheduled
-- **36 best bets** scored: 0 DK · 0 PP · 13 NRFI · 6 SGP
+- **41 best bets** scored: 0 DK · 0 PP · 13 NRFI · 6 SGP
 - **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$45.99
 - **MC simulation:** EV +$172.18, 89% P(profit), p05 $-75.3 / p95 $401.95
 
@@ -95,3 +95,10 @@ _Lean late-inning OVER on these games; fade their save situations._
 - FaZe vs Natus Vincere BO3 | P(A) 52.2% fair -109/+109
 - The MongolZ vs Astralis BO3 | P(A) 52.2% fair -109/+109
 - **CS POD:** Spirit ML vs Falcons (BO3) (HIGH)
+
+## Player Play of the Day -- across all sports (3543 candidates scanned)
+- **[LOL]** Inspired UNDER 3.5 Kills | model 61.7% fair -161 (ELITE)
+- **[LOL]** ShowMaker OVER 3.5 Kills | model 62.5% fair -167 (ELITE)
+- **[LOL]** Peyz OVER 4.5 Kills | model 61.3% fair -158 (ELITE)
+- **[LOL]** Hope OVER 4.5 Kills | model 61.3% fair -158 (ELITE)
+- **[CS]** torzsi OVER 40.5 Kills (BO3) | model 61.0% fair -157 (ELITE)

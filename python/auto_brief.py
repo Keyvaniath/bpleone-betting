@@ -258,6 +258,17 @@ def run() -> Dict[str, Any]:
             lines.append(f"- **CS POD:** {cs_pot.get('label')} ({cs_pot.get('confidence','MED')})")
         lines.append("")
 
+    # Cross-sport Player POT
+    ppot = _load(os.path.join(DATA_DIR, "player_pot.json"))
+    if ppot.get("top_5"):
+        lines.append(f"## Player Play of the Day -- across all sports ({ppot.get('n_candidates',0)} candidates scanned)")
+        for c in ppot["top_5"]:
+            elite = " (ELITE)" if c.get("is_elite") else ""
+            fa = c.get('fair_american')
+            fa_str = f"{fa:+d}" if isinstance(fa, int) else str(fa)
+            lines.append(f"- **[{c.get('sport')}]** {c.get('label','')} | model {(c.get('prob') or 0)*100:.1f}% fair {fa_str}{elite}")
+        lines.append("")
+
     # Self-learning calibration block (new sports)
     cal = _load(os.path.join(DATA_DIR, "esports_calibration.json"))
     cal_sports = cal.get("sports") or {}
