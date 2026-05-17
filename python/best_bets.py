@@ -388,6 +388,29 @@ def run() -> Dict[str, Any]:
     _inject_esport_pot("LOL", "lol_bestbet.json", "lol.html")
     _inject_esport_pot("CS",  "cs_bestbet.json",  "cs.html")
 
+    # Cross-sport player POT (top 3 player props from LoL/CS/KBO)
+    ppot = _load(os.path.join(DATA_DIR, "player_pot.json"))
+    for c in (ppot.get("top_5") or [])[:3]:
+        sport = c.get("sport")
+        anchor = {"LOL":"lol-players.html","CS":"cs-players.html","KBO":"kbo-players.html"}.get(sport, "index.html")
+        q = 78 if c.get("is_elite") else 70
+        candidates.append({
+            "source": sport,
+            "label": f"{sport} {c.get('label','')}",
+            "team": c.get("team"), "player": c.get("player"), "player_id": None,
+            "market": f"{sport.lower()}_{c.get('market','prop')}",
+            "line": c.get("line"),
+            "play": c.get("play"),
+            "model_prob": c.get("prob"),
+            "edge_pct": None,
+            "url_anchor": anchor,
+            "quality_score": q,
+            "stars": 4 if c.get("is_elite") else 3,
+            "factors": [f"Player prop quality score {c.get('quality_score')}",
+                         f"Elite player" if c.get("is_elite") else "Solid starter"],
+            "risks": ["Player prop models v1 -- track record building"],
+        })
+
     # LoL parlays
     lol_par = _load(os.path.join(DATA_DIR, "lol_parlays.json"))
     for par in (lol_par.get("parlays") or [])[:2]:

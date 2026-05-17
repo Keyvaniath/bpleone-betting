@@ -148,6 +148,8 @@ ARTIFACTS: List[Dict[str, Any]] = [
     {"name": "cs_player_props.json",      "cadence_mins":  8*60},
     {"name": "kbo_players.json",          "cadence_mins":  8*60},
     {"name": "kbo_player_props.json",     "cadence_mins":  8*60},
+    # Cross-sport player POT (scans all 3 sport prop boards)
+    {"name": "player_pot.json",           "cadence_mins":  8*60},
     # Optional / stubs
     {"name": "nfl_state.json",            "cadence_mins": 24*60, "optional": True},
     # Loop tracking (from PR #38/#39 -- present only after those merge)
