@@ -4,29 +4,22 @@
 
 _Pipeline health: **DEGRADED** (14/15 artifacts ok; 1 empty, 0 stale)._ 
 
-_Generated at 2026-05-17T17:57:53 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-05-17T22:58:15 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
-**CHC @ CHW - OVER_9.0**
+**SDP @ SEA - UNDER_7.5**
 - Market: -110
-- Model probability: 92.3%
-- Raw edge: +76.15%
+- Model probability: 70.5%
+- Raw edge: +34.52%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
 
-## Full Slate (8 games)
+## Full Slate (1 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 2:10p ET | TEX @ HOU | Daikin Park | indoor | HOU_ML +52.49% |
-| 2:10p ET | CHC @ CHW | Rate Field | 88F 18mph | OVER_9.0 +76.15% |
-| 2:10p ET | MIL @ MIN | Target Field | 64F 13mph | MIN_ML +10.27% |
-| 2:15p ET | KCR @ STL | Busch Stadium | 87F 16mph | OVER_9.0 +53.36% |
-| 3:10p ET | ARI @ COL | Coors Field | 62F 8mph | ARI_ML +4.57% |
-| 4:05p ET | SFG @ OAK | Sutter Health Park | 77F 22mph | OAK_ML +36.86% |
-| 4:07p ET | LAD @ LAA | Angel Stadium | 69F 10mph | OVER_9.5 +41.36% |
 | 7:20p ET | SDP @ SEA | T-Mobile Park | indoor | UNDER_7.5 +34.52% |
 
 ## Parlays - top 5
@@ -71,14 +64,7 @@ Cumulative graded plays: 118201. Wins: 87361. Hit rate: 73.9%.
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| ARI @ COL | 20.5% | +387 | 7.55 | +270 | -270 |
-| CHC @ CHW | 35.4% | +182 | 5.79 | +407 | -407 |
-| KCR @ STL | 28.3% | +253 | 6.63 | -141 | +141 |
-| LAD @ LAA | 33.6% | +198 | 5.79 | +403 | -403 |
-| MIL @ MIN | 45.4% | +120 | 3.69 | +168 | -168 |
 | SDP @ SEA | 49.9% | +101 | 3.48 | -130 | +130 |
-| SFG @ OAK | 33.4% | +200 | 5.07 | -263 | +263 |
-| TEX @ HOU | 50.7% | -103 | 3.4 | -162 | +162 |
 
 ## Team Form (last 10)
 

@@ -1,22 +1,21 @@
 {
-  "generated_at": "2026-05-17T22:30:04",
+  "generated_at": "2026-05-17T23:05:42",
   "overall": "red",
-  "n_green": 4,
+  "n_green": 6,
   "n_yellow": 1,
-  "n_red": 4,
+  "n_red": 2,
   "checks": [
     {
       "feed": "mlb",
       "status": "red",
       "findings": [
-        "MLB game count mismatch: local=8 vs MLB API=15",
-        "MLB has 3 live games but live_state.json shows 3 (age 999min)"
+        "MLB game count mismatch: local=1 vs MLB API=15"
       ],
       "upstream_count": 15,
-      "local_count": 8,
-      "upstream_live": 3,
+      "local_count": 1,
+      "upstream_live": 2,
       "local_live": 3,
-      "live_state_age_min": 999
+      "live_state_age_min": 8
     },
     {
       "feed": "nba",
@@ -27,18 +26,18 @@
       "upstream_count": 1,
       "local_count": 1,
       "upstream_live": 0,
-      "local_age_min": 999
+      "local_age_min": 7
     },
     {
       "feed": "wnba",
-      "status": "red",
+      "status": "green",
       "findings": [
-        "WNBA has 1 live, local age 999min"
+        "4 events matched (3 live)"
       ],
       "upstream_count": 4,
       "local_count": 4,
-      "upstream_live": 1,
-      "local_age_min": 999
+      "upstream_live": 3,
+      "local_age_min": 8
     },
     {
       "feed": "nhl",
@@ -49,18 +48,18 @@
       "upstream_count": 1,
       "local_count": 1,
       "upstream_live": 0,
-      "local_age_min": 999
+      "local_age_min": 7
     },
     {
       "feed": "mls",
-      "status": "red",
+      "status": "green",
       "findings": [
-        "MLS has 1 live, local age 999min"
+        "2 events matched (1 live)"
       ],
       "upstream_count": 2,
       "local_count": 2,
       "upstream_live": 1,
-      "local_age_min": 999
+      "local_age_min": 8
     },
     {
       "feed": "epl",
@@ -71,18 +70,18 @@
       "upstream_count": 6,
       "local_count": 6,
       "upstream_live": 0,
-      "local_age_min": 999
+      "local_age_min": 8
     },
     {
       "feed": "pitcher_matchup",
-      "status": "green",
+      "status": "yellow",
       "findings": [
-        "16/30 probables matched",
-        "missing: ['Brady Singer', 'Brandon Young', 'Brayan Bello']..."
+        "only 2/30 probables in local",
+        "missing: ['Adrian Houser', 'Andre Pallante', 'Bailey Ober']..."
       ],
       "upstream_count": 30,
-      "local_count": 16,
-      "matched": 16
+      "local_count": 2,
+      "matched": 2
     },
     {
       "feed": "props",
@@ -96,13 +95,13 @@
     },
     {
       "feed": "golf",
-      "status": "yellow",
+      "status": "green",
       "findings": [
-        "golf data 999min stale during active tournament"
+        "156 golfers tracked (1 active events)"
       ],
       "upstream_players": 156,
       "local_players": 156,
-      "local_age_min": 999
+      "local_age_min": 8
     }
   ]
 }
