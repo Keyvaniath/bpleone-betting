@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>POD History | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .pod-row { display:grid; grid-template-columns: 100px 1.4fr 1fr 70px 70px 60px 70px 70px 80px; gap:12px; padding:10px 14px; border-bottom:1px solid rgba(255,255,255,0.04); font-family:'JetBrains Mono', monospace; font-size:12px; align-items:center; }
+  .pod-row.head { background:rgba(255,255,255,0.04); color:var(--muted,#888); font-size:10px; text-transform:uppercase; }
+  .pod-row.win  { background:rgba(88,200,120,0.05); }
+  .pod-row.loss { background:rgba(227,90,90,0.05); }
+  .pill { display:inline-block; padding:2px 8px; border-radius:999px; font-size:10px; font-weight:700; text-transform:uppercase; }
+  .pill.win  { background:rgba(88,200,120,0.15); color:#58c878; }
+  .pill.loss { background:rgba(227,90,90,0.15); color:#e35a5a; }
+  .pill.pending { background:rgba(255,255,255,0.06); color:#999; }
+</style>
+</head>
+<body class="page-pod-history">
+<header class="topbar">
+  <div class="brand">
+    <a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a>
+    <span class="tagline">by bpleone</span>
+  </div>
+  <nav class="mainnav">
+    <a href="index.html">Dashboard</a>
+    <a href="play-of-day.html" class="active">Play of the Day</a>
+    <a href="pod-history.html" class="active">POD History</a>
+    <a href="mlb.html">MLB</a>
+    <a href="golf.html">Golf</a>
+    <a href="track-record.html">Track</a>
+    <a href="best-bets.html">Best Bets</a>
+    <a href="brief.html">Brief</a>
+    <a href="my-bets.html">My Bets</a>
+  </nav>
+  <div class="topbar-actions"><div class="ticker" id="liveTicker">LIVE</div></div>
+</header>
+
+<main class="container">
+
+  <section class="page-head">
+    <h1>Play of the Day — Rolling History</h1>
+    <p class="muted" id="podSummary">Loading flagship-pick track record…</p>
+  </section>
+
+  <section class="metric-strip">
+    <div class="metric"><span class="metric-num" id="m_total">--</span><span class="metric-label">Total PODs</span></div>
+    <div class="metric"><span class="metric-num" id="m_settled">--</span><span class="metric-label">Settled</span></div>
+    <div class="metric"><span class="metric-num" id="m_pending">--</span><span class="metric-label">Pending</span></div>
+    <div class="metric"><span class="metric-num" id="m_hitrate">--</span><span class="metric-label">Hit Rate</span></div>
+    <div class="metric"><span class="metric-num" id="m_roi">--</span><span class="metric-label">ROI</span></div>
+    <div class="metric"><span class="metric-num" id="m_units">--</span><span class="metric-label">Net Units</span></div>
+    <div class="metric"><span class="metric-num" id="m_avgedge">--</span><span class="metric-label">Avg Edge</span></div>
+    <div class="metric"><span class="metric-num" id="m_avgkelly">--</span><span class="metric-label">Avg Kelly</span></div>
+  </section>
+
+  <section class="card" style="margin-bottom: 24px;">
+    <div class="card-head"><span>📜 Daily flagship picks (newest first)</span><span class="muted" id="podGen">--</span></div>
+    <p class="muted" style="font-size:11px; padding:8px 16px 0;">Snapshotted automatically every cron from today.json.play_of_day. Settles against the track_record outcomes feed.</p>
+    <div class="pod-row head">
+      <span>Date</span><span>Matchup</span><span>Play</span><span>Edge</span><span>Kelly</span><span>Conf</span><span>Model</span><span>Mkt</span><span>Result</span>
+    </div>
+    <div id="podList"><p class="muted" style="padding:14px;">Loading…</p></div>
+  </section>
+
+  <section class="card">
+    <div class="card-head"><span>📋 What this is</span></div>
+    <div style="padding:14px; font-size:13px; line-height:1.7; color: var(--text-2,#aaa);">
+      <p><strong>Play of the Day</strong> is the single highest-conviction pick the EdgeStat model surfaces each day — the top-EV, slate-confidence-adjusted, walk-forward-validated bet.</p>
+      <p>Every cron snapshot captures today's POD into a rolling record. Once outcomes settle (via outcomes.py + track_record.json), pending entries flip to WIN/LOSS and contribute to hit-rate, ROI and net-units.</p>
+      <p>This is the public flagship track record — no edits, no cherry-picks, every pick logged the moment it goes live.</p>
+    </div>
+  </section>
+
+</main>
+
+<script src="js/nav_badge.js"></script>
+<script>
+fetch("data/pod_history.json?t=" + Date.now(), { cache: "no-cache" })
+  .then(r => r.json())
+  .then(d => {
+    const setText = (id, v) => { const e = document.getElementById(id); if (e) e.textContent = v; };
+
+    setText("m_total",   d.total_pods ?? "0");
+    setText("m_settled", d.n_settled ?? "0");
+    setText("m_pending", d.n_pending ?? "0");
+    setText("m_hitrate", d.hit_rate != null ? (d.hit_rate * 100).toFixed(1) + "%" : "—");
+    setText("m_roi",     d.roi_pct != null ? ((d.roi_pct >= 0 ? "+" : "") + d.roi_pct.toFixed(1) + "%") : "—");
+    setText("m_units",   d.net_units != null ? ((d.net_units >= 0 ? "+" : "") + d.net_units.toFixed(2) + "u") : "—");
+    setText("m_avgedge", d.avg_edge_pct != null ? "+" + d.avg_edge_pct.toFixed(1) + "%" : "—");
+    setText("m_avgkelly", d.avg_kelly_units != null ? d.avg_kelly_units.toFixed(2) + "u" : "—");
+
+    document.getElementById("podGen").textContent = `last refresh: ${(d.generated_at || '').replace('T',' ')} · ${d.total_pods || 0} PODs · ${d.n_settled || 0} settled`;
+    document.getElementById("podSummary").textContent =
+      d.n_settled > 0
+        ? `${d.wins || 0}–${d.losses || 0} settled · ${((d.hit_rate || 0)*100).toFixed(1)}% hit · ${(d.roi_pct || 0).toFixed(1)}% ROI · ${(d.net_units || 0).toFixed(2)}u net`
+        : `${d.total_pods || 0} pick(s) on record — settlement pending.`;
+
+    const rows = (d.history || []).map(h => {
+      const outcome = h.outcome || "PENDING";
+      const cls = outcome === "WIN" ? "win" : outcome === "LOSS" ? "loss" : "";
+      const pillCls = outcome === "WIN" ? "win" : outcome === "LOSS" ? "loss" : "pending";
+      const fmt = (n, sfx="", sign=false) => n == null ? "—" : ((sign && n >= 0 ? "+" : "") + n.toFixed ? (sign && n>=0?"+":"")+n.toFixed(1) : n) + sfx;
+      const amer = (a) => a == null ? "—" : (a >= 0 ? "+" + a : String(a));
+      return `<div class="pod-row ${cls}">
+        <span class="muted">${(h.date || '').slice(0,10)}</span>
+        <span><strong>${h.matchup || '—'}</strong></span>
+        <span><strong>${h.play || h.label || '—'}</strong></span>
+        <span style="color:${(h.edge_pct||0) >= 5 ? '#58c878' : 'var(--text-2,#aaa)'}">+${(h.edge_pct||0).toFixed(1)}%</span>
+        <span>${(h.kelly_units||0).toFixed(2)}u</span>
+        <span class="muted">${h.confidence || '—'}</span>
+        <span>${amer(h.model_price)}</span>
+        <span>${amer(h.market_price)}</span>
+        <span class="pill ${pillCls}">${outcome}</span>
+      </div>`;
+    }).join("");
+    document.getElementById("podList").innerHTML = rows || `<p class="muted" style="padding:14px;">No POD history yet — first snapshot will be logged on the next cron.</p>`;
+  })
+  .catch(err => {
+    document.getElementById("podList").innerHTML = `<p class="muted" style="padding:14px;">Could not load pod_history.json (${err.message}).</p>`;
+  });
+</script>
+
+</body>
+</html>

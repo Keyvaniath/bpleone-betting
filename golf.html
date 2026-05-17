@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Golf Desk | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .golf-row { display:grid; grid-template-columns: 50px 1.8fr 60px 80px 80px 80px 80px 80px 80px; gap: 12px; padding: 8px 14px; border-bottom: 1px solid rgba(255,255,255,0.04); font-family: 'JetBrains Mono', monospace; font-size: 12px; align-items: center; }
+  .golf-row.head { background: rgba(255,255,255,0.04); color: var(--muted, #888); font-size: 10px; text-transform: uppercase; }
+  .leader { background: rgba(212,160,74,0.06); }
+  .country-flag { width: 18px; height: 12px; object-fit: cover; vertical-align: middle; }
+</style>
+</head>
+<body class="page-golf">
+<header class="topbar">
+  <div class="brand">
+    <a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a>
+    <span class="tagline">by bpleone</span>
+  </div>
+  <nav class="mainnav">
+    <a href="index.html">Dashboard</a>
+    <a href="mlb.html">MLB</a>
+    <a href="golf.html" class="active">Golf</a>
+    <a href="pod-history.html">POD History</a>
+    <a href="nba.html">NBA</a>
+    <a href="nfl.html">NFL</a>
+    <a href="best-bets.html">Best Bets</a>
+    <a href="my-bets.html">My Bets</a>
+    <a href="hedge.html">Hedge</a>
+    <a href="brief.html">Brief</a>
+    <a href="track-record.html">Track</a>
+    <a href="learn.html">Learn</a>
+  </nav>
+  <div class="topbar-actions"><div class="ticker" id="liveTicker">LIVE</div></div>
+</header>
+
+<main class="container">
+
+  <section class="page-head">
+    <h1 id="golfPageTitle">Golf Desk — Loading…</h1>
+    <p id="golfStatus" class="muted">Pulling PGA Tour leaderboard…</p>
+  </section>
+
+  <section class="metric-strip">
+    <div class="metric"><span class="metric-num" id="golfField">--</span><span class="metric-label">Players in Field</span></div>
+    <div class="metric"><span class="metric-num" id="golfRoundsLeft">--</span><span class="metric-label">Rounds Left</span></div>
+    <div class="metric"><span class="metric-num" id="golfLeader">--</span><span class="metric-label">Current Leader</span></div>
+    <div class="metric"><span class="metric-num" id="golfLeaderScore">--</span><span class="metric-label">Leader Score</span></div>
+    <div class="metric"><span class="metric-num" id="golfTopWinProb">--</span><span class="metric-label">Fav P(win)</span></div>
+    <div class="metric"><span class="metric-num" id="golfNSims">--</span><span class="metric-label">MC Sims</span></div>
+  </section>
+
+  <section class="card" style="margin-bottom: 24px;">
+    <div class="card-head"><span>🏆 Live Leaderboard + Win Probabilities</span><span class="muted" id="golfMeta">--</span></div>
+    <p class="muted" style="font-size: 11px; padding: 8px 16px 0;">Win / Top 5 / Top 10 / Top 20 probabilities and fair American odds from 5K Monte Carlo on remaining rounds. Refresh page during play to update.</p>
+    <div class="golf-row head">
+      <span>Pos</span><span>Player</span><span>Total</span><span>Thru</span><span>P(win)</span><span>Fair</span><span>P(top5)</span><span>P(top10)</span><span>P(top20)</span>
+    </div>
+    <div id="golfList"><p class="muted" style="padding:14px;">Loading…</p></div>
+  </section>
+
+  <section class="card">
+    <div class="card-head"><span>📋 How the model works</span></div>
+    <div style="padding: 14px; font-size: 13px; line-height: 1.7; color: var(--text-2, #aaa);">
+      <p>For each player, simulate the remaining rounds 5,000 times:</p>
+      <ul style="padding-left: 24px;">
+        <li>Per-round score ~ Normal(mean, σ=3) where mean = -SKILL_PER_STROKE × (player's current total − field median).</li>
+        <li>Better players (lower current total) get a slight skill bonus that reduces their expected per-round score.</li>
+        <li>Sum simulated remaining-round scores onto current total to get final 72-hole position.</li>
+        <li>Tally P(rank=1), P(rank≤5), P(rank≤10), P(rank≤20) across all sims.</li>
+        <li>Convert probabilities → fair American odds with no vig added.</li>
+      </ul>
+      <p style="margin-top: 14px;">Compare to live sportsbook prices to find +EV. (Bookmaker pricing usually 20-30% vig on outrights — needs ~5% edge to break even after vig.)</p>
+    </div>
+  </section>
+
+</main>
+
+<script src="js/nav_badge.js"></script>
+<script src="js/bet_tracker.js"></script>
+<script>
+Promise.all([
+  fetch("data/golf_state.json?t=" + Date.now(), { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
+  fetch("data/golf_props.json?t=" + Date.now(), { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
+]).then(([state, props]) => {
+  const t = state.active_tournament;
+  const setText = (id, v) => { const e = document.getElementById(id); if (e) e.textContent = v; };
+
+  if (!t) {
+    document.getElementById("golfPageTitle").textContent = "Golf Desk — No active tournament";
+    document.getElementById("golfStatus").textContent = state.note || state.error || "No PGA event right now.";
+    return;
+  }
+
+  document.getElementById("golfPageTitle").textContent = `Golf Desk — ${t.name}`;
+  document.getElementById("golfStatus").textContent = `${t.status} · round ${t.round || '?'} · ${t.course || ''} · ${(t.start_date || '').slice(0,10)} → ${(t.end_date || '').slice(0,10)}`;
+
+  setText("golfField", state.n_players);
+  setText("golfRoundsLeft", props.rounds_left ?? "—");
+  const leader = state.current_leader || {};
+  setText("golfLeader", leader.name || "—");
+  setText("golfLeaderScore", leader.total_to_par || "—");
+  setText("golfNSims", (props.n_sims || 0).toLocaleString());
+
+  const players = props.players || [];
+  if (players.length) {
+    setText("golfTopWinProb", (players[0].p_win * 100).toFixed(1) + "%");
+  }
+
+  const fmtAmer = (a) => a == null ? "—" : (a >= 0 ? "+" + a : String(a));
+  const rows = players.slice(0, 80).map((p, i) => {
+    const isLeader = i === 0;
+    const betKey = `GOLF|${p.name}|win|${p.fair_win_american || '?'}`;
+    return `<div class="golf-row ${isLeader ? 'leader' : ''}"
+                 data-bet-key="${betKey}"
+                 data-bet-label="${p.name} to win ${(t.name || '').replace(/"/g,'&quot;')}"
+                 data-bet-play="WIN"
+                 data-bet-src="GOLF">
+      <span class="muted">${p.current_pos || (i+1)}</span>
+      <span><strong>${p.name}</strong> <span class="muted" style="font-size:10px;">${p.country || ''}</span></span>
+      <span style="color: ${(p.current_total || '').startsWith('-') ? '#58c878' : (p.current_total || '').startsWith('+') ? '#e35a5a' : 'var(--text-2,#aaa)'};">${p.current_total || '—'}</span>
+      <span class="muted">${p.thru ? 'thru ' + p.thru : (p.rounds_played ? 'R' + p.rounds_played : '—')}</span>
+      <span style="color:${p.p_win >= 0.05 ? '#58c878' : 'var(--text-2,#aaa)'}; font-weight:700;">${(p.p_win * 100).toFixed(2)}%</span>
+      <span>${fmtAmer(p.fair_win_american)}</span>
+      <span>${(p.p_top5 * 100).toFixed(1)}%</span>
+      <span>${(p.p_top10 * 100).toFixed(1)}%</span>
+      <span>${(p.p_top20 * 100).toFixed(1)}%</span>
+    </div>`;
+  }).join("");
+  document.getElementById("golfList").innerHTML = rows || `<p class="muted" style="padding:14px;">No players in field.</p>`;
+  document.getElementById("golfMeta").textContent = `${players.length} players · refresh: ${(props.generated_at || '').replace('T',' ')} UTC`;
+});
+
+// Auto-refresh every 5 minutes while live
+setInterval(() => location.reload(), 5 * 60 * 1000);
+</script>
+
+</body>
+</html>

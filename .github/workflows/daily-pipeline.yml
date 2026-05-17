@@ -413,6 +413,25 @@ jobs:
         working-directory: python
         run: python auto_brief.py
 
+      # POD history: snapshot today's Play of the Day into rolling record +
+      # re-settle prior PODs against accumulated outcomes. Powers /pod-history.
+      # MUST run AFTER pipeline.py (which writes play_of_day to today.json)
+      # and outcomes.py (which writes track_record settlement results).
+      - name: Snapshot + settle Play-of-Day history
+        working-directory: python
+        run: python pod_history.py
+
+      # Golf: pull active PGA tournament leaderboard from ESPN + run
+      # Monte Carlo win / top-5 / top-10 / top-20 simulation.
+      # Both run every cron so we capture data even during weekday-only
+      # opening rounds. Free ESPN API, no quota concerns.
+      - name: Pull PGA Tour leaderboard (ESPN)
+        working-directory: python
+        run: python golf_pipeline.py
+      - name: Monte Carlo golf winner probabilities
+        working-directory: python
+        run: python golf_winner_model.py
+
       # Comprehensive pipeline audit -- LAST step so it sees final artifact
       # state. Writes data/pipeline_audit.json with overall: green/yellow/red,
       # per-artifact freshness, and findings. Surfaces on /audit.
