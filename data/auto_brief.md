@@ -60,8 +60,14 @@ _Lean late-inning OVER on these games; fade their save situations._
 - **YRFI** (1st-inning OVER): ARI @ COL, TOR @ DET, KCR @ STL, CIN @ CLE, BAL @ WSN
 - **NRFI** (1st-inning UNDER): PHI @ PIT
 
-## ⛳ Golf — PGA Championship
+## Golf -- PGA Championship
 - **Leader:** Alex Smalley (-6) at #1
-- **Field:** 156 players  ·  Status: In Progress
+- **Field:** 156 players  |  Status: In Progress
 - **Play of the Tournament:** Patrick Reed TOP5 @ +466 (model 17.7%, HIGH)
    - P(top 5) 17.7% -- lower variance than outright but compelling line.
+
+## NBA -- PLAYOFFS
+- Cleveland Cavaliers @ Detroit Pistons (52-30 vs 60-22)  | P(home) 65.8% fair -192 | Scheduled
+
+## NHL -- PLAYOFFS
+- Buffalo Sabres @ Montreal Canadiens (50-23-9 vs 48-24-10) 8-3 | P(home) 0.0% fair +0 | Final

@@ -176,16 +176,40 @@ def run() -> Dict[str, Any]:
     golf_bb = _load(os.path.join(DATA_DIR, "golf_bestbet.json"))
     golf_t = golf_state.get("active_tournament") or {}
     if golf_t.get("name") and not golf_t.get("is_complete"):
-        lines.append(f"## ⛳ Golf — {golf_t.get('name')}")
+        lines.append(f"## Golf -- {golf_t.get('name')}")
         leader = golf_state.get("current_leader") or {}
         lines.append(f"- **Leader:** {leader.get('name','?')} ({leader.get('total_to_par','?')}) at #{leader.get('order','?')}")
-        lines.append(f"- **Field:** {golf_state.get('n_players',0)} players  ·  Status: {golf_t.get('status','?')}")
+        lines.append(f"- **Field:** {golf_state.get('n_players',0)} players  |  Status: {golf_t.get('status','?')}")
         pot = golf_bb.get("top_bet")
         if pot:
             opp = f" vs {pot.get('opponent')}" if pot.get("opponent") else ""
             lines.append(f"- **Play of the Tournament:** {pot.get('player')}{opp} {pot.get('type')} @ "
                          f"{pot.get('fair_american','?'):+d} (model {(pot.get('model_prob') or 0)*100:.1f}%, {pot.get('confidence','MED')})")
             lines.append(f"   - {pot.get('reasoning','')}")
+        lines.append("")
+
+    # NBA scoreboard
+    nba = _load(os.path.join(DATA_DIR, "nba_state.json"))
+    nba_games = nba.get("games") or []
+    if nba_games:
+        lines.append(f"## NBA -- {(nba.get('season_status') or 'season').upper()}")
+        for g in nba_games[:5]:
+            score = f"{g.get('away_score',0)}-{g.get('home_score',0)}" if g.get("state") != "pre" else ""
+            ph = (g.get("p_home_win") if g.get("p_home_win") is not None else 0.5) * 100
+            lines.append(f"- {g.get('matchup')} ({g.get('away_record','?')} vs {g.get('home_record','?')}) "
+                         f"{score} | P(home) {ph:.1f}% fair {g.get('fair_home_american','?'):+d} | {g.get('status','?')}")
+        lines.append("")
+
+    # NHL scoreboard
+    nhl = _load(os.path.join(DATA_DIR, "nhl_state.json"))
+    nhl_games = nhl.get("games") or []
+    if nhl_games:
+        lines.append(f"## NHL -- {(nhl.get('season_status') or 'season').upper()}")
+        for g in nhl_games[:5]:
+            score = f"{g.get('away_score',0)}-{g.get('home_score',0)}" if g.get("state") != "pre" else ""
+            ph = (g.get("p_home_win") if g.get("p_home_win") is not None else 0.5) * 100
+            lines.append(f"- {g.get('matchup')} ({g.get('away_record','?')} vs {g.get('home_record','?')}) "
+                         f"{score} | P(home) {ph:.1f}% fair {g.get('fair_home_american','?'):+d} | {g.get('status','?')}")
         lines.append("")
 
     text = "\n".join(lines)
