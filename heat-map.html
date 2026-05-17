@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Heat Map | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .alert-card { padding: 12px 14px; border-bottom: 1px solid rgba(255,255,255,0.04); font-family: 'JetBrains Mono', monospace; font-size: 12px; }
+  .alert-card.HOT { background: rgba(88,200,120,0.05); border-left: 3px solid #58c878; }
+  .alert-card.COLD { background: rgba(227,90,90,0.05); border-left: 3px solid #e35a5a; }
+  .alert-card.HIGH_OVER { background: rgba(212,160,74,0.05); border-left: 3px solid #d4a04a; }
+  .alert-card.LOW_OVER { background: rgba(80,150,220,0.05); border-left: 3px solid #5096dc; }
+  .alert-card.HEATING_UP { background: rgba(180,80,220,0.05); border-left: 3px solid #b450dc; }
+  .alert-card.COOLING_DOWN { background: rgba(150,150,150,0.05); border-left: 3px solid #888; }
+  .type-pill { display:inline-block; padding:2px 8px; border-radius:4px; font-size:9px; font-weight:700; margin-right:8px; }
+  .filter-bar { display:flex; gap:8px; padding:8px 16px; flex-wrap:wrap; }
+  .filter-pill { display:inline-block; padding:5px 12px; border-radius:14px; background:rgba(255,255,255,0.06); cursor:pointer; font-size:11px; }
+  .filter-pill.active { background:#d4a04a; color:#0a0a0a; font-weight:700; }
+  .section-h { font-size: 14px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted, #888); margin: 18px 0 8px 14px; }
+</style>
+</head>
+<body class="page-heat-map">
+<header class="topbar">
+  <div class="brand">
+    <a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a>
+    <span class="tagline">by bpleone</span>
+  </div>
+  <nav class="mainnav">
+    <a href="index.html">Dashboard</a>
+    <a href="live-now.html">Live Now</a>
+    <a href="heat-map.html" class="active">Heat Map</a>
+    <a href="backtest-dashboard.html">Backtest</a>
+    <a href="reliability.html">Calibration</a>
+    <a href="best-bets.html">Best Bets</a>
+  </nav>
+</header>
+<main class="container">
+  <section class="page-head">
+    <h1>Cross-Sport Heat / Cold Map</h1>
+    <p class="muted" id="status">Loading actionable trends across all sports…</p>
+  </section>
+
+  <section class="metric-strip">
+    <div class="metric"><span class="metric-num" id="m_total">--</span><span class="metric-label">Total Signals</span></div>
+    <div class="metric"><span class="metric-num" id="m_hot">--</span><span class="metric-label">Hot Teams</span></div>
+    <div class="metric"><span class="metric-num" id="m_cold">--</span><span class="metric-label">Cold Teams</span></div>
+    <div class="metric"><span class="metric-num" id="m_player">--</span><span class="metric-label">Trending Players</span></div>
+  </section>
+
+  <section class="card" style="margin-bottom: 18px;">
+    <div class="card-head"><span>🔥 Pre-Game Alerts (form-aligned, sweet-spot)</span><span class="muted" id="preMeta">--</span></div>
+    <div id="preList"><p class="muted" style="padding:14px;">Loading…</p></div>
+  </section>
+
+  <section class="card" style="margin-bottom: 18px;">
+    <div class="card-head"><span>📊 Hot / Cold Filter</span></div>
+    <div class="filter-bar" id="filterBar">
+      <span class="filter-pill active" data-type="all">All</span>
+      <span class="filter-pill" data-type="TEAM_HOT">Hot Teams</span>
+      <span class="filter-pill" data-type="TEAM_COLD">Cold Teams</span>
+      <span class="filter-pill" data-type="TEAM_HIGH_OVER">Over-Heavy</span>
+      <span class="filter-pill" data-type="TEAM_LOW_OVER">Under-Heavy</span>
+      <span class="filter-pill" data-type="PLAYER_HEATING_UP">Heating Players</span>
+      <span class="filter-pill" data-type="PLAYER_COOLING_DOWN">Cooling Players</span>
+    </div>
+  </section>
+
+  <div id="alertsContainer"></div>
+</main>
+
+<script src="js/nav_badge.js"></script>
+<script>
+let allAlerts = [];
+let curType = "all";
+
+function renderAlerts() {
+  const filtered = curType === "all" ? allAlerts :
+                    allAlerts.filter(a => a.type === curType);
+  document.getElementById("alertsContainer").innerHTML = filtered.length ? filtered.map(a => `
+    <div class="alert-card ${a.type.replace('TEAM_','').replace('PLAYER_','')}">
+      <span class="type-pill" style="background:${
+        a.type.includes('HOT') ? '#58c878' :
+        a.type.includes('COLD') ? '#e35a5a' :
+        a.type.includes('HIGH_OVER') ? '#d4a04a' :
+        a.type.includes('LOW_OVER') ? '#5096dc' :
+        a.type.includes('HEATING') ? '#b450dc' : '#888'}; color:#fff;">${a.type.replace('TEAM_','').replace('PLAYER_','').replace('_',' ')}</span>
+      <strong>${a.team || a.player}</strong>
+      ${a.player && a.team ? `<span class="muted">(${a.team})</span>` : ''}
+      <span class="muted" style="font-size: 10px;"> · ${a.sport.toUpperCase()}</span>
+      <div style="margin-top:4px; color: var(--text-2, #aaa); font-size: 11px;">${a.detail}</div>
+    </div>
+  `).join("") : '<p class="muted" style="padding:14px;">No alerts match filter.</p>';
+}
+
+Promise.all([
+  fetch("data/heat_cold_alerts.json?t=" + Date.now(), { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
+  fetch("data/pregame_alerts.json?t=" + Date.now(), { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
+]).then(([hc, pre]) => {
+  allAlerts = hc.alerts || [];
+  document.getElementById("status").textContent =
+    `${allAlerts.length} hot/cold signals + ${(pre.alerts || []).length} pre-game alerts · refresh: ${(hc.generated_at || '').replace('T',' ')}`;
+  document.getElementById("m_total").textContent = allAlerts.length;
+  const bt = hc.by_type || {};
+  document.getElementById("m_hot").textContent = bt.TEAM_HOT || 0;
+  document.getElementById("m_cold").textContent = bt.TEAM_COLD || 0;
+  document.getElementById("m_player").textContent = (bt.PLAYER_HEATING_UP || 0) + (bt.PLAYER_COOLING_DOWN || 0);
+
+  // Pre-game alerts on top (high conviction first)
+  const preAlerts = pre.alerts || [];
+  if (preAlerts.length) {
+    const fmtAmer = (a) => a == null ? "—" : (a >= 0 ? "+" + a : String(a));
+    document.getElementById("preMeta").textContent =
+      `${(pre.by_confidence || {}).HIGH || 0} HIGH · ${(pre.by_confidence || {}).MED || 0} MED`;
+    document.getElementById("preList").innerHTML = preAlerts.slice(0, 30).map(a => {
+      const cls = a.confidence === 'HIGH' ? 'HOT' : 'HEATING_UP';
+      return `<div class="alert-card ${cls}">
+        <span class="type-pill" style="background:${a.confidence === 'HIGH' ? '#58c878' : '#b450dc'}; color:#fff;">${a.confidence}</span>
+        <strong>${a.team} ${a.side}</strong> vs ${a.opponent}
+        <span class="muted" style="font-size:10px;"> · ${a.sport}</span>
+        <span style="float:right; font-family:'JetBrains Mono',monospace; color:#d4a04a;">${fmtAmer(a.fair_american)} · P=${(a.p_pick_side*100).toFixed(1)}%</span>
+        <div style="margin-top:4px; font-size: 11px; color: var(--text-2, #aaa);">${a.matchup} · L10: ${a.team_l10 || '—'} vs ${a.opp_l10 || '—'} · streak ${a.team_streak || '—'} ${a.form_aligned ? '[form aligned]' : ''}</div>
+      </div>`;
+    }).join("");
+  } else {
+    document.getElementById("preList").innerHTML = '<p class="muted" style="padding:14px;">No pre-game alerts right now.</p>';
+  }
+  renderAlerts();
+});
+
+document.getElementById("filterBar").addEventListener("click", e => {
+  const t = e.target.closest(".filter-pill");
+  if (!t) return;
+  curType = t.dataset.type;
+  document.querySelectorAll("#filterBar .filter-pill").forEach(p => p.classList.toggle("active", p.dataset.type === curType));
+  renderAlerts();
+});
+</script>
+</body>
+</html>
