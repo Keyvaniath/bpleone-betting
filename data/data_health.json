@@ -1,20 +1,21 @@
 {
-  "generated_at": "2026-05-17T18:04:02",
+  "generated_at": "2026-05-17T19:34:25",
   "overall": "red",
-  "n_green": 4,
+  "n_green": 5,
   "n_yellow": 1,
-  "n_red": 4,
+  "n_red": 3,
   "checks": [
     {
       "feed": "mlb",
       "status": "red",
       "findings": [
-        "MLB has 11 live games but live_state.json shows 11 (age 999min)"
+        "MLB game count mismatch: local=8 vs MLB API=15",
+        "MLB has 10 live games but live_state.json shows 9 (age 999min)"
       ],
       "upstream_count": 15,
-      "local_count": 15,
-      "upstream_live": 11,
-      "local_live": 11,
+      "local_count": 8,
+      "upstream_live": 10,
+      "local_live": 9,
       "live_state_age_min": 999
     },
     {
@@ -63,25 +64,25 @@
     },
     {
       "feed": "epl",
-      "status": "red",
+      "status": "green",
       "findings": [
-        "EPL has 1 live, local age 999min"
+        "6 events matched (0 live)"
       ],
       "upstream_count": 6,
       "local_count": 6,
-      "upstream_live": 1,
+      "upstream_live": 0,
       "local_age_min": 999
     },
     {
       "feed": "pitcher_matchup",
       "status": "green",
       "findings": [
-        "29/30 probables matched",
-        "missing: ['Richard Lovelady']"
+        "16/30 probables matched",
+        "missing: ['Brady Singer', 'Brandon Young', 'Brayan Bello']..."
       ],
       "upstream_count": 30,
-      "local_count": 30,
-      "matched": 29
+      "local_count": 16,
+      "matched": 16
     },
     {
       "feed": "props",
