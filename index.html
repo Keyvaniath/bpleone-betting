@@ -217,6 +217,18 @@
     </div>
   </section>
 
+  <!-- NBA + NHL multi-sport cards -->
+  <section style="margin-bottom: 28px; display:grid; grid-template-columns: 1fr 1fr; gap: 18px;" id="multiSportRow">
+    <div class="card" id="nbaCard" style="display:none;">
+      <div class="card-head"><span>🏀 <strong id="nbaCardTitle">NBA Today</strong></span><span class="muted" id="nbaCardMeta">--</span></div>
+      <div style="padding: 14px 16px;" id="nbaCardBody"></div>
+    </div>
+    <div class="card" id="nhlCard" style="display:none;">
+      <div class="card-head"><span>🏒 <strong id="nhlCardTitle">NHL Today</strong></span><span class="muted" id="nhlCardMeta">--</span></div>
+      <div style="padding: 14px 16px;" id="nhlCardBody"></div>
+    </div>
+  </section>
+
   <!-- TODAY'S TOP PLAYS (LIVE FROM data/top_plays.json) -->
   <section class="card" style="margin-bottom: 28px;">
     <div class="card-head"><span>Today's Top Plays - All Markets</span><span class="muted">DraftKings + PrizePicks + parlays, ranked by quality score</span></div>
@@ -429,6 +441,37 @@ Promise.all([
     document.getElementById("golfTourneyPotMeta").textContent = "—";
   }
 }).catch(()=>{});
+
+// NBA + NHL scoreboard cards
+const renderSport = (data, cardId, titleId, metaId, bodyId, anchor, emoji) => {
+  const card = document.getElementById(cardId);
+  if (!card) return;
+  const games = (data && data.games) || [];
+  if (!games.length) return;
+  card.style.display = 'block';
+  document.getElementById(titleId).textContent = `${emoji} ${games.length} game${games.length===1?'':'s'} today`;
+  document.getElementById(metaId).textContent = data.season_status || '';
+  const top3 = games.slice(0, 3);
+  const fmtAmer = (a) => a == null ? "—" : (a >= 0 ? "+" + a : String(a));
+  document.getElementById(bodyId).innerHTML = top3.map(g => {
+    const scoreText = g.state === 'pre' ? '' : `<span style="font-weight:700;">${g.away_score ?? '?'}-${g.home_score ?? '?'}</span> · `;
+    const stateBadge = g.state === 'in' ? '<span style="color:#d4a04a; font-weight:700;">LIVE</span>'
+                     : g.state === 'post' ? '<span class="muted">FINAL</span>'
+                     : `<span class="muted">${g.status || 'Scheduled'}</span>`;
+    return `<div style="padding:8px 0; border-bottom:1px dashed rgba(255,255,255,0.06); display:flex; justify-content:space-between; font-size:12px;">
+      <span><strong>${g.away_team}</strong> @ <strong>${g.home_team}</strong> <span class="muted" style="font-size:10px;">${g.away_record} / ${g.home_record}</span></span>
+      <span>${scoreText}${fmtAmer(g.fair_home_american)}/${fmtAmer(g.fair_away_american)} · ${stateBadge}</span>
+    </div>`;
+  }).join("") + `<a href="${anchor}" class="link-arrow" style="margin-top:6px; display:inline-block;">Full board →</a>`;
+};
+fetch("data/nba_state.json?t=" + Date.now(), { cache: "no-cache" })
+  .then(r => r.json())
+  .then(d => renderSport(d, 'nbaCard', 'nbaCardTitle', 'nbaCardMeta', 'nbaCardBody', 'nba.html', 'NBA'))
+  .catch(()=>{});
+fetch("data/nhl_state.json?t=" + Date.now(), { cache: "no-cache" })
+  .then(r => r.json())
+  .then(d => renderSport(d, 'nhlCard', 'nhlCardTitle', 'nhlCardMeta', 'nhlCardBody', 'nhl.html', 'NHL'))
+  .catch(()=>{});
 
 // Live data overrides for the hero, Play of Day, and key metrics.
 // Pulls from data/today.json + data/track_record.json (no mocks).

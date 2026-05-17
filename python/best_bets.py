@@ -354,6 +354,44 @@ def run() -> Dict[str, Any]:
                 "risks": ["NBA ML model uses season win-pct only; v1 baseline"],
             })
 
+    # NHL games (cross-sport injection): same sweet-spot logic as NBA
+    nhl = _load(os.path.join(DATA_DIR, "nhl_state.json"))
+    for g in (nhl.get("games") or [])[:8]:
+        if g.get("state") == "post":
+            continue
+        ph = g.get("p_home_win") or 0
+        if 0.55 <= ph <= 0.70:
+            candidates.append({
+                "source": "NHL",
+                "label": f"NHL {g.get('home_team')} ML ({g.get('home_record','?')}) vs {g.get('away_team')}",
+                "team": g.get("home_team"), "player": None, "player_id": None,
+                "market": "nhl_ml", "line": g.get("fair_home_american"),
+                "play": "HOME",
+                "model_prob": ph,
+                "edge_pct": None,
+                "url_anchor": "nhl.html",
+                "quality_score": 68,
+                "stars": 3,
+                "factors": [f"ELO {g.get('home_elo')} vs {g.get('away_elo')}; HFA included"],
+                "risks": ["NHL ML model v1 baseline (no goalie matchup yet)"],
+            })
+        elif 0.30 <= ph <= 0.45:
+            pa = 1 - ph
+            candidates.append({
+                "source": "NHL",
+                "label": f"NHL {g.get('away_team')} ML ({g.get('away_record','?')}) at {g.get('home_team')}",
+                "team": g.get("away_team"), "player": None, "player_id": None,
+                "market": "nhl_ml", "line": g.get("fair_away_american"),
+                "play": "AWAY",
+                "model_prob": pa,
+                "edge_pct": None,
+                "url_anchor": "nhl.html",
+                "quality_score": 66,
+                "stars": 3,
+                "factors": [f"Road team ELO {g.get('away_elo')} vs {g.get('home_elo')}"],
+                "risks": ["NHL ML model v1 baseline"],
+            })
+
     # Top golf parlay (cross-sport injection)
     gp = _load(os.path.join(DATA_DIR, "golf_parlays.json"))
     if (gp.get("parlays") or []):
@@ -414,7 +452,7 @@ def run() -> Dict[str, Any]:
         "n_bets": len(top),
         "total_candidates": len(candidates),
         "by_source": {s: sum(1 for c in top if c.get("source") == s)
-                       for s in ("DK", "PP", "NRFI", "SGP", "GOLF", "NBA")},
+                       for s in ("DK", "PP", "NRFI", "SGP", "GOLF", "NBA", "NHL")},
         "bets": top,
     }
     os.makedirs(DATA_DIR, exist_ok=True)

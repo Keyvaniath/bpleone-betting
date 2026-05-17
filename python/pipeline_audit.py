@@ -111,8 +111,9 @@ ARTIFACTS: List[Dict[str, Any]] = [
     {"name": "golf_parlays.json",         "cadence_mins":  8*60},
     # Play-of-Day rolling history (snapshot + settle each cron)
     {"name": "pod_history.json",          "cadence_mins":  8*60},
-    # NBA scoreboard (real, ESPN-driven, runs every 8h on daily + every 10min on live)
+    # NBA + NHL scoreboards (real, ESPN-driven, runs every 8h daily + every 10min live)
     {"name": "nba_state.json",            "cadence_mins":  8*60},
+    {"name": "nhl_state.json",            "cadence_mins":  8*60},
     # Optional / stubs
     {"name": "nfl_state.json",            "cadence_mins": 24*60, "optional": True},
     # Loop tracking (from PR #38/#39 -- present only after those merge)

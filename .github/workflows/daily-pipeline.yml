@@ -331,6 +331,10 @@ jobs:
       - name: NBA live scoreboard + win probabilities
         working-directory: python
         run: python nba_pipeline.py
+      # NHL live scoreboard (free ESPN API)
+      - name: NHL live scoreboard + win probabilities
+        working-directory: python
+        run: python nhl_pipeline.py
       - name: NFL stub artifact
         if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
         working-directory: python
