@@ -1,14 +1,14 @@
 # Tonight's Slate Brief — 2026-05-17
 
-## Slate Quality: 54/100 (LOW)
-_0% lineups confirmed · 9 rookie SPs_
+## Slate Quality: 52/100 (LOW)
+_0% lineups confirmed · 1 extreme-weather games · 9 rookie SPs_
 **Recommendation:** Defensive sizing tonight; stick to highest-confidence plays.
 
 ## Slate
 - **15 games** scheduled
-- **41 best bets** scored: 0 DK · 0 PP · 13 NRFI · 6 SGP
+- **50 best bets** scored: 0 DK · 0 PP · 13 NRFI · 6 SGP
 - **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$45.99
-- **MC simulation:** EV +$172.18, 89% P(profit), p05 $-75.3 / p95 $401.95
+- **MC simulation:** EV +$171.0, 91% P(profit), p05 $-76.2 / p95 $401.05
 
 ## Top 5 Best Bets
 1. **ARI @ COL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +33.5%)
@@ -35,11 +35,11 @@ _0% lineups confirmed · 9 rookie SPs_
    - Edge +25.0% looks big but only 0 settled props on this player — model unproven
 
 ## Weather leans
-- **OVER lean** (wind out + warm): MIL @ MIN
+- **OVER lean** (wind out + warm): KCR @ STL, MIL @ MIN
 
 ## Hot streaks
-**Batters heating up:** Kyle Schwarber (heat +8.43), Daylen Lile (heat +6.11), Drake Baldwin (heat +5.91)
-**Pitchers on a run:** George Kirby (heat +5.86), Grant Holmes (heat +3.77), Brayan Bello (heat +2.94)
+**Batters heating up:** Eric Haase (heat +8.52), Kyle Schwarber (heat +8.43), Daylen Lile (heat +6.11)
+**Pitchers on a run:** George Kirby (heat +5.86), Michael Lorenzen (heat +4.13), Grant Holmes (heat +3.77)
 
 ## Top correlation-aware SGPs
 - **CHC @ CHW** 2-leg @ -183 fair (joint 0.65, EV +25.0%)
@@ -96,7 +96,7 @@ _Lean late-inning OVER on these games; fade their save situations._
 - The MongolZ vs Astralis BO3 | P(A) 52.2% fair -109/+109
 - **CS POD:** Spirit ML vs Falcons (BO3) (HIGH)
 
-## Player Play of the Day -- across all sports (3543 candidates scanned)
+## Player Play of the Day -- across all sports (3541 candidates scanned)
 - **[LOL]** Inspired UNDER 3.5 Kills | model 61.7% fair -161 (ELITE)
 - **[LOL]** ShowMaker OVER 3.5 Kills | model 62.5% fair -167 (ELITE)
 - **[LOL]** Peyz OVER 4.5 Kills | model 61.3% fair -158 (ELITE)
