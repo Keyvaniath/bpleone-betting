@@ -2,38 +2,31 @@
 
 **Model Confidence: 73.7/100 [GREEN-LIGHT]** -- Model is healthy. Use capped Kelly (<=0.5u) until residual variance tightens further.
 
-_Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
+_Pipeline health: **DEGRADED** (14/15 artifacts ok; 1 empty, 0 stale)._ 
 
-_Generated at 2026-05-17T13:38:26 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-05-17T17:57:53 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
-**CHC @ CHW - OVER_8.5**
+**CHC @ CHW - OVER_9.0**
 - Market: -110
-- Model probability: 93.9%
-- Raw edge: +79.22%
+- Model probability: 92.3%
+- Raw edge: +76.15%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
 
-## Full Slate (15 games)
+## Full Slate (8 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 12:15p ET | MIA @ TBR | Tropicana Field | indoor | OVER_7.0 +9.81% |
-| 1:35p ET | BAL @ WSN | Nationals Park | 90F 6mph | OVER_10.0 +47.59% |
-| 1:35p ET | PHI @ PIT | PNC Park | 88F 10mph | PIT_ML +13.39% |
-| 1:35p ET | BOS @ ATL | Truist Park | 89F 11mph | OVER_8.5 +57.02% |
-| 1:40p ET | CIN @ CLE | Progressive Field | 86F 9mph | OVER_8.5 +31.25% |
-| 1:40p ET | TOR @ DET | Comerica Park | 87F 10mph | OVER_7.5 +16.58% |
-| 1:40p ET | NYY @ NYM | Citi Field | 80F 14mph | NYY_ML +53.54% |
-| 2:10p ET | TEX @ HOU | Daikin Park | indoor | HOU_ML +47.32% |
-| 2:10p ET | CHC @ CHW | Rate Field | 88F 16mph | OVER_8.5 +79.22% |
-| 2:10p ET | MIL @ MIN | Target Field | 60F 12mph | MIN_ML +4.12% |
-| 2:15p ET | KCR @ STL | Busch Stadium | 88F 17mph | OVER_9.0 +55.14% |
-| 3:10p ET | ARI @ COL | Coors Field | 55F 15mph | ARI_ML +2.86% |
-| 4:05p ET | SFG @ OAK | Sutter Health Park | 78F 20mph | OAK_ML +35.82% |
-| 4:07p ET | LAD @ LAA | Angel Stadium | 70F 0mph | OVER_9.5 +25.32% |
+| 2:10p ET | TEX @ HOU | Daikin Park | indoor | HOU_ML +52.49% |
+| 2:10p ET | CHC @ CHW | Rate Field | 88F 18mph | OVER_9.0 +76.15% |
+| 2:10p ET | MIL @ MIN | Target Field | 64F 13mph | MIN_ML +10.27% |
+| 2:15p ET | KCR @ STL | Busch Stadium | 87F 16mph | OVER_9.0 +53.36% |
+| 3:10p ET | ARI @ COL | Coors Field | 62F 8mph | ARI_ML +4.57% |
+| 4:05p ET | SFG @ OAK | Sutter Health Park | 77F 22mph | OAK_ML +36.86% |
+| 4:07p ET | LAD @ LAA | Angel Stadium | 69F 10mph | OVER_9.5 +41.36% |
 | 7:20p ET | SDP @ SEA | T-Mobile Park | indoor | UNDER_7.5 +34.52% |
 
 ## Parlays - top 5
@@ -78,21 +71,14 @@ Cumulative graded plays: 118201. Wins: 87361. Hit rate: 73.9%.
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| ARI @ COL | 20.5% | +387 | 7.25 | +270 | -270 |
-| BAL @ WSN | 32.1% | +212 | 5.83 | +114 | -114 |
-| BOS @ ATL | 32.5% | +207 | 5.74 | -400 | +400 |
-| CHC @ CHW | 35.4% | +182 | 5.72 | +405 | -405 |
-| CIN @ CLE | 28.4% | +253 | 6.68 | -141 | +141 |
-| KCR @ STL | 28.3% | +253 | 6.67 | -142 | +142 |
-| LAD @ LAA | 33.6% | +198 | 5.46 | +396 | -396 |
-| MIA @ TBR | 38.8% | +158 | 4.73 | -102 | +102 |
-| MIL @ MIN | 45.4% | +120 | 3.73 | +170 | -170 |
-| NYY @ NYM | 45.0% | +122 | 4.27 | +707 | -707 |
-| PHI @ PIT | 65.6% | -191 | 2.24 | -104 | +104 |
+| ARI @ COL | 20.5% | +387 | 7.55 | +270 | -270 |
+| CHC @ CHW | 35.4% | +182 | 5.79 | +407 | -407 |
+| KCR @ STL | 28.3% | +253 | 6.63 | -141 | +141 |
+| LAD @ LAA | 33.6% | +198 | 5.79 | +403 | -403 |
+| MIL @ MIN | 45.4% | +120 | 3.69 | +168 | -168 |
 | SDP @ SEA | 49.9% | +101 | 3.48 | -130 | +130 |
-| SFG @ OAK | 33.4% | +200 | 5.24 | -264 | +264 |
+| SFG @ OAK | 33.4% | +200 | 5.07 | -263 | +263 |
 | TEX @ HOU | 50.7% | -103 | 3.4 | -162 | +162 |
-| TOR @ DET | 26.5% | +277 | 6.26 | +177 | -177 |
 
 ## Team Form (last 10)
 

@@ -1,9 +1,9 @@
 # EdgeStat Daily Summary — 2026-05-17
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.586)
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.584)
 - **Total games on board:** 112
-- **Strong home favorites:** 7 | **Strong road dogs:** 1
+- **Strong home favorites:** 6 | **Strong road dogs:** 1
 
 ## 🎯 Top 5 Best Bets
 1. **ARI @ COL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
@@ -19,8 +19,7 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (6)
-- [EPL] **Manchester United** HOME (2-1 L10) · model 67.1% fair -204
+## ⚡ Pre-Game HIGH Conviction (5)
 - [EPL] **Newcastle United** HOME (1-1 L10) · model 67.0% fair -204
 - [NBA] **Detroit Pistons** HOME (4-3 L10) · model 65.8% fair -192
 - [EPL] **Brentford** HOME (1-2 L10) · model 65.8% fair -192
@@ -31,8 +30,8 @@
 - Hot teams: **24** | Cold teams: **37** | Over-heavy: 0 | Under-heavy: 22
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (8)
-- RESIDUAL_DIVERGENCE: **8**
+## ⚠️ Anomaly Detector (7)
+- RESIDUAL_DIVERGENCE: **7**
   - Indiana Fever (WNBA): Indiana Fever OUTPERFORMING expected margin by 9.6pts in recent games -- model bias may persist
   - Seattle Storm (WNBA): Seattle Storm UNDERPERFORMING expected margin by 9.0pts in recent games -- model bias may persist
   - Los Angeles Sparks (WNBA): Los Angeles Sparks UNDERPERFORMING expected margin by 11.8pts in recent games -- model bias may persist
