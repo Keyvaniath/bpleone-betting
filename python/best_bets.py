@@ -354,6 +354,40 @@ def run() -> Dict[str, Any]:
                 "risks": ["NBA ML model uses season win-pct only; v1 baseline"],
             })
 
+    # === KBO + LoL + CS multi-sport cross-injection ===
+    def _inject_esport_pot(source: str, file: str, url: str):
+        bb = _load(os.path.join(DATA_DIR, file))
+        pot = bb.get("top_bet")
+        if not pot:
+            return
+        bet_list = [pot] + (bb.get("runners_up") or [])[:2]
+        for c in bet_list:
+            conf = c.get("confidence", "MED")
+            q = 76 if conf == "HIGH" else 66 if conf == "MED" else 56
+            stars = 5 if conf == "HIGH" else 4 if conf == "MED" else 3
+            opp_str = f" vs {c.get('opponent')}" if c.get("opponent") else ""
+            candidates.append({
+                "source": source,
+                "label": f"{source} {c.get('team')}{opp_str} {c.get('kind','ML')} @ {c.get('fair_american','?')}",
+                "team": c.get("team"), "player": None, "player_id": None,
+                "market": f"{source.lower()}_{(c.get('kind') or 'ml').lower()}",
+                "line": c.get("fair_american"),
+                "play": c.get("kind", "ML"),
+                "model_prob": c.get("prob"),
+                "edge_pct": None,
+                "url_anchor": url,
+                "quality_score": q,
+                "stars": stars,
+                "factors": [
+                    f"Model {(c.get('prob') or 0)*100:.1f}% (fair {c.get('fair_american','?')})",
+                    c.get("league") or c.get("tournament") or "",
+                ],
+                "risks": [f"{source} v1 model; track record building"],
+            })
+    _inject_esport_pot("KBO", "kbo_bestbet.json", "kbo.html")
+    _inject_esport_pot("LOL", "lol_bestbet.json", "lol.html")
+    _inject_esport_pot("CS",  "cs_bestbet.json",  "cs.html")
+
     # NHL games (cross-sport injection): same sweet-spot logic as NBA
     nhl = _load(os.path.join(DATA_DIR, "nhl_state.json"))
     for g in (nhl.get("games") or [])[:8]:
@@ -452,7 +486,7 @@ def run() -> Dict[str, Any]:
         "n_bets": len(top),
         "total_candidates": len(candidates),
         "by_source": {s: sum(1 for c in top if c.get("source") == s)
-                       for s in ("DK", "PP", "NRFI", "SGP", "GOLF", "NBA", "NHL")},
+                       for s in ("DK", "PP", "NRFI", "SGP", "GOLF", "NBA", "NHL", "KBO", "LOL", "CS")},
         "bets": top,
     }
     os.makedirs(DATA_DIR, exist_ok=True)

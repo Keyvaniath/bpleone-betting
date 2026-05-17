@@ -114,6 +114,26 @@ ARTIFACTS: List[Dict[str, Any]] = [
     # NBA + NHL scoreboards (real, ESPN-driven, runs every 8h daily + every 10min live)
     {"name": "nba_state.json",            "cadence_mins":  8*60},
     {"name": "nhl_state.json",            "cadence_mins":  8*60},
+    # KBO (Korean Baseball) full stack
+    {"name": "kbo_state.json",            "cadence_mins":  8*60},
+    {"name": "kbo_props.json",            "cadence_mins":  8*60},
+    {"name": "kbo_elo.json",              "cadence_mins":  8*60},
+    {"name": "kbo_bestbet.json",          "cadence_mins":  8*60},
+    {"name": "kbo_pot_history.json",      "cadence_mins":  8*60},
+    # League of Legends esports full stack
+    {"name": "lol_state.json",            "cadence_mins":  8*60},
+    {"name": "lol_props.json",            "cadence_mins":  8*60},
+    {"name": "lol_elo.json",              "cadence_mins":  8*60},
+    {"name": "lol_bestbet.json",          "cadence_mins":  8*60},
+    {"name": "lol_pot_history.json",      "cadence_mins":  8*60},
+    # Counter-Strike (CS2) full stack
+    {"name": "cs_state.json",             "cadence_mins":  8*60},
+    {"name": "cs_props.json",             "cadence_mins":  8*60},
+    {"name": "cs_elo.json",               "cadence_mins":  8*60},
+    {"name": "cs_bestbet.json",           "cadence_mins":  8*60},
+    {"name": "cs_pot_history.json",       "cadence_mins":  8*60},
+    # Self-learning calibration across LoL + CS + KBO
+    {"name": "esports_calibration.json",  "cadence_mins":  8*60},
     # Optional / stubs
     {"name": "nfl_state.json",            "cadence_mins": 24*60, "optional": True},
     # Loop tracking (from PR #38/#39 -- present only after those merge)

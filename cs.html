@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Counter-Strike Desk | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .cs-row { display:grid; grid-template-columns: 1.6fr 80px 90px 90px 80px 80px 70px; gap:12px; padding:12px 14px; border-bottom:1px solid rgba(255,255,255,0.04); font-family:'JetBrains Mono',monospace; font-size:12px; align-items:center; }
+  .cs-row.head { background:rgba(255,255,255,0.04); color:var(--muted,#888); font-size:10px; text-transform:uppercase; }
+  .cs-row.live { background:rgba(212,160,74,0.06); border-left:2px solid #d4a04a; }
+  .rank-pill { display:inline-block; padding:2px 8px; border-radius:4px; font-size:10px; font-weight:700; background:rgba(255,165,30,0.18); color:#ffa51e; }
+  .team-row { display:grid; grid-template-columns: 30px 1.6fr 80px; gap:8px; padding:6px 14px; font-family:'JetBrains Mono',monospace; font-size:12px; border-bottom:1px dashed rgba(255,255,255,0.05); }
+</style>
+</head>
+<body class="page-cs">
+<header class="topbar">
+  <div class="brand">
+    <a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a>
+    <span class="tagline">by bpleone</span>
+  </div>
+  <nav class="mainnav">
+    <a href="index.html">Dashboard</a>
+    <a href="live-now.html">Live Now</a>
+    <a href="lol.html">LoL</a>
+    <a href="cs.html" class="active">CS</a>
+    <a href="kbo.html">KBO</a>
+    <a href="mlb.html">MLB</a>
+    <a href="golf.html">Golf</a>
+    <a href="nba.html">NBA</a>
+    <a href="nhl.html">NHL</a>
+    <a href="best-bets.html">Best Bets</a>
+  </nav>
+  <div class="topbar-actions"><div class="ticker">LIVE</div></div>
+</header>
+
+<main class="container">
+
+  <section class="page-head">
+    <h1 id="csTitle">Counter-Strike Desk — Loading…</h1>
+    <p id="csStatus" class="muted">Pulling Liquipedia match schedule + HLTV ranking…</p>
+  </section>
+
+  <section class="metric-strip">
+    <div class="metric"><span class="metric-num" id="m_matches">--</span><span class="metric-label">Matches</span></div>
+    <div class="metric"><span class="metric-num" id="m_top30">--</span><span class="metric-label">Top-30 Teams</span></div>
+    <div class="metric"><span class="metric-num" id="m_rated">--</span><span class="metric-label">Teams Rated</span></div>
+    <div class="metric"><span class="metric-num" id="m_source">--</span><span class="metric-label">Data Source</span></div>
+  </section>
+
+  <!-- POD card -->
+  <section class="card" style="margin-bottom: 24px; border-left: 3px solid #ffa51e;">
+    <div class="card-head"><span>🎯 Play of the Day</span><span class="muted" id="potMeta">--</span></div>
+    <div id="potBox" style="padding: 16px;"><p class="muted">Loading top play…</p></div>
+  </section>
+
+  <section class="card" style="margin-bottom: 24px;">
+    <div class="card-head"><span>🔫 CS Match Board</span><span class="muted" id="csMeta">--</span></div>
+    <p class="muted" style="font-size: 11px; padding: 8px 16px 0;">HLTV-style ELO (1000-1800 scale) per team. Series win-prob from binomial best-of-N. Self-learning ELO updates as match scores arrive.</p>
+    <div class="cs-row head">
+      <span>Matchup</span><span>BO</span><span>P(A win)</span><span>A ELO / B ELO</span><span>A Fair</span><span>B Fair</span><span>Status</span>
+    </div>
+    <div id="csList"><p class="muted" style="padding:14px;">Loading…</p></div>
+  </section>
+
+  <section class="card" style="margin-bottom: 24px;">
+    <div class="card-head"><span>🏆 HLTV Top 30 (current ELO)</span></div>
+    <div id="topTeamsList"></div>
+  </section>
+
+  <section class="card">
+    <div class="card-head"><span>📋 Model</span></div>
+    <ul style="padding:14px 28px; color: var(--text-2,#aaa); line-height: 1.8;">
+      <li>HLTV-style 1000-1800 ELO scale (Vitality 1740, MOUZ 1720 baseline)</li>
+      <li>K-factor 20, log-scaled by map margin</li>
+      <li>Series win prob via binomial best-of-N</li>
+      <li>Liquipedia upcoming matches fed as primary source; top-30 cross-pairs as fallback</li>
+      <li>Self-learning: each completed match updates ELO → next prediction</li>
+    </ul>
+  </section>
+
+</main>
+
+<script src="js/nav_badge.js"></script>
+<script src="js/bet_tracker.js"></script>
+<script>
+const fmtAmer = (a) => a == null ? "—" : (a >= 0 ? "+" + a : String(a));
+Promise.all([
+  fetch("data/cs_state.json?t=" + Date.now(), { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
+  fetch("data/cs_props.json?t=" + Date.now(), { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
+  fetch("data/cs_bestbet.json?t=" + Date.now(), { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
+]).then(([state, props, bestbet]) => {
+  const setText = (id, v) => { const e = document.getElementById(id); if (e) e.textContent = v; };
+  setText("csTitle", "Counter-Strike 2 — Live Esports Board");
+  setText("csStatus", `${state.n_matches || 0} matches · source: ${state.data_source || '?'} · refresh: ${(state.generated_at || '').replace('T',' ')}`);
+  setText("m_matches", state.n_matches || 0);
+  setText("m_top30", state.n_top_teams || 0);
+  setText("m_rated", props.n_teams_rated || 0);
+  setText("m_source", (state.data_source || '?').slice(0,12));
+
+  // POT
+  const pot = bestbet.top_bet;
+  if (pot) {
+    document.getElementById("potBox").innerHTML = `
+      <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+        <div>
+          <div style="font-size:11px; color:#ffa51e; text-transform:uppercase; letter-spacing:1px; margin-bottom:6px;">${pot.confidence} CONVICTION · ML</div>
+          <div style="font-size:22px; font-weight:700; margin-bottom:4px;">${pot.team} <span class="muted" style="font-size:14px;">vs ${pot.opponent}</span></div>
+          <div class="muted" style="font-size:12px;">BO${pot.best_of} · model ${(pot.prob * 100).toFixed(1)}%</div>
+        </div>
+        <div style="text-align:right;">
+          <div style="font-size:28px; font-weight:700; color:#ffa51e; font-family:'JetBrains Mono',monospace;">${fmtAmer(pot.fair_american)}</div>
+          <div class="muted" style="font-size:11px;">fair</div>
+          <button class="track-btn" data-bet-key="${pot.bet_key || ''}" data-bet-label="${(pot.label || '').replace(/"/g,'&quot;')}" data-bet-play="ML" data-bet-src="CS" style="margin-top:10px; padding:6px 14px; background:#ffa51e; color:#0a0a0a; border:none; border-radius:4px; cursor:pointer; font-size:11px; font-weight:700;">TRACK</button>
+        </div>
+      </div>`;
+    document.getElementById("potMeta").textContent = `${bestbet.n_candidates || 0} candidates`;
+  } else {
+    document.getElementById("potBox").innerHTML = `<p class="muted">${bestbet.note || 'No qualifying play.'}</p>`;
+  }
+
+  // Matches
+  const matches = props.predictions || [];
+  document.getElementById("csList").innerHTML = matches.length ? matches.map(m => {
+    const cls = m.is_in_progress ? 'live' : '';
+    const betKey = `CS|${m.team_a}|ML|${m.fair_a_american}`;
+    return `<div class="cs-row ${cls}"
+                 data-bet-key="${betKey}"
+                 data-bet-label="${m.team_a} ML vs ${m.team_b}"
+                 data-bet-play="ML"
+                 data-bet-src="CS">
+      <span><strong>${m.team_a}</strong> vs <strong>${m.team_b}</strong></span>
+      <span class="muted">BO${m.best_of}</span>
+      <span style="color:${m.p_series_a >= 0.6 ? '#58c878' : m.p_series_a <= 0.4 ? '#e35a5a' : 'var(--text-2,#aaa)'}; font-weight:700;">${(m.p_series_a * 100).toFixed(1)}%</span>
+      <span class="muted">${m.elo_a} / ${m.elo_b}</span>
+      <span>${fmtAmer(m.fair_a_american)}</span>
+      <span>${fmtAmer(m.fair_b_american)}</span>
+      <span class="muted">${m.is_in_progress ? 'LIVE' : 'Upcoming'}</span>
+    </div>`;
+  }).join("") : `<p class="muted" style="padding:14px;">No matches available.</p>`;
+
+  // Top 30 list
+  document.getElementById("topTeamsList").innerHTML = (state.top_teams || []).map((t, i) => `
+    <div class="team-row">
+      <span class="rank-pill">#${i+1}</span>
+      <span><strong>${t.name}</strong></span>
+      <span style="text-align:right; font-weight:700;">${t.rating}</span>
+    </div>
+  `).join("");
+});
+setInterval(() => location.reload(), 5 * 60 * 1000);
+</script>
+
+</body>
+</html>

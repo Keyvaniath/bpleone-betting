@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KBO Desk | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .kbo-row { display:grid; grid-template-columns: 1.6fr 80px 80px 80px 80px 70px 80px; gap:12px; padding:12px 14px; border-bottom:1px solid rgba(255,255,255,0.04); font-family:'JetBrains Mono',monospace; font-size:12px; align-items:center; }
+  .kbo-row.head { background:rgba(255,255,255,0.04); color:var(--muted,#888); font-size:10px; text-transform:uppercase; }
+  .kbo-row.live { background:rgba(212,160,74,0.06); border-left:2px solid #d4a04a; }
+  .standings-row { display:grid; grid-template-columns: 40px 1.4fr 80px 100px; gap:8px; padding:6px 14px; font-family:'JetBrains Mono',monospace; font-size:12px; border-bottom:1px dashed rgba(255,255,255,0.05); }
+  .kr-flag { color:#cf3939; font-weight:700; }
+</style>
+</head>
+<body class="page-kbo">
+<header class="topbar">
+  <div class="brand">
+    <a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a>
+    <span class="tagline">by bpleone</span>
+  </div>
+  <nav class="mainnav">
+    <a href="index.html">Dashboard</a>
+    <a href="live-now.html">Live Now</a>
+    <a href="lol.html">LoL</a>
+    <a href="cs.html">CS</a>
+    <a href="kbo.html" class="active">KBO</a>
+    <a href="mlb.html">MLB</a>
+    <a href="golf.html">Golf</a>
+    <a href="nba.html">NBA</a>
+    <a href="nhl.html">NHL</a>
+    <a href="best-bets.html">Best Bets</a>
+  </nav>
+  <div class="topbar-actions"><div class="ticker">LIVE</div></div>
+</header>
+
+<main class="container">
+
+  <section class="page-head">
+    <h1 id="kboTitle">KBO Desk — Loading…</h1>
+    <p id="kboStatus" class="muted">Pulling Korean Baseball schedule…</p>
+  </section>
+
+  <section class="metric-strip">
+    <div class="metric"><span class="metric-num" id="m_games">--</span><span class="metric-label">Games Today</span></div>
+    <div class="metric"><span class="metric-num" id="m_teams">--</span><span class="metric-label">Teams</span></div>
+    <div class="metric"><span class="metric-num" id="m_sims">50k</span><span class="metric-label">MC Sims/Game</span></div>
+    <div class="metric"><span class="metric-num" id="m_source">--</span><span class="metric-label">Data Source</span></div>
+  </section>
+
+  <section class="card" style="margin-bottom: 24px; border-left: 3px solid #cf3939;">
+    <div class="card-head"><span><span class="kr-flag">🇰🇷</span> Play of the Day</span><span class="muted" id="potMeta">--</span></div>
+    <div id="potBox" style="padding: 16px;"><p class="muted">Loading top KBO bet…</p></div>
+  </section>
+
+  <section class="card" style="margin-bottom: 24px;">
+    <div class="card-head"><span>⚾ Today's KBO Board</span><span class="muted" id="kboMeta">--</span></div>
+    <p class="muted" style="font-size: 11px; padding: 8px 16px 0;">Poisson runs model (50K Monte Carlo per game). Win prob includes home-field +0.2 runs. Self-learning ELO updates with each settled game.</p>
+    <div class="kbo-row head">
+      <span>Matchup</span><span>Total</span><span>Exp H/A</span><span>P(home)</span><span>Home Fair</span><span>Away Fair</span><span>Status</span>
+    </div>
+    <div id="kboList"><p class="muted" style="padding:14px;">Loading…</p></div>
+  </section>
+
+  <section class="card" style="margin-bottom: 24px;">
+    <div class="card-head"><span>🏆 KBO 10 Teams (current ELO)</span></div>
+    <div id="standingsList"></div>
+  </section>
+
+  <section class="card">
+    <div class="card-head"><span>📋 Model</span></div>
+    <ul style="padding:14px 28px; color: var(--text-2,#aaa); line-height: 1.8;">
+      <li>10-team Korean Baseball League: KIA/LG/Samsung/Doosan/SSG/KT/NC/Lotte/Hanwha/Kiwoom</li>
+      <li>KBO scoring environment: 4.7 R/G/team (slightly lower than MLB)</li>
+      <li>Knuth Poisson sampler, 50,000 sims per game</li>
+      <li>Home-field +0.20 runs (smaller than MLB; KBO HFA is real but modest)</li>
+      <li>ELO baseline rotates by team tier; updates per settled game (K=20)</li>
+      <li>Self-learning: every settled game updates team ELO → next prediction</li>
+    </ul>
+  </section>
+
+</main>
+
+<script src="js/nav_badge.js"></script>
+<script src="js/bet_tracker.js"></script>
+<script>
+const fmtAmer = (a) => a == null ? "—" : (a >= 0 ? "+" + a : String(a));
+Promise.all([
+  fetch("data/kbo_state.json?t=" + Date.now(), { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
+  fetch("data/kbo_props.json?t=" + Date.now(), { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
+  fetch("data/kbo_bestbet.json?t=" + Date.now(), { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
+  fetch("data/kbo_elo.json?t=" + Date.now(), { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
+]).then(([state, props, bestbet, elo]) => {
+  const setText = (id, v) => { const e = document.getElementById(id); if (e) e.textContent = v; };
+  setText("kboTitle", `KBO — ${state.season} Korean Baseball`);
+  setText("kboStatus", `${state.n_games_today || 0} games today · source: ${state.data_source || '?'} · refresh: ${(state.generated_at || '').replace('T',' ')}`);
+  setText("m_games", state.n_games_today || 0);
+  setText("m_teams", state.n_teams || 10);
+  setText("m_source", (state.data_source || '?').slice(0,12));
+
+  // POT
+  const pot = bestbet.top_bet;
+  if (pot) {
+    document.getElementById("potBox").innerHTML = `
+      <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+        <div>
+          <div style="font-size:11px; color:#cf3939; text-transform:uppercase; letter-spacing:1px; margin-bottom:6px;">${pot.confidence} · ${pot.kind}</div>
+          <div style="font-size:22px; font-weight:700; margin-bottom:4px;">${pot.label}</div>
+          <div class="muted" style="font-size:12px;">model ${(pot.prob * 100).toFixed(1)}%</div>
+        </div>
+        <div style="text-align:right;">
+          <div style="font-size:28px; font-weight:700; color:#cf3939; font-family:'JetBrains Mono',monospace;">${fmtAmer(pot.fair_american)}</div>
+          <div class="muted" style="font-size:11px;">fair</div>
+          <button class="track-btn" data-bet-key="${pot.bet_key || ''}" data-bet-label="${(pot.label || '').replace(/"/g,'&quot;')}" data-bet-play="${pot.kind}" data-bet-src="KBO" style="margin-top:10px; padding:6px 14px; background:#cf3939; color:#fff; border:none; border-radius:4px; cursor:pointer; font-size:11px; font-weight:700;">TRACK</button>
+        </div>
+      </div>`;
+    document.getElementById("potMeta").textContent = `${bestbet.n_candidates || 0} candidates`;
+  } else {
+    document.getElementById("potBox").innerHTML = `<p class="muted">${bestbet.note || 'No qualifying play.'}</p>`;
+  }
+
+  // Game list
+  const games = props.predictions || [];
+  document.getElementById("kboList").innerHTML = games.length ? games.map(g => {
+    const betKey = `KBO|${g.home_team}|ML|${g.fair_home_american}`;
+    return `<div class="kbo-row"
+                 data-bet-key="${betKey}"
+                 data-bet-label="${g.home_team} ML vs ${g.away_team}"
+                 data-bet-play="ML"
+                 data-bet-src="KBO">
+      <span><strong>${g.away_team}</strong> @ <strong>${g.home_team}</strong></span>
+      <span class="muted">${g.model_total || '—'}</span>
+      <span class="muted">${g.expected_home_runs}/${g.expected_away_runs}</span>
+      <span style="color:${g.p_home_win >= 0.6 ? '#58c878' : g.p_home_win <= 0.4 ? '#e35a5a' : 'var(--text-2,#aaa)'}; font-weight:700;">${(g.p_home_win * 100).toFixed(1)}%</span>
+      <span>${fmtAmer(g.fair_home_american)}</span>
+      <span>${fmtAmer(g.fair_away_american)}</span>
+      <span class="muted">${g.status || 'Scheduled'}</span>
+    </div>`;
+  }).join("") : `<p class="muted" style="padding:14px;">No KBO games scheduled.</p>`;
+
+  // Standings (sort teams by current ELO)
+  const teams = elo.teams || {};
+  const sorted = Object.entries(teams).sort((a,b) => b[1] - a[1]);
+  document.getElementById("standingsList").innerHTML = sorted.map(([name, rating], i) => `
+    <div class="standings-row">
+      <span class="muted">#${i+1}</span>
+      <span><strong>${name}</strong></span>
+      <span style="text-align:right; font-weight:700;">${rating.toFixed(1)}</span>
+      <span class="muted" style="text-align:right;">ELO</span>
+    </div>
+  `).join("");
+});
+setInterval(() => location.reload(), 5 * 60 * 1000);
+</script>
+
+</body>
+</html>

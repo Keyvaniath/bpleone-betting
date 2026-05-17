@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LoL Esports Desk | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .lol-row { display:grid; grid-template-columns: 70px 1.4fr 70px 80px 90px 80px 80px 70px; gap:12px; padding:12px 14px; border-bottom:1px solid rgba(255,255,255,0.04); font-family:'JetBrains Mono',monospace; font-size:12px; align-items:center; }
+  .lol-row.head { background:rgba(255,255,255,0.04); color:var(--muted,#888); font-size:10px; text-transform:uppercase; }
+  .lol-row.live { background:rgba(212,160,74,0.06); border-left:2px solid #d4a04a; }
+  .lol-row.completed { opacity:0.65; }
+  .league-pill { display:inline-block; padding:2px 8px; border-radius:4px; font-size:10px; font-weight:700; background:rgba(80,150,220,0.15); color:#5096dc; }
+  .league-pill.tier1 { background:rgba(180,80,220,0.18); color:#b450dc; }
+  .pill.live { color:#d4a04a; font-weight:700; }
+  .pill.final { color:#aaa; }
+</style>
+</head>
+<body class="page-lol">
+<header class="topbar">
+  <div class="brand">
+    <a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a>
+    <span class="tagline">by bpleone</span>
+  </div>
+  <nav class="mainnav">
+    <a href="index.html">Dashboard</a>
+    <a href="live-now.html">Live Now</a>
+    <a href="lol.html" class="active">LoL</a>
+    <a href="cs.html">CS</a>
+    <a href="kbo.html">KBO</a>
+    <a href="mlb.html">MLB</a>
+    <a href="golf.html">Golf</a>
+    <a href="nba.html">NBA</a>
+    <a href="nhl.html">NHL</a>
+    <a href="best-bets.html">Best Bets</a>
+  </nav>
+  <div class="topbar-actions"><div class="ticker">LIVE</div></div>
+</header>
+
+<main class="container">
+
+  <section class="page-head">
+    <h1 id="lolTitle">League of Legends Esports — Loading…</h1>
+    <p id="lolStatus" class="muted">Pulling Riot lolesports API…</p>
+  </section>
+
+  <section class="metric-strip">
+    <div class="metric"><span class="metric-num" id="m_total">--</span><span class="metric-label">Major Matches</span></div>
+    <div class="metric"><span class="metric-num" id="m_live">--</span><span class="metric-label">Live</span></div>
+    <div class="metric"><span class="metric-num" id="m_upcoming">--</span><span class="metric-label">Upcoming</span></div>
+    <div class="metric"><span class="metric-num" id="m_teams">--</span><span class="metric-label">Teams Rated</span></div>
+    <div class="metric"><span class="metric-num" id="m_leagues">--</span><span class="metric-label">Leagues</span></div>
+  </section>
+
+  <!-- Play of the Day -->
+  <section class="card" style="margin-bottom: 24px; border-left: 3px solid #b450dc;">
+    <div class="card-head"><span>🎮 Play of the Day</span><span class="muted" id="potMeta">--</span></div>
+    <div id="potBox" style="padding: 16px;"><p class="muted">Loading top play…</p></div>
+  </section>
+
+  <section class="card" style="margin-bottom: 24px;">
+    <div class="card-head"><span>🏆 Live + Upcoming Matches</span><span class="muted" id="lolMeta">--</span></div>
+    <p class="muted" style="font-size: 11px; padding: 8px 16px 0;">P(series A) computed from per-map ELO win-prob via binomial best-of-N. Updates every cron; ELO self-learns from each completed match (K-factor 24, map-margin weighted).</p>
+    <div class="lol-row head">
+      <span>League</span><span>Matchup</span><span>BO</span><span>P(A win)</span><span>Series Score</span><span>A Fair</span><span>B Fair</span><span>Status</span>
+    </div>
+    <div id="lolList"><p class="muted" style="padding:14px;">Loading…</p></div>
+  </section>
+
+  <section class="card">
+    <div class="card-head"><span>📋 Model</span></div>
+    <ul style="padding:14px 28px; color: var(--text-2,#aaa); line-height: 1.8;">
+      <li>Per-region ELO baselines (LCK 1580 · LPL 1570 · LEC 1520 · LCS 1490 · regionals 1380-1450)</li>
+      <li>K-factor 24, log-scaled by map margin (2-0 sweep counts more than 2-1)</li>
+      <li>Series win prob via binomial: P(series) = sum_k C(target-1+k, k) * p^target * (1-p)^k</li>
+      <li>Sweep markets flagged when |elo_diff| ≥ 100 (-1.5 map handicap)</li>
+      <li>Self-learning: every completed match updates team ELO → next prediction</li>
+    </ul>
+  </section>
+
+</main>
+
+<script src="js/nav_badge.js"></script>
+<script src="js/bet_tracker.js"></script>
+<script>
+const fmtAmer = (a) => a == null ? "—" : (a >= 0 ? "+" + a : String(a));
+Promise.all([
+  fetch("data/lol_state.json?t=" + Date.now(), { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
+  fetch("data/lol_props.json?t=" + Date.now(), { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
+  fetch("data/lol_bestbet.json?t=" + Date.now(), { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
+]).then(([state, props, bestbet]) => {
+  const setText = (id, v) => { const e = document.getElementById(id); if (e) e.textContent = v; };
+  setText("lolTitle", "League of Legends — Live Esports Board");
+  setText("lolStatus", `${state.n_matches_total || 0} major matches · ${state.n_live || 0} live · refresh: ${(state.generated_at || '').replace('T',' ')}`);
+  setText("m_total", state.n_matches_total || 0);
+  setText("m_live", state.n_live || 0);
+  setText("m_upcoming", state.n_upcoming || 0);
+  setText("m_teams", props.n_teams_rated || 0);
+  setText("m_leagues", state.n_leagues || 0);
+
+  // POT card
+  const pot = bestbet.top_bet;
+  if (pot) {
+    document.getElementById("potBox").innerHTML = `
+      <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+        <div>
+          <div style="font-size:11px; color:#b450dc; text-transform:uppercase; letter-spacing:1px; margin-bottom:6px;">${pot.confidence} · ${pot.kind} · ${pot.league}</div>
+          <div style="font-size:22px; font-weight:700; margin-bottom:4px;">${pot.team} <span class="muted" style="font-size:14px;">vs ${pot.opponent}</span></div>
+          <div class="muted" style="font-size:12px;">BO${pot.best_of} · model ${(pot.prob * 100).toFixed(1)}%</div>
+        </div>
+        <div style="text-align:right;">
+          <div style="font-size:28px; font-weight:700; color:#b450dc; font-family:'JetBrains Mono',monospace;">${fmtAmer(pot.fair_american)}</div>
+          <div class="muted" style="font-size:11px;">fair</div>
+          <button class="track-btn" data-bet-key="${pot.bet_key || ''}" data-bet-label="${(pot.label || '').replace(/"/g,'&quot;')}" data-bet-play="${pot.kind}" data-bet-src="LOL" style="margin-top:10px; padding:6px 14px; background:#b450dc; color:#fff; border:none; border-radius:4px; cursor:pointer; font-size:11px; font-weight:700;">TRACK</button>
+        </div>
+      </div>`;
+    document.getElementById("potMeta").textContent = `${bestbet.n_candidates || 0} candidates`;
+  } else {
+    document.getElementById("potBox").innerHTML = `<p class="muted">${bestbet.note || 'No qualifying play.'}</p>`;
+  }
+
+  // Match list
+  const matches = props.predictions || [];
+  if (!matches.length) {
+    document.getElementById("lolList").innerHTML = `<p class="muted" style="padding:14px;">No upcoming matches.</p>`;
+    return;
+  }
+  const TIER1 = ['LCK','LPL','LEC','LCS','MSI','Worlds','First Stand'];
+  document.getElementById("lolList").innerHTML = matches.map(m => {
+    const cls = m.is_in_progress ? 'live' : '';
+    const tierCls = TIER1.includes(m.league) ? 'tier1' : '';
+    const scoreText = m.is_in_progress && (m.team_a_score != null || m.team_b_score != null) ?
+      `${m.team_a_score ?? 0}-${m.team_b_score ?? 0}` : '';
+    const status = m.is_in_progress ? `<span class="pill live">LIVE</span>` :
+                   m.is_completed ? `<span class="pill final">Final</span>` : 'Upcoming';
+    const time = m.start_time ? m.start_time.slice(11, 16) + ' UTC' : '';
+    const betKey = `LOL|${m.team_a}|ML|${m.fair_a_american}`;
+    return `<div class="lol-row ${cls}"
+                 data-bet-key="${betKey}"
+                 data-bet-label="${m.team_a} ML vs ${m.team_b}"
+                 data-bet-play="ML"
+                 data-bet-src="LOL">
+      <span class="league-pill ${tierCls}">${m.league}</span>
+      <span><strong>${m.team_a}</strong> vs <strong>${m.team_b}</strong> <span class="muted" style="font-size:10px;">${time}</span></span>
+      <span class="muted">BO${m.best_of}</span>
+      <span style="color:${m.p_series_a >= 0.6 ? '#58c878' : m.p_series_a <= 0.4 ? '#e35a5a' : 'var(--text-2,#aaa)'}; font-weight:700;">${(m.p_series_a * 100).toFixed(1)}%</span>
+      <span style="font-weight:700;">${scoreText || '—'}</span>
+      <span>${fmtAmer(m.fair_a_american)}</span>
+      <span>${fmtAmer(m.fair_b_american)}</span>
+      <span>${status}</span>
+    </div>`;
+  }).join("");
+  document.getElementById("lolMeta").textContent = `${matches.length} predictions · ${state.n_leagues || 0} leagues`;
+});
+setInterval(() => location.reload(), 5 * 60 * 1000);
+</script>
+
+</body>
+</html>

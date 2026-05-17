@@ -335,6 +335,54 @@ jobs:
       - name: NHL live scoreboard + win probabilities
         working-directory: python
         run: python nhl_pipeline.py
+
+      # === KBO (Korean Baseball Organization) full stack ===
+      - name: KBO live schedule pull
+        working-directory: python
+        run: python kbo_pipeline.py
+      - name: KBO Poisson MC win-prob + total model
+        working-directory: python
+        run: python kbo_model.py
+      - name: KBO Play of the Day selector
+        working-directory: python
+        run: python kbo_bestbet.py
+      - name: KBO POD rolling history
+        working-directory: python
+        run: python kbo_pot_history.py
+
+      # === League of Legends esports full stack ===
+      - name: LoL Riot esports schedule pull
+        working-directory: python
+        run: python lol_pipeline.py
+      - name: LoL ELO + series win-prob model
+        working-directory: python
+        run: python lol_model.py
+      - name: LoL Play of the Tournament selector
+        working-directory: python
+        run: python lol_bestbet.py
+      - name: LoL POT rolling history
+        working-directory: python
+        run: python lol_pot_history.py
+
+      # === Counter-Strike (CS2) full stack ===
+      - name: CS Liquipedia + HLTV top-30 pull
+        working-directory: python
+        run: python cs_pipeline.py
+      - name: CS ELO + series win-prob model
+        working-directory: python
+        run: python cs_model.py
+      - name: CS Play of the Day selector
+        working-directory: python
+        run: python cs_bestbet.py
+      - name: CS POD rolling history
+        working-directory: python
+        run: python cs_pot_history.py
+
+      # === Self-learning calibration across LoL + CS + KBO ===
+      - name: Esports + KBO reliability calibration
+        working-directory: python
+        run: python esports_calibration.py
+
       - name: NFL stub artifact
         if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
         working-directory: python
