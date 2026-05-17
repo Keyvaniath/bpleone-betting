@@ -1,7 +1,7 @@
 # Tonight's Slate Brief — 2026-05-17
 
-## Slate Quality: 47/100 (LOW)
-_0% lineups confirmed · 2 extreme-weather games · 9 rookie SPs_
+## Slate Quality: 52/100 (LOW)
+_0% lineups confirmed · 9 rookie SPs_
 **Recommendation:** Defensive sizing tonight; stick to highest-confidence plays.
 
 ## Slate
@@ -35,22 +35,22 @@ _0% lineups confirmed · 2 extreme-weather games · 9 rookie SPs_
    - Edge +25.0% looks big but only 0 settled props on this player — model unproven
 
 ## Weather leans
-- **OVER lean** (wind out + warm): KCR @ STL, SFG @ OAK, TOR @ DET, MIL @ MIN, ARI @ COL
+- **OVER lean** (wind out + warm): TOR @ DET, ARI @ COL
 
 ## Hot streaks
 **Batters heating up:** Kyle Schwarber (heat +8.43), Drake Baldwin (heat +5.91), Colson Montgomery (heat +5.28)
-**Pitchers on a run:** Grant Holmes (heat +3.77), Brayan Bello (heat +2.94), Paul Skenes (heat +2.16)
+**Pitchers on a run:** Grant Holmes (heat +3.77), Brayan Bello (heat +2.94), Stephen Kolek (heat +2.54)
 
 ## Top correlation-aware SGPs
 - **CHC @ CHW** 2-leg @ -183 fair (joint 0.65, EV +25.0%)
    - Erick Fedde UNDER 5.5 pitcher strikeouts
    - Colin Rea UNDER 6.5 pitcher strikeouts
-- **BOS @ ATL** 2-leg @ -119 fair (joint 0.54, EV +25.0%)
+- **BOS @ ATL** 2-leg @ -220 fair (joint 0.69, EV +25.0%)
    - Brayan Bello UNDER 6.5 pitcher strikeouts
-   - Brayan Bello OVER 3.5 pitcher strikeouts
-- **MIA @ TBR** 2-leg @ -175 fair (joint 0.64, EV +25.0%)
+   - Brayan Bello OVER 2.5 pitcher strikeouts
+- **MIA @ TBR** 2-leg @ -180 fair (joint 0.64, EV +25.0%)
    - Drew Rasmussen OVER 3.5 pitcher strikeouts
-   - Eury Pérez OVER 4.5 pitcher strikeouts
+   - Drew Rasmussen UNDER 7.5 pitcher strikeouts
 
 ## Bullpens GASSED tonight
 Pittsburgh Pirates, San Diego Padres, St. Louis Cardinals, Tampa Bay Rays, Toronto Blue Jays, Philadelphia Phillies, Chicago White Sox, Miami Marlins
