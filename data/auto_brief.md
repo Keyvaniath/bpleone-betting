@@ -1,8 +1,8 @@
 # Tonight's Slate Brief — 2026-05-17
 
-## Slate Quality: 52/100 (LOW)
+## Slate Quality: 55/100 (MEDIUM)
 _0% lineups confirmed · 9 rookie SPs_
-**Recommendation:** Defensive sizing tonight; stick to highest-confidence plays.
+**Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
 - **15 games** scheduled
@@ -33,9 +33,6 @@ _0% lineups confirmed · 9 rookie SPs_
    - Edge +25.6% looks big but only 0 settled props on this player — model unproven
 - **CHC @ CHW 2-leg SGP @ -183** (low):
    - Edge +25.0% looks big but only 0 settled props on this player — model unproven
-
-## Weather leans
-- **OVER lean** (wind out + warm): TOR @ DET, ARI @ COL
 
 ## Hot streaks
 **Batters heating up:** Kyle Schwarber (heat +8.43), Drake Baldwin (heat +5.91), Colson Montgomery (heat +5.28)
