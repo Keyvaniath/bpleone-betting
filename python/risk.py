@@ -144,5 +144,5 @@ if __name__ == "__main__":
         print(f"  p_win={row['p_win']:.2f}: ", end="")
         for i, cell in enumerate(row["cells"]):
             f = heat["fractions"][i]
-            print(f"f={f:.2f}→${cell['median']:.0f}", end="  ")
+            print(f"f={f:.2f}->${cell['median']:.0f}", end="  ")
         print()

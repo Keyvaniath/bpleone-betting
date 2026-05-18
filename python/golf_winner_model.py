@@ -255,6 +255,10 @@ if __name__ == "__main__":
         print(f"  Rounds left: {p.get('rounds_left')}")
         print(f"  Top 5 win-probability:")
         for pl in p["players"][:5]:
-            print(f"    {pl['name']:25} pos#{pl.get('current_pos'):3} ({pl.get('current_total')}) "
-                  f"P(win)={pl['p_win']*100:5.2f}%  fair {pl['fair_win_american']:+d}  "
-                  f"P(top10)={pl['p_top10']*100:.1f}%")
+            fa = pl.get("fair_win_american")
+            fa_str = f"{fa:+d}" if isinstance(fa, int) else "—"
+            pw = pl.get("p_win") or 0
+            pt = pl.get("p_top10") or 0
+            print(f"    {pl.get('name','?'):25} pos#{pl.get('current_pos','?')!s:>3} ({pl.get('current_total','—')}) "
+                  f"P(win)={pw*100:5.2f}%  fair {fa_str:>5}  "
+                  f"P(top10)={pt*100:.1f}%")

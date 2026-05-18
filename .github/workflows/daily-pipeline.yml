@@ -409,6 +409,15 @@ jobs:
       - name: Cross-signal convergence detector (everything-aligned plays)
         working-directory: python
         run: python convergence_detector.py
+      - name: Refresh legacy arbitrage / linemaker / bankroll-MC / kelly-heatmap
+        working-directory: python
+        run: |
+          python arbitrage.py || true
+          python linemaker.py || true
+          python risk.py || true
+      - name: Live data accuracy audit (cross-check upstream APIs)
+        working-directory: python
+        run: python data_health.py || true
       - name: Data health check (live source cross-verification)
         working-directory: python
         run: python data_health.py
