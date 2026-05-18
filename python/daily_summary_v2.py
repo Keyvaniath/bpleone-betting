@@ -39,6 +39,18 @@ def run() -> Dict[str, Any]:
     date = now.date().isoformat()
     lines = [f"# EdgeStat Daily Summary — {date}", ""]
 
+    # Model health score (one-glance)
+    mh = _load(os.path.join(DATA_DIR, "model_health.json"))
+    if mh:
+        lines.append(f"## 🏥 Model Health: {mh.get('total_score',0)}/100 [{mh.get('tier','?')}]")
+        lines.append(f"- {mh.get('interpretation','?')}")
+        comps = mh.get("components") or {}
+        for name, c in comps.items():
+            score = c.get("score", 0)
+            indicator = "🟢" if score >= 80 else "🟡" if score >= 60 else "🔴"
+            lines.append(f"  - {indicator} {name.replace('_',' ').title()}: {score}/100")
+        lines.append("")
+
     # Multi-sport regime
     msc = _load(os.path.join(DATA_DIR, "multi_sport_correlation.json"))
     if msc:
