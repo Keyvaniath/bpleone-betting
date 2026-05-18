@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Model Health | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/nav.js"></script>
+<style>
+  .health-hero { padding: 30px; text-align: center; border-radius: 12px; margin-bottom: 24px; }
+  .health-hero.ELITE { background: linear-gradient(135deg, rgba(212,160,74,0.15), rgba(212,160,74,0.05)); border: 2px solid #d4a04a; }
+  .health-hero.HEALTHY { background: linear-gradient(135deg, rgba(88,200,120,0.12), rgba(88,200,120,0.03)); border: 2px solid #58c878; }
+  .health-hero.OK { background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02)); border: 2px solid rgba(255,255,255,0.2); }
+  .health-hero.DEGRADED { background: linear-gradient(135deg, rgba(212,160,74,0.15), rgba(212,160,74,0.04)); border: 2px solid #d4a04a; }
+  .health-hero.BROKEN { background: linear-gradient(135deg, rgba(227,90,90,0.15), rgba(227,90,90,0.04)); border: 2px solid #e35a5a; }
+  .health-score { font-family: 'JetBrains Mono', monospace; font-size: 72px; font-weight: 700; margin: 0; line-height: 1; }
+  .health-tier { font-size: 16px; letter-spacing: 4px; font-weight: 700; margin-top: 12px; text-transform: uppercase; }
+  .health-interp { font-size: 13px; color: var(--text-2, #aaa); margin-top: 12px; }
+  .component-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; }
+  .component-card { padding: 16px 18px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.02); }
+  .comp-name { font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--muted, #888); }
+  .comp-score { font-family: 'JetBrains Mono', monospace; font-size: 32px; font-weight: 700; margin-top: 6px; }
+  .comp-bar { height: 6px; background: rgba(255,255,255,0.05); border-radius: 3px; margin-top: 10px; overflow: hidden; }
+  .comp-bar-fill { height: 100%; transition: width 0.5s; }
+  .comp-bar-fill.green { background: #58c878; }
+  .comp-bar-fill.yellow { background: #d4a04a; }
+  .comp-bar-fill.red { background: #e35a5a; }
+  .comp-weight { font-size: 10px; color: var(--muted, #888); margin-top: 8px; }
+  .comp-detail { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--text-2, #aaa); margin-top: 6px; }
+</style>
+</head>
+<body class="page-model-health">
+<header class="topbar">
+  <div class="brand"><a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a><span class="tagline">by bpleone</span></div>
+  <nav class="mainnav"><!-- nav.js injects --></nav>
+  <div class="topbar-actions"><div class="ticker">LIVE</div></div>
+</header>
+<main class="container">
+  <section class="page-head">
+    <h1>🏥 Model Health</h1>
+    <p class="muted" id="status">Loading health score…</p>
+  </section>
+  <div id="hero"></div>
+  <section class="card" style="margin-bottom: 18px;">
+    <div class="card-head"><span>📊 Component Breakdown</span></div>
+    <div style="padding:14px 18px;"><div id="components" class="component-grid"></div></div>
+  </section>
+  <section class="card">
+    <div class="card-head"><span>📋 How this works</span></div>
+    <div style="padding:14px 18px; font-size:13px; line-height:1.7; color: var(--text-2,#aaa);">
+      <p>Each component scores 0-100. Tiered weights aggregate into a single grade:</p>
+      <ul>
+        <li><strong>Calibration freshness (15%)</strong>: How recent are the per-sport bias shifts in self_training_*.json?</li>
+        <li><strong>Hit rate trend (20%)</strong>: 7-day rolling hit rate on settled props (target >70%)</li>
+        <li><strong>Brier trend (20%)</strong>: 7-day rolling Brier score (target <0.15)</li>
+        <li><strong>Pipeline audit (15%)</strong>: Green/yellow/red ratio across all data artifacts</li>
+        <li><strong>Data health (20%)</strong>: Live cross-checks against MLB / ESPN / Daum upstream APIs</li>
+        <li><strong>Edge count (10%)</strong>: Number of actionable picks surfaced today</li>
+      </ul>
+      <p><strong>Tiers</strong>: ELITE ≥85 · HEALTHY ≥70 · OK ≥55 · DEGRADED ≥40 · BROKEN &lt;40</p>
+    </div>
+  </section>
+</main>
+<script src="js/nav_badge.js"></script>
+<script>
+fetch("data/model_health.json?t=" + Date.now(), { cache: "no-cache" })
+  .then(r => r.json())
+  .then(d => {
+    const score = d.total_score || 0;
+    const tier = d.tier || "OK";
+    document.getElementById("status").textContent = `Generated ${(d.generated_at || '').slice(0, 19).replace('T', ' ')}`;
+    document.getElementById("hero").innerHTML = `
+      <div class="health-hero ${tier}">
+        <p class="health-score">${score}<span style="font-size:36px; opacity:0.5;">/100</span></p>
+        <p class="health-tier">${tier}</p>
+        <p class="health-interp">${d.interpretation || ''}</p>
+      </div>
+    `;
+    const comps = d.components || {};
+    const weights = d.weights || {};
+    document.getElementById("components").innerHTML = Object.entries(comps).map(([name, c]) => {
+      const score = c.score || 0;
+      const cls = score >= 80 ? "green" : score >= 60 ? "yellow" : "red";
+      const weight = (weights[name] || 0) * 100;
+      const otherKeys = Object.keys(c).filter(k => k !== "score").slice(0, 3);
+      const detail = otherKeys.map(k => `${k}: ${c[k]}`).join(" · ");
+      return `<div class="component-card">
+        <div class="comp-name">${name.replace(/_/g, ' ')}</div>
+        <div class="comp-score" style="color: var(--text, #eee);">${score}<span style="font-size:14px; color:var(--muted,#888);">/100</span></div>
+        <div class="comp-bar"><div class="comp-bar-fill ${cls}" style="width:${score}%;"></div></div>
+        <div class="comp-detail">${detail}</div>
+        <div class="comp-weight">Weight: ${weight}%</div>
+      </div>`;
+    }).join("");
+  })
+  .catch(err => {
+    document.getElementById("hero").innerHTML = `<div class="empty">Could not load model_health.json (${err.message}). Wait for next CI cycle.</div>`;
+  });
+</script>
+</body>
+</html>

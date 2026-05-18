@@ -42,6 +42,7 @@
     { href: "pitcher-matchup.html",     label: "⚾ Pitcher Matchup" },
     { href: "convergence.html",         label: "🎯 Convergence Picks" },
     { href: "b2b-fatigue.html",         label: "😴 B2B Fatigue" },
+    { href: "model-health.html",        label: "🏥 Model Health" },
     { href: "data-health.html",         label: "📡 Data Health" },
     { href: "backtest-dashboard.html",  label: "Backtest Dashboard" },
     { href: "reliability.html",         label: "Calibration" },
