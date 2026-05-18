@@ -108,21 +108,31 @@ def run() -> Dict[str, Any]:
         seen.add(signature)
 
         signals: List[Dict[str, Any]] = []
-        # Pre-game alerts
+        # Pre-game alerts (schema: confidence, side, team, p_pick_side, fair_american, form_aligned)
         for a in pre_alerts:
             if _alert_targets_team(a, keys):
-                signals.append({"type": "PREGAME", "level": a.get("conviction", "MED"),
-                                "detail": a.get("reason") or a.get("note") or a.get("team", "?")})
-        # Heat/cold
+                detail_parts = []
+                if a.get("side") and a.get("team"):
+                    detail_parts.append(f"{a['side']} {a['team']}")
+                if a.get("p_pick_side"):
+                    detail_parts.append(f"p={a['p_pick_side']*100:.0f}%")
+                if a.get("fair_american") is not None:
+                    detail_parts.append(f"fair {a['fair_american']:+d}")
+                if a.get("form_aligned"): detail_parts.append("form-aligned")
+                signals.append({"type": "PREGAME",
+                                 "level": a.get("confidence", "MED"),
+                                 "detail": " | ".join(detail_parts) or a.get("team", "?")})
+        # Heat/cold (schema: type, sport, team, detail)
         for a in hc_alerts:
             if _alert_targets_team(a, keys):
-                signals.append({"type": "HEAT_COLD", "level": a.get("severity", "MED"),
-                                "detail": a.get("kind") or a.get("note") or a.get("team", "?")})
-        # Anomalies
+                signals.append({"type": "HEAT_COLD", "level": "MED",
+                                 "detail": f"{a.get('type','?')}: {a.get('team','?')} -- {a.get('detail','?')}"})
+        # Anomalies (schema: type, sport, team, matchup, avg_residual, detail)
         for a in anom_alerts:
             if _alert_targets_team(a, keys):
-                signals.append({"type": "ANOMALY", "level": a.get("severity", "MED"),
-                                "detail": a.get("kind") or a.get("type") or a.get("team", "?")})
+                sev = "HIGH" if abs(a.get("avg_residual", 0) or 0) >= 10 else "MED"
+                signals.append({"type": "ANOMALY", "level": sev,
+                                 "detail": f"{a.get('type','?')}: {a.get('team','?')} residual={a.get('avg_residual','?')}"})
         # ATS
         for k in keys:
             for sig in ats_signals.get(k, []):
