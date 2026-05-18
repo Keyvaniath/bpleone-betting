@@ -196,8 +196,25 @@ def _parse_game(comp: Dict[str, Any], status: Dict[str, Any]) -> Dict[str, Any]:
     }
 
 
+def _self_training_shift(sport_key: str) -> float:
+    """Load the calibrated bias shift from self_training_<sport>.json.
+    Returns the shift to ADD to model P(home win) (i.e. -bias)."""
+    path = os.path.join(DATA_DIR, f"self_training_{sport_key}.json")
+    if not os.path.exists(path):
+        return 0.0
+    try:
+        with open(path) as f: d = json.load(f)
+        reco = d.get("recommendation") or {}
+        if reco.get("applied"):
+            return float(reco.get("recommended_shift", 0))
+    except Exception:
+        pass
+    return 0.0
+
+
 def run() -> Dict[str, Any]:
     sb = _http(ESPN_SCOREBOARD)
+    cal_shift = _self_training_shift("nba")
     if not sb:
         out = {
             "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
@@ -217,7 +234,18 @@ def run() -> Dict[str, Any]:
         comps = ev.get("competitions") or []
         if not comps:
             continue
-        games.append(_parse_game(comps[0], ev.get("status") or {}))
+        g = _parse_game(comps[0], ev.get("status") or {})
+        # Apply calibration shift to pre-game predictions (not finalized scores)
+        if cal_shift != 0 and g.get("state") != "post":
+            raw = g.get("p_home_win")
+            if raw is not None:
+                shifted = max(0.01, min(0.99, raw + cal_shift))
+                g["p_home_win_raw"] = raw
+                g["p_home_win"] = round(shifted, 4)
+                g["calibration_shift_pp"] = round(cal_shift * 100, 1)
+                g["fair_home_american"] = _american(shifted)
+                g["fair_away_american"] = _american(1 - shifted)
+        games.append(g)
 
     # Aggregate season metadata from first event (if any)
     season = (sb.get("season") or {}).get("year") or dt.date.today().year
@@ -232,6 +260,8 @@ def run() -> Dict[str, Any]:
         "season_year": season,
         "season_status": season_label,
         "n_games_today": len(games),
+        "calibration_shift_pp": round(cal_shift * 100, 1) if cal_shift else 0,
+        "self_training_applied": cal_shift != 0,
         "games": games,
         # Back-compat with old stub:
         "enabled": True,
