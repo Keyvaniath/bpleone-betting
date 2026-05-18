@@ -143,10 +143,24 @@ def run() -> Dict[str, Any]:
               ("NFL", "nfl_state.json"), ("NCAAF", "ncaaf_state.json"),
               ("NCAAB", "ncaab_state.json"), ("CWS", "cws_state.json"),
               ("KBO", "kbo_state.json")]
+    def _has_signal(g):
+        """Skip preseason 0-0 vs 0-0 games where the only edge is HFA (not actionable)."""
+        def _wins(rec):
+            if not rec or not isinstance(rec, str): return 0
+            try: return int(rec.split("-")[0])
+            except Exception: return 0
+        def _losses(rec):
+            if not rec or not isinstance(rec, str): return 0
+            try: return int(rec.split("-")[1])
+            except Exception: return 0
+        return (_wins(g.get("home_record")) + _losses(g.get("home_record")) +
+                _wins(g.get("away_record")) + _losses(g.get("away_record"))) > 0
+
     for sport, file in SPORTS:
         d = _load(os.path.join(DATA_DIR, file))
         for g in (d.get("games") or [])[:3]:
             if g.get("state") == "post": continue
+            if not _has_signal(g): continue   # skip preseason 0-0 teams
             ph = g.get("p_home_win")
             if ph is None: continue
             side = "HOME" if ph >= 0.5 else "AWAY"
