@@ -1,5 +1,14 @@
 # EdgeStat Daily Summary — 2026-05-18
 
+## 🏥 Model Health: 79.1/100 [HEALTHY]
+- Solid health - some minor issues to monitor
+  - 🟢 Calibration Freshness: 99.8/100
+  - 🟢 Hit Rate Trend: 84.3/100
+  - 🔴 Brier Trend: 52.3/100
+  - 🟢 Pipeline Audit: 100.0/100
+  - 🟡 Data Health: 77.8/100
+  - 🟡 Edge Count: 62.9/100
+
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.581)
 - **Total games on board:** 103
@@ -45,12 +54,12 @@
   - [MED] Montreal Canadiens @ Buffalo Sabres : 2 signals (HEAT_COLD, HEAT_COLD)
   - [MED] Washington Mystics @ Dallas Wings : 2 signals (ATS, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (11)
+## ⚾ Top MLB Pitcher K Plays (9)
 - **Shota Imanaga** OVER 4.5 K (78%) fair -347
-- **Max Meyer** OVER 4.5 K (73%) fair -271
 - **Ryan Weathers** OVER 5.5 K (72%) fair -253
 - **Yoshinobu Yamamoto** OVER 4.5 K (71%) fair -251
 - **MacKenzie Gore** OVER 4.5 K (70%) fair -233
+- **Robbie Ray** OVER 4.5 K (66%) fair -195
 
 ## 📈 Streak Regression Alerts (2)
 - [NBA] Oklahoma City Thunder on W4 L10 4-0 -- Oklahoma City Thunder on W4 -- no historical sample

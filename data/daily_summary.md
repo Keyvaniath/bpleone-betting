@@ -4,7 +4,7 @@
 
 _Pipeline health: **DEGRADED** (14/15 artifacts ok; 1 empty, 0 stale)._ 
 
-_Generated at 2026-05-18T23:07:56 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-05-18T23:17:06 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
@@ -16,18 +16,16 @@ _Generated at 2026-05-18T23:07:56 UTC. Game lines source: **Bovada (fallback -- 
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
 
-## Full Slate (10 games)
+## Full Slate (8 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 6:40p ET | CLE @ DET | Comerica Park | 70F 8mph | OVER_8.0 +7.03% |
-| 7:05p ET | TOR @ NYY | Yankee Stadium | 72F 5mph | NYY_ML +29.44% |
-| 7:10p ET | BOS @ KCR | Kauffman Stadium | 75F 10mph | UNDER_9.0 +41.74% |
+| 6:40p ET | CLE @ DET | Comerica Park | 70F 9mph | OVER_8.0 +8.65% |
 | 7:40p ET | HOU @ MIN | Target Field | 57F 4mph | OVER_9.0 +44.26% |
-| 7:40p ET | MIL @ CHC | Wrigley Field | 67F 7mph | CHC_ML +31.06% |
-| 8:40p ET | TEX @ COL | Coors Field | 39F 5mph | -- |
-| 9:38p ET | OAK @ LAA | Angel Stadium | 61F 5mph | OAK_ML +12.28% |
-| 9:40p ET | LAD @ SDP | Petco Park | 60F 1mph | LAD_ML +31.98% |
+| 7:40p ET | MIL @ CHC | Wrigley Field | 67F 8mph | CHC_ML +31.21% |
+| 8:40p ET | TEX @ COL | Coors Field | 39F 9mph | -- |
+| 9:38p ET | OAK @ LAA | Angel Stadium | 61F 4mph | OAK_ML +12.18% |
+| 9:40p ET | LAD @ SDP | Petco Park | 60F 2mph | LAD_ML +32.14% |
 | 9:40p ET | SFG @ ARI | Chase Field | indoor | UNDER_9.0 +17.17% |
 | 9:40p ET | CHW @ SEA | T-Mobile Park | indoor | OVER_7.0 +15.89% |
 
@@ -73,16 +71,14 @@ Cumulative graded plays: 118201. Wins: 87361. Hit rate: 73.9%.
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| BOS @ KCR | 38.0% | +163 | 5.11 | -130 | +130 |
 | CHW @ SEA | 36.0% | +178 | 5.11 | +169 | -169 |
-| CLE @ DET | 32.1% | +211 | 5.55 | +124 | -124 |
+| CLE @ DET | 32.1% | +211 | 5.49 | +123 | -123 |
 | HOU @ MIN | 34.2% | +193 | 5.25 | -104 | +104 |
-| LAD @ SDP | 45.2% | +121 | 3.94 | +677 | -677 |
-| MIL @ CHC | 46.5% | +115 | 4.0 | -244 | +244 |
+| LAD @ SDP | 45.2% | +121 | 3.91 | +679 | -679 |
+| MIL @ CHC | 46.5% | +115 | 4.02 | -246 | +246 |
 | OAK @ LAA | 53.1% | -113 | 3.23 | +312 | -312 |
 | SFG @ ARI | 28.1% | +255 | 6.34 | +111 | -111 |
-| TEX @ COL | 33.8% | +196 | 5.25 | +232 | -232 |
-| TOR @ NYY | 42.7% | +134 | 4.3 | -250 | +250 |
+| TEX @ COL | 33.8% | +196 | 5.11 | +231 | -231 |
 
 ## Travel / Rest Flags
 
