@@ -118,32 +118,53 @@ def _parse_liquipedia_matches(html: str) -> List[Dict[str, Any]]:
     return matches
 
 
-def _fallback_matches() -> List[Dict[str, Any]]:
-    """When live data is unavailable, surface major-tournament known matchups
-    using the static top-30 team list. This keeps the desk populated with
-    a realistic-looking 'next major schedule' even off-tournament-cycle."""
-    pairs = [
-        ("Vitality", "MOUZ"),
-        ("Spirit", "Falcons"),
-        ("Aurora", "G2"),
-        ("FaZe", "Natus Vincere"),
-        ("The MongolZ", "Astralis"),
-        ("Liquid", "BIG"),
-        ("Heroic", "FURIA"),
-        ("Complexity", "Virtus.pro"),
-    ]
-    return [{
-        "team_a": a, "team_b": b, "state": "unstarted",
-        "score_a": None, "score_b": None,
-        "start_time": None, "tournament": "BLAST Premier",
-        "best_of": 3,
-        "is_completed": False, "is_in_progress": False,
-        "fallback": True,
-    } for a, b in pairs]
+def _pull_bo3gg_matches() -> List[Dict[str, Any]]:
+    """Pull live CS matches from bo3.gg (public JSON API)."""
+    today = dt.date.today().isoformat()
+    url = (f"https://api.bo3.gg/api/v1/matches?filter[startsAt][gte]={today}"
+           f"&filter[discipline]=cs2&page[size]=30&sort=startsAt")
+    try:
+        req = urllib.request.Request(url, headers={
+            "User-Agent": "EdgeStat/1.0", "Accept": "application/json",
+        })
+        with urllib.request.urlopen(req, timeout=10) as r:
+            d = json.loads(r.read().decode("utf-8", errors="ignore"))
+    except Exception:
+        return []
+    matches: List[Dict[str, Any]] = []
+    # bo3 returns a JSON-API "included" array we'd need to dereference; instead
+    # we just parse the attributes directly per match
+    for item in d.get("data", []):
+        attrs = item.get("attributes") or {}
+        rel = item.get("relationships") or {}
+        team_refs = (rel.get("teams") or {}).get("data") or []
+        # We only get the team IDs here, not names -- need the 'included' lookup
+        team_ids = [t.get("id") for t in team_refs]
+        team_names: List[str] = []
+        for inc in d.get("included", []):
+            if inc.get("type") == "teams" and inc.get("id") in team_ids:
+                nm = (inc.get("attributes") or {}).get("name")
+                if nm: team_names.append(nm)
+        if len(team_names) < 2: continue
+        status = attrs.get("status") or "unstarted"
+        state_map = {"upcoming": "unstarted", "live": "live",
+                      "completed": "completed", "finished": "completed"}
+        matches.append({
+            "team_a": team_names[0], "team_b": team_names[1],
+            "state": state_map.get(status, status),
+            "score_a": attrs.get("scoreA"), "score_b": attrs.get("scoreB"),
+            "start_time": attrs.get("startsAt"),
+            "tournament": (attrs.get("tournament") or {}).get("name") if isinstance(attrs.get("tournament"), dict) else None,
+            "best_of": attrs.get("bestOf") or 3,
+            "is_completed": status in ("completed", "finished"),
+            "is_in_progress": status == "live",
+            "data_source": "bo3gg",
+        })
+    return matches
 
 
 def run() -> Dict[str, Any]:
-    # Try Liquipedia for live data
+    # Try Liquipedia first (more authoritative)
     html = _http_gzip(
         "https://liquipedia.net/counterstrike/api.php?action=parse"
         "&page=Liquipedia:Upcoming_and_ongoing_matches&format=json"
@@ -157,9 +178,10 @@ def run() -> Dict[str, Any]:
             matches = _parse_liquipedia_matches(wikitext)
         except Exception:
             pass
+    # Liquipedia parse often returns 0 -- try bo3.gg as live data backstop
     if not matches:
-        matches = _fallback_matches()
-        source = "fallback (top-30 cross-pairs)"
+        matches = _pull_bo3gg_matches()
+        source = "bo3gg" if matches else "no_live_source"
 
     # Top teams JSON (for UI display)
     top_teams = [{"name": n, "rating": r} for n, r in
