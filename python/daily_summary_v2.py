@@ -106,6 +106,45 @@ def run() -> Dict[str, Any]:
             lines.append(f"  - #{p['rank']} [{p['sport']}] ${p['stake_dollars']:.0f} on {p.get('label','')[:60]} (P={p['model_prob']*100:.0f}%)")
         lines.append("")
 
+    # Convergence picks (multi-signal stacked)
+    conv = _load(os.path.join(DATA_DIR, "convergence_alerts.json"))
+    if conv.get("convergence"):
+        lines.append(f"## 🎯 Convergence Picks ({conv.get('n_games_with_2plus_signals',0)} stacked games)")
+        lines.append(f"- ELITE: **{conv.get('n_elite',0)}** · HIGH: {conv.get('n_high',0)} · MED: {conv.get('n_med',0)}")
+        for c in conv.get("convergence", [])[:5]:
+            sigs = ", ".join(s.get("type","?") for s in c.get("signals",[])[:4])
+            lines.append(f"  - [{c['tier']}] {c['matchup']} : {c['n_signals']} signals ({sigs})")
+        lines.append("")
+
+    # MLB pitcher matchup K plays
+    pm = _load(os.path.join(DATA_DIR, "mlb_pitcher_matchup.json"))
+    if pm.get("matchups"):
+        plays = [m["best_k_play"] for m in pm["matchups"] if m.get("best_k_play")]
+        plays.sort(key=lambda p: -(p.get("p_over") or 0))
+        if plays:
+            lines.append(f"## ⚾ Top MLB Pitcher K Plays ({len(plays)})")
+            for p in plays[:5]:
+                lines.append(f"- **{p['pitcher']}** OVER {p['line']} K ({p['p_over']*100:.0f}%) fair {p.get('fair_over','?')}")
+            lines.append("")
+
+    # B2B fatigue alerts
+    b2b = _load(os.path.join(DATA_DIR, "b2b_fatigue.json"))
+    if b2b.get("n_fatigued_games_today", 0) > 0:
+        lines.append(f"## 😴 B2B Fatigue Edges ({b2b['n_fatigued_games_today']})")
+        for sport, alerts in (b2b.get("by_sport") or {}).items():
+            for a in (alerts or [])[:3]:
+                if a.get("fatigue_edge") in ("HOME", "AWAY"):
+                    lines.append(f"- [{sport.upper()}] {a.get('recommend')}")
+        lines.append("")
+
+    # Streak regression
+    sr = _load(os.path.join(DATA_DIR, "streak_regression.json"))
+    if sr.get("n_alerts", 0) > 0:
+        lines.append(f"## 📈 Streak Regression Alerts ({sr['n_alerts']})")
+        for a in sr.get("alerts", [])[:5]:
+            lines.append(f"- [{a['sport']}] {a['team']} on {a['streak']} L10 {a.get('l10','?')} -- {a.get('recommendation','')[:80]}")
+        lines.append("")
+
     # Self-training summary
     st = _load(os.path.join(DATA_DIR, "self_training_summary.json"))
     if st.get("by_sport"):
