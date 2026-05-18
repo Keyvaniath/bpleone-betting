@@ -1,14 +1,14 @@
 # Tonight's Slate Brief — 2026-05-18
 
-## Slate Quality: 75/100 (HIGH)
-_67% lineups confirmed · 11 rookie SPs_
+## Slate Quality: 76/100 (HIGH)
+_71% lineups confirmed · 11 rookie SPs_
 **Recommendation:** Play normal Kelly sizing.
 
 ## Slate
 - **14 games** scheduled
-- **32 best bets** scored: 0 DK · 0 PP · 12 NRFI · 6 SGP
+- **28 best bets** scored: 0 DK · 0 PP · 12 NRFI · 6 SGP
 - **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$49.88
-- **MC simulation:** EV +$138.76, 88% P(profit), p05 $-93.87 / p95 $336.94
+- **MC simulation:** EV +$139.34, 84% P(profit), p05 $-82.42 / p95 $348.39
 
 ## Top 5 Best Bets
 1. **CIN @ PHI YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +39.2%)
@@ -25,14 +25,14 @@ _67% lineups confirmed · 11 rookie SPs_
 ## ⚠️ Trap Warnings — 17 flagged
 - **TOR @ NYY 4-leg SGP @ -176** (low):
    - Edge +63.8% looks big but only 0 settled props on this player — model unproven
+- **CHW @ SEA 4-leg SGP @ -163** (low):
+   - Edge +58.2% looks big but only 0 settled props on this player — model unproven
 - **BAL @ TBR 4-leg SGP @ -138** (low):
    - Edge +47.4% looks big but only 0 settled props on this player — model unproven
 - **MIL @ CHC 4-leg SGP @ -140** (low):
    - Edge +47.2% looks big but only 0 settled props on this player — model unproven
-- **OAK @ LAA 4-leg SGP @ -120** (low):
-   - Edge +42.9% looks big but only 0 settled props on this player — model unproven
-- **CIN @ PHI YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +39.2% looks big but only 0 settled props on this player — model unproven
+- **OAK @ LAA 4-leg SGP @ -121** (low):
+   - Edge +42.8% looks big but only 0 settled props on this player — model unproven
 
 ## Hot streaks
 **Batters heating up:** Gavin Sheets (heat +7.69), Ryan Vilade (heat +7.24), Mike Yastrzemski (heat +6.13)
@@ -43,14 +43,14 @@ _67% lineups confirmed · 11 rookie SPs_
    - Amed Rosario OVER 0.5 batter total bases
    - George Springer UNDER 1.5 batter hits
    - George Springer UNDER 0.5 batter doubles
+- **CHW @ SEA** 4-leg @ -163 fair (joint 0.62, EV +58.22%)
+   - Drew Romo UNDER 1.5 batter hits
+   - Colson Montgomery UNDER 0.5 batter doubles
+   - Drew Romo UNDER 0.5 batter doubles
 - **BAL @ TBR** 4-leg @ -138 fair (joint 0.58, EV +47.36%)
    - Adley Rutschman UNDER 0.5 batter home runs
    - Adley Rutschman OVER 0.5 batter total bases
    - Gunnar Henderson UNDER 0.5 batter doubles
-- **MIL @ CHC** 4-leg @ -140 fair (joint 0.58, EV +47.18%)
-   - Jake Bauers OVER 0.5 batter total bases
-   - Christian Yelich UNDER 1.5 batter rbis
-   - Ian Happ UNDER 1.5 batter runs
 
 ## Bullpens GASSED tonight
 Athletics, Pittsburgh Pirates, San Diego Padres, Tampa Bay Rays, Toronto Blue Jays, Chicago White Sox, Miami Marlins, New York Yankees

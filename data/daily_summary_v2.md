@@ -33,18 +33,18 @@
 
 ## 💰 Today's Portfolio (8 picks)
 - Total stake: **$340.0** (34.0% of $1000 bankroll)
-- Expected EV: **$9.95**
+- Expected EV: **$7.52**
   - #1 [SGP] $50 on TOR @ NYY 4-leg SGP @ -176 (P=64%)
   - #2 [NRFI] $50 on CIN @ PHI YRFI (1st-inning OVER 0.5) (P=85%)
   - #3 [NRFI] $50 on SFG @ ARI YRFI (1st-inning OVER 0.5) (P=72%)
   - #4 [NRFI] $50 on NYM @ WSN YRFI (1st-inning OVER 0.5) (P=69%)
-  - #5 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
+  - #5 [SGP] $35 on CHW @ SEA 4-leg SGP @ -163 (P=62%)
 
 ## 🤖 Self-Training Status
-- **NBA**: n=21 games · hit rate 57.1% · bias -8.5pp
-- **NHL**: n=19 games · hit rate 52.6% · bias +3.9pp
-- **WNBA**: n=28 games · hit rate 21.4% · bias +22.9pp
+- **NBA**: n=21 games · hit rate 57.1% · bias -8.5pp [calibration applied]
+- **NHL**: n=19 games · hit rate 52.6% · bias +3.9pp [calibration applied]
+- **WNBA**: n=28 games · hit rate 21.4% · bias +22.9pp [calibration applied]
 - **MLS**: n=59 games · hit rate 33.9% · bias +6.9pp [calibration applied]
-- **EPL**: n=29 games · hit rate 48.3% · bias -9.1pp
+- **EPL**: n=29 games · hit rate 48.3% · bias -9.1pp [calibration applied]
 - **MLB**: n=186 games · hit rate 50.0% · bias -1.4pp
 - **CWS**: n=295 games · hit rate 56.3% · bias -2.3pp [calibration applied]

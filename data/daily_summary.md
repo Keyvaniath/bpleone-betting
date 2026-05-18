@@ -4,7 +4,7 @@
 
 _Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
 
-_Generated at 2026-05-18T21:21:06 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-05-18T21:44:13 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
@@ -21,7 +21,7 @@ _Generated at 2026-05-18T21:21:06 UTC. Game lines source: **Bovada (fallback -- 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
 | 6:40p ET | CLE @ DET | Comerica Park | 70F 11mph | OVER_8.0 +11.85% |
-| 6:40p ET | BAL @ TBR | Tropicana Field | indoor | TBR_ML +29.14% |
+| 6:40p ET | BAL @ TBR | Tropicana Field | indoor | TBR_ML +29.52% |
 | 6:40p ET | CIN @ PHI | Citizens Bank Park | 80F 8mph | OVER_10.0 +37.05% |
 | 6:40p ET | ATL @ MIA | loanDepot park | indoor | ATL_ML +9.74% |
 | 6:45p ET | NYM @ WSN | Nationals Park | 83F 10mph | UNDER_10.0 +42.92% |
@@ -29,11 +29,11 @@ _Generated at 2026-05-18T21:21:06 UTC. Game lines source: **Bovada (fallback -- 
 | 7:10p ET | BOS @ KCR | Kauffman Stadium | 76F 14mph | UNDER_9.0 +35.96% |
 | 7:40p ET | HOU @ MIN | Target Field | 55F 1mph | OVER_9.5 +27.94% |
 | 7:40p ET | MIL @ CHC | Wrigley Field | 68F 10mph | CHC_ML +29.78% |
-| 8:40p ET | TEX @ COL | Coors Field | 70F 0mph | OVER_9.5 +6.07% |
-| 9:38p ET | OAK @ LAA | Angel Stadium | 70F 0mph | OAK_ML +12.42% |
-| 9:40p ET | LAD @ SDP | Petco Park | 70F 0mph | LAD_ML +33.7% |
+| 8:40p ET | TEX @ COL | Coors Field | 40F 5mph | UNDER_9.5 +1.87% |
+| 9:38p ET | OAK @ LAA | Angel Stadium | 64F 6mph | OAK_ML +12.74% |
+| 9:40p ET | LAD @ SDP | Petco Park | 60F 2mph | LAD_ML +32.91% |
 | 9:40p ET | SFG @ ARI | Chase Field | indoor | UNDER_9.0 +17.17% |
-| 9:40p ET | CHW @ SEA | T-Mobile Park | indoor | CHW_ML +16.05% |
+| 9:40p ET | CHW @ SEA | T-Mobile Park | indoor | CHW_ML +16.03% |
 
 ## Parlays - top 5
 
@@ -41,11 +41,7 @@ _Generated at 2026-05-18T21:21:06 UTC. Game lines source: **Bovada (fallback -- 
   - ATL @ MIA ATL_ML (-104, model 56.0%)
   - MIL @ CHC UNDER_10.5 (-110, model 63.7%)
   - OAK @ LAA OAK_ML (-134, model 64.4%)
-- **3-leg @ +764 (prob 17.3%, EV +49.63%)**
-  - MIL @ CHC UNDER_10.5 (-110, model 63.7%)
-  - TEX @ COL OVER_9.5 (-110, model 55.6%)
-  - CHW @ SEA CHW_ML (+137, model 49.0%)
-- **3-leg @ +788 (prob 16.8%, EV +49.25%)**
+- **3-leg @ +788 (prob 16.8%, EV +49.22%)**
   - ATL @ MIA ATL_ML (-104, model 56.0%)
   - SFG @ ARI UNDER_9.0 (-110, model 61.4%)
   - CHW @ SEA CHW_ML (+137, model 49.0%)
@@ -53,23 +49,27 @@ _Generated at 2026-05-18T21:21:06 UTC. Game lines source: **Bovada (fallback -- 
   - CLE @ DET OVER_8.0 (-110, model 58.6%)
   - ATL @ MIA ATL_ML (-104, model 56.0%)
   - MIL @ CHC UNDER_10.5 (-110, model 63.7%)
-- **3-leg @ +773 (prob 17.1%, EV +49.13%)**
+- **3-leg @ +773 (prob 17.1%, EV +49.1%)**
   - ATL @ MIA ATL_ML (-104, model 56.0%)
   - HOU @ MIN MIN_ML (-114, model 62.4%)
+  - CHW @ SEA CHW_ML (+137, model 49.0%)
+- **3-leg @ +680 (prob 19.1%, EV +48.79%)**
+  - MIL @ CHC UNDER_10.5 (-110, model 63.7%)
+  - SFG @ ARI ARI_ML (-138, model 61.2%)
   - CHW @ SEA CHW_ML (+137, model 49.0%)
 
 ## Self-Learning Loop
 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
-| batter rbis | 11874 | 19.8% | 23.2% | 1.171 | 0.854 |
-| batter singles | 5937 | 43.8% | 44.5% | 1.016 | 0.984 |
-| batter hits | 11876 | 39.7% | 41.6% | 1.048 | 0.954 |
-| batter doubles | 5937 | 14.7% | 15.9% | 1.078 | 0.927 |
-| batter runs scored | 5937 | 36.9% | 38.7% | 1.048 | 0.954 |
-| batter total bases | 11876 | 26.2% | 31.7% | 1.211 | 0.826 |
-| batter home runs | 5937 | 11.0% | 12.8% | 1.161 | 0.861 |
 | pitcher strikeouts | 2588 | 32.6% | 38.1% | 1.167 | 0.857 |
+| batter total bases | 11876 | 26.2% | 31.7% | 1.211 | 0.826 |
+| batter rbis | 11874 | 19.8% | 23.2% | 1.171 | 0.854 |
+| batter runs scored | 5937 | 36.9% | 38.7% | 1.048 | 0.954 |
+| batter doubles | 5937 | 14.7% | 15.9% | 1.078 | 0.927 |
+| batter hits | 11876 | 39.7% | 41.6% | 1.048 | 0.954 |
+| batter singles | 5937 | 43.8% | 44.5% | 1.016 | 0.984 |
+| batter home runs | 5937 | 11.0% | 12.8% | 1.161 | 0.861 |
 
 Cumulative graded plays: 118201. Wins: 87361. Hit rate: 73.9%.
 
@@ -80,16 +80,16 @@ Cumulative graded plays: 118201. Wins: 87361. Hit rate: 73.9%.
 | ATL @ MIA | 49.3% | +103 | 3.54 | +219 | -219 |
 | BAL @ TBR | 38.0% | +163 | 4.83 | -170 | +170 |
 | BOS @ KCR | 38.0% | +163 | 5.15 | -133 | +133 |
-| CHW @ SEA | 36.0% | +178 | 5.11 | +170 | -170 |
+| CHW @ SEA | 36.0% | +178 | 5.11 | +169 | -169 |
 | CIN @ PHI | 14.8% | +574 | 10.0 | -141 | +141 |
 | CLE @ DET | 32.1% | +211 | 5.56 | +123 | -123 |
 | HOU @ MIN | 34.2% | +193 | 5.38 | -102 | +102 |
-| LAD @ SDP | 45.2% | +121 | 3.97 | +685 | -685 |
+| LAD @ SDP | 45.2% | +121 | 3.93 | +679 | -679 |
 | MIL @ CHC | 46.5% | +115 | 4.08 | -251 | +251 |
 | NYM @ WSN | 30.7% | +226 | 6.13 | -105 | +105 |
-| OAK @ LAA | 53.1% | -113 | 3.17 | +313 | -313 |
+| OAK @ LAA | 53.1% | -113 | 3.25 | +314 | -314 |
 | SFG @ ARI | 28.1% | +255 | 6.34 | +111 | -111 |
-| TEX @ COL | 33.8% | +196 | 5.43 | +230 | -230 |
+| TEX @ COL | 33.8% | +196 | 5.25 | +232 | -232 |
 | TOR @ NYY | 42.7% | +134 | 4.17 | -247 | +247 |
 
 ## Travel / Rest Flags
