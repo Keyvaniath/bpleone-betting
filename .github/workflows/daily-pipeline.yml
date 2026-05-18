@@ -327,16 +327,11 @@ jobs:
         if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
         working-directory: python
         run: python nba_stub.py
-      # Real NBA scoreboard (overrides stub on every run; free ESPN API)
-      - name: NBA live scoreboard + win probabilities
-        working-directory: python
-        run: python nba_pipeline.py
-      # NHL live scoreboard (free ESPN API)
-      - name: NHL live scoreboard + win probabilities
-        working-directory: python
-        run: python nhl_pipeline.py
 
-      # === DEEP DATA LAYER (historicals + rosters + game logs + self-training) ===
+      # === DEEP DATA LAYER FIRST (so sport pipelines pick up fresh calibration shifts) ===
+      # Self-training writes self_training_<sport>.json with bias corrections;
+      # nba/nhl/wnba/etc pipelines read it via _self_training_shift() and apply
+      # the shift to p_home_win. So this must run BEFORE the sport pipelines.
       - name: Pull last-14-days historical games per sport
         working-directory: python
         run: python historical_games.py
@@ -349,6 +344,14 @@ jobs:
       - name: Self-training backtest (per-sport bias + calibration shift)
         working-directory: python
         run: python self_train.py
+
+      # NOW run sport pipelines so they apply the freshly-computed calibration shifts
+      - name: NBA live scoreboard + win probabilities (post-self-train)
+        working-directory: python
+        run: python nba_pipeline.py
+      - name: NHL live scoreboard + win probabilities (post-self-train)
+        working-directory: python
+        run: python nhl_pipeline.py
       - name: Pull ESPN team rosters (NBA/WNBA/NHL/NFL) -- 4,618 players
         working-directory: python
         run: python espn_rosters.py
