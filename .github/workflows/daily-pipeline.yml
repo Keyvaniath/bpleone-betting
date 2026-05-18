@@ -418,6 +418,9 @@ jobs:
       - name: Live data accuracy audit (cross-check upstream APIs)
         working-directory: python
         run: python data_health.py || true
+      - name: Master audit (imports + HTML + data + health)
+        working-directory: python
+        run: python _audit_master.py || true
       - name: Data health check (live source cross-verification)
         working-directory: python
         run: python data_health.py
