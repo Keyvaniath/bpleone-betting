@@ -2,73 +2,70 @@
 
 **Model Confidence: 73.7/100 [GREEN-LIGHT]** -- Model is healthy. Use capped Kelly (<=0.5u) until residual variance tightens further.
 
-_Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
+_Pipeline health: **DEGRADED** (14/15 artifacts ok; 1 empty, 0 stale)._ 
 
-_Generated at 2026-05-18T22:34:45 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-05-18T23:07:56 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
-**NYM @ WSN - UNDER_10.0**
+**HOU @ MIN - OVER_9.0**
 - Market: -110
-- Model probability: 75.5%
-- Raw edge: +44.24%
+- Model probability: 75.6%
+- Raw edge: +44.26%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
 
-## Full Slate (13 games)
+## Full Slate (10 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 6:40p ET | BAL @ TBR | Tropicana Field | indoor | TBR_ML +29.91% |
-| 6:40p ET | CIN @ PHI | Citizens Bank Park | 80F 7mph | OVER_10.0 +35.41% |
-| 6:40p ET | ATL @ MIA | loanDepot park | indoor | ATL_ML +8.24% |
-| 6:45p ET | NYM @ WSN | Nationals Park | 83F 9mph | UNDER_10.0 +44.24% |
+| 6:40p ET | CLE @ DET | Comerica Park | 70F 8mph | OVER_8.0 +7.03% |
 | 7:05p ET | TOR @ NYY | Yankee Stadium | 72F 5mph | NYY_ML +29.44% |
-| 7:10p ET | BOS @ KCR | Kauffman Stadium | 76F 15mph | UNDER_9.0 +34.64% |
-| 7:40p ET | HOU @ MIN | Target Field | 56F 5mph | OVER_9.5 +35.66% |
+| 7:10p ET | BOS @ KCR | Kauffman Stadium | 75F 10mph | UNDER_9.0 +41.74% |
+| 7:40p ET | HOU @ MIN | Target Field | 57F 4mph | OVER_9.0 +44.26% |
 | 7:40p ET | MIL @ CHC | Wrigley Field | 67F 7mph | CHC_ML +31.06% |
-| 8:40p ET | TEX @ COL | Coors Field | 40F 5mph | UNDER_9.5 +1.87% |
-| 9:38p ET | OAK @ LAA | Angel Stadium | 61F 5mph | OAK_ML +11.92% |
+| 8:40p ET | TEX @ COL | Coors Field | 39F 5mph | -- |
+| 9:38p ET | OAK @ LAA | Angel Stadium | 61F 5mph | OAK_ML +12.28% |
 | 9:40p ET | LAD @ SDP | Petco Park | 60F 1mph | LAD_ML +31.98% |
 | 9:40p ET | SFG @ ARI | Chase Field | indoor | UNDER_9.0 +17.17% |
 | 9:40p ET | CHW @ SEA | T-Mobile Park | indoor | OVER_7.0 +15.89% |
 
 ## Parlays - top 5
 
-- **3-leg @ +514 (prob 24.4%, EV +49.98%)**
-  - HOU @ MIN MIN_ML (-118, model 62.6%)
-  - OAK @ LAA OAK_ML (-135, model 64.3%)
+- **3-leg @ +670 (prob 19.3%, EV +48.81%)**
+  - OAK @ LAA OAK_ML (-134, model 64.3%)
+  - SFG @ ARI UNDER_9.0 (-110, model 61.4%)
+  - CHW @ SEA CHW_ML (+131, model 49.0%)
+- **3-leg @ +670 (prob 19.1%, EV +47.16%)**
+  - OAK @ LAA OAK_ML (-134, model 64.3%)
   - CHW @ SEA OVER_7.0 (-110, model 60.7%)
-- **3-leg @ +558 (prob 22.8%, EV +49.84%)**
-  - BAL @ TBR UNDER_7.5 (-110, model 54.2%)
-  - CIN @ PHI PHI_ML (-124, model 69.2%)
-  - CHW @ SEA OVER_7.0 (-110, model 60.7%)
-- **3-leg @ +537 (prob 23.5%, EV +49.52%)**
-  - BAL @ TBR UNDER_7.5 (-110, model 54.2%)
-  - CIN @ PHI PHI_ML (-124, model 69.2%)
+  - CHW @ SEA CHW_ML (+131, model 49.0%)
+- **3-leg @ +645 (prob 19.7%, EV +46.77%)**
   - HOU @ MIN MIN_ML (-118, model 62.6%)
-- **3-leg @ +681 (prob 19.1%, EV +49.23%)**
-  - OAK @ LAA OAK_ML (-135, model 64.3%)
+  - OAK @ LAA OAK_ML (-134, model 64.3%)
+  - CHW @ SEA CHW_ML (+131, model 49.0%)
+- **3-leg @ +596 (prob 21.0%, EV +46.08%)**
+  - LAD @ SDP UNDER_7.5 (-110, model 56.4%)
+  - SFG @ ARI UNDER_9.0 (-110, model 61.4%)
   - CHW @ SEA OVER_7.0 (-110, model 60.7%)
-  - CHW @ SEA CHW_ML (+135, model 49.0%)
-- **3-leg @ +656 (prob 19.7%, EV +48.91%)**
+- **3-leg @ +573 (prob 21.6%, EV +45.7%)**
   - HOU @ MIN MIN_ML (-118, model 62.6%)
-  - OAK @ LAA OAK_ML (-135, model 64.3%)
-  - CHW @ SEA CHW_ML (+135, model 49.0%)
+  - LAD @ SDP UNDER_7.5 (-110, model 56.4%)
+  - SFG @ ARI UNDER_9.0 (-110, model 61.4%)
 
 ## Self-Learning Loop
 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
-| batter home runs | 5937 | 11.0% | 12.8% | 1.161 | 0.861 |
+| batter singles | 5937 | 43.8% | 44.5% | 1.016 | 0.984 |
+| batter doubles | 5937 | 14.7% | 15.9% | 1.078 | 0.927 |
+| batter hits | 11876 | 39.7% | 41.6% | 1.048 | 0.954 |
 | batter total bases | 11876 | 26.2% | 31.7% | 1.211 | 0.826 |
 | pitcher strikeouts | 2588 | 32.6% | 38.1% | 1.167 | 0.857 |
-| batter rbis | 11874 | 19.8% | 23.2% | 1.171 | 0.854 |
-| batter doubles | 5937 | 14.7% | 15.9% | 1.078 | 0.927 |
-| batter singles | 5937 | 43.8% | 44.5% | 1.016 | 0.984 |
-| batter hits | 11876 | 39.7% | 41.6% | 1.048 | 0.954 |
 | batter runs scored | 5937 | 36.9% | 38.7% | 1.048 | 0.954 |
+| batter rbis | 11874 | 19.8% | 23.2% | 1.171 | 0.854 |
+| batter home runs | 5937 | 11.0% | 12.8% | 1.161 | 0.861 |
 
 Cumulative graded plays: 118201. Wins: 87361. Hit rate: 73.9%.
 
@@ -76,19 +73,16 @@ Cumulative graded plays: 118201. Wins: 87361. Hit rate: 73.9%.
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| ATL @ MIA | 49.3% | +103 | 3.54 | +219 | -219 |
-| BAL @ TBR | 38.0% | +163 | 4.83 | -170 | +170 |
-| BOS @ KCR | 38.0% | +163 | 5.31 | -133 | +133 |
+| BOS @ KCR | 38.0% | +163 | 5.11 | -130 | +130 |
 | CHW @ SEA | 36.0% | +178 | 5.11 | +169 | -169 |
-| CIN @ PHI | 14.8% | +574 | 9.96 | -141 | +141 |
-| HOU @ MIN | 34.2% | +193 | 5.44 | -104 | +104 |
+| CLE @ DET | 32.1% | +211 | 5.55 | +124 | -124 |
+| HOU @ MIN | 34.2% | +193 | 5.25 | -104 | +104 |
 | LAD @ SDP | 45.2% | +121 | 3.94 | +677 | -677 |
-| MIL @ CHC | 46.5% | +115 | 4.02 | -244 | +244 |
-| NYM @ WSN | 30.7% | +226 | 6.1 | -105 | +105 |
-| OAK @ LAA | 53.1% | -113 | 3.21 | +312 | -312 |
+| MIL @ CHC | 46.5% | +115 | 4.0 | -244 | +244 |
+| OAK @ LAA | 53.1% | -113 | 3.23 | +312 | -312 |
 | SFG @ ARI | 28.1% | +255 | 6.34 | +111 | -111 |
 | TEX @ COL | 33.8% | +196 | 5.25 | +232 | -232 |
-| TOR @ NYY | 42.7% | +134 | 4.29 | -250 | +250 |
+| TOR @ NYY | 42.7% | +134 | 4.3 | -250 | +250 |
 
 ## Travel / Rest Flags
 

@@ -1,11 +1,11 @@
 # Tonight's Slate Brief — 2026-05-18
 
 ## Slate Quality: 82/100 (HIGH)
-_92% lineups confirmed · 10 rookie SPs_
+_95% lineups confirmed · 7 rookie SPs_
 **Recommendation:** Play normal Kelly sizing.
 
 ## Slate
-- **13 games** scheduled
+- **10 games** scheduled
 - **27 best bets** scored: 0 DK · 0 PP · 11 NRFI · 6 SGP
 - **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$49.88
 - **MC simulation:** EV +$124.55, 82% P(profit), p05 $-102.9 / p95 $302.94
@@ -28,18 +28,15 @@ _92% lineups confirmed · 10 rookie SPs_
    - Edge +69.2% looks big but only 0 settled props on this player — model unproven
 - **TOR @ NYY 4-leg SGP @ -176** (low):
    - Edge +63.8% looks big but only 0 settled props on this player — model unproven
-- **BAL @ TBR 4-leg SGP @ -138** (low):
-   - Edge +47.4% looks big but only 0 settled props on this player — model unproven
 - **MIL @ CHC 4-leg SGP @ -140** (low):
    - Edge +47.2% looks big but only 0 settled props on this player — model unproven
 - **LAD @ SDP 4-leg SGP @ -143** (low):
    - Edge +46.0% looks big but only 0 settled props on this player — model unproven
-
-## Weather leans
-- **UNDER lean** (wind in + cold): BOS @ KCR
+- **TEX @ COL 4-leg SGP @ -110** (low):
+   - Edge +44.8% looks big but only 0 settled props on this player — model unproven
 
 ## Hot streaks
-**Batters heating up:** Gavin Sheets (heat +7.69), Ryan Vilade (heat +7.24), Angel Martínez (heat +6.24)
+**Batters heating up:** Gavin Sheets (heat +7.69), Angel Martínez (heat +6.24), Eric Haase (heat +6.00)
 **Pitchers on a run:** Slade Cecconi (heat +15.75), Bryan Woo (heat +12.00), Ryan Weathers (heat +11.37)
 
 ## Top correlation-aware SGPs
@@ -51,10 +48,10 @@ _92% lineups confirmed · 10 rookie SPs_
    - Amed Rosario OVER 0.5 batter total bases
    - George Springer UNDER 1.5 batter hits
    - George Springer UNDER 0.5 batter doubles
-- **BAL @ TBR** 4-leg @ -138 fair (joint 0.58, EV +47.36%)
-   - Adley Rutschman UNDER 0.5 batter home runs
-   - Adley Rutschman OVER 0.5 batter total bases
-   - Gunnar Henderson UNDER 0.5 batter doubles
+- **MIL @ CHC** 4-leg @ -140 fair (joint 0.58, EV +47.18%)
+   - Jake Bauers OVER 0.5 batter total bases
+   - Christian Yelich UNDER 1.5 batter rbis
+   - Ian Happ UNDER 1.5 batter runs
 
 ## Bullpens GASSED tonight
 Athletics, Pittsburgh Pirates, San Diego Padres, Tampa Bay Rays, Toronto Blue Jays, Chicago White Sox, Miami Marlins, New York Yankees
@@ -64,10 +61,10 @@ _Lean late-inning OVER on these games; fade their save situations._
 - **YRFI** (1st-inning OVER): CIN @ PHI, SFG @ ARI, NYM @ WSN, TEX @ COL, HOU @ MIN
 
 ## NBA -- PLAYOFFS
-- San Antonio Spurs @ Oklahoma City Thunder (62-20 vs 64-18)  | P(home) 58.4% fair -140 | Scheduled
+- San Antonio Spurs @ Oklahoma City Thunder (62-20 vs 64-18)  | P(home) 61.8% fair -162 | Scheduled
 
 ## NHL -- PLAYOFFS
-- Montreal Canadiens @ Buffalo Sabres (48-24-10 vs 50-23-9)  | P(home) 54.9% fair -122 | Scheduled
+- Montreal Canadiens @ Buffalo Sabres (48-24-10 vs 50-23-9)  | P(home) 53.7% fair -116 | Scheduled
 
 ## LoL Esports -- 0 live, 18 upcoming
 - [LCK Challengers] BNK FEARX Youth vs BRO Challengers BO3 | P(A) 50.0% fair -100/-100

@@ -3,7 +3,7 @@
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.581)
 - **Total games on board:** 103
-- **Strong home favorites:** 1 | **Strong road dogs:** 1
+- **Strong home favorites:** 2 | **Strong road dogs:** 1
 
 ## 🎯 Top 5 Best Bets
 1. **SFG @ ARI 4-leg SGP @ -204** (82/100 ★★★★★)
