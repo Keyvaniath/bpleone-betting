@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B2B Fatigue Tracker | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/nav.js"></script>
+<style>
+  .game-card { padding: 14px 18px; margin-bottom: 14px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08); }
+  .game-card.fatigue-edge { border-left: 4px solid #d4a04a; background: rgba(212,160,74,0.04); }
+  .game-card.both-tired { border-left: 4px solid rgba(255,255,255,0.2); }
+  .matchup-title { font-size: 15px; font-weight: 700; color: var(--text, #eee); }
+  .team-row { display: grid; grid-template-columns: 1.5fr 80px 80px 100px; gap: 14px; padding: 8px 0; font-family: 'JetBrains Mono', monospace; font-size: 12px; border-bottom: 1px dashed rgba(255,255,255,0.05); }
+  .team-row.b2b { color: #e35a5a; }
+  .team-row.rested { color: #58c878; }
+  .team-row.head { color: var(--muted, #888); text-transform: uppercase; font-size: 10px; }
+  .recommend { background: rgba(212,160,74,0.12); padding: 8px 12px; margin-top: 10px; border-radius: 4px; font-size: 12px; color: #d4a04a; font-weight: 600; }
+  .empty { padding: 18px; color: var(--muted, #888); text-align: center; font-size: 13px; }
+</style>
+</head>
+<body class="page-b2b-fatigue">
+<header class="topbar">
+  <div class="brand"><a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a><span class="tagline">by bpleone</span></div>
+  <nav class="mainnav"><!-- nav.js injects --></nav>
+  <div class="topbar-actions"><div class="ticker">LIVE</div></div>
+</header>
+<main class="container">
+  <section class="page-head">
+    <h1>😴 B2B Fatigue — NBA / NHL</h1>
+    <p class="muted" id="status">Loading fatigue alerts…</p>
+  </section>
+  <section class="card" style="margin-bottom: 18px;">
+    <div class="card-head"><span>📋 What this tracks</span></div>
+    <div style="padding:14px 18px; font-size:13px; line-height:1.7; color: var(--text-2,#aaa);">
+      <p>A team playing the 2nd game of a back-to-back (yesterday + today) is in a measurable fatigue state — historical win rates drop 4-8pp vs baseline. We surface games where one side is on a B2B and the other is rested.</p>
+      <p><strong>Recommend</strong>: fade the B2B side, especially when paired with a rested team coming off rest or a home stand.</p>
+    </div>
+  </section>
+  <section class="metric-strip">
+    <div class="metric"><span class="metric-num" id="m_total">--</span><span class="metric-label">Fatigue Edges</span></div>
+    <div class="metric"><span class="metric-num" id="m_nba">--</span><span class="metric-label">NBA Games</span></div>
+    <div class="metric"><span class="metric-num" id="m_nhl">--</span><span class="metric-label">NHL Games</span></div>
+  </section>
+  <div id="container"></div>
+</main>
+<script src="js/nav_badge.js"></script>
+<script>
+fetch("data/b2b_fatigue.json?t=" + Date.now(), { cache: "no-cache" })
+  .then(r => r.json())
+  .then(data => {
+    const by_sport = data.by_sport || {};
+    const nba = by_sport.nba || [];
+    const nhl = by_sport.nhl || [];
+    document.getElementById("m_total").textContent = data.n_fatigued_games_today || 0;
+    document.getElementById("m_nba").textContent = nba.length;
+    document.getElementById("m_nhl").textContent = nhl.length;
+    document.getElementById("status").textContent = `${data.n_fatigued_games_today || 0} games with fatigue edge today · ${(data.generated_at || '').slice(0, 19).replace('T', ' ')}`;
+
+    function renderCard(a, sport) {
+      const cls = a.fatigue_edge === "BOTH" ? "both-tired" : "fatigue-edge";
+      const homeCls = a.home_on_b2b ? "b2b" : "rested";
+      const awayCls = a.away_on_b2b ? "b2b" : "rested";
+      const homeHist = a.home_b2b_history || {};
+      const awayHist = a.away_b2b_history || {};
+      return `<div class="game-card ${cls}">
+        <div class="matchup-title">${a.matchup} <span class="muted" style="font-size:10px;">${sport.toUpperCase()}</span></div>
+        <div class="team-row head"><span>Team</span><span>On B2B?</span><span>L60d B2B</span><span>Margin in B2B</span></div>
+        <div class="team-row ${homeCls}">
+          <span>🏠 <strong>${a.home_team}</strong></span>
+          <span>${a.home_on_b2b ? "YES" : "NO"}</span>
+          <span>${homeHist.n_b2b !== undefined ? `${homeHist.wins}-${homeHist.n_b2b - homeHist.wins}` : "—"}</span>
+          <span>${homeHist.avg_margin_in_b2b !== undefined ? (homeHist.avg_margin_in_b2b >= 0 ? "+" : "") + homeHist.avg_margin_in_b2b : "—"}</span>
+        </div>
+        <div class="team-row ${awayCls}">
+          <span>✈️ <strong>${a.away_team}</strong></span>
+          <span>${a.away_on_b2b ? "YES" : "NO"}</span>
+          <span>${awayHist.n_b2b !== undefined ? `${awayHist.wins}-${awayHist.n_b2b - awayHist.wins}` : "—"}</span>
+          <span>${awayHist.avg_margin_in_b2b !== undefined ? (awayHist.avg_margin_in_b2b >= 0 ? "+" : "") + awayHist.avg_margin_in_b2b : "—"}</span>
+        </div>
+        <div class="recommend">${a.recommend}</div>
+      </div>`;
+    }
+
+    const html = [];
+    if (nba.length) {
+      html.push(`<h2 style="margin-top:18px; color:#c43e3e; font-size:14px;">NBA</h2>`);
+      nba.forEach(a => html.push(renderCard(a, "nba")));
+    }
+    if (nhl.length) {
+      html.push(`<h2 style="margin-top:18px; color:#0080a3; font-size:14px;">NHL</h2>`);
+      nhl.forEach(a => html.push(renderCard(a, "nhl")));
+    }
+    if (!html.length) html.push(`<div class="empty">No B2B games on slate today.</div>`);
+    document.getElementById("container").innerHTML = html.join("");
+  })
+  .catch(err => {
+    document.getElementById("container").innerHTML = `<div class="empty">Could not load b2b_fatigue.json (${err.message}).</div>`;
+  });
+</script>
+</body>
+</html>
