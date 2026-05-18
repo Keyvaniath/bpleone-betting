@@ -1,18 +1,18 @@
 # Tonight's Slate Brief — 2026-05-18
 
-## Slate Quality: 80/100 (HIGH)
-_84% lineups confirmed · 10 rookie SPs_
+## Slate Quality: 82/100 (HIGH)
+_92% lineups confirmed · 10 rookie SPs_
 **Recommendation:** Play normal Kelly sizing.
 
 ## Slate
 - **13 games** scheduled
-- **28 best bets** scored: 0 DK · 0 PP · 12 NRFI · 6 SGP
+- **27 best bets** scored: 0 DK · 0 PP · 11 NRFI · 6 SGP
 - **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$49.88
-- **MC simulation:** EV +$139.34, 84% P(profit), p05 $-82.42 / p95 $348.39
+- **MC simulation:** EV +$124.55, 82% P(profit), p05 $-102.9 / p95 $302.94
 
 ## Top 5 Best Bets
-1. **SFG @ ARI 4-leg SGP @ -220**  (87/100 *****, edge +81.0%)
-   - Joint prob 0.688 (correlation boost +0.213)
+1. **SFG @ ARI 4-leg SGP @ -204**  (82/100 *****, edge +69.2%)
+   - Joint prob 0.671 (correlation boost +0.175)
    - Leg: Harrison Bader UNDER 0.5 batter home runs
 2. **CIN @ PHI YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +39.2%)
    - P(YRFI) 85.2% vs baseline 46.0%
@@ -20,30 +20,33 @@ _84% lineups confirmed · 10 rookie SPs_
    - P(YRFI) 71.9% vs baseline 46.0%
 4. **NYM @ WSN YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +23.3%)
    - P(YRFI) 69.3% vs baseline 46.0%
-5. **CLE @ DET YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +21.9%)
-   - P(YRFI) 67.9% vs baseline 46.0%
+5. **TEX @ COL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +20.2%)
+   - P(YRFI) 66.2% vs baseline 46.0%
 
-## ⚠️ Trap Warnings — 17 flagged
-- **SFG @ ARI 4-leg SGP @ -220** (low):
-   - Edge +81.0% looks big but only 0 settled props on this player — model unproven
+## ⚠️ Trap Warnings — 16 flagged
+- **SFG @ ARI 4-leg SGP @ -204** (low):
+   - Edge +69.2% looks big but only 0 settled props on this player — model unproven
 - **TOR @ NYY 4-leg SGP @ -176** (low):
    - Edge +63.8% looks big but only 0 settled props on this player — model unproven
 - **BAL @ TBR 4-leg SGP @ -138** (low):
    - Edge +47.4% looks big but only 0 settled props on this player — model unproven
 - **MIL @ CHC 4-leg SGP @ -140** (low):
    - Edge +47.2% looks big but only 0 settled props on this player — model unproven
-- **CHW @ SEA 4-leg SGP @ -123** (low):
-   - Edge +40.6% looks big but only 0 settled props on this player — model unproven
+- **LAD @ SDP 4-leg SGP @ -143** (low):
+   - Edge +46.0% looks big but only 0 settled props on this player — model unproven
+
+## Weather leans
+- **UNDER lean** (wind in + cold): BOS @ KCR
 
 ## Hot streaks
-**Batters heating up:** Gavin Sheets (heat +7.69), Ryan Vilade (heat +7.24), Mike Yastrzemski (heat +6.13)
-**Pitchers on a run:** Bryan Woo (heat +12.00), Ryan Weathers (heat +11.37), Kendry Rojas (heat +11.25)
+**Batters heating up:** Gavin Sheets (heat +7.69), Ryan Vilade (heat +7.24), Angel Martínez (heat +6.24)
+**Pitchers on a run:** Slade Cecconi (heat +15.75), Bryan Woo (heat +12.00), Ryan Weathers (heat +11.37)
 
 ## Top correlation-aware SGPs
-- **SFG @ ARI** 4-leg @ -220 fair (joint 0.69, EV +81.04%)
+- **SFG @ ARI** 4-leg @ -204 fair (joint 0.67, EV +69.22%)
    - Harrison Bader UNDER 0.5 batter home runs
-   - Harrison Bader UNDER 2.5 batter total bases
-   - Harrison Bader UNDER 1.5 batter hits
+   - Corbin Carroll UNDER 0.5 batter home runs
+   - Corbin Carroll OVER 0.5 batter total bases
 - **TOR @ NYY** 4-leg @ -176 fair (joint 0.64, EV +63.79%)
    - Amed Rosario OVER 0.5 batter total bases
    - George Springer UNDER 1.5 batter hits
@@ -58,7 +61,7 @@ Athletics, Pittsburgh Pirates, San Diego Padres, Tampa Bay Rays, Toronto Blue Ja
 _Lean late-inning OVER on these games; fade their save situations._
 
 ## NRFI/YRFI strong leans
-- **YRFI** (1st-inning OVER): CIN @ PHI, SFG @ ARI, NYM @ WSN, CLE @ DET, TEX @ COL
+- **YRFI** (1st-inning OVER): CIN @ PHI, SFG @ ARI, NYM @ WSN, TEX @ COL, HOU @ MIN
 
 ## NBA -- PLAYOFFS
 - San Antonio Spurs @ Oklahoma City Thunder (62-20 vs 64-18)  | P(home) 58.4% fair -140 | Scheduled

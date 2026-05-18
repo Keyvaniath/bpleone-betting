@@ -15,28 +15,28 @@
     "data": {
       "duration_s": 1.7,
       "exit_code": 0,
-      "summary": "SUMMARY: 200 ok / 2 empty / 34 flagged / 0 stale24h / 0 stale72h",
+      "summary": "SUMMARY: 198 ok / 2 empty / 36 flagged / 0 stale24h / 0 stale72h",
       "stderr_truncated": ""
     },
     "data_health": {
-      "duration_s": 0.5,
+      "duration_s": 0.6,
       "exit_code": 0,
       "summary": "[OK] golf               | 156 golfers tracked (0 active events)",
       "stderr_truncated": ""
     }
   },
-  "generated_at": "2026-05-18T22:03:43",
+  "generated_at": "2026-05-18T22:34:58",
   "total_duration_s": 2.7,
   "artifacts": {
     "module_import_audit.json": {
-      "generated_at": "2026-05-18T22:03:41",
+      "generated_at": "2026-05-18T22:34:55",
       "n_total": 200,
       "n_ok": 200,
       "n_fail": 0,
       "failures": []
     },
     "html_audit.json": {
-      "generated_at": "2026-05-18T22:03:41",
+      "generated_at": "2026-05-18T22:34:55",
       "summary": {
         "ok": 65,
         "no_nav_js": 0,
@@ -126,14 +126,14 @@
       }
     },
     "data_stub_audit.json": {
-      "generated_at": "2026-05-18T22:03:42",
+      "generated_at": "2026-05-18T22:34:57",
       "summary": {
         "empty": 2,
         "stub_flagged": 0,
-        "zero_count": 34,
+        "zero_count": 36,
         "stale_24h": 0,
         "stale_72h": 0,
-        "ok": 200
+        "ok": 198
       },
       "empty": [
         [
@@ -177,6 +177,10 @@
         [
           "data_health.json",
           "n_yellow=0"
+        ],
+        [
+          "drift_alerts.json",
+          "n_alerts=0"
         ],
         [
           "esports_alerts.json",
@@ -281,13 +285,17 @@
         [
           "velocity_decay.json",
           "n_pitchers=0; n_concerning=0"
+        ],
+        [
+          "weather_drift.json",
+          "n_drifts=0"
         ]
       ],
       "stale_24h": [],
       "stale_72h": []
     },
     "data_health.json": {
-      "generated_at": "2026-05-18T22:03:43",
+      "generated_at": "2026-05-18T22:34:58",
       "overall": "red",
       "n_green": 7,
       "n_yellow": 0,
@@ -297,11 +305,12 @@
           "feed": "mlb",
           "status": "red",
           "findings": [
-            "MLB game count mismatch: local=13 vs MLB API=14"
+            "MLB game count mismatch: local=13 vs MLB API=14",
+            "MLB has 4 live games but live_state.json shows 0 (age 9min)"
           ],
           "upstream_count": 14,
           "local_count": 13,
-          "upstream_live": 0,
+          "upstream_live": 4,
           "local_live": 0,
           "live_state_age_min": 9
         },
