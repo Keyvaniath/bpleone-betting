@@ -4,66 +4,63 @@
 
 _Pipeline health: **DEGRADED** (14/15 artifacts ok; 1 empty, 0 stale)._ 
 
-_Generated at 2026-05-18T23:17:06 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-05-18T23:44:53 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
-**HOU @ MIN - OVER_9.0**
-- Market: -110
-- Model probability: 75.6%
-- Raw edge: +44.26%
+**LAD @ SDP - LAD_ML**
+- Market: -143
+- Model probability: 78.4%
+- Raw edge: +33.21%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
 
-## Full Slate (8 games)
+## Full Slate (5 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 6:40p ET | CLE @ DET | Comerica Park | 70F 9mph | OVER_8.0 +8.65% |
-| 7:40p ET | HOU @ MIN | Target Field | 57F 4mph | OVER_9.0 +44.26% |
-| 7:40p ET | MIL @ CHC | Wrigley Field | 67F 8mph | CHC_ML +31.21% |
 | 8:40p ET | TEX @ COL | Coors Field | 39F 9mph | -- |
-| 9:38p ET | OAK @ LAA | Angel Stadium | 61F 4mph | OAK_ML +12.18% |
-| 9:40p ET | LAD @ SDP | Petco Park | 60F 2mph | LAD_ML +32.14% |
+| 9:38p ET | OAK @ LAA | Angel Stadium | 61F 4mph | OAK_ML +11.83% |
+| 9:40p ET | LAD @ SDP | Petco Park | 62F 8mph | LAD_ML +33.21% |
 | 9:40p ET | SFG @ ARI | Chase Field | indoor | UNDER_9.0 +17.17% |
 | 9:40p ET | CHW @ SEA | T-Mobile Park | indoor | OVER_7.0 +15.89% |
 
 ## Parlays - top 5
 
-- **3-leg @ +670 (prob 19.3%, EV +48.81%)**
-  - OAK @ LAA OAK_ML (-134, model 64.3%)
+- **3-leg @ +673 (prob 19.3%, EV +49.31%)**
+  - OAK @ LAA OAK_ML (-134, model 64.2%)
   - SFG @ ARI UNDER_9.0 (-110, model 61.4%)
-  - CHW @ SEA CHW_ML (+131, model 49.0%)
-- **3-leg @ +670 (prob 19.1%, EV +47.16%)**
-  - OAK @ LAA OAK_ML (-134, model 64.3%)
+  - CHW @ SEA CHW_ML (+132, model 49.0%)
+- **3-leg @ +673 (prob 19.1%, EV +47.66%)**
+  - OAK @ LAA OAK_ML (-134, model 64.2%)
   - CHW @ SEA OVER_7.0 (-110, model 60.7%)
-  - CHW @ SEA CHW_ML (+131, model 49.0%)
-- **3-leg @ +645 (prob 19.7%, EV +46.77%)**
+  - CHW @ SEA CHW_ML (+132, model 49.0%)
+- **3-leg @ +648 (prob 19.7%, EV +47.27%)**
   - HOU @ MIN MIN_ML (-118, model 62.6%)
-  - OAK @ LAA OAK_ML (-134, model 64.3%)
-  - CHW @ SEA CHW_ML (+131, model 49.0%)
-- **3-leg @ +596 (prob 21.0%, EV +46.08%)**
-  - LAD @ SDP UNDER_7.5 (-110, model 56.4%)
+  - OAK @ LAA OAK_ML (-134, model 64.2%)
+  - CHW @ SEA CHW_ML (+132, model 49.0%)
+- **3-leg @ +525 (prob 22.8%, EV +42.39%)**
   - SFG @ ARI UNDER_9.0 (-110, model 61.4%)
+  - SFG @ ARI ARI_ML (-140, model 61.2%)
   - CHW @ SEA OVER_7.0 (-110, model 60.7%)
-- **3-leg @ +573 (prob 21.6%, EV +45.7%)**
+- **3-leg @ +505 (prob 23.5%, EV +42.02%)**
   - HOU @ MIN MIN_ML (-118, model 62.6%)
-  - LAD @ SDP UNDER_7.5 (-110, model 56.4%)
   - SFG @ ARI UNDER_9.0 (-110, model 61.4%)
+  - SFG @ ARI ARI_ML (-140, model 61.2%)
 
 ## Self-Learning Loop
 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
+| batter runs scored | 5937 | 36.9% | 38.7% | 1.048 | 0.954 |
+| batter home runs | 5937 | 11.0% | 12.8% | 1.161 | 0.861 |
+| batter hits | 11876 | 39.7% | 41.6% | 1.048 | 0.954 |
+| pitcher strikeouts | 2588 | 32.6% | 38.1% | 1.167 | 0.857 |
+| batter rbis | 11874 | 19.8% | 23.2% | 1.171 | 0.854 |
 | batter singles | 5937 | 43.8% | 44.5% | 1.016 | 0.984 |
 | batter doubles | 5937 | 14.7% | 15.9% | 1.078 | 0.927 |
-| batter hits | 11876 | 39.7% | 41.6% | 1.048 | 0.954 |
 | batter total bases | 11876 | 26.2% | 31.7% | 1.211 | 0.826 |
-| pitcher strikeouts | 2588 | 32.6% | 38.1% | 1.167 | 0.857 |
-| batter runs scored | 5937 | 36.9% | 38.7% | 1.048 | 0.954 |
-| batter rbis | 11874 | 19.8% | 23.2% | 1.171 | 0.854 |
-| batter home runs | 5937 | 11.0% | 12.8% | 1.161 | 0.861 |
 
 Cumulative graded plays: 118201. Wins: 87361. Hit rate: 73.9%.
 
@@ -72,10 +69,9 @@ Cumulative graded plays: 118201. Wins: 87361. Hit rate: 73.9%.
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
 | CHW @ SEA | 36.0% | +178 | 5.11 | +169 | -169 |
-| CLE @ DET | 32.1% | +211 | 5.49 | +123 | -123 |
-| HOU @ MIN | 34.2% | +193 | 5.25 | -104 | +104 |
-| LAD @ SDP | 45.2% | +121 | 3.91 | +679 | -679 |
-| MIL @ CHC | 46.5% | +115 | 4.02 | -246 | +246 |
+| HOU @ MIN | 34.2% | +193 | 5.37 | -- | -- |
+| LAD @ SDP | 45.2% | +121 | 4.16 | +694 | -694 |
+| MIL @ CHC | 46.5% | +115 | 3.83 | -- | -- |
 | OAK @ LAA | 53.1% | -113 | 3.23 | +312 | -312 |
 | SFG @ ARI | 28.1% | +255 | 6.34 | +111 | -111 |
 | TEX @ COL | 33.8% | +196 | 5.11 | +231 | -231 |

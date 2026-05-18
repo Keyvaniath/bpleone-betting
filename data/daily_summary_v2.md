@@ -11,15 +11,15 @@
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.581)
-- **Total games on board:** 103
+- **Total games on board:** 119
 - **Strong home favorites:** 2 | **Strong road dogs:** 1
 
 ## 🎯 Top 5 Best Bets
 1. **SFG @ ARI 4-leg SGP @ -204** (82/100 ★★★★★)
-2. **CIN @ PHI YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-3. **SFG @ ARI YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-4. **NYM @ WSN YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-5. **TEX @ COL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+2. **SFG @ ARI YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+3. **CLE @ DET YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+4. **TEX @ COL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+5. **HOU @ MIN YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
 
 ## 🎮 Player Play of the Day (cross-sport)
 - **[LOL]** Inspired UNDER 3.5 Kills | MED conviction · model 61.7% fair -161
@@ -39,12 +39,12 @@
 
 ## 💰 Today's Portfolio (8 picks)
 - Total stake: **$340.0** (34.0% of $1000 bankroll)
-- Expected EV: **$13.15**
+- Expected EV: **$-7.21**
   - #1 [SGP] $50 on SFG @ ARI 4-leg SGP @ -204 (P=67%)
-  - #2 [SGP] $50 on TOR @ NYY 4-leg SGP @ -176 (P=64%)
-  - #3 [NRFI] $50 on CIN @ PHI YRFI (1st-inning OVER 0.5) (P=85%)
-  - #4 [NRFI] $50 on SFG @ ARI YRFI (1st-inning OVER 0.5) (P=72%)
-  - #5 [NRFI] $50 on NYM @ WSN YRFI (1st-inning OVER 0.5) (P=69%)
+  - #2 [NRFI] $50 on SFG @ ARI YRFI (1st-inning OVER 0.5) (P=72%)
+  - #3 [NRFI] $50 on CLE @ DET YRFI (1st-inning OVER 0.5) (P=68%)
+  - #4 [NRFI] $50 on TEX @ COL YRFI (1st-inning OVER 0.5) (P=66%)
+  - #5 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
 
 ## 🎯 Convergence Picks (7 stacked games)
 - ELITE: **2** · HIGH: 1 · MED: 4
@@ -54,12 +54,12 @@
   - [MED] Montreal Canadiens @ Buffalo Sabres : 2 signals (HEAT_COLD, HEAT_COLD)
   - [MED] Washington Mystics @ Dallas Wings : 2 signals (ATS, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (9)
+## ⚾ Top MLB Pitcher K Plays (7)
 - **Shota Imanaga** OVER 4.5 K (78%) fair -347
-- **Ryan Weathers** OVER 5.5 K (72%) fair -253
 - **Yoshinobu Yamamoto** OVER 4.5 K (71%) fair -251
 - **MacKenzie Gore** OVER 4.5 K (70%) fair -233
 - **Robbie Ray** OVER 4.5 K (66%) fair -195
+- **Kendry Rojas** OVER 6.5 K (65%) fair -190
 
 ## 📈 Streak Regression Alerts (2)
 - [NBA] Oklahoma City Thunder on W4 L10 4-0 -- Oklahoma City Thunder on W4 -- no historical sample
