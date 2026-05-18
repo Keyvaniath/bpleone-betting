@@ -453,10 +453,31 @@ def run() -> Dict[str, Any]:
             })
 
     # === 10 new ESPN sports injection (WNBA/MLS/EPL/UCL/NFL/NCAAF/NCAAB/CWS) ===
+    def _has_signal(g: dict) -> bool:
+        """Filter out games where the model has no real signal (e.g. preseason
+        teams that are all 0-0). If both teams are 0-0 the only edge is HFA,
+        which is not actionable -- skip those from best_bets."""
+        def _wins(rec):
+            if not rec or not isinstance(rec, str): return 0
+            try: return int(rec.split("-")[0])
+            except Exception: return 0
+        def _losses(rec):
+            if not rec or not isinstance(rec, str): return 0
+            try: return int(rec.split("-")[1])
+            except Exception: return 0
+        h_w = _wins(g.get("home_record"))
+        h_l = _losses(g.get("home_record"))
+        a_w = _wins(g.get("away_record"))
+        a_l = _losses(g.get("away_record"))
+        # Need at least one team with games played
+        return (h_w + h_l + a_w + a_l) > 0
+
     def _inject_espn_sport(source: str, file: str, url: str, sweet_min: float = 0.55, sweet_max: float = 0.72):
         d = _load(os.path.join(DATA_DIR, file))
         for g in (d.get("games") or [])[:5]:
             if g.get("state") == "post": continue
+            # Skip games where both teams are 0-0 (preseason / no data signal)
+            if not _has_signal(g): continue
             ph = g.get("p_home_win") or 0
             if sweet_min <= ph <= sweet_max:
                 candidates.append({
