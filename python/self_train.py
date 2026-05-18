@@ -144,21 +144,38 @@ def backtest_sport(sport_key: str) -> Dict[str, Any]:
             "actual_avg": round(sum(p["actual_home_win"] for p in in_bin) / len(in_bin), 3),
         })
 
-    # Recommendation
-    if abs(bias) < 0.02:
-        reco = {"applied": False, "note": "model is well-calibrated"}
-    elif n < 30:
-        reco = {"applied": False, "note": f"not enough sample size ({n} games); need >= 30"}
+    # Recommendation: tiered min-sample with shrinkage on small N
+    # Below 15: zero confidence -- don't apply
+    # 15-29: apply with shrinkage (half the recommended shift)
+    # 30+: apply full shift (still cap at 10pp to avoid runaway corrections)
+    MIN_SAMPLE = 15
+    FULL_SAMPLE = 30
+    BIAS_THRESHOLD_PP = 0.02   # 2pp = "well calibrated"
+    MAX_SHIFT_PP = 0.10        # never shift > 10pp
+    if abs(bias) < BIAS_THRESHOLD_PP:
+        reco = {"applied": False, "note": "model is well-calibrated (<2pp bias)"}
+    elif n < MIN_SAMPLE:
+        reco = {"applied": False, "note": f"not enough sample size ({n} games); need >= {MIN_SAMPLE}"}
     else:
+        # Linear shrinkage for partial samples
+        if n >= FULL_SAMPLE:
+            shrinkage = 1.0
+        else:
+            shrinkage = (n - MIN_SAMPLE) / (FULL_SAMPLE - MIN_SAMPLE)  # 0.0 at 15, 1.0 at 30
+            shrinkage = max(0.3, min(1.0, shrinkage))  # floor at 30% so tiny samples still bend
+        raw_shift = -bias * shrinkage
+        # Cap at MAX_SHIFT_PP
+        clamped_shift = max(-MAX_SHIFT_PP, min(MAX_SHIFT_PP, raw_shift))
         reco = {
             "applied": True,
             "bias_pp": round(bias * 100, 1),
-            "recommended_shift": round(-bias, 4),    # apply opposite of bias
+            "shrinkage": round(shrinkage, 3),
+            "recommended_shift": round(clamped_shift, 4),
             "note": (f"Model over-predicting home by {bias*100:.1f}pp; subtract "
-                      f"{abs(bias)*100:.1f}pp from P(home) on future predictions"
+                      f"{abs(clamped_shift)*100:.1f}pp from P(home) (shrinkage {shrinkage:.0%})"
                       if bias > 0 else
                       f"Model under-predicting home by {abs(bias)*100:.1f}pp; add "
-                      f"{abs(bias)*100:.1f}pp to P(home) on future predictions"),
+                      f"{abs(clamped_shift)*100:.1f}pp to P(home) (shrinkage {shrinkage:.0%})"),
         }
 
     payload = {
