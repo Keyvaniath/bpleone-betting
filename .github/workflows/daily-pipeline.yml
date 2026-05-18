@@ -433,6 +433,9 @@ jobs:
       - name: Master audit (imports + HTML + data + health)
         working-directory: python
         run: python _audit_master.py || true
+      - name: Training convergence tracker (per-market learning trajectory)
+        working-directory: python
+        run: python training_convergence.py || true
       - name: Model health score (one-number summary)
         working-directory: python
         run: python model_health.py || true

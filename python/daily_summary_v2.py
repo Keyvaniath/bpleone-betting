@@ -157,6 +157,19 @@ def run() -> Dict[str, Any]:
             lines.append(f"- [{a['sport']}] {a['team']} on {a['streak']} L10 {a.get('l10','?')} -- {a.get('recommendation','')[:80]}")
         lines.append("")
 
+    # Training convergence (per-market learning trajectory)
+    tc = _load(os.path.join(DATA_DIR, "training_convergence.json"))
+    if tc.get("markets"):
+        ts = tc.get("tier_summary") or {}
+        lines.append(f"## 🧠 Training Convergence")
+        lines.append(f"- ELITE: **{ts.get('ELITE',0)}** · HEALTHY: {ts.get('HEALTHY',0)} · OK: {ts.get('OK',0)} · DEGRADED: **{ts.get('DEGRADED',0)}**")
+        # Surface divergent markets
+        divergent = [m for m in tc["markets"] if m.get("directional_bias")]
+        if divergent:
+            for m in divergent[:3]:
+                lines.append(f"  - ⚠️ **{m['market']}**: {m['verdict']} (cf={m.get('latest_correction_factor')})")
+        lines.append("")
+
     # Self-training summary
     st = _load(os.path.join(DATA_DIR, "self_training_summary.json"))
     if st.get("by_sport"):
