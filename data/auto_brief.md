@@ -1,14 +1,14 @@
 # Tonight's Slate Brief — 2026-05-19
 
-## Slate Quality: 71/100 (MEDIUM)
-_57% lineups confirmed · 16 rookie SPs · 1 high early-hook risk SPs_
-**Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
+## Slate Quality: 83/100 (HIGH)
+_100% lineups confirmed · 10 rookie SPs · 1 high early-hook risk SPs_
+**Recommendation:** Play normal Kelly sizing.
 
 ## Slate
-- **14 games** scheduled
-- **35 best bets** scored: 0 DK · 0 PP · 9 NRFI · 6 SGP
+- **10 games** scheduled
+- **32 best bets** scored: 0 DK · 0 PP · 9 NRFI · 6 SGP
 - **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$50.33
-- **MC simulation:** EV +$114.89, 82% P(profit), p05 $-90.28 / p95 $282.54
+- **MC simulation:** EV +$105.67, 82% P(profit), p05 $-88.16 / p95 $272.45
 
 ## Top 5 Best Bets
 1. **MIL @ CHC NRFI (no run 1st inning)**  (80/100 ****, edge +30.8%)
@@ -17,51 +17,52 @@ _57% lineups confirmed · 16 rookie SPs · 1 high early-hook risk SPs_
    - P(YRFI) 72.7% vs baseline 46.0%
 3. **BOS @ KCR YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +24.2%)
    - P(YRFI) 70.2% vs baseline 46.0%
-4. **HOU @ MIN YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +21.8%)
-   - P(YRFI) 67.8% vs baseline 46.0%
-5. **OAK @ LAA YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +21.6%)
+4. **OAK @ LAA YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +21.6%)
    - P(YRFI) 67.7% vs baseline 46.0%
+5. **LAD @ SDP 4-leg SGP @ -192**  (79/100 *****, edge +62.2%)
+   - Joint prob 0.657 (correlation boost +0.151)
+   - Leg: Andy Pages OVER 0.5 batter total bases
 
 ## ⚠️ Trap Warnings — 17 flagged
-- **TOR @ NYY 4-leg SGP @ -186** (low):
-   - Edge +64.2% looks big but only 0 settled props on this player — model unproven
-- **NYM @ WSN 4-leg SGP @ -187** (low):
-   - Edge +62.8% looks big but only 0 settled props on this player — model unproven
-- **CLE @ DET 4-leg SGP @ -127** (low):
-   - Edge +44.5% looks big but only 0 settled props on this player — model unproven
-- **BAL @ TBR 4-leg SGP @ -109** (low):
-   - Edge +42.0% looks big but only 0 settled props on this player — model unproven
-- **TEX @ COL 4-leg SGP @ -106** (low):
-   - Edge +36.2% looks big but only 0 settled props on this player — model unproven
+- **LAD @ SDP 4-leg SGP @ -192** (low):
+   - Edge +62.2% looks big but only 0 settled props on this player — model unproven
+- **SFG @ ARI 4-leg SGP @ -183** (low):
+   - Edge +61.7% looks big but only 0 settled props on this player — model unproven
+- **TOR @ NYY 4-leg SGP @ -139** (low):
+   - Edge +47.1% looks big but only 0 settled props on this player — model unproven
+- **MIL @ CHC 4-leg SGP @ -142** (low):
+   - Edge +46.2% looks big but only 0 settled props on this player — model unproven
+- **BOS @ KCR 4-leg SGP @ -114** (low):
+   - Edge +35.0% looks big but only 0 settled props on this player — model unproven
 
 ## SP early-hook risk
 HIGH risk: Bailey Falter
 _Fade their K OVERs; lean OPP team total OVER and F5._
 
 ## Hot streaks
-**Batters heating up:** Byron Buxton (heat +8.17), Gavin Sheets (heat +6.58), Angel Martínez (heat +5.97)
+**Batters heating up:** Byron Buxton (heat +8.17), Gavin Sheets (heat +6.58), Harrison Bader (heat +5.49)
 **Pitchers on a run:** Ben Brown (heat +15.75), Ranger Suarez (heat +13.50), Jacob Misiorowski (heat +12.86)
 
 ## Top correlation-aware SGPs
-- **TOR @ NYY** 4-leg @ -186 fair (joint 0.65, EV +64.15%)
-   - Andrés Giménez UNDER 2.5 batter total bases
+- **LAD @ SDP** 4-leg @ -192 fair (joint 0.66, EV +62.17%)
+   - Andy Pages OVER 0.5 batter total bases
+   - Andy Pages UNDER 0.5 batter home runs
+   - Kyle Tucker UNDER 3.5 batter hrr
+- **SFG @ ARI** 4-leg @ -183 fair (joint 0.65, EV +61.71%)
+   - Adrian Del Castillo UNDER 0.5 batter doubles
+   - Corbin Carroll OVER 0.5 batter total bases
+   - Corbin Carroll UNDER 0.5 batter home runs
+- **TOR @ NYY** 4-leg @ -139 fair (joint 0.58, EV +47.06%)
    - Trent Grisham UNDER 2.5 batter total bases
    - Trent Grisham UNDER 0.5 batter home runs
-- **NYM @ WSN** 4-leg @ -187 fair (joint 0.65, EV +62.77%)
-   - Mark Vientos OVER 0.5 batter total bases
-   - Mark Vientos UNDER 0.5 batter doubles
-   - Mark Vientos UNDER 0.5 batter home runs
-- **CLE @ DET** 4-leg @ -127 fair (joint 0.56, EV +44.51%)
-   - Spencer Torkelson UNDER 1.5 batter hits
-   - Spencer Torkelson UNDER 2.5 batter total bases
-   - Angel Martínez OVER 0.5 batter total bases
+   - Aaron Judge UNDER 3.5 batter total bases
 
 ## Bullpens GASSED tonight
 San Diego Padres, San Francisco Giants, Tampa Bay Rays, Texas Rangers, Minnesota Twins, Atlanta Braves, Chicago White Sox, Miami Marlins
 _Lean late-inning OVER on these games; fade their save situations._
 
 ## NRFI/YRFI strong leans
-- **YRFI** (1st-inning OVER): LAD @ SDP, BOS @ KCR, HOU @ MIN, OAK @ LAA, SFG @ ARI
+- **YRFI** (1st-inning OVER): LAD @ SDP, BOS @ KCR, OAK @ LAA, SFG @ ARI, HOU @ MIN
 - **NRFI** (1st-inning UNDER): MIL @ CHC
 
 ## Golf -- THE CJ CUP Byron Nelson

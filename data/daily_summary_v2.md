@@ -1,25 +1,25 @@
 # EdgeStat Daily Summary — 2026-05-19
 
-## 🏥 Model Health: 81.1/100 [HEALTHY]
+## 🏥 Model Health: 83.7/100 [HEALTHY]
 - Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 99.6/100
+  - 🟢 Calibration Freshness: 100.0/100
   - 🟢 Hit Rate Trend: 84.3/100
   - 🔴 Brier Trend: 52.3/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟡 Data Health: 77.8/100
-  - 🟢 Edge Count: 82.9/100
+  - 🟢 Data Health: 88.9/100
+  - 🟢 Edge Count: 85.7/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.586)
-- **Total games on board:** 122
-- **Strong home favorites:** 11 | **Strong road dogs:** 4
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.596)
+- **Total games on board:** 119
+- **Strong home favorites:** 11 | **Strong road dogs:** 1
 
 ## 🎯 Top 5 Best Bets
 1. **MIL @ CHC NRFI (no run 1st inning)** (80/100 ★★★★)
 2. **LAD @ SDP YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 3. **BOS @ KCR YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-4. **HOU @ MIN YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-5. **OAK @ LAA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+4. **OAK @ LAA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+5. **LAD @ SDP 4-leg SGP @ -192** (79/100 ★★★★★)
 
 ## 🎮 Player Play of the Day (cross-sport)
 - **[LOL]** Inspired UNDER 3.5 Kills | MED conviction · model 61.7% fair -161
@@ -28,8 +28,7 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (4)
-- [CWS] **Louisiana Ragin' Cajuns** HOME (2-1 L10) · model 71.6% fair -252
+## ⚡ Pre-Game HIGH Conviction (3)
 - [CWS] **Ohio State Buckeyes** HOME (3-1 L10) · model 66.2% fair -196
 - [NHL] **Colorado Avalanche** HOME (3-1 L10) · model 64.8% fair -184
 - [CWS] **Oklahoma Sooners** HOME (1-3 L10) · model 63.2% fair -172
@@ -46,24 +45,24 @@
   - Phoenix Mercury (WNBA): Phoenix Mercury OUTPERFORMING expected margin by 6.5pts in recent games -- model bias may persist
   - Iowa Hawkeyes (CWS): Iowa Hawkeyes UNDERPERFORMING expected margin by 7.3pts in recent games -- model bias may persist
 
-## 💰 Today's Portfolio (8 picks)
-- Total stake: **$340.0** (34.0% of $1000 bankroll)
-- Expected EV: **$8.97**
-  - #1 [SGP] $50 on TOR @ NYY 4-leg SGP @ -186 (P=65%)
-  - #2 [SGP] $50 on NYM @ WSN 4-leg SGP @ -187 (P=65%)
-  - #3 [NRFI] $50 on MIL @ CHC NRFI (no run 1st inning) (P=85%)
-  - #4 [NRFI] $50 on LAD @ SDP YRFI (1st-inning OVER 0.5) (P=73%)
-  - #5 [NRFI] $50 on BOS @ KCR YRFI (1st-inning OVER 0.5) (P=70%)
+## 💰 Today's Portfolio (9 picks)
+- Total stake: **$345.0** (34.5% of $1000 bankroll)
+- Expected EV: **$7.6**
+  - #1 [NRFI] $50 on MIL @ CHC NRFI (no run 1st inning) (P=85%)
+  - #2 [NRFI] $50 on LAD @ SDP YRFI (1st-inning OVER 0.5) (P=73%)
+  - #3 [NRFI] $50 on BOS @ KCR YRFI (1st-inning OVER 0.5) (P=70%)
+  - #4 [SGP] $35 on LAD @ SDP 4-leg SGP @ -192 (P=66%)
+  - #5 [SGP] $35 on SFG @ ARI 4-leg SGP @ -183 (P=65%)
 
 ## 🎯 Convergence Picks (6 stacked games)
-- ELITE: **1** · HIGH: 3 · MED: 2
+- ELITE: **1** · HIGH: 2 · MED: 3
   - [ELITE] Cleveland Cavaliers @ New York Knicks : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
   - [HIGH] Vegas Golden Knights @ Colorado Avalanche : 3 signals (PREGAME, ANOMALY, ANOMALY)
   - [HIGH] LAFC @ Nashville SC : 3 signals (HEAT_COLD, ATS, ATS)
-  - [HIGH] Tottenham Hotspur @ Chelsea : 3 signals (PREGAME, ATS, ATS)
   - [MED] Toronto Tempo @ Phoenix Mercury : 2 signals (PREGAME, ANOMALY)
+  - [MED] Portland Timbers @ Inter Miami CF : 2 signals (HEAT_COLD, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (11)
+## ⚾ Top MLB Pitcher K Plays (10)
 - **Landen Roupp** OVER 4.5 K (76%) fair -321
 - **Jacob Misiorowski** OVER 6.5 K (76%) fair -310
 - **Emmet Sheehan** OVER 4.5 K (72%) fair -260
@@ -87,14 +86,14 @@
   - 🔥 T4 **Cameron Champ** (USA): +0 total -- finished T4
   - 🔥 T5 **Doug Ghim** (USA): +0 total -- finished T5
 
-## 🔥 MLB Batter Heat (26 HOT / 42 COLD)
+## 🔥 MLB Batter Heat (26 HOT / 40 COLD)
+  - 🔥 **Alec Bohm** (PHI): L14 .360 / season .222 (+138pts)
   - 🔥 **Blaze Alexander** (BAL): L14 .375 / season .245 (+130pts)
   - 🔥 **Carson Benge** (NYM): L14 .382 / season .253 (+129pts)
-  - 🔥 **Alec Bohm** (PHI): L14 .333 / season .217 (+116pts)
-  - 🔥 **Jakob Marsee** (MIA): L14 .326 / season .215 (+111pts)
-  - 🔥 **Willy Adames** (SF): L14 .339 / season .238 (+101pts)
+  - 🔥 **Cedric Mullins** (TB): L14 .310 / season .182 (+128pts)
+  - 🔥 **Kyle Manzardo** (CLE): L14 .341 / season .229 (+112pts)
   - ❄️ **Moisés Ballesteros** (CHC): L14 .065 / season .250 (-185pts) -- FADE props
-  - ❄️ **Ozzie Albies** (ATL): L14 .118 / season .274 (-156pts) -- FADE props
+  - ❄️ **Ozzie Albies** (ATL): L14 .113 / season .271 (-158pts) -- FADE props
   - ❄️ **Edouard Julien** (COL): L14 .073 / season .225 (-152pts) -- FADE props
   - ❄️ **Dalton Rushing** (LAD): L14 .132 / season .260 (-128pts) -- FADE props
   - ❄️ **Christian Walker** (HOU): L14 .140 / season .267 (-127pts) -- FADE props
@@ -102,12 +101,12 @@
 ## 😴 B2B Fatigue Edges (1)
 - [NBA] FADE Cleveland Cavaliers (away on B2B)
 
-## 📈 Streak Regression Alerts (10)
+## 📈 Streak Regression Alerts (9)
 - [NBA] New York Knicks on W3 L10 3-0 -- New York Knicks on W3 -- no historical sample
-- [CWS] Missouri Tigers on L3 L10 0-3 -- Missouri Tigers on L3 -- no historical sample
-- [CWS] Vanderbilt Commodores on W3 L10 3-0 -- Vanderbilt Commodores on W3 -- no historical sample
 - [CWS] Iowa Hawkeyes on W3 L10 3-0 -- Iowa Hawkeyes on W3 -- no historical sample
 - [CWS] Austin Peay Governors on L3 L10 0-3 -- Austin Peay Governors on L3 -- no historical sample
+- [CWS] Vanderbilt Commodores on W3 L10 3-0 -- Vanderbilt Commodores on W3 -- no historical sample
+- [CWS] Marshall Thundering Herd on L3 L10 0-3 -- Marshall Thundering Herd on L3 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**
