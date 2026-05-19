@@ -232,6 +232,7 @@ ARTIFACTS: List[Dict[str, Any]] = [
     {"name": "nhl_team_props.json",       "cadence_mins":  8*60},
     {"name": "slate_player_pot.json",     "cadence_mins":  8*60},
     {"name": "slate_team_pot.json",       "cadence_mins":  8*60},
+    {"name": "todays_top_plays.json",     "cadence_mins":  8*60},
     {"name": "soccer_extended_props.json","cadence_mins":  8*60, "optional": True},
     {"name": "wnba_player_heat.json",     "cadence_mins":  8*60, "optional": True},
     {"name": "ufc_matchup.json",          "cadence_mins": 24*60, "optional": True},

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Today's Top Plays | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/nav.js"></script>
+<style>
+  .play-row { display: grid; grid-template-columns: 50px 70px 1.5fr 1.3fr 70px 80px 80px 70px; gap: 10px; padding: 11px 14px; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 12px; border-bottom: 1px solid rgba(255,255,255,0.04); }
+  .play-row.head { background: rgba(255,255,255,0.04); color: var(--muted,#888); font-size: 10px; text-transform: uppercase; padding: 8px 14px; }
+  .play-row.elite { border-left: 3px solid #d4a04a; background: rgba(212,160,74,0.05); }
+  .play-row.strong { border-left: 3px solid #58c878; background: rgba(88,200,120,0.03); }
+  .sport-pill { padding: 2px 7px; border-radius: 4px; font-size: 10px; font-weight: 700; }
+  .sport-pill.MLB, .sport-pill.MLB-PP { background: #1e5db8; color: #fff; }
+  .sport-pill.NBA { background: #c43e3e; color: #fff; }
+  .sport-pill.NHL { background: #0080a3; color: #fff; }
+  .sport-pill.LOL { background: #b450dc; color: #fff; }
+  .sport-pill.CS { background: #ffa51e; color: #0a0a0a; }
+  .sport-pill.KBO { background: #cf3939; color: #fff; }
+  .sport-pill.EPL { background: #37003c; color: #fff; }
+  .sport-pill.MLS { background: #2da748; color: #fff; }
+  .sport-pill.UCL { background: #0066cc; color: #fff; }
+  .sport-pill.UFC { background: #d40c1e; color: #fff; }
+  .sport-pill.CWS { background: #cc0033; color: #fff; }
+  .sport-pill.WNBA { background: #fa6e21; color: #fff; }
+  .rank { font-weight: 700; color: #d4a04a; }
+  .prob-cell { font-weight: 700; }
+  .prob-cell.elite { color: #d4a04a; }
+  .prob-cell.strong { color: #58c878; }
+  .edge-pos { color: #58c878; font-weight: 700; }
+  .edge-neg { color: #e35a5a; }
+  .kelly-pill { display: inline-block; padding: 2px 7px; border-radius: 4px; font-size: 10px; background: rgba(255,255,255,0.06); }
+  .info-card { padding: 16px 20px; background: linear-gradient(135deg, rgba(212,160,74,0.1), rgba(212,160,74,0.02)); border: 1px solid rgba(212,160,74,0.3); border-radius: 10px; margin-bottom: 18px; }
+</style>
+</head>
+<body class="page-top-plays">
+<header class="topbar">
+  <div class="brand"><a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a><span class="tagline">by bpleone</span></div>
+  <nav class="mainnav"><!-- nav.js injects --></nav>
+  <div class="topbar-actions"><div class="ticker">LIVE</div></div>
+</header>
+<main class="container">
+  <section class="page-head">
+    <h1>🎯 Today's Top Plays — Curated +EV Picks</h1>
+    <p class="muted" id="status">Loading…</p>
+  </section>
+  <div class="info-card">
+    <strong style="color:#d4a04a;">What this is:</strong>
+    <span style="color: var(--text-2,#aaa); font-size:13px;">
+      The 25 highest-edge picks for today across all sports. Probability ≥70%, ranked by edge_pct (Kelly EV at fair market price). Use quarter-Kelly unit sizing — never bet more than the qK_unit column suggests.
+    </span>
+  </div>
+  <section class="metric-strip">
+    <div class="metric"><span class="metric-num" id="m_total">--</span><span class="metric-label">Total +EV Plays</span></div>
+    <div class="metric"><span class="metric-num" id="m_top">--</span><span class="metric-label">Best Edge %</span></div>
+    <div class="metric"><span class="metric-num" id="m_sport">--</span><span class="metric-label">Top Sport</span></div>
+  </section>
+  <section class="card">
+    <div class="card-head"><span>📊 Top 25 (ranked by edge)</span><span class="muted" id="meta">--</span></div>
+    <div id="container"></div>
+  </section>
+  <section class="card" style="margin-top: 18px;">
+    <div class="card-head"><span>💰 Top 5 by Kelly Fraction (size up these)</span></div>
+    <div id="kelly_container"></div>
+  </section>
+</main>
+<script src="js/nav_badge.js"></script>
+<script>
+function probClass(p) { return p >= 0.85 ? 'elite' : 'strong'; }
+
+fetch("data/todays_top_plays.json?t=" + Date.now(), { cache: "no-cache" })
+  .then(r => r.json())
+  .then(d => {
+    const picks = d.top_25 || [];
+    document.getElementById("m_total").textContent = d.n_total_plays || 0;
+    document.getElementById("m_top").textContent = picks[0] ? "+"+picks[0].edge_pct.toFixed(0)+"%" : "--";
+    const bySport = d.by_sport || {};
+    const top = Object.entries(bySport).sort((a,b) => b[1]-a[1])[0];
+    document.getElementById("m_sport").textContent = top ? `${top[0]} ${top[1]}` : "--";
+    document.getElementById("status").textContent = `${d.n_total_plays} plays · top edge +${picks[0]?.edge_pct.toFixed(0)}% · ${(d.generated_at||'').slice(0,19).replace('T',' ')}`;
+
+    let html = `<div class="play-row head"><span>Rank</span><span>Sport</span><span>Player/Game</span><span>Market</span><span>Prob</span><span>Edge</span><span>Fair</span><span>qK u</span></div>`;
+    for (let i = 0; i < picks.length; i++) {
+      const c = picks[i];
+      const cls = c.prob >= 0.85 ? 'elite' : 'strong';
+      const fairStr = (c.fair_american && typeof c.fair_american === 'number') ? (c.fair_american > 0 ? '+'+c.fair_american : ''+c.fair_american) : '--';
+      html += `<div class="play-row ${cls}">
+        <span class="rank">${i+1}</span>
+        <span><span class="sport-pill ${c.sport}">${c.sport}</span></span>
+        <span><strong>${c.player_or_matchup || '?'}</strong>${c.team ? ' <span class="muted">('+c.team+')</span>' : ''}</span>
+        <span class="muted">${c.market || '?'}</span>
+        <span class="prob-cell ${probClass(c.prob)}">${(c.prob*100).toFixed(0)}%</span>
+        <span class="edge-pos">+${c.edge_pct.toFixed(1)}%</span>
+        <span class="muted">${fairStr}</span>
+        <span><span class="kelly-pill">${c.unit_size_quarter_kelly?.toFixed(2)}u</span></span>
+      </div>`;
+    }
+    document.getElementById("container").innerHTML = html;
+    document.getElementById("meta").textContent = `${picks.length} picks shown`;
+
+    // Top 5 by Kelly
+    const kelly = d.top_5_by_kelly || [];
+    let kh = `<div class="play-row head"><span>Rank</span><span>Sport</span><span>Player/Game</span><span>Market</span><span>Prob</span><span>Kelly%</span><span>qK Unit</span><span>Edge</span></div>`;
+    for (let i = 0; i < kelly.length; i++) {
+      const c = kelly[i];
+      kh += `<div class="play-row elite">
+        <span class="rank">${i+1}</span>
+        <span><span class="sport-pill ${c.sport}">${c.sport}</span></span>
+        <span><strong>${c.player_or_matchup || '?'}</strong></span>
+        <span class="muted">${c.market || '?'}</span>
+        <span class="prob-cell elite">${(c.prob*100).toFixed(0)}%</span>
+        <span class="prob-cell elite">${(c.kelly_fraction*100).toFixed(1)}%</span>
+        <span><span class="kelly-pill">${c.unit_size_quarter_kelly?.toFixed(2)}u</span></span>
+        <span class="edge-pos">+${c.edge_pct.toFixed(1)}%</span>
+      </div>`;
+    }
+    document.getElementById("kelly_container").innerHTML = kh;
+  })
+  .catch(err => {
+    document.getElementById("container").innerHTML = `<p class="muted" style="padding:14px;">Could not load todays_top_plays.json (${err.message}).</p>`;
+  });
+</script>
+</body>
+</html>

@@ -45,6 +45,7 @@
     { href: "model-health.html",        label: "🏥 Model Health" },
     { href: "live-momentum.html",       label: "📈 Live Momentum" },
     { href: "slate-player-pot.html",    label: "🎯 Slate Player Pot" },
+    { href: "todays-top-plays.html",    label: "⭐ Today's Top Plays" },
     { href: "data-health.html",         label: "📡 Data Health" },
     { href: "backtest-dashboard.html",  label: "Backtest Dashboard" },
     { href: "reliability.html",         label: "Calibration" },
