@@ -139,6 +139,16 @@ def run() -> Dict[str, Any]:
                 lines.append(f"- **{p['pitcher']}** OVER {p['line']} K ({p['p_over']*100:.0f}%) fair {p.get('fair_over','?')}")
             lines.append("")
 
+    # MLB batter heat (L14 vs season splits)
+    bh = _load(os.path.join(DATA_DIR, "mlb_batter_heat.json"))
+    if bh.get("n_hot", 0) > 0 or bh.get("n_cold", 0) > 0:
+        lines.append(f"## 🔥 MLB Batter Heat ({bh.get('n_hot',0)} HOT / {bh.get('n_cold',0)} COLD)")
+        for a in (bh.get("hot_batters") or [])[:5]:
+            lines.append(f"  - 🔥 **{a['name']}** ({a['team']}): L14 .{a['l14_avg']*1000:03.0f} / season .{a['season_avg']*1000:03.0f} (+{a['delta_pp']:.0f}pts)")
+        for a in (bh.get("cold_batters") or [])[:5]:
+            lines.append(f"  - ❄️ **{a['name']}** ({a['team']}): L14 .{a['l14_avg']*1000:03.0f} / season .{a['season_avg']*1000:03.0f} ({a['delta_pp']:.0f}pts) -- FADE props")
+        lines.append("")
+
     # B2B fatigue alerts
     b2b = _load(os.path.join(DATA_DIR, "b2b_fatigue.json"))
     if b2b.get("n_fatigued_games_today", 0) > 0:
