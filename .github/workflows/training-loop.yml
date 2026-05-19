@@ -12,7 +12,14 @@ name: Training Loop (Continuous Calibration)
 
 on:
   schedule:
-    - cron: '15 * * * *'   # every hour at :15 (offset from daily-pipeline)
+    # Game-time: every 20 min during the MLB live window (12 PM ET - 2 AM ET).
+    # 17:00-23:59 UTC = 1 PM - 7:59 PM ET (afternoon + early evening)
+    # 00:00-05:59 UTC = 8 PM - 1:59 AM ET (late evening + west coast)
+    - cron: '*/20 17-23 * * *'
+    - cron: '*/20 0-5 * * *'
+    # Off-game-time: hourly so the loop still ticks but doesn't waste minutes.
+    # 06:00-16:59 UTC = 2 AM - 12:59 PM ET (overnight + morning)
+    - cron: '15 6-16 * * *'
   workflow_dispatch:
 
 permissions:
