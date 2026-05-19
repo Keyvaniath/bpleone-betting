@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cross-Sport Parlays | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/nav.js"></script>
+<style>
+  .parlay-card { padding: 14px 16px; margin-bottom: 10px; background: rgba(255,255,255,0.03); border-radius: 8px; border-left: 3px solid #d4a04a; font-family: 'JetBrains Mono', monospace; }
+  .parlay-card.balanced { border-left-color: #58c878; background: rgba(88,200,120,0.04); }
+  .parlay-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; font-size: 11px; color: var(--muted,#888); }
+  .parlay-leg { padding: 6px 10px; margin: 3px 0; background: rgba(255,255,255,0.02); border-radius: 4px; font-size: 12px; display: grid; grid-template-columns: 50px 1fr 1fr 50px 60px; gap: 8px; align-items: center; }
+  .parlay-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 8px; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.05); }
+  .stat-cell { text-align: center; }
+  .stat-num { font-size: 16px; font-weight: 700; color: var(--accent,#d4a04a); }
+  .stat-label { font-size: 9px; color: var(--muted,#888); text-transform: uppercase; }
+  .info-card { padding: 14px 18px; background: linear-gradient(135deg, rgba(212,160,74,0.1), rgba(212,160,74,0.02)); border: 1px solid rgba(212,160,74,0.3); border-radius: 10px; margin-bottom: 16px; }
+  .tab-strip { display: flex; gap: 4px; margin-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .tab { padding: 8px 14px; cursor: pointer; font-size: 12px; color: var(--text-2,#aaa); border-bottom: 2px solid transparent; }
+  .tab.active { color: var(--accent,#d4a04a); border-bottom-color: var(--accent,#d4a04a); }
+  .sport-pill { padding: 2px 6px; border-radius: 4px; font-size: 9px; font-weight: 700; }
+  .sport-pill.MLB, .sport-pill.MLB-PP { background: #1e5db8; color: #fff; }
+  .sport-pill.NBA { background: #c43e3e; color: #fff; }
+  .sport-pill.NHL { background: #0080a3; color: #fff; }
+  .sport-pill.WNBA { background: #fa6e21; color: #fff; }
+  .corr-warn { color: #ffc850; font-size: 9px; font-weight: 700; padding: 2px 5px; background: rgba(255,200,80,0.12); border-radius: 3px; }
+</style>
+</head>
+<body class="page-parlays">
+<header class="topbar">
+  <div class="brand"><a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a><span class="tagline">by bpleone</span></div>
+  <nav class="mainnav"><!-- nav.js injects --></nav>
+  <div class="topbar-actions"><div class="ticker">LIVE</div></div>
+</header>
+<main class="container">
+  <section class="page-head">
+    <h1>🎰 Cross-Sport Parlay Builder</h1>
+    <p class="muted" id="status">Loading…</p>
+  </section>
+  <div class="info-card">
+    <strong style="color:#d4a04a;">How this works:</strong>
+    <span style="color: var(--text-2,#aaa); font-size:13px;">
+      Combines top 25 locks into 2-leg and 3-leg parlays. Independent across sports/games; 10% correlation penalty for same-game legs.
+      Filtered to joint_prob ≥35% (2-leg) / ≥20% (3-leg) and edge ≥5%. The "balanced" tab shows joint 40-65% — best variance-adjusted picks.
+    </span>
+  </div>
+  <section class="metric-strip">
+    <div class="metric"><span class="metric-num" id="m_2leg">--</span><span class="metric-label">2-Leg Parlays</span></div>
+    <div class="metric"><span class="metric-num" id="m_3leg">--</span><span class="metric-label">3-Leg Parlays</span></div>
+    <div class="metric"><span class="metric-num" id="m_topedge">--</span><span class="metric-label">Top Edge</span></div>
+    <div class="metric"><span class="metric-num" id="m_balanced">--</span><span class="metric-label">Balanced Picks</span></div>
+  </section>
+
+  <div class="tab-strip">
+    <div class="tab active" data-tab="balanced">Balanced (Recommended)</div>
+    <div class="tab" data-tab="two_leg">All 2-Leg</div>
+    <div class="tab" data-tab="three_leg">All 3-Leg</div>
+  </div>
+
+  <section class="card">
+    <div class="card-head"><span id="tab_title">⭐ Balanced 2-Leg Parlays (40-65% Joint)</span><span class="muted" id="meta">--</span></div>
+    <div id="container" style="padding:14px;"></div>
+  </section>
+</main>
+<script src="js/nav_badge.js"></script>
+<script>
+let DATA = null;
+function fmtAmer(a) { if (a == null) return '—'; return a >= 0 ? '+'+a : ''+a; }
+
+function renderParlays(parlays, isBalanced) {
+  if (!parlays || parlays.length === 0) return '<p class="muted">No parlays meeting criteria.</p>';
+  return parlays.map((p, i) => {
+    const cls = isBalanced ? 'balanced' : '';
+    const legs = p.legs.map(L =>
+      `<div class="parlay-leg">
+        <span><span class="sport-pill ${L.sport}">${L.sport}</span></span>
+        <span><strong>${L.player_or_matchup || '?'}</strong></span>
+        <span class="muted" style="font-size:11px;">${L.market || '?'}</span>
+        <span>${(L.prob*100).toFixed(0)}%</span>
+        <span class="muted">${fmtAmer(L.fair_american)}</span>
+      </div>`
+    ).join('');
+    return `<div class="parlay-card ${cls}">
+      <div class="parlay-header">
+        <span>#${i+1} · ${p.n_legs}-leg parlay${p.same_game_penalty_applied ? ' <span class="corr-warn">SAME-GAME</span>' : ''}</span>
+        <span>${(p.joint_prob*100).toFixed(0)}% joint</span>
+      </div>
+      ${legs}
+      <div class="parlay-stats">
+        <div class="stat-cell"><div class="stat-num">${(p.joint_prob*100).toFixed(0)}%</div><div class="stat-label">Joint Prob</div></div>
+        <div class="stat-cell"><div class="stat-num">${fmtAmer(p.fair_parlay_american)}</div><div class="stat-label">Fair Odds</div></div>
+        <div class="stat-cell"><div class="stat-num">+${p.edge_pct.toFixed(1)}%</div><div class="stat-label">Edge</div></div>
+        <div class="stat-cell"><div class="stat-num">${p.fair_parlay_decimal.toFixed(2)}x</div><div class="stat-label">Decimal</div></div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function showTab(tab) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.dataset.tab === tab));
+  let rows = [], title = '', isBalanced = false;
+  if (tab === 'balanced') { rows = DATA.balanced_2_leg_picks || []; title = '⭐ Balanced 2-Leg Parlays (40-65% Joint)'; isBalanced = true; }
+  else if (tab === 'two_leg') { rows = DATA.top_2_leg_parlays || []; title = '🎰 All 2-Leg Parlays (by edge)'; }
+  else if (tab === 'three_leg') { rows = DATA.top_3_leg_parlays || []; title = '🎲 3-Leg Parlays (high variance, high reward)'; }
+  document.getElementById('tab_title').textContent = title;
+  document.getElementById('container').innerHTML = renderParlays(rows, isBalanced);
+  document.getElementById('meta').textContent = `${rows.length} parlays shown`;
+}
+
+fetch("data/cross_sport_parlays.json?t=" + Date.now(), { cache: "no-cache" })
+  .then(r => r.json())
+  .then(d => {
+    DATA = d;
+    document.getElementById('m_2leg').textContent = d.n_2_leg || 0;
+    document.getElementById('m_3leg').textContent = d.n_3_leg || 0;
+    const top = (d.top_2_leg_parlays || [])[0];
+    document.getElementById('m_topedge').textContent = top ? '+' + top.edge_pct.toFixed(0) + '%' : '--';
+    document.getElementById('m_balanced').textContent = (d.balanced_2_leg_picks || []).length;
+    document.getElementById('status').textContent = `${d.n_2_leg} 2-leg + ${d.n_3_leg} 3-leg parlays from ${d.n_input_legs || 0} input legs · ${(d.generated_at||'').slice(0,19).replace('T',' ')}`;
+    showTab('balanced');
+    document.querySelectorAll('.tab').forEach(t => t.addEventListener('click', () => showTab(t.dataset.tab)));
+  })
+  .catch(err => {
+    document.getElementById('container').innerHTML = `<p class="muted">Could not load cross_sport_parlays.json (${err.message}).</p>`;
+  });
+</script>
+</body>
+</html>
