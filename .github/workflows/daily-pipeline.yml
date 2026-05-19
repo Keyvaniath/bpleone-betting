@@ -388,9 +388,15 @@ jobs:
       - name: MLB batter heat tracker (L14 AVG vs season delta)
         working-directory: python
         run: python mlb_batter_heat.py
+      - name: MLB extended player props (TB / BB / SO / HRR / outs / extended K)
+        working-directory: python
+        run: python mlb_extended_props.py
       - name: NBA player heat tracker (L5 vs season PTS/REB/AST deltas)
         working-directory: python
         run: python nba_player_heat.py
+      - name: NBA extended props (DD/TD/PR/PA/RA combos + alt-3PM)
+        working-directory: python
+        run: python nba_extended_props.py
       - name: WNBA player heat tracker (L5 vs season -- tight thresholds)
         working-directory: python
         run: python wnba_player_heat.py
