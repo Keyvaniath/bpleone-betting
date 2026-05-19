@@ -20,7 +20,10 @@ DATA_DIR = os.path.join(ROOT, "data")
 OUT_PATH = os.path.join(DATA_DIR, "html_audit.json")
 
 # Pages we skip (templates, deprecated)
-SKIP = {"_test_wnba.html", "_test_wnba2.html"}
+SKIP = {
+    "_test_wnba.html", "_test_wnba2.html",
+    "widget.html",   # intentional standalone embed (no full nav)
+}
 
 results = {
     "no_nav_js": [],
