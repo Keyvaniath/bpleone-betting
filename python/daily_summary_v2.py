@@ -139,6 +139,38 @@ def run() -> Dict[str, Any]:
                 lines.append(f"- **{p['pitcher']}** OVER {p['line']} K ({p['p_over']*100:.0f}%) fair {p.get('fair_over','?')}")
             lines.append("")
 
+    # NBA player heat (L5 vs season splits)
+    nh = _load(os.path.join(DATA_DIR, "nba_player_heat.json"))
+    if nh.get("n_hot", 0) > 0 or nh.get("n_cold", 0) > 0:
+        lines.append(f"## 🏀 NBA Player Heat ({nh.get('n_hot',0)} HOT / {nh.get('n_cold',0)} COLD)")
+        for a in (nh.get("hot_players") or [])[:5]:
+            sig = ", ".join(a.get("signals") or [])
+            lines.append(f"  - 🔥 **{a['name']}** ({a['team_abbr']}): L5 {a['l5_pts']:.1f}/{a['l5_reb']:.1f}/{a['l5_ast']:.1f} vs season {a['season_pts']:.1f}/{a['season_reb']:.1f}/{a['season_ast']:.1f} [{sig}]")
+        for a in (nh.get("cold_players") or [])[:3]:
+            sig = ", ".join(a.get("signals") or [])
+            lines.append(f"  - ❄️ **{a['name']}** ({a['team_abbr']}): L5 {a['l5_pts']:.1f} vs season {a['season_pts']:.1f} [{sig}] -- FADE OVER props")
+        lines.append("")
+
+    # UFC fight matchup
+    uf = _load(os.path.join(DATA_DIR, "ufc_matchup.json"))
+    if uf.get("n_fights", 0) > 0:
+        lines.append(f"## 🥊 UFC Fight Matchups ({uf.get('next_event','?')})")
+        for f in (uf.get("fights") or [])[:5]:
+            lines.append(f"  - [{f['tier']}] **{f['favorite']}** ({f.get('record_a' if f['favorite']==f['fighter_a'] else 'record_b')}) vs {f['underdog']} -- fair {f['fair_favorite_american']:+d}")
+        lines.append("")
+
+    # Golf player heat
+    gh = _load(os.path.join(DATA_DIR, "golf_player_heat.json"))
+    if gh.get("n_hot", 0) > 0:
+        lines.append(f"## ⛳ Golf Player Heat (from {gh.get('source_tournament','last event')})")
+        for a in (gh.get("hot_players") or [])[:5]:
+            sig = " · ".join(a.get("signals") or [])
+            lines.append(f"  - 🔥 T{a['finish_pos']} **{a['name']}** ({a.get('country')}): {a['total_to_par']:+d} total -- {sig}")
+        for a in (gh.get("cold_players") or [])[:3]:
+            sig = " · ".join(a.get("signals") or [])
+            lines.append(f"  - ❄️ **{a['name']}** ({a.get('country')}): {sig}")
+        lines.append("")
+
     # MLB batter heat (L14 vs season splits)
     bh = _load(os.path.join(DATA_DIR, "mlb_batter_heat.json"))
     if bh.get("n_hot", 0) > 0 or bh.get("n_cold", 0) > 0:
