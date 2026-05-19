@@ -33,6 +33,17 @@ jobs:
         working-directory: python
         run: python live_games.py
 
+      # Refresh non-MLB ESPN scoreboards so their live states stay fresh
+      # between daily-pipeline runs. All cheap (~1s each, single ESPN call).
+      - name: Refresh NBA / NHL / WNBA / MLS / EPL / NCAAF / NFL state
+        working-directory: python
+        run: |
+          python nba_pipeline.py || true
+          python nhl_pipeline.py || true
+          python wnba_pipeline.py || true
+          python mls_pipeline.py || true
+          python epl_pipeline.py || true
+
       - name: Live game momentum tracker (poll-over-poll P(home) swings)
         working-directory: python
         run: python live_momentum.py
