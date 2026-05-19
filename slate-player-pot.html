@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slate Player Pot | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/nav.js"></script>
+<style>
+  .controls { display: flex; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; align-items: center; }
+  .controls select, .controls input { background: #161821; color: #e6e6e6; border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; padding: 6px 10px; font-family: 'JetBrains Mono', monospace; font-size: 12px; }
+  .pick-row { display: grid; grid-template-columns: 80px 1.5fr 60px 1.5fr 80px 80px 100px; gap: 12px; padding: 9px 14px; font-family: 'JetBrains Mono', monospace; font-size: 12px; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.04); }
+  .pick-row.head { background: rgba(255,255,255,0.04); color: var(--muted,#888); text-transform: uppercase; font-size: 10px; padding: 8px 14px; }
+  .sport-pill { display: inline-block; padding: 2px 7px; border-radius: 4px; font-size: 10px; font-weight: 700; text-align: center; }
+  .sport-pill.MLB, .sport-pill.MLB-PP { background: #1e5db8; color: #fff; }
+  .sport-pill.NBA { background: #c43e3e; color: #fff; }
+  .sport-pill.NHL { background: #0080a3; color: #fff; }
+  .sport-pill.LOL { background: #b450dc; color: #fff; }
+  .sport-pill.CS { background: #ffa51e; color: #0a0a0a; }
+  .sport-pill.KBO { background: #cf3939; color: #fff; }
+  .prob-pill { font-weight: 700; padding: 3px 8px; border-radius: 4px; text-align: center; }
+  .prob-pill.elite { background: rgba(212,160,74,0.18); color: #d4a04a; }
+  .prob-pill.strong { background: rgba(88,200,120,0.18); color: #58c878; }
+  .prob-pill.solid { background: rgba(255,255,255,0.08); color: #aaa; }
+  .metric-num.green { color: #58c878; }
+  .metric-num.gold { color: #d4a04a; }
+</style>
+</head>
+<body class="page-slate-pot">
+<header class="topbar">
+  <div class="brand"><a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a><span class="tagline">by bpleone</span></div>
+  <nav class="mainnav"><!-- nav.js injects --></nav>
+  <div class="topbar-actions"><div class="ticker">LIVE</div></div>
+</header>
+<main class="container">
+  <section class="page-head">
+    <h1>🎯 Slate Player Pot — Every Sport, Every Prop</h1>
+    <p class="muted" id="status">Loading unified board…</p>
+  </section>
+  <section class="card" style="margin-bottom: 18px;">
+    <div class="card-head"><span>📋 What this is</span></div>
+    <div style="padding:14px 18px; font-size:13px; line-height:1.7; color: var(--text-2,#aaa);">
+      <p>Every prop projection at 60-92% probability across <strong>10 sources</strong>: MLB extended, MLB pitcher matchup, MLB batter logs, NBA extended, NBA real props, NHL extended, PrizePicks board, LoL/CS/KBO player props.</p>
+      <p>One ranked board. Filter by sport, search by player. Refreshes every CI cycle.</p>
+    </div>
+  </section>
+  <section class="metric-strip">
+    <div class="metric"><span class="metric-num" id="m_total">--</span><span class="metric-label">Total Picks</span></div>
+    <div class="metric"><span class="metric-num green" id="m_elite">--</span><span class="metric-label">Elite (≥85%)</span></div>
+    <div class="metric"><span class="metric-num gold" id="m_strong">--</span><span class="metric-label">Strong (70-85%)</span></div>
+    <div class="metric"><span class="metric-num" id="m_sport_top">--</span><span class="metric-label">Top Sport</span></div>
+  </section>
+  <section class="card" style="margin-bottom: 18px;">
+    <div class="card-head"><span>🔍 Filters</span></div>
+    <div style="padding: 12px 18px;">
+      <div class="controls">
+        <label style="font-size:11px; color: var(--muted,#888);">SPORT</label>
+        <select id="filterSport"><option value="">All</option></select>
+        <label style="font-size:11px; color: var(--muted,#888);">MIN PROB</label>
+        <input type="number" id="filterMin" min="60" max="92" step="1" value="65" style="width:65px;">
+        <label style="font-size:11px; color: var(--muted,#888);">PLAYER</label>
+        <input type="text" id="filterPlayer" placeholder="search…" style="width:140px;">
+        <button onclick="applyFilters()" style="background:#d4a04a;color:#0a0a0a;border:none;padding:6px 14px;border-radius:6px;font-weight:700;cursor:pointer;">Apply</button>
+      </div>
+    </div>
+  </section>
+  <section class="card">
+    <div class="card-head"><span>📊 Ranked Picks</span><span class="muted" id="meta">--</span></div>
+    <div id="container"></div>
+  </section>
+</main>
+<script src="js/nav_badge.js"></script>
+<script>
+let ALL_PICKS = [];
+
+function probClass(p) {
+  if (p >= 0.85) return 'elite';
+  if (p >= 0.70) return 'strong';
+  return 'solid';
+}
+
+function render(picks) {
+  document.getElementById("m_total").textContent = picks.length;
+  document.getElementById("m_elite").textContent = picks.filter(p => p.prob >= 0.85).length;
+  document.getElementById("m_strong").textContent = picks.filter(p => p.prob >= 0.70 && p.prob < 0.85).length;
+  const bySport = {};
+  picks.forEach(p => bySport[p.sport] = (bySport[p.sport]||0)+1);
+  const top = Object.entries(bySport).sort((a,b) => b[1]-a[1])[0];
+  document.getElementById("m_sport_top").textContent = top ? `${top[0]} ${top[1]}` : "--";
+
+  let html = `<div class="pick-row head"><span>Sport</span><span>Player</span><span>Team</span><span>Market</span><span>Prob</span><span>Fair</span><span>Source</span></div>`;
+  for (const p of picks.slice(0, 300)) {
+    const fairStr = (p.fair_american && typeof p.fair_american === 'number')
+      ? (p.fair_american > 0 ? '+'+p.fair_american : ''+p.fair_american) : '--';
+    html += `<div class="pick-row">
+      <span><span class="sport-pill ${p.sport}">${p.sport}</span></span>
+      <span><strong>${p.player}</strong></span>
+      <span class="muted">${p.team || '--'}</span>
+      <span style="color:var(--text-2,#aaa);">${p.market}</span>
+      <span><span class="prob-pill ${probClass(p.prob)}">${(p.prob*100).toFixed(0)}%</span></span>
+      <span class="muted">${fairStr}</span>
+      <span class="muted" style="font-size:10px;">${p.source}</span>
+    </div>`;
+  }
+  if (picks.length > 300) {
+    html += `<p class="muted" style="padding:14px;">Showing top 300 of ${picks.length}. Apply filters to narrow.</p>`;
+  }
+  document.getElementById("container").innerHTML = html;
+  document.getElementById("meta").textContent = `${picks.length} picks · ${(new Date()).toLocaleTimeString()}`;
+}
+
+function applyFilters() {
+  const sport = document.getElementById("filterSport").value;
+  const minProb = parseFloat(document.getElementById("filterMin").value) / 100;
+  const playerQ = document.getElementById("filterPlayer").value.toLowerCase().trim();
+  let filtered = ALL_PICKS.filter(p => p.prob >= minProb);
+  if (sport) filtered = filtered.filter(p => p.sport === sport);
+  if (playerQ) filtered = filtered.filter(p => p.player.toLowerCase().includes(playerQ));
+  render(filtered);
+}
+
+fetch("data/slate_player_pot.json?t=" + Date.now(), { cache: "no-cache" })
+  .then(r => r.json())
+  .then(d => {
+    ALL_PICKS = d.all_picks || d.top_50 || [];
+    // Populate sport filter
+    const sports = [...new Set(ALL_PICKS.map(p => p.sport))].sort();
+    const sel = document.getElementById("filterSport");
+    for (const s of sports) {
+      const opt = document.createElement("option");
+      opt.value = s; opt.textContent = s;
+      sel.appendChild(opt);
+    }
+    document.getElementById("status").textContent = `${ALL_PICKS.length} picks across ${sports.length} sports · generated ${(d.generated_at||'').slice(0,19).replace('T',' ')}`;
+    render(ALL_PICKS);
+  })
+  .catch(err => {
+    document.getElementById("container").innerHTML = `<p class="muted" style="padding:14px;">Could not load (${err.message}).</p>`;
+  });
+</script>
+</body>
+</html>

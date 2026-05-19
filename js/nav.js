@@ -44,6 +44,7 @@
     { href: "b2b-fatigue.html",         label: "😴 B2B Fatigue" },
     { href: "model-health.html",        label: "🏥 Model Health" },
     { href: "live-momentum.html",       label: "📈 Live Momentum" },
+    { href: "slate-player-pot.html",    label: "🎯 Slate Player Pot" },
     { href: "data-health.html",         label: "📡 Data Health" },
     { href: "backtest-dashboard.html",  label: "Backtest Dashboard" },
     { href: "reliability.html",         label: "Calibration" },
