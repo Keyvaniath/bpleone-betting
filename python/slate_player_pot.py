@@ -89,6 +89,27 @@ def run() -> Dict[str, Any]:
             _add(picks, "MLB", b["name"], b["team_abbr"], mkt,
                   p, info.get("fair_yes"), "mlb_batter_logs")
 
+    # MLB BATTER-vs-SP matchup-adjusted edges (xwOBA arsenal + career splits)
+    sp_edges = _load(os.path.join(DATA_DIR, "mlb_batter_sp_edges.json"))
+    # Pull all batters across all games (de-duped by name within source)
+    seen_sp = set()
+    for g in (sp_edges.get("games") or []):
+        for b in (g.get("batters") or []):
+            nm = b.get("batter")
+            if not nm or nm in seen_sp: continue
+            seen_sp.add(nm)
+            # Only add if matchup-adjusted prob is materially different from base
+            # (i.e. this matchup is actually informative)
+            for mkt, p_key, fair_key in (
+                ("1_plus_hit_vs_sp", "adj_p_1_plus_hit", "fair_yes_1_hit"),
+                ("1_plus_hr_vs_sp", "adj_p_1_plus_hr", "fair_yes_1_hr"),
+                ("2_plus_hits_vs_sp", "adj_p_2_plus_hits", "fair_yes_2_hit"),
+            ):
+                p = b.get(p_key)
+                fair = b.get(fair_key)
+                _add(picks, "MLB", nm, b.get("team_abbr"),
+                      mkt, p, fair, "mlb_batter_sp_edges")
+
     # NBA extended
     nba_ext = _load(os.path.join(DATA_DIR, "nba_extended_props.json"))
     for pp in (nba_ext.get("players") or []):

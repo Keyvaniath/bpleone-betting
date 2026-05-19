@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Batter vs SP Edges | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/nav.js"></script>
+<style>
+  .bat-row { display: grid; grid-template-columns: 40px 1.4fr 1.2fr 70px 80px 90px 80px 70px; gap: 10px; padding: 10px 14px; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 12px; border-bottom: 1px solid rgba(255,255,255,0.04); }
+  .bat-row.head { background: rgba(255,255,255,0.04); color: var(--muted,#888); font-size: 10px; text-transform: uppercase; padding: 8px 14px; }
+  .bat-row.boost-elite { border-left: 3px solid #d4a04a; background: rgba(212,160,74,0.05); }
+  .bat-row.boost-strong { border-left: 3px solid #58c878; }
+  .bat-row.fade { border-left: 3px solid #e35a5a; background: rgba(227,90,90,0.03); }
+  .delta-pos { color: #58c878; font-weight: 700; }
+  .delta-neg { color: #e35a5a; font-weight: 700; }
+  .delta-elite { color: #d4a04a; font-weight: 700; }
+  .pos-pill { display: inline-block; padding: 2px 6px; border-radius: 4px; font-size: 9px; background: rgba(255,255,255,0.06); }
+  .info-card { padding: 14px 18px; background: linear-gradient(135deg, rgba(212,160,74,0.1), rgba(212,160,74,0.02)); border: 1px solid rgba(212,160,74,0.3); border-radius: 10px; margin-bottom: 16px; }
+  .opp-cell { color: var(--text-2,#aaa); font-size: 11px; }
+  .opp-hand { color: var(--accent,#d4a04a); font-size: 9px; padding: 1px 4px; background: rgba(212,160,74,0.15); border-radius: 3px; margin-left: 4px; }
+  .tab-strip { display: flex; gap: 4px; margin-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .tab { padding: 8px 14px; cursor: pointer; font-size: 12px; color: var(--text-2,#aaa); border-bottom: 2px solid transparent; }
+  .tab.active { color: var(--accent,#d4a04a); border-bottom-color: var(--accent,#d4a04a); }
+  .tab:hover { color: #fff; }
+</style>
+</head>
+<body class="page-batter-sp">
+<header class="topbar">
+  <div class="brand"><a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a><span class="tagline">by bpleone</span></div>
+  <nav class="mainnav"><!-- nav.js injects --></nav>
+  <div class="topbar-actions"><div class="ticker">LIVE</div></div>
+</header>
+<main class="container">
+  <section class="page-head">
+    <h1>⚾ Batter vs Starting Pitcher — Matchup-Adjusted Edges</h1>
+    <p class="muted" id="status">Loading…</p>
+  </section>
+  <div class="info-card">
+    <strong style="color:#d4a04a;">How this works:</strong>
+    <span style="color: var(--text-2,#aaa); font-size:13px;">
+      Each batter's last-14-game baseline 1+hit/1+HR prob is shifted by a log-odds adjustment from three sources:
+      (1) pitch-arsenal-weighted xwOBA matchup (matchups.json), (2) opposing pitcher BAA/FIP/K9 quality,
+      (3) shrunk career batting average vs that pitcher (need 5+ AB). Boosts shown in percentage-points (pp).
+    </span>
+  </div>
+  <section class="metric-strip">
+    <div class="metric"><span class="metric-num" id="m_games">--</span><span class="metric-label">Games Analyzed</span></div>
+    <div class="metric"><span class="metric-num" id="m_batters">--</span><span class="metric-label">Batters Evaluated</span></div>
+    <div class="metric"><span class="metric-num" id="m_top_hit">--</span><span class="metric-label">Top Hit Boost</span></div>
+    <div class="metric"><span class="metric-num" id="m_top_hr">--</span><span class="metric-label">Top HR Boost</span></div>
+  </section>
+
+  <div class="tab-strip">
+    <div class="tab active" data-tab="hit_boost">Hit Boost</div>
+    <div class="tab" data-tab="hr_boost">HR Boost</div>
+    <div class="tab" data-tab="hit_today">Top 1+H Abs.</div>
+    <div class="tab" data-tab="hr_today">Top 1+HR Abs.</div>
+    <div class="tab" data-tab="hit_fade">Hit Fades</div>
+  </div>
+
+  <section class="card">
+    <div class="card-head"><span id="tab_title">📈 Top Matchup-Boosted 1+ Hit Probabilities</span><span class="muted" id="meta">--</span></div>
+    <div id="container"></div>
+  </section>
+</main>
+<script src="js/nav_badge.js"></script>
+<script>
+let DATA = null;
+function deltaClass(v) {
+  if (v == null) return '';
+  if (v >= 20) return 'delta-elite';
+  if (v >= 8) return 'delta-pos';
+  if (v <= -8) return 'delta-neg';
+  return '';
+}
+function rowClass(v) {
+  if (v == null) return '';
+  if (v >= 20) return 'boost-elite';
+  if (v >= 8) return 'boost-strong';
+  if (v <= -8) return 'fade';
+  return '';
+}
+
+function renderTable(rows, isHrTab, isFadeTab) {
+  const dpKey = isHrTab ? 'hr_delta_pp' : 'hit_delta_pp';
+  const baseKey = isHrTab ? 'base_p_1_plus_hr' : 'base_p_1_plus_hit';
+  const adjKey = isHrTab ? 'adj_p_1_plus_hr' : 'adj_p_1_plus_hit';
+  const fairKey = isHrTab ? 'fair_yes_1_hr' : 'fair_yes_1_hit';
+  const headLabel = isHrTab ? '1+ HR' : '1+ HIT';
+  let html = `<div class="bat-row head">
+    <span>#</span><span>Batter (team)</span><span>vs SP</span>
+    <span>Base ${headLabel}</span><span>Adj ${headLabel}</span><span>Δ pp</span><span>xwOBA Δ</span><span>Fair</span>
+  </div>`;
+  rows.forEach((r, i) => {
+    const d = r[dpKey];
+    const cls = rowClass(isFadeTab ? -d : d);
+    const dCls = deltaClass(d);
+    const fair = r[fairKey];
+    const fairStr = (typeof fair === 'number') ? (fair > 0 ? '+'+fair : ''+fair) : '--';
+    const xw = r.delta_vs_league_xwoba;
+    const xwStr = (typeof xw === 'number') ? (xw >= 0 ? '+'+xw.toFixed(3) : xw.toFixed(3)) : '--';
+    html += `<div class="bat-row ${cls}">
+      <span>${i+1}</span>
+      <span><strong>${r.batter || '?'}</strong> <span class="pos-pill">${r.pos || '?'}</span> <span class="muted">(${r.team_abbr || '?'})</span></span>
+      <span class="opp-cell">${r.opp_pitcher || '?'}<span class="opp-hand">${r.opp_pitcher_hand || '?'}HP</span></span>
+      <span>${(r[baseKey]*100).toFixed(1)}%</span>
+      <span><strong>${(r[adjKey]*100).toFixed(1)}%</strong></span>
+      <span class="${dCls}">${d > 0 ? '+' : ''}${d.toFixed(1)}</span>
+      <span class="muted">${xwStr}</span>
+      <span class="muted">${fairStr}</span>
+    </div>`;
+  });
+  return html;
+}
+
+function showTab(tab) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.dataset.tab === tab));
+  let rows = [], title = '', isHr = false, isFade = false;
+  if (tab === 'hit_boost') { rows = DATA.top_15_hit_boost || []; title = '📈 Top Matchup-Boosted 1+ Hit Probabilities'; }
+  else if (tab === 'hr_boost') { rows = DATA.top_15_hr_boost || []; title = '💥 Top Matchup-Boosted 1+ HR Probabilities'; isHr = true; }
+  else if (tab === 'hit_today') { rows = DATA.top_15_hit_today_absolute || []; title = '🎯 Top 1+ Hit Probabilities Today (Absolute)'; }
+  else if (tab === 'hr_today') { rows = DATA.top_10_hr_today_absolute || []; title = '🚀 Top 1+ HR Probabilities Today (Absolute)'; isHr = true; }
+  else if (tab === 'hit_fade') { rows = DATA.top_10_hit_fade || []; title = '📉 Worst Matchup Fades (Hit Prob Drops)'; isFade = true; }
+  document.getElementById('tab_title').textContent = title;
+  document.getElementById('container').innerHTML = renderTable(rows, isHr, isFade);
+  document.getElementById('meta').textContent = `${rows.length} batters shown`;
+}
+
+fetch("data/mlb_batter_sp_edges.json?t=" + Date.now(), { cache: "no-cache" })
+  .then(r => r.json())
+  .then(d => {
+    DATA = d;
+    document.getElementById('m_games').textContent = d.n_games || 0;
+    document.getElementById('m_batters').textContent = d.n_batters_total || 0;
+    const topHit = (d.top_15_hit_boost || [])[0];
+    const topHr = (d.top_15_hr_boost || [])[0];
+    document.getElementById('m_top_hit').textContent = topHit ? '+' + topHit.hit_delta_pp.toFixed(1) + 'pp' : '--';
+    document.getElementById('m_top_hr').textContent = topHr ? '+' + topHr.hr_delta_pp.toFixed(1) + 'pp' : '--';
+    document.getElementById('status').textContent = `${d.n_batters_total} batters · ${d.n_games} games · ${(d.generated_at||'').slice(0,19).replace('T',' ')}`;
+    showTab('hit_boost');
+    document.querySelectorAll('.tab').forEach(t => {
+      t.addEventListener('click', () => showTab(t.dataset.tab));
+    });
+  })
+  .catch(err => {
+    document.getElementById('container').innerHTML = `<p class="muted" style="padding:14px;">Could not load mlb_batter_sp_edges.json (${err.message}).</p>`;
+  });
+</script>
+</body>
+</html>
