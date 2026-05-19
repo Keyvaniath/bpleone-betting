@@ -130,13 +130,25 @@ def _build_new_locks(top_plays: Dict[str, Any]) -> List[Dict[str, Any]]:
 
 def _try_settle_pick(pick: Dict[str, Any]) -> Optional[str]:
     """Try to settle a single pending pick. Returns 'won' / 'lost' / 'push'
-    if settled, None if still pending. Looks up actual outcomes from
-    historical_*.json files based on date + sport + matchup."""
+    if settled, None if still pending."""
     if pick.get("settled"):
         return None
+    market = (pick.get("market") or "").lower()
+    # Player-prop markets settle via gamelog lookup
+    if any(k in market for k in ("1_plus_hit", "1_plus_hr", "1_plus_rbi",
+                                   "1_plus_run", "2_plus_hits", "k_over",
+                                   "er_under", "total_bases", "hrr",
+                                   "pp_batter", "pts_over", "reb_over",
+                                   "ast_over", "3pm_over", "pra_over",
+                                   "double_double", "triple_double")):
+        return _settle_player_prop(pick)
+    # Game-level markets (ML / total over/under) settle via historical_*.json
+    return _settle_game_market(pick)
+
+
+def _settle_game_market(pick: Dict[str, Any]) -> Optional[str]:
     sport = (pick.get("sport") or "").upper()
     date_s = pick.get("date")
-    # Map sport -> historical file
     sport_to_file = {
         "MLB": "historical_games.json", "MLB-PP": "historical_games.json",
         "NBA": "historical_nba.json", "NHL": "historical_nhl.json",
@@ -149,37 +161,93 @@ def _try_settle_pick(pick: Dict[str, Any]) -> Optional[str]:
     if not hist_file: return None
     hist = _load(os.path.join(DATA_DIR, hist_file))
     games = hist.get("games") or []
-    # Find matching game by date + matchup substring
     matchup = (pick.get("player_or_matchup") or "").lower()
     market = (pick.get("market") or "").lower()
     for g in games:
         g_date = (g.get("date") or "")[:10]
         g_mu = (g.get("matchup") or g.get("name") or "").lower()
         if g_date != date_s: continue
-        # Game-level markets (ML_HOME / ML_AWAY / OVER_X / UNDER_X)
         if "ml_home" in market or "ml_away" in market:
             if matchup not in g_mu and g_mu not in matchup: continue
-            winner_is_home = (g.get("home_score") or 0) > (g.get("away_score") or 0)
             if g.get("home_score") is None: continue
+            winner_is_home = (g.get("home_score") or 0) > (g.get("away_score") or 0)
             if "ml_home" in market:
                 return "won" if winner_is_home else "lost"
-            else:
-                return "lost" if winner_is_home else "won"
+            return "lost" if winner_is_home else "won"
         if "over_" in market or "under_" in market:
             if matchup not in g_mu and g_mu not in matchup: continue
             try:
                 line = float(re.search(r"(\d+(?:\.\d+)?)", market).group(1))
             except Exception:
                 continue
-            total = (g.get("home_score") or 0) + (g.get("away_score") or 0)
             if g.get("home_score") is None: continue
+            total = (g.get("home_score") or 0) + (g.get("away_score") or 0)
             if "over_" in market:
                 return "won" if total > line else ("push" if total == line else "lost")
+            return "won" if total < line else ("push" if total == line else "lost")
+    return None
+
+
+def _settle_player_prop(pick: Dict[str, Any]) -> Optional[str]:
+    """Settle a player-prop lock by reading actual stats from player_gamelogs.json."""
+    gamelogs = _load(os.path.join(DATA_DIR, "player_gamelogs.json"))
+    bpid = gamelogs.get("by_player_id") or {}
+    target_name = (pick.get("player_or_matchup") or "").lower()
+    market = (pick.get("market") or "").lower()
+    date_s = pick.get("date")
+
+    # Parse line from market name (e.g. "1_plus_hit" -> line=0.5; "PP_..._under_3.5" -> 3.5)
+    line_match = re.search(r"(\d+(?:\.\d+)?)", market)
+    line = float(line_match.group(1)) if line_match else None
+    is_under = "under" in market or "_no" in market
+    is_over = "over" in market or ("plus" in market and not is_under)
+
+    # Find player's actual game stats for the date
+    for pid, prec in bpid.items():
+        if not isinstance(prec, dict): continue
+        if (prec.get("name") or "").lower() != target_name: continue
+        games = prec.get("games") or []
+        for g in games:
+            g_date = (g.get("date") or "")[:10]
+            if g_date != date_s: continue
+            # Map market stat -> game field
+            stat_val = None
+            if "1_plus_hit" in market or "2_plus_hits" in market or "total_bases" in market:
+                stat_val = g.get("hits") if "hit" in market else g.get("tb")
+            elif "1_plus_hr" in market or "hrr" in market and "hr" in market:
+                # HRR = Hits+Runs+RBIs (PrizePicks combo)
+                if "hrr" in market:
+                    stat_val = (g.get("hits") or 0) + (g.get("runs") or 0) + (g.get("rbi") or 0)
+                else:
+                    stat_val = g.get("hr")
+            elif "1_plus_rbi" in market or "rbis" in market:
+                stat_val = g.get("rbi")
+            elif "1_plus_run" in market or "runs" in market:
+                stat_val = g.get("runs")
+            elif "k_over" in market or "_k_" in market:
+                stat_val = g.get("k")
+            elif "er_under" in market:
+                stat_val = g.get("er")
+            elif "pts_over" in market:
+                stat_val = g.get("pts")
+            elif "reb_over" in market:
+                stat_val = g.get("reb")
+            elif "ast_over" in market:
+                stat_val = g.get("ast")
+            if stat_val is None or line is None: continue
+            # Game-level "no data" check: if all stats are 0 and pa=0, game probably not played
+            if g.get("pa") == 0 and g.get("min") in (None, 0):
+                continue
+            if is_under:
+                if stat_val < line: return "won"
+                if stat_val == line: return "push"
+                return "lost"
             else:
-                return "won" if total < line else ("push" if total == line else "lost")
-        # Player-prop markets (very hard to settle without per-player game stats)
-        # Skip those here -- player props need their own settler hooked into
-        # gamelogs after the game.
+                # over / plus
+                if stat_val > line: return "won"
+                if stat_val == line and "plus" in market: return "won"   # "1+ hit" wins on exactly 1
+                if stat_val == line: return "push"
+                return "lost"
     return None
 
 
