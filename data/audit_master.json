@@ -1,9 +1,9 @@
 {
   "phases": {
     "imports": {
-      "duration_s": 0.4,
+      "duration_s": 0.3,
       "exit_code": 0,
-      "summary": "SUMMARY: 213 import-ok / 0 import-fail",
+      "summary": "SUMMARY: 217 import-ok / 0 import-fail",
       "stderr_truncated": ""
     },
     "html": {
@@ -13,30 +13,30 @@
       "stderr_truncated": ""
     },
     "data": {
-      "duration_s": 1.7,
+      "duration_s": 1.4,
       "exit_code": 0,
-      "summary": "SUMMARY: 210 ok / 1 empty / 38 flagged / 0 stale24h / 0 stale72h",
+      "summary": "SUMMARY: 215 ok / 0 empty / 37 flagged / 0 stale24h / 0 stale72h",
       "stderr_truncated": ""
     },
     "data_health": {
-      "duration_s": 1.1,
+      "duration_s": 0.4,
       "exit_code": 0,
       "summary": "[OK] golf               | 147 golfers tracked (1 active events)",
       "stderr_truncated": ""
     }
   },
-  "generated_at": "2026-05-19T19:46:20",
-  "total_duration_s": 3.2,
+  "generated_at": "2026-05-19T20:41:56",
+  "total_duration_s": 2.2,
   "artifacts": {
     "module_import_audit.json": {
-      "generated_at": "2026-05-19T19:46:18",
-      "n_total": 213,
-      "n_ok": 213,
+      "generated_at": "2026-05-19T20:41:54",
+      "n_total": 217,
+      "n_ok": 217,
       "n_fail": 0,
       "failures": []
     },
     "html_audit.json": {
-      "generated_at": "2026-05-19T19:46:18",
+      "generated_at": "2026-05-19T20:41:54",
       "summary": {
         "ok": 68,
         "no_nav_js": 1,
@@ -135,21 +135,16 @@
       }
     },
     "data_stub_audit.json": {
-      "generated_at": "2026-05-19T19:46:19",
+      "generated_at": "2026-05-19T20:41:56",
       "summary": {
-        "empty": 1,
+        "empty": 0,
         "stub_flagged": 0,
-        "zero_count": 38,
+        "zero_count": 37,
         "stale_24h": 0,
         "stale_72h": 0,
-        "ok": 210
+        "ok": 215
       },
-      "empty": [
-        [
-          ".live_momentum_state.json",
-          "parses to empty {} or []"
-        ]
-      ],
+      "empty": [],
       "zero_count": [
         [
           "bullpen_warming.json",
@@ -225,7 +220,7 @@
         ],
         [
           "live_momentum.json",
-          "n_games=0; n_alerts=0"
+          "n_alerts=0"
         ],
         [
           "live_props.json",
@@ -246,10 +241,6 @@
         [
           "module_import_audit.json",
           "n_fail=0"
-        ],
-        [
-          "multi_sport_correlation.json",
-          "n_strong_road_dogs=0"
         ],
         [
           "nba_extended_props.json",
@@ -281,7 +272,7 @@
         ],
         [
           "prediction_log.json",
-          "n_settled_this_run=0"
+          "n_new_this_run=0; n_settled_this_run=0"
         ],
         [
           "recommendation_trust.json",
@@ -308,25 +299,25 @@
       "stale_72h": []
     },
     "data_health.json": {
-      "generated_at": "2026-05-19T19:46:20",
+      "generated_at": "2026-05-19T20:41:56",
       "overall": "red",
-      "n_green": 7,
+      "n_green": 8,
       "n_yellow": 0,
-      "n_red": 2,
+      "n_red": 1,
       "checks": [
         {
           "feed": "mlb",
-          "status": "red",
+          "status": "green",
           "findings": [
-            "MLB has 1 live games but live_state.json shows 0 (age 18min)"
+            "15 total (14 pre / 1 live / 0 final), local pre=14, live=1"
           ],
           "upstream_count": 15,
           "upstream_pregame": 14,
           "upstream_live": 1,
           "upstream_final": 0,
-          "local_count": 15,
-          "local_live": 0,
-          "live_state_age_min": 18
+          "local_count": 14,
+          "local_live": 1,
+          "live_state_age_min": 9
         },
         {
           "feed": "nba",
@@ -337,7 +328,7 @@
           "upstream_count": 1,
           "local_count": 1,
           "upstream_live": 0,
-          "local_age_min": 12
+          "local_age_min": 6
         },
         {
           "feed": "wnba",
@@ -348,7 +339,7 @@
           "upstream_count": 1,
           "local_count": 1,
           "upstream_live": 0,
-          "local_age_min": 18
+          "local_age_min": 9
         },
         {
           "feed": "nhl",
@@ -359,7 +350,7 @@
           "upstream_count": 1,
           "local_count": 1,
           "upstream_live": 0,
-          "local_age_min": 12
+          "local_age_min": 6
         },
         {
           "feed": "mls",
@@ -370,18 +361,18 @@
           "upstream_count": 2,
           "local_count": 2,
           "upstream_live": 0,
-          "local_age_min": 18
+          "local_age_min": 9
         },
         {
           "feed": "epl",
           "status": "green",
           "findings": [
-            "2 events matched (2 live)"
+            "2 events matched (1 live)"
           ],
           "upstream_count": 2,
           "local_count": 2,
-          "upstream_live": 2,
-          "local_age_min": 18
+          "upstream_live": 1,
+          "local_age_min": 9
         },
         {
           "feed": "pitcher_matchup",
@@ -390,7 +381,7 @@
             "28/28 pre-game probables matched"
           ],
           "upstream_count": 28,
-          "local_count": 30,
+          "local_count": 28,
           "matched": 28
         },
         {
@@ -411,7 +402,7 @@
           ],
           "upstream_players": 147,
           "local_players": 147,
-          "local_age_min": 18
+          "local_age_min": 9
         }
       ]
     }

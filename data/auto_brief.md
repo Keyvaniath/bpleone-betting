@@ -1,61 +1,60 @@
 # Tonight's Slate Brief — 2026-05-19
 
-## Slate Quality: 60/100 (MEDIUM)
-_26% lineups confirmed · 15 rookie SPs · 2 high early-hook risk SPs_
+## Slate Quality: 71/100 (MEDIUM)
+_57% lineups confirmed · 16 rookie SPs · 1 high early-hook risk SPs_
 **Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
-- **15 games** scheduled
-- **34 best bets** scored: 0 DK · 0 PP · 9 NRFI · 6 SGP
+- **14 games** scheduled
+- **35 best bets** scored: 0 DK · 0 PP · 9 NRFI · 6 SGP
 - **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$50.33
 - **MC simulation:** EV +$114.89, 82% P(profit), p05 $-90.28 / p95 $282.54
 
 ## Top 5 Best Bets
-1. **CLE @ DET 4-leg SGP @ -186**  (82/100 *****, edge +68.0%)
-   - Joint prob 0.650 (correlation boost +0.166)
-   - Leg: Jahmai Jones UNDER 0.5 batter home runs
-2. **MIL @ CHC NRFI (no run 1st inning)**  (80/100 ****, edge +30.8%)
+1. **MIL @ CHC NRFI (no run 1st inning)**  (80/100 ****, edge +30.8%)
    - P(NRFI) 84.8% vs baseline 54.0%
-3. **LAD @ SDP YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +26.7%)
+2. **LAD @ SDP YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +26.7%)
    - P(YRFI) 72.7% vs baseline 46.0%
-4. **BOS @ KCR YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +24.2%)
+3. **BOS @ KCR YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +24.2%)
    - P(YRFI) 70.2% vs baseline 46.0%
-5. **HOU @ MIN YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +21.8%)
+4. **HOU @ MIN YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +21.8%)
    - P(YRFI) 67.8% vs baseline 46.0%
+5. **OAK @ LAA YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +21.6%)
+   - P(YRFI) 67.7% vs baseline 46.0%
 
 ## ⚠️ Trap Warnings — 17 flagged
-- **CLE @ DET 4-leg SGP @ -186** (low):
-   - Edge +68.0% looks big but only 0 settled props on this player — model unproven
-- **TOR @ NYY 4-leg SGP @ -160** (low):
-   - Edge +58.4% looks big but only 0 settled props on this player — model unproven
-- **BOS @ KCR 4-leg SGP @ -150** (low):
-   - Edge +56.4% looks big but only 0 settled props on this player — model unproven
-- **NYM @ WSN 4-leg SGP @ -123** (low):
-   - Edge +49.0% looks big but only 0 settled props on this player — model unproven
-- **CIN @ PHI 4-leg SGP @ -118** (low):
-   - Edge +34.8% looks big but only 0 settled props on this player — model unproven
+- **TOR @ NYY 4-leg SGP @ -186** (low):
+   - Edge +64.2% looks big but only 0 settled props on this player — model unproven
+- **NYM @ WSN 4-leg SGP @ -187** (low):
+   - Edge +62.8% looks big but only 0 settled props on this player — model unproven
+- **CLE @ DET 4-leg SGP @ -127** (low):
+   - Edge +44.5% looks big but only 0 settled props on this player — model unproven
+- **BAL @ TBR 4-leg SGP @ -109** (low):
+   - Edge +42.0% looks big but only 0 settled props on this player — model unproven
+- **TEX @ COL 4-leg SGP @ -106** (low):
+   - Edge +36.2% looks big but only 0 settled props on this player — model unproven
 
 ## SP early-hook risk
-HIGH risk: Martín Pérez, Bailey Falter
+HIGH risk: Bailey Falter
 _Fade their K OVERs; lean OPP team total OVER and F5._
 
 ## Hot streaks
-**Batters heating up:** Gavin Sheets (heat +6.58), Angel Martínez (heat +5.97), Kyle Schwarber (heat +5.68)
-**Pitchers on a run:** Martín Pérez (heat +12.12), Ben Brown (heat +7.46), Ranger Suarez (heat +6.60)
+**Batters heating up:** Byron Buxton (heat +8.17), Gavin Sheets (heat +6.58), Angel Martínez (heat +5.97)
+**Pitchers on a run:** Ben Brown (heat +15.75), Ranger Suarez (heat +13.50), Jacob Misiorowski (heat +12.86)
 
 ## Top correlation-aware SGPs
-- **CLE @ DET** 4-leg @ -186 fair (joint 0.65, EV +67.99%)
-   - Jahmai Jones UNDER 0.5 batter home runs
-   - Spencer Torkelson UNDER 1.5 batter hits
-   - Spencer Torkelson UNDER 2.5 batter total bases
-- **TOR @ NYY** 4-leg @ -160 fair (joint 0.61, EV +58.41%)
+- **TOR @ NYY** 4-leg @ -186 fair (joint 0.65, EV +64.15%)
+   - Andrés Giménez UNDER 2.5 batter total bases
    - Trent Grisham UNDER 2.5 batter total bases
    - Trent Grisham UNDER 0.5 batter home runs
-   - Ben Rice UNDER 1.5 batter rbis
-- **BOS @ KCR** 4-leg @ -150 fair (joint 0.60, EV +56.4%)
-   - Starling Marte UNDER 2.5 batter total bases
-   - Starling Marte UNDER 0.5 batter rbis
-   - Salvador Perez UNDER 2.5 batter total bases
+- **NYM @ WSN** 4-leg @ -187 fair (joint 0.65, EV +62.77%)
+   - Mark Vientos OVER 0.5 batter total bases
+   - Mark Vientos UNDER 0.5 batter doubles
+   - Mark Vientos UNDER 0.5 batter home runs
+- **CLE @ DET** 4-leg @ -127 fair (joint 0.56, EV +44.51%)
+   - Spencer Torkelson UNDER 1.5 batter hits
+   - Spencer Torkelson UNDER 2.5 batter total bases
+   - Angel Martínez OVER 0.5 batter total bases
 
 ## Bullpens GASSED tonight
 San Diego Padres, San Francisco Giants, Tampa Bay Rays, Texas Rangers, Minnesota Twins, Atlanta Braves, Chicago White Sox, Miami Marlins

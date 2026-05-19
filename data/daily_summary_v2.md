@@ -1,25 +1,25 @@
 # EdgeStat Daily Summary — 2026-05-19
 
-## 🏥 Model Health: 80.8/100 [HEALTHY]
+## 🏥 Model Health: 81.1/100 [HEALTHY]
 - Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 100.0/100
+  - 🟢 Calibration Freshness: 99.6/100
   - 🟢 Hit Rate Trend: 84.3/100
   - 🔴 Brier Trend: 52.3/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 88.9/100
-  - 🔴 Edge Count: 57.1/100
+  - 🟡 Data Health: 77.8/100
+  - 🟢 Edge Count: 82.9/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.585)
-- **Total games on board:** 123
-- **Strong home favorites:** 10 | **Strong road dogs:** 0
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.586)
+- **Total games on board:** 122
+- **Strong home favorites:** 11 | **Strong road dogs:** 4
 
 ## 🎯 Top 5 Best Bets
-1. **CLE @ DET 4-leg SGP @ -186** (82/100 ★★★★★)
-2. **MIL @ CHC NRFI (no run 1st inning)** (80/100 ★★★★)
-3. **LAD @ SDP YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-4. **BOS @ KCR YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-5. **HOU @ MIN YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+1. **MIL @ CHC NRFI (no run 1st inning)** (80/100 ★★★★)
+2. **LAD @ SDP YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+3. **BOS @ KCR YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+4. **HOU @ MIN YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+5. **OAK @ LAA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 
 ## 🎮 Player Play of the Day (cross-sport)
 - **[LOL]** Inspired UNDER 3.5 Kills | MED conviction · model 61.7% fair -161
@@ -28,33 +28,32 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (5)
+## ⚡ Pre-Game HIGH Conviction (4)
 - [CWS] **Louisiana Ragin' Cajuns** HOME (2-1 L10) · model 71.6% fair -252
 - [CWS] **Ohio State Buckeyes** HOME (3-1 L10) · model 66.2% fair -196
 - [NHL] **Colorado Avalanche** HOME (3-1 L10) · model 64.8% fair -184
-- [CWS] **Jacksonville Dolphins** HOME (2-1 L10) · model 63.6% fair -174
 - [CWS] **Oklahoma Sooners** HOME (1-3 L10) · model 63.2% fair -172
 
 ## 🔥/❄️ Heat / Cold Signals
 - Hot teams: **29** | Cold teams: **41** | Over-heavy: 0 | Under-heavy: 1
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (22)
-- RESIDUAL_DIVERGENCE: **22**
+## ⚠️ Anomaly Detector (21)
+- RESIDUAL_DIVERGENCE: **21**
   - Cleveland Cavaliers (NBA): Cleveland Cavaliers OUTPERFORMING expected margin by 7.7pts in recent games -- model bias may persist
   - Colorado Avalanche (NHL): Colorado Avalanche UNDERPERFORMING expected margin by 6.7pts in recent games -- model bias may persist
   - Vegas Golden Knights (NHL): Vegas Golden Knights OUTPERFORMING expected margin by 7.1pts in recent games -- model bias may persist
   - Phoenix Mercury (WNBA): Phoenix Mercury OUTPERFORMING expected margin by 6.5pts in recent games -- model bias may persist
-  - Missouri Tigers (CWS): Missouri Tigers OUTPERFORMING expected margin by 9.0pts in recent games -- model bias may persist
+  - Iowa Hawkeyes (CWS): Iowa Hawkeyes UNDERPERFORMING expected margin by 7.3pts in recent games -- model bias may persist
 
 ## 💰 Today's Portfolio (8 picks)
 - Total stake: **$340.0** (34.0% of $1000 bankroll)
-- Expected EV: **$9.11**
-  - #1 [SGP] $50 on CLE @ DET 4-leg SGP @ -186 (P=65%)
-  - #2 [NRFI] $50 on MIL @ CHC NRFI (no run 1st inning) (P=85%)
-  - #3 [NRFI] $50 on LAD @ SDP YRFI (1st-inning OVER 0.5) (P=73%)
-  - #4 [NRFI] $50 on BOS @ KCR YRFI (1st-inning OVER 0.5) (P=70%)
-  - #5 [SGP] $35 on TOR @ NYY 4-leg SGP @ -160 (P=61%)
+- Expected EV: **$8.97**
+  - #1 [SGP] $50 on TOR @ NYY 4-leg SGP @ -186 (P=65%)
+  - #2 [SGP] $50 on NYM @ WSN 4-leg SGP @ -187 (P=65%)
+  - #3 [NRFI] $50 on MIL @ CHC NRFI (no run 1st inning) (P=85%)
+  - #4 [NRFI] $50 on LAD @ SDP YRFI (1st-inning OVER 0.5) (P=73%)
+  - #5 [NRFI] $50 on BOS @ KCR YRFI (1st-inning OVER 0.5) (P=70%)
 
 ## 🎯 Convergence Picks (6 stacked games)
 - ELITE: **1** · HIGH: 3 · MED: 2
@@ -62,7 +61,7 @@
   - [HIGH] Vegas Golden Knights @ Colorado Avalanche : 3 signals (PREGAME, ANOMALY, ANOMALY)
   - [HIGH] LAFC @ Nashville SC : 3 signals (HEAT_COLD, ATS, ATS)
   - [HIGH] Tottenham Hotspur @ Chelsea : 3 signals (PREGAME, ATS, ATS)
-  - [MED] Connecticut Sun @ Portland Fire : 2 signals (HEAT_COLD, ATS)
+  - [MED] Toronto Tempo @ Phoenix Mercury : 2 signals (PREGAME, ANOMALY)
 
 ## ⚾ Top MLB Pitcher K Plays (11)
 - **Landen Roupp** OVER 4.5 K (76%) fair -321
@@ -88,23 +87,27 @@
   - 🔥 T4 **Cameron Champ** (USA): +0 total -- finished T4
   - 🔥 T5 **Doug Ghim** (USA): +0 total -- finished T5
 
-## 🔥 MLB Batter Heat (26 HOT / 43 COLD)
+## 🔥 MLB Batter Heat (26 HOT / 42 COLD)
   - 🔥 **Blaze Alexander** (BAL): L14 .375 / season .245 (+130pts)
   - 🔥 **Carson Benge** (NYM): L14 .382 / season .253 (+129pts)
   - 🔥 **Alec Bohm** (PHI): L14 .333 / season .217 (+116pts)
   - 🔥 **Jakob Marsee** (MIA): L14 .326 / season .215 (+111pts)
   - 🔥 **Willy Adames** (SF): L14 .339 / season .238 (+101pts)
   - ❄️ **Moisés Ballesteros** (CHC): L14 .065 / season .250 (-185pts) -- FADE props
+  - ❄️ **Ozzie Albies** (ATL): L14 .118 / season .274 (-156pts) -- FADE props
   - ❄️ **Edouard Julien** (COL): L14 .073 / season .225 (-152pts) -- FADE props
   - ❄️ **Dalton Rushing** (LAD): L14 .132 / season .260 (-128pts) -- FADE props
   - ❄️ **Christian Walker** (HOU): L14 .140 / season .267 (-127pts) -- FADE props
-  - ❄️ **Ozzie Albies** (ATL): L14 .148 / season .274 (-126pts) -- FADE props
 
 ## 😴 B2B Fatigue Edges (1)
 - [NBA] FADE Cleveland Cavaliers (away on B2B)
 
-## 📈 Streak Regression Alerts (1)
+## 📈 Streak Regression Alerts (10)
 - [NBA] New York Knicks on W3 L10 3-0 -- New York Knicks on W3 -- no historical sample
+- [CWS] Missouri Tigers on L3 L10 0-3 -- Missouri Tigers on L3 -- no historical sample
+- [CWS] Vanderbilt Commodores on W3 L10 3-0 -- Vanderbilt Commodores on W3 -- no historical sample
+- [CWS] Iowa Hawkeyes on W3 L10 3-0 -- Iowa Hawkeyes on W3 -- no historical sample
+- [CWS] Austin Peay Governors on L3 L10 0-3 -- Austin Peay Governors on L3 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**
