@@ -48,12 +48,26 @@ def run() -> Dict[str, Any]:
     entries = log.get("entries") or []
     by_key = {e["key"]: e for e in entries}
 
-    # 1. Capture today's predictions (for any pre-game game)
+    # 1. Capture today's predictions (for any pre-game game with signal)
+    def _has_signal(g):
+        """Skip preseason 0-0 vs 0-0 games (only edge is HFA, not actionable)."""
+        def _wins_losses(rec):
+            if not rec or not isinstance(rec, str): return 0
+            try:
+                parts = rec.split("-")
+                return int(parts[0]) + int(parts[1]) if len(parts) >= 2 else 0
+            except Exception: return 0
+        return (_wins_losses(g.get("home_record")) + _wins_losses(g.get("away_record"))) > 0
+
     new_count = 0
+    skipped_preseason = 0
     for sport in SPORTS:
         state = _load(os.path.join(DATA_DIR, f"{sport}_state.json"))
         for g in (state.get("games") or []):
             if g.get("state") != "pre": continue
+            if not _has_signal(g):
+                skipped_preseason += 1
+                continue   # don't log preseason games we'll never settle
             key = _key(sport, g)
             if key in by_key: continue
             entry = {
