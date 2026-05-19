@@ -463,6 +463,9 @@ jobs:
       - name: MLB team-total edges (decompose model fair_total -> per-team Poisson lines)
         working-directory: python
         run: python mlb_team_total_edges.py
+      - name: NHL playoff goalie matchup (blended SV%, expected goals, team totals + shutout)
+        working-directory: python
+        run: python nhl_goalie_matchup.py
       - name: RE-RUN slate aggregators (fold in all new sport-specific modules)
         working-directory: python
         run: |

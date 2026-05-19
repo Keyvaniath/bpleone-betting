@@ -70,6 +70,12 @@ def run() -> Dict[str, Any]:
         _add(picks, "MLB", x.get("matchup"), x.get("market"),
               x.get("prob"), x.get("fair"), "mlb_team_total")
 
+    # NHL goalie-matchup team totals + shutout markets (playoff goalie analysis)
+    nhl_g = _load(os.path.join(DATA_DIR, "nhl_goalie_matchup.json"))
+    for x in (nhl_g.get("top_picks") or []):
+        _add(picks, "NHL", x.get("matchup"), x.get("market"),
+              x.get("prob"), x.get("fair"), "nhl_goalie")
+
     # ESPN-driven sports (state files have p_home_win + fair odds)
     def _has_signal(g):
         """Skip preseason 0-0 vs 0-0 games (only edge is HFA, not actionable)."""
