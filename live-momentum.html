@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Live Momentum | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/nav.js"></script>
+<style>
+  .game-card { padding: 14px 18px; margin-bottom: 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08); display: grid; grid-template-columns: 1.5fr 100px 80px 90px 130px 130px; gap: 14px; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 12px; }
+  .game-card.BIG_SWING_HOME, .game-card.BIG_SWING_AWAY { border-left: 4px solid #d4a04a; background: rgba(212,160,74,0.04); }
+  .game-card.REVERSAL_HOME, .game-card.REVERSAL_AWAY { border-left: 4px solid #c43e3e; background: rgba(196,62,62,0.04); }
+  .game-card.SUSTAINED_HOME, .game-card.SUSTAINED_AWAY { border-left: 4px solid #58c878; background: rgba(88,200,120,0.04); }
+  .game-card.head { background: rgba(255,255,255,0.04); color: var(--muted,#888); font-size: 10px; text-transform: uppercase; }
+  .delta-up { color: #58c878; font-weight: 700; }
+  .delta-down { color: #e35a5a; font-weight: 700; }
+  .pulse-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #d4a04a; animation: pulse 1.5s infinite; margin-right: 6px; }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+  .alert-pill { display: inline-block; padding: 3px 8px; border-radius: 4px; font-size: 10px; font-weight: 700; }
+  .alert-pill.BIG_SWING_HOME, .alert-pill.BIG_SWING_AWAY { background: rgba(212,160,74,0.2); color: #d4a04a; }
+  .alert-pill.REVERSAL_HOME, .alert-pill.REVERSAL_AWAY { background: rgba(196,62,62,0.2); color: #e35a5a; }
+  .alert-pill.SUSTAINED_HOME, .alert-pill.SUSTAINED_AWAY { background: rgba(88,200,120,0.2); color: #58c878; }
+  .alert-pill.SWING_HOME, .alert-pill.SWING_AWAY { background: rgba(255,255,255,0.1); color: #aaa; }
+  .refresh-tag { display:inline-block; padding:3px 9px; background:rgba(88,200,120,0.15); color:#58c878; font-size:10px; border-radius:999px; font-weight:700; }
+</style>
+</head>
+<body class="page-live-momentum">
+<header class="topbar">
+  <div class="brand"><a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a><span class="tagline">by bpleone</span></div>
+  <nav class="mainnav"><!-- nav.js injects --></nav>
+  <div class="topbar-actions"><div class="ticker">LIVE</div></div>
+</header>
+<main class="container">
+  <section class="page-head">
+    <h1><span class="pulse-dot"></span>Live Momentum Tracker</h1>
+    <p class="muted" id="status">Loading…</p>
+    <p style="margin-top:6px;"><span class="refresh-tag">Auto-refresh every 60s</span></p>
+  </section>
+  <section class="metric-strip">
+    <div class="metric"><span class="metric-num" id="m_games">--</span><span class="metric-label">Games Live</span></div>
+    <div class="metric"><span class="metric-num" id="m_alerts">--</span><span class="metric-label">Momentum Alerts</span></div>
+    <div class="metric"><span class="metric-num" id="m_biggest">--</span><span class="metric-label">Biggest Swing</span></div>
+  </section>
+  <section class="card" style="margin-bottom: 18px;">
+    <div class="card-head"><span>📋 How this works</span></div>
+    <div style="padding:14px 18px; font-size:13px; line-height:1.7; color: var(--text-2,#aaa);">
+      <p>Tracks P(home win) deltas between consecutive live polls. Alerts:</p>
+      <ul style="padding-left:22px;">
+        <li><strong style="color:#58c878">SUSTAINED</strong>: 3+ consecutive polls in same direction → back the team riding momentum.</li>
+        <li><strong style="color:#d4a04a">BIG_SWING</strong>: ≥10pp swing in one poll → book may be slow to update; live arb window.</li>
+        <li><strong style="color:#e35a5a">REVERSAL</strong>: Direction flipped after a swing → mean-revert opportunity.</li>
+        <li><strong style="color:#aaa">SWING</strong>: ≥5pp move but not classified.</li>
+      </ul>
+    </div>
+  </section>
+  <section class="card">
+    <div class="card-head"><span>🎯 Live Momentum</span><span class="muted" id="meta">--</span></div>
+    <div id="container"></div>
+  </section>
+</main>
+<script src="js/nav_badge.js"></script>
+<script>
+function fmtDelta(pp) {
+  if (pp == null) return '—';
+  const cls = pp > 0 ? 'delta-up' : pp < 0 ? 'delta-down' : '';
+  const sign = pp > 0 ? '+' : '';
+  return `<span class="${cls}">${sign}${pp.toFixed(1)}pp</span>`;
+}
+function render() {
+  fetch("data/live_momentum.json?t=" + Date.now(), { cache: "no-cache" })
+    .then(r => r.json())
+    .then(d => {
+      const games = d.games || [];
+      const alerts = d.alerts || [];
+      document.getElementById("m_games").textContent = games.length;
+      document.getElementById("m_alerts").textContent = alerts.length;
+      const max_delta = games.reduce((m, g) => Math.max(m, Math.abs(g.delta_pp || 0)), 0);
+      document.getElementById("m_biggest").textContent = max_delta ? max_delta.toFixed(1) + 'pp' : '--';
+      document.getElementById("status").textContent = `${games.length} games tracked · ${alerts.length} momentum alerts · ${(d.generated_at || '').slice(0,19).replace('T',' ')}`;
+
+      let html = `<div class="game-card head"><span>Matchup</span><span>Score</span><span>P(H) now</span><span>Δ</span><span>Sustain / Dir</span><span>Alert</span></div>`;
+      for (const g of games) {
+        const at = g.alert_type || '';
+        const sustainStr = g.sustained_n > 0 ? `${g.sustained_n}× ${g.direction}` : `${g.direction}`;
+        html += `<div class="game-card ${at}">
+          <span><strong>${g.matchup}</strong></span>
+          <span>${g.score}</span>
+          <span>${(g.p_home_win_now*100).toFixed(1)}%</span>
+          <span>${fmtDelta(g.delta_pp)}</span>
+          <span class="muted">${sustainStr}</span>
+          <span>${at ? `<span class="alert-pill ${at}">${at.replace('_',' ')}</span>` : ''}</span>
+        </div>`;
+      }
+      if (!games.length) html += `<p class="muted" style="padding:14px;">No live games tracked.</p>`;
+      document.getElementById("container").innerHTML = html;
+      document.getElementById("meta").textContent = `${alerts.length} alerts of ${games.length}`;
+    })
+    .catch(err => {
+      document.getElementById("container").innerHTML = `<p class="muted" style="padding:14px;">Could not load (${err.message}). Wait for first poll.</p>`;
+    });
+}
+render();
+setInterval(render, 60 * 1000);  // refresh every 60s
+</script>
+</body>
+</html>
