@@ -81,11 +81,31 @@ def _double_double_prob(p_pts10, p_reb10, p_ast10):
     return p_ab + p_ac + p_bc - 2 * p_abc
 
 
+def _active_teams_today() -> set:
+    """Return the set of NBA team names with games scheduled today (pre or live).
+    Critical during NBA playoffs when only 2-4 teams play each night -- without
+    this filter the module emits props for 350+ players who aren't even playing."""
+    state = _load(os.path.join(DATA_DIR, "nba_state.json"))
+    active = set()
+    for g in (state.get("games") or []):
+        if g.get("state") == "post": continue   # only pre + live games
+        for fld in ("home_team", "away_team"):
+            v = g.get(fld)
+            if v: active.add(v)
+    return active
+
+
 def run() -> Dict[str, Any]:
     stats = _load(os.path.join(DATA_DIR, "player_stats_nba.json"))
     players = stats.get("players") or []
+    active_teams = _active_teams_today()
+    is_playoffs_or_limited = len(active_teams) > 0 and len(active_teams) <= 8
+
     players_out = []
     for p in players:
+        # Skip players whose team isn't playing today (matters in playoffs / off-day)
+        if active_teams and p.get("team") not in active_teams:
+            continue
         ssn_pts = p.get("pts_per_game") or 0
         ssn_reb = p.get("reb_per_game") or 0
         ssn_ast = p.get("ast_per_game") or 0
@@ -189,6 +209,9 @@ def run() -> Dict[str, Any]:
     total_props = sum(len(p.get("props") or {}) for p in players_out)
     payload = {
         "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
+        "active_teams_today": sorted(list(active_teams)),
+        "n_active_teams": len(active_teams),
+        "playoff_filter_applied": is_playoffs_or_limited,
         "n_players": len(players_out),
         "n_total_props": total_props,
         "n_sweet_spot": len(sweet),

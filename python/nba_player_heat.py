@@ -89,9 +89,27 @@ def _last5_avg(athlete_id):
     return n, pts / n, reb / n, ast / n, mins / n
 
 
+def _active_teams_today() -> set:
+    """Teams with games scheduled today (pre or live). Critical during NBA
+    playoffs when only 2-4 teams play each night."""
+    state = _load(os.path.join(DATA_DIR, "nba_state.json"))
+    active = set()
+    for g in (state.get("games") or []):
+        if g.get("state") == "post": continue
+        for fld in ("home_team", "away_team"):
+            v = g.get(fld)
+            if v: active.add(v)
+    return active
+
+
 def run() -> Dict[str, Any]:
     stats = _load(os.path.join(DATA_DIR, "player_stats_nba.json"))
     players = stats.get("players") or []
+    active_teams = _active_teams_today()
+
+    # Filter to players on active teams (skip if no NBA state available)
+    if active_teams:
+        players = [p for p in players if p.get("team") in active_teams]
 
     # Sort by minutes-per-game desc so we hit the most relevant players first
     players_sorted = sorted(players, key=lambda p: -(p.get("min_per_game") or 0))
@@ -149,6 +167,8 @@ def run() -> Dict[str, Any]:
 
     payload = {
         "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
+        "active_teams_today": sorted(list(active_teams)),
+        "n_active_teams": len(active_teams),
         "n_players_checked": n_fetched,
         "n_hot": len(hot),
         "n_cold": len(cold),
