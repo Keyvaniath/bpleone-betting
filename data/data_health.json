@@ -1,19 +1,21 @@
 {
-  "generated_at": "2026-05-19T00:06:40",
+  "generated_at": "2026-05-19T00:13:16",
   "overall": "red",
-  "n_green": 5,
-  "n_yellow": 1,
+  "n_green": 4,
+  "n_yellow": 2,
   "n_red": 3,
   "checks": [
     {
       "feed": "mlb",
-      "status": "red",
+      "status": "yellow",
       "findings": [
-        "MLB game count mismatch: local=5 vs MLB API=15"
+        "today.json count off: local=5 vs upstream pre-game=15 (total=15, live=0, final=0)"
       ],
       "upstream_count": 15,
-      "local_count": 5,
+      "upstream_pregame": 15,
       "upstream_live": 0,
+      "upstream_final": 0,
+      "local_count": 5,
       "local_live": 9,
       "live_state_age_min": 999
     },
@@ -30,13 +32,13 @@
     },
     {
       "feed": "wnba",
-      "status": "green",
+      "status": "red",
       "findings": [
-        "2 events matched (0 live)"
+        "WNBA has 1 live, local age 999min"
       ],
       "upstream_count": 2,
       "local_count": 2,
-      "upstream_live": 0,
+      "upstream_live": 1,
       "local_age_min": 999
     },
     {
@@ -76,7 +78,7 @@
       "feed": "pitcher_matchup",
       "status": "yellow",
       "findings": [
-        "only 0/28 probables in local",
+        "only 0/28 pre-game probables in local",
         "missing: ['Anthony Kay', 'Ben Brown', 'Braxton Garrett']..."
       ],
       "upstream_count": 28,
