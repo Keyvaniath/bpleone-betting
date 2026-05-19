@@ -56,15 +56,21 @@ def _age_min(name):
 
 
 def _check_mlb():
-    """Cross-check MLB schedule + live state."""
+    """Cross-check MLB schedule + live state.
+    today.json includes only Pre-Game/Scheduled (pipeline.py filters In-Progress
+    out), so we compare today.json against the PRE-GAME count, not total."""
     today = dt.date.today().isoformat()
     upstream = _http(f"https://statsapi.mlb.com/api/v1/schedule?sportId=1&date={today}")
     if not upstream:
         return {"feed": "mlb", "status": "red", "finding": "MLB API unreachable"}
     games = (upstream.get("dates") or [{}])[0].get("games", [])
-    n_upstream = len(games)
-    # In-progress: status code 'I'
+    n_upstream_total = len(games)
+    # In-progress: status code 'L' (Live)
     n_live = sum(1 for g in games if g.get("status", {}).get("abstractGameCode") == "L")
+    # Final: status code 'F'
+    n_final = sum(1 for g in games if g.get("status", {}).get("abstractGameCode") == "F")
+    # Pre-game: status code 'P' (Preview)
+    n_pregame = sum(1 for g in games if g.get("status", {}).get("abstractGameCode") == "P")
 
     local = _load("today.json") or {}
     local_games = local.get("games") or []
@@ -75,18 +81,21 @@ def _check_mlb():
 
     findings = []
     status = "green"
-    if n_local != n_upstream:
-        status = "red"
-        findings.append(f"MLB game count mismatch: local={n_local} vs MLB API={n_upstream}")
+    # today.json should match PRE-GAME count from upstream (since live games filtered out)
+    # Allow tolerance of ±1 because games can flip status mid-poll
+    if abs(n_local - n_pregame) > 1 and n_local < n_upstream_total:
+        status = "yellow"
+        findings.append(f"today.json count off: local={n_local} vs upstream pre-game={n_pregame} (total={n_upstream_total}, live={n_live}, final={n_final})")
     age = _age_min("live_state.json") or 999
     if n_live > 0 and (n_local_live == 0 or age > 30):
         status = "red"
         findings.append(f"MLB has {n_live} live games but live_state.json shows {n_local_live} (age {age}min)")
     if not findings:
-        findings.append(f"{n_upstream} games matched, {n_live} in progress")
+        findings.append(f"{n_upstream_total} total ({n_pregame} pre / {n_live} live / {n_final} final), local pre={n_local}, live={n_local_live}")
     return {"feed": "mlb", "status": status, "findings": findings,
-            "upstream_count": n_upstream, "local_count": n_local,
-            "upstream_live": n_live, "local_live": n_local_live,
+            "upstream_count": n_upstream_total, "upstream_pregame": n_pregame,
+            "upstream_live": n_live, "upstream_final": n_final,
+            "local_count": n_local, "local_live": n_local_live,
             "live_state_age_min": age}
 
 
@@ -139,7 +148,10 @@ def _check_props():
 
 
 def _check_pitcher_matchup():
-    """Verify pitcher_matchup reflects today's actual probables."""
+    """Verify pitcher_matchup reflects today's PRE-GAME probables.
+    Live/finished games are filtered out of mlb_pitcher_matchup.json by design
+    (we don't project K-props for games already in progress), so we restrict
+    upstream comparison to pre-game probables only."""
     today_iso = dt.date.today().isoformat()
     upstream = _http(f"https://statsapi.mlb.com/api/v1/schedule?sportId=1&date={today_iso}&hydrate=probablePitcher")
     if not upstream:
@@ -147,6 +159,9 @@ def _check_pitcher_matchup():
     games = (upstream.get("dates") or [{}])[0].get("games", [])
     upstream_pitchers = set()
     for g in games:
+        # Only count pitchers from PRE-GAME games (matches today.json filter)
+        status_code = (g.get("status") or {}).get("abstractGameCode")
+        if status_code != "P": continue   # P = Preview (Pre-Game)
         for side in ("home", "away"):
             p = g.get("teams", {}).get(side, {}).get("probablePitcher", {})
             if p and p.get("fullName"):
@@ -163,15 +178,17 @@ def _check_pitcher_matchup():
     missing = upstream_pitchers - local_pitchers
     findings = []
     status = "green"
-    if not local_pitchers:
+    if not upstream_pitchers:
+        findings.append("no pre-game probables upstream (all games live or final)")
+    elif not local_pitchers:
         status = "red"
         findings.append("pitcher_matchup local has 0 pitchers")
     elif len(overlap) < len(upstream_pitchers) * 0.5:
         status = "yellow"
-        findings.append(f"only {len(overlap)}/{len(upstream_pitchers)} probables in local")
+        findings.append(f"only {len(overlap)}/{len(upstream_pitchers)} pre-game probables in local")
     else:
-        findings.append(f"{len(overlap)}/{len(upstream_pitchers)} probables matched")
-    if missing:
+        findings.append(f"{len(overlap)}/{len(upstream_pitchers)} pre-game probables matched")
+    if missing and len(missing) > 0:
         findings.append(f"missing: {sorted(list(missing))[:3]}{'...' if len(missing)>3 else ''}")
     return {"feed": "pitcher_matchup", "status": status, "findings": findings,
             "upstream_count": len(upstream_pitchers), "local_count": len(local_pitchers),
