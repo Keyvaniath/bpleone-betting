@@ -131,6 +131,15 @@ def run() -> Dict[str, Any]:
             _add(picks, "NBA", pp["name"], pp["team"], mkt, prob, fair,
                   "nba_ext")
 
+    # WNBA extended (mirrors NBA pattern, uses now-correct WNBA stats)
+    wnba_ext = _load(os.path.join(DATA_DIR, "wnba_extended_props.json"))
+    for pp in (wnba_ext.get("players") or []):
+        for mkt, info in (pp.get("props") or {}).items():
+            prob = info.get("p")
+            fair = info.get("fair_yes") or info.get("fair_over")
+            _add(picks, "WNBA", pp["name"], pp["team"], mkt, prob, fair,
+                  "wnba_ext")
+
     # NBA real player props (PTS/REB/AST/3PM/PRA)
     nba_rp = _load(os.path.join(DATA_DIR, "real_player_props_nba.json"))
     for pp in (nba_rp.get("players") or []):

@@ -31,11 +31,19 @@ SPORTS = [
     ("nhl",  "hockey/nhl",      12),
 ]
 
-# NBA / WNBA stat-line indexes (column order from gamelog labels):
-# MIN, FG, FG%, 3PT, 3P%, FT, FT%, REB, AST, BLK, STL, TO, PF, PTS
-BASKETBALL_IDX = {"min": 0, "fg": 1, "fg_pct": 2, "3pt": 3, "3p_pct": 4,
-                   "ft": 5, "ft_pct": 6, "reb": 7, "ast": 8, "blk": 9,
-                   "stl": 10, "to": 11, "pf": 12, "pts": 13}
+# NBA / WNBA gamelog stats use DIFFERENT column orders -- this caused
+# player_stats_wnba.json to silently corrupt PPG (read PF as PTS).
+# Verified via live ESPN call 2026-05-19: WNBA labels =
+#   MIN(0) PTS(1) REB(2) AST(3) STL(4) BLK(5) TO(6) FG(7) FG%(8) 3PT(9) 3P%(10) FT(11) FT%(12) PF(13)
+# NBA labels =
+#   MIN(0) FG(1) FG%(2) 3PT(3) 3P%(4) FT(5) FT%(6) REB(7) AST(8) BLK(9) STL(10) TO(11) PF(12) PTS(13)
+NBA_IDX = {"min": 0, "fg": 1, "fg_pct": 2, "3pt": 3, "3p_pct": 4,
+            "ft": 5, "ft_pct": 6, "reb": 7, "ast": 8, "blk": 9,
+            "stl": 10, "to": 11, "pf": 12, "pts": 13}
+WNBA_IDX = {"min": 0, "pts": 1, "reb": 2, "ast": 3, "stl": 4, "blk": 5,
+             "to": 6, "fg": 7, "fg_pct": 8, "3pt": 9, "3p_pct": 10,
+             "ft": 11, "ft_pct": 12, "pf": 13}
+BASKETBALL_IDX = NBA_IDX   # legacy default; parse_basketball_log uses sport-aware
 
 # NHL skater stats: G, A, +/-, SOG, S%, PIM, GWG, PPG, SHG, HT
 HOCKEY_IDX = {"goals": 0, "assists": 1, "plus_minus": 2, "shots": 3,
@@ -77,8 +85,15 @@ def _parse_made(s):
         return 0, 0
 
 
-def parse_basketball_log(gamelog: Dict[str, Any], player_name: str) -> Dict[str, Any]:
-    """Compute per-game averages from a basketball player's game log."""
+def parse_basketball_log(gamelog: Dict[str, Any], player_name: str,
+                          sport_key: str = "nba") -> Dict[str, Any]:
+    """Compute per-game averages from a basketball player's game log.
+
+    sport_key MUST be 'nba' or 'wnba' -- the gamelog stat-array column order
+    differs between the two leagues (see NBA_IDX/WNBA_IDX above). Calling
+    this with the wrong sport_key silently corrupts PPG.
+    """
+    idx = WNBA_IDX if sport_key == "wnba" else NBA_IDX
     seasons = gamelog.get("seasonTypes") or []
     # Aggregate across regular season + postseason (most recent N games)
     all_event_stats = []
@@ -93,12 +108,12 @@ def parse_basketball_log(gamelog: Dict[str, Any], player_name: str) -> Dict[str,
     # Take last 20 games for "recent form"
     last_n = all_event_stats[:20]
     n = len(last_n)
-    pts_avg = sum(_to_float(s[BASKETBALL_IDX["pts"]]) for s in last_n) / n
-    reb_avg = sum(_to_float(s[BASKETBALL_IDX["reb"]]) for s in last_n) / n
-    ast_avg = sum(_to_float(s[BASKETBALL_IDX["ast"]]) for s in last_n) / n
-    threes_made = sum(_parse_made(s[BASKETBALL_IDX["3pt"]])[0] for s in last_n) / n
-    min_avg = sum(_to_float(s[BASKETBALL_IDX["min"]]) for s in last_n) / n
-    fg_pct = sum(_to_float(s[BASKETBALL_IDX["fg_pct"]]) for s in last_n) / n
+    pts_avg = sum(_to_float(s[idx["pts"]]) for s in last_n) / n
+    reb_avg = sum(_to_float(s[idx["reb"]]) for s in last_n) / n
+    ast_avg = sum(_to_float(s[idx["ast"]]) for s in last_n) / n
+    threes_made = sum(_parse_made(s[idx["3pt"]])[0] for s in last_n) / n
+    min_avg = sum(_to_float(s[idx["min"]]) for s in last_n) / n
+    fg_pct = sum(_to_float(s[idx["fg_pct"]]) for s in last_n) / n
     return {
         "name": player_name,
         "n_games": n,
@@ -142,7 +157,7 @@ def fetch_sport(sport_key: str, espn_path: str, top_per_team: int) -> Dict[str, 
     teams = rosters.get("teams") or {}
     player_logs: List[Dict[str, Any]] = []
     pulled = 0
-    parse_fn = parse_basketball_log if sport_key in ("nba", "wnba") else parse_hockey_log
+    is_basketball = sport_key in ("nba", "wnba")
     for team_id, tb in teams.items():
         # Take first `top_per_team` players (roster order = depth)
         for p in (tb.get("players") or [])[:top_per_team]:
@@ -150,7 +165,10 @@ def fetch_sport(sport_key: str, espn_path: str, top_per_team: int) -> Dict[str, 
             if not aid: continue
             gamelog = _http(GAMELOG_URL.format(path=espn_path, aid=aid))
             if not gamelog: continue
-            parsed = parse_fn(gamelog, p["name"])
+            if is_basketball:
+                parsed = parse_basketball_log(gamelog, p["name"], sport_key)
+            else:
+                parsed = parse_hockey_log(gamelog, p["name"])
             if parsed:
                 parsed["athlete_id"] = aid
                 parsed["team"] = tb["name"]

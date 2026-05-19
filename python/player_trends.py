@@ -33,9 +33,15 @@ SPORTS = [
     ("nhl",  "hockey/nhl"),
 ]
 
-BASKETBALL_IDX = {"min": 0, "fg": 1, "fg_pct": 2, "3pt": 3, "3p_pct": 4,
-                   "ft": 5, "ft_pct": 6, "reb": 7, "ast": 8, "blk": 9,
-                   "stl": 10, "to": 11, "pf": 12, "pts": 13}
+# NBA and WNBA gamelog stat-array column orders DIFFER -- see espn_player_stats.py
+# for the detailed comparison. Using NBA indices on WNBA data corrupts PPG.
+NBA_IDX = {"min": 0, "fg": 1, "fg_pct": 2, "3pt": 3, "3p_pct": 4,
+            "ft": 5, "ft_pct": 6, "reb": 7, "ast": 8, "blk": 9,
+            "stl": 10, "to": 11, "pf": 12, "pts": 13}
+WNBA_IDX = {"min": 0, "pts": 1, "reb": 2, "ast": 3, "stl": 4, "blk": 5,
+             "to": 6, "fg": 7, "fg_pct": 8, "3pt": 9, "3p_pct": 10,
+             "ft": 11, "ft_pct": 12, "pf": 13}
+BASKETBALL_IDX = NBA_IDX   # legacy default; _basketball_trend uses sport-aware idx
 HOCKEY_IDX = {"goals": 0, "assists": 1, "plus_minus": 2, "shots": 3}
 
 
@@ -71,17 +77,19 @@ def _all_event_stats(gamelog: Dict[str, Any]) -> List[List[str]]:
     return out
 
 
-def _basketball_trend(stats: List[List[str]]) -> Dict[str, Any]:
+def _basketball_trend(stats: List[List[str]], sport_key: str = "nba") -> Dict[str, Any]:
+    """sport_key must be 'nba' or 'wnba' -- gamelog stat columns differ."""
+    idx = WNBA_IDX if sport_key == "wnba" else NBA_IDX
     if len(stats) < 8: return {}
     l5 = stats[:5]
     l20 = stats[:20] if len(stats) >= 20 else stats[:len(stats)]
     if not l5 or not l20: return {}
-    pts_l5 = sum(_to_float(s[BASKETBALL_IDX["pts"]]) for s in l5) / len(l5)
-    pts_l20 = sum(_to_float(s[BASKETBALL_IDX["pts"]]) for s in l20) / len(l20)
-    reb_l5 = sum(_to_float(s[BASKETBALL_IDX["reb"]]) for s in l5) / len(l5)
-    reb_l20 = sum(_to_float(s[BASKETBALL_IDX["reb"]]) for s in l20) / len(l20)
-    ast_l5 = sum(_to_float(s[BASKETBALL_IDX["ast"]]) for s in l5) / len(l5)
-    ast_l20 = sum(_to_float(s[BASKETBALL_IDX["ast"]]) for s in l20) / len(l20)
+    pts_l5 = sum(_to_float(s[idx["pts"]]) for s in l5) / len(l5)
+    pts_l20 = sum(_to_float(s[idx["pts"]]) for s in l20) / len(l20)
+    reb_l5 = sum(_to_float(s[idx["reb"]]) for s in l5) / len(l5)
+    reb_l20 = sum(_to_float(s[idx["reb"]]) for s in l20) / len(l20)
+    ast_l5 = sum(_to_float(s[idx["ast"]]) for s in l5) / len(l5)
+    ast_l20 = sum(_to_float(s[idx["ast"]]) for s in l20) / len(l20)
     return {
         "pts_l5": round(pts_l5, 2), "pts_l20": round(pts_l20, 2),
         "reb_l5": round(reb_l5, 2), "reb_l20": round(reb_l20, 2),
@@ -121,7 +129,7 @@ def fetch_sport(sport_key: str, espn_path: str) -> Dict[str, Any]:
     stats_blob = _load(os.path.join(DATA_DIR, f"player_stats_{sport_key}.json"))
     players = stats_blob.get("players") or []
     # Use the same athletes we already pulled
-    parse_fn = _basketball_trend if sport_key in ("nba", "wnba") else _hockey_trend
+    is_basketball = sport_key in ("nba", "wnba")
     trends = []
     pulled = 0
     for p in players:
@@ -131,7 +139,10 @@ def fetch_sport(sport_key: str, espn_path: str) -> Dict[str, Any]:
         if not gamelog: continue
         stats = _all_event_stats(gamelog)
         if len(stats) < 8: continue
-        t = parse_fn(stats)
+        if is_basketball:
+            t = _basketball_trend(stats, sport_key)
+        else:
+            t = _hockey_trend(stats)
         if not t: continue
         cls = _classify(t.get("pts_delta_pct", 0))
         trends.append({
