@@ -37,6 +37,12 @@ jobs:
         working-directory: python
         run: python live_momentum.py
 
+      - name: Momentum alert dispatcher (Discord + history log)
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        working-directory: python
+        run: python momentum_alerter.py
+
       - name: Poll live CLV (Bovada line drift per game)
         working-directory: python
         run: python live_clv.py
