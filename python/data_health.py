@@ -86,7 +86,8 @@ def _check_mlb():
     if abs(n_local - n_pregame) > 1 and n_local < n_upstream_total:
         status = "yellow"
         findings.append(f"today.json count off: local={n_local} vs upstream pre-game={n_pregame} (total={n_upstream_total}, live={n_live}, final={n_final})")
-    age = _age_min("live_state.json") or 999
+    age = _age_min("live_state.json")
+    if age is None: age = 999
     if n_live > 0 and (n_local_live == 0 or age > 30):
         status = "red"
         findings.append(f"MLB has {n_live} live games but live_state.json shows {n_local_live} (age {age}min)")
@@ -111,7 +112,8 @@ def _check_espn(sport, espn_url, local_file):
     local = _load(local_file) or {}
     local_games = local.get("games") or []
     n_local = len(local_games)
-    age = _age_min(local_file) or 999
+    age = _age_min(local_file)
+    if age is None: age = 999   # file missing → unknown age
 
     findings = []
     status = "green"
@@ -210,7 +212,8 @@ def _check_golf():
             n_active_tourneys += 1
     local = _load("golf_state.json") or {}
     n_local = local.get("n_players", 0)
-    age = _age_min("golf_state.json") or 999
+    age = _age_min("golf_state.json")
+    if age is None: age = 999
     findings = []
     status = "green"
     if n_up_players > 0 and n_local == 0:
