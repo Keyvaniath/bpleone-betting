@@ -64,6 +64,12 @@ def run() -> Dict[str, Any]:
             _add(picks, "MLB", mu, rec.get("label","?"), p,
                   rec.get("market_price"), "today_reco")
 
+    # MLB team-total over/under edges (decomposed from fair_total)
+    mlb_tt = _load(os.path.join(DATA_DIR, "mlb_team_total_edges.json"))
+    for x in (mlb_tt.get("top_picks") or []):
+        _add(picks, "MLB", x.get("matchup"), x.get("market"),
+              x.get("prob"), x.get("fair"), "mlb_team_total")
+
     # ESPN-driven sports (state files have p_home_win + fair odds)
     def _has_signal(g):
         """Skip preseason 0-0 vs 0-0 games (only edge is HFA, not actionable)."""
