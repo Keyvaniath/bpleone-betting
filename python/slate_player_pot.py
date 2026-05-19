@@ -81,6 +81,15 @@ def run() -> Dict[str, Any]:
                   "er_under_2_5", e["p_under_2_5_er"], e.get("fair_under"),
                   "pitcher_matchup")
 
+    # MLB pitcher form regression (recent-vs-season reverted K and ER props)
+    pfr = _load(os.path.join(DATA_DIR, "mlb_pitcher_form_regression.json"))
+    for k in (pfr.get("top_k_picks") or []):
+        _add(picks, "MLB", k["pitcher"], None, k["market"],
+              k["prob"], k.get("fair_over"), "pitcher_form_regression")
+    for e in (pfr.get("top_er_picks") or []):
+        _add(picks, "MLB", e["pitcher"], None, e["market"],
+              e["prob"], e.get("fair_under"), "pitcher_form_regression")
+
     # MLB base batter props
     mb = _load(os.path.join(DATA_DIR, "mlb_batter_logs.json"))
     for b in (mb.get("batters") or []):
