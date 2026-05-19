@@ -1,0 +1,126 @@
+name: Training Loop (Continuous Calibration)
+
+# Runs every hour to keep the self-learning loop fresh. Settles yesterday's
+# outcomes (idempotent), recomputes calibration, runs walk-forward backtest,
+# updates training_feedback + training_convergence + param recommendations.
+#
+# Why a separate workflow:
+#  - Daily-pipeline only runs 3x per day. That's slow training cadence.
+#  - This loop is cheap (~30s) -- no external API calls, just reads
+#    track_record.json and recomputes everything.
+#  - Lets the model self-improve continuously between full daily-pipeline runs.
+
+on:
+  schedule:
+    - cron: '15 * * * *'   # every hour at :15 (offset from daily-pipeline)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  train:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install deps
+        run: pip install -r python/requirements.txt
+
+      # === Settlement loop: re-settle any newly-final games ===
+      - name: Settle yesterday's outcomes (idempotent)
+        working-directory: python
+        run: python outcomes.py || true
+
+      # === Calibration: recompute per-market bias correction ===
+      - name: Recompute calibration corrections
+        working-directory: python
+        run: python calibration_runner.py || true
+
+      # === Self-training: per-sport bias detection + shift application ===
+      - name: Self-training backtest (per-sport)
+        working-directory: python
+        run: python self_train.py || true
+
+      # === Trainer + multiplier tuner ===
+      - name: Model trainer (fitted bias + statcast blend)
+        working-directory: python
+        run: python model_trainer.py || true
+      - name: Multiplier tuner (opp/umpire/park amplifiers)
+        working-directory: python
+        run: python multiplier_tuner.py || true
+
+      # === Per-player bias detection ===
+      - name: Per-player bias overrides
+        working-directory: python
+        run: python player_bias.py || true
+
+      # === Walk-forward backtest ===
+      - name: Walk-forward backtest
+        working-directory: python
+        run: python walk_forward.py || true
+
+      # === Param recommender ===
+      - name: Parameter recommender
+        working-directory: python
+        run: python param_recommender.py || true
+      - name: Override effects tracker
+        working-directory: python
+        run: python override_effects.py || true
+
+      # === Training visibility ===
+      - name: Training feedback logger
+        working-directory: python
+        run: python training_feedback.py || true
+      - name: Training progress + ETA
+        working-directory: python
+        run: python training_progress.py || true
+      - name: Training convergence tracker
+        working-directory: python
+        run: python training_convergence.py || true
+
+      # === Model health (recompute with latest data) ===
+      - name: Model health score
+        working-directory: python
+        run: python model_health.py || true
+
+      # === Commit + push if anything changed ===
+      - name: Commit + push training updates
+        env:
+          GIT_EDITOR: "true"
+        run: |
+          git config user.name  "edgestat-bot"
+          git config user.email "actions@github.com"
+          git add data/
+          if git diff --cached --quiet; then
+            echo "No training updates this hour."
+          else
+            git commit -m "train(hourly): continuous calibration refresh $(date -u +%FT%TZ)"
+            for i in 1 2 3 4 5; do
+              git fetch origin main
+              if git merge-base --is-ancestor origin/main HEAD; then
+                git push && { echo "pushed cleanly"; exit 0; }
+                sleep 3
+                continue
+              fi
+              if git rebase origin/main; then
+                git push && { echo "pushed after rebase"; exit 0; }
+              else
+                git checkout --ours . 2>/dev/null || true
+                git add -A
+                GIT_EDITOR=true git rebase --continue || git rebase --abort
+                git push && { echo "pushed after conflict resolution"; exit 0; }
+              fi
+              sleep 5
+            done
+            echo "push failed after 5 retries"
+            exit 1
+          fi
