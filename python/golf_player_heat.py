@@ -136,12 +136,21 @@ if __name__ == "__main__":
     p = run()
     print(f"Golf player heat: {p['n_hot']} HOT, {p['n_cold']} COLD "
           f"(of {p['n_players_analyzed']} from {p.get('source_tournament')})")
+    def _safe(v, fmt="{}", fallback="--"):
+        try: return fmt.format(v) if v is not None else fallback
+        except Exception: return fallback
+
     print("Top 10 HOT (best finish + closing round momentum):")
     for a in p["hot_players"][:10]:
-        sig = " · ".join(a["signals"])
-        print(f"  T{a['finish_pos']:>3} {a['name']:25s} ({a['country']:12s}) "
-              f"{a['total_to_par']:+d} total · last R{a['last_round_score']:+d} (avg {a['avg_round_vs_par']:+.1f}) -- {sig}")
+        sig = " · ".join(a.get("signals") or [])
+        pos = _safe(a.get("finish_pos"), "T{:>3}")
+        ttp = _safe(a.get("total_to_par"), "{:+d}")
+        lrs = _safe(a.get("last_round_score"), "{:+d}")
+        avg = _safe(a.get("avg_round_vs_par"), "{:+.1f}")
+        print(f"  {pos} {a.get('name','?'):25s} ({a.get('country','?'):12s}) "
+              f"{ttp} total · last R{lrs} (avg {avg}) -- {sig}")
     print("Top 10 COLD (poor closing rounds):")
     for a in p["cold_players"][:10]:
-        sig = " · ".join(a["signals"])
-        print(f"  T{a['finish_pos']:>3} {a['name']:25s} ({a['country']:12s}) -- {sig}")
+        sig = " · ".join(a.get("signals") or [])
+        pos = _safe(a.get("finish_pos"), "T{:>3}")
+        print(f"  {pos} {a.get('name','?'):25s} ({a.get('country','?'):12s}) -- {sig}")
