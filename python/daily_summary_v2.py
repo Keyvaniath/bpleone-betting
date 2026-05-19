@@ -157,6 +157,21 @@ def run() -> Dict[str, Any]:
             lines.append(f"- [{a['sport']}] {a['team']} on {a['streak']} L10 {a.get('l10','?')} -- {a.get('recommendation','')[:80]}")
         lines.append("")
 
+    # Walk-forward trajectory (is each market improving over time?)
+    wf = _load(os.path.join(DATA_DIR, "walk_forward.json"))
+    if wf.get("summary"):
+        s = wf["summary"]
+        n_imp = len(s.get("improving", []))
+        n_deg = len(s.get("degrading", []))
+        n_flat = len(s.get("flat", []))
+        lines.append(f"## 📉 Walk-Forward Trajectory (n_windows={wf.get('window_days',3)}d × {len(wf.get('by_market',{}))} markets)")
+        lines.append(f"- 📈 Improving: **{n_imp}** · ➖ Flat: {n_flat} · 📉 Degrading: **{n_deg}**")
+        for m in s.get("improving", [])[:3]:
+            lines.append(f"  - ✅ {m['market']} (Brier Δ {m['brier_delta']:+.4f})")
+        for m in s.get("degrading", [])[:3]:
+            lines.append(f"  - ⚠️ {m['market']} (Brier Δ {m['brier_delta']:+.4f})")
+        lines.append("")
+
     # Training convergence (per-market learning trajectory)
     tc = _load(os.path.join(DATA_DIR, "training_convergence.json"))
     if tc.get("markets"):
