@@ -41,6 +41,7 @@
     { href: "golf-live.html",           label: "⛳ Golf Live" },
     { href: "pitcher-matchup.html",     label: "⚾ Pitcher Matchup" },
     { href: "batter-sp-edges.html",     label: "🎯 Batter vs SP Edges" },
+    { href: "batter-splits.html",       label: "📊 Batter Splits (H/A + D/N)" },
     { href: "convergence.html",         label: "🎯 Convergence Picks" },
     { href: "b2b-fatigue.html",         label: "😴 B2B Fatigue" },
     { href: "model-health.html",        label: "🏥 Model Health" },

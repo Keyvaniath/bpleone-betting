@@ -457,6 +457,12 @@ jobs:
       - name: MLB batter-vs-SP matchup edges (xwOBA arsenal + career split adjustments)
         working-directory: python
         run: python mlb_batter_sp_edges.py
+      - name: MLB batter situational splits (home/away + day/night log-odds shifts)
+        working-directory: python
+        run: python mlb_batter_situational_splits.py
+      - name: Golf LIVE projections (per-player p_top_5/10/cut from current state)
+        working-directory: python
+        run: python golf_live_projections.py
       - name: Cross-signal convergence detector (everything-aligned plays)
         working-directory: python
         run: python convergence_detector.py

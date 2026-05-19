@@ -110,6 +110,18 @@ def run() -> Dict[str, Any]:
                 _add(picks, "MLB", nm, b.get("team_abbr"),
                       mkt, p, fair, "mlb_batter_sp_edges")
 
+    # MLB BATTER situational splits (home/away + day/night adjusted)
+    sit = _load(os.path.join(DATA_DIR, "mlb_batter_situational_splits.json"))
+    for b in (sit.get("all_batters") or []):
+        for mkt, p_key, fair_key in (
+            ("1_plus_hit_situational", "adj_p_1_plus_hit", "fair_yes_1_hit"),
+            ("1_plus_hr_situational", "adj_p_1_plus_hr", "fair_yes_1_hr"),
+        ):
+            p = b.get(p_key)
+            fair = b.get(fair_key)
+            _add(picks, "MLB", b.get("batter"), b.get("team_abbr"),
+                  mkt, p, fair, "mlb_batter_situational")
+
     # NBA extended
     nba_ext = _load(os.path.join(DATA_DIR, "nba_extended_props.json"))
     for pp in (nba_ext.get("players") or []):

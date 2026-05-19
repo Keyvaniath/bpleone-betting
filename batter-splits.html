@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Batter Situational Splits | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/nav.js"></script>
+<style>
+  .split-row { display: grid; grid-template-columns: 40px 1.4fr 90px 90px 90px 70px 80px 90px 80px; gap: 8px; padding: 10px 14px; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 12px; border-bottom: 1px solid rgba(255,255,255,0.04); }
+  .split-row.head { background: rgba(255,255,255,0.04); color: var(--muted,#888); font-size: 10px; text-transform: uppercase; padding: 8px 14px; }
+  .split-row.boost-elite { border-left: 3px solid #d4a04a; background: rgba(212,160,74,0.05); }
+  .split-row.boost-strong { border-left: 3px solid #58c878; }
+  .split-row.fade { border-left: 3px solid #e35a5a; background: rgba(227,90,90,0.03); }
+  .delta-pos { color: #58c878; font-weight: 700; }
+  .delta-neg { color: #e35a5a; font-weight: 700; }
+  .delta-elite { color: #d4a04a; font-weight: 700; }
+  .sit-pill { display: inline-block; padding: 2px 6px; border-radius: 4px; font-size: 9px; font-weight: 700; }
+  .sit-home { background: rgba(212,160,74,0.18); color: #d4a04a; }
+  .sit-road { background: rgba(255,255,255,0.06); color: var(--text-2,#aaa); }
+  .sit-day { background: rgba(255,200,80,0.15); color: #ffc850; }
+  .sit-night { background: rgba(100,140,200,0.15); color: #648cc8; }
+  .info-card { padding: 14px 18px; background: linear-gradient(135deg, rgba(212,160,74,0.1), rgba(212,160,74,0.02)); border: 1px solid rgba(212,160,74,0.3); border-radius: 10px; margin-bottom: 16px; }
+  .tab-strip { display: flex; gap: 4px; margin-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .tab { padding: 8px 14px; cursor: pointer; font-size: 12px; color: var(--text-2,#aaa); border-bottom: 2px solid transparent; }
+  .tab.active { color: var(--accent,#d4a04a); border-bottom-color: var(--accent,#d4a04a); }
+  .tab:hover { color: #fff; }
+</style>
+</head>
+<body class="page-batter-splits">
+<header class="topbar">
+  <div class="brand"><a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a><span class="tagline">by bpleone</span></div>
+  <nav class="mainnav"><!-- nav.js injects --></nav>
+  <div class="topbar-actions"><div class="ticker">LIVE</div></div>
+</header>
+<main class="container">
+  <section class="page-head">
+    <h1>📊 Batter Situational Splits — Home/Away + Day/Night Adjustments</h1>
+    <p class="muted" id="status">Loading…</p>
+  </section>
+  <div class="info-card">
+    <strong style="color:#d4a04a;">How this works:</strong>
+    <span style="color: var(--text-2,#aaa); font-size:13px;">
+      Each batter's last-14-game baseline 1+hit/1+HR prob is adjusted by their season splits in TODAY's situation:
+      home vs road performance, and day vs night performance. Log-odds shifts are shrunk toward league baseline
+      with a prior of 10 effective games — small sample sizes don't move probabilities, only consistent split signals do.
+    </span>
+  </div>
+  <section class="metric-strip">
+    <div class="metric"><span class="metric-num" id="m_batters">--</span><span class="metric-label">Batters Analyzed</span></div>
+    <div class="metric"><span class="metric-num" id="m_top_boost">--</span><span class="metric-label">Top Hit Boost</span></div>
+    <div class="metric"><span class="metric-num" id="m_top_hr">--</span><span class="metric-label">Top HR Boost</span></div>
+    <div class="metric"><span class="metric-num" id="m_top_fade">--</span><span class="metric-label">Worst Fade</span></div>
+  </section>
+
+  <div class="tab-strip">
+    <div class="tab active" data-tab="hit_boost">Hit Boost</div>
+    <div class="tab" data-tab="hr_boost">HR Boost</div>
+    <div class="tab" data-tab="hit_fade">Hit Fade</div>
+  </div>
+
+  <section class="card">
+    <div class="card-head"><span id="tab_title">📈 Top Situational Hit Boosts</span><span class="muted" id="meta">--</span></div>
+    <div id="container"></div>
+  </section>
+</main>
+<script src="js/nav_badge.js"></script>
+<script>
+let DATA = null;
+function deltaClass(v) {
+  if (v == null) return '';
+  if (v >= 5) return 'delta-elite';
+  if (v >= 2) return 'delta-pos';
+  if (v <= -2) return 'delta-neg';
+  return '';
+}
+function rowClass(v) {
+  if (v == null) return '';
+  if (v >= 5) return 'boost-elite';
+  if (v >= 2) return 'boost-strong';
+  if (v <= -2) return 'fade';
+  return '';
+}
+function rate(r) { return r == null ? '--' : (r*100).toFixed(0)+'%'; }
+function pa(n) { return n == null ? '--' : n + ' PA'; }
+
+function renderTable(rows, isHr, isFade) {
+  const dpKey = isHr ? 'hr_delta_pp' : 'hit_delta_pp';
+  const baseKey = isHr ? 'base_p_1_plus_hr' : 'base_p_1_plus_hit';
+  const adjKey = isHr ? 'adj_p_1_plus_hr' : 'adj_p_1_plus_hit';
+  const fairKey = isHr ? 'fair_yes_1_hr' : 'fair_yes_1_hit';
+  const headLabel = isHr ? '1+ HR' : '1+ HIT';
+  const sitLabel = isHr ? 'HR Rate Splits' : 'Hit Rate Splits';
+  let html = `<div class="split-row head">
+    <span>#</span><span>Batter</span><span>Today</span><span>${sitLabel}</span><span>Day/Night</span>
+    <span>Base</span><span>Adj ${headLabel}</span><span>Δ pp</span><span>Fair</span>
+  </div>`;
+  rows.forEach((r, i) => {
+    const d = r[dpKey];
+    const cls = rowClass(isFade ? -d : d);
+    const dCls = deltaClass(d);
+    const fair = r[fairKey];
+    const fairStr = (typeof fair === 'number') ? (fair > 0 ? '+'+fair : ''+fair) : '--';
+    const todayPill = r.is_home_today ? '<span class="sit-pill sit-home">HOME</span>' : '<span class="sit-pill sit-road">ROAD</span>';
+    const todayNightPill = r.is_night_today ? '<span class="sit-pill sit-night">NIGHT</span>' : '<span class="sit-pill sit-day">DAY</span>';
+    const hitKey = isHr ? 'hr_rate' : 'hit_rate';
+    const homeRate = r['home_' + hitKey], roadRate = r['road_' + hitKey];
+    const dayRate = r['day_hit_rate'], nightRate = r['night_hit_rate'];
+    html += `<div class="split-row ${cls}">
+      <span>${i+1}</span>
+      <span><strong>${r.batter || '?'}</strong> <span class="muted">(${r.team_abbr || '?'})</span></span>
+      <span>${todayPill}</span>
+      <span class="muted">H ${rate(homeRate)} / R ${rate(roadRate)}</span>
+      <span class="muted">${todayNightPill} D ${rate(dayRate)} / N ${rate(nightRate)}</span>
+      <span>${(r[baseKey]*100).toFixed(1)}%</span>
+      <span><strong>${(r[adjKey]*100).toFixed(1)}%</strong></span>
+      <span class="${dCls}">${d > 0 ? '+' : ''}${d.toFixed(1)}</span>
+      <span class="muted">${fairStr}</span>
+    </div>`;
+  });
+  return html;
+}
+
+function showTab(tab) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.dataset.tab === tab));
+  let rows = [], title = '', isHr = false, isFade = false;
+  if (tab === 'hit_boost') { rows = DATA.top_15_situational_boost_hit || []; title = '📈 Top Situational HIT Boosts'; }
+  else if (tab === 'hr_boost') { rows = DATA.top_10_situational_boost_hr || []; title = '💥 Top Situational HR Boosts'; isHr = true; }
+  else if (tab === 'hit_fade') { rows = DATA.top_10_situational_fade_hit || []; title = '📉 Worst Situational Fades (Hit)'; isFade = true; }
+  document.getElementById('tab_title').textContent = title;
+  document.getElementById('container').innerHTML = renderTable(rows, isHr, isFade);
+  document.getElementById('meta').textContent = `${rows.length} batters shown`;
+}
+
+fetch("data/mlb_batter_situational_splits.json?t=" + Date.now(), { cache: "no-cache" })
+  .then(r => r.json())
+  .then(d => {
+    DATA = d;
+    document.getElementById('m_batters').textContent = d.n_batters_in_lineups || 0;
+    const topB = (d.top_15_situational_boost_hit || [])[0];
+    const topHr = (d.top_10_situational_boost_hr || [])[0];
+    const topF = (d.top_10_situational_fade_hit || [])[0];
+    document.getElementById('m_top_boost').textContent = topB ? '+' + topB.hit_delta_pp.toFixed(1) + 'pp' : '--';
+    document.getElementById('m_top_hr').textContent = topHr ? '+' + topHr.hr_delta_pp.toFixed(1) + 'pp' : '--';
+    document.getElementById('m_top_fade').textContent = topF ? topF.hit_delta_pp.toFixed(1) + 'pp' : '--';
+    document.getElementById('status').textContent = `${d.n_batters_in_lineups} batters · prior ${d.shrinkage_prior_games} games · ${(d.generated_at||'').slice(0,19).replace('T',' ')}`;
+    showTab('hit_boost');
+    document.querySelectorAll('.tab').forEach(t => {
+      t.addEventListener('click', () => showTab(t.dataset.tab));
+    });
+  })
+  .catch(err => {
+    document.getElementById('container').innerHTML = `<p class="muted" style="padding:14px;">Could not load mlb_batter_situational_splits.json (${err.message}).</p>`;
+  });
+</script>
+</body>
+</html>
