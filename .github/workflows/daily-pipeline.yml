@@ -463,6 +463,15 @@ jobs:
       - name: MLB team-total edges (decompose model fair_total -> per-team Poisson lines)
         working-directory: python
         run: python mlb_team_total_edges.py
+      - name: RE-RUN slate aggregators (fold in all new sport-specific modules)
+        working-directory: python
+        run: |
+          python slate_player_pot.py
+          python slate_team_pot.py
+          python todays_top_plays.py
+      - name: Locks of the Day (record top 5 picks + settle any pending)
+        working-directory: python
+        run: python locks_of_day.py
       - name: MLB batter situational splits (home/away + day/night log-odds shifts)
         working-directory: python
         run: python mlb_batter_situational_splits.py

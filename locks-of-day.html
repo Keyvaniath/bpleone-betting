@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Locks of the Day | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/nav.js"></script>
+<style>
+  .lock-row { display: grid; grid-template-columns: 80px 70px 1.5fr 1.3fr 70px 80px 80px 80px 70px; gap: 8px; padding: 11px 14px; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 12px; border-bottom: 1px solid rgba(255,255,255,0.04); }
+  .lock-row.head { background: rgba(255,255,255,0.04); color: var(--muted,#888); font-size: 10px; text-transform: uppercase; padding: 8px 14px; }
+  .lock-row.won { border-left: 3px solid #58c878; background: rgba(88,200,120,0.05); }
+  .lock-row.lost { border-left: 3px solid #e35a5a; background: rgba(227,90,90,0.04); }
+  .lock-row.pending { border-left: 3px solid #d4a04a; background: rgba(212,160,74,0.03); }
+  .lock-row.push { border-left: 3px solid #888; }
+  .status-pill { display: inline-block; padding: 2px 7px; border-radius: 4px; font-size: 10px; font-weight: 700; text-align: center; }
+  .status-won { background: rgba(88,200,120,0.18); color: #58c878; }
+  .status-lost { background: rgba(227,90,90,0.18); color: #e35a5a; }
+  .status-pending { background: rgba(212,160,74,0.18); color: #d4a04a; }
+  .status-push { background: rgba(255,255,255,0.08); color: #888; }
+  .net-pos { color: #58c878; font-weight: 700; }
+  .net-neg { color: #e35a5a; font-weight: 700; }
+  .net-zero { color: var(--text-2,#aaa); }
+  .info-card { padding: 16px 20px; background: linear-gradient(135deg, rgba(212,160,74,0.1), rgba(212,160,74,0.02)); border: 1px solid rgba(212,160,74,0.3); border-radius: 10px; margin-bottom: 18px; }
+  .tab-strip { display: flex; gap: 4px; margin-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .tab { padding: 8px 14px; cursor: pointer; font-size: 12px; color: var(--text-2,#aaa); border-bottom: 2px solid transparent; }
+  .tab.active { color: var(--accent,#d4a04a); border-bottom-color: var(--accent,#d4a04a); }
+  .tab:hover { color: #fff; }
+  .sport-pill { padding: 2px 7px; border-radius: 4px; font-size: 9px; font-weight: 700; }
+  .sport-pill.MLB, .sport-pill.MLB-PP { background: #1e5db8; color: #fff; }
+  .sport-pill.NBA { background: #c43e3e; color: #fff; }
+  .sport-pill.NHL { background: #0080a3; color: #fff; }
+  .sport-pill.WNBA { background: #fa6e21; color: #fff; }
+  .sport-pill.LOL { background: #b450dc; color: #fff; }
+  .sport-pill.CS { background: #ffa51e; color: #0a0a0a; }
+  .sport-pill.KBO { background: #cf3939; color: #fff; }
+  .sport-pill.EPL { background: #37003c; color: #fff; }
+  .sport-pill.MLS { background: #2da748; color: #fff; }
+  .sport-pill.UCL { background: #0066cc; color: #fff; }
+  .sport-pill.UFC { background: #d40c1e; color: #fff; }
+  .sport-pill.CWS { background: #cc0033; color: #fff; }
+  .breakdown-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 10px; padding: 12px; }
+  .breakdown-card { padding: 10px 12px; background: rgba(255,255,255,0.03); border-radius: 6px; font-family: 'JetBrains Mono', monospace; }
+  .breakdown-label { font-size: 10px; color: var(--muted,#888); text-transform: uppercase; }
+  .breakdown-val { font-size: 14px; font-weight: 700; margin-top: 4px; }
+</style>
+</head>
+<body class="page-locks">
+<header class="topbar">
+  <div class="brand"><a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a><span class="tagline">by bpleone</span></div>
+  <nav class="mainnav"><!-- nav.js injects --></nav>
+  <div class="topbar-actions"><div class="ticker">LIVE</div></div>
+</header>
+<main class="container">
+  <section class="page-head">
+    <h1>🔒 Locks of the Day — Track Record</h1>
+    <p class="muted" id="status">Loading…</p>
+  </section>
+  <div class="info-card">
+    <strong style="color:#d4a04a;">What this is:</strong>
+    <span style="color: var(--text-2,#aaa); font-size:13px;">
+      Every pipeline run, the top 5 highest-edge picks from Today's Top Plays are recorded permanently with a unique ID.
+      Picks are auto-settled when game outcomes arrive (game-level markets only; player props need per-player settlement).
+      This is the immutable record of what was called BEFORE the game, not retroactive justification. Track-record, accountability, learning.
+    </span>
+  </div>
+
+  <section class="metric-strip">
+    <div class="metric"><span class="metric-num" id="m_total">--</span><span class="metric-label">Total Locks</span></div>
+    <div class="metric"><span class="metric-num" id="m_hit">--</span><span class="metric-label">Hit Rate</span></div>
+    <div class="metric"><span class="metric-num" id="m_net">--</span><span class="metric-label">Net Units</span></div>
+    <div class="metric"><span class="metric-num" id="m_roi">--</span><span class="metric-label">ROI %</span></div>
+    <div class="metric"><span class="metric-num" id="m_pending">--</span><span class="metric-label">Pending</span></div>
+  </section>
+
+  <div class="tab-strip">
+    <div class="tab active" data-tab="today">Today's Locks</div>
+    <div class="tab" data-tab="recent">Recent History</div>
+    <div class="tab" data-tab="by_sport">By Sport</div>
+    <div class="tab" data-tab="by_market">By Market</div>
+  </div>
+
+  <section class="card">
+    <div class="card-head"><span id="tab_title">🔒 Today's Locks</span><span class="muted" id="meta">--</span></div>
+    <div id="container"></div>
+  </section>
+
+  <section class="card" style="margin-top:18px;">
+    <div class="card-head"><span>📊 Last 7 Days</span><span class="muted" id="l7meta">--</span></div>
+    <div id="last7Box" style="padding:14px 18px;"><p class="muted">Loading…</p></div>
+  </section>
+</main>
+<script src="js/nav_badge.js"></script>
+<script>
+let DATA = null;
+function fmtAmer(a) { if (a == null) return '—'; return a >= 0 ? '+'+a : ''+a; }
+function fmtUnits(u) { if (u == null) return '—'; if (u > 0) return '<span class="net-pos">+'+u.toFixed(3)+'u</span>'; if (u < 0) return '<span class="net-neg">'+u.toFixed(3)+'u</span>'; return '<span class="net-zero">0u</span>'; }
+function statusPill(s) {
+  const cls = 'status-' + s;
+  return `<span class="status-pill ${cls}">${s.toUpperCase()}</span>`;
+}
+function rowClass(s) {
+  if (s === 'won') return 'won';
+  if (s === 'lost') return 'lost';
+  if (s === 'push') return 'push';
+  return 'pending';
+}
+
+function renderLocks(rows) {
+  let html = `<div class="lock-row head">
+    <span>Status</span><span>Sport</span><span>Player/Game</span><span>Market</span>
+    <span>Prob</span><span>Edge</span><span>Fair</span><span>Payout</span><span>Date</span>
+  </div>`;
+  rows.forEach(r => {
+    html += `<div class="lock-row ${rowClass(r.result)}">
+      <span>${statusPill(r.result)}</span>
+      <span><span class="sport-pill ${r.sport}">${r.sport}</span></span>
+      <span><strong>${r.player_or_matchup || '?'}</strong>${r.team ? ' <span class="muted" style="font-size:10px;">('+r.team+')</span>' : ''}</span>
+      <span class="muted" style="font-size:11px;">${r.market || '?'}</span>
+      <span style="font-weight:700;">${(r.prob*100).toFixed(0)}%</span>
+      <span style="color:#58c878;">+${(r.edge_pct || 0).toFixed(1)}%</span>
+      <span class="muted">${fmtAmer(r.fair_american)}</span>
+      <span>${r.payout_units != null ? fmtUnits(r.payout_units) : '<span class="muted">—</span>'}</span>
+      <span class="muted" style="font-size:10px;">${r.date}</span>
+    </div>`;
+  });
+  return html;
+}
+
+function renderBreakdown(obj, label) {
+  if (!obj || Object.keys(obj).length === 0) return '<p class="muted" style="padding:14px;">No settled picks yet to break down.</p>';
+  let html = `<div class="lock-row head">
+    <span>${label}</span><span>W-L</span><span></span><span></span><span>Hit %</span><span>Net Units</span><span></span><span></span><span></span>
+  </div>`;
+  // Sort by net_units desc
+  const sorted = Object.entries(obj).sort((a,b) => (b[1].net_units || 0) - (a[1].net_units || 0));
+  for (const [name, stats] of sorted) {
+    const hr = stats.hit_rate;
+    const hrCls = hr == null ? '' : (hr >= 0.55 ? 'net-pos' : (hr < 0.45 ? 'net-neg' : ''));
+    html += `<div class="lock-row">
+      <span><strong>${name}</strong></span>
+      <span>${stats.wins}-${stats.losses}${stats.pushes ? '-' + stats.pushes : ''}</span>
+      <span></span><span></span>
+      <span class="${hrCls}">${hr == null ? '--' : (hr*100).toFixed(1)+'%'}</span>
+      <span>${fmtUnits(stats.net_units)}</span>
+      <span></span><span></span><span></span>
+    </div>`;
+  }
+  return html;
+}
+
+function showTab(tab) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.dataset.tab === tab));
+  let title = '', body = '', meta = '';
+  if (tab === 'today') {
+    title = "🔒 Today's Locks";
+    const rows = DATA.todays_locks || [];
+    body = renderLocks(rows);
+    meta = `${rows.length} locks today`;
+  } else if (tab === 'recent') {
+    title = "📜 Recent History (last 50)";
+    const rows = (DATA.history || []).slice(-50).reverse();
+    body = renderLocks(rows);
+    meta = `${rows.length} of ${DATA.total_locks} total`;
+  } else if (tab === 'by_sport') {
+    title = "🏆 By Sport";
+    body = renderBreakdown(DATA.by_sport, 'Sport');
+    meta = `${Object.keys(DATA.by_sport || {}).length} sports`;
+  } else if (tab === 'by_market') {
+    title = "📊 By Market Family";
+    body = renderBreakdown(DATA.by_market_family, 'Market');
+    meta = `${Object.keys(DATA.by_market_family || {}).length} market families`;
+  }
+  document.getElementById('tab_title').textContent = title;
+  document.getElementById('container').innerHTML = body;
+  document.getElementById('meta').textContent = meta;
+}
+
+fetch("data/locks_history.json?t=" + Date.now(), { cache: "no-cache" })
+  .then(r => r.json())
+  .then(d => {
+    DATA = d;
+    document.getElementById('m_total').textContent = d.total_locks || 0;
+    document.getElementById('m_hit').textContent = d.hit_rate == null ? '—' : (d.hit_rate*100).toFixed(1) + '%';
+    document.getElementById('m_net').innerHTML = d.net_units == null ? '—' :
+      (d.net_units > 0 ? '<span class="net-pos">+' + d.net_units.toFixed(2) + 'u</span>' :
+       d.net_units < 0 ? '<span class="net-neg">' + d.net_units.toFixed(2) + 'u</span>' : '0u');
+    document.getElementById('m_roi').innerHTML = d.roi_pct == null ? '—' :
+      (d.roi_pct > 0 ? '<span class="net-pos">+' + d.roi_pct.toFixed(1) + '%</span>' :
+       '<span class="net-neg">' + d.roi_pct.toFixed(1) + '%</span>');
+    document.getElementById('m_pending').textContent = d.n_pending || 0;
+    document.getElementById('status').textContent = `${d.total_locks} locks · ${d.n_settled} settled · ${d.n_pending} pending · ${(d.generated_at||'').slice(0,19).replace('T',' ')}`;
+
+    // Last 7 days summary
+    const l7 = d.last_7_days || {};
+    document.getElementById('last7Box').innerHTML = `
+      <div class="breakdown-grid">
+        <div class="breakdown-card"><div class="breakdown-label">Wins</div><div class="breakdown-val net-pos">${l7.wins || 0}</div></div>
+        <div class="breakdown-card"><div class="breakdown-label">Losses</div><div class="breakdown-val net-neg">${l7.losses || 0}</div></div>
+        <div class="breakdown-card"><div class="breakdown-label">Hit Rate</div><div class="breakdown-val">${l7.hit_rate == null ? '—' : (l7.hit_rate*100).toFixed(1) + '%'}</div></div>
+        <div class="breakdown-card"><div class="breakdown-label">Net Units</div><div class="breakdown-val">${
+          l7.net_units == null ? '—' :
+          (l7.net_units > 0 ? '<span class="net-pos">+' + l7.net_units.toFixed(2) + 'u</span>' :
+           l7.net_units < 0 ? '<span class="net-neg">' + l7.net_units.toFixed(2) + 'u</span>' : '0u')
+        }</div></div>
+      </div>`;
+    document.getElementById('l7meta').textContent = `${(l7.wins || 0) + (l7.losses || 0)} settled in last 7d`;
+
+    showTab('today');
+    document.querySelectorAll('.tab').forEach(t => {
+      t.addEventListener('click', () => showTab(t.dataset.tab));
+    });
+  })
+  .catch(err => {
+    document.getElementById('container').innerHTML = `<p class="muted" style="padding:14px;">Could not load locks_history.json (${err.message}).</p>`;
+  });
+</script>
+</body>
+</html>

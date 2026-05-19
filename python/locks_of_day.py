@@ -1,0 +1,322 @@
+"""
+EdgeStat -- LOCKS OF THE DAY persistent prediction tracker.
+
+Each pipeline run, captures the top 5 highest-confidence picks from
+todays_top_plays.json and appends them to a permanent record. Later, when
+outcomes settle (via outcomes.py / historical_*.json), the lock is marked
+won/lost and ROI accumulated.
+
+Storage shape:
+  data/locks_history.json
+  {
+    "generated_at": "...",
+    "total_locks": N,
+    "n_settled": K,
+    "n_pending": N-K,
+    "wins": W, "losses": L,
+    "hit_rate": W/(W+L),
+    "net_units": total_units_won_or_lost,
+    "roi_pct": net_units / total_risked,
+    "by_sport": { "MLB": {wins,losses,hit_rate}, ... },
+    "by_market_family": { "k_over": {...}, "1_plus_hit": {...} },
+    "history": [
+       { pick_id, date, sport, player_or_matchup, market, prob, fair_american,
+         kelly_units, unit_size, source, settled (bool),
+         result (won/lost/push/pending), actual, payout_units },
+       ...
+    ]
+  }
+
+Pick ID: sport|player_or_matchup|market_family|date
+  This is deterministic so the same pick across the day's runs merges
+  rather than duplicating. Only the FIRST observation of the day is kept
+  (no chasing line moves).
+
+Output: data/locks_history.json
+"""
+from __future__ import annotations
+
+import os
+import json
+import re
+import datetime as dt
+from typing import Any, Dict, List, Optional
+
+
+DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
+OUT = os.path.join(DATA_DIR, "locks_history.json")
+
+N_LOCKS_PER_DAY = 5     # top 5 picks each day become "the locks"
+MAX_HISTORY = 5000
+
+
+def _load(p):
+    if not os.path.exists(p): return {}
+    try:
+        with open(p) as f: return json.load(f)
+    except Exception: return {}
+
+
+def _normalize_market(market: str) -> str:
+    """Collapse line-specific markets so HRR_under_3.5 and HRR_under_4.5
+    appear as the SAME pick family for settlement matching."""
+    if not market: return ""
+    m = str(market)
+    # Don't collapse here -- keep the specific line so we know what to settle
+    return m
+
+
+def _pick_id(sport, player_or_matchup, market, date_str):
+    """Deterministic ID so re-runs merge same pick."""
+    safe = lambda s: re.sub(r"[^a-zA-Z0-9_]", "_", str(s or "?"))[:40]
+    return f"{safe(sport)}|{safe(player_or_matchup)}|{safe(market)}|{date_str}"
+
+
+def _american_to_decimal(american):
+    if american is None or not isinstance(american, (int, float)): return None
+    if american >= 0: return 1 + american / 100
+    return 1 + 100 / abs(american)
+
+
+def _today_date_str() -> str:
+    return dt.date.today().isoformat()
+
+
+def _market_family(market: str) -> str:
+    """Strip trailing line numbers for family-level rollup stats."""
+    if not market: return "unknown"
+    m = re.sub(r"_(?:over|under)?_?-?\d+(?:\.\d+)?$", "", str(market))
+    m = re.sub(r"_(over|under)$", r"_\1", m)
+    return m or "unknown"
+
+
+def _build_new_locks(top_plays: Dict[str, Any]) -> List[Dict[str, Any]]:
+    """Pick top N from today's top plays board."""
+    picks = (top_plays.get("top_25") or [])[:N_LOCKS_PER_DAY]
+    date_str = _today_date_str()
+    out = []
+    for c in picks:
+        sport = c.get("sport")
+        pm = c.get("player_or_matchup")
+        market = c.get("market")
+        prob = c.get("prob")
+        fair = c.get("fair_american")
+        edge_pct = c.get("edge_pct")
+        kelly_unit = c.get("unit_size_quarter_kelly")
+        if not (sport and pm and market and prob): continue
+        out.append({
+            "pick_id": _pick_id(sport, pm, market, date_str),
+            "date": date_str,
+            "recorded_at": dt.datetime.now().isoformat(timespec="seconds"),
+            "sport": sport,
+            "player_or_matchup": pm,
+            "team": c.get("team"),
+            "market": market,
+            "market_family": _market_family(market),
+            "prob": prob,
+            "fair_american": fair,
+            "edge_pct": edge_pct,
+            "kelly_fraction": c.get("kelly_fraction"),
+            "unit_size_quarter_kelly": kelly_unit,
+            "source": c.get("source"),
+            "settled": False,
+            "result": "pending",
+            "actual": None,
+            "payout_units": None,
+            "settled_at": None,
+        })
+    return out
+
+
+def _try_settle_pick(pick: Dict[str, Any]) -> Optional[str]:
+    """Try to settle a single pending pick. Returns 'won' / 'lost' / 'push'
+    if settled, None if still pending. Looks up actual outcomes from
+    historical_*.json files based on date + sport + matchup."""
+    if pick.get("settled"):
+        return None
+    sport = (pick.get("sport") or "").upper()
+    date_s = pick.get("date")
+    # Map sport -> historical file
+    sport_to_file = {
+        "MLB": "historical_games.json", "MLB-PP": "historical_games.json",
+        "NBA": "historical_nba.json", "NHL": "historical_nhl.json",
+        "WNBA": "historical_wnba.json", "MLS": "historical_mls.json",
+        "EPL": "historical_epl.json", "UCL": "historical_ucl.json",
+        "CWS": "historical_cws.json", "NCAAB": "historical_ncaab.json",
+        "NCAAF": "historical_ncaaf.json", "NFL": "historical_nfl.json",
+    }
+    hist_file = sport_to_file.get(sport)
+    if not hist_file: return None
+    hist = _load(os.path.join(DATA_DIR, hist_file))
+    games = hist.get("games") or []
+    # Find matching game by date + matchup substring
+    matchup = (pick.get("player_or_matchup") or "").lower()
+    market = (pick.get("market") or "").lower()
+    for g in games:
+        g_date = (g.get("date") or "")[:10]
+        g_mu = (g.get("matchup") or g.get("name") or "").lower()
+        if g_date != date_s: continue
+        # Game-level markets (ML_HOME / ML_AWAY / OVER_X / UNDER_X)
+        if "ml_home" in market or "ml_away" in market:
+            if matchup not in g_mu and g_mu not in matchup: continue
+            winner_is_home = (g.get("home_score") or 0) > (g.get("away_score") or 0)
+            if g.get("home_score") is None: continue
+            if "ml_home" in market:
+                return "won" if winner_is_home else "lost"
+            else:
+                return "lost" if winner_is_home else "won"
+        if "over_" in market or "under_" in market:
+            if matchup not in g_mu and g_mu not in matchup: continue
+            try:
+                line = float(re.search(r"(\d+(?:\.\d+)?)", market).group(1))
+            except Exception:
+                continue
+            total = (g.get("home_score") or 0) + (g.get("away_score") or 0)
+            if g.get("home_score") is None: continue
+            if "over_" in market:
+                return "won" if total > line else ("push" if total == line else "lost")
+            else:
+                return "won" if total < line else ("push" if total == line else "lost")
+        # Player-prop markets (very hard to settle without per-player game stats)
+        # Skip those here -- player props need their own settler hooked into
+        # gamelogs after the game.
+    return None
+
+
+def run() -> Dict[str, Any]:
+    top_plays = _load(os.path.join(DATA_DIR, "todays_top_plays.json"))
+    existing = _load(OUT)
+    history: List[Dict[str, Any]] = existing.get("history") or []
+
+    # Build set of existing pick_ids
+    existing_ids = {p.get("pick_id") for p in history}
+
+    # Add today's top N as new locks (skip duplicates from same day)
+    new_locks = _build_new_locks(top_plays)
+    n_added = 0
+    for lk in new_locks:
+        if lk["pick_id"] not in existing_ids:
+            history.append(lk)
+            existing_ids.add(lk["pick_id"])
+            n_added += 1
+
+    # Attempt to settle any pending entries
+    n_newly_settled = 0
+    for pick in history:
+        if pick.get("settled"): continue
+        result = _try_settle_pick(pick)
+        if result:
+            pick["settled"] = True
+            pick["result"] = result
+            pick["settled_at"] = dt.datetime.now().isoformat(timespec="seconds")
+            # Compute payout units
+            decimal_odds = _american_to_decimal(pick.get("fair_american"))
+            stake = pick.get("unit_size_quarter_kelly") or 0.02
+            if result == "won" and decimal_odds:
+                pick["payout_units"] = round(stake * (decimal_odds - 1), 4)
+            elif result == "lost":
+                pick["payout_units"] = round(-stake, 4)
+            else:   # push
+                pick["payout_units"] = 0.0
+            n_newly_settled += 1
+
+    # Cap history
+    if len(history) > MAX_HISTORY:
+        history = history[-MAX_HISTORY:]
+
+    # Aggregate stats
+    settled = [p for p in history if p.get("settled")]
+    pending = [p for p in history if not p.get("settled")]
+    wins = sum(1 for p in settled if p["result"] == "won")
+    losses = sum(1 for p in settled if p["result"] == "lost")
+    pushes = sum(1 for p in settled if p["result"] == "push")
+    n_decided = wins + losses
+    hit_rate = round(wins / n_decided, 4) if n_decided else None
+    net_units = round(sum((p.get("payout_units") or 0) for p in settled), 3)
+    total_risked = round(sum((p.get("unit_size_quarter_kelly") or 0)
+                              for p in settled if p["result"] != "push"), 3)
+    roi_pct = round(net_units / total_risked * 100, 2) if total_risked > 0 else None
+
+    # Per-sport breakdown
+    by_sport: Dict[str, Dict[str, Any]] = {}
+    for p in settled:
+        sp = p.get("sport") or "?"
+        b = by_sport.setdefault(sp, {"wins": 0, "losses": 0, "pushes": 0, "net_units": 0})
+        if p["result"] == "won": b["wins"] += 1
+        elif p["result"] == "lost": b["losses"] += 1
+        elif p["result"] == "push": b["pushes"] += 1
+        b["net_units"] = round(b["net_units"] + (p.get("payout_units") or 0), 3)
+    for sp, b in by_sport.items():
+        d = b["wins"] + b["losses"]
+        b["hit_rate"] = round(b["wins"] / d, 4) if d > 0 else None
+
+    # Per-market-family breakdown
+    by_family: Dict[str, Dict[str, Any]] = {}
+    for p in settled:
+        fam = p.get("market_family") or "?"
+        b = by_family.setdefault(fam, {"wins": 0, "losses": 0, "pushes": 0, "net_units": 0})
+        if p["result"] == "won": b["wins"] += 1
+        elif p["result"] == "lost": b["losses"] += 1
+        elif p["result"] == "push": b["pushes"] += 1
+        b["net_units"] = round(b["net_units"] + (p.get("payout_units") or 0), 3)
+    for fam, b in by_family.items():
+        d = b["wins"] + b["losses"]
+        b["hit_rate"] = round(b["wins"] / d, 4) if d > 0 else None
+
+    # Last 7-day rolling
+    today = dt.date.today()
+    last_7 = [p for p in settled
+              if (today - dt.date.fromisoformat(p["date"])).days <= 7]
+    l7_wins = sum(1 for p in last_7 if p["result"] == "won")
+    l7_losses = sum(1 for p in last_7 if p["result"] == "lost")
+    l7_net = round(sum((p.get("payout_units") or 0) for p in last_7), 3)
+
+    # Today's locks (the new ones just recorded for today)
+    todays_locks = [p for p in history if p["date"] == _today_date_str()]
+
+    payload = {
+        "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
+        "n_locks_per_day": N_LOCKS_PER_DAY,
+        "total_locks": len(history),
+        "n_settled": len(settled),
+        "n_pending": len(pending),
+        "n_added_this_run": n_added,
+        "n_newly_settled_this_run": n_newly_settled,
+        "wins": wins,
+        "losses": losses,
+        "pushes": pushes,
+        "hit_rate": hit_rate,
+        "net_units": net_units,
+        "total_risked_units": total_risked,
+        "roi_pct": roi_pct,
+        "last_7_days": {
+            "wins": l7_wins,
+            "losses": l7_losses,
+            "net_units": l7_net,
+            "hit_rate": round(l7_wins / max(1, l7_wins + l7_losses), 4) if (l7_wins + l7_losses) > 0 else None,
+        },
+        "by_sport": by_sport,
+        "by_market_family": by_family,
+        "todays_locks": todays_locks,
+        "history": history,
+    }
+    os.makedirs(DATA_DIR, exist_ok=True)
+    with open(OUT, "w") as f: json.dump(payload, f, indent=2)
+    return payload
+
+
+if __name__ == "__main__":
+    p = run()
+    print(f"Locks of the Day: {p['total_locks']} total ({p['n_settled']} settled, {p['n_pending']} pending)")
+    print(f"  This run: +{p['n_added_this_run']} new, +{p['n_newly_settled_this_run']} newly settled")
+    if p["hit_rate"] is not None:
+        print(f"  All-time: {p['wins']}-{p['losses']}-{p['pushes']} ({p['hit_rate']*100:.1f}%) | net {p['net_units']:+.2f}u | ROI {p['roi_pct']:+.1f}%")
+    if p["last_7_days"]["hit_rate"] is not None:
+        l7 = p["last_7_days"]
+        print(f"  Last 7d: {l7['wins']}-{l7['losses']} ({l7['hit_rate']*100:.1f}%) | net {l7['net_units']:+.2f}u")
+    print(f"\nToday's locks ({len(p['todays_locks'])}):")
+    for lk in p["todays_locks"]:
+        st = "PENDING" if not lk["settled"] else lk["result"].upper()
+        print(f"  [{st:7s}] {lk['sport']:7s} {(lk['player_or_matchup'] or '?')[:25]:25s} "
+              f"{(lk['market'] or '?')[:25]:25s} p={lk['prob']*100:.0f}% "
+              f"edge=+{lk.get('edge_pct',0):.1f}% qK={lk.get('unit_size_quarter_kelly',0):.3f}u")
