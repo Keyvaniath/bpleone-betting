@@ -62,6 +62,11 @@ jobs:
         working-directory: python
         run: python live_edges.py
 
+      # Live status of today's tracked Locks (WON / LOST / ON_TRACK / AT_RISK / PENDING)
+      - name: Live locks status tracker
+        working-directory: python
+        run: python live_locks_status.py
+
       # Live data accuracy audit -- compares local artifacts to MLB/ESPN APIs
       # every cycle, surfaces feed degradation immediately.
       - name: Data health check (live cross-verification)
