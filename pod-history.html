@@ -77,7 +77,9 @@
 
 <script src="js/nav_badge.js"></script>
 <script>
-fetch("data/pod_history.json?t=" + Date.now(), { cache: "no-cache" })
+// Reads pod_pl.json (clean POD-only tracker, 1u flat stake)
+// Falls back to pod_history.json for older entries if pod_pl.json missing.
+fetch("data/pod_pl.json?t=" + Date.now(), { cache: "no-cache" })
   .then(r => r.json())
   .then(d => {
     const setText = (id, v) => { const e = document.getElementById(id); if (e) e.textContent = v; };
@@ -86,39 +88,40 @@ fetch("data/pod_history.json?t=" + Date.now(), { cache: "no-cache" })
     setText("m_settled", d.n_settled ?? "0");
     setText("m_pending", d.n_pending ?? "0");
     setText("m_hitrate", d.hit_rate != null ? (d.hit_rate * 100).toFixed(1) + "%" : "—");
-    setText("m_roi",     d.roi_pct != null ? ((d.roi_pct >= 0 ? "+" : "") + d.roi_pct.toFixed(1) + "%") : "—");
-    setText("m_units",   d.net_units != null ? ((d.net_units >= 0 ? "+" : "") + d.net_units.toFixed(2) + "u") : "—");
-    setText("m_avgedge", d.avg_edge_pct != null ? "+" + d.avg_edge_pct.toFixed(1) + "%" : "—");
-    setText("m_avgkelly", d.avg_kelly_units != null ? d.avg_kelly_units.toFixed(2) + "u" : "—");
+    setText("m_roi",     d.n_settled > 0 && d.roi_pct != null ? ((d.roi_pct >= 0 ? "+" : "") + d.roi_pct.toFixed(1) + "%") : "—");
+    setText("m_units",   d.n_settled > 0 && d.net_units != null ? ((d.net_units >= 0 ? "+" : "") + d.net_units.toFixed(2) + "u") : "—");
+    setText("m_avgedge", "—");   // Edge varies per pick, not aggregated here
+    setText("m_avgkelly", "1.0u (flat)");   // Always 1u flat -- not Kelly
 
-    document.getElementById("podGen").textContent = `last refresh: ${(d.generated_at || '').replace('T',' ')} · ${d.total_pods || 0} PODs · ${d.n_settled || 0} settled`;
+    document.getElementById("podGen").textContent = `last refresh: ${(d.generated_at || '').replace('T',' ')} · ${d.total_pods || 0} PODs · ${d.n_settled || 0} settled · 1u flat stake`;
     document.getElementById("podSummary").textContent =
       d.n_settled > 0
-        ? `${d.wins || 0}–${d.losses || 0} settled · ${((d.hit_rate || 0)*100).toFixed(1)}% hit · ${(d.roi_pct || 0).toFixed(1)}% ROI · ${(d.net_units || 0).toFixed(2)}u net`
-        : `${d.total_pods || 0} pick(s) on record — settlement pending.`;
+        ? `${d.wins || 0}-${d.losses || 0} settled · ${((d.hit_rate || 0)*100).toFixed(1)}% hit · ${(d.roi_pct || 0).toFixed(1)}% ROI · ${(d.net_units || 0).toFixed(2)}u net (1u flat)`
+        : `${d.total_pods || 0} pick(s) on record — first settlement lands tomorrow morning.`;
 
-    const rows = (d.history || []).map(h => {
-      const outcome = h.outcome || "PENDING";
-      const cls = outcome === "WIN" ? "win" : outcome === "LOSS" ? "loss" : "";
-      const pillCls = outcome === "WIN" ? "win" : outcome === "LOSS" ? "loss" : "pending";
-      const fmt = (n, sfx="", sign=false) => n == null ? "—" : ((sign && n >= 0 ? "+" : "") + n.toFixed ? (sign && n>=0?"+":"")+n.toFixed(1) : n) + sfx;
+    const rows = ((d.history || []).slice().reverse()).map(h => {
+      const r = h.result || "pending";
+      const cls = r === "won" ? "win" : r === "lost" ? "loss" : "";
+      const pillCls = cls || "pending";
+      const outcome = r === "won" ? "WIN" : r === "lost" ? "LOSS" : r === "push" ? "PUSH" : "PENDING";
       const amer = (a) => a == null ? "—" : (a >= 0 ? "+" + a : String(a));
+      const payout = h.payout_units != null ? ((h.payout_units >= 0 ? "+" : "") + h.payout_units.toFixed(2) + "u") : "—";
       return `<div class="pod-row ${cls}">
         <span class="muted">${(h.date || '').slice(0,10)}</span>
         <span><strong>${h.matchup || '—'}</strong></span>
-        <span><strong>${h.play || h.label || '—'}</strong></span>
-        <span style="color:${(h.edge_pct||0) >= 5 ? '#58c878' : 'var(--text-2,#aaa)'}">+${(h.edge_pct||0).toFixed(1)}%</span>
-        <span>${(h.kelly_units||0).toFixed(2)}u</span>
-        <span class="muted">${h.confidence || '—'}</span>
-        <span>${amer(h.model_price)}</span>
+        <span><strong>${h.label || '—'}</strong></span>
+        <span style="color:#58c878;">+${(h.raw_edge_pct||0).toFixed(1)}%</span>
+        <span>1.0u</span>
+        <span class="muted">${h.model_prob != null ? (h.model_prob * 100).toFixed(0) + '%' : '—'}</span>
+        <span>—</span>
         <span>${amer(h.market_price)}</span>
-        <span class="pill ${pillCls}">${outcome}</span>
+        <span class="pill ${pillCls}">${outcome} ${h.payout_units != null ? '· ' + payout : ''}</span>
       </div>`;
     }).join("");
     document.getElementById("podList").innerHTML = rows || `<p class="muted" style="padding:14px;">No POD history yet — first snapshot will be logged on the next cron.</p>`;
   })
   .catch(err => {
-    document.getElementById("podList").innerHTML = `<p class="muted" style="padding:14px;">Could not load pod_history.json (${err.message}).</p>`;
+    document.getElementById("podList").innerHTML = `<p class="muted" style="padding:14px;">Could not load pod_pl.json (${err.message}).</p>`;
   });
 
 // Golf POT history
