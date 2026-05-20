@@ -149,13 +149,33 @@ async function poll(env) {
     }
     await env.EDGESTAT_KV.put("live_bovada", JSON.stringify({ ts: now, snaps }));
     results.ok.push(`bovada (${snaps.length} games)`);
+
+    // PRO PLAN: also append to rolling 24h history per game (key per matchup).
+    // This was throttled on free tier (1k KV writes/day). On Pro (1M/day) we
+    // can afford a write per game per cron tick = ~30 games * 1440 ticks/day = 43k/day.
+    for (const snap of snaps) {
+      const key = `history_${snap.matchup.replace(/\s+/g, '_')}`;
+      const existing = await env.EDGESTAT_KV.get(key);
+      const buf = existing ? JSON.parse(existing) : { matchup: snap.matchup, snaps: [] };
+      buf.snaps.push({
+        t: now,
+        home_ml: snap.home_ml, away_ml: snap.away_ml, total: snap.total,
+      });
+      // Cap at 1440 snaps (24h at 1/min)
+      if (buf.snaps.length > 1440) buf.snaps = buf.snaps.slice(-1440);
+      // 24h TTL
+      await env.EDGESTAT_KV.put(key, JSON.stringify(buf), { expirationTtl: 86400 });
+    }
+    results.ok.push(`history (${snaps.length} game buffers updated)`);
   }
 
-  // 4. Health metadata
+  // 4. Health metadata + per-tick run timing (PRO: enables tail logging)
   await env.EDGESTAT_KV.put("worker_health", JSON.stringify({
     last_run: now,
     ok: results.ok,
     fail: results.fail,
+    plan: "pro",
+    kv_history_buffers: true,
   }));
 
   return results;
@@ -195,6 +215,25 @@ async function handleHTTP(request, env) {
 
   if (path === "/" || path === "") {
     return Response.redirect("https://betting.bpleone.com", 302);
+  }
+
+  // /history/<matchup> -- PRO PLAN: rolling 24h line buffer per game
+  // Example: /history/PHI_@_CIN
+  const hm = path.match(/^\/history\/(.+?)\/?$/);
+  if (hm) {
+    const key = `history_${decodeURIComponent(hm[1])}`;
+    const val = await env.EDGESTAT_KV.get(key);
+    if (!val) return new Response(JSON.stringify({ error: "no history", key }), { status: 204, headers: cors });
+    return new Response(val, { headers: cors });
+  }
+
+  // /history -- list all matchups with active buffers
+  if (path === "/history" || path === "/history/") {
+    const list = await env.EDGESTAT_KV.list({ prefix: "history_" });
+    return new Response(JSON.stringify({
+      n_buffers: list.keys.length,
+      matchups: list.keys.map(k => k.name.replace(/^history_/, "").replace(/_/g, " ")),
+    }), { headers: cors });
   }
 
   // /live/<key>

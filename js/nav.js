@@ -85,6 +85,7 @@
     { href: "model-control.html", label: "🎛 Control" },
     { href: "learning-integrity.html", label: "🔬 Integrity" },
     { href: "line-shop.html",   label: "💰 Line Shop" },
+    { href: "pulse.html",       label: "📡 Pulse" },
     { href: "tonight.html",     label: "🌙 Tonight" },
     { href: "live-now.html",    label: "Live Now" },
     { href: "play-of-day.html", label: "Play of Day" },

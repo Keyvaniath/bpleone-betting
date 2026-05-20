@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Live Pulse | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/nav.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  body { background: #0a0a0a; }
+  .pulse-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 12px; }
+  .game-card { background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 10px 12px; }
+  .game-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+  .game-name { font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 700; }
+  .game-meta { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--muted,#888); }
+  .chart-wrap { position: relative; height: 110px; }
+  .live-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #58c878; animation: pulse 1.5s infinite; margin-right: 4px; }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+  .info-card { padding: 14px 18px; background: linear-gradient(135deg, rgba(212,160,74,0.10), rgba(212,160,74,0.02)); border: 1px solid rgba(212,160,74,0.3); border-radius: 10px; margin-bottom: 16px; }
+  .stat-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 14px; }
+  .stat { padding: 10px 14px; background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.05); border-radius: 6px; text-align: center; }
+  .stat-val { font-family: 'JetBrains Mono', monospace; font-size: 22px; font-weight: 700; color: #d4a04a; }
+  .stat-label { font-size: 10px; color: var(--muted,#888); text-transform: uppercase; margin-top: 4px; }
+</style>
+</head>
+<body class="page-pulse">
+<header class="topbar">
+  <div class="brand"><a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a><span class="tagline">by bpleone</span></div>
+  <nav class="mainnav"><!-- nav.js injects --></nav>
+  <div class="topbar-actions"><div class="ticker">LIVE</div></div>
+</header>
+<main class="container">
+  <section class="page-head">
+    <h1><span class="live-dot"></span>Live Pulse — sub-minute line drift</h1>
+    <p class="muted" id="status">Connecting to Worker…</p>
+  </section>
+
+  <div class="info-card">
+    <strong style="color:#d4a04a;">Powered by Cloudflare Workers Pro plan</strong>
+    <span style="color: var(--text-2,#aaa); font-size:13px;">
+      Each game has a rolling 24-hour buffer of every line move stored in KV.
+      The Worker writes a new snapshot every 60 seconds during games and the chart
+      auto-refreshes every 30s. Total cost: ~43,000 KV writes/day out of 1,000,000
+      allowance (4% of Pro tier).
+    </span>
+  </div>
+
+  <div class="stat-strip">
+    <div class="stat"><div class="stat-val" id="stat-games">--</div><div class="stat-label">Games tracked</div></div>
+    <div class="stat"><div class="stat-val" id="stat-snaps">--</div><div class="stat-label">Total snapshots</div></div>
+    <div class="stat"><div class="stat-val" id="stat-newest">--</div><div class="stat-label">Newest update</div></div>
+    <div class="stat"><div class="stat-val" id="stat-biggest">--</div><div class="stat-label">Biggest move (1h)</div></div>
+  </div>
+
+  <div class="pulse-grid" id="pulse-grid">
+    <div style="grid-column: 1/-1; padding: 30px; text-align: center; color: var(--muted,#888);">
+      Loading line histories from Cloudflare Worker…
+    </div>
+  </div>
+</main>
+
+<script>
+const WORKER = (window.EDGESTAT_WORKER_URL || 'https://edgestat-live.brandonpleone.workers.dev');
+
+async function fetchJSON(url) {
+  try {
+    const r = await fetch(url + '?t=' + Date.now(), { mode: 'cors' });
+    if (!r.ok) return null;
+    return await r.json();
+  } catch (e) { return null; }
+}
+
+function fmtMove(delta) {
+  if (delta === null || delta === undefined || isNaN(delta)) return '--';
+  const v = Number(delta);
+  return (v >= 0 ? '+' : '') + v.toFixed(0);
+}
+
+async function loadPulse() {
+  // 1. List all buffers
+  const list = await fetchJSON(WORKER + '/history');
+  if (!list || !list.matchups) {
+    document.getElementById('status').textContent = 'Worker reachable but no history buffers yet — wait one cron tick (~60s) and the buffers will populate.';
+    return;
+  }
+  document.getElementById('status').innerHTML =
+    `<span class="live-dot"></span>Connected · ${list.n_buffers} game buffers from Cloudflare KV · refreshing every 30s`;
+
+  // 2. Fetch each buffer + render chart
+  const grid = document.getElementById('pulse-grid');
+  grid.innerHTML = '';
+  let totalSnaps = 0;
+  let newestTs = null;
+  let biggestMove = { mu: '--', delta: 0 };
+
+  for (const matchup of list.matchups.slice(0, 20)) {  // cap at 20 games
+    const url = WORKER + '/history/' + encodeURIComponent(matchup.replace(/ /g, '_'));
+    const buf = await fetchJSON(url);
+    if (!buf || !buf.snaps) continue;
+
+    totalSnaps += buf.snaps.length;
+    const latest = buf.snaps[buf.snaps.length - 1];
+    const oldest = buf.snaps[0];
+    if (!newestTs || latest.t > newestTs) newestTs = latest.t;
+
+    // Hour-window move
+    const oneHourAgo = new Date(Date.now() - 3600000).toISOString();
+    const hourAgoSnap = buf.snaps.find(s => s.t >= oneHourAgo) || oldest;
+    const homeMove = (latest.home_ml || 0) - (hourAgoSnap.home_ml || 0);
+    if (Math.abs(homeMove) > Math.abs(biggestMove.delta)) {
+      biggestMove = { mu: matchup, delta: homeMove };
+    }
+
+    // Build card
+    const card = document.createElement('div');
+    card.className = 'game-card';
+    const cid = 'c_' + Math.random().toString(36).slice(2);
+    card.innerHTML = `
+      <div class="game-head">
+        <div class="game-name">${matchup}</div>
+        <div class="game-meta">${buf.snaps.length} snaps · ${fmtMove(homeMove)} (1h)</div>
+      </div>
+      <div class="chart-wrap"><canvas id="${cid}"></canvas></div>
+    `;
+    grid.appendChild(card);
+
+    // Render chart
+    const ctx = document.getElementById(cid).getContext('2d');
+    const labels = buf.snaps.map(s => new Date(s.t).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }));
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: labels,
+        datasets: [
+          { label: 'home ML', data: buf.snaps.map(s => s.home_ml), borderColor: '#58c878', backgroundColor: 'transparent', tension: 0.2, pointRadius: 0, borderWidth: 1.5 },
+          { label: 'away ML', data: buf.snaps.map(s => s.away_ml), borderColor: '#e35a5a', backgroundColor: 'transparent', tension: 0.2, pointRadius: 0, borderWidth: 1.5 },
+        ]
+      },
+      options: {
+        plugins: { legend: { display: false } },
+        scales: {
+          x: { display: false },
+          y: { ticks: { color: '#888', font: { size: 9, family: 'JetBrains Mono' } }, grid: { color: 'rgba(255,255,255,0.04)' } },
+        },
+        responsive: true, maintainAspectRatio: false, animation: false,
+      }
+    });
+  }
+
+  document.getElementById('stat-games').textContent = list.n_buffers;
+  document.getElementById('stat-snaps').textContent = totalSnaps;
+  document.getElementById('stat-newest').textContent = newestTs ? new Date(newestTs).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit' }) : '--';
+  document.getElementById('stat-biggest').innerHTML = biggestMove.delta ?
+    `${fmtMove(biggestMove.delta)}<div style="font-size:10px; color:#aaa;">${biggestMove.mu}</div>` : '--';
+}
+
+loadPulse();
+setInterval(loadPulse, 30000);  // refresh every 30s
+</script>
+</body>
+</html>
