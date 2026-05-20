@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tonight | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/nav.js"></script>
+<style>
+  .section { margin-bottom: 28px; }
+  .row { padding: 8px 14px; border-bottom: 1px solid rgba(255,255,255,0.04); font-family: 'JetBrains Mono', monospace; font-size: 12px; }
+  .row.head { background: rgba(255,255,255,0.04); color: var(--muted,#888); font-size: 10px; text-transform: uppercase; }
+  .tier-elite { color: #d4a04a; font-weight: 700; }
+  .tier-strong { color: #58c878; font-weight: 700; }
+  .tier-moderate { color: #ffc850; }
+  .tier-weak { color: var(--text-2,#aaa); }
+  .pos { color: #58c878; font-weight: 700; }
+  .neg { color: #e35a5a; font-weight: 700; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .pill { display: inline-block; padding: 2px 7px; border-radius: 4px; font-size: 10px; font-weight: 700; }
+  .pill-green { background: rgba(88,200,120,0.18); color: #58c878; }
+  .pill-gold { background: rgba(212,160,74,0.18); color: #d4a04a; }
+  .pill-red { background: rgba(227,90,90,0.18); color: #e35a5a; }
+  .pill-gray { background: rgba(255,255,255,0.06); color: var(--text-2,#aaa); }
+</style>
+</head>
+<body class="page-tonight">
+<header class="topbar">
+  <div class="brand"><a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a><span class="tagline">by bpleone</span></div>
+  <nav class="mainnav"><!-- nav.js injects --></nav>
+  <div class="topbar-actions"><div class="ticker">LIVE</div></div>
+</header>
+<main class="container">
+  <section class="page-head">
+    <h1>🌙 Tonight — Consolidated Slate View</h1>
+    <p class="muted" id="status">Loading all signals…</p>
+  </section>
+
+  <!-- LOCKS -->
+  <section class="card section">
+    <div class="card-head"><span>🔒 Today's 5 Locks</span><span class="muted"><a href="locks-of-day.html" style="color:var(--text-2,#aaa);">Full history →</a></span></div>
+    <div id="locksBox"><p class="muted" style="padding:14px;">Loading…</p></div>
+  </section>
+
+  <div class="grid-2">
+    <!-- SHARP ACTION -->
+    <section class="card section">
+      <div class="card-head"><span>📡 Sharp Action (line movement)</span></div>
+      <div id="sharpBox"><p class="muted" style="padding:14px;">Loading…</p></div>
+    </section>
+
+    <!-- CONSENSUS PICKS -->
+    <section class="card section">
+      <div class="card-head"><span>🎯 Consensus Picks (>=3 modules)</span><span class="muted"><a href="consensus-picks.html" style="color:var(--text-2,#aaa);">All →</a></span></div>
+      <div id="consensusBox"><p class="muted" style="padding:14px;">Loading…</p></div>
+    </section>
+  </div>
+
+  <div class="grid-2">
+    <!-- UNDERS -->
+    <section class="card section">
+      <div class="card-head"><span>📉 Strong UNDER Signals</span></div>
+      <div id="undersBox"><p class="muted" style="padding:14px;">Loading…</p></div>
+    </section>
+
+    <!-- LINEUP STRENGTH -->
+    <section class="card section">
+      <div class="card-head"><span>⚖️ Lineup Mismatches</span></div>
+      <div id="lineupBox"><p class="muted" style="padding:14px;">Loading…</p></div>
+    </section>
+  </div>
+
+  <div class="grid-2">
+    <!-- PITCH COUNT -->
+    <section class="card section">
+      <div class="card-head"><span>⚾ Pitch Count Tiers</span></div>
+      <div id="pitchBox"><p class="muted" style="padding:14px;">Loading…</p></div>
+    </section>
+
+    <!-- PARLAYS -->
+    <section class="card section">
+      <div class="card-head"><span>🎰 Top 2-Leg Parlays</span><span class="muted"><a href="cross-sport-parlays.html" style="color:var(--text-2,#aaa);">All →</a></span></div>
+      <div id="parlayBox"><p class="muted" style="padding:14px;">Loading…</p></div>
+    </section>
+  </div>
+</main>
+<script src="js/nav_badge.js"></script>
+<script>
+function fmtAmer(a) { if (a == null) return '—'; return a >= 0 ? '+'+a : ''+a; }
+
+Promise.all([
+  fetch("data/locks_history.json?t=" + Date.now()).then(r => r.json()).catch(() => null),
+  fetch("data/sharp_action_radar.json?t=" + Date.now()).then(r => r.json()).catch(() => null),
+  fetch("data/consensus_picks.json?t=" + Date.now()).then(r => r.json()).catch(() => null),
+  fetch("data/mlb_unders_alerts.json?t=" + Date.now()).then(r => r.json()).catch(() => null),
+  fetch("data/mlb_lineup_strength.json?t=" + Date.now()).then(r => r.json()).catch(() => null),
+  fetch("data/mlb_starter_pitch_count.json?t=" + Date.now()).then(r => r.json()).catch(() => null),
+  fetch("data/cross_sport_parlays.json?t=" + Date.now()).then(r => r.json()).catch(() => null),
+]).then(([locks, sharp, consensus, unders, lineup, pitch, parlays]) => {
+  const stamp = (locks && locks.generated_at || '').slice(0,19).replace('T',' ');
+  document.getElementById('status').textContent = `All signals · ${stamp}`;
+
+  // LOCKS
+  const lb = document.getElementById('locksBox');
+  if (locks && locks.todays_locks && locks.todays_locks.length) {
+    lb.innerHTML = `<div class="row head"><span>Sport</span> · Pick · Market · Prob · Edge · Fair</div>` +
+      locks.todays_locks.map(L => `<div class="row">
+        <span class="pill pill-gold">${L.sport}</span>
+        <strong>${L.player_or_matchup}</strong>  ·  <span class="muted">${L.market}</span>  ·
+        <strong>${(L.prob*100).toFixed(0)}%</strong>  ·  <span class="pos">+${(L.edge_pct||0).toFixed(1)}%</span>  ·
+        <span class="muted">${fmtAmer(L.fair_american)}</span><br>
+        <span style="font-size:11px; color:var(--text-2,#aaa); font-style:italic;">💡 ${L.rationale || ''}</span>
+      </div>`).join('');
+  } else lb.innerHTML = '<p class="muted" style="padding:14px;">No locks yet today.</p>';
+
+  // SHARP ACTION
+  const sb = document.getElementById('sharpBox');
+  const pos = (sharp && sharp.positive_signals) || [];
+  const neg = (sharp && sharp.negative_signals) || [];
+  if (pos.length || neg.length) {
+    sb.innerHTML = pos.slice(0,5).map(s => `<div class="row">
+      <span class="pill pill-green">${s.intensity}</span>
+      <strong>${s.matchup}</strong> ${s.market}: ${s.opening_implied_pct}% → <span class="pos">${s.latest_implied_pct}% (+${s.shift_pp}pp)</span>
+    </div>`).join('') + neg.slice(0,3).map(s => `<div class="row">
+      <span class="pill pill-red">FADE</span>
+      <strong>${s.matchup}</strong>: ${s.opening_implied_pct}% → <span class="neg">${s.latest_implied_pct}% (${s.shift_pp}pp)</span>
+    </div>`).join('');
+  } else sb.innerHTML = '<p class="muted" style="padding:14px;">No material line moves yet.</p>';
+
+  // CONSENSUS
+  const cb = document.getElementById('consensusBox');
+  const cons = consensus && (consensus.top_15_hit_boost_consensus || []).filter(c => c.tier !== 'GOOD').slice(0,6);
+  const consHr = consensus && (consensus.top_15_hr_boost_consensus || []).filter(c => c.tier !== 'GOOD').slice(0,4);
+  if ((cons && cons.length) || (consHr && consHr.length)) {
+    cb.innerHTML = (cons || []).map(c => `<div class="row">
+      <span class="pill pill-${c.tier === 'ELITE' ? 'gold' : 'green'}">${c.tier} HIT</span>
+      <strong>${c.batter}</strong> <span class="muted">(${c.n_agreeing}/3 modules)</span>
+    </div>`).join('') + (consHr || []).map(c => `<div class="row">
+      <span class="pill pill-${c.tier === 'ELITE' ? 'gold' : 'green'}">${c.tier} HR</span>
+      <strong>${c.batter}</strong> <span class="muted">(${c.n_agreeing}/3 modules)</span>
+    </div>`).join('');
+  } else cb.innerHTML = '<p class="muted" style="padding:14px;">No STRONG/ELITE consensus yet.</p>';
+
+  // UNDERS
+  const ub = document.getElementById('undersBox');
+  const su = unders && unders.strong_unders || [];
+  if (su.length) {
+    ub.innerHTML = su.slice(0,5).map(u => `<div class="row">
+      <span class="pill pill-${u.tier === 'ELITE' ? 'gold' : 'green'}">${u.tier} (${u.under_signal_score.toFixed(1)})</span>
+      <strong>${u.matchup}</strong> model ${u.model_fair_total} vs market ${u.market_total}<br>
+      <span style="font-size:11px; color:var(--text-2,#aaa);">${u.signals.slice(0,2).join(' · ')}</span>
+    </div>`).join('');
+  } else ub.innerHTML = '<p class="muted" style="padding:14px;">No strong under signals.</p>';
+
+  // LINEUP
+  const lpb = document.getElementById('lineupBox');
+  const mm = lineup && lineup.mismatch_signals || [];
+  const elite = lineup && lineup.elite_lineups || [];
+  if (mm.length || elite.length) {
+    lpb.innerHTML = mm.map(m => `<div class="row">
+      <span class="pill pill-gold">MISMATCH</span> <span style="font-size:11px;">${m.signal}</span>
+    </div>`).join('') + elite.slice(0,4).map(e => `<div class="row">
+      <span class="pill pill-green">ELITE LINEUP</span>
+      <strong>${e.team}</strong> ${e.score.toFixed(3)} vs ${e.vs_starter || '?'} (ERA ${(e.vs_era || 0).toFixed(2)})
+    </div>`).join('');
+  } else lpb.innerHTML = '<p class="muted" style="padding:14px;">No notable lineup signals.</p>';
+
+  // PITCH COUNT
+  const pb = document.getElementById('pitchBox');
+  const deep = pitch && pitch.deep_game_candidates || [];
+  const hook = pitch && pitch.early_hook_candidates || [];
+  pb.innerHTML = deep.slice(0,4).map(p => `<div class="row">
+    <span class="pill pill-green">${p.depth_tier}</span>
+    <strong>${p.pitcher}</strong> proj ${p.projected_ip_today} IP / ${p.projected_k_today.toFixed(1)} K
+  </div>`).join('') + hook.slice(0,3).map(p => `<div class="row">
+    <span class="pill pill-red">${p.depth_tier}</span>
+    <strong>${p.pitcher}</strong> proj ${p.projected_ip_today} IP (opp OBP ${p.opp_obp.toFixed(3)})
+  </div>`).join('');
+
+  // PARLAYS
+  const plb = document.getElementById('parlayBox');
+  const bal = parlays && parlays.balanced_2_leg_picks || [];
+  if (bal.length) {
+    plb.innerHTML = bal.slice(0,4).map(p => `<div class="row">
+      <strong>${p.legs[0].player_or_matchup}</strong> ${p.legs[0].market} <span class="muted">+</span>
+      <strong>${p.legs[1].player_or_matchup}</strong> ${p.legs[1].market}<br>
+      <span class="muted" style="font-size:11px;">Joint ${(p.joint_prob*100).toFixed(0)}% · fair ${fmtAmer(p.fair_parlay_american)} · </span>
+      <span class="pos" style="font-size:11px;">+${p.edge_pct.toFixed(1)}% edge</span>
+    </div>`).join('');
+  } else plb.innerHTML = '<p class="muted" style="padding:14px;">No balanced parlays.</p>';
+});
+</script>
+</body>
+</html>
