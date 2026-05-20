@@ -29,32 +29,48 @@ window.EdgeStatCharts = (function() {
 
   function renderHeroChart(ctx) {
     if (!ctx) return;
-    // Bell-curve-ish distribution of confidence across slate
-    const data = [10, 22, 38, 64, 91, 78, 52, 30, 18, 8];
+    // REAL slate distribution: fetch today.json and bucket each game's
+    // model probability into 10 confidence bands.
     const labels = ['<40%','45%','50%','55%','60%','65%','70%','75%','80%','85%+'];
-    new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels,
-        datasets: [{
-          label: 'Model win-probability buckets (slate)',
-          data,
-          backgroundColor: ctx => {
-            const c = ctx.dataIndex;
-            return c >= 4 ? 'rgba(74,222,128,0.7)' : 'rgba(96,165,250,0.5)';
-          },
-          borderColor: COLOR.green,
-          borderWidth: 1.2,
-          borderRadius: 4
-        }]
-      },
-      options: { ...baseOptions, plugins: { ...baseOptions.plugins, legend: { display: false } } }
-    });
+    fetch('data/today.json', { cache: 'no-cache' })
+      .then(r => r.json())
+      .then(d => {
+        const buckets = new Array(10).fill(0);
+        for (const g of (d.games || [])) {
+          const p = ((g.model || {}).p_home_win || 0);
+          // Bucket on the HIGHER side (favorite) so we see slate skew
+          const favored = Math.max(p, 1 - p);
+          let idx = 0;
+          if (favored < 0.45) idx = 0;
+          else if (favored < 0.50) idx = 1;
+          else if (favored < 0.55) idx = 2;
+          else if (favored < 0.60) idx = 3;
+          else if (favored < 0.65) idx = 4;
+          else if (favored < 0.70) idx = 5;
+          else if (favored < 0.75) idx = 6;
+          else if (favored < 0.80) idx = 7;
+          else if (favored < 0.85) idx = 8;
+          else idx = 9;
+          buckets[idx]++;
+        }
+        new Chart(ctx, {
+          type: 'bar',
+          data: { labels, datasets: [{
+            label: 'Model favorite-side win-prob distribution (tonight\'s slate)',
+            data: buckets,
+            backgroundColor: c => c.dataIndex >= 4 ? 'rgba(74,222,128,0.7)' : 'rgba(96,165,250,0.5)',
+            borderColor: COLOR.green, borderWidth: 1.2, borderRadius: 4
+          }] },
+          options: { ...baseOptions, plugins: { ...baseOptions.plugins, legend: { display: false } } }
+        });
+      })
+      .catch(() => { /* leave empty */ });
   }
 
   function renderModelMarket(ctx) {
     if (!ctx) return;
-    const hist = window.MODEL_HISTORY;
+    const hist = window.MODEL_HISTORY || [];
+    if (hist.length === 0) return;   // No data, leave canvas empty
     new Chart(ctx, {
       type: 'line',
       data: {
@@ -70,7 +86,8 @@ window.EdgeStatCharts = (function() {
 
   function renderCLV(ctx) {
     if (!ctx) return;
-    const hist = window.MODEL_HISTORY;
+    const hist = window.MODEL_HISTORY || [];
+    if (hist.length === 0) return;
     let cum = 0;
     const cumData = hist.map(h => { cum += h.clv; return cum; });
     new Chart(ctx, {
@@ -91,13 +108,15 @@ window.EdgeStatCharts = (function() {
 
   function renderHitRate(ctx) {
     if (!ctx) return;
+    const rates = window.HIT_RATES || [];
+    if (rates.length === 0) return;   // No real data yet -- leave empty
     new Chart(ctx, {
       type: 'bar',
       data: {
-        labels: window.HIT_RATES.map(h => h.type),
+        labels: rates.map(h => h.type),
         datasets: [{
           label: 'Hit %',
-          data: window.HIT_RATES.map(h => h.hit),
+          data: rates.map(h => h.hit),
           backgroundColor: [
             'rgba(74,222,128,0.7)',
             'rgba(96,165,250,0.7)',
@@ -172,7 +191,8 @@ window.EdgeStatCharts = (function() {
 
   function renderPropEdges(ctx) {
     if (!ctx) return;
-    const props = window.PROP_PICKS.slice(0, 8);
+    const props = (window.PROP_PICKS || []).slice(0, 8);
+    if (props.length === 0) return;   // Seed PROP_PICKS empty by default
     new Chart(ctx, {
       type: 'bar',
       data: {
@@ -193,7 +213,8 @@ window.EdgeStatCharts = (function() {
 
   function renderTrendStreak(ctx) {
     if (!ctx) return;
-    const t = window.TEAM_TRENDS.slice(0, 8);
+    const t = (window.TEAM_TRENDS || []).slice(0, 8);
+    if (t.length === 0) return;
     const wins = t.map(x => parseInt(x.last10.split('-')[0]));
     new Chart(ctx, {
       type: 'radar',

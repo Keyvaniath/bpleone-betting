@@ -59,9 +59,16 @@
   }
 
   // ---- Slate table renderer ----
+  // window.SLATE is now EMPTY by default (was full of mock data). Real
+  // slate loaded into the same DOM via today.json fetch elsewhere; this
+  // function gracefully no-ops if seed is empty.
   function renderSlate() {
     const tbody = document.querySelector('#slateTable tbody');
     if (!tbody) return;
+    if (!window.SLATE || window.SLATE.length === 0) {
+      tbody.innerHTML = `<tr><td colspan="9" class="muted" style="padding:14px; text-align:center;">Slate loads from data/today.json -- see MLB page or Tonight view for the live slate.</td></tr>`;
+      return;
+    }
     const html = window.SLATE.map(g => {
       const recClass = g.rec === 'BET' || g.rec === 'PLAY OF DAY' ? 'bet' : g.rec === 'LEAN' ? 'lean' : 'pass';
       const edgeSign = g.edge.value >= 0 ? '+' : '';
@@ -128,12 +135,14 @@
   });
 
   // ---- Play of the Day deep-dive renderer ----
+  // Guarded against null seed -- real factor decomp loads from
+  // data/pod_factor_decomp.json elsewhere, hero stats from today.json.
   function renderPlayPage() {
     const p = window.PLAY_OF_DAY;
-    // confidence donut
+    if (!p) return;   // No seed -- real loaders take over in play-of-day.html
+
     const conf = document.getElementById('confDonut');
     if (conf) EdgeStatCharts.renderConfidenceGauge(conf.getContext('2d'), Math.round(p.winProb*100));
-    // run distribution
     const dist = document.getElementById('runDistChart');
     if (dist) EdgeStatCharts.renderRunDistribution(dist.getContext('2d'), 3.6, 4.0);
 
@@ -207,55 +216,78 @@
   }
 
   // ---- Trends page ----
+  // SHARP_FLOW + TEAM_TRENDS are now empty by default; live data loaded
+  // via fetch elsewhere. Render empty state if no seed.
   function renderTrendsPage() {
     const flow = document.querySelector('#flowTable tbody');
     if (flow) {
-      flow.innerHTML = window.SHARP_FLOW.map(f => `<tr>
-        <td class="matchup">${f.ticket}</td>
-        <td class="${f.handle.startsWith('+')?'positive':'negative'}">${f.handle}</td>
-        <td>${f.tickets}</td>
-        <td>${f.open}</td>
-        <td>${f.current}</td>
-        <td>${f.steam ? '<span class="pill green">STEAM</span>' : '<span class="muted">—</span>'}</td>
-      </tr>`).join('');
+      if (!window.SHARP_FLOW || window.SHARP_FLOW.length === 0) {
+        flow.innerHTML = '<tr><td colspan="6" class="muted" style="padding:14px; text-align:center;">Sharp money flow loads from data/sharp_action_radar.json — visit /tonight for live signals.</td></tr>';
+      } else {
+        flow.innerHTML = window.SHARP_FLOW.map(f => `<tr>
+          <td class="matchup">${f.ticket}</td>
+          <td class="${f.handle.startsWith('+')?'positive':'negative'}">${f.handle}</td>
+          <td>${f.tickets}</td>
+          <td>${f.open}</td>
+          <td>${f.current}</td>
+          <td>${f.steam ? '<span class="pill green">STEAM</span>' : '<span class="muted">—</span>'}</td>
+        </tr>`).join('');
+      }
     }
     const trendStreak = document.getElementById('trendStreakChart');
     if (trendStreak) EdgeStatCharts.renderTrendStreak(trendStreak.getContext('2d'));
 
     const tbody = document.querySelector('#trendsTable tbody');
     if (tbody) {
-      tbody.innerHTML = window.TEAM_TRENDS.map(t => `<tr>
-        <td class="matchup">${t.team}</td>
-        <td>${t.ats}</td>
-        <td>${t.ou}</td>
-        <td>${t.last10}</td>
-        <td>${t.runDiff}</td>
-        <td class="${t.streak.startsWith('W')?'positive':'negative'}">${t.streak}</td>
-      </tr>`).join('');
+      if (!window.TEAM_TRENDS || window.TEAM_TRENDS.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="6" class="muted" style="padding:14px; text-align:center;">Team trends load from historical_*.json after the daily pipeline accumulates a season of data.</td></tr>';
+      } else {
+        tbody.innerHTML = window.TEAM_TRENDS.map(t => `<tr>
+          <td class="matchup">${t.team}</td>
+          <td>${t.ats}</td>
+          <td>${t.ou}</td>
+          <td>${t.last10}</td>
+          <td>${t.runDiff}</td>
+          <td class="${t.streak.startsWith('W')?'positive':'negative'}">${t.streak}</td>
+        </tr>`).join('');
+      }
     }
   }
 
   // ---- Props page ----
+  // Live props come from real_player_props_mlb.json -- the seed PROP_PICKS
+  // is empty by default. Real loader is elsewhere.
   function renderPropsPage() {
     const tbody = document.querySelector('#propsTable tbody');
     if (tbody) {
-      tbody.innerHTML = window.PROP_PICKS.map(p => `<tr>
-        <td class="matchup">${p.player}</td>
-        <td>${p.team}</td>
-        <td>${p.prop}</td>
-        <td>${typeof p.market === 'number' ? (p.market>0?'+':'')+p.market : p.market}</td>
-        <td>${typeof p.model === 'number' ? (p.model>0?'+':'')+p.model : p.model}</td>
-        <td class="edge-pos">+${p.edge.toFixed(1)}%</td>
-        <td><span class="pill green">${p.type}</span></td>
-      </tr>`).join('');
+      if (!window.PROP_PICKS || window.PROP_PICKS.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="7" class="muted" style="padding:14px; text-align:center;">Player props load from real_player_props_mlb.json — see /tonight for tonight\'s top picks.</td></tr>';
+      } else {
+        tbody.innerHTML = window.PROP_PICKS.map(p => `<tr>
+          <td class="matchup">${p.player}</td>
+          <td>${p.team}</td>
+          <td>${p.prop}</td>
+          <td>${typeof p.market === 'number' ? (p.market>0?'+':'')+p.market : p.market}</td>
+          <td>${typeof p.model === 'number' ? (p.model>0?'+':'')+p.model : p.model}</td>
+          <td class="edge-pos">+${p.edge.toFixed(1)}%</td>
+          <td><span class="pill green">${p.type}</span></td>
+        </tr>`).join('');
+      }
     }
     const pe = document.getElementById('propEdgesChart');
     if (pe) EdgeStatCharts.renderPropEdges(pe.getContext('2d'));
   }
 
   // ---- Track record page ----
+  // Real data overlay in track-record.html reads pod_pl.json. The seed
+  // TRACK_RECORD here is empty by default -- legacy renderer no-ops.
   function renderTrackPage() {
     const tbody = document.querySelector('#trackTable tbody');
+    if (tbody && (!window.TRACK_RECORD || window.TRACK_RECORD.length === 0)) {
+      // The dedicated overlay in track-record.html populates from pod_pl.json
+      // so we don't need to render a fake seed row here.
+      return;
+    }
     if (tbody) {
       tbody.innerHTML = window.TRACK_RECORD.map(t => `<tr>
         <td>${t.date}</td>
@@ -270,7 +302,7 @@
 
     // P&L line chart
     const ctxEl = document.getElementById('plChart');
-    if (ctxEl) {
+    if (ctxEl && window.TRACK_RECORD && window.TRACK_RECORD.length > 0) {
       let cum = 0;
       const data = [...window.TRACK_RECORD].reverse().map(t => {
         cum += parseFloat(t.pl);
