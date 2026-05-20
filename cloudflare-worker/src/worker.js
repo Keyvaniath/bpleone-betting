@@ -453,6 +453,85 @@ async function handleHTTP(request, env) {
     return new Response(JSON.stringify({ rows: r.results || [] }), { headers: cors });
   }
 
+  // ============================================================
+  // R2 SNAPSHOT ENDPOINTS (Pro plan -- monthly D1 archives)
+  // ============================================================
+
+  // POST /admin/snapshot -- dump current D1 picks to R2 with month-stamped key
+  if (path === "/admin/snapshot" && request.method === "POST") {
+    if (!env.EDGESTAT_DB || !env.EDGESTAT_R2) {
+      return new Response(JSON.stringify({ error: "D1 or R2 not bound" }), { status: 503, headers: cors });
+    }
+    try {
+      const now = new Date();
+      const month = now.toISOString().slice(0, 7);  // YYYY-MM
+      const r2_key = `picks-${month}.json`;
+      // Dump everything from picks table
+      const r = await env.EDGESTAT_DB.prepare(
+        `SELECT * FROM picks ORDER BY id ASC`
+      ).all();
+      const picks = r.results || [];
+      const snapshot = {
+        snapshot_at: now.toISOString(),
+        month: month,
+        n_picks: picks.length,
+        picks: picks,
+      };
+      const body = JSON.stringify(snapshot);
+      await env.EDGESTAT_R2.put(r2_key, body, {
+        httpMetadata: { contentType: "application/json" },
+      });
+
+      // Record metadata in monthly_snapshots table
+      const settled = picks.filter(p => p.outcome !== "PENDING").length;
+      const wins = picks.filter(p => p.outcome === "WIN").length;
+      const hit_rate = settled > 0 ? wins / settled : null;
+      const total_units = picks.reduce((s, p) => s + (p.payout_units || 0), 0);
+      await env.EDGESTAT_DB.prepare(
+        `INSERT INTO monthly_snapshots (month, r2_key, n_picks_snapshot, n_settled,
+                                         hit_rate, total_units, snapshot_at)
+         VALUES (?, ?, ?, ?, ?, ?, ?)
+         ON CONFLICT(month) DO UPDATE SET
+           r2_key=excluded.r2_key,
+           n_picks_snapshot=excluded.n_picks_snapshot,
+           n_settled=excluded.n_settled,
+           hit_rate=excluded.hit_rate,
+           total_units=excluded.total_units,
+           snapshot_at=excluded.snapshot_at`
+      ).bind(month, r2_key, picks.length, settled, hit_rate, total_units, now.toISOString()).run();
+
+      return new Response(JSON.stringify({
+        ok: true, month, r2_key, n_picks: picks.length, size_bytes: body.length
+      }), { headers: cors });
+    } catch (e) {
+      return new Response(JSON.stringify({ error: String(e) }), { status: 500, headers: cors });
+    }
+  }
+
+  // GET /admin/snapshots -- list all R2 snapshots with metadata
+  if (path === "/admin/snapshots") {
+    if (!env.EDGESTAT_DB) {
+      return new Response(JSON.stringify({ error: "D1 not bound" }), { status: 503, headers: cors });
+    }
+    const r = await env.EDGESTAT_DB.prepare(
+      `SELECT * FROM monthly_snapshots ORDER BY month DESC`
+    ).all();
+    return new Response(JSON.stringify({ rows: r.results || [] }), { headers: cors });
+  }
+
+  // GET /admin/snapshot/<month> -- fetch a specific month's snapshot from R2
+  const sm = path.match(/^\/admin\/snapshot\/(\d{4}-\d{2})\/?$/);
+  if (sm) {
+    if (!env.EDGESTAT_R2) {
+      return new Response(JSON.stringify({ error: "R2 not bound" }), { status: 503, headers: cors });
+    }
+    const obj = await env.EDGESTAT_R2.get(`picks-${sm[1]}.json`);
+    if (!obj) {
+      return new Response(JSON.stringify({ error: "no snapshot for that month" }), { status: 404, headers: cors });
+    }
+    return new Response(obj.body, { headers: cors });
+  }
+
   // GET /db/health -- count of rows in each table
   if (path === "/db/health") {
     if (!env.EDGESTAT_DB) {
@@ -533,6 +612,44 @@ async function handleHTTP(request, env) {
   }), { headers: cors });
 }
 
+// ---------- Monthly snapshot (D1 -> R2) ----------
+async function monthlySnapshot(env) {
+  if (!env.EDGESTAT_DB || !env.EDGESTAT_R2) return;
+  try {
+    const now = new Date();
+    const month = now.toISOString().slice(0, 7);
+    const r2_key = `picks-${month}.json`;
+    const r = await env.EDGESTAT_DB.prepare("SELECT * FROM picks ORDER BY id ASC").all();
+    const picks = r.results || [];
+    const snapshot = {
+      snapshot_at: now.toISOString(),
+      month, n_picks: picks.length, picks,
+    };
+    const body = JSON.stringify(snapshot);
+    await env.EDGESTAT_R2.put(r2_key, body, {
+      httpMetadata: { contentType: "application/json" },
+    });
+    const settled = picks.filter(p => p.outcome !== "PENDING").length;
+    const wins = picks.filter(p => p.outcome === "WIN").length;
+    const hit_rate = settled > 0 ? wins / settled : null;
+    const total_units = picks.reduce((s, p) => s + (p.payout_units || 0), 0);
+    await env.EDGESTAT_DB.prepare(
+      `INSERT INTO monthly_snapshots (month, r2_key, n_picks_snapshot, n_settled,
+                                       hit_rate, total_units, snapshot_at)
+       VALUES (?, ?, ?, ?, ?, ?, ?)
+       ON CONFLICT(month) DO UPDATE SET
+         r2_key=excluded.r2_key,
+         n_picks_snapshot=excluded.n_picks_snapshot,
+         n_settled=excluded.n_settled,
+         hit_rate=excluded.hit_rate,
+         total_units=excluded.total_units,
+         snapshot_at=excluded.snapshot_at`
+    ).bind(month, r2_key, picks.length, settled, hit_rate, total_units, now.toISOString()).run();
+  } catch (e) {
+    // swallow -- monthly cron should never break the system
+  }
+}
+
 // ---------- Cloudflare Worker entry ----------
 export default {
   async fetch(request, env) {
@@ -540,6 +657,12 @@ export default {
   },
 
   async scheduled(event, env, ctx) {
+    // Monthly snapshot trigger: cron "0 6 1 * *" runs on 1st of month at 06:00 UTC
+    if (event.cron === "0 6 1 * *") {
+      ctx.waitUntil(monthlySnapshot(env));
+      return;
+    }
+    // All other cron triggers (every-minute, every-5-min) run the live poll
     ctx.waitUntil(poll(env));
   },
 };

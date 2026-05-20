@@ -18,12 +18,19 @@ binding = "EDGESTAT_DB"
 database_name = "edgestat-history"
 database_id = "a14f4e50-920e-43d4-b14c-e2824b19d7d2"
 
+# R2 object storage (Cloudflare Pro plan) -- monthly D1 snapshots + cold archives
+# Created via: wrangler r2 bucket create edgestat-archives
+[[r2_buckets]]
+binding = "EDGESTAT_R2"
+bucket_name = "edgestat-archives"
+
 # Cron triggers -- every minute during peak game hours, every 5 min off-peak
 [triggers]
 crons = [
   "* 16-23 * * *",   # every 1 min, 12pm-7pm ET (peak MLB hours)
   "* 0-6 * * *",     # every 1 min, 8pm-2am ET (west coast night games)
   "*/5 7-15 * * *",  # every 5 min, off-peak
+  "0 6 1 * *",       # 1st of month 06:00 UTC -- monthly D1 -> R2 snapshot
 ]
 
 # Optional secret for the manual /poll endpoint -- prevents random
