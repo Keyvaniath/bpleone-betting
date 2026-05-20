@@ -72,6 +72,11 @@ jobs:
         working-directory: python
         run: python locks_clv.py
 
+      # Sharp action radar -- track how every top-25 pick's line is moving
+      - name: Sharp action radar (line movement signal across top 25)
+        working-directory: python
+        run: python sharp_action_radar.py
+
       # Live data accuracy audit -- compares local artifacts to MLB/ESPN APIs
       # every cycle, surfaces feed degradation immediately.
       - name: Data health check (live cross-verification)
