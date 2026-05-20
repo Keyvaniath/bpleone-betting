@@ -2,7 +2,7 @@
 
 (function() {
 
-  // ---- Live ticker (reads today.json + track_record.json for real lines) ----
+  // ---- Live ticker (reads today.json + all_picks_ledger.json for REAL settled picks) ----
   function startTicker() {
     const el = document.getElementById('liveTicker');
     if (!el) return;
@@ -10,9 +10,8 @@
 
     Promise.all([
       fetch('data/today.json', { cache: 'no-cache' }).then(r => r.json()).catch(() => ({})),
-      fetch('data/track_record.json', { cache: 'no-cache' }).then(r => r.json()).catch(() => ({})),
-      fetch('data/calibration_live.json', { cache: 'no-cache' }).then(r => r.json()).catch(() => ({})),
-    ]).then(([today, tr, cal]) => {
+      fetch('data/all_picks_ledger.json', { cache: 'no-cache' }).then(r => r.json()).catch(() => ({})),
+    ]).then(([today, ledger]) => {
       const lines = [];
       const pod = today.play_of_day;
       if (pod) {
@@ -24,17 +23,16 @@
           const rawEdge = Number(top.edge_pct) || 0;
           const isPreCal = rawEdge >= 15;
           const tag = isPreCal ? 'CALIBRATING' : 'EDGE';
-          // Cap displayed edge at "+25%+" for pre-calibration plays so the
-          // ticker doesn't keep flashing absurd +50%+ headlines.
           const edgeStr = isPreCal ? '+25%+' : '+' + rawEdge.toFixed(1) + '%';
           lines.push(`\u{1F4CA} ${tag} - ${g.matchup} ${top.label} ${edgeStr}`);
         }
       });
-      // Settled records (most recent few)
-      const props = (tr.props || []).slice(0, 3);
-      props.forEach(p => {
-        if (p.play_hit === true) lines.push(`\u{1F9FE} SETTLED - ${p.player} ${p.play} ${p.line} ${p.market.replace(/_/g,' ')} - HIT`);
-        if (p.play_hit === false) lines.push(`\u{1F9FE} SETTLED - ${p.player} ${p.play} ${p.line} ${p.market.replace(/_/g,' ')} - MISS`);
+      // REAL settled records from unified ledger (no 118k synthetic backfill)
+      const settled = ((ledger.picks || []).filter(p => p.settled)).slice(-5);
+      settled.forEach(p => {
+        const tag = p.result === 'won' ? 'WON' : p.result === 'lost' ? 'LOST' : p.result.toUpperCase();
+        const emoji = p.result === 'won' ? '\u{2705}' : p.result === 'lost' ? '\u{274C}' : '\u{1F9FE}';
+        lines.push(`${emoji} SETTLED - ${p.player_or_matchup} ${p.market} - ${tag}`);
       });
       if (!lines.length) lines.push('\u{1F7E2} LIVE - no slate data yet');
       let i = 0;
