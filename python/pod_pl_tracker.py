@@ -90,24 +90,51 @@ def _pick_today_pod() -> Optional[Dict[str, Any]]:
                     "market_price": r.get("market_price"),
                     "edge_pct": edge,
                     "confidence": r.get("confidence"),
+                    "first_pitch_str": g.get("time"),   # e.g. "8:40p ET"
+                    "gamePk": g.get("gamePk"),          # MLB game ID for exact matching
                 }
     return best
 
 
 def _settle_pod(pod: Dict[str, Any]) -> Optional[str]:
-    """Cross-reference historical_mlb.json (MLB-only POD) for the outcome."""
+    """Cross-reference historical_mlb.json (MLB-only POD) for the outcome.
+
+    CRITICAL: only settle if at least 12 hours have passed since the POD
+    was recorded. Otherwise we risk matching against last night's
+    already-completed game with the same matchup string (UTC date in
+    historical_mlb often spans the calendar boundary -- a game played
+    Mon evening ET is dated Tue in UTC).
+    """
     if pod.get("settled"):
         return None
+    # 12-hour cool-off guard
+    try:
+        recorded_at = dt.datetime.fromisoformat(pod.get("recorded_at") or "")
+        if (dt.datetime.now() - recorded_at).total_seconds() < 12 * 3600:
+            return None
+    except Exception:
+        return None
+
     hist = _load(os.path.join(DATA_DIR, "historical_mlb.json"))
     games = hist.get("games") or []
     matchup = (pod.get("matchup") or "").lower()
     label = (pod.get("label") or "").upper()
     date_s = pod.get("date")
+    pod_game_pk = pod.get("gamePk")
     for g in games:
-        g_date = (g.get("date") or "")[:10]
-        if g_date != date_s: continue
-        g_mu = (g.get("matchup") or g.get("name") or "").lower()
-        if matchup not in g_mu and g_mu not in matchup: continue
+        # PREFER exact gamePk match (avoids UTC-date-confusion of same matchup
+        # played on consecutive days)
+        is_pk_match = (pod_game_pk and g.get("id") and
+                        str(pod_game_pk) == str(g.get("id")))
+        if not is_pk_match:
+            g_date = (g.get("date") or "")[:10]
+            if g_date != date_s: continue
+            # Build matchup string from abbrevs ("LAD @ SD")
+            g_mu = (g.get("matchup") or "").lower()
+            if not g_mu and g.get("away_abbrev") and g.get("home_abbrev"):
+                g_mu = f"{g['away_abbrev']} @ {g['home_abbrev']}".lower()
+            if not g_mu: continue
+            if matchup not in g_mu and g_mu not in matchup: continue
         if g.get("home_score") is None: continue
         home_score = g.get("home_score") or 0
         away_score = g.get("away_score") or 0
