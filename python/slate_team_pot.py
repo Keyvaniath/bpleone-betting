@@ -72,6 +72,12 @@ def run() -> Dict[str, Any]:
         _add(picks, "MLB", x.get("matchup"), x.get("market"),
               x.get("prob"), x.get("fair"), "mlb_team_total")
 
+    # MLB run-line (spread -1.5/+1.5) edges via Poisson convolution
+    mlb_rl = _load(os.path.join(DATA_DIR, "mlb_run_line_edges.json"))
+    for x in (mlb_rl.get("top_picks") or []):
+        _add(picks, "MLB", x.get("matchup"), x.get("market"),
+              x.get("prob"), x.get("fair"), "mlb_run_line")
+
     # NHL goalie-matchup team totals + shutout markets (playoff goalie analysis)
     nhl_g = _load(os.path.join(DATA_DIR, "nhl_goalie_matchup.json"))
     for x in (nhl_g.get("top_picks") or []):
