@@ -202,6 +202,38 @@ def _collect_picks_from_sources() -> List[Dict[str, Any]]:
                 "p_predicted": be.get("model_p"),  # for Brier
             })
 
+    # Pitcher walks props strong edges
+    walks = _load(os.path.join(DATA_DIR, "mlb_pitcher_walks_props.json"))
+    for r in (walks.get("strong_edges") or []):
+        bm = r.get("best_market") or {}
+        if bm.get("p"):
+            out.append({
+                "source": f"mlb_walks_{bm.get('market', '').lower()}",
+                "sport": "MLB",
+                "player_or_matchup": r.get("pitcher"),
+                "market": bm.get("market"),
+                "prob": bm.get("p"),
+                "fair_american": bm.get("fair_odds"),
+                "p_predicted": bm.get("p"),
+                "matchup": r.get("matchup"),
+            })
+
+    # Pitcher outs recorded strong edges
+    outs_recs = _load(os.path.join(DATA_DIR, "mlb_pitcher_outs_props.json"))
+    for r in (outs_recs.get("strong_edges") or []):
+        bm = r.get("best_market") or {}
+        if bm.get("p"):
+            out.append({
+                "source": f"mlb_outs_{bm.get('market', '').lower()}",
+                "sport": "MLB",
+                "player_or_matchup": r.get("pitcher"),
+                "market": bm.get("market"),
+                "prob": bm.get("p"),
+                "fair_american": bm.get("fair_odds"),
+                "p_predicted": bm.get("p"),
+                "matchup": r.get("matchup"),
+            })
+
     # HRR (Hits + Runs + RBI) strong 2+ and 3+ edges
     hrr = _load(os.path.join(DATA_DIR, "mlb_hrr_props.json"))
     for r in (hrr.get("strong_edges") or []):
