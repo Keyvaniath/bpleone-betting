@@ -21,23 +21,38 @@
 4. **OAK @ LAA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 5. **LAD @ SDP 4-leg SGP @ -192** (79/100 ★★★★★)
 
+## 🐋 Whale Picks (Max Confluence)
+- [WHALE] **[MLB]** HOU @ MIN ML_HOME -- 71% / +20.4% (score 4.0)
+- [STRONG] **[MLB]** TEX @ COL UNDER_10.0 -- 66% / +25.7% (score 2.5)
+- [STRONG] **[MLB-PP]** Max Muncy PP_batter_hrr_under_4.5 -- 72% / +24.3% (score 2.5)
+- [STRONG] **[MLB-PP]** Willson Contreras PP_batter_runs_under_1.5 -- 72% / +24.3% (score 2.5)
+- [STRONG] **[MLB]** HOU @ MIN MIN_ML -- 71% / +20.4% (score 2.5)
+
+## 📡 Sharp Action (Line Movement)
+- [STRONG] **HOU @ MIN** ml_home: 53.27% → 61.09% (+7.8pp)
+
+## 📉 Strong UNDER Signals
+- [ELITE 6.5] **TEX @ COL** model 8.16 vs market 10.0
+- [STRONG 5.9] **SFG @ ARI** model 7.28 vs market 8.5
+- [STRONG 5.1] **TOR @ NYY** model 7.71 vs market 8.5
+
 ## 🔒 Locks of the Day -- Track Record
 - All-time: 5 locks recorded (0 settled yet)
 
 **Today's 5 Locks:**
-- [MLB] **HOU @ MIN** ML_HOME · p=89% edge=+69.1% qK=0.062u
-- [MLB-PP] **Jo Adell** PP_batter_total_bases_under_3. · p=92% edge=+59.6% qK=0.062u
-- [MLB-PP] **Salvador Perez** PP_batter_hrr_under_3.5 · p=92% edge=+59.6% qK=0.062u
-- [MLB-PP] **Shea Langeliers** PP_batter_hrr_over_0.5 · p=92% edge=+59.6% qK=0.062u
-- [MLB-PP] **Max Muncy** PP_batter_hrr_under_4.5 · p=92% edge=+59.6% qK=0.062u
+- [MLB] **TEX @ COL** UNDER_10.0 · p=66% edge=+25.7% qK=0.062u
+- [MLB-PP] **Jo Adell** PP_batter_total_bases_under_3. · p=72% edge=+24.3% qK=0.062u
+- [MLB-PP] **Salvador Perez** PP_batter_hrr_under_3.5 · p=72% edge=+24.3% qK=0.062u
+- [MLB-PP] **Shea Langeliers** PP_batter_hrr_over_0.5 · p=72% edge=+24.3% qK=0.062u
+- [MLB-PP] **Max Muncy** PP_batter_hrr_under_4.5 · p=72% edge=+24.3% qK=0.062u
 
 ## 🎰 Top Balanced 2-Leg Parlays (40-65% joint)
-- [MLB] HOU @ MIN ML_HOME + [MLB] PIT @ STL OVER_7.5
-  Joint: 62% | Fair: 264 | Edge: +126.5%
-- [MLB] LAD @ SDP ML_AWAY + [MLB] TEX @ COL UNDER_10.0
-  Joint: 62% | Fair: 264 | Edge: +124.1%
-- [MLB-PP] Jo Adell PP_batter_total_base + [MLB] PIT @ STL OVER_7.5
-  Joint: 65% | Fair: 231 | Edge: +113.9%
+- [MLB] TEX @ COL UNDER_10.0 + [MLB-PP] Jo Adell PP_batter_total_base
+  Joint: 47% | Fair: 231 | Edge: +56.3%
+- [MLB] TEX @ COL UNDER_10.0 + [MLB-PP] Salvador Perez PP_batter_hrr_under_
+  Joint: 47% | Fair: 231 | Edge: +56.3%
+- [MLB] TEX @ COL UNDER_10.0 + [MLB-PP] Shea Langeliers PP_batter_hrr_over_0
+  Joint: 47% | Fair: 231 | Edge: +56.3%
 
 ## 🎮 Player Play of the Day (cross-sport)
 - **[LOL]** Inspired UNDER 3.5 Kills | MED conviction · model 61.7% fair -161

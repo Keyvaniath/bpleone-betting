@@ -70,6 +70,38 @@ def run() -> Dict[str, Any]:
             lines.append(f"{b.get('rank',0)}. **{b.get('label','')}** ({b.get('quality_score',0)}/100 {stars})")
         lines.append("")
 
+    # Whale picks (max-confluence signal)
+    whales = _load(os.path.join(DATA_DIR, "whale_picks.json"))
+    top_whales = [w for w in (whales.get("whales") or [])
+                    if w.get("tier") in ("WHALE", "STRONG")][:6]
+    if top_whales:
+        lines.append("## 🐋 Whale Picks (Max Confluence)")
+        for w in top_whales:
+            lines.append(f"- [{w['tier']}] **[{w.get('sport')}]** {w.get('player_or_matchup')} "
+                          f"{w.get('market')} -- {w.get('prob',0)*100:.0f}% / +{w.get('edge_pct',0):.1f}% "
+                          f"(score {w.get('confluence_score',0):.1f})")
+        lines.append("")
+
+    # Sharp action signals
+    sharp = _load(os.path.join(DATA_DIR, "sharp_action_radar.json"))
+    pos = (sharp.get("positive_signals") or [])[:5]
+    if pos:
+        lines.append("## 📡 Sharp Action (Line Movement)")
+        for s in pos:
+            lines.append(f"- [{s.get('intensity')}] **{s.get('matchup')}** {s.get('market')}: "
+                          f"{s.get('opening_implied_pct')}% → {s.get('latest_implied_pct')}% (+{s.get('shift_pp',0):.1f}pp)")
+        lines.append("")
+
+    # Strong unders
+    unders = _load(os.path.join(DATA_DIR, "mlb_unders_alerts.json"))
+    strong_u = (unders.get("strong_unders") or [])[:5]
+    if strong_u:
+        lines.append("## 📉 Strong UNDER Signals")
+        for u in strong_u:
+            lines.append(f"- [{u.get('tier')} {u.get('under_signal_score',0):.1f}] **{u.get('matchup')}** "
+                          f"model {u.get('model_fair_total')} vs market {u.get('market_total')}")
+        lines.append("")
+
     # Locks of the Day -- Brandon's track record + today's locks
     locks = _load(os.path.join(DATA_DIR, "locks_history.json"))
     if locks:
