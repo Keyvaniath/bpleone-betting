@@ -8,8 +8,11 @@ name: Live In-Progress Games Poll
 
 on:
   schedule:
-    - cron: '*/10 16-23 * * *'   # every 10 min 12 PM - 7 PM ET window
-    - cron: '*/10 0-6 * * *'     # every 10 min 8 PM - 2 AM ET window
+    # AGGRESSIVE live polling -- every 5 min during games, every 15 min off-peak.
+    # Goal: dashboard never more than a few minutes stale.
+    - cron: '*/5 16-23 * * *'   # every 5 min 12 PM - 7 PM ET (in-game window)
+    - cron: '*/5 0-6 * * *'     # every 5 min 8 PM - 2 AM ET (in-game window)
+    - cron: '*/15 7-15 * * *'   # every 15 min 3 AM - 11 AM ET (morning refresh)
   workflow_dispatch:
 
 permissions:

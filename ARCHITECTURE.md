@@ -48,24 +48,37 @@ Cost: **$0** (everything is free tier). No infrastructure to maintain.
 
 ---
 
-## GitHub Actions workflows (already running)
+## GitHub Actions workflows (always running, no manual intervention)
+
+### `continuous-heartbeat.yml` ★ ALWAYS-ON ★
+- **Schedule**: every 5 minutes, 24/7 (`*/5 * * * *`)
+- **What it does**: the always-on learning pulse. Settles picks, recomputes shrinkage weights, detects RLM (sharp moves), tracks live lock status, fires Discord alerts, runs freshness watchdog, recomputes calibration + model health. Takes ~3 min.
+- **Why it exists**: even when no games are live, the self-learning loop keeps cycling so the model is always sharpening.
+
+### `live-games.yml`
+- **Schedule**: every 5 min during game hours (16:00-06:00 UTC), every 15 min off-peak
+- **What it does**: polls MLB gumbo for live game state, refreshes ESPN states across 10+ sports, updates locks/whales/sharp action, fires Discord alerts. Takes ~50 sec.
+
+### `training-loop.yml`
+- **Schedule**: every 5 min during game hours, every 15 min off-peak
+- **What it does**: settles yesterday's outcomes, recomputes calibration shifts, updates `learned_weights.json` (the self-learning feedback loop). Takes ~55 sec.
 
 ### `daily-pipeline.yml`
 - **Schedule**: 10:00, 17:00, 22:00 UTC (3x daily)
-- **Auto-retrigger**: if no successful run in >6h, watchdog fires it
-- **What it does**: 200+ steps — fetches data, builds the slate model, runs every deep-analysis module, writes ~80 JSON artifacts. Takes ~15 min.
+- **What it does**: 200+ steps — fetches data, builds the slate model, runs every deep-analysis module, writes ~90 JSON artifacts. Takes ~15 min.
 
-### `live-games.yml`
-- **Schedule**: every 10 minutes during game hours (`*/10 16-23 * * *` + `*/10 0-6 * * *`)
-- **What it does**: polls MLB gumbo for live game state, refreshes ESPN states, updates locks/whales/sharp action, fires Discord alerts. Takes ~50 sec.
-
-### `training-loop.yml`
-- **Schedule**: every 20 min during game hours, hourly off-peak
-- **What it does**: settles yesterday's outcomes, recomputes calibration shifts, updates `learned_weights.json` (the self-learning feedback loop). Takes ~55 sec.
-
-### `pipeline-auto-retrigger.yml` (NEW — watchdog)
+### `pipeline-auto-retrigger.yml` (watchdog)
 - **Schedule**: every 30 min
-- **What it does**: checks last successful `daily-pipeline` run. If >6h stale, fires `workflow_dispatch` automatically. Prevents the kind of 13-hour silent outage that hit on 2026-05-20.
+- **What it does**: checks last successful `daily-pipeline` run. If >6h stale, fires `workflow_dispatch` automatically. Prevents 13-hour silent outages.
+
+### Total update rate (without Cloudflare Worker)
+- **Self-learning weights**: refreshed up to **every 5 minutes**
+- **Sharp money / RLM detection**: every 5 minutes
+- **Live game state**: every 5 minutes during games
+- **Pick settlement**: every 5 minutes
+- **Full ML pipeline**: every 5-8 hours
+
+For sub-minute updates, deploy the optional Cloudflare Worker (see below).
 
 ---
 

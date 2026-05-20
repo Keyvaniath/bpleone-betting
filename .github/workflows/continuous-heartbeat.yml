@@ -1,0 +1,119 @@
+name: Continuous Heartbeat (5-min self-learning + odds refresh)
+
+# Lightweight workflow that runs every 5 minutes ALL DAY, every day.
+# Does ONLY the cheap, high-value cycles:
+#   - all_picks_tracker.py: settle anything fresh, log new picks
+#   - self_learn_weights.py: recompute calibration weights
+#   - reverse_line_movement.py: detect sharp money moves
+#   - pipeline_watchdog.py: alarm on stale files
+#   - live_alerter.py: push Discord on lock transitions
+#
+# Why this exists:
+#   live-games.yml is heavy (~50s, 40+ steps) and only runs during games.
+#   This is the *always-on* heartbeat that keeps self-learning ticking 24/7,
+#   even when no games are live.
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'  # every 5 minutes, every hour, every day
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+# Cancel earlier-running heartbeats so they never pile up
+concurrency:
+  group: continuous-heartbeat
+  cancel-in-progress: true
+
+jobs:
+  heartbeat:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install deps
+        run: pip install -r python/requirements.txt
+
+      # Self-learning -- update every 5 min, all day
+      - name: All-picks unified ledger (settle + log)
+        working-directory: python
+        run: python all_picks_tracker.py
+
+      - name: Self-learn shrinkage weights
+        working-directory: python
+        run: python self_learn_weights.py
+
+      # Sharp-money detection -- detect line moves continuously
+      - name: Reverse Line Movement detector
+        working-directory: python
+        run: python reverse_line_movement.py || true
+
+      # POD P&L (idempotent)
+      - name: POD P&L tracker
+        working-directory: python
+        run: python pod_pl_tracker.py
+
+      # Lock status -- live game progress
+      - name: Live locks status tracker
+        working-directory: python
+        run: python live_locks_status.py || true
+
+      # Watchdog freshness alarm
+      - name: Pipeline freshness watchdog
+        working-directory: python
+        run: python pipeline_watchdog.py
+
+      # Discord push on lock transitions + sharp steam
+      - name: Live alerter (Discord push)
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        working-directory: python
+        run: python live_alerter.py || true
+
+      # Calibration status snapshot
+      - name: Calibration status snapshot
+        working-directory: python
+        run: python calibration_status.py || true
+
+      # Model health score
+      - name: Model health score (always-on)
+        working-directory: python
+        run: python model_health.py || true
+
+      - name: Commit if changed
+        env:
+          GIT_EDITOR: "true"
+          GIT_SEQUENCE_EDITOR: "true"
+        run: |
+          git config user.name  "edgestat-bot"
+          git config user.email "actions@github.com"
+          git add -A data/
+          if git diff --cached --quiet; then
+            echo "Heartbeat: no state changes."
+          else
+            git commit -m "heartbeat: $(date -u +%FT%TZ) (self-learn + RLM + watchdog)"
+            for i in 1 2 3; do
+              git fetch origin main
+              if git merge-base --is-ancestor origin/main HEAD; then
+                git push && { echo "pushed cleanly"; exit 0; }
+                sleep 3; continue
+              fi
+              if git rebase origin/main; then
+                git push && { echo "pushed after rebase"; exit 0; }
+              else
+                git checkout --ours . 2>/dev/null || true
+                git add -A
+                GIT_EDITOR=true git rebase --continue || git rebase --abort
+                git push && { echo "pushed after conflict resolution"; exit 0; }
+              fi
+              sleep 5
+            done
+            echo "push failed after 3 retries"
+          fi
