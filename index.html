@@ -213,6 +213,17 @@
     </div>
   </section>
 
+  <!-- WHALE picks tile -->
+  <section class="card" id="whaleCard" style="margin-bottom: 28px; border-left: 4px solid #d4a04a;">
+    <div class="card-head">
+      <span>🐋 <strong>WHALE Picks — Max Confluence Tonight</strong></span>
+      <span class="muted"><a href="tonight.html" style="color:var(--text-2,#aaa);">Full consolidated view →</a></span>
+    </div>
+    <div style="padding: 14px 18px;" id="whaleHomeBox">
+      <p class="muted">Loading whale picks…</p>
+    </div>
+  </section>
+
   <!-- Locks of the Day track record -->
   <section class="card" id="locksCard" style="margin-bottom: 28px; border-left: 3px solid #58c878;">
     <div class="card-head">
@@ -994,6 +1005,43 @@ Promise.all([
   .catch(err => {
     const box = document.getElementById("locksHomeBox");
     if (box) box.innerHTML = '<p class="muted">Locks history not yet available.</p>';
+  });
+
+// WHALE picks summary on homepage
+fetch("data/whale_picks.json?t=" + Date.now(), { cache: "no-cache" })
+  .then(r => r.json())
+  .then(d => {
+    const box = document.getElementById("whaleHomeBox");
+    if (!box) return;
+    const whales = (d.whales || []).filter(w => w.tier === 'WHALE' || w.tier === 'STRONG').slice(0, 6);
+    if (whales.length === 0) {
+      box.innerHTML = '<p class="muted">No whale-tier picks tonight (needs board + consensus + sharp signal confluence).</p>';
+      return;
+    }
+    box.innerHTML = `<table style="width:100%; border-collapse:collapse; font-family:'JetBrains Mono',monospace; font-size:12px;">
+      <tr style="color:var(--muted,#888); font-size:10px; text-transform:uppercase;">
+        <td style="padding:4px 8px;">Tier</td>
+        <td style="padding:4px 8px;">Sport</td>
+        <td style="padding:4px 8px;">Pick</td>
+        <td style="padding:4px 8px;">Market</td>
+        <td style="padding:4px 8px;">Prob</td>
+        <td style="padding:4px 8px;">Edge</td>
+        <td style="padding:4px 8px;">Score</td>
+      </tr>
+      ${whales.map(w => `<tr style="border-top:1px solid rgba(255,255,255,0.04);">
+        <td style="padding:6px 8px;"><span style="font-size:9px;font-weight:700;padding:2px 6px;border-radius:3px;background:${w.tier === 'WHALE' ? 'rgba(212,160,74,0.2);color:#d4a04a' : 'rgba(88,200,120,0.2);color:#58c878'};">${w.tier}</span></td>
+        <td style="padding:6px 8px;">${w.sport}</td>
+        <td style="padding:6px 8px;"><strong>${w.player_or_matchup}</strong></td>
+        <td style="padding:6px 8px; color:var(--text-2,#aaa); font-size:11px;">${w.market}</td>
+        <td style="padding:6px 8px; font-weight:700;">${(w.prob*100).toFixed(0)}%</td>
+        <td style="padding:6px 8px; color:#58c878;">+${w.edge_pct.toFixed(1)}%</td>
+        <td style="padding:6px 8px; color:var(--accent,#d4a04a);">${w.confluence_score.toFixed(1)}</td>
+      </tr>`).join('')}
+    </table>`;
+  })
+  .catch(() => {
+    const box = document.getElementById("whaleHomeBox");
+    if (box) box.innerHTML = '<p class="muted">Whale picks not yet available.</p>';
   });
 
 // Model Calibration Status -- explains how raw model probs become displayed
