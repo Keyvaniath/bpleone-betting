@@ -202,6 +202,22 @@ def _collect_picks_from_sources() -> List[Dict[str, Any]]:
                 "p_predicted": be.get("model_p"),  # for Brier
             })
 
+    # NBA player points strong edges
+    nba_pts = _load(os.path.join(DATA_DIR, "nba_player_points_props.json"))
+    for r in (nba_pts.get("strong_edges") or []):
+        bm = r.get("best_market") or {}
+        if bm.get("p"):
+            out.append({
+                "source": f"nba_pts_{bm.get('market', '').lower()}",
+                "sport": "NBA",
+                "player_or_matchup": r.get("player"),
+                "market": bm.get("market"),
+                "prob": bm.get("p"),
+                "fair_american": bm.get("fair_odds"),
+                "p_predicted": bm.get("p"),
+                "matchup": r.get("matchup"),
+            })
+
     # Pitcher walks props strong edges
     walks = _load(os.path.join(DATA_DIR, "mlb_pitcher_walks_props.json"))
     for r in (walks.get("strong_edges") or []):
