@@ -213,25 +213,36 @@
     </div>
   </section>
 
-  <!-- WHALE picks tile -->
-  <section class="card" id="whaleCard" style="margin-bottom: 28px; border-left: 4px solid #d4a04a;">
+  <!-- PLAY OF THE DAY — primary P&L benchmark -->
+  <section class="card" id="podPLCard" style="margin-bottom: 28px; border-left: 4px solid #d4a04a;">
     <div class="card-head">
-      <span>🐋 <strong>WHALE Picks — Max Confluence Tonight</strong></span>
-      <span class="muted"><a href="tonight.html" style="color:var(--text-2,#aaa);">Full consolidated view →</a></span>
+      <span>⭐ <strong>Play of the Day — P&L Record</strong></span>
+      <span class="muted"><a href="track-record.html" style="color:var(--text-2,#aaa);">Full track record →</a></span>
     </div>
-    <div style="padding: 14px 18px;" id="whaleHomeBox">
-      <p class="muted">Loading whale picks…</p>
+    <div style="padding: 14px 18px;" id="podPLBox">
+      <p class="muted">Loading POD record…</p>
     </div>
   </section>
 
-  <!-- Locks of the Day track record -->
-  <section class="card" id="locksCard" style="margin-bottom: 28px; border-left: 3px solid #58c878;">
-    <div class="card-head">
-      <span>🔒 <strong>Locks of the Day — All-Time Track Record</strong></span>
-      <span class="muted"><a href="locks-of-day.html" style="color:var(--text-2,#aaa);">View full history →</a></span>
+  <!-- Side widgets (whales / locks / other) -- secondary -->
+  <section style="margin-bottom: 28px; display:grid; grid-template-columns: 1fr 1fr; gap: 18px;">
+    <div class="card" id="whaleCard" style="border-left: 2px solid rgba(212,160,74,0.4);">
+      <div class="card-head">
+        <span><strong style="font-size:13px;">🐋 Side: WHALE Picks</strong></span>
+        <span class="muted" style="font-size:10px;"><a href="tonight.html" style="color:var(--text-2,#aaa);">Tonight →</a></span>
+      </div>
+      <div style="padding: 10px 14px; max-height: 240px; overflow-y: auto;" id="whaleHomeBox">
+        <p class="muted" style="font-size:11px;">Loading…</p>
+      </div>
     </div>
-    <div style="padding: 14px 18px;" id="locksHomeBox">
-      <p class="muted">Loading lock record…</p>
+    <div class="card" id="locksCard" style="border-left: 2px solid rgba(88,200,120,0.4);">
+      <div class="card-head">
+        <span><strong style="font-size:13px;">🔒 Side: Top 5 Locks</strong></span>
+        <span class="muted" style="font-size:10px;"><a href="locks-of-day.html" style="color:var(--text-2,#aaa);">All →</a></span>
+      </div>
+      <div style="padding: 10px 14px; max-height: 240px; overflow-y: auto;" id="locksHomeBox">
+        <p class="muted" style="font-size:11px;">Loading…</p>
+      </div>
     </div>
   </section>
 
@@ -719,40 +730,45 @@ fetch("data/clv_log.json", { cache: "no-cache" })
   })
   .catch(() => { const el = document.getElementById("mSharp"); if (el) el.textContent = "--"; });
 
-// Hero stats: pull from Locks of the Day (real curated picks with permanent IDs)
-// NOT from track_record.json which contains 118k+ backfilled SYNTHETIC outcomes.
-// This is Brandon's actual track record on the picks the model surfaced as
-// "Top 5 Locks" each day -- the honest number, even if small / pending.
+// Hero stats: PLAY OF THE DAY P&L ONLY (Brandon's primary accuracy metric).
+// 1 pick per day, flat 1u stake, game-level markets only. No 5-lock aggregation,
+// no PrizePicks variance, no synthetic backfill -- the single benchmark.
 (function loadHeroStats() {
   const setText = (id, v) => { const el = document.getElementById(id); if (el) el.firstChild.textContent = v; };
-  fetch("data/locks_history.json", { cache: "no-cache" })
+  fetch("data/pod_pl.json", { cache: "no-cache" })
     .then(r => r.json())
     .then(d => {
       const wins = d.wins || 0;
       const losses = d.losses || 0;
-      const settled = wins + losses;
+      const settled = d.n_settled || 0;
       const net = d.net_units;
       const roi = d.roi_pct;
       const hr = d.hit_rate;
-      const total = d.total_locks || 0;
+      const total = d.total_pods || 0;
 
-      setText("hsNetUnits", net == null ? "--" : (net >= 0 ? "+" : "") + net.toFixed(2));
+      setText("hsNetUnits", net == null || settled === 0 ? "--" : (net >= 0 ? "+" : "") + net.toFixed(2));
       setText("hsHitRate", hr == null ? "--" : (hr * 100).toFixed(1));
       setText("hsROI", roi == null ? "--" : (roi >= 0 ? "+" : "") + roi.toFixed(1));
       setText("hsClosed", String(settled));
 
-      // Update the "closed plays" label to be more honest about pending vs settled
+      // Update the YTD Net Units label to be Play of the Day specific
+      const labels = document.querySelectorAll(".hero-stats .stat-label");
+      if (labels[0]) labels[0].textContent = "POD Net Units (1u flat)";
+      if (labels[1]) labels[1].textContent = "POD Hit Rate";
+      if (labels[2]) labels[2].textContent = "POD ROI %";
+      if (labels[3]) labels[3].textContent = "PODs Settled";
+
       const stats = document.querySelector(".hero-stats");
-      if (stats && !document.getElementById("locksProgress")) {
+      if (stats && !document.getElementById("podProgress")) {
         const note = document.createElement("div");
-        note.id = "locksProgress";
+        note.id = "podProgress";
         note.style.cssText = "grid-column: 1 / -1; font-family:'JetBrains Mono',monospace; font-size:11px; color:#d4a04a; padding:8px 0 0; opacity:0.9;";
         if (settled === 0 && total > 0) {
-          note.innerHTML = `* <strong>Track record building:</strong> ${total} locks recorded, ${d.n_pending || 0} pending settlement. First results land tomorrow as games settle. Honest numbers only — no backfilled / synthetic stats inflate the hero metrics. <a href="locks-of-day.html" style="color:#d4a04a; text-decoration: underline;">view all locks &rarr;</a>`;
-        } else if (settled > 0 && settled < 20) {
-          note.innerHTML = `* Track record building: <strong>${settled} settled</strong> of ${total} locks. Small sample -- variance is high until n>=30. <a href="locks-of-day.html" style="color:#d4a04a; text-decoration: underline;">see all locks &rarr;</a>`;
+          note.innerHTML = `* <strong>Play of the Day track record:</strong> ${total} PODs recorded, ${d.n_pending || 0} pending settlement. 1u flat stake assumed. Real games only (ML / totals) -- no PrizePicks variance, no 5-lock aggregation, no synthetic backfill. <a href="pod-history.html" style="color:#d4a04a; text-decoration: underline;">full POD history &rarr;</a>`;
+        } else if (settled > 0 && settled < 30) {
+          note.innerHTML = `* POD track record: <strong>${wins}-${losses}</strong> in ${settled} settled (last 30d: ${(d.last_30_days||{}).wins||0}-${(d.last_30_days||{}).losses||0}). Small sample -- variance is high until n>=30. <a href="pod-history.html" style="color:#d4a04a; text-decoration: underline;">see all PODs &rarr;</a>`;
         } else if (settled === 0) {
-          note.innerHTML = `* No locks settled yet -- building track record. <a href="locks-of-day.html" style="color:#d4a04a; text-decoration: underline;">see today's picks &rarr;</a>`;
+          note.innerHTML = `* No POD settled yet -- first record lands tomorrow.`;
         }
         if (note.innerHTML) stats.appendChild(note);
       }
@@ -1007,7 +1023,58 @@ Promise.all([
     if (box) box.innerHTML = '<p class="muted">Locks history not yet available.</p>';
   });
 
-// WHALE picks summary on homepage
+// PLAY OF THE DAY P&L tile (PRIMARY)
+fetch("data/pod_pl.json?t=" + Date.now(), { cache: "no-cache" })
+  .then(r => r.json())
+  .then(d => {
+    const box = document.getElementById("podPLBox");
+    if (!box) return;
+    const fmtUnits = u => u == null ? '—' : (u > 0 ? '<span style="color:#58c878;font-weight:700;">+'+u.toFixed(2)+'u</span>' : u < 0 ? '<span style="color:#e35a5a;font-weight:700;">'+u.toFixed(2)+'u</span>' : '0u');
+    const fmtPct = p => p == null ? '—' : (p*100).toFixed(1) + '%';
+    const fmtRoi = r => r == null ? '—' : (r >= 0 ? '<span style="color:#58c878;font-weight:700;">+'+r.toFixed(1)+'%</span>' : '<span style="color:#e35a5a;font-weight:700;">'+r.toFixed(1)+'%</span>');
+    const t = d.todays_pod;
+    const l30 = d.last_30_days || {};
+    const todayRow = t ? `
+      <div style="padding:12px 14px; border-radius:8px; background:rgba(212,160,74,0.06); border:1px solid rgba(212,160,74,0.2); margin-bottom:14px;">
+        <div style="font-size:10px; color:#d4a04a; text-transform:uppercase; font-weight:700;">Today's POD (Pending)</div>
+        <div style="margin-top:6px;"><strong style="font-size:16px;">${t.matchup}</strong> · <strong style="color:#d4a04a;">${t.label}</strong> @ ${t.market_price > 0 ? '+' : ''}${t.market_price}</div>
+        <div style="margin-top:4px; font-size:11px; color:var(--text-2,#aaa);">Model: ${(t.model_prob*100).toFixed(1)}% · Recorded ${(t.recorded_at||'').slice(0,16).replace('T',' ')}</div>
+      </div>` : '<p class="muted">No POD recorded yet today.</p>';
+    box.innerHTML = `
+      ${todayRow}
+      <div style="display:grid; grid-template-columns: repeat(5, 1fr); gap:10px;">
+        <div style="text-align:center;">
+          <div style="font-size:9px; color:var(--muted,#888); text-transform:uppercase;">All-Time</div>
+          <div style="font-size:16px; font-weight:700;">${d.wins||0}-${d.losses||0}${(d.pushes||0) > 0 ? '-' + d.pushes : ''}</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="font-size:9px; color:var(--muted,#888); text-transform:uppercase;">Hit Rate</div>
+          <div style="font-size:16px; font-weight:700;">${fmtPct(d.hit_rate)}</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="font-size:9px; color:var(--muted,#888); text-transform:uppercase;">Net (1u flat)</div>
+          <div style="font-size:16px;">${d.n_settled === 0 ? '—' : fmtUnits(d.net_units)}</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="font-size:9px; color:var(--muted,#888); text-transform:uppercase;">ROI</div>
+          <div style="font-size:16px;">${d.n_settled === 0 ? '—' : fmtRoi(d.roi_pct)}</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="font-size:9px; color:var(--muted,#888); text-transform:uppercase;">Last 30d</div>
+          <div style="font-size:16px; font-weight:700;">${l30.wins||0}-${l30.losses||0}</div>
+        </div>
+      </div>
+      <div style="margin-top:12px; font-size:11px; color:var(--muted,#888); text-align:center; font-style:italic;">
+        ${d.n_settled === 0 ? '⏳ No POD has settled yet — first results land tomorrow morning after games complete.' : `1u flat stake · ${d.n_pending || 0} pending settlement`}
+      </div>
+    `;
+  })
+  .catch(() => {
+    const box = document.getElementById("podPLBox");
+    if (box) box.innerHTML = '<p class="muted">POD P&L not yet available.</p>';
+  });
+
+// WHALE picks summary on homepage (SIDE widget -- secondary)
 fetch("data/whale_picks.json?t=" + Date.now(), { cache: "no-cache" })
   .then(r => r.json())
   .then(d => {

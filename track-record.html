@@ -186,30 +186,29 @@
 <script src="js/charts.js"></script>
 <script src="js/main.js"></script>
 <script>
-// Real settled records overlay
-fetch("data/track_record.json", { cache: "no-cache" })
+// Real settled records overlay -- POD ONLY (Brandon's accuracy benchmark)
+// Previously read track_record.json which contained 118k+ backfilled
+// SYNTHETIC outcomes inflating Net Units into the thousands. Now reads
+// pod_pl.json -- one pick per day, flat 1u stake, real games only.
+fetch("data/pod_pl.json", { cache: "no-cache" })
   .then(r => r.json())
-  .then(tr => {
+  .then(pl => {
     const head = document.querySelector("main.container .page-head");
     if (!head) return;
-    const props = tr.props || [];
-    const games = tr.games || [];
-    const graded = props.filter(p => p.play_hit !== null && p.play_hit !== undefined);
-    const wins = graded.filter(p => p.play_hit === true).length;
-    const losses = graded.filter(p => p.play_hit === false).length;
+    const graded = (pl.history || []).filter(p => p.settled);
+    const wins = pl.wins || 0;
+    const losses = pl.losses || 0;
 
-    // Compute real metric strip from settled plays.
-    const payoutUnits = price => price >= 0 ? price / 100 : 100 / Math.abs(price);
+    // Drawdown sweep
     let net = 0, running = 0, dd = 0;
     for (const p of graded) {
-      const price = p.play === "OVER" ? p.dk_over : p.play === "UNDER" ? p.dk_under : -110;
-      const delta = p.play_hit === true ? payoutUnits(price ?? -110) : -1;
+      const delta = p.payout_units || 0;
       net += delta;
       running += delta;
       if (running < dd) dd = running;
     }
-    const hitPct = graded.length ? (wins / graded.length) * 100 : null;
-    const roi = graded.length ? (net / graded.length) * 100 : null;
+    const hitPct = pl.hit_rate != null ? pl.hit_rate * 100 : null;
+    const roi = pl.roi_pct;
     const fmtSigned = (v, d = 1, suf = "") => v == null ? "--" : (v >= 0 ? "+" : "") + v.toFixed(d) + suf;
     const setText = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
     setText("trkNet",   graded.length ? fmtSigned(net,    1, "u") : "--");
@@ -231,27 +230,23 @@ fetch("data/track_record.json", { cache: "no-cache" })
     note.style.fontSize = "12px";
     note.style.marginTop = "8px";
     if (graded.length === 0) {
-      note.innerHTML = `<strong>Real track record:</strong> no settled plays yet -- the outcomes ingestion job runs every morning at 6 AM ET and will populate this page once the first night's games complete.`;
+      note.innerHTML = `<strong>Play of the Day track record:</strong> no settled PODs yet. Once last night's games settle, the metrics populate. 1u flat stake assumed -- no inflated Kelly, no PrizePicks variance.`;
     } else if (graded.length < 30) {
-      note.innerHTML = `<strong>Real track record (model in calibration):</strong> ${graded.length}/30 graded plays, ${wins} wins / ${losses} losses (${hitPct.toFixed(1)}% hit). Last settled ${tr.last_settled_date || "?"}. Best 5 / Worst 5 / P&L panels below are demo seeds until enough real outcomes accumulate -- ignore those for now and look at the Live Settled Plays section.`;
+      note.innerHTML = `<strong>POD track record (small sample):</strong> ${graded.length}/30 settled PODs, ${wins}-${losses} (${hitPct.toFixed(1)}% hit). Need n>=30 before trusting the W/L rate. 1u flat stake.`;
     } else {
-      note.innerHTML = `<strong>Real track record:</strong> ${graded.length} graded plays, ${wins} wins / ${losses} losses (${hitPct.toFixed(1)}% hit rate). Last settled date ${tr.last_settled_date || "?"}.`;
+      note.innerHTML = `<strong>POD track record:</strong> ${graded.length} settled PODs, ${wins}-${losses} (${hitPct.toFixed(1)}% hit rate, ${roi != null ? (roi >= 0 ? '+' : '') + roi.toFixed(1) + '% ROI' : ''}). 1u flat stake per pick.`;
     }
     head.appendChild(note);
 
     // Best / Worst 5 plays -- live from settled records
     if (graded.length > 0) {
-      const withPL = graded.map(p => {
-        const price = p.play === "OVER" ? p.dk_over : p.play === "UNDER" ? p.dk_under : -110;
-        const pl = p.play_hit === true ? payoutUnits(price ?? -110) : -1;
-        return { ...p, _pl: pl, _price: price ?? -110 };
-      });
+      const withPL = graded.map(p => ({ ...p, _pl: p.payout_units || 0, _price: p.market_price }));
       const bestRows = withPL.slice().sort((a, b) => b._pl - a._pl).slice(0, 5);
       const worstRows = withPL.slice().sort((a, b) => a._pl - b._pl).slice(0, 5);
       const renderRow = (p) => {
         const pl = p._pl;
         const cls = pl >= 0 ? "positive" : "negative";
-        const label = `${p.player || ""} ${p.play || ""} ${(p.market || "").replace(/_/g, " ")} ${p.line ?? ""}`.trim();
+        const label = `${p.matchup || ""} ${p.label || ""}`.trim();
         return `<tr>
           <td>${p.date || ""}</td>
           <td class="matchup">${label}</td>
@@ -262,10 +257,10 @@ fetch("data/track_record.json", { cache: "no-cache" })
       };
       document.getElementById("bestPlaysBody").innerHTML = bestRows.map(renderRow).join("");
       document.getElementById("worstPlaysBody").innerHTML = worstRows.map(renderRow).join("");
-      document.getElementById("bestPlaysMeta").textContent = `top 5 of ${graded.length}`;
-      document.getElementById("worstPlaysMeta").textContent = `bot 5 of ${graded.length}`;
+      document.getElementById("bestPlaysMeta").textContent = `top ${Math.min(5,graded.length)} of ${graded.length}`;
+      document.getElementById("worstPlaysMeta").textContent = `bot ${Math.min(5,graded.length)} of ${graded.length}`;
 
-      // Cumulative P&L chart (last 30 plays)
+      // Cumulative P&L chart (last 30 PODs)
       const chart = document.getElementById("plChart");
       if (chart && window.Chart) {
         const last30 = withPL.slice(-30);
