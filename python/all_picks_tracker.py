@@ -187,6 +187,63 @@ def _collect_picks_from_sources() -> List[Dict[str, Any]]:
             "fair_american": t.get("market_price"),
         })
 
+    # F5 (First 5 innings) strong edges
+    f5 = _load(os.path.join(DATA_DIR, "mlb_first5_market.json"))
+    for r in (f5.get("strong_edges") or []):
+        be = r.get("best_edge") or {}
+        if be.get("model_p"):
+            out.append({
+                "source": "mlb_f5",
+                "sport": "MLB",
+                "player_or_matchup": r.get("matchup"),
+                "market": (be.get("market") or "").lower(),
+                "prob": be.get("model_p"),
+                "fair_american": be.get("fair_odds"),
+                "p_predicted": be.get("model_p"),  # for Brier
+            })
+
+    # Total Bases strong 2+ TB edges
+    tb = _load(os.path.join(DATA_DIR, "mlb_total_bases_props.json"))
+    for r in (tb.get("strong_2plus_edges") or []):
+        out.append({
+            "source": "mlb_total_bases_2plus",
+            "sport": "MLB",
+            "player_or_matchup": r.get("batter"),
+            "market": "2_plus_total_bases",
+            "prob": r.get("p_2_plus"),
+            "fair_american": r.get("fair_odds_2_plus"),
+            "p_predicted": r.get("p_2_plus"),
+            "matchup": r.get("matchup"),
+        })
+
+    # Steal props strong edges
+    sp = _load(os.path.join(DATA_DIR, "mlb_steal_props.json"))
+    for r in (sp.get("strong_edges") or []):
+        out.append({
+            "source": "mlb_steal_1plus",
+            "sport": "MLB",
+            "player_or_matchup": r.get("runner"),
+            "market": "1_plus_steal",
+            "prob": r.get("p_sb_1_plus"),
+            "fair_american": r.get("fair_odds_1_plus_yes"),
+            "p_predicted": r.get("p_sb_1_plus"),
+            "matchup": r.get("matchup"),
+        })
+
+    # Reverse Line Movement (strong = book moved >=6pp against public favorite)
+    rlm = _load(os.path.join(DATA_DIR, "reverse_line_movement.json"))
+    for r in (rlm.get("strong_only") or []):
+        out.append({
+            "source": "rlm_strong",
+            "sport": "MLB",
+            "player_or_matchup": r.get("matchup"),
+            "market": r.get("pick"),  # "HOME ML" or "AWAY ML"
+            "prob": None,  # not a prob-based signal, sharp money following
+            "fair_american": r.get("current_odds"),
+            "rlm_strength": r.get("rlm_strength"),
+            "line_delta_pp": r.get("line_delta_pp"),
+        })
+
     # Stamp all picks with date + ID
     for p in out:
         p["date"] = date_str

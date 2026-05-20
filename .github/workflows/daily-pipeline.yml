@@ -535,6 +535,15 @@ jobs:
       - name: MLB Total Bases props (1+/2+/3+ TB Poisson projections)
         working-directory: python
         run: python mlb_total_bases_props.py || true
+      - name: MLB First-5-Innings market (F5 ML + F5 totals, sharp-favored)
+        working-directory: python
+        run: python mlb_first5_market.py || true
+      - name: MLB Stolen Base props (delivery x pop time x runner speed)
+        working-directory: python
+        run: python mlb_steal_props.py || true
+      - name: NBA pace-adjusted total projections
+        working-directory: python
+        run: python nba_pace_adjusted.py || true
       - name: "Whale picks (max-confluence: top board + consensus + sharp action)"
         working-directory: python
         run: python whale_picks.py

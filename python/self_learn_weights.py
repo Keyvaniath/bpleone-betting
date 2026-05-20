@@ -56,6 +56,18 @@ PRIOR_WEIGHTS = {
     "mlb_under_alert": 0.65,
     "sharp_strong": 0.70, "sharp_elite": 0.80,
     "top_25_board": 0.55,
+    # New (May 2026)
+    "mlb_f5": 0.70,                  # F5 sharp market, high signal
+    "mlb_total_bases_2plus": 0.60,
+    "mlb_steal_1plus": 0.55,
+    "rlm_strong": 0.65,              # reverse line movement = sharp money
+    "mlb_pitcher_deep_matchup": 0.65,
+    "mlb_catcher_framing": 0.55,
+    "mlb_batter_advanced_splits": 0.60,
+    "golf_live_tracker": 0.55,
+    "nhl_goalie_pull_leverage": 0.65,
+    "f1_track_specific": 0.55,
+    "nba_pace_adjusted": 0.55,
 }
 SHRINKAGE_PRIOR_N = 30   # need 30 settled to fully trust observed hit rate
 
