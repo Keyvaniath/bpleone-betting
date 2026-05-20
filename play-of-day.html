@@ -68,9 +68,9 @@
   </section>
 
   <section class="card" style="margin-bottom:28px;">
-    <div class="card-head"><span>📊 Factor Decomposition</span><span class="muted" id="factorMeta">illustrative</span></div>
+    <div class="card-head"><span>📊 Factor Decomposition</span><span class="muted" id="factorMeta">--</span></div>
     <div id="factorBars" style="margin-top: 12px;"></div>
-    <p class="caption" style="color:#d4a04a;">⚠️ <strong>Illustrative magnitudes.</strong> The labels (starting pitchers, umpire) are overlaid with TONIGHT's actual matchup data, but the numeric contributions (+0.041, etc.) are seed values showing the SHAPE of a factor breakdown — not actual model output for this game. A real per-game factor decomposition module is in development.</p>
+    <p class="caption" id="factorCaption">Each row is the marginal expected-runs contribution to the model's fair total. Positive = favors OVER, negative = favors UNDER. Sum across factors = model edge vs league baseline.</p>
   </section>
 
   <section class="grid-2">
@@ -168,6 +168,43 @@ let matchupsData = null;
 fetch("data/matchups.json", { cache: "no-cache" })
   .then(r => r.json())
   .then(m => { matchupsData = m; renderArsenalForPod(); })
+  .catch(() => {});
+
+// REAL factor decomposition -- replaces the seed mock data entirely.
+// pod_factor_decomp.json is computed per game from matchups + today, not
+// hardcoded "Yamamoto vs Darvish".
+fetch("data/pod_factor_decomp.json", { cache: "no-cache" })
+  .then(r => r.json())
+  .then(d => {
+    const host = document.getElementById("factorBars");
+    if (!host) return;
+    const factors = d.factors || [];
+    if (factors.length === 0) {
+      host.innerHTML = '<p class="muted" style="padding:14px;">No factor data available (POD or matchups data missing).</p>';
+      return;
+    }
+    const max = Math.max(...factors.map(f => Math.abs(f.contribution || 0)));
+    host.innerHTML = factors.map(f => {
+      const v = f.contribution || 0;
+      const pct = max > 0 ? Math.min(100, Math.abs(v)/max*100) : 0;
+      const cls = v >= 0 ? 'pos' : 'neg';
+      const sign = v >= 0 ? '+' : '';
+      return `<div class="bar-row" title="${f.detail || ''}">
+        <span class="bar-label">${f.name}</span>
+        <span class="bar-track"><span class="bar-fill ${cls}" style="width:${pct}%; background:${v>=0?'linear-gradient(90deg,#4ade80,#22d3ee)':'linear-gradient(90deg,#f87171,#fbbf24)'}"></span></span>
+        <span class="bar-val ${v>=0?'positive':'negative'}">${sign}${v.toFixed(3)} runs</span>
+      </div>`;
+    }).join('');
+    const meta = document.getElementById("factorMeta");
+    if (meta) {
+      const tot = d.total_contribution_runs;
+      meta.textContent = tot != null ? `${tot >= 0 ? '+' : ''}${tot.toFixed(2)} runs net vs baseline` : '--';
+    }
+    const cap = document.getElementById("factorCaption");
+    if (cap && d.matchup) {
+      cap.innerHTML = `Each row is the marginal <strong>expected-runs contribution</strong> to the model's fair total for <strong>${d.matchup}</strong>. Positive = favors OVER, negative = favors UNDER. Sum (<strong>${(d.total_contribution_runs >= 0 ? '+' : '')}${(d.total_contribution_runs || 0).toFixed(2)} runs</strong>) = model edge vs league baseline. Model fair total: <strong>${d.model_fair_total ?? '?'}</strong> vs market: <strong>${d.market_total ?? '?'}</strong>.`;
+    }
+  })
   .catch(() => {});
 
 function renderArsenalForPod() {

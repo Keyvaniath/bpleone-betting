@@ -493,6 +493,9 @@ jobs:
       - name: Play of the Day P&L tracker (PRIMARY accuracy benchmark, 1u flat)
         working-directory: python
         run: python pod_pl_tracker.py
+      - name: POD factor decomposition (real per-factor contributions, not seed mock)
+        working-directory: python
+        run: python pod_factor_decomp.py
       - name: Locks of the Day (record top 5 picks + settle any pending)
         working-directory: python
         run: python locks_of_day.py
