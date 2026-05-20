@@ -189,12 +189,13 @@ function showTab(tab) {
   document.getElementById('meta').textContent = meta;
 }
 
-// Try to load live status too for today's locks
-Promise.all([
-  fetch("data/locks_history.json?t=" + Date.now(), { cache: "no-cache" }).then(r => r.json()),
-  fetch("data/live_locks_status.json?t=" + Date.now(), { cache: "no-cache" }).then(r => r.ok ? r.json() : null).catch(() => null),
-])
-  .then(([d, live]) => {
+// Auto-refresh every 60s so live status during games stays current
+function loadLocks() {
+  Promise.all([
+    fetch("data/locks_history.json?t=" + Date.now(), { cache: "no-cache" }).then(r => r.json()),
+    fetch("data/live_locks_status.json?t=" + Date.now(), { cache: "no-cache" }).then(r => r.ok ? r.json() : null).catch(() => null),
+  ])
+    .then(([d, live]) => {
     // If we have live status, merge it into today's locks
     if (live && live.locks && d.todays_locks) {
       const liveByPickId = Object.fromEntries(live.locks.map(L => [L.pick_id, L]));
@@ -231,14 +232,25 @@ Promise.all([
       </div>`;
     document.getElementById('l7meta').textContent = `${(l7.wins || 0) + (l7.losses || 0)} settled in last 7d`;
 
-    showTab('today');
-    document.querySelectorAll('.tab').forEach(t => {
-      t.addEventListener('click', () => showTab(t.dataset.tab));
-    });
+    if (!window.__locksTabsBound) {
+      window.__locksTabsBound = true;
+      showTab('today');
+      document.querySelectorAll('.tab').forEach(t => {
+        t.addEventListener('click', () => showTab(t.dataset.tab));
+      });
+    } else {
+      // Re-render the active tab with new data
+      const active = document.querySelector('.tab.active');
+      if (active) showTab(active.dataset.tab);
+    }
   })
-  .catch(err => {
-    document.getElementById('container').innerHTML = `<p class="muted" style="padding:14px;">Could not load locks_history.json (${err.message}).</p>`;
-  });
+    .catch(err => {
+      document.getElementById('container').innerHTML = `<p class="muted" style="padding:14px;">Could not load locks_history.json (${err.message}).</p>`;
+    });
+}
+loadLocks();
+// Refresh every 60s so live status during games stays current
+setInterval(loadLocks, 60 * 1000);
 </script>
 </body>
 </html>
