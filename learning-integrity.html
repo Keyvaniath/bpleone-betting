@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Learning Integrity | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/nav.js"></script>
+<style>
+  .row { display: grid; gap: 8px; padding: 10px 14px; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 12px; border-bottom: 1px solid rgba(255,255,255,0.04); }
+  .row.head { background: rgba(255,255,255,0.04); color: var(--muted,#888); font-size: 10px; text-transform: uppercase; padding: 8px 14px; }
+  .row.cols-source { grid-template-columns: 1.3fr 60px 90px 110px 75px 85px 85px 75px 90px; }
+  .row.cols-overlap { grid-template-columns: 1fr 1fr 80px 80px 100px; }
+  .pos { color: #58c878; font-weight: 700; }
+  .neg { color: #e35a5a; font-weight: 700; }
+  .muted { color: var(--muted,#888); }
+  .grade-A { background: rgba(88,200,120,0.15); border-left: 4px solid #58c878; }
+  .grade-B { background: rgba(212,160,74,0.10); border-left: 4px solid #d4a04a; }
+  .grade-C { background: rgba(212,200,74,0.05); border-left: 4px solid #c8c878; }
+  .grade-D { background: rgba(200,120,80,0.05); border-left: 4px solid #c87850; }
+  .grade-F { background: rgba(227,90,90,0.10); border-left: 4px solid #e35a5a; }
+  .grade-badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-weight: 700; font-size: 11px; }
+  .grade-badge.A { background: #58c878; color: #111; }
+  .grade-badge.B { background: #d4a04a; color: #111; }
+  .grade-badge.C { background: #c8c878; color: #111; }
+  .grade-badge.D { background: #c87850; color: #111; }
+  .grade-badge.F { background: #e35a5a; color: #fff; }
+  .panel { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; margin-bottom: 16px; }
+  .verdict-card { padding: 20px 24px; border-radius: 10px; margin-bottom: 16px; }
+  .verdict-bootstrapping { background: linear-gradient(135deg, rgba(212,160,74,0.15), rgba(212,160,74,0.04)); border: 1px solid rgba(212,160,74,0.4); }
+  .verdict-learning { background: linear-gradient(135deg, rgba(88,200,120,0.10), rgba(88,200,120,0.02)); border: 1px solid rgba(88,200,120,0.3); }
+  .verdict-strong { background: linear-gradient(135deg, rgba(88,200,120,0.20), rgba(88,200,120,0.05)); border: 1px solid rgba(88,200,120,0.5); }
+  .verdict-low { background: linear-gradient(135deg, rgba(227,90,90,0.15), rgba(227,90,90,0.02)); border: 1px solid rgba(227,90,90,0.4); }
+  .verdict-no-data { background: linear-gradient(135deg, rgba(150,150,150,0.10), rgba(150,150,150,0.02)); border: 1px solid rgba(150,150,150,0.3); }
+  .lq-score { font-size: 64px; font-weight: 700; font-family: 'JetBrains Mono', monospace; line-height: 1; }
+  .info-card { padding: 14px 18px; background: linear-gradient(135deg, rgba(212,160,74,0.10), rgba(212,160,74,0.02)); border: 1px solid rgba(212,160,74,0.3); border-radius: 10px; margin-bottom: 16px; }
+  .ci-bar { display: inline-block; height: 6px; background: rgba(255,255,255,0.05); border-radius: 3px; position: relative; width: 90px; }
+  .ci-bar-fill { position: absolute; height: 100%; background: linear-gradient(90deg, #58c878, #d4a04a); border-radius: 3px; }
+  .ci-bar-mark { position: absolute; top: -2px; width: 2px; height: 10px; background: #fff; }
+  .small { font-size: 10px; color: var(--muted,#888); }
+</style>
+</head>
+<body class="page-learning-integrity">
+<header class="topbar">
+  <div class="brand"><a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a><span class="tagline">by bpleone</span></div>
+  <nav class="mainnav"><!-- nav.js injects --></nav>
+  <div class="topbar-actions"><div class="ticker">LIVE</div></div>
+</header>
+<main class="container">
+  <section class="page-head">
+    <h1>🔬 Learning Integrity — Is the model actually learning?</h1>
+    <p class="muted" id="status">Loading…</p>
+  </section>
+
+  <!-- Big verdict card -->
+  <div id="verdict-card" class="verdict-card verdict-bootstrapping" style="display:flex; gap:24px; align-items:center;">
+    <div>
+      <div class="lq-score" id="lq-score">--</div>
+      <div class="muted" style="margin-top:4px;">Learning Quality Score</div>
+    </div>
+    <div style="flex:1;">
+      <div id="verdict-headline" style="font-size:18px; font-weight:700; color:#d4a04a;">Loading…</div>
+      <div id="verdict-detail" class="muted" style="margin-top:6px; font-size:13px;">--</div>
+    </div>
+  </div>
+
+  <div class="info-card">
+    <strong style="color:#d4a04a;">How to read this:</strong>
+    <span style="color: var(--text-2,#aaa); font-size:13px;">
+      Each source gets a <strong>statistical grade</strong> based on sample size, significance, and calibration.
+      Sources with grade <strong>F or D</strong> have NO weight changes applied — we refuse to "learn" from
+      noise. Sources need at least <strong>20 settled picks</strong> with <strong>p&lt;0.10</strong> before any
+      weight movement, and <strong>50+ picks with CLV&gt;=+2pp and Brier&lt;0.24</strong> for an A grade
+      (trusted edge proven). This is the difference between real ML and curve-fitting.
+    </span>
+  </div>
+
+  <h2 style="color:#d4a04a; font-size:15px; margin: 24px 0 8px;">Per-Source Statistical Grade</h2>
+  <div class="panel">
+    <div class="row head cols-source">
+      <div>Source</div>
+      <div>Grade</div>
+      <div>Status</div>
+      <div>Wilson 95% CI</div>
+      <div>p-value</div>
+      <div>Brier</div>
+      <div>ECE</div>
+      <div>CLV</div>
+      <div>N Settled</div>
+    </div>
+    <div id="source-rows"><div class="row"><div class="muted">Loading…</div></div></div>
+  </div>
+
+  <h2 style="color:#d4a04a; font-size:15px; margin: 24px 0 8px;">Cross-Source Overlap (independence check)</h2>
+  <div class="panel">
+    <div style="padding:10px 14px; font-size:11px; color:var(--muted,#888);">
+      If two sources have &gt;70% pick overlap, they're not independent — we're double-counting the same signal.
+    </div>
+    <div class="row head cols-overlap">
+      <div>Source A</div><div>Source B</div><div>Jaccard</div><div>Overlap</div><div>Status</div>
+    </div>
+    <div id="overlap-rows"><div class="row"><div class="muted">--</div></div></div>
+  </div>
+
+  <h2 style="color:#d4a04a; font-size:15px; margin: 24px 0 8px;">Concept Drift Watch</h2>
+  <div class="panel">
+    <div style="padding:10px 14px; font-size:11px; color:var(--muted,#888);">
+      Has last-30d hit rate diverged from prior 30d? If yes, model regime may have changed.
+    </div>
+    <div class="row head" style="grid-template-columns: 1.4fr 90px 90px 90px 80px 100px;">
+      <div>Source</div><div>Recent N</div><div>Recent Hit%</div><div>Prior Hit%</div><div>Δ pp</div><div>Drifting?</div>
+    </div>
+    <div id="drift-rows"><div class="row"><div class="muted">--</div></div></div>
+  </div>
+</main>
+
+<script>
+(async () => {
+  const safeFetch = async (path) => {
+    try { const r = await fetch(path + '?t=' + Date.now()); if (!r.ok) return null; return await r.json(); }
+    catch (e) { return null; }
+  };
+  const fmt = (n, p=2) => (n === null || n === undefined || isNaN(n)) ? '--' : Number(n).toFixed(p);
+
+  const d = await safeFetch('data/learning_integrity.json');
+  if (!d) {
+    document.getElementById('status').textContent = 'No integrity data yet.';
+    return;
+  }
+
+  // Big verdict card
+  const card = document.getElementById('verdict-card');
+  const verdictMap = {
+    NO_DATA_YET: { cls: 'verdict-no-data', head: '⏳ No settled picks yet',
+                   detail: 'Predictions exist but nothing has been settled against outcomes. Once games complete and outcomes are recorded, the learning audit begins.' },
+    BOOTSTRAPPING: { cls: 'verdict-bootstrapping', head: '🌱 Bootstrapping — gathering evidence',
+                     detail: `Only ${d.n_total_settled_picks} settled picks across ${d.n_sources} sources. We refuse to update weights from noise — the system will start learning once any source clears 20 settled picks.` },
+    LOW_SIGNAL: { cls: 'verdict-low', head: '⚠ Low signal — mostly noise',
+                  detail: `Only ${d.n_trustworthy_sources}/${d.n_sources} sources have statistically significant skill. Lots of picks settled but few sources clearing the bar.` },
+    LEARNING: { cls: 'verdict-learning', head: '📈 Learning — real signal emerging',
+                detail: `${d.n_trustworthy_sources}/${d.n_sources} sources show statistically real edge. Weight updates are happening, conservatively (max ${(d.max_weight_delta_per_cycle*100).toFixed(0)}% per cycle).` },
+    STRONG_SIGNAL: { cls: 'verdict-strong', head: '✅ Strong signal — model has proven edges',
+                     detail: `${d.n_trustworthy_sources}/${d.n_sources} sources A/B graded with p<0.05, CLV>=+2pp, and Brier<0.24. The learning is real and the weights reflect proven skill.` },
+  };
+  const v = verdictMap[d.verdict] || verdictMap.BOOTSTRAPPING;
+  card.className = 'verdict-card ' + v.cls;
+  card.style.display = 'flex';
+  document.getElementById('lq-score').textContent = d.learning_quality_score;
+  document.getElementById('verdict-headline').textContent = v.head;
+  document.getElementById('verdict-detail').textContent = v.detail;
+
+  document.getElementById('status').textContent =
+    `Generated: ${new Date(d.generated_at + 'Z').toLocaleString()} · ` +
+    `${d.n_total_settled_picks} total settled picks · ` +
+    `${d.n_insufficient_sources} sources still below minimum (n<20)`;
+
+  // Per-source table
+  const div = document.getElementById('source-rows');
+  if (!d.rows || !d.rows.length) {
+    div.innerHTML = '<div class="row"><div class="muted">No source data.</div></div>';
+  } else {
+    div.innerHTML = d.rows.map(r => {
+      const ciFillStart = (r.wilson_lo_95 || 0) * 100;
+      const ciFillWidth = ((r.wilson_hi_95 || 0) - (r.wilson_lo_95 || 0)) * 100;
+      const markPos = (r.hit_rate || 0) * 100;
+      const ciBar = `<div class="ci-bar">
+        <div class="ci-bar-fill" style="left:${ciFillStart}%; width:${ciFillWidth}%;"></div>
+        <div class="ci-bar-mark" style="left:${markPos}%;"></div>
+      </div><div class="small">${(r.wilson_lo_95||0)*100|0}% — ${(r.wilson_hi_95||0)*100|0}% (mid ${(r.hit_rate||0)*100|0}%)</div>`;
+
+      const pCell = r.is_significant
+        ? `<span class="pos">${r.p_value < 0.001 ? '<0.001' : r.p_value.toFixed(3)}</span>`
+        : `<span class="muted">${r.p_value < 0.001 ? '<0.001' : (r.p_value !== undefined ? r.p_value.toFixed(3) : '--')}</span>`;
+
+      return `<div class="row cols-source grade-${r.grade}">
+        <div><strong>${r.source}</strong></div>
+        <div><span class="grade-badge ${r.grade}">${r.grade}</span></div>
+        <div class="small">${(r.status||'').replace(/_/g, ' ')}</div>
+        <div>${ciBar}</div>
+        <div>${pCell}</div>
+        <div>${r.brier_score !== null && r.brier_score !== undefined ? fmt(r.brier_score, 3) : '<span class="muted">--</span>'}</div>
+        <div>${r.ece !== null && r.ece !== undefined ? fmt(r.ece, 3) : '<span class="muted">--</span>'}</div>
+        <div>${r.clv_pp !== null && r.clv_pp !== undefined ?
+          `<span class="${r.clv_pp>=0?'pos':'neg'}">${r.clv_pp>=0?'+':''}${fmt(r.clv_pp, 1)}pp</span>` :
+          '<span class="muted">--</span>'}</div>
+        <div>${r.n_settled} (${r.n_hits || 0}W-${r.n_misses || 0}L)</div>
+      </div>`;
+    }).join('');
+  }
+
+  // Overlaps
+  const oDiv = document.getElementById('overlap-rows');
+  if (d.cross_source_overlaps && d.cross_source_overlaps.length) {
+    oDiv.innerHTML = d.cross_source_overlaps.map(o => {
+      const cls = o.warning === 'HIGH_OVERLAP' ? 'grade-F' : '';
+      return `<div class="row cols-overlap ${cls}">
+        <div>${o.source_a}</div>
+        <div>${o.source_b}</div>
+        <div class="${o.jaccard>=0.7?'neg':''}">${fmt(o.jaccard, 2)}</div>
+        <div>${o.overlap_count}</div>
+        <div class="small">${o.warning.replace('_', ' ')}</div>
+      </div>`;
+    }).join('');
+  } else {
+    oDiv.innerHTML = '<div class="row"><div class="muted">No high-overlap source pairs detected. Sources appear independent.</div></div>';
+  }
+
+  // Drift
+  const dDiv = document.getElementById('drift-rows');
+  const drifts = (d.rows || []).filter(r => r.drift && !r.drift.insufficient_data);
+  if (drifts.length) {
+    dDiv.innerHTML = drifts.map(r => {
+      const dft = r.drift;
+      const cls = dft.is_drifting ? 'grade-F' : '';
+      return `<div class="row ${cls}" style="grid-template-columns: 1.4fr 90px 90px 90px 80px 100px;">
+        <div>${r.source}</div>
+        <div>${dft.n_recent}</div>
+        <div>${(dft.recent_hit_rate*100).toFixed(0)}%</div>
+        <div>${(dft.prior_hit_rate*100).toFixed(0)}%</div>
+        <div class="${dft.delta_pp>=0?'pos':'neg'}">${dft.delta_pp>=0?'+':''}${dft.delta_pp}pp</div>
+        <div>${dft.is_drifting ? '<span class="neg">YES, p='+dft.p_value+'</span>' : '<span class="muted">no</span>'}</div>
+      </div>`;
+    }).join('');
+  } else {
+    dDiv.innerHTML = '<div class="row"><div class="muted">Not enough historical data for drift detection yet.</div></div>';
+  }
+})();
+</script>
+</body>
+</html>

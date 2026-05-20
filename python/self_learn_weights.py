@@ -81,22 +81,54 @@ def run() -> Dict[str, Any]:
     except Exception:
         _mo = None
 
+    # Learning integrity guards (don't learn from noise)
+    guards = _load(os.path.join(DATA_DIR, "learning_guards.json"))
+
+    # Previous learned weights (for velocity-capping)
+    prev_learned = _load(os.path.join(DATA_DIR, "learned_weights.json")).get("weights", {})
+
     learned: Dict[str, Dict[str, Any]] = {}
     for source, prior in PRIOR_WEIGHTS.items():
         stats = by_source.get(source) or {}
         n = (stats.get("wins") or 0) + (stats.get("losses") or 0)
         hit_rate = stats.get("hit_rate")
+        guard = guards.get(source, {})
+        max_delta = guard.get("max_weight_delta", MAX_WEIGHT_DELTA_PER_CYCLE if 'MAX_WEIGHT_DELTA_PER_CYCLE' in globals() else 1.0)
+        use_wilson_lo = guard.get("use_wilson_lo", True)  # safer default
 
-        # Observed weight: hit_rate -> shrinkage weight
-        # 60% hit -> 0.75; 55% -> 0.65; 50% -> 0.55; 45% -> 0.45; 40% -> 0.35
-        if hit_rate is not None:
-            w_observed = _clamp((hit_rate - 0.50) * 2 + 0.55, 0.30, 0.90)
+        # Observed: use Wilson lower bound for unproven sources, point estimate for proven
+        if hit_rate is not None and n > 0:
+            hits = int(round(hit_rate * n))
+            if use_wilson_lo:
+                # Wilson 95% lower bound -- conservative, won't fit noise
+                import math as _m
+                z = 1.96
+                p = hits / n
+                denom = 1 + z**2/n
+                center = (p + z**2/(2*n)) / denom
+                spread = z * _m.sqrt(p*(1-p)/n + z**2/(4*n*n)) / denom
+                effective_rate = max(0.0, center - spread)
+            else:
+                effective_rate = hit_rate
+            w_observed = _clamp((effective_rate - 0.50) * 2 + 0.55, 0.30, 0.90)
         else:
             w_observed = prior
 
         # Shrink toward prior by sample size
         pull = n / (n + SHRINKAGE_PRIOR_N)
-        w_learned = pull * w_observed + (1 - pull) * prior
+        w_target = pull * w_observed + (1 - pull) * prior
+
+        # Velocity-cap: w_learned can only move max_delta per cycle from prev value
+        prev_w = prev_learned.get(source, {}).get("w_learned", prior)
+        if max_delta > 0:
+            delta = w_target - prev_w
+            if abs(delta) > max_delta:
+                w_learned = prev_w + max_delta * (1 if delta > 0 else -1)
+            else:
+                w_learned = w_target
+        else:
+            # No learning allowed -- stay at prior
+            w_learned = prior
 
         # User override -- blends 50/50 with learned (so user retains control without nuking learning)
         user_override = _mo.source_weight(source) if _mo else None
@@ -113,10 +145,15 @@ def run() -> Dict[str, Any]:
             "hit_rate": hit_rate,
             "w_observed": round(w_observed, 3),
             "pull_toward_observed": round(pull, 3),
+            "w_target_uncapped": round(w_target, 3),
             "w_learned": round(w_learned, 3),
             "w_final": round(w_final, 3),
             "user_override": user_override,
             "delta_from_prior": round(w_final - prior, 3),
+            "guard_grade": guard.get("grade"),
+            "guard_used_wilson_lo": use_wilson_lo,
+            "guard_max_delta": max_delta,
+            "guard_reason": guard.get("reason"),
         }
 
     payload = {

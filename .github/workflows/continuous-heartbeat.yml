@@ -53,7 +53,12 @@ jobs:
         working-directory: python
         run: python all_picks_tracker.py
 
-      - name: Self-learn shrinkage weights
+      # Learning Integrity audit BEFORE self-learn so guards are fresh
+      - name: Learning Integrity audit (Wilson CI + Brier + ECE + guards)
+        working-directory: python
+        run: python learning_integrity.py
+
+      - name: Self-learn shrinkage weights (respects integrity guards)
         working-directory: python
         run: python self_learn_weights.py
 

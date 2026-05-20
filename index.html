@@ -1025,6 +1025,27 @@ Promise.all([
     if (box) box.innerHTML = '<p class="muted">Locks history not yet available.</p>';
   });
 
+// Learning Quality banner -- shows verdict on whether learning is real
+fetch("data/learning_integrity.json?t=" + Date.now(), { cache: "no-cache" })
+  .then(r => r.json())
+  .then(li => {
+    const main = document.querySelector("main.container");
+    if (!main) return;
+    const verdictMap = {
+      NO_DATA_YET: { color: '#888', icon: '⏳', text: 'No settled picks yet — learning audit begins after games complete' },
+      BOOTSTRAPPING: { color: '#d4a04a', icon: '🌱', text: `Bootstrapping (${li.n_total_settled_picks} settled · need 20+ per source before any weight changes)` },
+      LOW_SIGNAL: { color: '#e35a5a', icon: '⚠', text: `Low signal: only ${li.n_trustworthy_sources}/${li.n_sources} sources statistically significant` },
+      LEARNING: { color: '#d4a04a', icon: '📈', text: `Learning: ${li.n_trustworthy_sources}/${li.n_sources} sources show real edge (LQS ${li.learning_quality_score}/100)` },
+      STRONG_SIGNAL: { color: '#58c878', icon: '✅', text: `Strong signal: ${li.n_trustworthy_sources}/${li.n_sources} sources A/B graded (LQS ${li.learning_quality_score}/100)` },
+    };
+    const v = verdictMap[li.verdict] || verdictMap.BOOTSTRAPPING;
+    const banner = document.createElement("div");
+    banner.style.cssText = `padding:8px 14px; background:${v.color}15; border-left: 3px solid ${v.color}; color:${v.color}; font-family:'JetBrains Mono',monospace; font-size:11px; margin: 6px 0 10px; border-radius:4px;`;
+    banner.innerHTML = `${v.icon} <strong>Learning Quality: ${li.learning_quality_score}/100</strong> &mdash; ${v.text} &nbsp; <a href="learning-integrity.html" style="color:${v.color};text-decoration:underline;">audit details &rarr;</a>`;
+    main.insertBefore(banner, main.firstChild);
+  })
+  .catch(() => {});
+
 // Pipeline freshness watchdog -- surfaces banner if data is stale
 fetch("data/pipeline_health.json?t=" + Date.now(), { cache: "no-cache" })
   .then(r => r.json())
