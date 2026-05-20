@@ -122,6 +122,8 @@ function renderLocks(rows) {
     <span>Prob</span><span>Edge</span><span>Fair</span><span>Payout</span><span>Date</span>
   </div>`;
   rows.forEach(r => {
+    const rationaleHtml = r.rationale ?
+      `<div style="padding:6px 14px 10px 14px; font-size:11px; color:var(--text-2,#aaa); font-style:italic; border-bottom:1px solid rgba(255,255,255,0.04); background: rgba(255,255,255,0.015);">💡 ${r.rationale}</div>` : '';
     html += `<div class="lock-row ${rowClass(r.result)}">
       <span>${statusPill(r.result, r.live_status)}</span>
       <span><span class="sport-pill ${r.sport}">${r.sport}</span></span>
@@ -132,7 +134,8 @@ function renderLocks(rows) {
       <span class="muted">${fmtAmer(r.fair_american)}</span>
       <span>${r.payout_units != null ? fmtUnits(r.payout_units) : '<span class="muted">—</span>'}</span>
       <span class="muted" style="font-size:10px;">${r.date}</span>
-    </div>`;
+    </div>
+    ${rationaleHtml}`;
   });
   return html;
 }

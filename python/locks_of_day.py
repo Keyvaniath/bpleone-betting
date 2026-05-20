@@ -90,6 +90,62 @@ def _market_family(market: str) -> str:
     return m or "unknown"
 
 
+def _build_rationale(c: Dict[str, Any]) -> str:
+    """Generate a 1-line explanation of why the model likes this pick."""
+    sport = c.get("sport") or ""
+    pm = c.get("player_or_matchup") or ""
+    market = (c.get("market") or "").lower()
+    prob = c.get("prob") or 0
+    edge = c.get("edge_pct") or 0
+    src = (c.get("source") or "").lower()
+
+    # Source-specific rationales (order matters: check specific patterns before generic over/under)
+    if "ml_home" in market:
+        return f"Model gives {pm.split(' @ ')[-1] if ' @ ' in pm else pm} the home win at {prob*100:.0f}% (+{edge:.0f}% edge vs market)."
+    if "ml_away" in market:
+        return f"Model favors the road team at {prob*100:.0f}% (+{edge:.0f}% edge); contrarian read on a perceived favorite at home."
+    # PP player props -- check BEFORE generic over/under since they contain _under_/_over_
+    if "pp_batter" in market:
+        line_m = re.search(r"(\d+(?:\.\d+)?)", market)
+        line = line_m.group(1) if line_m else "?"
+        side = "UNDER" if "under" in market else "OVER"
+        stat = "hits+runs+RBIs" if "hrr" in market else ("total bases" if "total_bases" in market else ("RBIs" if "rbis" in market else ("runs" if "runs" in market else "batter stat")))
+        return f"{pm} PrizePicks {side} {line} {stat}: model {prob*100:.0f}% vs PP-implied break-even ~57% (per-leg fair odds -136)."
+    # Game total over/under (must come AFTER pp_batter check)
+    if "over_" in market or "under_" in market:
+        side = "OVER" if "over_" in market else "UNDER"
+        line_m = re.search(r"(\d+(?:\.\d+)?)", market)
+        line = line_m.group(1) if line_m else "?"
+        return f"Game total {side} {line} at {prob*100:.0f}% -- model projects total runs/goals significantly {'above' if side=='OVER' else 'below'} the market line."
+    if "k_over" in market:
+        line_m = re.search(r"(\d+(?:\.\d+)?)", market)
+        line = line_m.group(1) if line_m else "?"
+        if "form_regression" in src or "pitcher_form" in src:
+            return f"{pm} K over {line}: reverted projection (40% recent / 60% season blend) yields {prob*100:.0f}% to clear."
+        return f"{pm} K over {line}: pitcher matchup model projects {prob*100:.0f}% based on K/9 + opp OBP."
+    if "er_under" in market:
+        line_m = re.search(r"(\d+(?:\.\d+)?)", market)
+        line = line_m.group(1) if line_m else "?"
+        return f"{pm} ER under {line}: pitcher quality + opposing lineup quality yields {prob*100:.0f}% the start stays clean."
+    if "1_plus_hit_vs_sp" in market:
+        return f"{pm} 1+ hit: matchup-adjusted xwOBA + career-vs-pitcher splits push base form to {prob*100:.0f}%."
+    if "1_plus_hr_vs_sp" in market:
+        return f"{pm} 1+ HR: opposing pitcher FIP + batter pitch-arsenal xwOBA edge -> {prob*100:.0f}% HR shot."
+    if "situational" in src:
+        side = "home" if c.get("source", "").endswith("home") else "today's"   # crude
+        return f"{pm}: {side} situational split (home/away + day/night) above season norm -> {prob*100:.0f}%."
+    if "shutout" in market:
+        return f"{pm}: opposing goalie projection + team shots-against -> {prob*100:.0f}% shutout."
+    if "team_total" in market:
+        line_m = re.search(r"(\d+(?:\.\d+)?)", market)
+        line = line_m.group(1) if line_m else "?"
+        side = "over" if "over" in market else "under"
+        return f"Team-total {side} {line}: decomposed from model fair_total + p_home_win Poisson projection ({prob*100:.0f}%)."
+
+    # Fallback
+    return f"Model {prob*100:.0f}% with +{edge:.1f}% edge vs market fair price (source: {src or 'composite'})."
+
+
 def _build_new_locks(top_plays: Dict[str, Any]) -> List[Dict[str, Any]]:
     """Pick top N from today's top plays board."""
     picks = (top_plays.get("top_25") or [])[:N_LOCKS_PER_DAY]
@@ -119,6 +175,7 @@ def _build_new_locks(top_plays: Dict[str, Any]) -> List[Dict[str, Any]]:
             "kelly_fraction": c.get("kelly_fraction"),
             "unit_size_quarter_kelly": kelly_unit,
             "source": c.get("source"),
+            "rationale": _build_rationale(c),
             "settled": False,
             "result": "pending",
             "actual": None,
@@ -267,6 +324,10 @@ def run() -> Dict[str, Any]:
             history.append(lk)
             existing_ids.add(lk["pick_id"])
             n_added += 1
+
+    # Always regenerate rationales (derivative content; latest logic always applies)
+    for pick in history:
+        pick["rationale"] = _build_rationale(pick)
 
     # Attempt to settle any pending entries
     n_newly_settled = 0
