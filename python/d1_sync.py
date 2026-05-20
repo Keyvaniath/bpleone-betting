@@ -66,7 +66,8 @@ def _normalize_pick(p: Dict[str, Any]) -> Dict[str, Any]:
         "fair_odds": p.get("fair_american"),
         "edge_pct": p.get("edge_pct"),
         "tier": p.get("tier"),
-        "outcome": p.get("result") or p.get("outcome") or "PENDING",
+        # Normalize outcome to UPPERCASE so D1 SQL case-sensitive filters work
+        "outcome": (p.get("result") or p.get("outcome") or "PENDING").upper(),
         "date": p.get("date") or dt.datetime.utcnow().strftime("%Y-%m-%d"),
         "created_at": p.get("recorded_at") or p.get("created_at") or dt.datetime.utcnow().isoformat(timespec="seconds"),
         "metadata": {k: v for k, v in p.items() if k not in (
