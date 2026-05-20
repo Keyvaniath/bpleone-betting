@@ -250,6 +250,22 @@ def _collect_picks_from_sources() -> List[Dict[str, Any]]:
                 "matchup": r.get("matchup"),
             })
 
+    # Soccer BTTS (Both Teams To Score) strong edges
+    btts = _load(os.path.join(DATA_DIR, "soccer_btts_props.json"))
+    for r in (btts.get("strong_edges") or []):
+        bm = r.get("best_market") or {}
+        if bm.get("p"):
+            out.append({
+                "source": f"soccer_btts_{bm.get('market', '').lower()}",
+                "sport": (r.get("league") or "SOCCER").upper(),
+                "player_or_matchup": r.get("matchup"),
+                "market": bm.get("market"),
+                "prob": bm.get("p"),
+                "fair_american": bm.get("fair_odds"),
+                "p_predicted": bm.get("p"),
+                "matchup": r.get("matchup"),
+            })
+
     # Soccer corners props strong edges
     sc = _load(os.path.join(DATA_DIR, "soccer_corners_props.json"))
     for r in (sc.get("strong_edges") or []):
