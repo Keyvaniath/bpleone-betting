@@ -74,6 +74,13 @@ def run() -> Dict[str, Any]:
     ledger = _load(os.path.join(DATA_DIR, "all_picks_ledger.json"))
     by_source = ledger.get("by_source") or {}
 
+    # User overrides (from /model-control dashboard)
+    try:
+        import model_overrides as _mo
+        _mo.reload()
+    except Exception:
+        _mo = None
+
     learned: Dict[str, Dict[str, Any]] = {}
     for source, prior in PRIOR_WEIGHTS.items():
         stats = by_source.get(source) or {}
@@ -91,6 +98,15 @@ def run() -> Dict[str, Any]:
         pull = n / (n + SHRINKAGE_PRIOR_N)
         w_learned = pull * w_observed + (1 - pull) * prior
 
+        # User override -- blends 50/50 with learned (so user retains control without nuking learning)
+        user_override = _mo.source_weight(source) if _mo else None
+        if user_override is not None:
+            blend_alpha = 0.7  # 70% user, 30% learned (so they keep adapting)
+            w_final = blend_alpha * float(user_override) + (1 - blend_alpha) * w_learned
+            w_final = _clamp(w_final, 0.10, 0.95)
+        else:
+            w_final = w_learned
+
         learned[source] = {
             "prior": prior,
             "n_settled": n,
@@ -98,7 +114,9 @@ def run() -> Dict[str, Any]:
             "w_observed": round(w_observed, 3),
             "pull_toward_observed": round(pull, 3),
             "w_learned": round(w_learned, 3),
-            "delta_from_prior": round(w_learned - prior, 3),
+            "w_final": round(w_final, 3),
+            "user_override": user_override,
+            "delta_from_prior": round(w_final - prior, 3),
         }
 
     payload = {

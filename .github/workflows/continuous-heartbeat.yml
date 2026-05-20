@@ -41,6 +41,13 @@ jobs:
       - name: Install deps
         run: pip install -r python/requirements.txt
 
+      # Sync any user-saved model overrides from Cloudflare KV (no-op if Worker not deployed)
+      - name: Sync model overrides from Worker KV
+        env:
+          EDGESTAT_WORKER_URL: ${{ secrets.EDGESTAT_WORKER_URL }}
+        working-directory: python
+        run: python sync_overrides_from_kv.py || true
+
       # Self-learning -- update every 5 min, all day
       - name: All-picks unified ledger (settle + log)
         working-directory: python
@@ -64,6 +71,11 @@ jobs:
       - name: Live locks status tracker
         working-directory: python
         run: python live_locks_status.py || true
+
+      # Data source verification -- ping all external APIs, prove they're live
+      - name: Data source verification (real-time API health)
+        working-directory: python
+        run: python data_source_verification.py
 
       # Watchdog freshness alarm
       - name: Pipeline freshness watchdog

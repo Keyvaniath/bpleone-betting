@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Model Control Center | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/nav.js"></script>
+<style>
+  .tab-strip { display: flex; gap: 4px; margin-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); flex-wrap: wrap; }
+  .tab { padding: 8px 14px; cursor: pointer; font-size: 12px; color: var(--text-2,#aaa); border-bottom: 2px solid transparent; }
+  .tab.active { color: var(--accent,#d4a04a); border-bottom-color: var(--accent,#d4a04a); }
+  .row { display: grid; gap: 8px; padding: 10px 14px; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 12px; border-bottom: 1px solid rgba(255,255,255,0.04); }
+  .row.head { background: rgba(255,255,255,0.04); color: var(--muted,#888); font-size: 10px; text-transform: uppercase; padding: 8px 14px; }
+  .row.cols-source { grid-template-columns: 1.8fr 70px 70px 70px 70px 1.4fr 90px; }
+  .row.cols-sport { grid-template-columns: 1fr 1.2fr 90px 1fr; }
+  .row.cols-constraint { grid-template-columns: 1fr 1.4fr 90px 1.2fr; }
+  .row.cols-source-health { grid-template-columns: 60px 1.4fr 80px 80px 90px 1.4fr; }
+  .pos { color: #58c878; font-weight: 700; }
+  .neg { color: #e35a5a; font-weight: 700; }
+  .muted { color: var(--muted,#888); }
+  .pulse { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #58c878; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+  .badge-up { color: #58c878; }
+  .badge-down { color: #e35a5a; }
+  .badge-deg { color: #d4a04a; }
+  input[type=number], input[type=range] { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); color: #eee; padding: 4px 6px; font-family: 'JetBrains Mono', monospace; font-size: 11px; border-radius: 4px; }
+  input[type=number] { width: 65px; }
+  input[type=range] { width: 110px; }
+  input[type=checkbox] { accent-color: #d4a04a; cursor: pointer; }
+  button.btn { background: linear-gradient(135deg, #d4a04a, #a87833); color: #111; border: 0; padding: 8px 18px; font-weight: 700; cursor: pointer; border-radius: 6px; font-size: 12px; }
+  button.btn:hover { filter: brightness(1.1); }
+  button.btn-ghost { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #eee; padding: 8px 14px; border-radius: 6px; cursor: pointer; font-size: 12px; }
+  .panel { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; margin-bottom: 16px; }
+  .info-card { padding: 14px 18px; background: linear-gradient(135deg, rgba(212,160,74,0.1), rgba(212,160,74,0.02)); border: 1px solid rgba(212,160,74,0.3); border-radius: 10px; margin-bottom: 16px; }
+  .save-bar { position: sticky; bottom: 0; padding: 12px 18px; background: rgba(0,0,0,0.9); border-top: 1px solid rgba(212,160,74,0.4); display: flex; gap: 12px; align-items: center; z-index: 100; backdrop-filter: blur(8px); }
+  .delta-pos { color: #58c878; }
+  .delta-neg { color: #e35a5a; }
+  .dirty { background: rgba(212,160,74,0.12) !important; }
+  .src-cell { font-family: 'JetBrains Mono', monospace; }
+  .help-text { font-size: 10px; color: var(--muted,#888); margin-top: 4px; }
+  pre.raw-sample { font-size: 10px; background: rgba(0,0,0,0.4); padding: 8px; border-radius: 4px; overflow-x: auto; max-height: 80px; color: #cfcfcf; }
+</style>
+</head>
+<body class="page-model-control">
+<header class="topbar">
+  <div class="brand"><a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a><span class="tagline">by bpleone</span></div>
+  <nav class="mainnav"><!-- nav.js injects --></nav>
+  <div class="topbar-actions"><div class="ticker">LIVE</div></div>
+</header>
+<main class="container" style="padding-bottom: 80px;">
+  <section class="page-head">
+    <h1>🎛 Model Control Center</h1>
+    <p class="muted" id="status">Loading model state…</p>
+  </section>
+
+  <div class="info-card">
+    <strong style="color:#d4a04a;">How this works:</strong>
+    <span style="color: var(--text-2,#aaa); font-size:13px;">
+      Adjust source weights, per-sport priors, or hard constraints. Click <strong>Save Overrides</strong>
+      and the next pipeline cycle (max 5 min) will pick them up. Your overrides blend 70/30 with the
+      learned weights so the model still adapts to outcomes. To revert any field to its learned value,
+      click the "↻" beside it. Hard reset wipes <code>model_overrides.json</code> back to empty.
+    </span>
+  </div>
+
+  <div class="tab-strip" id="tabs">
+    <div class="tab active" data-tab="sources">Data Sources Health</div>
+    <div class="tab" data-tab="weights">Source Weights</div>
+    <div class="tab" data-tab="sports">Sport Priors</div>
+    <div class="tab" data-tab="constraints">Hard Constraints</div>
+    <div class="tab" data-tab="modules">Module Toggles</div>
+    <div class="tab" data-tab="export">Export JSON</div>
+  </div>
+
+  <!-- Data Sources -->
+  <section id="tab-sources" class="tab-content panel">
+    <div style="padding: 12px 16px; font-size: 12px; color: var(--muted,#888); display: flex; justify-content: space-between; align-items: center;">
+      <div><span class="pulse"></span> &nbsp; Pinging real APIs every heartbeat (every 5 min)</div>
+      <div id="health-summary"></div>
+    </div>
+    <div class="row head cols-source-health">
+      <div></div><div>Source</div><div>Status</div><div>HTTP</div><div>Latency</div><div>Sample / Notes</div>
+    </div>
+    <div id="sources-rows"><div class="row"><div class="muted">Loading…</div></div></div>
+  </section>
+
+  <!-- Source Weights -->
+  <section id="tab-weights" class="tab-content panel" style="display:none;">
+    <div style="padding: 12px 16px; font-size: 11px; color: var(--muted,#888);">
+      Each source produces picks. Weight determines how much the model trusts that source's signal in shrinkage. Higher = more influence on final probabilities.
+    </div>
+    <div class="row head cols-source">
+      <div>Source</div><div>Prior</div><div>Learned</div><div>Settled</div><div>Hit%</div><div>Your Override</div><div></div>
+    </div>
+    <div id="weights-rows"><div class="row"><div class="muted">Loading…</div></div></div>
+  </section>
+
+  <!-- Sport Priors -->
+  <section id="tab-sports" class="tab-content panel" style="display:none;">
+    <div style="padding: 12px 16px; font-size: 11px; color: var(--muted,#888);">
+      Per-sport adjustments. Bump a sport's "confidence" to weight picks from that sport more (or less) when ranking the daily board.
+    </div>
+    <div class="row head cols-sport">
+      <div>Sport</div><div>Parameter</div><div>Value</div><div>Effect</div>
+    </div>
+    <div id="sports-rows"></div>
+  </section>
+
+  <!-- Constraints -->
+  <section id="tab-constraints" class="tab-content panel" style="display:none;">
+    <div style="padding: 12px 16px; font-size: 11px; color: var(--muted,#888);">
+      Hard filters that exclude picks not meeting the threshold. Useful for "only show me my best 5".
+    </div>
+    <div class="row head cols-constraint">
+      <div>Constraint</div><div>Description</div><div>Value</div><div></div>
+    </div>
+    <div id="constraints-rows"></div>
+  </section>
+
+  <!-- Module Toggles -->
+  <section id="tab-modules" class="tab-content panel" style="display:none;">
+    <div style="padding: 12px 16px; font-size: 11px; color: var(--muted,#888);">
+      Disable any module to remove its picks from the daily board. Useful for cooling off a misbehaving signal.
+    </div>
+    <div id="modules-rows"></div>
+  </section>
+
+  <!-- Export -->
+  <section id="tab-export" class="tab-content panel" style="display:none;">
+    <div style="padding: 14px 18px;">
+      <h3 style="margin-top:0; color:#d4a04a;">Current overrides JSON</h3>
+      <p class="muted" style="font-size: 12px;">
+        This is exactly what gets saved to <code>data/model_overrides.json</code>. The pipeline reads it on next cycle.
+      </p>
+      <pre id="export-json" style="background: rgba(0,0,0,0.4); padding: 14px; border-radius: 6px; overflow: auto; max-height: 400px; font-size: 11px; color: #cfcfcf;">{}</pre>
+      <button class="btn-ghost" onclick="navigator.clipboard.writeText(document.getElementById('export-json').textContent); this.textContent='Copied!';">Copy to clipboard</button>
+    </div>
+  </section>
+</main>
+
+<div class="save-bar">
+  <div id="dirty-flag" class="muted" style="font-size: 12px;">No unsaved changes.</div>
+  <div style="flex: 1;"></div>
+  <button class="btn-ghost" onclick="resetAll()">Hard reset (clear all overrides)</button>
+  <button class="btn-ghost" onclick="downloadJSON()">Download JSON</button>
+  <button class="btn" onclick="saveOverrides()">Save Overrides</button>
+</div>
+
+<script>
+let STATE = { sources: {}, sports: {}, constraints: {}, modules: {}, global: {} };
+let LEARNED = {};
+let DIRTY = false;
+
+// Per-sport parameter definitions
+const SPORT_PARAMS = [
+  { sport: 'mlb',   key: 'confidence_mult', label: 'MLB confidence multiplier', def: 1.0, min: 0.5, max: 1.5, step: 0.05,
+    desc: 'Scales all MLB pick edges. >1 = trust MLB more, <1 = trust less.' },
+  { sport: 'mlb',   key: 'min_edge_pct',    label: 'MLB min edge %',           def: 3.0, min: 0,   max: 15,  step: 0.5,
+    desc: 'Picks below this edge get filtered.' },
+  { sport: 'nhl',   key: 'confidence_mult', label: 'NHL confidence multiplier', def: 1.0, min: 0.5, max: 1.5, step: 0.05,
+    desc: 'Scales all NHL pick edges.' },
+  { sport: 'nba',   key: 'confidence_mult', label: 'NBA confidence multiplier', def: 1.0, min: 0.5, max: 1.5, step: 0.05,
+    desc: 'Scales all NBA pick edges.' },
+  { sport: 'wnba',  key: 'confidence_mult', label: 'WNBA confidence multiplier',def: 1.0, min: 0.5, max: 1.5, step: 0.05,
+    desc: 'Scales all WNBA pick edges.' },
+  { sport: 'golf',  key: 'confidence_mult', label: 'Golf confidence multiplier',def: 0.9, min: 0.5, max: 1.5, step: 0.05,
+    desc: 'Golf has high variance -- start lower.' },
+  { sport: 'f1',    key: 'confidence_mult', label: 'F1 confidence multiplier',  def: 0.85, min: 0.5, max: 1.5, step: 0.05,
+    desc: 'F1 has high DNF risk -- start lower.' },
+  { sport: 'ufc',   key: 'confidence_mult', label: 'UFC confidence multiplier', def: 0.9, min: 0.5, max: 1.5, step: 0.05,
+    desc: 'MMA has tail-risk events -- start lower.' },
+];
+
+// Constraint definitions
+const CONSTRAINTS = [
+  { key: 'min_ev_pct',          label: 'Min EV %',            desc: 'Pick must have at least this much EV', def: 0,    type: 'number', min: 0, max: 30, step: 0.5 },
+  { key: 'min_p_win',           label: 'Min P(win)',          desc: 'Pick must have at least this win prob', def: 0.45, type: 'number', min: 0, max: 0.9, step: 0.01 },
+  { key: 'max_picks_per_game',  label: 'Max picks per game',  desc: 'Cap exposure to any single game',       def: 3,    type: 'number', min: 1, max: 10, step: 1 },
+  { key: 'max_picks_per_day',   label: 'Max picks per day',   desc: 'Cap total board size',                   def: 25,   type: 'number', min: 5, max: 100, step: 1 },
+  { key: 'min_kelly_pct',       label: 'Min Kelly %',         desc: 'Filter out fractional-Kelly < this',     def: 0,    type: 'number', min: 0, max: 5, step: 0.1 },
+  { key: 'exclude_unders',      label: 'Exclude all UNDERs',  desc: 'Hide MLB / NHL UNDER bets',              def: false,type: 'bool' },
+  { key: 'exclude_parlays',     label: 'Exclude parlays',     desc: 'Hide multi-leg combo plays',            def: false,type: 'bool' },
+  { key: 'require_lineup_confirmed', label: 'Require confirmed lineup', desc: 'Skip picks where starting lineup unconfirmed', def: false, type: 'bool' },
+];
+
+// Module toggles (modules that can be turned off)
+const MODULES = [
+  { key: 'mlb_unders_alerts',          label: 'MLB Unders Alerts',           def: true },
+  { key: 'whale_picks',                label: 'Whale Picks (confluence)',    def: true },
+  { key: 'sharp_action_radar',         label: 'Sharp Action Radar',          def: true },
+  { key: 'consensus_picks',            label: 'Consensus Picks',             def: true },
+  { key: 'cross_sport_parlay_builder', label: 'Cross-Sport Parlay Builder',  def: true },
+  { key: 'reverse_line_movement',      label: 'Reverse Line Movement',       def: true },
+  { key: 'mlb_total_bases_props',      label: 'MLB Total Bases Props',       def: true },
+  { key: 'golf_live_tracker',          label: 'Golf Live Tracker',           def: true },
+  { key: 'nhl_goalie_pull_leverage',   label: 'NHL Goalie-Pull Leverage',    def: true },
+  { key: 'f1_track_specific',          label: 'F1 Track-Specific Overlay',   def: true },
+  { key: 'mlb_catcher_framing',        label: 'MLB Catcher Framing',         def: true },
+];
+
+const safeFetch = async (path) => {
+  try { const r = await fetch(path + '?t=' + Date.now()); if (!r.ok) return null; return await r.json(); }
+  catch (e) { return null; }
+};
+
+const fmt = (n, p=2) => (n === null || n === undefined || isNaN(n)) ? '--' : Number(n).toFixed(p);
+const setDirty = (yes=true) => {
+  DIRTY = yes;
+  document.getElementById('dirty-flag').textContent = yes ? '⚠ Unsaved changes' : 'No unsaved changes.';
+  document.getElementById('dirty-flag').style.color = yes ? '#d4a04a' : 'var(--muted,#888)';
+  updateExportJson();
+};
+
+const updateExportJson = () => {
+  document.getElementById('export-json').textContent = JSON.stringify(STATE, null, 2);
+};
+
+async function loadData() {
+  const tabs = document.querySelectorAll('.tab');
+  tabs.forEach(t => t.addEventListener('click', () => {
+    tabs.forEach(x => x.classList.remove('active')); t.classList.add('active');
+    document.querySelectorAll('.tab-content').forEach(s => s.style.display = 'none');
+    document.getElementById('tab-' + t.dataset.tab).style.display = '';
+  }));
+
+  // 1. Load existing overrides
+  const existing = await safeFetch('data/model_overrides.json');
+  if (existing) STATE = Object.assign(STATE, existing);
+
+  // 2. Load data source health
+  const dsh = await safeFetch('data/data_source_health.json');
+  renderSources(dsh);
+  if (dsh) {
+    document.getElementById('health-summary').innerHTML =
+      `<span class="badge-up">${dsh.n_up} UP</span> &nbsp;` +
+      `<span class="badge-deg">${dsh.n_degraded} DEG</span> &nbsp;` +
+      `<span class="badge-down">${dsh.n_down} DOWN</span>`;
+  }
+
+  // 3. Load learned weights
+  const lw = await safeFetch('data/learned_weights.json');
+  LEARNED = lw && lw.weights ? lw.weights : {};
+  renderWeights();
+
+  // 4. Render sport priors
+  renderSports();
+
+  // 5. Render constraints
+  renderConstraints();
+
+  // 6. Render module toggles
+  renderModules();
+
+  // 7. Update export
+  updateExportJson();
+  document.getElementById('status').textContent =
+    `Last check: ${dsh?.generated_at || '--'} · Learned weights: ${lw?.generated_at || '--'}`;
+}
+
+function renderSources(dsh) {
+  const div = document.getElementById('sources-rows');
+  if (!dsh || !dsh.sources) {
+    div.innerHTML = '<div class="row"><div class="muted">No source health data yet.</div></div>';
+    return;
+  }
+  div.innerHTML = dsh.sources.map(s => {
+    const cls = s.status === 'UP' ? 'badge-up' : s.status === 'DEGRADED' ? 'badge-deg' : 'badge-down';
+    const dot = s.status === 'UP' ? '<span class="pulse"></span>' : '○';
+    const samplePretty = s.sample ? JSON.stringify(s.sample).slice(0, 80) : (s.error || s.skip_reason || '');
+    return `<div class="row cols-source-health">
+      <div>${dot}</div>
+      <div><strong>${s.label}</strong><br><span class="src-cell muted" style="font-size:10px;">${s.url.slice(0, 70)}${s.url.length>70?'...':''}</span></div>
+      <div class="${cls}">${s.status}</div>
+      <div>${s.http_code || '--'}</div>
+      <div>${s.response_ms ? s.response_ms+'ms' : '--'}</div>
+      <div class="muted" style="font-size:10px;">${samplePretty}</div>
+    </div>`;
+  }).join('');
+}
+
+function renderWeights() {
+  const div = document.getElementById('weights-rows');
+  if (!Object.keys(LEARNED).length) {
+    div.innerHTML = '<div class="row"><div class="muted">No learned weights data yet.</div></div>';
+    return;
+  }
+  const sorted = Object.entries(LEARNED).sort((a,b) => (b[1].n_settled||0) - (a[1].n_settled||0));
+  div.innerHTML = sorted.map(([src, w]) => {
+    const overrideVal = STATE.sources[src]?.weight ?? '';
+    const hr = w.hit_rate !== null && w.hit_rate !== undefined ? (w.hit_rate*100).toFixed(0)+'%' : '--';
+    return `<div class="row cols-source ${overrideVal !== '' ? 'dirty' : ''}">
+      <div>${src}</div>
+      <div>${fmt(w.prior, 2)}</div>
+      <div class="${w.w_learned >= w.prior ? 'pos' : 'neg'}">${fmt(w.w_learned, 3)}</div>
+      <div>${w.n_settled||0}</div>
+      <div>${hr}</div>
+      <div>
+        <input type="range" min="0.10" max="0.95" step="0.01"
+               value="${overrideVal !== '' ? overrideVal : w.w_learned}"
+               oninput="setSourceWeight('${src}', this.value, this.nextElementSibling)" />
+        <span style="margin-left:8px;">${overrideVal !== '' ? Number(overrideVal).toFixed(2) : '--'}</span>
+      </div>
+      <div><button class="btn-ghost" onclick="resetSource('${src}')">↻</button></div>
+    </div>`;
+  }).join('');
+}
+
+function setSourceWeight(src, val, displaySpan) {
+  if (!STATE.sources[src]) STATE.sources[src] = {};
+  STATE.sources[src].weight = Number(val);
+  if (displaySpan) displaySpan.textContent = Number(val).toFixed(2);
+  setDirty();
+}
+
+function resetSource(src) {
+  delete STATE.sources[src];
+  renderWeights();
+  setDirty();
+}
+
+function renderSports() {
+  const div = document.getElementById('sports-rows');
+  div.innerHTML = SPORT_PARAMS.map(p => {
+    const cur = STATE.sports[p.sport]?.[p.key] ?? p.def;
+    return `<div class="row cols-sport ${STATE.sports[p.sport]?.[p.key] !== undefined ? 'dirty' : ''}">
+      <div>${p.sport.toUpperCase()}</div>
+      <div>${p.label}<div class="help-text">${p.desc}</div></div>
+      <div>
+        <input type="number" min="${p.min}" max="${p.max}" step="${p.step}"
+               value="${cur}"
+               onchange="setSportParam('${p.sport}', '${p.key}', this.value)" />
+      </div>
+      <div><span class="muted">default: ${p.def}</span></div>
+    </div>`;
+  }).join('');
+}
+
+function setSportParam(sport, key, val) {
+  if (!STATE.sports[sport]) STATE.sports[sport] = {};
+  STATE.sports[sport][key] = Number(val);
+  setDirty();
+}
+
+function renderConstraints() {
+  const div = document.getElementById('constraints-rows');
+  div.innerHTML = `<div class="row head cols-constraint"><div>Constraint</div><div>Description</div><div>Value</div><div></div></div>` +
+    CONSTRAINTS.map(c => {
+      const cur = STATE.constraints[c.key] !== undefined ? STATE.constraints[c.key] : c.def;
+      const isOverride = STATE.constraints[c.key] !== undefined;
+      const input = c.type === 'bool'
+        ? `<input type="checkbox" ${cur ? 'checked' : ''} onchange="setConstraint('${c.key}', this.checked)" />`
+        : `<input type="number" min="${c.min}" max="${c.max}" step="${c.step}" value="${cur}" onchange="setConstraint('${c.key}', this.value)" />`;
+      return `<div class="row cols-constraint ${isOverride ? 'dirty' : ''}">
+        <div>${c.label}</div>
+        <div class="muted" style="font-size:11px;">${c.desc}</div>
+        <div>${input}</div>
+        <div><span class="muted">default: ${c.def}</span></div>
+      </div>`;
+    }).join('');
+}
+
+function setConstraint(key, val) {
+  STATE.constraints[key] = (typeof val === 'boolean') ? val : Number(val);
+  setDirty();
+}
+
+function renderModules() {
+  const div = document.getElementById('modules-rows');
+  div.innerHTML = MODULES.map(m => {
+    const enabled = STATE.modules[m.key]?.enabled !== undefined ? STATE.modules[m.key].enabled : m.def;
+    const isOverride = STATE.modules[m.key] !== undefined;
+    return `<div class="row ${isOverride ? 'dirty' : ''}" style="grid-template-columns: 60px 1fr 1.5fr;">
+      <div><input type="checkbox" ${enabled ? 'checked' : ''} onchange="setModule('${m.key}', this.checked)" /></div>
+      <div>${m.label}</div>
+      <div class="muted" style="font-size:11px;">${enabled ? 'enabled' : 'DISABLED'} · default: ${m.def ? 'on' : 'off'}</div>
+    </div>`;
+  }).join('');
+}
+
+function setModule(key, enabled) {
+  STATE.modules[key] = { enabled };
+  renderModules();
+  setDirty();
+}
+
+async function saveOverrides() {
+  STATE.version = (STATE.version || 0) + 1;
+  STATE.last_modified = new Date().toISOString();
+  // Try to POST to a Cloudflare Worker /save-overrides endpoint
+  const workerUrl = (window.EDGESTAT_WORKER_URL || '') + '/admin/save-overrides';
+  try {
+    const r = await fetch(workerUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(STATE) });
+    if (r.ok) {
+      alert('Overrides saved via Worker. Pipeline will pick them up next cycle (≤5 min).');
+      setDirty(false);
+      return;
+    }
+  } catch (e) {}
+  // Fallback: copy JSON and instruct user to commit manually
+  await navigator.clipboard.writeText(JSON.stringify(STATE, null, 2));
+  alert('Cloudflare Worker save endpoint not configured.\n\nYour overrides JSON has been copied to clipboard. To apply:\n\n1. Paste it into data/model_overrides.json in the GitHub repo\n2. Commit -- pipeline reads it on next cycle (≤5 min)\n\nOR run the Worker deploy steps in ARCHITECTURE.md to enable one-click save.');
+  setDirty(false);
+}
+
+function downloadJSON() {
+  const blob = new Blob([JSON.stringify(STATE, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = 'model_overrides.json';
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+}
+
+function resetAll() {
+  if (!confirm('This will wipe ALL overrides. Continue?')) return;
+  STATE = { sources: {}, sports: {}, constraints: {}, modules: {}, global: {} };
+  renderWeights(); renderSports(); renderConstraints(); renderModules();
+  setDirty();
+}
+
+loadData();
+</script>
+</body>
+</html>

@@ -167,11 +167,31 @@ async function handleHTTP(request, env) {
   const path = url.pathname;
   const cors = {
     "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Methods": "GET, OPTIONS",
+    "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+    "Access-Control-Allow-Headers": "Content-Type",
     "Content-Type": "application/json",
     "Cache-Control": "public, max-age=30",   // 30s edge cache
   };
   if (request.method === "OPTIONS") return new Response(null, { headers: cors });
+
+  // /admin/save-overrides -- POST a model_overrides JSON, stored in KV.
+  // The next pipeline cron syncs KV -> data/model_overrides.json via git commit.
+  if (path === "/admin/save-overrides" && request.method === "POST") {
+    try {
+      const body = await request.text();
+      const parsed = JSON.parse(body);  // validate
+      const payload = JSON.stringify({ ...parsed, saved_at: new Date().toISOString() });
+      await env.EDGESTAT_KV.put("model_overrides", payload);
+      return new Response(JSON.stringify({ ok: true, size_bytes: payload.length }), { headers: cors });
+    } catch (e) {
+      return new Response(JSON.stringify({ error: String(e) }), { status: 400, headers: cors });
+    }
+  }
+  if (path === "/admin/get-overrides") {
+    const val = await env.EDGESTAT_KV.get("model_overrides");
+    if (!val) return new Response("{}", { headers: cors });
+    return new Response(val, { headers: cors });
+  }
 
   if (path === "/" || path === "") {
     return Response.redirect("https://betting.bpleone.com", 302);

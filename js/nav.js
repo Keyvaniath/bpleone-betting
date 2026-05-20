@@ -82,6 +82,7 @@
     { href: "accuracy.html",    label: "📊 Accuracy" },
     { href: "self-learning.html", label: "🧠 Self-Learning" },
     { href: "deep-edges.html",  label: "🔬 Deep Edges" },
+    { href: "model-control.html", label: "🎛 Control" },
     { href: "tonight.html",     label: "🌙 Tonight" },
     { href: "live-now.html",    label: "Live Now" },
     { href: "play-of-day.html", label: "Play of Day" },

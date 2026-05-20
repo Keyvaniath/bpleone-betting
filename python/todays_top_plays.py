@@ -123,13 +123,22 @@ def _market_implied_prob(american):
 
 
 def _load_learned_weights():
-    """Self-learning feedback: read learned per-source weights if available."""
+    """Self-learning feedback: read learned per-source weights if available.
+    Prefers w_final (includes user overrides from /model-control) over w_learned."""
     p = os.path.join(DATA_DIR, "learned_weights.json")
     if not os.path.exists(p): return {}
     try:
         with open(p) as f: d = json.load(f)
-        return {src: w.get("w_learned") for src, w in (d.get("weights") or {}).items()
-                if w.get("n_settled", 0) > 0}
+        out = {}
+        for src, w in (d.get("weights") or {}).items():
+            # w_final includes user overrides; use it whenever set, otherwise w_learned (with data)
+            wf = w.get("w_final")
+            wl = w.get("w_learned")
+            if wf is not None and w.get("user_override") is not None:
+                out[src] = wf  # user override -> always apply
+            elif wl is not None and w.get("n_settled", 0) > 0:
+                out[src] = wl  # learned with data
+        return out
     except Exception:
         return {}
 
