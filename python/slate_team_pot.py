@@ -120,7 +120,8 @@ def run() -> Dict[str, Any]:
         ("WNBA", "wnba_state.json"), ("MLS", "mls_state.json"),
         ("EPL", "epl_state.json"), ("UCL", "ucl_state.json"),
         ("NFL", "nfl_state.json"), ("NCAAF", "ncaaf_state.json"),
-        ("NCAAB", "ncaab_state.json"), ("CWS", "cws_state.json")
+        ("NCAAB", "ncaab_state.json"), ("CWS", "cws_state.json"),
+        ("NCAA_SOFTBALL", "ncaa_softball_state.json")
     ):
         d = _load(os.path.join(DATA_DIR, sf))
         for g in (d.get("games") or []):
