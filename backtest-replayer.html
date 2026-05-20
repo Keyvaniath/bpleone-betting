@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Backtest Replayer | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/nav.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  .panel { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; margin-bottom: 16px; }
+  .row { display: grid; gap: 8px; padding: 9px 14px; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 12px; border-bottom: 1px solid rgba(255,255,255,0.04); }
+  .row.head { background: rgba(255,255,255,0.04); color: var(--muted,#888); font-size: 10px; text-transform: uppercase; padding: 8px 14px; }
+  .row.cols-source-summary { grid-template-columns: 1.3fr 60px 70px 60px 70px 80px 80px; }
+  .row.cols-picks { grid-template-columns: 90px 1.3fr 1.1fr 80px 80px 70px 70px 80px; }
+  .pos { color: #58c878; font-weight: 700; }
+  .neg { color: #e35a5a; font-weight: 700; }
+  .muted { color: var(--muted,#888); }
+  .filter-bar { display: flex; gap: 10px; align-items: center; padding: 14px; flex-wrap: wrap; background: rgba(255,255,255,0.02); border-radius: 8px; margin-bottom: 14px; }
+  .filter-bar select, .filter-bar input { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); color: #eee; padding: 6px 8px; font-family: 'JetBrains Mono', monospace; font-size: 11px; border-radius: 4px; }
+  .filter-bar label { font-size: 10px; color: var(--muted,#888); text-transform: uppercase; }
+  button.btn { background: linear-gradient(135deg, #d4a04a, #a87833); color: #111; border: 0; padding: 6px 14px; font-weight: 700; cursor: pointer; border-radius: 4px; font-size: 11px; }
+  .summary-strip { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; margin-bottom: 14px; }
+  .stat { padding: 10px 12px; background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.05); border-radius: 6px; text-align: center; }
+  .stat-val { font-family: 'JetBrains Mono', monospace; font-size: 18px; font-weight: 700; }
+  .stat-label { font-size: 9px; color: var(--muted,#888); text-transform: uppercase; margin-top: 4px; }
+  .info-card { padding: 14px 18px; background: linear-gradient(135deg, rgba(212,160,74,0.10), rgba(212,160,74,0.02)); border: 1px solid rgba(212,160,74,0.3); border-radius: 10px; margin-bottom: 16px; }
+  .grade-W { background: rgba(88,200,120,0.10); }
+  .grade-L { background: rgba(227,90,90,0.08); }
+  .badge { padding: 2px 7px; border-radius: 3px; font-size: 10px; font-weight: 700; }
+  .badge-W { background: #58c878; color: #111; }
+  .badge-L { background: #e35a5a; color: #fff; }
+  .badge-P { background: #888; color: #fff; }
+  .badge-PENDING { background: #d4a04a33; color: #d4a04a; }
+</style>
+</head>
+<body class="page-backtest-replayer">
+<header class="topbar">
+  <div class="brand"><a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a><span class="tagline">by bpleone</span></div>
+  <nav class="mainnav"><!-- nav.js injects --></nav>
+  <div class="topbar-actions"><div class="ticker">LIVE</div></div>
+</header>
+<main class="container">
+  <section class="page-head">
+    <h1>📊 Backtest Replayer — D1 SQL history</h1>
+    <p class="muted" id="status">Loading from Cloudflare D1…</p>
+  </section>
+
+  <div class="info-card">
+    <strong style="color:#d4a04a;">What this is:</strong>
+    <span style="color: var(--text-2,#aaa); font-size:13px;">
+      Every pick ever made by any module is stored permanently in Cloudflare D1 (Pro plan SQL at the edge).
+      Filter by source, sport, date range, outcome. The D1 sync runs every 5 minutes inside the heartbeat
+      workflow, so this dashboard is never more than 5 minutes stale. Differs from the walk-forward
+      <a href="backtest.html" style="color:#d4a04a;">/backtest</a> page (which is a different methodology).
+    </span>
+  </div>
+
+  <div class="filter-bar">
+    <div>
+      <label>Source</label><br>
+      <select id="f_source"><option value="">All sources</option></select>
+    </div>
+    <div>
+      <label>Sport</label><br>
+      <select id="f_sport">
+        <option value="">All</option>
+        <option>MLB</option><option>NHL</option><option>NBA</option><option>WNBA</option>
+        <option>GOLF</option><option>F1</option><option>UFC</option>
+      </select>
+    </div>
+    <div>
+      <label>Date from</label><br>
+      <input id="f_from" type="date" />
+    </div>
+    <div>
+      <label>Date to</label><br>
+      <input id="f_to" type="date" />
+    </div>
+    <div>
+      <label>Outcome</label><br>
+      <select id="f_outcome">
+        <option value="">All</option>
+        <option>WIN</option><option>LOSS</option><option>PUSH</option><option>PENDING</option>
+      </select>
+    </div>
+    <button class="btn" onclick="runBacktest()">Run Backtest</button>
+    <button class="btn" style="background:#444; color:#eee;" onclick="resetFilters()">Reset</button>
+  </div>
+
+  <div class="summary-strip" id="summary-strip">
+    <div class="stat"><div class="stat-val" id="s_n">--</div><div class="stat-label">Total Picks</div></div>
+    <div class="stat"><div class="stat-val" id="s_settled">--</div><div class="stat-label">Settled</div></div>
+    <div class="stat"><div class="stat-val" id="s_hit">--</div><div class="stat-label">Hit Rate</div></div>
+    <div class="stat"><div class="stat-val" id="s_units">--</div><div class="stat-label">Net Units</div></div>
+    <div class="stat"><div class="stat-val" id="s_roi">--</div><div class="stat-label">ROI %</div></div>
+    <div class="stat"><div class="stat-val" id="s_edge">--</div><div class="stat-label">Avg Edge</div></div>
+  </div>
+
+  <h2 style="color:#d4a04a; font-size:15px; margin: 24px 0 8px;">Per-Source Breakdown</h2>
+  <div class="panel">
+    <div class="row head cols-source-summary">
+      <div>Source</div><div>N</div><div>Settled</div><div>Wins</div><div>Hit %</div><div>Net</div><div>ROI %</div>
+    </div>
+    <div id="source-rows"><div class="row"><div class="muted">Loading…</div></div></div>
+  </div>
+
+  <h2 style="color:#d4a04a; font-size:15px; margin: 24px 0 8px;">Recent Picks (filtered)</h2>
+  <div class="panel">
+    <div class="row head cols-picks">
+      <div>Date</div><div>Player / Matchup</div><div>Source / Market</div>
+      <div>Entry</div><div>Fair</div><div>Edge</div><div>Result</div><div>Units</div>
+    </div>
+    <div id="picks-rows" style="max-height: 600px; overflow-y: auto;"><div class="row"><div class="muted">Loading…</div></div></div>
+  </div>
+</main>
+
+<script>
+const WORKER = (window.EDGESTAT_WORKER_URL || 'https://edgestat-live.brandonpleone.workers.dev');
+
+async function fetchJSON(url) {
+  try {
+    const r = await fetch(url + (url.includes('?') ? '&' : '?') + 't=' + Date.now());
+    if (!r.ok) return null;
+    return await r.json();
+  } catch (e) { return null; }
+}
+
+function buildQS() {
+  const s = document.getElementById('f_source').value;
+  const sp = document.getElementById('f_sport').value;
+  const f = document.getElementById('f_from').value;
+  const t = document.getElementById('f_to').value;
+  const o = document.getElementById('f_outcome').value;
+  const qs = [];
+  if (s) qs.push('source=' + encodeURIComponent(s));
+  if (sp) qs.push('sport=' + encodeURIComponent(sp));
+  if (f) qs.push('date_from=' + f);
+  if (t) qs.push('date_to=' + t);
+  if (o) qs.push('outcome=' + o);
+  return qs.length ? '?' + qs.join('&') : '';
+}
+
+const fmt = (n, d=2) => (n === null || n === undefined || isNaN(n)) ? '--' : Number(n).toFixed(d);
+const fmtPct = (n) => (n === null || n === undefined || isNaN(n)) ? '--' : (Number(n) * 100).toFixed(1) + '%';
+const fmtUnits = (n) => {
+  if (n === null || n === undefined || isNaN(n)) return '--';
+  const v = Number(n);
+  return `<span class="${v>=0?'pos':'neg'}">${v>=0?'+':''}${v.toFixed(2)}u</span>`;
+};
+
+async function loadAll() {
+  const bt = await fetchJSON(WORKER + '/db/backtest');
+  if (!bt) {
+    document.getElementById('status').textContent = 'D1 not bound yet — run the wrangler D1 setup commands (see chat).';
+    return;
+  }
+  if (bt.error) {
+    document.getElementById('status').textContent = 'D1 binding error: ' + bt.error;
+    return;
+  }
+  renderSummary(bt);
+  renderSources(bt.by_source || []);
+  populateSourceFilter(bt.by_source || []);
+
+  const picks = await fetchJSON(WORKER + '/db/picks?limit=200');
+  renderPicks(picks ? picks.results : []);
+
+  const dbhealth = await fetchJSON(WORKER + '/db/health');
+  document.getElementById('status').textContent =
+    `D1 connected · ${dbhealth?.picks || 0} picks in history · ${dbhealth?.line_snapshots || 0} line snapshots`;
+}
+
+async function runBacktest() {
+  const qs = buildQS();
+  document.getElementById('status').textContent = `Running backtest${qs}…`;
+  const bt = await fetchJSON(WORKER + '/db/backtest' + qs);
+  if (!bt || bt.error) return;
+  renderSummary(bt);
+  renderSources(bt.by_source || []);
+  const picks = await fetchJSON(WORKER + '/db/picks' + qs + (qs ? '&' : '?') + 'limit=200');
+  renderPicks(picks ? picks.results : []);
+  document.getElementById('status').textContent =
+    `Backtest complete · ${bt.n_picks} picks matched · ${bt.n_settled} settled`;
+}
+
+function resetFilters() {
+  ['f_source', 'f_sport', 'f_from', 'f_to', 'f_outcome'].forEach(id => document.getElementById(id).value = '');
+  runBacktest();
+}
+
+function renderSummary(bt) {
+  document.getElementById('s_n').textContent = bt.n_picks || 0;
+  document.getElementById('s_settled').textContent = bt.n_settled || 0;
+  document.getElementById('s_hit').textContent = fmtPct(bt.hit_rate);
+  const units = bt.net_units || 0;
+  document.getElementById('s_units').innerHTML = fmtUnits(units);
+  document.getElementById('s_roi').innerHTML = bt.roi_pct === null || bt.roi_pct === undefined
+    ? '--' : `<span class="${bt.roi_pct>=0?'pos':'neg'}">${bt.roi_pct>=0?'+':''}${fmt(bt.roi_pct, 1)}%</span>`;
+  document.getElementById('s_edge').textContent = bt.avg_edge_pct !== null && bt.avg_edge_pct !== undefined
+    ? fmt(bt.avg_edge_pct, 1) + '%' : '--';
+}
+
+function renderSources(arr) {
+  const div = document.getElementById('source-rows');
+  if (!arr.length) {
+    div.innerHTML = '<div class="row"><div class="muted">No picks yet — D1 will populate after first heartbeat sync.</div></div>';
+    return;
+  }
+  div.innerHTML = arr.map(s => {
+    const hit = s.n_settled > 0 ? (s.n_wins || 0) / s.n_settled : null;
+    const roi = s.n_settled > 0 ? (s.net || 0) / s.n_settled * 100 : null;
+    return `<div class="row cols-source-summary">
+      <div><strong>${s.source}</strong></div>
+      <div>${s.n}</div>
+      <div>${s.n_settled}</div>
+      <div>${s.n_wins || 0}</div>
+      <div>${fmtPct(hit)}</div>
+      <div>${fmtUnits(s.net)}</div>
+      <div>${roi === null ? '--' : `<span class="${roi>=0?'pos':'neg'}">${roi>=0?'+':''}${roi.toFixed(1)}%</span>`}</div>
+    </div>`;
+  }).join('');
+}
+
+function populateSourceFilter(arr) {
+  const sel = document.getElementById('f_source');
+  const existing = new Set([...sel.options].map(o => o.value));
+  arr.forEach(s => {
+    if (!existing.has(s.source)) {
+      const o = document.createElement('option');
+      o.value = s.source; o.textContent = `${s.source} (${s.n})`;
+      sel.appendChild(o);
+    }
+  });
+}
+
+function renderPicks(arr) {
+  const div = document.getElementById('picks-rows');
+  if (!arr || !arr.length) {
+    div.innerHTML = '<div class="row"><div class="muted">No picks match these filters.</div></div>';
+    return;
+  }
+  div.innerHTML = arr.map(p => {
+    const outcome = p.outcome || 'PENDING';
+    const badgeKey = outcome === 'WIN' ? 'W' : outcome === 'LOSS' ? 'L' : outcome === 'PUSH' ? 'P' : 'PENDING';
+    const outcomeBadge = `<span class="badge badge-${badgeKey}">${outcome}</span>`;
+    const cls = outcome === 'WIN' ? 'grade-W' : outcome === 'LOSS' ? 'grade-L' : '';
+    return `<div class="row cols-picks ${cls}">
+      <div>${p.date || '--'}</div>
+      <div>${p.player_or_matchup || '--'}</div>
+      <div><strong>${p.source}</strong><br><span class="muted" style="font-size:10px;">${p.market || ''}</span></div>
+      <div>${p.entry_odds !== null && p.entry_odds !== undefined ? (p.entry_odds > 0 ? '+' : '') + p.entry_odds : '--'}</div>
+      <div>${p.fair_odds !== null && p.fair_odds !== undefined ? (p.fair_odds > 0 ? '+' : '') + p.fair_odds : '--'}</div>
+      <div>${p.edge_pct !== null && p.edge_pct !== undefined ? fmt(p.edge_pct, 1) + '%' : '--'}</div>
+      <div>${outcomeBadge}</div>
+      <div>${fmtUnits(p.payout_units)}</div>
+    </div>`;
+  }).join('');
+}
+
+loadAll();
+</script>
+</body>
+</html>

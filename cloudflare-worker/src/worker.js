@@ -194,6 +194,178 @@ async function handleHTTP(request, env) {
   };
   if (request.method === "OPTIONS") return new Response(null, { headers: cors });
 
+  // ============================================================
+  // D1 DATABASE ENDPOINTS (Pro plan -- pick history + backtest)
+  // ============================================================
+
+  // POST /db/log-picks  body: { picks: [...] }  -- bulk insert picks
+  // Idempotent: ON CONFLICT (pick_id) DO NOTHING
+  if (path === "/db/log-picks" && request.method === "POST") {
+    if (!env.EDGESTAT_DB) {
+      return new Response(JSON.stringify({ error: "D1 not bound" }), { status: 503, headers: cors });
+    }
+    try {
+      const body = await request.json();
+      const picks = body.picks || [];
+      let inserted = 0, skipped = 0;
+      const stmt = env.EDGESTAT_DB.prepare(
+        `INSERT INTO picks (pick_id, source, sport, player_or_matchup, market,
+                            p_predicted, entry_odds, fair_odds, edge_pct, tier,
+                            outcome, date, created_at, metadata)
+         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+         ON CONFLICT(pick_id) DO NOTHING`
+      );
+      for (const p of picks) {
+        const r = await stmt.bind(
+          p.pick_id, p.source || "unknown", p.sport || "MLB",
+          p.player_or_matchup || null, p.market || null,
+          p.p_predicted || null,
+          p.entry_odds || p.fair_american || null,
+          p.fair_odds || p.fair_american || null,
+          p.edge_pct || null, p.tier || null,
+          p.outcome || "PENDING",
+          p.date, p.created_at || new Date().toISOString(),
+          p.metadata ? JSON.stringify(p.metadata) : null
+        ).run();
+        if (r.meta && r.meta.changes > 0) inserted++;
+        else skipped++;
+      }
+      return new Response(JSON.stringify({ ok: true, inserted, skipped, total: picks.length }), { headers: cors });
+    } catch (e) {
+      return new Response(JSON.stringify({ error: String(e) }), { status: 500, headers: cors });
+    }
+  }
+
+  // POST /db/settle-picks  body: { settlements: [{pick_id, outcome, payout_units, settled_at, closing_odds?}] }
+  if (path === "/db/settle-picks" && request.method === "POST") {
+    if (!env.EDGESTAT_DB) {
+      return new Response(JSON.stringify({ error: "D1 not bound" }), { status: 503, headers: cors });
+    }
+    try {
+      const body = await request.json();
+      const sets = body.settlements || [];
+      let updated = 0;
+      const stmt = env.EDGESTAT_DB.prepare(
+        `UPDATE picks
+            SET outcome=?, payout_units=?, closing_odds=COALESCE(?, closing_odds),
+                settled_at=COALESCE(settled_at, ?)
+          WHERE pick_id=? AND outcome='PENDING'`
+      );
+      for (const s of sets) {
+        const r = await stmt.bind(
+          s.outcome, s.payout_units || null,
+          s.closing_odds || null,
+          s.settled_at || new Date().toISOString(),
+          s.pick_id
+        ).run();
+        if (r.meta && r.meta.changes > 0) updated++;
+      }
+      return new Response(JSON.stringify({ ok: true, updated, total: sets.length }), { headers: cors });
+    } catch (e) {
+      return new Response(JSON.stringify({ error: String(e) }), { status: 500, headers: cors });
+    }
+  }
+
+  // GET /db/picks?source=X&date_from=Y&date_to=Z&limit=N
+  if (path === "/db/picks") {
+    if (!env.EDGESTAT_DB) {
+      return new Response(JSON.stringify({ error: "D1 not bound" }), { status: 503, headers: cors });
+    }
+    const source = url.searchParams.get("source");
+    const sport = url.searchParams.get("sport");
+    const dateFrom = url.searchParams.get("date_from");
+    const dateTo = url.searchParams.get("date_to");
+    const outcome = url.searchParams.get("outcome");
+    const limit = Math.min(parseInt(url.searchParams.get("limit") || "200"), 1000);
+
+    let sql = "SELECT * FROM picks WHERE 1=1";
+    const args = [];
+    if (source)   { sql += " AND source = ?";   args.push(source); }
+    if (sport)    { sql += " AND sport = ?";    args.push(sport); }
+    if (dateFrom) { sql += " AND date >= ?";    args.push(dateFrom); }
+    if (dateTo)   { sql += " AND date <= ?";    args.push(dateTo); }
+    if (outcome)  { sql += " AND outcome = ?";  args.push(outcome); }
+    sql += " ORDER BY date DESC, id DESC LIMIT ?";
+    args.push(limit);
+
+    const r = await env.EDGESTAT_DB.prepare(sql).bind(...args).all();
+    return new Response(JSON.stringify({ results: r.results || [], n: (r.results || []).length }), { headers: cors });
+  }
+
+  // GET /db/backtest?source=X&date_from=Y&date_to=Z -- aggregate stats
+  if (path === "/db/backtest") {
+    if (!env.EDGESTAT_DB) {
+      return new Response(JSON.stringify({ error: "D1 not bound" }), { status: 503, headers: cors });
+    }
+    const source = url.searchParams.get("source");
+    const sport = url.searchParams.get("sport");
+    const dateFrom = url.searchParams.get("date_from");
+    const dateTo = url.searchParams.get("date_to");
+
+    let sql = `SELECT
+      COUNT(*) as n_picks,
+      SUM(CASE WHEN outcome != 'PENDING' THEN 1 ELSE 0 END) as n_settled,
+      SUM(CASE WHEN outcome = 'WIN' THEN 1 ELSE 0 END) as n_wins,
+      SUM(CASE WHEN outcome = 'LOSS' THEN 1 ELSE 0 END) as n_losses,
+      SUM(CASE WHEN outcome = 'PUSH' THEN 1 ELSE 0 END) as n_pushes,
+      SUM(COALESCE(payout_units, 0)) as net_units,
+      AVG(p_predicted) as avg_p_predicted,
+      AVG(edge_pct) as avg_edge_pct
+      FROM picks WHERE 1=1`;
+    const args = [];
+    if (source)   { sql += " AND source = ?";   args.push(source); }
+    if (sport)    { sql += " AND sport = ?";    args.push(sport); }
+    if (dateFrom) { sql += " AND date >= ?";    args.push(dateFrom); }
+    if (dateTo)   { sql += " AND date <= ?";    args.push(dateTo); }
+
+    const r = await env.EDGESTAT_DB.prepare(sql).bind(...args).first();
+    const settled = r.n_settled || 0;
+    const hit_rate = settled > 0 ? (r.n_wins || 0) / settled : null;
+    const roi_pct = settled > 0 ? ((r.net_units || 0) / settled) * 100 : null;
+
+    // Per-source breakdown if no source filter
+    let by_source = [];
+    if (!source) {
+      const bs = await env.EDGESTAT_DB.prepare(
+        `SELECT source,
+                COUNT(*) as n,
+                SUM(CASE WHEN outcome != 'PENDING' THEN 1 ELSE 0 END) as n_settled,
+                SUM(CASE WHEN outcome = 'WIN' THEN 1 ELSE 0 END) as n_wins,
+                SUM(COALESCE(payout_units, 0)) as net
+         FROM picks GROUP BY source ORDER BY n_settled DESC`
+      ).all();
+      by_source = bs.results || [];
+    }
+
+    return new Response(JSON.stringify({
+      filters: { source, sport, date_from: dateFrom, date_to: dateTo },
+      n_picks: r.n_picks || 0,
+      n_settled: settled,
+      n_wins: r.n_wins || 0,
+      n_losses: r.n_losses || 0,
+      n_pushes: r.n_pushes || 0,
+      hit_rate,
+      net_units: r.net_units || 0,
+      roi_pct,
+      avg_p_predicted: r.avg_p_predicted,
+      avg_edge_pct: r.avg_edge_pct,
+      by_source,
+    }), { headers: cors });
+  }
+
+  // GET /db/health -- count of rows in each table
+  if (path === "/db/health") {
+    if (!env.EDGESTAT_DB) {
+      return new Response(JSON.stringify({ error: "D1 not bound" }), { status: 503, headers: cors });
+    }
+    const picks = await env.EDGESTAT_DB.prepare("SELECT COUNT(*) as n FROM picks").first();
+    const snaps = await env.EDGESTAT_DB.prepare("SELECT COUNT(*) as n FROM line_snapshots").first();
+    const runs = await env.EDGESTAT_DB.prepare("SELECT COUNT(*) as n FROM backtest_runs").first();
+    return new Response(JSON.stringify({
+      picks: picks.n, line_snapshots: snaps.n, backtest_runs: runs.n
+    }), { headers: cors });
+  }
+
   // /admin/save-overrides -- POST a model_overrides JSON, stored in KV.
   // The next pipeline cron syncs KV -> data/model_overrides.json via git commit.
   if (path === "/admin/save-overrides" && request.method === "POST") {

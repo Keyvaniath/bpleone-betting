@@ -74,6 +74,13 @@ jobs:
         working-directory: python
         run: python multi_book_lines.py || true
 
+      # D1 sync -- push picks history to Cloudflare D1 (Pro plan)
+      - name: D1 sync (Cloudflare Pro -- pick history to edge SQL)
+        env:
+          EDGESTAT_WORKER_URL: ${{ secrets.EDGESTAT_WORKER_URL }}
+        working-directory: python
+        run: python d1_sync.py || true
+
       # POD P&L (idempotent)
       - name: POD P&L tracker
         working-directory: python
