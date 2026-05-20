@@ -36,6 +36,12 @@
     <p class="muted" id="status">Loading all signals…</p>
   </section>
 
+  <!-- WHALE PICKS -->
+  <section class="card section" style="border-left: 4px solid #d4a04a;">
+    <div class="card-head"><span>🐋 WHALE Picks — Max Confluence</span><span class="muted">size up these</span></div>
+    <div id="whaleBox"><p class="muted" style="padding:14px;">Loading…</p></div>
+  </section>
+
   <!-- LOCKS -->
   <section class="card section">
     <div class="card-head"><span>🔒 Today's 5 Locks</span><span class="muted"><a href="locks-of-day.html" style="color:var(--text-2,#aaa);">Full history →</a></span></div>
@@ -96,9 +102,24 @@ Promise.all([
   fetch("data/mlb_lineup_strength.json?t=" + Date.now()).then(r => r.json()).catch(() => null),
   fetch("data/mlb_starter_pitch_count.json?t=" + Date.now()).then(r => r.json()).catch(() => null),
   fetch("data/cross_sport_parlays.json?t=" + Date.now()).then(r => r.json()).catch(() => null),
-]).then(([locks, sharp, consensus, unders, lineup, pitch, parlays]) => {
+  fetch("data/whale_picks.json?t=" + Date.now()).then(r => r.json()).catch(() => null),
+]).then(([locks, sharp, consensus, unders, lineup, pitch, parlays, whales]) => {
   const stamp = (locks && locks.generated_at || '').slice(0,19).replace('T',' ');
   document.getElementById('status').textContent = `All signals · ${stamp}`;
+
+  // WHALES (top section)
+  const wb = document.getElementById('whaleBox');
+  const ws = (whales && whales.whales) || [];
+  const top_whales = ws.filter(w => w.tier === 'WHALE' || w.tier === 'STRONG').slice(0, 8);
+  if (top_whales.length) {
+    wb.innerHTML = top_whales.map(w => `<div class="row">
+      <span class="pill pill-${w.tier === 'WHALE' ? 'gold' : 'green'}">${w.tier}</span>
+      <strong>${w.sport}</strong> · <strong>${w.player_or_matchup}</strong> · <span class="muted">${w.market}</span> ·
+      <strong>${(w.prob*100).toFixed(0)}%</strong> · <span class="pos">+${w.edge_pct.toFixed(1)}%</span> ·
+      <span class="muted">score ${w.confluence_score.toFixed(1)}</span><br>
+      <span style="font-size:11px; color:var(--text-2,#aaa); font-style:italic;">${w.reasons.join(' · ')}</span>
+    </div>`).join('');
+  } else wb.innerHTML = '<p class="muted" style="padding:14px;">No whale-tier picks yet.</p>';
 
   // LOCKS
   const lb = document.getElementById('locksBox');
