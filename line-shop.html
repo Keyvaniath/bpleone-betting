@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Line Shopping | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/nav.js"></script>
+<style>
+  .row { display: grid; gap: 8px; padding: 9px 14px; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 12px; border-bottom: 1px solid rgba(255,255,255,0.04); }
+  .row.head { background: rgba(255,255,255,0.04); color: var(--muted,#888); font-size: 10px; text-transform: uppercase; padding: 8px 14px; }
+  .row.cols-game { grid-template-columns: 1.3fr 70px 70px 70px 70px 70px 70px 1.4fr; }
+  .pos { color: #58c878; font-weight: 700; }
+  .neg { color: #e35a5a; font-weight: 700; }
+  .muted { color: var(--muted,#888); }
+  .arb-card { padding: 14px 16px; background: linear-gradient(135deg, rgba(88,200,120,0.15), rgba(88,200,120,0.04)); border: 1px solid rgba(88,200,120,0.5); border-radius: 8px; margin-bottom: 12px; }
+  .panel { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; margin-bottom: 16px; }
+  .info-card { padding: 14px 18px; background: linear-gradient(135deg, rgba(212,160,74,0.10), rgba(212,160,74,0.02)); border: 1px solid rgba(212,160,74,0.3); border-radius: 10px; margin-bottom: 16px; }
+  .upgrade-card { padding: 14px 18px; background: linear-gradient(135deg, rgba(212,160,74,0.20), rgba(212,160,74,0.05)); border: 1px solid #d4a04a; border-radius: 10px; margin-bottom: 16px; }
+  code { background: rgba(0,0,0,0.4); padding: 2px 6px; border-radius: 3px; color: #d4a04a; }
+  .badge { display: inline-block; padding: 2px 7px; border-radius: 4px; font-size: 10px; font-weight: 700; }
+  .badge-live { background: #58c878; color: #111; }
+  .badge-blocked { background: #e35a5a; color: #fff; }
+  .badge-skipped { background: #888; color: #fff; }
+  .book-best { color: #d4a04a; font-weight: 700; }
+</style>
+</head>
+<body class="page-line-shop">
+<header class="topbar">
+  <div class="brand"><a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a><span class="tagline">by bpleone</span></div>
+  <nav class="mainnav"><!-- nav.js injects --></nav>
+  <div class="topbar-actions"><div class="ticker">LIVE</div></div>
+</header>
+<main class="container">
+  <section class="page-head">
+    <h1>💰 Line Shopping — Best Price Per Pick</h1>
+    <p class="muted" id="status">Loading…</p>
+  </section>
+
+  <div class="info-card">
+    <strong style="color:#d4a04a;">Why this matters more than alpha:</strong>
+    <span style="color: var(--text-2,#aaa); font-size:13px;">
+      Getting <strong>-110 instead of -115</strong> on a coin-flip bet is the difference
+      between long-term winning and losing. A bettor at 53% win rate at -110 is +6.4% ROI;
+      at -115 they're +1.8%. Line shopping is the single highest-EV habit in sports betting
+      — bigger than any model edge.
+    </span>
+  </div>
+
+  <div id="sources-strip"></div>
+  <div id="arb-strip"></div>
+
+  <h2 style="color:#d4a04a; font-size:15px; margin: 24px 0 8px;">Tonight's Best Lines (across all polled books)</h2>
+  <div class="panel">
+    <div class="row head cols-game">
+      <div>Game</div><div>Books</div>
+      <div>Best HOME ML</div><div>Best AWAY ML</div>
+      <div>Best OVER</div><div>Best UNDER</div>
+      <div>Total Line</div>
+      <div>Notes</div>
+    </div>
+    <div id="games-rows"><div class="row"><div class="muted">Loading…</div></div></div>
+  </div>
+</main>
+
+<script>
+(async () => {
+  const safeFetch = async (p) => {
+    try { const r = await fetch(p + '?t=' + Date.now()); if (!r.ok) return null; return await r.json(); }
+    catch (e) { return null; }
+  };
+
+  const d = await safeFetch('data/multi_book_lines.json');
+  if (!d) {
+    document.getElementById('status').textContent = 'Data not ready yet — heartbeat will populate.';
+    return;
+  }
+
+  // Source strip
+  const strip = document.getElementById('sources-strip');
+  strip.innerHTML = `<div class="info-card" style="display:flex; gap:14px; align-items:center; flex-wrap:wrap;">
+    <strong>Polled books:</strong>
+    ${d.sources_used.map(([name, status]) => {
+      const cls = status.includes('live') ? 'badge-live' : status.includes('blocked') ? 'badge-blocked' : 'badge-skipped';
+      return `<span class="badge ${cls}">${name}: ${status}</span>`;
+    }).join('')}
+    <span class="muted" style="margin-left:auto;">
+      ${d.n_games} games · ${d.n_books_polled} books · ${d.n_arbitrage_found} arbs · ${d.n_lowvig_found} low-vig
+    </span>
+  </div>`;
+
+  // Upgrade notice if only 1 book
+  if (d.n_books_polled <= 1) {
+    const up = document.createElement('div');
+    up.className = 'upgrade-card';
+    up.innerHTML = `<strong style="color:#d4a04a;">⚡ Unlock true multi-book line shopping:</strong>
+    <p style="margin:8px 0 4px; font-size:13px; color:var(--text-2,#aaa);">
+      Currently polling Bovada only (DraftKings geo-blocks Cloudflare IPs).
+      For 8+ aggregated books (DK, FD, Caesars, MGM, PointsBet, Pinnacle, etc.), add a free
+      The Odds API key:
+    </p>
+    <ol style="font-size:13px; color:var(--text-2,#aaa); margin: 8px 0;">
+      <li>Sign up at <a href="https://the-odds-api.com" target="_blank" style="color:#d4a04a;">the-odds-api.com</a> (free: 500 requests/month)</li>
+      <li>Run in PowerShell:
+        <pre style="background:rgba(0,0,0,0.4); padding:8px; border-radius:4px; margin:4px 0;">gh secret set ODDS_API_KEY --body "your_key_here"</pre></li>
+      <li>Next heartbeat (≤5 min) auto-picks up 8 more books — this page expands instantly.</li>
+    </ol>`;
+    strip.appendChild(up);
+  }
+
+  // Arbitrage alerts
+  const arbStrip = document.getElementById('arb-strip');
+  if (d.arbitrage_alerts && d.arbitrage_alerts.length) {
+    arbStrip.innerHTML = `<div class="arb-card">
+      <strong style="color:#58c878;">🎯 ARBITRAGE — risk-free profit detected:</strong>
+      ${d.arbitrage_alerts.map(a =>
+        `<div style="font-family:'JetBrains Mono',monospace; font-size:12px; margin:6px 0;">
+          ${a.best_home.book} HOME @ ${a.best_home.odds} + ${a.best_away.book} AWAY @ ${a.best_away.odds} = +${a.edge_pct}% guaranteed
+        </div>`).join('')}
+    </div>`;
+  }
+
+  // Games table
+  const rows = d.rows || [];
+  const div = document.getElementById('games-rows');
+  if (!rows.length) {
+    div.innerHTML = '<div class="row"><div class="muted">No games today.</div></div>';
+  } else {
+    div.innerHTML = rows.map(r => {
+      const bestH = r.best_home_ml;
+      const bestA = r.best_away_ml;
+      const bestO = r.best_total_over;
+      const bestU = r.best_total_under;
+      const fmtOdds = (o) => o ? `<span class="book-best">${o.odds>=0?'+':''}${o.odds}</span><br><span class="muted" style="font-size:10px;">${o.book}</span>` : '<span class="muted">--</span>';
+      const totalLine = Object.values(r.books).find(b => b.total_line)?.total_line || '--';
+      const notes = r.arbitrage_or_lowvig ?
+        `<span class="${r.arbitrage_or_lowvig.type==='ARBITRAGE'?'pos':'muted'}">${r.arbitrage_or_lowvig.type} ${r.arbitrage_or_lowvig.edge_pct?'+'+r.arbitrage_or_lowvig.edge_pct+'%':r.arbitrage_or_lowvig.vig_pct+'% vig'}</span>` :
+        `<span class="muted">${r.n_books} book${r.n_books===1?'':'s'} polled</span>`;
+      return `<div class="row cols-game">
+        <div><strong>${r.matchup}</strong></div>
+        <div>${r.n_books}</div>
+        <div>${fmtOdds(bestH)}</div>
+        <div>${fmtOdds(bestA)}</div>
+        <div>${fmtOdds(bestO)}</div>
+        <div>${fmtOdds(bestU)}</div>
+        <div>${totalLine}</div>
+        <div>${notes}</div>
+      </div>`;
+    }).join('');
+  }
+
+  document.getElementById('status').textContent =
+    `Generated: ${new Date(d.generated_at + 'Z').toLocaleString()} · refreshes every 5 min via heartbeat`;
+})();
+</script>
+</body>
+</html>

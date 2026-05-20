@@ -67,6 +67,13 @@ jobs:
         working-directory: python
         run: python reverse_line_movement.py || true
 
+      # Multi-book line shopping (Bovada + ESPN + Odds API if key set)
+      - name: Multi-book line aggregator
+        env:
+          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+        working-directory: python
+        run: python multi_book_lines.py || true
+
       # POD P&L (idempotent)
       - name: POD P&L tracker
         working-directory: python

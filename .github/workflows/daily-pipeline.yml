@@ -544,6 +544,14 @@ jobs:
       - name: NBA pace-adjusted total projections
         working-directory: python
         run: python nba_pace_adjusted.py || true
+      - name: MLB starter quality composite (0-100 ranking)
+        working-directory: python
+        run: python mlb_starter_quality_composite.py || true
+      - name: Multi-book line aggregator (Bovada + ESPN + Odds API)
+        env:
+          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+        working-directory: python
+        run: python multi_book_lines.py || true
       - name: "Whale picks (max-confluence: top board + consensus + sharp action)"
         working-directory: python
         run: python whale_picks.py
