@@ -1,0 +1,23 @@
+name = "edgestat-live"
+main = "src/worker.js"
+compatibility_date = "2026-05-20"
+
+# KV namespace for live data caching
+# Created via: wrangler kv:namespace create EDGESTAT_KV
+# Paste the returned ID below.
+[[kv_namespaces]]
+binding = "EDGESTAT_KV"
+id = "REPLACE_WITH_KV_NAMESPACE_ID"
+
+# Cron triggers -- every minute during peak game hours, every 5 min off-peak
+[triggers]
+crons = [
+  "* 16-23 * * *",   # every 1 min, 12pm-7pm ET (peak MLB hours)
+  "* 0-6 * * *",     # every 1 min, 8pm-2am ET (west coast night games)
+  "*/5 7-15 * * *",  # every 5 min, off-peak
+]
+
+# Optional secret for the manual /poll endpoint -- prevents random
+# people from triggering polls. Set via: wrangler secret put MANUAL_TRIGGER_KEY
+[vars]
+ENVIRONMENT = "production"

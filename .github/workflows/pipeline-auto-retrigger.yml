@@ -1,0 +1,51 @@
+name: Pipeline Auto-Retrigger Watchdog
+
+# Runs every 30 minutes during game hours. If daily-pipeline hasn't run
+# successfully in the last 6 hours, automatically triggers it. Prevents
+# the kind of 13-hour silent outage we had on 2026-05-20 where a YAML
+# bug killed the cron and nothing detected it until the user noticed
+# stale data on the dashboard.
+
+on:
+  schedule:
+    - cron: '*/30 * * * *'   # every 30 minutes
+  workflow_dispatch:
+
+permissions:
+  actions: write   # to trigger workflow_dispatch
+  contents: read
+
+jobs:
+  watchdog:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check daily-pipeline freshness + auto-retrigger if stale
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Get last successful daily-pipeline run timestamp
+          LATEST=$(gh run list --workflow=daily-pipeline.yml --status=success --limit=1 \
+            --json createdAt --jq '.[0].createdAt' || echo "")
+
+          if [ -z "$LATEST" ]; then
+            echo "No successful runs found -- triggering fresh run"
+            gh workflow run daily-pipeline.yml
+            exit 0
+          fi
+
+          # Compute age in hours
+          NOW=$(date +%s)
+          LAST=$(date -d "$LATEST" +%s 2>/dev/null || python3 -c "import datetime; print(int(datetime.datetime.fromisoformat('$LATEST'.replace('Z','+00:00')).timestamp()))")
+          AGE_HOURS=$(( (NOW - LAST) / 3600 ))
+
+          echo "Latest successful daily-pipeline: $LATEST"
+          echo "Age: ${AGE_HOURS} hours"
+
+          if [ "$AGE_HOURS" -ge 6 ]; then
+            echo "STALE -- auto-retriggering daily-pipeline"
+            gh workflow run daily-pipeline.yml
+          else
+            echo "Fresh enough, no action needed"
+          fi
