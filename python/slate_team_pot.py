@@ -52,12 +52,14 @@ def run() -> Dict[str, Any]:
     mlb_today = _load(os.path.join(DATA_DIR, "today.json"))
     for g in (mlb_today.get("games") or []):
         m = g.get("model") or {}
+        mkt = g.get("market") or {}
         mu = g.get("matchup")
-        # P_home / P_away
+        # P_home / P_away  (now propagating REAL market ML as fair_american
+        # so downstream shrinkage can anchor to market-implied probability)
         ph = m.get("p_home_win")
         pa = m.get("p_away_win") or (1 - ph if ph else None)
-        if ph: _add(picks, "MLB", mu, "ML_HOME", ph, None, "today")
-        if pa: _add(picks, "MLB", mu, "ML_AWAY", pa, None, "today")
+        if ph: _add(picks, "MLB", mu, "ML_HOME", ph, mkt.get("home_ml"), "today")
+        if pa: _add(picks, "MLB", mu, "ML_AWAY", pa, mkt.get("away_ml"), "today")
         # Total over/under from model fair_total
         for rec in (g.get("recommendations") or []):
             p = rec.get("model_prob")

@@ -32,10 +32,39 @@ from typing import Any, Dict, List, Tuple
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 OUT = os.path.join(DATA_DIR, "todays_top_plays.json")
 
-MIN_PROB = 0.70
+MIN_PROB = 0.55              # was 0.70 -- but apply AFTER shrinkage now
 MIN_EDGE_PCT = 1.0           # must be >= 1% edge to make the board
 MAX_PICKS_PER_SPORT = 6      # diversity cap in top 25
 MAX_PICKS_PER_PLAYER = 2     # don't load up on same player's market variants
+
+# Calibration shrinkage: raw model probs are usually overconfident
+# (small-sample sample means without uncertainty). Shrink toward a slightly-
+# above-coinflip baseline. This compresses 92% picks down to ~73-76% and
+# 70% picks to ~64% -- still useful ranking, more believable edges.
+SHRINKAGE_BASELINE_PROB = 0.55
+# Per-source shrinkage weight (higher = trust the model more, less shrink).
+# Game-line model (today.json) has years of MLB data behind it: less shrink.
+# PrizePicks raw probs are based on PP's projection model which we don't
+# fully trust: more shrink.
+DEFAULT_SHRINKAGE_W = 0.55     # default mix toward baseline
+SOURCE_SHRINKAGE_W = {
+    "today": 0.80,                       # MLB game model -- well-calibrated
+    "today_reco": 0.80,
+    "mlb_ext_batter": 0.60,
+    "mlb_ext_pitcher": 0.65,
+    "mlb_batter_logs": 0.55,             # raw last-14 rate -- needs shrink
+    "pitcher_matchup": 0.65,
+    "pitcher_form_regression": 0.65,
+    "mlb_batter_sp_edges": 0.60,
+    "mlb_batter_situational": 0.55,
+    "pp_over": 0.45,                     # PP projections -- aggressive shrink
+    "pp_under": 0.45,
+    "nba_ext": 0.55,
+    "wnba_ext": 0.55,
+    "nhl_ext": 0.55,
+    "nhl_goalie": 0.65,
+    "mlb_team_total": 0.60,
+}
 
 
 def _load(p):
@@ -85,6 +114,46 @@ def _market_family(market):
     return m.lower()
 
 
+def _market_implied_prob(american):
+    """American odds -> implied probability (no vig adjustment)."""
+    if american is None or not isinstance(american, (int, float)): return None
+    if american >= 0: return 100 / (american + 100)
+    return abs(american) / (abs(american) + 100)
+
+
+def _shrink_prob(raw_prob, source, fair_american=None):
+    """Two-stage calibration:
+
+       1. If a market line is available (fair_american), shrink the raw
+          model prob TOWARD the market-implied probability. The market is
+          usually closer to truth than the model -- a 25-pp divergence
+          almost always means the model is wrong.
+
+       2. Otherwise (or as a final step), shrink toward a flat baseline.
+
+       calibrated = w * raw + (1 - w) * anchor
+
+    where anchor = market_implied (if available) else SHRINKAGE_BASELINE_PROB.
+    """
+    if raw_prob is None: return None
+    w = SOURCE_SHRINKAGE_W.get(source or "", DEFAULT_SHRINKAGE_W)
+    market_p = _market_implied_prob(fair_american)
+    if market_p is not None:
+        # Market anchor available -- use it as the shrinkage target
+        anchor = market_p
+        # If model and market agree closely, keep more of model. If they
+        # disagree wildly, lean more on market.
+        gap = abs(raw_prob - market_p)
+        if gap > 0.25:
+            # Big disagreement -- model is probably wrong, lean to market
+            w = w * 0.5
+        elif gap > 0.15:
+            w = w * 0.75
+    else:
+        anchor = SHRINKAGE_BASELINE_PROB
+    return w * raw_prob + (1 - w) * anchor
+
+
 def run() -> Dict[str, Any]:
     player_pot = _load(os.path.join(DATA_DIR, "slate_player_pot.json"))
     team_pot = _load(os.path.join(DATA_DIR, "slate_team_pot.json"))
@@ -93,15 +162,19 @@ def run() -> Dict[str, Any]:
     for src, doc in (("player", player_pot), ("team", team_pot)):
         items = doc.get("all_picks") or doc.get("top_50") or doc.get("top_30") or []
         for x in items:
-            prob = x.get("prob")
-            if not prob or prob < MIN_PROB: continue
-            # Per-source default fair price
+            raw_prob = x.get("prob")
+            if not raw_prob: continue
+            source = x.get("source")
+            # Get explicit fair_american FIRST so shrinkage can anchor to market
             fair = x.get("fair_american")
+            calibrated_prob = _shrink_prob(raw_prob, source, fair if isinstance(fair, (int, float)) else None)
+            if calibrated_prob is None or calibrated_prob < MIN_PROB: continue
+            # Fall back to source-default fair odds if none provided
             if not isinstance(fair, (int, float)):
-                fair = _fair_odds_for_source(x.get("source"), src)
+                fair = _fair_odds_for_source(source, src)
             dec_odds = _american_to_decimal(fair) or 1.91
-            edge = _edge_pct(prob, dec_odds)
-            kelly = _kelly_fraction(prob, dec_odds)
+            edge = _edge_pct(calibrated_prob, dec_odds)
+            kelly = _kelly_fraction(calibrated_prob, dec_odds)
             if edge * 100 < MIN_EDGE_PCT: continue   # require material edge
             candidates.append({
                 "src": src,
@@ -110,13 +183,15 @@ def run() -> Dict[str, Any]:
                 "team": x.get("team"),
                 "market": x.get("market"),
                 "market_family": _market_family(x.get("market")),
-                "prob": prob,
+                "prob": round(calibrated_prob, 4),
+                "raw_prob": round(raw_prob, 4),
+                "shrinkage_w": round(SOURCE_SHRINKAGE_W.get(source or "", DEFAULT_SHRINKAGE_W), 2),
                 "fair_american": fair,
                 "decimal_odds": round(dec_odds, 3),
                 "edge_pct": round(edge * 100, 1),
                 "kelly_fraction": round(kelly, 4),
                 "unit_size_quarter_kelly": round(kelly * 0.25, 3),
-                "source": x.get("source"),
+                "source": source,
             })
 
     # Rank by edge_pct desc (so highest-EV picks float to top)
@@ -159,6 +234,14 @@ def run() -> Dict[str, Any]:
         "min_edge_pct": MIN_EDGE_PCT,
         "max_picks_per_sport": MAX_PICKS_PER_SPORT,
         "max_picks_per_player": MAX_PICKS_PER_PLAYER,
+        "calibration": {
+            "shrinkage_baseline_prob": SHRINKAGE_BASELINE_PROB,
+            "default_shrinkage_w": DEFAULT_SHRINKAGE_W,
+            "per_source_w": SOURCE_SHRINKAGE_W,
+            "note": ("All displayed probabilities are post-shrinkage. Raw model "
+                      "outputs are mixed with a 0.55 baseline weighted by source "
+                      "reliability -- shrinkage_w in each pick = weight on raw."),
+        },
         "n_total_plays": len(deduped),
         "n_raw_candidates": len(candidates),
         "by_sport": by_sport,
