@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Model Accuracy | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/nav.js"></script>
+<style>
+  .row { display: grid; grid-template-columns: 1.6fr 60px 80px 80px 80px 90px; gap: 8px; padding: 9px 14px; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 12px; border-bottom: 1px solid rgba(255,255,255,0.04); }
+  .row.head { background: rgba(255,255,255,0.04); color: var(--muted,#888); font-size: 10px; text-transform: uppercase; padding: 8px 14px; }
+  .row.win-heavy { border-left: 3px solid #58c878; background: rgba(88,200,120,0.04); }
+  .row.loss-heavy { border-left: 3px solid #e35a5a; background: rgba(227,90,90,0.04); }
+  .row.neutral { border-left: 3px solid #666; }
+  .pos { color: #58c878; font-weight: 700; }
+  .neg { color: #e35a5a; font-weight: 700; }
+  .muted { color: var(--muted,#888); }
+  .info-card { padding: 14px 18px; background: linear-gradient(135deg, rgba(212,160,74,0.1), rgba(212,160,74,0.02)); border: 1px solid rgba(212,160,74,0.3); border-radius: 10px; margin-bottom: 16px; }
+  .tab-strip { display: flex; gap: 4px; margin-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .tab { padding: 8px 14px; cursor: pointer; font-size: 12px; color: var(--text-2,#aaa); border-bottom: 2px solid transparent; }
+  .tab.active { color: var(--accent,#d4a04a); border-bottom-color: var(--accent,#d4a04a); }
+</style>
+</head>
+<body class="page-accuracy">
+<header class="topbar">
+  <div class="brand"><a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a><span class="tagline">by bpleone</span></div>
+  <nav class="mainnav"><!-- nav.js injects --></nav>
+  <div class="topbar-actions"><div class="ticker">LIVE</div></div>
+</header>
+<main class="container">
+  <section class="page-head">
+    <h1>📊 Model Accuracy — Per-Source W-L</h1>
+    <p class="muted" id="status">Loading…</p>
+  </section>
+  <div class="info-card">
+    <strong style="color:#d4a04a;">Why this matters:</strong>
+    <span style="color: var(--text-2,#aaa); font-size:13px;">
+      Every pick from every module (top-25 board, whales, consensus, unders, sharp action,
+      locks, POD) is settled against actual outcomes. Per-source W-L tells us which modules are
+      actually predictive and which are noise. This is the training signal — calibration shrinkage
+      weights tighten on high-accuracy sources and loosen on unreliable ones over time.
+    </span>
+  </div>
+
+  <section class="metric-strip">
+    <div class="metric"><span class="metric-num" id="m_total">--</span><span class="metric-label">Total Picks</span></div>
+    <div class="metric"><span class="metric-num" id="m_settled">--</span><span class="metric-label">Settled</span></div>
+    <div class="metric"><span class="metric-num" id="m_hit">--</span><span class="metric-label">Overall Hit Rate</span></div>
+    <div class="metric"><span class="metric-num" id="m_net">--</span><span class="metric-label">Net Units (1u flat)</span></div>
+    <div class="metric"><span class="metric-num" id="m_roi">--</span><span class="metric-label">ROI %</span></div>
+  </section>
+
+  <div class="tab-strip">
+    <div class="tab active" data-tab="by_source">By Source</div>
+    <div class="tab" data-tab="by_market">By Market</div>
+    <div class="tab" data-tab="by_sport">By Sport</div>
+    <div class="tab" data-tab="recent">Recent Picks</div>
+  </div>
+
+  <section class="card">
+    <div class="card-head"><span id="tab_title">Per-Source Accuracy</span><span class="muted" id="meta">--</span></div>
+    <div id="container"></div>
+  </section>
+</main>
+<script src="js/nav_badge.js"></script>
+<script>
+let DATA = null;
+function rowClass(hr) { if (hr == null) return 'neutral'; if (hr >= 0.55) return 'win-heavy'; if (hr < 0.45) return 'loss-heavy'; return 'neutral'; }
+function fmtUnits(u) { if (u == null) return '—'; const cls = u > 0 ? 'pos' : u < 0 ? 'neg' : 'muted'; return `<span class="${cls}">${u > 0 ? '+' : ''}${u.toFixed(2)}u</span>`; }
+function fmtPct(p) { if (p == null) return '—'; return (p*100).toFixed(1) + '%'; }
+
+function renderBreakdown(obj, label) {
+  if (!obj || Object.keys(obj).length === 0) return '<p class="muted" style="padding:14px;">No settled picks yet — first signal arrives when today\'s picks complete the 12-hour cool-off + game outcomes.</p>';
+  let html = `<div class="row head">
+    <span>${label}</span><span>N</span><span>W-L</span><span></span><span>Hit %</span><span>Net Units</span>
+  </div>`;
+  const sorted = Object.entries(obj).sort((a, b) => -(a[1].n) + (b[1].n));
+  for (const [name, b] of sorted) {
+    html += `<div class="row ${rowClass(b.hit_rate)}">
+      <span><strong>${name}</strong></span>
+      <span>${b.n}</span>
+      <span>${b.wins}-${b.losses}${b.pushes ? '-' + b.pushes : ''}</span>
+      <span></span>
+      <span>${fmtPct(b.hit_rate)}</span>
+      <span>${fmtUnits(b.net_units)}</span>
+    </div>`;
+  }
+  return html;
+}
+
+function renderRecent(picks) {
+  if (!picks || picks.length === 0) return '<p class="muted" style="padding:14px;">No picks yet.</p>';
+  // Show last 30 reversed
+  const recent = picks.slice(-30).reverse();
+  let html = `<div class="row head">
+    <span>Source · Pick</span><span>Date</span><span>Result</span><span></span><span>Edge</span><span>Payout</span>
+  </div>`;
+  recent.forEach(p => {
+    const r = p.result || 'pending';
+    const cls = r === 'won' ? 'win-heavy' : r === 'lost' ? 'loss-heavy' : 'neutral';
+    const resultPill = r === 'won' ? '<span class="pos">WON</span>' : r === 'lost' ? '<span class="neg">LOST</span>' : r === 'push' ? '<span class="muted">PUSH</span>' : '<span class="muted">PENDING</span>';
+    html += `<div class="row ${cls}">
+      <span><strong>${p.player_or_matchup || '?'}</strong> · <span class="muted" style="font-size:10px;">${p.source} · ${p.market || ''}</span></span>
+      <span class="muted" style="font-size:10px;">${p.date}</span>
+      <span>${resultPill}</span>
+      <span></span>
+      <span class="muted">${p.edge_pct != null ? '+' + p.edge_pct.toFixed(1) + '%' : '—'}</span>
+      <span>${p.payout_units != null ? fmtUnits(p.payout_units) : '—'}</span>
+    </div>`;
+  });
+  return html;
+}
+
+function showTab(tab) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.dataset.tab === tab));
+  let title = '', body = '', meta = '';
+  if (tab === 'by_source') {
+    title = '📊 Per-Source Accuracy';
+    body = renderBreakdown(DATA.by_source, 'Source');
+    meta = `${Object.keys(DATA.by_source || {}).length} sources tracked`;
+  } else if (tab === 'by_market') {
+    title = '🎯 Per-Market-Family Accuracy';
+    body = renderBreakdown(DATA.by_market_family, 'Market');
+    meta = `${Object.keys(DATA.by_market_family || {}).length} market families`;
+  } else if (tab === 'by_sport') {
+    title = '🏆 Per-Sport Accuracy';
+    body = renderBreakdown(DATA.by_sport, 'Sport');
+    meta = `${Object.keys(DATA.by_sport || {}).length} sports`;
+  } else if (tab === 'recent') {
+    title = '📜 Recent Picks (last 30)';
+    body = renderRecent(DATA.picks || []);
+    meta = `${(DATA.picks || []).length} total in ledger`;
+  }
+  document.getElementById('tab_title').textContent = title;
+  document.getElementById('container').innerHTML = body;
+  document.getElementById('meta').textContent = meta;
+}
+
+fetch("data/all_picks_ledger.json?t=" + Date.now(), { cache: "no-cache" })
+  .then(r => r.json())
+  .then(d => {
+    DATA = d;
+    document.getElementById('m_total').textContent = d.total_picks || 0;
+    document.getElementById('m_settled').textContent = d.n_settled || 0;
+    document.getElementById('m_hit').textContent = fmtPct(d.hit_rate);
+    document.getElementById('m_net').innerHTML = d.n_settled === 0 ? '—' : fmtUnits(d.net_units);
+    document.getElementById('m_roi').innerHTML = d.n_settled === 0 ? '—' :
+      (d.roi_pct >= 0 ? '<span class="pos">+' + d.roi_pct.toFixed(1) + '%</span>' : '<span class="neg">' + d.roi_pct.toFixed(1) + '%</span>');
+    document.getElementById('status').textContent = `${d.total_picks} picks · ${d.n_settled} settled · ${d.n_pending} pending · 1u flat stake · ${(d.generated_at||'').slice(0,19).replace('T',' ')}`;
+    showTab('by_source');
+    document.querySelectorAll('.tab').forEach(t => t.addEventListener('click', () => showTab(t.dataset.tab)));
+  })
+  .catch(err => {
+    document.getElementById('container').innerHTML = `<p class="muted">Could not load all_picks_ledger.json (${err.message}).</p>`;
+  });
+</script>
+</body>
+</html>

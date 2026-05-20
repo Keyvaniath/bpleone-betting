@@ -496,6 +496,9 @@ jobs:
       - name: Locks of the Day (record top 5 picks + settle any pending)
         working-directory: python
         run: python locks_of_day.py
+      - name: All-picks unified ledger (every surfaced pick -> training signal)
+        working-directory: python
+        run: python all_picks_tracker.py
       - name: Cross-sport parlay builder (2-leg + 3-leg combos with same-game correlation)
         working-directory: python
         run: python cross_sport_parlay_builder.py
