@@ -8,6 +8,12 @@ _60-second read. Calibration tier: **PRE-CALIBRATION** (10% progress)._
   - Edge bonus: +24.3% material edge
   - Consensus STRONG (3/3 modules agree)
 
+## 💪 STRONG (4 picks)
+- [MLB] LAD @ SDP ML_AWAY · 76% / +15.8%
+- [MLB] MIL @ CHC OVER_6.0 · 65% / +24.8%
+- [MLB] OAK @ LAA ML_AWAY · 67% / +20.8%
+- [MLB] OAK @ LAA OAK_ML · 67% / +20.8%
+
 ## 🔒 5 Daily Locks
 - **Jo Adell** PP_batter_total_bases_under_3.5 (MLB-PP) -- 72% / +24.3%
 - **Salvador Perez** PP_batter_hrr_under_3.5 (MLB-PP) -- 72% / +24.3%
@@ -21,13 +27,17 @@ _60-second read. Calibration tier: **PRE-CALIBRATION** (10% progress)._
 - **Fernando Tatis Jr.** PP_batter_hrr_under_3.5 (MLB-PP) -- 72% / +24.3%
 - **MIL @ CHC** OVER_6.0 (MLB) -- 65% / +24.8%
 
+## 📡 Sharp Money Following Model
+- **LAD @ SDP** ml_away: line moved 61.54% → 66.67% (+5.1pp)
+
 ## 📉 Under Bets
+- **LAD @ SDP** UNDER 7.5 — model 6.4 [STRONG signal]
 - **BOS @ KCR** UNDER 7.5 — model 7.28 [STRONG signal]
 
 ## 🎰 Tonight's Best Parlay
-- **MIL @ CHC** OVER_6.0 + **Isaac Collins** PP_batter_hrr_under_3.5
-- Joint 47% · fair +231 · edge +55.2%
+- **Isaac Collins** PP_batter_hrr_under_3.5 + **James Outman** PP_batter_total_bases_under_2.5
+- Joint 51% · fair +201 · edge +54.6%
 
 ---
-_Generated 2026-05-20T19:40:52_
+_Generated 2026-05-20T23:14:56_
 _Full breakdown: /tonight · Full history: /locks-of-day_

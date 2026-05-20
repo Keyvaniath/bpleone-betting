@@ -1,18 +1,18 @@
 # EdgeStat Daily Summary — 2026-05-20
 
-## 🏥 Model Health: 82.5/100 [HEALTHY]
+## 🏥 Model Health: 81.4/100 [HEALTHY]
 - Solid health - some minor issues to monitor
   - 🟢 Calibration Freshness: 100.0/100
   - 🟢 Hit Rate Trend: 84.3/100
   - 🔴 Brier Trend: 52.3/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 88.9/100
+  - 🟢 Data Health: 83.3/100
   - 🟡 Edge Count: 74.3/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.566)
-- **Total games on board:** 180
-- **Strong home favorites:** 23 | **Strong road dogs:** 11
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.576)
+- **Total games on board:** 183
+- **Strong home favorites:** 23 | **Strong road dogs:** 9
 
 ## 🎯 Top 5 Best Bets
 1. **LAD @ SDP 4-leg SGP @ -270** (100/100 ★★★★★)
@@ -23,17 +23,23 @@
 
 ## 🐋 Whale Picks (Max Confluence)
 - [WHALE] **[MLB-PP]** James Outman PP_batter_total_bases_under_2.5 -- 72% / +24.3% (score 3.5)
+- [STRONG] **[MLB]** LAD @ SDP ML_AWAY -- 76% / +15.8% (score 2.8)
+- [STRONG] **[MLB]** MIL @ CHC OVER_6.0 -- 65% / +24.8% (score 2.5)
+- [STRONG] **[MLB]** OAK @ LAA ML_AWAY -- 67% / +20.8% (score 2.5)
+- [STRONG] **[MLB]** OAK @ LAA OAK_ML -- 67% / +20.8% (score 2.5)
+
+## 📡 Sharp Action (Line Movement)
+- [STRONG] **LAD @ SDP** ml_away: 61.54% → 66.67% (+5.1pp)
 
 ## 📉 Strong UNDER Signals
-- [STRONG 5.8] **LAD @ SDP** model 6.37 vs market 7.5
-- [STRONG 5.0] **BOS @ KCR** model 7.33 vs market 7.5
+- [STRONG 5.0] **BOS @ KCR** model 7.28 vs market 7.5
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **4-0** (100.0% hit rate)
 - Net units: **+0.18u** | ROI: **+73.4%**
 - Last 7d: 4-0 (100.0%) | net +0.18u
 
-**Today's 10 Locks:**
+**Today's 11 Locks:**
 - [MLB-PP] **Jo Adell** PP_batter_total_bases_under_3. · p=72% edge=+24.3% qK=0.062u
 - [MLB-PP] **Salvador Perez** PP_batter_hrr_under_3.5 · p=72% edge=+24.3% qK=0.062u
 - [MLB-PP] **Shea Langeliers** PP_batter_hrr_over_0.5 · p=72% edge=+24.3% qK=0.062u
@@ -44,14 +50,15 @@
 - [MLB-PP] **Vinnie Pasquantino** PP_batter_doubles_under_0.5 · p=72% edge=+24.3% qK=0.062u
 - [MLB-PP] **Dalton Rushing** PP_batter_hrr_over_0.5 · p=72% edge=+24.3% qK=0.062u
 - [MLB-PP] **Fernando Tatis Jr.** PP_batter_hrr_under_3.5 · p=72% edge=+24.3% qK=0.062u
+- [MLB] **MIL @ CHC** OVER_6.0 · p=65% edge=+24.8% qK=0.062u
 
 ## 🎰 Top Balanced 2-Leg Parlays (40-65% joint)
-- [MLB-PP] Isaac Collins PP_batter_hrr_under_ + [MLB-PP] James Outman PP_batter_total_base
-  Joint: 51% | Fair: 201 | Edge: +54.6%
-- [MLB-PP] Isaac Collins PP_batter_hrr_under_ + [MLB-PP] Vinnie Pasquantino PP_batter_doubles_un
-  Joint: 51% | Fair: 201 | Edge: +54.6%
-- [MLB-PP] Isaac Collins PP_batter_hrr_under_ + [MLB-PP] Dalton Rushing PP_batter_hrr_over_0
-  Joint: 51% | Fair: 201 | Edge: +54.6%
+- [MLB] MIL @ CHC OVER_6.0 + [MLB-PP] Isaac Collins PP_batter_hrr_under_
+  Joint: 47% | Fair: 231 | Edge: +55.2%
+- [MLB] MIL @ CHC OVER_6.0 + [MLB-PP] James Outman PP_batter_total_base
+  Joint: 47% | Fair: 231 | Edge: +55.2%
+- [MLB] MIL @ CHC OVER_6.0 + [MLB-PP] Vinnie Pasquantino PP_batter_doubles_un
+  Joint: 47% | Fair: 231 | Edge: +55.2%
 
 ## 🎮 Player Play of the Day (cross-sport)
 - **[LOL]** Inspired UNDER 3.5 Kills | MED conviction · model 61.7% fair -161
@@ -60,7 +67,7 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (15)
+## ⚡ Pre-Game HIGH Conviction (13)
 - [MLS] **Chicago Fire FC** HOME (2-2 L10) · model 74.3% fair -289
 - [MLS] **Houston Dynamo FC** AWAY (3-1 L10) · model 74.1% fair -286
 - [MLS] **New England Revolution** AWAY (3-1 L10) · model 70.8% fair -243
@@ -76,8 +83,8 @@
 - Hot teams: **31** | Cold teams: **40** | Over-heavy: 0 | Under-heavy: 4
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (56)
-- RESIDUAL_DIVERGENCE: **56**
+## ⚠️ Anomaly Detector (49)
+- RESIDUAL_DIVERGENCE: **49**
   - San Antonio Spurs (NBA): San Antonio Spurs OUTPERFORMING expected margin by 6.9pts in recent games -- model bias may persist
   - Colorado Avalanche (NHL): Colorado Avalanche OUTPERFORMING expected margin by 6.7pts in recent games -- model bias may persist
   - Vegas Golden Knights (NHL): Vegas Golden Knights OUTPERFORMING expected margin by 7.1pts in recent games -- model bias may persist
@@ -93,20 +100,20 @@
   - #4 [NRFI] $50 on BOS @ KCR YRFI (1st-inning OVER 0.5) (P=70%)
   - #5 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
 
-## 🎯 Convergence Picks (14 stacked games)
-- ELITE: **4** · HIGH: 6 · MED: 4
+## 🎯 Convergence Picks (17 stacked games)
+- ELITE: **5** · HIGH: 7 · MED: 5
   - [ELITE] San Antonio Spurs @ Oklahoma City Thunder : 5 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
   - [ELITE] New England Revolution @ Charlotte FC : 5 signals (PREGAME, ANOMALY, ANOMALY, ATS)
   - [ELITE] Vegas Golden Knights @ Colorado Avalanche : 4 signals (PREGAME, ANOMALY, ANOMALY, ATS)
+  - [ELITE] Connecticut Sun @ Seattle Storm : 4 signals (HEAT_COLD, ANOMALY, ANOMALY, ATS)
   - [ELITE] Orlando City SC @ FC Cincinnati : 4 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
-  - [HIGH] Austin FC @ St. Louis CITY SC : 3 signals (HEAT_COLD, ATS, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (10)
+## ⚾ Top MLB Pitcher K Plays (7)
 - **Kyle Harrison** OVER 4.5 K (77%) fair -332
 - **Carmen Mlodzinski** OVER 4.5 K (73%) fair -275
-- **Jack Leiter** OVER 4.5 K (73%) fair -275
 - **Chris Sale** OVER 5.5 K (73%) fair -270
 - **Shohei Ohtani** OVER 5.5 K (72%) fair -254
+- **Emerson Hancock** OVER 4.5 K (70%) fair -232
 
 ## 🏀 NBA Player Heat (2 HOT / 1 COLD)
   - 🔥 **Ajay Mitchell** (OKC): L5 18.8/3.2/5.8 vs season 13.6/3.3/4.0 [PTS +5.2]
@@ -127,24 +134,24 @@
   - 🔥 T4 **Cameron Champ** (USA): +0 total -- finished T4
   - 🔥 T5 **Doug Ghim** (USA): +0 total -- finished T5
 
-## 🔥 MLB Batter Heat (25 HOT / 40 COLD)
+## 🔥 MLB Batter Heat (26 HOT / 41 COLD)
   - 🔥 **Blaze Alexander** (BAL): L14 .379 / season .235 (+144pts)
   - 🔥 **Alec Bohm** (PHI): L14 .353 / season .220 (+133pts)
-  - 🔥 **Carson Benge** (NYM): L14 .397 / season .265 (+132pts)
-  - 🔥 **Riley Greene** (DET): L14 .449 / season .335 (+114pts)
-  - 🔥 **Willy Adames** (SF): L14 .345 / season .240 (+105pts)
+  - 🔥 **Riley Greene** (DET): L14 .457 / season .333 (+124pts)
+  - 🔥 **Carson Benge** (NYM): L14 .386 / season .263 (+123pts)
+  - 🔥 **Cedric Mullins** (TB): L14 .283 / season .181 (+102pts)
   - ❄️ **Moisés Ballesteros** (CHC): L14 .067 / season .243 (-176pts) -- FADE props
-  - ❄️ **Ozzie Albies** (ATL): L14 .113 / season .271 (-158pts) -- FADE props
+  - ❄️ **Ozzie Albies** (ATL): L14 .120 / season .275 (-155pts) -- FADE props
   - ❄️ **Vladimir Guerrero Jr.** (TOR): L14 .143 / season .280 (-137pts) -- FADE props
-  - ❄️ **Christian Walker** (HOU): L14 .120 / season .257 (-137pts) -- FADE props
-  - ❄️ **Edouard Julien** (COL): L14 .081 / season .218 (-137pts) -- FADE props
+  - ❄️ **Christian Walker** (HOU): L14 .118 / season .255 (-137pts) -- FADE props
+  - ❄️ **Edouard Julien** (COL): L14 .079 / season .216 (-137pts) -- FADE props
 
-## 📈 Streak Regression Alerts (11)
+## 📈 Streak Regression Alerts (23)
 - [NBA] San Antonio Spurs on W3 L10 4-1 -- San Antonio Spurs on W3 -- no historical sample
+- [WNBA] Connecticut Sun on L5 L10 0-5 -- Connecticut Sun on L5 -- no historical sample
 - [MLS] Austin FC on L3 L10 1-3 -- Austin FC on L3 -- no historical sample
 - [MLS] Minnesota United FC on L3 L10 1-3 -- Minnesota United FC on L3 -- no historical sample
 - [MLS] D.C. United on L3 L10 1-3 -- D.C. United on L3 -- no historical sample
-- [MLS] FC Cincinnati on L3 L10 1-3 -- FC Cincinnati on L3 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**

@@ -4,32 +4,27 @@
 
 _Pipeline health: **DEGRADED** (14/15 artifacts ok; 1 empty, 0 stale)._ 
 
-_Generated at 2026-05-20T19:42:07 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-05-20T23:15:35 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
-**MIL @ CHC - OVER_6.0**
+**LAD @ SDP - UNDER_7.5**
 - Market: -110
-- Model probability: 74.0%
-- Raw edge: +41.35%
+- Model probability: 68.8%
+- Raw edge: +31.3%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
 
-## Full Slate (10 games)
+## Full Slate (5 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 4:10p ET | CHW @ SEA | T-Mobile Park | indoor | CHW_ML +24.68% |
-| 6:40p ET | CLE @ DET | Comerica Park | 50F 8mph | -- |
-| 6:40p ET | ATL @ MIA | loanDepot park | indoor | OVER_7.0 +22.52% |
-| 6:45p ET | NYM @ WSN | Nationals Park | 76F 9mph | OVER_10.0 +11.85% |
-| 7:05p ET | TOR @ NYY | Yankee Stadium | 72F 7mph | NYY_ML +23.53% |
 | 7:40p ET | BOS @ KCR | Kauffman Stadium | 57F 5mph | UNDER_7.5 +6.45% |
-| 7:40p ET | MIL @ CHC | Wrigley Field | 49F 10mph | OVER_6.0 +41.35% |
-| 7:45p ET | PIT @ STL | Busch Stadium | 60F 4mph | PIT_ML +18.5% |
-| 8:40p ET | LAD @ SDP | Petco Park | 64F 4mph | LAD_ML +26.34% |
-| 9:38p ET | OAK @ LAA | Angel Stadium | 68F 7mph | OAK_ML +26.83% |
+| 7:40p ET | MIL @ CHC | Wrigley Field | 49F 9mph | OVER_6.5 +28.09% |
+| 7:45p ET | PIT @ STL | Busch Stadium | 61F 3mph | PIT_ML +18.46% |
+| 8:40p ET | LAD @ SDP | Petco Park | 65F 3mph | UNDER_7.5 +31.3% |
+| 9:38p ET | OAK @ LAA | Angel Stadium | 68F 5mph | OAK_ML +24.43% |
 
 ## Parlays - top 5
 
@@ -53,14 +48,14 @@ _Generated at 2026-05-20T19:42:07 UTC. Game lines source: **Bovada (fallback -- 
 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
-| batter total bases | 10858 | 26.1% | 31.8% | 1.218 | 0.821 |
 | batter rbis | 10856 | 19.8% | 23.2% | 1.173 | 0.853 |
+| batter total bases | 10858 | 26.1% | 31.8% | 1.218 | 0.821 |
 | batter home runs | 5428 | 11.0% | 12.8% | 1.163 | 0.860 |
-| pitcher strikeouts | 2356 | 32.5% | 38.2% | 1.174 | 0.853 |
 | batter singles | 5428 | 43.8% | 44.5% | 1.016 | 0.984 |
-| batter doubles | 5428 | 14.5% | 15.9% | 1.100 | 0.909 |
-| batter runs scored | 5428 | 36.6% | 38.7% | 1.057 | 0.947 |
 | batter hits | 10858 | 39.6% | 41.6% | 1.050 | 0.952 |
+| batter doubles | 5428 | 14.5% | 15.9% | 1.100 | 0.909 |
+| pitcher strikeouts | 2356 | 32.5% | 38.2% | 1.174 | 0.853 |
+| batter runs scored | 5428 | 36.6% | 38.7% | 1.057 | 0.947 |
 
 Cumulative graded plays: 118201. Wins: 87361. Hit rate: 73.9%.
 
@@ -68,17 +63,11 @@ Cumulative graded plays: 118201. Wins: 87361. Hit rate: 73.9%.
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| ATL @ MIA | 47.0% | +113 | 3.77 | +687 | -687 |
-| BOS @ KCR | 51.3% | -105 | 3.27 | +147 | -147 |
-| CHW @ SEA | 41.3% | +142 | 4.42 | +239 | -239 |
-| CLE @ DET | 40.3% | +148 | 4.61 | +196 | -196 |
-| LAD @ SDP | 69.9% | -232 | 1.83 | +1045 | -1045 |
-| MIL @ CHC | 43.7% | +129 | 3.88 | +245 | -245 |
-| NYM @ WSN | 42.1% | +138 | 4.06 | +189 | -189 |
-| OAK @ LAA | 38.4% | +160 | 4.93 | +413 | -413 |
-| PIT @ STL | 52.6% | -111 | 3.15 | +267 | -267 |
-| SFG @ ARI | 32.5% | +208 | 5.62 | -- | -- |
-| TOR @ NYY | 70.8% | -243 | 1.76 | -201 | +201 |
+| BOS @ KCR | 51.3% | -105 | 3.3 | +147 | -147 |
+| LAD @ SDP | 69.9% | -232 | 1.82 | +1042 | -1042 |
+| MIL @ CHC | 43.7% | +129 | 3.89 | +245 | -245 |
+| OAK @ LAA | 38.4% | +160 | 4.88 | +412 | -412 |
+| PIT @ STL | 52.6% | -111 | 3.17 | +267 | -267 |
 
 ## Team Form (last 10)
 
