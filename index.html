@@ -929,10 +929,12 @@ fetch("data/top_plays.json", { cache: "no-cache" })
 //  which now pulls from data/locks_history.json -- the REAL track record,
 //  not the 118k backfilled synthetic outcomes in track_record.json.)
 
-// Locks of the Day summary on homepage
-fetch("data/locks_history.json?t=" + Date.now(), { cache: "no-cache" })
-  .then(r => r.json())
-  .then(d => {
+// Locks of the Day summary on homepage (with CLV early-signal)
+Promise.all([
+  fetch("data/locks_history.json?t=" + Date.now(), { cache: "no-cache" }).then(r => r.json()),
+  fetch("data/locks_clv.json?t=" + Date.now(), { cache: "no-cache" }).then(r => r.ok ? r.json() : null).catch(() => null),
+])
+  .then(([d, clv]) => {
     const box = document.getElementById("locksHomeBox");
     if (!box) return;
     const fmtUnits = u => u == null ? '—' : (u > 0 ? '<span style="color:#58c878;font-weight:700;">+'+u.toFixed(2)+'u</span>' : u < 0 ? '<span style="color:#e35a5a;font-weight:700;">'+u.toFixed(2)+'u</span>' : '0u');
@@ -955,8 +957,18 @@ fetch("data/locks_history.json?t=" + Date.now(), { cache: "no-cache" })
           <td style="padding:6px 8px; color:#58c878;">+${(L.edge_pct || 0).toFixed(1)}%</td>
         </tr>`).join('')}
       </table>`;
+    const clvCell = clv && clv.avg_clv_pp != null
+      ? `<div style="text-align:center;">
+          <div style="font-size:9px; color:var(--muted,#888); text-transform:uppercase;" title="Closing Line Value -- early signal of value before bets settle">Avg CLV</div>
+          <div style="font-size:18px; font-weight:700; color:${clv.avg_clv_pp > 0 ? '#58c878' : clv.avg_clv_pp < 0 ? '#e35a5a' : 'inherit'};">${clv.avg_clv_pp >= 0 ? '+' : ''}${clv.avg_clv_pp.toFixed(1)}pp</div>
+          <div style="font-size:9px; color:var(--muted,#888);">${clv.n_locks_with_clv}/${clv.n_locks_total} eligible</div>
+        </div>`
+      : `<div style="text-align:center;">
+          <div style="font-size:9px; color:var(--muted,#888); text-transform:uppercase;">Avg CLV</div>
+          <div style="font-size:18px; color:var(--muted,#888);">—</div>
+        </div>`;
     box.innerHTML = `
-      <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap:10px; margin-bottom:14px;">
+      <div style="display:grid; grid-template-columns: repeat(5, 1fr); gap:10px; margin-bottom:14px;">
         <div style="text-align:center;">
           <div style="font-size:9px; color:var(--muted,#888); text-transform:uppercase;">Total Locks</div>
           <div style="font-size:18px; font-weight:700; color:#d4a04a;">${d.total_locks || 0}</div>
@@ -973,6 +985,7 @@ fetch("data/locks_history.json?t=" + Date.now(), { cache: "no-cache" })
           <div style="font-size:9px; color:var(--muted,#888); text-transform:uppercase;">ROI</div>
           <div style="font-size:18px;">${d.roi_pct == null ? '—' : (d.roi_pct >= 0 ? '<span style="color:#58c878;font-weight:700;">+'+d.roi_pct.toFixed(1)+'%</span>' : '<span style="color:#e35a5a;font-weight:700;">'+d.roi_pct.toFixed(1)+'%</span>')}</div>
         </div>
+        ${clvCell}
       </div>
       <div style="font-size:11px; color:var(--muted,#888); text-transform:uppercase; margin-bottom:8px;">🔒 Today's ${todays.length} Locks (recorded ${(d.generated_at||'').slice(11,16)} UTC)</div>
       ${todayHtml}
