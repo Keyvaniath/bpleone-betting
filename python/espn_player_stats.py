@@ -45,9 +45,15 @@ WNBA_IDX = {"min": 0, "pts": 1, "reb": 2, "ast": 3, "stl": 4, "blk": 5,
              "ft": 11, "ft_pct": 12, "pf": 13}
 BASKETBALL_IDX = NBA_IDX   # legacy default; parse_basketball_log uses sport-aware
 
-# NHL skater stats: G, A, +/-, SOG, S%, PIM, GWG, PPG, SHG, HT
-HOCKEY_IDX = {"goals": 0, "assists": 1, "plus_minus": 2, "shots": 3,
-              "shot_pct": 4, "pim": 5, "gwg": 6, "ppg": 7, "shg": 8, "hits": 9}
+# NHL skater gamelog labels (verified live 2026-05-20):
+#   G A PTS +/- PIM S SPCT PPG PPA SHG SHA GWG TOI/G PROD
+#    0 1  2   3   4 5  6    7   8   9  10  11   12   13
+# Previous code had shots=3 which is actually +/-, causing shots/game
+# to read +/- and goals/game to be reasonable. Critical bug for any
+# downstream that used SOG (real_player_props_nhl etc).
+HOCKEY_IDX = {"goals": 0, "assists": 1, "points": 2, "plus_minus": 3,
+              "pim": 4, "shots": 5, "shot_pct": 6, "ppg": 7,
+              "ppa": 8, "shg": 9, "sha": 10, "gwg": 11}
 
 
 def _http(url: str) -> Optional[Dict[str, Any]]:
@@ -133,7 +139,8 @@ def parse_hockey_log(gamelog: Dict[str, Any], player_name: str) -> Dict[str, Any
         for cat in (season.get("categories") or []):
             for ev in (cat.get("events") or []):
                 stats = ev.get("stats")
-                if stats and len(stats) >= 4:
+                # NHL gamelog rows have ~14 stat columns
+                if stats and len(stats) >= 12:
                     all_event_stats.append(stats)
     if not all_event_stats:
         return None
@@ -141,14 +148,17 @@ def parse_hockey_log(gamelog: Dict[str, Any], player_name: str) -> Dict[str, Any
     n = len(last_n)
     goals_avg = sum(_to_float(s[HOCKEY_IDX["goals"]]) for s in last_n) / n
     assists_avg = sum(_to_float(s[HOCKEY_IDX["assists"]]) for s in last_n) / n
+    points_avg = sum(_to_float(s[HOCKEY_IDX["points"]]) for s in last_n) / n
     shots_avg = sum(_to_float(s[HOCKEY_IDX["shots"]]) for s in last_n) / n
+    plus_minus_avg = sum(_to_float(s[HOCKEY_IDX["plus_minus"]]) for s in last_n) / n
     return {
         "name": player_name,
         "n_games": n,
         "goals_per_game": round(goals_avg, 2),
         "assists_per_game": round(assists_avg, 2),
+        "points_per_game": round(points_avg, 2),
         "shots_per_game": round(shots_avg, 2),
-        "points_per_game": round(goals_avg + assists_avg, 2),
+        "plus_minus_per_game": round(plus_minus_avg, 2),
     }
 
 
