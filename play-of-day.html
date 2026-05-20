@@ -68,9 +68,9 @@
   </section>
 
   <section class="card" style="margin-bottom:28px;">
-    <div class="card-head"><span>📊 Factor Decomposition</span><span class="muted">contribution to LAD win prob</span></div>
+    <div class="card-head"><span>📊 Factor Decomposition</span><span class="muted" id="factorMeta">illustrative</span></div>
     <div id="factorBars" style="margin-top: 12px;"></div>
-    <p class="caption">Each row shows the marginal change to LAD's win probability driven by that single factor, holding others constant. Sum of factors = model edge over baseline.</p>
+    <p class="caption" style="color:#d4a04a;">⚠️ <strong>Illustrative magnitudes.</strong> The labels (starting pitchers, umpire) are overlaid with TONIGHT's actual matchup data, but the numeric contributions (+0.041, etc.) are seed values showing the SHAPE of a factor breakdown — not actual model output for this game. A real per-game factor decomposition module is in development.</p>
   </section>
 
   <section class="grid-2">
@@ -183,6 +183,29 @@ function renderArsenalForPod() {
                     titleEl.textContent.trim().split(" ")[2];
     const matchData = matchupsData.games.find(g => g.matchup && g.matchup.startsWith(titleEl.textContent.trim().split(" ")[0]));
     if (!matchData) return;
+
+    // ---- Override factor decomposition labels with REAL pitcher names ----
+    // The seed js/data.js has hardcoded "Yamamoto vs Darvish" -- replace
+    // with the actual starters from matchups.json so the page doesn't lie.
+    try {
+      const homeP = matchData.home_pitcher || {};
+      const awayP = matchData.away_pitcher || {};
+      const awayName = (awayP.name || "?").split(" ").slice(-1)[0];   // last name
+      const homeName = (homeP.name || "?").split(" ").slice(-1)[0];
+      const awayERA = (awayP.season || {}).era;
+      const homeERA = (homeP.season || {}).era;
+      const ump = (matchData.umpire || {}).ump_name || (matchData.umpire_name) || null;
+
+      document.querySelectorAll(".bar-label").forEach(el => {
+        const txt = el.textContent || "";
+        if (txt.includes("Yamamoto") || txt.includes("Darvish") || txt.startsWith("Starting Pitcher")) {
+          el.textContent = `Starting Pitcher (${awayName} vs ${homeName})`;
+        } else if (txt.startsWith("Umpire") && ump) {
+          el.textContent = `Umpire (${ump})`;
+        }
+      });
+    } catch (e) { /* non-fatal */ }
+    // ----
     const wrap = document.createElement("section");
     wrap.id = "podPitcherDetails";
     wrap.className = "card";
