@@ -77,6 +77,11 @@ jobs:
         working-directory: python
         run: python sharp_action_radar.py
 
+      # Lineup confirmation -- alert if a lock's starter not yet in posted lineup
+      - name: Lineup confirmation status
+        working-directory: python
+        run: python lineup_confirmation.py
+
       # Live data accuracy audit -- compares local artifacts to MLB/ESPN APIs
       # every cycle, surfaces feed degradation immediately.
       - name: Data health check (live cross-verification)
