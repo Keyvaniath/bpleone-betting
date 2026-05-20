@@ -87,6 +87,13 @@ jobs:
         working-directory: python
         run: python in_game_lock_detector.py
 
+      # Live alerter -- fires Discord on lock transitions + sharp steam + edges
+      - name: Live alerter (Discord push)
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        working-directory: python
+        run: python live_alerter.py
+
       # Live status of today's tracked Locks (WON / LOST / ON_TRACK / AT_RISK / PENDING)
       - name: Live locks status tracker
         working-directory: python

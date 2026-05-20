@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Self-Learning Status | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/nav.js"></script>
+<style>
+  .row { display: grid; grid-template-columns: 1.5fr 60px 70px 80px 80px 90px 70px; gap: 10px; padding: 9px 14px; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 12px; border-bottom: 1px solid rgba(255,255,255,0.04); }
+  .row.head { background: rgba(255,255,255,0.04); color: var(--muted,#888); font-size: 10px; text-transform: uppercase; padding: 8px 14px; }
+  .row.boosted { border-left: 3px solid #58c878; background: rgba(88,200,120,0.04); }
+  .row.demoted { border-left: 3px solid #e35a5a; background: rgba(227,90,90,0.04); }
+  .row.no-data { border-left: 3px solid #444; opacity: 0.55; }
+  .health-card { padding: 14px 18px; border-radius: 8px; margin-bottom: 14px; font-family: 'JetBrains Mono', monospace; font-size: 12px; }
+  .health-OK { background: rgba(88,200,120,0.08); border: 1px solid rgba(88,200,120,0.3); color: #58c878; }
+  .health-WARN { background: rgba(212,160,74,0.08); border: 1px solid rgba(212,160,74,0.3); color: #d4a04a; }
+  .health-CRITICAL { background: rgba(227,90,90,0.08); border: 1px solid rgba(227,90,90,0.3); color: #e35a5a; }
+  .info-card { padding: 16px 20px; background: linear-gradient(135deg, rgba(212,160,74,0.1), rgba(212,160,74,0.02)); border: 1px solid rgba(212,160,74,0.3); border-radius: 10px; margin-bottom: 18px; }
+  .delta-pos { color: #58c878; font-weight: 700; }
+  .delta-neg { color: #e35a5a; font-weight: 700; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  @media (max-width: 720px) { .grid-2 { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body class="page-self-learning">
+<header class="topbar">
+  <div class="brand"><a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a><span class="tagline">by bpleone</span></div>
+  <nav class="mainnav"><!-- nav.js injects --></nav>
+  <div class="topbar-actions"><div class="ticker">LIVE</div></div>
+</header>
+<main class="container">
+  <section class="page-head">
+    <h1>🧠 Self-Learning Status</h1>
+    <p class="muted" id="status">Loading…</p>
+  </section>
+  <div class="info-card">
+    <strong style="color:#d4a04a;">How the loop works:</strong>
+    <span style="color: var(--text-2,#aaa); font-size:13px;">
+      Every cycle, all_picks_tracker records every surfaced pick. When games settle, settled outcomes feed back into
+      <code style="color:#d4a04a;">data/learned_weights.json</code> — sources that hit ≥55% earn higher trust weight,
+      sources that hit ≤45% get pushed toward baseline. todays_top_plays reads this on the next run so calibration
+      tightens automatically. The model trains itself off every settled bet.
+    </span>
+  </div>
+
+  <!-- Pipeline health -->
+  <div id="healthBlock"></div>
+
+  <div class="grid-2">
+    <section class="card">
+      <div class="card-head"><span>🧠 Source Weights — Learned vs Prior</span></div>
+      <div id="weightsBox"><p class="muted" style="padding:14px;">Loading…</p></div>
+    </section>
+    <section class="card">
+      <div class="card-head"><span>🚨 Live Alerts (last cycle)</span></div>
+      <div id="alertsBox" style="padding:10px 14px;"><p class="muted">Loading…</p></div>
+    </section>
+  </div>
+
+  <section class="card" style="margin-top:18px;">
+    <div class="card-head"><span>🔒 In-Game Lock Status</span><span class="muted" id="locksMeta">--</span></div>
+    <div id="locksBox"><p class="muted" style="padding:14px;">Loading…</p></div>
+  </section>
+</main>
+<script src="js/nav_badge.js"></script>
+<script>
+function fmtPct(p) { return p == null ? '—' : (p*100).toFixed(1) + '%'; }
+function fmtDelta(d) { if (d == null) return '—'; const cls = d > 0 ? 'delta-pos' : d < 0 ? 'delta-neg' : ''; return `<span class="${cls}">${d > 0 ? '+' : ''}${d.toFixed(3)}</span>`; }
+
+Promise.all([
+  fetch("data/learned_weights.json?t=" + Date.now()).then(r => r.json()).catch(() => null),
+  fetch("data/pipeline_health.json?t=" + Date.now()).then(r => r.json()).catch(() => null),
+  fetch("data/live_alerts.json?t=" + Date.now()).then(r => r.json()).catch(() => null),
+  fetch("data/in_game_locks.json?t=" + Date.now()).then(r => r.json()).catch(() => null),
+]).then(([weights, health, alerts, locks]) => {
+  document.getElementById('status').textContent = `Last refresh: ${((weights||{}).generated_at || '').slice(0,19).replace('T',' ')}`;
+
+  // Pipeline health card
+  if (health) {
+    const cls = `health-${health.overall_status}`;
+    const fileRows = Object.entries(health.file_health || {}).map(([fn, h]) => {
+      const ageStr = h.age_min != null ? `${Math.round(h.age_min)} min` : 'MISSING';
+      const marker = h.status === 'OK' ? '🟢' : h.status === 'WARN' ? '🟡' : '🔴';
+      return `<div style="font-size:11px; padding:3px 0;">${marker} ${fn} -- ${ageStr} (${h.status})</div>`;
+    }).join('');
+    document.getElementById('healthBlock').innerHTML = `
+      <div class="health-card ${cls}">
+        <strong>Pipeline Health: ${health.overall_status}</strong>
+        <span style="opacity:0.7; margin-left:10px;">${health.n_ok} OK · ${health.n_warn} WARN · ${health.n_critical} CRITICAL</span>
+        ${health.suggested_action ? `<div style="margin-top:6px;"><strong>Action:</strong> ${health.suggested_action}</div>` : ''}
+        <div style="margin-top:10px; padding-top:10px; border-top:1px solid rgba(255,255,255,0.08);">
+          ${fileRows}
+        </div>
+      </div>`;
+  }
+
+  // Source weights
+  const wbox = document.getElementById('weightsBox');
+  if (weights && weights.weights) {
+    const entries = Object.entries(weights.weights);
+    entries.sort((a, b) => (b[1].n_settled || 0) - (a[1].n_settled || 0));
+    let html = `<div class="row head">
+      <span>Source</span><span>N</span><span>Hit%</span><span>Prior</span><span>Learned</span><span>Delta</span><span>Trust</span>
+    </div>`;
+    entries.forEach(([source, w]) => {
+      const cls = w.n_settled === 0 ? 'no-data' : w.delta_from_prior > 0.02 ? 'boosted' : w.delta_from_prior < -0.02 ? 'demoted' : '';
+      html += `<div class="row ${cls}">
+        <span><strong>${source}</strong></span>
+        <span>${w.n_settled}</span>
+        <span>${fmtPct(w.hit_rate)}</span>
+        <span class="muted">${w.prior.toFixed(2)}</span>
+        <span><strong>${w.w_learned.toFixed(2)}</strong></span>
+        <span>${fmtDelta(w.delta_from_prior)}</span>
+        <span class="muted">${Math.round((w.pull_toward_observed || 0) * 100)}%</span>
+      </div>`;
+    });
+    wbox.innerHTML = html;
+  } else {
+    wbox.innerHTML = '<p class="muted" style="padding:14px;">No learned weights yet — first settlement starts the loop.</p>';
+  }
+
+  // Live alerts
+  const abox = document.getElementById('alertsBox');
+  if (alerts && alerts.alerts && alerts.alerts.length > 0) {
+    abox.innerHTML = alerts.alerts.slice(0, 12).map(a => `
+      <div style="padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.04); font-size:11px;">
+        <span style="font-weight:700;">[${a.type}]</span> ${a.message}
+      </div>`).join('');
+  } else {
+    abox.innerHTML = `<p class="muted" style="font-size:12px;">No new alerts this cycle. Webhook configured: ${alerts && alerts.webhook_configured ? 'YES (Discord)' : 'NO (set DISCORD_WEBHOOK_URL secret)'}</p>`;
+  }
+
+  // In-game locks
+  const lbox = document.getElementById('locksBox');
+  if (locks && locks.all && locks.all.length > 0) {
+    document.getElementById('locksMeta').textContent = `${locks.n_classified} classified — ${JSON.stringify(locks.status_counts || {}).replace(/[{}\"]/g,'')}`;
+    let html = `<div class="row head"><span>Source · Pick · Market</span><span>Status</span><span></span><span></span><span></span><span></span><span></span></div>`;
+    locks.all.forEach(r => {
+      const status = r.status || 'PENDING';
+      const cls = status === 'LOCKED_WON' ? 'boosted' : status === 'LOCKED_LOST' || status === 'AT_RISK' ? 'demoted' : '';
+      html += `<div class="row ${cls}">
+        <span><strong>${r.player_or_matchup || '?'}</strong> <span class="muted">· ${r.market} · ${r.source}</span></span>
+        <span><strong>${status}</strong></span>
+        <span class="muted" style="grid-column:3/8;">${r.detail || ''}</span>
+      </div>`;
+    });
+    lbox.innerHTML = html;
+  } else {
+    lbox.innerHTML = '<p class="muted" style="padding:14px;">No pending picks to classify — or games haven\'t started yet.</p>';
+  }
+});
+</script>
+</body>
+</html>
