@@ -95,10 +95,10 @@ def _pick_today_pod() -> Optional[Dict[str, Any]]:
 
 
 def _settle_pod(pod: Dict[str, Any]) -> Optional[str]:
-    """Cross-reference historical_games.json for the outcome."""
+    """Cross-reference historical_mlb.json (MLB-only POD) for the outcome."""
     if pod.get("settled"):
         return None
-    hist = _load(os.path.join(DATA_DIR, "historical_games.json"))
+    hist = _load(os.path.join(DATA_DIR, "historical_mlb.json"))
     games = hist.get("games") or []
     matchup = (pod.get("matchup") or "").lower()
     label = (pod.get("label") or "").upper()
