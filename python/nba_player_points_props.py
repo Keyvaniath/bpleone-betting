@@ -185,15 +185,14 @@ def run() -> Dict[str, Any]:
             sigma = max(4.0, 0.25 * projected_pts)
 
             # Compute over/under for typical 0.5 lines around projection
+            # Books set the line at or very near projected_pts. Only evaluate the
+            # nearest 0.5 line above and below (within 0.75 of projection).
             best_edge_class = "NONE"
             best_market = None
-            # Nearest 0.5 line
             base_line = round(projected_pts * 2) / 2
-            for offset in (-2.0, -1.5, -1.0, -0.5, 0.0, 0.5, 1.0, 1.5, 2.0):
-                line = base_line + offset
+            for line in (base_line - 0.5, base_line + 0.5):
                 if line < 5: continue
-                # Sportsbook line is usually exactly at proj, hard to find edge unless
-                # our model differs from book. Require 10%+ vs -120 breakeven (54.5%)
+                if abs(projected_pts - line) > 0.75: continue
                 z = (projected_pts - line) / sigma
                 p_over = _norm_cdf(z)
                 p_under = 1 - p_over

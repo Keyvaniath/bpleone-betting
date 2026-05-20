@@ -202,6 +202,38 @@ def _collect_picks_from_sources() -> List[Dict[str, Any]]:
                 "p_predicted": be.get("model_p"),  # for Brier
             })
 
+    # MLB Pitcher ER props strong edges
+    er = _load(os.path.join(DATA_DIR, "mlb_pitcher_er_props.json"))
+    for r in (er.get("strong_edges") or []):
+        bm = r.get("best_market") or {}
+        if bm.get("p"):
+            out.append({
+                "source": f"mlb_er_{bm.get('market', '').lower()}",
+                "sport": "MLB",
+                "player_or_matchup": r.get("pitcher"),
+                "market": bm.get("market"),
+                "prob": bm.get("p"),
+                "fair_american": bm.get("fair_odds"),
+                "p_predicted": bm.get("p"),
+                "matchup": r.get("matchup"),
+            })
+
+    # WNBA player points strong edges
+    wnba_pts = _load(os.path.join(DATA_DIR, "wnba_player_pts_props.json"))
+    for r in (wnba_pts.get("strong_edges") or []):
+        bm = r.get("best_market") or {}
+        if bm.get("p"):
+            out.append({
+                "source": f"wnba_pts_{bm.get('market', '').lower()}",
+                "sport": "WNBA",
+                "player_or_matchup": r.get("player"),
+                "market": bm.get("market"),
+                "prob": bm.get("p"),
+                "fair_american": bm.get("fair_odds"),
+                "p_predicted": bm.get("p"),
+                "matchup": r.get("matchup"),
+            })
+
     # Soccer corners props strong edges
     sc = _load(os.path.join(DATA_DIR, "soccer_corners_props.json"))
     for r in (sc.get("strong_edges") or []):
