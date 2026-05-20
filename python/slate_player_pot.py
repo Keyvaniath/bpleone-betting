@@ -179,6 +179,15 @@ def run() -> Dict[str, Any]:
             _add(picks, "NHL", pp["name"], pp["team"], mkt, prob, fair,
                   "nhl_ext")
 
+    # NHL skater props (anytime goal, SOG, points)
+    nhl_sk = _load(os.path.join(DATA_DIR, "nhl_skater_props.json"))
+    for pp in (nhl_sk.get("players") or []):
+        for mkt, info in (pp.get("props") or {}).items():
+            prob = info.get("p")
+            fair = info.get("fair_yes") or info.get("fair_over")
+            _add(picks, "NHL", pp["name"], pp["team"], mkt, prob, fair,
+                  "nhl_skater")
+
     # PrizePicks (sweet-spot only)
     pp_doc = _load(os.path.join(DATA_DIR, "pickem.json"))
     for p in (pp_doc.get("props") or []):
