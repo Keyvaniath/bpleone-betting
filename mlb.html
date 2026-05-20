@@ -62,22 +62,16 @@
         }
       }
     }).catch(() => {});
-    // Season metrics from track_record.json + clv_log.json
-    fetch("data/track_record.json", { cache: "no-cache" }).then(r => r.json()).then(tr => {
-      const props = (tr.props || []).filter(p => p.play_hit !== null && p.play_hit !== undefined);
-      if (!props.length) return;
-      const wins = props.filter(p => p.play_hit === true).length;
-      const payoutUnits = price => price >= 0 ? price / 100 : 100 / Math.abs(price);
-      const net = props.reduce((s, p) => {
-        if (p.play_hit === true) {
-          const price = p.play === "OVER" ? p.dk_over : p.play === "UNDER" ? p.dk_under : -110;
-          return s + payoutUnits(price ?? -110);
-        }
-        return s - 1;
-      }, 0);
-      const roi = (net / props.length) * 100;
-      set("mlbHit", (wins / props.length * 100).toFixed(1) + "%");
-      set("mlbROI", (roi >= 0 ? "+" : "") + roi.toFixed(1) + "%");
+    // Season metrics -- POD ONLY (was track_record.json which included 118k
+    // synthetic backfilled plays, inflating Net Units / hit rate dramatically)
+    fetch("data/pod_pl.json", { cache: "no-cache" }).then(r => r.json()).then(pl => {
+      if (pl.n_settled === 0 || pl.hit_rate == null) {
+        set("mlbHit", "—");
+        set("mlbROI", "—");
+        return;
+      }
+      set("mlbHit", (pl.hit_rate * 100).toFixed(1) + "%");
+      set("mlbROI", (pl.roi_pct >= 0 ? "+" : "") + pl.roi_pct.toFixed(1) + "%");
     }).catch(() => {});
     fetch("data/clv_log.json", { cache: "no-cache" }).then(r => r.json()).then(c => {
       const recs = (c.records || []).filter(r => r.clv_pct != null);
