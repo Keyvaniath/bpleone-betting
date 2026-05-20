@@ -122,6 +122,21 @@ def _market_implied_prob(american):
     return abs(american) / (abs(american) + 100)
 
 
+def _load_learned_weights():
+    """Self-learning feedback: read learned per-source weights if available."""
+    p = os.path.join(DATA_DIR, "learned_weights.json")
+    if not os.path.exists(p): return {}
+    try:
+        with open(p) as f: d = json.load(f)
+        return {src: w.get("w_learned") for src, w in (d.get("weights") or {}).items()
+                if w.get("n_settled", 0) > 0}
+    except Exception:
+        return {}
+
+
+_LEARNED_W_CACHE = None
+
+
 def _shrink_prob(raw_prob, source, fair_american=None):
     """Two-stage calibration:
 
@@ -137,7 +152,12 @@ def _shrink_prob(raw_prob, source, fair_american=None):
     where anchor = market_implied (if available) else SHRINKAGE_BASELINE_PROB.
     """
     if raw_prob is None: return None
-    w = SOURCE_SHRINKAGE_W.get(source or "", DEFAULT_SHRINKAGE_W)
+    # Self-learning weight overrides if data accumulated
+    global _LEARNED_W_CACHE
+    if _LEARNED_W_CACHE is None:
+        _LEARNED_W_CACHE = _load_learned_weights()
+    w_learned = _LEARNED_W_CACHE.get(source or "")
+    w = w_learned if w_learned is not None else SOURCE_SHRINKAGE_W.get(source or "", DEFAULT_SHRINKAGE_W)
     market_p = _market_implied_prob(fair_american)
     if market_p is not None:
         # Market anchor available -- use it as the shrinkage target

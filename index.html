@@ -1023,6 +1023,25 @@ Promise.all([
     if (box) box.innerHTML = '<p class="muted">Locks history not yet available.</p>';
   });
 
+// Pipeline freshness watchdog -- surfaces banner if data is stale
+fetch("data/pipeline_health.json?t=" + Date.now(), { cache: "no-cache" })
+  .then(r => r.json())
+  .then(h => {
+    if (h.overall_status === "OK") return;
+    const banner = document.createElement("div");
+    const color = h.overall_status === "CRITICAL" ? "#e35a5a" : "#d4a04a";
+    banner.style.cssText = `position:sticky; top:0; z-index:100; padding:10px 18px; background:${color}22; border:1px solid ${color}; color:${color}; font-family:'JetBrains Mono',monospace; font-size:12px; text-align:center;`;
+    const oldest = Object.entries(h.file_health || {})
+      .filter(([_,v]) => v.status === "CRITICAL" || v.status === "MISSING")
+      .sort((a,b) => (b[1].age_min || 0) - (a[1].age_min || 0))[0];
+    banner.innerHTML = h.overall_status === "CRITICAL"
+      ? `⚠️ <strong>Data freshness:</strong> ${oldest ? oldest[0] + ' is ' + Math.round(oldest[1].age_min) + ' min stale' : 'multiple files stale'}. Pipeline may need a manual trigger. <a href="https://github.com/Keyvaniath/bpleone-betting/actions" style="color:${color};">View Actions →</a>`
+      : `⚠️ Some data sources are aging. Last refresh check: ${(h.generated_at||'').slice(0,19).replace('T',' ')}`;
+    const main = document.querySelector("main.container");
+    if (main && main.parentNode) main.parentNode.insertBefore(banner, main);
+  })
+  .catch(() => {});
+
 // PLAY OF THE DAY P&L tile (PRIMARY)
 fetch("data/pod_pl.json?t=" + Date.now(), { cache: "no-cache" })
   .then(r => r.json())

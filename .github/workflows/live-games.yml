@@ -72,6 +72,21 @@ jobs:
         working-directory: python
         run: python all_picks_tracker.py
 
+      # Self-learn shrinkage weights (per-source feedback loop)
+      - name: Self-learn shrinkage weights
+        working-directory: python
+        run: python self_learn_weights.py
+
+      # Pipeline freshness watchdog -- alarm if any critical file is stale
+      - name: Pipeline watchdog (freshness check)
+        working-directory: python
+        run: python pipeline_watchdog.py
+
+      # In-game prop lock detector (LOCKED_WON / LOCKED_LOST / SWEATING)
+      - name: In-game prop lock detector
+        working-directory: python
+        run: python in_game_lock_detector.py
+
       # Live status of today's tracked Locks (WON / LOST / ON_TRACK / AT_RISK / PENDING)
       - name: Live locks status tracker
         working-directory: python
