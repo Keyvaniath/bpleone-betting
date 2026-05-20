@@ -57,6 +57,7 @@ SOURCE_SHRINKAGE_W = {
     "pitcher_form_regression": 0.65,
     "mlb_batter_sp_edges": 0.60,
     "mlb_batter_situational": 0.55,
+    "mlb_batter_lvr": 0.60,              # MLB Stats API real splits -- decent trust
     "pp_over": 0.45,                     # PP projections -- aggressive shrink
     "pp_under": 0.45,
     "nba_ext": 0.55,
