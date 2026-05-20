@@ -1,45 +1,46 @@
 {
-  "generated_at": "2026-05-20T09:27:01",
+  "generated_at": "2026-05-19T19:58:17",
   "overall": "red",
-  "n_green": 6,
-  "n_yellow": 2,
-  "n_red": 1,
+  "n_green": 4,
+  "n_yellow": 1,
+  "n_red": 4,
   "checks": [
     {
       "feed": "mlb",
-      "status": "yellow",
+      "status": "red",
       "findings": [
-        "today.json count off: local=10 vs upstream pre-game=15 (total=15, live=0, final=0)"
+        "today.json count off: local=10 vs upstream pre-game=0 (total=15, live=5, final=10)",
+        "MLB has 5 live games but live_state.json shows 10 (age 58min)"
       ],
       "upstream_count": 15,
-      "upstream_pregame": 15,
-      "upstream_live": 0,
-      "upstream_final": 0,
+      "upstream_pregame": 0,
+      "upstream_live": 5,
+      "upstream_final": 10,
       "local_count": 10,
-      "local_live": 0,
-      "live_state_age_min": 0
+      "local_live": 10,
+      "live_state_age_min": 58
     },
     {
       "feed": "nba",
-      "status": "green",
+      "status": "red",
       "findings": [
-        "1 events matched (0 live)"
+        "NBA has 1 live, local age 58min"
       ],
       "upstream_count": 1,
       "local_count": 1,
-      "upstream_live": 0,
-      "local_age_min": 0
+      "upstream_live": 1,
+      "local_age_min": 58
     },
     {
       "feed": "wnba",
-      "status": "green",
+      "status": "red",
       "findings": [
-        "1 events matched (0 live)"
+        "WNBA has 1 live, local age 58min"
       ],
       "upstream_count": 1,
       "local_count": 1,
-      "upstream_live": 0,
-      "local_age_min": 0
+      "upstream_live": 1,
+      "local_age_min": 58
     },
     {
       "feed": "nhl",
@@ -50,18 +51,18 @@
       "upstream_count": 1,
       "local_count": 1,
       "upstream_live": 0,
-      "local_age_min": 0
+      "local_age_min": 58
     },
     {
       "feed": "mls",
       "status": "green",
       "findings": [
-        "12 events matched (0 live)"
+        "2 events matched (0 live)"
       ],
-      "upstream_count": 12,
-      "local_count": 12,
+      "upstream_count": 2,
+      "local_count": 2,
       "upstream_live": 0,
-      "local_age_min": 0
+      "local_age_min": 58
     },
     {
       "feed": "epl",
@@ -72,16 +73,15 @@
       "upstream_count": 2,
       "local_count": 2,
       "upstream_live": 0,
-      "local_age_min": 0
+      "local_age_min": 58
     },
     {
       "feed": "pitcher_matchup",
-      "status": "yellow",
+      "status": "green",
       "findings": [
-        "only 0/28 pre-game probables in local",
-        "missing: ['Aaron Civale', 'Aaron Nola', 'Andrew Abbott']..."
+        "no pre-game probables upstream (all games live or final)"
       ],
-      "upstream_count": 28,
+      "upstream_count": 0,
       "local_count": 20,
       "matched": 0
     },
@@ -97,13 +97,13 @@
     },
     {
       "feed": "golf",
-      "status": "green",
+      "status": "yellow",
       "findings": [
-        "147 golfers tracked (1 active events)"
+        "golf data 214min stale during active tournament"
       ],
       "upstream_players": 147,
       "local_players": 147,
-      "local_age_min": 0
+      "local_age_min": 214
     }
   ]
 }
