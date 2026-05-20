@@ -15,6 +15,8 @@
   .row.cols-pitcher { grid-template-columns: 1fr 1.4fr 70px 70px 90px 110px; }
   .row.cols-catcher { grid-template-columns: 1fr 1.5fr 1.2fr 80px 90px; }
   .row.cols-splits { grid-template-columns: 1.4fr 60px 70px 70px 70px 70px; }
+  .row.cols-totalbases { grid-template-columns: 1fr 1.4fr 60px 70px 70px 70px 90px; }
+  .row.cols-rlm { grid-template-columns: 1fr 1.1fr 80px 90px 90px 90px; }
   .row.cols-golf { grid-template-columns: 1.6fr 70px 60px 80px 80px; }
   .row.cols-f1 { grid-template-columns: 1.4fr 60px 60px 80px 80px 80px; }
   .row.cols-nhl { grid-template-columns: 1.6fr 80px 60px 90px 120px; }
@@ -57,6 +59,8 @@
     <div class="tab active" data-tab="pitcher">Pitcher Deep</div>
     <div class="tab" data-tab="catcher">Catcher Framing</div>
     <div class="tab" data-tab="splits">Adv Splits</div>
+    <div class="tab" data-tab="totalbases">Total Bases</div>
+    <div class="tab" data-tab="rlm">RLM Sharp</div>
     <div class="tab" data-tab="golf">Golf Live</div>
     <div class="tab" data-tab="nhl">NHL Leverage</div>
     <div class="tab" data-tab="f1">F1 Track</div>
@@ -84,6 +88,22 @@
       <div>Batter</div><div>Team</div><div>RISP PA</div><div>RISP Δ</div><div>L&C PA</div><div>L&C Δ</div>
     </div>
     <div id="splits-rows"><div class="row"><div class="muted">Loading…</div></div></div>
+  </section>
+
+  <!-- Total Bases props -->
+  <section id="tab-totalbases" class="tab-content panel" style="display:none;">
+    <div class="row head cols-totalbases">
+      <div>Batter</div><div>Matchup</div><div>Order</div><div>xTB</div><div>P(1+)</div><div>P(2+)</div><div>Edge</div>
+    </div>
+    <div id="tb-rows"><div class="row"><div class="muted">Loading…</div></div></div>
+  </section>
+
+  <!-- RLM Sharp -->
+  <section id="tab-rlm" class="tab-content panel" style="display:none;">
+    <div class="row head cols-rlm">
+      <div>Matchup</div><div>Side Faded</div><div>Open</div><div>Current</div><div>Delta pp</div><div>Strength</div>
+    </div>
+    <div id="rlm-rows"><div class="row"><div class="muted">Loading…</div></div></div>
   </section>
 
   <!-- Golf live -->
@@ -212,6 +232,46 @@
     }).join('');
   } else {
     sDiv.innerHTML = '<div class="row"><div class="muted">No advanced split data -- next pipeline run will populate.</div></div>';
+  }
+
+  // 3b. Total Bases props
+  const tb = await safeFetch('data/mlb_total_bases_props.json');
+  const tbDiv = document.getElementById('tb-rows');
+  if (tb && tb.top_25_by_xTB && tb.top_25_by_xTB.length) {
+    tbDiv.innerHTML = tb.top_25_by_xTB.slice(0, 25).map(b => {
+      const cls = b.edge_class.startsWith('STRONG') ? 'win-heavy' :
+                  b.edge_class === 'NONE' ? '' : '';
+      return `<div class="row cols-totalbases ${cls}">
+        <div>${b.batter || '--'}</div>
+        <div>${b.matchup || '--'}</div>
+        <div>${b.order || '--'}</div>
+        <div>${fmt(b.expected_tb, 2)}</div>
+        <div>${fmt((b.p_1_plus||0)*100, 0)}%</div>
+        <div class="${(b.p_2_plus||0)>=0.55?'pos':''}">${fmt((b.p_2_plus||0)*100, 0)}%</div>
+        <div class="${b.edge_class.startsWith('STRONG')?'pos':'muted'}">${b.edge_class.replace('_', ' ')}</div>
+      </div>`;
+    }).join('');
+  } else {
+    tbDiv.innerHTML = '<div class="row"><div class="muted">No Total Bases projections yet.</div></div>';
+  }
+
+  // 3c. RLM Sharp
+  const rlm = await safeFetch('data/reverse_line_movement.json');
+  const rlmDiv = document.getElementById('rlm-rows');
+  if (rlm && rlm.rlm_picks && rlm.rlm_picks.length) {
+    rlmDiv.innerHTML = rlm.rlm_picks.map(p => {
+      const cls = p.rlm_strength === 'STRONG' ? 'win-heavy' : '';
+      return `<div class="row cols-rlm ${cls}">
+        <div>${p.matchup || '--'}</div>
+        <div>${p.pick}</div>
+        <div>${p.open_odds}</div>
+        <div>${p.current_odds}</div>
+        <div class="neg">${sign(p.line_delta_pp, 1)}pp</div>
+        <div class="${p.rlm_strength==='STRONG'?'pos':'muted'}">${p.rlm_strength}</div>
+      </div>`;
+    }).join('');
+  } else {
+    rlmDiv.innerHTML = '<div class="row"><div class="muted">No RLM signals detected.</div></div>';
   }
 
   // 4. Golf live

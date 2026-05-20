@@ -529,6 +529,12 @@ jobs:
       - name: Sharp action radar (top-25 pick line movement)
         working-directory: python
         run: python sharp_action_radar.py
+      - name: Reverse Line Movement detector (sharp money signal)
+        working-directory: python
+        run: python reverse_line_movement.py || true
+      - name: MLB Total Bases props (1+/2+/3+ TB Poisson projections)
+        working-directory: python
+        run: python mlb_total_bases_props.py || true
       - name: "Whale picks (max-confluence: top board + consensus + sharp action)"
         working-directory: python
         run: python whale_picks.py
