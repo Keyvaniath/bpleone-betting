@@ -78,6 +78,23 @@ def run() -> Dict[str, Any]:
         _add(picks, "NHL", x.get("matchup"), x.get("market"),
               x.get("prob"), x.get("fair"), "nhl_goalie")
 
+    # F1 driver win/podium/points projections
+    f1 = _load(os.path.join(DATA_DIR, "f1_driver_projections.json"))
+    race_name = f1.get("upcoming_race") or "F1 Race"
+    for d in (f1.get("drivers") or []):
+        nm = d.get("name")
+        if not nm: continue
+        # Only surface top-tier picks (P(podium) > 0.55 or P(top10) > 0.85)
+        if d.get("p_podium", 0) > 0.55:
+            _add(picks, "F1", f"{nm} ({race_name})", "PODIUM_top3",
+                  d.get("p_podium"), d.get("fair_podium_american"), "f1_driver")
+        if d.get("p_points_top10", 0) > 0.85:
+            _add(picks, "F1", f"{nm} ({race_name})", "POINTS_top10",
+                  d.get("p_points_top10"), d.get("fair_points_american"), "f1_driver")
+        if d.get("p_win", 0) > 0.10:
+            _add(picks, "F1", f"{nm} ({race_name})", "WIN",
+                  d.get("p_win"), d.get("fair_win_american"), "f1_driver")
+
     # ESPN-driven sports (state files have p_home_win + fair odds)
     def _has_signal(g):
         """Skip preseason 0-0 vs 0-0 games (only edge is HFA, not actionable)."""
