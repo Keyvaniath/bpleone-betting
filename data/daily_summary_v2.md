@@ -1,13 +1,13 @@
 # EdgeStat Daily Summary — 2026-05-19
 
-## 🏥 Model Health: 83.7/100 [HEALTHY]
+## 🏥 Model Health: 81.7/100 [HEALTHY]
 - Solid health - some minor issues to monitor
   - 🟢 Calibration Freshness: 100.0/100
   - 🟢 Hit Rate Trend: 84.3/100
   - 🔴 Brier Trend: 52.3/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 88.9/100
-  - 🟢 Edge Count: 85.7/100
+  - 🟢 Data Health: 83.3/100
+  - 🟡 Edge Count: 77.1/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.596)
@@ -20,6 +20,24 @@
 3. **BOS @ KCR YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 4. **OAK @ LAA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 5. **LAD @ SDP 4-leg SGP @ -192** (79/100 ★★★★★)
+
+## 🔒 Locks of the Day -- Track Record
+- All-time: 5 locks recorded (0 settled yet)
+
+**Today's 5 Locks:**
+- [MLB] **HOU @ MIN** ML_HOME · p=89% edge=+69.1% qK=0.062u
+- [MLB-PP] **Jo Adell** PP_batter_total_bases_under_3. · p=92% edge=+59.6% qK=0.062u
+- [MLB-PP] **Salvador Perez** PP_batter_hrr_under_3.5 · p=92% edge=+59.6% qK=0.062u
+- [MLB-PP] **Shea Langeliers** PP_batter_hrr_over_0.5 · p=92% edge=+59.6% qK=0.062u
+- [MLB-PP] **Max Muncy** PP_batter_hrr_under_4.5 · p=92% edge=+59.6% qK=0.062u
+
+## 🎰 Top Balanced 2-Leg Parlays (40-65% joint)
+- [MLB] HOU @ MIN ML_HOME + [MLB] PIT @ STL OVER_7.5
+  Joint: 62% | Fair: 264 | Edge: +126.5%
+- [MLB] LAD @ SDP ML_AWAY + [MLB] TEX @ COL UNDER_10.0
+  Joint: 62% | Fair: 264 | Edge: +124.1%
+- [MLB-PP] Jo Adell PP_batter_total_base + [MLB] PIT @ STL OVER_7.5
+  Joint: 65% | Fair: 231 | Edge: +113.9%
 
 ## 🎮 Player Play of the Day (cross-sport)
 - **[LOL]** Inspired UNDER 3.5 Kills | MED conviction · model 61.7% fair -161
@@ -62,12 +80,12 @@
   - [MED] Toronto Tempo @ Phoenix Mercury : 2 signals (PREGAME, ANOMALY)
   - [MED] Portland Timbers @ Inter Miami CF : 2 signals (HEAT_COLD, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (10)
+## ⚾ Top MLB Pitcher K Plays (6)
 - **Landen Roupp** OVER 4.5 K (76%) fair -321
 - **Jacob Misiorowski** OVER 6.5 K (76%) fair -310
 - **Emmet Sheehan** OVER 4.5 K (72%) fair -260
 - **Will Warren** OVER 5.5 K (72%) fair -253
-- **Kyle Bradish** OVER 4.5 K (71%) fair -251
+- **Reid Detmers** OVER 4.5 K (70%) fair -229
 
 ## 🏀 NBA Player Heat (1 HOT / 0 COLD)
   - 🔥 **Mikal Bridges** (NY): L5 18.8/3.8/3.4 vs season 12.7/2.2/2.5 [PTS +6.1]

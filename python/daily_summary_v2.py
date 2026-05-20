@@ -70,6 +70,41 @@ def run() -> Dict[str, Any]:
             lines.append(f"{b.get('rank',0)}. **{b.get('label','')}** ({b.get('quality_score',0)}/100 {stars})")
         lines.append("")
 
+    # Locks of the Day -- Brandon's track record + today's locks
+    locks = _load(os.path.join(DATA_DIR, "locks_history.json"))
+    if locks:
+        total = locks.get("total_locks", 0)
+        wins = locks.get("wins", 0)
+        losses = locks.get("losses", 0)
+        hit_rate = locks.get("hit_rate")
+        net = locks.get("net_units", 0)
+        roi = locks.get("roi_pct")
+        l7 = locks.get("last_7_days") or {}
+        lines.append("## 🔒 Locks of the Day -- Track Record")
+        lines.append(f"- All-time: **{wins}-{losses}** ({(hit_rate*100):.1f}% hit rate)" if hit_rate is not None
+                      else f"- All-time: {total} locks recorded (0 settled yet)")
+        if roi is not None:
+            lines.append(f"- Net units: **{net:+.2f}u** | ROI: **{roi:+.1f}%**")
+        if l7.get("hit_rate") is not None:
+            lines.append(f"- Last 7d: {l7.get('wins',0)}-{l7.get('losses',0)} ({(l7['hit_rate']*100):.1f}%) | net {l7.get('net_units',0):+.2f}u")
+        todays = locks.get("todays_locks") or []
+        if todays:
+            lines.append(f"\n**Today's {len(todays)} Locks:**")
+            for L in todays:
+                lines.append(f"- [{L.get('sport','?')}] **{L.get('player_or_matchup','?')[:30]}** {L.get('market','?')[:30]} · p={L.get('prob',0)*100:.0f}% edge=+{L.get('edge_pct',0):.1f}% qK={L.get('unit_size_quarter_kelly',0):.3f}u")
+        lines.append("")
+
+    # Cross-sport parlay recommendations
+    parlays = _load(os.path.join(DATA_DIR, "cross_sport_parlays.json"))
+    balanced = parlays.get("balanced_2_leg_picks") or []
+    if balanced:
+        lines.append(f"## 🎰 Top Balanced 2-Leg Parlays (40-65% joint)")
+        for p in balanced[:3]:
+            legs_str = " + ".join([f"[{L['sport']}] {L['player_or_matchup'][:25]} {L['market'][:20]}" for L in p['legs']])
+            lines.append(f"- {legs_str}")
+            lines.append(f"  Joint: {p['joint_prob']*100:.0f}% | Fair: {p['fair_parlay_american']} | Edge: +{p['edge_pct']:.1f}%")
+        lines.append("")
+
     # Player POT
     ppot = _load(os.path.join(DATA_DIR, "player_pot.json"))
     top5_players = ppot.get("top_5") or []
