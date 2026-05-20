@@ -82,16 +82,17 @@ def _score_under(game: Dict[str, Any], matchup_data: Dict[str, Any]) -> Dict[str
         score += 1.0
         signals.append(f"Low carry index ({carry:.2f}) -- balls don't fly")
 
-    # Weather
+    # Weather  -- guard against None values from API
     temp = weather.get("temp_f") or 70
     wind = weather.get("wind_mph") or 0
+    precip = weather.get("precip_pct") or 0
     if weather.get("is_indoor"):
         score += 1.0
         signals.append("Indoor game (no weather variance)")
     elif temp < 60:
         score += 1.0
         signals.append(f"Cold weather {temp}F")
-    elif weather.get("precip_pct", 0) > 50:
+    elif precip > 50:
         score += 0.5
         signals.append("Rain expected")
 
