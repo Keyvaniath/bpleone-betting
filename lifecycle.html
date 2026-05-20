@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lifecycle | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/nav.js"></script>
+<style>
+  .row { display: grid; gap: 8px; padding: 9px 14px; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 12px; border-bottom: 1px solid rgba(255,255,255,0.04); }
+  .row.head { background: rgba(255,255,255,0.04); color: var(--muted,#888); font-size: 10px; text-transform: uppercase; padding: 8px 14px; }
+  .row.cols-source { grid-template-columns: 1.2fr 90px 70px 70px 70px 90px 110px; }
+  .row.cols-version { grid-template-columns: 1.4fr 80px 80px 70px 70px 90px 110px 90px; }
+  .pos { color: #58c878; font-weight: 700; }
+  .neg { color: #e35a5a; font-weight: 700; }
+  .muted { color: var(--muted,#888); }
+  .panel { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; margin-bottom: 16px; }
+  .info-card { padding: 14px 18px; background: linear-gradient(135deg, rgba(212,160,74,0.10), rgba(212,160,74,0.02)); border: 1px solid rgba(212,160,74,0.3); border-radius: 10px; margin-bottom: 16px; }
+  .stat-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 14px; }
+  .stat { padding: 10px 12px; background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.05); border-radius: 6px; text-align: center; }
+  .stat-val { font-family: 'JetBrains Mono', monospace; font-size: 22px; font-weight: 700; color: #d4a04a; }
+  .stat-label { font-size: 10px; color: var(--muted,#888); text-transform: uppercase; margin-top: 4px; }
+  .badge { padding: 2px 7px; border-radius: 4px; font-size: 10px; font-weight: 700; }
+  .badge-A { background: #58c878; color: #111; }
+  .badge-B { background: #d4a04a; color: #111; }
+  .badge-C { background: #c8c878; color: #111; }
+  .badge-D { background: #c87850; color: #111; }
+  .badge-F { background: #e35a5a; color: #fff; }
+  .heat-grid { display: grid; grid-template-columns: repeat(53, 1fr); gap: 2px; padding: 14px; }
+  .heat-day { aspect-ratio: 1; border-radius: 2px; background: rgba(255,255,255,0.03); }
+  .heat-day[data-vol="1"] { background: rgba(212,160,74,0.20); }
+  .heat-day[data-vol="2"] { background: rgba(212,160,74,0.40); }
+  .heat-day[data-vol="3"] { background: rgba(212,160,74,0.65); }
+  .heat-day[data-vol="4"] { background: rgba(212,160,74,0.90); }
+  .heat-day.win-heavy[data-vol] { background: rgba(88,200,120,0.70); }
+  .heat-day.loss-heavy[data-vol] { background: rgba(227,90,90,0.70); }
+</style>
+</head>
+<body class="page-lifecycle">
+<header class="topbar">
+  <div class="brand"><a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a><span class="tagline">by bpleone</span></div>
+  <nav class="mainnav"><!-- nav.js injects --></nav>
+  <div class="topbar-actions"><div class="ticker">LIVE</div></div>
+</header>
+<main class="container">
+  <section class="page-head">
+    <h1>📈 Lifecycle — multi-year model tracking</h1>
+    <p class="muted" id="status">Loading from D1…</p>
+  </section>
+
+  <div class="info-card">
+    <strong style="color:#d4a04a;">Why this page exists:</strong>
+    <span style="color: var(--text-2,#aaa); font-size:13px;">
+      The story of how the model evolves. Every pick stamped with a model_version
+      so you can audit how each generation performed. Source lifecycle shows when
+      each module was added, when it crossed the n=20 learning threshold, when it
+      hit A-grade. Pick-volume heatmap shows the daily cadence. After 100+ days
+      this page is the receipts on whether the system actually works.
+    </span>
+  </div>
+
+  <div class="stat-strip">
+    <div class="stat"><div class="stat-val" id="s_versions">--</div><div class="stat-label">Model versions tracked</div></div>
+    <div class="stat"><div class="stat-val" id="s_sources">--</div><div class="stat-label">Active sources</div></div>
+    <div class="stat"><div class="stat-val" id="s_days">--</div><div class="stat-label">Days with picks</div></div>
+    <div class="stat"><div class="stat-val" id="s_first">--</div><div class="stat-label">First pick</div></div>
+  </div>
+
+  <h2 style="color:#d4a04a; font-size:15px; margin: 24px 0 8px;">📊 Performance by Model Version</h2>
+  <div class="panel">
+    <div class="row head cols-version">
+      <div>Model Version</div><div>First Date</div><div>Last Date</div>
+      <div>N</div><div>Settled</div><div>Hit %</div><div>Net Units</div><div>ROI %</div>
+    </div>
+    <div id="version-rows"><div class="row"><div class="muted">Loading…</div></div></div>
+  </div>
+
+  <h2 style="color:#d4a04a; font-size:15px; margin: 24px 0 8px;">🌱 Source Lifecycle (when each module joined the model)</h2>
+  <div class="panel">
+    <div class="row head cols-source">
+      <div>Source</div><div>First Seen</div><div>Picks</div><div>Settled</div><div>Wins</div><div>Hit %</div><div>n=20 Crossed</div>
+    </div>
+    <div id="source-rows"><div class="row"><div class="muted">Loading…</div></div></div>
+  </div>
+
+  <h2 style="color:#d4a04a; font-size:15px; margin: 24px 0 8px;">📅 Daily Pick Volume Heatmap (last 52 weeks)</h2>
+  <div class="panel">
+    <div style="padding: 10px 14px; font-size: 11px; color: var(--muted,#888);">
+      Each cell = 1 day. Gold = pick volume. Green tint = positive net units that day. Red tint = negative.
+    </div>
+    <div class="heat-grid" id="heat-grid"></div>
+  </div>
+</main>
+
+<script>
+const WORKER = (window.EDGESTAT_WORKER_URL || 'https://edgestat-live.brandonpleone.workers.dev');
+
+async function fetchJSON(url) {
+  try { const r = await fetch(url + '?t=' + Date.now()); if (!r.ok) return null; return await r.json(); }
+  catch (e) { return null; }
+}
+
+const fmt = (n, d=2) => (n === null || n === undefined || isNaN(n)) ? '--' : Number(n).toFixed(d);
+const fmtPct = (n) => (n === null || n === undefined || isNaN(n)) ? '--' : (Number(n) * 100).toFixed(1) + '%';
+
+async function load() {
+  const [versions, sources, daily] = await Promise.all([
+    fetchJSON(WORKER + '/db/by-version'),
+    fetchJSON(WORKER + '/db/lifecycle'),
+    fetchJSON(WORKER + '/db/daily'),
+  ]);
+
+  if (!versions || !sources) {
+    document.getElementById('status').textContent = 'D1 not available yet.';
+    return;
+  }
+
+  document.getElementById('status').textContent = 'D1 live · last fetch: ' + new Date().toLocaleString();
+  document.getElementById('s_versions').textContent = (versions.rows || []).length;
+  document.getElementById('s_sources').textContent = (sources.rows || []).length;
+  document.getElementById('s_days').textContent = (daily?.rows || []).length;
+  document.getElementById('s_first').textContent = (daily?.rows || []).slice(-1)[0]?.date || '--';
+
+  // Versions
+  const vDiv = document.getElementById('version-rows');
+  const vRows = versions.rows || [];
+  if (!vRows.length) {
+    vDiv.innerHTML = '<div class="row"><div class="muted">No version-tagged picks yet — next heartbeat sync will start tagging.</div></div>';
+  } else {
+    vDiv.innerHTML = vRows.map(v => {
+      const hit = v.settled > 0 ? v.wins / v.settled : null;
+      const roi = v.settled > 0 ? (v.net_units || 0) / v.settled * 100 : null;
+      return `<div class="row cols-version">
+        <div><code>${v.model_version}</code></div>
+        <div>${v.first_date || '--'}</div>
+        <div>${v.last_date || '--'}</div>
+        <div>${v.picks_total}</div>
+        <div>${v.settled}</div>
+        <div>${fmtPct(hit)}</div>
+        <div class="${(v.net_units||0)>=0?'pos':'neg'}">${(v.net_units||0)>=0?'+':''}${fmt(v.net_units, 2)}u</div>
+        <div class="${(roi||0)>=0?'pos':'neg'}">${roi===null?'--':((roi>=0?'+':'')+fmt(roi,1)+'%')}</div>
+      </div>`;
+    }).join('');
+  }
+
+  // Sources
+  const sDiv = document.getElementById('source-rows');
+  const sRows = sources.rows || [];
+  sDiv.innerHTML = sRows.map(s => {
+    const hit = s.settled_total > 0 ? s.wins / s.settled_total : null;
+    const crossed = s.settled_total >= 20 ? '<span class="pos">✓</span>' : `need ${Math.max(0,20-s.settled_total)} more`;
+    return `<div class="row cols-source">
+      <div><strong>${s.source}</strong></div>
+      <div>${(s.first_pick_date||'--').slice(0,10)}</div>
+      <div>${s.picks_total}</div>
+      <div>${s.settled_total}</div>
+      <div>${s.wins || 0}</div>
+      <div>${fmtPct(hit)}</div>
+      <div>${crossed}</div>
+    </div>`;
+  }).join('');
+
+  // Heatmap (last 52 weeks = 364 days)
+  const dailyMap = {};
+  (daily?.rows || []).forEach(d => dailyMap[d.date] = d);
+  const today = new Date();
+  const cells = [];
+  for (let i = 364; i >= 0; i--) {
+    const d = new Date(today); d.setDate(today.getDate() - i);
+    const ds = d.toISOString().slice(0, 10);
+    const day = dailyMap[ds];
+    let vol = 0, cls = '';
+    if (day) {
+      const total = day.picks_total || 0;
+      vol = total >= 30 ? 4 : total >= 15 ? 3 : total >= 5 ? 2 : total > 0 ? 1 : 0;
+      if (day.net_units > 1) cls = 'win-heavy';
+      else if (day.net_units < -1) cls = 'loss-heavy';
+    }
+    const title = day ? `${ds}: ${day.picks_total} picks, ${day.wins}/${day.settled} W, ${(day.net_units||0).toFixed(2)}u` : `${ds}: no picks`;
+    cells.push(`<div class="heat-day ${cls}" data-vol="${vol}" title="${title}"></div>`);
+  }
+  document.getElementById('heat-grid').innerHTML = cells.join('');
+}
+
+load();
+setInterval(load, 60000);  // refresh every minute
+</script>
+</body>
+</html>

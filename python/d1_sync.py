@@ -69,6 +69,16 @@ def _norm_outcome(s: Any) -> str:
     return _OUTCOME_MAP.get(s, s)
 
 
+def _get_model_version() -> Optional[str]:
+    """Load current model version stamp from data/model_version.json."""
+    p = os.path.join(DATA_DIR, "model_version.json")
+    if not os.path.exists(p): return None
+    try:
+        with open(p) as f: return (json.load(f) or {}).get("version")
+    except Exception:
+        return None
+
+
 def _normalize_pick(p: Dict[str, Any]) -> Dict[str, Any]:
     """Normalize a ledger pick to the D1 schema shape."""
     return {
@@ -87,6 +97,7 @@ def _normalize_pick(p: Dict[str, Any]) -> Dict[str, Any]:
         "outcome": _norm_outcome(p.get("result") or p.get("outcome") or "PENDING"),
         "date": p.get("date") or dt.datetime.utcnow().strftime("%Y-%m-%d"),
         "created_at": p.get("recorded_at") or p.get("created_at") or dt.datetime.utcnow().isoformat(timespec="seconds"),
+        "model_version": _get_model_version(),
         "metadata": {k: v for k, v in p.items() if k not in (
             "pick_id", "source", "sport", "player_or_matchup", "matchup",
             "market", "p_predicted", "prob", "entry_odds", "fair_odds",

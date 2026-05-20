@@ -211,8 +211,8 @@ async function handleHTTP(request, env) {
       const stmt = env.EDGESTAT_DB.prepare(
         `INSERT INTO picks (pick_id, source, sport, player_or_matchup, market,
                             p_predicted, entry_odds, fair_odds, edge_pct, tier,
-                            outcome, date, created_at, metadata)
-         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                            outcome, date, created_at, metadata, model_version)
+         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
          ON CONFLICT(pick_id) DO NOTHING`
       );
       for (const p of picks) {
@@ -225,7 +225,8 @@ async function handleHTTP(request, env) {
           p.edge_pct || null, p.tier || null,
           p.outcome || "PENDING",
           p.date, p.created_at || new Date().toISOString(),
-          p.metadata ? JSON.stringify(p.metadata) : null
+          p.metadata ? JSON.stringify(p.metadata) : null,
+          p.model_version || null
         ).run();
         if (r.meta && r.meta.changes > 0) inserted++;
         else skipped++;
@@ -351,6 +352,105 @@ async function handleHTTP(request, env) {
       avg_edge_pct: r.avg_edge_pct,
       by_source,
     }), { headers: cors });
+  }
+
+  // GET /db/lifecycle -- per-source lifecycle: first seen, n=20 crossing, grades
+  if (path === "/db/lifecycle") {
+    if (!env.EDGESTAT_DB) {
+      return new Response(JSON.stringify({ error: "D1 not bound" }), { status: 503, headers: cors });
+    }
+    // Derive live lifecycle from picks table
+    const r = await env.EDGESTAT_DB.prepare(`
+      SELECT source,
+             MIN(date) as first_pick_date,
+             MIN(created_at) as first_pick_at,
+             COUNT(*) as picks_total,
+             SUM(CASE WHEN outcome != 'PENDING' THEN 1 ELSE 0 END) as settled_total,
+             SUM(CASE WHEN outcome = 'WIN' THEN 1 ELSE 0 END) as wins
+        FROM picks GROUP BY source ORDER BY first_pick_at ASC
+    `).all();
+    return new Response(JSON.stringify({ rows: r.results || [] }), { headers: cors });
+  }
+
+  // GET /db/by-version -- group performance by model_version (multi-year audit)
+  if (path === "/db/by-version") {
+    if (!env.EDGESTAT_DB) {
+      return new Response(JSON.stringify({ error: "D1 not bound" }), { status: 503, headers: cors });
+    }
+    const r = await env.EDGESTAT_DB.prepare(`
+      SELECT COALESCE(model_version, 'unknown') as model_version,
+             COUNT(*) as picks_total,
+             SUM(CASE WHEN outcome != 'PENDING' THEN 1 ELSE 0 END) as settled,
+             SUM(CASE WHEN outcome = 'WIN' THEN 1 ELSE 0 END) as wins,
+             SUM(CASE WHEN outcome = 'LOSS' THEN 1 ELSE 0 END) as losses,
+             SUM(COALESCE(payout_units, 0)) as net_units,
+             MIN(date) as first_date,
+             MAX(date) as last_date
+        FROM picks GROUP BY model_version ORDER BY first_date DESC
+    `).all();
+    return new Response(JSON.stringify({ rows: r.results || [] }), { headers: cors });
+  }
+
+  // GET /db/daily -- per-day pick volume + hit rate (calendar heatmap source)
+  if (path === "/db/daily") {
+    if (!env.EDGESTAT_DB) {
+      return new Response(JSON.stringify({ error: "D1 not bound" }), { status: 503, headers: cors });
+    }
+    const r = await env.EDGESTAT_DB.prepare(`
+      SELECT date,
+             COUNT(*) as picks_total,
+             SUM(CASE WHEN outcome != 'PENDING' THEN 1 ELSE 0 END) as settled,
+             SUM(CASE WHEN outcome = 'WIN' THEN 1 ELSE 0 END) as wins,
+             SUM(CASE WHEN outcome = 'LOSS' THEN 1 ELSE 0 END) as losses,
+             SUM(COALESCE(payout_units, 0)) as net_units
+        FROM picks GROUP BY date ORDER BY date DESC LIMIT 400
+    `).all();
+    return new Response(JSON.stringify({ rows: r.results || [] }), { headers: cors });
+  }
+
+  // POST /db/log-audit  body: { audit: [{source, old, new, reason, n, hr, version, at}] }
+  if (path === "/db/log-audit" && request.method === "POST") {
+    if (!env.EDGESTAT_DB) {
+      return new Response(JSON.stringify({ error: "D1 not bound" }), { status: 503, headers: cors });
+    }
+    try {
+      const body = await request.json();
+      const rows = body.audit || [];
+      const stmt = env.EDGESTAT_DB.prepare(
+        `INSERT INTO weight_audit (source, old_weight, new_weight, delta, reason,
+                                    n_settled, hit_rate, model_version, changed_at)
+         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`
+      );
+      let inserted = 0;
+      for (const a of rows) {
+        const delta = (a.new_weight != null && a.old_weight != null) ? (a.new_weight - a.old_weight) : null;
+        const r = await stmt.bind(
+          a.source, a.old_weight ?? null, a.new_weight ?? null, delta,
+          a.reason || null, a.n_settled ?? null, a.hit_rate ?? null,
+          a.model_version || null, a.changed_at || new Date().toISOString()
+        ).run();
+        if (r.meta && r.meta.changes > 0) inserted++;
+      }
+      return new Response(JSON.stringify({ ok: true, inserted }), { headers: cors });
+    } catch (e) {
+      return new Response(JSON.stringify({ error: String(e) }), { status: 500, headers: cors });
+    }
+  }
+
+  // GET /db/audit?source=X&limit=N -- weight change history
+  if (path === "/db/audit") {
+    if (!env.EDGESTAT_DB) {
+      return new Response(JSON.stringify({ error: "D1 not bound" }), { status: 503, headers: cors });
+    }
+    const source = url.searchParams.get("source");
+    const limit = Math.min(parseInt(url.searchParams.get("limit") || "100"), 500);
+    let sql = "SELECT * FROM weight_audit WHERE 1=1";
+    const args = [];
+    if (source) { sql += " AND source = ?"; args.push(source); }
+    sql += " ORDER BY changed_at DESC LIMIT ?";
+    args.push(limit);
+    const r = await env.EDGESTAT_DB.prepare(sql).bind(...args).all();
+    return new Response(JSON.stringify({ rows: r.results || [] }), { headers: cors });
   }
 
   // GET /db/health -- count of rows in each table

@@ -41,6 +41,11 @@ jobs:
       - name: Install deps
         run: pip install -r python/requirements.txt
 
+      # Stamp current model version (git SHA + date) for every pick
+      - name: Model version stamp
+        working-directory: python
+        run: python model_version.py
+
       # Sync any user-saved model overrides from Cloudflare KV (no-op if Worker not deployed)
       - name: Sync model overrides from Worker KV
         env:
