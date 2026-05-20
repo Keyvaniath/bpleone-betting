@@ -202,6 +202,16 @@ jobs:
         working-directory: python
         run: python nhl_pipeline.py
 
+      # NHL goalie-pull leverage (high-leverage live-bet windows)
+      - name: NHL goalie-pull leverage tracker
+        working-directory: python
+        run: python nhl_goalie_pull_leverage.py
+
+      # Golf live tracker (heaters / stalled / cut-bubble during tournaments)
+      - name: Golf live tracker
+        working-directory: python
+        run: python golf_live_tracker.py
+
       # KBO + LoL + CS live refresh (cheap polls, no rate limits)
       - name: KBO live scoreboard
         working-directory: python

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deep Edges | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/nav.js"></script>
+<style>
+  .tab-strip { display: flex; gap: 4px; margin-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); flex-wrap: wrap; }
+  .tab { padding: 8px 14px; cursor: pointer; font-size: 12px; color: var(--text-2,#aaa); border-bottom: 2px solid transparent; }
+  .tab.active { color: var(--accent,#d4a04a); border-bottom-color: var(--accent,#d4a04a); }
+  .row { display: grid; gap: 8px; padding: 9px 14px; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 12px; border-bottom: 1px solid rgba(255,255,255,0.04); }
+  .row.head { background: rgba(255,255,255,0.04); color: var(--muted,#888); font-size: 10px; text-transform: uppercase; padding: 8px 14px; }
+  .row.cols-pitcher { grid-template-columns: 1fr 1.4fr 70px 70px 90px 110px; }
+  .row.cols-catcher { grid-template-columns: 1fr 1.5fr 1.2fr 80px 90px; }
+  .row.cols-splits { grid-template-columns: 1.4fr 60px 70px 70px 70px 70px; }
+  .row.cols-golf { grid-template-columns: 1.6fr 70px 60px 80px 80px; }
+  .row.cols-f1 { grid-template-columns: 1.4fr 60px 60px 80px 80px 80px; }
+  .row.cols-nhl { grid-template-columns: 1.6fr 80px 60px 90px 120px; }
+  .row.win-heavy { border-left: 3px solid #58c878; background: rgba(88,200,120,0.04); }
+  .row.loss-heavy { border-left: 3px solid #e35a5a; background: rgba(227,90,90,0.04); }
+  .pos { color: #58c878; font-weight: 700; }
+  .neg { color: #e35a5a; font-weight: 700; }
+  .muted { color: var(--muted,#888); }
+  .tier-elite { color: #d4a04a; font-weight: 700; }
+  .tier-above_avg { color: #58c878; }
+  .tier-below_avg { color: #c8c878; }
+  .tier-poor { color: #e35a5a; font-weight: 700; }
+  .info-card { padding: 14px 18px; background: linear-gradient(135deg, rgba(212,160,74,0.1), rgba(212,160,74,0.02)); border: 1px solid rgba(212,160,74,0.3); border-radius: 10px; margin-bottom: 16px; }
+  .panel { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; margin-bottom: 16px; }
+</style>
+</head>
+<body class="page-deep-edges">
+<header class="topbar">
+  <div class="brand"><a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a><span class="tagline">by bpleone</span></div>
+  <nav class="mainnav"><!-- nav.js injects --></nav>
+  <div class="topbar-actions"><div class="ticker">LIVE</div></div>
+</header>
+<main class="container">
+  <section class="page-head">
+    <h1>🔬 Deep Edges — Sport-Specific Overlays</h1>
+    <p class="muted" id="status">Loading…</p>
+  </section>
+
+  <div class="info-card">
+    <strong style="color:#d4a04a;">What's here:</strong>
+    <span style="color: var(--text-2,#aaa); font-size:13px;">
+      The deep-feature stack: MLB pitcher TTO + form + park projections, catcher framing K-add overlays,
+      RISP / late-close batter splits, golf live momentum, NHL goalie-pull leverage windows, and F1
+      track-specific driver history. Each one nudges the headline edge — when several stack on the
+      same pick, that's a WHALE.
+    </span>
+  </div>
+
+  <div class="tab-strip" id="tabs">
+    <div class="tab active" data-tab="pitcher">Pitcher Deep</div>
+    <div class="tab" data-tab="catcher">Catcher Framing</div>
+    <div class="tab" data-tab="splits">Adv Splits</div>
+    <div class="tab" data-tab="golf">Golf Live</div>
+    <div class="tab" data-tab="nhl">NHL Leverage</div>
+    <div class="tab" data-tab="f1">F1 Track</div>
+  </div>
+
+  <!-- Pitcher deep matchup -->
+  <section id="tab-pitcher" class="tab-content panel">
+    <div class="row head cols-pitcher">
+      <div>Matchup</div><div>Pitcher</div><div>Season K</div><div>Proj K</div><div>Edge</div><div>Park Factor</div>
+    </div>
+    <div id="pitcher-rows"><div class="row"><div class="muted" colspan="6">Loading…</div></div></div>
+  </section>
+
+  <!-- Catcher framing -->
+  <section id="tab-catcher" class="tab-content panel" style="display:none;">
+    <div class="row head cols-catcher">
+      <div>Matchup</div><div>Catcher</div><div>Pitcher</div><div>Tier</div><div>K Adj</div>
+    </div>
+    <div id="catcher-rows"><div class="row"><div class="muted">Loading…</div></div></div>
+  </section>
+
+  <!-- Advanced splits -->
+  <section id="tab-splits" class="tab-content panel" style="display:none;">
+    <div class="row head cols-splits">
+      <div>Batter</div><div>Team</div><div>RISP PA</div><div>RISP Δ</div><div>L&C PA</div><div>L&C Δ</div>
+    </div>
+    <div id="splits-rows"><div class="row"><div class="muted">Loading…</div></div></div>
+  </section>
+
+  <!-- Golf live -->
+  <section id="tab-golf" class="tab-content panel" style="display:none;">
+    <h3 style="padding: 12px 14px 0; margin:0; font-size:13px; color: var(--accent,#d4a04a);">🔥 Heaters</h3>
+    <div class="row head cols-golf">
+      <div>Player</div><div>To Par</div><div>Today</div><div>Rank</div><div>Thru</div>
+    </div>
+    <div id="golf-heaters"><div class="row"><div class="muted">No heaters (no live tournament).</div></div></div>
+    <h3 style="padding: 12px 14px 0; margin:0; font-size:13px; color: var(--accent,#d4a04a);">⚠ Cut-Line Bubble</h3>
+    <div class="row head cols-golf">
+      <div>Player</div><div>To Par</div><div>Cut</div><div>Strokes</div><div>Rank</div>
+    </div>
+    <div id="golf-bubble"><div class="row"><div class="muted">Inactive between rounds.</div></div></div>
+  </section>
+
+  <!-- NHL goalie-pull -->
+  <section id="tab-nhl" class="tab-content panel" style="display:none;">
+    <div class="row head cols-nhl">
+      <div>Matchup</div><div>Leverage</div><div>Deficit</div><div>Time Left</div><div>Edge Note</div>
+    </div>
+    <div id="nhl-rows"><div class="row"><div class="muted">No active leverage events.</div></div></div>
+  </section>
+
+  <!-- F1 -->
+  <section id="tab-f1" class="tab-content panel" style="display:none;">
+    <div class="row head cols-f1">
+      <div>Driver</div><div>Avg</div><div>Best</div><div>Podium%</div><div>Top 5%</div><div>DNF%</div>
+    </div>
+    <div id="f1-rows"><div class="row"><div class="muted">Loading…</div></div></div>
+  </section>
+</main>
+
+<script>
+(async () => {
+  const tabs = document.querySelectorAll('.tab');
+  tabs.forEach(t => t.addEventListener('click', () => {
+    tabs.forEach(x => x.classList.remove('active'));
+    t.classList.add('active');
+    document.querySelectorAll('.tab-content').forEach(s => s.style.display = 'none');
+    document.getElementById('tab-' + t.dataset.tab).style.display = '';
+  }));
+
+  const safeFetch = async (path) => {
+    try {
+      const r = await fetch(path + '?t=' + Date.now());
+      if (!r.ok) return null;
+      return await r.json();
+    } catch (e) { return null; }
+  };
+
+  const fmt = (n, p=2) => (n === null || n === undefined || isNaN(n)) ? '--' : Number(n).toFixed(p);
+  const sign = (n, p=2) => {
+    if (n === null || n === undefined || isNaN(n)) return '--';
+    const v = Number(n);
+    return (v >= 0 ? '+' : '') + v.toFixed(p);
+  };
+
+  // 1. Pitcher deep matchup
+  const deep = await safeFetch('data/mlb_pitcher_deep_matchup.json');
+  const pitcherDiv = document.getElementById('pitcher-rows');
+  if (deep && deep.matchups && deep.matchups.length) {
+    const rows = [];
+    deep.matchups.forEach(m => {
+      ['home_pitcher', 'away_pitcher'].forEach(side => {
+        const p = m[side];
+        if (!p || !p.k_projection) return;
+        const edge = p.k_projection.delta_vs_season || 0;
+        const cls = edge >= 0.4 ? 'win-heavy' : edge <= -0.4 ? 'loss-heavy' : '';
+        rows.push(`<div class="row cols-pitcher ${cls}">
+          <div>${m.matchup}</div>
+          <div>${p.name || '--'} <span class="muted">(${p.arm_side})</span></div>
+          <div>${fmt(p.k_projection.season_avg_k, 2)}</div>
+          <div>${fmt(p.k_projection.projected_k, 2)}</div>
+          <div class="${edge>=0?'pos':'neg'}">${sign(edge, 2)}</div>
+          <div>${fmt(m.park_run_factor, 3)}</div>
+        </div>`);
+      });
+    });
+    pitcherDiv.innerHTML = rows.join('') || '<div class="row"><div class="muted">No matchups.</div></div>';
+  } else {
+    pitcherDiv.innerHTML = '<div class="row"><div class="muted">No deep-matchup data yet -- next pipeline run will populate.</div></div>';
+  }
+
+  // 2. Catcher framing
+  const cf = await safeFetch('data/mlb_catcher_framing.json');
+  const cDiv = document.getElementById('catcher-rows');
+  if (cf && cf.adjustments && cf.adjustments.length) {
+    cDiv.innerHTML = cf.adjustments.map(a => {
+      const cls = (a.k_per_start_adj || 0) >= 0.5 ? 'win-heavy' :
+                  (a.k_per_start_adj || 0) <= -0.5 ? 'loss-heavy' : '';
+      return `<div class="row cols-catcher ${cls}">
+        <div>${a.matchup}</div>
+        <div>${a.catcher}</div>
+        <div>${a.pitcher_caught || '--'}</div>
+        <div class="tier-${a.tier}">${a.tier.replace('_', ' ')}</div>
+        <div class="${a.k_per_start_adj>=0?'pos':'neg'}">${sign(a.k_per_start_adj, 1)} K</div>
+      </div>`;
+    }).join('');
+  } else {
+    cDiv.innerHTML = '<div class="row"><div class="muted">No catcher framing adjustments today.</div></div>';
+  }
+
+  // 3. Advanced splits
+  const adv = await safeFetch('data/mlb_batter_advanced_splits.json');
+  const sDiv = document.getElementById('splits-rows');
+  if (adv && adv.batters && adv.batters.length) {
+    const sorted = adv.batters.slice().sort((a,b) => {
+      const av = (a.risp_slg_delta || 0) + (a.late_close_avg_delta || 0);
+      const bv = (b.risp_slg_delta || 0) + (b.late_close_avg_delta || 0);
+      return bv - av;
+    });
+    sDiv.innerHTML = sorted.slice(0, 30).map(b => {
+      const rispD = b.risp_slg_delta;
+      const lateD = b.late_close_avg_delta;
+      const cls = ((rispD||0) + (lateD||0)) >= 0.05 ? 'win-heavy' :
+                  ((rispD||0) + (lateD||0)) <= -0.05 ? 'loss-heavy' : '';
+      return `<div class="row cols-splits ${cls}">
+        <div>${b.name || '--'}</div>
+        <div>${b.team || '--'}</div>
+        <div>${b.risp_pa || '--'}</div>
+        <div class="${(rispD||0)>=0?'pos':'neg'}">${rispD!==null && rispD!==undefined ? sign(rispD, 3) : '--'}</div>
+        <div>${b.late_close_pa || '--'}</div>
+        <div class="${(lateD||0)>=0?'pos':'neg'}">${lateD!==null && lateD!==undefined ? sign(lateD, 3) : '--'}</div>
+      </div>`;
+    }).join('');
+  } else {
+    sDiv.innerHTML = '<div class="row"><div class="muted">No advanced split data -- next pipeline run will populate.</div></div>';
+  }
+
+  // 4. Golf live
+  const golf = await safeFetch('data/golf_live_tracker.json');
+  const heatersDiv = document.getElementById('golf-heaters');
+  const bubbleDiv = document.getElementById('golf-bubble');
+  if (golf && golf.heaters && golf.heaters.length) {
+    heatersDiv.innerHTML = golf.heaters.map(h => `<div class="row cols-golf win-heavy">
+      <div>${h.name}</div>
+      <div>${sign(h.to_par, 0)}</div>
+      <div class="pos">${sign(h.today, 0)}</div>
+      <div>T${h.rank || '--'}</div>
+      <div>${h.thru || 18}</div>
+    </div>`).join('');
+  }
+  if (golf && golf.cut_bubble && golf.cut_bubble.length) {
+    bubbleDiv.innerHTML = golf.cut_bubble.slice(0, 12).map(c => `<div class="row cols-golf">
+      <div>${c.name}</div>
+      <div>${sign(c.to_par, 0)}</div>
+      <div>${sign(c.cut_line, 0)}</div>
+      <div class="${c.strokes_to_cut>0?'neg':'pos'}">${sign(c.strokes_to_cut, 0)}</div>
+      <div>T${c.rank || '--'}</div>
+    </div>`).join('');
+  }
+
+  // 5. NHL goalie pull leverage
+  const nhl = await safeFetch('data/nhl_goalie_pull_leverage.json');
+  const nDiv = document.getElementById('nhl-rows');
+  if (nhl && nhl.leverage_events && nhl.leverage_events.length) {
+    nDiv.innerHTML = nhl.leverage_events.map(e => {
+      const cls = e.leverage === 'CRITICAL' ? 'win-heavy' : '';
+      const mins = Math.floor((e.secs_left || 0) / 60);
+      const secs = (e.secs_left || 0) % 60;
+      return `<div class="row cols-nhl ${cls}">
+        <div>${e.matchup}</div>
+        <div class="pos">${e.leverage}</div>
+        <div class="neg">-${e.deficit}</div>
+        <div>${mins}:${String(secs).padStart(2,'0')}</div>
+        <div class="muted">${e.edge_note}</div>
+      </div>`;
+    }).join('');
+  }
+
+  // 6. F1 track-specific
+  const f1 = await safeFetch('data/f1_track_specific.json');
+  const fDiv = document.getElementById('f1-rows');
+  if (f1 && f1.rows && f1.rows.length) {
+    fDiv.innerHTML = f1.rows.map(r => `<div class="row cols-f1">
+      <div>${r.driver}</div>
+      <div>${fmt(r.avg_pos, 1)}</div>
+      <div>P${r.best || '--'}</div>
+      <div class="${(r.podium_rate||0)>=0.4?'pos':''}">${fmt((r.podium_rate||0)*100, 0)}%</div>
+      <div>${fmt((r.top_5_rate||0)*100, 0)}%</div>
+      <div class="${(r.dnf_rate||0)>=0.2?'neg':''}">${fmt((r.dnf_rate||0)*100, 0)}%</div>
+    </div>`).join('');
+    document.querySelector('#tab-f1 .row.head .muted, #tab-f1 .row.head').setAttribute('title', `Circuit: ${f1.circuit_key}`);
+  }
+
+  document.getElementById('status').textContent =
+    `Generated: ${deep ? new Date(deep.generated_at + 'Z').toLocaleString() : 'pending'} · sources stacked: pitcher-deep + catcher-framing + adv-splits + golf-live + nhl-leverage + f1-track`;
+})();
+</script>
+</body>
+</html>

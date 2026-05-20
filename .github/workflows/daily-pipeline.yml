@@ -454,6 +454,12 @@ jobs:
       - name: MLB pitcher matchup engine (K/ER prop projections per game)
         working-directory: python
         run: python mlb_pitcher_matchup.py
+      - name: MLB pitcher DEEP matchup (TTO + opp lineup K-rate + form + park stack)
+        working-directory: python
+        run: python mlb_pitcher_deep_matchup.py
+      - name: MLB catcher framing K-add overlay (pitcher prop K-shading)
+        working-directory: python
+        run: python mlb_catcher_framing.py
       - name: MLB batter-vs-SP matchup edges (xwOBA arsenal + career split adjustments)
         working-directory: python
         run: python mlb_batter_sp_edges.py
@@ -538,12 +544,18 @@ jobs:
       - name: MLB pitcher LvR x opposing-lineup handedness (weighted K/9 projection)
         working-directory: python
         run: python mlb_pitcher_lvr_lineup.py
+      - name: MLB batter ADVANCED splits (RISP + late-close + day-night + home-away)
+        working-directory: python
+        run: python mlb_batter_advanced_splits.py || true
       - name: Consensus picks (>=2 independent modules agree on same batter)
         working-directory: python
         run: python consensus_picks.py
       - name: Golf LIVE projections (per-player p_top_5/10/cut from current state)
         working-directory: python
         run: python golf_live_projections.py
+      - name: Golf LIVE tracker (heaters, stalled, cut-bubble, position-movers)
+        working-directory: python
+        run: python golf_live_tracker.py
       - name: Cross-signal convergence detector (everything-aligned plays)
         working-directory: python
         run: python convergence_detector.py
@@ -615,6 +627,9 @@ jobs:
       - name: F1 driver projections (skill-z based win/podium/points for upcoming race)
         working-directory: python
         run: python f1_driver_projections.py
+      - name: F1 track-specific history (per-driver last-5 finish at this circuit)
+        working-directory: python
+        run: python f1_track_specific.py || true
       - name: UFC fight card scoreboard
         working-directory: python
         run: python ufc_pipeline.py
