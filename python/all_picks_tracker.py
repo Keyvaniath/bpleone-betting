@@ -202,6 +202,22 @@ def _collect_picks_from_sources() -> List[Dict[str, Any]]:
                 "p_predicted": be.get("model_p"),  # for Brier
             })
 
+    # HRR (Hits + Runs + RBI) strong 2+ and 3+ edges
+    hrr = _load(os.path.join(DATA_DIR, "mlb_hrr_props.json"))
+    for r in (hrr.get("strong_edges") or []):
+        market = "3_plus_hrr" if "3_PLUS" in (r.get("edge_class") or "") else "2_plus_hrr"
+        prob = r.get("p_3_plus") if market == "3_plus_hrr" else r.get("p_2_plus")
+        out.append({
+            "source": f"mlb_hrr_{market}",
+            "sport": "MLB",
+            "player_or_matchup": r.get("batter"),
+            "market": market,
+            "prob": prob,
+            "fair_american": r.get("fair_odds_3_plus") if market == "3_plus_hrr" else r.get("fair_odds_2_plus"),
+            "p_predicted": prob,
+            "matchup": r.get("matchup"),
+        })
+
     # Total Bases strong 2+ TB edges
     tb = _load(os.path.join(DATA_DIR, "mlb_total_bases_props.json"))
     for r in (tb.get("strong_2plus_edges") or []):

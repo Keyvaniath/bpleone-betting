@@ -59,6 +59,7 @@ PRIOR_WEIGHTS = {
     # New (May 2026)
     "mlb_f5": 0.70,                  # F5 sharp market, high signal
     "mlb_total_bases_2plus": 0.60,
+    "mlb_hrr_2_plus_hrr": 0.60, "mlb_hrr_3_plus_hrr": 0.55,
     "mlb_steal_1plus": 0.55,
     "rlm_strong": 0.65,              # reverse line movement = sharp money
     "mlb_pitcher_deep_matchup": 0.65,
