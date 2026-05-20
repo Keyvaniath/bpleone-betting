@@ -224,6 +224,17 @@
     </div>
   </section>
 
+  <!-- Calibration Status (transparency about how edges are derived) -->
+  <section class="card" id="calibCard" style="margin-bottom: 28px; border-left: 3px solid #d4a04a;">
+    <div class="card-head">
+      <span>⚙️ <strong>Model Calibration Status</strong></span>
+      <span class="muted">why displayed edges look the way they do</span>
+    </div>
+    <div style="padding: 14px 18px;" id="calibBox">
+      <p class="muted">Loading calibration status…</p>
+    </div>
+  </section>
+
   <!-- NBA + NHL multi-sport cards -->
   <section style="margin-bottom: 28px; display:grid; grid-template-columns: 1fr 1fr; gap: 18px;" id="multiSportRow">
     <div class="card" id="nbaCard" style="display:none;">
@@ -970,6 +981,65 @@ fetch("data/locks_history.json?t=" + Date.now(), { cache: "no-cache" })
   .catch(err => {
     const box = document.getElementById("locksHomeBox");
     if (box) box.innerHTML = '<p class="muted">Locks history not yet available.</p>';
+  });
+
+// Model Calibration Status -- explains how raw model probs become displayed
+fetch("data/calibration_status.json?t=" + Date.now(), { cache: "no-cache" })
+  .then(r => r.json())
+  .then(c => {
+    const box = document.getElementById("calibBox");
+    if (!box) return;
+    const tierColor = c.calibration_tier === "PRODUCTION" ? "#58c878" :
+                      c.calibration_tier === "REFINING" ? "#d4a04a" :
+                      c.calibration_tier === "BOOTSTRAPPING" ? "#ffc850" : "#e35a5a";
+    const sourceRows = Object.entries(c.by_source || {})
+      .sort((a, b) => b[1].n - a[1].n)
+      .slice(0, 6)
+      .map(([src, b]) => `<tr>
+        <td style="padding:4px 8px; font-family:'JetBrains Mono',monospace; font-size:11px;">${src}</td>
+        <td style="padding:4px 8px; text-align:center;">${b.n}</td>
+        <td style="padding:4px 8px; text-align:center;">${b.shrinkage_w.toFixed(2)}</td>
+        <td style="padding:4px 8px; text-align:right;">${(b.avg_raw_prob*100).toFixed(1)}%</td>
+        <td style="padding:4px 8px; text-align:right; color:#58c878;">${(b.avg_cal_prob*100).toFixed(1)}%</td>
+        <td style="padding:4px 8px; text-align:right; color:#e35a5a;">−${b.avg_compression_pp.toFixed(1)}pp</td>
+      </tr>`).join('');
+    box.innerHTML = `
+      <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap:10px; margin-bottom:14px;">
+        <div style="text-align:center;">
+          <div style="font-size:9px; color:var(--muted,#888); text-transform:uppercase;">Tier</div>
+          <div style="font-size:14px; font-weight:700; color:${tierColor};">${c.calibration_tier}</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="font-size:9px; color:var(--muted,#888); text-transform:uppercase;">Progress</div>
+          <div style="font-size:14px; font-weight:700;">${c.calibration_progress_pct}%</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="font-size:9px; color:var(--muted,#888); text-transform:uppercase;">Avg Compression</div>
+          <div style="font-size:14px; font-weight:700;">−${(c.avg_compression_pp || 0).toFixed(1)}pp</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="font-size:9px; color:var(--muted,#888); text-transform:uppercase;">Settled Locks</div>
+          <div style="font-size:14px; font-weight:700;">${c.n_settled_locks}</div>
+        </div>
+      </div>
+      <p class="muted" style="font-size:12px; padding: 6px 0;">${c.calibration_note}</p>
+      <p style="font-size:11px; padding: 4px 0; color: var(--text-2,#aaa); font-style: italic;">${c.transparency_note}</p>
+      <table style="width:100%; border-collapse:collapse; font-family:'JetBrains Mono',monospace; font-size:11px; margin-top:8px;">
+        <tr style="color:var(--muted,#888); font-size:10px; text-transform:uppercase; background: rgba(255,255,255,0.04);">
+          <td style="padding:6px 8px;">Source</td>
+          <td style="padding:6px 8px; text-align:center;">N picks</td>
+          <td style="padding:6px 8px; text-align:center;">Shrink Wt</td>
+          <td style="padding:6px 8px; text-align:right;">Avg Raw</td>
+          <td style="padding:6px 8px; text-align:right;">Avg Calib</td>
+          <td style="padding:6px 8px; text-align:right;">Δ pp</td>
+        </tr>
+        ${sourceRows}
+      </table>
+    `;
+  })
+  .catch(() => {
+    const box = document.getElementById("calibBox");
+    if (box) box.innerHTML = '<p class="muted">Calibration status not yet available (next pipeline run will populate).</p>';
   });
 </script>
 

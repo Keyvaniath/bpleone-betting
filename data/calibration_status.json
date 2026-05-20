@@ -1,0 +1,65 @@
+{
+  "generated_at": "2026-05-19T17:52:11",
+  "calibration_tier": "PRE-CALIBRATION",
+  "calibration_progress_pct": 10,
+  "calibration_note": "Only 0 settled outcomes -- using shrinkage priors. First real calibration data lands tomorrow.",
+  "n_settled_locks": 0,
+  "n_locks_pending": 5,
+  "shrinkage_baseline_prob": 0.55,
+  "default_shrinkage_w": 0.55,
+  "per_source_shrinkage_w": {
+    "today": 0.8,
+    "today_reco": 0.8,
+    "mlb_ext_batter": 0.6,
+    "mlb_ext_pitcher": 0.65,
+    "mlb_batter_logs": 0.55,
+    "pitcher_matchup": 0.65,
+    "pitcher_form_regression": 0.65,
+    "mlb_batter_sp_edges": 0.6,
+    "mlb_batter_situational": 0.55,
+    "pp_over": 0.45,
+    "pp_under": 0.45,
+    "nba_ext": 0.55,
+    "wnba_ext": 0.55,
+    "nhl_ext": 0.55,
+    "nhl_goalie": 0.65,
+    "mlb_team_total": 0.6
+  },
+  "n_plays_calibrated": 200,
+  "avg_raw_prob": 0.9058,
+  "avg_calibrated_prob": 0.7102,
+  "avg_compression_pp": 19.6,
+  "max_raw_prob": 0.92,
+  "by_source": {
+    "today_reco": {
+      "n": 1,
+      "max_raw": 0.7484,
+      "shrinkage_w": 0.8,
+      "avg_raw_prob": 0.7484,
+      "avg_cal_prob": 0.6586,
+      "avg_compression_pp": 9.0
+    },
+    "pp_under": {
+      "n": 188,
+      "max_raw": 0.92,
+      "shrinkage_w": 0.45,
+      "avg_raw_prob": 0.9065,
+      "avg_cal_prob": 0.7104,
+      "avg_compression_pp": 19.6
+    },
+    "pp_over": {
+      "n": 11,
+      "max_raw": 0.9199,
+      "shrinkage_w": 0.45,
+      "avg_raw_prob": 0.9089,
+      "avg_cal_prob": 0.7115,
+      "avg_compression_pp": 19.7
+    }
+  },
+  "sports_with_market_anchor": {},
+  "sports_without_market_anchor": {
+    "MLB": 1,
+    "MLB-PP": 199
+  },
+  "transparency_note": "Raw model probabilities are shrunk toward market-implied probabilities (when available) or a 0.55 baseline. This compresses small-sample overconfidence into realistic ranges. Edges in the displayed top plays board are post-calibration."
+}
