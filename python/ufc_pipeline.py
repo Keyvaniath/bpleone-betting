@@ -38,7 +38,11 @@ def run() -> Dict[str, Any]:
             b_athlete = b.get("athlete") or {}
             fights.append({
                 "id": c.get("id"),
-                "weight_class": (c.get("type") or {}).get("text") or c.get("date"),
+                # ESPN puts weight class in type.abbreviation -- the .text key
+                # does not exist and falling back to c.get("date") returned a
+                # timestamp ("2026-05-30T08:00Z") instead. Fixed to use the
+                # right field.
+                "weight_class": (c.get("type") or {}).get("abbreviation") or (c.get("type") or {}).get("text") or "Unknown",
                 "fighter_a": a_athlete.get("displayName"),
                 "fighter_b": b_athlete.get("displayName"),
                 "fighter_a_record": (a.get("records") or [{}])[0].get("summary"),
