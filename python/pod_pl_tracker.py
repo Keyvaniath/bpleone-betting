@@ -51,8 +51,28 @@ def _pick_today_pod() -> Optional[Dict[str, Any]]:
     Brandon wants ONLY game-level picks (no player props) for P&L
     accuracy -- player props need per-player gamelogs to settle, and
     he wants the single best ML/TOTAL of the day as the benchmark.
+
+    GUARD: if today.json is stale (generated_at older than 6 hours OR
+    not from today's date), we refuse to lock in a POD -- better to
+    have no POD recorded than to lock in a stale one.
     """
     today = _load(os.path.join(DATA_DIR, "today.json"))
+    if not today: return None
+
+    # Staleness check: today.json's generated_at must be from today
+    today_str = dt.date.today().isoformat()
+    gen_at = (today.get("generated_at") or "")[:10]
+    if gen_at and gen_at != today_str:
+        # today.json is from a different date -- don't record stale POD
+        return None
+    # Also check age in hours
+    try:
+        gen_dt = dt.datetime.fromisoformat(today.get("generated_at"))
+        age_hours = (dt.datetime.now() - gen_dt).total_seconds() / 3600
+        if age_hours > 6: return None    # too stale
+    except Exception:
+        pass
+
     best = None
     for g in (today.get("games") or []):
         recos = g.get("recommendations") or []
