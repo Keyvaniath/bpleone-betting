@@ -138,13 +138,28 @@
   // Guarded against null seed -- real factor decomp loads from
   // data/pod_factor_decomp.json elsewhere, hero stats from today.json.
   function renderPlayPage() {
-    const p = window.PLAY_OF_DAY;
-    if (!p) return;   // No seed -- real loaders take over in play-of-day.html
+    // Real confidence gauge + run distribution from today.json (was hardcoded 3.6 / 4.0 lambdas)
+    fetch('data/today.json', { cache: 'no-cache' })
+      .then(r => r.json())
+      .then(d => {
+        const pod = d.play_of_day || {};
+        const podGame = (d.games || []).find(g => g.matchup === pod.matchup);
+        if (!podGame) return;
+        const model = podGame.model || {};
+        const T = model.fair_total || 8.5;
+        const P = model.p_home_win || 0.5;
+        const D = T * (P - 0.5) * 1.6;
+        const home_lam = Math.max(1.5, (T + D) / 2);
+        const away_lam = Math.max(1.5, (T - D) / 2);
+        const conf = document.getElementById('confDonut');
+        if (conf) EdgeStatCharts.renderConfidenceGauge(conf.getContext('2d'), Math.round((pod.model_prob || 0)*100));
+        const dist = document.getElementById('runDistChart');
+        if (dist) EdgeStatCharts.renderRunDistribution(dist.getContext('2d'), away_lam, home_lam);
+      })
+      .catch(() => {});
 
-    const conf = document.getElementById('confDonut');
-    if (conf) EdgeStatCharts.renderConfidenceGauge(conf.getContext('2d'), Math.round(p.winProb*100));
-    const dist = document.getElementById('runDistChart');
-    if (dist) EdgeStatCharts.renderRunDistribution(dist.getContext('2d'), 3.6, 4.0);
+    const p = window.PLAY_OF_DAY;
+    if (!p) return;   // No seed; real loaders above already painted real charts
 
     // factors bars
     const factorsHost = document.getElementById('factorBars');
