@@ -21,9 +21,13 @@
       (today.games || []).forEach(g => {
         const top = (g.recommendations || []).sort((a,b) => (b.edge_pct||0) - (a.edge_pct||0))[0];
         if (top) {
-          const isPreCal = (top.edge_pct || 0) >= 15;
+          const rawEdge = Number(top.edge_pct) || 0;
+          const isPreCal = rawEdge >= 15;
           const tag = isPreCal ? 'CALIBRATING' : 'EDGE';
-          lines.push(`\u{1F4CA} ${tag} - ${g.matchup} ${top.label} +${Number(top.edge_pct).toFixed(1)}%`);
+          // Cap displayed edge at "+25%+" for pre-calibration plays so the
+          // ticker doesn't keep flashing absurd +50%+ headlines.
+          const edgeStr = isPreCal ? '+25%+' : '+' + rawEdge.toFixed(1) + '%';
+          lines.push(`\u{1F4CA} ${tag} - ${g.matchup} ${top.label} ${edgeStr}`);
         }
       });
       // Settled records (most recent few)

@@ -697,71 +697,51 @@ fetch("data/clv_log.json", { cache: "no-cache" })
   })
   .catch(() => { const el = document.getElementById("mSharp"); if (el) el.textContent = "--"; });
 
-// Hero stats: pull from track_record + clv_log (live, no hardcoded numbers)
+// Hero stats: pull from Locks of the Day (real curated picks with permanent IDs)
+// NOT from track_record.json which contains 118k+ backfilled SYNTHETIC outcomes.
+// This is Brandon's actual track record on the picks the model surfaced as
+// "Top 5 Locks" each day -- the honest number, even if small / pending.
 (function loadHeroStats() {
   const setText = (id, v) => { const el = document.getElementById(id); if (el) el.firstChild.textContent = v; };
-  fetch("data/track_record.json", { cache: "no-cache" })
+  fetch("data/locks_history.json", { cache: "no-cache" })
     .then(r => r.json())
-    .then(tr => {
-      const props = (tr.props || []).filter(p => p.play_hit === true || p.play_hit === false);
-      if (!props.length) return;
-      const wins = props.filter(p => p.play_hit === true).length;
-      const losses = props.length - wins;
-      const payoutUnits = price => price >= 0 ? price / 100 : 100 / Math.abs(price);
-      let net = 0;
-      for (const p of props) {
-        if (p.play_hit === true) {
-          const price = p.play === "OVER" ? p.dk_over : p.play === "UNDER" ? p.dk_under : -110;
-          net += payoutUnits(price ?? -110);
-        } else {
-          net -= 1;
+    .then(d => {
+      const wins = d.wins || 0;
+      const losses = d.losses || 0;
+      const settled = wins + losses;
+      const net = d.net_units;
+      const roi = d.roi_pct;
+      const hr = d.hit_rate;
+      const total = d.total_locks || 0;
+
+      setText("hsNetUnits", net == null ? "--" : (net >= 0 ? "+" : "") + net.toFixed(2));
+      setText("hsHitRate", hr == null ? "--" : (hr * 100).toFixed(1));
+      setText("hsROI", roi == null ? "--" : (roi >= 0 ? "+" : "") + roi.toFixed(1));
+      setText("hsClosed", String(settled));
+
+      // Update the "closed plays" label to be more honest about pending vs settled
+      const stats = document.querySelector(".hero-stats");
+      if (stats && !document.getElementById("locksProgress")) {
+        const note = document.createElement("div");
+        note.id = "locksProgress";
+        note.style.cssText = "grid-column: 1 / -1; font-family:'JetBrains Mono',monospace; font-size:11px; color:#d4a04a; padding:8px 0 0; opacity:0.9;";
+        if (settled === 0 && total > 0) {
+          note.innerHTML = `* <strong>Track record building:</strong> ${total} locks recorded, ${d.n_pending || 0} pending settlement. First results land tomorrow as games settle. Honest numbers only — no backfilled / synthetic stats inflate the hero metrics. <a href="locks-of-day.html" style="color:#d4a04a; text-decoration: underline;">view all locks &rarr;</a>`;
+        } else if (settled > 0 && settled < 20) {
+          note.innerHTML = `* Track record building: <strong>${settled} settled</strong> of ${total} locks. Small sample -- variance is high until n>=30. <a href="locks-of-day.html" style="color:#d4a04a; text-decoration: underline;">see all locks &rarr;</a>`;
+        } else if (settled === 0) {
+          note.innerHTML = `* No locks settled yet -- building track record. <a href="locks-of-day.html" style="color:#d4a04a; text-decoration: underline;">see today's picks &rarr;</a>`;
         }
+        if (note.innerHTML) stats.appendChild(note);
       }
-      const roi = (net / props.length) * 100;
-      const hr = wins / props.length * 100;
-      setText("hsNetUnits", (net >= 0 ? "+" : "") + net.toFixed(1));
-      setText("hsHitRate", hr.toFixed(1));
-      setText("hsROI", (roi >= 0 ? "+" : "") + roi.toFixed(1));
-      setText("hsClosed", props.length.toLocaleString());
     })
     .catch(() => {});
 })();
 
-// Play of the Day preview: pulled live from today.json
-(function loadPOD() {
-  fetch("data/today.json", { cache: "no-cache" })
-    .then(r => r.json())
-    .then(t => {
-      const pod = t.play_of_day;
-      if (!pod) return;
-      const titleEl = document.getElementById("podTitle");
-      if (titleEl) titleEl.innerHTML = `${pod.matchup} — <span class="accent">${pod.label || ""}</span>`;
-      const fmt = (p) => p === null || p === undefined ? "--" : (p >= 0 ? "+" : "") + p;
-      const stampEl = document.getElementById("podStamp");
-      if (stampEl) {
-        const stamp = (t.generated_at || "").slice(0, 10);
-        const time = pod.time || "tonight";
-        stampEl.textContent = `${stamp} • ${time}`;
-      }
-      const setText = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
-      setText("podModelPrice", fmt(pod.model_price));
-      setText("podBookPrice",  fmt(pod.market_price));
-      const edge = pod.edge_pct;
-      const edgeEl = document.getElementById("podEdge");
-      if (edgeEl) {
-        edgeEl.textContent = edge !== null && edge !== undefined ? (edge >= 0 ? "+" : "") + edge.toFixed(1) + "%" : "--";
-        edgeEl.classList.toggle("positive", edge !== null && edge !== undefined && edge >= 0);
-      }
-      const isPrecal = (pod.edge_pct ?? 0) >= 15;
-      setText("podConf", isPrecal ? "Calibrating" : (pod.confidence || (pod.edge_pct >= 5 ? "High" : pod.edge_pct >= 3 ? "Medium" : "Low")));
-      setText("podKelly", isPrecal ? "≤0.5u" : ((pod.kelly_units !== undefined && pod.kelly_units !== null) ? pod.kelly_units + "u" : "--"));
-      setText("podWinProb", (pod.model_prob !== undefined && pod.model_prob !== null) ? (pod.model_prob * 100).toFixed(1) + "%" : "--");
-      const summary = pod.summary || pod.rationale
-        || `${pod.matchup} — model prices ${pod.label || "this side"} at ${(pod.model_prob*100).toFixed(1)}% vs the book's implied. ${isPrecal ? "Edge above 15% triggers calibration mode (sub-Kelly sizing recommended)." : ""}`;
-      setText("podSummary", summary);
-    })
-    .catch(() => {});
-})();
+// (Play of the Day data is populated by the setStat-based loader above
+//  at lines ~555-610. The previous duplicate ID-based loader was REMOVED
+//  because it was overwriting "Market Price" with `model_price` (None ->
+//  "--") and writing American odds into the "Model Prob" slot.)
 
 // Model Confidence card (0-100 score + tier)
 fetch("data/model_confidence.json", { cache: "no-cache" })
@@ -934,79 +914,9 @@ fetch("data/top_plays.json", { cache: "no-cache" })
 // Also pull live track-record metrics for the hero stat row.
 // Shows the REAL settled numbers — no mock placeholders. If a stat has
 // no settled outcomes yet, render "--" rather than a fake demo value.
-fetch("data/track_record.json", { cache: "no-cache" })
-  .then(r => r.json())
-  .then(tr => {
-    const propsAll = tr.props || [];
-    const games = tr.games || [];
-    // Split LIVE settlements (real production runs) from BACKFILL retro plays.
-    // Live = any record without source='backfill'. Backfill = source='backfill'.
-    // Hero stats show LIVE numbers (real wagering would have happened);
-    // backfill stats surface in a secondary note so visitors know the
-    // model has been calibration-trained on history.
-    const propsLive = propsAll.filter(p => p.source !== "backfill");
-    const propsBackfill = propsAll.filter(p => p.source === "backfill");
-    const settled = [...propsLive, ...games].filter(r =>
-      (r.play_hit !== undefined && r.play_hit !== null) ||
-      (r.over_hit !== undefined && r.over_hit !== null)
-    );
-    const heroStats = document.querySelectorAll(".hero-stats .stat-value");
-
-    // Helper: payout in units for a flat 1u stake at American odds `price`.
-    const payoutUnits = price => price >= 0 ? price / 100 : 100 / Math.abs(price);
-
-    // Compute real net units + ROI from settled props (assume 1u flat).
-    let netUnits = 0;
-    let total = settled.length;
-    let won = 0;
-    for (const r of settled) {
-      const hit = (r.play_hit === true) || (r.over_hit === true && r.play === "OVER") ||
-                  (r.over_hit === false && r.play === "UNDER");
-      if (hit) {
-        won++;
-        const price = r.play === "OVER" ? r.dk_over : r.play === "UNDER" ? r.dk_under : (r.market_price ?? -110);
-        netUnits += payoutUnits(price ?? -110);
-      } else {
-        netUnits -= 1;
-      }
-    }
-    const avgRoi = total > 0 ? (netUnits / total) * 100 : null;
-    const fmtSigned = (v, suffix = "") => v == null ? "--" : (v >= 0 ? "+" : "") + v.toFixed(1) + suffix;
-
-    // [0] YTD net units, [1] hit rate, [2] avg ROI, [3] closed plays
-    if (heroStats[0]) heroStats[0].innerHTML = total > 0
-      ? `${fmtSigned(netUnits)}<span class="unit">u</span>`
-      : `--<span class="unit">u</span>`;
-    if (heroStats[1]) heroStats[1].innerHTML = total > 0
-      ? `${(won / total * 100).toFixed(1)}<span class="unit">%</span>`
-      : `--<span class="unit">%</span>`;
-    if (heroStats[2]) heroStats[2].innerHTML = avgRoi != null
-      ? `${fmtSigned(avgRoi)}<span class="unit">%</span>`
-      : `--<span class="unit">%</span>`;
-    if (heroStats[3]) heroStats[3].textContent = String(total);
-
-    // Calibration progress note: shows shrinkage status + (if applicable)
-    // how many backfilled records the model has been calibration-trained on.
-    const stats = document.querySelector(".hero-stats");
-    if (stats && !document.getElementById("calProgress")) {
-      const note = document.createElement("div");
-      note.id = "calProgress";
-      note.style.cssText = "grid-column: 1 / -1; font-family:'JetBrains Mono',monospace; font-size:11px; color:#d4a04a; padding:8px 0 0; opacity:0.9;";
-      if (total > 0 && total < 8) {
-        note.innerHTML = `* self-training mode -- ${total}/8 LIVE settled outcomes; corrections kick in fully at n=8 (was n=30). Misses are welcome; the loop learns from every settlement. <a href="learning.html" style="color:#d4a04a; text-decoration: underline; margin-left:6px;">dig in &rarr;</a>`;
-      } else if (propsBackfill.length > 0) {
-        note.innerHTML = `* hero stats above are LIVE plays only (${total} settled). Model is self-training on <strong>${propsBackfill.length}</strong> backfilled outcomes + every new settlement; <a href="learning.html" style="color:#d4a04a; text-decoration: underline;">see per-market progress &rarr;</a>`;
-      }
-      if (note.innerHTML) stats.appendChild(note);
-    }
-  })
-  .catch(() => {
-    // No track record yet -- blank the placeholders so nothing pretends to be real.
-    document.querySelectorAll(".hero-stats .stat-value").forEach(el => {
-      const unit = el.querySelector(".unit")?.outerHTML || "";
-      el.innerHTML = `--${unit}`;
-    });
-  });
+// (Hero stats are populated by the loadHeroStats() function above,
+//  which now pulls from data/locks_history.json -- the REAL track record,
+//  not the 118k backfilled synthetic outcomes in track_record.json.)
 
 // Locks of the Day summary on homepage
 fetch("data/locks_history.json?t=" + Date.now(), { cache: "no-cache" })
