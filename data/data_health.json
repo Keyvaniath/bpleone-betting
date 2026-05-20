@@ -1,46 +1,45 @@
 {
-  "generated_at": "2026-05-19T19:58:17",
+  "generated_at": "2026-05-20T16:01:33",
   "overall": "red",
-  "n_green": 4,
-  "n_yellow": 1,
-  "n_red": 4,
+  "n_green": 7,
+  "n_yellow": 0,
+  "n_red": 2,
   "checks": [
     {
       "feed": "mlb",
-      "status": "red",
+      "status": "green",
       "findings": [
-        "today.json count off: local=10 vs upstream pre-game=0 (total=15, live=5, final=10)",
-        "MLB has 5 live games but live_state.json shows 10 (age 58min)"
+        "15 total (15 pre / 0 live / 0 final), local pre=15, live=0"
       ],
       "upstream_count": 15,
-      "upstream_pregame": 0,
-      "upstream_live": 5,
-      "upstream_final": 10,
-      "local_count": 10,
-      "local_live": 10,
-      "live_state_age_min": 58
+      "upstream_pregame": 15,
+      "upstream_live": 0,
+      "upstream_final": 0,
+      "local_count": 15,
+      "local_live": 0,
+      "live_state_age_min": 9
     },
     {
       "feed": "nba",
-      "status": "red",
+      "status": "green",
       "findings": [
-        "NBA has 1 live, local age 58min"
+        "1 events matched (0 live)"
       ],
       "upstream_count": 1,
       "local_count": 1,
-      "upstream_live": 1,
-      "local_age_min": 58
+      "upstream_live": 0,
+      "local_age_min": 6
     },
     {
       "feed": "wnba",
       "status": "red",
       "findings": [
-        "WNBA has 1 live, local age 58min"
+        "WNBA count mismatch: local=1 vs ESPN=3"
       ],
-      "upstream_count": 1,
+      "upstream_count": 3,
       "local_count": 1,
-      "upstream_live": 1,
-      "local_age_min": 58
+      "upstream_live": 0,
+      "local_age_min": 9
     },
     {
       "feed": "nhl",
@@ -51,18 +50,18 @@
       "upstream_count": 1,
       "local_count": 1,
       "upstream_live": 0,
-      "local_age_min": 58
+      "local_age_min": 6
     },
     {
       "feed": "mls",
       "status": "green",
       "findings": [
-        "2 events matched (0 live)"
+        "12 events matched (0 live)"
       ],
-      "upstream_count": 2,
-      "local_count": 2,
+      "upstream_count": 12,
+      "local_count": 12,
       "upstream_live": 0,
-      "local_age_min": 58
+      "local_age_min": 9
     },
     {
       "feed": "epl",
@@ -73,17 +72,17 @@
       "upstream_count": 2,
       "local_count": 2,
       "upstream_live": 0,
-      "local_age_min": 58
+      "local_age_min": 9
     },
     {
       "feed": "pitcher_matchup",
       "status": "green",
       "findings": [
-        "no pre-game probables upstream (all games live or final)"
+        "29/29 pre-game probables matched"
       ],
-      "upstream_count": 0,
-      "local_count": 20,
-      "matched": 0
+      "upstream_count": 29,
+      "local_count": 30,
+      "matched": 29
     },
     {
       "feed": "props",
@@ -97,13 +96,13 @@
     },
     {
       "feed": "golf",
-      "status": "yellow",
+      "status": "green",
       "findings": [
-        "golf data 214min stale during active tournament"
+        "147 golfers tracked (1 active events)"
       ],
       "upstream_players": 147,
       "local_players": 147,
-      "local_age_min": 214
+      "local_age_min": 9
     }
   ]
 }

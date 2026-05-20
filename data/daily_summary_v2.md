@@ -1,25 +1,25 @@
-# EdgeStat Daily Summary — 2026-05-19
+# EdgeStat Daily Summary — 2026-05-20
 
-## 🏥 Model Health: 81.7/100 [HEALTHY]
+## 🏥 Model Health: 80.6/100 [HEALTHY]
 - Solid health - some minor issues to monitor
   - 🟢 Calibration Freshness: 100.0/100
   - 🟢 Hit Rate Trend: 84.3/100
   - 🔴 Brier Trend: 52.3/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 83.3/100
+  - 🟡 Data Health: 77.8/100
   - 🟡 Edge Count: 77.1/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.596)
-- **Total games on board:** 119
-- **Strong home favorites:** 11 | **Strong road dogs:** 1
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.571)
+- **Total games on board:** 124
+- **Strong home favorites:** 10 | **Strong road dogs:** 7
 
 ## 🎯 Top 5 Best Bets
-1. **MIL @ CHC NRFI (no run 1st inning)** (80/100 ★★★★)
-2. **LAD @ SDP YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-3. **BOS @ KCR YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-4. **OAK @ LAA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-5. **LAD @ SDP 4-leg SGP @ -192** (79/100 ★★★★★)
+1. **LAD @ SDP 4-leg SGP @ -270** (100/100 ★★★★★)
+2. **MIL @ CHC NRFI (no run 1st inning)** (80/100 ★★★★)
+3. **LAD @ SDP YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+4. **BOS @ KCR YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+5. **OAK @ LAA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
 - [WHALE] **[MLB]** HOU @ MIN ML_HOME -- 71% / +20.4% (score 4.0)
@@ -29,7 +29,7 @@
 - [STRONG] **[MLB]** HOU @ MIN MIN_ML -- 71% / +20.4% (score 2.5)
 
 ## 📡 Sharp Action (Line Movement)
-- [STRONG] **HOU @ MIN** ml_home: 53.27% → 61.09% (+7.8pp)
+- [ELITE] **HOU @ MIN** ml_home: 53.27% → 61.54% (+8.3pp)
 
 ## 📉 Strong UNDER Signals
 - [ELITE 6.5] **TEX @ COL** model 8.16 vs market 10.0
@@ -61,31 +61,36 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (3)
+## ⚡ Pre-Game HIGH Conviction (8)
+- [MLS] **Chicago Fire FC** HOME (2-2 L10) · model 74.3% fair -289
+- [MLS] **Houston Dynamo FC** AWAY (3-1 L10) · model 74.1% fair -286
+- [MLS] **New England Revolution** AWAY (3-1 L10) · model 70.8% fair -243
+- [MLS] **Nashville SC** HOME (2-2 L10) · model 69.9% fair -233
+- [MLS] **Real Salt Lake** AWAY (3-1 L10) · model 67.4% fair -206
 - [CWS] **Ohio State Buckeyes** HOME (3-1 L10) · model 66.2% fair -196
-- [NHL] **Colorado Avalanche** HOME (3-1 L10) · model 64.8% fair -184
-- [CWS] **Oklahoma Sooners** HOME (1-3 L10) · model 63.2% fair -172
+- [MLS] **CF Montréal** AWAY (1-3 L10) · model 63.6% fair -175
+- [NHL] **Colorado Avalanche** HOME (2-1 L10) · model 62.6% fair -168
 
 ## 🔥/❄️ Heat / Cold Signals
-- Hot teams: **29** | Cold teams: **41** | Over-heavy: 0 | Under-heavy: 1
+- Hot teams: **31** | Cold teams: **40** | Over-heavy: 0 | Under-heavy: 4
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (21)
-- RESIDUAL_DIVERGENCE: **21**
-  - Cleveland Cavaliers (NBA): Cleveland Cavaliers OUTPERFORMING expected margin by 7.7pts in recent games -- model bias may persist
-  - Colorado Avalanche (NHL): Colorado Avalanche UNDERPERFORMING expected margin by 6.7pts in recent games -- model bias may persist
+## ⚠️ Anomaly Detector (20)
+- RESIDUAL_DIVERGENCE: **20**
+  - San Antonio Spurs (NBA): San Antonio Spurs OUTPERFORMING expected margin by 6.9pts in recent games -- model bias may persist
+  - Colorado Avalanche (NHL): Colorado Avalanche OUTPERFORMING expected margin by 6.7pts in recent games -- model bias may persist
   - Vegas Golden Knights (NHL): Vegas Golden Knights OUTPERFORMING expected margin by 7.1pts in recent games -- model bias may persist
-  - Phoenix Mercury (WNBA): Phoenix Mercury OUTPERFORMING expected margin by 6.5pts in recent games -- model bias may persist
-  - Iowa Hawkeyes (CWS): Iowa Hawkeyes UNDERPERFORMING expected margin by 7.3pts in recent games -- model bias may persist
+  - Charlotte FC (MLS): Charlotte FC OUTPERFORMING expected margin by 7.8pts in recent games -- model bias may persist
+  - New England Revolution (MLS): New England Revolution UNDERPERFORMING expected margin by 6.2pts in recent games -- model bias may persist
 
-## 💰 Today's Portfolio (9 picks)
-- Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$7.6**
-  - #1 [NRFI] $50 on MIL @ CHC NRFI (no run 1st inning) (P=85%)
-  - #2 [NRFI] $50 on LAD @ SDP YRFI (1st-inning OVER 0.5) (P=73%)
-  - #3 [NRFI] $50 on BOS @ KCR YRFI (1st-inning OVER 0.5) (P=70%)
-  - #4 [SGP] $35 on LAD @ SDP 4-leg SGP @ -192 (P=66%)
-  - #5 [SGP] $35 on SFG @ ARI 4-leg SGP @ -183 (P=65%)
+## 💰 Today's Portfolio (8 picks)
+- Total stake: **$340.0** (34.0% of $1000 bankroll)
+- Expected EV: **$17.83**
+  - #1 [SGP] $50 on LAD @ SDP 4-leg SGP @ -270 (P=73%)
+  - #2 [NRFI] $50 on MIL @ CHC NRFI (no run 1st inning) (P=85%)
+  - #3 [NRFI] $50 on LAD @ SDP YRFI (1st-inning OVER 0.5) (P=73%)
+  - #4 [NRFI] $50 on BOS @ KCR YRFI (1st-inning OVER 0.5) (P=70%)
+  - #5 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
 
 ## 🎯 Convergence Picks (6 stacked games)
 - ELITE: **1** · HIGH: 2 · MED: 3
@@ -102,8 +107,10 @@
 - **Will Warren** OVER 5.5 K (72%) fair -253
 - **Reid Detmers** OVER 4.5 K (70%) fair -229
 
-## 🏀 NBA Player Heat (1 HOT / 0 COLD)
-  - 🔥 **Mikal Bridges** (NY): L5 18.8/3.8/3.4 vs season 12.7/2.2/2.5 [PTS +6.1]
+## 🏀 NBA Player Heat (2 HOT / 1 COLD)
+  - 🔥 **Ajay Mitchell** (OKC): L5 18.8/3.2/5.8 vs season 13.6/3.3/4.0 [PTS +5.2]
+  - 🔥 **Dylan Harper** (SA): L5 16.6/7.4/2.4 vs season 14.2/4.8/3.0 [REB +2.6]
+  - ❄️ **Keldon Johnson** (SA): L5 9.8 vs season 10.8 [REB -2.8] -- FADE OVER props
 
 ## 🥊 UFC Fight Matchups (UFC Fight Night: Song vs. Figueiredo)
   - [FAVORITE] **Jingnan Xiong** (19-2-0) vs Angela Hill -- fair -204
@@ -119,17 +126,17 @@
   - 🔥 T4 **Cameron Champ** (USA): +0 total -- finished T4
   - 🔥 T5 **Doug Ghim** (USA): +0 total -- finished T5
 
-## 🔥 MLB Batter Heat (26 HOT / 40 COLD)
-  - 🔥 **Alec Bohm** (PHI): L14 .360 / season .222 (+138pts)
-  - 🔥 **Blaze Alexander** (BAL): L14 .375 / season .245 (+130pts)
-  - 🔥 **Carson Benge** (NYM): L14 .382 / season .253 (+129pts)
-  - 🔥 **Cedric Mullins** (TB): L14 .310 / season .182 (+128pts)
-  - 🔥 **Kyle Manzardo** (CLE): L14 .341 / season .229 (+112pts)
-  - ❄️ **Moisés Ballesteros** (CHC): L14 .065 / season .250 (-185pts) -- FADE props
+## 🔥 MLB Batter Heat (27 HOT / 41 COLD)
+  - 🔥 **Blaze Alexander** (BAL): L14 .379 / season .245 (+134pts)
+  - 🔥 **Carson Benge** (NYM): L14 .397 / season .265 (+132pts)
+  - 🔥 **Alec Bohm** (PHI): L14 .346 / season .220 (+126pts)
+  - 🔥 **Cedric Mullins** (TB): L14 .304 / season .184 (+120pts)
+  - 🔥 **Riley Greene** (DET): L14 .449 / season .335 (+114pts)
+  - ❄️ **Moisés Ballesteros** (CHC): L14 .067 / season .243 (-176pts) -- FADE props
   - ❄️ **Ozzie Albies** (ATL): L14 .113 / season .271 (-158pts) -- FADE props
-  - ❄️ **Edouard Julien** (COL): L14 .073 / season .225 (-152pts) -- FADE props
+  - ❄️ **Edouard Julien** (COL): L14 .075 / season .220 (-145pts) -- FADE props
+  - ❄️ **Vladimir Guerrero Jr.** (TOR): L14 .143 / season .280 (-137pts) -- FADE props
   - ❄️ **Dalton Rushing** (LAD): L14 .132 / season .260 (-128pts) -- FADE props
-  - ❄️ **Christian Walker** (HOU): L14 .140 / season .267 (-127pts) -- FADE props
 
 ## 😴 B2B Fatigue Edges (1)
 - [NBA] FADE Cleveland Cavaliers (away on B2B)
@@ -149,13 +156,13 @@
   - ⚠️ batter_rbis (Brier Δ -0.0052)
 
 ## 🧠 Training Convergence
-- ELITE: **8** · HEALTHY: 0 · OK: 0 · DEGRADED: **0**
+- ELITE: **4** · HEALTHY: 2 · OK: 0 · DEGRADED: **0**
 
 ## 🤖 Self-Training Status
-- **NBA**: n=20 games · hit rate 65.0% · bias -9.3pp [calibration applied]
-- **NHL**: n=18 games · hit rate 33.3% · bias +16.0pp [calibration applied]
-- **WNBA**: n=30 games · hit rate 23.3% · bias +17.8pp [calibration applied]
+- **NBA**: n=19 games · hit rate 79.0% · bias -10.8pp [calibration applied]
+- **NHL**: n=17 games · hit rate 35.3% · bias +23.3pp [calibration applied]
+- **WNBA**: n=31 games · hit rate 22.6% · bias +19.0pp [calibration applied]
 - **MLS**: n=59 games · hit rate 33.9% · bias +6.9pp [calibration applied]
-- **EPL**: n=29 games · hit rate 48.3% · bias -8.8pp [calibration applied]
-- **MLB**: n=188 games · hit rate 51.1% · bias -2.7pp [calibration applied]
-- **CWS**: n=294 games · hit rate 56.1% · bias -1.9pp
+- **EPL**: n=31 games · hit rate 45.2% · bias -10.9pp [calibration applied]
+- **MLB**: n=190 games · hit rate 51.0% · bias -1.1pp
+- **CWS**: n=276 games · hit rate 54.0% · bias -0.6pp
