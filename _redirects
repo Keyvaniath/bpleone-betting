@@ -19,6 +19,6 @@
 /learning-integrity /learning-integrity.html 301
 /lqs               /learning-integrity.html 301
 
-# API alias -- if Worker is deployed, redirect /api/* to worker
-# Uncomment after deploying the Worker and updating the URL:
-# /api/*  https://edgestat-live.<your-sub>.workers.dev/live/:splat  302
+# API alias -- routes /api/* to the deployed Cloudflare Worker
+/api/*  https://edgestat-live.brandonpleone.workers.dev/live/:splat  302
+/worker/*  https://edgestat-live.brandonpleone.workers.dev/:splat  302
