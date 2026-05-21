@@ -426,6 +426,21 @@ def _collect_picks_from_sources() -> List[Dict[str, Any]]:
                 "matchup": r.get("matchup"),
             })
 
+    # NHL period totals strong edges
+    nhl_pt = _load(os.path.join(DATA_DIR, "nhl_period_totals_props.json"))
+    for r in (nhl_pt.get("strong_edges") or []):
+        if r.get("p"):
+            out.append({
+                "source": f"nhl_period_{r.get('market', '').lower()}",
+                "sport": "NHL",
+                "player_or_matchup": r.get("matchup"),
+                "market": r.get("market"),
+                "prob": r.get("p"),
+                "fair_american": r.get("fair_odds"),
+                "p_predicted": r.get("p"),
+                "matchup": r.get("matchup"),
+            })
+
     # NHL goalie saves strong edges
     gs = _load(os.path.join(DATA_DIR, "nhl_goalie_saves_props.json"))
     for r in (gs.get("strong_edges") or []):
