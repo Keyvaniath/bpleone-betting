@@ -174,6 +174,24 @@
       <a href="alpha-pick.html" class="btn-primary" style="background:#d4a04a;color:#1a1a1a;">Alpha Breakdown →</a>
     </div>
 
+    <div class="card big-card book-edge-card" style="background:linear-gradient(135deg,rgba(88,200,120,0.10),rgba(88,200,120,0.02));border:1px solid rgba(88,200,120,0.30);">
+      <div class="card-head">
+        <span class="pill" style="background:#58c878;color:#1a1a1a;font-weight:700;">📊 BOOK EDGE</span>
+        <span class="muted" id="beStamp">model vs current Bovada line</span>
+      </div>
+      <h2 class="play-title" id="beTitle" style="font-size:16px;">Loading…</h2>
+      <div class="play-grid">
+        <div class="play-stat"><div class="stat-label">Side</div><div class="stat-value-big" style="font-size:14px;" id="beSide">--</div></div>
+        <div class="play-stat"><div class="stat-label">Model %</div><div class="stat-value-big" id="beModel">--</div></div>
+        <div class="play-stat"><div class="stat-label">Book %</div><div class="stat-value-big" id="beBook">--</div></div>
+        <div class="play-stat"><div class="stat-label">Gap (pp)</div><div class="stat-value-big" style="color:#d4a04a;" id="beGap">--</div></div>
+        <div class="play-stat"><div class="stat-label">Book Price</div><div class="stat-value-big" style="color:#d4a04a;" id="bePrice">--</div></div>
+        <div class="play-stat"><div class="stat-label">Edge</div><div class="stat-value-big positive" id="beEdge">--</div></div>
+      </div>
+      <p class="play-summary" id="beSummary" style="font-size:11px;font-family:'JetBrains Mono',monospace;">—</p>
+      <a href="book-edges.html" class="btn-primary" style="background:#58c878;color:#1a1a1a;">All Book Edges →</a>
+    </div>
+
     <div class="card big-card parlay-card" style="background:linear-gradient(135deg,rgba(88,140,200,0.10),rgba(88,140,200,0.02));border:1px solid rgba(88,140,200,0.30);">
       <div class="card-head">
         <span class="pill" style="background:#588cc8;color:#1a1a1a;font-weight:700;">🎲 PARLAY OF DAY</span>
@@ -1310,6 +1328,33 @@ fetch("data/calibration_status.json?t=" + Date.now(), { cache: "no-cache" })
     })
     .catch(() => {
       document.getElementById('parTitle').textContent = 'Parlay data not yet available';
+    });
+
+  // Book Edge of the Day — top edge from book_vs_model_team.json (ML+totals combined)
+  fetch('data/book_vs_model_team.json?t=' + Date.now())
+    .then(r => r.json())
+    .then(d => {
+      const ml = d.ml_edges || d.all_edges || [];
+      const tot = d.total_edges || [];
+      const all = ml.concat(tot).sort((a, b) => (b.edge_pct||0) - (a.edge_pct||0));
+      const top = all[0];
+      if (!top) {
+        document.getElementById('beTitle').textContent = 'No book edges found today';
+        return;
+      }
+      const isTotal = top.total_line !== undefined;
+      document.getElementById('beTitle').textContent = top.matchup +
+        (isTotal ? '  ·  TOTAL ' + top.side + ' ' + top.total_line : '  ·  ' + top.side);
+      document.getElementById('beSide').textContent = isTotal ? (top.side + ' ' + top.total_line) : (top.team || top.side);
+      document.getElementById('beModel').textContent = top.model_prob != null ? (top.model_prob*100).toFixed(1) + '%' : '--';
+      document.getElementById('beBook').textContent = top.book_implied_devig != null ? (top.book_implied_devig*100).toFixed(1) + '%' : '--';
+      document.getElementById('beGap').textContent = top.model_book_gap_pp != null ? (top.model_book_gap_pp >= 0 ? '+' : '') + top.model_book_gap_pp.toFixed(1) : '--';
+      document.getElementById('bePrice').textContent = top.book_american != null ? (top.book_american >= 0 ? '+' : '') + top.book_american : '--';
+      document.getElementById('beEdge').textContent = top.edge_pct != null ? (top.edge_pct >= 0 ? '+' : '') + top.edge_pct.toFixed(1) + '%' : '--';
+      document.getElementById('beSummary').textContent = `Kelly ${top.kelly_fraction != null ? top.kelly_fraction.toFixed(3) : '—'} · ${ml.length} ML + ${tot.length} totals edges total`;
+    })
+    .catch(() => {
+      document.getElementById('beTitle').textContent = 'Book-edge data not yet available';
     });
 })();
 </script>
