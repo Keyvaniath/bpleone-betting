@@ -100,6 +100,7 @@
     { href: "fade-picks.html",  label: "✗ Fade Picks" },
     { href: "book-edges.html",  label: "📊 Book Edges" },
     { href: "top-edges.html",   label: "🎯 Top Edges" },
+    { href: "bet-slate.html",   label: "📝 Bet Slate" },
     { href: "best-bets.html",   label: "Best Bets" },
     { href: "brief.html",       label: "Brief" },
     { href: "learn.html",       label: "Learn" },
