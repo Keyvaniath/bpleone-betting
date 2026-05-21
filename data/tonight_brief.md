@@ -3,9 +3,9 @@
 _60-second read. Calibration tier: **BOOTSTRAPPING** (40% progress)._
 
 ## 🐋 WHALES (size up max)
-- **MLB** · ATL @ MIA ML_AWAY · 68% / +15.6%
-  - Top-25 board pick: 68% prob, +15.6% edge
-  - Sharp action STRONG: line shifted +6.52pp our way
+- **MLB** · ATL @ MIA ML_AWAY · 68% / +15.4%
+  - Top-25 board pick: 68% prob, +15.4% edge
+  - Sharp action STRONG: line shifted +6.18pp our way
   - Source: game-line model (high reliability)
 
 ## 🔒 5 Daily Locks
@@ -29,5 +29,5 @@ _60-second read. Calibration tier: **BOOTSTRAPPING** (40% progress)._
 - Joint 51% · fair +201 · edge +54.6%
 
 ---
-_Generated 2026-05-21T19:09:18_
+_Generated 2026-05-21T23:13:15_
 _Full breakdown: /tonight · Full history: /locks-of-day_
