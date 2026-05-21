@@ -69,6 +69,9 @@ DEFAULT_MODULES = [
     "mlb_lineup_quality_index",
     # MLB game props
     "mlb_first5_market",
+    # MLB deep composites (depend on lineup_quality + per-pitcher props above)
+    # Note: must run AFTER mlb_pitcher_strikeouts_props etc, but those are below
+    # so we duplicate here LAST (idempotent re-run picks up fresh data)
     "mlb_steal_props",
     "mlb_team_sb_total_props",
     "mlb_innings_1_3_totals",
@@ -125,6 +128,8 @@ DEFAULT_MODULES = [
     "ufc_strikes_takedowns_props",
     # F1 props
     "f1_qualifying_predictor",
+    # Pitcher edge composite (consumes lineup_quality + K/outs/QS props above)
+    "mlb_pitcher_edge_composite",
     # Confluence + aggregation (must run AFTER all per-sport props above)
     "confluence_top_5",
     # book_vs_model_team runs FIRST so alpha_pick can pull from its output
