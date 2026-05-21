@@ -203,6 +203,22 @@ def _collect_picks_from_sources() -> List[Dict[str, Any]]:
                 "matchup": r.get("matchup"),
             })
 
+    # MLB to-score-a-run yes/no strong edges
+    run_yn = _load(os.path.join(DATA_DIR, "mlb_to_score_run_yn.json"))
+    for r in (run_yn.get("strong_edges") or []):
+        bm = r.get("best_market") or {}
+        if bm.get("p"):
+            out.append({
+                "source": f"mlb_run_{bm.get('market', '').lower()}",
+                "sport": "MLB",
+                "player_or_matchup": r.get("batter"),
+                "market": bm.get("market"),
+                "prob": bm.get("p"),
+                "fair_american": bm.get("fair_odds"),
+                "p_predicted": bm.get("p"),
+                "matchup": r.get("matchup"),
+            })
+
     # MLB to-record-a-hit yes/no strong edges
     hit_yn = _load(os.path.join(DATA_DIR, "mlb_to_record_hit_yn.json"))
     for r in (hit_yn.get("strong_edges") or []):
