@@ -103,6 +103,24 @@ def run() -> Dict[str, Any]:
             "book_implied_devig": e.get("book_implied_devig"),
         })
 
+    # --- FADE: top fade pick (live dog with positive EV) ---
+    fade = _load(os.path.join(DATA_DIR, "fade_picks.json"))
+    top_fade = (fade.get("top_5_fades") or [None])[0]
+    if top_fade and (top_fade.get("roi_per_dollar") or 0) >= 0.05:
+        slate.append({
+            "type": "FADE",
+            "type_label": "✗ FADE PICK",
+            "title": top_fade.get("player_or_matchup") or "—",
+            "market": top_fade.get("market") or "",
+            "sport": top_fade.get("sport") or "",
+            "prob": top_fade.get("model_prob"),
+            "fair_american": top_fade.get("fair_american"),
+            "decimal_odds": top_fade.get("decimal_odds"),
+            "edge_pct": (top_fade.get("roi_per_dollar") or 0) * 100,
+            "kelly_fraction": top_fade.get("kelly_fraction") or 0,
+            "fade_type": top_fade.get("fade_type"),
+        })
+
     # --- PARLAY: top balanced 2-leg ---
     parlays = _load(os.path.join(DATA_DIR, "cross_sport_parlays.json"))
     par = (parlays.get("balanced_2_leg_picks") or parlays.get("top_2_leg_parlays") or [None])[0]

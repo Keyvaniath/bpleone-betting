@@ -51,7 +51,7 @@ def run() -> Dict[str, Any]:
     lines.append(f"_{len(picks)} picks consolidated from POD + Alpha + Book Edges + Parlay-of-Day._")
     lines.append("")
 
-    type_order = ["POD", "ALPHA", "BOOK", "PARLAY"]
+    type_order = ["POD", "ALPHA", "BOOK", "FADE", "PARLAY"]
     by_type: Dict[str, list] = {t: [] for t in type_order}
     for p in picks:
         by_type.setdefault(p.get("type") or "OTHER", []).append(p)
@@ -59,8 +59,8 @@ def run() -> Dict[str, Any]:
     for t in type_order:
         items = by_type.get(t) or []
         if not items: continue
-        emoji = {"POD": "⭐", "ALPHA": "🎯", "BOOK": "📊", "PARLAY": "🎲"}.get(t, "•")
-        label = {"POD": "Play of the Day", "ALPHA": "Alpha Pick", "BOOK": "Book Edges", "PARLAY": "Parlay"}.get(t, t)
+        emoji = {"POD": "⭐", "ALPHA": "🎯", "BOOK": "📊", "FADE": "✗", "PARLAY": "🎲"}.get(t, "•")
+        label = {"POD": "Play of the Day", "ALPHA": "Alpha Pick", "BOOK": "Book Edges", "FADE": "Fade Pick", "PARLAY": "Parlay"}.get(t, t)
         lines.append(f"## {emoji} {label}")
         lines.append("")
         for p in items:
