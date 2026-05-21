@@ -101,6 +101,7 @@ DEFAULT_MODULES = [
     "nhl_goalie_shutout_props",
     "nhl_first_goalscorer_props",
     "nhl_goalie_win_props",
+    "nhl_puck_line_props",
     # Soccer props
     "soccer_corners_props",
     "soccer_btts_props",
