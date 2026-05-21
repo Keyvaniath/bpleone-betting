@@ -101,6 +101,7 @@
   <span style="font-family:'JetBrains Mono',monospace;">$</span>
   <input id="bankroll" type="number" value="1000" min="0" step="50">
   <span style="font-family:'JetBrains Mono',monospace;">·  <span style="color:var(--muted,#888);font-size:11px;">¼-Kelly fractional</span></span>
+  <button id="copyBtn" style="margin-left:auto;background:rgba(88,200,120,0.18);border:1px solid rgba(88,200,120,0.40);color:#58c878;font-family:inherit;font-size:12px;padding:6px 14px;border-radius:5px;cursor:pointer;font-weight:600;">📋 Copy Markdown</button>
   <div class="total">
     <span class="label">Total Suggested:</span>
     <span class="val" id="totalStake">$0</span>
@@ -182,6 +183,29 @@ async function loadAll() {
 }
 
 document.getElementById('bankroll').addEventListener('input', recompute);
+
+// Copy markdown to clipboard
+document.getElementById('copyBtn').addEventListener('click', async () => {
+  const btn = document.getElementById('copyBtn');
+  const original = btn.textContent;
+  try {
+    const r = await fetch('data/slate_snapshot.json?t=' + Date.now());
+    const d = await r.json();
+    const md = d.markdown || '';
+    if (!md) throw new Error('No markdown');
+    await navigator.clipboard.writeText(md);
+    btn.textContent = '✓ Copied!';
+    btn.style.background = 'rgba(88,200,120,0.40)';
+    setTimeout(() => {
+      btn.textContent = original;
+      btn.style.background = 'rgba(88,200,120,0.18)';
+    }, 1800);
+  } catch (e) {
+    btn.textContent = 'Copy failed';
+    setTimeout(() => { btn.textContent = original; }, 1800);
+  }
+});
+
 loadAll();
 setInterval(loadAll, 5 * 60 * 1000);
 </script>
