@@ -53,6 +53,8 @@ MODULES = [
     ("nhl_first_goalscorer_props.json",   ["gpg_source"]),
     ("nhl_skater_sog_props.json",         ["sogg_source"]),
     ("nhl_skater_points_props.json",      ["ppg_source"]),
+    ("mlb_to_record_hit_yn.json",         ["hit_source"]),
+    ("mlb_to_hit_hr_yn.json",             ["hr_source"]),
 ]
 
 

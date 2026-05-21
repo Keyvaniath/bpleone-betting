@@ -109,7 +109,18 @@ def run() -> Dict[str, Any]:
 
                 # P(>= 1 hit) = 1 - (1 - rate) ^ PA
                 p_no_hit = (1 - hit_per_pa) ** pa
-                p_hit = 1 - p_no_hit
+                p_hit_calc = 1 - p_no_hit
+
+                # If LvR module already computed a Bayesian-shrunk P(>=1 hit),
+                # USE THAT — it incorporates opp-pitcher + handedness adjustments.
+                lvr_p_hit = lvr_row.get("adj_p_1_plus_hit")
+                if lvr_p_hit is not None:
+                    p_hit = float(lvr_p_hit)
+                    p_no_hit = 1 - p_hit
+                    hit_source = "lvr_adj"
+                else:
+                    p_hit = p_hit_calc
+                    hit_source = "ops_proxy"
 
                 edge_class = "NONE"
                 best_market = None
@@ -135,6 +146,8 @@ def run() -> Dict[str, Any]:
                     "batter_hit_per_pa": round(batter_hit_per_pa, 3),
                     "opp_hits_per_pa": round(opp_hits_per_pa, 3),
                     "expected_pa": pa,
+                    "hit_source": hit_source,
+                    "p_hit_calc": round(p_hit_calc, 3),
                     "p_hit": round(p_hit, 3),
                     "p_no_hit": round(p_no_hit, 3),
                     "fair_yes": _american(p_hit),
