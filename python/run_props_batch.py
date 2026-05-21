@@ -61,6 +61,7 @@ DEFAULT_MODULES = [
     "mlb_pitcher_rest_advantage",
     "mlb_pitcher_win_props",
     "mlb_run_line_props",
+    "mlb_hbp_props",
     # MLB game props
     "mlb_first5_market",
     "mlb_steal_props",
