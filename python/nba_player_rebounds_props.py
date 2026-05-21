@@ -138,7 +138,16 @@ def run() -> Dict[str, Any]:
             if info["team"] not in (home, away): continue
             is_home = info["team"] == home
 
-            base_rpg = info["rpg"]
+            # Prefer REAL ESPN RPG with hardcoded fallback (2026-05-21 data integrity)
+            try:
+                from real_stats_lookup import get_player_stat
+                stat = get_player_stat("nba", player_name, "reb_per_game",
+                                       fallback=info["rpg"], min_games=5)
+                base_rpg = stat["value"]
+                rpg_source = stat["source"]
+            except Exception:
+                base_rpg = info["rpg"]
+                rpg_source = "fallback"
             projected_reb = base_rpg * pace_factor
             # Rebounds variance is moderate (sigma = 22%% of projected, but min 1.8)
             sigma = max(1.8, 0.22 * projected_reb)
@@ -168,7 +177,8 @@ def run() -> Dict[str, Any]:
                 "player": player_name,
                 "team": info["team"],
                 "opp_team": away if is_home else home,
-                "season_rpg": base_rpg,
+                "season_rpg": round(base_rpg, 2),
+                "rpg_source": rpg_source,
                 "game_pace": round(game_pace, 1),
                 "pace_factor": round(pace_factor, 3),
                 "projected_reb": round(projected_reb, 1),

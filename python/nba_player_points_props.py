@@ -174,13 +174,33 @@ def run() -> Dict[str, Any]:
         pace_factor = game_pace / LEAGUE_PACE
 
         # For each player on either team, project points
+        # 2026-05-21: prefer REAL per-game stats from ESPN (player_stats_nba.json)
+        # over hardcoded PLAYER_DB averages. Fall back to PLAYER_DB if player
+        # not in ESPN data or has < 5 games logged.
+        try:
+            from real_stats_lookup import get_player_stat
+            _have_real_stats = True
+        except Exception:
+            _have_real_stats = False
+
         for player_name, info in PLAYER_DB.items():
             if info["team"] not in (home, away): continue
             is_home = info["team"] == home
             opp_drtg = away_drtg if is_home else home_drtg
             matchup_factor = opp_drtg / LEAGUE_DRTG
 
-            base_ppg = info["ppg"]
+            # Real ESPN PPG with hardcoded fallback
+            ppg_source = "fallback"
+            n_games_real = 0
+            if _have_real_stats:
+                stat = get_player_stat("nba", player_name, "pts_per_game",
+                                       fallback=info["ppg"], min_games=5)
+                base_ppg = stat["value"]
+                ppg_source = stat["source"]
+                n_games_real = stat["n_games"]
+            else:
+                base_ppg = info["ppg"]
+
             projected_pts = base_ppg * pace_factor * matchup_factor
             sigma = max(4.0, 0.25 * projected_pts)
 
@@ -213,7 +233,9 @@ def run() -> Dict[str, Any]:
                 "player": player_name,
                 "team": info["team"],
                 "opp_team": away if is_home else home,
-                "season_ppg": base_ppg,
+                "season_ppg": round(base_ppg, 2),
+                "ppg_source": ppg_source,           # "real" or "fallback"
+                "ppg_n_games_real": n_games_real,   # ESPN games logged
                 "usage_rate": info["usage"],
                 "game_pace": round(game_pace, 1),
                 "pace_factor": round(pace_factor, 3),

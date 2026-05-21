@@ -135,7 +135,16 @@ def run() -> Dict[str, Any]:
             if info["team"] not in (home, away): continue
             is_home = info["team"] == home
 
-            base_apg = info["apg"]
+            # Prefer REAL ESPN APG with hardcoded fallback (2026-05-21 data integrity)
+            try:
+                from real_stats_lookup import get_player_stat
+                stat = get_player_stat("nba", player_name, "ast_per_game",
+                                       fallback=info["apg"], min_games=5)
+                base_apg = stat["value"]
+                apg_source = stat["source"]
+            except Exception:
+                base_apg = info["apg"]
+                apg_source = "fallback"
             projected_ast = base_apg * pace_factor
             # AST variance is higher than PTS (more spiky)
             sigma = max(2.0, 0.30 * projected_ast)
@@ -167,7 +176,8 @@ def run() -> Dict[str, Any]:
                 "team": info["team"],
                 "opp_team": away if is_home else home,
                 "position": info["pos"],
-                "season_apg": base_apg,
+                "season_apg": round(base_apg, 2),
+                "apg_source": apg_source,
                 "game_pace": round(game_pace, 1),
                 "pace_factor": round(pace_factor, 3),
                 "projected_ast": round(projected_ast, 1),

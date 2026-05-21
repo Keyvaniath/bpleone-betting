@@ -155,7 +155,16 @@ def run() -> Dict[str, Any]:
             # Opp_3p_defense: 13.5 = league avg, higher = worse defense (more 3s allowed)
             opp_def_factor = opp_def / 13.5
 
-            base_tpm = info["tpm"]
+            # Prefer REAL ESPN 3PM with hardcoded fallback (2026-05-21 data integrity)
+            try:
+                from real_stats_lookup import get_player_stat
+                stat = get_player_stat("nba", player_name, "threes_per_game",
+                                       fallback=info["tpm"], min_games=5)
+                base_tpm = stat["value"]
+                tpm_source = stat["source"]
+            except Exception:
+                base_tpm = info["tpm"]
+                tpm_source = "fallback"
             projected_tpm = base_tpm * pace_factor * opp_def_factor
 
             # Nearest 0.5 line (book sets right at expected)
@@ -185,7 +194,8 @@ def run() -> Dict[str, Any]:
                 "player": player_name,
                 "team": info["team"],
                 "opp_team": away if is_home else home,
-                "season_tpm": base_tpm,
+                "season_tpm": round(base_tpm, 2),
+                "tpm_source": tpm_source,
                 "game_pace": round(game_pace, 1),
                 "pace_factor": round(pace_factor, 3),
                 "opp_3p_defense": opp_def,
