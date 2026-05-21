@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Module Performance | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/nav.js"></script>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 24px; }
+  h1 { font-size: 26px; margin: 0 0 6px 0; }
+  .sub { color: var(--muted, #888); font-size: 13px; margin-bottom: 22px; max-width: 740px; line-height: 1.55; }
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    margin-bottom: 22px;
+  }
+  .stat-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+    padding: 14px 16px;
+  }
+  .stat-label { color: var(--muted, #888); font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 5px; }
+  .stat-value { font-size: 22px; font-weight: 700; font-family: 'JetBrains Mono', monospace; }
+  .stat-value.pos { color: #58c878; }
+  .stat-value.neg { color: #e35a5a; }
+  .stat-value.gold { color: #d4a04a; }
+
+  .panel { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; overflow: hidden; margin-bottom: 16px; }
+  .panel-head { padding: 12px 16px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--muted,#888); border-bottom: 1px solid rgba(255,255,255,0.06); }
+
+  .row {
+    display: grid;
+    grid-template-columns: 2.2fr 80px 80px 80px 80px 90px 110px;
+    gap: 10px;
+    padding: 11px 16px;
+    align-items: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .row.head { background: rgba(255,255,255,0.05); color: var(--muted, #888); font-size: 10px; text-transform: uppercase; padding: 9px 16px; }
+  .num { text-align: right; font-variant-numeric: tabular-nums; }
+
+  .bar { position: relative; height: 6px; background: rgba(255,255,255,0.08); border-radius: 3px; overflow: hidden; }
+  .bar-fill { position: absolute; left: 0; top: 0; bottom: 0; background: #58c878; }
+  .bar-fill.mid { background: #d4a04a; }
+  .bar-fill.low { background: #e35a5a; }
+
+  .explainer { color: var(--muted,#aaa); font-size: 12px; line-height: 1.6; padding: 12px 16px; background: rgba(212, 160, 74, 0.06); border-left: 3px solid #d4a04a; border-radius: 4px; margin-top: 16px; }
+  .explainer strong { color: #d4a04a; }
+</style>
+</head>
+<body>
+<nav-bar></nav-bar>
+<div class="container">
+
+<h1>Module Performance</h1>
+<div class="sub">
+  How each prop module is actually performing on settled outcomes. The model
+  can only learn from settlements — picks that have graded as W/L. As more
+  games complete, this report sharpens.
+</div>
+
+<div class="stats">
+  <div class="stat-card"><div class="stat-label">Total Picks</div><div class="stat-value" id="s-total">—</div></div>
+  <div class="stat-card"><div class="stat-label">Settled</div><div class="stat-value pos" id="s-settled">—</div></div>
+  <div class="stat-card"><div class="stat-label">Pending</div><div class="stat-value gold" id="s-pending">—</div></div>
+  <div class="stat-card"><div class="stat-label">Hit Rate</div><div class="stat-value pos" id="s-hit">—</div></div>
+  <div class="stat-card"><div class="stat-label">ROI %</div><div class="stat-value pos" id="s-roi">—</div></div>
+</div>
+
+<div class="panel">
+  <div class="panel-head">By Market Family</div>
+  <div class="row head">
+    <div>Market</div>
+    <div class="num">N</div>
+    <div class="num">W</div>
+    <div class="num">L</div>
+    <div class="num">Hit %</div>
+    <div class="num">Net Units</div>
+    <div>Hit Rate</div>
+  </div>
+  <div id="mf-rows">Loading…</div>
+</div>
+
+<div class="panel">
+  <div class="panel-head">By Sport</div>
+  <div class="row head">
+    <div>Sport</div>
+    <div class="num">N</div>
+    <div class="num">W</div>
+    <div class="num">L</div>
+    <div class="num">Hit %</div>
+    <div class="num">Net Units</div>
+    <div>Hit Rate</div>
+  </div>
+  <div id="sport-rows">Loading…</div>
+</div>
+
+<div class="panel">
+  <div class="panel-head">By Source Module</div>
+  <div class="row head">
+    <div>Source</div>
+    <div class="num">N</div>
+    <div class="num">W</div>
+    <div class="num">L</div>
+    <div class="num">Hit %</div>
+    <div class="num">Net Units</div>
+    <div>Hit Rate</div>
+  </div>
+  <div id="src-rows">Loading…</div>
+</div>
+
+<div class="explainer">
+  <strong>How learning works:</strong> Each settled pick (win/loss) feeds back
+  into <code>self_learn_weights.py</code>, which adjusts the per-source
+  shrinkage weighting. Modules with high settled hit rates get more weight in
+  confluence ranking; bad sources get downweighted. With most picks still
+  pending, weights are calibrating slowly. As outcomes accumulate, the brain
+  gets sharper.
+</div>
+
+<div style="margin-top: 14px; font-size: 11px; color: var(--muted,#888);" id="meta">—</div>
+
+</div>
+
+<script>
+function fmtPct(x, d=1) { return x == null ? '—' : (x*100).toFixed(d) + '%'; }
+function fmtSigned(x, d=2) { if (x == null) return '—'; return (x>=0?'+':'') + x.toFixed(d); }
+function pctColor(p) {
+  if (p >= 0.60) return 'pos';
+  if (p >= 0.50) return 'gold';
+  return 'neg';
+}
+function barClass(p) {
+  if (p >= 0.60) return '';
+  if (p >= 0.50) return 'mid';
+  return 'low';
+}
+
+function renderRows(targetId, dict) {
+  if (!dict || Object.keys(dict).length === 0) {
+    document.getElementById(targetId).innerHTML =
+      '<div style="padding:20px;text-align:center;color:#888;font-style:italic;">No settled picks in this category yet.</div>';
+    return;
+  }
+  const rows = Object.entries(dict)
+    .map(([k, v]) => ({key: k, ...v}))
+    .sort((a, b) => (b.n || 0) - (a.n || 0));
+  const html = rows.map(r => {
+    const hit = r.hit_rate || 0;
+    const cls = pctColor(hit);
+    const bcls = barClass(hit);
+    const netColor = (r.net_units || 0) >= 0 ? '#58c878' : '#e35a5a';
+    return `
+      <div class="row">
+        <div>${r.key}</div>
+        <div class="num">${r.n || 0}</div>
+        <div class="num" style="color:#58c878;">${r.wins || 0}</div>
+        <div class="num" style="color:#e35a5a;">${r.losses || 0}</div>
+        <div class="num" style="color:${cls === 'pos' ? '#58c878' : cls === 'gold' ? '#d4a04a' : '#e35a5a'};">${fmtPct(r.hit_rate)}</div>
+        <div class="num" style="color:${netColor};font-weight:700;">${fmtSigned(r.net_units)}</div>
+        <div><div class="bar"><div class="bar-fill ${bcls}" style="width:${hit*100}%"></div></div></div>
+      </div>
+    `;
+  }).join('');
+  document.getElementById(targetId).innerHTML = html;
+}
+
+async function load() {
+  let d;
+  try {
+    const r = await fetch('data/all_picks_ledger.json?t=' + Date.now());
+    d = await r.json();
+  } catch (e) {
+    document.getElementById('mf-rows').innerHTML = '<div style="padding:20px;color:#888;">Failed to load all_picks_ledger.json</div>';
+    return;
+  }
+  document.getElementById('s-total').textContent = d.total_picks || 0;
+  document.getElementById('s-settled').textContent = d.n_settled || 0;
+  document.getElementById('s-pending').textContent = d.n_pending || 0;
+  const hr = d.hit_rate || 0;
+  const roi = d.roi_pct || 0;
+  document.getElementById('s-hit').textContent = fmtPct(hr);
+  document.getElementById('s-hit').className = 'stat-value ' + pctColor(hr);
+  document.getElementById('s-roi').textContent = fmtSigned(roi) + '%';
+  document.getElementById('s-roi').className = 'stat-value ' + (roi >= 0 ? 'pos' : 'neg');
+
+  renderRows('mf-rows', d.by_market_family || {});
+  renderRows('sport-rows', d.by_sport || {});
+  renderRows('src-rows', d.by_source || {});
+
+  document.getElementById('meta').textContent = 'Generated ' + (d.generated_at || '—');
+}
+
+load();
+setInterval(load, 5 * 60 * 1000);
+</script>
+</body>
+</html>
