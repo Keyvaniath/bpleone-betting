@@ -666,6 +666,38 @@ def _collect_picks_from_sources() -> List[Dict[str, Any]]:
                 "matchup": r.get("matchup"),
             })
 
+    # NBA player PRA combo strong edges
+    nba_pra = _load(os.path.join(DATA_DIR, "nba_player_pra_props.json"))
+    for r in (nba_pra.get("strong_edges") or []):
+        bm = r.get("best_market") or {}
+        if bm.get("p"):
+            out.append({
+                "source": f"nba_pra_{bm.get('market', '').lower()}",
+                "sport": "NBA",
+                "player_or_matchup": r.get("player"),
+                "market": bm.get("market"),
+                "prob": bm.get("p"),
+                "fair_american": bm.get("fair_odds"),
+                "p_predicted": bm.get("p"),
+                "matchup": r.get("matchup"),
+            })
+
+    # NHL skater points (G+A) strong edges
+    nhl_pts = _load(os.path.join(DATA_DIR, "nhl_skater_points_props.json"))
+    for r in (nhl_pts.get("strong_edges") or []):
+        bm = r.get("best_market") or {}
+        if bm.get("p"):
+            out.append({
+                "source": f"nhl_pts_{bm.get('market', '').lower()}",
+                "sport": "NHL",
+                "player_or_matchup": r.get("player"),
+                "market": bm.get("market"),
+                "prob": bm.get("p"),
+                "fair_american": bm.get("fair_odds"),
+                "p_predicted": bm.get("p"),
+                "matchup": r.get("matchup"),
+            })
+
     # NHL period totals strong edges
     nhl_pt = _load(os.path.join(DATA_DIR, "nhl_period_totals_props.json"))
     for r in (nhl_pt.get("strong_edges") or []):
