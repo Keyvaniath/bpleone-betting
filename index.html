@@ -156,6 +156,24 @@
       <a href="play-of-day.html" class="btn-primary">Full Breakdown →</a>
     </div>
 
+    <div class="card big-card alpha-card" style="background:linear-gradient(135deg,rgba(212,160,74,0.10),rgba(212,160,74,0.02));border:1px solid rgba(212,160,74,0.30);">
+      <div class="card-head">
+        <span class="pill" style="background:#d4a04a;color:#1a1a1a;font-weight:700;">★ ALPHA PICK</span>
+        <span class="muted" id="alphaStamp">highest-ROI play (not just highest confidence)</span>
+      </div>
+      <h2 class="play-title" id="alphaTitle">Loading…</h2>
+      <div class="play-grid">
+        <div class="play-stat"><div class="stat-label">Model Prob</div><div class="stat-value-big" id="alphaProb">--</div></div>
+        <div class="play-stat"><div class="stat-label">Fair Odds</div><div class="stat-value-big" style="color:#d4a04a;" id="alphaOdds">--</div></div>
+        <div class="play-stat"><div class="stat-label">ROI / $1</div><div class="stat-value-big positive" id="alphaRoi">--</div></div>
+        <div class="play-stat"><div class="stat-label">Type</div><div class="stat-value-big" style="font-size:14px;" id="alphaType">--</div></div>
+        <div class="play-stat"><div class="stat-label">Kelly Frac</div><div class="stat-value-big" id="alphaKelly">--</div></div>
+        <div class="play-stat"><div class="stat-label">¼-Kelly Unit</div><div class="stat-value-big" style="color:#d4a04a;" id="alphaUnit">--</div></div>
+      </div>
+      <p class="play-summary" id="alphaMarket">—</p>
+      <a href="alpha-pick.html" class="btn-primary" style="background:#d4a04a;color:#1a1a1a;">Alpha Breakdown →</a>
+    </div>
+
     <div class="card">
       <div class="card-head">
         <span class="pill blue">LINE MOVEMENT (CLV)</span>
@@ -1218,6 +1236,39 @@ fetch("data/calibration_status.json?t=" + Date.now(), { cache: "no-cache" })
     const box = document.getElementById("calibBox");
     if (box) box.innerHTML = '<p class="muted">Calibration status not yet available (next pipeline run will populate).</p>';
   });
+</script>
+
+<script>
+// Alpha Pick of the Day — populates the gold card next to POD
+(function() {
+  function fmtPct(x, d=1) { return x == null ? '--' : (x*100).toFixed(d) + '%'; }
+  function fmtSigned(x, d=1) { if (x == null) return '--'; const s = (x*100).toFixed(d); return (x>=0?'+':'') + s + '%'; }
+  function fmtOdds(a) { if (a == null) return '--'; return (a >= 0 ? '+' : '') + a; }
+  function typeLabel(s) {
+    return {underdog_value:'🎯 UPSET VALUE', coinflip_edge:'⚖️ COINFLIP', favorite_value:'⭐ FAV VALUE'}[s] || (s||'').toUpperCase();
+  }
+  fetch('data/alpha_pick_of_day.json?t=' + Date.now())
+    .then(r => r.json())
+    .then(d => {
+      const a = d.alpha_pick;
+      if (!a) {
+        document.getElementById('alphaTitle').textContent = 'No alpha edge today';
+        return;
+      }
+      document.getElementById('alphaTitle').textContent =
+        (a.sport || '') + ' · ' + (a.player_or_matchup || '') + (a.team ? ' (' + a.team + ')' : '');
+      document.getElementById('alphaProb').textContent = fmtPct(a.model_prob);
+      document.getElementById('alphaOdds').textContent = fmtOdds(a.fair_american);
+      document.getElementById('alphaRoi').textContent = fmtSigned(a.roi_per_dollar);
+      document.getElementById('alphaType').textContent = typeLabel(d.pick_type);
+      document.getElementById('alphaKelly').textContent = a.kelly_fraction != null ? a.kelly_fraction.toFixed(3) : '--';
+      document.getElementById('alphaUnit').textContent = a.unit_size_quarter_kelly != null ? a.unit_size_quarter_kelly.toFixed(3) + 'u' : '--';
+      document.getElementById('alphaMarket').textContent = a.market || a.market_family || '';
+    })
+    .catch(() => {
+      document.getElementById('alphaTitle').textContent = 'Alpha data not yet available';
+    });
+})();
 </script>
 
 <script src="js/nav_badge.js"></script>
