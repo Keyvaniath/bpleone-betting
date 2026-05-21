@@ -538,6 +538,22 @@ def _collect_picks_from_sources() -> List[Dict[str, Any]]:
                 "matchup": r.get("matchup"),
             })
 
+    # NBA double-double strong edges
+    nba_dd = _load(os.path.join(DATA_DIR, "nba_double_double_props.json"))
+    for r in (nba_dd.get("strong_edges") or []):
+        bm = r.get("best_market") or {}
+        if bm.get("p"):
+            out.append({
+                "source": f"nba_dd_{bm.get('market', '').lower()}",
+                "sport": "NBA",
+                "player_or_matchup": r.get("player"),
+                "market": bm.get("market"),
+                "prob": bm.get("p"),
+                "fair_american": bm.get("fair_odds"),
+                "p_predicted": bm.get("p"),
+                "matchup": r.get("matchup"),
+            })
+
     # NBA blocks/steals strong edges
     nba_bs = _load(os.path.join(DATA_DIR, "nba_player_blocks_steals_props.json"))
     for r in (nba_bs.get("strong_edges") or []):
