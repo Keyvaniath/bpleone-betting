@@ -120,6 +120,12 @@ def run() -> Dict[str, Any]:
     matchups = _load(os.path.join(DATA_DIR, "matchups.json"))
     lvr = _load(os.path.join(DATA_DIR, "mlb_batter_lvr_splits.json"))
     today = _load(os.path.join(DATA_DIR, "today.json"))
+    # 2026-05-21: real recent-form per-batter stats
+    batter_logs = _load(os.path.join(DATA_DIR, "mlb_batter_logs.json"))
+    batter_log_idx = {}
+    for b in (batter_logs.get("batters") or []):
+        nm = (b.get("name") or "").lower()
+        if nm: batter_log_idx[nm] = b
 
     parks = today.get("parks") or {}
     lvr_idx = {}
@@ -151,16 +157,44 @@ def run() -> Dict[str, Any]:
                 order = batter.get("order") or 9
                 lvr_row = lvr_idx.get((name or "").lower(), {})
 
-                # Blend split-OPS with season OPS (Bayesian, prior 80 PA)
-                season_ops = _safe(lvr_row.get("season_ops_estimate"), 0.72)
-                split_ops = _safe(lvr_row.get("split_ops"), season_ops)
-                split_pa = int(_safe(lvr_row.get("split_pa"), 0))
-                blended_ops = ((split_pa * split_ops + 80 * season_ops) / (split_pa + 80)
-                               if split_pa > 0 else season_ops)
-                # Clamp to realistic range
-                blended_ops = max(0.55, min(1.10, blended_ops))
+                # 2026-05-21: prefer REAL recent HRR per PA when available
+                hrr_source = "ops_proxy"
+                blog = batter_log_idx.get((name or "").lower())
+                blended_ops = _safe(lvr_row.get("season_ops_estimate"), 0.72)
+                if blog:
+                    s14 = blog.get("stats_last_14") or {}
+                    n_games = blog.get("n_games_logged") or 0
+                    real_ab = int(s14.get("ab") or 0)
+                    if real_ab >= 10 and n_games >= 8:
+                        real_h = int(s14.get("h") or 0)
+                        real_r = int(s14.get("r") or 0)
+                        real_rbi = int(s14.get("rbi") or 0)
+                        # HRR per AB -> per PA via PA = AB * 1.10
+                        real_hrr_per_ab = (real_h + real_r + real_rbi) / real_ab
+                        real_hrr_per_pa = real_hrr_per_ab * 0.91  # 0.91 = AB/PA
+                        real_hrr_per_pa = max(0.10, min(1.20, real_hrr_per_pa))
+                        # Park adjustment still applies
+                        park_mult = 1.0 + (park_run_factor - 1.0) * 0.7
+                        park_mult = max(0.85, min(1.20, park_mult))
+                        rates = {
+                            "hrr_per_pa": real_hrr_per_pa * park_mult,
+                            "expected_hits_per_pa": real_hrr_per_pa * park_mult * 0.40,
+                            "expected_runs_per_pa": real_hrr_per_pa * park_mult * 0.30,
+                            "expected_rbi_per_pa": real_hrr_per_pa * park_mult * 0.30,
+                            "ops_factor": 1.0, "park_mult": park_mult,
+                        }
+                        hrr_source = "real_last_14"
 
-                rates = _hrr_per_pa(blended_ops, order, park_run_factor, lineup_runs)
+                if hrr_source == "ops_proxy":
+                    # FALLBACK: OPS-derived estimate
+                    season_ops = _safe(lvr_row.get("season_ops_estimate"), 0.72)
+                    split_ops = _safe(lvr_row.get("split_ops"), season_ops)
+                    split_pa = int(_safe(lvr_row.get("split_pa"), 0))
+                    blended_ops = ((split_pa * split_ops + 80 * season_ops) / (split_pa + 80)
+                                   if split_pa > 0 else season_ops)
+                    blended_ops = max(0.55, min(1.10, blended_ops))
+                    rates = _hrr_per_pa(blended_ops, order, park_run_factor, lineup_runs)
+
                 pa = _expected_pa(order)
                 expected_hrr = rates["hrr_per_pa"] * pa
 
@@ -190,6 +224,7 @@ def run() -> Dict[str, Any]:
                     "park": park,
                     "park_run_factor": park_run_factor,
                     "blended_ops": round(blended_ops, 3),
+                    "hrr_source": hrr_source,
                     "hrr_per_pa": round(rates["hrr_per_pa"], 3),
                     "expected_pa": pa,
                     "expected_hrr": round(expected_hrr, 2),
