@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Top Calibrated Edges | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/nav.js"></script>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+  .container { max-width: 1180px; margin: 0 auto; padding: 24px; }
+  h1 { font-size: 28px; margin: 0 0 4px 0; }
+  .sub { color: var(--muted, #888); font-size: 13px; margin-bottom: 22px; max-width: 760px; line-height: 1.55; }
+
+  .filters { display: flex; gap: 8px; margin-bottom: 16px; }
+  .filter {
+    padding: 6px 14px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 11px;
+    color: var(--muted, #aaa);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .filter.active { background: rgba(88, 200, 120, 0.18); color: #58c878; border-color: rgba(88, 200, 120, 0.40); }
+
+  .stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .stat-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+    padding: 14px 16px;
+  }
+  .stat-label { color: var(--muted, #888); font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 5px; }
+  .stat-value { font-size: 22px; font-weight: 700; font-family: 'JetBrains Mono', monospace; }
+
+  .panel { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; overflow: hidden; margin-bottom: 16px; }
+  .panel-head {
+    padding: 12px 16px; font-size: 13px; text-transform: uppercase;
+    letter-spacing: 0.5px; color: var(--muted,#888);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .row {
+    display: grid;
+    grid-template-columns: 40px 90px 1fr 1.4fr 80px 80px 90px 80px 70px;
+    gap: 10px;
+    padding: 11px 16px;
+    align-items: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .row.head { background: rgba(255,255,255,0.05); color: var(--muted, #888); font-size: 10px; text-transform: uppercase; padding: 9px 16px; }
+  .num { text-align: right; font-variant-numeric: tabular-nums; }
+  .rank { color: #d4a04a; font-weight: 700; }
+
+  .src-real { background: rgba(88,200,120,0.18); color: #58c878; font-size: 10px; padding: 2px 7px; border-radius: 3px; font-weight: 700; }
+  .src-model { background: rgba(212,160,74,0.18); color: #d4a04a; font-size: 10px; padding: 2px 7px; border-radius: 3px; font-weight: 700; }
+</style>
+</head>
+<body>
+<nav-bar></nav-bar>
+<div class="container">
+
+<h1>Top Calibrated Edges</h1>
+<div class="sub">
+  Unified action list combining REAL book edges (vs Bovada lines) and MODEL props
+  (with Bayesian shrinkage applied to both). Ranked by <strong style="color:#58c878;">calibrated_edge_pct</strong>
+  so cross-source comparison is honest — book vs prop edges normalized to the same scale.
+</div>
+
+<div class="stats">
+  <div class="stat-card"><div class="stat-label">Total Edges</div><div class="stat-value" id="s-total">—</div></div>
+  <div class="stat-card"><div class="stat-label">Real-Book</div><div class="stat-value" style="color:#58c878;" id="s-real">—</div></div>
+  <div class="stat-card"><div class="stat-label">Model-Prop</div><div class="stat-value" style="color:#d4a04a;" id="s-model">—</div></div>
+  <div class="stat-card"><div class="stat-label">Top Edge</div><div class="stat-value" style="color:#58c878;" id="s-topedge">—</div></div>
+</div>
+
+<div class="filters">
+  <div class="filter active" data-f="all">All Sources</div>
+  <div class="filter" data-f="REAL_BOOK">Real Book Only</div>
+  <div class="filter" data-f="MODEL_PROP">Model Props Only</div>
+</div>
+
+<div class="panel">
+  <div class="panel-head" id="panel-title">Top Calibrated Edges</div>
+  <div class="row head">
+    <div>#</div>
+    <div>Source</div>
+    <div>Matchup / Player</div>
+    <div>Market / Side</div>
+    <div class="num">Cal %</div>
+    <div class="num">Book %</div>
+    <div class="num">Price</div>
+    <div class="num">Cal Edge</div>
+    <div class="num">Kelly</div>
+  </div>
+  <div id="rows">Loading…</div>
+</div>
+
+<div style="margin-top: 14px; font-size: 11px; color: var(--muted,#888);" id="meta">—</div>
+
+</div>
+
+<script>
+let DATA = null;
+let activeFilter = 'all';
+
+function fmtPct(x, d=1) { return x == null ? '—' : (x*100).toFixed(d) + '%'; }
+function fmtSigned(x, d=1) { if (x == null) return '—'; const s = x.toFixed(d); return (x>=0?'+':'') + s + '%'; }
+function fmtOdds(a) { if (a == null) return '—'; return (a >= 0 ? '+' : '') + a; }
+
+function render() {
+  if (!DATA) return;
+  const all = DATA.top_25 || [];
+  let rows;
+  if (activeFilter === 'all') rows = all;
+  else rows = all.filter(e => e.source_type === activeFilter);
+
+  if (rows.length === 0) {
+    document.getElementById('rows').innerHTML = '<div style="padding:24px;text-align:center;color:#888;">No edges match this filter.</div>';
+  } else {
+    const html = rows.map((e, i) => `
+      <div class="row">
+        <div class="rank">#${i+1}</div>
+        <div><span class="${e.source_type === 'REAL_BOOK' ? 'src-real' : 'src-model'}">${e.source_type === 'REAL_BOOK' ? 'BOOK' : 'PROP'}</span></div>
+        <div>${e.matchup || ''} <span style="color:var(--muted,#888);">${e.team ? '· '+e.team : ''}</span></div>
+        <div style="color:var(--muted,#aaa);font-size:11px;">${(e.side || e.market || '').slice(0, 35)}</div>
+        <div class="num" style="color:#58c878;font-weight:700;">${fmtPct(e.calibrated_prob)}</div>
+        <div class="num" style="color:var(--muted,#aaa);">${fmtPct(e.book_implied)}</div>
+        <div class="num" style="color:#d4a04a;">${fmtOdds(e.book_american)}</div>
+        <div class="num" style="color:#58c878;font-weight:700;">${fmtSigned(e.calibrated_edge_pct)}</div>
+        <div class="num">${e.kelly != null ? e.kelly.toFixed(3) : '—'}</div>
+      </div>
+    `).join('');
+    document.getElementById('rows').innerHTML = html;
+  }
+}
+
+async function load() {
+  try {
+    const r = await fetch('data/top_calibrated_edges.json?t=' + Date.now());
+    DATA = await r.json();
+  } catch (e) {
+    document.getElementById('rows').innerHTML = '<div style="padding:24px;color:#888;">Failed to load top_calibrated_edges.json</div>';
+    return;
+  }
+  const bs = DATA.by_source_type || {};
+  document.getElementById('s-total').textContent = DATA.n_total_edges || 0;
+  document.getElementById('s-real').textContent = bs.REAL_BOOK || 0;
+  document.getElementById('s-model').textContent = bs.MODEL_PROP || 0;
+  const top = (DATA.top_10 || [])[0];
+  document.getElementById('s-topedge').textContent = top ? (top.calibrated_edge_pct >= 0 ? '+' : '') + top.calibrated_edge_pct.toFixed(1) + '%' : '—';
+  document.getElementById('meta').textContent = 'Generated ' + (DATA.generated_at || '—');
+  render();
+}
+
+document.querySelectorAll('.filter').forEach(f => {
+  f.addEventListener('click', () => {
+    activeFilter = f.dataset.f;
+    document.querySelectorAll('.filter').forEach(x => x.classList.toggle('active', x.dataset.f === activeFilter));
+    document.getElementById('panel-title').textContent = activeFilter === 'all' ? 'Top Calibrated Edges' :
+      activeFilter === 'REAL_BOOK' ? 'Real Book Edges Only' : 'Model Props Only';
+    render();
+  });
+});
+
+load();
+setInterval(load, 5 * 60 * 1000);
+</script>
+</body>
+</html>
