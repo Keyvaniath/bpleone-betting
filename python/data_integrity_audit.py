@@ -56,6 +56,7 @@ MODULES = [
     ("mlb_to_record_hit_yn.json",         ["hit_source"]),
     ("mlb_to_hit_hr_yn.json",             ["hr_source"]),
     ("mlb_total_bases_props.json",        ["tb_source"]),
+    ("mlb_doubles_props.json",            ["xbh_source"]),
 ]
 
 
@@ -73,7 +74,8 @@ def audit_module(filename: str, source_keys: List[str]) -> Dict[str, Any]:
     # Some modules have nested top-N lists rather than 'rows'
     if not rows:
         for k in ("rows_top_25", "all_rows", "all_players",
-                  "top_25_by_xTB", "top_25_by_p_hit", "top_25_by_p_hr"):
+                  "top_25_by_xTB", "top_25_by_p_hit", "top_25_by_p_hr",
+                  "top_25_by_xXBH"):
             if k in d and isinstance(d[k], list):
                 rows = d[k]
                 break

@@ -66,6 +66,12 @@ def run() -> Dict[str, Any]:
     today = _load(os.path.join(DATA_DIR, "today.json"))
     lvr = _load(os.path.join(DATA_DIR, "mlb_batter_lvr_splits.json"))
     pitcher_logs = _load(os.path.join(DATA_DIR, "mlb_pitcher_logs.json"))
+    # 2026-05-21: real recent-form stats from MLB Stats API
+    batter_logs = _load(os.path.join(DATA_DIR, "mlb_batter_logs.json"))
+    batter_log_idx = {}
+    for b in (batter_logs.get("batters") or []):
+        nm = (b.get("name") or "").lower()
+        if nm: batter_log_idx[nm] = b
 
     parks = today.get("parks") or {}
     lvr_idx = {}
@@ -101,19 +107,34 @@ def run() -> Dict[str, Any]:
                 order = batter.get("order") or 9
                 lvr_row = lvr_idx.get((name or "").lower(), {})
 
-                # Compute blended ISO from split data
-                season_ops = _safe(lvr_row.get("season_ops_estimate"), 0.72)
-                split_ops = _safe(lvr_row.get("split_ops"), season_ops)
-                split_pa = int(_safe(lvr_row.get("split_pa"), 0))
-                blended_ops = ((split_pa * split_ops + 80 * season_ops) / (split_pa + 80)
-                               if split_pa > 0 else season_ops)
-                # ISO ≈ OPS - AVG ≈ OPS * 0.30 (rough), clamped to realistic range.
-                blended_iso = max(0.08, min(0.32, blended_ops * 0.30))
+                # 2026-05-21: prefer REAL recent-form XBH/AB from mlb_batter_logs.
+                # XBH ≈ tb - h - 2*hr (since tb = h + 1*2B + 2*3B + 3*HR
+                # ≈ h + (2B + 3B + HR) + 2*HR -- approx if 3B is rare).
+                blog = batter_log_idx.get((name or "").lower())
+                xbh_source = "ops_proxy"
+                blended_ops = _safe(lvr_row.get("season_ops_estimate"), 0.72)
+                if blog:
+                    s14 = blog.get("stats_last_14") or {}
+                    real_ab = int(s14.get("ab") or 0)
+                    real_h = int(s14.get("h") or 0)
+                    real_tb = int(s14.get("tb") or 0)
+                    real_hr = int(s14.get("hr") or 0)
+                    if real_ab >= 10:
+                        # XBH = TB - H - 2*HR (triples treated as doubles for this approx)
+                        real_xbh = max(0, real_tb - real_h - 2 * real_hr)
+                        xbh_per_ab = real_xbh / real_ab if real_ab else 0
+                        xbh_per_ab = max(0.01, min(0.30, xbh_per_ab))
+                        xbh_source = "real_last_14"
 
-                # XBH/AB derivation: empirically XBH/AB is ISO/3.0 (each ISO point
-                # represents ~0.33 XBH per AB because doubles count 1 base, HRs 3).
-                # League ISO 0.165 -> XBH/AB ~0.055-0.080. Match real MLB rates.
-                xbh_per_ab = blended_iso / 3.0
+                if xbh_source == "ops_proxy":
+                    # FALLBACK: ISO-derived estimate
+                    season_ops = _safe(lvr_row.get("season_ops_estimate"), 0.72)
+                    split_ops = _safe(lvr_row.get("split_ops"), season_ops)
+                    split_pa = int(_safe(lvr_row.get("split_pa"), 0))
+                    blended_ops = ((split_pa * split_ops + 80 * season_ops) / (split_pa + 80)
+                                   if split_pa > 0 else season_ops)
+                    blended_iso = max(0.08, min(0.32, blended_ops * 0.30))
+                    xbh_per_ab = blended_iso / 3.0
                 park_mult = 1.0 + (park_hr_factor - 1.0) * 0.6
                 k_mult = max(0.75, min(1.10, 1.0 - (opp_k_rate - LEAGUE_K_RATE) * 0.8))
                 expected_xbh_per_ab = xbh_per_ab * park_mult * k_mult
@@ -146,8 +167,9 @@ def run() -> Dict[str, Any]:
                     "opp_pitcher": opp_pitcher_name,
                     "park": park,
                     "park_hr_factor": park_hr_factor,
+                    "xbh_source": xbh_source,
                     "blended_ops": round(blended_ops, 3),
-                    "blended_iso": round(blended_iso, 3),
+                    "xbh_per_ab": round(xbh_per_ab, 3),
                     "opp_k_rate": round(opp_k_rate, 3),
                     "expected_xbh": round(expected_xbh, 3),
                     "p_1_plus": round(p_1plus, 3),
