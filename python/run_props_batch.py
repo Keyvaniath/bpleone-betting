@@ -76,6 +76,7 @@ DEFAULT_MODULES = [
     "nba_player_turnovers_props",
     "nba_player_pra_props",
     "nba_player_ft_attempts_props",
+    "nba_triple_double_props",
     # NBA team props
     "nba_team_alts_props",
     "nba_pace_adjusted",
