@@ -118,6 +118,7 @@ DEFAULT_MODULES = [
     # Confluence + aggregation (must run AFTER all per-sport props above)
     "confluence_top_5",
     "alpha_pick_of_day",
+    "fade_picks",
     # Data-integrity audit (runs LAST so it scans the freshly-written outputs)
     "data_integrity_audit",
 ]
