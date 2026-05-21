@@ -60,6 +60,7 @@ DEFAULT_MODULES = [
     "mlb_pitcher_strikeouts_props",
     "mlb_pitcher_rest_advantage",
     "mlb_pitcher_win_props",
+    "mlb_pitcher_1st_inning_er",
     "mlb_run_line_props",
     "mlb_hbp_props",
     # MLB game props
