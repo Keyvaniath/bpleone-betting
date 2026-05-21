@@ -117,6 +117,7 @@ DEFAULT_MODULES = [
     "f1_qualifying_predictor",
     # Confluence + aggregation (must run AFTER all per-sport props above)
     "confluence_top_5",
+    "alpha_pick_of_day",
     # Data-integrity audit (runs LAST so it scans the freshly-written outputs)
     "data_integrity_audit",
 ]

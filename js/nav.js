@@ -95,6 +95,7 @@
     { href: "tonight.html",     label: "🌙 Tonight" },
     { href: "live-now.html",    label: "Live Now" },
     { href: "play-of-day.html", label: "Play of Day" },
+    { href: "alpha-pick.html",  label: "★ Alpha Pick" },
     { href: "best-bets.html",   label: "Best Bets" },
     { href: "brief.html",       label: "Brief" },
     { href: "learn.html",       label: "Learn" },

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alpha Pick of the Day | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/nav.js"></script>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 24px; }
+  h1 { font-size: 28px; margin: 0 0 6px 0; }
+  .sub { color: var(--muted, #888); font-size: 13px; margin-bottom: 28px; max-width: 720px; line-height: 1.55; }
+  .sub strong { color: #d4a04a; }
+
+  .alpha-hero {
+    background: linear-gradient(135deg, rgba(212, 160, 74, 0.12), rgba(212, 160, 74, 0.04));
+    border: 1px solid rgba(212, 160, 74, 0.30);
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 24px;
+  }
+  .tag-row { display: flex; gap: 10px; margin-bottom: 12px; flex-wrap: wrap; }
+  .tag {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 4px;
+  }
+  .tag-alpha   { background: #d4a04a; color: #1a1a1a; }
+  .tag-class   { background: rgba(255,255,255,0.10); color: var(--muted,#aaa); }
+  .tag-type    { background: rgba(88, 200, 120, 0.18); color: #58c878; }
+  .pick-line { font-size: 24px; font-weight: 700; margin: 0 0 6px 0; font-family: 'JetBrains Mono', monospace; }
+  .market-line { color: var(--muted,#aaa); font-size: 13px; font-family: 'JetBrains Mono', monospace; }
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 14px;
+    margin-top: 22px;
+  }
+  .stat {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 6px;
+    padding: 14px 16px;
+  }
+  .stat-label {
+    color: var(--muted,#888);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-bottom: 5px;
+  }
+  .stat-val {
+    font-size: 20px;
+    font-weight: 700;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .stat-val.pos { color: #58c878; }
+  .stat-val.neg { color: #e35a5a; }
+  .stat-val.gold { color: #d4a04a; }
+
+  .panel {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 18px;
+  }
+  .panel h2 { font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--muted,#888); margin: 0 0 14px 0; }
+
+  .row {
+    display: grid;
+    grid-template-columns: 1.5fr 70px 1.5fr 90px 90px 110px;
+    gap: 12px;
+    padding: 9px 14px;
+    align-items: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .row.head { background: rgba(255,255,255,0.05); color: var(--muted,#888); font-size: 10px; text-transform: uppercase; padding: 8px 14px; }
+  .num { text-align: right; font-variant-numeric: tabular-nums; }
+
+  .explainer { color: var(--muted,#aaa); font-size: 13px; line-height: 1.6; padding: 14px 18px; background: rgba(212, 160, 74, 0.06); border-left: 3px solid #d4a04a; border-radius: 4px; }
+  .explainer strong { color: #d4a04a; }
+</style>
+</head>
+<body>
+<nav-bar></nav-bar>
+<div class="container">
+
+<h1>Alpha Pick of the Day</h1>
+<div class="sub">
+  Different from Play of the Day. The Alpha Pick is the model's highest
+  <strong>ROI per dollar risked</strong> play — could be a favorite or an
+  underdog. POD asks "where am I most confident?" Alpha asks
+  <strong>"where is the book most wrong?"</strong>
+</div>
+
+<div class="alpha-hero" id="alpha-hero">
+  <div class="tag-row">
+    <div class="tag tag-alpha">★ ALPHA PICK</div>
+    <div class="tag tag-class" id="pick-class">—</div>
+    <div class="tag tag-type" id="pick-type">—</div>
+  </div>
+  <div class="pick-line" id="pick-line">Loading…</div>
+  <div class="market-line" id="market-line">—</div>
+
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-label">Model Prob</div>
+      <div class="stat-val" id="stat-prob">—</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Fair Odds</div>
+      <div class="stat-val gold" id="stat-odds">—</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">ROI / $1</div>
+      <div class="stat-val pos" id="stat-roi">—</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Kelly Frac.</div>
+      <div class="stat-val" id="stat-kelly">—</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">¼-Kelly Unit</div>
+      <div class="stat-val gold" id="stat-unit">—</div>
+    </div>
+  </div>
+</div>
+
+<div class="panel">
+  <h2>Top 5 Alpha Candidates</h2>
+  <div class="row head">
+    <div>Sport / Player</div>
+    <div>Type</div>
+    <div>Market</div>
+    <div class="num">Prob</div>
+    <div class="num">Fair Odds</div>
+    <div class="num">ROI</div>
+  </div>
+  <div id="top-5-rows">—</div>
+</div>
+
+<div class="panel">
+  <h2>How the model picks Alpha vs POD</h2>
+  <div class="explainer">
+    <strong>Play of Day</strong> ranks by confidence × edge × calibration —
+    bias toward high-probability favorites where the model is sure.
+    Variance-tight. Lower payout but high hit-rate.
+    <br><br>
+    <strong>Alpha Pick</strong> ranks by raw <strong>ROI per $1 risked</strong>
+    = model_prob × decimal_odds − 1.
+    Excludes longshots below 18% (variance too brutal) and heavy-fav territory
+    above 85% (that's where POD lives). What's left is the band where
+    pricing inefficiency tends to concentrate: solid favs the book is mis-shading
+    or underdogs the model thinks are live.
+  </div>
+</div>
+
+<div class="panel">
+  <h2>Diagnostics</h2>
+  <div id="diag" style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--muted,#aaa); line-height: 1.7;">—</div>
+</div>
+
+</div>
+
+<script>
+function fmtPct(x, digits=1) { return x == null ? '—' : (x*100).toFixed(digits) + '%'; }
+function fmtSigned(x, digits=1) { if (x == null) return '—'; const s = (x*100).toFixed(digits); return (x>=0?'+':'') + s + '%'; }
+function fmtOdds(a) { if (a == null) return '—'; return (a >= 0 ? '+' : '') + a; }
+function fmtClassMap(s) {
+  return {
+    'underdog_value': '🎯 UNDERDOG VALUE',
+    'coinflip_edge':  '⚖️ COINFLIP EDGE',
+    'favorite_value': '⭐ FAVORITE VALUE'
+  }[s] || (s||'').toUpperCase();
+}
+
+async function load() {
+  let d;
+  try {
+    const r = await fetch('data/alpha_pick_of_day.json?t=' + Date.now());
+    d = await r.json();
+  } catch (e) {
+    document.getElementById('pick-line').textContent = 'Failed to load alpha_pick_of_day.json';
+    return;
+  }
+  const a = d.alpha_pick;
+  if (!a) {
+    document.getElementById('pick-line').textContent = 'No Alpha Pick today';
+    return;
+  }
+  document.getElementById('pick-class').textContent = (a.sport || '').toUpperCase();
+  document.getElementById('pick-type').textContent = fmtClassMap(d.pick_type);
+  document.getElementById('pick-line').textContent = a.player_or_matchup + (a.team ? ' (' + a.team + ')' : '');
+  document.getElementById('market-line').textContent = a.market || a.market_family || '—';
+  document.getElementById('stat-prob').textContent = fmtPct(a.model_prob);
+  document.getElementById('stat-odds').textContent = fmtOdds(a.fair_american);
+  document.getElementById('stat-roi').textContent = fmtSigned(a.roi_per_dollar);
+  document.getElementById('stat-kelly').textContent = a.kelly_fraction != null ? a.kelly_fraction.toFixed(3) : '—';
+  document.getElementById('stat-unit').textContent = a.unit_size_quarter_kelly != null ? a.unit_size_quarter_kelly.toFixed(3) + 'u' : '—';
+
+  const top5 = d.top_5_alphas || [];
+  const rowsHtml = top5.map(p => `
+    <div class="row">
+      <div>${p.sport || ''} · ${p.player_or_matchup || ''}</div>
+      <div>${(p.src||'').slice(0,8)}</div>
+      <div>${(p.market||'').slice(0,28)}</div>
+      <div class="num">${fmtPct(p.model_prob)}</div>
+      <div class="num" style="color:#d4a04a;">${fmtOdds(p.fair_american)}</div>
+      <div class="num" style="color:${p.roi_per_dollar>=0?'#58c878':'#e35a5a'};">${fmtSigned(p.roi_per_dollar)}</div>
+    </div>
+  `).join('');
+  document.getElementById('top-5-rows').innerHTML = rowsHtml || '<div class="row"><div>No candidates today</div></div>';
+
+  const diag = d.diagnostics || {};
+  document.getElementById('diag').innerHTML =
+    `n_input_plays = ${diag.n_input_plays} · ` +
+    `n_filtered_low_prob = ${diag.n_filtered_low_prob} · ` +
+    `n_filtered_pod_territory = ${diag.n_filtered_high_prob_pod_territory} · ` +
+    `n_no_odds = ${diag.n_no_odds}<br>` +
+    `<span style="color:#666;">Generated ${d.generated_at}</span>`;
+}
+
+load();
+setInterval(load, 5 * 60 * 1000);   // 5 min refresh — Worker quota
+</script>
+</body>
+</html>
