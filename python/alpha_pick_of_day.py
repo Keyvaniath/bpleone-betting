@@ -110,6 +110,41 @@ def run() -> Dict[str, Any]:
             "src": p.get("src"),
         })
 
+    # 2026-05-21: also pull REAL book-vs-model edges (ML + totals) from
+    # book_vs_model_team.json. These have BOOK decimal odds, not model fair —
+    # so the ROI calculation against real book prices is more honest.
+    bvm = _load(os.path.join(DATA_DIR, "book_vs_model_team.json"))
+    real_book_edges = (bvm.get("ml_edges") or []) + (bvm.get("total_edges") or [])
+    n_book_added = 0
+    for e in real_book_edges:
+        prob = e.get("model_prob")
+        dec = e.get("book_decimal")
+        if prob is None or dec is None: continue
+        if prob < 0.18 or prob > 0.85: continue
+        roi = (prob * dec) - 1
+        if roi < 0.03: continue
+        # Same dedup: don't add if same matchup+side already in candidates
+        match_key = (e.get("matchup"), e.get("side"))
+        candidates.append({
+            "sport": "MLB" if "@" in (e.get("matchup") or "") else None,
+            "player_or_matchup": e.get("matchup") + " " + e.get("side"),
+            "team": e.get("team"),
+            "market": "TEAM_ML_" + e.get("side") if e.get("side") in ("HOME", "AWAY") else "TOTAL_" + e.get("side"),
+            "market_family": "team_ml" if e.get("side") in ("HOME", "AWAY") else "total_ou",
+            "model_prob": round(prob, 4),
+            "fair_american": e.get("book_american"),
+            "decimal_odds": round(dec, 3),
+            "edge_pct": e.get("edge_pct"),
+            "roi_per_dollar": round(roi, 4),
+            "kelly_fraction": e.get("kelly_fraction"),
+            "unit_size_quarter_kelly": None,
+            "source_module": "book_vs_model_team",
+            "src": "real_book",   # tag so UI can show this is real-book-priced
+            "book_implied_devig": e.get("book_implied_devig"),
+            "model_book_gap_pp": e.get("model_book_gap_pp"),
+        })
+        n_book_added += 1
+
     # Sort by ROI descending
     candidates.sort(key=lambda c: -c["roi_per_dollar"])
 
@@ -137,6 +172,7 @@ def run() -> Dict[str, Any]:
             "n_filtered_low_prob": n_lowprob,
             "n_filtered_high_prob_pod_territory": n_highprob,
             "n_no_odds": n_no_odds,
+            "n_real_book_edges_added": n_book_added,
         },
         "method_note": "Alpha Pick = highest ROI (prob × decimal_odds − 1) from "
                        "todays_top_plays. Filtered to model_prob in [0.18, 0.85] "
