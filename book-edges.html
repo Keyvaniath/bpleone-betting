@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book Edges | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/nav.js"></script>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 24px; }
+  h1 { font-size: 26px; margin: 0 0 6px 0; }
+  .sub { color: var(--muted, #888); font-size: 13px; margin-bottom: 24px; max-width: 740px; line-height: 1.55; }
+  .sub strong { color: #58c878; }
+
+  .panel { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; overflow: hidden; margin-bottom: 16px; }
+  .panel h2 { font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--muted,#888); margin: 0; padding: 12px 16px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+
+  .row {
+    display: grid;
+    grid-template-columns: 1.6fr 70px 90px 90px 90px 90px 90px 80px;
+    gap: 10px;
+    padding: 11px 16px;
+    align-items: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .row.head { background: rgba(255,255,255,0.05); color: var(--muted, #888); font-size: 10px; text-transform: uppercase; padding: 9px 16px; }
+  .num { text-align: right; font-variant-numeric: tabular-nums; }
+
+  .tag-dog { background: rgba(88, 200, 120, 0.22); color: #58c878; font-size: 9px; padding: 2px 6px; border-radius: 3px; font-weight: 700; }
+  .tag-fav { background: rgba(212, 160, 74, 0.22); color: #d4a04a; font-size: 9px; padding: 2px 6px; border-radius: 3px; font-weight: 700; }
+
+  .explainer { color: var(--muted,#aaa); font-size: 13px; line-height: 1.65; padding: 14px 18px; background: rgba(88, 200, 120, 0.06); border-left: 3px solid #58c878; border-radius: 4px; margin-top: 14px; }
+  .explainer strong { color: #58c878; }
+  .warn { background: rgba(212, 160, 74, 0.06); border-left-color: #d4a04a; }
+  .warn strong { color: #d4a04a; }
+</style>
+</head>
+<body>
+<nav-bar></nav-bar>
+<div class="container">
+
+<h1>Book Edges (Team Moneyline)</h1>
+<div class="sub">
+  REAL <strong>model-vs-book</strong> comparison using current Bovada ML lines
+  from matchups.json. Edge % = model_prob × book_decimal − 1, after de-vigging
+  the book's pair to remove juice. Filter: model probability in [30%, 78%],
+  3%+ edge.
+</div>
+
+<div class="panel">
+  <h2 id="title">Today's Team ML Book Edges</h2>
+  <div class="row head">
+    <div>Matchup · Side (Team)</div>
+    <div>Type</div>
+    <div class="num">Model %</div>
+    <div class="num">Book %</div>
+    <div class="num">Gap (pp)</div>
+    <div class="num">Book ML</div>
+    <div class="num">Edge %</div>
+    <div class="num">Kelly</div>
+  </div>
+  <div id="rows"></div>
+</div>
+
+<div class="explainer">
+  <strong>How to read this:</strong> Edge is calculated against ACTUAL book
+  prices (Bovada from matchups.json), not against model fair-odds. A +12%
+  edge means the model thinks $1 on this side returns $1.12 long-run.
+</div>
+
+<div class="explainer warn">
+  <strong>Caveat:</strong> Very large edges (20%+) often mean the model is
+  overconfident, not that there's free money. The learning loop
+  (learning_integrity + self_learn_weights) shrinks these over time as
+  actual outcomes accumulate.
+</div>
+
+<div style="margin-top: 16px; font-size: 11px; color: var(--muted,#888);" id="meta">—</div>
+
+</div>
+
+<script>
+function fmtPct(x, d=1) { return x == null ? '—' : (x*100).toFixed(d) + '%'; }
+function fmtSigned(x, d=1) { if (x == null) return '—'; const s = x.toFixed(d); return (x>=0?'+':'') + s + '%'; }
+function fmtOdds(a) { if (a == null) return '—'; return (a >= 0 ? '+' : '') + a; }
+
+async function load() {
+  let d;
+  try {
+    const r = await fetch('data/book_vs_model_team.json?t=' + Date.now());
+    d = await r.json();
+  } catch (e) {
+    document.getElementById('rows').innerHTML =
+      '<div style="padding:24px;text-align:center;color:#888;">Failed to load book_vs_model_team.json</div>';
+    return;
+  }
+  const edges = d.all_edges || [];
+  document.getElementById('title').textContent = "Today's Team ML Book Edges (" + edges.length + ")";
+
+  if (edges.length === 0) {
+    document.getElementById('rows').innerHTML =
+      '<div style="padding:24px;text-align:center;color:#888;font-style:italic;">No 3%+ book edges right now. Check back after next daily-pipeline refresh.</div>';
+  } else {
+    const html = edges.map(e => `
+      <div class="row">
+        <div>${e.matchup} · ${e.side} (${e.team})</div>
+        <div>${e.is_underdog ? '<span class="tag-dog">DOG</span>' : '<span class="tag-fav">FAV</span>'}</div>
+        <div class="num">${fmtPct(e.model_prob)}</div>
+        <div class="num" style="color:var(--muted,#aaa);">${fmtPct(e.book_implied_devig)}</div>
+        <div class="num" style="color:#d4a04a;">${e.model_book_gap_pp >= 0 ? '+' : ''}${e.model_book_gap_pp.toFixed(1)}</div>
+        <div class="num" style="color:#d4a04a;">${fmtOdds(e.book_american)}</div>
+        <div class="num" style="color:#58c878;">${fmtSigned(e.edge_pct)}</div>
+        <div class="num">${e.kelly_fraction != null ? e.kelly_fraction.toFixed(3) : '—'}</div>
+      </div>
+    `).join('');
+    document.getElementById('rows').innerHTML = html;
+  }
+  document.getElementById('meta').textContent = 'Generated ' + (d.generated_at || '—');
+}
+
+load();
+setInterval(load, 5 * 60 * 1000);
+</script>
+</body>
+</html>

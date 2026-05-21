@@ -97,6 +97,7 @@
     { href: "play-of-day.html", label: "Play of Day" },
     { href: "alpha-pick.html",  label: "★ Alpha Pick" },
     { href: "fade-picks.html",  label: "✗ Fade Picks" },
+    { href: "book-edges.html",  label: "📊 Book Edges" },
     { href: "best-bets.html",   label: "Best Bets" },
     { href: "brief.html",       label: "Brief" },
     { href: "learn.html",       label: "Learn" },

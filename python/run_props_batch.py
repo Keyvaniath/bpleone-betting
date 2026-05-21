@@ -119,6 +119,7 @@ DEFAULT_MODULES = [
     "confluence_top_5",
     "alpha_pick_of_day",
     "fade_picks",
+    "book_vs_model_team",
     # Data-integrity audit (runs LAST so it scans the freshly-written outputs)
     "data_integrity_audit",
 ]
