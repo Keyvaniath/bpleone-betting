@@ -187,6 +187,22 @@ def _collect_picks_from_sources() -> List[Dict[str, Any]]:
             "fair_american": t.get("market_price"),
         })
 
+    # MLB Innings 7-9 totals strong edges
+    inn79 = _load(os.path.join(DATA_DIR, "mlb_innings_7_9_totals.json"))
+    for r in (inn79.get("strong_edges") or []):
+        bm = r.get("best_market") or {}
+        if bm.get("p"):
+            out.append({
+                "source": f"mlb_inn_7_9_{bm.get('market', '').lower()}",
+                "sport": "MLB",
+                "player_or_matchup": r.get("matchup"),
+                "market": bm.get("market"),
+                "prob": bm.get("p"),
+                "fair_american": bm.get("fair_odds"),
+                "p_predicted": bm.get("p"),
+                "matchup": r.get("matchup"),
+            })
+
     # MLB Innings 4-6 totals strong edges
     inn46 = _load(os.path.join(DATA_DIR, "mlb_innings_4_6_totals.json"))
     for r in (inn46.get("strong_edges") or []):
