@@ -82,6 +82,12 @@ def run() -> Dict[str, Any]:
     matchups = _load(os.path.join(DATA_DIR, "matchups.json"))
     lvr = _load(os.path.join(DATA_DIR, "mlb_batter_lvr_splits.json"))
     today = _load(os.path.join(DATA_DIR, "today.json"))
+    # 2026-05-21: real recent-form per-batter stats (last 14 games)
+    batter_logs = _load(os.path.join(DATA_DIR, "mlb_batter_logs.json"))
+    batter_log_idx = {}
+    for b in (batter_logs.get("batters") or []):
+        nm = (b.get("name") or "").lower()
+        if nm: batter_log_idx[nm] = b
 
     parks = today.get("parks") or {}
     lvr_idx = {}
@@ -113,15 +119,29 @@ def run() -> Dict[str, Any]:
                 order = batter.get("order") or 9
                 lvr_row = lvr_idx.get((name or "").lower(), {})
 
-                # Estimate TB rate per PA -- blend season-OPS-derived SLG with matchup OPS
-                # SLG ~ OPS * 0.55 (empirical: SLG is roughly 55% of OPS)
-                season_ops = _safe(lvr_row.get("season_ops_estimate"), 0.72)
-                split_ops = _safe(lvr_row.get("split_ops"), season_ops)
-                split_pa = int(_safe(lvr_row.get("split_pa"), 0))
-                # Bayesian blend toward season (prior PA = 80)
-                blended_ops = (split_pa * split_ops + 80 * season_ops) / (split_pa + 80) if split_pa > 0 else season_ops
-                slg_proxy = max(0.28, min(0.60, blended_ops * 0.55))  # clamp realistic SLG range
-                tb_per_pa = slg_proxy * 0.92  # SLG (per AB) -> TB per PA (BB/HBP ~ 8% of PA)
+                # 2026-05-21: prefer REAL recent-form TB/AB from mlb_batter_logs
+                # over OPS-derived SLG proxy. Falls back to OPS proxy if batter
+                # not in logs or has <10 AB recent sample.
+                batter_log = batter_log_idx.get((name or "").lower())
+                tb_source = "ops_proxy"
+                if batter_log:
+                    s14 = batter_log.get("stats_last_14") or {}
+                    real_ab = int(s14.get("ab") or 0)
+                    real_tb = int(s14.get("tb") or 0)
+                    if real_ab >= 10:
+                        # tb_per_ab (real recent) -> tb_per_pa via PA = AB * ~1.10
+                        real_tb_per_pa = real_tb / real_ab * 0.91  # 0.91 = AB/PA
+                        tb_per_pa = max(0.10, min(0.75, real_tb_per_pa))
+                        tb_source = "real_last_14"
+
+                if tb_source == "ops_proxy":
+                    # FALLBACK: SLG proxy from OPS
+                    season_ops = _safe(lvr_row.get("season_ops_estimate"), 0.72)
+                    split_ops = _safe(lvr_row.get("split_ops"), season_ops)
+                    split_pa = int(_safe(lvr_row.get("split_pa"), 0))
+                    blended_ops = (split_pa * split_ops + 80 * season_ops) / (split_pa + 80) if split_pa > 0 else season_ops
+                    slg_proxy = max(0.28, min(0.60, blended_ops * 0.55))
+                    tb_per_pa = slg_proxy * 0.92
 
                 # Park HR factor boosts TB ceiling, run factor adjusts contact
                 tb_per_pa *= (1 + (park_hr_factor - 1) * 0.4)  # 40% of HR boost flows to TB
@@ -155,6 +175,7 @@ def run() -> Dict[str, Any]:
                     "opp_pitcher": opp_pitcher,
                     "park": park,
                     "expected_pa": pa,
+                    "tb_source": tb_source,
                     "tb_per_pa": round(tb_per_pa, 3),
                     "expected_tb": round(expected_tb, 2),
                     "p_1_plus": round(p_1plus, 3),

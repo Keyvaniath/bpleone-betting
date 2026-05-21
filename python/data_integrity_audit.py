@@ -55,6 +55,7 @@ MODULES = [
     ("nhl_skater_points_props.json",      ["ppg_source"]),
     ("mlb_to_record_hit_yn.json",         ["hit_source"]),
     ("mlb_to_hit_hr_yn.json",             ["hr_source"]),
+    ("mlb_total_bases_props.json",        ["tb_source"]),
 ]
 
 
@@ -71,11 +72,18 @@ def audit_module(filename: str, source_keys: List[str]) -> Dict[str, Any]:
     rows = d.get("rows") or d.get("reb_top_25") or d.get("ast_top_25") or []
     # Some modules have nested top-N lists rather than 'rows'
     if not rows:
-        for k in ("rows_top_25", "all_rows", "all_players"):
+        for k in ("rows_top_25", "all_rows", "all_players",
+                  "top_25_by_xTB", "top_25_by_p_hit", "top_25_by_p_hr"):
             if k in d and isinstance(d[k], list):
                 rows = d[k]
                 break
 
+    # Real-vs-fallback classifier. Some modules use richer source labels:
+    #   real / real_last_14 / lvr_adj  ->  REAL (live or shrunk-from-live data)
+    #   fallback / ops_proxy / ops_fallback  ->  FALLBACK (hardcoded/estimated)
+    #   missing  ->  MISSING (no source at all)
+    REAL_TOKENS = {"real", "real_last_14", "lvr_adj"}
+    FALLBACK_TOKENS = {"fallback", "ops_proxy", "ops_fallback"}
     real = 0
     fallback = 0
     missing = 0
@@ -83,8 +91,8 @@ def audit_module(filename: str, source_keys: List[str]) -> Dict[str, Any]:
         if not isinstance(r, dict): continue
         for sk in source_keys:
             src = r.get(sk)
-            if src == "real": real += 1
-            elif src == "fallback": fallback += 1
+            if src in REAL_TOKENS: real += 1
+            elif src in FALLBACK_TOKENS: fallback += 1
             elif src == "missing": missing += 1
             # If the key isn't in the row at all, don't count it (module might
             # not have been refreshed since the migration)
