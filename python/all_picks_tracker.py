@@ -298,6 +298,22 @@ def _collect_picks_from_sources() -> List[Dict[str, Any]]:
                 "matchup": r.get("matchup"),
             })
 
+    # NBA player 3-pointers strong edges
+    nba_3pm = _load(os.path.join(DATA_DIR, "nba_player_threes_props.json"))
+    for r in (nba_3pm.get("strong_edges") or []):
+        bm = r.get("best_market") or {}
+        if bm.get("p"):
+            out.append({
+                "source": f"nba_3pm_{bm.get('market', '').lower()}",
+                "sport": "NBA",
+                "player_or_matchup": r.get("player"),
+                "market": bm.get("market"),
+                "prob": bm.get("p"),
+                "fair_american": bm.get("fair_odds"),
+                "p_predicted": bm.get("p"),
+                "matchup": r.get("matchup"),
+            })
+
     # NHL skater hits/blocks/PIM strong edges
     nhl_hb = _load(os.path.join(DATA_DIR, "nhl_skater_hits_blocks_props.json"))
     for r in (nhl_hb.get("strong_edges") or []):
