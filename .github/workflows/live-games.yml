@@ -7,12 +7,10 @@ name: Live In-Progress Games Poll
 # Earlier window catches Sunday/Saturday day games starting at 12:15 PM ET.
 
 on:
-  schedule:
-    # AGGRESSIVE live polling -- every 5 min during games, every 15 min off-peak.
-    # Goal: dashboard never more than a few minutes stale.
-    - cron: '*/5 16-23 * * *'   # every 5 min 12 PM - 7 PM ET (in-game window)
-    - cron: '*/5 0-6 * * *'     # every 5 min 8 PM - 2 AM ET (in-game window)
-    - cron: '*/15 7-15 * * *'   # every 15 min 3 AM - 11 AM ET (morning refresh)
+  # 2026-05-21: DISABLED cron — burning 216 runs/day. Hit GH Actions 90% quota.
+  # Re-enable after June 1, 2026 with milder schedule, e.g.:
+  #   - cron: '*/15 16-23 * * *'   # ~30 runs/day in-game window only
+  # For now run manually when a live game matters.
   workflow_dispatch:
 
 permissions:

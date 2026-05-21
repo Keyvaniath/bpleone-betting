@@ -8,7 +8,9 @@ name: Pipeline Auto-Retrigger Watchdog
 
 on:
   schedule:
-    - cron: '*/30 * * * *'   # every 30 minutes
+    # 2026-05-21: bumped from */30 to every 2 hours. Hit GH Actions 90% quota.
+    # Was 48 runs/day -> now 12 runs/day. Still detects 6h+ outages.
+    - cron: '0 */2 * * *'   # every 2 hours
   workflow_dispatch:
 
 permissions:

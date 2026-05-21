@@ -6,9 +6,9 @@ name: Golf Live Tournament Poll
 # total). golf_state.json + golf_props.json get republished to GitHub Pages.
 
 on:
-  schedule:
-    # Every 20 min, 12-23 UTC, Thu-Sun (most PGA play happens in this window)
-    - cron: '*/20 12-23 * * 4,5,6,0'
+  # 2026-05-21: DISABLED cron — burning ~24 runs/day on tournament weekends.
+  # Hit GH Actions 90% quota. Run manually during major events. After June 1
+  # can re-enable e.g. `0 */2 12-23 * * 4,5,6,0` for hourly during tournaments.
   workflow_dispatch:
 
 permissions:

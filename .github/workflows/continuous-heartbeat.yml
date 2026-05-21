@@ -15,9 +15,9 @@ name: Continuous Heartbeat (5-min self-learning + odds refresh)
 
 on:
   schedule:
-    # 2026-05-21: bumped from */5 to */15 to reduce Cloudflare Worker usage
-    # (was 288 runs/day with ~5 Worker fetches each = 1,440/day -> 96 runs/day = 480/day)
-    - cron: '*/15 * * * *'  # every 15 minutes
+    # 2026-05-21 PASS 2: SLASHED from */15 to */60. Hit GH Actions 90% quota.
+    # Was 96 runs/day -> now 24 runs/day. After June 1 reset can bump back.
+    - cron: '0 * * * *'  # every 60 minutes
   workflow_dispatch:
 
 permissions:

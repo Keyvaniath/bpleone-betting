@@ -11,16 +11,11 @@ name: Training Loop (Continuous Calibration)
 #  - Lets the model self-improve continuously between full daily-pipeline runs.
 
 on:
+  # 2026-05-21: SLASHED cron — was burning 200 runs/day. Hit GH Actions 90% quota.
+  # Self-learning now ticks via daily-pipeline.yml (3x/day). After June 1 reset
+  # can re-enable a milder cadence like `0 */6 * * *` (4x/day).
   schedule:
-    # AGGRESSIVE self-learning cadence -- training loop is cheap (~55s, no API).
-    # Game-time: every 5 minutes during the MLB live window (12 PM ET - 2 AM ET).
-    # 17:00-23:59 UTC = 1 PM - 7:59 PM ET (afternoon + early evening)
-    # 00:00-05:59 UTC = 8 PM - 1:59 AM ET (late evening + west coast)
-    - cron: '*/5 17-23 * * *'
-    - cron: '*/5 0-5 * * *'
-    # Off-game-time: every 15 min so the loop is always learning.
-    # 06:00-16:59 UTC = 2 AM - 12:59 PM ET (overnight + morning)
-    - cron: '*/15 6-16 * * *'
+    - cron: '0 */6 * * *'   # every 6 hours = 4 runs/day
   workflow_dispatch:
 
 permissions:
