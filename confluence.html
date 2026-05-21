@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Confluence Top-5 | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/nav.js"></script>
+<style>
+  .info-card { padding: 14px 18px; background: linear-gradient(135deg, rgba(212,160,74,0.10), rgba(212,160,74,0.02)); border: 1px solid rgba(212,160,74,0.3); border-radius: 10px; margin-bottom: 16px; }
+  .pick-card { padding: 18px 22px; background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; margin-bottom: 14px; position: relative; }
+  .pick-card.tier-whale { background: linear-gradient(135deg, rgba(212,160,74,0.18), rgba(212,160,74,0.04)); border: 1.5px solid #d4a04a; }
+  .pick-card.tier-strong { background: rgba(88,200,120,0.06); border: 1px solid rgba(88,200,120,0.4); }
+  .tier-badge { display: inline-block; padding: 3px 10px; border-radius: 5px; font-size: 11px; font-weight: 800; letter-spacing: 0.5px; }
+  .tier-badge.WHALE { background: #d4a04a; color: #111; }
+  .tier-badge.STRONG { background: #58c878; color: #111; }
+  .tier-badge.STANDARD { background: #888; color: #fff; }
+  .pick-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
+  .pick-player { font-family: 'JetBrains Mono', monospace; font-size: 18px; font-weight: 700; color: #eee; }
+  .pick-market { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #aaa; text-transform: uppercase; margin-top: 4px; }
+  .pick-score { font-family: 'JetBrains Mono', monospace; font-size: 26px; font-weight: 800; color: #d4a04a; text-align: right; }
+  .pick-score-label { font-size: 9px; color: #888; text-transform: uppercase; text-align: right; }
+  .sources-strip { margin-top: 12px; display: flex; gap: 6px; flex-wrap: wrap; }
+  .source-pill { padding: 3px 9px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #ccc; }
+  .source-pill.grade-A { background: rgba(88,200,120,0.20); border-color: #58c878; }
+  .source-pill.grade-B { background: rgba(212,160,74,0.20); border-color: #d4a04a; }
+  .source-pill.grade-F { background: rgba(227,90,90,0.10); border-color: rgba(227,90,90,0.4); color: #c66; }
+  .stat-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 16px; }
+  .stat { padding: 12px 14px; background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; text-align: center; }
+  .stat-val { font-family: 'JetBrains Mono', monospace; font-size: 24px; font-weight: 700; color: #d4a04a; }
+  .stat-label { font-size: 10px; color: #888; text-transform: uppercase; margin-top: 4px; }
+</style>
+</head>
+<body class="page-confluence">
+<header class="topbar">
+  <div class="brand"><a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a><span class="tagline">by bpleone</span></div>
+  <nav class="mainnav"><!-- nav.js injects --></nav>
+  <div class="topbar-actions"><div class="ticker">LIVE</div></div>
+</header>
+<main class="container">
+  <section class="page-head">
+    <h1>🎯 Confluence Top-5 — Tonight's Action List</h1>
+    <p class="muted" id="status">Loading from confluence_top_5.json…</p>
+  </section>
+
+  <div class="info-card">
+    <strong style="color:#d4a04a;">What this is:</strong>
+    <span style="color: var(--text-2,#aaa); font-size:13px;">
+      The 5 plays where multiple modules agree. Score = unique_sources × grade_weighting × (0.5 + avg_prob).
+      WHALE tier ≥ 6 (gold), STRONG tier ≥ 4 (green), STANDARD ≥ 2.
+      Grade-weighted — A/B graded sources count more than F-graded ones (which the integrity layer is still proving out).
+    </span>
+  </div>
+
+  <div class="stat-strip">
+    <div class="stat"><div class="stat-val" id="s_clusters">--</div><div class="stat-label">Clusters Found</div></div>
+    <div class="stat"><div class="stat-val" id="s_whales">--</div><div class="stat-label">WHALES (top-5)</div></div>
+    <div class="stat"><div class="stat-val" id="s_strong">--</div><div class="stat-label">STRONG (top-5)</div></div>
+    <div class="stat"><div class="stat-val" id="s_updated">--</div><div class="stat-label">Last Update</div></div>
+  </div>
+
+  <h2 style="color:#d4a04a; font-size:16px; margin: 20px 0 12px;">🏆 Top 5</h2>
+  <div id="top5"></div>
+
+  <h2 style="color:#d4a04a; font-size:15px; margin: 24px 0 12px;">🔍 Top 15 (extended view)</h2>
+  <div id="top15"></div>
+</main>
+
+<script>
+(async () => {
+  const safeFetch = async (p) => {
+    try { const r = await fetch(p + '?t=' + Date.now()); if (!r.ok) return null; return await r.json(); }
+    catch (e) { return null; }
+  };
+
+  const d = await safeFetch('data/confluence_top_5.json');
+  if (!d) {
+    document.getElementById('status').textContent = 'No confluence data yet — heartbeat will populate.';
+    return;
+  }
+
+  document.getElementById('s_clusters').textContent = d.n_clusters || 0;
+  document.getElementById('s_whales').textContent = d.n_top_5_whales || 0;
+  document.getElementById('s_strong').textContent = d.n_top_5_strong || 0;
+  document.getElementById('s_updated').textContent = new Date(d.generated_at + 'Z').toLocaleTimeString();
+  document.getElementById('status').textContent =
+    `Generated ${new Date(d.generated_at + 'Z').toLocaleString()} · refreshes every 5 min via heartbeat`;
+
+  function renderCard(r) {
+    const tier = r.tier || 'STANDARD';
+    const sources = (r.sources || []).map((s, i) => {
+      const g = (r.source_grades || [])[i] || 'F';
+      return `<span class="source-pill grade-${g}">${s} · ${g}</span>`;
+    }).join('');
+    const fairOdds = r.sample_pick?.fair_american;
+    return `<div class="pick-card tier-${tier.toLowerCase()}">
+      <div class="pick-head">
+        <div>
+          <div class="pick-player">${r.player_or_matchup || '--'}</div>
+          <div class="pick-market">${r.sport || ''} · ${r.market_family || ''} · ${r.sample_pick?.market || ''}${fairOdds ? ' · fair ' + (fairOdds > 0 ? '+' : '') + fairOdds : ''}</div>
+        </div>
+        <div>
+          <div class="pick-score">${r.confluence_score}</div>
+          <div class="pick-score-label">confluence</div>
+          <span class="tier-badge ${tier}" style="margin-top:4px; display:inline-block;">${tier}</span>
+        </div>
+      </div>
+      <div style="color: var(--muted,#888); font-size: 11px;">
+        ${r.n_sources} unique sources · avg_prob = ${r.avg_prob ? (r.avg_prob * 100).toFixed(1) + '%' : '--'}
+      </div>
+      <div class="sources-strip">${sources}</div>
+    </div>`;
+  }
+
+  document.getElementById('top5').innerHTML = (d.top_5 || []).map(renderCard).join('')
+    || '<div class="info-card">No confluent picks yet — waiting for module agreement.</div>';
+  document.getElementById('top15').innerHTML = (d.top_15 || []).slice(5).map(renderCard).join('');
+})();
+</script>
+</body>
+</html>
