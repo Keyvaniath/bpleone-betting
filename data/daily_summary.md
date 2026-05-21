@@ -4,29 +4,27 @@
 
 _Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
 
-_Generated at 2026-05-21T12:53:59 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-05-21T19:09:48 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
-**NYM @ WSN - UNDER_8.5**
-- Market: -110
-- Model probability: 71.1%
-- Raw edge: +35.76%
+**NYM @ WSN - WSN_ML**
+- Market: -107
+- Model probability: 67.5%
+- Raw edge: +30.6%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
 
-## Full Slate (7 games)
+## Full Slate (5 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 1:10p ET | CLE @ DET | Comerica Park | 65F 11mph | DET_ML +8.36% |
-| 1:15p ET | PIT @ STL | Busch Stadium | 67F 8mph | OVER_7.5 +11.27% |
-| 4:05p ET | NYM @ WSN | Nationals Park | 61F 8mph | UNDER_8.5 +35.76% |
-| 6:40p ET | ATL @ MIA | loanDepot park | indoor | ATL_ML +26.03% |
-| 7:05p ET | TOR @ NYY | Yankee Stadium | 57F 3mph | NYY_ML +22.36% |
-| 9:38p ET | OAK @ LAA | Angel Stadium | 61F 5mph | OVER_8.0 +14.09% |
-| 9:40p ET | COL @ ARI | Chase Field | indoor | UNDER_9.5 +8.93% |
+| 4:05p ET | NYM @ WSN | Nationals Park | 60F 8mph | WSN_ML +30.6% |
+| 6:40p ET | ATL @ MIA | loanDepot park | indoor | ATL_ML +25.66% |
+| 7:05p ET | TOR @ NYY | Yankee Stadium | 57F 4mph | NYY_ML +29.24% |
+| 9:38p ET | OAK @ LAA | Angel Stadium | 62F 4mph | OAK_ML +12.06% |
+| 9:40p ET | COL @ ARI | Chase Field | indoor | -- |
 
 ## Parlays - top 5
 
@@ -55,14 +53,14 @@ _Generated at 2026-05-21T12:53:59 UTC. Game lines source: **Bovada (fallback -- 
 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
-| batter hits | 10508 | 39.5% | 41.6% | 1.054 | 0.949 |
 | batter doubles | 5253 | 14.3% | 15.9% | 1.109 | 0.902 |
-| batter rbis | 10506 | 19.6% | 23.2% | 1.181 | 0.847 |
 | batter home runs | 5253 | 11.1% | 12.8% | 1.161 | 0.862 |
-| batter singles | 5253 | 43.6% | 44.5% | 1.020 | 0.980 |
-| batter total bases | 10508 | 26.0% | 31.8% | 1.221 | 0.819 |
-| pitcher strikeouts | 2280 | 32.7% | 38.2% | 1.169 | 0.856 |
 | batter runs scored | 5253 | 36.4% | 38.7% | 1.063 | 0.941 |
+| batter rbis | 10506 | 19.6% | 23.2% | 1.181 | 0.847 |
+| batter total bases | 10508 | 26.0% | 31.8% | 1.221 | 0.819 |
+| batter singles | 5253 | 43.6% | 44.5% | 1.020 | 0.980 |
+| pitcher strikeouts | 2280 | 32.7% | 38.2% | 1.169 | 0.856 |
+| batter hits | 10508 | 39.5% | 41.6% | 1.054 | 0.949 |
 
 Cumulative graded plays: 118201. Wins: 87361. Hit rate: 73.9%.
 
@@ -71,12 +69,10 @@ Cumulative graded plays: 118201. Wins: 87361. Hit rate: 73.9%.
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
 | ATL @ MIA | 48.5% | +106 | 3.62 | +520 | -520 |
-| CLE @ DET | 62.8% | -169 | 2.32 | +125 | -125 |
 | COL @ ARI | 41.7% | +140 | 4.38 | -104 | +104 |
-| NYM @ WSN | 40.3% | +148 | 4.35 | -114 | +114 |
-| OAK @ LAA | 35.2% | +184 | 5.37 | +222 | -222 |
-| PIT @ STL | 47.2% | +112 | 3.55 | +273 | -273 |
-| TOR @ NYY | 34.5% | +190 | 5.36 | -180 | +180 |
+| NYM @ WSN | 40.3% | +148 | 4.31 | -113 | +113 |
+| OAK @ LAA | 35.2% | +184 | 5.34 | +222 | -222 |
+| TOR @ NYY | 34.5% | +190 | 5.41 | -181 | +181 |
 
 ## Team Form (last 10)
 

@@ -3,9 +3,9 @@
 _60-second read. Calibration tier: **BOOTSTRAPPING** (40% progress)._
 
 ## 🐋 WHALES (size up max)
-- **MLB** · ATL @ MIA ML_AWAY · 67% / +16.3%
-  - Top-25 board pick: 67% prob, +16.3% edge
-  - Sharp action STRONG: line shifted +6.86pp our way
+- **MLB** · ATL @ MIA ML_AWAY · 68% / +15.6%
+  - Top-25 board pick: 68% prob, +15.6% edge
+  - Sharp action STRONG: line shifted +6.52pp our way
   - Source: game-line model (high reliability)
 
 ## 🔒 5 Daily Locks
@@ -21,13 +21,13 @@ _60-second read. Calibration tier: **BOOTSTRAPPING** (40% progress)._
 - **Logan O'Hoppe** PP_batter_total_bases_under_2.5 (MLB-PP) -- 72% / +24.3%
 
 ## 📡 Sharp Money Following Model
-- **ATL @ MIA** ml_away: line moved 52.15% → 58.68% (+6.5pp)
-- **NYM @ WSN** ml_home: line moved 45.45% → 50.74% (+5.3pp)
+- **NYM @ WSN** ml_home: line moved 45.45% → 51.92% (+6.5pp)
+- **ATL @ MIA** ml_away: line moved 52.15% → 58.33% (+6.2pp)
 
 ## 🎰 Tonight's Best Parlay
 - **Alec Burleson** PP_batter_hrr_under_4.5 + **Keibert Ruiz** PP_batter_total_bases_under_3.5
 - Joint 51% · fair +201 · edge +54.6%
 
 ---
-_Generated 2026-05-21T12:53:56_
+_Generated 2026-05-21T19:09:18_
 _Full breakdown: /tonight · Full history: /locks-of-day_
