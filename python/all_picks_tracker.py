@@ -378,6 +378,22 @@ def _collect_picks_from_sources() -> List[Dict[str, Any]]:
                 "matchup": r.get("matchup"),
             })
 
+    # MLB Doubles/XBH props strong edges
+    db = _load(os.path.join(DATA_DIR, "mlb_doubles_props.json"))
+    for r in (db.get("strong_edges") or []):
+        bm = r.get("best_market") or {}
+        if bm.get("p"):
+            out.append({
+                "source": f"mlb_xbh_{bm.get('market', '').lower()}",
+                "sport": "MLB",
+                "player_or_matchup": r.get("batter"),
+                "market": bm.get("market"),
+                "prob": bm.get("p"),
+                "fair_american": bm.get("fair_odds"),
+                "p_predicted": bm.get("p"),
+                "matchup": r.get("matchup"),
+            })
+
     # HRR (Hits + Runs + RBI) strong 2+ and 3+ edges
     hrr = _load(os.path.join(DATA_DIR, "mlb_hrr_props.json"))
     for r in (hrr.get("strong_edges") or []):
