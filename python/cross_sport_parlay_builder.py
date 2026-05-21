@@ -37,8 +37,73 @@ OUT = os.path.join(DATA_DIR, "cross_sport_parlays.json")
 MIN_JOINT_PROB_2 = 0.35
 MIN_JOINT_PROB_3 = 0.20
 MIN_EDGE_PCT = 5.0
-SAME_GAME_CORR_PENALTY = 0.10
+SAME_GAME_CORR_PENALTY = 0.10  # legacy default — only used as last-resort fallback
 MAX_PARLAYS_PER_SIZE = 25
+
+# 2026-05-21: Market-type correlation matrix.
+# Returns joint-prob multiplier for a pair of legs IN THE SAME GAME.
+# > 1.0 = legs help each other (negative real-world correlation -> higher joint prob)
+# < 1.0 = legs penalize each other (positive correlation -> lower joint prob)
+# = 1.0 = independent
+def _direction(market: str) -> str:
+    """Return 'over', 'under', 'yes', 'no', or '' from market string."""
+    if not market: return ""
+    m = market.upper()
+    if "_OVER_" in m or m.endswith("_OVER") or "OVER_" in m: return "over"
+    if "_UNDER_" in m or m.endswith("_UNDER") or "UNDER_" in m: return "under"
+    if "_YES" in m: return "yes"
+    if "_NO" in m: return "no"
+    return ""
+
+
+def _correlation_factor(legA, legB) -> float:
+    """Compute joint-prob multiplier for two same-game legs."""
+    famA = (legA.get("market_family") or "").lower()
+    famB = (legB.get("market_family") or "").lower()
+    dirA = _direction(legA.get("market") or "")
+    dirB = _direction(legB.get("market") or "")
+    teamA = (legA.get("team") or "").upper()
+    teamB = (legB.get("team") or "").upper()
+    same_team = teamA and teamB and teamA == teamB
+
+    # Pitcher dominance + opp-team UNDER are negatively correlated in reality
+    # (a dominant K performance suppresses opp runs). Boost joint prob.
+    pitch_dom = any(k in famA for k in ("pitcher_k", "pitcher_outs", "pitcher_quality_start", "pitcher_er")) \
+                or any(k in famB for k in ("pitcher_k", "pitcher_outs", "pitcher_quality_start", "pitcher_er"))
+    team_total = "team_total" in famA or "team_total" in famB or "first5" in famA or "first5" in famB
+
+    if pitch_dom and team_total:
+        # Pitcher OVER + opp team UNDER: same-direction event, correlated
+        # (already same-direction = factor 1.05 boost)
+        if (dirA == "over" and dirB == "under") or (dirA == "under" and dirB == "over"):
+            return 1.05
+
+    # Two over/two under on different players on SAME team
+    if same_team and dirA == dirB and dirA in ("over", "under", "yes"):
+        # Both bullish on same team -> positive correlation -> penalty
+        return 0.90
+
+    # Two NOs on same team = same direction = correlated
+    if same_team and dirA == "no" and dirB == "no":
+        return 0.92
+
+    # Two same-player same-direction legs would have been filtered upstream
+    # by _player_key dedup, so we don't handle that here.
+
+    # Two anytime-goal/first-goalscorer in same game = positive corr
+    if "anytime_goal" in famA + famB or "fgs" in famA + famB:
+        if "anytime_goal" in famA and "anytime_goal" in famB:
+            return 0.94  # both depend on scoring environment
+        if ("fgs" in famA and "anytime_goal" in famB) or ("anytime_goal" in famA and "fgs" in famB):
+            return 0.96
+
+    # Two PRA-family props on same team = positive corr
+    pra_keys = ("pra", "double_double", "triple_double", "points", "rebounds", "assists")
+    if same_team and any(k in famA for k in pra_keys) and any(k in famB for k in pra_keys):
+        return 0.92
+
+    # Default same-game penalty
+    return 1.0 - SAME_GAME_CORR_PENALTY  # 0.90
 
 
 def _load(p):
@@ -85,10 +150,24 @@ def _build_parlay(legs: List[Dict[str, Any]]) -> Dict[str, Any]:
         probs.append(p)
         decimal_odds.append(d)
 
-    # Apply same-game correlation penalty
+    # 2026-05-21: apply pairwise market-aware correlation factor.
+    # For each pair of same-game legs, look up the correlation multiplier
+    # and apply it. Different-game pairs are independent (factor 1.0).
     game_keys = [_game_key(L) for L in legs]
-    same_game = len(set(game_keys)) < len(game_keys)
-    corr_factor = (1 - SAME_GAME_CORR_PENALTY) if same_game else 1.0
+    corr_factor = 1.0
+    correlation_notes = []
+    for i in range(len(legs)):
+        for j in range(i + 1, len(legs)):
+            if game_keys[i] == game_keys[j]:
+                f = _correlation_factor(legs[i], legs[j])
+                corr_factor *= f
+                if abs(f - 1.0) > 0.001:
+                    correlation_notes.append({
+                        "legA_market": legs[i].get("market"),
+                        "legB_market": legs[j].get("market"),
+                        "factor": round(f, 3),
+                    })
+    same_game = corr_factor != 1.0
 
     joint_prob = corr_factor
     for p in probs:
@@ -113,6 +192,8 @@ def _build_parlay(legs: List[Dict[str, Any]]) -> Dict[str, Any]:
         "fair_parlay_american": _decimal_to_american(fair_decimal),
         "edge_pct": round(edge * 100, 1),
         "same_game_penalty_applied": same_game,
+        "correlation_factor": round(corr_factor, 3),
+        "correlation_notes": correlation_notes,
         "implied_payout_per_dollar": round(fair_decimal - 1, 2),
     }
 
