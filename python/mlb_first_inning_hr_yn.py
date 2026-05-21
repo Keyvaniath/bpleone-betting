@@ -61,6 +61,20 @@ def run() -> Dict[str, Any]:
     pitcher_logs = _load(os.path.join(DATA_DIR, "mlb_pitcher_logs.json"))
     p_by_name = {(p.get("name") or "").lower(): p for p in (pitcher_logs.get("pitchers") or [])}
 
+    # 2026-05-21: compute real per-team lineup HR/AB rate from batter logs
+    batter_logs = _load(os.path.join(DATA_DIR, "mlb_batter_logs.json"))
+    team_hr_rates: Dict[str, List[float]] = {}
+    for b in (batter_logs.get("batters") or []):
+        team = (b.get("team_abbr") or "").upper()
+        if not team: continue
+        s14 = b.get("stats_last_14") or {}
+        ab = int(s14.get("ab") or 0)
+        hr = int(s14.get("hr") or 0)
+        if ab >= 10:
+            team_hr_rates.setdefault(team, []).append(hr / ab)
+    team_real_hr_per_ab = {t: sum(rates)/len(rates) for t, rates in team_hr_rates.items() if rates}
+    LEAGUE_HR_PER_AB = 0.033
+
     parks = today.get("parks") or {}
     games = matchups.get("games") or today.get("games") or []
     rows: List[Dict[str, Any]] = []
@@ -88,14 +102,28 @@ def run() -> Dict[str, Any]:
         home_pitcher_hr_per_pa = home_hr_per_9 / 38.5
         away_pitcher_hr_per_pa = away_hr_per_9 / 38.5
 
-        # Average with league baseline (and lineup quality proxy from team OPS)
-        home_lineup_ops = _safe((g.get("home") or {}).get("ops"), 0.72)
-        away_lineup_ops = _safe((g.get("away") or {}).get("ops"), 0.72)
-        # Power lineup adjustment: each .020 OPS above .720 = +5% HR rate
-        home_lineup_mult = 1.0 + (home_lineup_ops - 0.72) / 0.020 * 0.05
-        away_lineup_mult = 1.0 + (away_lineup_ops - 0.72) / 0.020 * 0.05
-        home_lineup_mult = max(0.75, min(1.30, home_lineup_mult))
-        away_lineup_mult = max(0.75, min(1.30, away_lineup_mult))
+        # 2026-05-21: prefer real per-team HR/AB rate from batter logs.
+        # Falls back to game-level OPS if team not in batter_logs.
+        home_real_hr = team_real_hr_per_ab.get(home)
+        away_real_hr = team_real_hr_per_ab.get(away)
+        lineup_source_home = "real_last_14" if home_real_hr else "ops_proxy"
+        lineup_source_away = "real_last_14" if away_real_hr else "ops_proxy"
+
+        if home_real_hr is not None:
+            home_lineup_mult = home_real_hr / LEAGUE_HR_PER_AB
+            home_lineup_mult = max(0.50, min(1.80, home_lineup_mult))
+        else:
+            home_lineup_ops = _safe((g.get("home") or {}).get("ops"), 0.72)
+            home_lineup_mult = 1.0 + (home_lineup_ops - 0.72) / 0.020 * 0.05
+            home_lineup_mult = max(0.75, min(1.30, home_lineup_mult))
+
+        if away_real_hr is not None:
+            away_lineup_mult = away_real_hr / LEAGUE_HR_PER_AB
+            away_lineup_mult = max(0.50, min(1.80, away_lineup_mult))
+        else:
+            away_lineup_ops = _safe((g.get("away") or {}).get("ops"), 0.72)
+            away_lineup_mult = 1.0 + (away_lineup_ops - 0.72) / 0.020 * 0.05
+            away_lineup_mult = max(0.75, min(1.30, away_lineup_mult))
 
         # Each half-inning ~4.5 PA. P(HR for batting team in their half) =
         # 1 - exp(- (their HR rate × opposing pitcher HR rate) × 4.5)
@@ -140,8 +168,10 @@ def run() -> Dict[str, Any]:
             "home_sp": home_name,
             "away_sp": away_name,
             "park_hr_factor": park_hr_factor,
-            "home_lineup_ops": home_lineup_ops,
-            "away_lineup_ops": away_lineup_ops,
+            "home_lineup_source": lineup_source_home,
+            "away_lineup_source": lineup_source_away,
+            "home_lineup_mult": round(home_lineup_mult, 3),
+            "away_lineup_mult": round(away_lineup_mult, 3),
             "home_pitcher_hr_per_9": home_hr_per_9,
             "away_pitcher_hr_per_9": away_hr_per_9,
             "expected_hr_first_inning": round(expected_hr_away_half + expected_hr_home_half, 4),

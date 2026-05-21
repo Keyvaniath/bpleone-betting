@@ -59,6 +59,7 @@ MODULES = [
     ("mlb_doubles_props.json",            ["xbh_source"]),
     ("mlb_to_score_run_yn.json",          ["run_source"]),
     ("mlb_hrr_props.json",                ["hrr_source"]),
+    ("mlb_first_inning_hr_yn.json",       ["home_lineup_source", "away_lineup_source"]),
 ]
 
 
