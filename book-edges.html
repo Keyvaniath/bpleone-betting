@@ -18,12 +18,12 @@
 
   .row {
     display: grid;
-    grid-template-columns: 1.6fr 70px 90px 90px 90px 90px 90px 80px;
-    gap: 10px;
-    padding: 11px 16px;
+    grid-template-columns: 1.5fr 60px 80px 80px 80px 80px 80px 80px 70px;
+    gap: 8px;
+    padding: 11px 14px;
     align-items: center;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
+    font-size: 11.5px;
     border-bottom: 1px solid rgba(255,255,255,0.04);
   }
   .row.head { background: rgba(255,255,255,0.05); color: var(--muted, #888); font-size: 10px; text-transform: uppercase; padding: 9px 16px; }
@@ -53,13 +53,14 @@
 <div class="panel">
   <h2 id="title">Today's Team ML Book Edges</h2>
   <div class="row head">
-    <div>Matchup · Side (Team)</div>
+    <div>Matchup · Side</div>
     <div>Type</div>
     <div class="num">Model %</div>
+    <div class="num">Calib %</div>
     <div class="num">Book %</div>
-    <div class="num">Gap (pp)</div>
     <div class="num">Book ML</div>
-    <div class="num">Edge %</div>
+    <div class="num">Raw Edge</div>
+    <div class="num">Calib Edge</div>
     <div class="num">Kelly</div>
   </div>
   <div id="rows"></div>
@@ -67,14 +68,15 @@
 
 <div class="panel">
   <h2 id="totals-title">Today's Total (O/U) Book Edges</h2>
-  <div class="row head" style="grid-template-columns: 1.6fr 70px 90px 90px 90px 90px 90px 80px;">
+  <div class="row head">
     <div>Matchup · Side</div>
     <div>Line</div>
     <div class="num">Model %</div>
+    <div class="num">Calib %</div>
     <div class="num">Book %</div>
-    <div class="num">Gap (pp)</div>
-    <div class="num">Book ML</div>
-    <div class="num">Edge %</div>
+    <div class="num">Price</div>
+    <div class="num">Raw Edge</div>
+    <div class="num">Calib Edge</div>
     <div class="num">Kelly</div>
   </div>
   <div id="totals-rows"></div>
@@ -126,11 +128,12 @@ async function load() {
         <div>${e.matchup} · ${e.side} (${e.team})</div>
         <div>${e.is_underdog ? '<span class="tag-dog">DOG</span>' : '<span class="tag-fav">FAV</span>'}</div>
         <div class="num">${fmtPct(e.model_prob)}</div>
+        <div class="num" style="color:#58c878;">${fmtPct(e.calibrated_prob)}</div>
         <div class="num" style="color:var(--muted,#aaa);">${fmtPct(e.book_implied_devig)}</div>
-        <div class="num" style="color:#d4a04a;">${e.model_book_gap_pp >= 0 ? '+' : ''}${e.model_book_gap_pp.toFixed(1)}</div>
         <div class="num" style="color:#d4a04a;">${fmtOdds(e.book_american)}</div>
-        <div class="num" style="color:#58c878;">${fmtSigned(e.edge_pct)}</div>
-        <div class="num">${e.kelly_fraction != null ? e.kelly_fraction.toFixed(3) : '—'}</div>
+        <div class="num" style="color:var(--muted,#aaa);">${fmtSigned(e.edge_pct)}</div>
+        <div class="num" style="color:#58c878;font-weight:700;">${fmtSigned(e.calibrated_edge_pct)}</div>
+        <div class="num">${e.kelly_calibrated != null ? e.kelly_calibrated.toFixed(3) : '—'}</div>
       </div>
     `).join('');
     document.getElementById('rows').innerHTML = html;
@@ -141,15 +144,16 @@ async function load() {
       '<div style="padding:24px;text-align:center;color:#888;font-style:italic;">No 3%+ totals edges right now.</div>';
   } else {
     const html = totals.map(e => `
-      <div class="row" style="grid-template-columns: 1.6fr 70px 90px 90px 90px 90px 90px 80px;">
+      <div class="row">
         <div>${e.matchup} · ${e.side}</div>
         <div style="color:#d4a04a;">${e.total_line}</div>
         <div class="num">${fmtPct(e.model_prob)}</div>
+        <div class="num" style="color:#58c878;">${fmtPct(e.calibrated_prob)}</div>
         <div class="num" style="color:var(--muted,#aaa);">${fmtPct(e.book_implied_devig)}</div>
-        <div class="num" style="color:#d4a04a;">${e.model_book_gap_pp >= 0 ? '+' : ''}${e.model_book_gap_pp.toFixed(1)}</div>
         <div class="num" style="color:#d4a04a;">${fmtOdds(e.book_american)}</div>
-        <div class="num" style="color:#58c878;">${fmtSigned(e.edge_pct)}</div>
-        <div class="num">${e.kelly_fraction != null ? e.kelly_fraction.toFixed(3) : '—'}</div>
+        <div class="num" style="color:var(--muted,#aaa);">${fmtSigned(e.edge_pct)}</div>
+        <div class="num" style="color:#58c878;font-weight:700;">${fmtSigned(e.calibrated_edge_pct)}</div>
+        <div class="num">${e.kelly_calibrated != null ? e.kelly_calibrated.toFixed(3) : '—'}</div>
       </div>
     `).join('');
     document.getElementById('totals-rows').innerHTML = html;

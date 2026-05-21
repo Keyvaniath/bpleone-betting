@@ -117,7 +117,8 @@ def run() -> Dict[str, Any]:
     real_book_edges = (bvm.get("ml_edges") or []) + (bvm.get("total_edges") or [])
     n_book_added = 0
     for e in real_book_edges:
-        prob = e.get("model_prob")
+        # Prefer calibrated_prob (Bayesian-shrunk toward book) over raw model_prob
+        prob = e.get("calibrated_prob") or e.get("model_prob")
         dec = e.get("book_decimal")
         if prob is None or dec is None: continue
         if prob < 0.18 or prob > 0.85: continue

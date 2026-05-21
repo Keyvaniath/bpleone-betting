@@ -66,6 +66,21 @@ def _devig_pair(home_ml, away_ml):
     return ih / total, ia / total  # de-vigged probs
 
 
+# 2026-05-21: Bayesian shrinkage toward the book. The book is the market
+# consensus — when our model disagrees by >10pp it's usually wrong, not
+# the book. Shrink model probability toward book implied with weight that
+# grows with the size of the gap:
+#   weight_on_book = min(0.40, |gap| * 2.0)
+#       e.g. 5pp gap -> 10% book weight
+#            15pp gap -> 30% book weight
+#            25pp gap -> 40% book weight (capped)
+def _shrink_toward_book(model_p: float, book_devig: float) -> float:
+    if model_p is None or book_devig is None: return model_p
+    gap = abs(model_p - book_devig)
+    weight_book = min(0.40, gap * 2.0)
+    return model_p * (1 - weight_book) + book_devig * weight_book
+
+
 def run() -> Dict[str, Any]:
     matchups = _load(os.path.join(DATA_DIR, "matchups.json"))
     today = _load(os.path.join(DATA_DIR, "today.json"))
@@ -127,17 +142,23 @@ def run() -> Dict[str, Any]:
             if edge_pct < 0.03: continue   # need 3% edge to surface
             team = (g.get("home") if side == "HOME" else g.get("away")) or {}
             team_abbr = team.get("abbr") if isinstance(team, dict) else side
+            # Calibrated probability shrinks model toward book consensus
+            calibrated_p = _shrink_toward_book(model_p, book_devig)
+            calibrated_edge = calibrated_p * book_dec - 1
             edges.append({
                 "matchup": matchup,
                 "side": side,
                 "team": team_abbr or side,
                 "model_prob": round(model_p, 4),
+                "calibrated_prob": round(calibrated_p, 4),
                 "book_implied_devig": round(book_devig, 4),
                 "model_book_gap_pp": round((model_p - book_devig) * 100, 2),
                 "book_american": book_ml,
                 "book_decimal": round(book_dec, 3),
                 "edge_pct": round(edge_pct * 100, 2),
+                "calibrated_edge_pct": round(calibrated_edge * 100, 2),
                 "kelly_fraction": round(max(0, (model_p * book_dec - 1) / (book_dec - 1)), 4) if book_dec > 1 else 0,
+                "kelly_calibrated": round(max(0, (calibrated_p * book_dec - 1) / (book_dec - 1)), 4) if book_dec > 1 else 0,
                 "is_underdog": book_ml > 0,
             })
 
@@ -161,21 +182,27 @@ def run() -> Dict[str, Any]:
             ):
                 if tot_p < 0.30 or tot_p > 0.78: continue
                 if tot_edge < 0.03: continue
+                calibrated_p_tot = _shrink_toward_book(tot_p, 0.5)
+                calibrated_edge_tot = calibrated_p_tot * tot_dec - 1
                 total_edges.append({
                     "matchup": matchup,
                     "side": tot_side,
                     "total_line": total_book,
                     "model_prob": round(tot_p, 4),
+                    "calibrated_prob": round(calibrated_p_tot, 4),
                     "book_implied_devig": 0.5,  # standard -110 = 50% devig
                     "model_book_gap_pp": round((tot_p - 0.5) * 100, 2),
                     "book_american": -110,
                     "book_decimal": over_book_dec,
                     "edge_pct": round(tot_edge * 100, 2),
+                    "calibrated_edge_pct": round(calibrated_edge_tot * 100, 2),
                     "kelly_fraction": round(max(0, (tot_p * tot_dec - 1) / (tot_dec - 1)), 4),
+                    "kelly_calibrated": round(max(0, (calibrated_p_tot * tot_dec - 1) / (tot_dec - 1)), 4),
                 })
 
-    edges.sort(key=lambda e: -e["edge_pct"])
-    total_edges.sort(key=lambda e: -e["edge_pct"])
+    # Sort by CALIBRATED edge (post-shrinkage) — this is the honest ranking
+    edges.sort(key=lambda e: -e.get("calibrated_edge_pct", e.get("edge_pct", 0)))
+    total_edges.sort(key=lambda e: -e.get("calibrated_edge_pct", e.get("edge_pct", 0)))
 
     out = {
         "generated_at": dt.datetime.utcnow().isoformat(timespec="seconds"),
