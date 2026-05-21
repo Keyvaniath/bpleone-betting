@@ -6,10 +6,12 @@ name: Daily MLB Pipeline
 
 on:
   schedule:
-    - cron: '0 10 * * *'   # 6 AM ET
-    - cron: '0 17 * * *'   # 1 PM ET (line refresh)
-    - cron: '0 22 * * *'   # 6 PM ET (final pre-game refresh)
-  workflow_dispatch:        # manual trigger button
+    # 2026-05-21: dropped 1 PM ET refresh to fit GH Actions quota.
+    # Each run is ~9.5 min and we are at 90% of 2,000 included minutes.
+    # 3x/day -> 2x/day saves ~9.5 min/day. Re-enable 1 PM cron after June 1 reset.
+    - cron: '0 10 * * *'   # 6 AM ET — full slate setup
+    - cron: '0 22 * * *'   # 6 PM ET — final pre-game refresh
+  workflow_dispatch:        # manual trigger button (use for line-shop refresh)
 
 # Needed for git push (default GITHUB_TOKEN is read-only otherwise).
 permissions:

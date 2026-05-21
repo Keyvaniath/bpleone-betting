@@ -15,9 +15,10 @@ name: Continuous Heartbeat (5-min self-learning + odds refresh)
 
 on:
   schedule:
-    # 2026-05-21 PASS 2: SLASHED from */15 to */60. Hit GH Actions 90% quota.
-    # Was 96 runs/day -> now 24 runs/day. After June 1 reset can bump back.
-    - cron: '0 * * * *'  # every 60 minutes
+    # 2026-05-21 PASS 3: bumped from */60 to */180. Each run ~57s, 24/day was
+    # still ~23 min/day. Now 8/day = ~8 min/day. Daily-pipeline already does
+    # the same calibration work 2x/day so heartbeat is mostly redundant.
+    - cron: '0 */3 * * *'  # every 3 hours
   workflow_dispatch:
 
 permissions:
