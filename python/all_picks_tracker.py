@@ -218,6 +218,22 @@ def _collect_picks_from_sources() -> List[Dict[str, Any]]:
                 "matchup": gtop.get("tournament"),
             })
 
+    # MLB first batter retired strong edges
+    fbr = _load(os.path.join(DATA_DIR, "mlb_first_batter_retired_props.json"))
+    for r in (fbr.get("strong_edges") or []):
+        bm = r.get("best_market") or {}
+        if bm.get("p"):
+            out.append({
+                "source": f"mlb_first_batter_{bm.get('market', '').lower()}",
+                "sport": "MLB",
+                "player_or_matchup": r.get("pitcher"),
+                "market": bm.get("market"),
+                "prob": bm.get("p"),
+                "fair_american": bm.get("fair_odds"),
+                "p_predicted": bm.get("p"),
+                "matchup": r.get("matchup"),
+            })
+
     # MLB pitcher hits allowed strong edges
     ha = _load(os.path.join(DATA_DIR, "mlb_pitcher_hits_allowed_props.json"))
     for r in (ha.get("strong_edges") or []):
