@@ -79,6 +79,7 @@ def run() -> Dict[str, Any]:
 
     games = matchups.get("games") or []
     edges: List[Dict[str, Any]] = []
+    total_edges: List[Dict[str, Any]] = []
 
     for g in games:
         market = g.get("market") or {}
@@ -140,15 +141,54 @@ def run() -> Dict[str, Any]:
                 "is_underdog": book_ml > 0,
             })
 
+        # ----- TOTALS (Over/Under) book-vs-model edge -----
+        # Model gives p_over_market (probability OVER the book's posted total).
+        # Book total prices are typically -110/-110 each side (decimal ~1.91).
+        # Standard -110/-110 means de-vigged 50/50. We compute edge directly
+        # using model's p_over and the book's standard ~1.91 decimal.
+        p_over_model = nested_model.get("p_over_market") or model_g.get("p_over_market")
+        if p_over_model is not None and total_book is not None:
+            # Assume -110 each side (typical MLB total juice) unless book provides custom
+            over_book_dec = 1.909  # -110 in decimal
+            under_book_dec = 1.909
+            p_under_model = 1.0 - p_over_model
+            edge_over = p_over_model * over_book_dec - 1
+            edge_under = p_under_model * under_book_dec - 1
+
+            for tot_side, tot_p, tot_dec, tot_edge in (
+                ("OVER", p_over_model, over_book_dec, edge_over),
+                ("UNDER", p_under_model, under_book_dec, edge_under),
+            ):
+                if tot_p < 0.30 or tot_p > 0.78: continue
+                if tot_edge < 0.03: continue
+                total_edges.append({
+                    "matchup": matchup,
+                    "side": tot_side,
+                    "total_line": total_book,
+                    "model_prob": round(tot_p, 4),
+                    "book_implied_devig": 0.5,  # standard -110 = 50% devig
+                    "model_book_gap_pp": round((tot_p - 0.5) * 100, 2),
+                    "book_american": -110,
+                    "book_decimal": over_book_dec,
+                    "edge_pct": round(tot_edge * 100, 2),
+                    "kelly_fraction": round(max(0, (tot_p * tot_dec - 1) / (tot_dec - 1)), 4),
+                })
+
     edges.sort(key=lambda e: -e["edge_pct"])
+    total_edges.sort(key=lambda e: -e["edge_pct"])
 
     out = {
         "generated_at": dt.datetime.utcnow().isoformat(timespec="seconds"),
-        "n_edges": len(edges),
+        "n_ml_edges": len(edges),
+        "n_total_edges": len(total_edges),
+        "n_edges": len(edges) + len(total_edges),  # combined for backwards compat
         "top_5": edges[:5],
         "all_edges": edges,
-        "method_note": "REAL book vs model team-ML comparison. Bovada ML lines de-vigged. "
-                       "edge_pct = model_prob * book_decimal - 1. Filter 3%+ edge, "
+        "ml_edges": edges,
+        "total_edges": total_edges,
+        "method_note": "REAL book-vs-model. ML lines de-vigged from matchups.market.ml_*. "
+                       "Totals use standard -110/-110 (1.909 decimal) since matchups.market.total "
+                       "doesn't include the price (just the line). Filter 3%+ edge, "
                        "model_prob in [0.30, 0.78].",
     }
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
@@ -158,9 +198,12 @@ def run() -> Dict[str, Any]:
 
 if __name__ == "__main__":
     o = run()
-    print(f"[book-vs-model] {o['n_edges']} edges -> {OUT}")
+    print(f"[book-vs-model] {o['n_ml_edges']} ML edges + {o['n_total_edges']} total edges -> {OUT}")
     for e in o['top_5']:
-        print(f"  {e['matchup']} {e['side']} ({e['team']}) "
+        print(f"  ML  {e['matchup']} {e['side']} ({e['team']}) "
               f"model {e['model_prob']:.1%} vs book {e['book_implied_devig']:.1%} "
               f"({'+'if e['book_american']>=0 else ''}{e['book_american']}) "
               f"edge={e['edge_pct']:+.2f}%")
+    for e in o['total_edges'][:5]:
+        print(f"  TOT {e['matchup']} {e['side']} {e['total_line']} "
+              f"model {e['model_prob']:.1%} edge={e['edge_pct']:+.2f}%")
