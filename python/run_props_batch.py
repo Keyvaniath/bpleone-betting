@@ -98,6 +98,7 @@ DEFAULT_MODULES = [
     "wnba_player_reb_ast_props",
     "wnba_player_threes_props",
     "wnba_player_blocks_steals_props",
+    "wnba_player_double_double",
     "wnba_team_alts_props",
     # NHL props
     "nhl_skater_hits_blocks_props",

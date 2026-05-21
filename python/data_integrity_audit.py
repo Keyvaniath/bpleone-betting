@@ -49,6 +49,7 @@ MODULES = [
     ("wnba_player_reb_ast_props.json",    ["rpg_source", "apg_source"]),
     ("wnba_player_threes_props.json",     ["tpm_source"]),
     ("wnba_player_blocks_steals_props.json", ["blk_stl_source"]),
+    ("wnba_player_double_double.json",    ["dd_source"]),
     ("nhl_anytime_goal_props.json",       ["gpg_source"]),
     ("nhl_first_goalscorer_props.json",   ["gpg_source"]),
     ("nhl_skater_sog_props.json",         ["sogg_source"]),
