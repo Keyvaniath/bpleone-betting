@@ -15,7 +15,9 @@ name: Continuous Heartbeat (5-min self-learning + odds refresh)
 
 on:
   schedule:
-    - cron: '*/5 * * * *'  # every 5 minutes, every hour, every day
+    # 2026-05-21: bumped from */5 to */15 to reduce Cloudflare Worker usage
+    # (was 288 runs/day with ~5 Worker fetches each = 1,440/day -> 96 runs/day = 480/day)
+    - cron: '*/15 * * * *'  # every 15 minutes
   workflow_dispatch:
 
 permissions:

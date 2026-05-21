@@ -34,8 +34,9 @@
   };
 
   // Light in-memory cache so duplicate fetches in the same tick share
+  // 2026-05-21: bumped from 25s -> 5min to reduce Cloudflare Worker request burn
   const cache = {};
-  const CACHE_MS = 25 * 1000;   // 25s -- worker edge cache is 30s
+  const CACHE_MS = 5 * 60 * 1000;   // 5 min cache
 
   async function fetchKey(key) {
     const now = Date.now();
@@ -77,7 +78,8 @@
       }
     };
     refresh();
-    setInterval(refresh, 30 * 1000);   // refresh badge every 30s
+    // 2026-05-21: bumped from 30s -> 5 min to reduce Worker request burn
+    setInterval(refresh, 5 * 60 * 1000);   // refresh badge every 5 min
   }
 
   window.EdgeStatLive = {
