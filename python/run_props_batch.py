@@ -123,6 +123,8 @@ DEFAULT_MODULES = [
     "fade_picks",
     # top_calibrated_edges depends on book_vs_model_team + todays_top_plays
     "top_calibrated_edges",
+    # bet_slate consolidates POD + ALPHA + BOOK + PARLAY into single JSON
+    "bet_slate",
     # Data-integrity audit (runs LAST so it scans the freshly-written outputs)
     "data_integrity_audit",
 ]

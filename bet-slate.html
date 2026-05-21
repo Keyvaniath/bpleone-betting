@@ -158,88 +158,25 @@ function render() {
 }
 
 async function loadAll() {
-  const fetchJSON = async (path) => {
-    try {
-      const r = await fetch(path + '?t=' + Date.now());
-      return await r.json();
-    } catch { return null; }
-  };
-  const [topCal, alpha, parlays, pod] = await Promise.all([
-    fetchJSON('data/top_calibrated_edges.json'),
-    fetchJSON('data/alpha_pick_of_day.json'),
-    fetchJSON('data/cross_sport_parlays.json'),
-    fetchJSON('data/play_of_day.json').catch(() => fetchJSON('data/todays_top_plays.json')),
-  ]);
-
-  SLATE = [];
-
-  // POD: top of top_25_board
-  if (pod) {
-    const t25 = pod.top_25 || [];
-    const podPick = t25[0];
-    if (podPick && podPick.prob >= 0.65) {
-      SLATE.push({
-        type: 'pod',
-        typeLabel: '★ POD',
-        title: podPick.player_or_matchup || '—',
-        market: podPick.market || podPick.sport || '',
-        prob: podPick.prob,
-        odds: podPick.fair_american,
-        edge: podPick.edge_pct,
-        kelly: podPick.kelly_fraction,
-      });
-    }
+  let d;
+  try {
+    const r = await fetch('data/bet_slate.json?t=' + Date.now());
+    d = await r.json();
+  } catch {
+    document.getElementById('slate').innerHTML = '<div class="empty">Failed to load bet_slate.json</div>';
+    return;
   }
 
-  // Alpha Pick
-  if (alpha && alpha.alpha_pick) {
-    const a = alpha.alpha_pick;
-    SLATE.push({
-      type: 'alpha',
-      typeLabel: '★ ALPHA',
-      title: a.player_or_matchup || '—',
-      market: a.market || '',
-      prob: a.model_prob,
-      odds: a.fair_american,
-      edge: a.roi_per_dollar != null ? a.roi_per_dollar * 100 : null,
-      kelly: a.kelly_fraction,
-    });
-  }
-
-  // Top 3 calibrated book edges (REAL_BOOK only)
-  if (topCal) {
-    const realBook = (topCal.top_10 || []).filter(e => e.source_type === 'REAL_BOOK').slice(0, 3);
-    realBook.forEach(e => {
-      SLATE.push({
-        type: 'book',
-        typeLabel: '📊 BOOK',
-        title: `${e.matchup} · ${e.side}${e.team ? ' (' + e.team + ')' : ''}`,
-        market: e.market || '',
-        prob: e.calibrated_prob,
-        odds: e.book_american,
-        edge: e.calibrated_edge_pct,
-        kelly: e.kelly,
-      });
-    });
-  }
-
-  // Parlay of Day
-  if (parlays) {
-    const par = (parlays.balanced_2_leg_picks || parlays.top_2_leg_parlays || [])[0];
-    if (par) {
-      const names = par.legs.map(L => L.player_or_matchup.slice(0,18)).join(' + ');
-      SLATE.push({
-        type: 'parlay',
-        typeLabel: '🎲 PARLAY',
-        title: names,
-        market: `${par.n_legs}-leg`,
-        prob: par.joint_prob,
-        odds: par.fair_parlay_american,
-        edge: par.edge_pct,
-        kelly: 0.05,  // conservative cap for parlay
-      });
-    }
-  }
+  SLATE = (d.slate || []).map(s => ({
+    type: (s.type || '').toLowerCase(),
+    typeLabel: s.type_label || s.type,
+    title: s.title || '—',
+    market: s.market || '',
+    prob: s.prob,
+    odds: s.fair_american,
+    edge: s.edge_pct,
+    kelly: s.kelly_fraction || 0,
+  }));
 
   recompute();
 }
