@@ -202,6 +202,22 @@ def _collect_picks_from_sources() -> List[Dict[str, Any]]:
                 "p_predicted": be.get("model_p"),  # for Brier
             })
 
+    # F1 qualifying strong edges
+    fq = _load(os.path.join(DATA_DIR, "f1_qualifying_predictor.json"))
+    for r in (fq.get("strong_edges") or []):
+        bm = r.get("best_market") or {}
+        if bm.get("p"):
+            out.append({
+                "source": f"f1_quali_{bm.get('market', '').lower()}",
+                "sport": "F1",
+                "player_or_matchup": r.get("driver"),
+                "market": bm.get("market"),
+                "prob": bm.get("p"),
+                "fair_american": bm.get("fair_odds"),
+                "p_predicted": bm.get("p"),
+                "matchup": fq.get("circuit"),
+            })
+
     # Golf top-N finish strong edges
     gtop = _load(os.path.join(DATA_DIR, "golf_top_finish_props.json"))
     for r in (gtop.get("strong_edges") or []):
