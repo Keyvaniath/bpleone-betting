@@ -1,64 +1,53 @@
-# Tonight's Slate Brief — 2026-05-20
+# Tonight's Slate Brief — 2026-05-21
 
-## Slate Quality: 59/100 (MEDIUM)
-_20% lineups confirmed · 13 rookie SPs · 1 high early-hook risk SPs_
+## Slate Quality: 55/100 (MEDIUM)
+_0% lineups confirmed · 5 rookie SPs_
 **Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
-- **15 games** scheduled
-- **31 best bets** scored: 0 DK · 0 PP · 8 NRFI · 2 SGP
-- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$50.33
-- **MC simulation:** EV +$102.1, 83% P(profit), p05 $-76.45 / p95 $284.16
+- **7 games** scheduled
+- **25 best bets** scored: 0 DK · 0 PP · 3 NRFI · 0 SGP
+- **Auto-portfolio:** 2 picks, $98.45 stake (9.85%), expected +$25.26
+- **MC simulation:** EV +$26.78, 68% P(profit), p05 $-79.84 / p95 $108.11
 
 ## Top 5 Best Bets
-1. **LAD @ SDP 4-leg SGP @ -270**  (100/100 *****, edge +349.6%)
-   - Joint prob 0.730 (correlation boost +0.527)
-   - Leg: Shohei Ohtani UNDER 1.5 batter hits
-2. **MIL @ CHC NRFI (no run 1st inning)**  (80/100 ****, edge +30.8%)
-   - P(NRFI) 84.8% vs baseline 54.0%
-3. **LAD @ SDP YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +26.7%)
-   - P(YRFI) 72.7% vs baseline 46.0%
-4. **BOS @ KCR YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +24.2%)
-   - P(YRFI) 70.2% vs baseline 46.0%
-5. **OAK @ LAA YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +21.6%)
-   - P(YRFI) 67.7% vs baseline 46.0%
+1. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
+   - Player prop quality score 1.1935
+   - Elite player
+2. **LOL ShowMaker OVER 3.5 Kills**  (78/100 ****, edge —)
+   - Player prop quality score 1.1892
+   - Elite player
+3. **LOL Peyz OVER 4.5 Kills**  (78/100 ****, edge —)
+   - Player prop quality score 1.184
+   - Elite player
+4. **GOLF Wyndham Clark TOP10 @ 669 (THE CJ CUP Byron Nelson)**  (78/100 *****, edge —)
+   - P(top 10) 13.0% -- safest position-bet for #29.
+5. **GOLF Scottie Scheffler TOP5 @ 740 (THE CJ CUP Byron Nelson)**  (78/100 *****, edge —)
+   - P(top 5) 11.9% -- lower variance than outright but compelling line.
 
-## ⚠️ Trap Warnings — 12 flagged
-- **LAD @ SDP 4-leg SGP @ -270** (low):
-   - Edge +349.6% looks big but only 0 settled props on this player — model unproven
-- **MIL @ CHC NRFI (no run 1st inning)** (low):
-   - Edge +30.8% looks big but only 0 settled props on this player — model unproven
-- **LAD @ SDP YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +26.7% looks big but only 0 settled props on this player — model unproven
-- **HOU @ MIN 2-leg SGP @ -256** (low):
-   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
-- **BOS @ KCR YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +24.2% looks big but only 0 settled props on this player — model unproven
-
-## SP early-hook risk
-HIGH risk: Shohei Ohtani
-_Fade their K OVERs; lean OPP team total OVER and F5._
+## ⚠️ Trap Warnings — 5 flagged
+- **LAD @ SDP NRFI (no run 1st inning)** (low):
+   - Edge +15.9% looks big but only 0 settled props on this player — model unproven
+- **OAK @ LAA YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +15.6% looks big but only 0 settled props on this player — model unproven
+- **MIL @ CHC YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +10.3% looks big but only 0 settled props on this player — model unproven
+- **GOLF 3-leg parlay @ +1813** (low):
+   - Edge +10.0% looks big but only 0 settled props on this player — model unproven
+- **GOLF 3-leg parlay @ +1812** (low):
+   - Edge +10.0% looks big but only 0 settled props on this player — model unproven
 
 ## Hot streaks
-**Batters heating up:** Gavin Sheets (heat +6.43), Christian Yelich (heat +5.71), Byron Buxton (heat +5.02)
-**Pitchers on a run:** Jacob Misiorowski (heat +12.46), Ben Brown (heat +11.50), Matthew Liberatore (heat +9.30)
-
-## Top correlation-aware SGPs
-- **LAD @ SDP** 4-leg @ -270 fair (joint 0.73, EV +349.59%)
-   - Shohei Ohtani UNDER 1.5 batter hits
-   - Shohei Ohtani UNDER 2.5 batter total bases
-   - Shohei Ohtani OVER 0.5 batter hits
-- **HOU @ MIN** 2-leg @ -256 fair (joint 0.72, EV +25.0%)
-   - Byron Buxton UNDER 3.5 batter total bases
-   - Isaac Paredes UNDER 0.5 batter doubles
+**Batters heating up:** Juan Soto (heat +6.53), Keibert Ruiz (heat +5.34), Gavin Sheets (heat +5.22)
+**Pitchers on a run:** Joe Ryan (heat +11.25), Chris Sale (heat +10.73), Cam Schlittler (heat +10.30)
 
 ## Bullpens GASSED tonight
-San Diego Padres, San Francisco Giants, Tampa Bay Rays, Texas Rangers, Minnesota Twins, Atlanta Braves, Chicago White Sox, Miami Marlins
+Tampa Bay Rays, Texas Rangers, Minnesota Twins, Atlanta Braves, Miami Marlins, New York Yankees, Milwaukee Brewers, Boston Red Sox
 _Lean late-inning OVER on these games; fade their save situations._
 
 ## NRFI/YRFI strong leans
-- **YRFI** (1st-inning OVER): LAD @ SDP, BOS @ KCR, OAK @ LAA, SFG @ ARI, HOU @ MIN
-- **NRFI** (1st-inning UNDER): MIL @ CHC
+- **YRFI** (1st-inning OVER): OAK @ LAA, MIL @ CHC
+- **NRFI** (1st-inning UNDER): LAD @ SDP
 
 ## Golf -- THE CJ CUP Byron Nelson
 - **Leader:** S.Y. Noh (E) at #1
@@ -67,18 +56,18 @@ _Lean late-inning OVER on these games; fade their save situations._
    - P(top 10) 13.0% -- safest position-bet for #29.
 
 ## NBA -- PLAYOFFS
-- San Antonio Spurs @ Oklahoma City Thunder (62-20 vs 64-18)  | P(home) 61.6% fair -161 | Scheduled
+- San Antonio Spurs @ Oklahoma City Thunder (62-20 vs 64-18) 113-122 | P(home) 100.0% fair +0 | Final
 
 ## NHL -- PLAYOFFS
-- Vegas Golden Knights @ Colorado Avalanche (39-26-17 vs 55-16-11)  | P(home) 62.6% fair -168 | Scheduled
+- Vegas Golden Knights @ Colorado Avalanche (39-26-17 vs 55-16-11) 4-2 | P(home) 0.0% fair +0 | Final
 
-## LoL Esports -- 0 live, 17 upcoming
+## LoL Esports -- 2 live, 23 upcoming
+- [LCK] BNK FEARX vs Hanwha Life Esports BO3 | P(A) 53.5% fair -115/+115
+- [LJL] UWinks vs FENNEL BO3 | P(A) 50.0% fair -100/-100
 - [VCS] Saigon Zen Esport vs Saigon MVKE Academy BO3 | P(A) 46.3% fair +116/-116
 - [VCS] Saigon Warrior vs Saigon 9Gaming BO3 | P(A) 53.7% fair -116/+116
-- [NACL] CCG Esports vs Winthrop University BO3 | P(A) 49.8% fair +101/-101
-- [NACL] Maryville University vs Conviction BO3 | P(A) 43.0% fair +133/-133
-- [LCK Challengers] KRX Challengers vs DK Challengers BO3 | P(A) 60.5% fair -153/+153
-- **LoL POT:** HANJIN BRION ML vs Dplus KIA (LCK, BO3) (HIGH)
+- [LCK Challengers] DK Challengers vs KRX Challengers BO3 | P(A) 39.5% fair +153/-153
+- **LoL POT:** Suzhou LNG Esports ML vs Xi'an Team WE (LPL, BO5) (HIGH)
 
 ## Player Play of the Day -- across all sports (3521 candidates scanned)
 - **[LOL]** Inspired UNDER 3.5 Kills | model 61.7% fair -161 (ELITE)
