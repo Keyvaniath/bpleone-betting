@@ -62,16 +62,26 @@ async function poll(env) {
   const results = { ts: now, ok: [], fail: [] };
 
   // 1. MLB live games -- schedule -> per-game gumbo for in-progress games
+  //
+  // 2026-05-21 perf: parallelized the gumbo fetch loop. Previously 15
+  // sequential fetches at 6s timeout each = up to 90s CPU on the worker
+  // (worker hard-limit on Pro is 30s/req). Sequential also slowed the
+  // whole tick — the rest of the work waited for the slowest gumbo.
+  // Promise.all-ing them cuts wall-clock to the slowest single call
+  // (~1-2s typical, max 6s) and frees CPU budget for the ESPN + Bovada
+  // sections to run before timeout.
   const sched = await fetchJSON(MLB_SCHEDULE_TODAY(todayDate()));
   if (sched && sched.dates && sched.dates[0]) {
     const games = sched.dates[0].games || [];
     const liveGames = games.filter(g => {
       const state = (g.status && g.status.abstractGameState) || "";
       return state === "Live" || state === "In Progress";
-    });
+    }).slice(0, 15);  // cap at 15 to stay under CPU + KV value size
+    const gumbos = await Promise.all(liveGames.map(g => fetchJSON(MLB_GUMBO(g.gamePk))));
     const out = [];
-    for (const g of liveGames.slice(0, 15)) {  // cap at 15 to stay under CPU
-      const gumbo = await fetchJSON(MLB_GUMBO(g.gamePk));
+    for (let i = 0; i < liveGames.length; i++) {
+      const g = liveGames[i];
+      const gumbo = gumbos[i];
       if (!gumbo) continue;
       const ls = gumbo.liveData && gumbo.liveData.linescore;
       if (!ls) continue;
@@ -152,20 +162,31 @@ async function poll(env) {
 
     // PRO PLAN: also append to rolling 24h history per game (key per matchup).
     // This was throttled on free tier (1k KV writes/day). On Pro (1M/day) we
-    // can afford a write per game per cron tick = ~30 games * 1440 ticks/day = 43k/day.
-    for (const snap of snaps) {
-      const key = `history_${snap.matchup.replace(/\s+/g, '_')}`;
-      const existing = await env.EDGESTAT_KV.get(key);
-      const buf = existing ? JSON.parse(existing) : { matchup: snap.matchup, snaps: [] };
+    // can afford a write per game per cron tick = ~30 games * 216 ticks/day = 6.5k/day.
+    //
+    // 2026-05-21 perf: parallelized the read+write pair for each matchup.
+    // Was 30 sequential KV reads followed by 30 sequential KV writes —
+    // ~3-5ms each = up to 300ms CPU just for the per-game history loop.
+    // Promise.all-ing reads, then Promise.all-ing writes, cuts that to
+    // ~50ms total (limited by the slowest single KV op).
+    const histKeys = snaps.map(s => ({
+      snap: s,
+      key: `history_${s.matchup.replace(/\s+/g, '_')}`
+    }));
+    const existings = await Promise.all(histKeys.map(h => env.EDGESTAT_KV.get(h.key)));
+    const writes = histKeys.map((h, i) => {
+      const existing = existings[i];
+      const buf = existing ? JSON.parse(existing) : { matchup: h.snap.matchup, snaps: [] };
       buf.snaps.push({
         t: now,
-        home_ml: snap.home_ml, away_ml: snap.away_ml, total: snap.total,
+        home_ml: h.snap.home_ml, away_ml: h.snap.away_ml, total: h.snap.total,
       });
-      // Cap at 1440 snaps (24h at 1/min)
+      // Cap at 1440 snaps (24h at 1/min). Even at the new */5 cadence we
+      // never approach this — leaving the cap for safety.
       if (buf.snaps.length > 1440) buf.snaps = buf.snaps.slice(-1440);
-      // 24h TTL
-      await env.EDGESTAT_KV.put(key, JSON.stringify(buf), { expirationTtl: 86400 });
-    }
+      return env.EDGESTAT_KV.put(h.key, JSON.stringify(buf), { expirationTtl: 86400 });
+    });
+    await Promise.all(writes);
     results.ok.push(`history (${snaps.length} game buffers updated)`);
   }
 
