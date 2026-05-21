@@ -890,6 +890,22 @@ def _collect_picks_from_sources() -> List[Dict[str, Any]]:
                 "matchup": r.get("matchup"),
             })
 
+    # NHL goalie wins strong edges
+    nhl_gw = _load(os.path.join(DATA_DIR, "nhl_goalie_win_props.json"))
+    for r in (nhl_gw.get("strong_edges") or []):
+        bm = r.get("best_market") or {}
+        if bm.get("p"):
+            out.append({
+                "source": f"nhl_gwin_{bm.get('market', '').lower()}",
+                "sport": "NHL",
+                "player_or_matchup": r.get("goalie"),
+                "market": bm.get("market"),
+                "prob": bm.get("p"),
+                "fair_american": bm.get("fair_odds"),
+                "p_predicted": bm.get("p"),
+                "matchup": r.get("matchup"),
+            })
+
     # NHL period totals strong edges
     nhl_pt = _load(os.path.join(DATA_DIR, "nhl_period_totals_props.json"))
     for r in (nhl_pt.get("strong_edges") or []):
