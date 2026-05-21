@@ -131,6 +131,8 @@ DEFAULT_MODULES = [
     "bet_slate",
     # markdown export consumes bet_slate.json
     "slate_markdown_export",
+    # sport coverage runs last after all other outputs are written
+    "sport_coverage",
     # Data-integrity audit (runs LAST so it scans the freshly-written outputs)
     "data_integrity_audit",
 ]
