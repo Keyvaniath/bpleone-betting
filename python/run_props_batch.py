@@ -65,6 +65,8 @@ DEFAULT_MODULES = [
     "mlb_pitcher_1st_inning_er",
     "mlb_run_line_props",
     "mlb_hbp_props",
+    # MLB context features (run BEFORE other props so they can consume)
+    "mlb_lineup_quality_index",
     # MLB game props
     "mlb_first5_market",
     "mlb_steal_props",
@@ -101,6 +103,7 @@ DEFAULT_MODULES = [
     "nhl_anytime_goal_props",
     "nhl_skater_sog_props",
     "nhl_skater_points_props",
+    "nhl_skater_2plus_points",
     "nhl_goalie_shutout_props",
     "nhl_first_goalscorer_props",
     "nhl_goalie_win_props",
