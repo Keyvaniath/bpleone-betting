@@ -50,6 +50,7 @@ DEFAULT_MODULES = [
     "mlb_to_hit_hr_yn",
     "mlb_first_batter_retired_props",
     "mlb_batter_walks_props",
+    "mlb_batter_rbi_props",
     "mlb_batter_strikeout_props",
     # MLB pitcher props
     "mlb_pitcher_walks_props",
