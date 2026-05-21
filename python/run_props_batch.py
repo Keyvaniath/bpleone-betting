@@ -129,6 +129,8 @@ DEFAULT_MODULES = [
     "top_calibrated_edges",
     # bet_slate consolidates POD + ALPHA + BOOK + PARLAY into single JSON
     "bet_slate",
+    # markdown export consumes bet_slate.json
+    "slate_markdown_export",
     # Data-integrity audit (runs LAST so it scans the freshly-written outputs)
     "data_integrity_audit",
 ]
