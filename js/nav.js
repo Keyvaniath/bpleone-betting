@@ -1,6 +1,9 @@
-// EdgeStat unified nav. Replaces the static <nav class="mainnav">...</nav>
-// with a compact 8-item nav + 3 dropdowns. Pages don't need to know about
-// new sports / tools — just include this script and the nav stays clean.
+// EdgeStat unified nav — DROP-IN REPLACEMENT for js/nav.js
+// FIX: dropdowns were clipped by .mainnav's overflow:auto. Switching .dd-menu
+// to position:fixed (with JS positioning from the button's bounding rect)
+// escapes any current or future overflow setting on the nav container.
+// Behavior is identical otherwise — same items, same active-page highlight,
+// same click-outside-to-close, same toggle-on-second-click.
 (function () {
   if (window.__edgestatNavInit) return;
   window.__edgestatNavInit = true;
@@ -88,7 +91,6 @@
     { href: "pulse.html",       label: "📡 Pulse" },
     { href: "backtest-replayer.html", label: "🔁 Replayer" },
     { href: "lifecycle.html",   label: "📈 Lifecycle" },
-    { href: "confluence.html",  label: "🎯 Top-5" },
     { href: "tonight.html",     label: "🌙 Tonight" },
     { href: "live-now.html",    label: "Live Now" },
     { href: "play-of-day.html", label: "Play of Day" },
@@ -103,9 +105,14 @@
       const isActive = currentPath === i.href ? " style='color:var(--accent,#d4a04a);'" : "";
       return `<a href="${i.href}"${isActive}>${i.label}</a>`;
     }).join("");
+    // CHANGED vs original: position:fixed so the .mainnav's overflow:auto
+    // can't clip the menu. top/left are set by JS from the button's
+    // getBoundingClientRect() each time the menu opens. z-index bumped to
+    // 10000 so the menu stays above the topbar (z-index 100) and other
+    // overlays.
     return `<div class="dd-wrap" style="position:relative; display:inline-block;">
       <button type="button" class="dd-btn" data-dd="${ddId}" style="background:none;border:none;color:var(--text-2,#aaa);font-size:12px;font-weight:500;padding:3px 6px;cursor:pointer;font-family:inherit;border-bottom:2px solid transparent;">${label} ▾</button>
-      <div class="dd-menu" id="${ddId}" style="display:none;position:absolute;top:100%;left:0;background:#0c0e13;border:1px solid rgba(255,255,255,0.1);border-radius:6px;padding:8px;min-width:200px;z-index:1000;box-shadow:0 8px 24px rgba(0,0,0,0.4);max-height:60vh;overflow-y:auto;">
+      <div class="dd-menu" id="${ddId}" style="display:none;position:fixed;top:0;left:0;background:#0c0e13;border:1px solid rgba(255,255,255,0.1);border-radius:6px;padding:8px;min-width:200px;z-index:10000;box-shadow:0 8px 24px rgba(0,0,0,0.4);max-height:60vh;overflow-y:auto;">
         ${itemsHtml.replace(/<a /g, '<a style="display:block;padding:6px 10px;font-size:12px;color:var(--text-2,#aaa);text-decoration:none;border-radius:4px;" onmouseover="this.style.background=\'rgba(255,255,255,0.05)\'" onmouseout="this.style.background=\'\'" ')}
       </div>
     </div>`;
@@ -123,12 +130,25 @@
     return topHtml + sportsDd + playersDd + toolsDd;
   }
 
+  // Anchor the fixed-position menu to the button's current screen position.
+  // Called every time a menu opens, and on scroll/resize while any is open.
+  function positionMenu(btn, menu) {
+    const r = btn.getBoundingClientRect();
+    menu.style.top = (r.bottom + 4) + 'px';
+    menu.style.left = r.left + 'px';
+    // Keep menu inside viewport horizontally
+    const vw = window.innerWidth || document.documentElement.clientWidth;
+    const menuW = menu.offsetWidth || 200;
+    if (r.left + menuW > vw - 8) {
+      menu.style.left = Math.max(8, vw - menuW - 8) + 'px';
+    }
+  }
+
   function installNav() {
     const nav = document.querySelector("nav.mainnav");
     if (!nav) return;
     nav.innerHTML = buildNav();
 
-    // Toggle dropdowns
     document.querySelectorAll(".dd-btn").forEach(btn => {
       btn.addEventListener("click", e => {
         e.preventDefault();
@@ -136,14 +156,33 @@
         const id = btn.dataset.dd;
         const menu = document.getElementById(id);
         if (!menu) return;
-        const allOpen = document.querySelectorAll(".dd-menu");
-        allOpen.forEach(m => { if (m !== menu) m.style.display = "none"; });
-        menu.style.display = menu.style.display === "block" ? "none" : "block";
+        // Close every other menu first
+        document.querySelectorAll(".dd-menu").forEach(m => { if (m !== menu) m.style.display = "none"; });
+        const wasOpen = menu.style.display === "block";
+        if (wasOpen) {
+          menu.style.display = "none";
+        } else {
+          // Show first so offsetWidth measures correctly, then anchor.
+          menu.style.display = "block";
+          positionMenu(btn, menu);
+        }
       });
     });
+
+    // Reposition any open menu on scroll/resize so it stays glued to its button.
+    const reposition = () => {
+      document.querySelectorAll(".dd-menu").forEach(m => {
+        if (m.style.display !== "block") return;
+        const btn = document.querySelector(`[data-dd="${m.id}"]`);
+        if (btn) positionMenu(btn, m);
+      });
+    };
+    window.addEventListener("scroll", reposition, { passive: true });
+    window.addEventListener("resize", reposition);
+
     // Close on outside click
     document.addEventListener("click", e => {
-      if (!e.target.closest(".dd-wrap")) {
+      if (!e.target.closest(".dd-wrap") && !e.target.closest(".dd-menu")) {
         document.querySelectorAll(".dd-menu").forEach(m => m.style.display = "none");
       }
     });

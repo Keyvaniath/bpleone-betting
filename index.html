@@ -733,12 +733,15 @@ fetch("data/clv_log.json", { cache: "no-cache" })
   })
   .catch(() => { const el = document.getElementById("mSharp"); if (el) el.textContent = "--"; });
 
-// Hero stats: PLAY OF THE DAY P&L ONLY (Brandon's primary accuracy metric).
-// 1 pick per day, flat 1u stake, game-level markets only. No 5-lock aggregation,
-// no PrizePicks variance, no synthetic backfill -- the single benchmark.
+// Hero stats: ALL settled picks (lock_of_day + pod + top_25_board + ...).
+// 2026-05-21: switched from pod_pl.json (POD-only, 1 record showing 0-1) to
+// all_picks_ledger.json (every settled pick across every source — currently
+// 4-2 +0.18u). Brandon was confused why dashboard showed 0-1 when his actual
+// record was 4-2 — that gap was because the hero card scoped to POD-only.
+// POD-specific record still lives on pod-history.html.
 (function loadHeroStats() {
   const setText = (id, v) => { const el = document.getElementById(id); if (el) el.firstChild.textContent = v; };
-  fetch("data/pod_pl.json", { cache: "no-cache" })
+  fetch("data/all_picks_ledger.json", { cache: "no-cache" })
     .then(r => r.json())
     .then(d => {
       const wins = d.wins || 0;
@@ -747,31 +750,34 @@ fetch("data/clv_log.json", { cache: "no-cache" })
       const net = d.net_units;
       const roi = d.roi_pct;
       const hr = d.hit_rate;
-      const total = d.total_pods || 0;
+      const total = d.total_picks || 0;
 
       setText("hsNetUnits", net == null || settled === 0 ? "--" : (net >= 0 ? "+" : "") + net.toFixed(2));
       setText("hsHitRate", hr == null ? "--" : (hr * 100).toFixed(1));
       setText("hsROI", roi == null ? "--" : (roi >= 0 ? "+" : "") + roi.toFixed(1));
       setText("hsClosed", String(settled));
 
-      // Update the YTD Net Units label to be Play of the Day specific
       const labels = document.querySelectorAll(".hero-stats .stat-label");
-      if (labels[0]) labels[0].textContent = "POD Net Units (1u flat)";
-      if (labels[1]) labels[1].textContent = "POD Hit Rate";
-      if (labels[2]) labels[2].textContent = "POD ROI %";
-      if (labels[3]) labels[3].textContent = "PODs Settled";
+      if (labels[0]) labels[0].textContent = "Net Units (1u flat, all picks)";
+      if (labels[1]) labels[1].textContent = "Hit Rate";
+      if (labels[2]) labels[2].textContent = "ROI %";
+      if (labels[3]) labels[3].textContent = "Picks Settled";
 
       const stats = document.querySelector(".hero-stats");
       if (stats && !document.getElementById("podProgress")) {
         const note = document.createElement("div");
         note.id = "podProgress";
         note.style.cssText = "grid-column: 1 / -1; font-family:'JetBrains Mono',monospace; font-size:11px; color:#d4a04a; padding:8px 0 0; opacity:0.9;";
+        const bySrc = d.by_source || {};
+        const srcSummary = Object.entries(bySrc)
+          .map(([k, v]) => `${k}: ${v.wins}-${v.losses}`)
+          .join(' · ');
         if (settled === 0 && total > 0) {
-          note.innerHTML = `* <strong>Play of the Day track record:</strong> ${total} PODs recorded, ${d.n_pending || 0} pending settlement. 1u flat stake assumed. Real games only (ML / totals) -- no PrizePicks variance, no 5-lock aggregation, no synthetic backfill. <a href="pod-history.html" style="color:#d4a04a; text-decoration: underline;">full POD history &rarr;</a>`;
+          note.innerHTML = `* <strong>All-picks track record:</strong> ${total} picks recorded, ${d.n_pending || 0} pending settlement. 1u flat stake.`;
         } else if (settled > 0 && settled < 30) {
-          note.innerHTML = `* POD track record: <strong>${wins}-${losses}</strong> in ${settled} settled (last 30d: ${(d.last_30_days||{}).wins||0}-${(d.last_30_days||{}).losses||0}). Small sample -- variance is high until n>=30. <a href="pod-history.html" style="color:#d4a04a; text-decoration: underline;">see all PODs &rarr;</a>`;
+          note.innerHTML = `* All-picks track record: <strong>${wins}-${losses}</strong> in ${settled} settled · ${srcSummary} · ${d.n_pending || 0} pending. Per-source breakdown on <a href="accuracy.html" style="color:#d4a04a; text-decoration: underline;">Accuracy &rarr;</a> · POD-only on <a href="pod-history.html" style="color:#d4a04a; text-decoration: underline;">POD History &rarr;</a>.`;
         } else if (settled === 0) {
-          note.innerHTML = `* No POD settled yet -- first record lands tomorrow.`;
+          note.innerHTML = `* No picks settled yet -- first records land tomorrow.`;
         }
         if (note.innerHTML) stats.appendChild(note);
       }
