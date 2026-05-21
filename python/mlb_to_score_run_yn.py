@@ -80,6 +80,12 @@ def run() -> Dict[str, Any]:
     matchups = _load(os.path.join(DATA_DIR, "matchups.json"))
     today = _load(os.path.join(DATA_DIR, "today.json"))
     lvr = _load(os.path.join(DATA_DIR, "mlb_batter_lvr_splits.json"))
+    # 2026-05-21: real recent-form 1+ run probs from MLB Stats API
+    batter_logs = _load(os.path.join(DATA_DIR, "mlb_batter_logs.json"))
+    batter_log_idx = {}
+    for b in (batter_logs.get("batters") or []):
+        nm = (b.get("name") or "").lower()
+        if nm: batter_log_idx[nm] = b
 
     parks = today.get("parks") or {}
     lvr_idx = {}
@@ -108,18 +114,38 @@ def run() -> Dict[str, Any]:
                 order = batter.get("order") or 9
                 lvr_row = lvr_idx.get((name or "").lower(), {})
 
-                # Batter on-base rate (proxy for ability to score)
-                season_ops = _safe(lvr_row.get("season_ops_estimate"), 0.72)
-                obp_proxy = max(0.27, min(0.42, season_ops - 0.40))
-                obp_mult = obp_proxy / 0.317
+                # 2026-05-21: prefer REAL recent 1+ run probability from batter logs.
+                # Falls back to OPS-derived OBP proxy when batter not in logs.
+                run_source = "ops_proxy"
+                blog = batter_log_idx.get((name or "").lower())
+                if blog:
+                    props = blog.get("props") or {}
+                    real_p_run = (props.get("1_plus_run") or {}).get("p")
+                    n_games = blog.get("n_games_logged") or 0
+                    if real_p_run is not None and n_games >= 8:
+                        p_scores = float(real_p_run)
+                        # Apply park run factor lightly (real data already includes home/away mix)
+                        p_scores *= park_run_factor ** 0.20
+                        p_scores = max(0.05, min(0.95, p_scores))
+                        p_no_run = 1 - p_scores
+                        run_source = "real_last_14"
+                        expected_runs = -math.log(max(1 - p_scores, 1e-6))
+                        obp_proxy = None
+                        runs_per_pa = expected_runs / _expected_pa(order)
 
-                runs_per_pa = _runs_per_pa_by_order(order)
-                runs_per_pa *= obp_mult * team_run_mult * (park_run_factor ** 0.5)
+                if run_source == "ops_proxy":
+                    # FALLBACK: OPS-derived OBP estimate
+                    season_ops = _safe(lvr_row.get("season_ops_estimate"), 0.72)
+                    obp_proxy = max(0.27, min(0.42, season_ops - 0.40))
+                    obp_mult = obp_proxy / 0.317
 
-                pa = _expected_pa(order)
-                expected_runs = runs_per_pa * pa
-                p_scores = 1 - math.exp(-expected_runs)
-                p_no_run = 1 - p_scores
+                    runs_per_pa = _runs_per_pa_by_order(order)
+                    runs_per_pa *= obp_mult * team_run_mult * (park_run_factor ** 0.5)
+
+                    pa = _expected_pa(order)
+                    expected_runs = runs_per_pa * pa
+                    p_scores = 1 - math.exp(-expected_runs)
+                    p_no_run = 1 - p_scores
 
                 edge_class = "NONE"
                 best_market = None
@@ -139,7 +165,8 @@ def run() -> Dict[str, Any]:
                     "batter": name,
                     "team": (lvr_row.get("team_abbr") or batter.get("team") or "").upper(),
                     "order": order,
-                    "obp_proxy": round(obp_proxy, 3),
+                    "run_source": run_source,
+                    "obp_proxy": round(obp_proxy, 3) if obp_proxy is not None else None,
                     "team_runs_per_game": team_runs,
                     "park_run_factor": park_run_factor,
                     "expected_runs": round(expected_runs, 3),
