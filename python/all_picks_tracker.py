@@ -202,6 +202,22 @@ def _collect_picks_from_sources() -> List[Dict[str, Any]]:
                 "p_predicted": be.get("model_p"),  # for Brier
             })
 
+    # UFC strikes/TDs strong edges
+    ufc_st = _load(os.path.join(DATA_DIR, "ufc_strikes_takedowns_props.json"))
+    for r in (ufc_st.get("strong_edges") or []):
+        bm = r.get("best_market") or {}
+        if bm.get("p"):
+            out.append({
+                "source": f"ufc_{bm.get('market', '').lower()}",
+                "sport": "UFC",
+                "player_or_matchup": r.get("fighter"),
+                "market": bm.get("market"),
+                "prob": bm.get("p"),
+                "fair_american": bm.get("fair_odds"),
+                "p_predicted": bm.get("p"),
+                "matchup": r.get("matchup"),
+            })
+
     # F1 qualifying strong edges
     fq = _load(os.path.join(DATA_DIR, "f1_qualifying_predictor.json"))
     for r in (fq.get("strong_edges") or []):
