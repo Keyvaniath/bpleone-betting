@@ -162,7 +162,15 @@ def run() -> Dict[str, Any]:
             # Higher opp_ga -> opponent allows more goals -> more points opportunity
             opp_factor = opp_ga / 3.1
 
-            base_ppg = info["ppg"]
+            # Real ESPN points/game with hardcoded fallback (2026-05-21)
+            try:
+                from real_stats_lookup import get_player_stat
+                stat = get_player_stat("nhl", player_name, "points_per_game", fallback=info["ppg"], min_games=5)
+                base_ppg = stat["value"]
+                ppg_source = stat["source"]
+            except Exception:
+                base_ppg = info["ppg"]
+                ppg_source = "fallback"
             projected_pts = base_ppg * pace_factor * opp_factor
 
             # Only evaluate nearest 0.5 line within 0.75 of projection
@@ -190,7 +198,8 @@ def run() -> Dict[str, Any]:
                 "player": player_name,
                 "team": info["team"],
                 "opp_team": away if is_home else home,
-                "season_ppg": base_ppg,
+                "season_ppg": round(base_ppg, 3),
+                "ppg_source": ppg_source,
                 "game_pace": round(game_pace, 2),
                 "pace_factor": round(pace_factor, 3),
                 "opp_ga_per_game": opp_ga,

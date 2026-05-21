@@ -113,7 +113,22 @@ def run() -> Dict[str, Any]:
                         if info["team"] in (home, away)]
         if not game_players: continue
 
-        total_player_gpg = sum(info["gpg"] for _, info in game_players)
+        # Resolve each player's GPG via real ESPN stats with hardcoded fallback
+        try:
+            from real_stats_lookup import get_player_stat
+            _have_real = True
+        except Exception:
+            _have_real = False
+
+        per_player_gpg = {}
+        for name, info in game_players:
+            if _have_real:
+                s = get_player_stat("nhl", name, "goals_per_game", fallback=info["gpg"], min_games=5)
+                per_player_gpg[name] = (s["value"], s["source"])
+            else:
+                per_player_gpg[name] = (info["gpg"], "fallback")
+
+        total_player_gpg = sum(v[0] for v in per_player_gpg.values())
         # Add bench/depth contribution ~ 0.5 GPG per team (4 depth lines combined)
         depth_gpg = 1.0
         total_gpg_match = total_player_gpg + depth_gpg
@@ -125,8 +140,9 @@ def run() -> Dict[str, Any]:
         for player_name, info in game_players:
             is_home = info["team"] == home
             opp = away if is_home else home
+            real_gpg, gpg_source = per_player_gpg[player_name]
             # P(player is first to score) = (player_gpg / total_match_gpg) * P(any goal)
-            p_fgs = (info["gpg"] / total_gpg_match) * p_any_goal
+            p_fgs = (real_gpg / total_gpg_match) * p_any_goal
 
             edge_class = "NONE"
             best_market = None
@@ -141,7 +157,8 @@ def run() -> Dict[str, Any]:
                 "player": player_name,
                 "team": info["team"],
                 "opp": opp,
-                "season_gpg": info["gpg"],
+                "season_gpg": round(real_gpg, 3),
+                "gpg_source": gpg_source,
                 "total_match_gpg": round(total_gpg_match, 2),
                 "p_fgs": round(p_fgs, 3),
                 "fair_yes_odds": _american(p_fgs),

@@ -140,9 +140,21 @@ def run() -> Dict[str, Any]:
             is_home = info["team"] == home
 
             # Project each stat with pace adjustment
-            proj_pts = info["ppg"] * pace_factor
-            proj_reb = info["rpg"] * pace_factor
-            proj_ast = info["apg"] * pace_factor
+            # Real ESPN stats with hardcoded fallback (2026-05-21)
+            try:
+                from real_stats_lookup import get_player_stat
+                _p = get_player_stat("nba", player_name, "pts_per_game", fallback=info["ppg"], min_games=5)
+                _r = get_player_stat("nba", player_name, "reb_per_game", fallback=info["rpg"], min_games=5)
+                _a = get_player_stat("nba", player_name, "ast_per_game", fallback=info["apg"], min_games=5)
+                td_source = _p["source"]
+                proj_pts = _p["value"] * pace_factor
+                proj_reb = _r["value"] * pace_factor
+                proj_ast = _a["value"] * pace_factor
+            except Exception:
+                td_source = "fallback"
+                proj_pts = info["ppg"] * pace_factor
+                proj_reb = info["rpg"] * pace_factor
+                proj_ast = info["apg"] * pace_factor
 
             # Sigma per stat (heuristic)
             sigma_pts = max(5.0, 0.22 * proj_pts)

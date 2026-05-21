@@ -148,7 +148,15 @@ def run() -> Dict[str, Any]:
             opp_allowed = away_allowed if is_home else home_allowed
             opp_factor = opp_allowed / LEAGUE_SHOTS_PER_GAME
 
-            base_sogg = info["sogg"]
+            # Real ESPN shots/game with hardcoded fallback (2026-05-21)
+            try:
+                from real_stats_lookup import get_player_stat
+                stat = get_player_stat("nhl", player_name, "shots_per_game", fallback=info["sogg"], min_games=5)
+                base_sogg = stat["value"]
+                sogg_source = stat["source"]
+            except Exception:
+                base_sogg = info["sogg"]
+                sogg_source = "fallback"
             projected_sogg = base_sogg * pace_factor * opp_factor
 
             # Only evaluate nearest 0.5 line within 0.75 of projection
@@ -177,7 +185,8 @@ def run() -> Dict[str, Any]:
                 "player": player_name,
                 "team": info["team"],
                 "opp_team": away if is_home else home,
-                "season_sogg": base_sogg,
+                "season_sogg": round(base_sogg, 2),
+                "sogg_source": sogg_source,
                 "game_pace": round(game_pace, 1),
                 "pace_factor": round(pace_factor, 3),
                 "opp_shots_allowed": opp_allowed,

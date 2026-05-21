@@ -144,7 +144,15 @@ def run() -> Dict[str, Any]:
             opp_def = away_def if is_home else home_def
             opp_def_factor = opp_def / 10.5
 
-            base_tpm = info["tpm"]
+            # Real ESPN 3PM with hardcoded fallback (2026-05-21)
+            try:
+                from real_stats_lookup import get_player_stat
+                stat = get_player_stat("wnba", player_name, "threes_per_game", fallback=info["tpm"], min_games=5)
+                base_tpm = stat["value"]
+                tpm_source = stat["source"]
+            except Exception:
+                base_tpm = info["tpm"]
+                tpm_source = "fallback"
             projected_tpm = base_tpm * pace_factor * opp_def_factor
 
             # Only evaluate nearest 0.5 line within 0.75 of projection

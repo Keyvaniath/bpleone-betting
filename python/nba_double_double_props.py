@@ -137,9 +137,21 @@ def run() -> Dict[str, Any]:
 
         for player_name, info in PLAYER_DB.items():
             if info["team"] not in (home, away): continue
-            ppg = info["ppg"] * pace_factor
-            rpg = info["rpg"] * pace_factor
-            apg = info["apg"] * pace_factor
+            # Real ESPN stats with hardcoded fallback (2026-05-21)
+            try:
+                from real_stats_lookup import get_player_stat
+                _p = get_player_stat("nba", player_name, "pts_per_game", fallback=info["ppg"], min_games=5)
+                _r = get_player_stat("nba", player_name, "reb_per_game", fallback=info["rpg"], min_games=5)
+                _a = get_player_stat("nba", player_name, "ast_per_game", fallback=info["apg"], min_games=5)
+                dd_source = _p["source"]
+                ppg = _p["value"] * pace_factor
+                rpg = _r["value"] * pace_factor
+                apg = _a["value"] * pace_factor
+            except Exception:
+                dd_source = "fallback"
+                ppg = info["ppg"] * pace_factor
+                rpg = info["rpg"] * pace_factor
+                apg = info["apg"] * pace_factor
             # Sigmas
             sig_p = max(4.0, 0.25 * ppg)
             sig_r = max(1.8, 0.22 * rpg)

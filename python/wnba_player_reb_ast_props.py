@@ -153,8 +153,19 @@ def run() -> Dict[str, Any]:
             if info["team"] not in (home, away): continue
             is_home = info["team"] == home
 
-            proj_reb = info["rpg"] * pace_factor
-            proj_ast = info["apg"] * pace_factor
+            # Real ESPN stats with hardcoded fallback (2026-05-21)
+            try:
+                from real_stats_lookup import get_player_stat
+                _r = get_player_stat("wnba", player_name, "reb_per_game", fallback=info["rpg"], min_games=5)
+                _a = get_player_stat("wnba", player_name, "ast_per_game", fallback=info["apg"], min_games=5)
+                base_rpg = _r["value"]; rpg_source = _r["source"]
+                base_apg = _a["value"]; apg_source = _a["source"]
+            except Exception:
+                base_rpg = info["rpg"]; rpg_source = "fallback"
+                base_apg = info["apg"]; apg_source = "fallback"
+
+            proj_reb = base_rpg * pace_factor
+            proj_ast = base_apg * pace_factor
             sigma_reb = max(1.8, 0.22 * proj_reb)
             sigma_ast = max(1.5, 0.30 * proj_ast)
 
@@ -162,7 +173,8 @@ def run() -> Dict[str, Any]:
             reb_rows.append({
                 "matchup": f"{away} @ {home}",
                 "player": player_name, "team": info["team"],
-                "position": info["pos"], "season_rpg": info["rpg"],
+                "position": info["pos"], "season_rpg": round(base_rpg, 2),
+                "rpg_source": rpg_source,
                 "projected_reb": round(proj_reb, 1), "sigma": round(sigma_reb, 2),
                 **reb_eval,
             })
@@ -171,7 +183,8 @@ def run() -> Dict[str, Any]:
             ast_rows.append({
                 "matchup": f"{away} @ {home}",
                 "player": player_name, "team": info["team"],
-                "position": info["pos"], "season_apg": info["apg"],
+                "position": info["pos"], "season_apg": round(base_apg, 2),
+                "apg_source": apg_source,
                 "projected_ast": round(proj_ast, 1), "sigma": round(sigma_ast, 2),
                 **ast_eval,
             })

@@ -112,7 +112,15 @@ def run() -> Dict[str, Any]:
             if info["team"] not in teams_in_game: continue
             is_home = info["team"] == home or info["team"] == home[:3]
 
-            base_gpg = info["gpg"]
+            # Real ESPN goals/game with hardcoded fallback (2026-05-21)
+            try:
+                from real_stats_lookup import get_player_stat
+                stat = get_player_stat("nhl", player_name, "goals_per_game", fallback=info["gpg"], min_games=5)
+                base_gpg = stat["value"]
+                gpg_source = stat["source"]
+            except Exception:
+                base_gpg = info["gpg"]
+                gpg_source = "fallback"
             # Opp goalie factor: 0.910 SV% baseline; higher SV% reduces expected goals
             # Simplification: scale by 1 - opp_sv_pct / 1 - 0.910 = goals_above_average
             opp_sv = 0.910  # default
@@ -137,7 +145,8 @@ def run() -> Dict[str, Any]:
                 "matchup": f"{away} @ {home}",
                 "player": player_name,
                 "team": info["team"],
-                "season_gpg": base_gpg,
+                "season_gpg": round(base_gpg, 3),
+                "gpg_source": gpg_source,
                 "expected_goals": round(expected_goals, 3),
                 "p_scores": round(p_scores, 3),
                 "p_no_goal": round(p_no_goal, 3),

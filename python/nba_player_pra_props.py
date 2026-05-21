@@ -158,7 +158,17 @@ def run() -> Dict[str, Any]:
             opp_drtg = away_drtg if is_home else home_drtg
             opp_def_factor = opp_drtg / LEAGUE_DRTG
 
-            base_pra = info["ppg"] + info["rpg"] + info["apg"]
+            # Real ESPN per-game stats with hardcoded fallback (2026-05-21)
+            try:
+                from real_stats_lookup import get_player_stat
+                ppg = get_player_stat("nba", player_name, "pts_per_game", fallback=info["ppg"], min_games=5)
+                rpg = get_player_stat("nba", player_name, "reb_per_game", fallback=info["rpg"], min_games=5)
+                apg = get_player_stat("nba", player_name, "ast_per_game", fallback=info["apg"], min_games=5)
+                pra_source = "real" if ppg["source"] == "real" else "fallback"
+                base_pra = ppg["value"] + rpg["value"] + apg["value"]
+            except Exception:
+                base_pra = info["ppg"] + info["rpg"] + info["apg"]
+                pra_source = "fallback"
             projected_pra = base_pra * pace_factor * opp_def_factor
             sigma = max(7.0, 0.20 * projected_pra)
 
@@ -189,6 +199,7 @@ def run() -> Dict[str, Any]:
                 "team": info["team"],
                 "opp_team": away if is_home else home,
                 "season_pra": round(base_pra, 1),
+                "pra_source": pra_source,
                 "game_pace": round(game_pace, 1),
                 "pace_factor": round(pace_factor, 3),
                 "opp_drtg": opp_drtg,

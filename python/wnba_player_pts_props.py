@@ -136,7 +136,15 @@ def run() -> Dict[str, Any]:
             opp_drtg = away_drtg if is_home else home_drtg
             matchup_factor = opp_drtg / LEAGUE_DRTG_WNBA
 
-            base_ppg = info["ppg"]
+            # Real ESPN PPG with hardcoded fallback (2026-05-21)
+            try:
+                from real_stats_lookup import get_player_stat
+                stat = get_player_stat("wnba", player_name, "pts_per_game", fallback=info["ppg"], min_games=5)
+                base_ppg = stat["value"]
+                ppg_source = stat["source"]
+            except Exception:
+                base_ppg = info["ppg"]
+                ppg_source = "fallback"
             projected_pts = base_ppg * pace_factor * matchup_factor
             sigma = max(3.5, 0.25 * projected_pts)
 
