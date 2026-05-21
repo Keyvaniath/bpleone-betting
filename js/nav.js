@@ -91,6 +91,7 @@
     { href: "pulse.html",       label: "📡 Pulse" },
     { href: "backtest-replayer.html", label: "🔁 Replayer" },
     { href: "lifecycle.html",   label: "📈 Lifecycle" },
+    { href: "data-integrity.html", label: "🔍 Data Integrity" },
     { href: "tonight.html",     label: "🌙 Tonight" },
     { href: "live-now.html",    label: "Live Now" },
     { href: "play-of-day.html", label: "Play of Day" },

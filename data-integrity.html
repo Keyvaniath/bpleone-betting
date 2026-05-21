@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Integrity | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/nav.js"></script>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 24px; }
+  h1 { font-size: 22px; margin: 0 0 4px 0; }
+  .sub { color: var(--muted, #888); font-size: 13px; margin-bottom: 24px; }
+
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .stat-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+    padding: 18px 20px;
+  }
+  .stat-label {
+    color: var(--muted, #888);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+  .stat-value { font-size: 28px; font-weight: 700; font-family: 'JetBrains Mono', monospace; }
+  .stat-pos { color: #58c878; }
+  .stat-neg { color: #e35a5a; }
+  .stat-mid { color: #d4a04a; }
+
+  .table {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .row {
+    display: grid;
+    grid-template-columns: 2.2fr 80px 80px 80px 100px 120px;
+    gap: 12px;
+    padding: 10px 16px;
+    align-items: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .row.head {
+    background: rgba(255,255,255,0.05);
+    color: var(--muted, #888);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 10px 16px;
+  }
+  .row:last-child { border-bottom: none; }
+  .row:hover:not(.head) { background: rgba(255,255,255,0.03); }
+  .module-name { font-weight: 500; }
+  .num { text-align: right; font-variant-numeric: tabular-nums; }
+
+  .bar {
+    position: relative;
+    height: 6px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .bar-fill {
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    background: #58c878;
+    transition: width 0.4s ease;
+  }
+  .bar-fill.mid { background: #d4a04a; }
+  .bar-fill.low { background: #e35a5a; }
+
+  .note {
+    margin-top: 24px;
+    padding: 12px 16px;
+    background: rgba(212, 160, 74, 0.08);
+    border-left: 3px solid #d4a04a;
+    border-radius: 4px;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  .note .label { color: #d4a04a; font-weight: 600; margin-right: 6px; }
+</style>
+</head>
+<body>
+<nav-bar></nav-bar>
+<div class="container">
+<h1>Data Integrity</h1>
+<div class="sub">
+  Per-module breakdown of how many projections use REAL ESPN per-game stats
+  vs hardcoded fallback estimates. Higher real-% = more accurate inputs for
+  the learning loop.
+</div>
+
+<div class="hero">
+  <div class="stat-card">
+    <div class="stat-label">Overall Real-data Coverage</div>
+    <div class="stat-value" id="overall-pct">—</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">Projections with Real Data</div>
+    <div class="stat-value stat-pos" id="overall-real">—</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">Fallback (Hardcoded)</div>
+    <div class="stat-value stat-mid" id="overall-fallback">—</div>
+  </div>
+</div>
+
+<div class="table">
+  <div class="row head">
+    <div>Module</div>
+    <div class="num">Real</div>
+    <div class="num">Fallback</div>
+    <div class="num">Total</div>
+    <div class="num">Real %</div>
+    <div>Coverage</div>
+  </div>
+  <div id="rows"></div>
+</div>
+
+<div class="note" id="note-area"></div>
+
+<div style="margin-top: 16px; color: var(--muted,#888); font-size: 11px;" id="meta"></div>
+</div>
+
+<script>
+function pctColor(p) {
+  if (p >= 80) return 'pos';
+  if (p >= 40) return 'mid';
+  return 'low';
+}
+
+function colorClass(p) {
+  if (p >= 80) return 'stat-pos';
+  if (p >= 40) return 'stat-mid';
+  return 'stat-neg';
+}
+
+async function load() {
+  const t = Date.now();
+  let d;
+  try {
+    const r = await fetch('data/data_integrity_audit.json?t=' + t);
+    d = await r.json();
+  } catch (e) {
+    document.getElementById('rows').innerHTML =
+      '<div class="row"><div>Failed to load data/data_integrity_audit.json</div></div>';
+    return;
+  }
+
+  const totals = d.totals || {};
+  const pct = totals.real_pct || 0;
+  document.getElementById('overall-pct').textContent = pct.toFixed(1) + '%';
+  document.getElementById('overall-pct').className = 'stat-value ' + colorClass(pct);
+  document.getElementById('overall-real').textContent = totals.real || 0;
+  document.getElementById('overall-fallback').textContent = totals.fallback || 0;
+
+  const rows = (d.modules || []).slice().sort((a, b) => {
+    const pa = a.real_pct == null ? -1 : a.real_pct;
+    const pb = b.real_pct == null ? -1 : b.real_pct;
+    return pb - pa;
+  });
+
+  const html = rows.map(m => {
+    const p = m.real_pct;
+    const pStr = p == null ? '<span style="color:#666;">n/a</span>' : p.toFixed(1) + '%';
+    const cls = p == null ? '' : pctColor(p);
+    const w = p == null ? 0 : p;
+    return `
+      <div class="row">
+        <div class="module-name">${m.module}</div>
+        <div class="num">${m.real}</div>
+        <div class="num">${m.fallback}</div>
+        <div class="num">${m.total_tagged}</div>
+        <div class="num">${pStr}</div>
+        <div><div class="bar"><div class="bar-fill ${cls}" style="width:${w}%"></div></div></div>
+      </div>
+    `;
+  }).join('');
+  document.getElementById('rows').innerHTML = html ||
+    '<div class="row"><div>No module data yet — runs after next daily-pipeline.</div></div>';
+
+  // Note + meta
+  const note = document.getElementById('note-area');
+  if (pct < 80 && (totals.real || 0) > 0) {
+    note.innerHTML = `
+      <span class="label">Note:</span>
+      Some modules show fallback because ESPN per-game stats are missing for
+      that player (rookies, recent trades, off-season). The model uses
+      hardcoded season estimates for those cases. As ESPN's gamelog
+      accumulates 5+ games per player, fallback drops automatically.
+    `;
+  } else {
+    note.style.display = 'none';
+  }
+
+  document.getElementById('meta').textContent =
+    'Generated: ' + (d.generated_at || '—') +
+    ' · Refreshed every cycle (run_props_batch.py)';
+}
+
+load();
+setInterval(load, 5 * 60 * 1000);   // refresh every 5 min (Worker quota)
+</script>
+</body>
+</html>
