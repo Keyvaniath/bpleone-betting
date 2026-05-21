@@ -130,8 +130,16 @@ def run() -> Dict[str, Any]:
 
         for player_name, info in PLAYER_DB.items():
             if info["team"] not in (home, away): continue
-            base_bpg = info["bpg"]
-            base_spg = info["spg"]
+            # Real ESPN blk/stl per game with hardcoded fallback (2026-05-21)
+            try:
+                from real_stats_lookup import get_player_stat
+                _b = get_player_stat("nba", player_name, "blk_per_game", fallback=info["bpg"], min_games=5)
+                _s = get_player_stat("nba", player_name, "stl_per_game", fallback=info["spg"], min_games=5)
+                base_bpg = _b["value"]; bpg_source = _b["source"]
+                base_spg = _s["value"]; spg_source = _s["source"]
+            except Exception:
+                base_bpg = info["bpg"]; bpg_source = "fallback"
+                base_spg = info["spg"]; spg_source = "fallback"
             proj_b = base_bpg * pace_factor
             proj_s = base_spg * pace_factor
 
@@ -159,8 +167,10 @@ def run() -> Dict[str, Any]:
                 "matchup": f"{away} @ {home}",
                 "player": player_name,
                 "team": info["team"],
-                "season_bpg": base_bpg,
-                "season_spg": base_spg,
+                "season_bpg": round(base_bpg, 2),
+                "season_spg": round(base_spg, 2),
+                "bpg_source": bpg_source,
+                "spg_source": spg_source,
                 "projected_b": round(proj_b, 2),
                 "projected_s": round(proj_s, 2),
                 "p_b_1_plus": round(p_b_1plus, 3),

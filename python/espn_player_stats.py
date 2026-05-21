@@ -120,6 +120,14 @@ def parse_basketball_log(gamelog: Dict[str, Any], player_name: str,
     threes_made = sum(_parse_made(s[idx["3pt"]])[0] for s in last_n) / n
     min_avg = sum(_to_float(s[idx["min"]]) for s in last_n) / n
     fg_pct = sum(_to_float(s[idx["fg_pct"]]) for s in last_n) / n
+    # 2026-05-21: extended for data-accuracy push — these unlock the
+    # hardcoded turnover / FTA / blocks / steals prop modules.
+    tov_avg = sum(_to_float(s[idx["to"]]) for s in last_n) / n
+    blk_avg = sum(_to_float(s[idx["blk"]]) for s in last_n) / n
+    stl_avg = sum(_to_float(s[idx["stl"]]) for s in last_n) / n
+    # FT column is "made-attempted" string like "8-10"
+    ft_made_avg = sum(_parse_made(s[idx["ft"]])[0] for s in last_n) / n
+    fta_avg = sum(_parse_made(s[idx["ft"]])[1] for s in last_n) / n
     return {
         "name": player_name,
         "n_games": n,
@@ -129,6 +137,12 @@ def parse_basketball_log(gamelog: Dict[str, Any], player_name: str,
         "ast_per_game": round(ast_avg, 2),
         "threes_per_game": round(threes_made, 2),
         "fg_pct": round(fg_pct, 1),
+        # Extended stats (new 2026-05-21)
+        "tov_per_game": round(tov_avg, 2),
+        "blk_per_game": round(blk_avg, 2),
+        "stl_per_game": round(stl_avg, 2),
+        "ft_made_per_game": round(ft_made_avg, 2),
+        "fta_per_game": round(fta_avg, 2),
     }
 
 

@@ -165,7 +165,15 @@ def run() -> Dict[str, Any]:
             opp_ft_allowed = away_ft_allowed if is_home else home_ft_allowed
             opp_foul_factor = opp_ft_allowed / LEAGUE_FT_RATE
 
-            base_fta = info["fta"]
+            # Real ESPN FTA/game with hardcoded fallback (2026-05-21)
+            try:
+                from real_stats_lookup import get_player_stat
+                stat = get_player_stat("nba", player_name, "fta_per_game", fallback=info["fta"], min_games=5)
+                base_fta = stat["value"]
+                fta_source = stat["source"]
+            except Exception:
+                base_fta = info["fta"]
+                fta_source = "fallback"
             projected_fta = base_fta * pace_factor * opp_foul_factor
 
             # Only evaluate nearest 0.5 line within 1.0 of projection
@@ -193,7 +201,8 @@ def run() -> Dict[str, Any]:
                 "player": player_name,
                 "team": info["team"],
                 "opp_team": away if is_home else home,
-                "season_fta": base_fta,
+                "season_fta": round(base_fta, 2),
+                "fta_source": fta_source,
                 "game_pace": round(game_pace, 1),
                 "pace_factor": round(pace_factor, 3),
                 "opp_ft_allowed": opp_ft_allowed,

@@ -158,7 +158,15 @@ def run() -> Dict[str, Any]:
             # Higher opp_force -> more turnovers caused
             opp_force_factor = opp_force / LEAGUE_TO_FORCED
 
-            base_tov = info["tovg"]
+            # Real ESPN TOV/game with hardcoded fallback (2026-05-21)
+            try:
+                from real_stats_lookup import get_player_stat
+                stat = get_player_stat("nba", player_name, "tov_per_game", fallback=info["tovg"], min_games=5)
+                base_tov = stat["value"]
+                tov_source = stat["source"]
+            except Exception:
+                base_tov = info["tovg"]
+                tov_source = "fallback"
             projected_tov = base_tov * pace_factor * opp_force_factor
 
             # Only evaluate nearest 0.5 line within 0.75 of projection
@@ -187,7 +195,8 @@ def run() -> Dict[str, Any]:
                 "player": player_name,
                 "team": info["team"],
                 "opp_team": away if is_home else home,
-                "season_tovg": base_tov,
+                "season_tovg": round(base_tov, 2),
+                "tov_source": tov_source,
                 "game_pace": round(game_pace, 1),
                 "pace_factor": round(pace_factor, 3),
                 "opp_to_force": opp_force,

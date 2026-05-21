@@ -143,7 +143,17 @@ def run() -> Dict[str, Any]:
             is_home = info["team"] == home
             opp_factor = away_opps if is_home else home_opps
 
-            base = info["bpg"] + info["spg"]
+            # Real ESPN blk+stl per game with hardcoded fallback (2026-05-21)
+            try:
+                from real_stats_lookup import get_player_stat
+                _b = get_player_stat("wnba", player_name, "blk_per_game", fallback=info["bpg"], min_games=5)
+                _s = get_player_stat("wnba", player_name, "stl_per_game", fallback=info["spg"], min_games=5)
+                base_bpg = _b["value"]; bs_source = _b["source"]
+                base_spg = _s["value"]
+            except Exception:
+                base_bpg = info["bpg"]; bs_source = "fallback"
+                base_spg = info["spg"]
+            base = base_bpg + base_spg
             projected = base * pace_factor * opp_factor
 
             edge_class = "NONE"
@@ -170,8 +180,9 @@ def run() -> Dict[str, Any]:
                 "player": player_name,
                 "team": info["team"],
                 "opp_team": away if is_home else home,
-                "season_bpg": info["bpg"],
-                "season_spg": info["spg"],
+                "season_bpg": round(base_bpg, 2),
+                "blk_stl_source": bs_source,
+                "season_spg": round(base_spg, 2),
                 "pace_factor": round(pace_factor, 3),
                 "opp_factor": round(opp_factor, 3),
                 "projected_blk_stl": round(projected, 2),
