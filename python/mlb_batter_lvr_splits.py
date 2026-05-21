@@ -32,8 +32,12 @@ DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 OUT = os.path.join(DATA_DIR, "mlb_batter_lvr_splits.json")
 STATS_API = "https://statsapi.mlb.com/api/v1/people/{aid}/stats?stats=statSplits&group=hitting&season={season}&sitCodes={code}"
 
-SHRINK_PRIOR_PA = 30
+SHRINK_PRIOR_PA = 80          # 2026-05-21: was 30, too loose. Tightened — small-sample
+                              # splits (e.g. 90 PA) now get ~0.53 weight instead of 0.75.
 MIN_SPLIT_PA = 15
+MAX_DELTA_OPS = 0.150         # 2026-05-21 new: cap delta to prevent outlier OPS swings
+                              # (e.g. Juan Soto 1.111 vs 0.696 -> delta 0.415 -> adj 58% HR)
+                              # from blowing up the logit shift.
 LEAGUE_OPS = 0.720
 
 
@@ -99,18 +103,28 @@ def _fetch_split(athlete_id, vs_code, season):
 
 
 def _split_shift(split: Dict[str, Any], season_ops: float):
-    """Compute log-odds shift from split vs season average."""
+    """Compute log-odds shift from split vs season average.
+
+    2026-05-21: tightened to prevent outlier OPS swings from producing
+    unrealistic HR probabilities (e.g. Soto 58% HR in a single game).
+      - SHRINK_PRIOR_PA bumped 30 -> 80 (Bayesian prior more skeptical)
+      - delta_ops clamped to +/- MAX_DELTA_OPS (0.150) before scaling
+      - hit_shift clamp +/- 0.5 (was 0.8)
+      - hr_shift clamp +/- 0.6 (was 1.0)
+    """
     if not split: return (0.0, 0.0)
     pa = split.get("pa") or 0
     if pa < MIN_SPLIT_PA: return (0.0, 0.0)
     ops = split.get("ops") or 0
-    delta_ops = ops - (season_ops or LEAGUE_OPS)
-    # Shrinkage based on PA
+    raw_delta = ops - (season_ops or LEAGUE_OPS)
+    # Cap delta_ops so a single hot split can't dominate
+    delta_ops = _clamp(raw_delta, -MAX_DELTA_OPS, MAX_DELTA_OPS)
+    # Shrinkage based on PA (Bayesian: more PA -> more weight on split)
     w = pa / (pa + SHRINK_PRIOR_PA)
     # +0.100 OPS above season -> +0.30 logit on hit, +0.40 on HR
     hit_shift = w * (delta_ops / 0.100) * 0.30
     hr_shift = w * (delta_ops / 0.100) * 0.40
-    return (_clamp(hit_shift, -0.8, 0.8), _clamp(hr_shift, -1.0, 1.0))
+    return (_clamp(hit_shift, -0.5, 0.5), _clamp(hr_shift, -0.6, 0.6))
 
 
 def run() -> Dict[str, Any]:
