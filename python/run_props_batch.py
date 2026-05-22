@@ -117,6 +117,7 @@ DEFAULT_MODULES = [
     "nhl_goalie_shutout_props",
     "nhl_first_goalscorer_props",
     "nhl_goalie_win_props",
+    "nhl_goalie_fatigue_index",
     "nhl_puck_line_props",
     # Soccer props
     "soccer_corners_props",
@@ -142,6 +143,8 @@ DEFAULT_MODULES = [
     "mlb_pitcher_edge_composite",
     # Team total edge synthesizer (consumes lineup_quality + pitcher_edge above)
     "mlb_team_total_edge",
+    # Today's alerts (consumes ALL MLB context features above)
+    "mlb_todays_alerts_synthesizer",
     # Confluence + aggregation (must run AFTER all per-sport props above)
     "confluence_top_5",
     # book_vs_model_team runs FIRST so alpha_pick can pull from its output
