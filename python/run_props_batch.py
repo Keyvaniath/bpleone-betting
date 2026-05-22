@@ -47,6 +47,7 @@ DEFAULT_MODULES = [
     "mlb_to_record_hit_yn",
     "mlb_to_score_run_yn",
     "mlb_first_inning_hr_yn",
+    "mlb_team_first_inning_run",
     "mlb_to_hit_hr_yn",
     "mlb_first_batter_retired_props",
     "mlb_batter_walks_props",
