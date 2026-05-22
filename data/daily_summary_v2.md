@@ -1,54 +1,52 @@
 # EdgeStat Daily Summary — 2026-05-22
 
-## 🏥 Model Health: 80.6/100 [HEALTHY]
+## 🏥 Model Health: 81.4/100 [HEALTHY]
 - Solid health - some minor issues to monitor
   - 🟢 Calibration Freshness: 100.0/100
   - 🟢 Hit Rate Trend: 84.3/100
   - 🔴 Brier Trend: 52.3/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟡 Data Health: 77.8/100
-  - 🟡 Edge Count: 77.1/100
+  - 🟢 Data Health: 88.9/100
+  - 🟡 Edge Count: 62.9/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.56)
-- **Total games on board:** 180
-- **Strong home favorites:** 19 | **Strong road dogs:** 13
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.6)
+- **Total games on board:** 191
+- **Strong home favorites:** 34 | **Strong road dogs:** 6
 
 ## 🎯 Top 5 Best Bets
-1. **TOR @ NYY YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
-2. **OAK @ LAA YRFI (1st-inning OVER 0.5)** (78/100 ★★★★)
-3. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
-4. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
-5. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
+1. **DET @ BAL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+2. **NYM @ MIA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+3. **SEA @ KCR YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+4. **WSN @ ATL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+5. **STL @ CIN YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
-- [WHALE] **[MLB-PP]** Keibert Ruiz PP_batter_total_bases_under_3.5 -- 72% / +24.3% (score 3.5)
-- [WHALE] **[MLB-PP]** Joe Mack PP_batter_total_bases_under_2.5 -- 72% / +24.3% (score 3.5)
+- [WHALE] **[MLB-PP]** Lawrence Butler PP_batter_doubles_under_0.5 -- 72% / +24.3% (score 3.5)
+- [STRONG] **[MLB]** WSN @ ATL OVER_9.0 -- 68% / +29.1% (score 2.5)
+
+## 📉 Strong UNDER Signals
+- [STRONG 5.6] **LAD @ MIL** model 7.46 vs market 8.5
 
 ## 🔒 Locks of the Day -- Track Record
-- All-time: **9-2** (81.8% hit rate)
-- Net units: **+0.29u** | ROI: **+41.9%**
-- Last 7d: 9-2 (81.8%) | net +0.29u
+- All-time: **13-2** (86.7% hit rate)
+- Net units: **+0.47u** | ROI: **+50.4%**
+- Last 7d: 13-2 (86.7%) | net +0.47u
 
-**Today's 10 Locks:**
-- [MLB-PP] **Isaac Collins** PP_batter_hrr_under_3.5 · p=72% edge=+24.3% qK=0.062u
-- [MLB-PP] **James Outman** PP_batter_total_bases_under_2. · p=72% edge=+24.3% qK=0.062u
-- [MLB-PP] **Vinnie Pasquantino** PP_batter_doubles_under_0.5 · p=72% edge=+24.3% qK=0.062u
-- [MLB-PP] **Dalton Rushing** PP_batter_hrr_over_0.5 · p=72% edge=+24.3% qK=0.062u
-- [MLB-PP] **Fernando Tatis Jr.** PP_batter_hrr_under_3.5 · p=72% edge=+24.3% qK=0.062u
+**Today's 5 Locks:**
+- [MLB] **WSN @ ATL** OVER_9.0 · p=68% edge=+29.1% qK=0.062u
+- [MLB] **HOU @ CHC** ML_AWAY · p=55% edge=+25.0% qK=0.050u
+- [MLB] **HOU @ CHC** HOU_ML · p=55% edge=+25.0% qK=0.050u
 - [MLB-PP] **Alec Burleson** PP_batter_hrr_under_4.5 · p=72% edge=+24.3% qK=0.062u
 - [MLB-PP] **Keibert Ruiz** PP_batter_total_bases_under_3. · p=72% edge=+24.3% qK=0.062u
-- [MLB-PP] **Joe Mack** PP_batter_total_bases_under_2. · p=72% edge=+24.3% qK=0.062u
-- [MLB-PP] **Nick Kurtz** PP_batter_total_bases_under_3. · p=72% edge=+24.3% qK=0.062u
-- [MLB-PP] **Logan O'Hoppe** PP_batter_total_bases_under_2. · p=72% edge=+24.3% qK=0.062u
 
 ## 🎰 Top Balanced 2-Leg Parlays (40-65% joint)
-- [MLB-PP] Alec Burleson PP_batter_hrr_under_ + [MLB-PP] Keibert Ruiz PP_batter_total_base
-  Joint: 51% | Fair: 201 | Edge: +54.6%
-- [MLB-PP] Alec Burleson PP_batter_hrr_under_ + [MLB-PP] Joe Mack PP_batter_total_base
-  Joint: 51% | Fair: 201 | Edge: +54.6%
-- [MLB-PP] Alec Burleson PP_batter_hrr_under_ + [MLB-PP] Nick Kurtz PP_batter_total_base
-  Joint: 51% | Fair: 201 | Edge: +54.6%
+- [MLB] WSN @ ATL OVER_9.0 + [MLB-PP] Alec Burleson PP_batter_hrr_under_
+  Joint: 48% | Fair: 231 | Edge: +60.6%
+- [MLB] WSN @ ATL OVER_9.0 + [MLB-PP] Keibert Ruiz PP_batter_total_base
+  Joint: 48% | Fair: 231 | Edge: +60.6%
+- [MLB] WSN @ ATL OVER_9.0 + [MLB-PP] Joe Mack PP_batter_total_base
+  Joint: 48% | Fair: 231 | Edge: +60.5%
 
 ## 🎮 Player Play of the Day (cross-sport)
 - **[LOL]** Inspired UNDER 3.5 Kills | MED conviction · model 61.7% fair -161
@@ -57,49 +55,53 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (12)
+## ⚡ Pre-Game HIGH Conviction (20)
 - [EPL] **Manchester City** HOME (2-2 L10) · model 74.9% fair -299
 - [MLS] **Chicago Fire FC** HOME (2-2 L10) · model 74.3% fair -289
 - [MLS] **Houston Dynamo FC** AWAY (3-1 L10) · model 74.1% fair -286
+- [CWS] **Texas Longhorns** HOME (2-0 L10) · model 72.2% fair -260
+- [CWS] **Florida State Seminoles** HOME (1-1 L10) · model 72.2% fair -259
+- [CWS] **Northeastern Huskies** HOME (1-2 L10) · model 72.1% fair -258
 - [EPL] **Burnley** HOME (0-3 L10) · model 71.9% fair -256
-- [CWS] **Missouri State Bears** HOME (2-1 L10) · model 71.1% fair -246
 - [MLS] **New England Revolution** AWAY (3-1 L10) · model 70.8% fair -243
+- [CWS] **Liberty Flames** HOME (3-0 L10) · model 70.3% fair -237
 - [MLS] **Nashville SC** HOME (2-2 L10) · model 69.9% fair -233
-- [CWS] **Cal Poly Mustangs** HOME (3-0 L10) · model 68.5% fair -217
-- [MLS] **Real Salt Lake** AWAY (3-1 L10) · model 67.4% fair -206
-- [EPL] **Sunderland** HOME (1-2 L10) · model 65.3% fair -188
 
 ## 🔥/❄️ Heat / Cold Signals
 - Hot teams: **26** | Cold teams: **31** | Over-heavy: 0 | Under-heavy: 7
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (33)
-- RESIDUAL_DIVERGENCE: **33**
-  - Golden State Valkyries (WNBA): Golden State Valkyries OUTPERFORMING expected margin by 10.2pts in recent games -- model bias may persist
-  - Minnesota Lynx (WNBA): Minnesota Lynx OUTPERFORMING expected margin by 8.2pts in recent games -- model bias may persist
+## ⚠️ Anomaly Detector (39)
+- RESIDUAL_DIVERGENCE: **39**
   - Charlotte FC (MLS): Charlotte FC OUTPERFORMING expected margin by 7.8pts in recent games -- model bias may persist
   - New England Revolution (MLS): New England Revolution UNDERPERFORMING expected margin by 6.2pts in recent games -- model bias may persist
   - Orlando City SC (MLS): Orlando City SC UNDERPERFORMING expected margin by 8.1pts in recent games -- model bias may persist
+  - Colorado Rapids (MLS): Colorado Rapids OUTPERFORMING expected margin by 6.3pts in recent games -- model bias may persist
+  - Crystal Palace (EPL): Crystal Palace OUTPERFORMING expected margin by 7.6pts in recent games -- model bias may persist
 
-## 💰 Today's Portfolio (10 picks)
-- Total stake: **$335.0** (33.5% of $1000 bankroll)
-- Expected EV: **$-13.6**
-  - #1 [NRFI] $35 on TOR @ NYY YRFI (1st-inning OVER 0.5) (P=65%)
-  - #2 [NRFI] $35 on OAK @ LAA YRFI (1st-inning OVER 0.5) (P=65%)
-  - #3 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
-  - #4 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
-  - #5 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
+## 💰 Today's Portfolio (9 picks)
+- Total stake: **$345.0** (34.5% of $1000 bankroll)
+- Expected EV: **$1.49**
+  - #1 [NRFI] $50 on DET @ BAL YRFI (1st-inning OVER 0.5) (P=72%)
+  - #2 [NRFI] $50 on NYM @ MIA YRFI (1st-inning OVER 0.5) (P=70%)
+  - #3 [NRFI] $50 on SEA @ KCR YRFI (1st-inning OVER 0.5) (P=69%)
+  - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
+  - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
-## 🎯 Convergence Picks (24 stacked games)
-- ELITE: **10** · HIGH: 9 · MED: 5
+## 🎯 Convergence Picks (25 stacked games)
+- ELITE: **8** · HIGH: 10 · MED: 7
   - [ELITE] Arsenal @ Crystal Palace : 8 signals (PREGAME, PREGAME, HEAT_COLD, HEAT_COLD)
-  - [ELITE] Cleveland Cavaliers @ New York Knicks : 5 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
   - [ELITE] New England Revolution @ Charlotte FC : 5 signals (PREGAME, ANOMALY, ANOMALY, ATS)
-  - [ELITE] Golden State Valkyries @ New York Liberty : 4 signals (ANOMALY, ANOMALY, ATS, ATS)
-  - [ELITE] Los Angeles Sparks @ Phoenix Mercury : 4 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
+  - [ELITE] Cleveland Cavaliers @ New York Knicks : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
+  - [ELITE] Orlando City SC @ FC Cincinnati : 4 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
+  - [ELITE] Wolverhampton Wanderers @ Burnley : 4 signals (PREGAME, HEAT_COLD, HEAT_COLD, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (1)
-- **José Soriano** OVER 5.5 K (70%) fair -233
+## ⚾ Top MLB Pitcher K Plays (9)
+- **Michael Soroka** OVER 4.5 K (73%) fair -270
+- **Payton Tolle** OVER 4.5 K (70%) fair -236
+- **Gavin Williams** OVER 5.5 K (70%) fair -233
+- **Spencer Arrighetti** OVER 4.5 K (69%) fair -224
+- **Eury Pérez** OVER 4.5 K (68%) fair -216
 
 ## 🏀 NBA Player Heat (19 HOT / 22 COLD)
   - 🔥 **Jeremiah Fears** (NO): L5 31.8/5.8/6.0 vs season 16.9/3.2/4.0 [PTS +14.9, REB +2.6, AST +2.0]
@@ -119,8 +121,8 @@
   - [COIN_FLIP] **Jaqueline Amorim** (10-2-0) vs Loma Lookboonmee -- fair -129
 
 ## ⛳ Golf Player Heat (from THE CJ CUP Byron Nelson)
-  - 🔥 T1 **Brooks Koepka** (USA): -8 total -- finished T1
-  - 🔥 T2 **Taylor Moore** (USA): -8 total -- finished T2
+  - 🔥 T1 **Taylor Moore** (USA): -9 total -- finished T1
+  - 🔥 T2 **Brooks Koepka** (USA): -8 total -- finished T2
   - 🔥 T3 **Jesper Svensson** (Sweden): -8 total -- finished T3
   - 🔥 T4 **Emiliano Grillo** (Argentina): -7 total -- finished T4
   - 🔥 T5 **Keith Mitchell** (USA): -7 total -- finished T5
@@ -137,12 +139,12 @@
   - ❄️ **Edouard Julien** (COL): L14 .079 / season .216 (-137pts) -- FADE props
   - ❄️ **Christian Vázquez** (HOU): L14 .114 / season .247 (-133pts) -- FADE props
 
-## 📈 Streak Regression Alerts (30)
-- [NBA] New York Knicks on W3 L10 3-0 -- New York Knicks on W3 -- no historical sample
+## 📈 Streak Regression Alerts (23)
 - [MLS] Austin FC on L3 L10 1-3 -- Austin FC on L3 -- no historical sample
 - [MLS] Minnesota United FC on L3 L10 1-3 -- Minnesota United FC on L3 -- no historical sample
 - [MLS] D.C. United on L3 L10 1-3 -- D.C. United on L3 -- no historical sample
 - [MLS] FC Cincinnati on L3 L10 1-3 -- FC Cincinnati on L3 -- no historical sample
+- [MLS] Toronto FC on L3 L10 0-3 -- Toronto FC on L3 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**
