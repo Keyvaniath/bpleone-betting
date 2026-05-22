@@ -201,6 +201,7 @@ DEFAULT_MODULES = [
     "sport_coverage",
     # Data-integrity audit (runs LAST so it scans the freshly-written outputs)
     "data_integrity_audit",
+    "data_freshness_audit",
 ]
 
 
