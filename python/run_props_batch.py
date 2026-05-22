@@ -154,6 +154,7 @@ DEFAULT_MODULES = [
     "soccer_total_goals_props",
     "soccer_first_to_score_props",
     "soccer_goalscorer_props",
+    "soccer_goalscorer_2plus",
     "soccer_cards_props",
     "soccer_total_shots_props",
     "soccer_player_shots_props",
