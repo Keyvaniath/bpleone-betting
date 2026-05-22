@@ -81,6 +81,7 @@ DEFAULT_MODULES = [
     "mlb_weather_advisory",
     "mlb_platoon_matrix",
     "mlb_closer_availability_tracker",
+    "mlb_closer_to_record_save",
     # MLB game props
     "mlb_first5_market",
     # MLB deep composites (depend on lineup_quality + per-pitcher props above)
