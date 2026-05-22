@@ -154,6 +154,7 @@ DEFAULT_MODULES = [
     # Golf props (top-finish, etc.)
     "golf_top_finish_props",
     "golf_leaderboard_probability",
+    "golf_round_score_props",
     # UFC props
     "ufc_strikes_takedowns_props",
     "ufc_rounds_over_under_props",
