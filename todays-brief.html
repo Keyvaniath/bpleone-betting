@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Today's Master Brief | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/nav.js"></script>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 24px; }
+  h1 { font-size: 28px; margin: 0 0 6px 0; }
+  .sub { color: var(--muted, #888); font-size: 13px; margin-bottom: 28px; max-width: 720px; line-height: 1.55; }
+  .sub strong { color: #58c878; }
+
+  .brief-hero {
+    background: linear-gradient(135deg, rgba(88,200,120,0.12), rgba(88,200,120,0.04));
+    border: 1px solid rgba(88,200,120,0.30);
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 24px;
+  }
+  .headline { font-size: 16px; font-family: 'JetBrains Mono', monospace; color: #58c878; margin-bottom: 16px; }
+  .paragraph { font-size: 15px; line-height: 1.6; color: #ddd; margin-bottom: 18px; }
+
+  .section { margin: 30px 0; }
+  .section h2 {
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--muted,#888);
+    border-bottom: 1px solid rgba(255,255,255,0.10);
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+  }
+  .bullet-list { list-style: none; padding: 0; margin: 0; }
+  .bullet-list li {
+    padding: 10px 14px;
+    background: rgba(255,255,255,0.04);
+    border-left: 3px solid #58c878;
+    margin-bottom: 6px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    border-radius: 0 6px 6px 0;
+  }
+  .bullet-list li.batter { border-color: #d4a04a; }
+  .bullet-list li.pitcher { border-color: #5d9bf0; }
+  .bullet-list li.alert { border-color: #d44a4a; }
+
+  .pod-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 30px;
+  }
+  .pod-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 10px;
+    padding: 20px;
+  }
+  .pod-card .label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted,#888);
+    margin-bottom: 8px;
+  }
+  .pod-card .player { font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 6px; }
+  .pod-card .meta { font-size: 12px; color: var(--muted,#aaa); font-family: 'JetBrains Mono', monospace; }
+  .pod-card.batter { border-color: rgba(212,160,74,0.30); }
+  .pod-card.batter .label { color: #d4a04a; }
+  .pod-card.pitcher { border-color: rgba(93,155,240,0.30); }
+  .pod-card.pitcher .label { color: #5d9bf0; }
+
+  .stamp {
+    font-size: 11px;
+    color: var(--muted,#666);
+    font-family: 'JetBrains Mono', monospace;
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+</style>
+</head>
+<body>
+
+<div id="nav-mount"></div>
+
+<div class="container">
+  <h1>Today's Master Brief</h1>
+  <p class="sub">
+    Tonight's MLB betting digest. Synthesized from 11+ context modules
+    (<strong>lineup quality, park weather, bullpen fatigue, pitcher edge
+    composite</strong>, hot streaks, top batter/pitcher aggregators).
+    Designed for a 30-second read before placing bets.
+  </p>
+
+  <div class="brief-hero">
+    <div class="headline" id="headline">Loading…</div>
+    <div class="paragraph" id="paragraph"></div>
+  </div>
+
+  <div class="section">
+    <h2>Plays of the Day</h2>
+    <div class="pod-grid">
+      <div class="pod-card batter">
+        <div class="label">★ Batter PoD</div>
+        <div class="player" id="batter-pod">—</div>
+        <div class="meta" id="batter-meta"></div>
+      </div>
+      <div class="pod-card pitcher">
+        <div class="label">⚾ Pitcher PoD</div>
+        <div class="player" id="pitcher-pod">—</div>
+        <div class="meta" id="pitcher-meta"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Actionable Bullets</h2>
+    <ul class="bullet-list" id="bullets"></ul>
+  </div>
+
+  <div class="stamp" id="stamp"></div>
+</div>
+
+<script>
+fetch('data/mlb_today_master_brief.json')
+  .then(r => r.json())
+  .then(d => {
+    document.getElementById('headline').textContent = d.headline || '';
+    document.getElementById('paragraph').textContent = d.paragraph || '';
+    document.getElementById('stamp').textContent = 'Generated ' + (d.generated_at || '');
+
+    const bulletsEl = document.getElementById('bullets');
+    bulletsEl.innerHTML = '';
+    (d.actionable_bullets || []).forEach(b => {
+      const li = document.createElement('li');
+      li.textContent = b;
+      if (b.startsWith('BATTER:')) li.className = 'batter';
+      else if (b.startsWith('PITCHER:')) li.className = 'pitcher';
+      else if (b.startsWith('ALERT')) li.className = 'alert';
+      bulletsEl.appendChild(li);
+    });
+
+    // Pull PoDs from companion endpoints
+    return Promise.all([
+      fetch('data/mlb_today_top_batter_props.json').then(r => r.json()),
+      fetch('data/mlb_today_top_pitcher_props.json').then(r => r.json()),
+    ]);
+  })
+  .then(([batterData, pitcherData]) => {
+    const bpod = batterData.BATTER_PLAY_OF_THE_DAY || {};
+    const ppod = pitcherData.PITCHER_PLAY_OF_THE_DAY || {};
+    document.getElementById('batter-pod').textContent = bpod.batter || '—';
+    document.getElementById('batter-meta').textContent =
+      bpod.batter
+        ? `${bpod.n_strong_edges || 0} STRONG signals · ${bpod.net_direction || ''} · composite ${bpod.composite_score || 0}`
+        : 'No batter PoD identified tonight';
+    document.getElementById('pitcher-pod').textContent = ppod.pitcher || '—';
+    document.getElementById('pitcher-meta').textContent =
+      ppod.pitcher
+        ? `${ppod.n_strong_edges || 0} STRONG signals · ${ppod.net_direction || ''} · composite ${ppod.composite_score || 0}`
+        : 'No pitcher PoD identified tonight';
+  })
+  .catch(e => {
+    document.getElementById('headline').textContent = 'Failed to load brief';
+    document.getElementById('paragraph').textContent = String(e);
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cross-Sport Alpha Scanner | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/nav.js"></script>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 24px; }
+  h1 { font-size: 28px; margin: 0 0 6px 0; }
+  .sub { color: var(--muted, #888); font-size: 13px; margin-bottom: 28px; max-width: 760px; line-height: 1.55; }
+  .sub strong { color: #b266ff; }
+
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 30px;
+  }
+  .summary-card {
+    background: rgba(178,102,255,0.06);
+    border: 1px solid rgba(178,102,255,0.25);
+    border-radius: 10px;
+    padding: 20px;
+  }
+  .summary-card .count {
+    font-size: 36px; font-weight: 700; color: #b266ff;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .summary-card .label {
+    font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px;
+    color: var(--muted,#888); margin-top: 4px;
+  }
+
+  .section { margin: 24px 0; }
+  .section h2 {
+    font-size: 15px; text-transform: uppercase; letter-spacing: 1.5px;
+    color: var(--muted,#888);
+    border-bottom: 1px solid rgba(255,255,255,0.10);
+    padding-bottom: 8px; margin-bottom: 14px;
+  }
+
+  table { width: 100%; border-collapse: collapse; font-family: 'JetBrains Mono', monospace; font-size: 12px; }
+  th, td { padding: 8px 12px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  th { color: var(--muted,#888); font-weight: 600; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; }
+  td.market { color: #b266ff; }
+  td.p-val { color: #58c878; font-weight: 600; }
+  td.odds { color: #d4a04a; }
+
+  .confluence-card {
+    background: rgba(255,255,255,0.04);
+    border-left: 3px solid #b266ff;
+    border-radius: 0 8px 8px 0;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+  }
+  .confluence-card .player { font-weight: 700; color: #fff; font-size: 14px; }
+  .confluence-card .signals { font-size: 11px; color: var(--muted,#aaa); margin-top: 4px; font-family: 'JetBrains Mono', monospace; }
+
+  .stamp {
+    font-size: 11px; color: var(--muted,#666); font-family: 'JetBrains Mono', monospace;
+    margin-top: 24px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.06);
+  }
+</style>
+</head>
+<body>
+
+<div id="nav-mount"></div>
+
+<div class="container">
+  <h1>Cross-Sport Alpha Scanner</h1>
+  <p class="sub">
+    The spider that crawls <strong>every prop output across all sports</strong>
+    (MLB / NBA / NHL / WNBA / Soccer / Tennis / UFC) and surfaces the day's
+    highest-conviction plays. Filters to value-zone probabilities
+    (25-80%, avoiding heavy favorites and longshots).
+  </p>
+
+  <div class="summary-grid">
+    <div class="summary-card">
+      <div class="count" id="cnt-alpha">—</div>
+      <div class="label">Pure Alpha Picks</div>
+    </div>
+    <div class="summary-card">
+      <div class="count" id="cnt-correlated">—</div>
+      <div class="label">Correlated Matchups</div>
+    </div>
+    <div class="summary-card">
+      <div class="count" id="cnt-confluence">—</div>
+      <div class="label">Confluence Triples</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Confluence Triples (3+ Signals on Same Player)</h2>
+    <div id="confluence-list"></div>
+  </div>
+
+  <div class="section">
+    <h2>Top Pure Alpha Picks</h2>
+    <table>
+      <thead>
+        <tr><th>Player</th><th>Sport / Market</th><th>Edge Class</th><th>Probability</th><th>Fair Odds</th><th>Matchup</th></tr>
+      </thead>
+      <tbody id="alpha-tbody"></tbody>
+    </table>
+  </div>
+
+  <div class="stamp" id="stamp"></div>
+</div>
+
+<script>
+fetch('data/cross_sport_alpha_scanner.json')
+  .then(r => r.json())
+  .then(d => {
+    document.getElementById('cnt-alpha').textContent = d.n_pure_alpha_picks || 0;
+    document.getElementById('cnt-correlated').textContent = d.n_correlated_matchups || 0;
+    document.getElementById('cnt-confluence').textContent = d.n_confluence_triples || 0;
+    document.getElementById('stamp').textContent = 'Generated ' + (d.generated_at || '');
+
+    // Confluence triples
+    const confluenceEl = document.getElementById('confluence-list');
+    (d.confluence_triples || []).forEach(c => {
+      const div = document.createElement('div');
+      div.className = 'confluence-card';
+      const signalsHtml = (c.signals || [])
+        .map(s => `${s.market_label}/${s.market} (${(s.p*100).toFixed(0)}%)`)
+        .join('  ·  ');
+      div.innerHTML = `
+        <div class="player">${c.player} <span style="color:#888;font-weight:400;font-size:12px;">— ${c.matchup || ''}</span></div>
+        <div class="signals">${c.n_signals} signals: ${signalsHtml}</div>
+      `;
+      confluenceEl.appendChild(div);
+    });
+    if ((d.confluence_triples || []).length === 0) {
+      confluenceEl.innerHTML = '<div style="color:var(--muted,#888);font-size:13px;padding:12px;">No 3+ signal confluences tonight.</div>';
+    }
+
+    // Top alpha picks table
+    const tbody = document.getElementById('alpha-tbody');
+    (d.top_25_pure_alpha || []).forEach(pick => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>${pick.player || '—'}</td>
+        <td class="market">${pick.source_module} / ${pick.market_label}</td>
+        <td>${pick.edge_class || ''}</td>
+        <td class="p-val">${(pick.p * 100).toFixed(1)}%</td>
+        <td class="odds">${pick.fair_odds || '—'}</td>
+        <td>${pick.matchup || '—'}</td>
+      `;
+      tbody.appendChild(tr);
+    });
+  })
+  .catch(e => {
+    document.getElementById('cnt-alpha').textContent = 'ERR';
+    document.getElementById('confluence-list').textContent = 'Failed to load: ' + e;
+  });
+</script>
+
+</body>
+</html>
