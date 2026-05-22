@@ -45,6 +45,7 @@ MODULES = [
     ("nba_player_turnovers_props.json",   ["tov_source"]),
     ("nba_player_ft_attempts_props.json", ["fta_source"]),
     ("nba_player_blocks_steals_props.json", ["bpg_source", "spg_source"]),
+    ("nba_player_minutes_props.json",     ["mpg_source"]),
     ("wnba_player_pts_props.json",        ["ppg_source"]),
     ("wnba_player_reb_ast_props.json",    ["rpg_source", "apg_source"]),
     ("wnba_player_threes_props.json",     ["tpm_source"]),
