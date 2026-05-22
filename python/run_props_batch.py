@@ -58,6 +58,7 @@ DEFAULT_MODULES = [
     "mlb_batter_strikeout_props",
     # MLB pitcher props
     "mlb_pitcher_walks_props",
+    "mlb_pitcher_2plus_walks_yn",
     "mlb_pitcher_outs_props",
     "mlb_pitcher_er_props",
     "mlb_pitcher_hits_allowed_props",
@@ -117,6 +118,7 @@ DEFAULT_MODULES = [
     "wnba_team_alts_props",
     # NHL props
     "nhl_skater_hits_blocks_props",
+    "nhl_skater_3plus_hits",
     "nhl_period_totals_props",
     "nhl_goalie_saves_props",
     "nhl_goalie_30plus_saves",
