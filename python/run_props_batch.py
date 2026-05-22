@@ -66,6 +66,7 @@ DEFAULT_MODULES = [
     "mlb_pitcher_allows_hr_yn",
     "mlb_pitcher_quality_start_props",
     "mlb_pitcher_strikeouts_props",
+    "mlb_pitcher_9plus_K_alt",
     "mlb_pitcher_rest_advantage",
     "mlb_pitcher_win_props",
     "mlb_pitcher_1st_inning_er",
