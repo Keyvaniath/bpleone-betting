@@ -67,6 +67,7 @@ DEFAULT_MODULES = [
     "mlb_hbp_props",
     # MLB context features (run BEFORE other props so they can consume)
     "mlb_lineup_quality_index",
+    "mlb_bullpen_fatigue_index",
     # MLB game props
     "mlb_first5_market",
     # MLB deep composites (depend on lineup_quality + per-pitcher props above)
@@ -129,6 +130,7 @@ DEFAULT_MODULES = [
     "tennis_double_faults_props",
     # Golf props (top-finish, etc.)
     "golf_top_finish_props",
+    "golf_leaderboard_probability",
     # UFC props
     "ufc_strikes_takedowns_props",
     # F1 props
