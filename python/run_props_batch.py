@@ -174,6 +174,7 @@ DEFAULT_MODULES = [
     "mlb_today_top_pitcher_props",
     "mlb_today_top_batter_props",
     "mlb_perfect_storm_alerts",
+    "mlb_today_game_grid",
     "mlb_today_master_brief",
     # Cross-sport alpha scanner (runs AFTER all per-sport props above)
     "cross_sport_alpha_scanner",
