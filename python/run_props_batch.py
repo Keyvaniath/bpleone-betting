@@ -73,6 +73,7 @@ DEFAULT_MODULES = [
     "mlb_starter_pitch_count_alerts",
     "mlb_pitcher_form_tracker",
     "mlb_park_weather_hr_index",
+    "mlb_platoon_matrix",
     # MLB game props
     "mlb_first5_market",
     # MLB deep composites (depend on lineup_quality + per-pitcher props above)
@@ -149,6 +150,8 @@ DEFAULT_MODULES = [
     "mlb_pitcher_edge_composite",
     # Team total edge synthesizer (consumes lineup_quality + pitcher_edge above)
     "mlb_team_total_edge",
+    # MLB stack builder (consumes lineup_quality + park + pitcher_edge + hot_streaks)
+    "mlb_stack_builder",
     # Today's alerts (consumes ALL MLB context features above)
     "mlb_todays_alerts_synthesizer",
     "mlb_today_lean_consensus",
