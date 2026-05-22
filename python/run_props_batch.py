@@ -96,6 +96,7 @@ DEFAULT_MODULES = [
     "nba_player_points_props",
     "nba_player_30plus_pts_alt",
     "nba_player_assists_props",
+    "nba_player_assists_alt_props",
     "nba_player_rebounds_props",
     "nba_player_rebounds_alt_props",
     "nba_player_threes_props",
