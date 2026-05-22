@@ -1,14 +1,13 @@
-# Tonight's Slate Brief — 2026-05-21
+# Tonight's Slate Brief — 2026-05-22
 
-## Slate Quality: 55/100 (MEDIUM)
-_0% lineups confirmed · 5 rookie SPs_
-**Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
+## Slate Quality: 54/100 (LOW)
+_0% lineups confirmed · 13 rookie SPs_
+**Recommendation:** Defensive sizing tonight; stick to highest-confidence plays.
 
 ## Slate
-- **7 games** scheduled
-- **32 best bets** scored: 0 DK · 0 PP · 6 NRFI · 5 SGP
-- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$24.39
-- **MC simulation:** EV +$43.33, 72% P(profit), p05 $-122.6 / p95 $197.87
+- **15 games** scheduled
+- **27 best bets** scored: 0 DK · 0 PP · 3 NRFI · 0 SGP
+- **MC simulation:** EV +$27.94, 69% P(profit), p05 $-131.23 / p95 $119.29
 
 ## Top 5 Best Bets
 1. **TOR @ NYY YRFI (1st-inning OVER 0.5)**  (79/100 ****, edge +19.5%)
@@ -25,59 +24,47 @@ _0% lineups confirmed · 5 rookie SPs_
    - Player prop quality score 1.184
    - Elite player
 
-## ⚠️ Trap Warnings — 12 flagged
-- **CLE @ DET 2-leg SGP @ -169** (low):
-   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
-- **NYM @ WSN 2-leg SGP @ -212** (low):
-   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
-- **ATL @ MIA 2-leg SGP @ -125** (low):
-   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
-- **OAK @ LAA 2-leg SGP @ -163** (low):
-   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
-- **PIT @ STL 2-leg SGP @ -118** (low):
-   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
+## ⚠️ Trap Warnings — 3 flagged
+- **TOR @ NYY YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +19.5% looks big but only 0 settled props on this player — model unproven
+- **OAK @ LAA YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +18.8% looks big but only 0 settled props on this player — model unproven
+- **COL @ ARI YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +12.3% looks big but only 0 settled props on this player — model unproven
+
+## Weather leans
+- **OVER lean** (wind out + warm): HOU @ CHC
 
 ## Hot streaks
-**Batters heating up:** Juan Soto (heat +6.53), Keibert Ruiz (heat +5.34), Corbin Carroll (heat +5.04)
-**Pitchers on a run:** David Peterson (heat +8.90), Sandy Alcantara (heat +4.41), Carlos Rodón (heat +3.84)
-
-## Top correlation-aware SGPs
-- **CLE @ DET** 2-leg @ -169 fair (joint 0.63, EV +25.0%)
-   - Casey Mize OVER 3.5 pitcher strikeouts
-   - Joey Cantillo UNDER 5.5 pitcher strikeouts
-- **NYM @ WSN** 2-leg @ -212 fair (joint 0.68, EV +25.0%)
-   - David Peterson OVER 3.5 pitcher strikeouts
-   - Cade Cavalli OVER 3.5 pitcher strikeouts
-- **ATL @ MIA** 2-leg @ -125 fair (joint 0.55, EV +25.0%)
-   - Sandy Alcantara UNDER 6.5 pitcher strikeouts
-   - Sandy Alcantara OVER 3.5 pitcher strikeouts
+**Batters heating up:** Juan Soto (heat +5.55), Jacob Young (heat +4.73), Michael Harris II (heat +4.70)
+**Pitchers on a run:** Cade Cavalli (heat +9.79), David Peterson (heat +9.50), Spencer Strider (heat +8.48)
 
 ## Bullpens GASSED tonight
 Athletics, Pittsburgh Pirates, San Diego Padres, Seattle Mariners, St. Louis Cardinals, Tampa Bay Rays, Texas Rangers, Minnesota Twins
 _Lean late-inning OVER on these games; fade their save situations._
 
 ## NRFI/YRFI strong leans
-- **YRFI** (1st-inning OVER): TOR @ NYY, OAK @ LAA, NYM @ WSN, COL @ ARI
+- **YRFI** (1st-inning OVER): TOR @ NYY, OAK @ LAA, COL @ ARI
 
 ## Golf -- THE CJ CUP Byron Nelson
-- **Leader:** S.Y. Noh (E) at #1
-- **Field:** 147 players  |  Status: Scheduled
-- **Play of the Tournament:** Wyndham Clark TOP10 @ +669 (model 13.0%, HIGH)
-   - P(top 10) 13.0% -- safest position-bet for #29.
+- **Leader:** Brooks Koepka (-8) at #1
+- **Field:** 147 players  |  Status: In Progress
+- **Play of the Tournament:** Scottie Scheffler TOP5 @ +582 (model 14.7%, HIGH)
+   - P(top 5) 14.7% -- lower variance than outright but compelling line.
 
 ## NBA -- PLAYOFFS
-- San Antonio Spurs @ Oklahoma City Thunder (62-20 vs 64-18) 113-122 | P(home) 100.0% fair +0 | Final
+- Cleveland Cavaliers @ New York Knicks (52-30 vs 53-29) 93-109 | P(home) 100.0% fair +0 | Final
 
 ## NHL -- PLAYOFFS
-- Vegas Golden Knights @ Colorado Avalanche (39-26-17 vs 55-16-11) 4-2 | P(home) 0.0% fair +0 | Final
+- Montreal Canadiens @ Carolina Hurricanes (48-24-10 vs 53-22-7) 6-2 | P(home) 0.0% fair +0 | Final
 
-## LoL Esports -- 1 live, 22 upcoming
-- [LCK] Dplus KIA vs HANJIN BRION BO3 | P(A) 46.0% fair +117/-117
-- [VCS] Saigon Zen Esport vs Saigon MVKE Academy BO3 | P(A) 46.3% fair +116/-116
-- [VCS] Saigon Warrior vs Saigon 9Gaming BO3 | P(A) 53.7% fair -116/+116
+## LoL Esports -- 2 live, 30 upcoming
+- [LCK] DN SOOPers vs KIWOOM DRX BO3 | P(A) 46.1% fair +117/-117
+- [LJL] DFM Academy vs RAYN Clocks BO3 | P(A) 49.6% fair +102/-102
 - [LCK Challengers] DK Challengers vs KRX Challengers BO3 | P(A) 39.5% fair +153/-153
 - [LCK Challengers] DNS Challengers vs HLE Challengers BO3 | P(A) 46.5% fair +115/-115
-- **LoL POT:** Suzhou LNG Esports ML vs Xi'an Team WE (LPL, BO5) (HIGH)
+- [LCK Challengers] Gen.G Global Academy vs NS Challengers BO3 | P(A) 36.4% fair +175/-175
+- **LoL POT:** Shenzhen NINJAS IN PYJAMAS ML vs EDWARD GAMING (LPL, BO5) (HIGH)
 
 ## Player Play of the Day -- across all sports (3521 candidates scanned)
 - **[LOL]** Inspired UNDER 3.5 Kills | model 61.7% fair -161 (ELITE)
@@ -87,4 +74,4 @@ _Lean late-inning OVER on these games; fade their save situations._
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | model 61.0% fair -157 (ELITE)
 
 ## Self-learning calibration (esports + KBO)
-- **LOL:** 2 settled | brier 0.2361 | ECE 0.0544
+- **LOL:** 3 settled | brier 0.2545 | ECE 0.2162

@@ -1,29 +1,31 @@
-# EdgeStat Slate — 2026-05-21
+# EdgeStat Slate — 2026-05-22
 
-_5 picks consolidated from POD + Alpha + Book Edges + Parlay-of-Day._
+_6 picks consolidated from POD + Alpha + Book Edges + Parlay-of-Day._
 
 ## ⭐ Play of the Day
 
-- **Alec Burleson** · PP_batter_hrr_under_4.5
-  Prob 71.7% · Odds -136 · Edge +24.3% · Kelly 0.250
+- **WSN @ ATL** · OVER_9.0
+  Prob 67.6% · Odds -110 · Edge +29.1% · Kelly 0.250
 
 ## 🎯 Alpha Pick
 
-- **Alec Burleson** · PP_batter_hrr_under_4.5
-  Prob 71.7% · Odds -136 · Edge +24.3% · Kelly 0.250
+- **WSN @ ATL** · OVER_9.0
+  Prob 67.6% · Odds -110 · Edge +29.1% · Kelly 0.250
 
 ## 📊 Book Edges
 
-- **OAK @ LAA · AWAY (AWAY)** · TEAM_ML
-  Prob 54.8% · Odds +101 · Edge +10.1% · Kelly 0.100
-- **COL @ ARI · OVER · O/U 9.0** · TOTAL_OVER
-  Prob 55.4% · Odds -110 · Edge +5.7% · Kelly 0.062
+- **HOU @ CHC · AWAY (AWAY)** · TEAM_ML
+  Prob 54.6% · Odds +126 · Edge +23.3% · Kelly 0.185
+- **OAK @ SDP · AWAY (AWAY)** · TEAM_ML
+  Prob 56.7% · Odds +112 · Edge +20.1% · Kelly 0.180
+- **OAK @ SDP · UNDER · O/U 8.0** · TOTAL_UNDER
+  Prob 61.9% · Odds -110 · Edge +18.1% · Kelly 0.199
 
 ## 🎲 Parlay
 
-- **Alec Burleson + Keibert Ruiz** · 2-leg
-  Prob 51.3% · Odds +201 · Edge +54.6% · Kelly 0.050
+- **WSN @ ATL + Alec Burleson** · 2-leg
+  Prob 48.5% · Odds +231 · Edge +60.6% · Kelly 0.050
 
 ---
-_Generated 2026-05-22T02:35:55 UTC by EdgeStat._
+_Generated 2026-05-22T07:53:37 UTC by EdgeStat._
 _Stakes assume ¼-Kelly fractional sizing on a flat bankroll._
