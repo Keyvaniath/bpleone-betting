@@ -117,6 +117,7 @@ DEFAULT_MODULES = [
     # Soccer props
     "soccer_corners_props",
     "soccer_btts_props",
+    "soccer_first_to_score_props",
     "soccer_goalscorer_props",
     "soccer_cards_props",
     "soccer_total_shots_props",
