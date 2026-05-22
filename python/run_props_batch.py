@@ -132,6 +132,7 @@ DEFAULT_MODULES = [
     # Soccer props
     "soccer_corners_props",
     "soccer_btts_props",
+    "soccer_total_goals_props",
     "soccer_first_to_score_props",
     "soccer_goalscorer_props",
     "soccer_cards_props",
@@ -161,6 +162,7 @@ DEFAULT_MODULES = [
     # Top-edge aggregators (consume per-prop module outputs)
     "mlb_today_top_pitcher_props",
     "mlb_today_top_batter_props",
+    "mlb_perfect_storm_alerts",
     "mlb_today_master_brief",
     # Cross-sport alpha scanner (runs AFTER all per-sport props above)
     "cross_sport_alpha_scanner",
