@@ -108,6 +108,7 @@ DEFAULT_MODULES = [
     "nhl_skater_sog_props",
     "nhl_skater_points_props",
     "nhl_skater_2plus_points",
+    "nhl_skater_2plus_goals",
     "nhl_goalie_shutout_props",
     "nhl_first_goalscorer_props",
     "nhl_goalie_win_props",
@@ -131,6 +132,8 @@ DEFAULT_MODULES = [
     "f1_qualifying_predictor",
     # Pitcher edge composite (consumes lineup_quality + K/outs/QS props above)
     "mlb_pitcher_edge_composite",
+    # Team total edge synthesizer (consumes lineup_quality + pitcher_edge above)
+    "mlb_team_total_edge",
     # Confluence + aggregation (must run AFTER all per-sport props above)
     "confluence_top_5",
     # book_vs_model_team runs FIRST so alpha_pick can pull from its output
