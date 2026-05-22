@@ -137,6 +137,7 @@ DEFAULT_MODULES = [
     "nhl_goalie_win_props",
     "nhl_goalie_fatigue_index",
     "nhl_puck_line_props",
+    "nhl_team_total_edge",
     # Soccer props
     "soccer_corners_props",
     "soccer_btts_props",
