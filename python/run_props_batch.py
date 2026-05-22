@@ -126,6 +126,7 @@ DEFAULT_MODULES = [
     "tennis_total_games_props",
     "tennis_set_score_props",
     "tennis_aces_props",
+    "tennis_double_faults_props",
     # Golf props (top-finish, etc.)
     "golf_top_finish_props",
     # UFC props
