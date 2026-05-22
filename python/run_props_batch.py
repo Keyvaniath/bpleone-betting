@@ -117,6 +117,7 @@ DEFAULT_MODULES = [
     "nhl_skater_hits_blocks_props",
     "nhl_period_totals_props",
     "nhl_goalie_saves_props",
+    "nhl_goalie_30plus_saves",
     "nhl_anytime_goal_props",
     "nhl_skater_sog_props",
     "nhl_skater_3plus_sog",
@@ -154,6 +155,7 @@ DEFAULT_MODULES = [
     "mlb_pitcher_edge_composite",
     # Team total edge synthesizer (consumes lineup_quality + pitcher_edge above)
     "mlb_team_total_edge",
+    "mlb_team_5plus_runs",
     # MLB stack builder (consumes lineup_quality + park + pitcher_edge + hot_streaks)
     "mlb_stack_builder",
     # Today's alerts (consumes ALL MLB context features above)
