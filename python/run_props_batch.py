@@ -157,6 +157,9 @@ DEFAULT_MODULES = [
     # Today's alerts (consumes ALL MLB context features above)
     "mlb_todays_alerts_synthesizer",
     "mlb_today_lean_consensus",
+    # Top-edge aggregators (consume per-prop module outputs)
+    "mlb_today_top_pitcher_props",
+    "mlb_today_top_batter_props",
     # Cross-sport alpha scanner (runs AFTER all per-sport props above)
     "cross_sport_alpha_scanner",
     # Confluence + aggregation (must run AFTER all per-sport props above)
