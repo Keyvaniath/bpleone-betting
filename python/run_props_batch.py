@@ -59,6 +59,7 @@ DEFAULT_MODULES = [
     # MLB pitcher props
     "mlb_pitcher_walks_props",
     "mlb_pitcher_2plus_walks_yn",
+    "mlb_pitcher_k_minus_bb",
     "mlb_pitcher_outs_props",
     "mlb_pitcher_er_props",
     "mlb_pitcher_hits_allowed_props",
@@ -142,6 +143,7 @@ DEFAULT_MODULES = [
     "soccer_goalscorer_props",
     "soccer_cards_props",
     "soccer_total_shots_props",
+    "soccer_player_shots_props",
     # Tennis props
     "tennis_match_win_props",
     "tennis_total_games_props",
