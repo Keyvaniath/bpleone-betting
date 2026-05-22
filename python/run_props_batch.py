@@ -87,6 +87,7 @@ DEFAULT_MODULES = [
     "nba_player_points_props",
     "nba_player_assists_props",
     "nba_player_rebounds_props",
+    "nba_player_rebounds_alt_props",
     "nba_player_threes_props",
     "nba_player_blocks_steals_props",
     "nba_double_double_props",
@@ -147,6 +148,7 @@ DEFAULT_MODULES = [
     "mlb_team_total_edge",
     # Today's alerts (consumes ALL MLB context features above)
     "mlb_todays_alerts_synthesizer",
+    "mlb_today_lean_consensus",
     # Confluence + aggregation (must run AFTER all per-sport props above)
     "confluence_top_5",
     # book_vs_model_team runs FIRST so alpha_pick can pull from its output
