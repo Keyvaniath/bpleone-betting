@@ -74,6 +74,7 @@ DEFAULT_MODULES = [
     "mlb_pitcher_form_tracker",
     "mlb_park_weather_hr_index",
     "mlb_platoon_matrix",
+    "mlb_closer_availability_tracker",
     # MLB game props
     "mlb_first5_market",
     # MLB deep composites (depend on lineup_quality + per-pitcher props above)
@@ -118,6 +119,7 @@ DEFAULT_MODULES = [
     "nhl_anytime_goal_props",
     "nhl_skater_sog_props",
     "nhl_skater_3plus_sog",
+    "nhl_skater_4plus_sog",
     "nhl_skater_points_props",
     "nhl_skater_2plus_points",
     "nhl_skater_2plus_goals",
