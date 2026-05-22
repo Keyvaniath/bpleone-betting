@@ -68,6 +68,7 @@ DEFAULT_MODULES = [
     "mlb_pitcher_rest_advantage",
     "mlb_pitcher_win_props",
     "mlb_pitcher_1st_inning_er",
+    "mlb_pitcher_1st_inning_k",
     "mlb_run_line_props",
     "mlb_hbp_props",
     # MLB context features (run BEFORE other props so they can consume)
