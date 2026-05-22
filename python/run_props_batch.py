@@ -71,6 +71,7 @@ DEFAULT_MODULES = [
     "mlb_lineup_quality_index",
     "mlb_bullpen_fatigue_index",
     "mlb_starter_pitch_count_alerts",
+    "mlb_pitcher_form_tracker",
     "mlb_park_weather_hr_index",
     # MLB game props
     "mlb_first5_market",
@@ -93,6 +94,7 @@ DEFAULT_MODULES = [
     "nba_double_double_props",
     "nba_player_turnovers_props",
     "nba_player_pra_props",
+    "nba_player_pr_combo_props",
     "nba_player_ft_attempts_props",
     "nba_triple_double_props",
     "nba_player_minutes_props",
