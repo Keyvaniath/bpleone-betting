@@ -48,6 +48,7 @@ DEFAULT_MODULES = [
     "mlb_to_score_run_yn",
     "mlb_first_inning_hr_yn",
     "mlb_team_first_inning_run",
+    "mlb_team_first_3_innings_runs",
     "mlb_to_hit_hr_yn",
     "mlb_first_batter_retired_props",
     "mlb_batter_walks_props",
@@ -88,6 +89,7 @@ DEFAULT_MODULES = [
     "mlb_extra_innings_prop",
     # NBA player props
     "nba_player_points_props",
+    "nba_player_30plus_pts_alt",
     "nba_player_assists_props",
     "nba_player_rebounds_props",
     "nba_player_rebounds_alt_props",
