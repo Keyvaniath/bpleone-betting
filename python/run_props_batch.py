@@ -103,6 +103,7 @@ DEFAULT_MODULES = [
     "nba_player_pra_props",
     "nba_player_pr_combo_props",
     "nba_player_pa_combo_props",
+    "nba_player_ra_combo_props",
     "nba_player_ft_attempts_props",
     "nba_triple_double_props",
     "nba_player_minutes_props",
