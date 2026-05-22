@@ -78,6 +78,7 @@ DEFAULT_MODULES = [
     "mlb_starter_pitch_count_alerts",
     "mlb_pitcher_form_tracker",
     "mlb_park_weather_hr_index",
+    "mlb_weather_advisory",
     "mlb_platoon_matrix",
     "mlb_closer_availability_tracker",
     # MLB game props
