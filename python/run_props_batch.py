@@ -69,6 +69,8 @@ DEFAULT_MODULES = [
     # MLB context features (run BEFORE other props so they can consume)
     "mlb_lineup_quality_index",
     "mlb_bullpen_fatigue_index",
+    "mlb_starter_pitch_count_alerts",
+    "mlb_park_weather_hr_index",
     # MLB game props
     "mlb_first5_market",
     # MLB deep composites (depend on lineup_quality + per-pitcher props above)
