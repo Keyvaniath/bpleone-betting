@@ -4,35 +4,34 @@
 
 _Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
 
-_Generated at 2026-05-22T21:21:20 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-05-22T23:02:41 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
 **WSN @ ATL - OVER_8.5**
 - Market: -110
-- Model probability: 74.3%
-- Raw edge: +41.89%
+- Model probability: 78.5%
+- Raw edge: +49.91%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
 
-## Full Slate (13 games)
+## Full Slate (12 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 6:40p ET | CLE @ PHI | Citizens Bank Park | 54F 6mph | -- |
 | 7:05p ET | TBR @ NYY | Yankee Stadium | 55F 4mph | OVER_7.5 +28.88% |
 | 7:07p ET | PIT @ TOR | Rogers Centre | indoor | PIT_ML +7.2% |
-| 7:10p ET | MIN @ BOS | Fenway Park | 52F 5mph | MIN_ML +8.85% |
+| 7:10p ET | MIN @ BOS | Fenway Park | 52F 3mph | UNDER_7.5 +9.61% |
 | 7:10p ET | NYM @ MIA | loanDepot park | indoor | UNDER_8.0 +22.33% |
-| 7:15p ET | DET @ BAL | Oriole Park at Camden Yards | 57F 3mph | OVER_8.0 +24.39% |
-| 7:15p ET | WSN @ ATL | Truist Park | 68F 0mph | OVER_8.5 +41.89% |
-| 7:40p ET | SEA @ KCR | Kauffman Stadium | 64F 6mph | UNDER_8.0 +3.26% |
-| 7:40p ET | LAD @ MIL | American Family Field | indoor | LAD_ML +21.09% |
-| 9:38p ET | TEX @ LAA | Angel Stadium | 60F 4mph | TEX_ML +3.45% |
+| 7:15p ET | DET @ BAL | Oriole Park at Camden Yards | 55F 3mph | OVER_8.0 +22.85% |
+| 7:15p ET | WSN @ ATL | Truist Park | 69F 5mph | OVER_8.5 +49.91% |
+| 7:40p ET | SEA @ KCR | Kauffman Stadium | 63F 5mph | UNDER_8.0 +5.63% |
+| 7:40p ET | LAD @ MIL | American Family Field | indoor | LAD_ML +19.98% |
+| 9:38p ET | TEX @ LAA | Angel Stadium | 61F 4mph | TEX_ML +5.38% |
 | 9:40p ET | COL @ ARI | Chase Field | indoor | ARI_ML +16.16% |
-| 9:40p ET | OAK @ SDP | Petco Park | 62F 3mph | OAK_ML +30.64% |
-| 10:15p ET | CHW @ SFG | Oracle Park | 53F 11mph | CHW_ML +30.58% |
+| 9:40p ET | OAK @ SDP | Petco Park | 62F 3mph | OAK_ML +29.38% |
+| 10:15p ET | CHW @ SFG | Oracle Park | 53F 10mph | CHW_ML +30.45% |
 
 ## Parlays - top 5
 
@@ -71,19 +70,18 @@ Cumulative graded plays: 118201. Wins: 87361. Hit rate: 73.9%.
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| CHW @ SFG | 69.8% | -231 | 1.92 | +468 | -468 |
-| CLE @ PHI | 50.5% | -102 | 3.31 | +124 | -124 |
+| CHW @ SFG | 69.8% | -231 | 1.91 | +468 | -468 |
 | COL @ ARI | 41.0% | +144 | 4.46 | -220 | +220 |
-| DET @ BAL | 32.1% | +211 | 20.52 | +210 | -210 |
+| DET @ BAL | 32.1% | +211 | 20.58 | +210 | -210 |
 | LAD @ MIL | 47.2% | +112 | 3.75 | +299 | -299 |
-| MIN @ BOS | 61.8% | -161 | 2.44 | +164 | -164 |
+| MIN @ BOS | 61.8% | -161 | 2.45 | +165 | -165 |
 | NYM @ MIA | 30.1% | +232 | 6.0 | +138 | -138 |
-| OAK @ SDP | 41.9% | +139 | 4.33 | +324 | -324 |
+| OAK @ SDP | 41.9% | +139 | 4.34 | +324 | -324 |
 | PIT @ TOR | 34.0% | +194 | 5.39 | +143 | -143 |
-| SEA @ KCR | 30.9% | +223 | 5.74 | +182 | -182 |
+| SEA @ KCR | 30.9% | +223 | 5.73 | +182 | -182 |
 | TBR @ NYY | 52.5% | -111 | 3.13 | +158 | -158 |
-| TEX @ LAA | 40.5% | +147 | 12.09 | +342 | -342 |
-| WSN @ ATL | 39.7% | +152 | 4.62 | -289 | +289 |
+| TEX @ LAA | 40.5% | +147 | 12.12 | +342 | -342 |
+| WSN @ ATL | 39.7% | +152 | 4.63 | -302 | +302 |
 
 ## Travel / Rest Flags
 

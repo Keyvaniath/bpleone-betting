@@ -4,28 +4,28 @@ _6 picks consolidated from POD + Alpha + Book Edges + Parlay-of-Day._
 
 ## ⭐ Play of the Day
 
-- **WSN @ ATL** · OVER_8.5
-  Prob 65.5% · Odds -110 · Edge +25.1% · Kelly 0.250
+- **Andy Pages** · PP_batter_hrr_over_0.5
+  Prob 71.7% · Odds -136 · Edge +24.3% · Kelly 0.250
 
 ## 🎯 Alpha Pick
 
-- **WSN @ ATL** · OVER_8.5
-  Prob 65.5% · Odds -110 · Edge +25.1% · Kelly 0.250
+- **Andy Pages** · PP_batter_hrr_over_0.5
+  Prob 71.7% · Odds -136 · Edge +24.3% · Kelly 0.250
 
 ## 📊 Book Edges
 
-- **WSN @ ATL · OVER · O/U 8.5** · TOTAL_OVER
-  Prob 64.6% · Odds -110 · Edge +23.3% · Kelly 0.257
 - **OAK @ SDP · AWAY (AWAY)** · TEAM_ML
-  Prob 57.4% · Odds +107 · Edge +18.9% · Kelly 0.176
+  Prob 57.8% · Odds +105 · Edge +18.4% · Kelly 0.175
 - **CHW @ SFG · AWAY (AWAY)** · TEAM_ML
-  Prob 63.0% · Odds -116 · Edge +17.4% · Kelly 0.202
+  Prob 62.8% · Odds -115 · Edge +17.4% · Kelly 0.201
+- **TBR @ NYY · OVER · O/U 7.5** · TOTAL_OVER
+  Prob 61.4% · Odds -110 · Edge +17.2% · Kelly 0.189
 
 ## 🎲 Parlay
 
-- **WSN @ ATL + Andy Pages** · 2-leg
-  Prob 47.0% · Odds +231 · Edge +55.6% · Kelly 0.050
+- **Andy Pages + Vinnie Pasquantino** · 2-leg
+  Prob 51.3% · Odds +201 · Edge +54.6% · Kelly 0.050
 
 ---
-_Generated 2026-05-22T21:20:30 UTC by EdgeStat._
+_Generated 2026-05-22T23:01:26 UTC by EdgeStat._
 _Stakes assume ¼-Kelly fractional sizing on a flat bankroll._

@@ -10,9 +10,9 @@
   - 🟢 Edge Count: 100/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.6)
-- **Total games on board:** 192
-- **Strong home favorites:** 35 | **Strong road dogs:** 6
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.591)
+- **Total games on board:** 175
+- **Strong home favorites:** 31 | **Strong road dogs:** 9
 
 ## 🎯 Top 5 Best Bets
 1. **TBR @ NYY 4-leg SGP @ -241** (85/100 ★★★★★)
@@ -22,17 +22,18 @@
 5. **WSN @ ATL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** WSN @ ATL OVER_9.0 -- 67% / +28.5% (score 2.5)
+- [STRONG] **[MLB]** WSN @ ATL OVER_8.5 -- 66% / +25.1% (score 2.5)
 
 ## 📉 Strong UNDER Signals
-- [STRONG 5.6] **LAD @ MIL** model 7.46 vs market 8.5
+- [STRONG 5.7] **NYM @ MIA** model 7.16 vs market 8.0
+- [STRONG 5.2] **CHW @ SFG** model 6.16 vs market 7.0
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **13-2** (86.7% hit rate)
 - Net units: **+0.47u** | ROI: **+50.4%**
 - Last 7d: 13-2 (86.7%) | net +0.47u
 
-**Today's 9 Locks:**
+**Today's 12 Locks:**
 - [MLB] **WSN @ ATL** OVER_9.0 · p=68% edge=+29.1% qK=0.062u
 - [MLB] **HOU @ CHC** ML_AWAY · p=55% edge=+25.0% qK=0.050u
 - [MLB] **HOU @ CHC** HOU_ML · p=55% edge=+25.0% qK=0.050u
@@ -42,14 +43,17 @@
 - [MLB-PP] **Vinnie Pasquantino** PP_batter_doubles_under_0.5 · p=72% edge=+24.3% qK=0.062u
 - [MLB-PP] **Willson Contreras** PP_batter_runs_under_1.5 · p=72% edge=+24.3% qK=0.062u
 - [MLB-PP] **Mike Trout** PP_batter_rbis_under_1.5 · p=72% edge=+24.3% qK=0.062u
+- [MLB] **WSN @ ATL** OVER_8.5 · p=66% edge=+25.1% qK=0.062u
+- [MLB] **OAK @ SDP** ML_AWAY · p=60% edge=+24.5% qK=0.057u
+- [MLB] **OAK @ SDP** OAK_ML · p=60% edge=+24.5% qK=0.057u
 
 ## 🎰 Top Balanced 2-Leg Parlays (40-65% joint)
-- [MLB] WSN @ ATL OVER_9.0 + [MLB-PP] Andy Pages PP_batter_hrr_over_0
-  Joint: 48% | Fair: 231 | Edge: +59.8%
-- [MLB] WSN @ ATL OVER_9.0 + [MLB-PP] Vinnie Pasquantino PP_batter_doubles_un
-  Joint: 48% | Fair: 231 | Edge: +59.7%
-- [MLB] WSN @ ATL OVER_9.0 + [MLB-PP] Willson Contreras PP_batter_runs_under
-  Joint: 48% | Fair: 231 | Edge: +59.7%
+- [MLB] WSN @ ATL OVER_8.5 + [MLB-PP] Andy Pages PP_batter_hrr_over_0
+  Joint: 47% | Fair: 231 | Edge: +55.6%
+- [MLB] WSN @ ATL OVER_8.5 + [MLB-PP] Vinnie Pasquantino PP_batter_doubles_un
+  Joint: 47% | Fair: 231 | Edge: +55.6%
+- [MLB] WSN @ ATL OVER_8.5 + [MLB-PP] Willson Contreras PP_batter_runs_under
+  Joint: 47% | Fair: 231 | Edge: +55.6%
 
 ## 🎮 Player Play of the Day (cross-sport)
 - **[LOL]** Inspired UNDER 3.5 Kills | MED conviction · model 61.7% fair -161
@@ -58,29 +62,29 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (20)
+## ⚡ Pre-Game HIGH Conviction (14)
 - [EPL] **Manchester City** HOME (2-2 L10) · model 74.9% fair -299
 - [MLS] **Chicago Fire FC** HOME (2-2 L10) · model 74.3% fair -289
 - [MLS] **Houston Dynamo FC** AWAY (3-1 L10) · model 74.1% fair -286
-- [CWS] **Texas Longhorns** HOME (2-0 L10) · model 72.2% fair -260
-- [CWS] **Florida State Seminoles** HOME (1-1 L10) · model 72.2% fair -259
-- [CWS] **Northeastern Huskies** HOME (1-2 L10) · model 72.1% fair -258
+- [WNBA] **Golden State Valkyries** AWAY (3-1 L10) · model 72.7% fair -267
+- [CWS] **Texas Longhorns** HOME (2-0 L10) · model 72.4% fair -262
 - [EPL] **Burnley** HOME (0-3 L10) · model 71.9% fair -256
 - [MLS] **New England Revolution** AWAY (3-1 L10) · model 70.8% fair -243
-- [CWS] **Liberty Flames** HOME (3-0 L10) · model 70.3% fair -237
 - [MLS] **Nashville SC** HOME (2-2 L10) · model 69.9% fair -233
+- [CWS] **Texas A&M Aggies** HOME (2-0 L10) · model 68.7% fair -220
+- [CWS] **West Virginia Mountaineers** HOME (2-1 L10) · model 68.1% fair -214
 
 ## 🔥/❄️ Heat / Cold Signals
 - Hot teams: **26** | Cold teams: **31** | Over-heavy: 0 | Under-heavy: 7
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (39)
-- RESIDUAL_DIVERGENCE: **39**
-  - Charlotte FC (MLS): Charlotte FC OUTPERFORMING expected margin by 7.8pts in recent games -- model bias may persist
-  - New England Revolution (MLS): New England Revolution UNDERPERFORMING expected margin by 6.2pts in recent games -- model bias may persist
-  - Orlando City SC (MLS): Orlando City SC UNDERPERFORMING expected margin by 8.1pts in recent games -- model bias may persist
-  - Colorado Rapids (MLS): Colorado Rapids OUTPERFORMING expected margin by 6.3pts in recent games -- model bias may persist
-  - Crystal Palace (EPL): Crystal Palace OUTPERFORMING expected margin by 7.6pts in recent games -- model bias may persist
+## ⚠️ Anomaly Detector (36)
+- RESIDUAL_DIVERGENCE: **36**
+  - Dallas Wings (WNBA): Dallas Wings OUTPERFORMING expected margin by 8.8pts in recent games -- model bias may persist
+  - Indiana Fever (WNBA): Indiana Fever OUTPERFORMING expected margin by 6.4pts in recent games -- model bias may persist
+  - Golden State Valkyries (WNBA): Golden State Valkyries OUTPERFORMING expected margin by 10.2pts in recent games -- model bias may persist
+  - Seattle Storm (WNBA): Seattle Storm UNDERPERFORMING expected margin by 8.5pts in recent games -- model bias may persist
+  - Connecticut Sun (WNBA): Connecticut Sun UNDERPERFORMING expected margin by 6.8pts in recent games -- model bias may persist
 
 ## 💰 Today's Portfolio (8 picks)
 - Total stake: **$340.0** (34.0% of $1000 bankroll)
@@ -92,19 +96,19 @@
   - #5 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
 
 ## 🎯 Convergence Picks (23 stacked games)
-- ELITE: **8** · HIGH: 8 · MED: 7
+- ELITE: **7** · HIGH: 9 · MED: 7
   - [ELITE] Arsenal @ Crystal Palace : 8 signals (PREGAME, PREGAME, HEAT_COLD, HEAT_COLD)
   - [ELITE] New England Revolution @ Charlotte FC : 5 signals (PREGAME, ANOMALY, ANOMALY, ATS)
-  - [ELITE] Cleveland Cavaliers @ New York Knicks : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
   - [ELITE] Orlando City SC @ FC Cincinnati : 4 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
   - [ELITE] Wolverhampton Wanderers @ Burnley : 4 signals (PREGAME, HEAT_COLD, HEAT_COLD, ATS)
+  - [ELITE] Newcastle United @ Fulham : 4 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (9)
+## ⚾ Top MLB Pitcher K Plays (10)
+- **Keegan Akin** OVER 5.5 K (77%) fair -328
+- **Richard Lovelady** OVER 7.5 K (76%) fair -315
 - **Michael Soroka** OVER 4.5 K (73%) fair -270
 - **Payton Tolle** OVER 4.5 K (70%) fair -236
 - **Gavin Williams** OVER 5.5 K (70%) fair -233
-- **Spencer Arrighetti** OVER 4.5 K (69%) fair -224
-- **Eury Pérez** OVER 4.5 K (68%) fair -216
 
 ## 🏀 NBA Player Heat (1 HOT / 1 COLD)
   - 🔥 **Dylan Harper** (SA): L5 17.4/7.0/2.8 vs season 14.2/4.6/3.0 [REB +2.4]
@@ -118,15 +122,15 @@
   - [COIN_FLIP] **Jaqueline Amorim** (10-2-0) vs Loma Lookboonmee -- fair -129
 
 ## ⛳ Golf Player Heat (from THE CJ CUP Byron Nelson)
-  - 🔥 T1 **Taylor Moore** (USA): -9 total -- finished T1
-  - 🔥 T2 **Jesper Svensson** (Sweden): -8 total -- finished T2
-  - 🔥 T3 **Brooks Koepka** (USA): -8 total -- finished T3
-  - 🔥 T4 **Tyler Duncan** (USA): -7 total -- finished T4
-  - 🔥 T5 **Kensei Hirata** (Japan): -7 total -- finished T5
+  - 🔥 T1 **Si Woo Kim** (South Korea): -16 total -- finished T1
+  - 🔥 T2 **Sungjae Im** (South Korea): -13 total -- finished T2
+  - 🔥 T3 **Kensei Hirata** (Japan): -13 total -- finished T3
+  - 🔥 T4 **Keith Mitchell** (USA): -13 total -- finished T4
+  - 🔥 T5 **Jordan Spieth** (USA): -12 total -- finished T5
 
-## 🔥 MLB Batter Heat (29 HOT / 48 COLD)
+## 🔥 MLB Batter Heat (29 HOT / 47 COLD)
+  - 🔥 **Alec Bohm** (PHI): L14 .375 / season .219 (+156pts)
   - 🔥 **Blaze Alexander** (BAL): L14 .379 / season .235 (+144pts)
-  - 🔥 **Alec Bohm** (PHI): L14 .353 / season .220 (+133pts)
   - 🔥 **Carson Benge** (NYM): L14 .367 / season .262 (+105pts)
   - 🔥 **Cedric Mullins** (TB): L14 .283 / season .181 (+102pts)
   - 🔥 **Mike Yastrzemski** (ATL): L14 .333 / season .234 (+99pts)
@@ -136,12 +140,12 @@
   - ❄️ **Edouard Julien** (COL): L14 .079 / season .216 (-137pts) -- FADE props
   - ❄️ **Dalton Rushing** (LAD): L14 .132 / season .260 (-128pts) -- FADE props
 
-## 📈 Streak Regression Alerts (30)
+## 📈 Streak Regression Alerts (31)
+- [NHL] Vegas Golden Knights on W3 L10 4-1 -- Vegas Golden Knights on W3 -- no historical sample
 - [MLS] Austin FC on L3 L10 1-3 -- Austin FC on L3 -- no historical sample
 - [MLS] Minnesota United FC on L3 L10 1-3 -- Minnesota United FC on L3 -- no historical sample
 - [MLS] D.C. United on L3 L10 1-3 -- D.C. United on L3 -- no historical sample
 - [MLS] FC Cincinnati on L3 L10 1-3 -- FC Cincinnati on L3 -- no historical sample
-- [MLS] Toronto FC on L3 L10 0-3 -- Toronto FC on L3 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**
