@@ -105,6 +105,7 @@ DEFAULT_MODULES = [
     "nba_team_alts_props",
     "nba_pace_adjusted",
     "nba_team_total_props",
+    "nba_team_total_edge",
     # WNBA props
     "wnba_player_pts_props",
     "wnba_player_reb_ast_props",
@@ -160,6 +161,7 @@ DEFAULT_MODULES = [
     # Top-edge aggregators (consume per-prop module outputs)
     "mlb_today_top_pitcher_props",
     "mlb_today_top_batter_props",
+    "mlb_today_master_brief",
     # Cross-sport alpha scanner (runs AFTER all per-sport props above)
     "cross_sport_alpha_scanner",
     # Confluence + aggregation (must run AFTER all per-sport props above)
