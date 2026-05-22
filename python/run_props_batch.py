@@ -95,6 +95,7 @@ DEFAULT_MODULES = [
     "nba_player_turnovers_props",
     "nba_player_pra_props",
     "nba_player_pr_combo_props",
+    "nba_player_pa_combo_props",
     "nba_player_ft_attempts_props",
     "nba_triple_double_props",
     "nba_player_minutes_props",
@@ -151,6 +152,8 @@ DEFAULT_MODULES = [
     # Today's alerts (consumes ALL MLB context features above)
     "mlb_todays_alerts_synthesizer",
     "mlb_today_lean_consensus",
+    # Cross-sport alpha scanner (runs AFTER all per-sport props above)
+    "cross_sport_alpha_scanner",
     # Confluence + aggregation (must run AFTER all per-sport props above)
     "confluence_top_5",
     # book_vs_model_team runs FIRST so alpha_pick can pull from its output
