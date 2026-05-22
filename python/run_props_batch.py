@@ -118,6 +118,7 @@ DEFAULT_MODULES = [
     "nba_team_total_edge",
     # WNBA props
     "wnba_player_pts_props",
+    "wnba_player_20plus_pts_alt",
     "wnba_player_reb_ast_props",
     "wnba_player_threes_props",
     "wnba_player_blocks_steals_props",
