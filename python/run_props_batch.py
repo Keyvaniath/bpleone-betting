@@ -129,6 +129,7 @@ DEFAULT_MODULES = [
     "nhl_skater_hits_blocks_props",
     "nhl_skater_3plus_hits",
     "nhl_skater_4plus_hits",
+    "nhl_skater_blocks_alt",
     "nhl_period_totals_props",
     "nhl_goalie_saves_props",
     "nhl_goalie_30plus_saves",
