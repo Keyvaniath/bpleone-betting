@@ -4,14 +4,14 @@
 
 _Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
 
-_Generated at 2026-05-23T21:09:42 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-05-23T22:51:27 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
-**STL @ CIN - OVER_10.0**
+**STL @ CIN - OVER_9.5**
 - Market: -110
-- Model probability: 72.6%
-- Raw edge: +38.53%
+- Model probability: 79.8%
+- Raw edge: +52.41%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
@@ -20,11 +20,11 @@ _Generated at 2026-05-23T21:09:42 UTC. Game lines source: **Bovada (fallback -- 
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 7:15p ET | STL @ CIN | Great American Ball Park | 64F 3mph | OVER_10.0 +38.53% |
-| 7:15p ET | LAD @ MIL | American Family Field | indoor | OVER_8.5 +4.02% |
-| 9:40p ET | OAK @ SDP | Petco Park | 62F 4mph | UNDER_8.0 +30.54% |
-| 10:05p ET | TEX @ LAA | Angel Stadium | 61F 3mph | OVER_7.5 +2.33% |
-| 10:10p ET | COL @ ARI | Chase Field | indoor | OVER_9.0 +7.74% |
+| 7:15p ET | STL @ CIN | Great American Ball Park | 66F 5mph | OVER_9.5 +52.41% |
+| 7:15p ET | LAD @ MIL | American Family Field | indoor | MIL_ML +21.8% |
+| 9:40p ET | OAK @ SDP | Petco Park | 62F 1mph | OAK_ML +51.98% |
+| 10:05p ET | TEX @ LAA | Angel Stadium | 62F 4mph | OVER_7.5 +4.76% |
+| 10:10p ET | COL @ ARI | Chase Field | indoor | -- |
 
 ## Parlays - top 4
 
@@ -63,9 +63,9 @@ Cumulative graded plays: 118201. Wins: 87361. Hit rate: 73.9%.
 |---|---|---|---|---|---|
 | COL @ ARI | 21.0% | +376 | 7.8 | -115 | +115 |
 | LAD @ MIL | 36.9% | +171 | 4.99 | +176 | -176 |
-| OAK @ SDP | 47.7% | +110 | 3.64 | +324 | -324 |
-| STL @ CIN | 41.8% | +139 | 4.44 | +414 | -414 |
-| TEX @ LAA | 66.1% | -195 | 2.11 | +237 | -237 |
+| OAK @ SDP | 47.7% | +110 | 3.69 | +324 | -324 |
+| STL @ CIN | 41.8% | +139 | 4.51 | +416 | -416 |
+| TEX @ LAA | 66.1% | -195 | 2.11 | +236 | -236 |
 
 ## Team Form (last 10)
 
