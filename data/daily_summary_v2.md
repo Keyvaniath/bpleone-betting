@@ -1,60 +1,53 @@
 # EdgeStat Daily Summary — 2026-05-23
 
-## 🏥 Model Health: 82.9/100 [HEALTHY]
+## 🏥 Model Health: 83.1/100 [HEALTHY]
 - Solid health - some minor issues to monitor
   - 🟢 Calibration Freshness: 99.9/100
   - 🟢 Hit Rate Trend: 84.3/100
   - 🔴 Brier Trend: 52.3/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟡 Data Health: 77.8/100
-  - 🟢 Edge Count: 100/100
+  - 🟢 Data Health: 88.9/100
+  - 🟢 Edge Count: 80.0/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.568)
-- **Total games on board:** 183
-- **Strong home favorites:** 26 | **Strong road dogs:** 18
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.58)
+- **Total games on board:** 122
+- **Strong home favorites:** 12 | **Strong road dogs:** 6
 
 ## 🎯 Top 5 Best Bets
-1. **NYM @ MIA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-2. **SEA @ KCR YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+1. **COL @ ARI YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+2. **STL @ CIN YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 3. **DET @ BAL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-4. **PIT @ TOR YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
-5. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
+4. **WSN @ ATL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+5. **HOU @ CHC YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB-PP]** Dalton Rushing PP_batter_hrr_over_0.5 -- 72% / +24.3% (score 2.5)
+- [STRONG] **[MLB]** TBR @ NYY OVER_7.0 -- 67% / +27.4% (score 2.5)
+- [STRONG] **[MLB]** NYM @ MIA UNDER_7.5 -- 66% / +26.6% (score 2.5)
+- [STRONG] **[MLB]** WSN @ ATL OVER_9.0 -- 65% / +24.2% (score 2.5)
 
 ## 📉 Strong UNDER Signals
-- [STRONG 5.7] **NYM @ MIA** model 7.16 vs market 8.0
+- [ELITE 8.0] **NYM @ MIA** model 5.91 vs market 7.5
 
 ## 🔒 Locks of the Day -- Track Record
-- All-time: **13-2** (86.7% hit rate)
-- Net units: **+0.47u** | ROI: **+50.4%**
-- Last 7d: 13-2 (86.7%) | net +0.47u
+- All-time: **17-3** (85.0% hit rate)
+- Net units: **+0.59u** | ROI: **+47.5%**
+- Last 7d: 17-3 (85.0%) | net +0.59u
 
-**Today's 14 Locks:**
-- [MLB] **WSN @ ATL** OVER_9.0 · p=68% edge=+29.1% qK=0.062u
-- [MLB] **HOU @ CHC** ML_AWAY · p=55% edge=+25.0% qK=0.050u
-- [MLB] **HOU @ CHC** HOU_ML · p=55% edge=+25.0% qK=0.050u
-- [MLB-PP] **Alec Burleson** PP_batter_hrr_under_4.5 · p=72% edge=+24.3% qK=0.062u
-- [MLB-PP] **Keibert Ruiz** PP_batter_total_bases_under_3. · p=72% edge=+24.3% qK=0.062u
+**Today's 5 Locks:**
+- [MLB] **CHW @ SFG** ML_AWAY · p=62% edge=+28.7% qK=0.062u
+- [MLB] **CHW @ SFG** CHW_ML · p=62% edge=+28.7% qK=0.062u
+- [MLB] **TBR @ NYY** OVER_7.0 · p=67% edge=+27.4% qK=0.062u
+- [MLB] **NYM @ MIA** UNDER_7.5 · p=66% edge=+26.6% qK=0.062u
 - [MLB-PP] **Andy Pages** PP_batter_hrr_over_0.5 · p=72% edge=+24.3% qK=0.062u
-- [MLB-PP] **Vinnie Pasquantino** PP_batter_doubles_under_0.5 · p=72% edge=+24.3% qK=0.062u
-- [MLB-PP] **Willson Contreras** PP_batter_runs_under_1.5 · p=72% edge=+24.3% qK=0.062u
-- [MLB-PP] **Mike Trout** PP_batter_rbis_under_1.5 · p=72% edge=+24.3% qK=0.062u
-- [MLB] **WSN @ ATL** OVER_8.5 · p=66% edge=+25.1% qK=0.062u
-- [MLB] **OAK @ SDP** ML_AWAY · p=60% edge=+24.5% qK=0.057u
-- [MLB] **OAK @ SDP** OAK_ML · p=60% edge=+24.5% qK=0.057u
-- [MLB-PP] **Dalton Rushing** PP_batter_hrr_over_0.5 · p=72% edge=+24.3% qK=0.062u
-- [MLB-PP] **Oneil Cruz** PP_batter_hrr_under_4.5 · p=72% edge=+24.3% qK=0.062u
 
 ## 🎰 Top Balanced 2-Leg Parlays (40-65% joint)
-- [MLB-PP] Andy Pages PP_batter_hrr_over_0 + [MLB-PP] Vinnie Pasquantino PP_batter_doubles_un
-  Joint: 51% | Fair: 201 | Edge: +54.6%
-- [MLB-PP] Andy Pages PP_batter_hrr_over_0 + [MLB-PP] Dalton Rushing PP_batter_hrr_over_0
-  Joint: 51% | Fair: 201 | Edge: +54.6%
-- [MLB-PP] Andy Pages PP_batter_hrr_over_0 + [MLB-PP] Oneil Cruz PP_batter_hrr_under_
-  Joint: 51% | Fair: 201 | Edge: +54.6%
+- [MLB] CHW @ SFG ML_AWAY + [MLB] TBR @ NYY OVER_7.0
+  Joint: 42% | Fair: 293 | Edge: +63.9%
+- [MLB] CHW @ SFG CHW_ML + [MLB] TBR @ NYY OVER_7.0
+  Joint: 42% | Fair: 293 | Edge: +63.9%
+- [MLB] CHW @ SFG ML_AWAY + [MLB] NYM @ MIA UNDER_7.5
+  Joint: 41% | Fair: 293 | Edge: +62.9%
 
 ## 🎮 Player Play of the Day (cross-sport)
 - **[LOL]** Inspired UNDER 3.5 Kills | MED conviction · model 61.7% fair -161
@@ -63,54 +56,52 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (13)
-- [EPL] **Manchester City** HOME (2-2 L10) · model 74.9% fair -299
+## ⚡ Pre-Game HIGH Conviction (9)
 - [MLS] **Chicago Fire FC** HOME (2-2 L10) · model 74.3% fair -289
 - [MLS] **Houston Dynamo FC** AWAY (3-1 L10) · model 74.1% fair -286
-- [CWS] **Northeastern Huskies** HOME (1-2 L10) · model 72.2% fair -260
-- [EPL] **Burnley** HOME (0-2 L10) · model 71.9% fair -256
+- [EPL] **Manchester City** HOME (2-2 L10) · model 74.1% fair -286
+- [EPL] **Burnley** HOME (0-2 L10) · model 71.0% fair -245
 - [MLS] **New England Revolution** AWAY (3-1 L10) · model 70.8% fair -243
 - [MLS] **Nashville SC** HOME (2-2 L10) · model 69.9% fair -233
-- [CWS] **West Virginia Mountaineers** HOME (3-0 L10) · model 68.1% fair -214
 - [MLS] **Real Salt Lake** AWAY (3-1 L10) · model 67.4% fair -206
-- [CWS] **Kansas Jayhawks** HOME (2-1 L10) · model 65.7% fair -191
+- [EPL] **Sunderland** HOME (1-2 L10) · model 64.4% fair -181
+- [MLS] **CF Montréal** AWAY (1-3 L10) · model 63.6% fair -175
 
 ## 🔥/❄️ Heat / Cold Signals
 - Hot teams: **24** | Cold teams: **24** | Over-heavy: 0 | Under-heavy: 8
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (26)
-- RESIDUAL_DIVERGENCE: **25**
-- STREAK_MISMATCH: **1**
-  - Golden State Valkyries (WNBA): Golden State Valkyries OUTPERFORMING expected margin by 10.4pts in recent games -- model bias may persist
+## ⚠️ Anomaly Detector (10)
+- RESIDUAL_DIVERGENCE: **10**
   - Charlotte FC (MLS): Charlotte FC OUTPERFORMING expected margin by 7.8pts in recent games -- model bias may persist
   - New England Revolution (MLS): New England Revolution UNDERPERFORMING expected margin by 6.2pts in recent games -- model bias may persist
   - Orlando City SC (MLS): Orlando City SC UNDERPERFORMING expected margin by 8.1pts in recent games -- model bias may persist
   - Colorado Rapids (MLS): Colorado Rapids OUTPERFORMING expected margin by 6.3pts in recent games -- model bias may persist
+  - Crystal Palace (EPL): Crystal Palace OUTPERFORMING expected margin by 7.6pts in recent games -- model bias may persist
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$-2.49**
-  - #1 [NRFI] $50 on NYM @ MIA YRFI (1st-inning OVER 0.5) (P=70%)
-  - #2 [NRFI] $50 on SEA @ KCR YRFI (1st-inning OVER 0.5) (P=69%)
-  - #3 [NRFI] $50 on DET @ BAL YRFI (1st-inning OVER 0.5) (P=68%)
+- Expected EV: **$11.17**
+  - #1 [NRFI] $50 on COL @ ARI YRFI (1st-inning OVER 0.5) (P=79%)
+  - #2 [NRFI] $50 on STL @ CIN YRFI (1st-inning OVER 0.5) (P=74%)
+  - #3 [NRFI] $50 on DET @ BAL YRFI (1st-inning OVER 0.5) (P=72%)
   - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
-## 🎯 Convergence Picks (25 stacked games)
-- ELITE: **9** · HIGH: 9 · MED: 7
+## 🎯 Convergence Picks (23 stacked games)
+- ELITE: **8** · HIGH: 9 · MED: 6
   - [ELITE] Arsenal @ Crystal Palace : 8 signals (PREGAME, PREGAME, HEAT_COLD, HEAT_COLD)
-  - [ELITE] Connecticut Sun @ Seattle Storm : 5 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ANOMALY)
   - [ELITE] New England Revolution @ Charlotte FC : 5 signals (PREGAME, ANOMALY, ANOMALY, ATS)
-  - [ELITE] Golden State Valkyries @ Indiana Fever : 4 signals (PREGAME, ANOMALY, ANOMALY, ATS)
-  - [ELITE] Orlando City SC @ FC Cincinnati : 4 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
+  - [ELITE] Everton @ Tottenham Hotspur : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
+  - [ELITE] Leeds United @ West Ham United : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
+  - [ELITE] Golden State Valkyries @ Indiana Fever : 4 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
 
 ## ⚾ Top MLB Pitcher K Plays (9)
-- **Keegan Akin** OVER 5.5 K (77%) fair -328
-- **Richard Lovelady** OVER 7.5 K (76%) fair -315
-- **Michael Soroka** OVER 4.5 K (73%) fair -270
-- **Payton Tolle** OVER 4.5 K (70%) fair -236
-- **Eury Pérez** OVER 4.5 K (68%) fair -216
+- **Kai-Wei Teng** OVER 7.5 K (78%) fair -354
+- **Taj Bradley** OVER 4.5 K (78%) fair -347
+- **Max Meyer** OVER 4.5 K (73%) fair -271
+- **Ryan Weathers** OVER 5.5 K (72%) fair -253
+- **Nathan Eovaldi** OVER 4.5 K (71%) fair -251
 
 ## 🏀 NBA Player Heat (20 HOT / 22 COLD)
   - 🔥 **Jeremiah Fears** (NO): L5 31.8/5.8/6.0 vs season 16.9/3.2/4.0 [PTS +14.9, REB +2.6, AST +2.0]
@@ -132,9 +123,12 @@
 ## ⛳ Golf Player Heat (from THE CJ CUP Byron Nelson)
   - 🔥 T1 **Si Woo Kim** (South Korea): -18 total -- finished T1
   - 🔥 T2 **Sungjae Im** (South Korea): -13 total -- finished T2
-  - 🔥 T3 **Scottie Scheffler** (USA): -13 total -- finished T3
-  - 🔥 T4 **Wyndham Clark** (USA): -13 total -- finished T4
-  - 🔥 T5 **Kensei Hirata** (Japan): -13 total -- finished T5
+  - 🔥 T3 **Jackson Suber** (USA): -13 total -- finished T3
+  - 🔥 T4 **Scottie Scheffler** (USA): -13 total -- finished T4
+  - 🔥 T5 **Wyndham Clark** (USA): -13 total -- finished T5
+  - ❄️ **Michael Thorbjornsen** (USA): Sunday +4.5 vs tourney avg
+  - ❄️ **Beau Hossler** (USA): Sunday +3.5 vs tourney avg
+  - ❄️ **Preston Stout** (USA): Sunday +3.5 vs tourney avg
 
 ## 🔥 MLB Batter Heat (32 HOT / 48 COLD)
   - 🔥 **Alec Bohm** (PHI): L14 .360 / season .216 (+144pts)
@@ -149,11 +143,11 @@
   - ❄️ **Ozzie Albies** (ATL): L14 .130 / season .270 (-140pts) -- FADE props
 
 ## 📈 Streak Regression Alerts (27)
-- [NHL] Vegas Golden Knights on W3 L10 4-1 -- Vegas Golden Knights on W3 -- no historical sample
-- [WNBA] Seattle Storm on L3 L10 1-4 -- Seattle Storm on L3 -- no historical sample
+- [WNBA] Indiana Fever on W3 L10 4-1 -- Indiana Fever on W3 -- no historical sample
 - [MLS] Austin FC on L3 L10 1-3 -- Austin FC on L3 -- no historical sample
 - [MLS] Minnesota United FC on L3 L10 1-3 -- Minnesota United FC on L3 -- no historical sample
 - [MLS] D.C. United on L3 L10 1-3 -- D.C. United on L3 -- no historical sample
+- [MLS] FC Cincinnati on L3 L10 1-3 -- FC Cincinnati on L3 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**
@@ -175,4 +169,4 @@
 - **MLS**: n=59 games · hit rate 33.9% · bias +6.9pp [calibration applied]
 - **EPL**: n=30 games · hit rate 43.3% · bias -9.1pp [calibration applied]
 - **MLB**: n=186 games · hit rate 63.4% · bias +0.8pp
-- **CWS**: n=299 games · hit rate 59.5% · bias -10.5pp [calibration applied]
+- **CWS**: n=300 games · hit rate 59.7% · bias -10.6pp [calibration applied]
