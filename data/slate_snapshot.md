@@ -1,26 +1,31 @@
 # EdgeStat Slate — 2026-05-23
 
-_5 picks consolidated from POD + Alpha + Book Edges + Parlay-of-Day._
+_6 picks consolidated from POD + Alpha + Book Edges + Parlay-of-Day._
+
+## ⭐ Play of the Day
+
+- **Christian Yelich** · PP_batter_total_bases_under_3.5
+  Prob 71.6% · Odds -136 · Edge +24.3% · Kelly 0.250
 
 ## 🎯 Alpha Pick
 
-- **CHW @ SFG** · ML_AWAY
-  Prob 62.0% · Odds +107 · Edge +28.2% · Kelly 0.250
+- **Christian Yelich** · PP_batter_total_bases_under_3.5
+  Prob 71.6% · Odds -136 · Edge +24.3% · Kelly 0.250
 
 ## 📊 Book Edges
 
-- **HOU @ CHC · OVER · O/U 7.5** · TOTAL_OVER
-  Prob 66.7% · Odds -110 · Edge +27.3% · Kelly 0.300
-- **TBR @ NYY · OVER · O/U 7.0** · TOTAL_OVER
-  Prob 66.0% · Odds -110 · Edge +26.0% · Kelly 0.286
-- **WSN @ ATL · OVER · O/U 9.0** · TOTAL_OVER
-  Prob 65.4% · Odds -110 · Edge +24.8% · Kelly 0.273
+- **STL @ CIN · OVER · O/U 10.0** · TOTAL_OVER
+  Prob 63.5% · Odds -110 · Edge +21.3% · Kelly 0.234
+- **STL @ CIN · AWAY (AWAY)** · TEAM_ML
+  Prob 63.0% · Odds -110 · Edge +20.4% · Kelly 0.224
+- **OAK @ SDP · UNDER · O/U 8.0** · TOTAL_UNDER
+  Prob 61.6% · Odds -110 · Edge +17.6% · Kelly 0.194
 
 ## 🎲 Parlay
 
-- **CHW @ SFG + TBR @ NYY** · 2-leg
-  Prob 41.5% · Odds +295 · Edge +63.9% · Kelly 0.050
+- **Christian Yelich + Kyle Higashioka** · 2-leg
+  Prob 51.3% · Odds +201 · Edge +54.5% · Kelly 0.050
 
 ---
-_Generated 2026-05-23T11:21:50 UTC by EdgeStat._
+_Generated 2026-05-23T21:09:05 UTC by EdgeStat._
 _Stakes assume ¼-Kelly fractional sizing on a flat bankroll._

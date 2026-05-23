@@ -1,12 +1,12 @@
 # Tonight's Slate Brief — 2026-05-23
 
-## Slate Quality: 53/100 (LOW)
-_0% lineups confirmed · 13 rookie SPs · 1 high early-hook risk SPs_
-**Recommendation:** Defensive sizing tonight; stick to highest-confidence plays.
+## Slate Quality: 67/100 (MEDIUM)
+_40% lineups confirmed · 6 rookie SPs_
+**Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
-- **16 games** scheduled
-- **40 best bets** scored: 0 DK · 0 PP · 13 NRFI · 6 SGP
+- **5 games** scheduled
+- **39 best bets** scored: 0 DK · 0 PP · 13 NRFI · 5 SGP
 - **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$46.44
 - **MC simulation:** EV +$139.9, 84% P(profit), p05 $-86.19 / p95 $353.84
 
@@ -22,7 +22,7 @@ _0% lineups confirmed · 13 rookie SPs · 1 high early-hook risk SPs_
 5. **HOU @ CHC YRFI (1st-inning OVER 0.5)**  (79/100 ****, edge +19.3%)
    - P(YRFI) 65.3% vs baseline 46.0%
 
-## ⚠️ Trap Warnings — 18 flagged
+## ⚠️ Trap Warnings — 17 flagged
 - **COL @ ARI YRFI (1st-inning OVER 0.5)** (low):
    - Edge +33.0% looks big but only 0 settled props on this player — model unproven
 - **STL @ CIN YRFI (1st-inning OVER 0.5)** (low):
@@ -31,27 +31,23 @@ _0% lineups confirmed · 13 rookie SPs · 1 high early-hook risk SPs_
    - Edge +26.3% looks big but only 0 settled props on this player — model unproven
 - **WSN @ ATL YRFI (1st-inning OVER 0.5)** (low):
    - Edge +26.2% looks big but only 0 settled props on this player — model unproven
-- **WSN @ ATL 2-leg SGP @ -185** (low):
+- **STL @ CIN 2-leg SGP @ -260** (low):
    - Edge +25.0% looks big but only 0 settled props on this player — model unproven
 
-## SP early-hook risk
-HIGH risk: Jovani Morán
-_Fade their K OVERs; lean OPP team total OVER and F5._
-
 ## Hot streaks
-**Batters heating up:** Kyle Manzardo (heat +5.70), Juan Soto (heat +5.66), Gavin Sheets (heat +5.43)
-**Pitchers on a run:** Jovani Morán (heat +18.23), Kai-Wei Teng (heat +5.20), Jake Irvin (heat +4.30)
+**Batters heating up:** Bryan Torres (heat +8.70), Kyle Manzardo (heat +5.70), Gavin Sheets (heat +5.43)
+**Pitchers on a run:** Jovani Morán (heat +7.00), Jake Irvin (heat +5.42), Taj Bradley (heat +4.78)
 
 ## Top correlation-aware SGPs
-- **WSN @ ATL** 2-leg @ -185 fair (joint 0.65, EV +25.0%)
-   - Grant Holmes UNDER 6.5 pitcher strikeouts
-   - Jake Irvin OVER 3.5 pitcher strikeouts
-- **HOU @ CHC** 2-leg @ -222 fair (joint 0.69, EV +25.0%)
-   - Kai-Wei Teng UNDER 6.5 pitcher strikeouts
-   - Colin Rea UNDER 6.5 pitcher strikeouts
-- **TBR @ NYY** 2-leg @ -172 fair (joint 0.63, EV +25.0%)
-   - Ryan Weathers OVER 4.5 pitcher strikeouts
-   - Drew Rasmussen OVER 3.5 pitcher strikeouts
+- **STL @ CIN** 2-leg @ -260 fair (joint 0.72, EV +25.0%)
+   - Alec Burleson UNDER 1.5 batter rbis
+   - Alec Burleson UNDER 1.5 batter rbis
+- **LAD @ MIL** 2-leg @ -258 fair (joint 0.72, EV +25.0%)
+   - Andy Pages UNDER 0.5 batter doubles
+   - Mookie Betts UNDER 3.5 batter hrr
+- **OAK @ SDP** 2-leg @ -179 fair (joint 0.64, EV +25.0%)
+   - J.T. Ginn OVER 3.5 pitcher strikeouts
+   - J.T. Ginn UNDER 7.5 pitcher strikeouts
 
 ## Bullpens GASSED tonight
 Toronto Blue Jays, Atlanta Braves, Los Angeles Angels, Baltimore Orioles, Washington Nationals, New York Mets
@@ -68,17 +64,17 @@ _Lean late-inning OVER on these games; fade their save situations._
    - P(top 5) 17.2% -- lower variance than outright but compelling line.
 
 ## NBA -- PLAYOFFS
-- Oklahoma City Thunder @ San Antonio Spurs (64-18 vs 62-20) 123-108 | P(home) 0.0% fair +0 | Final
+- New York Knicks @ Cleveland Cavaliers (53-29 vs 52-30)  | P(home) 52.2% fair -109 | Scheduled
 
 ## NHL -- PLAYOFFS
-- Vegas Golden Knights @ Colorado Avalanche (39-26-17 vs 55-16-11) 3-1 | P(home) 0.0% fair +0 | Final
+- Montreal Canadiens @ Carolina Hurricanes (48-24-10 vs 53-22-7)  | P(home) 50.5% fair -102 | Scheduled
 
 ## LoL Esports -- 1 live, 30 upcoming
-- [LCK] Hanwha Life Esports vs NONGSHIM RED FORCE BO3 | P(A) 60.7% fair -155/+155
-- [LEC] Karmine Corp vs G2 Esports BO5 | P(A) 50.0% fair -100/-100
-- [CBLOL] LOS vs Vivo Keyd Stars BO5 | P(A) 50.0% fair -100/-100
-- [LCS] Cloud9 Kia vs FlyQuest BO5 | P(A) 50.5% fair -102/+102
+- [LCS] FlyQuest vs Cloud9 Kia BO5 | P(A) 49.5% fair +102/-102
 - [LPL] Shenzhen NINJAS IN PYJAMAS vs EDWARD GAMING BO5 | P(A) 58.2% fair -139/+139
+- [LCK] DN SOOPers vs Gen.G Esports BO3 | P(A) 41.9% fair +139/-139
+- [LPL] WeiboGaming vs LGD GAMING BO5 | P(A) 50.0% fair -100/-100
+- [LCK] HANJIN BRION vs T1 BO3 | P(A) 40.3% fair +148/-148
 - **LoL POT:** Shenzhen NINJAS IN PYJAMAS ML vs EDWARD GAMING (LPL, BO5) (HIGH)
 
 ## Player Play of the Day -- across all sports (3521 candidates scanned)
