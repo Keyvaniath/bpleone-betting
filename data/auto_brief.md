@@ -1,12 +1,12 @@
 # Tonight's Slate Brief — 2026-05-24
 
-## Slate Quality: 55/100 (MEDIUM)
-_0% lineups confirmed · 10 rookie SPs_
-**Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
+## Slate Quality: 90/100 (HIGH)
+_75% lineups confirmed · 1 rookie SPs_
+**Recommendation:** Play normal Kelly sizing.
 
 ## Slate
-- **16 games** scheduled
-- **41 best bets** scored: 0 DK · 0 PP · 14 NRFI · 6 SGP
+- **2 games** scheduled
+- **37 best bets** scored: 0 DK · 0 PP · 14 NRFI · 2 SGP
 - **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$58.09
 - **MC simulation:** EV +$187.35, 88% P(profit), p05 $-46.33 / p95 $424.26
 
@@ -22,7 +22,9 @@ _0% lineups confirmed · 10 rookie SPs_
 5. **DET @ BAL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +26.3%)
    - P(YRFI) 72.3% vs baseline 46.0%
 
-## ⚠️ Trap Warnings — 20 flagged
+## ⚠️ Trap Warnings — 16 flagged
+- **DET @ BAL 4-leg SGP @ -138** (low):
+   - Edge +47.0% looks big but only 0 settled props on this player — model unproven
 - **DET @ BAL YRFI (1st-inning OVER 0.5)** (low):
    - Edge +40.8% looks big but only 0 settled props on this player — model unproven
 - **STL @ CIN YRFI (1st-inning OVER 0.5)** (low):
@@ -31,23 +33,19 @@ _0% lineups confirmed · 10 rookie SPs_
    - Edge +29.6% looks big but only 0 settled props on this player — model unproven
 - **TEX @ LAA YRFI (1st-inning OVER 0.5)** (low):
    - Edge +26.7% looks big but only 0 settled props on this player — model unproven
-- **DET @ BAL YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +26.3% looks big but only 0 settled props on this player — model unproven
 
 ## Hot streaks
-**Batters heating up:** Yandy Díaz (heat +5.91), Ketel Marte (heat +5.53), Kyle Manzardo (heat +5.36)
-**Pitchers on a run:** Matthew Liberatore (heat +8.37), Martín Pérez (heat +7.49), Sonny Gray (heat +7.46)
+**Batters heating up:** Ketel Marte (heat +5.39), Kyle Manzardo (heat +5.36), Juan Soto (heat +5.25)
+**Pitchers on a run:** Matthew Liberatore (heat +8.37), Martín Pérez (heat +4.77), Sonny Gray (heat +4.58)
 
 ## Top correlation-aware SGPs
-- **SEA @ KCR** 2-leg @ -182 fair (joint 0.65, EV +25.0%)
-   - Seth Lugo UNDER 7.5 pitcher strikeouts
-   - Bryan Woo OVER 4.5 pitcher strikeouts
-- **HOU @ CHC** 2-leg @ -232 fair (joint 0.70, EV +25.0%)
-   - Peter Lambert OVER 3.5 pitcher strikeouts
-   - Shota Imanaga UNDER 8.5 pitcher strikeouts
-- **TBR @ NYY** 2-leg @ -172 fair (joint 0.63, EV +25.0%)
-   - Ryan Weathers OVER 4.5 pitcher strikeouts
-   - Drew Rasmussen OVER 3.5 pitcher strikeouts
+- **DET @ BAL** 4-leg @ -138 fair (joint 0.58, EV +47.03%)
+   - Adley Rutschman OVER 0.5 batter total bases
+   - Spencer Torkelson UNDER 1.5 batter hits
+   - Adley Rutschman UNDER 0.5 batter home runs
+- **TEX @ LAA** 2-leg @ -260 fair (joint 0.72, EV +25.0%)
+   - Jo Adell OVER 0.5 batter hrr
+   - Zach Neto UNDER 0.5 batter home runs
 
 ## Bullpens GASSED tonight
 Athletics, San Diego Padres, San Francisco Giants, St. Louis Cardinals, Minnesota Twins, Atlanta Braves, Chicago White Sox, Milwaukee Brewers
@@ -63,18 +61,18 @@ _Lean late-inning OVER on these games; fade their save situations._
    - P(win) 15.5% with 1 round(s) left -- sweet-spot value at #3 (-19).
 
 ## NBA -- PLAYOFFS
-- New York Knicks @ Cleveland Cavaliers (53-29 vs 52-30) 121-108 | P(home) 0.0% fair +0 | Final
+- Oklahoma City Thunder @ San Antonio Spurs (64-18 vs 62-20)  | P(home) 49.2% fair +103 | Scheduled
 
 ## NHL -- PLAYOFFS
-- Montreal Canadiens @ Carolina Hurricanes (48-24-10 vs 53-22-7) 2-3 | P(home) 100.0% fair +0 | Final
+- Colorado Avalanche @ Vegas Golden Knights (55-16-11 vs 39-26-17)  | P(home) 35.4% fair +182 | Scheduled
 
 ## LoL Esports -- 1 live, 30 upcoming
-- [LCK] T1 vs HANJIN BRION BO3 | P(A) 59.7% fair -148/+148
-- [LEC] Team Vitality vs Movistar KOI BO5 | P(A) 50.0% fair -100/-100
-- [CBLOL] RED Canids Kalunga vs FURIA BO5 | P(A) 49.6% fair +102/-102
-- [LCS] LYON vs Team Liquid Alienware BO5 | P(A) 50.5% fair -102/+102
+- [LCS] Team Liquid Alienware vs LYON BO5 | P(A) 49.5% fair +102/-102
 - [LCK Challengers] DK Challengers vs HLE Challengers BO3 | P(A) 49.8% fair +101/-101
-- **LoL POT:** G2 Esports ML vs TBD (LEC, BO5) (HIGH)
+- [LCK Challengers] BNK FEARX Youth vs T1 Esports Academy BO3 | P(A) 43.1% fair +132/-132
+- [PCS] CTBC Flying Oyster Academy vs SillySilly Gaming BO3 | P(A) 50.0% fair -100/-100
+- [LCK Challengers] BRO Challengers vs KRX Challengers BO3 | P(A) 36.4% fair +175/-175
+- **LoL POT:** LOS ML vs LOUD (CBLOL, BO5) (HIGH)
 
 ## Player Play of the Day -- across all sports (3521 candidates scanned)
 - **[LOL]** Inspired UNDER 3.5 Kills | model 61.7% fair -161 (ELITE)
