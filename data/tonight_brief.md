@@ -2,12 +2,6 @@
 
 _60-second read. Calibration tier: **BOOTSTRAPPING** (40% progress)._
 
-## 💪 STRONG (4 picks)
-- [MLB] NYM @ MIA UNDER_8.5 · 67% / +27.7%
-- [MLB] SEA @ KCR UNDER_8.5 · 67% / +27.7%
-- [MLB] STL @ CIN OVER_10.0 · 66% / +25.6%
-- [MLB] WSN @ ATL OVER_8.5 · 65% / +24.5%
-
 ## 🔒 5 Daily Locks
 - **SEA @ KCR** UNDER_8.5 (MLB) -- 66% / +26.6%
 - **WSN @ ATL** OVER_8.5 (MLB) -- 65% / +24.5%
@@ -21,11 +15,16 @@ _60-second read. Calibration tier: **BOOTSTRAPPING** (40% progress)._
 - **Alex Bregman** PP_batter_home_runs_under_0.5 (MLB-PP) -- 72% / +24.3%
 - **Matt McLain** PP_batter_hrr_under_3.5 (MLB-PP) -- 72% / +24.3%
 - **Tim Tawa** PP_batter_hrr_under_3.5 (MLB-PP) -- 72% / +24.3%
+- **Choi Jeong** one_plus_tb (KBO) -- 73% / +39.8%
+- **Jose Pirela** one_plus_tb (KBO) -- 73% / +39.2%
+- **Koo Ja-wook** one_plus_tb (KBO) -- 73% / +38.9%
+- **Mel Rojas Jr.** one_plus_tb (KBO) -- 73% / +38.5%
+- **Austin Dean** one_plus_tb (KBO) -- 73% / +38.5%
 
 ## 🎰 Tonight's Best Parlay
-- **Ezequiel Duran** PP_batter_total_bases_under_3.5 + **Kazuma Okamoto** PP_batter_total_bases_under_3.5
-- Joint 51% · fair +201 · edge +54.6%
+- **Choi Jeong** one_plus_tb + **Jose Pirela** one_plus_tb
+- Joint 53% · fair +264 · edge +94.6%
 
 ---
-_Generated 2026-05-24T21:05:19_
+_Generated 2026-05-24T22:57:54_
 _Full breakdown: /tonight · Full history: /locks-of-day_

@@ -4,22 +4,13 @@
 
 _Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
 
-_Generated at 2026-05-24T21:05:35 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-05-24T22:58:09 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
-## Play of the Day
-
-**TEX @ LAA - UNDER_8.0**
-- Market: -110
-- Model probability: 58.7%
-- Raw edge: +12.05%
-- Recommended stake: 3.31u Kelly
-
-## Full Slate (2 games)
+## Full Slate (1 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 6:05p ET | DET @ BAL | Oriole Park at Camden Yards | 60F 3mph | OVER_8.0 +8.84% |
-| 7:20p ET | TEX @ LAA | Angel Stadium | 64F 6mph | UNDER_8.0 +12.05% |
+| 7:20p ET | TEX @ LAA | Angel Stadium | 64F 6mph | -- |
 
 ## Parlays - top 1
 
@@ -46,8 +37,7 @@ Cumulative graded plays: 118201. Wins: 87361. Hit rate: 73.9%.
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| DET @ BAL | 18.1% | +454 | 8.38 | +166 | -166 |
-| TEX @ LAA | 27.3% | +266 | 6.72 | +177 | -177 |
+| TEX @ LAA | 27.3% | +266 | 6.71 | +177 | -177 |
 
 ## Team Form (last 10)
 
