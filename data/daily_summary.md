@@ -4,28 +4,26 @@
 
 _Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
 
-_Generated at 2026-05-25T21:23:11 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-05-25T23:01:09 UTC. Game lines source: **placeholder -110 (no real book today)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
-**HOU @ TEX - OVER_8.0**
+**COL @ LAD - LAD_ML**
 - Market: -110
-- Model probability: 76.5%
-- Raw edge: +46.04%
+- Model probability: 84.4%
+- Raw edge: +61.07%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
 
-## Full Slate (6 games)
+## Full Slate (4 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 6:10p ET | WSN @ CLE | Progressive Field | 57F 4mph | OVER_8.5 +10.24% |
-| 6:40p ET | PHI @ SDP | Petco Park | 65F 9mph | UNDER_7.0 +27.77% |
-| 7:05p ET | HOU @ TEX | Globe Life Field | indoor | OVER_8.0 +46.04% |
-| 7:07p ET | MIA @ TOR | Rogers Centre | indoor | UNDER_7.0 +10.94% |
-| 9:10p ET | COL @ LAD | UNIQLO Field at Dodger Stadium | 58F 2mph | OVER_8.5 +14.88% |
-| 9:40p ET | SEA @ OAK | Sutter Health Park | 55F 11mph | UNDER_10.5 +22.29% |
+| 7:05p ET | HOU @ TEX | Globe Life Field | indoor | OVER_8.5 +36.25% |
+| 7:07p ET | MIA @ TOR | Rogers Centre | indoor | UNDER_8.5 +48.31% |
+| 9:10p ET | COL @ LAD | UNIQLO Field at Dodger Stadium | 58F 3mph | LAD_ML +61.07% |
+| 9:40p ET | SEA @ OAK | Sutter Health Park | 56F 10mph | OVER_8.5 +16.19% |
 
 ## Parlays - top 5
 
@@ -68,12 +66,10 @@ Cumulative graded plays: 118201. Wins: 87361. Hit rate: 73.9%.
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| COL @ LAD | 29.7% | +237 | 6.15 | -303 | +303 |
+| COL @ LAD | 29.7% | +237 | 6.12 | -306 | +306 |
 | HOU @ TEX | 33.6% | +198 | 5.45 | -125 | +125 |
 | MIA @ TOR | 33.9% | +195 | 5.42 | -110 | +110 |
-| PHI @ SDP | 30.1% | +233 | 5.74 | +363 | -363 |
-| SEA @ OAK | 30.0% | +233 | 6.38 | +153 | -153 |
-| WSN @ CLE | 48.3% | +107 | 3.55 | +123 | -123 |
+| SEA @ OAK | 30.0% | +233 | 6.32 | +153 | -153 |
 
 ## Travel / Rest Flags
 
