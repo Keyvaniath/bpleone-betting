@@ -1,49 +1,43 @@
 # EdgeStat Daily Summary — 2026-05-25
 
-## 🏥 Model Health: 82.0/100 [HEALTHY]
+## 🏥 Model Health: 77.1/100 [HEALTHY]
 - Solid health - some minor issues to monitor
   - 🟢 Calibration Freshness: 99.9/100
   - 🟢 Hit Rate Trend: 84.3/100
   - 🔴 Brier Trend: 52.3/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟡 Data Health: 77.8/100
-  - 🟢 Edge Count: 91.4/100
+  - 🟢 Data Health: 88.9/100
+  - 🔴 Edge Count: 20.0/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.597)
-- **Total games on board:** 126
-- **Strong home favorites:** 8 | **Strong road dogs:** 1
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.586)
+- **Total games on board:** 99
+- **Strong home favorites:** 0 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
-1. **TEX @ LAA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-2. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
-3. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
-4. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
-5. **LOL LOS vs LOUD ML @ -150** (76/100 ★★★★★)
+1. **CIN @ NYM YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+2. **COL @ LAD YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+3. **SEA @ OAK YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+4. **HOU @ TEX YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+5. **MIA @ TOR YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB-PP]** Adley Rutschman PP_batter_runs_under_1.5 -- 72% / +24.3% (score 2.5)
-- [STRONG] **[MLB-PP]** Kevin McGonigle PP_batter_total_bases_under_3.5 -- 72% / +24.3% (score 2.5)
-- [STRONG] **[MLB-PP]** Adley Rutschman PP_batter_hrr_under_4.5 -- 72% / +24.2% (score 2.5)
+- [STRONG] **[MLB]** PHI @ SDP UNDER_8.5 -- 67% / +27.3% (score 2.5)
+- [STRONG] **[MLB]** COL @ LAD ML_HOME -- 65% / +24.5% (score 2.5)
+- [STRONG] **[MLB]** COL @ LAD LAD_ML -- 65% / +24.5% (score 2.5)
+- [STRONG] **[MLB]** STL @ MIL ML_HOME -- 65% / +24.4% (score 2.5)
+
+## 📉 Strong UNDER Signals
+- [ELITE 7.0] **MIA @ TOR** model 6.62 vs market 8.5
+- [STRONG 6.0] **PHI @ SDP** model 5.65 vs market 8.5
+- [STRONG 5.4] **STL @ MIL** model 7.54 vs market 8.5
 
 ## 🔒 Locks of the Day -- Track Record
-- All-time: **23-4** (85.2% hit rate)
-- Net units: **+0.80u** | ROI: **+47.9%**
-- Last 7d: 23-4 (85.2%) | net +0.80u
+- All-time: **24-4** (85.7% hit rate)
+- Net units: **+0.85u** | ROI: **+48.7%**
+- Last 7d: 24-4 (85.7%) | net +0.85u
 
-**Today's 17 Locks:**
-- [MLB] **SEA @ KCR** UNDER_8.5 · p=66% edge=+26.6% qK=0.062u
-- [MLB] **WSN @ ATL** OVER_8.5 · p=65% edge=+24.5% qK=0.062u
-- [MLB-PP] **JJ Bleday** PP_batter_hrr_over_0.5 · p=72% edge=+24.3% qK=0.062u
-- [MLB-PP] **Kyle Higashioka** PP_batter_hrr_under_3.5 · p=72% edge=+24.3% qK=0.062u
-- [MLB-PP] **Kyle Manzardo** PP_batter_rbis_under_1.5 · p=72% edge=+24.3% qK=0.062u
-- [MLB] **NYM @ MIA** UNDER_8.5 · p=67% edge=+27.7% qK=0.062u
-- [MLB] **STL @ CIN** OVER_10.0 · p=66% edge=+25.6% qK=0.062u
-- [MLB-PP] **Ezequiel Duran** PP_batter_total_bases_under_3. · p=72% edge=+24.3% qK=0.062u
-- [MLB-PP] **Kazuma Okamoto** PP_batter_total_bases_under_3. · p=72% edge=+24.3% qK=0.062u
-- [MLB-PP] **Alex Bregman** PP_batter_home_runs_under_0.5 · p=72% edge=+24.3% qK=0.062u
-- [MLB-PP] **Matt McLain** PP_batter_hrr_under_3.5 · p=72% edge=+24.3% qK=0.062u
-- [MLB-PP] **Tim Tawa** PP_batter_hrr_under_3.5 · p=72% edge=+24.3% qK=0.062u
+**Today's 5 Locks:**
 - [KBO] **Choi Jeong** one_plus_tb · p=73% edge=+39.8% qK=0.062u
 - [KBO] **Jose Pirela** one_plus_tb · p=73% edge=+39.2% qK=0.062u
 - [KBO] **Koo Ja-wook** one_plus_tb · p=73% edge=+38.9% qK=0.062u
@@ -65,40 +59,33 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (1)
-- [MLS] **Inter Miami CF** HOME (4-0 L10) · model 73.6% fair -279
-
 ## 🔥/❄️ Heat / Cold Signals
 - Hot teams: **25** | Cold teams: **19** | Over-heavy: 0 | Under-heavy: 15
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (6)
-- RESIDUAL_DIVERGENCE: **6**
-  - Washington Mystics (WNBA): Washington Mystics UNDERPERFORMING expected margin by 16.9pts in recent games -- model bias may persist
-  - Inter Miami CF (MLS): Inter Miami CF UNDERPERFORMING expected margin by 6.4pts in recent games -- model bias may persist
-  - LAFC (MLS): LAFC OUTPERFORMING expected margin by 10.9pts in recent games -- model bias may persist
-  - Oregon Ducks (CWS): Oregon Ducks OUTPERFORMING expected margin by 10.7pts in recent games -- model bias may persist
-  - Georgia Bulldogs (CWS): Georgia Bulldogs OUTPERFORMING expected margin by 7.7pts in recent games -- model bias may persist
+## 💰 Today's Portfolio (9 picks)
+- Total stake: **$315.0** (31.5% of $1000 bankroll)
+- Expected EV: **$0.41**
+  - #1 [NRFI] $50 on CIN @ NYM YRFI (1st-inning OVER 0.5) (P=71%)
+  - #2 [NRFI] $50 on COL @ LAD YRFI (1st-inning OVER 0.5) (P=70%)
+  - #3 [NRFI] $50 on SEA @ OAK YRFI (1st-inning OVER 0.5) (P=70%)
+  - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
+  - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
-## 💰 Today's Portfolio (7 picks)
-- Total stake: **$215.0** (21.5% of $1000 bankroll)
-- Expected EV: **$-3.1**
-  - #1 [NRFI] $50 on TEX @ LAA YRFI (1st-inning OVER 0.5) (P=73%)
-  - #2 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
-  - #3 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
-  - #4 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
-  - #5 [NHL] $20 on NHL Colorado Avalanche ML (55-16-11) at Vegas Golden Knights (P=65%)
+## 🎯 Convergence Picks (13 stacked games)
+- ELITE: **3** · HIGH: 6 · MED: 4
+  - [ELITE] Philadelphia Union @ Inter Miami CF : 6 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
+  - [ELITE] Arsenal @ Crystal Palace : 5 signals (PREGAME, HEAT_COLD, HEAT_COLD, ATS)
+  - [ELITE] Wolverhampton Wanderers @ Burnley : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
+  - [HIGH] Colorado Avalanche @ Vegas Golden Knights : 3 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD)
+  - [HIGH] Dallas Wings @ New York Liberty : 3 signals (HEAT_COLD, ATS, ATS)
 
-## 🎯 Convergence Picks (11 stacked games)
-- ELITE: **2** · HIGH: 5 · MED: 4
-  - [ELITE] Colorado Avalanche @ Vegas Golden Knights : 4 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
-  - [ELITE] Philadelphia Union @ Inter Miami CF : 4 signals (PREGAME, HEAT_COLD, HEAT_COLD, ATS)
-  - [HIGH] Oklahoma City Thunder @ San Antonio Spurs : 3 signals (HEAT_COLD, ANOMALY, ATS)
-  - [HIGH] Seattle Sounders FC @ LAFC : 3 signals (HEAT_COLD, ANOMALY, ATS)
-  - [HIGH] Arsenal @ Crystal Palace : 3 signals (PREGAME, HEAT_COLD, ATS)
-
-## ⚾ Top MLB Pitcher K Plays (1)
-- **Reid Detmers** OVER 4.5 K (77%) fair -332
+## ⚾ Top MLB Pitcher K Plays (11)
+- **Jacob Misiorowski** OVER 6.5 K (77%) fair -334
+- **Kyle Bradish** OVER 4.5 K (71%) fair -251
+- **Jesús Luzardo** OVER 4.5 K (71%) fair -251
+- **Nolan McLean** OVER 5.5 K (71%) fair -250
+- **Landen Roupp** OVER 4.5 K (70%) fair -232
 
 ## 🏀 NBA Player Heat (21 HOT / 22 COLD)
   - 🔥 **Jeremiah Fears** (NO): L5 31.8/5.8/6.0 vs season 16.9/3.2/4.0 [PTS +14.9, REB +2.6, AST +2.0]
@@ -139,12 +126,12 @@
   - ❄️ **Edouard Julien** (COL): L14 .073 / season .209 (-136pts) -- FADE props
   - ❄️ **Justin Crawford** (PHI): L14 .108 / season .240 (-132pts) -- FADE props
 
-## 📈 Streak Regression Alerts (16)
-- [NHL] Vegas Golden Knights on W4 L10 4-1 -- Vegas Golden Knights on W4 -- no historical sample
-- [MLS] Columbus Crew on L3 L10 0-3 -- Columbus Crew on L3 -- no historical sample
-- [MLS] Inter Miami CF on W3 L10 3-0 -- Inter Miami CF on W3 -- no historical sample
-- [MLS] Philadelphia Union on L3 L10 0-3 -- Philadelphia Union on L3 -- no historical sample
-- [MLS] LAFC on L3 L10 0-3 -- LAFC on L3 -- no historical sample
+## 📈 Streak Regression Alerts (8)
+- [MLS] Atlanta United FC on L3 L10 0-3 -- Atlanta United FC on L3 -- no historical sample
+- [MLS] Inter Miami CF on W4 L10 4-0 -- Inter Miami CF on W4 -- no historical sample
+- [MLS] Philadelphia Union on L4 L10 0-4 -- Philadelphia Union on L4 -- no historical sample
+- [CWS] UCLA Bruins on W3 L10 3-0 -- UCLA Bruins on W3 -- no historical sample
+- [CWS] Georgia Bulldogs on W3 L10 3-0 -- Georgia Bulldogs on W3 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**
@@ -154,7 +141,7 @@
   - ⚠️ batter_rbis (Brier Δ -0.0052)
 
 ## 🧠 Training Convergence
-- ELITE: **1** · HEALTHY: 1 · OK: 0 · DEGRADED: **6**
+- ELITE: **2** · HEALTHY: 0 · OK: 0 · DEGRADED: **6**
   - ⚠️ **batter_rbis**: DIVERGENT - consistent same-sign moves (structural issue) (cf=0.8334)
   - ⚠️ **batter_singles**: DIVERGENT - consistent same-sign moves (structural issue) (cf=0.9638)
   - ⚠️ **batter_hits**: DIVERGENT - consistent same-sign moves (structural issue) (cf=0.9293)

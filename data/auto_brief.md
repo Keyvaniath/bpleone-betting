@@ -1,48 +1,63 @@
 # Tonight's Slate Brief — 2026-05-25
 
-## Slate Quality: 50/100 (LOW)
+## Slate Quality: 54/100 (LOW)
 _0% lineups confirmed · 14 rookie SPs_
 **Recommendation:** Defensive sizing tonight; stick to highest-confidence plays.
 
 ## Slate
 - **13 games** scheduled
-- **12 best bets** scored: 0 DK · 0 PP · 1 NRFI · 0 SGP
-- **Auto-portfolio:** 1 picks, $50.0 stake (5.0%), expected +$19.4
-- **MC simulation:** EV +$19.39, 73% P(profit), p05 $-50.0 / p95 $45.45
+- **22 best bets** scored: 0 DK · 0 PP · 8 NRFI · 6 SGP
+- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$35.15
+- **MC simulation:** EV +$90.74, 82% P(profit), p05 $-85.05 / p95 $296.75
 
 ## Top 5 Best Bets
-1. **TEX @ LAA YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +26.7%)
-   - P(YRFI) 72.7% vs baseline 46.0%
-2. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
-   - Player prop quality score 1.1935
-   - Elite player
-3. **LOL ShowMaker OVER 3.5 Kills**  (78/100 ****, edge —)
-   - Player prop quality score 1.1892
-   - Elite player
-4. **LOL Peyz OVER 4.5 Kills**  (78/100 ****, edge —)
-   - Player prop quality score 1.184
-   - Elite player
-5. **LOL LOS vs LOUD ML @ -150**  (76/100 *****, edge —)
-   - Model 60.0% (fair -150)
-   - CBLOL
+1. **CIN @ NYM YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +25.2%)
+   - P(YRFI) 71.2% vs baseline 46.0%
+2. **COL @ LAD YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +24.3%)
+   - P(YRFI) 70.3% vs baseline 46.0%
+3. **SEA @ OAK YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +24.0%)
+   - P(YRFI) 70.0% vs baseline 46.0%
+4. **HOU @ TEX YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +20.4%)
+   - P(YRFI) 66.4% vs baseline 46.0%
+5. **MIA @ TOR YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +20.1%)
+   - P(YRFI) 66.1% vs baseline 46.0%
 
-## ⚠️ Trap Warnings — 1 flagged
-- **TEX @ LAA YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +26.7% looks big but only 0 settled props on this player — model unproven
+## ⚠️ Trap Warnings — 13 flagged
+- **CIN @ NYM YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +25.2% looks big but only 0 settled props on this player — model unproven
+- **CIN @ NYM 2-leg SGP @ -204** (low):
+   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
+- **SEA @ OAK 2-leg SGP @ -242** (low):
+   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
+- **MIN @ CHW 2-leg SGP @ -150** (low):
+   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
+- **WSN @ CLE 2-leg SGP @ -183** (low):
+   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
 
 ## Weather leans
-- **UNDER lean** (wind in + cold): ARI @ SFG, SEA @ OAK
+- **OVER lean** (wind out + warm): MIN @ CHW
 
 ## Hot streaks
-**Batters heating up:** Colton Cowser (heat +1.76), Zach Neto (heat +1.51), Brandon Nimmo (heat +1.44)
-**Pitchers on a run:** Reid Detmers (heat +3.10), MacKenzie Gore (heat +1.70), Troy Melton (heat +0.00)
+**Batters heating up:** Juan Soto (heat +6.08), Ketel Marte (heat +5.31), Bryan Torres (heat +5.00)
+**Pitchers on a run:** Matthew Liberatore (heat +8.37), Luis Castillo (heat +5.65), Michael Wacha (heat +4.78)
+
+## Top correlation-aware SGPs
+- **CIN @ NYM** 2-leg @ -204 fair (joint 0.67, EV +25.0%)
+   - Nolan McLean UNDER 9.5 pitcher strikeouts
+   - Nick Lodolo UNDER 5.5 pitcher strikeouts
+- **SEA @ OAK** 2-leg @ -242 fair (joint 0.71, EV +25.0%)
+   - Luis Castillo OVER 4 pitcher strikeouts
+   - Luis Castillo OVER 3.5 pitcher strikeouts
+- **MIN @ CHW** 2-leg @ -150 fair (joint 0.60, EV +25.0%)
+   - Anthony Kay UNDER 6.5 pitcher strikeouts
+   - Anthony Kay UNDER 5.5 pitcher strikeouts
 
 ## Bullpens GASSED tonight
-Athletics, Pittsburgh Pirates, San Diego Padres, Seattle Mariners, San Francisco Giants, St. Louis Cardinals, Toronto Blue Jays, Minnesota Twins
+Athletics, San Diego Padres, San Francisco Giants, St. Louis Cardinals, Minnesota Twins, Atlanta Braves, Chicago White Sox, Milwaukee Brewers
 _Lean late-inning OVER on these games; fade their save situations._
 
 ## NRFI/YRFI strong leans
-- **YRFI** (1st-inning OVER): TEX @ LAA
+- **YRFI** (1st-inning OVER): CIN @ NYM, COL @ LAD, SEA @ OAK, HOU @ TEX, MIA @ TOR
 
 ## NBA -- PLAYOFFS
 - Oklahoma City Thunder @ San Antonio Spurs (64-18 vs 62-20) 82-103 | P(home) 100.0% fair +0 | Final
@@ -50,12 +65,12 @@ _Lean late-inning OVER on these games; fade their save situations._
 ## NHL -- PLAYOFFS
 - Colorado Avalanche @ Vegas Golden Knights (55-16-11 vs 39-26-17) 3-5 | P(home) 100.0% fair +0 | Final
 
-## LoL Esports -- 1 live, 30 upcoming
-- [LCK Challengers] T1 Esports Academy vs BNK FEARX Youth BO3 | P(A) 56.9% fair -132/+132
-- [PCS] CTBC Flying Oyster Academy vs SillySilly Gaming BO3 | P(A) 50.0% fair -100/-100
-- [LCK Challengers] BRO Challengers vs KRX Challengers BO3 | P(A) 36.4% fair +175/-175
-- [PCS] WangTing vs Frank Esports BO3 | P(A) 50.0% fair -100/-100
+## LoL Esports -- 0 live, 28 upcoming
 - [LEC] G2 Esports vs Movistar KOI BO5 | P(A) 49.6% fair +102/-102
+- [NLC] DMG Esports vs Lund Esports Organization BO1 | P(A) 50.0% fair -100/-100
+- [NLC] Lundqvist Lightside vs Ruddy Corporation BO1 | P(A) 50.0% fair -100/-100
+- [NLC] Arctic Pandas vs Bulldog Esports BO1 | P(A) 50.0% fair -100/-100
+- [NLC] Deer Gaming vs Verdant BO1 | P(A) 50.0% fair -100/-100
 - **LoL POT:** LOS ML vs LOUD (CBLOL, BO5) (HIGH)
 
 ## Player Play of the Day -- across all sports (3521 candidates scanned)
