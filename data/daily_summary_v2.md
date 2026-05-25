@@ -1,17 +1,17 @@
 # EdgeStat Daily Summary — 2026-05-25
 
-## 🏥 Model Health: 77.1/100 [HEALTHY]
+## 🏥 Model Health: 80.0/100 [HEALTHY]
 - Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 99.9/100
+  - 🟢 Calibration Freshness: 100.0/100
   - 🟢 Hit Rate Trend: 84.3/100
   - 🔴 Brier Trend: 52.3/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 88.9/100
-  - 🔴 Edge Count: 20.0/100
+  - 🔴 Edge Count: 48.6/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.586)
-- **Total games on board:** 99
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.584)
+- **Total games on board:** 101
 - **Strong home favorites:** 0 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
@@ -22,35 +22,40 @@
 5. **MIA @ TOR YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** PHI @ SDP UNDER_8.5 -- 67% / +27.3% (score 2.5)
-- [STRONG] **[MLB]** COL @ LAD ML_HOME -- 65% / +24.5% (score 2.5)
-- [STRONG] **[MLB]** COL @ LAD LAD_ML -- 65% / +24.5% (score 2.5)
-- [STRONG] **[MLB]** STL @ MIL ML_HOME -- 65% / +24.4% (score 2.5)
+- [STRONG] **[MLB]** WSN @ CLE OVER_8.0 -- 67% / +28.2% (score 2.5)
+- [STRONG] **[MLB]** HOU @ TEX OVER_8.0 -- 67% / +27.6% (score 2.5)
+- [STRONG] **[MLB]** NYY @ KCR ML_AWAY -- 70% / +22.2% (score 2.5)
+- [STRONG] **[MLB]** NYY @ KCR NYY_ML -- 70% / +22.2% (score 2.5)
+- [STRONG] **[MLB]** TBR @ BAL ML_AWAY -- 67% / +21.7% (score 2.5)
 
 ## 📉 Strong UNDER Signals
-- [ELITE 7.0] **MIA @ TOR** model 6.62 vs market 8.5
-- [STRONG 6.0] **PHI @ SDP** model 5.65 vs market 8.5
-- [STRONG 5.4] **STL @ MIL** model 7.54 vs market 8.5
+- [STRONG 5.8] **MIA @ TOR** model 6.62 vs market 7.5
+- [STRONG 5.0] **PHI @ SDP** model 5.42 vs market 7.5
 
 ## 🔒 Locks of the Day -- Track Record
-- All-time: **24-4** (85.7% hit rate)
-- Net units: **+0.85u** | ROI: **+48.7%**
-- Last 7d: 24-4 (85.7%) | net +0.85u
+- All-time: **25-4** (86.2% hit rate)
+- Net units: **+0.89u** | ROI: **+49.6%**
+- Last 7d: 25-4 (86.2%) | net +0.89u
 
-**Today's 5 Locks:**
+**Today's 10 Locks:**
 - [KBO] **Choi Jeong** one_plus_tb · p=73% edge=+39.8% qK=0.062u
 - [KBO] **Jose Pirela** one_plus_tb · p=73% edge=+39.2% qK=0.062u
 - [KBO] **Koo Ja-wook** one_plus_tb · p=73% edge=+38.9% qK=0.062u
 - [KBO] **Mel Rojas Jr.** one_plus_tb · p=73% edge=+38.5% qK=0.062u
 - [KBO] **Austin Dean** one_plus_tb · p=73% edge=+38.5% qK=0.062u
+- [MLB] **WSN @ CLE** OVER_8.0 · p=67% edge=+28.2% qK=0.062u
+- [MLB] **HOU @ TEX** OVER_8.0 · p=67% edge=+27.6% qK=0.062u
+- [MLB-PP] **Andy Pages** PP_batter_hrr_over_0.5 · p=72% edge=+24.3% qK=0.062u
+- [MLB-PP] **Edouard Julien** PP_batter_home_runs_under_0.5 · p=72% edge=+24.3% qK=0.062u
+- [MLB-PP] **Brandon Marsh** PP_batter_hrr_under_4.5 · p=72% edge=+24.3% qK=0.062u
 
 ## 🎰 Top Balanced 2-Leg Parlays (40-65% joint)
-- [KBO] Choi Jeong one_plus_tb + [KBO] Jose Pirela one_plus_tb
-  Joint: 53% | Fair: 264 | Edge: +94.6%
-- [KBO] Choi Jeong one_plus_tb + [KBO] Koo Ja-wook one_plus_tb
-  Joint: 53% | Fair: 264 | Edge: +94.1%
-- [KBO] Choi Jeong one_plus_tb + [KBO] Mel Rojas Jr. one_plus_tb
-  Joint: 53% | Fair: 264 | Edge: +93.6%
+- [MLB] WSN @ CLE OVER_8.0 + [MLB] HOU @ TEX OVER_8.0
+  Joint: 45% | Fair: 264 | Edge: +63.7%
+- [MLB] WSN @ CLE OVER_8.0 + [MLB-PP] Andy Pages PP_batter_hrr_over_0
+  Joint: 48% | Fair: 231 | Edge: +59.4%
+- [MLB] WSN @ CLE OVER_8.0 + [MLB-PP] Edouard Julien PP_batter_home_runs_
+  Joint: 48% | Fair: 231 | Edge: +59.4%
 
 ## 🎮 Player Play of the Day (cross-sport)
 - **[LOL]** Inspired UNDER 3.5 Kills | MED conviction · model 61.7% fair -161
@@ -63,19 +68,24 @@
 - Hot teams: **25** | Cold teams: **19** | Over-heavy: 0 | Under-heavy: 15
 - Heating-up players: **20** | Cooling-down: 20
 
+## ⚠️ Anomaly Detector (2)
+- RESIDUAL_DIVERGENCE: **2**
+  - Cleveland Cavaliers (NBA): Cleveland Cavaliers UNDERPERFORMING expected margin by 8.2pts in recent games -- model bias may persist
+  - New York Knicks (NBA): New York Knicks OUTPERFORMING expected margin by 10.2pts in recent games -- model bias may persist
+
 ## 💰 Today's Portfolio (9 picks)
-- Total stake: **$315.0** (31.5% of $1000 bankroll)
-- Expected EV: **$0.41**
+- Total stake: **$345.0** (34.5% of $1000 bankroll)
+- Expected EV: **$-6.12**
   - #1 [NRFI] $50 on CIN @ NYM YRFI (1st-inning OVER 0.5) (P=71%)
   - #2 [NRFI] $50 on COL @ LAD YRFI (1st-inning OVER 0.5) (P=70%)
   - #3 [NRFI] $50 on SEA @ OAK YRFI (1st-inning OVER 0.5) (P=70%)
   - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
-## 🎯 Convergence Picks (13 stacked games)
-- ELITE: **3** · HIGH: 6 · MED: 4
-  - [ELITE] Philadelphia Union @ Inter Miami CF : 6 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
+## 🎯 Convergence Picks (12 stacked games)
+- ELITE: **3** · HIGH: 5 · MED: 4
   - [ELITE] Arsenal @ Crystal Palace : 5 signals (PREGAME, HEAT_COLD, HEAT_COLD, ATS)
+  - [ELITE] Philadelphia Union @ Inter Miami CF : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
   - [ELITE] Wolverhampton Wanderers @ Burnley : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
   - [HIGH] Colorado Avalanche @ Vegas Golden Knights : 3 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD)
   - [HIGH] Dallas Wings @ New York Liberty : 3 signals (HEAT_COLD, ATS, ATS)
@@ -87,15 +97,8 @@
 - **Nolan McLean** OVER 5.5 K (71%) fair -250
 - **Landen Roupp** OVER 4.5 K (70%) fair -232
 
-## 🏀 NBA Player Heat (21 HOT / 22 COLD)
-  - 🔥 **Jeremiah Fears** (NO): L5 31.8/5.8/6.0 vs season 16.9/3.2/4.0 [PTS +14.9, REB +2.6, AST +2.0]
-  - 🔥 **AJ Green** (MIL): L5 18.6/4.2/1.8 vs season 11.3/3.4/1.9 [PTS +7.3]
-  - 🔥 **Dillon Brooks** (PHX): L5 26.0/6.0/1.8 vs season 19.4/4.2/1.9 [PTS +6.6]
-  - 🔥 **Taurean Prince** (MIL): L5 16.4/6.2/3.2 vs season 9.8/3.5/1.9 [PTS +6.6, REB +2.7]
-  - 🔥 **Alex Caruso** (OKC): L5 14.4/2.8/1.8 vs season 8.2/3.0/1.8 [PTS +6.2]
-  - ❄️ **Damian Lillard** (POR): L5 7.0 vs season 19.1 [PTS -12.1] -- FADE OVER props
-  - ❄️ **Nickeil Alexander-Walker** (ATL): L5 13.0 vs season 21.3 [PTS -8.3] -- FADE OVER props
-  - ❄️ **Caleb Love** (POR): L5 2.6 vs season 10.8 [PTS -8.2, REB -2.1, AST -2.4] -- FADE OVER props
+## 🏀 NBA Player Heat (1 HOT / 0 COLD)
+  - 🔥 **Mikal Bridges** (NY): L5 18.8/4.2/2.6 vs season 13.5/2.8/2.3 [PTS +5.3]
 
 ## 🥊 UFC Fight Matchups (UFC Fight Night: Song vs. Figueiredo)
   - [FAVORITE] **Jingnan Xiong** (19-2-0) vs Angela Hill -- fair -204
@@ -114,24 +117,17 @@
   - ❄️ **Michael Thorbjornsen** (USA): Sunday +4.5 vs tourney avg
   - ❄️ **John VanDerLaan** (USA): Sunday +4.2 vs tourney avg
 
-## 🔥 MLB Batter Heat (32 HOT / 50 COLD)
+## 🔥 MLB Batter Heat (29 HOT / 54 COLD)
+  - 🔥 **Ketel Marte** (AZ): L14 .396 / season .260 (+136pts)
   - 🔥 **Alec Bohm** (PHI): L14 .346 / season .213 (+133pts)
-  - 🔥 **Ketel Marte** (AZ): L14 .393 / season .262 (+131pts)
+  - 🔥 **Cedric Mullins** (TB): L14 .319 / season .188 (+131pts)
   - 🔥 **Jesús Sánchez** (TOR): L14 .405 / season .278 (+127pts)
-  - 🔥 **Cedric Mullins** (TB): L14 .319 / season .192 (+127pts)
-  - 🔥 **Jazz Chisholm Jr.** (NYY): L14 .367 / season .246 (+121pts)
-  - ❄️ **Moisés Ballesteros** (CHC): L14 .081 / season .235 (-154pts) -- FADE props
+  - 🔥 **Jazz Chisholm Jr.** (NYY): L14 .354 / season .243 (+111pts)
+  - ❄️ **Moisés Ballesteros** (CHC): L14 .086 / season .248 (-162pts) -- FADE props
   - ❄️ **Andy Pages** (LAD): L14 .137 / season .282 (-145pts) -- FADE props
   - ❄️ **MJ Melendez** (NYM): L14 .077 / season .214 (-137pts) -- FADE props
   - ❄️ **Edouard Julien** (COL): L14 .073 / season .209 (-136pts) -- FADE props
   - ❄️ **Justin Crawford** (PHI): L14 .108 / season .240 (-132pts) -- FADE props
-
-## 📈 Streak Regression Alerts (8)
-- [MLS] Atlanta United FC on L3 L10 0-3 -- Atlanta United FC on L3 -- no historical sample
-- [MLS] Inter Miami CF on W4 L10 4-0 -- Inter Miami CF on W4 -- no historical sample
-- [MLS] Philadelphia Union on L4 L10 0-4 -- Philadelphia Union on L4 -- no historical sample
-- [CWS] UCLA Bruins on W3 L10 3-0 -- UCLA Bruins on W3 -- no historical sample
-- [CWS] Georgia Bulldogs on W3 L10 3-0 -- Georgia Bulldogs on W3 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**
