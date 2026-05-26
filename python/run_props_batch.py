@@ -140,6 +140,7 @@ DEFAULT_MODULES = [
     "nhl_period_totals_props",
     "nhl_goalie_saves_props",
     "nhl_goalie_30plus_saves",
+    "nhl_game_total_saves",
     "nhl_anytime_goal_props",
     "nhl_skater_sog_props",
     "nhl_skater_3plus_sog",
