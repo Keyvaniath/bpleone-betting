@@ -49,6 +49,7 @@ DEFAULT_MODULES = [
     "mlb_first_inning_hr_yn",
     "mlb_team_first_inning_run",
     "mlb_team_first_3_innings_runs",
+    "mlb_first_team_to_score",
     "mlb_game_first_inning_hit_yn",
     "mlb_total_HRs_game",
     "mlb_to_hit_hr_yn",
