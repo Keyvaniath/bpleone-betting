@@ -151,6 +151,7 @@ DEFAULT_MODULES = [
     "nhl_skater_sog_props",
     "nhl_skater_3plus_sog",
     "nhl_skater_4plus_sog",
+    "nhl_skater_6plus_sog",
     "nhl_skater_points_props",
     "nhl_skater_2plus_points",
     "nhl_skater_2plus_goals",
@@ -234,6 +235,7 @@ DEFAULT_MODULES = [
     # Data-integrity audit (runs LAST so it scans the freshly-written outputs)
     "data_integrity_audit",
     "data_freshness_audit",
+    "global_pick_counts_widget",
 ]
 
 
