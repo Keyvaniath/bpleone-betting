@@ -177,6 +177,7 @@ DEFAULT_MODULES = [
     "tennis_aces_props",
     "tennis_double_faults_props",
     "tennis_breaks_of_serve",
+    "tennis_1st_set_winner",
     # Golf props (top-finish, etc.)
     "golf_top_finish_props",
     "golf_leaderboard_probability",
