@@ -113,6 +113,7 @@ DEFAULT_MODULES = [
     "nba_player_threes_alt_props",
     "nba_player_blocks_steals_props",
     "nba_player_blocks_alt",
+    "nba_player_steals_alt",
     "nba_double_double_props",
     "nba_player_turnovers_props",
     "nba_player_turnovers_alt",
