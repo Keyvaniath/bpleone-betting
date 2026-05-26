@@ -2,9 +2,8 @@
 
 _60-second read. Calibration tier: **REFINING** (70% progress)._
 
-## 💪 STRONG (2 picks)
-- [MLB] NYY @ KCR ML_AWAY · 67% / +33.4%
-- [MLB] NYY @ KCR NYY_ML · 67% / +33.4%
+## 💪 STRONG (1 picks)
+- [MLB] COL @ LAD OVER_9.0 · 67% / +28.6%
 
 ## 🔒 5 Daily Locks
 - **NYY @ KCR** ML_AWAY (MLB) -- 67% / +33.4%
@@ -16,16 +15,18 @@ _60-second read. Calibration tier: **REFINING** (70% progress)._
 - **WSN @ CLE** ML_AWAY (MLB) -- 60% / +28.5%
 - **WSN @ CLE** WSN_ML (MLB) -- 60% / +28.5%
 - **Nolan Arenado** PP_batter_total_bases_under_3.5 (MLB-PP) -- 72% / +24.3%
+- **PHI @ SDP** UNDER_7.5 (MLB) -- 66% / +25.6%
+- **CIN @ NYM** UNDER_7.5 (MLB) -- 66% / +25.2%
 
 ## 📉 Under Bets
 - **STL @ MIL** UNDER 8.0 — model 7.25 [STRONG signal]
-- **PHI @ SDP** UNDER 8.0 — model 5.91 [STRONG signal]
-- **SEA @ OAK** UNDER 9.5 — model 8.35 [STRONG signal]
+- **PHI @ SDP** UNDER 7.5 — model 5.97 [STRONG signal]
+- **SEA @ OAK** UNDER 9.5 — model 8.54 [STRONG signal]
 
 ## 🎰 Tonight's Best Parlay
 - **COL @ LAD** OVER_9.0 + **WSN @ CLE** ML_AWAY
-- Joint 40% · fair +310 · edge +65.3%
+- Joint 40% · fair +303 · edge +62.6%
 
 ---
-_Generated 2026-05-26T15:41:10_
+_Generated 2026-05-26T21:07:28_
 _Full breakdown: /tonight · Full history: /locks-of-day_

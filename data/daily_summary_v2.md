@@ -1,54 +1,57 @@
 # EdgeStat Daily Summary — 2026-05-26
 
-## 🏥 Model Health: 78.2/100 [HEALTHY]
+## 🏥 Model Health: 79.2/100 [HEALTHY]
 - Solid health - some minor issues to monitor
   - 🟢 Calibration Freshness: 100.0/100
   - 🟢 Hit Rate Trend: 84.3/100
   - 🔴 Brier Trend: 52.3/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 88.9/100
-  - 🔴 Edge Count: 31.4/100
+  - 🟡 Data Health: 77.8/100
+  - 🟡 Edge Count: 62.9/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.62)
-- **Total games on board:** 133
-- **Strong home favorites:** 28 | **Strong road dogs:** 1
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.617)
+- **Total games on board:** 138
+- **Strong home favorites:** 29 | **Strong road dogs:** 2
 
 ## 🎯 Top 5 Best Bets
-1. **COL @ LAD YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-2. **NYY @ KCR YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-3. **LAA @ DET YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-4. **PHI @ SDP YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-5. **HOU @ TEX YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
+1. **CIN @ NYM 4-leg SGP @ -195** (81/100 ★★★★★)
+2. **COL @ LAD YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+3. **NYY @ KCR YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+4. **LAA @ DET YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+5. **PHI @ SDP YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** NYY @ KCR ML_AWAY -- 67% / +33.4% (score 2.5)
-- [STRONG] **[MLB]** NYY @ KCR NYY_ML -- 67% / +33.4% (score 2.5)
+- [STRONG] **[MLB]** COL @ LAD OVER_9.0 -- 67% / +28.6% (score 2.5)
 
 ## 📉 Strong UNDER Signals
-- [ELITE 7.0] **STL @ MIL** model 7.25 vs market 8.5
-- [STRONG 6.3] **MIA @ TOR** model 7.09 vs market 8.5
-- [STRONG 6.0] **PHI @ SDP** model 6.19 vs market 8.5
+- [STRONG 6.0] **STL @ MIL** model 7.25 vs market 8.0
+- [STRONG 6.0] **PHI @ SDP** model 5.91 vs market 8.0
+- [STRONG 5.8] **SEA @ OAK** model 8.35 vs market 9.5
 
 ## 🔒 Locks of the Day -- Track Record
-- All-time: **28-4** (87.5% hit rate)
-- Net units: **+1.03u** | ROI: **+51.9%**
-- Last 7d: 28-4 (87.5%) | net +1.03u
+- All-time: **29-4** (87.9% hit rate)
+- Net units: **+1.07u** | ROI: **+52.5%**
+- Last 7d: 29-4 (87.9%) | net +1.07u
 
-**Today's 5 Locks:**
+**Today's 9 Locks:**
 - [MLB] **NYY @ KCR** ML_AWAY · p=67% edge=+33.4% qK=0.062u
 - [MLB] **NYY @ KCR** NYY_ML · p=67% edge=+33.4% qK=0.062u
 - [MLB-PP] **Kevin McGonigle** PP_batter_total_bases_under_3. · p=72% edge=+24.3% qK=0.062u
 - [MLB-PP] **Brandon Marsh** PP_batter_hrr_under_4.5 · p=72% edge=+24.3% qK=0.062u
 - [MLB-PP] **Teoscar Hernández** PP_batter_hrr_under_4.5 · p=72% edge=+24.3% qK=0.062u
+- [MLB] **COL @ LAD** OVER_9.0 · p=67% edge=+28.6% qK=0.062u
+- [MLB] **WSN @ CLE** ML_AWAY · p=60% edge=+28.5% qK=0.062u
+- [MLB] **WSN @ CLE** WSN_ML · p=60% edge=+28.5% qK=0.062u
+- [MLB-PP] **Nolan Arenado** PP_batter_total_bases_under_3. · p=72% edge=+24.3% qK=0.062u
 
 ## 🎰 Top Balanced 2-Leg Parlays (40-65% joint)
-- [MLB] NYY @ KCR ML_AWAY + [MLB-PP] Kevin McGonigle PP_batter_total_base
-  Joint: 48% | Fair: 247 | Edge: +65.9%
-- [MLB] NYY @ KCR ML_AWAY + [MLB-PP] Brandon Marsh PP_batter_hrr_under_
-  Joint: 48% | Fair: 247 | Edge: +65.9%
-- [MLB] NYY @ KCR ML_AWAY + [MLB-PP] Teoscar Hernández PP_batter_hrr_under_
-  Joint: 48% | Fair: 247 | Edge: +65.9%
+- [MLB] COL @ LAD OVER_9.0 + [MLB] WSN @ CLE ML_AWAY
+  Joint: 40% | Fair: 310 | Edge: +65.3%
+- [MLB] COL @ LAD OVER_9.0 + [MLB] WSN @ CLE WSN_ML
+  Joint: 40% | Fair: 310 | Edge: +65.3%
+- [MLB] COL @ LAD OVER_9.0 + [MLB-PP] Kevin McGonigle PP_batter_total_base
+  Joint: 48% | Fair: 231 | Edge: +59.9%
 
 ## 🎮 Player Play of the Day (cross-sport)
 - **[LOL]** Inspired UNDER 3.5 Kills | MED conviction · model 61.7% fair -161
@@ -68,30 +71,30 @@
 - Hot teams: **25** | Cold teams: **22** | Over-heavy: 0 | Under-heavy: 13
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (15)
-- RESIDUAL_DIVERGENCE: **15**
+## ⚠️ Anomaly Detector (19)
+- RESIDUAL_DIVERGENCE: **19**
   - Oklahoma City Thunder (NBA): Oklahoma City Thunder OUTPERFORMING expected margin by 7.9pts in recent games -- model bias may persist
   - Vegas Golden Knights (NHL): Vegas Golden Knights UNDERPERFORMING expected margin by 6.8pts in recent games -- model bias may persist
-  - Georgia Tech Yellow Jackets (CWS): Georgia Tech Yellow Jackets OUTPERFORMING expected margin by 9.7pts in recent games -- model bias may persist
-  - UIC Flames (CWS): UIC Flames OUTPERFORMING expected margin by 7.9pts in recent games -- model bias may persist
-  - East Carolina Pirates (CWS): East Carolina Pirates OUTPERFORMING expected margin by 7.5pts in recent games -- model bias may persist
+  - Toronto Tempo (WNBA): Toronto Tempo UNDERPERFORMING expected margin by 8.4pts in recent games -- model bias may persist
+  - Portland Fire (WNBA): Portland Fire UNDERPERFORMING expected margin by 7.3pts in recent games -- model bias may persist
+  - Connecticut Sun (WNBA): Connecticut Sun UNDERPERFORMING expected margin by 7.9pts in recent games -- model bias may persist
 
-## 💰 Today's Portfolio (10 picks)
-- Total stake: **$335.0** (33.5% of $1000 bankroll)
-- Expected EV: **$10.36**
-  - #1 [NRFI] $50 on COL @ LAD YRFI (1st-inning OVER 0.5) (P=83%)
-  - #2 [NRFI] $50 on NYY @ KCR YRFI (1st-inning OVER 0.5) (P=71%)
-  - #3 [NRFI] $50 on LAA @ DET YRFI (1st-inning OVER 0.5) (P=70%)
-  - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
-  - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
+## 💰 Today's Portfolio (8 picks)
+- Total stake: **$340.0** (34.0% of $1000 bankroll)
+- Expected EV: **$7.71**
+  - #1 [SGP] $50 on CIN @ NYM 4-leg SGP @ -195 (P=66%)
+  - #2 [NRFI] $50 on COL @ LAD YRFI (1st-inning OVER 0.5) (P=83%)
+  - #3 [NRFI] $50 on NYY @ KCR YRFI (1st-inning OVER 0.5) (P=71%)
+  - #4 [NRFI] $50 on LAA @ DET YRFI (1st-inning OVER 0.5) (P=70%)
+  - #5 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
 
-## 🎯 Convergence Picks (11 stacked games)
-- ELITE: **6** · HIGH: 2 · MED: 3
-  - [ELITE] Portland Fire @ New York Liberty : 5 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
+## 🎯 Convergence Picks (12 stacked games)
+- ELITE: **5** · HIGH: 3 · MED: 4
+  - [ELITE] Colorado Avalanche @ Vegas Golden Knights : 6 signals (PREGAME, HEAT_COLD, HEAT_COLD, HEAT_COLD)
   - [ELITE] Arsenal @ Crystal Palace : 5 signals (PREGAME, HEAT_COLD, HEAT_COLD, ATS)
-  - [ELITE] New York Knicks @ Cleveland Cavaliers : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
-  - [ELITE] Connecticut Sun @ Golden State Valkyries : 4 signals (HEAT_COLD, ANOMALY, ANOMALY, ATS)
+  - [ELITE] San Antonio Spurs @ Oklahoma City Thunder : 4 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
   - [ELITE] Philadelphia Union @ Inter Miami CF : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
+  - [ELITE] Wolverhampton Wanderers @ Burnley : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
 
 ## ⚾ Top MLB Pitcher K Plays (10)
 - **Jason Alexander** OVER 7.5 K (76%) fair -321
@@ -107,39 +110,29 @@
 
 ## 🥊 UFC Fight Matchups (UFC Fight Night: Song vs. Figueiredo)
   - [FAVORITE] **Jingnan Xiong** (19-2-0) vs Angela Hill -- fair -204
-  - [LEAN] **Zhu Kangjie** (21-4-0) vs Ramon Taveras -- fair -152
   - [LEAN] **Kai Asakura** (21-6-0) vs Cameron Smotherman -- fair -143
-  - [LEAN] **Rei Tsuruya** (10-1-0) vs Jesus Aguilar -- fair -136
   - [COIN_FLIP] **Jaqueline Amorim** (10-2-0) vs Loma Lookboonmee -- fair -129
-
-## ⛳ Golf Player Heat (from THE CJ CUP Byron Nelson)
-  - 🔥 T1 **Wyndham Clark** (USA): -30 total -- finished T1, Sunday -3.5 vs tourney avg
-  - 🔥 T2 **Si Woo Kim** (South Korea): -27 total -- finished T2
-  - 🔥 T3 **Scottie Scheffler** (USA): -25 total -- finished T3
-  - 🔥 T4 **Jackson Suber** (USA): -23 total -- finished T4, Sunday -2.2 vs tourney avg
-  - 🔥 T5 **Keith Mitchell** (USA): -22 total -- finished T5, Sunday -1.5 vs tourney avg
-  - ❄️ **Danny Willett** (England): Sunday +4.8 vs tourney avg
-  - ❄️ **Michael Thorbjornsen** (USA): Sunday +4.5 vs tourney avg
-  - ❄️ **John VanDerLaan** (USA): Sunday +4.2 vs tourney avg
+  - [COIN_FLIP] **Deiveson Figueiredo** (25-6-1) vs Song Yadong -- fair -124
+  - [COIN_FLIP] **Ding Meng** (35-9-0) vs Jose Henrique -- fair -119
 
 ## 🔥 MLB Batter Heat (30 HOT / 53 COLD)
   - 🔥 **Ketel Marte** (AZ): L14 .439 / season .275 (+164pts)
   - 🔥 **Cedric Mullins** (TB): L14 .333 / season .194 (+139pts)
-  - 🔥 **Jazz Chisholm Jr.** (NYY): L14 .367 / season .247 (+120pts)
   - 🔥 **Jesús Sánchez** (TOR): L14 .389 / season .279 (+110pts)
+  - 🔥 **Jazz Chisholm Jr.** (NYY): L14 .347 / season .242 (+105pts)
   - 🔥 **Teoscar Hernández** (LAD): L14 .373 / season .277 (+96pts)
   - ❄️ **Edouard Julien** (COL): L14 .026 / season .206 (-180pts) -- FADE props
   - ❄️ **Moisés Ballesteros** (CHC): L14 .086 / season .248 (-162pts) -- FADE props
-  - ❄️ **Adolis García** (PHI): L14 .047 / season .200 (-153pts) -- FADE props
+  - ❄️ **Adolis García** (PHI): L14 .070 / season .205 (-135pts) -- FADE props
   - ❄️ **Andy Pages** (LAD): L14 .154 / season .286 (-132pts) -- FADE props
   - ❄️ **Justin Crawford** (PHI): L14 .103 / season .235 (-132pts) -- FADE props
 
-## 📈 Streak Regression Alerts (19)
-- [WNBA] New York Liberty on L3 L10 1-4 -- New York Liberty on L3 -- no historical sample
+## 📈 Streak Regression Alerts (20)
+- [NHL] Vegas Golden Knights on W5 L10 5-0 -- Vegas Golden Knights on W5 -- no historical sample
+- [NHL] Colorado Avalanche on L3 L10 1-3 -- Colorado Avalanche on L3 -- no historical sample
 - [CWS] Georgia Tech Yellow Jackets on W3 L10 3-0 -- Georgia Tech Yellow Jackets on W3 -- no historical sample
 - [CWS] UIC Flames on W3 L10 3-0 -- UIC Flames on W3 -- no historical sample
 - [CWS] Milwaukee Panthers on W3 L10 3-0 -- Milwaukee Panthers on W3 -- no historical sample
-- [CWS] Kansas Jayhawks on W3 L10 3-0 -- Kansas Jayhawks on W3 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**
