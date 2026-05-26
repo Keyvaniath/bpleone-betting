@@ -121,6 +121,7 @@ DEFAULT_MODULES = [
     "nba_pace_adjusted",
     "nba_team_total_props",
     "nba_team_total_edge",
+    "nba_race_to_points",
     # WNBA props
     "wnba_player_pts_props",
     "wnba_player_20plus_pts_alt",
