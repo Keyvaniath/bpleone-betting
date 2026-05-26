@@ -70,6 +70,7 @@ DEFAULT_MODULES = [
     "mlb_pitcher_pitches_into_6th",
     "mlb_pitcher_er_props",
     "mlb_pitcher_blowup_alert",
+    "mlb_dominant_outing_alerts",
     "mlb_pitcher_hits_allowed_props",
     "mlb_pitcher_allows_hr_yn",
     "mlb_pitcher_quality_start_props",
