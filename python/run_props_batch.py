@@ -128,6 +128,7 @@ DEFAULT_MODULES = [
     "nba_team_total_props",
     "nba_team_total_edge",
     "nba_race_to_points",
+    "nba_game_total_alts",
     "nba_half_total_props",
     # WNBA props
     "wnba_player_pts_props",
