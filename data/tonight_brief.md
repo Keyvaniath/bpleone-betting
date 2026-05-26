@@ -1,33 +1,33 @@
-# 🌙 Tonight's Brief — 2026-05-25
+# 🌙 Tonight's Brief — 2026-05-26
 
-_60-second read. Calibration tier: **BOOTSTRAPPING** (40% progress)._
+_60-second read. Calibration tier: **REFINING** (70% progress)._
 
-## 💪 STRONG (1 picks)
-- [MLB] HOU @ TEX OVER_8.0 · 67% / +27.6%
+## 🐋 WHALES (size up max)
+- **MLB-PP** · Brandon Marsh PP_batter_hrr_under_4.5 · 72% / +24.3%
+  - Top-25 board pick: 72% prob, +24.3% edge
+  - Edge bonus: +24.3% material edge
+  - Consensus STRONG (3/3 modules agree)
+
+## 💪 STRONG (2 picks)
+- [MLB] COL @ LAD ML_HOME · 65% / +24.4%
+- [MLB] COL @ LAD LAD_ML · 65% / +24.4%
 
 ## 🔒 5 Daily Locks
-- **Choi Jeong** one_plus_tb (KBO) -- 73% / +39.8%
-- **Jose Pirela** one_plus_tb (KBO) -- 73% / +39.2%
-- **Koo Ja-wook** one_plus_tb (KBO) -- 73% / +38.9%
-- **Mel Rojas Jr.** one_plus_tb (KBO) -- 73% / +38.5%
-- **Austin Dean** one_plus_tb (KBO) -- 73% / +38.5%
-- **WSN @ CLE** OVER_8.0 (MLB) -- 67% / +28.2%
-- **HOU @ TEX** OVER_8.0 (MLB) -- 67% / +27.6%
-- **Andy Pages** PP_batter_hrr_over_0.5 (MLB-PP) -- 72% / +24.3%
-- **Edouard Julien** PP_batter_home_runs_under_0.5 (MLB-PP) -- 72% / +24.3%
+- **NYY @ KCR** ML_AWAY (MLB) -- 67% / +33.4%
+- **NYY @ KCR** NYY_ML (MLB) -- 67% / +33.4%
+- **Kevin McGonigle** PP_batter_total_bases_under_3.5 (MLB-PP) -- 72% / +24.3%
 - **Brandon Marsh** PP_batter_hrr_under_4.5 (MLB-PP) -- 72% / +24.3%
 - **Teoscar Hernández** PP_batter_hrr_under_4.5 (MLB-PP) -- 72% / +24.3%
-- **COL @ LAD** ML_HOME (MLB) -- 65% / +24.4%
-- **COL @ LAD** LAD_ML (MLB) -- 65% / +24.4%
-- **Kevin McGonigle** PP_batter_total_bases_under_3.5 (MLB-PP) -- 72% / +24.3%
 
 ## 📉 Under Bets
-- **MIA @ TOR** UNDER 8.5 — model 6.62 [ELITE signal]
+- **STL @ MIL** UNDER 8.5 — model 7.25 [ELITE signal]
+- **MIA @ TOR** UNDER 8.5 — model 7.09 [STRONG signal]
+- **PHI @ SDP** UNDER 8.5 — model 6.19 [STRONG signal]
 
 ## 🎰 Tonight's Best Parlay
-- **COL @ LAD** ML_HOME + **Kevin McGonigle** PP_batter_total_bases_under_3.5
-- Joint 47% · fair +231 · edge +54.7%
+- **NYY @ KCR** ML_AWAY + **Kevin McGonigle** PP_batter_total_bases_under_3.5
+- Joint 48% · fair +247 · edge +65.9%
 
 ---
-_Generated 2026-05-25T23:00:21_
+_Generated 2026-05-26T08:07:36_
 _Full breakdown: /tonight · Full history: /locks-of-day_
