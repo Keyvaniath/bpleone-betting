@@ -189,6 +189,7 @@ DEFAULT_MODULES = [
     # Team total edge synthesizer (consumes lineup_quality + pitcher_edge above)
     "mlb_team_total_edge",
     "mlb_team_5plus_runs",
+    "mlb_race_to_3_runs",
     "mlb_game_total_alt_props",
     "mlb_inning_probability_matrix",
     # MLB stack builder (consumes lineup_quality + park + pitcher_edge + hot_streaks)
