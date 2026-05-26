@@ -15,10 +15,9 @@ name: Continuous Heartbeat (5-min self-learning + odds refresh)
 
 on:
   schedule:
-    # 2026-05-21 PASS 3: bumped from */60 to */180. Each run ~57s, 24/day was
-    # still ~23 min/day. Now 8/day = ~8 min/day. Daily-pipeline already does
-    # the same calibration work 2x/day so heartbeat is mostly redundant.
-    - cron: '0 */3 * * *'  # every 3 hours
+    # 2026-05-21 PASS 3: bumped from */60 to */180 (8/day).
+    # 2026-05-26: Brandon increased budget — back to every 2 hours (12/day).
+    - cron: '0 */2 * * *'  # every 2 hours = 12 runs/day
   workflow_dispatch:
 
 permissions:

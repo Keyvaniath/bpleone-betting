@@ -12,10 +12,9 @@ name: Training Loop (Continuous Calibration)
 
 on:
   # 2026-05-21: SLASHED cron — was burning 200 runs/day. Hit GH Actions 90% quota.
-  # Self-learning now ticks via daily-pipeline.yml (3x/day). After June 1 reset
-  # can re-enable a milder cadence like `0 */6 * * *` (4x/day).
+  # 2026-05-26: Brandon increased Actions budget — bumped back to every 3h (8/day).
   schedule:
-    - cron: '0 */6 * * *'   # every 6 hours = 4 runs/day
+    - cron: '0 */3 * * *'   # every 3 hours = 8 runs/day
   workflow_dispatch:
 
 permissions:

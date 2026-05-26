@@ -66,6 +66,7 @@ DEFAULT_MODULES = [
     "mlb_pitcher_k_minus_bb",
     "mlb_pitcher_outs_props",
     "mlb_pitcher_6plus_IP_yn",
+    "mlb_pitcher_pitches_into_6th",
     "mlb_pitcher_er_props",
     "mlb_pitcher_hits_allowed_props",
     "mlb_pitcher_allows_hr_yn",
