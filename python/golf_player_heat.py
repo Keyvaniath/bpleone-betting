@@ -134,8 +134,13 @@ def run() -> Dict[str, Any]:
 
 if __name__ == "__main__":
     p = run()
-    print(f"Golf player heat: {p['n_hot']} HOT, {p['n_cold']} COLD "
-          f"(of {p['n_players_analyzed']} from {p.get('source_tournament')})")
+    # Use .get() with defaults — when no field data is available, run() returns
+    # an early-exit payload without n_hot/n_cold/source_tournament keys.
+    if p.get("note"):
+        print(f"Golf player heat: {p['note']} (analyzed 0 players)")
+        raise SystemExit(0)
+    print(f"Golf player heat: {p.get('n_hot', 0)} HOT, {p.get('n_cold', 0)} COLD "
+          f"(of {p.get('n_players_analyzed', 0)} from {p.get('source_tournament')})")
     def _safe(v, fmt="{}", fallback="--"):
         try: return fmt.format(v) if v is not None else fallback
         except Exception: return fallback
