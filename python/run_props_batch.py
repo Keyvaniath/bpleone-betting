@@ -73,6 +73,7 @@ DEFAULT_MODULES = [
     "mlb_dominant_outing_alerts",
     "mlb_pitcher_fade_alerts",
     "mlb_offensive_explosion_alerts",
+    "mlb_matchup_confluence_alerts",
     "mlb_pitcher_hits_allowed_props",
     "mlb_pitcher_allows_hr_yn",
     "mlb_pitcher_quality_start_props",
@@ -127,6 +128,7 @@ DEFAULT_MODULES = [
     "nba_player_ft_attempts_props",
     "nba_triple_double_props",
     "nba_player_minutes_props",
+    "nba_player_ceiling_stack",
     # NBA team props
     "nba_team_alts_props",
     "nba_pace_adjusted",
