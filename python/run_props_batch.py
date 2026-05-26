@@ -205,6 +205,7 @@ DEFAULT_MODULES = [
     # Cross-sport alpha scanner (runs AFTER all per-sport props above)
     "cross_sport_alpha_scanner",
     "mlb_today_whales",
+    "mlb_top_3_picks_synthesizer",
     # Confluence + aggregation (must run AFTER all per-sport props above)
     "confluence_top_5",
     # book_vs_model_team runs FIRST so alpha_pick can pull from its output
