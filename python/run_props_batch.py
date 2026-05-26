@@ -60,6 +60,7 @@ DEFAULT_MODULES = [
     # MLB pitcher props
     "mlb_pitcher_walks_props",
     "mlb_pitcher_2plus_walks_yn",
+    "mlb_total_walks_game",
     "mlb_pitcher_k_minus_bb",
     "mlb_pitcher_outs_props",
     "mlb_pitcher_6plus_IP_yn",
