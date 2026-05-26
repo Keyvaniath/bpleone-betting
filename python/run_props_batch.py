@@ -189,6 +189,7 @@ DEFAULT_MODULES = [
     "ufc_first_round_finish",
     # F1 props
     "f1_qualifying_predictor",
+    "f1_podium_finish_props",
     # Pitcher edge composite (consumes lineup_quality + K/outs/QS props above)
     "mlb_pitcher_edge_composite",
     "mlb_pitcher_recent_vs_lineup_quality",
