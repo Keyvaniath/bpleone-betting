@@ -1,13 +1,13 @@
 # EdgeStat Daily Summary — 2026-05-26
 
-## 🏥 Model Health: 79.2/100 [HEALTHY]
+## 🏥 Model Health: 80.0/100 [HEALTHY]
 - Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 100.0/100
+  - 🟢 Calibration Freshness: 99.8/100
   - 🟢 Hit Rate Trend: 84.3/100
   - 🔴 Brier Trend: 52.3/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟡 Data Health: 77.8/100
-  - 🟡 Edge Count: 62.9/100
+  - 🟡 Edge Count: 71.4/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.617)
@@ -22,19 +22,21 @@
 5. **PHI @ SDP YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** COL @ LAD OVER_9.0 -- 67% / +28.6% (score 2.5)
+- [STRONG] **[MLB]** COL @ LAD OVER_9.0 -- 67% / +28.2% (score 2.5)
+- [STRONG] **[MLB]** PHI @ SDP UNDER_7.5 -- 66% / +25.6% (score 2.5)
+- [STRONG] **[MLB]** CIN @ NYM UNDER_7.5 -- 66% / +25.2% (score 2.5)
 
 ## 📉 Strong UNDER Signals
 - [STRONG 6.0] **STL @ MIL** model 7.25 vs market 8.0
-- [STRONG 6.0] **PHI @ SDP** model 5.91 vs market 8.0
-- [STRONG 5.8] **SEA @ OAK** model 8.35 vs market 9.5
+- [STRONG 6.0] **PHI @ SDP** model 5.97 vs market 7.5
+- [STRONG 5.4] **SEA @ OAK** model 8.54 vs market 9.5
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **29-4** (87.9% hit rate)
 - Net units: **+1.07u** | ROI: **+52.5%**
 - Last 7d: 29-4 (87.9%) | net +1.07u
 
-**Today's 9 Locks:**
+**Today's 11 Locks:**
 - [MLB] **NYY @ KCR** ML_AWAY · p=67% edge=+33.4% qK=0.062u
 - [MLB] **NYY @ KCR** NYY_ML · p=67% edge=+33.4% qK=0.062u
 - [MLB-PP] **Kevin McGonigle** PP_batter_total_bases_under_3. · p=72% edge=+24.3% qK=0.062u
@@ -44,14 +46,16 @@
 - [MLB] **WSN @ CLE** ML_AWAY · p=60% edge=+28.5% qK=0.062u
 - [MLB] **WSN @ CLE** WSN_ML · p=60% edge=+28.5% qK=0.062u
 - [MLB-PP] **Nolan Arenado** PP_batter_total_bases_under_3. · p=72% edge=+24.3% qK=0.062u
+- [MLB] **PHI @ SDP** UNDER_7.5 · p=66% edge=+25.6% qK=0.062u
+- [MLB] **CIN @ NYM** UNDER_7.5 · p=66% edge=+25.2% qK=0.062u
 
 ## 🎰 Top Balanced 2-Leg Parlays (40-65% joint)
 - [MLB] COL @ LAD OVER_9.0 + [MLB] WSN @ CLE ML_AWAY
-  Joint: 40% | Fair: 310 | Edge: +65.3%
+  Joint: 40% | Fair: 303 | Edge: +62.6%
 - [MLB] COL @ LAD OVER_9.0 + [MLB] WSN @ CLE WSN_ML
-  Joint: 40% | Fair: 310 | Edge: +65.3%
-- [MLB] COL @ LAD OVER_9.0 + [MLB-PP] Kevin McGonigle PP_batter_total_base
-  Joint: 48% | Fair: 231 | Edge: +59.9%
+  Joint: 40% | Fair: 303 | Edge: +62.6%
+- [MLB] COL @ LAD OVER_9.0 + [MLB] PHI @ SDP UNDER_7.5
+  Joint: 44% | Fair: 264 | Edge: +61.0%
 
 ## 🎮 Player Play of the Day (cross-sport)
 - **[LOL]** Inspired UNDER 3.5 Kills | MED conviction · model 61.7% fair -161
@@ -88,20 +92,20 @@
   - #4 [NRFI] $50 on LAA @ DET YRFI (1st-inning OVER 0.5) (P=70%)
   - #5 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
 
-## 🎯 Convergence Picks (12 stacked games)
-- ELITE: **5** · HIGH: 3 · MED: 4
+## 🎯 Convergence Picks (15 stacked games)
+- ELITE: **6** · HIGH: 3 · MED: 6
   - [ELITE] Colorado Avalanche @ Vegas Golden Knights : 6 signals (PREGAME, HEAT_COLD, HEAT_COLD, HEAT_COLD)
+  - [ELITE] Connecticut Sun @ Portland Fire : 5 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ANOMALY)
   - [ELITE] Arsenal @ Crystal Palace : 5 signals (PREGAME, HEAT_COLD, HEAT_COLD, ATS)
   - [ELITE] San Antonio Spurs @ Oklahoma City Thunder : 4 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
   - [ELITE] Philadelphia Union @ Inter Miami CF : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
-  - [ELITE] Wolverhampton Wanderers @ Burnley : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
 
 ## ⚾ Top MLB Pitcher K Plays (10)
 - **Jason Alexander** OVER 7.5 K (76%) fair -321
 - **Joe Ryan** OVER 4.5 K (73%) fair -275
 - **Chase Burns** OVER 4.5 K (71%) fair -251
-- **Luis Severino** OVER 4.5 K (70%) fair -232
 - **Bailey Falter** OVER 4.5 K (69%) fair -221
+- **Cade Cavalli** OVER 5.5 K (68%) fair -214
 
 ## 🏀 NBA Player Heat (2 HOT / 1 COLD)
   - 🔥 **Alex Caruso** (OKC): L5 14.4/2.8/1.8 vs season 8.2/3.0/1.8 [PTS +6.2]
@@ -115,24 +119,31 @@
   - [COIN_FLIP] **Deiveson Figueiredo** (25-6-1) vs Song Yadong -- fair -124
   - [COIN_FLIP] **Ding Meng** (35-9-0) vs Jose Henrique -- fair -119
 
-## 🔥 MLB Batter Heat (30 HOT / 53 COLD)
+## ⛳ Golf Player Heat (from Charles Schwab Challenge)
+  - 🔥 T1 **Kevin Kisner** (USA): +0 total -- finished T1
+  - 🔥 T2 **Zac Blair** (USA): +0 total -- finished T2
+  - 🔥 T3 **Christiaan Bezuidenhout** (South Africa): +0 total -- finished T3
+  - 🔥 T4 **Nick Hardy** (USA): +0 total -- finished T4
+  - 🔥 T5 **Michael Thorbjornsen** (USA): +0 total -- finished T5
+
+## 🔥 MLB Batter Heat (29 HOT / 57 COLD)
   - 🔥 **Ketel Marte** (AZ): L14 .439 / season .275 (+164pts)
-  - 🔥 **Cedric Mullins** (TB): L14 .333 / season .194 (+139pts)
+  - 🔥 **Cedric Mullins** (TB): L14 .312 / season .192 (+120pts)
   - 🔥 **Jesús Sánchez** (TOR): L14 .389 / season .279 (+110pts)
   - 🔥 **Jazz Chisholm Jr.** (NYY): L14 .347 / season .242 (+105pts)
   - 🔥 **Teoscar Hernández** (LAD): L14 .373 / season .277 (+96pts)
   - ❄️ **Edouard Julien** (COL): L14 .026 / season .206 (-180pts) -- FADE props
-  - ❄️ **Moisés Ballesteros** (CHC): L14 .086 / season .248 (-162pts) -- FADE props
+  - ❄️ **Moisés Ballesteros** (CHC): L14 .091 / season .246 (-155pts) -- FADE props
   - ❄️ **Adolis García** (PHI): L14 .070 / season .205 (-135pts) -- FADE props
   - ❄️ **Andy Pages** (LAD): L14 .154 / season .286 (-132pts) -- FADE props
   - ❄️ **Justin Crawford** (PHI): L14 .103 / season .235 (-132pts) -- FADE props
 
-## 📈 Streak Regression Alerts (20)
+## 📈 Streak Regression Alerts (22)
 - [NHL] Vegas Golden Knights on W5 L10 5-0 -- Vegas Golden Knights on W5 -- no historical sample
 - [NHL] Colorado Avalanche on L3 L10 1-3 -- Colorado Avalanche on L3 -- no historical sample
+- [WNBA] New York Liberty on L3 L10 1-4 -- New York Liberty on L3 -- no historical sample
+- [WNBA] Phoenix Mercury on L3 L10 1-4 -- Phoenix Mercury on L3 -- no historical sample
 - [CWS] Georgia Tech Yellow Jackets on W3 L10 3-0 -- Georgia Tech Yellow Jackets on W3 -- no historical sample
-- [CWS] UIC Flames on W3 L10 3-0 -- UIC Flames on W3 -- no historical sample
-- [CWS] Milwaukee Panthers on W3 L10 3-0 -- Milwaukee Panthers on W3 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**

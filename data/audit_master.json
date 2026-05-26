@@ -3,44 +3,44 @@
     "imports": {
       "duration_s": 0.6,
       "exit_code": 0,
-      "summary": "SUMMARY: 418 import-ok / 0 import-fail",
+      "summary": "SUMMARY: 437 import-ok / 0 import-fail",
       "stderr_truncated": ""
     },
     "html": {
       "duration_s": 0.0,
       "exit_code": 0,
-      "summary": "SUMMARY: 85 ok / 0 no-nav-js / 10 no-mainnav / 2 missing-json",
+      "summary": "SUMMARY: 85 ok / 0 no-nav-js / 11 no-mainnav / 2 missing-json",
       "stderr_truncated": ""
     },
     "data": {
       "duration_s": 1.9,
       "exit_code": 0,
-      "summary": "SUMMARY: 341 ok / 1 empty / 107 flagged / 0 stale24h / 0 stale72h",
+      "summary": "SUMMARY: 355 ok / 1 empty / 112 flagged / 0 stale24h / 0 stale72h",
       "stderr_truncated": ""
     },
     "data_health": {
-      "duration_s": 0.7,
+      "duration_s": 0.5,
       "exit_code": 0,
-      "summary": "[FAIL] golf               | ESPN has 132 golfers, local has 0",
+      "summary": "[OK] golf               | 132 golfers tracked (1 active events)",
       "stderr_truncated": ""
     }
   },
-  "generated_at": "2026-05-26T21:08:32",
-  "total_duration_s": 3.2,
+  "generated_at": "2026-05-26T23:12:25",
+  "total_duration_s": 3.0,
   "artifacts": {
     "module_import_audit.json": {
-      "generated_at": "2026-05-26T21:08:30",
-      "n_total": 418,
-      "n_ok": 418,
+      "generated_at": "2026-05-26T23:12:23",
+      "n_total": 437,
+      "n_ok": 437,
       "n_fail": 0,
       "failures": []
     },
     "html_audit.json": {
-      "generated_at": "2026-05-26T21:08:30",
+      "generated_at": "2026-05-26T23:12:23",
       "summary": {
         "ok": 85,
         "no_nav_js": 0,
-        "no_nav_class": 10,
+        "no_nav_class": 11,
         "no_style_css": 0,
         "missing_json": 2
       },
@@ -56,6 +56,7 @@
           "module-performance.html",
           "sport-coverage.html",
           "todays-brief.html",
+          "top-3-picks.html",
           "top-edges.html"
         ],
         "no_style_css": [],
@@ -157,14 +158,14 @@
       }
     },
     "data_stub_audit.json": {
-      "generated_at": "2026-05-26T21:08:32",
+      "generated_at": "2026-05-26T23:12:25",
       "summary": {
         "empty": 1,
         "stub_flagged": 0,
-        "zero_count": 107,
+        "zero_count": 112,
         "stale_24h": 0,
         "stale_72h": 0,
-        "ok": 341
+        "ok": 355
       },
       "empty": [
         [
@@ -173,14 +174,6 @@
         ]
       ],
       "zero_count": [
-        [
-          "anyone_hr.json",
-          "n_games=0"
-        ],
-        [
-          "best_matchups.json",
-          "total=0"
-        ],
         [
           "bullpen_warming.json",
           "n_in_progress=0; n_save_opps=0; n_warming_signals=0"
@@ -226,20 +219,28 @@
           "n_new_alerts=0"
         ],
         [
+          "f1_podium_finish_props.json",
+          "n_strong_edges=0"
+        ],
+        [
           "fade_picks.json",
           "n_fades=0"
         ],
         [
-          "golf_pot_history.json",
-          "n_pending=0"
+          "golf_leaderboard_probability.json",
+          "n_players=0; n_strong_edges=0"
+        ],
+        [
+          "golf_player_heat.json",
+          "n_cold=0; n_withdrew=0"
         ],
         [
           "golf_round_score_props.json",
-          "n_strong_edges=0"
+          "n_players=0; n_strong_edges=0"
         ],
         [
-          "golf_state.json",
-          "n_players=0"
+          "golf_top_finish_props.json",
+          "n_strong=0"
         ],
         [
           "historical_ncaaf.json",
@@ -310,10 +311,6 @@
           "n_live=0"
         ],
         [
-          "mlb_batter_walks_props.json",
-          "n_strong_edges=0"
-        ],
-        [
           "mlb_bullpen_fatigue_index.json",
           "n_gassed_bullpens=0; n_tired_bullpens=0"
         ],
@@ -327,10 +324,14 @@
         ],
         [
           "mlb_first_batter_retired_props.json",
-          "n_starters=0; n_strong_edges=0"
+          "n_strong_edges=0"
         ],
         [
           "mlb_first_inning_hr_yn.json",
+          "n_strong_edges=0"
+        ],
+        [
+          "mlb_game_first_inning_hit_yn.json",
           "n_strong_edges=0"
         ],
         [
@@ -350,16 +351,16 @@
           "n_homer_friendly=0; n_pitcher_graveyards=0"
         ],
         [
-          "mlb_perfect_storm_alerts.json",
-          "n_perfect_storms=0"
-        ],
-        [
           "mlb_pitcher_allows_hr_yn.json",
           "n_strong_edges=0"
         ],
         [
           "mlb_pitcher_edge_composite.json",
           "n_elite_matchups=0; n_strong=0; n_bad_spots=0"
+        ],
+        [
+          "mlb_pitcher_er_props.json",
+          "n_strong_edges=0"
         ],
         [
           "mlb_pitcher_form_regression.json",
@@ -390,6 +391,10 @@
           "n_platoon_alerts=0"
         ],
         [
+          "mlb_race_to_3_runs.json",
+          "n_strong_edges=0"
+        ],
+        [
           "mlb_stack_builder.json",
           "n_elite_stacks=0"
         ],
@@ -398,24 +403,20 @@
           "n_emergency=0; n_red=0; n_yellow=0"
         ],
         [
-          "mlb_team_total_edge.json",
-          "n_strong_edges=0"
-        ],
-        [
-          "mlb_to_hit_hr_yn.json",
-          "n_strong_edges=0"
-        ],
-        [
-          "mlb_to_record_hit_yn.json",
-          "n_strong_edges=0"
-        ],
-        [
           "mlb_today_lean_consensus.json",
           "n_strong_consensus_signals=0"
         ],
         [
-          "mlb_todays_alerts.json",
-          "n_high_priority=0"
+          "mlb_today_locks.json",
+          "n_locks=0"
+        ],
+        [
+          "mlb_total_HRs_game.json",
+          "n_strong_edges=0"
+        ],
+        [
+          "mlb_total_walks_game.json",
+          "n_strong_edges=0"
         ],
         [
           "mlb_weather_advisory.json",
@@ -428,6 +429,10 @@
         [
           "nba_extended_props.json",
           "n_sweet_spot=0"
+        ],
+        [
+          "nba_half_total_props.json",
+          "n_games=0; n_strong_edges=0"
         ],
         [
           "nba_player_assists_alt_props.json",
@@ -452,6 +457,14 @@
         [
           "nhl_first_goalscorer_props.json",
           "n_players=0; n_strong_edges=0"
+        ],
+        [
+          "nhl_game_total_saves.json",
+          "n_strong_edges=0"
+        ],
+        [
+          "nhl_game_total_sog.json",
+          "n_strong_edges=0"
         ],
         [
           "nhl_goalie_30plus_saves.json",
@@ -534,6 +547,10 @@
           "n_settled=0"
         ],
         [
+          "prediction_log.json",
+          "n_new_this_run=0; n_settled_this_run=0"
+        ],
+        [
           "recommendation_trust.json",
           "n_concluded=0; n_improved=0; n_degraded=0"
         ],
@@ -556,6 +573,10 @@
         [
           "steam_alerts.json",
           "n_props_tracked=0; n_alerts=0"
+        ],
+        [
+          "tennis_1st_set_winner.json",
+          "n_matches=0; n_strong_edges=0"
         ],
         [
           "tennis_aces_props.json",
@@ -606,7 +627,7 @@
       "stale_72h": []
     },
     "data_health.json": {
-      "generated_at": "2026-05-26T21:08:32",
+      "generated_at": "2026-05-26T23:12:25",
       "overall": "red",
       "n_green": 7,
       "n_yellow": 0,
@@ -614,17 +635,17 @@
       "checks": [
         {
           "feed": "mlb",
-          "status": "green",
+          "status": "red",
           "findings": [
-            "15 total (15 pre / 0 live / 0 final), local pre=15, live=0"
+            "MLB has 8 live games but live_state.json shows 0 (age 9min)"
           ],
           "upstream_count": 15,
-          "upstream_pregame": 15,
-          "upstream_live": 0,
+          "upstream_pregame": 7,
+          "upstream_live": 8,
           "upstream_final": 0,
-          "local_count": 15,
+          "local_count": 8,
           "local_live": 0,
-          "live_state_age_min": 10
+          "live_state_age_min": 9
         },
         {
           "feed": "nba",
@@ -635,7 +656,7 @@
           "upstream_count": 1,
           "local_count": 1,
           "upstream_live": 0,
-          "local_age_min": 7
+          "local_age_min": 8
         },
         {
           "feed": "wnba",
@@ -646,7 +667,7 @@
           "upstream_count": 5,
           "local_count": 5,
           "upstream_live": 0,
-          "local_age_min": 10
+          "local_age_min": 9
         },
         {
           "feed": "nhl",
@@ -657,7 +678,7 @@
           "upstream_count": 1,
           "local_count": 1,
           "upstream_live": 0,
-          "local_age_min": 7
+          "local_age_min": 8
         },
         {
           "feed": "mls",
@@ -668,7 +689,7 @@
           "upstream_count": 3,
           "local_count": 3,
           "upstream_live": 0,
-          "local_age_min": 10
+          "local_age_min": 9
         },
         {
           "feed": "epl",
@@ -679,17 +700,17 @@
           "upstream_count": 10,
           "local_count": 10,
           "upstream_live": 0,
-          "local_age_min": 10
+          "local_age_min": 9
         },
         {
           "feed": "pitcher_matchup",
           "status": "green",
           "findings": [
-            "30/30 pre-game probables matched"
+            "14/14 pre-game probables matched"
           ],
-          "upstream_count": 30,
-          "local_count": 30,
-          "matched": 30
+          "upstream_count": 14,
+          "local_count": 20,
+          "matched": 14
         },
         {
           "feed": "props",
@@ -703,13 +724,13 @@
         },
         {
           "feed": "golf",
-          "status": "red",
+          "status": "green",
           "findings": [
-            "ESPN has 132 golfers, local has 0"
+            "132 golfers tracked (1 active events)"
           ],
           "upstream_players": 132,
-          "local_players": 0,
-          "local_age_min": 10
+          "local_players": 132,
+          "local_age_min": 9
         }
       ]
     }
