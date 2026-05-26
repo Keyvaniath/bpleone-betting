@@ -4,28 +4,28 @@ _6 picks consolidated from POD + Alpha + Book Edges + Parlay-of-Day._
 
 ## ⭐ Play of the Day
 
-- **NYY @ KCR** · ML_AWAY
-  Prob 66.7% · Odds +100 · Edge +33.4% · Kelly 0.250
+- **COL @ LAD** · OVER_9.0
+  Prob 67.4% · Odds -110 · Edge +28.6% · Kelly 0.250
 
 ## 🎯 Alpha Pick
 
-- **NYY @ KCR** · ML_AWAY
-  Prob 66.7% · Odds +100 · Edge +33.4% · Kelly 0.250
+- **COL @ LAD** · OVER_9.0
+  Prob 67.4% · Odds -110 · Edge +28.6% · Kelly 0.250
 
 ## 📊 Book Edges
 
-- **ARI @ SFG · AWAY (AWAY)** · TEAM_ML
-  Prob 60.9% · Odds +100 · Edge +21.7% · Kelly 0.217
 - **WSN @ CLE · AWAY (AWAY)** · TEAM_ML
-  Prob 60.7% · Odds +100 · Edge +21.5% · Kelly 0.215
-- **CIN @ NYM · AWAY (AWAY)** · TEAM_ML
-  Prob 60.7% · Odds +100 · Edge +21.3% · Kelly 0.213
+  Prob 59.0% · Odds +115 · Edge +26.8% · Kelly 0.233
+- **COL @ LAD · OVER · O/U 9.0** · TOTAL_OVER
+  Prob 66.4% · Odds -110 · Edge +26.8% · Kelly 0.295
+- **HOU @ TEX · OVER · O/U 8.0** · TOTAL_OVER
+  Prob 61.7% · Odds -110 · Edge +17.8% · Kelly 0.196
 
 ## 🎲 Parlay
 
-- **NYY @ KCR + Kevin McGonigle** · 2-leg
-  Prob 47.8% · Odds +247 · Edge +65.9% · Kelly 0.050
+- **COL @ LAD + WSN @ CLE** · 2-leg
+  Prob 40.3% · Odds +310 · Edge +65.3% · Kelly 0.050
 
 ---
-_Generated 2026-05-26T08:07:38 UTC by EdgeStat._
+_Generated 2026-05-26T15:41:12 UTC by EdgeStat._
 _Stakes assume ¼-Kelly fractional sizing on a flat bankroll._
