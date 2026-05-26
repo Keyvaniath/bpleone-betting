@@ -145,7 +145,11 @@ def run() -> Dict[str, Any]:
 
 if __name__ == "__main__":
     p = run()
-    print(f"Golf region props: {p['n_active_players']} active players across {p['n_regions']} regions")
+    # Guard the early-exit payload (no golf field data → no n_active_players key)
+    if p.get("note"):
+        print(f"Golf region props: {p['note']} (analyzed 0 players)")
+        raise SystemExit(0)
+    print(f"Golf region props: {p.get('n_active_players', 0)} active players across {p.get('n_regions', 0)} regions")
     for r in p.get("regions", []):
         fav5 = r.get("favorite_top5") or {}
         fav10 = r.get("favorite_top10") or {}
