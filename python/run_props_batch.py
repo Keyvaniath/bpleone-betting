@@ -185,6 +185,7 @@ DEFAULT_MODULES = [
     # UFC props
     "ufc_strikes_takedowns_props",
     "ufc_rounds_over_under_props",
+    "ufc_first_round_finish",
     # F1 props
     "f1_qualifying_predictor",
     # Pitcher edge composite (consumes lineup_quality + K/outs/QS props above)
