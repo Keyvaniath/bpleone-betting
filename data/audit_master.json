@@ -15,7 +15,7 @@
     "data": {
       "duration_s": 1.9,
       "exit_code": 0,
-      "summary": "SUMMARY: 324 ok / 1 empty / 262 flagged / 0 stale24h / 0 stale72h",
+      "summary": "SUMMARY: 329 ok / 1 empty / 257 flagged / 0 stale24h / 0 stale72h",
       "stderr_truncated": ""
     },
     "data_health": {
@@ -25,18 +25,18 @@
       "stderr_truncated": ""
     }
   },
-  "generated_at": "2026-05-27T08:21:49",
+  "generated_at": "2026-05-27T13:07:58",
   "total_duration_s": 3.2,
   "artifacts": {
     "module_import_audit.json": {
-      "generated_at": "2026-05-27T08:21:46",
+      "generated_at": "2026-05-27T13:07:55",
       "n_total": 559,
       "n_ok": 559,
       "n_fail": 0,
       "failures": []
     },
     "html_audit.json": {
-      "generated_at": "2026-05-27T08:21:47",
+      "generated_at": "2026-05-27T13:07:55",
       "summary": {
         "ok": 85,
         "no_nav_js": 0,
@@ -158,14 +158,14 @@
       }
     },
     "data_stub_audit.json": {
-      "generated_at": "2026-05-27T08:21:48",
+      "generated_at": "2026-05-27T13:07:57",
       "summary": {
         "empty": 1,
         "stub_flagged": 0,
-        "zero_count": 262,
+        "zero_count": 257,
         "stale_24h": 0,
         "stale_72h": 0,
-        "ok": 324
+        "ok": 329
       },
       "empty": [
         [
@@ -174,6 +174,14 @@
         ]
       ],
       "zero_count": [
+        [
+          "anyone_hr.json",
+          "n_games=0"
+        ],
+        [
+          "best_matchups.json",
+          "total=0"
+        ],
         [
           "bullpen_warming.json",
           "n_in_progress=0; n_save_opps=0; n_warming_signals=0"
@@ -233,10 +241,6 @@
         [
           "data_source_health.json",
           "contains 'sample'"
-        ],
-        [
-          "elite_alerts_board.json",
-          "n_elites=0"
         ],
         [
           "esports_alerts.json",
@@ -320,7 +324,7 @@
         ],
         [
           "lineup_churn.json",
-          "n_added=0; n_shifts=0"
+          "n_added=0; n_removed=0; n_shifts=0"
         ],
         [
           "lineup_confirmation.json",
@@ -351,8 +355,8 @@
           "n_locked=0; n_can_cashout=0"
         ],
         [
-          "lol_state.json",
-          "n_live=0"
+          "locks_history.json",
+          "n_newly_settled_this_run=0"
         ],
         [
           "mlb_batter_2plus_hits_props.json",
@@ -408,7 +412,7 @@
         ],
         [
           "mlb_bullpen_chain_alerts.json",
-          "n_chains=0; n_locks=0"
+          "n_locks=0"
         ],
         [
           "mlb_bullpen_fatigue_index.json",
@@ -432,7 +436,7 @@
         ],
         [
           "mlb_dominant_outing_alerts.json",
-          "n_alerts=0; n_elite=0"
+          "n_elite=0"
         ],
         [
           "mlb_doubles_props.json",
@@ -456,7 +460,7 @@
         ],
         [
           "mlb_full_game_pitching_chain.json",
-          "n_chain_lock=0; n_chain_strong=0"
+          "n_chain_lock=0"
         ],
         [
           "mlb_game_first_inning_hit_yn.json",
@@ -468,7 +472,7 @@
         ],
         [
           "mlb_game_preview.json",
-          "n_locks=0; n_strong=0"
+          "n_locks=0; n_strong=0; n_lean=0"
         ],
         [
           "mlb_game_run_diff_props.json",
@@ -528,15 +532,11 @@
         ],
         [
           "mlb_pitcher_confluence_score.json",
-          "n_lock=0; n_strong=0"
+          "n_lock=0"
         ],
         [
           "mlb_pitcher_edge_composite.json",
           "n_elite_matchups=0; n_strong=0; n_bad_spots=0"
-        ],
-        [
-          "mlb_pitcher_fade_alerts.json",
-          "n_alerts=0; n_elite_fades=0"
         ],
         [
           "mlb_pitcher_form_regression.json",
@@ -547,16 +547,12 @@
           "n_heating_up=0; n_cooling_down=0"
         ],
         [
-          "mlb_pitcher_k_minus_bb.json",
-          "n_pitchers=0; n_strong_edges=0"
-        ],
-        [
           "mlb_pitcher_k_streak_tracker.json",
           "n_streaks=0; n_elite=0"
         ],
         [
           "mlb_pitcher_lineup_adjusted.json",
-          "n_material_adj=0"
+          "n_pitchers=0; n_material_adj=0"
         ],
         [
           "mlb_pitcher_outs_props.json",
@@ -616,7 +612,7 @@
         ],
         [
           "mlb_team_confluence_score.json",
-          "n_lock=0; n_fade=0"
+          "n_lock=0; n_strong=0; n_fade=0"
         ],
         [
           "mlb_team_total_edge.json",
@@ -659,12 +655,8 @@
           "n_strong_edges=0"
         ],
         [
-          "mlb_total_K_game.json",
-          "n_strong_edges=0"
-        ],
-        [
           "mlb_total_k_game_alignment.json",
-          "n_alignments=0; n_over_aligned=0; n_under_aligned=0"
+          "n_under_aligned=0"
         ],
         [
           "mlb_total_walks_game.json",
@@ -837,6 +829,10 @@
         [
           "nba_race_to_points.json",
           "n_games=0; n_strong_edges=0"
+        ],
+        [
+          "nba_team_alts_props.json",
+          "n_games=0; n_strong=0"
         ],
         [
           "nba_team_confluence_score.json",
@@ -1063,10 +1059,6 @@
           "n_sources_with_locks=0"
         ],
         [
-          "slate_roi_projection.json",
-          "n_picks=0"
-        ],
-        [
           "soccer_clean_sheet_alignment.json",
           "n_alignments=0; n_clean_sheet_lock=0"
         ],
@@ -1115,10 +1107,6 @@
           "n_props_tracked=0; n_alerts=0"
         ],
         [
-          "survivor_pool.json",
-          "n_candidates=0; n_locks=0; n_strong=0"
-        ],
-        [
           "tennis_1st_set_winner.json",
           "n_matches=0; n_strong_edges=0"
         ],
@@ -1165,14 +1153,6 @@
         [
           "tennis_upset_alerts.json",
           "n_upset_candidates=0"
-        ],
-        [
-          "tonight_anchor_stack.json",
-          "n_legs=0"
-        ],
-        [
-          "tonight_lock_of_night.json",
-          "n_candidates=0"
         ],
         [
           "ufc_fight_card_preview.json",
@@ -1227,7 +1207,7 @@
       "stale_72h": []
     },
     "data_health.json": {
-      "generated_at": "2026-05-27T08:21:49",
+      "generated_at": "2026-05-27T13:07:58",
       "overall": "red",
       "n_green": 8,
       "n_yellow": 0,

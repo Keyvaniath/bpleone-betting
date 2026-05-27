@@ -1,63 +1,49 @@
 # EdgeStat Daily Summary — 2026-05-27
 
-## 🏥 Model Health: 80.0/100 [HEALTHY]
+## 🏥 Model Health: 82.0/100 [HEALTHY]
 - Solid health - some minor issues to monitor
   - 🟢 Calibration Freshness: 100.0/100
   - 🟢 Hit Rate Trend: 84.3/100
   - 🔴 Brier Trend: 52.3/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟡 Data Health: 77.8/100
-  - 🟡 Edge Count: 71.4/100
+  - 🟢 Data Health: 88.9/100
+  - 🟡 Edge Count: 68.6/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.615)
-- **Total games on board:** 152
-- **Strong home favorites:** 29 | **Strong road dogs:** 1
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.617)
+- **Total games on board:** 136
+- **Strong home favorites:** 28 | **Strong road dogs:** 1
 
 ## 🎯 Top 5 Best Bets
-1. **COL @ LAD 4-leg SGP @ -278** (100/100 ★★★★★)
-2. **COL @ LAD YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-3. **NYY @ KCR YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-4. **PHI @ SDP YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-5. **HOU @ TEX YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
-
-## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** COL @ LAD OVER_9.0 -- 67% / +27.7% (score 2.5)
-- [STRONG] **[MLB]** CIN @ NYM UNDER_7.5 -- 66% / +25.9% (score 2.5)
+1. **COL @ LAD 4-leg SGP @ -424** (100/100 ★★★★★)
+2. **HOU @ TEX YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+3. **CHC @ PIT YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+4. **CIN @ NYM NRFI (no run 1st inning)** (79/100 ★★★★)
+5. **STL @ MIL YRFI (1st-inning OVER 0.5)** (78/100 ★★★★)
 
 ## 📉 Strong UNDER Signals
-- [STRONG 6.0] **STL @ MIL** model 7.25 vs market 8.0
-- [STRONG 5.7] **PHI @ SDP** model 6.16 vs market 7.5
-- [STRONG 5.6] **SEA @ OAK** model 8.47 vs market 9.5
-- [STRONG 5.5] **CIN @ NYM** model 5.96 vs market 7.5
+- [ELITE 7.0] **PHI @ SDP** model 4.92 vs market 7.0
+- [STRONG 5.0] **LAA @ DET** model 6.49 vs market 7.5
 
 ## 🔒 Locks of the Day -- Track Record
-- All-time: **29-4** (87.9% hit rate)
-- Net units: **+1.07u** | ROI: **+52.5%**
-- Last 7d: 29-4 (87.9%) | net +1.07u
+- All-time: **34-5** (87.2% hit rate)
+- Net units: **+1.24u** | ROI: **+51.3%**
+- Last 7d: 30-5 (85.7%) | net +1.06u
 
-**Today's 13 Locks:**
-- [MLB] **NYY @ KCR** ML_AWAY · p=67% edge=+33.4% qK=0.062u
-- [MLB] **NYY @ KCR** NYY_ML · p=67% edge=+33.4% qK=0.062u
+**Today's 5 Locks:**
 - [MLB-PP] **Kevin McGonigle** PP_batter_total_bases_under_3. · p=72% edge=+24.3% qK=0.062u
-- [MLB-PP] **Brandon Marsh** PP_batter_hrr_under_4.5 · p=72% edge=+24.3% qK=0.062u
-- [MLB-PP] **Teoscar Hernández** PP_batter_hrr_under_4.5 · p=72% edge=+24.3% qK=0.062u
-- [MLB] **COL @ LAD** OVER_9.0 · p=67% edge=+28.6% qK=0.062u
-- [MLB] **WSN @ CLE** ML_AWAY · p=60% edge=+28.5% qK=0.062u
-- [MLB] **WSN @ CLE** WSN_ML · p=60% edge=+28.5% qK=0.062u
-- [MLB-PP] **Nolan Arenado** PP_batter_total_bases_under_3. · p=72% edge=+24.3% qK=0.062u
-- [MLB] **PHI @ SDP** UNDER_7.5 · p=66% edge=+25.6% qK=0.062u
-- [MLB] **CIN @ NYM** UNDER_7.5 · p=66% edge=+25.2% qK=0.062u
 - [MLB-PP] **Liam Hicks** PP_batter_total_bases_under_3. · p=72% edge=+24.3% qK=0.062u
 - [MLB-PP] **Ryan Waldschmidt** PP_batter_total_bases_under_3. · p=72% edge=+24.3% qK=0.062u
+- [MLB-PP] **Ildemaro Vargas** PP_batter_hrr_over_0.5 · p=72% edge=+24.3% qK=0.062u
+- [MLB-PP] **Dansby Swanson** PP_batter_doubles_under_0.5 · p=72% edge=+24.3% qK=0.062u
 
 ## 🎰 Top Balanced 2-Leg Parlays (40-65% joint)
-- [MLB] COL @ LAD OVER_9.0 + [MLB] CIN @ NYM UNDER_7.5
-  Joint: 44% | Fair: 264 | Edge: +60.8%
-- [MLB] COL @ LAD OVER_9.0 + [MLB-PP] Kevin McGonigle PP_batter_total_base
-  Joint: 48% | Fair: 231 | Edge: +58.8%
-- [MLB] COL @ LAD OVER_9.0 + [MLB-PP] Liam Hicks PP_batter_total_base
-  Joint: 48% | Fair: 231 | Edge: +58.8%
+- [MLB-PP] Kevin McGonigle PP_batter_total_base + [MLB-PP] Liam Hicks PP_batter_total_base
+  Joint: 51% | Fair: 201 | Edge: +54.6%
+- [MLB-PP] Kevin McGonigle PP_batter_total_base + [MLB-PP] Ryan Waldschmidt PP_batter_total_base
+  Joint: 51% | Fair: 201 | Edge: +54.6%
+- [MLB-PP] Kevin McGonigle PP_batter_total_base + [MLB-PP] Ildemaro Vargas PP_batter_hrr_over_0
+  Joint: 51% | Fair: 201 | Edge: +54.6%
 
 ## 🎮 Player Play of the Day (cross-sport)
 - **[LOL]** Inspired UNDER 3.5 Kills | MED conviction · model 61.7% fair -161
@@ -67,11 +53,11 @@
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
 ## ⚡ Pre-Game HIGH Conviction (5)
-- [CWS] **Kansas Jayhawks** HOME (3-0 L10) · model 71.5% fair -251
-- [CWS] **Wake Forest Demon Deacons** HOME (0-1 L10) · model 71.0% fair -245
-- [CWS] **Oregon Ducks** HOME (2-1 L10) · model 66.1% fair -195
-- [CWS] **Arkansas Razorbacks** HOME (3-1 L10) · model 65.7% fair -192
-- [CWS] **UCF Knights** HOME (0-1 L10) · model 64.0% fair -177
+- [CWS] **Kansas Jayhawks** HOME (3-0 L10) · model 70.4% fair -238
+- [CWS] **Wake Forest Demon Deacons** HOME (0-1 L10) · model 69.9% fair -233
+- [CWS] **Oregon Ducks** HOME (2-1 L10) · model 65.0% fair -186
+- [CWS] **Arkansas Razorbacks** HOME (3-1 L10) · model 64.6% fair -183
+- [CWS] **UCF Knights** HOME (0-1 L10) · model 62.9% fair -169
 
 ## 🔥/❄️ Heat / Cold Signals
 - Hot teams: **25** | Cold teams: **22** | Over-heavy: 0 | Under-heavy: 12
@@ -85,29 +71,29 @@
   - Atlanta Dream (WNBA): Atlanta Dream OUTPERFORMING expected margin by 12.7pts in recent games -- model bias may persist
   - Connecticut Sun (WNBA): Connecticut Sun UNDERPERFORMING expected margin by 9.6pts in recent games -- model bias may persist
 
-## 💰 Today's Portfolio (8 picks)
-- Total stake: **$340.0** (34.0% of $1000 bankroll)
-- Expected EV: **$12.34**
-  - #1 [SGP] $50 on COL @ LAD 4-leg SGP @ -278 (P=74%)
-  - #2 [NRFI] $50 on COL @ LAD YRFI (1st-inning OVER 0.5) (P=83%)
-  - #3 [NRFI] $50 on NYY @ KCR YRFI (1st-inning OVER 0.5) (P=71%)
-  - #4 [NRFI] $50 on PHI @ SDP YRFI (1st-inning OVER 0.5) (P=66%)
+## 💰 Today's Portfolio (9 picks)
+- Total stake: **$345.0** (34.5% of $1000 bankroll)
+- Expected EV: **$11.43**
+  - #1 [SGP] $50 on COL @ LAD 4-leg SGP @ -424 (P=81%)
+  - #2 [NRFI] $50 on HOU @ TEX YRFI (1st-inning OVER 0.5) (P=70%)
+  - #3 [NRFI] $50 on CHC @ PIT YRFI (1st-inning OVER 0.5) (P=70%)
+  - #4 [NRFI] $35 on CIN @ NYM NRFI (no run 1st inning) (P=73%)
   - #5 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
 
 ## 🎯 Convergence Picks (15 stacked games)
-- ELITE: **6** · HIGH: 3 · MED: 6
-  - [ELITE] Colorado Avalanche @ Vegas Golden Knights : 6 signals (PREGAME, HEAT_COLD, HEAT_COLD, HEAT_COLD)
-  - [ELITE] Connecticut Sun @ Portland Fire : 5 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ANOMALY)
+- ELITE: **6** · HIGH: 4 · MED: 5
+  - [ELITE] Phoenix Mercury @ New York Liberty : 5 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
+  - [ELITE] Atlanta Dream @ Minnesota Lynx : 5 signals (PREGAME, ANOMALY, ANOMALY, ATS)
   - [ELITE] Arsenal @ Crystal Palace : 5 signals (PREGAME, HEAT_COLD, HEAT_COLD, ATS)
-  - [ELITE] San Antonio Spurs @ Oklahoma City Thunder : 4 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
+  - [ELITE] Colorado Avalanche @ Vegas Golden Knights : 4 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ATS)
   - [ELITE] Philadelphia Union @ Inter Miami CF : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (7)
-- **Jason Alexander** OVER 7.5 K (76%) fair -321
-- **Joe Ryan** OVER 4.5 K (73%) fair -275
-- **Chase Burns** OVER 4.5 K (71%) fair -251
-- **Bailey Falter** OVER 4.5 K (69%) fair -221
-- **Kyle Harrison** OVER 5.5 K (68%) fair -214
+## ⚾ Top MLB Pitcher K Plays (11)
+- **Huascar Brazobán** OVER 4.5 K (76%) fair -312
+- **Gavin Williams** OVER 5.5 K (75%) fair -292
+- **Jacob deGrom** OVER 5.5 K (68%) fair -214
+- **Casey Mize** OVER 4.5 K (67%) fair -207
+- **Michael Soroka** OVER 4.5 K (67%) fair -206
 
 ## 🏀 NBA Player Heat (20 HOT / 21 COLD)
   - 🔥 **Jeremiah Fears** (NO): L5 31.8/5.8/6.0 vs season 16.9/3.2/4.0 [PTS +14.9, REB +2.6, AST +2.0]
@@ -123,8 +109,8 @@
   - [FAVORITE] **Jingnan Xiong** (19-2-0) vs Angela Hill -- fair -204
   - [LEAN] **Kai Asakura** (21-6-0) vs Cameron Smotherman -- fair -143
   - [COIN_FLIP] **Jaqueline Amorim** (10-2-0) vs Loma Lookboonmee -- fair -129
+  - [COIN_FLIP] **Rei Tsuruya** (10-1-0) vs Luis Gurule -- fair -128
   - [COIN_FLIP] **Deiveson Figueiredo** (25-6-1) vs Song Yadong -- fair -124
-  - [COIN_FLIP] **Ding Meng** (35-9-0) vs Jose Henrique -- fair -119
 
 ## ⛳ Golf Player Heat (from Charles Schwab Challenge)
   - 🔥 T1 **Kevin Kisner** (USA): +0 total -- finished T1
@@ -145,12 +131,12 @@
   - ❄️ **Adolis García** (PHI): L14 .075 / season .204 (-129pts) -- FADE props
   - ❄️ **MJ Melendez** (NYM): L14 .077 / season .203 (-126pts) -- FADE props
 
-## 📈 Streak Regression Alerts (22)
-- [NHL] Vegas Golden Knights on W5 L10 5-0 -- Vegas Golden Knights on W5 -- no historical sample
-- [NHL] Colorado Avalanche on L3 L10 1-3 -- Colorado Avalanche on L3 -- no historical sample
-- [WNBA] New York Liberty on L3 L10 1-4 -- New York Liberty on L3 -- no historical sample
-- [WNBA] Phoenix Mercury on L3 L10 1-4 -- Phoenix Mercury on L3 -- no historical sample
+## 📈 Streak Regression Alerts (20)
+- [WNBA] New York Liberty on L3 L10 1-3 -- New York Liberty on L3 -- no historical sample
+- [WNBA] Phoenix Mercury on L3 L10 1-3 -- Phoenix Mercury on L3 -- no historical sample
 - [CWS] Georgia Tech Yellow Jackets on W3 L10 3-0 -- Georgia Tech Yellow Jackets on W3 -- no historical sample
+- [CWS] UIC Flames on W3 L10 3-0 -- UIC Flames on W3 -- no historical sample
+- [CWS] Milwaukee Panthers on W3 L10 3-0 -- Milwaukee Panthers on W3 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**
@@ -160,10 +146,9 @@
   - ⚠️ batter_rbis (Brier Δ -0.0052)
 
 ## 🧠 Training Convergence
-- ELITE: **2** · HEALTHY: 0 · OK: 0 · DEGRADED: **6**
-  - ⚠️ **batter_rbis**: DIVERGENT - consistent same-sign moves (structural issue) (cf=0.8218)
-  - ⚠️ **pitcher_strikeouts**: DIVERGENT - consistent same-sign moves (structural issue) (cf=0.8933)
-  - ⚠️ **batter_singles**: DIVERGENT - consistent same-sign moves (structural issue) (cf=0.963)
+- ELITE: **6** · HEALTHY: 0 · OK: 0 · DEGRADED: **2**
+  - ⚠️ **batter_total_bases**: DIVERGENT - consistent same-sign moves (structural issue) (cf=0.7887)
+  - ⚠️ **batter_home_runs**: DIVERGENT - consistent same-sign moves (structural issue) (cf=0.7921)
 
 ## 🤖 Self-Training Status
 - **NBA**: n=13 games · hit rate 30.8% · bias +7.2pp

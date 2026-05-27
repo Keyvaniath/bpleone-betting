@@ -6,55 +6,61 @@ _0% lineups confirmed · 8 rookie SPs_
 
 ## Slate
 - **15 games** scheduled
-- **29 best bets** scored: 0 DK · 0 PP · 9 NRFI · 1 SGP
-- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$46.71
-- **MC simulation:** EV +$120.21, 86% P(profit), p05 $-77.4 / p95 $305.45
+- **35 best bets** scored: 0 DK · 0 PP · 12 NRFI · 6 SGP
+- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$33.57
+- **MC simulation:** EV +$96.59, 78% P(profit), p05 $-109.64 / p95 $289.94
 
 ## Top 5 Best Bets
-1. **COL @ LAD 4-leg SGP @ -278**  (100/100 *****, edge +349.8%)
-   - Joint prob 0.735 (correlation boost +0.531)
-   - Leg: Shohei Ohtani UNDER 1.5 batter hits
-2. **COL @ LAD YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +36.9%)
-   - P(YRFI) 82.9% vs baseline 46.0%
-3. **NYY @ KCR YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +24.8%)
-   - P(YRFI) 70.8% vs baseline 46.0%
-4. **PHI @ SDP YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +20.1%)
-   - P(YRFI) 66.1% vs baseline 46.0%
-5. **HOU @ TEX YRFI (1st-inning OVER 0.5)**  (79/100 ****, edge +19.1%)
-   - P(YRFI) 65.1% vs baseline 46.0%
+1. **COL @ LAD 4-leg SGP @ -424**  (100/100 *****, edge +164.1%)
+   - Joint prob 0.809 (correlation boost +0.426)
+   - Leg: Shohei Ohtani OVER 0.5 batter total bases
+2. **HOU @ TEX YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +24.2%)
+   - P(YRFI) 70.2% vs baseline 46.0%
+3. **CHC @ PIT YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +23.7%)
+   - P(YRFI) 69.7% vs baseline 46.0%
+4. **CIN @ NYM NRFI (no run 1st inning)**  (79/100 ****, edge +19.2%)
+   - P(NRFI) 73.2% vs baseline 54.0%
+5. **STL @ MIL YRFI (1st-inning OVER 0.5)**  (78/100 ****, edge +18.4%)
+   - P(YRFI) 64.4% vs baseline 46.0%
 
-## ⚠️ Trap Warnings — 10 flagged
-- **COL @ LAD 4-leg SGP @ -278** (low):
-   - Edge +349.8% looks big but only 0 settled props on this player — model unproven
-- **COL @ LAD YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +36.9% looks big but only 0 settled props on this player — model unproven
-- **NYY @ KCR YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +24.8% looks big but only 0 settled props on this player — model unproven
-- **PHI @ SDP YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +20.1% looks big but only 0 settled props on this player — model unproven
-- **HOU @ TEX YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +19.1% looks big but only 0 settled props on this player — model unproven
+## ⚠️ Trap Warnings — 17 flagged
+- **COL @ LAD 4-leg SGP @ -424** (low):
+   - Edge +164.1% looks big but only 0 settled props on this player — model unproven
+- **PHI @ SDP 2-leg SGP @ -218** (low):
+   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
+- **ATL @ BOS 2-leg SGP @ -210** (low):
+   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
+- **CIN @ NYM 2-leg SGP @ -136** (low):
+   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
+- **CHC @ PIT 2-leg SGP @ -217** (low):
+   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
 
 ## Weather leans
 - **UNDER lean** (wind in + cold): ARI @ SFG
 
 ## Hot streaks
-**Batters heating up:** Amed Rosario (heat +8.50), Casey Schmitt (heat +5.79), Ketel Marte (heat +5.53)
-**Pitchers on a run:** Griffin Jax (heat +13.50), Luis Severino (heat +11.57), Cade Cavalli (heat +10.04)
+**Batters heating up:** Amed Rosario (heat +8.50), Tyler Heineman (heat +7.38), Juan Soto (heat +6.74)
+**Pitchers on a run:** Bubba Chandler (heat +13.10), Noah Cameron (heat +6.05), Jonah Tong (heat +6.00)
 
 ## Top correlation-aware SGPs
-- **COL @ LAD** 4-leg @ -278 fair (joint 0.74, EV +349.75%)
+- **COL @ LAD** 4-leg @ -424 fair (joint 0.81, EV +164.09%)
+   - Shohei Ohtani OVER 0.5 batter total bases
+   - Shohei Ohtani UNDER 0.5 batter doubles
    - Shohei Ohtani UNDER 1.5 batter hits
-   - Shohei Ohtani UNDER 2.5 batter total bases
-   - Shohei Ohtani OVER 0.5 batter hits
+- **PHI @ SDP** 2-leg @ -218 fair (joint 0.69, EV +25.0%)
+   - Walker Buehler OVER 2.5 pitcher strikeouts
+   - Walker Buehler UNDER 6.5 pitcher strikeouts
+- **ATL @ BOS** 2-leg @ -210 fair (joint 0.68, EV +25.0%)
+   - Bryce Elder UNDER 7.5 pitcher strikeouts
+   - Connelly Early OVER 3.5 pitcher strikeouts
 
 ## Bullpens GASSED tonight
-Athletics, Pittsburgh Pirates, San Diego Padres, Seattle Mariners, San Francisco Giants, Tampa Bay Rays, Texas Rangers, Chicago White Sox
+Athletics, Pittsburgh Pirates, Seattle Mariners, San Francisco Giants, St. Louis Cardinals, Tampa Bay Rays, Texas Rangers, Toronto Blue Jays
 _Lean late-inning OVER on these games; fade their save situations._
 
 ## NRFI/YRFI strong leans
-- **YRFI** (1st-inning OVER): COL @ LAD, NYY @ KCR, PHI @ SDP, HOU @ TEX, MIN @ CHW
-- **NRFI** (1st-inning UNDER): STL @ MIL
+- **YRFI** (1st-inning OVER): HOU @ TEX, CHC @ PIT, STL @ MIL, SEA @ OAK, MIA @ TOR
+- **NRFI** (1st-inning UNDER): CIN @ NYM
 
 ## Golf -- Charles Schwab Challenge
 - **Leader:** Kevin Kisner (E) at #1
@@ -69,12 +75,12 @@ _Lean late-inning OVER on these games; fade their save situations._
 - Colorado Avalanche @ Vegas Golden Knights (55-16-11 vs 39-26-17) 1-2 | P(home) 100.0% fair +0 | Final
 
 ## LoL Esports -- 2 live, 27 upcoming
-- [LCK] Gen.G Esports vs Hanwha Life Esports BO3 | P(A) 47.2% fair +112/-112
-- [LJL] DFM Academy vs New Meta BO3 | P(A) 43.0% fair +133/-133
-- [PCS] WangTing vs Shadow Keepers Esports BO3 | P(A) 43.0% fair +133/-133
 - [LCK] BNK FEARX vs KIWOOM DRX BO3 | P(A) 42.9% fair +133/-133
-- [LJL] UWinks vs Arneb BO3 | P(A) 42.6% fair +135/-135
-- **LoL POT:** T1 ML vs kt Rolster (LCK, BO3) (HIGH)
+- [LJL] Arneb vs UWinks BO3 | P(A) 57.4% fair -135/+135
+- [NLC] Lund Esports Organization vs Bulldog Esports BO1 | P(A) 50.6% fair -102/+102
+- [NLC] Arctic Pandas vs Ruddy Corporation BO1 | P(A) 62.8% fair -169/+169
+- [NLC] Lundqvist Lightside vs Verdant BO1 | P(A) 42.0% fair +138/-138
+- **LoL POT:** LGD GAMING ML vs TOP ESPORTS (LPL, BO5) (HIGH)
 
 ## Player Play of the Day -- across all sports (3517 candidates scanned)
 - **[LOL]** Inspired UNDER 3.5 Kills | model 61.7% fair -161 (ELITE)
