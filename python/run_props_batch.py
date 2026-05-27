@@ -261,6 +261,8 @@ DEFAULT_MODULES = [
     "tonight_lock_of_night",
     "slate_roi_projector",
     "cross_sport_top_picks",
+    "slate_quality_index",
+    "daily_fade_board",
     "mlb_today_whales",
     "mlb_today_locks",
     "mlb_top_3_picks_synthesizer",
