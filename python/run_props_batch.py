@@ -204,6 +204,7 @@ DEFAULT_MODULES = [
     "nhl_skater_matchup_adjusted",
     "nhl_goalie_confluence_score",
     "nhl_goalie_save_parlay_builder",
+    "nhl_shutout_watchlist",
     "nhl_skater_confluence_score",
     "nhl_skater_sgp_builder",
     "nhl_grinder_sgp_builder",
@@ -245,6 +246,7 @@ DEFAULT_MODULES = [
     "tennis_dominance_alerts",
     "tennis_player_confluence_score",
     "tennis_upset_alerts",
+    "tennis_tiebreak_predictor",
     "tennis_match_preview",
     # Golf props (top-finish, etc.)
     "golf_top_finish_props",
