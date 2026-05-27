@@ -1,15 +1,14 @@
 **EdgeStat -- Tonight's Slate**
-_STRONG_NIGHT_ | L:0 S:22 F:20
+_MODEST_NIGHT_ | L:0 S:12 F:22
 
 :dart: **Top Picks:**
-1. [MLB] Kyle Schwarber -- Kyle Schwarber (BATTER_STRONG)
-2. [WNBA] napheesa collier -- napheesa collier (PLAYER_STRONG)
-3. [MLB] Byron Buxton -- Byron Buxton (BATTER_STRONG)
+1. [WNBA] napheesa collier -- napheesa collier (PLAYER_STRONG)
+2. [WNBA] breanna stewart -- breanna stewart (PLAYER_STRONG)
+3. [MLB] ? -- ? (TEAM_STRONG)
 
 :chains: **Top Parlays:**
-- [MLB] Kyle Schwarber (3 legs, p=0.6047)
-- [MLB] Christian Walker (2 legs, p=0.5173)
+- [WNBA] napheesa collier (2 legs, p=0.3479)
 
-:coin: Bankroll Advisory: Solid slate. Pick top STRONG/LOCK picks; consider Kelly 25-50% sizing.
+:coin: Bankroll Advisory: Light slate. Limit to 1-3 strongest plays; use 25% Kelly or less.
 
 _EdgeStat: ML-driven sports betting analytics. Not financial advice._

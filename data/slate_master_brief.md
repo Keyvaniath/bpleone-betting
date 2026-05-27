@@ -1,27 +1,27 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-05-27T02:50:34 UTC_
+_Generated 2026-05-27T08:21:32 UTC_
 
 ## Slate Quality
-- **Tier:** STRONG_NIGHT
-- **Score:** 68
-- **Advisory:** Solid slate. Pick top STRONG/LOCK picks; consider Kelly 25-50% sizing.
+- **Tier:** MODEST_NIGHT
+- **Score:** 26
+- **Advisory:** Light slate. Limit to 1-3 strongest plays; use 25% Kelly or less.
 - **Total LOCKs:** 0
-- **Total STRONG:** 22
-- **Total FADES:** 20
+- **Total STRONG:** 12
+- **Total FADES:** 22
 
 ## Top 5 Curated Picks
-1. **MLB / Kyle Schwarber** (MLB_BATTER, score=166.81)
-   - Play: Kyle Schwarber (BATTER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_BATTER)
-2. **WNBA / napheesa collier** (WNBA_PLAYER, score=154.5)
+1. **WNBA / napheesa collier** (WNBA_PLAYER, score=154.5)
    - Play: napheesa collier (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (WNBA_PLAYER)
-3. **MLB / Byron Buxton** (MLB_BATTER, score=133.06)
-   - Play: Byron Buxton (BATTER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_BATTER)
-4. **WNBA / breanna stewart** (WNBA_PLAYER, score=102.83)
+2. **WNBA / breanna stewart** (WNBA_PLAYER, score=102.83)
    - Play: breanna stewart (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (WNBA_PLAYER)
+3. **MLB / ?** (MLB_TEAM, score=90.04)
+   - Play: ? (TEAM_STRONG)
+   - Rationale: Cross-sport top pick (MLB_TEAM)
+4. **F1 / max verstappen** (F1_DRIVER, score=49.67)
+   - Play: max verstappen (DRIVER_STRONG)
+   - Rationale: Cross-sport top pick (F1_DRIVER)
 
 ## Slate ROI Projection
 - **Picks:** 0
@@ -30,13 +30,13 @@ _Generated 2026-05-27T02:50:34 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **NBA** / SAS (TEAM_FADE)
-  - Fade angle: team total UNDER
-- **NHL** / mackenzie blackwood (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / Mikko Rantanen (SKATER_FADE)
-  - Fade angle: SOG UNDER + no goal
-- **NHL** / Nathan Mackinnon (SKATER_FADE)
-  - Fade angle: SOG UNDER + no goal
-- **F1** / logan sargeant (DRIVER_FADE)
-  - Fade angle: non-podium / outside top 10
+- **MLB** / Joe Ryan (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Michael McGreevy (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Tyler Mahle (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Eduardo Rodriguez (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Kyle Freeland (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
