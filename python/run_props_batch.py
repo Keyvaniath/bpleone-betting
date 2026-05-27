@@ -157,6 +157,7 @@ DEFAULT_MODULES = [
     "wnba_player_double_double",
     "wnba_team_alts_props",
     "wnba_player_ceiling_stack",
+    "wnba_player_confluence_score",
     # NHL props
     "nhl_skater_hits_blocks_props",
     "nhl_skater_3plus_hits",
@@ -202,6 +203,7 @@ DEFAULT_MODULES = [
     "soccer_total_shots_props",
     "soccer_player_shots_props",
     "soccer_match_alert_synthesizer",
+    "soccer_match_confluence_score",
     # Tennis props
     "tennis_match_win_props",
     "tennis_total_games_props",
