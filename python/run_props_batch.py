@@ -207,6 +207,7 @@ DEFAULT_MODULES = [
     "soccer_player_shots_props",
     "soccer_match_alert_synthesizer",
     "soccer_match_confluence_score",
+    "soccer_match_preview",
     # Tennis props
     "tennis_match_win_props",
     "tennis_total_games_props",
@@ -217,6 +218,7 @@ DEFAULT_MODULES = [
     "tennis_1st_set_winner",
     "tennis_dominance_alerts",
     "tennis_player_confluence_score",
+    "tennis_match_preview",
     # Golf props (top-finish, etc.)
     "golf_top_finish_props",
     "golf_leaderboard_probability",
