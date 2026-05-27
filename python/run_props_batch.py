@@ -115,6 +115,7 @@ DEFAULT_MODULES = [
     "mlb_park_weather_hr_index",
     "mlb_weather_advisory",
     "mlb_platoon_matrix",
+    "mlb_platoon_advantage_detector",
     "mlb_closer_availability_tracker",
     "mlb_closer_to_record_save",
     # MLB game props
@@ -322,6 +323,7 @@ DEFAULT_MODULES = [
     "slate_quality_index",
     "daily_fade_board",
     "tonight_top_5_curated",
+    "tonight_sleeper_picks",
     "cross_sport_event_board",
     "slate_master_brief",
     "slate_master_brief_markdown",
