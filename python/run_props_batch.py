@@ -135,6 +135,7 @@ DEFAULT_MODULES = [
     "nba_player_ceiling_stack",
     "nba_player_under_fade",
     "nba_player_matchup_adjusted",
+    "nba_player_confluence_score",
     # NBA team props
     "nba_team_alts_props",
     "nba_pace_adjusted",
@@ -178,6 +179,7 @@ DEFAULT_MODULES = [
     "nhl_goalie_dominance_alerts",
     "nhl_skater_ceiling_stack",
     "nhl_skater_matchup_adjusted",
+    "nhl_goalie_confluence_score",
     "nhl_puck_line_props",
     "nhl_team_total_edge",
     "nhl_team_4plus_goals",
