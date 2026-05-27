@@ -192,6 +192,7 @@ DEFAULT_MODULES = [
     "nhl_team_4plus_goals",
     "nhl_team_explosion_alerts",
     "nhl_team_confluence_score",
+    "nhl_game_preview",
     # Soccer props
     "soccer_corners_props",
     "soccer_btts_props",
@@ -265,6 +266,7 @@ DEFAULT_MODULES = [
     "cross_sport_top_picks",
     "slate_quality_index",
     "daily_fade_board",
+    "tonight_top_5_curated",
     "mlb_today_whales",
     "mlb_today_locks",
     "mlb_top_3_picks_synthesizer",
