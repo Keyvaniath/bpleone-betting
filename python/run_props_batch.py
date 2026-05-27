@@ -102,6 +102,7 @@ DEFAULT_MODULES = [
     "mlb_run_line_props",
     "mlb_run_line_dominance",
     "mlb_blowout_alerts",
+    "mlb_game_flow_predictor",
     "mlb_hbp_props",
     # MLB context features (run BEFORE other props so they can consume)
     "mlb_lineup_quality_index",
@@ -162,6 +163,7 @@ DEFAULT_MODULES = [
     "nba_team_confluence_score",
     "nba_double_digit_lead_forecast",
     "nba_pace_mismatch_alerts",
+    "nba_garbage_time_alerts",
     "nba_game_preview",
     "nba_two_way_alignment",
     "nba_player_rest_alerts",
