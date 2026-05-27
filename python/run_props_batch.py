@@ -74,6 +74,7 @@ DEFAULT_MODULES = [
     "mlb_pitcher_fade_alerts",
     "mlb_offensive_explosion_alerts",
     "mlb_matchup_confluence_alerts",
+    "mlb_pitcher_lineup_adjusted",
     "mlb_pitcher_hits_allowed_props",
     "mlb_pitcher_allows_hr_yn",
     "mlb_pitcher_quality_start_props",
@@ -227,6 +228,7 @@ DEFAULT_MODULES = [
     "mlb_today_master_brief",
     # Cross-sport alpha scanner (runs AFTER all per-sport props above)
     "cross_sport_alpha_scanner",
+    "elite_alerts_board",
     "mlb_today_whales",
     "mlb_today_locks",
     "mlb_top_3_picks_synthesizer",
