@@ -227,6 +227,7 @@ DEFAULT_MODULES = [
     "soccer_high_scoring_alignment",
     "soccer_clean_sheet_alignment",
     "soccer_first_half_alignment",
+    "soccer_goalscorer_sgp_builder",
     # Tennis props
     "tennis_match_win_props",
     "tennis_total_games_props",
@@ -296,6 +297,7 @@ DEFAULT_MODULES = [
     "cross_sport_top_props_leaderboard",
     "cross_sport_hot_momentum_index",
     "cross_sport_best_parlays_board",
+    "tonight_bet_ticket_master",
     "slate_quality_index",
     "daily_fade_board",
     "tonight_top_5_curated",
