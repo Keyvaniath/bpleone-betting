@@ -1,12 +1,12 @@
 # EdgeStat Daily Summary — 2026-05-27
 
-## 🏥 Model Health: 83.7/100 [HEALTHY]
+## 🏥 Model Health: 81.4/100 [HEALTHY]
 - Solid health - some minor issues to monitor
   - 🟢 Calibration Freshness: 100.0/100
   - 🟢 Hit Rate Trend: 84.3/100
   - 🔴 Brier Trend: 52.3/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 88.9/100
+  - 🟡 Data Health: 77.8/100
   - 🟢 Edge Count: 85.7/100
 
 ## 🌐 Slate Overview
@@ -21,16 +21,20 @@
 4. **CIN @ NYM NRFI (no run 1st inning)** (79/100 ★★★★)
 5. **STL @ MIL YRFI (1st-inning OVER 0.5)** (78/100 ★★★★)
 
+## 🐋 Whale Picks (Max Confluence)
+- [STRONG] **[MLB]** CIN @ NYM UNDER_8.5 -- 66% / +26.2% (score 2.5)
+- [STRONG] **[MLB]** CHC @ PIT OVER_8.5 -- 66% / +26.1% (score 2.5)
+
 ## 📉 Strong UNDER Signals
-- [STRONG 6.0] **PHI @ SDP** model 5.24 vs market 7.0
-- [STRONG 5.0] **LAA @ DET** model 6.49 vs market 7.5
+- [STRONG 5.6] **LAA @ DET** model 6.71 vs market 7.5
+- [STRONG 5.5] **CIN @ NYM** model 6.82 vs market 8.5
 
 ## 🔒 Locks of the Day -- Track Record
-- All-time: **34-5** (87.2% hit rate)
-- Net units: **+1.24u** | ROI: **+51.3%**
-- Last 7d: 30-5 (85.7%) | net +1.06u
+- All-time: **38-5** (88.4% hit rate)
+- Net units: **+1.42u** | ROI: **+53.4%**
+- Last 7d: 34-5 (87.2%) | net +1.24u
 
-**Today's 10 Locks:**
+**Today's 12 Locks:**
 - [MLB-PP] **Kevin McGonigle** PP_batter_total_bases_under_3. · p=72% edge=+24.3% qK=0.062u
 - [MLB-PP] **Liam Hicks** PP_batter_total_bases_under_3. · p=72% edge=+24.3% qK=0.062u
 - [MLB-PP] **Ryan Waldschmidt** PP_batter_total_bases_under_3. · p=72% edge=+24.3% qK=0.062u
@@ -41,14 +45,16 @@
 - [MLB-PP] **Nick Gonzales** PP_batter_rbis_under_1.5 · p=72% edge=+24.3% qK=0.062u
 - [MLB-PP] **Tyler Stephenson** PP_batter_rbis_under_1.5 · p=72% edge=+24.3% qK=0.062u
 - [MLB-PP] **Paul Goldschmidt** PP_batter_singles_under_1.5 · p=72% edge=+24.3% qK=0.062u
+- [MLB] **CIN @ NYM** UNDER_8.5 · p=66% edge=+26.2% qK=0.062u
+- [MLB] **CHC @ PIT** OVER_8.5 · p=66% edge=+26.1% qK=0.062u
 
 ## 🎰 Top Balanced 2-Leg Parlays (40-65% joint)
-- [MLB-PP] Rafael Devers PP_batter_total_base + [MLB-PP] Andrew Abbott PP_pitcher_strikeout
-  Joint: 51% | Fair: 201 | Edge: +54.6%
-- [MLB-PP] Rafael Devers PP_batter_total_base + [MLB-PP] Nick Gonzales PP_batter_rbis_under
-  Joint: 51% | Fair: 201 | Edge: +54.6%
-- [MLB-PP] Rafael Devers PP_batter_total_base + [MLB-PP] Tyler Stephenson PP_batter_rbis_under
-  Joint: 51% | Fair: 201 | Edge: +54.6%
+- [MLB] CIN @ NYM UNDER_8.5 + [MLB] CHC @ PIT OVER_8.5
+  Joint: 44% | Fair: 264 | Edge: +59.1%
+- [MLB] CIN @ NYM UNDER_8.5 + [MLB-PP] Rafael Devers PP_batter_total_base
+  Joint: 47% | Fair: 231 | Edge: +56.9%
+- [MLB] CIN @ NYM UNDER_8.5 + [MLB-PP] Andrew Abbott PP_pitcher_strikeout
+  Joint: 47% | Fair: 231 | Edge: +56.9%
 
 ## 🎮 Player Play of the Day (cross-sport)
 - **[LOL]** Inspired UNDER 3.5 Kills | MED conviction · model 61.7% fair -161
@@ -86,19 +92,19 @@
   - #5 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
 
 ## 🎯 Convergence Picks (15 stacked games)
-- ELITE: **6** · HIGH: 4 · MED: 5
+- ELITE: **7** · HIGH: 3 · MED: 5
+  - [ELITE] Carolina Hurricanes @ Montreal Canadiens : 5 signals (HEAT_COLD, ANOMALY, ANOMALY, ATS)
   - [ELITE] Phoenix Mercury @ New York Liberty : 5 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
   - [ELITE] Atlanta Dream @ Minnesota Lynx : 5 signals (PREGAME, ANOMALY, ANOMALY, ATS)
   - [ELITE] Arsenal @ Crystal Palace : 5 signals (PREGAME, HEAT_COLD, HEAT_COLD, ATS)
-  - [ELITE] Colorado Avalanche @ Vegas Golden Knights : 4 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ATS)
-  - [ELITE] Philadelphia Union @ Inter Miami CF : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
+  - [ELITE] Oklahoma City Thunder @ San Antonio Spurs : 4 signals (HEAT_COLD, ANOMALY, ATS, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (11)
+## ⚾ Top MLB Pitcher K Plays (5)
 - **Huascar Brazobán** OVER 4.5 K (76%) fair -312
-- **Gavin Williams** OVER 5.5 K (75%) fair -292
 - **Jacob deGrom** OVER 5.5 K (68%) fair -214
 - **Casey Mize** OVER 4.5 K (67%) fair -207
-- **Michael Soroka** OVER 4.5 K (67%) fair -206
+- **Shohei Ohtani** OVER 5.5 K (67%) fair -200
+- **Bryce Elder** OVER 4.5 K (64%) fair -180
 
 ## 🏀 NBA Player Heat (2 HOT / 1 COLD)
   - 🔥 **Alex Caruso** (OKC): L5 17.0/2.4/2.8 vs season 9.2/3.0/1.9 [PTS +7.8]
@@ -119,14 +125,14 @@
   - 🔥 T4 **Nick Hardy** (USA): +0 total -- finished T4
   - 🔥 T5 **Michael Thorbjornsen** (USA): +0 total -- finished T5
 
-## 🔥 MLB Batter Heat (29 HOT / 52 COLD)
+## 🔥 MLB Batter Heat (30 HOT / 51 COLD)
   - 🔥 **Ketel Marte** (AZ): L14 .433 / season .276 (+157pts)
   - 🔥 **Mike Yastrzemski** (ATL): L14 .370 / season .234 (+136pts)
   - 🔥 **Jesús Sánchez** (TOR): L14 .405 / season .281 (+124pts)
   - 🔥 **James Wood** (WSH): L14 .396 / season .276 (+120pts)
   - 🔥 **Jazz Chisholm Jr.** (NYY): L14 .360 / season .246 (+114pts)
   - ❄️ **Edouard Julien** (COL): L14 .026 / season .206 (-180pts) -- FADE props
-  - ❄️ **Moisés Ballesteros** (CHC): L14 .083 / season .240 (-157pts) -- FADE props
+  - ❄️ **Moisés Ballesteros** (CHC): L14 .083 / season .238 (-155pts) -- FADE props
   - ❄️ **MJ Melendez** (NYM): L14 .077 / season .203 (-126pts) -- FADE props
   - ❄️ **Adolis García** (PHI): L14 .077 / season .201 (-124pts) -- FADE props
   - ❄️ **José Tena** (WSH): L14 .100 / season .221 (-121pts) -- FADE props
