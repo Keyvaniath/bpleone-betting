@@ -156,6 +156,7 @@ DEFAULT_MODULES = [
     "nba_two_way_alignment",
     "nba_player_rest_alerts",
     "nba_player_clutch_index",
+    "nba_player_sgp_builder",
     "nba_race_to_points",
     "nba_game_total_alts",
     "nba_half_total_props",
@@ -262,6 +263,7 @@ DEFAULT_MODULES = [
     "mlb_pitcher_confluence_score",
     "mlb_full_game_pitching_chain",
     "mlb_bullpen_chain_alerts",
+    "mlb_closer_save_parlay_builder",
     # Team total edge synthesizer (consumes lineup_quality + pitcher_edge above)
     "mlb_team_total_edge",
     "mlb_team_5plus_runs",
