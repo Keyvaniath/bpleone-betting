@@ -196,6 +196,7 @@ DEFAULT_MODULES = [
     "nhl_team_explosion_alerts",
     "nhl_team_confluence_score",
     "nhl_game_preview",
+    "nhl_two_way_alignment",
     # Soccer props
     "soccer_corners_props",
     "soccer_btts_props",
@@ -211,6 +212,7 @@ DEFAULT_MODULES = [
     "soccer_match_alert_synthesizer",
     "soccer_match_confluence_score",
     "soccer_match_preview",
+    "soccer_high_scoring_alignment",
     # Tennis props
     "tennis_match_win_props",
     "tennis_total_games_props",
