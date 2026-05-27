@@ -185,6 +185,7 @@ DEFAULT_MODULES = [
     "soccer_cards_props",
     "soccer_total_shots_props",
     "soccer_player_shots_props",
+    "soccer_match_alert_synthesizer",
     # Tennis props
     "tennis_match_win_props",
     "tennis_total_games_props",
@@ -193,6 +194,7 @@ DEFAULT_MODULES = [
     "tennis_double_faults_props",
     "tennis_breaks_of_serve",
     "tennis_1st_set_winner",
+    "tennis_dominance_alerts",
     # Golf props (top-finish, etc.)
     "golf_top_finish_props",
     "golf_leaderboard_probability",
