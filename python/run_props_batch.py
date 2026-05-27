@@ -77,6 +77,7 @@ DEFAULT_MODULES = [
     "mlb_pitcher_lineup_adjusted",
     "mlb_batter_explosion_alerts",
     "mlb_confluence_triple",
+    "mlb_game_script_alerts",
     "mlb_pitcher_hits_allowed_props",
     "mlb_pitcher_allows_hr_yn",
     "mlb_pitcher_quality_start_props",
@@ -133,6 +134,7 @@ DEFAULT_MODULES = [
     "nba_player_minutes_props",
     "nba_player_ceiling_stack",
     "nba_player_under_fade",
+    "nba_player_matchup_adjusted",
     # NBA team props
     "nba_team_alts_props",
     "nba_pace_adjusted",
