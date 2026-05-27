@@ -146,6 +146,7 @@ DEFAULT_MODULES = [
     "wnba_player_blocks_steals_props",
     "wnba_player_double_double",
     "wnba_team_alts_props",
+    "wnba_player_ceiling_stack",
     # NHL props
     "nhl_skater_hits_blocks_props",
     "nhl_skater_3plus_hits",
@@ -208,6 +209,7 @@ DEFAULT_MODULES = [
     # F1 props
     "f1_qualifying_predictor",
     "f1_podium_finish_props",
+    "f1_driver_dominance",
     # Pitcher edge composite (consumes lineup_quality + K/outs/QS props above)
     "mlb_pitcher_edge_composite",
     "mlb_pitcher_recent_vs_lineup_quality",
