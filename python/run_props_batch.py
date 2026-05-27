@@ -217,6 +217,7 @@ DEFAULT_MODULES = [
     "soccer_match_confluence_score",
     "soccer_match_preview",
     "soccer_high_scoring_alignment",
+    "soccer_clean_sheet_alignment",
     # Tennis props
     "tennis_match_win_props",
     "tennis_total_games_props",
@@ -253,6 +254,7 @@ DEFAULT_MODULES = [
     "mlb_pitcher_recent_vs_lineup_quality",
     "mlb_pitcher_confluence_score",
     "mlb_full_game_pitching_chain",
+    "mlb_bullpen_chain_alerts",
     # Team total edge synthesizer (consumes lineup_quality + pitcher_edge above)
     "mlb_team_total_edge",
     "mlb_team_5plus_runs",
