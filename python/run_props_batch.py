@@ -144,6 +144,7 @@ DEFAULT_MODULES = [
     "nba_team_total_props",
     "nba_team_total_edge",
     "nba_team_explosion_alerts",
+    "nba_team_confluence_score",
     "nba_race_to_points",
     "nba_game_total_alts",
     "nba_half_total_props",
@@ -187,6 +188,7 @@ DEFAULT_MODULES = [
     "nhl_team_total_edge",
     "nhl_team_4plus_goals",
     "nhl_team_explosion_alerts",
+    "nhl_team_confluence_score",
     # Soccer props
     "soccer_corners_props",
     "soccer_btts_props",
