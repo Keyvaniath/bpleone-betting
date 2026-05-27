@@ -318,6 +318,8 @@ DEFAULT_MODULES = [
     "cross_sport_event_board",
     "slate_master_brief",
     "slate_master_brief_markdown",
+    "cross_sport_extreme_outcomes_board",
+    "tonight_discord_post",
     "cross_sport_auto_bet_qualifier",
     "mlb_today_whales",
     "mlb_today_locks",
