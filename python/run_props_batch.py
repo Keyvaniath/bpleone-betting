@@ -231,6 +231,7 @@ DEFAULT_MODULES = [
     "tennis_1st_set_winner",
     "tennis_dominance_alerts",
     "tennis_player_confluence_score",
+    "tennis_upset_alerts",
     "tennis_match_preview",
     # Golf props (top-finish, etc.)
     "golf_top_finish_props",
@@ -286,6 +287,7 @@ DEFAULT_MODULES = [
     "slate_roi_projector",
     "cross_sport_top_picks",
     "cross_sport_top_props_leaderboard",
+    "cross_sport_hot_momentum_index",
     "slate_quality_index",
     "daily_fade_board",
     "tonight_top_5_curated",
