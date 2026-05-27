@@ -171,6 +171,7 @@ DEFAULT_MODULES = [
     "wnba_team_alts_props",
     "wnba_player_ceiling_stack",
     "wnba_player_confluence_score",
+    "wnba_player_sgp_builder",
     "wnba_game_preview",
     # NHL props
     "nhl_skater_hits_blocks_props",
@@ -294,6 +295,7 @@ DEFAULT_MODULES = [
     "cross_sport_top_picks",
     "cross_sport_top_props_leaderboard",
     "cross_sport_hot_momentum_index",
+    "cross_sport_best_parlays_board",
     "slate_quality_index",
     "daily_fade_board",
     "tonight_top_5_curated",
