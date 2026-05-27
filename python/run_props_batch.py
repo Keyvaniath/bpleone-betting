@@ -213,6 +213,7 @@ DEFAULT_MODULES = [
     "tennis_breaks_of_serve",
     "tennis_1st_set_winner",
     "tennis_dominance_alerts",
+    "tennis_player_confluence_score",
     # Golf props (top-finish, etc.)
     "golf_top_finish_props",
     "golf_leaderboard_probability",
@@ -223,6 +224,7 @@ DEFAULT_MODULES = [
     "ufc_rounds_over_under_props",
     "ufc_first_round_finish",
     "ufc_fighter_dominance",
+    "ufc_fighter_confluence_score",
     # F1 props
     "f1_qualifying_predictor",
     "f1_podium_finish_props",
