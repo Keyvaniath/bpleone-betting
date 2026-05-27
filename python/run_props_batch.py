@@ -167,6 +167,8 @@ DEFAULT_MODULES = [
     "nhl_first_goalscorer_props",
     "nhl_goalie_win_props",
     "nhl_goalie_fatigue_index",
+    "nhl_goalie_dominance_alerts",
+    "nhl_skater_ceiling_stack",
     "nhl_puck_line_props",
     "nhl_team_total_edge",
     "nhl_team_4plus_goals",
