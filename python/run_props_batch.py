@@ -75,6 +75,8 @@ DEFAULT_MODULES = [
     "mlb_offensive_explosion_alerts",
     "mlb_matchup_confluence_alerts",
     "mlb_pitcher_lineup_adjusted",
+    "mlb_batter_explosion_alerts",
+    "mlb_confluence_triple",
     "mlb_pitcher_hits_allowed_props",
     "mlb_pitcher_allows_hr_yn",
     "mlb_pitcher_quality_start_props",

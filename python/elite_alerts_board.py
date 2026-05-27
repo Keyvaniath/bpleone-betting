@@ -98,6 +98,10 @@ def run() -> Dict[str, Any]:
             _load(os.path.join(DATA_DIR, "nhl_team_explosion_alerts.json")),
             "alerts", "team", "n_positive_signals", "matchup",
         ),
+        "MLB_BATTER_EXPLOSION": (
+            _load(os.path.join(DATA_DIR, "mlb_batter_explosion_alerts.json")),
+            "alerts", "batter", "n_aligned_overs", "matchup",
+        ),
     }
 
     board: List[Dict[str, Any]] = []
