@@ -94,6 +94,7 @@ DEFAULT_MODULES = [
     "mlb_pitcher_win_props",
     "mlb_pitcher_1st_inning_er",
     "mlb_pitcher_1st_inning_k",
+    "mlb_first_inning_dominance",
     "mlb_run_line_props",
     "mlb_hbp_props",
     # MLB context features (run BEFORE other props so they can consume)
@@ -195,6 +196,7 @@ DEFAULT_MODULES = [
     "nhl_skater_ceiling_stack",
     "nhl_skater_matchup_adjusted",
     "nhl_goalie_confluence_score",
+    "nhl_goalie_save_parlay_builder",
     "nhl_skater_confluence_score",
     "nhl_puck_line_props",
     "nhl_team_total_edge",
