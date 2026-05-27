@@ -221,6 +221,7 @@ DEFAULT_MODULES = [
     # Pitcher edge composite (consumes lineup_quality + K/outs/QS props above)
     "mlb_pitcher_edge_composite",
     "mlb_pitcher_recent_vs_lineup_quality",
+    "mlb_pitcher_confluence_score",
     # Team total edge synthesizer (consumes lineup_quality + pitcher_edge above)
     "mlb_team_total_edge",
     "mlb_team_5plus_runs",
@@ -245,6 +246,7 @@ DEFAULT_MODULES = [
     "elite_alerts_board",
     "tonight_anchor_stack",
     "tonight_lock_of_night",
+    "slate_roi_projector",
     "mlb_today_whales",
     "mlb_today_locks",
     "mlb_top_3_picks_synthesizer",
