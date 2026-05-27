@@ -80,6 +80,7 @@ DEFAULT_MODULES = [
     "mlb_confluence_triple",
     "mlb_team_confluence_score",
     "mlb_game_preview",
+    "mlb_two_way_alignment",
     "mlb_game_script_alerts",
     "mlb_pitcher_hits_allowed_props",
     "mlb_pitcher_allows_hr_yn",
@@ -244,6 +245,7 @@ DEFAULT_MODULES = [
     "mlb_pitcher_edge_composite",
     "mlb_pitcher_recent_vs_lineup_quality",
     "mlb_pitcher_confluence_score",
+    "mlb_full_game_pitching_chain",
     # Team total edge synthesizer (consumes lineup_quality + pitcher_edge above)
     "mlb_team_total_edge",
     "mlb_team_5plus_runs",
