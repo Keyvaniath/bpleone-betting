@@ -74,6 +74,14 @@ def run() -> Dict[str, Any]:
             _load(os.path.join(DATA_DIR, "tennis_dominance_alerts.json")),
             "alerts", "player", "n_signals", "match",
         ),
+        "UFC_FIGHTER_DOMINANCE": (
+            _load(os.path.join(DATA_DIR, "ufc_fighter_dominance.json")),
+            "alerts", "fighter", "n_signals", "fight",
+        ),
+        "GOLF_PLAYER_DOMINANCE": (
+            _load(os.path.join(DATA_DIR, "golf_player_dominance.json")),
+            "alerts", "player", "n_signals", "tournament",
+        ),
     }
 
     board: List[Dict[str, Any]] = []
