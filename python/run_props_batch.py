@@ -76,6 +76,7 @@ DEFAULT_MODULES = [
     "mlb_matchup_confluence_alerts",
     "mlb_pitcher_lineup_adjusted",
     "mlb_batter_explosion_alerts",
+    "mlb_park_adjusted_hr_predictor",
     "mlb_batter_confluence_score",
     "mlb_confluence_triple",
     "mlb_team_confluence_score",
@@ -218,6 +219,7 @@ DEFAULT_MODULES = [
     "soccer_match_preview",
     "soccer_high_scoring_alignment",
     "soccer_clean_sheet_alignment",
+    "soccer_first_half_alignment",
     # Tennis props
     "tennis_match_win_props",
     "tennis_total_games_props",
