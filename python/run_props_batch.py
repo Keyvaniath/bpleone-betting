@@ -273,6 +273,8 @@ DEFAULT_MODULES = [
     "slate_quality_index",
     "daily_fade_board",
     "tonight_top_5_curated",
+    "cross_sport_event_board",
+    "slate_master_brief",
     "mlb_today_whales",
     "mlb_today_locks",
     "mlb_top_3_picks_synthesizer",
