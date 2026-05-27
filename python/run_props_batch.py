@@ -130,6 +130,7 @@ DEFAULT_MODULES = [
     "nba_triple_double_props",
     "nba_player_minutes_props",
     "nba_player_ceiling_stack",
+    "nba_player_under_fade",
     # NBA team props
     "nba_team_alts_props",
     "nba_pace_adjusted",
@@ -237,6 +238,7 @@ DEFAULT_MODULES = [
     # Cross-sport alpha scanner (runs AFTER all per-sport props above)
     "cross_sport_alpha_scanner",
     "elite_alerts_board",
+    "tonight_anchor_stack",
     "mlb_today_whales",
     "mlb_today_locks",
     "mlb_top_3_picks_synthesizer",
