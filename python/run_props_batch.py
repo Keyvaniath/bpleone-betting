@@ -225,12 +225,14 @@ DEFAULT_MODULES = [
     "golf_round_score_props",
     "golf_player_dominance",
     "golf_player_confluence_score",
+    "golf_tournament_preview",
     # UFC props
     "ufc_strikes_takedowns_props",
     "ufc_rounds_over_under_props",
     "ufc_first_round_finish",
     "ufc_fighter_dominance",
     "ufc_fighter_confluence_score",
+    "ufc_fight_card_preview",
     # F1 props
     "f1_qualifying_predictor",
     "f1_podium_finish_props",
