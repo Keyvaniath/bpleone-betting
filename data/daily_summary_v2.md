@@ -1,17 +1,17 @@
 # EdgeStat Daily Summary — 2026-05-27
 
-## 🏥 Model Health: 82.0/100 [HEALTHY]
+## 🏥 Model Health: 83.7/100 [HEALTHY]
 - Solid health - some minor issues to monitor
   - 🟢 Calibration Freshness: 100.0/100
   - 🟢 Hit Rate Trend: 84.3/100
   - 🔴 Brier Trend: 52.3/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 88.9/100
-  - 🟡 Edge Count: 68.6/100
+  - 🟢 Edge Count: 85.7/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.617)
-- **Total games on board:** 136
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.615)
+- **Total games on board:** 138
 - **Strong home favorites:** 28 | **Strong road dogs:** 1
 
 ## 🎯 Top 5 Best Bets
@@ -22,7 +22,7 @@
 5. **STL @ MIL YRFI (1st-inning OVER 0.5)** (78/100 ★★★★)
 
 ## 📉 Strong UNDER Signals
-- [ELITE 7.0] **PHI @ SDP** model 4.92 vs market 7.0
+- [STRONG 6.0] **PHI @ SDP** model 5.24 vs market 7.0
 - [STRONG 5.0] **LAA @ DET** model 6.49 vs market 7.5
 
 ## 🔒 Locks of the Day -- Track Record
@@ -30,19 +30,24 @@
 - Net units: **+1.24u** | ROI: **+51.3%**
 - Last 7d: 30-5 (85.7%) | net +1.06u
 
-**Today's 5 Locks:**
+**Today's 10 Locks:**
 - [MLB-PP] **Kevin McGonigle** PP_batter_total_bases_under_3. · p=72% edge=+24.3% qK=0.062u
 - [MLB-PP] **Liam Hicks** PP_batter_total_bases_under_3. · p=72% edge=+24.3% qK=0.062u
 - [MLB-PP] **Ryan Waldschmidt** PP_batter_total_bases_under_3. · p=72% edge=+24.3% qK=0.062u
 - [MLB-PP] **Ildemaro Vargas** PP_batter_hrr_over_0.5 · p=72% edge=+24.3% qK=0.062u
 - [MLB-PP] **Dansby Swanson** PP_batter_doubles_under_0.5 · p=72% edge=+24.3% qK=0.062u
+- [MLB-PP] **Rafael Devers** PP_batter_total_bases_under_3. · p=72% edge=+24.3% qK=0.062u
+- [MLB-PP] **Andrew Abbott** PP_pitcher_strikeouts_under_6. · p=72% edge=+24.3% qK=0.062u
+- [MLB-PP] **Nick Gonzales** PP_batter_rbis_under_1.5 · p=72% edge=+24.3% qK=0.062u
+- [MLB-PP] **Tyler Stephenson** PP_batter_rbis_under_1.5 · p=72% edge=+24.3% qK=0.062u
+- [MLB-PP] **Paul Goldschmidt** PP_batter_singles_under_1.5 · p=72% edge=+24.3% qK=0.062u
 
 ## 🎰 Top Balanced 2-Leg Parlays (40-65% joint)
-- [MLB-PP] Kevin McGonigle PP_batter_total_base + [MLB-PP] Liam Hicks PP_batter_total_base
+- [MLB-PP] Rafael Devers PP_batter_total_base + [MLB-PP] Andrew Abbott PP_pitcher_strikeout
   Joint: 51% | Fair: 201 | Edge: +54.6%
-- [MLB-PP] Kevin McGonigle PP_batter_total_base + [MLB-PP] Ryan Waldschmidt PP_batter_total_base
+- [MLB-PP] Rafael Devers PP_batter_total_base + [MLB-PP] Nick Gonzales PP_batter_rbis_under
   Joint: 51% | Fair: 201 | Edge: +54.6%
-- [MLB-PP] Kevin McGonigle PP_batter_total_base + [MLB-PP] Ildemaro Vargas PP_batter_hrr_over_0
+- [MLB-PP] Rafael Devers PP_batter_total_base + [MLB-PP] Tyler Stephenson PP_batter_rbis_under
   Joint: 51% | Fair: 201 | Edge: +54.6%
 
 ## 🎮 Player Play of the Day (cross-sport)
@@ -63,17 +68,17 @@
 - Hot teams: **25** | Cold teams: **22** | Over-heavy: 0 | Under-heavy: 12
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (16)
-- RESIDUAL_DIVERGENCE: **16**
+## ⚠️ Anomaly Detector (19)
+- RESIDUAL_DIVERGENCE: **19**
+  - Oklahoma City Thunder (NBA): Oklahoma City Thunder OUTPERFORMING expected margin by 8.4pts in recent games -- model bias may persist
+  - Montreal Canadiens (NHL): Montreal Canadiens UNDERPERFORMING expected margin by 7.4pts in recent games -- model bias may persist
+  - Carolina Hurricanes (NHL): Carolina Hurricanes OUTPERFORMING expected margin by 7.8pts in recent games -- model bias may persist
   - New York Liberty (WNBA): New York Liberty UNDERPERFORMING expected margin by 9.1pts in recent games -- model bias may persist
   - Toronto Tempo (WNBA): Toronto Tempo UNDERPERFORMING expected margin by 8.3pts in recent games -- model bias may persist
-  - Minnesota Lynx (WNBA): Minnesota Lynx OUTPERFORMING expected margin by 7.0pts in recent games -- model bias may persist
-  - Atlanta Dream (WNBA): Atlanta Dream OUTPERFORMING expected margin by 12.7pts in recent games -- model bias may persist
-  - Connecticut Sun (WNBA): Connecticut Sun UNDERPERFORMING expected margin by 9.6pts in recent games -- model bias may persist
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$11.43**
+- Expected EV: **$7.37**
   - #1 [SGP] $50 on COL @ LAD 4-leg SGP @ -424 (P=81%)
   - #2 [NRFI] $50 on HOU @ TEX YRFI (1st-inning OVER 0.5) (P=70%)
   - #3 [NRFI] $50 on CHC @ PIT YRFI (1st-inning OVER 0.5) (P=70%)
@@ -95,15 +100,10 @@
 - **Casey Mize** OVER 4.5 K (67%) fair -207
 - **Michael Soroka** OVER 4.5 K (67%) fair -206
 
-## 🏀 NBA Player Heat (20 HOT / 21 COLD)
-  - 🔥 **Jeremiah Fears** (NO): L5 31.8/5.8/6.0 vs season 16.9/3.2/4.0 [PTS +14.9, REB +2.6, AST +2.0]
+## 🏀 NBA Player Heat (2 HOT / 1 COLD)
   - 🔥 **Alex Caruso** (OKC): L5 17.0/2.4/2.8 vs season 9.2/3.0/1.9 [PTS +7.8]
-  - 🔥 **AJ Green** (MIL): L5 18.6/4.2/1.8 vs season 11.3/3.4/1.9 [PTS +7.3]
-  - 🔥 **Dillon Brooks** (PHX): L5 26.0/6.0/1.8 vs season 19.4/4.2/1.9 [PTS +6.6]
-  - 🔥 **Taurean Prince** (MIL): L5 16.4/6.2/3.2 vs season 9.8/3.5/1.9 [PTS +6.6, REB +2.7]
-  - ❄️ **Damian Lillard** (POR): L5 7.0 vs season 19.1 [PTS -12.1] -- FADE OVER props
-  - ❄️ **Nickeil Alexander-Walker** (ATL): L5 13.0 vs season 21.3 [PTS -8.3] -- FADE OVER props
-  - ❄️ **Caleb Love** (POR): L5 2.6 vs season 10.8 [PTS -8.2, REB -2.1, AST -2.4] -- FADE OVER props
+  - 🔥 **Shai Gilgeous-Alexander** (OKC): L5 26.2/3.0/9.8 vs season 27.9/3.1/7.5 [AST +2.3]
+  - ❄️ **Isaiah Joe** (OKC): L5 2.8 vs season 8.3 [PTS -5.5] -- FADE OVER props
 
 ## 🥊 UFC Fight Matchups (UFC Fight Night: Song vs. Figueiredo)
   - [FAVORITE] **Jingnan Xiong** (19-2-0) vs Angela Hill -- fair -204
@@ -119,17 +119,17 @@
   - 🔥 T4 **Nick Hardy** (USA): +0 total -- finished T4
   - 🔥 T5 **Michael Thorbjornsen** (USA): +0 total -- finished T5
 
-## 🔥 MLB Batter Heat (28 HOT / 50 COLD)
-  - 🔥 **Ketel Marte** (AZ): L14 .424 / season .273 (+151pts)
-  - 🔥 **Jesús Sánchez** (TOR): L14 .432 / season .285 (+147pts)
+## 🔥 MLB Batter Heat (29 HOT / 52 COLD)
+  - 🔥 **Ketel Marte** (AZ): L14 .433 / season .276 (+157pts)
   - 🔥 **Mike Yastrzemski** (ATL): L14 .370 / season .234 (+136pts)
+  - 🔥 **Jesús Sánchez** (TOR): L14 .405 / season .281 (+124pts)
+  - 🔥 **James Wood** (WSH): L14 .396 / season .276 (+120pts)
   - 🔥 **Jazz Chisholm Jr.** (NYY): L14 .360 / season .246 (+114pts)
-  - 🔥 **Corbin Carroll** (AZ): L14 .404 / season .299 (+105pts)
   - ❄️ **Edouard Julien** (COL): L14 .026 / season .206 (-180pts) -- FADE props
   - ❄️ **Moisés Ballesteros** (CHC): L14 .083 / season .240 (-157pts) -- FADE props
-  - ❄️ **Justin Crawford** (PHI): L14 .098 / season .229 (-131pts) -- FADE props
-  - ❄️ **Adolis García** (PHI): L14 .075 / season .204 (-129pts) -- FADE props
   - ❄️ **MJ Melendez** (NYM): L14 .077 / season .203 (-126pts) -- FADE props
+  - ❄️ **Adolis García** (PHI): L14 .077 / season .201 (-124pts) -- FADE props
+  - ❄️ **José Tena** (WSH): L14 .100 / season .221 (-121pts) -- FADE props
 
 ## 📈 Streak Regression Alerts (20)
 - [WNBA] New York Liberty on L3 L10 1-3 -- New York Liberty on L3 -- no historical sample

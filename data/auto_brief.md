@@ -1,14 +1,14 @@
 # Tonight's Slate Brief — 2026-05-27
 
-## Slate Quality: 54/100 (LOW)
-_0% lineups confirmed · 8 rookie SPs_
-**Recommendation:** Defensive sizing tonight; stick to highest-confidence plays.
+## Slate Quality: 82/100 (HIGH)
+_88% lineups confirmed · 9 rookie SPs_
+**Recommendation:** Play normal Kelly sizing.
 
 ## Slate
-- **15 games** scheduled
+- **9 games** scheduled
 - **35 best bets** scored: 0 DK · 0 PP · 12 NRFI · 6 SGP
 - **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$33.57
-- **MC simulation:** EV +$96.59, 78% P(profit), p05 $-109.64 / p95 $289.94
+- **MC simulation:** EV +$89.69, 79% P(profit), p05 $-100.64 / p95 $279.9
 
 ## Top 5 Best Bets
 1. **COL @ LAD 4-leg SGP @ -424**  (100/100 *****, edge +164.1%)
@@ -26,20 +26,17 @@ _0% lineups confirmed · 8 rookie SPs_
 ## ⚠️ Trap Warnings — 17 flagged
 - **COL @ LAD 4-leg SGP @ -424** (low):
    - Edge +164.1% looks big but only 0 settled props on this player — model unproven
-- **PHI @ SDP 2-leg SGP @ -218** (low):
-   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
-- **ATL @ BOS 2-leg SGP @ -210** (low):
-   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
-- **CIN @ NYM 2-leg SGP @ -136** (low):
-   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
-- **CHC @ PIT 2-leg SGP @ -217** (low):
-   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
-
-## Weather leans
-- **UNDER lean** (wind in + cold): ARI @ SFG
+- **NYY @ KCR 4-leg SGP @ -160** (low):
+   - Edge +50.7% looks big but only 0 settled props on this player — model unproven
+- **CIN @ NYM 4-leg SGP @ -139** (low):
+   - Edge +47.3% looks big but only 0 settled props on this player — model unproven
+- **ATL @ BOS 4-leg SGP @ -125** (low):
+   - Edge +42.5% looks big but only 0 settled props on this player — model unproven
+- **HOU @ TEX 4-leg SGP @ -125** (low):
+   - Edge +42.5% looks big but only 0 settled props on this player — model unproven
 
 ## Hot streaks
-**Batters heating up:** Amed Rosario (heat +8.50), Tyler Heineman (heat +7.38), Juan Soto (heat +6.74)
+**Batters heating up:** Amed Rosario (heat +8.50), Juan Soto (heat +6.74), Christian Walker (heat +5.45)
 **Pitchers on a run:** Bubba Chandler (heat +13.10), Noah Cameron (heat +6.05), Jonah Tong (heat +6.00)
 
 ## Top correlation-aware SGPs
@@ -47,12 +44,14 @@ _0% lineups confirmed · 8 rookie SPs_
    - Shohei Ohtani OVER 0.5 batter total bases
    - Shohei Ohtani UNDER 0.5 batter doubles
    - Shohei Ohtani UNDER 1.5 batter hits
-- **PHI @ SDP** 2-leg @ -218 fair (joint 0.69, EV +25.0%)
-   - Walker Buehler OVER 2.5 pitcher strikeouts
-   - Walker Buehler UNDER 6.5 pitcher strikeouts
-- **ATL @ BOS** 2-leg @ -210 fair (joint 0.68, EV +25.0%)
-   - Bryce Elder UNDER 7.5 pitcher strikeouts
-   - Connelly Early OVER 3.5 pitcher strikeouts
+- **NYY @ KCR** 4-leg @ -160 fair (joint 0.61, EV +50.66%)
+   - Ben Rice UNDER 1.5 batter rbis
+   - Aaron Judge UNDER 3.5 batter total bases
+   - Aaron Judge UNDER 0.5 batter doubles
+- **CIN @ NYM** 4-leg @ -139 fair (joint 0.58, EV +47.32%)
+   - Spencer Steer UNDER 0.5 batter home runs
+   - Carson Benge UNDER 1.5 batter singles
+   - Spencer Steer OVER 0.5 batter total bases
 
 ## Bullpens GASSED tonight
 Athletics, Pittsburgh Pirates, Seattle Mariners, San Francisco Giants, St. Louis Cardinals, Tampa Bay Rays, Texas Rangers, Toronto Blue Jays
@@ -69,17 +68,17 @@ _Lean late-inning OVER on these games; fade their save situations._
    - P(top 10) 13.5% -- safest position-bet for #25.
 
 ## NBA -- PLAYOFFS
-- San Antonio Spurs @ Oklahoma City Thunder (62-20 vs 64-18) 114-127 | P(home) 100.0% fair +0 | Final
+- Oklahoma City Thunder @ San Antonio Spurs (64-18 vs 62-20)  | P(home) 51.6% fair -107 | Scheduled
 
 ## NHL -- PLAYOFFS
-- Colorado Avalanche @ Vegas Golden Knights (55-16-11 vs 39-26-17) 1-2 | P(home) 100.0% fair +0 | Final
+- Carolina Hurricanes @ Montreal Canadiens (53-22-7 vs 48-24-10)  | P(home) 48.1% fair +108 | Scheduled
 
-## LoL Esports -- 2 live, 27 upcoming
-- [LCK] BNK FEARX vs KIWOOM DRX BO3 | P(A) 42.9% fair +133/-133
-- [LJL] Arneb vs UWinks BO3 | P(A) 57.4% fair -135/+135
-- [NLC] Lund Esports Organization vs Bulldog Esports BO1 | P(A) 50.6% fair -102/+102
-- [NLC] Arctic Pandas vs Ruddy Corporation BO1 | P(A) 62.8% fair -169/+169
-- [NLC] Lundqvist Lightside vs Verdant BO1 | P(A) 42.0% fair +138/-138
+## LoL Esports -- 1 live, 25 upcoming
+- [NACL] Winthrop University vs Supernova BO5 | P(A) 54.1% fair -118/+118
+- [LCK Challengers] T1 Esports Academy vs kt Challengers BO3 | P(A) 56.4% fair -129/+129
+- [LCK Challengers] KRX Challengers vs BNK FEARX Youth BO3 | P(A) 62.6% fair -167/+167
+- [LCK Challengers] HLE Challengers vs BRO Challengers BO3 | P(A) 52.9% fair -112/+112
+- [LCK] DN SOOPers vs NONGSHIM RED FORCE BO3 | P(A) 49.0% fair +104/-104
 - **LoL POT:** LGD GAMING ML vs TOP ESPORTS (LPL, BO5) (HIGH)
 
 ## Player Play of the Day -- across all sports (3517 candidates scanned)
@@ -90,4 +89,4 @@ _Lean late-inning OVER on these games; fade their save situations._
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | model 61.0% fair -157 (ELITE)
 
 ## Self-learning calibration (esports + KBO)
-- **LOL:** 7 settled | brier 0.2731 | ECE 0.2812
+- **LOL:** 8 settled | brier 0.2798 | ECE 0.3174

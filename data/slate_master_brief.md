@@ -1,13 +1,13 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-05-27T13:07:40 UTC_
+_Generated 2026-05-27T22:10:32 UTC_
 
 ## Slate Quality
-- **Tier:** MODEST_NIGHT
-- **Score:** 22
-- **Advisory:** Light slate. Limit to 1-3 strongest plays; use 25% Kelly or less.
+- **Tier:** NO_ACTION_NIGHT
+- **Score:** 8
+- **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 9
-- **Total FADES:** 14
+- **Total STRONG:** 7
+- **Total FADES:** 20
 
 ## Lock of the Night
 - **Subject:** Noah Cameron
@@ -26,8 +26,8 @@ _Generated 2026-05-27T13:07:40 UTC_
 3. **MLB / José Soriano** (MLB_PITCHER, score=61.58)
    - Play: José Soriano (PITCHER_STRONG)
    - Rationale: Cross-sport top pick (MLB_PITCHER)
-4. **MLB / Logan Gilbert** (MLB_PITCHER, score=59.25)
-   - Play: Logan Gilbert (PITCHER_STRONG)
+4. **MLB / Casey Mize** (MLB_PITCHER, score=58.33)
+   - Play: Casey Mize (PITCHER_STRONG)
    - Rationale: Cross-sport top pick (MLB_PITCHER)
 5. **F1 / max verstappen** (F1_DRIVER, score=49.67)
    - Play: max verstappen (DRIVER_STRONG)
@@ -40,13 +40,13 @@ _Generated 2026-05-27T13:07:40 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **F1** / logan sargeant (DRIVER_FADE)
-  - Fade angle: non-podium / outside top 10
-- **F1** / oliver bearman (DRIVER_FADE)
-  - Fade angle: non-podium / outside top 10
-- **F1** / guanyu zhou (DRIVER_FADE)
-  - Fade angle: non-podium / outside top 10
-- **F1** / lance stroll (DRIVER_FADE)
-  - Fade angle: non-podium / outside top 10
-- **F1** / daniel ricciardo (DRIVER_FADE)
-  - Fade angle: non-podium / outside top 10
+- **NBA** / chet holmgren (PLAYER_FADE)
+  - Fade angle: PTS UNDER + PRA UNDER (multi-prop)
+- **NBA** / SAS (TEAM_FADE)
+  - Fade angle: team total UNDER
+- **NHL** / pyotr kochetkov (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / frederik andersen (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / Andrei Svechnikov (SKATER_FADE)
+  - Fade angle: SOG UNDER + no goal

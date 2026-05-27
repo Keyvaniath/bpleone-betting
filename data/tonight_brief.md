@@ -13,15 +13,17 @@ _60-second read. Calibration tier: **REFINING** (70% progress)._
 - **Nick Gonzales** PP_batter_rbis_under_1.5 (MLB-PP) -- 72% / +24.3%
 - **Tyler Stephenson** PP_batter_rbis_under_1.5 (MLB-PP) -- 72% / +24.3%
 - **Paul Goldschmidt** PP_batter_singles_under_1.5 (MLB-PP) -- 72% / +24.3%
+- **CIN @ NYM** UNDER_8.5 (MLB) -- 66% / +26.2%
+- **CHC @ PIT** OVER_8.5 (MLB) -- 66% / +26.1%
 
 ## 📉 Under Bets
-- **PHI @ SDP** UNDER 7.0 — model 5.24 [STRONG signal]
-- **LAA @ DET** UNDER 7.5 — model 6.49 [STRONG signal]
+- **LAA @ DET** UNDER 7.5 — model 6.71 [STRONG signal]
+- **CIN @ NYM** UNDER 8.5 — model 6.82 [STRONG signal]
 
 ## 🎰 Tonight's Best Parlay
-- **Rafael Devers** PP_batter_total_bases_under_3.5 + **Andrew Abbott** PP_pitcher_strikeouts_under_6.5
-- Joint 51% · fair +201 · edge +54.6%
+- **CIN @ NYM** UNDER_8.5 + **CHC @ PIT** OVER_8.5
+- Joint 44% · fair +264 · edge +59.1%
 
 ---
-_Generated 2026-05-27T13:07:38_
+_Generated 2026-05-27T22:10:30_
 _Full breakdown: /tonight · Full history: /locks-of-day_

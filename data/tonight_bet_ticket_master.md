@@ -1,8 +1,8 @@
 # EdgeStat -- Tonight's Bet Ticket
-_Generated 2026-05-27T13:07:40 UTC_
+_Generated 2026-05-27T22:10:32 UTC_
 
 **Slate Quality:** MODEST_NIGHT
-**Total Stake:** 6.75% bankroll
+**Total Stake:** 7.75% bankroll
 **Expected P&L (on $100):** $0.0
 
 ## LOCK OF THE NIGHT
@@ -16,10 +16,13 @@ _Generated 2026-05-27T13:07:40 UTC_
 2. **breanna stewart** (WNBA)
    - Play: breanna stewart (PLAYER_STRONG)
    - Stake: 1.0% bankroll
-3. **?** (MLB)
-   - Play: ? (TEAM_STRONG)
+3. **José Soriano** (MLB)
+   - Play: José Soriano (PITCHER_STRONG)
    - Stake: 1.0% bankroll
-4. **max verstappen** (F1)
+4. **Logan Gilbert** (MLB)
+   - Play: Logan Gilbert (PITCHER_STRONG)
+   - Stake: 1.0% bankroll
+5. **max verstappen** (F1)
    - Play: max verstappen (DRIVER_STRONG)
    - Stake: 1.0% bankroll
 
