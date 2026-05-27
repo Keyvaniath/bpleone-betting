@@ -219,6 +219,7 @@ DEFAULT_MODULES = [
     "golf_leaderboard_probability",
     "golf_round_score_props",
     "golf_player_dominance",
+    "golf_player_confluence_score",
     # UFC props
     "ufc_strikes_takedowns_props",
     "ufc_rounds_over_under_props",
@@ -229,6 +230,7 @@ DEFAULT_MODULES = [
     "f1_qualifying_predictor",
     "f1_podium_finish_props",
     "f1_driver_dominance",
+    "f1_driver_confluence_score",
     # Pitcher edge composite (consumes lineup_quality + K/outs/QS props above)
     "mlb_pitcher_edge_composite",
     "mlb_pitcher_recent_vs_lineup_quality",

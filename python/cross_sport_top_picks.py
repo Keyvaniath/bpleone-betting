@@ -62,6 +62,10 @@ def run() -> Dict[str, Any]:
          "rows", "player", "composite_score", 12.0),
         ("UFC_FIGHTER", "ufc_fighter_confluence_score.json",
          "rows", "fighter", "composite_score", 14.0),
+        ("GOLF_PLAYER", "golf_player_confluence_score.json",
+         "rows", "player", "composite_score", 14.0),
+        ("F1_DRIVER", "f1_driver_confluence_score.json",
+         "rows", "driver", "composite_score", 18.0),
     ]
 
     all_picks: List[Dict[str, Any]] = []
