@@ -144,6 +144,7 @@ DEFAULT_MODULES = [
     "nba_player_ra_combo_props",
     "nba_player_ft_attempts_props",
     "nba_triple_double_props",
+    "nba_triple_double_watchlist",
     "nba_player_minutes_props",
     "nba_player_ceiling_stack",
     "nba_player_under_fade",
@@ -235,6 +236,7 @@ DEFAULT_MODULES = [
     "soccer_clean_sheet_alignment",
     "soccer_first_half_alignment",
     "soccer_goalscorer_sgp_builder",
+    "soccer_hat_trick_watchlist",
     # Tennis props
     "tennis_match_win_props",
     "tennis_total_games_props",
