@@ -1,12 +1,12 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:3 F:14
+_NO_ACTION_NIGHT_ | L:0 S:8 F:113
 
 :lock: **LOCK:** Chris Bassitt (MLB)
 
 :dart: **Top Picks:**
 1. [MLB] Paul Skenes -- Paul Skenes (PITCHER_STRONG)
-2. [MLB] Spencer Arrighetti -- Spencer Arrighetti (PITCHER_STRONG)
-3. [F1] max verstappen -- max verstappen (DRIVER_STRONG)
+2. [GOLF] Hideki Matsuyama -- Hideki Matsuyama (PLAYER_STRONG)
+3. [GOLF] Brian Harman -- Brian Harman (PLAYER_STRONG)
 
 :coin: Bankroll Advisory: STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 

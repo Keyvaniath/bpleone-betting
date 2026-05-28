@@ -106,8 +106,9 @@ def run() -> Dict[str, Any]:
         rr = round_idx.get(name, {})
 
         dom_signals = int(d.get("n_signals", 0) or 0)
-        p_top5 = _safe(tr.get("p_top5"))
-        p_top10 = _safe(tr.get("p_top10"))
+        # top_finish_props emits p_top_5 / p_top_10 (underscored); tolerate both.
+        p_top5 = _safe(tr.get("p_top_5") or tr.get("p_top5"))
+        p_top10 = _safe(tr.get("p_top_10") or tr.get("p_top10"))
 
         round_ec = (rr.get("edge_class") or "").upper()
         round_under_lean = 1 if "UNDER" in round_ec else 0  # lower scores = positive

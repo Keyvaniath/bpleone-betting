@@ -88,9 +88,75 @@ def run() -> Dict[str, Any]:
     winner = _load(os.path.join(DATA_DIR, "golf_winner_model.json"))
     live = _load(os.path.join(DATA_DIR, "golf_live_projections.json"))
     state = _load(os.path.join(DATA_DIR, "golf_state.json"))
+    props = _load(os.path.join(DATA_DIR, "golf_props.json"))  # calibrated MC sim
 
-    tournament = state.get("tournament") or winner.get("tournament") or "PGA Event"
+    tournament = (state.get("tournament")
+                  or (state.get("active_tournament") or {}).get("name")
+                  or winner.get("tournament") or "PGA Event")
     is_live = state.get("is_in_progress") or live.get("is_in_progress")
+
+    # PREFERRED SOURCE: golf_props.json carries calibrated 5000-sim Monte-Carlo
+    # finish probabilities (p_win sums to 1.0, p_top10 to 10.0 across the field).
+    # The marginal-CDF model below is a crude analytic fallback that mis-prices
+    # top-N (independent per player, doesn't normalize to the field) -- so when
+    # sim probs exist we use them directly and skip the fallback entirely.
+    sim_players = props.get("players") or []
+    if sim_players:
+        rows: List[Dict[str, Any]] = []
+        for p in sim_players:
+            p5 = p.get("p_top5"); p10 = p.get("p_top10"); p20 = p.get("p_top20")
+            edge_class = "NONE"; best_market = None
+            # Conviction tiers from calibrated probabilities (model lean, not
+            # book edge -- there is no live book line during the odds outage).
+            if p10 is not None and 0.30 <= p10 <= 0.60:
+                edge_class = "STRONG_TOP_10"
+                best_market = {"market": "TOP_10", "p": round(p10, 3),
+                               "fair_odds": p.get("fair_top10_american") or _american(p10)}
+            elif p20 is not None and 0.45 <= p20 <= 0.78:
+                edge_class = "STRONG_TOP_20"
+                best_market = {"market": "TOP_20", "p": round(p20, 3),
+                               "fair_odds": p.get("fair_top20_american") or _american(p20)}
+            elif p5 is not None and 0.15 <= p5 <= 0.35:
+                edge_class = "STRONG_TOP_5"
+                best_market = {"market": "TOP_5", "p": round(p5, 3),
+                               "fair_odds": p.get("fair_top5_american") or _american(p5)}
+            rows.append({
+                "player": p.get("name"),
+                "country": p.get("country"),
+                "skill_z": None,
+                "p_win_pre": p.get("p_win"),
+                "p_top_5":  round(p5, 3) if p5 is not None else None,
+                "p_top_10": round(p10, 3) if p10 is not None else None,
+                "p_top_20": round(p20, 3) if p20 is not None else None,
+                "p_top_40": None,  # not provided by the sim feed
+                "fair_top_5":  p.get("fair_top5_american"),
+                "fair_top_10": p.get("fair_top10_american"),
+                "fair_top_20": p.get("fair_top20_american"),
+                "fair_top_40": None,
+                "edge_class": edge_class,
+                "best_market": best_market,
+            })
+        rows.sort(key=lambda r: -(r["p_top_10"] or 0))
+        strong = [r for r in rows if r["edge_class"].startswith("STRONG")]
+        out = {
+            "generated_at": dt.datetime.utcnow().isoformat(timespec="seconds"),
+            "tournament": tournament,
+            "is_live": bool(is_live),
+            "source": "golf_props_mc_sim",
+            "field_size": len(rows),
+            "n_players": len(rows),
+            "n_strong": len(strong),
+            "rows": rows,
+            "strong_edges": strong,
+            "method_note": "Calibrated from golf_props 5000-sim Monte-Carlo finish "
+                           "probabilities (field-normalized: p_win sums to 1.0, "
+                           "p_top10 to 10.0). Replaces the uncalibrated marginal-CDF "
+                           "model. STRONG = conviction tier, not book edge (odds "
+                           "feed down). top_40 unavailable from sim feed.",
+        }
+        os.makedirs(os.path.dirname(OUT), exist_ok=True)
+        with open(OUT, "w") as f: json.dump(out, f, indent=2)
+        return out
 
     # Get player ratings/projections
     players = []
