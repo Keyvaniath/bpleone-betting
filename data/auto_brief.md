@@ -1,12 +1,12 @@
 # Tonight's Slate Brief — 2026-05-28
 
-## Slate Quality: 58/100 (MEDIUM)
-_0% lineups confirmed · 4 rookie SPs_
-**Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
+## Slate Quality: 92/100 (HIGH)
+_83% lineups confirmed · 1 rookie SPs_
+**Recommendation:** Play normal Kelly sizing.
 
 ## Slate
-- **6 games** scheduled
-- **28 best bets** scored: 0 DK · 0 PP · 6 NRFI · 6 SGP
+- **3 games** scheduled
+- **25 best bets** scored: 0 DK · 0 PP · 6 NRFI · 3 SGP
 - **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$44.7
 - **MC simulation:** EV +$91.98, 72% P(profit), p05 $-103.88 / p95 $267.96
 
@@ -24,32 +24,32 @@ _0% lineups confirmed · 4 rookie SPs_
    - Player prop quality score 1.1892
    - Elite player
 
-## ⚠️ Trap Warnings — 11 flagged
+## ⚠️ Trap Warnings — 9 flagged
 - **LAA @ DET YRFI (1st-inning OVER 0.5)** (low):
    - Edge +39.8% looks big but only 0 settled props on this player — model unproven
-- **CHC @ PIT 2-leg SGP @ -198** (low):
+- **CHC @ PIT 2-leg SGP @ -255** (low):
    - Edge +25.0% looks big but only 0 settled props on this player — model unproven
-- **TOR @ BAL 2-leg SGP @ -169** (low):
+- **HOU @ TEX 2-leg SGP @ -258** (low):
    - Edge +25.0% looks big but only 0 settled props on this player — model unproven
-- **MIN @ CHW 2-leg SGP @ -219** (low):
+- **TOR @ BAL 2-leg SGP @ -256** (low):
    - Edge +25.0% looks big but only 0 settled props on this player — model unproven
-- **HOU @ TEX 2-leg SGP @ -181** (low):
-   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
+- **TOR @ BAL YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +19.8% looks big but only 0 settled props on this player — model unproven
 
 ## Hot streaks
-**Batters heating up:** Yordan Alvarez (heat +8.68), Munetaka Murakami (heat +4.34), Byron Buxton (heat +3.84)
-**Pitchers on a run:** Jack Flaherty (heat +7.29), Patrick Corbin (heat +5.18), Payton Tolle (heat +2.90)
+**Batters heating up:** Yordan Alvarez (heat +8.68), Christian Walker (heat +5.50), Joc Pederson (heat +5.22)
+**Pitchers on a run:** Patrick Corbin (heat +5.18), Jack Flaherty (heat +4.96), Chris Sale (heat +2.72)
 
 ## Top correlation-aware SGPs
-- **CHC @ PIT** 2-leg @ -198 fair (joint 0.66, EV +25.0%)
-   - Colin Rea UNDER 6.5 pitcher strikeouts
-   - Paul Skenes UNDER 8.5 pitcher strikeouts
-- **TOR @ BAL** 2-leg @ -169 fair (joint 0.63, EV +25.0%)
-   - Patrick Corbin UNDER 5.5 pitcher strikeouts
-   - Chris Bassitt UNDER 5.5 pitcher strikeouts
-- **MIN @ CHW** 2-leg @ -219 fair (joint 0.69, EV +25.0%)
-   - Davis Martin OVER 5 pitcher strikeouts
-   - Davis Martin OVER 4.5 pitcher strikeouts
+- **CHC @ PIT** 2-leg @ -255 fair (joint 0.72, EV +25.0%)
+   - Dansby Swanson OVER 0.5 batter hrr
+   - Nico Hoerner UNDER 2.5 batter total bases
+- **HOU @ TEX** 2-leg @ -258 fair (joint 0.72, EV +25.0%)
+   - Jeremy Peña UNDER 1.5 batter singles
+   - Evan Carter UNDER 1.5 batter hits
+- **TOR @ BAL** 2-leg @ -256 fair (joint 0.72, EV +25.0%)
+   - Adley Rutschman UNDER 1.5 batter rbis
+   - Vladimir Guerrero Jr. UNDER 3.5 batter hrr
 
 ## Bullpens GASSED tonight
 Athletics, San Diego Padres, Seattle Mariners, San Francisco Giants, Tampa Bay Rays, Toronto Blue Jays, Atlanta Braves, Chicago White Sox
@@ -60,22 +60,22 @@ _Lean late-inning OVER on these games; fade their save situations._
 - **NRFI** (1st-inning UNDER): HOU @ TEX, MIN @ CHW
 
 ## Golf -- Charles Schwab Challenge
-- **Leader:** Kevin Kisner (E) at #1
-- **Field:** 132 players  |  Status: Scheduled
-- **Play of the Tournament:** Brian Harman TOP10 @ +643 (model 13.5%, HIGH)
-   - P(top 10) 13.5% -- safest position-bet for #25.
+- **Leader:** Kevin Kisner (-2) at #1
+- **Field:** 132 players  |  Status: In Progress
+- **Play of the Tournament:** Max Homa TOP5 @ +572 (model 14.9%, HIGH)
+   - P(top 5) 14.9% -- lower variance than outright but compelling line.
 
 ## NBA -- PLAYOFFS
 - Oklahoma City Thunder @ San Antonio Spurs (64-18 vs 62-20)  | P(home) 51.6% fair -107 | Scheduled
 
 ## NHL -- PLAYOFFS
-- Carolina Hurricanes @ Montreal Canadiens (53-22-7 vs 48-24-10) 4-0 | P(home) 0.0% fair +0 | Final
+- Montreal Canadiens @ Carolina Hurricanes (48-24-10 vs 53-22-7)  | P(home) 57.6% fair -136 | Scheduled
 
-## LoL Esports -- 0 live, 26 upcoming
+## LoL Esports -- 1 live, 30 upcoming
+- [NACL] Winthrop University vs NRG BO5 | P(A) 62.3% fair -165/+165
 - [LCK Challengers] kt Challengers vs T1 Esports Academy BO3 | P(A) 43.6% fair +129/-129
 - [LCK Challengers] BNK FEARX Youth vs KRX Challengers BO3 | P(A) 37.4% fair +167/-167
 - [LCK Challengers] HLE Challengers vs BRO Challengers BO3 | P(A) 52.9% fair -112/+112
-- [NACL] Winthrop University vs NRG BO5 | P(A) 62.3% fair -165/+165
 - [LCK Challengers] NS Challengers vs DK Challengers BO3 | P(A) 55.3% fair -124/+124
 - **LoL POT:** Shopify Rebellion ML vs Team Liquid Alienware (LCS, BO5) (HIGH)
 

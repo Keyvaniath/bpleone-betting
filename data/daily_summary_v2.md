@@ -1,17 +1,17 @@
 # EdgeStat Daily Summary — 2026-05-28
 
-## 🏥 Model Health: 79.4/100 [HEALTHY]
+## 🏥 Model Health: 81.7/100 [HEALTHY]
 - Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 100.0/100
+  - 🟢 Calibration Freshness: 99.9/100
   - 🟢 Hit Rate Trend: 84.3/100
   - 🔴 Brier Trend: 52.3/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 88.9/100
-  - 🔴 Edge Count: 42.9/100
+  - 🟡 Edge Count: 65.7/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.61)
-- **Total games on board:** 132
+- **Total games on board:** 133
 - **Strong home favorites:** 25 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
@@ -21,29 +21,30 @@
 4. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
 5. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
 
-## 🐋 Whale Picks (Max Confluence)
-- [WHALE] **[MLB-PP]** Paul Goldschmidt PP_batter_singles_under_1.5 -- 72% / +24.3% (score 3.5)
-- [WHALE] **[MLB-PP]** Taylor Trammell PP_batter_rbis_under_1.5 -- 72% / +24.3% (score 3.5)
-
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **42-5** (89.4% hit rate)
 - Net units: **+1.60u** | ROI: **+55.1%**
 - Last 7d: 33-3 (91.7%) | net +1.32u
 
-**Today's 5 Locks:**
+**Today's 10 Locks:**
 - [MLB-PP] **Hunter Feduccia** PP_batter_hrr_under_3.5 · p=72% edge=+24.3% qK=0.062u
 - [MLB-PP] **Andrew Abbott** PP_pitcher_strikeouts_under_6. · p=72% edge=+24.3% qK=0.062u
 - [MLB-PP] **Nick Gonzales** PP_batter_rbis_under_1.5 · p=72% edge=+24.3% qK=0.062u
 - [MLB-PP] **Tyler Stephenson** PP_batter_rbis_under_1.5 · p=72% edge=+24.3% qK=0.062u
 - [MLB-PP] **Paul Goldschmidt** PP_batter_singles_under_1.5 · p=72% edge=+24.3% qK=0.062u
+- [KBO] **Choi Jeong** one_plus_tb · p=73% edge=+39.8% qK=0.062u
+- [MLB-PP] **Jahmai Jones** PP_batter_hrr_under_3.5 · p=72% edge=+24.3% qK=0.062u
+- [MLB-PP] **Gunnar Henderson** PP_batter_singles_under_1.5 · p=72% edge=+24.3% qK=0.062u
+- [MLB-PP] **Ian Happ** PP_batter_rbis_under_1.5 · p=72% edge=+24.3% qK=0.062u
+- [MLB-PP] **Vladimir Guerrero Jr.** PP_batter_home_runs_under_0.5 · p=72% edge=+24.3% qK=0.062u
 
 ## 🎰 Top Balanced 2-Leg Parlays (40-65% joint)
-- [MLB-PP] Hunter Feduccia PP_batter_hrr_under_ + [MLB-PP] Andrew Abbott PP_pitcher_strikeout
-  Joint: 51% | Fair: 201 | Edge: +54.6%
-- [MLB-PP] Hunter Feduccia PP_batter_hrr_under_ + [MLB-PP] Nick Gonzales PP_batter_rbis_under
-  Joint: 51% | Fair: 201 | Edge: +54.6%
-- [MLB-PP] Hunter Feduccia PP_batter_hrr_under_ + [MLB-PP] Tyler Stephenson PP_batter_rbis_under
-  Joint: 51% | Fair: 201 | Edge: +54.6%
+- [KBO] Choi Jeong one_plus_tb + [MLB-PP] Jahmai Jones PP_batter_hrr_under_
+  Joint: 52% | Fair: 231 | Edge: +73.8%
+- [KBO] Choi Jeong one_plus_tb + [MLB-PP] Gunnar Henderson PP_batter_singles_un
+  Joint: 52% | Fair: 231 | Edge: +73.8%
+- [KBO] Choi Jeong one_plus_tb + [MLB-PP] Ian Happ PP_batter_rbis_under
+  Joint: 52% | Fair: 231 | Edge: +73.8%
 
 ## 🎮 Player Play of the Day (cross-sport)
 - **[LOL]** Inspired UNDER 3.5 Kills | MED conviction · model 61.7% fair -161
@@ -61,17 +62,17 @@
 - Hot teams: **27** | Cold teams: **22** | Over-heavy: 0 | Under-heavy: 11
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (11)
-- RESIDUAL_DIVERGENCE: **11**
+## ⚠️ Anomaly Detector (12)
+- RESIDUAL_DIVERGENCE: **12**
   - Oklahoma City Thunder (NBA): Oklahoma City Thunder OUTPERFORMING expected margin by 8.4pts in recent games -- model bias may persist
+  - Montreal Canadiens (NHL): Montreal Canadiens UNDERPERFORMING expected margin by 6.2pts in recent games -- model bias may persist
   - Georgia Tech Yellow Jackets (CWS): Georgia Tech Yellow Jackets OUTPERFORMING expected margin by 6.3pts in recent games -- model bias may persist
   - East Carolina Pirates (CWS): East Carolina Pirates OUTPERFORMING expected margin by 6.3pts in recent games -- model bias may persist
   - Southern Miss Golden Eagles (CWS): Southern Miss Golden Eagles OUTPERFORMING expected margin by 10.9pts in recent games -- model bias may persist
-  - South Carolina Upstate Spartans (CWS): South Carolina Upstate Spartans OUTPERFORMING expected margin by 6.5pts in recent games -- model bias may persist
 
-## 💰 Today's Portfolio (10 picks)
-- Total stake: **$335.0** (33.5% of $1000 bankroll)
-- Expected EV: **$4.38**
+## 💰 Today's Portfolio (9 picks)
+- Total stake: **$330.0** (33.0% of $1000 bankroll)
+- Expected EV: **$5.56**
   - #1 [NRFI] $50 on LAA @ DET YRFI (1st-inning OVER 0.5) (P=86%)
   - #2 [NRFI] $35 on TOR @ BAL YRFI (1st-inning OVER 0.5) (P=66%)
   - #3 [NRFI] $35 on CHC @ PIT YRFI (1st-inning OVER 0.5) (P=65%)
@@ -79,12 +80,12 @@
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
 ## 🎯 Convergence Picks (13 stacked games)
-- ELITE: **6** · HIGH: 3 · MED: 4
-  - [ELITE] Connecticut Sun @ Portland Fire : 5 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ANOMALY)
+- ELITE: **5** · HIGH: 3 · MED: 5
   - [ELITE] Arsenal @ Crystal Palace : 5 signals (PREGAME, HEAT_COLD, HEAT_COLD, ATS)
   - [ELITE] Oklahoma City Thunder @ San Antonio Spurs : 4 signals (HEAT_COLD, ANOMALY, ATS, ATS)
-  - [ELITE] Atlanta Dream @ Minnesota Lynx : 4 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
+  - [ELITE] Connecticut Sun @ Portland Fire : 4 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ATS)
   - [ELITE] Philadelphia Union @ Inter Miami CF : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
+  - [ELITE] Wolverhampton Wanderers @ Burnley : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
 
 ## ⚾ Top MLB Pitcher K Plays (4)
 - **Payton Tolle** OVER 4.5 K (77%) fair -329
@@ -105,13 +106,13 @@
   - [COIN_FLIP] **Deiveson Figueiredo** (25-6-1) vs Song Yadong -- fair -124
 
 ## ⛳ Golf Player Heat (from Charles Schwab Challenge)
-  - 🔥 T1 **Kevin Kisner** (USA): +0 total -- finished T1
-  - 🔥 T2 **Zac Blair** (USA): +0 total -- finished T2
-  - 🔥 T3 **Christiaan Bezuidenhout** (South Africa): +0 total -- finished T3
-  - 🔥 T4 **Nick Hardy** (USA): +0 total -- finished T4
-  - 🔥 T5 **Michael Thorbjornsen** (USA): +0 total -- finished T5
+  - 🔥 T1 **Kevin Kisner** (USA): -2 total -- finished T1
+  - 🔥 T2 **Max McGreevy** (USA): -2 total -- finished T2
+  - 🔥 T3 **Max Homa** (USA): -2 total -- finished T3
+  - 🔥 T4 **Mackenzie Hughes** (Canada): -2 total -- finished T4
+  - 🔥 T5 **Nico Echavarria** (Colombia): -2 total -- finished T5
 
-## 🔥 MLB Batter Heat (35 HOT / 47 COLD)
+## 🔥 MLB Batter Heat (36 HOT / 49 COLD)
   - 🔥 **Ketel Marte** (AZ): L14 .433 / season .276 (+157pts)
   - 🔥 **Mike Yastrzemski** (ATL): L14 .370 / season .234 (+136pts)
   - 🔥 **Jesús Sánchez** (TOR): L14 .405 / season .281 (+124pts)
@@ -121,14 +122,14 @@
   - ❄️ **Moisés Ballesteros** (CHC): L14 .081 / season .236 (-155pts) -- FADE props
   - ❄️ **MJ Melendez** (NYM): L14 .077 / season .203 (-126pts) -- FADE props
   - ❄️ **Adolis García** (PHI): L14 .077 / season .201 (-124pts) -- FADE props
-  - ❄️ **Jo Adell** (LAA): L14 .120 / season .242 (-122pts) -- FADE props
+  - ❄️ **José Tena** (WSH): L14 .100 / season .221 (-121pts) -- FADE props
 
-## 📈 Streak Regression Alerts (23)
-- [WNBA] Phoenix Mercury on L4 L10 1-4 -- Phoenix Mercury on L4 -- no historical sample
-- [WNBA] Chicago Sky on L3 L10 1-4 -- Chicago Sky on L3 -- no historical sample
-- [WNBA] Minnesota Lynx on W3 L10 4-1 -- Minnesota Lynx on W3 -- no historical sample
-- [WNBA] Portland Fire on W3 L10 4-1 -- Portland Fire on W3 -- no historical sample
-- [WNBA] Connecticut Sun on L3 L10 1-4 -- Connecticut Sun on L3 -- no historical sample
+## 📈 Streak Regression Alerts (18)
+- [CWS] Georgia Tech Yellow Jackets on W3 L10 3-0 -- Georgia Tech Yellow Jackets on W3 -- no historical sample
+- [CWS] UIC Flames on W3 L10 3-0 -- UIC Flames on W3 -- no historical sample
+- [CWS] Milwaukee Panthers on W3 L10 3-0 -- Milwaukee Panthers on W3 -- no historical sample
+- [CWS] Kansas Jayhawks on W3 L10 3-0 -- Kansas Jayhawks on W3 -- no historical sample
+- [CWS] Northeastern Huskies on W4 L10 4-1 -- Northeastern Huskies on W4 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**

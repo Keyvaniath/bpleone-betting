@@ -1,13 +1,13 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-05-28T19:35:27 UTC_
+_Generated 2026-05-28T22:04:09 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -81
+- **Score:** -85
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
 - **Total STRONG:** 8
-- **Total FADES:** 113
+- **Total FADES:** 117
 
 ## Lock of the Night
 - **Subject:** Chris Bassitt
@@ -17,16 +17,16 @@ _Generated 2026-05-28T19:35:27 UTC_
 - **Details:** TOR @ BAL
 
 ## Top 5 Curated Picks
-1. **MLB / Paul Skenes** (MLB_PITCHER, score=61.0)
-   - Play: Paul Skenes (PITCHER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_PITCHER)
-2. **GOLF / Hideki Matsuyama** (GOLF_PLAYER, score=60.93)
+1. **GOLF / Hideki Matsuyama** (GOLF_PLAYER, score=60.93)
    - Play: Hideki Matsuyama (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
+2. **MLB / Paul Skenes** (MLB_PITCHER, score=60.58)
+   - Play: Paul Skenes (PITCHER_STRONG)
+   - Rationale: Cross-sport top pick (MLB_PITCHER)
 3. **GOLF / Brian Harman** (GOLF_PLAYER, score=59.5)
    - Play: Brian Harman (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-4. **MLB / Spencer Arrighetti** (MLB_PITCHER, score=59.08)
+4. **MLB / Spencer Arrighetti** (MLB_PITCHER, score=58.42)
    - Play: Spencer Arrighetti (PITCHER_STRONG)
    - Rationale: Cross-sport top pick (MLB_PITCHER)
 5. **F1 / max verstappen** (F1_DRIVER, score=49.67)
@@ -50,9 +50,9 @@ _Generated 2026-05-28T19:35:27 UTC_
   - Fade angle: PTS UNDER + PRA UNDER (multi-prop)
 - **NBA** / SAS (TEAM_FADE)
   - Fade angle: team total UNDER
-- **GOLF** / Vince Whaley (PLAYER_FADE)
-  - Fade angle: miss cut YES + high round score
-- **GOLF** / Chad Ramey (PLAYER_FADE)
-  - Fade angle: miss cut YES + high round score
-- **GOLF** / Rasmus Højgaard (PLAYER_FADE)
-  - Fade angle: miss cut YES + high round score
+- **NHL** / frederik andersen (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / pyotr kochetkov (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / Sebastian Aho (SKATER_FADE)
+  - Fade angle: SOG UNDER + no goal
