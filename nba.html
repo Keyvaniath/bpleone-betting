@@ -50,34 +50,47 @@
     <div id="nbaList"><p class="muted" style="padding:14px;">Loading…</p></div>
   </section>
 
-  <!-- PLAYER POINTS PROJECTIONS (nba_player_points_distribution_bands.json; odds-independent) -->
+  <!-- PLAYER PROJECTIONS — points + PRA (odds-independent model bands) -->
   <section class="card" id="ptsProjCard" style="margin-bottom: 24px; border-left: 3px solid #fb923c; display:none;">
-    <div class="card-head"><span>🎯 <strong>Player Points Projections</strong> <span class="muted" style="font-size:10px;">(model bands · odds-independent)</span></span><span class="muted" id="ptsProjMeta">--</span></div>
+    <div class="card-head"><span>🎯 <strong>Player Projections — Points + PRA</strong> <span class="muted" style="font-size:10px;">(model bands · odds-independent)</span></span><span class="muted" id="ptsProjMeta">--</span></div>
     <div id="ptsProjList"><p class="muted" style="padding:14px;">Loading projections…</p></div>
   </section>
   <script>
-  fetch("data/nba_player_points_distribution_bands.json?t=" + Date.now(), { cache: "no-cache" })
-    .then(r => r.json())
-    .then(d => {
-      const players = (d.rows || []);
-      if (!players.length) return;
-      const card = document.getElementById("ptsProjCard");
-      if (!card) return;
-      card.style.display = "block";
-      document.getElementById("ptsProjMeta").textContent = `${d.n_players||0} players · model bands · ${(d.generated_at||'').slice(11,16)} UTC`;
-      document.getElementById("ptsProjList").innerHTML = players.map(p => {
-        const conf = p.confident_over_line ? `PTS o${p.confident_over_line}` : '—';
-        return `<div style="display:flex;align-items:center;justify-content:space-between;padding:10px 16px;border-bottom:1px solid rgba(255,255,255,0.04);border-left:3px solid #fb923c;">
-          <div><span style="font-weight:600;font-size:13px;">${p.player||''}</span> <span class="muted" style="font-size:11px;">${p.matchup||''}</span>
-          <div class="muted" style="font-size:10px;font-family:'JetBrains Mono',monospace;">floor ${p.floor_pts} · ceiling ${p.ceiling_pts} · sigma ${p.sigma}</div></div>
-          <div style="text-align:right;font-family:'JetBrains Mono',monospace;">
-            <span style="color:#fb923c;font-size:18px;font-weight:700;">${p.projected_pts}</span>
-            <div class="muted" style="font-size:9px;">${conf} (65%)</div>
-          </div>
-        </div>`;
-      }).join("");
-    })
-    .catch(()=>{});
+  Promise.all([
+    fetch("data/nba_player_points_distribution_bands.json?t=" + Date.now(), { cache: "no-cache" }).then(r => r.json()).catch(()=>({})),
+    fetch("data/nba_player_pra_distribution_bands.json?t=" + Date.now(), { cache: "no-cache" }).then(r => r.json()).catch(()=>({})),
+  ]).then(([pts, pra]) => {
+    const norm = s => (s||'').trim().toLowerCase();
+    const ptsRows = pts.rows || [];
+    const praRows = pra.rows || [];
+    if (!ptsRows.length && !praRows.length) return;
+    const ptsIdx = {}; ptsRows.forEach(r => { ptsIdx[norm(r.player)] = r; });
+    const praIdx = {}; praRows.forEach(r => { praIdx[norm(r.player)] = r; });
+    const names = Array.from(new Set([...ptsRows.map(r=>norm(r.player)), ...praRows.map(r=>norm(r.player))]));
+    const projOf = n => (ptsIdx[n] && ptsIdx[n].projected_pts) || (praIdx[n] && praIdx[n].projected_pra) || 0;
+    names.sort((a,b) => projOf(b) - projOf(a));
+    const card = document.getElementById("ptsProjCard");
+    if (!card) return;
+    card.style.display = "block";
+    const stamp = (pts.generated_at || pra.generated_at || '').slice(11,16);
+    document.getElementById("ptsProjMeta").textContent = `${names.length} players · model bands · ${stamp} UTC`;
+    document.getElementById("ptsProjList").innerHTML = names.map(n => {
+      const p = ptsIdx[n] || {}; const a = praIdx[n] || {};
+      const name = p.player || a.player || n;
+      const matchup = p.matchup || a.matchup || '';
+      const ptsVal = p.projected_pts != null ? p.projected_pts : '—';
+      const praVal = a.projected_pra != null ? a.projected_pra : '—';
+      const ptsConf = p.confident_over_line ? 'o' + p.confident_over_line : '—';
+      const praConf = a.confident_over_line ? 'o' + a.confident_over_line : '—';
+      return `<div style="display:flex;align-items:center;justify-content:space-between;padding:10px 16px;border-bottom:1px solid rgba(255,255,255,0.04);border-left:3px solid #fb923c;">
+        <div><span style="font-weight:600;font-size:13px;">${name}</span> <span class="muted" style="font-size:11px;">${matchup}</span></div>
+        <div style="display:flex;gap:22px;text-align:right;font-family:'JetBrains Mono',monospace;">
+          <div><span style="color:#fb923c;font-size:16px;font-weight:700;">${ptsVal}</span><div class="muted" style="font-size:9px;">PTS · ${ptsConf}</div></div>
+          <div><span style="color:#60a5fa;font-size:16px;font-weight:700;">${praVal}</span><div class="muted" style="font-size:9px;">PRA · ${praConf}</div></div>
+        </div>
+      </div>`;
+    }).join("");
+  }).catch(()=>{});
   </script>
 
   <section class="card">
