@@ -270,6 +270,44 @@
     </div>
   </section>
 
+  <!-- MODEL CONVICTION — cross-sport (cross_sport_top_picks.json; fresh each batch, odds-independent) -->
+  <section class="card" id="modelConvictionCard" style="margin-bottom: 28px; border-left: 3px solid #4ade80; display:none;">
+    <div class="card-head">
+      <span>🎯 <strong>Model Conviction — Top Picks (All Sports)</strong> <span class="muted" style="font-size:10px;">(pure-model · odds-independent)</span></span>
+      <span class="muted" id="modelConvMeta">--</span>
+    </div>
+    <div style="padding: 4px 0;" id="modelConvList">
+      <p class="muted" style="padding:14px;">Loading model conviction board…</p>
+    </div>
+  </section>
+  <script>
+  fetch("data/cross_sport_top_picks.json?t=" + Date.now(), { cache: "no-cache" })
+    .then(r => r.json())
+    .then(d => {
+      const picks = (d.top_30 || []);
+      if (!picks.length) return;
+      const card = document.getElementById("modelConvictionCard");
+      if (!card) return;
+      card.style.display = "block";
+      document.getElementById("modelConvMeta").textContent =
+        `${d.n_total_picks||0} picks · ${d.n_strong_total||0} strong · ${(d.generated_at||'').slice(11,16)} UTC`;
+      const SPORT_COLORS = { MLB_PITCHER:"#4ade80", MLB_BATTER:"#4ade80", MLB_TEAM:"#4ade80", NBA_PLAYER:"#fb923c", NBA_TEAM:"#fb923c", NHL_GOALIE:"#60a5fa", NHL_SKATER:"#60a5fa", NHL_TEAM:"#60a5fa", GOLF_PLAYER:"#fbbf24", F1_DRIVER:"#f87171", SOCCER_MATCH:"#a78bfa", WNBA_PLAYER:"#f472b6", TENNIS_PLAYER:"#34d399", UFC_FIGHTER:"#ef4444" };
+      document.getElementById("modelConvList").innerHTML = picks.slice(0, 10).map(p => {
+        const c = SPORT_COLORS[p.source] || "#888";
+        const sportLabel = (p.source || "").replace("_", " ");
+        return `<div style="display:flex;align-items:center;justify-content:space-between;padding:10px 16px;border-bottom:1px solid rgba(255,255,255,0.04);border-left:3px solid ${c};">
+          <div style="display:flex;align-items:center;gap:12px;">
+            <span style="background:${c};color:#0a0a0a;padding:3px 8px;border-radius:4px;font-size:9px;font-weight:700;min-width:84px;text-align:center;">${sportLabel}</span>
+            <div><span style="font-weight:600;font-size:13px;">${p.subject||'?'}</span> <span class="muted" style="font-size:11px;">${p.matchup||p.team||''}</span>
+            <div class="muted" style="font-size:10px;">${(p.tier||'').replace(/_/g,' ')}</div></div>
+          </div>
+          <div style="font-family:'JetBrains Mono',monospace;color:${c};font-size:16px;font-weight:700;">${Number(p.final_score).toFixed(0)}</div>
+        </div>`;
+      }).join("");
+    })
+    .catch(()=>{});
+  </script>
+
   <!-- PLAY OF THE DAY — primary P&L benchmark -->
   <section class="card" id="podPLCard" style="margin-bottom: 28px; border-left: 4px solid #d4a04a;">
     <div class="card-head">
