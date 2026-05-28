@@ -46,8 +46,55 @@
     <div class="metric"><span class="metric-num" id="m_er_plays">--</span><span class="metric-label">ER Unders</span></div>
     <div class="metric"><span class="metric-num" id="m_top_p">--</span><span class="metric-label">Top P(over)</span></div>
   </section>
+  <!-- MODEL CONVICTION BOARD (sharp_plays_board.json) — odds-independent ranking -->
+  <section class="card" id="convictionCard" style="margin-bottom: 18px; border-left: 3px solid #d4a04a; display:none;">
+    <div class="card-head"><span>🎯 <strong>Model Conviction Board</strong> <span class="muted" style="font-size:10px;">(odds-independent)</span></span><span class="muted" id="convMeta">--</span></div>
+    <div style="padding: 4px 0;" id="convList"></div>
+  </section>
+  <!-- SAME-GAME STACKS (sgp_builder.json) -->
+  <section class="card" id="sgpCard" style="margin-bottom: 18px; border-left: 3px solid #588cc8; display:none;">
+    <div class="card-head"><span>🎲 <strong>Pitcher Same-Game Stacks</strong> <span class="muted" style="font-size:10px;">(correlation-priced)</span></span><span class="muted" id="sgpMeta">--</span></div>
+    <div style="padding: 4px 0;" id="sgpList"></div>
+  </section>
   <div id="gamesContainer"></div>
 </main>
+<script>
+// Model conviction board (sharp_plays_board.json)
+fetch("data/mlb_pitcher_sharp_plays_board.json?t=" + Date.now(), { cache: "no-cache" })
+  .then(r => r.json()).then(d => {
+    const plays = d.best_plays || [];
+    if (!plays.length) return;
+    document.getElementById("convictionCard").style.display = "block";
+    document.getElementById("convMeta").textContent = `${d.n_pitchers||0} modeled · ${d.n_prime||0} prime · ${d.n_fade||0} fade`;
+    const TC = { PRIME_PLAY:"#d4a04a", STRONG_PLAY:"#58c878", LEAN:"#888" };
+    document.getElementById("convList").innerHTML = plays.slice(0,10).map(p => {
+      const c = TC[p.tier] || "#888";
+      return `<div style="display:flex;justify-content:space-between;align-items:center;padding:9px 16px;border-bottom:1px solid rgba(255,255,255,0.04);border-left:3px solid ${c};">
+        <div><span style="font-weight:600;font-size:13px;">${p.pitcher}</span> <span class="muted" style="font-size:11px;">${p.matchup||''}</span>
+        <div class="muted" style="font-size:10px;font-family:'JetBrains Mono',monospace;">${p.primary_market||''}</div></div>
+        <div style="font-family:'JetBrains Mono',monospace;color:${c};font-size:16px;font-weight:700;">${Number(p.conviction).toFixed(0)}</div>
+      </div>`;
+    }).join("");
+  }).catch(()=>{});
+// Same-game stacks (sgp_builder.json)
+fetch("data/mlb_pitcher_sgp_builder.json?t=" + Date.now(), { cache: "no-cache" })
+  .then(r => r.json()).then(d => {
+    const rows = d.rows || [];
+    if (!rows.length) return;
+    document.getElementById("sgpCard").style.display = "block";
+    document.getElementById("sgpMeta").textContent = `${d.n_stacks||0} stacks · ${d.n_prime||0} prime · rho=${d.rho!=null?d.rho:0.45}`;
+    const fa = (a) => a==null?'—':(a>=0?'+'+a:String(a));
+    document.getElementById("sgpList").innerHTML = rows.slice(0,8).map(s => {
+      const legs = (s.legs||[]).map(l=>l.market).join(" + ");
+      const joint = (Number(s.correlated_joint)*100).toFixed(0);
+      return `<div style="display:flex;justify-content:space-between;align-items:center;padding:9px 16px;border-bottom:1px solid rgba(255,255,255,0.04);border-left:3px solid #588cc8;">
+        <div><span style="font-weight:600;font-size:13px;">${s.pitcher}</span> <span class="muted" style="font-size:11px;">${s.matchup||''}</span>
+        <div class="muted" style="font-size:10px;font-family:'JetBrains Mono',monospace;">${legs}</div></div>
+        <div style="text-align:right;font-family:'JetBrains Mono',monospace;color:#588cc8;font-size:15px;font-weight:700;">${fa(s.fair_american)}<div class="muted" style="font-size:9px;font-weight:400;">${joint}% joint</div></div>
+      </div>`;
+    }).join("");
+  }).catch(()=>{});
+</script>
 <script src="js/nav_badge.js"></script>
 <script>
 const fmtAmer = (a) => a == null ? '—' : (a >= 0 ? '+' + a : String(a));
