@@ -114,6 +114,9 @@ def run() -> Dict[str, Any]:
             primary = f"K OVER {coin_flip_line - 0.5} (lean)"
         elif p_qs >= 0.5:
             primary = "quality start YES"
+        elif proj_er <= 3.0:
+            # No K edge, but a sharp arm projects low ER -> ratio/length play
+            primary = f"ER UNDER 3.5 / Outs OVER (proj ER {round(proj_er, 1)})"
         else:
             primary = "monitor / no standout edge"
 
