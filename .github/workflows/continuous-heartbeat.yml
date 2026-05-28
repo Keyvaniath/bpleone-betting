@@ -31,7 +31,12 @@ concurrency:
 jobs:
   heartbeat:
     runs-on: ubuntu-latest
-    timeout-minutes: 4
+    # 2026-05-28: bumped 4 -> 8. The job was hitting the 4-min wall during the
+    # D1-sync network step and getting cancelled BEFORE the final commit step,
+    # so every run discarded its refreshed data (data frozen mid-afternoon).
+    # Flaky network steps below are now individually bounded + non-fatal, and
+    # the commit step runs with if: always(), so refreshed data always lands.
+    timeout-minutes: 8
     steps:
       - uses: actions/checkout@v4
 
@@ -86,7 +91,11 @@ jobs:
         run: python multi_book_lines.py || true
 
       # D1 sync -- push picks history to Cloudflare D1 (Pro plan)
+      # Bounded + non-fatal: this network step hangs when the Worker/D1 is
+      # unreachable and was eating the whole job budget before the commit ran.
       - name: D1 sync (Cloudflare Pro -- pick history to edge SQL)
+        timeout-minutes: 1
+        continue-on-error: true
         env:
           EDGESTAT_WORKER_URL: ${{ secrets.EDGESTAT_WORKER_URL }}
         working-directory: python
@@ -103,7 +112,11 @@ jobs:
         run: python live_locks_status.py || true
 
       # Data source verification -- ping all external APIs, prove they're live
+      # Bounded + non-fatal: pings several external APIs and can hang/slow on a
+      # dead endpoint; must not be able to starve the commit step below.
       - name: Data source verification (real-time API health)
+        timeout-minutes: 1
+        continue-on-error: true
         working-directory: python
         run: python data_source_verification.py
 
@@ -129,7 +142,10 @@ jobs:
         working-directory: python
         run: python model_health.py || true
 
+      # if: always() -- commit refreshed data even if an earlier best-effort
+      # step failed or was bounded out (only the overall job timeout can skip it).
       - name: Commit if changed
+        if: always()
         env:
           GIT_EDITOR: "true"
           GIT_SEQUENCE_EDITOR: "true"
