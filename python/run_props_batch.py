@@ -292,6 +292,7 @@ DEFAULT_MODULES = [
     "mlb_pitcher_edge_composite",
     "mlb_pitcher_recent_vs_lineup_quality",
     "mlb_pitcher_confluence_score",
+    "mlb_pitcher_matchup_projection",
     "mlb_no_hitter_watchlist",
     "mlb_full_game_pitching_chain",
     "mlb_bullpen_chain_alerts",
