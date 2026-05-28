@@ -4,25 +4,23 @@
 
 _Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
 
-_Generated at 2026-05-28T22:04:36 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-05-28T23:23:34 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
-**HOU @ TEX - HOU_ML**
-- Market: +126
-- Model probability: 60.2%
-- Raw edge: +36.1%
+**HOU @ TEX - OVER_7.0**
+- Market: -110
+- Model probability: 71.8%
+- Raw edge: +37.13%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
 
-## Full Slate (3 games)
+## Full Slate (1 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 6:35p ET | TOR @ BAL | Oriole Park at Camden Yards | 60F 7mph | UNDER_8.5 +5.4% |
-| 6:40p ET | CHC @ PIT | PNC Park | 60F 4mph | PIT_ML +6.76% |
-| 8:05p ET | HOU @ TEX | Globe Life Field | indoor | HOU_ML +36.1% |
+| 8:05p ET | HOU @ TEX | Globe Life Field | indoor | OVER_7.0 +37.13% |
 
 ## Parlays - top 3
 
@@ -41,13 +39,13 @@ _Generated at 2026-05-28T22:04:36 UTC. Game lines source: **Bovada (fallback -- 
 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
-| pitcher strikeouts | 1576 | 35.0% | 38.4% | 1.098 | 0.912 |
-| batter doubles | 3711 | 14.6% | 16.0% | 1.097 | 0.911 |
-| batter rbis | 7422 | 19.0% | 23.3% | 1.223 | 0.818 |
-| batter home runs | 3711 | 10.1% | 12.9% | 1.283 | 0.780 |
-| batter total bases | 7424 | 25.1% | 31.9% | 1.271 | 0.787 |
 | batter hits | 7424 | 38.5% | 41.8% | 1.084 | 0.923 |
+| batter home runs | 3711 | 10.1% | 12.9% | 1.283 | 0.780 |
 | batter runs scored | 3711 | 35.3% | 38.8% | 1.098 | 0.911 |
+| batter total bases | 7424 | 25.1% | 31.9% | 1.271 | 0.787 |
+| pitcher strikeouts | 1576 | 35.0% | 38.4% | 1.098 | 0.912 |
+| batter rbis | 7422 | 19.0% | 23.3% | 1.223 | 0.818 |
+| batter doubles | 3711 | 14.6% | 16.0% | 1.097 | 0.911 |
 | batter singles | 3711 | 42.7% | 44.5% | 1.042 | 0.960 |
 
 Cumulative graded plays: 118201. Wins: 87361. Hit rate: 73.9%.
@@ -56,9 +54,7 @@ Cumulative graded plays: 118201. Wins: 87361. Hit rate: 73.9%.
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| CHC @ PIT | 34.5% | +189 | 5.25 | -114 | +114 |
 | HOU @ TEX | 68.4% | -217 | 1.9 | +263 | -263 |
-| TOR @ BAL | 34.2% | +193 | 5.13 | +172 | -172 |
 
 ## Team Form (last 10)
 

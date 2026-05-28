@@ -1,47 +1,40 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-05-28T22:04:09 UTC_
+_Generated 2026-05-28T23:23:09 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -85
+- **Score:** 5
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 8
-- **Total FADES:** 117
-
-## Lock of the Night
-- **Subject:** Chris Bassitt
-- **Source:** ELITE_BOARD
-- **Sport:** MLB
-- **Score:** 15.0
-- **Details:** TOR @ BAL
+- **Total STRONG:** 23
+- **Total FADES:** 87
 
 ## Top 5 Curated Picks
-1. **GOLF / Hideki Matsuyama** (GOLF_PLAYER, score=60.93)
-   - Play: Hideki Matsuyama (PLAYER_STRONG)
+1. **WNBA / caitlin clark** (WNBA_PLAYER, score=105.25)
+   - Play: caitlin clark (PLAYER_STRONG)
+   - Rationale: Cross-sport top pick (WNBA_PLAYER)
+2. **GOLF / Tom Kim** (GOLF_PLAYER, score=99.86)
+   - Play: Tom Kim (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **MLB / Paul Skenes** (MLB_PITCHER, score=60.58)
-   - Play: Paul Skenes (PITCHER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_PITCHER)
-3. **GOLF / Brian Harman** (GOLF_PLAYER, score=59.5)
-   - Play: Brian Harman (PLAYER_STRONG)
+3. **MLB / Yordan Alvarez** (MLB_BATTER, score=99.31)
+   - Play: Yordan Alvarez (BATTER_STRONG)
+   - Rationale: Cross-sport top pick (MLB_BATTER)
+4. **GOLF / Ryan Gerard** (GOLF_PLAYER, score=90.36)
+   - Play: Ryan Gerard (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-4. **MLB / Spencer Arrighetti** (MLB_PITCHER, score=58.42)
-   - Play: Spencer Arrighetti (PITCHER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_PITCHER)
-5. **F1 / max verstappen** (F1_DRIVER, score=49.67)
-   - Play: max verstappen (DRIVER_STRONG)
-   - Rationale: Cross-sport top pick (F1_DRIVER)
+5. **MLB / Ezequiel Duran** (MLB_BATTER, score=78.31)
+   - Play: Ezequiel Duran (BATTER_STRONG)
+   - Rationale: Cross-sport top pick (MLB_BATTER)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
-  - Hideki Matsuyama top 10 finish
-  - Brian Harman top 10 finish
-  - Russell Henley top 10 finish
+  - Tom Kim top 10 finish
+  - Ryan Gerard top 10 finish
+  - Erik van Rooyen top 10 finish
 
 ## Slate ROI Projection
-- **Picks:** 1
-- **Avg edge:** -0.91%
+- **Picks:** 0
+- **Avg edge:** 0%
 - **Expected ROI (1/4 Kelly):** 0.0%
 - **Expected P&L on $100:** $0.0
 
@@ -50,9 +43,9 @@ _Generated 2026-05-28T22:04:09 UTC_
   - Fade angle: PTS UNDER + PRA UNDER (multi-prop)
 - **NBA** / SAS (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NHL** / frederik andersen (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / pyotr kochetkov (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / Sebastian Aho (SKATER_FADE)
-  - Fade angle: SOG UNDER + no goal
+- **MLB** / Paul Skenes (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Chris Bassitt (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Colin Rea (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES

@@ -1,18 +1,18 @@
 # EdgeStat Daily Summary — 2026-05-28
 
-## 🏥 Model Health: 81.7/100 [HEALTHY]
+## 🏥 Model Health: 76.4/100 [HEALTHY]
 - Solid health - some minor issues to monitor
   - 🟢 Calibration Freshness: 99.9/100
   - 🟢 Hit Rate Trend: 84.3/100
   - 🔴 Brier Trend: 52.3/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 88.9/100
-  - 🟡 Edge Count: 65.7/100
+  - 🟡 Data Health: 66.7/100
+  - 🔴 Edge Count: 57.1/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.61)
-- **Total games on board:** 133
-- **Strong home favorites:** 25 | **Strong road dogs:** 0
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.607)
+- **Total games on board:** 135
+- **Strong home favorites:** 25 | **Strong road dogs:** 1
 
 ## 🎯 Top 5 Best Bets
 1. **LAA @ DET YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
@@ -22,9 +22,9 @@
 5. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
 
 ## 🔒 Locks of the Day -- Track Record
-- All-time: **42-5** (89.4% hit rate)
-- Net units: **+1.60u** | ROI: **+55.1%**
-- Last 7d: 33-3 (91.7%) | net +1.32u
+- All-time: **43-5** (89.6% hit rate)
+- Net units: **+1.65u** | ROI: **+55.5%**
+- Last 7d: 34-3 (91.9%) | net +1.36u
 
 **Today's 10 Locks:**
 - [MLB-PP] **Hunter Feduccia** PP_batter_hrr_under_3.5 · p=72% edge=+24.3% qK=0.062u
@@ -53,22 +53,23 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (3)
+## ⚡ Pre-Game HIGH Conviction (4)
 - [CWS] **USC Trojans** HOME (1-1 L10) · model 74.1% fair -287
 - [CWS] **Kansas Jayhawks** HOME (3-0 L10) · model 66.8% fair -201
 - [CWS] **Wake Forest Demon Deacons** HOME (None L10) · model 66.3% fair -197
+- [WNBA] **Las Vegas Aces** AWAY (2-1 L10) · model 65.2% fair -187
 
 ## 🔥/❄️ Heat / Cold Signals
 - Hot teams: **27** | Cold teams: **22** | Over-heavy: 0 | Under-heavy: 11
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (12)
-- RESIDUAL_DIVERGENCE: **12**
+## ⚠️ Anomaly Detector (15)
+- RESIDUAL_DIVERGENCE: **15**
   - Oklahoma City Thunder (NBA): Oklahoma City Thunder OUTPERFORMING expected margin by 8.4pts in recent games -- model bias may persist
   - Montreal Canadiens (NHL): Montreal Canadiens UNDERPERFORMING expected margin by 6.2pts in recent games -- model bias may persist
-  - Georgia Tech Yellow Jackets (CWS): Georgia Tech Yellow Jackets OUTPERFORMING expected margin by 6.3pts in recent games -- model bias may persist
-  - East Carolina Pirates (CWS): East Carolina Pirates OUTPERFORMING expected margin by 6.3pts in recent games -- model bias may persist
-  - Southern Miss Golden Eagles (CWS): Southern Miss Golden Eagles OUTPERFORMING expected margin by 10.9pts in recent games -- model bias may persist
+  - Dallas Wings (WNBA): Dallas Wings OUTPERFORMING expected margin by 6.4pts in recent games -- model bias may persist
+  - Golden State Valkyries (WNBA): Golden State Valkyries OUTPERFORMING expected margin by 17.7pts in recent games -- model bias may persist
+  - Indiana Fever (WNBA): Indiana Fever OUTPERFORMING expected margin by 9.8pts in recent games -- model bias may persist
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$330.0** (33.0% of $1000 bankroll)
@@ -80,17 +81,15 @@
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
 ## 🎯 Convergence Picks (13 stacked games)
-- ELITE: **5** · HIGH: 3 · MED: 5
+- ELITE: **6** · HIGH: 3 · MED: 4
   - [ELITE] Arsenal @ Crystal Palace : 5 signals (PREGAME, HEAT_COLD, HEAT_COLD, ATS)
   - [ELITE] Oklahoma City Thunder @ San Antonio Spurs : 4 signals (HEAT_COLD, ANOMALY, ATS, ATS)
+  - [ELITE] Montreal Canadiens @ Carolina Hurricanes : 4 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
   - [ELITE] Connecticut Sun @ Portland Fire : 4 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ATS)
   - [ELITE] Philadelphia Union @ Inter Miami CF : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
-  - [ELITE] Wolverhampton Wanderers @ Burnley : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (4)
-- **Payton Tolle** OVER 4.5 K (77%) fair -329
+## ⚾ Top MLB Pitcher K Plays (2)
 - **Nathan Eovaldi** OVER 4.5 K (73%) fair -271
-- **Davis Martin** OVER 5.5 K (67%) fair -200
 - **Paul Skenes** OVER 5.5 K (65%) fair -184
 
 ## 🏀 NBA Player Heat (2 HOT / 1 COLD)
@@ -106,30 +105,30 @@
   - [COIN_FLIP] **Deiveson Figueiredo** (25-6-1) vs Song Yadong -- fair -124
 
 ## ⛳ Golf Player Heat (from Charles Schwab Challenge)
-  - 🔥 T1 **Kevin Kisner** (USA): -2 total -- finished T1
-  - 🔥 T2 **Max McGreevy** (USA): -2 total -- finished T2
-  - 🔥 T3 **Max Homa** (USA): -2 total -- finished T3
-  - 🔥 T4 **Mackenzie Hughes** (Canada): -2 total -- finished T4
-  - 🔥 T5 **Nico Echavarria** (Colombia): -2 total -- finished T5
+  - 🔥 T1 **Ryan Gerard** (USA): -6 total -- finished T1
+  - 🔥 T2 **Andrew Putnam** (USA): -6 total -- finished T2
+  - 🔥 T3 **Erik van Rooyen** (South Africa): -6 total -- finished T3
+  - 🔥 T4 **Tom Kim** (South Korea): -6 total -- finished T4
+  - 🔥 T5 **Ricky Castillo** (USA): -5 total -- finished T5
 
-## 🔥 MLB Batter Heat (36 HOT / 49 COLD)
+## 🔥 MLB Batter Heat (38 HOT / 48 COLD)
   - 🔥 **Ketel Marte** (AZ): L14 .433 / season .276 (+157pts)
-  - 🔥 **Mike Yastrzemski** (ATL): L14 .370 / season .234 (+136pts)
-  - 🔥 **Jesús Sánchez** (TOR): L14 .405 / season .281 (+124pts)
+  - 🔥 **Mike Yastrzemski** (ATL): L14 .385 / season .234 (+151pts)
+  - 🔥 **Jesús Sánchez** (TOR): L14 .417 / season .286 (+131pts)
   - 🔥 **James Wood** (WSH): L14 .396 / season .276 (+120pts)
   - 🔥 **Jazz Chisholm Jr.** (NYY): L14 .360 / season .246 (+114pts)
   - ❄️ **Edouard Julien** (COL): L14 .028 / season .203 (-175pts) -- FADE props
-  - ❄️ **Moisés Ballesteros** (CHC): L14 .081 / season .236 (-155pts) -- FADE props
+  - ❄️ **Moisés Ballesteros** (CHC): L14 .086 / season .234 (-148pts) -- FADE props
   - ❄️ **MJ Melendez** (NYM): L14 .077 / season .203 (-126pts) -- FADE props
   - ❄️ **Adolis García** (PHI): L14 .077 / season .201 (-124pts) -- FADE props
   - ❄️ **José Tena** (WSH): L14 .100 / season .221 (-121pts) -- FADE props
 
-## 📈 Streak Regression Alerts (18)
+## 📈 Streak Regression Alerts (20)
+- [NHL] Carolina Hurricanes on W3 L10 3-1 -- Carolina Hurricanes on W3 -- no historical sample
+- [NHL] Montreal Canadiens on L3 L10 2-3 -- Montreal Canadiens on L3 -- no historical sample
 - [CWS] Georgia Tech Yellow Jackets on W3 L10 3-0 -- Georgia Tech Yellow Jackets on W3 -- no historical sample
 - [CWS] UIC Flames on W3 L10 3-0 -- UIC Flames on W3 -- no historical sample
 - [CWS] Milwaukee Panthers on W3 L10 3-0 -- Milwaukee Panthers on W3 -- no historical sample
-- [CWS] Kansas Jayhawks on W3 L10 3-0 -- Kansas Jayhawks on W3 -- no historical sample
-- [CWS] Northeastern Huskies on W4 L10 4-1 -- Northeastern Huskies on W4 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**
