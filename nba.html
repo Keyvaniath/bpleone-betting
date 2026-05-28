@@ -50,6 +50,36 @@
     <div id="nbaList"><p class="muted" style="padding:14px;">Loading…</p></div>
   </section>
 
+  <!-- PLAYER POINTS PROJECTIONS (nba_player_points_distribution_bands.json; odds-independent) -->
+  <section class="card" id="ptsProjCard" style="margin-bottom: 24px; border-left: 3px solid #fb923c; display:none;">
+    <div class="card-head"><span>🎯 <strong>Player Points Projections</strong> <span class="muted" style="font-size:10px;">(model bands · odds-independent)</span></span><span class="muted" id="ptsProjMeta">--</span></div>
+    <div id="ptsProjList"><p class="muted" style="padding:14px;">Loading projections…</p></div>
+  </section>
+  <script>
+  fetch("data/nba_player_points_distribution_bands.json?t=" + Date.now(), { cache: "no-cache" })
+    .then(r => r.json())
+    .then(d => {
+      const players = (d.rows || []);
+      if (!players.length) return;
+      const card = document.getElementById("ptsProjCard");
+      if (!card) return;
+      card.style.display = "block";
+      document.getElementById("ptsProjMeta").textContent = `${d.n_players||0} players · model bands · ${(d.generated_at||'').slice(11,16)} UTC`;
+      document.getElementById("ptsProjList").innerHTML = players.map(p => {
+        const conf = p.confident_over_line ? `PTS o${p.confident_over_line}` : '—';
+        return `<div style="display:flex;align-items:center;justify-content:space-between;padding:10px 16px;border-bottom:1px solid rgba(255,255,255,0.04);border-left:3px solid #fb923c;">
+          <div><span style="font-weight:600;font-size:13px;">${p.player||''}</span> <span class="muted" style="font-size:11px;">${p.matchup||''}</span>
+          <div class="muted" style="font-size:10px;font-family:'JetBrains Mono',monospace;">floor ${p.floor_pts} · ceiling ${p.ceiling_pts} · sigma ${p.sigma}</div></div>
+          <div style="text-align:right;font-family:'JetBrains Mono',monospace;">
+            <span style="color:#fb923c;font-size:18px;font-weight:700;">${p.projected_pts}</span>
+            <div class="muted" style="font-size:9px;">${conf} (65%)</div>
+          </div>
+        </div>`;
+      }).join("");
+    })
+    .catch(()=>{});
+  </script>
+
   <section class="card">
     <div class="card-head"><span>📋 Roadmap</span></div>
     <ul style="padding:14px 28px; color: var(--text-2,#aaa); line-height: 1.8;">
