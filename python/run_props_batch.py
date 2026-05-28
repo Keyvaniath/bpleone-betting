@@ -296,6 +296,7 @@ DEFAULT_MODULES = [
     "mlb_pitcher_matchup_projection",
     "mlb_pitcher_k_distribution_bands",
     "mlb_pitcher_sharp_plays_board",
+    "mlb_pitcher_sgp_builder",
     "mlb_no_hitter_watchlist",
     "mlb_full_game_pitching_chain",
     "mlb_bullpen_chain_alerts",
