@@ -134,6 +134,7 @@ DEFAULT_MODULES = [
     "mlb_extra_innings_prop",
     # NBA player props
     "nba_player_points_props",
+    "nba_player_points_distribution_bands",
     "nba_player_30plus_pts_alt",
     "nba_player_assists_props",
     "nba_player_assists_alt_props",

@@ -1,5 +1,5 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-05-28T18:51:19 UTC_
+_Generated 2026-05-28T19:09:45 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
@@ -50,9 +50,9 @@ _Generated 2026-05-28T18:51:19 UTC_
   - Fade angle: PTS UNDER + PRA UNDER (multi-prop)
 - **NBA** / SAS (TEAM_FADE)
   - Fade angle: team total UNDER
-- **GOLF** / Vince Whaley (PLAYER_FADE)
-  - Fade angle: miss cut YES + high round score
 - **GOLF** / Chad Ramey (PLAYER_FADE)
+  - Fade angle: miss cut YES + high round score
+- **GOLF** / Vince Whaley (PLAYER_FADE)
   - Fade angle: miss cut YES + high round score
 - **GOLF** / Rasmus Højgaard (PLAYER_FADE)
   - Fade angle: miss cut YES + high round score
