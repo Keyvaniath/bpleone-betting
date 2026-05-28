@@ -56,8 +56,42 @@
     <div class="card-head"><span>🎲 <strong>Pitcher Same-Game Stacks</strong> <span class="muted" style="font-size:10px;">(correlation-priced)</span></span><span class="muted" id="sgpMeta">--</span></div>
     <div style="padding: 4px 0;" id="sgpList"></div>
   </section>
+  <!-- STRIKEOUT ALT-LINE LADDER (k_distribution_bands.json) -->
+  <section class="card" id="kLadderCard" style="margin-bottom: 18px; border-left: 3px solid #4ade80; display:none;">
+    <div class="card-head"><span>📊 <strong>Strikeout Alt-Line Ladder</strong> <span class="muted" style="font-size:10px;">(Poisson P(K&ge;n) &middot; odds-independent)</span></span><span class="muted" id="kLadderMeta">--</span></div>
+    <div style="padding: 4px 0;" id="kLadderList"></div>
+  </section>
   <div id="gamesContainer"></div>
 </main>
+<script>
+fetch("data/mlb_pitcher_k_distribution_bands.json?t=" + Date.now(), { cache: "no-cache" })
+  .then(r => r.json())
+  .then(d => {
+    const rows = d.rows || [];
+    if (!rows.length) return;
+    const lines = d.alt_lines || [4,5,6,7,8,9,10];
+    document.getElementById("kLadderCard").style.display = "block";
+    document.getElementById("kLadderMeta").textContent = `${rows.length} starters`;
+    const cellColor = (p) => p >= 0.65 ? "#4ade80" : p >= 0.45 ? "#fbbf24" : p >= 0.30 ? "#fb923c" : "#6b7280";
+    document.getElementById("kLadderList").innerHTML = rows.map(r => {
+      const ladder = r.alt_ladder || {};
+      const cells = lines.map(n => {
+        const p = ladder["p_" + n + "plus"];
+        if (p == null) return "";
+        const c = cellColor(p);
+        return `<span style="display:inline-block;min-width:44px;text-align:center;padding:3px 4px;margin:1px;border-radius:3px;background:${c}22;color:${c};font-size:11px;font-family:'JetBrains Mono',monospace;">${n}+ ${(p*100).toFixed(0)}%</span>`;
+      }).join("");
+      return `<div style="padding:9px 16px;border-bottom:1px solid rgba(255,255,255,0.04);">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px;">
+          <span style="font-weight:600;font-size:13px;">${r.pitcher} <span class="muted" style="font-size:11px;">${r.matchup||''}</span></span>
+          <span class="muted" style="font-size:10px;font-family:'JetBrains Mono',monospace;">proj ${r.proj_k_mean} K &middot; floor ${r.floor_k} / ceil ${r.ceiling_k}</span>
+        </div>
+        <div>${cells}</div>
+      </div>`;
+    }).join("");
+  })
+  .catch(()=>{});
+</script>
 <script>
 // Model conviction board (sharp_plays_board.json)
 fetch("data/mlb_pitcher_sharp_plays_board.json?t=" + Date.now(), { cache: "no-cache" })
