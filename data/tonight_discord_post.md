@@ -1,13 +1,12 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:8 F:16
+_NO_ACTION_NIGHT_ | L:0 S:3 F:14
+
+:lock: **LOCK:** Chris Bassitt (MLB)
 
 :dart: **Top Picks:**
-1. [WNBA] napheesa collier -- napheesa collier (PLAYER_STRONG)
-2. [WNBA] breanna stewart -- breanna stewart (PLAYER_STRONG)
-3. [MLB] ? -- ? (TEAM_STRONG)
-
-:chains: **Top Parlays:**
-- [WNBA] napheesa collier (2 legs, p=0.3479)
+1. [MLB] Paul Skenes -- Paul Skenes (PITCHER_STRONG)
+2. [MLB] Spencer Arrighetti -- Spencer Arrighetti (PITCHER_STRONG)
+3. [F1] max verstappen -- max verstappen (DRIVER_STRONG)
 
 :coin: Bankroll Advisory: STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 
