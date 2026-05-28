@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="css/style.css">
 <script src="js/nav.js"></script>
 <style>
-  .player-card { padding: 8px 14px; border-bottom: 1px solid rgba(255,255,255,0.04); font-family: 'JetBrains Mono', monospace; font-size: 12px; display: grid; grid-template-columns: 35px 1.4fr 70px 80px 80px 90px; gap: 10px; align-items: center; }
+  .player-card { padding: 8px 14px; border-bottom: 1px solid rgba(255,255,255,0.04); font-family: 'JetBrains Mono', monospace; font-size: 12px; display: grid; grid-template-columns: 30px 1.2fr 54px 58px 58px 58px 58px 76px; gap: 9px; align-items: center; }
   .player-card.head { background: rgba(255,255,255,0.05); color: var(--muted, #888); text-transform: uppercase; font-size: 10px; font-weight: 700; }
   .player-card.leader { background: rgba(212,160,74,0.08); border-left: 3px solid #d4a04a; }
   .player-card.alert { background: rgba(88,200,120,0.06); }
@@ -41,7 +41,7 @@
   <section class="card">
     <div class="card-head"><span>🏆 Live Leaderboard (top 40 by P(win))</span><span class="muted" id="meta">--</span></div>
     <div class="player-card head">
-      <span>Pos</span><span>Player</span><span>Total</span><span>P(win)</span><span>P(top10)</span><span>Fair Win</span>
+      <span>Pos</span><span>Player</span><span>Total</span><span>P(win)</span><span>P(top5)</span><span>P(top10)</span><span>P(top20)</span><span>Fair Win</span>
     </div>
     <div id="boardList"><p class="muted" style="padding:14px;">Loading…</p></div>
   </section>
@@ -96,7 +96,9 @@ function load() {
         <span><strong>${p.name}</strong> <span class="muted" style="font-size:10px;">${p.country || ''}</span></span>
         <span style="color:${(p.current_total || '').startsWith('-') ? '#58c878' : '#aaa'}">${p.current_total || '—'}</span>
         <span style="font-weight:700; color:${p.p_win >= 0.05 ? '#58c878' : 'inherit'}">${(p.p_win*100).toFixed(2)}%</span>
-        <span>${(p.p_top10*100).toFixed(1)}%</span>
+        <span>${((p.p_top5||0)*100).toFixed(1)}%</span>
+        <span>${((p.p_top10||0)*100).toFixed(1)}%</span>
+        <span>${((p.p_top20||0)*100).toFixed(1)}%</span>
         <span>${fmtAmer(p.fair_win_american)}</span>
       </div>`;
     }).join("");
