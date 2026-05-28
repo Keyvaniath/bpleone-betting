@@ -248,6 +248,7 @@ DEFAULT_MODULES = [
     "soccer_player_shots_props",
     "soccer_match_alert_synthesizer",
     "soccer_match_confluence_score",
+    "soccer_goals_btts_board",
     "soccer_match_preview",
     "soccer_high_scoring_alignment",
     "soccer_clean_sheet_alignment",
