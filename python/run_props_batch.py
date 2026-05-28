@@ -150,6 +150,7 @@ DEFAULT_MODULES = [
     "nba_player_turnovers_props",
     "nba_player_turnovers_alt",
     "nba_player_pra_props",
+    "nba_player_pra_distribution_bands",
     "nba_player_pr_combo_props",
     "nba_player_pa_combo_props",
     "nba_player_ra_combo_props",
