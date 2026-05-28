@@ -163,6 +163,7 @@ DEFAULT_MODULES = [
     # NBA team props
     "nba_team_alts_props",
     "nba_pace_adjusted",
+    "nba_team_pace_points_projection",
     "nba_team_total_props",
     "nba_team_total_edge",
     "nba_team_explosion_alerts",
