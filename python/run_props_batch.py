@@ -108,6 +108,7 @@ DEFAULT_MODULES = [
     # MLB context features (run BEFORE other props so they can consume)
     "mlb_lineup_quality_index",
     "mlb_bullpen_fatigue_index",
+    "mlb_bullpen_vs_lineup_projection",
     "mlb_starter_pitch_count_alerts",
     "mlb_pitch_count_fade_alerts",
     "mlb_pitcher_form_tracker",
@@ -225,6 +226,7 @@ DEFAULT_MODULES = [
     "nhl_puck_line_props",
     "nhl_puck_line_dominance",
     "nhl_team_total_edge",
+    "nhl_team_pace_projection",
     "nhl_team_4plus_goals",
     "nhl_team_explosion_alerts",
     "nhl_team_confluence_score",
