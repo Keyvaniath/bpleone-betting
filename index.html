@@ -326,6 +326,56 @@
     </div>
   </section>
 
+  <!-- TONIGHT'S SHARPEST ARMS (MLB pitcher model board — sharp_plays_board.json; odds-independent) -->
+  <section class="card" id="sharpArmsCard" style="margin-bottom: 28px; border-left: 3px solid #58c878; display:none;">
+    <div class="card-head">
+      <span>⚾ <strong>Tonight's Sharpest Arms — Pitcher Model Board</strong></span>
+      <span class="muted" id="sharpArmsMeta">--</span>
+    </div>
+    <div style="padding: 4px 0;" id="sharpArmsList">
+      <p class="muted" style="padding:14px;">Loading pitcher model board…</p>
+    </div>
+    <div style="padding: 2px 16px 12px;">
+      <span class="muted" style="font-size:10px;">Pure-model conviction (projection + K-distribution + confluence). Odds-independent — fires even when book lines are stale.</span>
+    </div>
+  </section>
+  <script>
+  fetch("data/mlb_pitcher_sharp_plays_board.json?t=" + Date.now(), { cache: "no-cache" })
+    .then(r => r.json())
+    .then(d => {
+      const plays = (d.best_plays || []);
+      if (!plays.length) return;
+      const card = document.getElementById("sharpArmsCard");
+      if (!card) return;
+      card.style.display = "block";
+      document.getElementById("sharpArmsMeta").textContent =
+        `${d.n_pitchers || 0} starters modeled · ${d.n_prime || 0} prime · ${d.n_fade || 0} fade · ${(d.generated_at||'').slice(11,16)} UTC`;
+      const TIER_COLORS = { PRIME_PLAY: "#d4a04a", STRONG_PLAY: "#58c878", LEAN: "#888" };
+      document.getElementById("sharpArmsList").innerHTML = plays.slice(0, 8).map(p => {
+        const c = TIER_COLORS[p.tier] || "#888";
+        const tierLabel = (p.tier || "").replace("_", " ");
+        const startTag = (p.start_tier && p.start_tier !== "NEUTRAL")
+          ? ' · ' + String(p.start_tier).replace("_", " ") : '';
+        return `<div style="display:flex; align-items:center; justify-content:space-between;
+                            padding: 11px 16px; border-bottom: 1px solid rgba(255,255,255,0.04);
+                            border-left: 3px solid ${c};">
+          <div style="display:flex; align-items:center; gap:14px;">
+            <span style="background:${c}; color:#1a1a1a; padding:3px 9px; border-radius:4px;
+                         font-size:10px; font-weight:700; min-width:78px; text-align:center;">${tierLabel}</span>
+            <div>
+              <div style="font-weight:600; font-size:13px;">${p.pitcher} <span class="muted" style="font-size:11px;">${p.matchup || ''}</span></div>
+              <div class="muted" style="font-size:10px; margin-top:2px; font-family:'JetBrains Mono',monospace;">${p.primary_market || ''}${startTag}</div>
+            </div>
+          </div>
+          <div style="text-align:right; font-family:'JetBrains Mono',monospace; color:${c}; font-size:18px; font-weight:700;">
+            ${Number(p.conviction).toFixed(0)}<div class="muted" style="font-size:9px; font-weight:400;">conviction</div>
+          </div>
+        </div>`;
+      }).join("");
+    })
+    .catch(()=>{});
+  </script>
+
   <!-- TODAY'S TOP PLAYS (LIVE FROM data/top_plays.json) -->
   <section class="card" style="margin-bottom: 28px;">
     <div class="card-head"><span>Today's Top Plays - All Markets</span><span class="muted">DraftKings + PrizePicks + parlays, ranked by quality score</span></div>
