@@ -1,5 +1,5 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-05-28T19:22:58 UTC_
+_Generated 2026-05-28T19:35:27 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT

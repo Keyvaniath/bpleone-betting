@@ -330,6 +330,7 @@ DEFAULT_MODULES = [
     "slate_roi_projector",
     "cross_sport_top_picks",
     "cross_sport_one_per_sport_board",
+    "multi_sport_top",
     "cross_sport_top_props_leaderboard",
     "cross_sport_hot_momentum_index",
     "cross_sport_best_parlays_board",

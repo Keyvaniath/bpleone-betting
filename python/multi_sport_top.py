@@ -106,7 +106,7 @@ def run() -> Dict[str, Any]:
     picks.sort(key=lambda p: (conf_order.get(p.get("confidence", "MED"), 1), p["sport"]))
 
     payload = {
-        "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
+        "generated_at": dt.datetime.utcnow().isoformat(timespec="seconds"),
         "n_sports": len(picks),
         "picks": picks,
     }
