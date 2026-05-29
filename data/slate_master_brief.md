@@ -1,46 +1,46 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-05-29T22:06:00 UTC_
+_Generated 2026-05-29T23:21:40 UTC_
 
 ## Slate Quality
-- **Tier:** NO_ACTION_NIGHT
-- **Score:** -6
-- **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
+- **Tier:** STRONG_NIGHT
+- **Score:** 55
+- **Advisory:** Solid slate. Pick top STRONG/LOCK picks; consider Kelly 25-50% sizing.
 - **Total LOCKs:** 0
-- **Total STRONG:** 16
-- **Total FADES:** 70
+- **Total STRONG:** 30
+- **Total FADES:** 65
 
 ## Lock of the Night
-- **Subject:** Andre Pallante
+- **Subject:** Shota Imanaga
 - **Source:** ELITE_BOARD
 - **Sport:** MLB
 - **Score:** 15.0
 - **Details:** CHC @ STL
 
 ## Top 5 Curated Picks
-1. **GOLF / Tom Kim** (GOLF_PLAYER, score=132.21)
-   - Play: Tom Kim (PLAYER_STRONG)
+1. **WNBA / napheesa collier** (WNBA_PLAYER, score=155.33)
+   - Play: napheesa collier (PLAYER_STRONG)
+   - Rationale: Cross-sport top pick (WNBA_PLAYER)
+2. **GOLF / Hideki Matsuyama** (GOLF_PLAYER, score=144.64)
+   - Play: Hideki Matsuyama (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / J.J. Spaun** (GOLF_PLAYER, score=120.79)
-   - Play: J.J. Spaun (PLAYER_STRONG)
+3. **MLB / Juan Soto** (MLB_BATTER, score=140.94)
+   - Play: Juan Soto (BATTER_STRONG)
+   - Rationale: Cross-sport top pick (MLB_BATTER)
+4. **GOLF / Brian Harman** (GOLF_PLAYER, score=139.79)
+   - Play: Brian Harman (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-3. **MLB / Max Meyer** (MLB_PITCHER, score=61.67)
-   - Play: Max Meyer (PITCHER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_PITCHER)
-4. **MLB / Freddy Peralta** (MLB_PITCHER, score=59.0)
-   - Play: Freddy Peralta (PITCHER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_PITCHER)
-5. **F1 / max verstappen** (F1_DRIVER, score=49.67)
-   - Play: max verstappen (DRIVER_STRONG)
-   - Rationale: Cross-sport top pick (F1_DRIVER)
+5. **MLB / Munetaka Murakami** (MLB_BATTER, score=113.94)
+   - Play: Munetaka Murakami (BATTER_STRONG)
+   - Rationale: Cross-sport top pick (MLB_BATTER)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
-  - Tom Kim top 10 finish
-  - J.J. Spaun top 10 finish
-  - Eric Cole top 10 finish
+  - Hideki Matsuyama top 10 finish
+  - Brian Harman top 10 finish
+  - Michael Thorbjornsen top 10 finish
 
 ## Slate ROI Projection
-- **Picks:** 3
+- **Picks:** 1
 - **Avg edge:** -0.91%
 - **Expected ROI (1/4 Kelly):** 0.0%
 - **Expected P&L on $100:** $0.0
@@ -48,11 +48,11 @@ _Generated 2026-05-29T22:06:00 UTC_
 ## Top Fades
 - **NBA** / SAS (TEAM_FADE)
   - Fade angle: team total UNDER
+- **MLB** / Grant Holmes (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Chris Paddack (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Taj Bradley (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
 - **NHL** / frederik andersen (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / pyotr kochetkov (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / Andrei Svechnikov (SKATER_FADE)
-  - Fade angle: SOG UNDER + no goal
-- **NHL** / Sebastian Aho (SKATER_FADE)
-  - Fade angle: SOG UNDER + no goal

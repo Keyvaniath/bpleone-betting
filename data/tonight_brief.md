@@ -2,6 +2,9 @@
 
 _60-second read. Calibration tier: **REFINING** (70% progress)._
 
+## 💪 STRONG (1 picks)
+- [MLB] NYY @ OAK NYY_ML · 72% / +22.6%
+
 ## 🔒 5 Daily Locks
 - **Choi Jeong** one_plus_tb (KBO) -- 73% / +39.8%
 - **Jose Pirela** one_plus_tb (KBO) -- 73% / +39.2%
@@ -16,16 +19,16 @@ _60-second read. Calibration tier: **REFINING** (70% progress)._
 - **Vinnie Pasquantino** PP_batter_hrr_under_3.5 (MLB-PP) -- 84% / +45.5%
 - **Brandon Lowe** PP_batter_hrr_under_4.5 (MLB-PP) -- 84% / +45.5%
 - **Kyle Stowers** PP_batter_hrr_under_3.5 (MLB-PP) -- 84% / +45.4%
+- **Kyle Isbel** PP_batter_hrr_under_3.5 (MLB-PP) -- 84% / +45.6%
 
 ## 📉 Under Bets
 - **MIL @ HOU** UNDER 8.5 — model 7.17 [ELITE signal]
 - **LAA @ TBR** UNDER 8.0 — model 7.36 [STRONG signal]
-- **TOR @ BAL** UNDER 9.0 — model 7.07 [STRONG signal]
 
 ## 🎰 Tonight's Best Parlay
-- **Fernando Tatis Jr.** PP_batter_hrr_under_3.5 + **MIA @ NYM** MIA_ML
-- Joint 54% · fair +237 · edge +82.0%
+- **Kyle Isbel** PP_batter_hrr_under_3.5 + **MIA @ NYM** MIA_ML
+- Joint 54% · fair +233 · edge +80.8%
 
 ---
-_Generated 2026-05-29T22:05:57_
+_Generated 2026-05-29T23:21:37_
 _Full breakdown: /tonight · Full history: /locks-of-day_
