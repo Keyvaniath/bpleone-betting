@@ -10,16 +10,22 @@ your CLV is +3.5%. Over a large sample, average CLV > 0 correlates almost
 perfectly with positive ROI -- because beating the closing line proves you
 got a better number than the sharpest money in the market.
 
-This module:
-  1. Reads today's morning snapshot (data/history/YYYY-MM-DD_today.json)
-     -- captures the line we recommended at.
-  2. Reads the latest data/today.json -- captures the "close" line (latest
-     available before game-time; better: pull a final pre-game snapshot
-     ~30 min before first pitch).
-  3. For each game/recommendation, compute CLV per market.
-  4. Append to data/clv_log.json.
+Mechanism (open/close snapshot lifecycle):
+  1. capture_snapshots() freezes an OPEN snapshot once per slate date
+     (history/{date}_open.json, write-once -- never clobbered) and refreshes
+     a CLOSE snapshot every run (history/{date}_close.json, always-latest).
+  2. compute_clv_for_date() computes implied(close) - implied(open) per market.
+  3. Append to data/clv_log.json (idempotent, replaces the date's records).
 
-Run on the 6 PM ET cron so we capture lines as close to game-time as possible.
+Driven by the Daily MLB Pipeline crons: the 6 AM ET run freezes the morning
+OPEN; the 6 PM ET run captures the near-game-time CLOSE. CLV = the move from
+posting to close, the gold-standard sharpness proxy.
+
+History / why this exists: the prior version read a "morning snapshot" that
+was rewritten by the SAME pipeline run that computed CLV, so open == close and
+clv_pct was structurally 0.0 on every record -- which also capped every source
+in the learning-integrity model at grade B (grade A requires CLV >= +2pp).
+Write-once open fixes that: the 6 AM open survives the 6 PM run.
 """
 from __future__ import annotations
 
@@ -52,27 +58,72 @@ def _load(path: str) -> Dict[str, Any]:
         return {}
 
 
+def _line_payload(latest: Dict[str, Any]) -> Dict[str, Any]:
+    """Minimal line-only snapshot extracted from a today.json blob."""
+    return {
+        "captured_at": dt.datetime.utcnow().isoformat(timespec="seconds"),
+        "slate_date": (latest.get("generated_at") or "")[:10],
+        "games": [
+            {"matchup": g.get("matchup"), "market": g.get("market", {})}
+            for g in (latest.get("games") or []) if g.get("matchup")
+        ],
+    }
+
+
+def capture_snapshots(latest: Dict[str, Any]) -> Optional[str]:
+    """Freeze an OPEN line snapshot once per slate date (write-once) and refresh
+    a CLOSE snapshot every run (always-latest). Returns the slate date or None.
+
+    This is what makes CLV real. Previously "open" was just today.json from a
+    few minutes earlier (same pipeline run) -> open == close -> CLV always 0.
+    Now open is frozen the first time we see lines for a slate and is never
+    clobbered; close converges toward the true closing line as the every-2h
+    heartbeat re-runs through the day. Keyed by today.json's own slate date so
+    a stale off-hours run can't freeze a bogus open under the wrong day.
+    """
+    games = latest.get("games") or []
+    if not games:
+        return None
+    date_iso = (latest.get("generated_at") or dt.date.today().isoformat())[:10]
+    os.makedirs(HISTORY_DIR, exist_ok=True)
+    payload = _line_payload(latest)
+    open_path = os.path.join(HISTORY_DIR, f"{date_iso}_open.json")
+    close_path = os.path.join(HISTORY_DIR, f"{date_iso}_close.json")
+    # Write-once open: never overwrite the first lines frozen for this slate.
+    if not os.path.exists(open_path):
+        with open(open_path, "w") as f:
+            json.dump(payload, f, indent=2)
+    # Always-latest close: each run pulls it nearer to game-time.
+    with open(close_path, "w") as f:
+        json.dump(payload, f, indent=2)
+    return date_iso
+
+
 def compute_clv_for_date(date_iso: str) -> List[Dict[str, Any]]:
-    """For each game in the morning snapshot, compare lines to latest today.json
-    and emit CLV per side."""
-    morning = _load(os.path.join(HISTORY_DIR, f"{date_iso}_today.json"))
-    latest = _load(os.path.join(DATA_DIR, "today.json"))
-    if not morning.get("games") or not latest.get("games"):
+    """CLV = implied(close) - implied(open) per market for the slate.
+
+    Open = frozen first-seen lines (history/{date}_open.json); close = latest
+    pre-game lines (history/{date}_close.json). Falls back to the legacy morning
+    snapshot / live today.json when the new frozen files are not present yet."""
+    open_blob = (_load(os.path.join(HISTORY_DIR, f"{date_iso}_open.json"))
+                 or _load(os.path.join(HISTORY_DIR, f"{date_iso}_today.json")))
+    close_blob = (_load(os.path.join(HISTORY_DIR, f"{date_iso}_close.json"))
+                  or _load(os.path.join(DATA_DIR, "today.json")))
+    if not open_blob.get("games") or not close_blob.get("games"):
         return []
 
-    # Index latest by matchup
-    latest_by_matchup = {g["matchup"]: g for g in latest["games"]}
+    close_by_matchup = {g["matchup"]: g for g in close_blob["games"] if g.get("matchup")}
 
     out: List[Dict[str, Any]] = []
-    for mg in morning["games"]:
-        match = mg["matchup"]
-        lg = latest_by_matchup.get(match)
-        if not lg:
+    for og in open_blob["games"]:
+        match = og.get("matchup")
+        cg = close_by_matchup.get(match)
+        if not cg:
             continue
-        m_morning = mg.get("market", {})
-        m_close = lg.get("market", {})
+        m_open = og.get("market", {})
+        m_close = cg.get("market", {})
         for side_key, label in (("home_ml", "HOME_ML"), ("away_ml", "AWAY_ML")):
-            p_open = m_morning.get(side_key)
+            p_open = m_open.get(side_key)
             p_close = m_close.get(side_key)
             if p_open is None or p_close is None:
                 continue
@@ -89,9 +140,11 @@ def compute_clv_for_date(date_iso: str) -> List[Dict[str, Any]]:
                 "open_implied_pct": round(implied_prob(p_open) * 100, 2),
                 "close_implied_pct": round(implied_prob(p_close) * 100, 2),
                 "clv_pct": clv,
+                "open_book": m_open.get("book"),
+                "close_book": m_close.get("book"),
             })
-        # Total CLV
-        t_open = m_morning.get("total")
+        # Total CLV (line move)
+        t_open = m_open.get("total")
         t_close = m_close.get("total")
         if t_open is not None and t_close is not None and t_open != t_close:
             out.append({
@@ -143,15 +196,25 @@ def summary(log: Dict[str, Any]) -> Dict[str, Any]:
     }
 
 
-if __name__ == "__main__":
-    today_iso = dt.date.today().isoformat()
-    records = compute_clv_for_date(today_iso)
+def run() -> Dict[str, Any]:
+    """Capture open/close snapshots for the current slate, then (re)compute its
+    CLV records. Idempotent: safe to run on every heartbeat + pipeline cron."""
+    latest = _load(os.path.join(DATA_DIR, "today.json"))
+    date_iso = capture_snapshots(latest) or dt.date.today().isoformat()
+    records = compute_clv_for_date(date_iso)
     log = append_clv_log(records)
+    return {"date": date_iso, "n_records": len(records), "log": log}
+
+
+if __name__ == "__main__":
+    res = run()
+    log = res["log"]
     s = summary(log)
-    print(f"CLV records added today: {len(records)}")
+    print(f"CLV snapshot+compute for {res['date']}: {res['n_records']} records this slate")
     print(f"Total log records: {len(log.get('records', []))}")
     if s.get("n"):
         print(f"  Lifetime avg CLV: {s['avg_clv_pct']}% ({s['positive_clv_pct']}% positive, "
               f"best {s['best']}%, worst {s['worst']}%)")
     else:
-        print("  No graded CLV records yet -- pipeline needs multiple snapshots in one day.")
+        print("  No non-zero CLV yet -- open is frozen; close converges as the "
+              "every-2h heartbeat re-runs and lines move.")
