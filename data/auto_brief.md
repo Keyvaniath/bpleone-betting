@@ -1,78 +1,61 @@
-# Tonight's Slate Brief — 2026-05-28
+# Tonight's Slate Brief — 2026-05-29
 
-## Slate Quality: 92/100 (HIGH)
-_83% lineups confirmed · 1 rookie SPs_
-**Recommendation:** Play normal Kelly sizing.
+## Slate Quality: 54/100 (LOW)
+_0% lineups confirmed · 11 rookie SPs_
+**Recommendation:** Defensive sizing tonight; stick to highest-confidence plays.
 
 ## Slate
-- **3 games** scheduled
-- **25 best bets** scored: 0 DK · 0 PP · 6 NRFI · 3 SGP
-- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$44.7
-- **MC simulation:** EV +$91.98, 72% P(profit), p05 $-103.88 / p95 $267.96
+- **15 games** scheduled
+- **20 best bets** scored: 0 DK · 0 PP · 1 NRFI · 0 SGP
+- **MC simulation:** EV +$15.31, 68% P(profit), p05 $-50.0 / p95 $45.45
 
 ## Top 5 Best Bets
-1. **LAA @ DET YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +39.8%)
-   - P(YRFI) 85.8% vs baseline 46.0%
-2. **TOR @ BAL YRFI (1st-inning OVER 0.5)**  (79/100 ****, edge +19.8%)
-   - P(YRFI) 65.8% vs baseline 46.0%
-3. **CHC @ PIT YRFI (1st-inning OVER 0.5)**  (79/100 ****, edge +19.4%)
-   - P(YRFI) 65.5% vs baseline 46.0%
-4. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
+1. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
    - Player prop quality score 1.1935
    - Elite player
-5. **LOL ShowMaker OVER 3.5 Kills**  (78/100 ****, edge —)
+2. **LOL ShowMaker OVER 3.5 Kills**  (78/100 ****, edge —)
    - Player prop quality score 1.1892
    - Elite player
+3. **LOL Peyz OVER 4.5 Kills**  (78/100 ****, edge —)
+   - Player prop quality score 1.184
+   - Elite player
+4. **GOLF J.J. Spaun TOP5 @ 515 (Charles Schwab Challenge)**  (78/100 *****, edge —)
+   - P(top 5) 16.3% -- lower variance than outright but compelling line.
+5. **GOLF Gary Woodland TOP5 @ 514 (Charles Schwab Challenge)**  (78/100 *****, edge —)
+   - P(top 5) 16.3% -- lower variance than outright but compelling line.
 
-## ⚠️ Trap Warnings — 9 flagged
-- **LAA @ DET YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +39.8% looks big but only 0 settled props on this player — model unproven
-- **CHC @ PIT 2-leg SGP @ -255** (low):
-   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
-- **HOU @ TEX 2-leg SGP @ -258** (low):
-   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
-- **TOR @ BAL 2-leg SGP @ -256** (low):
-   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
-- **TOR @ BAL YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +19.8% looks big but only 0 settled props on this player — model unproven
+## ⚠️ Trap Warnings — 1 flagged
+- **HOU @ TEX NRFI (no run 1st inning)** (low):
+   - Edge +14.4% looks big but only 0 settled props on this player — model unproven
+
+## Weather leans
+- **UNDER lean** (wind in + cold): SFG @ COL
 
 ## Hot streaks
-**Batters heating up:** Yordan Alvarez (heat +8.68), Christian Walker (heat +5.50), Joc Pederson (heat +5.22)
-**Pitchers on a run:** Patrick Corbin (heat +5.18), Jack Flaherty (heat +4.96), Chris Sale (heat +2.72)
-
-## Top correlation-aware SGPs
-- **CHC @ PIT** 2-leg @ -255 fair (joint 0.72, EV +25.0%)
-   - Dansby Swanson OVER 0.5 batter hrr
-   - Nico Hoerner UNDER 2.5 batter total bases
-- **HOU @ TEX** 2-leg @ -258 fair (joint 0.72, EV +25.0%)
-   - Jeremy Peña UNDER 1.5 batter singles
-   - Evan Carter UNDER 1.5 batter hits
-- **TOR @ BAL** 2-leg @ -256 fair (joint 0.72, EV +25.0%)
-   - Adley Rutschman UNDER 1.5 batter rbis
-   - Vladimir Guerrero Jr. UNDER 3.5 batter hrr
+**Batters heating up:** Ketel Marte (heat +4.51), Bryan Reynolds (heat +3.47), Yordan Alvarez (heat +3.46)
+**Pitchers on a run:** Paul Skenes (heat +8.28), Patrick Corbin (heat +8.18), Zac Gallen (heat +7.59)
 
 ## Bullpens GASSED tonight
-Athletics, San Diego Padres, Seattle Mariners, San Francisco Giants, Tampa Bay Rays, Toronto Blue Jays, Atlanta Braves, Chicago White Sox
+Athletics, San Diego Padres, Seattle Mariners, San Francisco Giants, Tampa Bay Rays, Toronto Blue Jays, Minnesota Twins, Atlanta Braves
 _Lean late-inning OVER on these games; fade their save situations._
 
 ## NRFI/YRFI strong leans
-- **YRFI** (1st-inning OVER): LAA @ DET, TOR @ BAL, CHC @ PIT
-- **NRFI** (1st-inning UNDER): HOU @ TEX, MIN @ CHW
+- **NRFI** (1st-inning UNDER): HOU @ TEX
 
 ## Golf -- Charles Schwab Challenge
-- **Leader:** Kevin Kisner (-2) at #1
+- **Leader:** Ryan Gerard (-6) at #1
 - **Field:** 132 players  |  Status: In Progress
-- **Play of the Tournament:** Max Homa TOP5 @ +572 (model 14.9%, HIGH)
-   - P(top 5) 14.9% -- lower variance than outright but compelling line.
+- **Play of the Tournament:** J.J. Spaun TOP5 @ +515 (model 16.3%, HIGH)
+   - P(top 5) 16.3% -- lower variance than outright but compelling line.
 
 ## NBA -- PLAYOFFS
-- Oklahoma City Thunder @ San Antonio Spurs (64-18 vs 62-20)  | P(home) 51.6% fair -107 | Scheduled
+- Oklahoma City Thunder @ San Antonio Spurs (64-18 vs 62-20) 91-118 | P(home) 100.0% fair +0 | Final
 
 ## NHL -- PLAYOFFS
 - Montreal Canadiens @ Carolina Hurricanes (48-24-10 vs 53-22-7)  | P(home) 57.6% fair -136 | Scheduled
 
 ## LoL Esports -- 1 live, 30 upcoming
-- [NACL] Winthrop University vs NRG BO5 | P(A) 62.3% fair -165/+165
+- [LCK] Dplus KIA vs KIWOOM DRX BO3 | P(A) 53.0% fair -113/+113
 - [LCK Challengers] kt Challengers vs T1 Esports Academy BO3 | P(A) 43.6% fair +129/-129
 - [LCK Challengers] BNK FEARX Youth vs KRX Challengers BO3 | P(A) 37.4% fair +167/-167
 - [LCK Challengers] HLE Challengers vs BRO Challengers BO3 | P(A) 52.9% fair -112/+112
@@ -87,4 +70,4 @@ _Lean late-inning OVER on these games; fade their save situations._
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | model 61.0% fair -157 (ELITE)
 
 ## Self-learning calibration (esports + KBO)
-- **LOL:** 9 settled | brier 0.2687 | ECE 0.235
+- **LOL:** 10 settled | brier 0.2717 | ECE 0.2662

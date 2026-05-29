@@ -1,30 +1,30 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-05-28T23:23:09 UTC_
+_Generated 2026-05-29T08:17:03 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** 5
+- **Score:** -2
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 23
-- **Total FADES:** 87
+- **Total STRONG:** 20
+- **Total FADES:** 82
 
 ## Top 5 Curated Picks
-1. **WNBA / caitlin clark** (WNBA_PLAYER, score=105.25)
+1. **WNBA / caitlin clark** (WNBA_PLAYER, score=100.5)
    - Play: caitlin clark (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (WNBA_PLAYER)
-2. **GOLF / Tom Kim** (GOLF_PLAYER, score=99.86)
+2. **GOLF / Tom Kim** (GOLF_PLAYER, score=99.29)
    - Play: Tom Kim (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-3. **MLB / Yordan Alvarez** (MLB_BATTER, score=99.31)
-   - Play: Yordan Alvarez (BATTER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_BATTER)
-4. **GOLF / Ryan Gerard** (GOLF_PLAYER, score=90.36)
+3. **GOLF / Ryan Gerard** (GOLF_PLAYER, score=89.71)
    - Play: Ryan Gerard (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-5. **MLB / Ezequiel Duran** (MLB_BATTER, score=78.31)
-   - Play: Ezequiel Duran (BATTER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_BATTER)
+4. **MLB / ?** (MLB_TEAM, score=75.29)
+   - Play: ? (TEAM_STRONG)
+   - Rationale: Cross-sport top pick (MLB_TEAM)
+5. **WNBA / kelsey mitchell** (WNBA_PLAYER, score=65.92)
+   - Play: kelsey mitchell (PLAYER_STRONG)
+   - Rationale: Cross-sport top pick (WNBA_PLAYER)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
@@ -39,13 +39,13 @@ _Generated 2026-05-28T23:23:09 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **NBA** / chet holmgren (PLAYER_FADE)
-  - Fade angle: PTS UNDER + PRA UNDER (multi-prop)
-- **NBA** / SAS (TEAM_FADE)
-  - Fade angle: team total UNDER
-- **MLB** / Paul Skenes (PITCHER_FADE)
+- **MLB** / Spencer Arrighetti (PITCHER_FADE)
   - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **MLB** / Chris Bassitt (PITCHER_FADE)
+- **MLB** / Nathan Eovaldi (PITCHER_FADE)
   - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **MLB** / Colin Rea (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **NHL** / frederik andersen (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / pyotr kochetkov (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / Sebastian Aho (SKATER_FADE)
+  - Fade angle: SOG UNDER + no goal
