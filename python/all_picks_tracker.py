@@ -1422,6 +1422,37 @@ def _bootstrap_from_locks_history(history, existing_ids) -> int:
     return n_imported
 
 
+VOID_AFTER_DAYS = 4
+
+
+def _void_stale_pending(history: List[Dict[str, Any]]) -> int:
+    """Mark long-pending picks that can never settle as VOID (not settled).
+
+    A pick whose game date is more than VOID_AFTER_DAYS in the past and is still
+    unsettled has no reachable outcome (other-sport picks with no box-score feed,
+    or data-retention gaps). Carrying it as 'pending' forever is dishonest and
+    makes the ledger un-self-cleaning. Voided picks are excluded from pending and
+    are NOT counted in settled / W-L / ROI (the `voided` flag is separate from
+    `settled`, so no settled-stat logic changes). MLB props settle within ~2 days
+    via gamelogs, so a 4-day cutoff only catches the genuinely un-gradeable.
+    """
+    today = dt.date.today()
+    n = 0
+    for p in history:
+        if p.get("settled") or p.get("voided"):
+            continue
+        try:
+            gd = dt.date.fromisoformat((p.get("date") or "")[:10])
+        except Exception:
+            continue
+        if (today - gd).days > VOID_AFTER_DAYS:
+            p["voided"] = True
+            p["voided_at"] = dt.datetime.now().isoformat(timespec="seconds")
+            p["voided_reason"] = f"unsettleable: no outcome feed within {VOID_AFTER_DAYS} days"
+            n += 1
+    return n
+
+
 def run() -> Dict[str, Any]:
     state = _load(OUT)
     history = state.get("picks") or []
@@ -1444,12 +1475,17 @@ def run() -> Dict[str, Any]:
     # Settle anything pending
     n_newly_settled = _settle_picks(history)
 
+    # Void picks that can never settle (no outcome feed, > VOID_AFTER_DAYS old)
+    # so 'pending' stays honest and the ledger self-cleans.
+    n_voided_this_run = _void_stale_pending(history)
+
     if len(history) > MAX_PICKS:
         history = history[-MAX_PICKS:]
 
-    # Aggregate stats
+    # Aggregate stats (void is neither settled nor pending -- excluded from both)
     settled = [p for p in history if p.get("settled")]
-    pending = [p for p in history if not p.get("settled")]
+    pending = [p for p in history if not p.get("settled") and not p.get("voided")]
+    n_void = sum(1 for p in history if p.get("voided"))
     wins = sum(1 for p in settled if p["result"] == "won")
     losses = sum(1 for p in settled if p["result"] == "lost")
     pushes = sum(1 for p in settled if p["result"] == "push")
@@ -1520,12 +1556,14 @@ def run() -> Dict[str, Any]:
         "total_picks": len(history),
         "n_settled": len(settled),
         "n_pending": len(pending),
+        "n_void": n_void,
         "wins": wins, "losses": losses, "pushes": pushes,
         "hit_rate": hit_rate,
         "net_units": net_units,
         "roi_pct": roi_pct,
         "n_added_this_run": n_added,
         "n_newly_settled_this_run": n_newly_settled,
+        "n_voided_this_run": n_voided_this_run,
         "n_bootstrapped_from_locks_history": n_bootstrapped,
         "by_source": by_source,
         "by_market_family": by_mkt,
