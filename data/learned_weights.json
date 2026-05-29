@@ -1,7 +1,8 @@
 {
-  "generated_at": "2026-05-29T14:00:20",
+  "generated_at": "2026-05-29T14:17:40",
   "shrinkage_prior_n": 30,
   "n_sources_with_data": 13,
+  "n_families_with_data": 19,
   "weights": {
     "today": {
       "prior": 0.8,
@@ -724,5 +725,102 @@
       "guard_reason": null
     }
   },
-  "note": "Per-source shrinkage weights learned from all_picks_ledger settled outcomes. Sources hit > 55% earn higher weight; < 45% get pushed toward baseline. Shrunk by sample size (needs 30+ settled to fully trust observed rate). todays_top_plays.py reads this to dynamically adjust calibration."
+  "weights_by_family": {
+    "pp_batter_total_bases": {
+      "n_settled": 45,
+      "hit_rate": 0.9333,
+      "w_learned": 0.76
+    },
+    "pp_batter_hrr": {
+      "n_settled": 59,
+      "hit_rate": 0.9153,
+      "w_learned": 0.782
+    },
+    "ml_away": {
+      "n_settled": 22,
+      "hit_rate": 0.9091,
+      "w_learned": 0.698
+    },
+    "1_plus_hr": {
+      "n_settled": 138,
+      "hit_rate": 0.1522,
+      "w_learned": 0.345
+    },
+    "to_score_run_no": {
+      "n_settled": 297,
+      "hit_rate": 0.6397,
+      "w_learned": 0.702
+    },
+    "f5_total": {
+      "n_settled": 28,
+      "hit_rate": 0.5,
+      "w_learned": 0.429
+    },
+    "team_sb_under": {
+      "n_settled": 30,
+      "hit_rate": 0.0,
+      "w_learned": 0.425
+    },
+    "k_1plus_yes": {
+      "n_settled": 650,
+      "hit_rate": 0.6123,
+      "w_learned": 0.692
+    },
+    "walk_1plus_no": {
+      "n_settled": 258,
+      "hit_rate": 0.7558,
+      "w_learned": 0.864
+    },
+    "3_plus_hrr": {
+      "n_settled": 83,
+      "hit_rate": 0.2892,
+      "w_learned": 0.366
+    },
+    "to_record_hit_yes": {
+      "n_settled": 38,
+      "hit_rate": 0.5526,
+      "w_learned": 0.435
+    },
+    "to_record_hit_no": {
+      "n_settled": 58,
+      "hit_rate": 0.5,
+      "w_learned": 0.386
+    },
+    "to_hit_hr_yes": {
+      "n_settled": 195,
+      "hit_rate": 0.1179,
+      "w_learned": 0.333
+    },
+    "2_plus_total_bases": {
+      "n_settled": 110,
+      "hit_rate": 0.3455,
+      "w_learned": 0.354
+    },
+    "to_score_run_yes": {
+      "n_settled": 64,
+      "hit_rate": 0.3438,
+      "w_learned": 0.38
+    },
+    "2_plus_hrr": {
+      "n_settled": 28,
+      "hit_rate": 0.3571,
+      "w_learned": 0.429
+    },
+    "under": {
+      "n_settled": 49,
+      "hit_rate": 0.7347,
+      "w_learned": 0.671
+    },
+    "over": {
+      "n_settled": 25,
+      "hit_rate": 0.56,
+      "w_learned": 0.436
+    },
+    "pp_batter_rbis": {
+      "n_settled": 20,
+      "hit_rate": 0.8,
+      "w_learned": 0.617
+    }
+  },
+  "note": "Per-source AND per-market-family shrinkage weights learned from all_picks_ledger settled outcomes. Sources/families that hit > 55% earn higher weight; < 45% get pushed toward baseline. Shrunk by sample size (30+ settled to fully trust). todays_top_plays.py applies the source weight if the source matches, else the market-family weight, else the prior."
 }

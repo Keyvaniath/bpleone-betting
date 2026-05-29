@@ -144,9 +144,37 @@ def _load_learned_weights():
 
 
 _LEARNED_W_CACHE = None
+_FAMILY_W_CACHE = None
 
 
-def _shrink_prob(raw_prob, source, fair_american=None):
+def _load_family_weights():
+    """Per-market-family learned weights — the bridge to this board, whose
+    candidates are tagged by MARKET, not by the ledger source name (so the
+    per-source weights above never match a displayed candidate). Market family
+    is the shared vocabulary."""
+    p = os.path.join(DATA_DIR, "learned_weights.json")
+    if not os.path.exists(p): return {}
+    try:
+        with open(p) as f: d = json.load(f)
+        out = {}
+        for fam, w in (d.get("weights_by_family") or {}).items():
+            wl = w.get("w_learned")
+            if wl is not None and w.get("n_settled", 0) > 0:
+                out[fam] = wl
+        return out
+    except Exception:
+        return {}
+
+
+def _market_family(market):
+    """Mirror of all_picks_tracker._market_family so families match the ledger."""
+    if not market: return "unknown"
+    m = re.sub(r"_(?:over|under)?_?-?\d+(?:\.\d+)?$", "", str(market))
+    m = re.sub(r"_(over|under)$", r"_\1", m)
+    return m.lower() or "unknown"
+
+
+def _shrink_prob(raw_prob, source, fair_american=None, market=None):
     """Two-stage calibration:
 
        1. If a market line is available (fair_american), shrink the raw
@@ -162,10 +190,19 @@ def _shrink_prob(raw_prob, source, fair_american=None):
     """
     if raw_prob is None: return None
     # Self-learning weight overrides if data accumulated
-    global _LEARNED_W_CACHE
+    global _LEARNED_W_CACHE, _FAMILY_W_CACHE
     if _LEARNED_W_CACHE is None:
         _LEARNED_W_CACHE = _load_learned_weights()
+    if _FAMILY_W_CACHE is None:
+        _FAMILY_W_CACHE = _load_family_weights()
+    # Prefer the per-source learned weight; if the source has no learned data
+    # (true for every displayed candidate, which is tagged by market not by
+    # ledger source), fall back to the per-market-family learned weight; only
+    # then to the hardcoded prior. This is what lets the brain's settled-outcome
+    # learning actually reach the displayed board.
     w_learned = _LEARNED_W_CACHE.get(source or "")
+    if w_learned is None and market:
+        w_learned = _FAMILY_W_CACHE.get(_market_family(market))
     w = w_learned if w_learned is not None else SOURCE_SHRINKAGE_W.get(source or "", DEFAULT_SHRINKAGE_W)
     market_p = _market_implied_prob(fair_american)
     if market_p is not None:
@@ -197,7 +234,7 @@ def run() -> Dict[str, Any]:
             source = x.get("source")
             # Get explicit fair_american FIRST so shrinkage can anchor to market
             fair = x.get("fair_american")
-            calibrated_prob = _shrink_prob(raw_prob, source, fair if isinstance(fair, (int, float)) else None)
+            calibrated_prob = _shrink_prob(raw_prob, source, fair if isinstance(fair, (int, float)) else None, market=x.get("market"))
             if calibrated_prob is None or calibrated_prob < MIN_PROB: continue
             # Fall back to source-default fair odds if none provided
             if not isinstance(fair, (int, float)):

@@ -169,17 +169,47 @@ def run() -> Dict[str, Any]:
             "guard_reason": guard.get("reason"),
         }
 
+    # ---- Per-MARKET-FAMILY weights (the bridge to the displayed board) ----
+    # The displayed top-plays board tags candidates by MARKET, not by the
+    # ledger source name, so per-source weights above never reach it. Market
+    # family is the shared vocabulary: learn a weight per family from the
+    # ledger's by_market_family W/L so the board can down-weight the families
+    # that lose (e.g. to_hit_hr 12%, team_sb_under 0%) and trust the ones that
+    # win. Same Wilson-lower-bound + sample-size shrinkage as per-source.
+    import math as _math
+    DEFAULT_FAMILY_W = 0.55
+    MIN_FAMILY_N = 15
+    by_fam = ledger.get("by_market_family") or {}
+    fam_weights: Dict[str, Dict[str, Any]] = {}
+    for fam, b in by_fam.items():
+        w_ = int(b.get("wins") or 0); l_ = int(b.get("losses") or 0)
+        n = w_ + l_
+        if n < MIN_FAMILY_N:
+            continue
+        p = w_ / n
+        z = 1.96
+        denom = 1 + z * z / n
+        center = (p + z * z / (2 * n)) / denom
+        spread = z * _math.sqrt(p * (1 - p) / n + z * z / (4 * n * n)) / denom
+        eff = max(0.0, center - spread)
+        w_obs = _clamp((eff - 0.50) * 2 + 0.55, 0.30, 0.90)
+        pull = n / (n + SHRINKAGE_PRIOR_N)
+        w_learned = round(pull * w_obs + (1 - pull) * DEFAULT_FAMILY_W, 3)
+        fam_weights[fam] = {"n_settled": n, "hit_rate": round(p, 4), "w_learned": w_learned}
+
     payload = {
         "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
         "shrinkage_prior_n": SHRINKAGE_PRIOR_N,
         "n_sources_with_data": sum(1 for s in learned.values() if s["n_settled"] > 0),
+        "n_families_with_data": len(fam_weights),
         "weights": learned,
-        "note": ("Per-source shrinkage weights learned from all_picks_ledger "
-                  "settled outcomes. Sources hit > 55% earn higher weight; "
-                  "< 45% get pushed toward baseline. Shrunk by sample size "
-                  "(needs 30+ settled to fully trust observed rate). "
-                  "todays_top_plays.py reads this to dynamically adjust "
-                  "calibration."),
+        "weights_by_family": fam_weights,
+        "note": ("Per-source AND per-market-family shrinkage weights learned "
+                  "from all_picks_ledger settled outcomes. Sources/families that "
+                  "hit > 55% earn higher weight; < 45% get pushed toward baseline. "
+                  "Shrunk by sample size (30+ settled to fully trust). "
+                  "todays_top_plays.py applies the source weight if the source "
+                  "matches, else the market-family weight, else the prior."),
     }
     os.makedirs(DATA_DIR, exist_ok=True)
     with open(OUT, "w") as f: json.dump(payload, f, indent=2)
