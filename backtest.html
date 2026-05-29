@@ -21,8 +21,8 @@
 <main class="container">
 
   <section class="page-head">
-    <h1>Backtest Results — Walk-Forward</h1>
-    <p>Real walk-forward backtest on the live track_record. Every day, the model is allowed to learn from prior days only — no look-ahead. Numbers below come straight from <code>data/track_record.json</code> and <code>data/walk_forward.json</code> at last refresh.</p>
+    <h1>Track Record — Real Settled Picks</h1>
+    <p>Every number below is computed from <code>data/backtest.json</code>, built from the actual settled-picks ledger — real recommended picks, graded outcomes, 1u flat stake at model fair price. No synthetic data. The blended curve includes <em>all</em> sources (including experimental prop feeds), so see the per-source breakdown for where the edge actually concentrates.</p>
   </section>
 
   <section class="metric-strip">
@@ -34,54 +34,20 @@
     <div class="metric"><span class="metric-num" id="btDD">--</span><span class="metric-label">Max Drawdown</span></div>
   </section>
 
-  <script>
-  // Live backtest metrics: pulled from track_record.json + clv_log.json + walk_forward.json
-  (function loadBtMetrics() {
-    const setText = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
-    fetch("data/track_record.json", { cache: "no-cache" })
-      .then(r => r.json())
-      .then(tr => {
-        const props = (tr.props || []).filter(p => p.play_hit === true || p.play_hit === false);
-        if (!props.length) return;
-        const wins = props.filter(p => p.play_hit === true).length;
-        const payoutUnits = price => price >= 0 ? price / 100 : 100 / Math.abs(price);
-        let net = 0, running = 0, dd = 0;
-        for (const p of props) {
-          const price = p.play === "OVER" ? p.dk_over : p.play === "UNDER" ? p.dk_under : -110;
-          const delta = p.play_hit === true ? payoutUnits(price ?? -110) : -1;
-          net += delta;
-          running += delta;
-          if (running < dd) dd = running;
-        }
-        const hr = wins / props.length * 100;
-        const roi = (net / props.length) * 100;
-        setText("btPlays", props.length.toLocaleString());
-        setText("btHit", hr.toFixed(2) + "%");
-        setText("btROI", (roi >= 0 ? "+" : "") + roi.toFixed(1) + "%");
-        setText("btUnits", (net >= 0 ? "+" : "") + net.toFixed(1) + "u");
-        setText("btDD", dd.toFixed(1) + "u");
-      }).catch(() => {});
-    fetch("data/clv_log.json", { cache: "no-cache" })
-      .then(r => r.json())
-      .then(c => {
-        const recs = (c.records || []).filter(r => r.clv_pct != null);
-        if (!recs.length) return;
-        const avg = recs.reduce((s, r) => s + Number(r.clv_pct), 0) / recs.length;
-        setText("btCLV", (avg >= 0 ? "+" : "") + avg.toFixed(2) + "%");
-      }).catch(() => {});
-  })();
-  </script>
+  <!-- Tiles, charts, recent-plays table, and the per-source breakdown are all
+       rendered by js/extras.js renderBacktest() from the single real source
+       data/backtest.json (computed from the settled-picks ledger). -->
 
   <section class="grid-2">
     <div class="card">
-      <div class="card-head"><span>📈 Bankroll Path</span></div>
+      <div class="card-head"><span>📈 Cumulative Units P&L</span></div>
       <canvas id="btBankrollChart" height="220"></canvas>
-      <p class="caption">¼-Kelly stake sizing. Smooth growth with tolerable drawdowns is what good models look like — not lottery payouts.</p>
+      <p class="caption">Realized cumulative P&L across every settled pick, 1u flat. Blended across all sources (including experimental prop feeds), so it can run negative even while the sharp sources profit — see the per-source breakdown below.</p>
     </div>
     <div class="card">
       <div class="card-head"><span>📉 Drawdown Curve</span></div>
       <canvas id="btDdChart" height="220"></canvas>
-      <p class="caption">Peak-to-trough drawdown over time. Max DD here is 5.3u — well within tolerance for ¼-Kelly sizing.</p>
+      <p class="caption">Peak-to-trough drawdown of the cumulative units curve over the settled history.</p>
     </div>
   </section>
 
@@ -100,7 +66,7 @@
   <section class="grid-3">
     <div class="card">
       <div class="card-head"><span>🎯 Why CLV matters</span></div>
-      <p style="color:var(--text-2); font-size:14px;">Closing line value is the #1 leading indicator of long-term profit. Even when you lose a play, if you beat the closing line by 2%+, you're playing a winning game. The backtest's +2.08% avg CLV confirms the model is correctly identifying mis-priced edges, not just lucky.</p>
+      <p style="color:var(--text-2); font-size:14px;">Closing line value is the #1 leading indicator of long-term profit. Even when you lose a play, if you beat the closing line you're playing a winning game. Per-pick CLV capture is being wired in (write-once open + closing-line snapshots); average CLV shows "—" until enough real closing lines accumulate.</p>
     </div>
     <div class="card">
       <div class="card-head"><span>🧪 Walk-Forward Design</span></div>
@@ -113,68 +79,16 @@
   </section>
 
   <section class="card">
-    <div class="card-head"><span>📊 Performance by Market</span><span class="muted" id="segMeta">--</span></div>
+    <div class="card-head"><span>📊 Performance by Source</span><span class="muted" id="segMeta">--</span></div>
     <div class="table-wrap">
       <table class="data-table">
-        <thead><tr><th>Market</th><th>Plays</th><th>Hit %</th><th>ROI (1u flat)</th><th>Net Units</th><th>Verdict</th></tr></thead>
+        <thead><tr><th>Source</th><th>Plays</th><th>Hit %</th><th>ROI (1u flat)</th><th>Net Units</th><th>Verdict</th></tr></thead>
         <tbody id="segBody">
-          <tr><td colspan="6" class="muted" style="padding:14px; text-align:center;">Loading per-market performance from settled records…</td></tr>
+          <tr><td colspan="6" class="muted" style="padding:14px; text-align:center;">Loading per-source performance from settled records…</td></tr>
         </tbody>
       </table>
     </div>
   </section>
-
-  <script>
-  // Per-market performance table: live from track_record.json
-  fetch("data/track_record.json", { cache: "no-cache" })
-    .then(r => r.json())
-    .then(tr => {
-      const props = (tr.props || []).filter(p => p.play_hit === true || p.play_hit === false);
-      const body = document.getElementById("segBody");
-      if (!body) return;
-      if (!props.length) {
-        body.innerHTML = `<tr><td colspan="6" class="muted" style="padding:14px; text-align:center;">No settled plays yet.</td></tr>`;
-        return;
-      }
-      const payoutUnits = price => price >= 0 ? price / 100 : 100 / Math.abs(price);
-      const byMarket = {};
-      for (const p of props) {
-        const m = p.market || "unknown";
-        if (!byMarket[m]) byMarket[m] = { n: 0, wins: 0, net: 0 };
-        const price = p.play === "OVER" ? p.dk_over : p.play === "UNDER" ? p.dk_under : -110;
-        byMarket[m].n++;
-        if (p.play_hit === true) {
-          byMarket[m].wins++;
-          byMarket[m].net += payoutUnits(price ?? -110);
-        } else {
-          byMarket[m].net -= 1;
-        }
-      }
-      const rows = Object.entries(byMarket).map(([m, s]) => ({
-        market: m,
-        n: s.n,
-        hit: s.n ? s.wins / s.n * 100 : 0,
-        roi: s.n ? s.net / s.n * 100 : 0,
-        net: s.net,
-      })).sort((a, b) => b.roi - a.roi);
-      body.innerHTML = rows.map(r => {
-        const verdict = r.roi >= 5 ? "STRONG" : r.roi >= 0 ? "CORE" : r.roi >= -3 ? "WATCH" : "SKIP";
-        const vCls = r.roi >= 0 ? "rec bet" : "rec pass";
-        const roiCls = r.roi >= 0 ? "positive" : "negative";
-        return `<tr>
-          <td>${r.market.replace(/_/g, " ")}</td>
-          <td>${r.n.toLocaleString()}</td>
-          <td>${r.hit.toFixed(1)}%</td>
-          <td class="${roiCls}">${r.roi >= 0 ? "+" : ""}${r.roi.toFixed(1)}%</td>
-          <td class="${roiCls}">${r.net >= 0 ? "+" : ""}${r.net.toFixed(1)}u</td>
-          <td class="${vCls}">${verdict}</td>
-        </tr>`;
-      }).join("");
-      const meta = document.getElementById("segMeta");
-      if (meta) meta.textContent = `${rows.length} markets · ${tr.last_settled_date || ""}`;
-    })
-    .catch(() => {});
-  </script>
 
 </main>
 
@@ -192,36 +106,6 @@
 <script src="js/ml-models.js"></script>
 <script src="js/extras.js"></script>
 <script src="js/main.js"></script>
-<script>
-// Live track-record overlay
-Promise.all([
-  fetch("data/track_record.json", { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
-  fetch("data/calibration_live.json", { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
-]).then(([tr, cal]) => {
-  const props = tr.props || [];
-  const games = tr.games || [];
-  const hits = props.filter(p => p.play_hit === true).length;
-  const losses = props.filter(p => p.play_hit === false).length;
-  const totalGraded = hits + losses;
-  const hitRate = totalGraded ? (hits / totalGraded * 100).toFixed(1) + "%" : "--";
-  const markets = Object.keys(cal.markets || {}).length;
-  const banner = document.createElement("section");
-  banner.className = "card";
-  banner.style.marginBottom = "24px";
-  banner.innerHTML = `
-    <div class="card-head"><span>Live Track Record (real outcomes)</span><span class="muted">${tr.last_settled_date ? "last settled " + tr.last_settled_date : "no settled data yet -- first run tomorrow"}</span></div>
-    <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:16px; padding:14px 6px; font-family:'JetBrains Mono',monospace; font-size:13px;">
-      <div><div class="muted" style="font-size:11px;">Settled props</div><div style="font-size:22px;">${props.length}</div></div>
-      <div><div class="muted" style="font-size:11px;">Settled games</div><div style="font-size:22px;">${games.length}</div></div>
-      <div><div class="muted" style="font-size:11px;">Graded plays</div><div style="font-size:22px;">${totalGraded}</div></div>
-      <div><div class="muted" style="font-size:11px;">Hit rate</div><div style="font-size:22px; color:#58c878;">${hitRate}</div></div>
-      <div><div class="muted" style="font-size:11px;">Markets calibrated</div><div style="font-size:22px;">${markets}</div></div>
-    </div>
-    <p class="caption" style="margin-top:8px;">Real track record starts populating after the first night of settled outcomes. The walk-forward equity curve below is the synthetic 90-day benchmark used to validate model behavior before live data accumulated.</p>`;
-  const main = document.querySelector("main.container");
-  if (main && main.firstElementChild) main.insertBefore(banner, main.firstElementChild.nextSibling);
-}).catch(err => console.error("track-record load failed:", err));
-</script>
 <script src="js/nav_badge.js"></script>
 </body>
 </html>

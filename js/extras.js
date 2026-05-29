@@ -83,19 +83,26 @@ window.EdgeStatExtras = (function () {
 
   // ---------- Backtest page ----------
   async function renderBacktest() {
-    const data = await fetchJSON('data/backtest.json') || {
-      metrics: { n_plays: 51, hit_pct: 62.75, roi_pct: 26.14, avg_clv_pct: 2.08,
-                 total_units: 18.45, final_bankroll: 118.45, max_drawdown: 5.27 },
-      bankroll_path: Array.from({ length: 52 }, (_, i) => 100 + Math.sin(i / 8) * 4 + i * 0.36),
-      drawdown_path: Array.from({ length: 52 }, (_, i) => Math.max(0, Math.sin(i / 4) * -2 + (i > 25 ? 0 : 1.5))),
-      recent_bets: [],
-    };
-    document.getElementById('btPlays').textContent = data.metrics.n_plays;
-    document.getElementById('btHit').textContent = data.metrics.hit_pct + '%';
-    document.getElementById('btROI').textContent = fmtPct(data.metrics.roi_pct, 1);
-    document.getElementById('btCLV').textContent = fmtPct(data.metrics.avg_clv_pct, 2);
-    document.getElementById('btUnits').textContent = (data.metrics.total_units >= 0 ? '+' : '') + data.metrics.total_units + 'u';
-    document.getElementById('btDD').textContent = '-' + data.metrics.max_drawdown.toFixed(1) + 'u';
+    // Single real source: data/backtest.json (computed from the settled-picks
+    // ledger). NEVER fabricate — if there's no real data, show an honest empty
+    // state. (The old synthetic fallback hard-coded a fake 62.75%/+26% record.)
+    const data = await fetchJSON('data/backtest.json');
+    const setT = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
+    const m = (data && data.metrics) || {};
+    if (!(m.n_plays > 0)) {
+      ['btPlays', 'btHit', 'btROI', 'btCLV', 'btUnits', 'btDD'].forEach(id => setT(id, '--'));
+      const tb = document.querySelector('#btTable tbody');
+      if (tb) tb.innerHTML = `<tr><td colspan="10" class="muted" style="padding:14px;text-align:center;">No settled plays yet — the real track record populates as picks grade out.</td></tr>`;
+      const sb = document.getElementById('segBody');
+      if (sb) sb.innerHTML = `<tr><td colspan="6" class="muted" style="padding:14px;text-align:center;">No settled plays yet.</td></tr>`;
+      return;
+    }
+    setT('btPlays', (m.n_plays || 0).toLocaleString());
+    setT('btHit', (m.hit_pct != null ? m.hit_pct.toFixed(1) : '--') + '%');
+    setT('btROI', (m.roi_pct != null ? (m.roi_pct >= 0 ? '+' : '') + m.roi_pct.toFixed(1) : '--') + '%');
+    setT('btCLV', m.avg_clv_pct != null ? (m.avg_clv_pct >= 0 ? '+' : '') + m.avg_clv_pct.toFixed(2) + '%' : '—');
+    setT('btUnits', (m.total_units >= 0 ? '+' : '') + (m.total_units != null ? m.total_units.toFixed(1) : '0') + 'u');
+    setT('btDD', '-' + (m.max_drawdown != null ? m.max_drawdown.toFixed(1) : '0') + 'u');
 
     // Bankroll chart
     new Chart(document.getElementById('btBankrollChart').getContext('2d'), {
@@ -103,7 +110,7 @@ window.EdgeStatExtras = (function () {
       data: {
         labels: data.bankroll_path.map((_, i) => i),
         datasets: [{
-          label: 'Bankroll (units)',
+          label: 'Cumulative Units P&L (1u flat, all sources)',
           data: data.bankroll_path,
           borderColor: '#4ade80',
           backgroundColor: 'rgba(74,222,128,0.1)',
@@ -139,35 +146,47 @@ window.EdgeStatExtras = (function () {
       }
     });
 
-    // Recent bets table
+    // Recent plays table -- REAL settled picks only (no synthetic fallback).
     const tbody = document.querySelector('#btTable tbody');
     if (tbody) {
-      const bets = data.recent_bets.length > 0 ? data.recent_bets.slice(0, 30) :
-        // Fallback synthetic recent bets
-        Array.from({ length: 25 }, (_, i) => ({
-          day: `D${180 - i}`, matchup: ['LAD@SDP','BOS@NYY','ATL@PHI','HOU@TEX','CHC@WSH','CIN@COL'][i % 6],
-          side: ['LAD ML','BOS ML','ATL ML','UNDER 8.5','OVER 10.5','CHC ML'][i % 6],
-          stake: (Math.random()*1.5 + 0.4).toFixed(2),
-          price: [-148, +120, -176, -110, -110, -126][i % 6],
-          close: [-160, +112, -188, -105, -118, -134][i % 6],
-          edge: (Math.random()*5 + 2).toFixed(2),
-          result: Math.random() < 0.6 ? 'WIN' : 'LOSS',
-          pl: 0, clv: (Math.random()*4 - 0.5).toFixed(2)
-        }));
-      // Compute pl from result + stake + price
-      bets.forEach(b => {
-        if (typeof b.pl === 'number' && b.pl !== 0) return;
-        const dec = b.price > 0 ? 1 + b.price/100 : 1 + 100/Math.abs(b.price);
-        b.pl = b.result === 'WIN' ? +(b.stake * (dec - 1)).toFixed(2) : -+(b.stake).toFixed(2);
-      });
-      tbody.innerHTML = bets.map(b => `<tr>
-        <td>${b.day}</td><td class="matchup">${b.matchup}</td><td>${b.side}</td>
-        <td>${fmtPrice(b.price)}</td><td>${fmtPrice(b.close)}</td>
-        <td>${b.stake}u</td><td class="edge-pos">+${b.edge}%</td>
-        <td class="${b.result === 'WIN' ? 'positive' : 'negative'}">${b.result}</td>
+      const bets = (data.recent_bets || []).slice(0, 50);
+      tbody.innerHTML = bets.length ? bets.map(b => `<tr>
+        <td>${b.day || ''}</td><td class="matchup">${b.matchup || ''}</td>
+        <td>${(b.side || '').replace(/_/g, ' ')}${b.source ? ' <span class="muted" style="font-size:10px;">' + b.source + '</span>' : ''}</td>
+        <td>${b.price != null ? fmtPrice(b.price) : '—'}</td>
+        <td>${b.close != null ? fmtPrice(b.close) : '—'}</td>
+        <td>${b.stake}u</td>
+        <td>${b.edge != null ? '+' + Number(b.edge).toFixed(1) + '%' : '—'}</td>
+        <td class="${b.result === 'WIN' ? 'positive' : b.result === 'LOSS' ? 'negative' : ''}">${b.result}</td>
         <td class="${b.pl >= 0 ? 'positive' : 'negative'}">${b.pl >= 0 ? '+' : ''}${b.pl}u</td>
-        <td>${b.clv}%</td>
-      </tr>`).join('');
+        <td>${b.clv != null ? b.clv + '%' : '—'}</td>
+      </tr>`).join('') : `<tr><td colspan="10" class="muted" style="padding:14px;text-align:center;">No settled plays yet.</td></tr>`;
+    }
+
+    // Performance-by-source breakdown -- real per-source W/L/ROI from the ledger.
+    // This is what makes the blended ROI honest + decomposable (the edge
+    // concentrates in a few sharp sources).
+    const segBody = document.getElementById('segBody');
+    if (segBody) {
+      const rows = (data.by_source || []).filter(r => (r.n || 0) > 0);
+      segBody.innerHTML = rows.length ? rows.map(r => {
+        const roi = r.roi_pct != null ? r.roi_pct : 0;
+        const verdict = roi >= 10 ? 'SHARP' : roi >= 0 ? 'CORE' : roi >= -10 ? 'WATCH' : 'FADE';
+        const vCls = roi >= 0 ? 'rec bet' : 'rec pass';
+        const roiCls = roi >= 0 ? 'positive' : 'negative';
+        const net = r.net_units != null ? r.net_units : 0;
+        return `<tr>
+          <td>${(r.source || '').replace(/_/g, ' ')}</td>
+          <td>${(r.n || 0).toLocaleString()}</td>
+          <td>${r.hit_rate != null ? (r.hit_rate * 100).toFixed(1) : '0'}%</td>
+          <td class="${roiCls}">${roi >= 0 ? '+' : ''}${roi.toFixed(1)}%</td>
+          <td class="${roiCls}">${net >= 0 ? '+' : ''}${net.toFixed(1)}u</td>
+          <td class="${vCls}">${verdict}</td>
+        </tr>`;
+      }).join('') : `<tr><td colspan="6" class="muted" style="padding:14px;text-align:center;">No settled plays yet.</td></tr>`;
+      const meta = document.getElementById('segMeta');
+      if (meta && data.metrics && data.metrics.date_range)
+        meta.textContent = `${rows.length} sources · ${data.metrics.date_range[0]} → ${data.metrics.date_range[1]}`;
     }
   }
 
