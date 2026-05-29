@@ -196,9 +196,23 @@
     });
   }
 
+  // Site-wide customer-auth loader: pulls in the (free, passwordless) account
+  // system on every page so the Sign-In / Account chip appears in the top bar.
+  // Skipped on pages that already include auth.js explicitly (login/account),
+  // and a no-op until accounts are configured in js/auth-config.js.
+  function loadAuth() {
+    if (document.querySelector('script[src*="js/auth.js"]')) return;
+    var cfg = document.createElement("script"); cfg.src = "js/auth-config.js"; cfg.async = false;
+    var lib = document.createElement("script"); lib.src = "js/auth.js"; lib.async = false;
+    document.head.appendChild(cfg);
+    document.head.appendChild(lib);
+  }
+
+  function boot() { installNav(); loadAuth(); }
+
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", installNav);
+    document.addEventListener("DOMContentLoaded", boot);
   } else {
-    installNav();
+    boot();
   }
 })();

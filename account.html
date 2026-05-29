@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Account | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/nav.js"></script>
+<style>
+  .acct-wrap { max-width: 520px; margin: 48px auto; }
+  .acct-card { padding: 28px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.02); }
+  .acct-card h1 { font-size: 22px; margin: 0 0 16px; }
+  .acct-row { display:flex; justify-content:space-between; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 13px; }
+  .acct-row .k { color: var(--text-2,#9fb0c8); }
+  .acct-row .v { font-family: 'JetBrains Mono', monospace; }
+  .acct-btn { margin-top: 20px; padding: 10px 16px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.18);
+              background: transparent; color: var(--text,#eaeaea); cursor: pointer; font-size: 13px; font-weight: 600; }
+  .acct-muted { color: var(--text-2,#9fb0c8); font-size: 13px; line-height: 1.6; }
+</style>
+</head>
+<body class="page-account">
+<header class="topbar">
+  <div class="brand"><a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a><span class="tagline">by bpleone</span></div>
+  <nav class="mainnav"><!-- nav.js injects --></nav>
+  <div class="topbar-actions"><div class="ticker">LIVE</div></div>
+</header>
+
+<main class="container">
+  <div class="acct-wrap">
+    <div class="acct-card" id="acctCard">
+      <h1>Your account</h1>
+      <p class="acct-muted" id="acctStatus">Loading…</p>
+    </div>
+  </div>
+</main>
+
+<script src="js/nav_badge.js"></script>
+<script src="js/auth-config.js"></script>
+<script src="js/auth.js"></script>
+<script>
+(function () {
+  var card = document.getElementById("acctCard");
+  var status = document.getElementById("acctStatus");
+
+  if (!window.EdgeStatAuth || !window.EdgeStatAuth.configured) {
+    status.innerHTML = "Free accounts are launching shortly. The sign-in system is built and live; it activates as soon as the auth provider is connected.";
+    return;
+  }
+
+  // Supabase's detectSessionInUrl handles the magic-link / OAuth callback when
+  // the client is created; give it a tick, then read the user.
+  setTimeout(async function () {
+    var user = await window.EdgeStatAuth.getUser();
+    if (!user) {
+      status.innerHTML = 'You are not signed in. <a href="login.html" style="color:var(--accent,#4ade80);">Sign in</a> — it is free and takes 10 seconds.';
+      return;
+    }
+    var created = user.created_at ? new Date(user.created_at).toLocaleDateString() : "—";
+    var provider = (user.app_metadata && user.app_metadata.provider) || "email";
+    card.innerHTML =
+      '<h1>Your account</h1>' +
+      '<div class="acct-row"><span class="k">Email</span><span class="v">' + (user.email || "—") + '</span></div>' +
+      '<div class="acct-row"><span class="k">Sign-in method</span><span class="v">' + provider + '</span></div>' +
+      '<div class="acct-row"><span class="k">Member since</span><span class="v">' + created + '</span></div>' +
+      '<p class="acct-muted" style="margin-top:16px;">You are signed in. All EdgeStat boards are free to access. Saved bets and personalized boards are coming soon to your account.</p>' +
+      '<button class="acct-btn" id="acctSignOut" type="button">Sign out</button>';
+    var btn = document.getElementById("acctSignOut");
+    if (btn) btn.addEventListener("click", function () { window.EdgeStatAuth.signOut(); });
+  }, 400);
+})();
+</script>
+</body>
+</html>

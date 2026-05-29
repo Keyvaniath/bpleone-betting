@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign In | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/nav.js"></script>
+<style>
+  .auth-wrap { max-width: 440px; margin: 48px auto; }
+  .auth-card { padding: 30px 28px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.02); }
+  .auth-card h1 { font-size: 24px; margin: 0 0 6px; }
+  .auth-sub { color: var(--text-2,#9fb0c8); font-size: 13px; margin: 0 0 22px; line-height: 1.6; }
+  .auth-field { width: 100%; padding: 12px 14px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.14);
+                background: rgba(0,0,0,0.25); color: var(--text,#eaeaea); font-size: 14px; margin-bottom: 12px; box-sizing: border-box; }
+  .auth-btn { width: 100%; padding: 12px 14px; border-radius: 8px; border: none; cursor: pointer;
+              font-size: 14px; font-weight: 700; background: var(--accent,#4ade80); color: #04210f; }
+  .auth-btn.secondary { background: transparent; color: var(--text,#eaeaea); border: 1px solid rgba(255,255,255,0.18); margin-top: 10px; }
+  .auth-msg { font-size: 13px; margin-top: 14px; padding: 10px 12px; border-radius: 6px; display: none; }
+  .auth-msg.ok { display:block; background: rgba(74,222,128,0.1); border: 1px solid rgba(74,222,128,0.4); color: #4ade80; }
+  .auth-msg.err { display:block; background: rgba(248,113,113,0.1); border: 1px solid rgba(248,113,113,0.4); color: #f87171; }
+  .auth-or { text-align:center; color: var(--text-2,#9fb0c8); font-size: 11px; margin: 14px 0; letter-spacing: 1px; }
+  .auth-foot { font-size: 11px; color: var(--text-2,#9fb0c8); margin-top: 18px; line-height: 1.6; }
+</style>
+</head>
+<body class="page-login">
+<header class="topbar">
+  <div class="brand"><a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a><span class="tagline">by bpleone</span></div>
+  <nav class="mainnav"><!-- nav.js injects --></nav>
+  <div class="topbar-actions"><div class="ticker">LIVE</div></div>
+</header>
+
+<main class="container">
+  <div class="auth-wrap">
+    <div class="auth-card">
+      <h1>Sign in to EdgeStat</h1>
+      <p class="auth-sub"><strong>Free account</strong> — no password, no payment. We email you a one-tap secure link. Everything on the site stays free to access; an account just lets you save bets and personalize your boards (coming soon).</p>
+
+      <div id="authForm">
+        <input id="authEmail" class="auth-field" type="email" placeholder="you@email.com" autocomplete="email" />
+        <button id="authEmailBtn" class="auth-btn" type="button">Email me a sign-in link</button>
+        <div class="auth-or">— OR —</div>
+        <button id="authGoogleBtn" class="auth-btn secondary" type="button">Continue with Google</button>
+        <div id="authMsg" class="auth-msg"></div>
+      </div>
+
+      <p class="auth-foot">Passwordless &amp; private: we never store a password, and we only ask for your email to send the secure link. 21+ • Please gamble responsibly • 1-800-GAMBLER.</p>
+    </div>
+  </div>
+</main>
+
+<script src="js/nav_badge.js"></script>
+<script src="js/auth-config.js"></script>
+<script src="js/auth.js"></script>
+<script>
+(function () {
+  var msg = document.getElementById("authMsg");
+  var emailBtn = document.getElementById("authEmailBtn");
+  var googleBtn = document.getElementById("authGoogleBtn");
+  function show(kind, text) { msg.className = "auth-msg " + kind; msg.textContent = text; }
+
+  var configured = !!(window.EdgeStatAuth && window.EdgeStatAuth.configured);
+  if (!configured) {
+    emailBtn.disabled = true; googleBtn.disabled = true;
+    emailBtn.style.opacity = googleBtn.style.opacity = "0.55";
+    emailBtn.style.cursor = googleBtn.style.cursor = "not-allowed";
+    show("ok", "Free accounts are launching shortly — the sign-in system is built and live; it activates as soon as the auth provider is connected. Check back soon.");
+    return;
+  }
+
+  emailBtn.addEventListener("click", async function () {
+    var email = (document.getElementById("authEmail").value || "").trim();
+    if (!email || email.indexOf("@") < 1) { show("err", "Please enter a valid email address."); return; }
+    emailBtn.disabled = true; emailBtn.textContent = "Sending…";
+    try {
+      await window.EdgeStatAuth.signInWithEmail(email);
+      show("ok", "Check your inbox — we sent a secure sign-in link to " + email + ". It expires in ~1 hour.");
+    } catch (e) {
+      show("err", "Could not send the link: " + (e && e.message ? e.message : "unknown error"));
+      emailBtn.disabled = false; emailBtn.textContent = "Email me a sign-in link";
+    }
+  });
+
+  googleBtn.addEventListener("click", async function () {
+    try { await window.EdgeStatAuth.signInWithGoogle(); }
+    catch (e) { show("err", "Google sign-in unavailable: " + (e && e.message ? e.message : "not enabled")); }
+  });
+})();
+</script>
+</body>
+</html>
