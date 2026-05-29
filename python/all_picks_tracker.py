@@ -1246,6 +1246,70 @@ def _collect_picks_from_sources() -> List[Dict[str, Any]]:
     return out
 
 
+def _batter_stat_and_threshold(market: str):
+    """Map a batter-prop market name -> (gamelog stat field, OVER/UNDER line).
+
+    Uses .5 lines so there are no integer-tie pushes. '1+' style yes/no markets
+    become 'over 0.5'; '2+' becomes 'over 1.5'; explicit alt lines keep their
+    number. Returns (None, None) for anything we can't confidently grade from
+    the box-score fields we actually have (hits/hr/runs/rbi/k/bb/tb) -- e.g.
+    extra-base-hit counts (no 2B/3B field) stay un-graded rather than guessed.
+    """
+    m = (market or "").lower()
+    num = re.search(r"(\d+(?:\.\d+)?)", m)
+    nval = float(num.group(1)) if num else None
+    if "total_base" in m:
+        return ("tb", nval if nval is not None else 1.5)
+    if "hrr" in m:
+        return ("hrr", nval if nval is not None else 2.5)
+    if "2_plus_hits" in m:
+        return ("hits", 1.5)
+    if ("to_record_hit" in m) or ("1_plus_hit" in m) or m == "hits":
+        return ("hits", 0.5)
+    if ("to_hit_hr" in m) or ("1_plus_hr" in m) or m.startswith("hr_") or m == "hr":
+        return ("hr", 0.5)
+    if ("to_score_run" in m) or ("1_plus_run" in m):
+        return ("runs", 0.5)
+    if ("1_plus_rbi" in m) or m.startswith("rbi"):
+        return ("rbi", 0.5)
+    if "walk" in m or "_bb_" in m or m.startswith("bb"):
+        return ("bb", 0.5)
+    if ("strikeout" in m) or ("k_1plus" in m) or ("_k_" in m):
+        return ("k", 0.5)
+    return (None, None)
+
+
+def _grade_batter_prop(market: str, pick: Dict[str, Any], by_name: Dict[str, Any]) -> Optional[str]:
+    """Grade a batter box-score prop against player_gamelogs. Returns
+    'won'/'lost'/None. Conservative: returns None (leave pending) whenever the
+    player, date, or stat can't be matched -- never fabricates a result."""
+    field, line = _batter_stat_and_threshold(market)
+    if field is None or line is None:
+        return None
+    prec = by_name.get((pick.get("player_or_matchup") or "").lower())
+    if not prec:
+        return None
+    m = (market or "").lower()
+    # NO / UNDER side bets the player stays UNDER the line.
+    is_under = ("under" in m) or m.endswith("_no") or ("_no_" in m)
+    for game in (prec.get("games") or []):
+        if (game.get("date") or "")[:10] != pick.get("date"):
+            continue
+        if not game.get("pa"):          # 0 / missing PA -> didn't bat; don't guess
+            continue
+        if field == "hrr":
+            stat = (game.get("hits") or 0) + (game.get("runs") or 0) + (game.get("rbi") or 0)
+        else:
+            stat = game.get(field)
+        if stat is None:
+            continue
+        over_wins = stat > line
+        if is_under:
+            return "won" if not over_wins else "lost"
+        return "won" if over_wins else "lost"
+    return None
+
+
 def _settle_picks(history: List[Dict[str, Any]]) -> int:
     """Try to settle each unsettled pick. Returns count newly settled."""
     n_settled = 0
@@ -1300,40 +1364,12 @@ def _settle_picks(history: List[Dict[str, Any]]) -> int:
                     result = "won" if away_s > home_s else "lost"
                 break
 
-        # Player props -- gamelog lookup
-        elif any(k in market for k in ("1_plus_hit", "1_plus_hr", "1_plus_rbi", "1_plus_run",
-                                        "2_plus_hits", "total_bases", "hrr", "pp_batter",
-                                        "k_over", "er_under")):
-            target = (p.get("player_or_matchup") or "").lower()
-            line_m = re.search(r"(\d+(?:\.\d+)?)", market)
-            line = float(line_m.group(1)) if line_m else None
-            is_under = "under" in market
-            prec = by_name.get(target)
-            if prec and line is not None:
-                for game in (prec.get("games") or []):
-                    g_date = (game.get("date") or "")[:10]
-                    if g_date != p.get("date"): continue
-                    if game.get("pa") == 0 and game.get("min") in (None, 0): continue
-                    stat = None
-                    if "1_plus_hit" in market or "2_plus_hits" in market: stat = game.get("hits")
-                    elif "total_bases" in market: stat = game.get("tb")
-                    elif "hrr" in market: stat = (game.get("hits") or 0) + (game.get("runs") or 0) + (game.get("rbi") or 0)
-                    elif "1_plus_hr" in market or market.startswith("hr"): stat = game.get("hr")
-                    elif "1_plus_rbi" in market or "rbis" in market: stat = game.get("rbi")
-                    elif "1_plus_run" in market or "runs" in market: stat = game.get("runs")
-                    elif "k_over" in market: stat = game.get("k")
-                    elif "er_under" in market: stat = game.get("er")
-                    if stat is None: continue
-                    if is_under:
-                        if stat < line: result = "won"
-                        elif stat == line: result = "push"
-                        else: result = "lost"
-                    else:
-                        if stat > line: result = "won"
-                        elif stat == line and "plus" in market: result = "won"
-                        elif stat == line: result = "push"
-                        else: result = "lost"
-                    break
+        # Player props -- batter box-score lookup against player_gamelogs.
+        # Comprehensive market-name coverage (to_record_hit / to_score_run /
+        # to_hit_hr / k_1plus / walks / 1+/2+ hits / total_bases / hrr / pp_batter).
+        # Returns None (stays pending) for anything not confidently gradeable.
+        else:
+            result = _grade_batter_prop(market, p, by_name)
 
         if result:
             p["settled"] = True
