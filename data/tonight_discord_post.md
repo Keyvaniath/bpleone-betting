@@ -1,17 +1,14 @@
 **EdgeStat -- Tonight's Slate**
-_STRONG_NIGHT_ | L:0 S:30 F:65
-
-:lock: **LOCK:** Shota Imanaga (MLB)
+_MODEST_NIGHT_ | L:0 S:22 F:60
 
 :dart: **Top Picks:**
-1. [WNBA] napheesa collier -- napheesa collier (PLAYER_STRONG)
-2. [GOLF] Hideki Matsuyama -- Hideki Matsuyama (PLAYER_STRONG)
-3. [MLB] Juan Soto -- Juan Soto (BATTER_STRONG)
+1. [GOLF] Jordan Smith -- Jordan Smith (PLAYER_STRONG)
+2. [WNBA] napheesa collier -- napheesa collier (PLAYER_STRONG)
+3. [GOLF] Hideki Matsuyama -- Hideki Matsuyama (PLAYER_STRONG)
 
 :chains: **Top Parlays:**
-- [MLB] Juan Soto (3 legs, p=0.5086)
-- [MLB] Christian Walker (2 legs, p=0.4669)
+- [WNBA] napheesa collier (2 legs, p=0.352)
 
-:coin: Bankroll Advisory: Solid slate. Pick top STRONG/LOCK picks; consider Kelly 25-50% sizing.
+:coin: Bankroll Advisory: Light slate. Limit to 1-3 strongest plays; use 25% Kelly or less.
 
 _EdgeStat: ML-driven sports betting analytics. Not financial advice._
