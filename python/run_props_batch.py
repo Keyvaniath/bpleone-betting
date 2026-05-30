@@ -332,6 +332,7 @@ DEFAULT_MODULES = [
     "cross_sport_one_per_sport_board",
     "multi_sport_top",
     "backtest",
+    "clv_by_source",
     "cross_sport_top_props_leaderboard",
     "cross_sport_hot_momentum_index",
     "cross_sport_best_parlays_board",
