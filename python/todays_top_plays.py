@@ -174,6 +174,31 @@ def _market_family(market):
     return m.lower() or "unknown"
 
 
+_PROVEN_NEG_CACHE = None
+CURATE_MIN_N = 25          # need a real sample before calling a family a loser
+CURATE_MAX_NET = -5.0      # lost > 5u over that sample => proven -EV, do not publish
+
+
+def _load_proven_negative_families():
+    """Market families PROVEN to lose money over a real sample (from the settled
+    ledger's by_market_family). The featured board hard-excludes these. A
+    professional desk does not publish -EV markets no matter how high the raw
+    hit rate -- e.g. k_1plus hits 61% but is priced so short it bleeds -84u."""
+    p = os.path.join(DATA_DIR, "all_picks_ledger.json")
+    if not os.path.exists(p): return set()
+    try:
+        with open(p) as f: d = json.load(f)
+        out = set()
+        for fam, v in (d.get("by_market_family") or {}).items():
+            n = (v.get("wins") or 0) + (v.get("losses") or 0)
+            net = v.get("net_units")
+            if n >= CURATE_MIN_N and net is not None and net <= CURATE_MAX_NET:
+                out.add(fam)
+        return out
+    except Exception:
+        return set()
+
+
 def _shrink_prob(raw_prob, source, fair_american=None, market=None):
     """Two-stage calibration:
 
@@ -225,6 +250,11 @@ def run() -> Dict[str, Any]:
     player_pot = _load(os.path.join(DATA_DIR, "slate_player_pot.json"))
     team_pot = _load(os.path.join(DATA_DIR, "slate_team_pot.json"))
 
+    global _PROVEN_NEG_CACHE
+    if _PROVEN_NEG_CACHE is None:
+        _PROVEN_NEG_CACHE = _load_proven_negative_families()
+    n_curated_out = 0
+
     candidates: List[Dict[str, Any]] = []
     for src, doc in (("player", player_pot), ("team", team_pot)):
         items = doc.get("all_picks") or doc.get("top_50") or doc.get("top_30") or []
@@ -232,6 +262,11 @@ def run() -> Dict[str, Any]:
             raw_prob = x.get("prob")
             if not raw_prob: continue
             source = x.get("source")
+            # CURATION: never publish a market family proven to lose money over a
+            # real sample (e.g. to_hit_hr -92u, k_1plus -84u). ROI, not hit rate.
+            if _market_family(x.get("market")) in _PROVEN_NEG_CACHE:
+                n_curated_out += 1
+                continue
             # Get explicit fair_american FIRST so shrinkage can anchor to market
             fair = x.get("fair_american")
             calibrated_prob = _shrink_prob(raw_prob, source, fair if isinstance(fair, (int, float)) else None, market=x.get("market"))
@@ -311,6 +346,11 @@ def run() -> Dict[str, Any]:
         },
         "n_total_plays": len(deduped),
         "n_raw_candidates": len(candidates),
+        "n_curated_out_proven_neg": n_curated_out,
+        "curated_excluded_families": sorted(_PROVEN_NEG_CACHE),
+        "curation_note": ("Featured board excludes market families proven to lose "
+                          "money over a real settled sample (ROI, not hit rate). "
+                          f"{n_curated_out} candidate(s) filtered this run."),
         "by_sport": by_sport,
         "top_25": top_25,
         "top_5_by_kelly": sorted(deduped, key=lambda c: -c["kelly_fraction"])[:5],
