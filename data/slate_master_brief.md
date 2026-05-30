@@ -1,13 +1,13 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-05-30T21:17:25 UTC_
+_Generated 2026-05-30T22:59:19 UTC_
 
 ## Slate Quality
-- **Tier:** NO_ACTION_NIGHT
-- **Score:** 3
-- **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
+- **Tier:** MODEST_NIGHT
+- **Score:** 42
+- **Advisory:** Light slate. Limit to 1-3 strongest plays; use 25% Kelly or less.
 - **Total LOCKs:** 0
-- **Total STRONG:** 14
-- **Total FADES:** 53
+- **Total STRONG:** 20
+- **Total FADES:** 38
 
 ## Lock of the Night
 - **Subject:** Adrian Houser
@@ -17,27 +17,27 @@ _Generated 2026-05-30T21:17:25 UTC_
 - **Details:** SFG @ COL
 
 ## Top 5 Curated Picks
-1. **GOLF / Jordan Smith** (GOLF_PLAYER, score=161.14)
-   - Play: Jordan Smith (PLAYER_STRONG)
+1. **GOLF / Eric Cole** (GOLF_PLAYER, score=199.79)
+   - Play: Eric Cole (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Hideki Matsuyama** (GOLF_PLAYER, score=137.43)
-   - Play: Hideki Matsuyama (PLAYER_STRONG)
+2. **GOLF / Mac Meissner** (GOLF_PLAYER, score=144.64)
+   - Play: Mac Meissner (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-3. **MLB / Jesús Luzardo** (MLB_PITCHER, score=59.0)
-   - Play: Jesús Luzardo (PITCHER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_PITCHER)
-4. **MLB / J.T. Ginn** (MLB_PITCHER, score=58.25)
-   - Play: J.T. Ginn (PITCHER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_PITCHER)
-5. **F1 / max verstappen** (F1_DRIVER, score=49.67)
-   - Play: max verstappen (DRIVER_STRONG)
-   - Rationale: Cross-sport top pick (F1_DRIVER)
+3. **MLB / Michael Harris II** (MLB_BATTER, score=123.5)
+   - Play: Michael Harris II (BATTER_STRONG)
+   - Rationale: Cross-sport top pick (MLB_BATTER)
+4. **MLB / Jordan Walker** (MLB_BATTER, score=105.88)
+   - Play: Jordan Walker (BATTER_STRONG)
+   - Rationale: Cross-sport top pick (MLB_BATTER)
+5. **WNBA / caitlin clark** (WNBA_PLAYER, score=100.5)
+   - Play: caitlin clark (PLAYER_STRONG)
+   - Rationale: Cross-sport top pick (WNBA_PLAYER)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
-  - Jordan Smith top 10 finish
-  - Hideki Matsuyama top 10 finish
-  - Brian Harman top 10 finish
+  - Eric Cole top 10 finish
+  - Mac Meissner top 10 finish
+  - J.J. Spaun top 10 finish
 
 ## Slate ROI Projection
 - **Picks:** 1
@@ -52,7 +52,7 @@ _Generated 2026-05-30T21:17:25 UTC_
   - Fade angle: saves UNDER + win NO
 - **NHL** / pyotr kochetkov (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / Andrei Svechnikov (SKATER_FADE)
-  - Fade angle: SOG UNDER + no goal
 - **NHL** / Sebastian Aho (SKATER_FADE)
+  - Fade angle: SOG UNDER + no goal
+- **NHL** / Andrei Svechnikov (SKATER_FADE)
   - Fade angle: SOG UNDER + no goal

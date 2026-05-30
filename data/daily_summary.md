@@ -4,14 +4,14 @@
 
 _Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
 
-_Generated at 2026-05-30T21:17:59 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-05-30T23:00:00 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
-**ATL @ CIN - ATL_ML**
-- Market: -124
-- Model probability: 90.2%
-- Raw edge: +63.02%
+**ATL @ CIN - OVER_8.5**
+- Market: -110
+- Model probability: 90.5%
+- Raw edge: +72.71%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
@@ -20,12 +20,12 @@ _Generated at 2026-05-30T21:17:59 UTC. Game lines source: **Bovada (fallback -- 
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 7:15p ET | CHC @ STL | Busch Stadium | 73F 5mph | CHC_ML +31.79% |
-| 7:15p ET | ATL @ CIN | Great American Ball Park | 64F 8mph | ATL_ML +63.02% |
-| 9:10p ET | SFG @ COL | Coors Field | 58F 5mph | SFG_ML +12.48% |
-| 10:05p ET | NYY @ OAK | Sutter Health Park | 64F 6mph | NYY_ML +27.47% |
+| 7:15p ET | CHC @ STL | Busch Stadium | 73F 3mph | CHC_ML +38.95% |
+| 7:15p ET | ATL @ CIN | Great American Ball Park | 64F 8mph | OVER_8.5 +72.71% |
+| 9:10p ET | SFG @ COL | Coors Field | 59F 6mph | OVER_11.0 +7.41% |
+| 10:05p ET | NYY @ OAK | Sutter Health Park | 64F 6mph | NYY_ML +26.83% |
 | 10:10p ET | ARI @ SEA | T-Mobile Park | indoor | OVER_7.0 +8.83% |
-| 10:10p ET | PHI @ LAD | UNIQLO Field at Dodger Stadium | 60F 3mph | LAD_ML +19.56% |
+| 10:10p ET | PHI @ LAD | UNIQLO Field at Dodger Stadium | 59F 1mph | LAD_ML +19.27% |
 
 ## Parlays - top 5
 
@@ -54,13 +54,13 @@ _Generated at 2026-05-30T21:17:59 UTC. Game lines source: **Bovada (fallback -- 
 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
-| batter singles | 3232 | 42.5% | 44.5% | 1.047 | 0.955 |
-| batter rbis | 6464 | 19.1% | 23.3% | 1.223 | 0.818 |
-| batter doubles | 3232 | 14.6% | 16.0% | 1.096 | 0.912 |
 | batter home runs | 3232 | 10.1% | 12.9% | 1.286 | 0.778 |
-| pitcher strikeouts | 1364 | 34.4% | 38.4% | 1.116 | 0.897 |
 | batter runs scored | 3232 | 35.7% | 38.8% | 1.085 | 0.921 |
+| batter rbis | 6464 | 19.1% | 23.3% | 1.223 | 0.818 |
+| pitcher strikeouts | 1364 | 34.4% | 38.4% | 1.116 | 0.897 |
 | batter total bases | 6466 | 25.1% | 32.0% | 1.277 | 0.783 |
+| batter singles | 3232 | 42.5% | 44.5% | 1.047 | 0.955 |
+| batter doubles | 3232 | 14.6% | 16.0% | 1.096 | 0.912 |
 | batter hits | 6466 | 38.5% | 41.8% | 1.086 | 0.921 |
 
 Cumulative graded plays: 118201. Wins: 87361. Hit rate: 73.9%.
@@ -70,11 +70,11 @@ Cumulative graded plays: 118201. Wins: 87361. Hit rate: 73.9%.
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
 | ARI @ SEA | 48.4% | +107 | 3.63 | +101 | -101 |
-| ATL @ CIN | 25.6% | +290 | 6.78 | +1624 | -1624 |
-| CHC @ STL | 51.8% | -107 | 3.24 | +530 | -530 |
+| ATL @ CIN | 25.6% | +290 | 6.79 | +1624 | -1624 |
+| CHC @ STL | 51.8% | -107 | 3.29 | +527 | -527 |
 | NYY @ OAK | 53.6% | -115 | 3.23 | +600 | -600 |
-| PHI @ LAD | 51.4% | -106 | 3.33 | -117 | +117 |
-| SFG @ COL | 22.2% | +350 | 7.76 | +242 | -242 |
+| PHI @ LAD | 51.4% | -106 | 3.32 | -116 | +116 |
+| SFG @ COL | 22.2% | +350 | 7.29 | +241 | -241 |
 
 ## Team Form (last 10)
 
