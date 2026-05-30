@@ -1,52 +1,65 @@
 # Tonight's Slate Brief — 2026-05-30
 
-## Slate Quality: 52/100 (LOW)
+## Slate Quality: 54/100 (LOW)
 _0% lineups confirmed · 14 rookie SPs_
 **Recommendation:** Defensive sizing tonight; stick to highest-confidence plays.
 
 ## Slate
 - **15 games** scheduled
-- **24 best bets** scored: 0 DK · 0 PP · 7 NRFI · 0 SGP
-- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$45.29
-- **MC simulation:** EV +$108.48, 86% P(profit), p05 $-63.65 / p95 $318.15
+- **30 best bets** scored: 0 DK · 0 PP · 9 NRFI · 6 SGP
+- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$45.24
+- **MC simulation:** EV +$97.3, 82% P(profit), p05 $-89.3 / p95 $269.36
 
 ## Top 5 Best Bets
-1. **SFG @ COL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +36.0%)
-   - P(YRFI) 82.0% vs baseline 46.0%
-2. **DET @ CHW YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +24.2%)
-   - P(YRFI) 70.2% vs baseline 46.0%
-3. **CHC @ STL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +20.6%)
-   - P(YRFI) 66.6% vs baseline 46.0%
-4. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
+1. **SFG @ COL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +31.8%)
+   - P(YRFI) 77.8% vs baseline 46.0%
+2. **ATL @ CIN YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +28.4%)
+   - P(YRFI) 74.4% vs baseline 46.0%
+3. **MIL @ HOU YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +24.3%)
+   - P(YRFI) 70.3% vs baseline 46.0%
+4. **SDP @ WSN YRFI (1st-inning OVER 0.5)**  (78/100 ****, edge +18.1%)
+   - P(YRFI) 64.1% vs baseline 46.0%
+5. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
    - Player prop quality score 1.1935
    - Elite player
-5. **LOL ShowMaker OVER 3.5 Kills**  (78/100 ****, edge —)
-   - Player prop quality score 1.1892
-   - Elite player
 
-## ⚠️ Trap Warnings — 8 flagged
+## ⚠️ Trap Warnings — 15 flagged
 - **SFG @ COL YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +36.0% looks big but only 0 settled props on this player — model unproven
-- **DET @ CHW YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +24.2% looks big but only 0 settled props on this player — model unproven
-- **CHC @ STL YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +20.6% looks big but only 0 settled props on this player — model unproven
-- **NYY @ OAK YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +17.6% looks big but only 0 settled props on this player — model unproven
-- **ARI @ SEA YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +17.4% looks big but only 0 settled props on this player — model unproven
+   - Edge +31.8% looks big but only 0 settled props on this player — model unproven
+- **ATL @ CIN YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +28.4% looks big but only 0 settled props on this player — model unproven
+- **SDP @ WSN 2-leg SGP @ -256** (low):
+   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
+- **CHC @ STL 2-leg SGP @ -205** (low):
+   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
+- **MIL @ HOU 2-leg SGP @ -173** (low):
+   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
+
+## Weather leans
+- **OVER lean** (wind out + warm): SFG @ COL
 
 ## Hot streaks
-**Batters heating up:** Thomas Saggese (heat +7.50), Charles McAdoo (heat +7.50), Yordan Alvarez (heat +7.01)
-**Pitchers on a run:** Grant Holmes (heat +11.64), Justin Wrobleski (heat +10.93), Taj Bradley (heat +10.50)
+**Batters heating up:** Amed Rosario (heat +8.50), Yordan Alvarez (heat +7.01), Ryan McMahon (heat +5.88)
+**Pitchers on a run:** Reid Detmers (heat +6.76), Brandon Sproat (heat +5.62), J.T. Ginn (heat +5.12)
+
+## Top correlation-aware SGPs
+- **SDP @ WSN** 2-leg @ -256 fair (joint 0.72, EV +25.0%)
+   - Michael King OVER 3.5 pitcher strikeouts
+   - Michael King UNDER 8.5 pitcher strikeouts
+- **CHC @ STL** 2-leg @ -205 fair (joint 0.67, EV +25.0%)
+   - Ben Brown OVER 3.5 pitcher strikeouts
+   - Kyle Leahy UNDER 6.5 pitcher strikeouts
+- **MIL @ HOU** 2-leg @ -173 fair (joint 0.63, EV +25.0%)
+   - Brandon Sproat OVER 3.5 pitcher strikeouts
+   - Brandon Sproat UNDER 7.5 pitcher strikeouts
 
 ## Bullpens GASSED tonight
-Toronto Blue Jays, Minnesota Twins, Atlanta Braves, Chicago White Sox, Los Angeles Angels, Baltimore Orioles, Boston Red Sox, Chicago Cubs
+Athletics, Pittsburgh Pirates, St. Louis Cardinals, Toronto Blue Jays, Minnesota Twins, Atlanta Braves, Chicago White Sox, Milwaukee Brewers
 _Lean late-inning OVER on these games; fade their save situations._
 
 ## NRFI/YRFI strong leans
-- **YRFI** (1st-inning OVER): SFG @ COL, DET @ CHW, CHC @ STL, NYY @ OAK, ARI @ SEA
-- **NRFI** (1st-inning UNDER): LAA @ TBR
+- **YRFI** (1st-inning OVER): SFG @ COL, ATL @ CIN, MIL @ HOU, SDP @ WSN, MIN @ PIT
+- **NRFI** (1st-inning UNDER): MIA @ NYM
 
 ## Golf -- Charles Schwab Challenge
 - **Leader:** Jordan Smith (-10) at #1
@@ -60,12 +73,12 @@ _Lean late-inning OVER on these games; fade their save situations._
 ## NHL -- PLAYOFFS
 - Montreal Canadiens @ Carolina Hurricanes (48-24-10 vs 53-22-7) 1-6 | P(home) 100.0% fair +0 | Final
 
-## LoL Esports -- 0 live, 30 upcoming
+## LoL Esports -- 1 live, 30 upcoming
+- [LCK] BNK FEARX vs T1 BO3 | P(A) 37.2% fair +169/-169
 - [LCK Challengers] kt Challengers vs T1 Esports Academy BO3 | P(A) 43.6% fair +129/-129
 - [LCK Challengers] BNK FEARX Youth vs KRX Challengers BO3 | P(A) 37.4% fair +167/-167
 - [LCK Challengers] HLE Challengers vs BRO Challengers BO3 | P(A) 52.9% fair -112/+112
 - [LCK Challengers] NS Challengers vs DK Challengers BO3 | P(A) 55.3% fair -124/+124
-- [LCK Challengers] DNS Challengers vs Gen.G Global Academy BO3 | P(A) 67.9% fair -211/+211
 - **LoL POT:** Shopify Rebellion ML vs Team Liquid Alienware (LCS, BO5) (HIGH)
 
 ## Player Play of the Day -- across all sports (3497 candidates scanned)
