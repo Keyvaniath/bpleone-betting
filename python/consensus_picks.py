@@ -120,8 +120,14 @@ def run() -> Dict[str, Any]:
             tier = "ELITE" if n_hit_fade >= 4 else ("STRONG" if n_hit_fade >= 3 else "GOOD")
             consensus_hit_fade.append({**v, "tier": tier, "n_agreeing": n_hit_fade})
         if n_hr_boost >= 2:
-            tier = "ELITE" if n_hr_boost >= 4 else ("STRONG" if n_hr_boost >= 3 else "GOOD")
-            consensus_hr_boost.append({**v, "tier": tier, "n_agreeing": n_hr_boost})
+            # HR consensus is PROVEN -EV: -71% ROI over 138 settled picks. A home
+            # run is a rare event and model agreement on it does not create edge
+            # (the book's juice on HR longshots swamps it). Demote to a
+            # non-featured tier so it is never published as a strong play -- the
+            # ledger collects only ELITE/STRONG. Kept for ongoing monitoring,
+            # explicitly flagged AVOID rather than presented as a pick.
+            consensus_hr_boost.append({**v, "tier": "EXPERIMENTAL", "n_agreeing": n_hr_boost,
+                                       "proven_negative_ev": True, "recommendation": "AVOID"})
 
     # Rank by n_agreeing then by sum of deltas
     def _rank(v, key):
@@ -143,6 +149,10 @@ def run() -> Dict[str, Any]:
         "n_hit_boost_consensus": len(consensus_hit_boost),
         "n_hit_fade_consensus": len(consensus_hit_fade),
         "n_hr_boost_consensus": len(consensus_hr_boost),
+        "hr_boost_status": "RETIRED_NEGATIVE_EV",
+        "hr_boost_note": ("HR consensus retired from featured picks: proven -71% ROI "
+                           "over 138 settled. Shown for monitoring only, flagged AVOID "
+                           "-- not a recommendation. The hit consensus (+64% ROI) stays."),
         "hit_boost_tiers": _count_tiers(consensus_hit_boost),
         "hit_fade_tiers": _count_tiers(consensus_hit_fade),
         "hr_boost_tiers": _count_tiers(consensus_hr_boost),
