@@ -117,6 +117,8 @@ def run() -> Dict[str, Any]:
         "result": _result_class(p.get("result")),
         "pl": round(float(p.get("payout_units") or 0.0), 3),
         "clv": None,
+        "outcome": (p.get("outcome") or {}).get("verify"),
+        "outcome_check": (p.get("outcome") or {}).get("check"),
     } for p in picks[-50:][::-1]]
 
     payload = {

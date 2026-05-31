@@ -150,16 +150,20 @@ window.EdgeStatExtras = (function () {
     const tbody = document.querySelector('#btTable tbody');
     if (tbody) {
       const bets = (data.recent_bets || []).slice(0, 50);
+      const checkCell = (c) => !c ? '—'
+        : c.indexOf('verified') === 0
+          ? '<span style="color:#4ade80;" title="current box score still agrees with the recorded result">✓</span>'
+          : '<span style="color:#d4a04a;" title="' + c.replace(/"/g, "'") + '">⚠ revised</span>';
       tbody.innerHTML = bets.length ? bets.map(b => `<tr>
         <td>${b.day || ''}</td><td class="matchup">${b.matchup || ''}</td>
         <td>${(b.side || '').replace(/_/g, ' ')}${b.source ? ' <span class="muted" style="font-size:10px;">' + b.source + '</span>' : ''}</td>
         <td>${b.price != null ? fmtPrice(b.price) : '—'}</td>
-        <td>${b.close != null ? fmtPrice(b.close) : '—'}</td>
+        <td style="font-size:11px; color:var(--text,#eaeaea);">${b.outcome || '—'}</td>
         <td>${b.stake}u</td>
         <td>${b.edge != null ? '+' + Number(b.edge).toFixed(1) + '%' : '—'}</td>
         <td class="${b.result === 'WIN' ? 'positive' : b.result === 'LOSS' ? 'negative' : ''}">${b.result}</td>
         <td class="${b.pl >= 0 ? 'positive' : 'negative'}">${b.pl >= 0 ? '+' : ''}${b.pl}u</td>
-        <td>${b.clv != null ? b.clv + '%' : '—'}</td>
+        <td>${checkCell(b.outcome_check)}</td>
       </tr>`).join('') : `<tr><td colspan="10" class="muted" style="padding:14px;text-align:center;">No settled plays yet.</td></tr>`;
     }
 

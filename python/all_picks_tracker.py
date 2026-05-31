@@ -1304,6 +1304,17 @@ def _grade_batter_prop(market: str, pick: Dict[str, Any], by_name: Dict[str, Any
         if stat is None:
             continue
         over_wins = stat > line
+        side = "UNDER/NO" if is_under else "OVER/YES"
+        # Record the real box-score number that settled this pick so it is
+        # independently verifiable (cross-check against any box score).
+        pick["outcome"] = {
+            "stat": field,
+            "actual": stat,
+            "line": line,
+            "side": side,
+            "verify": (f"{pick.get('player_or_matchup')} — {field} = {stat} "
+                       f"(line {line}, bet {side}) on {pick.get('date')}"),
+        }
         if is_under:
             return "won" if not over_wins else "lost"
         return "won" if over_wins else "lost"
@@ -1369,6 +1380,14 @@ def _settle_picks(history: List[Dict[str, Any]]) -> int:
                     result = "won" if home_s > away_s else "lost"
                 elif "ml_away" in market:
                     result = "won" if away_s > home_s else "lost"
+                # Record the real final score that settled it (verifiable).
+                away_ab = g.get("away_abbrev", ""); home_ab = g.get("home_abbrev", "")
+                p["outcome"] = {
+                    "final_score": f"{away_ab} {away_s} @ {home_ab} {home_s}",
+                    "total_runs": total,
+                    "verify": (f"{away_ab} @ {home_ab}: final {away_s}-{home_s} "
+                               f"(total {total} runs) on {p.get('date')}"),
+                }
                 break
 
         # Player props -- batter box-score lookup against player_gamelogs.
@@ -1488,6 +1507,59 @@ def _correct_misrouted_grades(history: List[Dict[str, Any]]) -> int:
     return n
 
 
+def _attach_outcomes(history: List[Dict[str, Any]]) -> int:
+    """Backfill the verifiable box-score outcome onto already-settled picks that
+    don't have one yet, so the EXISTING track record is auditable (not just new
+    picks). Never changes the recorded result -- only adds the 'outcome' detail
+    and an 'outcome.check' flag: 'verified' when the current box score still
+    agrees, or a note when a stat was revised after settlement."""
+    historical_mlb = _load(os.path.join(DATA_DIR, "historical_mlb.json")).get("games") or []
+    gamelogs = _load(os.path.join(DATA_DIR, "player_gamelogs.json")).get("by_player_id") or {}
+    by_name = {(prec.get("name") or "").lower(): prec
+               for prec in gamelogs.values() if isinstance(prec, dict)}
+    n = 0
+    for p in history:
+        if not p.get("settled") or p.get("outcome"):
+            continue
+        market = (p.get("market") or "").lower()
+        is_game_line = (("ml_home" in market) or ("ml_away" in market)
+                        or re.fullmatch(r"(over|under)_\d+(?:\.\d+)?", market) is not None)
+        recomputed = None
+        if is_game_line:
+            matchup = (p.get("player_or_matchup") or "").lower()
+            for g in historical_mlb:
+                if (g.get("date") or "")[:10] != p.get("date"): continue
+                g_mu = f"{g.get('away_abbrev','')} @ {g.get('home_abbrev','')}".lower()
+                if matchup not in g_mu and g_mu not in matchup: continue
+                if g.get("home_score") is None: continue
+                home_s = g.get("home_score") or 0; away_s = g.get("away_score") or 0
+                total = home_s + away_s
+                a_ab = g.get("away_abbrev", ""); h_ab = g.get("home_abbrev", "")
+                p["outcome"] = {"final_score": f"{a_ab} {away_s} @ {h_ab} {home_s}",
+                                "total_runs": total,
+                                "verify": f"{a_ab} @ {h_ab}: final {away_s}-{home_s} (total {total}) on {p.get('date')}"}
+                if "over_" in market or "under_" in market:
+                    try: ln = float(market.split("_")[-1])
+                    except Exception: ln = None
+                    if ln is not None:
+                        recomputed = "push" if total == ln else ("won" if (("over_" in market) == (total > ln)) else "lost")
+                elif "ml_home" in market:
+                    recomputed = "won" if home_s > away_s else "lost"
+                elif "ml_away" in market:
+                    recomputed = "won" if away_s > home_s else "lost"
+                break
+        else:
+            recomputed = _grade_batter_prop(market, p, by_name)  # sets p["outcome"]
+        if p.get("outcome"):
+            n += 1
+            rec = p.get("result")
+            if recomputed and recomputed != rec:
+                p["outcome"]["check"] = f"recorded {rec}; current box score -> {recomputed} (stat revised after settle)"
+            else:
+                p["outcome"]["check"] = "verified"
+    return n
+
+
 def run() -> Dict[str, Any]:
     state = _load(OUT)
     history = state.get("picks") or []
@@ -1516,6 +1588,9 @@ def run() -> Dict[str, Any]:
 
     # Correct picks that were mis-graded as full-game totals (fabricated losses).
     n_corrected = _correct_misrouted_grades(history)
+
+    # Backfill verifiable box-score outcomes onto settled picks (auditable record).
+    n_outcomes = _attach_outcomes(history)
 
     if len(history) > MAX_PICKS:
         history = history[-MAX_PICKS:]
