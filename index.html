@@ -42,6 +42,7 @@
             <div style="font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:#4ade80; font-weight:700;">★ Alpha — recommended plays</div>
             <div id="hcAlphaNet" style="font-size:30px; font-weight:800; font-family:'JetBrains Mono',monospace; margin:4px 0 2px; color:#4ade80;">--u</div>
             <div style="font-size:11px; color:var(--text-2,#9fb0c8); font-family:'JetBrains Mono',monospace;"><span id="hcAlphaRoi">--</span> ROI · <span id="hcAlphaHit">--</span> hit · <span id="hcAlphaN">--</span> plays</div>
+            <div id="hcAlphaTag" style="display:none; font-size:9px; color:#d4a04a; margin-top:5px; line-height:1.4;"></div>
           </div>
           <div style="padding:14px 16px; border-radius:10px; border:1px solid rgba(255,255,255,0.10); background:rgba(255,255,255,0.02);">
             <div style="font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted,#888); font-weight:700;">All signals — incl. experimental</div>
@@ -960,6 +961,12 @@ fetch("data/clv_log.json", { cache: "no-cache" })
       set("hcAlphaRoi", fmtRoi(a.roi_pct));
       set("hcAlphaHit", fmtHit(a.hit_rate));
       set("hcAlphaN", String(a.n_settled || 0));
+      // Honest early-sample tag -- auto-hides once the sample matures.
+      const tag = document.getElementById("hcAlphaTag");
+      if (tag && (a.n_settled || 0) > 0 && (a.n_settled || 0) < 500) {
+        tag.style.display = "block";
+        tag.textContent = "⚠ early sample (~2 weeks live) · CLV still flat — promising, not yet proven.";
+      }
 
       // All Signals = every model output incl. experimental prop feeds (training).
       set("hcAllNet", fmtNet(d.net_units), col(d.net_units));
