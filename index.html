@@ -37,10 +37,19 @@
       <h1>The market is a number. <span class="accent">We trade the gap.</span></h1>
       <p class="lede">EdgeStat is a quantitative sports-betting research desk. We model every game, expose where the books mis-price the market, and surface the highest-edge play in the league each morning. Think of it as Unusual Whales — for the diamond, the gridiron, and the hardwood.</p>
       <div class="hero-stats" id="heroStats">
-        <div class="stat"><div class="stat-value" id="hsNetUnits">--<span class="unit">u</span></div><div class="stat-label">YTD Net Units</div></div>
-        <div class="stat"><div class="stat-value" id="hsHitRate">--<span class="unit">%</span></div><div class="stat-label">Model Hit Rate</div></div>
-        <div class="stat"><div class="stat-value" id="hsROI">--<span class="unit">%</span></div><div class="stat-label">Average ROI</div></div>
-        <div class="stat"><div class="stat-value" id="hsClosed">--<span class="unit"></span></div><div class="stat-label">Closed Plays</div></div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; width:100%;">
+          <div style="padding:14px 16px; border-radius:10px; border:1px solid rgba(74,222,128,0.35); background:rgba(74,222,128,0.06);">
+            <div style="font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:#4ade80; font-weight:700;">★ Alpha — recommended plays</div>
+            <div id="hcAlphaNet" style="font-size:30px; font-weight:800; font-family:'JetBrains Mono',monospace; margin:4px 0 2px; color:#4ade80;">--u</div>
+            <div style="font-size:11px; color:var(--text-2,#9fb0c8); font-family:'JetBrains Mono',monospace;"><span id="hcAlphaRoi">--</span> ROI · <span id="hcAlphaHit">--</span> hit · <span id="hcAlphaN">--</span> plays</div>
+          </div>
+          <div style="padding:14px 16px; border-radius:10px; border:1px solid rgba(255,255,255,0.10); background:rgba(255,255,255,0.02);">
+            <div style="font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted,#888); font-weight:700;">All signals — incl. experimental</div>
+            <div id="hcAllNet" style="font-size:30px; font-weight:800; font-family:'JetBrains Mono',monospace; margin:4px 0 2px; color:#9fb0c8;">--u</div>
+            <div style="font-size:11px; color:var(--text-2,#9fb0c8); font-family:'JetBrains Mono',monospace;"><span id="hcAllRoi">--</span> ROI · <span id="hcAllHit">--</span> hit · <span id="hcAllN">--</span> plays</div>
+          </div>
+        </div>
+        <p style="grid-column:1/-1; font-size:11px; color:var(--text-2,#9fb0c8); margin:10px 0 0; line-height:1.6;"><strong>Alpha</strong> is the plays we actually recommend (Lock of the Day, Top 25, Whale, Sharp, Consensus, Under Alerts, POD). <strong>All Signals</strong> also counts every experimental prop feed — those exist to <em>train</em> the model at 1u-flat, not to bet, which is why the blended line runs negative. <a href="backtest.html" style="color:var(--accent,#4ade80);">Full track record →</a></p>
       </div>
       <div class="hero-cta">
         <a href="play-of-day.html" class="btn-primary big">View Today's Play of the Day</a>
@@ -936,47 +945,27 @@ fetch("data/clv_log.json", { cache: "no-cache" })
 // record was 4-2 — that gap was because the hero card scoped to POD-only.
 // POD-specific record still lives on pod-history.html.
 (function loadHeroStats() {
-  const setText = (id, v) => { const el = document.getElementById(id); if (el) el.firstChild.textContent = v; };
   fetch("data/all_picks_ledger.json", { cache: "no-cache" })
     .then(r => r.json())
     .then(d => {
-      const wins = d.wins || 0;
-      const losses = d.losses || 0;
-      const settled = d.n_settled || 0;
-      const net = d.net_units;
-      const roi = d.roi_pct;
-      const hr = d.hit_rate;
-      const total = d.total_picks || 0;
+      const set = (id, v, color) => { const el = document.getElementById(id); if (el) { el.textContent = v; if (color) el.style.color = color; } };
+      const fmtNet = (n) => n == null ? "--u" : (n >= 0 ? "+" : "") + n.toFixed(1) + "u";
+      const fmtRoi = (n) => n == null ? "--" : (n >= 0 ? "+" : "") + n.toFixed(1) + "%";
+      const fmtHit = (n) => n == null ? "--" : (n * 100).toFixed(0) + "%";
+      const col = (n) => n == null ? "#9fb0c8" : n > 0 ? "#4ade80" : n < 0 ? "#f87171" : "#9fb0c8";
 
-      setText("hsNetUnits", net == null || settled === 0 ? "--" : (net >= 0 ? "+" : "") + net.toFixed(2));
-      setText("hsHitRate", hr == null ? "--" : (hr * 100).toFixed(1));
-      setText("hsROI", roi == null ? "--" : (roi >= 0 ? "+" : "") + roi.toFixed(1));
-      setText("hsClosed", String(settled));
+      // Alpha = curated/recommended plays; the honest "what you'd bet" record.
+      const a = d.curated || {};
+      set("hcAlphaNet", fmtNet(a.net_units), col(a.net_units));
+      set("hcAlphaRoi", fmtRoi(a.roi_pct));
+      set("hcAlphaHit", fmtHit(a.hit_rate));
+      set("hcAlphaN", String(a.n_settled || 0));
 
-      const labels = document.querySelectorAll(".hero-stats .stat-label");
-      if (labels[0]) labels[0].textContent = "Net Units (1u flat, all picks)";
-      if (labels[1]) labels[1].textContent = "Hit Rate";
-      if (labels[2]) labels[2].textContent = "ROI %";
-      if (labels[3]) labels[3].textContent = "Picks Settled";
-
-      const stats = document.querySelector(".hero-stats");
-      if (stats && !document.getElementById("podProgress")) {
-        const note = document.createElement("div");
-        note.id = "podProgress";
-        note.style.cssText = "grid-column: 1 / -1; font-family:'JetBrains Mono',monospace; font-size:11px; color:#d4a04a; padding:8px 0 0; opacity:0.9;";
-        const bySrc = d.by_source || {};
-        const srcSummary = Object.entries(bySrc)
-          .map(([k, v]) => `${k}: ${v.wins}-${v.losses}`)
-          .join(' · ');
-        if (settled === 0 && total > 0) {
-          note.innerHTML = `* <strong>All-picks track record:</strong> ${total} picks recorded, ${d.n_pending || 0} pending settlement. 1u flat stake.`;
-        } else if (settled > 0 && settled < 30) {
-          note.innerHTML = `* All-picks track record: <strong>${wins}-${losses}</strong> in ${settled} settled · ${srcSummary} · ${d.n_pending || 0} pending. Per-source breakdown on <a href="accuracy.html" style="color:#d4a04a; text-decoration: underline;">Accuracy &rarr;</a> · POD-only on <a href="pod-history.html" style="color:#d4a04a; text-decoration: underline;">POD History &rarr;</a>.`;
-        } else if (settled === 0) {
-          note.innerHTML = `* No picks settled yet -- first records land tomorrow.`;
-        }
-        if (note.innerHTML) stats.appendChild(note);
-      }
+      // All Signals = every model output incl. experimental prop feeds (training).
+      set("hcAllNet", fmtNet(d.net_units), col(d.net_units));
+      set("hcAllRoi", fmtRoi(d.roi_pct));
+      set("hcAllHit", fmtHit(d.hit_rate));
+      set("hcAllN", String(d.n_settled || 0));
     })
     .catch(() => {});
 })();

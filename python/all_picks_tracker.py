@@ -1533,6 +1533,37 @@ def run() -> Dict[str, Any]:
     n_risked = sum(1 for p in settled if p["result"] != "push")
     roi_pct = round(net_units / n_risked * 100, 2) if n_risked > 0 else None
 
+    # ---- CURATED ("Alpha") rollup: the featured/recommended plays only, to
+    #      compare against the full all-signals firehose above. This is the
+    #      honest "what you'd actually bet" record. Experimental prop feeds are
+    #      tracked to train the model but are NOT recommended plays.
+    _CURATED_PREFIXES = ("lock_of_day", "top_25_board", "whale_", "consensus_hit",
+                         "sharp_", "mlb_under_alert", "pod")
+
+    def _is_curated(src):
+        s = src or ""
+        return any(s == pre or s.startswith(pre) for pre in _CURATED_PREFIXES)
+
+    cur = [p for p in settled if _is_curated(p.get("source"))]
+    c_wins = sum(1 for p in cur if p["result"] == "won")
+    c_losses = sum(1 for p in cur if p["result"] == "lost")
+    c_pushes = sum(1 for p in cur if p["result"] == "push")
+    c_dec = c_wins + c_losses
+    c_net = round(sum((p.get("payout_units") or 0) for p in cur), 3)
+    c_risked = sum(1 for p in cur if p["result"] != "push")
+    curated = {
+        "n_settled": len(cur),
+        "wins": c_wins, "losses": c_losses, "pushes": c_pushes,
+        "hit_rate": round(c_wins / c_dec, 4) if c_dec else None,
+        "net_units": c_net,
+        "roi_pct": round(c_net / c_risked * 100, 2) if c_risked else None,
+        "sources": sorted({p.get("source") for p in cur}),
+        "definition": ("Featured/recommended plays only -- Lock of the Day, Top 25, "
+                       "Whale, Sharp, Consensus (hit), Under Alerts, POD. Excludes the "
+                       "experimental prop feeds, which are tracked to train the model, "
+                       "not bet."),
+    }
+
     # Per-source breakdown
     by_source: Dict[str, Dict[str, Any]] = {}
     for p in settled:
@@ -1599,6 +1630,7 @@ def run() -> Dict[str, Any]:
         "hit_rate": hit_rate,
         "net_units": net_units,
         "roi_pct": roi_pct,
+        "curated": curated,
         "n_added_this_run": n_added,
         "n_newly_settled_this_run": n_newly_settled,
         "n_voided_this_run": n_voided_this_run,
