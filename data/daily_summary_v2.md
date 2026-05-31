@@ -1,58 +1,51 @@
 # EdgeStat Daily Summary — 2026-05-31
 
-## 🏥 Model Health: 80.0/100 [HEALTHY]
+## 🏥 Model Health: 79.1/100 [HEALTHY]
 - Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 99.9/100
+  - 🟢 Calibration Freshness: 100.0/100
   - 🟢 Hit Rate Trend: 84.3/100
   - 🔴 Brier Trend: 52.3/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟡 Data Health: 77.8/100
-  - 🟡 Edge Count: 71.4/100
+  - 🟢 Data Health: 88.9/100
+  - 🔴 Edge Count: 40.0/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.58)
-- **Total games on board:** 141
-- **Strong home favorites:** 13 | **Strong road dogs:** 6
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.586)
+- **Total games on board:** 100
+- **Strong home favorites:** 1 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
 1. **SFG @ COL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-2. **ATL @ CIN YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-3. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
-4. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
-5. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
+2. **MIA @ NYM YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+3. **DET @ CHW YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+4. **ATL @ CIN YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+5. **SDP @ WSN YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
-- [WHALE] **[MLB-PP]** Michael Harris II PP_batter_hrr_over_0.5 -- 85% / +47.2% (score 3.5)
-- [STRONG] **[MLB]** CHC @ STL CHC_ML -- 66% / +23.4% (score 2.5)
-- [STRONG] **[MLB]** ATL @ CIN ATL_ML -- 71% / +22.8% (score 2.5)
+- [WHALE] **[MLB-PP]** Michael Harris II PP_batter_hrr_over_0.5 -- 85% / +47.4% (score 3.5)
+- [STRONG] **[MLB-PP]** Casey Schmitt PP_batter_hrr_under_4.5 -- 85% / +47.1% (score 2.5)
+- [STRONG] **[MLB]** ATL @ CIN ATL_ML -- 72% / +24.7% (score 2.5)
+- [STRONG] **[MLB]** ATL @ CIN ML_AWAY -- 70% / +20.9% (score 2.5)
 
 ## 🔒 Locks of the Day -- Track Record
-- All-time: **57-8** (87.7% hit rate)
-- Net units: **+2.10u** | ROI: **+52.2%**
-- Last 7d: 40-5 (88.9%) | net +1.51u
+- All-time: **59-9** (86.8% hit rate)
+- Net units: **+2.13u** | ROI: **+50.6%**
+- Last 7d: 38-5 (88.4%) | net +1.42u
 
-**Today's 13 Locks:**
-- [MLB-PP] **Kyle Isbel** PP_batter_hrr_under_3.5 · p=84% edge=+45.6% qK=0.062u
-- [MLB-PP] **Fernando Tatis Jr.** PP_batter_hrr_under_3.5 · p=84% edge=+45.5% qK=0.062u
-- [MLB-PP] **Jonah Heim** PP_batter_hrr_under_3.5 · p=84% edge=+45.5% qK=0.062u
-- [MLB-PP] **Vinnie Pasquantino** PP_batter_hrr_under_3.5 · p=84% edge=+45.5% qK=0.062u
-- [MLB-PP] **Brandon Lowe** PP_batter_hrr_under_4.5 · p=84% edge=+45.5% qK=0.062u
-- [MLB-PP] **Luis Torrens** PP_batter_hrr_under_3.5 · p=84% edge=+46.4% qK=0.062u
-- [MLB-PP] **Michael Harris II** PP_batter_hrr_over_0.5 · p=84% edge=+46.2% qK=0.062u
-- [MLB-PP] **Elly De La Cruz** PP_batter_hrr_under_4.5 · p=84% edge=+46.1% qK=0.062u
-- [MLB-PP] **Nick Fortes** PP_batter_hrr_under_3.5 · p=84% edge=+46.1% qK=0.062u
-- [MLB-PP] **Jonathan Aranda** PP_batter_hrr_under_4.5 · p=84% edge=+46.4% qK=0.062u
-- [MLB-PP] **William Contreras** PP_batter_hrr_under_4.5 · p=84% edge=+46.4% qK=0.062u
-- [MLB-PP] **Casey Schmitt** PP_batter_hrr_under_4.5 · p=85% edge=+47.0% qK=0.062u
-- [MLB-PP] **Jeff McNeil** PP_batter_hrr_under_3.5 · p=85% edge=+47.0% qK=0.062u
+**Today's 5 Locks:**
+- [MLB-PP] **Michael Harris II** PP_batter_hrr_over_0.5 · p=85% edge=+47.4% qK=0.062u
+- [MLB-PP] **Jonah Heim** PP_batter_hrr_under_3.5 · p=85% edge=+47.3% qK=0.062u
+- [MLB-PP] **Elly De La Cruz** PP_batter_hrr_under_4.5 · p=85% edge=+47.2% qK=0.062u
+- [MLB-PP] **Casey Schmitt** PP_batter_hrr_under_4.5 · p=85% edge=+47.1% qK=0.062u
+- [MLB-PP] **Jeff McNeil** PP_batter_hrr_under_3.5 · p=85% edge=+47.1% qK=0.062u
 
 ## 🎰 Top Balanced 2-Leg Parlays (40-65% joint)
 - [MLB-PP] Michael Harris II PP_batter_hrr_over_0 + [KBO] Choi Jeong one_plus_tb
-  Joint: 62% | Fair: 231 | Edge: +105.8%
+  Joint: 62% | Fair: 231 | Edge: +106.0%
 - [MLB-PP] Jonah Heim PP_batter_hrr_under_ + [KBO] Choi Jeong one_plus_tb
-  Joint: 62% | Fair: 231 | Edge: +105.8%
+  Joint: 62% | Fair: 231 | Edge: +106.0%
 - [MLB-PP] Elly De La Cruz PP_batter_hrr_under_ + [KBO] Choi Jeong one_plus_tb
-  Joint: 62% | Fair: 231 | Edge: +105.6%
+  Joint: 62% | Fair: 231 | Edge: +105.8%
 
 ## 🎮 Player Play of the Day (cross-sport)
 - **[LOL]** Inspired UNDER 3.5 Kills | MED conviction · model 61.7% fair -161
@@ -61,47 +54,37 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (5)
-- [CWS] **Nebraska Cornhuskers** HOME (1-0 L10) · model 74.5% fair -292
-- [CWS] **Northern Illinois Huskies** HOME (1-0 L10) · model 72.6% fair -265
-- [CWS] **Mississippi State Bulldogs** HOME (2-0 L10) · model 68.7% fair -219
-- [CWS] **Cal Poly Mustangs** HOME (3-0 L10) · model 67.4% fair -206
-- [CWS] **Florida Gators** HOME (2-0 L10) · model 62.1% fair -164
-
 ## 🔥/❄️ Heat / Cold Signals
 - Hot teams: **12** | Cold teams: **17** | Over-heavy: 0 | Under-heavy: 4
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (6)
-- RESIDUAL_DIVERGENCE: **6**
+## ⚠️ Anomaly Detector (1)
+- RESIDUAL_DIVERGENCE: **1**
   - Vegas Golden Knights (NHL): Vegas Golden Knights UNDERPERFORMING expected margin by 13.2pts in recent games -- model bias may persist
-  - Georgia Bulldogs (CWS): Georgia Bulldogs OUTPERFORMING expected margin by 7.7pts in recent games -- model bias may persist
-  - North Carolina Tar Heels (CWS): North Carolina Tar Heels OUTPERFORMING expected margin by 11.0pts in recent games -- model bias may persist
-  - South Carolina Upstate Spartans (CWS): South Carolina Upstate Spartans OUTPERFORMING expected margin by 7.5pts in recent games -- model bias may persist
-  - Georgia Tech Yellow Jackets (CWS): Georgia Tech Yellow Jackets OUTPERFORMING expected margin by 6.7pts in recent games -- model bias may persist
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$6.54**
-  - #1 [NRFI] $50 on SFG @ COL YRFI (1st-inning OVER 0.5) (P=78%)
-  - #2 [NRFI] $50 on ATL @ CIN YRFI (1st-inning OVER 0.5) (P=74%)
-  - #3 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
-  - #4 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
-  - #5 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
+- Expected EV: **$17.54**
+  - #1 [NRFI] $50 on SFG @ COL YRFI (1st-inning OVER 0.5) (P=85%)
+  - #2 [NRFI] $50 on MIA @ NYM YRFI (1st-inning OVER 0.5) (P=79%)
+  - #3 [NRFI] $50 on DET @ CHW YRFI (1st-inning OVER 0.5) (P=69%)
+  - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
+  - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
-## 🎯 Convergence Picks (12 stacked games)
-- ELITE: **4** · HIGH: 4 · MED: 4
+## 🎯 Convergence Picks (9 stacked games)
+- ELITE: **2** · HIGH: 3 · MED: 4
   - [ELITE] Vegas Golden Knights @ Carolina Hurricanes : 5 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
-  - [ELITE] Philadelphia Union @ Inter Miami CF : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
-  - [ELITE] Wolverhampton Wanderers @ Burnley : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
   - [ELITE] Arsenal @ Crystal Palace : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
-  - [HIGH] San Antonio Spurs @ Oklahoma City Thunder : 3 signals (PREGAME, HEAT_COLD, HEAT_COLD)
+  - [HIGH] Seattle Storm @ Toronto Tempo : 3 signals (HEAT_COLD, HEAT_COLD, ATS)
+  - [HIGH] Philadelphia Union @ Inter Miami CF : 3 signals (HEAT_COLD, HEAT_COLD, ATS)
+  - [HIGH] Wolverhampton Wanderers @ Burnley : 3 signals (HEAT_COLD, ATS, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (4)
-- **Jesús Luzardo** OVER 4.5 K (67%) fair -207
-- **J.T. Ginn** OVER 4.5 K (67%) fair -202
-- **Martín Pérez** OVER 4.5 K (67%) fair -199
-- **Bryan Woo** OVER 4.5 K (61%) fair -159
+## ⚾ Top MLB Pitcher K Plays (11)
+- **Will Warren** OVER 4.5 K (77%) fair -332
+- **Spencer Strider** OVER 4.5 K (77%) fair -326
+- **Yoshinobu Yamamoto** OVER 4.5 K (76%) fair -321
+- **Braxton Ashcraft** OVER 4.5 K (75%) fair -295
+- **Bryce Miller** OVER 5.5 K (70%) fair -233
 
 ## 🏀 NBA Player Heat (18 HOT / 22 COLD)
   - 🔥 **Jeremiah Fears** (NO): L5 31.8/5.8/6.0 vs season 16.9/3.2/4.0 [PTS +14.9, REB +2.6, AST +2.0]
@@ -114,7 +97,7 @@
   - ❄️ **Caleb Love** (POR): L5 2.6 vs season 10.8 [PTS -8.2, REB -2.1, AST -2.4] -- FADE OVER props
 
 ## 🥊 UFC Fight Matchups (UFC Fight Night: Song vs. Figueiredo)
-  - [FAVORITE] **Jingnan Xiong** (19-2-0) vs Angela Hill -- fair -196
+  - [LEAN] **Jingnan Xiong** (19-3-0) vs Angela Hill -- fair -180
   - [LEAN] **Kai Asakura** (22-6-0) vs Cameron Smotherman -- fair -158
   - [LEAN] **Jaqueline Amorim** (11-2-0) vs Loma Lookboonmee -- fair -148
   - [LEAN] **Rei Tsuruya** (11-1-0) vs Luis Gurule -- fair -147
@@ -142,12 +125,15 @@
   - ❄️ **Braden Shewmake** (HOU): L14 .108 / season .243 (-135pts) -- FADE props
   - ❄️ **Austin Martin** (MIN): L14 .137 / season .269 (-132pts) -- FADE props
 
-## 📈 Streak Regression Alerts (9)
+## 😴 B2B Fatigue Edges (1)
+- [NHL] FADE Carolina Hurricanes (home on B2B)
+
+## 📈 Streak Regression Alerts (7)
 - [NHL] Carolina Hurricanes on W4 L10 4-1 -- Carolina Hurricanes on W4 -- no historical sample
 - [NHL] Vegas Golden Knights on W4 L10 4-0 -- Vegas Golden Knights on W4 -- no historical sample
-- [WNBA] Connecticut Sun on L3 L10 1-4 -- Connecticut Sun on L3 -- no historical sample
-- [WNBA] Los Angeles Sparks on W3 L10 3-1 -- Los Angeles Sparks on W3 -- no historical sample
-- [CWS] Georgia Bulldogs on W3 L10 3-0 -- Georgia Bulldogs on W3 -- no historical sample
+- [CWS] NC State Wolfpack on L3 L10 0-3 -- NC State Wolfpack on L3 -- no historical sample
+- [CWS] Georgia Bulldogs on W4 L10 4-0 -- Georgia Bulldogs on W4 -- no historical sample
+- [CWS] Georgia Tech Yellow Jackets on W3 L10 3-0 -- Georgia Tech Yellow Jackets on W3 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**
