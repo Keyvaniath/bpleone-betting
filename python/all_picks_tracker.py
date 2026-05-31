@@ -1337,8 +1337,15 @@ def _settle_picks(history: List[Dict[str, Any]]) -> int:
         payout = None
         decimal_odds = _american_to_decimal(p.get("fair_american")) or 1.91
 
-        # Game-level (ML, OVER, UNDER)
-        if any(k in market for k in ("ml_home", "ml_away", "over_", "under_")) and "pp_" not in market:
+        # Game-level: FULL-GAME moneyline or FULL-GAME total ONLY.
+        # 2026-05-31 fix: props like team_sb_under_0.5, inning totals
+        # (inn_4_6_under_2.5) and first-5 totals (f5_total_under_4) also contain
+        # "under_"/"over_" and were being graded HERE against the full 9-inning
+        # run total -> systematically wrong "lost" results (fabricated losses).
+        # A true game total is exactly "over_X"/"under_X" with nothing else.
+        is_game_line = (("ml_home" in market) or ("ml_away" in market)
+                        or re.fullmatch(r"(over|under)_\d+(?:\.\d+)?", market) is not None)
+        if is_game_line:
             matchup = (p.get("player_or_matchup") or "").lower()
             for g in historical_mlb:
                 g_date = (g.get("date") or "")[:10]
@@ -1453,6 +1460,34 @@ def _void_stale_pending(history: List[Dict[str, Any]]) -> int:
     return n
 
 
+def _correct_misrouted_grades(history: List[Dict[str, Any]]) -> int:
+    """One-time correction: un-settle + void picks mis-graded by the old
+    over-broad game-level routing. Props that contain over_/under_ (team SB,
+    inning totals, first-5 totals) were graded against the FULL-game run total
+    and almost always recorded 'lost' -- fabricated losses. We have no feed to
+    grade them correctly, so the honest result is void (removed from W/L/ROI).
+    Idempotent: once voided they are skipped."""
+    n = 0
+    for p in history:
+        if not p.get("settled") or p.get("voided"):
+            continue
+        m = (p.get("market") or "").lower()
+        routed_gl = (any(k in m for k in ("ml_home", "ml_away", "over_", "under_"))
+                     and "pp_" not in m)
+        true_gl = (("ml_home" in m) or ("ml_away" in m)
+                   or re.fullmatch(r"(over|under)_\d+(?:\.\d+)?", m) is not None)
+        if routed_gl and not true_gl:
+            p["settled"] = False
+            p["result"] = "pending"
+            p["payout_units"] = None
+            p.pop("settled_at", None)
+            p["voided"] = True
+            p["voided_at"] = dt.datetime.now().isoformat(timespec="seconds")
+            p["voided_reason"] = "mis-graded prop (was scored as a full-game total); voided"
+            n += 1
+    return n
+
+
 def run() -> Dict[str, Any]:
     state = _load(OUT)
     history = state.get("picks") or []
@@ -1478,6 +1513,9 @@ def run() -> Dict[str, Any]:
     # Void picks that can never settle (no outcome feed, > VOID_AFTER_DAYS old)
     # so 'pending' stays honest and the ledger self-cleans.
     n_voided_this_run = _void_stale_pending(history)
+
+    # Correct picks that were mis-graded as full-game totals (fabricated losses).
+    n_corrected = _correct_misrouted_grades(history)
 
     if len(history) > MAX_PICKS:
         history = history[-MAX_PICKS:]
