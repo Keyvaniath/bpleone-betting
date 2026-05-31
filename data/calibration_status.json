@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-05-31T22:46:56",
+  "generated_at": "2026-05-31T23:00:26",
   "calibration_tier": "REFINING",
   "calibration_progress_pct": 70,
   "calibration_note": "30+ settled outcomes -- per-source shrinkage tuning kicks in.",
   "n_settled_locks": 76,
-  "n_locks_pending": 85,
+  "n_locks_pending": 90,
   "shrinkage_baseline_prob": 0.55,
   "default_shrinkage_w": 0.55,
   "per_source_shrinkage_w": {
@@ -26,32 +26,60 @@
     "nhl_goalie": 0.65,
     "mlb_team_total": 0.6
   },
-  "n_plays_calibrated": 200,
-  "avg_raw_prob": 0.911,
-  "avg_calibrated_prob": 0.7922,
-  "avg_compression_pp": 11.9,
-  "max_raw_prob": 0.92,
+  "n_plays_calibrated": 71,
+  "avg_raw_prob": 0.871,
+  "avg_calibrated_prob": 0.737,
+  "avg_compression_pp": 13.4,
+  "max_raw_prob": 0.9188,
   "by_source": {
-    "pp_over": {
-      "n": 12,
-      "max_raw": 0.9197,
-      "shrinkage_w": 0.45,
-      "avg_raw_prob": 0.9097,
-      "avg_cal_prob": 0.8426,
-      "avg_compression_pp": 6.7
-    },
     "pp_under": {
-      "n": 188,
-      "max_raw": 0.92,
+      "n": 55,
+      "max_raw": 0.9188,
       "shrinkage_w": 0.45,
-      "avg_raw_prob": 0.911,
-      "avg_cal_prob": 0.789,
-      "avg_compression_pp": 12.2
+      "avg_raw_prob": 0.8866,
+      "avg_cal_prob": 0.7469,
+      "avg_compression_pp": 14.0
+    },
+    "pp_over": {
+      "n": 3,
+      "max_raw": 0.883,
+      "shrinkage_w": 0.45,
+      "avg_raw_prob": 0.8723,
+      "avg_cal_prob": 0.7713,
+      "avg_compression_pp": 10.1
+    },
+    "kbo_player": {
+      "n": 10,
+      "max_raw": 0.8813,
+      "shrinkage_w": 0.55,
+      "avg_raw_prob": 0.8689,
+      "avg_cal_prob": 0.7254,
+      "avg_compression_pp": 14.3
+    },
+    "today_reco": {
+      "n": 2,
+      "max_raw": 0.6051,
+      "shrinkage_w": 0.8,
+      "avg_raw_prob": 0.5945,
+      "avg_cal_prob": 0.5627,
+      "avg_compression_pp": 3.2
+    },
+    "today": {
+      "n": 1,
+      "max_raw": 0.5839,
+      "shrinkage_w": 0.8,
+      "avg_raw_prob": 0.5839,
+      "avg_cal_prob": 0.5549,
+      "avg_compression_pp": 2.9
     }
   },
-  "sports_with_market_anchor": {},
+  "sports_with_market_anchor": {
+    "MLB": 2
+  },
   "sports_without_market_anchor": {
-    "MLB-PP": 200
+    "MLB-PP": 58,
+    "KBO": 10,
+    "MLB": 1
   },
   "transparency_note": "Raw model probabilities are shrunk toward market-implied probabilities (when available) or a 0.55 baseline. This compresses small-sample overconfidence into realistic ranges. Edges in the displayed top plays board are post-calibration."
 }

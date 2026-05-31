@@ -4,14 +4,14 @@
 
 _Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
 
-_Generated at 2026-05-31T21:12:09 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-05-31T23:00:42 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
-**CHC @ STL - OVER_8.5**
-- Market: -110
-- Model probability: 61.8%
-- Raw edge: +18.03%
+**CHC @ STL - CHC_ML**
+- Market: +100
+- Model probability: 58.4%
+- Raw edge: +16.79%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
@@ -20,7 +20,7 @@ _Generated at 2026-05-31T21:12:09 UTC. Game lines source: **Bovada (fallback -- 
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 7:20p ET | CHC @ STL | Busch Stadium | 72F 4mph | OVER_8.5 +18.03% |
+| 7:20p ET | CHC @ STL | Busch Stadium | 71F 3mph | CHC_ML +16.79% |
 
 ## Parlays - top 1
 
@@ -33,12 +33,12 @@ _Generated at 2026-05-31T21:12:09 UTC. Game lines source: **Bovada (fallback -- 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
 | batter doubles | 3069 | 14.6% | 16.0% | 1.096 | 0.913 |
-| batter home runs | 3069 | 10.0% | 13.0% | 1.294 | 0.774 |
-| batter singles | 3069 | 42.4% | 44.5% | 1.049 | 0.953 |
-| batter runs scored | 3069 | 35.5% | 38.8% | 1.093 | 0.915 |
-| pitcher strikeouts | 1284 | 34.5% | 38.6% | 1.120 | 0.894 |
-| batter total bases | 6140 | 24.9% | 32.0% | 1.284 | 0.779 |
 | batter hits | 6140 | 38.3% | 41.8% | 1.091 | 0.917 |
+| batter runs scored | 3069 | 35.5% | 38.8% | 1.093 | 0.915 |
+| batter total bases | 6140 | 24.9% | 32.0% | 1.284 | 0.779 |
+| batter home runs | 3069 | 10.0% | 13.0% | 1.294 | 0.774 |
+| pitcher strikeouts | 1284 | 34.5% | 38.6% | 1.120 | 0.894 |
+| batter singles | 3069 | 42.4% | 44.5% | 1.049 | 0.953 |
 | batter rbis | 6138 | 18.9% | 23.3% | 1.231 | 0.812 |
 
 Cumulative graded plays: 118201. Wins: 87361. Hit rate: 73.9%.
@@ -47,7 +47,7 @@ Cumulative graded plays: 118201. Wins: 87361. Hit rate: 73.9%.
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| CHC @ STL | 33.0% | +203 | 12.58 | +238 | -238 |
+| CHC @ STL | 33.0% | +203 | 12.44 | +238 | -238 |
 
 ## Team Form (last 10)
 
