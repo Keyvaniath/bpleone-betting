@@ -1,30 +1,28 @@
-# 🌙 Tonight's Brief — 2026-05-30
+# 🌙 Tonight's Brief — 2026-05-31
 
 _60-second read. Calibration tier: **REFINING** (70% progress)._
 
+## 🐋 WHALES (size up max)
+- **MLB-PP** · Michael Harris II PP_batter_hrr_over_0.5 · 85% / +47.2%
+  - Top-25 board pick: 85% prob, +47.2% edge
+  - Edge bonus: +47.2% material edge
+  - Consensus STRONG (3/3 modules agree)
+
 ## 💪 STRONG (2 picks)
-- [MLB] ATL @ CIN ATL_ML · 69% / +25.2%
-- [MLB] ATL @ CIN ML_AWAY · 67% / +21.3%
+- [MLB] CHC @ STL CHC_ML · 66% / +23.4%
+- [MLB] ATL @ CIN ATL_ML · 71% / +22.8%
 
 ## 🔒 5 Daily Locks
-- **Kyle Isbel** PP_batter_hrr_under_3.5 (MLB-PP) -- 84% / +45.6%
-- **Fernando Tatis Jr.** PP_batter_hrr_under_3.5 (MLB-PP) -- 84% / +45.5%
-- **Jonah Heim** PP_batter_hrr_under_3.5 (MLB-PP) -- 84% / +45.5%
-- **Vinnie Pasquantino** PP_batter_hrr_under_3.5 (MLB-PP) -- 84% / +45.5%
-- **Brandon Lowe** PP_batter_hrr_under_4.5 (MLB-PP) -- 84% / +45.5%
-- **Luis Torrens** PP_batter_hrr_under_3.5 (MLB-PP) -- 84% / +46.4%
-- **Michael Harris II** PP_batter_hrr_over_0.5 (MLB-PP) -- 84% / +46.2%
-- **Elly De La Cruz** PP_batter_hrr_under_4.5 (MLB-PP) -- 84% / +46.1%
-- **Nick Fortes** PP_batter_hrr_under_3.5 (MLB-PP) -- 84% / +46.1%
-- **Jonathan Aranda** PP_batter_hrr_under_4.5 (MLB-PP) -- 84% / +46.4%
-- **William Contreras** PP_batter_hrr_under_4.5 (MLB-PP) -- 84% / +46.4%
-- **Casey Schmitt** PP_batter_hrr_under_4.5 (MLB-PP) -- 85% / +47.0%
-- **Jeff McNeil** PP_batter_hrr_under_3.5 (MLB-PP) -- 85% / +47.0%
+- **Michael Harris II** PP_batter_hrr_over_0.5 (MLB-PP) -- 85% / +47.4%
+- **Jonah Heim** PP_batter_hrr_under_3.5 (MLB-PP) -- 85% / +47.3%
+- **Elly De La Cruz** PP_batter_hrr_under_4.5 (MLB-PP) -- 85% / +47.2%
+- **Casey Schmitt** PP_batter_hrr_under_4.5 (MLB-PP) -- 85% / +47.1%
+- **Jeff McNeil** PP_batter_hrr_under_3.5 (MLB-PP) -- 85% / +47.1%
 
 ## 🎰 Tonight's Best Parlay
 - **Michael Harris II** PP_batter_hrr_over_0.5 + **Choi Jeong** one_plus_tb
-- Joint 62% · fair +231 · edge +105.8%
+- Joint 62% · fair +231 · edge +106.0%
 
 ---
-_Generated 2026-05-30T22:59:16_
+_Generated 2026-05-31T07:55:58_
 _Full breakdown: /tonight · Full history: /locks-of-day_
