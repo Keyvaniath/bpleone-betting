@@ -73,6 +73,46 @@
     .catch(() => { const b = document.getElementById("clvSrcBody"); if (b) b.innerHTML = '<p class="muted">CLV data not available yet.</p>'; });
   </script>
 
+  <!-- PROP CLV — does the prop edge (where the record concentrates) beat the close? (prop_clv.json) -->
+  <section class="card" id="propClvCard" style="margin-bottom: 28px; border-left: 3px solid #4ade80;">
+    <div class="card-head"><span>🎯 <strong>Prop Closing Line Value</strong> <span class="muted" style="font-size:10px;">(does the prop edge beat the close?)</span></span><span class="muted" id="propClvMeta">--</span></div>
+    <div id="propClvBody" style="padding: 12px 16px; font-family:'JetBrains Mono',monospace; font-size:12px;">
+      <p class="muted">Loading prop CLV…</p>
+    </div>
+  </section>
+  <script>
+  fetch("data/prop_clv.json?t=" + Date.now(), { cache: "no-cache" })
+    .then(r => r.json())
+    .then(d => {
+      const body = document.getElementById("propClvBody");
+      const meta = document.getElementById("propClvMeta");
+      const rec = d.recommended_plays || {}, ov = d.overall || {};
+      if (meta) meta.textContent = (d.n_records_total || 0) + " props tracked";
+      const fmt = (v) => v == null ? "—" : (v >= 0 ? "+" : "") + v + " pp";
+      const col = (v) => v == null ? "#9fb0c8" : v > 0 ? "#4ade80" : v < 0 ? "#f87171" : "#9fb0c8";
+      // Day-one / same-snapshot state: every capture is open==close, so CLV is
+      // structurally 0. Show that honestly as "accruing", not "0% beat close".
+      if (!d.n_with_movement) {
+        body.innerHTML = `<div style="font-size:13px; margin-bottom:6px;">📡 <strong>Capture is live — CLV accruing.</strong></div>`
+          + `<p class="muted" style="font-size:11px; line-height:1.6;">${(d.n_records_total||0)} props are being snapshotted open→close `
+          + `(${(rec.n||0)} recommended plays). Closing-line value needs a morning-open vs evening-close gap to register, so the first numbers land after the next full slate cycle. ${d.coverage_note || ""}</p>`;
+        return;
+      }
+      let html = `<div style="display:flex; gap:28px; flex-wrap:wrap; margin-bottom:12px;">`;
+      html += `<div><div class="muted" style="font-size:10px;">RECOMMENDED PLAYS</div><div style="font-size:22px; font-weight:700; color:${col(rec.avg_clv_pct)};">${fmt(rec.avg_clv_pct)}</div><div class="muted" style="font-size:10px;">avg CLV · n=${rec.n||0}${rec.positive_pct==null?"":" · "+rec.positive_pct+"% beat close"}</div></div>`;
+      html += `<div><div class="muted" style="font-size:10px;">ALL TRACKED PROPS</div><div style="font-size:22px; font-weight:700; color:${col(ov.avg_clv_pct)};">${fmt(ov.avg_clv_pct)}</div><div class="muted" style="font-size:10px;">avg CLV · n=${ov.n||0}</div></div>`;
+      html += `</div>`;
+      const mk = (d.by_market || []).slice(0, 6);
+      if (mk.length) {
+        html += `<div class="muted" style="font-size:10px; margin:6px 0;">BY MARKET</div>`;
+        html += mk.map(r => `<div style="display:flex; justify-content:space-between; padding:5px 0; border-bottom:1px solid rgba(255,255,255,0.04);"><span>${(r.market||"").replace(/_/g," ")} <span class="muted" style="font-size:10px;">n=${r.n}</span></span><span style="color:${col(r.avg_clv_pct)}; font-weight:700;">${fmt(r.avg_clv_pct)}</span></div>`).join("");
+      }
+      html += `<p class="muted" style="margin-top:10px; font-size:11px; line-height:1.6;">${d.coverage_note || ""}</p>`;
+      body.innerHTML = html;
+    })
+    .catch(() => { const b = document.getElementById("propClvBody"); if (b) b.innerHTML = '<p class="muted">Prop CLV accrues from the next slate — capture just went live.</p>'; });
+  </script>
+
   <section class="grid-2">
     <div class="card">
       <div class="card-head"><span>📈 Cumulative Units P&L</span></div>

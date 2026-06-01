@@ -1192,6 +1192,13 @@ jobs:
         working-directory: python
         run: python clv.py
 
+      # PROP CLV: same open->close lifecycle as clv.py, but for player props --
+      # the edge the track record actually rests on. 6 AM freezes the open,
+      # 6 PM captures the close; prop_clv.json holds the rollup.
+      - name: Compute PROP Closing Line Value
+        working-directory: python
+        run: python prop_clv.py
+
       # Aggregate today's top plays across DraftKings, PrizePicks, and parlays.
       - name: Aggregate Top Plays across all markets
         working-directory: python
