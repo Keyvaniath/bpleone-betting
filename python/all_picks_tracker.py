@@ -1507,12 +1507,47 @@ def _correct_misrouted_grades(history: List[Dict[str, Any]]) -> int:
     return n
 
 
+def _recompute_result(p: Dict[str, Any], historical_mlb, by_name) -> Optional[str]:
+    """Re-grade a pick against the CURRENT box-score feeds. Returns
+    'won'/'lost'/'push', or None when it can't be confidently graded. Side
+    effect: sets/refreshes p['outcome'] with the verifiable detail so the record
+    stays auditable. This is the single grading authority shared by the backfill
+    and re-settlement passes, so the two never disagree."""
+    market = (p.get("market") or "").lower()
+    is_game_line = (("ml_home" in market) or ("ml_away" in market)
+                    or re.fullmatch(r"(over|under)_\d+(?:\.\d+)?", market) is not None)
+    if is_game_line:
+        matchup = (p.get("player_or_matchup") or "").lower()
+        for g in historical_mlb:
+            if (g.get("date") or "")[:10] != p.get("date"): continue
+            g_mu = f"{g.get('away_abbrev','')} @ {g.get('home_abbrev','')}".lower()
+            if matchup not in g_mu and g_mu not in matchup: continue
+            if g.get("home_score") is None: continue
+            home_s = g.get("home_score") or 0; away_s = g.get("away_score") or 0
+            total = home_s + away_s
+            a_ab = g.get("away_abbrev", ""); h_ab = g.get("home_abbrev", "")
+            p["outcome"] = {"final_score": f"{a_ab} {away_s} @ {h_ab} {home_s}",
+                            "total_runs": total,
+                            "verify": f"{a_ab} @ {h_ab}: final {away_s}-{home_s} (total {total}) on {p.get('date')}"}
+            if "over_" in market or "under_" in market:
+                try: ln = float(market.split("_")[-1])
+                except Exception: return None
+                return "push" if total == ln else ("won" if (("over_" in market) == (total > ln)) else "lost")
+            if "ml_home" in market:
+                return "won" if home_s > away_s else "lost"
+            if "ml_away" in market:
+                return "won" if away_s > home_s else "lost"
+            return None
+        return None
+    return _grade_batter_prop(market, p, by_name)  # sets p["outcome"]
+
+
 def _attach_outcomes(history: List[Dict[str, Any]]) -> int:
     """Backfill the verifiable box-score outcome onto already-settled picks that
     don't have one yet, so the EXISTING track record is auditable (not just new
-    picks). Never changes the recorded result -- only adds the 'outcome' detail
-    and an 'outcome.check' flag: 'verified' when the current box score still
-    agrees, or a note when a stat was revised after settlement."""
+    picks). Adds the 'outcome' detail + a provisional 'outcome.check'. It does
+    NOT flip results -- the authoritative agree/re-settle pass is
+    _resettle_on_revision (runs immediately after)."""
     historical_mlb = _load(os.path.join(DATA_DIR, "historical_mlb.json")).get("games") or []
     gamelogs = _load(os.path.join(DATA_DIR, "player_gamelogs.json")).get("by_player_id") or {}
     by_name = {(prec.get("name") or "").lower(): prec
@@ -1521,35 +1556,7 @@ def _attach_outcomes(history: List[Dict[str, Any]]) -> int:
     for p in history:
         if not p.get("settled") or p.get("outcome"):
             continue
-        market = (p.get("market") or "").lower()
-        is_game_line = (("ml_home" in market) or ("ml_away" in market)
-                        or re.fullmatch(r"(over|under)_\d+(?:\.\d+)?", market) is not None)
-        recomputed = None
-        if is_game_line:
-            matchup = (p.get("player_or_matchup") or "").lower()
-            for g in historical_mlb:
-                if (g.get("date") or "")[:10] != p.get("date"): continue
-                g_mu = f"{g.get('away_abbrev','')} @ {g.get('home_abbrev','')}".lower()
-                if matchup not in g_mu and g_mu not in matchup: continue
-                if g.get("home_score") is None: continue
-                home_s = g.get("home_score") or 0; away_s = g.get("away_score") or 0
-                total = home_s + away_s
-                a_ab = g.get("away_abbrev", ""); h_ab = g.get("home_abbrev", "")
-                p["outcome"] = {"final_score": f"{a_ab} {away_s} @ {h_ab} {home_s}",
-                                "total_runs": total,
-                                "verify": f"{a_ab} @ {h_ab}: final {away_s}-{home_s} (total {total}) on {p.get('date')}"}
-                if "over_" in market or "under_" in market:
-                    try: ln = float(market.split("_")[-1])
-                    except Exception: ln = None
-                    if ln is not None:
-                        recomputed = "push" if total == ln else ("won" if (("over_" in market) == (total > ln)) else "lost")
-                elif "ml_home" in market:
-                    recomputed = "won" if home_s > away_s else "lost"
-                elif "ml_away" in market:
-                    recomputed = "won" if away_s > home_s else "lost"
-                break
-        else:
-            recomputed = _grade_batter_prop(market, p, by_name)  # sets p["outcome"]
+        recomputed = _recompute_result(p, historical_mlb, by_name)
         if p.get("outcome"):
             n += 1
             rec = p.get("result")
@@ -1558,6 +1565,111 @@ def _attach_outcomes(history: List[Dict[str, Any]]) -> int:
             else:
                 p["outcome"]["check"] = "verified"
     return n
+
+
+def _regrade_strict(p: Dict[str, Any], historical_mlb, by_name) -> Optional[str]:
+    """Conservative re-grade used ONLY by the re-settle pass. Returns
+    'won'/'lost'/'push' only when the CURRENT data gives a single unambiguous
+    answer; returns None when ambiguous so we never flip a pick we can't pin to
+    one game. The key guard is doubleheaders: a pick like 'CHW @ SF ML_AWAY' or
+    'PHI @ SD UNDER_7' can match two games with opposite results on the same date
+    -- those must never be auto-flipped (we can't know which game it was). Sets
+    p['outcome'] only when it resolves unambiguously."""
+    market = (p.get("market") or "").lower()
+    is_game_line = (("ml_home" in market) or ("ml_away" in market)
+                    or re.fullmatch(r"(over|under)_\d+(?:\.\d+)?", market) is not None)
+    if is_game_line:
+        matchup = (p.get("player_or_matchup") or "").lower()
+        matches = []
+        for g in historical_mlb:
+            if (g.get("date") or "")[:10] != p.get("date"): continue
+            g_mu = f"{g.get('away_abbrev','')} @ {g.get('home_abbrev','')}".lower()
+            if matchup not in g_mu and g_mu not in matchup: continue
+            if g.get("home_score") is None: continue
+            matches.append(g)
+        if not matches:
+            return None
+        graded = []
+        for g in matches:
+            home_s = g.get("home_score") or 0; away_s = g.get("away_score") or 0
+            total = home_s + away_s
+            if "over_" in market or "under_" in market:
+                try: ln = float(market.split("_")[-1])
+                except Exception: return None
+                r = "push" if total == ln else ("won" if (("over_" in market) == (total > ln)) else "lost")
+            elif "ml_home" in market:
+                r = "won" if home_s > away_s else "lost"
+            elif "ml_away" in market:
+                r = "won" if away_s > home_s else "lost"
+            else:
+                return None
+            graded.append((r, g))
+        if len({r for r, _ in graded}) != 1:
+            return None                      # doubleheader / conflicting -> don't flip
+        g = graded[0][1]
+        home_s = g.get("home_score") or 0; away_s = g.get("away_score") or 0
+        total = home_s + away_s
+        a_ab = g.get("away_abbrev", ""); h_ab = g.get("home_abbrev", "")
+        p["outcome"] = {"final_score": f"{a_ab} {away_s} @ {h_ab} {home_s}",
+                        "total_runs": total,
+                        "verify": f"{a_ab} @ {h_ab}: final {away_s}-{home_s} (total {total}) on {p.get('date')}"}
+        return graded[0][0]
+    # Prop: require exactly one gradeable game that date (no doubleheader split).
+    prec = by_name.get((p.get("player_or_matchup") or "").lower())
+    if not prec:
+        return None
+    same_day = [gm for gm in (prec.get("games") or [])
+                if (gm.get("date") or "")[:10] == p.get("date") and gm.get("pa")]
+    if len(same_day) != 1:
+        return None
+    return _grade_batter_prop(market, p, by_name)  # sets p["outcome"]
+
+
+def _resettle_on_revision(history: List[Dict[str, Any]]) -> int:
+    """Re-grade every settled pick for a DEFINITIVELY-FINAL game against the
+    current box score and correct any whose recorded result no longer matches.
+    MLB revises hits/RBI/runs for a day or two after a game; without this pass the
+    ledger keeps counting outcomes the current box score contradicts (the ~3% of
+    grades flagged 'revised'). This makes net_units / hit_rate / ROI reflect the
+    truth: we never carry a result the box score disagrees with. It updates
+    result + payout_units, appends an audit entry to resettle_log, and refreshes
+    outcome.check. Only games strictly before today are touched, so an in-progress
+    or mid-revision feed can never cause churn. Returns the number flipped."""
+    historical_mlb = _load(os.path.join(DATA_DIR, "historical_mlb.json")).get("games") or []
+    gamelogs = _load(os.path.join(DATA_DIR, "player_gamelogs.json")).get("by_player_id") or {}
+    by_name = {(prec.get("name") or "").lower(): prec
+               for prec in gamelogs.values() if isinstance(prec, dict)}
+    today = dt.date.today()
+    n_flip = 0
+    for p in history:
+        if not p.get("settled") or p.get("voided"):
+            continue
+        try:
+            gd = dt.date.fromisoformat((p.get("date") or "")[:10])
+        except Exception:
+            continue
+        if gd >= today:                      # only definitively-final games
+            continue
+        recomputed = _regrade_strict(p, historical_mlb, by_name)  # ambiguous -> None
+        if not recomputed or not isinstance(p.get("outcome"), dict):
+            continue
+        prev = p.get("result")
+        if recomputed == prev:
+            p["outcome"]["check"] = "verified"
+            continue
+        # Current box score disagrees with what we recorded -> re-settle to truth.
+        decimal_odds = _american_to_decimal(p.get("fair_american")) or 1.91
+        p["result"] = recomputed
+        p["payout_units"] = (round(decimal_odds - 1, 4) if recomputed == "won"
+                             else (-1.0 if recomputed == "lost" else 0.0))
+        p.setdefault("resettle_log", []).append({
+            "at": dt.datetime.now().isoformat(timespec="seconds"),
+            "from": prev, "to": recomputed,
+            "reason": "stat revised after settlement; re-graded vs current box score",
+        })
+        p["outcome"]["check"] = f"verified (re-settled from {prev} after stat revision)"
+        n_flip += 1
+    return n_flip
 
 
 def run() -> Dict[str, Any]:
@@ -1591,6 +1703,11 @@ def run() -> Dict[str, Any]:
 
     # Backfill verifiable box-score outcomes onto settled picks (auditable record).
     n_outcomes = _attach_outcomes(history)
+
+    # Re-settle any settled pick whose CURRENT box score now disagrees with the
+    # recorded result (MLB stat revisions) so net_units / hit_rate / ROI reflect
+    # the truth -- we never carry an outcome the box score contradicts.
+    n_resettled = _resettle_on_revision(history)
 
     if len(history) > MAX_PICKS:
         history = history[-MAX_PICKS:]
@@ -1708,6 +1825,7 @@ def run() -> Dict[str, Any]:
         "curated": curated,
         "n_added_this_run": n_added,
         "n_newly_settled_this_run": n_newly_settled,
+        "n_resettled_this_run": n_resettled,
         "n_voided_this_run": n_voided_this_run,
         "n_bootstrapped_from_locks_history": n_bootstrapped,
         "by_source": by_source,
@@ -1733,7 +1851,8 @@ def run() -> Dict[str, Any]:
 if __name__ == "__main__":
     p = run()
     print(f"All-picks ledger: {p['total_picks']} total picks ({p['n_settled']} settled, {p['n_pending']} pending)")
-    print(f"  This run: +{p['n_added_this_run']} new, +{p['n_newly_settled_this_run']} newly settled")
+    print(f"  This run: +{p['n_added_this_run']} new, +{p['n_newly_settled_this_run']} newly settled, "
+          f"{p.get('n_resettled_this_run', 0)} re-settled (stat revisions corrected)")
     if p['hit_rate'] is not None:
         print(f"  All: {p['wins']}-{p['losses']}-{p['pushes']} ({p['hit_rate']*100:.1f}%) | net {p['net_units']:+.2f}u | ROI {p['roi_pct']:+.1f}%")
     print(f"\n  Per-source:")

@@ -123,6 +123,7 @@ def run_pipeline(games: List[Dict[str, Any]]) -> Dict[str, Any]:
                 best = {**r, "matchup": record["matchup"], "time": record["time"]}
     manifest = {
         "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
+        "date": dt.date.today().isoformat(),   # calendar date of the slate (YYYY-MM-DD)
         "games": out_games,
         "play_of_day": best,
     }
