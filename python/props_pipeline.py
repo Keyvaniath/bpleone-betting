@@ -1172,7 +1172,7 @@ def build_props(markets: Optional[List[str]] = None, max_games: int = MAX_GAMES)
                     dbg["correction_applied"] = round(cf, 4)
                     dbg["p_over_raw"] = round(p_over_raw, 4)
                 # Per-player bias override (stacks on calibration)
-                pb_key = f"{player_id}_{market_key}"
+                pb_key = f"{pid}_{market_key}"
                 pb = player_bias.get(pb_key)
                 if pb is not None and pb != 1.0:
                     p_over = max(0.001, min(0.999, p_over * pb))
