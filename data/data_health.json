@@ -1,23 +1,23 @@
 {
-  "generated_at": "2026-05-31T23:00:56",
+  "generated_at": "2026-06-01T18:56:10",
   "overall": "red",
-  "n_green": 7,
+  "n_green": 8,
   "n_yellow": 0,
-  "n_red": 2,
+  "n_red": 1,
   "checks": [
     {
       "feed": "mlb",
-      "status": "red",
+      "status": "green",
       "findings": [
-        "MLB has 4 live games but live_state.json shows 0 (age 8min)"
+        "9 total (9 pre / 0 live / 0 final), local pre=9, live=0"
       ],
-      "upstream_count": 15,
-      "upstream_pregame": 0,
-      "upstream_live": 4,
-      "upstream_final": 11,
-      "local_count": 1,
+      "upstream_count": 9,
+      "upstream_pregame": 9,
+      "upstream_live": 0,
+      "upstream_final": 0,
+      "local_count": 9,
       "local_live": 0,
-      "live_state_age_min": 8
+      "live_state_age_min": 9
     },
     {
       "feed": "nba",
@@ -32,14 +32,14 @@
     },
     {
       "feed": "wnba",
-      "status": "green",
+      "status": "red",
       "findings": [
-        "1 events matched (0 live)"
+        "WNBA count mismatch: local=1 vs ESPN=2"
       ],
-      "upstream_count": 1,
+      "upstream_count": 2,
       "local_count": 1,
       "upstream_live": 0,
-      "local_age_min": 8
+      "local_age_min": 9
     },
     {
       "feed": "nhl",
@@ -61,7 +61,7 @@
       "upstream_count": 3,
       "local_count": 3,
       "upstream_live": 0,
-      "local_age_min": 8
+      "local_age_min": 9
     },
     {
       "feed": "epl",
@@ -72,27 +72,26 @@
       "upstream_count": 10,
       "local_count": 10,
       "upstream_live": 0,
-      "local_age_min": 8
+      "local_age_min": 9
     },
     {
       "feed": "pitcher_matchup",
       "status": "green",
       "findings": [
-        "no pre-game probables upstream (all games live or final)"
+        "17/17 pre-game probables matched"
       ],
-      "upstream_count": 0,
-      "local_count": 2,
-      "matched": 0
+      "upstream_count": 17,
+      "local_count": 18,
+      "matched": 17
     },
     {
       "feed": "props",
-      "status": "red",
+      "status": "green",
       "findings": [
-        "ODDS_API_KEY not set in env (locally) \u2014 check GitHub secret",
-        "props.json has 0 props + 0 games. Odds API key may be missing or quota exhausted."
+        "0 props across 9 games"
       ],
       "n_props": 0,
-      "n_games": 0
+      "n_games": 9
     },
     {
       "feed": "golf",
@@ -102,7 +101,7 @@
       ],
       "upstream_players": 132,
       "local_players": 132,
-      "local_age_min": 8
+      "local_age_min": 9
     }
   ]
 }
