@@ -1,34 +1,47 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-06-01T18:55:36 UTC_
+_Generated 2026-06-01T19:14:30 UTC_
 
 ## Slate Quality
-- **Tier:** NO_ACTION_NIGHT
-- **Score:** 9
-- **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
+- **Tier:** MODEST_NIGHT
+- **Score:** 42
+- **Advisory:** Light slate. Limit to 1-3 strongest plays; use 25% Kelly or less.
 - **Total LOCKs:** 0
-- **Total STRONG:** 6
-- **Total FADES:** 15
+- **Total STRONG:** 15
+- **Total FADES:** 18
+
+## Lock of the Night
+- **Subject:** José Soriano
+- **Source:** ELITE_BOARD
+- **Sport:** MLB
+- **Score:** 15.0
+- **Details:** COL @ LAA
 
 ## Top 5 Curated Picks
-1. **GOLF / Alex Smalley** (GOLF_PLAYER, score=219.29)
-   - Play: Alex Smalley (PLAYER_STRONG)
+1. **GOLF / Eric Cole** (GOLF_PLAYER, score=219.29)
+   - Play: Eric Cole (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Mac Meissner** (GOLF_PLAYER, score=219.29)
-   - Play: Mac Meissner (PLAYER_STRONG)
+2. **GOLF / Russell Henley** (GOLF_PLAYER, score=219.29)
+   - Play: Russell Henley (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-3. **F1 / max verstappen** (F1_DRIVER, score=49.67)
-   - Play: max verstappen (DRIVER_STRONG)
-   - Rationale: Cross-sport top pick (F1_DRIVER)
+3. **WNBA / napheesa collier** (WNBA_PLAYER, score=148.33)
+   - Play: napheesa collier (PLAYER_STRONG)
+   - Rationale: Cross-sport top pick (WNBA_PLAYER)
+4. **MLB / James Wood** (MLB_BATTER, score=105.69)
+   - Play: James Wood (BATTER_STRONG)
+   - Rationale: Cross-sport top pick (MLB_BATTER)
+5. **MLB / CJ Abrams** (MLB_BATTER, score=91.81)
+   - Play: CJ Abrams (BATTER_STRONG)
+   - Rationale: Cross-sport top pick (MLB_BATTER)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
-  - Alex Smalley top 10 finish
-  - Mac Meissner top 10 finish
   - Eric Cole top 10 finish
+  - Russell Henley top 10 finish
+  - Ben Griffin top 10 finish
 
 ## Slate ROI Projection
-- **Picks:** 0
-- **Avg edge:** 0%
+- **Picks:** 2
+- **Avg edge:** -0.91%
 - **Expected ROI (1/4 Kelly):** 0.0%
 - **Expected P&L on $100:** $0.0
 
@@ -41,5 +54,5 @@ _Generated 2026-06-01T18:55:36 UTC_
   - Fade angle: saves UNDER + win NO
 - **NHL** / pyotr kochetkov (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / Andrei Svechnikov (SKATER_FADE)
+- **NHL** / Sebastian Aho (SKATER_FADE)
   - Fade angle: SOG UNDER + no goal

@@ -2,16 +2,16 @@
 
 **Model Confidence: 73.8/100 [GREEN-LIGHT]** -- Model is healthy. Use capped Kelly (<=0.5u) until residual variance tightens further.
 
-_Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
+_Pipeline health: **DEGRADED** (14/15 artifacts ok; 1 empty, 0 stale)._ 
 
-_Generated at 2026-06-01T18:55:56 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-06-01T19:14:54 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
 **KCR @ CIN - KCR_ML**
-- Market: +153
+- Market: +122
 - Model probability: 87.2%
-- Raw edge: +120.68%
+- Raw edge: +93.64%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
@@ -22,7 +22,7 @@ _Generated at 2026-06-01T18:55:56 UTC. Game lines source: **Bovada (fallback -- 
 |---|---|---|---|---|
 | 6:40p ET | DET @ TBR | Tropicana Field | indoor | UNDER_8.0 +31.08% |
 | 6:45p ET | MIA @ WSN | Nationals Park | 65F 8mph | WSN_ML +29.97% |
-| 7:10p ET | KCR @ CIN | Great American Ball Park | 63F 4mph | KCR_ML +120.68% |
+| 7:10p ET | KCR @ CIN | Great American Ball Park | 63F 4mph | KCR_ML +93.64% |
 | 7:40p ET | CHW @ MIN | Target Field | 70F 3mph | -- |
 | 7:40p ET | SFG @ MIL | American Family Field | indoor | UNDER_7.5 +36.39% |
 | 7:45p ET | TEX @ STL | Busch Stadium | 73F 4mph | OVER_7.5 +10.87% |
@@ -30,12 +30,11 @@ _Generated at 2026-06-01T18:55:56 UTC. Game lines source: **Bovada (fallback -- 
 | 9:40p ET | LAD @ ARI | Chase Field | indoor | LAD_ML +23.9% |
 | 9:40p ET | NYM @ SEA | T-Mobile Park | indoor | UNDER_7.0 +37.97% |
 
-## PrizePicks - 31 lines softer than DraftKings
+## PrizePicks - 30 lines softer than DraftKings
 
 | Player | Market | PP line | DK line | Δ | Favor | Model % |
 |---|---|---|---|---|---|---|
 | Griffin Jax | Pitcher Strikeouts | 7.5 | 4.5 | +3.0 | UNDER | 95.8% |
-| Sal Stewart | Hits | 2.5 | 0.5 | +2.0 | UNDER | 92.7% |
 | Bo Bichette | Hits | 2.5 | 0.5 | +2.0 | UNDER | 92.2% |
 | Griffin Jax | Pitcher Strikeouts | 6.5 | 4.5 | +2.0 | UNDER | 90.6% |
 | Logan O'Hoppe | Hits | 1.5 | 0.5 | +1.0 | UNDER | 83.4% |
@@ -49,42 +48,43 @@ _Generated at 2026-06-01T18:55:56 UTC. Game lines source: **Bovada (fallback -- 
 | Byron Buxton | Hits | 1.5 | 0.5 | +1.0 | UNDER | 76.5% |
 | Javier Sanoja | Hits | 1.5 | 0.5 | +1.0 | UNDER | 75.8% |
 | James Wood | Hits | 1.5 | 0.5 | +1.0 | UNDER | 75.4% |
+| Jonathan Aranda | Hits | 1.5 | 0.5 | +1.0 | UNDER | 74.5% |
 
 ## Parlays - top 5
 
-- **3-leg @ +760 (prob 17.4%, EV +49.97%)**
-  - Logan O'Hoppe UNDER 0.5 batter_hits (+136, model 52.7%)
-  - CHW @ MIN UNDER_8.5 (-110, model 56.9%)
-  - TEX @ STL OVER_7.5 (-110, model 58.1%)
-- **3-leg @ +442 (prob 27.6%, EV +49.77%)**
+- **3-leg @ +815 (prob 16.4%, EV +49.9%)**
+  - Jorge Soler UNDER 0.5 batter_hits (+151, model 49.7%)
   - MIA @ WSN OVER_8.0 (-110, model 59.5%)
-  - COL @ LAA LAA_ML (-205, model 75.6%)
-  - LAD @ ARI OVER_8.5 (-110, model 61.4%)
+  - SFG @ MIL MIL_ML (-110, model 55.3%)
 - **3-leg @ +760 (prob 17.4%, EV +49.58%)**
   - Logan O'Hoppe UNDER 0.5 batter_hits (+136, model 52.7%)
   - MIA @ WSN OVER_8.0 (-110, model 59.5%)
   - CHW @ MIN MIN_ML (-110, model 55.4%)
-- **3-leg @ +968 (prob 14.0%, EV +49.57%)**
-  - Junior Caminero UNDER 0.5 batter_hits (+193, model 42.4%)
-  - CHW @ MIN UNDER_8.5 (-110, model 56.9%)
-  - TEX @ STL OVER_7.5 (-110, model 58.1%)
-- **3-leg @ +354 (prob 32.9%, EV +49.39%)**
-  - CHW @ MIN UNDER_8.5 (-110, model 56.9%)
-  - COL @ LAA LAA_ML (-205, model 75.6%)
-  - LAD @ ARI LAD_ML (-167, model 76.4%)
+- **3-leg @ +760 (prob 17.4%, EV +49.42%)**
+  - Logan O'Hoppe UNDER 0.5 batter_hits (+136, model 52.7%)
+  - MIA @ WSN OVER_8.0 (-110, model 59.5%)
+  - SFG @ MIL MIL_ML (-110, model 55.3%)
+- **3-leg @ +596 (prob 21.4%, EV +49.27%)**
+  - MIA @ WSN OVER_8.0 (-110, model 59.5%)
+  - CHW @ MIN MIN_ML (-110, model 55.4%)
+  - COL @ LAA OVER_8.5 (-110, model 65.0%)
+- **3-leg @ +596 (prob 21.4%, EV +49.11%)**
+  - MIA @ WSN OVER_8.0 (-110, model 59.5%)
+  - SFG @ MIL MIL_ML (-110, model 55.3%)
+  - COL @ LAA OVER_8.5 (-110, model 65.0%)
 
 ## Self-Learning Loop
 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
-| batter doubles | 2815 | 14.5% | 16.0% | 1.104 | 0.906 |
-| batter rbis | 5630 | 18.9% | 23.4% | 1.238 | 0.808 |
 | batter home runs | 2815 | 10.0% | 13.0% | 1.294 | 0.774 |
 | pitcher strikeouts | 1168 | 35.1% | 39.1% | 1.113 | 0.899 |
-| batter total bases | 5632 | 24.8% | 32.1% | 1.293 | 0.774 |
 | batter hits | 5632 | 38.2% | 41.8% | 1.096 | 0.913 |
-| batter runs scored | 2815 | 35.2% | 38.8% | 1.103 | 0.907 |
 | batter singles | 2815 | 42.4% | 44.5% | 1.051 | 0.952 |
+| batter total bases | 5632 | 24.8% | 32.1% | 1.293 | 0.774 |
+| batter rbis | 5630 | 18.9% | 23.4% | 1.238 | 0.808 |
+| batter runs scored | 2815 | 35.2% | 38.8% | 1.103 | 0.907 |
+| batter doubles | 2815 | 14.5% | 16.0% | 1.104 | 0.906 |
 
 Cumulative graded plays: 118201. Wins: 87361. Hit rate: 73.9%.
 

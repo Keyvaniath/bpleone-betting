@@ -1,45 +1,69 @@
 # Tonight's Slate Brief — 2026-06-01
 
-## Slate Quality: 61/100 (MEDIUM)
-_16% lineups confirmed · 11 rookie SPs_
+## Slate Quality: 62/100 (MEDIUM)
+_22% lineups confirmed · 11 rookie SPs_
 **Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
 - **9 games** scheduled
-- **20 best bets** scored: 8 DK · 0 PP · 1 NRFI · 0 SGP
-- **Auto-portfolio:** 1 picks, $50.0 stake (5.0%), expected +$13.97
-- **MC simulation:** EV +$20.43, 64% P(profit), p05 $-87.93 / p95 $108.93
+- **50 best bets** scored: 0 DK · 26 PP · 6 NRFI · 6 SGP
+- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$53.1
+- **MC simulation:** EV +$168.38, 96% P(profit), p05 $19.31 / p95 $329.5
 
 ## Top 5 Best Bets
-1. **CHC @ STL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +21.0%)
-   - P(YRFI) 67.0% vs baseline 46.0%
-2. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
-   - Player prop quality score 1.1935
-   - Elite player
-3. **LOL ShowMaker OVER 3.5 Kills**  (78/100 ****, edge —)
-   - Player prop quality score 1.1892
-   - Elite player
-4. **LOL Peyz OVER 4.5 Kills**  (78/100 ****, edge —)
-   - Player prop quality score 1.184
-   - Elite player
-5. **LOL BILIBILI GAMING vs EDWARD GAMING ML @ -145**  (76/100 *****, edge —)
-   - Model 59.1% (fair -145)
-   - LPL
+1. **MIA @ WSN 4-leg SGP @ -191**  (84/100 *****, edge +73.8%)
+   - Joint prob 0.656 (correlation boost +0.184)
+   - Leg: CJ Abrams UNDER 0.5 batter home runs
+2. **DET @ TBR 4-leg SGP @ -235**  (83/100 *****, edge +72.2%)
+   - Joint prob 0.701 (correlation boost +0.192)
+   - Leg: Yandy Díaz UNDER 0.5 batter doubles
+3. **COL @ LAA YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +37.9%)
+   - P(YRFI) 83.9% vs baseline 46.0%
+4. **NYM @ SEA NRFI (no run 1st inning)**  (80/100 ****, edge +22.5%)
+   - P(NRFI) 76.5% vs baseline 54.0%
+5. **TEX @ STL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +21.3%)
+   - P(YRFI) 67.3% vs baseline 46.0%
 
-## ⚠️ Trap Warnings — 1 flagged
-- **CHC @ STL YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +21.0% looks big but only 0 settled props on this player — model unproven
+## ⚠️ Trap Warnings — 21 flagged
+- **MIA @ WSN 4-leg SGP @ -191** (low):
+   - Edge +73.8% looks big but only 0 settled props on this player — model unproven
+- **DET @ TBR 4-leg SGP @ -235** (low):
+   - Edge +72.2% looks big but only 0 settled props on this player — model unproven
+- **KCR @ CIN 4-leg SGP @ -129** (low):
+   - Edge +41.7% looks big but only 0 settled props on this player — model unproven
+- **COL @ LAA YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +37.9% looks big but only 0 settled props on this player — model unproven
+- **LAD @ ARI 2-leg SGP @ -190** (low):
+   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
 
 ## Hot streaks
-**Batters heating up:** Thomas Saggese (heat +5.07), Ian Happ (heat +1.46), Alex Bregman (heat +0.54)
-**Pitchers on a run:** Matthew Liberatore (heat +4.79), Jordan Wicks (heat +0.00)
+**Batters heating up:** Ryan O'Hearn (heat +8.50), Ronald Acuña Jr. (heat +7.29), Yordan Alvarez (heat +6.25)
+**Pitchers on a run:** Shane Baz (heat +10.93), Connelly Early (heat +9.00), Kevin Gausman (heat +8.10)
+
+## Top correlation-aware SGPs
+- **MIA @ WSN** 4-leg @ -191 fair (joint 0.66, EV +73.82%)
+   - CJ Abrams UNDER 0.5 batter home runs
+   - CJ Abrams OVER 0.5 batter total bases
+   - Curtis Mead UNDER 0.5 batter home runs
+- **DET @ TBR** 4-leg @ -235 fair (joint 0.70, EV +72.15%)
+   - Yandy Díaz UNDER 0.5 batter doubles
+   - Yandy Díaz UNDER 1.5 batter rbis
+   - Yandy Díaz OVER 0.5 batter total bases
+- **KCR @ CIN** 4-leg @ -129 fair (joint 0.56, EV +41.69%)
+   - Blake Dunn UNDER 2.5 batter total bases
+   - Bobby Witt Jr. UNDER 0.5 batter home runs
+   - Michael Massey OVER 0.5 batter hrr
 
 ## Bullpens GASSED tonight
-Athletics, Pittsburgh Pirates, San Diego Padres, San Francisco Giants, St. Louis Cardinals, Tampa Bay Rays, Toronto Blue Jays, Minnesota Twins
+Athletics, Pittsburgh Pirates, Seattle Mariners, San Francisco Giants, St. Louis Cardinals, Tampa Bay Rays, Toronto Blue Jays, Minnesota Twins
 _Lean late-inning OVER on these games; fade their save situations._
 
 ## NRFI/YRFI strong leans
-- **YRFI** (1st-inning OVER): CHC @ STL
+- **YRFI** (1st-inning OVER): COL @ LAA, TEX @ STL, KCR @ CIN, MIA @ WSN
+- **NRFI** (1st-inning UNDER): NYM @ SEA
+
+## Cross-book pricing
+33 props softer on one book — see /props for details.
 
 ## NBA -- PLAYOFFS
 - New York Knicks @ San Antonio Spurs (53-29 vs 62-20)  | P(home) 67.5% fair -207 | Scheduled
