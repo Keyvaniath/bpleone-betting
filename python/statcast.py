@@ -24,7 +24,7 @@ import csv
 import json
 import time
 import datetime as dt
-from typing import Any, Dict, Optional
+from typing import Any, Dict, List, Optional
 
 try:
     import requests

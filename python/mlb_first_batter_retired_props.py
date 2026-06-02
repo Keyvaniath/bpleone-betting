@@ -125,7 +125,7 @@ def run() -> Dict[str, Any]:
             rows.append({
                 "matchup": matchup_str,
                 "pitcher": name,
-                "team": (lvr_row.get("team_abbr") or "").upper() or (home if side == "home" else away if False else ""),
+                "team": (lvr_row.get("team_abbr") or "").upper(),
                 "leadoff_batter": leadoff_name,
                 "leadoff_obp_est": round(leadoff_obp, 3),
                 "pitcher_whip": whip,

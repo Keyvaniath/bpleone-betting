@@ -1,0 +1,42 @@
+name: Smoke Test
+
+# Fast pre-merge guard. Catches the failure class that froze the slate on
+# 2026-06-01 -- an undefined name (player_id) that compiled fine and only
+# NameError'd at runtime inside the pipeline -- BEFORE the heavy daily pipeline
+# runs. Three offline nets (no secrets/network): syntax compile of every module,
+# a pyflakes undefined-name scan, and a real run of the core data-chain.
+#
+# paths filter: only runs when python CODE changes -- NOT on the constant
+# bot data refreshes, so it stays cheap and signal-rich.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'python/**.py'
+      - '.github/workflows/smoke-test.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: smoke-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install deps + pyflakes
+        run: |
+          pip install -r python/requirements.txt
+          pip install pyflakes
+      - name: Smoke test (compile + undefined-name scan + run core chain)
+        working-directory: python
+        run: python smoke_test.py

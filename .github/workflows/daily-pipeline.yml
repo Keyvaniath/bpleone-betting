@@ -1199,6 +1199,12 @@ jobs:
         working-directory: python
         run: python prop_clv.py
 
+      # Attribute prop CLV to each source via the canonical taxonomy -- does each
+      # curated feed beat the close on its props? (Fills in as slates accrue.)
+      - name: Prop CLV by source (curated-edge confirmation)
+        working-directory: python
+        run: python prop_clv_by_source.py
+
       # Aggregate today's top plays across DraftKings, PrizePicks, and parlays.
       - name: Aggregate Top Plays across all markets
         working-directory: python

@@ -159,6 +159,29 @@ def canonical_from_dk(dk_market: str, side: str = "over") -> Optional[str]:
     return base
 
 
+# DraftKings market key -> canonical stat code. Used with an EXPLICIT line + side
+# (prop CLV records carry the line separately from the market key) so a join key
+# lines up with the ledger's canonical_market() output (e.g. pitcher_strikeouts
+# line 4.5 -> mlb_pk_4.5_over, matching the ledger's K_OVER_4.5).
+_DK_STAT = {
+    "batter_home_runs": "hr", "batter_hits": "hit", "batter_total_bases": "tb",
+    "batter_runs_scored": "run", "batter_rbis": "rbi", "batter_walks": "walk",
+    "batter_strikeouts": "bk", "pitcher_strikeouts": "pk",
+}
+
+
+def canonical_from_dk_line(dk_market: str, line, side: str = "over") -> Optional[str]:
+    """Canonical key for a DraftKings prop given its explicit line + side, so prop
+    CLV records join the ledger on the same `mlb_<stat>_<line>_<side>` key."""
+    stat = _DK_STAT.get((dk_market or "").strip().lower())
+    if not stat or line is None or side not in ("over", "under"):
+        return None
+    try:
+        return f"mlb_{stat}_{float(line):g}_{side}"
+    except (TypeError, ValueError):
+        return None
+
+
 if __name__ == "__main__":
     tests = ["1_plus_hr", "to_hit_hr_yes", "pp_batter_home_runs", "batter_home_runs",
              "2_plus_total_bases", "one_plus_tb", "3_plus_hrr", "pp_batter_hrr_under_3.5",

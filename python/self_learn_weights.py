@@ -106,7 +106,7 @@ def run() -> Dict[str, Any]:
         n = (stats.get("wins") or 0) + (stats.get("losses") or 0)
         hit_rate = stats.get("hit_rate")
         guard = guards.get(source, {})
-        max_delta = guard.get("max_weight_delta", MAX_WEIGHT_DELTA_PER_CYCLE if 'MAX_WEIGHT_DELTA_PER_CYCLE' in globals() else 1.0)
+        max_delta = guard.get("max_weight_delta", 1.0)
         use_wilson_lo = guard.get("use_wilson_lo", True)  # safer default
 
         # Observed: use Wilson lower bound for unproven sources, point estimate for proven
