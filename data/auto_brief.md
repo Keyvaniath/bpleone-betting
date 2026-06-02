@@ -6,9 +6,9 @@ _0% lineups confirmed · 13 rookie SPs_
 
 ## Slate
 - **15 games** scheduled
-- **26 best bets** scored: 5 DK · 0 PP · 11 NRFI · 0 SGP
+- **50 best bets** scored: 0 DK · 23 PP · 11 NRFI · 6 SGP
 - **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$48.3
-- **MC simulation:** EV +$128.4, 86% P(profit), p05 $-71.22 / p95 $314.99
+- **MC simulation:** EV +$135.55, 85% P(profit), p05 $-82.63 / p95 $322.52
 
 ## Top 5 Best Bets
 1. **OAK @ CHC YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +36.0%)
@@ -22,7 +22,7 @@ _0% lineups confirmed · 13 rookie SPs_
 5. **DET @ TBR YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +22.9%)
    - P(YRFI) 68.9% vs baseline 46.0%
 
-## ⚠️ Trap Warnings — 11 flagged
+## ⚠️ Trap Warnings — 23 flagged
 - **OAK @ CHC YRFI (1st-inning OVER 0.5)** (low):
    - Edge +36.0% looks big but only 0 settled props on this player — model unproven
 - **COL @ LAA YRFI (1st-inning OVER 0.5)** (low):
@@ -31,18 +31,33 @@ _0% lineups confirmed · 13 rookie SPs_
    - Edge +25.8% looks big but only 0 settled props on this player — model unproven
 - **SDP @ PHI YRFI (1st-inning OVER 0.5)** (low):
    - Edge +25.4% looks big but only 0 settled props on this player — model unproven
-- **DET @ TBR YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +22.9% looks big but only 0 settled props on this player — model unproven
+- **CHW @ MIN 2-leg SGP @ -183** (low):
+   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
 
 ## Hot streaks
-**Batters heating up:** Ronald Acuna Jr. (heat +4.89), Bryan Reynolds (heat +2.87), Wenceel Perez (heat +2.12)
+**Batters heating up:** Ryan O'Hearn (heat +8.50), Ronald Acuña Jr. (heat +7.29), Joc Pederson (heat +6.00)
+**Pitchers on a run:** Huascar Brazobán (heat +13.50), Dustin May (heat +5.69), Shane Baz (heat +5.20)
+
+## Top correlation-aware SGPs
+- **CHW @ MIN** 2-leg @ -183 fair (joint 0.65, EV +25.0%)
+   - Connor Prielipp UNDER 7.5 pitcher strikeouts
+   - Connor Prielipp OVER 3.5 pitcher strikeouts
+- **DET @ TBR** 2-leg @ -206 fair (joint 0.67, EV +25.0%)
+   - Steven Matz UNDER 5.5 pitcher strikeouts
+   - Jack Flaherty OVER 5 pitcher strikeouts
+- **SFG @ MIL** 2-leg @ -214 fair (joint 0.68, EV +25.0%)
+   - Trevor McDonald UNDER 7.5 pitcher strikeouts
+   - Kyle Harrison OVER 4.5 pitcher strikeouts
 
 ## Bullpens GASSED tonight
-Athletics, San Francisco Giants, Tampa Bay Rays, Texas Rangers, Minnesota Twins, Chicago White Sox, Miami Marlins, Milwaukee Brewers
+Athletics, Seattle Mariners, San Francisco Giants, Tampa Bay Rays, Texas Rangers, Minnesota Twins, Chicago White Sox, Miami Marlins
 _Lean late-inning OVER on these games; fade their save situations._
 
 ## NRFI/YRFI strong leans
 - **YRFI** (1st-inning OVER): OAK @ CHC, COL @ LAA, PIT @ HOU, SDP @ PHI, DET @ TBR
+
+## Cross-book pricing
+34 props softer on one book — see /props for details.
 
 ## NBA -- PLAYOFFS
 - New York Knicks @ San Antonio Spurs (53-29 vs 62-20)  | P(home) 67.5% fair -207 | Scheduled
@@ -50,7 +65,7 @@ _Lean late-inning OVER on these games; fade their save situations._
 ## NHL -- PLAYOFFS
 - Vegas Golden Knights @ Carolina Hurricanes (39-26-17 vs 53-22-7)  | P(home) 64.4% fair -181 | Scheduled
 
-## LoL Esports -- 0 live, 24 upcoming
+## LoL Esports -- 0 live, 25 upcoming
 - [LJL] DFM Academy vs Arneb BO3 | P(A) 33.8% fair +196/-196
 - [LPL] BILIBILI GAMING vs EDWARD GAMING BO5 | P(A) 59.1% fair -145/+145
 - [PCS] Frank Esports vs CTBC Flying Oyster Academy BO5 | P(A) 46.2% fair +117/-117

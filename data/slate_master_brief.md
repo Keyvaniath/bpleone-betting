@@ -1,5 +1,5 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-06-02T12:24:24 UTC_
+_Generated 2026-06-02T14:11:20 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
@@ -17,11 +17,11 @@ _Generated 2026-06-02T12:24:24 UTC_
 - **Details:** PIT @ HOU
 
 ## Top 5 Curated Picks
-1. **GOLF / Mac Meissner** (GOLF_PLAYER, score=219.29)
-   - Play: Mac Meissner (PLAYER_STRONG)
+1. **GOLF / Russell Henley** (GOLF_PLAYER, score=219.29)
+   - Play: Russell Henley (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Alex Smalley** (GOLF_PLAYER, score=219.29)
-   - Play: Alex Smalley (PLAYER_STRONG)
+2. **GOLF / Eric Cole** (GOLF_PLAYER, score=219.29)
+   - Play: Eric Cole (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
 3. **MLB / Logan Gilbert** (MLB_PITCHER, score=59.25)
    - Play: Logan Gilbert (PITCHER_STRONG)
@@ -32,9 +32,9 @@ _Generated 2026-06-02T12:24:24 UTC_
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
-  - Mac Meissner top 10 finish
-  - Alex Smalley top 10 finish
+  - Russell Henley top 10 finish
   - Eric Cole top 10 finish
+  - Mac Meissner top 10 finish
 
 ## Slate ROI Projection
 - **Picks:** 2
@@ -47,9 +47,9 @@ _Generated 2026-06-02T12:24:24 UTC_
   - Fade angle: team total UNDER
 - **NBA** / NYK (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NHL** / pyotr kochetkov (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
 - **NHL** / frederik andersen (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / Andrei Svechnikov (SKATER_FADE)
+- **NHL** / pyotr kochetkov (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / Sebastian Aho (SKATER_FADE)
   - Fade angle: SOG UNDER + no goal

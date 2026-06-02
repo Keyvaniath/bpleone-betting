@@ -1,13 +1,13 @@
 # EdgeStat Daily Summary — 2026-06-02
 
-## 🏥 Model Health: 78.8/100 [HEALTHY]
+## 🏥 Model Health: 78.0/100 [HEALTHY]
 - Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 100.0/100
-  - 🔴 Hit Rate Trend: 53.8/100
-  - 🔴 Brier Trend: 40.0/100
+  - 🟢 Calibration Freshness: 99.9/100
+  - 🟡 Hit Rate Trend: 69.1/100
+  - 🔴 Brier Trend: 40.8/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 100.0/100
-  - 🟢 Edge Count: 100/100
+  - 🟡 Edge Count: 60.0/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.587)
@@ -21,30 +21,30 @@
 4. **SDP @ PHI YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 5. **DET @ TBR YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 
-## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB-PP]** Luis García Jr. PP_batter_hrr_under_4.5 -- 86% / +49.0% (score 2.5)
-- [STRONG] **[MLB-PP]** Curtis Mead PP_batter_hrr_under_4.5 -- 86% / +48.9% (score 2.5)
-- [STRONG] **[MLB-PP]** Kyle Isbel PP_batter_hrr_under_3.5 -- 86% / +48.9% (score 2.5)
-
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **76-12** (86.4% hit rate)
 - Net units: **+2.72u** | ROI: **+49.9%**
 - Last 7d: 47-8 (85.5%) | net +1.65u
 
-**Today's 5 Locks:**
+**Today's 10 Locks:**
 - [MLB-PP] **Ketel Marte** PP_batter_hrr_under_4.5 · p=86% edge=+49.0% qK=0.062u
 - [MLB-PP] **Luis García Jr.** PP_batter_hrr_under_4.5 · p=86% edge=+49.0% qK=0.062u
 - [MLB-PP] **Curtis Mead** PP_batter_hrr_under_4.5 · p=86% edge=+48.9% qK=0.062u
 - [MLB-PP] **Jordan Walker** PP_batter_hrr_over_0.5 · p=86% edge=+48.9% qK=0.062u
 - [MLB-PP] **David Hamilton** PP_batter_hrr_under_3.5 · p=86% edge=+48.9% qK=0.062u
+- [KBO] **Choi Jeong** one_plus_tb · p=73% edge=+39.8% qK=0.062u
+- [KBO] **Jose Pirela** one_plus_tb · p=73% edge=+39.2% qK=0.062u
+- [KBO] **Koo Ja-wook** one_plus_tb · p=73% edge=+38.9% qK=0.062u
+- [KBO] **Mel Rojas Jr.** one_plus_tb · p=73% edge=+38.5% qK=0.062u
+- [KBO] **Austin Dean** one_plus_tb · p=73% edge=+38.5% qK=0.062u
 
 ## 🎰 Top Balanced 2-Leg Parlays (40-65% joint)
-- [MLB-PP] Ketel Marte PP_batter_hrr_under_ + [MLB] OAK @ CHC OAK_ML
-  Joint: 54% | Fair: 254 | Edge: +89.5%
-- [MLB-PP] Luis García Jr. PP_batter_hrr_under_ + [MLB] OAK @ CHC OAK_ML
-  Joint: 54% | Fair: 254 | Edge: +89.5%
-- [MLB-PP] Curtis Mead PP_batter_hrr_under_ + [MLB] OAK @ CHC OAK_ML
-  Joint: 54% | Fair: 254 | Edge: +89.5%
+- [KBO] Choi Jeong one_plus_tb + [KBO] Jose Pirela one_plus_tb
+  Joint: 53% | Fair: 264 | Edge: +94.6%
+- [KBO] Choi Jeong one_plus_tb + [KBO] Koo Ja-wook one_plus_tb
+  Joint: 53% | Fair: 264 | Edge: +94.1%
+- [KBO] Choi Jeong one_plus_tb + [KBO] Mel Rojas Jr. one_plus_tb
+  Joint: 53% | Fair: 264 | Edge: +93.6%
 
 ## 🎮 Player Play of the Day (cross-sport)
 - **[LOL]** Inspired UNDER 3.5 Kills | MED conviction · model 61.7% fair -161
@@ -62,9 +62,9 @@
   - San Antonio Spurs (NBA): San Antonio Spurs OUTPERFORMING expected margin by 14.9pts in recent games -- model bias may persist
   - Vegas Golden Knights (NHL): Vegas Golden Knights UNDERPERFORMING expected margin by 13.2pts in recent games -- model bias may persist
 
-## 💰 Today's Portfolio (8 picks)
-- Total stake: **$310.0** (31.0% of $1000 bankroll)
-- Expected EV: **$13.15**
+## 💰 Today's Portfolio (9 picks)
+- Total stake: **$330.0** (33.0% of $1000 bankroll)
+- Expected EV: **$12.55**
   - #1 [NRFI] $50 on OAK @ CHC YRFI (1st-inning OVER 0.5) (P=82%)
   - #2 [NRFI] $50 on COL @ LAA YRFI (1st-inning OVER 0.5) (P=73%)
   - #3 [NRFI] $50 on PIT @ HOU YRFI (1st-inning OVER 0.5) (P=72%)
@@ -73,9 +73,9 @@
 
 ## 🎯 Convergence Picks (7 stacked games)
 - ELITE: **3** · HIGH: 2 · MED: 2
-  - [ELITE] Minnesota Lynx @ Phoenix Mercury : 6 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ANOMALY)
   - [ELITE] New York Knicks @ San Antonio Spurs : 5 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
   - [ELITE] Vegas Golden Knights @ Carolina Hurricanes : 5 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
+  - [ELITE] Minnesota Lynx @ Phoenix Mercury : 5 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ATS)
   - [HIGH] Seattle Storm @ Dallas Wings : 3 signals (HEAT_COLD, HEAT_COLD, ATS)
   - [HIGH] Philadelphia Union @ Inter Miami CF : 3 signals (HEAT_COLD, HEAT_COLD, ATS)
 
@@ -118,12 +118,10 @@
   - ❄️ **Ildemaro Vargas** (AZ): L14 .160 / season .291 (-131pts) -- FADE props
   - ❄️ **Austin Martin** (MIN): L14 .137 / season .262 (-125pts) -- FADE props
 
-## 📈 Streak Regression Alerts (14)
+## 📈 Streak Regression Alerts (3)
 - [NBA] New York Knicks on W4 L10 4-0 -- New York Knicks on W4 -- no historical sample
 - [NHL] Carolina Hurricanes on W4 L10 4-1 -- Carolina Hurricanes on W4 -- no historical sample
 - [NHL] Vegas Golden Knights on W4 L10 4-0 -- Vegas Golden Knights on W4 -- no historical sample
-- [WNBA] Dallas Wings on W3 L10 4-1 -- Dallas Wings on W3 -- no historical sample
-- [WNBA] Seattle Storm on L3 L10 2-3 -- Seattle Storm on L3 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**

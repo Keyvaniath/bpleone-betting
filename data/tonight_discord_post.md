@@ -4,8 +4,8 @@ _NO_ACTION_NIGHT_ | L:0 S:7 F:22
 :lock: **LOCK:** Mike Burrows (MLB)
 
 :dart: **Top Picks:**
-1. [GOLF] Mac Meissner -- Mac Meissner (PLAYER_STRONG)
-2. [GOLF] Alex Smalley -- Alex Smalley (PLAYER_STRONG)
+1. [GOLF] Russell Henley -- Russell Henley (PLAYER_STRONG)
+2. [GOLF] Eric Cole -- Eric Cole (PLAYER_STRONG)
 3. [MLB] Logan Gilbert -- Logan Gilbert (PITCHER_STRONG)
 
 :coin: Bankroll Advisory: STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.

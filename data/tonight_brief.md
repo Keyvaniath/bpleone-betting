@@ -2,11 +2,6 @@
 
 _60-second read. Calibration tier: **REFINING** (70% progress)._
 
-## 💪 STRONG (3 picks)
-- [MLB-PP] Luis García Jr. PP_batter_hrr_under_4.5 · 86% / +49.0%
-- [MLB-PP] Curtis Mead PP_batter_hrr_under_4.5 · 86% / +48.9%
-- [MLB-PP] Kyle Isbel PP_batter_hrr_under_3.5 · 86% / +48.9%
-
 ## 🔒 5 Daily Locks
 - **Ketel Marte** PP_batter_hrr_under_4.5 (MLB-PP) -- 86% / +49.0%
 - **Luis García Jr.** PP_batter_hrr_under_4.5 (MLB-PP) -- 86% / +49.0%
@@ -18,11 +13,16 @@ _60-second read. Calibration tier: **REFINING** (70% progress)._
 - **Koo Ja-wook** one_plus_tb (KBO) -- 73% / +38.9%
 - **Mel Rojas Jr.** one_plus_tb (KBO) -- 73% / +38.5%
 - **Austin Dean** one_plus_tb (KBO) -- 73% / +38.5%
+- **Isiah Kiner-Falefa** PP_batter_hrr_under_4.5 (MLB-PP) -- 86% / +49.6%
+- **Brandon Marsh** PP_batter_hrr_under_4.5 (MLB-PP) -- 86% / +49.6%
+- **Jonathan Aranda** PP_batter_hrr_under_4.5 (MLB-PP) -- 86% / +49.5%
+- **Nolan Gorman** PP_batter_hrr_under_3.5 (MLB-PP) -- 86% / +49.5%
+- **Blake Dunn** PP_batter_hrr_under_3.5 (MLB-PP) -- 86% / +49.5%
 
 ## 🎰 Tonight's Best Parlay
-- **Choi Jeong** one_plus_tb + **Jose Pirela** one_plus_tb
-- Joint 53% · fair +264 · edge +94.6%
+- **Isiah Kiner-Falefa** PP_batter_hrr_under_4.5 + **OAK @ CHC** OAK_ML
+- Joint 54% · fair +256 · edge +90.8%
 
 ---
-_Generated 2026-06-02T12:24:22_
+_Generated 2026-06-02T14:11:17_
 _Full breakdown: /tonight · Full history: /locks-of-day_
