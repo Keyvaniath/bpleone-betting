@@ -1,4 +1,4 @@
-# EdgeStat Slate — 2026-06-01
+# EdgeStat Slate — 2026-06-02
 
 _6 picks consolidated from POD + Alpha + Book Edges + Parlay-of-Day._
 
@@ -9,23 +9,23 @@ _6 picks consolidated from POD + Alpha + Book Edges + Parlay-of-Day._
 
 ## 🎯 Alpha Pick
 
-- **KCR @ CIN** · KCR_ML
-  Prob 62.3% · Odds +119 · Edge +36.4% · Kelly 0.250
+- **OAK @ CHC** · OAK_ML
+  Prob 62.4% · Odds +104 · Edge +27.2% · Kelly 0.250
 
 ## 📊 Book Edges
 
-- **LAD @ ARI · AWAY (AWAY)** · TEAM_ML
-  Prob 65.4% · Odds +100 · Edge +30.8% · Kelly 0.308
-- **COL @ LAA · HOME (HOME)** · TEAM_ML
-  Prob 65.8% · Odds -110 · Edge +25.6% · Kelly 0.282
-- **DET @ TBR · UNDER · O/U 8.5** · TOTAL_UNDER
-  Prob 65.0% · Odds -110 · Edge +24.1% · Kelly 0.265
+- **PIT @ HOU · OVER · O/U 9.0** · TOTAL_OVER
+  Prob 64.3% · Odds -110 · Edge +22.8% · Kelly 0.251
+- **OAK @ CHC · OVER · O/U 7.5** · TOTAL_OVER
+  Prob 64.0% · Odds -110 · Edge +22.2% · Kelly 0.244
+- **NYM @ SEA · UNDER · O/U 7.5** · TOTAL_UNDER
+  Prob 62.1% · Odds -110 · Edge +18.6% · Kelly 0.205
 
 ## 🎲 Parlay
 
-- **Ketel Marte + KCR @ CIN** · 2-leg
-  Prob 53.5% · Odds +280 · Edge +103.2% · Kelly 0.050
+- **Ketel Marte + OAK @ CHC** · 2-leg
+  Prob 53.5% · Odds +254 · Edge +89.5% · Kelly 0.050
 
 ---
-_Generated 2026-06-01T19:14:30 UTC by EdgeStat._
+_Generated 2026-06-02T04:22:06 UTC by EdgeStat._
 _Stakes assume ¼-Kelly fractional sizing on a flat bankroll._
