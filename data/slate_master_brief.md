@@ -1,13 +1,13 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-06-02T19:07:08 UTC_
+_Generated 2026-06-02T23:35:40 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** 14
+- **Score:** -8
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 9
-- **Total FADES:** 22
+- **Total STRONG:** 5
+- **Total FADES:** 28
 
 ## Lock of the Night
 - **Subject:** Mike Burrows
@@ -17,30 +17,24 @@ _Generated 2026-06-02T19:07:08 UTC_
 - **Details:** PIT @ HOU
 
 ## Top 5 Curated Picks
-1. **GOLF / Eric Cole** (GOLF_PLAYER, score=219.29)
-   - Play: Eric Cole (PLAYER_STRONG)
-   - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Russell Henley** (GOLF_PLAYER, score=219.29)
-   - Play: Russell Henley (PLAYER_STRONG)
-   - Rationale: Cross-sport top pick (GOLF_PLAYER)
-3. **WNBA / angel reese** (WNBA_PLAYER, score=93.33)
+1. **WNBA / angel reese** (WNBA_PLAYER, score=93.33)
    - Play: angel reese (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (WNBA_PLAYER)
-4. **WNBA / a'ja wilson** (WNBA_PLAYER, score=63.83)
+2. **WNBA / a'ja wilson** (WNBA_PLAYER, score=63.83)
    - Play: a'ja wilson (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (WNBA_PLAYER)
-5. **MLB / Logan Gilbert** (MLB_PITCHER, score=59.25)
+3. **MLB / Logan Gilbert** (MLB_PITCHER, score=59.08)
    - Play: Logan Gilbert (PITCHER_STRONG)
    - Rationale: Cross-sport top pick (MLB_PITCHER)
-
-## Top Events Board
-- **GOLF** / ? (TOURNAMENT_STRONG)
-  - Eric Cole top 10 finish
-  - Russell Henley top 10 finish
-  - Mac Meissner top 10 finish
+4. **F1 / max verstappen** (F1_DRIVER, score=49.67)
+   - Play: max verstappen (DRIVER_STRONG)
+   - Rationale: Cross-sport top pick (F1_DRIVER)
+5. **GOLF / Rory McIlroy** (GOLF_PLAYER, score=44.79)
+   - Play: Rory McIlroy (PLAYER_STRONG)
+   - Rationale: Cross-sport top pick (GOLF_PLAYER)
 
 ## Slate ROI Projection
-- **Picks:** 2
+- **Picks:** 1
 - **Avg edge:** -0.91%
 - **Expected ROI (1/4 Kelly):** 0.0%
 - **Expected P&L on $100:** $0.0
@@ -48,11 +42,11 @@ _Generated 2026-06-02T19:07:08 UTC_
 ## Top Fades
 - **NBA** / SAS (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NBA** / NYK (TEAM_FADE)
-  - Fade angle: team total UNDER
-- **NHL** / pyotr kochetkov (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / frederik andersen (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / Andrei Svechnikov (SKATER_FADE)
-  - Fade angle: SOG UNDER + no goal
+- **MLB** / Shane Baz (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Noah Cameron (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Andrew Abbott (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Connelly Early (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
