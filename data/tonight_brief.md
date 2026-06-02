@@ -2,6 +2,10 @@
 
 _60-second read. Calibration tier: **REFINING** (70% progress)._
 
+## 💪 STRONG (2 picks)
+- [MLB] TOR @ ATL ML_HOME · 68% / +20.4%
+- [MLB] TOR @ ATL ATL_ML · 68% / +20.4%
+
 ## 🔒 5 Daily Locks
 - **Ketel Marte** PP_batter_hrr_under_4.5 (MLB-PP) -- 86% / +49.0%
 - **Luis García Jr.** PP_batter_hrr_under_4.5 (MLB-PP) -- 86% / +49.0%
@@ -18,11 +22,12 @@ _60-second read. Calibration tier: **REFINING** (70% progress)._
 - **Jonathan Aranda** PP_batter_hrr_under_4.5 (MLB-PP) -- 86% / +49.5%
 - **Nolan Gorman** PP_batter_hrr_under_3.5 (MLB-PP) -- 86% / +49.5%
 - **Blake Dunn** PP_batter_hrr_under_3.5 (MLB-PP) -- 86% / +49.5%
+- **Dylan Crews** PP_batter_hrr_under_3.5 (MLB-PP) -- 84% / +45.8%
 
 ## 🎰 Tonight's Best Parlay
-- **Isiah Kiner-Falefa** PP_batter_hrr_under_4.5 + **OAK @ CHC** OAK_ML
-- Joint 54% · fair +256 · edge +90.8%
+- **Nolan Gorman** PP_batter_hrr_under_3.5 + **OAK @ CHC** OAK_ML
+- Joint 52% · fair +256 · edge +86.4%
 
 ---
-_Generated 2026-06-02T14:11:17_
+_Generated 2026-06-02T19:07:06_
 _Full breakdown: /tonight · Full history: /locks-of-day_

@@ -1,32 +1,36 @@
 # EdgeStat Daily Summary — 2026-06-02
 
-## 🏥 Model Health: 78.0/100 [HEALTHY]
+## 🏥 Model Health: 82.0/100 [HEALTHY]
 - Solid health - some minor issues to monitor
   - 🟢 Calibration Freshness: 99.9/100
   - 🟡 Hit Rate Trend: 69.1/100
   - 🔴 Brier Trend: 40.8/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 100.0/100
-  - 🟡 Edge Count: 60.0/100
+  - 🟢 Edge Count: 100/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.587)
-- **Total games on board:** 101
-- **Strong home favorites:** 2 | **Strong road dogs:** 0
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.589)
+- **Total games on board:** 105
+- **Strong home favorites:** 4 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
-1. **OAK @ CHC YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-2. **COL @ LAA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-3. **PIT @ HOU YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-4. **SDP @ PHI YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-5. **DET @ TBR YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+1. **MIA @ WSN 4-leg SGP @ -192** (84/100 ★★★★★)
+2. **BAL @ BOS 4-leg SGP @ -169** (82/100 ★★★★★)
+3. **OAK @ CHC YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+4. **COL @ LAA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+5. **PIT @ HOU YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+
+## 🐋 Whale Picks (Max Confluence)
+- [STRONG] **[MLB]** TOR @ ATL ML_HOME -- 68% / +20.4% (score 2.5)
+- [STRONG] **[MLB]** TOR @ ATL ATL_ML -- 68% / +20.4% (score 2.5)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **76-12** (86.4% hit rate)
 - Net units: **+2.72u** | ROI: **+49.9%**
 - Last 7d: 47-8 (85.5%) | net +1.65u
 
-**Today's 10 Locks:**
+**Today's 15 Locks:**
 - [MLB-PP] **Ketel Marte** PP_batter_hrr_under_4.5 · p=86% edge=+49.0% qK=0.062u
 - [MLB-PP] **Luis García Jr.** PP_batter_hrr_under_4.5 · p=86% edge=+49.0% qK=0.062u
 - [MLB-PP] **Curtis Mead** PP_batter_hrr_under_4.5 · p=86% edge=+48.9% qK=0.062u
@@ -37,14 +41,19 @@
 - [KBO] **Koo Ja-wook** one_plus_tb · p=73% edge=+38.9% qK=0.062u
 - [KBO] **Mel Rojas Jr.** one_plus_tb · p=73% edge=+38.5% qK=0.062u
 - [KBO] **Austin Dean** one_plus_tb · p=73% edge=+38.5% qK=0.062u
+- [MLB-PP] **Isiah Kiner-Falefa** PP_batter_hrr_under_4.5 · p=86% edge=+49.6% qK=0.062u
+- [MLB-PP] **Brandon Marsh** PP_batter_hrr_under_4.5 · p=86% edge=+49.6% qK=0.062u
+- [MLB-PP] **Jonathan Aranda** PP_batter_hrr_under_4.5 · p=86% edge=+49.5% qK=0.062u
+- [MLB-PP] **Nolan Gorman** PP_batter_hrr_under_3.5 · p=86% edge=+49.5% qK=0.062u
+- [MLB-PP] **Blake Dunn** PP_batter_hrr_under_3.5 · p=86% edge=+49.5% qK=0.062u
 
 ## 🎰 Top Balanced 2-Leg Parlays (40-65% joint)
-- [KBO] Choi Jeong one_plus_tb + [KBO] Jose Pirela one_plus_tb
-  Joint: 53% | Fair: 264 | Edge: +94.6%
-- [KBO] Choi Jeong one_plus_tb + [KBO] Koo Ja-wook one_plus_tb
-  Joint: 53% | Fair: 264 | Edge: +94.1%
-- [KBO] Choi Jeong one_plus_tb + [KBO] Mel Rojas Jr. one_plus_tb
-  Joint: 53% | Fair: 264 | Edge: +93.6%
+- [MLB-PP] Isiah Kiner-Falefa PP_batter_hrr_under_ + [MLB] OAK @ CHC OAK_ML
+  Joint: 54% | Fair: 256 | Edge: +90.8%
+- [MLB-PP] Brandon Marsh PP_batter_hrr_under_ + [MLB] OAK @ CHC OAK_ML
+  Joint: 54% | Fair: 256 | Edge: +90.8%
+- [MLB-PP] Jonathan Aranda PP_batter_hrr_under_ + [MLB] OAK @ CHC OAK_ML
+  Joint: 54% | Fair: 256 | Edge: +90.8%
 
 ## 🎮 Player Play of the Day (cross-sport)
 - **[LOL]** Inspired UNDER 3.5 Kills | MED conviction · model 61.7% fair -161
@@ -53,23 +62,29 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
+## ⚡ Pre-Game HIGH Conviction (1)
+- [WNBA] **Washington Mystics** HOME (1-2 L10) · model 62.3% fair -165
+
 ## 🔥/❄️ Heat / Cold Signals
 - Hot teams: **24** | Cold teams: **16** | Over-heavy: 0 | Under-heavy: 6
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (2)
-- RESIDUAL_DIVERGENCE: **2**
+## ⚠️ Anomaly Detector (7)
+- RESIDUAL_DIVERGENCE: **7**
   - San Antonio Spurs (NBA): San Antonio Spurs OUTPERFORMING expected margin by 14.9pts in recent games -- model bias may persist
   - Vegas Golden Knights (NHL): Vegas Golden Knights UNDERPERFORMING expected margin by 13.2pts in recent games -- model bias may persist
+  - Connecticut Sun (WNBA): Connecticut Sun UNDERPERFORMING expected margin by 8.6pts in recent games -- model bias may persist
+  - Washington Mystics (WNBA): Washington Mystics OUTPERFORMING expected margin by 7.3pts in recent games -- model bias may persist
+  - Golden State Valkyries (WNBA): Golden State Valkyries OUTPERFORMING expected margin by 7.1pts in recent games -- model bias may persist
 
-## 💰 Today's Portfolio (9 picks)
-- Total stake: **$330.0** (33.0% of $1000 bankroll)
-- Expected EV: **$12.55**
-  - #1 [NRFI] $50 on OAK @ CHC YRFI (1st-inning OVER 0.5) (P=82%)
-  - #2 [NRFI] $50 on COL @ LAA YRFI (1st-inning OVER 0.5) (P=73%)
-  - #3 [NRFI] $50 on PIT @ HOU YRFI (1st-inning OVER 0.5) (P=72%)
-  - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
-  - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
+## 💰 Today's Portfolio (8 picks)
+- Total stake: **$340.0** (34.0% of $1000 bankroll)
+- Expected EV: **$11.99**
+  - #1 [SGP] $50 on MIA @ WSN 4-leg SGP @ -192 (P=66%)
+  - #2 [SGP] $50 on BAL @ BOS 4-leg SGP @ -169 (P=63%)
+  - #3 [NRFI] $50 on OAK @ CHC YRFI (1st-inning OVER 0.5) (P=82%)
+  - #4 [NRFI] $50 on COL @ LAA YRFI (1st-inning OVER 0.5) (P=73%)
+  - #5 [NRFI] $50 on PIT @ HOU YRFI (1st-inning OVER 0.5) (P=72%)
 
 ## 🎯 Convergence Picks (7 stacked games)
 - ELITE: **3** · HIGH: 2 · MED: 2
@@ -131,10 +146,9 @@
   - ⚠️ batter_rbis (Brier Δ -0.0052)
 
 ## 🧠 Training Convergence
-- ELITE: **4** · HEALTHY: 1 · OK: 0 · DEGRADED: **3**
-  - ⚠️ **batter_hits**: DIVERGENT - consistent same-sign moves (structural issue) (cf=0.9101)
-  - ⚠️ **batter_rbis**: DIVERGENT - consistent same-sign moves (structural issue) (cf=0.8052)
+- ELITE: **5** · HEALTHY: 1 · OK: 0 · DEGRADED: **2**
   - ⚠️ **batter_singles**: DIVERGENT - consistent same-sign moves (structural issue) (cf=0.9426)
+  - ⚠️ **batter_rbis**: DIVERGENT - consistent same-sign moves (structural issue) (cf=0.8052)
 
 ## 🤖 Self-Training Status
 - **NBA**: n=10 games · hit rate 70.0% · bias -20.0pp
