@@ -145,6 +145,7 @@ def _load_learned_weights():
 
 _LEARNED_W_CACHE = None
 _FAMILY_W_CACHE = None
+_CANON_W_CACHE = None
 
 
 def _load_family_weights():
@@ -172,6 +173,39 @@ def _market_family(market):
     m = re.sub(r"_(?:over|under)?_?-?\d+(?:\.\d+)?$", "", str(market))
     m = re.sub(r"_(over|under)$", r"_\1", m)
     return m.lower() or "unknown"
+
+
+def _canon_market_family(market):
+    """Canonical family (pools duplicate-named bets: 1_plus_hr / to_hit_hr_yes /
+    pp_batter_home_runs -> mlb_hr_0.5_over) when recognized, else the line-stripped
+    family. Mirrors all_picks_tracker._canon_family so this board's lookup key
+    matches the ledger's by_canonical key."""
+    try:
+        from market_taxonomy import canonical_market
+        c = canonical_market(market)
+        if c:
+            return c
+    except Exception:
+        pass
+    return _market_family(market)
+
+
+def _load_canonical_weights():
+    """Per-CANONICAL-family learned weights -- the preferred bridge to the board.
+    Pools all the evidence for a bet into one weight (vs. weights_by_family,
+    which fragments HR across to_hit_hr_yes / 1_plus_hr / pp_batter_home_runs)."""
+    p = os.path.join(DATA_DIR, "learned_weights.json")
+    if not os.path.exists(p): return {}
+    try:
+        with open(p) as f: d = json.load(f)
+        out = {}
+        for fam, w in (d.get("weights_by_canonical") or {}).items():
+            wl = w.get("w_learned")
+            if wl is not None and w.get("n_settled", 0) > 0:
+                out[fam] = wl
+        return out
+    except Exception:
+        return {}
 
 
 _PROVEN_NEG_CACHE = None
@@ -215,11 +249,13 @@ def _shrink_prob(raw_prob, source, fair_american=None, market=None):
     """
     if raw_prob is None: return None
     # Self-learning weight overrides if data accumulated
-    global _LEARNED_W_CACHE, _FAMILY_W_CACHE
+    global _LEARNED_W_CACHE, _FAMILY_W_CACHE, _CANON_W_CACHE
     if _LEARNED_W_CACHE is None:
         _LEARNED_W_CACHE = _load_learned_weights()
     if _FAMILY_W_CACHE is None:
         _FAMILY_W_CACHE = _load_family_weights()
+    if _CANON_W_CACHE is None:
+        _CANON_W_CACHE = _load_canonical_weights()
     # Prefer the per-source learned weight; if the source has no learned data
     # (true for every displayed candidate, which is tagged by market not by
     # ledger source), fall back to the per-market-family learned weight; only
@@ -227,7 +263,12 @@ def _shrink_prob(raw_prob, source, fair_american=None, market=None):
     # learning actually reach the displayed board.
     w_learned = _LEARNED_W_CACHE.get(source or "")
     if w_learned is None and market:
-        w_learned = _FAMILY_W_CACHE.get(_market_family(market))
+        # Prefer the CANONICAL family weight (pooled across duplicate names, so
+        # better-sampled); fall back to the line-stripped family for anything not
+        # yet canonicalized (game lines, other sports).
+        w_learned = _CANON_W_CACHE.get(_canon_market_family(market))
+        if w_learned is None:
+            w_learned = _FAMILY_W_CACHE.get(_market_family(market))
     w = w_learned if w_learned is not None else SOURCE_SHRINKAGE_W.get(source or "", DEFAULT_SHRINKAGE_W)
     market_p = _market_implied_prob(fair_american)
     if market_p is not None:

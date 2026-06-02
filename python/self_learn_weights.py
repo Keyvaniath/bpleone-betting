@@ -179,13 +179,14 @@ def run() -> Dict[str, Any]:
     import math as _math
     DEFAULT_FAMILY_W = 0.55
     MIN_FAMILY_N = 15
-    by_fam = ledger.get("by_market_family") or {}
-    fam_weights: Dict[str, Dict[str, Any]] = {}
-    for fam, b in by_fam.items():
+
+    def _family_weight(b):
+        """Wilson-lower-bound + sample-size shrinkage for one family's W/L row;
+        returns the weight record, or None when below MIN_FAMILY_N."""
         w_ = int(b.get("wins") or 0); l_ = int(b.get("losses") or 0)
         n = w_ + l_
         if n < MIN_FAMILY_N:
-            continue
+            return None
         p = w_ / n
         z = 1.96
         denom = 1 + z * z / n
@@ -195,15 +196,33 @@ def run() -> Dict[str, Any]:
         w_obs = _clamp((eff - 0.50) * 2 + 0.55, 0.30, 0.90)
         pull = n / (n + SHRINKAGE_PRIOR_N)
         w_learned = round(pull * w_obs + (1 - pull) * DEFAULT_FAMILY_W, 3)
-        fam_weights[fam] = {"n_settled": n, "hit_rate": round(p, 4), "w_learned": w_learned}
+        return {"n_settled": n, "hit_rate": round(p, 4), "w_learned": w_learned}
+
+    fam_weights: Dict[str, Dict[str, Any]] = {}
+    for fam, b in (ledger.get("by_market_family") or {}).items():
+        rec = _family_weight(b)
+        if rec is not None:
+            fam_weights[fam] = rec
+
+    # Canonical families pool duplicate-named bets (mlb_hr_0.5_over collects
+    # 1_plus_hr + to_hit_hr_yes + ...), so each weight is learned from ALL the
+    # evidence for that bet instead of 3-4 fragments. This is the preferred
+    # bridge to the board; weights_by_family stays for back-compat.
+    canon_weights: Dict[str, Dict[str, Any]] = {}
+    for fam, b in (ledger.get("by_canonical") or {}).items():
+        rec = _family_weight(b)
+        if rec is not None:
+            canon_weights[fam] = rec
 
     payload = {
         "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
         "shrinkage_prior_n": SHRINKAGE_PRIOR_N,
         "n_sources_with_data": sum(1 for s in learned.values() if s["n_settled"] > 0),
         "n_families_with_data": len(fam_weights),
+        "n_canonical_with_data": len(canon_weights),
         "weights": learned,
         "weights_by_family": fam_weights,
+        "weights_by_canonical": canon_weights,
         "note": ("Per-source AND per-market-family shrinkage weights learned "
                   "from all_picks_ledger settled outcomes. Sources/families that "
                   "hit > 55% earn higher weight; < 45% get pushed toward baseline. "

@@ -32,6 +32,11 @@ import re
 import datetime as dt
 from typing import Any, Dict, List, Optional
 
+try:
+    from market_taxonomy import canonical_market as _canonical_market
+except Exception:  # taxonomy is optional; fall back to the generic family
+    _canonical_market = None
+
 
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 OUT = os.path.join(DATA_DIR, "all_picks_ledger.json")
@@ -62,6 +67,21 @@ def _market_family(market):
     m = re.sub(r"_(?:over|under)?_?-?\d+(?:\.\d+)?$", "", str(market))
     m = re.sub(r"_(over|under)$", r"_\1", m)
     return m.lower() or "unknown"
+
+
+def _canon_family(market):
+    """Canonical (deduplicated) family for a recognized MLB prop, else the generic
+    line-stripped family -- so the SAME bet under different names pools into one
+    key (1_plus_hr / to_hit_hr_yes / pp_batter_home_runs -> mlb_hr_0.5_over),
+    instead of fragmenting the learning signal across 3-4 families."""
+    if _canonical_market is not None:
+        try:
+            c = _canonical_market(market)
+            if c:
+                return c
+        except Exception:
+            pass
+    return _market_family(market)
 
 
 def _american_to_decimal(a):
@@ -1785,6 +1805,23 @@ def run() -> Dict[str, Any]:
         d = b["wins"] + b["losses"]
         b["hit_rate"] = round(b["wins"] / d, 4) if d > 0 else None
 
+    # By CANONICAL family -- same as by_market_family but with duplicate-named
+    # bets POOLED (mlb_hr_0.5_over collects 1_plus_hr + to_hit_hr_yes + ...), so
+    # the learning loop weights on all the evidence for a bet, not 3 fragments.
+    # by_market_family is kept alongside for back-compat / stat continuity.
+    by_canon: Dict[str, Dict[str, Any]] = {}
+    for p in settled:
+        cm = _canon_family(p.get("market"))
+        b = by_canon.setdefault(cm, {"n": 0, "wins": 0, "losses": 0, "pushes": 0, "net_units": 0.0})
+        b["n"] += 1
+        if p["result"] == "won": b["wins"] += 1
+        elif p["result"] == "lost": b["losses"] += 1
+        elif p["result"] == "push": b["pushes"] += 1
+        b["net_units"] = round(b["net_units"] + (p.get("payout_units") or 0), 3)
+    for cm, b in by_canon.items():
+        d = b["wins"] + b["losses"]
+        b["hit_rate"] = round(b["wins"] / d, 4) if d > 0 else None
+
     # By sport
     by_sport: Dict[str, Dict[str, Any]] = {}
     for p in settled:
@@ -1830,6 +1867,7 @@ def run() -> Dict[str, Any]:
         "n_bootstrapped_from_locks_history": n_bootstrapped,
         "by_source": by_source,
         "by_market_family": by_mkt,
+        "by_canonical": by_canon,
         "by_sport": by_sport,
         "last_7_days": {
             "wins": l7_w, "losses": l7_l, "net_units": l7_net,
