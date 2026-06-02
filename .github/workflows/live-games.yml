@@ -7,10 +7,15 @@ name: Live In-Progress Games Poll
 # Earlier window catches Sunday/Saturday day games starting at 12:15 PM ET.
 
 on:
-  # 2026-05-21: DISABLED cron — burning 216 runs/day. Hit GH Actions 90% quota.
-  # Re-enable after June 1, 2026 with milder schedule, e.g.:
-  #   - cron: '*/15 16-23 * * *'   # ~30 runs/day in-game window only
-  # For now run manually when a live game matters.
+  # 2026-05-21: cron was DISABLED (10-min cadence burned 216 runs/day; the repo
+  # briefly neared the GH Actions quota when it was private).
+  # 2026-06-02: RE-ENABLED at a milder 15-min cadence over the MLB live window
+  # (16:00-05:59 UTC = ~12 PM ET first pitch through ~2 AM ET West Coast night
+  # games). ~56 runs/day vs the old 216. The repo is PUBLIC now, so Actions
+  # minutes are unlimited; the live win-expectancy / live-CLV / in-game-lock
+  # feeds need an in-game cadence and had gone ~12 days stale on dispatch-only.
+  schedule:
+    - cron: '*/15 16-23,0-5 * * *'
   workflow_dispatch:
 
 permissions:

@@ -1225,6 +1225,14 @@ jobs:
         run: python notify.py
 
       - name: Commit + push if data changed
+        # RESILIENCE (added 2026-06-02): run even when an earlier step failed, so a
+        # single bad module can never again freeze the slate. On 2026-06-01 a
+        # NameError in props_pipeline.py aborted the job BEFORE this step, so a
+        # freshly-computed today.json was never published and the site served
+        # ~17h-stale data. With always(), whatever fresh data WAS produced still
+        # ships; the job still reports failure (so the if:failure alert + the
+        # auto-retrigger watchdog still fire) -- we get the signal AND the data.
+        if: always()
         env:
           # Headless: never open EDITOR on rebase-continue / commit-edit
           GIT_EDITOR: "true"
