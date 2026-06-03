@@ -1449,8 +1449,113 @@ def _grade_wnba_team_total(pick: Dict[str, Any], games: List[Dict[str, Any]]) ->
 
 def _grade_wnba_pick(pick: Dict[str, Any], by_name: Dict[str, Any],
                      games: List[Dict[str, Any]]) -> Optional[str]:
+    # Basketball-generic: also used for NBA (sport == "NBA") with NBA gamelogs.
     r = _grade_wnba_team_total(pick, games)
     return r if r is not None else _grade_wnba_prop(pick, by_name)
+
+
+# ---------------------------------------------------------------------------
+# NFL / football grading (built ahead of Week 1; validated vs the 2025 season).
+# Player props grade vs nfl_player_gamelogs.json (pass/rush/rec yds, TDs, recs,
+# anytime-TD = rush_td + rec_td); team totals + game lines vs nfl_historical.json.
+# Dispatched by sport == "NFL", same shape as WNBA/NBA.
+# ---------------------------------------------------------------------------
+def _fb_stat(source: str, market: str):
+    """Parse a football market (+ source as hint) -> (stat, line, side). stat is
+    a gamelog field (pass_yds/pass_td/pass_int/rush_yds/rush_att/rush_td/rec/
+    rec_yds/rec_td/anytime_td) or a team-total sentinel (_home_total/_away_total)."""
+    s = ((source or "") + " " + (market or "")).lower()
+    if "under" in s: side = "under"
+    elif "over" in s: side = "over"
+    elif re.search(r"(^|[_ ])no([_ ]|$)", s): side = "under"
+    elif "yes" in s: side = "over"
+    else: side = None
+    # anytime touchdown is a yes/no on the 0.5 line.
+    if ("anytime_td" in s or "anytime_touchdown" in s or "to_score_td" in s
+            or "td_scorer" in s or "anytime_scorer" in s):
+        return "anytime_td", 0.5, (side or "over")
+    if "home_total" in s: stat = "_home_total"
+    elif "away_total" in s: stat = "_away_total"
+    elif "pass_yd" in s or "passing_yard" in s: stat = "pass_yds"
+    elif "rush_yd" in s or "rushing_yard" in s: stat = "rush_yds"
+    elif "rec_yd" in s or "receiving_yard" in s: stat = "rec_yds"
+    elif "pass_td" in s or "passing_td" in s: stat = "pass_td"
+    elif "interception" in s or "pass_int" in s: stat = "pass_int"
+    elif "rush_att" in s or "carries" in s or "rushing_attempt" in s: stat = "rush_att"
+    elif "completion" in s or "pass_cmp" in s: stat = "pass_cmp"
+    elif "reception" in s or "catches" in s or re.search(r"(^|[_ ])rec([_ ]|$)", s): stat = "rec"
+    else: stat = None
+    mnum = re.search(r"(?:over|under)_(\d+(?:\.\d+)?)", s)
+    if mnum:
+        line = float(mnum.group(1))
+    else:
+        nums = re.findall(r"\d+(?:\.\d+)?", s)
+        line = float(nums[-1]) if nums else None
+    return stat, line, side
+
+
+def _grade_nfl_pick(pick: Dict[str, Any], by_name: Dict[str, Any],
+                    games: List[Dict[str, Any]]) -> Optional[str]:
+    m = (pick.get("market") or "").lower()
+    matchup = (pick.get("player_or_matchup") or "").strip().lower()
+    # Full-game moneyline / total -> grade vs the final score. A bare "over_X" is
+    # only a game total when the subject is a game ("@" in the matchup); a player
+    # prop whose stat lives in the source falls through to _fb_stat below.
+    if ("ml_home" in m or "ml_away" in m
+            or ("@" in matchup and re.fullmatch(r"(over|under)_\d+(?:\.\d+)?", m) is not None)):
+        for g in games:
+            if (g.get("date") or "")[:10] != pick.get("date"): continue
+            g_mu = f"{g.get('away_abbrev','')} @ {g.get('home_abbrev','')}".lower()
+            if matchup not in g_mu and g_mu not in matchup: continue
+            if g.get("home_score") is None: continue
+            hs = g.get("home_score") or 0; aws = g.get("away_score") or 0; total = hs + aws
+            if "over_" in m or "under_" in m:
+                try: line = float(m.split("_")[-1])
+                except Exception: return None
+                if total == line: result = "push"
+                elif (("over_" in m) == (total > line)): result = "won"
+                else: result = "lost"
+            elif "ml_home" in m: result = "won" if hs > aws else "lost"
+            else: result = "won" if aws > hs else "lost"
+            pick["outcome"] = {"final_score": f"{g.get('away_abbrev')} {aws} @ {g.get('home_abbrev')} {hs}",
+                               "total_points": total,
+                               "verify": f"{g.get('away_abbrev')} @ {g.get('home_abbrev')}: final {aws}-{hs} (total {total}) on {pick.get('date')}"}
+            return result
+        return None
+
+    stat, line, side = _fb_stat(pick.get("source"), pick.get("market"))
+    if stat is None or line is None or side is None:
+        return None
+    # Team totals -> vs the team's final score.
+    if stat in ("_home_total", "_away_total"):
+        for g in games:
+            if (g.get("date") or "")[:10] != pick.get("date"): continue
+            g_mu = f"{g.get('away_abbrev','')} @ {g.get('home_abbrev','')}".lower()
+            if matchup not in g_mu and g_mu not in matchup: continue
+            score = g.get("home_score") if stat == "_home_total" else g.get("away_score")
+            if score is None: continue
+            over_wins = score > line
+            won = (not over_wins) if side == "under" else over_wins
+            which = "home" if stat == "_home_total" else "away"
+            pick["outcome"] = {"final_score": f"{g.get('away_abbrev')} {g.get('away_score')} @ {g.get('home_abbrev')} {g.get('home_score')}",
+                               "team_total": score, "line": line, "side": side.upper(),
+                               "verify": f"{g.get('away_abbrev')} @ {g.get('home_abbrev')}: {which} scored {score} (line {line}, bet {side}) on {pick.get('date')}"}
+            return "won" if won else "lost"
+        return None
+    # Player prop -> vs the box-score line.
+    prec = by_name.get(matchup)
+    if not prec:
+        return None
+    for game in (prec.get("games") or []):
+        if (game.get("date") or "")[:10] != pick.get("date"): continue
+        val = game.get(stat)
+        if val is None: continue
+        over_wins = val > line
+        won = (not over_wins) if side == "under" else over_wins
+        pick["outcome"] = {"stat": stat, "actual": val, "line": line, "side": side.upper(),
+                           "verify": f"{pick.get('player_or_matchup')} — {stat} = {val} (line {line}, bet {side}) on {pick.get('date')}"}
+        return "won" if won else "lost"
+    return None
 
 
 def _settle_picks(history: List[Dict[str, Any]]) -> int:
@@ -1465,10 +1570,15 @@ def _settle_picks(history: List[Dict[str, Any]]) -> int:
     for pid, prec in bpid.items():
         if isinstance(prec, dict):
             by_name[(prec.get("name") or "").lower()] = prec
-    # WNBA real outcomes (first non-MLB sport): box scores + finals so its picks
-    # settle + feed the learning loop instead of voiding unsettled.
+    # Non-MLB real outcomes (box scores + finals) so each sport's picks settle +
+    # feed the learning loop instead of voiding. WNBA is live now; NBA + NFL are
+    # wired ahead of their seasons (gamelog files appear when those sports run).
     wnba_by_name = _load(os.path.join(DATA_DIR, "wnba_player_gamelogs.json")).get("by_name") or {}
     wnba_games = _load(os.path.join(DATA_DIR, "wnba_historical.json")).get("games") or []
+    nba_by_name = _load(os.path.join(DATA_DIR, "nba_player_gamelogs.json")).get("by_name") or {}
+    nba_games = _load(os.path.join(DATA_DIR, "nba_historical.json")).get("games") or []
+    nfl_by_name = _load(os.path.join(DATA_DIR, "nfl_player_gamelogs.json")).get("by_name") or {}
+    nfl_games = _load(os.path.join(DATA_DIR, "nfl_historical.json")).get("games") or []
 
     for p in history:
         if p.get("settled"): continue
@@ -1483,9 +1593,13 @@ def _settle_picks(history: List[Dict[str, Any]]) -> int:
         result = None
         decimal_odds = _american_to_decimal(p.get("fair_american")) or 1.91
 
-        if (p.get("sport") or "").upper() == "WNBA":
-            # Real WNBA outcomes: player props vs box scores, team alt-totals vs finals.
+        sport = (p.get("sport") or "").upper()
+        if sport == "WNBA":
             result = _grade_wnba_pick(p, wnba_by_name, wnba_games)
+        elif sport == "NBA":
+            result = _grade_wnba_pick(p, nba_by_name, nba_games)   # same basketball grader
+        elif sport == "NFL":
+            result = _grade_nfl_pick(p, nfl_by_name, nfl_games)
         else:
             # MLB / default (unchanged). Game-level: FULL-GAME moneyline or FULL-GAME
             # total ONLY. Props like team_sb_under_0.5 / inning totals contain
