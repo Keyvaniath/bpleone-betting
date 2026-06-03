@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-06-03T19:01:47",
+  "generated_at": "2026-06-03T19:40:24",
   "shrinkage_prior_n": 30,
   "n_sources_with_data": 12,
-  "n_families_with_data": 19,
-  "n_canonical_with_data": 19,
+  "n_families_with_data": 20,
+  "n_canonical_with_data": 20,
   "weights": {
     "today": {
       "prior": 0.8,
@@ -380,10 +380,10 @@
       "w_observed": 0.9,
       "pull_toward_observed": 0.516,
       "w_target_uncapped": 0.779,
-      "w_learned": 0.727,
-      "w_final": 0.727,
+      "w_learned": 0.743,
+      "w_final": 0.743,
       "user_override": null,
-      "delta_from_prior": 0.077,
+      "delta_from_prior": 0.093,
       "guard_grade": "B",
       "guard_used_wilson_lo": false,
       "guard_max_delta": 0.0158,
@@ -821,6 +821,11 @@
       "n_settled": 20,
       "hit_rate": 0.8,
       "w_learned": 0.617
+    },
+    "blk_stl_under": {
+      "n_settled": 21,
+      "hit_rate": 0.6667,
+      "w_learned": 0.512
     }
   },
   "weights_by_canonical": {
@@ -918,6 +923,11 @@
       "n_settled": 20,
       "hit_rate": 0.8,
       "w_learned": 0.617
+    },
+    "blk_stl_under": {
+      "n_settled": 21,
+      "hit_rate": 0.6667,
+      "w_learned": 0.512
     }
   },
   "note": "Per-source AND per-market-family shrinkage weights learned from all_picks_ledger settled outcomes. Sources/families that hit > 55% earn higher weight; < 45% get pushed toward baseline. Shrunk by sample size (30+ settled to fully trust). todays_top_plays.py applies the source weight if the source matches, else the market-family weight, else the prior."
