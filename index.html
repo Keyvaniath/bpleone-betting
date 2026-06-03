@@ -1499,5 +1499,60 @@ fetch("data/calibration_status.json?t=" + Date.now(), { cache: "no-cache" })
 
 <script src="js/nav_badge.js"></script>
 <script src="js/freshness-banner.js"></script>
+
+<!-- Make every pick row clickable -> drill into the sport page where its model
+     breakdown + verification lives. One delegated handler + a post-render pass
+     (poll + MutationObserver) so async-populated rows get wired too. -->
+<script>
+(function () {
+  // Most specific keys first so "MLB PITCHER" routes before "MLB".
+  var SPORT_PAGE = {
+    "MLB PITCHER": "pitcher-matchup.html", "MLB BATTER": "props.html",
+    "MLB TEAM": "mlb.html", "NBA PLAYER": "nba.html", "NBA TEAM": "nba.html",
+    "NHL SKATER": "nhl.html", "NHL GOALIE": "nhl.html", "NHL TEAM": "nhl.html",
+    "GOLF PLAYER": "golf.html", "F1 DRIVER": "f1.html", "WNBA PLAYER": "wnba.html",
+    "UFC FIGHTER": "ufc.html",
+    MLB: "mlb.html", NBA: "nba.html", NHL: "nhl.html", WNBA: "wnba.html",
+    GOLF: "golf.html", F1: "f1.html", UFC: "ufc.html", LOL: "lol.html",
+    CS: "cs.html", KBO: "kbo.html", EPL: "epl.html", UCL: "ucl.html",
+    MLS: "mls.html", NFL: "nfl.html", NCAAF: "ncaaf.html", NCAAB: "ncaab.html",
+    SOCCER: "epl.html"
+  };
+  var KEYS = Object.keys(SPORT_PAGE).sort(function (a, b) { return b.length - a.length; });
+  function pageFor(text) {
+    var t = (text || "").toUpperCase();
+    for (var i = 0; i < KEYS.length; i++) { if (t.indexOf(KEYS[i]) > -1) return SPORT_PAGE[KEYS[i]]; }
+    return null;
+  }
+  // Any element flagged with data-href navigates (ignore clicks on real links/buttons).
+  document.addEventListener("click", function (e) {
+    var el = e.target.closest("[data-href]");
+    if (el && !e.target.closest("a,button,input,select")) window.location = el.getAttribute("data-href");
+  });
+  var CONTAINERS = ["playerPotList", "multiSportTopList", "modelConvList", "sharpArmsList",
+                    "pitcherSgpList", "topPlaysList", "nbaCardBody", "nhlCardBody"];
+  function enhance() {
+    CONTAINERS.forEach(function (id) {
+      var c = document.getElementById(id);
+      if (!c) return;
+      Array.prototype.forEach.call(c.querySelectorAll(":scope > div, :scope > tr"), function (row) {
+        if (row.getAttribute("data-clk") || !row.textContent.trim()) return;
+        var page = pageFor(row.textContent);
+        if (!page) return;
+        row.setAttribute("data-clk", "1");
+        row.setAttribute("data-href", page);
+        row.style.cursor = "pointer";
+        row.title = "Open " + page.replace(".html", "") + " — full model breakdown + verification";
+        row.addEventListener("mouseover", function () { row.style.background = "rgba(212,160,74,0.06)"; });
+        row.addEventListener("mouseout", function () { row.style.background = ""; });
+      });
+    });
+  }
+  var tries = 0, iv = setInterval(function () { enhance(); if (++tries > 30) clearInterval(iv); }, 400);
+  if (window.MutationObserver) {
+    try { new MutationObserver(enhance).observe(document.querySelector("main") || document.body, { childList: true, subtree: true }); } catch (e) {}
+  }
+})();
+</script>
 </body>
 </html>

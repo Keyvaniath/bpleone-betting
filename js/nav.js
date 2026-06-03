@@ -80,31 +80,38 @@
     { href: "residuals.html",           label: "Residuals" },
     { href: "live.html",                label: "MLB Live" },
   ];
+  // PRIMARY bar items only -- kept short so the top bar never overflows into the
+  // ticker / "Today's Play" button (it was 24 links wrapping over the actions).
   const TOP = [
     { href: "index.html",       label: "Dashboard" },
-    { href: "accuracy.html",    label: "📊 Accuracy" },
-    { href: "self-learning.html", label: "🧠 Self-Learning" },
-    { href: "deep-edges.html",  label: "🔬 Deep Edges" },
-    { href: "model-control.html", label: "🎛 Control" },
-    { href: "learning-integrity.html", label: "🔬 Integrity" },
-    { href: "line-shop.html",   label: "💰 Line Shop" },
-    { href: "pulse.html",       label: "📡 Pulse" },
-    { href: "backtest-replayer.html", label: "🔁 Replayer" },
-    { href: "lifecycle.html",   label: "📈 Lifecycle" },
-    { href: "data-integrity.html", label: "🔍 Data Integrity" },
-    { href: "module-performance.html", label: "🧠 Module Performance" },
-    { href: "sport-coverage.html", label: "🌐 Sport Coverage" },
+    { href: "top-edges.html",   label: "🎯 Top Edges" },
+    { href: "bet-slate.html",   label: "📝 Bet Slate" },
     { href: "tonight.html",     label: "🌙 Tonight" },
     { href: "live-now.html",    label: "Live Now" },
     { href: "play-of-day.html", label: "Play of Day" },
     { href: "alpha-pick.html",  label: "★ Alpha Pick" },
-    { href: "fade-picks.html",  label: "✗ Fade Picks" },
-    { href: "book-edges.html",  label: "📊 Book Edges" },
-    { href: "top-edges.html",   label: "🎯 Top Edges" },
-    { href: "bet-slate.html",   label: "📝 Bet Slate" },
-    { href: "best-bets.html",   label: "Best Bets" },
-    { href: "brief.html",       label: "Brief" },
-    { href: "learn.html",       label: "Learn" },
+  ];
+  // Secondary / analytics / meta pages -> collapsed into a "More" dropdown so
+  // every link stays reachable without crowding the bar.
+  const MORE = [
+    { href: "track-record.html",       label: "Track Record" },
+    { href: "best-bets.html",          label: "Best Bets" },
+    { href: "fade-picks.html",         label: "✗ Fade Picks" },
+    { href: "book-edges.html",         label: "📊 Book Edges" },
+    { href: "accuracy.html",           label: "📊 Accuracy" },
+    { href: "self-learning.html",      label: "🧠 Self-Learning" },
+    { href: "deep-edges.html",         label: "🔬 Deep Edges" },
+    { href: "model-control.html",      label: "🎛 Control" },
+    { href: "learning-integrity.html", label: "🔬 Integrity" },
+    { href: "line-shop.html",          label: "💰 Line Shop" },
+    { href: "pulse.html",              label: "📡 Pulse" },
+    { href: "backtest-replayer.html",  label: "🔁 Replayer" },
+    { href: "lifecycle.html",          label: "📈 Lifecycle" },
+    { href: "data-integrity.html",     label: "🔍 Data Integrity" },
+    { href: "module-performance.html", label: "🧠 Module Performance" },
+    { href: "sport-coverage.html",     label: "🌐 Sport Coverage" },
+    { href: "brief.html",              label: "Brief" },
+    { href: "learn.html",              label: "Learn" },
   ];
 
   function buildDropdown(label, items, currentPath) {
@@ -135,7 +142,8 @@
     const sportsDd = buildDropdown("Sports", SPORTS, path);
     const playersDd = buildDropdown("Players", PLAYERS, path);
     const toolsDd = buildDropdown("Tools", TOOLS, path);
-    return topHtml + sportsDd + playersDd + toolsDd;
+    const moreDd = buildDropdown("More", MORE, path);
+    return topHtml + sportsDd + playersDd + toolsDd + moreDd;
   }
 
   // Anchor the fixed-position menu to the button's current screen position.
