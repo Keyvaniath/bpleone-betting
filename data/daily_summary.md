@@ -2,32 +2,29 @@
 
 **Model Confidence: 73.6/100 [GREEN-LIGHT]** -- Model is healthy. Use capped Kelly (<=0.5u) until residual variance tightens further.
 
-_Generated at 2026-06-03T22:37:32 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
+
+_Generated at 2026-06-03T23:38:06 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
-**SDP @ PHI - UNDER_8.5**
-- Market: -110
-- Model probability: 86.3%
-- Raw edge: +64.74%
+**LAD @ ARI - LAD_ML**
+- Market: -147
+- Model probability: 89.1%
+- Raw edge: +49.66%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
 
-## Full Slate (11 games)
+## Full Slate (6 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 6:40p ET | SDP @ PHI | Citizens Bank Park | 70F 5mph | UNDER_8.5 +64.74% |
-| 6:45p ET | BAL @ BOS | Fenway Park | 66F 11mph | UNDER_10.0 +33.8% |
-| 7:05p ET | CLE @ NYY | Yankee Stadium | 65F 4mph | NYY_ML +32.1% |
-| 7:10p ET | KCR @ CIN | Great American Ball Park | 69F 3mph | OVER_8.0 +25.26% |
-| 7:15p ET | TOR @ ATL | Truist Park | 65F 4mph | OVER_7.5 +35.43% |
 | 7:40p ET | SFG @ MIL | American Family Field | indoor | UNDER_9.5 +25.9% |
-| 7:45p ET | TEX @ STL | Busch Stadium | 68F 4mph | TEX_ML +12.78% |
-| 8:05p ET | OAK @ CHC | Wrigley Field | 64F 7mph | OVER_8.5 +29.68% |
+| 7:45p ET | TEX @ STL | Busch Stadium | 68F 4mph | TEX_ML +12.26% |
+| 8:05p ET | OAK @ CHC | Wrigley Field | 64F 6mph | UNDER_11.0 +21.43% |
 | 8:10p ET | PIT @ HOU | Daikin Park | indoor | PIT_ML +28.83% |
-| 9:38p ET | COL @ LAA | Angel Stadium | 61F 4mph | OVER_8.5 +22.64% |
+| 9:38p ET | COL @ LAA | Angel Stadium | 62F 4mph | OVER_8.5 +23.43% |
 | 9:40p ET | LAD @ ARI | Chase Field | indoor | LAD_ML +49.66% |
 
 ## Parlays - top 5
@@ -57,14 +54,14 @@ _Generated at 2026-06-03T22:37:32 UTC. Game lines source: **Bovada (fallback -- 
 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
-| batter doubles | 2307 | 14.0% | 16.1% | 1.145 | 0.874 |
-| pitcher strikeouts | 957 | 35.4% | 39.0% | 1.099 | 0.910 |
-| batter singles | 2307 | 41.8% | 44.5% | 1.065 | 0.939 |
-| batter hits | 4661 | 37.9% | 41.9% | 1.106 | 0.905 |
 | batter home runs | 2307 | 10.5% | 13.1% | 1.244 | 0.805 |
+| batter singles | 2307 | 41.8% | 44.5% | 1.065 | 0.939 |
+| batter total bases | 4616 | 24.9% | 32.2% | 1.295 | 0.772 |
 | batter runs scored | 2307 | 35.5% | 38.9% | 1.096 | 0.912 |
 | batter rbis | 4614 | 19.0% | 23.5% | 1.233 | 0.811 |
-| batter total bases | 4616 | 24.9% | 32.2% | 1.295 | 0.772 |
+| pitcher strikeouts | 957 | 35.4% | 39.0% | 1.099 | 0.910 |
+| batter hits | 4661 | 37.9% | 41.9% | 1.106 | 0.905 |
+| batter doubles | 2307 | 14.0% | 16.1% | 1.145 | 0.874 |
 
 Cumulative graded plays: 118214. Wins: 87366. Hit rate: 73.9%.
 
@@ -72,17 +69,12 @@ Cumulative graded plays: 118214. Wins: 87366. Hit rate: 73.9%.
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| BAL @ BOS | 39.3% | +154 | 4.98 | +107 | -107 |
-| CLE @ NYY | 48.1% | +108 | 3.64 | -244 | +244 |
-| COL @ LAA | 30.8% | +225 | 6.0 | +109 | -109 |
-| KCR @ CIN | 59.3% | -146 | 2.56 | +101 | -101 |
+| COL @ LAA | 30.8% | +225 | 6.01 | +109 | -109 |
 | LAD @ ARI | 50.4% | -102 | 3.43 | +1564 | -1564 |
-| OAK @ CHC | 38.0% | +163 | 4.86 | +144 | -144 |
+| OAK @ CHC | 38.0% | +163 | 4.87 | +144 | -144 |
 | PIT @ HOU | 53.5% | -115 | 3.12 | +376 | -376 |
-| SDP @ PHI | 55.2% | -123 | 3.06 | -115 | +115 |
 | SFG @ MIL | 26.8% | +273 | 6.58 | +193 | -193 |
-| TEX @ STL | 52.4% | -110 | 3.29 | +245 | -245 |
-| TOR @ ATL | 47.2% | +112 | 3.69 | -121 | +121 |
+| TEX @ STL | 52.4% | -110 | 3.31 | +245 | -245 |
 
 ## Team Form (last 10)
 

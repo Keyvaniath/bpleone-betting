@@ -1,31 +1,31 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-06-03T22:36:48 UTC_
+_Generated 2026-06-03T23:37:02 UTC_
 
 ## Slate Quality
-- **Tier:** NO_ACTION_NIGHT
-- **Score:** -8
-- **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
+- **Tier:** MODEST_NIGHT
+- **Score:** 28
+- **Advisory:** Light slate. Limit to 1-3 strongest plays; use 25% Kelly or less.
 - **Total LOCKs:** 0
-- **Total STRONG:** 5
-- **Total FADES:** 28
+- **Total STRONG:** 15
+- **Total FADES:** 32
 
 ## Lock of the Night
-- **Subject:** Chris Bassitt
+- **Subject:** Michael Lorenzen
 - **Source:** ELITE_BOARD
 - **Sport:** MLB
 - **Score:** 15.0
-- **Details:** BAL @ BOS
+- **Details:** COL @ LAA
 
 ## Top 5 Curated Picks
-1. **WNBA / breanna stewart** (WNBA_PLAYER, score=101.0)
+1. **MLB / Freddie Freeman** (MLB_BATTER, score=115.81)
+   - Play: Freddie Freeman (BATTER_STRONG)
+   - Rationale: Cross-sport top pick (MLB_BATTER)
+2. **MLB / Joc Pederson** (MLB_BATTER, score=113.38)
+   - Play: Joc Pederson (BATTER_STRONG)
+   - Rationale: Cross-sport top pick (MLB_BATTER)
+3. **WNBA / breanna stewart** (WNBA_PLAYER, score=101.0)
    - Play: breanna stewart (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (WNBA_PLAYER)
-2. **MLB / Payton Tolle** (MLB_PITCHER, score=60.83)
-   - Play: Payton Tolle (PITCHER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_PITCHER)
-3. **MLB / Spencer Arrighetti** (MLB_PITCHER, score=57.5)
-   - Play: Spencer Arrighetti (PITCHER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_PITCHER)
 4. **F1 / max verstappen** (F1_DRIVER, score=49.67)
    - Play: max verstappen (DRIVER_STRONG)
    - Rationale: Cross-sport top pick (F1_DRIVER)
@@ -34,7 +34,7 @@ _Generated 2026-06-03T22:36:48 UTC_
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
 
 ## Slate ROI Projection
-- **Picks:** 3
+- **Picks:** 1
 - **Avg edge:** -0.91%
 - **Expected ROI (1/4 Kelly):** 0.0%
 - **Expected P&L on $100:** $0.0
@@ -42,11 +42,11 @@ _Generated 2026-06-03T22:36:48 UTC_
 ## Top Fades
 - **NBA** / SAS (TEAM_FADE)
   - Fade angle: team total UNDER
-- **MLB** / Nick Martinez (PITCHER_FADE)
+- **MLB** / Gavin Williams (PITCHER_FADE)
   - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **MLB** / Taj Bradley (PITCHER_FADE)
+- **MLB** / Payton Tolle (PITCHER_FADE)
   - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **NBA** / NYK (TEAM_FADE)
-  - Fade angle: team total UNDER
-- **NHL** / pyotr kochetkov (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
+- **MLB** / Chase Burns (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Chris Bassitt (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES

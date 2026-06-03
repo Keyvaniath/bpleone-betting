@@ -1,13 +1,17 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:5 F:28
+_MODEST_NIGHT_ | L:0 S:15 F:32
 
-:lock: **LOCK:** Chris Bassitt (MLB)
+:lock: **LOCK:** Michael Lorenzen (MLB)
 
 :dart: **Top Picks:**
-1. [WNBA] breanna stewart -- breanna stewart (PLAYER_STRONG)
-2. [MLB] Payton Tolle -- Payton Tolle (PITCHER_STRONG)
-3. [MLB] Spencer Arrighetti -- Spencer Arrighetti (PITCHER_STRONG)
+1. [MLB] Freddie Freeman -- Freddie Freeman (BATTER_STRONG)
+2. [MLB] Joc Pederson -- Joc Pederson (BATTER_STRONG)
+3. [WNBA] breanna stewart -- breanna stewart (PLAYER_STRONG)
 
-:coin: Bankroll Advisory: STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
+:chains: **Top Parlays:**
+- [MLB] Christian Walker (2 legs, p=0.4435)
+- [MLB] Yordan Alvarez (2 legs, p=0.4197)
+
+:coin: Bankroll Advisory: Light slate. Limit to 1-3 strongest plays; use 25% Kelly or less.
 
 _EdgeStat: ML-driven sports betting analytics. Not financial advice._

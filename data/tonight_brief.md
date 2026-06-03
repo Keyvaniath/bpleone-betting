@@ -2,14 +2,8 @@
 
 _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 
-## 🐋 WHALES (size up max)
-- **MLB** · LAD @ ARI ML_AWAY · 77% / +15.3%
-  - Top-25 board pick: 77% prob, +15.3% edge
-  - Sharp action ELITE: line shifted +13.19pp our way
-  - Source: game-line model (high reliability)
-
 ## 💪 STRONG (1 picks)
-- [MLB] LAD @ ARI LAD_ML · 80% / +20.4%
+- [MLB] LAD @ ARI LAD_ML · 66% / +31.3%
 
 ## 🔒 5 Daily Locks
 - **Luis Rengifo** PP_batter_hrr_under_3.5 (MLB-PP) -- 84% / +46.1%
@@ -22,19 +16,19 @@ _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 - **Vinnie Pasquantino** PP_batter_hrr_under_3.5 (MLB-PP) -- 85% / +47.2%
 - **Matt Chapman** PP_batter_hrr_under_3.5 (MLB-PP) -- 85% / +47.2%
 - **Freddy Fermin** PP_batter_hrr_under_2.5 (MLB-PP) -- 85% / +47.1%
+- **Choi Jeong** one_plus_tb (KBO) -- 73% / +39.8%
+- **Jose Pirela** one_plus_tb (KBO) -- 73% / +39.2%
+- **Koo Ja-wook** one_plus_tb (KBO) -- 73% / +38.9%
+- **Mel Rojas Jr.** one_plus_tb (KBO) -- 73% / +38.5%
+- **Austin Dean** one_plus_tb (KBO) -- 73% / +38.5%
 
 ## 📡 Sharp Money Following Model
 - **LAD @ ARI** ml_away: line moved 53.92% → 59.51% (+5.6pp)
-- **SDP @ PHI** under_7.5: line moved 51.22% → 55.56% (+4.3pp)
-- **CHW @ MIN** over_9.0: line moved 52.38% → 56.52% (+4.1pp)
-
-## 📉 Under Bets
-- **SDP @ PHI** UNDER 8.5 — model 5.84 [STRONG signal]
 
 ## 🎰 Tonight's Best Parlay
-- **Ha-Seong Kim** PP_batter_hrr_under_2.5 + **LAD @ ARI** LAD_ML
-- Joint 57% · fair +247 · edge +96.4%
+- **Choi Jeong** one_plus_tb + **Jose Pirela** one_plus_tb
+- Joint 53% · fair +264 · edge +94.6%
 
 ---
-_Generated 2026-06-03T22:36:46_
+_Generated 2026-06-03T23:37:00_
 _Full breakdown: /tonight · Full history: /locks-of-day_
