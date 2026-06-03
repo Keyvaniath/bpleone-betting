@@ -1,12 +1,10 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:5 F:28
-
-:lock: **LOCK:** Mike Burrows (MLB)
+_NO_ACTION_NIGHT_ | L:0 S:4 F:25
 
 :dart: **Top Picks:**
-1. [WNBA] angel reese -- angel reese (PLAYER_STRONG)
-2. [WNBA] a'ja wilson -- a'ja wilson (PLAYER_STRONG)
-3. [MLB] Logan Gilbert -- Logan Gilbert (PITCHER_STRONG)
+1. [MLB] ? -- ? (TEAM_STRONG)
+2. [F1] max verstappen -- max verstappen (DRIVER_STRONG)
+3. [GOLF] Rory McIlroy -- Rory McIlroy (PLAYER_STRONG)
 
 :coin: Bankroll Advisory: STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 
