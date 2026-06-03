@@ -518,6 +518,9 @@ jobs:
           python espn_box_logs.py wnba || true
           python espn_box_logs.py nba || true
           python espn_box_logs.py nfl || true
+          python espn_event_results.py golf || true
+          python espn_event_results.py tennis || true
+          python espn_event_results.py ufc || true
       - name: All-picks unified ledger (every surfaced pick -> training signal)
         working-directory: python
         run: python all_picks_tracker.py
@@ -816,6 +819,12 @@ jobs:
       - name: NFL live scoreboard
         working-directory: python
         run: python nfl_pipeline.py
+      # NFL player-prop projections (pass/rush/rec yds, receptions, anytime TD).
+      # Reads the fresh nfl_state slate -> model-conviction picks collected by the
+      # next ledger cycle + settled vs box scores. 0 off-season; live Week 1.
+      - name: NFL player-prop projections (model side -> generate->settle->learn)
+        working-directory: python
+        run: python nfl_player_props.py || true
       - name: NCAA Football scoreboard
         working-directory: python
         run: python ncaaf_pipeline.py
@@ -843,6 +852,9 @@ jobs:
       - name: UFC significant strikes + takedowns prop projections
         working-directory: python
         run: python ufc_strikes_takedowns_props.py || true
+      - name: UFC first-round-finish props (settle vs the fight's ending round)
+        working-directory: python
+        run: python ufc_first_round_finish.py || true
       - name: UFC fight card scoreboard
         working-directory: python
         run: python ufc_pipeline.py

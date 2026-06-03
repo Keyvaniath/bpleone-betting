@@ -350,6 +350,25 @@ def _collect_picks_from_sources() -> List[Dict[str, Any]]:
                 "matchup": r.get("matchup"),
             })
 
+    # UFC first-round-finish (gradeable: settle vs the fight's ending round). The
+    # strikes/TD props above need a fighter-stats feed we don't have; this one
+    # needs only the round the fight ended, which the result feed provides.
+    ufc_r1 = _load(os.path.join(DATA_DIR, "ufc_first_round_finish.json"))
+    for r in (ufc_r1.get("strong_edges") or []):
+        bm = r.get("best_market") or {}
+        fa, fb = r.get("fighter_a"), r.get("fighter_b")
+        if bm.get("p") and fa and fb:
+            out.append({
+                "source": f"ufc_r1_{bm.get('market', '').lower()}",
+                "sport": "UFC",
+                "player_or_matchup": f"{fa} vs {fb}",
+                "market": bm.get("market"),
+                "prob": bm.get("p"),
+                "fair_american": bm.get("fair_odds"),
+                "p_predicted": bm.get("p"),
+                "matchup": f"{fa} vs {fb}",
+            })
+
     # F1 qualifying strong edges
     fq = _load(os.path.join(DATA_DIR, "f1_qualifying_predictor.json"))
     for r in (fq.get("strong_edges") or []):
@@ -454,6 +473,24 @@ def _collect_picks_from_sources() -> List[Dict[str, Any]]:
             out.append({
                 "source": f"wnba_pts_{bm.get('market', '').lower()}",
                 "sport": "WNBA",
+                "player_or_matchup": r.get("player"),
+                "market": bm.get("market"),
+                "prob": bm.get("p"),
+                "fair_american": bm.get("fair_odds"),
+                "p_predicted": bm.get("p"),
+                "matchup": r.get("matchup"),
+            })
+
+    # NFL player props (model-conviction): pass/rush/rec yds, receptions, anytime
+    # TD. Source keyed by stat_type so learning pools across lines; market carries
+    # the line for _grade_nfl_pick. Empty off-season; live Week 1.
+    nfl_props = _load(os.path.join(DATA_DIR, "nfl_player_props.json"))
+    for r in (nfl_props.get("strong_edges") or []):
+        bm = r.get("best_market") or {}
+        if bm.get("p"):
+            out.append({
+                "source": f"nfl_{r.get('stat_type', 'prop')}",
+                "sport": "NFL",
                 "player_or_matchup": r.get("player"),
                 "market": bm.get("market"),
                 "prob": bm.get("p"),
@@ -1558,6 +1595,147 @@ def _grade_nfl_pick(pick: Dict[str, Any], by_name: Dict[str, Any],
     return None
 
 
+# ---- Individual / match sports: golf, tennis, UFC (simple-outcome graders) ----
+def _last(name: str) -> str:
+    """Last token of a name, lowercased -- for fuzzy match across name variants."""
+    toks = (name or "").strip().lower().replace(".", "").split()
+    return toks[-1] if toks else ""
+
+
+def _names_match(a: str, b: str) -> bool:
+    """True if two player names refer to the same person (full eq or last-name eq)."""
+    a, b = (a or "").strip().lower(), (b or "").strip().lower()
+    if not a or not b:
+        return False
+    if a == b or a in b or b in a:
+        return True
+    return _last(a) == _last(b) and len(_last(a)) >= 3
+
+
+def _grade_golf_pick(pick: Dict[str, Any], tournaments: List[Dict[str, Any]]) -> Optional[str]:
+    """TOP_N / MAKE_CUT / MISS_CUT / WIN vs a tie-aware finish position."""
+    market = (pick.get("market") or "").lower()
+    player = (pick.get("player_or_matchup") or "").strip().lower()
+    tname = (pick.get("matchup") or "").strip().lower()
+    pdate = pick.get("date") or ""
+    if not player:
+        return None
+    # Find the tournament: name match first, then date-window containing the player.
+    cand = None
+    for t in tournaments:
+        tn = (t.get("name") or "").lower()
+        if tname and (tname == tn or tname in tn or tn in tname):
+            cand = t
+            break
+    if cand is None:
+        for t in tournaments:
+            sd, ed = t.get("start_date") or "", t.get("end_date") or t.get("start_date") or ""
+            if sd and ed and sd <= pdate <= ed and player in (t.get("results") or {}):
+                cand = t
+                break
+    if cand is None:
+        return None
+    res = (cand.get("results") or {}).get(player)
+    if not res:  # try fuzzy (last-name) match within the tournament field
+        res = next((v for v in (cand.get("results") or {}).values()
+                    if _names_match(player, v.get("player", ""))), None)
+    if not res:
+        return None
+    pos, made = res.get("position"), res.get("made_cut")
+    if "make_cut" in market or "made_cut" in market:
+        won = bool(made)
+    elif "miss_cut" in market or "missed_cut" in market:
+        won = not made
+    elif market in ("win", "winner", "outright") or "outright" in market:
+        won = made and pos == 1
+    else:
+        mm = re.search(r"top[_ ]?(\d+)", market)
+        if not mm:
+            return None
+        won = bool(made) and pos <= int(mm.group(1))
+    disp = f"T{pos}" if made else "MC"
+    pick["outcome"] = {"tournament": cand.get("name"), "finish": disp, "to_par": res.get("to_par"),
+                       "market": pick.get("market"),
+                       "verify": f"{res.get('player')} finished {disp} ({res.get('to_par')}) at "
+                                 f"{cand.get('name')} — {pick.get('market')}"}
+    return "won" if won else "lost"
+
+
+def _grade_tennis_pick(pick: Dict[str, Any], matches: List[Dict[str, Any]]) -> Optional[str]:
+    """ML_PLAYER1/2 (match winner) or TOTAL_GAMES_OVER/UNDER_X vs the match result."""
+    market = (pick.get("market") or "").upper()
+    mu = (pick.get("player_or_matchup") or pick.get("matchup") or "")
+    parts = re.split(r"\s+vs\.?\s+", mu, maxsplit=1, flags=re.IGNORECASE)
+    if len(parts) != 2:
+        return None
+    p1, p2 = parts[0].strip(), parts[1].strip()
+    match = None
+    for m in matches:
+        n1, n2 = m.get("p1", ""), m.get("p2", "")
+        if ((_names_match(p1, n1) and _names_match(p2, n2)) or
+                (_names_match(p1, n2) and _names_match(p2, n1))):
+            match = m
+            break
+    if match is None:
+        return None
+    winner = match.get("winner") or ""
+    if market.startswith("ML_PLAYER1") or market == "ML_P1":
+        won = _names_match(p1, match.get("winner_name") or winner)
+    elif market.startswith("ML_PLAYER2") or market == "ML_P2":
+        won = _names_match(p2, match.get("winner_name") or winner)
+    elif "TOTAL_GAMES" in market:
+        mm = re.search(r"(\d+(?:\.\d+)?)", market)
+        if not mm:
+            return None
+        line, tot = float(mm.group(1)), match.get("total_games")
+        if tot is None:
+            return None
+        won = (tot > line) if "OVER" in market else (tot < line)
+    else:
+        return None
+    pick["outcome"] = {"match": f"{match.get('p1')} vs {match.get('p2')}",
+                       "winner": match.get("winner_name"), "sets": match.get("sets"),
+                       "total_games": match.get("total_games"), "market": pick.get("market"),
+                       "verify": f"{match.get('winner_name')} won {match.get('sets')} "
+                                 f"({match.get('total_games')} games) — {pick.get('market')}"}
+    return "won" if won else "lost"
+
+
+def _grade_ufc_pick(pick: Dict[str, Any], fights: List[Dict[str, Any]]) -> Optional[str]:
+    """Reliable-from-scoreboard markets only: fight winner (ML) + first-round
+    finish (ended in round 1). Strike/TD-count props need a fighter-stats feed
+    (not in the scoreboard) -> left unsettled rather than mis-graded."""
+    market = (pick.get("market") or "").upper()
+    subj = (pick.get("player_or_matchup") or "")
+    mu = (pick.get("matchup") or "")
+    # Locate the fight (by either fighter name appearing, from subj or matchup).
+    fight = None
+    for f in fights:
+        f1, f2 = f.get("f1", ""), f.get("f2", "")
+        hay = f"{subj} {mu}"
+        if (_names_match(subj, f1) or _names_match(subj, f2)
+                or (_last(f1) and _last(f1) in hay.lower())
+                or (_last(f2) and _last(f2) in hay.lower())):
+            fight = f
+            break
+    if fight is None:
+        return None
+    rnd = fight.get("round")
+    winner = fight.get("winner_name") or ""
+    if "R1_FINISH" in market or "FIRST_ROUND_FINISH" in market or "ROUND_1_FINISH" in market:
+        is_yes = "NO" not in market
+        r1 = (rnd == 1)
+        won = r1 if is_yes else (not r1)
+    elif "ML" in market or market in ("WIN", "WINNER", "MONEYLINE"):
+        won = _names_match(subj, winner)
+    else:
+        return None  # strikes/TD/method/rounds props: no reliable feed -> skip
+    pick["outcome"] = {"fight": f"{fight.get('f1')} vs {fight.get('f2')}", "winner": winner,
+                       "ended_round": rnd, "market": pick.get("market"),
+                       "verify": f"{winner} def. opponent (ended R{rnd}) — {pick.get('market')}"}
+    return "won" if won else "lost"
+
+
 def _settle_picks(history: List[Dict[str, Any]]) -> int:
     """Try to settle each unsettled pick. Returns count newly settled."""
     n_settled = 0
@@ -1579,6 +1757,11 @@ def _settle_picks(history: List[Dict[str, Any]]) -> int:
     nba_games = _load(os.path.join(DATA_DIR, "nba_historical.json")).get("games") or []
     nfl_by_name = _load(os.path.join(DATA_DIR, "nfl_player_gamelogs.json")).get("by_name") or {}
     nfl_games = _load(os.path.join(DATA_DIR, "nfl_historical.json")).get("games") or []
+    # Individual / match sports (golf finish, tennis match result, UFC fight result)
+    # so those picks settle on simple outcomes instead of voiding.
+    golf_tournaments = _load(os.path.join(DATA_DIR, "golf_results.json")).get("tournaments") or []
+    tennis_matches = _load(os.path.join(DATA_DIR, "tennis_results.json")).get("matches") or []
+    ufc_fights = _load(os.path.join(DATA_DIR, "ufc_results.json")).get("fights") or []
 
     for p in history:
         if p.get("settled"): continue
@@ -1600,6 +1783,12 @@ def _settle_picks(history: List[Dict[str, Any]]) -> int:
             result = _grade_wnba_pick(p, nba_by_name, nba_games)   # same basketball grader
         elif sport == "NFL":
             result = _grade_nfl_pick(p, nfl_by_name, nfl_games)
+        elif sport == "GOLF":
+            result = _grade_golf_pick(p, golf_tournaments)
+        elif sport == "TENNIS":
+            result = _grade_tennis_pick(p, tennis_matches)
+        elif sport == "UFC":
+            result = _grade_ufc_pick(p, ufc_fights)
         else:
             # MLB / default (unchanged). Game-level: FULL-GAME moneyline or FULL-GAME
             # total ONLY. Props like team_sb_under_0.5 / inning totals contain
