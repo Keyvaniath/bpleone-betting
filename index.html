@@ -427,8 +427,11 @@
   <!-- PITCHER SAME-GAME STACKS (mlb_pitcher_sgp_builder.json; correlation-aware, odds-independent) -->
   <section class="card" id="pitcherSgpCard" style="margin-bottom: 28px; border-left: 3px solid #588cc8; display:none;">
     <div class="card-head">
-      <span>🎯 <strong>Pitcher Same-Game Stacks — Correlation-Priced</strong></span>
+      <span>🎯 <strong>Pitcher Same-Game Parlays (SGP)</strong> <span class="muted" style="font-size:10px;">2–3 correlated bets on one pitcher, combined into a single ticket</span></span>
       <span class="muted" id="pitcherSgpMeta">--</span>
+    </div>
+    <div style="padding: 8px 16px 2px; font-size:11px; color:var(--text-2,#9fb0c8); line-height:1.6;">
+      <strong style="color:#588cc8;">What does "3-LEG" mean?</strong> A <strong>leg</strong> is one bet. A <strong>3-LEG</strong> is a same-game parlay that combines 3 outcomes on the same pitcher onto one ticket — e.g. <em>K over 5.5 + ER under 3.5 + Outs over 14.5</em>. Because they're correlated (a dominant start makes all three hit together), we price them with that correlation built in — value a naive parlay calculator misses. The number on the right is the fair combined price.
     </div>
     <div style="padding: 4px 0;" id="pitcherSgpList">
       <p class="muted" style="padding:14px;">Loading pitcher stacks…</p>
@@ -459,8 +462,8 @@
                             padding: 11px 16px; border-bottom: 1px solid rgba(255,255,255,0.04);
                             border-left: 3px solid ${c};">
           <div style="display:flex; align-items:center; gap:14px;">
-            <span style="background:${c}; color:#1a1a1a; padding:3px 9px; border-radius:4px;
-                         font-size:10px; font-weight:700; min-width:62px; text-align:center;">${s.n_legs}-LEG</span>
+            <span title="Same-game parlay — ${s.n_legs} correlated bets on this pitcher combined into one ticket" style="background:${c}; color:#1a1a1a; padding:3px 9px; border-radius:4px;
+                         font-size:10px; font-weight:700; min-width:62px; text-align:center; cursor:help;">${s.n_legs}-LEG</span>
             <div>
               <div style="font-weight:600; font-size:13px;">${s.pitcher} <span class="muted" style="font-size:11px;">${s.matchup || ''}</span></div>
               <div class="muted" style="font-size:10px; margin-top:2px; font-family:'JetBrains Mono',monospace;">${legs}</div>
@@ -473,6 +476,54 @@
       }).join("");
     })
     .catch(()=>{});
+  </script>
+
+  <!-- PLAYER PROPS ONLY — all sports, props only (no game lines / no parlays) -->
+  <section class="card" id="playerPropsCard" style="margin-bottom: 28px; border-left: 3px solid #b450dc; display:none;">
+    <div class="card-head">
+      <span>🎯 <strong>Player Props — All Sports</strong> <span class="muted" style="font-size:10px;">DraftKings + PrizePicks player props only · no game lines, no parlays</span></span>
+      <span class="muted" id="playerPropsMeta">--</span>
+    </div>
+    <div class="table-wrap">
+      <table class="data-table" id="playerPropsTable" style="font-size:12px;">
+        <thead><tr><th>Sport</th><th>Player</th><th>Prop</th><th>Side / Line</th><th>Book</th><th>Price</th><th>Model %</th><th>Edge</th></tr></thead>
+        <tbody><tr><td colspan="8" class="muted" style="text-align:center;padding:18px;">Loading player props…</td></tr></tbody>
+      </table>
+    </div>
+  </section>
+  <script>
+  fetch("data/top_plays.json?t=" + Date.now(), { cache: "no-cache" })
+    .then(function (r) { return r.json(); })
+    .then(function (d) {
+      var plays = (d.plays || []).filter(function (p) { return p.kind === "prop_dk" || p.kind === "prop_pp"; });
+      var card = document.getElementById("playerPropsCard");
+      var tb = document.querySelector("#playerPropsTable tbody");
+      if (!card || !tb || !plays.length) return;
+      card.style.display = "block";
+      plays.sort(function (a, b) { return (b.quality_score || 0) - (a.quality_score || 0); });
+      document.getElementById("playerPropsMeta").textContent =
+        plays.length + " player props · " + (d.generated_at || "").slice(11, 16) + " UTC";
+      var fmtPrice = function (v) { return v == null ? "--" : (v >= 0 ? "+" + v : String(v)); };
+      tb.innerHTML = plays.slice(0, 40).map(function (p) {
+        var sideLine = p.kind === "prop_pp"
+          ? ((p.side || "") + " PP " + p.pp_line + " (DK " + (p.dk_line != null ? p.dk_line : "--") + ")")
+          : ((p.side || "") + " " + (p.line != null ? p.line : ""));
+        var edge = p.edge_pct != null ? ((p.edge_pct >= 0 ? "+" : "") + Number(p.edge_pct).toFixed(1) + "%") : "--";
+        var precal = p.is_precal ? ' <span title="pre-calibration noise" style="color:#d4a04a;">⚠</span>' : '';
+        var sport = (p.sport || "MLB").toUpperCase();
+        return '<tr>'
+          + '<td><span style="font-size:9px;font-weight:700;padding:2px 6px;border-radius:3px;background:rgba(180,80,220,0.15);color:#c77dff;">' + sport + '</span></td>'
+          + '<td><strong>' + (p.player || "?") + '</strong></td>'
+          + '<td>' + (p.market ? p.market.replace(/_/g, " ") : (p.stat_type || "--")) + '</td>'
+          + '<td>' + sideLine + '</td>'
+          + '<td><span class="muted">' + (p.book || "--") + '</span></td>'
+          + '<td>' + fmtPrice(p.market_price) + '</td>'
+          + '<td style="color:#58c878;">' + (p.model_prob * 100).toFixed(1) + '%</td>'
+          + '<td>' + edge + precal + '</td>'
+          + '</tr>';
+      }).join("");
+    })
+    .catch(function () {});
   </script>
 
   <!-- TODAY'S TOP PLAYS (LIVE FROM data/top_plays.json) -->
@@ -490,6 +541,7 @@
       <label>Type:</label>
       <select id="edgesType">
         <option value="">All markets</option>
+        <option value="props_all">🎯 Player props only (DK + PP)</option>
         <option value="game_line">Game lines</option>
         <option value="prop_dk">DK props</option>
         <option value="prop_pp">PrizePicks softer</option>
@@ -876,8 +928,8 @@ fetch("data/today.json", { cache: "no-cache" })
         banner.style.cssText += ";display:block; background: rgba(227,90,90,0.08); border: 1px solid rgba(227,90,90,0.45); color: #e35a5a;";
         banner.innerHTML = `<strong>&#9888; No real odds today.</strong> Every game below is showing the model's <em>fair price</em> against a placeholder &minus;110. Edges are model-vs-reference, not real book edges. Restores when the Odds API quota / paid tier is back OR the Bovada fallback fetches successfully.`;
       } else if (allBovada) {
-        banner.style.cssText += ";display:block; background: rgba(212,160,74,0.08); border: 1px solid rgba(212,160,74,0.45); color: #d4a04a;";
-        banner.innerHTML = `<strong>&#9888; DK primary feed unavailable</strong> &mdash; using <strong>Bovada</strong> public lines as fallback. Bovada is market-efficient (within ~2-3 cents of DK on liquid markets), so the edges below are real edges against a real book. Restoring the Odds API paid tier would re-enable DK-canonical pricing, but the loop keeps learning either way.`;
+        banner.style.cssText += ";display:block; background: rgba(74,222,128,0.06); border: 1px solid rgba(74,222,128,0.28); color: var(--text-2,#9fb0c8);";
+        banner.innerHTML = `📊 <strong style="color:#4ade80;">Lines sourced from Bovada</strong> — a sharp, market-efficient book (within ~2–3¢ of DraftKings on liquid markets), so every edge below is real value against a real book. <span style="font-size:11px; opacity:0.8;">DraftKings-canonical pricing returns automatically whenever the Odds API key is active.</span>`;
       }
     }
   })
@@ -1051,7 +1103,8 @@ function renderEdgesTable() {
   if (!tbody) return;
   const KIND_LABEL = { game_line: "Game line", prop_dk: "DK prop", prop_pp: "PP softer", parlay: "Parlay" };
   let rows = edgesState.all.slice();
-  if (edgesState.type) rows = rows.filter(r => r.kind === edgesState.type);
+  if (edgesState.type === "props_all") rows = rows.filter(r => r.kind === "prop_dk" || r.kind === "prop_pp");
+  else if (edgesState.type) rows = rows.filter(r => r.kind === edgesState.type);
   if (edgesState.minProb) rows = rows.filter(r => (r.model_prob || 0) * 100 >= edgesState.minProb);
   if (edgesState.playable === "playable") rows = rows.filter(r => !r.is_precal);
   rows.sort((a, b) => (b[edgesState.sort] || 0) - (a[edgesState.sort] || 0));

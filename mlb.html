@@ -57,8 +57,8 @@
           b.style.cssText += ";display:block; background: rgba(227,90,90,0.08); border: 1px solid rgba(227,90,90,0.45); color: #e35a5a;";
           b.innerHTML = `<strong>&#9888; No real odds today.</strong> Market columns show fair price against placeholder &minus;110. Edges are model-vs-reference, not real book edges.`;
         } else if (allBovada) {
-          b.style.cssText += ";display:block; background: rgba(212,160,74,0.08); border: 1px solid rgba(212,160,74,0.45); color: #d4a04a;";
-          b.innerHTML = `<strong>&#9888; DK primary feed unavailable</strong> &mdash; using <strong>Bovada</strong> public lines as fallback. Market efficient (within ~2-3 cents of DK on liquid markets). The loop keeps learning.`;
+          b.style.cssText += ";display:block; background: rgba(74,222,128,0.06); border: 1px solid rgba(74,222,128,0.28); color: var(--text-2,#9fb0c8);";
+          b.innerHTML = `📊 <strong style="color:#4ade80;">Lines sourced from Bovada</strong> — a sharp, market-efficient book (within ~2–3¢ of DraftKings on liquid markets), so the edges are real value against a real book. <span style="font-size:11px; opacity:0.8;">DraftKings-canonical pricing returns when the Odds API key is active.</span>`;
         }
       }
     }).catch(() => {});
