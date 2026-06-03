@@ -14,18 +14,18 @@ _6 picks consolidated from POD + Alpha + Book Edges + Parlay-of-Day._
 
 ## 📊 Book Edges
 
-- **SDP @ PHI · UNDER · O/U 7.5** · TOTAL_UNDER
-  Prob 66.3% · Odds -110 · Edge +26.5% · Kelly 0.291
-- **CHW @ MIN · OVER · O/U 9.0** · TOTAL_OVER
-  Prob 65.8% · Odds -110 · Edge +25.6% · Kelly 0.281
-- **OAK @ CHC · OVER · O/U 8.5** · TOTAL_OVER
-  Prob 61.0% · Odds -110 · Edge +16.4% · Kelly 0.180
+- **PIT @ HOU · AWAY (AWAY)** · TEAM_ML
+  Prob 60.7% · Odds +100 · Edge +21.3% · Kelly 0.213
+- **SDP @ PHI · HOME (HOME)** · TEAM_ML
+  Prob 62.7% · Odds -110 · Edge +19.7% · Kelly 0.217
+- **TOR @ ATL · HOME (HOME)** · TEAM_ML
+  Prob 62.1% · Odds -110 · Edge +18.6% · Kelly 0.204
 
 ## 🎲 Parlay
 
-- **Ha-Seong Kim + SDP @ PHI** · 2-leg
-  Prob 54.3% · Odds +231 · Edge +79.9% · Kelly 0.050
+- **Ha-Seong Kim + LAD @ ARI** · 2-leg
+  Prob 56.6% · Odds +247 · Edge +96.4% · Kelly 0.050
 
 ---
-_Generated 2026-06-03T14:44:38 UTC by EdgeStat._
+_Generated 2026-06-03T22:36:48 UTC by EdgeStat._
 _Stakes assume ¼-Kelly fractional sizing on a flat bankroll._
