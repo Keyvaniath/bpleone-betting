@@ -1341,6 +1341,118 @@ def _grade_batter_prop(market: str, pick: Dict[str, Any], by_name: Dict[str, Any
     return None
 
 
+# ---------------------------------------------------------------------------
+# WNBA grading -- the first non-MLB sport wired into settlement, so its picks
+# stop voiding unsettled and start feeding the learning loop the way MLB does.
+# Player props grade vs wnba_player_gamelogs.json (real box scores); team alt-
+# totals vs wnba_historical.json (real finals). Both set a verifiable `outcome`.
+# Stat fields are basketball-generic, so NBA plugs into the same graders.
+# ---------------------------------------------------------------------------
+def _bball_stat(market: str):
+    """Parse a basketball market -> (stat, line, side). stat is a gamelog field
+    (pts/reb/ast/fg3m/stl/blk/to), a combo sentinel (_blk_stl/_pra/_reb_ast/_dd),
+    or a team-total sentinel (_home_total/_away_total)."""
+    m = (market or "").lower()
+    side = "under" if "under" in m else ("over" if "over" in m else None)
+    # The LINE is the number after over/under (e.g. 3pm_under_3.5 -> 3.5). Never
+    # the first digit, or "3PM"/"blk_stl" would be mis-read as the line.
+    mnum = re.search(r"(?:over|under)_(\d+(?:\.\d+)?)", m)
+    if mnum:
+        line = float(mnum.group(1))
+    else:
+        nums = re.findall(r"\d+(?:\.\d+)?", m)
+        line = float(nums[-1]) if nums else None
+    if "home_total" in m: stat = "_home_total"
+    elif "away_total" in m: stat = "_away_total"
+    elif "3pm" in m or "fg3" in m or "three" in m: stat = "fg3m"
+    elif ("blk" in m and "stl" in m) or "blkstl" in m: stat = "_blk_stl"
+    elif "pra" in m: stat = "_pra"
+    elif ("reb" in m and "ast" in m): stat = "_reb_ast"
+    elif "double_double" in m or "_dd_" in m or m.endswith("_dd"): stat = "_dd"
+    elif "pts" in m or "point" in m: stat = "pts"
+    elif "reb" in m: stat = "reb"
+    elif "ast" in m: stat = "ast"
+    elif "stl" in m or "steal" in m: stat = "stl"
+    elif "blk" in m or "block" in m: stat = "blk"
+    elif "tov" in m or re.search(r"(^|_)to(_|$)", m): stat = "to"
+    else: stat = None
+    return stat, line, side
+
+
+def _bball_value(stat: str, game: Dict[str, Any]):
+    if stat == "_blk_stl":
+        if game.get("blk") is None and game.get("stl") is None: return None
+        return (game.get("blk") or 0) + (game.get("stl") or 0)
+    if stat == "_pra":
+        if all(game.get(k) is None for k in ("pts", "reb", "ast")): return None
+        return (game.get("pts") or 0) + (game.get("reb") or 0) + (game.get("ast") or 0)
+    if stat == "_reb_ast":
+        if all(game.get(k) is None for k in ("reb", "ast")): return None
+        return (game.get("reb") or 0) + (game.get("ast") or 0)
+    if stat == "_dd":
+        cats = [game.get(k) or 0 for k in ("pts", "reb", "ast", "stl", "blk")]
+        return 1.0 if sum(1 for c in cats if c >= 10) >= 2 else 0.0
+    return game.get(stat)
+
+
+def _grade_wnba_prop(pick: Dict[str, Any], by_name: Dict[str, Any]) -> Optional[str]:
+    stat, line, side = _bball_stat(pick.get("market"))
+    if stat is None or line is None or side is None or stat in ("_home_total", "_away_total"):
+        return None
+    prec = by_name.get((pick.get("player_or_matchup") or "").strip().lower())
+    if not prec:
+        return None
+    for game in (prec.get("games") or []):
+        if (game.get("date") or "")[:10] != pick.get("date"):
+            continue
+        val = _bball_value(stat, game)
+        if val is None:
+            continue
+        over_wins = val > line
+        won = (not over_wins) if side == "under" else over_wins
+        label = stat.lstrip("_")
+        pick["outcome"] = {
+            "stat": label, "actual": val, "line": line, "side": side.upper(),
+            "verify": (f"{pick.get('player_or_matchup')} — {label} = {val} "
+                       f"(line {line}, bet {side}) on {pick.get('date')}"),
+        }
+        return "won" if won else "lost"
+    return None
+
+
+def _grade_wnba_team_total(pick: Dict[str, Any], games: List[Dict[str, Any]]) -> Optional[str]:
+    stat, line, side = _bball_stat(pick.get("market"))
+    if stat not in ("_home_total", "_away_total") or line is None or side is None:
+        return None
+    matchup = (pick.get("player_or_matchup") or "").strip().lower()
+    for g in games:
+        if (g.get("date") or "")[:10] != pick.get("date"):
+            continue
+        g_mu = f"{g.get('away_abbrev','')} @ {g.get('home_abbrev','')}".lower()
+        if matchup not in g_mu and g_mu not in matchup:
+            continue
+        score = g.get("home_score") if stat == "_home_total" else g.get("away_score")
+        if score is None:
+            continue
+        over_wins = score > line
+        won = (not over_wins) if side == "under" else over_wins
+        which = "home" if stat == "_home_total" else "away"
+        pick["outcome"] = {
+            "final_score": f"{g.get('away_abbrev')} {g.get('away_score')} @ {g.get('home_abbrev')} {g.get('home_score')}",
+            "team_total": score, "line": line, "side": side.upper(),
+            "verify": (f"{g.get('away_abbrev')} @ {g.get('home_abbrev')}: {which} scored {score} "
+                       f"(line {line}, bet {side}) on {pick.get('date')}"),
+        }
+        return "won" if won else "lost"
+    return None
+
+
+def _grade_wnba_pick(pick: Dict[str, Any], by_name: Dict[str, Any],
+                     games: List[Dict[str, Any]]) -> Optional[str]:
+    r = _grade_wnba_team_total(pick, games)
+    return r if r is not None else _grade_wnba_prop(pick, by_name)
+
+
 def _settle_picks(history: List[Dict[str, Any]]) -> int:
     """Try to settle each unsettled pick. Returns count newly settled."""
     n_settled = 0
@@ -1353,6 +1465,10 @@ def _settle_picks(history: List[Dict[str, Any]]) -> int:
     for pid, prec in bpid.items():
         if isinstance(prec, dict):
             by_name[(prec.get("name") or "").lower()] = prec
+    # WNBA real outcomes (first non-MLB sport): box scores + finals so its picks
+    # settle + feed the learning loop instead of voiding unsettled.
+    wnba_by_name = _load(os.path.join(DATA_DIR, "wnba_player_gamelogs.json")).get("by_name") or {}
+    wnba_games = _load(os.path.join(DATA_DIR, "wnba_historical.json")).get("games") or []
 
     for p in history:
         if p.get("settled"): continue
@@ -1365,57 +1481,53 @@ def _settle_picks(history: List[Dict[str, Any]]) -> int:
 
         market = (p.get("market") or "").lower()
         result = None
-        payout = None
         decimal_odds = _american_to_decimal(p.get("fair_american")) or 1.91
 
-        # Game-level: FULL-GAME moneyline or FULL-GAME total ONLY.
-        # 2026-05-31 fix: props like team_sb_under_0.5, inning totals
-        # (inn_4_6_under_2.5) and first-5 totals (f5_total_under_4) also contain
-        # "under_"/"over_" and were being graded HERE against the full 9-inning
-        # run total -> systematically wrong "lost" results (fabricated losses).
-        # A true game total is exactly "over_X"/"under_X" with nothing else.
-        is_game_line = (("ml_home" in market) or ("ml_away" in market)
-                        or re.fullmatch(r"(over|under)_\d+(?:\.\d+)?", market) is not None)
-        if is_game_line:
-            matchup = (p.get("player_or_matchup") or "").lower()
-            for g in historical_mlb:
-                g_date = (g.get("date") or "")[:10]
-                if g_date != p.get("date"): continue
-                g_mu = f"{g.get('away_abbrev','')} @ {g.get('home_abbrev','')}".lower()
-                if matchup not in g_mu and g_mu not in matchup: continue
-                if g.get("home_score") is None: continue
-                home_s = g.get("home_score") or 0
-                away_s = g.get("away_score") or 0
-                total = home_s + away_s
-                if "over_" in market or "under_" in market:
-                    try:
-                        line = float(market.split("_")[-1])
-                    except Exception:
-                        break
-                    is_over = "over_" in market
-                    if total == line: result = "push"
-                    elif (is_over and total > line) or (not is_over and total < line): result = "won"
-                    else: result = "lost"
-                elif "ml_home" in market:
-                    result = "won" if home_s > away_s else "lost"
-                elif "ml_away" in market:
-                    result = "won" if away_s > home_s else "lost"
-                # Record the real final score that settled it (verifiable).
-                away_ab = g.get("away_abbrev", ""); home_ab = g.get("home_abbrev", "")
-                p["outcome"] = {
-                    "final_score": f"{away_ab} {away_s} @ {home_ab} {home_s}",
-                    "total_runs": total,
-                    "verify": (f"{away_ab} @ {home_ab}: final {away_s}-{home_s} "
-                               f"(total {total} runs) on {p.get('date')}"),
-                }
-                break
-
-        # Player props -- batter box-score lookup against player_gamelogs.
-        # Comprehensive market-name coverage (to_record_hit / to_score_run /
-        # to_hit_hr / k_1plus / walks / 1+/2+ hits / total_bases / hrr / pp_batter).
-        # Returns None (stays pending) for anything not confidently gradeable.
+        if (p.get("sport") or "").upper() == "WNBA":
+            # Real WNBA outcomes: player props vs box scores, team alt-totals vs finals.
+            result = _grade_wnba_pick(p, wnba_by_name, wnba_games)
         else:
-            result = _grade_batter_prop(market, p, by_name)
+            # MLB / default (unchanged). Game-level: FULL-GAME moneyline or FULL-GAME
+            # total ONLY. Props like team_sb_under_0.5 / inning totals contain
+            # "under_"/"over_" but are NOT full-game totals; a true game total is
+            # exactly "over_X"/"under_X" with nothing else.
+            is_game_line = (("ml_home" in market) or ("ml_away" in market)
+                            or re.fullmatch(r"(over|under)_\d+(?:\.\d+)?", market) is not None)
+            if is_game_line:
+                matchup = (p.get("player_or_matchup") or "").lower()
+                for g in historical_mlb:
+                    g_date = (g.get("date") or "")[:10]
+                    if g_date != p.get("date"): continue
+                    g_mu = f"{g.get('away_abbrev','')} @ {g.get('home_abbrev','')}".lower()
+                    if matchup not in g_mu and g_mu not in matchup: continue
+                    if g.get("home_score") is None: continue
+                    home_s = g.get("home_score") or 0
+                    away_s = g.get("away_score") or 0
+                    total = home_s + away_s
+                    if "over_" in market or "under_" in market:
+                        try:
+                            line = float(market.split("_")[-1])
+                        except Exception:
+                            break
+                        is_over = "over_" in market
+                        if total == line: result = "push"
+                        elif (is_over and total > line) or (not is_over and total < line): result = "won"
+                        else: result = "lost"
+                    elif "ml_home" in market:
+                        result = "won" if home_s > away_s else "lost"
+                    elif "ml_away" in market:
+                        result = "won" if away_s > home_s else "lost"
+                    # Record the real final score that settled it (verifiable).
+                    away_ab = g.get("away_abbrev", ""); home_ab = g.get("home_abbrev", "")
+                    p["outcome"] = {
+                        "final_score": f"{away_ab} {away_s} @ {home_ab} {home_s}",
+                        "total_runs": total,
+                        "verify": (f"{away_ab} @ {home_ab}: final {away_s}-{home_s} "
+                                   f"(total {total} runs) on {p.get('date')}"),
+                    }
+                    break
+            else:
+                result = _grade_batter_prop(market, p, by_name)
 
         if result:
             p["settled"] = True

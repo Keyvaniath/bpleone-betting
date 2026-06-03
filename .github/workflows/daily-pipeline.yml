@@ -507,6 +507,13 @@ jobs:
       - name: Locks of the Day (record top 5 picks + settle any pending)
         working-directory: python
         run: python locks_of_day.py
+      # WNBA real box-score outcomes (player gamelogs + finals) so WNBA picks
+      # settle + feed the learning loop instead of voiding. Must run BEFORE the
+      # all-picks ledger so the fresh logs are present when it settles. Same
+      # fetcher serves NBA in October (python espn_box_logs.py nba).
+      - name: WNBA box-score logs (real outcomes for settlement)
+        working-directory: python
+        run: python espn_box_logs.py wnba || true
       - name: All-picks unified ledger (every surfaced pick -> training signal)
         working-directory: python
         run: python all_picks_tracker.py
