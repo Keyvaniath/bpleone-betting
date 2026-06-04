@@ -88,6 +88,11 @@ STD_LINES = {
 SIGMA = {"pass_yds": (45.0, 0.28), "rush_yds": (18.0, 0.45),
          "rec_yds": (18.0, 0.55), "rec": (1.4, 0.35)}
 
+# Only project games kicking off within this many days. Keeps us from generating
+# props for the next season's schedule ESPN serves all off-season (Week 1 shows
+# up months ahead). One NFL week's slate fits comfortably inside this window.
+HORIZON_DAYS = 8
+
 
 def _load(p):
     if not os.path.exists(p): return {}
@@ -147,6 +152,9 @@ def run() -> Dict[str, Any]:
     games = state.get("games") or state.get("events") or []
     gl = _load(os.path.join(DATA_DIR, "nfl_player_gamelogs.json")).get("by_name") or {}
 
+    today = dt.date.today()
+    horizon = today + dt.timedelta(days=HORIZON_DAYS)
+
     rows: List[Dict[str, Any]] = []
     for g in games:
         # Skip games already final (state == "post" or a "Final" status).
@@ -154,6 +162,18 @@ def run() -> Dict[str, Any]:
             continue
         if "final" in (g.get("status") or "").lower():
             continue
+        # Gate on kickoff within the horizon. Off-season, ESPN serves the next
+        # season's Week 1 schedule (months out) -- without this we'd generate
+        # props for games that can't settle for months and just void. A game with
+        # no date is skipped (can't be dated -> can't settle).
+        gd = (g.get("date") or g.get("start") or "")[:10]
+        try:
+            gdate = dt.date.fromisoformat(gd) if gd else None
+        except Exception:
+            gdate = None
+        if gdate is None or not (today <= gdate <= horizon):
+            continue
+        game_date = gdate.isoformat()
         # Prefer ESPN's direct abbrevs (home_abbrev); fall back to name-mapping.
         home = (g.get("home_abbrev") or _abbr(g.get("home_team") or g.get("home") or "")).upper()
         away = (g.get("away_abbrev") or _abbr(g.get("away_team") or g.get("away") or "")).upper()
@@ -175,7 +195,8 @@ def run() -> Dict[str, Any]:
                 sigma = max(floor, cv * mean)
                 bm = _best_line(mean, sigma, stat, prefix)
                 if bm:
-                    rows.append({"matchup": matchup, "player": name, "team": info["team"],
+                    rows.append({"matchup": matchup, "game_date": game_date,
+                                 "player": name, "team": info["team"],
                                  "opp_team": opp, "stat_type": stat,
                                  "projection": round(mean, 1), "sigma": round(sigma, 1),
                                  "edge_class": f"MODEL_{bm['side']}", "best_market": bm})
@@ -186,7 +207,8 @@ def run() -> Dict[str, Any]:
                 if p_yes >= 0.50:
                     bm = {"market": "ANYTIME_TD_YES", "p": round(p_yes, 3),
                           "fair_odds": _american(p_yes), "line": 0.5, "side": "YES"}
-                    rows.append({"matchup": matchup, "player": name, "team": info["team"],
+                    rows.append({"matchup": matchup, "game_date": game_date,
+                                 "player": name, "team": info["team"],
                                  "opp_team": opp, "stat_type": "anytime_td",
                                  "projection": round(lam, 2), "edge_class": "MODEL_TD",
                                  "best_market": bm})

@@ -497,6 +497,9 @@ def _collect_picks_from_sources() -> List[Dict[str, Any]]:
                 "fair_american": bm.get("fair_odds"),
                 "p_predicted": bm.get("p"),
                 "matchup": r.get("matchup"),
+                # Date the pick to its kickoff so it settles vs that day's box
+                # score (NFL games are days out, not same-day like MLB props).
+                "game_date": r.get("game_date"),
             })
 
     # Soccer goalscorer props strong edges
@@ -1292,10 +1295,14 @@ def _collect_picks_from_sources() -> List[Dict[str, Any]]:
             "line_delta_pp": r.get("line_delta_pp"),
         })
 
-    # Stamp all picks with date + ID
+    # Stamp all picks with date + ID. A pick may carry its own game_date (e.g. NFL
+    # props for a game a few days out) -- settle against THAT date's box score, not
+    # the record date. Same prop + same game -> stable pick_id -> deduped, not
+    # re-added every day it's generated ahead of kickoff.
     for p in out:
-        p["date"] = date_str
-        p["pick_id"] = _pick_id(p["source"], p.get("sport"), p.get("player_or_matchup"), p.get("market"), date_str)
+        game_date = p.pop("game_date", None)
+        p["date"] = game_date or date_str
+        p["pick_id"] = _pick_id(p["source"], p.get("sport"), p.get("player_or_matchup"), p.get("market"), p["date"])
         p["settled"] = False
         p["result"] = "pending"
         p["payout_units"] = None

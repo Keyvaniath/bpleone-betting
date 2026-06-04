@@ -154,6 +154,7 @@ def _parse_game(comp: Dict[str, Any], status: Dict[str, Any], cfg: Dict[str, Any
 
     return {
         "id": comp.get("id"),
+        "date": comp.get("date"),          # kickoff datetime (lets consumers gate by date)
         "matchup": f"{a_team} @ {h_team}",
         "home_team": h_team, "away_team": a_team,
         "home_abbrev": h_abbr, "away_abbrev": a_abbr,
