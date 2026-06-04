@@ -112,6 +112,48 @@
     }).catch(() => {});
   </script>
 
+  <!-- By-sport breakdown (NEW) -->
+  <section id="bySportCard" class="card" style="margin-bottom: 18px; display:none;">
+    <div class="card-head"><span>🏟️ Performance by Sport</span><span class="muted" id="bsMeta">--</span></div>
+    <div style="padding: 14px 18px;">
+      <p class="muted" style="font-size: 12px; margin: 0 0 12px 0;">Every sport the model grades, settled against real box scores / results. <strong>Includes the experimental prop firehose</strong> (tracked to train the model, not the curated bet list) — so blended ROI runs below the Alpha headline above. "Pend/Void" shows grading coverage: a sport with picks but nothing settled has no outcome feed wired yet.</p>
+      <div id="bsGrid"></div>
+    </div>
+  </section>
+  <script>
+  fetch("data/ledger_summary.json", { cache: "no-cache" })
+    .then(r => r.json())
+    .then(d => {
+      const bs = d.by_sport || {};
+      const sports = Object.entries(bs).map(([k, v]) => ({ sport: k, ...v }))
+        .filter(s => (s.n || 0) >= 1)
+        .sort((a, b) => (b.settled || 0) - (a.settled || 0) || (b.n || 0) - (a.n || 0));
+      if (!sports.length) return;
+      document.getElementById("bySportCard").style.display = "block";
+      document.getElementById("bsMeta").textContent = `${sports.length} sports · ${(d.n_settled || 0).toLocaleString()} settled`;
+      const cols = "92px 84px 64px 74px 80px 92px";
+      const header = `<div style="display:grid;grid-template-columns:${cols};gap:10px;padding:6px 0;color:var(--muted,#888);font-size:10px;text-transform:uppercase;">
+        <span>Sport</span><span>Record</span><span>Hit%</span><span>ROI</span><span>Net</span><span>Pend/Void</span></div>`;
+      const rows = sports.map(s => {
+        const dec = (s.wins || 0) + (s.losses || 0);
+        const roiColor = s.roi_pct == null ? "var(--muted,#888)" : s.roi_pct >= 0 ? "#58c878" : "#e35a5a";
+        const rec = dec ? `${s.wins}-${s.losses}` : "—";
+        const cov = (!s.settled && (s.pending || s.void))
+          ? `<span style="color:#e0a13a;" title="No outcome feed wired yet">no feed</span>`
+          : `${s.pending || 0}/${s.void || 0}`;
+        return `<div style="display:grid;grid-template-columns:${cols};gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-family:'JetBrains Mono',monospace;font-size:12px;">
+          <span><strong>${s.sport}</strong></span>
+          <span>${rec}</span>
+          <span>${s.hit_rate != null ? (s.hit_rate * 100).toFixed(1) + "%" : "—"}</span>
+          <span style="color:${roiColor};">${s.roi_pct != null ? (s.roi_pct >= 0 ? "+" : "") + s.roi_pct + "%" : "—"}</span>
+          <span style="color:${roiColor};">${s.net_units != null ? (s.net_units >= 0 ? "+" : "") + s.net_units + "u" : "—"}</span>
+          <span class="muted">${cov}</span>
+        </div>`;
+      }).join("");
+      document.getElementById("bsGrid").innerHTML = header + rows;
+    }).catch(() => {});
+  </script>
+
   <section class="card" style="margin-bottom: 28px;">
     <div class="card-head"><span>📈 Cumulative P&L</span><span class="muted">last 30 plays</span></div>
     <canvas id="plChart" height="220"></canvas>

@@ -1980,6 +1980,26 @@ def _void_stale_pending(history: List[Dict[str, Any]]) -> int:
     return n
 
 
+def _reconcile_settled_voids(history: List[Dict[str, Any]]) -> int:
+    """Clear a stale void from any pick that is now settled with a real outcome.
+
+    A pick can be voided at the 4-day mark (no feed yet) and THEN settled in a
+    later run once the feed arrives -- most often when a new sport's grader ships
+    after its picks had already aged out (this happened in bulk for WNBA/NBA/golf
+    when their adapters landed). Such a pick ends up flagged BOTH settled and
+    voided, so it is double-counted (in W-L/ROI and in the void tally) and the
+    by-sport record looks empty. The real outcome wins -- drop the void.
+    """
+    n = 0
+    for p in history:
+        if p.get("settled") and p.get("voided"):
+            p["voided"] = False
+            p.pop("voided_reason", None)
+            p.pop("voided_at", None)
+            n += 1
+    return n
+
+
 def _correct_misrouted_grades(history: List[Dict[str, Any]]) -> int:
     """One-time correction: un-settle + void picks mis-graded by the old
     over-broad game-level routing. Props that contain over_/under_ (team SB,
@@ -2195,6 +2215,11 @@ def run() -> Dict[str, Any]:
     # Settle anything pending
     n_newly_settled = _settle_picks(history)
 
+    # A real outcome supersedes a prior stale void (e.g. picks voided before their
+    # sport's grader shipped, then settled once it did). Run before the void sweep
+    # + stats so nothing is counted as both settled and void.
+    n_reconciled = _reconcile_settled_voids(history)
+
     # Void picks that can never settle (no outcome feed, > VOID_AFTER_DAYS old)
     # so 'pending' stays honest and the ledger self-cleans.
     n_voided_this_run = _void_stale_pending(history)
@@ -2303,19 +2328,29 @@ def run() -> Dict[str, Any]:
         d = b["wins"] + b["losses"]
         b["hit_rate"] = round(b["wins"] / d, 4) if d > 0 else None
 
-    # By sport
+    # By sport -- over ALL picks (not just settled) so coverage gaps surface: a
+    # sport with many picks but 0 settled has no outcome feed wired yet. Carries
+    # pending + void counts and ROI alongside the W-L record.
     by_sport: Dict[str, Dict[str, Any]] = {}
-    for p in settled:
-        sp = p.get("sport") or "?"
-        b = by_sport.setdefault(sp, {"n": 0, "wins": 0, "losses": 0, "pushes": 0, "net_units": 0.0})
+    for p in history:
+        sp = (p.get("sport") or "?").upper()
+        b = by_sport.setdefault(sp, {"n": 0, "settled": 0, "wins": 0, "losses": 0,
+                                     "pushes": 0, "pending": 0, "void": 0, "net_units": 0.0})
         b["n"] += 1
-        if p["result"] == "won": b["wins"] += 1
-        elif p["result"] == "lost": b["losses"] += 1
-        elif p["result"] == "push": b["pushes"] += 1
-        b["net_units"] = round(b["net_units"] + (p.get("payout_units") or 0), 3)
+        if p.get("voided"):
+            b["void"] += 1
+        elif p.get("settled"):
+            b["settled"] += 1
+            if p["result"] == "won": b["wins"] += 1
+            elif p["result"] == "lost": b["losses"] += 1
+            elif p["result"] == "push": b["pushes"] += 1
+            b["net_units"] = round(b["net_units"] + (p.get("payout_units") or 0), 3)
+        else:
+            b["pending"] += 1
     for sp, b in by_sport.items():
         d = b["wins"] + b["losses"]
         b["hit_rate"] = round(b["wins"] / d, 4) if d > 0 else None
+        b["roi_pct"] = round(b["net_units"] / d * 100, 2) if d > 0 else None
 
     # Last 7 days
     today = dt.date.today()
@@ -2345,6 +2380,7 @@ def run() -> Dict[str, Any]:
         "n_newly_settled_this_run": n_newly_settled,
         "n_resettled_this_run": n_resettled,
         "n_voided_this_run": n_voided_this_run,
+        "n_reconciled_settled_voids": n_reconciled,
         "n_bootstrapped_from_locks_history": n_bootstrapped,
         "by_source": by_source,
         "by_market_family": by_mkt,
@@ -2364,6 +2400,11 @@ def run() -> Dict[str, Any]:
     }
     os.makedirs(DATA_DIR, exist_ok=True)
     with open(OUT, "w") as f: json.dump(payload, f, indent=2)
+    # Compact summary (all rollups, minus the multi-MB picks array) so the public
+    # track-record page renders by-sport / by-source without pulling the full ledger.
+    summary = {k: v for k, v in payload.items() if k != "picks"}
+    with open(os.path.join(DATA_DIR, "ledger_summary.json"), "w") as f:
+        json.dump(summary, f, indent=2)
     return payload
 
 
