@@ -1,8 +1,10 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:3 F:27
+_NO_ACTION_NIGHT_ | L:0 S:3 F:25
+
+:lock: **LOCK:** Seth Lugo (MLB)
 
 :dart: **Top Picks:**
-1. [MLB] ? -- ? (TEAM_STRONG)
+1. [MLB] Zack Wheeler -- Zack Wheeler (PITCHER_STRONG)
 2. [F1] max verstappen -- max verstappen (DRIVER_STRONG)
 3. [GOLF] Rory McIlroy -- Rory McIlroy (PLAYER_STRONG)
 

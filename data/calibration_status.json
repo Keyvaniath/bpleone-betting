@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-06-04T12:37:55",
+  "generated_at": "2026-06-04T12:55:47",
   "calibration_tier": "PRODUCTION",
   "calibration_progress_pct": 100,
   "calibration_note": "Sufficient settled outcomes -- calibration is data-driven.",
-  "n_settled_locks": 103,
+  "n_settled_locks": 108,
   "n_locks_pending": 112,
   "shrinkage_baseline_prob": 0.55,
   "default_shrinkage_w": 0.55,
@@ -26,43 +26,32 @@
     "nhl_goalie": 0.65,
     "mlb_team_total": 0.6
   },
-  "n_plays_calibrated": 29,
-  "avg_raw_prob": 0.7901,
-  "avg_calibrated_prob": 0.6829,
-  "avg_compression_pp": 10.7,
-  "max_raw_prob": 0.8997,
+  "n_plays_calibrated": 200,
+  "avg_raw_prob": 0.9075,
+  "avg_calibrated_prob": 0.7822,
+  "avg_compression_pp": 12.5,
+  "max_raw_prob": 0.92,
   "by_source": {
-    "kbo_player": {
+    "pp_under": {
+      "n": 190,
+      "max_raw": 0.92,
+      "shrinkage_w": 0.45,
+      "avg_raw_prob": 0.9079,
+      "avg_cal_prob": 0.7833,
+      "avg_compression_pp": 12.5
+    },
+    "pp_over": {
       "n": 10,
-      "max_raw": 0.8813,
-      "shrinkage_w": 0.55,
-      "avg_raw_prob": 0.8689,
-      "avg_cal_prob": 0.7254,
-      "avg_compression_pp": 14.3
-    },
-    "today_reco": {
-      "n": 13,
-      "max_raw": 0.8997,
-      "shrinkage_w": 0.8,
-      "avg_raw_prob": 0.7324,
-      "avg_cal_prob": 0.6506,
-      "avg_compression_pp": 8.2
-    },
-    "today": {
-      "n": 6,
-      "max_raw": 0.8913,
-      "shrinkage_w": 0.8,
-      "avg_raw_prob": 0.7838,
-      "avg_cal_prob": 0.682,
-      "avg_compression_pp": 10.2
+      "max_raw": 0.9139,
+      "shrinkage_w": 0.45,
+      "avg_raw_prob": 0.9003,
+      "avg_cal_prob": 0.7606,
+      "avg_compression_pp": 14.0
     }
   },
-  "sports_with_market_anchor": {
-    "MLB": 12
-  },
+  "sports_with_market_anchor": {},
   "sports_without_market_anchor": {
-    "KBO": 10,
-    "MLB": 7
+    "MLB-PP": 200
   },
   "transparency_note": "Raw model probabilities are shrunk toward market-implied probabilities (when available) or a 0.55 baseline. This compresses small-sample overconfidence into realistic ranges. Edges in the displayed top plays board are post-calibration."
 }

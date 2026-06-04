@@ -2,9 +2,9 @@
 
 **Model Confidence: 73.6/100 [GREEN-LIGHT]** -- Model is healthy. Use capped Kelly (<=0.5u) until residual variance tightens further.
 
-_Pipeline health: **WARNING** (12/15 artifacts ok; 3 empty, 0 stale)._ 
+_Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
 
-_Generated at 2026-06-04T11:33:39 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-06-04T12:56:29 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
@@ -22,9 +22,9 @@ _Generated at 2026-06-04T11:33:39 UTC. Game lines source: **Bovada (fallback -- 
 |---|---|---|---|---|
 | 1:05p ET | SDP @ PHI | Citizens Bank Park | 70F 0mph | PHI_ML +22.1% |
 | 1:35p ET | BAL @ BOS | Fenway Park | 70F 0mph | UNDER_10.5 +7.69% |
-| 1:35p ET | CLE @ NYY | Yankee Stadium | 70F 0mph | OVER_8.5 +21.89% |
+| 1:35p ET | CLE @ NYY | Yankee Stadium | 70F 0mph | NYY_ML +22.93% |
 | 2:10p ET | SFG @ MIL | American Family Field | indoor | UNDER_9.0 +11.9% |
-| 7:15p ET | TOR @ ATL | Truist Park | 70F 0mph | ATL_ML +23.44% |
+| 7:15p ET | TOR @ ATL | Truist Park | 70F 0mph | ATL_ML +22.5% |
 | 7:40p ET | KCR @ MIN | Target Field | 70F 0mph | UNDER_9.0 +47.36% |
 | 8:05p ET | OAK @ CHC | Wrigley Field | 70F 0mph | UNDER_10.5 +26.59% |
 | 8:10p ET | PIT @ HOU | Daikin Park | indoor | OVER_8.5 +71.75% |
@@ -32,37 +32,38 @@ _Generated at 2026-06-04T11:33:39 UTC. Game lines source: **Bovada (fallback -- 
 
 ## Parlays - top 5
 
-- **3-leg @ +457 (prob 26.9%, EV +49.91%)**
-  - TOR @ ATL ATL_ML (-208, model 83.4%)
-  - TOR @ ATL OVER_7.5 (-110, model 59.3%)
-  - KCR @ MIN MIN_ML (-103, model 54.4%)
-- **3-leg @ +676 (prob 19.2%, EV +49.15%)**
-  - SFG @ MIL UNDER_9.5 (-110, model 65.1%)
-  - TOR @ ATL OVER_7.5 (-110, model 59.3%)
-  - OAK @ CHC OAK_ML (+113, model 49.8%)
-- **3-leg @ +449 (prob 27.1%, EV +49.12%)**
-  - SDP @ PHI PHI_ML (-197, model 81.1%)
+- **3-leg @ +369 (prob 31.9%, EV +49.92%)**
+  - CLE @ NYY NYY_ML (-168, model 77.1%)
+  - SFG @ MIL UNDER_9.0 (-110, model 58.6%)
+  - SFG @ MIL MIL_ML (-185, model 70.8%)
+- **3-leg @ +481 (prob 25.8%, EV +49.87%)**
   - BAL @ BOS UNDER_10.5 (-110, model 56.4%)
+  - CLE @ NYY NYY_ML (-168, model 77.1%)
   - TOR @ ATL OVER_7.5 (-110, model 59.3%)
-- **2-leg @ +188 (prob 51.8%, EV +49.09%)**
-  - SDP @ PHI PHI_ML (-197, model 81.1%)
-  - CLE @ NYY OVER_8.5 (-110, model 63.8%)
-- **2-leg @ +138 (prob 62.5%, EV +49.05%)**
-  - SDP @ PHI PHI_ML (-197, model 81.1%)
-  - CLE @ NYY NYY_ML (-172, model 77.1%)
+- **2-leg @ +121 (prob 67.6%, EV +49.57%)**
+  - SDP @ PHI PHI_ML (-198, model 81.1%)
+  - TOR @ ATL ATL_ML (-213, model 83.4%)
+- **3-leg @ +332 (prob 34.6%, EV +49.39%)**
+  - SFG @ MIL UNDER_9.0 (-110, model 58.6%)
+  - SFG @ MIL MIL_ML (-185, model 70.8%)
+  - TOR @ ATL ATL_ML (-213, model 83.4%)
+- **3-leg @ +436 (prob 27.9%, EV +49.34%)**
+  - BAL @ BOS UNDER_10.5 (-110, model 56.4%)
+  - TOR @ ATL ATL_ML (-213, model 83.4%)
+  - TOR @ ATL OVER_7.5 (-110, model 59.3%)
 
 ## Self-Learning Loop
 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
-| batter total bases | 4216 | 24.7% | 32.2% | 1.302 | 0.768 |
-| batter rbis | 4214 | 19.1% | 23.5% | 1.229 | 0.814 |
 | batter singles | 2107 | 41.3% | 44.5% | 1.078 | 0.928 |
 | pitcher strikeouts | 881 | 36.1% | 39.1% | 1.082 | 0.925 |
-| batter doubles | 2107 | 14.3% | 16.2% | 1.130 | 0.885 |
-| batter home runs | 2107 | 10.4% | 13.0% | 1.253 | 0.799 |
-| batter runs scored | 2107 | 35.7% | 39.0% | 1.090 | 0.918 |
 | batter hits | 4261 | 37.6% | 41.9% | 1.113 | 0.899 |
+| batter rbis | 4214 | 19.1% | 23.5% | 1.229 | 0.814 |
+| batter home runs | 2107 | 10.4% | 13.0% | 1.253 | 0.799 |
+| batter doubles | 2107 | 14.3% | 16.2% | 1.130 | 0.885 |
+| batter total bases | 4216 | 24.7% | 32.2% | 1.302 | 0.768 |
+| batter runs scored | 2107 | 35.7% | 39.0% | 1.090 | 0.918 |
 
 Cumulative graded plays: 118214. Wins: 87366. Hit rate: 73.9%.
 

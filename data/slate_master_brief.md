@@ -1,18 +1,25 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-06-04T11:33:22 UTC_
+_Generated 2026-06-04T12:55:49 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -15
+- **Score:** -13
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
 - **Total STRONG:** 3
-- **Total FADES:** 27
+- **Total FADES:** 25
+
+## Lock of the Night
+- **Subject:** Seth Lugo
+- **Source:** ELITE_BOARD
+- **Sport:** MLB
+- **Score:** 15.0
+- **Details:** KCR @ MIN
 
 ## Top 5 Curated Picks
-1. **MLB / ?** (MLB_TEAM, score=75.42)
-   - Play: ? (TEAM_STRONG)
-   - Rationale: Cross-sport top pick (MLB_TEAM)
+1. **MLB / Zack Wheeler** (MLB_PITCHER, score=58.17)
+   - Play: Zack Wheeler (PITCHER_STRONG)
+   - Rationale: Cross-sport top pick (MLB_PITCHER)
 2. **F1 / max verstappen** (F1_DRIVER, score=49.67)
    - Play: max verstappen (DRIVER_STRONG)
    - Rationale: Cross-sport top pick (F1_DRIVER)
@@ -21,19 +28,19 @@ _Generated 2026-06-04T11:33:22 UTC_
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
 
 ## Slate ROI Projection
-- **Picks:** 0
-- **Avg edge:** 0%
+- **Picks:** 3
+- **Avg edge:** -0.91%
 - **Expected ROI (1/4 Kelly):** 0.0%
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **MLB** / Colin Rea (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **MLB** / Logan Webb (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **MLB** / Paul Skenes (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **MLB** / Walbert Ureña (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **MLB** / Spencer Arrighetti (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **NHL** / pyotr kochetkov (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / frederik andersen (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / Andrei Svechnikov (SKATER_FADE)
+  - Fade angle: SOG UNDER + no goal
+- **NHL** / Sebastian Aho (SKATER_FADE)
+  - Fade angle: SOG UNDER + no goal
+- **F1** / logan sargeant (DRIVER_FADE)
+  - Fade angle: non-podium / outside top 10

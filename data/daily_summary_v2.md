@@ -1,48 +1,38 @@
 # EdgeStat Daily Summary — 2026-06-04
 
-## 🏥 Model Health: 72.4/100 [HEALTHY]
-- Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 100.0/100
+## 🏥 Model Health: 69.1/100 [OK]
+- Operational but room to improve - check yellow components
+  - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 54.4/100
   - 🔴 Brier Trend: 29.6/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟡 Data Health: 77.8/100
-  - 🟢 Edge Count: 100/100
+  - 🟢 Data Health: 88.9/100
+  - 🔴 Edge Count: 45.7/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.585)
-- **Total games on board:** 120
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.586)
+- **Total games on board:** 104
 - **Strong home favorites:** 3 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
-1. **SFG @ MIL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-2. **COL @ LAA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-3. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
-4. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
-5. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
+1. **BAL @ BOS YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+2. **PIT @ HOU YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+3. **OAK @ CHC YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+4. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
+5. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
-- [WHALE] **[MLB]** LAD @ ARI ML_AWAY -- 68% / +14.8% (score 3.5)
+- [STRONG] **[MLB]** LAD @ ARI LAD_ML -- 71% / +21.1% (score 2.5)
 
-## 📡 Sharp Action (Line Movement)
-- [STRONG] **LAD @ ARI** ml_away: 53.92% → 59.18% (+5.3pp)
+## 📉 Strong UNDER Signals
+- [STRONG 5.5] **SFG @ MIL** model 8.51 vs market 9.5
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **91-12** (88.3% hit rate)
 - Net units: **+3.41u** | ROI: **+53.3%**
-- Last 7d: 57-7 (89.1%) | net +2.17u
+- Last 7d: 49-7 (87.5%) | net +1.80u
 
-**Today's 15 Locks:**
-- [MLB-PP] **Luis Rengifo** PP_batter_hrr_under_3.5 · p=84% edge=+46.1% qK=0.062u
-- [MLB-PP] **Alejandro Osuna** PP_batter_hrr_under_3.5 · p=84% edge=+45.9% qK=0.062u
-- [MLB-PP] **Dylan Crews** PP_batter_hrr_under_3.5 · p=84% edge=+45.8% qK=0.062u
-- [MLB-PP] **Alex Freeland** PP_batter_hrr_under_3.5 · p=84% edge=+45.8% qK=0.062u
-- [MLB-PP] **Isiah Kiner-Falefa** PP_batter_hrr_under_4.5 · p=84% edge=+45.7% qK=0.062u
-- [MLB-PP] **Ha-Seong Kim** PP_batter_hrr_under_2.5 · p=86% edge=+49.6% qK=0.062u
-- [MLB-PP] **Zach McKinstry** PP_batter_hrr_under_2.5 · p=86% edge=+49.6% qK=0.062u
-- [MLB-PP] **Vinnie Pasquantino** PP_batter_hrr_under_3.5 · p=85% edge=+47.2% qK=0.062u
-- [MLB-PP] **Matt Chapman** PP_batter_hrr_under_3.5 · p=85% edge=+47.2% qK=0.062u
-- [MLB-PP] **Freddy Fermin** PP_batter_hrr_under_2.5 · p=85% edge=+47.1% qK=0.062u
+**Today's 5 Locks:**
 - [KBO] **Choi Jeong** one_plus_tb · p=73% edge=+39.8% qK=0.062u
 - [KBO] **Jose Pirela** one_plus_tb · p=73% edge=+39.2% qK=0.062u
 - [KBO] **Koo Ja-wook** one_plus_tb · p=73% edge=+38.9% qK=0.062u
@@ -78,26 +68,27 @@
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$-3.37**
-  - #1 [NRFI] $50 on SFG @ MIL YRFI (1st-inning OVER 0.5) (P=73%)
-  - #2 [NRFI] $50 on COL @ LAA YRFI (1st-inning OVER 0.5) (P=69%)
-  - #3 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
-  - #4 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
-  - #5 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
+- Expected EV: **$9.5**
+  - #1 [NRFI] $50 on BAL @ BOS YRFI (1st-inning OVER 0.5) (P=79%)
+  - #2 [NRFI] $50 on PIT @ HOU YRFI (1st-inning OVER 0.5) (P=75%)
+  - #3 [NRFI] $50 on OAK @ CHC YRFI (1st-inning OVER 0.5) (P=69%)
+  - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
+  - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
-## 🎯 Convergence Picks (6 stacked games)
-- ELITE: **3** · HIGH: 1 · MED: 2
-  - [ELITE] New York Knicks @ San Antonio Spurs : 7 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
+## 🎯 Convergence Picks (5 stacked games)
+- ELITE: **2** · HIGH: 2 · MED: 1
   - [ELITE] Vegas Golden Knights @ Carolina Hurricanes : 5 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
-  - [ELITE] Phoenix Mercury @ Seattle Storm : 5 signals (PREGAME, HEAT_COLD, HEAT_COLD, ATS)
-  - [HIGH] Philadelphia Union @ Inter Miami CF : 3 signals (HEAT_COLD, HEAT_COLD, ATS)
-  - [MED] Seattle Sounders FC @ LAFC : 2 signals (ATS, ATS)
+  - [ELITE] Phoenix Mercury @ Seattle Storm : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
+  - [HIGH] New York Knicks @ San Antonio Spurs : 3 signals (HEAT_COLD, HEAT_COLD, ATS)
+  - [HIGH] Toronto Tempo @ New York Liberty : 3 signals (HEAT_COLD, HEAT_COLD, ATS)
+  - [MED] Atlanta United FC @ Columbus Crew : 2 signals (ATS, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (4)
-- **Paul Skenes** OVER 5.5 K (71%) fair -250
-- **Shohei Ohtani** OVER 5.5 K (67%) fair -203
-- **MacKenzie Gore** OVER 4.5 K (63%) fair -168
-- **Walbert Ureña** OVER 4.5 K (58%) fair -140
+## ⚾ Top MLB Pitcher K Plays (5)
+- **Kai-Wei Teng** OVER 6.5 K (75%) fair -306
+- **J.T. Ginn** OVER 4.5 K (69%) fair -224
+- **Chris Sale** OVER 6.5 K (69%) fair -219
+- **Brayan Bello** OVER 4.5 K (68%) fair -208
+- **Zack Wheeler** OVER 4.5 K (67%) fair -207
 
 ## 🏀 NBA Player Heat (18 HOT / 22 COLD)
   - 🔥 **Jeremiah Fears** (NO): L5 31.8/5.8/6.0 vs season 16.9/3.2/4.0 [PTS +14.9, REB +2.6, AST +2.0]
@@ -135,12 +126,12 @@
   - ❄️ **Justin Crawford** (PHI): L14 .111 / season .230 (-119pts) -- FADE props
   - ❄️ **Nolan Gorman** (STL): L14 .093 / season .204 (-111pts) -- FADE props
 
-## 📈 Streak Regression Alerts (12)
-- [NBA] New York Knicks on W3 L10 3-0 -- New York Knicks on W3 -- no historical sample
-- [NHL] Vegas Golden Knights on W5 L10 5-0 -- Vegas Golden Knights on W5 -- no historical sample
-- [WNBA] Seattle Storm on L3 L10 2-3 -- Seattle Storm on L3 -- no historical sample
-- [WNBA] Phoenix Mercury on L5 L10 0-5 -- Phoenix Mercury on L5 -- no historical sample
+## 📈 Streak Regression Alerts (9)
+- [NHL] Vegas Golden Knights on W4 L10 4-0 -- Vegas Golden Knights on W4 -- no historical sample
 - [CWS] West Virginia Mountaineers on W3 L10 4-1 -- West Virginia Mountaineers on W3 -- no historical sample
+- [CWS] Cal Poly Mustangs on W3 L10 3-0 -- Cal Poly Mustangs on W3 -- no historical sample
+- [CWS] North Carolina Tar Heels on W3 L10 3-0 -- North Carolina Tar Heels on W3 -- no historical sample
+- [CWS] USC Trojans on W4 L10 4-1 -- USC Trojans on W4 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**

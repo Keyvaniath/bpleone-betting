@@ -6,43 +6,57 @@ _0% lineups confirmed · 6 rookie SPs_
 
 ## Slate
 - **9 games** scheduled
-- **21 best bets** scored: 0 DK · 0 PP · 3 NRFI · 0 SGP
-- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$35.88
-- **MC simulation:** EV +$45.02, 76% P(profit), p05 $-54.55 / p95 $136.35
+- **30 best bets** scored: 0 DK · 0 PP · 6 NRFI · 6 SGP
+- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$46.89
+- **MC simulation:** EV +$81.66, 76% P(profit), p05 $-77.34 / p95 $243.84
 
 ## Top 5 Best Bets
-1. **SFG @ MIL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +27.2%)
-   - P(YRFI) 73.2% vs baseline 46.0%
-2. **COL @ LAA YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +23.2%)
-   - P(YRFI) 69.2% vs baseline 46.0%
-3. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
+1. **BAL @ BOS YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +32.7%)
+   - P(YRFI) 78.7% vs baseline 46.0%
+2. **PIT @ HOU YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +29.2%)
+   - P(YRFI) 75.2% vs baseline 46.0%
+3. **OAK @ CHC YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +23.0%)
+   - P(YRFI) 69.0% vs baseline 46.0%
+4. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
    - Player prop quality score 1.1935
    - Elite player
-4. **LOL ShowMaker OVER 3.5 Kills**  (78/100 ****, edge —)
+5. **LOL ShowMaker OVER 3.5 Kills**  (78/100 ****, edge —)
    - Player prop quality score 1.1892
    - Elite player
-5. **LOL Peyz OVER 4.5 Kills**  (78/100 ****, edge —)
-   - Player prop quality score 1.184
-   - Elite player
 
-## ⚠️ Trap Warnings — 5 flagged
-- **SFG @ MIL YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +27.2% looks big but only 0 settled props on this player — model unproven
-- **COL @ LAA YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +23.2% looks big but only 0 settled props on this player — model unproven
-- **OAK @ CHC YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +16.0% looks big but only 0 settled props on this player — model unproven
-- **GOLF 3-leg parlay @ +1920** (low):
-   - Edge +10.1% looks big but only 0 settled props on this player — model unproven
-- **GOLF 3-leg parlay @ +1920** (low):
-   - Edge +10.1% looks big but only 0 settled props on this player — model unproven
+## ⚠️ Trap Warnings — 14 flagged
+- **BAL @ BOS YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +32.7% looks big but only 0 settled props on this player — model unproven
+- **PIT @ HOU YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +29.2% looks big but only 0 settled props on this player — model unproven
+- **PIT @ HOU 2-leg SGP @ -167** (low):
+   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
+- **SFG @ MIL 2-leg SGP @ -147** (low):
+   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
+- **TOR @ ATL 2-leg SGP @ -193** (low):
+   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
+
+## Hot streaks
+**Batters heating up:** Ronald Acuña Jr. (heat +7.54), Nick Kurtz (heat +6.09), Oneil Cruz (heat +4.96)
+**Pitchers on a run:** Andrew Morris (heat +16.39), Mason Fluharty (heat +12.00), Justin Wrobleski (heat +6.62)
+
+## Top correlation-aware SGPs
+- **PIT @ HOU** 2-leg @ -167 fair (joint 0.63, EV +25.0%)
+   - Kai-Wei Teng UNDER 8.5 pitcher strikeouts
+   - Kai-Wei Teng UNDER 7.5 pitcher strikeouts
+- **SFG @ MIL** 2-leg @ -147 fair (joint 0.59, EV +25.0%)
+   - Adrian Houser UNDER 5.5 pitcher strikeouts
+   - Adrian Houser UNDER 4.5 pitcher strikeouts
+- **TOR @ ATL** 2-leg @ -193 fair (joint 0.66, EV +25.0%)
+   - Chris Sale UNDER 10.5 pitcher strikeouts
+   - Chris Sale OVER 5.5 pitcher strikeouts
 
 ## Bullpens GASSED tonight
-Seattle Mariners, San Francisco Giants, Tampa Bay Rays, Texas Rangers, Minnesota Twins, Chicago White Sox, Miami Marlins, Milwaukee Brewers
+Athletics, Seattle Mariners, Tampa Bay Rays, Minnesota Twins, Philadelphia Phillies, Chicago White Sox, Miami Marlins, New York Yankees
 _Lean late-inning OVER on these games; fade their save situations._
 
 ## NRFI/YRFI strong leans
-- **YRFI** (1st-inning OVER): SFG @ MIL, COL @ LAA, OAK @ CHC
+- **YRFI** (1st-inning OVER): BAL @ BOS, PIT @ HOU, OAK @ CHC, SFG @ MIL, CLE @ NYY
 
 ## Golf -- the Memorial Tournament pres. by Workday
 - **Leader:** Brian Campbell (E) at #1
@@ -56,12 +70,12 @@ _Lean late-inning OVER on these games; fade their save situations._
 ## NHL -- PLAYOFFS
 - Vegas Golden Knights @ Carolina Hurricanes (39-26-17 vs 53-22-7)  | P(home) 64.4% fair -181 | Scheduled
 
-## LoL Esports -- 1 live, 30 upcoming
-- [LJL] FENNEL vs Rising Gaming BO3 | P(A) 47.1% fair +112/-112
+## LoL Esports -- 0 live, 30 upcoming
 - [NACL] Winthrop University vs CCG Esports BO5 | P(A) 53.2% fair -114/+114
 - [LPL] LGD GAMING vs Anyone's Legend BO5 | P(A) 54.5% fair -120/+120
 - [NLC] Ruddy Corporation vs Verdant BO5 | P(A) 38.6% fair +159/-159
 - [NACL] TBD vs Conviction BO5 | P(A) 34.0% fair +194/-194
+- [LCK] Dplus KIA vs HANJIN BRION BO5 | P(A) 72.4% fair -262/+262
 - **LoL POT:** G2 Esports ML vs TBD (LEC, BO5) (HIGH)
 
 ## Player Play of the Day -- across all sports (3503 candidates scanned)
