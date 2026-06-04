@@ -482,6 +482,7 @@ def _collect_picks_from_sources() -> List[Dict[str, Any]]:
                 "fair_american": bm.get("fair_odds"),
                 "p_predicted": bm.get("p"),
                 "matchup": r.get("matchup"),
+                "game_date": r.get("game_date"),
             })
 
     # NFL player props (model-conviction): pass/rush/rec yds, receptions, anytime
@@ -602,6 +603,7 @@ def _collect_picks_from_sources() -> List[Dict[str, Any]]:
                 "fair_american": bm.get("fair_odds"),
                 "p_predicted": bm.get("p"),
                 "matchup": r.get("matchup"),
+                "game_date": r.get("game_date"),
             })
 
     # NBA double-double strong edges
@@ -684,6 +686,7 @@ def _collect_picks_from_sources() -> List[Dict[str, Any]]:
                 "fair_american": bm.get("fair_odds"),
                 "p_predicted": bm.get("p"),
                 "matchup": r.get("matchup"),
+                "game_date": r.get("game_date"),
             })
 
     # NBA player turnovers strong edges
@@ -815,6 +818,7 @@ def _collect_picks_from_sources() -> List[Dict[str, Any]]:
                 "fair_american": bm.get("fair_odds"),
                 "p_predicted": bm.get("p"),
                 "matchup": r.get("matchup"),
+                "game_date": r.get("game_date"),
             })
 
     # NBA team total points strong edges

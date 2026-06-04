@@ -132,7 +132,8 @@ def _evaluate_line(projection: float, sigma: float, market_prefix: str) -> Dict[
 
 def run() -> Dict[str, Any]:
     state = _load(os.path.join(DATA_DIR, "wnba_state.json"))
-    games = state.get("games") or state.get("events") or []
+    from nba_slate import upcoming_games  # shared slate gate (stale/future/non-imminent)
+    games = upcoming_games(state)
 
     reb_rows: List[Dict[str, Any]] = []
     ast_rows: List[Dict[str, Any]] = []
@@ -172,6 +173,7 @@ def run() -> Dict[str, Any]:
             reb_eval = _evaluate_line(proj_reb, sigma_reb, "REB")
             reb_rows.append({
                 "matchup": f"{away} @ {home}",
+                "game_date": g.get("game_date"),
                 "player": player_name, "team": info["team"],
                 "position": info["pos"], "season_rpg": round(base_rpg, 2),
                 "rpg_source": rpg_source,
@@ -182,6 +184,7 @@ def run() -> Dict[str, Any]:
             ast_eval = _evaluate_line(proj_ast, sigma_ast, "AST")
             ast_rows.append({
                 "matchup": f"{away} @ {home}",
+                "game_date": g.get("game_date"),
                 "player": player_name, "team": info["team"],
                 "position": info["pos"], "season_apg": round(base_apg, 2),
                 "apg_source": apg_source,
