@@ -29,6 +29,7 @@ GOLF_SB = "https://site.api.espn.com/apis/site/v2/sports/golf/pga/scoreboard"
 UFC_SB = "https://site.api.espn.com/apis/site/v2/sports/mma/ufc/scoreboard"
 TENNIS_SB = "https://site.api.espn.com/apis/site/v2/sports/tennis/{tour}/scoreboard"
 TENNIS_TOURS = ["atp", "wta"]
+F1_SB = "https://site.api.espn.com/apis/site/v2/sports/racing/f1/scoreboard"
 
 
 def _http(url: str) -> Optional[Dict[str, Any]]:
@@ -210,12 +211,57 @@ def fetch_ufc(days_back: int = 10, anchor: Optional[dt.date] = None) -> Dict[str
     return out
 
 
+# ----------------------------------------------------------------- F1 ---------
+def _f1_positions(comp: Dict[str, Any]) -> Dict[str, Any]:
+    """driver -> finishing order from an F1 session's competitors (order 1 = P1)."""
+    res: Dict[str, Any] = {}
+    for c in (comp.get("competitors") or []):
+        nm = _name(c.get("athlete") or {})
+        pos = c.get("order")
+        if nm and pos is not None:
+            try:
+                res[nm.lower()] = {"driver": nm, "position": int(pos)}
+            except Exception:
+                pass
+    return res
+
+
+def fetch_f1(days_back: int = 14, anchor: Optional[dt.date] = None) -> Dict[str, Any]:
+    anchor = anchor or dt.date.today()
+    seen: Dict[str, Dict[str, Any]] = {}
+    for d in _dates(days_back, anchor):
+        lb = _http(f"{F1_SB}?dates={d}")
+        for ev in ((lb or {}).get("events") or []):
+            name = ev.get("name") or ev.get("shortName") or ""
+            if not name or name in seen:
+                continue
+            qual, race, qdate, rdate = {}, {}, "", ""
+            for c in (ev.get("competitions") or []):
+                t = (c.get("type") or {}).get("abbreviation")
+                if not ((c.get("status") or {}).get("type", {}).get("completed")):
+                    continue
+                if t == "Qual":
+                    qual, qdate = _f1_positions(c), (c.get("date") or "")[:10]
+                elif t == "Race":
+                    race, rdate = _f1_positions(c), (c.get("date") or "")[:10]
+            if qual or race:
+                seen[name] = {"name": name, "event_date": (ev.get("date") or "")[:10],
+                              "qual_date": qdate, "race_date": rdate, "qual": qual, "race": race}
+    out = {"generated_at": dt.datetime.utcnow().isoformat(timespec="seconds"),
+           "n_events": len(seen), "events": list(seen.values())}
+    os.makedirs(DATA_DIR, exist_ok=True)
+    with open(os.path.join(DATA_DIR, "f1_results.json"), "w") as f:
+        json.dump(out, f, indent=2)
+    return out
+
+
 def run_all(anchor: Optional[dt.date] = None) -> Dict[str, Any]:
     g = fetch_golf(anchor=anchor)
     t = fetch_tennis(anchor=anchor)
     u = fetch_ufc(anchor=anchor)
+    f = fetch_f1(anchor=anchor)
     return {"golf_tournaments": g["n_tournaments"], "tennis_matches": t["n_matches"],
-            "ufc_fights": u["n_fights"]}
+            "ufc_fights": u["n_fights"], "f1_events": f["n_events"]}
 
 
 if __name__ == "__main__":
@@ -228,5 +274,7 @@ if __name__ == "__main__":
         r = fetch_tennis(anchor=anchor); print(f"[tennis] {r['n_matches']} matches -> tennis_results.json")
     elif which == "ufc":
         r = fetch_ufc(anchor=anchor); print(f"[ufc] {r['n_fights']} fights -> ufc_results.json")
+    elif which == "f1":
+        r = fetch_f1(anchor=anchor); print(f"[f1] {r['n_events']} events -> f1_results.json")
     else:
         r = run_all(anchor=anchor); print(f"[event-results] {r}")

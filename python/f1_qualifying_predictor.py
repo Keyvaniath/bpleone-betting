@@ -113,7 +113,14 @@ def _american(p: float) -> Optional[int]:
 def run() -> Dict[str, Any]:
     f1_state = _load(os.path.join(DATA_DIR, "f1_state.json"))
     next_race = f1_state.get("next_race") or f1_state.get("upcoming")
+    if not next_race:
+        # f1_state stores a `races` list (no next_race key) -- take the first race
+        # that hasn't finished (the upcoming GP), else the only/last entry.
+        races = f1_state.get("races") or []
+        next_race = next((r for r in races if not r.get("is_complete")),
+                         races[0] if races else {})
     circuit = (next_race or {}).get("circuit") or (next_race or {}).get("name") or "Unknown"
+    event_date = ((next_race or {}).get("start_date") or (next_race or {}).get("date") or "")[:10]
 
     # Field size for F1 is 20 drivers
     field_size = 20
@@ -169,6 +176,7 @@ def run() -> Dict[str, Any]:
         "generated_at": dt.datetime.utcnow().isoformat(timespec="seconds"),
         "next_race": next_race,
         "circuit": circuit,
+        "event_date": event_date,
         "n_drivers": len(rows),
         "n_strong": len(strong),
         "z_thresholds": {

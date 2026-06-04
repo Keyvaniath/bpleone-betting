@@ -383,6 +383,9 @@ def _collect_picks_from_sources() -> List[Dict[str, Any]]:
                 "fair_american": bm.get("fair_odds"),
                 "p_predicted": bm.get("p"),
                 "matchup": fq.get("circuit"),
+                # Date the pick to the GP so it survives to qualifying instead of
+                # voiding mid-week, and settles against that weekend's grid.
+                "game_date": fq.get("event_date"),
             })
 
     # Golf top-N finish strong edges
@@ -1743,6 +1746,59 @@ def _grade_ufc_pick(pick: Dict[str, Any], fights: List[Dict[str, Any]]) -> Optio
     return "won" if won else "lost"
 
 
+def _grade_f1_pick(pick: Dict[str, Any], events: List[Dict[str, Any]]) -> Optional[str]:
+    """POLE / TOP_N (qualifying grid) or PODIUM / WIN (race finish) vs a driver's
+    finishing position. The qualifying predictor leaves matchup='Unknown', so the
+    pick is matched to its Grand Prix by date (the session falls a few days after
+    the prediction is recorded)."""
+    market = (pick.get("market") or "").upper()
+    source = (pick.get("source") or "").lower()
+    driver = (pick.get("player_or_matchup") or "").strip().lower()
+    pdate = pick.get("date") or ""
+    if not driver or not pdate:
+        return None
+    is_race = ("podium" in source or "race" in source or "win" in source
+               or market in ("PODIUM", "WIN", "WINNER"))
+    sess_key, date_key = ("race", "race_date") if is_race else ("qual", "qual_date")
+
+    def _lookup(ev):
+        results = ev.get(sess_key) or {}
+        return results.get(driver) or next(
+            (v for v in results.values() if _names_match(driver, v.get("driver", ""))), None)
+
+    # Match the GP whose session date is nearest to (and not well before) the pick.
+    cand, res, best = None, None, 99
+    for ev in events:
+        rel = ev.get(date_key) or ev.get("event_date") or ""
+        if not rel:
+            continue
+        try:
+            delta = (dt.date.fromisoformat(rel) - dt.date.fromisoformat(pdate)).days
+        except Exception:
+            continue
+        if -2 <= delta <= 7 and abs(delta) < best:
+            r = _lookup(ev)
+            if r:
+                cand, res, best = ev, r, abs(delta)
+    if cand is None or not res:
+        return None
+    pos = res["position"]
+    if "POLE" in market or market in ("WIN", "WINNER"):
+        won = pos == 1
+    elif "PODIUM" in market:
+        won = pos <= 3
+    else:
+        mm = re.search(r"top[_ ]?(\d+)", market.lower())
+        if not mm:
+            return None
+        won = pos <= int(mm.group(1))
+    sess = "race" if is_race else "qualifying"
+    pick["outcome"] = {"event": cand.get("name"), "session": sess, "position": pos,
+                       "market": pick.get("market"),
+                       "verify": f"{res.get('driver')} {sess} P{pos} at {cand.get('name')} — {pick.get('market')}"}
+    return "won" if won else "lost"
+
+
 def _settle_picks(history: List[Dict[str, Any]]) -> int:
     """Try to settle each unsettled pick. Returns count newly settled."""
     n_settled = 0
@@ -1769,6 +1825,7 @@ def _settle_picks(history: List[Dict[str, Any]]) -> int:
     golf_tournaments = _load(os.path.join(DATA_DIR, "golf_results.json")).get("tournaments") or []
     tennis_matches = _load(os.path.join(DATA_DIR, "tennis_results.json")).get("matches") or []
     ufc_fights = _load(os.path.join(DATA_DIR, "ufc_results.json")).get("fights") or []
+    f1_events = _load(os.path.join(DATA_DIR, "f1_results.json")).get("events") or []
 
     for p in history:
         if p.get("settled"): continue
@@ -1796,6 +1853,8 @@ def _settle_picks(history: List[Dict[str, Any]]) -> int:
             result = _grade_tennis_pick(p, tennis_matches)
         elif sport == "UFC":
             result = _grade_ufc_pick(p, ufc_fights)
+        elif sport == "F1":
+            result = _grade_f1_pick(p, f1_events)
         else:
             # MLB / default (unchanged). Game-level: FULL-GAME moneyline or FULL-GAME
             # total ONLY. Props like team_sb_under_0.5 / inning totals contain
