@@ -23,6 +23,8 @@ import math
 import datetime as dt
 from typing import Any, Dict, List, Optional
 
+import mlb_batter_splits as _SPL   # real per-batter (venue) K% split
+
 
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 OUT = os.path.join(DATA_DIR, "mlb_batter_strikeout_props.json")
@@ -72,6 +74,7 @@ def run() -> Dict[str, Any]:
     for p in (pitcher_logs.get("pitchers") or []):
         nm = (p.get("name") or "").lower()
         if nm: pitcher_idx[nm] = p
+    spl = _SPL.load(DATA_DIR)   # real per-batter venue K% (neutral fallback if absent)
 
     games = matchups.get("games") or today.get("games") or []
     rows: List[Dict[str, Any]] = []
@@ -100,9 +103,16 @@ def run() -> Dict[str, Any]:
                 order = batter.get("order") or 9
                 lvr_row = lvr_idx.get((name or "").lower(), {})
 
-                # Estimate batter K rate from OPS proxy (lower OPS -> higher K)
-                season_ops = _safe(lvr_row.get("season_ops_estimate"), 0.72)
-                k_rate = max(0.15, min(0.38, 0.27 - 0.10 * (season_ops - 0.72)))
+                # Prefer the batter's REAL measured K% (venue, PA-regularized);
+                # fall back to the OPS proxy only when the batter has no split.
+                real_k = spl.k_rate(name, side == "home")
+                if real_k is not None:
+                    k_rate = max(0.08, min(0.45, real_k))
+                    k_source = "real_split"
+                else:
+                    season_ops = _safe(lvr_row.get("season_ops_estimate"), 0.72)
+                    k_rate = max(0.15, min(0.38, 0.27 - 0.10 * (season_ops - 0.72)))
+                    k_source = "ops_proxy"
 
                 pa = _expected_pa(order)
                 expected_k = pa * k_rate * opp_k_factor
@@ -138,6 +148,7 @@ def run() -> Dict[str, Any]:
                     "team": (lvr_row.get("team_abbr") or batter.get("team") or "").upper(),
                     "order": order,
                     "batter_k_rate": round(k_rate, 3),
+                    "k_source": k_source,
                     "opp_pitcher": opp_starter_name,
                     "opp_k_per_9": opp_k_per_9,
                     "opp_k_factor": round(opp_k_factor, 3),

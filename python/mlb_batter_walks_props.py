@@ -20,6 +20,8 @@ import math
 import datetime as dt
 from typing import Any, Dict, List, Optional
 
+import mlb_batter_splits as _SPL   # real per-batter (venue) BB% split
+
 
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 OUT = os.path.join(DATA_DIR, "mlb_batter_walks_props.json")
@@ -69,6 +71,7 @@ def run() -> Dict[str, Any]:
     for p in (pitcher_logs.get("pitchers") or []):
         nm = (p.get("name") or "").lower()
         if nm: pitcher_idx[nm] = p
+    spl = _SPL.load(DATA_DIR)   # real per-batter venue BB% (neutral fallback if absent)
 
     games = matchups.get("games") or today.get("games") or []
     rows: List[Dict[str, Any]] = []
@@ -102,10 +105,17 @@ def run() -> Dict[str, Any]:
                 order = batter.get("order") or 9
                 lvr_row = lvr_idx.get((name or "").lower(), {})
 
-                # Estimate per-batter BB rate from OPS proxy
-                season_ops = _safe(lvr_row.get("season_ops_estimate"), 0.72)
-                # Higher OPS roughly correlates with higher BB rate (selective hitters)
-                bb_rate = max(0.04, min(0.18, 0.075 + (season_ops - 0.72) * 0.15))
+                # Prefer the batter's REAL measured BB% (venue, PA-regularized);
+                # fall back to the OPS proxy only when the batter has no split.
+                real_bb = spl.bb_rate(name, side == "home")
+                if real_bb is not None:
+                    bb_rate = max(0.02, min(0.22, real_bb))
+                    bb_source = "real_split"
+                else:
+                    season_ops = _safe(lvr_row.get("season_ops_estimate"), 0.72)
+                    # Higher OPS roughly correlates with higher BB rate (selective hitters)
+                    bb_rate = max(0.04, min(0.18, 0.075 + (season_ops - 0.72) * 0.15))
+                    bb_source = "ops_proxy"
 
                 pa = _expected_pa(order)
                 expected_walks = pa * bb_rate * opp_bb_factor
@@ -131,6 +141,7 @@ def run() -> Dict[str, Any]:
                     "team": (lvr_row.get("team_abbr") or batter.get("team") or "").upper(),
                     "order": order,
                     "bb_rate": round(bb_rate, 3),
+                    "bb_source": bb_source,
                     "opp_pitcher": opp_starter_name,
                     "opp_bb_factor": round(opp_bb_factor, 3),
                     "expected_pa": pa,

@@ -40,6 +40,7 @@ PLATOON_PRIOR_PA = 80      # shrink a vsL/vsR OPS split toward the batter's neut
 HA_DAMP = 0.6              # home/away SLG deviation is partly park/noise -> damp it
 PLATOON_DAMP = 0.8        # platoon is already PA-shrunk; a light extra damp
 POWER_CLAMP = (0.88, 1.14)
+RATE_PRIOR_PA = 120        # shrink a home/away K%/BB% split toward the batter's overall
 
 LEAGUE_OPS = 0.726
 LEAGUE_SLG = 0.409
@@ -126,6 +127,38 @@ class BatterSplits:
             return 1.0
         m = self._home_away_slg_mult(key, is_home) * self._platoon_ops_mult(key)
         return round(_clamp(m, *POWER_CLAMP), 4)
+
+    # -- real measured rate (K% / BB%) for the batter's venue, PA-regularized --
+    def _venue_rate(self, key: str, is_home: bool, field: str) -> Optional[float]:
+        """The batter's home (or away) split rate for `field` (k_rate/bb_rate),
+        regularized by PA toward the batter's overall home+away rate. None if the
+        batter isn't in the advanced-splits file (caller keeps its own fallback)."""
+        b = self.adv.get(key)
+        if not b:
+            return None
+        sp = b.get("splits") or {}
+        h, a = sp.get("home") or {}, sp.get("away") or {}
+        hv, av = _num(h.get(field)), _num(a.get(field))
+        hp, ap = _num(h.get("pa")) or 0.0, _num(a.get("pa")) or 0.0
+        venue = h if is_home else a
+        vv, vp = _num(venue.get(field)), _num(venue.get("pa")) or 0.0
+        if vv is None:
+            vv, vp = (hv if hv is not None else av), 0.0
+        if vv is None:
+            return None
+        if hv is not None and av is not None and (hp + ap) > 0:
+            overall = (hp * hv + ap * av) / (hp + ap)   # batter's real overall rate
+        else:
+            overall = vv
+        return (vp * vv + RATE_PRIOR_PA * overall) / (vp + RATE_PRIOR_PA)
+
+    def k_rate(self, name: str, is_home: bool) -> Optional[float]:
+        """Batter's real (venue, PA-regularized) strikeout rate per PA, or None."""
+        return self._venue_rate((name or "").strip().lower(), is_home, "k_rate")
+
+    def bb_rate(self, name: str, is_home: bool) -> Optional[float]:
+        """Batter's real (venue, PA-regularized) walk rate per PA, or None."""
+        return self._venue_rate((name or "").strip().lower(), is_home, "bb_rate")
 
     def breakdown(self, name: str, is_home: bool) -> Dict[str, Any]:
         key = (name or "").strip().lower()

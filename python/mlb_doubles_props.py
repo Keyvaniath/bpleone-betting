@@ -25,6 +25,8 @@ import math
 import datetime as dt
 from typing import Any, Dict, List, Optional
 
+import mlb_batter_splits as _SPL   # batter home/away + platoon (vsL/vsR) multiplier
+
 
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 OUT = os.path.join(DATA_DIR, "mlb_doubles_props.json")
@@ -79,6 +81,7 @@ def run() -> Dict[str, Any]:
         nm = (row.get("batter") or "").lower()
         if nm: lvr_idx[nm] = row
     p_idx = {(p.get("name") or "").lower(): p for p in (pitcher_logs.get("pitchers") or [])}
+    spl = _SPL.load(DATA_DIR)   # home/away + platoon split multipliers (neutral if absent)
 
     games = matchups.get("games") or today.get("games") or []
     rows: List[Dict[str, Any]] = []
@@ -137,7 +140,9 @@ def run() -> Dict[str, Any]:
                     xbh_per_ab = blended_iso / 3.0
                 park_mult = 1.0 + (park_hr_factor - 1.0) * 0.6
                 k_mult = max(0.75, min(1.10, 1.0 - (opp_k_rate - LEAGUE_K_RATE) * 0.8))
-                expected_xbh_per_ab = xbh_per_ab * park_mult * k_mult
+                # Batter-specific home/away + platoon (vsL/vsR) power skew (1.0 if absent).
+                power_mult = spl.power_mult(name, side == "home")
+                expected_xbh_per_ab = xbh_per_ab * park_mult * k_mult * power_mult
                 expected_xbh = expected_xbh_per_ab * _expected_ab(order)
 
                 p_1plus = 1 - math.exp(-expected_xbh)
@@ -168,6 +173,7 @@ def run() -> Dict[str, Any]:
                     "park": park,
                     "park_hr_factor": park_hr_factor,
                     "xbh_source": xbh_source,
+                    "split_power_mult": power_mult,
                     "blended_ops": round(blended_ops, 3),
                     "xbh_per_ab": round(xbh_per_ab, 3),
                     "opp_k_rate": round(opp_k_rate, 3),
