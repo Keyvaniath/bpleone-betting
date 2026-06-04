@@ -125,6 +125,7 @@ def _process_league(state_file: str, league: str) -> List[Dict[str, Any]]:
             rows.append({
                 "league": league.upper(),
                 "matchup": f"{away} @ {home}",
+                "game_date": (g.get("date") or "")[:10],  # date the pick to kickoff -> dedup + clean settle
                 "player": player_name,
                 "team": info["team"],
                 "opp_team": away if is_home else home,

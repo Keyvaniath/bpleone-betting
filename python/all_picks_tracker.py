@@ -519,6 +519,7 @@ def _collect_picks_from_sources() -> List[Dict[str, Any]]:
                 "fair_american": bm.get("fair_odds"),
                 "p_predicted": bm.get("p"),
                 "matchup": r.get("matchup"),
+                "game_date": r.get("game_date"),  # dedup + settle vs the match
             })
 
     # Soccer cards (yellow + red) strong edges
@@ -535,6 +536,7 @@ def _collect_picks_from_sources() -> List[Dict[str, Any]]:
                 "fair_american": bm.get("fair_odds"),
                 "p_predicted": bm.get("p"),
                 "matchup": r.get("matchup"),
+                "game_date": r.get("game_date"),  # dedup + settle vs the match
             })
 
     # Soccer BTTS (Both Teams To Score) strong edges
@@ -551,6 +553,7 @@ def _collect_picks_from_sources() -> List[Dict[str, Any]]:
                 "fair_american": bm.get("fair_odds"),
                 "p_predicted": bm.get("p"),
                 "matchup": r.get("matchup"),
+                "game_date": r.get("game_date"),  # dedup + settle vs the match
             })
 
     # Soccer corners props strong edges
