@@ -127,6 +127,30 @@ def _split_shift(split: Dict[str, Any], season_ops: float):
     return (_clamp(hit_shift, -0.5, 0.5), _clamp(hr_shift, -0.6, 0.6))
 
 
+def _season_ops_from_advanced(name: str, adv_idx: Dict[str, Any]) -> float:
+    """Clean per-batter season-OPS baseline: PA-weighted mean of the batter's
+    home/away SHRUNK OPS from mlb_batter_advanced_splits. Falls back to the league
+    prior. Replaces a last-14 proxy that collapsed to a 0.5 FLOOR for ~40% of
+    batters, which inflated every vsL/vsR delta (and thus adj_p_1_plus_hit/hr)."""
+    b = adv_idx.get((name or "").strip().lower())
+    if not b:
+        return LEAGUE_OPS
+    sp = b.get("splits") or {}
+    h, a = sp.get("home") or {}, sp.get("away") or {}
+
+    def _num(x):
+        try:
+            return float(x) if x is not None else None
+        except Exception:
+            return None
+
+    ho, ao = _num(h.get("ops_shrunk")), _num(a.get("ops_shrunk"))
+    hp, ap = _num(h.get("pa")) or 0.0, _num(a.get("pa")) or 0.0
+    if ho is not None and ao is not None and (hp + ap) > 0:
+        return (hp * ho + ap * ao) / (hp + ap)
+    return ho if ho is not None else ao if ao is not None else LEAGUE_OPS
+
+
 def run() -> Dict[str, Any]:
     matchups = _load(os.path.join(DATA_DIR, "matchups.json"))
     batter_logs = _load(os.path.join(DATA_DIR, "mlb_batter_logs.json"))
@@ -136,6 +160,10 @@ def run() -> Dict[str, Any]:
     by_name = {}
     for b in (batter_logs.get("batters") or []):
         by_name[(b.get("name") or "").lower()] = b
+    # Clean season-OPS baseline source (PA-weighted home/away shrunk OPS).
+    adv = _load(os.path.join(DATA_DIR, "mlb_batter_advanced_splits.json"))
+    adv_idx = {(b.get("name") or "").strip().lower(): b
+               for b in (adv.get("batters") or []) if b.get("name")}
 
     output: List[Dict[str, Any]] = []
     n_fetched = 0
@@ -163,11 +191,11 @@ def run() -> Dict[str, Any]:
                 base_hr_p = (base_props.get("1_plus_hr") or {}).get("p")
                 if base_hit_p is None: continue
 
-                # Estimate season OPS from last_14 stats (rough)
-                s14 = blog.get("stats_last_14") or {}
-                season_ops_est = (s14.get("avg") or 0.250) + ((s14.get("h_per_game") or 1.0) * 0.350)
-                # Cap at reasonable bounds
-                season_ops_est = _clamp(season_ops_est, 0.500, 1.200)
+                # Clean per-batter season-OPS baseline (PA-weighted home/away shrunk
+                # OPS from advanced splits; league-prior fallback). Replaces a last-14
+                # proxy that collapsed to a 0.5 floor for ~40% of batters and inflated
+                # the platoon delta / adj_p_1_plus_hit/hr that the hit/HR YN props use.
+                season_ops_est = _clamp(_season_ops_from_advanced(bname, adv_idx), 0.400, 1.200)
 
                 athlete_id = batter.get("id")
                 if not athlete_id: continue
