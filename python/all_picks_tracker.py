@@ -1799,6 +1799,101 @@ def _grade_f1_pick(pick: Dict[str, Any], events: List[Dict[str, Any]]) -> Option
     return "won" if won else "lost"
 
 
+_TEAM_DROP = {"fc", "sc", "afc", "cf", "club", "de", "the", "city", "town", "united"}
+
+
+def _team_tokens(s: str):
+    s = re.sub(r"[^a-z0-9 ]", " ", (s or "").lower())
+    return set(t for t in s.split() if len(t) > 1)
+
+
+def _team_match(a: str, b: str) -> bool:
+    """Same club across naming variants, without collapsing Man United vs Man City.
+    Both names are ESPN-sourced so usually identical; allow subset + >=2 shared
+    distinctive tokens (drops generic suffixes like 'United'/'City' that alone
+    must not decide a match)."""
+    ta, tb = _team_tokens(a), _team_tokens(b)
+    if not ta or not tb:
+        return False
+    if ta == tb or ta <= tb or tb <= ta:
+        return True
+    if len(ta & tb) >= 2:
+        return True
+    distinct = (ta & tb) - _TEAM_DROP   # a shared *distinctive* token (not 'city'/'united')
+    return len(distinct) >= 1 and (ta <= tb or tb <= ta or len(ta ^ tb) <= 1)
+
+
+def _find_soccer_match(away: str, home: str, pdate: str, matches: List[Dict[str, Any]]):
+    """Match a pick's game to a result by team names + a forward date window
+    (soccer picks are recorded a few days before kickoff)."""
+    best = None
+    for m in matches:
+        try:
+            delta = (dt.date.fromisoformat(m.get("date") or "") - dt.date.fromisoformat(pdate)).days
+        except Exception:
+            continue
+        if not (-2 <= delta <= 6):
+            continue
+        if ((_team_match(away, m.get("away", "")) and _team_match(home, m.get("home", ""))) or
+                (_team_match(away, m.get("home", "")) and _team_match(home, m.get("away", "")))):
+            if best is None or abs(delta) < best[0]:
+                best = (abs(delta), m)
+    return best[1] if best else None
+
+
+def _grade_soccer_pick(pick: Dict[str, Any], matches: List[Dict[str, Any]]) -> Optional[str]:
+    """BTTS, total cards, anytime goalscorer, match result/totals vs a real result."""
+    market = (pick.get("market") or "").upper()
+    source = (pick.get("source") or "").lower()
+    subj = (pick.get("player_or_matchup") or "")
+    mu = (pick.get("matchup") or "")
+    pdate = pick.get("date") or ""
+    # The game string is whichever field is "Away @ Home"; the other (for a
+    # goalscorer prop) is the player.
+    game = mu if "@" in mu else subj
+    parts = re.split(r"\s+@\s+|\s+vs\.?\s+", game, maxsplit=1, flags=re.IGNORECASE)
+    if len(parts) != 2:
+        return None
+    away, home = parts[0].strip(), parts[1].strip()
+    m = _find_soccer_match(away, home, pdate, matches)
+    if not m:
+        return None
+    hs, aws, cards = m["home_score"], m["away_score"], m["total_cards"]
+    detail = f"{m['away']} {aws}-{hs} {m['home']}"
+    if "BTTS" in market or "btts" in source:
+        both = hs > 0 and aws > 0
+        won = both if ("NO" not in market) else (not both)
+        verify = f"{detail}: both scored = {both}"
+    elif "CARD" in market or "cards" in source:
+        mm = re.search(r"(\d+(?:\.\d+)?)", market)
+        if not mm:
+            return None
+        line = float(mm.group(1))
+        won = (cards < line) if "UNDER" in market else (cards > line)
+        verify = f"{detail}: {cards} cards (line {line})"
+    elif "GOAL" in market or "goalscorer" in source or "scorer" in source:
+        scored = any(_names_match(subj, s) for s in (m.get("scorers") or []))
+        won = scored  # ANYTIME_GOAL is a YES bet
+        verify = f"{detail}: {subj} {'scored' if scored else 'did not score'}"
+    elif "ml_home" in source or market in ("HOME", "HOME_ML"):
+        won = hs > aws
+        verify = f"{detail}: home {'won' if won else 'did not win'}"
+    elif "ml_away" in source or market in ("AWAY", "AWAY_ML"):
+        won = aws > hs
+        verify = f"{detail}: away {'won' if won else 'did not win'}"
+    elif re.search(r"(over|under)_(\d+(?:\.\d+)?)", market.lower()):
+        mm = re.search(r"(over|under)_(\d+(?:\.\d+)?)", market.lower())
+        line = float(mm.group(2))
+        won = (m["total_goals"] > line) if mm.group(1) == "over" else (m["total_goals"] < line)
+        verify = f"{detail}: {m['total_goals']} goals (line {line})"
+    else:
+        return None
+    pick["outcome"] = {"final_score": detail, "total_cards": cards, "total_goals": m["total_goals"],
+                       "scorers": m.get("scorers"), "market": pick.get("market"),
+                       "verify": f"{verify} — {pick.get('market')}"}
+    return "won" if won else "lost"
+
+
 def _settle_picks(history: List[Dict[str, Any]]) -> int:
     """Try to settle each unsettled pick. Returns count newly settled."""
     n_settled = 0
@@ -1826,6 +1921,7 @@ def _settle_picks(history: List[Dict[str, Any]]) -> int:
     tennis_matches = _load(os.path.join(DATA_DIR, "tennis_results.json")).get("matches") or []
     ufc_fights = _load(os.path.join(DATA_DIR, "ufc_results.json")).get("fights") or []
     f1_events = _load(os.path.join(DATA_DIR, "f1_results.json")).get("events") or []
+    soccer_matches = _load(os.path.join(DATA_DIR, "soccer_results.json")).get("matches") or []
 
     for p in history:
         if p.get("settled"): continue
@@ -1855,6 +1951,9 @@ def _settle_picks(history: List[Dict[str, Any]]) -> int:
             result = _grade_ufc_pick(p, ufc_fights)
         elif sport == "F1":
             result = _grade_f1_pick(p, f1_events)
+        elif sport in ("EPL", "MLS", "UCL", "UEL", "SOCCER", "LALIGA", "SERIEA",
+                       "BUNDESLIGA", "LIGUE1"):
+            result = _grade_soccer_pick(p, soccer_matches)
         else:
             # MLB / default (unchanged). Game-level: FULL-GAME moneyline or FULL-GAME
             # total ONLY. Props like team_sb_under_0.5 / inning totals contain

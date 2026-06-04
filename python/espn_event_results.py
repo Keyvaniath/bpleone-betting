@@ -30,6 +30,11 @@ UFC_SB = "https://site.api.espn.com/apis/site/v2/sports/mma/ufc/scoreboard"
 TENNIS_SB = "https://site.api.espn.com/apis/site/v2/sports/tennis/{tour}/scoreboard"
 TENNIS_TOURS = ["atp", "wta"]
 F1_SB = "https://site.api.espn.com/apis/site/v2/sports/racing/f1/scoreboard"
+SOCCER_SB = "https://site.api.espn.com/apis/site/v2/sports/soccer/{lg}/scoreboard"
+# ESPN league codes. EPL/MLS/UCL carry picks today; the big-5 + Europa are
+# fetched too so the feed is ready the moment those generators surface picks.
+SOCCER_LEAGUES = ["eng.1", "usa.1", "uefa.champions", "uefa.europa",
+                  "esp.1", "ita.1", "ger.1", "fra.1"]
 
 
 def _http(url: str) -> Optional[Dict[str, Any]]:
@@ -255,13 +260,83 @@ def fetch_f1(days_back: int = 14, anchor: Optional[dt.date] = None) -> Dict[str,
     return out
 
 
+# --------------------------------------------------------------- SOCCER -------
+def _soccer_match(comp: Dict[str, Any], league: str, date: str) -> Optional[Dict[str, Any]]:
+    """Final score + goal scorers + total cards from a completed match. ESPN's
+    competition.details lists every goal (scoringPlay, athletesInvolved) and every
+    booking (type 'Yellow/Red Card') -- verified complete (detail-goals == score)."""
+    cs = comp.get("competitors") or []
+    home = next((c for c in cs if c.get("homeAway") == "home"), None)
+    away = next((c for c in cs if c.get("homeAway") == "away"), None)
+    if not home or not away:
+        return None
+
+    def _nm(c):
+        return ((c.get("team") or {}).get("displayName") or "").strip()
+
+    def _sc(c):
+        try:
+            return int(c.get("score") or 0)
+        except Exception:
+            return 0
+
+    scorers: List[str] = []
+    cards = 0
+    for d in (comp.get("details") or []):
+        ttype = ((d.get("type") or {}).get("text") or "").lower()
+        if "card" in ttype:
+            cards += 1
+        elif d.get("scoringPlay") and "own" not in ttype:   # own goals don't count for a scorer
+            for a in (d.get("athletesInvolved") or []):
+                nm = (a.get("displayName") or "").strip()
+                if nm:
+                    scorers.append(nm.lower())
+    hn, an = _nm(home), _nm(away)
+    if not hn or not an:
+        return None
+    return {"date": date, "league": league, "home": hn, "away": an,
+            "home_score": _sc(home), "away_score": _sc(away),
+            "total_goals": _sc(home) + _sc(away), "total_cards": cards,
+            "scorers": scorers}
+
+
+def fetch_soccer(days_back: int = 6, anchor: Optional[dt.date] = None) -> Dict[str, Any]:
+    anchor = anchor or dt.date.today()
+    matches: List[Dict[str, Any]] = []
+    seen = set()
+    for lg in SOCCER_LEAGUES:
+        for d in _dates(days_back, anchor):
+            lb = _http(SOCCER_SB.format(lg=lg) + f"?dates={d}")
+            for ev in ((lb or {}).get("events") or []):
+                comp = (ev.get("competitions") or [{}])[0]
+                if not (comp.get("status") or {}).get("type", {}).get("completed"):
+                    continue
+                mdate = (comp.get("date") or ev.get("date") or "")[:10]
+                m = _soccer_match(comp, lg, mdate)
+                if not m:
+                    continue
+                key = (mdate, m["home"].lower(), m["away"].lower())
+                if key in seen:
+                    continue
+                seen.add(key)
+                matches.append(m)
+    out = {"generated_at": dt.datetime.utcnow().isoformat(timespec="seconds"),
+           "n_matches": len(matches), "matches": matches}
+    os.makedirs(DATA_DIR, exist_ok=True)
+    with open(os.path.join(DATA_DIR, "soccer_results.json"), "w") as f:
+        json.dump(out, f, indent=2)
+    return out
+
+
 def run_all(anchor: Optional[dt.date] = None) -> Dict[str, Any]:
     g = fetch_golf(anchor=anchor)
     t = fetch_tennis(anchor=anchor)
     u = fetch_ufc(anchor=anchor)
     f = fetch_f1(anchor=anchor)
+    s = fetch_soccer(anchor=anchor)
     return {"golf_tournaments": g["n_tournaments"], "tennis_matches": t["n_matches"],
-            "ufc_fights": u["n_fights"], "f1_events": f["n_events"]}
+            "ufc_fights": u["n_fights"], "f1_events": f["n_events"],
+            "soccer_matches": s["n_matches"]}
 
 
 if __name__ == "__main__":
@@ -276,5 +351,7 @@ if __name__ == "__main__":
         r = fetch_ufc(anchor=anchor); print(f"[ufc] {r['n_fights']} fights -> ufc_results.json")
     elif which == "f1":
         r = fetch_f1(anchor=anchor); print(f"[f1] {r['n_events']} events -> f1_results.json")
+    elif which == "soccer":
+        r = fetch_soccer(anchor=anchor); print(f"[soccer] {r['n_matches']} matches -> soccer_results.json")
     else:
         r = run_all(anchor=anchor); print(f"[event-results] {r}")
