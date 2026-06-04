@@ -575,6 +575,23 @@ def _collect_picks_from_sources() -> List[Dict[str, Any]]:
                 "game_date": r.get("game_date"),
             })
 
+    # Soccer clean sheet (a side concedes 0) -> settles via the soccer grader.
+    soc_cs = _load(os.path.join(DATA_DIR, "soccer_clean_sheet_props.json"))
+    for r in (soc_cs.get("strong_edges") or []):
+        bm = r.get("best_market") or {}
+        if bm.get("p"):
+            out.append({
+                "source": f"soccer_clean_sheet_{bm.get('market', '').lower()}",
+                "sport": (r.get("league") or "SOCCER").upper(),
+                "player_or_matchup": r.get("matchup"),
+                "market": bm.get("market"),
+                "prob": bm.get("p"),
+                "fair_american": bm.get("fair_odds"),
+                "p_predicted": bm.get("p"),
+                "matchup": r.get("matchup"),
+                "game_date": r.get("game_date"),
+            })
+
     # Soccer corners props strong edges
     sc = _load(os.path.join(DATA_DIR, "soccer_corners_props.json"))
     for r in (sc.get("strong_edges") or []):
@@ -1908,6 +1925,11 @@ def _grade_soccer_pick(pick: Dict[str, Any], matches: List[Dict[str, Any]]) -> O
         scored = any(_names_match(subj, s) for s in (m.get("scorers") or []))
         won = scored  # ANYTIME_GOAL is a YES bet
         verify = f"{detail}: {subj} {'scored' if scored else 'did not score'}"
+    elif "CLEAN_SHEET" in market:
+        side_home = market.startswith("HOME")
+        kept = (aws == 0) if side_home else (hs == 0)   # that side conceded zero
+        won = kept if ("NO" not in market) else (not kept)
+        verify = f"{detail}: {'home' if side_home else 'away'} clean sheet = {kept}"
     elif "ml_home" in source or market in ("HOME", "HOME_ML"):
         won = hs > aws
         verify = f"{detail}: home {'won' if won else 'did not win'}"
