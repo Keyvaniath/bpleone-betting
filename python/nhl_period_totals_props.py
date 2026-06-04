@@ -24,6 +24,8 @@ import math
 import datetime as dt
 from typing import Any, Dict, List, Optional
 
+from nhl_teams import abbr as _abbr   # full scoreboard name -> abbrev (fixes [:3] team drops)
+
 
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 OUT = os.path.join(DATA_DIR, "nhl_period_totals_props.json")
@@ -75,13 +77,13 @@ def run() -> Dict[str, Any]:
         # Get game total estimate (from goalie matchup if available, else default)
         gm = _load(os.path.join(DATA_DIR, "nhl_goalie_matchup.json"))
         # Try to match game by team abbrev
-        home = (g.get("home_team") or "").upper()
-        away = (g.get("away_team") or "").upper()
+        home = _abbr(g.get("home_team") or "")
+        away = _abbr(g.get("away_team") or "")
         if not home or not away: continue
 
         game_total = DEFAULT_GAME_TOTAL
         for gm_row in (gm.get("matchups") or []):
-            if (gm_row.get("home_team") == home or gm_row.get("home_team") == home[:3]):
+            if _abbr(gm_row.get("home_team") or "") == home:
                 game_total = _safe(gm_row.get("expected_total") or gm_row.get("fair_total"), DEFAULT_GAME_TOTAL)
                 break
 

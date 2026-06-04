@@ -22,6 +22,8 @@ import math
 import datetime as dt
 from typing import Any, Dict, List, Optional
 
+from nhl_teams import abbr as _abbr   # full scoreboard name -> abbrev (fixes [:3] team drops)
+
 
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 OUT = os.path.join(DATA_DIR, "nhl_skater_hits_blocks_props.json")
@@ -101,19 +103,12 @@ def run() -> Dict[str, Any]:
     for g in games:
         status = (g.get("status") or g.get("state") or "").lower()
         if "final" in status: continue
-        home = (g.get("home_team") or g.get("home") or "").upper()
-        away = (g.get("away_team") or g.get("away") or "").upper()
+        home = _abbr(g.get("home_team") or g.get("home") or "")
+        away = _abbr(g.get("away_team") or g.get("away") or "")
         if not home or not away: continue
 
-        # Try abbrev match. ESPN sometimes gives full names; if so derive
-        teams_in_game = set()
-        for s in (home, away):
-            teams_in_game.add(s)
-            # Common abbrev fallback: first 3 letters
-            teams_in_game.add(s[:3])
-
         for player_name, info in PLAYER_DB.items():
-            if info["team"] not in teams_in_game:
+            if info["team"] not in (home, away):
                 continue
             hits_lam = info["hits_pg"]
             blocks_lam = info["blocks_pg"]

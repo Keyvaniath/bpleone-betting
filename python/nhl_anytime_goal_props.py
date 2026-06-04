@@ -23,6 +23,8 @@ import math
 import datetime as dt
 from typing import Any, Dict, List, Optional
 
+from nhl_teams import abbr as _abbr   # shared full-name -> abbrev resolver
+
 
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 OUT = os.path.join(DATA_DIR, "nhl_anytime_goal_props.json")
@@ -94,30 +96,6 @@ TEAM_GOALIE = {
     "CAR": "frederik andersen", "DAL": "jake oettinger", "NSH": "juuse saros",
     "WSH": "logan thompson", "VGK": "adin hill",
 }
-
-# Full scoreboard name -> abbrev (nhl_state serves full team names).
-TEAM_FULL = {
-    "anaheim ducks": "ANA", "boston bruins": "BOS", "buffalo sabres": "BUF",
-    "calgary flames": "CGY", "carolina hurricanes": "CAR", "chicago blackhawks": "CHI",
-    "colorado avalanche": "COL", "columbus blue jackets": "CBJ", "dallas stars": "DAL",
-    "detroit red wings": "DET", "edmonton oilers": "EDM", "florida panthers": "FLA",
-    "los angeles kings": "LAK", "minnesota wild": "MIN", "montreal canadiens": "MTL",
-    "nashville predators": "NSH", "new jersey devils": "NJD", "new york islanders": "NYI",
-    "new york rangers": "NYR", "ottawa senators": "OTT", "philadelphia flyers": "PHI",
-    "pittsburgh penguins": "PIT", "san jose sharks": "SJS", "seattle kraken": "SEA",
-    "st. louis blues": "STL", "st louis blues": "STL", "tampa bay lightning": "TBL",
-    "toronto maple leafs": "TOR", "utah hockey club": "UTA", "vancouver canucks": "VAN",
-    "vegas golden knights": "VGK", "washington capitals": "WSH", "winnipeg jets": "WPG",
-}
-
-
-def _abbr(name: str) -> str:
-    if not name:
-        return ""
-    key = name.lower().strip()
-    if key in TEAM_FULL:
-        return TEAM_FULL[key]
-    return name.strip().upper()[:3]
 
 
 def _load(p):

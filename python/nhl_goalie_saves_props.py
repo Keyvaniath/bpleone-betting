@@ -21,6 +21,8 @@ import math
 import datetime as dt
 from typing import Any, Dict, List, Optional
 
+from nhl_teams import abbr as _abbr   # full scoreboard name -> abbrev (fixes [:3] team drops)
+
 
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 OUT = os.path.join(DATA_DIR, "nhl_goalie_saves_props.json")
@@ -97,16 +99,13 @@ def run() -> Dict[str, Any]:
     for g in games:
         status = (g.get("status") or g.get("state") or "").lower()
         if "final" in status: continue
-        home = (g.get("home_team") or g.get("home") or "").upper()
-        away = (g.get("away_team") or g.get("away") or "").upper()
+        home = _abbr(g.get("home_team") or g.get("home") or "")
+        away = _abbr(g.get("away_team") or g.get("away") or "")
         if not home or not away: continue
 
-        # Try abbreviation match
-        teams_in_game = set([home, away, home[:3], away[:3]])
-
         for goalie_name, info in GOALIE_DB.items():
-            if info["team"] not in teams_in_game: continue
-            is_home = info["team"] == home or info["team"] == home[:3]
+            if info["team"] not in (home, away): continue
+            is_home = info["team"] == home
 
             # Expected shots against = league avg × opponent workload factor
             # No team-specific shot data available, use league avg
