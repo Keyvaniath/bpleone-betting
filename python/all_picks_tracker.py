@@ -557,6 +557,24 @@ def _collect_picks_from_sources() -> List[Dict[str, Any]]:
                 "game_date": r.get("game_date"),  # dedup + settle vs the match
             })
 
+    # Soccer total goals over/under (the most-bet soccer market) -> settles via the
+    # soccer grader's total-goals branch.
+    soc_tot = _load(os.path.join(DATA_DIR, "soccer_total_goals_props.json"))
+    for r in (soc_tot.get("strong_edges") or []):
+        bm = (r.get("edges_found") or [{}])[0]
+        if bm.get("p"):
+            out.append({
+                "source": f"soccer_total_{bm.get('market', '').lower()}",
+                "sport": (r.get("league") or "SOCCER").upper(),
+                "player_or_matchup": r.get("matchup"),
+                "market": bm.get("market"),
+                "prob": bm.get("p"),
+                "fair_american": bm.get("fair_odds"),
+                "p_predicted": bm.get("p"),
+                "matchup": r.get("matchup"),
+                "game_date": r.get("game_date"),
+            })
+
     # Soccer corners props strong edges
     sc = _load(os.path.join(DATA_DIR, "soccer_corners_props.json"))
     for r in (sc.get("strong_edges") or []):
@@ -1886,7 +1904,7 @@ def _grade_soccer_pick(pick: Dict[str, Any], matches: List[Dict[str, Any]]) -> O
         line = float(mm.group(1))
         won = (cards < line) if "UNDER" in market else (cards > line)
         verify = f"{detail}: {cards} cards (line {line})"
-    elif "GOAL" in market or "goalscorer" in source or "scorer" in source:
+    elif "ANYTIME_GOAL" in market or "goalscorer" in source or "scorer" in source:
         scored = any(_names_match(subj, s) for s in (m.get("scorers") or []))
         won = scored  # ANYTIME_GOAL is a YES bet
         verify = f"{detail}: {subj} {'scored' if scored else 'did not score'}"
