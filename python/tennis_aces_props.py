@@ -84,6 +84,7 @@ PLAYER_ACES = {
 }
 
 SURFACE_MULT = {"hard": 1.0, "grass": 1.25, "clay": 0.80}
+REF_ACES = 5.0          # tour-average aces/match (PLAYER_ACES mean ~5.05)
 
 
 def _load(p):
@@ -128,12 +129,13 @@ def run() -> Dict[str, Any]:
             if not info: continue
 
             base_aces = info["aces_match"]
-            # Opp return quality proxy: top servers themselves are usually average returners
-            # Default: 1.0. Adjust if opp is known weak returner (big server type)
+            # Opponent return PROXY (no per-player return stats in the feed): big
+            # servers are typically below-average returners, so a high-ace opponent
+            # faces the server with less return pressure (more aces), while a low-ace
+            # grinder returns better (fewer aces). Modest, clamped -- it's a proxy.
             opp_info = PLAYER_ACES.get(opp_name)
-            opp_serve_quality = opp_info["aces_match"] if opp_info else 5.0
-            # High-serving opponents -> less time on return -> roughly neutral
-            opp_return_factor = 1.0  # simplification — could add per-player return stats
+            opp_serve_quality = opp_info["aces_match"] if opp_info else REF_ACES
+            opp_return_factor = max(0.90, min(1.12, 1.0 + (opp_serve_quality - REF_ACES) * 0.012))
 
             projected_aces = base_aces * surf_mult * format_mult * opp_return_factor
 
@@ -169,6 +171,8 @@ def run() -> Dict[str, Any]:
                 "base_aces_per_match": base_aces,
                 "surface_mult": surf_mult,
                 "format_mult": format_mult,
+                "opp_serve_quality": opp_serve_quality,
+                "opp_return_factor": round(opp_return_factor, 3),
                 "projected_aces": round(projected_aces, 2),
                 "sigma": round(sigma, 2),
                 "edge_class": edge_class,
