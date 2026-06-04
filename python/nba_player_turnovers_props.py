@@ -133,7 +133,8 @@ def _american(p: float) -> Optional[int]:
 
 def run() -> Dict[str, Any]:
     state = _load(os.path.join(DATA_DIR, "nba_state.json"))
-    games = state.get("games") or state.get("events") or []
+    from nba_slate import upcoming_games  # gate stale/future/non-imminent slate
+    games = upcoming_games(state)
 
     rows: List[Dict[str, Any]] = []
 
@@ -192,6 +193,7 @@ def run() -> Dict[str, Any]:
 
             rows.append({
                 "matchup": f"{away} @ {home}",
+                "game_date": g.get("game_date"),
                 "player": player_name,
                 "team": info["team"],
                 "opp_team": away if is_home else home,

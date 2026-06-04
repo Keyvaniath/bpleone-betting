@@ -634,6 +634,7 @@ def _collect_picks_from_sources() -> List[Dict[str, Any]]:
                 "fair_american": bm.get("fair_odds"),
                 "p_predicted": bm.get("p"),
                 "matchup": r.get("matchup"),
+                "game_date": r.get("game_date"),
             })
 
     # NBA team alt-totals strong edges
@@ -666,6 +667,7 @@ def _collect_picks_from_sources() -> List[Dict[str, Any]]:
                 "fair_american": bm.get("fair_odds"),
                 "p_predicted": bm.get("p"),
                 "matchup": r.get("matchup"),
+                "game_date": r.get("game_date"),
             })
 
     # WNBA player 3-pointers strong edges
@@ -698,6 +700,7 @@ def _collect_picks_from_sources() -> List[Dict[str, Any]]:
                 "fair_american": bm.get("fair_odds"),
                 "p_predicted": bm.get("p"),
                 "matchup": r.get("matchup"),
+                "game_date": r.get("game_date"),
             })
 
     # MLB pitcher strikeouts strong edges
@@ -746,6 +749,7 @@ def _collect_picks_from_sources() -> List[Dict[str, Any]]:
                 "fair_american": bm.get("fair_odds"),
                 "p_predicted": bm.get("p"),
                 "matchup": r.get("matchup"),
+                "game_date": r.get("game_date"),
             })
 
     # NHL skater points (G+A) strong edges
@@ -778,6 +782,7 @@ def _collect_picks_from_sources() -> List[Dict[str, Any]]:
                 "fair_american": bm.get("fair_odds"),
                 "p_predicted": bm.get("p"),
                 "matchup": r.get("matchup"),
+                "game_date": r.get("game_date"),
             })
 
     # Soccer total shots strong edges
@@ -1161,6 +1166,7 @@ def _collect_picks_from_sources() -> List[Dict[str, Any]]:
                 "fair_american": bm.get("fair_odds"),
                 "p_predicted": bm.get("p"),
                 "matchup": r.get("matchup"),
+                "game_date": r.get("game_date"),
             })
 
     # NBA player assists strong edges
@@ -1177,6 +1183,7 @@ def _collect_picks_from_sources() -> List[Dict[str, Any]]:
                 "fair_american": bm.get("fair_odds"),
                 "p_predicted": bm.get("p"),
                 "matchup": r.get("matchup"),
+                "game_date": r.get("game_date"),
             })
 
     # NBA player points strong edges
@@ -1193,6 +1200,7 @@ def _collect_picks_from_sources() -> List[Dict[str, Any]]:
                 "fair_american": bm.get("fair_odds"),
                 "p_predicted": bm.get("p"),
                 "matchup": r.get("matchup"),
+                "game_date": r.get("game_date"),
             })
 
     # Pitcher walks props strong edges
