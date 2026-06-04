@@ -2662,8 +2662,10 @@ def run() -> Dict[str, Any]:
     for p in history:
         sp = (p.get("sport") or "?").upper()
         b = by_sport.setdefault(sp, {"n": 0, "settled": 0, "wins": 0, "losses": 0,
-                                     "pushes": 0, "pending": 0, "void": 0, "net_units": 0.0})
+                                     "pushes": 0, "pending": 0, "void": 0, "net_units": 0.0,
+                                     "_src": set()})
         b["n"] += 1
+        b["_src"].add((p.get("source") or "?").split("_over_")[0].split("_under_")[0])
         if p.get("voided"):
             b["void"] += 1
         elif p.get("settled"):
@@ -2678,6 +2680,7 @@ def run() -> Dict[str, Any]:
         d = b["wins"] + b["losses"]
         b["hit_rate"] = round(b["wins"] / d, 4) if d > 0 else None
         b["roi_pct"] = round(b["net_units"] / d * 100, 2) if d > 0 else None
+        b["markets"] = len(b.pop("_src"))   # distinct market types graded for this sport
 
     # Last 7 days
     today = dt.date.today()
