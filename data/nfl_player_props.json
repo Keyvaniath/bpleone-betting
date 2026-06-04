@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-06-04T21:57:24",
+  "generated_at": "2026-06-04T23:15:44",
   "n_props": 0,
   "n_strong_edges": 0,
   "n_players_in_db": 28,
-  "method_note": "NFL model-conviction props (odds-independent). Per-game projection (season base, refreshed from gamelogs in-season) -> Normal CDF for yds/receptions, Poisson for anytime TD. Surfaces the standard line the model leans on (p in [0.58,0.80]). Empty off-season; auto-activates Week 1.",
+  "method_note": "NFL model-conviction props (odds-independent). Per-game projection (season base, refreshed from gamelogs in-season, opponent-defense adjusted) feeds a play-level Monte Carlo (nfl_simulator: NegBinomial counts x Gamma per-event yards, Poisson TD/INT) -- backtested better-calibrated than the prior normal-CDF (ECE 0.027 vs 0.046 on 21.8k 2025 pairs). Prices yds/cmp/rec/longest/TD/INT/anytime-TD off the simulated sample; surfaces the standard line the model leans on (p in [0.58,0.80]). Empty off-season; auto-activates Week 1.",
   "rows": [],
   "strong_edges": []
 }

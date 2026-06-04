@@ -1,13 +1,13 @@
 # EdgeStat Daily Summary — 2026-06-04
 
-## 🏥 Model Health: 71.7/100 [HEALTHY]
+## 🏥 Model Health: 72.3/100 [HEALTHY]
 - Solid health - some minor issues to monitor
   - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 54.4/100
   - 🔴 Brier Trend: 29.6/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 88.9/100
-  - 🟡 Edge Count: 71.4/100
+  - 🟡 Edge Count: 77.1/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.585)
@@ -22,18 +22,20 @@
 5. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
-- [WHALE] **[MLB]** LAD @ ARI ML_AWAY -- 69% / +17.8% (score 3.5)
+- [STRONG] **[MLB]** LAD @ ARI ML_AWAY -- 69% / +17.8% (score 2.8)
+- [STRONG] **[MLB]** PIT @ HOU HOU_ML -- 66% / +22.2% (score 2.5)
 - [STRONG] **[MLB]** LAD @ ARI LAD_ML -- 71% / +21.1% (score 2.5)
 
 ## 📡 Sharp Action (Line Movement)
 - [MODERATE] **LAD @ ARI** ml_away: 53.92% → 58.85% (+4.9pp)
+- [MODERATE] **TOR @ ATL** under_7.5: 48.78% → 53.49% (+4.7pp)
 
 ## 🔒 Locks of the Day -- Track Record
-- All-time: **94-14** (87.0% hit rate)
-- Net units: **+3.42u** | ROI: **+51.0%**
-- Last 7d: 52-9 (85.2%) | net +1.81u
+- All-time: **97-15** (86.6% hit rate)
+- Net units: **+3.49u** | ROI: **+50.3%**
+- Last 7d: 55-10 (84.6%) | net +1.89u
 
-**Today's 10 Locks:**
+**Today's 11 Locks:**
 - [KBO] **Choi Jeong** one_plus_tb · p=73% edge=+39.8% qK=0.062u
 - [KBO] **Jose Pirela** one_plus_tb · p=73% edge=+39.2% qK=0.062u
 - [KBO] **Koo Ja-wook** one_plus_tb · p=73% edge=+38.9% qK=0.062u
@@ -44,14 +46,15 @@
 - [MLB-PP] **Freddy Fermin** PP_batter_hrr_under_2.5 · p=85% edge=+47.2% qK=0.062u
 - [MLB-PP] **Brice Turang** PP_batter_hrr_under_4.5 · p=85% edge=+47.0% qK=0.062u
 - [MLB-PP] **Taylor Ward** PP_batter_hrr_under_3.5 · p=85% edge=+46.8% qK=0.062u
+- [MLB-PP] **Jac Caglianone** PP_batter_hrr_under_3.5 · p=85% edge=+47.3% qK=0.062u
 
 ## 🎰 Top Balanced 2-Leg Parlays (40-65% joint)
-- [MLB-PP] Alec Bohm PP_batter_hrr_under_ + [MLB] LAD @ ARI LAD_ML
-  Joint: 60% | Fair: 197 | Edge: +78.5%
-- [MLB-PP] Jake Meyers PP_batter_hrr_under_ + [MLB] LAD @ ARI LAD_ML
-  Joint: 60% | Fair: 197 | Edge: +78.4%
-- [MLB-PP] Freddy Fermin PP_batter_hrr_under_ + [MLB] LAD @ ARI LAD_ML
-  Joint: 60% | Fair: 197 | Edge: +78.2%
+- [MLB-PP] Alec Bohm PP_batter_hrr_under_ + [MLB] PIT @ HOU HOU_ML
+  Joint: 56% | Fair: 222 | Edge: +80.6%
+- [MLB-PP] Jake Meyers PP_batter_hrr_under_ + [MLB] PIT @ HOU HOU_ML
+  Joint: 56% | Fair: 222 | Edge: +80.6%
+- [MLB-PP] Taylor Ward PP_batter_hrr_under_ + [MLB] PIT @ HOU HOU_ML
+  Joint: 56% | Fair: 222 | Edge: +80.0%
 
 ## 🎮 Player Play of the Day (cross-sport)
 - **[LOL]** Inspired UNDER 3.5 Kills | MED conviction · model 61.7% fair -161
@@ -87,19 +90,17 @@
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
 ## 🎯 Convergence Picks (5 stacked games)
-- ELITE: **2** · HIGH: 2 · MED: 1
+- ELITE: **3** · HIGH: 0 · MED: 2
+  - [ELITE] Golden State Valkyries @ Minnesota Lynx : 7 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
+  - [ELITE] New York Knicks @ San Antonio Spurs : 6 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
   - [ELITE] Vegas Golden Knights @ Carolina Hurricanes : 5 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
-  - [ELITE] Phoenix Mercury @ Seattle Storm : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
-  - [HIGH] New York Knicks @ San Antonio Spurs : 3 signals (HEAT_COLD, HEAT_COLD, ATS)
-  - [HIGH] Toronto Tempo @ New York Liberty : 3 signals (HEAT_COLD, HEAT_COLD, ATS)
+  - [MED] Atlanta Dream @ Indiana Fever : 2 signals (PREGAME, ATS)
   - [MED] Atlanta United FC @ Columbus Crew : 2 signals (ATS, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (5)
+## ⚾ Top MLB Pitcher K Plays (3)
 - **Kai-Wei Teng** OVER 6.5 K (75%) fair -306
 - **J.T. Ginn** OVER 4.5 K (69%) fair -224
 - **Chris Sale** OVER 6.5 K (69%) fair -219
-- **Brayan Bello** OVER 4.5 K (68%) fair -208
-- **Zack Wheeler** OVER 4.5 K (67%) fair -207
 
 ## 🏀 NBA Player Heat (0 HOT / 1 COLD)
   - ❄️ **De'Aaron Fox** (SA): L5 9.6 vs season 16.9 [PTS -7.3] -- FADE OVER props
@@ -112,11 +113,11 @@
   - [COIN_FLIP] **Marcus McGhee** (10-2-0) vs John Yannis -- fair -129
 
 ## ⛳ Golf Player Heat (from the Memorial Tournament pres. by Workday)
-  - 🔥 T1 **Daniel Berger** (USA): -1 total -- finished T1
-  - 🔥 T2 **J.T. Poston** (USA): -1 total -- finished T2
-  - 🔥 T3 **Brian Campbell** (USA): +0 total -- finished T3
-  - 🔥 T4 **Jason Day** (Australia): +0 total -- finished T4
-  - 🔥 T5 **Jordan Spieth** (USA): +0 total -- finished T5
+  - 🔥 T1 **J.J. Spaun** (USA): -5 total -- finished T1
+  - 🔥 T2 **Wyndham Clark** (USA): -5 total -- finished T2
+  - 🔥 T3 **Tommy Fleetwood** (England): -5 total -- finished T3
+  - 🔥 T4 **Ryan Gerard** (USA): -5 total -- finished T4
+  - 🔥 T5 **Nick Taylor** (Canada): -4 total -- finished T5
 
 ## 🔥 MLB Batter Heat (34 HOT / 43 COLD)
   - 🔥 **Jung Hoo Lee** (SF): L14 .473 / season .322 (+151pts)
@@ -130,12 +131,12 @@
   - ❄️ **Nolan Gorman** (STL): L14 .093 / season .204 (-111pts) -- FADE props
   - ❄️ **Michael Conforto** (CHC): L14 .156 / season .266 (-110pts) -- FADE props
 
-## 📈 Streak Regression Alerts (9)
+## 📈 Streak Regression Alerts (11)
+- [NBA] New York Knicks on W4 L10 4-0 -- New York Knicks on W4 -- no historical sample
 - [NHL] Vegas Golden Knights on W4 L10 4-0 -- Vegas Golden Knights on W4 -- no historical sample
+- [WNBA] Minnesota Lynx on W5 L10 5-0 -- Minnesota Lynx on W5 -- no historical sample
 - [CWS] West Virginia Mountaineers on W3 L10 4-1 -- West Virginia Mountaineers on W3 -- no historical sample
 - [CWS] Cal Poly Mustangs on W3 L10 3-0 -- Cal Poly Mustangs on W3 -- no historical sample
-- [CWS] North Carolina Tar Heels on W3 L10 3-0 -- North Carolina Tar Heels on W3 -- no historical sample
-- [CWS] USC Trojans on W4 L10 4-1 -- USC Trojans on W4 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**
@@ -145,7 +146,8 @@
   - ⚠️ batter_rbis (Brier Δ -0.0052)
 
 ## 🧠 Training Convergence
-- ELITE: **5** · HEALTHY: 2 · OK: 0 · DEGRADED: **1**
+- ELITE: **3** · HEALTHY: 3 · OK: 0 · DEGRADED: **2**
+  - ⚠️ **batter_runs_scored**: DIVERGENT - consistent same-sign moves (structural issue) (cf=0.9177)
   - ⚠️ **batter_singles**: DIVERGENT - consistent same-sign moves (structural issue) (cf=0.9276)
 
 ## 🤖 Self-Training Status

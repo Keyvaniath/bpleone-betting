@@ -1,17 +1,15 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:6 F:29
-
-:lock: **LOCK:** Seth Lugo (MLB)
+_STRONG_NIGHT_ | L:0 S:29 F:54
 
 :dart: **Top Picks:**
-1. [WNBA] napheesa collier -- napheesa collier (PLAYER_STRONG)
-2. [WNBA] kelsey mitchell -- kelsey mitchell (PLAYER_STRONG)
-3. [F1] max verstappen -- max verstappen (DRIVER_STRONG)
+1. [GOLF] Wyndham Clark -- Wyndham Clark (PLAYER_STRONG)
+2. [GOLF] Tommy Fleetwood -- Tommy Fleetwood (PLAYER_STRONG)
+3. [WNBA] napheesa collier -- napheesa collier (PLAYER_STRONG)
 
 :chains: **Top Parlays:**
-- [WNBA] napheesa collier (2 legs, p=0.311)
-- [WNBA] allisha gray (2 legs, p=0.2977)
+- [MLB] Christian Walker (2 legs, p=0.4286)
+- [MLB] Yordan Alvarez (3 legs, p=0.402)
 
-:coin: Bankroll Advisory: STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
+:coin: Bankroll Advisory: Solid slate. Pick top STRONG/LOCK picks; consider Kelly 25-50% sizing.
 
 _EdgeStat: ML-driven sports betting analytics. Not financial advice._

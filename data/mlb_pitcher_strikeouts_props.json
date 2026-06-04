@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-06-04T21:55:55",
+  "generated_at": "2026-06-04T23:14:10",
   "n_pitchers": 6,
-  "n_strong_edges": 2,
-  "method_note": "expected_K = avg_K x opp_lineup_K_mult x park_K_factor. Poisson at nearest 0.5 line within 1.0 of projection. STRONG = 10%+ edge vs -120 book.",
+  "n_strong_edges": 1,
+  "method_note": "expected_K = avg_K x opp_lineup_K_mult x park_K_factor x weather_K_mult (carry/temp; neutral indoors). Poisson at nearest 0.5 line within 1.0 of projection. STRONG = 10%+ edge vs -120 book.",
   "rows": [
     {
       "matchup": "TOR @ ATL",
@@ -11,10 +11,16 @@
       "side": "home",
       "season_avg_k": 8.0,
       "k_per_9": 11.29,
-      "opp_k_rate": 0.298,
-      "opp_k_mult": 1.323,
+      "opp_k_rate": 0.307,
+      "opp_k_mult": 1.365,
       "park_k_factor": 1.0,
-      "expected_k": 10.58,
+      "weather_k_mult": 0.9947,
+      "weather": {
+        "carry": 0.176,
+        "temp_f": 71.0,
+        "indoor": false
+      },
+      "expected_k": 10.86,
       "edge_class": "NONE",
       "best_market": null
     },
@@ -25,17 +31,18 @@
       "side": "away",
       "season_avg_k": 5.83,
       "k_per_9": 8.36,
-      "opp_k_rate": 0.298,
-      "opp_k_mult": 1.323,
+      "opp_k_rate": 0.315,
+      "opp_k_mult": 1.398,
       "park_k_factor": 1.0,
-      "expected_k": 7.71,
-      "edge_class": "STRONG_OVER",
-      "best_market": {
-        "market": "K_OVER_6.5",
-        "p": 0.65,
-        "fair_odds": -186,
-        "line": 6.5
-      }
+      "weather_k_mult": 0.9854,
+      "weather": {
+        "carry": 0.486,
+        "temp_f": 75.0,
+        "indoor": false
+      },
+      "expected_k": 8.03,
+      "edge_class": "NONE",
+      "best_market": null
     },
     {
       "matchup": "KCR @ MIN",
@@ -44,9 +51,35 @@
       "side": "away",
       "season_avg_k": 4.88,
       "k_per_9": 7.52,
-      "opp_k_rate": 0.298,
-      "opp_k_mult": 1.323,
+      "opp_k_rate": 0.317,
+      "opp_k_mult": 1.41,
       "park_k_factor": 1.0,
+      "weather_k_mult": 1.0038,
+      "weather": {
+        "carry": -0.126,
+        "temp_f": 73.0,
+        "indoor": false
+      },
+      "expected_k": 6.91,
+      "edge_class": "NONE",
+      "best_market": null
+    },
+    {
+      "matchup": "OAK @ CHC",
+      "pitcher": "Shota Imanaga",
+      "team": "CHC",
+      "side": "home",
+      "season_avg_k": 4.75,
+      "k_per_9": 7.12,
+      "opp_k_rate": 0.31,
+      "opp_k_mult": 1.379,
+      "park_k_factor": 1.0,
+      "weather_k_mult": 0.9854,
+      "weather": {
+        "carry": 0.486,
+        "temp_f": 75.0,
+        "indoor": false
+      },
       "expected_k": 6.45,
       "edge_class": "STRONG_OVER",
       "best_market": {
@@ -57,30 +90,22 @@
       }
     },
     {
-      "matchup": "OAK @ CHC",
-      "pitcher": "Shota Imanaga",
-      "team": "CHC",
-      "side": "home",
-      "season_avg_k": 4.75,
-      "k_per_9": 7.12,
-      "opp_k_rate": 0.298,
-      "opp_k_mult": 1.323,
-      "park_k_factor": 1.0,
-      "expected_k": 6.28,
-      "edge_class": "NONE",
-      "best_market": null
-    },
-    {
       "matchup": "LAD @ ARI",
       "pitcher": "Ryne Nelson",
       "team": "AZ",
       "side": "home",
       "season_avg_k": 4.57,
       "k_per_9": 6.45,
-      "opp_k_rate": 0.298,
-      "opp_k_mult": 1.323,
+      "opp_k_rate": 0.314,
+      "opp_k_mult": 1.395,
       "park_k_factor": 1.0,
-      "expected_k": 6.04,
+      "weather_k_mult": 1.0,
+      "weather": {
+        "carry": 0.0,
+        "temp_f": 72.0,
+        "indoor": true
+      },
+      "expected_k": 6.37,
       "edge_class": "NONE",
       "best_market": null
     },
@@ -91,10 +116,16 @@
       "side": "away",
       "season_avg_k": 4.5,
       "k_per_9": 6.04,
-      "opp_k_rate": 0.298,
-      "opp_k_mult": 1.323,
+      "opp_k_rate": 0.309,
+      "opp_k_mult": 1.374,
       "park_k_factor": 1.0,
-      "expected_k": 5.95,
+      "weather_k_mult": 1.0,
+      "weather": {
+        "carry": 0.0,
+        "temp_f": 72.0,
+        "indoor": true
+      },
+      "expected_k": 6.18,
       "edge_class": "NONE",
       "best_market": null
     }
@@ -102,33 +133,20 @@
   "strong_edges": [
     {
       "matchup": "OAK @ CHC",
-      "pitcher": "J.T. Ginn",
-      "team": "ATH",
-      "side": "away",
-      "season_avg_k": 5.83,
-      "k_per_9": 8.36,
-      "opp_k_rate": 0.298,
-      "opp_k_mult": 1.323,
+      "pitcher": "Shota Imanaga",
+      "team": "CHC",
+      "side": "home",
+      "season_avg_k": 4.75,
+      "k_per_9": 7.12,
+      "opp_k_rate": 0.31,
+      "opp_k_mult": 1.379,
       "park_k_factor": 1.0,
-      "expected_k": 7.71,
-      "edge_class": "STRONG_OVER",
-      "best_market": {
-        "market": "K_OVER_6.5",
-        "p": 0.65,
-        "fair_odds": -186,
-        "line": 6.5
-      }
-    },
-    {
-      "matchup": "KCR @ MIN",
-      "pitcher": "Seth Lugo",
-      "team": "KC",
-      "side": "away",
-      "season_avg_k": 4.88,
-      "k_per_9": 7.52,
-      "opp_k_rate": 0.298,
-      "opp_k_mult": 1.323,
-      "park_k_factor": 1.0,
+      "weather_k_mult": 0.9854,
+      "weather": {
+        "carry": 0.486,
+        "temp_f": 75.0,
+        "indoor": false
+      },
       "expected_k": 6.45,
       "edge_class": "STRONG_OVER",
       "best_market": {
