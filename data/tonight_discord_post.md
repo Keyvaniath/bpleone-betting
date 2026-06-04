@@ -1,17 +1,11 @@
 **EdgeStat -- Tonight's Slate**
-_MODEST_NIGHT_ | L:0 S:15 F:32
-
-:lock: **LOCK:** Michael Lorenzen (MLB)
+_NO_ACTION_NIGHT_ | L:0 S:3 F:27
 
 :dart: **Top Picks:**
-1. [MLB] Freddie Freeman -- Freddie Freeman (BATTER_STRONG)
-2. [MLB] Joc Pederson -- Joc Pederson (BATTER_STRONG)
-3. [WNBA] breanna stewart -- breanna stewart (PLAYER_STRONG)
+1. [MLB] ? -- ? (TEAM_STRONG)
+2. [F1] max verstappen -- max verstappen (DRIVER_STRONG)
+3. [GOLF] Rory McIlroy -- Rory McIlroy (PLAYER_STRONG)
 
-:chains: **Top Parlays:**
-- [MLB] Christian Walker (2 legs, p=0.4435)
-- [MLB] Yordan Alvarez (2 legs, p=0.4197)
-
-:coin: Bankroll Advisory: Light slate. Limit to 1-3 strongest plays; use 25% Kelly or less.
+:coin: Bankroll Advisory: STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 
 _EdgeStat: ML-driven sports betting analytics. Not financial advice._

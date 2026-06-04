@@ -1,21 +1,14 @@
-# 🌙 Tonight's Brief — 2026-06-03
+# 🌙 Tonight's Brief — 2026-06-04
 
 _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 
-## 💪 STRONG (1 picks)
-- [MLB] LAD @ ARI LAD_ML · 66% / +31.3%
+## 🐋 WHALES (size up max)
+- **MLB** · LAD @ ARI ML_AWAY · 68% / +14.8%
+  - Top-25 board pick: 68% prob, +14.8% edge
+  - Sharp action STRONG: line shifted +5.6pp our way
+  - Source: game-line model (high reliability)
 
 ## 🔒 5 Daily Locks
-- **Luis Rengifo** PP_batter_hrr_under_3.5 (MLB-PP) -- 84% / +46.1%
-- **Alejandro Osuna** PP_batter_hrr_under_3.5 (MLB-PP) -- 84% / +45.9%
-- **Dylan Crews** PP_batter_hrr_under_3.5 (MLB-PP) -- 84% / +45.8%
-- **Alex Freeland** PP_batter_hrr_under_3.5 (MLB-PP) -- 84% / +45.8%
-- **Isiah Kiner-Falefa** PP_batter_hrr_under_4.5 (MLB-PP) -- 84% / +45.7%
-- **Ha-Seong Kim** PP_batter_hrr_under_2.5 (MLB-PP) -- 86% / +49.6%
-- **Zach McKinstry** PP_batter_hrr_under_2.5 (MLB-PP) -- 86% / +49.6%
-- **Vinnie Pasquantino** PP_batter_hrr_under_3.5 (MLB-PP) -- 85% / +47.2%
-- **Matt Chapman** PP_batter_hrr_under_3.5 (MLB-PP) -- 85% / +47.2%
-- **Freddy Fermin** PP_batter_hrr_under_2.5 (MLB-PP) -- 85% / +47.1%
 - **Choi Jeong** one_plus_tb (KBO) -- 73% / +39.8%
 - **Jose Pirela** one_plus_tb (KBO) -- 73% / +39.2%
 - **Koo Ja-wook** one_plus_tb (KBO) -- 73% / +38.9%
@@ -23,12 +16,15 @@ _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 - **Austin Dean** one_plus_tb (KBO) -- 73% / +38.5%
 
 ## 📡 Sharp Money Following Model
-- **LAD @ ARI** ml_away: line moved 53.92% → 59.51% (+5.6pp)
+- **LAD @ ARI** ml_away: line moved 53.92% → 59.18% (+5.3pp)
+
+## 📉 Under Bets
+- **SFG @ MIL** UNDER 9.5 — model 8.51 [STRONG signal]
 
 ## 🎰 Tonight's Best Parlay
 - **Choi Jeong** one_plus_tb + **Jose Pirela** one_plus_tb
 - Joint 53% · fair +264 · edge +94.6%
 
 ---
-_Generated 2026-06-03T23:37:00_
+_Generated 2026-06-04T11:33:20_
 _Full breakdown: /tonight · Full history: /locks-of-day_
