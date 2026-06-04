@@ -93,6 +93,39 @@ SIGMA = {"pass_yds": (45.0, 0.28), "rush_yds": (18.0, 0.45),
 # up months ahead). One NFL week's slate fits comfortably inside this window.
 HORIZON_DAYS = 8
 
+# Opponent-defense priors (2025): factor applied to the OPPONENT's offensive
+# projection. >1.0 = generous defense (boost the offense); <1.0 = stingy. Two
+# facets -- pass defense (drives pass/rec yds + pass TD) and rush defense. These
+# are seasonal priors; the in-season build refreshes them from yards-allowed.
+PASS_DEF = {
+    "BAL": 0.90, "DEN": 0.88, "HOU": 0.92, "MIN": 0.93, "PHI": 0.94, "GB": 0.95,
+    "KC": 0.96, "BUF": 0.97, "PIT": 0.95, "LAC": 0.96, "DET": 1.02, "SF": 0.98,
+    "NYJ": 0.94, "CLE": 0.97, "SEA": 1.01, "TB": 1.03, "WSH": 1.05, "DAL": 1.06,
+    "CAR": 1.10, "CIN": 1.07, "ATL": 1.05, "JAX": 1.06, "MIA": 1.04, "NO": 1.02,
+    "LV": 1.06, "TEN": 1.05, "IND": 1.04, "NYG": 1.02, "ARI": 1.03, "CHI": 1.00,
+    "NE": 1.03, "LAR": 1.01,
+}
+RUSH_DEF = {
+    "MIN": 0.90, "PHI": 0.91, "DEN": 0.93, "BAL": 0.95, "HOU": 0.96, "KC": 0.97,
+    "BUF": 0.98, "GB": 0.96, "PIT": 0.94, "SF": 0.97, "DET": 0.99, "LAC": 0.98,
+    "CLE": 0.96, "TB": 1.02, "NYJ": 0.99, "SEA": 1.04, "WSH": 1.03, "DAL": 1.08,
+    "CAR": 1.09, "CIN": 1.05, "ATL": 1.02, "JAX": 1.06, "MIA": 1.04, "NO": 1.01,
+    "LV": 1.07, "TEN": 1.03, "IND": 1.04, "NYG": 1.05, "ARI": 1.02, "CHI": 0.99,
+    "NE": 1.06, "LAR": 1.02,
+}
+# Dampen the raw factor so a single matchup doesn't swing the projection wildly.
+_DEF_DAMP = 0.6
+
+
+def _opp_factor(table: Dict[str, float], opp: str) -> float:
+    raw = table.get(opp, 1.0)
+    return 1.0 + _DEF_DAMP * (raw - 1.0)
+
+
+def _blend(recent: Optional[float], season: float) -> float:
+    """Weight recent gamelog form over the season prior when we have it."""
+    return round(0.65 * recent + 0.35 * season, 2) if recent is not None else season
+
 
 def _load(p):
     if not os.path.exists(p): return {}
@@ -184,13 +217,16 @@ def run() -> Dict[str, Any]:
             if info["team"] not in (home, away):
                 continue
             opp = away if info["team"] == home else home
-            # Continuous-yardage / receptions markets.
+            pass_f = _opp_factor(PASS_DEF, opp)   # opponent pass defense
+            rush_f = _opp_factor(RUSH_DEF, opp)   # opponent rush defense
+            # Continuous-yardage / receptions markets (opponent-adjusted + recent form).
             for stat, prefix in (("pass_yds", "PASS_YDS"), ("rush_yds", "RUSH_YDS"),
                                  ("rec_yds", "REC_YDS"), ("rec", "REC")):
                 base = info.get(stat)
                 if base is None:
                     continue
-                mean = _recent_base(gl, name, stat) or base
+                opp_f = rush_f if stat == "rush_yds" else pass_f
+                mean = _blend(_recent_base(gl, name, stat), base) * opp_f
                 floor, cv = SIGMA[stat]
                 sigma = max(floor, cv * mean)
                 bm = _best_line(mean, sigma, stat, prefix)
@@ -198,6 +234,7 @@ def run() -> Dict[str, Any]:
                     rows.append({"matchup": matchup, "game_date": game_date,
                                  "player": name, "team": info["team"],
                                  "opp_team": opp, "stat_type": stat,
+                                 "opp_factor": round(opp_f, 3),
                                  "projection": round(mean, 1), "sigma": round(sigma, 1),
                                  "edge_class": f"MODEL_{bm['side']}", "best_market": bm})
             # Anytime TD (Poisson on rush+rec TD rate).
@@ -212,6 +249,25 @@ def run() -> Dict[str, Any]:
                                  "opp_team": opp, "stat_type": "anytime_td",
                                  "projection": round(lam, 2), "edge_class": "MODEL_TD",
                                  "best_market": bm})
+            # Passing TDs (QB): Poisson on the season TD rate, opponent-adjusted.
+            ptd = info.get("pass_td")
+            if ptd:
+                lam = ptd * pass_f
+                for line in (1.5, 2.5):
+                    k = int(line)   # over 1.5 -> 2+ passing TDs
+                    p_over = 1 - sum(math.exp(-lam) * lam ** i / math.factorial(i)
+                                     for i in range(k + 1))
+                    side, p = ("OVER", p_over) if p_over >= 0.5 else ("UNDER", 1 - p_over)
+                    if 0.58 <= p <= 0.80:
+                        bm = {"market": f"PASS_TD_{side}_{line}", "p": round(p, 3),
+                              "fair_odds": _american(p), "line": line, "side": side}
+                        rows.append({"matchup": matchup, "game_date": game_date,
+                                     "player": name, "team": info["team"],
+                                     "opp_team": opp, "stat_type": "pass_td",
+                                     "opp_factor": round(pass_f, 3),
+                                     "projection": round(lam, 2),
+                                     "edge_class": f"MODEL_{side}", "best_market": bm})
+                        break
 
     rows.sort(key=lambda r: -(r["best_market"]["p"]))
     strong = [r for r in rows if r.get("best_market")]
