@@ -22,6 +22,8 @@ import math
 import datetime as dt
 from typing import Any, Dict, List, Optional
 
+import mlb_weather_factor as _WX   # live weather -> run-environment multiplier
+
 
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 OUT = os.path.join(DATA_DIR, "mlb_pitcher_strikeouts_props.json")
@@ -103,6 +105,9 @@ def run() -> Dict[str, Any]:
         park_info = parks.get(park) if isinstance(parks, dict) else None
         # K-friendly park factor: higher elevation/colder air -> more K's
         park_k_factor = _safe((park_info or {}).get("k_factor"), 1.0) or 1.0
+        # Live weather: good carry favors hitters -> slightly fewer K (k_mult<1);
+        # cold wind-in nudges K up. Neutral 1.0 indoors / when weather is missing.
+        wx = _WX.pitcher_weather_factors(g.get("weather"))
         lineups = g.get("lineups") or {}
         matchup_str = g.get("matchup") or ""
 
@@ -126,7 +131,7 @@ def run() -> Dict[str, Any]:
 
             stats = pitcher_row.get("stats") or {}
             avg_k = _safe(stats.get("avg_k"), 5.5)
-            expected_k = avg_k * opp_k_mult * park_k_factor
+            expected_k = avg_k * opp_k_mult * park_k_factor * wx["k_mult"]
 
             # Only evaluate nearest 0.5 line within 1.0 of projection
             edge_class = "NONE"
@@ -163,6 +168,8 @@ def run() -> Dict[str, Any]:
                 "opp_k_rate": round(opp_k_rate, 3),
                 "opp_k_mult": round(opp_k_mult, 3),
                 "park_k_factor": park_k_factor,
+                "weather_k_mult": wx["k_mult"],
+                "weather": {"carry": wx["carry"], "temp_f": wx["temp_f"], "indoor": wx["is_indoor"]},
                 "expected_k": round(expected_k, 2),
                 "edge_class": edge_class,
                 "best_market": best_market,
@@ -175,8 +182,9 @@ def run() -> Dict[str, Any]:
         "generated_at": dt.datetime.utcnow().isoformat(timespec="seconds"),
         "n_pitchers": len(rows),
         "n_strong_edges": len(strong),
-        "method_note": "expected_K = avg_K x opp_lineup_K_mult x park_K_factor. Poisson at nearest "
-                       "0.5 line within 1.0 of projection. STRONG = 10%+ edge vs -120 book.",
+        "method_note": "expected_K = avg_K x opp_lineup_K_mult x park_K_factor x weather_K_mult "
+                       "(carry/temp; neutral indoors). Poisson at nearest 0.5 line within 1.0 of "
+                       "projection. STRONG = 10%+ edge vs -120 book.",
         "rows": rows,
         "strong_edges": strong,
     }

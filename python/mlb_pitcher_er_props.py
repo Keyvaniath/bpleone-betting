@@ -26,6 +26,8 @@ import math
 import datetime as dt
 from typing import Any, Dict, List, Optional
 
+import mlb_weather_factor as _WX   # live weather -> run-environment multiplier
+
 
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 OUT = os.path.join(DATA_DIR, "mlb_pitcher_er_props.json")
@@ -91,6 +93,9 @@ def run() -> Dict[str, Any]:
         park_run_factor = _safe((park_info or {}).get("run_factor"), 1.0) or 1.0
         home_obp = _safe((g.get("home") or {}).get("obp"), LEAGUE_OBP)
         away_obp = _safe((g.get("away") or {}).get("obp"), LEAGUE_OBP)
+        # Live weather run-environment: warm/wind-out -> more ER; cold/wind-in ->
+        # fewer. Neutral 1.0 indoors / when weather is missing.
+        wx = _WX.pitcher_weather_factors(g.get("weather"))
 
         for side in ("home", "away"):
             opp_obp = away_obp if side == "home" else home_obp
@@ -113,7 +118,7 @@ def run() -> Dict[str, Any]:
             # Form: hot pitcher = fewer ER
             form_mult = 1.0 - max(-0.10, min(0.10, form_delta * 0.10))
 
-            expected_er = base_er * obp_mult * park_mult * form_mult
+            expected_er = base_er * obp_mult * park_mult * form_mult * wx["er_mult"]
             expected_er = max(0.3, min(6.0, expected_er))
 
             # Probabilities at each integer-cumulative line
@@ -154,6 +159,8 @@ def run() -> Dict[str, Any]:
                 "avg_ip": avg_ip,
                 "opp_obp": opp_obp,
                 "park_run_factor": park_run_factor,
+                "weather_er_mult": wx["er_mult"],
+                "weather": {"carry": wx["carry"], "temp_f": wx["temp_f"], "indoor": wx["is_indoor"]},
                 "form_delta": round(form_delta, 2),
                 "expected_er": round(expected_er, 2),
                 "p_over_1_5": round(p_over_1_5, 3),
@@ -173,8 +180,9 @@ def run() -> Dict[str, Any]:
         "generated_at": dt.datetime.utcnow().isoformat(timespec="seconds"),
         "n_starters": len(rows),
         "n_strong_edges": len(strong),
-        "method_note": "ER = (ERA/9) × IP × opp_OBP × park × form. Poisson distribution. "
-                       "STRONG only at nearest 0.5 line with 10%%+ edge vs -120.",
+        "method_note": "ER = (ERA/9) × IP × opp_OBP × park × form × weather (carry/temp; "
+                       "neutral indoors). Poisson distribution. STRONG only at nearest 0.5 line "
+                       "with 10%%+ edge vs -120.",
         "starters": rows,
         "strong_edges": strong,
     }

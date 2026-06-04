@@ -26,6 +26,8 @@ import math
 import datetime as dt
 from typing import Any, Dict, List, Optional
 
+import mlb_weather_factor as _WX   # live weather -> run-environment multiplier
+
 
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 OUT = os.path.join(DATA_DIR, "mlb_pitcher_hits_allowed_props.json")
@@ -92,6 +94,9 @@ def run() -> Dict[str, Any]:
         park_run_factor = _safe((park_info or {}).get("run_factor"), 1.0) or 1.0
         home_obp = _safe((g.get("home") or {}).get("obp"), LEAGUE_OBP)
         away_obp = _safe((g.get("away") or {}).get("obp"), LEAGUE_OBP)
+        # Live weather: warm/wind-out adds hits, cold/wind-in suppresses (hits are
+        # less wind-sensitive than runs). Neutral 1.0 indoors / missing weather.
+        wx = _WX.pitcher_weather_factors(g.get("weather"))
 
         for side in ("home", "away"):
             opp_obp = away_obp if side == "home" else home_obp
@@ -117,7 +122,7 @@ def run() -> Dict[str, Any]:
             park_mult = max(0.90, min(1.15, park_run_factor))
             form_mult = 1.0 - max(-0.10, min(0.10, form_delta * 0.10))
 
-            expected_h = base_hits * obp_mult * park_mult * form_mult
+            expected_h = base_hits * obp_mult * park_mult * form_mult * wx["hits_mult"]
             expected_h = max(2.0, min(9.0, expected_h))
 
             # Edge classification: book sets line at nearest 0.5, only flag STRONG when
@@ -150,6 +155,8 @@ def run() -> Dict[str, Any]:
                 "avg_ip": avg_ip,
                 "opp_obp": opp_obp,
                 "park_run_factor": park_run_factor,
+                "weather_hits_mult": wx["hits_mult"],
+                "weather": {"carry": wx["carry"], "temp_f": wx["temp_f"], "indoor": wx["is_indoor"]},
                 "expected_h": round(expected_h, 2),
                 "edge_class": edge_class,
                 "best_market": best_market,
@@ -162,8 +169,9 @@ def run() -> Dict[str, Any]:
         "generated_at": dt.datetime.utcnow().isoformat(timespec="seconds"),
         "n_starters": len(rows),
         "n_strong_edges": len(strong),
-        "method_note": "Hits allowed = (WHIP × 9 - BB/9) / 9 × avg_IP × opp_OBP × park × form. "
-                       "Poisson. STRONG only at nearest 0.5 line with 10%%+ edge vs -120 book.",
+        "method_note": "Hits allowed = (WHIP × 9 - BB/9) / 9 × avg_IP × opp_OBP × park × form × "
+                       "weather (carry/temp; neutral indoors). Poisson. STRONG only at nearest 0.5 "
+                       "line with 10%%+ edge vs -120 book.",
         "starters": rows,
         "strong_edges": strong,
     }
