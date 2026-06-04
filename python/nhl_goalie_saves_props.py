@@ -22,6 +22,7 @@ import datetime as dt
 from typing import Any, Dict, List, Optional
 
 from nhl_teams import abbr as _abbr   # full scoreboard name -> abbrev (fixes [:3] team drops)
+from nhl_skater_sog_props import TEAM_SHOT_PACE as _SHOT_PACE, LEAGUE_SHOTS_PER_GAME as _SOG_LEAGUE
 
 
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
@@ -106,10 +107,13 @@ def run() -> Dict[str, Any]:
         for goalie_name, info in GOALIE_DB.items():
             if info["team"] not in (home, away): continue
             is_home = info["team"] == home
+            opp = away if is_home else home
 
-            # Expected shots against = league avg × opponent workload factor
-            # No team-specific shot data available, use league avg
-            expected_sa = LEAGUE_SHOTS_PER_GAME * info["team_workload"]
+            # Shots faced = own-team defensive workload x the OPPONENT's actual
+            # shot generation (TEAM_SHOT_PACE), not a flat league average. A goalie
+            # facing a high-volume shooting team (e.g. CAR ~32/gm) sees more rubber.
+            opp_shot_factor = max(0.85, min(1.18, _SHOT_PACE.get(opp, _SOG_LEAGUE) / _SOG_LEAGUE))
+            expected_sa = LEAGUE_SHOTS_PER_GAME * info["team_workload"] * opp_shot_factor
             sv_pct = max(0.88, min(0.94, info["sv_pct"]))
             expected_saves = expected_sa * sv_pct
 
@@ -138,6 +142,9 @@ def run() -> Dict[str, Any]:
                 "matchup": f"{away} @ {home}",
                 "goalie": goalie_name,
                 "team": info["team"],
+                "opp_team": opp,
+                "opp_shot_pace": _SHOT_PACE.get(opp, _SOG_LEAGUE),
+                "opp_shot_factor": round(opp_shot_factor, 3),
                 "sv_pct": sv_pct,
                 "expected_shots_against": round(expected_sa, 1),
                 "expected_saves": round(expected_saves, 2),
@@ -153,9 +160,9 @@ def run() -> Dict[str, Any]:
         "n_goalies_projected": len(rows),
         "n_strong_edges": len(strong),
         "n_goalies_in_db": len(GOALIE_DB),
-        "method_note": "expected_saves = league_shots_per_game × team_workload × SV%%. "
-                       "Normal CDF with sigma=4.5. STRONG only at nearest 0.5 line within "
-                       "1.0 of projection with 10%%+ edge vs -120 book.",
+        "method_note": "expected_saves = league_shots × team_workload × opp_shot_factor "
+                       "(opponent's TEAM_SHOT_PACE / league) × SV%%. Normal CDF, sigma=4.5. "
+                       "STRONG only at nearest 0.5 line within 1.0 of projection, 10%%+ edge vs -120.",
         "rows": rows,
         "strong_edges": strong,
     }
