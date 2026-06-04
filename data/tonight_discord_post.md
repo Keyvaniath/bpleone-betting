@@ -1,12 +1,16 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:3 F:25
+_NO_ACTION_NIGHT_ | L:0 S:6 F:29
 
 :lock: **LOCK:** Seth Lugo (MLB)
 
 :dart: **Top Picks:**
-1. [MLB] Zack Wheeler -- Zack Wheeler (PITCHER_STRONG)
-2. [F1] max verstappen -- max verstappen (DRIVER_STRONG)
-3. [GOLF] Rory McIlroy -- Rory McIlroy (PLAYER_STRONG)
+1. [WNBA] napheesa collier -- napheesa collier (PLAYER_STRONG)
+2. [WNBA] kelsey mitchell -- kelsey mitchell (PLAYER_STRONG)
+3. [F1] max verstappen -- max verstappen (DRIVER_STRONG)
+
+:chains: **Top Parlays:**
+- [WNBA] napheesa collier (2 legs, p=0.311)
+- [WNBA] allisha gray (2 legs, p=0.2977)
 
 :coin: Bankroll Advisory: STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 
