@@ -33,6 +33,8 @@ import os
 import json
 import math
 import datetime as dt
+
+import mlb_batter_splits as _SPL   # batter home/away + platoon (vsL/vsR) multiplier
 from typing import Any, Dict, List, Optional
 
 
@@ -126,6 +128,7 @@ def run() -> Dict[str, Any]:
     for b in (batter_logs.get("batters") or []):
         nm = (b.get("name") or "").lower()
         if nm: batter_log_idx[nm] = b
+    spl = _SPL.load(DATA_DIR)   # home/away + platoon split multipliers (neutral if absent)
 
     parks = today.get("parks") or {}
     lvr_idx = {}
@@ -195,8 +198,10 @@ def run() -> Dict[str, Any]:
                     blended_ops = max(0.55, min(1.10, blended_ops))
                     rates = _hrr_per_pa(blended_ops, order, park_run_factor, lineup_runs)
 
+                # Batter-specific home/away + platoon (vsL/vsR) skew (1.0 if absent).
+                power_mult = spl.power_mult(name, side == "home")
                 pa = _expected_pa(order)
-                expected_hrr = rates["hrr_per_pa"] * pa
+                expected_hrr = rates["hrr_per_pa"] * power_mult * pa
 
                 p_2_plus = _poisson_at_least(2, expected_hrr)
                 p_3_plus = _poisson_at_least(3, expected_hrr)
@@ -225,6 +230,8 @@ def run() -> Dict[str, Any]:
                     "park_run_factor": park_run_factor,
                     "blended_ops": round(blended_ops, 3),
                     "hrr_source": hrr_source,
+                    "split_power_mult": power_mult,
+                    "split_detail": spl.breakdown(name, side == "home"),
                     "hrr_per_pa": round(rates["hrr_per_pa"], 3),
                     "expected_pa": pa,
                     "expected_hrr": round(expected_hrr, 2),

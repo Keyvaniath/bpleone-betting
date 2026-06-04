@@ -28,6 +28,8 @@ import math
 import datetime as dt
 from typing import Any, Dict, List, Optional
 
+import mlb_batter_splits as _SPL   # batter home/away + platoon (vsL/vsR) multiplier
+
 
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 OUT = os.path.join(DATA_DIR, "mlb_total_bases_props.json")
@@ -88,6 +90,7 @@ def run() -> Dict[str, Any]:
     for b in (batter_logs.get("batters") or []):
         nm = (b.get("name") or "").lower()
         if nm: batter_log_idx[nm] = b
+    spl = _SPL.load(DATA_DIR)   # home/away + platoon split multipliers (neutral if absent)
 
     parks = today.get("parks") or {}
     lvr_idx = {}
@@ -146,6 +149,9 @@ def run() -> Dict[str, Any]:
                 # Park HR factor boosts TB ceiling, run factor adjusts contact
                 tb_per_pa *= (1 + (park_hr_factor - 1) * 0.4)  # 40% of HR boost flows to TB
                 tb_per_pa *= park_run_factor ** 0.4  # partial exposure to general run env
+                # Batter-specific home/away + platoon (vsL/vsR) skew (1.0 if absent).
+                power_mult = spl.power_mult(name, side == "home")
+                tb_per_pa *= power_mult
                 tb_per_pa = max(0.20, min(0.65, tb_per_pa))
 
                 pa = _expected_pa(order)
@@ -176,6 +182,8 @@ def run() -> Dict[str, Any]:
                     "park": park,
                     "expected_pa": pa,
                     "tb_source": tb_source,
+                    "split_power_mult": power_mult,
+                    "split_detail": spl.breakdown(name, side == "home"),
                     "tb_per_pa": round(tb_per_pa, 3),
                     "expected_tb": round(expected_tb, 2),
                     "p_1_plus": round(p_1plus, 3),
