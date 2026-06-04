@@ -6,9 +6,12 @@ team/role/matchup). One of the most-bet hockey props.
 
 Method:
   P(scores >= 1) = 1 - exp(-expected_goals_for_player)
-  expected_goals = season_gpg * opp_goalie_factor * pace_factor
+  expected_goals = season_gpg * opp_goalie_factor
+  opp_goalie_factor = (1 - opp_starter_SV%) / (1 - league_SV%)   [clamped 0.70..1.30]
 
-Per-player goals-per-game baseline (top NHL scorers).
+The opposing starter's save percentage is the dominant driver of whether a goal
+gets scored, so we resolve it per game from TEAM_GOALIE -> GOALIE_SV (league-avg
+fallback when unmapped). Per-player goals-per-game baseline (top NHL scorers).
 
 Output: data/nhl_anytime_goal_props.json
 """
@@ -78,8 +81,43 @@ GOALIE_SV = {
     "igor shesterkin": 0.917, "jeremy swayman": 0.910, "stuart skinner": 0.907,
     "linus ullmark": 0.910, "anthony stolarz": 0.926, "thatcher demko": 0.914,
     "frederik andersen": 0.928, "jake oettinger": 0.911, "juuse saros": 0.908,
-    "logan thompson": 0.918, "adin hill": 0.911,
+    "logan thompson": 0.918, "adin hill": 0.911, "pyotr kochetkov": 0.911,
 }
+LEAGUE_SV = 0.910
+
+# Each team's #1 starter -> resolves the OPPOSING goalie's SV% from GOALIE_SV.
+# Unmapped teams fall back to LEAGUE_SV (neutral). Refreshed as starters change.
+TEAM_GOALIE = {
+    "FLA": "sergei bobrovsky", "TBL": "andrei vasilevskiy", "WPG": "connor hellebuyck",
+    "NYR": "igor shesterkin", "BOS": "jeremy swayman", "EDM": "stuart skinner",
+    "OTT": "linus ullmark", "TOR": "anthony stolarz", "VAN": "thatcher demko",
+    "CAR": "frederik andersen", "DAL": "jake oettinger", "NSH": "juuse saros",
+    "WSH": "logan thompson", "VGK": "adin hill",
+}
+
+# Full scoreboard name -> abbrev (nhl_state serves full team names).
+TEAM_FULL = {
+    "anaheim ducks": "ANA", "boston bruins": "BOS", "buffalo sabres": "BUF",
+    "calgary flames": "CGY", "carolina hurricanes": "CAR", "chicago blackhawks": "CHI",
+    "colorado avalanche": "COL", "columbus blue jackets": "CBJ", "dallas stars": "DAL",
+    "detroit red wings": "DET", "edmonton oilers": "EDM", "florida panthers": "FLA",
+    "los angeles kings": "LAK", "minnesota wild": "MIN", "montreal canadiens": "MTL",
+    "nashville predators": "NSH", "new jersey devils": "NJD", "new york islanders": "NYI",
+    "new york rangers": "NYR", "ottawa senators": "OTT", "philadelphia flyers": "PHI",
+    "pittsburgh penguins": "PIT", "san jose sharks": "SJS", "seattle kraken": "SEA",
+    "st. louis blues": "STL", "st louis blues": "STL", "tampa bay lightning": "TBL",
+    "toronto maple leafs": "TOR", "utah hockey club": "UTA", "vancouver canucks": "VAN",
+    "vegas golden knights": "VGK", "washington capitals": "WSH", "winnipeg jets": "WPG",
+}
+
+
+def _abbr(name: str) -> str:
+    if not name:
+        return ""
+    key = name.lower().strip()
+    if key in TEAM_FULL:
+        return TEAM_FULL[key]
+    return name.strip().upper()[:3]
 
 
 def _load(p):
@@ -103,14 +141,14 @@ def run() -> Dict[str, Any]:
     for g in games:
         status = (g.get("status") or g.get("state") or "").lower()
         if "final" in status: continue
-        home = (g.get("home_team") or g.get("home") or "").upper()
-        away = (g.get("away_team") or g.get("away") or "").upper()
+        home = _abbr(g.get("home_team") or g.get("home") or "")
+        away = _abbr(g.get("away_team") or g.get("away") or "")
         if not home or not away: continue
-        teams_in_game = set([home, away, home[:3], away[:3]])
 
         for player_name, info in PLAYER_DB.items():
-            if info["team"] not in teams_in_game: continue
-            is_home = info["team"] == home or info["team"] == home[:3]
+            if info["team"] not in (home, away): continue
+            is_home = info["team"] == home
+            opp_team = away if is_home else home
 
             # Real ESPN goals/game with hardcoded fallback (2026-05-21)
             try:
@@ -121,10 +159,12 @@ def run() -> Dict[str, Any]:
             except Exception:
                 base_gpg = info["gpg"]
                 gpg_source = "fallback"
-            # Opp goalie factor: 0.910 SV% baseline; higher SV% reduces expected goals
-            # Simplification: scale by 1 - opp_sv_pct / 1 - 0.910 = goals_above_average
-            opp_sv = 0.910  # default
-            opp_goalie_mult = (1 - opp_sv) / (1 - 0.910)
+            # Opposing starter's REAL SV% drives the goal environment: an elite
+            # goalie (.928) suppresses ~20%, a weak one (.895) boosts ~17%. Falls
+            # back to league-average SV% when the opponent's starter is unmapped.
+            opp_goalie = TEAM_GOALIE.get(opp_team)
+            opp_sv = GOALIE_SV.get(opp_goalie, LEAGUE_SV) if opp_goalie else LEAGUE_SV
+            opp_goalie_mult = max(0.70, min(1.30, (1 - opp_sv) / (1 - LEAGUE_SV)))
             expected_goals = base_gpg * opp_goalie_mult
             p_scores = 1 - math.exp(-expected_goals)
             p_no_goal = 1 - p_scores
@@ -145,6 +185,10 @@ def run() -> Dict[str, Any]:
                 "matchup": f"{away} @ {home}",
                 "player": player_name,
                 "team": info["team"],
+                "opp_team": opp_team,
+                "opp_goalie": opp_goalie,
+                "opp_sv": opp_sv,
+                "opp_goalie_mult": round(opp_goalie_mult, 3),
                 "season_gpg": round(base_gpg, 3),
                 "gpg_source": gpg_source,
                 "expected_goals": round(expected_goals, 3),
@@ -164,7 +208,9 @@ def run() -> Dict[str, Any]:
         "n_players_projected": len(rows),
         "n_strong": len(strong),
         "n_players_in_db": len(PLAYER_DB),
-        "method_note": "P(score) = 1 - exp(-GPG × opp_goalie_factor). "
+        "method_note": "P(score) = 1 - exp(-GPG × opp_goalie_factor), where "
+                       "opp_goalie_factor = (1-opp_SV%)/(1-.910) from the opposing "
+                       "starter's real save pct (TEAM_GOALIE->GOALIE_SV). "
                        "STRONG_YES 60-72%% (vs typical book -150 for top scorers). "
                        "STRONG_NO when expected GPG very low for active player.",
         "rows": rows,
