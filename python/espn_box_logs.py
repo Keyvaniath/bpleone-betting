@@ -44,10 +44,14 @@ FOOTBALL_FIELDS = {
     "rushing":   {"YDS": "rush_yds", "CAR": "rush_att", "TD": "rush_td"},
     "receiving": {"REC": "rec", "YDS": "rec_yds", "TD": "rec_td", "TGTS": "targets"},
 }
+# Hockey: skater stats indexed by column label (forwards + defenses blocks hold
+# the athletes; the 'skaters' block is a summary with no athletes).
+HOCKEY_STATS = {"HT": "hits", "BS": "blocks", "G": "goals", "A": "assists", "SOG": "shots", "PIM": "pim"}
 
 CFG_WNBA = {"sport_key": "wnba", "espn_path": "basketball/wnba", "kind": "basketball", "stats": BASKETBALL_STATS}
 CFG_NBA = {"sport_key": "nba", "espn_path": "basketball/nba", "kind": "basketball", "stats": BASKETBALL_STATS}
 CFG_NFL = {"sport_key": "nfl", "espn_path": "football/nfl", "kind": "football"}
+CFG_NHL = {"sport_key": "nhl", "espn_path": "hockey/nhl", "kind": "hockey", "stats": HOCKEY_STATS}
 
 
 def _http(url: str) -> Optional[Dict[str, Any]]:
@@ -98,10 +102,19 @@ def _game_result(summary: Dict[str, Any]):
     away_ab = ((away.get("team") or {}).get("abbreviation") or "").upper()
     home_sc = _to_int(home.get("score"))
     away_sc = _to_int(away.get("score"))
+
+    def _periods(c):
+        return [_to_int(x.get("value") if isinstance(x, dict) else x)
+                for x in (c.get("linescores") or [])]
+
+    home_nm = ((home.get("team") or {}).get("displayName") or "")
+    away_nm = ((away.get("team") or {}).get("displayName") or "")
     game = None
     if date and home_ab and away_ab and home_sc is not None and away_sc is not None:
         game = {"date": date, "home_abbrev": home_ab, "away_abbrev": away_ab,
-                "home_score": home_sc, "away_score": away_sc}
+                "home_name": home_nm, "away_name": away_nm,
+                "home_score": home_sc, "away_score": away_sc,
+                "home_periods": _periods(home), "away_periods": _periods(away)}
     return date, game
 
 
@@ -157,6 +170,30 @@ def _parse_football(summary: Dict[str, Any], date: str) -> List[Dict[str, Any]]:
     return rows
 
 
+def _parse_hockey(summary: Dict[str, Any], date: str, stats_cfg: Dict[str, str]) -> List[Dict[str, Any]]:
+    """Skater stats (hits/blocks/goals/assists/shots) from the forwards + defenses
+    blocks (the 'skaters' block is a summary with no athletes)."""
+    agg: Dict[str, Dict[str, Any]] = {}
+    for team_block in ((summary.get("boxscore") or {}).get("players") or []):
+        for grp in (team_block.get("statistics") or []):
+            if (grp.get("name") or "").lower() not in ("forwards", "defenses", "defensemen"):
+                continue
+            labels = [str(l).upper() for l in (grp.get("labels") or [])]
+            idx = {lab: labels.index(lab) for lab in stats_cfg if lab in labels}
+            for ath in (grp.get("athletes") or []):
+                nm = ((ath.get("athlete") or {}).get("displayName") or "").strip()
+                stat_vals = ath.get("stats") or []
+                if not nm or not stat_vals:
+                    continue
+                rec = agg.setdefault(nm, {"name": nm, "date": date})
+                for lab, field in stats_cfg.items():
+                    if lab in idx and idx[lab] < len(stat_vals):
+                        v = _to_int(stat_vals[idx[lab]])
+                        if v is not None:
+                            rec[field] = v
+    return list(agg.values())
+
+
 def run(cfg: Dict[str, Any], days_back: int = 8, anchor_date: Optional[str] = None) -> Dict[str, Any]:
     espn_path = cfg["espn_path"]
     sport_key = cfg["sport_key"]
@@ -177,8 +214,12 @@ def run(cfg: Dict[str, Any], days_back: int = 8, anchor_date: Optional[str] = No
             if gk not in seen_game:
                 seen_game.add(gk)
                 games.append(game)
-        rows = (_parse_football(summ, date) if kind == "football"
-                else _parse_basketball(summ, date, cfg["stats"]))
+        if kind == "football":
+            rows = _parse_football(summ, date)
+        elif kind == "hockey":
+            rows = _parse_hockey(summ, date, cfg["stats"])
+        else:
+            rows = _parse_basketball(summ, date, cfg["stats"])
         for r in rows:
             key = r["name"].lower()
             prec = by_name.setdefault(key, {"name": r["name"], "games": []})
@@ -199,7 +240,7 @@ def run(cfg: Dict[str, Any], days_back: int = 8, anchor_date: Optional[str] = No
 if __name__ == "__main__":
     import sys
     arg = (sys.argv[1].lower() if len(sys.argv) > 1 else "wnba")
-    cfg = {"wnba": CFG_WNBA, "nba": CFG_NBA, "nfl": CFG_NFL}.get(arg, CFG_WNBA)
+    cfg = {"wnba": CFG_WNBA, "nba": CFG_NBA, "nfl": CFG_NFL, "nhl": CFG_NHL}.get(arg, CFG_WNBA)
     anchor = sys.argv[2] if len(sys.argv) > 2 else None
     r = run(cfg, anchor_date=anchor)
     print(f"[espn-box-logs] {r['sport']}: {r['n_players']} players, {r['n_games']} games "

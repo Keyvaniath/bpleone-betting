@@ -1897,6 +1897,98 @@ def _grade_soccer_pick(pick: Dict[str, Any], matches: List[Dict[str, Any]]) -> O
     return "won" if won else "lost"
 
 
+def _nhl_stat(source: str, market: str) -> Optional[str]:
+    s = ((source or "") + " " + (market or "")).lower()
+    if "hits" in s or "hit_" in s or "_hits" in s: return "hits"
+    if "block" in s: return "blocks"
+    if "shots" in s or "sog" in s: return "shots"
+    if "assist" in s: return "assists"
+    if "point" in s: return "points"
+    if "goal" in s and "goalie" not in s: return "goals"
+    return None
+
+
+def _find_nhl_game(matchup: str, pdate: str, games: List[Dict[str, Any]]):
+    parts = re.split(r"\s+@\s+|\s+vs\.?\s+", matchup or "", maxsplit=1, flags=re.IGNORECASE)
+    if len(parts) != 2:
+        return None
+    away, home = parts[0].strip(), parts[1].strip()
+    for g in games:
+        try:
+            if abs((dt.date.fromisoformat((g.get("date") or "")[:10]) - dt.date.fromisoformat(pdate)).days) > 2:
+                continue
+        except Exception:
+            continue
+        ga, gh = g.get("away_abbrev", ""), g.get("home_abbrev", "")
+        ga_nm, gh_nm = g.get("away_name", ""), g.get("home_name", "")
+        # NHL pick matchups use full team names; the game carries both the full
+        # name and the abbrev -- match on either.
+        away_ok = (_team_match(away, ga_nm) or _team_match(away, ga)
+                   or (_last(away) and _last(away) in (ga_nm or "").lower())
+                   or (ga and ga.lower() in away.lower()))
+        home_ok = (_team_match(home, gh_nm) or _team_match(home, gh)
+                   or (_last(home) and _last(home) in (gh_nm or "").lower())
+                   or (gh and gh.lower() in home.lower()))
+        if away_ok and home_ok:
+            return g
+    return None
+
+
+def _grade_nhl_pick(pick: Dict[str, Any], by_name: Dict[str, Any],
+                    games: List[Dict[str, Any]]) -> Optional[str]:
+    """Skater hits/blocks props + puck line vs real box scores. Period-3 totals
+    have no reliable ESPN period feed -> left unsettled rather than mis-graded."""
+    market = (pick.get("market") or "").upper()
+    source = (pick.get("source") or "").lower()
+    subj = (pick.get("player_or_matchup") or "").strip()
+    pdate = pick.get("date") or ""
+
+    # Period-3 total: no period-scoring feed available -> skip.
+    if "p3" in source or "period" in source or re.match(r"P\dG?_", market):
+        return None
+
+    # Puck line (game spread): {AWAY,HOME}_PLUS_X / _pl_ source.
+    m = re.search(r"(AWAY|HOME)_PLUS_(\d+(?:\.\d+)?)", market)
+    if m or "_pl_" in source:
+        g = _find_nhl_game(subj, pdate, games)
+        if not g or g.get("home_score") is None:
+            return None
+        side = "home" if (m and m.group(1) == "HOME") or "home" in source else "away"
+        line = float(m.group(2)) if m else 1.5
+        diff = (g["home_score"] - g["away_score"]) if side == "home" else (g["away_score"] - g["home_score"])
+        won = diff > -line   # covers the +line spread (loses by < line, or wins)
+        pick["outcome"] = {"final_score": f"{g.get('away_abbrev')} {g['away_score']} @ {g.get('home_abbrev')} {g['home_score']}",
+                           "side": side, "line": line, "market": pick.get("market"),
+                           "verify": f"{g.get('away_abbrev')} {g['away_score']} @ {g.get('home_abbrev')} {g['home_score']}: {side} {'+' if line>=0 else ''}{line} — {pick.get('market')}"}
+        return "won" if won else "lost"
+
+    # Skater prop (hits / blocks / shots / points / goals / assists).
+    stat = _nhl_stat(source, market)
+    mnum = re.search(r"(?:over|under)_(\d+(?:\.\d+)?)", (source + " " + market).lower())
+    if stat is None or not mnum:
+        return None
+    line = float(mnum.group(1))
+    side = "under" if "under" in (source + market).lower() else "over"
+    prec = by_name.get(subj.lower())
+    if not prec:
+        return None
+    for game in (prec.get("games") or []):
+        try:
+            if abs((dt.date.fromisoformat((game.get("date") or "")[:10]) - dt.date.fromisoformat(pdate)).days) > 2:
+                continue
+        except Exception:
+            continue
+        val = game.get(stat)
+        if val is None:
+            continue
+        over_wins = val > line
+        won = (not over_wins) if side == "under" else over_wins
+        pick["outcome"] = {"stat": stat, "actual": val, "line": line, "side": side.upper(),
+                           "verify": f"{subj} — {stat} = {val} (line {line}, bet {side}) on {game.get('date')}"}
+        return "won" if won else "lost"
+    return None
+
+
 def _settle_picks(history: List[Dict[str, Any]]) -> int:
     """Try to settle each unsettled pick. Returns count newly settled."""
     n_settled = 0
@@ -1918,6 +2010,8 @@ def _settle_picks(history: List[Dict[str, Any]]) -> int:
     nba_games = _load(os.path.join(DATA_DIR, "nba_historical.json")).get("games") or []
     nfl_by_name = _load(os.path.join(DATA_DIR, "nfl_player_gamelogs.json")).get("by_name") or {}
     nfl_games = _load(os.path.join(DATA_DIR, "nfl_historical.json")).get("games") or []
+    nhl_by_name = _load(os.path.join(DATA_DIR, "nhl_player_gamelogs.json")).get("by_name") or {}
+    nhl_games = _load(os.path.join(DATA_DIR, "nhl_historical.json")).get("games") or []
     # Individual / match sports (golf finish, tennis match result, UFC fight result)
     # so those picks settle on simple outcomes instead of voiding.
     golf_tournaments = _load(os.path.join(DATA_DIR, "golf_results.json")).get("tournaments") or []
@@ -1946,6 +2040,8 @@ def _settle_picks(history: List[Dict[str, Any]]) -> int:
             result = _grade_wnba_pick(p, nba_by_name, nba_games)   # same basketball grader
         elif sport == "NFL":
             result = _grade_nfl_pick(p, nfl_by_name, nfl_games)
+        elif sport == "NHL":
+            result = _grade_nhl_pick(p, nhl_by_name, nhl_games)
         elif sport == "GOLF":
             result = _grade_golf_pick(p, golf_tournaments)
         elif sport == "TENNIS":
