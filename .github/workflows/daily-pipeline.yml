@@ -617,6 +617,13 @@ jobs:
       - name: NBA player turnovers prop projections
         working-directory: python
         run: python nba_player_turnovers_props.py || true
+      # Combo markets (derive from the points/assists/rebounds prop outputs above).
+      - name: NBA player combo props (PA / PR / RA)
+        working-directory: python
+        run: |
+          python nba_player_pa_combo_props.py || true
+          python nba_player_pr_combo_props.py || true
+          python nba_player_ra_combo_props.py || true
       - name: WNBA player 3-pointers (3PM) props
         working-directory: python
         run: python wnba_player_threes_props.py || true

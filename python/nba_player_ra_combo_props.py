@@ -112,6 +112,7 @@ def run() -> Dict[str, Any]:
 
         out_rows.append({
             "matchup": rr.get("matchup"),
+            "game_date": rr.get("game_date"),
             "player": rr.get("player"),
             "team": rr.get("team"),
             "projected_reb": round(proj_reb, 2),

@@ -1242,6 +1242,27 @@ def _collect_picks_from_sources() -> List[Dict[str, Any]]:
                 "game_date": r.get("game_date"),
             })
 
+    # NBA combo markets (points+assists / points+rebounds / rebounds+assists) ->
+    # settle via the basketball grader's _pts_ast / _pts_reb / _reb_ast sentinels.
+    for jf, src in (("nba_player_pa_combo_props.json", "nba_pa"),
+                    ("nba_player_pr_combo_props.json", "nba_pr"),
+                    ("nba_player_ra_combo_props.json", "nba_ra")):
+        combo = _load(os.path.join(DATA_DIR, jf))
+        for r in (combo.get("strong_edges") or []):
+            bm = r.get("best_market") or {}
+            if bm.get("p"):
+                out.append({
+                    "source": f"{src}_{bm.get('market', '').lower()}",
+                    "sport": "NBA",
+                    "player_or_matchup": r.get("player"),
+                    "market": bm.get("market"),
+                    "prob": bm.get("p"),
+                    "fair_american": bm.get("fair_odds"),
+                    "p_predicted": bm.get("p"),
+                    "matchup": r.get("matchup"),
+                    "game_date": r.get("game_date"),
+                })
+
     # Pitcher walks props strong edges
     walks = _load(os.path.join(DATA_DIR, "mlb_pitcher_walks_props.json"))
     for r in (walks.get("strong_edges") or []):
@@ -1466,6 +1487,9 @@ def _bball_stat(market: str):
     elif "pra" in m: stat = "_pra"
     elif ("reb" in m and "ast" in m): stat = "_reb_ast"
     elif "double_double" in m or "_dd_" in m or m.endswith("_dd"): stat = "_dd"
+    elif m.startswith("pa_") or "points_assists" in m: stat = "_pts_ast"
+    elif m.startswith("pr_") or "points_rebounds" in m: stat = "_pts_reb"
+    elif m.startswith("ra_") or "rebounds_assists" in m: stat = "_reb_ast"
     elif "pts" in m or "point" in m: stat = "pts"
     elif "reb" in m: stat = "reb"
     elif "ast" in m: stat = "ast"
@@ -1486,6 +1510,12 @@ def _bball_value(stat: str, game: Dict[str, Any]):
     if stat == "_reb_ast":
         if all(game.get(k) is None for k in ("reb", "ast")): return None
         return (game.get("reb") or 0) + (game.get("ast") or 0)
+    if stat == "_pts_ast":
+        if all(game.get(k) is None for k in ("pts", "ast")): return None
+        return (game.get("pts") or 0) + (game.get("ast") or 0)
+    if stat == "_pts_reb":
+        if all(game.get(k) is None for k in ("pts", "reb")): return None
+        return (game.get("pts") or 0) + (game.get("reb") or 0)
     if stat == "_dd":
         cats = [game.get(k) or 0 for k in ("pts", "reb", "ast", "stl", "blk")]
         return 1.0 if sum(1 for c in cats if c >= 10) >= 2 else 0.0
