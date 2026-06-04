@@ -1636,8 +1636,9 @@ def _grade_wnba_pick(pick: Dict[str, Any], by_name: Dict[str, Any],
 # ---------------------------------------------------------------------------
 def _fb_stat(source: str, market: str):
     """Parse a football market (+ source as hint) -> (stat, line, side). stat is
-    a gamelog field (pass_yds/pass_td/pass_int/rush_yds/rush_att/rush_td/rec/
-    rec_yds/rec_td/anytime_td) or a team-total sentinel (_home_total/_away_total)."""
+    a gamelog field (pass_yds/pass_cmp/pass_td/pass_int/rush_yds/rush_att/rush_td/
+    rec/rec_yds/rec_td/longest_reception/longest_rush/anytime_td) or a team-total
+    sentinel (_home_total/_away_total)."""
     s = ((source or "") + " " + (market or "")).lower()
     if "under" in s: side = "under"
     elif "over" in s: side = "over"
@@ -1650,6 +1651,8 @@ def _fb_stat(source: str, market: str):
         return "anytime_td", 0.5, (side or "over")
     if "home_total" in s: stat = "_home_total"
     elif "away_total" in s: stat = "_away_total"
+    elif "longest_rec" in s or "longest_reception" in s: stat = "longest_reception"
+    elif "longest_rush" in s or "longest_carry" in s: stat = "longest_rush"
     elif "pass_yd" in s or "passing_yard" in s: stat = "pass_yds"
     elif "rush_yd" in s or "rushing_yard" in s: stat = "rush_yds"
     elif "rec_yd" in s or "receiving_yard" in s: stat = "rec_yds"

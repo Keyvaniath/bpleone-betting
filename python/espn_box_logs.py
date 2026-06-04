@@ -41,8 +41,9 @@ BASKETBALL_STATS = {
 # Football: stats live under per-category blocks. (category -> {ESPN label -> field}).
 FOOTBALL_FIELDS = {
     "passing":   {"YDS": "pass_yds", "TD": "pass_td", "INT": "pass_int"},
-    "rushing":   {"YDS": "rush_yds", "CAR": "rush_att", "TD": "rush_td"},
-    "receiving": {"REC": "rec", "YDS": "rec_yds", "TD": "rec_td", "TGTS": "targets"},
+    "rushing":   {"YDS": "rush_yds", "CAR": "rush_att", "TD": "rush_td", "LONG": "longest_rush"},
+    "receiving": {"REC": "rec", "YDS": "rec_yds", "TD": "rec_td", "TGTS": "targets",
+                  "LONG": "longest_reception"},
 }
 # Hockey: skater stats indexed by column label (forwards + defenses blocks hold
 # the athletes; the 'skaters' block is a summary with no athletes).
@@ -162,6 +163,13 @@ def _parse_football(summary: Dict[str, Any], date: str) -> List[Dict[str, Any]]:
                         v = _to_int(stat_vals[idx[lab]])
                         if v is not None:
                             rec[field] = v
+                # Passing completions/attempts arrive combined as "22/30".
+                if "C/ATT" in labels and labels.index("C/ATT") < len(stat_vals):
+                    ca = str(stat_vals[labels.index("C/ATT")])
+                    if "/" in ca:
+                        c, a = _to_int(ca.split("/")[0]), _to_int(ca.split("/")[1])
+                        if c is not None: rec["pass_cmp"] = c
+                        if a is not None: rec["pass_att"] = a
     rows: List[Dict[str, Any]] = []
     for rec in agg.values():
         # anytime touchdown = rushing TD + receiving TD (player scored).
