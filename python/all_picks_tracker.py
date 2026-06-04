@@ -1263,6 +1263,44 @@ def _collect_picks_from_sources() -> List[Dict[str, Any]]:
                     "game_date": r.get("game_date"),
                 })
 
+    # MLB firehose: dormant batter generators (2+ hits / 3+ TB / 1+ RBI) -> settle
+    # via the batter grader (the N+ markets now map to hits/tb/rbi lines).
+    for jf, src in (("mlb_batter_2plus_hits_props.json", "mlb_2plus_hits"),
+                    ("mlb_batter_3plus_tb_props.json", "mlb_3plus_tb"),
+                    ("mlb_batter_rbi_props.json", "mlb_rbi_1plus")):
+        bp = _load(os.path.join(DATA_DIR, jf))
+        for r in (bp.get("strong_edges") or []):
+            bm = r.get("best_market") or {}
+            if bm.get("p") and (r.get("batter") or r.get("player")):
+                out.append({
+                    "source": f"{src}_{bm.get('market', '').lower()}",
+                    "sport": "MLB",
+                    "player_or_matchup": r.get("batter") or r.get("player"),
+                    "market": bm.get("market"),
+                    "prob": bm.get("p"),
+                    "fair_american": bm.get("fair_odds"),
+                    "p_predicted": bm.get("p"),
+                    "matchup": r.get("matchup"),
+                })
+
+    # MLB firehose: alternate game totals -> normalize GAME_TOTAL_OVER_x to the
+    # game-line over_x the MLB grader settles against total runs.
+    gt = _load(os.path.join(DATA_DIR, "mlb_game_total_alt_props.json"))
+    for r in (gt.get("strong_edges") or []):
+        bm = r.get("best_market") or {}
+        gmm = re.search(r"(over|under)_(\d+(?:\.\d+)?)", (bm.get("market") or "").lower())
+        if bm.get("p") and gmm:
+            out.append({
+                "source": f"mlb_game_total_{(bm.get('market') or '').lower()}",
+                "sport": "MLB",
+                "player_or_matchup": r.get("matchup"),
+                "market": f"{gmm.group(1)}_{gmm.group(2)}",
+                "prob": bm.get("p"),
+                "fair_american": bm.get("fair_odds"),
+                "p_predicted": bm.get("p"),
+                "matchup": r.get("matchup"),
+            })
+
     # Pitcher walks props strong edges
     walks = _load(os.path.join(DATA_DIR, "mlb_pitcher_walks_props.json"))
     for r in (walks.get("strong_edges") or []):
@@ -1396,6 +1434,15 @@ def _batter_stat_and_threshold(market: str):
     m = (market or "").lower()
     num = re.search(r"(\d+(?:\.\d+)?)", m)
     nval = float(num.group(1)) if num else None
+    # "N+"-style alt markets: TB_3PLUS -> tb over 2.5, HITS_2PLUS -> hits over 1.5.
+    plus = re.search(r"(\d+)\s*plus", m)
+    if plus:
+        ln = float(plus.group(1)) - 0.5
+        if "tb" in m or "total_base" in m: return ("tb", ln)
+        if "hit" in m: return ("hits", ln)
+        if "rbi" in m: return ("rbi", ln)
+        if "hr" in m or "home_run" in m: return ("hr", ln)
+        if "run" in m: return ("runs", ln)
     if "total_base" in m:
         return ("tb", nval if nval is not None else 1.5)
     if "hrr" in m:

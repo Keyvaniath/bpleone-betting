@@ -393,6 +393,13 @@ jobs:
       - name: MLB extended player props (TB / BB / SO / HRR / outs / extended K)
         working-directory: python
         run: python mlb_extended_props.py
+      - name: MLB firehose props (2+ hits / 3+ TB / 1+ RBI / alt game totals)
+        working-directory: python
+        run: |
+          python mlb_batter_2plus_hits_props.py || true
+          python mlb_batter_3plus_tb_props.py || true
+          python mlb_batter_rbi_props.py || true
+          python mlb_game_total_alt_props.py || true
       - name: NBA player heat tracker (L5 vs season PTS/REB/AST deltas)
         working-directory: python
         run: python nba_player_heat.py
