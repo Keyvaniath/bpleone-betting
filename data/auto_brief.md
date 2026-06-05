@@ -1,51 +1,63 @@
 # Tonight's Slate Brief — 2026-06-05
 
-## Slate Quality: 55/100 (MEDIUM)
+## Slate Quality: 54/100 (LOW)
 _0% lineups confirmed · 14 rookie SPs_
-**Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
+**Recommendation:** Defensive sizing tonight; stick to highest-confidence plays.
 
 ## Slate
 - **15 games** scheduled
-- **22 best bets** scored: 0 DK · 0 PP · 4 NRFI · 0 SGP
-- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$37.63
-- **MC simulation:** EV +$56.36, 79% P(profit), p05 $-83.26 / p95 $162.45
+- **35 best bets** scored: 0 DK · 0 PP · 11 NRFI · 6 SGP
+- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$50.88
+- **MC simulation:** EV +$143.0, 88% P(profit), p05 $-68.19 / p95 $326.04
 
 ## Top 5 Best Bets
-1. **PIT @ HOU YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +29.2%)
-   - P(YRFI) 75.2% vs baseline 46.0%
-2. **OAK @ CHC YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +23.0%)
-   - P(YRFI) 69.0% vs baseline 46.0%
-3. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
-   - Player prop quality score 1.1935
-   - Elite player
-4. **LOL ShowMaker OVER 3.5 Kills**  (78/100 ****, edge —)
-   - Player prop quality score 1.1892
-   - Elite player
-5. **LOL Peyz OVER 4.5 Kills**  (78/100 ****, edge —)
-   - Player prop quality score 1.184
-   - Elite player
+1. **MIL @ COL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +34.1%)
+   - P(YRFI) 80.1% vs baseline 46.0%
+2. **SFG @ CHC YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +32.0%)
+   - P(YRFI) 78.0% vs baseline 46.0%
+3. **TBR @ MIA YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +27.4%)
+   - P(YRFI) 73.4% vs baseline 46.0%
+4. **CIN @ STL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +25.5%)
+   - P(YRFI) 71.5% vs baseline 46.0%
+5. **OAK @ HOU YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +22.7%)
+   - P(YRFI) 68.7% vs baseline 46.0%
 
-## ⚠️ Trap Warnings — 4 flagged
-- **PIT @ HOU YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +29.2% looks big but only 0 settled props on this player — model unproven
-- **OAK @ CHC YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +23.0% looks big but only 0 settled props on this player — model unproven
-- **TOR @ ATL NRFI (no run 1st inning)** (low):
-   - Edge +14.9% looks big but only 0 settled props on this player — model unproven
-- **LAD @ ARI YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +11.8% looks big but only 0 settled props on this player — model unproven
+## ⚠️ Trap Warnings — 16 flagged
+- **MIL @ COL YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +34.1% looks big but only 0 settled props on this player — model unproven
+- **SFG @ CHC YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +32.0% looks big but only 0 settled props on this player — model unproven
+- **TBR @ MIA YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +27.4% looks big but only 0 settled props on this player — model unproven
+- **CIN @ STL YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +25.5% looks big but only 0 settled props on this player — model unproven
+- **BOS @ NYY 2-leg SGP @ -216** (low):
+   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
+
+## Weather leans
+- **UNDER lean** (wind in + cold): SFG @ CHC
 
 ## Hot streaks
-**Batters heating up:** Oneil Cruz (heat +5.48), JJ Bleday (heat +4.95), Ryan O'Hearn (heat +4.87)
-**Pitchers on a run:** Ryan Weathers (heat +10.12), Justin Wrobleski (heat +8.65), Kyle Leahy (heat +7.27)
+**Batters heating up:** Dillon Dingler (heat +6.57), Ronald Acuña Jr. (heat +6.20), Edmundo Sosa (heat +5.83)
+**Pitchers on a run:** Robbie Ray (heat +6.13), Bryan Woo (heat +4.63), Roki Sasaki (heat +4.44)
+
+## Top correlation-aware SGPs
+- **BOS @ NYY** 2-leg @ -216 fair (joint 0.68, EV +25.0%)
+   - Ryan Weathers OVER 4.5 pitcher strikeouts
+   - Ryan Weathers UNDER 9.5 pitcher strikeouts
+- **CLE @ TEX** 2-leg @ -244 fair (joint 0.71, EV +25.0%)
+   - Kumar Rocker OVER 2.5 pitcher strikeouts
+   - Parker Messick UNDER 8.5 pitcher strikeouts
+- **SEA @ DET** 2-leg @ -225 fair (joint 0.69, EV +25.0%)
+   - Framber Valdez UNDER 6.5 pitcher strikeouts
+   - Bryan Woo UNDER 8.5 pitcher strikeouts
 
 ## Bullpens GASSED tonight
-Athletics, San Diego Padres, Seattle Mariners, San Francisco Giants, Tampa Bay Rays, Minnesota Twins, Philadelphia Phillies, Chicago White Sox
+Athletics, Pittsburgh Pirates, Toronto Blue Jays, Minnesota Twins, Atlanta Braves, Milwaukee Brewers, Baltimore Orioles, Boston Red Sox
 _Lean late-inning OVER on these games; fade their save situations._
 
 ## NRFI/YRFI strong leans
-- **YRFI** (1st-inning OVER): PIT @ HOU, OAK @ CHC, LAD @ ARI
-- **NRFI** (1st-inning UNDER): TOR @ ATL
+- **YRFI** (1st-inning OVER): MIL @ COL, SFG @ CHC, TBR @ MIA, CIN @ STL, OAK @ HOU
 
 ## Golf -- the Memorial Tournament pres. by Workday
 - **Leader:** J.J. Spaun (-5) at #1

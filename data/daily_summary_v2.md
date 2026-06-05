@@ -1,65 +1,54 @@
 # EdgeStat Daily Summary — 2026-06-05
 
-## 🏥 Model Health: 70.1/100 [HEALTHY]
-- Solid health - some minor issues to monitor
+## 🏥 Model Health: 69.4/100 [OK]
+- Operational but room to improve - check yellow components
   - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 54.4/100
   - 🔴 Brier Trend: 29.6/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟡 Data Health: 77.8/100
-  - 🟡 Edge Count: 77.1/100
+  - 🟢 Data Health: 88.9/100
+  - 🔴 Edge Count: 48.6/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.585)
-- **Total games on board:** 120
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.586)
+- **Total games on board:** 104
 - **Strong home favorites:** 3 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
-1. **PIT @ HOU YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-2. **OAK @ CHC YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-3. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
-4. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
-5. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
+1. **MIL @ COL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+2. **SFG @ CHC YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+3. **TBR @ MIA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+4. **CIN @ STL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+5. **OAK @ HOU YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** LAD @ ARI ML_AWAY -- 69% / +17.8% (score 2.8)
-- [STRONG] **[MLB-PP]** Jac Caglianone PP_batter_hrr_under_3.5 -- 85% / +47.4% (score 2.5)
-- [STRONG] **[MLB-PP]** Vinnie Pasquantino PP_batter_hrr_under_3.5 -- 85% / +46.9% (score 2.5)
-- [STRONG] **[MLB]** LAD @ ARI LAD_ML -- 71% / +21.1% (score 2.5)
+- [STRONG] **[MLB-PP]** Jac Caglianone PP_batter_hrr_under_3.5 -- 85% / +47.5% (score 2.5)
+- [STRONG] **[MLB-PP]** Vinnie Pasquantino PP_batter_hrr_under_3.5 -- 85% / +47.1% (score 2.5)
 
-## 📡 Sharp Action (Line Movement)
-- [STRONG] **TOR @ ATL** under_7.5: 48.78% → 54.55% (+5.8pp)
-- [MODERATE] **LAD @ ARI** ml_away: 53.92% → 58.16% (+4.2pp)
+## 📉 Strong UNDER Signals
+- [ELITE 7.0] **NYM @ SDP** model 4.58 vs market 7.5
+- [STRONG 6.0] **TBR @ MIA** model 5.85 vs market 7.5
+- [STRONG 5.7] **BAL @ TOR** model 7.88 vs market 8.5
 
 ## 🔒 Locks of the Day -- Track Record
-- All-time: **97-15** (86.6% hit rate)
-- Net units: **+3.49u** | ROI: **+50.3%**
-- Last 7d: 55-10 (84.6%) | net +1.89u
+- All-time: **101-17** (85.6% hit rate)
+- Net units: **+3.55u** | ROI: **+48.5%**
+- Last 7d: 55-11 (83.3%) | net +1.83u
 
-**Today's 15 Locks:**
-- [KBO] **Choi Jeong** one_plus_tb · p=73% edge=+39.8% qK=0.062u
-- [KBO] **Jose Pirela** one_plus_tb · p=73% edge=+39.2% qK=0.062u
-- [KBO] **Koo Ja-wook** one_plus_tb · p=73% edge=+38.9% qK=0.062u
-- [KBO] **Mel Rojas Jr.** one_plus_tb · p=73% edge=+38.5% qK=0.062u
-- [KBO] **Austin Dean** one_plus_tb · p=73% edge=+38.5% qK=0.062u
-- [MLB-PP] **Alec Bohm** PP_batter_hrr_under_3.5 · p=85% edge=+47.4% qK=0.062u
-- [MLB-PP] **Jake Meyers** PP_batter_hrr_under_3.5 · p=85% edge=+47.3% qK=0.062u
-- [MLB-PP] **Freddy Fermin** PP_batter_hrr_under_2.5 · p=85% edge=+47.2% qK=0.062u
-- [MLB-PP] **Brice Turang** PP_batter_hrr_under_4.5 · p=85% edge=+47.0% qK=0.062u
-- [MLB-PP] **Taylor Ward** PP_batter_hrr_under_3.5 · p=85% edge=+46.8% qK=0.062u
-- [MLB-PP] **Jac Caglianone** PP_batter_hrr_under_3.5 · p=85% edge=+47.3% qK=0.062u
-- [MLB-PP] **Salvador Perez** PP_batter_hrr_under_3.5 · p=85% edge=+47.3% qK=0.062u
-- [MLB-PP] **Tyler Heineman** PP_batter_hrr_under_2.5 · p=85% edge=+47.0% qK=0.062u
-- [MLB-PP] **Vinnie Pasquantino** PP_batter_hrr_under_3.5 · p=85% edge=+46.9% qK=0.062u
-- [MLB-PP] **Geraldo Perdomo** PP_batter_hrr_under_3.5 · p=85% edge=+46.9% qK=0.062u
+**Today's 5 Locks:**
+- [MLB-PP] **Jac Caglianone** PP_batter_hrr_under_3.5 · p=85% edge=+47.5% qK=0.062u
+- [MLB-PP] **Salvador Perez** PP_batter_hrr_under_3.5 · p=85% edge=+47.4% qK=0.062u
+- [MLB-PP] **Vinnie Pasquantino** PP_batter_hrr_under_3.5 · p=85% edge=+47.1% qK=0.062u
+- [MLB-PP] **Geraldo Perdomo** PP_batter_hrr_under_3.5 · p=85% edge=+47.0% qK=0.062u
+- [MLB-PP] **Masyn Winn** PP_batter_hrr_under_3.5 · p=85% edge=+47.0% qK=0.062u
 
 ## 🎰 Top Balanced 2-Leg Parlays (40-65% joint)
-- [MLB-PP] Jac Caglianone PP_batter_hrr_under_ + [MLB] LAD @ ARI LAD_ML
-  Joint: 60% | Fair: 197 | Edge: +78.5%
-- [MLB-PP] Salvador Perez PP_batter_hrr_under_ + [MLB] LAD @ ARI LAD_ML
-  Joint: 60% | Fair: 197 | Edge: +78.4%
-- [MLB-PP] Tyler Heineman PP_batter_hrr_under_ + [MLB] LAD @ ARI LAD_ML
-  Joint: 60% | Fair: 197 | Edge: +78.0%
+- [MLB-PP] Jac Caglianone PP_batter_hrr_under_ + [MLB] TBR @ MIA MIA_ML
+  Joint: 48% | Fair: 277 | Edge: +81.8%
+- [MLB-PP] Salvador Perez PP_batter_hrr_under_ + [MLB] TBR @ MIA MIA_ML
+  Joint: 48% | Fair: 277 | Edge: +81.7%
+- [MLB-PP] Vinnie Pasquantino PP_batter_hrr_under_ + [MLB] TBR @ MIA MIA_ML
+  Joint: 48% | Fair: 277 | Edge: +81.2%
 
 ## 🎮 Player Play of the Day (cross-sport)
 - **[LOL]** Inspired UNDER 3.5 Kills | MED conviction · model 61.7% fair -161
@@ -83,25 +72,26 @@
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$1.64**
-  - #1 [NRFI] $50 on PIT @ HOU YRFI (1st-inning OVER 0.5) (P=75%)
-  - #2 [NRFI] $50 on OAK @ CHC YRFI (1st-inning OVER 0.5) (P=69%)
-  - #3 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
-  - #4 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
-  - #5 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
+- Expected EV: **$16.47**
+  - #1 [NRFI] $50 on MIL @ COL YRFI (1st-inning OVER 0.5) (P=80%)
+  - #2 [NRFI] $50 on SFG @ CHC YRFI (1st-inning OVER 0.5) (P=78%)
+  - #3 [NRFI] $50 on TBR @ MIA YRFI (1st-inning OVER 0.5) (P=73%)
+  - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
+  - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
-## 🎯 Convergence Picks (5 stacked games)
-- ELITE: **3** · HIGH: 0 · MED: 2
-  - [ELITE] Golden State Valkyries @ Minnesota Lynx : 7 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
+## 🎯 Convergence Picks (4 stacked games)
+- ELITE: **2** · HIGH: 0 · MED: 2
   - [ELITE] New York Knicks @ San Antonio Spurs : 6 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
-  - [ELITE] Vegas Golden Knights @ Carolina Hurricanes : 5 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
-  - [MED] Atlanta Dream @ Indiana Fever : 2 signals (PREGAME, ATS)
+  - [ELITE] Golden State Valkyries @ Minnesota Lynx : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
+  - [MED] Vegas Golden Knights @ Carolina Hurricanes : 2 signals (HEAT_COLD, ATS)
   - [MED] Atlanta United FC @ Columbus Crew : 2 signals (ATS, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (3)
-- **Kai-Wei Teng** OVER 6.5 K (75%) fair -306
-- **J.T. Ginn** OVER 4.5 K (69%) fair -224
-- **Chris Sale** OVER 6.5 K (69%) fair -219
+## ⚾ Top MLB Pitcher K Plays (11)
+- **Christian Scott** OVER 4.5 K (74%) fair -280
+- **Parker Messick** OVER 4.5 K (73%) fair -271
+- **Jesús Luzardo** OVER 4.5 K (71%) fair -251
+- **Ryan Weathers** OVER 5.5 K (71%) fair -250
+- **Zebby Matthews** OVER 4.5 K (71%) fair -241
 
 ## 🏀 NBA Player Heat (0 HOT / 1 COLD)
   - ❄️ **De'Aaron Fox** (SA): L5 9.6 vs season 16.9 [PTS -7.3] -- FADE OVER props
@@ -132,12 +122,12 @@
   - ❄️ **Nolan Gorman** (STL): L14 .093 / season .204 (-111pts) -- FADE props
   - ❄️ **Michael Conforto** (CHC): L14 .143 / season .253 (-110pts) -- FADE props
 
-## 📈 Streak Regression Alerts (11)
-- [NBA] New York Knicks on W4 L10 4-0 -- New York Knicks on W4 -- no historical sample
-- [NHL] Vegas Golden Knights on W4 L10 4-0 -- Vegas Golden Knights on W4 -- no historical sample
-- [WNBA] Minnesota Lynx on W5 L10 5-0 -- Minnesota Lynx on W5 -- no historical sample
+## 📈 Streak Regression Alerts (9)
+- [NBA] New York Knicks on W3 L10 3-0 -- New York Knicks on W3 -- no historical sample
 - [CWS] West Virginia Mountaineers on W3 L10 4-1 -- West Virginia Mountaineers on W3 -- no historical sample
 - [CWS] Cal Poly Mustangs on W3 L10 3-0 -- Cal Poly Mustangs on W3 -- no historical sample
+- [CWS] North Carolina Tar Heels on W3 L10 3-0 -- North Carolina Tar Heels on W3 -- no historical sample
+- [CWS] USC Trojans on W4 L10 4-1 -- USC Trojans on W4 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**
