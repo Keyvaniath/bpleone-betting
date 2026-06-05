@@ -1,30 +1,27 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-06-04T23:14:10 UTC_
+_Generated 2026-06-05T08:26:37 UTC_
 
 ## Slate Quality
-- **Tier:** STRONG_NIGHT
-- **Score:** 62
-- **Advisory:** Solid slate. Pick top STRONG/LOCK picks; consider Kelly 25-50% sizing.
+- **Tier:** NO_ACTION_NIGHT
+- **Score:** 3
+- **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 29
-- **Total FADES:** 54
+- **Total STRONG:** 13
+- **Total FADES:** 49
 
 ## Top 5 Curated Picks
-1. **GOLF / Wyndham Clark** (GOLF_PLAYER, score=165.71)
+1. **GOLF / Wyndham Clark** (GOLF_PLAYER, score=165.93)
    - Play: Wyndham Clark (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Tommy Fleetwood** (GOLF_PLAYER, score=159.93)
+2. **GOLF / Tommy Fleetwood** (GOLF_PLAYER, score=160.21)
    - Play: Tommy Fleetwood (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-3. **WNBA / napheesa collier** (WNBA_PLAYER, score=146.5)
-   - Play: napheesa collier (PLAYER_STRONG)
-   - Rationale: Cross-sport top pick (WNBA_PLAYER)
-4. **MLB / Yordan Alvarez** (MLB_BATTER, score=124.06)
-   - Play: Yordan Alvarez (BATTER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_BATTER)
-5. **WNBA / kelsey mitchell** (WNBA_PLAYER, score=108.0)
-   - Play: kelsey mitchell (PLAYER_STRONG)
-   - Rationale: Cross-sport top pick (WNBA_PLAYER)
+3. **MLB / ?** (MLB_TEAM, score=121.58)
+   - Play: ? (TEAM_STRONG)
+   - Rationale: Cross-sport top pick (MLB_TEAM)
+4. **F1 / max verstappen** (F1_DRIVER, score=49.67)
+   - Play: max verstappen (DRIVER_STRONG)
+   - Rationale: Cross-sport top pick (F1_DRIVER)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
@@ -41,11 +38,11 @@ _Generated 2026-06-04T23:14:10 UTC_
 ## Top Fades
 - **NBA** / SAS (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NBA** / NYK (TEAM_FADE)
-  - Fade angle: team total UNDER
-- **NHL** / pyotr kochetkov (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / frederik andersen (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / Sebastian Aho (SKATER_FADE)
-  - Fade angle: SOG UNDER + no goal
+- **MLB** / Shota Imanaga (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Justin Wrobleski (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Ryne Nelson (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / J.T. Ginn (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES

@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-06-05T03:39:22",
+  "generated_at": "2026-06-05T08:12:48",
   "sport": "wnba",
-  "n_games": 37,
-  "hit_rate": 0.6216,
-  "brier_score": 0.2655,
-  "log_loss": 0.7857,
-  "avg_predicted_home_winprob": 0.5566,
-  "avg_actual_home_winrate": 0.5676,
-  "bias": -0.0109,
+  "n_games": 36,
+  "hit_rate": 0.5556,
+  "brier_score": 0.2995,
+  "log_loss": 0.8609,
+  "avg_predicted_home_winprob": 0.5636,
+  "avg_actual_home_winrate": 0.6111,
+  "bias": -0.0476,
   "reliability_bins": [
     {
       "lo": 0.0,
@@ -17,65 +17,61 @@
       "actual_avg": 0.25
     },
     {
+      "lo": 0.1,
+      "hi": 0.2,
+      "n": 1,
+      "predicted_avg": 0.129,
+      "actual_avg": 1.0
+    },
+    {
       "lo": 0.2,
       "hi": 0.3,
-      "n": 5,
-      "predicted_avg": 0.222,
-      "actual_avg": 0.2
+      "n": 3,
+      "predicted_avg": 0.223,
+      "actual_avg": 0.667
     },
     {
       "lo": 0.3,
       "hi": 0.4,
       "n": 2,
-      "predicted_avg": 0.334,
-      "actual_avg": 1.0
-    },
-    {
-      "lo": 0.4,
-      "hi": 0.5,
-      "n": 1,
-      "predicted_avg": 0.442,
+      "predicted_avg": 0.373,
       "actual_avg": 1.0
     },
     {
       "lo": 0.5,
       "hi": 0.6,
-      "n": 9,
+      "n": 10,
       "predicted_avg": 0.543,
-      "actual_avg": 0.667
-    },
-    {
-      "lo": 0.6,
-      "hi": 0.7,
-      "n": 1,
-      "predicted_avg": 0.626,
-      "actual_avg": 1.0
+      "actual_avg": 0.6
     },
     {
       "lo": 0.7,
       "hi": 0.8,
-      "n": 5,
-      "predicted_avg": 0.737,
-      "actual_avg": 0.6
+      "n": 7,
+      "predicted_avg": 0.738,
+      "actual_avg": 0.714
     },
     {
       "lo": 0.8,
       "hi": 0.9,
       "n": 5,
-      "predicted_avg": 0.842,
+      "predicted_avg": 0.832,
       "actual_avg": 0.6
     },
     {
       "lo": 0.9,
       "hi": 1.0,
-      "n": 5,
-      "predicted_avg": 0.943,
-      "actual_avg": 0.6
+      "n": 4,
+      "predicted_avg": 0.933,
+      "actual_avg": 0.5
     }
   ],
   "recommendation": {
-    "applied": false,
-    "note": "model is well-calibrated (<2pp bias)"
+    "applied": true,
+    "bias_pp": -4.8,
+    "shrinkage": 1.0,
+    "recommended_shift": 0.0476,
+    "note": "Model under-predicting home by 4.8pp; add 4.8pp to P(home) (shrinkage 100%)"
   },
   "n_teams_tracked": 15
 }
