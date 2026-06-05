@@ -1,14 +1,14 @@
 # Tonight's Slate Brief — 2026-06-05
 
-## Slate Quality: 54/100 (LOW)
-_0% lineups confirmed · 14 rookie SPs_
-**Recommendation:** Defensive sizing tonight; stick to highest-confidence plays.
+## Slate Quality: 79/100 (HIGH)
+_78% lineups confirmed · 14 rookie SPs_
+**Recommendation:** Play normal Kelly sizing.
 
 ## Slate
-- **15 games** scheduled
-- **35 best bets** scored: 0 DK · 0 PP · 11 NRFI · 6 SGP
+- **14 games** scheduled
+- **37 best bets** scored: 0 DK · 0 PP · 11 NRFI · 6 SGP
 - **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$50.88
-- **MC simulation:** EV +$143.0, 88% P(profit), p05 $-68.19 / p95 $326.04
+- **MC simulation:** EV +$142.57, 90% P(profit), p05 $-52.97 / p95 $328.83
 
 ## Top 5 Best Bets
 1. **MIL @ COL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +34.1%)
@@ -23,34 +23,34 @@ _0% lineups confirmed · 14 rookie SPs_
    - P(YRFI) 68.7% vs baseline 46.0%
 
 ## ⚠️ Trap Warnings — 16 flagged
-- **MIL @ COL YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +34.1% looks big but only 0 settled props on this player — model unproven
-- **SFG @ CHC YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +32.0% looks big but only 0 settled props on this player — model unproven
-- **TBR @ MIA YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +27.4% looks big but only 0 settled props on this player — model unproven
-- **CIN @ STL YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +25.5% looks big but only 0 settled props on this player — model unproven
-- **BOS @ NYY 2-leg SGP @ -216** (low):
-   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
-
-## Weather leans
-- **UNDER lean** (wind in + cold): SFG @ CHC
+- **TBR @ MIA 4-leg SGP @ -189** (low):
+   - Edge +63.1% looks big but only 0 settled props on this player — model unproven
+- **SEA @ DET 4-leg SGP @ -136** (low):
+   - Edge +47.7% looks big but only 0 settled props on this player — model unproven
+- **WSN @ ARI 4-leg SGP @ -125** (low):
+   - Edge +47.6% looks big but only 0 settled props on this player — model unproven
+- **KCR @ MIN 4-leg SGP @ -142** (low):
+   - Edge +46.2% looks big but only 0 settled props on this player — model unproven
+- **BOS @ NYY 4-leg SGP @ -128** (low):
+   - Edge +42.2% looks big but only 0 settled props on this player — model unproven
 
 ## Hot streaks
 **Batters heating up:** Dillon Dingler (heat +6.57), Ronald Acuña Jr. (heat +6.20), Edmundo Sosa (heat +5.83)
-**Pitchers on a run:** Robbie Ray (heat +6.13), Bryan Woo (heat +4.63), Roki Sasaki (heat +4.44)
+**Pitchers on a run:** Bryan Woo (heat +4.63), Roki Sasaki (heat +4.44), Sonny Gray (heat +3.90)
 
 ## Top correlation-aware SGPs
-- **BOS @ NYY** 2-leg @ -216 fair (joint 0.68, EV +25.0%)
-   - Ryan Weathers OVER 4.5 pitcher strikeouts
-   - Ryan Weathers UNDER 9.5 pitcher strikeouts
-- **CLE @ TEX** 2-leg @ -244 fair (joint 0.71, EV +25.0%)
-   - Kumar Rocker OVER 2.5 pitcher strikeouts
-   - Parker Messick UNDER 8.5 pitcher strikeouts
-- **SEA @ DET** 2-leg @ -225 fair (joint 0.69, EV +25.0%)
-   - Framber Valdez UNDER 6.5 pitcher strikeouts
-   - Bryan Woo UNDER 8.5 pitcher strikeouts
+- **TBR @ MIA** 4-leg @ -189 fair (joint 0.65, EV +63.09%)
+   - Yandy Díaz UNDER 0.5 batter home runs
+   - Yandy Díaz UNDER 0.5 batter doubles
+   - Yandy Díaz OVER 0.5 batter total bases
+- **SEA @ DET** 4-leg @ -136 fair (joint 0.58, EV +47.68%)
+   - Julio Rodríguez UNDER 0.5 batter home runs
+   - Julio Rodríguez OVER 0.5 batter total bases
+   - Kevin McGonigle UNDER 1.5 batter singles
+- **WSN @ ARI** 4-leg @ -125 fair (joint 0.55, EV +47.57%)
+   - Corbin Carroll UNDER 0.5 batter home runs
+   - Corbin Carroll OVER 0.5 batter total bases
+   - Geraldo Perdomo OVER 0.5 batter hrr
 
 ## Bullpens GASSED tonight
 Athletics, Pittsburgh Pirates, Toronto Blue Jays, Minnesota Twins, Atlanta Braves, Milwaukee Brewers, Baltimore Orioles, Boston Red Sox
@@ -60,23 +60,23 @@ _Lean late-inning OVER on these games; fade their save situations._
 - **YRFI** (1st-inning OVER): MIL @ COL, SFG @ CHC, TBR @ MIA, CIN @ STL, OAK @ HOU
 
 ## Golf -- the Memorial Tournament pres. by Workday
-- **Leader:** J.J. Spaun (-5) at #1
+- **Leader:** Ryan Gerard (-5) at #1
 - **Field:** 72 players  |  Status: In Progress
-- **Play of the Tournament:** Shane Lowry TOP5 @ +562 (model 15.1%, HIGH)
-   - P(top 5) 15.1% -- lower variance than outright but compelling line.
+- **Play of the Tournament:** Shane Lowry TOP5 @ +599 (model 14.3%, HIGH)
+   - P(top 5) 14.3% -- lower variance than outright but compelling line.
 
 ## NBA -- PLAYOFFS
 - New York Knicks @ San Antonio Spurs (53-29 vs 62-20)  | P(home) 67.5% fair -207 | Scheduled
 
 ## NHL -- PLAYOFFS
-- Vegas Golden Knights @ Carolina Hurricanes (39-26-17 vs 53-22-7) 3-4 | P(home) 100.0% fair +0 | Final
+- Carolina Hurricanes @ Vegas Golden Knights (53-22-7 vs 39-26-17)  | P(home) 41.1% fair +143 | Scheduled
 
-## LoL Esports -- 0 live, 30 upcoming
-- [NLC] Ruddy Corporation vs Verdant BO5 | P(A) 38.6% fair +159/-159
-- [NACL] CCG Esports vs Conviction BO5 | P(A) 46.4% fair +115/-115
+## LoL Esports -- 1 live, 30 upcoming
+- [NACL] Conviction vs CCG Esports BO5 | P(A) 53.6% fair -115/+115
 - [LCK] Dplus KIA vs HANJIN BRION BO5 | P(A) 72.4% fair -262/+262
 - [LPL] BILIBILI GAMING vs Beijing JDG Esports BO5 | P(A) 62.4% fair -166/+166
 - [LEC] Karmine Corp vs Movistar KOI BO5 | P(A) 54.6% fair -120/+120
+- [CBLOL] LOS vs FURIA BO5 | P(A) 56.6% fair -130/+130
 - **LoL POT:** G2 Esports ML vs TBD (LEC, BO5) (HIGH)
 
 ## Player Play of the Day -- across all sports (3503 candidates scanned)
