@@ -1,16 +1,17 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:16 F:61
+_MODEST_NIGHT_ | L:0 S:20 F:47
 
-:lock: **LOCK:** Foster Griffin (MLB)
+:lock: **LOCK:** Brandon Sproat (MLB)
 
 :dart: **Top Picks:**
-1. [GOLF] Wyndham Clark -- Wyndham Clark (PLAYER_STRONG)
-2. [GOLF] Tommy Fleetwood -- Tommy Fleetwood (PLAYER_STRONG)
-3. [WNBA] satou sabally -- satou sabally (PLAYER_STRONG)
+1. [GOLF] J.T. Poston -- J.T. Poston (PLAYER_STRONG)
+2. [GOLF] Ryan Gerard -- Ryan Gerard (PLAYER_STRONG)
+3. [MLB] Yordan Alvarez -- Yordan Alvarez (BATTER_STRONG)
 
 :chains: **Top Parlays:**
-- [WNBA] satou sabally (2 legs, p=0.2871)
+- [MLB] Yordan Alvarez (3 legs, p=0.4076)
+- [MLB] Christian Walker (2 legs, p=0.3922)
 
-:coin: Bankroll Advisory: STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
+:coin: Bankroll Advisory: Light slate. Limit to 1-3 strongest plays; use 25% Kelly or less.
 
 _EdgeStat: ML-driven sports betting analytics. Not financial advice._

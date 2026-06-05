@@ -4,36 +4,33 @@
 
 _Pipeline health: **DEGRADED** (14/15 artifacts ok; 1 empty, 0 stale)._ 
 
-_Generated at 2026-06-05T21:37:25 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-06-05T23:07:46 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
 **NYM @ SDP - UNDER_7.5**
 - Market: -110
-- Model probability: 90.2%
-- Raw edge: +72.27%
+- Model probability: 90.4%
+- Raw edge: +72.55%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
 
-## Full Slate (14 games)
+## Full Slate (11 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 6:40p ET | SEA @ DET | Comerica Park | 72F 8mph | UNDER_8.5 +20.5% |
-| 6:40p ET | CHW @ PHI | Citizens Bank Park | 80F 6mph | UNDER_9.5 +10.96% |
-| 7:05p ET | BOS @ NYY | Yankee Stadium | 73F 3mph | NYY_ML +18.21% |
-| 7:07p ET | BAL @ TOR | Rogers Centre | indoor | TOR_ML +23.2% |
-| 7:10p ET | TBR @ MIA | loanDepot park | indoor | MIA_ML +57.36% |
-| 7:15p ET | PIT @ ATL | Truist Park | 74F 2mph | OVER_8.5 +20.82% |
+| 7:05p ET | BOS @ NYY | Yankee Stadium | 73F 2mph | NYY_ML +18.09% |
+| 7:10p ET | TBR @ MIA | loanDepot park | indoor | UNDER_8.0 +55.32% |
+| 7:15p ET | PIT @ ATL | Truist Park | 73F 3mph | OVER_8.5 +21.79% |
 | 8:10p ET | OAK @ HOU | Daikin Park | indoor | UNDER_9.0 +22.53% |
-| 8:15p ET | CIN @ STL | Busch Stadium | 78F 6mph | OVER_9.5 +29.0% |
+| 8:15p ET | CIN @ STL | Busch Stadium | 78F 8mph | OVER_9.5 +32.38% |
 | 8:15p ET | CLE @ TEX | Globe Life Field | indoor | UNDER_8.0 +21.96% |
-| 8:15p ET | KCR @ MIN | Target Field | 67F 2mph | KCR_ML +10.09% |
-| 8:40p ET | MIL @ COL | Coors Field | 71F 7mph | OVER_10.5 +37.39% |
+| 8:15p ET | KCR @ MIN | Target Field | 66F 3mph | KCR_ML +10.09% |
+| 8:40p ET | MIL @ COL | Coors Field | 75F 7mph | OVER_10.5 +40.45% |
 | 9:40p ET | WSN @ ARI | Chase Field | indoor | WSN_ML +40.48% |
-| 9:40p ET | NYM @ SDP | Petco Park | 63F 4mph | UNDER_7.5 +72.27% |
-| 10:10p ET | LAA @ LAD | UNIQLO Field at Dodger Stadium | 63F 3mph | OVER_8.5 +32.84% |
+| 9:40p ET | NYM @ SDP | Petco Park | 62F 4mph | UNDER_7.5 +72.55% |
+| 10:10p ET | LAA @ LAD | UNIQLO Field at Dodger Stadium | 62F 4mph | LAA_ML +14.41% |
 
 ## Parlays - top 5
 
@@ -61,14 +58,14 @@ _Generated at 2026-06-05T21:37:25 UTC. Game lines source: **Bovada (fallback -- 
 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
-| batter rbis | 3786 | 18.8% | 23.6% | 1.252 | 0.799 |
-| batter doubles | 1893 | 14.3% | 16.1% | 1.130 | 0.886 |
-| batter home runs | 1893 | 10.1% | 13.1% | 1.293 | 0.775 |
-| pitcher strikeouts | 793 | 36.3% | 38.9% | 1.071 | 0.935 |
 | batter singles | 1893 | 41.1% | 44.6% | 1.084 | 0.922 |
+| batter rbis | 3786 | 18.8% | 23.6% | 1.252 | 0.799 |
 | batter total bases | 3788 | 24.4% | 32.2% | 1.319 | 0.759 |
-| batter hits | 3833 | 37.5% | 41.9% | 1.116 | 0.896 |
+| pitcher strikeouts | 793 | 36.3% | 38.9% | 1.071 | 0.935 |
 | batter runs scored | 1893 | 35.3% | 39.0% | 1.104 | 0.906 |
+| batter doubles | 1893 | 14.3% | 16.1% | 1.130 | 0.886 |
+| batter hits | 3833 | 37.5% | 41.9% | 1.116 | 0.896 |
+| batter home runs | 1893 | 10.1% | 13.1% | 1.293 | 0.775 |
 
 Cumulative graded plays: 118214. Wins: 87366. Hit rate: 73.9%.
 
@@ -76,18 +73,16 @@ Cumulative graded plays: 118214. Wins: 87366. Hit rate: 73.9%.
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| BAL @ TOR | 53.4% | -114 | 3.14 | -103 | +103 |
-| BOS @ NYY | 41.8% | +139 | 4.33 | -128 | +128 |
-| CHW @ PHI | 52.3% | -110 | 3.35 | +148 | -148 |
-| CIN @ STL | 28.5% | +251 | 6.47 | -135 | +135 |
+| BAL @ TOR | 53.4% | -114 | 3.14 | -- | -- |
+| BOS @ NYY | 41.8% | +139 | 4.35 | -127 | +127 |
+| CIN @ STL | 28.5% | +251 | 6.49 | -136 | +136 |
 | CLE @ TEX | 59.1% | -144 | 2.63 | +237 | -237 |
-| KCR @ MIN | 33.4% | +199 | 5.45 | +169 | -169 |
-| LAA @ LAD | 46.4% | +116 | 3.91 | -228 | +228 |
+| KCR @ MIN | 33.4% | +199 | 5.5 | +169 | -169 |
+| LAA @ LAD | 40.3% | +148 | 4.66 | -131 | +131 |
 | MIL @ COL | 19.9% | +403 | 8.46 | +282 | -282 |
-| NYM @ SDP | 49.4% | +103 | 3.64 | +276 | -276 |
+| NYM @ SDP | 49.4% | +103 | 3.61 | +276 | -276 |
 | OAK @ HOU | 31.3% | +219 | 5.8 | +291 | -291 |
 | PIT @ ATL | 33.7% | +197 | 5.43 | +141 | -141 |
-| SEA @ DET | 46.0% | +118 | 4.05 | +363 | -363 |
 | TBR @ MIA | 26.6% | +276 | 6.63 | -137 | +137 |
 | WSN @ ARI | 39.0% | +157 | 4.71 | +242 | -242 |
 

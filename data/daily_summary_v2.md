@@ -1,18 +1,18 @@
 # EdgeStat Daily Summary — 2026-06-05
 
-## 🏥 Model Health: 73.1/100 [HEALTHY]
+## 🏥 Model Health: 72.6/100 [HEALTHY]
 - Solid health - some minor issues to monitor
   - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 54.4/100
   - 🔴 Brier Trend: 29.6/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 88.9/100
-  - 🟢 Edge Count: 85.7/100
+  - 🟢 Data Health: 83.3/100
+  - 🟢 Edge Count: 91.4/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.587)
-- **Total games on board:** 108
-- **Strong home favorites:** 5 | **Strong road dogs:** 1
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.584)
+- **Total games on board:** 107
+- **Strong home favorites:** 3 | **Strong road dogs:** 1
 
 ## 🎯 Top 5 Best Bets
 1. **MIL @ COL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
@@ -22,16 +22,16 @@
 5. **OAK @ HOU YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 
 ## 📉 Strong UNDER Signals
-- [STRONG 6.0] **TBR @ MIA** model 5.85 vs market 7.5
-- [STRONG 6.0] **NYM @ SDP** model 4.6 vs market 7.5
-- [STRONG 5.7] **BAL @ TOR** model 7.88 vs market 8.5
+- [ELITE 7.0] **NYM @ SDP** model 4.63 vs market 7.5
+- [STRONG 6.0] **TBR @ MIA** model 5.85 vs market 8.0
+- [STRONG 5.6] **CLE @ TEX** model 7.18 vs market 8.0
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **103-17** (85.8% hit rate)
 - Net units: **+3.64u** | ROI: **+49.0%**
 - Last 7d: 57-11 (83.8%) | net +1.92u
 
-**Today's 9 Locks:**
+**Today's 10 Locks:**
 - [MLB-PP] **Jac Caglianone** PP_batter_hrr_under_3.5 · p=85% edge=+47.5% qK=0.062u
 - [MLB-PP] **Salvador Perez** PP_batter_hrr_under_3.5 · p=85% edge=+47.4% qK=0.062u
 - [MLB-PP] **Vinnie Pasquantino** PP_batter_hrr_under_3.5 · p=85% edge=+47.1% qK=0.062u
@@ -41,14 +41,15 @@
 - [MLB-PP] **Wyatt Langford** PP_batter_hrr_under_3.5 · p=85% edge=+48.1% qK=0.062u
 - [MLB-PP] **Derek Hill** PP_batter_hrr_under_3.5 · p=85% edge=+48.1% qK=0.062u
 - [MLB-PP] **Freddy Fermin** PP_batter_hrr_under_2.5 · p=85% edge=+48.1% qK=0.062u
+- [MLB-PP] **Zach McKinstry** PP_batter_hrr_under_2.5 · p=87% edge=+50.2% qK=0.062u
 
 ## 🎰 Top Balanced 2-Leg Parlays (40-65% joint)
+- [MLB-PP] Zach McKinstry PP_batter_hrr_under_ + [MLB] TBR @ MIA MIA_ML
+  Joint: 49% | Fair: 273 | Edge: +84.2%
 - [MLB-PP] Alec Bohm PP_batter_hrr_under_ + [MLB] TBR @ MIA MIA_ML
-  Joint: 48% | Fair: 277 | Edge: +82.6%
+  Joint: 49% | Fair: 273 | Edge: +81.7%
 - [MLB-PP] Jac Caglianone PP_batter_hrr_under_ + [MLB] TBR @ MIA MIA_ML
-  Joint: 48% | Fair: 277 | Edge: +82.6%
-- [MLB-PP] Wyatt Langford PP_batter_hrr_under_ + [MLB] TBR @ MIA MIA_ML
-  Joint: 48% | Fair: 277 | Edge: +82.5%
+  Joint: 49% | Fair: 273 | Edge: +81.7%
 
 ## 🎮 Player Play of the Day (cross-sport)
 - **[LOL]** Inspired UNDER 3.5 Kills | MED conviction · model 61.7% fair -161
@@ -57,9 +58,8 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (2)
+## ⚡ Pre-Game HIGH Conviction (1)
 - [WNBA] **Dallas Wings** AWAY (3-1 L10) · model 63.0% fair -170
-- [CWS] **North Carolina Tar Heels** HOME (3-0 L10) · model 62.4% fair -166
 
 ## 🔥/❄️ Heat / Cold Signals
 - Hot teams: **19** | Cold teams: **7** | Over-heavy: 0 | Under-heavy: 6
@@ -82,12 +82,13 @@
   - #4 [NRFI] $50 on TBR @ MIA YRFI (1st-inning OVER 0.5) (P=73%)
   - #5 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
 
-## 🎯 Convergence Picks (4 stacked games)
-- ELITE: **2** · HIGH: 0 · MED: 2
+## 🎯 Convergence Picks (6 stacked games)
+- ELITE: **3** · HIGH: 2 · MED: 1
   - [ELITE] New York Knicks @ San Antonio Spurs : 6 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
-  - [ELITE] Golden State Valkyries @ Minnesota Lynx : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
-  - [MED] Vegas Golden Knights @ Carolina Hurricanes : 2 signals (HEAT_COLD, ATS)
-  - [MED] Atlanta United FC @ Columbus Crew : 2 signals (ATS, ATS)
+  - [ELITE] Carolina Hurricanes @ Vegas Golden Knights : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ANOMALY)
+  - [ELITE] Dallas Wings @ Los Angeles Sparks : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ANOMALY)
+  - [HIGH] Connecticut Sun @ Chicago Sky : 3 signals (HEAT_COLD, ANOMALY, ATS)
+  - [HIGH] Phoenix Mercury @ Portland Fire : 3 signals (HEAT_COLD, ANOMALY, ATS)
 
 ## ⚾ Top MLB Pitcher K Plays (11)
 - **Christian Scott** OVER 4.5 K (74%) fair -280
@@ -107,30 +108,30 @@
   - [COIN_FLIP] **Marcus McGhee** (10-2-0) vs John Yannis -- fair -129
 
 ## ⛳ Golf Player Heat (from the Memorial Tournament pres. by Workday)
-  - 🔥 T1 **Ryan Gerard** (USA): -5 total -- finished T1
-  - 🔥 T2 **J.J. Spaun** (USA): -5 total -- finished T2
-  - 🔥 T3 **Wyndham Clark** (USA): -5 total -- finished T3
-  - 🔥 T4 **Tommy Fleetwood** (England): -5 total -- finished T4
-  - 🔥 T5 **Nick Taylor** (Canada): -4 total -- finished T5
+  - 🔥 T1 **J.T. Poston** (USA): -9 total -- finished T1
+  - 🔥 T2 **Ryan Gerard** (USA): -8 total -- finished T2
+  - 🔥 T3 **Sam Burns** (USA): -6 total -- finished T3
+  - 🔥 T4 **Tommy Fleetwood** (England): -4 total -- finished T4
+  - 🔥 T5 **Eric Cole** (USA): -3 total -- finished T5
 
-## 🔥 MLB Batter Heat (32 HOT / 44 COLD)
-  - 🔥 **Jung Hoo Lee** (SF): L14 .472 / season .322 (+150pts)
+## 🔥 MLB Batter Heat (33 HOT / 43 COLD)
   - 🔥 **Trent Grisham** (NYY): L14 .362 / season .212 (+150pts)
+  - 🔥 **Jung Hoo Lee** (SF): L14 .463 / season .321 (+142pts)
   - 🔥 **Tyler Soderstrom** (ATH): L14 .373 / season .231 (+142pts)
   - 🔥 **Willson Contreras** (BOS): L14 .429 / season .295 (+134pts)
   - 🔥 **Colton Cowser** (BAL): L14 .355 / season .224 (+131pts)
   - ❄️ **Ildemaro Vargas** (AZ): L14 .109 / season .283 (-174pts) -- FADE props
   - ❄️ **Shea Langeliers** (ATH): L14 .145 / season .289 (-144pts) -- FADE props
   - ❄️ **Andrés Giménez** (TOR): L14 .098 / season .211 (-113pts) -- FADE props
+  - ❄️ **Michael Conforto** (CHC): L14 .147 / season .259 (-112pts) -- FADE props
   - ❄️ **Nolan Gorman** (STL): L14 .093 / season .204 (-111pts) -- FADE props
-  - ❄️ **Michael Conforto** (CHC): L14 .143 / season .253 (-110pts) -- FADE props
 
-## 📈 Streak Regression Alerts (9)
+## 📈 Streak Regression Alerts (11)
 - [NBA] New York Knicks on W3 L10 3-0 -- New York Knicks on W3 -- no historical sample
+- [WNBA] Chicago Sky on L4 L10 0-4 -- Chicago Sky on L4 -- no historical sample
+- [WNBA] Dallas Wings on W3 L10 3-1 -- Dallas Wings on W3 -- no historical sample
 - [CWS] West Virginia Mountaineers on W3 L10 4-1 -- West Virginia Mountaineers on W3 -- no historical sample
 - [CWS] Cal Poly Mustangs on W3 L10 3-0 -- Cal Poly Mustangs on W3 -- no historical sample
-- [CWS] North Carolina Tar Heels on W3 L10 3-0 -- North Carolina Tar Heels on W3 -- no historical sample
-- [CWS] USC Trojans on W4 L10 4-1 -- USC Trojans on W4 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**
