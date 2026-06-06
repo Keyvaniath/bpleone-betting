@@ -1,37 +1,27 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-06-05T23:06:37 UTC_
+_Generated 2026-06-06T07:02:46 UTC_
 
 ## Slate Quality
-- **Tier:** MODEST_NIGHT
-- **Score:** 33
-- **Advisory:** Light slate. Limit to 1-3 strongest plays; use 25% Kelly or less.
+- **Tier:** NO_ACTION_NIGHT
+- **Score:** 1
+- **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 20
-- **Total FADES:** 47
-
-## Lock of the Night
-- **Subject:** Brandon Sproat
-- **Source:** ELITE_BOARD
-- **Sport:** MLB
-- **Score:** 15.0
-- **Details:** MIL @ COL
+- **Total STRONG:** 13
+- **Total FADES:** 51
 
 ## Top 5 Curated Picks
-1. **GOLF / J.T. Poston** (GOLF_PLAYER, score=217.71)
+1. **GOLF / J.T. Poston** (GOLF_PLAYER, score=218.0)
    - Play: J.T. Poston (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Ryan Gerard** (GOLF_PLAYER, score=215.93)
+2. **GOLF / Ryan Gerard** (GOLF_PLAYER, score=216.29)
    - Play: Ryan Gerard (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-3. **MLB / Yordan Alvarez** (MLB_BATTER, score=125.19)
-   - Play: Yordan Alvarez (BATTER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_BATTER)
-4. **MLB / Ketel Marte** (MLB_BATTER, score=116.94)
-   - Play: Ketel Marte (BATTER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_BATTER)
-5. **WNBA / satou sabally** (WNBA_PLAYER, score=103.08)
-   - Play: satou sabally (PLAYER_STRONG)
-   - Rationale: Cross-sport top pick (WNBA_PLAYER)
+3. **MLB / ?** (MLB_TEAM, score=85.62)
+   - Play: ? (TEAM_STRONG)
+   - Rationale: Cross-sport top pick (MLB_TEAM)
+4. **F1 / max verstappen** (F1_DRIVER, score=49.67)
+   - Play: max verstappen (DRIVER_STRONG)
+   - Rationale: Cross-sport top pick (F1_DRIVER)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
@@ -40,19 +30,19 @@ _Generated 2026-06-05T23:06:37 UTC_
   - Sam Burns top 10 finish
 
 ## Slate ROI Projection
-- **Picks:** 2
-- **Avg edge:** -0.91%
+- **Picks:** 0
+- **Avg edge:** 0%
 - **Expected ROI (1/4 Kelly):** 0.0%
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **NBA** / SAS (TEAM_FADE)
-  - Fade angle: team total UNDER
-- **MLB** / Jesús Luzardo (PITCHER_FADE)
+- **MLB** / Brandon Sproat (PITCHER_FADE)
   - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **MLB** / Anthony Kay (PITCHER_FADE)
+- **MLB** / Merrill Kelly (PITCHER_FADE)
   - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **MLB** / Framber Valdez (PITCHER_FADE)
+- **MLB** / Foster Griffin (PITCHER_FADE)
   - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **NBA** / NYK (TEAM_FADE)
-  - Fade angle: team total UNDER
+- **MLB** / Peter Lambert (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Mitch Keller (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
