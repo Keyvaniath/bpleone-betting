@@ -4,14 +4,14 @@
 
 _Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
 
-_Generated at 2026-06-06T07:02:49 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-06-06T11:40:58 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
-**CHW @ PHI - CHW_ML**
-- Market: +111
-- Model probability: 74.8%
-- Raw edge: +57.81%
+**NYM @ SDP - UNDER_8.0**
+- Market: -110
+- Model probability: 84.0%
+- Raw edge: +60.31%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
@@ -20,52 +20,52 @@ _Generated at 2026-06-06T07:02:49 UTC. Game lines source: **Bovada (fallback -- 
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 1:10p ET | SEA @ DET | Comerica Park | 87F 13mph | SEA_ML +15.14% |
-| 2:10p ET | KCR @ MIN | Target Field | 89F 6mph | MIN_ML +10.68% |
-| 2:15p ET | CIN @ STL | Busch Stadium | 88F 10mph | OVER_9.5 +38.85% |
-| 2:20p ET | SFG @ CHC | Wrigley Field | 69F 8mph | UNDER_8.5 +12.11% |
+| 1:10p ET | SEA @ DET | Comerica Park | 87F 13mph | SEA_ML +14.78% |
+| 2:10p ET | KCR @ MIN | Target Field | 88F 7mph | MIN_ML +10.74% |
+| 2:15p ET | CIN @ STL | Busch Stadium | 90F 9mph | OVER_9.5 +38.67% |
+| 2:20p ET | SFG @ CHC | Wrigley Field | 69F 6mph | UNDER_8.5 +15.33% |
 | 3:07p ET | BAL @ TOR | Rogers Centre | indoor | OVER_8.0 +13.54% |
-| 4:05p ET | CHW @ PHI | Citizens Bank Park | 90F 10mph | CHW_ML +57.81% |
+| 4:05p ET | CHW @ PHI | Citizens Bank Park | 76F 10mph | CHW_ML +57.48% |
 | 4:10p ET | WSN @ ARI | Chase Field | indoor | OVER_9.0 +28.0% |
 | 4:10p ET | OAK @ HOU | Daikin Park | indoor | OVER_9.5 +28.66% |
-| 4:10p ET | PIT @ ATL | Truist Park | 85F 8mph | OVER_8.5 +38.08% |
-| 4:10p ET | TBR @ MIA | loanDepot park | indoor | TBR_ML +17.66% |
+| 4:10p ET | PIT @ ATL | Truist Park | 84F 8mph | OVER_8.0 +47.06% |
+| 4:10p ET | TBR @ MIA | loanDepot park | indoor | UNDER_8.0 +16.29% |
 | 7:35p ET | CLE @ TEX | Globe Life Field | indoor | TEX_ML +6.53% |
-| 7:35p ET | BOS @ NYY | Yankee Stadium | 67F 11mph | NYY_ML +22.42% |
-| 9:10p ET | MIL @ COL | Coors Field | 73F 12mph | MIL_ML +14.98% |
-| 10:10p ET | LAA @ LAD | UNIQLO Field at Dodger Stadium | 64F 5mph | OVER_8.5 +26.23% |
-| 10:10p ET | NYM @ SDP | Petco Park | 63F 4mph | UNDER_7.5 +52.28% |
+| 7:35p ET | BOS @ NYY | Yankee Stadium | 73F 2mph | NYY_ML +24.47% |
+| 9:10p ET | MIL @ COL | Coors Field | 73F 14mph | MIL_ML +15.23% |
+| 10:10p ET | LAA @ LAD | UNIQLO Field at Dodger Stadium | 63F 3mph | OVER_8.5 +22.07% |
+| 10:10p ET | NYM @ SDP | Petco Park | 64F 4mph | UNDER_8.0 +60.31% |
 
 ## Parlays - top 5
 
-- **2-leg @ +204 (prob 47.7%, EV +44.78%)**
-  - CIN @ STL STL_ML (-128, model 69.1%)
-  - TBR @ MIA TBR_ML (-142, model 69.0%)
-- **2-leg @ +197 (prob 48.6%, EV +44.05%)**
-  - TBR @ MIA TBR_ML (-142, model 69.0%)
-  - BOS @ NYY NYY_ML (-135, model 70.3%)
-- **2-leg @ +217 (prob 45.4%, EV +43.96%)**
-  - CIN @ STL STL_ML (-128, model 69.1%)
+- **2-leg @ +219 (prob 45.8%, EV +46.18%)**
+  - BOS @ NYY NYY_ML (-126, model 69.6%)
   - NYM @ SDP NYM_ML (-128, model 65.7%)
-- **2-leg @ +210 (prob 46.2%, EV +43.23%)**
-  - BOS @ NYY NYY_ML (-135, model 70.3%)
-  - NYM @ SDP NYM_ML (-128, model 65.7%)
-- **2-leg @ +240 (prob 42.1%, EV +43.08%)**
-  - CIN @ STL STL_ML (-128, model 69.1%)
+- **2-leg @ +242 (prob 42.4%, EV +45.23%)**
   - TBR @ MIA UNDER_8.0 (-110, model 60.9%)
+  - BOS @ NYY NYY_ML (-126, model 69.6%)
+- **2-leg @ +242 (prob 42.1%, EV +44.04%)**
+  - SFG @ CHC UNDER_8.5 (-110, model 60.4%)
+  - BOS @ NYY NYY_ML (-126, model 69.6%)
+- **2-leg @ +217 (prob 45.4%, EV +44.0%)**
+  - CIN @ STL STL_ML (-128, model 69.1%)
+  - NYM @ SDP NYM_ML (-128, model 65.7%)
+- **2-leg @ +147 (prob 58.2%, EV +43.91%)**
+  - BOS @ NYY NYY_ML (-126, model 69.6%)
+  - MIL @ COL MIL_ML (-265, model 83.7%)
 
 ## Self-Learning Loop
 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
+| batter runs scored | 1643 | 34.9% | 39.0% | 1.117 | 0.896 |
+| batter hits | 3333 | 37.7% | 41.9% | 1.111 | 0.900 |
+| batter total bases | 3288 | 24.4% | 32.3% | 1.324 | 0.756 |
+| pitcher strikeouts | 677 | 38.3% | 39.5% | 1.033 | 0.968 |
+| batter doubles | 1643 | 14.3% | 16.1% | 1.127 | 0.888 |
 | batter home runs | 1643 | 10.0% | 13.1% | 1.303 | 0.769 |
 | batter singles | 1643 | 41.5% | 44.5% | 1.073 | 0.932 |
 | batter rbis | 3286 | 18.8% | 23.6% | 1.255 | 0.797 |
-| batter hits | 3333 | 37.7% | 41.9% | 1.111 | 0.900 |
-| pitcher strikeouts | 677 | 38.3% | 39.5% | 1.033 | 0.968 |
-| batter doubles | 1643 | 14.3% | 16.1% | 1.127 | 0.888 |
-| batter total bases | 3288 | 24.4% | 32.3% | 1.324 | 0.756 |
-| batter runs scored | 1643 | 34.9% | 39.0% | 1.117 | 0.896 |
 
 Cumulative graded plays: 118214. Wins: 87366. Hit rate: 73.9%.
 
@@ -74,18 +74,18 @@ Cumulative graded plays: 118214. Wins: 87366. Hit rate: 73.9%.
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
 | BAL @ TOR | 48.2% | +107 | 3.65 | +206 | -206 |
-| BOS @ NYY | 38.0% | +163 | 5.18 | -138 | +138 |
-| CHW @ PHI | 46.2% | +117 | 4.07 | +509 | -509 |
-| CIN @ STL | 39.0% | +156 | 4.94 | -139 | +139 |
+| BOS @ NYY | 38.0% | +163 | 4.8 | -133 | +133 |
+| CHW @ PHI | 46.2% | +117 | 3.94 | +501 | -501 |
+| CIN @ STL | 39.0% | +156 | 4.93 | -139 | +139 |
 | CLE @ TEX | 32.5% | +207 | 5.62 | +130 | -130 |
 | KCR @ MIN | 46.0% | +117 | 3.71 | -118 | +118 |
-| LAA @ LAD | 40.3% | +148 | 4.65 | -409 | +409 |
-| MIL @ COL | 51.1% | -105 | 3.62 | +918 | -918 |
-| NYM @ SDP | 26.2% | +281 | 6.89 | +390 | -390 |
+| LAA @ LAD | 40.3% | +148 | 4.63 | -399 | +399 |
+| MIL @ COL | 51.1% | -105 | 3.67 | +927 | -927 |
+| NYM @ SDP | 26.2% | +281 | 6.87 | +390 | -390 |
 | OAK @ HOU | 40.9% | +145 | 4.48 | +244 | -244 |
-| PIT @ ATL | 46.5% | +115 | 3.99 | +186 | -186 |
-| SEA @ DET | 57.1% | -133 | 3.0 | +344 | -344 |
-| SFG @ CHC | 41.5% | +141 | 4.17 | +132 | -132 |
+| PIT @ ATL | 46.5% | +115 | 4.0 | +186 | -186 |
+| SEA @ DET | 57.1% | -133 | 2.98 | +344 | -344 |
+| SFG @ CHC | 41.5% | +141 | 4.25 | +133 | -133 |
 | TBR @ MIA | 52.2% | -109 | 3.25 | +417 | -417 |
 | WSN @ ARI | 55.1% | -123 | 2.98 | +108 | -108 |
 
@@ -103,7 +103,7 @@ Cumulative graded plays: 118214. Wins: 87366. Hit rate: 73.9%.
 
 ## Loop Activity (since last refresh)
 
-- Confidence delta: **+0.4**
+- Confidence delta: **+0.0**
 
 ## Model Recommendations (operator review)
 

@@ -1,56 +1,52 @@
 # EdgeStat Daily Summary — 2026-06-06
 
-## 🏥 Model Health: 71.5/100 [HEALTHY]
+## 🏥 Model Health: 70.3/100 [HEALTHY]
 - Solid health - some minor issues to monitor
   - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 54.4/100
   - 🔴 Brier Trend: 29.6/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟡 Data Health: 77.8/100
-  - 🟢 Edge Count: 91.4/100
+  - 🟢 Data Health: 88.9/100
+  - 🔴 Edge Count: 57.1/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.586)
-- **Total games on board:** 118
-- **Strong home favorites:** 1 | **Strong road dogs:** 0
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.584)
+- **Total games on board:** 100
+- **Strong home favorites:** 0 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
-1. **MIL @ COL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-2. **TBR @ MIA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-3. **CIN @ STL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-4. **OAK @ HOU YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-5. **KCR @ MIN YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+1. **NYM @ SDP YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+2. **CLE @ TEX YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+3. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
+4. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
+5. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
+
+## 📡 Sharp Action (Line Movement)
+- [ELITE] **CHW @ PHI** ml_away: 38.91% → 47.39% (+8.5pp)
 
 ## 📉 Strong UNDER Signals
-- [ELITE 7.0] **NYM @ SDP** model 4.61 vs market 7.5
-- [STRONG 6.0] **TBR @ MIA** model 5.85 vs market 8.0
-- [STRONG 5.6] **CLE @ TEX** model 7.18 vs market 8.0
+- [STRONG 5.7] **TBR @ MIA** model 7.39 vs market 8.0
+- [STRONG 5.0] **NYM @ SDP** model 5.59 vs market 7.5
 
 ## 🔒 Locks of the Day -- Track Record
-- All-time: **103-17** (85.8% hit rate)
-- Net units: **+3.64u** | ROI: **+49.0%**
-- Last 7d: 57-11 (83.8%) | net +1.92u
+- All-time: **111-19** (85.4% hit rate)
+- Net units: **+3.88u** | ROI: **+48.2%**
+- Last 7d: 61-11 (84.7%) | net +2.10u
 
-**Today's 11 Locks:**
-- [MLB-PP] **Jac Caglianone** PP_batter_hrr_under_3.5 · p=85% edge=+47.5% qK=0.062u
-- [MLB-PP] **Salvador Perez** PP_batter_hrr_under_3.5 · p=85% edge=+47.4% qK=0.062u
-- [MLB-PP] **Vinnie Pasquantino** PP_batter_hrr_under_3.5 · p=85% edge=+47.1% qK=0.062u
-- [MLB-PP] **Geraldo Perdomo** PP_batter_hrr_under_3.5 · p=85% edge=+47.0% qK=0.062u
-- [MLB-PP] **Masyn Winn** PP_batter_hrr_under_3.5 · p=85% edge=+47.0% qK=0.062u
+**Today's 5 Locks:**
+- [MLB-PP] **Zach McKinstry** PP_batter_hrr_under_2.5 · p=86% edge=+50.0% qK=0.062u
+- [MLB-PP] **Rodolfo Durán** PP_batter_hrr_under_2.5 · p=86% edge=+48.6% qK=0.062u
 - [MLB-PP] **Alec Bohm** PP_batter_hrr_under_3.5 · p=85% edge=+48.1% qK=0.062u
+- [MLB-PP] **Jac Caglianone** PP_batter_hrr_under_3.5 · p=85% edge=+48.1% qK=0.062u
 - [MLB-PP] **Wyatt Langford** PP_batter_hrr_under_3.5 · p=85% edge=+48.1% qK=0.062u
-- [MLB-PP] **Derek Hill** PP_batter_hrr_under_3.5 · p=85% edge=+48.1% qK=0.062u
-- [MLB-PP] **Freddy Fermin** PP_batter_hrr_under_2.5 · p=85% edge=+48.1% qK=0.062u
-- [MLB-PP] **Zach McKinstry** PP_batter_hrr_under_2.5 · p=87% edge=+50.2% qK=0.062u
-- [MLB-PP] **Rodolfo Durán** PP_batter_hrr_under_2.5 · p=86% edge=+48.7% qK=0.062u
 
 ## 🎰 Top Balanced 2-Leg Parlays (40-65% joint)
-- [MLB-PP] Zach McKinstry PP_batter_hrr_under_ + [MLB] TBR @ MIA MIA_ML
-  Joint: 50% | Fair: 263 | Edge: +81.5%
-- [MLB-PP] Zach McKinstry PP_batter_hrr_under_ + [MLB] NYM @ SDP UNDER_7.5
-  Joint: 55% | Fair: 231 | Edge: +80.8%
-- [MLB-PP] Zach McKinstry PP_batter_hrr_under_ + [MLB] CIN @ STL STL_ML
-  Joint: 57% | Fair: 215 | Edge: +79.9%
+- [MLB-PP] Zach McKinstry PP_batter_hrr_under_ + [MLB] CHW @ PHI CHW_ML
+  Joint: 50% | Fair: 266 | Edge: +84.7%
+- [MLB-PP] Rodolfo Durán PP_batter_hrr_under_ + [MLB] CHW @ PHI CHW_ML
+  Joint: 50% | Fair: 266 | Edge: +82.9%
+- [MLB-PP] Alec Bohm PP_batter_hrr_under_ + [MLB] CHW @ PHI CHW_ML
+  Joint: 50% | Fair: 266 | Edge: +82.3%
 
 ## 🎮 Player Play of the Day (cross-sport)
 - **[LOL]** Inspired UNDER 3.5 Kills | MED conviction · model 61.7% fair -161
@@ -69,27 +65,27 @@
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$11.19**
-  - #1 [NRFI] $50 on MIL @ COL YRFI (1st-inning OVER 0.5) (P=80%)
-  - #2 [NRFI] $50 on TBR @ MIA YRFI (1st-inning OVER 0.5) (P=73%)
-  - #3 [NRFI] $50 on CIN @ STL YRFI (1st-inning OVER 0.5) (P=72%)
-  - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
-  - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
+- Expected EV: **$-4.19**
+  - #1 [NRFI] $50 on NYM @ SDP YRFI (1st-inning OVER 0.5) (P=74%)
+  - #2 [NRFI] $50 on CLE @ TEX YRFI (1st-inning OVER 0.5) (P=67%)
+  - #3 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
+  - #4 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
+  - #5 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
 
 ## 🎯 Convergence Picks (6 stacked games)
-- ELITE: **3** · HIGH: 2 · MED: 1
-  - [ELITE] New York Knicks @ San Antonio Spurs : 6 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
-  - [ELITE] Carolina Hurricanes @ Vegas Golden Knights : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ANOMALY)
-  - [ELITE] Dallas Wings @ Los Angeles Sparks : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ANOMALY)
-  - [HIGH] Connecticut Sun @ Chicago Sky : 3 signals (HEAT_COLD, ANOMALY, ATS)
-  - [HIGH] Phoenix Mercury @ Portland Fire : 3 signals (HEAT_COLD, ANOMALY, ATS)
+- ELITE: **1** · HIGH: 2 · MED: 3
+  - [ELITE] Carolina Hurricanes @ Vegas Golden Knights : 4 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
+  - [HIGH] New York Knicks @ San Antonio Spurs : 3 signals (HEAT_COLD, HEAT_COLD, ATS)
+  - [HIGH] Phoenix Mercury @ Portland Fire : 3 signals (HEAT_COLD, ATS, ATS)
+  - [MED] Atlanta United FC @ Columbus Crew : 2 signals (ATS, ATS)
+  - [MED] Brentford @ Liverpool : 2 signals (ATS, ATS)
 
 ## ⚾ Top MLB Pitcher K Plays (10)
-- **Reid Detmers** OVER 5.5 K (77%) fair -328
-- **Christian Scott** OVER 4.5 K (74%) fair -280
-- **Parker Messick** OVER 4.5 K (73%) fair -271
-- **Ryan Weathers** OVER 5.5 K (71%) fair -250
-- **Zebby Matthews** OVER 4.5 K (71%) fair -241
+- **Jack Leiter** OVER 4.5 K (75%) fair -295
+- **Will Warren** OVER 4.5 K (75%) fair -295
+- **Nolan McLean** OVER 4.5 K (73%) fair -275
+- **Jacob Misiorowski** OVER 7.5 K (72%) fair -255
+- **Joe Ryan** OVER 5.5 K (72%) fair -253
 
 ## 🏀 NBA Player Heat (18 HOT / 22 COLD)
   - 🔥 **Jeremiah Fears** (NO): L5 31.8/5.8/6.0 vs season 16.9/3.2/4.0 [PTS +14.9, REB +2.6, AST +2.0]
@@ -130,12 +126,9 @@
   - ❄️ **Michael Conforto** (CHC): L14 .147 / season .259 (-112pts) -- FADE props
   - ❄️ **Justin Crawford** (PHI): L14 .125 / season .232 (-107pts) -- FADE props
 
-## 📈 Streak Regression Alerts (9)
-- [NBA] New York Knicks on W3 L10 3-0 -- New York Knicks on W3 -- no historical sample
-- [WNBA] Chicago Sky on L4 L10 0-4 -- Chicago Sky on L4 -- no historical sample
-- [WNBA] Dallas Wings on W3 L10 3-1 -- Dallas Wings on W3 -- no historical sample
-- [CWS] North Carolina Tar Heels on W3 L10 3-0 -- North Carolina Tar Heels on W3 -- no historical sample
-- [CWS] USC Trojans on W4 L10 4-1 -- USC Trojans on W4 -- no historical sample
+## 📈 Streak Regression Alerts (2)
+- [CWS] Troy Trojans on W5 L10 5-0 -- Troy Trojans on W5 -- no historical sample
+- [CWS] Ole Miss Rebels on W4 L10 4-0 -- Ole Miss Rebels on W4 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**
