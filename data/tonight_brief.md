@@ -12,18 +12,19 @@ _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 - **Eugenio Suárez** PP_batter_hrr_under_3.5 (MLB-PP) -- 86% / +48.9%
 - **Salvador Perez** PP_batter_hrr_under_3.5 (MLB-PP) -- 86% / +48.8%
 - **Masataka Yoshida** PP_batter_hrr_under_3.5 (MLB-PP) -- 86% / +48.6%
+- **Andrés Giménez** PP_batter_hrr_under_3.5 (MLB-PP) -- 86% / +48.5%
+- **Nick Fortes** PP_batter_hrr_under_3.5 (MLB-PP) -- 86% / +48.5%
 
 ## 📡 Sharp Money Following Model
-- **CHW @ PHI** ml_away: line moved 38.91% → 47.39% (+8.5pp)
+- **CIN @ STL** over_9.5: line moved 50.0% → 55.56% (+5.6pp)
 
 ## 📉 Under Bets
-- **TBR @ MIA** UNDER 8.0 — model 7.39 [STRONG signal]
-- **NYM @ SDP** UNDER 8.0 — model 5.61 [STRONG signal]
+- **NYM @ SDP** UNDER 7.5 — model 5.55 [STRONG signal]
 
 ## 🎰 Tonight's Best Parlay
-- **Zach McKinstry** PP_batter_hrr_under_2.5 + **CHW @ PHI** CHW_ML
-- Joint 50% · fair +268 · edge +82.6%
+- **Zach McKinstry** PP_batter_hrr_under_2.5 + **NYM @ SDP** NYM_ML
+- Joint 54% · fair +237 · edge +82.4%
 
 ---
-_Generated 2026-06-06T11:40:53_
+_Generated 2026-06-06T21:24:20_
 _Full breakdown: /tonight · Full history: /locks-of-day_
