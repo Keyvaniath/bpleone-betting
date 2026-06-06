@@ -1,35 +1,35 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-06-06T21:24:22 UTC_
+_Generated 2026-06-06T23:09:37 UTC_
 
 ## Slate Quality
-- **Tier:** NO_ACTION_NIGHT
-- **Score:** 13
-- **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
+- **Tier:** MODEST_NIGHT
+- **Score:** 26
+- **Advisory:** Light slate. Limit to 1-3 strongest plays; use 25% Kelly or less.
 - **Total LOCKs:** 0
-- **Total STRONG:** 13
-- **Total FADES:** 39
+- **Total STRONG:** 15
+- **Total FADES:** 34
 
 ## Top 5 Curated Picks
-1. **GOLF / J.T. Poston** (GOLF_PLAYER, score=218.0)
-   - Play: J.T. Poston (PLAYER_STRONG)
-   - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Ryan Gerard** (GOLF_PLAYER, score=216.29)
+1. **GOLF / Ryan Gerard** (GOLF_PLAYER, score=214.79)
    - Play: Ryan Gerard (PLAYER_STRONG)
+   - Rationale: Cross-sport top pick (GOLF_PLAYER)
+2. **GOLF / J.T. Poston** (GOLF_PLAYER, score=214.43)
+   - Play: J.T. Poston (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
 3. **WNBA / breanna stewart** (WNBA_PLAYER, score=115.58)
    - Play: breanna stewart (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (WNBA_PLAYER)
-4. **WNBA / sabrina ionescu** (WNBA_PLAYER, score=76.25)
-   - Play: sabrina ionescu (PLAYER_STRONG)
-   - Rationale: Cross-sport top pick (WNBA_PLAYER)
-5. **F1 / max verstappen** (F1_DRIVER, score=49.67)
-   - Play: max verstappen (DRIVER_STRONG)
-   - Rationale: Cross-sport top pick (F1_DRIVER)
+4. **MLB / Joc Pederson** (MLB_BATTER, score=77.19)
+   - Play: Joc Pederson (BATTER_STRONG)
+   - Rationale: Cross-sport top pick (MLB_BATTER)
+5. **MLB / Hunter Goodman** (MLB_BATTER, score=76.81)
+   - Play: Hunter Goodman (BATTER_STRONG)
+   - Rationale: Cross-sport top pick (MLB_BATTER)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
-  - J.T. Poston top 10 finish
   - Ryan Gerard top 10 finish
+  - J.T. Poston top 10 finish
   - Sam Burns top 10 finish
 
 ## Slate ROI Projection
@@ -41,11 +41,11 @@ _Generated 2026-06-06T21:24:22 UTC_
 ## Top Fades
 - **NBA** / SAS (TEAM_FADE)
   - Fade angle: team total UNDER
+- **MLB** / Will Warren (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Ranger Suarez (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
 - **NBA** / NYK (TEAM_FADE)
   - Fade angle: team total UNDER
 - **NHL** / pyotr kochetkov (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / samsonov ilya (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / adin hill (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO

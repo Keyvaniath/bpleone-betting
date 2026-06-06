@@ -4,27 +4,26 @@
 
 _Pipeline health: **DEGRADED** (14/15 artifacts ok; 1 empty, 0 stale)._ 
 
-_Generated at 2026-06-06T21:25:17 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-06-06T23:10:43 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
 **NYM @ SDP - UNDER_7.5**
 - Market: -110
-- Model probability: 80.3%
-- Raw edge: +53.32%
+- Model probability: 80.8%
+- Raw edge: +54.35%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
 
-## Full Slate (5 games)
+## Full Slate (4 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
 | 7:35p ET | CLE @ TEX | Globe Life Field | indoor | OVER_7.5 +4.35% |
-| 7:35p ET | BOS @ NYY | Yankee Stadium | 71F 7mph | NYY_ML +10.51% |
-| 9:10p ET | MIL @ COL | Coors Field | 71F 12mph | MIL_ML +38.45% |
-| 10:10p ET | LAA @ LAD | UNIQLO Field at Dodger Stadium | 62F 3mph | LAD_ML +30.2% |
-| 10:10p ET | NYM @ SDP | Petco Park | 63F 3mph | UNDER_7.5 +53.32% |
+| 9:10p ET | MIL @ COL | Coors Field | 74F 14mph | MIL_ML +38.94% |
+| 10:10p ET | LAA @ LAD | UNIQLO Field at Dodger Stadium | 61F 3mph | LAD_ML +30.13% |
+| 10:10p ET | NYM @ SDP | Petco Park | 63F 2mph | UNDER_7.5 +54.35% |
 
 ## Parlays - top 4
 
@@ -46,13 +45,13 @@ _Generated at 2026-06-06T21:25:17 UTC. Game lines source: **Bovada (fallback -- 
 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
+| pitcher strikeouts | 677 | 38.3% | 39.5% | 1.033 | 0.968 |
 | batter runs scored | 1643 | 34.9% | 39.0% | 1.117 | 0.896 |
 | batter total bases | 3288 | 24.4% | 32.3% | 1.324 | 0.756 |
 | batter home runs | 1643 | 10.0% | 13.1% | 1.303 | 0.769 |
-| batter rbis | 3286 | 18.8% | 23.6% | 1.255 | 0.797 |
 | batter singles | 1643 | 41.5% | 44.5% | 1.073 | 0.932 |
 | batter hits | 3333 | 37.7% | 41.9% | 1.111 | 0.900 |
-| pitcher strikeouts | 677 | 38.3% | 39.5% | 1.033 | 0.968 |
+| batter rbis | 3286 | 18.8% | 23.6% | 1.255 | 0.797 |
 | batter doubles | 1643 | 14.3% | 16.1% | 1.127 | 0.888 |
 
 Cumulative graded plays: 118214. Wins: 87366. Hit rate: 73.9%.
@@ -61,11 +60,10 @@ Cumulative graded plays: 118214. Wins: 87366. Hit rate: 73.9%.
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| BOS @ NYY | 38.0% | +163 | 4.93 | -136 | +136 |
 | CLE @ TEX | 32.5% | +207 | 5.62 | +130 | -130 |
-| LAA @ LAD | 40.3% | +148 | 4.62 | -397 | +397 |
-| MIL @ COL | 44.3% | +126 | 4.37 | +1247 | -1247 |
-| NYM @ SDP | 26.2% | +281 | 6.75 | +390 | -390 |
+| LAA @ LAD | 40.3% | +148 | 4.62 | -395 | +395 |
+| MIL @ COL | 44.3% | +126 | 4.45 | +1274 | -1274 |
+| NYM @ SDP | 26.2% | +281 | 6.79 | +390 | -390 |
 
 ## Team Form (last 10)
 
