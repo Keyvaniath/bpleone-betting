@@ -9,23 +9,23 @@ _6 picks consolidated from POD + Alpha + Book Edges + Parlay-of-Day._
 
 ## 🎯 Alpha Pick
 
-- **Choi Jeong** · one_plus_tb
-  Prob 73.2% · Odds -110 · Edge +39.8% · Kelly 0.250
+- **SFG @ CHC OVER** · TOTAL_OVER
+  Prob 65.8% · Odds -110 · Edge +25.7% · Kelly 0.503
 
 ## 📊 Book Edges
 
+- **SFG @ CHC · OVER · O/U 8.0** · TOTAL_OVER
+  Prob 65.8% · Odds -110 · Edge +25.6% · Kelly 0.282
 - **OAK @ HOU · AWAY (AWAY)** · TEAM_ML
-  Prob 64.1% · Odds -109 · Edge +22.9% · Kelly 0.250
+  Prob 64.0% · Odds -108 · Edge +23.3% · Kelly 0.252
 - **SFG @ CHC · AWAY (AWAY)** · TEAM_ML
-  Prob 61.6% · Odds -101 · Edge +22.5% · Kelly 0.228
-- **WSN @ ARI · AWAY (AWAY)** · TEAM_ML
-  Prob 56.9% · Odds +111 · Edge +19.9% · Kelly 0.180
+  Prob 61.5% · Odds -102 · Edge +21.7% · Kelly 0.222
 
 ## 🎲 Parlay
 
-- **Alex Bregman + Choi Jeong** · 2-leg
-  Prob 62.9% · Odds +231 · Edge +108.4% · Kelly 0.050
+- **Alex Bregman + OAK @ HOU** · 2-leg
+  Prob 55.8% · Odds +234 · Edge +86.5% · Kelly 0.050
 
 ---
-_Generated 2026-06-07T08:15:18 UTC by EdgeStat._
+_Generated 2026-06-07T11:58:37 UTC by EdgeStat._
 _Stakes assume ¼-Kelly fractional sizing on a flat bankroll._

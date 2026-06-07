@@ -1,60 +1,63 @@
 # Tonight's Slate Brief — 2026-06-07
 
 ## Slate Quality: 54/100 (LOW)
-_0% lineups confirmed · 16 rookie SPs_
+_0% lineups confirmed · 1 extreme-weather games · 16 rookie SPs_
 **Recommendation:** Defensive sizing tonight; stick to highest-confidence plays.
 
 ## Slate
 - **15 games** scheduled
-- **23 best bets** scored: 0 DK · 0 PP · 4 NRFI · 1 SGP
-- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$34.82
-- **MC simulation:** EV +$41.33, 74% P(profit), p05 $-82.36 / p95 $141.82
+- **34 best bets** scored: 0 DK · 0 PP · 13 NRFI · 6 SGP
+- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$48.09
+- **MC simulation:** EV +$160.93, 84% P(profit), p05 $-95.97 / p95 $381.28
 
 ## Top 5 Best Bets
-1. **NYM @ SDP YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +27.8%)
-   - P(YRFI) 73.8% vs baseline 46.0%
-2. **CLE @ TEX YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +21.5%)
-   - P(YRFI) 67.5% vs baseline 46.0%
-3. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
-   - Player prop quality score 1.1935
-   - Elite player
-4. **LOL ShowMaker OVER 3.5 Kills**  (78/100 ****, edge —)
-   - Player prop quality score 1.1892
-   - Elite player
-5. **LOL Peyz OVER 4.5 Kills**  (78/100 ****, edge —)
-   - Player prop quality score 1.184
-   - Elite player
+1. **MIL @ COL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +35.8%)
+   - P(YRFI) 81.8% vs baseline 46.0%
+2. **SFG @ CHC YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +27.4%)
+   - P(YRFI) 73.4% vs baseline 46.0%
+3. **TBR @ MIA YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +23.9%)
+   - P(YRFI) 69.9% vs baseline 46.0%
+4. **KCR @ MIN YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +22.6%)
+   - P(YRFI) 68.6% vs baseline 46.0%
+5. **CHW @ PHI YRFI (1st-inning OVER 0.5)**  (79/100 ****, edge +19.4%)
+   - P(YRFI) 65.4% vs baseline 46.0%
 
-## ⚠️ Trap Warnings — 5 flagged
-- **NYM @ SDP YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +27.8% looks big but only 0 settled props on this player — model unproven
-- **BOS @ NYY 2-leg SGP @ -183** (low):
-   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
-- **CLE @ TEX YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +21.5% looks big but only 0 settled props on this player — model unproven
-- **LAA @ LAD YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +13.7% looks big but only 0 settled props on this player — model unproven
+## ⚠️ Trap Warnings — 19 flagged
 - **MIL @ COL YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +9.7% looks big but only 0 settled props on this player — model unproven
+   - Edge +35.8% looks big but only 0 settled props on this player — model unproven
+- **SFG @ CHC YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +27.4% looks big but only 0 settled props on this player — model unproven
+- **KCR @ MIN 2-leg SGP @ -216** (low):
+   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
+- **MIL @ COL 2-leg SGP @ -219** (low):
+   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
+- **CHW @ PHI 2-leg SGP @ -178** (low):
+   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
 
 ## Weather leans
-- **OVER lean** (wind out + warm): CIN @ STL
+- **OVER lean** (wind out + warm): MIL @ COL
 
 ## Hot streaks
-**Batters heating up:** Pete Crow-Armstrong (heat +6.21), Willson Contreras (heat +5.06), Marcus Semien (heat +4.60)
-**Pitchers on a run:** Ranger Suarez (heat +14.40), Will Warren (heat +7.50), Jameson Taillon (heat +7.11)
+**Batters heating up:** Pete Crow-Armstrong (heat +6.21), Lars Nootbaar (heat +5.50), Dillon Dingler (heat +5.46)
+**Pitchers on a run:** Ranger Suarez (heat +7.35), Aaron Nola (heat +6.04), Jacob deGrom (heat +5.28)
 
 ## Top correlation-aware SGPs
-- **BOS @ NYY** 2-leg @ -183 fair (joint 0.65, EV +25.0%)
-   - Ranger Suarez UNDER 7.5 pitcher strikeouts
-   - Ranger Suarez OVER 3.5 pitcher strikeouts
+- **KCR @ MIN** 2-leg @ -216 fair (joint 0.68, EV +25.0%)
+   - Noah Cameron OVER 3.5 pitcher strikeouts
+   - Connor Prielipp UNDER 7.5 pitcher strikeouts
+- **MIL @ COL** 2-leg @ -219 fair (joint 0.69, EV +25.0%)
+   - Kyle Freeland OVER 2.5 pitcher strikeouts
+   - Kyle Freeland UNDER 6.5 pitcher strikeouts
+- **CHW @ PHI** 2-leg @ -178 fair (joint 0.64, EV +25.0%)
+   - Aaron Nola OVER 3.5 pitcher strikeouts
+   - Aaron Nola UNDER 7.5 pitcher strikeouts
 
 ## Bullpens GASSED tonight
-Athletics, Pittsburgh Pirates, San Francisco Giants, St. Louis Cardinals, Toronto Blue Jays, Minnesota Twins, Atlanta Braves, Miami Marlins
+Athletics, Pittsburgh Pirates, San Diego Padres, San Francisco Giants, St. Louis Cardinals, Texas Rangers, Toronto Blue Jays, Philadelphia Phillies
 _Lean late-inning OVER on these games; fade their save situations._
 
 ## NRFI/YRFI strong leans
-- **YRFI** (1st-inning OVER): NYM @ SDP, CLE @ TEX, LAA @ LAD
+- **YRFI** (1st-inning OVER): MIL @ COL, SFG @ CHC, TBR @ MIA, KCR @ MIN, CHW @ PHI
 
 ## Golf -- the Memorial Tournament pres. by Workday
 - **Leader:** Ryan Gerard (-9) at #1
