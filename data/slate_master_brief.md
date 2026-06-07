@@ -1,32 +1,35 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-06-07T21:25:02 UTC_
+_Generated 2026-06-07T23:12:17 UTC_
 
 ## Slate Quality
-- **Tier:** NO_ACTION_NIGHT
-- **Score:** 13
-- **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
+- **Tier:** MODEST_NIGHT
+- **Score:** 30
+- **Advisory:** Light slate. Limit to 1-3 strongest plays; use 25% Kelly or less.
 - **Total LOCKs:** 0
-- **Total STRONG:** 11
-- **Total FADES:** 31
+- **Total STRONG:** 14
+- **Total FADES:** 26
 
 ## Top 5 Curated Picks
-1. **GOLF / J.T. Poston** (GOLF_PLAYER, score=218.86)
-   - Play: J.T. Poston (PLAYER_STRONG)
+1. **GOLF / Wyndham Clark** (GOLF_PLAYER, score=202.57)
+   - Play: Wyndham Clark (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Ryan Gerard** (GOLF_PLAYER, score=214.21)
-   - Play: Ryan Gerard (PLAYER_STRONG)
+2. **GOLF / Tommy Fleetwood** (GOLF_PLAYER, score=200.71)
+   - Play: Tommy Fleetwood (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-3. **WNBA / angel reese** (WNBA_PLAYER, score=60.0)
-   - Play: angel reese (PLAYER_STRONG)
-   - Rationale: Cross-sport top pick (WNBA_PLAYER)
-4. **F1 / max verstappen** (F1_DRIVER, score=49.67)
+3. **MLB / Casey Schmitt** (MLB_BATTER, score=126.88)
+   - Play: Casey Schmitt (BATTER_STRONG)
+   - Rationale: Cross-sport top pick (MLB_BATTER)
+4. **MLB / Willy Adames** (MLB_BATTER, score=116.19)
+   - Play: Willy Adames (BATTER_STRONG)
+   - Rationale: Cross-sport top pick (MLB_BATTER)
+5. **F1 / max verstappen** (F1_DRIVER, score=49.67)
    - Play: max verstappen (DRIVER_STRONG)
    - Rationale: Cross-sport top pick (F1_DRIVER)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
-  - J.T. Poston top 10 finish
-  - Ryan Gerard top 10 finish
+  - Wyndham Clark top 10 finish
+  - Tommy Fleetwood top 10 finish
   - Sam Burns top 10 finish
 
 ## Slate ROI Projection
@@ -36,13 +39,13 @@ _Generated 2026-06-07T21:25:02 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **MLB** / Mike Burrows (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
 - **NBA** / SAS (TEAM_FADE)
   - Fade angle: team total UNDER
 - **NBA** / NYK (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NHL** / samsonov ilya (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
 - **NHL** / adin hill (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / logan thompson_2 (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / samsonov ilya (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO

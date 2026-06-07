@@ -14,14 +14,17 @@ _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 - **Rodolfo Durán** PP_batter_hits_under_1.5 (MLB-PP) -- 87% / +50.1%
 - **Zach McKinstry** PP_batter_hrr_under_2.5 (MLB-PP) -- 86% / +49.8%
 - **Endy Rodríguez** PP_batter_hrr_under_3.5 (MLB-PP) -- 86% / +49.4%
+- **Drew Gilbert** PP_batter_hrr_under_3.5 (MLB-PP) -- 85% / +48.1%
+- **Fernando Tatis Jr.** PP_batter_hrr_under_3.5 (MLB-PP) -- 85% / +48.0%
+- **Jackson Merrill** PP_batter_hrr_under_3.5 (MLB-PP) -- 85% / +47.5%
 
 ## 📡 Sharp Money Following Model
-- **OAK @ HOU** ml_away: line moved 53.27% → 98.68% (+45.4pp)
+- **SFG @ CHC** ml_away: line moved 41.49% → 48.08% (+6.6pp)
 
 ## 🎰 Tonight's Best Parlay
-- **Rodolfo Durán** PP_batter_hits_under_1.5 + **SFG @ CHC** SFG_ML
-- Joint 54% · fair +252 · edge +89.1%
+- **Rodolfo Durán** PP_batter_hits_under_1.5 + **Choi Jeong** one_plus_tb
+- Joint 63% · fair +231 · edge +110.2%
 
 ---
-_Generated 2026-06-07T21:25:00_
+_Generated 2026-06-07T23:12:15_
 _Full breakdown: /tonight · Full history: /locks-of-day_
