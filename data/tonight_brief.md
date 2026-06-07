@@ -2,9 +2,6 @@
 
 _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 
-## 💪 STRONG (1 picks)
-- [MLB] OAK @ HOU OAK_ML · 65% / +24.7%
-
 ## 🔒 5 Daily Locks
 - **Alex Bregman** PP_batter_hrr_under_3.5 (MLB-PP) -- 86% / +49.1%
 - **Masataka Yoshida** PP_batter_hrr_under_3.5 (MLB-PP) -- 86% / +48.9%
@@ -14,14 +11,17 @@ _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 - **Salvador Perez** PP_batter_hrr_under_3.5 (MLB-PP) -- 86% / +49.1%
 - **Drew Romo** PP_batter_hrr_under_3.5 (MLB-PP) -- 86% / +48.9%
 - **Ha-Seong Kim** PP_batter_hrr_under_2.5 (MLB-PP) -- 86% / +48.7%
+- **Rodolfo Durán** PP_batter_hits_under_1.5 (MLB-PP) -- 87% / +50.1%
+- **Zach McKinstry** PP_batter_hrr_under_2.5 (MLB-PP) -- 86% / +49.8%
+- **Endy Rodríguez** PP_batter_hrr_under_3.5 (MLB-PP) -- 86% / +49.4%
 
-## 📉 Under Bets
-- **NYM @ SDP** UNDER 7.5 — model 5.01 [STRONG signal]
+## 📡 Sharp Money Following Model
+- **OAK @ HOU** ml_away: line moved 53.27% → 98.68% (+45.4pp)
 
 ## 🎰 Tonight's Best Parlay
-- **Alex Bregman** PP_batter_hrr_under_3.5 + **OAK @ HOU** OAK_ML
-- Joint 56% · fair +234 · edge +86.5%
+- **Rodolfo Durán** PP_batter_hits_under_1.5 + **SFG @ CHC** SFG_ML
+- Joint 54% · fair +252 · edge +89.1%
 
 ---
-_Generated 2026-06-07T11:58:35_
+_Generated 2026-06-07T21:25:00_
 _Full breakdown: /tonight · Full history: /locks-of-day_
