@@ -1,13 +1,13 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-06-06T23:09:37 UTC_
+_Generated 2026-06-07T08:15:18 UTC_
 
 ## Slate Quality
 - **Tier:** MODEST_NIGHT
-- **Score:** 26
+- **Score:** 22
 - **Advisory:** Light slate. Limit to 1-3 strongest plays; use 25% Kelly or less.
 - **Total LOCKs:** 0
-- **Total STRONG:** 15
-- **Total FADES:** 34
+- **Total STRONG:** 12
+- **Total FADES:** 26
 
 ## Top 5 Curated Picks
 1. **GOLF / Ryan Gerard** (GOLF_PLAYER, score=214.79)
@@ -16,15 +16,12 @@ _Generated 2026-06-06T23:09:37 UTC_
 2. **GOLF / J.T. Poston** (GOLF_PLAYER, score=214.43)
    - Play: J.T. Poston (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-3. **WNBA / breanna stewart** (WNBA_PLAYER, score=115.58)
-   - Play: breanna stewart (PLAYER_STRONG)
-   - Rationale: Cross-sport top pick (WNBA_PLAYER)
-4. **MLB / Joc Pederson** (MLB_BATTER, score=77.19)
-   - Play: Joc Pederson (BATTER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_BATTER)
-5. **MLB / Hunter Goodman** (MLB_BATTER, score=76.81)
-   - Play: Hunter Goodman (BATTER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_BATTER)
+3. **MLB / ?** (MLB_TEAM, score=76.25)
+   - Play: ? (TEAM_STRONG)
+   - Rationale: Cross-sport top pick (MLB_TEAM)
+4. **F1 / max verstappen** (F1_DRIVER, score=49.67)
+   - Play: max verstappen (DRIVER_STRONG)
+   - Rationale: Cross-sport top pick (F1_DRIVER)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
@@ -41,11 +38,11 @@ _Generated 2026-06-06T23:09:37 UTC_
 ## Top Fades
 - **NBA** / SAS (TEAM_FADE)
   - Fade angle: team total UNDER
-- **MLB** / Will Warren (PITCHER_FADE)
+- **MLB** / Jacob Misiorowski (PITCHER_FADE)
   - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **MLB** / Ranger Suarez (PITCHER_FADE)
+- **MLB** / Yoshinobu Yamamoto (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Nolan McLean (PITCHER_FADE)
   - Fade angle: K UNDER + outs UNDER + 4+ER YES
 - **NBA** / NYK (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NHL** / pyotr kochetkov (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
