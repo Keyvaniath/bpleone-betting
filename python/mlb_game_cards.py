@@ -295,6 +295,7 @@ def run() -> Dict[str, Any]:
         cards.append({
             "matchup": mk, "away": away, "home": home,
             "away_full": TEAM_FULL_NAME.get(away), "home_full": TEAM_FULL_NAME.get(home),
+            "game_pk": mu.get("gamePk"),
             "time": g.get("time"), "park": g.get("park"),
             "weather": g.get("weather"), "umpire": g.get("umpire"),
             "model": g.get("model"), "market": g.get("market"),

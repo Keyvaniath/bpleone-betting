@@ -135,7 +135,7 @@ function gamePicker(cards) {
     }).join("") + `</div>`;
 }
 
-function render(card, live) {
+function render(card, live, liveProps) {
   const m = card.model || {}, mk = card.market || {}, w = card.weather || {};
   // live win-prob (from the in-game poller) overrides the pre-game model line.
   const livePH = (live && live.p_home_win != null) ? live.p_home_win : null;
@@ -204,6 +204,8 @@ function render(card, live) {
     </div>
   </div>
 
+  ${livePropTracker(liveProps)}
+
   ${trendsCard(card)}
 
   <div class="card">
@@ -222,6 +224,34 @@ function render(card, live) {
   <p class="muted" style="font-family:'JetBrains Mono',monospace;font-size:11px;margin-top:14px;">
     Fair odds are the model's price (what you'd bet); market is Bovada. ${isLive ? "Live win-prob refreshes every 30s." : "Win-prob updates live once the game starts."}
   </p>`;
+}
+
+async function livePropsFor(card) {
+  // which of this game's props are cashing right now (live_props.json, joined on game_pk)
+  if (card.game_pk == null) return [];
+  const lp = await j("data/live_props.json");
+  const order = { won_so_far: 0, lost_so_far: 1, in_progress: 2, won: 3, lost: 4 };
+  return Object.values(lp.by_key || {})
+    .filter(e => e && e.game_pk === card.game_pk && e.status && e.status !== "scheduled" && e.status !== "no_game")
+    .sort((a, b) => (order[a.status] ?? 9) - (order[b.status] ?? 9));
+}
+
+function livePropTracker(liveProps) {
+  if (!liveProps || !liveProps.length) return "";
+  const badge = st => st === "won" ? ['game', '✅ WON'] : st === "won_so_far" ? ['game', '🟢 cashing']
+    : st === "lost" ? ['batter', '❌ LOST'] : st === "lost_so_far" ? ['batter', '🔴 trailing'] : ['pitcher', '⏳ live'];
+  const rows = liveProps.map(e => {
+    const [cls, lbl] = badge(e.status);
+    const d = e.delta_to_line;
+    const need = d == null ? "" : (d > 0 ? `<span class="muted">need ${d}</span>` : `<span class="pos">+${(-d).toFixed(1)} clear</span>`);
+    return `<tr><td><span class="pill ${cls}">${lbl}</span></td><td>${esc(e.player)}</td>
+      <td>${esc(e.market)} ${esc(e.play || "")} ${e.line}</td>
+      <td><b>${e.actual_so_far == null ? "—" : e.actual_so_far}</b> ${need}</td></tr>`;
+  }).join("");
+  const w = liveProps.filter(e => /won/.test(e.status)).length, l = liveProps.filter(e => /lost/.test(e.status)).length;
+  return `<div class="card" style="margin-top:16px;">
+    <h3>⚡ Live prop tracker · ${liveProps.length} <span class="muted" style="text-transform:none;letter-spacing:0;">${w} cashing / ${l} trailing</span></h3>
+    <table class="preds"><thead><tr><th>Status</th><th>Player</th><th>Market</th><th>Live</th></tr></thead><tbody>${rows}</tbody></table></div>`;
 }
 
 async function liveFor(card) {
@@ -249,11 +279,15 @@ async function load() {
   CARDS = Object.fromEntries(cards.map(c => [c.matchup, c]));
   if (!TARGET || !CARDS[TARGET]) { gamePicker(cards); return; }
   const card = CARDS[TARGET];
-  const live = await liveFor(card);
-  render(card, live);
-  if (live) {  // game is live -> keep it ticking
+  const [live, liveProps] = await Promise.all([liveFor(card), livePropsFor(card)]);
+  render(card, live, liveProps);
+  if (live || (liveProps && liveProps.length)) {  // game is live -> keep it ticking
     clearInterval(REFRESH);
-    REFRESH = setInterval(async () => { render(CARDS[TARGET], await liveFor(CARDS[TARGET])); }, 30000);
+    REFRESH = setInterval(async () => {
+      const c = CARDS[TARGET];
+      const [lv, lp] = await Promise.all([liveFor(c), livePropsFor(c)]);
+      render(c, lv, lp);
+    }, 30000);
   }
 }
 load();
