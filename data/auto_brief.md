@@ -1,56 +1,60 @@
 # Tonight's Slate Brief — 2026-06-08
 
-## Slate Quality: 55/100 (MEDIUM)
-_0% lineups confirmed · 6 rookie SPs_
-**Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
+## Slate Quality: 76/100 (HIGH)
+_68% lineups confirmed · 7 rookie SPs_
+**Recommendation:** Play normal Kelly sizing.
 
 ## Slate
 - **8 games** scheduled
-- **21 best bets** scored: 0 DK · 0 PP · 6 NRFI · 6 SGP
+- **22 best bets** scored: 0 DK · 0 PP · 6 NRFI · 6 SGP
 - **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$28.75
 - **MC simulation:** EV +$44.17, 64% P(profit), p05 $-104.93 / p95 $178.25
 
 ## Top 5 Best Bets
-1. **HOU @ LAA YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +25.2%)
+1. **WSN @ SFG 4-leg SGP @ -210**  (86/100 *****, edge +79.7%)
+   - Joint prob 0.677 (correlation boost +0.206)
+   - Leg: CJ Abrams UNDER 0.5 batter home runs
+2. **HOU @ LAA YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +25.2%)
    - P(YRFI) 71.2% vs baseline 46.0%
-2. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
+3. **MIL @ OAK 4-leg SGP @ -184**  (80/100 *****, edge +64.5%)
+   - Joint prob 0.647 (correlation boost +0.155)
+   - Leg: Shea Langeliers UNDER 3.5 batter total bases
+4. **BOS @ TBR 4-leg SGP @ -171**  (78/100 *****, edge +58.9%)
+   - Joint prob 0.631 (correlation boost +0.135)
+   - Leg: Yandy Díaz OVER 0.5 batter total bases
+5. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
    - Player prop quality score 1.1935
    - Elite player
-3. **LOL ShowMaker OVER 3.5 Kills**  (78/100 ****, edge —)
-   - Player prop quality score 1.1892
-   - Elite player
-4. **LOL Peyz OVER 4.5 Kills**  (78/100 ****, edge —)
-   - Player prop quality score 1.184
-   - Elite player
-5. **BOS @ TBR YRFI (1st-inning OVER 0.5)**  (77/100 ****, edge +17.6%)
-   - P(YRFI) 63.6% vs baseline 46.0%
 
 ## ⚠️ Trap Warnings — 9 flagged
-- **HOU @ LAA YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +25.2% looks big but only 0 settled props on this player — model unproven
-- **CIN @ SDP 2-leg SGP @ -192** (low):
-   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
-- **MIL @ OAK 2-leg SGP @ -205** (low):
-   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
-- **BOS @ TBR 2-leg SGP @ -178** (low):
-   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
-- **PHI @ TOR 2-leg SGP @ -193** (low):
-   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
+- **WSN @ SFG 4-leg SGP @ -210** (low):
+   - Edge +79.7% looks big but only 0 settled props on this player — model unproven
+- **MIL @ OAK 4-leg SGP @ -184** (low):
+   - Edge +64.5% looks big but only 0 settled props on this player — model unproven
+- **BOS @ TBR 4-leg SGP @ -171** (low):
+   - Edge +58.9% looks big but only 0 settled props on this player — model unproven
+- **SEA @ BAL 4-leg SGP @ -154** (low):
+   - Edge +52.1% looks big but only 0 settled props on this player — model unproven
+- **CIN @ SDP 4-leg SGP @ -132** (low):
+   - Edge +48.4% looks big but only 0 settled props on this player — model unproven
 
 ## Hot streaks
 **Batters heating up:** Brandon Valenzuela (heat +6.21), Matt McLain (heat +5.82), Brandon Marsh (heat +5.37)
-**Pitchers on a run:** Kyle Harrison (heat +7.59), Walker Buehler (heat +2.87), Emerson Hancock (heat +1.48)
+**Pitchers on a run:** Kyle Harrison (heat +7.59), Mason Englert (heat +4.50), Walker Buehler (heat +2.87)
 
 ## Top correlation-aware SGPs
-- **CIN @ SDP** 2-leg @ -192 fair (joint 0.66, EV +25.0%)
-   - Walker Buehler UNDER 6.5 pitcher strikeouts
-   - Andrew Abbott UNDER 5.5 pitcher strikeouts
-- **MIL @ OAK** 2-leg @ -205 fair (joint 0.67, EV +25.0%)
-   - Kyle Harrison UNDER 10.5 pitcher strikeouts
-   - Jeffrey Springs UNDER 6.5 pitcher strikeouts
-- **BOS @ TBR** 2-leg @ -178 fair (joint 0.64, EV +25.0%)
-   - Connelly Early OVER 3.5 pitcher strikeouts
-   - Connelly Early UNDER 7.5 pitcher strikeouts
+- **WSN @ SFG** 4-leg @ -210 fair (joint 0.68, EV +79.66%)
+   - CJ Abrams UNDER 0.5 batter home runs
+   - CJ Abrams UNDER 1.5 batter rbis
+   - CJ Abrams OVER 0.5 batter total bases
+- **MIL @ OAK** 4-leg @ -184 fair (joint 0.65, EV +64.48%)
+   - Shea Langeliers UNDER 3.5 batter total bases
+   - Colby Thomas UNDER 0.5 batter home runs
+   - Colby Thomas OVER 0.5 batter total bases
+- **BOS @ TBR** 4-leg @ -171 fair (joint 0.63, EV +58.92%)
+   - Yandy Díaz OVER 0.5 batter total bases
+   - Mickey Gasper UNDER 0.5 batter doubles
+   - Yandy Díaz UNDER 0.5 batter doubles
 
 ## Bullpens GASSED tonight
 Athletics, Pittsburgh Pirates, San Diego Padres, San Francisco Giants, Tampa Bay Rays, Texas Rangers, Toronto Blue Jays, Minnesota Twins
@@ -66,12 +70,12 @@ _Lean late-inning OVER on these games; fade their save situations._
 - Carolina Hurricanes @ Vegas Golden Knights (53-22-7 vs 39-26-17)  | P(home) 41.1% fair +143 | Scheduled
 
 ## LoL Esports -- 0 live, 30 upcoming
-- [EMEA Masters] Frites Esports Club vs Ruddy Corporation BO1 | P(A) 35.8% fair +180/-180
-- [EMEA Masters] CITA Kaizen vs Bubliki BO1 | P(A) 50.0% fair -100/-100
-- [EMEA Masters] BOMBA Team vs MAGAZA BO1 | P(A) 50.0% fair -100/-100
-- [EMEA Masters] GMBLERS Esports vs NightBirds BO1 | P(A) 50.0% fair -100/-100
-- [EMEA Masters] FN Esports vs Verdant BO1 | P(A) 26.5% fair +278/-278
-- **LoL POT:** Ruddy Corporation ML vs Frites Esports Club (EMEA Masters, BO1) (MED)
+- [EMEA Masters] Karmine Corp Blue vs Verdant BO3 | P(A) 19.2% fair +420/-420
+- [EMEA Masters] E Wie Einfach E-Sports vs GOAL esports BO3 | P(A) 55.1% fair -123/+123
+- [EMEA Masters] CITA Kaizen vs Partizan Sangal BO3 | P(A) 50.0% fair -100/-100
+- [EMEA Masters] Frites Esports Club vs BOMBA Team BO3 | P(A) 50.0% fair +100/-100
+- [EMEA Masters] TBD vs TBD BO3 | P(A) 50.0% fair -100/-100
+- **LoL POT:** T1 ML vs Hanwha Life Esports (LCK, BO5) (HIGH)
 
 ## Player Play of the Day -- across all sports (3506 candidates scanned)
 - **[LOL]** Inspired UNDER 3.5 Kills | model 61.7% fair -161 (ELITE)
@@ -81,4 +85,4 @@ _Lean late-inning OVER on these games; fade their save situations._
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | model 61.0% fair -157 (ELITE)
 
 ## Self-learning calibration (esports + KBO)
-- **LOL:** 15 settled | brier 0.2671 | ECE 0.1734
+- **LOL:** 16 settled | brier 0.2584 | ECE 0.1402

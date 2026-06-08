@@ -9,23 +9,23 @@ _6 picks consolidated from POD + Alpha + Book Edges + Parlay-of-Day._
 
 ## 🎯 Alpha Pick
 
-- **NYY @ CLE AWAY** · TEAM_ML_AWAY
-  Prob 62.9% · Odds +106 · Edge +29.6% · Kelly 0.491
+- **MIL @ OAK AWAY** · TEAM_ML_AWAY
+  Prob 66.7% · Odds -110 · Edge +27.4% · Kelly 0.536
 
 ## 📊 Book Edges
 
-- **NYY @ CLE · AWAY (AWAY)** · TEAM_ML
-  Prob 62.9% · Odds +106 · Edge +29.6% · Kelly 0.279
-- **HOU @ LAA · OVER · O/U 9.0** · TOTAL_OVER
-  Prob 63.1% · Odds -110 · Edge +20.4% · Kelly 0.225
+- **MIL @ OAK · AWAY (AWAY)** · TEAM_ML
+  Prob 66.7% · Odds -110 · Edge +27.4% · Kelly 0.301
+- **HOU @ LAA · OVER · O/U 8.5** · TOTAL_OVER
+  Prob 65.3% · Odds -110 · Edge +24.6% · Kelly 0.271
 - **HOU @ LAA · AWAY (AWAY)** · TEAM_ML
-  Prob 66.9% · Odds -132 · Edge +17.6% · Kelly 0.232
+  Prob 65.3% · Odds -117 · Edge +21.2% · Kelly 0.248
 
 ## 🎲 Parlay
 
-- **Rodolfo Durán + NYY @ CLE** · 2-leg
-  Prob 50.8% · Odds +257 · Edge +81.8% · Kelly 0.050
+- **Rodolfo Durán + HOU @ LAA** · 2-leg
+  Prob 57.5% · Odds +222 · Edge +85.0% · Kelly 0.050
 
 ---
-_Generated 2026-06-08T14:15:02 UTC by EdgeStat._
+_Generated 2026-06-08T22:02:13 UTC by EdgeStat._
 _Stakes assume ¼-Kelly fractional sizing on a flat bankroll._

@@ -1,25 +1,28 @@
 # EdgeStat Daily Summary — 2026-06-08
 
-## 🏥 Model Health: 66.9/100 [OK]
+## 🏥 Model Health: 69.1/100 [OK]
 - Operational but room to improve - check yellow components
   - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 54.4/100
   - 🔴 Brier Trend: 29.6/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 88.9/100
-  - 🔴 Edge Count: 22.9/100
+  - 🔴 Edge Count: 45.7/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.582)
-- **Total games on board:** 101
-- **Strong home favorites:** 0 | **Strong road dogs:** 0
+- **Total games on board:** 104
+- **Strong home favorites:** 1 | **Strong road dogs:** 1
 
 ## 🎯 Top 5 Best Bets
-1. **HOU @ LAA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-2. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
-3. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
-4. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
-5. **BOS @ TBR YRFI (1st-inning OVER 0.5)** (77/100 ★★★★)
+1. **WSN @ SFG 4-leg SGP @ -210** (86/100 ★★★★★)
+2. **HOU @ LAA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+3. **MIL @ OAK 4-leg SGP @ -184** (80/100 ★★★★★)
+4. **BOS @ TBR 4-leg SGP @ -171** (78/100 ★★★★★)
+5. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
+
+## 📡 Sharp Action (Line Movement)
+- [STRONG] **NYY @ CLE** ml_away: 51.46% → 57.45% (+6.0pp)
 
 ## 📉 Strong UNDER Signals
 - [STRONG 5.0] **PHI @ TOR** model 6.73 vs market 7.5
@@ -29,20 +32,22 @@
 - Net units: **+4.47u** | ROI: **+48.1%**
 - Last 7d: 57-11 (83.8%) | net +1.92u
 
-**Today's 5 Locks:**
+**Today's 7 Locks:**
 - [MLB-PP] **Rodolfo Durán** PP_batter_hits_under_1.5 · p=87% edge=+50.4% qK=0.062u
 - [MLB-PP] **Alex Bregman** PP_batter_hrr_under_3.5 · p=86% edge=+49.6% qK=0.062u
 - [MLB-PP] **Drew Gilbert** PP_batter_hrr_under_3.5 · p=85% edge=+48.2% qK=0.062u
 - [MLB-PP] **Fernando Tatis Jr.** PP_batter_hrr_under_3.5 · p=85% edge=+48.2% qK=0.062u
 - [MLB-PP] **Jackson Merrill** PP_batter_hrr_under_3.5 · p=85% edge=+47.6% qK=0.062u
+- [MLB-PP] **Luis Rengifo** PP_batter_hrr_under_3.5 · p=86% edge=+49.6% qK=0.062u
+- [MLB-PP] **Caleb Durbin** PP_batter_hrr_under_3.5 · p=86% edge=+48.7% qK=0.062u
 
 ## 🎰 Top Balanced 2-Leg Parlays (40-65% joint)
-- [MLB-PP] Rodolfo Durán PP_batter_hits_under + [KBO] Choi Jeong one_plus_tb
-  Joint: 63% | Fair: 231 | Edge: +110.2%
-- [MLB-PP] Rodolfo Durán PP_batter_hits_under + [KBO] Jose Pirela one_plus_tb
-  Joint: 63% | Fair: 231 | Edge: +109.4%
-- [MLB-PP] Alex Bregman PP_batter_hrr_under_ + [KBO] Choi Jeong one_plus_tb
-  Joint: 63% | Fair: 231 | Edge: +109.1%
+- [MLB-PP] Rodolfo Durán PP_batter_hits_under + [MLB] NYY @ CLE NYY_ML
+  Joint: 51% | Fair: 257 | Edge: +81.8%
+- [MLB-PP] Luis Rengifo PP_batter_hrr_under_ + [MLB] NYY @ CLE NYY_ML
+  Joint: 51% | Fair: 257 | Edge: +80.8%
+- [MLB-PP] Drew Gilbert PP_batter_hrr_under_ + [MLB] NYY @ CLE NYY_ML
+  Joint: 50% | Fair: 257 | Edge: +80.1%
 
 ## 🎮 Player Play of the Day (cross-sport)
 - **[LOL]** Inspired UNDER 3.5 Kills | MED conviction · model 61.7% fair -161
@@ -52,22 +57,25 @@
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
 ## 🔥/❄️ Heat / Cold Signals
-- Hot teams: **7** | Cold teams: **2** | Over-heavy: 0 | Under-heavy: 3
+- Hot teams: **8** | Cold teams: **2** | Over-heavy: 0 | Under-heavy: 3
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (2)
-- RESIDUAL_DIVERGENCE: **2**
+## ⚠️ Anomaly Detector (5)
+- RESIDUAL_DIVERGENCE: **5**
   - New York Knicks (NBA): New York Knicks OUTPERFORMING expected margin by 10.9pts in recent games -- model bias may persist
   - San Antonio Spurs (NBA): San Antonio Spurs OUTPERFORMING expected margin by 9.2pts in recent games -- model bias may persist
+  - Washington Mystics (WNBA): Washington Mystics UNDERPERFORMING expected margin by 7.5pts in recent games -- model bias may persist
+  - Indiana Fever (WNBA): Indiana Fever OUTPERFORMING expected margin by 9.5pts in recent games -- model bias may persist
+  - Las Vegas Aces (WNBA): Las Vegas Aces OUTPERFORMING expected margin by 8.8pts in recent games -- model bias may persist
 
-## 💰 Today's Portfolio (11 picks)
-- Total stake: **$325.0** (32.5% of $1000 bankroll)
-- Expected EV: **$-9.08**
-  - #1 [NRFI] $50 on HOU @ LAA YRFI (1st-inning OVER 0.5) (P=71%)
-  - #2 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
-  - #3 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
-  - #4 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
-  - #5 [NRFI] $35 on BOS @ TBR YRFI (1st-inning OVER 0.5) (P=64%)
+## 💰 Today's Portfolio (9 picks)
+- Total stake: **$345.0** (34.5% of $1000 bankroll)
+- Expected EV: **$-8.32**
+  - #1 [SGP] $50 on WSN @ SFG 4-leg SGP @ -210 (P=68%)
+  - #2 [SGP] $50 on MIL @ OAK 4-leg SGP @ -184 (P=65%)
+  - #3 [NRFI] $50 on HOU @ LAA YRFI (1st-inning OVER 0.5) (P=71%)
+  - #4 [SGP] $35 on BOS @ TBR 4-leg SGP @ -171 (P=63%)
+  - #5 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
 
 ## 🎯 Convergence Picks (12 stacked games)
 - ELITE: **2** · HIGH: 0 · MED: 10
@@ -137,4 +145,4 @@
 - **MLS**: n=15 games · hit rate 53.3% · bias -4.8pp [calibration applied]
 - **EPL**: n=13 games · hit rate 38.5% · bias -12.6pp
 - **MLB**: n=186 games · hit rate 54.3% · bias +1.0pp
-- **CWS**: n=21 games · hit rate 71.4% · bias -11.5pp [calibration applied]
+- **CWS**: n=23 games · hit rate 73.9% · bias -4.4pp [calibration applied]

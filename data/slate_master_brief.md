@@ -1,12 +1,12 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-06-08T14:15:02 UTC_
+_Generated 2026-06-08T22:02:13 UTC_
 
 ## Slate Quality
-- **Tier:** NO_ACTION_NIGHT
-- **Score:** 8
-- **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
+- **Tier:** MODEST_NIGHT
+- **Score:** 24
+- **Advisory:** Light slate. Limit to 1-3 strongest plays; use 25% Kelly or less.
 - **Total LOCKs:** 0
-- **Total STRONG:** 8
+- **Total STRONG:** 12
 - **Total FADES:** 24
 
 ## Lock of the Night
@@ -17,27 +17,27 @@ _Generated 2026-06-08T14:15:02 UTC_
 - **Details:** PHI @ TOR
 
 ## Top 5 Curated Picks
-1. **GOLF / Ryan Gerard** (GOLF_PLAYER, score=219.29)
-   - Play: Ryan Gerard (PLAYER_STRONG)
-   - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Sam Burns** (GOLF_PLAYER, score=219.29)
+1. **GOLF / Sam Burns** (GOLF_PLAYER, score=219.29)
    - Play: Sam Burns (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-3. **MLB / Emerson Hancock** (MLB_PITCHER, score=58.83)
+2. **GOLF / Wyndham Clark** (GOLF_PLAYER, score=219.29)
+   - Play: Wyndham Clark (PLAYER_STRONG)
+   - Rationale: Cross-sport top pick (GOLF_PLAYER)
+3. **WNBA / kelsey mitchell** (WNBA_PLAYER, score=111.58)
+   - Play: kelsey mitchell (PLAYER_STRONG)
+   - Rationale: Cross-sport top pick (WNBA_PLAYER)
+4. **WNBA / breanna stewart** (WNBA_PLAYER, score=91.0)
+   - Play: breanna stewart (PLAYER_STRONG)
+   - Rationale: Cross-sport top pick (WNBA_PLAYER)
+5. **MLB / Emerson Hancock** (MLB_PITCHER, score=58.25)
    - Play: Emerson Hancock (PITCHER_STRONG)
    - Rationale: Cross-sport top pick (MLB_PITCHER)
-4. **MLB / Connelly Early** (MLB_PITCHER, score=58.25)
-   - Play: Connelly Early (PITCHER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_PITCHER)
-5. **F1 / max verstappen** (F1_DRIVER, score=49.67)
-   - Play: max verstappen (DRIVER_STRONG)
-   - Rationale: Cross-sport top pick (F1_DRIVER)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
-  - Ryan Gerard top 10 finish
   - Sam Burns top 10 finish
   - Wyndham Clark top 10 finish
+  - Ryan Gerard top 10 finish
 
 ## Slate ROI Projection
 - **Picks:** 1
@@ -52,7 +52,7 @@ _Generated 2026-06-08T14:15:02 UTC_
   - Fade angle: team total UNDER
 - **NHL** / samsonov ilya (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / frederik andersen (GOALIE_FADE)
+- **NHL** / pyotr kochetkov (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / adin hill (GOALIE_FADE)
+- **NHL** / frederik andersen (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO

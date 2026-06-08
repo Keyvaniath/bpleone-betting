@@ -11,13 +11,16 @@ _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 - **Luis Rengifo** PP_batter_hrr_under_3.5 (MLB-PP) -- 86% / +49.6%
 - **Caleb Durbin** PP_batter_hrr_under_3.5 (MLB-PP) -- 86% / +48.7%
 
+## 📡 Sharp Money Following Model
+- **NYY @ CLE** ml_away: line moved 51.46% → 57.45% (+6.0pp)
+
 ## 📉 Under Bets
 - **PHI @ TOR** UNDER 7.5 — model 6.73 [STRONG signal]
 
 ## 🎰 Tonight's Best Parlay
-- **Rodolfo Durán** PP_batter_hits_under_1.5 + **NYY @ CLE** NYY_ML
-- Joint 51% · fair +257 · edge +81.8%
+- **Rodolfo Durán** PP_batter_hits_under_1.5 + **HOU @ LAA** HOU_ML
+- Joint 57% · fair +222 · edge +85.0%
 
 ---
-_Generated 2026-06-08T14:14:59_
+_Generated 2026-06-08T22:02:11_
 _Full breakdown: /tonight · Full history: /locks-of-day_
