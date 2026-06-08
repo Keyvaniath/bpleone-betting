@@ -2,9 +2,9 @@
 
 **Model Confidence: 73.7/100 [GREEN-LIGHT]** -- Model is healthy. Use capped Kelly (<=0.5u) until residual variance tightens further.
 
-_Pipeline health: **WARNING** (12/15 artifacts ok; 3 empty, 0 stale)._ 
+_Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
 
-_Generated at 2026-06-08T12:37:47 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-06-08T14:15:05 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
@@ -20,48 +20,50 @@ _Generated at 2026-06-08T12:37:47 UTC. Game lines source: **Bovada (fallback -- 
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 6:35p ET | SEA @ BAL | Oriole Park at Camden Yards | 68F 7mph | SEA_ML +6.0% |
-| 6:40p ET | BOS @ TBR | Tropicana Field | indoor | TBR_ML +19.41% |
-| 6:40p ET | NYY @ CLE | Progressive Field | 79F 6mph | NYY_ML +45.37% |
+| 6:35p ET | SEA @ BAL | Oriole Park at Camden Yards | 68F 6mph | SEA_ML +5.94% |
+| 6:40p ET | BOS @ TBR | Tropicana Field | indoor | TBR_ML +15.41% |
+| 6:40p ET | NYY @ CLE | Progressive Field | 81F 6mph | NYY_ML +52.09% |
 | 7:07p ET | PHI @ TOR | Rogers Centre | indoor | UNDER_7.5 +21.83% |
-| 9:38p ET | HOU @ LAA | Angel Stadium | 62F 4mph | OVER_9.0 +34.79% |
-| 9:40p ET | CIN @ SDP | Petco Park | 62F 3mph | UNDER_8.0 +40.7% |
-| 9:45p ET | WSN @ SFG | Oracle Park | 57F 7mph | OVER_8.0 +28.8% |
+| 9:38p ET | HOU @ LAA | Angel Stadium | 63F 5mph | OVER_9.0 +37.14% |
+| 9:40p ET | CIN @ SDP | Petco Park | 63F 3mph | UNDER_7.5 +28.81% |
+| 9:45p ET | WSN @ SFG | Oracle Park | 56F 7mph | OVER_8.0 +28.04% |
 | 10:05p ET | MIL @ OAK | Las Vegas Ballpark | 70F 0mph | UNDER_11.0 +57.37% |
 
 ## Parlays - top 5
 
-- **3-leg @ +691 (prob 18.9%, EV +49.58%)**
-  - NYY @ CLE OVER_8.0 (-110, model 54.0%)
+- **3-leg @ +625 (prob 20.7%, EV +50.0%)**
+  - BOS @ TBR TBR_ML (-101, model 59.1%)
+  - NYY @ CLE OVER_8.0 (-110, model 54.8%)
   - PHI @ TOR UNDER_7.5 (-110, model 63.8%)
-  - CIN @ SDP CIN_ML (+117, model 54.8%)
-- **3-leg @ +737 (prob 17.7%, EV +48.17%)**
-  - SEA @ BAL OVER_9.0 (-110, model 54.6%)
-  - BOS @ TBR TBR_ML (+102, model 59.1%)
-  - CIN @ SDP CIN_ML (+117, model 54.8%)
-- **3-leg @ +737 (prob 17.5%, EV +46.59%)**
-  - BOS @ TBR TBR_ML (+102, model 59.1%)
-  - NYY @ CLE OVER_8.0 (-110, model 54.0%)
-  - CIN @ SDP CIN_ML (+117, model 54.8%)
-- **2-leg @ +286 (prob 37.7%, EV +45.48%)**
-  - BOS @ TBR TBR_ML (+102, model 59.1%)
+- **3-leg @ +561 (prob 22.7%, EV +49.89%)**
+  - SEA @ BAL SEA_ML (-135, model 60.1%)
+  - BOS @ TBR TBR_ML (-101, model 59.1%)
   - PHI @ TOR UNDER_7.5 (-110, model 63.8%)
-- **2-leg @ +314 (prob 35.0%, EV +44.96%)**
+- **3-leg @ +680 (prob 19.2%, EV +49.64%)**
+  - NYY @ CLE OVER_8.0 (-110, model 54.8%)
   - PHI @ TOR UNDER_7.5 (-110, model 63.8%)
-  - CIN @ SDP CIN_ML (+117, model 54.8%)
+  - CIN @ SDP CIN_ML (+114, model 54.8%)
+- **3-leg @ +611 (prob 21.0%, EV +49.54%)**
+  - SEA @ BAL SEA_ML (-135, model 60.1%)
+  - PHI @ TOR UNDER_7.5 (-110, model 63.8%)
+  - CIN @ SDP CIN_ML (+114, model 54.8%)
+- **3-leg @ +584 (prob 21.3%, EV +45.94%)**
+  - BOS @ TBR TBR_ML (-101, model 59.1%)
+  - CIN @ SDP CIN_ML (+114, model 54.8%)
+  - WSN @ SFG SFG_ML (-165, model 65.8%)
 
 ## Self-Learning Loop
 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
-| batter rbis | 2468 | 18.7% | 23.5% | 1.259 | 0.795 |
-| batter total bases | 2470 | 24.9% | 32.4% | 1.299 | 0.770 |
-| batter doubles | 1234 | 14.9% | 16.1% | 1.083 | 0.924 |
 | pitcher strikeouts | 505 | 37.8% | 39.2% | 1.037 | 0.965 |
-| batter hits | 2515 | 37.7% | 41.9% | 1.111 | 0.900 |
-| batter singles | 1234 | 40.4% | 44.6% | 1.106 | 0.905 |
 | batter runs scored | 1234 | 34.8% | 39.0% | 1.121 | 0.893 |
 | batter home runs | 1234 | 10.0% | 13.1% | 1.314 | 0.763 |
+| batter singles | 1234 | 40.4% | 44.6% | 1.106 | 0.905 |
+| batter rbis | 2468 | 18.7% | 23.5% | 1.259 | 0.795 |
+| batter doubles | 1234 | 14.9% | 16.1% | 1.083 | 0.924 |
+| batter total bases | 2470 | 24.9% | 32.4% | 1.299 | 0.770 |
+| batter hits | 2515 | 37.7% | 41.9% | 1.111 | 0.900 |
 
 Cumulative graded plays: 118214. Wins: 87366. Hit rate: 73.9%.
 
@@ -70,13 +72,13 @@ Cumulative graded plays: 118214. Wins: 87366. Hit rate: 73.9%.
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
 | BOS @ TBR | 36.4% | +175 | 5.06 | +123 | -123 |
-| CIN @ SDP | 46.1% | +117 | 3.93 | +230 | -230 |
-| HOU @ LAA | 28.8% | +248 | 6.37 | +511 | -511 |
+| CIN @ SDP | 46.1% | +117 | 3.85 | +229 | -229 |
+| HOU @ LAA | 28.8% | +248 | 6.38 | +513 | -513 |
 | MIL @ OAK | 48.9% | +105 | 3.58 | +656 | -656 |
-| NYY @ CLE | 56.2% | -129 | 2.96 | +511 | -511 |
+| NYY @ CLE | 56.2% | -129 | 2.96 | +512 | -512 |
 | PHI @ TOR | 60.1% | -151 | 2.55 | +343 | -343 |
-| SEA @ BAL | 47.2% | +112 | 3.83 | +256 | -256 |
-| WSN @ SFG | 37.9% | +164 | 5.06 | -114 | +114 |
+| SEA @ BAL | 47.2% | +112 | 3.82 | +256 | -256 |
+| WSN @ SFG | 37.9% | +164 | 5.08 | -114 | +114 |
 
 ## Travel / Rest Flags
 

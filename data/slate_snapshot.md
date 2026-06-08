@@ -9,23 +9,23 @@ _6 picks consolidated from POD + Alpha + Book Edges + Parlay-of-Day._
 
 ## 🎯 Alpha Pick
 
-- **Blake Perkins** · PP_batter_hits_under_1.5
-  Prob 84.9% · Odds -136 · Edge +47.3% · Kelly 0.250
+- **NYY @ CLE AWAY** · TEAM_ML_AWAY
+  Prob 62.9% · Odds +106 · Edge +29.6% · Kelly 0.491
 
 ## 📊 Book Edges
 
 - **NYY @ CLE · AWAY (AWAY)** · TEAM_ML
-  Prob 63.6% · Odds -103 · Edge +25.4% · Kelly 0.262
-- **CIN @ SDP · UNDER · O/U 8.0** · TOTAL_UNDER
-  Prob 64.2% · Odds -110 · Edge +22.6% · Kelly 0.249
+  Prob 62.9% · Odds +106 · Edge +29.6% · Kelly 0.279
 - **HOU @ LAA · OVER · O/U 9.0** · TOTAL_OVER
-  Prob 62.4% · Odds -110 · Edge +19.1% · Kelly 0.209
+  Prob 63.1% · Odds -110 · Edge +20.4% · Kelly 0.225
+- **HOU @ LAA · AWAY (AWAY)** · TEAM_ML
+  Prob 66.9% · Odds -132 · Edge +17.6% · Kelly 0.232
 
 ## 🎲 Parlay
 
-- **Rodolfo Durán + Choi Jeong** · 2-leg
-  Prob 63.4% · Odds +231 · Edge +110.2% · Kelly 0.050
+- **Rodolfo Durán + NYY @ CLE** · 2-leg
+  Prob 50.8% · Odds +257 · Edge +81.8% · Kelly 0.050
 
 ---
-_Generated 2026-06-08T12:37:44 UTC by EdgeStat._
+_Generated 2026-06-08T14:15:02 UTC by EdgeStat._
 _Stakes assume ¼-Kelly fractional sizing on a flat bankroll._
