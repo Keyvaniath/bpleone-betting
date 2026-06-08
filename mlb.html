@@ -38,6 +38,28 @@
     <div class="metric"><span class="metric-num" id="mlbCLV">--</span><span class="metric-label">Avg CLV</span></div>
   </section>
 
+  <section class="card" style="margin-bottom:18px;">
+    <div class="card-head"><span>🎯 Today's Games — click any game for the full card</span><span class="muted" id="gcMeta"></span></div>
+    <div id="gameCardsStrip" style="display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:10px; padding:12px 14px;">
+      <span class="muted">Loading games…</span>
+    </div>
+  </section>
+  <script>
+  fetch("data/mlb_game_cards.json", { cache: "no-cache" }).then(r => r.json()).then(d => {
+    const el = document.getElementById("gameCardsStrip"); const games = d.games || [];
+    if (!games.length) { el.innerHTML = '<span class="muted">No games today.</span>'; return; }
+    const pct = p => p == null ? "" : (100 * Math.max(p, 1 - p)).toFixed(0) + "%";
+    el.innerHTML = games.map(c => {
+      const m = c.model || {}; const lean = (m.p_home_win || 0) >= 0.5 ? c.home : c.away;
+      return `<a href="game.html?g=${encodeURIComponent(c.matchup)}" style="display:block;text-decoration:none;border:1px solid var(--border,#222a36);border-radius:9px;padding:11px 13px;transition:.12s;" onmouseover="this.style.borderColor='#3f86ff'" onmouseout="this.style.borderColor='var(--border,#222a36)'">
+        <div style="display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:14px;color:var(--text,#e6e9ef);"><b>${c.away} @ ${c.home}</b><span class="muted">${c.time || ""}</span></div>
+        <div class="muted" style="font-family:'JetBrains Mono',monospace;font-size:11px;margin-top:5px;">lean ${lean} ${pct(m.p_home_win)} · ${c.n_predictions} predictions &rarr;</div>
+      </a>`;
+    }).join("");
+    const meta = document.getElementById("gcMeta"); if (meta) meta.textContent = `${games.length} games`;
+  }).catch(() => { const el = document.getElementById("gameCardsStrip"); if (el) el.innerHTML = '<span class="muted">Game cards unavailable — pipeline may not have run.</span>'; });
+  </script>
+
   <script>
   (function() {
     const set = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };

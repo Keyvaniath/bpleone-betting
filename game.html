@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Game Detail | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/nav.js"></script>
+<style>
+  .gh { display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:14px; margin-bottom:6px; }
+  .gh h1 { margin:0; font-size:28px; letter-spacing:-0.5px; }
+  .gh .sub { color:var(--muted,#8a93a6); font-family:'JetBrains Mono',monospace; font-size:13px; margin-top:4px; }
+  .live-badge { display:inline-flex; align-items:center; gap:6px; background:rgba(255,60,60,.12); color:#ff5b5b;
+                border:1px solid rgba(255,60,60,.35); border-radius:6px; padding:4px 10px; font-family:'JetBrains Mono',monospace;
+                font-size:12px; font-weight:600; }
+  .live-badge .dot { width:8px;height:8px;border-radius:50%;background:#ff5b5b; animation:pulse 1.2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.35} }
+  .score { font-family:'JetBrains Mono',monospace; font-size:30px; font-weight:700; }
+  .grid2 { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:16px; margin:18px 0; }
+  .card { background:var(--panel,#11151c); border:1px solid var(--border,#222a36); border-radius:10px; padding:16px 18px; }
+  .card h3 { margin:0 0 12px; font-size:14px; text-transform:uppercase; letter-spacing:.6px; color:var(--muted,#8a93a6); }
+  .wpbar { height:30px; border-radius:6px; overflow:hidden; display:flex; font-family:'JetBrains Mono',monospace; font-size:13px; font-weight:600; }
+  .wpbar .away { background:linear-gradient(90deg,#2f6df6,#3f86ff); color:#fff; display:flex; align-items:center; padding-left:10px; }
+  .wpbar .home { background:linear-gradient(90deg,#7a4dff,#9a6bff); color:#fff; display:flex; align-items:center; justify-content:flex-end; padding-right:10px; }
+  .ln { display:flex; justify-content:space-between; font-family:'JetBrains Mono',monospace; font-size:13px; padding:5px 0; border-bottom:1px solid rgba(255,255,255,.05); }
+  .ln:last-child { border-bottom:none; }
+  .ln .k { color:var(--muted,#8a93a6); }
+  .pos { color:#3ad17e; } .neg { color:#ff5b5b; }
+  table.preds { width:100%; border-collapse:collapse; font-family:'JetBrains Mono',monospace; font-size:13px; }
+  table.preds th { text-align:left; color:var(--muted,#8a93a6); font-weight:500; padding:6px 8px; border-bottom:1px solid var(--border,#222a36); font-size:11px; text-transform:uppercase; letter-spacing:.5px; }
+  table.preds td { padding:7px 8px; border-bottom:1px solid rgba(255,255,255,.04); }
+  table.preds tr:hover td { background:rgba(255,255,255,.02); }
+  .pill { display:inline-block; padding:1px 7px; border-radius:4px; font-size:10px; text-transform:uppercase; letter-spacing:.4px; }
+  .pill.pitcher { background:rgba(122,77,255,.15); color:#b79bff; }
+  .pill.batter { background:rgba(47,109,246,.15); color:#7facff; }
+  .pill.game { background:rgba(58,209,126,.13); color:#5fe0a0; }
+  .rec { display:flex; justify-content:space-between; align-items:center; padding:9px 11px; border-radius:7px; margin-bottom:7px;
+         background:rgba(58,209,126,.07); border:1px solid rgba(58,209,126,.22); font-family:'JetBrains Mono',monospace; font-size:13px; }
+  .rec .conf { font-size:10px; text-transform:uppercase; letter-spacing:.4px; color:var(--muted,#8a93a6); }
+  .gamepick a { display:flex; justify-content:space-between; padding:13px 16px; border:1px solid var(--border,#222a36); border-radius:9px;
+                margin-bottom:9px; text-decoration:none; color:var(--text,#e6e9ef); font-family:'JetBrains Mono',monospace; transition:.12s; }
+  .gamepick a:hover { border-color:#3f86ff; background:rgba(63,134,255,.05); }
+  .back { font-family:'JetBrains Mono',monospace; font-size:13px; color:var(--muted,#8a93a6); text-decoration:none; }
+  .back:hover { color:#3f86ff; }
+  .muted { color:var(--muted,#8a93a6); }
+</style>
+</head>
+<body class="page-mlb">
+<header class="topbar">
+  <div class="brand">
+    <a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a>
+    <span class="tagline">by bpleone</span>
+  </div>
+  <nav class="mainnav"><!-- nav.js injects here --></nav>
+  <div class="topbar-actions"><div class="ticker" id="liveTicker">GAME</div></div>
+</header>
+
+<main class="container">
+  <a href="mlb.html" class="back">&larr; MLB slate</a>
+  <div id="root" style="margin-top:14px;"><p class="muted">Loading game…</p></div>
+</main>
+
+<footer class="site-footer">
+  <div class="foot-bot"><span>© 2026 bpleone.com</span><span>Built in SoCal ☀️</span></div>
+</footer>
+
+<script>
+const Q = new URLSearchParams(location.search);
+const TARGET = Q.get("g");        // "AWAY @ HOME"
+const root = document.getElementById("root");
+const ml = v => (v == null ? "—" : (v > 0 ? "+" + v : "" + v));
+const pct = p => (p == null ? "—" : (100 * p).toFixed(1) + "%");
+const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const j = (u) => fetch(u + (u.includes("?") ? "&" : "?") + "t=" + Date.now(), { cache: "no-store" }).then(r => r.json()).catch(() => ({}));
+
+let CARDS = {}, REFRESH = null;
+
+function gamePicker(cards) {
+  root.innerHTML = `<h1 style="margin:6px 0 4px;">MLB — today's games</h1>
+    <p class="muted" style="font-family:'JetBrains Mono',monospace;font-size:13px;">Click a game to see the model line, the plays, and every prediction.</p>
+    <div class="gamepick" style="margin-top:16px;">` +
+    cards.map(c => {
+      const m = c.model || {};
+      const fav = (m.p_home_win || 0) >= 0.5 ? c.home : c.away;
+      return `<a href="game.html?g=${encodeURIComponent(c.matchup)}">
+        <span><b>${esc(c.away)}</b> @ <b>${esc(c.home)}</b><span class="muted">  ${esc(c.time || "")}</span></span>
+        <span class="muted">${c.n_predictions} preds · lean ${esc(fav)} ${m.p_home_win != null ? "(" + pct(Math.max(m.p_home_win, 1 - m.p_home_win)) + ")" : ""}</span>
+      </a>`;
+    }).join("") + `</div>`;
+}
+
+function render(card, live) {
+  const m = card.model || {}, mk = card.market || {}, w = card.weather || {};
+  const pHome = m.p_home_win, pAway = m.p_away_win != null ? m.p_away_win : (pHome != null ? 1 - pHome : null);
+  // live overlay
+  let liveHtml = "", isLive = false, score = "";
+  if (live && live.matchup) {
+    isLive = true;
+    score = `${esc(card.away)} ${live.away_score ?? 0} — ${live.home_score ?? 0} ${esc(card.home)}`;
+    const st = live.inning_state || live.state || live.status || "";
+    liveHtml = `<div class="live-badge"><span class="dot"></span>LIVE ${esc(st)}</div>`;
+  }
+  // model line rows
+  const edge = (mdl, market) => (mdl != null && market != null) ? ml(market) : "—";
+  const recs = (card.recommendations || []);
+  const preds = (card.predictions || []);
+  const famOrder = { pitcher: 0, batter: 1, game: 2 };
+  preds.sort((a, b) => (famOrder[a.family] - famOrder[b.family]) || (b.prob - a.prob));
+
+  root.innerHTML = `
+  <div class="gh">
+    <div>
+      <h1>${esc(card.away)} <span class="muted">@</span> ${esc(card.home)}</h1>
+      <div class="sub">${esc(card.time || "")} · ${esc(card.park || "")}${w.temp_f ? " · " + w.temp_f + "°F" : ""}${w.is_indoor ? " · dome" : (w.wind_mph != null ? " · wind " + w.wind_mph + "mph" : "")}</div>
+      ${isLive ? `<div class="score" style="margin-top:8px;">${score}</div>` : ""}
+    </div>
+    <div style="text-align:right;">${liveHtml}
+      <div class="sub" style="margin-top:6px;">
+        ${esc((card.pitchers?.away?.name) || "TBD")} (${esc(card.pitchers?.away?.hand || "?")}) vs ${esc((card.pitchers?.home?.name) || "TBD")} (${esc(card.pitchers?.home?.hand || "?")})
+      </div>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="card">
+      <h3>${isLive ? "Live win probability" : "Model win probability"}</h3>
+      <div class="wpbar">
+        <div class="away" style="width:${((pAway || 0.5) * 100).toFixed(0)}%">${esc(card.away)} ${pct(pAway)}</div>
+        <div class="home" style="width:${((pHome || 0.5) * 100).toFixed(0)}%">${pct(pHome)} ${esc(card.home)}</div>
+      </div>
+      <div style="margin-top:14px;">
+        <div class="ln"><span class="k">Fair moneyline</span><span>${esc(card.away)} ${ml(m.fair_away_ml)} / ${esc(card.home)} ${ml(m.fair_home_ml)}</span></div>
+        <div class="ln"><span class="k">Market (${esc(mk.book || "book")})</span><span>${ml(mk.away_ml)} / ${ml(mk.home_ml)}</span></div>
+        <div class="ln"><span class="k">Fair total</span><span>${m.fair_total ?? "—"}${mk.total != null ? `  <span class="muted">(mkt ${mk.total})</span>` : ""}</span></div>
+        <div class="ln"><span class="k">Model P(over)</span><span>${pct(m.p_over_market)}</span></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>The plays ${recs.length ? `· ${recs.length}` : ""}</h3>
+      ${recs.length ? recs.map(r => `
+        <div class="rec">
+          <span><b>${esc(r.label)}</b> <span class="muted">${ml(r.market_price)}</span></span>
+          <span>
+            <span class="${(r.edge_pct || 0) >= 0 ? "pos" : "neg"}">${r.edge_pct != null ? (r.edge_pct >= 0 ? "+" : "") + r.edge_pct + "% edge" : ""}</span>
+            ${r.kelly_units != null ? `<span class="muted"> · ${(+r.kelly_units).toFixed(2)}u</span>` : ""}
+            <span class="conf"> · ${esc(r.confidence || "")}</span>
+          </span>
+        </div>`).join("") : `<p class="muted" style="font-family:'JetBrains Mono',monospace;font-size:13px;">No standalone game-line edge — see prop predictions below.</p>`}
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Predictions ${preds.length ? `· ${preds.length}` : ""}</h3>
+    ${preds.length ? `<table class="preds"><thead><tr><th>Type</th><th>Subject</th><th>Market</th><th>Model prob</th><th>Fair odds</th></tr></thead><tbody>` +
+      preds.map(p => `<tr>
+        <td><span class="pill ${p.family}">${esc(p.stat || p.family)}</span></td>
+        <td>${esc(p.subject)}</td>
+        <td>${esc(p.market)}</td>
+        <td><b>${pct(p.prob)}</b></td>
+        <td>${ml(p.fair_odds)}</td>
+      </tr>`).join("") + `</tbody></table>`
+      : `<p class="muted" style="font-family:'JetBrains Mono',monospace;font-size:13px;">Player props populate once lineups post (usually a few hours before first pitch).</p>`}
+  </div>
+
+  <p class="muted" style="font-family:'JetBrains Mono',monospace;font-size:11px;margin-top:14px;">
+    Fair odds are the model's price (what you'd bet); market is Bovada. ${isLive ? "Live win-prob refreshes every 30s." : "Win-prob updates live once the game starts."}
+  </p>`;
+}
+
+async function liveFor(matchup) {
+  // overlay live score/state if this game is in progress
+  const [state, lg] = await Promise.all([j("data/live_state.json"), j("data/live_game.json")]);
+  const norm = s => String(s || "").replace(/\s+vs\s+|\s+@\s+/i, " @ ").toUpperCase();
+  const games = state.games || state.games_in_progress || [];
+  let hit = (Array.isArray(games) ? games : []).find(g => norm(g.matchup) === norm(matchup));
+  if (hit) return hit;
+  if (lg && norm(lg.matchup) === norm(matchup) && lg.state && Object.keys(lg.state).length) {
+    const st = lg.state;
+    return { matchup, home_score: st.home_score, away_score: st.away_score,
+             inning_state: st.event || st.inning, p_home_win: st.p_home_win };
+  }
+  return null;
+}
+
+async function load() {
+  const data = await j("data/mlb_game_cards.json");
+  const cards = data.games || [];
+  CARDS = Object.fromEntries(cards.map(c => [c.matchup, c]));
+  if (!TARGET || !CARDS[TARGET]) { gamePicker(cards); return; }
+  const card = CARDS[TARGET];
+  const live = await liveFor(TARGET);
+  render(card, live);
+  if (live) {  // game is live -> keep it ticking
+    clearInterval(REFRESH);
+    REFRESH = setInterval(async () => { render(CARDS[TARGET], await liveFor(TARGET)); }, 30000);
+  }
+}
+load();
+</script>
+</body>
+</html>

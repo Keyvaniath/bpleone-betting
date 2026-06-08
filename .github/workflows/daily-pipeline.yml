@@ -205,6 +205,13 @@ jobs:
         working-directory: python
         run: python props_pipeline.py
 
+      # Unify today.json (model line + market + recs) with every per-matchup prop
+      # into one card per game -> data/mlb_game_cards.json, powering the clickable
+      # per-game detail view (game.html). Runs after props so it can join them.
+      - name: Build per-game cards (game.html detail view)
+        working-directory: python
+        run: python mlb_game_cards.py
+
       # Build parlay suggestions from today's qualifying single-leg edges.
       - name: Run parlay engine
         if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
