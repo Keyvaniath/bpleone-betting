@@ -29,6 +29,24 @@ from typing import Any, Dict, List, Optional
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 OUT = os.path.join(DATA_DIR, "mlb_game_cards.json")
 
+# abbrev -> MLB StatsAPI full name, so game.html can join the live poller
+# (live_state.json keys games by full team name, not abbrev).
+TEAM_FULL_NAME = {
+    "ARI": "Arizona Diamondbacks", "ATL": "Atlanta Braves", "BAL": "Baltimore Orioles",
+    "BOS": "Boston Red Sox", "CHC": "Chicago Cubs", "CWS": "Chicago White Sox",
+    "CHW": "Chicago White Sox", "CIN": "Cincinnati Reds", "CLE": "Cleveland Guardians",
+    "COL": "Colorado Rockies", "DET": "Detroit Tigers", "HOU": "Houston Astros",
+    "KC": "Kansas City Royals", "KCR": "Kansas City Royals", "LAA": "Los Angeles Angels",
+    "LAD": "Los Angeles Dodgers", "MIA": "Miami Marlins", "MIL": "Milwaukee Brewers",
+    "MIN": "Minnesota Twins", "NYM": "New York Mets", "NYY": "New York Yankees",
+    "OAK": "Athletics", "ATH": "Athletics", "PHI": "Philadelphia Phillies",
+    "PIT": "Pittsburgh Pirates", "SD": "San Diego Padres", "SDP": "San Diego Padres",
+    "SF": "San Francisco Giants", "SFG": "San Francisco Giants", "SEA": "Seattle Mariners",
+    "STL": "St. Louis Cardinals", "TB": "Tampa Bay Rays", "TBR": "Tampa Bay Rays",
+    "TEX": "Texas Rangers", "TOR": "Toronto Blue Jays", "WSH": "Washington Nationals",
+    "WSN": "Washington Nationals",
+}
+
 # (filename, family, short stat label). Empty/missing files are skipped.
 PROP_FILES = [
     ("mlb_pitcher_strikeouts_props.json", "pitcher", "Strikeouts"),
@@ -151,6 +169,7 @@ def run() -> Dict[str, Any]:
         preds = sorted(preds_by_mu.get(mk, []), key=lambda p: -(p["prob"] or 0))
         cards.append({
             "matchup": mk, "away": away, "home": home,
+            "away_full": TEAM_FULL_NAME.get(away), "home_full": TEAM_FULL_NAME.get(home),
             "time": g.get("time"), "park": g.get("park"),
             "weather": g.get("weather"), "umpire": g.get("umpire"),
             "model": g.get("model"), "market": g.get("market"),

@@ -91,7 +91,10 @@ function gamePicker(cards) {
 
 function render(card, live) {
   const m = card.model || {}, mk = card.market || {}, w = card.weather || {};
-  const pHome = m.p_home_win, pAway = m.p_away_win != null ? m.p_away_win : (pHome != null ? 1 - pHome : null);
+  // live win-prob (from the in-game poller) overrides the pre-game model line.
+  const livePH = (live && live.p_home_win != null) ? live.p_home_win : null;
+  const pHome = livePH != null ? livePH : m.p_home_win;
+  const pAway = pHome != null ? 1 - pHome : (m.p_away_win != null ? m.p_away_win : null);
   // live overlay
   let liveHtml = "", isLive = false, score = "";
   if (live && live.matchup) {
@@ -168,19 +171,23 @@ function render(card, live) {
   </p>`;
 }
 
-async function liveFor(matchup) {
-  // overlay live score/state if this game is in progress
-  const [state, lg] = await Promise.all([j("data/live_state.json"), j("data/live_game.json")]);
-  const norm = s => String(s || "").replace(/\s+vs\s+|\s+@\s+/i, " @ ").toUpperCase();
+async function liveFor(card) {
+  // overlay live score/state if this game is in progress. live_state.json keys
+  // games by FULL team name (Seattle Mariners) with home_runs/away_runs + state.
+  const state = await j("data/live_state.json");
   const games = state.games || state.games_in_progress || [];
-  let hit = (Array.isArray(games) ? games : []).find(g => norm(g.matchup) === norm(matchup));
-  if (hit) return hit;
-  if (lg && norm(lg.matchup) === norm(matchup) && lg.state && Object.keys(lg.state).length) {
-    const st = lg.state;
-    return { matchup, home_score: st.home_score, away_score: st.away_score,
-             inning_state: st.event || st.inning, p_home_win: st.p_home_win };
-  }
-  return null;
+  const eq = (a, b) => a && b && String(a).toLowerCase() === String(b).toLowerCase();
+  const hit = (Array.isArray(games) ? games : []).find(g =>
+    (eq(g.home, card.home_full) && eq(g.away, card.away_full)) ||
+    (eq(g.home, card.home) && eq(g.away, card.away)));  // fallback if poller emits abbrevs
+  if (!hit) return null;
+  const st = hit.state || {};
+  return {
+    matchup: card.matchup,
+    home_score: hit.home_runs, away_score: hit.away_runs,
+    inning_state: [st.inning_state, st.inning].filter(v => v != null && v !== "").join(" "),
+    p_home_win: hit.p_home_win, last_play: hit.last_play,
+  };
 }
 
 async function load() {
@@ -189,11 +196,11 @@ async function load() {
   CARDS = Object.fromEntries(cards.map(c => [c.matchup, c]));
   if (!TARGET || !CARDS[TARGET]) { gamePicker(cards); return; }
   const card = CARDS[TARGET];
-  const live = await liveFor(TARGET);
+  const live = await liveFor(card);
   render(card, live);
   if (live) {  // game is live -> keep it ticking
     clearInterval(REFRESH);
-    REFRESH = setInterval(async () => { render(CARDS[TARGET], await liveFor(TARGET)); }, 30000);
+    REFRESH = setInterval(async () => { render(CARDS[TARGET], await liveFor(CARDS[TARGET])); }, 30000);
   }
 }
 load();
