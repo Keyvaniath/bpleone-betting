@@ -90,6 +90,23 @@ def _american_to_decimal(a):
     return 1 + 100 / abs(a)
 
 
+# MLB book bleeds juice on heavy favorites (model overconfidence): skip MLB picks
+# priced at/below this fair-odds floor. -150 = the threshold Brandon flagged and the
+# data confirms (everything <=-150 is -EV on realized hit rate). Other sports +
+# the MLB-PP player-prop book (which cashes its favorites) are untouched.
+MLB_FAV_PRICE_FLOOR = -150
+
+
+def _is_mlb_juice_favorite(p: Dict[str, Any]) -> bool:
+    if (p.get("sport") or "").upper() != "MLB":
+        return False
+    try:
+        fa = float(p.get("fair_american"))
+    except (TypeError, ValueError):
+        return False
+    return fa <= MLB_FAV_PRICE_FLOOR
+
+
 def _collect_picks_from_sources() -> List[Dict[str, Any]]:
     """Pull picks from every surfacing module today and normalize."""
     date_str = _today_date_str()
@@ -1406,6 +1423,14 @@ def _collect_picks_from_sources() -> List[Dict[str, Any]]:
             "rlm_strength": r.get("rlm_strength"),
             "line_delta_pp": r.get("line_delta_pp"),
         })
+
+    # MLB favorite-juice gate. The MLB game book is empirically OVERCONFIDENT on
+    # heavy favorites: settled picks priced <= -150 realize well under their implied
+    # win rate (the <=-200 bucket implies 66.7% but hits ~60% -> -19.8% ROI, ~-547u;
+    # the -150..-200 bucket -> -10.6%). Together that is the bulk of the MLB book's
+    # losses. Stop placing them. Scoped to sport "MLB" so the profitable MLB-PP
+    # player-prop book (heavy favorites that DO cash, +42% ROI) is untouched.
+    out = [p for p in out if not _is_mlb_juice_favorite(p)]
 
     # Stamp all picks with date + ID. A pick may carry its own game_date (e.g. NFL
     # props for a game a few days out) -- settle against THAT date's box score, not
