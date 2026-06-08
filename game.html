@@ -150,6 +150,10 @@ function render(card, live) {
     liveHtml = `<div class="live-badge"><span class="dot"></span>LIVE ${esc(st)}</div>`;
   }
   // model line rows
+  const lm = card.line_movement || {};
+  const lmHtml = lm.edge_vs_market_pp != null ? `
+        <div class="ln"><span class="k">Model vs market</span><span>${lm.model_home_implied}% vs ${(lm.market||{}).home_implied}% <span class="${lm.edge_vs_market_pp>=0?'pos':'neg'}">(${lm.edge_vs_market_pp>=0?'+':''}${lm.edge_vs_market_pp}pp ${esc(card.home)})</span></span></div>
+        ${lm.has_timeseries ? `<div class="ln"><span class="k">Line drift open&rarr;now</span><span>${lm.ml_drift_pp>=0?'+':''}${lm.ml_drift_pp}pp${lm.steam?' <span class="pos">⚡ STEAM</span>':''}${lm.vs_model?` · market ${esc(lm.vs_model.replace(/_/g," "))}`:""}</span></div>` : `<div class="ln"><span class="k">Line drift</span><span class="muted">live odds feed off — open→now drift n/a</span></div>`}` : "";
   const edge = (mdl, market) => (mdl != null && market != null) ? ml(market) : "—";
   const recs = (card.recommendations || []);
   const preds = (card.predictions || []);
@@ -182,6 +186,7 @@ function render(card, live) {
         <div class="ln"><span class="k">Market (${esc(mk.book || "book")})</span><span>${ml(mk.away_ml)} / ${ml(mk.home_ml)}</span></div>
         <div class="ln"><span class="k">Fair total</span><span>${m.fair_total ?? "—"}${mk.total != null ? `  <span class="muted">(mkt ${mk.total})</span>` : ""}</span></div>
         <div class="ln"><span class="k">Model P(over)</span><span>${pct(m.p_over_market)}</span></div>
+        ${lmHtml}
       </div>
     </div>
 

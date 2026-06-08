@@ -209,6 +209,47 @@ def run() -> Dict[str, Any]:
                                 "note": sctx.get("note")} if sctx else None),
         }
 
+    # line movement / CLV: market drift (open -> current) vs the model's fair number.
+    clv_by_mu = {g.get("matchup"): g for g in (_load("live_clv.json").get("games") or [])
+                 if isinstance(g, dict)}
+
+    def _implied(a):
+        a = _num(a)
+        if a is None:
+            return None
+        return round(100 * (abs(a) / (abs(a) + 100) if a < 0 else 100 / (a + 100)), 1)
+
+    def _line_movement(mk, model, market):
+        # Always-available part: the model's fair line vs the current market (today.json).
+        mp = (model or {}).get("p_home_win")
+        model_imp = round(_num(mp) * 100, 1) if mp is not None else None
+        mkt_imp = _implied((market or {}).get("home_ml"))
+        out = {
+            "model_home_implied": model_imp,
+            "market": {"home_ml": (market or {}).get("home_ml"), "away_ml": (market or {}).get("away_ml"),
+                       "total": (market or {}).get("total"), "book": (market or {}).get("book"),
+                       "home_implied": mkt_imp},
+            "edge_vs_market_pp": round(model_imp - mkt_imp, 1) if (model_imp is not None and mkt_imp is not None) else None,
+            "has_timeseries": False,
+        }
+        # Time-series drift + steam, only when the CLV poller has this game's history
+        # (needs the live odds feed; absent while ODDS_API_KEY is unset).
+        g = clv_by_mu.get(mk)
+        snaps = (g or {}).get("snapshots") or []
+        if snaps:
+            op, cur = (g.get("opening") or snaps[0]), snaps[-1]
+            o_imp, c_imp = _num(op.get("home_ml_implied_pct")), _num(cur.get("home_ml_implied_pct"))
+            drift = round(c_imp - o_imp, 2) if (o_imp is not None and c_imp is not None) else None
+            out.update({
+                "has_timeseries": True, "n_snapshots": len(snaps),
+                "open_home_implied": o_imp, "current_home_implied": c_imp,
+                "open_total": op.get("total"), "current_total": cur.get("total"),
+                "ml_drift_pp": drift, "steam": bool(drift is not None and abs(drift) >= 2.0),
+            })
+            if drift is not None and model_imp is not None and o_imp is not None and abs(drift) > 1e-9:
+                out["vs_model"] = "toward_model" if ((model_imp - o_imp) * drift > 0) else "away_from_model"
+        return out
+
     def _trends(mk, away, home, away_full, home_full):
         pf = lambda side: pform.get((mk, side)) or {}
         slim_form = lambda v: ({k: v.get(k) for k in
@@ -261,6 +302,7 @@ def run() -> Dict[str, Any]:
             "pitchers": {"away": _starter("away"), "home": _starter("home")},
             "trends": _trends(mk, away, home, TEAM_FULL_NAME.get(away), TEAM_FULL_NAME.get(home)),
             "h2h": _h2h(away, home, mk),
+            "line_movement": _line_movement(mk, g.get("model"), g.get("market")),
             "n_predictions": len(preds),
             "predictions": preds,
         })
