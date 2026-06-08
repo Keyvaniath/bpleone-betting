@@ -1,60 +1,63 @@
 {
-  "generated_at": "2026-06-08T10:52:38",
+  "generated_at": "2026-06-08T12:32:01",
   "sport": "cws",
-  "n_games": 52,
-  "hit_rate": 0.6538,
-  "brier_score": 0.259,
-  "log_loss": 0.721,
-  "avg_predicted_home_winprob": 0.5349,
-  "avg_actual_home_winrate": 0.5192,
-  "bias": 0.0156,
+  "n_games": 21,
+  "hit_rate": 0.7143,
+  "brier_score": 0.2201,
+  "log_loss": 0.6562,
+  "avg_predicted_home_winprob": 0.4088,
+  "avg_actual_home_winrate": 0.5238,
+  "bias": -0.115,
   "reliability_bins": [
     {
       "lo": 0.0,
       "hi": 0.1,
-      "n": 2,
+      "n": 4,
       "predicted_avg": 0.061,
       "actual_avg": 0.0
     },
     {
       "lo": 0.2,
       "hi": 0.3,
-      "n": 10,
+      "n": 5,
       "predicted_avg": 0.215,
-      "actual_avg": 0.3
+      "actual_avg": 0.4
     },
     {
-      "lo": 0.4,
-      "hi": 0.5,
+      "lo": 0.3,
+      "hi": 0.4,
       "n": 1,
-      "predicted_avg": 0.451,
-      "actual_avg": 0.0
+      "predicted_avg": 0.366,
+      "actual_avg": 1.0
     },
     {
       "lo": 0.5,
       "hi": 0.6,
-      "n": 26,
+      "n": 8,
       "predicted_avg": 0.536,
-      "actual_avg": 0.692
+      "actual_avg": 0.75
     },
     {
       "lo": 0.8,
       "hi": 0.9,
-      "n": 10,
+      "n": 2,
       "predicted_avg": 0.83,
-      "actual_avg": 0.3
+      "actual_avg": 1.0
     },
     {
       "lo": 0.9,
       "hi": 1.0,
-      "n": 3,
+      "n": 1,
       "predicted_avg": 0.954,
-      "actual_avg": 1.0
+      "actual_avg": 0.0
     }
   ],
   "recommendation": {
-    "applied": false,
-    "note": "model is well-calibrated (<2pp bias)"
+    "applied": true,
+    "bias_pp": -11.5,
+    "shrinkage": 0.4,
+    "recommended_shift": 0.046,
+    "note": "Model under-predicting home by 11.5pp; add 4.6pp to P(home) (shrinkage 40%)"
   },
-  "n_teams_tracked": 49
+  "n_teams_tracked": 22
 }
