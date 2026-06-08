@@ -4,8 +4,8 @@ _6 picks consolidated from POD + Alpha + Book Edges + Parlay-of-Day._
 
 ## ⭐ Play of the Day
 
-- **Rodolfo Durán** · PP_batter_hits_under_1.5
-  Prob 86.7% · Odds -136 · Edge +50.4% · Kelly 0.250
+- **Luis Rengifo** · PP_batter_hrr_under_3.5
+  Prob 86.2% · Odds -136 · Edge +49.6% · Kelly 0.250
 
 ## 🎯 Alpha Pick
 
@@ -23,9 +23,9 @@ _6 picks consolidated from POD + Alpha + Book Edges + Parlay-of-Day._
 
 ## 🎲 Parlay
 
-- **Rodolfo Durán + HOU @ LAA** · 2-leg
-  Prob 57.5% · Odds +222 · Edge +85.0% · Kelly 0.050
+- **Luis Rengifo + HOU @ LAA** · 2-leg
+  Prob 57.2% · Odds +222 · Edge +84.0% · Kelly 0.050
 
 ---
-_Generated 2026-06-08T22:02:13 UTC by EdgeStat._
+_Generated 2026-06-08T23:24:45 UTC by EdgeStat._
 _Stakes assume ¼-Kelly fractional sizing on a flat bankroll._

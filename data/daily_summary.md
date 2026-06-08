@@ -2,9 +2,9 @@
 
 **Model Confidence: 73.7/100 [GREEN-LIGHT]** -- Model is healthy. Use capped Kelly (<=0.5u) until residual variance tightens further.
 
-_Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
+_Pipeline health: **DEGRADED** (14/15 artifacts ok; 1 empty, 0 stale)._ 
 
-_Generated at 2026-06-08T22:03:23 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-06-08T23:26:04 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
@@ -16,17 +16,13 @@ _Generated at 2026-06-08T22:03:23 UTC. Game lines source: **Bovada (fallback -- 
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
 
-## Full Slate (8 games)
+## Full Slate (4 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 6:35p ET | SEA @ BAL | Oriole Park at Camden Yards | 65F 8mph | SEA_ML +36.84% |
-| 6:40p ET | BOS @ TBR | Tropicana Field | indoor | TBR_ML +14.93% |
-| 6:40p ET | NYY @ CLE | Progressive Field | 78F 2mph | NYY_ML +27.76% |
-| 7:07p ET | PHI @ TOR | Rogers Centre | indoor | UNDER_7.5 +21.83% |
 | 9:38p ET | HOU @ LAA | Angel Stadium | 64F 3mph | OVER_8.5 +44.1% |
-| 9:40p ET | CIN @ SDP | Petco Park | 62F 3mph | UNDER_7.5 +29.46% |
-| 9:45p ET | WSN @ SFG | Oracle Park | 56F 9mph | SFG_ML +23.77% |
+| 9:40p ET | CIN @ SDP | Petco Park | 62F 2mph | UNDER_7.5 +30.86% |
+| 9:45p ET | WSN @ SFG | Oracle Park | 56F 8mph | SFG_ML +12.07% |
 | 10:05p ET | MIL @ OAK | Las Vegas Ballpark | 70F 0mph | UNDER_11.5 +65.05% |
 
 ## Parlays - top 5
@@ -52,14 +48,14 @@ _Generated at 2026-06-08T22:03:23 UTC. Game lines source: **Bovada (fallback -- 
 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
-| batter home runs | 1234 | 10.0% | 13.1% | 1.314 | 0.763 |
-| batter hits | 2515 | 37.7% | 41.9% | 1.111 | 0.900 |
-| batter total bases | 2470 | 24.9% | 32.4% | 1.299 | 0.770 |
-| batter doubles | 1234 | 14.9% | 16.1% | 1.083 | 0.924 |
-| batter singles | 1234 | 40.4% | 44.6% | 1.106 | 0.905 |
 | batter runs scored | 1234 | 34.8% | 39.0% | 1.121 | 0.893 |
-| pitcher strikeouts | 505 | 37.8% | 39.2% | 1.037 | 0.965 |
+| batter home runs | 1234 | 10.0% | 13.1% | 1.314 | 0.763 |
+| batter doubles | 1234 | 14.9% | 16.1% | 1.083 | 0.924 |
 | batter rbis | 2468 | 18.7% | 23.5% | 1.259 | 0.795 |
+| batter hits | 2515 | 37.7% | 41.9% | 1.111 | 0.900 |
+| pitcher strikeouts | 505 | 37.8% | 39.2% | 1.037 | 0.965 |
+| batter singles | 1234 | 40.4% | 44.6% | 1.106 | 0.905 |
+| batter total bases | 2470 | 24.9% | 32.4% | 1.299 | 0.770 |
 
 Cumulative graded plays: 118214. Wins: 87366. Hit rate: 73.9%.
 
@@ -67,14 +63,10 @@ Cumulative graded plays: 118214. Wins: 87366. Hit rate: 73.9%.
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| BOS @ TBR | 36.4% | +175 | 5.06 | +122 | -122 |
-| CIN @ SDP | 46.1% | +117 | 3.82 | +230 | -230 |
+| CIN @ SDP | 46.1% | +117 | 3.84 | +230 | -230 |
 | HOU @ LAA | 28.8% | +248 | 6.34 | +497 | -497 |
 | MIL @ OAK | 48.9% | +105 | 3.58 | +656 | -656 |
-| NYY @ CLE | 56.2% | -129 | 2.91 | +506 | -506 |
-| PHI @ TOR | 60.1% | -151 | 2.55 | +343 | -343 |
-| SEA @ BAL | 49.1% | +104 | 3.63 | +506 | -506 |
-| WSN @ SFG | 37.9% | +164 | 5.12 | -115 | +115 |
+| WSN @ SFG | 29.1% | +244 | 6.52 | +115 | -115 |
 
 ## Travel / Rest Flags
 

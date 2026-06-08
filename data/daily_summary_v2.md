@@ -1,13 +1,13 @@
 # EdgeStat Daily Summary — 2026-06-08
 
-## 🏥 Model Health: 69.1/100 [OK]
+## 🏥 Model Health: 69.4/100 [OK]
 - Operational but room to improve - check yellow components
   - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 54.4/100
   - 🔴 Brier Trend: 29.6/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 88.9/100
-  - 🔴 Edge Count: 45.7/100
+  - 🔴 Edge Count: 48.6/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.582)
@@ -21,8 +21,12 @@
 4. **BOS @ TBR 4-leg SGP @ -171** (78/100 ★★★★★)
 5. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
 
+## 🐋 Whale Picks (Max Confluence)
+- [STRONG] **[MLB]** HOU @ LAA HOU_ML -- 66% / +23.0% (score 2.5)
+- [STRONG] **[MLB]** SEA @ BAL SEA_ML -- 67% / +22.1% (score 2.5)
+
 ## 📡 Sharp Action (Line Movement)
-- [STRONG] **NYY @ CLE** ml_away: 51.46% → 57.45% (+6.0pp)
+- [MODERATE] **MIL @ OAK** under_11.5: 50.0% → 53.49% (+3.5pp)
 
 ## 📉 Strong UNDER Signals
 - [STRONG 5.0] **PHI @ TOR** model 6.73 vs market 7.5
@@ -42,12 +46,12 @@
 - [MLB-PP] **Caleb Durbin** PP_batter_hrr_under_3.5 · p=86% edge=+48.7% qK=0.062u
 
 ## 🎰 Top Balanced 2-Leg Parlays (40-65% joint)
-- [MLB-PP] Rodolfo Durán PP_batter_hits_under + [MLB] NYY @ CLE NYY_ML
-  Joint: 51% | Fair: 257 | Edge: +81.8%
-- [MLB-PP] Luis Rengifo PP_batter_hrr_under_ + [MLB] NYY @ CLE NYY_ML
-  Joint: 51% | Fair: 257 | Edge: +80.8%
-- [MLB-PP] Drew Gilbert PP_batter_hrr_under_ + [MLB] NYY @ CLE NYY_ML
-  Joint: 50% | Fair: 257 | Edge: +80.1%
+- [MLB-PP] Rodolfo Durán PP_batter_hits_under + [MLB] HOU @ LAA HOU_ML
+  Joint: 57% | Fair: 222 | Edge: +85.0%
+- [MLB-PP] Luis Rengifo PP_batter_hrr_under_ + [MLB] HOU @ LAA HOU_ML
+  Joint: 57% | Fair: 222 | Edge: +84.0%
+- [MLB-PP] Rodolfo Durán PP_batter_hits_under + [MLB] SEA @ BAL SEA_ML
+  Joint: 58% | Fair: 217 | Edge: +83.7%
 
 ## 🎮 Player Play of the Day (cross-sport)
 - **[LOL]** Inspired UNDER 3.5 Kills | MED conviction · model 61.7% fair -161
@@ -77,13 +81,13 @@
   - #4 [SGP] $35 on BOS @ TBR 4-leg SGP @ -171 (P=63%)
   - #5 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
 
-## 🎯 Convergence Picks (12 stacked games)
-- ELITE: **2** · HIGH: 0 · MED: 10
+## 🎯 Convergence Picks (14 stacked games)
+- ELITE: **4** · HIGH: 0 · MED: 10
   - [ELITE] San Antonio Spurs @ New York Knicks : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ANOMALY)
+  - [ELITE] Seattle Storm @ Las Vegas Aces : 5 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ATS)
   - [ELITE] Carolina Hurricanes @ Vegas Golden Knights : 4 signals (PREGAME, HEAT_COLD, ATS, ATS)
-  - [MED] Chicago Sky @ Toronto Tempo : 2 signals (ATS, ATS)
-  - [MED] Atlanta United FC @ Columbus Crew : 2 signals (ATS, ATS)
-  - [MED] Philadelphia Union @ Inter Miami CF : 2 signals (ATS, ATS)
+  - [ELITE] Indiana Fever @ Washington Mystics : 4 signals (PREGAME, ANOMALY, ANOMALY, ATS)
+  - [MED] New York Liberty @ Connecticut Sun : 2 signals (HEAT_COLD, HEAT_COLD)
 
 ## ⚾ Top MLB Pitcher K Plays (6)
 - **Will Warren** OVER 4.5 K (75%) fair -295
@@ -112,20 +116,23 @@
   - ❄️ **Jordan Spieth** (USA): Sunday +4.0 vs tourney avg
   - ❄️ **Andrew Novak** (USA): Sunday +4.0 vs tourney avg
 
-## 🔥 MLB Batter Heat (30 HOT / 37 COLD)
+## 🔥 MLB Batter Heat (32 HOT / 38 COLD)
   - 🔥 **Jung Hoo Lee** (SF): L14 .491 / season .323 (+168pts)
-  - 🔥 **Trent Grisham** (NYY): L14 .377 / season .222 (+155pts)
+  - 🔥 **Trent Grisham** (NYY): L14 .370 / season .225 (+145pts)
   - 🔥 **Tristan Peters** (CWS): L14 .439 / season .307 (+132pts)
   - 🔥 **Keibert Ruiz** (WSH): L14 .400 / season .276 (+124pts)
   - 🔥 **Tyler Soderstrom** (ATH): L14 .348 / season .228 (+120pts)
   - ❄️ **Michael Conforto** (CHC): L14 .100 / season .250 (-150pts) -- FADE props
   - ❄️ **Ildemaro Vargas** (AZ): L14 .132 / season .280 (-148pts) -- FADE props
   - ❄️ **Austin Martin** (MIN): L14 .113 / season .247 (-134pts) -- FADE props
+  - ❄️ **Nick Fortes** (TB): L14 .111 / season .240 (-129pts) -- FADE props
   - ❄️ **Nolan Gorman** (STL): L14 .071 / season .199 (-128pts) -- FADE props
-  - ❄️ **Shea Langeliers** (ATH): L14 .155 / season .281 (-126pts) -- FADE props
 
-## 📈 Streak Regression Alerts (1)
+## 📈 Streak Regression Alerts (4)
 - [NBA] New York Knicks on W3 L10 3-0 -- New York Knicks on W3 -- no historical sample
+- [WNBA] New York Liberty on W4 L10 4-1 -- New York Liberty on W4 -- no historical sample
+- [WNBA] Las Vegas Aces on W3 L10 3-1 -- Las Vegas Aces on W3 -- no historical sample
+- [WNBA] Seattle Storm on L5 L10 0-5 -- Seattle Storm on L5 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**
