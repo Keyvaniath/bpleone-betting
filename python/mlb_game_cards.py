@@ -178,6 +178,37 @@ def run() -> Dict[str, Any]:
                     "season_ops": p.get("season_ops"), "order": p.get("lineup_order"),
                 })
 
+    # head-to-head: season series record + recent meetings (historical_mlb) +
+    # current-series standing (series_context, already keyed by matchup).
+    hist = [g for g in (_load("historical_mlb.json").get("games") or []) if isinstance(g, dict)]
+    sctx_by_mu = {g.get("matchup"): g for g in (_load("series_context.json").get("games") or [])
+                  if isinstance(g, dict)}
+
+    def _h2h(away, home, mk):
+        a, h = away.upper(), home.upper()
+        meetings = [g for g in hist
+                    if {(g.get("home_abbrev") or "").upper(), (g.get("away_abbrev") or "").upper()} == {a, h}
+                    and g.get("home_score") is not None]
+        meetings.sort(key=lambda g: g.get("date") or "", reverse=True)
+        aw = hw = 0
+        for g in meetings:
+            win_ab = (g.get("home_abbrev") if (g.get("home_score") or 0) > (g.get("away_score") or 0)
+                      else g.get("away_abbrev"))
+            if (win_ab or "").upper() == a:
+                aw += 1
+            elif (win_ab or "").upper() == h:
+                hw += 1
+        sctx = sctx_by_mu.get(mk) or {}
+        return {
+            "season_series": {"away": a, "away_wins": aw, "home": h, "home_wins": hw, "n": len(meetings)},
+            "recent_meetings": [{"date": g.get("date"), "away": g.get("away_abbrev"),
+                                 "away_score": g.get("away_score"), "home": g.get("home_abbrev"),
+                                 "home_score": g.get("home_score")} for g in meetings[:5]],
+            "current_series": ({"series_number": sctx.get("series_number"),
+                                "prior_results": sctx.get("prior_results"),
+                                "note": sctx.get("note")} if sctx else None),
+        }
+
     def _trends(mk, away, home, away_full, home_full):
         pf = lambda side: pform.get((mk, side)) or {}
         slim_form = lambda v: ({k: v.get(k) for k in
@@ -229,6 +260,7 @@ def run() -> Dict[str, Any]:
             "recommendations": g.get("recommendations") or [],
             "pitchers": {"away": _starter("away"), "home": _starter("home")},
             "trends": _trends(mk, away, home, TEAM_FULL_NAME.get(away), TEAM_FULL_NAME.get(home)),
+            "h2h": _h2h(away, home, mk),
             "n_predictions": len(preds),
             "predictions": preds,
         })
