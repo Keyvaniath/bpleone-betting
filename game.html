@@ -74,6 +74,45 @@ const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g, c => ({"&":"&amp;
 const j = (u) => fetch(u + (u.includes("?") ? "&" : "?") + "t=" + Date.now(), { cache: "no-store" }).then(r => r.json()).catch(() => ({}));
 
 let CARDS = {}, REFRESH = null;
+const sgn = v => v == null ? "—" : (v >= 0 ? "+" + v : "" + v);
+
+function trendsCard(card) {
+  const t = card.trends || {};
+  const tf = t.team_form || {}, pf = t.pitcher_form || {}, pen = t.bullpen, hc = t.hot_cold || [], ats = t.ats || {};
+  const fa = tf.away, fh = tf.home;
+  const statusPill = s => `<span class="pill ${s === "HEATING_UP" ? "game" : s === "COOLING_DOWN" ? "batter" : "pitcher"}">${esc(s || "—")}</span>`;
+  const pfLine = p => !p ? '<span class="muted">—</span>' :
+    `<b>${esc(p.pitcher || "TBD")}</b> ${statusPill(p.status)} <span class="muted">K/9 ${p.recent_k_per_9_l3 ?? "—"} (${sgn(p.k9_delta)}) · ERA ${p.recent_era_l3 ?? "—"} (${sgn(p.era_delta)})${p.tier && p.tier !== "NEUTRAL_FORM" ? " · " + esc(p.tier) : ""}</span>`;
+  const fLine = f => !f ? '<span class="muted">—</span>' :
+    `<b>${f.wins}-${f.losses}</b> <span class="muted">${sgn(f.run_diff)} run diff · ${f.runs_pg ?? "—"}/${f.runs_allowed_pg ?? "—"} rpg · ${esc(f.streak || "")}</span>`;
+  const atsLine = a => !a ? "" : ` <span class="pill ${a.signal === "MODEL_UNDERRATES" ? "game" : "batter"}">ATS ${esc(a.ats_record)} (${(100 * (a.cover_pct || 0)).toFixed(0)}%)</span>`;
+  const penLine = p => !p ? '<span class="muted">—</span>' :
+    `<span class="pill ${p.tier === "GASSED" ? "batter" : p.tier === "FRESH" ? "game" : "pitcher"}">${esc(p.tier || "")}</span> <span class="muted">${p.pen_ip_3d ?? 0} IP last 3d${p.closer_used_yesterday ? " · closer used" : ""}</span>`;
+  const hcRows = hc.length ? hc.map(p =>
+    `<tr><td><span class="pill ${p.kind === "hot" ? "game" : "batter"}">${p.kind === "hot" ? "🔥 HOT" : "🧊 COLD"}</span></td>
+      <td>${esc(p.name)} <span class="muted">${esc(p.team)}</span></td>
+      <td><b>${p.recent_ops != null ? (+p.recent_ops).toFixed(3) : "—"}</b> <span class="muted">L7 OPS</span></td>
+      <td class="muted">season ${p.season_ops ? (+p.season_ops).toFixed(3) : "—"}</td></tr>`).join("") : "";
+
+  return `<div class="card" style="margin-top:16px;">
+    <h3>Trends</h3>
+    <div class="grid2" style="margin:0;">
+      <div>
+        <div class="ln"><span class="k">${esc(card.away)} form (L10)</span><span>${fLine(fa)}${atsLine(ats.away)}</span></div>
+        <div class="ln"><span class="k">${esc(card.home)} form (L10)</span><span>${fLine(fh)}${atsLine(ats.home)}</span></div>
+        <div class="ln"><span class="k">${esc(card.away)} starter</span><span>${pfLine(pf.away)}</span></div>
+        <div class="ln"><span class="k">${esc(card.home)} starter</span><span>${pfLine(pf.home)}</span></div>
+      </div>
+      <div>
+        <div class="ln"><span class="k">${esc(card.away)} bullpen</span><span>${penLine(pen && pen.away_pen)}</span></div>
+        <div class="ln"><span class="k">${esc(card.home)} bullpen</span><span>${penLine(pen && pen.home_pen)}</span></div>
+        ${(pen && pen.leans && pen.leans.length) ? `<div class="ln"><span class="k">Bullpen lean</span><span class="pos">${pen.leans.map(esc).join(", ")}</span></div>` : ""}
+      </div>
+    </div>
+    ${hc.length ? `<h3 style="margin-top:16px;">Hot &amp; cold bats in this game</h3>
+      <table class="preds"><tbody>${hcRows}</tbody></table>` : ""}
+  </div>`;
+}
 
 function gamePicker(cards) {
   root.innerHTML = `<h1 style="margin:6px 0 4px;">MLB — today's games</h1>
@@ -152,6 +191,8 @@ function render(card, live) {
         </div>`).join("") : `<p class="muted" style="font-family:'JetBrains Mono',monospace;font-size:13px;">No standalone game-line edge — see prop predictions below.</p>`}
     </div>
   </div>
+
+  ${trendsCard(card)}
 
   <div class="card">
     <h3>Predictions ${preds.length ? `· ${preds.length}` : ""}</h3>

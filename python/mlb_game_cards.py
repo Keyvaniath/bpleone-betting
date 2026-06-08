@@ -148,6 +148,59 @@ def run() -> Dict[str, Any]:
             if p:
                 preds_by_mu[mk].append(p)
 
+    # ---- trend indexes (team form / ATS / pitcher form / bullpen / hot-cold) ----
+    tf = (_load("team_form.json").get("teams") or {})
+    form_by_abbr = {(v.get("abbr") or "").upper(): v for v in tf.values() if isinstance(v, dict)}
+    ats = _load("ats_tracker_mlb.json")
+    ats_by_name = {}
+    for key in ("model_underrates_top5", "model_overrates_top5", "rows", "teams"):
+        for r in (ats.get(key) or []):
+            if isinstance(r, dict) and r.get("name"):
+                ats_by_name[r["name"]] = r
+    pform = {}  # (matchup, SIDE) -> row, merged from form tracker + recent-form index
+    for r in _rows(_load("mlb_pitcher_form_tracker.json")):
+        pform[(r.get("matchup"), (r.get("side") or "").upper())] = dict(r)
+    for r in _rows(_load("mlb_starter_recent_form_index.json")):
+        # merge trend/tier/form_index onto the matching pitcher row (match by matchup+pitcher)
+        for k, v in pform.items():
+            if k[0] == r.get("matchup") and v.get("pitcher") and v.get("pitcher") == r.get("pitcher"):
+                v.update({"trend": r.get("trend"), "tier": r.get("tier"), "form_index": r.get("form_index")})
+    pen_by_mu = {g.get("matchup"): g for g in _rows(_load("mlb_bullpen_fatigue_index.json"))}
+    hot = _load("hot_streaks.json")
+    hotcold_by_team = defaultdict(list)
+    for kind, key in (("hot", "hot_batters"), ("cold", "cold_batters")):
+        for p in (hot.get(key) or []):
+            t = (p.get("team") or "").upper()
+            if t:
+                hotcold_by_team[t].append({
+                    "name": p.get("name"), "team": t, "kind": kind,
+                    "heat": p.get("heat"), "recent_ops": p.get("recent_ops"),
+                    "season_ops": p.get("season_ops"), "order": p.get("lineup_order"),
+                })
+
+    def _trends(mk, away, home, away_full, home_full):
+        pf = lambda side: pform.get((mk, side)) or {}
+        slim_form = lambda v: ({k: v.get(k) for k in
+                                ("wins", "losses", "run_diff", "runs_pg", "runs_allowed_pg",
+                                 "streak", "games_in_sample")} if v else None)
+        slim_ats = lambda v: ({k: v.get(k) for k in ("ats_record", "cover_pct", "signal")} if v else None)
+        slim_pf = lambda v: ({k: v.get(k) for k in
+                              ("pitcher", "status", "trend", "tier", "k9_delta", "era_delta",
+                               "recent_k_per_9_l3", "recent_era_l3", "form_index", "leans")} if v else None)
+        pen = pen_by_mu.get(mk) or {}
+        form = lambda ab, full: form_by_abbr.get((ab or "").upper()) or tf.get(full or "")
+        return {
+            "team_form": {"away": slim_form(form(away, away_full)),
+                          "home": slim_form(form(home, home_full))},
+            "ats": {"away": slim_ats(ats_by_name.get(away_full)),
+                    "home": slim_ats(ats_by_name.get(home_full))},
+            "pitcher_form": {"away": slim_pf(pf("AWAY")), "home": slim_pf(pf("HOME"))},
+            "bullpen": {"away_pen": pen.get("away_pen"), "home_pen": pen.get("home_pen"),
+                        "leans": pen.get("leans")} if pen else None,
+            "hot_cold": sorted(hotcold_by_team.get(away.upper(), []) + hotcold_by_team.get(home.upper(), []),
+                               key=lambda p: -(p.get("heat") or 0))[:12],
+        }
+
     cards: List[Dict[str, Any]] = []
     for g in games:
         mk = g.get("matchup") or ""
@@ -175,6 +228,7 @@ def run() -> Dict[str, Any]:
             "model": g.get("model"), "market": g.get("market"),
             "recommendations": g.get("recommendations") or [],
             "pitchers": {"away": _starter("away"), "home": _starter("home")},
+            "trends": _trends(mk, away, home, TEAM_FULL_NAME.get(away), TEAM_FULL_NAME.get(home)),
             "n_predictions": len(preds),
             "predictions": preds,
         })
