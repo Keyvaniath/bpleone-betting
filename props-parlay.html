@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Props-Only Parlays | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/nav.js"></script>
+<style>
+  .pcard { border:1px solid var(--border,#222a36); border-radius:11px; padding:14px 16px; margin-bottom:12px; }
+  .pcard:hover { border-color:#3f86ff; }
+  .phead { display:flex; justify-content:space-between; align-items:center; font-family:'JetBrains Mono',monospace; margin-bottom:10px; flex-wrap:wrap; gap:8px; }
+  .phead .legs { font-size:11px; text-transform:uppercase; letter-spacing:.5px; color:var(--muted,#8a93a6); }
+  .phead .pay { font-size:20px; font-weight:700; color:#5fe0a0; }
+  .phead .meta { font-size:12px; color:var(--muted,#8a93a6); }
+  .leg { display:grid; grid-template-columns:1fr 70px 70px; gap:10px; padding:6px 8px; border-top:1px solid rgba(255,255,255,.05);
+         font-family:'JetBrains Mono',monospace; font-size:12.5px; align-items:center; }
+  .leg .who b { color:var(--text,#e6e9ef); } .leg .who .m { color:var(--muted,#8a93a6); }
+  .leg .p { text-align:right; } .leg .o { text-align:right; color:var(--muted,#8a93a6); }
+  .pill { display:inline-block; padding:1px 7px; border-radius:4px; font-size:10px; }
+  .pill.same { background:rgba(212,160,74,.15); color:#e8b54e; } .pill.cross { background:rgba(58,209,126,.13); color:#5fe0a0; }
+  .muted { color:var(--muted,#8a93a6); }
+  .filt { font-family:'JetBrains Mono',monospace; font-size:12px; margin:10px 0 18px; }
+  .filt button { background:var(--panel,#11151c); border:1px solid var(--border,#222a36); color:var(--text,#e6e9ef);
+                 padding:5px 12px; border-radius:6px; cursor:pointer; margin-right:6px; }
+  .filt button.on { border-color:#3f86ff; color:#7facff; }
+</style>
+</head>
+<body class="page-mlb">
+<header class="topbar">
+  <div class="brand">
+    <a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a>
+    <span class="tagline">by bpleone</span>
+  </div>
+  <nav class="mainnav"><!-- nav.js injects here --></nav>
+  <div class="topbar-actions"><div class="ticker" id="liveTicker">PROPS PARLAY</div></div>
+</header>
+
+<main class="container">
+  <section class="page-head">
+    <h1>Props-Only Parlays</h1>
+    <p>Parlays built from <b>player props only</b> — no game lines mixed in. Many states (and the PrizePicks / Underdog pick'em format) only allow prop-on-prop parlays, so these are legal where mixed parlays aren't. Each is priced off the model: joint hit probability (with a same-game correlation haircut) and the combined payout multiple.</p>
+  </section>
+
+  <div class="filt">
+    <button data-n="all" class="on">All</button>
+    <button data-n="2">2-leg</button>
+    <button data-n="3">3-leg</button>
+    <span class="muted" id="ppMeta" style="margin-left:8px;"></span>
+  </div>
+  <div id="parlays"><p class="muted">Loading parlays…</p></div>
+</main>
+
+<footer class="site-footer">
+  <div class="foot-bot"><span>© 2026 bpleone.com</span><span>Built in SoCal ☀️</span></div>
+</footer>
+
+<script>
+const ml = v => v == null ? "—" : (v > 0 ? "+" + v : "" + v);
+const esc = s => String(s == null ? "" : s).replace(/[&<>]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+let ALL = [], FILTER = "all";
+
+function draw() {
+  const el = document.getElementById("parlays");
+  const list = ALL.filter(p => FILTER === "all" || String(p.n_legs) === FILTER);
+  if (!list.length) { el.innerHTML = '<p class="muted">No qualifying prop parlays right now — they build as today\'s props price up.</p>'; return; }
+  el.innerHTML = list.map(p => `
+    <div class="pcard">
+      <div class="phead">
+        <span><span class="legs">${p.n_legs}-leg prop parlay</span> <span class="pill ${p.same_game ? "same" : "cross"}">${p.same_game ? "same-game" : "cross-game"}</span></span>
+        <span><span class="meta">joint ${(100*p.joint_prob).toFixed(0)}% · fair ${ml(p.fair_american)} →</span> <span class="pay">${p.payout_multiple}×</span></span>
+      </div>
+      ${p.legs.map(l => `<div class="leg">
+        <span class="who"><b>${esc(l.subject)}</b> <span class="m">${esc(l.sport)} · ${esc(l.market)}</span></span>
+        <span class="p">${(100*l.prob).toFixed(0)}%</span>
+        <span class="o">${ml(l.fair_odds)}</span>
+      </div>`).join("")}
+    </div>`).join("");
+}
+
+document.querySelectorAll(".filt button").forEach(b => b.addEventListener("click", () => {
+  document.querySelectorAll(".filt button").forEach(x => x.classList.remove("on"));
+  b.classList.add("on"); FILTER = b.dataset.n; draw();
+}));
+
+fetch("data/props_parlay.json", { cache: "no-cache" }).then(r => r.json()).then(d => {
+  ALL = d.parlays || [];
+  document.getElementById("ppMeta").textContent = `${ALL.length} parlays · ${d.n_legs_pool}-leg pool · ${(d.generated_at||"").replace("T"," ").slice(0,16)} UTC`;
+  draw();
+}).catch(() => { document.getElementById("parlays").innerHTML = '<p class="muted">Parlays unavailable — pipeline may not have run yet.</p>'; });
+</script>
+</body>
+</html>

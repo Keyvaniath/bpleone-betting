@@ -218,6 +218,15 @@ jobs:
         working-directory: python
         run: python trends_hub.py
 
+      # High-Confidence Board + props-only parlays (read the joined cards/props).
+      - name: Build high-confidence board
+        working-directory: python
+        run: python high_confidence_board.py
+
+      - name: Build props-only parlays
+        working-directory: python
+        run: python props_parlay_builder.py
+
       # Build parlay suggestions from today's qualifying single-leg edges.
       - name: Run parlay engine
         if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'

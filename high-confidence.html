@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>High Confidence Board | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/nav.js"></script>
+<style>
+  .hc-head { display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:10px; }
+  .tierstrip { display:flex; gap:10px; margin:14px 0 18px; flex-wrap:wrap; }
+  .tierstrip .t { font-family:'JetBrains Mono',monospace; font-size:12px; padding:6px 12px; border-radius:7px; border:1px solid var(--border,#222a36); }
+  .hcrow { display:grid; grid-template-columns:96px 1fr 150px 90px 90px; gap:12px; align-items:center; padding:12px 14px;
+           border:1px solid var(--border,#222a36); border-radius:9px; margin-bottom:9px; font-family:'JetBrains Mono',monospace; font-size:13px; }
+  .hcrow:hover { border-color:#3f86ff; background:rgba(63,134,255,.04); }
+  .tier { font-size:10px; font-weight:700; letter-spacing:.5px; padding:3px 9px; border-radius:5px; text-align:center; }
+  .tier.ELITE { background:rgba(212,160,74,.18); color:#e8b54e; border:1px solid rgba(212,160,74,.4); }
+  .tier.STRONG { background:rgba(58,209,126,.15); color:#5fe0a0; }
+  .tier.SOLID { background:rgba(47,109,246,.14); color:#7facff; }
+  .subj b { color:var(--text,#e6e9ef); } .subj .mk { color:var(--muted,#8a93a6); }
+  .conf { font-weight:700; font-size:16px; text-align:right; }
+  .sport { font-size:10px; color:var(--muted,#8a93a6); }
+  .muted { color:var(--muted,#8a93a6); }
+  .confbar { height:5px; border-radius:3px; background:rgba(255,255,255,.06); margin-top:4px; overflow:hidden; }
+  .confbar > i { display:block; height:100%; background:linear-gradient(90deg,#3f86ff,#7a4dff); }
+</style>
+</head>
+<body class="page-mlb">
+<header class="topbar">
+  <div class="brand">
+    <a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a>
+    <span class="tagline">by bpleone</span>
+  </div>
+  <nav class="mainnav"><!-- nav.js injects here --></nav>
+  <div class="topbar-actions"><div class="ticker" id="liveTicker">HIGH CONF</div></div>
+</header>
+
+<main class="container">
+  <section class="page-head">
+    <h1>High Confidence Board</h1>
+    <p>The slate's strongest model-conviction plays, ranked — a tier above the single Play of the Day. Built from the model's odds-independent edges in the segments that actually win (player props, game edges), with the overconfident heavy favorites filtered out. Tiered by model probability: <b>ELITE</b> ≥72% · <b>STRONG</b> ≥66% · <b>SOLID</b> ≥60%.</p>
+  </section>
+
+  <div class="tierstrip" id="tierStrip"></div>
+  <div id="board"><p class="muted">Loading the board…</p></div>
+  <p class="muted" id="hcMeta" style="font-family:'JetBrains Mono',monospace;font-size:11px;margin-top:14px;"></p>
+</main>
+
+<footer class="site-footer">
+  <div class="foot-bot"><span>© 2026 bpleone.com</span><span>Built in SoCal ☀️</span></div>
+</footer>
+
+<script>
+const ml = v => v == null ? "—" : (v > 0 ? "+" + v : "" + v);
+const esc = s => String(s == null ? "" : s).replace(/[&<>]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+fetch("data/high_confidence_board.json", { cache: "no-cache" }).then(r => r.json()).then(d => {
+  const board = d.board || [];
+  const tc = d.tier_counts || {};
+  document.getElementById("tierStrip").innerHTML =
+    `<span class="t"><span class="tier ELITE">ELITE</span> ${tc.ELITE||0}</span>
+     <span class="t"><span class="tier STRONG">STRONG</span> ${tc.STRONG||0}</span>
+     <span class="t"><span class="tier SOLID">SOLID</span> ${tc.SOLID||0}</span>`;
+  const el = document.getElementById("board");
+  if (!board.length) { el.innerHTML = '<p class="muted">No qualifying high-confidence plays right now — the board fills as today\'s props price up.</p>'; return; }
+  el.innerHTML = board.map(p => `
+    <div class="hcrow">
+      <span class="tier ${p.tier}">${p.tier}</span>
+      <span class="subj"><b>${esc(p.subject)}</b> <span class="sport">${esc(p.sport)}${p.matchup ? " · " + esc(p.matchup) : ""}</span><br><span class="mk">${esc(p.market)}</span></span>
+      <span><span class="muted">model</span> <b>${(100*p.prob).toFixed(1)}%</b><div class="confbar"><i style="width:${(100*p.prob).toFixed(0)}%"></i></div></span>
+      <span><span class="muted">fair</span> ${ml(p.fair_odds)}</span>
+      <span class="conf">${p.confidence}</span>
+    </div>`).join("");
+  document.getElementById("hcMeta").textContent =
+    `${board.length} plays from ${d.n_candidates} candidates · ${(d.generated_at||"").replace("T"," ").slice(0,16)} UTC · heavy-favorite bleeders + trivial lays filtered out`;
+}).catch(() => { document.getElementById("board").innerHTML = '<p class="muted">Board unavailable — pipeline may not have run yet.</p>'; });
+</script>
+</body>
+</html>
