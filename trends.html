@@ -56,6 +56,60 @@
     }).catch(() => {});
   </script>
 
+  <!-- REAL league-wide trend scan (from trends_hub.json, joined from live feeds) -->
+  <section class="card" style="margin-bottom: 28px;">
+    <div class="card-head"><span>📡 League-Wide Trend Scan — live</span><span class="muted" id="thMeta">loading…</span></div>
+    <div id="trendScan" style="padding: 6px 4px 4px;"><span class="muted" style="padding:14px; display:block;">Loading trends…</span></div>
+  </section>
+  <style>
+    #trendScan .th-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(330px,1fr)); gap:16px; }
+    #trendScan .th-tile h4 { margin:0 0 8px; font-size:12px; text-transform:uppercase; letter-spacing:.6px; color:var(--muted,#8a93a6); }
+    #trendScan table { width:100%; border-collapse:collapse; font-family:'JetBrains Mono',monospace; font-size:12.5px; }
+    #trendScan td { padding:5px 7px; border-bottom:1px solid rgba(255,255,255,.05); }
+    #trendScan td:last-child { text-align:right; }
+    #trendScan .pos { color:#3ad17e; } #trendScan .neg { color:#ff5b5b; }
+    #trendScan .tag { display:inline-block; padding:1px 6px; border-radius:4px; font-size:10px; }
+    #trendScan .tag.hot { background:rgba(58,209,126,.14); color:#5fe0a0; }
+    #trendScan .tag.cold { background:rgba(47,109,246,.14); color:#7facff; }
+  </style>
+  <script>
+  (function(){
+    const pct = v => v==null? "—" : (100*v).toFixed(0)+"%";
+    const sgn = v => v==null? "—" : (v>=0?"+"+v:""+v);
+    const esc = s => String(s==null?"":s).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+    const tile = (title, rows) => `<div class="th-tile"><h4>${title}</h4><table><tbody>${rows}</tbody></table></div>`;
+    fetch("data/trends_hub.json", { cache:"no-cache" }).then(r=>r.json()).then(d=>{
+      const el = document.getElementById("trendScan");
+      const tiles = [];
+      // model under/over-rates (ATS)
+      const ats = (arr,cls,verb) => (arr||[]).map(r=>`<tr><td>${esc(r.name)}</td><td><span class="${cls}">${esc(r.ats_record)} · ${pct(r.cover_pct)} ${verb}</span></td></tr>`).join("");
+      if ((d.model_underrates||[]).length) tiles.push(tile("💎 Model underrates (back) — ATS", ats(d.model_underrates,"pos","cover")));
+      if ((d.model_overrates||[]).length) tiles.push(tile("⚠️ Model overrates (fade) — ATS", ats(d.model_overrates,"neg","cover")));
+      // hottest / coldest teams
+      const teamRows = arr => (arr||[]).map(t=>`<tr><td><b>${esc(t.abbr)}</b> <span class="muted">${t.wins}-${t.losses} ${esc(t.streak||"")}</span></td><td class="${(t.run_diff||0)>=0?'pos':'neg'}">${sgn(t.run_diff)} run diff</td></tr>`).join("");
+      tiles.push(tile("🔥 Hottest teams (L10)", teamRows(d.hottest_teams)));
+      tiles.push(tile("🧊 Coldest teams (L10)", teamRows(d.coldest_teams)));
+      // hot / cold bats
+      const batRows = (arr,cls,lbl) => (arr||[]).slice(0,10).map(b=>`<tr><td><span class="tag ${cls}">${lbl}</span> ${esc(b.name)} <span class="muted">${esc(b.team)}</span></td><td><b>${b.recent_ops!=null?(+b.recent_ops).toFixed(3):"—"}</b> L7 OPS</td></tr>`).join("");
+      tiles.push(tile("🔥 Hottest bats", batRows(d.hot_bats,"hot","HOT")));
+      if ((d.cold_bats||[]).length) tiles.push(tile("🧊 Coldest bats", batRows(d.cold_bats,"cold","COLD")));
+      // pitcher form leaderboard
+      const pf = (d.pitcher_form_leaderboard||[]).slice(0,10).map(p=>`<tr><td>${esc(p.pitcher)} <span class="muted">${esc(p.team||"")}</span></td><td>form ${p.form_index!=null?Math.round(p.form_index):"—"} <span class="muted">· ERA ${p.recent_era??"—"}</span></td></tr>`).join("");
+      if (pf) tiles.push(tile("🎯 Starting-pitcher form leaderboard", pf));
+      // run environment
+      tiles.push(tile("📈 Highest-scoring offenses", teamRows(d.high_scoring_teams).replace(/run diff/g,"")));
+      tiles.push(tile("🛡️ Best run prevention", (d.best_run_prevention||[]).map(t=>`<tr><td><b>${esc(t.abbr)}</b> <span class="muted">${esc(t.streak||"")}</span></td><td>${t.runs_allowed_pg??"—"} R allowed/g</td></tr>`).join("")));
+      if ((d.nrfi_leans||[]).length) {
+        const nr = d.nrfi_leans.map(r=>`<tr><td>${esc(r.matchup)}</td><td>${esc((r.best_market||{}).market || r.lean || "")}</td></tr>`).join("");
+        tiles.push(tile("0️⃣ NRFI / 1st-inning leans", nr));
+      }
+      el.innerHTML = `<div class="th-grid">${tiles.join("")}</div>`;
+      const meta = document.getElementById("thMeta");
+      if (meta) meta.textContent = `${(d.counts||{}).teams_ranked||0} teams · ${(d.counts||{}).hot_bats||0} hot bats · ${(d.counts||{}).pitchers_ranked||0} arms · ${(d.generated_at||"").replace("T"," ").slice(0,16)} UTC`;
+    }).catch(()=>{ const el=document.getElementById("trendScan"); if(el) el.innerHTML='<span class="muted" style="padding:14px;display:block;">Trend scan unavailable — pipeline may not have run yet.</span>'; });
+  })();
+  </script>
+
   <section class="card" style="margin-bottom: 28px;">
     <div class="card-head">
       <span>🐋 Live Sharp Money Flow</span>
