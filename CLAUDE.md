@@ -52,10 +52,18 @@ bpleone-site/
   JSONs only; revert other data churn with `git checkout -- data/`** and let the
   cron regenerate. The smoke test itself churns ledger/clv data when run locally —
   always `git checkout -- data/` before staging.
-- **Known constraint:** `ODDS_API_KEY` secret is lapsed (Brandon's payment), so the
-  book-odds feeds are dark — book-vs-model edges, live line movement, CLV, and the
-  PrizePicks `pp_advantage` path are dormant until it's restored. Everything
-  odds-INDEPENDENT (the model boards, calibration) works regardless.
+- **Odds feeds (2026-06 update):** `ODDS_API_KEY` (paid The Odds API) is still lapsed,
+  BUT **game-line odds are no longer dependent on it** — `python/espn_odds.py` pulls
+  live DraftKings moneyline/total/spread from ESPN's free scoreboard API (no key) →
+  `data/espn_odds.json`, and `book_vs_model_team.py` now edges off those fresh lines
+  (preferred over the frozen matchups.json/Bovada market). ESPN team abbreviations are
+  normalized to the model's vocab (TB→TBR, KC→KCR, SD→SDP, WSH→WSN, SF→SFG, ATH→OAK).
+  Runs in run_props_batch before book_vs_model_team. STILL DARK: **player-prop** book
+  odds (ESPN scoreboard only carries game lines), so the PrizePicks `pp_advantage`
+  path stays dormant until the paid key returns. Everything odds-INDEPENDENT (model
+  boards, calibration, recalibration) works regardless.
+  NB: book_vs_model `_shrink_toward_book` defers HARD to the sharp MLB ML close
+  (cap 0.80, slope ×3) so model overconfidence can't surface as a fake +50% edge.
 - Commit-message convention: end with `Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>`.
 
 ---
