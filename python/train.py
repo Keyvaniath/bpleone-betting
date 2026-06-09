@@ -148,14 +148,20 @@ def train_features():
 
 
 def train_calibration():
+    # NOTE: this is a SYNTHETIC architecture demo of the calibration math. It must
+    # NOT write data/calibration.json -- that file is owned by calibration_real.py,
+    # which computes the REAL reliability diagram from the settled ledger and is what
+    # ml-lab.html displays. Writing here would clobber the real data with synthetic
+    # (it did: shipped a fake ECE 3.4% over the real ~11%). Write a demo-named file.
     import json, os
     from calibration import _synth_predictions_and_outcomes, calibration_report
     preds, y = _synth_predictions_and_outcomes(1500, seed=11)
     report = calibration_report(preds, y)
+    report["synthetic_demo"] = True
     os.makedirs("../data", exist_ok=True)
-    with open("../data/calibration.json", "w") as f:
+    with open("../data/calibration_demo.json", "w") as f:
         json.dump(report, f, indent=2)
-    print("Wrote ../data/calibration.json")
+    print("Wrote ../data/calibration_demo.json (synthetic architecture demo; real one is calibration.json)")
 
 
 def train_live():
