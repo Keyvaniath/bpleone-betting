@@ -149,6 +149,28 @@
     <div class="metric"><span class="metric-num" id="mKelly">--</span><span class="metric-label">Recommended Stake (Kelly)</span></div>
   </section>
 
+  <!-- PROVE IT strip: real ledger, replayable by anyone -->
+  <section id="proveIt" style="display:none; margin: 0 0 22px 0; padding: 13px 18px; border-radius: 10px; border: 1px solid rgba(88,200,120,.28); font-family: 'JetBrains Mono', monospace; font-size: 13px;">
+    <span style="font-size:10px;text-transform:uppercase;letter-spacing:.6px;color:#8a93a6;display:block;margin-bottom:5px;">Don't trust us — replay it</span>
+    <span id="proveItLine"></span>
+    <a href="strategy-sim.html" style="margin-left:10px; color:#58c878; text-decoration:underline; text-decoration-color:rgba(88,200,120,.4);">open the Strategy Simulator →</a>
+  </section>
+  <script>
+  fetch("data/strategy_sim.json", { cache: "no-cache" }).then(r => r.json()).then(d => {
+    const rows = d.rows || [], fams = d.families || [];
+    if (rows.length < 100) return;
+    let all = 0, cur = 0, curN = 0;
+    rows.forEach(r => { all += r[8]; if (!fams[r[3]].neg) { cur += r[8]; curN++; } });
+    document.getElementById("proveItLine").innerHTML =
+      `Every pick we surface is settled in a public ledger — <b>${rows.length.toLocaleString()}</b> picks and counting. ` +
+      `Raw firehose <b style="color:#e35a5a;">${all >= 0 ? "+" : ""}${all.toFixed(0)}u</b> · ` +
+      `honest book after curation <b style="color:#58c878;">${cur >= 0 ? "+" : ""}${cur.toFixed(0)}u</b> (${curN.toLocaleString()} picks). ` +
+      `Both numbers, in the open.`;
+    const el = document.getElementById("proveIt");
+    el.style.display = "block";
+  }).catch(() => {});
+  </script>
+
   <!-- PLAY OF THE DAY PREVIEW -->
   <section class="card-row">
     <div class="card big-card play-card">

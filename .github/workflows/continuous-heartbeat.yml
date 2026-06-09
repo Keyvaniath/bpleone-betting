@@ -92,6 +92,18 @@ jobs:
         working-directory: python
         run: python line_movement.py || true
 
+      # Book-calibrated game win probs track the moving line all day (game.html
+      # sub-line). Local-only join of today.json + the espn_odds refresh above.
+      - name: Book-calibrated game win probs (intraday refresh)
+        working-directory: python
+        run: python game_calibrated_probs.py || true
+
+      # CLV resolves off the LAST pre-game snapshot -- refreshing intraday means
+      # the close is the actual close, not yesterday evening's line.
+      - name: CLV tracker (open->close on the fresh snapshot)
+        working-directory: python
+        run: python clv_tracker.py || true
+
       # Sharp-money detection -- detect line moves continuously
       - name: Reverse Line Movement detector
         working-directory: python
