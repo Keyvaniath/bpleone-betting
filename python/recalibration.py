@@ -263,7 +263,37 @@ def run() -> Dict[str, Any]:
     os.makedirs(DATA_DIR, exist_ok=True)
     with open(OUT, "w", encoding="utf-8") as f:
         json.dump(result, f, indent=2)
+    _append_history(result)
     return result
+
+
+HISTORY = os.path.join(DATA_DIR, "recalibration_history.json")
+HISTORY_KEEP = 90  # daily points
+
+
+def _append_history(res: Dict[str, Any]) -> None:
+    """One calibration-health point per day -> data/recalibration_history.json.
+    Lets the front-end chart ECE/Brier drift as outcomes accrue (is the honesty
+    layer holding, improving, or degrading). Last write of the day wins."""
+    try:
+        hist = []
+        if os.path.exists(HISTORY):
+            with open(HISTORY, encoding="utf-8") as f:
+                hist = json.load(f).get("points") or []
+        day = res["generated_at"][:10]
+        point = {"date": day, "n_settled": res["n_settled"],
+                 "ece_raw": res["ece_before"], "ece_calibrated": res["ece_after"],
+                 "brier_raw": res["brier_before"], "brier_calibrated": res["brier_after"],
+                 "n_families_transformed": res["n_families_transformed"]}
+        hist = [p for p in hist if p.get("date") != day] + [point]
+        hist = sorted(hist, key=lambda p: p["date"])[-HISTORY_KEEP:]
+        with open(HISTORY, "w", encoding="utf-8") as f:
+            json.dump({"updated_at": res["generated_at"], "points": hist,
+                       "note": ("Daily calibration-health trail: ECE/Brier of the raw model "
+                                "probs vs the isotonic-calibrated probs over all settled picks "
+                                "(in-sample, recomputed as outcomes accrue).")}, f, indent=2)
+    except Exception:
+        pass  # the history trail must never break the recalibration run
 
 
 if __name__ == "__main__":

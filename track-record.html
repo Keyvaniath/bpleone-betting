@@ -241,6 +241,45 @@
     <p class="caption">Running profit/loss over the last 30 settled plays. Smooth-ish upward trend is the point — flat days are normal in a 55% win-rate game.</p>
   </section>
 
+  <!-- Full-history equity: the curation story in one chart -->
+  <section id="fullEqCard" class="card" style="margin-bottom: 28px; display:none;">
+    <div class="card-head"><span>📊 Full History — Honest Book vs Firehose</span><span class="muted" id="feMeta">--</span></div>
+    <canvas id="feChart" height="230"></canvas>
+    <p class="caption">Every settled pick at flat 1u, replayed chronologically. <span style="color:#58c878;">Green</span> = the honest book (proven-negative families curated out — what the boards actually surface). <span style="color:#e35a5a;">Red</span> = the raw firehose, including every experimental family we track to train the model. Same model, same real outcomes — curation is the difference. Run your own rules in the <a href="strategy-sim.html">Strategy Simulator</a>.</p>
+  </section>
+  <script>
+  fetch("data/strategy_sim.json", { cache: "no-cache" })
+    .then(r => r.json())
+    .then(d => {
+      const rows = d.rows || [];
+      if (rows.length < 50 || typeof Chart === "undefined") return;
+      const fams = d.families || [];
+      let all = 0, cur = 0;
+      const allPts = [], curPts = [], labels = [];
+      rows.forEach(r => {
+        all += r[8];
+        allPts.push(+all.toFixed(1));
+        if (!fams[r[3]].neg) cur += r[8];
+        curPts.push(+cur.toFixed(1));
+        labels.push(d.dates[r[0]]);
+      });
+      document.getElementById("fullEqCard").style.display = "block";
+      document.getElementById("feMeta").textContent =
+        `${rows.length.toLocaleString()} picks · honest book ${cur >= 0 ? "+" : ""}${cur.toFixed(0)}u vs firehose ${all >= 0 ? "+" : ""}${all.toFixed(0)}u`;
+      new Chart(document.getElementById("feChart"), {
+        type: "line",
+        data: { labels, datasets: [
+          { label: "honest book (curated)", data: curPts, borderColor: "#58c878", backgroundColor: "rgba(88,200,120,.07)", fill: true, borderWidth: 1.6, pointRadius: 0, tension: 0 },
+          { label: "raw firehose (all tracked)", data: allPts, borderColor: "#e35a5a", backgroundColor: "rgba(227,90,90,.05)", fill: true, borderWidth: 1.3, pointRadius: 0, tension: 0 },
+        ]},
+        options: { responsive: true, maintainAspectRatio: true, animation: false,
+          plugins: { legend: { labels: { color: "#8a93a6", font: { size: 10 }, boxWidth: 14 } } },
+          scales: { x: { ticks: { color: "#8a93a6", maxTicksLimit: 8, font: { size: 10 } }, grid: { display: false } },
+                    y: { ticks: { color: "#8a93a6", font: { size: 10 } }, grid: { color: "rgba(138,147,166,.1)" } } } }
+      });
+    }).catch(() => {});
+  </script>
+
   <section class="grid-2">
     <div class="card">
       <div class="card-head"><span>🏆 Best 5 Plays</span><span class="muted" id="bestPlaysMeta">--</span></div>

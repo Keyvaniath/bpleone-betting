@@ -49,6 +49,7 @@
 
   <div id="guardBanner" style="margin:6px 0 16px;"></div>
   <div id="recalBanner" style="margin:6px 0 16px;"></div>
+  <div id="eceTrend" style="margin:6px 0 16px;"></div>
   <div class="sumstrip" id="sumStrip"></div>
   <div class="tscroll">
     <div class="calhead">
@@ -85,6 +86,34 @@ fetch("data/recalibration_map.json", { cache: "no-cache" }).then(r => r.json()).
         <span class="muted" style="font-size:12px;">· Brier ${rc.brier_before}→${rc.brier_after} · ${rc.n_families_transformed} families</span>
       </div>
       <div class="muted" style="font-size:11.5px;margin-top:6px;">A displayed 72% now actually hits ~72%. Brier improving (a proper score) confirms real calibration, not flattening. This makes book-vs-model edges honest once the odds feed returns — it does not by itself create edge.</div>
+    </div>`;
+}).catch(() => {});
+
+// Calibration-health trail (data/recalibration_history.json): is the honesty
+// layer holding as outcomes accrue? Inline SVG — no chart dependency.
+fetch("data/recalibration_history.json", { cache: "no-cache" }).then(r => r.json()).then(h => {
+  const pts = h.points || [];
+  if (!pts.length) return;
+  const last = pts[pts.length - 1];
+  let body;
+  if (pts.length < 2) {
+    body = `<span class="muted" style="font-size:11.5px;">trail starts today — one point per pipeline day (${esc(last.date)}: raw ${(100*last.ece_raw).toFixed(1)}% → calibrated ${(100*last.ece_calibrated).toFixed(1)}%)</span>`;
+  } else {
+    const W = 640, H = 64, P = 4;
+    const max = Math.max(...pts.map(p => p.ece_raw), 0.0001);
+    const x = i => P + i * (W - 2 * P) / (pts.length - 1);
+    const y = v => H - P - (v / max) * (H - 2 * P);
+    const line = key => pts.map((p, i) => `${i ? "L" : "M"}${x(i).toFixed(1)},${y(p[key]).toFixed(1)}`).join("");
+    body = `<svg viewBox="0 0 ${W} ${H}" style="width:100%;max-width:${W}px;height:${H}px;display:block;" preserveAspectRatio="none">
+        <path d="${line("ece_raw")}" fill="none" stroke="#ff8a8a" stroke-width="1.6"/>
+        <path d="${line("ece_calibrated")}" fill="none" stroke="#7facff" stroke-width="1.8"/>
+      </svg>
+      <div class="muted" style="font-size:10.5px;margin-top:4px;"><span style="color:#ff8a8a;">— raw ECE</span> · <span style="color:#7facff;">— calibrated ECE</span> · ${pts.length} days · latest ${esc(last.date)}: ${(100*last.ece_raw).toFixed(1)}% → ${(100*last.ece_calibrated).toFixed(1)}% over ${last.n_settled.toLocaleString()} settled</div>`;
+  }
+  document.getElementById("eceTrend").innerHTML = `
+    <div style="border:1px solid rgba(255,255,255,.08); border-radius:11px; padding:12px 18px; font-family:'JetBrains Mono',monospace;">
+      <span style="font-size:10.5px;text-transform:uppercase;letter-spacing:.5px;color:#8a93a6;">Calibration health over time — drift watch</span>
+      <div style="margin-top:8px;">${body}</div>
     </div>`;
 }).catch(() => {});
 
