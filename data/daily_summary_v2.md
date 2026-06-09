@@ -1,13 +1,13 @@
 # EdgeStat Daily Summary — 2026-06-09
 
-## 🏥 Model Health: 70.9/100 [HEALTHY]
+## 🏥 Model Health: 71.4/100 [HEALTHY]
 - Solid health - some minor issues to monitor
   - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 54.4/100
   - 🔴 Brier Trend: 29.6/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 88.9/100
-  - 🟡 Edge Count: 62.9/100
+  - 🟡 Edge Count: 68.6/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.586)
@@ -43,11 +43,11 @@
 
 ## 🎰 Top Balanced 2-Leg Parlays (40-65% joint)
 - [MLB-PP] Salvador Perez PP_batter_hrr_under_ + [MLB] STL @ NYM STL_ML
-  Joint: 51% | Fair: 259 | Edge: +83.4%
+  Joint: 51% | Fair: 259 | Edge: +83.6%
 - [MLB-PP] Dylan Crews PP_batter_hrr_under_ + [MLB] STL @ NYM STL_ML
-  Joint: 51% | Fair: 259 | Edge: +83.2%
+  Joint: 51% | Fair: 259 | Edge: +83.5%
 - [MLB-PP] Wenceel Pérez PP_batter_hrr_under_ + [MLB] STL @ NYM STL_ML
-  Joint: 51% | Fair: 259 | Edge: +82.9%
+  Joint: 51% | Fair: 259 | Edge: +83.2%
 
 ## 🎮 Player Play of the Day (cross-sport)
 - **[LOL]** Inspired UNDER 3.5 Kills | MED conviction · model 61.7% fair -161
@@ -64,11 +64,16 @@
 - Hot teams: **6** | Cold teams: **4** | Over-heavy: 0 | Under-heavy: 4
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (3)
+## ⚠️ Anomaly Detector (12)
 - RESIDUAL_DIVERGENCE: **3**
+- STEAM_MOVE: **5**
+- PEN_MISMATCH: **3**
+- COMPOUND_BULLPEN: **1**
   - San Antonio Spurs (NBA): San Antonio Spurs OUTPERFORMING expected margin by 8.8pts in recent games -- model bias may persist
   - Atlanta Dream (WNBA): Atlanta Dream OUTPERFORMING expected margin by 10.2pts in recent games -- model bias may persist
   - North Carolina Tar Heels (CWS): North Carolina Tar Heels OUTPERFORMING expected margin by 7.0pts in recent games -- model bias may persist
+  - PHX @ GS (WNBA): TOTAL steam since open: ML -1.4pp toward PHX; total -1 (UNDER) (4 snapshots)
+  - ARI @ MIA (MLB): ML/TOTAL steam since open: ML -3.9pp toward ARI; total +0.5 (OVER) (2 snapshots)
 
 ## 💰 Today's Portfolio (8 picks)
 - Total stake: **$340.0** (34.0% of $1000 bankroll)
@@ -79,13 +84,13 @@
   - #4 [NRFI] $50 on ATL @ CHW YRFI (1st-inning OVER 0.5) (P=70%)
   - #5 [NRFI] $35 on CHC @ COL YRFI (1st-inning OVER 0.5) (P=66%)
 
-## 🎯 Convergence Picks (15 stacked games)
-- ELITE: **1** · HIGH: 1 · MED: 13
-  - [ELITE] Seattle Storm @ Las Vegas Aces : 4 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ATS)
-  - [HIGH] San Antonio Spurs @ New York Knicks : 3 signals (HEAT_COLD, ATS, ATS)
+## 🎯 Convergence Picks (16 stacked games)
+- ELITE: **2** · HIGH: 1 · MED: 13
+  - [ELITE] San Antonio Spurs @ New York Knicks : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
+  - [ELITE] Dallas Wings @ Minnesota Lynx : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
+  - [HIGH] Atlanta Dream @ Chicago Sky : 3 signals (PREGAME, ANOMALY, ATS)
   - [MED] Carolina Hurricanes @ Vegas Golden Knights : 2 signals (PREGAME, ATS)
-  - [MED] New York Liberty @ Connecticut Sun : 2 signals (HEAT_COLD, HEAT_COLD)
-  - [MED] Atlanta United FC @ Columbus Crew : 2 signals (ATS, ATS)
+  - [MED] Phoenix Mercury @ Golden State Valkyries : 2 signals (HEAT_COLD, ATS)
 
 ## ⚾ Top MLB Pitcher K Plays (11)
 - **Payton Tolle** OVER 4.5 K (76%) fair -321
@@ -101,27 +106,28 @@
   - [COIN_FLIP] **Ciryl Gane** (13-2-0) vs Alex Pereira -- fair -112
   - [COIN_FLIP] **Diego Lopes** (27-8-0) vs Steve Garcia -- fair -108
 
-## ⛳ Golf Player Heat (from the Memorial Tournament pres. by Workday)
-  - 🔥 T1 **J.T. Poston** (USA): -12 total -- finished T1
-  - 🔥 T2 **Ryan Gerard** (USA): -12 total -- finished T2
-  - 🔥 T3 **Wyndham Clark** (USA): -11 total -- finished T3, Sunday -2.2 vs tourney avg
-  - 🔥 T4 **Tommy Fleetwood** (England): -10 total -- finished T4, Sunday -1.5 vs tourney avg
-  - 🔥 T5 **Sam Burns** (USA): -10 total -- finished T5, Sunday -0.5 vs tourney avg
-  - ❄️ **Daniel Berger** (USA): Sunday +4.5 vs tourney avg
-  - ❄️ **Jordan Spieth** (USA): Sunday +4.0 vs tourney avg
-  - ❄️ **Andrew Novak** (USA): Sunday +4.0 vs tourney avg
+## ⛳ Golf Player Heat (from RBC Canadian Open)
+  - 🔥 T1 **Keith Mitchell** (USA): +0 total -- finished T1
+  - 🔥 T2 **Ben Silverman** (Canada): +0 total -- finished T2
+  - 🔥 T3 **Kevin Roy** (USA): +0 total -- finished T3
+  - 🔥 T4 **Dylan Wu** (USA): +0 total -- finished T4
+  - 🔥 T5 **Matti Schmid** (Germany): +0 total -- finished T5
 
-## 🔥 MLB Batter Heat (33 HOT / 35 COLD)
+## 🔥 MLB Batter Heat (36 HOT / 39 COLD)
   - 🔥 **Jung Hoo Lee** (SF): L14 .545 / season .333 (+212pts)
   - 🔥 **Tyler Soderstrom** (ATH): L14 .404 / season .237 (+167pts)
-  - 🔥 **Trent Grisham** (NYY): L14 .375 / season .227 (+148pts)
   - 🔥 **Tristan Peters** (CWS): L14 .439 / season .307 (+132pts)
+  - 🔥 **Trent Grisham** (NYY): L14 .346 / season .226 (+120pts)
   - 🔥 **Heriberto Hernández** (MIA): L14 .325 / season .219 (+106pts)
   - ❄️ **Michael Conforto** (CHC): L14 .100 / season .250 (-150pts) -- FADE props
   - ❄️ **Ildemaro Vargas** (AZ): L14 .132 / season .280 (-148pts) -- FADE props
   - ❄️ **Jeff McNeil** (ATH): L14 .087 / season .234 (-147pts) -- FADE props
   - ❄️ **Austin Martin** (MIN): L14 .113 / season .247 (-134pts) -- FADE props
   - ❄️ **Nolan Gorman** (STL): L14 .071 / season .199 (-128pts) -- FADE props
+
+## 📈 Streak Regression Alerts (2)
+- [WNBA] Minnesota Lynx on W5 L10 5-0 -- Minnesota Lynx on W5 -- no historical sample
+- [WNBA] Dallas Wings on W3 L10 3-0 -- Dallas Wings on W3 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**

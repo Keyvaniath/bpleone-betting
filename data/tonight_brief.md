@@ -12,15 +12,12 @@ _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 - **Dylan Crews** PP_batter_hrr_under_3.5 (MLB-PP) -- 86% / +49.7%
 - **Wenceel Pérez** PP_batter_hrr_under_3.5 (MLB-PP) -- 86% / +49.4%
 - **Sterlin Thompson** PP_batter_hrr_under_3.5 (MLB-PP) -- 86% / +49.4%
-
-## 📉 Under Bets
-- **BOS @ TBR** UNDER 7.5 — model 6.46 [ELITE signal]
-- **PHI @ TOR** UNDER 7.5 — model 6.81 [STRONG signal]
+- **Francisco Alvarez** PP_batter_hrr_under_3.5 (MLB-PP) -- 86% / +49.7%
 
 ## 🎰 Tonight's Best Parlay
-- **Salvador Perez** PP_batter_hrr_under_3.5 + **STL @ NYM** STL_ML
-- Joint 51% · fair +259 · edge +83.6%
+- **Salvador Perez** PP_batter_hrr_under_3.5 + **CIN @ SDP** CIN_ML
+- Joint 50% · fair +310 · edge +104.8%
 
 ---
-_Generated 2026-06-09T19:57:48_
+_Generated 2026-06-09T23:21:03_
 _Full breakdown: /tonight · Full history: /locks-of-day_
