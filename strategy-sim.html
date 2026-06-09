@@ -49,6 +49,7 @@
     <button data-preset="firehose">🔥 Firehose — everything, flat 1u</button>
     <button data-preset="curated">🛡️ Honest curation — drop proven losers, flat</button>
     <button data-preset="kelly">📐 ¼-Kelly on calibrated edge</button>
+    <button id="copylink" title="Copy a link that reopens the sim with these exact settings">🔗 Copy setup link</button>
   </div>
 
   <div class="ctrls">
@@ -77,8 +78,27 @@ const $ = id => document.getElementById(id);
 const amToDec = a => a == null ? 1.91 : (a >= 0 ? 1 + a / 100 : 1 + 100 / Math.abs(a));
 const fmtU = v => (v >= 0 ? "+" : "") + v.toFixed(1) + "u";
 
+function syncUrl() {
+  const q = new URLSearchParams({ stake: $("stake").value, prob: $("probsrc").value, minp: $("minp").value,
+    sport: $("sport").value, neg: $("dropneg").checked ? 1 : 0, oc: $("droposc").checked ? 1 : 0, cur: $("curonly").checked ? 1 : 0 });
+  history.replaceState(null, "", location.pathname + "?" + q);
+}
+function applyUrl() {
+  const q = new URLSearchParams(location.search);
+  if (![...q.keys()].length) return false;
+  if (q.get("stake")) $("stake").value = q.get("stake");
+  if (q.get("prob")) $("probsrc").value = q.get("prob");
+  if (q.get("minp")) $("minp").value = q.get("minp");
+  if (q.get("sport") != null) $("sport").value = q.get("sport");
+  $("dropneg").checked = q.get("neg") === "1";
+  $("droposc").checked = q.get("oc") === "1";
+  $("curonly").checked = q.get("cur") === "1";
+  return true;
+}
+
 function simulate() {
   if (!D) return;
+  syncUrl();
   const stake = $("stake").value, probsrc = $("probsrc").value;
   const minp = parseFloat($("minp").value), sportF = $("sport").value;
   const dropneg = $("dropneg").checked, droposc = $("droposc").checked, curonly = $("curonly").checked;
@@ -180,14 +200,22 @@ $("presets").addEventListener("click", e => {
   simulate();
 });
 ["stake", "probsrc", "minp", "sport", "dropneg", "droposc", "curonly"].forEach(id => $(id).addEventListener("change", simulate));
+$("copylink").addEventListener("click", () => {
+  navigator.clipboard.writeText(location.href).then(() => {
+    $("copylink").textContent = "✓ Copied";
+    setTimeout(() => { $("copylink").textContent = "🔗 Copy setup link"; }, 1500);
+  });
+});
 
 fetch("data/strategy_sim.json", { cache: "no-cache" }).then(r => r.json()).then(d => {
   D = d;
   $("sport").innerHTML = '<option value="">All sports</option>' +
     d.sports.map(s => `<option value="${s}">${s}</option>`).join("");
   $("meta").textContent = `${d.n.toLocaleString()} settled picks · ${d.n_dates} days · ${d.families.length} market families (${d.families.filter(f => f.neg).length} proven-negative, ${d.families.filter(f => f.oc).length} overconfident) · generated ${(d.generated_at || "").replace("T", " ").slice(0, 16)} UTC`;
-  $("dropneg").checked = false;   // boot = untouched firehose so the first number matches the track record
-  $("probsrc").value = "raw";
+  if (!applyUrl()) {              // boot = untouched firehose so the first number matches the track record
+    $("dropneg").checked = false;
+    $("probsrc").value = "raw";
+  }
   simulate();
 }).catch(() => { $("kpis").innerHTML = '<p class="muted">Replay deck unavailable — pipeline may not have run yet.</p>'; });
 </script>
