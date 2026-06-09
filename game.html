@@ -73,7 +73,7 @@ const pct = p => (p == null ? "—" : (100 * p).toFixed(1) + "%");
 const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const j = (u) => fetch(u + (u.includes("?") ? "&" : "?") + "t=" + Date.now(), { cache: "no-store" }).then(r => r.json()).catch(() => ({}));
 
-let CARDS = {}, REFRESH = null;
+let CARDS = {}, REFRESH = null, GAMECAL = {};
 const sgn = v => v == null ? "—" : (v >= 0 ? "+" + v : "" + v);
 
 function trendsCard(card) {
@@ -181,6 +181,7 @@ function render(card, live, liveProps) {
         <div class="away" style="width:${((pAway || 0.5) * 100).toFixed(0)}%">${esc(card.away)} ${pct(pAway)}</div>
         <div class="home" style="width:${((pHome || 0.5) * 100).toFixed(0)}%">${pct(pHome)} ${esc(card.home)}</div>
       </div>
+      ${(!isLive && GAMECAL[card.matchup]) ? `<div class="ln" style="margin-top:8px;font-size:12px;"><span class="k">Book-calibrated</span><span><b>${pct(GAMECAL[card.matchup].p_home_cal)}</b> ${esc(card.home)} <span class="muted">· raw model ${pct(GAMECAL[card.matchup].p_home_model)}, shrunk ${GAMECAL[card.matchup].shrink_pp>=0?'+':''}${GAMECAL[card.matchup].shrink_pp}pp &rarr; sharp book ${GAMECAL[card.matchup].book_ml_home!=null?`(${ml(GAMECAL[card.matchup].book_ml_home)})`:""}</span></span></div>` : ""}
       <div style="margin-top:14px;">
         <div class="ln"><span class="k">Fair moneyline</span><span>${esc(card.away)} ${ml(m.fair_away_ml)} / ${esc(card.home)} ${ml(m.fair_home_ml)}</span></div>
         <div class="ln"><span class="k">Market (${esc(mk.book || "book")})</span><span>${ml(mk.away_ml)} / ${ml(mk.home_ml)}</span></div>
@@ -279,7 +280,8 @@ async function load() {
   CARDS = Object.fromEntries(cards.map(c => [c.matchup, c]));
   if (!TARGET || !CARDS[TARGET]) { gamePicker(cards); return; }
   const card = CARDS[TARGET];
-  const [live, liveProps] = await Promise.all([liveFor(card), livePropsFor(card)]);
+  const [live, liveProps, gcal] = await Promise.all([liveFor(card), livePropsFor(card), j("data/game_calibrated.json")]);
+  GAMECAL = gcal.by_matchup || {};
   render(card, live, liveProps);
   if (live || (liveProps && liveProps.length)) {  // game is live -> keep it ticking
     clearInterval(REFRESH);

@@ -359,6 +359,8 @@ DEFAULT_MODULES = [
     "espn_odds",
     # FREE multi-sport PrizePicks lines menu (MLB + WNBA + NBA + NHL)
     "prizepicks_lines",
+    # honest game win probs: shrink the overconfident model prob toward the sharp book
+    "game_calibrated_probs",
     # line movement / steam + closing-line value, both off the free odds history
     "line_movement",
     "clv_tracker",
