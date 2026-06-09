@@ -4,28 +4,28 @@ _6 picks consolidated from POD + Alpha + Book Edges + Parlay-of-Day._
 
 ## ⭐ Play of the Day
 
-- **Luis Rengifo** · PP_batter_hrr_under_3.5
-  Prob 86.2% · Odds -136 · Edge +49.6% · Kelly 0.250
+- **Salvador Perez** · PP_batter_hrr_under_3.5
+  Prob 86.3% · Odds -136 · Edge +49.8% · Kelly 0.250
 
 ## 🎯 Alpha Pick
 
-- **WSN @ SFG** · WSN_ML
-  Prob 61.5% · Odds -103 · Edge +21.3% · Kelly 0.219
+- **STL @ NYM** · STL_ML
+  Prob 59.1% · Odds +107 · Edge +22.4% · Kelly 0.209
 
 ## 📊 Book Edges
 
 - **STL @ NYM · AWAY (AWAY)** · TEAM_ML
-  Prob 58.6% · Odds +105 · Edge +20.1% · Kelly 0.192
+  Prob 58.3% · Odds +107 · Edge +20.7% · Kelly 0.194
 - **WSN @ SFG · AWAY (AWAY)** · TEAM_ML
-  Prob 60.6% · Odds -103 · Edge +19.5% · Kelly 0.201
-- **TEX @ KCR · UNDER · O/U 9.0** · TOTAL_UNDER
-  Prob 61.9% · Odds -110 · Edge +18.2% · Kelly 0.200
+  Prob 60.7% · Odds -104 · Edge +19.1% · Kelly 0.198
+- **BOS @ TBR · UNDER · O/U 7.5** · TOTAL_UNDER
+  Prob 61.5% · Odds -110 · Edge +17.4% · Kelly 0.191
 
 ## 🎲 Parlay
 
-- **Luis Rengifo + WSN @ SFG** · 2-leg
-  Prob 53.1% · Odds +242 · Edge +81.5% · Kelly 0.050
+- **Salvador Perez + STL @ NYM** · 2-leg
+  Prob 51.0% · Odds +259 · Edge +83.4% · Kelly 0.050
 
 ---
-_Generated 2026-06-09T08:01:17 UTC by EdgeStat._
+_Generated 2026-06-09T12:44:11 UTC by EdgeStat._
 _Stakes assume ¼-Kelly fractional sizing on a flat bankroll._
