@@ -202,6 +202,39 @@
     }).catch(() => {});
   </script>
 
+  <!-- Calibrated reliability: is the model honest at the source? -->
+  <section id="calRelCard" class="card" style="margin-bottom: 18px; display:none;">
+    <div class="card-head"><span>🎯 Honest at the Source — Calibrated Reliability</span><span class="muted" id="crMeta">--</span></div>
+    <div style="padding: 14px 18px;">
+      <p class="muted" style="font-size: 12px; margin: 0 0 12px 0;">Every pick in the ledger carries two probabilities: the generator's <strong>raw</strong> number (kept untouched as the learning signal) and an <strong>isotonic-calibrated</strong> one learned from settled outcomes. Scored against the same real results: lower ECE means the displayed % is closer to how often it actually happens. In-sample; the held-out validation lives on the <a href="calibration-map.html">calibration map</a>. Test it yourself in the <a href="strategy-sim.html">strategy simulator</a>.</p>
+      <div id="crGrid" style="display:flex;gap:12px;flex-wrap:wrap;font-family:'JetBrains Mono',monospace;"></div>
+    </div>
+  </section>
+  <script>
+  fetch("data/ledger_summary.json", { cache: "no-cache" })
+    .then(r => r.json())
+    .then(d => {
+      const cr = d.calibrated_reliability;
+      if (!cr || cr.ece_raw == null) return;   // populates on the next pipeline run
+      document.getElementById("calRelCard").style.display = "block";
+      document.getElementById("crMeta").textContent = `${(cr.n || 0).toLocaleString()} settled outcomes`;
+      const chip = (lab, raw, cal, fmt) => `
+        <span style="border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:12px 16px;">
+          <span style="display:block;color:var(--muted,#888);font-size:9.5px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px;">${lab}</span>
+          <b style="font-size:18px;"><span style="color:#e35a5a;">${fmt(raw)}</span> <span style="color:var(--muted,#888);font-size:13px;">→</span> <span style="color:#58c878;">${fmt(cal)}</span></b>
+        </span>`;
+      const pct1 = v => (100 * v).toFixed(1) + "%";
+      const f3 = v => v.toFixed(3);
+      document.getElementById("crGrid").innerHTML =
+        chip("Calibration error (ECE) raw → calibrated", cr.ece_raw, cr.ece_calibrated, pct1) +
+        chip("Brier score raw → calibrated", cr.brier_raw, cr.brier_calibrated, f3) +
+        `<span style="border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:12px 16px;">
+          <span style="display:block;color:var(--muted,#888);font-size:9.5px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px;">What it means</span>
+          <b style="font-size:13px;">a displayed 70% now hits ≈70%</b>
+        </span>`;
+    }).catch(() => {});
+  </script>
+
   <section class="card" style="margin-bottom: 28px;">
     <div class="card-head"><span>📈 Cumulative P&L</span><span class="muted">last 30 plays</span></div>
     <canvas id="plChart" height="220"></canvas>

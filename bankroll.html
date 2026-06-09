@@ -162,9 +162,14 @@
   <section class="grid-2">
     <div class="card">
       <div class="card-head"><span>⚙️ Profile Inputs</span></div>
+      <div id="bkRealRow" style="display:none; margin-bottom: 14px; border:1px solid rgba(88,200,120,.3); border-radius:8px; padding:10px 12px;">
+        <div class="muted" style="font-size:10px; text-transform:uppercase; letter-spacing:.5px; margin-bottom:4px;">For reference — the real Alpha record</div>
+        <div id="bkRealMeta" style="font-family:'JetBrains Mono',monospace; font-size:12px;"></div>
+        <p class="muted" style="font-size:10.5px; margin:6px 0 0;">That in-sample edge is far above anything sustainable — compounding it here would print fantasy numbers. Replay it bet-by-bet (non-compounding) in the <a href="strategy-sim.html">Strategy Simulator</a> instead; use this MC for realistic forward profiles (53–58%).</p>
+      </div>
       <label style="display:block; margin-bottom: 12px;">
         <span class="muted" style="display:block; margin-bottom:4px;">Win Probability (your typical edge)</span>
-        <input id="bkProb" type="number" min="0.50" max="0.65" step="0.01" value="0.55" style="width:100%; padding:10px 12px; background:var(--bg-1); border:1px solid var(--line); color:var(--text); border-radius:8px; font-family:'JetBrains Mono', monospace;">
+        <input id="bkProb" type="number" min="0.50" max="0.80" step="0.01" value="0.55" style="width:100%; padding:10px 12px; background:var(--bg-1); border:1px solid var(--line); color:var(--text); border-radius:8px; font-family:'JetBrains Mono', monospace;">
       </label>
       <label style="display:block; margin-bottom: 12px;">
         <span class="muted" style="display:block; margin-bottom:4px;">Avg Price (American odds)</span>
@@ -199,6 +204,25 @@
       </div>
     </div>
   </section>
+
+  <script>
+  // Real-record context chip. Avg win payout derived exactly from the ledger's own
+  // convention (win pays b, loss -1): net = wins*b - losses  =>  b = (net+losses)/wins.
+  // Deliberately NOT auto-filled into the MC: compounding an in-sample ~20pp edge
+  // produces fantasy bankrolls; the strategy simulator replays it non-compounding.
+  fetch("data/ledger_summary.json", { cache: "no-cache" })
+    .then(r => r.json())
+    .then(d => {
+      const c = d.curated || {};
+      if (!c.wins || !c.losses || c.hit_rate == null || c.net_units == null) return;
+      const b = (c.net_units + c.losses) / c.wins;
+      if (!isFinite(b) || b <= 0) return;
+      const american = b >= 1 ? Math.round(100 * b) : -Math.round(100 / b);
+      document.getElementById("bkRealRow").style.display = "block";
+      document.getElementById("bkRealMeta").textContent =
+        `${c.wins}-${c.losses} (${(100 * c.hit_rate).toFixed(1)}% hit) · avg fair price ${american > 0 ? "+" : ""}${american} · ${c.n_settled} settled featured plays`;
+    }).catch(() => {});
+  </script>
 
   <section class="card" style="margin-bottom: 28px;">
     <div class="card-head"><span>📈 Sample Bankroll Paths</span></div>
