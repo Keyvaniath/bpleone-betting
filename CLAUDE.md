@@ -64,6 +64,19 @@ bpleone-site/
   boards, calibration, recalibration) works regardless.
   NB: book_vs_model `_shrink_toward_book` defers HARD to the sharp MLB ML close
   (cap 0.80, slope ×3) so model overconfidence can't surface as a fake +50% edge.
+- **Free-data stack built on espn_odds (2026-06):**
+  - `espn_odds.py` now pulls ALL in-season leagues (MLB/NBA/NHL/WNBA) and appends a
+    timestamped snapshot per game-day to `data/odds_history.json` each run (only on a
+    line move; capped/pruned 8 days). Wired into the heartbeat (~12×/day).
+  - `line_movement.py` → `line-movement.html`: open→current moneyline (de-vig pp) +
+    total moves; STEAM flag. `clv_tracker.py` → `clv.html`: Closing Line Value for
+    the model's game-line leans (did the close move to our side) + beat-the-close
+    rate. Both consume odds_history; "pending" until ≥2 snapshots accrue per game.
+  - `prizepicks_lines.py` → `data/prizepicks_lines.json`: free multi-sport PrizePicks
+    menu from their public API (browser headers + 1.5s inter-league delay to dodge
+    429). pickem.py still pulls PP-MLB for the model-scored value board; this is the
+    broader live menu. DraftKings player props remain NOT free (the one paid-gated
+    cross-check). All run in run_props_batch.
 - Commit-message convention: end with `Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>`.
 
 ---
