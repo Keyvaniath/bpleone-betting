@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Closing Line Value | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/nav.js"></script>
+<style>
+  .tscroll { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+  .bigrow { display:flex; gap:12px; flex-wrap:wrap; margin:14px 0 18px; font-family:'JetBrains Mono',monospace; }
+  .bigrow .b { border:1px solid var(--border,#222a36); border-radius:10px; padding:14px 18px; }
+  .bigrow .b .lab { color:var(--muted,#8a93a6); font-size:10px; text-transform:uppercase; letter-spacing:.5px; display:block; margin-bottom:4px; }
+  .bigrow .b b { font-size:22px; }
+  .clvhead, .clvrow { display:grid; grid-template-columns:54px 1fr 90px 120px 84px 70px; gap:10px; align-items:center;
+                      font-family:'JetBrains Mono',monospace; font-size:12.5px; padding:9px 12px; min-width:600px; }
+  .clvhead { color:var(--muted,#8a93a6); font-size:10.5px; text-transform:uppercase; letter-spacing:.5px; border-bottom:1px solid var(--border,#222a36); }
+  .clvrow { border:1px solid var(--border,#222a36); border-radius:8px; margin-bottom:7px; }
+  .up { color:#5fe0a0; } .down { color:#ff8a8a; } .muted { color:var(--muted,#8a93a6); } .sport{font-size:10px;color:var(--muted,#8a93a6);}
+  .pill { font-size:9.5px; padding:2px 7px; border-radius:4px; } .pill.beat{background:rgba(58,209,126,.16);color:#5fe0a0;} .pill.lost{background:rgba(255,107,107,.14);color:#ff8a8a;}
+</style>
+</head>
+<body class="page-mlb">
+<header class="topbar">
+  <div class="brand"><a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a><span class="tagline">by bpleone</span></div>
+  <nav class="mainnav"><!-- nav.js injects here --></nav>
+  <div class="topbar-actions"><div class="ticker" id="liveTicker">CLV</div></div>
+</header>
+
+<main class="container">
+  <section class="page-head">
+    <h1>Closing Line Value</h1>
+    <p>The metric sharps live by. For every game the model leans, did the market move <b>toward our side</b> by the time the line closed? Beating the close means we got a better number than the market settled on — proof of edge <i>independent of whether any single bet won</i>. Computed from a <b>free</b> open→close DraftKings odds trail (ESPN), no paid key.</p>
+  </section>
+
+  <div class="bigrow" id="big"></div>
+  <div class="tscroll">
+    <div class="clvhead"><span>Sport</span><span>Game · our side</span><span class="r">Open→Close</span><span class="r">CLV</span><span>Result</span><span class="r">Edge</span></div>
+    <div id="rows"><p class="muted">Loading CLV…</p></div>
+  </div>
+  <p class="muted" id="meta" style="font-family:'JetBrains Mono',monospace;font-size:11px;margin-top:14px;"></p>
+</main>
+
+<footer class="site-footer"><div class="foot-bot"><span>© 2026 bpleone.com</span><span>Built in SoCal ☀️</span></div></footer>
+
+<script>
+const esc = s => String(s==null?"":s).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+const ml = v => v==null?"—":(v>0?"+"+v:""+v);
+fetch("data/clv_tracker.json",{cache:"no-cache"}).then(r=>r.json()).then(d=>{
+  const rows=d.rows||[];
+  const rate=d.beat_close_rate, avg=d.avg_clv_pp;
+  document.getElementById("big").innerHTML = (d.n_tracked? `
+    <span class="b"><span class="lab">beat the close</span><b class="${(rate||0)>=0.5?'up':'down'}">${rate==null?'—':(100*rate).toFixed(0)+'%'}</b> <span class="muted">${d.n_beat_close}/${d.n_tracked}</span></span>
+    <span class="b"><span class="lab">avg CLV</span><b class="${(avg||0)>=0?'up':'down'}">${avg==null?'—':(avg>0?'+':'')+avg+'pp'}</b></span>
+    <span class="b"><span class="lab">leans tracked</span><b>${d.n_tracked}</b> <span class="muted">${esc(d.scope||'')}</span></span>` : '');
+  const el=document.getElementById("rows");
+  if(!rows.length){ el.innerHTML='<p class="muted">No closing lines captured yet — CLV fills in as the heartbeat polls each game open→close through the day. '+esc(d.note||'')+'</p>'; return; }
+  el.innerHTML=rows.map(r=>`
+    <div class="clvrow">
+      <span class="sport">${esc(r.sport)}</span>
+      <span><b>${esc(r.matchup)}</b> <span class="muted">${esc(r.side)} ${esc(r.team||'')}</span></span>
+      <span class="r muted">${ml(r.open_american)}→${ml(r.close_american)}</span>
+      <span class="r"><b class="${r.clv_pp>=0?'up':'down'}">${r.clv_pp>0?'+':''}${r.clv_pp}pp</b></span>
+      <span><span class="pill ${r.beat_close?'beat':'lost'}">${r.beat_close?'beat':'lost'}</span></span>
+      <span class="r muted">${r.model_edge_pct==null?'—':r.model_edge_pct+'%'}</span>
+    </div>`).join("");
+  document.getElementById("meta").textContent=`${rows.length} leans · ${(d.source||"")} · ${(d.generated_at||"").replace("T"," ").slice(0,16)} UTC`;
+}).catch(()=>{document.getElementById("rows").innerHTML='<p class="muted">CLV unavailable — pipeline may not have run yet.</p>';});
+</script>
+</body>
+</html>

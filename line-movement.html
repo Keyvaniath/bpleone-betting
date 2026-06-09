@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Line Movement / Steam | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/nav.js"></script>
+<style>
+  .tscroll { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+  .lmhead, .lmrow { display:grid; grid-template-columns:54px 1fr 120px 96px 120px 70px; gap:10px; align-items:center;
+                    font-family:'JetBrains Mono',monospace; font-size:12.5px; padding:9px 12px; min-width:620px; }
+  .lmhead { color:var(--muted,#8a93a6); font-size:10.5px; text-transform:uppercase; letter-spacing:.5px; border-bottom:1px solid var(--border,#222a36); }
+  .lmrow { border:1px solid var(--border,#222a36); border-radius:8px; margin-bottom:7px; }
+  .lmrow:hover { border-color:#3f86ff; }
+  .lmrow.steam { border-color:rgba(212,160,74,.5); background:rgba(212,160,74,.05); }
+  .sport { font-size:10px; color:var(--muted,#8a93a6); }
+  .up { color:#5fe0a0; } .down { color:#ff8a8a; } .muted { color:var(--muted,#8a93a6); }
+  .steamtag { font-size:9.5px; padding:2px 7px; border-radius:4px; background:rgba(212,160,74,.18); color:#e8b54e; }
+</style>
+</head>
+<body class="page-mlb">
+<header class="topbar">
+  <div class="brand"><a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a><span class="tagline">by bpleone</span></div>
+  <nav class="mainnav"><!-- nav.js injects here --></nav>
+  <div class="topbar-actions"><div class="ticker" id="liveTicker">LINE MOVE</div></div>
+</header>
+
+<main class="container">
+  <section class="page-head">
+    <h1>Line Movement / Steam</h1>
+    <p>Where the market is moving since each line opened — straight from a <b>free</b> live DraftKings feed (ESPN), polled through the day. The <b>moneyline shift</b> (de-vigged, in percentage points) shows which side money came in on; a <b>total move</b> is over/under steam. Big moves are flagged <span style="color:#e8b54e;">STEAM</span> — the "follow the sharp money" signal. No paid key.</p>
+  </section>
+
+  <div class="sumstrip" id="sum" style="display:flex;gap:10px;margin:14px 0 16px;font-family:'JetBrains Mono',monospace;flex-wrap:wrap;"></div>
+  <div class="tscroll">
+    <div class="lmhead"><span>Sport</span><span>Game</span><span>Moneyline move</span><span class="r">Total</span><span>Money toward</span><span>Steam</span></div>
+    <div id="rows"><p class="muted">Loading line movement…</p></div>
+  </div>
+  <p class="muted" id="meta" style="font-family:'JetBrains Mono',monospace;font-size:11px;margin-top:14px;"></p>
+</main>
+
+<footer class="site-footer"><div class="foot-bot"><span>© 2026 bpleone.com</span><span>Built in SoCal ☀️</span></div></footer>
+
+<script>
+const esc = s => String(s==null?"":s).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+const ml = v => v==null?"—":(v>0?"+"+v:""+v);
+fetch("data/line_movement.json",{cache:"no-cache"}).then(r=>r.json()).then(d=>{
+  const m=d.movers||[];
+  document.getElementById("sum").innerHTML =
+    `<span class="s" style="font-size:12px;padding:8px 13px;border-radius:8px;border:1px solid var(--border,#222a36);"><span class="muted" style="font-size:10px;text-transform:uppercase;">games moving</span> <b style="font-size:15px;">${d.n_games||0}</b></span>
+     <span class="s" style="font-size:12px;padding:8px 13px;border-radius:8px;border:1px solid var(--border,#222a36);"><span class="muted" style="font-size:10px;text-transform:uppercase;">steam</span> <b style="font-size:15px;color:#e8b54e;">${d.n_steam||0}</b></span>`;
+  const el=document.getElementById("rows");
+  if(!m.length){ el.innerHTML='<p class="muted">No movement recorded yet — fills in as the line is polled open→close through the day (heartbeat runs every couple hours).</p>'; document.getElementById("meta").textContent=(d.note||""); return; }
+  el.innerHTML=m.map(x=>{
+    const mlmv = x.ml_move_pp==null ? '<span class="muted">—</span>'
+      : `<span class="${x.ml_move_pp>0?'up':'down'}">${x.ml_move_pp>0?'+':''}${x.ml_move_pp}pp</span> <span class="muted">(${ml(x.ml_open.home)}→${ml(x.ml_now.home)} H)</span>`;
+    const tot = x.total_move==null ? '—' : `<span class="${x.total_move>0?'up':'down'}">${x.total_move>0?'+':''}${x.total_move}</span>`;
+    const toward = x.ml_money_toward ? esc(x.ml_money_toward) : (x.total_money_toward?esc(x.total_money_toward):'—');
+    return `<div class="lmrow ${x.steam?'steam':''}">
+      <span class="sport">${esc(x.sport)}</span>
+      <span><b>${esc(x.matchup)}</b></span>
+      <span>${mlmv}</span>
+      <span class="r">${tot}</span>
+      <span><b>${toward}</b></span>
+      <span>${x.steam?`<span class="steamtag">${(x.steam_kind||[]).join('+')}</span>`:'<span class="muted">—</span>'}</span>
+    </div>`;}).join("");
+  document.getElementById("meta").textContent=`${m.length} games · ${(d.source||"")} · ${(d.generated_at||"").replace("T"," ").slice(0,16)} UTC`;
+}).catch(()=>{document.getElementById("rows").innerHTML='<p class="muted">Line movement unavailable — pipeline may not have run yet.</p>';});
+</script>
+</body>
+</html>

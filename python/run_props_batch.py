@@ -357,6 +357,9 @@ DEFAULT_MODULES = [
     # FREE odds feed (ESPN/DraftKings) -- replaces the lapsed paid ODDS_API_KEY;
     # must run BEFORE book_vs_model_team so it edges off fresh lines, not stale ones.
     "espn_odds",
+    # line movement / steam + closing-line value, both off the free odds history
+    "line_movement",
+    "clv_tracker",
     # book_vs_model_team runs FIRST so alpha_pick can pull from its output
     "book_vs_model_team",
     "alpha_pick_of_day",

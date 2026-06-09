@@ -87,6 +87,11 @@ jobs:
         working-directory: python
         run: python espn_odds.py || true
 
+      # Line movement / steam from the free odds history (open->current per game)
+      - name: Line movement / steam detector (free odds)
+        working-directory: python
+        run: python line_movement.py || true
+
       # Sharp-money detection -- detect line moves continuously
       - name: Reverse Line Movement detector
         working-directory: python
