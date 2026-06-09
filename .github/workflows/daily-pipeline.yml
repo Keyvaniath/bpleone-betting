@@ -588,6 +588,13 @@ jobs:
       - name: Self-learn shrinkage weights (per-source feedback loop)
         working-directory: python
         run: python self_learn_weights.py
+
+      # Generator-level recalibration: learn an isotonic prob->realized transform per
+      # market family from the freshly-settled ledger (ECE ~11% -> ~3%). Makes the
+      # model's probabilities honest at the source. -> data/recalibration_map.json
+      - name: Generator-level recalibration (isotonic, from settled outcomes)
+        working-directory: python
+        run: python recalibration.py
       - name: Cross-sport parlay builder (2-leg + 3-leg combos with same-game correlation)
         working-directory: python
         run: python cross_sport_parlay_builder.py

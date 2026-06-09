@@ -17,6 +17,7 @@ import sys
 
 import prob_calibration as pc
 import high_confidence_board as hcb
+import recalibration as rc
 
 DATA = os.path.join(os.path.dirname(__file__), "..", "data")
 fails = []
@@ -94,6 +95,23 @@ check("book prop total_bases UNDER 1.5 NOT flagged (profitable side)",
       not pc.is_overconfident_play("batter_total_bases", "UNDER", 1.5))
 check("book prop home_runs OVER 0.5 NOT flagged (priced-short, prob ok)",
       not pc.is_overconfident_play("batter_home_runs", "OVER", 0.5))
+
+# 11. GENERATOR-LEVEL RECALIBRATION genuinely improves calibration (ECE) AND
+#     accuracy (Brier -- a proper score that punishes naive flattening), proving
+#     it's real calibration, not just squashing probs toward the base rate.
+rco = rc.run()
+check("recalibration improves ECE", rco["ece_after"] < rco["ece_before"],
+      f"{rco['ece_before']} -> {rco['ece_after']}")
+check("recalibration improves Brier (not flattening)", rco["brier_after"] < rco["brier_before"],
+      f"{rco['brier_before']} -> {rco['brier_after']}")
+
+# 12. The transform is monotonic (a higher raw prob never maps to a lower
+#     calibrated prob within a family) and identity for families with no history.
+lo = rc.recalibrate(0.55, "mlb_tb_1.5_over")
+hi = rc.recalibrate(0.78, "mlb_tb_1.5_over")
+check("recalibration monotonic within a family", lo <= hi + 1e-9, f"{round(lo,3)} <= {round(hi,3)}")
+check("recalibration is identity for an unknown family",
+      abs(rc.recalibrate(0.70, "zzz_unknown_market_xyz") - 0.70) < 1e-9)
 
 # 11. calibrate_play blends a raw book-prop prob toward its reconstructed family's
 #     realized rate (the engine behind the PrizePicks value board). A raw 1.0 on a
