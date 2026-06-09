@@ -46,6 +46,7 @@
   <section class="page-head">
     <h1>PrizePicks Value Board</h1>
     <p>PrizePicks pays <b>flat multipliers</b>, so every leg has a fixed break-even (~57.7% for a 2-pick) no matter the sportsbook's juice. A prop is a <span class="pos">+EV PrizePicks leg</span> whenever its true hit rate clears that line — and several low-variance unders that lose money at a sportsbook are profitable here. Every play below is <b>calibrated on real settled outcomes</b> (raw model probs are blended toward the family's realized hit rate), with overconfident families dropped and uncalibrated props excluded. No 0/1 guesses.</p>
+    <p class="muted" id="ppMenuNote" style="font-size:12px;"></p>
   </section>
 
   <div class="sumstrip" id="sumStrip"></div>
@@ -71,6 +72,14 @@
 const pct = v => v == null ? "—" : (100*v).toFixed(1) + "%";
 const esc = s => String(s == null ? "" : s).replace(/[&<>]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
 const mkt = m => String(m||"").replace(/^batter_|^pitcher_/,"").replace(/_/g," ");
+
+// Live free PrizePicks menu (multi-sport) pulled straight from PrizePicks' public API
+fetch("data/prizepicks_lines.json", { cache: "no-cache" }).then(r => r.json()).then(pp => {
+  const bs = pp.by_sport || {};
+  const parts = Object.keys(bs).map(s => `${bs[s]} ${s}`).join(" · ");
+  const el = document.getElementById("ppMenuNote");
+  if (el && pp.n_lines) el.innerHTML = `📡 Tracking <b>${pp.n_lines}</b> live PrizePicks lines free from their public API — ${parts}. MLB is model-scored below; other sports are the live menu (model coverage expanding).`;
+}).catch(() => {});
 
 fetch("data/prizepicks_value.json", { cache: "no-cache" }).then(r => r.json()).then(d => {
   const board = d.board || [];

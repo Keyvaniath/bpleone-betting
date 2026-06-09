@@ -357,6 +357,8 @@ DEFAULT_MODULES = [
     # FREE odds feed (ESPN/DraftKings) -- replaces the lapsed paid ODDS_API_KEY;
     # must run BEFORE book_vs_model_team so it edges off fresh lines, not stale ones.
     "espn_odds",
+    # FREE multi-sport PrizePicks lines menu (MLB + WNBA + NBA + NHL)
+    "prizepicks_lines",
     # line movement / steam + closing-line value, both off the free odds history
     "line_movement",
     "clv_tracker",
