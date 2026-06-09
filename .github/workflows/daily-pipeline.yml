@@ -242,6 +242,12 @@ jobs:
         working-directory: python
         run: python calibration_map.py
 
+      # Real overall reliability diagram (Brier/ECE/buckets) from settled outcomes,
+      # overwriting the old synthetic demo -> data/calibration.json (ML Lab chart).
+      - name: Build real calibration report
+        working-directory: python
+        run: python calibration_real.py
+
       # Build parlay suggestions from today's qualifying single-leg edges.
       - name: Run parlay engine
         if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'

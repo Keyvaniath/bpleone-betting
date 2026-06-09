@@ -105,6 +105,14 @@
       });
     }
 
+    // ---- Real scoring metrics (Brier / Log loss / ECE) from the ledger ----
+    const setT = (id, v) => { const e = document.getElementById(id); if (e && v != null) e.textContent = v; };
+    if (calib) {
+      setT('mlBrierVal', calib.brier != null ? Number(calib.brier).toFixed(3) : null);
+      setT('mlLogLossVal', calib.log_loss != null ? Number(calib.log_loss).toFixed(3) : null);
+      setT('mlEceVal', calib.ece != null ? (100 * calib.ece).toFixed(1) + '%' : null);
+    }
+
     // ---- Reliability diagram ----
     const buckets = (calib && calib.reliability) || [];
     new Chart(document.getElementById('mlReliabilityChart').getContext('2d'), {
