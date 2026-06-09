@@ -354,6 +354,9 @@ DEFAULT_MODULES = [
     "mlb_top_3_picks_synthesizer",
     # Confluence + aggregation (must run AFTER all per-sport props above)
     "confluence_top_5",
+    # FREE odds feed (ESPN/DraftKings) -- replaces the lapsed paid ODDS_API_KEY;
+    # must run BEFORE book_vs_model_team so it edges off fresh lines, not stale ones.
+    "espn_odds",
     # book_vs_model_team runs FIRST so alpha_pick can pull from its output
     "book_vs_model_team",
     "alpha_pick_of_day",

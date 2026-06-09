@@ -66,18 +66,21 @@ def _devig_pair(home_ml, away_ml):
     return ih / total, ia / total  # de-vigged probs
 
 
-# 2026-05-21: Bayesian shrinkage toward the book. The book is the market
-# consensus — when our model disagrees by >10pp it's usually wrong, not
-# the book. Shrink model probability toward book implied with weight that
-# grows with the size of the gap:
-#   weight_on_book = min(0.40, |gap| * 2.0)
-#       e.g. 5pp gap -> 10% book weight
-#            15pp gap -> 30% book weight
-#            25pp gap -> 40% book weight (capped)
+# Bayesian shrinkage toward the book. The MLB moneyline closing line is a sharp,
+# highly-efficient market; when our model disagrees by a lot it's almost always
+# the model that's overconfident (the same overconfidence the recalibration engine
+# quantifies — ECE ~11% raw), not the book leaving free money. So we defer HARD to
+# the book, and the more the model disagrees, the harder:
+#   weight_on_book = min(0.80, |gap| * 3.0)
+#       e.g.  5pp gap -> 15% book weight (model keeps most of a small, plausible edge)
+#            15pp gap -> 45% book weight
+#            25pp gap -> 75% book weight
+#            27pp+gap -> 80% book weight (capped) -> a wild gap collapses to a
+#                        realistic single-digit edge instead of a fake +50%.
 def _shrink_toward_book(model_p: float, book_devig: float) -> float:
     if model_p is None or book_devig is None: return model_p
     gap = abs(model_p - book_devig)
-    weight_book = min(0.40, gap * 2.0)
+    weight_book = min(0.80, gap * 3.0)
     return model_p * (1 - weight_book) + book_devig * weight_book
 
 
@@ -92,7 +95,25 @@ def run() -> Dict[str, Any]:
         k = g.get("matchup") or g.get("gamePk")
         if k: model_by_key[k] = g
 
-    games = matchups.get("games") or []
+    # FREE ODDS: prefer fresh ESPN/DraftKings lines (espn_odds.py) over the frozen
+    # paid-feed lines in matchups.json. The paid ODDS_API_KEY is lapsed, so the
+    # matchups market is stale; ESPN refreshes every run, no key required. ESPN
+    # fields override matchups for any shared game, and ESPN-only games (the model
+    # may cover games matchups.json doesn't) are added so they can edge too.
+    espn_by = (_load(os.path.join(DATA_DIR, "espn_odds.json")).get("by_matchup") or {})
+    games = list(matchups.get("games") or [])
+    seen = {g.get("matchup") for g in games}
+    for g in games:
+        mk = g.get("matchup")
+        if mk in espn_by:
+            g["market"] = {**(g.get("market") or {}), **espn_by[mk]}
+    for mk, market in espn_by.items():
+        if mk in seen:
+            continue
+        away_ab, _, home_ab = mk.partition(" @ ")
+        games.append({"matchup": mk, "market": market,
+                      "home": {"abbr": home_ab}, "away": {"abbr": away_ab}})
+
     edges: List[Dict[str, Any]] = []
     total_edges: List[Dict[str, Any]] = []
 
