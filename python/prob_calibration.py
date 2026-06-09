@@ -251,31 +251,56 @@ def _side_token(play) -> str:
     return ""
 
 
-def is_overconfident_play(market, play=None, line=None) -> bool:
-    """Side- and line-aware overconfidence test for RAW book props whose market
-    names (batter_total_bases, batter_rbis, ...) don't carry the ledger's line/
-    side. Reconstructs the canonical family key from (market, play, line) and
-    checks it against overconfident_families(). Only the genuinely-overconfident
-    OVER families are flagged; the profitable UNDER side is never dropped.
-    """
-    oc = overconfident_families()
-    if not oc:
-        return False
-    # fast path: market name already canonicalizes (carries its own side)
-    if is_overconfident(market):
-        return True
+def reconstruct_family(market, play=None, line=None) -> Optional[str]:
+    """Rebuild the ledger's canonical family key (e.g. mlb_tb_1.5_over) from a RAW
+    book prop's (market, play, line) -- the book vocabulary (batter_total_bases,
+    batter_rbis, ...) doesn't carry the line/side. Returns the key or None."""
     side = _side_token(play)
     if not side or line is None:
-        return False
+        return None
     m = re.sub(r"^(batter|pitcher|player)_", "", str(market or "").lower())
     stat = _STAT_SYNONYM.get(m, m)
     try:
         lf = float(line)
     except (TypeError, ValueError):
-        return False
+        return None
     ls = str(int(lf)) if lf == int(lf) else str(lf)
-    key = f"mlb_{stat}_{ls}_{side}"
-    return key in oc
+    return f"mlb_{stat}_{ls}_{side}"
+
+
+def is_overconfident_play(market, play=None, line=None) -> bool:
+    """Side- and line-aware overconfidence test for RAW book props. Only the
+    genuinely-overconfident OVER families are flagged; the profitable UNDER side
+    is never dropped."""
+    oc = overconfident_families()
+    if not oc:
+        return False
+    if is_overconfident(market):   # fast path: name already carries its side
+        return True
+    key = reconstruct_family(market, play, line)
+    return bool(key and key in oc)
+
+
+def calibrate_play(market, play, line, raw_prob) -> Tuple[Optional[float], Dict[str, Any]]:
+    """Calibrate a RAW book-prop probability toward its reconstructed family's
+    realized hit rate (Bayesian blend). Returns (cal_prob, meta). meta['method']
+    is 'empirical' when the family has >= CAL_MIN_N settled bets, else
+    'model_only' (raw passed through). Use this for PrizePicks/DK props whose
+    market names don't canonicalize directly."""
+    if raw_prob is None:
+        return None, {"method": "none"}
+    try:
+        raw = float(raw_prob)
+    except (TypeError, ValueError):
+        return None, {"method": "none"}
+    key = reconstruct_family(market, play, line)
+    s = _family_stats().get(key) if key else None
+    if s and s[0] >= CAL_MIN_N:
+        n, realized, _net = s
+        cal = max(0.01, min(0.99, (PRIOR_K * raw + n * realized) / (PRIOR_K + n)))
+        return cal, {"method": "empirical", "family": key, "n": n,
+                     "realized": round(realized, 4), "raw": round(raw, 4)}
+    return max(0.01, min(0.99, raw)), {"method": "model_only", "family": key, "raw": round(raw, 4)}
 
 
 def reset_caches() -> None:

@@ -56,6 +56,7 @@
     { href: "locks-of-day.html",        label: "🔒 Locks of the Day" },
     { href: "cross-sport-parlays.html", label: "🎰 Cross-Sport Parlays" },
     { href: "props-parlay.html",        label: "🎯 Props-Only Parlays" },
+    { href: "prizepicks-value.html",    label: "🃏 PrizePicks Value" },
     { href: "consensus-picks.html",     label: "🎯 Consensus Picks" },
     { href: "data-health.html",         label: "📡 Data Health" },
     { href: "backtest-dashboard.html",  label: "Backtest Dashboard" },

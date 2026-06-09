@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PrizePicks Value | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/nav.js"></script>
+<style>
+  .sumstrip { display:flex; gap:10px; margin:14px 0 18px; flex-wrap:wrap; font-family:'JetBrains Mono',monospace; }
+  .sumstrip .s { font-size:12px; padding:8px 13px; border-radius:8px; border:1px solid var(--border,#222a36); }
+  .sumstrip .s b { font-size:15px; } .sumstrip .s .lab { color:var(--muted,#8a93a6); font-size:10px; text-transform:uppercase; letter-spacing:.5px; display:block; }
+  .pphead, .pprow { display:grid; grid-template-columns:1.4fr 1.3fr 132px 84px 84px; gap:12px; align-items:center;
+                    font-family:'JetBrains Mono',monospace; font-size:12.5px; padding:11px 13px; }
+  .pphead { color:var(--muted,#8a93a6); font-size:10.5px; text-transform:uppercase; letter-spacing:.5px; border-bottom:1px solid var(--border,#222a36); }
+  .pprow { border:1px solid var(--border,#222a36); border-radius:9px; margin-bottom:8px; }
+  .pprow:hover { border-color:#3f86ff; }
+  .who b { color:var(--text,#e6e9ef); } .who .tm { color:var(--muted,#8a93a6); font-size:11px; }
+  .prop .side { font-weight:700; } .prop .side.UNDER { color:#7facff; } .prop .side.OVER { color:#e8b54e; }
+  .prop .mk { color:var(--muted,#8a93a6); }
+  .r { text-align:right; } .big { font-weight:700; font-size:15px; }
+  .pos { color:#5fe0a0; } .muted { color:var(--muted,#8a93a6); }
+  .calnote { font-size:10px; color:var(--muted,#8a93a6); }
+</style>
+</head>
+<body class="page-mlb">
+<header class="topbar">
+  <div class="brand">
+    <a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a>
+    <span class="tagline">by bpleone</span>
+  </div>
+  <nav class="mainnav"><!-- nav.js injects here --></nav>
+  <div class="topbar-actions"><div class="ticker" id="liveTicker">PP VALUE</div></div>
+</header>
+
+<main class="container">
+  <section class="page-head">
+    <h1>PrizePicks Value Board</h1>
+    <p>PrizePicks pays <b>flat multipliers</b>, so every leg has a fixed break-even (~57.7% for a 2-pick) no matter the sportsbook's juice. A prop is a <span class="pos">+EV PrizePicks leg</span> whenever its true hit rate clears that line — and several low-variance unders that lose money at a sportsbook are profitable here. Every play below is <b>calibrated on real settled outcomes</b> (raw model probs are blended toward the family's realized hit rate), with overconfident families dropped and uncalibrated props excluded. No 0/1 guesses.</p>
+  </section>
+
+  <div class="sumstrip" id="sumStrip"></div>
+  <div class="pphead">
+    <span>Player</span><span>Prop</span><span class="r">calibrated hit</span><span class="r">break-even</span><span class="r">edge</span>
+  </div>
+  <div id="rows"><p class="muted">Loading PrizePicks value board…</p></div>
+  <p class="muted" id="ppMeta" style="font-family:'JetBrains Mono',monospace;font-size:11px;margin-top:14px;"></p>
+</main>
+
+<footer class="site-footer">
+  <div class="foot-bot"><span>© 2026 bpleone.com</span><span>Built in SoCal ☀️</span></div>
+</footer>
+
+<script>
+const pct = v => v == null ? "—" : (100*v).toFixed(1) + "%";
+const esc = s => String(s == null ? "" : s).replace(/[&<>]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+const mkt = m => String(m||"").replace(/^batter_|^pitcher_/,"").replace(/_/g," ");
+
+fetch("data/prizepicks_value.json", { cache: "no-cache" }).then(r => r.json()).then(d => {
+  const board = d.board || [];
+  document.getElementById("sumStrip").innerHTML = `
+    <span class="s"><span class="lab">+EV legs</span><b class="pos">${d.n_board}</b></span>
+    <span class="s"><span class="lab">break-even / leg</span><b>${pct(d.breakeven_per_leg)}</b></span>
+    <span class="s"><span class="lab">props scanned</span><b>${d.n_props_scanned}</b></span>
+    <span class="s"><span class="lab">overconfident dropped</span><b class="muted">${d.n_overconfident_dropped}</b></span>
+    <span class="s"><span class="lab">uncalibrated skipped</span><b class="muted">${d.n_uncalibrated_skipped}</b></span>`;
+  const el = document.getElementById("rows");
+  if (!board.length) { el.innerHTML = '<p class="muted">No calibrated +EV PrizePicks legs right now — the board fills as today\'s slate prices up.</p>'; return; }
+  el.innerHTML = board.map(b => `
+    <div class="pprow">
+      <span class="who"><b>${esc(b.player)}</b><br><span class="tm">${esc(b.team||"")}</span></span>
+      <span class="prop"><span class="side ${b.side}">${b.side==="UNDER"?"LESS":"MORE"}</span> <b>${b.line}</b> <span class="mk">${esc(mkt(b.market))}</span></span>
+      <span class="r"><span class="big pos">${pct(b.cal_prob)}</span><br><span class="calnote">real ${pct(b.realized)} · ${b.cal_n} bets</span></span>
+      <span class="r muted">${pct(b.breakeven)}</span>
+      <span class="r big pos">+${b.edge_pp}pp</span>
+    </div>`).join("");
+  document.getElementById("ppMeta").textContent =
+    `${board.length} calibrated +EV legs · break-even from PrizePicks flat payouts · ${(d.generated_at||"").replace("T"," ").slice(0,16)} UTC · edge = calibrated hit − break-even`;
+}).catch(() => { document.getElementById("rows").innerHTML = '<p class="muted">PrizePicks value board unavailable — pipeline may not have run yet.</p>'; });
+</script>
+</body>
+</html>
