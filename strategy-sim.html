@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Strategy Simulator | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/nav.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  .honest { border:1px solid rgba(255,193,94,.35); background:rgba(255,193,94,.07); border-radius:10px;
+            padding:10px 14px; font-size:12.5px; color:var(--muted,#8a93a6); margin:0 0 16px; }
+  .honest b { color:#ffc15e; }
+  .presets { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:14px; }
+  .presets button { font-family:'JetBrains Mono',monospace; font-size:11.5px; cursor:pointer; padding:8px 13px;
+                    border-radius:8px; border:1px solid var(--border,#222a36); background:transparent; color:var(--text,#dde3ee); }
+  .presets button:hover { border-color:#5fe0a0; }
+  .ctrls { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px; margin-bottom:8px;
+           font-family:'JetBrains Mono',monospace; font-size:11.5px; }
+  .ctrls label { display:flex; flex-direction:column; gap:4px; color:var(--muted,#8a93a6); text-transform:uppercase; font-size:9.5px; letter-spacing:.5px; }
+  .ctrls select { background:#0d1117; color:var(--text,#dde3ee); border:1px solid var(--border,#222a36); border-radius:7px; padding:7px 8px; font-family:inherit; font-size:12px; }
+  .checks { display:flex; gap:18px; flex-wrap:wrap; margin:6px 0 14px; font-family:'JetBrains Mono',monospace; font-size:12px; }
+  .checks label { display:flex; align-items:center; gap:7px; cursor:pointer; color:var(--text,#dde3ee); }
+  .bigrow { display:flex; gap:12px; flex-wrap:wrap; margin:14px 0 16px; font-family:'JetBrains Mono',monospace; }
+  .bigrow .b { border:1px solid var(--border,#222a36); border-radius:10px; padding:12px 16px; min-width:118px; }
+  .bigrow .b .lab { color:var(--muted,#8a93a6); font-size:9.5px; text-transform:uppercase; letter-spacing:.5px; display:block; margin-bottom:4px; }
+  .bigrow .b b { font-size:20px; }
+  .up { color:#5fe0a0; } .down { color:#ff8a8a; } .muted { color:var(--muted,#8a93a6); }
+  .chartbox { border:1px solid var(--border,#222a36); border-radius:12px; padding:14px; height:340px; }
+  .skipline { font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--muted,#8a93a6); margin-top:10px; }
+</style>
+</head>
+<body class="page-mlb">
+<header class="topbar">
+  <div class="brand"><a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a><span class="tagline">by bpleone</span></div>
+  <nav class="mainnav"><!-- nav.js injects here --></nav>
+  <div class="topbar-actions"><div class="ticker" id="liveTicker">STRAT SIM</div></div>
+</header>
+
+<main class="container">
+  <section class="page-head">
+    <h1>Strategy Simulator</h1>
+    <p>Replay the model's <b>entire public ledger</b> — every surfaced pick, settled against the real box score — under <b>your</b> rules. Flip between the raw model prob and the isotonic-calibrated one, drop the families the ledger proved are losers, size flat or Kelly, and watch what the equity curve would have done. No synthetic data anywhere on this page.</p>
+  </section>
+
+  <div class="honest"><b>Read this first:</b> this is an <b>in-sample historical replay</b> — the calibration layer was learned from these same outcomes, and picking filters after seeing results is hindsight. It demonstrates what the honesty layer learned; it is <b>not</b> a forward return promise. A win pays at the pick's recorded fair price (loss −1u), so "everything, flat" reproduces the public track record exactly.</div>
+
+  <div class="presets" id="presets">
+    <button data-preset="firehose">🔥 Firehose — everything, flat 1u</button>
+    <button data-preset="curated">🛡️ Honest curation — drop proven losers, flat</button>
+    <button data-preset="kelly">📐 ¼-Kelly on calibrated edge</button>
+  </div>
+
+  <div class="ctrls">
+    <label>Stake<select id="stake"><option value="flat">Flat 1u</option><option value="k25">Kelly ¼</option><option value="k50">Kelly ½</option><option value="k100">Kelly full</option></select></label>
+    <label>Probability used<select id="probsrc"><option value="cal">Calibrated (honest)</option><option value="raw">Raw model</option></select></label>
+    <label>Min prob floor<select id="minp"><option value="0">None</option><option value="0.55">55%</option><option value="0.60">60%</option><option value="0.65">65%</option><option value="0.70">70%</option><option value="0.75">75%</option><option value="0.80">80%</option></select></label>
+    <label>Sport<select id="sport"><option value="">All sports</option></select></label>
+  </div>
+  <div class="checks">
+    <label><input type="checkbox" id="dropneg" checked> drop proven-negative families</label>
+    <label><input type="checkbox" id="droposc"> drop overconfident families</label>
+    <label><input type="checkbox" id="curonly"> curated sources only</label>
+  </div>
+
+  <div class="bigrow" id="kpis"></div>
+  <div class="chartbox"><canvas id="eq"></canvas></div>
+  <p class="skipline" id="skips"></p>
+  <p class="muted" id="meta" style="font-family:'JetBrains Mono',monospace;font-size:11px;margin-top:12px;"></p>
+</main>
+
+<footer class="site-footer"><div class="foot-bot"><span>© 2026 bpleone.com</span><span>Built in SoCal ☀️</span></div></footer>
+
+<script>
+let D = null, CH = null;
+const $ = id => document.getElementById(id);
+const amToDec = a => a == null ? 1.91 : (a >= 0 ? 1 + a / 100 : 1 + 100 / Math.abs(a));
+const fmtU = v => (v >= 0 ? "+" : "") + v.toFixed(1) + "u";
+
+function simulate() {
+  if (!D) return;
+  const stake = $("stake").value, probsrc = $("probsrc").value;
+  const minp = parseFloat($("minp").value), sportF = $("sport").value;
+  const dropneg = $("dropneg").checked, droposc = $("droposc").checked, curonly = $("curonly").checked;
+  const kfrac = stake === "k25" ? 0.25 : stake === "k50" ? 0.5 : stake === "k100" ? 1.0 : 0;
+  const kelly = kfrac > 0;
+
+  let bank = 100, equity = 0, peak = kelly ? 100 : 0, maxdd = 0;
+  let bets = 0, w = 0, l = 0, push = 0, streak = 0, worstStreak = 0, risked = 0, busted = false;
+  const sk = { neg: 0, oc: 0, cur: 0, sport: 0, floor: 0, noprob: 0, noedge: 0 };
+  const pts = [], labels = [];
+
+  for (const r of D.rows) {
+    const [di, si, spi, fi, pRaw, pCal, fair, res, payout] = r;
+    const fam = D.families[fi], src = D.sources[si];
+    if (dropneg && fam.neg) { sk.neg++; continue; }
+    if (droposc && fam.oc) { sk.oc++; continue; }
+    if (curonly && !src.cur) { sk.cur++; continue; }
+    if (sportF && D.sports[spi] !== sportF) { sk.sport++; continue; }
+    const p = probsrc === "cal" ? (pCal ?? pRaw) : pRaw;
+    if (minp > 0 && (p == null || p < minp)) { sk.floor++; continue; }
+
+    let pnl;
+    if (kelly) {
+      if (p == null) { sk.noprob++; continue; }
+      const b = amToDec(fair) - 1;
+      const f = (p * b - (1 - p)) / b;
+      if (f <= 0.001) { sk.noedge++; continue; }
+      // Sized off the FIXED 100u starting bank (unit-Kelly, non-compounding):
+      // compounding an in-sample hit rate produces meaningless fantasy curves.
+      const st = Math.min(f * kfrac, 0.10) * 100;
+      pnl = res === 1 ? st * b : res === 0 ? -st : 0;
+      bank += pnl;
+      if (res !== 2) risked += st;
+      if (bank < 1) { busted = true; }
+    } else {
+      pnl = payout;          // ledger convention: win = dec-1, loss = -1, push = 0
+      equity += pnl;
+      if (res !== 2) risked += 1;
+    }
+    bets++;
+    if (res === 1) { w++; streak = 0; }
+    else if (res === 0) { l++; streak++; worstStreak = Math.max(worstStreak, streak); }
+    else push++;
+    const cur = kelly ? bank : equity;
+    peak = Math.max(peak, cur);
+    maxdd = Math.max(maxdd, kelly ? (peak > 0 ? (peak - cur) / peak : 0) : (peak - cur));
+    pts.push(+cur.toFixed(2));
+    labels.push(D.dates[di]);
+    if (busted) break;
+  }
+
+  const net = kelly ? bank - 100 : equity;
+  const hit = (w + l) > 0 ? w / (w + l) : null;
+  // Kelly: return on the 100u starting bank; flat: net per unit risked.
+  const roi = kelly ? net : (risked > 0 ? net / risked * 100 : null);
+  $("kpis").innerHTML = `
+    <span class="b"><span class="lab">bets placed</span><b>${bets.toLocaleString()}</b> <span class="muted">${w}-${l}${push ? "-" + push : ""}</span></span>
+    <span class="b"><span class="lab">hit rate</span><b>${hit == null ? "—" : (100 * hit).toFixed(1) + "%"}</b></span>
+    <span class="b"><span class="lab">${kelly ? "final bankroll" : "net units"}</span><b class="${net >= 0 ? "up" : "down"}">${kelly ? bank.toFixed(1) + "u" : fmtU(net)}</b>${busted ? ' <span class="down">BUSTED</span>' : ""}</span>
+    <span class="b"><span class="lab">${kelly ? "return on 100u bank" : "ROI / bet"}</span><b class="${(roi ?? 0) >= 0 ? "up" : "down"}">${roi == null ? "—" : (roi >= 0 ? "+" : "") + roi.toFixed(1) + "%"}</b></span>
+    <span class="b"><span class="lab">max drawdown</span><b class="down">${kelly ? (100 * maxdd).toFixed(1) + "%" : "−" + maxdd.toFixed(1) + "u"}</b></span>
+    <span class="b"><span class="lab">worst L streak</span><b>${worstStreak}</b></span>`;
+
+  const skips = [];
+  if (sk.neg) skips.push(`${sk.neg} proven-negative dropped`);
+  if (sk.oc) skips.push(`${sk.oc} overconfident dropped`);
+  if (sk.cur) skips.push(`${sk.cur} non-curated skipped`);
+  if (sk.sport) skips.push(`${sk.sport} other-sport`);
+  if (sk.floor) skips.push(`${sk.floor} under prob floor`);
+  if (sk.noedge) skips.push(`${sk.noedge} skipped — Kelly found no edge at the recorded price (raw prob at its own fair line is 0-EV by construction)`);
+  if (sk.noprob) skips.push(`${sk.noprob} had no usable prob`);
+  let skTxt = skips.length ? "Skipped: " + skips.join(" · ") : "";
+  if (kelly) skTxt = "Kelly stakes are sized off the fixed 100u starting bank (non-compounding, max 10u/bet) — compounding an in-sample hit rate produces fantasy numbers." + (skTxt ? " · " + skTxt : "");
+  $("skips").textContent = skTxt;
+
+  if (CH) CH.destroy();
+  CH = new Chart($("eq"), {
+    type: "line",
+    data: { labels, datasets: [{ data: pts, borderColor: net >= 0 ? "#3ad17e" : "#ff6b6b",
+      backgroundColor: net >= 0 ? "rgba(58,209,126,.08)" : "rgba(255,107,107,.08)", fill: true,
+      borderWidth: 1.6, pointRadius: 0, tension: 0 }] },
+    options: { responsive: true, maintainAspectRatio: false, animation: false,
+      plugins: { legend: { display: false }, tooltip: { callbacks: {
+        label: c => (kelly ? "bankroll " : "equity ") + c.parsed.y + "u" } } },
+      scales: { x: { ticks: { color: "#8a93a6", maxTicksLimit: 9, font: { size: 10 } }, grid: { display: false } },
+                y: { ticks: { color: "#8a93a6", font: { size: 10 } }, grid: { color: "rgba(138,147,166,.12)" } } } }
+  });
+}
+
+const PRESETS = {
+  firehose: { stake: "flat", probsrc: "raw", minp: "0", dropneg: false, droposc: false, curonly: false },
+  curated: { stake: "flat", probsrc: "cal", minp: "0", dropneg: true, droposc: false, curonly: false },
+  kelly: { stake: "k25", probsrc: "cal", minp: "0", dropneg: true, droposc: false, curonly: false },
+};
+$("presets").addEventListener("click", e => {
+  const p = PRESETS[e.target.dataset.preset]; if (!p) return;
+  $("stake").value = p.stake; $("probsrc").value = p.probsrc; $("minp").value = p.minp;
+  $("dropneg").checked = p.dropneg; $("droposc").checked = p.droposc; $("curonly").checked = p.curonly;
+  simulate();
+});
+["stake", "probsrc", "minp", "sport", "dropneg", "droposc", "curonly"].forEach(id => $(id).addEventListener("change", simulate));
+
+fetch("data/strategy_sim.json", { cache: "no-cache" }).then(r => r.json()).then(d => {
+  D = d;
+  $("sport").innerHTML = '<option value="">All sports</option>' +
+    d.sports.map(s => `<option value="${s}">${s}</option>`).join("");
+  $("meta").textContent = `${d.n.toLocaleString()} settled picks · ${d.n_dates} days · ${d.families.length} market families (${d.families.filter(f => f.neg).length} proven-negative, ${d.families.filter(f => f.oc).length} overconfident) · generated ${(d.generated_at || "").replace("T", " ").slice(0, 16)} UTC`;
+  $("dropneg").checked = false;   // boot = untouched firehose so the first number matches the track record
+  $("probsrc").value = "raw";
+  simulate();
+}).catch(() => { $("kpis").innerHTML = '<p class="muted">Replay deck unavailable — pipeline may not have run yet.</p>'; });
+</script>
+</body>
+</html>

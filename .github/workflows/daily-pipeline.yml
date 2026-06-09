@@ -595,6 +595,9 @@ jobs:
       - name: Generator-level recalibration (isotonic, from settled outcomes)
         working-directory: python
         run: python recalibration.py
+      - name: Strategy simulator replay deck (settled ledger -> strategy-sim.html)
+        working-directory: python
+        run: python strategy_sim.py
       - name: Cross-sport parlay builder (2-leg + 3-leg combos with same-game correlation)
         working-directory: python
         run: python cross_sport_parlay_builder.py

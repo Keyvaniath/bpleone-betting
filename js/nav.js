@@ -49,6 +49,7 @@
     { href: "b2b-fatigue.html",         label: "😴 B2B Fatigue" },
     { href: "model-health.html",        label: "🏥 Model Health" },
     { href: "calibration-map.html",     label: "🎯 Model Calibration" },
+    { href: "strategy-sim.html",        label: "🎛️ Strategy Simulator" },
     { href: "clv.html",                 label: "🎯 Closing Line Value" },
     { href: "line-movement.html",       label: "📈 Line Movement / Steam" },
     { href: "live-momentum.html",       label: "📈 Live Momentum" },
