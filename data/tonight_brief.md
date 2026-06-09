@@ -2,9 +2,6 @@
 
 _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 
-## 💪 STRONG (1 picks)
-- [MLB-PP] Luis Rengifo PP_batter_hrr_under_3.5 · 86% / +49.6%
-
 ## 🔒 5 Daily Locks
 - **Luis Rengifo** PP_batter_hrr_under_3.5 (MLB-PP) -- 86% / +49.6%
 - **Drew Gilbert** PP_batter_hrr_under_3.5 (MLB-PP) -- 86% / +49.1%
@@ -22,8 +19,8 @@ _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 
 ## 🎰 Tonight's Best Parlay
 - **Salvador Perez** PP_batter_hrr_under_3.5 + **STL @ NYM** STL_ML
-- Joint 51% · fair +259 · edge +83.4%
+- Joint 51% · fair +259 · edge +83.6%
 
 ---
-_Generated 2026-06-09T12:44:09_
+_Generated 2026-06-09T19:57:48_
 _Full breakdown: /tonight · Full history: /locks-of-day_

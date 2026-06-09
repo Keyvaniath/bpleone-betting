@@ -1,13 +1,13 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-06-09T12:44:11 UTC_
+_Generated 2026-06-09T19:57:50 UTC_
 
 ## Slate Quality
-- **Tier:** NO_ACTION_NIGHT
-- **Score:** 15
-- **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
+- **Tier:** MODEST_NIGHT
+- **Score:** 21
+- **Advisory:** Light slate. Limit to 1-3 strongest plays; use 25% Kelly or less.
 - **Total LOCKs:** 0
-- **Total STRONG:** 10
-- **Total FADES:** 25
+- **Total STRONG:** 12
+- **Total FADES:** 27
 
 ## Lock of the Night
 - **Subject:** Colin Rea
@@ -17,27 +17,27 @@ _Generated 2026-06-09T12:44:11 UTC_
 - **Details:** CHC @ COL
 
 ## Top 5 Curated Picks
-1. **GOLF / Sam Burns** (GOLF_PLAYER, score=219.29)
-   - Play: Sam Burns (PLAYER_STRONG)
+1. **GOLF / Wyndham Clark** (GOLF_PLAYER, score=219.29)
+   - Play: Wyndham Clark (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
 2. **GOLF / J.T. Poston** (GOLF_PLAYER, score=219.29)
    - Play: J.T. Poston (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-3. **MLB / Max Meyer** (MLB_PITCHER, score=60.75)
+3. **WNBA / napheesa collier** (WNBA_PLAYER, score=154.5)
+   - Play: napheesa collier (PLAYER_STRONG)
+   - Rationale: Cross-sport top pick (WNBA_PLAYER)
+4. **WNBA / angel reese** (WNBA_PLAYER, score=93.33)
+   - Play: angel reese (PLAYER_STRONG)
+   - Rationale: Cross-sport top pick (WNBA_PLAYER)
+5. **MLB / Max Meyer** (MLB_PITCHER, score=60.42)
    - Play: Max Meyer (PITCHER_STRONG)
    - Rationale: Cross-sport top pick (MLB_PITCHER)
-4. **MLB / Freddy Peralta** (MLB_PITCHER, score=59.67)
-   - Play: Freddy Peralta (PITCHER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_PITCHER)
-5. **F1 / max verstappen** (F1_DRIVER, score=49.67)
-   - Play: max verstappen (DRIVER_STRONG)
-   - Rationale: Cross-sport top pick (F1_DRIVER)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
-  - Sam Burns top 10 finish
+  - Wyndham Clark top 10 finish
   - J.T. Poston top 10 finish
-  - Tommy Fleetwood top 10 finish
+  - Ryan Gerard top 10 finish
 
 ## Slate ROI Projection
 - **Picks:** 1
@@ -46,13 +46,13 @@ _Generated 2026-06-09T12:44:11 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **NHL** / samsonov ilya (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / frederik andersen (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
+- **NBA** / SAS (TEAM_FADE)
+  - Fade angle: team total UNDER
+- **NBA** / NYK (TEAM_FADE)
+  - Fade angle: team total UNDER
 - **NHL** / pyotr kochetkov (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / logan thompson_2 (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
 - **NHL** / adin hill (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / frederik andersen (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
