@@ -14,6 +14,8 @@ import math
 import datetime as dt
 from typing import Any, Dict, List, Optional
 
+from wnba_scoring_env import game_env_factor
+
 
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 OUT = os.path.join(DATA_DIR, "wnba_team_alts_props.json")
@@ -96,6 +98,9 @@ def run() -> Dict[str, Any]:
         home_drtg = TEAM_DRTG.get(home, LEAGUE_ORTG_WNBA)
         away_drtg = TEAM_DRTG.get(away, LEAGUE_ORTG_WNBA)
         game_pace = (home_pace + away_pace) / 2
+        # live scoring-environment trim scales both teams symmetrically
+        env, _env = game_env_factor(g.get("home_team") or "", g.get("away_team") or "")
+        game_pace *= env
 
         # Each team's effective points = pace × (their ORtg + opp DRtg) / 2 / 100
         home_pts = game_pace * (home_ortg + away_drtg) / 2 / 100

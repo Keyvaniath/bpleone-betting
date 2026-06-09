@@ -24,6 +24,8 @@ import math
 import datetime as dt
 from typing import Any, Dict, List, Optional
 
+from wnba_scoring_env import game_env_factor
+
 
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 OUT = os.path.join(DATA_DIR, "wnba_player_double_double.json")
@@ -118,7 +120,8 @@ def run() -> Dict[str, Any]:
         away = _norm_team(g.get("away_team") or g.get("away") or "")
         if not home or not away: continue
         matchup = f"{away} @ {home}"
-        pace_factor = 1.0  # could pull from team_pace tables if needed
+        # live scoring-environment factor from real results (was a 1.0 stub)
+        pace_factor, _env = game_env_factor(g.get("home_team") or "", g.get("away_team") or "")
 
         # Find all PLAYER_DB members whose team matches either side
         candidate_players = [(name, info) for name, info in PLAYER_DB.items()

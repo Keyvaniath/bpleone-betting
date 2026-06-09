@@ -18,6 +18,8 @@ import math
 import datetime as dt
 from typing import Any, Dict, List, Optional
 
+from wnba_scoring_env import game_env_factor
+
 
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 OUT = os.path.join(DATA_DIR, "wnba_player_blocks_steals_props.json")
@@ -138,6 +140,8 @@ def run() -> Dict[str, Any]:
         away_opps = TEAM_DEFENSIVE_OPPS.get(away, 1.0)
         game_pace = (home_pace + away_pace) / 2
         pace_factor = game_pace / LEAGUE_PACE
+        env, _env = game_env_factor(g.get("home_team") or "", g.get("away_team") or "")
+        pace_factor *= env
 
         for player_name, info in PLAYER_DB.items():
             if info["team"] not in (home, away): continue
