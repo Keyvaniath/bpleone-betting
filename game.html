@@ -73,7 +73,7 @@ const pct = p => (p == null ? "—" : (100 * p).toFixed(1) + "%");
 const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const j = (u) => fetch(u + (u.includes("?") ? "&" : "?") + "t=" + Date.now(), { cache: "no-store" }).then(r => r.json()).catch(() => ({}));
 
-let CARDS = {}, REFRESH = null, GAMECAL = {};
+let CARDS = {}, REFRESH = null, GAMECAL = {}, GAMEBP = {};
 const sgn = v => v == null ? "—" : (v >= 0 ? "+" + v : "" + v);
 
 function trendsCard(card) {
@@ -154,6 +154,11 @@ function render(card, live, liveProps) {
   const lmHtml = lm.edge_vs_market_pp != null ? `
         <div class="ln"><span class="k">Model vs market</span><span>${lm.model_home_implied}% vs ${(lm.market||{}).home_implied}% <span class="${lm.edge_vs_market_pp>=0?'pos':'neg'}">(${lm.edge_vs_market_pp>=0?'+':''}${lm.edge_vs_market_pp}pp ${esc(card.home)})</span></span></div>
         ${lm.has_timeseries ? `<div class="ln"><span class="k">Line drift open&rarr;now</span><span>${lm.ml_drift_pp>=0?'+':''}${lm.ml_drift_pp}pp${lm.steam?' <span class="pos">⚡ STEAM</span>':''}${lm.vs_model?` · market ${esc(lm.vs_model.replace(/_/g," "))}`:""}</span></div>` : `<div class="ln"><span class="k">Line drift</span><span class="muted">live odds feed off — open→now drift n/a</span></div>`}` : "";
+  // bullpen freshness row (relief IP last 2 days -> tier; feeds the inn 7-9 model)
+  const bp = GAMEBP[card.matchup];
+  const bpTier = t => t === "FRESH" ? '<span class="pos">FRESH</span>' : (t === "TIRED" || t === "GASSED") ? `<span class="neg">${t}</span>` : (t || "—");
+  const bpHtml = (bp && (bp.away_bp_ip_2d != null || bp.home_bp_ip_2d != null)) ? `
+        <div class="ln"><span class="k">Bullpens (relief IP, L2D)</span><span>${esc(card.away)} ${bpTier(bp.away_bp_tier)} ${bp.away_bp_ip_2d != null ? "(" + bp.away_bp_ip_2d + ")" : ""} · ${esc(card.home)} ${bpTier(bp.home_bp_tier)} ${bp.home_bp_ip_2d != null ? "(" + bp.home_bp_ip_2d + ")" : ""}</span></div>` : "";
   const edge = (mdl, market) => (mdl != null && market != null) ? ml(market) : "—";
   const recs = (card.recommendations || []);
   const preds = (card.predictions || []);
@@ -187,6 +192,7 @@ function render(card, live, liveProps) {
         <div class="ln"><span class="k">Market (${esc(mk.book || "book")})</span><span>${ml(mk.away_ml)} / ${ml(mk.home_ml)}</span></div>
         <div class="ln"><span class="k">Fair total</span><span>${m.fair_total ?? "—"}${mk.total != null ? `  <span class="muted">(mkt ${mk.total})</span>` : ""}</span></div>
         <div class="ln"><span class="k">Model P(over)</span><span>${pct(m.p_over_market)}</span></div>
+        ${bpHtml}
         ${lmHtml}
       </div>
     </div>
@@ -280,8 +286,9 @@ async function load() {
   CARDS = Object.fromEntries(cards.map(c => [c.matchup, c]));
   if (!TARGET || !CARDS[TARGET]) { gamePicker(cards); return; }
   const card = CARDS[TARGET];
-  const [live, liveProps, gcal] = await Promise.all([liveFor(card), livePropsFor(card), j("data/game_calibrated.json")]);
+  const [live, liveProps, gcal, bpf] = await Promise.all([liveFor(card), livePropsFor(card), j("data/game_calibrated.json"), j("data/mlb_bullpen_freshness.json")]);
   GAMECAL = gcal.by_matchup || {};
+  GAMEBP = Object.fromEntries((bpf.games || []).map(r => [r.matchup, r]));
   render(card, live, liveProps);
   if (live || (liveProps && liveProps.length)) {  // game is live -> keep it ticking
     clearInterval(REFRESH);

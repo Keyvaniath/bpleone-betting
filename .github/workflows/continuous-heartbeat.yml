@@ -74,6 +74,12 @@ jobs:
         working-directory: python
         run: python self_learn_weights.py
 
+      # Strategy-sim replay deck tracks the ledger refresh above so the public
+      # equity chart / prove-it strip never lag the settled count intraday.
+      - name: Strategy simulator replay deck (intraday refresh)
+        working-directory: python
+        run: python strategy_sim.py || true
+
       - name: Top-5 confluence picker (daily action list)
         working-directory: python
         run: python confluence_top_5.py || true

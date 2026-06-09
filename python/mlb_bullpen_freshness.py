@@ -41,6 +41,18 @@ def _classify(ip_2d):
     return "GASSED"
 
 
+def _fatigue_index(ip_2d):
+    """Continuous 0-1 fatigue from last-2-day relief IP, centered so NORMAL ~0.5
+    (the same default the innings generators fall back to when a team is missing,
+    so wiring this in only MOVES probabilities where a pen is genuinely fresh or
+    gassed). 2 IP -> 0.0, 8 IP -> 0.5, 14+ IP -> 1.0; UNKNOWN -> 0.5."""
+    try:
+        ip = float(ip_2d)
+    except (TypeError, ValueError):
+        return 0.5
+    return round(max(0.0, min(1.0, (ip - 2.0) / 12.0)), 3)
+
+
 def run() -> Dict[str, Any]:
     matchups = _load(os.path.join(DATA_DIR, "matchups.json"))
     pitch_count = _load(os.path.join(DATA_DIR, "mlb_starter_pitch_count.json"))
@@ -95,6 +107,21 @@ def run() -> Dict[str, Any]:
         for a in r["compound_alerts"]:
             all_alerts.append({"matchup": r["matchup"], "alert": a})
 
+    # Per-TEAM fatigue index in the vocab the innings 4-6 / 7-9 totals generators
+    # consume (`teams` + `fatigue_index`). Before this existed they found nothing
+    # and silently defaulted every team to 0.5 -- a no-op adjustment. This is the
+    # bridge that makes the bullpen-fatigue signal actually reach the model.
+    teams = []
+    for r in results:
+        mu = r.get("matchup") or ""
+        if "@" not in mu:
+            continue
+        away_ab, home_ab = [s.strip().upper() for s in mu.split("@", 1)]
+        teams.append({"team": away_ab, "ip_2d": r["away_bp_ip_2d"],
+                      "tier": r["away_bp_tier"], "fatigue_index": _fatigue_index(r["away_bp_ip_2d"])})
+        teams.append({"team": home_ab, "ip_2d": r["home_bp_ip_2d"],
+                      "tier": r["home_bp_tier"], "fatigue_index": _fatigue_index(r["home_bp_ip_2d"])})
+
     payload = {
         "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
         "n_games": len(results),
@@ -102,6 +129,7 @@ def run() -> Dict[str, Any]:
         "home_bullpen_tiers": dict(home_tiers),
         "away_bullpen_tiers": dict(away_tiers),
         "compound_alerts": all_alerts,
+        "teams": teams,
         "games": results,
         "note": ("Compound bullpen alerts fire when an EARLY_HOOK starter "
                   "meets a TIRED/GASSED bullpen -- opposing offense gets late-"
