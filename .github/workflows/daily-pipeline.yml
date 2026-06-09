@@ -227,6 +227,14 @@ jobs:
         working-directory: python
         run: python props_parlay_builder.py
 
+      # Regression guard: prove the board's two real-outcome guards are live --
+      # curation drops market families proven to lose money, empirical calibration
+      # blends probs toward realized hit rates, and zero proven-negative plays
+      # shipped. Fails the build if a guard regresses.
+      - name: Verify calibration guards
+        working-directory: python
+        run: python verify_calibration.py
+
       # Build parlay suggestions from today's qualifying single-leg edges.
       - name: Run parlay engine
         if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'

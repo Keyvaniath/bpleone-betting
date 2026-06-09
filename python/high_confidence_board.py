@@ -19,6 +19,8 @@ import json
 import datetime as dt
 from typing import Any, Dict, List, Optional
 
+import prob_calibration as pc   # real-outcome curation + empirical calibration
+
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 OUT = os.path.join(DATA_DIR, "high_confidence_board.json")
 
@@ -67,25 +69,40 @@ def _tier(prob: float) -> str:
 
 
 def _add(out, *, sport, subject, matchup, market, prob, fair, family, source):
-    prob = _num(prob)
-    if prob is None or prob < MIN_PROB:
+    raw = _num(prob)
+    if raw is None:
         return
-    fair = _num(fair)
-    # Price gates by segment. Game lines: drop heavy favorites (the overconfident,
-    # bleeding segment). Props: keep favorites (well-calibrated) but drop the
-    # trivially-juicy lays that have no real payout.
-    if fair is not None:
-        if family in ("game", "team") and fair <= FAV_FLOOR:
+    # Guard 1 -- CURATION: never surface a market family the settled ledger proves
+    # loses money (e.g. to_hit_hr -122u, k_1plus -189u), no matter the raw hit rate.
+    if pc.is_proven_negative(market):
+        return
+    # Guard 2 -- EMPIRICAL CALIBRATION: blend the raw model prob toward the family's
+    # realized hit rate from the ledger, so the displayed number is honest.
+    cal, meta = pc.empirical_calibrate(raw, market)
+    if cal is None or cal < MIN_PROB:
+        return
+    # Display the fair price implied by the CALIBRATED prob, so probability and odds
+    # never disagree. Then gate on that: game lines drop heavy favorites (bleeding
+    # segment); props drop trivially-juicy lays with no real payout.
+    fair_cal = pc.prob_to_american(cal)
+    if fair_cal is not None:
+        if family in ("game", "team") and fair_cal <= FAV_FLOOR:
             return
-        if family not in ("game", "team") and fair <= PROP_PRICE_FLOOR:
+        if family not in ("game", "team") and fair_cal <= PROP_PRICE_FLOOR:
             return
-    score = round(prob * 100 + (PLAYER_PROP_BOOST if family in ("pitcher", "batter", "player") else 0), 1)
-    out.append({
+    score = round(cal * 100 + (PLAYER_PROP_BOOST if family in ("pitcher", "batter", "player") else 0), 1)
+    rec = {
         "sport": sport, "subject": subject, "matchup": matchup, "market": market,
-        "prob": round(prob, 3), "fair_odds": (int(fair) if fair is not None else None),
+        "prob": round(cal, 3), "raw_prob": round(raw, 3),
+        "fair_odds": (int(fair_cal) if fair_cal is not None else None),
         "family": family, "source": source,
-        "confidence": score, "tier": _tier(prob),
-    })
+        "confidence": score, "tier": _tier(cal),
+        "calibration": meta.get("method"),
+    }
+    if meta.get("method") == "empirical":
+        rec["cal_n"] = meta.get("n")
+        rec["cal_realized"] = meta.get("realized")
+    out.append(rec)
 
 
 def run() -> Dict[str, Any]:
@@ -117,16 +134,22 @@ def run() -> Dict[str, Any]:
     out.sort(key=lambda p: -p["confidence"])
     board = out[:24]
     counts = {t: sum(1 for p in board if p["tier"] == t) for t in ("ELITE", "STRONG", "SOLID")}
+    n_empirical = sum(1 for p in board if p.get("calibration") == "empirical")
 
     result = {
         "generated_at": dt.datetime.utcnow().isoformat(timespec="seconds"),
         "n_board": len(board),
         "n_candidates": len(out),
         "tier_counts": counts,
-        "method_note": "Top model-conviction plays (odds-independent), drawn from the "
-                       "well-calibrated player-prop + game-edge segments. Heavy favorites "
-                       f"(fair <= {FAV_FLOOR}) excluded -- that segment bleeds. Tier by model "
-                       "probability: ELITE >=72%, STRONG >=66%, SOLID >=60%.",
+        "n_calibrated_on_outcomes": n_empirical,
+        "n_proven_negative_families_excluded": len(pc.proven_negative_families()),
+        "method_note": "Top model-conviction plays (odds-independent). TWO real-outcome guards "
+                       "from the settled ledger: (1) CURATION -- market families proven to lose "
+                       "money are hard-excluded (ROI, not hit rate); (2) EMPIRICAL CALIBRATION -- "
+                       "each probability is blended toward its family's realized hit rate, so the "
+                       f"number shown is honest. Heavy game-line favorites (fair <= {FAV_FLOOR}) "
+                       f"and trivially-juicy prop lays (fair <= {PROP_PRICE_FLOOR}) excluded. Tier "
+                       "by calibrated probability: ELITE >=72%, STRONG >=66%, SOLID >=60%.",
         "board": board,
     }
     os.makedirs(DATA_DIR, exist_ok=True)

@@ -23,6 +23,8 @@
   .muted { color:var(--muted,#8a93a6); }
   .confbar { height:5px; border-radius:3px; background:rgba(255,255,255,.06); margin-top:4px; overflow:hidden; }
   .confbar > i { display:block; height:100%; background:linear-gradient(90deg,#3f86ff,#7a4dff); }
+  .calbadge { font-size:9.5px; padding:1px 5px; border-radius:4px; background:rgba(58,209,126,.14); color:#5fe0a0; margin-left:5px; white-space:nowrap; cursor:help; }
+  .calbadge.model { background:rgba(255,255,255,.05); color:var(--muted,#8a93a6); }
 </style>
 </head>
 <body class="page-mlb">
@@ -38,7 +40,7 @@
 <main class="container">
   <section class="page-head">
     <h1>High Confidence Board</h1>
-    <p>The slate's strongest model-conviction plays, ranked — a tier above the single Play of the Day. Built from the model's odds-independent edges in the segments that actually win (player props, game edges), with the overconfident heavy favorites filtered out. Tiered by model probability: <b>ELITE</b> ≥72% · <b>STRONG</b> ≥66% · <b>SOLID</b> ≥60%.</p>
+    <p>The slate's strongest model-conviction plays, ranked — a tier above the single Play of the Day. Built from the model's odds-independent edges, with <b>two real-outcome guards</b> applied from our settled bet ledger: market families that have <b>proven to lose money</b> are hard-excluded (ROI, not hit rate), and every probability is <b>calibrated toward its family's realized hit rate</b> — so the number you see is honest, not just confident. Heavy-favorite bleeders and trivial lays filtered out. Tiered by calibrated probability: <b>ELITE</b> ≥72% · <b>STRONG</b> ≥66% · <b>SOLID</b> ≥60%.</p>
   </section>
 
   <div class="tierstrip" id="tierStrip"></div>
@@ -62,16 +64,19 @@ fetch("data/high_confidence_board.json", { cache: "no-cache" }).then(r => r.json
      <span class="t"><span class="tier SOLID">SOLID</span> ${tc.SOLID||0}</span>`;
   const el = document.getElementById("board");
   if (!board.length) { el.innerHTML = '<p class="muted">No qualifying high-confidence plays right now — the board fills as today\'s props price up.</p>'; return; }
+  const calTag = p => p.calibration === "empirical"
+    ? `<span class="calbadge" title="Calibrated on ${p.cal_n} settled bets — this family hits ${(100*p.cal_realized).toFixed(0)}% in reality">✓ ${p.cal_n} bets</span>`
+    : `<span class="calbadge model" title="No settled history for this market yet — shown as the model's raw estimate">model est.</span>`;
   el.innerHTML = board.map(p => `
     <div class="hcrow">
       <span class="tier ${p.tier}">${p.tier}</span>
       <span class="subj"><b>${esc(p.subject)}</b> <span class="sport">${esc(p.sport)}${p.matchup ? " · " + esc(p.matchup) : ""}</span><br><span class="mk">${esc(p.market)}</span></span>
-      <span><span class="muted">model</span> <b>${(100*p.prob).toFixed(1)}%</b><div class="confbar"><i style="width:${(100*p.prob).toFixed(0)}%"></i></div></span>
+      <span><span class="muted">${p.calibration === "empirical" ? "calibrated" : "model"}</span> <b>${(100*p.prob).toFixed(1)}%</b>${calTag(p)}<div class="confbar"><i style="width:${(100*p.prob).toFixed(0)}%"></i></div></span>
       <span><span class="muted">fair</span> ${ml(p.fair_odds)}</span>
       <span class="conf">${p.confidence}</span>
     </div>`).join("");
   document.getElementById("hcMeta").textContent =
-    `${board.length} plays from ${d.n_candidates} candidates · ${(d.generated_at||"").replace("T"," ").slice(0,16)} UTC · heavy-favorite bleeders + trivial lays filtered out`;
+    `${board.length} plays from ${d.n_candidates} candidates · ${d.n_calibrated_on_outcomes||0} calibrated on real outcomes · ${d.n_proven_negative_families_excluded||0} losing market families curated out · ${(d.generated_at||"").replace("T"," ").slice(0,16)} UTC`;
 }).catch(() => { document.getElementById("board").innerHTML = '<p class="muted">Board unavailable — pipeline may not have run yet.</p>'; });
 </script>
 </body>
