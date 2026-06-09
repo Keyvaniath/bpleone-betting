@@ -151,7 +151,14 @@ def empirical_calibrate(raw_prob, market) -> Tuple[Optional[float], Dict[str, An
         s = stats.get(key)
         if s and s[0] >= CAL_MIN_N:
             n, realized, _net = s
-            cal = (PRIOR_K * raw + n * realized) / (PRIOR_K + n)
+            # Prefer the per-prediction-bucket ISOTONIC curve (recalibration.py) --
+            # held-out validated and strictly better than a flat family average.
+            # Fall back to the family-average blend if the engine is unavailable.
+            try:
+                import recalibration as _rc
+                cal = _rc.recalibrate_family(key, raw)
+            except Exception:
+                cal = (PRIOR_K * raw + n * realized) / (PRIOR_K + n)
             cal = max(0.01, min(0.99, cal))
             return cal, {
                 "method": "empirical", "family": key, "n": n,
@@ -297,7 +304,11 @@ def calibrate_play(market, play, line, raw_prob) -> Tuple[Optional[float], Dict[
     s = _family_stats().get(key) if key else None
     if s and s[0] >= CAL_MIN_N:
         n, realized, _net = s
-        cal = max(0.01, min(0.99, (PRIOR_K * raw + n * realized) / (PRIOR_K + n)))
+        try:
+            import recalibration as _rc
+            cal = max(0.01, min(0.99, _rc.recalibrate_family(key, raw)))
+        except Exception:
+            cal = max(0.01, min(0.99, (PRIOR_K * raw + n * realized) / (PRIOR_K + n)))
         return cal, {"method": "empirical", "family": key, "n": n,
                      "realized": round(realized, 4), "raw": round(raw, 4)}
     return max(0.01, min(0.99, raw)), {"method": "model_only", "family": key, "raw": round(raw, 4)}

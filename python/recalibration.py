@@ -178,6 +178,21 @@ def recalibrate(raw_prob, market) -> float:
     return _apply(fit, raw) if fit else raw
 
 
+def recalibrate_family(family_key, raw_prob) -> float:
+    """Apply the fitted isotonic transform for an ALREADY-canonical family key
+    (e.g. one reconstructed from market+play+line). Identity if no fit / bad input.
+    This is the upstream entry prob_calibration routes its calibration through, so
+    every board gets the bucketed isotonic curve instead of a flat family average."""
+    try:
+        raw = float(raw_prob)
+    except (TypeError, ValueError):
+        return raw_prob
+    if not (0.0 < raw < 1.0):
+        return raw_prob
+    fit = _maps().get(family_key)
+    return _apply(fit, raw) if fit else raw
+
+
 def reset_caches() -> None:
     global _MAP_CACHE
     _MAP_CACHE = None

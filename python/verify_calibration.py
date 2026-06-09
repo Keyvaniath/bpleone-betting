@@ -44,14 +44,14 @@ cal_hr, meta_hr = pc.empirical_calibrate(0.65, "to_hit_hr_yes")
 check("to_hit_hr_yes 0.65 -> below 0.30", cal_hr is not None and cal_hr < 0.30,
       f"got {None if cal_hr is None else round(cal_hr, 3)} (realized {meta_hr.get('realized')})")
 
-# 3. CALIBRATION MATH -- a calibratable family returns the exact Bayesian blend.
+# 3. CALIBRATION SOURCE -- empirical_calibrate now routes through the ISOTONIC
+#    recalibration engine (folded in at the source), not a flat family-average.
 raw = 0.70
 cal_rn, meta_rn = pc.empirical_calibrate(raw, "to_score_run_no")
-expected = (pc.PRIOR_K * raw + meta_rn.get("n", 0) * meta_rn.get("realized", 0)) / (pc.PRIOR_K + meta_rn.get("n", 0)) \
-    if meta_rn.get("method") == "empirical" else None
-check("to_score_run_no 0.70 is empirically calibrated to the Bayesian blend",
-      meta_rn.get("method") == "empirical" and expected is not None and abs(cal_rn - expected) < 1e-9,
-      f"{round(cal_rn, 4) if cal_rn else None} == {round(expected, 4) if expected else None}")
+iso = rc.recalibrate_family(meta_rn.get("family") or "to_score_run_no", raw)
+check("empirical_calibrate uses the isotonic engine (folded in at source)",
+      meta_rn.get("method") == "empirical" and abs(cal_rn - iso) < 1e-9,
+      f"cal={round(cal_rn,4)} == isotonic {round(iso,4)} (realized {meta_rn.get('realized')})")
 
 # 4. ADMISSION -- a clean model-only prop (no ledger history, not a loser) is admitted.
 out = []
