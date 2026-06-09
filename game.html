@@ -157,9 +157,15 @@ function render(card, live, liveProps) {
   // bullpen freshness row (relief IP last 2 days -> tier; feeds the inn 7-9 model)
   const bp = GAMEBP[card.matchup];
   const bpTier = t => t === "FRESH" ? '<span class="pos">FRESH</span>' : (t === "TIRED" || t === "GASSED") ? `<span class="neg">${t}</span>` : (t || "—");
+  const bpLeash = t => !t ? "—" : (t === "EARLY_HOOK" || t === "SHORT_LEASH") ? `<span class="neg">${esc(t.replace(/_/g, " "))}</span>` : esc(String(t).replace(/_/g, " "));
   const bpHtml = (bp && (bp.away_bp_ip_2d != null || bp.home_bp_ip_2d != null)) ? `
         <div class="ln"><span class="k">Bullpens (relief IP, L2D)</span><span>${esc(card.away)} ${bpTier(bp.away_bp_tier)} ${bp.away_bp_ip_2d != null ? "(" + bp.away_bp_ip_2d + ")" : ""} · ${esc(card.home)} ${bpTier(bp.home_bp_tier)} ${bp.home_bp_ip_2d != null ? "(" + bp.home_bp_ip_2d + ")" : ""}</span></div>
+        ${(bp.away_starter_depth || bp.home_starter_depth) ? `<div class="ln"><span class="k">Starter leash</span><span>${esc(card.away)} ${bpLeash(bp.away_starter_depth)} · ${esc(card.home)} ${bpLeash(bp.home_starter_depth)}</span></div>` : ""}
         ${(bp.compound_alerts || []).map(a => `<div class="ln"><span class="k">⚠️ Compound signal</span><span class="pos" style="font-size:12px;">${esc(a)}</span></div>`).join("")}` : "";
+  // umpire row (from the daily assignment feed; K multiplier when tendencies known)
+  const u = card.umpire || {};
+  const umpHtml = u.ump_name ? `
+        <div class="ln"><span class="k">Umpire</span><span>${esc(u.ump_name)}${(u.ump_k_mult && u.ump_k_mult !== 1.0) ? ` <span class="${u.ump_k_mult > 1 ? "pos" : "neg"}">(K ×${u.ump_k_mult})</span>` : ` <span class="muted">${esc(u.ump_label || "")}</span>`}</span></div>` : "";
   const edge = (mdl, market) => (mdl != null && market != null) ? ml(market) : "—";
   const recs = (card.recommendations || []);
   const preds = (card.predictions || []);
@@ -193,6 +199,7 @@ function render(card, live, liveProps) {
         <div class="ln"><span class="k">Market (${esc(mk.book || "book")})</span><span>${ml(mk.away_ml)} / ${ml(mk.home_ml)}</span></div>
         <div class="ln"><span class="k">Fair total</span><span>${m.fair_total ?? "—"}${mk.total != null ? `  <span class="muted">(mkt ${mk.total})</span>` : ""}</span></div>
         <div class="ln"><span class="k">Model P(over)</span><span>${pct(m.p_over_market)}</span></div>
+        ${umpHtml}
         ${bpHtml}
         ${lmHtml}
       </div>
