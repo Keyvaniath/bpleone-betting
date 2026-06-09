@@ -112,6 +112,30 @@ def run() -> Dict[str, Any]:
     rows.sort(key=lambda r: -((abs(r["overconfidence_gap"]) if r["overconfidence_gap"] is not None else 0)
                               if r["n_settled"] >= MIN_N_RANK else -1))
 
+    # GUARD IMPACT -- the bottom line: what curation does to the book's ROI.
+    def _agg(keep):
+        n = w = 0
+        net = 0.0
+        for p in picks:
+            if p.get("result") not in ("won", "lost"):
+                continue
+            if not keep(pc.canon_market_family(p.get("market"))):
+                continue
+            n += 1
+            w += 1 if p.get("result") == "won" else 0
+            try:
+                net += float(p.get("payout_units"))
+            except (TypeError, ValueError):
+                pass
+        return {"n": n, "net_units": round(net, 1),
+                "roi_pct": round(100 * net / n, 1) if n else None,
+                "hit_rate": round(w / n, 4) if n else None}
+    guard_impact = {
+        "all": _agg(lambda f: True),
+        "after_curation": _agg(lambda f: f not in neg),
+        "curated_out": _agg(lambda f: f in neg),
+    }
+
     n_cur = sum(1 for r in rows if r["status"] == "curated_out")
     n_cal = sum(1 for r in rows if r["status"] == "calibrated")
     n_mod = sum(1 for r in rows if r["status"] == "model_only")
@@ -128,6 +152,7 @@ def run() -> Dict[str, Any]:
         "n_model_only": n_mod,
         "n_overconfident": n_overconf,
         "units_protected_by_curation": net_protected,
+        "guard_impact": guard_impact,
         "overall_avg_model_pred": overall_pred,
         "overall_realized_hit_rate": overall_real,
         "overall_overconfidence_gap": round(overall_pred - overall_real, 4) if overall_pred and overall_real else None,

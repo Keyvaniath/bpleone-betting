@@ -45,6 +45,7 @@
     <p class="muted" style="font-size:12.5px;">Curated-out families split two ways: <span class="pos">overconfident</span> — the model's probability itself is broken (realized far below predicted), so the edge is fake at <i>any</i> price; and <span style="color:#e8b54e;">priced-short</span> — the probability is roughly right but the bet loses at fair odds (it could still be +EV at a soft book line). The distinction is why we curate by ROI, not hit rate.</p>
   </section>
 
+  <div id="guardBanner" style="margin:6px 0 16px;"></div>
   <div class="sumstrip" id="sumStrip"></div>
   <div class="calhead">
     <span>Market family</span><span class="r">n</span><span class="r">model</span><span class="r">actual</span><span class="r">gap</span><span class="r">net u</span><span>status</span>
@@ -69,6 +70,18 @@ const MIS = {
 fetch("data/calibration_map.json", { cache: "no-cache" }).then(r => r.json()).then(d => {
   const fams = d.families || [];
   const gp = d.overall_overconfidence_gap;
+
+  const gi = d.guard_impact;
+  if (gi && gi.all && gi.after_curation) {
+    const a = gi.all, c = gi.after_curation;
+    document.getElementById("guardBanner").innerHTML = `
+      <div style="border:1px solid rgba(95,224,160,.3); border-radius:11px; padding:14px 18px; background:linear-gradient(90deg,rgba(255,107,107,.06),rgba(95,224,160,.08)); font-family:'JetBrains Mono',monospace; display:flex; align-items:center; flex-wrap:wrap; gap:8px 14px;">
+        <span style="font-size:10.5px; text-transform:uppercase; letter-spacing:.5px; color:#8a93a6; width:100%;">What the curation guard does to the book's bottom line</span>
+        <span style="font-size:13px;">Raw firehose <b style="color:#ff8a8a;">${a.roi_pct}% ROI</b> <span class="muted">(${a.n} settled bets · ${a.net_units}u)</span></span>
+        <span style="color:#8a93a6;">&rarr; drop the proven-losing families &rarr;</span>
+        <span style="font-size:16px;"><b style="color:#5fe0a0;">+${c.roi_pct}% ROI</b> <span class="muted">(${c.n} bets · ${c.hit_rate!=null?(100*c.hit_rate).toFixed(0)+'% hit · ':''}+${c.net_units}u)</span></span>
+      </div>`;
+  }
   document.getElementById("sumStrip").innerHTML = `
     <span class="s"><span class="lab">model predicts</span><b>${pct(d.overall_avg_model_pred)}</b></span>
     <span class="s"><span class="lab">actually hits</span><b>${pct(d.overall_realized_hit_rate)}</b></span>
