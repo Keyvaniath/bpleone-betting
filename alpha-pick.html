@@ -87,6 +87,17 @@
 
   .explainer { color: var(--muted,#aaa); font-size: 13px; line-height: 1.6; padding: 14px 18px; background: rgba(212, 160, 74, 0.06); border-left: 3px solid #d4a04a; border-radius: 4px; }
   .explainer strong { color: #d4a04a; }
+
+  /* Mobile: the 5-up stat strip and the fixed-column factor rows are wider than a
+     phone. Collapse the stats to 2-up and let each factor panel scroll its rows
+     horizontally (rows keep a min-width so columns stay aligned). */
+  @media (max-width: 720px) {
+    .container { padding: 16px; }
+    .stats { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .alpha-hero { padding: 20px 18px; }
+    .panel { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .row, .row.head { min-width: 460px; }
+  }
 </style>
 </head>
 <body>

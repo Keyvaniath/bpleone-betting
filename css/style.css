@@ -525,8 +525,13 @@ h3 { font-size: 17px; }
   /* Let cards shrink below their content's intrinsic width (flex/grid items
      default to min-width:auto, which otherwise forces a card as wide as its
      widest table/row and overflows the page); keep table wrappers within the
-     card so the table scrolls inside .table-wrap instead of pushing the page. */
-  .card { min-width: 0; }
+     card so the table scrolls inside .table-wrap instead of pushing the page.
+     overflow-x:auto lets a card with a wide fixed-column grid (e.g. the sport
+     pages' dense game rows: 1.6fr 70px 70px 80px... ≈520px) scroll horizontally
+     within itself rather than expand the page -- cards that already fit are
+     unaffected (nothing to scroll). Cards are auto-height, so this adds no
+     vertical scrollbar. */
+  .card { min-width: 0; overflow-x: auto; }
   .table-wrap { max-width: 100%; }
 }
 
