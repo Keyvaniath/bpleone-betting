@@ -21,6 +21,13 @@
   .r { text-align:right; } .big { font-weight:700; font-size:15px; }
   .pos { color:#5fe0a0; } .muted { color:var(--muted,#8a93a6); }
   .calnote { font-size:10px; color:var(--muted,#8a93a6); }
+  .sech { font-size:14px; margin:10px 0 9px; color:var(--text,#e6e9ef); }
+  .slate { display:inline-block; vertical-align:top; border:1px solid var(--border,#222a36); border-radius:10px; padding:11px 13px; margin:0 9px 9px 0; min-width:300px; font-family:'JetBrains Mono',monospace; }
+  .slate:hover { border-color:#5fe0a0; }
+  .slate .sh { display:flex; justify-content:space-between; gap:10px; font-size:11px; color:var(--muted,#8a93a6); margin-bottom:7px; }
+  .slate .roi { color:#5fe0a0; font-weight:700; font-size:14px; }
+  .slate .sl { font-size:12px; padding:3px 0; border-top:1px solid rgba(255,255,255,.05); }
+  .slate .sl .sd { color:#7facff; font-weight:700; } .slate .sl .mk { color:var(--muted,#8a93a6); }
 </style>
 </head>
 <body class="page-mlb">
@@ -40,6 +47,11 @@
   </section>
 
   <div class="sumstrip" id="sumStrip"></div>
+
+  <h2 class="sech">⚡ Suggested Power Plays <span class="muted" style="font-size:11px;font-weight:400;">— diverse, distinct-market combos priced off PrizePicks' flat payout</span></h2>
+  <div id="slates"><p class="muted" style="font-size:12px;">—</p></div>
+
+  <h2 class="sech" style="margin-top:20px;">All calibrated +EV legs</h2>
   <div class="pphead">
     <span>Player</span><span>Prop</span><span class="r">calibrated hit</span><span class="r">break-even</span><span class="r">edge</span>
   </div>
@@ -64,6 +76,14 @@ fetch("data/prizepicks_value.json", { cache: "no-cache" }).then(r => r.json()).t
     <span class="s"><span class="lab">props scanned</span><b>${d.n_props_scanned}</b></span>
     <span class="s"><span class="lab">overconfident dropped</span><b class="muted">${d.n_overconfident_dropped}</b></span>
     <span class="s"><span class="lab">uncalibrated skipped</span><b class="muted">${d.n_uncalibrated_skipped}</b></span>`;
+
+  const slates = d.suggested_slates || [];
+  document.getElementById("slates").innerHTML = slates.length ? slates.map(s => `
+    <div class="slate">
+      <div class="sh"><span>${s.n_legs}-pick · ${s.payout_multiple}× · joint ${(100*s.joint_prob).toFixed(0)}%</span><span class="roi">+${s.expected_roi_pct}% EV</span></div>
+      ${s.legs.map(l => `<div class="sl"><span class="sd">${l.side==="UNDER"?"LESS":"MORE"} ${l.line}</span> ${esc(l.player)} <span class="mk">${esc(mkt(l.market))} · ${(100*l.cal_prob).toFixed(0)}%</span></div>`).join("")}
+    </div>`).join("") : '<p class="muted" style="font-size:12px;">No multi-leg value on the board right now.</p>';
+
   const el = document.getElementById("rows");
   if (!board.length) { el.innerHTML = '<p class="muted">No calibrated +EV PrizePicks legs right now — the board fills as today\'s slate prices up.</p>'; return; }
   el.innerHTML = board.map(b => `

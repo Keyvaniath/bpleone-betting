@@ -27,6 +27,7 @@ from __future__ import annotations
 import os
 import json
 import datetime as dt
+from itertools import combinations
 from typing import Any, Dict, List
 
 import prob_calibration as pc
@@ -48,6 +49,42 @@ def _load(p):
             return json.load(f)
     except Exception:
         return {}
+
+
+def _build_slates(legs: List[Dict[str, Any]], be_by_legs: Dict[str, Any]) -> List[Dict[str, Any]]:
+    """Suggest the best 2- and 3-leg PrizePicks Power Plays from the value legs.
+    PP is all-or-nothing: a $1 N-pick at multiplier M returns joint_prob*M - 1.
+    The multiplier is implied by the per-leg break-even: M = (1/break_even)^N.
+    Legs are distinct players; joint prob assumes independence (the legs span
+    different players/games, so correlation is minimal)."""
+    pool = legs[:10]
+    slates: List[Dict[str, Any]] = []
+    for n in (2, 3):
+        be_n = float(be_by_legs.get(str(n)) or DEFAULT_BE)
+        if be_n <= 0 or len(pool) < n:
+            continue
+        mult = (1.0 / be_n) ** n
+        cand = []
+        for combo in combinations(pool, n):
+            if len({c["player"] for c in combo}) < n:   # distinct players
+                continue
+            if len({c["family"] for c in combo}) < n:   # distinct families -> diverse, more independent
+                continue
+            jp = 1.0
+            for c in combo:
+                jp *= c["cal_prob"]
+            cand.append({
+                "n_legs": n,
+                "payout_multiple": round(mult, 2),
+                "joint_prob": round(jp, 4),
+                "expected_roi_pct": round(100 * (jp * mult - 1), 1),
+                "legs": [{"player": c["player"], "team": c["team"], "side": c["side"],
+                          "line": c["line"], "market": c["market"], "cal_prob": c["cal_prob"]}
+                         for c in combo],
+            })
+        cand.sort(key=lambda x: -x["expected_roi_pct"])
+        slates.extend(cand[:3])
+    return slates
 
 
 def run() -> Dict[str, Any]:
@@ -117,6 +154,7 @@ def run() -> Dict[str, Any]:
         "n_props_scanned": len(props),
         "n_overconfident_dropped": n_overconf,
         "n_uncalibrated_skipped": n_uncalibrated,
+        "suggested_slates": _build_slates(top, be_by_legs),
         "method_note": "PrizePicks pays flat multipliers, so each leg's break-even is fixed "
                        f"(~{be:.3f} for a 2-pick). A prop is a +EV leg when its CALIBRATED hit "
                        "probability (raw model prob blended toward the family's realized rate) "
