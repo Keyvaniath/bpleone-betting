@@ -48,6 +48,7 @@
   </section>
 
   <div id="guardBanner" style="margin:6px 0 16px;"></div>
+  <div id="recalBanner" style="margin:6px 0 16px;"></div>
   <div class="sumstrip" id="sumStrip"></div>
   <div class="tscroll">
     <div class="calhead">
@@ -70,6 +71,22 @@ const MIS = {
   overconfident: { label: "overconfident", cls: "curated_out", tip: "The model's probability is broken — realized far below predicted. Fake edge at any price." },
   priced_short:  { label: "priced short",  cls: "priced",      tip: "Probability is roughly right but the bet loses at fair odds. Could be +EV at a soft book line." }
 };
+
+// Generator-level recalibration impact (data/recalibration_map.json)
+fetch("data/recalibration_map.json", { cache: "no-cache" }).then(r => r.json()).then(rc => {
+  if (rc.ece_before == null) return;
+  document.getElementById("recalBanner").innerHTML = `
+    <div style="border:1px solid rgba(122,77,255,.32); border-radius:11px; padding:14px 18px; background:linear-gradient(90deg,rgba(255,107,107,.06),rgba(63,134,255,.09)); font-family:'JetBrains Mono',monospace;">
+      <span style="font-size:10.5px;text-transform:uppercase;letter-spacing:.5px;color:#8a93a6;">Generator-level recalibration — making the model honest at the source</span>
+      <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px 14px;margin-top:8px;">
+        <span style="font-size:13px;">raw model ECE <b style="color:#ff8a8a;">${(100*rc.ece_before).toFixed(1)}%</b></span>
+        <span style="color:#8a93a6;">→ isotonic recalibration over ${rc.n_settled} settled bets →</span>
+        <span style="font-size:16px;"><b style="color:#7facff;">${(100*rc.ece_after).toFixed(1)}%</b> ECE</span>
+        <span class="muted" style="font-size:12px;">· Brier ${rc.brier_before}→${rc.brier_after} · ${rc.n_families_transformed} families</span>
+      </div>
+      <div class="muted" style="font-size:11.5px;margin-top:6px;">A displayed 72% now actually hits ~72%. Brier improving (a proper score) confirms real calibration, not flattening. This makes book-vs-model edges honest once the odds feed returns — it does not by itself create edge.</div>
+    </div>`;
+}).catch(() => {});
 
 fetch("data/calibration_map.json", { cache: "no-cache" }).then(r => r.json()).then(d => {
   const fams = d.families || [];
