@@ -48,6 +48,7 @@
     { href: "convergence.html",         label: "🎯 Convergence Picks" },
     { href: "b2b-fatigue.html",         label: "😴 B2B Fatigue" },
     { href: "model-health.html",        label: "🏥 Model Health" },
+    { href: "calibration-map.html",     label: "🎯 Model Calibration" },
     { href: "live-momentum.html",       label: "📈 Live Momentum" },
     { href: "slate-player-pot.html",    label: "🎯 Slate Player Pot" },
     { href: "todays-top-plays.html",    label: "⭐ Today's Top Plays" },

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Model Calibration | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/nav.js"></script>
+<style>
+  .sumstrip { display:flex; gap:10px; margin:14px 0 18px; flex-wrap:wrap; font-family:'JetBrains Mono',monospace; }
+  .sumstrip .s { font-size:12px; padding:8px 13px; border-radius:8px; border:1px solid var(--border,#222a36); }
+  .sumstrip .s b { font-size:15px; }
+  .sumstrip .s .lab { color:var(--muted,#8a93a6); font-size:10px; text-transform:uppercase; letter-spacing:.5px; display:block; }
+  .pos { color:#ff6b6b; } .neg { color:#5fe0a0; } .muted { color:var(--muted,#8a93a6); }
+  .calhead, .calrow { display:grid; grid-template-columns:1fr 56px 78px 78px 80px 78px 104px; gap:10px; align-items:center;
+                      font-family:'JetBrains Mono',monospace; font-size:12.5px; padding:9px 12px; }
+  .calhead { color:var(--muted,#8a93a6); font-size:10.5px; text-transform:uppercase; letter-spacing:.5px; border-bottom:1px solid var(--border,#222a36); }
+  .calrow { border:1px solid var(--border,#222a36); border-radius:8px; margin-bottom:7px; }
+  .calrow:hover { border-color:#3f86ff; }
+  .calrow .fam b { color:var(--text,#e6e9ef); }
+  .calrow .r { text-align:right; }
+  .badge { font-size:9.5px; padding:2px 7px; border-radius:4px; text-align:center; white-space:nowrap; }
+  .badge.curated_out { background:rgba(255,107,107,.15); color:#ff8a8a; }
+  .badge.calibrated { background:rgba(58,209,126,.15); color:#5fe0a0; }
+  .badge.model_only { background:rgba(255,255,255,.05); color:var(--muted,#8a93a6); }
+  .gapbar { display:inline-block; height:4px; border-radius:2px; vertical-align:middle; margin-left:5px; }
+</style>
+</head>
+<body class="page-mlb">
+<header class="topbar">
+  <div class="brand">
+    <a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a>
+    <span class="tagline">by bpleone</span>
+  </div>
+  <nav class="mainnav"><!-- nav.js injects here --></nav>
+  <div class="topbar-actions"><div class="ticker" id="liveTicker">CALIBRATION</div></div>
+</header>
+
+<main class="container">
+  <section class="page-head">
+    <h1>Model Calibration</h1>
+    <p>We publish our calibration. For every market family, this is what the model <b>predicted</b> versus what <b>actually happened</b> across every settled bet — straight from the results ledger, no synthetic data. A positive gap means the model was overconfident. Families proven to lose money are <span class="pos">curated out</span> of the boards entirely; well-sampled families have their displayed probabilities <span class="neg">calibrated</span> toward the realized rate. This is the engine behind the High Confidence Board.</p>
+  </section>
+
+  <div class="sumstrip" id="sumStrip"></div>
+  <div class="calhead">
+    <span>Market family</span><span class="r">n</span><span class="r">model</span><span class="r">actual</span><span class="r">gap</span><span class="r">net u</span><span>status</span>
+  </div>
+  <div id="rows"><p class="muted">Loading calibration map…</p></div>
+  <p class="muted" id="calMeta" style="font-family:'JetBrains Mono',monospace;font-size:11px;margin-top:14px;"></p>
+</main>
+
+<footer class="site-footer">
+  <div class="foot-bot"><span>© 2026 bpleone.com</span><span>Built in SoCal ☀️</span></div>
+</footer>
+
+<script>
+const pct = v => v == null ? "—" : (100*v).toFixed(1) + "%";
+const esc = s => String(s == null ? "" : s).replace(/[&<>]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+const STAT = { curated_out: "curated out", calibrated: "calibrated", model_only: "model est." };
+
+fetch("data/calibration_map.json", { cache: "no-cache" }).then(r => r.json()).then(d => {
+  const fams = d.families || [];
+  const gp = d.overall_overconfidence_gap;
+  document.getElementById("sumStrip").innerHTML = `
+    <span class="s"><span class="lab">model predicts</span><b>${pct(d.overall_avg_model_pred)}</b></span>
+    <span class="s"><span class="lab">actually hits</span><b>${pct(d.overall_realized_hit_rate)}</b></span>
+    <span class="s"><span class="lab">overconfidence</span><b class="${gp>0?'pos':'neg'}">${gp>0?'+':''}${(100*gp).toFixed(1)}pp</b></span>
+    <span class="s"><span class="lab">curated out</span><b class="pos">${d.n_curated_out}</b> <span class="muted">families</span></span>
+    <span class="s"><span class="lab">losses avoided</span><b class="neg">${d.units_protected_by_curation}u</b></span>
+    <span class="s"><span class="lab">calibrated</span><b class="neg">${d.n_calibrated}</b> <span class="muted">+ ${d.n_model_only} model-only</span></span>`;
+
+  const el = document.getElementById("rows");
+  if (!fams.length) { el.innerHTML = '<p class="muted">No settled families yet.</p>'; return; }
+  el.innerHTML = fams.map(f => {
+    const g = f.overconfidence_gap;
+    const gapHtml = g == null ? "—"
+      : `<span class="${g>0?'pos':'neg'}">${g>0?'+':''}${(100*g).toFixed(1)}</span>`
+        + `<span class="gapbar" style="width:${Math.min(40,Math.abs(100*g))}px;background:${g>0?'#ff6b6b':'#5fe0a0'}"></span>`;
+    return `<div class="calrow">
+      <span class="fam"><b>${esc(f.family)}</b></span>
+      <span class="r muted">${f.n_settled}</span>
+      <span class="r">${pct(f.avg_model_pred)}</span>
+      <span class="r"><b>${pct(f.realized_hit_rate)}</b></span>
+      <span class="r">${gapHtml}</span>
+      <span class="r ${f.net_units>=0?'neg':'pos'}">${f.net_units>=0?'+':''}${f.net_units}</span>
+      <span><span class="badge ${f.status}">${STAT[f.status]||f.status}</span></span>
+    </div>`;
+  }).join("");
+  document.getElementById("calMeta").textContent =
+    `${fams.length} market families · sorted by miscalibration · ${(d.generated_at||"").replace("T"," ").slice(0,16)} UTC · gap = model predicted − actual`;
+}).catch(() => { document.getElementById("rows").innerHTML = '<p class="muted">Calibration map unavailable — pipeline may not have run yet.</p>'; });
+</script>
+</body>
+</html>

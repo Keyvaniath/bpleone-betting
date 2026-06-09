@@ -235,6 +235,13 @@ jobs:
         working-directory: python
         run: python verify_calibration.py
 
+      # Publish the model calibration map (predicted vs realized per market family,
+      # the curation + calibration evidence) -> data/calibration_map.json ->
+      # calibration-map.html. Show-your-work transparency from the settled ledger.
+      - name: Build model calibration map
+        working-directory: python
+        run: python calibration_map.py
+
       # Build parlay suggestions from today's qualifying single-leg edges.
       - name: Run parlay engine
         if: github.event.schedule == '0 10 * * *' || github.event_name == 'workflow_dispatch'
