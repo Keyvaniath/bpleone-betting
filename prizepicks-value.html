@@ -81,6 +81,7 @@ fetch("data/prizepicks_value.json", { cache: "no-cache" }).then(r => r.json()).t
   document.getElementById("slates").innerHTML = slates.length ? slates.map(s => `
     <div class="slate">
       <div class="sh"><span>${s.n_legs}-pick · ${s.payout_multiple}× · joint ${(100*s.joint_prob).toFixed(0)}%</span><span class="roi">+${s.expected_roi_pct}% EV</span></div>
+      <div class="sh" style="margin-top:-4px;"><span class="muted">stake ~${s.stake_pct_quarter_kelly}% bankroll · ¼-Kelly</span></div>
       ${s.legs.map(l => `<div class="sl"><span class="sd">${l.side==="UNDER"?"LESS":"MORE"} ${l.line}</span> ${esc(l.player)} <span class="mk">${esc(mkt(l.market))} · ${(100*l.cal_prob).toFixed(0)}%</span></div>`).join("")}
     </div>`).join("") : '<p class="muted" style="font-size:12px;">No multi-leg value on the board right now.</p>';
 

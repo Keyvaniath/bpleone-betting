@@ -73,11 +73,19 @@ def _build_slates(legs: List[Dict[str, Any]], be_by_legs: Dict[str, Any]) -> Lis
             jp = 1.0
             for c in combo:
                 jp *= c["cal_prob"]
+            # Kelly on a flat-payout parlay: f = (p*M - 1)/(M - 1). Recommend
+            # quarter-Kelly, capped at 10% -- model error + any leg correlation
+            # make full Kelly on a parlay reckless.
+            b = mult - 1.0
+            kelly = max(0.0, (jp * mult - 1.0) / b) if b > 0 else 0.0
+            stake_pct = round(min(10.0, 100 * kelly * 0.25), 1)
             cand.append({
                 "n_legs": n,
                 "payout_multiple": round(mult, 2),
                 "joint_prob": round(jp, 4),
                 "expected_roi_pct": round(100 * (jp * mult - 1), 1),
+                "kelly_fraction": round(kelly, 3),
+                "stake_pct_quarter_kelly": stake_pct,
                 "legs": [{"player": c["player"], "team": c["team"], "side": c["side"],
                           "line": c["line"], "market": c["market"], "cal_prob": c["cal_prob"]}
                          for c in combo],
