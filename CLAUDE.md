@@ -148,11 +148,28 @@ with family-average / identity fallbacks. Collapses the raw model's calibration 
 Output `data/recalibration_map.json`; surfaced on calibration-map.html. Runs in the
 pipeline after the ledger build. HONEST FRAMING: this does NOT create ROI (pricing at
 your own fair odds is 0-EV); it makes the model's numbers TRUE and makes book-vs-model
-edges real (not inflated by overconfidence) once the odds feed returns. **Next step
-(when odds return / a focused pass): apply `recalibrate()` in the edge-computation
-path (book_vs_model_team.py + prop edges) so displayed edges use the honest prob, and
-optionally stamp `p_calibrated` on ledger picks for a calibrated-reliability view. Do
-this additively; the display boards already calibrate, so don't double-calibrate.**
+edges real (not inflated by overconfidence) once the odds feed returns.
+
+**Applied upstream (2026-06, "sharpen the model"):** the recalibration engine is now
+folded in at the SOURCE, not just at display:
+1. `prob_calibration.empirical_calibrate` / `calibrate_play` route their family blend
+   through `recalibration.recalibrate_family()`, so EVERY board gets the bucketed
+   isotonic curve (held-out validated) instead of a flat family average.
+2. `game_calibrated_probs.py` → `data/game_calibrated.json`: game-line win probs are
+   too thin in the ledger for outcome calibration, so they're shrunk toward the sharp
+   de-vigged free book line (cap 0.80, ×3). Surfaced on game.html as a "Book-calibrated"
+   sub-line under the win-prob bar. Does NOT mutate today.json (no double-shrink).
+3. `all_picks_tracker.py` stamps an ADDITIVE `p_calibrated` on every ledger pick with a
+   usable raw prob (via `_calibrated_prob` → `recalibrate`), keeping `p_predicted` RAW
+   so the learning loop never trains on its own calibrated output (non-circular). Emits
+   a `calibrated_reliability` block (ECE raw 0.109 → cal 0.027 in-sample over 4,997
+   settled; held-out in recalibration_map.json) into ledger_summary.json. `n_calibrated`
+   picks stamped per run. verify_calibration guards the stamp (additive + non-vacuous).
+
+**Still TODO (when the paid odds feed returns):** apply `recalibrate()` in the PROP
+edge-computation path (book_vs_model already defers to the book for game lines) so
+displayed prop edges use the honest prob. Do it additively; display boards already
+calibrate, so don't double-calibrate.
 
 **`python/verify_calibration.py`** — regression test proving the guards aren't
 vacuous (13 checks: curation, calibration, overconfidence, side/line-aware book-prop

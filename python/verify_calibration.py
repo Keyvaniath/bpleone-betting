@@ -121,6 +121,20 @@ check("calibrate_play(hrr under 4.5, raw 1.0) -> empirical near realized",
       cm.get("method") == "empirical" and cp is not None and cp < 1.0 and abs(cp - cm.get("realized", 0)) < 0.06,
       f"cal={None if cp is None else round(cp, 3)} realized={cm.get('realized')}")
 
+# 13. UPSTREAM LEDGER STAMP -- all_picks_tracker stamps an ADDITIVE p_calibrated
+#     (isotonic-recalibrated) without ever touching the raw p_predicted. An
+#     overconfident family's raw prob is pulled toward its realized rate; a source
+#     with no usable raw prob is NOT stamped (no fabricating a prob where none exists).
+import all_picks_tracker as apt
+cal_oc = apt._calibrated_prob(0.65, "to_hit_hr_yes")
+check("ledger stamp recalibrates an overconfident family down (additive p_calibrated)",
+      cal_oc is not None and cal_oc < 0.40,
+      f"to_hit_hr_yes raw 0.65 -> p_calibrated {cal_oc}")
+check("ledger stamp returns None when there is no usable raw prob (no fabrication)",
+      apt._calibrated_prob(None, "anything") is None and apt._calibrated_prob("x", "anything") is None)
+check("ledger stamp is identity for a family with no settled history",
+      abs((apt._calibrated_prob(0.62, "zzz_unknown_market_xyz") or 0) - 0.62) < 1e-9)
+
 if fails:
     print(f"\nFAILED: {len(fails)} check(s): {fails}")
     sys.exit(1)

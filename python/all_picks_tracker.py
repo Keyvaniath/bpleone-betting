@@ -90,6 +90,30 @@ def _american_to_decimal(a):
     return 1 + 100 / abs(a)
 
 
+def _calibrated_prob(raw, market):
+    """Isotonic recalibration of a RAW model prob -> honest prob for `market`,
+    keyed by the canonical market family (identity if the family has too little
+    settled history).
+
+    ADDITIVE BY CONTRACT: this never replaces p_predicted. The recalibration
+    engine learns its transform from p_predicted -> outcome, so feeding it back
+    its own calibrated output would make the model train on itself and collapse
+    the transform toward the identity. p_calibrated is a derived view for honest
+    display + a calibrated-reliability readout only; p_predicted stays raw so the
+    learning loop keeps an untouched signal to calibrate against."""
+    try:
+        rv = float(raw)
+    except (TypeError, ValueError):
+        return None
+    if not (0.0 < rv < 1.0):
+        return None
+    try:
+        import recalibration as _rc
+        return round(float(_rc.recalibrate(rv, market)), 4)
+    except Exception:
+        return None
+
+
 # MLB book bleeds juice on heavy favorites (model overconfidence): skip MLB picks
 # priced at/below this fair-odds floor. -150 = the threshold Brandon flagged and the
 # data confirms (everything <=-150 is -EV on realized hit rate). Other sports +
@@ -2593,6 +2617,20 @@ def run() -> Dict[str, Any]:
     if len(history) > MAX_PICKS:
         history = history[-MAX_PICKS:]
 
+    # Honest prob at the SOURCE: stamp each pick's calibrated probability ADDITIVELY
+    # from its raw p_predicted (which stays untouched -- see _calibrated_prob). Done
+    # over all of history each run so the field always reflects the current best
+    # transform (it sharpens as more outcomes settle). Picks with no usable raw prob
+    # (pure signal-score sources: consensus, unders, sharp-money-following) get no
+    # stamp. This is the ledger half of "make the model honest upstream".
+    n_calibrated = 0
+    for p in history:
+        cal = _calibrated_prob(p.get("p_predicted") if p.get("p_predicted") is not None
+                               else p.get("prob"), p.get("market"))
+        if cal is not None:
+            p["p_calibrated"] = cal
+            n_calibrated += 1
+
     # Aggregate stats (void is neither settled nor pending -- excluded from both)
     settled = [p for p in history if p.get("settled")]
     pending = [p for p in history if not p.get("settled") and not p.get("voided")]
@@ -2722,6 +2760,46 @@ def run() -> Dict[str, Any]:
     l7_l = sum(1 for p in last_7 if p["result"] == "lost")
     l7_net = round(sum((p.get("payout_units") or 0) for p in last_7), 3)
 
+    # Calibrated-reliability readout: does the honest (recalibrated) prob track the
+    # settled outcomes better than the raw model prob? Both scored against the SAME
+    # outcomes; p_predicted is the raw input, p_calibrated the stamped honest prob.
+    # IN-SAMPLE (the transform is fit on this same ledger) -- the held-out 70/30
+    # validation lives in recalibration_map.json. Surfaced so the track-record page
+    # can show the model is honest at the source, not just at display.
+    calibrated_reliability = None
+    try:
+        import calibration as _cal
+        r_raw, r_cal, r_y = [], [], []
+        for p in settled:
+            if p.get("result") not in ("won", "lost"):
+                continue
+            raw = p.get("p_predicted") if p.get("p_predicted") is not None else p.get("prob")
+            try:
+                rv = float(raw)
+            except (TypeError, ValueError):
+                continue
+            if not (0.0 < rv < 1.0):
+                continue
+            cv = p.get("p_calibrated")
+            r_raw.append(rv)
+            r_cal.append(float(cv) if cv is not None else rv)
+            r_y.append(1 if p["result"] == "won" else 0)
+        if len(r_y) >= 50:
+            calibrated_reliability = {
+                "n": len(r_y),
+                "ece_raw": round(_cal.expected_calibration_error(r_raw, r_y, 10), 4),
+                "ece_calibrated": round(_cal.expected_calibration_error(r_cal, r_y, 10), 4),
+                "brier_raw": round(_cal.brier_score(r_raw, r_y), 5),
+                "brier_calibrated": round(_cal.brier_score(r_cal, r_y), 5),
+                "note": ("In-sample over the settled ledger (the isotonic transform is fit on "
+                         "these same outcomes); held-out 70/30 validation is in "
+                         "recalibration_map.json. p_predicted = raw model prob (kept untouched "
+                         "for the learning loop); p_calibrated = honest prob stamped per pick. "
+                         "Lower ECE/Brier on the calibrated column = the displayed % is truer."),
+            }
+    except Exception:
+        calibrated_reliability = None
+
     payload = {
         "generated_at": now_iso,
         "stake_assumption": "1u flat per pick",
@@ -2733,6 +2811,8 @@ def run() -> Dict[str, Any]:
         "hit_rate": hit_rate,
         "net_units": net_units,
         "roi_pct": roi_pct,
+        "n_calibrated_picks": n_calibrated,
+        "calibrated_reliability": calibrated_reliability,
         "curated": curated,
         "n_added_this_run": n_added,
         "n_newly_settled_this_run": n_newly_settled,
@@ -2773,6 +2853,11 @@ if __name__ == "__main__":
           f"{p.get('n_resettled_this_run', 0)} re-settled (stat revisions corrected)")
     if p['hit_rate'] is not None:
         print(f"  All: {p['wins']}-{p['losses']}-{p['pushes']} ({p['hit_rate']*100:.1f}%) | net {p['net_units']:+.2f}u | ROI {p['roi_pct']:+.1f}%")
+    print(f"  Calibrated prob stamped on {p.get('n_calibrated_picks', 0)} picks (additive; p_predicted kept raw)")
+    cr = p.get("calibrated_reliability")
+    if cr:
+        print(f"  Reliability (n={cr['n']}): ECE raw {cr['ece_raw']} -> calibrated {cr['ece_calibrated']} | "
+              f"Brier {cr['brier_raw']} -> {cr['brier_calibrated']}  (in-sample)")
     print(f"\n  Per-source:")
     for src, b in sorted(p['by_source'].items(), key=lambda kv: -kv[1]['n'])[:15]:
         hr = b.get('hit_rate')
