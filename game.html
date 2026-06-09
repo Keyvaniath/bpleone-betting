@@ -158,7 +158,8 @@ function render(card, live, liveProps) {
   const bp = GAMEBP[card.matchup];
   const bpTier = t => t === "FRESH" ? '<span class="pos">FRESH</span>' : (t === "TIRED" || t === "GASSED") ? `<span class="neg">${t}</span>` : (t || "—");
   const bpHtml = (bp && (bp.away_bp_ip_2d != null || bp.home_bp_ip_2d != null)) ? `
-        <div class="ln"><span class="k">Bullpens (relief IP, L2D)</span><span>${esc(card.away)} ${bpTier(bp.away_bp_tier)} ${bp.away_bp_ip_2d != null ? "(" + bp.away_bp_ip_2d + ")" : ""} · ${esc(card.home)} ${bpTier(bp.home_bp_tier)} ${bp.home_bp_ip_2d != null ? "(" + bp.home_bp_ip_2d + ")" : ""}</span></div>` : "";
+        <div class="ln"><span class="k">Bullpens (relief IP, L2D)</span><span>${esc(card.away)} ${bpTier(bp.away_bp_tier)} ${bp.away_bp_ip_2d != null ? "(" + bp.away_bp_ip_2d + ")" : ""} · ${esc(card.home)} ${bpTier(bp.home_bp_tier)} ${bp.home_bp_ip_2d != null ? "(" + bp.home_bp_ip_2d + ")" : ""}</span></div>
+        ${(bp.compound_alerts || []).map(a => `<div class="ln"><span class="k">⚠️ Compound signal</span><span class="pos" style="font-size:12px;">${esc(a)}</span></div>`).join("")}` : "";
   const edge = (mdl, market) => (mdl != null && market != null) ? ml(market) : "—";
   const recs = (card.recommendations || []);
   const preds = (card.predictions || []);
