@@ -110,6 +110,12 @@ jobs:
         working-directory: python
         run: python clv_tracker.py || true
 
+      # Situational anomaly rollup (steam / compound bullpen / pen mismatch / ump)
+      # re-aggregates off the fresh odds snapshot so steam alerts surface intraday.
+      - name: Anomaly detector (situational rollup refresh)
+        working-directory: python
+        run: python anomaly_detector.py || true
+
       # Sharp-money detection -- detect line moves continuously
       - name: Reverse Line Movement detector
         working-directory: python

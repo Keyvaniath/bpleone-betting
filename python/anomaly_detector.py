@@ -119,6 +119,68 @@ def run() -> Dict[str, Any]:
                         "detail": f"{team_name} has gone OVER team-median total in {over_pct*100:.0f}% of L10 games -- lean OVER",
                     })
 
+    # 4) SITUATIONAL anomalies -- aggregated from the already-computed free feeds
+    #    so the anomalies surface carries every situational edge tonight in one
+    #    place (each is also shown on its own page; this is the rollup).
+
+    # 4a) Steam moves (line_movement.py: open->current de-vigged move beyond threshold)
+    lm = _load(os.path.join(DATA_DIR, "line_movement.json"))
+    for mv in (lm.get("movers") or []):
+        if not mv.get("steam"):
+            continue
+        kinds = "/".join(mv.get("steam_kind") or [])
+        bits = []
+        if mv.get("ml_move_pp"):
+            bits.append(f"ML {mv['ml_move_pp']:+.1f}pp toward {mv.get('ml_money_toward') or '?'}")
+        if mv.get("total_move"):
+            bits.append(f"total {mv['total_move']:+g} ({mv.get('total_money_toward') or '?'})")
+        alerts.append({
+            "sport": (mv.get("sport") or "MLB").upper(),
+            "type": "STEAM_MOVE",
+            "team": mv.get("matchup"),
+            "matchup": mv.get("matchup"),
+            "detail": f"{kinds} steam since open: {'; '.join(bits)} ({mv.get('snapshots')} snapshots)",
+        })
+
+    # 4b) Compound bullpen signals + pen-fatigue mismatches (mlb_bullpen_freshness.py)
+    bpf = _load(os.path.join(DATA_DIR, "mlb_bullpen_freshness.json"))
+    for g in (bpf.get("games") or []):
+        for a in (g.get("compound_alerts") or []):
+            alerts.append({
+                "sport": "MLB",
+                "type": "COMPOUND_BULLPEN",
+                "team": g.get("matchup"),
+                "matchup": g.get("matchup"),
+                "detail": a,
+            })
+        hip, aip = g.get("home_bp_ip_2d"), g.get("away_bp_ip_2d")
+        if hip is not None and aip is not None and abs(hip - aip) >= 5.0:
+            fresh_side = "HOME" if hip < aip else "AWAY"
+            alerts.append({
+                "sport": "MLB",
+                "type": "PEN_MISMATCH",
+                "team": g.get("matchup"),
+                "matchup": g.get("matchup"),
+                "detail": (f"bullpen rest gap: home {hip} vs away {aip} relief IP (L2D) -- "
+                           f"{fresh_side} pen much fresher; late-inning edge to the rested side"),
+            })
+
+    # 4c) Umpire K-zone extremes (matchups.json daily assignment; tendency data only)
+    mu = _load(os.path.join(DATA_DIR, "matchups.json"))
+    for g in (mu.get("games") or []):
+        u = g.get("umpire") or {}
+        k = u.get("ump_k_mult")
+        if k is None or abs(k - 1.0) < 0.05:
+            continue
+        lean = "pitcher-friendly zone (K props up, runs down)" if k > 1 else "hitter-friendly zone (K props down, runs up)"
+        alerts.append({
+            "sport": "MLB",
+            "type": "UMP_K_EXTREME",
+            "team": g.get("matchup"),
+            "matchup": g.get("matchup"),
+            "detail": f"{u.get('ump_name', '?')} K mult x{k} ({u.get('ump_label', '')}) -- {lean}",
+        })
+
     # De-dup (same team can show up in multiple alerts)
     seen_keys = set()
     unique = []
