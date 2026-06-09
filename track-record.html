@@ -157,6 +157,51 @@
     }).catch(() => {});
   </script>
 
+  <!-- By-strategy / source breakdown (which products actually win) -->
+  <section id="byStrategyCard" class="card" style="margin-bottom: 18px; display:none;">
+    <div class="card-head"><span>🎯 Performance by Strategy</span><span class="muted" id="bstMeta">--</span></div>
+    <div style="padding: 14px 18px;">
+      <p class="muted" style="font-size: 12px; margin: 0 0 12px 0;">Realized ROI per pick source. <strong style="color:#58c878;">Featured</strong> = the strategies on the actual bet list (Locks, Top 25, Whale, Sharp, Consensus-hit, POD). Everything else is the experimental firehose, tracked to train the model — shown here, in the open, including the families that bleed.</p>
+      <div id="bstGrid"></div>
+    </div>
+  </section>
+  <script>
+  fetch("data/ledger_summary.json", { cache: "no-cache" })
+    .then(r => r.json())
+    .then(d => {
+      const bsrc = d.by_source || {};
+      const featured = new Set((d.curated && d.curated.sources) || []);
+      const rows = Object.entries(bsrc).map(([k, v]) => ({ source: k, ...v }))
+        .filter(s => ((s.wins || 0) + (s.losses || 0)) >= 5);
+      if (!rows.length) return;
+      const feat = rows.filter(s => featured.has(s.source)).sort((a, b) => (b.roi_pct || 0) - (a.roi_pct || 0));
+      const exp = rows.filter(s => !featured.has(s.source)).sort((a, b) => (a.net_units || 0) - (b.net_units || 0)).slice(0, 6);
+      if (!feat.length && !exp.length) return;
+      document.getElementById("byStrategyCard").style.display = "block";
+      document.getElementById("bstMeta").textContent = `${feat.length} featured · ${exp.length} experimental shown`;
+      const cols = "1fr 80px 50px 64px 74px 88px";
+      const nice = s => s.replace(/_/g, " ");
+      const header = `<div style="display:grid;grid-template-columns:${cols};gap:10px;padding:6px 0;color:var(--muted,#888);font-size:10px;text-transform:uppercase;">
+        <span>Strategy</span><span>Record</span><span>Hit%</span><span>ROI</span><span>Net</span><span>Tag</span></div>`;
+      const render = (s, tag) => {
+        const c = s.roi_pct == null ? "var(--muted,#888)" : s.roi_pct >= 0 ? "#58c878" : "#e35a5a";
+        return `<div style="display:grid;grid-template-columns:${cols};gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-family:'JetBrains Mono',monospace;font-size:12px;">
+          <span><strong>${nice(s.source)}</strong></span>
+          <span>${s.wins || 0}-${s.losses || 0}</span>
+          <span>${s.hit_rate != null ? (s.hit_rate * 100).toFixed(0) + "%" : "—"}</span>
+          <span style="color:${c};">${s.roi_pct != null ? (s.roi_pct >= 0 ? "+" : "") + s.roi_pct + "%" : "—"}</span>
+          <span style="color:${c};">${s.net_units != null ? (s.net_units >= 0 ? "+" : "") + s.net_units + "u" : "—"}</span>
+          <span>${tag}</span></div>`;
+      };
+      const featTag = `<span style="font-size:9px;padding:1px 6px;border-radius:4px;background:rgba(88,200,120,.15);color:#58c878;">FEATURED</span>`;
+      const expTag = `<span style="font-size:9px;padding:1px 6px;border-radius:4px;background:rgba(255,255,255,.06);color:#8a93a6;">experimental</span>`;
+      document.getElementById("bstGrid").innerHTML = header
+        + feat.map(s => render(s, featTag)).join("")
+        + (exp.length ? `<div style="padding:11px 0 4px;color:#8a93a6;font-size:10px;text-transform:uppercase;">Experimental (tracked, not bet) — biggest bleeders</div>` : "")
+        + exp.map(s => render(s, expTag)).join("");
+    }).catch(() => {});
+  </script>
+
   <section class="card" style="margin-bottom: 28px;">
     <div class="card-head"><span>📈 Cumulative P&L</span><span class="muted">last 30 plays</span></div>
     <canvas id="plChart" height="220"></canvas>
