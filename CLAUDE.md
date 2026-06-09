@@ -77,6 +77,32 @@ bpleone-site/
     429). pickem.py still pulls PP-MLB for the model-scored value board; this is the
     broader live menu. DraftKings player props remain NOT free (the one paid-gated
     cross-check). All run in run_props_batch.
+- **Strategy Simulator (2026-06):** `strategy-sim.html` + `python/strategy_sim.py` —
+  interactive replay of the ENTIRE settled ledger (compact columnar deck
+  `data/strategy_sim.json`, regenerated in pipeline + heartbeat). Flat 1u or
+  unit-Kelly (sized off a FIXED 100u bank, non-compounding — compounding an
+  in-sample hit rate prints billion-unit fantasy curves; tried, caught, fixed),
+  raw vs calibrated prob, curation toggles, prob floor, sport + family filters
+  (an explicit family pick overrides the curation drops). Every setup is a
+  shareable URL. "Firehose flat, no filters" reproduces the public track record
+  EXACTLY (it replays the ledger's own payouts). The index "prove it" strip and
+  track-record "Honest Book vs Firehose" chart read the same deck.
+- **Situational rollup (2026-06):** `anomaly_detector.py` aggregates STEAM_MOVE
+  (line_movement movers), COMPOUND_BULLPEN + PEN_MISMATCH (bullpen_freshness),
+  UMP_K_EXTREME (matchups ump assignment) alongside the original residual/streak
+  types → `anomalies.html`. ORDERING MATTERS: it must run AFTER run_props_batch +
+  bullpen_freshness (it does — moved 2026-06-09; also refreshes in the heartbeat).
+- **Bullpen-fatigue bridge (2026-06):** `mlb_bullpen_freshness.py` emits
+  `teams[{team, ip_2d, tier, fatigue_index}]` — the vocab `mlb_innings_4_6/7_9_totals`
+  consume (continuous 0–1, 2 IP→0 / 8→0.5 / 14+→1, NORMAL≈the old 0.5 default).
+  Before this the generators' fatigue adjustment was a silent no-op (vocab
+  mismatch — same bug class as the NHL goalie fix). game.html shows the bullpen /
+  starter-leash / umpire / compound-signal rows on the game card.
+- **WNBA live scoring environment (2026-06):** `wnba_scoring_env.py` — game-level
+  factor from REAL results (team_form_wnba avg PF+PA vs league), Bayesian-shrunk
+  (k=8) + clamped [0.92, 1.08], multiplied into all six WNBA prop generators'
+  pace factor (the static preseason tables stay as the baseline; this is the live
+  trim — and it covers the 2026 expansion teams the static tables don't know).
 - Commit-message convention: end with `Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>`.
 
 ---
