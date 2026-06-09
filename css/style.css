@@ -510,6 +510,18 @@ h3 { font-size: 17px; }
   .play-grid { grid-template-columns: 1fr 1fr; }
   .hero-stats { grid-template-columns: 1fr 1fr; }
   .foot-cols { grid-template-columns: 1fr; }
+  /* Dense data tables: scroll horizontally instead of forcing the whole page to
+     shrink-to-fit (zoom out) on a phone. A bare <table class="data-table"> that
+     isn't wrapped in .table-wrap would otherwise expand the layout viewport to
+     its natural ~720px width, rendering every page tiny on mobile. */
+  .data-table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; white-space: nowrap; }
+  pre { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  /* Collapse INLINE two/three-column grids to a single column on phones. Many
+     sections set `style="display:grid;grid-template-columns:1fr 1fr"` inline,
+     and an inline style beats the class-based collapse rules above -- so without
+     this !important override the second column lands off-screen (~870px wide)
+     and forces the whole page to shrink-to-fit (zoom out) on mobile. */
+  [style*="grid-template-columns"] { grid-template-columns: 1fr !important; }
 }
 
 /* ---- Data staleness banner ---- */
