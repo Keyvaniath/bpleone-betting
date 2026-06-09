@@ -1,42 +1,39 @@
-# EdgeStat Daily Summary — 2026-06-08
+# EdgeStat Daily Summary — 2026-06-09
 
-## 🏥 Model Health: 69.4/100 [OK]
+## 🏥 Model Health: 67.2/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.9/100
+  - 🟢 Calibration Freshness: 100.0/100
   - 🔴 Hit Rate Trend: 54.4/100
   - 🔴 Brier Trend: 29.6/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 88.9/100
+  - 🟡 Data Health: 77.8/100
   - 🔴 Edge Count: 48.6/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.582)
-- **Total games on board:** 104
-- **Strong home favorites:** 1 | **Strong road dogs:** 1
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.583)
+- **Total games on board:** 116
+- **Strong home favorites:** 0 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
-1. **WSN @ SFG 4-leg SGP @ -210** (86/100 ★★★★★)
-2. **HOU @ LAA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-3. **MIL @ OAK 4-leg SGP @ -184** (80/100 ★★★★★)
-4. **BOS @ TBR 4-leg SGP @ -171** (78/100 ★★★★★)
-5. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
+1. **HOU @ LAA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+2. **WSN @ SFG YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+3. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
+4. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
+5. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
 - [STRONG] **[MLB]** HOU @ LAA HOU_ML -- 66% / +23.0% (score 2.5)
-- [STRONG] **[MLB]** SEA @ BAL SEA_ML -- 67% / +22.1% (score 2.5)
 
 ## 📡 Sharp Action (Line Movement)
+- [MODERATE] **CIN @ SDP** under_7.5: 51.22% → 55.56% (+4.3pp)
 - [MODERATE] **MIL @ OAK** under_11.5: 50.0% → 53.49% (+3.5pp)
-
-## 📉 Strong UNDER Signals
-- [STRONG 5.0] **PHI @ TOR** model 6.73 vs market 7.5
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **128-22** (85.3% hit rate)
 - Net units: **+4.47u** | ROI: **+48.1%**
 - Last 7d: 57-11 (83.8%) | net +1.92u
 
-**Today's 7 Locks:**
+**Today's 9 Locks:**
 - [MLB-PP] **Rodolfo Durán** PP_batter_hits_under_1.5 · p=87% edge=+50.4% qK=0.062u
 - [MLB-PP] **Alex Bregman** PP_batter_hrr_under_3.5 · p=86% edge=+49.6% qK=0.062u
 - [MLB-PP] **Drew Gilbert** PP_batter_hrr_under_3.5 · p=85% edge=+48.2% qK=0.062u
@@ -44,14 +41,16 @@
 - [MLB-PP] **Jackson Merrill** PP_batter_hrr_under_3.5 · p=85% edge=+47.6% qK=0.062u
 - [MLB-PP] **Luis Rengifo** PP_batter_hrr_under_3.5 · p=86% edge=+49.6% qK=0.062u
 - [MLB-PP] **Caleb Durbin** PP_batter_hrr_under_3.5 · p=86% edge=+48.7% qK=0.062u
+- [MLB-PP] **Edouard Julien** PP_batter_hrr_under_3.5 · p=86% edge=+48.6% qK=0.062u
+- [MLB-PP] **Geraldo Perdomo** PP_batter_hrr_under_3.5 · p=85% edge=+48.3% qK=0.062u
 
 ## 🎰 Top Balanced 2-Leg Parlays (40-65% joint)
-- [MLB-PP] Rodolfo Durán PP_batter_hits_under + [MLB] HOU @ LAA HOU_ML
-  Joint: 57% | Fair: 222 | Edge: +85.0%
 - [MLB-PP] Luis Rengifo PP_batter_hrr_under_ + [MLB] HOU @ LAA HOU_ML
   Joint: 57% | Fair: 222 | Edge: +84.0%
-- [MLB-PP] Rodolfo Durán PP_batter_hits_under + [MLB] SEA @ BAL SEA_ML
-  Joint: 58% | Fair: 217 | Edge: +83.7%
+- [MLB-PP] Drew Gilbert PP_batter_hrr_under_ + [MLB] HOU @ LAA HOU_ML
+  Joint: 57% | Fair: 222 | Edge: +83.3%
+- [MLB-PP] Caleb Durbin PP_batter_hrr_under_ + [MLB] HOU @ LAA HOU_ML
+  Joint: 57% | Fair: 222 | Edge: +82.9%
 
 ## 🎮 Player Play of the Day (cross-sport)
 - **[LOL]** Inspired UNDER 3.5 Kills | MED conviction · model 61.7% fair -161
@@ -61,25 +60,17 @@
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
 ## 🔥/❄️ Heat / Cold Signals
-- Hot teams: **8** | Cold teams: **2** | Over-heavy: 0 | Under-heavy: 3
+- Hot teams: **6** | Cold teams: **4** | Over-heavy: 0 | Under-heavy: 4
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (5)
-- RESIDUAL_DIVERGENCE: **5**
-  - New York Knicks (NBA): New York Knicks OUTPERFORMING expected margin by 10.9pts in recent games -- model bias may persist
-  - San Antonio Spurs (NBA): San Antonio Spurs OUTPERFORMING expected margin by 9.2pts in recent games -- model bias may persist
-  - Washington Mystics (WNBA): Washington Mystics UNDERPERFORMING expected margin by 7.5pts in recent games -- model bias may persist
-  - Indiana Fever (WNBA): Indiana Fever OUTPERFORMING expected margin by 9.5pts in recent games -- model bias may persist
-  - Las Vegas Aces (WNBA): Las Vegas Aces OUTPERFORMING expected margin by 8.8pts in recent games -- model bias may persist
-
-## 💰 Today's Portfolio (9 picks)
-- Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$-8.32**
-  - #1 [SGP] $50 on WSN @ SFG 4-leg SGP @ -210 (P=68%)
-  - #2 [SGP] $50 on MIL @ OAK 4-leg SGP @ -184 (P=65%)
-  - #3 [NRFI] $50 on HOU @ LAA YRFI (1st-inning OVER 0.5) (P=71%)
-  - #4 [SGP] $35 on BOS @ TBR 4-leg SGP @ -171 (P=63%)
-  - #5 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
+## 💰 Today's Portfolio (10 picks)
+- Total stake: **$305.0** (30.5% of $1000 bankroll)
+- Expected EV: **$-22.63**
+  - #1 [NRFI] $50 on HOU @ LAA YRFI (1st-inning OVER 0.5) (P=71%)
+  - #2 [NRFI] $50 on WSN @ SFG YRFI (1st-inning OVER 0.5) (P=71%)
+  - #3 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
+  - #4 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
+  - #5 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
 
 ## 🎯 Convergence Picks (14 stacked games)
 - ELITE: **4** · HIGH: 0 · MED: 10
@@ -89,15 +80,19 @@
   - [ELITE] Indiana Fever @ Washington Mystics : 4 signals (PREGAME, ANOMALY, ANOMALY, ATS)
   - [MED] New York Liberty @ Connecticut Sun : 2 signals (HEAT_COLD, HEAT_COLD)
 
-## ⚾ Top MLB Pitcher K Plays (6)
-- **Will Warren** OVER 4.5 K (75%) fair -295
-- **Miles Mikolas** OVER 4.5 K (71%) fair -246
-- **Cristopher Sánchez** OVER 6.5 K (69%) fair -219
+## ⚾ Top MLB Pitcher K Plays (2)
+- **Richard Lovelady** OVER 4.5 K (68%) fair -212
 - **Kyle Harrison** OVER 6.5 K (67%) fair -202
-- **Emerson Hancock** OVER 4.5 K (66%) fair -195
 
-## 🏀 NBA Player Heat (0 HOT / 1 COLD)
-  - ❄️ **De'Aaron Fox** (SA): L5 11.2 vs season 16.6 [PTS -5.4] -- FADE OVER props
+## 🏀 NBA Player Heat (18 HOT / 21 COLD)
+  - 🔥 **Jeremiah Fears** (NO): L5 31.8/5.8/6.0 vs season 16.9/3.2/4.0 [PTS +14.9, REB +2.6, AST +2.0]
+  - 🔥 **AJ Green** (MIL): L5 18.6/4.2/1.8 vs season 11.3/3.4/1.9 [PTS +7.3]
+  - 🔥 **Dillon Brooks** (PHX): L5 26.0/6.0/1.8 vs season 19.4/4.2/1.9 [PTS +6.6]
+  - 🔥 **Taurean Prince** (MIL): L5 16.4/6.2/3.2 vs season 9.8/3.5/1.9 [PTS +6.6, REB +2.7]
+  - 🔥 **Paolo Banchero** (ORL): L5 28.6/9.6/6.4 vs season 22.6/8.2/5.9 [PTS +6.0]
+  - ❄️ **Damian Lillard** (POR): L5 7.0 vs season 19.1 [PTS -12.1] -- FADE OVER props
+  - ❄️ **Nickeil Alexander-Walker** (ATL): L5 13.0 vs season 21.3 [PTS -8.3] -- FADE OVER props
+  - ❄️ **Caleb Love** (POR): L5 2.6 vs season 10.8 [PTS -8.2, REB -2.1, AST -2.4] -- FADE OVER props
 
 ## 🥊 UFC Fight Matchups (UFC Freedom 250: Topuria vs. Gaethje)
   - [LEAN] **Josh Hokit** (9-0-0) vs Derrick Lewis -- fair -141
@@ -116,16 +111,16 @@
   - ❄️ **Jordan Spieth** (USA): Sunday +4.0 vs tourney avg
   - ❄️ **Andrew Novak** (USA): Sunday +4.0 vs tourney avg
 
-## 🔥 MLB Batter Heat (32 HOT / 38 COLD)
-  - 🔥 **Jung Hoo Lee** (SF): L14 .491 / season .323 (+168pts)
-  - 🔥 **Trent Grisham** (NYY): L14 .370 / season .225 (+145pts)
+## 🔥 MLB Batter Heat (33 HOT / 35 COLD)
+  - 🔥 **Jung Hoo Lee** (SF): L14 .545 / season .333 (+212pts)
+  - 🔥 **Tyler Soderstrom** (ATH): L14 .404 / season .237 (+167pts)
+  - 🔥 **Trent Grisham** (NYY): L14 .375 / season .227 (+148pts)
   - 🔥 **Tristan Peters** (CWS): L14 .439 / season .307 (+132pts)
-  - 🔥 **Keibert Ruiz** (WSH): L14 .400 / season .276 (+124pts)
-  - 🔥 **Tyler Soderstrom** (ATH): L14 .348 / season .228 (+120pts)
+  - 🔥 **Heriberto Hernández** (MIA): L14 .325 / season .219 (+106pts)
   - ❄️ **Michael Conforto** (CHC): L14 .100 / season .250 (-150pts) -- FADE props
   - ❄️ **Ildemaro Vargas** (AZ): L14 .132 / season .280 (-148pts) -- FADE props
+  - ❄️ **Jeff McNeil** (ATH): L14 .087 / season .234 (-147pts) -- FADE props
   - ❄️ **Austin Martin** (MIN): L14 .113 / season .247 (-134pts) -- FADE props
-  - ❄️ **Nick Fortes** (TB): L14 .111 / season .240 (-129pts) -- FADE props
   - ❄️ **Nolan Gorman** (STL): L14 .071 / season .199 (-128pts) -- FADE props
 
 ## 📈 Streak Regression Alerts (4)
@@ -142,14 +137,13 @@
   - ⚠️ batter_rbis (Brier Δ -0.0052)
 
 ## 🧠 Training Convergence
-- ELITE: **3** · HEALTHY: 3 · OK: 1 · DEGRADED: **1**
-  - ⚠️ **batter_doubles**: DIVERGENT - consistent same-sign moves (structural issue) (cf=0.9243)
+- ELITE: **4** · HEALTHY: 3 · OK: 1 · DEGRADED: **0**
 
 ## 🤖 Self-Training Status
-- **NBA**: n=6 games · hit rate 50.0% · bias +5.1pp
-- **NHL**: n=7 games · hit rate 42.9% · bias -8.6pp
-- **WNBA**: n=36 games · hit rate 52.8% · bias -7.1pp [calibration applied]
+- **NBA**: n=6 games · hit rate 33.3% · bias +16.4pp
+- **NHL**: n=6 games · hit rate 33.3% · bias -11.4pp
+- **WNBA**: n=37 games · hit rate 59.5% · bias -5.7pp [calibration applied]
 - **MLS**: n=15 games · hit rate 53.3% · bias -4.8pp [calibration applied]
-- **EPL**: n=13 games · hit rate 38.5% · bias -12.6pp
-- **MLB**: n=186 games · hit rate 54.3% · bias +1.0pp
-- **CWS**: n=23 games · hit rate 73.9% · bias -4.4pp [calibration applied]
+- **EPL**: n=12 games · hit rate 25.0% · bias -4.7pp
+- **MLB**: n=181 games · hit rate 55.2% · bias +0.7pp
+- **CWS**: n=19 games · hit rate 79.0% · bias +0.0pp
