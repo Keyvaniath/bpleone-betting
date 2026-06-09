@@ -28,6 +28,8 @@
   .slate .roi { color:#5fe0a0; font-weight:700; font-size:14px; }
   .slate .sl { font-size:12px; padding:3px 0; border-top:1px solid rgba(255,255,255,.05); }
   .slate .sl .sd { color:#7facff; font-weight:700; } .slate .sl .mk { color:var(--muted,#8a93a6); }
+  .tscroll { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+  .pphead, .pprow { min-width:540px; }
 </style>
 </head>
 <body class="page-mlb">
@@ -52,10 +54,12 @@
   <div id="slates"><p class="muted" style="font-size:12px;">—</p></div>
 
   <h2 class="sech" style="margin-top:20px;">All calibrated +EV legs</h2>
-  <div class="pphead">
-    <span>Player</span><span>Prop</span><span class="r">calibrated hit</span><span class="r">break-even</span><span class="r">edge</span>
+  <div class="tscroll">
+    <div class="pphead">
+      <span>Player</span><span>Prop</span><span class="r">calibrated hit</span><span class="r">break-even</span><span class="r">edge</span>
+    </div>
+    <div id="rows"><p class="muted">Loading PrizePicks value board…</p></div>
   </div>
-  <div id="rows"><p class="muted">Loading PrizePicks value board…</p></div>
   <p class="muted" id="ppMeta" style="font-family:'JetBrains Mono',monospace;font-size:11px;margin-top:14px;"></p>
 </main>
 

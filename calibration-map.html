@@ -26,6 +26,8 @@
   .badge.model_only { background:rgba(255,255,255,.05); color:var(--muted,#8a93a6); }
   .badge { cursor:help; }
   .gapbar { display:inline-block; height:4px; border-radius:2px; vertical-align:middle; margin-left:5px; }
+  .tscroll { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+  .calhead, .calrow { min-width:600px; }
 </style>
 </head>
 <body class="page-mlb">
@@ -47,10 +49,12 @@
 
   <div id="guardBanner" style="margin:6px 0 16px;"></div>
   <div class="sumstrip" id="sumStrip"></div>
-  <div class="calhead">
-    <span>Market family</span><span class="r">n</span><span class="r">model</span><span class="r">actual</span><span class="r">gap</span><span class="r">net u</span><span>status</span>
+  <div class="tscroll">
+    <div class="calhead">
+      <span>Market family</span><span class="r">n</span><span class="r">model</span><span class="r">actual</span><span class="r">gap</span><span class="r">net u</span><span>status</span>
+    </div>
+    <div id="rows"><p class="muted">Loading calibration map…</p></div>
   </div>
-  <div id="rows"><p class="muted">Loading calibration map…</p></div>
   <p class="muted" id="calMeta" style="font-family:'JetBrains Mono',monospace;font-size:11px;margin-top:14px;"></p>
 </main>
 
