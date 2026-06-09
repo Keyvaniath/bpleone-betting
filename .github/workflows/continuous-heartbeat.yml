@@ -78,6 +78,15 @@ jobs:
         working-directory: python
         run: python confluence_top_5.py || true
 
+      # FREE odds refresh (ESPN/DraftKings, no key) -- every heartbeat appends a
+      # timestamped snapshot to data/odds_history.json so line-movement / steam and
+      # Closing Line Value have real open->close resolution (12 snapshots/day).
+      - name: Refresh free ESPN odds + snapshot history
+        timeout-minutes: 1
+        continue-on-error: true
+        working-directory: python
+        run: python espn_odds.py || true
+
       # Sharp-money detection -- detect line moves continuously
       - name: Reverse Line Movement detector
         working-directory: python

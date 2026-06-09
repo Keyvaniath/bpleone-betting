@@ -26,6 +26,12 @@ from typing import Any, Dict, List, Optional
 
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 OUT = os.path.join(DATA_DIR, "espn_odds.json")
+HISTORY = os.path.join(DATA_DIR, "odds_history.json")
+
+# Sports pulled by default each run (off-season leagues just return 0 games).
+DEFAULT_SPORTS = ["mlb", "nba", "nhl", "wnba"]
+MAX_SNAPSHOTS = 80      # per game-day, bounds the history file
+HISTORY_KEEP_DAYS = 8   # prune game-days older than this
 
 # ESPN scoreboard path per sport (free, no key). Extensible -- add a row to cover
 # another league's odds.
@@ -128,19 +134,65 @@ def fetch_sport(sport: str) -> List[Dict[str, Any]]:
     return out
 
 
+def _load_json(p) -> Dict[str, Any]:
+    if not os.path.exists(p):
+        return {}
+    try:
+        with open(p, encoding="utf-8") as f:
+            return json.load(f)
+    except Exception:
+        return {}
+
+
+def _update_history(priced: List[Dict[str, Any]], now: str) -> int:
+    """Append a timestamped odds snapshot per game-day (only when a line moved),
+    pruning game-days older than HISTORY_KEEP_DAYS. This is the open->close trail
+    that powers line-movement / steam detection and Closing Line Value."""
+    today = now[:10]
+    hist = _load_json(HISTORY).get("history") or {}
+    for g in priced:
+        gd = (g.get("commence_time") or now)[:10]
+        key = f"{g['sport']}|{g['matchup']}|{gd}"
+        m = g["market"]
+        snap = {"ts": now, "ml_home": m["ml_home"], "ml_away": m["ml_away"],
+                "total": m["total"], "over": m["over_price"], "under": m["under_price"]}
+        seq = hist.get(key) or []
+        last = seq[-1] if seq else None
+        if (last is None) or any(last.get(k) != snap.get(k) for k in ("ml_home", "ml_away", "total", "over", "under")):
+            seq.append(snap)
+        hist[key] = seq[-MAX_SNAPSHOTS:]
+
+    def _too_old(k: str) -> bool:
+        try:
+            d = k.rsplit("|", 1)[1]
+            return (dt.date.fromisoformat(today) - dt.date.fromisoformat(d)).days > HISTORY_KEEP_DAYS
+        except Exception:
+            return False
+    hist = {k: v for k, v in hist.items() if not _too_old(k)}
+    with open(HISTORY, "w", encoding="utf-8") as f:
+        json.dump({"generated_at": now, "n_games_tracked": len(hist), "history": hist}, f, indent=2)
+    return len(hist)
+
+
 def run(sports: Optional[List[str]] = None) -> Dict[str, Any]:
-    sports = sports or ["mlb"]
+    sports = sports or DEFAULT_SPORTS
+    now = dt.datetime.utcnow().isoformat(timespec="seconds")
     games: List[Dict[str, Any]] = []
     for s in sports:
         games.extend(fetch_sport(s))
     priced = [g for g in games if g["market"]["ml_home"] is not None and g["market"]["ml_away"] is not None]
-    by_matchup = {g["matchup"]: g["market"] for g in priced}
+    n_tracked = _update_history(priced, now)
+    # by_matchup is MLB-only so book_vs_model_team (MLB game lines) joins cleanly;
+    # other sports live in the full games list + the history trail.
+    by_matchup = {g["matchup"]: g["market"] for g in priced if g["sport"] == "MLB"}
     result = {
-        "generated_at": dt.datetime.utcnow().isoformat(timespec="seconds"),
+        "generated_at": now,
         "source": "espn-scoreboard (free, no key)",
         "sports": [s.upper() for s in sports],
         "n_games": len(games),
         "n_priced": len(priced),
+        "n_games_tracked_history": n_tracked,
+        "by_sport": {s.upper(): sum(1 for g in priced if g["sport"] == s.upper()) for s in sports},
         "by_matchup": by_matchup,
         "games": games,
     }
@@ -151,12 +203,12 @@ def run(sports: Optional[List[str]] = None) -> Dict[str, Any]:
 
 
 if __name__ == "__main__":
-    args = [a.lower() for a in sys.argv[1:]] or ["mlb"]
+    args = [a.lower() for a in sys.argv[1:]] or DEFAULT_SPORTS
     o = run(args)
     print(f"[espn-odds] {o['n_priced']}/{o['n_games']} games priced "
-          f"({', '.join(o['sports'])}) -> {OUT}")
-    for g in o["games"][:8]:
+          f"({o['by_sport']}) -> {OUT}")
+    for g in o["games"]:
         m = g["market"]
-        if m["ml_home"] is not None:
-            print(f"    {g['matchup']:12s} {g['sport']:4s} away {m['ml_away']:+d} / home {m['ml_home']:+d} "
-                  f"| O/U {m['total']} ({m['over_price']:+d}/{m['under_price']:+d}) [{m['book']}]")
+        if m["ml_home"] is not None and m["ml_away"] is not None:
+            ou = f"O/U {m['total']}" if m["total"] is not None else "O/U --"
+            print(f"    {g['matchup']:14s} {g['sport']:4s} away {m['ml_away']:+d} / home {m['ml_home']:+d} | {ou} [{m['book']}]")
