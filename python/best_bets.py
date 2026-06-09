@@ -40,6 +40,8 @@ import json
 import datetime as dt
 from typing import Any, Dict, List, Optional
 
+import prob_calibration as pc   # side/line-aware overconfidence guard
+
 
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 PROPS_PATH = os.path.join(DATA_DIR, "props.json")
@@ -211,10 +213,16 @@ def run() -> Dict[str, Any]:
     matchups = _load(MATCHUPS_PATH)
 
     candidates: List[Dict[str, Any]] = []
+    n_overconf_dropped = 0   # raw props the ledger proves are overconfident (fake edge)
 
     # DK props
     for p in (_load(PROPS_PATH).get("top_edges") or []):
         if not p.get("play") or p.get("play") == "SKIP":
+            continue
+        # Never publish a prop whose family the ledger proves is overconfident on
+        # this side (model probability is broken -> the edge is fake at any line).
+        if pc.is_overconfident_play(p.get("market"), p.get("play"), p.get("line")):
+            n_overconf_dropped += 1
             continue
         sc = score_prop(p, bd, wx, fatigue, matchups)
         candidates.append({
@@ -237,6 +245,9 @@ def run() -> Dict[str, Any]:
         prob = max(p.get("model_prob_over", 0) or 0, p.get("model_prob_under", 0) or 0)
         play = "OVER" if (p.get("model_prob_over") or 0) >= (p.get("model_prob_under") or 0) else "UNDER"
         if prob < 0.55:
+            continue
+        if pc.is_overconfident_play(p.get("market"), play, p.get("pp_line")):
+            n_overconf_dropped += 1
             continue
         pp_shim = {**p, "line": p.get("pp_line"), "play": play, "best_edge_pct": p.get("edge_pct")}
         sc = score_prop(pp_shim, bd, wx, fatigue, matchups)
@@ -616,6 +627,7 @@ def run() -> Dict[str, Any]:
         "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
         "n_bets": len(top),
         "total_candidates": len(candidates),
+        "n_overconfident_curated": n_overconf_dropped,
         "by_source": {s: sum(1 for c in top if c.get("source") == s)
                        for s in ("DK", "PP", "NRFI", "SGP", "GOLF", "NBA", "NHL", "KBO", "LOL", "CS",
                                   "WNBA", "MLS", "EPL", "UCL", "NFL", "NCAAF", "NCAAB", "CWS")},

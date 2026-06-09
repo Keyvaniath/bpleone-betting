@@ -86,6 +86,15 @@ check("overconfident families subset of proven-negative", oc.issubset(neg) and 0
 check("mlb_tb_1.5_over flagged overconfident", pc.is_overconfident("mlb_tb_1.5_over"))
 check("k_1plus_yes NOT overconfident (priced-short, prob ~right)", not pc.is_overconfident("k_1plus_yes"))
 
+# 10. SIDE/LINE-AWARE guard for raw book props (best_bets): reconstructs the
+#     ledger family from (market, play, line). A broken OVER is flagged; the
+#     profitable UNDER side and well-calibrated lines are not.
+check("book prop total_bases OVER 1.5 flagged", pc.is_overconfident_play("batter_total_bases", "OVER", 1.5))
+check("book prop total_bases UNDER 1.5 NOT flagged (profitable side)",
+      not pc.is_overconfident_play("batter_total_bases", "UNDER", 1.5))
+check("book prop home_runs OVER 0.5 NOT flagged (priced-short, prob ok)",
+      not pc.is_overconfident_play("batter_home_runs", "OVER", 0.5))
+
 if fails:
     print(f"\nFAILED: {len(fails)} check(s): {fails}")
     sys.exit(1)

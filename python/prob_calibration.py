@@ -226,6 +226,58 @@ def is_overconfident(market) -> bool:
     return canon_market_family(market) in oc or market_family(market) in oc
 
 
+# Book-prop vocabulary (DraftKings / PrizePicks) -> the ledger's canonical stat
+# stems, so a raw prop's (market, play, line) can be reconstructed into a ledger
+# family key (e.g. batter_total_bases / OVER / 1.5 -> mlb_tb_1.5_over) WITHOUT
+# touching market_taxonomy (zero risk to the curated todays_top_plays pipeline).
+_STAT_SYNONYM = {
+    "total_bases": "tb", "totalbases": "tb",
+    "home_runs": "hr", "homeruns": "hr", "hr": "hr",
+    "rbis": "rbi", "rbi": "rbi",
+    "runs": "run", "runs_scored": "run",
+    "hits": "hit",
+    "hrr": "hrr",
+    "strikeouts": "bk", "pitcher_strikeouts": "bk", "ks": "bk",
+    "singles": "1b", "doubles": "2b",
+}
+
+
+def _side_token(play) -> str:
+    p = str(play or "").strip().lower()
+    if p in ("over", "o", "yes", "more"):
+        return "over"
+    if p in ("under", "u", "no", "less"):
+        return "under"
+    return ""
+
+
+def is_overconfident_play(market, play=None, line=None) -> bool:
+    """Side- and line-aware overconfidence test for RAW book props whose market
+    names (batter_total_bases, batter_rbis, ...) don't carry the ledger's line/
+    side. Reconstructs the canonical family key from (market, play, line) and
+    checks it against overconfident_families(). Only the genuinely-overconfident
+    OVER families are flagged; the profitable UNDER side is never dropped.
+    """
+    oc = overconfident_families()
+    if not oc:
+        return False
+    # fast path: market name already canonicalizes (carries its own side)
+    if is_overconfident(market):
+        return True
+    side = _side_token(play)
+    if not side or line is None:
+        return False
+    m = re.sub(r"^(batter|pitcher|player)_", "", str(market or "").lower())
+    stat = _STAT_SYNONYM.get(m, m)
+    try:
+        lf = float(line)
+    except (TypeError, ValueError):
+        return False
+    ls = str(int(lf)) if lf == int(lf) else str(lf)
+    key = f"mlb_{stat}_{ls}_{side}"
+    return key in oc
+
+
 def reset_caches() -> None:
     """Drop memoized ledger reads (after the ledger is regenerated in-process)."""
     global _STATS_CACHE, _NEG_CACHE, _OVERCONF_CACHE
