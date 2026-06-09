@@ -118,8 +118,25 @@ The single most important subsystem. The model's raw probabilities are
 - DO NOT touch `market_taxonomy.py` to fix vocab — prob_calibration reconstructs
   family keys itself (zero risk to the profitable todays_top_plays pipeline).
 
+**`python/recalibration.py`** — GENERATOR-LEVEL recalibration (added 2026-06). Learns
+a per-family MONOTONIC isotonic transform (model-predicted prob → realized rate) from
+the settled ledger: prediction-bucketed + Bayesian-shrunk + pool-adjacent-violators,
+with family-average / identity fallbacks. Collapses the raw model's calibration error
+**ECE 11.2% → 2.7%** (Brier 0.235 → 0.203; held-out fit-on-70%/test-on-30%: ECE
+12.6% → 5.4%, so it generalizes). `recalibrate(raw, market)` is the public transform.
+Output `data/recalibration_map.json`; surfaced on calibration-map.html. Runs in the
+pipeline after the ledger build. HONEST FRAMING: this does NOT create ROI (pricing at
+your own fair odds is 0-EV); it makes the model's numbers TRUE and makes book-vs-model
+edges real (not inflated by overconfidence) once the odds feed returns. **Next step
+(when odds return / a focused pass): apply `recalibrate()` in the edge-computation
+path (book_vs_model_team.py + prop edges) so displayed edges use the honest prob, and
+optionally stamp `p_calibrated` on ledger picks for a calibrated-reliability view. Do
+this additively; the display boards already calibrate, so don't double-calibrate.**
+
 **`python/verify_calibration.py`** — regression test proving the guards aren't
-vacuous. Runs in the daily pipeline; fails the build if a guard regresses.
+vacuous (13 checks: curation, calibration, overconfidence, side/line-aware book-prop
+guard, AND recalibration ECE/Brier-improve + monotonic + identity). Runs in the daily
+pipeline; fails the build if a guard regresses.
 
 **Boards built on the engine (all curated + calibrated):**
 - `high_confidence_board.py` → `high-confidence.html` — tiered model-conviction board.
