@@ -74,6 +74,18 @@ check(f"live board has 0 proven-negative plays (board n={len(board)})", len(viol
 # 7. GUARD IS REAL -- the curation set is non-empty (something is actually guarded).
 check("curation set non-empty", len(neg) > 0, f"{len(neg)} families")
 
+# 8. OVERCONFIDENCE is a strict subset of proven-negative (a broken-prob family
+#    must also be a money-loser) and narrower than it.
+oc = pc.overconfident_families()
+check("overconfident families subset of proven-negative", oc.issubset(neg) and 0 < len(oc) < len(neg),
+      f"{len(oc)} overconfident of {len(neg)} curated")
+
+# 9. The over/under distinction holds: a wildly overconfident OVER is flagged;
+#    a family whose PROBABILITY is right but is priced short is NOT (could be +EV
+#    at a soft line -- must survive for book-edge boards).
+check("mlb_tb_1.5_over flagged overconfident", pc.is_overconfident("mlb_tb_1.5_over"))
+check("k_1plus_yes NOT overconfident (priced-short, prob ~right)", not pc.is_overconfident("k_1plus_yes"))
+
 if fails:
     print(f"\nFAILED: {len(fails)} check(s): {fails}")
     sys.exit(1)

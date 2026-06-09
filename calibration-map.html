@@ -21,8 +21,10 @@
   .calrow .r { text-align:right; }
   .badge { font-size:9.5px; padding:2px 7px; border-radius:4px; text-align:center; white-space:nowrap; }
   .badge.curated_out { background:rgba(255,107,107,.15); color:#ff8a8a; }
+  .badge.priced { background:rgba(212,160,74,.15); color:#e8b54e; }
   .badge.calibrated { background:rgba(58,209,126,.15); color:#5fe0a0; }
   .badge.model_only { background:rgba(255,255,255,.05); color:var(--muted,#8a93a6); }
+  .badge { cursor:help; }
   .gapbar { display:inline-block; height:4px; border-radius:2px; vertical-align:middle; margin-left:5px; }
 </style>
 </head>
@@ -40,6 +42,7 @@
   <section class="page-head">
     <h1>Model Calibration</h1>
     <p>We publish our calibration. For every market family, this is what the model <b>predicted</b> versus what <b>actually happened</b> across every settled bet — straight from the results ledger, no synthetic data. A positive gap means the model was overconfident. Families proven to lose money are <span class="pos">curated out</span> of the boards entirely; well-sampled families have their displayed probabilities <span class="neg">calibrated</span> toward the realized rate. This is the engine behind the High Confidence Board.</p>
+    <p class="muted" style="font-size:12.5px;">Curated-out families split two ways: <span class="pos">overconfident</span> — the model's probability itself is broken (realized far below predicted), so the edge is fake at <i>any</i> price; and <span style="color:#e8b54e;">priced-short</span> — the probability is roughly right but the bet loses at fair odds (it could still be +EV at a soft book line). The distinction is why we curate by ROI, not hit rate.</p>
   </section>
 
   <div class="sumstrip" id="sumStrip"></div>
@@ -58,6 +61,10 @@
 const pct = v => v == null ? "—" : (100*v).toFixed(1) + "%";
 const esc = s => String(s == null ? "" : s).replace(/[&<>]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
 const STAT = { curated_out: "curated out", calibrated: "calibrated", model_only: "model est." };
+const MIS = {
+  overconfident: { label: "overconfident", cls: "curated_out", tip: "The model's probability is broken — realized far below predicted. Fake edge at any price." },
+  priced_short:  { label: "priced short",  cls: "priced",      tip: "Probability is roughly right but the bet loses at fair odds. Could be +EV at a soft book line." }
+};
 
 fetch("data/calibration_map.json", { cache: "no-cache" }).then(r => r.json()).then(d => {
   const fams = d.families || [];
@@ -66,12 +73,19 @@ fetch("data/calibration_map.json", { cache: "no-cache" }).then(r => r.json()).th
     <span class="s"><span class="lab">model predicts</span><b>${pct(d.overall_avg_model_pred)}</b></span>
     <span class="s"><span class="lab">actually hits</span><b>${pct(d.overall_realized_hit_rate)}</b></span>
     <span class="s"><span class="lab">overconfidence</span><b class="${gp>0?'pos':'neg'}">${gp>0?'+':''}${(100*gp).toFixed(1)}pp</b></span>
-    <span class="s"><span class="lab">curated out</span><b class="pos">${d.n_curated_out}</b> <span class="muted">families</span></span>
+    <span class="s"><span class="lab">curated out</span><b class="pos">${d.n_curated_out}</b> <span class="muted">(${d.n_overconfident||0} broken prob)</span></span>
     <span class="s"><span class="lab">losses avoided</span><b class="neg">${d.units_protected_by_curation}u</b></span>
     <span class="s"><span class="lab">calibrated</span><b class="neg">${d.n_calibrated}</b> <span class="muted">+ ${d.n_model_only} model-only</span></span>`;
 
   const el = document.getElementById("rows");
   if (!fams.length) { el.innerHTML = '<p class="muted">No settled families yet.</p>'; return; }
+  const statusBadge = f => {
+    if (f.status === "curated_out") {
+      const m = MIS[f.miscalibration] || { label: "curated out", cls: "curated_out", tip: "Proven money-loser" };
+      return `<span class="badge ${m.cls}" title="${m.tip}">${m.label}</span>`;
+    }
+    return `<span class="badge ${f.status}">${STAT[f.status]||f.status}</span>`;
+  };
   el.innerHTML = fams.map(f => {
     const g = f.overconfidence_gap;
     const gapHtml = g == null ? "—"
@@ -84,7 +98,7 @@ fetch("data/calibration_map.json", { cache: "no-cache" }).then(r => r.json()).th
       <span class="r"><b>${pct(f.realized_hit_rate)}</b></span>
       <span class="r">${gapHtml}</span>
       <span class="r ${f.net_units>=0?'neg':'pos'}">${f.net_units>=0?'+':''}${f.net_units}</span>
-      <span><span class="badge ${f.status}">${STAT[f.status]||f.status}</span></span>
+      <span>${statusBadge(f)}</span>
     </div>`;
   }).join("");
   document.getElementById("calMeta").textContent =

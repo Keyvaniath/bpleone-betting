@@ -47,6 +47,7 @@ def run() -> Dict[str, Any]:
     pc.reset_caches()
     picks = _load(LEDGER).get("picks") or []
     neg = pc.proven_negative_families()
+    overconf = pc.overconfident_families()
 
     agg: Dict[str, Dict[str, float]] = {}
     for p in picks:
@@ -80,6 +81,17 @@ def run() -> Dict[str, Any]:
         realized = a["wins"] / n
         avg_pred = (a["pred_sum"] / a["pred_n"]) if a["pred_n"] else None
         status = "curated_out" if fam in neg else ("calibrated" if n >= pc.CAL_MIN_N else "model_only")
+        # WHY a family is curated, the honest distinction:
+        #   overconfident -- the model's probability itself is broken (realized far
+        #                    below predicted); the "edge" is fake at ANY price.
+        #   priced_short  -- the probability is ~right but the bet loses at our fair
+        #                    price (could still be +EV at a soft book line).
+        if fam in overconf:
+            miscalibration = "overconfident"
+        elif status == "curated_out":
+            miscalibration = "priced_short"
+        else:
+            miscalibration = "ok"
         rows.append({
             "family": fam,
             "n_settled": n,
@@ -89,6 +101,7 @@ def run() -> Dict[str, Any]:
             "net_units": round(a["net"], 2),
             "roi_pct": round(100 * a["net"] / n, 1),
             "status": status,
+            "miscalibration": miscalibration,
         })
         if avg_pred is not None:
             tot_n += n
@@ -102,6 +115,7 @@ def run() -> Dict[str, Any]:
     n_cur = sum(1 for r in rows if r["status"] == "curated_out")
     n_cal = sum(1 for r in rows if r["status"] == "calibrated")
     n_mod = sum(1 for r in rows if r["status"] == "model_only")
+    n_overconf = sum(1 for r in rows if r["miscalibration"] == "overconfident")
     net_protected = round(sum(r["net_units"] for r in rows if r["status"] == "curated_out"), 1)
     overall_pred = round(tot_pred / tot_n, 4) if tot_n else None
     overall_real = round(tot_wins / tot_n, 4) if tot_n else None
@@ -112,6 +126,7 @@ def run() -> Dict[str, Any]:
         "n_curated_out": n_cur,
         "n_calibrated": n_cal,
         "n_model_only": n_mod,
+        "n_overconfident": n_overconf,
         "units_protected_by_curation": net_protected,
         "overall_avg_model_pred": overall_pred,
         "overall_realized_hit_rate": overall_real,

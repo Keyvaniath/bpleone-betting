@@ -170,11 +170,68 @@ def prob_to_american(p) -> Optional[int]:
     return int(round(100 * (1 - p) / p))
 
 
+_OVERCONF_CACHE: Optional[set] = None
+OVERCONF_MIN_GAP = 0.12   # avg predicted exceeds realized by >=12pp => model prob is wrong
+OVERCONF_MIN_N = 30       # over a real sample
+
+
+def overconfident_families(min_gap: float = OVERCONF_MIN_GAP, min_n: int = OVERCONF_MIN_N) -> set:
+    """Families where the model's AVERAGE PREDICTED probability exceeds the
+    realized hit rate by >= min_gap over >= min_n settled bets (computed from the
+    ledger picks[]). Here the model's probability itself is wrong, so ANY claimed
+    edge is fake regardless of the book line -- model-edge boards (best_bets, etc.)
+    must not surface these.
+
+    This is NARROWER than proven_negative_families(): a family can lose money at
+    fair pricing yet have a correct probability (k_1plus hits 60% as predicted but
+    is priced too short). Such families are NOT flagged here, because at a soft
+    book line they can still be +EV. Only provably-overconfident families are.
+    """
+    global _OVERCONF_CACHE
+    if _OVERCONF_CACHE is not None:
+        return _OVERCONF_CACHE
+    d = _load_ledger()
+    agg: Dict[str, Dict[str, float]] = {}
+    for p in (d.get("picks") or []):
+        if p.get("result") not in ("won", "lost"):
+            continue
+        fam = canon_market_family(p.get("market"))
+        pred = p.get("p_predicted")
+        if pred is None:
+            pred = p.get("prob")
+        try:
+            pred = float(pred)
+        except (TypeError, ValueError):
+            pred = None
+        a = agg.setdefault(fam, {"n": 0, "wins": 0, "ps": 0.0, "pn": 0})
+        a["n"] += 1
+        a["wins"] += 1 if p.get("result") == "won" else 0
+        if pred is not None:
+            a["ps"] += pred
+            a["pn"] += 1
+    out = set()
+    for fam, a in agg.items():
+        if a["n"] >= min_n and a["pn"] > 0:
+            if (a["ps"] / a["pn"]) - (a["wins"] / a["n"]) >= min_gap:
+                out.add(fam)
+    _OVERCONF_CACHE = out
+    return out
+
+
+def is_overconfident(market) -> bool:
+    """True if this market's family is provably overconfident (fake edge at any line)."""
+    oc = overconfident_families()
+    if not oc:
+        return False
+    return canon_market_family(market) in oc or market_family(market) in oc
+
+
 def reset_caches() -> None:
     """Drop memoized ledger reads (after the ledger is regenerated in-process)."""
-    global _STATS_CACHE, _NEG_CACHE
+    global _STATS_CACHE, _NEG_CACHE, _OVERCONF_CACHE
     _STATS_CACHE = None
     _NEG_CACHE = None
+    _OVERCONF_CACHE = None
 
 
 if __name__ == "__main__":
