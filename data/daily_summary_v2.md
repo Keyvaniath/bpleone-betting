@@ -1,13 +1,13 @@
 # EdgeStat Daily Summary — 2026-06-10
 
-## 🏥 Model Health: 72.9/100 [HEALTHY]
+## 🏥 Model Health: 72.3/100 [HEALTHY]
 - Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 99.9/100
+  - 🟢 Calibration Freshness: 100.0/100
   - 🔴 Hit Rate Trend: 54.4/100
   - 🔴 Brier Trend: 29.6/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 88.9/100
-  - 🟢 Edge Count: 82.9/100
+  - 🟢 Data Health: 83.3/100
+  - 🟢 Edge Count: 88.6/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.589)
@@ -21,10 +21,20 @@
 4. **ARI @ MIA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 5. **CIN @ SDP YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 
+## 🐋 Whale Picks (Max Confluence)
+- [STRONG] **[MLB]** PHI @ TOR PHI_ML -- 69% / +20.9% (score 2.5)
+
+## 📡 Sharp Action (Line Movement)
+- [ELITE] **WSN @ SFG** over_8.5: 53.49% → 69.7% (+16.2pp)
+
+## 📉 Strong UNDER Signals
+- [STRONG 5.5] **STL @ NYM** model 6.99 vs market 8.5
+- [STRONG 5.0] **TEX @ KCR** model 7.84 vs market 10.0
+
 ## 🔒 Locks of the Day -- Track Record
-- All-time: **141-23** (86.0% hit rate)
-- Net units: **+5.00u** | ROI: **+49.2%**
-- Last 7d: 51-10 (83.6%) | net +1.71u
+- All-time: **141-25** (84.9% hit rate)
+- Net units: **+4.88u** | ROI: **+47.4%**
+- Last 7d: 51-12 (81.0%) | net +1.58u
 
 **Today's 9 Locks:**
 - [MLB-PP] **Salvador Perez** PP_batter_hrr_under_3.5 · p=86% edge=+49.8% qK=0.062u
@@ -38,12 +48,12 @@
 - [MLB-PP] **Alex Bregman** PP_batter_hrr_under_3.5 · p=87% edge=+50.2% qK=0.062u
 
 ## 🎰 Top Balanced 2-Leg Parlays (40-65% joint)
-- [MLB-PP] Rodolfo Durán PP_batter_hits_under + [MLB] NYY @ CLE NYY_ML
-  Joint: 55% | Fair: 242 | Edge: +88.4%
-- [MLB-PP] Nick Fortes PP_batter_hrr_under_ + [MLB] NYY @ CLE NYY_ML
-  Joint: 55% | Fair: 242 | Edge: +88.3%
-- [MLB-PP] Francisco Alvarez PP_batter_hrr_under_ + [MLB] NYY @ CLE NYY_ML
-  Joint: 55% | Fair: 242 | Edge: +88.3%
+- [MLB-PP] Nick Fortes PP_batter_hrr_under_ + [MLB] PHI @ TOR PHI_ML
+  Joint: 60% | Fair: 205 | Edge: +81.9%
+- [MLB-PP] Rodolfo Durán PP_batter_hits_under + [MLB] PHI @ TOR PHI_ML
+  Joint: 60% | Fair: 205 | Edge: +81.9%
+- [MLB-PP] Francisco Alvarez PP_batter_hrr_under_ + [MLB] PHI @ TOR PHI_ML
+  Joint: 60% | Fair: 205 | Edge: +81.8%
 
 ## 🎮 Player Play of the Day (cross-sport)
 - **[LOL]** Inspired UNDER 3.5 Kills | MED conviction · model 61.7% fair -161
@@ -67,9 +77,9 @@
 - COMPOUND_BULLPEN: **4**
 - PEN_MISMATCH: **2**
   - North Carolina Tar Heels (CWS): North Carolina Tar Heels OUTPERFORMING expected margin by 7.0pts in recent games -- model bias may persist
-  - CIN @ SDP (MLB): ML/TOTAL steam since open: ML +13.8pp toward SDP; total +1 (OVER) (5 snapshots)
-  - CON @ TOR (WNBA): TOTAL steam since open: ML +1.9pp toward TOR; total -2 (UNDER) (2 snapshots)
-  - LA @ SEA (WNBA): TOTAL steam since open: total -1 (UNDER) (2 snapshots)
+  - CIN @ SDP (MLB): ML/TOTAL steam since open: ML +13.8pp toward SDP; total +1 (OVER) (6 snapshots)
+  - CON @ TOR (WNBA): TOTAL steam since open: ML +1.9pp toward TOR; total -1 (UNDER) (4 snapshots)
+  - LA @ SEA (WNBA): TOTAL steam since open: ML -0.8pp toward LA; total -1 (UNDER) (4 snapshots)
   - ARI @ MIA (MLB): ML/TOTAL steam since open: ML -3.9pp toward ARI; total +0.5 (OVER) (2 snapshots)
 
 ## 💰 Today's Portfolio (8 picks)
@@ -82,19 +92,19 @@
   - #5 [SGP] $35 on STL @ NYM 4-leg SGP @ -168 (P=63%)
 
 ## 🎯 Convergence Picks (17 stacked games)
-- ELITE: **0** · HIGH: 3 · MED: 14
-  - [HIGH] Atlanta Dream @ Chicago Sky : 3 signals (HEAT_COLD, HEAT_COLD, ATS)
-  - [HIGH] Dallas Wings @ Minnesota Lynx : 3 signals (HEAT_COLD, HEAT_COLD, ATS)
-  - [HIGH] Phoenix Mercury @ Golden State Valkyries : 3 signals (HEAT_COLD, HEAT_COLD, ATS)
+- ELITE: **1** · HIGH: 0 · MED: 16
+  - [ELITE] Los Angeles Sparks @ Seattle Storm : 4 signals (PREGAME, HEAT_COLD, HEAT_COLD, ATS)
   - [MED] San Antonio Spurs @ New York Knicks : 2 signals (PREGAME, ATS)
+  - [MED] Vegas Golden Knights @ Carolina Hurricanes : 2 signals (PREGAME, HEAT_COLD)
+  - [MED] Connecticut Sun @ Toronto Tempo : 2 signals (HEAT_COLD, ATS)
   - [MED] Atlanta United FC @ Columbus Crew : 2 signals (ATS, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (12)
-- **Parker Messick** OVER 4.5 K (73%) fair -271
+## ⚾ Top MLB Pitcher K Plays (10)
 - **Foster Griffin** OVER 4.5 K (70%) fair -232
 - **Jesús Luzardo** OVER 4.5 K (70%) fair -229
 - **Chris Sale** OVER 6.5 K (69%) fair -219
 - **Shohei Ohtani** OVER 5.5 K (66%) fair -194
+- **Michael King** OVER 4.5 K (65%) fair -188
 
 ## 🥊 UFC Fight Matchups (UFC Freedom 250: Topuria vs. Gaethje)
   - [LEAN] **Josh Hokit** (9-0-0) vs Derrick Lewis -- fair -141
@@ -110,17 +120,21 @@
   - 🔥 T4 **Dylan Wu** (USA): +0 total -- finished T4
   - 🔥 T5 **Matti Schmid** (Germany): +0 total -- finished T5
 
-## 🔥 MLB Batter Heat (35 HOT / 33 COLD)
-  - 🔥 **Jung Hoo Lee** (SF): L14 .564 / season .335 (+229pts)
+## 🔥 MLB Batter Heat (37 HOT / 35 COLD)
+  - 🔥 **Jung Hoo Lee** (SF): L14 .561 / season .338 (+223pts)
   - 🔥 **Tyler Soderstrom** (ATH): L14 .400 / season .238 (+162pts)
+  - 🔥 **Blaze Alexander** (BAL): L14 .432 / season .282 (+150pts)
   - 🔥 **Tristan Peters** (CWS): L14 .450 / season .303 (+147pts)
-  - 🔥 **Kyle Karros** (COL): L14 .350 / season .232 (+118pts)
-  - 🔥 **Blaze Alexander** (BAL): L14 .400 / season .284 (+116pts)
-  - ❄️ **Max Muncy** (ATH): L14 .114 / season .269 (-155pts) -- FADE props
-  - ❄️ **Ildemaro Vargas** (AZ): L14 .132 / season .280 (-148pts) -- FADE props
+  - 🔥 **Dominic Canzone** (SEA): L14 .410 / season .283 (+127pts)
+  - ❄️ **Max Muncy** (ATH): L14 .114 / season .267 (-153pts) -- FADE props
   - ❄️ **Michael Conforto** (CHC): L14 .100 / season .247 (-147pts) -- FADE props
   - ❄️ **Jeff McNeil** (ATH): L14 .087 / season .234 (-147pts) -- FADE props
-  - ❄️ **Austin Martin** (MIN): L14 .104 / season .247 (-143pts) -- FADE props
+  - ❄️ **Ildemaro Vargas** (AZ): L14 .139 / season .279 (-140pts) -- FADE props
+  - ❄️ **Austin Martin** (MIN): L14 .111 / season .246 (-135pts) -- FADE props
+
+## 📈 Streak Regression Alerts (2)
+- [WNBA] Connecticut Sun on L3 L10 1-4 -- Connecticut Sun on L3 -- no historical sample
+- [WNBA] Seattle Storm on L6 L10 0-5 -- Seattle Storm on L6 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**
