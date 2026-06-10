@@ -11,7 +11,9 @@ on:
     # 2026-05-21 PASS 2: bumped from */2h to */4h. Daily-pipeline is 2x/day,
     # so checking every 4 hours still catches outages within one missed run.
     # Was 12 runs/day -> now 6 runs/day. ~13s/run = 1.3 min/day.
-    - cron: '0 */4 * * *'   # every 4 hours
+    # 2026-06-10: moved off the top of the hour -- GH drops :00 scheduled
+    # events under load (we measured ~1/3 of heartbeat fires being skipped).
+    - cron: '41 */4 * * *'   # every 4 hours, off-peak minute
   workflow_dispatch:
 
 permissions:
@@ -49,6 +51,35 @@ jobs:
           if [ "$AGE_HOURS" -ge 6 ]; then
             echo "STALE -- auto-retriggering daily-pipeline"
             gh workflow run daily-pipeline.yml
+          else
+            echo "Fresh enough, no action needed"
+          fi
+
+      - name: Check heartbeat freshness + auto-retrigger if stale
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # The 2h heartbeat loses ~1/3 of its scheduled fires to GH cron
+          # dropping (measured 8/12 on 2026-06-09). If the last successful
+          # beat is >3h old, re-fire it so intraday data never silently
+          # goes stale for half a day.
+          LATEST=$(gh run list --workflow=continuous-heartbeat.yml --status=success --limit=1 \
+            --json createdAt --jq '.[0].createdAt' || echo "")
+
+          if [ -z "$LATEST" ]; then
+            echo "No successful heartbeats found -- triggering one"
+            gh workflow run continuous-heartbeat.yml
+            exit 0
+          fi
+
+          NOW=$(date +%s)
+          LAST=$(date -d "$LATEST" +%s 2>/dev/null || python3 -c "import datetime; print(int(datetime.datetime.fromisoformat('$LATEST'.replace('Z','+00:00')).timestamp()))")
+          AGE_HOURS=$(( (NOW - LAST) / 3600 ))
+
+          echo "Latest successful heartbeat: $LATEST (age ${AGE_HOURS}h)"
+          if [ "$AGE_HOURS" -ge 3 ]; then
+            echo "STALE -- auto-retriggering heartbeat"
+            gh workflow run continuous-heartbeat.yml
           else
             echo "Fresh enough, no action needed"
           fi

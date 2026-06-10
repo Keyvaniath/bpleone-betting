@@ -17,7 +17,11 @@ on:
   schedule:
     # 2026-05-21 PASS 3: bumped from */60 to */180 (8/day).
     # 2026-05-26: Brandon increased budget — back to every 2 hours (12/day).
-    - cron: '0 */2 * * *'  # every 2 hours = 12 runs/day
+    # 2026-06-10: moved off the top of the hour. GH silently drops :00
+    # scheduled events under load — we measured only 8 of 12 daily fires
+    # landing. Off-peak minutes drop far less often; the auto-retrigger
+    # watchdog now also re-fires any beat that goes >3h stale.
+    - cron: '23 */2 * * *'  # every 2 hours = 12 runs/day, off-peak minute
   workflow_dispatch:
 
 permissions:
