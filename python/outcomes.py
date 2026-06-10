@@ -201,6 +201,17 @@ def settle_prop(prop: Dict[str, Any], outcomes_for_game: Dict[str, Any]) -> Opti
         "projection_vs_actual": (round(actual - prop["model_projection"], 2)
                                   if prop.get("model_projection") is not None else None),
         "model_version": (prop.get("debug") or {}).get("model_version"),
+        # Training features: persist the model's component multipliers + blend
+        # projections into the settled record so the training loop can actually
+        # fit amplifiers (multiplier_tuner) and blend weights (model_trainer)
+        # against real outcomes. Before this they were computed daily by
+        # props_pipeline and DROPPED here at settlement -- the tuners sat at
+        # "insufficient samples" forever despite 100k+ settled props.
+        "debug": ({k: v for k, v in (prop.get("debug") or {}).items()
+                   if k in ("opp_mult", "umpire_k_mult", "park_hand_mult",
+                            "xstat_proj", "season_proj", "park_factor",
+                            "carry_index", "env_mult")
+                   and isinstance(v, (int, float))} or None),
         "dk_over": prop.get("dk_over"),
         "dk_under": prop.get("dk_under"),
         "play": prop.get("play"),

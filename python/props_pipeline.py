@@ -333,6 +333,7 @@ def project_pitcher_ks(pid: int, line: float, opp_team_id: Optional[int] = None,
             "blended_k_rate": round(blended_k_rate, 4),
             "opp_k_rate": round(opp_k, 3) if opp_k else None,
             "opp_mult": round(opp_mult, 3),
+            "umpire_k_mult": round(umpire_k_mult, 3),
             "expected_ks": round(expected_ks, 2),
             "line_int": line_int,
         }
@@ -442,6 +443,7 @@ def project_batter_hr(pid: int, line: float, order: Optional[int] = None,
         "batting_order": order, "expected_pa": expected_pa_g,
         "barrel_pct": barrel_pct, "k_pct_statcast": k_pct,
         "park_factor": park_factor, "carry_index": carry_index, "env_mult": round(env_mult, 3),
+        "park_hand_mult": round(park_hand_mult, 3) if isinstance(park_hand_mult, (int, float)) else None,
         "expected_hr": round(expected_hr, 3), "line_int": line_int,
     }
 
