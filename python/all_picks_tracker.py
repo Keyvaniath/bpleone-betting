@@ -1387,6 +1387,7 @@ def _collect_picks_from_sources() -> List[Dict[str, Any]]:
         if bm.get("p"):
             out.append({
                 "source": f"mlb_xbh_{bm.get('market', '').lower()}",
+                "projection": r.get("expected_xbh"),
                 "sport": "MLB",
                 "player_or_matchup": r.get("batter"),
                 "market": bm.get("market"),
@@ -1403,6 +1404,7 @@ def _collect_picks_from_sources() -> List[Dict[str, Any]]:
         prob = r.get("p_3_plus") if market == "3_plus_hrr" else r.get("p_2_plus")
         out.append({
             "source": f"mlb_hrr_{market}",
+            "projection": r.get("expected_hrr"),
             "sport": "MLB",
             "player_or_matchup": r.get("batter"),
             "market": market,
@@ -1417,6 +1419,7 @@ def _collect_picks_from_sources() -> List[Dict[str, Any]]:
     for r in (tb.get("strong_2plus_edges") or []):
         out.append({
             "source": "mlb_total_bases_2plus",
+            "projection": r.get("expected_tb"),
             "sport": "MLB",
             "player_or_matchup": r.get("batter"),
             "market": "2_plus_total_bases",
