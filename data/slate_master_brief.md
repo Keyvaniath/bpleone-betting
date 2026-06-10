@@ -1,13 +1,13 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-06-10T13:12:50 UTC_
+_Generated 2026-06-10T19:30:50 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -148
+- **Score:** -161
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 4
-- **Total FADES:** 164
+- **Total STRONG:** 3
+- **Total FADES:** 173
 
 ## Lock of the Night
 - **Subject:** Brandon Sproat
@@ -17,11 +17,11 @@ _Generated 2026-06-10T13:12:50 UTC_
 - **Details:** MIL @ OAK
 
 ## Top 5 Curated Picks
-1. **MLB / Foster Griffin** (MLB_PITCHER, score=60.0)
+1. **MLB / Foster Griffin** (MLB_PITCHER, score=59.75)
    - Play: Foster Griffin (PITCHER_STRONG)
    - Rationale: Cross-sport top pick (MLB_PITCHER)
-2. **MLB / Drew Rasmussen** (MLB_PITCHER, score=58.67)
-   - Play: Drew Rasmussen (PITCHER_STRONG)
+2. **MLB / Michael King** (MLB_PITCHER, score=57.75)
+   - Play: Michael King (PITCHER_STRONG)
    - Rationale: Cross-sport top pick (MLB_PITCHER)
 3. **F1 / max verstappen** (F1_DRIVER, score=49.67)
    - Play: max verstappen (DRIVER_STRONG)
@@ -38,9 +38,9 @@ _Generated 2026-06-10T13:12:50 UTC_
   - Fade angle: team total UNDER
 - **NBA** / NYK (TEAM_FADE)
   - Fade angle: team total UNDER
-- **GOLF** / Christo Lamprecht (PLAYER_FADE)
-  - Fade angle: miss cut YES + high round score
-- **F1** / logan sargeant (DRIVER_FADE)
-  - Fade angle: non-podium / outside top 10
-- **GOLF** / Declan O'Donovan (PLAYER_FADE)
-  - Fade angle: miss cut YES + high round score
+- **NHL** / adin hill (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / frederik andersen (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / samsonov ilya (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
