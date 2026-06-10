@@ -80,6 +80,11 @@ jobs:
         working-directory: python
         run: python strategy_sim.py || true
 
+      # Stat-scale projection report card grows as picks settle through the day.
+      - name: Live projection trainer (intraday refresh)
+        working-directory: python
+        run: python projection_trainer.py || true
+
       - name: Top-5 confluence picker (daily action list)
         working-directory: python
         run: python confluence_top_5.py || true

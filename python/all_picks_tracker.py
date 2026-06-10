@@ -271,6 +271,7 @@ def _collect_picks_from_sources() -> List[Dict[str, Any]]:
         if bm.get("p"):
             out.append({
                 "source": f"mlb_run_{bm.get('market', '').lower()}",
+                "projection": r.get("expected_runs"),
                 "sport": "MLB",
                 "player_or_matchup": r.get("batter"),
                 "market": bm.get("market"),
@@ -484,6 +485,7 @@ def _collect_picks_from_sources() -> List[Dict[str, Any]]:
         if bm.get("p"):
             out.append({
                 "source": f"mlb_h_allowed_{bm.get('market', '').lower()}",
+                "projection": r.get("expected_h"),
                 "sport": "MLB",
                 "player_or_matchup": r.get("pitcher"),
                 "market": bm.get("market"),
@@ -516,6 +518,7 @@ def _collect_picks_from_sources() -> List[Dict[str, Any]]:
         if bm.get("p"):
             out.append({
                 "source": f"wnba_pts_{bm.get('market', '').lower()}",
+                "projection": r.get("projected_pts"),
                 "sport": "WNBA",
                 "player_or_matchup": r.get("player"),
                 "market": bm.get("market"),
@@ -789,6 +792,7 @@ def _collect_picks_from_sources() -> List[Dict[str, Any]]:
         if bm.get("p"):
             out.append({
                 "source": f"mlb_pk_{bm.get('market', '').lower()}",
+                "projection": r.get("expected_k"),
                 "sport": "MLB",
                 "player_or_matchup": r.get("pitcher"),
                 "market": bm.get("market"),
@@ -1000,6 +1004,7 @@ def _collect_picks_from_sources() -> List[Dict[str, Any]]:
         if bm.get("p"):
             out.append({
                 "source": f"mlb_bw_{bm.get('market', '').lower()}",
+                "projection": r.get("expected_walks"),
                 "sport": "MLB",
                 "player_or_matchup": r.get("batter"),
                 "market": bm.get("market"),
@@ -1016,6 +1021,7 @@ def _collect_picks_from_sources() -> List[Dict[str, Any]]:
         if bm.get("p"):
             out.append({
                 "source": f"mlb_bk_{bm.get('market', '').lower()}",
+                "projection": r.get("expected_k"),
                 "sport": "MLB",
                 "player_or_matchup": r.get("batter"),
                 "market": bm.get("market"),
@@ -2590,6 +2596,18 @@ def run() -> Dict[str, Any]:
         history.append(p)
         existing_ids.add(p["pick_id"])
         n_added += 1
+
+    # Backfill newly-carried fields onto PENDING picks collected before a
+    # collector learned to stamp them (the dedup above skips re-collection, so
+    # without this an upgrade only reaches tomorrow's picks). Never touches
+    # settled picks or overwrites an existing value.
+    today_by_id = {p["pick_id"]: p for p in today_picks}
+    for p in history:
+        if p.get("settled") or p.get("voided"):
+            continue
+        fresh = today_by_id.get(p.get("pick_id"))
+        if fresh and fresh.get("projection") is not None and p.get("projection") is None:
+            p["projection"] = fresh["projection"]
 
     # Settle anything pending
     n_newly_settled = _settle_picks(history)

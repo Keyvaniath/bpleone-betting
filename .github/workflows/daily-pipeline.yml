@@ -592,6 +592,9 @@ jobs:
       - name: Generator-level recalibration (isotonic, from settled outcomes)
         working-directory: python
         run: python recalibration.py
+      - name: Live projection trainer (stat-scale RMSE/bias from the free feeds)
+        working-directory: python
+        run: python projection_trainer.py || true
       - name: Strategy simulator replay deck (settled ledger -> strategy-sim.html)
         working-directory: python
         run: python strategy_sim.py
