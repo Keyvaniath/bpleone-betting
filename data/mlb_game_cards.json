@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-10T12:00:50",
+  "generated_at": "2026-06-10T13:00:55",
   "date": "2026-06-10",
   "n_games": 15,
   "method_note": "Per-game unified card: today.json model+market+recs joined with every per-matchup player/game prop. Live score/win-prob overlaid client-side from live_state.json + live_game.json.",
@@ -35,8 +35,8 @@
         "p_over_market": 0.4814
       },
       "market": {
-        "home_ml": -153,
-        "away_ml": 128,
+        "home_ml": -150,
+        "away_ml": 126,
         "total": 7.5,
         "book": "bovada"
       },
@@ -44,8 +44,8 @@
         {
           "label": "TBR_ML",
           "model_prob": 0.6978,
-          "market_price": -153,
-          "edge_pct": 15.39,
+          "market_price": -150,
+          "edge_pct": 16.3,
           "kelly_units": 5.0,
           "confidence": "High"
         }
@@ -71,19 +71,19 @@
           "away": {
             "wins": 4,
             "losses": 6,
-            "run_diff": -2,
-            "runs_pg": 4.2,
-            "runs_allowed_pg": 4.4,
-            "streak": "L2",
+            "run_diff": 5,
+            "runs_pg": 4.3,
+            "runs_allowed_pg": 3.8,
+            "streak": "L3",
             "games_in_sample": 10
           },
           "home": {
             "wins": 4,
             "losses": 6,
-            "run_diff": -15,
-            "runs_pg": 4.0,
-            "runs_allowed_pg": 5.5,
-            "streak": "W1",
+            "run_diff": -17,
+            "runs_pg": 3.6,
+            "runs_allowed_pg": 5.3,
+            "streak": "W2",
             "games_in_sample": 10
           }
         },
@@ -92,17 +92,57 @@
           "home": null
         },
         "pitcher_form": {
-          "away": null,
-          "home": null
+          "away": {
+            "pitcher": "Jake Bennett",
+            "status": "STEADY",
+            "trend": null,
+            "tier": null,
+            "k9_delta": 0.0,
+            "era_delta": 0.0,
+            "recent_k_per_9_l3": 8.5,
+            "recent_era_l3": 4.2,
+            "form_index": null,
+            "leans": []
+          },
+          "home": {
+            "pitcher": "Drew Rasmussen",
+            "status": "STEADY",
+            "trend": null,
+            "tier": null,
+            "k9_delta": 0.0,
+            "era_delta": 0.0,
+            "recent_k_per_9_l3": 8.55,
+            "recent_era_l3": 3.11,
+            "form_index": null,
+            "leans": []
+          }
         },
-        "bullpen": null,
+        "bullpen": {
+          "away_pen": {
+            "score": 35.0,
+            "tier": "NORMAL",
+            "appearances_3d": 0,
+            "pen_ip_3d": 0.0,
+            "pitchers_25plus_24h": 0,
+            "closer_used_yesterday": false
+          },
+          "home_pen": {
+            "score": 35.0,
+            "tier": "NORMAL",
+            "appearances_3d": 12,
+            "pen_ip_3d": 9.0,
+            "pitchers_25plus_24h": 0,
+            "closer_used_yesterday": false
+          },
+          "leans": []
+        },
         "hot_cold": [
           {
             "name": "Willson Contreras",
             "team": "BOS",
             "kind": "hot",
-            "heat": 4.045,
-            "recent_ops": 1.19,
+            "heat": 3.893,
+            "recent_ops": 1.114,
             "season_ops": 0.0,
             "order": null
           }
@@ -118,7 +158,7 @@
         },
         "recent_meetings": [],
         "current_series": {
-          "series_number": 2,
+          "series_number": 3,
           "prior_results": [
             {
               "date": "2026-06-08",
@@ -126,25 +166,141 @@
               "away_score": 1,
               "margin": 2,
               "winner": "home"
+            },
+            {
+              "date": "2026-06-09",
+              "home_score": 4,
+              "away_score": 3,
+              "margin": 1,
+              "winner": "home"
             }
           ],
-          "note": "Coming off close Game 1"
+          "note": "Series finale; home can sweep"
         }
       },
       "line_movement": {
         "model_home_implied": 69.8,
         "market": {
-          "home_ml": -153,
-          "away_ml": 128,
+          "home_ml": -150,
+          "away_ml": 126,
           "total": 7.5,
           "book": "bovada",
-          "home_implied": 60.5
+          "home_implied": 60.0
         },
-        "edge_vs_market_pp": 9.3,
+        "edge_vs_market_pp": 9.8,
         "has_timeseries": false
       },
-      "n_predictions": 0,
-      "predictions": []
+      "n_predictions": 12,
+      "predictions": [
+        {
+          "family": "pitcher",
+          "stat": "Win",
+          "subject": "Jake Bennett",
+          "market": "PITCHER_WIN_NO",
+          "prob": 0.878,
+          "fair_odds": -721,
+          "edge": "STRONG_NO"
+        },
+        {
+          "family": "pitcher",
+          "stat": "Hits allowed",
+          "subject": "Jake Bennett",
+          "market": "H_UNDER_7.0",
+          "prob": 0.708,
+          "fair_odds": -243,
+          "edge": "STRONG_UNDER"
+        },
+        {
+          "family": "game",
+          "stat": "Total (alt)",
+          "subject": "BOS @ TBR",
+          "market": "GAME_TOTAL_OVER_6.5",
+          "prob": 0.68,
+          "fair_odds": -213,
+          "edge": "STRONG_TOTAL"
+        },
+        {
+          "family": "pitcher",
+          "stat": "Hits allowed",
+          "subject": "Drew Rasmussen",
+          "market": "H_UNDER_5.0",
+          "prob": 0.652,
+          "fair_odds": -187,
+          "edge": "STRONG_UNDER"
+        },
+        {
+          "family": "pitcher",
+          "stat": "Strikeouts",
+          "subject": "Drew Rasmussen",
+          "market": "K_OVER_4.5",
+          "prob": 0.642,
+          "fair_odds": -180,
+          "edge": "STRONG_OVER"
+        },
+        {
+          "family": "game",
+          "stat": "Run line",
+          "subject": "BOS @ TBR",
+          "market": "HOME_MINUS_1.5",
+          "prob": 0.627,
+          "fair_odds": -168,
+          "edge": "STRONG_HOME_-1.5"
+        },
+        {
+          "family": "pitcher",
+          "stat": "Outs",
+          "subject": "Drew Rasmussen",
+          "market": "OUTS_OVER_15.5",
+          "prob": 0.58,
+          "fair_odds": -138,
+          "edge": "STANDARD_OVER"
+        },
+        {
+          "family": "pitcher",
+          "stat": "Outs",
+          "subject": "Jake Bennett",
+          "market": "OUTS_OVER_14.5",
+          "prob": 0.572,
+          "fair_odds": -134,
+          "edge": "STANDARD_OVER"
+        },
+        {
+          "family": "pitcher",
+          "stat": "Walks",
+          "subject": "Jake Bennett",
+          "market": "Walks",
+          "prob": 0.319,
+          "fair_odds": null,
+          "edge": "NONE"
+        },
+        {
+          "family": "pitcher",
+          "stat": "Walks",
+          "subject": "Drew Rasmussen",
+          "market": "Walks",
+          "prob": 0.284,
+          "fair_odds": null,
+          "edge": "NONE"
+        },
+        {
+          "family": "game",
+          "stat": "Team steals",
+          "subject": "TBR",
+          "market": "Team steals",
+          "prob": 0.066,
+          "fair_odds": null,
+          "edge": "NONE"
+        },
+        {
+          "family": "game",
+          "stat": "Team steals",
+          "subject": "BOS",
+          "market": "Team steals",
+          "prob": 0.021,
+          "fair_odds": null,
+          "edge": "NONE"
+        }
+      ]
     },
     {
       "matchup": "NYY @ CLE",
@@ -157,10 +313,10 @@
       "park": "Progressive Field",
       "weather": {
         "temp_f": 89,
-        "wind_mph": 6,
+        "wind_mph": 9,
         "is_indoor": false,
-        "wind_dir_deg": 270,
-        "carry_index": 0.0,
+        "wind_dir_deg": 264,
+        "carry_index": 0.064,
         "precip_pct": 3
       },
       "umpire": {
@@ -169,34 +325,34 @@
         "ump_k_mult": null
       },
       "model": {
-        "fair_home_ml": 255,
-        "fair_away_ml": -255,
-        "fair_total": 8.6,
-        "p_home_win": 0.2816,
-        "p_away_win": 0.7184,
-        "p_over_market": 0.6268
+        "fair_home_ml": 258,
+        "fair_away_ml": -258,
+        "fair_total": 8.79,
+        "p_home_win": 0.2793,
+        "p_away_win": 0.7207,
+        "p_over_market": 0.5842
       },
       "market": {
-        "home_ml": -119,
-        "away_ml": -101,
-        "total": 7.5,
+        "home_ml": -117,
+        "away_ml": -103,
+        "total": 8.0,
         "book": "bovada"
       },
       "recommendations": [
         {
           "label": "NYY_ML",
-          "model_prob": 0.7184,
-          "market_price": -101,
-          "edge_pct": 42.96,
+          "model_prob": 0.7207,
+          "market_price": -103,
+          "edge_pct": 42.03,
           "kelly_units": 5.0,
           "confidence": "High"
         },
         {
-          "label": "OVER_7.5",
-          "model_prob": 0.6268,
+          "label": "OVER_8.0",
+          "model_prob": 0.5842,
           "market_price": -110,
-          "edge_pct": 19.67,
-          "kelly_units": 5.0,
+          "edge_pct": 11.52,
+          "kelly_units": 3.17,
           "confidence": "High"
         }
       ],
@@ -221,42 +377,91 @@
           "away": {
             "wins": 6,
             "losses": 4,
-            "run_diff": 16,
-            "runs_pg": 5.8,
-            "runs_allowed_pg": 4.2,
-            "streak": "W2",
+            "run_diff": 10,
+            "runs_pg": 5.4,
+            "runs_allowed_pg": 4.4,
+            "streak": "W3",
             "games_in_sample": 10
           },
           "home": {
-            "wins": 4,
-            "losses": 6,
-            "run_diff": -14,
-            "runs_pg": 3.7,
+            "wins": 3,
+            "losses": 7,
+            "run_diff": -16,
+            "runs_pg": 3.5,
             "runs_allowed_pg": 5.1,
-            "streak": "L2",
+            "streak": "L3",
             "games_in_sample": 10
           }
         },
         "ats": {
           "away": {
-            "ats_record": "3-8-0",
-            "cover_pct": 0.273,
+            "ats_record": "3-7-1",
+            "cover_pct": 0.3,
             "signal": "MODEL_OVERRATES"
           },
           "home": null
         },
         "pitcher_form": {
-          "away": null,
-          "home": null
+          "away": {
+            "pitcher": "Carlos Rod\u00f3n",
+            "status": "STEADY",
+            "trend": null,
+            "tier": null,
+            "k9_delta": 0.0,
+            "era_delta": 0.0,
+            "recent_k_per_9_l3": 8.5,
+            "recent_era_l3": 4.2,
+            "form_index": null,
+            "leans": []
+          },
+          "home": {
+            "pitcher": "Parker Messick",
+            "status": "STEADY",
+            "trend": null,
+            "tier": null,
+            "k9_delta": 0.0,
+            "era_delta": 0.0,
+            "recent_k_per_9_l3": 9.95,
+            "recent_era_l3": 2.84,
+            "form_index": null,
+            "leans": []
+          }
         },
-        "bullpen": null,
+        "bullpen": {
+          "away_pen": {
+            "score": 35.0,
+            "tier": "NORMAL",
+            "appearances_3d": 0,
+            "pen_ip_3d": 0.0,
+            "pitchers_25plus_24h": 0,
+            "closer_used_yesterday": false
+          },
+          "home_pen": {
+            "score": 35.0,
+            "tier": "NORMAL",
+            "appearances_3d": 0,
+            "pen_ip_3d": 0.0,
+            "pitchers_25plus_24h": 0,
+            "closer_used_yesterday": false
+          },
+          "leans": []
+        },
         "hot_cold": [
           {
-            "name": "J.C. Escarra",
+            "name": "Jazz Chisholm Jr.",
             "team": "NYY",
-            "kind": "cold",
-            "heat": 0.0,
-            "recent_ops": 0,
+            "kind": "hot",
+            "heat": 4.222,
+            "recent_ops": 0.861,
+            "season_ops": 0.0,
+            "order": null
+          },
+          {
+            "name": "Spencer Jones",
+            "team": "NYY",
+            "kind": "hot",
+            "heat": 3.916,
+            "recent_ops": 1.333,
             "season_ops": 0.0,
             "order": null
           }
@@ -265,12 +470,19 @@
       "h2h": {
         "season_series": {
           "away": "NYY",
-          "away_wins": 2,
+          "away_wins": 3,
           "home": "CLE",
           "home_wins": 2,
-          "n": 4
+          "n": 5
         },
         "recent_meetings": [
+          {
+            "date": "2026-06-09",
+            "away": "NYY",
+            "away_score": 3,
+            "home": "CLE",
+            "home_score": 2
+          },
           {
             "date": "2026-06-08",
             "away": "NYY",
@@ -304,13 +516,6 @@
           "series_number": 5,
           "prior_results": [
             {
-              "date": "2026-06-02",
-              "home_score": 9,
-              "away_score": 4,
-              "margin": 5,
-              "winner": "home"
-            },
-            {
               "date": "2026-06-03",
               "home_score": 5,
               "away_score": 4,
@@ -330,25 +535,114 @@
               "away_score": 7,
               "margin": -2,
               "winner": "away"
+            },
+            {
+              "date": "2026-06-09",
+              "home_score": 2,
+              "away_score": 3,
+              "margin": -1,
+              "winner": "away"
             }
           ],
-          "note": "1 blowout(s) in this set"
+          "note": "no special context"
         }
       },
       "line_movement": {
-        "model_home_implied": 28.2,
+        "model_home_implied": 27.9,
         "market": {
-          "home_ml": -119,
-          "away_ml": -101,
-          "total": 7.5,
+          "home_ml": -117,
+          "away_ml": -103,
+          "total": 8.0,
           "book": "bovada",
-          "home_implied": 54.3
+          "home_implied": 53.9
         },
-        "edge_vs_market_pp": -26.1,
+        "edge_vs_market_pp": -26.0,
         "has_timeseries": false
       },
-      "n_predictions": 0,
-      "predictions": []
+      "n_predictions": 9,
+      "predictions": [
+        {
+          "family": "pitcher",
+          "stat": "Win",
+          "subject": "Parker Messick",
+          "market": "PITCHER_WIN_NO",
+          "prob": 0.865,
+          "fair_odds": -639,
+          "edge": "STRONG_NO"
+        },
+        {
+          "family": "game",
+          "stat": "Total (alt)",
+          "subject": "NYY @ CLE",
+          "market": "GAME_TOTAL_OVER_6.5",
+          "prob": 0.672,
+          "fair_odds": -205,
+          "edge": "STRONG_TOTAL"
+        },
+        {
+          "family": "pitcher",
+          "stat": "Hits allowed",
+          "subject": "Carlos Rod\u00f3n",
+          "market": "H_UNDER_5.0",
+          "prob": 0.664,
+          "fair_odds": -198,
+          "edge": "STRONG_UNDER"
+        },
+        {
+          "family": "pitcher",
+          "stat": "Outs",
+          "subject": "Parker Messick",
+          "market": "OUTS_UNDER_16.0",
+          "prob": 0.59,
+          "fair_odds": -144,
+          "edge": "STANDARD_UNDER"
+        },
+        {
+          "family": "pitcher",
+          "stat": "Outs",
+          "subject": "Carlos Rod\u00f3n",
+          "market": "OUTS_UNDER_16.5",
+          "prob": 0.579,
+          "fair_odds": -138,
+          "edge": "STANDARD_UNDER"
+        },
+        {
+          "family": "pitcher",
+          "stat": "Walks",
+          "subject": "Parker Messick",
+          "market": "Walks",
+          "prob": 0.31,
+          "fair_odds": null,
+          "edge": "NONE"
+        },
+        {
+          "family": "pitcher",
+          "stat": "Walks",
+          "subject": "Carlos Rod\u00f3n",
+          "market": "Walks",
+          "prob": 0.29,
+          "fair_odds": null,
+          "edge": "NONE"
+        },
+        {
+          "family": "game",
+          "stat": "Team steals",
+          "subject": "NYY",
+          "market": "Team steals",
+          "prob": 0.025,
+          "fair_odds": null,
+          "edge": "NONE"
+        },
+        {
+          "family": "game",
+          "stat": "Team steals",
+          "subject": "CLE",
+          "market": "Team steals",
+          "prob": 0.014,
+          "fair_odds": null,
+          "edge": "NONE"
+        }
+      ]
     },
     {
       "matchup": "WSN @ SFG",
@@ -360,11 +654,11 @@
       "time": "3:45p ET",
       "park": "Oracle Park",
       "weather": {
-        "temp_f": 79,
+        "temp_f": 80,
         "wind_mph": 15,
         "is_indoor": false,
-        "wind_dir_deg": 285,
-        "carry_index": 0.991,
+        "wind_dir_deg": 284,
+        "carry_index": 0.975,
         "precip_pct": 0
       },
       "umpire": {
@@ -375,32 +669,32 @@
       "model": {
         "fair_home_ml": 153,
         "fair_away_ml": -153,
-        "fair_total": 11.56,
-        "p_home_win": 0.3955,
-        "p_away_win": 0.6045,
-        "p_over_market": 0.8141
+        "fair_total": 11.6,
+        "p_home_win": 0.3953,
+        "p_away_win": 0.6047,
+        "p_over_market": 0.8543
       },
       "market": {
         "home_ml": -117,
         "away_ml": -103,
-        "total": 8.5,
+        "total": 8.0,
         "book": "bovada"
       },
       "recommendations": [
         {
-          "label": "OVER_8.5",
-          "model_prob": 0.8141,
+          "label": "OVER_8.0",
+          "model_prob": 0.8543,
           "market_price": -110,
-          "edge_pct": 55.41,
+          "edge_pct": 63.09,
           "kelly_units": 5.0,
           "confidence": "High"
         },
         {
           "label": "WSN_ML",
-          "model_prob": 0.6045,
+          "model_prob": 0.6047,
           "market_price": -103,
-          "edge_pct": 19.14,
-          "kelly_units": 4.93,
+          "edge_pct": 19.18,
+          "kelly_units": 4.94,
           "confidence": "High"
         }
       ],
@@ -423,21 +717,21 @@
       "trends": {
         "team_form": {
           "away": {
-            "wins": 5,
-            "losses": 5,
-            "run_diff": 9,
-            "runs_pg": 5.0,
-            "runs_allowed_pg": 4.1,
-            "streak": "W1",
+            "wins": 6,
+            "losses": 4,
+            "run_diff": 14,
+            "runs_pg": 5.1,
+            "runs_allowed_pg": 3.7,
+            "streak": "W2",
             "games_in_sample": 10
           },
           "home": {
             "wins": 5,
             "losses": 5,
-            "run_diff": 7,
+            "run_diff": 9,
             "runs_pg": 6.5,
-            "runs_allowed_pg": 5.8,
-            "streak": "L1",
+            "runs_allowed_pg": 5.6,
+            "streak": "L2",
             "games_in_sample": 10
           }
         },
@@ -447,27 +741,27 @@
         },
         "pitcher_form": {
           "away": {
-            "pitcher": "Andrew Alvarez",
+            "pitcher": "Foster Griffin",
             "status": "STEADY",
             "trend": null,
-            "tier": "NEUTRAL_FORM",
+            "tier": null,
             "k9_delta": 0.0,
             "era_delta": 0.0,
-            "recent_k_per_9_l3": 8.5,
-            "recent_era_l3": 4.2,
-            "form_index": 50.0,
+            "recent_k_per_9_l3": 9.33,
+            "recent_era_l3": 3.77,
+            "form_index": null,
             "leans": []
           },
           "home": {
-            "pitcher": "Adrian Houser",
+            "pitcher": "Robbie Ray",
             "status": "STEADY",
             "trend": null,
-            "tier": "NEUTRAL_FORM",
+            "tier": null,
             "k9_delta": 0.0,
             "era_delta": 0.0,
-            "recent_k_per_9_l3": 8.5,
-            "recent_era_l3": 4.2,
-            "form_index": 50.0,
+            "recent_k_per_9_l3": 7.32,
+            "recent_era_l3": 5.03,
+            "form_index": null,
             "leans": []
           }
         },
@@ -502,7 +796,7 @@
         },
         "recent_meetings": [],
         "current_series": {
-          "series_number": 2,
+          "series_number": 3,
           "prior_results": [
             {
               "date": "2026-06-08",
@@ -510,177 +804,58 @@
               "away_score": 4,
               "margin": -1,
               "winner": "away"
+            },
+            {
+              "date": "2026-06-09",
+              "home_score": 3,
+              "away_score": 6,
+              "margin": -3,
+              "winner": "away"
             }
           ],
-          "note": "Coming off close Game 1"
+          "note": "Series finale; away can sweep"
         }
       },
       "line_movement": {
-        "model_home_implied": 39.6,
+        "model_home_implied": 39.5,
         "market": {
           "home_ml": -117,
           "away_ml": -103,
-          "total": 8.5,
+          "total": 8.0,
           "book": "bovada",
           "home_implied": 53.9
         },
-        "edge_vs_market_pp": -14.3,
+        "edge_vs_market_pp": -14.4,
         "has_timeseries": false
       },
-      "n_predictions": 40,
+      "n_predictions": 12,
       "predictions": [
         {
           "family": "pitcher",
           "stat": "Win",
-          "subject": "Adrian Houser",
+          "subject": "Robbie Ray",
           "market": "PITCHER_WIN_NO",
-          "prob": 0.875,
-          "fair_odds": -700,
+          "prob": 0.866,
+          "fair_odds": -645,
           "edge": "STRONG_NO"
-        },
-        {
-          "family": "batter",
-          "stat": "2+ hits",
-          "subject": "Jacob Young",
-          "market": "HITS_2PLUS_NO",
-          "prob": 0.864,
-          "fair_odds": -635,
-          "edge": "STRONG_NO"
-        },
-        {
-          "family": "batter",
-          "stat": "RBI",
-          "subject": "Willy Adames",
-          "market": "RBI_1PLUS_YES",
-          "prob": 0.857,
-          "fair_odds": -600,
-          "edge": "STRONG_YES"
-        },
-        {
-          "family": "batter",
-          "stat": "2+ hits",
-          "subject": "Nasim Nu\u00f1ez",
-          "market": "HITS_2PLUS_NO",
-          "prob": 0.839,
-          "fair_odds": -522,
-          "edge": "STRONG_NO"
-        },
-        {
-          "family": "batter",
-          "stat": "2+ hits",
-          "subject": "Daniel Susac",
-          "market": "HITS_2PLUS_NO",
-          "prob": 0.814,
-          "fair_odds": -438,
-          "edge": "STRONG_NO"
-        },
-        {
-          "family": "batter",
-          "stat": "2+ hits",
-          "subject": "Daylen Lile",
-          "market": "HITS_2PLUS_NO",
-          "prob": 0.814,
-          "fair_odds": -436,
-          "edge": "STRONG_NO"
-        },
-        {
-          "family": "batter",
-          "stat": "2+ hits",
-          "subject": "Rafael Devers",
-          "market": "HITS_2PLUS_NO",
-          "prob": 0.788,
-          "fair_odds": -372,
-          "edge": "STRONG_NO"
-        },
-        {
-          "family": "batter",
-          "stat": "RBI",
-          "subject": "Nasim Nu\u00f1ez",
-          "market": "RBI_1PLUS_NO",
-          "prob": 0.786,
-          "fair_odds": -367,
-          "edge": "STRONG_NO"
-        },
-        {
-          "family": "batter",
-          "stat": "RBI",
-          "subject": "Jonah Cox",
-          "market": "RBI_1PLUS_NO",
-          "prob": 0.778,
-          "fair_odds": -350,
-          "edge": "STRONG_NO"
-        },
-        {
-          "family": "pitcher",
-          "stat": "Quality start",
-          "subject": "Andrew Alvarez",
-          "market": "QUALITY_START_NO",
-          "prob": 0.73,
-          "fair_odds": -271,
-          "edge": "STRONG_NO"
-        },
-        {
-          "family": "batter",
-          "stat": "Strikeouts",
-          "subject": "Casey Schmitt",
-          "market": "K_1PLUS_YES",
-          "prob": 0.695,
-          "fair_odds": -228,
-          "edge": "STRONG_YES_1PLUS"
-        },
-        {
-          "family": "batter",
-          "stat": "Strikeouts",
-          "subject": "Rafael Devers",
-          "market": "K_1PLUS_YES",
-          "prob": 0.695,
-          "fair_odds": -228,
-          "edge": "STRONG_YES_1PLUS"
-        },
-        {
-          "family": "batter",
-          "stat": "Strikeouts",
-          "subject": "Luis Arraez",
-          "market": "K_1PLUS_YES",
-          "prob": 0.695,
-          "fair_odds": -228,
-          "edge": "STRONG_YES_1PLUS"
-        },
-        {
-          "family": "batter",
-          "stat": "Strikeouts",
-          "subject": "James Wood",
-          "market": "K_1PLUS_YES",
-          "prob": 0.695,
-          "fair_odds": -228,
-          "edge": "STRONG_YES_1PLUS"
-        },
-        {
-          "family": "batter",
-          "stat": "Strikeouts",
-          "subject": "Luis Garc\u00eda Jr.",
-          "market": "K_1PLUS_YES",
-          "prob": 0.695,
-          "fair_odds": -228,
-          "edge": "STRONG_YES_1PLUS"
-        },
-        {
-          "family": "batter",
-          "stat": "Strikeouts",
-          "subject": "Jos\u00e9 Tena",
-          "market": "K_1PLUS_YES",
-          "prob": 0.695,
-          "fair_odds": -228,
-          "edge": "STRONG_YES_1PLUS"
         },
         {
           "family": "pitcher",
           "stat": "Hits allowed",
-          "subject": "Andrew Alvarez",
-          "market": "H_UNDER_5.0",
-          "prob": 0.686,
-          "fair_odds": -219,
+          "subject": "Robbie Ray",
+          "market": "H_UNDER_6.0",
+          "prob": 0.718,
+          "fair_odds": -254,
           "edge": "STRONG_UNDER"
+        },
+        {
+          "family": "pitcher",
+          "stat": "Strikeouts",
+          "subject": "Foster Griffin",
+          "market": "K_OVER_4.5",
+          "prob": 0.674,
+          "fair_odds": -206,
+          "edge": "STRONG_OVER"
         },
         {
           "family": "game",
@@ -693,80 +868,17 @@
         },
         {
           "family": "pitcher",
-          "stat": "Earned runs",
-          "subject": "Andrew Alvarez",
-          "market": "ER_UNDER_2.5",
-          "prob": 0.669,
-          "fair_odds": -202,
-          "edge": "STRONG_UNDER"
-        },
-        {
-          "family": "batter",
           "stat": "Strikeouts",
-          "subject": "Willy Adames",
-          "market": "K_1PLUS_YES",
-          "prob": 0.669,
-          "fair_odds": -203,
-          "edge": "STRONG_YES_1PLUS"
-        },
-        {
-          "family": "batter",
-          "stat": "Strikeouts",
-          "subject": "Jung Hoo Lee",
-          "market": "K_1PLUS_YES",
-          "prob": 0.669,
-          "fair_odds": -203,
-          "edge": "STRONG_YES_1PLUS"
-        },
-        {
-          "family": "batter",
-          "stat": "Strikeouts",
-          "subject": "Bryce Eldridge",
-          "market": "K_1PLUS_YES",
-          "prob": 0.669,
-          "fair_odds": -203,
-          "edge": "STRONG_YES_1PLUS"
-        },
-        {
-          "family": "batter",
-          "stat": "Strikeouts",
-          "subject": "CJ Abrams",
-          "market": "K_1PLUS_YES",
-          "prob": 0.669,
-          "fair_odds": -203,
-          "edge": "STRONG_YES_1PLUS"
-        },
-        {
-          "family": "batter",
-          "stat": "Strikeouts",
-          "subject": "Daylen Lile",
-          "market": "K_1PLUS_YES",
-          "prob": 0.669,
-          "fair_odds": -203,
-          "edge": "STRONG_YES_1PLUS"
-        },
-        {
-          "family": "batter",
-          "stat": "Strikeouts",
-          "subject": "Jorbit Vivas",
-          "market": "K_1PLUS_YES",
-          "prob": 0.669,
-          "fair_odds": -203,
-          "edge": "STRONG_YES_1PLUS"
-        },
-        {
-          "family": "pitcher",
-          "stat": "Hits allowed",
-          "subject": "Adrian Houser",
-          "market": "H_UNDER_7.0",
-          "prob": 0.639,
-          "fair_odds": -177,
+          "subject": "Robbie Ray",
+          "market": "K_UNDER_4.5",
+          "prob": 0.652,
+          "fair_odds": -187,
           "edge": "STRONG_UNDER"
         },
         {
           "family": "pitcher",
           "stat": "Outs",
-          "subject": "Adrian Houser",
+          "subject": "Robbie Ray",
           "market": "OUTS_OVER_15.0",
           "prob": 0.586,
           "fair_odds": -142,
@@ -775,88 +887,25 @@
         {
           "family": "pitcher",
           "stat": "Outs",
-          "subject": "Andrew Alvarez",
-          "market": "OUTS_OVER_16.0",
-          "prob": 0.562,
-          "fair_odds": -129,
-          "edge": "STANDARD_OVER"
+          "subject": "Foster Griffin",
+          "market": "OUTS_UNDER_17.0",
+          "prob": 0.577,
+          "fair_odds": -136,
+          "edge": "STANDARD_UNDER"
         },
         {
-          "family": "batter",
-          "stat": "3+ TB",
-          "subject": "James Wood",
-          "market": "TB_3PLUS_YES",
-          "prob": 0.389,
-          "fair_odds": 157,
-          "edge": "STRONG_YES"
-        },
-        {
-          "family": "batter",
-          "stat": "3+ TB",
-          "subject": "Bryce Eldridge",
-          "market": "TB_3PLUS_YES",
-          "prob": 0.371,
-          "fair_odds": 170,
-          "edge": "STRONG_YES"
-        },
-        {
-          "family": "batter",
-          "stat": "XBH",
-          "subject": "Luis Arraez",
-          "market": "1_PLUS_XBH",
-          "prob": 0.347,
-          "fair_odds": 188,
-          "edge": "STRONG_1_PLUS_XBH"
-        },
-        {
-          "family": "batter",
-          "stat": "XBH",
-          "subject": "Matt Chapman",
-          "market": "1_PLUS_XBH",
-          "prob": 0.345,
-          "fair_odds": 190,
-          "edge": "STRONG_1_PLUS_XBH"
-        },
-        {
-          "family": "batter",
-          "stat": "XBH",
-          "subject": "Casey Schmitt",
-          "market": "1_PLUS_XBH",
-          "prob": 0.34,
-          "fair_odds": 194,
-          "edge": "STRONG_1_PLUS_XBH"
-        },
-        {
-          "family": "batter",
-          "stat": "XBH",
-          "subject": "Jung Hoo Lee",
-          "market": "1_PLUS_XBH",
-          "prob": 0.331,
-          "fair_odds": 202,
-          "edge": "STRONG_1_PLUS_XBH"
-        },
-        {
-          "family": "batter",
-          "stat": "XBH",
-          "subject": "James Wood",
-          "market": "1_PLUS_XBH",
-          "prob": 0.328,
-          "fair_odds": 205,
-          "edge": "STRONG_1_PLUS_XBH"
-        },
-        {
-          "family": "batter",
-          "stat": "XBH",
-          "subject": "Jorbit Vivas",
-          "market": "1_PLUS_XBH",
-          "prob": 0.321,
-          "fair_odds": 211,
-          "edge": "STRONG_1_PLUS_XBH"
+          "family": "game",
+          "stat": "Run line",
+          "subject": "WSN @ SFG",
+          "market": "AWAY_MINUS_1.5",
+          "prob": 0.551,
+          "fair_odds": -123,
+          "edge": "STRONG_AWAY_-1.5"
         },
         {
           "family": "pitcher",
           "stat": "Walks",
-          "subject": "Adrian Houser",
+          "subject": "Robbie Ray",
           "market": "Walks",
           "prob": 0.298,
           "fair_odds": null,
@@ -865,9 +914,9 @@
         {
           "family": "pitcher",
           "stat": "Walks",
-          "subject": "Andrew Alvarez",
+          "subject": "Foster Griffin",
           "market": "Walks",
-          "prob": 0.273,
+          "prob": 0.274,
           "fair_odds": null,
           "edge": "NONE"
         },
@@ -904,8 +953,8 @@
         "temp_f": 69,
         "wind_mph": 7,
         "is_indoor": false,
-        "wind_dir_deg": 224,
-        "carry_index": 0.34,
+        "wind_dir_deg": 228,
+        "carry_index": 0.299,
         "precip_pct": 0
       },
       "umpire": {
@@ -964,55 +1013,51 @@
       "trends": {
         "team_form": {
           "away": {
-            "wins": 2,
-            "losses": 8,
-            "run_diff": -29,
-            "runs_pg": 3.2,
-            "runs_allowed_pg": 6.1,
-            "streak": "L5",
+            "wins": 3,
+            "losses": 7,
+            "run_diff": -22,
+            "runs_pg": 3.4,
+            "runs_allowed_pg": 5.6,
+            "streak": "W1",
             "games_in_sample": 10
           },
           "home": {
-            "wins": 3,
-            "losses": 7,
-            "run_diff": -13,
-            "runs_pg": 3.3,
+            "wins": 2,
+            "losses": 8,
+            "run_diff": -17,
+            "runs_pg": 2.9,
             "runs_allowed_pg": 4.6,
-            "streak": "W1",
+            "streak": "L1",
             "games_in_sample": 10
           }
         },
         "ats": {
           "away": null,
-          "home": {
-            "ats_record": "10-2-0",
-            "cover_pct": 0.833,
-            "signal": "MODEL_UNDERRATES"
-          }
+          "home": null
         },
         "pitcher_form": {
           "away": {
-            "pitcher": "Chase Burns",
+            "pitcher": "Brady Singer",
             "status": "STEADY",
             "trend": null,
-            "tier": "NEUTRAL_FORM",
-            "k9_delta": 0.0,
-            "era_delta": 0.0,
-            "recent_k_per_9_l3": 11.06,
-            "recent_era_l3": 1.88,
-            "form_index": 50.0,
-            "leans": []
-          },
-          "home": {
-            "pitcher": "Lucas Giolito",
-            "status": "STEADY",
-            "trend": null,
-            "tier": "NEUTRAL_FORM",
+            "tier": null,
             "k9_delta": 0.0,
             "era_delta": 0.0,
             "recent_k_per_9_l3": 8.5,
             "recent_era_l3": 4.2,
-            "form_index": 50.0,
+            "form_index": null,
+            "leans": []
+          },
+          "home": {
+            "pitcher": "Michael King",
+            "status": "STEADY",
+            "trend": null,
+            "tier": null,
+            "k9_delta": 0.0,
+            "era_delta": 0.0,
+            "recent_k_per_9_l3": 8.23,
+            "recent_era_l3": 3.59,
+            "form_index": null,
             "leans": []
           }
         },
@@ -1040,10 +1085,10 @@
             "name": "Matt McLain",
             "team": "CIN",
             "kind": "hot",
-            "heat": 6.076,
-            "recent_ops": 1.538,
+            "heat": 6.0,
+            "recent_ops": 1.5,
             "season_ops": 0.0,
-            "order": null
+            "order": 7
           }
         ]
       },
@@ -1057,7 +1102,7 @@
         },
         "recent_meetings": [],
         "current_series": {
-          "series_number": 2,
+          "series_number": 3,
           "prior_results": [
             {
               "date": "2026-06-08",
@@ -1065,9 +1110,16 @@
               "away_score": 2,
               "margin": 4,
               "winner": "home"
+            },
+            {
+              "date": "2026-06-09",
+              "home_score": 3,
+              "away_score": 5,
+              "margin": -2,
+              "winner": "away"
             }
           ],
-          "note": "Coming off close Game 1"
+          "note": "Rubber match (series tied 1-1)"
         }
       },
       "line_movement": {
@@ -1082,338 +1134,86 @@
         "edge_vs_market_pp": -8.3,
         "has_timeseries": false
       },
-      "n_predictions": 39,
+      "n_predictions": 11,
       "predictions": [
         {
           "family": "pitcher",
           "stat": "Win",
-          "subject": "Lucas Giolito",
+          "subject": "Brady Singer",
           "market": "PITCHER_WIN_NO",
-          "prob": 0.925,
-          "fair_odds": -1225,
+          "prob": 0.818,
+          "fair_odds": -448,
           "edge": "STRONG_NO"
         },
         {
-          "family": "batter",
-          "stat": "2+ hits",
-          "subject": "Jackson Merrill",
-          "market": "HITS_2PLUS_NO",
-          "prob": 0.864,
-          "fair_odds": -635,
-          "edge": "STRONG_NO"
-        },
-        {
-          "family": "batter",
-          "stat": "XBH",
-          "subject": "Gavin Sheets",
-          "market": "NO_XBH",
-          "prob": 0.86,
-          "fair_odds": -617,
-          "edge": "STRONG_NO_XBH"
-        },
-        {
-          "family": "batter",
-          "stat": "XBH",
-          "subject": "Blake Dunn",
-          "market": "NO_XBH",
-          "prob": 0.83,
-          "fair_odds": -488,
-          "edge": "STRONG_NO_XBH"
-        },
-        {
-          "family": "batter",
-          "stat": "2+ hits",
-          "subject": "Nathaniel Lowe",
-          "market": "HITS_2PLUS_NO",
-          "prob": 0.814,
-          "fair_odds": -437,
-          "edge": "STRONG_NO"
-        },
-        {
-          "family": "batter",
-          "stat": "2+ hits",
-          "subject": "Spencer Steer",
-          "market": "HITS_2PLUS_NO",
-          "prob": 0.814,
-          "fair_odds": -439,
-          "edge": "STRONG_NO"
-        },
-        {
-          "family": "batter",
-          "stat": "2+ hits",
-          "subject": "Sal Stewart",
-          "market": "HITS_2PLUS_NO",
-          "prob": 0.788,
-          "fair_odds": -373,
-          "edge": "STRONG_NO"
-        },
-        {
-          "family": "batter",
-          "stat": "Strikeouts",
-          "subject": "Fernando Tatis Jr.",
-          "market": "K_1PLUS_YES",
-          "prob": 0.787,
-          "fair_odds": -369,
-          "edge": "STRONG_YES_1PLUS"
-        },
-        {
-          "family": "batter",
-          "stat": "Strikeouts",
-          "subject": "Jackson Merrill",
-          "market": "K_1PLUS_YES",
-          "prob": 0.787,
-          "fair_odds": -369,
-          "edge": "STRONG_YES_1PLUS"
-        },
-        {
-          "family": "batter",
-          "stat": "Strikeouts",
-          "subject": "Manny Machado",
-          "market": "K_1PLUS_YES",
-          "prob": 0.787,
-          "fair_odds": -369,
-          "edge": "STRONG_YES_1PLUS"
-        },
-        {
-          "family": "batter",
-          "stat": "RBI",
-          "subject": "Fernando Tatis Jr.",
-          "market": "RBI_1PLUS_NO",
-          "prob": 0.786,
-          "fair_odds": -367,
-          "edge": "STRONG_NO"
-        },
-        {
-          "family": "batter",
-          "stat": "RBI",
-          "subject": "Edwin Arroyo",
-          "market": "RBI_1PLUS_NO",
-          "prob": 0.766,
-          "fair_odds": -328,
-          "edge": "STRONG_NO"
-        },
-        {
-          "family": "batter",
-          "stat": "Strikeouts",
-          "subject": "Gavin Sheets",
-          "market": "K_1PLUS_YES",
-          "prob": 0.763,
-          "fair_odds": -322,
-          "edge": "STRONG_YES_1PLUS"
-        },
-        {
-          "family": "batter",
-          "stat": "Strikeouts",
-          "subject": "Will Wagner",
-          "market": "K_1PLUS_YES",
-          "prob": 0.763,
-          "fair_odds": -322,
-          "edge": "STRONG_YES_1PLUS"
-        },
-        {
-          "family": "batter",
-          "stat": "Strikeouts",
-          "subject": "Samad Taylor",
-          "market": "K_1PLUS_YES",
-          "prob": 0.763,
-          "fair_odds": -322,
-          "edge": "STRONG_YES_1PLUS"
-        },
-        {
-          "family": "batter",
-          "stat": "Strikeouts",
-          "subject": "Bryce Johnson",
-          "market": "K_1PLUS_YES",
-          "prob": 0.727,
-          "fair_odds": -267,
-          "edge": "STRONG_YES_1PLUS"
-        },
-        {
-          "family": "batter",
-          "stat": "Strikeouts",
-          "subject": "Freddy Fermin",
-          "market": "K_1PLUS_YES",
-          "prob": 0.727,
-          "fair_odds": -267,
-          "edge": "STRONG_YES_1PLUS"
-        },
-        {
-          "family": "batter",
-          "stat": "Strikeouts",
-          "subject": "Sung-Mun Song",
-          "market": "K_1PLUS_YES",
-          "prob": 0.727,
-          "fair_odds": -267,
-          "edge": "STRONG_YES_1PLUS"
-        },
-        {
-          "family": "batter",
-          "stat": "Strikeouts",
-          "subject": "Blake Dunn",
-          "market": "K_1PLUS_YES",
-          "prob": 0.695,
-          "fair_odds": -228,
-          "edge": "STRONG_YES_1PLUS"
-        },
-        {
-          "family": "batter",
-          "stat": "Strikeouts",
-          "subject": "JJ Bleday",
-          "market": "K_1PLUS_YES",
-          "prob": 0.695,
-          "fair_odds": -228,
-          "edge": "STRONG_YES_1PLUS"
-        },
-        {
-          "family": "batter",
-          "stat": "Strikeouts",
-          "subject": "Sal Stewart",
-          "market": "K_1PLUS_YES",
-          "prob": 0.695,
-          "fair_odds": -228,
-          "edge": "STRONG_YES_1PLUS"
+          "family": "pitcher",
+          "stat": "Hits allowed",
+          "subject": "Brady Singer",
+          "market": "H_UNDER_7.0",
+          "prob": 0.697,
+          "fair_odds": -230,
+          "edge": "STRONG_UNDER"
         },
         {
           "family": "game",
           "stat": "Total (alt)",
           "subject": "CIN @ SDP",
-          "market": "GAME_TOTAL_OVER_6.5",
-          "prob": 0.691,
-          "fair_odds": -224,
+          "market": "GAME_TOTAL_UNDER_9.5",
+          "prob": 0.695,
+          "fair_odds": -228,
           "edge": "STRONG_TOTAL"
         },
         {
           "family": "pitcher",
-          "stat": "Quality start",
-          "subject": "Chase Burns",
-          "market": "QUALITY_START_NO",
-          "prob": 0.679,
-          "fair_odds": -211,
-          "edge": "STRONG_NO"
-        },
-        {
-          "family": "batter",
           "stat": "Strikeouts",
-          "subject": "Nathaniel Lowe",
-          "market": "K_1PLUS_YES",
-          "prob": 0.669,
-          "fair_odds": -203,
-          "edge": "STRONG_YES_1PLUS"
-        },
-        {
-          "family": "batter",
-          "stat": "Strikeouts",
-          "subject": "Spencer Steer",
-          "market": "K_1PLUS_YES",
-          "prob": 0.669,
-          "fair_odds": -203,
-          "edge": "STRONG_YES_1PLUS"
-        },
-        {
-          "family": "batter",
-          "stat": "Strikeouts",
-          "subject": "Eugenio Su\u00e1rez",
-          "market": "K_1PLUS_YES",
-          "prob": 0.669,
-          "fair_odds": -203,
-          "edge": "STRONG_YES_1PLUS"
+          "subject": "Michael King",
+          "market": "K_OVER_4.5",
+          "prob": 0.645,
+          "fair_odds": -181,
+          "edge": "STRONG_OVER"
         },
         {
           "family": "pitcher",
           "stat": "Hits allowed",
-          "subject": "Lucas Giolito",
-          "market": "H_UNDER_7.0",
-          "prob": 0.659,
-          "fair_odds": -193,
+          "subject": "Michael King",
+          "market": "H_UNDER_5.0",
+          "prob": 0.636,
+          "fair_odds": -174,
           "edge": "STRONG_UNDER"
         },
         {
           "family": "pitcher",
           "stat": "Outs",
-          "subject": "Lucas Giolito",
-          "market": "OUTS_OVER_15.5",
-          "prob": 0.586,
-          "fair_odds": -142,
-          "edge": "STANDARD_OVER"
+          "subject": "Brady Singer",
+          "market": "OUTS_UNDER_18.0",
+          "prob": 0.59,
+          "fair_odds": -144,
+          "edge": "STANDARD_UNDER"
         },
         {
           "family": "pitcher",
           "stat": "Outs",
-          "subject": "Chase Burns",
-          "market": "OUTS_UNDER_18.0",
-          "prob": 0.582,
-          "fair_odds": -139,
-          "edge": "STANDARD_UNDER"
-        },
-        {
-          "family": "batter",
-          "stat": "2+ hits",
-          "subject": "Fernando Tatis Jr.",
-          "market": "HITS_2PLUS_YES",
-          "prob": 0.442,
-          "fair_odds": 126,
-          "edge": "STRONG_YES"
-        },
-        {
-          "family": "batter",
-          "stat": "XBH",
-          "subject": "Nathaniel Lowe",
-          "market": "1_PLUS_XBH",
-          "prob": 0.395,
-          "fair_odds": 153,
-          "edge": "STRONG_1_PLUS_XBH"
-        },
-        {
-          "family": "batter",
-          "stat": "XBH",
-          "subject": "JJ Bleday",
-          "market": "1_PLUS_XBH",
-          "prob": 0.376,
-          "fair_odds": 166,
-          "edge": "STRONG_1_PLUS_XBH"
-        },
-        {
-          "family": "batter",
-          "stat": "XBH",
-          "subject": "Spencer Steer",
-          "market": "1_PLUS_XBH",
-          "prob": 0.336,
-          "fair_odds": 198,
-          "edge": "STRONG_1_PLUS_XBH"
-        },
-        {
-          "family": "batter",
-          "stat": "3+ TB",
-          "subject": "JJ Bleday",
-          "market": "TB_3PLUS_YES",
-          "prob": 0.333,
-          "fair_odds": 200,
-          "edge": "STRONG_YES"
-        },
-        {
-          "family": "batter",
-          "stat": "XBH",
-          "subject": "Freddy Fermin",
-          "market": "1_PLUS_XBH",
-          "prob": 0.321,
-          "fair_odds": 212,
-          "edge": "STRONG_1_PLUS_XBH"
+          "subject": "Michael King",
+          "market": "OUTS_OVER_15.5",
+          "prob": 0.58,
+          "fair_odds": -138,
+          "edge": "STANDARD_OVER"
         },
         {
           "family": "pitcher",
           "stat": "Walks",
-          "subject": "Lucas Giolito",
+          "subject": "Michael King",
           "market": "Walks",
-          "prob": 0.282,
+          "prob": 0.284,
           "fair_odds": null,
           "edge": "NONE"
         },
         {
           "family": "pitcher",
           "stat": "Walks",
-          "subject": "Chase Burns",
+          "subject": "Brady Singer",
           "market": "Walks",
-          "prob": 0.248,
+          "prob": 0.249,
           "fair_odds": null,
           "edge": "NONE"
         },
@@ -1431,7 +1231,7 @@
           "stat": "Team steals",
           "subject": "SDP",
           "market": "Team steals",
-          "prob": 0.031,
+          "prob": 0.041,
           "fair_odds": null,
           "edge": "NONE"
         }
@@ -1447,11 +1247,11 @@
       "time": "6:35p ET",
       "park": "Oriole Park at Camden Yards",
       "weather": {
-        "temp_f": 75,
-        "wind_mph": 2,
+        "temp_f": 74,
+        "wind_mph": 4,
         "is_indoor": false,
-        "wind_dir_deg": 207,
-        "carry_index": 0.089,
+        "wind_dir_deg": 125,
+        "carry_index": 0.134,
         "precip_pct": 6
       },
       "umpire": {
@@ -1462,23 +1262,23 @@
       "model": {
         "fair_home_ml": 183,
         "fair_away_ml": -183,
-        "fair_total": 9.22,
-        "p_home_win": 0.3538,
-        "p_away_win": 0.6462,
-        "p_over_market": 0.5069
+        "fair_total": 9.33,
+        "p_home_win": 0.3529,
+        "p_away_win": 0.6471,
+        "p_over_market": 0.5215
       },
       "market": {
-        "home_ml": 103,
-        "away_ml": -123,
+        "home_ml": 104,
+        "away_ml": -124,
         "total": 9.0,
         "book": "bovada"
       },
       "recommendations": [
         {
           "label": "SEA_ML",
-          "model_prob": 0.6462,
-          "market_price": -123,
-          "edge_pct": 17.16,
+          "model_prob": 0.6471,
+          "market_price": -124,
+          "edge_pct": 16.89,
           "kelly_units": 5.0,
           "confidence": "High"
         }
@@ -1505,9 +1305,9 @@
             "wins": 7,
             "losses": 3,
             "run_diff": 8,
-            "runs_pg": 4.4,
-            "runs_allowed_pg": 3.6,
-            "streak": "W1",
+            "runs_pg": 4.3,
+            "runs_allowed_pg": 3.5,
+            "streak": "W2",
             "games_in_sample": 10
           },
           "home": {
@@ -1516,40 +1316,71 @@
             "run_diff": 8,
             "runs_pg": 5.7,
             "runs_allowed_pg": 4.9,
-            "streak": "L3",
+            "streak": "L4",
             "games_in_sample": 10
           }
         },
         "ats": {
           "away": {
-            "ats_record": "3-9-0",
-            "cover_pct": 0.25,
+            "ats_record": "4-8-0",
+            "cover_pct": 0.333,
             "signal": "MODEL_OVERRATES"
           },
           "home": null
         },
         "pitcher_form": {
-          "away": null,
-          "home": null
+          "away": {
+            "pitcher": "George Kirby",
+            "status": "STEADY",
+            "trend": null,
+            "tier": null,
+            "k9_delta": 0.0,
+            "era_delta": 0.0,
+            "recent_k_per_9_l3": 7.46,
+            "recent_era_l3": 4.84,
+            "form_index": null,
+            "leans": []
+          },
+          "home": {
+            "pitcher": "Brandon Young",
+            "status": "STEADY",
+            "trend": null,
+            "tier": null,
+            "k9_delta": 0.0,
+            "era_delta": 0.0,
+            "recent_k_per_9_l3": 7.08,
+            "recent_era_l3": 3.76,
+            "form_index": null,
+            "leans": []
+          }
         },
-        "bullpen": null,
+        "bullpen": {
+          "away_pen": {
+            "score": 35.0,
+            "tier": "NORMAL",
+            "appearances_3d": 0,
+            "pen_ip_3d": 0.0,
+            "pitchers_25plus_24h": 0,
+            "closer_used_yesterday": false
+          },
+          "home_pen": {
+            "score": 35.0,
+            "tier": "NORMAL",
+            "appearances_3d": 0,
+            "pen_ip_3d": 0.0,
+            "pitchers_25plus_24h": 0,
+            "closer_used_yesterday": false
+          },
+          "leans": []
+        },
         "hot_cold": [
           {
-            "name": "Victor Robles",
+            "name": "Mitch Garver",
             "team": "SEA",
-            "kind": "cold",
-            "heat": 0.0,
-            "recent_ops": 0,
+            "kind": "hot",
+            "heat": 4.25,
+            "recent_ops": 0.875,
             "season_ops": 0.0,
-            "order": null
-          },
-          {
-            "name": "Julio Rodr\u00edguez",
-            "team": "SEA",
-            "kind": "cold",
-            "heat": -0.221,
-            "recent_ops": 0.724,
-            "season_ops": 0.767,
             "order": null
           }
         ]
@@ -1557,12 +1388,19 @@
       "h2h": {
         "season_series": {
           "away": "SEA",
-          "away_wins": 1,
+          "away_wins": 2,
           "home": "BAL",
           "home_wins": 0,
-          "n": 1
+          "n": 2
         },
         "recent_meetings": [
+          {
+            "date": "2026-06-09",
+            "away": "SEA",
+            "away_score": 6,
+            "home": "BAL",
+            "home_score": 5
+          },
           {
             "date": "2026-06-08",
             "away": "SEA",
@@ -1572,7 +1410,7 @@
           }
         ],
         "current_series": {
-          "series_number": 2,
+          "series_number": 3,
           "prior_results": [
             {
               "date": "2026-06-08",
@@ -1580,25 +1418,141 @@
               "away_score": 6,
               "margin": -3,
               "winner": "away"
+            },
+            {
+              "date": "2026-06-09",
+              "home_score": 5,
+              "away_score": 6,
+              "margin": -1,
+              "winner": "away"
             }
           ],
-          "note": "Coming off close Game 1"
+          "note": "Series finale; away can sweep"
         }
       },
       "line_movement": {
-        "model_home_implied": 35.4,
+        "model_home_implied": 35.3,
         "market": {
-          "home_ml": 103,
-          "away_ml": -123,
+          "home_ml": 104,
+          "away_ml": -124,
           "total": 9.0,
           "book": "bovada",
-          "home_implied": 49.3
+          "home_implied": 49.0
         },
-        "edge_vs_market_pp": -13.9,
+        "edge_vs_market_pp": -13.7,
         "has_timeseries": false
       },
-      "n_predictions": 0,
-      "predictions": []
+      "n_predictions": 12,
+      "predictions": [
+        {
+          "family": "pitcher",
+          "stat": "Win",
+          "subject": "Brandon Young",
+          "market": "PITCHER_WIN_NO",
+          "prob": 0.808,
+          "fair_odds": -422,
+          "edge": "STRONG_NO"
+        },
+        {
+          "family": "pitcher",
+          "stat": "Strikeouts",
+          "subject": "George Kirby",
+          "market": "K_OVER_3.5",
+          "prob": 0.676,
+          "fair_odds": -208,
+          "edge": "STRONG_OVER"
+        },
+        {
+          "family": "pitcher",
+          "stat": "Strikeouts",
+          "subject": "Brandon Young",
+          "market": "K_OVER_3.5",
+          "prob": 0.667,
+          "fair_odds": -201,
+          "edge": "STRONG_OVER"
+        },
+        {
+          "family": "game",
+          "stat": "Total (alt)",
+          "subject": "SEA @ BAL",
+          "market": "GAME_TOTAL_OVER_7.5",
+          "prob": 0.637,
+          "fair_odds": -175,
+          "edge": "STRONG_TOTAL"
+        },
+        {
+          "family": "pitcher",
+          "stat": "Hits allowed",
+          "subject": "Brandon Young",
+          "market": "H_UNDER_5.0",
+          "prob": 0.624,
+          "fair_odds": -166,
+          "edge": "STRONG_UNDER"
+        },
+        {
+          "family": "pitcher",
+          "stat": "Outs",
+          "subject": "Brandon Young",
+          "market": "OUTS_UNDER_16.5",
+          "prob": 0.592,
+          "fair_odds": -145,
+          "edge": "STANDARD_UNDER"
+        },
+        {
+          "family": "pitcher",
+          "stat": "Outs",
+          "subject": "George Kirby",
+          "market": "OUTS_OVER_15.0",
+          "prob": 0.592,
+          "fair_odds": -145,
+          "edge": "STANDARD_OVER"
+        },
+        {
+          "family": "game",
+          "stat": "Run line",
+          "subject": "SEA @ BAL",
+          "market": "AWAY_MINUS_1.5",
+          "prob": 0.586,
+          "fair_odds": -141,
+          "edge": "STRONG_AWAY_-1.5"
+        },
+        {
+          "family": "pitcher",
+          "stat": "Walks",
+          "subject": "George Kirby",
+          "market": "Walks",
+          "prob": 0.297,
+          "fair_odds": null,
+          "edge": "NONE"
+        },
+        {
+          "family": "pitcher",
+          "stat": "Walks",
+          "subject": "Brandon Young",
+          "market": "Walks",
+          "prob": 0.294,
+          "fair_odds": null,
+          "edge": "NONE"
+        },
+        {
+          "family": "game",
+          "stat": "Team steals",
+          "subject": "SEA",
+          "market": "Team steals",
+          "prob": 0.034,
+          "fair_odds": null,
+          "edge": "NONE"
+        },
+        {
+          "family": "game",
+          "stat": "Team steals",
+          "subject": "BAL",
+          "market": "Team steals",
+          "prob": 0.028,
+          "fair_odds": null,
+          "edge": "NONE"
+        }
+      ]
     },
     {
       "matchup": "LAD @ PIT",
@@ -1610,12 +1564,12 @@
       "time": "6:40p ET",
       "park": "PNC Park",
       "weather": {
-        "temp_f": 81,
+        "temp_f": 82,
         "wind_mph": 4,
         "is_indoor": false,
-        "wind_dir_deg": 219,
-        "carry_index": 0.268,
-        "precip_pct": 19
+        "wind_dir_deg": 210,
+        "carry_index": 0.254,
+        "precip_pct": 17
       },
       "umpire": {
         "ump_name": null,
@@ -1623,33 +1577,33 @@
         "ump_k_mult": null
       },
       "model": {
-        "fair_home_ml": 725,
-        "fair_away_ml": -725,
-        "fair_total": 10.24,
-        "p_home_win": 0.1212,
-        "p_away_win": 0.8788,
-        "p_over_market": 0.747
+        "fair_home_ml": 728,
+        "fair_away_ml": -728,
+        "fair_total": 10.27,
+        "p_home_win": 0.1208,
+        "p_away_win": 0.8792,
+        "p_over_market": 0.6971
       },
       "market": {
-        "home_ml": 169,
-        "away_ml": -208,
-        "total": 8.0,
+        "home_ml": 176,
+        "away_ml": -216,
+        "total": 8.5,
         "book": "bovada"
       },
       "recommendations": [
         {
-          "label": "OVER_8.0",
-          "model_prob": 0.747,
+          "label": "OVER_8.5",
+          "model_prob": 0.6971,
           "market_price": -110,
-          "edge_pct": 42.6,
+          "edge_pct": 33.08,
           "kelly_units": 5.0,
           "confidence": "High"
         },
         {
           "label": "LAD_ML",
-          "model_prob": 0.8788,
-          "market_price": -208,
-          "edge_pct": 30.12,
+          "model_prob": 0.8792,
+          "market_price": -216,
+          "edge_pct": 28.62,
           "kelly_units": 5.0,
           "confidence": "High"
         }
@@ -1675,19 +1629,19 @@
           "away": {
             "wins": 6,
             "losses": 4,
-            "run_diff": 13,
-            "runs_pg": 4.7,
-            "runs_allowed_pg": 3.4,
-            "streak": "L1",
+            "run_diff": 20,
+            "runs_pg": 5.5,
+            "runs_allowed_pg": 3.5,
+            "streak": "W1",
             "games_in_sample": 10
           },
           "home": {
             "wins": 5,
             "losses": 5,
-            "run_diff": 2,
-            "runs_pg": 5.9,
-            "runs_allowed_pg": 5.7,
-            "streak": "L3",
+            "run_diff": -2,
+            "runs_pg": 6.0,
+            "runs_allowed_pg": 6.2,
+            "streak": "L4",
             "games_in_sample": 10
           }
         },
@@ -1700,69 +1654,179 @@
           "home": null
         },
         "pitcher_form": {
-          "away": null,
-          "home": null
-        },
-        "bullpen": null,
-        "hot_cold": [
-          {
-            "name": "Dalton Rushing",
-            "team": "LAD",
-            "kind": "hot",
-            "heat": 4.03,
-            "recent_ops": 1.39,
-            "season_ops": 0.0,
-            "order": null
+          "away": {
+            "pitcher": "Shohei Ohtani",
+            "status": "STEADY",
+            "trend": null,
+            "tier": null,
+            "k9_delta": 0.0,
+            "era_delta": 0.0,
+            "recent_k_per_9_l3": 8.5,
+            "recent_era_l3": 4.2,
+            "form_index": null,
+            "leans": []
           },
-          {
-            "name": "Freddie Freeman",
-            "team": "LAD",
-            "kind": "hot",
-            "heat": 3.791,
-            "recent_ops": 1.063,
-            "season_ops": 0.0,
-            "order": null
-          },
-          {
-            "name": "Jared Triolo",
-            "team": "PIT",
-            "kind": "cold",
-            "heat": 0.06,
-            "recent_ops": 0.57,
-            "season_ops": 0.54,
-            "order": null
+          "home": {
+            "pitcher": "Jared Jones",
+            "status": "STEADY",
+            "trend": null,
+            "tier": null,
+            "k9_delta": 0.0,
+            "era_delta": 0.0,
+            "recent_k_per_9_l3": 8.5,
+            "recent_era_l3": 4.2,
+            "form_index": null,
+            "leans": []
           }
-        ]
+        },
+        "bullpen": {
+          "away_pen": {
+            "score": 35.0,
+            "tier": "NORMAL",
+            "appearances_3d": 0,
+            "pen_ip_3d": 0.0,
+            "pitchers_25plus_24h": 0,
+            "closer_used_yesterday": false
+          },
+          "home_pen": {
+            "score": 35.0,
+            "tier": "NORMAL",
+            "appearances_3d": 0,
+            "pen_ip_3d": 0.0,
+            "pitchers_25plus_24h": 0,
+            "closer_used_yesterday": false
+          },
+          "leans": []
+        },
+        "hot_cold": []
       },
       "h2h": {
         "season_series": {
           "away": "LAD",
-          "away_wins": 0,
+          "away_wins": 1,
           "home": "PIT",
           "home_wins": 0,
-          "n": 0
+          "n": 1
         },
-        "recent_meetings": [],
+        "recent_meetings": [
+          {
+            "date": "2026-06-09",
+            "away": "LAD",
+            "away_score": 12,
+            "home": "PIT",
+            "home_score": 3
+          }
+        ],
         "current_series": {
-          "series_number": 1,
-          "prior_results": [],
-          "note": "first meeting / no recent H2H"
+          "series_number": 2,
+          "prior_results": [
+            {
+              "date": "2026-06-09",
+              "home_score": 3,
+              "away_score": 12,
+              "margin": -9,
+              "winner": "away"
+            }
+          ],
+          "note": "Game 1 blowout (margin -9); home typically bounces back - 1 blowout(s) in this set"
         }
       },
       "line_movement": {
         "model_home_implied": 12.1,
         "market": {
-          "home_ml": 169,
-          "away_ml": -208,
-          "total": 8.0,
+          "home_ml": 176,
+          "away_ml": -216,
+          "total": 8.5,
           "book": "bovada",
-          "home_implied": 37.2
+          "home_implied": 36.2
         },
-        "edge_vs_market_pp": -25.1,
+        "edge_vs_market_pp": -24.1,
         "has_timeseries": false
       },
-      "n_predictions": 0,
-      "predictions": []
+      "n_predictions": 9,
+      "predictions": [
+        {
+          "family": "pitcher",
+          "stat": "Win",
+          "subject": "Jared Jones",
+          "market": "PITCHER_WIN_NO",
+          "prob": 0.951,
+          "fair_odds": -1947,
+          "edge": "STRONG_NO"
+        },
+        {
+          "family": "game",
+          "stat": "Total (alt)",
+          "subject": "LAD @ PIT",
+          "market": "GAME_TOTAL_UNDER_9.5",
+          "prob": 0.697,
+          "fair_odds": -230,
+          "edge": "STRONG_TOTAL"
+        },
+        {
+          "family": "game",
+          "stat": "Team steals",
+          "subject": "PIT",
+          "market": "TEAM_SB_UNDER_0.5",
+          "prob": 0.657,
+          "fair_odds": -192,
+          "edge": "STRONG_NO_SB"
+        },
+        {
+          "family": "pitcher",
+          "stat": "Hits allowed",
+          "subject": "Jared Jones",
+          "market": "H_UNDER_8.0",
+          "prob": 0.648,
+          "fair_odds": -184,
+          "edge": "STRONG_UNDER"
+        },
+        {
+          "family": "pitcher",
+          "stat": "Outs",
+          "subject": "Jared Jones",
+          "market": "OUTS_OVER_14.0",
+          "prob": 0.581,
+          "fair_odds": -138,
+          "edge": "STANDARD_OVER"
+        },
+        {
+          "family": "pitcher",
+          "stat": "Outs",
+          "subject": "Shohei Ohtani",
+          "market": "OUTS_OVER_14.5",
+          "prob": 0.578,
+          "fair_odds": -137,
+          "edge": "STANDARD_OVER"
+        },
+        {
+          "family": "pitcher",
+          "stat": "Walks",
+          "subject": "Jared Jones",
+          "market": "Walks",
+          "prob": 0.335,
+          "fair_odds": null,
+          "edge": "NONE"
+        },
+        {
+          "family": "pitcher",
+          "stat": "Walks",
+          "subject": "Shohei Ohtani",
+          "market": "Walks",
+          "prob": 0.318,
+          "fair_odds": null,
+          "edge": "NONE"
+        },
+        {
+          "family": "game",
+          "stat": "Team steals",
+          "subject": "LAD",
+          "market": "Team steals",
+          "prob": 0.055,
+          "fair_odds": null,
+          "edge": "NONE"
+        }
+      ]
     },
     {
       "matchup": "MIN @ DET",
@@ -1777,8 +1841,8 @@
         "temp_f": 80,
         "wind_mph": 5,
         "is_indoor": false,
-        "wind_dir_deg": 227,
-        "carry_index": -0.048,
+        "wind_dir_deg": 209,
+        "carry_index": -0.149,
         "precip_pct": 2
       },
       "umpire": {
@@ -1795,8 +1859,8 @@
         "p_over_market": 0.4673
       },
       "market": {
-        "home_ml": -175,
-        "away_ml": 144,
+        "home_ml": -177,
+        "away_ml": 145,
         "total": 9.0,
         "book": "bovada"
       },
@@ -1804,9 +1868,9 @@
         {
           "label": "MIN_ML",
           "model_prob": 0.4269,
-          "market_price": 144,
-          "edge_pct": 4.17,
-          "kelly_units": 0.72,
+          "market_price": 145,
+          "edge_pct": 4.6,
+          "kelly_units": 0.79,
           "confidence": "Medium"
         },
         {
@@ -1839,24 +1903,28 @@
           "away": {
             "wins": 3,
             "losses": 7,
-            "run_diff": -13,
-            "runs_pg": 5.0,
-            "runs_allowed_pg": 6.3,
-            "streak": "L2",
+            "run_diff": -18,
+            "runs_pg": 4.9,
+            "runs_allowed_pg": 6.7,
+            "streak": "L3",
             "games_in_sample": 10
           },
           "home": {
-            "wins": 5,
-            "losses": 5,
-            "run_diff": 1,
-            "runs_pg": 4.3,
-            "runs_allowed_pg": 4.2,
-            "streak": "W1",
+            "wins": 6,
+            "losses": 4,
+            "run_diff": 13,
+            "runs_pg": 5.2,
+            "runs_allowed_pg": 3.9,
+            "streak": "W2",
             "games_in_sample": 10
           }
         },
         "ats": {
-          "away": null,
+          "away": {
+            "ats_record": "10-3-0",
+            "cover_pct": 0.769,
+            "signal": "MODEL_UNDERRATES"
+          },
           "home": {
             "ats_record": "10-2-0",
             "cover_pct": 0.833,
@@ -1864,44 +1932,75 @@
           }
         },
         "pitcher_form": {
-          "away": null,
-          "home": null
+          "away": {
+            "pitcher": "TBD",
+            "status": "STEADY",
+            "trend": null,
+            "tier": null,
+            "k9_delta": 0.0,
+            "era_delta": 0.0,
+            "recent_k_per_9_l3": 8.5,
+            "recent_era_l3": 4.2,
+            "form_index": null,
+            "leans": []
+          },
+          "home": {
+            "pitcher": "Framber Valdez",
+            "status": "STEADY",
+            "trend": null,
+            "tier": null,
+            "k9_delta": 0.0,
+            "era_delta": 0.0,
+            "recent_k_per_9_l3": 8.17,
+            "recent_era_l3": 3.63,
+            "form_index": null,
+            "leans": []
+          }
         },
-        "bullpen": null,
+        "bullpen": {
+          "away_pen": {
+            "score": 35.0,
+            "tier": "NORMAL",
+            "appearances_3d": 0,
+            "pen_ip_3d": 0.0,
+            "pitchers_25plus_24h": 0,
+            "closer_used_yesterday": false
+          },
+          "home_pen": {
+            "score": 35.0,
+            "tier": "NORMAL",
+            "appearances_3d": 0,
+            "pen_ip_3d": 0.0,
+            "pitchers_25plus_24h": 0,
+            "closer_used_yesterday": false
+          },
+          "leans": []
+        },
         "hot_cold": [
-          {
-            "name": "Jake Rogers",
-            "team": "DET",
-            "kind": "hot",
-            "heat": 9.668,
-            "recent_ops": 2.334,
-            "season_ops": 0.0,
-            "order": null
-          },
-          {
-            "name": "Wenceel P\u00e9rez",
-            "team": "DET",
-            "kind": "hot",
-            "heat": 4.755,
-            "recent_ops": 1.545,
-            "season_ops": 0.0,
-            "order": null
-          },
-          {
-            "name": "Victor Caratini",
-            "team": "MIN",
-            "kind": "hot",
-            "heat": 4.416,
-            "recent_ops": 1.583,
-            "season_ops": 0.0,
-            "order": null
-          },
           {
             "name": "Kody Clemens",
             "team": "MIN",
             "kind": "hot",
-            "heat": 4.2,
-            "recent_ops": 1.1,
+            "heat": 5.7,
+            "recent_ops": 1.35,
+            "season_ops": 0.0,
+            "order": null
+          },
+          {
+            "name": "Dillon Dingler",
+            "team": "DET",
+            "kind": "hot",
+            "heat": 5.648,
+            "recent_ops": 1.324,
+            "season_ops": 0.0,
+            "order": null
+          },
+          {
+            "name": "Byron Buxton",
+            "team": "MIN",
+            "kind": "hot",
+            "heat": 4.32,
+            "recent_ops": 0.91,
             "season_ops": 0.0,
             "order": null
           }
@@ -1912,30 +2011,137 @@
           "away": "MIN",
           "away_wins": 0,
           "home": "DET",
-          "home_wins": 0,
-          "n": 0
+          "home_wins": 1,
+          "n": 1
         },
-        "recent_meetings": [],
+        "recent_meetings": [
+          {
+            "date": "2026-06-09",
+            "away": "MIN",
+            "away_score": 4,
+            "home": "DET",
+            "home_score": 10
+          }
+        ],
         "current_series": {
-          "series_number": 1,
-          "prior_results": [],
-          "note": "first meeting / no recent H2H"
+          "series_number": 2,
+          "prior_results": [
+            {
+              "date": "2026-06-09",
+              "home_score": 10,
+              "away_score": 4,
+              "margin": 6,
+              "winner": "home"
+            }
+          ],
+          "note": "Game 1 blowout (margin +6); away typically bounces back - 1 blowout(s) in this set"
         }
       },
       "line_movement": {
         "model_home_implied": 57.3,
         "market": {
-          "home_ml": -175,
-          "away_ml": 144,
+          "home_ml": -177,
+          "away_ml": 145,
           "total": 9.0,
           "book": "bovada",
-          "home_implied": 63.6
+          "home_implied": 63.9
         },
-        "edge_vs_market_pp": -6.3,
+        "edge_vs_market_pp": -6.6,
         "has_timeseries": false
       },
-      "n_predictions": 0,
-      "predictions": []
+      "n_predictions": 10,
+      "predictions": [
+        {
+          "family": "pitcher",
+          "stat": "Win",
+          "subject": "TBD",
+          "market": "PITCHER_WIN_NO",
+          "prob": 0.828,
+          "fair_odds": -481,
+          "edge": "STRONG_NO"
+        },
+        {
+          "family": "game",
+          "stat": "Team steals",
+          "subject": "DET",
+          "market": "TEAM_SB_UNDER_0.5",
+          "prob": 0.684,
+          "fair_odds": -216,
+          "edge": "STRONG_NO_SB"
+        },
+        {
+          "family": "game",
+          "stat": "Total (alt)",
+          "subject": "MIN @ DET",
+          "market": "GAME_TOTAL_UNDER_9.5",
+          "prob": 0.644,
+          "fair_odds": -181,
+          "edge": "STRONG_TOTAL"
+        },
+        {
+          "family": "pitcher",
+          "stat": "Hits allowed",
+          "subject": "Framber Valdez",
+          "market": "H_UNDER_5.0",
+          "prob": 0.636,
+          "fair_odds": -175,
+          "edge": "STRONG_UNDER"
+        },
+        {
+          "family": "pitcher",
+          "stat": "Hits allowed",
+          "subject": "TBD",
+          "market": "H_UNDER_5.0",
+          "prob": 0.633,
+          "fair_odds": -173,
+          "edge": "STRONG_UNDER"
+        },
+        {
+          "family": "pitcher",
+          "stat": "Outs",
+          "subject": "TBD",
+          "market": "OUTS_UNDER_16.5",
+          "prob": 0.573,
+          "fair_odds": -134,
+          "edge": "STANDARD_UNDER"
+        },
+        {
+          "family": "pitcher",
+          "stat": "Outs",
+          "subject": "Framber Valdez",
+          "market": "OUTS_OVER_15.5",
+          "prob": 0.566,
+          "fair_odds": -131,
+          "edge": "STANDARD_OVER"
+        },
+        {
+          "family": "pitcher",
+          "stat": "Walks",
+          "subject": "TBD",
+          "market": "Walks",
+          "prob": 0.289,
+          "fair_odds": null,
+          "edge": "NONE"
+        },
+        {
+          "family": "pitcher",
+          "stat": "Walks",
+          "subject": "Framber Valdez",
+          "market": "Walks",
+          "prob": 0.287,
+          "fair_odds": null,
+          "edge": "NONE"
+        },
+        {
+          "family": "game",
+          "stat": "Team steals",
+          "subject": "MIN",
+          "market": "Team steals",
+          "prob": 0.014,
+          "fair_odds": null,
+          "edge": "NONE"
+        }
+      ]
     },
     {
       "matchup": "ARI @ MIA",
@@ -1968,8 +2174,8 @@
         "p_over_market": 0.3697
       },
       "market": {
-        "home_ml": -109,
-        "away_ml": -111,
+        "home_ml": -105,
+        "away_ml": -115,
         "total": 8.0,
         "book": "bovada"
       },
@@ -1977,8 +2183,8 @@
         {
           "label": "MIA_ML",
           "model_prob": 0.7688,
-          "market_price": -109,
-          "edge_pct": 47.4,
+          "market_price": -105,
+          "edge_pct": 50.09,
           "kelly_units": 5.0,
           "confidence": "High"
         },
@@ -2012,76 +2218,226 @@
           "away": {
             "wins": 3,
             "losses": 7,
-            "run_diff": -24,
+            "run_diff": -27,
             "runs_pg": 2.8,
-            "runs_allowed_pg": 5.2,
-            "streak": "W1",
+            "runs_allowed_pg": 5.5,
+            "streak": "L1",
             "games_in_sample": 10
           },
           "home": {
-            "wins": 5,
-            "losses": 5,
-            "run_diff": -8,
-            "runs_pg": 3.6,
-            "runs_allowed_pg": 4.4,
-            "streak": "W2",
+            "wins": 6,
+            "losses": 4,
+            "run_diff": -3,
+            "runs_pg": 4.5,
+            "runs_allowed_pg": 4.8,
+            "streak": "W3",
             "games_in_sample": 10
           }
         },
         "ats": {
-          "away": null,
+          "away": {
+            "ats_record": "8-3-1",
+            "cover_pct": 0.727,
+            "signal": "MODEL_UNDERRATES"
+          },
           "home": {
-            "ats_record": "8-2-1",
-            "cover_pct": 0.8,
+            "ats_record": "7-2-2",
+            "cover_pct": 0.778,
             "signal": "MODEL_UNDERRATES"
           }
         },
         "pitcher_form": {
-          "away": null,
-          "home": null
-        },
-        "bullpen": null,
-        "hot_cold": [
-          {
-            "name": "Leo Jim\u00e9nez",
-            "team": "MIA",
-            "kind": "cold",
-            "heat": -0.574,
-            "recent_ops": 0.25,
-            "season_ops": 0.537,
-            "order": null
+          "away": {
+            "pitcher": "Ryne Nelson",
+            "status": "STEADY",
+            "trend": null,
+            "tier": null,
+            "k9_delta": 0.0,
+            "era_delta": 0.0,
+            "recent_k_per_9_l3": 6.1,
+            "recent_era_l3": 3.66,
+            "form_index": null,
+            "leans": []
+          },
+          "home": {
+            "pitcher": "Ryan Gusto",
+            "status": "STEADY",
+            "trend": null,
+            "tier": null,
+            "k9_delta": 0.0,
+            "era_delta": 0.0,
+            "recent_k_per_9_l3": 8.5,
+            "recent_era_l3": 4.2,
+            "form_index": null,
+            "leans": []
           }
-        ]
+        },
+        "bullpen": {
+          "away_pen": {
+            "score": 35.0,
+            "tier": "NORMAL",
+            "appearances_3d": 12,
+            "pen_ip_3d": 9.0,
+            "pitchers_25plus_24h": 0,
+            "closer_used_yesterday": false
+          },
+          "home_pen": {
+            "score": 35.0,
+            "tier": "NORMAL",
+            "appearances_3d": 0,
+            "pen_ip_3d": 0.0,
+            "pitchers_25plus_24h": 0,
+            "closer_used_yesterday": false
+          },
+          "leans": []
+        },
+        "hot_cold": []
       },
       "h2h": {
         "season_series": {
           "away": "ARI",
           "away_wins": 0,
           "home": "MIA",
-          "home_wins": 0,
-          "n": 0
+          "home_wins": 1,
+          "n": 1
         },
-        "recent_meetings": [],
+        "recent_meetings": [
+          {
+            "date": "2026-06-09",
+            "away": "ARI",
+            "away_score": 6,
+            "home": "MIA",
+            "home_score": 10
+          }
+        ],
         "current_series": {
-          "series_number": 1,
-          "prior_results": [],
-          "note": "first meeting / no recent H2H"
+          "series_number": 2,
+          "prior_results": [
+            {
+              "date": "2026-06-09",
+              "home_score": 10,
+              "away_score": 6,
+              "margin": 4,
+              "winner": "home"
+            }
+          ],
+          "note": "Coming off close Game 1"
         }
       },
       "line_movement": {
         "model_home_implied": 76.9,
         "market": {
-          "home_ml": -109,
-          "away_ml": -111,
+          "home_ml": -105,
+          "away_ml": -115,
           "total": 8.0,
           "book": "bovada",
-          "home_implied": 52.2
+          "home_implied": 51.2
         },
-        "edge_vs_market_pp": 24.7,
+        "edge_vs_market_pp": 25.7,
         "has_timeseries": false
       },
-      "n_predictions": 0,
-      "predictions": []
+      "n_predictions": 11,
+      "predictions": [
+        {
+          "family": "pitcher",
+          "stat": "Win",
+          "subject": "Ryne Nelson",
+          "market": "PITCHER_WIN_NO",
+          "prob": 0.865,
+          "fair_odds": -639,
+          "edge": "STRONG_NO"
+        },
+        {
+          "family": "game",
+          "stat": "Team steals",
+          "subject": "MIA",
+          "market": "TEAM_SB_UNDER_0.5",
+          "prob": 0.726,
+          "fair_odds": -265,
+          "edge": "STRONG_NO_SB"
+        },
+        {
+          "family": "game",
+          "stat": "Total (alt)",
+          "subject": "ARI @ MIA",
+          "market": "GAME_TOTAL_UNDER_9.5",
+          "prob": 0.68,
+          "fair_odds": -212,
+          "edge": "STRONG_TOTAL"
+        },
+        {
+          "family": "pitcher",
+          "stat": "Hits allowed",
+          "subject": "Ryan Gusto",
+          "market": "H_UNDER_7.0",
+          "prob": 0.661,
+          "fair_odds": -195,
+          "edge": "STRONG_UNDER"
+        },
+        {
+          "family": "pitcher",
+          "stat": "Strikeouts",
+          "subject": "Ryne Nelson",
+          "market": "K_OVER_3.5",
+          "prob": 0.637,
+          "fair_odds": -176,
+          "edge": "STRONG_OVER"
+        },
+        {
+          "family": "pitcher",
+          "stat": "Hits allowed",
+          "subject": "Ryne Nelson",
+          "market": "H_UNDER_5.0",
+          "prob": 0.627,
+          "fair_odds": -168,
+          "edge": "STRONG_UNDER"
+        },
+        {
+          "family": "pitcher",
+          "stat": "Outs",
+          "subject": "Ryne Nelson",
+          "market": "OUTS_OVER_15.0",
+          "prob": 0.586,
+          "fair_odds": -142,
+          "edge": "STANDARD_OVER"
+        },
+        {
+          "family": "pitcher",
+          "stat": "Outs",
+          "subject": "Ryan Gusto",
+          "market": "OUTS_UNDER_17.0",
+          "prob": 0.584,
+          "fair_odds": -140,
+          "edge": "STANDARD_UNDER"
+        },
+        {
+          "family": "pitcher",
+          "stat": "Walks",
+          "subject": "Ryne Nelson",
+          "market": "Walks",
+          "prob": 0.298,
+          "fair_odds": null,
+          "edge": "NONE"
+        },
+        {
+          "family": "pitcher",
+          "stat": "Walks",
+          "subject": "Ryan Gusto",
+          "market": "Walks",
+          "prob": 0.276,
+          "fair_odds": null,
+          "edge": "NONE"
+        },
+        {
+          "family": "game",
+          "stat": "Team steals",
+          "subject": "ARI",
+          "market": "Team steals",
+          "prob": 0.055,
+          "fair_odds": null,
+          "edge": "NONE"
+        }
+      ]
     },
     {
       "matchup": "PHI @ TOR",
@@ -2114,8 +2470,8 @@
         "p_over_market": 0.6186
       },
       "market": {
-        "home_ml": 122,
-        "away_ml": -145,
+        "home_ml": 123,
+        "away_ml": -147,
         "total": 8.5,
         "book": "bovada"
       },
@@ -2123,8 +2479,8 @@
         {
           "label": "PHI_ML",
           "model_prob": 0.7675,
-          "market_price": -145,
-          "edge_pct": 29.68,
+          "market_price": -147,
+          "edge_pct": 28.96,
           "kelly_units": 5.0,
           "confidence": "High"
         },
@@ -2158,42 +2514,78 @@
           "away": {
             "wins": 7,
             "losses": 3,
-            "run_diff": 1,
+            "run_diff": 2,
             "runs_pg": 4.4,
-            "runs_allowed_pg": 4.3,
-            "streak": "W2",
+            "runs_allowed_pg": 4.2,
+            "streak": "L1",
             "games_in_sample": 10
           },
           "home": {
             "wins": 4,
             "losses": 6,
             "run_diff": -13,
-            "runs_pg": 4.6,
-            "runs_allowed_pg": 5.9,
-            "streak": "L1",
+            "runs_pg": 4.3,
+            "runs_allowed_pg": 5.6,
+            "streak": "W1",
             "games_in_sample": 10
           }
         },
         "ats": {
-          "away": {
-            "ats_record": "3-9-0",
-            "cover_pct": 0.25,
-            "signal": "MODEL_OVERRATES"
-          },
-          "home": null
-        },
-        "pitcher_form": {
           "away": null,
           "home": null
         },
-        "bullpen": null,
+        "pitcher_form": {
+          "away": {
+            "pitcher": "Jes\u00fas Luzardo",
+            "status": "STEADY",
+            "trend": null,
+            "tier": null,
+            "k9_delta": 0.0,
+            "era_delta": 0.0,
+            "recent_k_per_9_l3": 8.65,
+            "recent_era_l3": 2.32,
+            "form_index": null,
+            "leans": []
+          },
+          "home": {
+            "pitcher": "Max Scherzer",
+            "status": "STEADY",
+            "trend": null,
+            "tier": null,
+            "k9_delta": 0.0,
+            "era_delta": 0.0,
+            "recent_k_per_9_l3": 8.5,
+            "recent_era_l3": 4.2,
+            "form_index": null,
+            "leans": []
+          }
+        },
+        "bullpen": {
+          "away_pen": {
+            "score": 35.0,
+            "tier": "NORMAL",
+            "appearances_3d": 0,
+            "pen_ip_3d": 0.0,
+            "pitchers_25plus_24h": 0,
+            "closer_used_yesterday": false
+          },
+          "home_pen": {
+            "score": 35.0,
+            "tier": "NORMAL",
+            "appearances_3d": 0,
+            "pen_ip_3d": 0.0,
+            "pitchers_25plus_24h": 0,
+            "closer_used_yesterday": false
+          },
+          "leans": []
+        },
         "hot_cold": [
           {
             "name": "Brandon Valenzuela",
             "team": "TOR",
             "kind": "hot",
-            "heat": 5.342,
-            "recent_ops": 1.421,
+            "heat": 5.4,
+            "recent_ops": 1.45,
             "season_ops": 0.0,
             "order": null
           },
@@ -2201,8 +2593,8 @@
             "name": "Brandon Marsh",
             "team": "PHI",
             "kind": "hot",
-            "heat": 4.703,
-            "recent_ops": 1.279,
+            "heat": 4.341,
+            "recent_ops": 1.098,
             "season_ops": 0.0,
             "order": null
           },
@@ -2210,8 +2602,8 @@
             "name": "Adolis Garc\u00eda",
             "team": "PHI",
             "kind": "hot",
-            "heat": 3.991,
-            "recent_ops": 0.923,
+            "heat": 3.837,
+            "recent_ops": 0.846,
             "season_ops": 0.0,
             "order": null
           }
@@ -2222,10 +2614,17 @@
           "away": "PHI",
           "away_wins": 1,
           "home": "TOR",
-          "home_wins": 0,
-          "n": 1
+          "home_wins": 1,
+          "n": 2
         },
         "recent_meetings": [
+          {
+            "date": "2026-06-09",
+            "away": "PHI",
+            "away_score": 2,
+            "home": "TOR",
+            "home_score": 3
+          },
           {
             "date": "2026-06-08",
             "away": "PHI",
@@ -2235,7 +2634,7 @@
           }
         ],
         "current_series": {
-          "series_number": 2,
+          "series_number": 3,
           "prior_results": [
             {
               "date": "2026-06-08",
@@ -2243,25 +2642,132 @@
               "away_score": 5,
               "margin": -3,
               "winner": "away"
+            },
+            {
+              "date": "2026-06-09",
+              "home_score": 3,
+              "away_score": 2,
+              "margin": 1,
+              "winner": "home"
             }
           ],
-          "note": "Coming off close Game 1"
+          "note": "Rubber match (series tied 1-1)"
         }
       },
       "line_movement": {
         "model_home_implied": 23.2,
         "market": {
-          "home_ml": 122,
-          "away_ml": -145,
+          "home_ml": 123,
+          "away_ml": -147,
           "total": 8.5,
           "book": "bovada",
-          "home_implied": 45.0
+          "home_implied": 44.8
         },
-        "edge_vs_market_pp": -21.8,
+        "edge_vs_market_pp": -21.6,
         "has_timeseries": false
       },
-      "n_predictions": 0,
-      "predictions": []
+      "n_predictions": 11,
+      "predictions": [
+        {
+          "family": "pitcher",
+          "stat": "Win",
+          "subject": "Max Scherzer",
+          "market": "PITCHER_WIN_NO",
+          "prob": 0.906,
+          "fair_odds": -967,
+          "edge": "STRONG_NO"
+        },
+        {
+          "family": "pitcher",
+          "stat": "Hits allowed",
+          "subject": "Max Scherzer",
+          "market": "H_UNDER_7.0",
+          "prob": 0.696,
+          "fair_odds": -229,
+          "edge": "STRONG_UNDER"
+        },
+        {
+          "family": "game",
+          "stat": "Total (alt)",
+          "subject": "PHI @ TOR",
+          "market": "GAME_TOTAL_UNDER_9.5",
+          "prob": 0.672,
+          "fair_odds": -205,
+          "edge": "STRONG_TOTAL"
+        },
+        {
+          "family": "pitcher",
+          "stat": "Hits allowed",
+          "subject": "Jes\u00fas Luzardo",
+          "market": "H_UNDER_5.0",
+          "prob": 0.654,
+          "fair_odds": -189,
+          "edge": "STRONG_UNDER"
+        },
+        {
+          "family": "pitcher",
+          "stat": "Strikeouts",
+          "subject": "Jes\u00fas Luzardo",
+          "market": "K_UNDER_6.5",
+          "prob": 0.629,
+          "fair_odds": -169,
+          "edge": "STRONG_UNDER"
+        },
+        {
+          "family": "pitcher",
+          "stat": "Outs",
+          "subject": "Jes\u00fas Luzardo",
+          "market": "OUTS_OVER_15.5",
+          "prob": 0.586,
+          "fair_odds": -142,
+          "edge": "STANDARD_OVER"
+        },
+        {
+          "family": "pitcher",
+          "stat": "Outs",
+          "subject": "Max Scherzer",
+          "market": "OUTS_OVER_16.5",
+          "prob": 0.562,
+          "fair_odds": -128,
+          "edge": "STANDARD_OVER"
+        },
+        {
+          "family": "pitcher",
+          "stat": "Walks",
+          "subject": "Jes\u00fas Luzardo",
+          "market": "Walks",
+          "prob": 0.282,
+          "fair_odds": null,
+          "edge": "NONE"
+        },
+        {
+          "family": "pitcher",
+          "stat": "Walks",
+          "subject": "Max Scherzer",
+          "market": "Walks",
+          "prob": 0.259,
+          "fair_odds": null,
+          "edge": "NONE"
+        },
+        {
+          "family": "game",
+          "stat": "Team steals",
+          "subject": "TOR",
+          "market": "Team steals",
+          "prob": 0.025,
+          "fair_odds": null,
+          "edge": "NONE"
+        },
+        {
+          "family": "game",
+          "stat": "Team steals",
+          "subject": "PHI",
+          "market": "Team steals",
+          "prob": 0.018,
+          "fair_odds": null,
+          "edge": "NONE"
+        }
+      ]
     },
     {
       "matchup": "STL @ NYM",
@@ -2274,11 +2780,11 @@
       "park": "Citi Field",
       "weather": {
         "temp_f": 74,
-        "wind_mph": 7,
+        "wind_mph": 6,
         "is_indoor": false,
-        "wind_dir_deg": 212,
-        "carry_index": 0.45,
-        "precip_pct": 19
+        "wind_dir_deg": 215,
+        "carry_index": 0.361,
+        "precip_pct": 18
       },
       "umpire": {
         "ump_name": null,
@@ -2288,31 +2794,31 @@
       "model": {
         "fair_home_ml": 139,
         "fair_away_ml": -139,
-        "fair_total": 7.06,
-        "p_home_win": 0.4177,
-        "p_away_win": 0.5823,
-        "p_over_market": 0.2783
+        "fair_total": 7.0,
+        "p_home_win": 0.418,
+        "p_away_win": 0.582,
+        "p_over_market": 0.3365
       },
       "market": {
         "home_ml": -135,
         "away_ml": 113,
-        "total": 8.5,
+        "total": 8.0,
         "book": "bovada"
       },
       "recommendations": [
         {
-          "label": "UNDER_8.5",
-          "model_prob": 0.7217,
+          "label": "UNDER_8.0",
+          "model_prob": 0.6635,
           "market_price": -110,
-          "edge_pct": 37.78,
+          "edge_pct": 26.67,
           "kelly_units": 5.0,
           "confidence": "High"
         },
         {
           "label": "STL_ML",
-          "model_prob": 0.5823,
+          "model_prob": 0.582,
           "market_price": 113,
-          "edge_pct": 24.03,
+          "edge_pct": 23.96,
           "kelly_units": 5.0,
           "confidence": "High"
         }
@@ -2336,57 +2842,80 @@
       "trends": {
         "team_form": {
           "away": {
-            "wins": 6,
-            "losses": 4,
-            "run_diff": 7,
-            "runs_pg": 4.4,
-            "runs_allowed_pg": 3.7,
-            "streak": "W4",
+            "wins": 7,
+            "losses": 3,
+            "run_diff": 15,
+            "runs_pg": 5.0,
+            "runs_allowed_pg": 3.5,
+            "streak": "W5",
             "games_in_sample": 10
           },
           "home": {
-            "wins": 7,
-            "losses": 3,
-            "run_diff": 26,
-            "runs_pg": 5.5,
-            "runs_allowed_pg": 2.9,
-            "streak": "W1",
+            "wins": 6,
+            "losses": 4,
+            "run_diff": 17,
+            "runs_pg": 5.1,
+            "runs_allowed_pg": 3.4,
+            "streak": "L1",
             "games_in_sample": 10
           }
         },
         "ats": {
-          "away": {
-            "ats_record": "8-2-1",
-            "cover_pct": 0.8,
-            "signal": "MODEL_UNDERRATES"
-          },
-          "home": {
-            "ats_record": "3-8-0",
-            "cover_pct": 0.273,
-            "signal": "MODEL_OVERRATES"
-          }
-        },
-        "pitcher_form": {
           "away": null,
           "home": null
         },
-        "bullpen": null,
+        "pitcher_form": {
+          "away": {
+            "pitcher": "Andre Pallante",
+            "status": "STEADY",
+            "trend": null,
+            "tier": null,
+            "k9_delta": 0.0,
+            "era_delta": 0.0,
+            "recent_k_per_9_l3": 7.97,
+            "recent_era_l3": 3.32,
+            "form_index": null,
+            "leans": []
+          },
+          "home": {
+            "pitcher": "Austin Warren",
+            "status": "STEADY",
+            "trend": null,
+            "tier": null,
+            "k9_delta": 0.0,
+            "era_delta": 0.0,
+            "recent_k_per_9_l3": 8.5,
+            "recent_era_l3": 4.2,
+            "form_index": null,
+            "leans": []
+          }
+        },
+        "bullpen": {
+          "away_pen": {
+            "score": 35.0,
+            "tier": "NORMAL",
+            "appearances_3d": 0,
+            "pen_ip_3d": 0.0,
+            "pitchers_25plus_24h": 0,
+            "closer_used_yesterday": false
+          },
+          "home_pen": {
+            "score": 35.0,
+            "tier": "NORMAL",
+            "appearances_3d": 0,
+            "pen_ip_3d": 0.0,
+            "pitchers_25plus_24h": 0,
+            "closer_used_yesterday": false
+          },
+          "leans": []
+        },
         "hot_cold": [
           {
-            "name": "Carson Benge",
-            "team": "NYM",
-            "kind": "hot",
-            "heat": 5.814,
-            "recent_ops": 1.407,
-            "season_ops": 0.0,
-            "order": null
-          },
-          {
-            "name": "Lars Nootbaar",
+            "name": "Alec Burleson",
             "team": "STL",
             "kind": "hot",
-            "heat": 3.989,
-            "recent_ops": 1.162,
+            "heat": 4.656,
+            "recent_ops": 1.328,
             "season_ops": 0.0,
             "order": null
           }
@@ -2395,16 +2924,32 @@
       "h2h": {
         "season_series": {
           "away": "STL",
-          "away_wins": 0,
+          "away_wins": 1,
           "home": "NYM",
           "home_wins": 0,
-          "n": 0
+          "n": 1
         },
-        "recent_meetings": [],
+        "recent_meetings": [
+          {
+            "date": "2026-06-09",
+            "away": "STL",
+            "away_score": 7,
+            "home": "NYM",
+            "home_score": 0
+          }
+        ],
         "current_series": {
-          "series_number": 1,
-          "prior_results": [],
-          "note": "first meeting / no recent H2H"
+          "series_number": 2,
+          "prior_results": [
+            {
+              "date": "2026-06-09",
+              "home_score": 0,
+              "away_score": 7,
+              "margin": -7,
+              "winner": "away"
+            }
+          ],
+          "note": "Game 1 blowout (margin -7); home typically bounces back - 1 blowout(s) in this set"
         }
       },
       "line_movement": {
@@ -2412,15 +2957,115 @@
         "market": {
           "home_ml": -135,
           "away_ml": 113,
-          "total": 8.5,
+          "total": 8.0,
           "book": "bovada",
           "home_implied": 57.4
         },
         "edge_vs_market_pp": -15.6,
         "has_timeseries": false
       },
-      "n_predictions": 0,
-      "predictions": []
+      "n_predictions": 11,
+      "predictions": [
+        {
+          "family": "pitcher",
+          "stat": "Win",
+          "subject": "Austin Warren",
+          "market": "PITCHER_WIN_NO",
+          "prob": 0.832,
+          "fair_odds": -494,
+          "edge": "STRONG_NO"
+        },
+        {
+          "family": "pitcher",
+          "stat": "Quality start",
+          "subject": "Andre Pallante",
+          "market": "QUALITY_START_NO",
+          "prob": 0.695,
+          "fair_odds": -228,
+          "edge": "STRONG_NO"
+        },
+        {
+          "family": "pitcher",
+          "stat": "Hits allowed",
+          "subject": "Andre Pallante",
+          "market": "H_UNDER_5.0",
+          "prob": 0.679,
+          "fair_odds": -212,
+          "edge": "STRONG_UNDER"
+        },
+        {
+          "family": "game",
+          "stat": "Total (alt)",
+          "subject": "STL @ NYM",
+          "market": "GAME_TOTAL_UNDER_9.5",
+          "prob": 0.668,
+          "fair_odds": -201,
+          "edge": "STRONG_TOTAL"
+        },
+        {
+          "family": "pitcher",
+          "stat": "Earned runs",
+          "subject": "Austin Warren",
+          "market": "ER_UNDER_1.5",
+          "prob": 0.636,
+          "fair_odds": -175,
+          "edge": "STRONG_UNDER"
+        },
+        {
+          "family": "pitcher",
+          "stat": "Outs",
+          "subject": "Andre Pallante",
+          "market": "OUTS_OVER_16.5",
+          "prob": 0.593,
+          "fair_odds": -145,
+          "edge": "STANDARD_OVER"
+        },
+        {
+          "family": "pitcher",
+          "stat": "Outs",
+          "subject": "Austin Warren",
+          "market": "OUTS_OVER_15.0",
+          "prob": 0.586,
+          "fair_odds": -142,
+          "edge": "STANDARD_OVER"
+        },
+        {
+          "family": "pitcher",
+          "stat": "Walks",
+          "subject": "Austin Warren",
+          "market": "Walks",
+          "prob": 0.298,
+          "fair_odds": null,
+          "edge": "NONE"
+        },
+        {
+          "family": "pitcher",
+          "stat": "Walks",
+          "subject": "Andre Pallante",
+          "market": "Walks",
+          "prob": 0.252,
+          "fair_odds": null,
+          "edge": "NONE"
+        },
+        {
+          "family": "game",
+          "stat": "Team steals",
+          "subject": "NYM",
+          "market": "Team steals",
+          "prob": 0.071,
+          "fair_odds": null,
+          "edge": "NONE"
+        },
+        {
+          "family": "game",
+          "stat": "Team steals",
+          "subject": "STL",
+          "market": "Team steals",
+          "prob": 0.032,
+          "fair_odds": null,
+          "edge": "NONE"
+        }
+      ]
     },
     {
       "matchup": "TEX @ KCR",
@@ -2432,12 +3077,12 @@
       "time": "7:40p ET",
       "park": "Kauffman Stadium",
       "weather": {
-        "temp_f": 80,
-        "wind_mph": 8,
+        "temp_f": 70,
+        "wind_mph": 0,
         "is_indoor": false,
-        "wind_dir_deg": 63,
-        "carry_index": -0.507,
-        "precip_pct": 26
+        "wind_dir_deg": null,
+        "carry_index": null,
+        "precip_pct": null
       },
       "umpire": {
         "ump_name": null,
@@ -2445,12 +3090,12 @@
         "ump_k_mult": null
       },
       "model": {
-        "fair_home_ml": 127,
-        "fair_away_ml": -127,
-        "fair_total": 7.79,
-        "p_home_win": 0.4402,
-        "p_away_win": 0.5598,
-        "p_over_market": 0.211
+        "fair_home_ml": 126,
+        "fair_away_ml": -126,
+        "fair_total": 7.08,
+        "p_home_win": 0.4431,
+        "p_away_win": 0.5569,
+        "p_over_market": 0.1406
       },
       "market": {
         "home_ml": 104,
@@ -2461,9 +3106,9 @@
       "recommendations": [
         {
           "label": "UNDER_10.0",
-          "model_prob": 0.789,
+          "model_prob": 0.8594,
           "market_price": -110,
-          "edge_pct": 50.63,
+          "edge_pct": 64.07,
           "kelly_units": 5.0,
           "confidence": "High"
         }
@@ -2489,53 +3134,49 @@
           "away": {
             "wins": 7,
             "losses": 3,
-            "run_diff": 15,
-            "runs_pg": 4.8,
+            "run_diff": 17,
+            "runs_pg": 5.0,
             "runs_allowed_pg": 3.3,
-            "streak": "W1",
+            "streak": "L1",
             "games_in_sample": 10
           },
           "home": {
-            "wins": 5,
-            "losses": 5,
-            "run_diff": -1,
-            "runs_pg": 4.7,
-            "runs_allowed_pg": 4.8,
-            "streak": "W2",
+            "wins": 6,
+            "losses": 4,
+            "run_diff": 9,
+            "runs_pg": 5.1,
+            "runs_allowed_pg": 4.2,
+            "streak": "W3",
             "games_in_sample": 10
           }
         },
         "ats": {
           "away": null,
-          "home": {
-            "ats_record": "8-2-2",
-            "cover_pct": 0.8,
-            "signal": "MODEL_UNDERRATES"
-          }
+          "home": null
         },
         "pitcher_form": {
           "away": {
-            "pitcher": "Nathan Eovaldi",
+            "pitcher": "MacKenzie Gore",
             "status": "STEADY",
             "trend": null,
-            "tier": "NEUTRAL_FORM",
-            "k9_delta": 0.0,
-            "era_delta": 0.0,
-            "recent_k_per_9_l3": 8.15,
-            "recent_era_l3": 3.57,
-            "form_index": 50.0,
-            "leans": []
-          },
-          "home": {
-            "pitcher": "Stephen Kolek",
-            "status": "STEADY",
-            "trend": null,
-            "tier": "NEUTRAL_FORM",
+            "tier": null,
             "k9_delta": 0.0,
             "era_delta": 0.0,
             "recent_k_per_9_l3": 8.5,
             "recent_era_l3": 4.2,
-            "form_index": 50.0,
+            "form_index": null,
+            "leans": []
+          },
+          "home": {
+            "pitcher": "Seth Lugo",
+            "status": "STEADY",
+            "trend": null,
+            "tier": null,
+            "k9_delta": 0.0,
+            "era_delta": 0.0,
+            "recent_k_per_9_l3": 7.25,
+            "recent_era_l3": 5.84,
+            "form_index": null,
             "leans": []
           }
         },
@@ -2560,13 +3201,40 @@
         },
         "hot_cold": [
           {
-            "name": "Kyle Higashioka",
+            "name": "Brandon Nimmo",
             "team": "TEX",
-            "kind": "hot",
-            "heat": 4.058,
-            "recent_ops": 1.404,
-            "season_ops": 0.0,
-            "order": null
+            "kind": "cold",
+            "heat": -0.721,
+            "recent_ops": 0.645,
+            "season_ops": 0.732,
+            "order": 4
+          },
+          {
+            "name": "Jake Burger",
+            "team": "TEX",
+            "kind": "cold",
+            "heat": -0.905,
+            "recent_ops": 0.645,
+            "season_ops": 0.707,
+            "order": 7
+          },
+          {
+            "name": "Evan Carter",
+            "team": "TEX",
+            "kind": "cold",
+            "heat": -0.976,
+            "recent_ops": 0.364,
+            "season_ops": 0.614,
+            "order": 8
+          },
+          {
+            "name": "Joc Pederson",
+            "team": "TEX",
+            "kind": "cold",
+            "heat": -1.377,
+            "recent_ops": 0.421,
+            "season_ops": 0.787,
+            "order": 1
           }
         ]
       },
@@ -2580,13 +3248,21 @@
         },
         "recent_meetings": [],
         "current_series": {
-          "series_number": 1,
-          "prior_results": [],
-          "note": "first meeting / no recent H2H"
+          "series_number": 2,
+          "prior_results": [
+            {
+              "date": "2026-06-09",
+              "home_score": 5,
+              "away_score": 3,
+              "margin": 2,
+              "winner": "home"
+            }
+          ],
+          "note": "Coming off close Game 1"
         }
       },
       "line_movement": {
-        "model_home_implied": 44.0,
+        "model_home_implied": 44.3,
         "market": {
           "home_ml": 104,
           "away_ml": -124,
@@ -2594,276 +3270,60 @@
           "book": "bovada",
           "home_implied": 49.0
         },
-        "edge_vs_market_pp": -5.0,
+        "edge_vs_market_pp": -4.7,
         "has_timeseries": false
       },
-      "n_predictions": 41,
+      "n_predictions": 11,
       "predictions": [
-        {
-          "family": "batter",
-          "stat": "2+ hits",
-          "subject": "Carter Jensen",
-          "market": "HITS_2PLUS_NO",
-          "prob": 0.864,
-          "fair_odds": -635,
-          "edge": "STRONG_NO"
-        },
-        {
-          "family": "batter",
-          "stat": "2+ hits",
-          "subject": "Isaac Collins",
-          "market": "HITS_2PLUS_NO",
-          "prob": 0.863,
-          "fair_odds": -632,
-          "edge": "STRONG_NO"
-        },
-        {
-          "family": "batter",
-          "stat": "XBH",
-          "subject": "Brandon Nimmo",
-          "market": "NO_XBH",
-          "prob": 0.858,
-          "fair_odds": -603,
-          "edge": "STRONG_NO_XBH"
-        },
-        {
-          "family": "batter",
-          "stat": "RBI",
-          "subject": "Carter Jensen",
-          "market": "RBI_1PLUS_YES",
-          "prob": 0.857,
-          "fair_odds": -600,
-          "edge": "STRONG_YES"
-        },
-        {
-          "family": "batter",
-          "stat": "RBI",
-          "subject": "Joc Pederson",
-          "market": "RBI_1PLUS_YES",
-          "prob": 0.857,
-          "fair_odds": -600,
-          "edge": "STRONG_YES"
-        },
-        {
-          "family": "batter",
-          "stat": "XBH",
-          "subject": "Maikel Garcia",
-          "market": "NO_XBH",
-          "prob": 0.853,
-          "fair_odds": -580,
-          "edge": "STRONG_NO_XBH"
-        },
         {
           "family": "pitcher",
           "stat": "Win",
-          "subject": "Stephen Kolek",
+          "subject": "Seth Lugo",
           "market": "PITCHER_WIN_NO",
-          "prob": 0.822,
-          "fair_odds": -463,
+          "prob": 0.785,
+          "fair_odds": -364,
           "edge": "STRONG_NO"
-        },
-        {
-          "family": "batter",
-          "stat": "2+ hits",
-          "subject": "Jake Burger",
-          "market": "HITS_2PLUS_NO",
-          "prob": 0.815,
-          "fair_odds": -439,
-          "edge": "STRONG_NO"
-        },
-        {
-          "family": "batter",
-          "stat": "2+ hits",
-          "subject": "Joc Pederson",
-          "market": "HITS_2PLUS_NO",
-          "prob": 0.814,
-          "fair_odds": -438,
-          "edge": "STRONG_NO"
-        },
-        {
-          "family": "batter",
-          "stat": "2+ hits",
-          "subject": "Salvador Perez",
-          "market": "HITS_2PLUS_NO",
-          "prob": 0.788,
-          "fair_odds": -373,
-          "edge": "STRONG_NO"
-        },
-        {
-          "family": "batter",
-          "stat": "2+ hits",
-          "subject": "Jac Caglianone",
-          "market": "HITS_2PLUS_NO",
-          "prob": 0.788,
-          "fair_odds": -372,
-          "edge": "STRONG_NO"
-        },
-        {
-          "family": "batter",
-          "stat": "2+ hits",
-          "subject": "Kyle Higashioka",
-          "market": "HITS_2PLUS_NO",
-          "prob": 0.788,
-          "fair_odds": -371,
-          "edge": "STRONG_NO"
-        },
-        {
-          "family": "batter",
-          "stat": "2+ hits",
-          "subject": "Bobby Witt Jr.",
-          "market": "HITS_2PLUS_NO",
-          "prob": 0.788,
-          "fair_odds": -373,
-          "edge": "STRONG_NO"
-        },
-        {
-          "family": "batter",
-          "stat": "RBI",
-          "subject": "Ezequiel Duran",
-          "market": "RBI_1PLUS_YES",
-          "prob": 0.786,
-          "fair_odds": -367,
-          "edge": "STRONG_YES"
-        },
-        {
-          "family": "batter",
-          "stat": "RBI",
-          "subject": "Wyatt Langford",
-          "market": "RBI_1PLUS_NO",
-          "prob": 0.786,
-          "fair_odds": -367,
-          "edge": "STRONG_NO"
-        },
-        {
-          "family": "batter",
-          "stat": "Strikeouts",
-          "subject": "Joc Pederson",
-          "market": "K_1PLUS_YES",
-          "prob": 0.695,
-          "fair_odds": -228,
-          "edge": "STRONG_YES_1PLUS"
-        },
-        {
-          "family": "batter",
-          "stat": "Strikeouts",
-          "subject": "Corey Seager",
-          "market": "K_1PLUS_YES",
-          "prob": 0.695,
-          "fair_odds": -228,
-          "edge": "STRONG_YES_1PLUS"
-        },
-        {
-          "family": "batter",
-          "stat": "Strikeouts",
-          "subject": "Josh Jung",
-          "market": "K_1PLUS_YES",
-          "prob": 0.695,
-          "fair_odds": -228,
-          "edge": "STRONG_YES_1PLUS"
-        },
-        {
-          "family": "batter",
-          "stat": "Strikeouts",
-          "subject": "Carter Jensen",
-          "market": "K_1PLUS_YES",
-          "prob": 0.68,
-          "fair_odds": -212,
-          "edge": "STRONG_YES_1PLUS"
-        },
-        {
-          "family": "batter",
-          "stat": "Strikeouts",
-          "subject": "Bobby Witt Jr.",
-          "market": "K_1PLUS_YES",
-          "prob": 0.68,
-          "fair_odds": -212,
-          "edge": "STRONG_YES_1PLUS"
-        },
-        {
-          "family": "batter",
-          "stat": "Strikeouts",
-          "subject": "Maikel Garcia",
-          "market": "K_1PLUS_YES",
-          "prob": 0.68,
-          "fair_odds": -212,
-          "edge": "STRONG_YES_1PLUS"
-        },
-        {
-          "family": "batter",
-          "stat": "Strikeouts",
-          "subject": "Brandon Nimmo",
-          "market": "K_1PLUS_YES",
-          "prob": 0.669,
-          "fair_odds": -203,
-          "edge": "STRONG_YES_1PLUS"
-        },
-        {
-          "family": "batter",
-          "stat": "Strikeouts",
-          "subject": "Wyatt Langford",
-          "market": "K_1PLUS_YES",
-          "prob": 0.669,
-          "fair_odds": -203,
-          "edge": "STRONG_YES_1PLUS"
-        },
-        {
-          "family": "batter",
-          "stat": "Strikeouts",
-          "subject": "Ezequiel Duran",
-          "market": "K_1PLUS_YES",
-          "prob": 0.669,
-          "fair_odds": -203,
-          "edge": "STRONG_YES_1PLUS"
-        },
-        {
-          "family": "batter",
-          "stat": "Strikeouts",
-          "subject": "Vinnie Pasquantino",
-          "market": "K_1PLUS_YES",
-          "prob": 0.654,
-          "fair_odds": -189,
-          "edge": "STRONG_YES_1PLUS"
-        },
-        {
-          "family": "batter",
-          "stat": "Strikeouts",
-          "subject": "Salvador Perez",
-          "market": "K_1PLUS_YES",
-          "prob": 0.654,
-          "fair_odds": -189,
-          "edge": "STRONG_YES_1PLUS"
-        },
-        {
-          "family": "batter",
-          "stat": "Strikeouts",
-          "subject": "Jac Caglianone",
-          "market": "K_1PLUS_YES",
-          "prob": 0.654,
-          "fair_odds": -189,
-          "edge": "STRONG_YES_1PLUS"
         },
         {
           "family": "pitcher",
-          "stat": "Earned runs",
-          "subject": "Stephen Kolek",
-          "market": "ER_UNDER_2.5",
-          "prob": 0.65,
-          "fair_odds": -186,
+          "stat": "Strikeouts",
+          "subject": "Seth Lugo",
+          "market": "K_OVER_3.5",
+          "prob": 0.669,
+          "fair_odds": -202,
+          "edge": "STRONG_OVER"
+        },
+        {
+          "family": "pitcher",
+          "stat": "Hits allowed",
+          "subject": "Seth Lugo",
+          "market": "H_UNDER_5.0",
+          "prob": 0.659,
+          "fair_odds": -193,
+          "edge": "STRONG_UNDER"
+        },
+        {
+          "family": "pitcher",
+          "stat": "Hits allowed",
+          "subject": "MacKenzie Gore",
+          "market": "H_UNDER_5.0",
+          "prob": 0.628,
+          "fair_odds": -169,
           "edge": "STRONG_UNDER"
         },
         {
           "family": "game",
           "stat": "Total (alt)",
           "subject": "TEX @ KCR",
-          "market": "GAME_TOTAL_OVER_7.5",
-          "prob": 0.65,
-          "fair_odds": -186,
+          "market": "GAME_TOTAL_UNDER_9.5",
+          "prob": 0.585,
+          "fair_odds": -141,
           "edge": "STRONG_TOTAL"
         },
         {
           "family": "pitcher",
           "stat": "Outs",
-          "subject": "Nathan Eovaldi",
+          "subject": "MacKenzie Gore",
           "market": "OUTS_OVER_15.5",
           "prob": 0.58,
           "fair_odds": -138,
@@ -2872,70 +3332,16 @@
         {
           "family": "pitcher",
           "stat": "Outs",
-          "subject": "Stephen Kolek",
+          "subject": "Seth Lugo",
           "market": "OUTS_OVER_15.5",
           "prob": 0.566,
           "fair_odds": -131,
           "edge": "STANDARD_OVER"
         },
         {
-          "family": "batter",
-          "stat": "XBH",
-          "subject": "Evan Carter",
-          "market": "1_PLUS_XBH",
-          "prob": 0.44,
-          "fair_odds": 127,
-          "edge": "STRONG_1_PLUS_XBH"
-        },
-        {
-          "family": "batter",
-          "stat": "3+ TB",
-          "subject": "Josh Jung",
-          "market": "TB_3PLUS_YES",
-          "prob": 0.353,
-          "fair_odds": 183,
-          "edge": "STRONG_YES"
-        },
-        {
-          "family": "batter",
-          "stat": "XBH",
-          "subject": "Bobby Witt Jr.",
-          "market": "1_PLUS_XBH",
-          "prob": 0.347,
-          "fair_odds": 188,
-          "edge": "STRONG_1_PLUS_XBH"
-        },
-        {
-          "family": "batter",
-          "stat": "XBH",
-          "subject": "Vinnie Pasquantino",
-          "market": "1_PLUS_XBH",
-          "prob": 0.336,
-          "fair_odds": 198,
-          "edge": "STRONG_1_PLUS_XBH"
-        },
-        {
-          "family": "batter",
-          "stat": "XBH",
-          "subject": "Kyle Higashioka",
-          "market": "1_PLUS_XBH",
-          "prob": 0.331,
-          "fair_odds": 202,
-          "edge": "STRONG_1_PLUS_XBH"
-        },
-        {
-          "family": "batter",
-          "stat": "3+ TB",
-          "subject": "Michael Massey",
-          "market": "TB_3PLUS_YES",
-          "prob": 0.324,
-          "fair_odds": 209,
-          "edge": "STRONG_YES"
-        },
-        {
           "family": "pitcher",
           "stat": "Walks",
-          "subject": "Stephen Kolek",
+          "subject": "Seth Lugo",
           "market": "Walks",
           "prob": 0.287,
           "fair_odds": null,
@@ -2944,7 +3350,7 @@
         {
           "family": "pitcher",
           "stat": "Walks",
-          "subject": "Nathan Eovaldi",
+          "subject": "MacKenzie Gore",
           "market": "Walks",
           "prob": 0.284,
           "fair_odds": null,
@@ -2980,12 +3386,12 @@
       "time": "7:40p ET",
       "park": "Rate Field",
       "weather": {
-        "temp_f": 72,
-        "wind_mph": 9,
+        "temp_f": 70,
+        "wind_mph": 0,
         "is_indoor": false,
-        "wind_dir_deg": 192,
-        "carry_index": 0.577,
-        "precip_pct": 22
+        "wind_dir_deg": null,
+        "carry_index": null,
+        "precip_pct": null
       },
       "umpire": {
         "ump_name": null,
@@ -2993,33 +3399,33 @@
         "ump_k_mult": null
       },
       "model": {
-        "fair_home_ml": 289,
-        "fair_away_ml": -289,
-        "fair_total": 10.12,
-        "p_home_win": 0.2569,
-        "p_away_win": 0.7431,
-        "p_over_market": 0.79
+        "fair_home_ml": 277,
+        "fair_away_ml": -277,
+        "fair_total": 9.37,
+        "p_home_win": 0.265,
+        "p_away_win": 0.735,
+        "p_over_market": 0.7176
       },
       "market": {
-        "home_ml": 134,
-        "away_ml": -160,
+        "home_ml": 127,
+        "away_ml": -152,
         "total": 7.5,
         "book": "bovada"
       },
       "recommendations": [
         {
           "label": "OVER_7.5",
-          "model_prob": 0.79,
+          "model_prob": 0.7176,
           "market_price": -110,
-          "edge_pct": 50.81,
+          "edge_pct": 37.0,
           "kelly_units": 5.0,
           "confidence": "High"
         },
         {
           "label": "ATL_ML",
-          "model_prob": 0.7431,
-          "market_price": -160,
-          "edge_pct": 20.76,
+          "model_prob": 0.735,
+          "market_price": -152,
+          "edge_pct": 21.85,
           "kelly_units": 5.0,
           "confidence": "High"
         }
@@ -3043,21 +3449,21 @@
       "trends": {
         "team_form": {
           "away": {
-            "wins": 8,
-            "losses": 2,
-            "run_diff": 21,
-            "runs_pg": 5.5,
-            "runs_allowed_pg": 3.4,
-            "streak": "W3",
+            "wins": 7,
+            "losses": 3,
+            "run_diff": 12,
+            "runs_pg": 5.0,
+            "runs_allowed_pg": 3.8,
+            "streak": "L1",
             "games_in_sample": 10
           },
           "home": {
             "wins": 6,
             "losses": 4,
-            "run_diff": 12,
+            "run_diff": 9,
             "runs_pg": 5.4,
-            "runs_allowed_pg": 4.2,
-            "streak": "L1",
+            "runs_allowed_pg": 4.5,
+            "streak": "W1",
             "games_in_sample": 10
           }
         },
@@ -3067,19 +3473,19 @@
         },
         "pitcher_form": {
           "away": {
-            "pitcher": "Grant Holmes",
+            "pitcher": "Chris Sale",
             "status": "STEADY",
             "trend": null,
-            "tier": "NEUTRAL_FORM",
+            "tier": null,
             "k9_delta": 0.0,
             "era_delta": 0.0,
-            "recent_k_per_9_l3": 8.71,
-            "recent_era_l3": 4.14,
-            "form_index": 50.0,
+            "recent_k_per_9_l3": 11.37,
+            "recent_era_l3": 1.78,
+            "form_index": null,
             "leans": []
           },
           "home": {
-            "pitcher": "Brandon Eisert",
+            "pitcher": "TBD",
             "status": "STEADY",
             "trend": null,
             "tier": null,
@@ -3112,31 +3518,31 @@
         },
         "hot_cold": [
           {
-            "name": "Mauricio Dub\u00f3n",
-            "team": "ATL",
-            "kind": "hot",
-            "heat": 5.148,
-            "recent_ops": 1.324,
-            "season_ops": 0.0,
-            "order": null
-          },
-          {
-            "name": "Sandy Le\u00f3n",
+            "name": "Michael Harris II",
             "team": "ATL",
             "kind": "cold",
-            "heat": 0.032,
-            "recent_ops": 0.182,
-            "season_ops": 0.166,
-            "order": null
+            "heat": -0.93,
+            "recent_ops": 0.921,
+            "season_ops": 0.87,
+            "order": 2
           },
           {
             "name": "Ronald Acu\u00f1a Jr.",
             "team": "ATL",
             "kind": "cold",
-            "heat": -1.021,
-            "recent_ops": 0.624,
-            "season_ops": 0.798,
-            "order": null
+            "heat": -1.004,
+            "recent_ops": 0.622,
+            "season_ops": 0.794,
+            "order": 1
+          },
+          {
+            "name": "Mike Yastrzemski",
+            "team": "ATL",
+            "kind": "cold",
+            "heat": -1.052,
+            "recent_ops": 0.273,
+            "season_ops": 0.676,
+            "order": 8
           }
         ]
       },
@@ -3145,412 +3551,86 @@
           "away": "ATL",
           "away_wins": 0,
           "home": "CHW",
-          "home_wins": 0,
-          "n": 0
+          "home_wins": 1,
+          "n": 1
         },
-        "recent_meetings": [],
+        "recent_meetings": [
+          {
+            "date": "2026-06-09",
+            "away": "ATL",
+            "away_score": 5,
+            "home": "CHW",
+            "home_score": 6
+          }
+        ],
         "current_series": {
-          "series_number": 1,
-          "prior_results": [],
-          "note": "first meeting / no recent H2H"
+          "series_number": 2,
+          "prior_results": [
+            {
+              "date": "2026-06-09",
+              "home_score": 6,
+              "away_score": 5,
+              "margin": 1,
+              "winner": "home"
+            }
+          ],
+          "note": "Coming off close Game 1"
         }
       },
       "line_movement": {
-        "model_home_implied": 25.7,
+        "model_home_implied": 26.5,
         "market": {
-          "home_ml": 134,
-          "away_ml": -160,
+          "home_ml": 127,
+          "away_ml": -152,
           "total": 7.5,
           "book": "bovada",
-          "home_implied": 42.7
+          "home_implied": 44.1
         },
-        "edge_vs_market_pp": -17.0,
+        "edge_vs_market_pp": -17.6,
         "has_timeseries": false
       },
-      "n_predictions": 48,
+      "n_predictions": 8,
       "predictions": [
-        {
-          "family": "batter",
-          "stat": "2+ hits",
-          "subject": "Mike Yastrzemski",
-          "market": "HITS_2PLUS_NO",
-          "prob": 0.864,
-          "fair_odds": -636,
-          "edge": "STRONG_NO"
-        },
-        {
-          "family": "batter",
-          "stat": "2+ hits",
-          "subject": "Dominic Smith",
-          "market": "HITS_2PLUS_NO",
-          "prob": 0.863,
-          "fair_odds": -632,
-          "edge": "STRONG_NO"
-        },
-        {
-          "family": "batter",
-          "stat": "To record a hit",
-          "subject": "Tristan Peters",
-          "market": "TO_RECORD_HIT_YES",
-          "prob": 0.861,
-          "fair_odds": -620,
-          "edge": "STRONG_YES"
-        },
         {
           "family": "pitcher",
           "stat": "Win",
-          "subject": "Grant Holmes",
+          "subject": "TBD",
           "market": "PITCHER_WIN_NO",
-          "prob": 0.827,
-          "fair_odds": -478,
+          "prob": 0.896,
+          "fair_odds": -866,
           "edge": "STRONG_NO"
-        },
-        {
-          "family": "batter",
-          "stat": "XBH",
-          "subject": "Jacob Gonzalez",
-          "market": "NO_XBH",
-          "prob": 0.825,
-          "fair_odds": -473,
-          "edge": "STRONG_NO_XBH"
-        },
-        {
-          "family": "batter",
-          "stat": "To record a hit",
-          "subject": "Sam Antonacci",
-          "market": "TO_RECORD_HIT_YES",
-          "prob": 0.819,
-          "fair_odds": -451,
-          "edge": "STRONG_YES"
-        },
-        {
-          "family": "batter",
-          "stat": "2+ hits",
-          "subject": "Andrew Benintendi",
-          "market": "HITS_2PLUS_NO",
-          "prob": 0.814,
-          "fair_odds": -438,
-          "edge": "STRONG_NO"
-        },
-        {
-          "family": "batter",
-          "stat": "RBI",
-          "subject": "Miguel Vargas",
-          "market": "RBI_1PLUS_YES",
-          "prob": 0.786,
-          "fair_odds": -367,
-          "edge": "STRONG_YES"
-        },
-        {
-          "family": "batter",
-          "stat": "RBI",
-          "subject": "Ronald Acu\u00f1a Jr.",
-          "market": "RBI_1PLUS_YES",
-          "prob": 0.786,
-          "fair_odds": -367,
-          "edge": "STRONG_YES"
-        },
-        {
-          "family": "batter",
-          "stat": "RBI",
-          "subject": "Michael Harris II",
-          "market": "RBI_1PLUS_YES",
-          "prob": 0.786,
-          "fair_odds": -367,
-          "edge": "STRONG_YES"
-        },
-        {
-          "family": "batter",
-          "stat": "RBI",
-          "subject": "Luisangel Acu\u00f1a",
-          "market": "RBI_1PLUS_NO",
-          "prob": 0.786,
-          "fair_odds": -367,
-          "edge": "STRONG_NO"
-        },
-        {
-          "family": "batter",
-          "stat": "RBI",
-          "subject": "Austin Riley",
-          "market": "RBI_1PLUS_NO",
-          "prob": 0.786,
-          "fair_odds": -367,
-          "edge": "STRONG_NO"
-        },
-        {
-          "family": "batter",
-          "stat": "Strikeouts",
-          "subject": "Sam Antonacci",
-          "market": "K_1PLUS_YES",
-          "prob": 0.704,
-          "fair_odds": -238,
-          "edge": "STRONG_YES_1PLUS"
-        },
-        {
-          "family": "batter",
-          "stat": "Strikeouts",
-          "subject": "Miguel Vargas",
-          "market": "K_1PLUS_YES",
-          "prob": 0.704,
-          "fair_odds": -238,
-          "edge": "STRONG_YES_1PLUS"
-        },
-        {
-          "family": "batter",
-          "stat": "Strikeouts",
-          "subject": "Andrew Benintendi",
-          "market": "K_1PLUS_YES",
-          "prob": 0.704,
-          "fair_odds": -238,
-          "edge": "STRONG_YES_1PLUS"
-        },
-        {
-          "family": "batter",
-          "stat": "Strikeouts",
-          "subject": "Ronald Acu\u00f1a Jr.",
-          "market": "K_1PLUS_YES",
-          "prob": 0.695,
-          "fair_odds": -228,
-          "edge": "STRONG_YES_1PLUS"
-        },
-        {
-          "family": "batter",
-          "stat": "Strikeouts",
-          "subject": "Michael Harris II",
-          "market": "K_1PLUS_YES",
-          "prob": 0.695,
-          "fair_odds": -228,
-          "edge": "STRONG_YES_1PLUS"
-        },
-        {
-          "family": "batter",
-          "stat": "Strikeouts",
-          "subject": "Matt Olson",
-          "market": "K_1PLUS_YES",
-          "prob": 0.695,
-          "fair_odds": -228,
-          "edge": "STRONG_YES_1PLUS"
         },
         {
           "family": "game",
           "stat": "Total (alt)",
           "subject": "ATL @ CHW",
           "market": "GAME_TOTAL_OVER_6.5",
-          "prob": 0.687,
-          "fair_odds": -219,
+          "prob": 0.662,
+          "fair_odds": -196,
           "edge": "STRONG_TOTAL"
         },
         {
-          "family": "batter",
-          "stat": "Strikeouts",
-          "subject": "Jacob Gonzalez",
-          "market": "K_1PLUS_YES",
-          "prob": 0.678,
-          "fair_odds": -211,
-          "edge": "STRONG_YES_1PLUS"
-        },
-        {
-          "family": "batter",
-          "stat": "Strikeouts",
-          "subject": "Chase Meidroth",
-          "market": "K_1PLUS_YES",
-          "prob": 0.678,
-          "fair_odds": -211,
-          "edge": "STRONG_YES_1PLUS"
-        },
-        {
-          "family": "batter",
-          "stat": "Strikeouts",
-          "subject": "Braden Montgomery",
-          "market": "K_1PLUS_YES",
-          "prob": 0.678,
-          "fair_odds": -211,
-          "edge": "STRONG_YES_1PLUS"
-        },
-        {
-          "family": "pitcher",
-          "stat": "Hits allowed",
-          "subject": "Brandon Eisert",
-          "market": "H_UNDER_5.0",
-          "prob": 0.673,
-          "fair_odds": -206,
-          "edge": "STRONG_UNDER"
-        },
-        {
-          "family": "batter",
-          "stat": "Strikeouts",
-          "subject": "Ozzie Albies",
-          "market": "K_1PLUS_YES",
-          "prob": 0.669,
-          "fair_odds": -203,
-          "edge": "STRONG_YES_1PLUS"
-        },
-        {
-          "family": "batter",
-          "stat": "Strikeouts",
-          "subject": "Mauricio Dub\u00f3n",
-          "market": "K_1PLUS_YES",
-          "prob": 0.669,
-          "fair_odds": -203,
-          "edge": "STRONG_YES_1PLUS"
-        },
-        {
-          "family": "batter",
-          "stat": "Strikeouts",
-          "subject": "Dominic Smith",
-          "market": "K_1PLUS_YES",
-          "prob": 0.669,
-          "fair_odds": -203,
-          "edge": "STRONG_YES_1PLUS"
-        },
-        {
-          "family": "batter",
-          "stat": "To record a hit",
-          "subject": "Luisangel Acu\u00f1a",
-          "market": "TO_RECORD_HIT_NO",
-          "prob": 0.656,
-          "fair_odds": -191,
-          "edge": "STRONG_NO"
-        },
-        {
-          "family": "pitcher",
-          "stat": "Strikeouts",
-          "subject": "Grant Holmes",
-          "market": "K_OVER_5.5",
-          "prob": 0.655,
-          "fair_odds": -190,
-          "edge": "STRONG_OVER"
-        },
-        {
-          "family": "batter",
-          "stat": "To record a hit",
-          "subject": "Drew Romo",
-          "market": "TO_RECORD_HIT_NO",
-          "prob": 0.634,
-          "fair_odds": -173,
-          "edge": "STRONG_NO"
-        },
-        {
-          "family": "pitcher",
-          "stat": "Hits allowed",
-          "subject": "Grant Holmes",
-          "market": "H_UNDER_5.0",
-          "prob": 0.625,
-          "fair_odds": -167,
-          "edge": "STRONG_UNDER"
-        },
-        {
           "family": "pitcher",
           "stat": "Outs",
-          "subject": "Brandon Eisert",
-          "market": "OUTS_OVER_15.0",
-          "prob": 0.58,
-          "fair_odds": -138,
-          "edge": "STANDARD_OVER"
-        },
-        {
-          "family": "pitcher",
-          "stat": "Outs",
-          "subject": "Grant Holmes",
+          "subject": "Chris Sale",
           "market": "OUTS_UNDER_16.0",
           "prob": 0.577,
           "fair_odds": -137,
           "edge": "STANDARD_UNDER"
         },
         {
-          "family": "batter",
-          "stat": "3+ TB",
-          "subject": "Ronald Acu\u00f1a Jr.",
-          "market": "TB_3PLUS_YES",
-          "prob": 0.398,
-          "fair_odds": 151,
-          "edge": "STRONG_YES"
-        },
-        {
-          "family": "batter",
-          "stat": "XBH",
-          "subject": "Mike Yastrzemski",
-          "market": "1_PLUS_XBH",
-          "prob": 0.383,
-          "fair_odds": 161,
-          "edge": "STRONG_1_PLUS_XBH"
-        },
-        {
-          "family": "batter",
-          "stat": "XBH",
-          "subject": "Ronald Acu\u00f1a Jr.",
-          "market": "1_PLUS_XBH",
-          "prob": 0.374,
-          "fair_odds": 167,
-          "edge": "STRONG_1_PLUS_XBH"
-        },
-        {
-          "family": "batter",
-          "stat": "XBH",
-          "subject": "Michael Harris II",
-          "market": "1_PLUS_XBH",
-          "prob": 0.357,
-          "fair_odds": 180,
-          "edge": "STRONG_1_PLUS_XBH"
-        },
-        {
-          "family": "batter",
-          "stat": "XBH",
-          "subject": "Miguel Vargas",
-          "market": "1_PLUS_XBH",
-          "prob": 0.355,
-          "fair_odds": 182,
-          "edge": "STRONG_1_PLUS_XBH"
-        },
-        {
-          "family": "batter",
-          "stat": "XBH",
-          "subject": "Ozzie Albies",
-          "market": "1_PLUS_XBH",
-          "prob": 0.351,
-          "fair_odds": 185,
-          "edge": "STRONG_1_PLUS_XBH"
-        },
-        {
-          "family": "batter",
-          "stat": "XBH",
-          "subject": "Matt Olson",
-          "market": "1_PLUS_XBH",
-          "prob": 0.347,
-          "fair_odds": 188,
-          "edge": "STRONG_1_PLUS_XBH"
-        },
-        {
-          "family": "batter",
-          "stat": "3+ TB",
-          "subject": "Michael Harris II",
-          "market": "TB_3PLUS_YES",
-          "prob": 0.344,
-          "fair_odds": 191,
-          "edge": "STRONG_YES"
-        },
-        {
-          "family": "batter",
-          "stat": "XBH",
-          "subject": "Andrew Benintendi",
-          "market": "1_PLUS_XBH",
-          "prob": 0.342,
-          "fair_odds": 192,
-          "edge": "STRONG_1_PLUS_XBH"
-        },
-        {
-          "family": "batter",
-          "stat": "3+ TB",
-          "subject": "Miguel Vargas",
-          "market": "TB_3PLUS_YES",
-          "prob": 0.319,
-          "fair_odds": 213,
-          "edge": "STRONG_YES"
+          "family": "pitcher",
+          "stat": "Outs",
+          "subject": "TBD",
+          "market": "OUTS_OVER_15.0",
+          "prob": 0.574,
+          "fair_odds": -135,
+          "edge": "STANDARD_OVER"
         },
         {
           "family": "pitcher",
           "stat": "Walks",
-          "subject": "Grant Holmes",
+          "subject": "Chris Sale",
           "market": "Walks",
           "prob": 0.306,
           "fair_odds": null,
@@ -3559,29 +3639,11 @@
         {
           "family": "pitcher",
           "stat": "Walks",
-          "subject": "Brandon Eisert",
+          "subject": "TBD",
           "market": "Walks",
-          "prob": 0.3,
+          "prob": 0.302,
           "fair_odds": null,
           "edge": "NONE"
-        },
-        {
-          "family": "batter",
-          "stat": "Home run",
-          "subject": "Miguel Vargas",
-          "market": "TO_HIT_HR_YES",
-          "prob": 0.269,
-          "fair_odds": 272,
-          "edge": "STRONG_YES"
-        },
-        {
-          "family": "batter",
-          "stat": "Home run",
-          "subject": "Andrew Benintendi",
-          "market": "TO_HIT_HR_YES",
-          "prob": 0.214,
-          "fair_odds": 368,
-          "edge": "STRONG_YES"
         },
         {
           "family": "game",
@@ -3613,12 +3675,12 @@
       "time": "8:40p ET",
       "park": "Coors Field",
       "weather": {
-        "temp_f": 75,
-        "wind_mph": 5,
+        "temp_f": 70,
+        "wind_mph": 0,
         "is_indoor": false,
-        "wind_dir_deg": 95,
-        "carry_index": 0.027,
-        "precip_pct": 0
+        "wind_dir_deg": null,
+        "carry_index": null,
+        "precip_pct": null
       },
       "umpire": {
         "ump_name": null,
@@ -3626,11 +3688,11 @@
         "ump_k_mult": null
       },
       "model": {
-        "fair_home_ml": 171,
-        "fair_away_ml": -171,
-        "fair_total": 13.9,
-        "p_home_win": 0.3687,
-        "p_away_win": 0.6313,
+        "fair_home_ml": 169,
+        "fair_away_ml": -169,
+        "fair_total": 13.14,
+        "p_home_win": 0.3723,
+        "p_away_win": 0.6277,
         "p_over_market": 0
       },
       "market": {
@@ -3642,10 +3704,10 @@
       "recommendations": [
         {
           "label": "OVER_12.5",
-          "model_prob": 0.632,
+          "model_prob": 0.5521,
           "market_price": -110,
-          "edge_pct": 20.66,
-          "kelly_units": 5.0,
+          "edge_pct": 5.41,
+          "kelly_units": 1.49,
           "confidence": "High"
         }
       ],
@@ -3668,21 +3730,21 @@
       "trends": {
         "team_form": {
           "away": {
-            "wins": 4,
-            "losses": 6,
-            "run_diff": -11,
-            "runs_pg": 3.8,
-            "runs_allowed_pg": 4.9,
-            "streak": "L1",
+            "wins": 3,
+            "losses": 7,
+            "run_diff": -20,
+            "runs_pg": 3.4,
+            "runs_allowed_pg": 5.4,
+            "streak": "L2",
             "games_in_sample": 10
           },
           "home": {
-            "wins": 4,
-            "losses": 6,
-            "run_diff": -25,
-            "runs_pg": 5.6,
-            "runs_allowed_pg": 8.1,
-            "streak": "L4",
+            "wins": 5,
+            "losses": 5,
+            "run_diff": -18,
+            "runs_pg": 6.2,
+            "runs_allowed_pg": 8.0,
+            "streak": "W1",
             "games_in_sample": 10
           }
         },
@@ -3692,27 +3754,27 @@
         },
         "pitcher_form": {
           "away": {
-            "pitcher": "Colin Rea",
+            "pitcher": "Shota Imanaga",
             "status": "STEADY",
             "trend": null,
-            "tier": "NEUTRAL_FORM",
+            "tier": null,
             "k9_delta": 0.0,
             "era_delta": 0.0,
-            "recent_k_per_9_l3": 6.75,
-            "recent_era_l3": 4.58,
-            "form_index": 50.0,
+            "recent_k_per_9_l3": 8.04,
+            "recent_era_l3": 6.32,
+            "form_index": null,
             "leans": []
           },
           "home": {
-            "pitcher": "Tomoyuki Sugano",
+            "pitcher": "Michael Lorenzen",
             "status": "STEADY",
             "trend": null,
-            "tier": "NEUTRAL_FORM",
+            "tier": null,
             "k9_delta": 0.0,
             "era_delta": 0.0,
-            "recent_k_per_9_l3": 4.43,
-            "recent_era_l3": 4.01,
-            "form_index": 50.0,
+            "recent_k_per_9_l3": 7.03,
+            "recent_era_l3": 7.03,
+            "form_index": null,
             "leans": []
           }
         },
@@ -3737,40 +3799,49 @@
         },
         "hot_cold": [
           {
-            "name": "Ian Happ",
+            "name": "Alex Bregman",
             "team": "CHC",
             "kind": "cold",
-            "heat": -0.086,
-            "recent_ops": 0.936,
-            "season_ops": 0.832,
-            "order": null
-          },
-          {
-            "name": "Michael Busch",
-            "team": "CHC",
-            "kind": "cold",
-            "heat": -0.442,
-            "recent_ops": 0.769,
-            "season_ops": 0.759,
-            "order": null
+            "heat": -0.757,
+            "recent_ops": 0.486,
+            "season_ops": 0.675,
+            "order": 4
           },
           {
             "name": "Dansby Swanson",
             "team": "CHC",
             "kind": "cold",
-            "heat": -1.065,
-            "recent_ops": 0.357,
-            "season_ops": 0.607,
-            "order": null
+            "heat": -0.774,
+            "recent_ops": 0.5,
+            "season_ops": 0.609,
+            "order": 9
           },
           {
-            "name": "Alex Bregman",
+            "name": "Nico Hoerner",
             "team": "CHC",
             "kind": "cold",
-            "heat": -1.103,
-            "recent_ops": 0.31,
-            "season_ops": 0.669,
-            "order": null
+            "heat": -0.805,
+            "recent_ops": 0.425,
+            "season_ops": 0.676,
+            "order": 7
+          },
+          {
+            "name": "Jake McCarthy",
+            "team": "COL",
+            "kind": "cold",
+            "heat": -0.883,
+            "recent_ops": 0.511,
+            "season_ops": 0.774,
+            "order": 1
+          },
+          {
+            "name": "TJ Rumfield",
+            "team": "COL",
+            "kind": "cold",
+            "heat": -1.429,
+            "recent_ops": 0.318,
+            "season_ops": 0.759,
+            "order": 3
           }
         ]
       },
@@ -3779,18 +3850,34 @@
           "away": "CHC",
           "away_wins": 0,
           "home": "COL",
-          "home_wins": 0,
-          "n": 0
+          "home_wins": 1,
+          "n": 1
         },
-        "recent_meetings": [],
+        "recent_meetings": [
+          {
+            "date": "2026-06-10",
+            "away": "CHC",
+            "away_score": 3,
+            "home": "COL",
+            "home_score": 7
+          }
+        ],
         "current_series": {
-          "series_number": 1,
-          "prior_results": [],
-          "note": "first meeting / no recent H2H"
+          "series_number": 2,
+          "prior_results": [
+            {
+              "date": "2026-06-09",
+              "home_score": 7,
+              "away_score": 3,
+              "margin": 4,
+              "winner": "home"
+            }
+          ],
+          "note": "Coming off close Game 1"
         }
       },
       "line_movement": {
-        "model_home_implied": 36.9,
+        "model_home_implied": 37.2,
         "market": {
           "home_ml": 141,
           "away_ml": -170,
@@ -3798,90 +3885,18 @@
           "book": "bovada",
           "home_implied": 41.5
         },
-        "edge_vs_market_pp": -4.6,
+        "edge_vs_market_pp": -4.3,
         "has_timeseries": false
       },
-      "n_predictions": 22,
+      "n_predictions": 10,
       "predictions": [
         {
           "family": "pitcher",
           "stat": "Win",
-          "subject": "Tomoyuki Sugano",
+          "subject": "Michael Lorenzen",
           "market": "PITCHER_WIN_NO",
-          "prob": 0.875,
-          "fair_odds": -698,
-          "edge": "STRONG_NO"
-        },
-        {
-          "family": "batter",
-          "stat": "RBI",
-          "subject": "Hunter Goodman",
-          "market": "RBI_1PLUS_YES",
-          "prob": 0.857,
-          "fair_odds": -600,
-          "edge": "STRONG_YES"
-        },
-        {
-          "family": "batter",
-          "stat": "2+ hits",
-          "subject": "TJ Rumfield",
-          "market": "HITS_2PLUS_NO",
-          "prob": 0.839,
-          "fair_odds": -522,
-          "edge": "STRONG_NO"
-        },
-        {
-          "family": "batter",
-          "stat": "2+ hits",
-          "subject": "Ezequiel Tovar",
-          "market": "HITS_2PLUS_NO",
-          "prob": 0.788,
-          "fair_odds": -373,
-          "edge": "STRONG_NO"
-        },
-        {
-          "family": "batter",
-          "stat": "2+ hits",
-          "subject": "Kyle Karros",
-          "market": "HITS_2PLUS_NO",
-          "prob": 0.788,
-          "fair_odds": -371,
-          "edge": "STRONG_NO"
-        },
-        {
-          "family": "batter",
-          "stat": "2+ hits",
-          "subject": "Seiya Suzuki",
-          "market": "HITS_2PLUS_NO",
-          "prob": 0.788,
-          "fair_odds": -372,
-          "edge": "STRONG_NO"
-        },
-        {
-          "family": "batter",
-          "stat": "2+ hits",
-          "subject": "Nico Hoerner",
-          "market": "HITS_2PLUS_NO",
-          "prob": 0.788,
-          "fair_odds": -373,
-          "edge": "STRONG_NO"
-        },
-        {
-          "family": "batter",
-          "stat": "RBI",
-          "subject": "Alex Bregman",
-          "market": "RBI_1PLUS_NO",
-          "prob": 0.786,
-          "fair_odds": -367,
-          "edge": "STRONG_NO"
-        },
-        {
-          "family": "batter",
-          "stat": "RBI",
-          "subject": "Nico Hoerner",
-          "market": "RBI_1PLUS_NO",
-          "prob": 0.786,
-          "fair_odds": -367,
+          "prob": 0.841,
+          "fair_odds": -527,
           "edge": "STRONG_NO"
         },
         {
@@ -3894,36 +3909,45 @@
           "edge": "STRONG_NO_SB"
         },
         {
-          "family": "pitcher",
-          "stat": "Strikeouts",
-          "subject": "Tomoyuki Sugano",
-          "market": "K_OVER_2.5",
-          "prob": 0.675,
-          "fair_odds": -208,
-          "edge": "STRONG_OVER"
+          "family": "game",
+          "stat": "Total (alt)",
+          "subject": "CHC @ COL",
+          "market": "GAME_TOTAL_UNDER_11.5",
+          "prob": 0.691,
+          "fair_odds": -224,
+          "edge": "STRONG_TOTAL"
+        },
+        {
+          "family": "game",
+          "stat": "Run line",
+          "subject": "CHC @ COL",
+          "market": "AWAY_MINUS_1.5",
+          "prob": 0.648,
+          "fair_odds": -184,
+          "edge": "STRONG_AWAY_-1.5"
         },
         {
           "family": "pitcher",
           "stat": "Hits allowed",
-          "subject": "Colin Rea",
+          "subject": "Shota Imanaga",
           "market": "H_UNDER_5.0",
-          "prob": 0.65,
-          "fair_odds": -186,
+          "prob": 0.63,
+          "fair_odds": -171,
           "edge": "STRONG_UNDER"
-        },
-        {
-          "family": "game",
-          "stat": "Total (alt)",
-          "subject": "CHC @ COL",
-          "market": "GAME_TOTAL_UNDER_10.5",
-          "prob": 0.599,
-          "fair_odds": -149,
-          "edge": "STRONG_TOTAL"
         },
         {
           "family": "pitcher",
           "stat": "Outs",
-          "subject": "Tomoyuki Sugano",
+          "subject": "Shota Imanaga",
+          "market": "OUTS_UNDER_16.5",
+          "prob": 0.586,
+          "fair_odds": -141,
+          "edge": "STANDARD_UNDER"
+        },
+        {
+          "family": "pitcher",
+          "stat": "Outs",
+          "subject": "Michael Lorenzen",
           "market": "OUTS_OVER_14.5",
           "prob": 0.584,
           "fair_odds": -140,
@@ -3931,64 +3955,19 @@
         },
         {
           "family": "pitcher",
-          "stat": "Outs",
-          "subject": "Colin Rea",
-          "market": "OUTS_UNDER_16.5",
-          "prob": 0.573,
-          "fair_odds": -134,
-          "edge": "STANDARD_UNDER"
-        },
-        {
-          "family": "batter",
-          "stat": "XBH",
-          "subject": "Pete Crow-Armstrong",
-          "market": "1_PLUS_XBH",
-          "prob": 0.434,
-          "fair_odds": 131,
-          "edge": "STRONG_1_PLUS_XBH"
-        },
-        {
-          "family": "batter",
-          "stat": "XBH",
-          "subject": "Kyle Karros",
-          "market": "1_PLUS_XBH",
-          "prob": 0.39,
-          "fair_odds": 156,
-          "edge": "STRONG_1_PLUS_XBH"
-        },
-        {
-          "family": "batter",
-          "stat": "XBH",
-          "subject": "Jake McCarthy",
-          "market": "1_PLUS_XBH",
-          "prob": 0.328,
-          "fair_odds": 205,
-          "edge": "STRONG_1_PLUS_XBH"
-        },
-        {
-          "family": "pitcher",
           "stat": "Walks",
-          "subject": "Tomoyuki Sugano",
+          "subject": "Michael Lorenzen",
           "market": "Walks",
           "prob": 0.316,
           "fair_odds": null,
           "edge": "NONE"
         },
         {
-          "family": "batter",
-          "stat": "3+ TB",
-          "subject": "Michael Busch",
-          "market": "TB_3PLUS_YES",
-          "prob": 0.314,
-          "fair_odds": 218,
-          "edge": "STRONG_YES"
-        },
-        {
           "family": "pitcher",
           "stat": "Walks",
-          "subject": "Colin Rea",
+          "subject": "Shota Imanaga",
           "market": "Walks",
-          "prob": 0.289,
+          "prob": 0.292,
           "fair_odds": null,
           "edge": "NONE"
         },
@@ -4034,8 +4013,8 @@
         "p_over_market": 0
       },
       "market": {
-        "home_ml": -108,
-        "away_ml": -112,
+        "home_ml": -110,
+        "away_ml": -110,
         "total": 14.5,
         "book": "bovada"
       },
@@ -4051,8 +4030,8 @@
         {
           "label": "OAK_ML",
           "model_prob": 0.6821,
-          "market_price": -108,
-          "edge_pct": 31.36,
+          "market_price": -110,
+          "edge_pct": 30.21,
           "kelly_units": 5.0,
           "confidence": "High"
         }
@@ -4078,49 +4057,57 @@
           "away": {
             "wins": 7,
             "losses": 3,
-            "run_diff": 27,
-            "runs_pg": 8.0,
-            "runs_allowed_pg": 5.3,
-            "streak": "W4",
+            "run_diff": 32,
+            "runs_pg": 8.3,
+            "runs_allowed_pg": 5.1,
+            "streak": "L1",
             "games_in_sample": 10
           },
           "home": {
-            "wins": 4,
-            "losses": 6,
-            "run_diff": -19,
-            "runs_pg": 5.1,
-            "runs_allowed_pg": 7.0,
-            "streak": "L1",
+            "wins": 5,
+            "losses": 5,
+            "run_diff": -11,
+            "runs_pg": 5.6,
+            "runs_allowed_pg": 6.7,
+            "streak": "W1",
             "games_in_sample": 10
           }
         },
         "ats": {
-          "away": null,
-          "home": null
+          "away": {
+            "ats_record": "4-8-1",
+            "cover_pct": 0.333,
+            "signal": "MODEL_OVERRATES"
+          },
+          "home": {
+            "ats_record": "9-3-0",
+            "cover_pct": 0.75,
+            "signal": "MODEL_UNDERRATES"
+          }
         },
         "pitcher_form": {
           "away": {
-            "pitcher": "Robert Gasser",
+            "pitcher": "Brandon Sproat",
             "status": "STEADY",
             "trend": null,
-            "tier": "NEUTRAL_FORM",
+            "tier": null,
+            "k9_delta": 0.0,
+            "era_delta": 0.0,
+            "recent_k_per_9_l3": 9.24,
+            "recent_era_l3": 5.84,
+            "form_index": null,
+            "leans": []
+          },
+          "home": {
+            "pitcher": "Jack Perkins",
+            "status": "STEADY",
+            "trend": null,
+            "tier": null,
             "k9_delta": 0.0,
             "era_delta": 0.0,
             "recent_k_per_9_l3": 8.5,
             "recent_era_l3": 4.2,
-            "form_index": 50.0,
-            "leans": []
-          },
-          "home": {
-            "pitcher": "J.T. Ginn",
-            "status": "STEADY",
-            "trend": null,
-            "tier": "NEUTRAL_FORM",
-            "k9_delta": 0.0,
-            "era_delta": 0.0,
-            "recent_k_per_9_l3": 8.69,
-            "recent_era_l3": 2.11,
-            "form_index": 50.0,
+            "form_index": null,
             "leans": []
           }
         },
@@ -4148,8 +4135,17 @@
             "name": "Jake Bauers",
             "team": "MIL",
             "kind": "hot",
-            "heat": 5.47,
-            "recent_ops": 1.485,
+            "heat": 4.615,
+            "recent_ops": 1.475,
+            "season_ops": 0.0,
+            "order": null
+          },
+          {
+            "name": "Jackson Chourio",
+            "team": "MIL",
+            "kind": "hot",
+            "heat": 4.353,
+            "recent_ops": 1.104,
             "season_ops": 0.0,
             "order": null
           },
@@ -4157,8 +4153,8 @@
             "name": "Brice Turang",
             "team": "MIL",
             "kind": "hot",
-            "heat": 4.199,
-            "recent_ops": 1.027,
+            "heat": 3.913,
+            "recent_ops": 0.884,
             "season_ops": 0.0,
             "order": null
           }
@@ -4174,7 +4170,7 @@
         },
         "recent_meetings": [],
         "current_series": {
-          "series_number": 2,
+          "series_number": 3,
           "prior_results": [
             {
               "date": "2026-06-08",
@@ -4182,146 +4178,72 @@
               "away_score": 15,
               "margin": -1,
               "winner": "away"
+            },
+            {
+              "date": "2026-06-09",
+              "home_score": 7,
+              "away_score": 5,
+              "margin": 2,
+              "winner": "home"
             }
           ],
-          "note": "Coming off close Game 1"
+          "note": "Rubber match (series tied 1-1)"
         }
       },
       "line_movement": {
         "model_home_implied": 68.2,
         "market": {
-          "home_ml": -108,
-          "away_ml": -112,
+          "home_ml": -110,
+          "away_ml": -110,
           "total": 14.5,
           "book": "bovada",
-          "home_implied": 51.9
+          "home_implied": 52.4
         },
-        "edge_vs_market_pp": 16.3,
+        "edge_vs_market_pp": 15.8,
         "has_timeseries": false
       },
-      "n_predictions": 23,
+      "n_predictions": 10,
       "predictions": [
-        {
-          "family": "batter",
-          "stat": "XBH",
-          "subject": "Max Muncy",
-          "market": "NO_XBH",
-          "prob": 0.841,
-          "fair_odds": -528,
-          "edge": "STRONG_NO_XBH"
-        },
         {
           "family": "pitcher",
           "stat": "Win",
-          "subject": "Robert Gasser",
+          "subject": "Brandon Sproat",
           "market": "PITCHER_WIN_NO",
-          "prob": 0.795,
-          "fair_odds": -387,
+          "prob": 0.914,
+          "fair_odds": -1061,
           "edge": "STRONG_NO"
         },
         {
-          "family": "batter",
-          "stat": "2+ hits",
-          "subject": "Shea Langeliers",
-          "market": "HITS_2PLUS_NO",
-          "prob": 0.788,
-          "fair_odds": -371,
-          "edge": "STRONG_NO"
+          "family": "pitcher",
+          "stat": "Hits allowed",
+          "subject": "Jack Perkins",
+          "market": "H_UNDER_6.0",
+          "prob": 0.705,
+          "fair_odds": -238,
+          "edge": "STRONG_UNDER"
         },
         {
-          "family": "batter",
-          "stat": "RBI",
-          "subject": "Nick Kurtz",
-          "market": "RBI_1PLUS_YES",
-          "prob": 0.786,
-          "fair_odds": -367,
-          "edge": "STRONG_YES"
-        },
-        {
-          "family": "batter",
-          "stat": "RBI",
-          "subject": "Tyler Soderstrom",
-          "market": "RBI_1PLUS_YES",
-          "prob": 0.786,
-          "fair_odds": -367,
-          "edge": "STRONG_YES"
-        },
-        {
-          "family": "batter",
-          "stat": "RBI",
-          "subject": "Colby Thomas",
-          "market": "RBI_1PLUS_NO",
-          "prob": 0.786,
-          "fair_odds": -367,
-          "edge": "STRONG_NO"
-        },
-        {
-          "family": "batter",
-          "stat": "RBI",
-          "subject": "Alika Williams",
-          "market": "RBI_1PLUS_NO",
-          "prob": 0.786,
-          "fair_odds": -367,
-          "edge": "STRONG_NO"
-        },
-        {
-          "family": "batter",
+          "family": "pitcher",
           "stat": "Strikeouts",
-          "subject": "Colby Thomas",
-          "market": "K_1PLUS_YES",
-          "prob": 0.695,
-          "fair_odds": -228,
-          "edge": "STRONG_YES_1PLUS"
-        },
-        {
-          "family": "batter",
-          "stat": "Strikeouts",
-          "subject": "Nick Kurtz",
-          "market": "K_1PLUS_YES",
-          "prob": 0.695,
-          "fair_odds": -228,
-          "edge": "STRONG_YES_1PLUS"
-        },
-        {
-          "family": "batter",
-          "stat": "Strikeouts",
-          "subject": "Shea Langeliers",
-          "market": "K_1PLUS_YES",
-          "prob": 0.695,
-          "fair_odds": -228,
-          "edge": "STRONG_YES_1PLUS"
-        },
-        {
-          "family": "batter",
-          "stat": "Strikeouts",
-          "subject": "Tyler Soderstrom",
-          "market": "K_1PLUS_YES",
-          "prob": 0.669,
-          "fair_odds": -203,
-          "edge": "STRONG_YES_1PLUS"
-        },
-        {
-          "family": "batter",
-          "stat": "Strikeouts",
-          "subject": "Jonah Heim",
-          "market": "K_1PLUS_YES",
-          "prob": 0.669,
-          "fair_odds": -203,
-          "edge": "STRONG_YES_1PLUS"
+          "subject": "Brandon Sproat",
+          "market": "K_UNDER_5.5",
+          "prob": 0.66,
+          "fair_odds": -194,
+          "edge": "STRONG_UNDER"
         },
         {
           "family": "game",
           "stat": "Run line",
           "subject": "MIL @ OAK",
-          "market": "HOME_PLUS_1.5",
-          "prob": 0.669,
-          "fair_odds": -202,
-          "edge": "STRONG_HOME_+1.5"
+          "market": "HOME_MINUS_1.5",
+          "prob": 0.647,
+          "fair_odds": -183,
+          "edge": "STRONG_HOME_-1.5"
         },
         {
           "family": "pitcher",
           "stat": "Outs",
-          "subject": "J.T. Ginn",
+          "subject": "Jack Perkins",
           "market": "OUTS_UNDER_15.5",
           "prob": 0.589,
           "fair_odds": -143,
@@ -4330,52 +4252,16 @@
         {
           "family": "pitcher",
           "stat": "Outs",
-          "subject": "Robert Gasser",
+          "subject": "Brandon Sproat",
           "market": "OUTS_OVER_15.0",
           "prob": 0.561,
           "fair_odds": -128,
           "edge": "STANDARD_OVER"
         },
         {
-          "family": "batter",
-          "stat": "To record a hit",
-          "subject": "Max Muncy",
-          "market": "TO_RECORD_HIT_NO",
-          "prob": 0.534,
-          "fair_odds": -115,
-          "edge": "STRONG_NO"
-        },
-        {
-          "family": "batter",
-          "stat": "XBH",
-          "subject": "Nick Kurtz",
-          "market": "1_PLUS_XBH",
-          "prob": 0.415,
-          "fair_odds": 141,
-          "edge": "STRONG_1_PLUS_XBH"
-        },
-        {
-          "family": "batter",
-          "stat": "XBH",
-          "subject": "Jonah Heim",
-          "market": "1_PLUS_XBH",
-          "prob": 0.376,
-          "fair_odds": 166,
-          "edge": "STRONG_1_PLUS_XBH"
-        },
-        {
-          "family": "batter",
-          "stat": "XBH",
-          "subject": "Shea Langeliers",
-          "market": "1_PLUS_XBH",
-          "prob": 0.367,
-          "fair_odds": 173,
-          "edge": "STRONG_1_PLUS_XBH"
-        },
-        {
           "family": "pitcher",
           "stat": "Walks",
-          "subject": "J.T. Ginn",
+          "subject": "Jack Perkins",
           "market": "Walks",
           "prob": 0.327,
           "fair_odds": null,
@@ -4384,7 +4270,7 @@
         {
           "family": "pitcher",
           "stat": "Walks",
-          "subject": "Robert Gasser",
+          "subject": "Brandon Sproat",
           "market": "Walks",
           "prob": 0.305,
           "fair_odds": null,
@@ -4395,7 +4281,7 @@
           "stat": "Team steals",
           "subject": "MIL",
           "market": "Team steals",
-          "prob": 0.024,
+          "prob": 0.032,
           "fair_odds": null,
           "edge": "NONE"
         },
@@ -4420,11 +4306,11 @@
       "time": "9:38p ET",
       "park": "Angel Stadium",
       "weather": {
-        "temp_f": 64,
-        "wind_mph": 4,
+        "temp_f": 65,
+        "wind_mph": 5,
         "is_indoor": false,
         "wind_dir_deg": 204,
-        "carry_index": 0.21,
+        "carry_index": 0.264,
         "precip_pct": 0
       },
       "umpire": {
@@ -4435,10 +4321,10 @@
       "model": {
         "fair_home_ml": -105,
         "fair_away_ml": 105,
-        "fair_total": 8.44,
-        "p_home_win": 0.5121,
-        "p_away_win": 0.4879,
-        "p_over_market": 0.4691
+        "fair_total": 8.54,
+        "p_home_win": 0.5122,
+        "p_away_win": 0.4878,
+        "p_over_market": 0.4823
       },
       "market": {
         "home_ml": -119,
@@ -4468,49 +4354,53 @@
           "away": {
             "wins": 5,
             "losses": 5,
-            "run_diff": 9,
-            "runs_pg": 5.4,
-            "runs_allowed_pg": 4.5,
-            "streak": "W1",
+            "run_diff": 1,
+            "runs_pg": 5.1,
+            "runs_allowed_pg": 5.0,
+            "streak": "L1",
             "games_in_sample": 10
           },
           "home": {
-            "wins": 3,
-            "losses": 7,
-            "run_diff": 4,
-            "runs_pg": 6.1,
-            "runs_allowed_pg": 5.7,
-            "streak": "L1",
+            "wins": 4,
+            "losses": 6,
+            "run_diff": 16,
+            "runs_pg": 6.6,
+            "runs_allowed_pg": 5.0,
+            "streak": "W1",
             "games_in_sample": 10
           }
         },
         "ats": {
-          "away": null,
+          "away": {
+            "ats_record": "4-9-0",
+            "cover_pct": 0.308,
+            "signal": "MODEL_OVERRATES"
+          },
           "home": null
         },
         "pitcher_form": {
           "away": {
-            "pitcher": "Kai-Wei Teng",
+            "pitcher": "Peter Lambert",
             "status": "STEADY",
             "trend": null,
-            "tier": "NEUTRAL_FORM",
+            "tier": null,
             "k9_delta": 0.0,
             "era_delta": 0.0,
-            "recent_k_per_9_l3": 8.5,
-            "recent_era_l3": 4.2,
-            "form_index": 50.0,
+            "recent_k_per_9_l3": 7.69,
+            "recent_era_l3": 3.15,
+            "form_index": null,
             "leans": []
           },
           "home": {
-            "pitcher": "Walbert Ure\u00f1a",
+            "pitcher": "Reid Detmers",
             "status": "STEADY",
             "trend": null,
-            "tier": "NEUTRAL_FORM",
+            "tier": null,
             "k9_delta": 0.0,
             "era_delta": 0.0,
-            "recent_k_per_9_l3": 8.08,
-            "recent_era_l3": 2.08,
-            "form_index": 50.0,
+            "recent_k_per_9_l3": 11.66,
+            "recent_era_l3": 4.32,
+            "form_index": null,
             "leans": []
           }
         },
@@ -4538,46 +4428,19 @@
             "name": "Zach Neto",
             "team": "LAA",
             "kind": "hot",
-            "heat": 5.836,
-            "recent_ops": 1.043,
+            "heat": 5.036,
+            "recent_ops": 1.018,
             "season_ops": 0.0,
-            "order": null
+            "order": 1
           },
           {
             "name": "Isaac Paredes",
             "team": "HOU",
             "kind": "hot",
-            "heat": 4.263,
-            "recent_ops": 1.059,
+            "heat": 4.569,
+            "recent_ops": 1.212,
             "season_ops": 0.0,
-            "order": null
-          },
-          {
-            "name": "Yordan Alvarez",
-            "team": "HOU",
-            "kind": "hot",
-            "heat": 3.822,
-            "recent_ops": 1.196,
-            "season_ops": 0.0,
-            "order": null
-          },
-          {
-            "name": "Denzer Guzman",
-            "team": "LAA",
-            "kind": "cold",
-            "heat": 0.0,
-            "recent_ops": 0,
-            "season_ops": 0.0,
-            "order": null
-          },
-          {
-            "name": "Donovan Walton",
-            "team": "LAA",
-            "kind": "cold",
-            "heat": -0.494,
-            "recent_ops": 0.343,
-            "season_ops": 0.59,
-            "order": null
+            "order": 4
           }
         ]
       },
@@ -4586,10 +4449,17 @@
           "away": "HOU",
           "away_wins": 1,
           "home": "LAA",
-          "home_wins": 0,
-          "n": 1
+          "home_wins": 1,
+          "n": 2
         },
         "recent_meetings": [
+          {
+            "date": "2026-06-10",
+            "away": "HOU",
+            "away_score": 1,
+            "home": "LAA",
+            "home_score": 10
+          },
           {
             "date": "2026-06-09",
             "away": "HOU",
@@ -4599,7 +4469,7 @@
           }
         ],
         "current_series": {
-          "series_number": 2,
+          "series_number": 3,
           "prior_results": [
             {
               "date": "2026-06-08",
@@ -4607,9 +4477,16 @@
               "away_score": 5,
               "margin": -1,
               "winner": "away"
+            },
+            {
+              "date": "2026-06-09",
+              "home_score": 10,
+              "away_score": 1,
+              "margin": 9,
+              "winner": "home"
             }
           ],
-          "note": "Coming off close Game 1"
+          "note": "Rubber match (series tied 1-1) - 1 blowout(s) in this set"
         }
       },
       "line_movement": {
@@ -4624,169 +4501,25 @@
         "edge_vs_market_pp": -3.1,
         "has_timeseries": false
       },
-      "n_predictions": 36,
+      "n_predictions": 12,
       "predictions": [
-        {
-          "family": "batter",
-          "stat": "2+ hits",
-          "subject": "Jose Siri",
-          "market": "HITS_2PLUS_NO",
-          "prob": 0.84,
-          "fair_odds": -523,
-          "edge": "STRONG_NO"
-        },
-        {
-          "family": "batter",
-          "stat": "2+ hits",
-          "subject": "Isaac Paredes",
-          "market": "HITS_2PLUS_NO",
-          "prob": 0.839,
-          "fair_odds": -522,
-          "edge": "STRONG_NO"
-        },
-        {
-          "family": "batter",
-          "stat": "2+ hits",
-          "subject": "Jo Adell",
-          "market": "HITS_2PLUS_NO",
-          "prob": 0.814,
-          "fair_odds": -437,
-          "edge": "STRONG_NO"
-        },
-        {
-          "family": "batter",
-          "stat": "2+ hits",
-          "subject": "Jose Altuve",
-          "market": "HITS_2PLUS_NO",
-          "prob": 0.814,
-          "fair_odds": -437,
-          "edge": "STRONG_NO"
-        },
-        {
-          "family": "batter",
-          "stat": "2+ hits",
-          "subject": "Joey Loperfido",
-          "market": "HITS_2PLUS_NO",
-          "prob": 0.814,
-          "fair_odds": -437,
-          "edge": "STRONG_NO"
-        },
-        {
-          "family": "batter",
-          "stat": "2+ hits",
-          "subject": "Christian V\u00e1zquez",
-          "market": "HITS_2PLUS_NO",
-          "prob": 0.814,
-          "fair_odds": -437,
-          "edge": "STRONG_NO"
-        },
-        {
-          "family": "batter",
-          "stat": "2+ hits",
-          "subject": "Christian Walker",
-          "market": "HITS_2PLUS_NO",
-          "prob": 0.788,
-          "fair_odds": -372,
-          "edge": "STRONG_NO"
-        },
-        {
-          "family": "pitcher",
-          "stat": "Hits allowed",
-          "subject": "Kai-Wei Teng",
-          "market": "H_UNDER_5.0",
-          "prob": 0.716,
-          "fair_odds": -252,
-          "edge": "STRONG_UNDER"
-        },
-        {
-          "family": "batter",
-          "stat": "Strikeouts",
-          "subject": "Zach Neto",
-          "market": "K_1PLUS_YES",
-          "prob": 0.695,
-          "fair_odds": -228,
-          "edge": "STRONG_YES_1PLUS"
-        },
-        {
-          "family": "batter",
-          "stat": "Strikeouts",
-          "subject": "Mike Trout",
-          "market": "K_1PLUS_YES",
-          "prob": 0.695,
-          "fair_odds": -228,
-          "edge": "STRONG_YES_1PLUS"
-        },
-        {
-          "family": "batter",
-          "stat": "Strikeouts",
-          "subject": "Wade Meckler",
-          "market": "K_1PLUS_YES",
-          "prob": 0.695,
-          "fair_odds": -228,
-          "edge": "STRONG_YES_1PLUS"
-        },
-        {
-          "family": "batter",
-          "stat": "Strikeouts",
-          "subject": "Jeremy Pe\u00f1a",
-          "market": "K_1PLUS_YES",
-          "prob": 0.677,
-          "fair_odds": -209,
-          "edge": "STRONG_YES_1PLUS"
-        },
-        {
-          "family": "batter",
-          "stat": "Strikeouts",
-          "subject": "Yordan Alvarez",
-          "market": "K_1PLUS_YES",
-          "prob": 0.677,
-          "fair_odds": -209,
-          "edge": "STRONG_YES_1PLUS"
-        },
-        {
-          "family": "batter",
-          "stat": "Strikeouts",
-          "subject": "Christian Walker",
-          "market": "K_1PLUS_YES",
-          "prob": 0.677,
-          "fair_odds": -209,
-          "edge": "STRONG_YES_1PLUS"
-        },
-        {
-          "family": "batter",
-          "stat": "Strikeouts",
-          "subject": "Jo Adell",
-          "market": "K_1PLUS_YES",
-          "prob": 0.669,
-          "fair_odds": -203,
-          "edge": "STRONG_YES_1PLUS"
-        },
-        {
-          "family": "batter",
-          "stat": "Strikeouts",
-          "subject": "Nolan Schanuel",
-          "market": "K_1PLUS_YES",
-          "prob": 0.669,
-          "fair_odds": -203,
-          "edge": "STRONG_YES_1PLUS"
-        },
-        {
-          "family": "batter",
-          "stat": "Strikeouts",
-          "subject": "Oswald Peraza",
-          "market": "K_1PLUS_YES",
-          "prob": 0.669,
-          "fair_odds": -203,
-          "edge": "STRONG_YES_1PLUS"
-        },
         {
           "family": "game",
           "stat": "Total (alt)",
           "subject": "HOU @ LAA",
           "market": "GAME_TOTAL_UNDER_9.5",
-          "prob": 0.661,
-          "fair_odds": -195,
+          "prob": 0.689,
+          "fair_odds": -222,
           "edge": "STRONG_TOTAL"
+        },
+        {
+          "family": "game",
+          "stat": "Run line",
+          "subject": "HOU @ LAA",
+          "market": "AWAY_PLUS_1.5",
+          "prob": 0.677,
+          "fair_odds": -210,
+          "edge": "STRONG_AWAY_+1.5"
         },
         {
           "family": "game",
@@ -4798,45 +4531,36 @@
           "edge": "STRONG_NO_SB"
         },
         {
-          "family": "batter",
-          "stat": "Strikeouts",
-          "subject": "Isaac Paredes",
-          "market": "K_1PLUS_YES",
-          "prob": 0.651,
-          "fair_odds": -186,
-          "edge": "STRONG_YES_1PLUS"
-        },
-        {
-          "family": "batter",
-          "stat": "Strikeouts",
-          "subject": "Jose Altuve",
-          "market": "K_1PLUS_YES",
-          "prob": 0.651,
-          "fair_odds": -186,
-          "edge": "STRONG_YES_1PLUS"
-        },
-        {
-          "family": "batter",
-          "stat": "Strikeouts",
-          "subject": "Cam Smith",
-          "market": "K_1PLUS_YES",
-          "prob": 0.651,
-          "fair_odds": -186,
-          "edge": "STRONG_YES_1PLUS"
-        },
-        {
           "family": "pitcher",
           "stat": "Strikeouts",
-          "subject": "Walbert Ure\u00f1a",
-          "market": "K_OVER_5.5",
-          "prob": 0.642,
-          "fair_odds": -179,
+          "subject": "Reid Detmers",
+          "market": "K_OVER_6.5",
+          "prob": 0.644,
+          "fair_odds": -181,
           "edge": "STRONG_OVER"
         },
         {
           "family": "pitcher",
+          "stat": "Strikeouts",
+          "subject": "Peter Lambert",
+          "market": "K_UNDER_5.5",
+          "prob": 0.642,
+          "fair_odds": -180,
+          "edge": "STRONG_UNDER"
+        },
+        {
+          "family": "pitcher",
           "stat": "Hits allowed",
-          "subject": "Walbert Ure\u00f1a",
+          "subject": "Peter Lambert",
+          "market": "H_UNDER_5.0",
+          "prob": 0.64,
+          "fair_odds": -178,
+          "edge": "STRONG_UNDER"
+        },
+        {
+          "family": "pitcher",
+          "stat": "Hits allowed",
+          "subject": "Reid Detmers",
           "market": "H_UNDER_5.0",
           "prob": 0.63,
           "fair_odds": -170,
@@ -4845,7 +4569,7 @@
         {
           "family": "pitcher",
           "stat": "Outs",
-          "subject": "Walbert Ure\u00f1a",
+          "subject": "Reid Detmers",
           "market": "OUTS_UNDER_16.5",
           "prob": 0.599,
           "fair_odds": -149,
@@ -4854,79 +4578,16 @@
         {
           "family": "pitcher",
           "stat": "Outs",
-          "subject": "Kai-Wei Teng",
-          "market": "OUTS_OVER_15.5",
-          "prob": 0.566,
-          "fair_odds": -131,
-          "edge": "STANDARD_OVER"
-        },
-        {
-          "family": "batter",
-          "stat": "XBH",
-          "subject": "Cam Smith",
-          "market": "1_PLUS_XBH",
-          "prob": 0.409,
-          "fair_odds": 145,
-          "edge": "STRONG_1_PLUS_XBH"
-        },
-        {
-          "family": "batter",
-          "stat": "XBH",
-          "subject": "Jose Siri",
-          "market": "1_PLUS_XBH",
-          "prob": 0.394,
-          "fair_odds": 154,
-          "edge": "STRONG_1_PLUS_XBH"
-        },
-        {
-          "family": "batter",
-          "stat": "3+ TB",
-          "subject": "Jose Siri",
-          "market": "TB_3PLUS_YES",
-          "prob": 0.389,
-          "fair_odds": 157,
-          "edge": "STRONG_YES"
-        },
-        {
-          "family": "batter",
-          "stat": "XBH",
-          "subject": "Christian Walker",
-          "market": "1_PLUS_XBH",
-          "prob": 0.381,
-          "fair_odds": 162,
-          "edge": "STRONG_1_PLUS_XBH"
-        },
-        {
-          "family": "batter",
-          "stat": "XBH",
-          "subject": "Jeremy Pe\u00f1a",
-          "market": "1_PLUS_XBH",
-          "prob": 0.374,
-          "fair_odds": 167,
-          "edge": "STRONG_1_PLUS_XBH"
-        },
-        {
-          "family": "batter",
-          "stat": "XBH",
-          "subject": "Wade Meckler",
-          "market": "1_PLUS_XBH",
-          "prob": 0.357,
-          "fair_odds": 180,
-          "edge": "STRONG_1_PLUS_XBH"
-        },
-        {
-          "family": "batter",
-          "stat": "3+ TB",
-          "subject": "Isaac Paredes",
-          "market": "TB_3PLUS_YES",
-          "prob": 0.318,
-          "fair_odds": 214,
-          "edge": "STRONG_YES"
+          "subject": "Peter Lambert",
+          "market": "OUTS_UNDER_16.5",
+          "prob": 0.573,
+          "fair_odds": -134,
+          "edge": "STANDARD_UNDER"
         },
         {
           "family": "pitcher",
           "stat": "Walks",
-          "subject": "Walbert Ure\u00f1a",
+          "subject": "Reid Detmers",
           "market": "Walks",
           "prob": 0.295,
           "fair_odds": null,
@@ -4935,9 +4596,9 @@
         {
           "family": "pitcher",
           "stat": "Walks",
-          "subject": "Kai-Wei Teng",
+          "subject": "Peter Lambert",
           "market": "Walks",
-          "prob": 0.287,
+          "prob": 0.289,
           "fair_odds": null,
           "edge": "NONE"
         },
