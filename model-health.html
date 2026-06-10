@@ -45,6 +45,45 @@
     <div class="card-head"><span>📊 Component Breakdown</span></div>
     <div style="padding:14px 18px;"><div id="components" class="component-grid"></div></div>
   </section>
+  <!-- Stat-scale projection report card (live free-feed training) -->
+  <section id="projCard" class="card" style="margin-bottom: 18px; display:none;">
+    <div class="card-head"><span>🎯 Projection Report Card</span><span class="muted" id="pjMeta">--</span></div>
+    <div style="padding:14px 18px;">
+      <p class="muted" style="font-size:12px; margin:0 0 12px 0;">Every settled pick pairs the generator's <strong>stat-scale projection</strong> (expected Ks, walks, runs, points…) with the <strong>real box-score number</strong> the grader settled it with. Bias &gt; 0 = the model projects too high; the shrunk correction is what a generator would subtract to fix it. Grows daily from the free feeds — fully independent of any paid odds key.</p>
+      <div id="pjGrid"></div>
+    </div>
+  </section>
+  <script>
+  fetch("data/projection_report.json?t=" + Date.now(), { cache: "no-cache" })
+    .then(r => r.json())
+    .then(d => {
+      const fams = d.families || [];
+      document.getElementById("projCard").style.display = "block";
+      document.getElementById("pjMeta").textContent =
+        `${(d.n_pairs_total || 0).toLocaleString()} pairs · ${d.n_trained || 0} families trained`;
+      if (!fams.length || !d.n_pairs_total) {
+        document.getElementById("pjGrid").innerHTML =
+          '<p class="muted" style="font-family:\'JetBrains Mono\',monospace;font-size:12px;">Accruing — projections were wired onto picks on 2026-06-09; the first (projection, actual) pairs land after the next night of settlements.</p>';
+        return;
+      }
+      const cols = "1fr 56px 72px 72px 90px 88px";
+      const header = `<div style="display:grid;grid-template-columns:${cols};gap:10px;padding:6px 0;color:var(--muted,#888);font-size:10px;text-transform:uppercase;">
+        <span>Family</span><span>n</span><span>RMSE</span><span>Bias</span><span>Correction</span><span>Fixed RMSE</span></div>`;
+      const rows = fams.slice(0, 14).map(f => {
+        if (f.status !== "trained")
+          return `<div style="display:grid;grid-template-columns:${cols};gap:10px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.04);font-family:'JetBrains Mono',monospace;font-size:12px;">
+            <span>${f.family}</span><span>${f.n}</span><span class="muted" style="grid-column:3/7;">${f.status}</span></div>`;
+        const bc = Math.abs(f.bias) < 0.05 ? "var(--muted,#888)" : f.bias > 0 ? "#e35a5a" : "#e0a13a";
+        return `<div style="display:grid;grid-template-columns:${cols};gap:10px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.04);font-family:'JetBrains Mono',monospace;font-size:12px;">
+          <span><strong>${f.family}</strong></span><span>${f.n}</span><span>${f.rmse}</span>
+          <span style="color:${bc};">${f.bias > 0 ? "+" : ""}${f.bias}</span>
+          <span>${f.correction > 0 ? "−" : "+"}${Math.abs(f.correction)}</span>
+          <span class="positive">${f.rmse_corrected}</span></div>`;
+      }).join("");
+      document.getElementById("pjGrid").innerHTML = header + rows;
+    }).catch(() => {});
+  </script>
+
   <section class="card">
     <div class="card-head"><span>📋 How this works</span></div>
     <div style="padding:14px 18px; font-size:13px; line-height:1.7; color: var(--text-2,#aaa);">
