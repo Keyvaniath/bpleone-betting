@@ -1,15 +1,9 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:6 F:175
-
-:lock: **LOCK:** Colin Rea (MLB)
+_NO_ACTION_NIGHT_ | L:0 S:3 F:162
 
 :dart: **Top Picks:**
-1. [WNBA] napheesa collier -- napheesa collier (PLAYER_STRONG)
-2. [WNBA] angel reese -- angel reese (PLAYER_STRONG)
-3. [MLB] ? -- ? (TEAM_STRONG)
-
-:chains: **Top Parlays:**
-- [WNBA] napheesa collier (2 legs, p=0.357)
+1. [MLB] ? -- ? (TEAM_STRONG)
+2. [F1] max verstappen -- max verstappen (DRIVER_STRONG)
 
 :coin: Bankroll Advisory: STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 
