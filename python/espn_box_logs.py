@@ -92,10 +92,24 @@ def _completed_event_ids(espn_path: str, days_back: int, anchor: dt.date) -> Lis
     return ids
 
 
+def _slate_date(espn_ts: str) -> str:
+    """ESPN event timestamps are UTC, so a 7pm Pacific tip (02:00Z) lands on the
+    NEXT UTC day -- which made every west-coast box stamp a date one day after
+    the pick's US slate date and silently fail settlement matching. Shifting a
+    flat -5h maps every realistic US start time (earliest ~11:30am ET = 15:30Z)
+    back onto its slate date, with no tzdata dependency.
+    """
+    try:
+        t = dt.datetime.fromisoformat(espn_ts.replace("Z", "+00:00"))
+        return (t - dt.timedelta(hours=5)).date().isoformat()
+    except Exception:
+        return (espn_ts or "")[:10]
+
+
 def _game_result(summary: Dict[str, Any]):
     """(date, game_dict) from a summary header -- shared by both parsers."""
     comp = ((summary.get("header") or {}).get("competitions") or [{}])[0]
-    date = (comp.get("date") or "")[:10]
+    date = _slate_date(comp.get("date") or "")
     competitors = comp.get("competitors") or []
     home = next((c for c in competitors if c.get("homeAway") == "home"), {})
     away = next((c for c in competitors if c.get("homeAway") == "away"), {})

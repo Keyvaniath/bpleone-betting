@@ -29,6 +29,7 @@ from __future__ import annotations
 import os
 import json
 import re
+import unicodedata
 import datetime as dt
 from typing import Any, Dict, List, Optional
 
@@ -56,6 +57,15 @@ def _today_date_str() -> str:
 
 def _safe_id(s):
     return re.sub(r"[^a-zA-Z0-9_]", "_", str(s or "?"))[:40]
+
+
+def _norm_name(s) -> str:
+    """Accent/case-insensitive player-name key. Feeds and generators disagree on
+    accents (pick 'teoscar hernandez' vs gamelog 'Teoscar Hernandez' with a
+    combining accent) -- every by_name build and lookup must go through this or
+    the pick silently never matches and voids."""
+    s = unicodedata.normalize("NFD", str(s or ""))
+    return "".join(c for c in s if not unicodedata.combining(c)).lower().strip()
 
 
 def _pick_id(source, sport, player_or_matchup, market, date_str):
@@ -1529,7 +1539,7 @@ def _grade_batter_prop(market: str, pick: Dict[str, Any], by_name: Dict[str, Any
     field, line = _batter_stat_and_threshold(market)
     if field is None or line is None:
         return None
-    prec = by_name.get((pick.get("player_or_matchup") or "").lower())
+    prec = by_name.get(_norm_name(pick.get("player_or_matchup")))
     if not prec:
         return None
     m = (market or "").lower()
@@ -1631,7 +1641,7 @@ def _grade_wnba_prop(pick: Dict[str, Any], by_name: Dict[str, Any]) -> Optional[
     stat, line, side = _bball_stat(pick.get("market"))
     if stat is None or line is None or side is None or stat in ("_home_total", "_away_total"):
         return None
-    prec = by_name.get((pick.get("player_or_matchup") or "").strip().lower())
+    prec = by_name.get(_norm_name(pick.get("player_or_matchup")))
     if not prec:
         return None
     for game in (prec.get("games") or []):
@@ -1652,16 +1662,29 @@ def _grade_wnba_prop(pick: Dict[str, Any], by_name: Dict[str, Any]) -> Optional[
     return None
 
 
+# The model's team vocab and ESPN's box-score vocab disagree on several WNBA
+# abbreviations (model CONN/GOL/GSV/WAS vs ESPN CON/GS/WSH). Without this bridge
+# every team-total pick for those teams silently failed to match its final and
+# voided -- 14 of the 45 pending WNBA picks on 2026-06-10. Both vocabularies
+# normalize onto ESPN's form before comparison.
+_BBALL_AB_NORM = {"CONN": "CON", "GOL": "GS", "GSV": "GS", "WAS": "WSH", "LAS": "LA"}
+
+
+def _norm_bball_matchup(s: str) -> str:
+    parts = [t.strip().upper() for t in (s or "").split("@")]
+    return " @ ".join(_BBALL_AB_NORM.get(t, t) for t in parts).lower()
+
+
 def _grade_wnba_team_total(pick: Dict[str, Any], games: List[Dict[str, Any]]) -> Optional[str]:
     stat, line, side = _bball_stat(pick.get("market"))
     if stat not in ("_home_total", "_away_total") or line is None or side is None:
         return None
-    matchup = (pick.get("player_or_matchup") or "").strip().lower()
+    matchup = _norm_bball_matchup(pick.get("player_or_matchup") or "")
     for g in games:
         if (g.get("date") or "")[:10] != pick.get("date"):
             continue
-        g_mu = f"{g.get('away_abbrev','')} @ {g.get('home_abbrev','')}".lower()
-        if matchup not in g_mu and g_mu not in matchup:
+        g_mu = _norm_bball_matchup(f"{g.get('away_abbrev','')} @ {g.get('home_abbrev','')}")
+        if matchup != g_mu and matchup not in g_mu and g_mu not in matchup:
             continue
         score = g.get("home_score") if stat == "_home_total" else g.get("away_score")
         if score is None:
@@ -2159,7 +2182,7 @@ def _grade_nhl_pick(pick: Dict[str, Any], by_name: Dict[str, Any],
         return None
     line = float(mnum.group(1))
     side = "under" if "under" in (source + market).lower() else "over"
-    prec = by_name.get(subj.lower())
+    prec = by_name.get(_norm_name(subj))
     if not prec:
         return None
     for game in (prec.get("games") or []):
@@ -2190,17 +2213,17 @@ def _settle_picks(history: List[Dict[str, Any]]) -> int:
     by_name = {}
     for pid, prec in bpid.items():
         if isinstance(prec, dict):
-            by_name[(prec.get("name") or "").lower()] = prec
+            by_name[_norm_name(prec.get("name"))] = prec
     # Non-MLB real outcomes (box scores + finals) so each sport's picks settle +
     # feed the learning loop instead of voiding. WNBA is live now; NBA + NFL are
     # wired ahead of their seasons (gamelog files appear when those sports run).
-    wnba_by_name = _load(os.path.join(DATA_DIR, "wnba_player_gamelogs.json")).get("by_name") or {}
+    wnba_by_name = {_norm_name(k): v for k, v in (_load(os.path.join(DATA_DIR, "wnba_player_gamelogs.json")).get("by_name") or {}).items()}
     wnba_games = _load(os.path.join(DATA_DIR, "wnba_historical.json")).get("games") or []
-    nba_by_name = _load(os.path.join(DATA_DIR, "nba_player_gamelogs.json")).get("by_name") or {}
+    nba_by_name = {_norm_name(k): v for k, v in (_load(os.path.join(DATA_DIR, "nba_player_gamelogs.json")).get("by_name") or {}).items()}
     nba_games = _load(os.path.join(DATA_DIR, "nba_historical.json")).get("games") or []
-    nfl_by_name = _load(os.path.join(DATA_DIR, "nfl_player_gamelogs.json")).get("by_name") or {}
+    nfl_by_name = {_norm_name(k): v for k, v in (_load(os.path.join(DATA_DIR, "nfl_player_gamelogs.json")).get("by_name") or {}).items()}
     nfl_games = _load(os.path.join(DATA_DIR, "nfl_historical.json")).get("games") or []
-    nhl_by_name = _load(os.path.join(DATA_DIR, "nhl_player_gamelogs.json")).get("by_name") or {}
+    nhl_by_name = {_norm_name(k): v for k, v in (_load(os.path.join(DATA_DIR, "nhl_player_gamelogs.json")).get("by_name") or {}).items()}
     nhl_games = _load(os.path.join(DATA_DIR, "nhl_historical.json")).get("games") or []
     # Individual / match sports (golf finish, tennis match result, UFC fight result)
     # so those picks settle on simple outcomes instead of voiding.
@@ -2399,6 +2422,19 @@ def _correct_misrouted_grades(history: List[Dict[str, Any]]) -> int:
     for p in history:
         if not p.get("settled") or p.get("voided"):
             continue
+        # SCOPE GUARD (2026-06-10): this correction exists for the legacy MLB
+        # game-line mis-route ONLY. It used to fire on ANY settled market
+        # containing over_/under_ -- which is every basketball/hockey/soccer
+        # prop -- so each newly-graded WNBA pick was un-settled and voided the
+        # moment it settled (the silent killer behind WNBA's 0-settled, 250-void
+        # ledger). A pick graded by its own sport's prop/total grader stamps a
+        # verifiable outcome (stat/actual or team_total); only the wrong-path
+        # game-line grade lacks one. Never touch those, and never touch non-MLB.
+        if (p.get("sport") or "").upper() != "MLB":
+            continue
+        out = p.get("outcome") or {}
+        if any(k in out for k in ("stat", "actual", "team_total")):
+            continue
         m = (p.get("market") or "").lower()
         routed_gl = (any(k in m for k in ("ml_home", "ml_away", "over_", "under_"))
                      and "pp_" not in m)
@@ -2459,7 +2495,7 @@ def _attach_outcomes(history: List[Dict[str, Any]]) -> int:
     _resettle_on_revision (runs immediately after)."""
     historical_mlb = _load(os.path.join(DATA_DIR, "historical_mlb.json")).get("games") or []
     gamelogs = _load(os.path.join(DATA_DIR, "player_gamelogs.json")).get("by_player_id") or {}
-    by_name = {(prec.get("name") or "").lower(): prec
+    by_name = {_norm_name(prec.get("name")): prec
                for prec in gamelogs.values() if isinstance(prec, dict)}
     n = 0
     for p in history:
@@ -2524,7 +2560,7 @@ def _regrade_strict(p: Dict[str, Any], historical_mlb, by_name) -> Optional[str]
                         "verify": f"{a_ab} @ {h_ab}: final {away_s}-{home_s} (total {total}) on {p.get('date')}"}
         return graded[0][0]
     # Prop: require exactly one gradeable game that date (no doubleheader split).
-    prec = by_name.get((p.get("player_or_matchup") or "").lower())
+    prec = by_name.get(_norm_name(p.get("player_or_matchup")))
     if not prec:
         return None
     same_day = [gm for gm in (prec.get("games") or [])
@@ -2546,7 +2582,7 @@ def _resettle_on_revision(history: List[Dict[str, Any]]) -> int:
     or mid-revision feed can never cause churn. Returns the number flipped."""
     historical_mlb = _load(os.path.join(DATA_DIR, "historical_mlb.json")).get("games") or []
     gamelogs = _load(os.path.join(DATA_DIR, "player_gamelogs.json")).get("by_player_id") or {}
-    by_name = {(prec.get("name") or "").lower(): prec
+    by_name = {_norm_name(prec.get("name")): prec
                for prec in gamelogs.values() if isinstance(prec, dict)}
     today = dt.date.today()
     n_flip = 0

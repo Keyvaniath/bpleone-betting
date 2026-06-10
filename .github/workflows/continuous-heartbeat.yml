@@ -64,6 +64,17 @@ jobs:
         working-directory: python
         run: python sync_overrides_from_kv.py || true
 
+      # Fresh WNBA box logs BEFORE settlement -- the grader settles every beat
+      # but its inputs only refreshed 2x/day in the pipeline, so in-season WNBA
+      # picks sat ungradeable most of the day. Bounded + non-fatal.
+      - name: WNBA box logs (grading inputs for the settle below)
+        timeout-minutes: 2
+        continue-on-error: true
+        working-directory: python
+        run: |
+          python espn_box_logs.py wnba || true
+          python espn_box_logs.py nba || true
+
       # Self-learning -- update every 5 min, all day
       - name: All-picks unified ledger (settle + log)
         working-directory: python
