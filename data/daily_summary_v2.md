@@ -2,7 +2,7 @@
 
 ## 🏥 Model Health: 71.7/100 [HEALTHY]
 - Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 99.9/100
+  - 🟢 Calibration Freshness: 100.0/100
   - 🔴 Hit Rate Trend: 54.4/100
   - 🔴 Brier Trend: 29.6/100
   - 🟢 Pipeline Audit: 100.0/100
@@ -21,18 +21,16 @@
 4. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
 5. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
 
-## 📡 Sharp Action (Line Movement)
-- [MODERATE] **CHC @ COL** over_11.0: 52.38% → 56.52% (+4.1pp)
-- [MODERATE] **SEA @ BAL** over_8.5: 50.0% → 53.49% (+3.5pp)
+## 🐋 Whale Picks (Max Confluence)
+- [STRONG] **[MLB-PP]** Colt Keith PP_batter_hrr_under_3.5 -- 87% / +50.2% (score 2.5)
 
-## 📉 Strong UNDER Signals
-- [ELITE 6.5] **STL @ NYM** model 7.04 vs market 9.0
-- [STRONG 5.4] **TEX @ KCR** model 9.04 vs market 10.5
+## 📡 Sharp Action (Line Movement)
+- [ELITE] **LAD @ PIT** ml_away: 51.46% → 60.78% (+9.3pp)
 
 ## 🔒 Locks of the Day -- Track Record
-- All-time: **145-27** (84.3% hit rate)
-- Net units: **+4.94u** | ROI: **+46.3%**
-- Last 7d: 50-12 (80.7%) | net +1.54u
+- All-time: **150-29** (83.8% hit rate)
+- Net units: **+5.04u** | ROI: **+45.4%**
+- Last 7d: 55-14 (79.7%) | net +1.64u
 
 **Today's 9 Locks:**
 - [MLB-PP] **Rodolfo Durán** PP_batter_hits_under_1.5 · p=87% edge=+50.4% qK=0.062u
@@ -46,12 +44,12 @@
 - [MLB-PP] **Austin Martin** PP_batter_hrr_under_3.5 · p=86% edge=+49.1% qK=0.062u
 
 ## 🎰 Top Balanced 2-Leg Parlays (40-65% joint)
-- [MLB-PP] Ezequiel Tovar PP_batter_hrr_under_ + [MLB] STL @ NYM STL_ML
-  Joint: 50% | Fair: 273 | Edge: +85.8%
-- [MLB-PP] Colt Keith PP_batter_hrr_under_ + [MLB] STL @ NYM STL_ML
-  Joint: 50% | Fair: 273 | Edge: +85.5%
-- [MLB-PP] Wyatt Langford PP_batter_hrr_under_ + [MLB] STL @ NYM STL_ML
-  Joint: 50% | Fair: 273 | Edge: +85.1%
+- [MLB-PP] Ezequiel Tovar PP_batter_hrr_under_ + [MLB] ATL @ CHW OVER_8.5
+  Joint: 54% | Fair: 231 | Edge: +79.1%
+- [MLB-PP] Colt Keith PP_batter_hrr_under_ + [MLB] ATL @ CHW OVER_8.5
+  Joint: 54% | Fair: 231 | Edge: +78.8%
+- [MLB-PP] Wyatt Langford PP_batter_hrr_under_ + [MLB] ATL @ CHW OVER_8.5
+  Joint: 54% | Fair: 231 | Edge: +78.4%
 
 ## 🎮 Player Play of the Day (cross-sport)
 - **[LOL]** Inspired UNDER 3.5 Kills | MED conviction · model 61.7% fair -161
@@ -69,9 +67,9 @@
 - Hot teams: **5** | Cold teams: **5** | Over-heavy: 0 | Under-heavy: 4
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (16)
+## ⚠️ Anomaly Detector (17)
 - RESIDUAL_DIVERGENCE: **2**
-- STEAM_MOVE: **12**
+- STEAM_MOVE: **13**
 - COMPOUND_BULLPEN: **1**
 - PEN_MISMATCH: **1**
   - Portland Fire (WNBA): Portland Fire UNDERPERFORMING expected margin by 9.0pts in recent games -- model bias may persist
@@ -89,20 +87,17 @@
   - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
-## 🎯 Convergence Picks (15 stacked games)
-- ELITE: **0** · HIGH: 2 · MED: 13
-  - [HIGH] San Antonio Spurs @ New York Knicks : 3 signals (HEAT_COLD, ATS, ATS)
-  - [HIGH] Los Angeles Sparks @ Seattle Storm : 3 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD)
+## 🎯 Convergence Picks (16 stacked games)
+- ELITE: **2** · HIGH: 0 · MED: 14
+  - [ELITE] Las Vegas Aces @ Portland Fire : 5 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
+  - [ELITE] New York Knicks @ San Antonio Spurs : 4 signals (PREGAME, HEAT_COLD, ATS, ATS)
+  - [MED] New York Liberty @ Atlanta Dream : 2 signals (PREGAME, HEAT_COLD)
   - [MED] Atlanta United FC @ Columbus Crew : 2 signals (ATS, ATS)
   - [MED] Philadelphia Union @ Inter Miami CF : 2 signals (ATS, ATS)
-  - [MED] Seattle Sounders FC @ LAFC : 2 signals (ATS, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (5)
+## ⚾ Top MLB Pitcher K Plays (2)
 - **Bryan Woo** OVER 4.5 K (68%) fair -216
-- **Christian Scott** OVER 4.5 K (67%) fair -207
-- **Edward Cabrera** OVER 4.5 K (62%) fair -160
 - **Martín Pérez** OVER 4.5 K (59%) fair -144
-- **Zebby Matthews** OVER 4.5 K (59%) fair -142
 
 ## 🥊 UFC Fight Matchups (UFC Freedom 250: Topuria vs. Gaethje)
   - [LEAN] **Josh Hokit** (9-0-0) vs Derrick Lewis -- fair -141
@@ -112,23 +107,28 @@
   - [COIN_FLIP] **Diego Lopes** (27-8-0) vs Steve Garcia -- fair -108
 
 ## ⛳ Golf Player Heat (from RBC Canadian Open)
-  - 🔥 T1 **Taylor Moore** (USA): -5 total -- finished T1
-  - 🔥 T2 **Brice Garnett** (USA): -5 total -- finished T2
-  - 🔥 T3 **Billy Horschel** (USA): -4 total -- finished T3
-  - 🔥 T4 **Mac Meissner** (USA): -3 total -- finished T4
-  - 🔥 T5 **Sam Ryder** (USA): -3 total -- finished T5
+  - 🔥 T1 **Sahith Theegala** (USA): -6 total -- finished T1
+  - 🔥 T2 **Emiliano Grillo** (Argentina): -6 total -- finished T2
+  - 🔥 T3 **Eric Cole** (USA): -6 total -- finished T3
+  - 🔥 T4 **Brooks Koepka** (USA): -6 total -- finished T4
+  - 🔥 T5 **Sam Burns** (USA): -6 total -- finished T5
 
-## 🔥 MLB Batter Heat (37 HOT / 32 COLD)
+## 🔥 MLB Batter Heat (36 HOT / 33 COLD)
   - 🔥 **Jung Hoo Lee** (SF): L14 .561 / season .338 (+223pts)
   - 🔥 **Tyler Soderstrom** (ATH): L14 .400 / season .238 (+162pts)
   - 🔥 **Blaze Alexander** (BAL): L14 .436 / season .285 (+151pts)
   - 🔥 **Tristan Peters** (CWS): L14 .439 / season .298 (+141pts)
-  - 🔥 **Jac Caglianone** (KC): L14 .417 / season .280 (+137pts)
-  - ❄️ **Max Muncy** (ATH): L14 .114 / season .270 (-156pts) -- FADE props
+  - 🔥 **Jac Caglianone** (KC): L14 .408 / season .279 (+129pts)
+  - ❄️ **Max Muncy** (ATH): L14 .114 / season .268 (-154pts) -- FADE props
   - ❄️ **Ildemaro Vargas** (AZ): L14 .128 / season .275 (-147pts) -- FADE props
   - ❄️ **Michael Conforto** (CHC): L14 .094 / season .237 (-143pts) -- FADE props
   - ❄️ **Jeff McNeil** (ATH): L14 .089 / season .232 (-143pts) -- FADE props
   - ❄️ **Austin Martin** (MIN): L14 .109 / season .245 (-136pts) -- FADE props
+
+## 📈 Streak Regression Alerts (3)
+- [WNBA] New York Liberty on W4 L10 4-0 -- New York Liberty on W4 -- no historical sample
+- [WNBA] Portland Fire on L3 L10 1-4 -- Portland Fire on L3 -- no historical sample
+- [WNBA] Las Vegas Aces on W4 L10 4-1 -- Las Vegas Aces on W4 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**

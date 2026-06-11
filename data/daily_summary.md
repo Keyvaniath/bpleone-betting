@@ -4,24 +4,25 @@
 
 _Pipeline health: **DEGRADED** (14/15 artifacts ok; 1 empty, 0 stale)._ 
 
-_Generated at 2026-06-11T22:43:59 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-06-11T23:29:29 UTC. Game lines source: **placeholder -110 (no real book today)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
-**ATL @ CHW - OVER_8.5**
+**CIN @ COL - CIN_ML**
 - Market: -110
-- Model probability: 84.9%
-- Raw edge: +62.17%
+- Model probability: 73.7%
+- Raw edge: +40.74%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
 
-## Full Slate (2 games)
+## Full Slate (3 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 7:05p ET | SEA @ BAL | Oriole Park at Camden Yards | 78F 4mph | SEA_ML +21.41% |
-| 7:40p ET | ATL @ CHW | Rate Field | 73F 15mph | OVER_8.5 +62.17% |
+| 7:05p ET | SDP @ LAD | Petco Park | 62F -6mph | LAD_ML +25.43% |
+| 6:45p ET | BOS @ NYY | Yankee Stadium | 71F 12mph | OVER_9.0 +30.97% |
+| 9:40p ET | CIN @ COL | Coors Field | 74F 4mph | CIN_ML +40.74% |
 
 ## Parlays - top 3
 
@@ -40,14 +41,14 @@ _Generated at 2026-06-11T22:43:59 UTC. Game lines source: **Bovada (fallback -- 
 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
-| batter total bases | 1340 | 25.9% | 32.5% | 1.253 | 0.799 |
-| batter rbis | 1338 | 20.0% | 23.8% | 1.190 | 0.841 |
-| batter runs scored | 669 | 38.0% | 38.9% | 1.023 | 0.978 |
-| batter home runs | 669 | 11.5% | 13.2% | 1.142 | 0.878 |
 | batter singles | 669 | 41.5% | 44.8% | 1.077 | 0.929 |
+| batter home runs | 669 | 11.5% | 13.2% | 1.142 | 0.878 |
 | pitcher strikeouts | 289 | 36.0% | 38.9% | 1.081 | 0.927 |
-| batter hits | 1385 | 39.3% | 41.9% | 1.068 | 0.936 |
+| batter runs scored | 669 | 38.0% | 38.9% | 1.023 | 0.978 |
 | batter doubles | 669 | 14.1% | 16.0% | 1.140 | 0.879 |
+| batter rbis | 1338 | 20.0% | 23.8% | 1.190 | 0.841 |
+| batter total bases | 1340 | 25.9% | 32.5% | 1.253 | 0.799 |
+| batter hits | 1385 | 39.3% | 41.9% | 1.068 | 0.936 |
 
 Cumulative graded plays: 118214. Wins: 87366. Hit rate: 73.9%.
 
@@ -55,9 +56,10 @@ Cumulative graded plays: 118214. Wins: 87366. Hit rate: 73.9%.
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| ATL @ CHW | 40.1% | +149 | 4.88 | +398 | -398 |
-| LAD @ PIT | 34.5% | +190 | 5.33 | -- | -- |
-| SEA @ BAL | 40.8% | +145 | 4.6 | +318 | -318 |
+| ATL @ CHW | 40.1% | +149 | 4.57 | -- | -- |
+| BOS @ NYY | -- | -- | -- | +115 | -115 |
+| CIN @ COL | -- | -- | -- | +465 | -465 |
+| SDP @ LAD | -- | -- | -- | -166 | +166 |
 
 ## Team Form (last 10)
 
