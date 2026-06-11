@@ -1,7 +1,24 @@
 {
-  "generated_at": "2026-06-11T10:22:27",
-  "n_recommendations": 1,
+  "generated_at": "2026-06-11T12:34:14",
+  "n_recommendations": 2,
   "recommendations": [
+    {
+      "key": "calibration.n_prior_default",
+      "current": 5,
+      "suggested": 3,
+      "direction": "decrease",
+      "severity": "medium",
+      "rationale": "1 market(s) have n>=200 but |residual|>0.4 -- prior is over-anchoring. Lowering N_PRIOR will let data correct faster.",
+      "evidence": {
+        "stuck_markets": [
+          {
+            "market": "pitcher_strikeouts",
+            "n": 289,
+            "mean_residual": -0.426
+          }
+        ]
+      }
+    },
     {
       "key": "live_edges.edge_threshold_pp",
       "current": 3.5,
@@ -15,5 +32,5 @@
       }
     }
   ],
-  "summary": "1 suggested override: live_edges.edge_threshold_pp (decrease)."
+  "summary": "2 suggested overrides -- review on /config."
 }

@@ -1,7 +1,5 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:1 F:177
-
-:lock: **LOCK:** Brandon Sproat (MLB)
+_NO_ACTION_NIGHT_ | L:0 S:1 F:172
 
 :dart: **Top Picks:**
 1. [F1] max verstappen -- max verstappen (DRIVER_STRONG)
