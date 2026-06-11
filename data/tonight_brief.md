@@ -13,14 +13,14 @@ _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 - **Luke Keaschall** PP_batter_hrr_under_3.5 (MLB-PP) -- 86% / +49.2%
 - **Austin Martin** PP_batter_hrr_under_3.5 (MLB-PP) -- 86% / +49.1%
 
-## 📉 Under Bets
-- **STL @ NYM** UNDER 9.0 — model 7.04 [ELITE signal]
-- **TEX @ KCR** UNDER 10.5 — model 9.04 [STRONG signal]
+## 📡 Sharp Money Following Model
+- **CHC @ COL** over_11.0: line moved 52.38% → 56.52% (+4.1pp)
+- **SEA @ BAL** over_8.5: line moved 50.0% → 53.49% (+3.5pp)
 
 ## 🎰 Tonight's Best Parlay
-- **Ezequiel Tovar** PP_batter_hrr_under_3.5 + **STL @ NYM** STL_ML
-- Joint 50% · fair +273 · edge +85.8%
+- **Ezequiel Tovar** PP_batter_hrr_under_3.5 + **ATL @ CHW** OVER_8.5
+- Joint 54% · fair +231 · edge +79.1%
 
 ---
-_Generated 2026-06-11T14:09:01_
+_Generated 2026-06-11T22:43:20_
 _Full breakdown: /tonight · Full history: /locks-of-day_
