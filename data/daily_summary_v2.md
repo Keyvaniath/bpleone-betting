@@ -1,56 +1,49 @@
 # EdgeStat Daily Summary — 2026-06-11
 
-## 🏥 Model Health: 71.2/100 [HEALTHY]
-- Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 99.9/100
+## 🏥 Model Health: 68.8/100 [OK]
+- Operational but room to improve - check yellow components
+  - 🟢 Calibration Freshness: 99.7/100
   - 🔴 Hit Rate Trend: 54.4/100
   - 🔴 Brier Trend: 29.6/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟡 Data Health: 77.8/100
-  - 🟢 Edge Count: 88.6/100
+  - 🟢 Data Health: 88.9/100
+  - 🔴 Edge Count: 42.9/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.587)
-- **Total games on board:** 118
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.589)
+- **Total games on board:** 102
 - **Strong home favorites:** 3 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
 1. **CHC @ COL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-2. **MIL @ OAK YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-3. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
-4. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
-5. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
+2. **MIN @ DET 4-leg SGP @ -165** (80/100 ★★★★★)
+3. **LAD @ PIT YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
+4. **MIN @ DET YRFI (1st-inning OVER 0.5)** (78/100 ★★★★)
+5. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
 
-## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB-PP]** Francisco Alvarez PP_batter_hrr_under_3.5 -- 87% / +50.4% (score 2.5)
-
-## 📡 Sharp Action (Line Movement)
-- [STRONG] **MIL @ OAK** ml_home: 44.84% → 52.61% (+7.8pp)
+## 📉 Strong UNDER Signals
+- [ELITE 6.5] **STL @ NYM** model 7.04 vs market 9.0
+- [STRONG 5.4] **TEX @ KCR** model 9.04 vs market 10.5
 
 ## 🔒 Locks of the Day -- Track Record
-- All-time: **141-25** (84.9% hit rate)
-- Net units: **+4.88u** | ROI: **+47.4%**
-- Last 7d: 51-12 (81.0%) | net +1.58u
+- All-time: **144-27** (84.2% hit rate)
+- Net units: **+4.89u** | ROI: **+46.1%**
+- Last 7d: 49-12 (80.3%) | net +1.49u
 
-**Today's 10 Locks:**
-- [MLB-PP] **Salvador Perez** PP_batter_hrr_under_3.5 · p=86% edge=+49.8% qK=0.062u
-- [MLB-PP] **Francisco Alvarez** PP_batter_hrr_under_3.5 · p=86% edge=+49.7% qK=0.062u
-- [MLB-PP] **Sterlin Thompson** PP_batter_hrr_under_3.5 · p=86% edge=+49.4% qK=0.062u
-- [MLB-PP] **Caleb Durbin** PP_batter_hrr_under_3.5 · p=86% edge=+49.4% qK=0.062u
-- [MLB-PP] **Drew Gilbert** PP_batter_hrr_under_3.5 · p=86% edge=+49.2% qK=0.062u
-- [MLB-PP] **Nick Fortes** PP_batter_hrr_under_3.5 · p=87% edge=+50.4% qK=0.062u
+**Today's 5 Locks:**
 - [MLB-PP] **Rodolfo Durán** PP_batter_hits_under_1.5 · p=87% edge=+50.4% qK=0.062u
+- [MLB-PP] **Francisco Alvarez** PP_batter_hrr_under_3.5 · p=87% edge=+50.4% qK=0.062u
 - [MLB-PP] **Ezequiel Tovar** PP_batter_hrr_under_3.5 · p=87% edge=+50.3% qK=0.062u
 - [MLB-PP] **Alex Bregman** PP_batter_hrr_under_3.5 · p=87% edge=+50.2% qK=0.062u
 - [MLB-PP] **Kyle Stowers** PP_batter_hrr_under_3.5 · p=86% edge=+50.0% qK=0.062u
 
 ## 🎰 Top Balanced 2-Leg Parlays (40-65% joint)
-- [MLB-PP] Rodolfo Durán PP_batter_hits_under + [MLB] CHC @ COL OVER_11.5
-  Joint: 54% | Fair: 231 | Edge: +79.7%
-- [MLB-PP] Francisco Alvarez PP_batter_hrr_under_ + [MLB] CHC @ COL OVER_11.5
-  Joint: 54% | Fair: 231 | Edge: +79.6%
-- [MLB-PP] Ezequiel Tovar PP_batter_hrr_under_ + [MLB] CHC @ COL OVER_11.5
-  Joint: 54% | Fair: 231 | Edge: +79.6%
+- [MLB-PP] Rodolfo Durán PP_batter_hits_under + [MLB] STL @ NYM STL_ML
+  Joint: 50% | Fair: 280 | Edge: +88.8%
+- [MLB-PP] Francisco Alvarez PP_batter_hrr_under_ + [MLB] STL @ NYM STL_ML
+  Joint: 50% | Fair: 280 | Edge: +88.7%
+- [MLB-PP] Ezequiel Tovar PP_batter_hrr_under_ + [MLB] STL @ NYM STL_ML
+  Joint: 50% | Fair: 280 | Edge: +88.7%
 
 ## 🎮 Player Play of the Day (cross-sport)
 - **[LOL]** Inspired UNDER 3.5 Kills | MED conviction · model 61.7% fair -161
@@ -79,26 +72,27 @@
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$15.93**
-  - #1 [NRFI] $50 on CHC @ COL YRFI (1st-inning OVER 0.5) (P=91%)
-  - #2 [NRFI] $50 on MIL @ OAK YRFI (1st-inning OVER 0.5) (P=79%)
-  - #3 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
-  - #4 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
-  - #5 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
+- Expected EV: **$-5.1**
+  - #1 [SGP] $50 on MIN @ DET 4-leg SGP @ -165 (P=62%)
+  - #2 [NRFI] $50 on CHC @ COL YRFI (1st-inning OVER 0.5) (P=76%)
+  - #3 [NRFI] $35 on LAD @ PIT YRFI (1st-inning OVER 0.5) (P=66%)
+  - #4 [NRFI] $35 on MIN @ DET YRFI (1st-inning OVER 0.5) (P=65%)
+  - #5 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
 
-## 🎯 Convergence Picks (17 stacked games)
-- ELITE: **1** · HIGH: 0 · MED: 16
-  - [ELITE] Los Angeles Sparks @ Seattle Storm : 4 signals (PREGAME, HEAT_COLD, HEAT_COLD, ATS)
-  - [MED] San Antonio Spurs @ New York Knicks : 2 signals (PREGAME, ATS)
-  - [MED] Vegas Golden Knights @ Carolina Hurricanes : 2 signals (PREGAME, HEAT_COLD)
-  - [MED] Connecticut Sun @ Toronto Tempo : 2 signals (HEAT_COLD, ATS)
+## 🎯 Convergence Picks (15 stacked games)
+- ELITE: **0** · HIGH: 2 · MED: 13
+  - [HIGH] San Antonio Spurs @ New York Knicks : 3 signals (HEAT_COLD, ATS, ATS)
+  - [HIGH] Los Angeles Sparks @ Seattle Storm : 3 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD)
   - [MED] Atlanta United FC @ Columbus Crew : 2 signals (ATS, ATS)
+  - [MED] Philadelphia Union @ Inter Miami CF : 2 signals (ATS, ATS)
+  - [MED] Seattle Sounders FC @ LAFC : 2 signals (ATS, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (4)
-- **Chris Sale** OVER 6.5 K (69%) fair -219
-- **Reid Detmers** OVER 6.5 K (65%) fair -186
-- **MacKenzie Gore** OVER 4.5 K (62%) fair -166
-- **Shota Imanaga** OVER 4.5 K (60%) fair -151
+## ⚾ Top MLB Pitcher K Plays (5)
+- **Bryan Woo** OVER 4.5 K (68%) fair -216
+- **Christian Scott** OVER 4.5 K (67%) fair -207
+- **Edward Cabrera** OVER 4.5 K (62%) fair -160
+- **Martín Pérez** OVER 4.5 K (59%) fair -144
+- **Zebby Matthews** OVER 4.5 K (59%) fair -142
 
 ## 🏀 NBA Player Heat (18 HOT / 21 COLD)
   - 🔥 **Jeremiah Fears** (NO): L5 31.8/5.8/6.0 vs season 16.9/3.2/4.0 [PTS +14.9, REB +2.6, AST +2.0]
@@ -118,11 +112,11 @@
   - [COIN_FLIP] **Diego Lopes** (27-8-0) vs Steve Garcia -- fair -108
 
 ## ⛳ Golf Player Heat (from RBC Canadian Open)
-  - 🔥 T1 **Keith Mitchell** (USA): +0 total -- finished T1
-  - 🔥 T2 **Ben Silverman** (Canada): +0 total -- finished T2
-  - 🔥 T3 **Kevin Roy** (USA): +0 total -- finished T3
-  - 🔥 T4 **Dylan Wu** (USA): +0 total -- finished T4
-  - 🔥 T5 **Matti Schmid** (Germany): +0 total -- finished T5
+  - 🔥 T1 **Mac Meissner** (USA): -3 total -- finished T1
+  - 🔥 T2 **Davis Thompson** (USA): -3 total -- finished T2
+  - 🔥 T3 **Roger Sloan** (Canada): -2 total -- finished T3
+  - 🔥 T4 **Danny Willett** (England): -2 total -- finished T4
+  - 🔥 T5 **Sam Ryder** (USA): -2 total -- finished T5
 
 ## 🔥 MLB Batter Heat (34 HOT / 34 COLD)
   - 🔥 **Jung Hoo Lee** (SF): L14 .561 / season .338 (+223pts)
@@ -135,10 +129,6 @@
   - ❄️ **Michael Conforto** (CHC): L14 .094 / season .237 (-143pts) -- FADE props
   - ❄️ **Jeff McNeil** (ATH): L14 .089 / season .232 (-143pts) -- FADE props
   - ❄️ **Nolan Gorman** (STL): L14 .075 / season .197 (-122pts) -- FADE props
-
-## 📈 Streak Regression Alerts (2)
-- [WNBA] Connecticut Sun on L3 L10 1-4 -- Connecticut Sun on L3 -- no historical sample
-- [WNBA] Seattle Storm on L6 L10 0-5 -- Seattle Storm on L6 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**

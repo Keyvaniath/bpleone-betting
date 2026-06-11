@@ -4,7 +4,7 @@
 
 _Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
 
-_Generated at 2026-06-11T12:43:13 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-06-11T14:09:28 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
@@ -22,45 +22,46 @@ _Generated at 2026-06-11T12:43:13 UTC. Game lines source: **Bovada (fallback -- 
 |---|---|---|---|---|
 | 1:10p ET | STL @ NYM | Citi Field | 98F 10mph | UNDER_9.0 +47.92% |
 | 1:10p ET | MIN @ DET | Comerica Park | 87F 10mph | -- |
-| 1:10p ET | ARI @ MIA | loanDepot park | indoor | MIA_ML +33.85% |
+| 1:10p ET | ARI @ MIA | loanDepot park | indoor | MIA_ML +30.84% |
 | 2:10p ET | TEX @ KCR | Kauffman Stadium | 79F 19mph | UNDER_10.5 +33.81% |
 | 3:10p ET | CHC @ COL | Coors Field | 79F 8mph | OVER_11.0 +49.36% |
-| 6:40p ET | LAD @ PIT | PNC Park | 76F 4mph | LAD_ML +13.94% |
+| 6:40p ET | LAD @ PIT | PNC Park | 76F 4mph | LAD_ML +11.46% |
 | 7:05p ET | SEA @ BAL | Oriole Park at Camden Yards | 82F 14mph | OVER_8.5 +25.89% |
-| 7:40p ET | ATL @ CHW | Rate Field | 71F 12mph | OVER_8.5 +46.43% |
+| 7:40p ET | ATL @ CHW | Rate Field | 70F 6mph | OVER_8.5 +37.0% |
 
 ## Parlays - top 5
 
-- **3-leg @ +491 (prob 25.2%, EV +48.91%)**
+- **3-leg @ +570 (prob 22.3%, EV +49.55%)**
   - TEX @ KCR TEX_ML (-103, model 54.5%)
-  - LAD @ PIT LAD_ML (-164, model 70.8%)
   - SEA @ BAL SEA_ML (-116, model 65.3%)
-- **3-leg @ +484 (prob 24.4%, EV +42.51%)**
+  - ATL @ CHW ATL_ML (-121, model 62.6%)
+- **3-leg @ +478 (prob 25.2%, EV +45.67%)**
   - TEX @ KCR TEX_ML (-103, model 54.5%)
-  - LAD @ PIT LAD_ML (-164, model 70.8%)
-  - ATL @ CHW ATL_ML (-119, model 63.2%)
-- **2-leg @ +243 (prob 41.3%, EV +41.58%)**
+  - LAD @ PIT LAD_ML (-174, model 70.8%)
   - SEA @ BAL SEA_ML (-116, model 65.3%)
-  - ATL @ CHW ATL_ML (-119, model 63.2%)
-- **2-leg @ +200 (prob 46.2%, EV +38.58%)**
-  - LAD @ PIT LAD_ML (-164, model 70.8%)
+- **2-leg @ +240 (prob 40.9%, EV +39.18%)**
   - SEA @ BAL SEA_ML (-116, model 65.3%)
-- **2-leg @ +196 (prob 44.8%, EV +32.63%)**
-  - LAD @ PIT LAD_ML (-164, model 70.8%)
-  - ATL @ CHW ATL_ML (-119, model 63.2%)
+  - ATL @ CHW ATL_ML (-121, model 62.6%)
+- **3-leg @ +467 (prob 24.2%, EV +37.04%)**
+  - TEX @ KCR TEX_ML (-103, model 54.5%)
+  - LAD @ PIT LAD_ML (-174, model 70.8%)
+  - ATL @ CHW ATL_ML (-121, model 62.6%)
+- **2-leg @ +193 (prob 46.2%, EV +35.57%)**
+  - LAD @ PIT LAD_ML (-174, model 70.8%)
+  - SEA @ BAL SEA_ML (-116, model 65.3%)
 
 ## Self-Learning Loop
 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
-| batter singles | 669 | 41.5% | 44.8% | 1.077 | 0.929 |
-| batter rbis | 1338 | 20.0% | 23.8% | 1.190 | 0.841 |
 | batter total bases | 1340 | 25.9% | 32.5% | 1.253 | 0.799 |
-| batter home runs | 669 | 11.5% | 13.2% | 1.142 | 0.878 |
+| batter rbis | 1338 | 20.0% | 23.8% | 1.190 | 0.841 |
+| batter hits | 1385 | 39.3% | 41.9% | 1.068 | 0.936 |
 | pitcher strikeouts | 289 | 36.0% | 38.9% | 1.081 | 0.927 |
 | batter doubles | 669 | 14.1% | 16.0% | 1.140 | 0.879 |
-| batter hits | 1385 | 39.3% | 41.9% | 1.068 | 0.936 |
+| batter singles | 669 | 41.5% | 44.8% | 1.077 | 0.929 |
 | batter runs scored | 669 | 38.0% | 38.9% | 1.023 | 0.978 |
+| batter home runs | 669 | 11.5% | 13.2% | 1.142 | 0.878 |
 
 Cumulative graded plays: 118214. Wins: 87366. Hit rate: 73.9%.
 
@@ -69,7 +70,7 @@ Cumulative graded plays: 118214. Wins: 87366. Hit rate: 73.9%.
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
 | ARI @ MIA | 38.3% | +161 | 4.8 | -149 | +149 |
-| ATL @ CHW | 42.7% | +134 | 4.56 | +283 | -283 |
+| ATL @ CHW | 42.7% | +134 | 4.4 | +283 | -283 |
 | CHC @ COL | 23.5% | +325 | 7.21 | +234 | -234 |
 | LAD @ PIT | 34.5% | +190 | 5.47 | +422 | -422 |
 | MIN @ DET | 35.2% | +184 | 5.38 | +138 | -138 |
@@ -94,7 +95,7 @@ Cumulative graded plays: 118214. Wins: 87366. Hit rate: 73.9%.
 
 ## Loop Activity (since last refresh)
 
-- Confidence delta: **-0.4**
+- Confidence delta: **+0.0**
 
 ## Model Recommendations (operator review)
 
