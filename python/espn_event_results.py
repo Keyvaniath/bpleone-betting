@@ -34,7 +34,8 @@ SOCCER_SB = "https://site.api.espn.com/apis/site/v2/sports/soccer/{lg}/scoreboar
 # ESPN league codes. EPL/MLS/UCL carry picks today; the big-5 + Europa are
 # fetched too so the feed is ready the moment those generators surface picks.
 SOCCER_LEAGUES = ["eng.1", "usa.1", "uefa.champions", "uefa.europa",
-                  "esp.1", "ita.1", "ger.1", "fra.1"]
+                  "esp.1", "ita.1", "ger.1", "fra.1",
+                  "fifa.world"]  # 2026 World Cup (June 11 - July 19)
 
 
 def _http(url: str) -> Optional[Dict[str, Any]]:

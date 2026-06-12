@@ -137,6 +137,7 @@ def run() -> Dict[str, Any]:
         ("epl_state.json", "epl"),
         ("mls_state.json", "mls"),
         ("ucl_state.json", "ucl"),
+        ("worldcup_state.json", "worldcup"),
         ("la_liga_state.json", "la_liga"),
         ("serie_a_state.json", "serie_a"),
         ("bundesliga_state.json", "bundesliga"),

@@ -130,6 +130,10 @@ def _batter_gamelog(pid: int, n: int = GAMELOG_DEPTH) -> List[Dict[str, Any]]:
                 "hits": hits,
                 "tb": tb,
                 "hr": hr,
+                # 2B/3B were fetched but never stored -- without them every XBH
+                # prop (~560 ledger picks) was ungradeable and voided.
+                "doubles": doubles,
+                "triples": triples,
                 "rbi": int(st.get("rbi") or 0),
                 "runs": int(st.get("runs") or 0),
                 "k": int(st.get("strikeOuts") or 0),

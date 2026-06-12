@@ -144,6 +144,7 @@ def run() -> Dict[str, Any]:
         ("mls_state.json", "mls"),
         ("epl_state.json", "epl"),
         ("ucl_state.json", "ucl"),
+        ("worldcup_state.json", "worldcup"),
     ]:
         rows = _process_league(state_file, league)
         all_rows.extend(rows)

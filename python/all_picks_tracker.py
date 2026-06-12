@@ -1513,6 +1513,9 @@ def _batter_stat_and_threshold(market: str):
         if "run" in m: return ("runs", ln)
     if "total_base" in m:
         return ("tb", nval if nval is not None else 1.5)
+    if "xbh" in m or "extra_base" in m:
+        # XBH = 2B + 3B + HR; gradeable now that gamelogs store doubles/triples.
+        return ("xbh", (float(plus.group(1)) - 0.5) if plus else (nval if nval is not None else 0.5))
     if "hrr" in m:
         return ("hrr", nval if nval is not None else 2.5)
     if "2_plus_hits" in m:
@@ -1552,6 +1555,12 @@ def _grade_batter_prop(market: str, pick: Dict[str, Any], by_name: Dict[str, Any
             continue
         if field == "hrr":
             stat = (game.get("hits") or 0) + (game.get("runs") or 0) + (game.get("rbi") or 0)
+        elif field == "xbh":
+            # Requires the gamelog row to carry 2B/3B (older rows don't -- those
+            # stay ungraded rather than guessed from hits alone).
+            if game.get("doubles") is None and game.get("triples") is None:
+                continue
+            stat = (game.get("doubles") or 0) + (game.get("triples") or 0) + (game.get("hr") or 0)
         else:
             stat = game.get(field)
         if stat is None:
@@ -2264,7 +2273,7 @@ def _settle_picks(history: List[Dict[str, Any]]) -> int:
         elif sport == "F1":
             result = _grade_f1_pick(p, f1_events)
         elif sport in ("EPL", "MLS", "UCL", "UEL", "SOCCER", "LALIGA", "SERIEA",
-                       "BUNDESLIGA", "LIGUE1"):
+                       "BUNDESLIGA", "LIGUE1", "WORLDCUP", "FIFA.WORLD"):
             result = _grade_soccer_pick(p, soccer_matches)
         else:
             # MLB / default (unchanged). Game-level: FULL-GAME moneyline or FULL-GAME
