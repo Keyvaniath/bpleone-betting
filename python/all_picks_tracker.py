@@ -1467,6 +1467,39 @@ def _collect_picks_from_sources() -> List[Dict[str, Any]]:
             "line_delta_pp": r.get("line_delta_pp"),
         })
 
+    # World Cup 3-way model picks -- the WC desk feeds the learning loop. These
+    # are seeded-band model probs (experimental firehose: tracked to train, not
+    # featured); families learn fast at 73 group matches in 18 days. Markets use
+    # the soccer grader's vocab (HOME_ML/AWAY_ML, OVER_x/UNDER_x, BTTS_YES).
+    wcc = _load(os.path.join(DATA_DIR, "worldcup_cards.json"))
+    for c in (wcc.get("cards") or []):
+        mu = c.get("matchup")
+        if not mu:
+            continue
+        sides = []
+        if (c.get("p_home") or 0) >= 0.50:
+            sides.append(("HOME_ML", c["p_home"], c.get("fair_home")))
+        if (c.get("p_away") or 0) >= 0.50:
+            sides.append(("AWAY_ML", c["p_away"], c.get("fair_away")))
+        if (c.get("p_over_2_5") or 0) >= 0.55:
+            sides.append(("OVER_2.5", c["p_over_2_5"], None))
+        if (1 - (c.get("p_over_2_5") or 1)) >= 0.58:
+            sides.append(("UNDER_2.5", round(1 - c["p_over_2_5"], 4), None))
+        if (c.get("p_btts") or 0) >= 0.56:
+            sides.append(("BTTS_YES", c["p_btts"], None))
+        for mkt, p, fair in sides:
+            out.append({
+                "source": f"wc_model_{mkt.lower()}",
+                "sport": "WORLDCUP",
+                "player_or_matchup": mu,
+                "market": mkt,
+                "prob": round(float(p), 4),
+                "fair_american": fair,
+                "p_predicted": round(float(p), 4),
+                "matchup": mu,
+                "game_date": c.get("date"),
+            })
+
     # MLB favorite-juice gate. The MLB game book is empirically OVERCONFIDENT on
     # heavy favorites: settled picks priced <= -150 realize well under their implied
     # win rate (the <=-200 bucket implies 66.7% but hits ~60% -> -19.8% ROI, ~-547u;
