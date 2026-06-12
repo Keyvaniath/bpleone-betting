@@ -27,6 +27,33 @@ OUT = os.path.join(DATA_DIR, "soccer_goalscorer_props.json")
 
 # 2024-25 season goals-per-match for top attackers (compiled May 2026)
 PLAYER_DB = {
+    # 2026 WORLD CUP -- national-team scorers. gpm = recent international rate,
+    # deliberately conservative (international scoring runs below club rates).
+    # Team strings must match ESPN displayName in worldcup_state.json.
+    "kylian mbappe wc":      {"team": "France",        "gpm": 0.75, "league": "WORLDCUP", "name": "kylian mbappe"},
+    "lionel messi wc":       {"team": "Argentina",     "gpm": 0.55, "league": "WORLDCUP", "name": "lionel messi"},
+    "lautaro martinez wc":   {"team": "Argentina",     "gpm": 0.50, "league": "WORLDCUP", "name": "lautaro martinez"},
+    "harry kane wc":         {"team": "England",       "gpm": 0.65, "league": "WORLDCUP", "name": "harry kane"},
+    "erling haaland wc":  {"team": "Norway",        "gpm": 0.80, "league": "WORLDCUP", "name": "erling haaland"},
+    "cristiano ronaldo":  {"team": "Portugal",      "gpm": 0.50, "league": "WORLDCUP"},
+    "vinicius junior wc":    {"team": "Brazil",        "gpm": 0.45, "league": "WORLDCUP", "name": "vinicius junior"},
+    "raphinha wc":           {"team": "Brazil",        "gpm": 0.45, "league": "WORLDCUP", "name": "raphinha"},
+    "lamine yamal wc":       {"team": "Spain",         "gpm": 0.40, "league": "WORLDCUP", "name": "lamine yamal"},
+    "alvaro morata":      {"team": "Spain",         "gpm": 0.40, "league": "WORLDCUP"},
+    "jamal musiala wc":      {"team": "Germany",       "gpm": 0.40, "league": "WORLDCUP", "name": "jamal musiala"},
+    "memphis depay":      {"team": "Netherlands",   "gpm": 0.45, "league": "WORLDCUP"},
+    "romelu lukaku":      {"team": "Belgium",       "gpm": 0.55, "league": "WORLDCUP"},
+    "son heung-min wc":   {"team": "South Korea",   "gpm": 0.45, "league": "WORLDCUP", "name": "son heung-min"},
+    "mohamed salah wc":   {"team": "Egypt",         "gpm": 0.55, "league": "WORLDCUP", "name": "mohamed salah"},
+    "youssef en-nesyri":  {"team": "Morocco",       "gpm": 0.40, "league": "WORLDCUP"},
+    "darwin nunez":       {"team": "Uruguay",       "gpm": 0.45, "league": "WORLDCUP"},
+    "christian pulisic":  {"team": "United States", "gpm": 0.40, "league": "WORLDCUP"},
+    "folarin balogun":    {"team": "United States", "gpm": 0.35, "league": "WORLDCUP"},
+    "santiago gimenez":   {"team": "Mexico",        "gpm": 0.40, "league": "WORLDCUP"},
+    "jonathan david":     {"team": "Canada",        "gpm": 0.45, "league": "WORLDCUP"},
+    "takefusa kubo":      {"team": "Japan",         "gpm": 0.30, "league": "WORLDCUP"},
+    "breel embolo":       {"team": "Switzerland",   "gpm": 0.35, "league": "WORLDCUP"},
+    "sadio mane":         {"team": "Senegal",       "gpm": 0.40, "league": "WORLDCUP"},
     # EPL
     "erling haaland":    {"team": "Manchester City",   "gpm": 0.92, "league": "EPL"},
     "mohamed salah":     {"team": "Liverpool",         "gpm": 0.62, "league": "EPL"},
@@ -126,7 +153,7 @@ def _process_league(state_file: str, league: str) -> List[Dict[str, Any]]:
                 "league": league.upper(),
                 "matchup": f"{away} @ {home}",
                 "game_date": (g.get("date") or "")[:10],  # date the pick to kickoff -> dedup + clean settle
-                "player": player_name,
+                "player": info.get("name", player_name),
                 "team": info["team"],
                 "opp_team": away if is_home else home,
                 "is_home": is_home,
@@ -150,6 +177,7 @@ def run() -> Dict[str, Any]:
         ("mls_state.json", "mls"),
         ("epl_state.json", "epl"),
         ("ucl_state.json", "ucl"),
+        ("worldcup_state.json", "worldcup"),
     ]:
         rows = _process_league(state_file, league)
         all_rows.extend(rows)

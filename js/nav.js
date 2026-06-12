@@ -41,6 +41,7 @@
     { href: "heat-map.html",            label: "🔥 Heat Map (hot/cold)" },
     { href: "anomalies.html",           label: "⚠️ Anomalies" },
     { href: "ats-dashboard.html",       label: "📊 ATS Dashboard" },
+    { href: "worldcup.html",            label: "🏆 World Cup 2026" },
     { href: "golf-live.html",           label: "⛳ Golf Live" },
     { href: "pitcher-matchup.html",     label: "⚾ Pitcher Matchup" },
     { href: "batter-sp-edges.html",     label: "🎯 Batter vs SP Edges" },

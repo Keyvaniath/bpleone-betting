@@ -1515,7 +1515,13 @@ def _batter_stat_and_threshold(market: str):
         return ("tb", nval if nval is not None else 1.5)
     if "xbh" in m or "extra_base" in m:
         # XBH = 2B + 3B + HR; gradeable now that gamelogs store doubles/triples.
-        return ("xbh", (float(plus.group(1)) - 0.5) if plus else (nval if nval is not None else 0.5))
+        # NB: the shared `plus` regex misses underscored names ("1_plus_xbh"), so
+        # parse N+ here -- otherwise the line reads 1.0 and a 1-XBH night grades
+        # as a LOSS on a 1+ bet (caught + auto-corrected on the backfill pass).
+        xp = re.search(r"(\d+)[_\s]*plus", m)
+        if xp:
+            return ("xbh", float(xp.group(1)) - 0.5)
+        return ("xbh", nval if nval is not None else 0.5)
     if "hrr" in m:
         return ("hrr", nval if nval is not None else 2.5)
     if "2_plus_hits" in m:

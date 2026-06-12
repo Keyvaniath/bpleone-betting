@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026 World Cup | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/nav.js"></script>
+<style>
+  .wcgrid { display:grid; grid-template-columns:repeat(auto-fill,minmax(330px,1fr)); gap:14px; }
+  .wccard { border:1px solid var(--border,#222a36); border-radius:12px; padding:14px 16px; font-family:'JetBrains Mono',monospace; }
+  .wccard .dt { color:var(--muted,#8a93a6); font-size:10.5px; text-transform:uppercase; letter-spacing:.5px; }
+  .wccard h3 { margin:6px 0 10px; font-size:15px; }
+  .bar3 { display:flex; height:22px; border-radius:6px; overflow:hidden; font-size:10.5px; line-height:22px; text-align:center; margin-bottom:8px; }
+  .bar3 .h { background:rgba(88,200,120,.30); } .bar3 .d { background:rgba(138,147,166,.25); } .bar3 .a { background:rgba(99,140,255,.30); }
+  .odds { display:flex; gap:10px; font-size:12px; margin-bottom:8px; flex-wrap:wrap; }
+  .odds b { font-size:13px; }
+  .band { font-size:9.5px; padding:1px 6px; border-radius:4px; background:rgba(255,255,255,.07); color:#aab3c5; margin-left:4px; }
+  .band.ELITE { background:rgba(255,193,94,.18); color:#ffc15e; }
+  .band.STRONG { background:rgba(88,200,120,.15); color:#5fe0a0; }
+  .band.DEV { background:rgba(255,107,107,.12); color:#ff8a8a; }
+  .why { color:var(--muted,#8a93a6); font-size:11px; margin-top:6px; line-height:1.5; }
+  .restrip { font-family:'JetBrains Mono',monospace; font-size:12.5px; display:flex; gap:10px 22px; flex-wrap:wrap; margin:8px 0 4px; }
+  .sthead, .strow { display:grid; grid-template-columns:1fr 36px 30px 30px 30px 44px 40px; gap:8px; font-family:'JetBrains Mono',monospace; font-size:12px; padding:6px 10px; }
+  .sthead { color:var(--muted,#8a93a6); font-size:10px; text-transform:uppercase; border-bottom:1px solid var(--border,#222a36); }
+  .strow { border-bottom:1px solid rgba(255,255,255,.04); }
+  .honest { border:1px solid rgba(255,193,94,.3); background:rgba(255,193,94,.06); border-radius:10px; padding:10px 14px; font-size:12.5px; color:var(--muted,#8a93a6); margin:0 0 16px; }
+</style>
+</head>
+<body class="page-mlb">
+<header class="topbar">
+  <div class="brand"><a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a><span class="tagline">by bpleone</span></div>
+  <nav class="mainnav"><!-- nav.js injects here --></nav>
+  <div class="topbar-actions"><div class="ticker" id="liveTicker">WORLD CUP</div></div>
+</header>
+
+<main class="container">
+  <section class="page-head">
+    <h1>🏆 2026 World Cup</h1>
+    <p>Every match priced <b>3-way</b> — home / draw / away off an independent-Poisson goals grid, the same show-your-work math as the MLB innings models. Fair odds are 0-vig. Group tables and finals come straight from the results feed that settles our picks.</p>
+  </section>
+
+  <div class="honest" id="method">Loading…</div>
+
+  <section class="card" style="margin-bottom:22px;">
+    <div class="card-head"><span>📅 Upcoming Matches — model board</span><span class="muted" id="meta">--</span></div>
+    <div style="padding:14px 16px;"><div class="wcgrid" id="cards"></div></div>
+  </section>
+
+  <section class="card" style="margin-bottom:22px;" id="resCard">
+    <div class="card-head"><span>✅ Finals (settles our picks)</span><span class="muted" id="resMeta">--</span></div>
+    <div style="padding:12px 16px;"><div class="restrip" id="results"></div></div>
+  </section>
+
+  <section class="card" style="margin-bottom:28px;" id="stCard">
+    <div class="card-head"><span>📊 Group-Stage Form (all results pooled)</span><span class="muted" id="stMeta">--</span></div>
+    <div style="padding:10px 16px;">
+      <div class="sthead"><span>Team</span><span>GP</span><span>W</span><span>D</span><span>L</span><span>GD</span><span>Pts</span></div>
+      <div id="standings"></div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer"><div class="foot-bot"><span>© 2026 bpleone.com</span><span>Built in SoCal ☀️</span></div></footer>
+
+<script>
+const esc = s => String(s == null ? "" : s).replace(/[&<>]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+const ml = v => v == null ? "—" : (v > 0 ? "+" + v : "" + v);
+const pc = p => p == null ? "—" : (100 * p).toFixed(0) + "%";
+fetch("data/worldcup_cards.json", { cache: "no-cache" }).then(r => r.json()).then(d => {
+  document.getElementById("method").innerHTML = "<b>How honest is this?</b> " + esc(d.method_note || "");
+  const cards = d.cards || [];
+  document.getElementById("meta").textContent = `${cards.length} matches modeled · ${(d.generated_at || "").replace("T", " ").slice(0, 16)} UTC`;
+  document.getElementById("cards").innerHTML = cards.map(c => `
+    <div class="wccard">
+      <span class="dt">${esc(c.date)}</span>
+      <h3>${esc(c.away)}<span class="band ${esc(c.away_band)}">${esc(c.away_band)}</span> <span class="muted">@</span> ${esc(c.home)}<span class="band ${esc(c.home_band)}">${esc(c.home_band)}</span></h3>
+      <div class="bar3">
+        <div class="h" style="width:${(c.p_home * 100).toFixed(0)}%">${pc(c.p_home)}</div>
+        <div class="d" style="width:${(c.p_draw * 100).toFixed(0)}%">${pc(c.p_draw)}</div>
+        <div class="a" style="width:${(c.p_away * 100).toFixed(0)}%">${pc(c.p_away)}</div>
+      </div>
+      <div class="odds">
+        <span>${esc(c.home)} <b>${ml(c.fair_home)}</b></span>
+        <span>draw <b>${ml(c.fair_draw)}</b></span>
+        <span>${esc(c.away)} <b>${ml(c.fair_away)}</b></span>
+      </div>
+      <div class="odds muted" style="font-size:11.5px;">
+        <span>xG ${c.exp_goals_home} – ${c.exp_goals_away}</span>
+        <span>O2.5 ${pc(c.p_over_2_5)}</span>
+        <span>BTTS ${pc(c.p_btts)}</span>
+      </div>
+      <div class="why">${esc(c.why)}</div>
+    </div>`).join("") || '<p class="muted">No upcoming matches in the window.</p>';
+
+  const res = d.results || [];
+  document.getElementById("resMeta").textContent = `${res.length} played`;
+  document.getElementById("results").innerHTML = res.map(m =>
+    `<span>${esc(m.date)} · <b>${esc(m.away)} ${m.away_score} – ${m.home_score} ${esc(m.home)}</b></span>`).join("")
+    || '<span class="muted">First finals land after the opening matchday.</span>';
+
+  const st = Object.entries(d.standings || {}).map(([t, v]) => ({ t, ...v }))
+    .sort((a, b) => b.pts - a.pts || (b.gf - b.ga) - (a.gf - a.ga));
+  document.getElementById("stMeta").textContent = `${st.length} teams with results`;
+  document.getElementById("standings").innerHTML = st.map(r => `
+    <div class="strow"><span><b>${esc(r.t)}</b></span><span>${r.gp}</span><span>${r.w}</span><span>${r.d}</span><span>${r.l}</span><span>${r.gf - r.ga >= 0 ? "+" : ""}${r.gf - r.ga}</span><span><b>${r.pts}</b></span></div>`).join("")
+    || '<p class="muted" style="padding:8px 0;">Tables fill in as group-stage results land.</p>';
+}).catch(() => { document.getElementById("cards").innerHTML = '<p class="muted">World Cup model unavailable — pipeline may not have run yet.</p>'; });
+</script>
+</body>
+</html>
