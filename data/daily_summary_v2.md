@@ -1,57 +1,45 @@
 # EdgeStat Daily Summary — 2026-06-12
 
-## 🏥 Model Health: 69.5/100 [OK]
+## 🏥 Model Health: 68.6/100 [OK]
 - Operational but room to improve - check yellow components
   - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 54.4/100
   - 🔴 Brier Trend: 29.6/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟡 Data Health: 77.8/100
-  - 🟡 Edge Count: 71.4/100
+  - 🟢 Data Health: 88.9/100
+  - 🔴 Edge Count: 40.0/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.588)
-- **Total games on board:** 118
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.589)
+- **Total games on board:** 102
 - **Strong home favorites:** 3 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
-1. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
-2. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
-3. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
-4. **GOLF Sam Ryder TOP5 @ 579 (RBC Canadian Open)** (78/100 ★★★★★)
-5. **GOLF Ricky Castillo TOP5 @ 591 (RBC Canadian Open)** (78/100 ★★★★★)
-
-## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB-PP]** Sandy León PP_batter_hrr_under_1.5 -- 86% / +49.0% (score 2.5)
+1. **ATL @ NYM YRFI (1st-inning OVER 0.5)** (78/100 ★★★★)
+2. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
+3. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
+4. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
+5. **GOLF Sam Ryder TOP5 @ 579 (RBC Canadian Open)** (78/100 ★★★★★)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **152-29** (84.0% hit rate)
 - Net units: **+5.13u** | ROI: **+45.7%**
-- Last 7d: 57-14 (80.3%) | net +1.73u
+- Last 7d: 49-12 (80.3%) | net +1.49u
 
-**Today's 14 Locks:**
-- [MLB-PP] **Rodolfo Durán** PP_batter_hits_under_1.5 · p=87% edge=+50.4% qK=0.062u
-- [MLB-PP] **Francisco Alvarez** PP_batter_hrr_under_3.5 · p=87% edge=+50.4% qK=0.062u
-- [MLB-PP] **Ezequiel Tovar** PP_batter_hrr_under_3.5 · p=87% edge=+50.3% qK=0.062u
-- [MLB-PP] **Alex Bregman** PP_batter_hrr_under_3.5 · p=87% edge=+50.2% qK=0.062u
-- [MLB-PP] **Kyle Stowers** PP_batter_hrr_under_3.5 · p=86% edge=+50.0% qK=0.062u
-- [MLB-PP] **Colt Keith** PP_batter_hrr_under_3.5 · p=87% edge=+50.1% qK=0.062u
-- [MLB-PP] **Wyatt Langford** PP_batter_hrr_under_3.5 · p=86% edge=+49.8% qK=0.062u
-- [MLB-PP] **Luke Keaschall** PP_batter_hrr_under_3.5 · p=86% edge=+49.2% qK=0.062u
-- [MLB-PP] **Austin Martin** PP_batter_hrr_under_3.5 · p=86% edge=+49.1% qK=0.062u
-- [MLB-PP] **Logan O'Hoppe** PP_batter_hrr_under_3.5 · p=87% edge=+50.6% qK=0.062u
+**Today's 5 Locks:**
+- [MLB-PP] **Logan O'Hoppe** PP_batter_hrr_under_3.5 · p=87% edge=+50.7% qK=0.062u
 - [MLB-PP] **Eugenio Suárez** PP_batter_hrr_under_3.5 · p=87% edge=+50.5% qK=0.062u
-- [MLB-PP] **Geraldo Perdomo** PP_batter_hrr_under_3.5 · p=86% edge=+49.4% qK=0.062u
+- [MLB-PP] **Geraldo Perdomo** PP_batter_hrr_under_3.5 · p=86% edge=+49.5% qK=0.062u
 - [MLB-PP] **Tommy Troy** PP_batter_hrr_under_3.5 · p=86% edge=+49.3% qK=0.062u
-- [MLB-PP] **Ryan Waldschmidt** PP_batter_hrr_under_3.5 · p=86% edge=+49.1% qK=0.062u
+- [MLB-PP] **Ryan Waldschmidt** PP_batter_hrr_under_3.5 · p=86% edge=+49.2% qK=0.062u
 
 ## 🎰 Top Balanced 2-Leg Parlays (40-65% joint)
 - [MLB-PP] Logan O'Hoppe PP_batter_hrr_under_ + [KBO] Choi Jeong one_plus_tb
-  Joint: 64% | Fair: 231 | Edge: +110.5%
+  Joint: 64% | Fair: 231 | Edge: +110.6%
 - [MLB-PP] Eugenio Suárez PP_batter_hrr_under_ + [KBO] Choi Jeong one_plus_tb
-  Joint: 63% | Fair: 231 | Edge: +110.3%
-- [MLB-PP] Logan O'Hoppe PP_batter_hrr_under_ + [KBO] Jose Pirela one_plus_tb
-  Joint: 63% | Fair: 231 | Edge: +109.7%
+  Joint: 64% | Fair: 231 | Edge: +110.4%
+- [MLB-PP] Geraldo Perdomo PP_batter_hrr_under_ + [KBO] Choi Jeong one_plus_tb
+  Joint: 63% | Fair: 231 | Edge: +108.9%
 
 ## 🎮 Player Play of the Day (cross-sport)
 - **[LOL]** Inspired UNDER 3.5 Kills | MED conviction · model 61.7% fair -161
@@ -67,36 +55,40 @@
 - Hot teams: **5** | Cold teams: **6** | Over-heavy: 0 | Under-heavy: 7
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (17)
-- RESIDUAL_DIVERGENCE: **2**
+## ⚠️ Anomaly Detector (21)
+- RESIDUAL_DIVERGENCE: **1**
 - STEAM_MOVE: **13**
-- COMPOUND_BULLPEN: **1**
-- PEN_MISMATCH: **1**
-  - Portland Fire (WNBA): Portland Fire UNDERPERFORMING expected margin by 9.0pts in recent games -- model bias may persist
+- COMPOUND_BULLPEN: **4**
+- PEN_MISMATCH: **3**
   - North Carolina Tar Heels (CWS): North Carolina Tar Heels OUTPERFORMING expected margin by 7.0pts in recent games -- model bias may persist
   - CIN @ SDP (MLB): ML/TOTAL steam since open: ML +13.8pp toward SDP; total +1 (OVER) (6 snapshots)
   - CHC @ COL (MLB): ML/TOTAL steam since open: ML +2.7pp toward COL; total -1 (UNDER) (4 snapshots)
   - CON @ TOR (WNBA): TOTAL steam since open: ML +1.9pp toward TOR; total -1 (UNDER) (4 snapshots)
+  - LA @ SEA (WNBA): TOTAL steam since open: ML -0.8pp toward LA; total -1 (UNDER) (4 snapshots)
 
-## 💰 Today's Portfolio (11 picks)
-- Total stake: **$340.0** (34.0% of $1000 bankroll)
-- Expected EV: **$-11.69**
-  - #1 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
-  - #2 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
-  - #3 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
-  - #4 [GOLF] $35 on GOLF Sam Ryder TOP5 @ 579 (RBC Canadian Open) (P=15%)
-  - #5 [GOLF] $35 on GOLF Ricky Castillo TOP5 @ 591 (RBC Canadian Open) (P=14%)
+## 💰 Today's Portfolio (10 picks)
+- Total stake: **$335.0** (33.5% of $1000 bankroll)
+- Expected EV: **$-13.21**
+  - #1 [NRFI] $35 on ATL @ NYM YRFI (1st-inning OVER 0.5) (P=65%)
+  - #2 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
+  - #3 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
+  - #4 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
+  - #5 [GOLF] $35 on GOLF Sam Ryder TOP5 @ 579 (RBC Canadian Open) (P=15%)
 
-## 🎯 Convergence Picks (16 stacked games)
-- ELITE: **2** · HIGH: 0 · MED: 14
-  - [ELITE] Las Vegas Aces @ Portland Fire : 5 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
-  - [ELITE] New York Knicks @ San Antonio Spurs : 4 signals (PREGAME, HEAT_COLD, ATS, ATS)
-  - [MED] New York Liberty @ Atlanta Dream : 2 signals (PREGAME, HEAT_COLD)
-  - [MED] Atlanta United FC @ Columbus Crew : 2 signals (ATS, ATS)
-  - [MED] Philadelphia Union @ Inter Miami CF : 2 signals (ATS, ATS)
+## 🎯 Convergence Picks (18 stacked games)
+- ELITE: **1** · HIGH: 1 · MED: 16
+  - [ELITE] Las Vegas Aces @ Portland Fire : 5 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ATS)
+  - [HIGH] New York Knicks @ San Antonio Spurs : 3 signals (PREGAME, ATS, ATS)
+  - [MED] Chicago Sky @ Indiana Fever : 2 signals (HEAT_COLD, HEAT_COLD)
+  - [MED] New York Liberty @ Atlanta Dream : 2 signals (HEAT_COLD, HEAT_COLD)
+  - [MED] Phoenix Mercury @ Dallas Wings : 2 signals (HEAT_COLD, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (1)
-- **Martín Pérez** OVER 4.5 K (59%) fair -144
+## ⚾ Top MLB Pitcher K Plays (13)
+- **Ryan Weathers** OVER 4.5 K (76%) fair -321
+- **Javier Assad** OVER 4.5 K (75%) fair -303
+- **Spencer Strider** OVER 4.5 K (73%) fair -275
+- **Bryce Miller** OVER 5.5 K (73%) fair -271
+- **Jack Flaherty** OVER 5.5 K (72%) fair -262
 
 ## 🥊 UFC Fight Matchups (UFC Freedom 250: Topuria vs. Gaethje)
   - [LEAN] **Josh Hokit** (9-0-0) vs Derrick Lewis -- fair -141
@@ -123,11 +115,6 @@
   - ❄️ **Jeff McNeil** (ATH): L14 .089 / season .232 (-143pts) -- FADE props
   - ❄️ **Austin Martin** (MIN): L14 .109 / season .245 (-136pts) -- FADE props
   - ❄️ **Dominic Smith** (ATL): L14 .171 / season .291 (-120pts) -- FADE props
-
-## 📈 Streak Regression Alerts (3)
-- [WNBA] New York Liberty on W4 L10 4-0 -- New York Liberty on W4 -- no historical sample
-- [WNBA] Portland Fire on L3 L10 1-4 -- Portland Fire on L3 -- no historical sample
-- [WNBA] Las Vegas Aces on W4 L10 4-1 -- Las Vegas Aces on W4 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**
