@@ -1,13 +1,15 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:15 F:87
-
-:lock: **LOCK:** Jack Leiter (MLB)
+_MODEST_NIGHT_ | L:0 S:26 F:71
 
 :dart: **Top Picks:**
-1. [GOLF] Sahith Theegala -- Sahith Theegala (PLAYER_STRONG)
-2. [GOLF] Sam Burns -- Sam Burns (PLAYER_STRONG)
-3. [MLB] Braxton Ashcraft -- Braxton Ashcraft (PITCHER_STRONG)
+1. [GOLF] Ben James -- Ben James (PLAYER_STRONG)
+2. [MLB] Dillon Dingler -- Dillon Dingler (BATTER_STRONG)
+3. [GOLF] Sam Burns -- Sam Burns (PLAYER_STRONG)
 
-:coin: Bankroll Advisory: STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
+:chains: **Top Parlays:**
+- [MLB] Hunter Goodman (2 legs, p=0.4594)
+- [MLB] Dillon Dingler (3 legs, p=0.419)
+
+:coin: Bankroll Advisory: Light slate. Limit to 1-3 strongest plays; use 25% Kelly or less.
 
 _EdgeStat: ML-driven sports betting analytics. Not financial advice._
