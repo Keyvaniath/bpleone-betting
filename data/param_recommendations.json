@@ -1,20 +1,20 @@
 {
-  "generated_at": "2026-06-11T22:50:26",
+  "generated_at": "2026-06-12T03:52:24",
   "n_recommendations": 2,
   "recommendations": [
     {
       "key": "calibration.n_prior_default",
       "current": 5,
-      "suggested": 3,
-      "direction": "decrease",
+      "suggested": 7,
+      "direction": "increase",
       "severity": "medium",
-      "rationale": "1 market(s) have n>=200 but |residual|>0.4 -- prior is over-anchoring. Lowering N_PRIOR will let data correct faster.",
+      "rationale": "1 market(s) had correction_factor swing >0.05 between consecutive refreshes -- prior anchor isn't damping enough. Raising N_PRIOR will stabilize.",
       "evidence": {
-        "stuck_markets": [
+        "swinging_markets": [
           {
             "market": "pitcher_strikeouts",
-            "n": 289,
-            "mean_residual": -0.426
+            "cf_swing": 0.0558,
+            "n": 185
           }
         ]
       }
