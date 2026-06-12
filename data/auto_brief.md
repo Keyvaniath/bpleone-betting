@@ -22,8 +22,8 @@ _0% lineups confirmed · 13 rookie SPs_
 4. **LOL Peyz OVER 4.5 Kills**  (78/100 ****, edge —)
    - Player prop quality score 1.184
    - Elite player
-5. **GOLF Sam Ryder TOP5 @ 579 (RBC Canadian Open)**  (78/100 *****, edge —)
-   - P(top 5) 14.7% -- lower variance than outright but compelling line.
+5. **GOLF Chandler Blanchet TOP5 @ 591 (RBC Canadian Open)**  (78/100 *****, edge —)
+   - P(top 5) 14.5% -- lower variance than outright but compelling line.
 
 ## ⚠️ Trap Warnings — 18 flagged
 - **TEX @ BOS 2-leg SGP @ -171** (low):
@@ -39,7 +39,7 @@ _0% lineups confirmed · 13 rookie SPs_
 
 ## Hot streaks
 **Batters heating up:** Rafael Flores Jr. (heat +8.10), Matt Chapman (heat +7.37), Freddy Fermin (heat +6.61)
-**Pitchers on a run:** Tatsuya Imai (heat +5.78), Roki Sasaki (heat +5.57), Bryce Miller (heat +4.50)
+**Pitchers on a run:** Martín Pérez (heat +6.30), Tatsuya Imai (heat +5.78), Roki Sasaki (heat +5.57)
 
 ## Top correlation-aware SGPs
 - **TEX @ BOS** 2-leg @ -171 fair (joint 0.63, EV +25.0%)
@@ -60,10 +60,10 @@ _Lean late-inning OVER on these games; fade their save situations._
 - **YRFI** (1st-inning OVER): ATL @ NYM, TEX @ BOS, DET @ CLE, MIA @ PIT, ARI @ CIN
 
 ## Golf -- RBC Canadian Open
-- **Leader:** Sahith Theegala (-6) at #1
+- **Leader:** Brooks Koepka (-8) at #1
 - **Field:** 147 players  |  Status: In Progress
-- **Play of the Tournament:** Sam Ryder TOP5 @ +579 (model 14.7%, HIGH)
-   - P(top 5) 14.7% -- lower variance than outright but compelling line.
+- **Play of the Tournament:** Chandler Blanchet TOP5 @ +591 (model 14.5%, HIGH)
+   - P(top 5) 14.5% -- lower variance than outright but compelling line.
 
 ## NBA -- PLAYOFFS
 - New York Knicks @ San Antonio Spurs (53-29 vs 62-20)  | P(home) 67.5% fair -207 | Scheduled

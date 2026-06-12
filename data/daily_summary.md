@@ -4,7 +4,7 @@
 
 _Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
 
-_Generated at 2026-06-12T12:20:57 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-06-12T13:02:09 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
@@ -20,52 +20,57 @@ _Generated at 2026-06-12T12:20:57 UTC. Game lines source: **Bovada (fallback -- 
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 6:40p ET | MIA @ PIT | PNC Park | 69F 4mph | PIT_ML +16.58% |
-| 6:45p ET | SEA @ WSN | Nationals Park | 81F 4mph | SEA_ML +29.26% |
-| 7:05p ET | SDP @ BAL | Oriole Park at Camden Yards | 77F 6mph | BAL_ML +31.45% |
-| 7:10p ET | DET @ CLE | Progressive Field | 67F 5mph | DET_ML +18.4% |
-| 7:10p ET | TEX @ BOS | Fenway Park | 75F 4mph | TEX_ML +8.95% |
+| 6:40p ET | MIA @ PIT | PNC Park | 72F 2mph | PIT_ML +16.5% |
+| 6:45p ET | SEA @ WSN | Nationals Park | 82F 4mph | SEA_ML +27.87% |
+| 7:05p ET | SDP @ BAL | Oriole Park at Camden Yards | 78F 6mph | BAL_ML +32.65% |
+| 7:10p ET | DET @ CLE | Progressive Field | 67F 5mph | DET_ML +26.68% |
+| 7:10p ET | TEX @ BOS | Fenway Park | 72F 2mph | UNDER_8.5 +9.37% |
 | 7:15p ET | ARI @ CIN | Great American Ball Park | 69F 3mph | OVER_9.5 +25.41% |
-| 7:15p ET | ATL @ NYM | Citi Field | 79F 7mph | ATL_ML +41.31% |
+| 7:15p ET | ATL @ NYM | Citi Field | 82F 8mph | ATL_ML +46.52% |
 | 7:37p ET | NYY @ TOR | Rogers Centre | indoor | NYY_ML +40.63% |
 | 7:40p ET | LAD @ CHW | Rate Field | 66F 6mph | OVER_9.0 +58.9% |
 | 7:40p ET | PHI @ MIL | American Family Field | indoor | MIL_ML +20.61% |
-| 8:10p ET | HOU @ KCR | Kauffman Stadium | 76F 10mph | OVER_9.0 +19.38% |
+| 8:10p ET | HOU @ KCR | Kauffman Stadium | 74F 8mph | OVER_9.5 +2.46% |
 | 8:10p ET | STL @ MIN | Target Field | 64F 6mph | -- |
-| 9:38p ET | TBR @ LAA | Angel Stadium | 67F 4mph | TBR_ML +11.02% |
+| 9:38p ET | TBR @ LAA | Angel Stadium | 66F 2mph | TBR_ML +10.5% |
 | 10:05p ET | COL @ OAK | Las Vegas Ballpark | 70F 0mph | UNDER_13.5 +70.93% |
-| 10:15p ET | CHC @ SFG | Oracle Park | 56F 11mph | SFG_ML +17.36% |
+| 10:15p ET | CHC @ SFG | Oracle Park | 56F 11mph | SFG_ML +16.38% |
 
 ## Parlays - top 5
 
-- **2-leg @ +286 (prob 38.3%, EV +47.58%)**
-  - DET @ CLE DET_ML (+102, model 61.2%)
-  - HOU @ KCR OVER_9.0 (-110, model 62.5%)
-- **2-leg @ +180 (prob 52.7%, EV +47.46%)**
-  - DET @ CLE DET_ML (+102, model 61.2%)
-  - PHI @ MIL MIL_ML (-260, model 86.2%)
-- **2-leg @ +286 (prob 38.2%, EV +47.18%)**
-  - SEA @ WSN OVER_9.0 (-110, model 62.4%)
-  - DET @ CLE DET_ML (+102, model 61.2%)
-- **2-leg @ +260 (prob 40.3%, EV +45.09%)**
-  - ARI @ CIN ARI_ML (-113, model 64.5%)
-  - HOU @ KCR OVER_9.0 (-110, model 62.5%)
-- **2-leg @ +161 (prob 55.5%, EV +44.98%)**
-  - ARI @ CIN ARI_ML (-113, model 64.5%)
-  - PHI @ MIL MIL_ML (-260, model 86.2%)
+- **3-leg @ +596 (prob 21.6%, EV +49.96%)**
+  - SEA @ WSN OVER_9.0 (-110, model 62.7%)
+  - TEX @ BOS UNDER_8.5 (-110, model 57.3%)
+  - HOU @ KCR OVER_9.0 (-110, model 60.0%)
+- **3-leg @ +355 (prob 32.9%, EV +49.92%)**
+  - MIA @ PIT PIT_ML (-142, model 68.4%)
+  - PHI @ MIL MIL_ML (-250, model 86.2%)
+  - TBR @ LAA UNDER_8.5 (-110, model 55.9%)
+- **3-leg @ +410 (prob 29.4%, EV +49.92%)**
+  - SEA @ WSN OVER_9.0 (-110, model 62.7%)
+  - PHI @ MIL MIL_ML (-250, model 86.2%)
+  - CHC @ SFG UNDER_8.5 (-110, model 54.4%)
+- **3-leg @ +449 (prob 27.3%, EV +49.87%)**
+  - SEA @ WSN OVER_9.0 (-110, model 62.7%)
+  - TEX @ BOS UNDER_8.5 (-110, model 57.3%)
+  - COL @ OAK OAK_ML (-197, model 75.9%)
+- **3-leg @ +590 (prob 21.7%, EV +49.6%)**
+  - SEA @ WSN OVER_9.0 (-110, model 62.7%)
+  - DET @ CLE UNDER_8.5 (-110, model 55.7%)
+  - CHC @ SFG SFG_ML (-112, model 62.0%)
 
 ## Self-Learning Loop
 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
-| batter singles | 422 | 41.2% | 45.0% | 1.090 | 0.919 |
-| batter home runs | 422 | 11.4% | 13.1% | 1.146 | 0.876 |
+| batter total bases | 846 | 26.5% | 32.5% | 1.225 | 0.818 |
 | batter runs scored | 422 | 37.9% | 38.8% | 1.023 | 0.978 |
+| batter doubles | 422 | 14.4% | 16.1% | 1.115 | 0.898 |
 | batter hits | 891 | 40.2% | 42.0% | 1.045 | 0.958 |
 | pitcher strikeouts | 185 | 36.8% | 42.5% | 1.157 | 0.872 |
+| batter home runs | 422 | 11.4% | 13.1% | 1.146 | 0.876 |
 | batter rbis | 844 | 19.7% | 23.6% | 1.198 | 0.837 |
-| batter total bases | 846 | 26.5% | 32.5% | 1.225 | 0.818 |
-| batter doubles | 422 | 14.4% | 16.1% | 1.115 | 0.898 |
+| batter singles | 422 | 41.2% | 45.0% | 1.090 | 0.919 |
 
 Cumulative graded plays: 118214. Wins: 87366. Hit rate: 73.9%.
 
@@ -73,21 +78,21 @@ Cumulative graded plays: 118214. Wins: 87366. Hit rate: 73.9%.
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| ARI @ CIN | 37.8% | +164 | 4.96 | +299 | -299 |
-| ATL @ NYM | 35.3% | +184 | 5.29 | +495 | -495 |
+| ARI @ CIN | 37.8% | +164 | 4.94 | +299 | -299 |
+| ATL @ NYM | 35.3% | +184 | 5.16 | +497 | -497 |
 | CHC @ SFG | 45.1% | +122 | 4.25 | +107 | -107 |
 | COL @ OAK | 48.2% | +108 | 3.65 | -184 | +184 |
 | DET @ CLE | 36.9% | +171 | 5.1 | +280 | -280 |
-| HOU @ KCR | 46.4% | +116 | 3.83 | +159 | -159 |
+| HOU @ KCR | 46.4% | +116 | 3.83 | +160 | -160 |
 | LAD @ CHW | 43.9% | +128 | 4.28 | +504 | -504 |
-| MIA @ PIT | 37.6% | +166 | 4.77 | -123 | +123 |
+| MIA @ PIT | 37.6% | +166 | 4.91 | -123 | +123 |
 | NYY @ TOR | 38.0% | +163 | 4.84 | +467 | -467 |
 | PHI @ MIL | 38.9% | +157 | 4.73 | -330 | +330 |
-| SDP @ BAL | 41.4% | +142 | 4.28 | -202 | +202 |
-| SEA @ WSN | 62.3% | -165 | 2.31 | +552 | -552 |
+| SDP @ BAL | 41.4% | +142 | 4.3 | -202 | +202 |
+| SEA @ WSN | 62.3% | -165 | 2.32 | +553 | -553 |
 | STL @ MIN | 38.1% | +162 | 4.75 | +131 | -131 |
-| TBR @ LAA | 57.3% | -134 | 2.85 | +431 | -431 |
-| TEX @ BOS | 36.4% | +175 | 5.08 | +186 | -186 |
+| TBR @ LAA | 57.3% | -134 | 2.83 | +429 | -429 |
+| TEX @ BOS | 36.4% | +175 | 5.09 | +187 | -187 |
 
 ## Travel / Rest Flags
 

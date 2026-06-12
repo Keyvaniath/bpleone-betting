@@ -1,13 +1,13 @@
 # EdgeStat Daily Summary — 2026-06-12
 
-## 🏥 Model Health: 68.6/100 [OK]
-- Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.9/100
+## 🏥 Model Health: 73.1/100 [HEALTHY]
+- Solid health - some minor issues to monitor
+  - 🟢 Calibration Freshness: 99.5/100
   - 🔴 Hit Rate Trend: 54.4/100
   - 🔴 Brier Trend: 29.6/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 88.9/100
-  - 🔴 Edge Count: 40.0/100
+  - 🟢 Edge Count: 85.7/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.589)
@@ -19,27 +19,30 @@
 2. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
 3. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
 4. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
-5. **GOLF Sam Ryder TOP5 @ 579 (RBC Canadian Open)** (78/100 ★★★★★)
+5. **GOLF Chandler Blanchet TOP5 @ 591 (RBC Canadian Open)** (78/100 ★★★★★)
 
 ## 🔒 Locks of the Day -- Track Record
-- All-time: **152-29** (84.0% hit rate)
-- Net units: **+5.13u** | ROI: **+45.7%**
-- Last 7d: 49-12 (80.3%) | net +1.49u
+- All-time: **153-29** (84.1% hit rate)
+- Net units: **+5.18u** | ROI: **+45.9%**
+- Last 7d: 50-12 (80.7%) | net +1.54u
 
-**Today's 5 Locks:**
+**Today's 8 Locks:**
 - [MLB-PP] **Logan O'Hoppe** PP_batter_hrr_under_3.5 · p=87% edge=+50.7% qK=0.062u
 - [MLB-PP] **Eugenio Suárez** PP_batter_hrr_under_3.5 · p=87% edge=+50.5% qK=0.062u
 - [MLB-PP] **Geraldo Perdomo** PP_batter_hrr_under_3.5 · p=86% edge=+49.5% qK=0.062u
 - [MLB-PP] **Tommy Troy** PP_batter_hrr_under_3.5 · p=86% edge=+49.3% qK=0.062u
 - [MLB-PP] **Ryan Waldschmidt** PP_batter_hrr_under_3.5 · p=86% edge=+49.2% qK=0.062u
+- [MLB-PP] **Nasim Nuñez** PP_batter_hrr_under_3.5 · p=87% edge=+50.8% qK=0.062u
+- [MLB-PP] **David Fry** PP_batter_hrr_under_3.5 · p=87% edge=+50.3% qK=0.062u
+- [MLB-PP] **Alex Bregman** PP_batter_hrr_under_3.5 · p=87% edge=+50.1% qK=0.062u
 
 ## 🎰 Top Balanced 2-Leg Parlays (40-65% joint)
-- [MLB-PP] Logan O'Hoppe PP_batter_hrr_under_ + [KBO] Choi Jeong one_plus_tb
-  Joint: 64% | Fair: 231 | Edge: +110.6%
-- [MLB-PP] Eugenio Suárez PP_batter_hrr_under_ + [KBO] Choi Jeong one_plus_tb
-  Joint: 64% | Fair: 231 | Edge: +110.4%
-- [MLB-PP] Geraldo Perdomo PP_batter_hrr_under_ + [KBO] Choi Jeong one_plus_tb
-  Joint: 63% | Fair: 231 | Edge: +108.9%
+- [MLB-PP] Nasim Nuñez PP_batter_hrr_under_ + [MLB] ATL @ NYM ATL_ML
+  Joint: 56% | Fair: 237 | Edge: +88.2%
+- [MLB-PP] Logan O'Hoppe PP_batter_hrr_under_ + [MLB] ATL @ NYM ATL_ML
+  Joint: 56% | Fair: 237 | Edge: +88.0%
+- [MLB-PP] Eugenio Suárez PP_batter_hrr_under_ + [MLB] ATL @ NYM ATL_ML
+  Joint: 56% | Fair: 237 | Edge: +87.8%
 
 ## 🎮 Player Play of the Day (cross-sport)
 - **[LOL]** Inspired UNDER 3.5 Kills | MED conviction · model 61.7% fair -161
@@ -55,10 +58,9 @@
 - Hot teams: **5** | Cold teams: **6** | Over-heavy: 0 | Under-heavy: 7
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (21)
+## ⚠️ Anomaly Detector (17)
 - RESIDUAL_DIVERGENCE: **1**
 - STEAM_MOVE: **13**
-- COMPOUND_BULLPEN: **4**
 - PEN_MISMATCH: **3**
   - North Carolina Tar Heels (CWS): North Carolina Tar Heels OUTPERFORMING expected margin by 7.0pts in recent games -- model bias may persist
   - CIN @ SDP (MLB): ML/TOTAL steam since open: ML +13.8pp toward SDP; total +1 (OVER) (6 snapshots)
@@ -73,7 +75,7 @@
   - #2 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #3 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
   - #4 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
-  - #5 [GOLF] $35 on GOLF Sam Ryder TOP5 @ 579 (RBC Canadian Open) (P=15%)
+  - #5 [GOLF] $35 on GOLF Chandler Blanchet TOP5 @ 591 (RBC Canadian Open) (P=14%)
 
 ## 🎯 Convergence Picks (18 stacked games)
 - ELITE: **1** · HIGH: 1 · MED: 16
@@ -98,11 +100,11 @@
   - [COIN_FLIP] **Diego Lopes** (27-8-0) vs Steve Garcia -- fair -108
 
 ## ⛳ Golf Player Heat (from RBC Canadian Open)
-  - 🔥 T1 **Sahith Theegala** (USA): -6 total -- finished T1
-  - 🔥 T2 **Emiliano Grillo** (Argentina): -6 total -- finished T2
-  - 🔥 T3 **Eric Cole** (USA): -6 total -- finished T3
-  - 🔥 T4 **Brooks Koepka** (USA): -6 total -- finished T4
-  - 🔥 T5 **Sam Burns** (USA): -6 total -- finished T5
+  - 🔥 T1 **Brooks Koepka** (USA): -8 total -- finished T1
+  - 🔥 T2 **Sam Burns** (USA): -7 total -- finished T2
+  - 🔥 T3 **Emiliano Grillo** (Argentina): -6 total -- finished T3
+  - 🔥 T4 **Matthew Anderson** (Canada): -6 total -- finished T4
+  - 🔥 T5 **Sahith Theegala** (USA): -6 total -- finished T5
 
 ## 🔥 MLB Batter Heat (38 HOT / 32 COLD)
   - 🔥 **Jung Hoo Lee** (SF): L14 .561 / season .338 (+223pts)

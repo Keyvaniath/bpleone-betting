@@ -13,9 +13,9 @@ _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 - **Alex Bregman** PP_batter_hrr_under_3.5 (MLB-PP) -- 87% / +50.1%
 
 ## 🎰 Tonight's Best Parlay
-- **Nasim Nuñez** PP_batter_hrr_under_3.5 + **ATL @ NYM** ATL_ML
-- Joint 56% · fair +237 · edge +88.2%
+- **Nasim Nuñez** PP_batter_hrr_under_3.5 + **NYY @ TOR** NYY_ML
+- Joint 56% · fair +236 · edge +87.6%
 
 ---
-_Generated 2026-06-12T12:20:45_
+_Generated 2026-06-12T13:01:56_
 _Full breakdown: /tonight · Full history: /locks-of-day_

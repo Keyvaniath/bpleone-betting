@@ -9,13 +9,13 @@ _6 picks consolidated from POD + Alpha + Book Edges + Parlay-of-Day._
 
 ## 🎯 Alpha Pick
 
-- **ATL @ NYM** · ATL_ML
-  Prob 64.2% · Odds -106 · Edge +24.8% · Kelly 0.250
+- **NYY @ TOR** · NYY_ML
+  Prob 64.3% · Odds -107 · Edge +24.4% · Kelly 0.250
 
 ## 📊 Book Edges
 
 - **DET @ CLE · AWAY (AWAY)** · TEAM_ML
-  Prob 55.5% · Odds +102 · Edge +12.1% · Kelly 0.118
+  Prob 54.5% · Odds +107 · Edge +12.8% · Kelly 0.120
 - **NYY @ TOR · OVER · O/U 8.0** · TOTAL_OVER
   Prob 58.3% · Odds -110 · Edge +11.3% · Kelly 0.125
 - **ARI @ CIN · OVER · O/U 9.5** · TOTAL_OVER
@@ -23,9 +23,9 @@ _6 picks consolidated from POD + Alpha + Book Edges + Parlay-of-Day._
 
 ## 🎲 Parlay
 
-- **Nasim Nuñez + ATL @ NYM** · 2-leg
-  Prob 55.8% · Odds +237 · Edge +88.2% · Kelly 0.050
+- **Nasim Nuñez + NYY @ TOR** · 2-leg
+  Prob 55.9% · Odds +236 · Edge +87.6% · Kelly 0.050
 
 ---
-_Generated 2026-06-12T12:20:54 UTC by EdgeStat._
+_Generated 2026-06-12T13:02:04 UTC by EdgeStat._
 _Stakes assume ¼-Kelly fractional sizing on a flat bankroll._
