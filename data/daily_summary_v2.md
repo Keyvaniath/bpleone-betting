@@ -1,38 +1,35 @@
-# EdgeStat Daily Summary — 2026-06-11
+# EdgeStat Daily Summary — 2026-06-12
 
-## 🏥 Model Health: 71.7/100 [HEALTHY]
-- Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 100.0/100
+## 🏥 Model Health: 69.5/100 [OK]
+- Operational but room to improve - check yellow components
+  - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 54.4/100
   - 🔴 Brier Trend: 29.6/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 88.9/100
+  - 🟡 Data Health: 77.8/100
   - 🟡 Edge Count: 71.4/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.594)
-- **Total games on board:** 107
-- **Strong home favorites:** 7 | **Strong road dogs:** 1
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.588)
+- **Total games on board:** 118
+- **Strong home favorites:** 3 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
-1. **CHC @ COL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-2. **LAD @ PIT YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
-3. **MIN @ DET YRFI (1st-inning OVER 0.5)** (78/100 ★★★★)
-4. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
-5. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
+1. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
+2. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
+3. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
+4. **GOLF Sam Ryder TOP5 @ 579 (RBC Canadian Open)** (78/100 ★★★★★)
+5. **GOLF Ricky Castillo TOP5 @ 591 (RBC Canadian Open)** (78/100 ★★★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB-PP]** Colt Keith PP_batter_hrr_under_3.5 -- 87% / +50.2% (score 2.5)
-
-## 📡 Sharp Action (Line Movement)
-- [ELITE] **LAD @ PIT** ml_away: 51.46% → 60.78% (+9.3pp)
+- [STRONG] **[MLB-PP]** Sandy León PP_batter_hrr_under_1.5 -- 86% / +49.0% (score 2.5)
 
 ## 🔒 Locks of the Day -- Track Record
-- All-time: **150-29** (83.8% hit rate)
-- Net units: **+5.04u** | ROI: **+45.4%**
-- Last 7d: 55-14 (79.7%) | net +1.64u
+- All-time: **152-29** (84.0% hit rate)
+- Net units: **+5.13u** | ROI: **+45.7%**
+- Last 7d: 57-14 (80.3%) | net +1.73u
 
-**Today's 9 Locks:**
+**Today's 14 Locks:**
 - [MLB-PP] **Rodolfo Durán** PP_batter_hits_under_1.5 · p=87% edge=+50.4% qK=0.062u
 - [MLB-PP] **Francisco Alvarez** PP_batter_hrr_under_3.5 · p=87% edge=+50.4% qK=0.062u
 - [MLB-PP] **Ezequiel Tovar** PP_batter_hrr_under_3.5 · p=87% edge=+50.3% qK=0.062u
@@ -42,14 +39,19 @@
 - [MLB-PP] **Wyatt Langford** PP_batter_hrr_under_3.5 · p=86% edge=+49.8% qK=0.062u
 - [MLB-PP] **Luke Keaschall** PP_batter_hrr_under_3.5 · p=86% edge=+49.2% qK=0.062u
 - [MLB-PP] **Austin Martin** PP_batter_hrr_under_3.5 · p=86% edge=+49.1% qK=0.062u
+- [MLB-PP] **Logan O'Hoppe** PP_batter_hrr_under_3.5 · p=87% edge=+50.6% qK=0.062u
+- [MLB-PP] **Eugenio Suárez** PP_batter_hrr_under_3.5 · p=87% edge=+50.5% qK=0.062u
+- [MLB-PP] **Geraldo Perdomo** PP_batter_hrr_under_3.5 · p=86% edge=+49.4% qK=0.062u
+- [MLB-PP] **Tommy Troy** PP_batter_hrr_under_3.5 · p=86% edge=+49.3% qK=0.062u
+- [MLB-PP] **Ryan Waldschmidt** PP_batter_hrr_under_3.5 · p=86% edge=+49.1% qK=0.062u
 
 ## 🎰 Top Balanced 2-Leg Parlays (40-65% joint)
-- [MLB-PP] Ezequiel Tovar PP_batter_hrr_under_ + [MLB] ATL @ CHW OVER_8.5
-  Joint: 54% | Fair: 231 | Edge: +79.1%
-- [MLB-PP] Colt Keith PP_batter_hrr_under_ + [MLB] ATL @ CHW OVER_8.5
-  Joint: 54% | Fair: 231 | Edge: +78.8%
-- [MLB-PP] Wyatt Langford PP_batter_hrr_under_ + [MLB] ATL @ CHW OVER_8.5
-  Joint: 54% | Fair: 231 | Edge: +78.4%
+- [MLB-PP] Logan O'Hoppe PP_batter_hrr_under_ + [KBO] Choi Jeong one_plus_tb
+  Joint: 64% | Fair: 231 | Edge: +110.5%
+- [MLB-PP] Eugenio Suárez PP_batter_hrr_under_ + [KBO] Choi Jeong one_plus_tb
+  Joint: 63% | Fair: 231 | Edge: +110.3%
+- [MLB-PP] Logan O'Hoppe PP_batter_hrr_under_ + [KBO] Jose Pirela one_plus_tb
+  Joint: 63% | Fair: 231 | Edge: +109.7%
 
 ## 🎮 Player Play of the Day (cross-sport)
 - **[LOL]** Inspired UNDER 3.5 Kills | MED conviction · model 61.7% fair -161
@@ -58,13 +60,11 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (3)
+## ⚡ Pre-Game HIGH Conviction (1)
 - [CWS] **West Virginia Mountaineers** HOME (2-0 L10) · model 73.2% fair -274
-- [NHL] **Carolina Hurricanes** HOME (3-2 L10) · model 64.4% fair -181
-- [WNBA] **Las Vegas Aces** AWAY (4-1 L10) · model 62.4% fair -166
 
 ## 🔥/❄️ Heat / Cold Signals
-- Hot teams: **5** | Cold teams: **5** | Over-heavy: 0 | Under-heavy: 4
+- Hot teams: **5** | Cold teams: **6** | Over-heavy: 0 | Under-heavy: 7
 - Heating-up players: **20** | Cooling-down: 20
 
 ## ⚠️ Anomaly Detector (17)
@@ -78,14 +78,14 @@
   - CHC @ COL (MLB): ML/TOTAL steam since open: ML +2.7pp toward COL; total -1 (UNDER) (4 snapshots)
   - CON @ TOR (WNBA): TOTAL steam since open: ML +1.9pp toward TOR; total -1 (UNDER) (4 snapshots)
 
-## 💰 Today's Portfolio (9 picks)
-- Total stake: **$330.0** (33.0% of $1000 bankroll)
-- Expected EV: **$-1.84**
-  - #1 [NRFI] $50 on CHC @ COL YRFI (1st-inning OVER 0.5) (P=76%)
-  - #2 [NRFI] $35 on LAD @ PIT YRFI (1st-inning OVER 0.5) (P=66%)
-  - #3 [NRFI] $35 on MIN @ DET YRFI (1st-inning OVER 0.5) (P=65%)
-  - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
-  - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
+## 💰 Today's Portfolio (11 picks)
+- Total stake: **$340.0** (34.0% of $1000 bankroll)
+- Expected EV: **$-11.69**
+  - #1 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
+  - #2 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
+  - #3 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
+  - #4 [GOLF] $35 on GOLF Sam Ryder TOP5 @ 579 (RBC Canadian Open) (P=15%)
+  - #5 [GOLF] $35 on GOLF Ricky Castillo TOP5 @ 591 (RBC Canadian Open) (P=14%)
 
 ## 🎯 Convergence Picks (16 stacked games)
 - ELITE: **2** · HIGH: 0 · MED: 14
@@ -95,8 +95,7 @@
   - [MED] Atlanta United FC @ Columbus Crew : 2 signals (ATS, ATS)
   - [MED] Philadelphia Union @ Inter Miami CF : 2 signals (ATS, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (2)
-- **Bryan Woo** OVER 4.5 K (68%) fair -216
+## ⚾ Top MLB Pitcher K Plays (1)
 - **Martín Pérez** OVER 4.5 K (59%) fair -144
 
 ## 🥊 UFC Fight Matchups (UFC Freedom 250: Topuria vs. Gaethje)
@@ -113,17 +112,17 @@
   - 🔥 T4 **Brooks Koepka** (USA): -6 total -- finished T4
   - 🔥 T5 **Sam Burns** (USA): -6 total -- finished T5
 
-## 🔥 MLB Batter Heat (36 HOT / 33 COLD)
+## 🔥 MLB Batter Heat (38 HOT / 32 COLD)
   - 🔥 **Jung Hoo Lee** (SF): L14 .561 / season .338 (+223pts)
   - 🔥 **Tyler Soderstrom** (ATH): L14 .400 / season .238 (+162pts)
-  - 🔥 **Blaze Alexander** (BAL): L14 .436 / season .285 (+151pts)
   - 🔥 **Tristan Peters** (CWS): L14 .439 / season .298 (+141pts)
   - 🔥 **Jac Caglianone** (KC): L14 .408 / season .279 (+129pts)
-  - ❄️ **Max Muncy** (ATH): L14 .114 / season .268 (-154pts) -- FADE props
+  - 🔥 **Blaze Alexander** (BAL): L14 .412 / season .285 (+127pts)
   - ❄️ **Ildemaro Vargas** (AZ): L14 .128 / season .275 (-147pts) -- FADE props
   - ❄️ **Michael Conforto** (CHC): L14 .094 / season .237 (-143pts) -- FADE props
   - ❄️ **Jeff McNeil** (ATH): L14 .089 / season .232 (-143pts) -- FADE props
   - ❄️ **Austin Martin** (MIN): L14 .109 / season .245 (-136pts) -- FADE props
+  - ❄️ **Dominic Smith** (ATL): L14 .171 / season .291 (-120pts) -- FADE props
 
 ## 📈 Streak Regression Alerts (3)
 - [WNBA] New York Liberty on W4 L10 4-0 -- New York Liberty on W4 -- no historical sample
@@ -138,16 +137,15 @@
   - ⚠️ batter_rbis (Brier Δ -0.0052)
 
 ## 🧠 Training Convergence
-- ELITE: **0** · HEALTHY: 4 · OK: 0 · DEGRADED: **4**
-  - ⚠️ **pitcher_strikeouts**: DIVERGENT - consistent same-sign moves (structural issue) (cf=0.9274)
-  - ⚠️ **batter_doubles**: DIVERGENT - consistent same-sign moves (structural issue) (cf=0.8786)
+- ELITE: **0** · HEALTHY: 5 · OK: 1 · DEGRADED: **2**
+  - ⚠️ **pitcher_strikeouts**: DIVERGENT - consistent same-sign moves (structural issue) (cf=0.8716)
   - ⚠️ **batter_runs_scored**: DIVERGENT - consistent same-sign moves (structural issue) (cf=0.9777)
 
 ## 🤖 Self-Training Status
-- **NBA**: n=6 games · hit rate 66.7% · bias +21.3pp
-- **NHL**: n=5 games · hit rate 20.0% · bias -7.7pp
-- **WNBA**: n=37 games · hit rate 67.6% · bias -10.9pp [calibration applied]
+- **NBA**: n=5 games · hit rate 40.0% · bias +44.7pp
+- **NHL**: n=6 games · hit rate 33.3% · bias -12.6pp
+- **WNBA**: n=39 games · hit rate 64.1% · bias -11.3pp [calibration applied]
 - **MLS**: n=15 games · hit rate 53.3% · bias -4.8pp [calibration applied]
 - **EPL**: n=10 games · hit rate 40.0% · bias +4.2pp
-- **MLB**: n=181 games · hit rate 50.8% · bias -1.9pp
+- **MLB**: n=182 games · hit rate 54.4% · bias -3.3pp [calibration applied]
 - **CWS**: n=19 games · hit rate 79.0% · bias +0.0pp
