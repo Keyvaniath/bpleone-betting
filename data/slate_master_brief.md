@@ -1,13 +1,13 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-06-12T13:01:59 UTC_
+_Generated 2026-06-12T22:23:46 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -17
+- **Score:** -27
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
 - **Total STRONG:** 15
-- **Total FADES:** 77
+- **Total FADES:** 87
 
 ## Lock of the Night
 - **Subject:** Jack Leiter
@@ -17,16 +17,16 @@ _Generated 2026-06-12T13:01:59 UTC_
 - **Details:** TEX @ BOS
 
 ## Top 5 Curated Picks
-1. **GOLF / Brooks Koepka** (GOLF_PLAYER, score=167.86)
-   - Play: Brooks Koepka (PLAYER_STRONG)
+1. **GOLF / Sahith Theegala** (GOLF_PLAYER, score=93.93)
+   - Play: Sahith Theegala (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Sam Burns** (GOLF_PLAYER, score=133.29)
+2. **GOLF / Sam Burns** (GOLF_PLAYER, score=93.5)
    - Play: Sam Burns (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-3. **MLB / Roki Sasaki** (MLB_PITCHER, score=59.42)
-   - Play: Roki Sasaki (PITCHER_STRONG)
+3. **MLB / Braxton Ashcraft** (MLB_PITCHER, score=60.67)
+   - Play: Braxton Ashcraft (PITCHER_STRONG)
    - Rationale: Cross-sport top pick (MLB_PITCHER)
-4. **MLB / Nolan McLean** (MLB_PITCHER, score=59.17)
+4. **MLB / Nolan McLean** (MLB_PITCHER, score=59.08)
    - Play: Nolan McLean (PITCHER_STRONG)
    - Rationale: Cross-sport top pick (MLB_PITCHER)
 5. **F1 / max verstappen** (F1_DRIVER, score=49.67)
@@ -35,9 +35,9 @@ _Generated 2026-06-12T13:01:59 UTC_
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
-  - Brooks Koepka top 10 finish
-  - Sam Burns top 10 finish
   - Sahith Theegala top 10 finish
+  - Sam Burns top 10 finish
+  - Erik van Rooyen top 10 finish
 
 ## Slate ROI Projection
 - **Picks:** 1
@@ -50,9 +50,9 @@ _Generated 2026-06-12T13:01:59 UTC_
   - Fade angle: team total UNDER
 - **NBA** / NYK (TEAM_FADE)
   - Fade angle: team total UNDER
-- **GOLF** / Jeremy Paul (PLAYER_FADE)
-  - Fade angle: miss cut YES + high round score
-- **GOLF** / Collin Morikawa (PLAYER_FADE)
-  - Fade angle: miss cut YES + high round score
-- **GOLF** / Kris Ventura (PLAYER_FADE)
-  - Fade angle: miss cut YES + high round score
+- **NHL** / samsonov ilya (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / pyotr kochetkov (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / logan thompson_2 (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
