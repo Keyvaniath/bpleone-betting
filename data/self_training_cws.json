@@ -1,39 +1,42 @@
 {
-  "generated_at": "2026-06-13T11:17:38",
+  "generated_at": "2026-06-13T11:56:36",
   "sport": "cws",
-  "n_games": 19,
-  "hit_rate": 0.7895,
-  "brier_score": 0.1627,
-  "log_loss": 0.5072,
-  "avg_predicted_home_winprob": 0.4739,
-  "avg_actual_home_winrate": 0.4737,
-  "bias": 0.0002,
+  "n_games": 17,
+  "hit_rate": 0.7059,
+  "brier_score": 0.149,
+  "log_loss": 0.4315,
+  "avg_predicted_home_winprob": 0.5504,
+  "avg_actual_home_winrate": 0.5294,
+  "bias": 0.021,
   "reliability_bins": [
     {
       "lo": 0.0,
       "hi": 0.1,
-      "n": 6,
+      "n": 3,
       "predicted_avg": 0.061,
       "actual_avg": 0.0
     },
     {
       "lo": 0.5,
       "hi": 0.6,
-      "n": 9,
+      "n": 10,
       "predicted_avg": 0.536,
-      "actual_avg": 0.667
+      "actual_avg": 0.5
     },
     {
       "lo": 0.9,
       "hi": 1.0,
       "n": 4,
       "predicted_avg": 0.954,
-      "actual_avg": 0.75
+      "actual_avg": 1.0
     }
   ],
   "recommendation": {
-    "applied": false,
-    "note": "model is well-calibrated (<2pp bias)"
+    "applied": true,
+    "bias_pp": 2.1,
+    "shrinkage": 0.3,
+    "recommended_shift": -0.0063,
+    "note": "Model over-predicting home by 2.1pp; subtract 0.6pp from P(home) (shrinkage 30%)"
   },
   "n_teams_tracked": 16
 }

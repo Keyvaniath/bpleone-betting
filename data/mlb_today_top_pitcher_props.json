@@ -1,29 +1,29 @@
 {
-  "generated_at": "2026-06-13T11:17:43",
+  "generated_at": "2026-06-13T12:01:42",
   "n_pitchers_with_edges": 28,
   "PITCHER_PLAY_OF_THE_DAY": {
-    "pitcher": "Mike Burrows",
-    "composite_score": 0.589,
-    "n_strong_edges": 4,
-    "net_direction": "MIXED",
-    "directions_OVER": 2,
-    "directions_UNDER": 2,
+    "pitcher": "Sean Burke",
+    "composite_score": 0.579,
+    "n_strong_edges": 3,
+    "net_direction": "STRONG_UNDER",
+    "directions_OVER": 0,
+    "directions_UNDER": 3,
     "edges": [
       {
         "source": "strikeouts",
-        "market": "K_OVER_3.5",
-        "direction": "OVER",
-        "p": 0.655,
-        "fair_odds": -190,
-        "edge_class": "STRONG_OVER",
+        "market": "K_UNDER_6.5",
+        "direction": "UNDER",
+        "p": 0.64,
+        "fair_odds": -178,
+        "edge_class": "STRONG_UNDER",
         "weight": 1.0
       },
       {
         "source": "hits_allowed",
-        "market": "H_UNDER_5.0",
+        "market": "H_UNDER_6.0",
         "direction": "UNDER",
-        "p": 0.685,
-        "fair_odds": -218,
+        "p": 0.68,
+        "fair_odds": -212,
         "edge_class": "STRONG_UNDER",
         "weight": 0.75
       },
@@ -31,27 +31,55 @@
         "source": "win",
         "market": "PITCHER_WIN_NO",
         "direction": "UNDER",
-        "p": 0.791,
-        "fair_odds": -378,
+        "p": 0.858,
+        "fair_odds": -603,
         "edge_class": "STRONG_NO",
         "weight": 0.85
-      },
-      {
-        "source": "1st_inning_er",
-        "market": "1ST_INN_ER_YES",
-        "direction": "OVER",
-        "p": 0.432,
-        "fair_odds": 131,
-        "edge_class": "STRONG_YES",
-        "weight": 0.7
       }
     ]
   },
   "method_note": "Aggregates STRONG edges across 11 pitcher prop modules. Composite = sum(edge_pct * source_weight) per starter. Net direction = STRONG_OVER/UNDER if 2x majority OVER/UNDER, LEAN_OVER/UNDER if simple majority, MIXED otherwise.",
   "top_15_pitchers": [
     {
+      "pitcher": "Sean Burke",
+      "composite_score": 0.579,
+      "n_strong_edges": 3,
+      "net_direction": "STRONG_UNDER",
+      "directions_OVER": 0,
+      "directions_UNDER": 3,
+      "edges": [
+        {
+          "source": "strikeouts",
+          "market": "K_UNDER_6.5",
+          "direction": "UNDER",
+          "p": 0.64,
+          "fair_odds": -178,
+          "edge_class": "STRONG_UNDER",
+          "weight": 1.0
+        },
+        {
+          "source": "hits_allowed",
+          "market": "H_UNDER_6.0",
+          "direction": "UNDER",
+          "p": 0.68,
+          "fair_odds": -212,
+          "edge_class": "STRONG_UNDER",
+          "weight": 0.75
+        },
+        {
+          "source": "win",
+          "market": "PITCHER_WIN_NO",
+          "direction": "UNDER",
+          "p": 0.858,
+          "fair_odds": -603,
+          "edge_class": "STRONG_NO",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
       "pitcher": "Mike Burrows",
-      "composite_score": 0.589,
+      "composite_score": 0.578,
       "n_strong_edges": 4,
       "net_direction": "MIXED",
       "directions_OVER": 2,
@@ -61,8 +89,8 @@
           "source": "strikeouts",
           "market": "K_OVER_3.5",
           "direction": "OVER",
-          "p": 0.655,
-          "fair_odds": -190,
+          "p": 0.653,
+          "fair_odds": -188,
           "edge_class": "STRONG_OVER",
           "weight": 1.0
         },
@@ -70,8 +98,8 @@
           "source": "hits_allowed",
           "market": "H_UNDER_5.0",
           "direction": "UNDER",
-          "p": 0.685,
-          "fair_odds": -218,
+          "p": 0.673,
+          "fair_odds": -206,
           "edge_class": "STRONG_UNDER",
           "weight": 0.75
         },
@@ -96,45 +124,8 @@
       ]
     },
     {
-      "pitcher": "Sean Burke",
-      "composite_score": 0.575,
-      "n_strong_edges": 3,
-      "net_direction": "STRONG_UNDER",
-      "directions_OVER": 0,
-      "directions_UNDER": 3,
-      "edges": [
-        {
-          "source": "strikeouts",
-          "market": "K_UNDER_6.5",
-          "direction": "UNDER",
-          "p": 0.642,
-          "fair_odds": -180,
-          "edge_class": "STRONG_UNDER",
-          "weight": 1.0
-        },
-        {
-          "source": "hits_allowed",
-          "market": "H_UNDER_6.0",
-          "direction": "UNDER",
-          "p": 0.676,
-          "fair_odds": -209,
-          "edge_class": "STRONG_UNDER",
-          "weight": 0.75
-        },
-        {
-          "source": "win",
-          "market": "PITCHER_WIN_NO",
-          "direction": "UNDER",
-          "p": 0.854,
-          "fair_odds": -584,
-          "edge_class": "STRONG_NO",
-          "weight": 0.85
-        }
-      ]
-    },
-    {
       "pitcher": "Randy V\u00e1squez",
-      "composite_score": 0.546,
+      "composite_score": 0.547,
       "n_strong_edges": 3,
       "net_direction": "LEAN_UNDER",
       "directions_OVER": 1,
@@ -153,8 +144,8 @@
           "source": "win",
           "market": "PITCHER_WIN_NO",
           "direction": "UNDER",
-          "p": 0.873,
-          "fair_odds": -689,
+          "p": 0.874,
+          "fair_odds": -692,
           "edge_class": "STRONG_NO",
           "weight": 0.85
         },
@@ -199,7 +190,7 @@
     },
     {
       "pitcher": "Joey Cantillo",
-      "composite_score": 0.463,
+      "composite_score": 0.469,
       "n_strong_edges": 2,
       "net_direction": "STRONG_UNDER",
       "directions_OVER": 0,
@@ -209,8 +200,8 @@
           "source": "hits_allowed",
           "market": "H_UNDER_7.0",
           "direction": "UNDER",
-          "p": 0.669,
-          "fair_odds": -202,
+          "p": 0.67,
+          "fair_odds": -203,
           "edge_class": "STRONG_UNDER",
           "weight": 0.75
         },
@@ -218,8 +209,8 @@
           "source": "win",
           "market": "PITCHER_WIN_NO",
           "direction": "UNDER",
-          "p": 0.896,
-          "fair_odds": -864,
+          "p": 0.902,
+          "fair_odds": -918,
           "edge_class": "STRONG_NO",
           "weight": 0.85
         }
@@ -227,7 +218,7 @@
     },
     {
       "pitcher": "Matthew Liberatore",
-      "composite_score": 0.406,
+      "composite_score": 0.405,
       "n_strong_edges": 2,
       "net_direction": "STRONG_UNDER",
       "directions_OVER": 0,
@@ -237,8 +228,8 @@
           "source": "hits_allowed",
           "market": "H_UNDER_7.0",
           "direction": "UNDER",
-          "p": 0.676,
-          "fair_odds": -209,
+          "p": 0.675,
+          "fair_odds": -208,
           "edge_class": "STRONG_UNDER",
           "weight": 0.75
         },
@@ -283,7 +274,7 @@
     },
     {
       "pitcher": "Luis Castillo",
-      "composite_score": 0.394,
+      "composite_score": 0.396,
       "n_strong_edges": 2,
       "net_direction": "STRONG_UNDER",
       "directions_OVER": 0,
@@ -293,8 +284,8 @@
           "source": "hits_allowed",
           "market": "H_UNDER_6.0",
           "direction": "UNDER",
-          "p": 0.655,
-          "fair_odds": -190,
+          "p": 0.658,
+          "fair_odds": -193,
           "edge_class": "STRONG_UNDER",
           "weight": 0.75
         },
@@ -311,7 +302,7 @@
     },
     {
       "pitcher": "Rhett Lowder",
-      "composite_score": 0.368,
+      "composite_score": 0.369,
       "n_strong_edges": 2,
       "net_direction": "STRONG_UNDER",
       "directions_OVER": 0,
@@ -330,8 +321,8 @@
           "source": "win",
           "market": "PITCHER_WIN_NO",
           "direction": "UNDER",
-          "p": 0.82,
-          "fair_odds": -455,
+          "p": 0.821,
+          "fair_odds": -458,
           "edge_class": "STRONG_NO",
           "weight": 0.85
         }
@@ -386,7 +377,7 @@
     },
     {
       "pitcher": "TBD",
-      "composite_score": 0.353,
+      "composite_score": 0.349,
       "n_strong_edges": 1,
       "net_direction": "STRONG_UNDER",
       "directions_OVER": 0,
@@ -396,8 +387,8 @@
           "source": "win",
           "market": "PITCHER_WIN_NO",
           "direction": "UNDER",
-          "p": 0.915,
-          "fair_odds": -1074,
+          "p": 0.911,
+          "fair_odds": -1018,
           "edge_class": "STRONG_NO",
           "weight": 0.85
         }
