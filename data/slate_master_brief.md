@@ -1,27 +1,27 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-06-12T23:16:19 UTC_
+_Generated 2026-06-13T11:17:43 UTC_
 
 ## Slate Quality
-- **Tier:** MODEST_NIGHT
-- **Score:** 33
-- **Advisory:** Light slate. Limit to 1-3 strongest plays; use 25% Kelly or less.
+- **Tier:** NO_ACTION_NIGHT
+- **Score:** -20
+- **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 26
-- **Total FADES:** 71
+- **Total STRONG:** 13
+- **Total FADES:** 72
 
 ## Top 5 Curated Picks
-1. **GOLF / Ben James** (GOLF_PLAYER, score=153.79)
+1. **GOLF / Ben James** (GOLF_PLAYER, score=152.29)
    - Play: Ben James (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **MLB / Dillon Dingler** (MLB_BATTER, score=124.44)
-   - Play: Dillon Dingler (BATTER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_BATTER)
-3. **GOLF / Sam Burns** (GOLF_PLAYER, score=118.21)
+2. **GOLF / Sam Burns** (GOLF_PLAYER, score=116.5)
    - Play: Sam Burns (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-4. **MLB / Jackson Chourio** (MLB_BATTER, score=111.5)
-   - Play: Jackson Chourio (BATTER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_BATTER)
+3. **MLB / ?** (MLB_TEAM, score=88.29)
+   - Play: ? (TEAM_STRONG)
+   - Rationale: Cross-sport top pick (MLB_TEAM)
+4. **F1 / max verstappen** (F1_DRIVER, score=49.67)
+   - Play: max verstappen (DRIVER_STRONG)
+   - Rationale: Cross-sport top pick (F1_DRIVER)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
@@ -36,13 +36,13 @@ _Generated 2026-06-12T23:16:19 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
+- **MLB** / Jack Leiter (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
 - **NBA** / SAS (TEAM_FADE)
   - Fade angle: team total UNDER
-- **MLB** / Sandy Alcantara (PITCHER_FADE)
+- **MLB** / Shane McClanahan (PITCHER_FADE)
   - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **MLB** / Shane Baz (PITCHER_FADE)
+- **MLB** / Joe Ryan (PITCHER_FADE)
   - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **MLB** / Nolan McLean (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **MLB** / Braxton Ashcraft (PITCHER_FADE)
+- **MLB** / Nick Lodolo (PITCHER_FADE)
   - Fade angle: K UNDER + outs UNDER + 4+ER YES

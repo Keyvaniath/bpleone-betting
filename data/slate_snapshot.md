@@ -1,4 +1,4 @@
-# EdgeStat Slate — 2026-06-12
+# EdgeStat Slate — 2026-06-13
 
 _6 picks consolidated from POD + Alpha + Book Edges + Parlay-of-Day._
 
@@ -10,22 +10,22 @@ _6 picks consolidated from POD + Alpha + Book Edges + Parlay-of-Day._
 ## 🎯 Alpha Pick
 
 - **NYY @ TOR** · NYY_ML
-  Prob 60.4% · Odds +105 · Edge +23.9% · Kelly 0.228
+  Prob 68.3% · Odds -125 · Edge +23.0% · Kelly 0.250
 
 ## 📊 Book Edges
 
-- **NYY @ TOR · AWAY (AWAY)** · TEAM_ML
-  Prob 55.1% · Odds +104 · Edge +12.4% · Kelly 0.120
-- **DET @ CLE · AWAY (AWAY)** · TEAM_ML
-  Prob 54.9% · Odds +103 · Edge +11.5% · Kelly 0.111
-- **ARI @ CIN · AWAY (AWAY)** · TEAM_ML
-  Prob 57.6% · Odds -107 · Edge +11.4% · Kelly 0.122
+- **CHC @ SFG · UNDER · O/U 8.0** · TOTAL_UNDER
+  Prob 58.2% · Odds -110 · Edge +11.2% · Kelly 0.123
+- **MIA @ PIT · OVER · O/U 8.5** · TOTAL_OVER
+  Prob 58.2% · Odds -110 · Edge +11.1% · Kelly 0.122
+- **DET @ CLE · UNDER · O/U 8.0** · TOTAL_UNDER
+  Prob 58.1% · Odds -110 · Edge +11.0% · Kelly 0.121
 
 ## 🎲 Parlay
 
 - **Logan O'Hoppe + NYY @ TOR** · 2-leg
-  Prob 52.5% · Odds +256 · Edge +86.8% · Kelly 0.050
+  Prob 59.4% · Odds +212 · Edge +85.4% · Kelly 0.050
 
 ---
-_Generated 2026-06-12T23:16:25 UTC by EdgeStat._
+_Generated 2026-06-13T11:17:48 UTC by EdgeStat._
 _Stakes assume ¼-Kelly fractional sizing on a flat bankroll._

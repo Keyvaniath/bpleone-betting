@@ -1,33 +1,33 @@
 {
-  "generated_at": "2026-06-13T09:39:38",
+  "generated_at": "2026-06-13T11:17:38",
   "stake_assumption": "1u flat per pick",
   "total_picks": 10000,
-  "n_settled": 5749,
-  "n_pending": 806,
-  "n_void": 3445,
-  "wins": 2924,
-  "losses": 2821,
+  "n_settled": 5812,
+  "n_pending": 768,
+  "n_void": 3420,
+  "wins": 2950,
+  "losses": 2858,
   "pushes": 4,
-  "hit_rate": 0.509,
-  "net_units": -822.089,
-  "roi_pct": -14.31,
+  "hit_rate": 0.5079,
+  "net_units": -827.768,
+  "roi_pct": -14.25,
   "n_calibrated_picks": 9628,
   "calibrated_reliability": {
-    "n": 5622,
-    "ece_raw": 0.1057,
-    "ece_calibrated": 0.0267,
-    "brier_raw": 0.23466,
-    "brier_calibrated": 0.20697,
+    "n": 5685,
+    "ece_raw": 0.105,
+    "ece_calibrated": 0.0264,
+    "brier_raw": 0.23388,
+    "brier_calibrated": 0.20645,
     "note": "In-sample over the settled ledger (the isotonic transform is fit on these same outcomes); held-out 70/30 validation is in recalibration_map.json. p_predicted = raw model prob (kept untouched for the learning loop); p_calibrated = honest prob stamped per pick. Lower ECE/Brier on the calibrated column = the displayed % is truer."
   },
   "curated": {
-    "n_settled": 584,
-    "wins": 446,
-    "losses": 134,
+    "n_settled": 602,
+    "wins": 462,
+    "losses": 136,
     "pushes": 4,
-    "hit_rate": 0.769,
-    "net_units": 180.448,
-    "roi_pct": 31.11,
+    "hit_rate": 0.7726,
+    "net_units": 190.586,
+    "roi_pct": 31.87,
     "sources": [
       "consensus_hit_strong",
       "lock_of_day",
@@ -41,48 +41,39 @@
     ],
     "definition": "Featured/recommended plays only -- Lock of the Day, Top 25, Whale, Sharp, Consensus (hit), Under Alerts, POD. Excludes the experimental prop feeds, which are tracked to train the model, not bet."
   },
-  "n_added_this_run": 0,
-  "n_newly_settled_this_run": 0,
-  "n_resettled_this_run": 0,
+  "n_added_this_run": 4,
+  "n_newly_settled_this_run": 67,
+  "n_resettled_this_run": 1,
   "n_voided_this_run": 0,
-  "n_reconciled_settled_voids": 0,
+  "n_reconciled_settled_voids": 25,
   "n_bootstrapped_from_locks_history": 0,
   "by_source": {
-    "mlb_bw_walk_1plus_no": {
-      "n": 269,
-      "wins": 205,
-      "losses": 64,
-      "pushes": 0,
-      "net_units": -25.163,
-      "hit_rate": 0.7621,
-      "roi_pct": -9.35
-    },
     "mlb_bk_k_1plus_yes": {
-      "n": 1255,
+      "n": 1253,
       "wins": 769,
-      "losses": 486,
+      "losses": 484,
       "pushes": 0,
-      "net_units": -154.056,
-      "hit_rate": 0.6127,
-      "roi_pct": -12.28
+      "net_units": -152.052,
+      "hit_rate": 0.6137,
+      "roi_pct": -12.14
     },
     "mlb_hr_yn_to_hit_hr_yes": {
-      "n": 408,
-      "wins": 61,
-      "losses": 347,
+      "n": 414,
+      "wins": 62,
+      "losses": 352,
       "pushes": 0,
-      "net_units": -127.77,
-      "hit_rate": 0.1495,
-      "roi_pct": -31.32
+      "net_units": -131.08,
+      "hit_rate": 0.1498,
+      "roi_pct": -31.66
     },
     "mlb_xbh_1_plus_xbh": {
-      "n": 644,
-      "wins": 197,
-      "losses": 447,
+      "n": 678,
+      "wins": 206,
+      "losses": 472,
       "pushes": 0,
-      "net_units": -116.91,
-      "hit_rate": 0.3059,
-      "roi_pct": -18.15
+      "net_units": -127.67,
+      "hit_rate": 0.3038,
+      "roi_pct": -18.83
     },
     "mlb_xbh_no_xbh": {
       "n": 36,
@@ -94,13 +85,13 @@
       "roi_pct": -56.84
     },
     "mlb_hrr_3_plus_hrr": {
-      "n": 243,
+      "n": 246,
       "wins": 59,
-      "losses": 184,
+      "losses": 187,
       "pushes": 0,
-      "net_units": -137.328,
-      "hit_rate": 0.2428,
-      "roi_pct": -56.51
+      "net_units": -140.328,
+      "hit_rate": 0.2398,
+      "roi_pct": -57.04
     },
     "mlb_hrr_2_plus_hrr": {
       "n": 37,
@@ -121,13 +112,13 @@
       "roi_pct": -63.95
     },
     "top_25_board": {
-      "n": 242,
-      "wins": 182,
-      "losses": 59,
+      "n": 251,
+      "wins": 190,
+      "losses": 60,
       "pushes": 1,
-      "net_units": 79.498,
-      "hit_rate": 0.7552,
-      "roi_pct": 32.99
+      "net_units": 84.751,
+      "hit_rate": 0.76,
+      "roi_pct": 33.9
     },
     "whale_strong": {
       "n": 30,
@@ -166,13 +157,13 @@
       "roi_pct": 12.86
     },
     "lock_of_day": {
-      "n": 238,
-      "wins": 191,
-      "losses": 47,
+      "n": 247,
+      "wins": 199,
+      "losses": 48,
       "pushes": 0,
-      "net_units": 66.978,
-      "hit_rate": 0.8025,
-      "roi_pct": 28.14
+      "net_units": 71.858,
+      "hit_rate": 0.8057,
+      "roi_pct": 29.09
     },
     "pod": {
       "n": 10,
@@ -247,13 +238,22 @@
       "roi_pct": 11.86
     },
     "mlb_bw_walk_1plus_yes": {
-      "n": 22,
-      "wins": 10,
+      "n": 23,
+      "wins": 11,
       "losses": 12,
       "pushes": 0,
-      "net_units": -0.58,
-      "hit_rate": 0.4545,
-      "roi_pct": -2.64
+      "net_units": 0.48,
+      "hit_rate": 0.4783,
+      "roi_pct": 2.09
+    },
+    "mlb_bw_walk_1plus_no": {
+      "n": 267,
+      "wins": 203,
+      "losses": 64,
+      "pushes": 0,
+      "net_units": -25.501,
+      "hit_rate": 0.7603,
+      "roi_pct": -9.55
     },
     "nhl_pl_home_plus_1.5": {
       "n": 8,
@@ -697,13 +697,13 @@
       "roi_pct": -13.24
     },
     "mlb_3plus_tb_tb_3plus_yes": {
-      "n": 189,
-      "wins": 52,
-      "losses": 137,
+      "n": 194,
+      "wins": 53,
+      "losses": 141,
       "pushes": 0,
-      "net_units": -30.65,
-      "hit_rate": 0.2751,
-      "roi_pct": -16.22
+      "net_units": -32.12,
+      "hit_rate": 0.2732,
+      "roi_pct": -16.56
     },
     "mlb_bk_k_1plus_no": {
       "n": 10,
@@ -968,37 +968,29 @@
     }
   },
   "by_market_family": {
-    "walk_1plus_no": {
-      "n": 269,
-      "wins": 205,
-      "losses": 64,
-      "pushes": 0,
-      "net_units": -25.163,
-      "hit_rate": 0.7621
-    },
     "k_1plus_yes": {
-      "n": 1255,
+      "n": 1253,
       "wins": 769,
-      "losses": 486,
+      "losses": 484,
       "pushes": 0,
-      "net_units": -154.056,
-      "hit_rate": 0.6127
+      "net_units": -152.052,
+      "hit_rate": 0.6137
     },
     "to_hit_hr_yes": {
-      "n": 408,
-      "wins": 61,
-      "losses": 347,
+      "n": 414,
+      "wins": 62,
+      "losses": 352,
       "pushes": 0,
-      "net_units": -127.77,
-      "hit_rate": 0.1495
+      "net_units": -131.08,
+      "hit_rate": 0.1498
     },
     "1_plus_xbh": {
-      "n": 644,
-      "wins": 197,
-      "losses": 447,
+      "n": 678,
+      "wins": 206,
+      "losses": 472,
       "pushes": 0,
-      "net_units": -116.91,
-      "hit_rate": 0.3059
+      "net_units": -127.67,
+      "hit_rate": 0.3038
     },
     "no_xbh": {
       "n": 36,
@@ -1009,12 +1001,12 @@
       "hit_rate": 0.3611
     },
     "3_plus_hrr": {
-      "n": 243,
+      "n": 246,
       "wins": 59,
-      "losses": 184,
+      "losses": 187,
       "pushes": 0,
-      "net_units": -137.328,
-      "hit_rate": 0.2428
+      "net_units": -140.328,
+      "hit_rate": 0.2398
     },
     "2_plus_hrr": {
       "n": 37,
@@ -1041,12 +1033,12 @@
       "hit_rate": 0.8529
     },
     "pp_batter_hrr": {
-      "n": 367,
-      "wins": 295,
-      "losses": 72,
+      "n": 383,
+      "wins": 309,
+      "losses": 74,
       "pushes": 0,
-      "net_units": 127.218,
-      "hit_rate": 0.8038
+      "net_units": 135.508,
+      "hit_rate": 0.8068
     },
     "pp_batter_runs": {
       "n": 3,
@@ -1057,12 +1049,12 @@
       "hit_rate": 0.6667
     },
     "over": {
-      "n": 61,
-      "wins": 42,
+      "n": 62,
+      "wins": 43,
       "losses": 19,
       "pushes": 0,
-      "net_units": 12.165,
-      "hit_rate": 0.6885
+      "net_units": 13.074,
+      "hit_rate": 0.6935
     },
     "under": {
       "n": 66,
@@ -1073,12 +1065,12 @@
       "hit_rate": 0.629
     },
     "ml_away": {
-      "n": 39,
+      "n": 40,
       "wins": 26,
-      "losses": 13,
+      "losses": 14,
       "pushes": 0,
-      "net_units": 7.665,
-      "hit_rate": 0.6667
+      "net_units": 6.665,
+      "hit_rate": 0.65
     },
     "1_plus_hit": {
       "n": 27,
@@ -1145,12 +1137,20 @@
       "hit_rate": 0.7143
     },
     "walk_1plus_yes": {
-      "n": 22,
-      "wins": 10,
+      "n": 23,
+      "wins": 11,
       "losses": 12,
       "pushes": 0,
-      "net_units": -0.58,
-      "hit_rate": 0.4545
+      "net_units": 0.48,
+      "hit_rate": 0.4783
+    },
+    "walk_1plus_no": {
+      "n": 267,
+      "wins": 203,
+      "losses": 64,
+      "pushes": 0,
+      "net_units": -25.501,
+      "hit_rate": 0.7603
     },
     "pp_batter_rbis": {
       "n": 14,
@@ -1170,11 +1170,11 @@
     },
     "ml_home": {
       "n": 15,
-      "wins": 8,
-      "losses": 7,
+      "wins": 9,
+      "losses": 6,
       "pushes": 0,
-      "net_units": -1.4,
-      "hit_rate": 0.5333
+      "net_units": 0.535,
+      "hit_rate": 0.6
     },
     "pp_batter_home_runs": {
       "n": 5,
@@ -1345,12 +1345,12 @@
       "hit_rate": 0.6154
     },
     "tb_3plus_yes": {
-      "n": 189,
-      "wins": 52,
-      "losses": 137,
+      "n": 194,
+      "wins": 53,
+      "losses": 141,
       "pushes": 0,
-      "net_units": -30.65,
-      "hit_rate": 0.2751
+      "net_units": -32.12,
+      "hit_rate": 0.2732
     },
     "k_1plus_no": {
       "n": 10,
@@ -1378,37 +1378,29 @@
     }
   },
   "by_canonical": {
-    "mlb_walk_0.5_under": {
-      "n": 269,
-      "wins": 205,
-      "losses": 64,
-      "pushes": 0,
-      "net_units": -25.163,
-      "hit_rate": 0.7621
-    },
     "mlb_bk_0.5_over": {
-      "n": 1255,
+      "n": 1253,
       "wins": 769,
-      "losses": 486,
+      "losses": 484,
       "pushes": 0,
-      "net_units": -154.056,
-      "hit_rate": 0.6127
+      "net_units": -152.052,
+      "hit_rate": 0.6137
     },
     "mlb_hr_0.5_over": {
-      "n": 482,
-      "wins": 74,
-      "losses": 408,
+      "n": 488,
+      "wins": 75,
+      "losses": 413,
       "pushes": 0,
-      "net_units": -176.94,
-      "hit_rate": 0.1535
+      "net_units": -180.25,
+      "hit_rate": 0.1537
     },
     "mlb_xbh_0.5_over": {
-      "n": 644,
-      "wins": 197,
-      "losses": 447,
+      "n": 678,
+      "wins": 206,
+      "losses": 472,
       "pushes": 0,
-      "net_units": -116.91,
-      "hit_rate": 0.3059
+      "net_units": -127.67,
+      "hit_rate": 0.3038
     },
     "mlb_xbh_0.5_under": {
       "n": 36,
@@ -1419,12 +1411,12 @@
       "hit_rate": 0.3611
     },
     "mlb_hrr_2.5_over": {
-      "n": 243,
+      "n": 246,
       "wins": 59,
-      "losses": 184,
+      "losses": 187,
       "pushes": 0,
-      "net_units": -137.328,
-      "hit_rate": 0.2428
+      "net_units": -140.328,
+      "hit_rate": 0.2398
     },
     "mlb_hrr_1.5_over": {
       "n": 37,
@@ -1467,12 +1459,12 @@
       "hit_rate": 0.6667
     },
     "over": {
-      "n": 61,
-      "wins": 42,
+      "n": 62,
+      "wins": 43,
       "losses": 19,
       "pushes": 0,
-      "net_units": 12.165,
-      "hit_rate": 0.6885
+      "net_units": 13.074,
+      "hit_rate": 0.6935
     },
     "under": {
       "n": 66,
@@ -1483,12 +1475,12 @@
       "hit_rate": 0.629
     },
     "ml_away": {
-      "n": 39,
+      "n": 40,
       "wins": 26,
-      "losses": 13,
+      "losses": 14,
       "pushes": 0,
-      "net_units": 7.665,
-      "hit_rate": 0.6667
+      "net_units": 6.665,
+      "hit_rate": 0.65
     },
     "mlb_hit_0.5_over": {
       "n": 101,
@@ -1539,12 +1531,20 @@
       "hit_rate": 0.7143
     },
     "mlb_walk_0.5_over": {
-      "n": 22,
-      "wins": 10,
+      "n": 23,
+      "wins": 11,
       "losses": 12,
       "pushes": 0,
-      "net_units": -0.58,
-      "hit_rate": 0.4545
+      "net_units": 0.48,
+      "hit_rate": 0.4783
+    },
+    "mlb_walk_0.5_under": {
+      "n": 267,
+      "wins": 203,
+      "losses": 64,
+      "pushes": 0,
+      "net_units": -25.501,
+      "hit_rate": 0.7603
     },
     "mlb_rbi_1.5_under": {
       "n": 14,
@@ -1555,12 +1555,12 @@
       "hit_rate": 0.8571
     },
     "mlb_hrr_3.5_under": {
-      "n": 257,
-      "wins": 203,
-      "losses": 54,
+      "n": 273,
+      "wins": 217,
+      "losses": 56,
       "pushes": 0,
-      "net_units": 85.119,
-      "hit_rate": 0.7899
+      "net_units": 93.409,
+      "hit_rate": 0.7949
     },
     "home_plus": {
       "n": 8,
@@ -1572,11 +1572,11 @@
     },
     "ml_home": {
       "n": 15,
-      "wins": 8,
-      "losses": 7,
+      "wins": 9,
+      "losses": 6,
       "pushes": 0,
-      "net_units": -1.4,
-      "hit_rate": 0.5333
+      "net_units": 0.535,
+      "hit_rate": 0.6
     },
     "mlb_hr_0.5_under": {
       "n": 5,
@@ -1763,12 +1763,12 @@
       "hit_rate": 0.6154
     },
     "mlb_tb_2.5_over": {
-      "n": 189,
-      "wins": 52,
-      "losses": 137,
+      "n": 194,
+      "wins": 53,
+      "losses": 141,
       "pushes": 0,
-      "net_units": -30.65,
-      "hit_rate": 0.2751
+      "net_units": -32.12,
+      "hit_rate": 0.2732
     },
     "mlb_bk_0.5_under": {
       "n": 10,
@@ -1798,28 +1798,28 @@
   "by_sport": {
     "MLB": {
       "n": 7851,
-      "settled": 4873,
-      "wins": 2353,
-      "losses": 2516,
+      "settled": 4920,
+      "wins": 2365,
+      "losses": 2551,
       "pushes": 4,
-      "pending": 555,
-      "void": 2423,
-      "net_units": -969.325,
-      "hit_rate": 0.4833,
-      "roi_pct": -19.91,
+      "pending": 533,
+      "void": 2398,
+      "net_units": -983.296,
+      "hit_rate": 0.4811,
+      "roi_pct": -20.0,
       "markets": 49
     },
     "MLB-PP": {
       "n": 614,
-      "settled": 423,
-      "wins": 343,
-      "losses": 80,
+      "settled": 439,
+      "wins": 357,
+      "losses": 82,
       "pushes": 0,
-      "pending": 69,
+      "pending": 53,
       "void": 122,
-      "net_units": 145.35,
-      "hit_rate": 0.8109,
-      "roi_pct": 34.36,
+      "net_units": 153.64,
+      "hit_rate": 0.8132,
+      "roi_pct": 35.0,
       "markets": 4
     },
     "F1": {
@@ -1980,116 +1980,12 @@
     }
   },
   "last_7_days": {
-    "wins": 757,
-    "losses": 776,
-    "net_units": -138.274,
-    "hit_rate": 0.4938
+    "wins": 779,
+    "losses": 802,
+    "net_units": -141.341,
+    "hit_rate": 0.4927
   },
   "picks": [
-    {
-      "source": "mlb_bw_walk_1plus_no",
-      "sport": "MLB",
-      "player_or_matchup": "Kyle Higashioka",
-      "market": "WALK_1PLUS_NO",
-      "prob": 0.856,
-      "fair_american": -595,
-      "p_predicted": 0.856,
-      "matchup": "HOU @ TEX",
-      "date": "2026-05-26",
-      "pick_id": "mlb_bw_walk_1plus_no|MLB|Kyle_Higashioka|WALK_1PLUS_NO|2026-05-26",
-      "settled": true,
-      "result": "won",
-      "payout_units": 0.1681,
-      "recorded_at": "2026-05-26T23:11:22",
-      "settled_at": "2026-05-30T11:38:06",
-      "outcome": {
-        "stat": "bb",
-        "actual": 0,
-        "line": 0.5,
-        "side": "UNDER/NO",
-        "verify": "Kyle Higashioka \u2014 bb = 0 (line 0.5, bet UNDER/NO) on 2026-05-26",
-        "check": "verified"
-      },
-      "p_calibrated": 0.8515
-    },
-    {
-      "source": "mlb_bw_walk_1plus_no",
-      "sport": "MLB",
-      "player_or_matchup": "Adrian Del Castillo",
-      "market": "WALK_1PLUS_NO",
-      "prob": 0.856,
-      "fair_american": -595,
-      "p_predicted": 0.856,
-      "matchup": "ARI @ SFG",
-      "date": "2026-05-26",
-      "pick_id": "mlb_bw_walk_1plus_no|MLB|Adrian_Del_Castillo|WALK_1PLUS_NO|2026-05-26",
-      "settled": true,
-      "result": "won",
-      "payout_units": 0.1681,
-      "recorded_at": "2026-05-26T23:11:22",
-      "settled_at": "2026-05-29T13:59:37",
-      "outcome": {
-        "stat": "bb",
-        "actual": 0,
-        "line": 0.5,
-        "side": "UNDER/NO",
-        "verify": "Adrian Del Castillo \u2014 bb = 0 (line 0.5, bet UNDER/NO) on 2026-05-26",
-        "check": "verified"
-      },
-      "p_calibrated": 0.8515
-    },
-    {
-      "source": "mlb_bk_k_1plus_yes",
-      "sport": "MLB",
-      "player_or_matchup": "Chase DeLauter",
-      "market": "K_1PLUS_YES",
-      "prob": 0.821,
-      "fair_american": -458,
-      "p_predicted": 0.821,
-      "matchup": "WSN @ CLE",
-      "date": "2026-05-26",
-      "pick_id": "mlb_bk_k_1plus_yes|MLB|Chase_DeLauter|K_1PLUS_YES|2026-05-26",
-      "settled": true,
-      "result": "lost",
-      "payout_units": -1.0,
-      "recorded_at": "2026-05-26T23:11:22",
-      "settled_at": "2026-05-29T13:59:37",
-      "outcome": {
-        "stat": "k",
-        "actual": 0,
-        "line": 0.5,
-        "side": "OVER/YES",
-        "verify": "Chase DeLauter \u2014 k = 0 (line 0.5, bet OVER/YES) on 2026-05-26",
-        "check": "verified"
-      },
-      "p_calibrated": 0.6359
-    },
-    {
-      "source": "mlb_bk_k_1plus_yes",
-      "sport": "MLB",
-      "player_or_matchup": "Jos\u00e9 Ram\u00edrez",
-      "market": "K_1PLUS_YES",
-      "prob": 0.813,
-      "fair_american": -435,
-      "p_predicted": 0.813,
-      "matchup": "WSN @ CLE",
-      "date": "2026-05-26",
-      "pick_id": "mlb_bk_k_1plus_yes|MLB|Jos__Ram_rez|K_1PLUS_YES|2026-05-26",
-      "settled": true,
-      "result": "lost",
-      "payout_units": -1.0,
-      "recorded_at": "2026-05-26T23:11:22",
-      "settled_at": "2026-05-29T13:59:37",
-      "outcome": {
-        "stat": "k",
-        "actual": 0,
-        "line": 0.5,
-        "side": "OVER/YES",
-        "verify": "Jos\u00e9 Ram\u00edrez \u2014 k = 0 (line 0.5, bet OVER/YES) on 2026-05-26",
-        "check": "verified"
-      },
-      "p_calibrated": 0.6359
-    },
     {
       "source": "mlb_bk_k_1plus_yes",
       "sport": "MLB",
@@ -7302,14 +7198,21 @@
       "matchup": "MIN @ CHW",
       "date": "2026-05-26",
       "pick_id": "mlb_xbh_1_plus_xbh|MLB|James_Outman|1_PLUS_XBH|2026-05-26",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "lost",
+      "payout_units": -1.0,
       "recorded_at": "2026-05-26T23:11:22",
-      "voided": true,
-      "voided_at": "2026-05-31T02:05:42",
-      "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.3337
+      "voided": false,
+      "p_calibrated": 0.3337,
+      "outcome": {
+        "stat": "xbh",
+        "actual": 0,
+        "line": 0.5,
+        "side": "OVER/YES",
+        "verify": "James Outman \u2014 xbh = 0 (line 0.5, bet OVER/YES) on 2026-05-26",
+        "check": "verified"
+      },
+      "settled_at": "2026-06-13T11:17:38"
     },
     {
       "source": "mlb_xbh_1_plus_xbh",
@@ -21067,14 +20970,21 @@
       "matchup": "MIN @ CHW",
       "date": "2026-05-27",
       "pick_id": "mlb_xbh_1_plus_xbh|MLB|James_Outman|1_PLUS_XBH|2026-05-27",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "lost",
+      "payout_units": -1.0,
       "recorded_at": "2026-05-27T08:21:30",
-      "voided": true,
-      "voided_at": "2026-06-01T02:14:06",
-      "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.3337
+      "voided": false,
+      "p_calibrated": 0.3337,
+      "outcome": {
+        "stat": "xbh",
+        "actual": 0,
+        "line": 0.5,
+        "side": "OVER/YES",
+        "verify": "James Outman \u2014 xbh = 0 (line 0.5, bet OVER/YES) on 2026-05-27",
+        "check": "verified"
+      },
+      "settled_at": "2026-06-13T11:17:38"
     },
     {
       "source": "mlb_xbh_1_plus_xbh",
@@ -21725,14 +21635,21 @@
       "matchup": "PHI @ SDP",
       "date": "2026-05-27",
       "pick_id": "mlb_xbh_1_plus_xbh|MLB|Ty_France|1_PLUS_XBH|2026-05-27",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "lost",
+      "payout_units": -1.0,
       "recorded_at": "2026-05-27T08:21:30",
-      "voided": true,
-      "voided_at": "2026-06-01T02:14:06",
-      "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.3156
+      "voided": false,
+      "p_calibrated": 0.3156,
+      "outcome": {
+        "stat": "xbh",
+        "actual": 0,
+        "line": 0.5,
+        "side": "OVER/YES",
+        "verify": "Ty France \u2014 xbh = 0 (line 0.5, bet OVER/YES) on 2026-05-27",
+        "check": "verified"
+      },
+      "settled_at": "2026-06-13T11:17:38"
     },
     {
       "source": "mlb_xbh_1_plus_xbh",
@@ -21745,14 +21662,21 @@
       "matchup": "HOU @ TEX",
       "date": "2026-05-27",
       "pick_id": "mlb_xbh_1_plus_xbh|MLB|Joc_Pederson|1_PLUS_XBH|2026-05-27",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "won",
+      "payout_units": 1.74,
       "recorded_at": "2026-05-27T08:21:30",
-      "voided": true,
-      "voided_at": "2026-06-01T02:14:06",
-      "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.3156
+      "voided": false,
+      "p_calibrated": 0.3156,
+      "outcome": {
+        "stat": "xbh",
+        "actual": 2,
+        "line": 0.5,
+        "side": "OVER/YES",
+        "verify": "Joc Pederson \u2014 xbh = 2 (line 0.5, bet OVER/YES) on 2026-05-27",
+        "check": "verified"
+      },
+      "settled_at": "2026-06-13T11:17:38"
     },
     {
       "source": "mlb_xbh_1_plus_xbh",
@@ -36653,14 +36577,21 @@
       "matchup": "HOU @ TEX",
       "date": "2026-05-28",
       "pick_id": "mlb_xbh_1_plus_xbh|MLB|Joc_Pederson|1_PLUS_XBH|2026-05-28",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "lost",
+      "payout_units": -1.0,
       "recorded_at": "2026-05-28T08:08:48",
-      "voided": true,
-      "voided_at": "2026-06-02T02:14:45",
-      "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.3156
+      "voided": false,
+      "p_calibrated": 0.3156,
+      "outcome": {
+        "stat": "xbh",
+        "actual": 0,
+        "line": 0.5,
+        "side": "OVER/YES",
+        "verify": "Joc Pederson \u2014 xbh = 0 (line 0.5, bet OVER/YES) on 2026-05-28",
+        "check": "verified"
+      },
+      "settled_at": "2026-06-13T11:17:38"
     },
     {
       "source": "mlb_xbh_1_plus_xbh",
@@ -53048,14 +52979,21 @@
       "matchup": "BOS @ CLE",
       "date": "2026-05-29",
       "pick_id": "mlb_xbh_1_plus_xbh|MLB|Rhys_Hoskins|1_PLUS_XBH|2026-05-29",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "lost",
+      "payout_units": -1.0,
       "recorded_at": "2026-05-29T23:01:42",
-      "voided": true,
-      "voided_at": "2026-06-03T00:16:44",
-      "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.3227
+      "voided": false,
+      "p_calibrated": 0.3227,
+      "outcome": {
+        "stat": "xbh",
+        "actual": 0,
+        "line": 0.5,
+        "side": "OVER/YES",
+        "verify": "Rhys Hoskins \u2014 xbh = 0 (line 0.5, bet OVER/YES) on 2026-05-29",
+        "check": "verified"
+      },
+      "settled_at": "2026-06-13T11:17:38"
     },
     {
       "source": "mlb_xbh_1_plus_xbh",
@@ -53095,14 +53033,21 @@
       "matchup": "KCR @ TEX",
       "date": "2026-05-29",
       "pick_id": "mlb_xbh_1_plus_xbh|MLB|Joc_Pederson|1_PLUS_XBH|2026-05-29",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "won",
+      "payout_units": 1.4,
       "recorded_at": "2026-05-29T23:01:42",
-      "voided": true,
-      "voided_at": "2026-06-03T00:16:44",
-      "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.3219
+      "voided": false,
+      "p_calibrated": 0.3219,
+      "outcome": {
+        "stat": "xbh",
+        "actual": 1,
+        "line": 0.5,
+        "side": "OVER/YES",
+        "verify": "Joc Pederson \u2014 xbh = 1 (line 0.5, bet OVER/YES) on 2026-05-29",
+        "check": "verified"
+      },
+      "settled_at": "2026-06-13T11:17:38"
     },
     {
       "source": "mlb_xbh_1_plus_xbh",
@@ -53792,14 +53737,21 @@
       "matchup": "NYY @ OAK",
       "date": "2026-05-29",
       "pick_id": "mlb_xbh_1_plus_xbh|MLB|Colby_Thomas|1_PLUS_XBH|2026-05-29",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "lost",
+      "payout_units": -1.0,
       "recorded_at": "2026-05-29T23:01:42",
-      "voided": true,
-      "voided_at": "2026-06-03T00:16:44",
-      "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.3156
+      "voided": false,
+      "p_calibrated": 0.3156,
+      "outcome": {
+        "stat": "xbh",
+        "actual": 0,
+        "line": 0.5,
+        "side": "OVER/YES",
+        "verify": "Colby Thomas \u2014 xbh = 0 (line 0.5, bet OVER/YES) on 2026-05-29",
+        "check": "verified"
+      },
+      "settled_at": "2026-06-13T11:17:38"
     },
     {
       "source": "mlb_xbh_1_plus_xbh",
@@ -70321,14 +70273,21 @@
       "matchup": "BOS @ CLE",
       "date": "2026-05-30",
       "pick_id": "mlb_xbh_1_plus_xbh|MLB|Rhys_Hoskins|1_PLUS_XBH|2026-05-30",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "lost",
+      "payout_units": -1.0,
       "recorded_at": "2026-05-30T01:52:21",
-      "voided": true,
-      "voided_at": "2026-06-04T00:12:48",
-      "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.3227
+      "voided": false,
+      "p_calibrated": 0.3227,
+      "outcome": {
+        "stat": "xbh",
+        "actual": 0,
+        "line": 0.5,
+        "side": "OVER/YES",
+        "verify": "Rhys Hoskins \u2014 xbh = 0 (line 0.5, bet OVER/YES) on 2026-05-30",
+        "check": "verified"
+      },
+      "settled_at": "2026-06-13T11:17:38"
     },
     {
       "source": "mlb_xbh_1_plus_xbh",
@@ -70361,14 +70320,21 @@
       "matchup": "KCR @ TEX",
       "date": "2026-05-30",
       "pick_id": "mlb_xbh_1_plus_xbh|MLB|Joc_Pederson|1_PLUS_XBH|2026-05-30",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "won",
+      "payout_units": 1.4,
       "recorded_at": "2026-05-30T01:52:21",
-      "voided": true,
-      "voided_at": "2026-06-04T00:12:48",
-      "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.3219
+      "voided": false,
+      "p_calibrated": 0.3219,
+      "outcome": {
+        "stat": "xbh",
+        "actual": 1,
+        "line": 0.5,
+        "side": "OVER/YES",
+        "verify": "Joc Pederson \u2014 xbh = 1 (line 0.5, bet OVER/YES) on 2026-05-30",
+        "check": "verified"
+      },
+      "settled_at": "2026-06-13T11:17:38"
     },
     {
       "source": "mlb_xbh_1_plus_xbh",
@@ -70830,14 +70796,21 @@
       "matchup": "NYY @ OAK",
       "date": "2026-05-30",
       "pick_id": "mlb_xbh_1_plus_xbh|MLB|Colby_Thomas|1_PLUS_XBH|2026-05-30",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "lost",
+      "payout_units": -1.0,
       "recorded_at": "2026-05-30T01:52:21",
-      "voided": true,
-      "voided_at": "2026-06-04T00:12:48",
-      "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.3156
+      "voided": false,
+      "p_calibrated": 0.3156,
+      "outcome": {
+        "stat": "xbh",
+        "actual": 0,
+        "line": 0.5,
+        "side": "OVER/YES",
+        "verify": "Colby Thomas \u2014 xbh = 0 (line 0.5, bet OVER/YES) on 2026-05-30",
+        "check": "verified"
+      },
+      "settled_at": "2026-06-13T11:17:38"
     },
     {
       "source": "mlb_xbh_1_plus_xbh",
@@ -72621,17 +72594,25 @@
       "date": "2026-05-30",
       "pick_id": "top_25_board|MLB|MIL___HOU|ML_HOME|2026-05-30",
       "settled": true,
-      "result": "lost",
-      "payout_units": -1.0,
+      "result": "won",
+      "payout_units": 0.9346,
       "recorded_at": "2026-05-30T06:58:06",
       "settled_at": "2026-05-30T20:42:38",
       "outcome": {
         "final_score": "MIL 2 @ HOU 9",
         "total_runs": 11,
         "verify": "MIL @ HOU: final 2-9 (total 11) on 2026-05-30",
-        "check": "recorded lost; current box score -> won (stat revised after settle)"
+        "check": "verified (re-settled from lost after stat revision)"
       },
-      "p_calibrated": 0.6285
+      "p_calibrated": 0.6285,
+      "resettle_log": [
+        {
+          "at": "2026-06-13T11:17:38",
+          "from": "lost",
+          "to": "won",
+          "reason": "stat revised after settlement; re-graded vs current box score"
+        }
+      ]
     },
     {
       "source": "top_25_board",
@@ -120768,14 +120749,21 @@
       "matchup": "CLE @ NYY",
       "date": "2026-06-03",
       "pick_id": "mlb_xbh_1_plus_xbh|MLB|Rhys_Hoskins|1_PLUS_XBH|2026-06-03",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "won",
+      "payout_units": 1.27,
       "recorded_at": "2026-06-03T23:36:59",
-      "voided": true,
-      "voided_at": "2026-06-08T01:59:59",
-      "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.3398
+      "voided": false,
+      "p_calibrated": 0.3398,
+      "outcome": {
+        "stat": "xbh",
+        "actual": 1,
+        "line": 0.5,
+        "side": "OVER/YES",
+        "verify": "Rhys Hoskins \u2014 xbh = 1 (line 0.5, bet OVER/YES) on 2026-06-03",
+        "check": "verified"
+      },
+      "settled_at": "2026-06-13T11:17:38"
     },
     {
       "source": "mlb_xbh_1_plus_xbh",
@@ -120889,14 +120877,21 @@
       "matchup": "SFG @ MIL",
       "date": "2026-06-03",
       "pick_id": "mlb_xbh_1_plus_xbh|MLB|Andrew_Vaughn|1_PLUS_XBH|2026-06-03",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "lost",
+      "payout_units": -1.0,
       "recorded_at": "2026-06-03T23:36:59",
-      "voided": true,
-      "voided_at": "2026-06-08T01:59:59",
-      "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.3234
+      "voided": false,
+      "p_calibrated": 0.3234,
+      "outcome": {
+        "stat": "xbh",
+        "actual": 0,
+        "line": 0.5,
+        "side": "OVER/YES",
+        "verify": "Andrew Vaughn \u2014 xbh = 0 (line 0.5, bet OVER/YES) on 2026-06-03",
+        "check": "verified"
+      },
+      "settled_at": "2026-06-13T11:17:38"
     },
     {
       "source": "mlb_xbh_1_plus_xbh",
@@ -121502,14 +121497,21 @@
       "matchup": "SDP @ PHI",
       "date": "2026-06-03",
       "pick_id": "mlb_xbh_1_plus_xbh|MLB|Ty_France|1_PLUS_XBH|2026-06-03",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "won",
+      "payout_units": 1.98,
       "recorded_at": "2026-06-03T23:36:59",
-      "voided": true,
-      "voided_at": "2026-06-08T01:59:59",
-      "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.3054
+      "voided": false,
+      "p_calibrated": 0.3054,
+      "outcome": {
+        "stat": "xbh",
+        "actual": 1,
+        "line": 0.5,
+        "side": "OVER/YES",
+        "verify": "Ty France \u2014 xbh = 1 (line 0.5, bet OVER/YES) on 2026-06-03",
+        "check": "verified"
+      },
+      "settled_at": "2026-06-13T11:17:38"
     },
     {
       "source": "mlb_xbh_1_plus_xbh",
@@ -131288,14 +131290,21 @@
       "matchup": "SFG @ MIL",
       "date": "2026-06-04",
       "pick_id": "mlb_xbh_1_plus_xbh|MLB|Andrew_Vaughn|1_PLUS_XBH|2026-06-04",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "lost",
+      "payout_units": -1.0,
       "recorded_at": "2026-06-04T00:12:48",
-      "voided": true,
-      "voided_at": "2026-06-09T01:31:25",
-      "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.3234
+      "voided": false,
+      "p_calibrated": 0.3234,
+      "outcome": {
+        "stat": "xbh",
+        "actual": 0,
+        "line": 0.5,
+        "side": "OVER/YES",
+        "verify": "Andrew Vaughn \u2014 xbh = 0 (line 0.5, bet OVER/YES) on 2026-06-04",
+        "check": "verified"
+      },
+      "settled_at": "2026-06-13T11:17:38"
     },
     {
       "source": "mlb_xbh_1_plus_xbh",
@@ -138527,14 +138536,21 @@
       "matchup": "OAK @ CHC",
       "date": "2026-06-04",
       "pick_id": "mlb_xbh_1_plus_xbh|MLB|Colby_Thomas|1_PLUS_XBH|2026-06-04",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "lost",
+      "payout_units": -1.0,
       "recorded_at": "2026-06-04T22:59:26",
-      "voided": true,
-      "voided_at": "2026-06-09T01:31:25",
-      "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.3156
+      "voided": false,
+      "p_calibrated": 0.3156,
+      "outcome": {
+        "stat": "xbh",
+        "actual": 0,
+        "line": 0.5,
+        "side": "OVER/YES",
+        "verify": "Colby Thomas \u2014 xbh = 0 (line 0.5, bet OVER/YES) on 2026-06-04",
+        "check": "verified"
+      },
+      "settled_at": "2026-06-13T11:17:38"
     },
     {
       "source": "mlb_xbh_1_plus_xbh",
@@ -146654,14 +146670,21 @@
       "matchup": "OAK @ CHC",
       "date": "2026-06-05",
       "pick_id": "mlb_xbh_1_plus_xbh|MLB|Colby_Thomas|1_PLUS_XBH|2026-06-05",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "lost",
+      "payout_units": -1.0,
       "recorded_at": "2026-06-05T00:21:40",
       "p_calibrated": 0.3156,
-      "voided": true,
-      "voided_at": "2026-06-10T01:35:49",
-      "voided_reason": "unsettleable: no outcome feed within 4 days"
+      "voided": false,
+      "outcome": {
+        "stat": "xbh",
+        "actual": 0,
+        "line": 0.5,
+        "side": "OVER/YES",
+        "verify": "Colby Thomas \u2014 xbh = 0 (line 0.5, bet OVER/YES) on 2026-06-05",
+        "check": "verified"
+      },
+      "settled_at": "2026-06-13T11:17:38"
     },
     {
       "source": "mlb_xbh_1_plus_xbh",
@@ -158580,14 +158603,21 @@
       "matchup": "CLE @ TEX",
       "date": "2026-06-05",
       "pick_id": "mlb_xbh_1_plus_xbh|MLB|Rhys_Hoskins|1_PLUS_XBH|2026-06-05",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "lost",
+      "payout_units": -1.0,
       "recorded_at": "2026-06-05T22:40:02",
       "p_calibrated": 0.3398,
-      "voided": true,
-      "voided_at": "2026-06-10T01:35:49",
-      "voided_reason": "unsettleable: no outcome feed within 4 days"
+      "voided": false,
+      "outcome": {
+        "stat": "xbh",
+        "actual": 0,
+        "line": 0.5,
+        "side": "OVER/YES",
+        "verify": "Rhys Hoskins \u2014 xbh = 0 (line 0.5, bet OVER/YES) on 2026-06-05",
+        "check": "verified"
+      },
+      "settled_at": "2026-06-13T11:17:38"
     },
     {
       "source": "mlb_xbh_1_plus_xbh",
@@ -159274,14 +159304,21 @@
       "matchup": "NYM @ SDP",
       "date": "2026-06-05",
       "pick_id": "mlb_xbh_1_plus_xbh|MLB|Ty_France|1_PLUS_XBH|2026-06-05",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "lost",
+      "payout_units": -1.0,
       "recorded_at": "2026-06-05T22:40:02",
       "p_calibrated": 0.3156,
-      "voided": true,
-      "voided_at": "2026-06-10T01:35:49",
-      "voided_reason": "unsettleable: no outcome feed within 4 days"
+      "voided": false,
+      "outcome": {
+        "stat": "xbh",
+        "actual": 0,
+        "line": 0.5,
+        "side": "OVER/YES",
+        "verify": "Ty France \u2014 xbh = 0 (line 0.5, bet OVER/YES) on 2026-06-05",
+        "check": "verified"
+      },
+      "settled_at": "2026-06-13T11:17:38"
     },
     {
       "source": "mlb_xbh_1_plus_xbh",
@@ -182146,14 +182183,21 @@
       "matchup": "NYM @ SDP",
       "date": "2026-06-06",
       "pick_id": "mlb_xbh_1_plus_xbh|MLB|Ty_France|1_PLUS_XBH|2026-06-06",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "lost",
+      "payout_units": -1.0,
       "recorded_at": "2026-06-06T01:55:12",
       "p_calibrated": 0.3156,
-      "voided": true,
-      "voided_at": "2026-06-11T00:13:12",
-      "voided_reason": "unsettleable: no outcome feed within 4 days"
+      "voided": false,
+      "outcome": {
+        "stat": "xbh",
+        "actual": 0,
+        "line": 0.5,
+        "side": "OVER/YES",
+        "verify": "Ty France \u2014 xbh = 0 (line 0.5, bet OVER/YES) on 2026-06-06",
+        "check": "verified"
+      },
+      "settled_at": "2026-06-13T11:17:38"
     },
     {
       "source": "mlb_xbh_1_plus_xbh",
@@ -190697,14 +190741,21 @@
       "matchup": "MIL @ COL",
       "date": "2026-06-06",
       "pick_id": "mlb_xbh_1_plus_xbh|MLB|Andrew_Vaughn|1_PLUS_XBH|2026-06-06",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "lost",
+      "payout_units": -1.0,
       "recorded_at": "2026-06-06T23:16:18",
       "p_calibrated": 0.3156,
-      "voided": true,
-      "voided_at": "2026-06-11T00:13:12",
-      "voided_reason": "unsettleable: no outcome feed within 4 days"
+      "voided": false,
+      "outcome": {
+        "stat": "xbh",
+        "actual": 0,
+        "line": 0.5,
+        "side": "OVER/YES",
+        "verify": "Andrew Vaughn \u2014 xbh = 0 (line 0.5, bet OVER/YES) on 2026-06-06",
+        "check": "verified"
+      },
+      "settled_at": "2026-06-13T11:17:38"
     },
     {
       "source": "mlb_xbh_1_plus_xbh",
@@ -197295,14 +197346,21 @@
       "matchup": "NYM @ SDP",
       "date": "2026-06-07",
       "pick_id": "mlb_xbh_1_plus_xbh|MLB|Ty_France|1_PLUS_XBH|2026-06-07",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "lost",
+      "payout_units": -1.0,
       "recorded_at": "2026-06-07T01:36:04",
       "p_calibrated": 0.3156,
-      "voided": true,
-      "voided_at": "2026-06-12T00:20:29",
-      "voided_reason": "unsettleable: no outcome feed within 4 days"
+      "voided": false,
+      "outcome": {
+        "stat": "xbh",
+        "actual": 0,
+        "line": 0.5,
+        "side": "OVER/YES",
+        "verify": "Ty France \u2014 xbh = 0 (line 0.5, bet OVER/YES) on 2026-06-07",
+        "check": "verified"
+      },
+      "settled_at": "2026-06-13T11:17:38"
     },
     {
       "source": "mlb_xbh_1_plus_xbh",
@@ -197477,14 +197535,21 @@
       "matchup": "MIL @ COL",
       "date": "2026-06-07",
       "pick_id": "mlb_xbh_1_plus_xbh|MLB|Andrew_Vaughn|1_PLUS_XBH|2026-06-07",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "won",
+      "payout_units": 1.82,
       "recorded_at": "2026-06-07T01:36:04",
       "p_calibrated": 0.3156,
-      "voided": true,
-      "voided_at": "2026-06-12T00:20:29",
-      "voided_reason": "unsettleable: no outcome feed within 4 days"
+      "voided": false,
+      "outcome": {
+        "stat": "xbh",
+        "actual": 1,
+        "line": 0.5,
+        "side": "OVER/YES",
+        "verify": "Andrew Vaughn \u2014 xbh = 1 (line 0.5, bet OVER/YES) on 2026-06-07",
+        "check": "verified"
+      },
+      "settled_at": "2026-06-13T11:17:38"
     },
     {
       "source": "mlb_xbh_1_plus_xbh",
@@ -211947,14 +212012,21 @@
       "matchup": "MIL @ OAK",
       "date": "2026-06-08",
       "pick_id": "mlb_xbh_1_plus_xbh|MLB|Andrew_Vaughn|1_PLUS_XBH|2026-06-08",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "won",
+      "payout_units": 1.67,
       "recorded_at": "2026-06-08T23:38:50",
       "p_calibrated": 0.3156,
-      "voided": true,
-      "voided_at": "2026-06-13T02:47:52",
-      "voided_reason": "unsettleable: no outcome feed within 4 days"
+      "voided": false,
+      "outcome": {
+        "stat": "xbh",
+        "actual": 3,
+        "line": 0.5,
+        "side": "OVER/YES",
+        "verify": "Andrew Vaughn \u2014 xbh = 3 (line 0.5, bet OVER/YES) on 2026-06-08",
+        "check": "verified"
+      },
+      "settled_at": "2026-06-13T11:17:38"
     },
     {
       "source": "mlb_xbh_1_plus_xbh",
@@ -212131,14 +212203,21 @@
       "matchup": "MIL @ OAK",
       "date": "2026-06-08",
       "pick_id": "mlb_xbh_1_plus_xbh|MLB|Colby_Thomas|1_PLUS_XBH|2026-06-08",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "lost",
+      "payout_units": -1.0,
       "recorded_at": "2026-06-08T23:38:50",
       "p_calibrated": 0.2819,
-      "voided": true,
-      "voided_at": "2026-06-13T02:47:52",
-      "voided_reason": "unsettleable: no outcome feed within 4 days"
+      "voided": false,
+      "outcome": {
+        "stat": "xbh",
+        "actual": 0,
+        "line": 0.5,
+        "side": "OVER/YES",
+        "verify": "Colby Thomas \u2014 xbh = 0 (line 0.5, bet OVER/YES) on 2026-06-08",
+        "check": "verified"
+      },
+      "settled_at": "2026-06-13T11:17:38"
     },
     {
       "source": "mlb_hrr_3_plus_hrr",
@@ -214169,11 +214248,20 @@
       "matchup": "MIL @ OAK",
       "date": "2026-06-09",
       "pick_id": "mlb_3plus_tb_tb_3plus_yes|MLB|Andrew_Vaughn|TB_3PLUS_YES|2026-06-09",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "lost",
+      "payout_units": -1.0,
       "recorded_at": "2026-06-09T01:31:25",
-      "p_calibrated": 0.2331
+      "p_calibrated": 0.2331,
+      "outcome": {
+        "stat": "tb",
+        "actual": 0,
+        "line": 2.5,
+        "side": "OVER/YES",
+        "verify": "Andrew Vaughn \u2014 tb = 0 (line 2.5, bet OVER/YES) on 2026-06-09",
+        "check": "verified"
+      },
+      "settled_at": "2026-06-13T11:17:38"
     },
     {
       "source": "mlb_xbh_1_plus_xbh",
@@ -214540,11 +214628,20 @@
       "matchup": "MIL @ OAK",
       "date": "2026-06-09",
       "pick_id": "mlb_xbh_1_plus_xbh|MLB|Andrew_Vaughn|1_PLUS_XBH|2026-06-09",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "lost",
+      "payout_units": -1.0,
       "recorded_at": "2026-06-09T01:31:25",
-      "p_calibrated": 0.3156
+      "p_calibrated": 0.3156,
+      "outcome": {
+        "stat": "xbh",
+        "actual": 0,
+        "line": 0.5,
+        "side": "OVER/YES",
+        "verify": "Andrew Vaughn \u2014 xbh = 0 (line 0.5, bet OVER/YES) on 2026-06-09",
+        "check": "verified"
+      },
+      "settled_at": "2026-06-13T11:17:38"
     },
     {
       "source": "mlb_xbh_1_plus_xbh",
@@ -214883,11 +214980,20 @@
       "matchup": "MIL @ OAK",
       "date": "2026-06-09",
       "pick_id": "mlb_xbh_1_plus_xbh|MLB|Colby_Thomas|1_PLUS_XBH|2026-06-09",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "lost",
+      "payout_units": -1.0,
       "recorded_at": "2026-06-09T01:31:25",
-      "p_calibrated": 0.2819
+      "p_calibrated": 0.2819,
+      "outcome": {
+        "stat": "xbh",
+        "actual": 0,
+        "line": 0.5,
+        "side": "OVER/YES",
+        "verify": "Colby Thomas \u2014 xbh = 0 (line 0.5, bet OVER/YES) on 2026-06-09",
+        "check": "verified"
+      },
+      "settled_at": "2026-06-13T11:17:38"
     },
     {
       "source": "mlb_hrr_3_plus_hrr",
@@ -217087,11 +217193,20 @@
       "matchup": "NYY @ CLE",
       "date": "2026-06-09",
       "pick_id": "mlb_xbh_1_plus_xbh|MLB|Rhys_Hoskins|1_PLUS_XBH|2026-06-09",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "lost",
+      "payout_units": -1.0,
       "recorded_at": "2026-06-09T20:03:44",
-      "p_calibrated": 0.3156
+      "p_calibrated": 0.3156,
+      "outcome": {
+        "stat": "xbh",
+        "actual": 0,
+        "line": 0.5,
+        "side": "OVER/YES",
+        "verify": "Rhys Hoskins \u2014 xbh = 0 (line 0.5, bet OVER/YES) on 2026-06-09",
+        "check": "verified"
+      },
+      "settled_at": "2026-06-13T11:17:38"
     },
     {
       "source": "mlb_xbh_1_plus_xbh",
@@ -221963,11 +222078,20 @@
       "matchup": "ARI @ MIA",
       "date": "2026-06-10",
       "pick_id": "mlb_xbh_1_plus_xbh|MLB|Heriberto_Hern_ndez|1_PLUS_XBH|2026-06-10",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "lost",
+      "payout_units": -1.0,
       "recorded_at": "2026-06-10T21:07:22",
-      "p_calibrated": 0.3156
+      "p_calibrated": 0.3156,
+      "outcome": {
+        "stat": "xbh",
+        "actual": 0,
+        "line": 0.5,
+        "side": "OVER/YES",
+        "verify": "Heriberto Hern\u00e1ndez \u2014 xbh = 0 (line 0.5, bet OVER/YES) on 2026-06-10",
+        "check": "verified"
+      },
+      "settled_at": "2026-06-13T11:17:38"
     },
     {
       "source": "mlb_xbh_1_plus_xbh",
@@ -223006,11 +223130,20 @@
       "matchup": "MIL @ OAK",
       "date": "2026-06-10",
       "pick_id": "mlb_hrr_3_plus_hrr|MLB|Andrew_Vaughn|3_plus_hrr|2026-06-10",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "lost",
+      "payout_units": -1.0,
       "recorded_at": "2026-06-10T23:52:57",
-      "p_calibrated": 0.335
+      "p_calibrated": 0.335,
+      "outcome": {
+        "stat": "hrr",
+        "actual": 3,
+        "line": 3.0,
+        "side": "OVER/YES",
+        "verify": "Andrew Vaughn \u2014 hrr = 3 (line 3.0, bet OVER/YES) on 2026-06-10",
+        "check": "verified"
+      },
+      "settled_at": "2026-06-13T11:17:38"
     },
     {
       "source": "mlb_hrr_3_plus_hrr",
@@ -228540,11 +228673,20 @@
       "primary_source_module": "pp_under",
       "date": "2026-06-12",
       "pick_id": "top_25_board|MLB_PP|Logan_O_Hoppe|PP_batter_hrr_under_3_5|2026-06-12",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "won",
+      "payout_units": 0.7353,
       "recorded_at": "2026-06-12T00:20:29",
-      "p_calibrated": 0.8166
+      "p_calibrated": 0.8166,
+      "outcome": {
+        "stat": "hrr",
+        "actual": 3,
+        "line": 3.5,
+        "side": "UNDER/NO",
+        "verify": "Logan O'Hoppe \u2014 hrr = 3 (line 3.5, bet UNDER/NO) on 2026-06-12",
+        "check": "verified"
+      },
+      "settled_at": "2026-06-13T11:17:38"
     },
     {
       "source": "top_25_board",
@@ -228558,11 +228700,20 @@
       "primary_source_module": "pp_under",
       "date": "2026-06-12",
       "pick_id": "top_25_board|MLB_PP|Eugenio_Su_rez|PP_batter_hrr_under_3_5|2026-06-12",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "won",
+      "payout_units": 0.7353,
       "recorded_at": "2026-06-12T00:20:29",
-      "p_calibrated": 0.8166
+      "p_calibrated": 0.8166,
+      "outcome": {
+        "stat": "hrr",
+        "actual": 2,
+        "line": 3.5,
+        "side": "UNDER/NO",
+        "verify": "Eugenio Su\u00e1rez \u2014 hrr = 2 (line 3.5, bet UNDER/NO) on 2026-06-12",
+        "check": "verified"
+      },
+      "settled_at": "2026-06-13T11:17:38"
     },
     {
       "source": "top_25_board",
@@ -228576,11 +228727,20 @@
       "primary_source_module": "pp_under",
       "date": "2026-06-12",
       "pick_id": "top_25_board|MLB_PP|Geraldo_Perdomo|PP_batter_hrr_under_3_5|2026-06-12",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "won",
+      "payout_units": 0.7353,
       "recorded_at": "2026-06-12T00:20:29",
-      "p_calibrated": 0.8166
+      "p_calibrated": 0.8166,
+      "outcome": {
+        "stat": "hrr",
+        "actual": 2,
+        "line": 3.5,
+        "side": "UNDER/NO",
+        "verify": "Geraldo Perdomo \u2014 hrr = 2 (line 3.5, bet UNDER/NO) on 2026-06-12",
+        "check": "verified"
+      },
+      "settled_at": "2026-06-13T11:17:38"
     },
     {
       "source": "top_25_board",
@@ -228612,11 +228772,20 @@
       "primary_source_module": "pp_under",
       "date": "2026-06-12",
       "pick_id": "top_25_board|MLB_PP|Ryan_Waldschmidt|PP_batter_hrr_under_3_5|2026-06-12",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "won",
+      "payout_units": 0.7353,
       "recorded_at": "2026-06-12T00:20:29",
-      "p_calibrated": 0.8166
+      "p_calibrated": 0.8166,
+      "outcome": {
+        "stat": "hrr",
+        "actual": 0,
+        "line": 3.5,
+        "side": "UNDER/NO",
+        "verify": "Ryan Waldschmidt \u2014 hrr = 0 (line 3.5, bet UNDER/NO) on 2026-06-12",
+        "check": "verified"
+      },
+      "settled_at": "2026-06-13T11:17:38"
     },
     {
       "source": "top_25_board",
@@ -228784,11 +228953,20 @@
       "fair_american": -136,
       "date": "2026-06-12",
       "pick_id": "lock_of_day|MLB_PP|Alex_Bregman|PP_batter_hrr_under_3_5|2026-06-12",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "won",
+      "payout_units": 0.7353,
       "recorded_at": "2026-06-12T00:20:29",
-      "p_calibrated": 0.8166
+      "p_calibrated": 0.8166,
+      "outcome": {
+        "stat": "hrr",
+        "actual": 2,
+        "line": 3.5,
+        "side": "UNDER/NO",
+        "verify": "Alex Bregman \u2014 hrr = 2 (line 3.5, bet UNDER/NO) on 2026-06-12",
+        "check": "verified"
+      },
+      "settled_at": "2026-06-13T11:17:38"
     },
     {
       "source": "lock_of_day",
@@ -228800,11 +228978,20 @@
       "fair_american": -136,
       "date": "2026-06-12",
       "pick_id": "lock_of_day|MLB_PP|Kyle_Stowers|PP_batter_hrr_under_3_5|2026-06-12",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "lost",
+      "payout_units": -1.0,
       "recorded_at": "2026-06-12T00:20:29",
-      "p_calibrated": 0.8166
+      "p_calibrated": 0.8166,
+      "outcome": {
+        "stat": "hrr",
+        "actual": 4,
+        "line": 3.5,
+        "side": "UNDER/NO",
+        "verify": "Kyle Stowers \u2014 hrr = 4 (line 3.5, bet UNDER/NO) on 2026-06-12",
+        "check": "verified"
+      },
+      "settled_at": "2026-06-13T11:17:38"
     },
     {
       "source": "lock_of_day",
@@ -228816,11 +229003,20 @@
       "fair_american": -136,
       "date": "2026-06-12",
       "pick_id": "lock_of_day|MLB_PP|Colt_Keith|PP_batter_hrr_under_3_5|2026-06-12",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "won",
+      "payout_units": 0.7353,
       "recorded_at": "2026-06-12T00:20:29",
-      "p_calibrated": 0.8166
+      "p_calibrated": 0.8166,
+      "outcome": {
+        "stat": "hrr",
+        "actual": 0,
+        "line": 3.5,
+        "side": "UNDER/NO",
+        "verify": "Colt Keith \u2014 hrr = 0 (line 3.5, bet UNDER/NO) on 2026-06-12",
+        "check": "verified"
+      },
+      "settled_at": "2026-06-13T11:17:38"
     },
     {
       "source": "lock_of_day",
@@ -228832,11 +229028,20 @@
       "fair_american": -136,
       "date": "2026-06-12",
       "pick_id": "lock_of_day|MLB_PP|Wyatt_Langford|PP_batter_hrr_under_3_5|2026-06-12",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "won",
+      "payout_units": 0.7353,
       "recorded_at": "2026-06-12T00:20:29",
-      "p_calibrated": 0.8166
+      "p_calibrated": 0.8166,
+      "outcome": {
+        "stat": "hrr",
+        "actual": 3,
+        "line": 3.5,
+        "side": "UNDER/NO",
+        "verify": "Wyatt Langford \u2014 hrr = 3 (line 3.5, bet UNDER/NO) on 2026-06-12",
+        "check": "verified"
+      },
+      "settled_at": "2026-06-13T11:17:38"
     },
     {
       "source": "lock_of_day",
@@ -228848,11 +229053,20 @@
       "fair_american": -136,
       "date": "2026-06-12",
       "pick_id": "lock_of_day|MLB_PP|Luke_Keaschall|PP_batter_hrr_under_3_5|2026-06-12",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "won",
+      "payout_units": 0.7353,
       "recorded_at": "2026-06-12T00:20:29",
-      "p_calibrated": 0.8166
+      "p_calibrated": 0.8166,
+      "outcome": {
+        "stat": "hrr",
+        "actual": 1,
+        "line": 3.5,
+        "side": "UNDER/NO",
+        "verify": "Luke Keaschall \u2014 hrr = 1 (line 3.5, bet UNDER/NO) on 2026-06-12",
+        "check": "verified"
+      },
+      "settled_at": "2026-06-13T11:17:38"
     },
     {
       "source": "lock_of_day",
@@ -228880,11 +229094,20 @@
       "fair_american": -136,
       "date": "2026-06-12",
       "pick_id": "lock_of_day|MLB_PP|Logan_O_Hoppe|PP_batter_hrr_under_3_5|2026-06-12",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "won",
+      "payout_units": 0.7353,
       "recorded_at": "2026-06-12T00:20:29",
-      "p_calibrated": 0.8166
+      "p_calibrated": 0.8166,
+      "outcome": {
+        "stat": "hrr",
+        "actual": 3,
+        "line": 3.5,
+        "side": "UNDER/NO",
+        "verify": "Logan O'Hoppe \u2014 hrr = 3 (line 3.5, bet UNDER/NO) on 2026-06-12",
+        "check": "verified"
+      },
+      "settled_at": "2026-06-13T11:17:38"
     },
     {
       "source": "lock_of_day",
@@ -228896,11 +229119,20 @@
       "fair_american": -136,
       "date": "2026-06-12",
       "pick_id": "lock_of_day|MLB_PP|Eugenio_Su_rez|PP_batter_hrr_under_3_5|2026-06-12",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "won",
+      "payout_units": 0.7353,
       "recorded_at": "2026-06-12T00:20:29",
-      "p_calibrated": 0.8166
+      "p_calibrated": 0.8166,
+      "outcome": {
+        "stat": "hrr",
+        "actual": 2,
+        "line": 3.5,
+        "side": "UNDER/NO",
+        "verify": "Eugenio Su\u00e1rez \u2014 hrr = 2 (line 3.5, bet UNDER/NO) on 2026-06-12",
+        "check": "verified"
+      },
+      "settled_at": "2026-06-13T11:17:38"
     },
     {
       "source": "lock_of_day",
@@ -228912,11 +229144,20 @@
       "fair_american": -136,
       "date": "2026-06-12",
       "pick_id": "lock_of_day|MLB_PP|Geraldo_Perdomo|PP_batter_hrr_under_3_5|2026-06-12",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "won",
+      "payout_units": 0.7353,
       "recorded_at": "2026-06-12T00:20:29",
-      "p_calibrated": 0.8166
+      "p_calibrated": 0.8166,
+      "outcome": {
+        "stat": "hrr",
+        "actual": 2,
+        "line": 3.5,
+        "side": "UNDER/NO",
+        "verify": "Geraldo Perdomo \u2014 hrr = 2 (line 3.5, bet UNDER/NO) on 2026-06-12",
+        "check": "verified"
+      },
+      "settled_at": "2026-06-13T11:17:38"
     },
     {
       "source": "lock_of_day",
@@ -228944,11 +229185,20 @@
       "fair_american": -136,
       "date": "2026-06-12",
       "pick_id": "lock_of_day|MLB_PP|Ryan_Waldschmidt|PP_batter_hrr_under_3_5|2026-06-12",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "won",
+      "payout_units": 0.7353,
       "recorded_at": "2026-06-12T00:20:29",
-      "p_calibrated": 0.8166
+      "p_calibrated": 0.8166,
+      "outcome": {
+        "stat": "hrr",
+        "actual": 0,
+        "line": 3.5,
+        "side": "UNDER/NO",
+        "verify": "Ryan Waldschmidt \u2014 hrr = 0 (line 3.5, bet UNDER/NO) on 2026-06-12",
+        "check": "verified"
+      },
+      "settled_at": "2026-06-13T11:17:38"
     },
     {
       "source": "mlb_hit_to_record_hit_no",
@@ -229446,11 +229696,20 @@
       "matchup": "ATL @ CHW",
       "date": "2026-06-12",
       "pick_id": "mlb_bw_walk_1plus_yes|MLB|Miguel_Vargas|WALK_1PLUS_YES|2026-06-12",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "won",
+      "payout_units": 1.06,
       "recorded_at": "2026-06-12T00:20:29",
-      "p_calibrated": 0.485
+      "p_calibrated": 0.485,
+      "outcome": {
+        "stat": "bb",
+        "actual": 1,
+        "line": 0.5,
+        "side": "OVER/YES",
+        "verify": "Miguel Vargas \u2014 bb = 1 (line 0.5, bet OVER/YES) on 2026-06-12",
+        "check": "verified"
+      },
+      "settled_at": "2026-06-13T11:17:38"
     },
     {
       "source": "nhl_pl_away_plus_1.5",
@@ -229488,11 +229747,20 @@
       "matchup": "ATL @ CHW",
       "date": "2026-06-12",
       "pick_id": "mlb_hr_yn_to_hit_hr_yes|MLB|Matt_Olson|TO_HIT_HR_YES|2026-06-12",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "won",
+      "payout_units": 1.69,
       "recorded_at": "2026-06-12T00:20:29",
-      "p_calibrated": 0.2078
+      "p_calibrated": 0.2078,
+      "outcome": {
+        "stat": "hr",
+        "actual": 1,
+        "line": 0.5,
+        "side": "OVER/YES",
+        "verify": "Matt Olson \u2014 hr = 1 (line 0.5, bet OVER/YES) on 2026-06-12",
+        "check": "verified"
+      },
+      "settled_at": "2026-06-13T11:17:38"
     },
     {
       "source": "mlb_hr_yn_to_hit_hr_yes",
@@ -229505,11 +229773,20 @@
       "matchup": "ATL @ CHW",
       "date": "2026-06-12",
       "pick_id": "mlb_hr_yn_to_hit_hr_yes|MLB|Miguel_Vargas|TO_HIT_HR_YES|2026-06-12",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "lost",
+      "payout_units": -1.0,
       "recorded_at": "2026-06-12T00:20:29",
-      "p_calibrated": 0.2078
+      "p_calibrated": 0.2078,
+      "outcome": {
+        "stat": "hr",
+        "actual": 0,
+        "line": 0.5,
+        "side": "OVER/YES",
+        "verify": "Miguel Vargas \u2014 hr = 0 (line 0.5, bet OVER/YES) on 2026-06-12",
+        "check": "verified"
+      },
+      "settled_at": "2026-06-13T11:17:38"
     },
     {
       "source": "mlb_hr_yn_to_hit_hr_yes",
@@ -229522,11 +229799,20 @@
       "matchup": "ATL @ CHW",
       "date": "2026-06-12",
       "pick_id": "mlb_hr_yn_to_hit_hr_yes|MLB|Colson_Montgomery|TO_HIT_HR_YES|2026-06-12",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "lost",
+      "payout_units": -1.0,
       "recorded_at": "2026-06-12T00:20:29",
-      "p_calibrated": 0.167
+      "p_calibrated": 0.167,
+      "outcome": {
+        "stat": "hr",
+        "actual": 0,
+        "line": 0.5,
+        "side": "OVER/YES",
+        "verify": "Colson Montgomery \u2014 hr = 0 (line 0.5, bet OVER/YES) on 2026-06-12",
+        "check": "verified"
+      },
+      "settled_at": "2026-06-13T11:17:38"
     },
     {
       "source": "mlb_hr_yn_to_hit_hr_yes",
@@ -229556,11 +229842,20 @@
       "matchup": "ATL @ CHW",
       "date": "2026-06-12",
       "pick_id": "mlb_hr_yn_to_hit_hr_yes|MLB|Mauricio_Dub_n|TO_HIT_HR_YES|2026-06-12",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "lost",
+      "payout_units": -1.0,
       "recorded_at": "2026-06-12T00:20:29",
-      "p_calibrated": 0.1653
+      "p_calibrated": 0.1653,
+      "outcome": {
+        "stat": "hr",
+        "actual": 0,
+        "line": 0.5,
+        "side": "OVER/YES",
+        "verify": "Mauricio Dub\u00f3n \u2014 hr = 0 (line 0.5, bet OVER/YES) on 2026-06-12",
+        "check": "verified"
+      },
+      "settled_at": "2026-06-13T11:17:38"
     },
     {
       "source": "mlb_hr_yn_to_hit_hr_yes",
@@ -229573,11 +229868,20 @@
       "matchup": "ATL @ CHW",
       "date": "2026-06-12",
       "pick_id": "mlb_hr_yn_to_hit_hr_yes|MLB|Ozzie_Albies|TO_HIT_HR_YES|2026-06-12",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "lost",
+      "payout_units": -1.0,
       "recorded_at": "2026-06-12T00:20:29",
-      "p_calibrated": 0.1637
+      "p_calibrated": 0.1637,
+      "outcome": {
+        "stat": "hr",
+        "actual": 0,
+        "line": 0.5,
+        "side": "OVER/YES",
+        "verify": "Ozzie Albies \u2014 hr = 0 (line 0.5, bet OVER/YES) on 2026-06-12",
+        "check": "verified"
+      },
+      "settled_at": "2026-06-13T11:17:38"
     },
     {
       "source": "mlb_hr_yn_to_hit_hr_yes",
@@ -229607,11 +229911,20 @@
       "matchup": "ATL @ CHW",
       "date": "2026-06-12",
       "pick_id": "mlb_hr_yn_to_hit_hr_yes|MLB|Michael_Harris_II|TO_HIT_HR_YES|2026-06-12",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "lost",
+      "payout_units": -1.0,
       "recorded_at": "2026-06-12T00:20:29",
-      "p_calibrated": 0.1227
+      "p_calibrated": 0.1227,
+      "outcome": {
+        "stat": "hr",
+        "actual": 0,
+        "line": 0.5,
+        "side": "OVER/YES",
+        "verify": "Michael Harris II \u2014 hr = 0 (line 0.5, bet OVER/YES) on 2026-06-12",
+        "check": "verified"
+      },
+      "settled_at": "2026-06-13T11:17:38"
     },
     {
       "source": "nhl_period_p3_over_1.5",
@@ -229759,11 +230072,20 @@
       "matchup": "ATL @ CHW",
       "date": "2026-06-12",
       "pick_id": "mlb_3plus_tb_tb_3plus_yes|MLB|Ozzie_Albies|TB_3PLUS_YES|2026-06-12",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "lost",
+      "payout_units": -1.0,
       "recorded_at": "2026-06-12T00:20:29",
-      "p_calibrated": 0.2331
+      "p_calibrated": 0.2331,
+      "outcome": {
+        "stat": "tb",
+        "actual": 2,
+        "line": 2.5,
+        "side": "OVER/YES",
+        "verify": "Ozzie Albies \u2014 tb = 2 (line 2.5, bet OVER/YES) on 2026-06-12",
+        "check": "verified"
+      },
+      "settled_at": "2026-06-13T11:17:38"
     },
     {
       "source": "mlb_3plus_tb_tb_3plus_yes",
@@ -229776,11 +230098,20 @@
       "matchup": "ATL @ CHW",
       "date": "2026-06-12",
       "pick_id": "mlb_3plus_tb_tb_3plus_yes|MLB|Chase_Meidroth|TB_3PLUS_YES|2026-06-12",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "won",
+      "payout_units": 2.53,
       "recorded_at": "2026-06-12T00:20:29",
-      "p_calibrated": 0.2331
+      "p_calibrated": 0.2331,
+      "outcome": {
+        "stat": "tb",
+        "actual": 3,
+        "line": 2.5,
+        "side": "OVER/YES",
+        "verify": "Chase Meidroth \u2014 tb = 3 (line 2.5, bet OVER/YES) on 2026-06-12",
+        "check": "verified"
+      },
+      "settled_at": "2026-06-13T11:17:38"
     },
     {
       "source": "mlb_3plus_tb_tb_3plus_yes",
@@ -229793,11 +230124,20 @@
       "matchup": "ATL @ CHW",
       "date": "2026-06-12",
       "pick_id": "mlb_3plus_tb_tb_3plus_yes|MLB|Colson_Montgomery|TB_3PLUS_YES|2026-06-12",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "lost",
+      "payout_units": -1.0,
       "recorded_at": "2026-06-12T00:20:29",
-      "p_calibrated": 0.2331
+      "p_calibrated": 0.2331,
+      "outcome": {
+        "stat": "tb",
+        "actual": 0,
+        "line": 2.5,
+        "side": "OVER/YES",
+        "verify": "Colson Montgomery \u2014 tb = 0 (line 2.5, bet OVER/YES) on 2026-06-12",
+        "check": "verified"
+      },
+      "settled_at": "2026-06-13T11:17:38"
     },
     {
       "source": "mlb_3plus_tb_tb_3plus_yes",
@@ -229827,11 +230167,20 @@
       "matchup": "ATL @ CHW",
       "date": "2026-06-12",
       "pick_id": "mlb_3plus_tb_tb_3plus_yes|MLB|Mauricio_Dub_n|TB_3PLUS_YES|2026-06-12",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "lost",
+      "payout_units": -1.0,
       "recorded_at": "2026-06-12T00:20:29",
-      "p_calibrated": 0.2331
+      "p_calibrated": 0.2331,
+      "outcome": {
+        "stat": "tb",
+        "actual": 1,
+        "line": 2.5,
+        "side": "OVER/YES",
+        "verify": "Mauricio Dub\u00f3n \u2014 tb = 1 (line 2.5, bet OVER/YES) on 2026-06-12",
+        "check": "verified"
+      },
+      "settled_at": "2026-06-13T11:17:38"
     },
     {
       "source": "mlb_xbh_1_plus_xbh",
@@ -229845,11 +230194,20 @@
       "matchup": "ATL @ CHW",
       "date": "2026-06-12",
       "pick_id": "mlb_xbh_1_plus_xbh|MLB|Matt_Olson|1_PLUS_XBH|2026-06-12",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "won",
+      "payout_units": 1.4,
       "recorded_at": "2026-06-12T00:20:29",
-      "p_calibrated": 0.3223
+      "p_calibrated": 0.3223,
+      "outcome": {
+        "stat": "xbh",
+        "actual": 1,
+        "line": 0.5,
+        "side": "OVER/YES",
+        "verify": "Matt Olson \u2014 xbh = 1 (line 0.5, bet OVER/YES) on 2026-06-12",
+        "check": "verified"
+      },
+      "settled_at": "2026-06-13T11:17:38"
     },
     {
       "source": "mlb_xbh_1_plus_xbh",
@@ -229881,11 +230239,20 @@
       "matchup": "ATL @ CHW",
       "date": "2026-06-12",
       "pick_id": "mlb_xbh_1_plus_xbh|MLB|Colson_Montgomery|1_PLUS_XBH|2026-06-12",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "lost",
+      "payout_units": -1.0,
       "recorded_at": "2026-06-12T00:20:29",
-      "p_calibrated": 0.3156
+      "p_calibrated": 0.3156,
+      "outcome": {
+        "stat": "xbh",
+        "actual": 0,
+        "line": 0.5,
+        "side": "OVER/YES",
+        "verify": "Colson Montgomery \u2014 xbh = 0 (line 0.5, bet OVER/YES) on 2026-06-12",
+        "check": "verified"
+      },
+      "settled_at": "2026-06-13T11:17:38"
     },
     {
       "source": "mlb_xbh_1_plus_xbh",
@@ -229899,11 +230266,20 @@
       "matchup": "ATL @ CHW",
       "date": "2026-06-12",
       "pick_id": "mlb_xbh_1_plus_xbh|MLB|Ozzie_Albies|1_PLUS_XBH|2026-06-12",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "lost",
+      "payout_units": -1.0,
       "recorded_at": "2026-06-12T00:20:29",
-      "p_calibrated": 0.3156
+      "p_calibrated": 0.3156,
+      "outcome": {
+        "stat": "xbh",
+        "actual": 0,
+        "line": 0.5,
+        "side": "OVER/YES",
+        "verify": "Ozzie Albies \u2014 xbh = 0 (line 0.5, bet OVER/YES) on 2026-06-12",
+        "check": "verified"
+      },
+      "settled_at": "2026-06-13T11:17:38"
     },
     {
       "source": "mlb_xbh_1_plus_xbh",
@@ -229935,11 +230311,20 @@
       "matchup": "ATL @ CHW",
       "date": "2026-06-12",
       "pick_id": "mlb_xbh_1_plus_xbh|MLB|Miguel_Vargas|1_PLUS_XBH|2026-06-12",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "won",
+      "payout_units": 1.56,
       "recorded_at": "2026-06-12T00:20:29",
-      "p_calibrated": 0.3156
+      "p_calibrated": 0.3156,
+      "outcome": {
+        "stat": "xbh",
+        "actual": 1,
+        "line": 0.5,
+        "side": "OVER/YES",
+        "verify": "Miguel Vargas \u2014 xbh = 1 (line 0.5, bet OVER/YES) on 2026-06-12",
+        "check": "verified"
+      },
+      "settled_at": "2026-06-13T11:17:38"
     },
     {
       "source": "mlb_xbh_1_plus_xbh",
@@ -229953,11 +230338,20 @@
       "matchup": "ATL @ CHW",
       "date": "2026-06-12",
       "pick_id": "mlb_xbh_1_plus_xbh|MLB|Michael_Harris_II|1_PLUS_XBH|2026-06-12",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "lost",
+      "payout_units": -1.0,
       "recorded_at": "2026-06-12T00:20:29",
-      "p_calibrated": 0.3156
+      "p_calibrated": 0.3156,
+      "outcome": {
+        "stat": "xbh",
+        "actual": 0,
+        "line": 0.5,
+        "side": "OVER/YES",
+        "verify": "Michael Harris II \u2014 xbh = 0 (line 0.5, bet OVER/YES) on 2026-06-12",
+        "check": "verified"
+      },
+      "settled_at": "2026-06-13T11:17:38"
     },
     {
       "source": "mlb_xbh_1_plus_xbh",
@@ -229989,11 +230383,20 @@
       "matchup": "ATL @ CHW",
       "date": "2026-06-12",
       "pick_id": "mlb_hrr_3_plus_hrr|MLB|Michael_Harris_II|3_plus_hrr|2026-06-12",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "lost",
+      "payout_units": -1.0,
       "recorded_at": "2026-06-12T00:20:29",
-      "p_calibrated": 0.335
+      "p_calibrated": 0.335,
+      "outcome": {
+        "stat": "hrr",
+        "actual": 2,
+        "line": 3.0,
+        "side": "OVER/YES",
+        "verify": "Michael Harris II \u2014 hrr = 2 (line 3.0, bet OVER/YES) on 2026-06-12",
+        "check": "verified"
+      },
+      "settled_at": "2026-06-13T11:17:38"
     },
     {
       "source": "mlb_hrr_3_plus_hrr",
@@ -230007,11 +230410,20 @@
       "matchup": "ATL @ CHW",
       "date": "2026-06-12",
       "pick_id": "mlb_hrr_3_plus_hrr|MLB|Matt_Olson|3_plus_hrr|2026-06-12",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "lost",
+      "payout_units": -1.0,
       "recorded_at": "2026-06-12T00:20:29",
-      "p_calibrated": 0.335
+      "p_calibrated": 0.335,
+      "outcome": {
+        "stat": "hrr",
+        "actual": 3,
+        "line": 3.0,
+        "side": "OVER/YES",
+        "verify": "Matt Olson \u2014 hrr = 3 (line 3.0, bet OVER/YES) on 2026-06-12",
+        "check": "verified"
+      },
+      "settled_at": "2026-06-13T11:17:38"
     },
     {
       "source": "rlm_strong",
@@ -230265,11 +230677,20 @@
       "primary_source_module": "pp_under",
       "date": "2026-06-12",
       "pick_id": "top_25_board|MLB_PP|Matt_McLain|PP_batter_hrr_under_3_5|2026-06-12",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "won",
+      "payout_units": 0.7353,
       "recorded_at": "2026-06-12T05:39:02",
-      "p_calibrated": 0.8166
+      "p_calibrated": 0.8166,
+      "outcome": {
+        "stat": "hrr",
+        "actual": 0,
+        "line": 3.5,
+        "side": "UNDER/NO",
+        "verify": "Matt McLain \u2014 hrr = 0 (line 3.5, bet UNDER/NO) on 2026-06-12",
+        "check": "verified"
+      },
+      "settled_at": "2026-06-13T11:17:38"
     },
     {
       "source": "top_25_board",
@@ -230355,11 +230776,18 @@
       "primary_source_module": "today_reco",
       "date": "2026-06-12",
       "pick_id": "top_25_board|MLB|LAD___CHW|OVER_9_0|2026-06-12",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "won",
+      "payout_units": 0.9091,
       "recorded_at": "2026-06-12T05:39:02",
-      "p_calibrated": 0.6763
+      "p_calibrated": 0.6763,
+      "outcome": {
+        "final_score": "LAD 2 @ CHW 8",
+        "total_runs": 10,
+        "verify": "LAD @ CHW: final 2-8 (total 10) on 2026-06-12",
+        "check": "verified"
+      },
+      "settled_at": "2026-06-13T11:17:38"
     },
     {
       "source": "top_25_board",
@@ -230373,11 +230801,18 @@
       "primary_source_module": "today",
       "date": "2026-06-12",
       "pick_id": "top_25_board|MLB|ATL___NYM|ML_AWAY|2026-06-12",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "lost",
+      "payout_units": -1.0,
       "recorded_at": "2026-06-12T05:39:02",
-      "p_calibrated": 0.6517
+      "p_calibrated": 0.6517,
+      "outcome": {
+        "final_score": "ATL 5 @ NYM 7",
+        "total_runs": 12,
+        "verify": "ATL @ NYM: final 5-7 (total 12) on 2026-06-12",
+        "check": "verified"
+      },
+      "settled_at": "2026-06-13T11:17:38"
     },
     {
       "source": "pod",
@@ -230528,11 +230963,20 @@
       "primary_source_module": "pp_under",
       "date": "2026-06-12",
       "pick_id": "top_25_board|MLB_PP|Alex_Bregman|PP_batter_hrr_under_3_5|2026-06-12",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "won",
+      "payout_units": 0.7353,
       "recorded_at": "2026-06-12T12:20:43",
-      "p_calibrated": 0.8166
+      "p_calibrated": 0.8166,
+      "outcome": {
+        "stat": "hrr",
+        "actual": 2,
+        "line": 3.5,
+        "side": "UNDER/NO",
+        "verify": "Alex Bregman \u2014 hrr = 2 (line 3.5, bet UNDER/NO) on 2026-06-12",
+        "check": "verified"
+      },
+      "settled_at": "2026-06-13T11:17:38"
     },
     {
       "source": "top_25_board",
@@ -230546,11 +230990,20 @@
       "primary_source_module": "pp_under",
       "date": "2026-06-12",
       "pick_id": "top_25_board|MLB_PP|Taylor_Trammell|PP_batter_hrr_under_3_5|2026-06-12",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "lost",
+      "payout_units": -1.0,
       "recorded_at": "2026-06-12T12:20:43",
-      "p_calibrated": 0.8166
+      "p_calibrated": 0.8166,
+      "outcome": {
+        "stat": "hrr",
+        "actual": 4,
+        "line": 3.5,
+        "side": "UNDER/NO",
+        "verify": "Taylor Trammell \u2014 hrr = 4 (line 3.5, bet UNDER/NO) on 2026-06-12",
+        "check": "verified"
+      },
+      "settled_at": "2026-06-13T11:17:38"
     },
     {
       "source": "top_25_board",
@@ -237354,6 +237807,76 @@
       "payout_units": null,
       "recorded_at": "2026-06-13T04:55:19",
       "p_calibrated": 0.6315
+    },
+    {
+      "source": "top_25_board",
+      "sport": "MLB",
+      "player_or_matchup": "ATL @ NYM",
+      "market": "ATL_ML",
+      "prob": 0.627,
+      "raw_prob": 0.7886,
+      "edge_pct": 20.8,
+      "fair_american": -108,
+      "primary_source_module": "today_reco",
+      "date": "2026-06-13",
+      "pick_id": "top_25_board|MLB|ATL___NYM|ATL_ML|2026-06-13",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-06-13T11:17:38",
+      "p_calibrated": 0.627
+    },
+    {
+      "source": "top_25_board",
+      "sport": "MLB",
+      "player_or_matchup": "PHI @ MIL",
+      "market": "MIL_ML",
+      "prob": 0.7068,
+      "raw_prob": 0.7856,
+      "edge_pct": 20.1,
+      "fair_american": -143,
+      "primary_source_module": "today_reco",
+      "date": "2026-06-13",
+      "pick_id": "top_25_board|MLB|PHI___MIL|MIL_ML|2026-06-13",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-06-13T11:17:38",
+      "p_calibrated": 0.7068
+    },
+    {
+      "source": "top_25_board",
+      "sport": "MLB",
+      "player_or_matchup": "LAD @ CHW",
+      "market": "OVER_8.0",
+      "prob": 0.618,
+      "raw_prob": 0.7212,
+      "edge_pct": 18.0,
+      "fair_american": -110,
+      "primary_source_module": "today_reco",
+      "date": "2026-06-13",
+      "pick_id": "top_25_board|MLB|LAD___CHW|OVER_8_0|2026-06-13",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-06-13T11:17:38",
+      "p_calibrated": 0.6769
+    },
+    {
+      "source": "pod",
+      "sport": "MLB",
+      "player_or_matchup": "ATL @ NYM",
+      "market": "ATL_ML",
+      "prob": 0.7886,
+      "edge_pct": 51.87,
+      "fair_american": -108,
+      "date": "2026-06-13",
+      "pick_id": "pod|MLB|ATL___NYM|ATL_ML|2026-06-13",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-06-13T11:17:38",
+      "p_calibrated": 0.7886
     }
   ],
   "note": "Unified pick ledger -- records every pick the model surfaces (top_25 board, whales, consensus, unders, sharp action, locks, POD) and settles each against actual outcomes. Per-source W-L feeds back into calibration so the model learns which modules are reliable. THIS is the training signal."
