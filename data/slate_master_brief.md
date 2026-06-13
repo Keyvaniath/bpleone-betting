@@ -1,12 +1,12 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-06-13T12:01:42 UTC_
+_Generated 2026-06-13T18:07:32 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -14
+- **Score:** -2
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 14
+- **Total STRONG:** 17
 - **Total FADES:** 70
 
 ## Lock of the Night
@@ -20,15 +20,18 @@ _Generated 2026-06-13T12:01:42 UTC_
 1. **GOLF / Ben James** (GOLF_PLAYER, score=151.29)
    - Play: Ben James (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Sam Burns** (GOLF_PLAYER, score=115.43)
+2. **WNBA / napheesa collier** (WNBA_PLAYER, score=147.08)
+   - Play: napheesa collier (PLAYER_STRONG)
+   - Rationale: Cross-sport top pick (WNBA_PLAYER)
+3. **GOLF / Sam Burns** (GOLF_PLAYER, score=115.57)
    - Play: Sam Burns (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-3. **MLB / Jacob deGrom** (MLB_PITCHER, score=60.75)
+4. **WNBA / a'ja wilson** (WNBA_PLAYER, score=64.33)
+   - Play: a'ja wilson (PLAYER_STRONG)
+   - Rationale: Cross-sport top pick (WNBA_PLAYER)
+5. **MLB / Jacob deGrom** (MLB_PITCHER, score=60.33)
    - Play: Jacob deGrom (PITCHER_STRONG)
    - Rationale: Cross-sport top pick (MLB_PITCHER)
-4. **F1 / max verstappen** (F1_DRIVER, score=49.67)
-   - Play: max verstappen (DRIVER_STRONG)
-   - Rationale: Cross-sport top pick (F1_DRIVER)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
@@ -49,7 +52,7 @@ _Generated 2026-06-13T12:01:42 UTC_
   - Fade angle: team total UNDER
 - **NHL** / adin hill (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / logan thompson_2 (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
 - **NHL** / samsonov ilya (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / logan thompson_2 (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO

@@ -2,9 +2,8 @@
 
 _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 
-## 💪 STRONG (2 picks)
-- [MLB] NYY @ TOR NYY_ML · 68% / +23.0%
-- [MLB] PHI @ MIL MIL_ML · 71% / +20.1%
+## 💪 STRONG (1 picks)
+- [MLB] NYY @ TOR NYY_ML · 69% / +21.3%
 
 ## 🔒 5 Daily Locks
 - **Logan O'Hoppe** PP_batter_hrr_under_3.5 (MLB-PP) -- 87% / +50.7%
@@ -23,8 +22,8 @@ _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 
 ## 🎰 Tonight's Best Parlay
 - **Nasim Nuñez** PP_batter_hrr_under_3.5 + **NYY @ TOR** NYY_ML
-- Joint 60% · fair +206 · edge +83.2%
+- Joint 59% · fair +222 · edge +89.6%
 
 ---
-_Generated 2026-06-13T12:01:40_
+_Generated 2026-06-13T18:07:29_
 _Full breakdown: /tonight · Full history: /locks-of-day_

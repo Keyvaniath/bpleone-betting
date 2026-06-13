@@ -1,29 +1,28 @@
 # EdgeStat Daily Summary — 2026-06-13
 
-## 🏥 Model Health: 71.5/100 [HEALTHY]
+## 🏥 Model Health: 73.4/100 [HEALTHY]
 - Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 100.0/100
+  - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 54.4/100
   - 🔴 Brier Trend: 29.6/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟡 Data Health: 77.8/100
-  - 🟢 Edge Count: 91.4/100
+  - 🟢 Data Health: 88.9/100
+  - 🟢 Edge Count: 88.6/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.585)
-- **Total games on board:** 101
-- **Strong home favorites:** 1 | **Strong road dogs:** 0
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.577)
+- **Total games on board:** 105
+- **Strong home favorites:** 1 | **Strong road dogs:** 1
 
 ## 🎯 Top 5 Best Bets
-1. **COL @ OAK YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-2. **STL @ MIN YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-3. **SDP @ BAL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-4. **PHI @ MIL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-5. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
+1. **ARI @ CIN 4-leg SGP @ -208** (82/100 ★★★★★)
+2. **DET @ CLE 4-leg SGP @ -149** (81/100 ★★★★★)
+3. **COL @ OAK YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+4. **STL @ MIN YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+5. **SDP @ BAL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** NYY @ TOR NYY_ML -- 68% / +23.0% (score 2.5)
-- [STRONG] **[MLB]** PHI @ MIL MIL_ML -- 71% / +20.1% (score 2.5)
+- [STRONG] **[MLB]** NYY @ TOR NYY_ML -- 69% / +21.3% (score 2.5)
 
 ## 📡 Sharp Action (Line Movement)
 - [MODERATE] **LAD @ CHW** over_8.0: 50.0% → 53.49% (+3.5pp)
@@ -33,20 +32,25 @@
 - Net units: **+5.39u** | ROI: **+46.0%**
 - Last 7d: 48-11 (81.4%) | net +1.51u
 
-**Today's 5 Locks:**
+**Today's 10 Locks:**
 - [MLB-PP] **Logan O'Hoppe** PP_batter_hrr_under_3.5 · p=87% edge=+50.7% qK=0.062u
 - [MLB-PP] **Eugenio Suárez** PP_batter_hrr_under_3.5 · p=87% edge=+50.6% qK=0.062u
 - [MLB-PP] **Alex Bregman** PP_batter_hrr_under_3.5 · p=87% edge=+50.2% qK=0.062u
 - [MLB-PP] **Rhys Hoskins** PP_batter_hrr_under_3.5 · p=86% edge=+50.0% qK=0.062u
 - [MLB-PP] **Taylor Trammell** PP_batter_hrr_under_3.5 · p=86% edge=+50.0% qK=0.062u
+- [MLB-PP] **Nasim Nuñez** PP_batter_hrr_under_3.5 · p=87% edge=+51.0% qK=0.062u
+- [MLB-PP] **Wyatt Langford** PP_batter_hrr_under_3.5 · p=87% edge=+50.9% qK=0.062u
+- [MLB-PP] **Brett Sullivan** PP_batter_hrr_under_3.5 · p=87% edge=+50.8% qK=0.062u
+- [MLB-PP] **Salvador Perez** PP_batter_hrr_under_3.5 · p=87% edge=+50.7% qK=0.062u
+- [MLB-PP] **Drew Gilbert** PP_batter_hrr_under_3.5 · p=87% edge=+50.6% qK=0.062u
 
 ## 🎰 Top Balanced 2-Leg Parlays (40-65% joint)
-- [MLB-PP] Logan O'Hoppe PP_batter_hrr_under_ + [MLB] NYY @ TOR NYY_ML
-  Joint: 59% | Fair: 212 | Edge: +85.4%
-- [MLB-PP] Eugenio Suárez PP_batter_hrr_under_ + [MLB] NYY @ TOR NYY_ML
-  Joint: 59% | Fair: 212 | Edge: +85.2%
-- [MLB-PP] Alex Bregman PP_batter_hrr_under_ + [MLB] NYY @ TOR NYY_ML
-  Joint: 59% | Fair: 212 | Edge: +84.8%
+- [MLB-PP] Nasim Nuñez PP_batter_hrr_under_ + [MLB] NYY @ TOR NYY_ML
+  Joint: 60% | Fair: 206 | Edge: +83.2%
+- [MLB-PP] Wyatt Langford PP_batter_hrr_under_ + [MLB] NYY @ TOR NYY_ML
+  Joint: 60% | Fair: 206 | Edge: +83.1%
+- [MLB-PP] Brett Sullivan PP_batter_hrr_under_ + [MLB] NYY @ TOR NYY_ML
+  Joint: 60% | Fair: 206 | Edge: +83.0%
 
 ## 🎮 Player Play of the Day (cross-sport)
 - **[LOL]** Inspired UNDER 3.5 Kills | MED conviction · model 61.7% fair -161
@@ -59,25 +63,26 @@
 - Hot teams: **6** | Cold teams: **6** | Over-heavy: 0 | Under-heavy: 1
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (25)
-- RESIDUAL_DIVERGENCE: **2**
-- STEAM_MOVE: **18**
-- COMPOUND_BULLPEN: **2**
+## ⚠️ Anomaly Detector (32)
+- RESIDUAL_DIVERGENCE: **6**
+- STREAK_MISMATCH: **1**
+- STEAM_MOVE: **21**
+- COMPOUND_BULLPEN: **1**
 - PEN_MISMATCH: **3**
   - Vegas Golden Knights (NHL): Vegas Golden Knights UNDERPERFORMING expected margin by 6.5pts in recent games -- model bias may persist
   - Carolina Hurricanes (NHL): Carolina Hurricanes OUTPERFORMING expected margin by 6.5pts in recent games -- model bias may persist
-  - CIN @ SDP (MLB): ML/TOTAL steam since open: ML +13.8pp toward SDP; total +1 (OVER) (6 snapshots)
-  - CHC @ COL (MLB): ML/TOTAL steam since open: ML +2.7pp toward COL; total -1 (UNDER) (4 snapshots)
-  - CON @ TOR (WNBA): TOTAL steam since open: ML +1.9pp toward TOR; total -1 (UNDER) (4 snapshots)
+  - Las Vegas Aces (WNBA): Las Vegas Aces on W5 streak but model rates as 52% -- may be undervalued
+  - Minnesota Lynx (WNBA): Minnesota Lynx OUTPERFORMING expected margin by 12.8pts in recent games -- model bias may persist
+  - Portland Fire (WNBA): Portland Fire UNDERPERFORMING expected margin by 9.7pts in recent games -- model bias may persist
 
-## 💰 Today's Portfolio (9 picks)
-- Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$3.09**
-  - #1 [NRFI] $50 on COL @ OAK YRFI (1st-inning OVER 0.5) (P=77%)
-  - #2 [NRFI] $50 on STL @ MIN YRFI (1st-inning OVER 0.5) (P=70%)
-  - #3 [NRFI] $50 on SDP @ BAL YRFI (1st-inning OVER 0.5) (P=68%)
-  - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
-  - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
+## 💰 Today's Portfolio (8 picks)
+- Total stake: **$340.0** (34.0% of $1000 bankroll)
+- Expected EV: **$1.49**
+  - #1 [SGP] $50 on ARI @ CIN 4-leg SGP @ -208 (P=68%)
+  - #2 [SGP] $50 on DET @ CLE 4-leg SGP @ -149 (P=60%)
+  - #3 [NRFI] $50 on COL @ OAK YRFI (1st-inning OVER 0.5) (P=77%)
+  - #4 [NRFI] $50 on STL @ MIN YRFI (1st-inning OVER 0.5) (P=70%)
+  - #5 [NRFI] $50 on SDP @ BAL YRFI (1st-inning OVER 0.5) (P=68%)
 
 ## 🎯 Convergence Picks (16 stacked games)
 - ELITE: **1** · HIGH: 2 · MED: 13
@@ -111,7 +116,7 @@
   - ❄️ **Peter Malnati** (USA): Sunday +5.0 vs tourney avg
   - ❄️ **Davis Riley** (USA): Sunday +4.0 vs tourney avg
 
-## 🔥 MLB Batter Heat (40 HOT / 36 COLD)
+## 🔥 MLB Batter Heat (39 HOT / 35 COLD)
   - 🔥 **Jung Hoo Lee** (SF): L14 .534 / season .333 (+201pts)
   - 🔥 **Tristan Peters** (CWS): L14 .452 / season .298 (+154pts)
   - 🔥 **Bryce Eldridge** (SF): L14 .451 / season .316 (+135pts)
@@ -123,9 +128,6 @@
   - ❄️ **Austin Martin** (MIN): L14 .114 / season .245 (-131pts) -- FADE props
   - ❄️ **Chandler Simpson** (TB): L14 .150 / season .268 (-118pts) -- FADE props
 
-## 📈 Streak Regression Alerts (1)
-- [CWS] North Carolina Tar Heels on W3 L10 3-0 -- North Carolina Tar Heels on W3 -- no historical sample
-
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**
   - ✅ pitcher_strikeouts (Brier Δ +0.0060)
@@ -134,7 +136,8 @@
   - ⚠️ batter_rbis (Brier Δ -0.0052)
 
 ## 🧠 Training Convergence
-- ELITE: **0** · HEALTHY: 3 · OK: 2 · DEGRADED: **3**
+- ELITE: **0** · HEALTHY: 4 · OK: 0 · DEGRADED: **4**
+  - ⚠️ **batter_singles**: DIVERGENT - consistent same-sign moves (structural issue) (cf=0.8832)
   - ⚠️ **pitcher_strikeouts**: DIVERGENT - consistent same-sign moves (structural issue) (cf=0.8345)
 
 ## 🤖 Self-Training Status
