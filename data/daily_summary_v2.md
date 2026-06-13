@@ -1,18 +1,18 @@
 # EdgeStat Daily Summary — 2026-06-13
 
-## 🏥 Model Health: 73.4/100 [HEALTHY]
+## 🏥 Model Health: 74.0/100 [HEALTHY]
 - Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 99.9/100
+  - 🟢 Calibration Freshness: 100.0/100
   - 🔴 Hit Rate Trend: 54.4/100
   - 🔴 Brier Trend: 29.6/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 88.9/100
-  - 🟢 Edge Count: 88.6/100
+  - 🟢 Edge Count: 94.3/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.577)
-- **Total games on board:** 105
-- **Strong home favorites:** 1 | **Strong road dogs:** 1
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.579)
+- **Total games on board:** 107
+- **Strong home favorites:** 1 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
 1. **ARI @ CIN 4-leg SGP @ -208** (82/100 ★★★★★)
@@ -22,10 +22,7 @@
 5. **SDP @ BAL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** NYY @ TOR NYY_ML -- 69% / +21.3% (score 2.5)
-
-## 📡 Sharp Action (Line Movement)
-- [MODERATE] **LAD @ CHW** over_8.0: 50.0% → 53.49% (+3.5pp)
+- [STRONG] **[MLB]** NYY @ TOR NYY_ML -- 68% / +25.5% (score 2.5)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **159-30** (84.1% hit rate)
@@ -46,11 +43,11 @@
 
 ## 🎰 Top Balanced 2-Leg Parlays (40-65% joint)
 - [MLB-PP] Nasim Nuñez PP_batter_hrr_under_ + [MLB] NYY @ TOR NYY_ML
-  Joint: 60% | Fair: 206 | Edge: +83.2%
+  Joint: 59% | Fair: 222 | Edge: +89.6%
 - [MLB-PP] Wyatt Langford PP_batter_hrr_under_ + [MLB] NYY @ TOR NYY_ML
-  Joint: 60% | Fair: 206 | Edge: +83.1%
+  Joint: 59% | Fair: 222 | Edge: +89.5%
 - [MLB-PP] Brett Sullivan PP_batter_hrr_under_ + [MLB] NYY @ TOR NYY_ML
-  Joint: 60% | Fair: 206 | Edge: +83.0%
+  Joint: 59% | Fair: 222 | Edge: +89.4%
 
 ## 🎮 Player Play of the Day (cross-sport)
 - **[LOL]** Inspired UNDER 3.5 Kills | MED conviction · model 61.7% fair -161
@@ -63,10 +60,10 @@
 - Hot teams: **6** | Cold teams: **6** | Over-heavy: 0 | Under-heavy: 1
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (32)
-- RESIDUAL_DIVERGENCE: **6**
+## ⚠️ Anomaly Detector (35)
+- RESIDUAL_DIVERGENCE: **7**
 - STREAK_MISMATCH: **1**
-- STEAM_MOVE: **21**
+- STEAM_MOVE: **23**
 - COMPOUND_BULLPEN: **1**
 - PEN_MISMATCH: **3**
   - Vegas Golden Knights (NHL): Vegas Golden Knights UNDERPERFORMING expected margin by 6.5pts in recent games -- model bias may persist
@@ -84,13 +81,13 @@
   - #4 [NRFI] $50 on STL @ MIN YRFI (1st-inning OVER 0.5) (P=70%)
   - #5 [NRFI] $50 on SDP @ BAL YRFI (1st-inning OVER 0.5) (P=68%)
 
-## 🎯 Convergence Picks (16 stacked games)
-- ELITE: **1** · HIGH: 2 · MED: 13
-  - [ELITE] Golden State Valkyries @ Seattle Storm : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
+## 🎯 Convergence Picks (19 stacked games)
+- ELITE: **2** · HIGH: 3 · MED: 14
+  - [ELITE] Minnesota Lynx @ Las Vegas Aces : 6 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ANOMALY)
+  - [ELITE] Los Angeles Sparks @ Phoenix Mercury : 4 signals (PREGAME, ANOMALY, ANOMALY, ATS)
   - [HIGH] New York Knicks @ San Antonio Spurs : 3 signals (PREGAME, ATS, ATS)
   - [HIGH] Carolina Hurricanes @ Vegas Golden Knights : 3 signals (PREGAME, ANOMALY, ANOMALY)
-  - [MED] Atlanta United FC @ Columbus Crew : 2 signals (ATS, ATS)
-  - [MED] Philadelphia Union @ Inter Miami CF : 2 signals (ATS, ATS)
+  - [HIGH] Dallas Wings @ Portland Fire : 3 signals (PREGAME, HEAT_COLD, ANOMALY)
 
 ## ⚾ Top MLB Pitcher K Plays (13)
 - **Yoshinobu Yamamoto** OVER 4.5 K (78%) fair -347
@@ -107,26 +104,32 @@
   - [COIN_FLIP] **Diego Lopes** (27-8-0) vs Steve Garcia -- fair -108
 
 ## ⛳ Golf Player Heat (from RBC Canadian Open)
-  - 🔥 T1 **Ben James** (USA): -10 total -- finished T1
-  - 🔥 T2 **Keith Mitchell** (USA): -9 total -- finished T2
-  - 🔥 T3 **Haotong Li** (China): -9 total -- finished T3
-  - 🔥 T4 **Jesper Svensson** (Sweden): -9 total -- finished T4
-  - 🔥 T5 **Jackson Suber** (USA): -9 total -- finished T5
+  - 🔥 T1 **Sudarshan Yellamaraju** (Canada): -11 total -- finished T1
+  - 🔥 T2 **Billy Horschel** (USA): -10 total -- finished T2
+  - 🔥 T3 **Wyndham Clark** (USA): -10 total -- finished T3
+  - 🔥 T4 **Tommy Fleetwood** (England): -10 total -- finished T4
+  - 🔥 T5 **Jesper Svensson** (Sweden): -10 total -- finished T5
   - ❄️ **Eric Cole** (USA): Sunday +6.0 vs tourney avg
   - ❄️ **Peter Malnati** (USA): Sunday +5.0 vs tourney avg
   - ❄️ **Davis Riley** (USA): Sunday +4.0 vs tourney avg
 
-## 🔥 MLB Batter Heat (39 HOT / 35 COLD)
+## 🔥 MLB Batter Heat (43 HOT / 36 COLD)
   - 🔥 **Jung Hoo Lee** (SF): L14 .534 / season .333 (+201pts)
-  - 🔥 **Tristan Peters** (CWS): L14 .452 / season .298 (+154pts)
+  - 🔥 **Blaze Alexander** (BAL): L14 .471 / season .297 (+174pts)
+  - 🔥 **Dominic Canzone** (SEA): L14 .439 / season .285 (+154pts)
+  - 🔥 **Heriberto Hernández** (MIA): L14 .372 / season .236 (+136pts)
   - 🔥 **Bryce Eldridge** (SF): L14 .451 / season .316 (+135pts)
-  - 🔥 **Matt Chapman** (SF): L14 .388 / season .260 (+128pts)
-  - 🔥 **Blaze Alexander** (BAL): L14 .412 / season .285 (+127pts)
+  - ❄️ **Colt Keith** (DET): L14 .103 / season .257 (-154pts) -- FADE props
   - ❄️ **Ildemaro Vargas** (AZ): L14 .125 / season .271 (-146pts) -- FADE props
   - ❄️ **Michael Conforto** (CHC): L14 .094 / season .237 (-143pts) -- FADE props
   - ❄️ **Jeff McNeil** (ATH): L14 .089 / season .232 (-143pts) -- FADE props
-  - ❄️ **Austin Martin** (MIN): L14 .114 / season .245 (-131pts) -- FADE props
-  - ❄️ **Chandler Simpson** (TB): L14 .150 / season .268 (-118pts) -- FADE props
+  - ❄️ **Justin Foscue** (TEX): L14 .097 / season .235 (-138pts) -- FADE props
+
+## 📈 Streak Regression Alerts (4)
+- [WNBA] Connecticut Sun on L4 L10 1-4 -- Connecticut Sun on L4 -- no historical sample
+- [WNBA] Las Vegas Aces on W5 L10 5-0 -- Las Vegas Aces on W5 -- no historical sample
+- [WNBA] Minnesota Lynx on W4 L10 4-0 -- Minnesota Lynx on W4 -- no historical sample
+- [WNBA] Portland Fire on L4 L10 1-4 -- Portland Fire on L4 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**

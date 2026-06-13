@@ -1,16 +1,14 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:17 F:70
-
-:lock: **LOCK:** Randy Vásquez (MLB)
+_MODEST_NIGHT_ | L:0 S:23 F:63
 
 :dart: **Top Picks:**
-1. [GOLF] Ben James -- Ben James (PLAYER_STRONG)
-2. [WNBA] napheesa collier -- napheesa collier (PLAYER_STRONG)
-3. [GOLF] Sam Burns -- Sam Burns (PLAYER_STRONG)
+1. [WNBA] napheesa collier -- napheesa collier (PLAYER_STRONG)
+2. [GOLF] Sudarshan Yellamaraju -- Sudarshan Yellamaraju (PLAYER_STRONG)
+3. [GOLF] Wyndham Clark -- Wyndham Clark (PLAYER_STRONG)
 
 :chains: **Top Parlays:**
 - [WNBA] napheesa collier (2 legs, p=0.3161)
 
-:coin: Bankroll Advisory: STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
+:coin: Bankroll Advisory: Light slate. Limit to 1-3 strongest plays; use 25% Kelly or less.
 
 _EdgeStat: ML-driven sports betting analytics. Not financial advice._
