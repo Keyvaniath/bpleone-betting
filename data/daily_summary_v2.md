@@ -1,18 +1,18 @@
 # EdgeStat Daily Summary — 2026-06-14
 
-## 🏥 Model Health: 72.9/100 [HEALTHY]
+## 🏥 Model Health: 71.8/100 [HEALTHY]
 - Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 99.9/100
+  - 🟢 Calibration Freshness: 100.0/100
   - 🔴 Hit Rate Trend: 54.4/100
   - 🔴 Brier Trend: 29.6/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 88.9/100
+  - 🟢 Data Health: 83.3/100
   - 🟢 Edge Count: 82.9/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.586)
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.585)
 - **Total games on board:** 102
-- **Strong home favorites:** 1 | **Strong road dogs:** 0
+- **Strong home favorites:** 2 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
 1. **ARI @ CIN YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
@@ -22,17 +22,17 @@
 5. **PHI @ MIL NRFI (no run 1st inning)** (78/100 ★★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** NYY @ TOR NYY_ML -- 70% / +23.8% (score 2.5)
+- [STRONG] **[MLB]** TBR @ LAA TBR_ML -- 68% / +20.3% (score 2.5)
 
-## 📉 Strong UNDER Signals
-- [STRONG 5.7] **DET @ CLE** model 6.65 vs market 7.5
+## 📡 Sharp Action (Line Movement)
+- [ELITE] **TBR @ LAA** ml_away: 64.54% → 98.68% (+34.1pp)
 
 ## 🔒 Locks of the Day -- Track Record
-- All-time: **166-32** (83.8% hit rate)
-- Net units: **+5.59u** | ROI: **+45.5%**
-- Last 7d: 47-11 (81.0%) | net +1.46u
+- All-time: **167-32** (83.9% hit rate)
+- Net units: **+5.63u** | ROI: **+45.6%**
+- Last 7d: 48-11 (81.4%) | net +1.51u
 
-**Today's 9 Locks:**
+**Today's 11 Locks:**
 - [MLB-PP] **Nasim Nuñez** PP_batter_hrr_under_3.5 · p=87% edge=+51.0% qK=0.062u
 - [MLB-PP] **Wyatt Langford** PP_batter_hrr_under_3.5 · p=87% edge=+50.9% qK=0.062u
 - [MLB-PP] **Brett Sullivan** PP_batter_hrr_under_3.5 · p=87% edge=+50.9% qK=0.062u
@@ -42,14 +42,16 @@
 - [MLB-PP] **Ryan Waldschmidt** PP_batter_hrr_under_3.5 · p=87% edge=+51.1% qK=0.062u
 - [MLB-PP] **Luis Rengifo** PP_batter_hrr_under_3.5 · p=87% edge=+51.0% qK=0.062u
 - [MLB-PP] **Lawrence Butler** PP_batter_hrr_under_3.5 · p=87% edge=+51.0% qK=0.062u
+- [MLB-PP] **Sterlin Thompson** PP_batter_hrr_under_3.5 · p=87% edge=+51.1% qK=0.062u
+- [MLB-PP] **Francisco Alvarez** PP_batter_hrr_under_3.5 · p=87% edge=+50.8% qK=0.062u
 
 ## 🎰 Top Balanced 2-Leg Parlays (40-65% joint)
-- [MLB-PP] Eugenio Suárez PP_batter_hrr_under_ + [MLB] ATL @ NYM ATL_ML
-  Joint: 55% | Fair: 249 | Edge: +90.3%
-- [MLB-PP] Ryan Waldschmidt PP_batter_hrr_under_ + [MLB] ATL @ NYM ATL_ML
-  Joint: 55% | Fair: 249 | Edge: +90.3%
-- [MLB-PP] Drew Gilbert PP_batter_hrr_under_ + [MLB] ATL @ NYM ATL_ML
-  Joint: 55% | Fair: 249 | Edge: +90.3%
+- [MLB-PP] Drew Gilbert PP_batter_hrr_under_ + [MLB] TBR @ LAA TBR_ML
+  Joint: 59% | Fair: 209 | Edge: +81.7%
+- [MLB-PP] Sterlin Thompson PP_batter_hrr_under_ + [MLB] TBR @ LAA TBR_ML
+  Joint: 59% | Fair: 209 | Edge: +81.7%
+- [MLB-PP] Lawrence Butler PP_batter_hrr_under_ + [MLB] TBR @ LAA TBR_ML
+  Joint: 59% | Fair: 209 | Edge: +81.7%
 
 ## 🎮 Player Play of the Day (cross-sport)
 - **[LOL]** Inspired UNDER 3.5 Kills | MED conviction · model 61.7% fair -161
@@ -62,11 +64,10 @@
 - Hot teams: **4** | Cold teams: **3** | Over-heavy: 0 | Under-heavy: 4
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (33)
+## ⚠️ Anomaly Detector (32)
 - RESIDUAL_DIVERGENCE: **2**
-- STEAM_MOVE: **26**
-- PEN_MISMATCH: **3**
-- COMPOUND_BULLPEN: **2**
+- STEAM_MOVE: **28**
+- PEN_MISMATCH: **2**
   - Vegas Golden Knights (NHL): Vegas Golden Knights UNDERPERFORMING expected margin by 6.5pts in recent games -- model bias may persist
   - Carolina Hurricanes (NHL): Carolina Hurricanes OUTPERFORMING expected margin by 6.5pts in recent games -- model bias may persist
   - CIN @ SDP (MLB): ML/TOTAL steam since open: ML +13.8pp toward SDP; total +1 (OVER) (6 snapshots)
@@ -82,20 +83,20 @@
   - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
-## 🎯 Convergence Picks (18 stacked games)
-- ELITE: **0** · HIGH: 2 · MED: 16
+## 🎯 Convergence Picks (16 stacked games)
+- ELITE: **0** · HIGH: 1 · MED: 15
   - [HIGH] Carolina Hurricanes @ Vegas Golden Knights : 3 signals (PREGAME, ANOMALY, ANOMALY)
-  - [HIGH] Los Angeles Sparks @ Phoenix Mercury : 3 signals (HEAT_COLD, ATS, ATS)
   - [MED] New York Knicks @ San Antonio Spurs : 2 signals (ATS, ATS)
-  - [MED] Indiana Fever @ Connecticut Sun : 2 signals (HEAT_COLD, HEAT_COLD)
-  - [MED] Minnesota Lynx @ Las Vegas Aces : 2 signals (HEAT_COLD, HEAT_COLD)
+  - [MED] Washington Mystics @ New York Liberty : 2 signals (HEAT_COLD, ATS)
+  - [MED] Atlanta United FC @ Columbus Crew : 2 signals (ATS, ATS)
+  - [MED] Philadelphia Union @ Inter Miami CF : 2 signals (ATS, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (10)
-- **Cristopher Sánchez** OVER 6.5 K (77%) fair -334
-- **Miles Mikolas** OVER 4.5 K (76%) fair -312
-- **Paul Skenes** OVER 5.5 K (75%) fair -292
+## ⚾ Top MLB Pitcher K Plays (5)
+- **Kyle Harrison** OVER 5.5 K (72%) fair -258
 - **Nathan Eovaldi** OVER 4.5 K (71%) fair -251
-- **Gavin Williams** OVER 5.5 K (68%) fair -216
+- **Bryan Hudson** OVER 7.5 K (71%) fair -250
+- **Taj Bradley** OVER 4.5 K (65%) fair -188
+- **Logan Webb** OVER 4.5 K (62%) fair -166
 
 ## 🏀 NBA Player Heat (18 HOT / 22 COLD)
   - 🔥 **Jeremiah Fears** (NO): L5 31.8/5.8/6.0 vs season 16.9/3.2/4.0 [PTS +14.9, REB +2.6, AST +2.0]
@@ -115,26 +116,29 @@
   - [COIN_FLIP] **Diego Lopes** (27-8-0) vs Steve Garcia -- fair -108
 
 ## ⛳ Golf Player Heat (from RBC Canadian Open)
-  - 🔥 T1 **Jackson Suber** (USA): -13 total -- finished T1
-  - 🔥 T2 **Bud Cauley** (USA): -12 total -- finished T2
-  - 🔥 T3 **Wyndham Clark** (USA): -11 total -- finished T3
-  - 🔥 T4 **Tommy Fleetwood** (England): -11 total -- finished T4
-  - 🔥 T5 **Brice Garnett** (USA): -11 total -- finished T5
+  - 🔥 T1 **Jimmy Stanger** (USA): -14 total -- finished T1, Sunday -0.5 vs tourney avg
+  - 🔥 T2 **Jackson Suber** (USA): -14 total -- finished T2
+  - 🔥 T3 **Bud Cauley** (USA): -13 total -- finished T3
+  - 🔥 T4 **Matthew Anderson** (Canada): -12 total -- finished T4, Sunday -1.0 vs tourney avg
+  - 🔥 T5 **Sam Burns** (USA): -12 total -- finished T5
   - ❄️ **Eric Cole** (USA): Sunday +6.0 vs tourney avg
+  - ❄️ **Kevin Roy** (USA): Sunday +5.5 vs tourney avg
   - ❄️ **Peter Malnati** (USA): Sunday +5.0 vs tourney avg
-  - ❄️ **Davis Riley** (USA): Sunday +4.0 vs tourney avg
 
-## 🔥 MLB Batter Heat (41 HOT / 32 COLD)
-  - 🔥 **Jung Hoo Lee** (SF): L14 .474 / season .328 (+146pts)
-  - 🔥 **Dominic Canzone** (SEA): L14 .421 / season .283 (+138pts)
-  - 🔥 **Blaze Alexander** (BAL): L14 .433 / season .297 (+136pts)
-  - 🔥 **Matt Chapman** (SF): L14 .396 / season .260 (+136pts)
-  - 🔥 **Jac Caglianone** (KC): L14 .400 / season .270 (+130pts)
-  - ❄️ **Ildemaro Vargas** (AZ): L14 .108 / season .270 (-162pts) -- FADE props
+## 🔥 MLB Batter Heat (47 HOT / 35 COLD)
+  - 🔥 **Pete Crow-Armstrong** (CHC): L14 .417 / season .267 (+150pts)
+  - 🔥 **Kyle Karros** (COL): L14 .391 / season .246 (+145pts)
+  - 🔥 **Jung Hoo Lee** (SF): L14 .474 / season .331 (+143pts)
+  - 🔥 **Dominic Canzone** (SEA): L14 .425 / season .286 (+139pts)
+  - 🔥 **Blaze Alexander** (BAL): L14 .441 / season .303 (+138pts)
+  - ❄️ **Ildemaro Vargas** (AZ): L14 .100 / season .267 (-167pts) -- FADE props
   - ❄️ **Colt Keith** (DET): L14 .103 / season .257 (-154pts) -- FADE props
-  - ❄️ **Carlos Cortes** (ATH): L14 .162 / season .306 (-144pts) -- FADE props
-  - ❄️ **Michael Conforto** (CHC): L14 .094 / season .237 (-143pts) -- FADE props
-  - ❄️ **Jeff McNeil** (ATH): L14 .089 / season .232 (-143pts) -- FADE props
+  - ❄️ **Chandler Simpson** (TB): L14 .122 / season .266 (-144pts) -- FADE props
+  - ❄️ **Jeff McNeil** (ATH): L14 .089 / season .228 (-139pts) -- FADE props
+  - ❄️ **Michael Conforto** (CHC): L14 .088 / season .227 (-139pts) -- FADE props
+
+## 📈 Streak Regression Alerts (1)
+- [WNBA] New York Liberty on W4 L10 4-0 -- New York Liberty on W4 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**

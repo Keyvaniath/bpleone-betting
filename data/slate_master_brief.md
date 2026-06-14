@@ -1,36 +1,36 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-06-14T18:20:30 UTC_
+_Generated 2026-06-14T23:09:34 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
 - **Score:** 9
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 16
-- **Total FADES:** 55
+- **Total STRONG:** 15
+- **Total FADES:** 51
 
 ## Top 5 Curated Picks
-1. **GOLF / Jackson Suber** (GOLF_PLAYER, score=182.14)
+1. **GOLF / Jimmy Stanger** (GOLF_PLAYER, score=175.64)
+   - Play: Jimmy Stanger (PLAYER_STRONG)
+   - Rationale: Cross-sport top pick (GOLF_PLAYER)
+2. **GOLF / Jackson Suber** (GOLF_PLAYER, score=171.71)
    - Play: Jackson Suber (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Bud Cauley** (GOLF_PLAYER, score=148.14)
-   - Play: Bud Cauley (PLAYER_STRONG)
-   - Rationale: Cross-sport top pick (GOLF_PLAYER)
-3. **WNBA / breanna stewart** (WNBA_PLAYER, score=112.58)
-   - Play: breanna stewart (PLAYER_STRONG)
-   - Rationale: Cross-sport top pick (WNBA_PLAYER)
-4. **WNBA / sabrina ionescu** (WNBA_PLAYER, score=72.25)
-   - Play: sabrina ionescu (PLAYER_STRONG)
-   - Rationale: Cross-sport top pick (WNBA_PLAYER)
-5. **MLB / Connelly Early** (MLB_PITCHER, score=59.08)
+3. **MLB / ?** (MLB_TEAM, score=75.83)
+   - Play: ? (TEAM_STRONG)
+   - Rationale: Cross-sport top pick (MLB_TEAM)
+4. **MLB / Connelly Early** (MLB_PITCHER, score=58.75)
    - Play: Connelly Early (PITCHER_STRONG)
    - Rationale: Cross-sport top pick (MLB_PITCHER)
+5. **F1 / max verstappen** (F1_DRIVER, score=49.67)
+   - Play: max verstappen (DRIVER_STRONG)
+   - Rationale: Cross-sport top pick (F1_DRIVER)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
+  - Jimmy Stanger top 10 finish
   - Jackson Suber top 10 finish
   - Bud Cauley top 10 finish
-  - Wyndham Clark top 10 finish
 
 ## Slate ROI Projection
 - **Picks:** 0
@@ -39,13 +39,13 @@ _Generated 2026-06-14T18:20:30 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **NHL** / adin hill (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / pyotr kochetkov (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / frederik andersen (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / logan thompson_2 (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / samsonov ilya (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
+- **MLB** / Cristopher Sánchez (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Kyle Harrison (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Taj Bradley (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Spencer Arrighetti (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Tomoyuki Sugano (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES

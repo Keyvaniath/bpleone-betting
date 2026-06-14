@@ -4,26 +4,21 @@
 
 _Pipeline health: **DEGRADED** (14/15 artifacts ok; 1 empty, 0 stale)._ 
 
-_Generated at 2026-06-14T18:21:57 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-06-14T23:09:50 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
-**COL @ OAK - UNDER_14.0**
+**TEX @ BOS - UNDER_9.5**
 - Market: -110
-- Model probability: 70.2%
-- Raw edge: +34.1%
-- Recommended stake: <= 0.5u (model calibrating)
+- Model probability: 53.2%
+- Raw edge: +1.51%
+- Recommended stake: 0.41u Kelly
 
-> _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
-
-## Full Slate (4 games)
+## Full Slate (1 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 3:05p ET | COL @ OAK | Las Vegas Ballpark | 70F 0mph | UNDER_14.0 +34.1% |
-| 3:10p ET | CHC @ SFG | Oracle Park | 65F 15mph | OVER_8.0 +12.41% |
-| 4:07p ET | TBR @ LAA | Angel Stadium | 82F 10mph | TBR_ML +27.41% |
-| 7:20p ET | TEX @ BOS | Fenway Park | 73F 14mph | OVER_9.0 +4.39% |
+| 7:20p ET | TEX @ BOS | Fenway Park | 74F 12mph | UNDER_9.5 +1.51% |
 
 ## Parlays - top 5
 
@@ -60,14 +55,7 @@ Cumulative graded plays: 118214. Wins: 87366. Hit rate: 73.9%.
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| CHC @ SFG | 64.9% | -185 | 2.37 | +123 | -123 |
-| COL @ OAK | 29.3% | +241 | 6.14 | -127 | +127 |
-| HOU @ KCR | 46.3% | +116 | 3.85 | -- | -- |
-| LAD @ CHW | 30.5% | +228 | 5.93 | -- | -- |
-| PHI @ MIL | 72.6% | -265 | 1.6 | -- | -- |
-| STL @ MIN | 27.7% | +261 | 6.41 | -- | -- |
-| TBR @ LAA | 38.8% | +158 | 4.94 | +431 | -431 |
-| TEX @ BOS | 35.5% | +181 | 5.55 | +173 | -173 |
+| TEX @ BOS | 35.5% | +181 | 5.49 | +173 | -173 |
 
 ## Team Form (last 10)
 
