@@ -1,18 +1,18 @@
 # EdgeStat Daily Summary — 2026-06-14
 
-## 🏥 Model Health: 69.1/100 [OK]
-- Operational but room to improve - check yellow components
+## 🏥 Model Health: 72.9/100 [HEALTHY]
+- Solid health - some minor issues to monitor
   - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 54.4/100
   - 🔴 Brier Trend: 29.6/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 88.9/100
-  - 🔴 Edge Count: 45.7/100
+  - 🟢 Edge Count: 82.9/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.584)
-- **Total games on board:** 100
-- **Strong home favorites:** 0 | **Strong road dogs:** 0
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.586)
+- **Total games on board:** 102
+- **Strong home favorites:** 1 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
 1. **ARI @ CIN YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
@@ -22,30 +22,34 @@
 5. **PHI @ MIL NRFI (no run 1st inning)** (78/100 ★★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** NYY @ TOR NYY_ML -- 69% / +25.0% (score 2.5)
+- [STRONG] **[MLB]** NYY @ TOR NYY_ML -- 70% / +23.8% (score 2.5)
 
 ## 📉 Strong UNDER Signals
-- [STRONG 5.1] **DET @ CLE** model 6.96 vs market 7.5
+- [STRONG 5.7] **DET @ CLE** model 6.65 vs market 7.5
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **166-32** (83.8% hit rate)
 - Net units: **+5.59u** | ROI: **+45.5%**
 - Last 7d: 47-11 (81.0%) | net +1.46u
 
-**Today's 5 Locks:**
+**Today's 9 Locks:**
 - [MLB-PP] **Nasim Nuñez** PP_batter_hrr_under_3.5 · p=87% edge=+51.0% qK=0.062u
 - [MLB-PP] **Wyatt Langford** PP_batter_hrr_under_3.5 · p=87% edge=+50.9% qK=0.062u
 - [MLB-PP] **Brett Sullivan** PP_batter_hrr_under_3.5 · p=87% edge=+50.9% qK=0.062u
 - [MLB-PP] **Salvador Perez** PP_batter_hrr_under_3.5 · p=87% edge=+50.7% qK=0.062u
 - [MLB-PP] **Drew Gilbert** PP_batter_hrr_under_3.5 · p=87% edge=+50.7% qK=0.062u
+- [MLB-PP] **Eugenio Suárez** PP_batter_hrr_under_3.5 · p=87% edge=+51.1% qK=0.062u
+- [MLB-PP] **Ryan Waldschmidt** PP_batter_hrr_under_3.5 · p=87% edge=+51.1% qK=0.062u
+- [MLB-PP] **Luis Rengifo** PP_batter_hrr_under_3.5 · p=87% edge=+51.0% qK=0.062u
+- [MLB-PP] **Lawrence Butler** PP_batter_hrr_under_3.5 · p=87% edge=+51.0% qK=0.062u
 
 ## 🎰 Top Balanced 2-Leg Parlays (40-65% joint)
-- [MLB-PP] Nasim Nuñez PP_batter_hrr_under_ + [MLB] TBR @ LAA TBR_ML
-  Joint: 55% | Fair: 247 | Edge: +89.8%
-- [MLB-PP] Wyatt Langford PP_batter_hrr_under_ + [MLB] TBR @ LAA TBR_ML
-  Joint: 55% | Fair: 247 | Edge: +89.7%
-- [MLB-PP] Brett Sullivan PP_batter_hrr_under_ + [MLB] TBR @ LAA TBR_ML
-  Joint: 55% | Fair: 247 | Edge: +89.7%
+- [MLB-PP] Eugenio Suárez PP_batter_hrr_under_ + [MLB] ATL @ NYM ATL_ML
+  Joint: 55% | Fair: 249 | Edge: +90.3%
+- [MLB-PP] Ryan Waldschmidt PP_batter_hrr_under_ + [MLB] ATL @ NYM ATL_ML
+  Joint: 55% | Fair: 249 | Edge: +90.3%
+- [MLB-PP] Drew Gilbert PP_batter_hrr_under_ + [MLB] ATL @ NYM ATL_ML
+  Joint: 55% | Fair: 249 | Edge: +90.3%
 
 ## 🎮 Player Play of the Day (cross-sport)
 - **[LOL]** Inspired UNDER 3.5 Kills | MED conviction · model 61.7% fair -161
@@ -58,11 +62,11 @@
 - Hot teams: **4** | Cold teams: **3** | Over-heavy: 0 | Under-heavy: 4
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (29)
+## ⚠️ Anomaly Detector (33)
 - RESIDUAL_DIVERGENCE: **2**
-- STEAM_MOVE: **23**
+- STEAM_MOVE: **26**
 - PEN_MISMATCH: **3**
-- COMPOUND_BULLPEN: **1**
+- COMPOUND_BULLPEN: **2**
   - Vegas Golden Knights (NHL): Vegas Golden Knights UNDERPERFORMING expected margin by 6.5pts in recent games -- model bias may persist
   - Carolina Hurricanes (NHL): Carolina Hurricanes OUTPERFORMING expected margin by 6.5pts in recent games -- model bias may persist
   - CIN @ SDP (MLB): ML/TOTAL steam since open: ML +13.8pp toward SDP; total +1 (OVER) (6 snapshots)
@@ -120,14 +124,14 @@
   - ❄️ **Peter Malnati** (USA): Sunday +5.0 vs tourney avg
   - ❄️ **Davis Riley** (USA): Sunday +4.0 vs tourney avg
 
-## 🔥 MLB Batter Heat (41 HOT / 31 COLD)
-  - 🔥 **Blaze Alexander** (BAL): L14 .471 / season .297 (+174pts)
-  - 🔥 **Dominic Canzone** (SEA): L14 .439 / season .285 (+154pts)
+## 🔥 MLB Batter Heat (41 HOT / 32 COLD)
   - 🔥 **Jung Hoo Lee** (SF): L14 .474 / season .328 (+146pts)
+  - 🔥 **Dominic Canzone** (SEA): L14 .421 / season .283 (+138pts)
+  - 🔥 **Blaze Alexander** (BAL): L14 .433 / season .297 (+136pts)
   - 🔥 **Matt Chapman** (SF): L14 .396 / season .260 (+136pts)
-  - 🔥 **Heriberto Hernández** (MIA): L14 .372 / season .236 (+136pts)
+  - 🔥 **Jac Caglianone** (KC): L14 .400 / season .270 (+130pts)
+  - ❄️ **Ildemaro Vargas** (AZ): L14 .108 / season .270 (-162pts) -- FADE props
   - ❄️ **Colt Keith** (DET): L14 .103 / season .257 (-154pts) -- FADE props
-  - ❄️ **Ildemaro Vargas** (AZ): L14 .125 / season .271 (-146pts) -- FADE props
   - ❄️ **Carlos Cortes** (ATH): L14 .162 / season .306 (-144pts) -- FADE props
   - ❄️ **Michael Conforto** (CHC): L14 .094 / season .237 (-143pts) -- FADE props
   - ❄️ **Jeff McNeil** (ATH): L14 .089 / season .232 (-143pts) -- FADE props
@@ -141,6 +145,7 @@
 
 ## 🧠 Training Convergence
 - ELITE: **0** · HEALTHY: 0 · OK: 0 · DEGRADED: **8**
+  - ⚠️ **batter_hits**: DIVERGENT - consistent same-sign moves (structural issue) (cf=1.3088)
 
 ## 🤖 Self-Training Status
 - **NBA**: n=5 games · hit rate 60.0% · bias +30.4pp

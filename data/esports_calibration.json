@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-06-14T12:07:25",
+  "generated_at": "2026-06-14T18:22:29",
   "sports": {
     "lol": {
-      "n_total": 22,
-      "n_settled": 19,
-      "brier": 0.2638,
-      "log_loss": 0.7211,
-      "ece": 0.1585,
+      "n_total": 23,
+      "n_settled": 20,
+      "brier": 0.2701,
+      "log_loss": 0.7341,
+      "ece": 0.1818,
       "reliability_bins": [
         {
           "low": 0.5,
@@ -21,17 +21,20 @@
         {
           "low": 0.6,
           "high": 0.7,
-          "n": 3,
-          "expected": 1.8909,
+          "n": 4,
+          "expected": 2.5163,
           "actual_wins": 1,
-          "expected_rate": 0.6303,
-          "actual_rate": 0.3333,
-          "delta": -0.297
+          "expected_rate": 0.6291,
+          "actual_rate": 0.25,
+          "delta": -0.3791
         }
       ],
       "calibration_recommendation": {
-        "applied": false,
-        "note": "need >= 20 settled bets (have 19)"
+        "applied": true,
+        "predicted_mean_winprob": 0.5818,
+        "actual_hit_rate": 0.4,
+        "recommended_shift_pp": -18.18,
+        "note": "Model over-confident; subtract 18.2pp at next inference"
       }
     },
     "cs": {
