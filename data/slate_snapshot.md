@@ -1,4 +1,4 @@
-# EdgeStat Slate — 2026-06-13
+# EdgeStat Slate — 2026-06-14
 
 _6 picks consolidated from POD + Alpha + Book Edges + Parlay-of-Day._
 
@@ -9,23 +9,23 @@ _6 picks consolidated from POD + Alpha + Book Edges + Parlay-of-Day._
 
 ## 🎯 Alpha Pick
 
-- **TBR @ LAA** · OVER_8.0
-  Prob 61.6% · Odds -110 · Edge +17.7% · Kelly 0.195
+- **TBR @ LAA** · TBR_ML
+  Prob 62.8% · Odds +100 · Edge +25.7% · Kelly 0.250
 
 ## 📊 Book Edges
 
-- **TBR @ LAA · OVER · O/U 8.0** · TOTAL_OVER
-  Prob 58.3% · Odds -110 · Edge +11.4% · Kelly 0.125
-- **CHC @ SFG · UNDER · O/U 8.0** · TOTAL_UNDER
-  Prob 58.0% · Odds -110 · Edge +10.7% · Kelly 0.118
-- **PHI @ MIL · UNDER · O/U 8.5** · TOTAL_UNDER
-  Prob 57.4% · Odds -110 · Edge +9.6% · Kelly 0.105
+- **TBR @ LAA · AWAY (AWAY)** · TEAM_ML
+  Prob 56.1% · Odds +100 · Edge +12.2% · Kelly 0.122
+- **HOU @ KCR · AWAY (AWAY)** · TEAM_ML
+  Prob 55.1% · Odds +103 · Edge +12.0% · Kelly 0.116
+- **DET @ CLE · AWAY (AWAY)** · TEAM_ML
+  Prob 57.3% · Odds -106 · Edge +11.4% · Kelly 0.121
 
 ## 🎲 Parlay
 
 - **Nasim Nuñez + TBR @ LAA** · 2-leg
-  Prob 53.6% · Odds +231 · Edge +77.7% · Kelly 0.050
+  Prob 54.7% · Odds +247 · Edge +89.8% · Kelly 0.050
 
 ---
-_Generated 2026-06-13T23:03:12 UTC by EdgeStat._
+_Generated 2026-06-14T05:30:15 UTC by EdgeStat._
 _Stakes assume ¼-Kelly fractional sizing on a flat bankroll._

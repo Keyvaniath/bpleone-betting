@@ -1,28 +1,25 @@
-# EdgeStat Daily Summary — 2026-06-13
+# EdgeStat Daily Summary — 2026-06-14
 
-## 🏥 Model Health: 74.0/100 [HEALTHY]
+## 🏥 Model Health: 71.8/100 [HEALTHY]
 - Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 100.0/100
+  - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 54.4/100
   - 🔴 Brier Trend: 29.6/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 88.9/100
+  - 🟡 Data Health: 77.8/100
   - 🟢 Edge Count: 94.3/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.579)
-- **Total games on board:** 107
-- **Strong home favorites:** 1 | **Strong road dogs:** 0
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.583)
+- **Total games on board:** 117
+- **Strong home favorites:** 0 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
-1. **ARI @ CIN 4-leg SGP @ -208** (82/100 ★★★★★)
-2. **DET @ CLE 4-leg SGP @ -149** (81/100 ★★★★★)
-3. **COL @ OAK YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-4. **STL @ MIN YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-5. **SDP @ BAL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-
-## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** NYY @ TOR NYY_ML -- 68% / +25.5% (score 2.5)
+1. **COL @ OAK YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+2. **PHI @ MIL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+3. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
+4. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
+5. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **159-30** (84.1% hit rate)
@@ -42,12 +39,12 @@
 - [MLB-PP] **Drew Gilbert** PP_batter_hrr_under_3.5 · p=87% edge=+50.6% qK=0.062u
 
 ## 🎰 Top Balanced 2-Leg Parlays (40-65% joint)
-- [MLB-PP] Nasim Nuñez PP_batter_hrr_under_ + [MLB] NYY @ TOR NYY_ML
-  Joint: 59% | Fair: 222 | Edge: +89.6%
-- [MLB-PP] Wyatt Langford PP_batter_hrr_under_ + [MLB] NYY @ TOR NYY_ML
-  Joint: 59% | Fair: 222 | Edge: +89.5%
-- [MLB-PP] Brett Sullivan PP_batter_hrr_under_ + [MLB] NYY @ TOR NYY_ML
-  Joint: 59% | Fair: 222 | Edge: +89.4%
+- [MLB-PP] Nasim Nuñez PP_batter_hrr_under_ + [MLB] TBR @ LAA OVER_8.0
+  Joint: 54% | Fair: 231 | Edge: +77.7%
+- [MLB-PP] Wyatt Langford PP_batter_hrr_under_ + [MLB] TBR @ LAA OVER_8.0
+  Joint: 54% | Fair: 231 | Edge: +77.6%
+- [MLB-PP] Brett Sullivan PP_batter_hrr_under_ + [MLB] TBR @ LAA OVER_8.0
+  Joint: 54% | Fair: 231 | Edge: +77.6%
 
 ## 🎮 Player Play of the Day (cross-sport)
 - **[LOL]** Inspired UNDER 3.5 Kills | MED conviction · model 61.7% fair -161
@@ -57,29 +54,27 @@
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
 ## 🔥/❄️ Heat / Cold Signals
-- Hot teams: **6** | Cold teams: **6** | Over-heavy: 0 | Under-heavy: 1
+- Hot teams: **4** | Cold teams: **3** | Over-heavy: 0 | Under-heavy: 4
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (35)
-- RESIDUAL_DIVERGENCE: **7**
-- STREAK_MISMATCH: **1**
+## ⚠️ Anomaly Detector (26)
+- RESIDUAL_DIVERGENCE: **2**
 - STEAM_MOVE: **23**
-- COMPOUND_BULLPEN: **1**
-- PEN_MISMATCH: **3**
+- PEN_MISMATCH: **1**
   - Vegas Golden Knights (NHL): Vegas Golden Knights UNDERPERFORMING expected margin by 6.5pts in recent games -- model bias may persist
   - Carolina Hurricanes (NHL): Carolina Hurricanes OUTPERFORMING expected margin by 6.5pts in recent games -- model bias may persist
-  - Las Vegas Aces (WNBA): Las Vegas Aces on W5 streak but model rates as 52% -- may be undervalued
-  - Minnesota Lynx (WNBA): Minnesota Lynx OUTPERFORMING expected margin by 12.8pts in recent games -- model bias may persist
-  - Portland Fire (WNBA): Portland Fire UNDERPERFORMING expected margin by 9.7pts in recent games -- model bias may persist
+  - CIN @ SDP (MLB): ML/TOTAL steam since open: ML +13.8pp toward SDP; total +1 (OVER) (6 snapshots)
+  - DAL @ POR (WNBA): ML/TOTAL steam since open: ML +8.2pp toward POR; total -2 (UNDER) (3 snapshots)
+  - LA @ PHX (WNBA): TOTAL steam since open: total -2 (UNDER) (3 snapshots)
 
-## 💰 Today's Portfolio (8 picks)
-- Total stake: **$340.0** (34.0% of $1000 bankroll)
-- Expected EV: **$1.49**
-  - #1 [SGP] $50 on ARI @ CIN 4-leg SGP @ -208 (P=68%)
-  - #2 [SGP] $50 on DET @ CLE 4-leg SGP @ -149 (P=60%)
-  - #3 [NRFI] $50 on COL @ OAK YRFI (1st-inning OVER 0.5) (P=77%)
-  - #4 [NRFI] $50 on STL @ MIN YRFI (1st-inning OVER 0.5) (P=70%)
-  - #5 [NRFI] $50 on SDP @ BAL YRFI (1st-inning OVER 0.5) (P=68%)
+## 💰 Today's Portfolio (9 picks)
+- Total stake: **$330.0** (33.0% of $1000 bankroll)
+- Expected EV: **$-1.59**
+  - #1 [NRFI] $50 on COL @ OAK YRFI (1st-inning OVER 0.5) (P=77%)
+  - #2 [NRFI] $50 on PHI @ MIL YRFI (1st-inning OVER 0.5) (P=67%)
+  - #3 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
+  - #4 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
+  - #5 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
 
 ## 🎯 Convergence Picks (19 stacked games)
 - ELITE: **2** · HIGH: 3 · MED: 14
@@ -89,12 +84,21 @@
   - [HIGH] Carolina Hurricanes @ Vegas Golden Knights : 3 signals (PREGAME, ANOMALY, ANOMALY)
   - [HIGH] Dallas Wings @ Portland Fire : 3 signals (PREGAME, HEAT_COLD, ANOMALY)
 
-## ⚾ Top MLB Pitcher K Plays (13)
-- **Yoshinobu Yamamoto** OVER 4.5 K (78%) fair -347
-- **Tarik Skubal** OVER 4.5 K (76%) fair -325
+## ⚾ Top MLB Pitcher K Plays (4)
 - **Ben Brown** OVER 7.5 K (75%) fair -298
-- **Cam Schlittler** OVER 4.5 K (71%) fair -251
-- **Cade Cavalli** OVER 4.5 K (71%) fair -251
+- **Noah Cameron** OVER 4.5 K (68%) fair -213
+- **José Soriano** OVER 4.5 K (64%) fair -180
+- **Aaron Nola** OVER 4.5 K (60%) fair -149
+
+## 🏀 NBA Player Heat (18 HOT / 22 COLD)
+  - 🔥 **Jeremiah Fears** (NO): L5 31.8/5.8/6.0 vs season 16.9/3.2/4.0 [PTS +14.9, REB +2.6, AST +2.0]
+  - 🔥 **AJ Green** (MIL): L5 18.6/4.2/1.8 vs season 11.3/3.4/1.9 [PTS +7.3]
+  - 🔥 **Dillon Brooks** (PHX): L5 26.0/6.0/1.8 vs season 19.4/4.2/1.9 [PTS +6.6]
+  - 🔥 **Taurean Prince** (MIL): L5 16.4/6.2/3.2 vs season 9.8/3.5/1.9 [PTS +6.6, REB +2.7]
+  - 🔥 **Paolo Banchero** (ORL): L5 28.6/9.6/6.4 vs season 22.6/8.2/5.9 [PTS +6.0]
+  - ❄️ **Damian Lillard** (POR): L5 7.0 vs season 19.1 [PTS -12.1] -- FADE OVER props
+  - ❄️ **Nickeil Alexander-Walker** (ATL): L5 13.0 vs season 21.3 [PTS -8.3] -- FADE OVER props
+  - ❄️ **Caleb Love** (POR): L5 2.6 vs season 10.8 [PTS -8.2, REB -2.1, AST -2.4] -- FADE OVER props
 
 ## 🥊 UFC Fight Matchups (UFC Freedom 250: Topuria vs. Gaethje)
   - [LEAN] **Josh Hokit** (9-0-0) vs Derrick Lewis -- fair -141
@@ -104,32 +108,33 @@
   - [COIN_FLIP] **Diego Lopes** (27-8-0) vs Steve Garcia -- fair -108
 
 ## ⛳ Golf Player Heat (from RBC Canadian Open)
-  - 🔥 T1 **Sudarshan Yellamaraju** (Canada): -11 total -- finished T1
-  - 🔥 T2 **Billy Horschel** (USA): -10 total -- finished T2
-  - 🔥 T3 **Wyndham Clark** (USA): -10 total -- finished T3
-  - 🔥 T4 **Tommy Fleetwood** (England): -10 total -- finished T4
-  - 🔥 T5 **Jesper Svensson** (Sweden): -10 total -- finished T5
+  - 🔥 T1 **Jackson Suber** (USA): -13 total -- finished T1
+  - 🔥 T2 **Bud Cauley** (USA): -12 total -- finished T2
+  - 🔥 T3 **Wyndham Clark** (USA): -11 total -- finished T3
+  - 🔥 T4 **Tommy Fleetwood** (England): -11 total -- finished T4
+  - 🔥 T5 **Brice Garnett** (USA): -11 total -- finished T5
   - ❄️ **Eric Cole** (USA): Sunday +6.0 vs tourney avg
   - ❄️ **Peter Malnati** (USA): Sunday +5.0 vs tourney avg
   - ❄️ **Davis Riley** (USA): Sunday +4.0 vs tourney avg
 
-## 🔥 MLB Batter Heat (43 HOT / 36 COLD)
-  - 🔥 **Jung Hoo Lee** (SF): L14 .534 / season .333 (+201pts)
+## 🔥 MLB Batter Heat (41 HOT / 31 COLD)
   - 🔥 **Blaze Alexander** (BAL): L14 .471 / season .297 (+174pts)
   - 🔥 **Dominic Canzone** (SEA): L14 .439 / season .285 (+154pts)
+  - 🔥 **Jung Hoo Lee** (SF): L14 .474 / season .328 (+146pts)
+  - 🔥 **Matt Chapman** (SF): L14 .396 / season .260 (+136pts)
   - 🔥 **Heriberto Hernández** (MIA): L14 .372 / season .236 (+136pts)
-  - 🔥 **Bryce Eldridge** (SF): L14 .451 / season .316 (+135pts)
   - ❄️ **Colt Keith** (DET): L14 .103 / season .257 (-154pts) -- FADE props
   - ❄️ **Ildemaro Vargas** (AZ): L14 .125 / season .271 (-146pts) -- FADE props
+  - ❄️ **Carlos Cortes** (ATH): L14 .162 / season .306 (-144pts) -- FADE props
   - ❄️ **Michael Conforto** (CHC): L14 .094 / season .237 (-143pts) -- FADE props
   - ❄️ **Jeff McNeil** (ATH): L14 .089 / season .232 (-143pts) -- FADE props
-  - ❄️ **Justin Foscue** (TEX): L14 .097 / season .235 (-138pts) -- FADE props
 
-## 📈 Streak Regression Alerts (4)
+## 📈 Streak Regression Alerts (6)
 - [WNBA] Connecticut Sun on L4 L10 1-4 -- Connecticut Sun on L4 -- no historical sample
 - [WNBA] Las Vegas Aces on W5 L10 5-0 -- Las Vegas Aces on W5 -- no historical sample
 - [WNBA] Minnesota Lynx on W4 L10 4-0 -- Minnesota Lynx on W4 -- no historical sample
 - [WNBA] Portland Fire on L4 L10 1-4 -- Portland Fire on L4 -- no historical sample
+- [CWS] Alabama Crimson Tide on W3 L10 3-0 -- Alabama Crimson Tide on W3 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**
@@ -139,15 +144,13 @@
   - ⚠️ batter_rbis (Brier Δ -0.0052)
 
 ## 🧠 Training Convergence
-- ELITE: **0** · HEALTHY: 4 · OK: 0 · DEGRADED: **4**
-  - ⚠️ **batter_singles**: DIVERGENT - consistent same-sign moves (structural issue) (cf=0.8832)
-  - ⚠️ **pitcher_strikeouts**: DIVERGENT - consistent same-sign moves (structural issue) (cf=0.8345)
+- ELITE: **0** · HEALTHY: 0 · OK: 0 · DEGRADED: **8**
 
 ## 🤖 Self-Training Status
-- **NBA**: n=5 games · hit rate 40.0% · bias +44.7pp
+- **NBA**: n=5 games · hit rate 60.0% · bias +30.4pp
 - **NHL**: n=5 games · hit rate 40.0% · bias -10.7pp
-- **WNBA**: n=37 games · hit rate 62.2% · bias -18.1pp [calibration applied]
-- **MLS**: n=15 games · hit rate 53.3% · bias -4.8pp [calibration applied]
+- **WNBA**: n=38 games · hit rate 71.0% · bias -15.8pp [calibration applied]
+- **MLS**: n=3 games · hit rate 100.0% · bias -41.4pp
 - **EPL**: n=10 games · hit rate 40.0% · bias +4.2pp
-- **MLB**: n=182 games · hit rate 48.4% · bias -5.6pp [calibration applied]
-- **CWS**: n=17 games · hit rate 70.6% · bias +2.1pp [calibration applied]
+- **MLB**: n=182 games · hit rate 48.4% · bias -4.8pp [calibration applied]
+- **CWS**: n=11 games · hit rate 63.6% · bias +1.2pp

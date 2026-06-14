@@ -1,36 +1,30 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-06-13T23:03:07 UTC_
+_Generated 2026-06-14T05:30:10 UTC_
 
 ## Slate Quality
-- **Tier:** MODEST_NIGHT
-- **Score:** 29
-- **Advisory:** Light slate. Limit to 1-3 strongest plays; use 25% Kelly or less.
+- **Tier:** NO_ACTION_NIGHT
+- **Score:** 1
+- **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 23
-- **Total FADES:** 63
+- **Total STRONG:** 13
+- **Total FADES:** 51
 
 ## Top 5 Curated Picks
-1. **WNBA / napheesa collier** (WNBA_PLAYER, score=147.08)
-   - Play: napheesa collier (PLAYER_STRONG)
-   - Rationale: Cross-sport top pick (WNBA_PLAYER)
-2. **GOLF / Sudarshan Yellamaraju** (GOLF_PLAYER, score=136.14)
-   - Play: Sudarshan Yellamaraju (PLAYER_STRONG)
+1. **GOLF / Jackson Suber** (GOLF_PLAYER, score=182.14)
+   - Play: Jackson Suber (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-3. **GOLF / Wyndham Clark** (GOLF_PLAYER, score=113.93)
-   - Play: Wyndham Clark (PLAYER_STRONG)
+2. **GOLF / Bud Cauley** (GOLF_PLAYER, score=148.14)
+   - Play: Bud Cauley (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-4. **MLB / ?** (MLB_TEAM, score=73.5)
-   - Play: ? (TEAM_STRONG)
-   - Rationale: Cross-sport top pick (MLB_TEAM)
-5. **WNBA / a'ja wilson** (WNBA_PLAYER, score=64.33)
-   - Play: a'ja wilson (PLAYER_STRONG)
-   - Rationale: Cross-sport top pick (WNBA_PLAYER)
+3. **F1 / max verstappen** (F1_DRIVER, score=49.67)
+   - Play: max verstappen (DRIVER_STRONG)
+   - Rationale: Cross-sport top pick (F1_DRIVER)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
-  - Sudarshan Yellamaraju top 10 finish
+  - Jackson Suber top 10 finish
+  - Bud Cauley top 10 finish
   - Wyndham Clark top 10 finish
-  - Tommy Fleetwood top 10 finish
 
 ## Slate ROI Projection
 - **Picks:** 0
@@ -39,13 +33,13 @@ _Generated 2026-06-13T23:03:07 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **MLB** / Sean Burke (PITCHER_FADE)
+- **MLB** / Mike Burrows (PITCHER_FADE)
   - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **MLB** / Kevin Gausman (PITCHER_FADE)
+- **MLB** / Noah Cameron (PITCHER_FADE)
   - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **MLB** / Randy Vásquez (PITCHER_FADE)
+- **MLB** / Kyle Freeland (PITCHER_FADE)
   - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **NBA** / SAS (TEAM_FADE)
-  - Fade angle: team total UNDER
-- **MLB** / Jacob deGrom (PITCHER_FADE)
+- **MLB** / José Soriano (PITCHER_FADE)
   - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **NHL** / samsonov ilya (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
