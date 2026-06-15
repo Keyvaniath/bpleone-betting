@@ -171,6 +171,37 @@
   }).catch(() => {});
   </script>
 
+  <!-- WORLD CUP 2026 (tournament live; auto-hides off-tournament) -->
+  <section class="card" id="worldCupCard" style="margin-bottom: 28px; border-left: 3px solid #3ad17e; display:none;">
+    <div class="card-head">
+      <span>🏆 <strong>2026 World Cup — model board</strong></span>
+      <span class="muted" id="wcCardMeta">--</span>
+    </div>
+    <div style="padding: 4px 0;" id="wcCardList"></div>
+    <div style="padding: 6px 16px 14px;">
+      <a href="worldcup.html" class="link-arrow">All matches · 3-way odds · group tables →</a>
+    </div>
+  </section>
+  <script>
+  fetch("data/worldcup_cards.json", { cache: "no-cache" }).then(r => r.json()).then(d => {
+    const cards = d.cards || [];
+    if (!cards.length) return;   // off-tournament -> stays hidden
+    const esc = s => String(s == null ? "" : s).replace(/[&<>]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c]));
+    const pc = p => p == null ? "—" : (100 * p).toFixed(0) + "%";
+    document.getElementById("worldCupCard").style.display = "block";
+    document.getElementById("wcCardMeta").textContent =
+      `${cards.length} matches modeled · ${d.n_results || 0} played`;
+    document.getElementById("wcCardList").innerHTML = cards.slice(0, 4).map(c => {
+      const fav = (c.p_home >= c.p_away) ? c.home : c.away;
+      const favp = Math.max(c.p_home || 0, c.p_away || 0);
+      return `<a href="worldcup.html" style="display:flex;justify-content:space-between;gap:12px;align-items:center;padding:10px 16px;border-bottom:1px solid rgba(255,255,255,0.04);text-decoration:none;color:var(--text,#dde3ee);font-family:'JetBrains Mono',monospace;font-size:13px;">
+        <span><span class="muted" style="font-size:11px;">${esc(c.date)}</span>&nbsp; <b>${esc(c.away)}</b> @ <b>${esc(c.home)}</b></span>
+        <span style="font-size:11.5px;white-space:nowrap;"><span style="color:#5fe0a0;">${esc(fav)} ${pc(favp)}</span> <span class="muted">· draw ${pc(c.p_draw)} · O2.5 ${pc(c.p_over_2_5)}</span></span>
+      </a>`;
+    }).join("");
+  }).catch(() => {});
+  </script>
+
   <!-- PLAY OF THE DAY PREVIEW -->
   <section class="card-row">
     <div class="card big-card play-card">
