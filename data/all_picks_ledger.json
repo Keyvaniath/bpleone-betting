@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-06-15T19:40:58",
+  "generated_at": "2026-06-15T22:05:25",
   "stake_assumption": "1u flat per pick",
   "total_picks": 10000,
   "n_settled": 6101,
-  "n_pending": 504,
-  "n_void": 3395,
+  "n_pending": 505,
+  "n_void": 3394,
   "wins": 3006,
   "losses": 3090,
   "pushes": 5,
   "hit_rate": 0.4931,
   "net_units": -886.747,
   "roi_pct": -14.55,
-  "n_calibrated_picks": 9599,
+  "n_calibrated_picks": 9598,
   "calibrated_reliability": {
     "n": 5984,
     "ece_raw": 0.1062,
@@ -41,7 +41,7 @@
     ],
     "definition": "Featured/recommended plays only -- Lock of the Day, Top 25, Whale, Sharp, Consensus (hit), Under Alerts, POD. Excludes the experimental prop feeds, which are tracked to train the model, not bet."
   },
-  "n_added_this_run": 0,
+  "n_added_this_run": 1,
   "n_newly_settled_this_run": 0,
   "n_resettled_this_run": 0,
   "n_voided_this_run": 0,
@@ -1908,13 +1908,13 @@
   },
   "by_sport": {
     "NBA": {
-      "n": 286,
+      "n": 285,
       "settled": 24,
       "wins": 18,
       "losses": 6,
       "pushes": 0,
       "pending": 23,
-      "void": 239,
+      "void": 238,
       "net_units": 2.202,
       "hit_rate": 0.75,
       "roi_pct": 9.18,
@@ -1934,12 +1934,12 @@
       "markets": 4
     },
     "MLB": {
-      "n": 7707,
+      "n": 7708,
       "settled": 5004,
       "wins": 2305,
       "losses": 2694,
       "pushes": 5,
-      "pending": 323,
+      "pending": 324,
       "void": 2380,
       "net_units": -1063.697,
       "hit_rate": 0.4611,
@@ -2097,33 +2097,6 @@
     "hit_rate": 0.4206
   },
   "picks": [
-    {
-      "source": "nba_steals_over_0.5",
-      "sport": "NBA",
-      "player_or_matchup": "alex caruso",
-      "market": "STEALS_OVER_0.5",
-      "prob": 0.652,
-      "fair_american": -187,
-      "p_predicted": 0.652,
-      "matchup": "SAS @ OKC",
-      "date": "2026-05-27",
-      "pick_id": "nba_steals_over_0_5|NBA|alex_caruso|STEALS_OVER_0_5|2026-05-27",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
-      "recorded_at": "2026-05-27T08:21:30",
-      "voided": true,
-      "outcome": {
-        "stat": "stl",
-        "actual": 3,
-        "line": 0.5,
-        "side": "OVER",
-        "verify": "alex caruso \u2014 stl = 3 (line 0.5, bet over) on 2026-05-27"
-      },
-      "voided_at": "2026-06-04T18:11:28",
-      "voided_reason": "mis-graded prop (was scored as a full-game total); voided",
-      "p_calibrated": 0.652
-    },
     {
       "source": "nba_steals_over_0.5",
       "sport": "NBA",
@@ -240331,6 +240304,22 @@
       "payout_units": null,
       "recorded_at": "2026-06-15T11:29:26",
       "p_calibrated": 0.7041
+    },
+    {
+      "source": "rlm_strong",
+      "sport": "MLB",
+      "player_or_matchup": "AWA @ HOM",
+      "market": "AWAY ML",
+      "prob": null,
+      "fair_american": 180,
+      "rlm_strength": "STRONG",
+      "line_delta_pp": -25.07,
+      "date": "2026-06-15",
+      "pick_id": "rlm_strong|MLB|AWA___HOM|AWAY_ML|2026-06-15",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-06-15T22:05:25"
     }
   ],
   "note": "Unified pick ledger -- records every pick the model surfaces (top_25 board, whales, consensus, unders, sharp action, locks, POD) and settles each against actual outcomes. Per-source W-L feeds back into calibration so the model learns which modules are reliable. THIS is the training signal."
