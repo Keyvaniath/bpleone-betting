@@ -1,10 +1,10 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:15 F:51
+_NO_ACTION_NIGHT_ | L:0 S:6 F:11
 
 :dart: **Top Picks:**
-1. [GOLF] Jimmy Stanger -- Jimmy Stanger (PLAYER_STRONG)
-2. [GOLF] Jackson Suber -- Jackson Suber (PLAYER_STRONG)
-3. [MLB] ? -- ? (TEAM_STRONG)
+1. [GOLF] Brice Garnett -- Brice Garnett (PLAYER_STRONG)
+2. [GOLF] Viktor Hovland -- Viktor Hovland (PLAYER_STRONG)
+3. [F1] max verstappen -- max verstappen (DRIVER_STRONG)
 
 :coin: Bankroll Advisory: STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 
