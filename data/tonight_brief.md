@@ -16,15 +16,15 @@ _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 - **Logan O'Hoppe** PP_batter_hrr_under_3.5 (MLB-PP) -- 87% / +51.3%
 
 ## 📡 Sharp Money Following Model
-- **LAA @ ARI** ml_away: line moved 48.54% → 51.92% (+3.4pp)
+- **LAA @ ARI** ml_away: line moved 48.54% → 52.61% (+4.1pp)
 
 ## 📉 Under Bets
-- **TOR @ BOS** UNDER 7.5 — model 6.55 [STRONG signal]
+- **TOR @ BOS** UNDER 7.5 — model 6.65 [STRONG signal]
 
 ## 🎰 Tonight's Best Parlay
 - **Ezequiel Tovar** PP_batter_hrr_under_3.5 + **LAA @ ARI** LAA_ML
-- Joint 56% · fair +237 · edge +90.4%
+- Joint 57% · fair +231 · edge +87.7%
 
 ---
-_Generated 2026-06-16T15:29:51_
+_Generated 2026-06-16T22:45:15_
 _Full breakdown: /tonight · Full history: /locks-of-day_

@@ -1,8 +1,8 @@
 # EdgeStat Daily Summary — 2026-06-16
 
-## 🏥 Model Health: 70.5/100 [HEALTHY]
+## 🏥 Model Health: 70.6/100 [HEALTHY]
 - Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 99.7/100
+  - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 54.4/100
   - 🔴 Brier Trend: 29.6/100
   - 🟢 Pipeline Audit: 100.0/100
@@ -10,26 +10,29 @@
   - 🟡 Edge Count: 60.0/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.586)
-- **Total games on board:** 99
-- **Strong home favorites:** 0 | **Strong road dogs:** 0
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.584)
+- **Total games on board:** 102
+- **Strong home favorites:** 1 | **Strong road dogs:** 1
 
 ## 🎯 Top 5 Best Bets
-1. **PIT @ OAK YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-2. **NYM @ CIN YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-3. **COL @ CHC YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-4. **SFG @ ATL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-5. **CLE @ MIL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+1. **BAL @ SEA 4-leg SGP @ -287** (92/100 ★★★★★)
+2. **TBR @ LAD 4-leg SGP @ -204** (82/100 ★★★★★)
+3. **PIT @ OAK YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+4. **NYM @ CIN YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+5. **COL @ CHC YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 
 ## 📡 Sharp Action (Line Movement)
-- [MODERATE] **LAA @ ARI** ml_away: 48.54% → 51.92% (+3.4pp)
+- [MODERATE] **LAA @ ARI** ml_away: 48.54% → 52.61% (+4.1pp)
+
+## 📉 Strong UNDER Signals
+- [STRONG 5.4] **TOR @ BOS** model 6.55 vs market 7.5
 
 ## 🔒 Locks of the Day -- Track Record
-- All-time: **172-35** (83.1% hit rate)
-- Net units: **+5.67u** | ROI: **+44.2%**
-- Last 7d: 38-13 (74.5%) | net +0.93u
+- All-time: **173-35** (83.2% hit rate)
+- Net units: **+5.72u** | ROI: **+44.4%**
+- Last 7d: 39-13 (75.0%) | net +0.97u
 
-**Today's 10 Locks:**
+**Today's 11 Locks:**
 - [MLB-PP] **Drew Gilbert** PP_batter_hrr_under_3.5 · p=87% edge=+51.2% qK=0.062u
 - [MLB-PP] **Lawrence Butler** PP_batter_hrr_under_3.5 · p=87% edge=+51.1% qK=0.062u
 - [MLB-PP] **Alex Bregman** PP_batter_hrr_under_3.5 · p=87% edge=+50.7% qK=0.062u
@@ -40,14 +43,15 @@
 - [MLB-PP] **Ezequiel Tovar** PP_batter_hrr_under_3.5 · p=87% edge=+51.2% qK=0.062u
 - [MLB-PP] **Jorbit Vivas** PP_batter_hrr_under_3.5 · p=87% edge=+51.1% qK=0.062u
 - [MLB-PP] **David Hamilton** PP_batter_hrr_under_3.5 · p=87% edge=+51.1% qK=0.062u
+- [MLB-PP] **Logan O'Hoppe** PP_batter_hrr_under_3.5 · p=87% edge=+51.3% qK=0.062u
 
 ## 🎰 Top Balanced 2-Leg Parlays (40-65% joint)
-- [MLB-PP] Masataka Yoshida PP_batter_hrr_under_ + [MLB] LAA @ ARI LAA_ML
-  Joint: 57% | Fair: 234 | Edge: +89.1%
-- [MLB-PP] Alejandro Osuna PP_batter_hrr_under_ + [MLB] LAA @ ARI LAA_ML
-  Joint: 57% | Fair: 234 | Edge: +89.1%
 - [MLB-PP] Ezequiel Tovar PP_batter_hrr_under_ + [MLB] LAA @ ARI LAA_ML
-  Joint: 57% | Fair: 234 | Edge: +89.0%
+  Joint: 56% | Fair: 237 | Edge: +90.4%
+- [MLB-PP] Masataka Yoshida PP_batter_hrr_under_ + [MLB] LAA @ ARI LAA_ML
+  Joint: 56% | Fair: 237 | Edge: +90.4%
+- [MLB-PP] Logan O'Hoppe PP_batter_hrr_under_ + [MLB] LAA @ ARI LAA_ML
+  Joint: 56% | Fair: 237 | Edge: +90.3%
 
 ## 🎮 Player Play of the Day (cross-sport)
 - **[LOL]** Inspired UNDER 3.5 Kills | MED conviction · model 61.7% fair -161
@@ -56,12 +60,15 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
+## ⚡ Pre-Game HIGH Conviction (1)
+- [CWS] **West Virginia Mountaineers** AWAY (1-1 L10) · model 66.4% fair -198
+
 ## 🔥/❄️ Heat / Cold Signals
 - Hot teams: **2** | Cold teams: **3** | Over-heavy: 0 | Under-heavy: 8
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (38)
-- STEAM_MOVE: **32**
+## ⚠️ Anomaly Detector (41)
+- STEAM_MOVE: **35**
 - COMPOUND_BULLPEN: **4**
 - PEN_MISMATCH: **2**
   - CIN @ SDP (MLB): ML/TOTAL steam since open: ML +13.8pp toward SDP; total +1 (OVER) (6 snapshots)
@@ -70,14 +77,14 @@
   - CHC @ SFG (MLB): ML/TOTAL steam since open: ML +7.1pp toward SFG; total +0.5 (OVER) (6 snapshots)
   - STL @ MIN (MLB): ML/TOTAL steam since open: ML -5.6pp toward STL; total +0.5 (OVER) (7 snapshots)
 
-## 💰 Today's Portfolio (9 picks)
-- Total stake: **$315.0** (31.5% of $1000 bankroll)
-- Expected EV: **$20.06**
-  - #1 [NRFI] $50 on PIT @ OAK YRFI (1st-inning OVER 0.5) (P=86%)
-  - #2 [NRFI] $50 on NYM @ CIN YRFI (1st-inning OVER 0.5) (P=77%)
-  - #3 [NRFI] $50 on COL @ CHC YRFI (1st-inning OVER 0.5) (P=73%)
-  - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
-  - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
+## 💰 Today's Portfolio (7 picks)
+- Total stake: **$335.0** (33.5% of $1000 bankroll)
+- Expected EV: **$29.15**
+  - #1 [SGP] $50 on BAL @ SEA 4-leg SGP @ -287 (P=74%)
+  - #2 [SGP] $50 on TBR @ LAD 4-leg SGP @ -204 (P=67%)
+  - #3 [SGP] $50 on COL @ CHC 4-leg SGP @ -190 (P=66%)
+  - #4 [NRFI] $50 on PIT @ OAK YRFI (1st-inning OVER 0.5) (P=86%)
+  - #5 [NRFI] $50 on NYM @ CIN YRFI (1st-inning OVER 0.5) (P=77%)
 
 ## 🎯 Convergence Picks (18 stacked games)
 - ELITE: **0** · HIGH: 1 · MED: 17
@@ -111,17 +118,14 @@
   - [LEAN] **Bia Mesquita** (7-0-0) vs Melissa Mullins -- fair -167
   - [LEAN] **Kyoji Horiguchi** (36-5-0) vs Manel Kape -- fair -151
 
-## ⛳ Golf Player Heat (from RBC Canadian Open)
-  - 🔥 T1 **Bud Cauley** (USA): -17 total -- finished T1, Sunday -0.8 vs tourney avg
-  - 🔥 T2 **Matt Fitzpatrick** (England): -15 total -- finished T2, Sunday -2.2 vs tourney avg
-  - 🔥 T3 **Viktor Hovland** (Norway): -14 total -- finished T3, Sunday -1.5 vs tourney avg
-  - 🔥 T4 **Jimmy Stanger** (USA): -13 total -- finished T4
-  - 🔥 T5 **Brice Garnett** (USA): -13 total -- finished T5
-  - ❄️ **Kevin Roy** (USA): Sunday +6.2 vs tourney avg
-  - ❄️ **Eric Cole** (USA): Sunday +6.0 vs tourney avg
-  - ❄️ **Luke Clanton** (USA): Sunday +5.8 vs tourney avg
+## ⛳ Golf Player Heat (from U.S. Open)
+  - 🔥 T1 **Harry Higgs** (USA): +0 total -- finished T1
+  - 🔥 T2 **Taylor Montgomery** (USA): +0 total -- finished T2
+  - 🔥 T3 **Chandler Phillips** (USA): +0 total -- finished T3
+  - 🔥 T4 **James Nicholas** (USA): +0 total -- finished T4
+  - 🔥 T5 **Caleb Surratt** (USA): +0 total -- finished T5
 
-## 🔥 MLB Batter Heat (46 HOT / 39 COLD)
+## 🔥 MLB Batter Heat (45 HOT / 39 COLD)
   - 🔥 **Pete Crow-Armstrong** (CHC): L14 .424 / season .277 (+147pts)
   - 🔥 **Jung Hoo Lee** (SF): L14 .474 / season .331 (+143pts)
   - 🔥 **Jac Caglianone** (KC): L14 .417 / season .274 (+143pts)

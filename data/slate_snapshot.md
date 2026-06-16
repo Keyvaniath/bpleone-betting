@@ -10,22 +10,22 @@ _6 picks consolidated from POD + Alpha + Book Edges + Parlay-of-Day._
 ## 🎯 Alpha Pick
 
 - **LAA @ ARI** · LAA_ML
-  Prob 64.7% · Odds -106 · Edge +25.8% · Kelly 0.250
+  Prob 64.9% · Odds -110 · Edge +24.0% · Kelly 0.250
 
 ## 📊 Book Edges
 
 - **MIA @ PHI · AWAY (AWAY)** · TEAM_ML
-  Prob 46.5% · Odds +148 · Edge +15.4% · Kelly 0.104
+  Prob 45.6% · Odds +156 · Edge +16.6% · Kelly 0.106
 - **NYM @ CIN · HOME (HOME)** · TEAM_ML
-  Prob 55.2% · Odds +104 · Edge +12.5% · Kelly 0.120
-- **TOR @ BOS · UNDER · O/U 7.5** · TOTAL_UNDER
-  Prob 58.3% · Odds -110 · Edge +11.4% · Kelly 0.125
+  Prob 56.3% · Odds -102 · Edge +11.6% · Kelly 0.118
+- **CHW @ NYY · OVER · O/U 8.0** · TOTAL_OVER
+  Prob 58.3% · Odds -110 · Edge +11.3% · Kelly 0.125
 
 ## 🎲 Parlay
 
 - **Ezequiel Tovar + LAA @ ARI** · 2-leg
-  Prob 56.5% · Odds +237 · Edge +90.4% · Kelly 0.050
+  Prob 56.6% · Odds +231 · Edge +87.7% · Kelly 0.050
 
 ---
-_Generated 2026-06-16T15:30:01 UTC by EdgeStat._
+_Generated 2026-06-16T22:45:24 UTC by EdgeStat._
 _Stakes assume ¼-Kelly fractional sizing on a flat bankroll._
