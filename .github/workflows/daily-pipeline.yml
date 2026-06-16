@@ -907,6 +907,12 @@ jobs:
       - name: WNBA live scoreboard
         working-directory: python
         run: python wnba_pipeline.py
+      # Basketball model-vs-DraftKings edge board (reads {sport}_state win probs +
+      # the free ESPN moneyline). After the state pipelines so the model probs are
+      # fresh; WNBA in-season, NBA fills in next season.
+      - name: NBA/WNBA book-edge board (free ESPN odds)
+        working-directory: python
+        run: python nba_book_edges.py || true
       - name: WNBA extended props (DD/TD/combos/alt-3PM -- uses fixed WNBA stat indices)
         working-directory: python
         run: python wnba_extended_props.py

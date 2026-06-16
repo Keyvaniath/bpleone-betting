@@ -82,6 +82,13 @@
   <div id="totals-rows"></div>
 </div>
 
+<div class="panel" id="bballPanel" style="display:none;">
+  <h2>Basketball (WNBA / NBA) — Model vs DraftKings Moneyline</h2>
+  <div class="sub" style="margin:-4px 0 10px;">Free ESPN/DK moneyline, de-vigged, vs the model's win prob. Basketball closes sharp — edges are usually small; this is transparency + spotting genuine divergence.</div>
+  <div id="bballRows"></div>
+  <div id="bballMeta" style="font-size:11px;color:var(--muted,#888);margin-top:8px;"></div>
+</div>
+
 <div class="explainer">
   <strong>How to read this:</strong> Edge is calculated against ACTUAL book
   prices (Bovada from matchups.json), not against model fair-odds. A +12%
@@ -162,8 +169,29 @@ async function load() {
   document.getElementById('meta').textContent = 'Generated ' + (d.generated_at || '—');
 }
 
+async function loadBball() {
+  let d;
+  try { d = await (await fetch('data/nba_book_edges.json?t=' + Date.now())).json(); }
+  catch (e) { return; }
+  const games = d.games || [];
+  if (!games.length) return;
+  document.getElementById('bballPanel').style.display = '';
+  const esc = s => String(s == null ? '' : s).replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+  document.getElementById('bballRows').innerHTML = games.map(g => {
+    const big = g.lean_edge_pp >= 3;
+    return `<div style="display:flex;justify-content:space-between;gap:12px;align-items:center;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.05);font-family:'JetBrains Mono',monospace;font-size:13px;">
+      <span><span style="font-size:10px;color:var(--muted,#888);">${esc(g.sport)}</span> <b>${esc(g.matchup)}</b> <span style="color:#58c878;">· ${esc(g.lean)}</span></span>
+      <span style="white-space:nowrap;">model ${(100*g.model_p_home).toFixed(0)}% vs book ${(100*g.book_p_home).toFixed(0)}% <b style="color:${big?'#58c878':'var(--text,#ddd)'};">+${g.lean_edge_pp}pp</b></span>
+    </div>`;
+  }).join('');
+  document.getElementById('bballMeta').textContent =
+    `${d.n_games} games priced · ${d.n_leans} lean(s) ≥ ${d.min_edge_pp}pp · ${d.source} · ${(d.generated_at||'').replace('T',' ').slice(0,16)} UTC`;
+}
+
 load();
+loadBball();
 setInterval(load, 5 * 60 * 1000);
+setInterval(loadBball, 5 * 60 * 1000);
 </script>
 </body>
 </html>
