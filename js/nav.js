@@ -37,106 +37,134 @@
     { href: "kbo-players.html",       label: "KBO Players" },
     { href: "player.html",            label: "MLB Player Search" },
   ];
-  const TOOLS = [
-    { href: "daily-summary.html",       label: "📰 Daily Summary" },
-    { href: "heat-map.html",            label: "🔥 Heat Map (hot/cold)" },
-    { href: "anomalies.html",           label: "⚠️ Anomalies" },
-    { href: "ats-dashboard.html",       label: "📊 ATS Dashboard" },
-    { href: "golf-live.html",           label: "⛳ Golf Live" },
-    { href: "pitcher-matchup.html",     label: "⚾ Pitcher Matchup" },
-    { href: "batter-sp-edges.html",     label: "🎯 Batter vs SP Edges" },
-    { href: "batter-splits.html",       label: "📊 Batter Splits (H/A + D/N)" },
-    { href: "convergence.html",         label: "🎯 Convergence Picks" },
-    { href: "b2b-fatigue.html",         label: "😴 B2B Fatigue" },
-    { href: "model-health.html",        label: "🏥 Model Health" },
-    { href: "calibration-map.html",     label: "🎯 Model Calibration" },
-    { href: "strategy-sim.html",        label: "🎛️ Strategy Simulator" },
-    { href: "clv.html",                 label: "🎯 Closing Line Value" },
-    { href: "line-movement.html",       label: "📈 Line Movement / Steam" },
-    { href: "live-momentum.html",       label: "📈 Live Momentum" },
-    { href: "slate-player-pot.html",    label: "🎯 Slate Player Pot" },
-    { href: "todays-top-plays.html",    label: "⭐ Today's Top Plays" },
-    { href: "high-confidence.html",     label: "💎 High Confidence Board" },
-    { href: "locks-of-day.html",        label: "🔒 Locks of the Day" },
-    { href: "cross-sport-parlays.html", label: "🎰 Cross-Sport Parlays" },
-    { href: "props-parlay.html",        label: "🎯 Props-Only Parlays" },
-    { href: "prizepicks-value.html",    label: "🃏 PrizePicks Value" },
-    { href: "consensus-picks.html",     label: "🎯 Consensus Picks" },
-    { href: "data-health.html",         label: "📡 Data Health" },
-    { href: "backtest-dashboard.html",  label: "Backtest Dashboard" },
-    { href: "reliability.html",         label: "Calibration" },
-    { href: "audit.html",               label: "Audit" },
-    { href: "track-record.html",        label: "Track Record" },
-    { href: "pod-history.html",         label: "POD History" },
-    { href: "hedge.html",               label: "Hedge Calculator" },
-    { href: "bankroll.html",            label: "Bankroll" },
-    { href: "my-bets.html",             label: "My Bets" },
-    { href: "simulator.html",           label: "Simulator" },
-    { href: "linemaker.html",           label: "Linemaker" },
-    { href: "arbitrage.html",           label: "Arbitrage" },
-    { href: "ml-lab.html",              label: "ML Lab" },
-    { href: "models.html",              label: "Models" },
-    { href: "research.html",            label: "Research" },
-    { href: "matchups.html",            label: "Best Matchups" },
-    { href: "parlays.html",             label: "Parlays" },
-    { href: "pickem.html",              label: "Pick-Em" },
-    { href: "props.html",               label: "Props" },
-    { href: "nrfi.html",                label: "NRFI" },
-    { href: "config.html",              label: "Config" },
-    { href: "training.html",            label: "Training" },
-    { href: "learning.html",            label: "Learning" },
-    { href: "residuals.html",           label: "Residuals" },
-    { href: "live.html",                label: "MLB Live" },
-  ];
   // PRIMARY bar items only -- kept short so the top bar never overflows into the
-  // ticker / "Today's Play" button (it was 24 links wrapping over the actions).
+  // ticker / "Today's Play" button. The rest live in four INTENTIONAL, sectioned
+  // dropdowns (Picks / Edges / Models / More) instead of one 49-item dump --
+  // professional IA. { section } entries render as non-clickable group headers.
   const TOP = [
     { href: "index.html",       label: "Dashboard" },
     { href: "top-edges.html",   label: "🎯 Top Edges" },
-    { href: "bet-slate.html",   label: "📝 Bet Slate" },
+    { href: "play-of-day.html", label: "★ Play of Day" },
     { href: "tonight.html",     label: "🌙 Tonight" },
-    { href: "live-now.html",    label: "Live Now" },
-    { href: "play-of-day.html", label: "Play of Day" },
-    { href: "alpha-pick.html",  label: "★ Alpha Pick" },
   ];
-  // Secondary / analytics / meta pages -> collapsed into a "More" dropdown so
-  // every link stays reachable without crowding the bar.
+  // PICKS -- the actionable daily output (the money pages).
+  const PICKS = [
+    { section: "Daily Board" },
+    { href: "todays-top-plays.html",    label: "⭐ Today's Top Plays" },
+    { href: "alpha-pick.html",          label: "★ Alpha Pick" },
+    { href: "high-confidence.html",     label: "💎 High-Confidence Board" },
+    { href: "locks-of-day.html",        label: "🔒 Locks of the Day" },
+    { href: "best-bets.html",           label: "✓ Best Bets" },
+    { href: "consensus-picks.html",     label: "🎯 Consensus Picks" },
+    { href: "convergence.html",         label: "🎯 Convergence Picks" },
+    { href: "fade-picks.html",          label: "✗ Fade Picks" },
+    { section: "Parlays & DFS" },
+    { href: "cross-sport-parlays.html", label: "🎰 Cross-Sport Parlays" },
+    { href: "props-parlay.html",        label: "🎯 Props-Only Parlays" },
+    { href: "prizepicks-value.html",    label: "🃏 PrizePicks Value" },
+    { href: "parlays.html",             label: "Parlays" },
+    { href: "pickem.html",              label: "Pick-Em" },
+    { href: "props.html",               label: "Player Props" },
+  ];
+  // EDGES -- market & line analysis, matchups, live.
+  const EDGES = [
+    { section: "Markets & Lines" },
+    { href: "book-edges.html",          label: "📊 Book Edges" },
+    { href: "deep-edges.html",          label: "🔬 Deep Edges" },
+    { href: "line-movement.html",       label: "📈 Line Movement / Steam" },
+    { href: "line-shop.html",           label: "💰 Line Shop" },
+    { href: "arbitrage.html",           label: "Arbitrage" },
+    { href: "linemaker.html",           label: "Linemaker" },
+    { href: "anomalies.html",           label: "⚠️ Anomalies" },
+    { href: "heat-map.html",            label: "🔥 Heat Map (hot/cold)" },
+    { href: "ats-dashboard.html",       label: "📊 ATS Dashboard" },
+    { href: "nrfi.html",                label: "NRFI" },
+    { href: "slate-player-pot.html",    label: "🎯 Slate Player Pot" },
+    { section: "MLB Matchups" },
+    { href: "pitcher-matchup.html",     label: "⚾ Pitcher Matchup" },
+    { href: "batter-sp-edges.html",     label: "🎯 Batter vs SP Edges" },
+    { href: "batter-splits.html",       label: "📊 Batter Splits (H/A + D/N)" },
+    { href: "b2b-fatigue.html",         label: "😴 B2B Fatigue" },
+    { href: "matchups.html",            label: "Best Matchups" },
+    { section: "Live" },
+    { href: "live-now.html",            label: "Live Now" },
+    { href: "live.html",                label: "MLB Live" },
+    { href: "live-momentum.html",       label: "📈 Live Momentum" },
+    { href: "golf-live.html",           label: "⛳ Golf Live" },
+  ];
+  // MODELS -- the quant: lab, performance proof, self-learning.
+  const MODELS = [
+    { section: "Lab & Research" },
+    { href: "ml-lab.html",              label: "ML Lab" },
+    { href: "models.html",              label: "Models" },
+    { href: "research.html",            label: "Research" },
+    { href: "methodology.html",         label: "📐 Methodology" },
+    { href: "simulator.html",           label: "Simulator" },
+    { href: "backtest-dashboard.html",  label: "Backtest Dashboard" },
+    { href: "backtest-replayer.html",   label: "🔁 Backtest Replayer" },
+    { href: "residuals.html",           label: "Residuals" },
+    { section: "Performance & Proof" },
+    { href: "track-record.html",        label: "Track Record" },
+    { href: "clv.html",                 label: "🎯 Closing Line Value" },
+    { href: "calibration-map.html",     label: "🎯 Model Calibration" },
+    { href: "strategy-sim.html",        label: "🎛️ Strategy Simulator" },
+    { href: "accuracy.html",            label: "📊 Accuracy" },
+    { href: "reliability.html",         label: "Reliability" },
+    { href: "model-health.html",        label: "🏥 Model Health" },
+    { href: "pod-history.html",         label: "POD History" },
+    { href: "lifecycle.html",           label: "📈 Lifecycle" },
+    { href: "module-performance.html",  label: "🧠 Module Performance" },
+    { href: "audit.html",               label: "Audit" },
+    { section: "Self-Learning" },
+    { href: "self-learning.html",       label: "🧠 Self-Learning" },
+    { href: "learning.html",            label: "Learning" },
+    { href: "training.html",            label: "Training" },
+    { href: "learning-integrity.html",  label: "🔬 Learning Integrity" },
+    { href: "model-control.html",       label: "🎛 Model Control" },
+  ];
+  // MORE -- account, system health, daily reads, education.
   const MORE = [
-    { href: "track-record.html",       label: "Track Record" },
-    { href: "best-bets.html",          label: "Best Bets" },
-    { href: "fade-picks.html",         label: "✗ Fade Picks" },
-    { href: "book-edges.html",         label: "📊 Book Edges" },
-    { href: "accuracy.html",           label: "📊 Accuracy" },
-    { href: "self-learning.html",      label: "🧠 Self-Learning" },
-    { href: "deep-edges.html",         label: "🔬 Deep Edges" },
-    { href: "model-control.html",      label: "🎛 Control" },
-    { href: "learning-integrity.html", label: "🔬 Integrity" },
-    { href: "line-shop.html",          label: "💰 Line Shop" },
-    { href: "pulse.html",              label: "📡 Pulse" },
-    { href: "backtest-replayer.html",  label: "🔁 Replayer" },
-    { href: "lifecycle.html",          label: "📈 Lifecycle" },
-    { href: "data-integrity.html",     label: "🔍 Data Integrity" },
-    { href: "module-performance.html", label: "🧠 Module Performance" },
-    { href: "sport-coverage.html",     label: "🌐 Sport Coverage" },
-    { href: "brief.html",              label: "Brief" },
-    { href: "learn.html",              label: "Learn" },
+    { section: "Account" },
+    { href: "bankroll.html",            label: "Bankroll" },
+    { href: "my-bets.html",             label: "My Bets" },
+    { href: "bet-slate.html",           label: "📝 Bet Slate" },
+    { href: "hedge.html",               label: "Hedge Calculator" },
+    { href: "config.html",              label: "Config" },
+    { section: "Data & System" },
+    { href: "data-health.html",         label: "📡 Data Health" },
+    { href: "data-integrity.html",      label: "🔍 Data Integrity" },
+    { href: "sport-coverage.html",      label: "🌐 Sport Coverage" },
+    { href: "pulse.html",               label: "📡 Pulse" },
+    { section: "Daily Reads" },
+    { href: "daily-summary.html",       label: "📰 Daily Summary" },
+    { href: "brief.html",               label: "Brief" },
+    { section: "Learn" },
+    { href: "learn.html",               label: "🎓 EdgeStat Academy" },
+    { href: "methodology.html",         label: "📐 Methodology" },
+    { href: "about.html",               label: "About" },
   ];
 
   function buildDropdown(label, items, currentPath) {
-    const ddId = "dd_" + label.replace(/\s/g, "_");
+    const ddId = "dd_" + label.replace(/[^a-z0-9]/gi, "_");
+    let seenSection = false;
     const itemsHtml = items.map(i => {
-      const isActive = currentPath === i.href ? " style='color:var(--accent,#d4a04a);'" : "";
-      return `<a href="${i.href}"${isActive}>${i.label}</a>`;
+      if (i.section) {
+        const bt = seenSection ? "border-top:1px solid rgba(255,255,255,0.06);margin-top:5px;" : "";
+        seenSection = true;
+        return `<div style="font-size:9px;text-transform:uppercase;letter-spacing:.7px;color:var(--muted,#6b7280);padding:8px 10px 4px;${bt}">${i.section}</div>`;
+      }
+      const active = currentPath === i.href.toLowerCase();
+      const col = active ? "var(--accent,#d4a04a)" : "var(--text-2,#aaa)";
+      const wt = active ? "font-weight:600;" : "";
+      return `<a href="${i.href}" style="display:block;padding:6px 10px;font-size:12px;color:${col};${wt}text-decoration:none;border-radius:4px;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background=''">${i.label}</a>`;
     }).join("");
-    // CHANGED vs original: position:fixed so the .mainnav's overflow:auto
-    // can't clip the menu. top/left are set by JS from the button's
-    // getBoundingClientRect() each time the menu opens. z-index bumped to
-    // 10000 so the menu stays above the topbar (z-index 100) and other
-    // overlays.
+    // position:fixed so the .mainnav's overflow:auto can't clip the menu;
+    // top/left are set by JS from the button's getBoundingClientRect() each
+    // time the menu opens. z-index 10000 keeps it above the topbar (z 100).
     return `<div class="dd-wrap" style="position:relative; display:inline-block;">
       <button type="button" class="dd-btn" data-dd="${ddId}" style="background:none;border:none;color:var(--text-2,#aaa);font-size:12px;font-weight:500;padding:3px 6px;cursor:pointer;font-family:inherit;border-bottom:2px solid transparent;">${label} ▾</button>
-      <div class="dd-menu" id="${ddId}" style="display:none;position:fixed;top:0;left:0;background:#0c0e13;border:1px solid rgba(255,255,255,0.1);border-radius:6px;padding:8px;min-width:200px;z-index:10000;box-shadow:0 8px 24px rgba(0,0,0,0.4);max-height:60vh;overflow-y:auto;">
-        ${itemsHtml.replace(/<a /g, '<a style="display:block;padding:6px 10px;font-size:12px;color:var(--text-2,#aaa);text-decoration:none;border-radius:4px;" onmouseover="this.style.background=\'rgba(255,255,255,0.05)\'" onmouseout="this.style.background=\'\'" ')}
+      <div class="dd-menu" id="${ddId}" style="display:none;position:fixed;top:0;left:0;background:#0c0e13;border:1px solid rgba(255,255,255,0.1);border-radius:6px;padding:6px;min-width:212px;z-index:10000;box-shadow:0 8px 24px rgba(0,0,0,0.4);max-height:74vh;overflow-y:auto;">
+        ${itemsHtml}
       </div>
     </div>`;
   }
@@ -149,9 +177,11 @@
     }).join("");
     const sportsDd = buildDropdown("Sports", SPORTS, path);
     const playersDd = buildDropdown("Players", PLAYERS, path);
-    const toolsDd = buildDropdown("Tools", TOOLS, path);
+    const picksDd = buildDropdown("Picks", PICKS, path);
+    const edgesDd = buildDropdown("Edges", EDGES, path);
+    const modelsDd = buildDropdown("Models", MODELS, path);
     const moreDd = buildDropdown("More", MORE, path);
-    return topHtml + sportsDd + playersDd + toolsDd + moreDd;
+    return topHtml + sportsDd + playersDd + picksDd + edgesDd + modelsDd + moreDd;
   }
 
   // Anchor the fixed-position menu to the button's current screen position.
