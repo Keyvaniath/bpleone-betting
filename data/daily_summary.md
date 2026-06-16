@@ -4,31 +4,28 @@
 
 _Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
 
-_Generated at 2026-06-16T22:46:20 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-06-16T23:30:06 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
-**SFG @ ATL - OVER_9.0**
-- Market: -110
-- Model probability: 73.4%
-- Raw edge: +40.12%
+**LAA @ ARI - LAA_ML**
+- Market: -109
+- Model probability: 73.3%
+- Raw edge: +40.56%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
 
-## Full Slate (12 games)
+## Full Slate (9 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 7:05p ET | CHW @ NYY | Yankee Stadium | 64F 5mph | OVER_8.0 +28.07% |
-| 7:10p ET | NYM @ CIN | Great American Ball Park | 67F 12mph | OVER_10.0 +31.91% |
-| 7:15p ET | SFG @ ATL | Truist Park | 68F 3mph | OVER_9.0 +40.12% |
 | 7:40p ET | CLE @ MIL | American Family Field | indoor | OVER_8.0 +36.68% |
-| 7:45p ET | SDP @ STL | Busch Stadium | 68F 4mph | STL_ML +29.21% |
-| 8:05p ET | COL @ CHC | Wrigley Field | 60F 6mph | OVER_10.0 +30.99% |
+| 7:45p ET | SDP @ STL | Busch Stadium | 68F 4mph | STL_ML +30.21% |
+| 8:05p ET | COL @ CHC | Wrigley Field | 59F 6mph | OVER_10.0 +30.17% |
 | 8:05p ET | MIN @ TEX | Globe Life Field | indoor | OVER_8.0 +29.93% |
 | 8:10p ET | DET @ HOU | Daikin Park | indoor | UNDER_8.5 +14.25% |
-| 9:40p ET | LAA @ ARI | Chase Field | indoor | LAA_ML +39.95% |
+| 9:40p ET | LAA @ ARI | Chase Field | indoor | LAA_ML +40.56% |
 | 9:40p ET | PIT @ OAK | Sutter Health Park | 67F 10mph | -- |
 | 9:40p ET | BAL @ SEA | T-Mobile Park | indoor | OVER_7.5 +10.34% |
 | 10:10p ET | TBR @ LAD | UNIQLO Field at Dodger Stadium | 61F 4mph | LAD_ML +9.8% |
@@ -65,20 +62,14 @@ Cumulative graded plays: 118214. Wins: 87366. Hit rate: 73.9%.
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
 | BAL @ SEA | 58.0% | -138 | 2.72 | +150 | -150 |
-| CHW @ NYY | 46.4% | +115 | 3.85 | +177 | -177 |
 | CLE @ MIL | 28.6% | +250 | 6.27 | +164 | -164 |
 | COL @ CHC | 27.5% | +264 | 6.68 | +109 | -109 |
 | DET @ HOU | 53.2% | -114 | 3.16 | -143 | +143 |
-| KCR @ WSN | 37.6% | +166 | 4.9 | -- | -- |
 | LAA @ ARI | 37.4% | +167 | 4.92 | +495 | -495 |
-| MIA @ PHI | 41.8% | +140 | 4.37 | -- | -- |
 | MIN @ TEX | 31.6% | +217 | 5.77 | +106 | -106 |
-| NYM @ CIN | 23.1% | +333 | 7.86 | -104 | +104 |
 | PIT @ OAK | 13.8% | +623 | 10.28 | +125 | -125 |
 | SDP @ STL | 36.9% | +171 | 5.11 | -132 | +132 |
-| SFG @ ATL | 27.7% | +261 | 6.5 | -119 | +119 |
 | TBR @ LAD | 56.6% | -130 | 2.89 | -113 | +113 |
-| TOR @ BOS | 43.8% | +129 | 4.13 | -- | -- |
 
 ## Travel / Rest Flags
 

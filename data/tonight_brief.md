@@ -14,17 +14,16 @@ _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 - **Jorbit Vivas** PP_batter_hrr_under_3.5 (MLB-PP) -- 87% / +51.1%
 - **David Hamilton** PP_batter_hrr_under_3.5 (MLB-PP) -- 87% / +51.1%
 - **Logan O'Hoppe** PP_batter_hrr_under_3.5 (MLB-PP) -- 87% / +51.3%
+- **Francisco Alvarez** PP_batter_hrr_under_3.5 (MLB-PP) -- 87% / +51.0%
+- **Rhys Hoskins** PP_batter_hrr_under_3.5 (MLB-PP) -- 87% / +51.0%
 
 ## 📡 Sharp Money Following Model
 - **LAA @ ARI** ml_away: line moved 48.54% → 52.61% (+4.1pp)
 
-## 📉 Under Bets
-- **TOR @ BOS** UNDER 7.5 — model 6.65 [STRONG signal]
-
 ## 🎰 Tonight's Best Parlay
 - **Ezequiel Tovar** PP_batter_hrr_under_3.5 + **LAA @ ARI** LAA_ML
-- Joint 57% · fair +231 · edge +87.7%
+- Joint 57% · fair +233 · edge +88.2%
 
 ---
-_Generated 2026-06-16T22:45:15_
+_Generated 2026-06-16T23:28:45_
 _Full breakdown: /tonight · Full history: /locks-of-day_

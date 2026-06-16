@@ -1,18 +1,18 @@
 # EdgeStat Daily Summary — 2026-06-16
 
-## 🏥 Model Health: 70.6/100 [HEALTHY]
+## 🏥 Model Health: 70.4/100 [HEALTHY]
 - Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 99.9/100
+  - 🟢 Calibration Freshness: 100.0/100
   - 🔴 Hit Rate Trend: 54.4/100
   - 🔴 Brier Trend: 29.6/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 88.9/100
-  - 🟡 Edge Count: 60.0/100
+  - 🟡 Data Health: 77.8/100
+  - 🟢 Edge Count: 80.0/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.584)
-- **Total games on board:** 102
-- **Strong home favorites:** 1 | **Strong road dogs:** 1
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.586)
+- **Total games on board:** 101
+- **Strong home favorites:** 1 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
 1. **BAL @ SEA 4-leg SGP @ -287** (92/100 ★★★★★)
@@ -25,7 +25,7 @@
 - [MODERATE] **LAA @ ARI** ml_away: 48.54% → 52.61% (+4.1pp)
 
 ## 📉 Strong UNDER Signals
-- [STRONG 5.4] **TOR @ BOS** model 6.55 vs market 7.5
+- [STRONG 5.2] **TOR @ BOS** model 6.65 vs market 7.5
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **173-35** (83.2% hit rate)
@@ -47,11 +47,11 @@
 
 ## 🎰 Top Balanced 2-Leg Parlays (40-65% joint)
 - [MLB-PP] Ezequiel Tovar PP_batter_hrr_under_ + [MLB] LAA @ ARI LAA_ML
-  Joint: 56% | Fair: 237 | Edge: +90.4%
+  Joint: 57% | Fair: 231 | Edge: +87.7%
 - [MLB-PP] Masataka Yoshida PP_batter_hrr_under_ + [MLB] LAA @ ARI LAA_ML
-  Joint: 56% | Fair: 237 | Edge: +90.4%
+  Joint: 57% | Fair: 231 | Edge: +87.6%
 - [MLB-PP] Logan O'Hoppe PP_batter_hrr_under_ + [MLB] LAA @ ARI LAA_ML
-  Joint: 56% | Fair: 237 | Edge: +90.3%
+  Joint: 57% | Fair: 231 | Edge: +87.5%
 
 ## 🎮 Player Play of the Day (cross-sport)
 - **[LOL]** Inspired UNDER 3.5 Kills | MED conviction · model 61.7% fair -161
@@ -59,9 +59,6 @@
 - **[LOL]** Peyz OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
-
-## ⚡ Pre-Game HIGH Conviction (1)
-- [CWS] **West Virginia Mountaineers** AWAY (1-1 L10) · model 66.4% fair -198
 
 ## 🔥/❄️ Heat / Cold Signals
 - Hot teams: **2** | Cold teams: **3** | Over-heavy: 0 | Under-heavy: 8
@@ -86,20 +83,20 @@
   - #4 [NRFI] $50 on PIT @ OAK YRFI (1st-inning OVER 0.5) (P=86%)
   - #5 [NRFI] $50 on NYM @ CIN YRFI (1st-inning OVER 0.5) (P=77%)
 
-## 🎯 Convergence Picks (18 stacked games)
-- ELITE: **0** · HIGH: 1 · MED: 17
-  - [HIGH] Los Angeles Sparks @ Golden State Valkyries : 3 signals (HEAT_COLD, HEAT_COLD, ATS)
+## 🎯 Convergence Picks (16 stacked games)
+- ELITE: **0** · HIGH: 1 · MED: 15
+  - [HIGH] Toronto Tempo @ Indiana Fever : 3 signals (HEAT_COLD, HEAT_COLD, ATS)
   - [MED] New York Knicks @ San Antonio Spurs : 2 signals (ATS, ATS)
   - [MED] Carolina Hurricanes @ Vegas Golden Knights : 2 signals (HEAT_COLD, HEAT_COLD)
-  - [MED] Las Vegas Aces @ Dallas Wings : 2 signals (HEAT_COLD, ATS)
-  - [MED] Portland Fire @ Minnesota Lynx : 2 signals (HEAT_COLD, ATS)
+  - [MED] Atlanta United FC @ Columbus Crew : 2 signals (ATS, ATS)
+  - [MED] Philadelphia Union @ Inter Miami CF : 2 signals (ATS, ATS)
 
 ## ⚾ Top MLB Pitcher K Plays (9)
 - **Drew Rasmussen** OVER 4.5 K (76%) fair -321
+- **Jesús Luzardo** OVER 4.5 K (75%) fair -295
 - **Reid Detmers** OVER 6.5 K (72%) fair -258
 - **Hunter Brown** OVER 6.5 K (70%) fair -235
 - **Logan Gilbert** OVER 4.5 K (70%) fair -232
-- **Jesús Luzardo** OVER 4.5 K (70%) fair -229
 
 ## 🏀 NBA Player Heat (18 HOT / 22 COLD)
   - 🔥 **Jeremiah Fears** (NO): L5 31.8/5.8/6.0 vs season 16.9/3.2/4.0 [PTS +14.9, REB +2.6, AST +2.0]
@@ -125,17 +122,20 @@
   - 🔥 T4 **James Nicholas** (USA): +0 total -- finished T4
   - 🔥 T5 **Caleb Surratt** (USA): +0 total -- finished T5
 
-## 🔥 MLB Batter Heat (45 HOT / 39 COLD)
+## 🔥 MLB Batter Heat (46 HOT / 42 COLD)
   - 🔥 **Pete Crow-Armstrong** (CHC): L14 .424 / season .277 (+147pts)
+  - 🔥 **Matt Chapman** (SF): L14 .405 / season .260 (+145pts)
   - 🔥 **Jung Hoo Lee** (SF): L14 .474 / season .331 (+143pts)
-  - 🔥 **Jac Caglianone** (KC): L14 .417 / season .274 (+143pts)
+  - 🔥 **Jac Caglianone** (KC): L14 .413 / season .272 (+141pts)
   - 🔥 **Dominic Canzone** (SEA): L14 .425 / season .286 (+139pts)
-  - 🔥 **Blaze Alexander** (BAL): L14 .441 / season .303 (+138pts)
   - ❄️ **Ildemaro Vargas** (AZ): L14 .081 / season .267 (-186pts) -- FADE props
   - ❄️ **Chandler Simpson** (TB): L14 .081 / season .266 (-185pts) -- FADE props
   - ❄️ **Carlos Cortes** (ATH): L14 .167 / season .294 (-127pts) -- FADE props
   - ❄️ **Michael Conforto** (CHC): L14 .100 / season .227 (-127pts) -- FADE props
   - ❄️ **Colby Thomas** (ATH): L14 .115 / season .241 (-126pts) -- FADE props
+
+## 📈 Streak Regression Alerts (1)
+- [WNBA] Indiana Fever on W3 L10 4-1 -- Indiana Fever on W3 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**
