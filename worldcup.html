@@ -51,6 +51,11 @@
 
   <div class="honest" id="method">Loading…</div>
 
+  <section class="card" id="bestCard" style="margin-bottom:22px; border-left:3px solid #5fe0a0; display:none;">
+    <div class="card-head"><span>⭐ <strong>EdgeStat's Best Bets</strong> — ranked across the slate</span><span class="muted" id="bestMeta">--</span></div>
+    <div style="padding:6px 0;" id="bestList"></div>
+  </section>
+
   <section class="card" style="margin-bottom:22px;">
     <div class="card-head"><span>📅 Upcoming Matches — model board</span><span class="muted" id="meta">--</span></div>
     <div style="padding:14px 16px;"><div class="wcgrid" id="cards"></div></div>
@@ -90,6 +95,19 @@ Promise.all([
   for (const k in scorers) scorers[k].sort((a, b) => (b.p_scores_1_plus || 0) - (a.p_scores_1_plus || 0));
 
   document.getElementById("method").innerHTML = "<b>How honest is this?</b> " + esc(d.method_note || "");
+
+  // Best Bets board (ranked across the slate, top 8)
+  const best = (d.best_bets || []).slice(0, 8);
+  if (best.length) {
+    document.getElementById("bestCard").style.display = "block";
+    document.getElementById("bestMeta").textContent = `${(d.best_bets || []).length} qualifying plays`;
+    document.getElementById("bestList").innerHTML = best.map((b, i) => `
+      <div style="display:flex;justify-content:space-between;gap:12px;align-items:center;padding:9px 16px;border-bottom:1px solid rgba(255,255,255,.04);font-family:'JetBrains Mono',monospace;font-size:13px;">
+        <span><span class="muted" style="font-size:11px;">#${i + 1}</span>&nbsp; <b>${esc(b.play)}</b> <span class="muted" style="font-size:11px;">${esc(b.matchup)} · ${esc(b.date)}</span></span>
+        <span style="white-space:nowrap;"><b style="color:#5fe0a0;">${pc(b.prob)}</b>${b.fair != null ? ` <span class="muted">(${ml(b.fair)})</span>` : ""} <span class="prop" style="margin:0 0 0 4px;">${b.kind === "result" ? "result" : "prop"}</span></span>
+      </div>`).join("");
+  }
+
   const cards = d.cards || [];
   document.getElementById("meta").textContent = `${cards.length} matches modeled · ${(d.generated_at || "").replace("T", " ").slice(0, 16)} UTC`;
   document.getElementById("cards").innerHTML = cards.map(c => {

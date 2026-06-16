@@ -248,6 +248,23 @@ def run() -> Dict[str, Any]:
         cards.append(card)
     cards.sort(key=lambda c: (c.get("date") or "", c["matchup"]))
 
+    # Best Bets board: the highest-conviction plays across the whole slate, ranked.
+    # One play per (match, market) so a single game can't flood the board; result
+    # picks need >=55%, props >=55% (past the noise floor with margin).
+    best: List[Dict[str, Any]] = []
+    for c in cards:
+        rec = c.get("rec") or {}
+        pred = rec.get("prediction") or {}
+        if pred.get("prob", 0) >= 0.55:
+            best.append({"matchup": c["matchup"], "date": c["date"], "play": pred["label"],
+                         "market": pred["market"], "prob": pred["prob"], "fair": pred.get("fair"),
+                         "kind": "result"})
+        for p in (rec.get("props") or []):
+            if p.get("prob", 0) >= 0.55:
+                best.append({"matchup": c["matchup"], "date": c["date"], "play": p["label"],
+                             "market": p["market"], "prob": p["prob"], "fair": None, "kind": "prop"})
+    best.sort(key=lambda b: -b["prob"])
+
     out = {
         "generated_at": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
         "n_cards": len(cards),
@@ -257,6 +274,7 @@ def run() -> Dict[str, Any]:
                         f"weight = {SEED_K:g}/({SEED_K:g}+matches played), so the tournament's own "
                         "evidence takes over by the knockouts. Goals: ~2.6/match split by elo gap, "
                         "independent Poisson grid -> 1X2 / over 2.5 / BTTS. Fair odds are 0-vig."),
+        "best_bets": best,
         "cards": cards,
         "standings": st,
         "results": sorted(results, key=lambda m: m.get("date") or ""),
