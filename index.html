@@ -192,11 +192,14 @@
     document.getElementById("wcCardMeta").textContent =
       `${cards.length} matches modeled · ${d.n_results || 0} played`;
     document.getElementById("wcCardList").innerHTML = cards.slice(0, 4).map(c => {
-      const fav = (c.p_home >= c.p_away) ? c.home : c.away;
-      const favp = Math.max(c.p_home || 0, c.p_away || 0);
+      const pred = (c.rec || {}).prediction || {};
+      const prop = ((c.rec || {}).props || [])[0];
+      const pickTxt = pred.label
+        ? `<span style="color:#5fe0a0;">${esc(pred.label)} ${pc(pred.prob)}</span>${prop ? ` <span class="muted">· ${esc(prop.label)} ${pc(prop.prob)}</span>` : ""}`
+        : `<span class="muted">draw ${pc(c.p_draw)} · O2.5 ${pc(c.p_over_2_5)}</span>`;
       return `<a href="worldcup.html" style="display:flex;justify-content:space-between;gap:12px;align-items:center;padding:10px 16px;border-bottom:1px solid rgba(255,255,255,0.04);text-decoration:none;color:var(--text,#dde3ee);font-family:'JetBrains Mono',monospace;font-size:13px;">
         <span><span class="muted" style="font-size:11px;">${esc(c.date)}</span>&nbsp; <b>${esc(c.away)}</b> @ <b>${esc(c.home)}</b></span>
-        <span style="font-size:11.5px;white-space:nowrap;"><span style="color:#5fe0a0;">${esc(fav)} ${pc(favp)}</span> <span class="muted">· draw ${pc(c.p_draw)} · O2.5 ${pc(c.p_over_2_5)}</span></span>
+        <span style="font-size:11.5px;white-space:nowrap;">${pickTxt}</span>
       </a>`;
     }).join("");
   }).catch(() => {});

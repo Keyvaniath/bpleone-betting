@@ -103,6 +103,23 @@ bpleone-site/
   (k=8) + clamped [0.92, 1.08], multiplied into all six WNBA prop generators'
   pace factor (the static preseason tables stay as the baseline; this is the live
   trim — and it covers the 2026 expansion teams the static tables don't know).
+- **2026 World Cup desk (2026-06):** `worldcup_model.py` → `data/worldcup_cards.json`
+  → `worldcup.html` (in the Sports nav + a dashboard card). A proper **3-WAY**
+  match model (soccer needs draws — ~25% of group games): strength = coarse FIFA
+  seed bands (`SEED_BAND`, labeled on every card) blended with in-tournament record
+  elo, seed weight `2/(2+gp)` so the tournament's own results take over by the
+  knockouts. Goals = per-side expected from the elo gap on an exp scale (`HALF_GOALS`
+  1.36, `GOAL_K` 0.50) so the TOTAL flexes with mismatch (was a flat 2.6 — over/under
+  is now a real per-game signal) → independent-Poisson grid → 1X2 / O2.5 / BTTS.
+  `_recommend()` attaches `rec` {prediction, props[]} per card + a ranked `best_bets`
+  board; `worldcup.html` leads each card with an "EdgeStat's Pick" strip + anytime
+  scorer chip. **Fixtures come ONLY from the live scoreboard (state="pre"); the
+  state-file fallback was removed** (its stale status leaked live/finished games as
+  upcoming cards) + an orientation-agnostic "already played" guard. Model picks flow
+  to the ledger as `wc_model_*` (experimental) and settle off the soccer grader.
+  **Ordering constraint:** `worldcup_model` must run BEFORE `soccer_goalscorer_props`
+  (which now reads WC fixtures from `worldcup_cards.json`) and before `run_props_batch`
+  — enforced in daily-pipeline; both refresh in the 2h heartbeat through July 19.
 - Commit-message convention: end with `Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>`.
 
 ---
