@@ -29,10 +29,11 @@
   .prop { display:inline-block; font-size:11px; padding:3px 8px; border-radius:5px; background:rgba(255,255,255,.06); margin:2px 5px 0 0; }
   .prop.scorer { background:rgba(99,140,255,.13); color:#9db8ff; }
   .why { color:var(--muted,#8a93a6); font-size:11px; margin-top:6px; line-height:1.5; }
-  .grpgrid { display:grid; grid-template-columns:repeat(auto-fill,minmax(290px,1fr)); gap:13px; }
+  .grpgrid { display:grid; grid-template-columns:repeat(auto-fill,minmax(322px,1fr)); gap:13px; }
   .grpbox { border:1px solid var(--border,#222a36); border-radius:10px; padding:10px 12px; }
   .grpbox h4 { margin:0 0 7px; font-size:13px; }
-  .grow { display:grid; grid-template-columns:16px 1fr 26px 32px 30px 52px; gap:6px; font-family:'JetBrains Mono',monospace; font-size:11.5px; padding:3px 5px; align-items:center; border-radius:4px; }
+  .grow { display:grid; grid-template-columns:14px 1fr 22px 28px 26px 46px 46px; gap:5px; font-family:'JetBrains Mono',monospace; font-size:11.5px; padding:3px 5px; align-items:center; border-radius:4px; }
+  .grow .adv { text-align:right; font-weight:600; } .grow .gh.adv { font-weight:400; }
   .grow.qual { background:rgba(88,200,120,.10); }
   .grow .gh { color:var(--muted,#8a93a6); font-size:9px; text-transform:uppercase; letter-spacing:.4px; }
   .restrip { font-family:'JetBrains Mono',monospace; font-size:12.5px; display:flex; gap:10px 22px; flex-wrap:wrap; margin:8px 0 4px; }
@@ -81,8 +82,8 @@
   </section>
 
   <section class="card" style="margin-bottom:28px;" id="grpCard">
-    <div class="card-head"><span>📊 Group Tables</span><span class="muted">top 2 advance · ✓ = clinched</span></div>
-    <div style="padding:12px 16px;"><div class="grpgrid" id="groups"><p class="muted">Loading group tables…</p></div></div>
+    <div class="card-head"><span>📊 Group Tables &amp; Advancement Odds</span><span class="muted">top 2 + 8 best thirds advance · Adv% = Monte Carlo</span></div>
+    <div style="padding:12px 16px;"><div class="grpgrid" id="groups"><p class="muted">Loading group tables…</p></div><p class="muted" id="advMeta" style="font-family:'JetBrains Mono',monospace;font-size:11px;margin:10px 2px 0;"></p></div>
   </section>
 </main>
 
@@ -99,7 +100,8 @@ Promise.all([
   fetch("data/worldcup_cards.json", { cache: "no-cache" }).then(r => r.json()),
   fetch("data/soccer_goalscorer_props.json", { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
   fetch("data/worldcup_accuracy.json", { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
-]).then(([d, gs, acc]) => {
+  fetch("data/worldcup_advancement.json", { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
+]).then(([d, gs, acc, advData]) => {
   // Model Report Card
   if (acc && acc.n_settled) {
     document.getElementById("rcCard").style.display = "block";
@@ -193,16 +195,31 @@ Promise.all([
     `<span>${esc(m.date)} · <b>${esc(m.away)} ${m.away_score} – ${m.home_score} ${esc(m.home)}</b></span>`).join("")
     || '<span class="muted">First finals land after the opening matchday.</span>';
 
-  // Official group tables (A-L); top 2 highlighted as advancing.
+  // Official group tables (A-L); top 2 highlighted as advancing. The Adv column
+  // is the forward-looking Monte Carlo advance probability (worldcup_advancement).
   const groups = d.groups || [];
+  const adv = advData && advData.available ? advData : null;
+  const advByTeam = {};
+  if (adv) for (const g of (adv.groups || [])) for (const t of (g.teams || [])) advByTeam[t.team] = t;
+  const advCell = (team) => {
+    const a = advByTeam[team];
+    if (!a) return '<span class="adv muted">—</span>';
+    const v = a.p_advance;
+    const txt = v >= 0.9995 ? "✓" : (v <= 0.0005 ? "✗" : pc(v));
+    const col = v >= 0.6 ? "#5fe0a0" : (v >= 0.35 ? "#ffc15e" : "#ff8a8a");
+    return `<span class="adv" style="color:${col};" title="win group ${pc(a.p_win_group)} · advance ${pc(v)}">${txt}</span>`;
+  };
   const groupsEl = document.getElementById("groups");
   if (groups.length) {
     groupsEl.innerHTML = groups.map(g => `
       <div class="grpbox">
         <h4>${esc(g.name)}</h4>
-        <div class="grow"><span class="gh">#</span><span class="gh">Team</span><span class="gh">GP</span><span class="gh">Pts</span><span class="gh">GD</span><span class="gh">W-D-L</span></div>
-        ${g.teams.map((t, i) => `<div class="grow ${i < 2 ? "qual" : ""}"><span>${t.rank}</span><span>${esc(t.team)}${t.advanced ? ' <span style="color:#5fe0a0;">✓</span>' : ""}</span><span>${t.gp}</span><span><b>${t.pts}</b></span><span>${t.gd >= 0 ? "+" : ""}${t.gd}</span><span class="muted">${t.w}-${t.d}-${t.l}</span></div>`).join("")}
+        <div class="grow"><span class="gh">#</span><span class="gh">Team</span><span class="gh">GP</span><span class="gh">Pts</span><span class="gh">GD</span><span class="gh">W-D-L</span><span class="gh adv">Adv</span></div>
+        ${g.teams.map((t, i) => `<div class="grow ${i < 2 ? "qual" : ""}"><span>${t.rank}</span><span>${esc(t.team)}${t.advanced ? ' <span style="color:#5fe0a0;">✓</span>' : ""}</span><span>${t.gp}</span><span><b>${t.pts}</b></span><span>${t.gd >= 0 ? "+" : ""}${t.gd}</span><span class="muted">${t.w}-${t.d}-${t.l}</span>${advCell(t.team)}</div>`).join("")}
       </div>`).join("");
+    document.getElementById("advMeta").textContent = adv
+      ? `Adv% = P(top 2 or one of 8 best third-placed) from ${adv.n_sims.toLocaleString()} Monte Carlo sims · ${adv.n_fixtures_remaining} group fixtures left · ${(adv.generated_at || "").replace("T", " ").slice(0, 16)} UTC`
+      : "Advancement sim fills in once the group stage is underway.";
   } else {
     // fallback: pooled results table when the standings endpoint is unavailable
     const st = Object.entries(d.standings || {}).map(([t, v]) => ({ t, ...v }))

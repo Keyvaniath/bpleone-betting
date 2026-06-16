@@ -747,6 +747,9 @@ jobs:
       - name: World Cup 3-way match model (cards + standings)
         working-directory: python
         run: python worldcup_model.py || true
+      - name: World Cup group-advancement Monte Carlo (P(advance) per team)
+        working-directory: python
+        run: python worldcup_advancement.py || true
       # 2026-05-21: batched runner for all prop modules. Safety net that re-runs
       # the ~62 pure-projection modules in a SINGLE Python process to share
       # startup overhead. Next cycle, the individual steps above can be removed.

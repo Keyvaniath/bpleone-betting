@@ -79,12 +79,13 @@ jobs:
       # World Cup hub stays live through the day: re-price off fresh finals
       # (standings/elo blend) every beat during the tournament.
       - name: World Cup model refresh (in-tournament)
-        timeout-minutes: 2
+        timeout-minutes: 3
         continue-on-error: true
         working-directory: python
         run: |
           python worldcup_pipeline.py || true
           python worldcup_model.py || true
+          python worldcup_advancement.py || true
 
       # Self-learning -- update every 5 min, all day
       - name: All-picks unified ledger (settle + log)
