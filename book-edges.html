@@ -179,13 +179,18 @@ async function loadBball() {
   const esc = s => String(s == null ? '' : s).replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
   document.getElementById('bballRows').innerHTML = games.map(g => {
     const big = g.lean_edge_pp >= 3;
+    const clv = g.clv_pp != null
+      ? ` <span style="color:${g.beat_close ? '#58c878' : '#e0a13a'};font-size:11px;" title="closing line value: line move toward our lean since open">CLV ${g.clv_pp>=0?'+':''}${g.clv_pp}pp</span>`
+      : '';
     return `<div style="display:flex;justify-content:space-between;gap:12px;align-items:center;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.05);font-family:'JetBrains Mono',monospace;font-size:13px;">
-      <span><span style="font-size:10px;color:var(--muted,#888);">${esc(g.sport)}</span> <b>${esc(g.matchup)}</b> <span style="color:#58c878;">· ${esc(g.lean)}</span></span>
+      <span><span style="font-size:10px;color:var(--muted,#888);">${esc(g.sport)}</span> <b>${esc(g.matchup)}</b> <span style="color:#58c878;">· ${esc(g.lean)}</span>${clv}</span>
       <span style="white-space:nowrap;">model ${(100*g.model_p_home).toFixed(0)}% vs book ${(100*g.book_p_home).toFixed(0)}% <b style="color:${big?'#58c878':'var(--text,#ddd)'};">+${g.lean_edge_pp}pp</b></span>
     </div>`;
   }).join('');
+  const cv = d.clv || {};
+  const clvLine = cv.n_tracked ? ` · CLV: beat the close ${(100*(cv.beat_close_rate||0)).toFixed(0)}% (${cv.n_beat_close}/${cv.n_tracked}), avg ${cv.avg_clv_pp>=0?'+':''}${cv.avg_clv_pp}pp` : ' · CLV pending (≥2 line snapshots per game)';
   document.getElementById('bballMeta').textContent =
-    `${d.n_games} games priced · ${d.n_leans} lean(s) ≥ ${d.min_edge_pp}pp · ${d.source} · ${(d.generated_at||'').replace('T',' ').slice(0,16)} UTC`;
+    `${d.n_games} games priced · ${d.n_leans} lean(s) ≥ ${d.min_edge_pp}pp${clvLine} · ${d.source} · ${(d.generated_at||'').replace('T',' ').slice(0,16)} UTC`;
 }
 
 load();

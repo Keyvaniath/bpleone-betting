@@ -109,6 +109,14 @@ jobs:
         working-directory: python
         run: python strategy_sim.py || true
 
+      # NBA/WNBA book edges + CLV: snapshot the DraftKings line every beat so the
+      # open->close movement (the sharp's metric) actually accrues through the day.
+      - name: NBA/WNBA book-edge + CLV snapshot (free ESPN odds)
+        timeout-minutes: 2
+        continue-on-error: true
+        working-directory: python
+        run: python nba_book_edges.py || true
+
       # Stat-scale projection report card grows as picks settle through the day.
       - name: Live projection trainer (intraday refresh)
         working-directory: python
