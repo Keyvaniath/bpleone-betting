@@ -88,6 +88,58 @@ def _load(p) -> Dict[str, Any]:
         return {}
 
 
+def _amer(s) -> Optional[int]:
+    try:
+        return int(str(s).replace("+", "").strip())
+    except (TypeError, ValueError, AttributeError):
+        return None
+
+
+def _imp(am: Optional[int]) -> Optional[float]:
+    if am is None:
+        return None
+    return 100.0 / (am + 100.0) if am >= 0 else abs(am) / (abs(am) + 100.0)
+
+
+def _devig3(h, d, a) -> Tuple[Optional[float], Optional[float], Optional[float]]:
+    ph, pd, pa = _imp(h), _imp(d), _imp(a)
+    if ph is None or pd is None or pa is None:
+        return (None, None, None)
+    s = ph + pd + pa
+    return (ph / s, pd / s, pa / s) if s > 0 else (None, None, None)
+
+
+def _book_from_comp(comp: Dict[str, Any]) -> Optional[Dict[str, Any]]:
+    """Extract DraftKings 3-way moneyline + total from an ESPN competition's odds
+    block (closing line). Returns None if no usable odds, so the model degrades to
+    fair-value-only for that match."""
+    o = (comp.get("odds") or [{}])[0]
+    if not o:
+        return None
+    ml = o.get("moneyline") or {}
+    home_ml = _amer((((ml.get("home") or {}).get("close") or {}) or {}).get("odds"))
+    away_ml = _amer((((ml.get("away") or {}).get("close") or {}) or {}).get("odds"))
+    draw_ml = _amer((o.get("drawOdds") or {}).get("moneyLine"))
+    tot = o.get("total") or {}
+    over = ((tot.get("over") or {}).get("close") or {})
+    under = ((tot.get("under") or {}).get("close") or {})
+    line = None
+    for v in (over.get("line"), under.get("line"), o.get("overUnder")):
+        try:
+            line = float(str(v).lower().lstrip("ou"))
+            break
+        except (TypeError, ValueError):
+            continue
+    if home_ml is None and away_ml is None and line is None:
+        return None
+    return {
+        "provider": (o.get("provider") or {}).get("name") or "book",
+        "home_ml": home_ml, "draw_ml": draw_ml, "away_ml": away_ml,
+        "total_line": line,
+        "over_ml": _amer(over.get("odds")), "under_ml": _amer(under.get("odds")),
+    }
+
+
 def _wc_results() -> List[Dict[str, Any]]:
     return [m for m in (_load(RESULTS).get("matches") or [])
             if m.get("league") == "fifa.world"
@@ -234,6 +286,7 @@ def run() -> Dict[str, Any]:
     cards: List[Dict[str, Any]] = []
     seen = set()
     upcoming: List[Tuple[Optional[str], Optional[str], str]] = []
+    book_by_pair: Dict[Tuple[str, str], Dict[str, Any]] = {}
     # Scoreboard FIRST (its date is the slate date); the state file is the
     # fallback for anything the 5-day window misses. Dedup by PAIR -- a group
     # fixture can't repeat, and the same match must not appear under two dates.
@@ -253,6 +306,9 @@ def run() -> Dict[str, Any]:
             away = next(((c.get("team") or {}).get("displayName") for c in cs if c.get("homeAway") == "away"), None)
             if home and away and "Place" not in home and "Place" not in away:
                 upcoming.append((home, away, d.isoformat()))
+                bk = _book_from_comp(comp)
+                if bk:
+                    book_by_pair[(home, away)] = bk
     # No state-file fallback: it lists live/final games with a STALE status (a
     # match shown "Scheduled" there may already be at halftime), which leaked
     # kicked-off games onto the board. The live scoreboard above is the single
@@ -272,6 +328,33 @@ def run() -> Dict[str, Any]:
         card = {"matchup": f"{away} @ {home}", "home": home, "away": away, "date": date}
         card.update(price_match(home, away, st))
         card["rec"] = _recommend(card)
+        # Real EDGE vs the DraftKings line (de-vigged), where ESPN carries it.
+        # This is what turns the desk from fair-value into edge-finding: a +edge
+        # means the model gives the side a better chance than the book's price.
+        bk = book_by_pair.get((home, away))
+        if bk:
+            bh, bd, ba = _devig3(bk.get("home_ml"), bk.get("draw_ml"), bk.get("away_ml"))
+            edges: Dict[str, float] = {}
+            if bh is not None:
+                edges["HOME_ML"] = round((card["p_home"] - bh) * 100, 1)
+            if ba is not None:
+                edges["AWAY_ML"] = round((card["p_away"] - ba) * 100, 1)
+            if bd is not None:
+                edges["DRAW"] = round((card["p_draw"] - bd) * 100, 1)
+            io, iu = _imp(bk.get("over_ml")), _imp(bk.get("under_ml"))
+            if bk.get("total_line") == 2.5 and io and iu and (io + iu) > 0:
+                over_devig = io / (io + iu)
+                edges["OVER_2.5"] = round((card["p_over_2_5"] - over_devig) * 100, 1)
+                edges["UNDER_2.5"] = round(((1 - card["p_over_2_5"]) - (1 - over_devig)) * 100, 1)
+            card["book"] = {
+                "provider": bk.get("provider"),
+                "home_ml": bk.get("home_ml"), "draw_ml": bk.get("draw_ml"), "away_ml": bk.get("away_ml"),
+                "total_line": bk.get("total_line"), "over_ml": bk.get("over_ml"), "under_ml": bk.get("under_ml"),
+                "home_devig": round(bh, 4) if bh is not None else None,
+                "draw_devig": round(bd, 4) if bd is not None else None,
+                "away_devig": round(ba, 4) if ba is not None else None,
+            }
+            card["edges_vs_book"] = edges
         cards.append(card)
     cards.sort(key=lambda c: (c.get("date") or "", c["matchup"]))
 
@@ -279,18 +362,31 @@ def run() -> Dict[str, Any]:
     # One play per (match, market) so a single game can't flood the board; result
     # picks need >=55%, props >=55% (past the noise floor with margin).
     best: List[Dict[str, Any]] = []
+
+    def _consider(c, label, market, prob, fair, kind):
+        if prob < 0.55:
+            return
+        edge = (c.get("edges_vs_book") or {}).get(market)
+        # Don't feature a play the book actively disagrees with (negative edge =
+        # the book prices the side higher than the model, so it's -EV to back).
+        if edge is not None and edge < 0:
+            return
+        best.append({"matchup": c["matchup"], "date": c["date"], "play": label,
+                     "market": market, "prob": prob, "fair": fair,
+                     "book_edge_pp": edge, "kind": kind})
+
     for c in cards:
         rec = c.get("rec") or {}
         pred = rec.get("prediction") or {}
-        if pred.get("prob", 0) >= 0.55:
-            best.append({"matchup": c["matchup"], "date": c["date"], "play": pred["label"],
-                         "market": pred["market"], "prob": pred["prob"], "fair": pred.get("fair"),
-                         "kind": "result"})
+        if pred.get("label"):
+            _consider(c, pred["label"], pred["market"], pred.get("prob", 0), pred.get("fair"), "result")
         for p in (rec.get("props") or []):
-            if p.get("prob", 0) >= 0.55:
-                best.append({"matchup": c["matchup"], "date": c["date"], "play": p["label"],
-                             "market": p["market"], "prob": p["prob"], "fair": None, "kind": "prop"})
-    best.sort(key=lambda b: -b["prob"])
+            _consider(c, p["label"], p["market"], p.get("prob", 0), None, "prop")
+
+    # Plays with a real book EDGE lead (ranked by edge); model-only plays follow by
+    # conviction. A measured edge vs the line is worth more than a fair-value lean.
+    best.sort(key=lambda b: (0, -b["book_edge_pp"]) if b.get("book_edge_pp") is not None
+              else (1, -b["prob"]))
 
     out = {
         "generated_at": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),

@@ -116,6 +116,12 @@ Promise.all([
   document.getElementById("cards").innerHTML = cards.map(c => {
     const rec = c.rec || {}, pred = rec.prediction || {};
     const confCls = (pred.confidence || "").replace(/[^A-Z]/g, "");
+    const bk = c.book, ev = c.edges_vs_book || {};
+    const pe = pred.market ? ev[pred.market] : null;
+    const bookLine = bk ? `<div class="odds muted" style="font-size:11px;">
+        <span>${esc(bk.provider || "DK")}: ${esc(c.home)} ${ml(bk.home_ml)} / draw ${ml(bk.draw_ml)} / ${esc(c.away)} ${ml(bk.away_ml)}</span>
+        ${pe != null ? `<span style="color:${pe >= 0 ? "#5fe0a0" : "#ff8a8a"};">pick vs book ${pe >= 0 ? "+" : ""}${pe}pp</span>` : ""}
+      </div>` : "";
     const propChips = (rec.props || []).map(p => `<span class="prop">${esc(p.label)} ${pc(p.prob)}</span>`).join("");
     const topSc = (scorers[c.matchup] || [])[0];
     const scChip = topSc ? `<span class="prop scorer">${esc(titlecase(topSc.player))} to score ${pc(topSc.p_scores_1_plus)}</span>` : "";
@@ -145,6 +151,7 @@ Promise.all([
         <span>O2.5 ${pc(c.p_over_2_5)}</span>
         <span>BTTS ${pc(c.p_btts)}</span>
       </div>
+      ${bookLine}
       <div class="why">${esc(c.why)}</div>
     </div>`;
   }).join("") || '<p class="muted">No upcoming matches in the window.</p>';
