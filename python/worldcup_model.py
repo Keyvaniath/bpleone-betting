@@ -66,8 +66,8 @@ SEED_BAND = {
 }
 SEED_K = 2.0          # seed weight = K/(K + matches_played): 1.0 -> 0.5 by game 2
 HFA_ELO = 20          # mostly-neutral venues; hosts get crowds, not a club edge
-BASE_TOTAL = 2.6      # modern World Cup goals per match
-ELO_GOAL_SLOPE = 700  # elo gap -> goal-share spread (bounded below)
+HALF_GOALS = 1.36     # per-team baseline goals (even match -> ~2.72 total)
+GOAL_K = 0.50         # elo gap -> goal expectation (per 400 elo, exp scale)
 MAX_GOALS = 8         # Poisson grid size
 
 
@@ -134,10 +134,13 @@ def price_match(home: str, away: str, st) -> Dict[str, Any]:
     he, hband, hgp = team_elo(home, st)
     ae, aband, agp = team_elo(away, st)
     diff = (he + HFA_ELO) - ae
-    # split the expected total by elo gap; each side bounded to [0.35, total-0.35]
-    share = 1.0 / (1.0 + 10 ** (-diff / ELO_GOAL_SLOPE))
-    lam_h = max(0.35, min(BASE_TOTAL - 0.35, BASE_TOTAL * share))
-    lam_a = BASE_TOTAL - lam_h
+    # Each side's expected goals flexes off the elo gap around a per-team baseline
+    # (exp scale). Unlike a fixed-total split, the TOTAL now rises with mismatch
+    # (blowouts outscore even games) -- so over/under 2.5 is a real signal per
+    # match instead of a flat ~48%% on every card. g normalized per 400 elo.
+    g = diff / 400.0
+    lam_h = max(0.30, min(3.4, HALF_GOALS * math.exp(GOAL_K * g)))
+    lam_a = max(0.30, min(3.4, HALF_GOALS * math.exp(-GOAL_K * g)))
     ph = pd = pa = p_over = p_btts = 0.0
     for i in range(MAX_GOALS + 1):
         for j in range(MAX_GOALS + 1):
