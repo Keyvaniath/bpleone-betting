@@ -8,11 +8,16 @@ _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 - **Alex Bregman** PP_batter_hrr_under_3.5 (MLB-PP) -- 87% / +50.7%
 - **Wyatt Langford** PP_batter_hrr_under_3.5 (MLB-PP) -- 87% / +50.4%
 - **Chandler Simpson** PP_batter_hrr_under_3.5 (MLB-PP) -- 86% / +49.6%
+- **Masataka Yoshida** PP_batter_hrr_under_3.5 (MLB-PP) -- 87% / +51.3%
+- **Alejandro Osuna** PP_batter_hrr_under_3.5 (MLB-PP) -- 87% / +51.3%
+- **Ezequiel Tovar** PP_batter_hrr_under_3.5 (MLB-PP) -- 87% / +51.2%
+- **Jorbit Vivas** PP_batter_hrr_under_3.5 (MLB-PP) -- 87% / +51.1%
+- **David Hamilton** PP_batter_hrr_under_3.5 (MLB-PP) -- 87% / +51.1%
 
 ## 🎰 Tonight's Best Parlay
-- **Drew Gilbert** PP_batter_hrr_under_3.5 + **Choi Jeong** one_plus_tb
-- Joint 64% · fair +231 · edge +111.3%
+- **Masataka Yoshida** PP_batter_hrr_under_3.5 + **LAA @ ARI** LAA_ML
+- Joint 57% · fair +234 · edge +89.1%
 
 ---
-_Generated 2026-06-16T06:28:11_
+_Generated 2026-06-16T13:31:05_
 _Full breakdown: /tonight · Full history: /locks-of-day_
