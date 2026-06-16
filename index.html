@@ -151,9 +151,14 @@
 
   <!-- PROVE IT strip: real ledger, replayable by anyone -->
   <section id="proveIt" style="display:none; margin: 0 0 22px 0; padding: 13px 18px; border-radius: 10px; border: 1px solid rgba(88,200,120,.28); font-family: 'JetBrains Mono', monospace; font-size: 13px;">
-    <span style="font-size:10px;text-transform:uppercase;letter-spacing:.6px;color:#8a93a6;display:block;margin-bottom:5px;">Don't trust us — replay it</span>
+    <span style="font-size:10px;text-transform:uppercase;letter-spacing:.6px;color:#8a93a6;display:block;margin-bottom:5px;">Don't trust us — the receipts</span>
     <span id="proveItLine"></span>
-    <a href="strategy-sim.html" style="margin-left:10px; color:#58c878; text-decoration:underline; text-decoration-color:rgba(88,200,120,.4);">open the Strategy Simulator →</a>
+    <span id="proveItCal" style="display:block;margin-top:6px;color:var(--text-2,#9fb0c8);"></span>
+    <span style="display:block;margin-top:7px;font-size:11px;">
+      <a href="strategy-sim.html" style="color:#58c878;text-decoration:underline;text-decoration-color:rgba(88,200,120,.4);">replay the ledger →</a>
+      <a href="calibration-map.html" style="margin-left:12px;color:#58c878;text-decoration:underline;text-decoration-color:rgba(88,200,120,.4);">calibration map →</a>
+      <a href="clv.html" style="margin-left:12px;color:#58c878;text-decoration:underline;text-decoration-color:rgba(88,200,120,.4);">closing line value →</a>
+    </span>
   </section>
   <script>
   fetch("data/strategy_sim.json", { cache: "no-cache" }).then(r => r.json()).then(d => {
@@ -166,8 +171,22 @@
       `Raw firehose <b style="color:#e35a5a;">${all >= 0 ? "+" : ""}${all.toFixed(0)}u</b> · ` +
       `honest book after curation <b style="color:#58c878;">${cur >= 0 ? "+" : ""}${cur.toFixed(0)}u</b> (${curN.toLocaleString()} picks). ` +
       `Both numbers, in the open.`;
-    const el = document.getElementById("proveIt");
-    el.style.display = "block";
+    document.getElementById("proveIt").style.display = "block";
+  }).catch(() => {});
+  // Second line: the quant-credibility metrics — calibration + CLV — pulled live.
+  Promise.all([
+    fetch("data/ledger_summary.json", { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
+    fetch("data/clv_tracker.json", { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
+  ]).then(([led, clv]) => {
+    const cr = led.calibrated_reliability, bits = [];
+    if (cr && cr.ece_raw != null)
+      bits.push(`Calibration: raw model ECE <b style="color:#e35a5a;">${(100*cr.ece_raw).toFixed(1)}%</b> → calibrated <b style="color:#58c878;">${(100*cr.ece_calibrated).toFixed(1)}%</b> over ${(cr.n||0).toLocaleString()} settled (a displayed 70% really hits ≈70%)`);
+    if (clv && clv.n_tracked)
+      bits.push(`CLV: beat the close <b>${(100*(clv.beat_close_rate||0)).toFixed(0)}%</b> on ${clv.n_tracked} tracked leans`);
+    if (bits.length) {
+      document.getElementById("proveItCal").innerHTML = bits.join(" &nbsp;·&nbsp; ");
+      document.getElementById("proveIt").style.display = "block";
+    }
   }).catch(() => {});
   </script>
 
