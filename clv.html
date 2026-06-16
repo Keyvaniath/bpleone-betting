@@ -46,13 +46,26 @@
 <script>
 const esc = s => String(s==null?"":s).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
 const ml = v => v==null?"—":(v>0?"+"+v:""+v);
-fetch("data/clv_tracker.json",{cache:"no-cache"}).then(r=>r.json()).then(d=>{
-  const rows=d.rows||[];
-  const rate=d.beat_close_rate, avg=d.avg_clv_pp;
-  document.getElementById("big").innerHTML = (d.n_tracked? `
-    <span class="b"><span class="lab">beat the close</span><b class="${(rate||0)>=0.5?'up':'down'}">${rate==null?'—':(100*rate).toFixed(0)+'%'}</b> <span class="muted">${d.n_beat_close}/${d.n_tracked}</span></span>
-    <span class="b"><span class="lab">avg CLV</span><b class="${(avg||0)>=0?'up':'down'}">${avg==null?'—':(avg>0?'+':'')+avg+'pp'}</b></span>
-    <span class="b"><span class="lab">leans tracked</span><b>${d.n_tracked}</b> <span class="muted">${esc(d.scope||'')}</span></span>` : '');
+Promise.all([
+  fetch("data/clv_tracker.json",{cache:"no-cache"}).then(r=>r.json()),
+  fetch("data/nba_book_edges.json",{cache:"no-cache"}).then(r=>r.json()).catch(()=>({})),
+]).then(([d, bb])=>{
+  // Cross-sport: MLB game leans (clv_tracker) + basketball model leans (nba_book_edges).
+  const bbRows = (bb.games||[]).filter(g=>g.clv_pp!=null).map(g=>({
+    sport:g.sport, matchup:g.matchup, side:(g.lean||'').replace(' ML',''), team:'',
+    open_american:null, close_american:null, clv_pp:g.clv_pp, beat_close:g.beat_close,
+    model_edge_pct:g.lean_edge_pp,
+  }));
+  const rows=(d.rows||[]).concat(bbRows);
+  const bbcv=bb.clv||{};
+  const nT=(d.n_tracked||0)+(bbcv.n_tracked||0);
+  const nB=(d.n_beat_close||0)+(bbcv.n_beat_close||0);
+  const rate=nT?nB/nT:null;
+  const avg=nT?(((d.avg_clv_pp||0)*(d.n_tracked||0)+(bbcv.avg_clv_pp||0)*(bbcv.n_tracked||0))/nT):null;
+  document.getElementById("big").innerHTML = (nT? `
+    <span class="b"><span class="lab">beat the close</span><b class="${(rate||0)>=0.5?'up':'down'}">${rate==null?'—':(100*rate).toFixed(0)+'%'}</b> <span class="muted">${nB}/${nT}</span></span>
+    <span class="b"><span class="lab">avg CLV</span><b class="${(avg||0)>=0?'up':'down'}">${avg==null?'—':(avg>0?'+':'')+avg.toFixed(2)+'pp'}</b></span>
+    <span class="b"><span class="lab">leans tracked</span><b>${nT}</b> <span class="muted">MLB + WNBA/NBA</span></span>` : '');
   const el=document.getElementById("rows");
   if(!rows.length){ el.innerHTML='<p class="muted">No closing lines captured yet — CLV fills in as the heartbeat polls each game open→close through the day. '+esc(d.note||'')+'</p>'; return; }
   el.innerHTML=rows.map(r=>`
