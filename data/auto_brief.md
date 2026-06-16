@@ -36,7 +36,7 @@ _0% lineups confirmed · 10 rookie SPs_
 
 ## Hot streaks
 **Batters heating up:** Jackson Chourio (heat +7.92), Byron Buxton (heat +6.65), Bryce Eldridge (heat +6.30)
-**Pitchers on a run:** Drew Rasmussen (heat +8.57), Steven Okert (heat +6.00), Adrian Houser (heat +5.75)
+**Pitchers on a run:** Dylan Cease (heat +15.75), Drew Rasmussen (heat +8.57), Adrian Houser (heat +5.75)
 
 ## Top correlation-aware SGPs
 - **SFG @ ATL** 2-leg @ -212 fair (joint 0.68, EV +25.0%)
@@ -45,9 +45,9 @@ _0% lineups confirmed · 10 rookie SPs_
 - **NYM @ CIN** 2-leg @ -175 fair (joint 0.64, EV +25.0%)
    - Kodai Senga OVER 3.5 pitcher strikeouts
    - Brady Singer UNDER 5.5 pitcher strikeouts
-- **LAA @ ARI** 2-leg @ -211 fair (joint 0.68, EV +25.0%)
+- **LAA @ ARI** 2-leg @ -254 fair (joint 0.72, EV +25.0%)
+   - Reid Detmers OVER 5 pitcher strikeouts
    - Reid Detmers OVER 4.5 pitcher strikeouts
-   - Merrill Kelly UNDER 4.5 pitcher strikeouts
 
 ## Bullpens GASSED tonight
 Athletics, Pittsburgh Pirates, San Diego Padres, Tampa Bay Rays, Chicago White Sox, Miami Marlins, Los Angeles Angels, Chicago Cubs

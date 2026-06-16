@@ -1,13 +1,13 @@
 # EdgeStat Daily Summary — 2026-06-16
 
-## 🏥 Model Health: 65.7/100 [OK]
-- Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.9/100
+## 🏥 Model Health: 70.5/100 [HEALTHY]
+- Solid health - some minor issues to monitor
+  - 🟢 Calibration Freshness: 99.7/100
   - 🔴 Hit Rate Trend: 54.4/100
   - 🔴 Brier Trend: 29.6/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 88.9/100
-  - 🔴 Edge Count: 11.4/100
+  - 🟡 Edge Count: 60.0/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.586)
@@ -21,25 +21,33 @@
 4. **SFG @ ATL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 5. **CLE @ MIL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 
-## 🔒 Locks of the Day -- Track Record
-- All-time: **170-34** (83.3% hit rate)
-- Net units: **+5.64u** | ROI: **+44.6%**
-- Last 7d: 37-12 (75.5%) | net +0.94u
+## 📡 Sharp Action (Line Movement)
+- [MODERATE] **LAA @ ARI** ml_away: 48.54% → 51.92% (+3.4pp)
 
-**Today's 5 Locks:**
+## 🔒 Locks of the Day -- Track Record
+- All-time: **172-35** (83.1% hit rate)
+- Net units: **+5.67u** | ROI: **+44.2%**
+- Last 7d: 38-13 (74.5%) | net +0.93u
+
+**Today's 10 Locks:**
 - [MLB-PP] **Drew Gilbert** PP_batter_hrr_under_3.5 · p=87% edge=+51.2% qK=0.062u
 - [MLB-PP] **Lawrence Butler** PP_batter_hrr_under_3.5 · p=87% edge=+51.1% qK=0.062u
 - [MLB-PP] **Alex Bregman** PP_batter_hrr_under_3.5 · p=87% edge=+50.7% qK=0.062u
 - [MLB-PP] **Wyatt Langford** PP_batter_hrr_under_3.5 · p=87% edge=+50.4% qK=0.062u
 - [MLB-PP] **Chandler Simpson** PP_batter_hrr_under_3.5 · p=86% edge=+49.6% qK=0.062u
+- [MLB-PP] **Masataka Yoshida** PP_batter_hrr_under_3.5 · p=87% edge=+51.3% qK=0.062u
+- [MLB-PP] **Alejandro Osuna** PP_batter_hrr_under_3.5 · p=87% edge=+51.3% qK=0.062u
+- [MLB-PP] **Ezequiel Tovar** PP_batter_hrr_under_3.5 · p=87% edge=+51.2% qK=0.062u
+- [MLB-PP] **Jorbit Vivas** PP_batter_hrr_under_3.5 · p=87% edge=+51.1% qK=0.062u
+- [MLB-PP] **David Hamilton** PP_batter_hrr_under_3.5 · p=87% edge=+51.1% qK=0.062u
 
 ## 🎰 Top Balanced 2-Leg Parlays (40-65% joint)
-- [MLB-PP] Drew Gilbert PP_batter_hrr_under_ + [KBO] Choi Jeong one_plus_tb
-  Joint: 64% | Fair: 231 | Edge: +111.3%
-- [MLB-PP] Lawrence Butler PP_batter_hrr_under_ + [KBO] Choi Jeong one_plus_tb
-  Joint: 64% | Fair: 231 | Edge: +111.3%
-- [MLB-PP] Alex Bregman PP_batter_hrr_under_ + [KBO] Choi Jeong one_plus_tb
-  Joint: 64% | Fair: 231 | Edge: +110.7%
+- [MLB-PP] Masataka Yoshida PP_batter_hrr_under_ + [MLB] LAA @ ARI LAA_ML
+  Joint: 57% | Fair: 234 | Edge: +89.1%
+- [MLB-PP] Alejandro Osuna PP_batter_hrr_under_ + [MLB] LAA @ ARI LAA_ML
+  Joint: 57% | Fair: 234 | Edge: +89.1%
+- [MLB-PP] Ezequiel Tovar PP_batter_hrr_under_ + [MLB] LAA @ ARI LAA_ML
+  Joint: 57% | Fair: 234 | Edge: +89.0%
 
 ## 🎮 Player Play of the Day (cross-sport)
 - **[LOL]** Inspired UNDER 3.5 Kills | MED conviction · model 61.7% fair -161
@@ -52,10 +60,10 @@
 - Hot teams: **2** | Cold teams: **3** | Over-heavy: 0 | Under-heavy: 8
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (37)
+## ⚠️ Anomaly Detector (38)
 - STEAM_MOVE: **32**
 - COMPOUND_BULLPEN: **4**
-- PEN_MISMATCH: **1**
+- PEN_MISMATCH: **2**
   - CIN @ SDP (MLB): ML/TOTAL steam since open: ML +13.8pp toward SDP; total +1 (OVER) (6 snapshots)
   - DAL @ POR (WNBA): ML/TOTAL steam since open: ML +8.2pp toward POR; total -2 (UNDER) (3 snapshots)
   - LA @ PHX (WNBA): TOTAL steam since open: total -2 (UNDER) (3 snapshots)
@@ -64,7 +72,7 @@
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$315.0** (31.5% of $1000 bankroll)
-- Expected EV: **$18.87**
+- Expected EV: **$20.06**
   - #1 [NRFI] $50 on PIT @ OAK YRFI (1st-inning OVER 0.5) (P=86%)
   - #2 [NRFI] $50 on NYM @ CIN YRFI (1st-inning OVER 0.5) (P=77%)
   - #3 [NRFI] $50 on COL @ CHC YRFI (1st-inning OVER 0.5) (P=73%)
@@ -133,7 +141,7 @@
   - ⚠️ batter_rbis (Brier Δ -0.0052)
 
 ## 🧠 Training Convergence
-- ELITE: **0** · HEALTHY: 0 · OK: 0 · DEGRADED: **8**
+- ELITE: **1** · HEALTHY: 0 · OK: 0 · DEGRADED: **7**
 
 ## 🤖 Self-Training Status
 - **NBA**: n=5 games · hit rate 60.0% · bias +30.4pp

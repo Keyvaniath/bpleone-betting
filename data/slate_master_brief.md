@@ -1,20 +1,20 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-06-16T13:31:08 UTC_
+_Generated 2026-06-16T15:29:55 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** 15
+- **Score:** 13
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
 - **Total STRONG:** 8
-- **Total FADES:** 17
+- **Total FADES:** 19
 
 ## Top 5 Curated Picks
-1. **GOLF / Viktor Hovland** (GOLF_PLAYER, score=219.29)
-   - Play: Viktor Hovland (PLAYER_STRONG)
+1. **GOLF / Brice Garnett** (GOLF_PLAYER, score=219.29)
+   - Play: Brice Garnett (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Jimmy Stanger** (GOLF_PLAYER, score=219.29)
-   - Play: Jimmy Stanger (PLAYER_STRONG)
+2. **GOLF / Matt Fitzpatrick** (GOLF_PLAYER, score=219.29)
+   - Play: Matt Fitzpatrick (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
 3. **MLB / Davis Martin** (MLB_PITCHER, score=61.33)
    - Play: Davis Martin (PITCHER_STRONG)
@@ -28,8 +28,8 @@ _Generated 2026-06-16T13:31:08 UTC_
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
-  - Viktor Hovland top 10 finish
-  - Jimmy Stanger top 10 finish
+  - Brice Garnett top 10 finish
+  - Matt Fitzpatrick top 10 finish
   - Bud Cauley top 10 finish
 
 ## Slate ROI Projection
