@@ -582,6 +582,9 @@ jobs:
       - name: All-picks unified ledger (every surfaced pick -> training signal)
         working-directory: python
         run: python all_picks_tracker.py
+      - name: World Cup model report card (accuracy + calibration from settled picks)
+        working-directory: python
+        run: python worldcup_accuracy.py || true
       - name: Self-learn shrinkage weights (per-source feedback loop)
         working-directory: python
         run: python self_learn_weights.py

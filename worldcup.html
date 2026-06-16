@@ -57,6 +57,14 @@
 
   <div class="honest" id="method">Loading…</div>
 
+  <section class="card" id="rcCard" style="margin-bottom:22px; display:none;">
+    <div class="card-head"><span>📋 Model Report Card — raw model vs results</span><span class="muted" id="rcMeta">--</span></div>
+    <div style="padding:12px 16px;">
+      <div class="bigrow" id="rcBig" style="display:flex;gap:12px;flex-wrap:wrap;font-family:'JetBrains Mono',monospace;margin-bottom:10px;"></div>
+      <div id="rcCalib" style="font-family:'JetBrains Mono',monospace;font-size:12px;"></div>
+    </div>
+  </section>
+
   <section class="card" id="bestCard" style="margin-bottom:22px; border-left:3px solid #5fe0a0; display:none;">
     <div class="card-head"><span>⭐ <strong>EdgeStat's Best Bets</strong> — ranked across the slate</span><span class="muted" id="bestMeta">--</span></div>
     <div style="padding:6px 0;" id="bestList"></div>
@@ -90,7 +98,24 @@ const titlecase = s => String(s || "").replace(/\b\w/g, ch => ch.toUpperCase());
 Promise.all([
   fetch("data/worldcup_cards.json", { cache: "no-cache" }).then(r => r.json()),
   fetch("data/soccer_goalscorer_props.json", { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
-]).then(([d, gs]) => {
+  fetch("data/worldcup_accuracy.json", { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
+]).then(([d, gs, acc]) => {
+  // Model Report Card
+  if (acc && acc.n_settled) {
+    document.getElementById("rcCard").style.display = "block";
+    document.getElementById("rcMeta").textContent = `${acc.n_settled} settled · ${esc(acc.verdict || "")}`;
+    const cell = (lab, val) => `<span style="border:1px solid var(--border,#222a36);border-radius:9px;padding:10px 14px;"><span style="display:block;color:var(--muted,#8a93a6);font-size:9.5px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px;">${lab}</span><b style="font-size:18px;">${val}</b></span>`;
+    document.getElementById("rcBig").innerHTML =
+      cell("record", esc(acc.record || "—")) +
+      cell("hit rate", pc(acc.hit_rate)) +
+      cell("avg predicted", pc(acc.avg_predicted)) +
+      cell("Brier", acc.brier == null ? "—" : acc.brier);
+    const cal = acc.calibration || [];
+    document.getElementById("rcCalib").innerHTML = cal.length
+      ? '<div style="color:var(--muted,#8a93a6);font-size:10px;text-transform:uppercase;margin-bottom:4px;">calibration: model said → actually happened</div>' +
+        cal.map(c => `<div style="padding:2px 0;">${c.bucket} bucket (n=${c.n}): predicted <b>${pc(c.predicted)}</b> → realized <b style="color:${c.realized >= c.predicted ? "#5fe0a0" : "#ffc15e"};">${pc(c.realized)}</b></div>`).join("")
+      : '<span class="muted">calibration buckets fill in as more matches settle</span>';
+  }
   // top anytime-scorer per match (World Cup rows only)
   const scorers = {};
   for (const r of (gs.rows || [])) {

@@ -90,6 +90,9 @@ jobs:
       - name: All-picks unified ledger (settle + log)
         working-directory: python
         run: python all_picks_tracker.py
+      - name: World Cup model report card (refresh as picks settle)
+        working-directory: python
+        run: python worldcup_accuracy.py || true
 
       # Learning Integrity audit BEFORE self-learn so guards are fresh
       - name: Learning Integrity audit (Wilson CI + Brier + ECE + guards)
