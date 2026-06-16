@@ -101,6 +101,18 @@ def _imp(am: Optional[int]) -> Optional[float]:
     return 100.0 / (am + 100.0) if am >= 0 else abs(am) / (abs(am) + 100.0)
 
 
+def _shrink_toward_book(model_p: float, book_p: float) -> float:
+    """Pull the model probability toward the de-vigged sharp book line. The WC
+    model is new and runs too FLAT (under-rates group favorites: it had Argentina
+    at 53% when DraftKings had 67%), so the honest displayed number leans on the
+    sharp market. Weight grows with the disagreement (cap 0.80, slope x3) -- the
+    same mechanism the MLB game lines use. The RAW model prob is kept alongside as
+    the learner + the divergence signal."""
+    gap = abs(model_p - book_p)
+    w = min(0.80, gap * 3.0)
+    return model_p * (1 - w) + book_p * w
+
+
 def _devig3(h, d, a) -> Tuple[Optional[float], Optional[float], Optional[float]]:
     ph, pd, pa = _imp(h), _imp(d), _imp(a)
     if ph is None or pd is None or pa is None:
@@ -250,25 +262,36 @@ def price_match(home: str, away: str, st) -> Dict[str, Any]:
     }
 
 
+def _fair_amer(p: float) -> Optional[int]:
+    if p <= 0.005 or p >= 0.995:
+        return None
+    return -int(round(100 / ((1 / p) - 1))) if p >= 0.5 else int(round(((1 / p) - 1) * 100))
+
+
 def _recommend(c: Dict[str, Any]) -> Dict[str, Any]:
     """EdgeStat's explicit call for a card: one prediction + the best 1-2 props.
-    Centralized here (not in page JS) so the recommendation is single-sourced and
-    can be settled later exactly as displayed."""
-    # Prediction = the 1X2 side the model favors (draw included if it's highest).
-    sides = [
-        ("HOME_ML", f"{c['home']} win", c["p_home"], c["fair_home"]),
-        ("DRAW",    "Draw",             c["p_draw"], c["fair_draw"]),
-        ("AWAY_ML", f"{c['away']} win", c["p_away"], c["fair_away"]),
-    ]
-    mkt, label, prob, fair = max(sides, key=lambda t: t[2])
+    Uses the SHARP (book-shaded) probabilities for display when a book line exists
+    -- the raw model runs too flat -- and keeps the raw model prob alongside as the
+    divergence note. Centralized here so the recommendation is single-sourced and
+    settles exactly as displayed."""
+    shaded = "p_home_sharp" in c
+    ph = c.get("p_home_sharp", c["p_home"])
+    pd = c.get("p_draw_sharp", c["p_draw"])
+    pa = c.get("p_away_sharp", c["p_away"])
+    raw = {"HOME_ML": c["p_home"], "DRAW": c["p_draw"], "AWAY_ML": c["p_away"]}
+    sides = [("HOME_ML", f"{c['home']} win", ph),
+             ("DRAW", "Draw", pd),
+             ("AWAY_ML", f"{c['away']} win", pa)]
+    mkt, label, prob = max(sides, key=lambda t: t[2])
     # Cutoffs aligned to the DISPLAYED (rounded) %, so a shown "52%" is never
     # mislabeled TOSS-UP: 0.515 is the lowest value that rounds to 52%.
     conf = "STRONG" if prob >= 0.595 else ("LEAN" if prob >= 0.515 else "TOSS-UP")
     prediction = {"market": mkt, "label": label, "prob": round(prob, 4),
-                  "fair": fair, "confidence": conf}
+                  "fair": _fair_amer(prob), "confidence": conf,
+                  "model_prob": round(raw[mkt], 4), "shaded": shaded}
 
-    # Props ranked by conviction (distance from a coin); keep those past the floor.
-    po, pb = c["p_over_2_5"], c["p_btts"]
+    # Props ranked by conviction; the total is book-shaded too when we have a line.
+    po, pb = c.get("p_over_2_5_sharp", c["p_over_2_5"]), c["p_btts"]
     cands = [
         ("OVER_2.5", "Over 2.5 goals", po) if po >= 0.5 else ("UNDER_2.5", "Under 2.5 goals", 1 - po),
         ("BTTS_YES", "Both teams to score", pb) if pb >= 0.5 else ("BTTS_NO", "Both teams NOT to score", 1 - pb),
@@ -327,10 +350,10 @@ def run() -> Dict[str, Any]:
         seen.add((home, away))
         card = {"matchup": f"{away} @ {home}", "home": home, "away": away, "date": date}
         card.update(price_match(home, away, st))
-        card["rec"] = _recommend(card)
-        # Real EDGE vs the DraftKings line (de-vigged), where ESPN carries it.
-        # This is what turns the desk from fair-value into edge-finding: a +edge
-        # means the model gives the side a better chance than the book's price.
+        # DraftKings line (de-vigged) -> (a) raw model EDGE vs the book = the
+        # divergence/learning signal, and (b) SHARP display probs (the flat model
+        # shaded toward the sharp market). Done BEFORE _recommend so the displayed
+        # pick uses the sharp number.
         bk = book_by_pair.get((home, away))
         if bk:
             bh, bd, ba = _devig3(bk.get("home_ml"), bk.get("draw_ml"), bk.get("away_ml"))
@@ -341,6 +364,7 @@ def run() -> Dict[str, Any]:
                 edges["AWAY_ML"] = round((card["p_away"] - ba) * 100, 1)
             if bd is not None:
                 edges["DRAW"] = round((card["p_draw"] - bd) * 100, 1)
+            over_devig = None
             io, iu = _imp(bk.get("over_ml")), _imp(bk.get("under_ml"))
             if bk.get("total_line") == 2.5 and io and iu and (io + iu) > 0:
                 over_devig = io / (io + iu)
@@ -355,6 +379,19 @@ def run() -> Dict[str, Any]:
                 "away_devig": round(ba, 4) if ba is not None else None,
             }
             card["edges_vs_book"] = edges
+            # SHARP 3-way: shade each raw model leg toward the book, renormalize.
+            if bh is not None and bd is not None and ba is not None:
+                sh = _shrink_toward_book(card["p_home"], bh)
+                sd = _shrink_toward_book(card["p_draw"], bd)
+                sa = _shrink_toward_book(card["p_away"], ba)
+                s = sh + sd + sa
+                if s > 0:
+                    card["p_home_sharp"] = round(sh / s, 4)
+                    card["p_draw_sharp"] = round(sd / s, 4)
+                    card["p_away_sharp"] = round(sa / s, 4)
+            if over_devig is not None:
+                card["p_over_2_5_sharp"] = round(_shrink_toward_book(card["p_over_2_5"], over_devig), 4)
+        card["rec"] = _recommend(card)
         cards.append(card)
     cards.sort(key=lambda c: (c.get("date") or "", c["matchup"]))
 
@@ -396,7 +433,10 @@ def run() -> Dict[str, Any]:
                         f"(labeled on every card) blended with in-tournament record elo; seed "
                         f"weight = {SEED_K:g}/({SEED_K:g}+matches played), so the tournament's own "
                         "evidence takes over by the knockouts. Goals: ~2.6/match split by elo gap, "
-                        "independent Poisson grid -> 1X2 / over 2.5 / BTTS. Fair odds are 0-vig."),
+                        "independent Poisson grid -> 1X2 / over 2.5 / BTTS. The model runs FLAT, so "
+                        "the displayed pick is SHADED toward the de-vigged DraftKings line (the sharp "
+                        "market); the raw model prob is shown alongside as the divergence/learning "
+                        "signal. Fair odds are 0-vig off the displayed (sharp) probability."),
         "best_bets": best,
         "cards": cards,
         "groups": _groups(),

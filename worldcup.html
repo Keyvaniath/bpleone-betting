@@ -84,6 +84,8 @@
 const esc = s => String(s == null ? "" : s).replace(/[&<>]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
 const ml = v => v == null ? "—" : (v > 0 ? "+" + v : "" + v);
 const pc = p => p == null ? "—" : (100 * p).toFixed(0) + "%";
+const fairOf = p => (p == null || p <= 0.005 || p >= 0.995) ? "—"
+  : ml(p >= 0.5 ? -Math.round(100 / ((1 / p) - 1)) : Math.round(((1 / p) - 1) * 100));
 const titlecase = s => String(s || "").replace(/\b\w/g, ch => ch.toUpperCase());
 Promise.all([
   fetch("data/worldcup_cards.json", { cache: "no-cache" }).then(r => r.json()),
@@ -116,6 +118,10 @@ Promise.all([
   document.getElementById("cards").innerHTML = cards.map(c => {
     const rec = c.rec || {}, pred = rec.prediction || {};
     const confCls = (pred.confidence || "").replace(/[^A-Z]/g, "");
+    // SHARP (book-shaded) probs when a line exists, else raw model -- so the bar,
+    // fair odds and over% all match the displayed pick.
+    const pH = c.p_home_sharp ?? c.p_home, pD = c.p_draw_sharp ?? c.p_draw,
+          pA = c.p_away_sharp ?? c.p_away, pOver = c.p_over_2_5_sharp ?? c.p_over_2_5;
     const bk = c.book, ev = c.edges_vs_book || {};
     const pe = pred.market ? ev[pred.market] : null;
     const bookLine = bk ? `<div class="odds muted" style="font-size:11px;">
@@ -128,7 +134,7 @@ Promise.all([
     const pickStrip = pred.label ? `
       <div class="pick">
         <span class="ptag">⭐ EdgeStat's Pick</span>
-        <div class="pmain"><b>${esc(pred.label)} ${pc(pred.prob)}</b>${pred.fair != null ? ` <span class="muted">(${ml(pred.fair)})</span>` : ""}<span class="conf ${confCls}">${esc(pred.confidence)}</span></div>
+        <div class="pmain"><b>${esc(pred.label)} ${pc(pred.prob)}</b>${pred.fair != null ? ` <span class="muted">(${ml(pred.fair)})</span>` : ""}<span class="conf ${confCls}">${esc(pred.confidence)}</span>${pred.shaded && pred.model_prob != null ? ` <span class="muted" style="font-size:10px;">raw model ${pc(pred.model_prob)}</span>` : ""}</div>
         ${propChips}${scChip}
       </div>` : "";
     return `
@@ -137,18 +143,18 @@ Promise.all([
       <h3>${esc(c.away)}<span class="band ${esc(c.away_band)}">${esc(c.away_band)}</span> <span class="muted">@</span> ${esc(c.home)}<span class="band ${esc(c.home_band)}">${esc(c.home_band)}</span></h3>
       ${pickStrip}
       <div class="bar3">
-        <div class="h" style="width:${(c.p_home * 100).toFixed(0)}%">${pc(c.p_home)}</div>
-        <div class="d" style="width:${(c.p_draw * 100).toFixed(0)}%">${pc(c.p_draw)}</div>
-        <div class="a" style="width:${(c.p_away * 100).toFixed(0)}%">${pc(c.p_away)}</div>
+        <div class="h" style="width:${(pH * 100).toFixed(0)}%">${pc(pH)}</div>
+        <div class="d" style="width:${(pD * 100).toFixed(0)}%">${pc(pD)}</div>
+        <div class="a" style="width:${(pA * 100).toFixed(0)}%">${pc(pA)}</div>
       </div>
       <div class="odds">
-        <span>${esc(c.home)} <b>${ml(c.fair_home)}</b></span>
-        <span>draw <b>${ml(c.fair_draw)}</b></span>
-        <span>${esc(c.away)} <b>${ml(c.fair_away)}</b></span>
+        <span>${esc(c.home)} <b>${fairOf(pH)}</b></span>
+        <span>draw <b>${fairOf(pD)}</b></span>
+        <span>${esc(c.away)} <b>${fairOf(pA)}</b></span>
       </div>
       <div class="odds muted" style="font-size:11.5px;">
         <span>xG ${c.exp_goals_home} – ${c.exp_goals_away}</span>
-        <span>O2.5 ${pc(c.p_over_2_5)}</span>
+        <span>O2.5 ${pc(pOver)}</span>
         <span>BTTS ${pc(c.p_btts)}</span>
       </div>
       ${bookLine}
