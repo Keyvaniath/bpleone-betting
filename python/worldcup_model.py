@@ -38,6 +38,7 @@ RESULTS = os.path.join(DATA_DIR, "soccer_results.json")
 OUT = os.path.join(DATA_DIR, "worldcup_cards.json")
 
 SB = "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?dates={d}"
+STANDINGS = "https://site.api.espn.com/apis/v2/sports/soccer/fifa.world/standings"
 UA = {"User-Agent": "Mozilla/5.0"}
 
 # ---------------------------------------------------------------------------
@@ -106,6 +107,32 @@ def _standings(results: List[Dict[str, Any]]) -> Dict[str, Dict[str, Any]]:
         elif hs < as_: a["w"] += 1; a["pts"] += 3; h["l"] += 1
         else: h["d"] += 1; a["d"] += 1; h["pts"] += 1; a["pts"] += 1
     return st
+
+
+def _groups() -> List[Dict[str, Any]]:
+    """Official group tables (A-L) straight from ESPN's standings endpoint --
+    authoritative W/D/L/Pts/rank with FIFA tiebreakers already applied, plus the
+    `advanced` clinch flag. Empty list on any fetch failure (page falls back to
+    the results-computed pooled table)."""
+    data = _http(STANDINGS) or {}
+    out: List[Dict[str, Any]] = []
+    for ch in (data.get("children") or []):
+        entries = ((ch.get("standings") or {}).get("entries")) or []
+        rows = []
+        for e in entries:
+            s = {x.get("name"): x.get("value") for x in (e.get("stats") or [])}
+            rows.append({
+                "team": (e.get("team") or {}).get("displayName"),
+                "gp": int(s.get("gamesPlayed") or 0), "w": int(s.get("wins") or 0),
+                "d": int(s.get("ties") or 0), "l": int(s.get("losses") or 0),
+                "gf": int(s.get("pointsFor") or 0), "ga": int(s.get("pointsAgainst") or 0),
+                "gd": int(s.get("pointDifferential") or 0), "pts": int(s.get("points") or 0),
+                "rank": int(s.get("rank") or 99), "advanced": bool(s.get("advanced")),
+            })
+        rows.sort(key=lambda r: r["rank"])
+        if rows:
+            out.append({"name": ch.get("name") or ch.get("abbreviation"), "teams": rows})
+    return out
 
 
 def _record_elo(team: str, st: Dict[str, Dict[str, Any]]) -> Tuple[float, int]:
@@ -276,6 +303,7 @@ def run() -> Dict[str, Any]:
                         "independent Poisson grid -> 1X2 / over 2.5 / BTTS. Fair odds are 0-vig."),
         "best_bets": best,
         "cards": cards,
+        "groups": _groups(),
         "standings": st,
         "results": sorted(results, key=lambda m: m.get("date") or ""),
     }
