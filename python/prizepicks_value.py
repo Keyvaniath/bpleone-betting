@@ -26,11 +26,20 @@ from __future__ import annotations
 
 import os
 import json
+import math
 import datetime as dt
 from itertools import combinations
 from typing import Any, Dict, List
 
 import prob_calibration as pc
+import correlations as corr
+
+# Pairwise correlation between two UNDER (or same-side) prop legs, used to price
+# the joint hit probability of a Power Play honestly. Same-team legs co-occur
+# (one offense shut down -> all its batters' unders hit together); same-game
+# opposing legs share the game's run environment; cross-game legs are independent.
+RHO_SAME_TEAM = 0.35
+RHO_SAME_GAME = 0.18
 
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 PICKEM = os.path.join(DATA_DIR, "pickem.json")
@@ -51,47 +60,90 @@ def _load(p):
         return {}
 
 
+def _corr_matrix(combo: List[Dict[str, Any]]) -> List[List[float]]:
+    """Pairwise correlation matrix for a same-side (under) Power Play. Positive
+    within a team/game because those unders co-occur; 0 across games."""
+    n = len(combo)
+    m = [[1.0 if i == j else 0.0 for j in range(n)] for i in range(n)]
+    for i in range(n):
+        for j in range(i + 1, n):
+            a, b = combo[i], combo[j]
+            if a.get("team") and a["team"] == b.get("team"):
+                rho = RHO_SAME_TEAM
+            elif a.get("game") and a["game"] == b.get("game"):
+                rho = RHO_SAME_GAME
+            else:
+                rho = 0.0
+            m[i][j] = m[j][i] = rho
+    return m
+
+
 def _build_slates(legs: List[Dict[str, Any]], be_by_legs: Dict[str, Any]) -> List[Dict[str, Any]]:
-    """Suggest the best 2- and 3-leg PrizePicks Power Plays from the value legs.
-    PP is all-or-nothing: a $1 N-pick at multiplier M returns joint_prob*M - 1.
-    The multiplier is implied by the per-leg break-even: M = (1/break_even)^N.
-    Legs are distinct players; joint prob assumes independence (the legs span
-    different players/games, so correlation is minimal)."""
-    pool = legs[:10]
+    """Best 2/3/4-leg PrizePicks Power Plays, CORRELATION-AWARE. PP is all-or-
+    nothing: a $1 N-pick at multiplier M (= (1/break_even)^N) returns joint*M - 1.
+
+    Same-family legs ARE allowed (the user can stack hrr-unders), and the joint
+    probability is priced with a Gaussian copula (correlations.py) instead of the
+    naive product: legs in the same game/team are positively correlated (a shut-
+    down offense makes all its batters' unders hit together), which RAISES the
+    joint hit prob above independence -- and the variance too, so the stake stays
+    quarter-Kelly capped at 10%. Ranked by expected LOG-GROWTH (the right bankroll
+    objective), which trades the higher EV of more legs against their ruin risk."""
+    pool = legs[:12]
     slates: List[Dict[str, Any]] = []
-    for n in (2, 3):
+    for n in (2, 3, 4):
         be_n = float(be_by_legs.get(str(n)) or DEFAULT_BE)
         if be_n <= 0 or len(pool) < n:
             continue
         mult = (1.0 / be_n) ** n
-        cand = []
+        b = mult - 1.0
+        # Stage 1 (cheap): rank candidate combos by INDEPENDENT joint prob, keep top few.
+        cands = []
         for combo in combinations(pool, n):
-            if len({c["player"] for c in combo}) < n:   # distinct players
+            if len({c["player"] for c in combo}) < n:   # never two legs on one player
                 continue
-            if len({c["family"] for c in combo}) < n:   # distinct families -> diverse, more independent
-                continue
-            jp = 1.0
+            jp_ind = 1.0
             for c in combo:
-                jp *= c["cal_prob"]
-            # Kelly on a flat-payout parlay: f = (p*M - 1)/(M - 1). Recommend
-            # quarter-Kelly, capped at 10% -- model error + any leg correlation
-            # make full Kelly on a parlay reckless.
-            b = mult - 1.0
-            kelly = max(0.0, (jp * mult - 1.0) / b) if b > 0 else 0.0
-            stake_pct = round(min(10.0, 100 * kelly * 0.25), 1)
-            cand.append({
+                jp_ind *= c["cal_prob"]
+            cands.append((jp_ind, combo))
+        cands.sort(key=lambda t: -t[0])
+        # Stage 2: refine the top with the correlation-aware copula joint prob.
+        refined = []
+        for jp_ind, combo in cands[:6]:
+            cm = _corr_matrix(list(combo))
+            has_corr = any(cm[i][j] > 0 for i in range(n) for j in range(i + 1, n))
+            jp = (corr.correlated_parlay_prob([c["cal_prob"] for c in combo], cm, n_sims=12000)
+                  if has_corr else jp_ind)
+            ev = jp * mult - 1.0
+            kelly = max(0.0, ev / b) if b > 0 else 0.0
+            f = min(0.10, kelly * 0.25)               # quarter-Kelly, capped 10%
+            growth = (jp * math.log(1 + f * b) + (1 - jp) * math.log(max(1e-9, 1 - f))) if f > 0 else 0.0
+            teams = {c.get("team") for c in combo}
+            games = {c.get("game") for c in combo if c.get("game")}
+            n_corr_pairs = sum(1 for i in range(n) for j in range(i + 1, n) if cm[i][j] > 0)
+            if len(teams) == 1:
+                corr_label = "same-team stack (correlated)"
+            elif n_corr_pairs:
+                corr_label = f"mixed — {n_corr_pairs} correlated pair(s)"
+            else:
+                corr_label = "cross-game (independent)"
+            refined.append({
                 "n_legs": n,
                 "payout_multiple": round(mult, 2),
                 "joint_prob": round(jp, 4),
-                "expected_roi_pct": round(100 * (jp * mult - 1), 1),
+                "joint_prob_independent": round(jp_ind, 4),
+                "correlation": corr_label,
+                "expected_roi_pct": round(100 * ev, 1),
                 "kelly_fraction": round(kelly, 3),
-                "stake_pct_quarter_kelly": stake_pct,
-                "legs": [{"player": c["player"], "team": c["team"], "side": c["side"],
-                          "line": c["line"], "market": c["market"], "cal_prob": c["cal_prob"]}
-                         for c in combo],
+                "stake_pct_quarter_kelly": round(100 * f, 1),
+                "exp_log_growth": round(growth, 5),
+                "legs": [{"player": c["player"], "team": c.get("team"), "game": c.get("game"),
+                          "side": c["side"], "line": c["line"], "market": c["market"],
+                          "cal_prob": c["cal_prob"]} for c in combo],
             })
-        cand.sort(key=lambda x: -x["expected_roi_pct"])
-        slates.extend(cand[:3])
+        refined.sort(key=lambda x: -x["exp_log_growth"])
+        slates.extend(refined[:3])
+    slates.sort(key=lambda x: -x["exp_log_growth"])
     return slates
 
 
@@ -128,6 +180,7 @@ def run() -> Dict[str, Any]:
             continue
         board.append({
             "player": p.get("player"), "team": p.get("team"),
+            "game": p.get("game"),
             "market": market, "stat": p.get("stat_type") or market,
             "side": side, "line": line,
             "cal_prob": round(cal, 4), "raw_prob": round(raw, 4),
@@ -152,6 +205,7 @@ def run() -> Dict[str, Any]:
         fam_count[fam] = fam_count.get(fam, 0) + 1
         deduped.append(b)
     top = deduped[:MAX_BOARD]
+    slates = _build_slates(top, be_by_legs)
 
     result = {
         "generated_at": dt.datetime.utcnow().isoformat(timespec="seconds"),
@@ -162,7 +216,8 @@ def run() -> Dict[str, Any]:
         "n_props_scanned": len(props),
         "n_overconfident_dropped": n_overconf,
         "n_uncalibrated_skipped": n_uncalibrated,
-        "suggested_slates": _build_slates(top, be_by_legs),
+        "suggested_slates": slates,
+        "best_slate": (slates[0] if slates else None),
         "method_note": "PrizePicks pays flat multipliers, so each leg's break-even is fixed "
                        f"(~{be:.3f} for a 2-pick). A prop is a +EV leg when its CALIBRATED hit "
                        "probability (raw model prob blended toward the family's realized rate) "

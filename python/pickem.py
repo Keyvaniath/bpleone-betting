@@ -274,6 +274,8 @@ def build_pickem() -> Dict[str, Any]:
         out.append({
             "player": p["player"],
             "team": p.get("team"),
+            "game": p.get("game_info"),          # "HOME vs AWAY" -> correlation key for SGP/Power Play building
+            "start_time": p.get("start_time"),
             "player_id": pid,
             "market": p["market"],
             "stat_type": p["stat_type"],
