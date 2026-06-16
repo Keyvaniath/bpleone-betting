@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Tape | EdgeStat — live signal feed</title>
+<meta name="description" content="One value-ranked stream of every actionable signal the desk is firing right now — steam, reverse line moves, fresh model edges, World Cup conviction plays, basketball book edges.">
+<link rel="stylesheet" href="css/style.css">
+<script src="js/nav.js"></script>
+<style>
+  .lede { max-width:720px; line-height:1.55; color:var(--text-2,#aaa); }
+  .chips { display:flex; gap:8px; flex-wrap:wrap; margin:16px 0 6px; }
+  .chip { font-family:'JetBrains Mono',monospace; font-size:11.5px; padding:6px 12px; border-radius:20px;
+          border:1px solid var(--border,#222a36); background:rgba(255,255,255,.02); color:var(--text-2,#aaa); cursor:pointer; user-select:none; }
+  .chip.on { background:rgba(88,200,120,.14); border-color:rgba(88,200,120,.4); color:#7ff0b5; }
+  .chip .c { opacity:.65; margin-left:5px; }
+
+  .feed { margin-top:14px; }
+  .sig { display:grid; grid-template-columns:30px 1fr auto; gap:12px; align-items:start;
+         border:1px solid var(--border,#222a36); border-radius:11px; padding:12px 14px; margin-bottom:9px;
+         background:rgba(255,255,255,.012); }
+  .sig .ico { font-size:18px; line-height:1.4; }
+  .sig .ttl { font-size:14px; font-weight:600; margin:0 0 3px; }
+  .sig .det { font-size:12.5px; color:var(--text-2,#9fb0c8); line-height:1.5; font-family:'JetBrains Mono',monospace; }
+  .sig .meta { display:flex; gap:8px; align-items:center; margin-top:7px; }
+  .tag { font-family:'JetBrains Mono',monospace; font-size:9px; text-transform:uppercase; letter-spacing:.6px; padding:2px 7px; border-radius:4px; font-weight:700; }
+  .tag.STEAM { background:rgba(95,179,224,.16); color:#5fb3e0; }
+  .tag.SHARP { background:rgba(176,138,255,.16); color:#b08aff; }
+  .tag.EDGE  { background:rgba(88,200,120,.16); color:#58c878; }
+  .tag.WC    { background:rgba(255,193,94,.16); color:#ffc15e; }
+  .tag.HOOPS { background:rgba(255,157,92,.16); color:#ff9d5c; }
+  .sport { font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--muted,#8a93a6); }
+  .right { text-align:right; min-width:96px; }
+  .strength { font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--muted,#8a93a6); }
+  .bar { height:5px; width:90px; border-radius:3px; background:rgba(255,255,255,.06); overflow:hidden; margin:5px 0 6px auto; }
+  .bar > i { display:block; height:100%; border-radius:3px; }
+  .open { font-size:11px; color:#58c878; text-decoration:none; white-space:nowrap; }
+  .open:hover { text-decoration:underline; }
+
+  .cta { border:1px solid rgba(88,200,120,.28); background:rgba(88,200,120,.05); border-radius:12px; padding:16px 18px; margin:22px 0 8px; }
+  .cta h3 { margin:0 0 6px; font-size:15px; }
+  .cta p { margin:0; color:var(--text-2,#9fb0c8); font-size:13px; line-height:1.55; }
+  .meta-line { font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--muted,#8a93a6); margin-top:6px; }
+</style>
+</head>
+<body class="page-mlb">
+<header class="topbar">
+  <div class="brand"><a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a><span class="tagline">by bpleone</span></div>
+  <nav class="mainnav"><!-- nav.js injects here --></nav>
+  <div class="topbar-actions"><div class="ticker" id="liveTicker">THE TAPE</div></div>
+</header>
+
+<main class="container">
+  <section class="page-head">
+    <h1>The Tape</h1>
+    <p class="lede">One stream of every actionable signal the desk is firing right now — <b>strongest first</b>. Sharp money moving a line, reverse line moves against the public, fresh curated model edges, World Cup conviction plays, basketball book edges. This invents nothing: it aggregates the signals the pipeline already produces, and every item links to the page that owns it.</p>
+  </section>
+
+  <div class="chips" id="chips"></div>
+  <div class="feed" id="feed"><p class="muted">Loading the tape…</p></div>
+  <p class="meta-line" id="meta"></p>
+
+  <div class="cta">
+    <h3>Want these without refreshing?</h3>
+    <p>The tape rebuilds with every pipeline run (about every 2 hours, all day). Lock transitions and sharp steam also push to the EdgeStat Discord in real time when the webhook is live. Bookmark this page — or add it to your home screen — and it's your morning read. <span style="color:var(--muted,#8a93a6);">(Email alerts are on the roadmap.)</span></p>
+  </div>
+</main>
+
+<footer class="site-footer"><div class="foot-bot"><span>© 2026 bpleone.com</span><span>Built in SoCal ☀️</span></div></footer>
+
+<script>
+const esc = s => String(s == null ? "" : s).replace(/[&<>]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+const BARCOL = { STEAM:"#5fb3e0", SHARP:"#b08aff", EDGE:"#58c878", WC:"#ffc15e", HOOPS:"#ff9d5c" };
+const LABEL = { STEAM:"Steam", SHARP:"Sharp", EDGE:"Edge", WC:"World Cup", HOOPS:"Hoops" };
+let ITEMS = [], filter = "ALL";
+
+function ago(iso) {
+  if (!iso) return "";
+  const t = Date.parse(iso.endsWith("Z") || iso.includes("+") ? iso : iso + "Z");
+  if (isNaN(t)) return "";
+  const m = Math.max(0, Math.round((Date.now() - t) / 60000));
+  if (m < 60) return m + "m ago";
+  const h = Math.round(m / 60);
+  return h < 24 ? h + "h ago" : Math.round(h / 24) + "d ago";
+}
+
+function render() {
+  const feed = document.getElementById("feed");
+  const list = ITEMS.filter(i => filter === "ALL" || i.type === filter);
+  if (!list.length) { feed.innerHTML = '<p class="muted">No signals on the tape right now. The desk fires these as games approach and lines move — check back after the next pipeline run.</p>'; return; }
+  feed.innerHTML = list.map(i => `
+    <div class="sig">
+      <span class="ico">${i.icon || "•"}</span>
+      <div>
+        <p class="ttl">${esc(i.title)}</p>
+        <div class="det">${esc(i.detail)}</div>
+        <div class="meta"><span class="tag ${i.type}">${LABEL[i.type] || i.type}</span><span class="sport">${esc(i.sport || "")}</span></div>
+      </div>
+      <div class="right">
+        <div class="strength">${i.score}<span style="opacity:.5;">/100</span></div>
+        <div class="bar"><i style="width:${i.score}%;background:${BARCOL[i.type] || "#58c878"};"></i></div>
+        <a class="open" href="${esc(i.link || "#")}">open →</a>
+      </div>
+    </div>`).join("");
+}
+
+function buildChips(counts, total) {
+  const order = ["ALL", "STEAM", "SHARP", "EDGE", "WC", "HOOPS"];
+  const ic = { ALL:"📡", STEAM:"📈", SHARP:"🧠", EDGE:"🎯", WC:"🏆", HOOPS:"🏀" };
+  document.getElementById("chips").innerHTML = order
+    .filter(t => t === "ALL" || (counts[t] || 0) > 0)
+    .map(t => `<span class="chip ${t === filter ? "on" : ""}" data-t="${t}">${ic[t]} ${t === "ALL" ? "All" : (LABEL[t] || t)}<span class="c">${t === "ALL" ? total : counts[t]}</span></span>`).join("");
+  document.querySelectorAll(".chip").forEach(c => c.addEventListener("click", () => {
+    filter = c.dataset.t;
+    document.querySelectorAll(".chip").forEach(x => x.classList.toggle("on", x.dataset.t === filter));
+    render();
+  }));
+}
+
+fetch("data/alerts_feed.json", { cache: "no-cache" }).then(r => r.json()).then(d => {
+  ITEMS = d.items || [];
+  buildChips(d.counts || {}, d.n || ITEMS.length);
+  render();
+  document.getElementById("meta").textContent =
+    `${d.n || ITEMS.length} signals · refreshed ${ago(d.generated_at)} · ${(d.generated_at || "").replace("T", " ").slice(0, 16)} UTC — ${d.note || ""}`;
+}).catch(() => { document.getElementById("feed").innerHTML = '<p class="muted">The tape is unavailable — the pipeline may not have run yet.</p>'; });
+</script>
+</body>
+</html>

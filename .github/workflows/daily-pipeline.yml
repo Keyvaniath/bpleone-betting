@@ -1350,6 +1350,13 @@ jobs:
         working-directory: python
         run: python daily_summary.py
 
+      # "The Tape" -- aggregate the strongest active signals into one value-ranked
+      # feed (alerts.html). Runs near the END so every source it reads (line
+      # movement, RLM, todays_top_plays, worldcup, nba_book_edges) is fresh.
+      - name: Signal tape aggregator (alerts feed)
+        working-directory: python
+        run: python alerts_feed.py || true
+
       # Health audit: writes data/pipeline_health.json with per-artifact
       # status (ok/empty/stale/demo). Surfaces on /audit.html.
       - name: Pipeline health audit

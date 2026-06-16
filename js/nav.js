@@ -50,6 +50,7 @@
   // PICKS -- the actionable daily output (the money pages).
   const PICKS = [
     { section: "Daily Board" },
+    { href: "alerts.html",              label: "📡 The Tape (live signals)" },
     { href: "todays-top-plays.html",    label: "⭐ Today's Top Plays" },
     { href: "alpha-pick.html",          label: "★ Alpha Pick" },
     { href: "high-confidence.html",     label: "💎 High-Confidence Board" },

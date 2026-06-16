@@ -213,6 +213,14 @@ jobs:
         working-directory: python
         run: python live_alerter.py || true
 
+      # "The Tape" -- aggregate the strongest active signals (steam / RLM / fresh
+      # edges / WC / hoops) into one value-ranked feed. Runs LATE so every source
+      # it reads (line_movement, reverse_line_movement, todays_top_plays, worldcup,
+      # nba_book_edges) has already refreshed this beat.
+      - name: Signal tape aggregator (alerts feed)
+        working-directory: python
+        run: python alerts_feed.py || true
+
       # Calibration status snapshot
       - name: Calibration status snapshot
         working-directory: python
