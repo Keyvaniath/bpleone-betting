@@ -133,10 +133,21 @@ def run() -> Dict[str, Any]:
     z_top6   = z_thresh(6)   # ~ -0.52 (top 30%)
     z_top10  = z_thresh(10)  # ~ 0.0 (top 50%)
 
+    # POLE is a SINGLE seat -- exactly one driver wins it -- so the per-driver
+    # marginal Phi(z_pole - z) is the wrong pick signal: several drivers land in
+    # any [0.30, 0.50] window and ALL got flagged, so the family went 1-39 (-93%).
+    # Normalize the marginals into a proper one-winner distribution and flag ONLY
+    # the favourite (and only when there IS a clear one).
+    pole_raw = {drv: _norm_cdf(z_pole - z) for drv, z in DRIVER_QUALI_Z.items()}
+    pole_sum = sum(pole_raw.values()) or 1.0
+    pole_share = {drv: pole_raw[drv] / pole_sum for drv in pole_raw}
+    pole_fav = max(pole_share, key=pole_share.get) if pole_share else None
+    POLE_FAV_MIN = 0.18      # only call pole when the favourite owns >=18% of it
+
     rows: List[Dict[str, Any]] = []
     for driver, quali_z in DRIVER_QUALI_Z.items():
         # P(rank<=N) = P(quali_pace < z_thresh) = Phi(z_thresh - quali_z)
-        p_pole  = _norm_cdf(z_pole - quali_z)
+        p_pole  = pole_share[driver]            # normalized one-winner pole prob
         p_top3  = _norm_cdf(z_top3 - quali_z)
         p_top6  = _norm_cdf(z_top6 - quali_z)
         p_top10 = _norm_cdf(z_top10 - quali_z)
@@ -144,7 +155,7 @@ def run() -> Dict[str, Any]:
         # Edge classification
         edge_class = "NONE"
         best_market = None
-        if 0.30 <= p_pole <= 0.50:
+        if driver == pole_fav and p_pole >= POLE_FAV_MIN:
             edge_class = "STRONG_POLE"
             best_market = {"market": "POLE", "p": round(p_pole, 3), "fair_odds": _american(p_pole)}
         elif 0.55 <= p_top3 <= 0.72:
