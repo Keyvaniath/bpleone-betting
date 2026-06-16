@@ -216,18 +216,30 @@ def run() -> Dict[str, Any]:
         sb = _http(SB.format(d=d.strftime("%Y%m%d"))) or {}
         for ev in sb.get("events") or []:
             comp = (ev.get("competitions") or [{}])[0]
-            if (comp.get("status") or {}).get("type", {}).get("completed"):
+            # Only genuinely SCHEDULED matches (state "pre"); skip live ("in") and
+            # final ("post") -- a pre-game model shouldn't card a match that's
+            # already kicked off with a stale pre-game prediction.
+            if (comp.get("status") or {}).get("type", {}).get("state") != "pre":
                 continue
             cs = comp.get("competitors") or []
             home = next(((c.get("team") or {}).get("displayName") for c in cs if c.get("homeAway") == "home"), None)
             away = next(((c.get("team") or {}).get("displayName") for c in cs if c.get("homeAway") == "away"), None)
             if home and away and "Place" not in home and "Place" not in away:
                 upcoming.append((home, away, d.isoformat()))
-    for g in (_load(STATE).get("games") or []):
-        upcoming.append((g.get("home_team") or g.get("home"),
-                         g.get("away_team") or g.get("away"), (g.get("date") or "")[:10]))
+    # No state-file fallback: it lists live/final games with a STALE status (a
+    # match shown "Scheduled" there may already be at halftime), which leaked
+    # kicked-off games onto the board. The live scoreboard above is the single
+    # fresh source -- 5 forward days covers the whole upcoming slate.
+    #
+    # Belt-and-suspenders: drop any match already PLAYED (in the results feed),
+    # orientation-agnostic so a home/away flip can't slip a finished game through.
+    # Group fixtures are one-and-done, so this can't drop a real rematch.
+    played = {(m.get("home"), m.get("away")) for m in results}
+    played |= {(m.get("away"), m.get("home")) for m in results}
     for home, away, date in upcoming:
         if not home or not away or (home, away) in seen:
+            continue
+        if (home, away) in played:
             continue
         seen.add((home, away))
         card = {"matchup": f"{away} @ {home}", "home": home, "away": away, "date": date}
