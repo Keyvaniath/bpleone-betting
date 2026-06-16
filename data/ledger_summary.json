@@ -1,33 +1,33 @@
 {
-  "generated_at": "2026-06-16T17:25:35",
+  "generated_at": "2026-06-16T19:30:38",
   "stake_assumption": "1u flat per pick",
   "total_picks": 10000,
-  "n_settled": 6158,
-  "n_pending": 386,
+  "n_settled": 6159,
+  "n_pending": 385,
   "n_void": 3456,
-  "wins": 3002,
+  "wins": 3003,
   "losses": 3150,
   "pushes": 6,
-  "hit_rate": 0.488,
-  "net_units": -891.342,
-  "roi_pct": -14.49,
+  "hit_rate": 0.4881,
+  "net_units": -890.433,
+  "roi_pct": -14.47,
   "n_calibrated_picks": 9576,
   "calibrated_reliability": {
-    "n": 6039,
+    "n": 6040,
     "ece_raw": 0.1068,
     "ece_calibrated": 0.0275,
-    "brier_raw": 0.23306,
-    "brier_calibrated": 0.20552,
+    "brier_raw": 0.23303,
+    "brier_calibrated": 0.20551,
     "note": "In-sample over the settled ledger (the isotonic transform is fit on these same outcomes); held-out 70/30 validation is in recalibration_map.json. p_predicted = raw model prob (kept untouched for the learning loop); p_calibrated = honest prob stamped per pick. Lower ECE/Brier on the calibrated column = the displayed % is truer."
   },
   "curated": {
-    "n_settled": 666,
-    "wins": 503,
+    "n_settled": 667,
+    "wins": 504,
     "losses": 157,
     "pushes": 6,
-    "hit_rate": 0.7621,
-    "net_units": 197.499,
-    "roi_pct": 29.92,
+    "hit_rate": 0.7625,
+    "net_units": 198.408,
+    "roi_pct": 30.02,
     "sources": [
       "consensus_hit_elite",
       "consensus_hit_strong",
@@ -43,7 +43,7 @@
     "definition": "Featured/recommended plays only -- Lock of the Day, Top 25, Whale, Sharp, Consensus (hit), Under Alerts, POD. Excludes the experimental prop feeds, which are tracked to train the model, not bet."
   },
   "n_added_this_run": 0,
-  "n_newly_settled_this_run": 0,
+  "n_newly_settled_this_run": 1,
   "n_resettled_this_run": 0,
   "n_voided_this_run": 0,
   "n_reconciled_settled_voids": 0,
@@ -302,13 +302,13 @@
       "roi_pct": -22.7
     },
     "pod": {
-      "n": 10,
-      "wins": 7,
+      "n": 11,
+      "wins": 8,
       "losses": 3,
       "pushes": 0,
-      "net_units": 3.363,
-      "hit_rate": 0.7,
-      "roi_pct": 33.63
+      "net_units": 4.272,
+      "hit_rate": 0.7273,
+      "roi_pct": 38.84
     },
     "nhl_skater_blocks_over_1.5": {
       "n": 29,
@@ -1114,12 +1114,12 @@
       "hit_rate": 0.8571
     },
     "over": {
-      "n": 67,
-      "wins": 41,
+      "n": 68,
+      "wins": 42,
       "losses": 24,
       "pushes": 2,
-      "net_units": 6.255,
-      "hit_rate": 0.6308
+      "net_units": 7.164,
+      "hit_rate": 0.6364
     },
     "under": {
       "n": 68,
@@ -1548,12 +1548,12 @@
       "hit_rate": 0.8571
     },
     "over": {
-      "n": 67,
-      "wins": 41,
+      "n": 68,
+      "wins": 42,
       "losses": 24,
       "pushes": 2,
-      "net_units": 6.255,
-      "hit_rate": 0.6308
+      "net_units": 7.164,
+      "hit_rate": 0.6364
     },
     "under": {
       "n": 68,
@@ -1919,15 +1919,15 @@
   "by_sport": {
     "MLB": {
       "n": 7665,
-      "settled": 4997,
-      "wins": 2264,
+      "settled": 4998,
+      "wins": 2265,
       "losses": 2727,
       "pushes": 6,
-      "pending": 227,
+      "pending": 226,
       "void": 2441,
-      "net_units": -1093.336,
-      "hit_rate": 0.4536,
-      "roi_pct": -21.91,
+      "net_units": -1092.427,
+      "hit_rate": 0.4537,
+      "roi_pct": -21.88,
       "markets": 50
     },
     "NHL": {
@@ -2101,10 +2101,10 @@
     }
   },
   "last_7_days": {
-    "wins": 473,
+    "wins": 474,
     "losses": 692,
-    "net_units": -74.022,
-    "hit_rate": 0.406
+    "net_units": -73.113,
+    "hit_rate": 0.4065
   },
   "note": "Unified pick ledger -- records every pick the model surfaces (top_25 board, whales, consensus, unders, sharp action, locks, POD) and settles each against actual outcomes. Per-source W-L feeds back into calibration so the model learns which modules are reliable. THIS is the training signal."
 }
