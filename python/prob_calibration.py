@@ -221,6 +221,15 @@ def overconfident_families(min_gap: float = OVERCONF_MIN_GAP, min_n: int = OVERC
         if a["n"] >= min_n and a["pn"] > 0:
             if (a["ps"] / a["pn"]) - (a["wins"] / a["n"]) >= min_gap:
                 out.add(fam)
+    # Enforce the documented contract: overconfident is a STRICT SUBSET of
+    # proven-negative. A family can be over-juiced (avg predicted >> realized)
+    # yet still +EV at a soft book line if it's a net money-MAKER -- e.g.
+    # mlb_hit_0.5_over predicts 84%, hits 68%, but is only -2.7u, so at +120 it's
+    # still profitable and is NOT a "fake edge at ANY price". Such families must
+    # NOT be flagged overconfident; the gap alone over-captured them. Intersecting
+    # with the proven-loser set keeps only families that are BOTH prob-broken and
+    # money-losing -- the genuine traps the model-edge boards must drop.
+    out &= proven_negative_families()
     _OVERCONF_CACHE = out
     return out
 

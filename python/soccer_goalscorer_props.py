@@ -104,9 +104,13 @@ def _american(p: float) -> Optional[int]:
     return int(round(((1 / p) - 1) * 100))
 
 
-def _process_league(state_file: str, league: str) -> List[Dict[str, Any]]:
-    state = _load(os.path.join(DATA_DIR, state_file))
-    games = state.get("games") or state.get("events") or []
+def _process_league(state_file: str, league: str,
+                    games_override: Optional[List[Dict[str, Any]]] = None) -> List[Dict[str, Any]]:
+    if games_override is not None:
+        games = games_override
+    else:
+        state = _load(os.path.join(DATA_DIR, state_file))
+        games = state.get("games") or state.get("events") or []
     rows = []
     for g in games:
         status = (g.get("status") or g.get("state") or "").lower()
@@ -177,10 +181,24 @@ def run() -> Dict[str, Any]:
         ("mls_state.json", "mls"),
         ("epl_state.json", "epl"),
         ("ucl_state.json", "ucl"),
-        ("worldcup_state.json", "worldcup"),
     ]:
-        rows = _process_league(state_file, league)
-        all_rows.extend(rows)
+        all_rows.extend(_process_league(state_file, league))
+
+    # World Cup fixtures come from the MODEL's authoritative upcoming card list
+    # (worldcup_cards.json) rather than the thin state file, which lags the model's
+    # 5-day scoreboard window -- so scorer props align 1:1 with the matches shown
+    # on worldcup.html. opp strength flows in via the de-vigged book line on the
+    # card (favourite's foe is weaker -> higher scoring chance).
+    wc_cards = _load(os.path.join(DATA_DIR, "worldcup_cards.json")).get("cards") or []
+    wc_games = [{
+        "home_team": c.get("home"), "away_team": c.get("away"),
+        "date": c.get("date"), "status": "scheduled",
+        # map the de-vigged home win prob to a rough opp elo so the defense
+        # adjustment still works (50% -> 1500 neutral; strong fav -> weak foe).
+        "home_elo": 1500 + (float(c.get("p_home") or 0.5) - 0.5) * 600,
+        "away_elo": 1500 + (float(c.get("p_away") or 0.5) - 0.5) * 600,
+    } for c in wc_cards]
+    all_rows.extend(_process_league("", "worldcup", games_override=wc_games))
 
     all_rows.sort(key=lambda r: -r["p_scores_1_plus"])
     strong = [r for r in all_rows if r["edge_class"].startswith("STRONG")]

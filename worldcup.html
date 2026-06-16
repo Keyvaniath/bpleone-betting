@@ -19,6 +19,15 @@
   .band.ELITE { background:rgba(255,193,94,.18); color:#ffc15e; }
   .band.STRONG { background:rgba(88,200,120,.15); color:#5fe0a0; }
   .band.DEV { background:rgba(255,107,107,.12); color:#ff8a8a; }
+  .pick { border:1px solid rgba(88,200,120,.32); background:rgba(88,200,120,.07); border-radius:9px; padding:9px 11px; margin:2px 0 9px; }
+  .pick .ptag { font-size:9px; text-transform:uppercase; letter-spacing:.6px; color:#5fe0a0; font-weight:700; }
+  .pick .pmain { font-size:13.5px; margin:3px 0 6px; }
+  .conf { font-size:9px; padding:1px 6px; border-radius:4px; margin-left:5px; vertical-align:middle; }
+  .conf.STRONG { background:rgba(88,200,120,.22); color:#7ff0b5; }
+  .conf.LEAN { background:rgba(255,193,94,.16); color:#ffc15e; }
+  .conf.TOSSUP { background:rgba(138,147,166,.16); color:#aab3c5; }
+  .prop { display:inline-block; font-size:11px; padding:3px 8px; border-radius:5px; background:rgba(255,255,255,.06); margin:2px 5px 0 0; }
+  .prop.scorer { background:rgba(99,140,255,.13); color:#9db8ff; }
   .why { color:var(--muted,#8a93a6); font-size:11px; margin-top:6px; line-height:1.5; }
   .restrip { font-family:'JetBrains Mono',monospace; font-size:12.5px; display:flex; gap:10px 22px; flex-wrap:wrap; margin:8px 0 4px; }
   .sthead, .strow { display:grid; grid-template-columns:1fr 36px 30px 30px 30px 44px 40px; gap:8px; font-family:'JetBrains Mono',monospace; font-size:12px; padding:6px 10px; }
@@ -67,14 +76,39 @@
 const esc = s => String(s == null ? "" : s).replace(/[&<>]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
 const ml = v => v == null ? "—" : (v > 0 ? "+" + v : "" + v);
 const pc = p => p == null ? "—" : (100 * p).toFixed(0) + "%";
-fetch("data/worldcup_cards.json", { cache: "no-cache" }).then(r => r.json()).then(d => {
+const titlecase = s => String(s || "").replace(/\b\w/g, ch => ch.toUpperCase());
+Promise.all([
+  fetch("data/worldcup_cards.json", { cache: "no-cache" }).then(r => r.json()),
+  fetch("data/soccer_goalscorer_props.json", { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
+]).then(([d, gs]) => {
+  // top anytime-scorer per match (World Cup rows only)
+  const scorers = {};
+  for (const r of (gs.rows || [])) {
+    if (r.league !== "WORLDCUP" || !r.matchup) continue;
+    (scorers[r.matchup] = scorers[r.matchup] || []).push(r);
+  }
+  for (const k in scorers) scorers[k].sort((a, b) => (b.p_scores_1_plus || 0) - (a.p_scores_1_plus || 0));
+
   document.getElementById("method").innerHTML = "<b>How honest is this?</b> " + esc(d.method_note || "");
   const cards = d.cards || [];
   document.getElementById("meta").textContent = `${cards.length} matches modeled · ${(d.generated_at || "").replace("T", " ").slice(0, 16)} UTC`;
-  document.getElementById("cards").innerHTML = cards.map(c => `
+  document.getElementById("cards").innerHTML = cards.map(c => {
+    const rec = c.rec || {}, pred = rec.prediction || {};
+    const confCls = (pred.confidence || "").replace(/[^A-Z]/g, "");
+    const propChips = (rec.props || []).map(p => `<span class="prop">${esc(p.label)} ${pc(p.prob)}</span>`).join("");
+    const topSc = (scorers[c.matchup] || [])[0];
+    const scChip = topSc ? `<span class="prop scorer">${esc(titlecase(topSc.player))} to score ${pc(topSc.p_scores_1_plus)}</span>` : "";
+    const pickStrip = pred.label ? `
+      <div class="pick">
+        <span class="ptag">⭐ EdgeStat's Pick</span>
+        <div class="pmain"><b>${esc(pred.label)} ${pc(pred.prob)}</b>${pred.fair != null ? ` <span class="muted">(${ml(pred.fair)})</span>` : ""}<span class="conf ${confCls}">${esc(pred.confidence)}</span></div>
+        ${propChips}${scChip}
+      </div>` : "";
+    return `
     <div class="wccard">
       <span class="dt">${esc(c.date)}</span>
       <h3>${esc(c.away)}<span class="band ${esc(c.away_band)}">${esc(c.away_band)}</span> <span class="muted">@</span> ${esc(c.home)}<span class="band ${esc(c.home_band)}">${esc(c.home_band)}</span></h3>
+      ${pickStrip}
       <div class="bar3">
         <div class="h" style="width:${(c.p_home * 100).toFixed(0)}%">${pc(c.p_home)}</div>
         <div class="d" style="width:${(c.p_draw * 100).toFixed(0)}%">${pc(c.p_draw)}</div>
@@ -91,7 +125,8 @@ fetch("data/worldcup_cards.json", { cache: "no-cache" }).then(r => r.json()).the
         <span>BTTS ${pc(c.p_btts)}</span>
       </div>
       <div class="why">${esc(c.why)}</div>
-    </div>`).join("") || '<p class="muted">No upcoming matches in the window.</p>';
+    </div>`;
+  }).join("") || '<p class="muted">No upcoming matches in the window.</p>';
 
   const res = d.results || [];
   document.getElementById("resMeta").textContent = `${res.length} played`;

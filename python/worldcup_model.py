@@ -171,6 +171,34 @@ def price_match(home: str, away: str, st) -> Dict[str, Any]:
     }
 
 
+def _recommend(c: Dict[str, Any]) -> Dict[str, Any]:
+    """EdgeStat's explicit call for a card: one prediction + the best 1-2 props.
+    Centralized here (not in page JS) so the recommendation is single-sourced and
+    can be settled later exactly as displayed."""
+    # Prediction = the 1X2 side the model favors (draw included if it's highest).
+    sides = [
+        ("HOME_ML", f"{c['home']} win", c["p_home"], c["fair_home"]),
+        ("DRAW",    "Draw",             c["p_draw"], c["fair_draw"]),
+        ("AWAY_ML", f"{c['away']} win", c["p_away"], c["fair_away"]),
+    ]
+    mkt, label, prob, fair = max(sides, key=lambda t: t[2])
+    # Cutoffs aligned to the DISPLAYED (rounded) %, so a shown "52%" is never
+    # mislabeled TOSS-UP: 0.515 is the lowest value that rounds to 52%.
+    conf = "STRONG" if prob >= 0.595 else ("LEAN" if prob >= 0.515 else "TOSS-UP")
+    prediction = {"market": mkt, "label": label, "prob": round(prob, 4),
+                  "fair": fair, "confidence": conf}
+
+    # Props ranked by conviction (distance from a coin); keep those past the floor.
+    po, pb = c["p_over_2_5"], c["p_btts"]
+    cands = [
+        ("OVER_2.5", "Over 2.5 goals", po) if po >= 0.5 else ("UNDER_2.5", "Under 2.5 goals", 1 - po),
+        ("BTTS_YES", "Both teams to score", pb) if pb >= 0.5 else ("BTTS_NO", "Both teams NOT to score", 1 - pb),
+    ]
+    props = [{"market": m, "label": l, "prob": round(p, 4)}
+             for m, l, p in sorted(cands, key=lambda t: -t[2]) if p >= 0.53]
+    return {"prediction": prediction, "props": props[:2]}
+
+
 def run() -> Dict[str, Any]:
     results = _wc_results()
     st = _standings(results)
@@ -204,6 +232,7 @@ def run() -> Dict[str, Any]:
         seen.add((home, away))
         card = {"matchup": f"{away} @ {home}", "home": home, "away": away, "date": date}
         card.update(price_match(home, away, st))
+        card["rec"] = _recommend(card)
         cards.append(card)
     cards.sort(key=lambda c: (c.get("date") or "", c["matchup"]))
 

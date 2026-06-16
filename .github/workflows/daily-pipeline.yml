@@ -734,6 +734,16 @@ jobs:
       - name: Tennis player aces O/U prop
         working-directory: python
         run: python tennis_aces_props.py || true
+      # World Cup must price BEFORE the prop batch: soccer_goalscorer_props reads
+      # worldcup_cards.json for its WC fixtures, so the model has to write the
+      # cards first or the scorer props lag a full pipeline run. (soccer finals
+      # were already fetched above, so the standings/elo blend is current.)
+      - name: 2026 World Cup scoreboard (June 11 - July 19)
+        working-directory: python
+        run: python worldcup_pipeline.py || true
+      - name: World Cup 3-way match model (cards + standings)
+        working-directory: python
+        run: python worldcup_model.py || true
       # 2026-05-21: batched runner for all prop modules. Safety net that re-runs
       # the ~62 pure-projection modules in a SINGLE Python process to share
       # startup overhead. Next cycle, the individual steps above can be removed.
@@ -906,12 +916,6 @@ jobs:
       - name: UEFA Champions League scoreboard
         working-directory: python
         run: python ucl_pipeline.py
-      - name: 2026 World Cup scoreboard (June 11 - July 19)
-        working-directory: python
-        run: python worldcup_pipeline.py || true
-      - name: World Cup 3-way match model (cards + standings)
-        working-directory: python
-        run: python worldcup_model.py || true
       - name: NFL live scoreboard
         working-directory: python
         run: python nfl_pipeline.py
