@@ -1,5 +1,5 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:0 F:171
+_NO_ACTION_NIGHT_ | L:0 S:0 F:173
 
 :lock: **LOCK:** Sandy Alcantara (MLB)
 

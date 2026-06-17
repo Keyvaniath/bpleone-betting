@@ -1,7 +1,7 @@
 # Tonight's Slate Brief — 2026-06-17
 
-## Slate Quality: 54/100 (LOW)
-_0% lineups confirmed · 1 extreme-weather games · 12 rookie SPs_
+## Slate Quality: 52/100 (LOW)
+_3% lineups confirmed · 1 extreme-weather games · 12 rookie SPs_
 **Recommendation:** Defensive sizing tonight; stick to highest-confidence plays.
 
 ## Slate
@@ -11,9 +11,9 @@ _0% lineups confirmed · 1 extreme-weather games · 12 rookie SPs_
 - **MC simulation:** EV +$132.55, 83% P(profit), p05 $-89.12 / p95 $330.31
 
 ## Top 5 Best Bets
-1. **TBR @ LAD 4-leg SGP @ -286**  (100/100 *****, edge +246.9%)
-   - Joint prob 0.741 (correlation boost +0.474)
-   - Leg: Shohei Ohtani UNDER 0.5 batter home runs
+1. **KCR @ WSN 4-leg SGP @ -170**  (82/100 *****, edge +68.3%)
+   - Joint prob 0.630 (correlation boost +0.162)
+   - Leg: Jac Caglianone UNDER 0.5 batter home runs
 2. **MIA @ PHI YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +31.3%)
    - P(YRFI) 77.3% vs baseline 46.0%
 3. **TOR @ BOS YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +30.1%)
@@ -24,8 +24,8 @@ _0% lineups confirmed · 1 extreme-weather games · 12 rookie SPs_
    - P(YRFI) 67.1% vs baseline 46.0%
 
 ## ⚠️ Trap Warnings — 18 flagged
-- **TBR @ LAD 4-leg SGP @ -286** (low):
-   - Edge +246.9% looks big but only 0 settled props on this player — model unproven
+- **KCR @ WSN 4-leg SGP @ -170** (low):
+   - Edge +68.3% looks big but only 0 settled props on this player — model unproven
 - **MIA @ PHI YRFI (1st-inning OVER 0.5)** (low):
    - Edge +31.3% looks big but only 0 settled props on this player — model unproven
 - **TOR @ BOS YRFI (1st-inning OVER 0.5)** (low):
@@ -37,16 +37,17 @@ _0% lineups confirmed · 1 extreme-weather games · 12 rookie SPs_
 
 ## Weather leans
 - **OVER lean** (wind out + warm): SDP @ STL
+- **UNDER lean** (wind in + cold): COL @ CHC
 
 ## Hot streaks
 **Batters heating up:** Matt Chapman (heat +7.09), Colt Keith (heat +6.93), Jackson Chourio (heat +6.78)
 **Pitchers on a run:** Steven Cruz (heat +7.36), George Kirby (heat +6.86), Anthony Kay (heat +5.78)
 
 ## Top correlation-aware SGPs
-- **TBR @ LAD** 4-leg @ -286 fair (joint 0.74, EV +246.86%)
-   - Shohei Ohtani UNDER 0.5 batter home runs
-   - Shohei Ohtani UNDER 1.5 batter hits
-   - Shohei Ohtani UNDER 2.5 batter total bases
+- **KCR @ WSN** 4-leg @ -170 fair (joint 0.63, EV +68.35%)
+   - Jac Caglianone UNDER 0.5 batter home runs
+   - Jac Caglianone OVER 0.5 batter total bases
+   - Jac Caglianone UNDER 0.5 batter doubles
 - **NYM @ CIN** 2-leg @ -238 fair (joint 0.70, EV +25.0%)
    - Nolan McLean UNDER 8.5 pitcher strikeouts
    - Nick Lodolo UNDER 6.5 pitcher strikeouts
