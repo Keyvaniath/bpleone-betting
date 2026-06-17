@@ -1,65 +1,59 @@
-# Tonight's Slate Brief — 2026-06-16
+# Tonight's Slate Brief — 2026-06-17
 
-## Slate Quality: 83/100 (HIGH)
-_90% lineups confirmed · 10 rookie SPs_
-**Recommendation:** Play normal Kelly sizing.
+## Slate Quality: 54/100 (LOW)
+_0% lineups confirmed · 1 extreme-weather games · 12 rookie SPs_
+**Recommendation:** Defensive sizing tonight; stick to highest-confidence plays.
 
 ## Slate
-- **12 games** scheduled
-- **33 best bets** scored: 0 DK · 0 PP · 12 NRFI · 6 SGP
-- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$55.65
-- **MC simulation:** EV +$161.89, 88% P(profit), p05 $-60.5 / p95 $360.07
+- **14 games** scheduled
+- **21 best bets** scored: 0 DK · 0 PP · 6 NRFI · 1 SGP
+- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$51.46
+- **MC simulation:** EV +$104.94, 76% P(profit), p05 $-109.1 / p95 $272.7
 
 ## Top 5 Best Bets
-1. **BAL @ SEA 4-leg SGP @ -287**  (92/100 *****, edge +94.8%)
-   - Joint prob 0.742 (correlation boost +0.266)
-   - Leg: Colt Emerson UNDER 1.5 batter rbis
-2. **TBR @ LAD 4-leg SGP @ -204**  (82/100 *****, edge +69.3%)
-   - Joint prob 0.671 (correlation boost +0.175)
-   - Leg: Freddie Freeman UNDER 0.5 batter home runs
-3. **PIT @ OAK YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +40.2%)
+1. **TBR @ LAD 4-leg SGP @ -254**  (100/100 *****, edge +523.7%)
+   - Joint prob 0.717 (correlation boost +0.574)
+   - Leg: Shohei Ohtani UNDER 1.5 batter hits
+2. **PIT @ OAK YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +40.2%)
    - P(YRFI) 86.2% vs baseline 46.0%
-4. **NYM @ CIN YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +30.9%)
-   - P(YRFI) 76.9% vs baseline 46.0%
-5. **COL @ CHC YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +26.5%)
+3. **COL @ CHC YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +26.5%)
    - P(YRFI) 72.5% vs baseline 46.0%
+4. **CLE @ MIL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +25.4%)
+   - P(YRFI) 71.4% vs baseline 46.0%
+5. **MIN @ TEX YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +22.4%)
+   - P(YRFI) 68.4% vs baseline 46.0%
 
-## ⚠️ Trap Warnings — 19 flagged
-- **BAL @ SEA 4-leg SGP @ -287** (low):
-   - Edge +94.8% looks big but only 0 settled props on this player — model unproven
-- **TBR @ LAD 4-leg SGP @ -204** (low):
-   - Edge +69.3% looks big but only 0 settled props on this player — model unproven
-- **COL @ CHC 4-leg SGP @ -190** (low):
-   - Edge +63.1% looks big but only 0 settled props on this player — model unproven
-- **MIN @ TEX 4-leg SGP @ -136** (low):
-   - Edge +46.6% looks big but only 0 settled props on this player — model unproven
-- **TOR @ BOS 4-leg SGP @ -118** (low):
-   - Edge +43.4% looks big but only 0 settled props on this player — model unproven
+## ⚠️ Trap Warnings — 9 flagged
+- **TBR @ LAD 4-leg SGP @ -254** (low):
+   - Edge +523.7% looks big but only 0 settled props on this player — model unproven
+- **PIT @ OAK YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +40.2% looks big but only 0 settled props on this player — model unproven
+- **COL @ CHC YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +26.5% looks big but only 0 settled props on this player — model unproven
+- **CLE @ MIL YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +25.4% looks big but only 0 settled props on this player — model unproven
+- **MIN @ TEX YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +22.4% looks big but only 0 settled props on this player — model unproven
+
+## Weather leans
+- **OVER lean** (wind out + warm): SDP @ STL
 
 ## Hot streaks
-**Batters heating up:** Jackson Chourio (heat +7.92), Byron Buxton (heat +6.65), Bryce Eldridge (heat +6.30)
-**Pitchers on a run:** Drew Rasmussen (heat +8.57), Adrian Houser (heat +5.75), Slade Cecconi (heat +5.66)
+**Batters heating up:** Matt Chapman (heat +7.09), Colt Keith (heat +6.93), Shohei Ohtani (heat +5.92)
+**Pitchers on a run:** Drew Rasmussen (heat +12.54), Logan Gilbert (heat +12.21), Hunter Brown (heat +10.32)
 
 ## Top correlation-aware SGPs
-- **BAL @ SEA** 4-leg @ -287 fair (joint 0.74, EV +94.84%)
-   - Colt Emerson UNDER 1.5 batter rbis
-   - Colt Emerson UNDER 1.5 batter hits
-   - Colt Emerson UNDER 0.5 batter home runs
-- **TBR @ LAD** 4-leg @ -204 fair (joint 0.67, EV +69.26%)
-   - Freddie Freeman UNDER 0.5 batter home runs
-   - Andy Pages OVER 0.5 batter total bases
-   - Andy Pages UNDER 0.5 batter home runs
-- **COL @ CHC** 4-leg @ -190 fair (joint 0.66, EV +63.09%)
-   - Pete Crow-Armstrong UNDER 0.5 batter home runs
-   - Pete Crow-Armstrong OVER 0.5 batter total bases
-   - Hunter Goodman OVER 0.5 batter total bases
+- **TBR @ LAD** 4-leg @ -254 fair (joint 0.72, EV +523.7%)
+   - Shohei Ohtani UNDER 1.5 batter hits
+   - Shohei Ohtani OVER 0.5 batter hits
+   - Shohei Ohtani OVER 1.5 batter total bases
 
 ## Bullpens GASSED tonight
 Athletics, Pittsburgh Pirates, San Diego Padres, Tampa Bay Rays, Chicago White Sox, Miami Marlins, Los Angeles Angels, Chicago Cubs
 _Lean late-inning OVER on these games; fade their save situations._
 
 ## NRFI/YRFI strong leans
-- **YRFI** (1st-inning OVER): PIT @ OAK, NYM @ CIN, COL @ CHC, SFG @ ATL, CLE @ MIL
+- **YRFI** (1st-inning OVER): PIT @ OAK, COL @ CHC, CLE @ MIL, MIN @ TEX, SDP @ STL
 
 ## Golf -- U.S. Open
 - **Leader:** Harry Higgs (E) at #1
