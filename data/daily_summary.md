@@ -2,29 +2,27 @@
 
 **Model Confidence: 27.4/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
 
-_Pipeline health: **DEGRADED** (14/15 artifacts ok; 1 empty, 0 stale)._ 
+_Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
 
-_Generated at 2026-06-17T22:36:24 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-06-17T23:27:44 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
 **COL @ CHC - COL_ML**
-- Market: +171
+- Market: +172
 - Model probability: 61.4%
-- Raw edge: +66.35%
+- Raw edge: +66.96%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
 
-## Full Slate (6 games)
+## Full Slate (4 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 7:05p ET | CHW @ NYY | Yankee Stadium | 66F 7mph | OVER_8.5 +57.68% |
-| 7:15p ET | SFG @ ATL | Truist Park | 74F 7mph | OVER_9.5 +25.2% |
 | 7:40p ET | CLE @ MIL | American Family Field | indoor | OVER_7.5 +22.86% |
-| 8:05p ET | COL @ CHC | Wrigley Field | 64F 13mph | COL_ML +66.35% |
-| 9:40p ET | PIT @ OAK | Sutter Health Park | 65F 11mph | OVER_10.5 +29.35% |
+| 8:05p ET | COL @ CHC | Wrigley Field | 64F 13mph | COL_ML +66.96% |
+| 9:40p ET | PIT @ OAK | Sutter Health Park | 65F 10mph | PIT_ML +27.89% |
 | 9:40p ET | BAL @ SEA | T-Mobile Park | indoor | SEA_ML +12.16% |
 
 ## Parlays - top 5
@@ -62,12 +60,9 @@ Cumulative graded plays: 118214. Wins: 87366. Hit rate: 73.9%.
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
 | BAL @ SEA | 32.9% | +204 | 5.56 | -102 | +102 |
-| CHW @ NYY | 38.4% | +161 | 4.69 | -224 | +224 |
 | CLE @ MIL | 35.2% | +184 | 5.22 | +135 | -135 |
 | COL @ CHC | 53.1% | -113 | 3.4 | +273 | -273 |
-| PIT @ OAK | 25.3% | +295 | 7.26 | +427 | -427 |
-| SFG @ ATL | 39.9% | +150 | 4.74 | +116 | -116 |
-| TOR @ BOS | 33.3% | +200 | 13.59 | -- | -- |
+| PIT @ OAK | 25.3% | +295 | 7.23 | +427 | -427 |
 
 ## Team Form (last 10)
 

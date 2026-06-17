@@ -4,28 +4,28 @@ _6 picks consolidated from POD + Alpha + Book Edges + Parlay-of-Day._
 
 ## ⭐ Play of the Day
 
-- **Francisco Alvarez** · PP_batter_hrr_under_3.5
-  Prob 87.3% · Odds -136 · Edge +51.5% · Kelly 0.250
+- **Rhys Hoskins** · PP_batter_hrr_under_3.5
+  Prob 87.2% · Odds -136 · Edge +51.4% · Kelly 0.250
 
 ## 🎯 Alpha Pick
 
 - **PIT @ OAK** · PIT_ML
-  Prob 66.0% · Odds -130 · Edge +16.8% · Kelly 0.219
+  Prob 66.1% · Odds -131 · Edge +16.5% · Kelly 0.216
 
 ## 📊 Book Edges
 
-- **TOR @ BOS · UNDER · O/U 10.0** · TOTAL_UNDER
-  Prob 58.3% · Odds -110 · Edge +11.3% · Kelly 0.124
-- **SFG @ ATL · OVER · O/U 9.0** · TOTAL_OVER
-  Prob 58.3% · Odds -110 · Edge +11.3% · Kelly 0.124
 - **PIT @ OAK · OVER · O/U 10.5** · TOTAL_OVER
-  Prob 58.3% · Odds -110 · Edge +11.3% · Kelly 0.124
+  Prob 58.3% · Odds -110 · Edge +11.4% · Kelly 0.125
+- **CLE @ MIL · OVER · O/U 7.5** · TOTAL_OVER
+  Prob 58.2% · Odds -110 · Edge +11.1% · Kelly 0.122
+- **COL @ CHC · AWAY (AWAY)** · TEAM_ML
+  Prob 40.7% · Odds +172 · Edge +10.8% · Kelly 0.063
 
 ## 🎲 Parlay
 
-- **Francisco Alvarez + PIT @ OAK** · 2-leg
-  Prob 57.6% · Odds +207 · Edge +76.9% · Kelly 0.050
+- **Rhys Hoskins + PIT @ OAK** · 2-leg
+  Prob 57.6% · Odds +206 · Edge +76.3% · Kelly 0.050
 
 ---
-_Generated 2026-06-17T22:35:44 UTC by EdgeStat._
+_Generated 2026-06-17T23:27:08 UTC by EdgeStat._
 _Stakes assume ¼-Kelly fractional sizing on a flat bankroll._
