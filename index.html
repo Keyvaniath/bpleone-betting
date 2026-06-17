@@ -72,6 +72,70 @@
     </div>
   </section>
 
+  <!-- ★ ALPHA PICK OF THE DAY — homepage flagship feature (refreshes 7am PT) -->
+  <section id="alphaPodHero" style="display:none; margin:0 0 20px; border:1px solid rgba(212,160,74,.32); border-radius:14px; background:linear-gradient(135deg, rgba(212,160,74,.10), rgba(212,160,74,.02)); padding:18px 22px;">
+    <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-bottom:14px;">
+      <span style="font-size:11px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:#d4a04a;">★ Alpha Pick of the Day</span>
+      <span style="display:flex; gap:14px; align-items:center; font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--text-2,#9fb0c8);">
+        <span id="apodSlate"></span>
+        <a href="alpha-pick.html" style="color:#d4a04a; text-decoration:underline; text-decoration-color:rgba(212,160,74,.4);">full slip →</a>
+      </span>
+    </div>
+    <div style="display:flex; gap:20px; flex-wrap:wrap; align-items:stretch;">
+      <a id="apodHeadline" href="alpha-pick.html" style="flex:1 1 230px; text-decoration:none; display:block;"></a>
+      <div style="flex:2 1 340px;">
+        <div style="font-size:9.5px; text-transform:uppercase; letter-spacing:.6px; color:var(--muted,#8a93a6); margin-bottom:7px;">The Slip — props of the day</div>
+        <div id="apodProps" style="display:grid; gap:6px;"></div>
+        <div id="apodOther" style="display:flex; gap:7px; flex-wrap:wrap; margin-top:11px;"></div>
+      </div>
+    </div>
+  </section>
+  <script>
+  (function () {
+    var esc = function (s) { return String(s == null ? "" : s).replace(/[&<>]/g, function (c) { return ({ "&":"&amp;","<":"&lt;",">":"&gt;" })[c]; }); };
+    var pct = function (p, d) { return p == null ? "—" : (100 * p).toFixed(d || 0) + "%"; };
+    var ml = function (a) { return a == null ? "" : (a >= 0 ? "+" + a : "" + a); };
+    fetch("data/alpha_pick_of_day.json?t=" + Date.now(), { cache: "no-cache" }).then(function (r) { return r.json(); }).then(function (d) {
+      var a = d.alpha_pick;
+      var props = d.props_of_day || [];
+      var others = d.other_picks || [];
+      if (!a && !props.length) return;
+      // slate header
+      var slate = "";
+      if (d.slate_date) {
+        var dd = new Date(d.slate_date + "T12:00:00");
+        slate = (d.slate_weekday || "") + " " + dd.toLocaleDateString(undefined, { month: "short", day: "numeric" }) + " · refreshes 7am PT";
+      } else { slate = "refreshes 7am PT"; }
+      document.getElementById("apodSlate").textContent = slate;
+      // headline #1 play
+      if (a) {
+        document.getElementById("apodHeadline").innerHTML =
+          '<span style="font-family:\'JetBrains Mono\',monospace; font-size:9px; font-weight:700; letter-spacing:.5px; text-transform:uppercase; color:#1a1a1a; background:#d4a04a; padding:2px 8px; border-radius:4px;">#1 Edge</span>' +
+          '<div style="font-family:\'JetBrains Mono\',monospace; font-size:19px; font-weight:800; color:var(--text,#e8edf4); margin:9px 0 3px; line-height:1.2;">' + esc(a.player_or_matchup) + (a.team ? ' <span style="color:var(--muted,#8a93a6); font-size:13px;">' + esc(a.team) + '</span>' : '') + '</div>' +
+          '<div style="font-family:\'JetBrains Mono\',monospace; font-size:12px; color:var(--text-2,#9fb0c8); margin-bottom:8px;">' + esc((a.market || a.market_family || "").replace("PP_", "").replace(/_/g, " ")) + '</div>' +
+          '<div style="display:flex; gap:14px; font-family:\'JetBrains Mono\',monospace; font-size:12px;">' +
+            '<span><span style="color:var(--muted,#8a93a6);">model</span> <b>' + pct(a.model_prob) + '</b></span>' +
+            '<span><span style="color:var(--muted,#8a93a6);">fair</span> <b style="color:#d4a04a;">' + ml(a.fair_american) + '</b></span>' +
+            (a.roi_per_dollar != null ? '<span><span style="color:var(--muted,#8a93a6);">ROI</span> <b style="color:#58c878;">+' + (100 * a.roi_per_dollar).toFixed(0) + '%</b></span>' : '') +
+          '</div>';
+      }
+      // props slip (up to 4 on the homepage)
+      document.getElementById("apodProps").innerHTML = props.slice(0, 4).map(function (p) {
+        return '<div style="display:flex; justify-content:space-between; gap:10px; font-family:\'JetBrains Mono\',monospace; font-size:12px; padding:4px 0; border-bottom:1px solid rgba(255,255,255,.05);">' +
+          '<span style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"><b>' + esc(p.player) + '</b> <span style="color:var(--muted,#8a93a6);">' + esc(p.market) + '</span></span>' +
+          '<span style="white-space:nowrap; color:#58c878;">' + pct(p.prob) + (p.unit_quarter_kelly != null ? ' <span style="color:var(--muted,#8a93a6);">' + Number(p.unit_quarter_kelly).toFixed(2) + 'u</span>' : '') + '</span>' +
+        '</div>';
+      }).join("");
+      // other-picks chips
+      var col = { "Game line": "#58c878", "World Cup": "#ffc15e", "PrizePicks": "#9db8ff" };
+      document.getElementById("apodOther").innerHTML = others.slice(0, 3).map(function (o) {
+        return '<a href="' + esc(o.link || "#") + '" style="text-decoration:none; font-family:\'JetBrains Mono\',monospace; font-size:10.5px; padding:4px 9px; border-radius:6px; border:1px solid rgba(255,255,255,.08); color:var(--text-2,#9fb0c8); white-space:nowrap;"><span style="color:' + (col[o.kind] || "#d4a04a") + '; font-weight:700;">' + esc(o.kind) + '</span> · ' + esc((o.label || "").slice(0, 34)) + '</a>';
+      }).join("");
+      document.getElementById("alphaPodHero").style.display = "block";
+    }).catch(function () {});
+  })();
+  </script>
+
   <!-- LIVE SCRATCH / REMOVAL ALERTS (NEW) -->
   <section id="scratchAlertsBanner" style="display:none; margin: 0 0 14px 0;"></section>
   <script>
