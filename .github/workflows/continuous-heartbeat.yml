@@ -91,6 +91,9 @@ jobs:
       - name: All-picks unified ledger (settle + log)
         working-directory: python
         run: python all_picks_tracker.py
+      - name: Alpha Pick of the Day track record (settle slip legs off the ledger)
+        working-directory: python
+        run: python alpha_pod_tracker.py || true
       - name: World Cup model report card (refresh as picks settle)
         working-directory: python
         run: python worldcup_accuracy.py || true

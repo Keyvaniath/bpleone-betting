@@ -78,6 +78,7 @@
       <span style="font-size:11px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:#d4a04a;">★ Alpha Pick of the Day</span>
       <span style="display:flex; gap:14px; align-items:center; font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--text-2,#9fb0c8);">
         <span id="apodSlate"></span>
+        <span id="apodRecord" style="color:#58c878;"></span>
         <a href="alpha-pick.html" style="color:#d4a04a; text-decoration:underline; text-decoration-color:rgba(212,160,74,.4);">full slip →</a>
       </span>
     </div>
@@ -132,6 +133,19 @@
         return '<a href="' + esc(o.link || "#") + '" style="text-decoration:none; font-family:\'JetBrains Mono\',monospace; font-size:10.5px; padding:4px 9px; border-radius:6px; border:1px solid rgba(255,255,255,.08); color:var(--text-2,#9fb0c8); white-space:nowrap;"><span style="color:' + (col[o.kind] || "#d4a04a") + '; font-weight:700;">' + esc(o.kind) + '</span> · ' + esc((o.label || "").slice(0, 34)) + '</a>';
       }).join("");
       document.getElementById("alphaPodHero").style.display = "block";
+    }).catch(function () {});
+    // Track-record chip: settled slip W-L/ROI once it has settled legs, else the
+    // curated prop-pool ROI for day-one credibility.
+    fetch("data/alpha_pod_record.json?t=" + Date.now(), { cache: "no-cache" }).then(function (r) { return r.json(); }).then(function (d) {
+      var s = d.slip || {}, c = d.curated_context, el = document.getElementById("apodRecord");
+      if (!el) return;
+      if (s.n_settled) {
+        el.textContent = "slip " + s.wins + "-" + s.losses + " " + (s.roi_pct >= 0 ? "+" : "") + s.roi_pct + "%";
+        el.style.color = s.roi_pct >= 0 ? "#58c878" : "#e35a5a";
+      } else if (c) {
+        el.textContent = "pool +" + c.roi_pct + "% / " + c.settled;
+        el.title = "Realized ROI of the curated prop pool the slip is drawn from (" + c.wins + "-" + c.losses + ")";
+      }
     }).catch(function () {});
   })();
   </script>

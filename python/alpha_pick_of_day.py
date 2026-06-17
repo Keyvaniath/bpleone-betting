@@ -80,33 +80,44 @@ def _clean_market(m: Optional[str]) -> str:
 
 def _props_of_day(top: Dict[str, Any], k: int = 5) -> List[Dict[str, Any]]:
     """The 3-5 best curated player props for the morning slip -- ranked by the
-    machine's own quarter-Kelly stake, deduped by player, capped at 2 per market
-    family so the slip has variety instead of five identical legs."""
-    plays = top.get("all_plays") or top.get("top_25") or []
-    props = [p for p in plays if p.get("src") == "player" or str(p.get("sport", "")).endswith("-PP")]
-    props.sort(key=lambda p: (p.get("unit_size_quarter_kelly") or 0,
-                              p.get("kelly_fraction") or 0,
-                              p.get("edge_pct") or 0), reverse=True)
+    machine's own quarter-Kelly stake, deduped by player, capped at 3 per market
+    family for variety.
+
+    Two-pass: EXHAUST top_25 first (those are LEDGER-LOGGED, so the slip earns a
+    real settled track record); only backfill from the broader all_plays board if
+    top_25 is too thin to field a 3-leg slip."""
+    keyf = (lambda p: (p.get("unit_size_quarter_kelly") or 0,
+                       p.get("kelly_fraction") or 0, p.get("edge_pct") or 0))
+    is_prop = (lambda p: p.get("src") == "player" or str(p.get("sport", "")).endswith("-PP"))
+    t25 = sorted([p for p in (top.get("top_25") or []) if is_prop(p)], key=keyf, reverse=True)
+    allp = sorted([p for p in (top.get("all_plays") or []) if is_prop(p)], key=keyf, reverse=True)
+
     out: List[Dict[str, Any]] = []
     seen_players: set = set()
     fam_count: Dict[str, int] = {}
-    for p in props:
-        name = p.get("player_or_matchup")
-        fam = p.get("market_family") or "?"
-        if not name or name in seen_players or fam_count.get(fam, 0) >= 2:
-            continue
-        seen_players.add(name)
-        fam_count[fam] = fam_count.get(fam, 0) + 1
-        out.append({
-            "player": name, "team": p.get("team"), "sport": p.get("sport"),
-            "market": _clean_market(p.get("market")), "market_family": fam,
-            "prob": round(p.get("prob") or 0, 4), "fair_american": p.get("fair_american"),
-            "edge_pct": p.get("edge_pct"),
-            "unit_quarter_kelly": p.get("unit_size_quarter_kelly"),
-            "kelly_fraction": p.get("kelly_fraction"),
-        })
-        if len(out) >= k:
-            break
+
+    def _take(pool: List[Dict[str, Any]], fam_cap: int) -> None:
+        for p in pool:
+            if len(out) >= k:
+                return
+            name = p.get("player_or_matchup")
+            fam = p.get("market_family") or "?"
+            if not name or name in seen_players or fam_count.get(fam, 0) >= fam_cap:
+                continue
+            seen_players.add(name)
+            fam_count[fam] = fam_count.get(fam, 0) + 1
+            out.append({
+                "player": name, "team": p.get("team"), "sport": p.get("sport"),
+                "market": _clean_market(p.get("market")), "market_family": fam,
+                "prob": round(p.get("prob") or 0, 4), "fair_american": p.get("fair_american"),
+                "edge_pct": p.get("edge_pct"),
+                "unit_quarter_kelly": p.get("unit_size_quarter_kelly"),
+                "kelly_fraction": p.get("kelly_fraction"),
+            })
+
+    _take(t25, 3)                 # settleable, curated -- the real slip
+    if len(out) < 3:
+        _take(allp, 3)            # backfill only to avoid a too-thin slip
     return out
 
 

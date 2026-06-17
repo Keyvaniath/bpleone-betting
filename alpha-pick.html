@@ -112,6 +112,26 @@
   <strong>"where is the book most wrong?"</strong>
 </div>
 
+<!-- Forward track record of the daily slip (settled via the ledger) -->
+<div id="alphaRecord" style="display:none; margin:0 0 20px; padding:12px 16px; border:1px solid rgba(255,255,255,.08); border-radius:10px; background:rgba(255,255,255,.02); font-family:'JetBrains Mono',monospace; font-size:12.5px; gap:18px; flex-wrap:wrap; align-items:center;"></div>
+<script>
+fetch('data/alpha_pod_record.json?t=' + Date.now()).then(function (r) { return r.json(); }).then(function (d) {
+  var s = d.slip || {}, c = d.curated_context, el = document.getElementById('alphaRecord');
+  var parts = ['<span style="color:var(--muted,#888);text-transform:uppercase;font-size:10px;letter-spacing:.5px;">★ Track record</span>'];
+  if (s.n_settled) {
+    parts.push('Slip <b>' + s.wins + '-' + s.losses + (s.pushes ? '-' + s.pushes : '') + '</b> ' +
+      '<span style="color:' + (s.roi_pct >= 0 ? '#58c878' : '#e35a5a') + ';">' + (s.roi_pct >= 0 ? '+' : '') + s.roi_pct + '%</span> · ' +
+      '<span style="color:' + (s.net_units >= 0 ? '#58c878' : '#e35a5a') + ';">' + (s.net_units >= 0 ? '+' : '') + s.net_units + 'u</span> ' +
+      '<span style="color:#666;">(' + s.n_settled + ' legs since ' + (d.launch_date || 'launch') + ')</span>');
+  } else {
+    parts.push('<span style="color:var(--text-2,#9fb0c8);">Slip record building since ' + (d.launch_date || 'launch') + ' — ' + (d.n_days_tracked || 0) + ' day(s); legs settle nightly off the public ledger</span>');
+  }
+  if (c) parts.push('<span style="color:var(--text-2,#9fb0c8);">Curated prop pool (all-time): <b>' + c.wins + '-' + c.losses + '</b> <span style="color:#58c878;">+' + c.roi_pct + '%</span> over ' + c.settled + '</span>');
+  el.innerHTML = parts.join(' &nbsp;·&nbsp; ');
+  el.style.display = 'flex';
+}).catch(function () {});
+</script>
+
 <div class="alpha-hero" id="alpha-hero">
   <div class="tag-row">
     <div class="tag tag-alpha">★ ALPHA PICK</div>
