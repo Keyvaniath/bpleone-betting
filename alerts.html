@@ -62,7 +62,8 @@
 
   <div class="cta">
     <h3>Want these without refreshing?</h3>
-    <p>The tape rebuilds with every pipeline run (about every 2 hours, all day). Lock transitions and sharp steam also push to the EdgeStat Discord in real time when the webhook is live. Bookmark this page — or add it to your home screen — and it's your morning read. <span style="color:var(--muted,#8a93a6);">(Email alerts are on the roadmap.)</span></p>
+    <p>The tape rebuilds with every pipeline run (about every 2 hours, all day). Lock transitions and sharp steam also push to the EdgeStat Discord in real time when the webhook is live. Bookmark this page — or add it to your home screen — and it's your morning read.</p>
+    <div id="subscribeMount" style="margin-top:12px;"></div>
   </div>
 </main>
 
@@ -125,5 +126,8 @@ fetch("data/alerts_feed.json", { cache: "no-cache" }).then(r => r.json()).then(d
     `${d.n || ITEMS.length} signals · refreshed ${ago(d.generated_at)} · ${(d.generated_at || "").replace("T", " ").slice(0, 16)} UTC — ${d.note || ""}`;
 }).catch(() => { document.getElementById("feed").innerHTML = '<p class="muted">The tape is unavailable — the pipeline may not have run yet.</p>'; });
 </script>
+<script src="js/subscribe-config.js"></script>
+<script src="js/subscribe.js"></script>
+<script>EdgeStatSubscribe.mount("subscribeMount");</script>
 </body>
 </html>
