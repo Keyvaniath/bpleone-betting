@@ -14,9 +14,14 @@
 //
 // After editing, just push -- no other code changes needed.
 window.EDGESTAT_SUBSCRIBE = {
-  enabled: false,
+  enabled: true,
   provider: "formspree",      // "formspree" | "buttondown" | "custom"
-  formspreeId: "",            // e.g. "xublah12"
+  // Wired to Brandon's existing Formspree form by his explicit choice
+  // (selected "Use existing DCF form" — Formspree blocks scripted creation of a
+  // dedicated one). Tape signups arrive labeled (_subject "New EdgeStat / The
+  // Tape subscriber" + a `source` field) so they're filterable from DCF leads.
+  // Swap to a dedicated form anytime: just replace the id below and push.
+  formspreeId: "xdayqzkj",    // shared with the DCF form by choice; swappable
   buttondownUser: "",         // e.g. "edgestat"
   customEndpoint: "",         // e.g. "https://edgestat-subscribe.<you>.workers.dev"
   // Copy shown above the input. Tweak freely.
