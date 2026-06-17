@@ -77,6 +77,11 @@
             line: el.getAttribute("data-bet-line") || null,
             play: el.getAttribute("data-bet-play") || null,
             source: el.getAttribute("data-bet-src") || null,
+            // Settlement fields for the P&L + CLV ledger (filled in on /my-bets).
+            // Pre-seed odds from the row if it advertised one (data-bet-odds).
+            odds: r.odds != null ? r.odds : (el.getAttribute("data-bet-odds") || null),
+            result: r.result || "pending",   // pending | win | loss | push
+            close_odds: r.close_odds != null ? r.close_odds : null,
           };
         }
         saveState(s);
@@ -134,13 +139,41 @@
       tagAll();
     }, 3000);
   });
-  window.EdgeStatBets = window.EdgeStatBets || {};
-  window.EdgeStatBets.tagAll = tagAll;
-
-  // Expose API for /my-bets page
+  // Single consolidated API (previously a second assignment clobbered tagAll).
   window.EdgeStatBets = {
+    tagAll: tagAll,
     list: loadState,
     clear: function () { saveState({}); updateGlobalSummary(); tagAll(); },
+    // Patch settlement fields (odds / result / close_odds / stake_units) on a row.
+    update: function (key, patch) {
+      const s = loadState();
+      if (!s[key]) return false;
+      Object.assign(s[key], patch || {});
+      saveState(s);
+      updateGlobalSummary();
+      return true;
+    },
+    // Add a bet the model didn't surface (manual entry). Returns its key.
+    add: function (rec) {
+      const s = loadState();
+      const key = "manual:" + (rec.ts || new Date().toISOString()) + ":" + Math.round(Math.random() * 1e6);
+      s[key] = Object.assign({
+        status: "bet", stake_units: STAKE_DEFAULT, ts: new Date().toISOString(),
+        label: "", market: null, line: null, play: null, source: "MANUAL",
+        odds: null, result: "pending", close_odds: null,
+      }, rec || {});
+      saveState(s);
+      updateGlobalSummary();
+      return key;
+    },
+    remove: function (key) {
+      const s = loadState();
+      if (!s[key]) return false;
+      delete s[key];
+      saveState(s);
+      updateGlobalSummary();
+      return true;
+    },
     export: function () {
       const s = loadState();
       const rows = Object.entries(s).map(([k, v]) => ({ key: k, ...v }));

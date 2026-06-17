@@ -3,105 +3,219 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My Bets | EdgeStat</title>
+<title>My Bets — P&L + CLV Ledger | EdgeStat</title>
 <link rel="stylesheet" href="css/style.css">
 <script src="js/nav.js"></script>
+<style>
+  .mb-in { background:var(--bg-2,#11151c); border:1px solid var(--border,#222a36); color:var(--text,#e8edf4);
+           border-radius:5px; padding:4px 6px; font-family:'JetBrains Mono',monospace; font-size:12px; width:100%; }
+  .mb-in:focus { outline:none; border-color:rgba(88,200,120,.5); }
+  select.mb-in { cursor:pointer; }
+  .lhead, .lrow { display:grid; grid-template-columns:96px 1.5fr 78px 64px 92px 78px 72px 66px 24px; gap:9px; align-items:center;
+                  font-family:'JetBrains Mono',monospace; font-size:12px; padding:8px 10px; min-width:760px; }
+  .lhead { color:var(--muted,#8a93a6); font-size:9.5px; text-transform:uppercase; letter-spacing:.5px; border-bottom:1px solid var(--border,#222a36); }
+  .lrow { border-bottom:1px solid rgba(255,255,255,.04); }
+  .lrow .lbl { white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .up { color:#5fe0a0; } .down { color:#ff8a8a; } .mut { color:var(--muted,#8a93a6); }
+  .xbtn { background:none; border:none; color:#ff8a8a; cursor:pointer; font-size:14px; padding:0; line-height:1; }
+  .res-win select, select[data-res="win"] { color:#5fe0a0; }
+  .pill { font-size:9px; padding:2px 7px; border-radius:4px; font-weight:700; }
+  .tscroll { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+  .addgrid { display:grid; grid-template-columns:1.6fr 90px 80px 96px auto; gap:10px; align-items:end; padding:14px; }
+  .addgrid label { display:block; font-size:9.5px; text-transform:uppercase; letter-spacing:.5px; color:var(--muted,#8a93a6); margin-bottom:4px; }
+  .btn { border:1px solid var(--border,#222a36); background:var(--bg-2,#11151c); color:var(--text,#e8edf4); padding:7px 14px; border-radius:6px; font-size:12px; cursor:pointer; font-family:inherit; }
+  .btn.go { border-color:rgba(88,200,120,.4); background:rgba(88,200,120,.12); color:#7ff0b5; }
+  .btn.danger { border-color:rgba(227,90,90,.35); background:rgba(227,90,90,.12); color:#e35a5a; }
+  @media (max-width:620px){ .addgrid{grid-template-columns:1fr 1fr;} }
+</style>
 </head>
 <body class="page-my-bets">
 <header class="topbar">
-  <div class="brand">
-    <a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a>
-    <span class="tagline">by bpleone</span>
-  </div>
+  <div class="brand"><a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a><span class="tagline">by bpleone</span></div>
   <nav class="mainnav"><!-- nav.js injects here --></nav>
-  <div class="topbar-actions"><div class="ticker" id="liveTicker">LIVE</div></div>
+  <div class="topbar-actions"><div class="ticker" id="liveTicker">LEDGER</div></div>
 </header>
 
 <main class="container">
   <section class="page-head">
-    <h1>My Bets — Personal Ledger</h1>
-    <p>Every play you've tagged "BET" gets logged here. Local-only (lives in your browser's localStorage, no server). Use the TRACK pill next to any prop on /props, /pickem, /best-bets, or /play-of-day to record selections.</p>
+    <h1>My Bets — P&amp;L + CLV Ledger</h1>
+    <p>Your personal book. Tag plays with the TRACK pill anywhere on the site, or add bets manually below. Enter the <b>odds you got</b> and mark the <b>result</b> to get real P&amp;L and ROI; drop in the <b>closing line</b> and the ledger computes your <b>CLV</b> — whether you beat the close, the one metric that survives variance. Everything lives in your browser (localStorage) — no server, no account, no leak.</p>
   </section>
 
-  <section class="metric-strip" id="myBetsMetrics">
-    <div class="metric"><span class="metric-num" id="mbBets">0</span><span class="metric-label">Bets Logged</span></div>
-    <div class="metric"><span class="metric-num" id="mbStaked">0u</span><span class="metric-label">Total Stake</span></div>
-    <div class="metric"><span class="metric-num" id="mbSkipped">0</span><span class="metric-label">Skipped</span></div>
-    <div class="metric"><span class="metric-num" id="mbDk">0</span><span class="metric-label">From DK</span></div>
-    <div class="metric"><span class="metric-num" id="mbPp">0</span><span class="metric-label">From PP</span></div>
-    <div class="metric"><span class="metric-num" id="mbNrfi">0</span><span class="metric-label">From NRFI/SGP</span></div>
+  <section class="metric-strip" id="mbMetrics">
+    <div class="metric"><span class="metric-num" id="mRec">0-0</span><span class="metric-label">Record (W-L-P)</span></div>
+    <div class="metric"><span class="metric-num" id="mNet">0.0u</span><span class="metric-label">Net P&amp;L</span></div>
+    <div class="metric"><span class="metric-num" id="mRoi">—</span><span class="metric-label">ROI (yield)</span></div>
+    <div class="metric"><span class="metric-num" id="mStaked">0u</span><span class="metric-label">Staked (settled)</span></div>
+    <div class="metric"><span class="metric-num" id="mClv">—</span><span class="metric-label">Avg CLV</span></div>
+    <div class="metric"><span class="metric-num" id="mBeat">—</span><span class="metric-label">Beat the Close</span></div>
+    <div class="metric"><span class="metric-num" id="mOpen">0</span><span class="metric-label">Open (pending)</span></div>
   </section>
 
-  <section class="card" style="margin-bottom: 18px;">
+  <section class="card" style="margin-bottom:16px;">
+    <div class="card-head"><span>➕ Add a bet manually</span></div>
+    <div class="addgrid">
+      <div><label>Bet</label><input id="aLabel" class="mb-in" placeholder="e.g. Yankees ML vs BOS"></div>
+      <div><label>Odds (Amer.)</label><input id="aOdds" class="mb-in" inputmode="numeric" placeholder="-110"></div>
+      <div><label>Stake (u)</label><input id="aStake" class="mb-in" inputmode="decimal" value="1"></div>
+      <div><label>Close (opt.)</label><input id="aClose" class="mb-in" inputmode="numeric" placeholder="-120"></div>
+      <div><button id="addBtn" class="btn go">Add to ledger</button></div>
+    </div>
+  </section>
+
+  <section class="card" style="margin-bottom:16px;">
     <div class="card-head"><span>📒 Ledger</span><span>
-      <button id="exportBtn" style="background: var(--bg-2); border: 1px solid var(--line); color: var(--text); padding: 4px 12px; border-radius: 4px; font-size: 11px; cursor: pointer; margin-right: 6px;">Export JSON</button>
-      <button id="clearBtn" style="background: rgba(227,90,90,0.15); border: 1px solid rgba(227,90,90,0.35); color: #e35a5a; padding: 4px 12px; border-radius: 4px; font-size: 11px; cursor: pointer;">Clear all</button>
+      <button id="exportBtn" class="btn" style="margin-right:6px;">Export JSON</button>
+      <button id="clearBtn" class="btn danger">Clear all</button>
     </span></div>
-    <div id="ledgerList" style="padding: 14px;"></div>
+    <div class="tscroll">
+      <div class="lhead">
+        <span>Tagged</span><span>Bet</span><span>Odds</span><span>Stake</span><span>Result</span><span>Close</span><span>P&amp;L</span><span>CLV</span><span></span>
+      </div>
+      <div id="ledgerList"></div>
+    </div>
   </section>
 
   <section class="card">
-    <div class="card-head"><span>ℹ️ How this works</span></div>
-    <div style="padding: 14px; font-size: 13px; line-height: 1.7; color: var(--text-2, #aaa);">
-      <ol style="padding-left: 24px; margin: 0;">
-        <li>On any page with a prop list (props.html, pickem.html, best-bets.html, play-of-day.html), each row has a TRACK pill on the right.</li>
-        <li>Click once: BET (you placed this bet).</li>
-        <li>Click twice: SKIPPED (you saw it and passed).</li>
-        <li>Click again: clears the tag.</li>
-        <li>Data lives in your browser only — no server, no account, no leak. Export with the button above to back it up.</li>
-        <li>A floating chip in the bottom-right shows total bets + units staked tonight.</li>
-      </ol>
+    <div class="card-head"><span>ℹ️ How the math works</span></div>
+    <div style="padding:14px; font-size:13px; line-height:1.7; color:var(--text-2,#aaa);">
+      <ul style="padding-left:22px; margin:0;">
+        <li><b>P&amp;L</b> uses the American odds you entered: a win pays <span class="mut" style="font-family:'JetBrains Mono',monospace;">stake × (decimal − 1)</span>, a loss is −stake, a push is 0.</li>
+        <li><b>ROI (yield)</b> = net units ÷ units staked on <i>decided</i> bets (pushes excluded from the denominator).</li>
+        <li><b>CLV</b> compares the implied probability of your price vs the closing price. You <b>beat the close</b> when you locked a longer price than the market settled on — <span class="mut" style="font-family:'JetBrains Mono',monospace;">CLV = close_implied − your_implied</span>, in points. Positive is good. It's the sharpest read on whether you're getting value, independent of whether any single bet won.</li>
+        <li>Only <b>settled</b> bets (win/loss/push) count toward record, P&amp;L and ROI. Pending bets show as open exposure.</li>
+      </ul>
     </div>
   </section>
 </main>
 
+<footer class="site-footer"><div class="foot-bot"><span>© 2026 bpleone.com</span><span>Built in SoCal ☀️</span></div></footer>
+
 <script src="js/bet_tracker.js"></script>
 <script src="js/nav_badge.js"></script>
 <script>
+const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const numOk = v => v != null && v !== "" && isFinite(+String(v).replace("+", ""));
+const toNum = v => +String(v).replace("+", "");
+const dec = o => { o = toNum(o); return o > 0 ? 1 + o / 100 : 1 + 100 / Math.abs(o); };
+const imp = o => { o = toNum(o); return o > 0 ? 100 / (o + 100) : Math.abs(o) / (Math.abs(o) + 100); };
+const stakeOf = r => { const s = parseFloat(r.stake_units); return isFinite(s) && s > 0 ? s : 1; };
+
+function profitOf(r) {
+  if (r.result === "win") return numOk(r.odds) ? stakeOf(r) * (dec(r.odds) - 1) : 0;
+  if (r.result === "loss") return -stakeOf(r);
+  return 0; // push / pending
+}
+function clvOf(r) {
+  if (!numOk(r.odds) || !numOk(r.close_odds)) return null;
+  return (imp(r.close_odds) - imp(r.odds)) * 100;
+}
+const fmtU = u => (u >= 0 ? "+" : "") + u.toFixed(2) + "u";
+
 function refresh() {
   const all = window.EdgeStatBets ? window.EdgeStatBets.list() : {};
-  const entries = Object.entries(all).map(([k, v]) => ({ key: k, ...v }));
-  const bets = entries.filter(e => e.status === "bet");
-  const skipped = entries.filter(e => e.status === "skip");
-  const sum = bets.reduce((s, b) => s + (parseFloat(b.stake_units) || 1), 0);
-  document.getElementById("mbBets").textContent = bets.length;
-  document.getElementById("mbStaked").textContent = sum.toFixed(1) + "u";
-  document.getElementById("mbSkipped").textContent = skipped.length;
-  document.getElementById("mbDk").textContent   = bets.filter(b => b.source === "DK").length;
-  document.getElementById("mbPp").textContent   = bets.filter(b => b.source === "PP").length;
-  document.getElementById("mbNrfi").textContent = bets.filter(b => ["NRFI","SGP"].includes(b.source)).length;
+  const bets = Object.entries(all).map(([k, v]) => ({ key: k, ...v })).filter(e => e.status === "bet");
   bets.sort((a, b) => (b.ts || "").localeCompare(a.ts || ""));
-  document.getElementById("ledgerList").innerHTML = bets.length === 0
-    ? `<p class="muted" style="text-align:center; padding: 20px;">No bets logged yet. Tag plays with the TRACK pill on /props, /pickem, /best-bets, or /play-of-day.</p>`
-    : `<div style="display:grid; grid-template-columns: 140px 1.6fr 80px 80px 80px 80px; gap: 14px; padding: 8px 0; color: var(--muted, #888); font-size: 10px; text-transform: uppercase;">
-        <span>Tagged</span><span>Bet</span><span>Play</span><span>Line</span><span>Stake</span><span>Source</span>
-      </div>` + bets.map(b => `<div style="display:grid; grid-template-columns: 140px 1.6fr 80px 80px 80px 80px; gap: 14px; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.04); font-family:'JetBrains Mono',monospace; font-size: 12px;">
-        <span class="muted">${(b.ts || "").replace("T", " ").slice(0, 16)}</span>
-        <span><a href="player.html?id=${b.player_id || ''}" style="color: var(--text); text-decoration: underline; text-decoration-color: rgba(255,255,255,0.15);">${b.label || b.key}</a></span>
-        <span style="color: ${b.play === 'OVER' ? '#58c878' : b.play === 'UNDER' ? '#e35a5a' : 'var(--text-2, #aaa)'};">${b.play || ""}</span>
-        <span>${b.line ?? ""}</span>
-        <span>${b.stake_units || 1}u</span>
-        <span><span style="padding: 2px 8px; border-radius: 3px; background: rgba(255,255,255,0.05); font-size: 10px; font-weight: 700;">${b.source || ""}</span></span>
-      </div>`).join("");
+
+  const settled = bets.filter(b => ["win", "loss", "push"].includes(b.result));
+  const w = settled.filter(b => b.result === "win").length;
+  const l = settled.filter(b => b.result === "loss").length;
+  const p = settled.filter(b => b.result === "push").length;
+  const net = settled.reduce((s, b) => s + profitOf(b), 0);
+  const decidedStake = settled.filter(b => b.result !== "push").reduce((s, b) => s + stakeOf(b), 0);
+  const settledStake = settled.reduce((s, b) => s + stakeOf(b), 0);
+  const roi = decidedStake > 0 ? (net / decidedStake) * 100 : null;
+  const open = bets.filter(b => !b.result || b.result === "pending").length;
+
+  const clvCohort = bets.map(clvOf).filter(v => v != null);
+  const avgClv = clvCohort.length ? clvCohort.reduce((s, v) => s + v, 0) / clvCohort.length : null;
+  const beat = clvCohort.length ? clvCohort.filter(v => v > 0).length / clvCohort.length : null;
+
+  const set = (id, txt, cls) => { const e = document.getElementById(id); e.textContent = txt; e.className = "metric-num" + (cls ? " " + cls : ""); };
+  set("mRec", `${w}-${l}${p ? "-" + p : ""}`);
+  set("mNet", fmtU(net), net >= 0 ? "up" : "down");
+  set("mRoi", roi == null ? "—" : (roi >= 0 ? "+" : "") + roi.toFixed(1) + "%", roi == null ? "" : (roi >= 0 ? "up" : "down"));
+  set("mStaked", settledStake.toFixed(1) + "u");
+  set("mClv", avgClv == null ? "—" : (avgClv >= 0 ? "+" : "") + avgClv.toFixed(2) + "pp", avgClv == null ? "" : (avgClv >= 0 ? "up" : "down"));
+  set("mBeat", beat == null ? "—" : (100 * beat).toFixed(0) + "%", beat == null ? "" : (beat >= 0.5 ? "up" : "down"));
+  set("mOpen", String(open));
+
+  const list = document.getElementById("ledgerList");
+  if (!bets.length) {
+    list.innerHTML = `<p class="mut" style="text-align:center; padding:22px;">No bets logged yet. Tag plays with the TRACK pill on /props, /pickem, /best-bets, or /play-of-day — or add one manually above.</p>`;
+    return;
+  }
+  const opt = (v, cur, lbl) => `<option value="${v}"${cur === v ? " selected" : ""}>${lbl}</option>`;
+  list.innerHTML = bets.map(b => {
+    const pnl = profitOf(b), clv = clvOf(b);
+    const settledRow = ["win", "loss", "push"].includes(b.result);
+    return `<div class="lrow" data-k="${esc(b.key)}">
+      <span class="mut">${esc((b.ts || "").replace("T", " ").slice(0, 16))}</span>
+      <span class="lbl" title="${esc(b.label || b.key)}">${esc(b.label || b.key)}${b.line != null && b.line !== "" ? ` <span class="mut">${esc(b.play || "")} ${esc(b.line)}</span>` : ""}</span>
+      <span><input class="mb-in" data-f="odds" inputmode="numeric" value="${esc(b.odds ?? "")}" placeholder="-110"></span>
+      <span><input class="mb-in" data-f="stake_units" inputmode="decimal" value="${esc(b.stake_units ?? 1)}"></span>
+      <span><select class="mb-in" data-f="result" data-res="${esc(b.result || "pending")}">
+        ${opt("pending", b.result || "pending", "Pending")}${opt("win", b.result, "Win")}${opt("loss", b.result, "Loss")}${opt("push", b.result, "Push")}
+      </select></span>
+      <span><input class="mb-in" data-f="close_odds" inputmode="numeric" value="${esc(b.close_odds ?? "")}" placeholder="close"></span>
+      <span class="${!settledRow ? "mut" : pnl >= 0 ? "up" : "down"}">${settledRow ? fmtU(pnl) : "—"}</span>
+      <span class="${clv == null ? "mut" : clv >= 0 ? "up" : "down"}">${clv == null ? "—" : (clv >= 0 ? "+" : "") + clv.toFixed(1)}</span>
+      <span><button class="xbtn" data-x title="Remove">✕</button></span>
+    </div>`;
+  }).join("");
 }
-refresh();
+
+// Event delegation for inline edits + removal
+document.getElementById("ledgerList").addEventListener("change", e => {
+  const row = e.target.closest(".lrow"); if (!row) return;
+  const f = e.target.getAttribute("data-f"); if (!f) return;
+  let val = e.target.value;
+  if (f === "stake_units") { const n = parseFloat(val); val = isFinite(n) && n > 0 ? n : 1; }
+  if ((f === "odds" || f === "close_odds") && val.trim() === "") val = null;
+  window.EdgeStatBets.update(row.getAttribute("data-k"), { [f]: val });
+  refresh();
+});
+document.getElementById("ledgerList").addEventListener("click", e => {
+  if (!e.target.hasAttribute("data-x")) return;
+  const row = e.target.closest(".lrow"); if (!row) return;
+  window.EdgeStatBets.remove(row.getAttribute("data-k"));
+  refresh();
+});
+
+// Manual add
+document.getElementById("addBtn").addEventListener("click", () => {
+  const label = document.getElementById("aLabel").value.trim();
+  const odds = document.getElementById("aOdds").value.trim();
+  const stake = parseFloat(document.getElementById("aStake").value);
+  const close = document.getElementById("aClose").value.trim();
+  if (!label) { document.getElementById("aLabel").focus(); return; }
+  window.EdgeStatBets.add({
+    label, source: "MANUAL", status: "bet",
+    odds: numOk(odds) ? odds : null,
+    stake_units: isFinite(stake) && stake > 0 ? stake : 1,
+    close_odds: numOk(close) ? close : null,
+    result: "pending",
+  });
+  document.getElementById("aLabel").value = "";
+  document.getElementById("aOdds").value = "";
+  document.getElementById("aStake").value = "1";
+  document.getElementById("aClose").value = "";
+  refresh();
+});
+
 document.getElementById("exportBtn").addEventListener("click", () => {
   const data = window.EdgeStatBets.export();
   const blob = new Blob([data], { type: "application/json" });
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
-  a.href = url;
-  a.download = `edgestat-bets-${new Date().toISOString().slice(0, 10)}.json`;
-  a.click();
+  a.href = url; a.download = `edgestat-bets-${new Date().toISOString().slice(0, 10)}.json`; a.click();
   URL.revokeObjectURL(url);
 });
 document.getElementById("clearBtn").addEventListener("click", () => {
-  if (confirm("Clear all logged bets? Cannot be undone.")) {
-    window.EdgeStatBets.clear();
-    refresh();
-  }
+  if (confirm("Clear all logged bets? Cannot be undone.")) { window.EdgeStatBets.clear(); refresh(); }
 });
 window.addEventListener("storage", refresh);
+refresh();
 </script>
 </body>
 </html>
