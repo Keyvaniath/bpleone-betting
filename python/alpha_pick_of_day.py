@@ -65,6 +65,101 @@ def _decimal_to_american(d):
     return -int(round(100 / (d - 1)))
 
 
+def _pacific_now() -> dt.datetime:
+    """Current Pacific time (the slate is keyed to the 7am-PT morning refresh)."""
+    try:
+        from zoneinfo import ZoneInfo
+        return dt.datetime.now(ZoneInfo("America/Los_Angeles"))
+    except Exception:
+        return dt.datetime.utcnow() - dt.timedelta(hours=7)  # PDT fallback
+
+
+def _clean_market(m: Optional[str]) -> str:
+    return (m or "").replace("PP_", "").replace("_", " ").strip()
+
+
+def _props_of_day(top: Dict[str, Any], k: int = 5) -> List[Dict[str, Any]]:
+    """The 3-5 best curated player props for the morning slip -- ranked by the
+    machine's own quarter-Kelly stake, deduped by player, capped at 2 per market
+    family so the slip has variety instead of five identical legs."""
+    plays = top.get("all_plays") or top.get("top_25") or []
+    props = [p for p in plays if p.get("src") == "player" or str(p.get("sport", "")).endswith("-PP")]
+    props.sort(key=lambda p: (p.get("unit_size_quarter_kelly") or 0,
+                              p.get("kelly_fraction") or 0,
+                              p.get("edge_pct") or 0), reverse=True)
+    out: List[Dict[str, Any]] = []
+    seen_players: set = set()
+    fam_count: Dict[str, int] = {}
+    for p in props:
+        name = p.get("player_or_matchup")
+        fam = p.get("market_family") or "?"
+        if not name or name in seen_players or fam_count.get(fam, 0) >= 2:
+            continue
+        seen_players.add(name)
+        fam_count[fam] = fam_count.get(fam, 0) + 1
+        out.append({
+            "player": name, "team": p.get("team"), "sport": p.get("sport"),
+            "market": _clean_market(p.get("market")), "market_family": fam,
+            "prob": round(p.get("prob") or 0, 4), "fair_american": p.get("fair_american"),
+            "edge_pct": p.get("edge_pct"),
+            "unit_quarter_kelly": p.get("unit_size_quarter_kelly"),
+            "kelly_fraction": p.get("kelly_fraction"),
+        })
+        if len(out) >= k:
+            break
+    return out
+
+
+def _other_picks() -> List[Dict[str, Any]]:
+    """A few diversified non-prop plays the machine likes today -- a real
+    book-edge game lean, a World Cup conviction, and the correlation-aware
+    PrizePicks slip. Each links to the page that owns it."""
+    picks: List[Dict[str, Any]] = []
+
+    # 1) Best game-line lean (real de-vigged book edge, calibrated)
+    bvm = _load(os.path.join(DATA_DIR, "book_vs_model_team.json"))
+    ml = [e for e in (bvm.get("ml_edges") or [])
+          if (e.get("calibrated_edge_pct") or 0) > 0 and 0.30 <= (e.get("calibrated_prob") or 0) <= 0.82]
+    if ml:
+        e = max(ml, key=lambda x: x.get("calibrated_edge_pct") or 0)
+        who = e.get("team") if e.get("team") not in (None, "HOME", "AWAY") else e.get("side")
+        picks.append({
+            "kind": "Game line", "sport": "MLB",
+            "label": f"{e.get('matchup')} · {who} ML",
+            "detail": f"{(e.get('calibrated_prob') or 0):.0%} model · {(e.get('book_american') or 0):+d} · "
+                      f"+{(e.get('calibrated_edge_pct') or 0):.1f}% edge",
+            "link": "book-edges.html",
+        })
+
+    # 2) World Cup conviction (prefer a real book edge, else highest prob)
+    wc = _load(os.path.join(DATA_DIR, "worldcup_cards.json"))
+    bb = wc.get("best_bets") or []
+    if bb:
+        b = sorted(bb, key=lambda x: (x.get("book_edge_pp") if x.get("book_edge_pp") is not None else -99,
+                                      x.get("prob") or 0), reverse=True)[0]
+        edge = b.get("book_edge_pp")
+        picks.append({
+            "kind": "World Cup", "sport": "WORLDCUP",
+            "label": f"{b.get('play')} — {b.get('matchup')}",
+            "detail": f"{(b.get('prob') or 0):.0%}" + (f" · +{edge}pp vs book" if edge else "")
+                      + (f" · {b.get('date')}" if b.get("date") else ""),
+            "link": "worldcup.html",
+        })
+
+    # 3) Correlation-aware PrizePicks Power Play
+    pp = _load(os.path.join(DATA_DIR, "prizepicks_value.json"))
+    s = pp.get("best_slate")
+    if isinstance(s, dict) and s.get("n_legs"):
+        picks.append({
+            "kind": "PrizePicks", "sport": "DFS",
+            "label": f"{s.get('n_legs')}-leg Power Play ({s.get('payout_multiple')}x)",
+            "detail": f"{s.get('correlation', '')} · joint {(s.get('joint_prob') or 0):.0%} · "
+                      f"{s.get('stake_pct_quarter_kelly')}% ¼-Kelly",
+            "link": "prizepicks-value.html",
+        })
+    return picks[:4]
+
+
 def run() -> Dict[str, Any]:
     top = _load(os.path.join(DATA_DIR, "todays_top_plays.json"))
     plays = top.get("top_25") or []
@@ -162,10 +257,21 @@ def run() -> Dict[str, Any]:
         else:
             pick_type = "favorite_value"  # fav with bigger edge than POD
 
+    # The daily digest Brandon wants: 3-5 best props + a few other machine picks,
+    # keyed to the 7am-PT morning refresh.
+    props_of_day = _props_of_day(top, k=5)
+    other_picks = _other_picks()
+    pac = _pacific_now()
+
     out = {
         "generated_at": dt.datetime.utcnow().isoformat(timespec="seconds"),
+        "slate_date": pac.strftime("%Y-%m-%d"),
+        "slate_weekday": pac.strftime("%A"),
+        "refresh_pt": "07:00 America/Los_Angeles",
         "alpha_pick": alpha,
         "pick_type": pick_type,
+        "props_of_day": props_of_day,
+        "other_picks": other_picks,
         "top_5_alphas": top_5,
         "n_candidates": len(candidates),
         "diagnostics": {
@@ -188,8 +294,13 @@ if __name__ == "__main__":
     o = run()
     a = o["alpha_pick"]
     if a:
-        print(f"[alpha-pod] {o['pick_type']}: {a['player_or_matchup']} "
-              f"{a['market']} p={a['model_prob']:.1%} odds={a['fair_american']:+d} "
-              f"ROI={a['roi_per_dollar']:+.1%}")
+        print(f"[alpha-pod] {o['slate_date']} ({o['slate_weekday']}) {o['pick_type']}: "
+              f"{a['player_or_matchup']} {a['market']} p={a['model_prob']:.1%} "
+              f"odds={a['fair_american']:+d} ROI={a['roi_per_dollar']:+.1%}")
     else:
-        print(f"[alpha-pod] No candidates from {o['n_candidates']} eligible")
+        print(f"[alpha-pod] {o['slate_date']}: no headline alpha from {o['n_candidates']} eligible")
+    print(f"           props_of_day={len(o['props_of_day'])} other_picks={len(o['other_picks'])}")
+    for p in o["props_of_day"]:
+        print(f"             PROP {p['player']:20s} {p['market'][:26]:26s} {p['prob']:.0%} {p.get('fair_american')} ({p.get('unit_quarter_kelly')}u)")
+    for x in o["other_picks"]:
+        print(f"             {x['kind']:9s} {x['label'][:50]}")

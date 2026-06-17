@@ -145,6 +145,23 @@
   </div>
 </div>
 
+<!-- The morning digest: 3-5 best props + other machine picks, refreshed 7am PT -->
+<div class="panel" id="propsPanel">
+  <h2 style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;">
+    <span>The Slip — Props of the Day</span>
+    <span id="slateLine" style="color:#d4a04a;font-size:11px;text-transform:none;letter-spacing:0;"></span>
+  </h2>
+  <div class="prow head" style="display:grid;grid-template-columns:1.7fr 1.4fr 70px 80px 70px 70px;gap:12px;padding:8px 14px;background:rgba(255,255,255,0.05);color:var(--muted,#888);font-size:10px;text-transform:uppercase;font-family:'JetBrains Mono',monospace;">
+    <div>Player</div><div>Prop</div><div class="num" style="text-align:right;">Model</div><div class="num" style="text-align:right;">Fair</div><div class="num" style="text-align:right;">Edge</div><div class="num" style="text-align:right;">¼-Kelly</div>
+  </div>
+  <div id="propsRows"><div style="padding:14px;color:var(--muted,#888);">Loading the slip…</div></div>
+</div>
+
+<div class="panel" id="otherPanel">
+  <h2>Other Plays the Machine Likes</h2>
+  <div id="otherRows"><div style="padding:14px;color:var(--muted,#888);">—</div></div>
+</div>
+
 <div class="panel">
   <h2>Top 5 Alpha Candidates</h2>
   <div class="row head">
@@ -229,6 +246,44 @@ async function load() {
     </div>
   `).join('');
   document.getElementById('top-5-rows').innerHTML = rowsHtml || '<div class="row"><div>No candidates today</div></div>';
+
+  // Slate header — "Wednesday, June 17 · refreshes 7:00 AM PT"
+  const sl = document.getElementById('slateLine');
+  if (sl) {
+    let when = '';
+    if (d.slate_date) {
+      const dd = new Date(d.slate_date + 'T12:00:00');
+      when = (d.slate_weekday || dd.toLocaleDateString(undefined, { weekday: 'long' })) + ', '
+           + dd.toLocaleDateString(undefined, { month: 'long', day: 'numeric' });
+    }
+    sl.textContent = (when ? when + ' · ' : '') + 'refreshes 7:00 AM PT';
+  }
+
+  // The Slip — 3-5 props of the day
+  const esc = s => String(s == null ? '' : s).replace(/[&<>]/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;' }[c]));
+  const props = d.props_of_day || [];
+  document.getElementById('propsRows').innerHTML = props.length ? props.map(p => `
+    <div class="prow" style="display:grid;grid-template-columns:1.7fr 1.4fr 70px 80px 70px 70px;gap:12px;padding:10px 14px;align-items:center;font-family:'JetBrains Mono',monospace;font-size:12px;border-bottom:1px solid rgba(255,255,255,0.04);">
+      <div><b>${esc(p.player)}</b> <span style="color:var(--muted,#888);">${esc(p.team || '')}</span> <span style="color:#666;font-size:10px;">${esc(p.sport || '')}</span></div>
+      <div style="color:var(--text-2,#bbb);">${esc(p.market)}</div>
+      <div class="num" style="text-align:right;">${fmtPct(p.prob, 0)}</div>
+      <div class="num" style="text-align:right;color:#d4a04a;">${fmtOdds(p.fair_american)}</div>
+      <div class="num" style="text-align:right;color:#58c878;">${p.edge_pct != null ? '+' + Number(p.edge_pct).toFixed(0) + '%' : '—'}</div>
+      <div class="num" style="text-align:right;">${p.unit_quarter_kelly != null ? Number(p.unit_quarter_kelly).toFixed(3) + 'u' : '—'}</div>
+    </div>`).join('') : '<div style="padding:14px;color:var(--muted,#888);">No qualifying props on today\'s slate yet — fills in with the morning refresh.</div>';
+
+  // Other plays the machine likes
+  const others = d.other_picks || [];
+  const kindColor = { 'Game line': '#58c878', 'World Cup': '#ffc15e', 'PrizePicks': '#9db8ff' };
+  document.getElementById('otherRows').innerHTML = others.length ? others.map(o => `
+    <a href="${esc(o.link || '#')}" style="display:flex;gap:12px;align-items:center;padding:11px 14px;border-bottom:1px solid rgba(255,255,255,0.04);text-decoration:none;">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;padding:3px 8px;border-radius:4px;background:rgba(255,255,255,.06);color:${kindColor[o.kind] || '#d4a04a'};white-space:nowrap;">${esc(o.kind)}</span>
+      <span style="flex:1;min-width:0;">
+        <span style="display:block;font-size:13px;color:var(--text,#e8edf4);font-weight:600;">${esc(o.label)}</span>
+        <span style="display:block;font-size:11.5px;color:var(--muted,#9fb0c8);font-family:'JetBrains Mono',monospace;">${esc(o.detail)}</span>
+      </span>
+      <span style="font-size:11px;color:#58c878;white-space:nowrap;">open →</span>
+    </a>`).join('') : '<div style="padding:14px;color:var(--muted,#888);">—</div>';
 
   const diag = d.diagnostics || {};
   document.getElementById('diag').innerHTML =
