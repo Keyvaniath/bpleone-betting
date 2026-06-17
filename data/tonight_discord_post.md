@@ -1,8 +1,7 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:5 F:175
+_NO_ACTION_NIGHT_ | L:0 S:0 F:171
 
-:dart: **Top Picks:**
-1. [MLB] ? -- ? (TEAM_STRONG)
+:lock: **LOCK:** Sandy Alcantara (MLB)
 
 :coin: Bankroll Advisory: STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 
