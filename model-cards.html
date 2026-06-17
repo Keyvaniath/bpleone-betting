@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Model Cards | EdgeStat — one per sport</title>
+<meta name="description" content="A model card for every sport EdgeStat covers: the engine, the data, raw-vs-curated performance from the public ledger, and the honest limitations.">
+<link rel="stylesheet" href="css/style.css">
+<script src="js/nav.js"></script>
+<style>
+  .lede { max-width:740px; line-height:1.55; color:var(--text-2,#aaa); }
+  .lede b { color:var(--text,#e8edf4); }
+  .banner { border-left:3px solid #58c878; background:rgba(88,200,120,.06); border-radius:6px; padding:12px 16px; margin:16px 0 20px; font-size:13px; color:var(--text-2,#cdd6e6); line-height:1.6; max-width:840px; }
+  .banner b { color:#58c878; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(360px,1fr)); gap:14px; }
+  .mc { border:1px solid var(--border,#222a36); border-radius:12px; padding:16px 17px; background:rgba(255,255,255,.012); }
+  .mc .top { display:flex; align-items:center; gap:9px; margin-bottom:4px; }
+  .mc .ico { font-size:20px; }
+  .mc h3 { margin:0; font-size:16px; flex:1; }
+  .badge { font-family:'JetBrains Mono',monospace; font-size:9px; text-transform:uppercase; letter-spacing:.5px; padding:3px 8px; border-radius:5px; font-weight:700; white-space:nowrap; }
+  .b-live { background:rgba(88,200,120,.16); color:#5fe0a0; }
+  .b-season { background:rgba(95,179,224,.16); color:#5fb3e0; }
+  .b-off { background:rgba(138,147,166,.16); color:#aab3c5; }
+  .b-exp { background:rgba(255,138,138,.14); color:#ff8a8a; }
+  .b-small { background:rgba(255,193,94,.16); color:#ffc15e; }
+  .mc .eng { font-size:12.5px; color:var(--text-2,#9fb0c8); line-height:1.55; margin:8px 0 10px; }
+  .srcs { display:flex; flex-wrap:wrap; gap:5px; margin-bottom:11px; }
+  .src { font-family:'JetBrains Mono',monospace; font-size:10px; padding:2px 7px; border-radius:4px; background:rgba(255,255,255,.05); color:var(--muted,#aab3c5); }
+  table.perf { width:100%; border-collapse:collapse; font-family:'JetBrains Mono',monospace; font-size:12px; margin-bottom:10px; }
+  table.perf th, table.perf td { padding:5px 7px; text-align:right; border-bottom:1px solid rgba(255,255,255,.05); }
+  table.perf th:first-child, table.perf td:first-child { text-align:left; color:var(--muted,#8a93a6); }
+  table.perf thead th { color:var(--muted,#8a93a6); font-size:9.5px; text-transform:uppercase; letter-spacing:.4px; font-weight:400; }
+  .up { color:#5fe0a0; } .down { color:#ff8a8a; } .mut { color:var(--muted,#8a93a6); }
+  .lim { font-size:11.5px; color:var(--muted,#8a93a6); line-height:1.55; border-top:1px dashed var(--border,#222a36); padding-top:9px; }
+  .lim b { color:#ffc15e; font-weight:600; }
+  .mc .links { margin-top:9px; font-size:11px; }
+  .mc .links a { color:#58c878; text-decoration:none; margin-right:12px; }
+  .mc .links a:hover { text-decoration:underline; }
+  .meta-line { font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--muted,#8a93a6); margin-top:18px; }
+</style>
+</head>
+<body class="page-about">
+<header class="topbar">
+  <div class="brand"><a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a><span class="tagline">by bpleone</span></div>
+  <nav class="mainnav"><!-- nav.js injects here --></nav>
+  <div class="topbar-actions"><div class="ticker" id="liveTicker">MODEL CARDS</div></div>
+</header>
+
+<main class="container">
+  <section class="page-head">
+    <h1>Model Cards</h1>
+    <p class="lede">One card per sport, the way an ML team documents a model: <b>what the engine is</b>, <b>what it's trained on</b>, <b>how it actually performs</b>, and <b>where it breaks</b>. Performance is computed live from the same public, settled ledger that powers the <a href="strategy-sim.html">Strategy Simulator</a> — shown both raw (every family) and curated (proven-negative families dropped), so the honesty layer is visible per sport.</p>
+  </section>
+
+  <div class="banner">
+    <b>Read the two ROI columns together.</b> "Raw" is the unfiltered model firehose; "Curated" is the book we'd actually surface, with proven-money-losing market families removed. The gap between them — clearest on MLB — is the discipline, not the model. Small samples are flagged; treat anything under ~30 decided bets as a read, not a verdict.
+  </div>
+
+  <div class="grid" id="cards"><p class="mut">Loading model cards…</p></div>
+  <p class="meta-line" id="meta"></p>
+
+  <p class="mut" style="margin-top:14px;font-size:12px;">More on the method: <a href="methodology.html" style="color:#58c878;">Methodology →</a> &nbsp; <a href="calibration-map.html" style="color:#58c878;">Calibration map →</a> &nbsp; <a href="strategy-sim.html" style="color:#58c878;">Strategy simulator →</a></p>
+</main>
+
+<footer class="site-footer">
+  <div class="foot-cols">
+    <div><div class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></div><p class="muted">Quant sports analytics.</p></div>
+    <div><h4>Proof</h4><a href="track-record.html">Track Record</a><a href="strategy-sim.html">Strategy Simulator</a><a href="model-cards.html">Model Cards</a></div>
+    <div><h4>Learn</h4><a href="methodology.html">Methodology</a><a href="learn.html">Academy</a></div>
+    <div><h4>Company</h4><a href="about.html">About</a></div>
+  </div>
+  <div class="foot-bot"><span>© 2026 bpleone.com</span><span>Built in SoCal ☀️</span></div>
+</footer>
+
+<script>
+// Static per-sport spec (prose). Keyed by the strategy_sim sport code. Performance
+// numbers are computed LIVE from strategy_sim.json below; this is the documentation.
+const SPECS = {
+  "MLB-PP": { name:"MLB Player Props", ico:"🃏", badge:["LIVE","b-live"], page:"props.html",
+    eng:"Calibrated per-player projections (hand-coded gradient-boosted trees + PA-level Monte Carlo) scored against PrizePicks' flat-payout lines; quarter-Kelly sizing.",
+    src:["MLB Stats API","Baseball Savant","PrizePicks (free menu)"],
+    lim:"The strongest book — soft PP lines vs calibrated projections. DraftKings prop ODDS are paid-gated, so the book-edge cross-check stays dark until the key returns." },
+  "MLB": { name:"MLB Game Lines", ico:"⚾", badge:["IN-SEASON","b-season"], page:"mlb.html",
+    eng:"Bayesian team-strength posterior + Poisson run-scoring → fair moneyline & totals, over a 30-feature pipeline (pitcher, bullpen fatigue, park, weather, umpire, schedule).",
+    src:["MLB Stats API","Baseball Savant","Open-Meteo","ESPN / DraftKings (free)"],
+    lim:"The raw game-line model is overconfident — that's the −22% firehose. The +EV book is the curated subset, and game lines additionally defer to the sharp de-vigged close so model overconfidence can't print a fake edge. Deepest, most mature desk." },
+  "GOLF": { name:"Golf", ico:"⛳", badge:["LIVE","b-live"], page:"golf.html",
+    eng:"Field-strength + course-fit model → top-5 / 10 / 20 finish probabilities, with a live in-tournament tracker.",
+    src:["ESPN Golf","field/form metrics (free)"],
+    lim:"Outright & placement markets are high-variance by nature; +6.5% over 321 is healthy, but golf is structurally noisy." },
+  "WNBA": { name:"WNBA", ico:"🏀", badge:["IN-SEASON","b-season"], page:"wnba.html",
+    eng:"Pace + usage prop generators with a live scoring-environment factor (Bayesian-shrunk from real results), extended to the 2026 expansion teams the static tables don't know.",
+    src:["ESPN WNBA box logs","team form"],
+    lim:"Young sample; expansion-team priors are thin. The live scoring-env trim is the main edge over static pace tables." },
+  "F1": { name:"Formula 1", ico:"🏎️", badge:["EXPERIMENTAL","b-exp"], page:"f1.html",
+    eng:"Qualifying / pole + top-6 finish model from driver & constructor form, as a one-winner normalized distribution.",
+    src:["ESPN F1"],
+    lim:"The hardest desk (raw −72.5% → curated −33%). The pole market was over-flagging (multiple drivers tagged for one seat); a one-winner normalization fix shipped, but treat F1 as experimental." },
+  "UFC": { name:"UFC / MMA", ico:"🥊", badge:["SMALL SAMPLE","b-small"], page:"ufc.html",
+    eng:"Fighter rating model → moneyline + round/finish props.",
+    src:["ESPN MMA"],
+    lim:"+130% over 58 settled is a HOT, small sample — high variance, regression toward the mean is expected. One market live so far." },
+  "WORLDCUP": { name:"2026 World Cup", ico:"🏆", badge:["LIVE","b-live"], page:"worldcup.html",
+    eng:"3-way Poisson match model (FIFA-tier elo blended with in-tournament record) → 1X2 / O2.5 / BTTS, displayed book-shaded; plus a 20k-sim group-advancement Monte Carlo.",
+    src:["ESPN fifa.world","DraftKings 3-way (free)"],
+    lim:"Live tournament, growing sample. The model runs flat, so displayed picks are shaded toward the sharp book; the raw model prob is kept for learning and divergence." },
+  "EPL": { name:"EPL", ico:"⚽", badge:["EARLY","b-small"], page:"epl.html",
+    eng:"Soccer total / BTTS / cards / clean-sheet / anytime-goalscorer prop generators.",
+    src:["ESPN Soccer"],
+    lim:"Thin sample (~31). The club-soccer prop desk is early; treat as a developing read." },
+  "NBA": { name:"NBA", ico:"🏀", badge:["OFF-SEASON","b-off"], page:"nba.html",
+    eng:"Player-prop generators (PRA / AST / 3PM / TOV / STL / blocks) plus a model-vs-DraftKings book-edge board.",
+    src:["ESPN NBA box logs","DraftKings (free)"],
+    lim:"Off-season — only ~24 settled. Fills in next season; the book-edge board goes live with the schedule." },
+  "NHL": { name:"NHL", ico:"🏒", badge:["OFF-SEASON","b-off"], page:"nhl.html",
+    eng:"Elo / Glicko-2 team ratings + goalie-adjusted scoring → puck-line & totals + skater props.",
+    src:["ESPN NHL box logs"],
+    lim:"Raw −34.5%; off-season now. Goalie-start sensitivity is the key risk — a confirmed scratch swings the whole game model." },
+  "MLS": { name:"MLS", ico:"⚽", badge:["EARLY","b-small"], page:"mls.html",
+    eng:"Soccer prop generators (total / BTTS / cards / clean sheet) on the MLS slate.",
+    src:["ESPN Soccer"],
+    lim:"Very small sample (~7) — not yet a verdict on anything. Listed for transparency." },
+  "UCL": { name:"Champions League", ico:"⚽", badge:["EARLY","b-small"], page:"ucl.html",
+    eng:"Soccer prop generators on UCL fixtures.",
+    src:["ESPN Soccer"],
+    lim:"Very small sample (~6); offseason for the competition. Transparency listing." },
+};
+
+function roiCls(v){ return v == null ? "mut" : v >= 0 ? "up" : "down"; }
+function fmtRoi(v){ return v == null ? "—" : (v >= 0 ? "+" : "") + v.toFixed(1) + "%"; }
+
+fetch("data/strategy_sim.json", { cache: "no-cache" }).then(r => r.json()).then(d => {
+  const rows = d.rows || [], fams = d.families || [], sports = d.sports || [];
+  // schema: [date_i, source_i, sport_i, family_i, p_raw, p_cal, fair_american, res, payout_units]
+  const agg = {};
+  for (const sp of sports) agg[sp] = { w:0,l:0,p:0,net:0, cw:0,cl:0,cp:0,cnet:0 };
+  for (const r of rows) {
+    const sp = sports[r[2]], fam = fams[r[3]] || {}, res = r[7], u = r[8], a = agg[sp];
+    if (!a) continue;
+    if (res === 1) a.w++; else if (res === 0) a.l++; else a.p++;
+    a.net += u;
+    if (!fam.neg) { if (res === 1) a.cw++; else if (res === 0) a.cl++; else a.cp++; a.cnet += u; }
+  }
+  const line = (w,l,net) => {
+    const dec = w + l, roi = dec ? 100 * net / dec : null, hit = dec ? w/dec : null;
+    return { rec: `${w}-${l}`, settled: w+l, hit, roi };
+  };
+  // Order by raw decided count (data maturity) desc, only sports we have a spec for.
+  const order = Object.keys(agg).filter(s => SPECS[s])
+    .sort((x,y) => (agg[y].w+agg[y].l) - (agg[x].w+agg[x].l));
+
+  document.getElementById("cards").innerHTML = order.map(sp => {
+    const a = agg[sp], s = SPECS[sp];
+    const raw = line(a.w, a.l, a.net), cur = line(a.cw, a.cl, a.cnet);
+    const small = cur.settled < 30;
+    const hit = h => h == null ? "—" : (100*h).toFixed(0) + "%";
+    return `<div class="mc">
+      <div class="top"><span class="ico">${s.ico}</span><h3>${s.name}</h3><span class="badge ${s.badge[1]}">${s.badge[0]}</span></div>
+      <div class="eng">${s.eng}</div>
+      <div class="srcs">${s.src.map(x => `<span class="src">${x}</span>`).join("")}</div>
+      <table class="perf">
+        <thead><tr><th>Book</th><th>Settled</th><th>Record</th><th>Hit</th><th>ROI</th></tr></thead>
+        <tbody>
+          <tr><td>Raw (all families)</td><td>${raw.settled}</td><td>${raw.rec}</td><td>${hit(raw.hit)}</td><td class="${roiCls(raw.roi)}">${fmtRoi(raw.roi)}</td></tr>
+          <tr><td>Curated (losers dropped)</td><td>${cur.settled}</td><td>${cur.rec}</td><td>${hit(cur.hit)}</td><td class="${roiCls(cur.roi)}"><b>${fmtRoi(cur.roi)}</b></td></tr>
+        </tbody>
+      </table>
+      ${small ? `<div style="font-size:10.5px;color:#ffc15e;margin:-2px 0 8px;">⚠ small sample (${cur.settled} decided) — directional, not a verdict</div>` : ""}
+      <div class="lim"><b>Limits:</b> ${s.lim}</div>
+      <div class="links"><a href="${s.page}">open desk →</a><a href="strategy-sim.html?sport=${encodeURIComponent(sp)}">replay this sport →</a></div>
+    </div>`;
+  }).join("");
+
+  document.getElementById("meta").textContent =
+    `Performance live from the settled ledger (${(d.n||rows.length).toLocaleString()} replayable picks) · ${(d.generated_at||"").replace("T"," ").slice(0,16)} UTC`;
+}).catch(() => { document.getElementById("cards").innerHTML = '<p class="mut">Model cards unavailable — the ledger deck may not have built yet.</p>'; });
+</script>
+<script src="js/nav_badge.js"></script>
+</body>
+</html>

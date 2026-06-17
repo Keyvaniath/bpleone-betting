@@ -100,6 +100,7 @@
     { href: "models.html",              label: "Models" },
     { href: "research.html",            label: "Research" },
     { href: "methodology.html",         label: "📐 Methodology" },
+    { href: "model-cards.html",         label: "🗂️ Model Cards" },
     { href: "simulator.html",           label: "Simulator" },
     { href: "backtest-dashboard.html",  label: "Backtest Dashboard" },
     { href: "backtest-replayer.html",   label: "🔁 Backtest Replayer" },
