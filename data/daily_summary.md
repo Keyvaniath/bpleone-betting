@@ -2,61 +2,51 @@
 
 **Model Confidence: 27.4/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
 
-_Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
+_Pipeline health: **DEGRADED** (14/15 artifacts ok; 1 empty, 0 stale)._ 
 
-_Generated at 2026-06-17T13:51:20 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-06-17T22:36:24 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
 **COL @ CHC - COL_ML**
-- Market: +160
+- Market: +171
 - Model probability: 61.4%
-- Raw edge: +59.54%
+- Raw edge: +66.35%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
 
-## Full Slate (14 games)
+## Full Slate (6 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 12:40p ET | NYM @ CIN | Great American Ball Park | 85F 15mph | OVER_9.0 +27.96% |
-| 1:05p ET | KCR @ WSN | Nationals Park | 89F 8mph | OVER_10.5 +41.14% |
-| 1:05p ET | MIA @ PHI | Citizens Bank Park | 86F 8mph | MIA_ML +21.94% |
-| 2:10p ET | DET @ HOU | Daikin Park | indoor | DET_ML +17.39% |
-| 2:15p ET | SDP @ STL | Busch Stadium | 92F 22mph | UNDER_10.5 +33.82% |
-| 3:10p ET | TBR @ LAD | UNIQLO Field at Dodger Stadium | 74F 10mph | OVER_7.0 +24.82% |
-| 3:40p ET | LAA @ ARI | Chase Field | indoor | LAA_ML +42.73% |
-| 6:45p ET | TOR @ BOS | Fenway Park | 72F 6mph | BOS_ML +41.07% |
-| 7:05p ET | CHW @ NYY | Yankee Stadium | 67F 6mph | OVER_8.5 +57.03% |
-| 7:15p ET | SFG @ ATL | Truist Park | 74F 6mph | OVER_9.0 +33.01% |
+| 7:05p ET | CHW @ NYY | Yankee Stadium | 66F 7mph | OVER_8.5 +57.68% |
+| 7:15p ET | SFG @ ATL | Truist Park | 74F 7mph | OVER_9.5 +25.2% |
 | 7:40p ET | CLE @ MIL | American Family Field | indoor | OVER_7.5 +22.86% |
-| 8:05p ET | COL @ CHC | Wrigley Field | 65F 12mph | COL_ML +59.54% |
-| 9:40p ET | PIT @ OAK | Sutter Health Park | 65F 10mph | OVER_10.0 +37.36% |
-| 9:40p ET | BAL @ SEA | T-Mobile Park | indoor | OVER_7.5 +9.65% |
+| 8:05p ET | COL @ CHC | Wrigley Field | 64F 13mph | COL_ML +66.35% |
+| 9:40p ET | PIT @ OAK | Sutter Health Park | 65F 11mph | OVER_10.5 +29.35% |
+| 9:40p ET | BAL @ SEA | T-Mobile Park | indoor | SEA_ML +12.16% |
 
 ## Parlays - top 5
 
-- **3-leg @ +304 (prob 37.1%, EV +49.68%)**
-  - TBR @ LAD LAD_ML (-182, model 73.7%)
-  - CHW @ NYY NYY_ML (-186, model 78.6%)
-  - BAL @ SEA SEA_ML (-144, model 64.0%)
-- **3-leg @ +523 (prob 24.0%, EV +49.42%)**
-  - KCR @ WSN WSN_ML (-138, model 61.4%)
-  - DET @ HOU DET_ML (-112, model 62.0%)
-  - COL @ CHC UNDER_10.0 (-110, model 63.0%)
-- **3-leg @ +460 (prob 26.7%, EV +49.38%)**
-  - MIA @ PHI OVER_9.0 (-110, model 59.1%)
-  - CHW @ NYY NYY_ML (-186, model 78.6%)
+- **3-leg @ +463 (prob 26.5%, EV +48.92%)**
+  - TOR @ BOS TOR_ML (+104, model 52.6%)
+  - CHW @ NYY NYY_ML (-174, model 78.6%)
+  - BAL @ SEA SEA_ML (-133, model 64.0%)
+- **2-leg @ +201 (prob 49.2%, EV +47.91%)**
+  - CHW @ NYY NYY_ML (-174, model 78.6%)
+  - COL @ CHC UNDER_10.0 (-110, model 62.6%)
+- **3-leg @ +582 (prob 21.7%, EV +47.81%)**
+  - TOR @ BOS TOR_ML (+104, model 52.6%)
+  - CLE @ MIL OVER_7.5 (-110, model 64.4%)
+  - BAL @ SEA SEA_ML (-133, model 64.0%)
+- **3-leg @ +538 (prob 23.0%, EV +46.96%)**
+  - COL @ CHC UNDER_10.0 (-110, model 62.6%)
+  - BAL @ SEA SEA_ML (-133, model 64.0%)
   - BAL @ SEA OVER_7.5 (-110, model 57.4%)
-- **3-leg @ +475 (prob 25.9%, EV +49.15%)**
-  - MIA @ PHI MIA_ML (-106, model 61.3%)
-  - TBR @ LAD LAD_ML (-182, model 73.7%)
-  - BAL @ SEA OVER_7.5 (-110, model 57.4%)
-- **3-leg @ +401 (prob 29.7%, EV +49.05%)**
-  - TBR @ LAD LAD_ML (-182, model 73.7%)
-  - COL @ CHC UNDER_10.0 (-110, model 63.0%)
-  - BAL @ SEA SEA_ML (-144, model 64.0%)
+- **2-leg @ +264 (prob 40.3%, EV +46.82%)**
+  - CLE @ MIL OVER_7.5 (-110, model 64.4%)
+  - COL @ CHC UNDER_10.0 (-110, model 62.6%)
 
 ## Self-Learning Loop
 
@@ -72,35 +62,29 @@ Cumulative graded plays: 118214. Wins: 87366. Hit rate: 73.9%.
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
 | BAL @ SEA | 32.9% | +204 | 5.56 | -102 | +102 |
-| CHW @ NYY | 38.4% | +161 | 4.68 | -224 | +224 |
+| CHW @ NYY | 38.4% | +161 | 4.69 | -224 | +224 |
 | CLE @ MIL | 35.2% | +184 | 5.22 | +135 | -135 |
-| COL @ CHC | 53.1% | -113 | 3.39 | +273 | -273 |
-| DET @ HOU | 59.5% | -147 | 2.6 | +292 | -292 |
-| KCR @ WSN | 42.0% | +138 | 4.55 | -102 | +102 |
-| LAA @ ARI | 56.1% | -128 | 2.89 | +235 | -235 |
-| MIA @ PHI | 22.7% | +340 | 7.79 | +267 | -267 |
-| NYM @ CIN | 36.4% | +174 | 4.8 | +192 | -192 |
-| PIT @ OAK | 25.3% | +295 | 7.17 | +427 | -427 |
-| SDP @ STL | 36.5% | +174 | 5.73 | -148 | +148 |
-| SFG @ ATL | 39.9% | +150 | 4.73 | +105 | -105 |
-| TBR @ LAD | 50.6% | -103 | 3.57 | -158 | +158 |
-| TOR @ BOS | 23.9% | +319 | 7.41 | -239 | +239 |
-
-## Travel / Rest Flags
-
-- **SFG @ ATL** (away): 3 days rest (+3h tz)
+| COL @ CHC | 53.1% | -113 | 3.4 | +273 | -273 |
+| PIT @ OAK | 25.3% | +295 | 7.26 | +427 | -427 |
+| SFG @ ATL | 39.9% | +150 | 4.74 | +116 | -116 |
+| TOR @ BOS | 33.3% | +200 | 13.59 | -- | -- |
 
 ## Team Form (last 10)
 
-**Hot:** NYY 8-2 (W3, +25), MIL 7-3 (W2, +24), STL 7-3 (W2, +21), LAA 6-4 (W1, +20), DET 5-5 (L1, +17)
+**Hot:** NYY 8-2 (W3, +25), MIL 7-3 (W2, +24), LAA 6-4 (L1, +20), MIA 7-3 (W1, +18), STL 6-4 (L1, +15)
 
-**Cold:** PIT 3-7 (W1, -28), NYM 4-6 (L2, -17), AZ 4-6 (L1, -17), TEX 4-6 (L2, -16), CLE 3-7 (L1, -11)
+**Cold:** PIT 3-7 (W1, -28), HOU 5-5 (W2, -17), TEX 4-6 (L2, -16), ATL 4-6 (L3, -12), CLE 3-7 (L1, -11)
 
 ## Gassed Bullpens (> 8.0 IP in 2 days)
 
-- SD: 10.2 IP across 2 games
-- HOU: 8.3 IP across 2 games
-- NYM: 10.2 IP across 2 games
+- SD: 17.5 IP across 3 games
+- SF: 14.6 IP across 2 games
+- PHI: 11.3 IP across 3 games
+- ATL: 14.0 IP across 2 games
+- MIA: 10.1 IP across 3 games
+- LAA: 8.0 IP across 3 games
+- CIN: 11.4 IP across 3 games
+- DET: 9.8 IP across 3 games
 
 ## Loop Activity (since last refresh)
 

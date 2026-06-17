@@ -1,59 +1,60 @@
 # Tonight's Slate Brief — 2026-06-17
 
-## Slate Quality: 52/100 (LOW)
-_3% lineups confirmed · 1 extreme-weather games · 12 rookie SPs_
-**Recommendation:** Defensive sizing tonight; stick to highest-confidence plays.
+## Slate Quality: 74/100 (MEDIUM)
+_85% lineups confirmed · 8 rookie SPs_
+**Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
-- **14 games** scheduled
-- **30 best bets** scored: 0 DK · 0 PP · 10 NRFI · 6 SGP
+- **6 games** scheduled
+- **33 best bets** scored: 0 DK · 0 PP · 10 NRFI · 6 SGP
 - **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$46.43
 - **MC simulation:** EV +$132.55, 83% P(profit), p05 $-89.12 / p95 $330.31
 
 ## Top 5 Best Bets
-1. **KCR @ WSN 4-leg SGP @ -170**  (82/100 *****, edge +68.3%)
-   - Joint prob 0.630 (correlation boost +0.162)
-   - Leg: Jac Caglianone UNDER 0.5 batter home runs
-2. **MIA @ PHI YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +31.3%)
+1. **MIA @ PHI YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +31.3%)
    - P(YRFI) 77.3% vs baseline 46.0%
-3. **TOR @ BOS YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +30.1%)
+2. **TOR @ BOS YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +30.1%)
    - P(YRFI) 76.1% vs baseline 46.0%
-4. **PIT @ OAK YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +28.7%)
+3. **PIT @ OAK YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +28.7%)
    - P(YRFI) 74.7% vs baseline 46.0%
-5. **BAL @ SEA YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +21.1%)
+4. **BAL @ SEA YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +21.1%)
    - P(YRFI) 67.1% vs baseline 46.0%
+5. **PIT @ OAK 4-leg SGP @ -162**  (79/100 *****, edge +61.5%)
+   - Joint prob 0.618 (correlation boost +0.140)
+   - Leg: Nick Kurtz UNDER 0.5 batter doubles
 
 ## ⚠️ Trap Warnings — 18 flagged
-- **KCR @ WSN 4-leg SGP @ -170** (low):
-   - Edge +68.3% looks big but only 0 settled props on this player — model unproven
+- **PIT @ OAK 4-leg SGP @ -162** (low):
+   - Edge +61.5% looks big but only 0 settled props on this player — model unproven
+- **BAL @ SEA 4-leg SGP @ -148** (low):
+   - Edge +56.0% looks big but only 0 settled props on this player — model unproven
+- **TOR @ BOS 4-leg SGP @ -134** (low):
+   - Edge +40.8% looks big but only 0 settled props on this player — model unproven
 - **MIA @ PHI YRFI (1st-inning OVER 0.5)** (low):
    - Edge +31.3% looks big but only 0 settled props on this player — model unproven
 - **TOR @ BOS YRFI (1st-inning OVER 0.5)** (low):
    - Edge +30.1% looks big but only 0 settled props on this player — model unproven
-- **PIT @ OAK YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +28.7% looks big but only 0 settled props on this player — model unproven
-- **NYM @ CIN 2-leg SGP @ -238** (low):
-   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
 
 ## Weather leans
-- **OVER lean** (wind out + warm): SDP @ STL
 - **UNDER lean** (wind in + cold): COL @ CHC
 
 ## Hot streaks
-**Batters heating up:** Matt Chapman (heat +7.09), Colt Keith (heat +6.93), Jackson Chourio (heat +6.78)
-**Pitchers on a run:** Steven Cruz (heat +7.36), George Kirby (heat +6.86), Anthony Kay (heat +5.78)
+**Batters heating up:** Drake Baldwin (heat +7.00), Jackson Chourio (heat +6.78), Davis Schneider (heat +6.78)
+**Pitchers on a run:** Steven Cruz (heat +7.36), George Kirby (heat +6.86), Robbie Ray (heat +6.38)
 
 ## Top correlation-aware SGPs
-- **KCR @ WSN** 4-leg @ -170 fair (joint 0.63, EV +68.35%)
-   - Jac Caglianone UNDER 0.5 batter home runs
-   - Jac Caglianone OVER 0.5 batter total bases
-   - Jac Caglianone UNDER 0.5 batter doubles
-- **NYM @ CIN** 2-leg @ -238 fair (joint 0.70, EV +25.0%)
-   - Nolan McLean UNDER 8.5 pitcher strikeouts
-   - Nick Lodolo UNDER 6.5 pitcher strikeouts
-- **COL @ CHC** 2-leg @ -152 fair (joint 0.60, EV +25.0%)
-   - Javier Assad UNDER 5.5 pitcher strikeouts
-   - Javier Assad UNDER 4.5 pitcher strikeouts
+- **PIT @ OAK** 4-leg @ -162 fair (joint 0.62, EV +61.53%)
+   - Nick Kurtz UNDER 0.5 batter doubles
+   - Jacob Wilson UNDER 2.5 batter total bases
+   - Nick Kurtz OVER 0.5 batter total bases
+- **BAL @ SEA** 4-leg @ -148 fair (joint 0.60, EV +55.97%)
+   - Victor Robles UNDER 0.5 batter doubles
+   - Colt Emerson UNDER 0.5 batter home runs
+   - Victor Robles UNDER 2.5 batter total bases
+- **TOR @ BOS** 4-leg @ -134 fair (joint 0.57, EV +40.75%)
+   - Willson Contreras UNDER 0.5 batter doubles
+   - Willson Contreras OVER 0.5 batter total bases
+   - Vladimir Guerrero Jr. UNDER 0.5 batter doubles
 
 ## Bullpens GASSED tonight
 Athletics, Pittsburgh Pirates, San Diego Padres, Texas Rangers, Miami Marlins, Chicago Cubs, Cincinnati Reds, Detroit Tigers

@@ -1,38 +1,38 @@
 # EdgeStat Daily Summary — 2026-06-17
 
-## 🏥 Model Health: 69.5/100 [OK]
-- Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.7/100
+## 🏥 Model Health: 70.6/100 [HEALTHY]
+- Solid health - some minor issues to monitor
+  - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 54.4/100
   - 🔴 Brier Trend: 29.6/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟡 Data Health: 77.8/100
+  - 🟢 Data Health: 83.3/100
   - 🟡 Edge Count: 71.4/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.586)
-- **Total games on board:** 99
-- **Strong home favorites:** 0 | **Strong road dogs:** 0
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.578)
+- **Total games on board:** 105
+- **Strong home favorites:** 2 | **Strong road dogs:** 4
 
 ## 🎯 Top 5 Best Bets
-1. **KCR @ WSN 4-leg SGP @ -170** (82/100 ★★★★★)
-2. **MIA @ PHI YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-3. **TOR @ BOS YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-4. **PIT @ OAK YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-5. **BAL @ SEA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+1. **MIA @ PHI YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+2. **TOR @ BOS YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+3. **PIT @ OAK YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+4. **BAL @ SEA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+5. **PIT @ OAK 4-leg SGP @ -162** (79/100 ★★★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** TOR @ BOS BOS_ML -- 70% / +25.4% (score 2.5)
+- [STRONG] **[MLB]** TOR @ BOS BOS_ML -- 70% / +25.2% (score 2.5)
 
 ## 📉 Strong UNDER Signals
-- [STRONG 5.5] **LAA @ ARI** model 8.49 vs market 9.0
+- [ELITE 6.5] **LAA @ ARI** model 8.49 vs market 9.5
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **183-36** (83.6% hit rate)
 - Net units: **+6.11u** | ROI: **+45.0%**
 - Last 7d: 41-13 (75.9%) | net +1.06u
 
-**Today's 9 Locks:**
+**Today's 10 Locks:**
 - [MLB-PP] **Ezequiel Tovar** PP_batter_hrr_under_3.5 · p=87% edge=+51.4% qK=0.062u
 - [MLB-PP] **Logan O'Hoppe** PP_batter_hrr_under_3.5 · p=87% edge=+51.3% qK=0.062u
 - [MLB-PP] **David Hamilton** PP_batter_hrr_under_3.5 · p=87% edge=+51.2% qK=0.062u
@@ -42,13 +42,14 @@
 - [MLB-PP] **Tommy Troy** PP_batter_hrr_under_3.5 · p=87% edge=+51.1% qK=0.062u
 - [MLB-PP] **Jeff McNeil** PP_batter_hrr_under_3.5 · p=87% edge=+51.0% qK=0.062u
 - [MLB-PP] **J.T. Realmuto** PP_batter_hrr_under_3.5 · p=87% edge=+50.9% qK=0.062u
+- [MLB-PP] **Miguel Amaya** PP_batter_hrr_under_3.5 · p=87% edge=+51.3% qK=0.062u
 
 ## 🎰 Top Balanced 2-Leg Parlays (40-65% joint)
-- [MLB-PP] Drew Millas PP_batter_hrr_under_ + [MLB] TOR @ BOS BOS_ML
-  Joint: 61% | Fair: 209 | Edge: +89.8%
-- [MLB-PP] Rhys Hoskins PP_batter_hrr_under_ + [MLB] TOR @ BOS BOS_ML
+- [MLB-PP] Francisco Alvarez PP_batter_hrr_under_ + [MLB] TOR @ BOS BOS_ML
   Joint: 61% | Fair: 209 | Edge: +89.7%
-- [MLB-PP] Tommy Troy PP_batter_hrr_under_ + [MLB] TOR @ BOS BOS_ML
+- [MLB-PP] Rhys Hoskins PP_batter_hrr_under_ + [MLB] TOR @ BOS BOS_ML
+  Joint: 61% | Fair: 209 | Edge: +89.5%
+- [MLB-PP] Drew Millas PP_batter_hrr_under_ + [MLB] TOR @ BOS BOS_ML
   Joint: 61% | Fair: 209 | Edge: +89.5%
 
 ## 🎮 Player Play of the Day (cross-sport)
@@ -58,26 +59,33 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
+## ⚡ Pre-Game HIGH Conviction (4)
+- [WNBA] **New York Liberty** AWAY (5-0 L10) · model 72.6% fair -264
+- [WNBA] **Washington Mystics** AWAY (1-3 L10) · model 69.6% fair -229
+- [WNBA] **Minnesota Lynx** AWAY (4-1 L10) · model 65.5% fair -190
+- [WNBA] **Golden State Valkyries** HOME (3-2 L10) · model 64.3% fair -180
+
 ## 🔥/❄️ Heat / Cold Signals
 - Hot teams: **3** | Cold teams: **4** | Over-heavy: 0 | Under-heavy: 2
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (36)
-- STEAM_MOVE: **35**
+## ⚠️ Anomaly Detector (50)
+- RESIDUAL_DIVERGENCE: **6**
+- STEAM_MOVE: **43**
 - PEN_MISMATCH: **1**
-  - CIN @ SDP (MLB): ML/TOTAL steam since open: ML +13.8pp toward SDP; total +1 (OVER) (6 snapshots)
-  - DAL @ POR (WNBA): ML/TOTAL steam since open: ML +8.2pp toward POR; total -2 (UNDER) (3 snapshots)
-  - LA @ PHX (WNBA): TOTAL steam since open: total -2 (UNDER) (3 snapshots)
-  - CHC @ SFG (MLB): ML/TOTAL steam since open: ML +7.1pp toward SFG; total +0.5 (OVER) (6 snapshots)
-  - STL @ MIN (MLB): ML/TOTAL steam since open: ML -5.6pp toward STL; total +0.5 (OVER) (7 snapshots)
+  - Washington Mystics (WNBA): Washington Mystics UNDERPERFORMING expected margin by 6.3pts in recent games -- model bias may persist
+  - Chicago Sky (WNBA): Chicago Sky UNDERPERFORMING expected margin by 9.3pts in recent games -- model bias may persist
+  - Golden State Valkyries (WNBA): Golden State Valkyries OUTPERFORMING expected margin by 10.9pts in recent games -- model bias may persist
+  - Minnesota Lynx (WNBA): Minnesota Lynx OUTPERFORMING expected margin by 8.3pts in recent games -- model bias may persist
+  - Phoenix Mercury (WNBA): Phoenix Mercury UNDERPERFORMING expected margin by 10.0pts in recent games -- model bias may persist
 
-## 💰 Today's Portfolio (8 picks)
-- Total stake: **$340.0** (34.0% of $1000 bankroll)
-- Expected EV: **$10.66**
-  - #1 [SGP] $50 on KCR @ WSN 4-leg SGP @ -170 (P=63%)
-  - #2 [NRFI] $50 on MIA @ PHI YRFI (1st-inning OVER 0.5) (P=77%)
-  - #3 [NRFI] $50 on TOR @ BOS YRFI (1st-inning OVER 0.5) (P=76%)
-  - #4 [NRFI] $50 on PIT @ OAK YRFI (1st-inning OVER 0.5) (P=75%)
+## 💰 Today's Portfolio (9 picks)
+- Total stake: **$345.0** (34.5% of $1000 bankroll)
+- Expected EV: **$10.87**
+  - #1 [NRFI] $50 on MIA @ PHI YRFI (1st-inning OVER 0.5) (P=77%)
+  - #2 [NRFI] $50 on TOR @ BOS YRFI (1st-inning OVER 0.5) (P=76%)
+  - #3 [NRFI] $50 on PIT @ OAK YRFI (1st-inning OVER 0.5) (P=75%)
+  - #4 [SGP] $35 on PIT @ OAK 4-leg SGP @ -162 (P=62%)
   - #5 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
 
 ## 🎯 Convergence Picks (16 stacked games)
@@ -119,17 +127,17 @@
   - 🔥 T4 **James Nicholas** (USA): +0 total -- finished T4
   - 🔥 T5 **Caleb Surratt** (USA): +0 total -- finished T5
 
-## 🔥 MLB Batter Heat (44 HOT / 46 COLD)
-  - 🔥 **Nasim Nuñez** (WSH): L14 .361 / season .217 (+144pts)
-  - 🔥 **Jung Hoo Lee** (SF): L14 .474 / season .331 (+143pts)
+## 🔥 MLB Batter Heat (47 HOT / 44 COLD)
+  - 🔥 **Bo Bichette** (NYM): L14 .414 / season .254 (+160pts)
+  - 🔥 **Nasim Nuñez** (WSH): L14 .378 / season .223 (+155pts)
   - 🔥 **Pete Crow-Armstrong** (CHC): L14 .417 / season .276 (+141pts)
   - 🔥 **Lawrence Butler** (ATH): L14 .324 / season .196 (+128pts)
-  - 🔥 **Bryce Eldridge** (SF): L14 .442 / season .317 (+125pts)
-  - ❄️ **Chandler Simpson** (TB): L14 .083 / season .263 (-180pts) -- FADE props
-  - ❄️ **Ildemaro Vargas** (AZ): L14 .086 / season .263 (-177pts) -- FADE props
+  - 🔥 **Matt Chapman** (SF): L14 .378 / season .257 (+121pts)
+  - ❄️ **Ildemaro Vargas** (AZ): L14 .059 / season .261 (-202pts) -- FADE props
+  - ❄️ **Chandler Simpson** (TB): L14 .086 / season .259 (-173pts) -- FADE props
+  - ❄️ **Dominic Smith** (ATL): L14 .125 / season .283 (-158pts) -- FADE props
   - ❄️ **Carlos Cortes** (ATH): L14 .143 / season .289 (-146pts) -- FADE props
-  - ❄️ **Colby Thomas** (ATH): L14 .120 / season .237 (-117pts) -- FADE props
-  - ❄️ **Dominic Smith** (ATL): L14 .167 / season .282 (-115pts) -- FADE props
+  - ❄️ **Spencer Steer** (CIN): L14 .116 / season .245 (-129pts) -- FADE props
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**
@@ -142,5 +150,5 @@
 - **NBA**: n=5 games · hit rate 60.0% · bias +30.4pp
 - **NHL**: n=5 games · hit rate 60.0% · bias -19.1pp
 - **WNBA**: n=37 games · hit rate 67.6% · bias -18.8pp [calibration applied]
-- **MLB**: n=181 games · hit rate 49.7% · bias -5.7pp [calibration applied]
+- **MLB**: n=182 games · hit rate 50.0% · bias -5.3pp [calibration applied]
 - **CWS**: n=10 games · hit rate 60.0% · bias -6.4pp

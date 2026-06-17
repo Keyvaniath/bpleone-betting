@@ -1,7 +1,12 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:0 F:173
+_NO_ACTION_NIGHT_ | L:0 S:5 F:173
 
-:lock: **LOCK:** Sandy Alcantara (MLB)
+:dart: **Top Picks:**
+1. [WNBA] napheesa collier -- napheesa collier (PLAYER_STRONG)
+2. [WNBA] breanna stewart -- breanna stewart (PLAYER_STRONG)
+
+:chains: **Top Parlays:**
+- [WNBA] napheesa collier (3 legs, p=0.1929)
 
 :coin: Bankroll Advisory: STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 

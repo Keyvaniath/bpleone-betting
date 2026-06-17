@@ -3,7 +3,7 @@
 _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 
 ## 💪 STRONG (1 picks)
-- [MLB] TOR @ BOS BOS_ML · 70% / +25.4%
+- [MLB] TOR @ BOS BOS_ML · 70% / +25.2%
 
 ## 🔒 5 Daily Locks
 - **Ezequiel Tovar** PP_batter_hrr_under_3.5 (MLB-PP) -- 87% / +51.4%
@@ -17,13 +17,10 @@ _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 - **J.T. Realmuto** PP_batter_hrr_under_3.5 (MLB-PP) -- 87% / +50.9%
 - **Miguel Amaya** PP_batter_hrr_under_3.5 (MLB-PP) -- 87% / +51.3%
 
-## 📉 Under Bets
-- **LAA @ ARI** UNDER 9.5 — model 8.49 [ELITE signal]
-
 ## 🎰 Tonight's Best Parlay
-- **Francisco Alvarez** PP_batter_hrr_under_3.5 + **TOR @ BOS** BOS_ML
-- Joint 61% · fair +209 · edge +89.7%
+- **Francisco Alvarez** PP_batter_hrr_under_3.5 + **PIT @ OAK** PIT_ML
+- Joint 58% · fair +207 · edge +76.9%
 
 ---
-_Generated 2026-06-17T13:51:03_
+_Generated 2026-06-17T22:35:33_
 _Full breakdown: /tonight · Full history: /locks-of-day_
