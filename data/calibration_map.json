@@ -1,34 +1,34 @@
 {
-  "generated_at": "2026-06-18T05:26:58",
+  "generated_at": "2026-06-18T12:08:22",
   "n_families": 55,
   "n_curated_out": 17,
   "n_calibrated": 11,
   "n_model_only": 27,
   "n_overconfident": 7,
-  "units_protected_by_curation": -1044.2,
+  "units_protected_by_curation": -1053.4,
   "guard_impact": {
     "all": {
-      "n": 6035,
-      "net_units": -801.3,
-      "roi_pct": -13.3,
-      "hit_rate": 0.4878
+      "n": 6107,
+      "net_units": -796.7,
+      "roi_pct": -13.0,
+      "hit_rate": 0.488
     },
     "after_curation": {
-      "n": 1852,
-      "net_units": 242.9,
-      "roi_pct": 13.1,
-      "hit_rate": 0.6501
+      "n": 1868,
+      "net_units": 256.7,
+      "roi_pct": 13.7,
+      "hit_rate": 0.6536
     },
     "curated_out": {
-      "n": 4183,
-      "net_units": -1044.2,
-      "roi_pct": -25.0,
-      "hit_rate": 0.416
+      "n": 4239,
+      "net_units": -1053.4,
+      "roi_pct": -24.9,
+      "hit_rate": 0.415
     }
   },
-  "overall_avg_model_pred": 0.5794,
-  "overall_realized_hit_rate": 0.4878,
-  "overall_overconfidence_gap": 0.0916,
+  "overall_avg_model_pred": 0.5781,
+  "overall_realized_hit_rate": 0.488,
+  "overall_overconfidence_gap": 0.0901,
   "method_note": "Per market family, the model's average predicted probability vs the realized hit rate over all settled bets in that family. Positive overconfidence_gap = the model was too high. Families proven to lose money are curated out of the boards; well-sampled families have their displayed probabilities calibrated toward the realized rate.",
   "families": [
     {
@@ -165,12 +165,23 @@
     },
     {
       "family": "mlb_hit_0.5_over",
-      "n_settled": 98,
+      "n_settled": 99,
       "avg_model_pred": 0.8406,
-      "realized_hit_rate": 0.6429,
-      "overconfidence_gap": 0.1977,
-      "net_units": -8.8,
-      "roi_pct": -9.0,
+      "realized_hit_rate": 0.6465,
+      "overconfidence_gap": 0.1941,
+      "net_units": -7.89,
+      "roi_pct": -8.0,
+      "status": "curated_out",
+      "miscalibration": "overconfident"
+    },
+    {
+      "family": "mlb_hit_1.5_over",
+      "n_settled": 45,
+      "avg_model_pred": 0.4679,
+      "realized_hit_rate": 0.2889,
+      "overconfidence_gap": 0.179,
+      "net_units": -17.2,
+      "roi_pct": -38.2,
       "status": "curated_out",
       "miscalibration": "overconfident"
     },
@@ -184,17 +195,6 @@
       "roi_pct": -25.2,
       "status": "model_only",
       "miscalibration": "ok"
-    },
-    {
-      "family": "mlb_hit_1.5_over",
-      "n_settled": 43,
-      "avg_model_pred": 0.4649,
-      "realized_hit_rate": 0.3023,
-      "overconfidence_gap": 0.1625,
-      "net_units": -15.2,
-      "roi_pct": -35.3,
-      "status": "curated_out",
-      "miscalibration": "overconfident"
     },
     {
       "family": "cards_under",
@@ -275,12 +275,12 @@
     },
     {
       "family": "mlb_hit_0.5_under",
-      "n_settled": 174,
-      "avg_model_pred": 0.5941,
-      "realized_hit_rate": 0.4943,
-      "overconfidence_gap": 0.0999,
-      "net_units": -26.6,
-      "roi_pct": -15.3,
+      "n_settled": 185,
+      "avg_model_pred": 0.5903,
+      "realized_hit_rate": 0.4919,
+      "overconfidence_gap": 0.0984,
+      "net_units": -28.21,
+      "roi_pct": -15.2,
       "status": "curated_out",
       "miscalibration": "priced_short"
     },
@@ -307,17 +307,6 @@
       "miscalibration": "priced_short"
     },
     {
-      "family": "over",
-      "n_settled": 67,
-      "avg_model_pred": 0.668,
-      "realized_hit_rate": 0.5821,
-      "overconfidence_gap": 0.0859,
-      "net_units": 0.44,
-      "roi_pct": 0.7,
-      "status": "calibrated",
-      "miscalibration": "ok"
-    },
-    {
       "family": "mlb_walk_0.5_under",
       "n_settled": 217,
       "avg_model_pred": 0.8393,
@@ -340,35 +329,46 @@
       "miscalibration": "priced_short"
     },
     {
-      "family": "mlb_xbh_0.5_over",
-      "n_settled": 888,
-      "avg_model_pred": 0.3774,
-      "realized_hit_rate": 0.2984,
-      "overconfidence_gap": 0.079,
-      "net_units": -177.59,
-      "roi_pct": -20.0,
+      "family": "over",
+      "n_settled": 70,
+      "avg_model_pred": 0.6683,
+      "realized_hit_rate": 0.5857,
+      "overconfidence_gap": 0.0826,
+      "net_units": 1.26,
+      "roi_pct": 1.8,
+      "status": "calibrated",
+      "miscalibration": "ok"
+    },
+    {
+      "family": "mlb_hr_0.5_over",
+      "n_settled": 554,
+      "avg_model_pred": 0.2432,
+      "realized_hit_rate": 0.1661,
+      "overconfidence_gap": 0.0771,
+      "net_units": -173.11,
+      "roi_pct": -31.2,
       "status": "curated_out",
       "miscalibration": "priced_short"
     },
     {
-      "family": "mlb_hr_0.5_over",
-      "n_settled": 528,
-      "avg_model_pred": 0.2403,
-      "realized_hit_rate": 0.1629,
-      "overconfidence_gap": 0.0774,
-      "net_units": -164.14,
-      "roi_pct": -31.1,
+      "family": "mlb_xbh_0.5_over",
+      "n_settled": 901,
+      "avg_model_pred": 0.3774,
+      "realized_hit_rate": 0.3008,
+      "overconfidence_gap": 0.0767,
+      "net_units": -174.69,
+      "roi_pct": -19.4,
       "status": "curated_out",
       "miscalibration": "priced_short"
     },
     {
       "family": "mlb_tb_2.5_over",
-      "n_settled": 265,
-      "avg_model_pred": 0.3275,
-      "realized_hit_rate": 0.2528,
-      "overconfidence_gap": 0.0747,
-      "net_units": -60.86,
-      "roi_pct": -23.0,
+      "n_settled": 268,
+      "avg_model_pred": 0.3283,
+      "realized_hit_rate": 0.2537,
+      "overconfidence_gap": 0.0745,
+      "net_units": -61.31,
+      "roi_pct": -22.9,
       "status": "curated_out",
       "miscalibration": "priced_short"
     },
@@ -384,17 +384,6 @@
       "miscalibration": "ok"
     },
     {
-      "family": "mlb_hrr_3.5_under",
-      "n_settled": 365,
-      "avg_model_pred": 0.8532,
-      "realized_hit_rate": 0.7863,
-      "overconfidence_gap": 0.0669,
-      "net_units": 122.24,
-      "roi_pct": 33.5,
-      "status": "calibrated",
-      "miscalibration": "ok"
-    },
-    {
       "family": "mlb_hit_1.5_under",
       "n_settled": 215,
       "avg_model_pred": 0.8217,
@@ -404,6 +393,17 @@
       "roi_pct": -7.0,
       "status": "curated_out",
       "miscalibration": "priced_short"
+    },
+    {
+      "family": "mlb_hrr_3.5_under",
+      "n_settled": 378,
+      "avg_model_pred": 0.8538,
+      "realized_hit_rate": 0.7989,
+      "overconfidence_gap": 0.0549,
+      "net_units": 135.27,
+      "roi_pct": 35.8,
+      "status": "calibrated",
+      "miscalibration": "ok"
     },
     {
       "family": "under",

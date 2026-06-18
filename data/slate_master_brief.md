@@ -1,39 +1,40 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-06-18T05:36:31 UTC_
+_Generated 2026-06-18T12:17:32 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -146
+- **Score:** -165
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 6
-- **Total FADES:** 170
+- **Total STRONG:** 1
+- **Total FADES:** 169
+
+## Lock of the Night
+- **Subject:** Jack Leiter
+- **Source:** ELITE_BOARD
+- **Sport:** MLB
+- **Score:** 15.0
+- **Details:** MIN @ TEX
 
 ## Top 5 Curated Picks
-1. **WNBA / napheesa collier** (WNBA_PLAYER, score=173.75)
-   - Play: napheesa collier (PLAYER_STRONG)
-   - Rationale: Cross-sport top pick (WNBA_PLAYER)
-2. **MLB / ?** (MLB_TEAM, score=79.12)
-   - Play: ? (TEAM_STRONG)
-   - Rationale: Cross-sport top pick (MLB_TEAM)
-3. **WNBA / a'ja wilson** (WNBA_PLAYER, score=64.0)
-   - Play: a'ja wilson (PLAYER_STRONG)
-   - Rationale: Cross-sport top pick (WNBA_PLAYER)
+1. **MLB / Parker Messick** (MLB_PITCHER, score=59.33)
+   - Play: Parker Messick (PITCHER_STRONG)
+   - Rationale: Cross-sport top pick (MLB_PITCHER)
 
 ## Slate ROI Projection
-- **Picks:** 0
-- **Avg edge:** 0%
+- **Picks:** 1
+- **Avg edge:** -0.91%
 - **Expected ROI (1/4 Kelly):** 0.0%
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **MLB** / Gavin Williams (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **MLB** / Braxton Ashcraft (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **MLB** / Brandon Sproat (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **MLB** / Aaron Civale (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **MLB** / Kyle Bradish (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **GOLF** / Arni Sveinsson (PLAYER_FADE)
+  - Fade angle: miss cut YES + high round score
+- **F1** / logan sargeant (DRIVER_FADE)
+  - Fade angle: non-podium / outside top 10
+- **GOLF** / Jack Schoenberger (PLAYER_FADE)
+  - Fade angle: miss cut YES + high round score
+- **GOLF** / Matthew Robles (PLAYER_FADE)
+  - Fade angle: miss cut YES + high round score
+- **F1** / oliver bearman (DRIVER_FADE)
+  - Fade angle: non-podium / outside top 10

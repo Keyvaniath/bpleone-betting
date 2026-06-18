@@ -1,13 +1,10 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:6 F:170
+_NO_ACTION_NIGHT_ | L:0 S:1 F:169
+
+:lock: **LOCK:** Jack Leiter (MLB)
 
 :dart: **Top Picks:**
-1. [WNBA] napheesa collier -- napheesa collier (PLAYER_STRONG)
-2. [MLB] ? -- ? (TEAM_STRONG)
-3. [WNBA] a'ja wilson -- a'ja wilson (PLAYER_STRONG)
-
-:chains: **Top Parlays:**
-- [WNBA] napheesa collier (3 legs, p=0.1929)
+1. [MLB] Parker Messick -- Parker Messick (PITCHER_STRONG)
 
 :coin: Bankroll Advisory: STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 

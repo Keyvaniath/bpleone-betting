@@ -1,51 +1,61 @@
 # Tonight's Slate Brief — 2026-06-18
 
-## Slate Quality: 47/100 (LOW)
+## Slate Quality: 50/100 (LOW)
 _0% lineups confirmed · 8 rookie SPs_
 **Recommendation:** Defensive sizing tonight; stick to highest-confidence plays.
 
 ## Slate
 - **9 games** scheduled
-- **18 best bets** scored: 0 DK · 0 PP · 3 NRFI · 0 SGP
-- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$35.37
-- **MC simulation:** EV +$47.19, 77% P(profit), p05 $-54.55 / p95 $136.35
+- **29 best bets** scored: 0 DK · 0 PP · 9 NRFI · 6 SGP
+- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$39.23
+- **MC simulation:** EV +$92.62, 76% P(profit), p05 $-107.79 / p95 $274.01
 
 ## Top 5 Best Bets
-1. **PIT @ OAK YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +28.7%)
-   - P(YRFI) 74.7% vs baseline 46.0%
-2. **BAL @ SEA YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +21.1%)
-   - P(YRFI) 67.1% vs baseline 46.0%
-3. **CLE @ MIL YRFI (1st-inning OVER 0.5)**  (78/100 ****, edge +18.8%)
-   - P(YRFI) 64.8% vs baseline 46.0%
-4. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
+1. **CHW @ NYY YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +30.2%)
+   - P(YRFI) 76.2% vs baseline 46.0%
+2. **NYM @ PHI YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +23.6%)
+   - P(YRFI) 69.6% vs baseline 46.0%
+3. **SFG @ ATL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +22.7%)
+   - P(YRFI) 68.7% vs baseline 46.0%
+4. **MIN @ TEX YRFI (1st-inning OVER 0.5)**  (78/100 ****, edge +18.6%)
+   - P(YRFI) 64.6% vs baseline 46.0%
+5. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
    - Player prop quality score 1.1935
    - Elite player
-5. **LOL ShowMaker OVER 3.5 Kills**  (78/100 ****, edge —)
-   - Player prop quality score 1.1892
-   - Elite player
 
-## ⚠️ Trap Warnings — 5 flagged
-- **PIT @ OAK YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +28.7% looks big but only 0 settled props on this player — model unproven
-- **BAL @ SEA YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +21.1% looks big but only 0 settled props on this player — model unproven
-- **CLE @ MIL YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +18.8% looks big but only 0 settled props on this player — model unproven
-- **GOLF 3-leg parlay @ +2160** (low):
-   - Edge +10.3% looks big but only 0 settled props on this player — model unproven
-- **GOLF 3-leg parlay @ +2162** (low):
-   - Edge +10.2% looks big but only 0 settled props on this player — model unproven
+## ⚠️ Trap Warnings — 16 flagged
+- **CHW @ NYY YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +30.2% looks big but only 0 settled props on this player — model unproven
+- **SFG @ ATL 2-leg SGP @ -174** (low):
+   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
+- **BAL @ SEA 2-leg SGP @ -168** (low):
+   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
+- **CLE @ MIL 2-leg SGP @ -216** (low):
+   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
+- **CHW @ NYY 2-leg SGP @ -170** (low):
+   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
 
 ## Hot streaks
-**Batters heating up:** Willson Contreras (heat +5.81), Dominic Canzone (heat +5.50), Byron Buxton (heat +5.37)
-**Pitchers on a run:** Kyle Bradish (heat +10.79), Carlos Rodón (heat +9.90), Joe Ryan (heat +9.75)
+**Batters heating up:** Jackson Chourio (heat +6.72), Dominic Canzone (heat +5.50), Blake Perkins (heat +5.46)
+**Pitchers on a run:** Sonny Gray (heat +3.90), Gage Jump (heat +2.31), Sean Burke (heat +2.15)
+
+## Top correlation-aware SGPs
+- **SFG @ ATL** 2-leg @ -174 fair (joint 0.63, EV +25.0%)
+   - Landen Roupp OVER 3.5 pitcher strikeouts
+   - Landen Roupp UNDER 7.5 pitcher strikeouts
+- **BAL @ SEA** 2-leg @ -168 fair (joint 0.63, EV +25.0%)
+   - Shane Baz UNDER 6.5 pitcher strikeouts
+   - Bryan Woo UNDER 7.5 pitcher strikeouts
+- **CLE @ MIL** 2-leg @ -216 fair (joint 0.68, EV +25.0%)
+   - Parker Messick UNDER 7.5 pitcher strikeouts
+   - Shane Drohan UNDER 7.5 pitcher strikeouts
 
 ## Bullpens GASSED tonight
-Athletics, Pittsburgh Pirates, San Diego Padres, San Francisco Giants, Tampa Bay Rays, Texas Rangers, Philadelphia Phillies, Atlanta Braves
+Athletics, Pittsburgh Pirates, San Diego Padres, San Francisco Giants, Toronto Blue Jays, Philadelphia Phillies, Atlanta Braves, Chicago White Sox
 _Lean late-inning OVER on these games; fade their save situations._
 
 ## NRFI/YRFI strong leans
-- **YRFI** (1st-inning OVER): PIT @ OAK, BAL @ SEA, CLE @ MIL
+- **YRFI** (1st-inning OVER): CHW @ NYY, NYM @ PHI, SFG @ ATL, MIN @ TEX, TOR @ BOS
 
 ## Golf -- U.S. Open
 - **Leader:** Harry Higgs (E) at #1

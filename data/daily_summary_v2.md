@@ -1,56 +1,50 @@
 # EdgeStat Daily Summary — 2026-06-18
 
-## 🏥 Model Health: 70.3/100 [HEALTHY]
-- Solid health - some minor issues to monitor
+## 🏥 Model Health: 68.3/100 [OK]
+- Operational but room to improve - check yellow components
   - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 54.4/100
   - 🔴 Brier Trend: 29.6/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟡 Data Health: 77.8/100
-  - 🟢 Edge Count: 80.0/100
+  - 🟢 Data Health: 88.9/100
+  - 🔴 Edge Count: 37.1/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.58)
-- **Total games on board:** 120
-- **Strong home favorites:** 2 | **Strong road dogs:** 2
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.586)
+- **Total games on board:** 99
+- **Strong home favorites:** 0 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
-1. **PIT @ OAK YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-2. **BAL @ SEA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-3. **CLE @ MIL YRFI (1st-inning OVER 0.5)** (78/100 ★★★★)
-4. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
-5. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
+1. **CHW @ NYY YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+2. **NYM @ PHI YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+3. **SFG @ ATL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+4. **MIN @ TEX YRFI (1st-inning OVER 0.5)** (78/100 ★★★★)
+5. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
 - [STRONG] **[MLB-PP]** Travis Bazzana PP_batter_hrr_under_3.5 -- 87% / +50.6% (score 2.5)
+- [STRONG] **[MLB]** LAA @ OAK ML_HOME -- 66% / +26.7% (score 2.5)
+- [STRONG] **[MLB]** LAA @ OAK OAK_ML -- 66% / +26.7% (score 2.5)
 
 ## 🔒 Locks of the Day -- Track Record
-- All-time: **184-38** (82.9% hit rate)
-- Net units: **+6.03u** | ROI: **+43.8%**
-- Last 7d: 42-15 (73.7%) | net +0.98u
+- All-time: **191-38** (83.4% hit rate)
+- Net units: **+6.35u** | ROI: **+44.8%**
+- Last 7d: 44-11 (80.0%) | net +1.32u
 
-**Today's 13 Locks:**
-- [MLB-PP] **Ezequiel Tovar** PP_batter_hrr_under_3.5 · p=87% edge=+51.4% qK=0.062u
-- [MLB-PP] **Logan O'Hoppe** PP_batter_hrr_under_3.5 · p=87% edge=+51.3% qK=0.062u
-- [MLB-PP] **David Hamilton** PP_batter_hrr_under_3.5 · p=87% edge=+51.2% qK=0.062u
-- [MLB-PP] **Francisco Alvarez** PP_batter_hrr_under_3.5 · p=87% edge=+51.0% qK=0.062u
-- [MLB-PP] **Rhys Hoskins** PP_batter_hrr_under_3.5 · p=87% edge=+51.0% qK=0.062u
-- [MLB-PP] **Drew Millas** PP_batter_hrr_under_3.5 · p=87% edge=+51.4% qK=0.062u
-- [MLB-PP] **Tommy Troy** PP_batter_hrr_under_3.5 · p=87% edge=+51.1% qK=0.062u
-- [MLB-PP] **Jeff McNeil** PP_batter_hrr_under_3.5 · p=87% edge=+51.0% qK=0.062u
-- [MLB-PP] **J.T. Realmuto** PP_batter_hrr_under_3.5 · p=87% edge=+50.9% qK=0.062u
-- [MLB-PP] **Miguel Amaya** PP_batter_hrr_under_3.5 · p=87% edge=+51.3% qK=0.062u
+**Today's 5 Locks:**
+- [MLB-PP] **Rhys Hoskins** PP_batter_hrr_under_3.5 · p=87% edge=+51.4% qK=0.062u
+- [MLB-PP] **Jeff McNeil** PP_batter_hrr_under_3.5 · p=87% edge=+51.1% qK=0.062u
 - [MLB-PP] **Drew Gilbert** PP_batter_hrr_under_3.5 · p=87% edge=+50.8% qK=0.062u
 - [MLB-PP] **Travis Bazzana** PP_batter_hrr_under_3.5 · p=87% edge=+50.6% qK=0.062u
 - [MLB-PP] **Everson Pereira** PP_batter_hrr_under_3.5 · p=87% edge=+50.1% qK=0.062u
 
 ## 🎰 Top Balanced 2-Leg Parlays (40-65% joint)
-- [MLB-PP] Rhys Hoskins PP_batter_hrr_under_ + [MLB] PIT @ OAK PIT_ML
-  Joint: 58% | Fair: 206 | Edge: +76.3%
-- [MLB-PP] Jeff McNeil PP_batter_hrr_under_ + [MLB] PIT @ OAK PIT_ML
-  Joint: 58% | Fair: 206 | Edge: +76.0%
-- [MLB-PP] Drew Gilbert PP_batter_hrr_under_ + [MLB] PIT @ OAK PIT_ML
-  Joint: 57% | Fair: 206 | Edge: +75.7%
+- [MLB-PP] Rhys Hoskins PP_batter_hrr_under_ + [MLB] LAA @ OAK ML_HOME
+  Joint: 58% | Fair: 231 | Edge: +91.7%
+- [MLB-PP] Rhys Hoskins PP_batter_hrr_under_ + [MLB] LAA @ OAK OAK_ML
+  Joint: 58% | Fair: 231 | Edge: +91.7%
+- [MLB-PP] Jeff McNeil PP_batter_hrr_under_ + [MLB] LAA @ OAK ML_HOME
+  Joint: 58% | Fair: 231 | Edge: +91.3%
 
 ## 🎮 Player Play of the Day (cross-sport)
 - **[LOL]** Inspired UNDER 3.5 Kills | MED conviction · model 61.7% fair -161
@@ -63,38 +57,38 @@
 - Hot teams: **5** | Cold teams: **5** | Over-heavy: 0 | Under-heavy: 8
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (46)
-- RESIDUAL_DIVERGENCE: **4**
-- STREAK_MISMATCH: **1**
+## ⚠️ Anomaly Detector (43)
 - STEAM_MOVE: **41**
-  - Golden State Valkyries (WNBA): Golden State Valkyries OUTPERFORMING expected margin by 10.9pts in recent games -- model bias may persist
-  - Minnesota Lynx (WNBA): Minnesota Lynx OUTPERFORMING expected margin by 8.3pts in recent games -- model bias may persist
-  - Phoenix Mercury (WNBA): Phoenix Mercury UNDERPERFORMING expected margin by 10.0pts in recent games -- model bias may persist
-  - Las Vegas Aces (WNBA): Las Vegas Aces UNDERPERFORMING expected margin by 11.2pts in recent games -- model bias may persist
-  - Seattle Storm (WNBA): Seattle Storm on L5 streak but model still favors them (89%) -- may be overvalued
+- COMPOUND_BULLPEN: **2**
+  - WSH @ CON (WNBA): ML/TOTAL steam since open: ML +5.9pp toward CON; total -3 (UNDER) (4 snapshots)
+  - CIN @ SDP (MLB): ML/TOTAL steam since open: ML +13.8pp toward SDP; total +1 (OVER) (6 snapshots)
+  - DET @ HOU (MLB): ML steam since open: ML -10.8pp toward DET (4 snapshots)
+  - LAA @ ARI (MLB): ML/TOTAL steam since open: ML +10.7pp toward ARI; total +0.5 (OVER) (6 snapshots)
+  - DAL @ POR (WNBA): ML/TOTAL steam since open: ML +8.2pp toward POR; total -2 (UNDER) (3 snapshots)
 
 ## 💰 Today's Portfolio (9 picks)
-- Total stake: **$330.0** (33.0% of $1000 bankroll)
-- Expected EV: **$-20.92**
-  - #1 [NRFI] $50 on PIT @ OAK YRFI (1st-inning OVER 0.5) (P=75%)
-  - #2 [NRFI] $50 on BAL @ SEA YRFI (1st-inning OVER 0.5) (P=67%)
-  - #3 [NRFI] $35 on CLE @ MIL YRFI (1st-inning OVER 0.5) (P=65%)
+- Total stake: **$345.0** (34.5% of $1000 bankroll)
+- Expected EV: **$2.33**
+  - #1 [NRFI] $50 on CHW @ NYY YRFI (1st-inning OVER 0.5) (P=76%)
+  - #2 [NRFI] $50 on NYM @ PHI YRFI (1st-inning OVER 0.5) (P=70%)
+  - #3 [NRFI] $50 on SFG @ ATL YRFI (1st-inning OVER 0.5) (P=69%)
   - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
-## 🎯 Convergence Picks (21 stacked games)
-- ELITE: **3** · HIGH: 1 · MED: 17
-  - [ELITE] New York Liberty @ Chicago Sky : 5 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
-  - [ELITE] Washington Mystics @ Connecticut Sun : 4 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
-  - [ELITE] Las Vegas Aces @ Phoenix Mercury : 4 signals (ANOMALY, ANOMALY, ATS, ATS)
-  - [HIGH] Minnesota Lynx @ Los Angeles Sparks : 3 signals (PREGAME, ANOMALY, ATS)
-  - [MED] New York Knicks @ San Antonio Spurs : 2 signals (ATS, ATS)
+## 🎯 Convergence Picks (20 stacked games)
+- ELITE: **3** · HIGH: 1 · MED: 16
+  - [ELITE] Minnesota Lynx @ Los Angeles Sparks : 5 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ATS)
+  - [ELITE] Dallas Wings @ Golden State Valkyries : 4 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ATS)
+  - [ELITE] Las Vegas Aces @ Phoenix Mercury : 4 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ATS)
+  - [HIGH] Seattle Storm @ Portland Fire : 3 signals (HEAT_COLD, HEAT_COLD, ANOMALY)
+  - [MED] Carolina Hurricanes @ Vegas Golden Knights : 2 signals (HEAT_COLD, HEAT_COLD)
 
-## ⚾ Top MLB Pitcher K Plays (4)
-- **Braxton Ashcraft** OVER 4.5 K (76%) fair -321
-- **Javier Assad** OVER 4.5 K (71%) fair -244
-- **Gavin Williams** OVER 5.5 K (68%) fair -216
-- **George Kirby** OVER 4.5 K (61%) fair -155
+## ⚾ Top MLB Pitcher K Plays (7)
+- **Bryan Woo** OVER 4.5 K (78%) fair -347
+- **Joe Ryan** OVER 5.5 K (75%) fair -301
+- **Sean Burke** OVER 4.5 K (73%) fair -271
+- **Landen Roupp** OVER 4.5 K (66%) fair -195
+- **Trey Yesavage** OVER 4.5 K (64%) fair -180
 
 ## 🏀 NBA Player Heat (18 HOT / 22 COLD)
   - 🔥 **Jeremiah Fears** (NO): L5 31.8/5.8/6.0 vs season 16.9/3.2/4.0 [PTS +14.9, REB +2.6, AST +2.0]
@@ -132,12 +126,11 @@
   - ❄️ **Dominic Smith** (ATL): L14 .139 / season .283 (-144pts) -- FADE props
   - ❄️ **Spencer Steer** (CIN): L14 .116 / season .245 (-129pts) -- FADE props
 
-## 📈 Streak Regression Alerts (6)
-- [WNBA] Connecticut Sun on L4 L10 0-4 -- Connecticut Sun on L4 -- no historical sample
-- [WNBA] Chicago Sky on L3 L10 1-3 -- Chicago Sky on L3 -- no historical sample
-- [WNBA] New York Liberty on W5 L10 5-0 -- New York Liberty on W5 -- no historical sample
-- [WNBA] Golden State Valkyries on W3 L10 3-2 -- Golden State Valkyries on W3 -- no historical sample
-- [WNBA] Phoenix Mercury on L3 L10 2-3 -- Phoenix Mercury on L3 -- no historical sample
+## 📈 Streak Regression Alerts (4)
+- [WNBA] Golden State Valkyries on W4 L10 4-1 -- Golden State Valkyries on W4 -- no historical sample
+- [WNBA] Phoenix Mercury on L4 L10 1-4 -- Phoenix Mercury on L4 -- no historical sample
+- [WNBA] Seattle Storm on L5 L10 0-5 -- Seattle Storm on L5 -- no historical sample
+- [CWS] Oklahoma Sooners on W3 L10 3-0 -- Oklahoma Sooners on W3 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**
