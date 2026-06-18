@@ -173,10 +173,17 @@ def _other_picks() -> List[Dict[str, Any]]:
     # Never the stale between-events position bet (gated on is_live / preview tier).
     gt, gb = _load(os.path.join(DATA_DIR, "golf_live_tracker.json")), _load(os.path.join(DATA_DIR, "golf_bestbet.json"))
     gp, gs = _load(os.path.join(DATA_DIR, "golf_tournament_preview.json")), _load(os.path.join(DATA_DIR, "golf_state.json"))
-    tname = ((gs.get("active_tournament") or {}).get("name")) or gb.get("tournament") or "Golf"
+    gat = gs.get("active_tournament") or {}
+    tname = gat.get("name") or gb.get("tournament") or "Golf"
     tb = gb.get("top_bet") or {}
     prev = (gp.get("previews") or [{}])[0]
-    if gt.get("is_live") and tb.get("player") and tb.get("confidence") in ("HIGH", "STRONG"):
+    # Live = golf_state.is_in_progress (authoritative; the live tracker under-reports),
+    # and the best-bet must be FOR that tournament so a stale read can't leak in.
+    g_live = (bool(gat.get("is_in_progress"))
+              or str(gat.get("status") or "").lower() in ("in progress", "in_progress", "live")
+              or bool(gt.get("is_live")))
+    g_fresh = tb.get("player") and (gb.get("tournament") == gat.get("name") or not gat.get("name"))
+    if g_live and g_fresh and tb.get("confidence") in ("HIGH", "STRONG"):
         picks.append({
             "kind": "Golf", "sport": "GOLF",
             "label": tb.get("bet_label") or f"{tb.get('player')} {tb.get('type')}",

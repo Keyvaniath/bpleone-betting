@@ -151,12 +151,20 @@ def _golf(state: Dict[str, Any], tracker: Dict[str, Any], bestbet: Dict[str, Any
     (model field-favorites). We do NOT surface the position-based best-bet unless
     is_live -- it goes stale between events (reads a transition leaderboard)."""
     out: List[Dict[str, Any]] = []
-    is_live = bool((tracker or {}).get("is_live"))
     at = (state or {}).get("active_tournament") or {}
     tname = at.get("name") or (bestbet or {}).get("tournament") or "PGA event"
+    # Authoritative "is it live" = golf_state.is_in_progress (the live tracker is
+    # unreliable -- it can report "PGA event / not live" during a live major).
+    in_prog = (bool(at.get("is_in_progress"))
+               or str(at.get("status") or "").lower() in ("in progress", "in_progress", "live")
+               or bool((tracker or {}).get("is_live")))
 
     tb = (bestbet or {}).get("top_bet") or {}
-    if is_live and tb.get("player") and (tb.get("confidence") in ("HIGH", "STRONG")):
+    # Only surface the (position-based) best-bet for the CURRENTLY live tournament --
+    # require the bestbet to be FOR that tournament so a stale between-events read
+    # (different/blank tournament) can't leak through.
+    bb_fresh = tb.get("player") and ((bestbet or {}).get("tournament") == at.get("name") or not at.get("name"))
+    if in_prog and bb_fresh and (tb.get("confidence") in ("HIGH", "STRONG")):
         p = tb.get("model_prob") or 0
         out.append({
             "type": "GOLF", "icon": "⛳", "sport": "GOLF",
@@ -171,7 +179,7 @@ def _golf(state: Dict[str, Any], tracker: Dict[str, Any], bestbet: Dict[str, Any
     prev = ((preview or {}).get("previews") or [{}])[0]
     contenders = [c.get("player") for c in (prev.get("top_5_contenders") or [])[:3] if c.get("player")]
     status = str(at.get("status") or "").lower()
-    if at.get("name") and contenders and (status in ("scheduled", "pre", "") and not is_live):
+    if at.get("name") and contenders and (status in ("scheduled", "pre", "") and not in_prog):
         out.append({
             "type": "GOLF", "icon": "⛳", "sport": "GOLF",
             "title": f"{tname}: model's field favorites",
