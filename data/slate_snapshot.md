@@ -1,4 +1,4 @@
-# EdgeStat Slate — 2026-06-17
+# EdgeStat Slate — 2026-06-18
 
 _6 picks consolidated from POD + Alpha + Book Edges + Parlay-of-Day._
 
@@ -9,23 +9,23 @@ _6 picks consolidated from POD + Alpha + Book Edges + Parlay-of-Day._
 
 ## 🎯 Alpha Pick
 
-- **PIT @ OAK** · PIT_ML
-  Prob 66.1% · Odds -131 · Edge +16.5% · Kelly 0.216
+- **LAA @ OAK** · ML_HOME
+  Prob 66.3% · Odds -110 · Edge +26.7% · Kelly 0.250
 
 ## 📊 Book Edges
 
-- **PIT @ OAK · OVER · O/U 10.5** · TOTAL_OVER
-  Prob 58.3% · Odds -110 · Edge +11.4% · Kelly 0.125
-- **CLE @ MIL · OVER · O/U 7.5** · TOTAL_OVER
-  Prob 58.2% · Odds -110 · Edge +11.1% · Kelly 0.122
-- **COL @ CHC · AWAY (AWAY)** · TEAM_ML
-  Prob 40.7% · Odds +172 · Edge +10.8% · Kelly 0.063
+- **NYM @ PHI · UNDER · O/U 9.5** · TOTAL_UNDER
+  Prob 58.3% · Odds -110 · Edge +11.3% · Kelly 0.125
+- **SFG @ ATL · OVER · O/U 8.0** · TOTAL_OVER
+  Prob 58.3% · Odds -110 · Edge +11.3% · Kelly 0.125
+- **LAA @ OAK · OVER · O/U 8.5** · TOTAL_OVER
+  Prob 58.2% · Odds -110 · Edge +11.2% · Kelly 0.123
 
 ## 🎲 Parlay
 
-- **Rhys Hoskins + PIT @ OAK** · 2-leg
-  Prob 57.6% · Odds +206 · Edge +76.3% · Kelly 0.050
+- **Rhys Hoskins + LAA @ OAK** · 2-leg
+  Prob 57.9% · Odds +231 · Edge +91.7% · Kelly 0.050
 
 ---
-_Generated 2026-06-17T23:27:08 UTC by EdgeStat._
+_Generated 2026-06-18T05:36:37 UTC by EdgeStat._
 _Stakes assume ¼-Kelly fractional sizing on a flat bankroll._

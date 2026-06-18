@@ -1,26 +1,23 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-06-17T23:27:03 UTC_
+_Generated 2026-06-18T05:36:31 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -96
+- **Score:** -146
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 19
-- **Total FADES:** 172
+- **Total STRONG:** 6
+- **Total FADES:** 170
 
 ## Top 5 Curated Picks
 1. **WNBA / napheesa collier** (WNBA_PLAYER, score=173.75)
    - Play: napheesa collier (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (WNBA_PLAYER)
-2. **MLB / Nick Kurtz** (MLB_BATTER, score=152.38)
-   - Play: Nick Kurtz (BATTER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_BATTER)
-3. **MLB / Jackson Chourio** (MLB_BATTER, score=139.06)
-   - Play: Jackson Chourio (BATTER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_BATTER)
-4. **WNBA / breanna stewart** (WNBA_PLAYER, score=109.92)
-   - Play: breanna stewart (PLAYER_STRONG)
+2. **MLB / ?** (MLB_TEAM, score=79.12)
+   - Play: ? (TEAM_STRONG)
+   - Rationale: Cross-sport top pick (MLB_TEAM)
+3. **WNBA / a'ja wilson** (WNBA_PLAYER, score=64.0)
+   - Play: a'ja wilson (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (WNBA_PLAYER)
 
 ## Slate ROI Projection
@@ -30,13 +27,13 @@ _Generated 2026-06-17T23:27:03 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **MLB** / Anthony Kay (PITCHER_FADE)
+- **MLB** / Gavin Williams (PITCHER_FADE)
   - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **GOLF** / Arni Sveinsson (PLAYER_FADE)
-  - Fade angle: miss cut YES + high round score
-- **F1** / logan sargeant (DRIVER_FADE)
-  - Fade angle: non-podium / outside top 10
-- **GOLF** / Jack Schoenberger (PLAYER_FADE)
-  - Fade angle: miss cut YES + high round score
-- **GOLF** / Matthew Robles (PLAYER_FADE)
-  - Fade angle: miss cut YES + high round score
+- **MLB** / Braxton Ashcraft (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Brandon Sproat (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Aaron Civale (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Kyle Bradish (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
