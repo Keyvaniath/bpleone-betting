@@ -168,6 +168,28 @@ def _other_picks() -> List[Dict[str, Any]]:
                       f"{s.get('stake_pct_quarter_kelly')}% ¼-Kelly",
             "link": "prizepicks-value.html",
         })
+
+    # 4) Golf -- ONLY a live actionable best-bet or a STRONG pre-tournament lean.
+    # Never the stale between-events position bet (gated on is_live / preview tier).
+    gt, gb = _load(os.path.join(DATA_DIR, "golf_live_tracker.json")), _load(os.path.join(DATA_DIR, "golf_bestbet.json"))
+    gp, gs = _load(os.path.join(DATA_DIR, "golf_tournament_preview.json")), _load(os.path.join(DATA_DIR, "golf_state.json"))
+    tname = ((gs.get("active_tournament") or {}).get("name")) or gb.get("tournament") or "Golf"
+    tb = gb.get("top_bet") or {}
+    prev = (gp.get("previews") or [{}])[0]
+    if gt.get("is_live") and tb.get("player") and tb.get("confidence") in ("HIGH", "STRONG"):
+        picks.append({
+            "kind": "Golf", "sport": "GOLF",
+            "label": tb.get("bet_label") or f"{tb.get('player')} {tb.get('type')}",
+            "detail": f"{(tb.get('model_prob') or 0):.0%} model · {tb.get('fair_american')} · {tname}",
+            "link": "golf-live.html",
+        })
+    elif ((prev.get("n_locks") or 0) + (prev.get("n_strong") or 0)) > 0 and prev.get("top_contender"):
+        picks.append({
+            "kind": "Golf", "sport": "GOLF",
+            "label": f"{prev.get('top_contender')} — {tname}",
+            "detail": f"model's top pre-tournament contender · {prev.get('tier', '')}",
+            "link": "golf.html",
+        })
     return picks[:4]
 
 

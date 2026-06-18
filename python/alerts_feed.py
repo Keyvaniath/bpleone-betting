@@ -28,7 +28,7 @@ DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 OUT = os.path.join(DATA_DIR, "alerts_feed.json")
 
 # per-type caps so one chatty source can't flood the tape; total cap after merge
-CAP = {"STEAM": 12, "SHARP": 8, "EDGE": 12, "WC": 6, "HOOPS": 6}
+CAP = {"STEAM": 12, "SHARP": 8, "EDGE": 12, "WC": 6, "HOOPS": 6, "GOLF": 3}
 TOTAL_CAP = 40
 
 
@@ -144,12 +144,55 @@ def _hoops(items: List[Dict[str, Any]], ts: str) -> List[Dict[str, Any]]:
     return out
 
 
+def _golf(state: Dict[str, Any], tracker: Dict[str, Any], bestbet: Dict[str, Any],
+          preview: Dict[str, Any], ts: str) -> List[Dict[str, Any]]:
+    """Golf on the tape. When a tournament is genuinely LIVE we surface the desk's
+    actionable best-bet; otherwise a pre-tournament heads-up for the upcoming major
+    (model field-favorites). We do NOT surface the position-based best-bet unless
+    is_live -- it goes stale between events (reads a transition leaderboard)."""
+    out: List[Dict[str, Any]] = []
+    is_live = bool((tracker or {}).get("is_live"))
+    at = (state or {}).get("active_tournament") or {}
+    tname = at.get("name") or (bestbet or {}).get("tournament") or "PGA event"
+
+    tb = (bestbet or {}).get("top_bet") or {}
+    if is_live and tb.get("player") and (tb.get("confidence") in ("HIGH", "STRONG")):
+        p = tb.get("model_prob") or 0
+        out.append({
+            "type": "GOLF", "icon": "⛳", "sport": "GOLF",
+            "title": f"Golf: {tb.get('bet_label') or (str(tb.get('player')) + ' ' + str(tb.get('type') or ''))}",
+            "detail": (f"{p:.0%} model · {tb.get('fair_american')}"
+                       + (f" · {tb.get('reasoning')}" if tb.get("reasoning") else "")),
+            "score": _clamp(45 + p * 100), "ts": ts, "link": "golf-live.html",
+        })
+        return out
+
+    # Pre-tournament heads-up (only for a real upcoming/scheduled event with a field).
+    prev = ((preview or {}).get("previews") or [{}])[0]
+    contenders = [c.get("player") for c in (prev.get("top_5_contenders") or [])[:3] if c.get("player")]
+    status = str(at.get("status") or "").lower()
+    if at.get("name") and contenders and (status in ("scheduled", "pre", "") and not is_live):
+        out.append({
+            "type": "GOLF", "icon": "⛳", "sport": "GOLF",
+            "title": f"{tname}: model's field favorites",
+            "detail": ("Top by model — " + ", ".join(contenders)
+                       + (f" · {prev.get('n_players_total')}-player field" if prev.get("n_players_total") else "")
+                       + " · live best-bets once it tees off"),
+            "score": 38, "ts": ts, "link": "golf.html",
+        })
+    return out
+
+
 def run() -> Dict[str, Any]:
     lm = _load("line_movement.json")
     rlm = _load("reverse_line_movement.json")
     ttp = _load("todays_top_plays.json")
     wc = _load("worldcup_cards.json")
     bb = _load("nba_book_edges.json")
+    g_state = _load("golf_state.json")
+    g_track = _load("golf_live_tracker.json")
+    g_best = _load("golf_bestbet.json")
+    g_prev = _load("golf_tournament_preview.json")
 
     buckets: Dict[str, List[Dict[str, Any]]] = {
         "STEAM": _steam(lm.get("movers") or [], lm.get("generated_at") or ""),
@@ -158,6 +201,8 @@ def run() -> Dict[str, Any]:
         "WC": _wc((wc.get("best_bets") or [])[:8], wc.get("generated_at") or ""),
         "HOOPS": _hoops([g for g in (bb.get("games") or []) if (g.get("lean_edge_pp") or 0) >= 1.0],
                         bb.get("generated_at") or ""),
+        "GOLF": _golf(g_state, g_track, g_best, g_prev,
+                      g_track.get("generated_at") or g_state.get("generated_at") or ""),
     }
 
     items: List[Dict[str, Any]] = []

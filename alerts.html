@@ -29,6 +29,7 @@
   .tag.EDGE  { background:rgba(88,200,120,.16); color:#58c878; }
   .tag.WC    { background:rgba(255,193,94,.16); color:#ffc15e; }
   .tag.HOOPS { background:rgba(255,157,92,.16); color:#ff9d5c; }
+  .tag.GOLF  { background:rgba(126,217,87,.15); color:#9be15d; }
   .sport { font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--muted,#8a93a6); }
   .right { text-align:right; min-width:96px; }
   .strength { font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--muted,#8a93a6); }
@@ -71,8 +72,8 @@
 
 <script>
 const esc = s => String(s == null ? "" : s).replace(/[&<>]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
-const BARCOL = { STEAM:"#5fb3e0", SHARP:"#b08aff", EDGE:"#58c878", WC:"#ffc15e", HOOPS:"#ff9d5c" };
-const LABEL = { STEAM:"Steam", SHARP:"Sharp", EDGE:"Edge", WC:"World Cup", HOOPS:"Hoops" };
+const BARCOL = { STEAM:"#5fb3e0", SHARP:"#b08aff", EDGE:"#58c878", WC:"#ffc15e", HOOPS:"#ff9d5c", GOLF:"#9be15d" };
+const LABEL = { STEAM:"Steam", SHARP:"Sharp", EDGE:"Edge", WC:"World Cup", HOOPS:"Hoops", GOLF:"Golf" };
 let ITEMS = [], filter = "ALL";
 
 function ago(iso) {
@@ -106,8 +107,8 @@ function render() {
 }
 
 function buildChips(counts, total) {
-  const order = ["ALL", "STEAM", "SHARP", "EDGE", "WC", "HOOPS"];
-  const ic = { ALL:"📡", STEAM:"📈", SHARP:"🧠", EDGE:"🎯", WC:"🏆", HOOPS:"🏀" };
+  const order = ["ALL", "STEAM", "SHARP", "EDGE", "WC", "HOOPS", "GOLF"];
+  const ic = { ALL:"📡", STEAM:"📈", SHARP:"🧠", EDGE:"🎯", WC:"🏆", HOOPS:"🏀", GOLF:"⛳" };
   document.getElementById("chips").innerHTML = order
     .filter(t => t === "ALL" || (counts[t] || 0) > 0)
     .map(t => `<span class="chip ${t === filter ? "on" : ""}" data-t="${t}">${ic[t]} ${t === "ALL" ? "All" : (LABEL[t] || t)}<span class="c">${t === "ALL" ? total : counts[t]}</span></span>`).join("");
