@@ -2,33 +2,26 @@
 
 **Model Confidence: 27.4/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
 
-_Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
+_Pipeline health: **DEGRADED** (14/15 artifacts ok; 1 empty, 0 stale)._ 
 
-_Generated at 2026-06-18T17:16:56 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-06-18T23:39:01 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
-**CHW @ NYY - OVER_9.5**
+**LAA @ OAK - OVER_10.0**
 - Market: -110
-- Model probability: 82.0%
-- Raw edge: +56.53%
+- Model probability: 79.5%
+- Raw edge: +51.81%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
 
-## Full Slate (9 games)
+## Full Slate (2 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 1:35p ET | TOR @ BOS | Fenway Park | 85F 21mph | TOR_ML +11.82% |
-| 2:10p ET | CLE @ MIL | American Family Field | indoor | MIL_ML +20.77% |
-| 2:35p ET | MIN @ TEX | Globe Life Field | indoor | OVER_7.5 +16.43% |
-| 4:10p ET | BAL @ SEA | T-Mobile Park | indoor | SEA_ML +2.05% |
-| 6:40p ET | NYM @ PHI | Citizens Bank Park | 79F 11mph | UNDER_9.5 +28.26% |
-| 7:05p ET | CHW @ NYY | Yankee Stadium | 80F 11mph | OVER_9.5 +56.53% |
-| 7:15p ET | SFG @ ATL | Truist Park | 71F 9mph | OVER_8.0 +26.51% |
-| 7:40p ET | STL @ KCR | Kauffman Stadium | 69F 3mph | -- |
-| 9:40p ET | LAA @ OAK | Sutter Health Park | 64F 11mph | OAK_ML +23.01% |
+| 7:40p ET | STL @ KCR | Kauffman Stadium | 69F 4mph | KCR_ML +7.54% |
+| 9:40p ET | LAA @ OAK | Sutter Health Park | 64F 8mph | OVER_10.0 +51.81% |
 
 ## Parlays - top 5
 
@@ -66,15 +59,8 @@ Cumulative graded plays: 118214. Wins: 87366. Hit rate: 73.9%.
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| BAL @ SEA | 42.0% | +138 | 4.34 | +121 | -121 |
-| CHW @ NYY | 23.8% | +321 | 7.68 | -134 | +134 |
-| CLE @ MIL | 37.3% | +168 | 4.93 | -138 | +138 |
-| LAA @ OAK | 46.7% | +114 | 4.03 | -185 | +185 |
-| MIN @ TEX | 35.4% | +183 | 5.19 | +316 | -316 |
-| NYM @ PHI | 30.4% | +229 | 6.25 | +176 | -176 |
-| SFG @ ATL | 31.3% | +219 | 5.97 | +134 | -134 |
-| STL @ KCR | 42.1% | +138 | 4.35 | +147 | -147 |
-| TOR @ BOS | 37.2% | +169 | 5.56 | +174 | -174 |
+| LAA @ OAK | 46.7% | +114 | 10.66 | -763 | +763 |
+| STL @ KCR | 42.1% | +138 | 4.42 | +146 | -146 |
 
 ## Team Form (last 10)
 

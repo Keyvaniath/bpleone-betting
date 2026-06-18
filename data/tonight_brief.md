@@ -14,9 +14,9 @@ _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 - **Alejandro Osuna** PP_batter_hrr_under_3.5 (MLB-PP) -- 87% / +51.2%
 
 ## 🎰 Tonight's Best Parlay
-- **Everson Pereira** PP_batter_hrr_under_3.5 + **LAA @ OAK** OAK_ML
-- Joint 64% · fair +179 · edge +77.8%
+- **Everson Pereira** PP_batter_hrr_under_3.5 + **LAA @ OAK** OVER_10.0
+- Joint 52% · fair +231 · edge +71.8%
 
 ---
-_Generated 2026-06-18T17:15:35_
+_Generated 2026-06-18T23:38:33_
 _Full breakdown: /tonight · Full history: /locks-of-day_
