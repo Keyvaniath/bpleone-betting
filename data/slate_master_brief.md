@@ -1,13 +1,13 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-06-18T12:17:32 UTC_
+_Generated 2026-06-18T17:15:41 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -165
+- **Score:** -166
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
 - **Total STRONG:** 1
-- **Total FADES:** 169
+- **Total FADES:** 170
 
 ## Lock of the Night
 - **Subject:** Jack Leiter
@@ -17,7 +17,7 @@ _Generated 2026-06-18T12:17:32 UTC_
 - **Details:** MIN @ TEX
 
 ## Top 5 Curated Picks
-1. **MLB / Parker Messick** (MLB_PITCHER, score=59.33)
+1. **MLB / Parker Messick** (MLB_PITCHER, score=58.75)
    - Play: Parker Messick (PITCHER_STRONG)
    - Rationale: Cross-sport top pick (MLB_PITCHER)
 
@@ -28,13 +28,13 @@ _Generated 2026-06-18T12:17:32 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **GOLF** / Arni Sveinsson (PLAYER_FADE)
+- **GOLF** / Hamilton Coleman (PLAYER_FADE)
   - Fade angle: miss cut YES + high round score
-- **F1** / logan sargeant (DRIVER_FADE)
-  - Fade angle: non-podium / outside top 10
-- **GOLF** / Jack Schoenberger (PLAYER_FADE)
+- **GOLF** / Chandler Phillips (PLAYER_FADE)
   - Fade angle: miss cut YES + high round score
-- **GOLF** / Matthew Robles (PLAYER_FADE)
+- **GOLF** / Jackson Herrington (PLAYER_FADE)
   - Fade angle: miss cut YES + high round score
-- **F1** / oliver bearman (DRIVER_FADE)
-  - Fade angle: non-podium / outside top 10
+- **GOLF** / Nathan Kimsey (PLAYER_FADE)
+  - Fade angle: miss cut YES + high round score
+- **GOLF** / Taylor Montgomery (PLAYER_FADE)
+  - Fade angle: miss cut YES + high round score

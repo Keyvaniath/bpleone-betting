@@ -4,14 +4,14 @@
 
 _Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
 
-_Generated at 2026-06-18T12:17:40 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-06-18T17:16:56 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
 **CHW @ NYY - OVER_9.5**
 - Market: -110
-- Model probability: 81.4%
-- Raw edge: +55.36%
+- Model probability: 82.0%
+- Raw edge: +56.53%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
@@ -20,37 +20,38 @@ _Generated at 2026-06-18T12:17:40 UTC. Game lines source: **Bovada (fallback -- 
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 1:35p ET | TOR @ BOS | Fenway Park | 78F 18mph | OVER_8.5 +5.06% |
-| 2:10p ET | CLE @ MIL | American Family Field | indoor | MIL_ML +18.96% |
+| 1:35p ET | TOR @ BOS | Fenway Park | 85F 21mph | TOR_ML +11.82% |
+| 2:10p ET | CLE @ MIL | American Family Field | indoor | MIL_ML +20.77% |
 | 2:35p ET | MIN @ TEX | Globe Life Field | indoor | OVER_7.5 +16.43% |
-| 4:10p ET | BAL @ SEA | T-Mobile Park | indoor | -- |
-| 6:40p ET | NYM @ PHI | Citizens Bank Park | 80F 11mph | UNDER_9.5 +27.56% |
-| 7:05p ET | CHW @ NYY | Yankee Stadium | 78F 11mph | OVER_9.5 +55.36% |
-| 7:15p ET | SFG @ ATL | Truist Park | 72F 6mph | OVER_8.0 +22.51% |
-| 7:40p ET | STL @ KCR | Kauffman Stadium | 69F 4mph | -- |
-| 9:40p ET | LAA @ OAK | Sutter Health Park | 63F 10mph | OAK_ML +28.8% |
+| 4:10p ET | BAL @ SEA | T-Mobile Park | indoor | SEA_ML +2.05% |
+| 6:40p ET | NYM @ PHI | Citizens Bank Park | 79F 11mph | UNDER_9.5 +28.26% |
+| 7:05p ET | CHW @ NYY | Yankee Stadium | 80F 11mph | OVER_9.5 +56.53% |
+| 7:15p ET | SFG @ ATL | Truist Park | 71F 9mph | OVER_8.0 +26.51% |
+| 7:40p ET | STL @ KCR | Kauffman Stadium | 69F 3mph | -- |
+| 9:40p ET | LAA @ OAK | Sutter Health Park | 64F 11mph | OAK_ML +23.01% |
 
 ## Parlays - top 5
 
-- **3-leg @ +654 (prob 19.8%, EV +49.38%)**
-  - TOR @ BOS TOR_ML (+107, model 50.6%)
+- **3-leg @ +485 (prob 25.5%, EV +49.48%)**
+  - TOR @ BOS UNDER_9.5 (-110, model 55.3%)
   - MIN @ TEX OVER_7.5 (-110, model 61.0%)
-  - SFG @ ATL OVER_8.0 (-110, model 64.2%)
-- **3-leg @ +377 (prob 31.3%, EV +49.12%)**
-  - CLE @ MIL MIL_ML (-153, model 72.1%)
-  - MIN @ TEX MIN_ML (-130, model 64.1%)
-  - CHW @ NYY NYY_ML (-159, model 67.7%)
-- **3-leg @ +545 (prob 23.1%, EV +48.85%)**
-  - CLE @ MIL UNDER_7.5 (-110, model 56.1%)
-  - MIN @ TEX MIN_ML (-130, model 64.1%)
-  - SFG @ ATL OVER_8.0 (-110, model 64.2%)
-- **3-leg @ +503 (prob 24.7%, EV +48.82%)**
-  - CLE @ MIL MIL_ML (-153, model 72.1%)
-  - CLE @ MIL UNDER_7.5 (-110, model 56.1%)
+  - LAA @ OAK OAK_ML (-165, model 75.7%)
+- **3-leg @ +599 (prob 21.4%, EV +49.35%)**
+  - TOR @ BOS TOR_ML (+118, model 50.6%)
+  - CLE @ MIL MIL_ML (-147, model 71.9%)
+  - CLE @ MIL UNDER_7.5 (-110, model 58.7%)
+- **3-leg @ +655 (prob 19.8%, EV +49.24%)**
+  - TOR @ BOS TOR_ML (+118, model 50.6%)
   - MIN @ TEX OVER_7.5 (-110, model 61.0%)
-- **2-leg @ +216 (prob 46.3%, EV +46.12%)**
-  - CLE @ MIL MIL_ML (-153, model 72.1%)
-  - SFG @ ATL OVER_8.0 (-110, model 64.2%)
+  - MIN @ TEX MIN_ML (-123, model 64.1%)
+- **3-leg @ +456 (prob 26.8%, EV +49.17%)**
+  - TOR @ BOS UNDER_9.5 (-110, model 55.3%)
+  - MIN @ TEX MIN_ML (-123, model 64.1%)
+  - LAA @ OAK OAK_ML (-165, model 75.7%)
+- **3-leg @ +568 (prob 22.3%, EV +48.88%)**
+  - TOR @ BOS TOR_ML (+118, model 50.6%)
+  - SFG @ ATL OVER_8.0 (-110, model 58.1%)
+  - LAA @ OAK OAK_ML (-165, model 75.7%)
 
 ## Self-Learning Loop
 
@@ -66,14 +67,14 @@ Cumulative graded plays: 118214. Wins: 87366. Hit rate: 73.9%.
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
 | BAL @ SEA | 42.0% | +138 | 4.34 | +121 | -121 |
-| CHW @ NYY | 23.8% | +321 | 7.72 | -133 | +133 |
-| CLE @ MIL | 37.3% | +168 | 4.93 | -141 | +141 |
-| LAA @ OAK | 46.7% | +114 | 3.97 | -184 | +184 |
+| CHW @ NYY | 23.8% | +321 | 7.68 | -134 | +134 |
+| CLE @ MIL | 37.3% | +168 | 4.93 | -138 | +138 |
+| LAA @ OAK | 46.7% | +114 | 4.03 | -185 | +185 |
 | MIN @ TEX | 35.4% | +183 | 5.19 | +316 | -316 |
-| NYM @ PHI | 30.4% | +229 | 6.18 | +176 | -176 |
-| SFG @ ATL | 31.3% | +219 | 5.56 | +135 | -135 |
-| STL @ KCR | 42.1% | +138 | 4.41 | +146 | -146 |
-| TOR @ BOS | 37.2% | +169 | 5.42 | +175 | -175 |
+| NYM @ PHI | 30.4% | +229 | 6.25 | +176 | -176 |
+| SFG @ ATL | 31.3% | +219 | 5.97 | +134 | -134 |
+| STL @ KCR | 42.1% | +138 | 4.35 | +147 | -147 |
+| TOR @ BOS | 37.2% | +169 | 5.56 | +174 | -174 |
 
 ## Team Form (last 10)
 

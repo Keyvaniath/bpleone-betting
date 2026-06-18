@@ -1,13 +1,13 @@
 # EdgeStat Daily Summary — 2026-06-18
 
-## 🏥 Model Health: 68.3/100 [OK]
-- Operational but room to improve - check yellow components
+## 🏥 Model Health: 71.4/100 [HEALTHY]
+- Solid health - some minor issues to monitor
   - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 54.4/100
   - 🔴 Brier Trend: 29.6/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 88.9/100
-  - 🔴 Edge Count: 37.1/100
+  - 🟡 Edge Count: 68.6/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.586)
@@ -21,30 +21,28 @@
 4. **MIN @ TEX YRFI (1st-inning OVER 0.5)** (78/100 ★★★★)
 5. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
 
-## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB-PP]** Travis Bazzana PP_batter_hrr_under_3.5 -- 87% / +50.6% (score 2.5)
-- [STRONG] **[MLB]** LAA @ OAK ML_HOME -- 66% / +26.7% (score 2.5)
-- [STRONG] **[MLB]** LAA @ OAK OAK_ML -- 66% / +26.7% (score 2.5)
-
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **191-38** (83.4% hit rate)
 - Net units: **+6.35u** | ROI: **+44.8%**
 - Last 7d: 44-11 (80.0%) | net +1.32u
 
-**Today's 5 Locks:**
+**Today's 8 Locks:**
 - [MLB-PP] **Rhys Hoskins** PP_batter_hrr_under_3.5 · p=87% edge=+51.4% qK=0.062u
 - [MLB-PP] **Jeff McNeil** PP_batter_hrr_under_3.5 · p=87% edge=+51.1% qK=0.062u
 - [MLB-PP] **Drew Gilbert** PP_batter_hrr_under_3.5 · p=87% edge=+50.8% qK=0.062u
 - [MLB-PP] **Travis Bazzana** PP_batter_hrr_under_3.5 · p=87% edge=+50.6% qK=0.062u
 - [MLB-PP] **Everson Pereira** PP_batter_hrr_under_3.5 · p=87% edge=+50.1% qK=0.062u
+- [MLB-PP] **David Hamilton** PP_batter_hrr_under_3.5 · p=87% edge=+51.5% qK=0.062u
+- [MLB-PP] **Mickey Gasper** PP_batter_hrr_under_3.5 · p=87% edge=+51.3% qK=0.062u
+- [MLB-PP] **J.T. Realmuto** PP_batter_hrr_under_3.5 · p=87% edge=+51.3% qK=0.062u
 
 ## 🎰 Top Balanced 2-Leg Parlays (40-65% joint)
-- [MLB-PP] Rhys Hoskins PP_batter_hrr_under_ + [MLB] LAA @ OAK ML_HOME
-  Joint: 58% | Fair: 231 | Edge: +91.7%
-- [MLB-PP] Rhys Hoskins PP_batter_hrr_under_ + [MLB] LAA @ OAK OAK_ML
-  Joint: 58% | Fair: 231 | Edge: +91.7%
+- [MLB-PP] David Hamilton PP_batter_hrr_under_ + [MLB] LAA @ OAK ML_HOME
+  Joint: 60% | Fair: 202 | Edge: +80.2%
+- [MLB-PP] David Hamilton PP_batter_hrr_under_ + [MLB] LAA @ OAK OAK_ML
+  Joint: 60% | Fair: 202 | Edge: +80.2%
 - [MLB-PP] Jeff McNeil PP_batter_hrr_under_ + [MLB] LAA @ OAK ML_HOME
-  Joint: 58% | Fair: 231 | Edge: +91.3%
+  Joint: 60% | Fair: 202 | Edge: +80.0%
 
 ## 🎮 Player Play of the Day (cross-sport)
 - **[LOL]** Inspired UNDER 3.5 Kills | MED conviction · model 61.7% fair -161
@@ -57,8 +55,8 @@
 - Hot teams: **5** | Cold teams: **5** | Over-heavy: 0 | Under-heavy: 8
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (43)
-- STEAM_MOVE: **41**
+## ⚠️ Anomaly Detector (44)
+- STEAM_MOVE: **42**
 - COMPOUND_BULLPEN: **2**
   - WSH @ CON (WNBA): ML/TOTAL steam since open: ML +5.9pp toward CON; total -3 (UNDER) (4 snapshots)
   - CIN @ SDP (MLB): ML/TOTAL steam since open: ML +13.8pp toward SDP; total +1 (OVER) (6 snapshots)
@@ -68,7 +66,7 @@
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$2.33**
+- Expected EV: **$4.97**
   - #1 [NRFI] $50 on CHW @ NYY YRFI (1st-inning OVER 0.5) (P=76%)
   - #2 [NRFI] $50 on NYM @ PHI YRFI (1st-inning OVER 0.5) (P=70%)
   - #3 [NRFI] $50 on SFG @ ATL YRFI (1st-inning OVER 0.5) (P=69%)
@@ -76,12 +74,12 @@
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
 ## 🎯 Convergence Picks (20 stacked games)
-- ELITE: **3** · HIGH: 1 · MED: 16
-  - [ELITE] Minnesota Lynx @ Los Angeles Sparks : 5 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ATS)
-  - [ELITE] Dallas Wings @ Golden State Valkyries : 4 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ATS)
-  - [ELITE] Las Vegas Aces @ Phoenix Mercury : 4 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ATS)
-  - [HIGH] Seattle Storm @ Portland Fire : 3 signals (HEAT_COLD, HEAT_COLD, ANOMALY)
+- ELITE: **1** · HIGH: 2 · MED: 17
+  - [ELITE] Minnesota Lynx @ Los Angeles Sparks : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
+  - [HIGH] Dallas Wings @ Golden State Valkyries : 3 signals (HEAT_COLD, HEAT_COLD, ATS)
+  - [HIGH] Las Vegas Aces @ Phoenix Mercury : 3 signals (HEAT_COLD, HEAT_COLD, ATS)
   - [MED] Carolina Hurricanes @ Vegas Golden Knights : 2 signals (HEAT_COLD, HEAT_COLD)
+  - [MED] Washington Mystics @ Connecticut Sun : 2 signals (HEAT_COLD, HEAT_COLD)
 
 ## ⚾ Top MLB Pitcher K Plays (7)
 - **Bryan Woo** OVER 4.5 K (78%) fair -347
@@ -108,11 +106,11 @@
   - [LEAN] **Kyoji Horiguchi** (36-5-0) vs Manel Kape -- fair -151
 
 ## ⛳ Golf Player Heat (from U.S. Open)
-  - 🔥 T1 **Harry Higgs** (USA): +0 total -- finished T1
-  - 🔥 T2 **Taylor Montgomery** (USA): +0 total -- finished T2
-  - 🔥 T3 **Chandler Phillips** (USA): +0 total -- finished T3
-  - 🔥 T4 **James Nicholas** (USA): +0 total -- finished T4
-  - 🔥 T5 **Caleb Surratt** (USA): +0 total -- finished T5
+  - 🔥 T1 **James Nicholas** (USA): +0 total -- finished T1
+  - 🔥 T2 **Caleb Surratt** (USA): +0 total -- finished T2
+  - 🔥 T3 **Jayden Schaper** (South Africa): +0 total -- finished T3
+  - 🔥 T4 **Jackson Suber** (USA): +0 total -- finished T4
+  - 🔥 T5 **Cooper Dossey** (USA): +0 total -- finished T5
 
 ## 🔥 MLB Batter Heat (48 HOT / 44 COLD)
   - 🔥 **Blaze Alexander** (BAL): L14 .472 / season .310 (+162pts)
@@ -125,12 +123,6 @@
   - ❄️ **Carlos Cortes** (ATH): L14 .143 / season .289 (-146pts) -- FADE props
   - ❄️ **Dominic Smith** (ATL): L14 .139 / season .283 (-144pts) -- FADE props
   - ❄️ **Spencer Steer** (CIN): L14 .116 / season .245 (-129pts) -- FADE props
-
-## 📈 Streak Regression Alerts (4)
-- [WNBA] Golden State Valkyries on W4 L10 4-1 -- Golden State Valkyries on W4 -- no historical sample
-- [WNBA] Phoenix Mercury on L4 L10 1-4 -- Phoenix Mercury on L4 -- no historical sample
-- [WNBA] Seattle Storm on L5 L10 0-5 -- Seattle Storm on L5 -- no historical sample
-- [CWS] Oklahoma Sooners on W3 L10 3-0 -- Oklahoma Sooners on W3 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**
