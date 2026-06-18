@@ -12,16 +12,22 @@
   h1 { font-size: 26px; margin: 0 0 6px 0; }
   .sub { color: var(--muted, #888); font-size: 13px; margin-bottom: 22px; max-width: 720px; line-height: 1.55; }
 
-  .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 20px; }
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 20px; }
   .stat-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 14px 16px; }
   .stat-label { color: var(--muted, #888); font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 5px; }
   .stat-value { font-size: 26px; font-weight: 700; font-family: 'JetBrains Mono', monospace; color: #58c878; }
 
   .panel { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; overflow: hidden; }
-  .row { display: grid; grid-template-columns: 80px 90px 110px 130px 120px; gap: 12px; padding: 13px 16px; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 13px; border-bottom: 1px solid rgba(255,255,255,0.04); }
+  .row { display: grid; grid-template-columns: 1fr 96px 64px 78px 1.5fr; gap: 12px; padding: 12px 16px; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 13px; border-bottom: 1px solid rgba(255,255,255,0.04); }
   .row.head { background: rgba(255,255,255,0.05); color: var(--muted, #888); font-size: 10px; text-transform: uppercase; padding: 9px 16px; }
   .num { text-align: right; font-variant-numeric: tabular-nums; }
   .sport-tag { font-weight: 700; }
+  .pill { font-size: 9.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .4px; padding: 2px 8px; border-radius: 4px; }
+  .pill.LIVE { background: rgba(88,200,120,.18); color: #58c878; }
+  .pill.IN-SEASON, .pill.INSEASON { background: rgba(95,179,224,.16); color: #5fb3e0; }
+  .pill.OFF-SEASON, .pill.OFFSEASON { background: rgba(138,147,166,.16); color: #aab3c5; }
+  .yes { color: #58c878; } .no { color: #ffc15e; }
+  a.slink { color: inherit; text-decoration: none; } a.slink:hover { text-decoration: underline; }
 </style>
 </head>
 <body>
@@ -30,22 +36,25 @@
 
 <h1>Sport Coverage</h1>
 <div class="sub">
-  Bird's-eye view of all sports tonight: games on schedule, active modules,
-  projections produced, strong edges flagged. Sorted by strong edges descending.
+  Every desk, at a glance: is it <strong>live</strong> (producing picks/props right now),
+  does it carry <strong>props or line bets</strong>, and is it <strong>tracking</strong> a
+  real settled record? A live sport that isn't tracking is making picks with no outcome
+  feed to grade them — flagged below.
 </div>
 
 <div class="stats">
-  <div class="stat-card"><div class="stat-label">Games Across All Sports</div><div class="stat-value" id="s-games">—</div></div>
-  <div class="stat-card"><div class="stat-label">Total Strong Edges</div><div class="stat-value" id="s-strong">—</div></div>
+  <div class="stat-card"><div class="stat-label">Sports Covered</div><div class="stat-value" id="s-sports" style="color:#fff;">—</div></div>
+  <div class="stat-card"><div class="stat-label">Live Now</div><div class="stat-value" id="s-live">—</div></div>
+  <div class="stat-card"><div class="stat-label">Tracking a Record</div><div class="stat-value" id="s-tracking">—</div></div>
 </div>
 
 <div class="panel">
   <div class="row head">
     <div>Sport</div>
-    <div class="num">Games</div>
-    <div class="num">Modules</div>
-    <div class="num">Projections</div>
-    <div class="num">Strong Edges</div>
+    <div>Status</div>
+    <div class="num">Today</div>
+    <div class="num">Props/Bets</div>
+    <div>Tracking</div>
   </div>
   <div id="rows">Loading…</div>
 </div>
@@ -55,6 +64,7 @@
 </div>
 
 <script>
+const esc = s => String(s == null ? '' : s).replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
 async function load() {
   let d;
   try {
@@ -64,25 +74,36 @@ async function load() {
     document.getElementById('rows').innerHTML = '<div style="padding:24px;color:#888;">Failed to load.</div>';
     return;
   }
-  const totals = d.totals || {};
-  document.getElementById('s-games').textContent = totals.n_games_all_sports || 0;
-  document.getElementById('s-strong').textContent = totals.n_strong_edges_all_sports || 0;
+  const t = d.totals || {};
+  document.getElementById('s-sports').textContent = t.n_sports || 0;
+  document.getElementById('s-live').textContent = t.n_live || 0;
+  document.getElementById('s-tracking').textContent = t.n_tracking || 0;
   const sports = d.sports || [];
   const html = sports.map(s => {
-    const strongColor = s.n_strong_edges > 0 ? '#58c878' : '#888';
-    const gameColor = s.n_games_today > 0 ? '#fff' : '#666';
+    const pillCls = (s.status || '').replace(/[^A-Z\-]/gi, '');
+    let track;
+    if (s.tracking) {
+      const rec = s.record ? s.record : (s.settled + ' settled');
+      const roi = (s.roi_pct != null) ? ` <span style="color:${s.roi_pct >= 0 ? '#58c878' : '#e35a5a'};">${s.roi_pct >= 0 ? '+' : ''}${s.roi_pct}%</span>` : '';
+      track = `<span class="yes">✓</span> <span style="color:var(--text,#ddd);">${esc(rec)}</span>${roi}`;
+    } else if (s.status === 'OFF-SEASON') {
+      track = `<span style="color:#888;">— off-season</span>`;
+    } else {
+      track = `<span class="no" title="${esc(s.track_note || '')}">⚠ no outcome feed yet</span>`;
+    }
+    const today = s.games_today > 0 ? s.games_today : '<span style="color:#666;">0</span>';
     return `
       <div class="row">
-        <div class="sport-tag">${s.sport}</div>
-        <div class="num" style="color:${gameColor};">${s.n_games_today}</div>
-        <div class="num">${s.n_modules_active_tonight}/${s.n_prop_modules}</div>
-        <div class="num" style="color:var(--muted,#aaa);">${s.n_total_projections}</div>
-        <div class="num" style="color:${strongColor};font-weight:700;">${s.n_strong_edges}</div>
-      </div>
-    `;
+        <div class="sport-tag"><a class="slink" href="${esc(s.page || '#')}">${esc(s.sport)}</a></div>
+        <div><span class="pill ${pillCls}">${esc(s.status)}</span></div>
+        <div class="num">${today}</div>
+        <div class="num" style="color:${s.has_props ? 'var(--text,#ddd)' : '#666'};">${s.projections || 0}</div>
+        <div>${track}</div>
+      </div>`;
   }).join('');
   document.getElementById('rows').innerHTML = html || '<div style="padding:24px;color:#888;">No data</div>';
-  document.getElementById('meta').textContent = 'Generated ' + (d.generated_at || '—');
+  document.getElementById('meta').textContent =
+    `${t.n_live}/${t.n_sports} live · ${t.n_tracking} tracking a settled record · generated ${(d.generated_at || '').replace('T',' ').slice(0,16)} UTC`;
 }
 load();
 setInterval(load, 5 * 60 * 1000);
