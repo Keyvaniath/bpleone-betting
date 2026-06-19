@@ -60,6 +60,22 @@ def _discord(content: str):
         return False
 
 
+def _touch_idle(note: str):
+    """Between tournaments there are no alerts to fire, but still refresh
+    golf_alerts.json so it reflects CURRENT (idle) state with a fresh timestamp
+    instead of leaving a stale last-tournament snapshot (which never updated and
+    perpetually tripped the data-freshness auditor). Preserves the alert log."""
+    now = dt.datetime.now().isoformat(timespec="seconds")
+    log = _load(ALERT_LOG).get("alerts") or []
+    _save(ALERT_LOG, {
+        "generated_at": now,
+        "tournament": None,
+        "note": note,
+        "n_new_alerts": 0,
+        "alerts": log[-200:],
+    })
+
+
 def run() -> Dict[str, Any]:
     state = _load(STATE_PATH)
     props = _load(PROPS_PATH)
@@ -68,11 +84,13 @@ def run() -> Dict[str, Any]:
 
     t = state.get("active_tournament") or {}
     if not t.get("name") or t.get("is_complete"):
+        _touch_idle("no active tournament")
         return {"alerts": [], "note": "no active tournament"}
 
     tname = t["name"]
     field = state.get("field") or []
     if not field:
+        _touch_idle("empty field")
         return {"alerts": [], "note": "empty field"}
 
     leader = field[0]
