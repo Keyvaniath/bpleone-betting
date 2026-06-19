@@ -41,6 +41,11 @@ canvas {
 html, body {
   margin: 0;
   padding: 0;
+  /* Mobile hardening (Tier 3 QA): clip accidental horizontal page scroll from wide
+     tickers/rows. Intentional scrollers (.tscroll/.table-wrap/.mainnav/.card with
+     overflow-x:auto) still scroll internally. */
+  max-width: 100%;
+  overflow-x: hidden;
   background: var(--bg-0);
   color: var(--text);
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
