@@ -86,8 +86,10 @@ async function load() {
       const rec = s.record ? s.record : (s.settled + ' settled');
       const roi = (s.roi_pct != null) ? ` <span style="color:${s.roi_pct >= 0 ? '#58c878' : '#e35a5a'};">${s.roi_pct >= 0 ? '+' : ''}${s.roi_pct}%</span>` : '';
       track = `<span class="yes">✓</span> <span style="color:var(--text,#ddd);">${esc(rec)}</span>${roi}`;
-    } else if (s.status === 'OFF-SEASON') {
+    } else if (s.track_status === 'off-season' || s.status === 'OFF-SEASON') {
       track = `<span style="color:#888;">— off-season</span>`;
+    } else if (s.track_status === 'pending') {
+      track = `<span style="color:#5fb3e0;" title="${esc(s.track_note || '')}">⏳ settles on completion</span>`;
     } else {
       track = `<span class="no" title="${esc(s.track_note || '')}">⚠ no outcome feed yet</span>`;
     }

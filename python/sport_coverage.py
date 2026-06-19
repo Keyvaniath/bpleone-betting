@@ -46,7 +46,7 @@ SPORTS: List[Tuple[str, str, str, List[str], Optional[str], Optional[str], List[
     ("F1",       "F1",             "f1.html",       ["F1"],            None,                   None,                      ["f1_*.json"]),
     ("LOL",      "LoL",            "lol.html",      ["LOL"],           "lol_state.json",       "lol_pot_history.json",    ["lol_props.json", "lol_player_props.json"]),
     ("CS",       "CS",             "cs.html",       ["CS"],            "cs_state.json",        "cs_pot_history.json",     ["cs_props.json", "cs_player_props.json"]),
-    ("CWS",      "NCAA Baseball",  "cws.html",      ["CWS", "NCAA-BB"],"cws_state.json",       None,                      ["cws_*.json"]),
+    ("CWS",      "NCAA Baseball",  "cws.html",      ["CWS", "NCAA-BB"],"cws_state.json",       "cws_pot_history.json",    ["cws_*.json"]),
 ]
 
 
@@ -128,11 +128,12 @@ def _ledger_track(keys: List[str], ledger: Dict[str, Any]) -> Dict[str, Any]:
 
 def _pot_track(pot_file: Optional[str]) -> Dict[str, Any]:
     if not pot_file:
-        return {"settled": 0}
+        return {"settled": 0, "pending": 0}
     d = _load(os.path.join(DATA_DIR, pot_file))
     hist = d.get("history") or (d if isinstance(d, list) else [])
     settled = [h for h in hist if isinstance(h, dict) and h.get("settled")]
-    return {"settled": len(settled), "record": d.get("record") or d.get("wins")}
+    pending = [h for h in hist if isinstance(h, dict) and not h.get("settled")]
+    return {"settled": len(settled), "pending": len(pending), "record": d.get("record") or d.get("wins")}
 
 
 def run() -> Dict[str, Any]:
@@ -146,7 +147,7 @@ def run() -> Dict[str, Any]:
         led = _ledger_track(keys, ledger)
         pot = _pot_track(pot_file)
         settled = max(led["settled"], pot["settled"])
-        pending = led["pending"]
+        pending = max(led["pending"], pot.get("pending", 0))
         tracking = settled > 0
         # status: LIVE if games/props today; else IN-SEASON if recently tracking/
         # pending; else OFF-SEASON.
@@ -156,10 +157,23 @@ def run() -> Dict[str, Any]:
             status = "IN-SEASON"
         else:
             status = "OFF-SEASON"
-        # tracking note: producing but nothing settles = needs an outcome feed
+        # tracking note: settlement WIRED but awaiting game completion vs no feed
         track_note = None
-        if not tracking and (n_props > 0 or n_games > 0 or pending > 0):
+        if not tracking and pot.get("pending", 0) > 0:
+            track_note = f"settlement wired -- {pot['pending']} pending, settles on game completion"
+        elif not tracking and (n_props > 0 or n_games > 0 or pending > 0):
             track_note = "picks produced, none settled yet (awaiting an outcome feed)"
+
+        if tracking:
+            track_status = "tracking"
+        elif status == "OFF-SEASON":
+            track_status = "off-season"
+        elif pot.get("pending", 0) > 0:
+            track_status = "pending"
+        elif n_props > 0 or n_games > 0 or pending > 0:
+            track_status = "no-feed"
+        else:
+            track_status = "none"
 
         if status == "LIVE":
             n_live += 1
@@ -177,6 +191,7 @@ def run() -> Dict[str, Any]:
             "pending": pending,
             "record": f"{led['wins']}-{led['losses']}" if led["wins"] + led["losses"] else None,
             "roi_pct": led["roi_pct"],
+            "track_status": track_status,
             "track_note": track_note,
             "state_fresh_h": round(state_fresh, 1) if state_fresh is not None else None,
         })
