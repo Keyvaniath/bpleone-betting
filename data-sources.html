@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Sources | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .legal { max-width: 920px; margin: 0 auto; padding: 26px 22px 10px; }
+  .legal h1 { font-size: 26px; margin: 0 0 4px; }
+  .legal .sub { color: var(--muted,#8a93a6); font-size: 13px; margin-bottom: 18px; line-height:1.6; max-width:760px; }
+  .legal h2 { font-size: 15.5px; margin: 24px 0 8px; color: var(--text,#e6e9ef); border-bottom:1px solid rgba(255,255,255,.07); padding-bottom:5px; }
+  .legal p, .legal li { color: var(--text-2,#b6bdca); font-size: 13.5px; line-height: 1.72; }
+  .legal a { color: #7fb0e8; } .legal strong { color: var(--text,#e6e9ef); }
+  table.src { width:100%; border-collapse:collapse; font-size:12.5px; margin:8px 0; }
+  table.src th { text-align:left; color:var(--muted,#8a93a6); font-size:10.5px; text-transform:uppercase; letter-spacing:.5px; padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.1); }
+  table.src td { padding:9px 10px; border-bottom:1px solid rgba(255,255,255,.05); color:var(--text-2,#b6bdca); vertical-align:top; }
+  .pill { font-size:9.5px; font-weight:700; padding:2px 7px; border-radius:4px; white-space:nowrap; }
+  .pill.free { background:rgba(95,179,224,.16); color:#5fb3e0; }
+  .pill.lic { background:rgba(88,200,120,.16); color:#58c878; }
+  .pill.need { background:rgba(212,160,74,.16); color:#e8b54e; }
+</style>
+<script src="js/nav.js"></script>
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a>
+    <span class="tagline">by bpleone</span>
+  </div>
+  <nav class="mainnav"><!-- nav.js injects here --></nav>
+  <div class="topbar-actions"><div class="ticker">DATA</div></div>
+</header>
+
+<main class="legal">
+  <h1>Data Sources &amp; Attribution</h1>
+  <div class="sub">EdgeStat is transparent about where its inputs come from. Schedules, scores, and outcomes are pulled from the providers below; our models and probabilities are our own. Data may be delayed or imperfect — see our <a href="disclaimer.html">Disclaimer</a>.</div>
+
+  <h2>Providers by desk</h2>
+  <table class="src">
+    <thead><tr><th>Provider</th><th>Powers</th><th>Access</th></tr></thead>
+    <tbody>
+      <tr><td><strong>MLB Stats API</strong></td><td>MLB schedules, probables, results, player stats</td><td><span class="pill free">public API</span></td></tr>
+      <tr><td><strong>ESPN</strong></td><td>NBA / WNBA / NHL / soccer / golf / tennis / UFC / F1 / NCAA scoreboards &amp; finals</td><td><span class="pill free">public API</span></td></tr>
+      <tr><td><strong>Daum Sports</strong></td><td>KBO (Korean baseball) schedule &amp; finals</td><td><span class="pill free">public API</span></td></tr>
+      <tr><td><strong>bo3.gg / Liquipedia</strong></td><td>Counter-Strike (CS2) matches &amp; results</td><td><span class="pill free">public API</span></td></tr>
+      <tr><td><strong>The Odds API</strong></td><td>Sportsbook game lines (when licensed); player-prop lines</td><td><span class="pill need">commercial key</span></td></tr>
+      <tr><td><strong>PrizePicks (public menu)</strong></td><td>DFS pick'em lines for the value board</td><td><span class="pill free">public API</span></td></tr>
+    </tbody>
+  </table>
+
+  <h2>Our own work</h2>
+  <p>All models, ELO/Glicko ratings, Monte Carlo simulators, projections, calibration, and the settled track record are produced by EdgeStat's own code from the inputs above. We do not resell raw third-party data; we publish derived analytics. See our <a href="methodology.html">Methodology</a> and <a href="calibration-map.html">Calibration</a>.</p>
+
+  <h2>Commercial licensing</h2>
+  <p>Several feeds above are public endpoints used under their respective terms. As EdgeStat transitions to a commercial offering, official/licensed data agreements (for odds and official league data) are being put in place to ensure full compliance and reliability. For partnership or data inquiries: <a href="mailto:legal@bpleone.com">legal@bpleone.com</a>.</p>
+
+  <h2>System status</h2>
+  <p>Live feed health and data freshness are published on our <a href="status.html">Status</a> page.</p>
+</main>
+</body>
+</html>

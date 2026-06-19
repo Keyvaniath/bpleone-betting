@@ -128,12 +128,14 @@
   // MORE -- account, system health, daily reads, education.
   const MORE = [
     { section: "Account" },
+    { href: "sportsbooks.html",         label: "🎟 Where to Bet" },
     { href: "bankroll.html",            label: "Bankroll" },
     { href: "my-bets.html",             label: "My Bets" },
     { href: "bet-slate.html",           label: "📝 Bet Slate" },
     { href: "hedge.html",               label: "Hedge Calculator" },
     { href: "config.html",              label: "Config" },
     { section: "Data & System" },
+    { href: "status.html",              label: "🟢 System Status" },
     { href: "data-health.html",         label: "📡 Data Health" },
     { href: "data-integrity.html",      label: "🔍 Data Integrity" },
     { href: "sport-coverage.html",      label: "🌐 Sport Coverage" },
@@ -145,6 +147,13 @@
     { href: "learn.html",               label: "🎓 EdgeStat Academy" },
     { href: "methodology.html",         label: "📐 Methodology" },
     { href: "about.html",               label: "About" },
+    { section: "Legal & Trust" },
+    { href: "responsible-gambling.html", label: "🛟 Responsible Gambling" },
+    { href: "data-sources.html",        label: "🗂 Data Sources" },
+    { href: "terms.html",               label: "Terms of Service" },
+    { href: "privacy.html",             label: "Privacy Policy" },
+    { href: "disclaimer.html",          label: "Disclaimer" },
+    { href: "affiliate-disclosure.html", label: "Affiliate Disclosure" },
   ];
 
   function buildDropdown(label, items, currentPath) {
@@ -257,7 +266,16 @@
     document.head.appendChild(lib);
   }
 
-  function boot() { installNav(); loadAuth(); }
+  // Site-wide compliance layer (responsible-gambling + legal footer, 21+ age gate).
+  // Required on every page of a betting-content site; no-op if already loaded.
+  function loadCompliance() {
+    if (window.__edgestatCompliance || document.querySelector('script[src*="js/compliance.js"]')) return;
+    window.__edgestatCompliance = true;
+    var s = document.createElement("script"); s.src = "js/compliance.js"; s.async = false;
+    document.head.appendChild(s);
+  }
+
+  function boot() { installNav(); loadAuth(); loadCompliance(); }
 
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", boot);

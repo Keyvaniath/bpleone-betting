@@ -229,8 +229,53 @@ def _check_golf():
             "local_age_min": age}
 
 
+# Core artifacts that EVERY pipeline/heartbeat run regenerates regardless of season.
+# If any is stale, the engine itself has gone dark (a cron failure) -- season-
+# independent, so it won't false-alarm on off-season desks.
+FRESHNESS_TARGETS = [
+    ("today.json", 28), ("ledger_summary.json", 28), ("sport_coverage.json", 28),
+    ("todays_top_plays.json", 28), ("alpha_pick_of_day.json", 30),
+    ("alerts_feed.json", 10), ("calibration_map.json", 30), ("espn_odds.json", 14),
+]
+
+
+def _gen_age_h(d):
+    g = (d or {}).get("generated_at") or (d or {}).get("updated_at")
+    if not g:
+        return None
+    try:
+        t = dt.datetime.fromisoformat(str(g).replace("Z", "").split("+")[0])
+        return (dt.datetime.now() - t).total_seconds() / 3600
+    except Exception:
+        return None
+
+
+def _check_freshness():
+    """Catch silent cron failures: a core artifact that hasn't refreshed within its
+    window means the producing pipeline has gone dark. This is the 'notice when a
+    feed goes dark' monitor an official site needs."""
+    stale = []
+    ages = {}
+    for fn, max_h in FRESHNESS_TARGETS:
+        d = _load(fn)
+        if d is None:
+            stale.append(f"{fn}: MISSING")
+            continue
+        age = _gen_age_h(d)
+        if age is None:
+            age = (_age_min(fn) or 0) / 60.0
+        ages[fn] = round(age, 1)
+        if age > max_h:
+            stale.append(f"{fn}: {age:.0f}h old (>{max_h}h)")
+    status = "red" if stale else "green"
+    findings = stale if stale else [f"{len(FRESHNESS_TARGETS)} core artifacts fresh"]
+    return {"feed": "freshness", "status": status, "findings": findings,
+            "n_stale": len(stale), "ages_h": ages}
+
+
 def run() -> Dict[str, Any]:
     checks = [
+        _check_freshness(),
         _check_mlb(),
         _check_espn("nba", "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard", "nba_state.json"),
         _check_espn("wnba", "https://site.api.espn.com/apis/site/v2/sports/basketball/wnba/scoreboard", "wnba_state.json"),

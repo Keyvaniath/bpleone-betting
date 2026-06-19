@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Where to Bet | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .wrap { max-width: 920px; margin: 0 auto; padding: 26px 22px 10px; }
+  h1 { font-size: 26px; margin: 0 0 4px; }
+  .sub { color: var(--muted,#8a93a6); font-size: 13px; margin-bottom: 14px; max-width:740px; line-height:1.6; }
+  .disclose { background: rgba(212,160,74,.09); border:1px solid rgba(212,160,74,.28); color:#d9b877; border-radius:9px; padding:11px 15px; font-size:12px; line-height:1.6; margin-bottom:18px; }
+  .books { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:13px; }
+  .book { border:1px solid rgba(255,255,255,.09); border-radius:11px; padding:16px; display:flex; flex-direction:column; gap:9px; }
+  .book .logo { width:42px; height:42px; border-radius:9px; background:rgba(255,255,255,.06); display:flex; align-items:center; justify-content:center; font-weight:800; font-family:'JetBrains Mono',monospace; color:#cdd6e4; font-size:13px; }
+  .book .nm { font-weight:700; color:var(--text,#e6e9ef); font-size:15px; }
+  .book .note { color:var(--muted,#8a93a6); font-size:11.5px; line-height:1.5; flex:1; }
+  .book a.cta, .book .cta { text-align:center; padding:9px; border-radius:7px; font-weight:700; font-size:13px; text-decoration:none; }
+  .book a.cta { background:#58c878; color:#06250f; } .book a.cta:hover { filter:brightness(1.07); }
+  .book .cta.off { background:rgba(255,255,255,.06); color:#7a8497; cursor:default; }
+  .foot21 { color:var(--muted,#8a93a6); font-size:11px; margin-top:16px; }
+</style>
+<script src="js/nav.js"></script>
+<script src="js/affiliate-config.js"></script>
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a>
+    <span class="tagline">by bpleone</span>
+  </div>
+  <nav class="mainnav"><!-- nav.js injects here --></nav>
+  <div class="topbar-actions"><div class="ticker">21+</div></div>
+</header>
+
+<main class="wrap">
+  <h1>Where to Bet</h1>
+  <div class="sub">If you choose to wager, use a licensed, regulated sportsbook in your state. EdgeStat does not accept bets — these are independent operators. Always compare lines and read each operator's terms.</div>
+  <div class="disclose" id="disclose"></div>
+  <div class="books" id="books"></div>
+  <div class="foot21">21+ and where legal only. Promotional offers are set by each operator and may not be available in all states. See our <a href="affiliate-disclosure.html" style="color:#7fb0e8;">Affiliate Disclosure</a> and <a href="responsible-gambling.html" style="color:#7fb0e8;">Responsible Gambling</a> pages. Gambling problem? Call 1-800-GAMBLER.</div>
+</main>
+
+<script>
+(function () {
+  var cfg = window.EDGESTAT_AFFILIATE || { enabled: false, books: [], disclosure: "" };
+  var esc = function (s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) { return ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]); }); };
+  document.getElementById("disclose").innerHTML =
+    "<strong>Advertising disclosure:</strong> " + esc(cfg.disclosure || "");
+  var live = !!cfg.enabled;
+  document.getElementById("books").innerHTML = (cfg.books || []).map(function (b) {
+    var configured = live && b.url && b.url !== "#";
+    // Compliance: every outbound operator link is rel="sponsored nofollow noopener"
+    // and opens in a new tab. Unconfigured/disabled operators render as inert.
+    var cta = configured
+      ? '<a class="cta" href="' + esc(b.url) + '" target="_blank" rel="sponsored nofollow noopener">Visit ' + esc(b.name.split(" ")[0]) + ' &rarr;</a>'
+      : '<span class="cta off">Partner coming soon</span>';
+    return '<div class="book">' +
+        '<div class="logo">' + esc(b.code || "") + '</div>' +
+        '<div class="nm">' + esc(b.name) + '</div>' +
+        '<div class="note">' + esc(b.note || "") + (configured ? "" : " <em>(" + esc(b.offer || "not configured") + ")</em>") + '</div>' +
+        cta +
+      '</div>';
+  }).join("") || '<p style="color:#8a93a6;">No operators configured yet.</p>';
+})();
+</script>
+</body>
+</html>

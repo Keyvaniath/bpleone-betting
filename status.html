@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>System Status | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .wrap { max-width: 880px; margin: 0 auto; padding: 26px 22px 10px; }
+  h1 { font-size: 26px; margin: 0 0 4px; }
+  .sub { color: var(--muted,#8a93a6); font-size: 13px; margin-bottom: 18px; }
+  .overall { display:flex; align-items:center; gap:12px; border:1px solid rgba(255,255,255,.1); border-radius:12px; padding:16px 20px; margin-bottom:18px; }
+  .dot { width:13px; height:13px; border-radius:50%; flex:0 0 auto; }
+  .dot.green{background:#58c878;box-shadow:0 0 10px rgba(88,200,120,.6);} .dot.yellow{background:#e8b54e;} .dot.red{background:#e35a5a;box-shadow:0 0 10px rgba(227,90,90,.6);}
+  .overall .lbl { font-size:18px; font-weight:700; color:var(--text,#e9edf4); }
+  .feeds { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:11px; }
+  .feed { border:1px solid rgba(255,255,255,.08); border-radius:9px; padding:12px 14px; font-family:'JetBrains Mono',monospace; }
+  .feed .top { display:flex; align-items:center; gap:8px; margin-bottom:5px; }
+  .feed .name { font-weight:700; color:var(--text,#e6e9ef); font-size:13px; text-transform:uppercase; letter-spacing:.4px; }
+  .feed .find { color:var(--text-2,#aab3c5); font-size:11.5px; line-height:1.5; }
+  .meta { color:var(--muted,#8a93a6); font-size:11px; margin-top:16px; font-family:'JetBrains Mono',monospace; }
+</style>
+<script src="js/nav.js"></script>
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a>
+    <span class="tagline">by bpleone</span>
+  </div>
+  <nav class="mainnav"><!-- nav.js injects here --></nav>
+  <div class="topbar-actions"><div class="ticker">STATUS</div></div>
+</header>
+
+<main class="wrap">
+  <h1>System Status</h1>
+  <div class="sub">Live health of EdgeStat's data feeds and pipeline. Each feed is cross-checked against its upstream source; the freshness monitor flags any core artifact that hasn't refreshed on schedule (so a dead cron is never silent).</div>
+
+  <div class="overall" id="overall"><span class="dot" id="oDot"></span><span class="lbl" id="oLbl">Loading status…</span></div>
+  <div class="feeds" id="feeds"></div>
+  <div class="meta" id="meta"></div>
+</main>
+
+<script>
+const esc = s => String(s==null?'':s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+const LBL = { green:'All systems operational', yellow:'Partial / degraded', red:'Issue detected' };
+fetch('data/data_health.json?t=' + Date.now(), { cache:'no-cache' })
+  .then(r => r.json())
+  .then(d => {
+    const o = d.overall || 'yellow';
+    document.getElementById('oDot').className = 'dot ' + o;
+    document.getElementById('oLbl').textContent = LBL[o] || o;
+    const feeds = (d.checks || []).map(c => {
+      const st = c.status || 'yellow';
+      return `<div class="feed">
+        <div class="top"><span class="dot ${st}"></span><span class="name">${esc(c.feed)}</span></div>
+        <div class="find">${(c.findings||[]).map(esc).join('<br>')}</div>
+      </div>`;
+    }).join('');
+    document.getElementById('feeds').innerHTML = feeds || '<div class="feed">No checks reported.</div>';
+    document.getElementById('meta').textContent =
+      `${d.n_green||0} operational · ${d.n_yellow||0} degraded · ${d.n_red||0} down · last checked ${(d.generated_at||'').replace('T',' ').slice(0,16)}`;
+  })
+  .catch(() => {
+    document.getElementById('oDot').className = 'dot yellow';
+    document.getElementById('oLbl').textContent = 'Status data unavailable';
+  });
+</script>
+</body>
+</html>
