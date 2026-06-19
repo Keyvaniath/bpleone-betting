@@ -55,6 +55,13 @@ def _score(prob: float, market_implied: float = 0.5,
     return confidence * round_bonus
 
 
+def _pos_phrase(p: Dict[str, Any]) -> str:
+    """'#43 (-2)' when a live position exists, else 'pre-tournament field' so a
+    pre-event outright never prints a phantom '#None'."""
+    pos = p.get("current_pos")
+    return f"#{pos} ({p.get('current_total')})" if pos else "pre-tournament field"
+
+
 def run() -> Dict[str, Any]:
     props = _load(PROPS_PATH)
     h2h = _load(H2H_PATH)
@@ -66,6 +73,33 @@ def run() -> Dict[str, Any]:
             "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
             "tournament": t.get("name"),
             "note": "no active props" if not props.get("players") else "tournament complete",
+            "top_bet": None,
+            "runners_up": [],
+        }
+        os.makedirs(DATA_DIR, exist_ok=True)
+        with open(OUT_PATH, "w") as f:
+            json.dump(payload, f, indent=2)
+        return payload
+
+    # Position-based bets (TOP5 / TOP10, and the WIN reasoning) read the live
+    # leaderboard. Between events golf_props keeps the LAST event's final
+    # positions during the transition, so those bets go stale and surface a
+    # phantom pick (e.g. "Rory top 10, #43" with no live tournament). Treat the
+    # leaderboard as valid only when a tournament is genuinely IN PROGRESS.
+    # NB: gate on golf_state.active_tournament -- golf_live_tracker.is_live
+    # under-reports during live majors (says "not live" mid-round).
+    in_progress = (bool(t.get("is_in_progress"))
+                   or str(t.get("status") or "").lower() in ("in progress", "in_progress", "live", "active"))
+    players = props.get("players") or []
+    has_positions = any(p.get("current_pos") for p in players)
+    if has_positions and not in_progress:
+        # Loaded field carries leaderboard positions but nothing is live -> stale.
+        payload = {
+            "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
+            "tournament": t.get("name"),
+            "is_in_progress": False,
+            "note": ("between events -- leaderboard positions are stale (no live "
+                     "tournament); suppressing position-based bets"),
             "top_bet": None,
             "runners_up": [],
         }
@@ -90,7 +124,7 @@ def run() -> Dict[str, Any]:
                 "model_prob": p["p_win"],
                 "fair_american": p.get("fair_win_american"),
                 "score": s,
-                "reasoning": f"P(win) {p['p_win']*100:.1f}% with {rounds_left} round(s) left -- sweet-spot value at #{p.get('current_pos')} ({p.get('current_total')}).",
+                "reasoning": f"P(win) {p['p_win']*100:.1f}% with {rounds_left} round(s) left -- sweet-spot value at {_pos_phrase(p)}.",
                 "bet_key": f"GOLF|{p['name']}|win|{p.get('fair_win_american','?')}",
                 "bet_label": f"{p['name']} to win {t.get('name','')}",
             })
@@ -126,7 +160,7 @@ def run() -> Dict[str, Any]:
                 "model_prob": p["p_top10"],
                 "fair_american": p.get("fair_top10_american"),
                 "score": s * 0.9,
-                "reasoning": f"P(top 10) {p['p_top10']*100:.1f}% -- safest position-bet for #{p.get('current_pos')}.",
+                "reasoning": f"P(top 10) {p['p_top10']*100:.1f}% -- safest finish bet ({_pos_phrase(p)}).",
                 "bet_key": f"GOLF|{p['name']}|top10|{p.get('fair_top10_american','?')}",
                 "bet_label": f"{p['name']} top 10 at {t.get('name','')}",
             })
@@ -173,6 +207,7 @@ def run() -> Dict[str, Any]:
         payload = {
             "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
             "tournament": t.get("name"),
+            "is_in_progress": in_progress,
             "rounds_left": rounds_left,
             "n_candidates": len(candidates),
             "top_bet": candidates[0],
