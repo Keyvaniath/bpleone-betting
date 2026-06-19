@@ -44,6 +44,7 @@ SPORTS: List[Tuple[str, str, str, List[str], Optional[str], Optional[str], List[
     ("KBO",      "KBO",            "kbo.html",      ["KBO"],           "kbo_state.json",       "kbo_pot_history.json",    ["kbo_props.json", "kbo_player_props.json"]),
     ("UFC",      "UFC",            "ufc.html",      ["UFC"],           None,                   None,                      ["ufc_*props*.json"]),
     ("F1",       "F1",             "f1.html",       ["F1"],            None,                   None,                      ["f1_*.json"]),
+    ("TENNIS",   "Tennis",         "tennis.html",   ["TENNIS"],        "tennis_state.json",    None,                      ["tennis_*props*.json"]),
     ("LOL",      "LoL",            "lol.html",      ["LOL"],           "lol_state.json",       "lol_pot_history.json",    ["lol_props.json", "lol_player_props.json"]),
     ("CS",       "CS",             "cs.html",       ["CS"],            "cs_state.json",        "cs_pot_history.json",     ["cs_props.json", "cs_player_props.json"]),
     ("CWS",      "NCAA Baseball",  "cws.html",      ["CWS", "NCAA-BB"],"cws_state.json",       "cws_pot_history.json",    ["cws_*.json"]),

@@ -720,6 +720,9 @@ jobs:
       - name: NHL first goalscorer prop projections
         working-directory: python
         run: python nhl_first_goalscorer_props.py || true
+      - name: Tennis upcoming-slate feed (ESPN -> tennis_state.json)
+        working-directory: python
+        run: python tennis_pipeline.py || true
       - name: Tennis match-win (ELO) prop projections
         working-directory: python
         run: python tennis_match_win_props.py || true

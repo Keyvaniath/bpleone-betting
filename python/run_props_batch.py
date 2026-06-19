@@ -257,7 +257,9 @@ DEFAULT_MODULES = [
     "soccer_first_half_alignment",
     "soccer_goalscorer_sgp_builder",
     "soccer_hat_trick_watchlist",
-    # Tennis props
+    # Tennis props (tennis_pipeline writes tennis_state.json -- the upcoming-slate
+    # feed every tennis_* module reads; it MUST run first or the boards come up empty)
+    "tennis_pipeline",
     "tennis_match_win_props",
     "tennis_total_games_props",
     "tennis_set_score_props",

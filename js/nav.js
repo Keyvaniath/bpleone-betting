@@ -27,6 +27,7 @@
     { href: "cs.html",    label: "CS" },
     { href: "f1.html",    label: "F1" },
     { href: "ufc.html",   label: "UFC" },
+    { href: "tennis.html", label: "🎾 Tennis" },
   ];
   const PLAYERS = [
     { href: "nba-players-real.html",  label: "NBA Players" },
