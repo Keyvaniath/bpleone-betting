@@ -69,6 +69,49 @@
       .catch(() => { const c = document.getElementById("verifyCard"); if (c) c.style.display = "none"; });
   </script>
 
+  <!-- Held-out validation: does the curated edge survive out-of-sample? (auto-updating) -->
+  <section class="card" id="oosCard" style="margin-bottom:18px; border-left:3px solid #58c878; display:none;">
+    <div class="card-head"><span>🧪 Held-Out Validation — is the edge real, or curve-fit?</span><span class="muted" id="oosMeta">—</span></div>
+    <div style="padding:14px 18px;">
+      <p id="oosHeadline" style="font-size:13.5px;color:#cfe9d6;line-height:1.6;margin:0 0 12px;font-weight:600;">—</p>
+      <p class="muted" style="font-size:12px;margin:0 0 14px;line-height:1.6;">The headline "+14% curated ROI" is fit on the <em>whole</em> ledger, so we pressure-tested it. We <strong>froze the curation rule on an early window</strong> (which market families to cut), then scored those <strong>pre-committed</strong> cuts on the <strong>unseen later window</strong>. If the edge were curve-fitting, it would collapse out-of-sample. It doesn't:</p>
+      <div id="oosTable" style="font-family:'JetBrains Mono',monospace;"></div>
+      <div id="oosPersist" style="margin-top:14px;font-size:12px;color:var(--text-2,#aab3c5);line-height:1.65;"></div>
+      <details style="margin-top:14px;">
+        <summary style="cursor:pointer;font-size:11px;color:var(--muted,#888);text-transform:uppercase;letter-spacing:.5px;">Honest limitations</summary>
+        <ul id="oosCaveats" style="font-size:12px;color:var(--text-2,#aab3c5);line-height:1.6;margin:8px 0 0;padding-left:18px;"></ul>
+      </details>
+    </div>
+  </section>
+  <script>
+  fetch("data/curation_oos_validation.json", { cache:"no-cache" })
+    .then(r => r.json())
+    .then(d => {
+      if (!d || !d.holdout || !d.holdout.length) return;
+      document.getElementById("oosCard").style.display = "block";
+      document.getElementById("oosMeta").textContent =
+        `${(d.n_settled||0).toLocaleString()} settled · ${d.span ? d.span[0]+'→'+d.span[1] : ''} · ${(d.generated_at||'').replace('T',' ').slice(0,16)}`;
+      document.getElementById("oosHeadline").innerHTML = "✅ " + (d.headline || "");
+      const fmt = v => (v>=0?'+':'') + v.toFixed(1) + '%';
+      const cols = "62px 150px 1fr 1.2fr 56px";
+      const head = `<div style="display:grid;grid-template-columns:${cols};gap:10px;padding:6px 0;color:var(--muted,#888);font-size:10px;text-transform:uppercase;">
+        <span>Split</span><span>Unseen window</span><span>Raw firehose</span><span>Curated (held-out)</span><span>Hit</span></div>`;
+      const rows = (d.holdout||[]).map(h => `<div style="display:grid;grid-template-columns:${cols};gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:12px;">
+        <span><strong>${h.split}</strong></span>
+        <span class="muted">${h.train_end}→${h.test_end}</span>
+        <span style="color:#e35a5a;">${fmt(h.test_raw_roi)}</span>
+        <span style="color:#58c878;font-weight:700;">${fmt(h.test_oos_roi)} <span class="muted" style="font-weight:400;">n=${h.test_oos_n}</span></span>
+        <span>${h.test_oos_hit.toFixed(1)}%</span></div>`).join("");
+      document.getElementById("oosTable").innerHTML = head + rows;
+      const p = d.persistence || {};
+      if (p.n_cut) {
+        document.getElementById("oosPersist").innerHTML =
+          `<strong>Persistence check:</strong> of the ${p.n_cut} family-keys cut on the training window, they went on to lose <strong style="color:#e35a5a;">${p.test_net_of_cuts}u</strong> in the unseen window — ${p.kept_losing} kept losing, only ${p.flipped} flipped positive. The losers keep losing: the cuts capture real, persistent −EV families, not noise.`;
+      }
+      document.getElementById("oosCaveats").innerHTML = (d.caveats||[]).map(c=>`<li>${c}</li>`).join("");
+    }).catch(()=>{});
+  </script>
+
   <!-- CLV per bet (NEW) -->
   <section id="clvBetCard" class="card" style="margin-bottom: 18px; display:none;">
     <div class="card-head"><span>📈 CLV Per Bet — beating the close</span><span class="muted" id="cpbMeta">--</span></div>

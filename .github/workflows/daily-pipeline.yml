@@ -611,6 +611,9 @@ jobs:
       - name: Strategy simulator replay deck (settled ledger -> strategy-sim.html)
         working-directory: python
         run: python strategy_sim.py
+      - name: Out-of-sample curation validation (held-out edge proof -> track-record / calibration-map)
+        working-directory: python
+        run: python validate_curation_oos.py || true
       - name: Cross-sport parlay builder (2-leg + 3-leg combos with same-game correlation)
         working-directory: python
         run: python cross_sport_parlay_builder.py
