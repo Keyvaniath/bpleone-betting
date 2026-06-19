@@ -14,6 +14,12 @@ Reminder of the model: **you are a content / analytics / affiliate business, not
 sportsbook.** You don't take bets or hold funds, which keeps you out of gaming-operator
 licensing. The bar is **media + affiliate + advertising compliance** — achievable.
 
+**Ready-to-execute prep (so the owner-action items are an afternoon, not a research project):**
+- `legal/FORMATION_CHECKLIST.md` — step-by-step CA LLC formation (forms, fees, EIN, bank).
+- `legal/ATTORNEY_REVIEW_PACKET.md` — hand this to counsel for a fast 1–2h consult.
+- `DATA_LICENSING.md` — odds/stats provider decision matrix + recommended sequence.
+- `SUBSCRIPTION_SETUP.md` — ~30-min Stripe + Worker turn-on once the LLC + Stripe exist.
+
 ---
 
 ## ✅ Already built this pass (code-side, live on the site)
