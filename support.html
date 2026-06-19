@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Support EdgeStat — tip the project that keeps the quantitative sports-betting models and data feeds running. Free, no paywall. 21+.">
+<link rel="canonical" href="https://betting.bpleone.com/support.html">
+<meta name="theme-color" content="#0d1017">
+<meta property="og:title" content="Support EdgeStat">
+<meta property="og:description" content="Free, no paywall. If the models help, a tip keeps them running.">
+<title>Support EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .wrap { max-width: 620px; margin: 0 auto; padding: 40px 22px 10px; text-align:center; }
+  h1 { font-size: 27px; margin: 0 0 8px; }
+  .blurb { color: var(--text-2,#aab3c5); font-size: 14px; line-height:1.7; margin-bottom: 24px; }
+  .card { border:1px solid rgba(255,255,255,.1); border-radius:14px; padding:26px; }
+  .cta { display:inline-block; padding:13px 26px; border-radius:10px; background:#58c878; color:#06250f; font-weight:800; font-size:16px; text-decoration:none; }
+  .cta.off { background:rgba(255,255,255,.07); color:#7a8497; cursor:default; }
+  .alts { color:var(--muted,#8a93a6); font-size:12px; margin-top:18px; line-height:1.7; }
+  .heart { font-size:34px; }
+</style>
+<script src="js/nav.js"></script>
+<script src="js/donate-config.js"></script>
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a>
+    <span class="tagline">by bpleone</span>
+  </div>
+  <nav class="mainnav"><!-- nav.js injects here --></nav>
+  <div class="topbar-actions"><div class="ticker">♥</div></div>
+</header>
+
+<main class="wrap">
+  <div class="heart">♥</div>
+  <h1>Support EdgeStat</h1>
+  <p class="blurb" id="blurb">Free, no paywall.</p>
+  <div class="card">
+    <a class="cta" id="donateBtn" href="#">Tip the project</a>
+    <div class="alts">No subscription, no account needed. Tips are voluntary and just help cover data + compute. EdgeStat is informational analytics, not betting advice — 21+, see our <a href="disclaimer.html" style="color:#7fb0e8;">Disclaimer</a>.</div>
+  </div>
+</main>
+
+<script>
+(function () {
+  var C = window.EDGESTAT_DONATE || {};
+  var blurb = document.getElementById("blurb");
+  if (C.blurb) blurb.textContent = C.blurb;
+  var URLS = {
+    kofi:   function (h) { return "https://ko-fi.com/" + h; },
+    bmc:    function (h) { return "https://www.buymeacoffee.com/" + h; },
+    github: function (h) { return "https://github.com/sponsors/" + h; },
+    paypal: function (h) { return "https://www.paypal.me/" + h; },
+  };
+  var btn = document.getElementById("donateBtn");
+  var ready = C.enabled && C.handle && URLS[C.platform];
+  if (ready) {
+    btn.href = URLS[C.platform](C.handle);
+    btn.target = "_blank";
+    btn.rel = "noopener";
+    btn.textContent = ({ kofi: "Buy me a coffee on Ko-fi ☕", bmc: "Buy me a coffee ☕",
+                         github: "Sponsor on GitHub ♥", paypal: "Tip via PayPal" })[C.platform] || "Tip the project";
+  } else {
+    btn.className = "cta off";
+    btn.textContent = "Tipping launching soon";
+    btn.addEventListener("click", function (e) { e.preventDefault(); });
+  }
+})();
+</script>
+</body>
+</html>
