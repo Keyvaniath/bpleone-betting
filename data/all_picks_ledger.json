@@ -1,23 +1,23 @@
 {
-  "generated_at": "2026-06-19T21:38:36",
+  "generated_at": "2026-06-19T22:01:00",
   "stake_assumption": "1u flat per pick",
   "total_picks": 10000,
-  "n_settled": 6232,
-  "n_pending": 499,
+  "n_settled": 6233,
+  "n_pending": 498,
   "n_void": 3269,
   "wins": 3022,
-  "losses": 3204,
+  "losses": 3205,
   "pushes": 6,
-  "hit_rate": 0.4854,
-  "net_units": -801.569,
-  "roi_pct": -12.87,
+  "hit_rate": 0.4853,
+  "net_units": -802.569,
+  "roi_pct": -12.89,
   "n_calibrated_picks": 9547,
   "calibrated_reliability": {
-    "n": 6126,
-    "ece_raw": 0.1007,
-    "ece_calibrated": 0.0297,
-    "brier_raw": 0.22988,
-    "brier_calibrated": 0.20707,
+    "n": 6127,
+    "ece_raw": 0.1008,
+    "ece_calibrated": 0.0298,
+    "brier_raw": 0.22991,
+    "brier_calibrated": 0.2071,
     "note": "In-sample over the settled ledger (the isotonic transform is fit on these same outcomes); held-out 70/30 validation is in recalibration_map.json. p_predicted = raw model prob (kept untouched for the learning loop); p_calibrated = honest prob stamped per pick. Lower ECE/Brier on the calibrated column = the displayed % is truer."
   },
   "curated": {
@@ -43,7 +43,7 @@
     "definition": "Featured/recommended plays only -- Lock of the Day, Top 25, Whale, Sharp, Consensus (hit), Under Alerts, POD. Excludes the experimental prop feeds, which are tracked to train the model, not bet."
   },
   "n_added_this_run": 0,
-  "n_newly_settled_this_run": 0,
+  "n_newly_settled_this_run": 1,
   "n_resettled_this_run": 0,
   "n_voided_this_run": 0,
   "n_reconciled_settled_voids": 0,
@@ -599,13 +599,13 @@
       "roi_pct": -10.6
     },
     "soccer_total_total_under_3.5": {
-      "n": 13,
+      "n": 14,
       "wins": 5,
-      "losses": 8,
+      "losses": 9,
       "pushes": 0,
-      "net_units": -5.187,
-      "hit_rate": 0.3846,
-      "roi_pct": -39.9
+      "net_units": -6.187,
+      "hit_rate": 0.3571,
+      "roi_pct": -44.19
     },
     "soccer_clean_sheet_home_clean_sheet_no": {
       "n": 39,
@@ -1451,12 +1451,12 @@
       "hit_rate": 0.7037
     },
     "total_under": {
-      "n": 13,
+      "n": 14,
       "wins": 5,
-      "losses": 8,
+      "losses": 9,
       "pushes": 0,
-      "net_units": -5.187,
-      "hit_rate": 0.3846
+      "net_units": -6.187,
+      "hit_rate": 0.3571
     },
     "home_clean_sheet_no": {
       "n": 39,
@@ -1917,12 +1917,12 @@
       "hit_rate": 0.7037
     },
     "total_under": {
-      "n": 13,
+      "n": 14,
       "wins": 5,
-      "losses": 8,
+      "losses": 9,
       "pushes": 0,
-      "net_units": -5.187,
-      "hit_rate": 0.3846
+      "net_units": -6.187,
+      "hit_rate": 0.3571
     },
     "home_clean_sheet_no": {
       "n": 39,
@@ -2217,15 +2217,15 @@
     },
     "WORLDCUP": {
       "n": 69,
-      "settled": 50,
+      "settled": 51,
       "wins": 32,
-      "losses": 18,
+      "losses": 19,
       "pushes": 0,
-      "pending": 19,
+      "pending": 18,
       "void": 0,
-      "net_units": -2.853,
-      "hit_rate": 0.64,
-      "roi_pct": -5.71,
+      "net_units": -3.853,
+      "hit_rate": 0.6275,
+      "roi_pct": -7.55,
       "markets": 6
     },
     "TENNIS": {
@@ -2244,9 +2244,9 @@
   },
   "last_7_days": {
     "wins": 519,
-    "losses": 767,
-    "net_units": -114.226,
-    "hit_rate": 0.4036
+    "losses": 768,
+    "net_units": -115.226,
+    "hit_rate": 0.4033
   },
   "picks": [
     {
@@ -240159,11 +240159,26 @@
       "matchup": "Qatar @ Canada",
       "date": "2026-06-18",
       "pick_id": "soccer_total_total_under_3_5|WORLDCUP|Qatar___Canada|TOTAL_UNDER_3_5|2026-06-18",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "lost",
+      "payout_units": -1.0,
       "recorded_at": "2026-06-19T09:58:41",
-      "p_calibrated": 0.647
+      "p_calibrated": 0.647,
+      "outcome": {
+        "final_score": "Qatar 0-6 Canada",
+        "total_cards": 4,
+        "total_goals": 6,
+        "scorers": [
+          "cyle larin",
+          "jonathan david",
+          "jonathan david",
+          "nathan saliba",
+          "jonathan david"
+        ],
+        "market": "TOTAL_UNDER_3.5",
+        "verify": "Qatar 0-6 Canada: 6 goals (line 3.5) \u2014 TOTAL_UNDER_3.5"
+      },
+      "settled_at": "2026-06-19T22:01:00"
     },
     {
       "source": "mlb_rl_away_minus_1.5",
