@@ -1,76 +1,75 @@
-# Tonight's Slate Brief — 2026-06-18
+# Tonight's Slate Brief — 2026-06-19
 
-## Slate Quality: 57/100 (MEDIUM)
-_33% lineups confirmed · 8 rookie SPs_
-**Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
+## Slate Quality: 54/100 (LOW)
+_0% lineups confirmed · 13 rookie SPs_
+**Recommendation:** Defensive sizing tonight; stick to highest-confidence plays.
 
 ## Slate
-- **9 games** scheduled
-- **29 best bets** scored: 0 DK · 0 PP · 9 NRFI · 6 SGP
-- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$39.23
-- **MC simulation:** EV +$92.62, 76% P(profit), p05 $-107.79 / p95 $274.01
+- **14 games** scheduled
+- **18 best bets** scored: 0 DK · 0 PP · 2 NRFI · 2 SGP
+- **MC simulation:** EV +$3.17, 58% P(profit), p05 $-34.01 / p95 $30.92
 
 ## Top 5 Best Bets
-1. **CHW @ NYY YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +30.2%)
-   - P(YRFI) 76.2% vs baseline 46.0%
-2. **NYM @ PHI YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +23.6%)
-   - P(YRFI) 69.6% vs baseline 46.0%
-3. **SFG @ ATL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +22.7%)
-   - P(YRFI) 68.7% vs baseline 46.0%
-4. **MIN @ TEX YRFI (1st-inning OVER 0.5)**  (78/100 ****, edge +18.6%)
-   - P(YRFI) 64.6% vs baseline 46.0%
-5. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
+1. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
    - Player prop quality score 1.1935
    - Elite player
+2. **LOL ShowMaker OVER 3.5 Kills**  (78/100 ****, edge —)
+   - Player prop quality score 1.1892
+   - Elite player
+3. **LOL Peyz OVER 4.5 Kills**  (78/100 ****, edge —)
+   - Player prop quality score 1.184
+   - Elite player
+4. **GOLF Bryson DeChambeau TOP5 @ 561 (U.S. Open)**  (78/100 *****, edge —)
+   - P(top 5) 15.1% -- lower variance than outright but compelling line.
+5. **GOLF Keegan Bradley TOP10 @ 569 (U.S. Open)**  (78/100 *****, edge —)
+   - P(top 10) 14.9% -- safest position-bet for #21.
 
-## ⚠️ Trap Warnings — 16 flagged
-- **CHW @ NYY YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +30.2% looks big but only 0 settled props on this player — model unproven
-- **MIN @ TEX 2-leg SGP @ -260** (low):
+## ⚠️ Trap Warnings — 3 flagged
+- **SFG @ MIA 2-leg SGP @ -174** (low):
    - Edge +25.0% looks big but only 0 settled props on this player — model unproven
-- **TOR @ BOS 2-leg SGP @ -258** (low):
+- **MIL @ ATL 2-leg SGP @ +118** (low):
    - Edge +25.0% looks big but only 0 settled props on this player — model unproven
-- **CLE @ MIL 2-leg SGP @ -253** (low):
-   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
-- **SFG @ ATL 2-leg SGP @ -174** (low):
-   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
-
-## Weather leans
-- **UNDER lean** (wind in + cold): TOR @ BOS
+- **STL @ KCR YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +11.9% looks big but only 0 settled props on this player — model unproven
 
 ## Hot streaks
-**Batters heating up:** Jackson Chourio (heat +6.72), Dominic Canzone (heat +5.50), Blake Perkins (heat +5.46)
-**Pitchers on a run:** Sonny Gray (heat +3.90), Gage Jump (heat +2.31), Sean Burke (heat +2.15)
+**Batters heating up:** Colson Montgomery (heat +5.96), Jackson Chourio (heat +5.63), Juan Soto (heat +5.17)
+**Pitchers on a run:** Parker Messick (heat +12.00), Bryan Woo (heat +11.57), Joe Ryan (heat +11.04)
 
 ## Top correlation-aware SGPs
-- **MIN @ TEX** 2-leg @ -260 fair (joint 0.72, EV +25.0%)
-   - Josh Jung UNDER 3.5 batter hrr
-   - Joc Pederson OVER 0.5 batter hrr
-- **TOR @ BOS** 2-leg @ -258 fair (joint 0.72, EV +25.0%)
-   - Brandon Valenzuela UNDER 0.5 batter home runs
-   - Jarren Duran OVER 0.5 batter hrr
-- **CLE @ MIL** 2-leg @ -253 fair (joint 0.72, EV +25.0%)
-   - Brayan Rocchio UNDER 2.5 batter total bases
-   - Travis Bazzana UNDER 2.5 batter total bases
+- **SFG @ MIA** 2-leg @ -174 fair (joint 0.63, EV +25.0%)
+   - Landen Roupp OVER 3.5 pitcher strikeouts
+   - Landen Roupp UNDER 7.5 pitcher strikeouts
+- **MIL @ ATL** 2-leg @ +118 fair (joint 0.46, EV +25.0%)
+   - Martín Pérez UNDER 5.5 pitcher strikeouts
+   - Martín Pérez OVER 4 pitcher strikeouts
 
 ## Bullpens GASSED tonight
 Athletics, Pittsburgh Pirates, San Diego Padres, San Francisco Giants, Toronto Blue Jays, Philadelphia Phillies, Atlanta Braves, Chicago White Sox
 _Lean late-inning OVER on these games; fade their save situations._
 
 ## NRFI/YRFI strong leans
-- **YRFI** (1st-inning OVER): CHW @ NYY, NYM @ PHI, SFG @ ATL, MIN @ TEX, TOR @ BOS
+- **YRFI** (1st-inning OVER): STL @ KCR
 
 ## Golf -- U.S. Open
-- **Leader:** James Nicholas (E) at #1
+- **Leader:** Dustin Johnson (-4) at #1
 - **Field:** 156 players  |  Status: In Progress
-- **Play of the Tournament:** Rory McIlroy TOP10 @ +548 (model 15.4%, HIGH)
-   - P(top 10) 15.4% -- safest position-bet for #43.
+- **Play of the Tournament:** Bryson DeChambeau TOP5 @ +561 (model 15.1%, HIGH)
+   - P(top 5) 15.1% -- lower variance than outright but compelling line.
 
 ## NBA -- PLAYOFFS
 - New York Knicks @ San Antonio Spurs (53-29 vs 62-20) 94-90 | P(home) 0.0% fair +0 | Final
 
 ## NHL -- PLAYOFFS
 - Carolina Hurricanes @ Vegas Golden Knights (53-22-7 vs 39-26-17) 3-0 | P(home) 0.0% fair +0 | Final
+
+## KBO -- 2026 Korean Baseball
+- KIA Tigers @ KT Wiz | P(home) 42.9% fair +133 | total 9 R
+- Lotte Giants @ Kiwoom Heroes | P(home) 46.6% fair +115 | total 10 R
+- Doosan Bears @ LG Twins | P(home) 56.2% fair -128 | total 9 R
+- SSG Landers @ NC Dinos | P(home) 48.4% fair +106 | total 10 R
+- Samsung Lions @ Hanwha Eagles | P(home) 40.0% fair +150 | total 10 R
+- **KBO POD:** Samsung Lions ML vs Hanwha Eagles (KBO) (HIGH)
 
 ## LoL Esports -- 0 live, 18 upcoming
 - [VCS] Saigon Dino vs Saigon Zen Esport BO5 | P(A) 46.2% fair +117/-117
@@ -80,7 +79,7 @@ _Lean late-inning OVER on these games; fade their save situations._
 - [MSI] TBD vs TBD BO5 | P(A) 50.0% fair -100/-100
 - **LoL POT:** Relove Deep Cross Gaming ML vs Karmine Corp (MSI, BO5) (HIGH)
 
-## Player Play of the Day -- across all sports (3509 candidates scanned)
+## Player Play of the Day -- across all sports (3526 candidates scanned)
 - **[LOL]** Inspired UNDER 3.5 Kills | model 61.7% fair -161 (ELITE)
 - **[LOL]** ShowMaker OVER 3.5 Kills | model 62.5% fair -167 (ELITE)
 - **[LOL]** Peyz OVER 4.5 Kills | model 61.3% fair -158 (ELITE)
