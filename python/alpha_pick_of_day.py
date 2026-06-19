@@ -197,7 +197,27 @@ def _other_picks() -> List[Dict[str, Any]]:
             "detail": f"model's top pre-tournament contender · {prev.get('tier', '')}",
             "link": "golf.html",
         })
-    return picks[:4]
+
+    # 5) Tennis -- the day's best STRONG match-win edge (surface-adjusted ELO).
+    # Naturally gated: strong rows only exist when a live slate has rated matchups.
+    tmw = _load(os.path.join(DATA_DIR, "tennis_match_win_props.json"))
+    t_strong = [r for r in (tmw.get("rows") or [])
+                if str(r.get("edge_class") or "").startswith("STRONG")]
+    if t_strong:
+        r = max(t_strong, key=lambda x: max(x.get("p_p1_wins") or 0, x.get("p_p2_wins") or 0))
+        a_fav = (r.get("p_p1_wins") or 0) >= (r.get("p_p2_wins") or 0)
+        fav, dog = (r.get("p1"), r.get("p2")) if a_fav else (r.get("p2"), r.get("p1"))
+        p_fav = max(r.get("p_p1_wins") or 0, r.get("p_p2_wins") or 0)
+        fair = r.get("fair_p1_odds") if a_fav else r.get("fair_p2_odds")
+        fair_s = f"{fair:+d}" if isinstance(fair, int) else "—"
+        surf = r.get("surface") or ""
+        picks.append({
+            "kind": "Tennis", "sport": "TENNIS",
+            "label": f"{fav} ML vs {dog}",
+            "detail": f"{p_fav:.0%} model · {fair_s}" + (f" · {surf}" if surf else ""),
+            "link": "tennis.html",
+        })
+    return picks[:5]
 
 
 def run() -> Dict[str, Any]:
