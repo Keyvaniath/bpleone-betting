@@ -64,6 +64,15 @@ bpleone-site/
     (gates position bets on `golf_state.is_in_progress`, not the under-reporting live tracker).
   - **F1 POLE** was already fixed (normalized one-winner `pole_share`, flag only the
     favourite ≥18%); the −44u in the ledger is historical/sunk. TOP_3/TOP_6 are valid marginals.
+  - **Go-official layer (compliance + monetization + reliability)**: legal/trust pages
+    (terms/privacy/responsible-gambling/disclaimer/affiliate-disclosure/data-sources),
+    site-wide `js/compliance.js` (21+ age gate + RG footer, auto-loaded by nav.js),
+    affiliate framework (`sportsbooks.html` + `js/affiliate-config.js`, disabled until
+    real links), reliability (`data_health.py` freshness canary + `status.html` +
+    `health-alert.yml`), and a code-complete subscription backend (Stripe billing in
+    `cloudflare-worker/src/billing.js` + `js/premium.js` + `pricing.html`, inert until
+    configured). Owner-action checklist + deploy steps in **GO-OFFICIAL.md** /
+    **SUBSCRIPTION_SETUP.md** (LLC, attorney, data license, Stripe account).
   - **Known data-blocked:** `ODDS_API_KEY` still lapsed → player-prop BOOK lines dark
     (pp_advantage dormant); game lines come free from ESPN. This is the one structural
     unlock left and needs Brandon's payment.
