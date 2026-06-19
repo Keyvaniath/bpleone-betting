@@ -43,6 +43,10 @@ def run() -> Dict[str, Any]:
                     "label": f"{team} ML vs {opp} (KBO)",
                     "bet_key": f"KBO|{team}|ML|{fair}",
                     "match_id": f"{g.get('home_team')}|{g.get('away_team')}",
+                    "game_id": g.get("game_id"),
+                    "game_date": g.get("game_date"),
+                    "home_team": g.get("home_team"),
+                    "away_team": g.get("away_team"),
                 })
         # Total OVER/UNDER (any divergence from common 8.5 line)
         model_total = g.get("model_total") or 9
@@ -57,6 +61,10 @@ def run() -> Dict[str, Any]:
                 "label": f"OVER 8.5 (model {model_total} runs)",
                 "bet_key": f"KBO|{g.get('home_team')}|OVER|-120",
                 "match_id": f"{g.get('home_team')}|{g.get('away_team')}",
+                "game_id": g.get("game_id"),
+                "game_date": g.get("game_date"),
+                "home_team": g.get("home_team"),
+                "away_team": g.get("away_team"),
             })
         elif model_total <= 7:
             cands.append({
@@ -69,6 +77,10 @@ def run() -> Dict[str, Any]:
                 "label": f"UNDER 8.5 (model {model_total} runs)",
                 "bet_key": f"KBO|{g.get('home_team')}|UNDER|-120",
                 "match_id": f"{g.get('home_team')}|{g.get('away_team')}",
+                "game_id": g.get("game_id"),
+                "game_date": g.get("game_date"),
+                "home_team": g.get("home_team"),
+                "away_team": g.get("away_team"),
             })
 
     if not cands:

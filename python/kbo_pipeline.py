@@ -83,55 +83,116 @@ def _map_team(raw_name: Optional[str]) -> Optional[str]:
     return None
 
 
-def _pull_daum_schedule(today: dt.date) -> List[Dict[str, Any]]:
-    """Pull today's KBO schedule from Daum. Returns list of game dicts."""
-    ds = today.strftime("%Y%m%d")
+def _parse_score(v) -> Optional[int]:
+    try:
+        return int(v)
+    except (TypeError, ValueError):
+        return None
+
+
+def _winner_from_game(g: Dict[str, Any], home_eng: str, away_eng: str,
+                      hs: Optional[int], as_: Optional[int]) -> Optional[str]:
+    """Winner of a finished game. Daum's homeWlt/awayWlt carry W / L / D
+    directly; fall back to the score. Returns the English team name, the literal
+    'tie' for a KBO draw, or None if undecidable."""
+    hw = (g.get("homeWlt") or "").upper()
+    aw = (g.get("awayWlt") or "").upper()
+    if hw == "W" or aw == "L":
+        return home_eng
+    if aw == "W" or hw == "L":
+        return away_eng
+    if hw == "D" or aw == "D":
+        return "tie"
+    if hs is not None and as_ is not None:
+        if hs > as_: return home_eng
+        if as_ > hs: return away_eng
+        return "tie"
+    return None
+
+
+# Daum gameStatus -> our state. END/FINAL = done; BEFORE/READY = scheduled;
+# CANCEL/SUSPEND = washed out; anything else (a live in-progress code) -> "in".
+_STATE_MAP = {"END": "post", "FINAL": "post", "RESULT": "post",
+              "BEFORE": "pre", "READY": "pre", "PsTPONE": "pre",
+              "CANCEL": "cancelled", "RAINCANCEL": "cancelled", "SUSPEND": "cancelled"}
+
+
+def _pull_daum_schedule(day: dt.date) -> List[Dict[str, Any]]:
+    """Pull ONE KST date's KBO games from Daum's hermes API.
+
+    The real result fields are homeTeamName / awayTeamName, homeResult /
+    awayResult (final runs) and gameStatus (END / BEFORE / CANCEL) -- NOT the
+    homeTeam.displayName / homeTeamScore / status keys the old parser read (those
+    don't exist, so it always saw 0 games). Finished games also carry homeWlt /
+    awayWlt (W/L/D) and a stable gameId, so kbo_pot_history can settle straight
+    off this same feed by game date."""
+    ds = day.strftime("%Y%m%d")
     url = (f"https://sports.daum.net/prx/hermes/api/game/schedule.json"
-           f"?fromDate={ds}&toDate={ds}&leagueCode=kbo&seasonKey={today.year}")
+           f"?fromDate={ds}&toDate={ds}&leagueCode=kbo&seasonKey={day.year}")
     data = _http_json(url)
     if not data:
         return []
     sched = data.get("schedule") or {}
-    matches: List[Dict[str, Any]] = []
-    for date_key, games_list in sched.items():
+    out: List[Dict[str, Any]] = []
+    for _date_key, games_list in sched.items():
         if not isinstance(games_list, list): continue
         for g in games_list:
-            home_raw = (g.get("homeTeam") or {}).get("displayName") or (g.get("homeTeam") or {}).get("shortName")
-            away_raw = (g.get("awayTeam") or {}).get("displayName") or (g.get("awayTeam") or {}).get("shortName")
-            home = _map_team(home_raw)
-            away = _map_team(away_raw)
+            home = _map_team(g.get("homeTeamName"))
+            away = _map_team(g.get("awayTeamName"))
             if not home or not away: continue
-            # State: scheduled / 진행중 (in-progress) / 종료 (finished)
-            status_code = (g.get("status") or "").upper()
-            state_map = {"BEFORE": "pre", "RUNNING": "in", "AFTER": "post",
-                          "READY": "pre", "FINISHED": "post"}
-            state = state_map.get(status_code, "pre")
-            home_score = g.get("homeTeamScore") if g.get("homeTeamScore") is not None else None
-            away_score = g.get("awayTeamScore") if g.get("awayTeamScore") is not None else None
-            matches.append({
+            status_raw = (g.get("gameStatus") or "").upper()
+            state = _STATE_MAP.get(status_raw, "in")
+            hs = _parse_score(g.get("homeResult"))
+            as_ = _parse_score(g.get("awayResult"))
+            winner = _winner_from_game(g, home, away, hs, as_) if state == "post" else None
+            out.append({
+                "game_id": str(g.get("gameId") or ""),
+                "game_date": day.isoformat(),
                 "home_team": home, "away_team": away,
                 "home_abbrev": KBO_TEAMS[home][0] if home in KBO_TEAMS else "?",
                 "away_abbrev": KBO_TEAMS[away][0] if away in KBO_TEAMS else "?",
-                "home_score": home_score, "away_score": away_score,
-                "status": g.get("statusName") or status_code,
+                "home_score": hs, "away_score": as_,
+                "status": g.get("gameStatus"),
                 "state": state,
-                "venue": g.get("locationName") or g.get("stadiumName"),
-                "game_time_kst": g.get("startDate"),
+                "winner": winner,
+                "venue": g.get("fieldName"),
+                "game_time_kst": g.get("startTime"),
                 "data_source": "daum_sports",
             })
-    return matches
+    return out
 
 
 def run() -> Dict[str, Any]:
     today = dt.date.today()
-    matches = _pull_daum_schedule(today)
+    # Query a 3-day UTC window. KST = UTC+9, so a "today" UTC fetch at 14:00 UTC
+    # sees KST games that already FINISHED -- we'd never surface a bettable slate.
+    # Pulling yesterday/today/tomorrow guarantees the next un-started slate is in
+    # view, plus recent finals for settlement context.
+    window: List[Dict[str, Any]] = []
+    seen: set = set()
+    for off in (-1, 0, 1):
+        for g in _pull_daum_schedule(today + dt.timedelta(days=off)):
+            gid = g.get("game_id") or f"{g['game_date']}|{g['home_team']}|{g['away_team']}"
+            if gid in seen:
+                continue
+            seen.add(gid)
+            window.append(g)
 
-    if matches:
+    # Bettable slate = the EARLIEST date that still has pre/in games. The model
+    # prices `matches`, so it must never contain a finished game (that would be a
+    # lookahead "pick" on a decided result).
+    upcoming = [g for g in window if g["state"] in ("pre", "in")]
+    if upcoming:
+        next_date = min(g["game_date"] for g in upcoming)
+        matches = [g for g in window if g["game_date"] == next_date and g["state"] in ("pre", "in")]
         source = "daum_sports (live)"
-        note = f"{len(matches)} KBO games scheduled today (real data from Daum Sports)."
+        note = f"{len(matches)} KBO games on the next slate ({next_date}) -- real data from Daum Sports."
     else:
-        source = "daum_sports (no games today)"
-        note = "No KBO games scheduled today (likely rest day - KBO plays Tue-Sun in season)."
+        matches = []
+        source = "daum_sports (no upcoming games)"
+        note = "No upcoming KBO games in the 3-day window (KBO is dark on Mondays / between series)."
+
+    recent_finals = [g for g in window if g["state"] == "post"][-20:]
 
     standings = [
         {"team": name, "abbrev": KBO_TEAMS[name][0], "city": KBO_TEAMS[name][2],
@@ -150,6 +211,7 @@ def run() -> Dict[str, Any]:
         "n_teams": len(KBO_TEAMS),
         "n_games_today": len(matches),
         "matches": matches,
+        "recent_finals": recent_finals,
         "standings_seed": standings,
         "note": note,
     }
