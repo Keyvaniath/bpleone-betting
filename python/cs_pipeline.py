@@ -118,48 +118,79 @@ def _parse_liquipedia_matches(html: str) -> List[Dict[str, Any]]:
     return matches
 
 
-def _pull_bo3gg_matches() -> List[Dict[str, Any]]:
-    """Pull live CS matches from bo3.gg (public JSON API)."""
-    today = dt.date.today().isoformat()
-    url = (f"https://api.bo3.gg/api/v1/matches?filter[startsAt][gte]={today}"
-           f"&filter[discipline]=cs2&page[size]=30&sort=startsAt")
+def _bo3_get(url: str) -> Dict[str, Any]:
+    """bo3.gg JSON GET (gzip-aware). The public API returns rows under 'results'."""
     try:
-        req = urllib.request.Request(url, headers={
-            "User-Agent": "EdgeStat/1.0", "Accept": "application/json",
-        })
-        with urllib.request.urlopen(req, timeout=10) as r:
-            d = json.loads(r.read().decode("utf-8", errors="ignore"))
+        req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0", "Accept": "application/json"})
+        with urllib.request.urlopen(req, timeout=12) as r:
+            raw = r.read()
+            if r.headers.get("Content-Encoding") == "gzip":
+                raw = gzip.decompress(raw)
+            return json.loads(raw.decode("utf-8", "ignore"))
     except Exception:
-        return []
-    matches: List[Dict[str, Any]] = []
-    # bo3 returns a JSON-API "included" array we'd need to dereference; instead
-    # we just parse the attributes directly per match
-    for item in d.get("data", []):
-        attrs = item.get("attributes") or {}
-        rel = item.get("relationships") or {}
-        team_refs = (rel.get("teams") or {}).get("data") or []
-        # We only get the team IDs here, not names -- need the 'included' lookup
-        team_ids = [t.get("id") for t in team_refs]
-        team_names: List[str] = []
-        for inc in d.get("included", []):
-            if inc.get("type") == "teams" and inc.get("id") in team_ids:
-                nm = (inc.get("attributes") or {}).get("name")
-                if nm: team_names.append(nm)
-        if len(team_names) < 2: continue
-        status = attrs.get("status") or "unstarted"
-        state_map = {"upcoming": "unstarted", "live": "live",
-                      "completed": "completed", "finished": "completed"}
-        matches.append({
-            "team_a": team_names[0], "team_b": team_names[1],
-            "state": state_map.get(status, status),
-            "score_a": attrs.get("scoreA"), "score_b": attrs.get("scoreB"),
-            "start_time": attrs.get("startsAt"),
-            "tournament": (attrs.get("tournament") or {}).get("name") if isinstance(attrs.get("tournament"), dict) else None,
-            "best_of": attrs.get("bestOf") or 3,
-            "is_completed": status in ("completed", "finished"),
-            "is_in_progress": status == "live",
-            "data_source": "bo3gg",
-        })
+        return {}
+
+
+def _names_from_slug(slug: str):
+    """bo3.gg seeds finished / locked matches with a readable slug
+    'team-a-vs-team-b-DD-MM-YYYY'. Returns (name_a, name_b), or (None, None) for
+    an unseeded match whose slug halves are opaque hex hashes (teams TBD). We use
+    the SAME derivation when pricing and when settling, so names stay consistent
+    even if they're not the exact display name."""
+    if not slug or "-vs-" not in slug:
+        return None, None
+    s = re.sub(r"-\d{1,2}-\d{1,2}-\d{4}$", "", slug)           # strip trailing date
+    half = s.split("-vs-")
+    if len(half) != 2:
+        return None, None
+
+    def clean(p: str):
+        if re.fullmatch(r"[0-9a-f]{6,}", p or ""):            # opaque hash -> unseeded
+            return None
+        name = re.sub(r"-cs2?$", "", p).replace("-", " ").strip()
+        return " ".join(w.capitalize() for w in name.split()) or None
+
+    a, b = clean(half[0]), clean(half[1])
+    return (a, b) if (a and b) else (None, None)
+
+
+def _pull_bo3gg_matches() -> List[Dict[str, Any]]:
+    """Pull recent finished + upcoming CS matches from bo3.gg's public API.
+    Team names come from the match slug (the API can't resolve numeric team ids),
+    so unseeded TBD matches are skipped rather than mis-named. Finished matches
+    carry winner_team_id + scores, which is what cs_pot_history settles from."""
+    since = (dt.date.today() - dt.timedelta(days=8)).isoformat()
+    blocks = [
+        f"https://api.bo3.gg/api/v1/matches?filter[status][eq]=finished&sort=-end_date&page[limit]=30",
+        f"https://api.bo3.gg/api/v1/matches?filter[start_date][gte]={since}&sort=start_date&page[limit]=30",
+    ]
+    seen, matches = set(), []
+    for url in blocks:
+        for m in (_bo3_get(url).get("results") or []):
+            mid = m.get("id")
+            if mid in seen:
+                continue
+            a, b = _names_from_slug(m.get("slug") or "")
+            if not a or not b:
+                continue
+            seen.add(mid)
+            status = str(m.get("status") or "").lower()
+            completed = status in ("finished", "closed", "defwin") or m.get("winner_team_id") is not None
+            winner = None
+            if completed and m.get("winner_team_id") is not None:
+                winner = a if m.get("winner_team_id") == m.get("team1_id") else b
+            matches.append({
+                "team_a": a, "team_b": b,
+                "state": "completed" if completed else ("live" if status in ("live", "running") else "unstarted"),
+                "team_a_score": m.get("team1_score"), "team_b_score": m.get("team2_score"),
+                "score_a": m.get("team1_score"), "score_b": m.get("team2_score"),
+                "start_time": m.get("start_date"),
+                "best_of": m.get("bo_type") or 3,
+                "winner": winner,
+                "is_completed": completed,
+                "is_in_progress": status in ("live", "running"),
+                "data_source": "bo3gg",
+            })
     return matches
 
 
