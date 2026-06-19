@@ -65,18 +65,28 @@ def run() -> Dict[str, Any]:
     state = _load(os.path.join(DATA_DIR, "golf_state.json"))
     history = _load(os.path.join(DATA_DIR, "golf_pot_history.json"))
 
-    tournament = state.get("tournament") or state.get("name") or "PGA Event"
-    status = (state.get("status") or "").lower()
-    is_live = state.get("is_in_progress") or "progress" in status or "live" in status
-    rounds_done = state.get("rounds_done", 0) or 0
-    rounds_left = state.get("rounds_left", 4 - rounds_done) or 0
+    # golf_state nests the tournament under active_tournament (+ current_leader,
+    # + a 156-player `field` leaderboard). Reading TOP-LEVEL keys here was the bug:
+    # it always fell back to "PGA Event" / not-live during a live major. Reconcile
+    # with golf_state.py's structure -- the authoritative in-progress signal.
+    at = state.get("active_tournament") or {}
+    leader = state.get("current_leader") or {}
+    field = state.get("field") or state.get("leaderboard") or state.get("players") or []
+    tournament = at.get("name") or state.get("tournament") or state.get("name") or "PGA Event"
+    status = (at.get("status") or state.get("status") or "").lower()
+    is_live = ((bool(at.get("is_in_progress")) or "progress" in status or "live" in status)
+               and not at.get("is_complete"))
+    rounds_done = (leader.get("rounds_played")
+                   or (max((p.get("rounds_played") or 0) for p in field) if field else 0) or 0)
+    rounds_left = max(0, 4 - rounds_done)
 
-    # If no live tournament, emit empty shell
-    if not is_live or rounds_done == 0:
+    # Empty shell only when genuinely NOT live (between events). A live R1 with no
+    # completed round yet (rounds_done 0) still counts as live -- don't blank it.
+    if not is_live:
         out = {
             "generated_at": dt.datetime.utcnow().isoformat(timespec="seconds"),
             "tournament": tournament,
-            "status": state.get("status"),
+            "status": at.get("status"),
             "is_live": bool(is_live),
             "rounds_done": rounds_done,
             "rounds_left": rounds_left,
@@ -91,22 +101,20 @@ def run() -> Dict[str, Any]:
         with open(OUT, "w") as f: json.dump(out, f, indent=2)
         return out
 
-    players = state.get("leaderboard") or state.get("players") or []
-    if not players:
-        # Try field preview format
-        players = state.get("preview_field") or []
+    players = field or state.get("preview_field") or []
 
-    # Build current-state list
+    # Build current-state list. golf_state.field uses total_to_par / order /
+    # last_round_score, so include those keys alongside the legacy names.
     rows: List[Dict[str, Any]] = []
     for p in players:
         name = p.get("name") or p.get("player")
-        to_par = _to_par(p.get("to_par") or p.get("score") or p.get("total"))
+        to_par = _to_par(p.get("to_par") or p.get("score") or p.get("total") or p.get("total_to_par"))
         if name is None: continue
         rank = p.get("rank") or p.get("position") or p.get("order")
         try: rank = int(str(rank).lstrip("Tt")) if rank is not None else None
         except Exception: rank = None
         thru = p.get("thru") or p.get("holes_completed")
-        last_round = _to_par(p.get("today") or p.get("round_score"))
+        last_round = _to_par(p.get("today") or p.get("round_score") or p.get("last_round_score"))
         rows.append({
             "name": name,
             "to_par": to_par,
@@ -194,7 +202,7 @@ def run() -> Dict[str, Any]:
     out = {
         "generated_at": dt.datetime.utcnow().isoformat(timespec="seconds"),
         "tournament": tournament,
-        "status": state.get("status"),
+        "status": at.get("status"),
         "is_live": True,
         "rounds_done": rounds_done,
         "rounds_left": rounds_left,
