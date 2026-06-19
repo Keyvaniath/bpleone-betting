@@ -59,9 +59,13 @@ def train_props():
 
 
 def train_backtest():
-    from backtest import run_walk_forward, write_backtest
-    r = run_walk_forward(n_days=90, seed=7)
-    write_backtest(r)
+    # backtest.py was refactored to a single run() that walks the REAL settled
+    # ledger and writes data/backtest.json itself. The old run_walk_forward/
+    # write_backtest names no longer exist, so this used to ImportError every
+    # run -- silently swallowed by train.py's try/except + the workflow's
+    # `python train.py || true`. Point it at the current entry point.
+    from backtest import run
+    run()
 
 
 def train_linemaker():
