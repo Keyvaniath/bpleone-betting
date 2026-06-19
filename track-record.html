@@ -45,6 +45,30 @@
     <div class="metric"><span class="metric-num" id="trkDD">--</span><span class="metric-label">Max Drawdown</span></div>
   </section>
 
+  <!-- Tamper-evident fingerprint (Tier 3 #7 -- verifiable track record) -->
+  <section class="card" id="verifyCard" style="margin-bottom:18px; border-left:3px solid #58c878;">
+    <div class="card-head"><span>🔒 Verifiable record</span><span class="muted" id="verifyMeta">—</span></div>
+    <div style="padding:12px 16px; font-size:12px; color:var(--text-2,#aab3c5); line-height:1.6;">
+      Every settled pick is hashed into an append-only <strong>SHA-256 chain</strong>. The
+      fingerprint below changes if any past result is altered — so this record can't be
+      quietly rewritten. Save it and re-check anytime; immutable monthly archives also live
+      in our data store.
+      <div style="margin-top:8px; font-family:'JetBrains Mono',monospace; font-size:11px; word-break:break-all;">
+        <span class="muted">head</span> <span id="verifyHead" style="color:#58c878;">—</span>
+      </div>
+    </div>
+  </section>
+  <script>
+    fetch("data/ledger_hashchain.json?t=" + Date.now(), { cache:"no-cache" })
+      .then(r => r.json())
+      .then(d => {
+        document.getElementById("verifyHead").textContent = d.head || "—";
+        document.getElementById("verifyMeta").textContent =
+          (d.n_settled||0) + " settled · " + (d.n_records||0) + " chain records · " + (d.generated_at||"").replace("T"," ").slice(0,16);
+      })
+      .catch(() => { const c = document.getElementById("verifyCard"); if (c) c.style.display = "none"; });
+  </script>
+
   <!-- CLV per bet (NEW) -->
   <section id="clvBetCard" class="card" style="margin-bottom: 18px; display:none;">
     <div class="card-head"><span>📈 CLV Per Bet — beating the close</span><span class="muted" id="cpbMeta">--</span></div>
