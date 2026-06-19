@@ -75,14 +75,28 @@ def run():
     for i, e in enumerate(hist):
         if not e.get("settled"):
             hist[i] = _settle(e, state)
+    # Void picks too old to ever settle so they don't linger as "pending" forever.
+    today_d = dt.date.today()
+    for e in hist:
+        if e.get("settled") or e.get("voided"):
+            continue
+        try:
+            ed = dt.date.fromisoformat(str(e.get("date"))[:10])
+        except Exception:
+            ed = None
+        if ed is not None and (today_d - ed).days > 7:
+            e.update(voided=True, outcome="VOID", void_reason="no final matched within 7 days")
     settled = [h for h in hist if h.get("settled")]
+    pending = [h for h in hist if not h.get("settled") and not h.get("voided")]
+    voided = [h for h in hist if h.get("voided")]
     wins = sum(1 for h in settled if h.get("outcome") == "WIN")
     net = sum(h.get("pl_units", 0) for h in settled)
     payload = {
         "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
         "total_pots": len(hist),
         "n_settled": len(settled),
-        "n_pending": len(hist) - len(settled),
+        "n_pending": len(pending),
+        "n_voided": len(voided),
         "wins": wins,
         "losses": len(settled) - wins,
         "hit_rate": round(wins / len(settled), 4) if settled else None,

@@ -118,7 +118,23 @@ def run() -> Dict[str, Any]:
         n_settled_run += 1
 
     hist = hist[-MAX_HISTORY:]
+
+    # Void picks too old to ever settle (postponed/cancelled, no matchable final)
+    # so they don't linger as "pending" forever.
+    today_d = dt.date.today()
+    for e in hist:
+        if e.get("settled") or e.get("voided"):
+            continue
+        try:
+            ed = dt.date.fromisoformat(str(e.get("date"))[:10])
+        except Exception:
+            ed = None
+        if ed is not None and (today_d - ed).days > 7:
+            e.update(voided=True, outcome="VOID", void_reason="no final matched within 7 days")
+
     settled = [h for h in hist if h.get("settled")]
+    pending = [h for h in hist if not h.get("settled") and not h.get("voided")]
+    voided = [h for h in hist if h.get("voided")]
     wins = sum(1 for h in settled if h.get("outcome") == "WIN")
     losses = sum(1 for h in settled if h.get("outcome") == "LOSS")
     net = round(sum(h.get("pl_units", 0) for h in settled), 2)
@@ -129,7 +145,8 @@ def run() -> Dict[str, Any]:
         "sport": "NCAA Baseball",
         "total_pots": len(hist),
         "n_settled": len(settled),
-        "n_pending": len(hist) - len(settled),
+        "n_pending": len(pending),
+        "n_voided": len(voided),
         "n_settled_this_run": n_settled_run,
         "wins": wins, "losses": losses,
         "record": f"{wins}-{losses}" if decided else None,

@@ -31,6 +31,7 @@ BESTBET_PATH = os.path.join(DATA_DIR, "kbo_bestbet.json")
 HIST_PATH = os.path.join(DATA_DIR, "kbo_pot_history.json")
 TOTAL_LINE = 8.5
 MAX_HISTORY = 400
+VOID_DAYS = 7      # a pending pick older than this can't be settled -> void it
 
 
 def _load(p):
@@ -177,7 +178,23 @@ def run():
             hist[i] = _settle(e)
     hist = hist[-MAX_HISTORY:]
 
+    # Void picks too old to ever settle -- pre-rewrite orphans (no game ref) or a
+    # postponed game that never produced a final -- so they don't linger as "pending".
+    today_d = dt.date.today()
+    for e in hist:
+        if e.get("settled") or e.get("voided"):
+            continue
+        try:
+            ed = dt.date.fromisoformat(str(e.get("date"))[:10])
+        except Exception:
+            ed = None
+        if ed is not None and (today_d - ed).days > VOID_DAYS:
+            e.update(voided=True, outcome="VOID",
+                     void_reason=f"no final matched within {VOID_DAYS} days")
+
     settled = [h for h in hist if h.get("settled")]
+    pending = [h for h in hist if not h.get("settled") and not h.get("voided")]
+    voided = [h for h in hist if h.get("voided")]
     wins = sum(1 for h in settled if h.get("outcome") == "WIN")
     losses = sum(1 for h in settled if h.get("outcome") == "LOSS")
     pushes = sum(1 for h in settled if h.get("outcome") == "PUSH")
@@ -192,7 +209,8 @@ def run():
         "sport": "KBO",
         "total_pots": len(hist),
         "n_settled": len(settled),
-        "n_pending": len(hist) - len(settled),
+        "n_pending": len(pending),
+        "n_voided": len(voided),
         "n_settled_this_run": len(settled) - n_before,
         "wins": wins, "losses": losses, "pushes": pushes,
         "record": record,

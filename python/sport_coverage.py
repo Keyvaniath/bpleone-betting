@@ -133,7 +133,7 @@ def _pot_track(pot_file: Optional[str]) -> Dict[str, Any]:
     d = _load(os.path.join(DATA_DIR, pot_file))
     hist = d.get("history") or (d if isinstance(d, list) else [])
     settled = [h for h in hist if isinstance(h, dict) and h.get("settled")]
-    pending = [h for h in hist if isinstance(h, dict) and not h.get("settled")]
+    pending = [h for h in hist if isinstance(h, dict) and not h.get("settled") and not h.get("voided")]
     return {"settled": len(settled), "pending": len(pending), "record": d.get("record") or d.get("wins")}
 
 
