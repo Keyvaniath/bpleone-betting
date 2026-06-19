@@ -146,12 +146,26 @@ def run():
     hist: List[Dict[str, Any]] = _load(HIST_PATH).get("history") or []
     today = dt.date.today().isoformat()
 
+    # Collapse duplicate PENDING picks for the same matchup+kind (same game snapshotted
+    # on multiple days before the dedup-by-matchup fix; keep earliest).
+    _seen, _dd = set(), []
+    for h in sorted(hist, key=lambda x: x.get("date") or ""):
+        if not h.get("settled") and not h.get("voided"):
+            mk = (h.get("team"), h.get("opponent"), h.get("kind"))
+            if mk in _seen:
+                continue
+            _seen.add(mk)
+        _dd.append(h)
+    hist = _dd
+
     # Snapshot the current POD once per (date, matchup, kind).
     pot = bestbet.get("top_bet")
     if pot and pot.get("kind") in ("ML", "OVER", "UNDER"):
-        key = (today, pot.get("team"), pot.get("opponent"), pot.get("kind"))
-        if not any((h.get("date"), h.get("team"), h.get("opponent"), h.get("kind")) == key
-                   for h in hist):
+        # Dedup by matchup while still PENDING (not by date): the same game can be the
+        # POD several days running, which would double-count it in the record.
+        mk = (pot.get("team"), pot.get("opponent"), pot.get("kind"))
+        if not any((h.get("team"), h.get("opponent"), h.get("kind")) == mk
+                   and not h.get("settled") and not h.get("voided") for h in hist):
             hist.append({
                 "date": today,
                 "game_date": pot.get("game_date") or today,

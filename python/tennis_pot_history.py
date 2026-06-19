@@ -117,11 +117,25 @@ def run() -> Dict[str, Any]:
     hist: List[Dict[str, Any]] = _load(HIST_PATH).get("history") or []
     today = dt.date.today().isoformat()
 
+    # Collapse duplicate PENDING picks for the same matchup (same upcoming match
+    # snapshotted on multiple days before the dedup-by-matchup fix; keep earliest).
+    _seen, _dd = set(), []
+    for h in sorted(hist, key=lambda x: x.get("date") or ""):
+        if not h.get("settled") and not h.get("voided"):
+            mk = (_norm(h.get("player")), _norm(h.get("opponent")))
+            if mk in _seen:
+                continue
+            _seen.add(mk)
+        _dd.append(h)
+    hist = _dd
+
     pick = _best_pick(mw)
     if pick:
-        key = (today, _norm(pick["player"]), _norm(pick["opponent"]))
-        if not any((h.get("date"), _norm(h.get("player")), _norm(h.get("opponent"))) == key
-                   for h in hist):
+        # Dedup by matchup while still PENDING (not by date): the same upcoming match
+        # can be the top edge several days running, which would double-count it.
+        mk = (_norm(pick["player"]), _norm(pick["opponent"]))
+        if not any((_norm(h.get("player")), _norm(h.get("opponent"))) == mk
+                   and not h.get("settled") and not h.get("voided") for h in hist):
             hist.append({
                 "date": today,
                 "kind": "ML",
