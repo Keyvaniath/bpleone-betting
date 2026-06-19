@@ -60,6 +60,23 @@ def _surface(tournament: Optional[str]) -> str:
     return "hard"
 
 
+def _is_placeholder(name: str) -> bool:
+    """ESPN seeds unfilled bracket slots with placeholder 'players' (TBD, Qualifier,
+    Bye, Lucky Loser). Those aren't real matchups -- drop them."""
+    n = (name or "").strip().lower()
+    return (not n) or n in ("tbd", "bye", "qualifier", "q", "lucky loser", "ll",
+                            "wc", "wildcard", "to be determined", "winner", "loser")
+
+
+def _match_date(start_time: Optional[str]) -> Optional[dt.date]:
+    if not start_time:
+        return None
+    try:
+        return dt.date.fromisoformat(str(start_time)[:10])
+    except Exception:
+        return None
+
+
 def _pull(day: dt.date) -> List[Dict[str, Any]]:
     ds = day.strftime("%Y%m%d")
     out: List[Dict[str, Any]] = []
@@ -78,8 +95,8 @@ def _pull(day: dt.date) -> List[Dict[str, Any]]:
                         continue
                     names = [((x.get("athlete") or {}).get("displayName") or "").strip()
                              for x in (c.get("competitors") or [])]
-                    names = [n for n in names if n]
-                    if len(names) != 2:               # singles only (skip doubles/TBD)
+                    names = [n for n in names if not _is_placeholder(n)]
+                    if len(names) != 2:               # two NAMED singles players only
                         continue
                     out.append({
                         "match_id": str(c.get("id") or ""),
@@ -98,15 +115,21 @@ def _pull(day: dt.date) -> List[Dict[str, Any]]:
 
 def run() -> Dict[str, Any]:
     today = dt.date.today()
-    # ESPN's tennis scoreboard is tournament-scoped (returns the whole bracket),
-    # but query today + the next two days so a tournament that flips its calendar
-    # day mid-window is still captured. Dedup by ESPN competition id.
+    horizon = today + dt.timedelta(days=1)
+    # ESPN's tennis scoreboard is tournament-scoped: any in-window query returns the
+    # WHOLE bracket, including next week's qualifying draws for events that merely
+    # start within the window. Query today + tomorrow, then keep only matches whose
+    # OWN start date is today..tomorrow (or already in progress) -- otherwise a far-
+    # off 128-player qualifying draw buries the actual slate. Dedup by competition id.
     seen: set = set()
     matches: List[Dict[str, Any]] = []
-    for off in (0, 1, 2):
+    for off in (0, 1):
         for m in _pull(today + dt.timedelta(days=off)):
             k = m["match_id"] or f'{m["player1"]}|{m["player2"]}|{m["start_time"]}'
             if k in seen:
+                continue
+            md = _match_date(m.get("start_time"))
+            if m["state"] != "in" and md is not None and not (today <= md <= horizon):
                 continue
             seen.add(k)
             matches.append(m)
