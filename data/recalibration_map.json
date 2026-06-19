@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-06-19T16:41:39",
-  "n_settled": 6126,
+  "generated_at": "2026-06-19T23:00:45",
+  "n_settled": 6130,
   "n_families_transformed": 26,
   "n_families_bucketed": 13,
-  "ece_before": 0.1005,
-  "ece_after": 0.0296,
+  "ece_before": 0.1007,
+  "ece_after": 0.0298,
   "ece_improvement": 0.071,
-  "brier_before": 0.22982,
-  "brier_after": 0.207,
+  "brier_before": 0.22992,
+  "brier_after": 0.20711,
   "method_note": "Per market family, a monotonic (isotonic) curve maps the model's predicted probability to the realized hit rate, learned from settled outcomes. Bucketed for well-sampled families (preserves ranking), a family-average Bayesian blend for mid-sample, identity below that. ECE = expected calibration error (lower = the displayed % is truer). This makes the model honest at the source; it does not create edge (that needs a market price).",
   "families": [
     {
@@ -700,38 +700,16 @@
     },
     {
       "family": "ml_away",
-      "n": 43,
+      "n": 42,
       "method": "family_avg",
-      "avg_pred_raw": 0.6493,
-      "avg_pred_calibrated": 0.6326,
-      "realized": 0.6279,
-      "ece_raw": 0.0214,
-      "ece_calibrated": 0.0047,
+      "avg_pred_raw": 0.651,
+      "avg_pred_calibrated": 0.6261,
+      "realized": 0.619,
+      "ece_raw": 0.032,
+      "ece_calibrated": 0.0071,
       "transform": {
-        "realized": 0.6279
+        "realized": 0.619
       }
-    },
-    {
-      "family": "mlb_hr_0.5_under",
-      "n": 4,
-      "method": "identity",
-      "avg_pred_raw": 0.7163,
-      "avg_pred_calibrated": 0.7163,
-      "realized": 1.0,
-      "ece_raw": 0.2837,
-      "ece_calibrated": 0.2837,
-      "transform": null
-    },
-    {
-      "family": "mlb_rbi_1.5_under",
-      "n": 7,
-      "method": "identity",
-      "avg_pred_raw": 0.7164,
-      "avg_pred_calibrated": 0.7164,
-      "realized": 0.8571,
-      "ece_raw": 0.1407,
-      "ece_calibrated": 0.1407,
-      "transform": null
     },
     {
       "family": "ml_home",
@@ -944,13 +922,13 @@
     },
     {
       "family": "total_under",
-      "n": 13,
+      "n": 14,
       "method": "identity",
-      "avg_pred_raw": 0.6445,
-      "avg_pred_calibrated": 0.6445,
-      "realized": 0.3846,
-      "ece_raw": 0.2598,
-      "ece_calibrated": 0.2598,
+      "avg_pred_raw": 0.6446,
+      "avg_pred_calibrated": 0.6446,
+      "realized": 0.3571,
+      "ece_raw": 0.2875,
+      "ece_calibrated": 0.2875,
       "transform": null
     },
     {
@@ -987,6 +965,17 @@
       "transform": null
     },
     {
+      "family": "mlb_rbi_1.5_under",
+      "n": 6,
+      "method": "identity",
+      "avg_pred_raw": 0.7164,
+      "avg_pred_calibrated": 0.7164,
+      "realized": 0.8333,
+      "ece_raw": 0.1169,
+      "ece_calibrated": 0.1169,
+      "transform": null
+    },
+    {
       "family": "anytime_goal",
       "n": 2,
       "method": "identity",
@@ -995,6 +984,17 @@
       "realized": 0.0,
       "ece_raw": 0.6185,
       "ece_calibrated": 0.6185,
+      "transform": null
+    },
+    {
+      "family": "mlb_hr_0.5_under",
+      "n": 3,
+      "method": "identity",
+      "avg_pred_raw": 0.7164,
+      "avg_pred_calibrated": 0.7164,
+      "realized": 1.0,
+      "ece_raw": 0.2836,
+      "ece_calibrated": 0.2836,
       "transform": null
     },
     {
@@ -1028,6 +1028,50 @@
       "realized": 1.0,
       "ece_raw": 0.347,
       "ece_calibrated": 0.347,
+      "transform": null
+    },
+    {
+      "family": "ml_player2",
+      "n": 1,
+      "method": "identity",
+      "avg_pred_raw": 0.653,
+      "avg_pred_calibrated": 0.653,
+      "realized": 1.0,
+      "ece_raw": 0.347,
+      "ece_calibrated": 0.347,
+      "transform": null
+    },
+    {
+      "family": "ml_player1",
+      "n": 1,
+      "method": "identity",
+      "avg_pred_raw": 0.64,
+      "avg_pred_calibrated": 0.64,
+      "realized": 1.0,
+      "ece_raw": 0.36,
+      "ece_calibrated": 0.36,
+      "transform": null
+    },
+    {
+      "family": "total_games_under",
+      "n": 2,
+      "method": "identity",
+      "avg_pred_raw": 0.691,
+      "avg_pred_calibrated": 0.691,
+      "realized": 0.0,
+      "ece_raw": 0.691,
+      "ece_calibrated": 0.691,
+      "transform": null
+    },
+    {
+      "family": "total_games_over",
+      "n": 2,
+      "method": "identity",
+      "avg_pred_raw": 0.6785,
+      "avg_pred_calibrated": 0.6785,
+      "realized": 1.0,
+      "ece_raw": 0.3215,
+      "ece_calibrated": 0.3215,
       "transform": null
     },
     {

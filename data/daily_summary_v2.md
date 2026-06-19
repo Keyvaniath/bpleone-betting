@@ -2,17 +2,17 @@
 
 ## 🏥 Model Health: 73.1/100 [HEALTHY]
 - Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 99.9/100
+  - 🟢 Calibration Freshness: 100.0/100
   - 🔴 Hit Rate Trend: 54.4/100
   - 🔴 Brier Trend: 29.6/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 88.9/100
-  - 🟢 Edge Count: 85.7/100
+  - 🟢 Data Health: 90.0/100
+  - 🟢 Edge Count: 82.9/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.587)
-- **Total games on board:** 101
-- **Strong home favorites:** 1 | **Strong road dogs:** 0
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.585)
+- **Total games on board:** 105
+- **Strong home favorites:** 2 | **Strong road dogs:** 1
 
 ## 🎯 Top 5 Best Bets
 1. **PIT @ COL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
@@ -22,14 +22,14 @@
 5. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** PIT @ COL PIT_ML -- 70% / +20.2% (score 2.5)
+- [STRONG] **[MLB]** PIT @ COL PIT_ML -- 70% / +20.4% (score 2.5)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **197-38** (83.8% hit rate)
 - Net units: **+6.63u** | ROI: **+45.5%**
 - Last 7d: 43-9 (82.7%) | net +1.40u
 
-**Today's 8 Locks:**
+**Today's 10 Locks:**
 - [MLB-PP] **Everson Pereira** PP_batter_hrr_under_3.5 · p=87% edge=+51.6% qK=0.062u
 - [MLB-PP] **Jeff McNeil** PP_batter_hrr_under_3.5 · p=87% edge=+51.4% qK=0.062u
 - [MLB-PP] **Mickey Gasper** PP_batter_hrr_under_3.5 · p=87% edge=+51.3% qK=0.062u
@@ -38,14 +38,16 @@
 - [MLB-PP] **Salvador Perez** PP_batter_hrr_under_3.5 · p=87% edge=+51.7% qK=0.062u
 - [MLB-PP] **Alex Bregman** PP_batter_hrr_under_3.5 · p=87% edge=+51.6% qK=0.062u
 - [MLB-PP] **Hunter Feduccia** PP_batter_hrr_under_3.5 · p=87% edge=+51.6% qK=0.062u
+- [MLB-PP] **Nick Madrigal** PP_batter_hrr_under_3.5 · p=87% edge=+51.7% qK=0.062u
+- [MLB-PP] **Hao-Yu Lee** PP_batter_hrr_under_3.5 · p=87% edge=+51.3% qK=0.062u
 
 ## 🎰 Top Balanced 2-Leg Parlays (40-65% joint)
-- [MLB-PP] Salvador Perez PP_batter_hrr_under_ + [MLB] SFG @ MIA SFG_ML
-  Joint: 52% | Fair: 263 | Edge: +89.1%
-- [MLB-PP] Jeff McNeil PP_batter_hrr_under_ + [MLB] SFG @ MIA SFG_ML
-  Joint: 52% | Fair: 263 | Edge: +89.1%
-- [MLB-PP] Alejandro Osuna PP_batter_hrr_under_ + [MLB] SFG @ MIA SFG_ML
-  Joint: 52% | Fair: 263 | Edge: +89.1%
+- [MLB-PP] Nick Madrigal PP_batter_hrr_under_ + [MLB] PIT @ COL PIT_ML
+  Joint: 61% | Fair: 198 | Edge: +82.5%
+- [MLB-PP] Alex Bregman PP_batter_hrr_under_ + [MLB] PIT @ COL PIT_ML
+  Joint: 61% | Fair: 198 | Edge: +82.5%
+- [MLB-PP] Hunter Feduccia PP_batter_hrr_under_ + [MLB] PIT @ COL PIT_ML
+  Joint: 61% | Fair: 198 | Edge: +82.5%
 
 ## 🎮 Player Play of the Day (cross-sport)
 - **[LOL]** Inspired UNDER 3.5 Kills | MED conviction · model 61.7% fair -161
@@ -54,22 +56,24 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (1)
+## ⚡ Pre-Game HIGH Conviction (2)
+- [WNBA] **Toronto Tempo** AWAY (2-3 L10) · model 73.8% fair -281
 - [CWS] **North Carolina Tar Heels** HOME (3-0 L10) · model 72.6% fair -265
 
 ## 🔥/❄️ Heat / Cold Signals
 - Hot teams: **5** | Cold teams: **5** | Over-heavy: 0 | Under-heavy: 6
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (43)
-- STEAM_MOVE: **39**
+## ⚠️ Anomaly Detector (50)
+- RESIDUAL_DIVERGENCE: **3**
+- STEAM_MOVE: **43**
 - PEN_MISMATCH: **3**
 - COMPOUND_BULLPEN: **1**
+  - Toronto Tempo (WNBA): Toronto Tempo UNDERPERFORMING expected margin by 9.9pts in recent games -- model bias may persist
+  - Golden State Valkyries (WNBA): Golden State Valkyries OUTPERFORMING expected margin by 8.8pts in recent games -- model bias may persist
+  - Minnesota Lynx (WNBA): Minnesota Lynx OUTPERFORMING expected margin by 14.6pts in recent games -- model bias may persist
   - WSH @ CON (WNBA): ML/TOTAL steam since open: ML +5.9pp toward CON; total -3 (UNDER) (4 snapshots)
   - DET @ HOU (MLB): ML steam since open: ML -10.8pp toward DET (4 snapshots)
-  - LAA @ ARI (MLB): ML/TOTAL steam since open: ML +10.7pp toward ARI; total +0.5 (OVER) (6 snapshots)
-  - DAL @ POR (WNBA): ML/TOTAL steam since open: ML +8.2pp toward POR; total -2 (UNDER) (3 snapshots)
-  - LA @ PHX (WNBA): TOTAL steam since open: total -2 (UNDER) (3 snapshots)
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
@@ -95,7 +99,7 @@
 - **Cam Schlittler** OVER 4.5 K (70%) fair -232
 - **Roki Sasaki** OVER 4.5 K (70%) fair -232
 
-## 🏀 NBA Player Heat (19 HOT / 20 COLD)
+## 🏀 NBA Player Heat (18 HOT / 22 COLD)
   - 🔥 **Jeremiah Fears** (NO): L5 31.8/5.8/6.0 vs season 16.9/3.2/4.0 [PTS +14.9, REB +2.6, AST +2.0]
   - 🔥 **AJ Green** (MIL): L5 18.6/4.2/1.8 vs season 11.3/3.4/1.9 [PTS +7.3]
   - 🔥 **Dillon Brooks** (PHX): L5 26.0/6.0/1.8 vs season 19.4/4.2/1.9 [PTS +6.6]
@@ -113,24 +117,26 @@
   - [LEAN] **Kyoji Horiguchi** (36-5-0) vs Manel Kape -- fair -151
 
 ## ⛳ Golf Player Heat (from U.S. Open)
-  - 🔥 T2 **Ryder Cowan** (USA): -3 total -- finished T2
-  - 🔥 T3 **Matt Fitzpatrick** (England): -3 total -- finished T3
-  - 🔥 T4 **Gary Woodland** (USA): -3 total -- finished T4
-  - 🔥 T5 **Dustin Johnson** (USA): -3 total -- finished T5
-  - 🔥 T6 **Max McGreevy** (USA): -2 total -- finished T6
-  - ❄️ **Wyndham Clark** (USA): Sunday +3.0 vs tourney avg
+  - 🔥 T1 **Wyndham Clark** (USA): -7 total -- finished T1
+  - 🔥 T2 **Collin Morikawa** (USA): -2 total -- finished T2, Sunday -4.0 vs tourney avg
+  - 🔥 T3 **Matt Fitzpatrick** (England): -2 total -- finished T3
+  - 🔥 T4 **Xander Schauffele** (USA): -2 total -- finished T4, Sunday -2.0 vs tourney avg
+  - 🔥 T5 **Sam Stevens** (USA): -2 total -- finished T5
+  - ❄️ **Dustin Johnson** (USA): Sunday +6.0 vs tourney avg
+  - ❄️ **Gary Woodland** (USA): Sunday +3.5 vs tourney avg
+  - ❄️ **Spencer Tibbits** (USA): Sunday +3.5 vs tourney avg
 
-## 🔥 MLB Batter Heat (46 HOT / 41 COLD)
+## 🔥 MLB Batter Heat (44 HOT / 42 COLD)
+  - 🔥 **Pete Crow-Armstrong** (CHC): L14 .448 / season .283 (+165pts)
   - 🔥 **Nasim Nuñez** (WSH): L14 .378 / season .223 (+155pts)
   - 🔥 **Bo Bichette** (NYM): L14 .400 / season .250 (+150pts)
   - 🔥 **Victor Caratini** (MIN): L14 .364 / season .228 (+136pts)
-  - 🔥 **Pete Crow-Armstrong** (CHC): L14 .400 / season .276 (+124pts)
-  - 🔥 **Luisangel Acuña** (CWS): L14 .321 / season .207 (+114pts)
+  - 🔥 **Seiya Suzuki** (CHC): L14 .383 / season .269 (+114pts)
   - ❄️ **Ildemaro Vargas** (AZ): L14 .059 / season .261 (-202pts) -- FADE props
   - ❄️ **Chandler Simpson** (TB): L14 .086 / season .259 (-173pts) -- FADE props
   - ❄️ **Carlos Cortes** (ATH): L14 .133 / season .282 (-149pts) -- FADE props
+  - ❄️ **Michael Conforto** (CHC): L14 .074 / season .222 (-148pts) -- FADE props
   - ❄️ **Dominic Smith** (ATL): L14 .139 / season .283 (-144pts) -- FADE props
-  - ❄️ **Spencer Steer** (CIN): L14 .116 / season .245 (-129pts) -- FADE props
 
 ## 📈 Streak Regression Alerts (2)
 - [CWS] North Carolina Tar Heels on W3 L10 3-0 -- North Carolina Tar Heels on W3 -- no historical sample

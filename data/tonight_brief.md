@@ -3,7 +3,7 @@
 _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 
 ## 💪 STRONG (1 picks)
-- [MLB] PIT @ COL PIT_ML · 70% / +20.2%
+- [MLB] PIT @ COL PIT_ML · 70% / +20.4%
 
 ## 🔒 5 Daily Locks
 - **Everson Pereira** PP_batter_hrr_under_3.5 (MLB-PP) -- 87% / +51.6%
@@ -19,8 +19,8 @@ _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 
 ## 🎰 Tonight's Best Parlay
 - **Nick Madrigal** PP_batter_hrr_under_3.5 + **PIT @ COL** PIT_ML
-- Joint 61% · fair +198 · edge +82.5%
+- Joint 61% · fair +196 · edge +81.1%
 
 ---
-_Generated 2026-06-19T16:41:02_
+_Generated 2026-06-19T22:58:51_
 _Full breakdown: /tonight · Full history: /locks-of-day_
