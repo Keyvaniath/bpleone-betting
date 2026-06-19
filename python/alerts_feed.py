@@ -28,7 +28,7 @@ DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 OUT = os.path.join(DATA_DIR, "alerts_feed.json")
 
 # per-type caps so one chatty source can't flood the tape; total cap after merge
-CAP = {"STEAM": 12, "SHARP": 8, "EDGE": 12, "WC": 6, "HOOPS": 6, "GOLF": 3}
+CAP = {"STEAM": 12, "SHARP": 8, "EDGE": 12, "WC": 6, "HOOPS": 6, "GOLF": 3, "TENNIS": 3}
 TOTAL_CAP = 40
 
 
@@ -191,6 +191,28 @@ def _golf(state: Dict[str, Any], tracker: Dict[str, Any], bestbet: Dict[str, Any
     return out
 
 
+def _tennis(mw: Dict[str, Any], ts: str) -> List[Dict[str, Any]]:
+    """Tennis on the tape: the day's STRONG surface-adjusted match-win edges.
+    Naturally gated -- strong rows only exist on a live slate with rated matchups."""
+    out: List[Dict[str, Any]] = []
+    strong = [r for r in (mw.get("rows") or [])
+              if str(r.get("edge_class") or "").startswith("STRONG")]
+    strong.sort(key=lambda r: -max(r.get("p_p1_wins") or 0, r.get("p_p2_wins") or 0))
+    for r in strong[:3]:
+        a_fav = (r.get("p_p1_wins") or 0) >= (r.get("p_p2_wins") or 0)
+        fav, dog = (r.get("p1"), r.get("p2")) if a_fav else (r.get("p2"), r.get("p1"))
+        p = max(r.get("p_p1_wins") or 0, r.get("p_p2_wins") or 0)
+        fair = r.get("fair_p1_odds") if a_fav else r.get("fair_p2_odds")
+        fair_s = f"{fair:+d}" if isinstance(fair, int) else "—"
+        out.append({
+            "type": "TENNIS", "icon": "🎾", "sport": "TENNIS",
+            "title": f"Tennis: {fav} ML vs {dog}",
+            "detail": f"{p:.0%} model · {fair_s}" + (f" · {r.get('surface')}" if r.get("surface") else ""),
+            "score": _clamp(40 + p * 100), "ts": ts, "link": "tennis.html",
+        })
+    return out
+
+
 def run() -> Dict[str, Any]:
     lm = _load("line_movement.json")
     rlm = _load("reverse_line_movement.json")
@@ -201,6 +223,7 @@ def run() -> Dict[str, Any]:
     g_track = _load("golf_live_tracker.json")
     g_best = _load("golf_bestbet.json")
     g_prev = _load("golf_tournament_preview.json")
+    t_mw = _load("tennis_match_win_props.json")
 
     buckets: Dict[str, List[Dict[str, Any]]] = {
         "STEAM": _steam(lm.get("movers") or [], lm.get("generated_at") or ""),
@@ -211,6 +234,7 @@ def run() -> Dict[str, Any]:
                         bb.get("generated_at") or ""),
         "GOLF": _golf(g_state, g_track, g_best, g_prev,
                       g_track.get("generated_at") or g_state.get("generated_at") or ""),
+        "TENNIS": _tennis(t_mw, t_mw.get("generated_at") or ""),
     }
 
     items: List[Dict[str, Any]] = []
