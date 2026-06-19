@@ -272,6 +272,7 @@ DEFAULT_MODULES = [
     "tennis_upset_alerts",
     "tennis_tiebreak_predictor",
     "tennis_match_preview",
+    "tennis_pot_history",          # settle yesterday's POD off ESPN finals + snapshot today's
     # Golf props (top-finish, etc.)
     "golf_top_finish_props",
     "golf_leaderboard_probability",

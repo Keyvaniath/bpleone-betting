@@ -747,6 +747,9 @@ jobs:
       - name: Tennis player aces O/U prop
         working-directory: python
         run: python tennis_aces_props.py || true
+      - name: Tennis POD settlement (snapshot best edge + settle off ESPN finals)
+        working-directory: python
+        run: python tennis_pot_history.py || true
       # World Cup must price BEFORE the prop batch: soccer_goalscorer_props reads
       # worldcup_cards.json for its WC fixtures, so the model has to write the
       # cards first or the scorer props lag a full pipeline run. (soccer finals
