@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Train Your Read — log your own probability on each pick before it settles, then score your calibration (Brier) head-to-head against the EdgeStat model. A forecasting skill-builder. 21+.">
+<link rel="canonical" href="https://betting.bpleone.com/train-your-read.html">
+<meta name="theme-color" content="#0d1017">
+<meta property="og:title" content="Train Your Read | EdgeStat">
+<meta property="og:description" content="Forecast like the model, then see who's sharper. A personal calibration trainer.">
+<title>Train Your Read | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .wrap { max-width: 940px; margin: 0 auto; padding: 24px 22px 10px; }
+  h1 { font-size: 26px; margin: 0 0 4px; }
+  .sub { color: var(--muted,#8a93a6); font-size: 13px; margin-bottom: 18px; max-width: 720px; line-height: 1.6; }
+  .score { display:grid; grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); gap:11px; margin-bottom:8px; }
+  .sc { border:1px solid rgba(255,255,255,.09); border-radius:10px; padding:12px 14px; }
+  .sc .n { font-size:23px; font-weight:800; font-family:'JetBrains Mono',monospace; }
+  .sc .l { font-size:10px; text-transform:uppercase; letter-spacing:.5px; color:var(--muted,#8a93a6); margin-top:3px; }
+  .verdict { border:1px solid rgba(88,200,120,.3); background:rgba(88,200,120,.06); border-radius:10px; padding:11px 15px; font-size:13px; margin:12px 0 20px; }
+  h2 { font-size:15px; margin:22px 0 10px; color:var(--text,#e6e9ef); }
+  .call { border:1px solid rgba(255,255,255,.09); border-radius:11px; padding:14px 16px; margin-bottom:11px; }
+  .call .top { display:flex; justify-content:space-between; gap:10px; align-items:baseline; flex-wrap:wrap; }
+  .call .lab { font-weight:700; color:var(--text,#e6e9ef); font-size:14px; }
+  .call .meta { font-size:10.5px; text-transform:uppercase; letter-spacing:.4px; color:var(--muted,#8a93a6); }
+  .q { font-size:12px; color:var(--text-2,#aab3c5); margin:7px 0 9px; }
+  .row { display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
+  input[type=range] { flex:1; min-width:160px; accent-color:#58c878; }
+  .pct { font-family:'JetBrains Mono',monospace; font-weight:800; font-size:18px; color:#58c878; min-width:54px; text-align:right; }
+  .btn { padding:8px 16px; border:none; border-radius:7px; background:#58c878; color:#06250f; font-weight:700; font-size:13px; cursor:pointer; }
+  .btn.ghost { background:rgba(255,255,255,.07); color:#cdd6e4; font-weight:600; }
+  .model-hint { font-size:11.5px; color:var(--muted,#8a93a6); margin-top:7px; }
+  .graded { display:grid; grid-template-columns: 1.6fr 70px 70px 70px 90px; gap:10px; align-items:center; font-family:'JetBrains Mono',monospace; font-size:12px; padding:9px 12px; border:1px solid rgba(255,255,255,.06); border-radius:8px; margin-bottom:6px; }
+  .graded.head { color:var(--muted,#8a93a6); font-size:10px; text-transform:uppercase; border:none; }
+  .pill { font-size:10px; font-weight:700; padding:2px 8px; border-radius:4px; }
+  .pill.win { background:rgba(88,200,120,.16); color:#58c878; } .pill.loss { background:rgba(227,90,90,.16); color:#e35a5a; }
+  .you-better { color:#58c878; } .model-better { color:#e8b54e; }
+  .empty { color:var(--muted,#8a93a6); font-size:13px; padding:12px 0; }
+</style>
+<script src="js/nav.js"></script>
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a>
+    <span class="tagline">by bpleone</span>
+  </div>
+  <nav class="mainnav"><!-- nav.js injects here --></nav>
+  <div class="topbar-actions"><div class="ticker">TRAIN</div></div>
+</header>
+
+<main class="wrap">
+  <h1>Train Your Read</h1>
+  <div class="sub">Forecasting is a skill — and it's trainable. Before each pick settles, log <strong>your own probability</strong> it hits. When the result comes in, you're scored by <strong>Brier score</strong> (lower = sharper) and compared head-to-head against the model on the exact same outcomes. Make the call before you peek at the model's number. Everything is stored privately in your browser.</div>
+
+  <div class="score">
+    <div class="sc"><div class="n" id="sPred">—</div><div class="l">Your calls</div></div>
+    <div class="sc"><div class="n" id="sSettled">—</div><div class="l">Graded</div></div>
+    <div class="sc"><div class="n" id="sHit">—</div><div class="l">Your hit rate</div></div>
+    <div class="sc"><div class="n" id="sBrier">—</div><div class="l">Your Brier</div></div>
+    <div class="sc"><div class="n" id="sModel">—</div><div class="l">Model Brier</div></div>
+  </div>
+  <div class="verdict" id="verdict" style="display:none;"></div>
+
+  <h2>🎯 Make your calls <span style="font-weight:400;color:var(--muted,#8a93a6);font-size:12px;" id="openMeta"></span></h2>
+  <div id="open"><div class="empty">Loading today's open picks…</div></div>
+
+  <h2>📊 Your scorecard <span style="font-weight:400;color:var(--muted,#8a93a6);font-size:12px;" id="gradedMeta"></span></h2>
+  <div id="gradedHead" style="display:none;" class="graded head"><span>Pick</span><span>You</span><span>Model</span><span>Result</span><span>Closer</span></div>
+  <div id="graded"><div class="empty">No graded calls yet — log a few above and check back after they settle.</div></div>
+</main>
+
+<script>
+(function () {
+  "use strict";
+  var LS = "edgestat_train_v1";
+  // Settled-pick feeds. Each carries dated picks with the model's prob + an outcome.
+  var FEEDS = [
+    { f: "pod_pl.json",            sport: "POD"    },
+    { f: "kbo_pot_history.json",   sport: "KBO"    },
+    { f: "cs_pot_history.json",    sport: "CS"     },
+    { f: "cws_pot_history.json",   sport: "NCAA-B" },
+    { f: "tennis_pot_history.json",sport: "Tennis" },
+    { f: "lol_pot_history.json",   sport: "LoL"    },
+    { f: "golf_pot_history.json",  sport: "Golf"   },
+  ];
+  var esc = function (s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) { return ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]); }); };
+  var load = function () { try { return JSON.parse(localStorage.getItem(LS)) || {}; } catch (e) { return {}; } };
+  var save = function (o) { try { localStorage.setItem(LS, JSON.stringify(o)); } catch (e) {} };
+
+  function normLabel(e) {
+    if (e.label) return e.label;
+    if (e.matchup) return e.matchup;
+    if (e.player) return e.player + (e.opponent ? " vs " + e.opponent : "");
+    if (e.team) return e.team + (e.opponent ? " vs " + e.opponent : "");
+    return "pick";
+  }
+  function outcomeOf(e) {
+    var o = String(e.outcome || e.result || "").toUpperCase();
+    if (o === "WIN" || o === "WON") return 1;
+    if (o === "LOSS" || o === "LOST") return 0;
+    return null; // push / pending
+  }
+  function modelP(e) {
+    var p = (e.prob != null) ? e.prob : (e.model_prob != null ? e.model_prob : null);
+    return (typeof p === "number") ? p : null;
+  }
+  function itemKey(sport, date, label) {
+    return sport + "|" + date + "|" + String(label).toLowerCase().replace(/\s+/g, "_").slice(0, 60);
+  }
+
+  Promise.all(FEEDS.map(function (s) {
+    return fetch("data/" + s.f + "?t=" + Date.now(), { cache: "no-cache" })
+      .then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; })
+      .then(function (d) { return { s: s, d: d }; });
+  })).then(function (results) {
+    var items = {};                       // key -> {key, sport, date, label, model_p, win}
+    results.forEach(function (R) {
+      if (!R.d) return;
+      var hist = R.d.history || [];
+      hist.forEach(function (e) {
+        var date = String(e.date || "").slice(0, 10);
+        if (!date) return;
+        var label = normLabel(e);
+        var key = itemKey(R.s.sport, date, label);
+        items[key] = { key: key, sport: R.s.sport, date: date, label: label, model_p: modelP(e), win: outcomeOf(e), settled: (outcomeOf(e) !== null) };
+      });
+    });
+    render(items);
+  });
+
+  function render(items) {
+    var preds = load();
+
+    // ---- score the user's settled calls ----
+    var nPred = 0, graded = [], hit = 0, uBrier = 0, mBrier = 0, mN = 0;
+    Object.keys(preds).forEach(function (k) {
+      nPred++;
+      var it = items[k];
+      var p = preds[k];
+      if (it && it.settled) {
+        var o = it.win;
+        graded.push({ label: p.label, sport: p.sport, date: p.date, user_p: p.user_p, model_p: (p.model_p != null ? p.model_p : it.model_p), win: o });
+        if ((p.user_p >= 0.5 ? 1 : 0) === o) hit++;
+        uBrier += Math.pow(p.user_p - o, 2);
+        var mp = (p.model_p != null ? p.model_p : it.model_p);
+        if (mp != null) { mBrier += Math.pow(mp - o, 2); mN++; }
+      }
+    });
+    var nSettled = graded.length;
+    var setText = function (id, v) { document.getElementById(id).textContent = v; };
+    setText("sPred", nPred);
+    setText("sSettled", nSettled);
+    setText("sHit", nSettled ? Math.round(100 * hit / nSettled) + "%" : "—");
+    setText("sBrier", nSettled ? (uBrier / nSettled).toFixed(3) : "—");
+    setText("sModel", mN ? (mBrier / mN).toFixed(3) : "—");
+
+    if (nSettled >= 3 && mN >= 3) {
+      var ub = uBrier / nSettled, mb = mBrier / mN;
+      var v = document.getElementById("verdict");
+      if (ub < mb) v.innerHTML = "🔥 You're <strong>better calibrated than the model</strong> on your calls (Brier " + ub.toFixed(3) + " vs " + mb.toFixed(3) + "). Sharp read.";
+      else if (ub > mb) v.innerHTML = "The model's ahead for now (Brier " + mb.toFixed(3) + " vs your " + ub.toFixed(3) + "). Keep logging — calibration improves with reps.";
+      else v.innerHTML = "Dead even with the model (Brier " + ub.toFixed(3) + ").";
+      v.style.display = "block";
+    }
+
+    // ---- open picks: pending items the user hasn't called yet ----
+    var open = Object.keys(items).map(function (k) { return items[k]; })
+      .filter(function (it) { return !it.settled && it.model_p != null && !preds[it.key]; })
+      .sort(function (a, b) { return (b.date).localeCompare(a.date); });
+    document.getElementById("openMeta").textContent = open.length ? "(" + open.length + " open)" : "";
+    var openEl = document.getElementById("open");
+    if (!open.length) {
+      openEl.innerHTML = '<div class="empty">No open picks right now — check back when the next slate posts (or you\'ve already called them all).</div>';
+    } else {
+      openEl.innerHTML = open.slice(0, 30).map(function (it) {
+        return '<div class="call" data-key="' + esc(it.key) + '" data-model="' + it.model_p + '" data-label="' + esc(it.label) + '" data-sport="' + esc(it.sport) + '" data-date="' + esc(it.date) + '">' +
+            '<div class="top"><span class="lab">' + esc(it.label) + '</span><span class="meta">' + esc(it.sport) + ' · ' + esc(it.date) + '</span></div>' +
+            '<div class="q">Your probability this pick <strong>hits</strong>:</div>' +
+            '<div class="row">' +
+              '<input type="range" min="1" max="99" value="50" class="sld">' +
+              '<span class="pct">50%</span>' +
+              '<button class="btn save">Lock it in</button>' +
+              '<button class="btn ghost reveal">Peek model</button>' +
+            '</div>' +
+            '<div class="model-hint" style="display:none;"></div>' +
+          '</div>';
+      }).join("");
+      openEl.querySelectorAll(".call").forEach(function (card) {
+        var sld = card.querySelector(".sld"), pct = card.querySelector(".pct");
+        sld.addEventListener("input", function () { pct.textContent = sld.value + "%"; });
+        card.querySelector(".reveal").addEventListener("click", function () {
+          var h = card.querySelector(".model-hint");
+          h.style.display = "block";
+          h.innerHTML = "Model says <strong style='color:#58c878;'>" + Math.round(parseFloat(card.dataset.model) * 100) + "%</strong> — but trust your own read first.";
+        });
+        card.querySelector(".save").addEventListener("click", function () {
+          var p = load();
+          p[card.dataset.key] = { user_p: parseInt(sld.value, 10) / 100, label: card.dataset.label, sport: card.dataset.sport, date: card.dataset.date, model_p: parseFloat(card.dataset.model), ts: new Date().toISOString().slice(0, 16) };
+          save(p);
+          card.style.opacity = ".5";
+          card.querySelector(".save").textContent = "Locked ✓";
+          card.querySelector(".save").disabled = true;
+          sld.disabled = true;
+        });
+      });
+    }
+
+    // ---- scorecard ----
+    var g = document.getElementById("graded");
+    document.getElementById("gradedMeta").textContent = nSettled ? "(" + nSettled + " graded)" : "";
+    if (!nSettled) {
+      g.innerHTML = '<div class="empty">No graded calls yet — log a few above and check back after they settle.</div>';
+    } else {
+      document.getElementById("gradedHead").style.display = "grid";
+      graded.sort(function (a, b) { return b.date.localeCompare(a.date); });
+      g.innerHTML = graded.map(function (r) {
+        var uErr = Math.abs(r.user_p - r.win), mErr = (r.model_p != null ? Math.abs(r.model_p - r.win) : null);
+        var closer = (mErr == null) ? "—" : (uErr < mErr ? '<span class="you-better">you ✓</span>' : (uErr > mErr ? '<span class="model-better">model</span>' : "tie"));
+        return '<div class="graded">' +
+            '<span><strong>' + esc(r.label) + '</strong> <span style="color:#8a93a6;">' + esc(r.sport) + '</span></span>' +
+            '<span>' + Math.round(r.user_p * 100) + '%</span>' +
+            '<span style="color:#8a93a6;">' + (r.model_p != null ? Math.round(r.model_p * 100) + '%' : '—') + '</span>' +
+            '<span><span class="pill ' + (r.win ? 'win' : 'loss') + '">' + (r.win ? 'HIT' : 'MISS') + '</span></span>' +
+            '<span>' + closer + '</span>' +
+          '</div>';
+      }).join("");
+    }
+  }
+})();
+</script>
+</body>
+</html>

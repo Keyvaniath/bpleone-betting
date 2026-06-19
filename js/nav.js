@@ -143,6 +143,7 @@
     { href: "sport-coverage.html",      label: "🌐 Sport Coverage" },
     { href: "pulse.html",               label: "📡 Pulse" },
     { section: "Daily Reads" },
+    { href: "train-your-read.html",     label: "🎯 Train Your Read" },
     { href: "daily-summary.html",       label: "📰 Daily Summary" },
     { href: "brief.html",               label: "Brief" },
     { section: "Learn" },
