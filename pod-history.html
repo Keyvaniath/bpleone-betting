@@ -64,6 +64,13 @@
     <div id="golfPotList"><p class="muted" style="padding:14px;">Loading…</p></div>
   </section>
 
+  <!-- Per-sport desk records (LoL / CS / KBO / NCAA Baseball) -->
+  <section class="card" style="margin-bottom: 24px; border-left: 3px solid #58c878;">
+    <div class="card-head"><span>🎯 Per-Sport Play of the Day — Desk Records</span><span class="muted" id="deskMeta">--</span></div>
+    <p class="muted" style="font-size:11px; padding:8px 16px 0;">Each non-MLB desk snapshots its single highest-conviction bet per slate and settles it from a free outcome feed — LoL &amp; CS via esports APIs, KBO via Daum Sports, NCAA Baseball via ESPN. 1u flat; pending until the game finalizes.</p>
+    <div id="deskCards" style="padding: 6px 0 4px;"><p class="muted" style="padding:14px;">Loading…</p></div>
+  </section>
+
   <section class="card">
     <div class="card-head"><span>📋 What this is</span></div>
     <div style="padding:14px; font-size:13px; line-height:1.7; color: var(--text-2,#aaa);">
@@ -152,6 +159,77 @@ fetch("data/golf_pot_history.json?t=" + Date.now(), { cache: "no-cache" })
   .catch(err => {
     document.getElementById("golfPotList").innerHTML = `<p class="muted" style="padding:14px;">Could not load golf_pot_history.json (${err.message}).</p>`;
   });
+</script>
+
+<script>
+// Per-sport POD desk records — one generic renderer over each desk's pot_history JSON.
+(function(){
+  const DESKS = [
+    { file: "lol_pot_history.json", label: "League of Legends",     icon: "🎮", color: "#5b8def" },
+    { file: "cs_pot_history.json",  label: "Counter-Strike 2",      icon: "🎯", color: "#e0a030" },
+    { file: "kbo_pot_history.json", label: "KBO (Korean Baseball)", icon: "⚾", color: "#d45a5a" },
+    { file: "cws_pot_history.json", label: "NCAA Baseball",         icon: "🏟️", color: "#58c878" },
+  ];
+  const amer = a => a == null ? "—" : (a >= 0 ? "+" + a : String(a));
+  const pct  = v => v == null ? "—" : (v * 100).toFixed(1) + "%";
+  const signU = v => v == null ? "—" : ((v >= 0 ? "+" : "") + (typeof v === "number" ? v.toFixed(2) : v));
+  const COLS = "grid-template-columns: 90px 1.6fr 60px 70px 120px;";
+
+  function playLabel(h){
+    if (h.label) return h.label;
+    if (h.matchup) return h.matchup;
+    if (h.player) return h.player + (h.opponent ? " vs " + h.opponent : "");
+    if (h.team) return h.team + (h.kind && h.kind !== "ML" ? " " + h.kind : " ML") + (h.opponent ? " vs " + h.opponent : "");
+    return "—";
+  }
+
+  function renderDesk(d, data){
+    const wins = data.wins || 0, losses = data.losses || 0, pushes = data.pushes || 0;
+    const decided = wins + losses, settled = data.n_settled || 0, pending = data.n_pending || 0;
+    const rec = data.record || ((decided || pushes) ? (wins + "-" + losses + (pushes ? "-" + pushes : "")) : null);
+    const roi = data.roi_pct, net = data.net_units, hr = data.hit_rate;
+    const roiCol = roi == null ? "#888" : (roi >= 0 ? "#58c878" : "#e35a5a");
+    const stat = settled > 0
+      ? `<strong style="color:var(--text,#ddd);">${rec || "0-0"}</strong> · ${pct(hr)} hit · <span style="color:${roiCol};">${roi != null ? (roi >= 0 ? "+" : "") + roi.toFixed(1) + "%" : "—"}</span> ROI · ${signU(net)}u net · ${pending} pending`
+      : `no settled picks yet · ${pending} pending`;
+    const head = `<div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap; padding:10px 16px; border-bottom:1px solid rgba(255,255,255,0.05);">
+        <span style="font-size:15px;">${d.icon}</span><strong style="color:${d.color};">${d.label}</strong>
+        <span class="muted" style="font-size:11px;">${stat}</span></div>`;
+    const rows = (data.history || []).slice(0, 6).map(h => {
+      const o = h.outcome || "PENDING";
+      const cls = o === "WIN" ? "win" : o === "LOSS" ? "loss" : "";
+      const pillCls = o === "WIN" ? "win" : o === "LOSS" ? "loss" : "pending";
+      const pl = h.pl_units != null ? " · " + signU(h.pl_units) + "u" : "";
+      return `<div class="pod-row ${cls}" style="${COLS}">
+        <span class="muted">${(h.date || "").slice(0,10)}</span>
+        <span><strong>${playLabel(h)}</strong></span>
+        <span class="muted">${pct(h.prob != null ? h.prob : h.model_prob)}</span>
+        <span>${amer(h.fair_american)}</span>
+        <span class="pill ${pillCls}">${o}${pl}</span></div>`;
+    }).join("");
+    const body = (data.history || []).length
+      ? `<div class="pod-row head" style="${COLS}"><span>Date</span><span>Play</span><span>Model</span><span>Fair</span><span>Result</span></div>${rows}`
+      : `<p class="muted" style="padding:12px 16px;">First pick logs on the next cron during an active slate.</p>`;
+    return `<div style="margin:0 16px 14px; border:1px solid rgba(255,255,255,0.05); border-left:3px solid ${d.color}; border-radius:6px; overflow:hidden;">${head}${body}</div>`;
+  }
+
+  Promise.all(DESKS.map(d =>
+    fetch("data/" + d.file + "?t=" + Date.now(), { cache: "no-cache" })
+      .then(r => r.ok ? r.json() : null).catch(() => null).then(data => ({ d, data }))
+  )).then(results => {
+    let totSettled = 0, totPending = 0, deskLive = 0;
+    const html = results.map(({ d, data }) => {
+      if (!data) return `<div style="margin:0 16px 14px; border:1px solid rgba(255,255,255,0.05); border-left:3px solid ${d.color}; border-radius:6px; padding:10px 16px;"><span style="font-size:15px;">${d.icon}</span> <strong style="color:${d.color};">${d.label}</strong> <span class="muted" style="font-size:11px;">— feed initializing</span></div>`;
+      totSettled += data.n_settled || 0; totPending += data.n_pending || 0;
+      if ((data.n_settled || 0) + (data.n_pending || 0) > 0) deskLive++;
+      return renderDesk(d, data);
+    }).join("");
+    document.getElementById("deskCards").innerHTML = html;
+    document.getElementById("deskMeta").textContent = `${deskLive}/${DESKS.length} desks active · ${totSettled} settled · ${totPending} pending`;
+  }).catch(err => {
+    document.getElementById("deskCards").innerHTML = `<p class="muted" style="padding:14px;">Could not load desk records (${err.message}).</p>`;
+  });
+})();
 </script>
 
 </body>
