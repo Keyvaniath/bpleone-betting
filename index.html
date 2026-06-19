@@ -242,12 +242,23 @@
     <span style="font-size:10px;text-transform:uppercase;letter-spacing:.6px;color:#8a93a6;display:block;margin-bottom:5px;">Don't trust us — the receipts</span>
     <span id="proveItLine"></span>
     <span id="proveItCal" style="display:block;margin-top:6px;color:var(--text-2,#9fb0c8);"></span>
+    <span id="proveItHash" style="display:none;margin-top:6px;font-size:11px;color:var(--text-2,#9fb0c8);"></span>
     <span style="display:block;margin-top:7px;font-size:11px;">
       <a href="strategy-sim.html" style="color:#58c878;text-decoration:underline;text-decoration-color:rgba(88,200,120,.4);">replay the ledger →</a>
       <a href="calibration-map.html" style="margin-left:12px;color:#58c878;text-decoration:underline;text-decoration-color:rgba(88,200,120,.4);">calibration map →</a>
       <a href="clv.html" style="margin-left:12px;color:#58c878;text-decoration:underline;text-decoration-color:rgba(88,200,120,.4);">closing line value →</a>
+      <a href="track-record.html" style="margin-left:12px;color:#58c878;text-decoration:underline;text-decoration-color:rgba(88,200,120,.4);">🔒 verify the record →</a>
     </span>
   </section>
+  <script>
+  fetch("data/ledger_hashchain.json", { cache: "no-cache" }).then(r => r.json()).then(d => {
+    if (!d.head) return;
+    const el = document.getElementById("proveItHash");
+    el.innerHTML = `<span style="color:#8a93a6;">tamper-evident SHA-256 over ${(d.n_settled||0).toLocaleString()} settled picks — </span>` +
+      `<span style="font-family:'JetBrains Mono',monospace;color:#58c878;">${String(d.head).slice(0,24)}…</span>`;
+    el.style.display = "block";
+  }).catch(() => {});
+  </script>
 
   <!-- LIVE TAPE teaser: the desk's strongest signals right now -->
   <section id="liveTape" style="display:none; margin: 0 0 22px 0;">
