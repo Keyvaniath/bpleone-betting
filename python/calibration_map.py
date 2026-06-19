@@ -136,6 +136,25 @@ def run() -> Dict[str, Any]:
         "curated_out": _agg(lambda f: f in neg),
     }
 
+    # DESK-LEVEL honesty: raw vs curated net per whole sport. The family net above
+    # governs MARKETS; this catches a desk whose thin outright markets escape it
+    # (e.g. F1's POLE/TOP_3/TOP_6). A desk negative even AFTER curation has no
+    # profitable subset to publish -- shown so the money map is the same one we
+    # audit internally, not a cherry-pick.
+    desk_report = pc.sport_curation_report()
+    desks = sorted(([{"sport": s, **a} for s, a in desk_report.items()]),
+                   key=lambda d: -(d.get("net_curated") or 0))
+    desk_curation = {
+        "summary": {
+            "n_desks": len(desks),
+            "profitable": sorted([d["sport"] for d in desks if d.get("status") == "profitable"]),
+            "underperforming": sorted([d["sport"] for d in desks
+                                       if d.get("status") in ("underperforming", "proven_negative")]),
+            "proven_negative_desks": sorted(pc.proven_negative_sports()),
+        },
+        "desks": desks,
+    }
+
     n_cur = sum(1 for r in rows if r["status"] == "curated_out")
     n_cal = sum(1 for r in rows if r["status"] == "calibrated")
     n_mod = sum(1 for r in rows if r["status"] == "model_only")
@@ -153,6 +172,7 @@ def run() -> Dict[str, Any]:
         "n_overconfident": n_overconf,
         "units_protected_by_curation": net_protected,
         "guard_impact": guard_impact,
+        "desk_curation": desk_curation,
         "overall_avg_model_pred": overall_pred,
         "overall_realized_hit_rate": overall_real,
         "overall_overconfidence_gap": round(overall_pred - overall_real, 4) if overall_pred and overall_real else None,

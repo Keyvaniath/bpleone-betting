@@ -132,6 +132,84 @@ def is_proven_negative(market) -> bool:
     return canon_market_family(market) in neg or market_family(market) in neg
 
 
+# --- Desk-level (whole-sport) curation -------------------------------------
+# The family net above catches losing MARKETS. But a desk can bleed at the SPORT
+# level while its thin market families escape the family guard entirely -- e.g.
+# F1 prices POLE / TOP_3 / TOP_6 outrights that never land in by_market_family,
+# so -44u over 61 settled slips the net. The blunt fix (cut any negative-net
+# sport) would nuke MLB, whose RAW firehose is -1021u but whose CURATED subset is
+# the +14% engine. So a desk is "proven-negative" only if it stays negative AFTER
+# family curation -- i.e. there's no profitable subset left to extract (F1: yes;
+# MLB: no, curation rescues it).
+SPORT_MIN_N = 25
+SPORT_MAX_CURATED_NET = -10.0   # still losing >10u once known-bad families are dropped
+
+_SPORT_REPORT_CACHE: Optional[Dict[str, Dict[str, Any]]] = None
+
+
+def sport_curation_report() -> Dict[str, Dict[str, Any]]:
+    """Per-desk honesty: RAW vs CURATED net, where curated drops every settled
+    pick in a proven-negative OR overconfident market family. A desk still deeply
+    negative after that has nothing worth publishing -- a proven-negative DESK."""
+    global _SPORT_REPORT_CACHE
+    if _SPORT_REPORT_CACHE is not None:
+        return _SPORT_REPORT_CACHE
+    d = _load_ledger()
+    picks = d.get("picks") or d.get("all_picks") or (d if isinstance(d, list) else [])
+    neg = proven_negative_families()
+    over = overconfident_families()
+    agg: Dict[str, Dict[str, Any]] = {}
+    for p in picks:
+        if not isinstance(p, dict) or not p.get("settled") or p.get("voided"):
+            continue
+        res = p.get("result") or p.get("outcome")
+        if res not in ("won", "lost", "push"):
+            continue
+        sport = str(p.get("sport") or "?").upper()
+        net = p.get("net_units")
+        if net is None:
+            pu = p.get("payout_units")
+            net = (pu if pu is not None else 0.91) if res == "won" else (-1.0 if res == "lost" else 0.0)
+        a = agg.setdefault(sport, {"n": 0, "wins": 0, "net_raw": 0.0, "net_curated": 0.0, "n_curated": 0})
+        a["n"] += 1
+        if res == "won":
+            a["wins"] += 1
+        a["net_raw"] += float(net or 0)
+        fam, famL = canon_market_family(p.get("market")), market_family(p.get("market"))
+        if not (fam in neg or famL in neg or fam in over or famL in over):
+            a["net_curated"] += float(net or 0)
+            a["n_curated"] += 1
+    for s, a in agg.items():
+        a["hit_rate"] = round(a["wins"] / a["n"], 4) if a["n"] else None
+        a["roi_raw"] = round(100 * a["net_raw"] / a["n"], 1) if a["n"] else None
+        a["roi_curated"] = round(100 * a["net_curated"] / a["n_curated"], 1) if a["n_curated"] else None
+        a["net_raw"] = round(a["net_raw"], 1)
+        a["net_curated"] = round(a["net_curated"], 1)
+        a["proven_negative_desk"] = bool(a["n"] >= SPORT_MIN_N and a["net_curated"] <= SPORT_MAX_CURATED_NET)
+        # Display tier (the hard guard is proven_negative_desk; this is richer):
+        rc = a["roi_curated"]
+        if a["proven_negative_desk"]:
+            a["status"] = "proven_negative"            # hard-excluded
+        elif a["n"] >= SPORT_MIN_N and rc is not None and rc <= -15:
+            a["status"] = "underperforming"            # curation can't rescue it yet
+        elif rc is not None and rc >= 2 and a["n_curated"] >= 15:
+            a["status"] = "profitable"                 # real edge after curation
+        else:
+            a["status"] = "marginal"                   # near breakeven / thin sample
+    _SPORT_REPORT_CACHE = agg
+    return agg
+
+
+def proven_negative_sports() -> set:
+    """Whole desks that stay net-negative even after family-level curation."""
+    return {s for s, a in sport_curation_report().items() if a.get("proven_negative_desk")}
+
+
+def is_proven_negative_sport(sport) -> bool:
+    """True if this entire desk is a proven loser with no profitable curated subset."""
+    return bool(sport) and str(sport).upper() in proven_negative_sports()
+
+
 def empirical_calibrate(raw_prob, market) -> Tuple[Optional[float], Dict[str, Any]]:
     """Bayesian-blend raw_prob toward the family's realized hit rate.
 
@@ -325,10 +403,11 @@ def calibrate_play(market, play, line, raw_prob) -> Tuple[Optional[float], Dict[
 
 def reset_caches() -> None:
     """Drop memoized ledger reads (after the ledger is regenerated in-process)."""
-    global _STATS_CACHE, _NEG_CACHE, _OVERCONF_CACHE
+    global _STATS_CACHE, _NEG_CACHE, _OVERCONF_CACHE, _SPORT_REPORT_CACHE
     _STATS_CACHE = None
     _NEG_CACHE = None
     _OVERCONF_CACHE = None
+    _SPORT_REPORT_CACHE = None
 
 
 if __name__ == "__main__":

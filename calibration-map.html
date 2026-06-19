@@ -51,6 +51,7 @@
   <div id="recalBanner" style="margin:6px 0 16px;"></div>
   <div id="eceTrend" style="margin:6px 0 16px;"></div>
   <div class="sumstrip" id="sumStrip"></div>
+  <div id="deskMap" style="margin:6px 0 22px;"></div>
   <div class="tscroll">
     <div class="calhead">
       <span>Market family</span><span class="r">n</span><span class="r">model</span><span class="r">actual</span><span class="r">gap</span><span class="r">net u</span><span>status</span>
@@ -139,6 +140,42 @@ fetch("data/calibration_map.json", { cache: "no-cache" }).then(r => r.json()).th
     <span class="s"><span class="lab">curated out</span><b class="pos">${d.n_curated_out}</b> <span class="muted">(${d.n_overconfident||0} broken prob)</span></span>
     <span class="s"><span class="lab">losses avoided</span><b class="neg">${d.units_protected_by_curation}u</b></span>
     <span class="s"><span class="lab">calibrated</span><b class="neg">${d.n_calibrated}</b> <span class="muted">+ ${d.n_model_only} model-only</span></span>`;
+
+  // Desk-level money map — raw firehose vs curated net, by whole sport.
+  const dcw = d.desk_curation;
+  if (dcw && (dcw.desks || []).length) {
+    const STT = {
+      profitable:      { label: "profitable",        col: "#5fe0a0", bg: "rgba(95,224,160,.13)" },
+      marginal:        { label: "marginal",          col: "#8a93a6", bg: "rgba(255,255,255,.05)" },
+      underperforming: { label: "underperforming",   col: "#e8b54e", bg: "rgba(212,160,74,.15)" },
+      proven_negative: { label: "cut — proven neg",  col: "#ff8a8a", bg: "rgba(255,107,107,.15)" }
+    };
+    const roiC = v => v == null ? "—" : `<span class="${v>=0?'neg':'pos'}">${v>=0?'+':''}${v}%</span>`;
+    const GRID = "display:grid;grid-template-columns:1.1fr 48px 60px 120px 120px 128px;gap:10px;align-items:center;";
+    const rows = dcw.desks.map(x => {
+      const st = STT[x.status] || STT.marginal;
+      return `<div style="${GRID}font-family:'JetBrains Mono',monospace;font-size:12.5px;padding:8px 12px;border:1px solid var(--border,#222a36);border-radius:8px;margin-bottom:6px;border-left:3px solid ${st.col};">
+        <span><b>${esc(x.sport)}</b></span>
+        <span class="muted" style="text-align:right;">${x.n}</span>
+        <span style="text-align:right;">${pct(x.hit_rate)}</span>
+        <span style="text-align:right;" title="raw firehose net">${x.net_raw>=0?'+':''}${x.net_raw}u <span class="muted">${roiC(x.roi_raw)}</span></span>
+        <span style="text-align:right;" title="net after dropping proven-negative + overconfident families">${x.net_curated>=0?'+':''}${x.net_curated}u <span class="muted">${roiC(x.roi_curated)}</span></span>
+        <span><span class="badge" style="background:${st.bg};color:${st.col};">${st.label}</span></span>
+      </div>`;
+    }).join("");
+    const sm = dcw.summary || {};
+    document.getElementById("deskMap").innerHTML = `
+      <div style="border:1px solid rgba(255,255,255,.08);border-radius:11px;padding:14px 18px;">
+        <span style="font-size:10.5px;text-transform:uppercase;letter-spacing:.5px;color:#8a93a6;">Desk-level money map — raw firehose vs curated, by sport</span>
+        <p class="muted" style="font-size:11.5px;margin:7px 0 12px;">The table below curates <i>markets</i>; this is the same view one level up — every desk's raw net vs its net after dropping proven-negative + overconfident families. ${(sm.profitable||[]).length} desks clear a real edge after curation; ${ (sm.underperforming||[]).length ? "still negative after curation: <b style=\"color:#e8b54e;\">"+(sm.underperforming).join(", ")+"</b>" : "none stay negative after curation" }. Desks hard-cut as proven-negative: ${(sm.proven_negative_desks||[]).join(", ") || "none"}.</p>
+        <div style="overflow-x:auto;"><div style="min-width:560px;">
+          <div style="${GRID}padding:0 12px 7px;font-size:10.5px;text-transform:uppercase;letter-spacing:.5px;color:#8a93a6;">
+            <span>Desk</span><span style="text-align:right;">n</span><span style="text-align:right;">hit</span><span style="text-align:right;">raw net</span><span style="text-align:right;">curated net</span><span>status</span>
+          </div>
+          ${rows}
+        </div></div>
+      </div>`;
+  }
 
   const el = document.getElementById("rows");
   if (!fams.length) { el.innerHTML = '<p class="muted">No settled families yet.</p>'; return; }
