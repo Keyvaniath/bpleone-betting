@@ -1,13 +1,13 @@
 # EdgeStat Daily Summary — 2026-06-19
 
-## 🏥 Model Health: 68.3/100 [OK]
-- Operational but room to improve - check yellow components
+## 🏥 Model Health: 73.1/100 [HEALTHY]
+- Solid health - some minor issues to monitor
   - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 54.4/100
   - 🔴 Brier Trend: 29.6/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 88.9/100
-  - 🔴 Edge Count: 37.1/100
+  - 🟢 Edge Count: 85.7/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.587)
@@ -21,25 +21,31 @@
 4. **SFG @ MIA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 5. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
 
+## 🐋 Whale Picks (Max Confluence)
+- [STRONG] **[MLB]** PIT @ COL PIT_ML -- 70% / +20.2% (score 2.5)
+
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **197-38** (83.8% hit rate)
 - Net units: **+6.63u** | ROI: **+45.5%**
 - Last 7d: 43-9 (82.7%) | net +1.40u
 
-**Today's 5 Locks:**
+**Today's 8 Locks:**
 - [MLB-PP] **Everson Pereira** PP_batter_hrr_under_3.5 · p=87% edge=+51.6% qK=0.062u
 - [MLB-PP] **Jeff McNeil** PP_batter_hrr_under_3.5 · p=87% edge=+51.4% qK=0.062u
 - [MLB-PP] **Mickey Gasper** PP_batter_hrr_under_3.5 · p=87% edge=+51.3% qK=0.062u
 - [MLB-PP] **J.T. Realmuto** PP_batter_hrr_under_3.5 · p=87% edge=+51.3% qK=0.062u
 - [MLB-PP] **Alejandro Osuna** PP_batter_hrr_under_3.5 · p=87% edge=+51.2% qK=0.062u
+- [MLB-PP] **Salvador Perez** PP_batter_hrr_under_3.5 · p=87% edge=+51.7% qK=0.062u
+- [MLB-PP] **Alex Bregman** PP_batter_hrr_under_3.5 · p=87% edge=+51.6% qK=0.062u
+- [MLB-PP] **Hunter Feduccia** PP_batter_hrr_under_3.5 · p=87% edge=+51.6% qK=0.062u
 
 ## 🎰 Top Balanced 2-Leg Parlays (40-65% joint)
-- [MLB-PP] Everson Pereira PP_batter_hrr_under_ + [MLB] WSN @ TBR WSN_ML
-  Joint: 51% | Fair: 264 | Edge: +85.3%
-- [MLB-PP] Jeff McNeil PP_batter_hrr_under_ + [MLB] WSN @ TBR WSN_ML
-  Joint: 51% | Fair: 264 | Edge: +85.0%
-- [MLB-PP] Mickey Gasper PP_batter_hrr_under_ + [MLB] WSN @ TBR WSN_ML
-  Joint: 51% | Fair: 264 | Edge: +85.0%
+- [MLB-PP] Salvador Perez PP_batter_hrr_under_ + [MLB] SFG @ MIA SFG_ML
+  Joint: 52% | Fair: 263 | Edge: +89.1%
+- [MLB-PP] Jeff McNeil PP_batter_hrr_under_ + [MLB] SFG @ MIA SFG_ML
+  Joint: 52% | Fair: 263 | Edge: +89.1%
+- [MLB-PP] Alejandro Osuna PP_batter_hrr_under_ + [MLB] SFG @ MIA SFG_ML
+  Joint: 52% | Fair: 263 | Edge: +89.1%
 
 ## 🎮 Player Play of the Day (cross-sport)
 - **[LOL]** Inspired UNDER 3.5 Kills | MED conviction · model 61.7% fair -161
@@ -55,10 +61,10 @@
 - Hot teams: **5** | Cold teams: **5** | Over-heavy: 0 | Under-heavy: 6
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (47)
+## ⚠️ Anomaly Detector (43)
 - STEAM_MOVE: **39**
-- COMPOUND_BULLPEN: **5**
 - PEN_MISMATCH: **3**
+- COMPOUND_BULLPEN: **1**
   - WSH @ CON (WNBA): ML/TOTAL steam since open: ML +5.9pp toward CON; total -3 (UNDER) (4 snapshots)
   - DET @ HOU (MLB): ML steam since open: ML -10.8pp toward DET (4 snapshots)
   - LAA @ ARI (MLB): ML/TOTAL steam since open: ML +10.7pp toward ARI; total +0.5 (OVER) (6 snapshots)
@@ -67,20 +73,20 @@
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$11.82**
+- Expected EV: **$11.97**
   - #1 [NRFI] $50 on PIT @ COL YRFI (1st-inning OVER 0.5) (P=82%)
   - #2 [NRFI] $50 on LAA @ OAK YRFI (1st-inning OVER 0.5) (P=75%)
   - #3 [NRFI] $50 on BAL @ LAD YRFI (1st-inning OVER 0.5) (P=69%)
   - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
-## 🎯 Convergence Picks (14 stacked games)
-- ELITE: **0** · HIGH: 0 · MED: 14
+## 🎯 Convergence Picks (5 stacked games)
+- ELITE: **0** · HIGH: 0 · MED: 5
   - [MED] Carolina Hurricanes @ Vegas Golden Knights : 2 signals (HEAT_COLD, HEAT_COLD)
   - [MED] Atlanta United FC @ Columbus Crew : 2 signals (ATS, ATS)
   - [MED] Philadelphia Union @ Inter Miami CF : 2 signals (ATS, ATS)
   - [MED] Seattle Sounders FC @ LAFC : 2 signals (ATS, ATS)
-  - [MED] Manchester United @ Brighton & Hove Albion : 2 signals (ATS, ATS)
+  - [MED] Coventry City @ Arsenal : 2 signals (PREGAME, ATS)
 
 ## ⚾ Top MLB Pitcher K Plays (13)
 - **Jacob Misiorowski** OVER 7.5 K (78%) fair -354
@@ -89,7 +95,7 @@
 - **Cam Schlittler** OVER 4.5 K (70%) fair -232
 - **Roki Sasaki** OVER 4.5 K (70%) fair -232
 
-## 🏀 NBA Player Heat (18 HOT / 22 COLD)
+## 🏀 NBA Player Heat (19 HOT / 20 COLD)
   - 🔥 **Jeremiah Fears** (NO): L5 31.8/5.8/6.0 vs season 16.9/3.2/4.0 [PTS +14.9, REB +2.6, AST +2.0]
   - 🔥 **AJ Green** (MIL): L5 18.6/4.2/1.8 vs season 11.3/3.4/1.9 [PTS +7.3]
   - 🔥 **Dillon Brooks** (PHX): L5 26.0/6.0/1.8 vs season 19.4/4.2/1.9 [PTS +6.6]
@@ -107,13 +113,14 @@
   - [LEAN] **Kyoji Horiguchi** (36-5-0) vs Manel Kape -- fair -151
 
 ## ⛳ Golf Player Heat (from U.S. Open)
-  - 🔥 T1 **Wyndham Clark** (USA): -6 total -- finished T1
-  - 🔥 T2 **Sam Stevens** (USA): -2 total -- finished T2
-  - 🔥 T3 **Ryder Cowan** (USA): -2 total -- finished T3
-  - 🔥 T4 **Max McGreevy** (USA): -2 total -- finished T4
-  - 🔥 T5 **Matt Fitzpatrick** (England): -2 total -- finished T5
+  - 🔥 T2 **Ryder Cowan** (USA): -3 total -- finished T2
+  - 🔥 T3 **Matt Fitzpatrick** (England): -3 total -- finished T3
+  - 🔥 T4 **Gary Woodland** (USA): -3 total -- finished T4
+  - 🔥 T5 **Dustin Johnson** (USA): -3 total -- finished T5
+  - 🔥 T6 **Max McGreevy** (USA): -2 total -- finished T6
+  - ❄️ **Wyndham Clark** (USA): Sunday +3.0 vs tourney avg
 
-## 🔥 MLB Batter Heat (45 HOT / 41 COLD)
+## 🔥 MLB Batter Heat (46 HOT / 41 COLD)
   - 🔥 **Nasim Nuñez** (WSH): L14 .378 / season .223 (+155pts)
   - 🔥 **Bo Bichette** (NYM): L14 .400 / season .250 (+150pts)
   - 🔥 **Victor Caratini** (MIN): L14 .364 / season .228 (+136pts)

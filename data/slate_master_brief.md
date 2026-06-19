@@ -1,13 +1,13 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-06-19T12:50:59 UTC_
+_Generated 2026-06-19T16:41:06 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -39
+- **Score:** -36
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 13
-- **Total FADES:** 91
+- **Total STRONG:** 12
+- **Total FADES:** 84
 
 ## Lock of the Night
 - **Subject:** Randy Vásquez
@@ -17,11 +17,11 @@ _Generated 2026-06-19T12:50:59 UTC_
 - **Details:** SDP @ TEX
 
 ## Top 5 Curated Picks
-1. **GOLF / Wyndham Clark** (GOLF_PLAYER, score=202.79)
+1. **GOLF / Wyndham Clark** (GOLF_PLAYER, score=199.79)
    - Play: Wyndham Clark (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Jon Rahm** (GOLF_PLAYER, score=97.43)
-   - Play: Jon Rahm (PLAYER_STRONG)
+2. **GOLF / Matt Fitzpatrick** (GOLF_PLAYER, score=106.71)
+   - Play: Matt Fitzpatrick (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
 3. **MLB / Jacob deGrom** (MLB_PITCHER, score=60.75)
    - Play: Jacob deGrom (PITCHER_STRONG)
@@ -33,8 +33,8 @@ _Generated 2026-06-19T12:50:59 UTC_
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
   - Wyndham Clark top 10 finish
-  - Jon Rahm top 10 finish
   - Matt Fitzpatrick top 10 finish
+  - Dustin Johnson top 10 finish
 
 ## Slate ROI Projection
 - **Picks:** 2
@@ -43,13 +43,13 @@ _Generated 2026-06-19T12:50:59 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
+- **GOLF** / Jimmy Stanger (PLAYER_FADE)
+  - Fade angle: miss cut YES + high round score
+- **GOLF** / Viktor Hovland (PLAYER_FADE)
+  - Fade angle: miss cut YES + high round score
 - **GOLF** / Ethan Fang (PLAYER_FADE)
   - Fade angle: miss cut YES + high round score
-- **GOLF** / Andrew Putnam (PLAYER_FADE)
+- **GOLF** / Ben Silverman (PLAYER_FADE)
   - Fade angle: miss cut YES + high round score
-- **GOLF** / Harry Hall (PLAYER_FADE)
-  - Fade angle: miss cut YES + high round score
-- **GOLF** / Tyrrell Hatton (PLAYER_FADE)
-  - Fade angle: miss cut YES + high round score
-- **GOLF** / Shane Lowry (PLAYER_FADE)
+- **GOLF** / Aaron Rai (PLAYER_FADE)
   - Fade angle: miss cut YES + high round score
