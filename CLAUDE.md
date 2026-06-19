@@ -41,6 +41,33 @@ bpleone-site/
 
 ## Current deployment state (LIVE)
 
+- **2026-06-19 session additions (read first — newest state):**
+  - **17 sport desks, all live** (`sport_coverage.py` / sport-coverage.html). Added
+    **Tennis** as a full desk: `tennis_pipeline.py` pulls upcoming ATP/WTA from ESPN's
+    free tennis scoreboard → `tennis_state.json` (12 prop modules were starved — nothing
+    wrote that file). `tennis.html` + nav + surface-adjusted ELO match-win/ace boards.
+    NB: ESPN serves whole future brackets + TBD placeholders, so the pipeline filters
+    placeholders and keeps only today..tomorrow by each match's own start date.
+  - **Per-sport settlement wired** for the niche desks via `*_pot_history.py` (snapshot
+    the day's best edge, settle from a free feed): KBO (`kbo_pot_history`, Daum hermes —
+    fixed a key bug: real keys are homeTeamName/homeResult/gameStatus/homeWlt), CS
+    (`cs_pot_history`, bo3.gg slug-parse), NCAA Baseball (`cws_pot_history`, ESPN-by-id),
+    Tennis (`tennis_pot_history`, ESPN finals). Each flips its sport_coverage row from
+    "no outcome feed" → "settlement wired, pending" → a real W-L once games complete.
+    All surfaced on pod-history.html "Per-Sport Desk Records".
+  - **Desk-level curation** (`prob_calibration.sport_curation_report` /
+    `proven_negative_sports`): raw-vs-curated net per whole sport, only flags a desk
+    negative AFTER family curation (so MLB's −1021u raw isn't cut — its curated subset is
+    the +14% engine). Published on calibration-map.html. Money map: MLB-PP +181u/81%,
+    UFC +75u, Golf +21u profitable; F1/NHL underperforming; none hard-cut.
+  - **golf**: fixed `golf_live_tracker` (reads nested `active_tournament`) + `golf_bestbet`
+    (gates position bets on `golf_state.is_in_progress`, not the under-reporting live tracker).
+  - **F1 POLE** was already fixed (normalized one-winner `pole_share`, flag only the
+    favourite ≥18%); the −44u in the ledger is historical/sunk. TOP_3/TOP_6 are valid marginals.
+  - **Known data-blocked:** `ODDS_API_KEY` still lapsed → player-prop BOOK lines dark
+    (pp_advantage dormant); game lines come free from ESPN. This is the one structural
+    unlock left and needs Brandon's payment.
+
 - **Live in production:** `https://betting.bpleone.com` — GitHub Pages, valid
   Let's Encrypt cert (CN=betting.bpleone.com). Repo `Keyvaniath/bpleone-betting`
   (public). `CNAME` committed; DNS resolves to GitHub Pages IPs.
