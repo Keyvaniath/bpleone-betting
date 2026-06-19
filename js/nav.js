@@ -128,6 +128,7 @@
   // MORE -- account, system health, daily reads, education.
   const MORE = [
     { section: "Account" },
+    { href: "pricing.html",             label: "⭐ Pricing / Go Pro" },
     { href: "sportsbooks.html",         label: "🎟 Where to Bet" },
     { href: "bankroll.html",            label: "Bankroll" },
     { href: "my-bets.html",             label: "My Bets" },

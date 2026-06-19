@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pricing | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .wrap { max-width: 880px; margin: 0 auto; padding: 26px 22px 10px; }
+  h1 { font-size: 27px; margin: 0 0 4px; text-align:center; }
+  .sub { color: var(--muted,#8a93a6); font-size: 13px; margin-bottom: 22px; text-align:center; }
+  .tiers { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:16px; }
+  .tier { border:1px solid rgba(255,255,255,.1); border-radius:14px; padding:22px; display:flex; flex-direction:column; }
+  .tier.pro { border-color:rgba(88,200,120,.4); box-shadow:0 0 0 1px rgba(88,200,120,.15); }
+  .tier .nm { font-size:13px; text-transform:uppercase; letter-spacing:.6px; color:var(--muted,#8a93a6); font-weight:700; }
+  .tier .price { font-size:34px; font-weight:800; color:var(--text,#e9edf4); margin:6px 0 2px; }
+  .tier .price small { font-size:14px; color:var(--muted,#8a93a6); font-weight:600; }
+  .tier ul { list-style:none; padding:0; margin:14px 0; flex:1; }
+  .tier li { color:var(--text-2,#b6bdca); font-size:13px; line-height:1.9; padding-left:22px; position:relative; }
+  .tier li::before { content:"✓"; position:absolute; left:0; color:#58c878; font-weight:700; }
+  .tier li.no { color:var(--muted,#6b7280); } .tier li.no::before { content:"—"; color:#4b5563; }
+  .cta { text-align:center; padding:11px; border-radius:9px; font-weight:700; font-size:14px; text-decoration:none; cursor:pointer; border:none; font-family:inherit; }
+  .cta.free { background:rgba(255,255,255,.07); color:#cdd6e4; }
+  .cta.pro { background:#58c878; color:#06250f; }
+  .note { text-align:center; color:var(--muted,#8a93a6); font-size:11.5px; margin-top:18px; line-height:1.7; }
+</style>
+<script src="js/nav.js"></script>
+<script src="js/premium-config.js"></script>
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a>
+    <span class="tagline">by bpleone</span>
+  </div>
+  <nav class="mainnav"><!-- nav.js injects here --></nav>
+  <div class="topbar-actions"><div class="ticker">PRICING</div></div>
+</header>
+
+<main class="wrap">
+  <h1>Simple pricing</h1>
+  <div class="sub">Start free. Upgrade for the full edge engine. Cancel anytime. 21+ and where legal.</div>
+
+  <div class="tiers">
+    <div class="tier">
+      <div class="nm">Free</div>
+      <div class="price">$0</div>
+      <ul>
+        <li>All 17 sport desks &amp; live boards</li>
+        <li>Daily Alpha Pick of the Day</li>
+        <li>Public settled track record &amp; calibration</li>
+        <li>The Tape — strongest signals by email</li>
+        <li class="no">Full prop edge boards &amp; Pro tiers</li>
+        <li class="no">Real-time steam / CLV alerts</li>
+      </ul>
+      <a class="cta free" href="login.html">Create free account</a>
+    </div>
+
+    <div class="tier pro">
+      <div class="nm">EdgeStat Pro</div>
+      <div class="price" id="proPrice">$12 <small>/mo</small></div>
+      <ul>
+        <li>Everything in Free</li>
+        <li><strong>Full</strong> curated prop &amp; parlay edge boards</li>
+        <li>Real-time steam &amp; sharp-money alerts</li>
+        <li>Closing-line-value (CLV) tracking</li>
+        <li>Bankroll &amp; Kelly tools, export</li>
+        <li>Priority model boards as new desks ship</li>
+      </ul>
+      <button class="cta pro" id="upgradeBtn">Go Pro</button>
+    </div>
+  </div>
+
+  <div class="note" id="note">
+    Payments are processed securely by Stripe. EdgeStat is informational analytics, not betting advice,
+    and no result is guaranteed — see our <a href="disclaimer.html" style="color:#7fb0e8;">Disclaimer</a>.
+    Gambling problem? Call 1-800-GAMBLER.
+  </div>
+</main>
+
+<script src="js/premium.js"></script>
+<script>
+(function () {
+  var P = window.EDGESTAT_PREMIUM || {};
+  var priceEl = document.getElementById("proPrice");
+  if (P.priceDisplay) priceEl.innerHTML = P.priceDisplay + ' <small>' + (P.pricePeriod || "/mo") + '</small>';
+  var btn = document.getElementById("upgradeBtn");
+  if (!(typeof P.isConfigured === "function" && P.isConfigured())) {
+    btn.textContent = "Launching shortly";
+    btn.style.opacity = ".75";
+  }
+  btn.addEventListener("click", function () {
+    if (window.EdgeStatPremium) window.EdgeStatPremium.upgrade();
+  });
+})();
+</script>
+</body>
+</html>

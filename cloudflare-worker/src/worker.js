@@ -24,7 +24,10 @@
  *   GET /live/nhl             -> NHL scoreboard
  *   GET /live/health          -> worker health + last-update timestamps
  *   GET /                     -> redirect to bpleone.com
+ *   /billing/*                -> Stripe subscriptions (see billing.js)
  */
+
+import { handleBilling } from "./billing.js";
 
 const MLB_GUMBO = (gamePk) => `https://statsapi.mlb.com/api/v1.1/game/${gamePk}/feed/live`;
 const MLB_SCHEDULE_TODAY = (date) => `https://statsapi.mlb.com/api/v1/schedule?sportId=1&date=${date}`;
@@ -214,6 +217,14 @@ async function handleHTTP(request, env) {
     "Cache-Control": "public, max-age=30",   // 30s edge cache
   };
   if (request.method === "OPTIONS") return new Response(null, { headers: cors });
+
+  // ============================================================
+  // BILLING -- Stripe subscriptions + entitlements (billing.js)
+  // ============================================================
+  if (path.startsWith("/billing/")) {
+    const r = await handleBilling(request, env, url, cors);
+    if (r) return r;
+  }
 
   // ============================================================
   // D1 DATABASE ENDPOINTS (Pro plan -- pick history + backtest)

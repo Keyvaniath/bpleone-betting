@@ -29,6 +29,12 @@ licensing. The bar is **media + affiliate + advertising compliance** — achieva
 - **Reliability/monitoring**: `data_health.py` now has a season-independent **freshness
   canary**; `status.html` public status page; `.github/workflows/health-alert.yml` opens
   a GitHub issue if a feed goes dark (no more silent cron failures).
+- **Subscription backend (Tier 2 #5) — code-complete, inert until you connect Stripe**:
+  Worker Stripe billing (`cloudflare-worker/src/billing.js`: checkout + signature-verified
+  webhook + Supabase-JWT-verified entitlement status, D1-backed), client paywall
+  (`js/premium.js` / `premium-config.js`, gates `[data-premium]` content), and
+  `pricing.html`. Turn it on via **SUBSCRIPTION_SETUP.md** (~30 min once the LLC + a
+  Stripe account exist).
 
 ---
 
@@ -87,15 +93,19 @@ processor). To choose:
   accounts.
 - You can do **both** later (free + affiliate now, premium tier on top).
 
-### 5. Real backend (only if you go subscription / accounts)
-Today it's static (GitHub Pages) + `localStorage` + cron — perfect for a free, affiliate
-content site. Subscriptions need:
-- **Auth + DB**: a managed backend (Supabase / Firebase / Clerk) for accounts and
-  entitlements. The front-end auth scaffolding exists (`js/auth.js`).
-- **Payments**: Stripe Billing (subject to #4) for subscriptions + webhooks.
-- **Host for dynamic parts**: keep the static analytics on GitHub Pages; put the
-  auth/paywall/API on a small host (Cloudflare Workers / Vercel / Render).
-- **Email (ESP)**: you have Formspree wired for capture; for real sends use Buttondown /
+### 5. Real backend — ✅ BUILT (needs your accounts + deploy)
+The backend is **code-complete**. Today the public site is static (GitHub Pages) +
+`localStorage` + cron; the dynamic layer runs on the existing **Cloudflare Worker**
+(KV + D1 + R2) with **Supabase** for passwordless accounts.
+- **Auth + DB**: Supabase Auth (`js/auth.js`, magic-link) + the Worker's D1 for
+  entitlements (`schema_subscribers.sql`). **Your action**: create the free Supabase
+  project + paste keys into `js/auth-config.js`.
+- **Payments**: Stripe Billing is fully wired (`cloudflare-worker/src/billing.js` +
+  `js/premium.js` + `pricing.html`). **Your action**: create a Stripe account (after the
+  LLC), set the Worker secrets, flip `enabled:true`. Full steps in **SUBSCRIPTION_SETUP.md**.
+- **Host**: static analytics stay on GitHub Pages; auth/paywall/API already live on the
+  Cloudflare Worker — nothing new to stand up.
+- **Email (ESP)**: Formspree is wired for capture; for real sends use Buttondown /
   Mailchimp / ConvertKit (the morning digest "The Tape").
 
 ### 6. Reliability / monitoring — ✅ BUILT
