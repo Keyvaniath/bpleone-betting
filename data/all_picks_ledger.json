@@ -1,33 +1,33 @@
 {
-  "generated_at": "2026-06-19T16:41:00",
+  "generated_at": "2026-06-19T17:50:47",
   "stake_assumption": "1u flat per pick",
   "total_picks": 10000,
-  "n_settled": 6232,
-  "n_pending": 475,
-  "n_void": 3293,
-  "wins": 3023,
+  "n_settled": 6229,
+  "n_pending": 499,
+  "n_void": 3272,
+  "wins": 3020,
   "losses": 3203,
   "pushes": 6,
-  "hit_rate": 0.4855,
-  "net_units": -798.561,
-  "roi_pct": -12.83,
-  "n_calibrated_picks": 9548,
+  "hit_rate": 0.4853,
+  "net_units": -801.598,
+  "roi_pct": -12.88,
+  "n_calibrated_picks": 9547,
   "calibrated_reliability": {
-    "n": 6126,
-    "ece_raw": 0.1005,
-    "ece_calibrated": 0.0296,
-    "brier_raw": 0.22982,
-    "brier_calibrated": 0.207,
+    "n": 6123,
+    "ece_raw": 0.1007,
+    "ece_calibrated": 0.0297,
+    "brier_raw": 0.22989,
+    "brier_calibrated": 0.20706,
     "note": "In-sample over the settled ledger (the isotonic transform is fit on these same outcomes); held-out 70/30 validation is in recalibration_map.json. p_predicted = raw model prob (kept untouched for the learning loop); p_calibrated = honest prob stamped per pick. Lower ECE/Brier on the calibrated column = the displayed % is truer."
   },
   "curated": {
-    "n_settled": 742,
-    "wins": 557,
-    "losses": 179,
+    "n_settled": 736,
+    "wins": 552,
+    "losses": 178,
     "pushes": 6,
-    "hit_rate": 0.7568,
-    "net_units": 212.204,
-    "roi_pct": 28.83,
+    "hit_rate": 0.7562,
+    "net_units": 209.102,
+    "roi_pct": 28.64,
     "sources": [
       "consensus_hit_elite",
       "consensus_hit_strong",
@@ -42,40 +42,13 @@
     ],
     "definition": "Featured/recommended plays only -- Lock of the Day, Top 25, Whale, Sharp, Consensus (hit), Under Alerts, POD. Excludes the experimental prop feeds, which are tracked to train the model, not bet."
   },
-  "n_added_this_run": 6,
-  "n_newly_settled_this_run": 0,
+  "n_added_this_run": 27,
+  "n_newly_settled_this_run": 3,
   "n_resettled_this_run": 0,
   "n_voided_this_run": 0,
   "n_reconciled_settled_voids": 0,
   "n_bootstrapped_from_locks_history": 0,
   "by_source": {
-    "top_25_board": {
-      "n": 311,
-      "wins": 224,
-      "losses": 84,
-      "pushes": 3,
-      "net_units": 86.536,
-      "hit_rate": 0.7273,
-      "roi_pct": 28.1
-    },
-    "whale_whale": {
-      "n": 4,
-      "wins": 4,
-      "losses": 0,
-      "pushes": 0,
-      "net_units": 2.655,
-      "hit_rate": 1.0,
-      "roi_pct": 66.38
-    },
-    "lock_of_day": {
-      "n": 316,
-      "wins": 256,
-      "losses": 60,
-      "pushes": 0,
-      "net_units": 95.204,
-      "hit_rate": 0.8101,
-      "roi_pct": 30.13
-    },
     "golf_top_10": {
       "n": 140,
       "wins": 56,
@@ -93,6 +66,15 @@
       "net_units": 10.06,
       "hit_rate": 0.3548,
       "roi_pct": 32.45
+    },
+    "top_25_board": {
+      "n": 309,
+      "wins": 222,
+      "losses": 84,
+      "pushes": 3,
+      "net_units": 84.64,
+      "hit_rate": 0.7255,
+      "roi_pct": 27.66
     },
     "consensus_hr_strong": {
       "n": 41,
@@ -174,6 +156,15 @@
       "net_units": -120.156,
       "hit_rate": 0.2565,
       "roi_pct": -62.91
+    },
+    "lock_of_day": {
+      "n": 313,
+      "wins": 254,
+      "losses": 59,
+      "pushes": 0,
+      "net_units": 94.734,
+      "hit_rate": 0.8115,
+      "roi_pct": 30.27
     },
     "whale_strong": {
       "n": 28,
@@ -300,6 +291,15 @@
       "net_units": 4.181,
       "hit_rate": 0.6923,
       "roi_pct": 32.16
+    },
+    "whale_whale": {
+      "n": 3,
+      "wins": 3,
+      "losses": 0,
+      "pushes": 0,
+      "net_units": 1.92,
+      "hit_rate": 1.0,
+      "roi_pct": 64.0
     },
     "nhl_skater_blocks_over_1.5": {
       "n": 29,
@@ -1092,41 +1092,36 @@
       "net_units": 0.459,
       "hit_rate": 1.0,
       "roi_pct": 45.9
+    },
+    "tennis_ml_ml_player1": {
+      "n": 1,
+      "wins": 1,
+      "losses": 0,
+      "pushes": 0,
+      "net_units": 0.562,
+      "hit_rate": 1.0,
+      "roi_pct": 56.2
+    },
+    "tennis_games_total_games_over_16.5": {
+      "n": 1,
+      "wins": 1,
+      "losses": 0,
+      "pushes": 0,
+      "net_units": 0.502,
+      "hit_rate": 1.0,
+      "roi_pct": 50.2
+    },
+    "tennis_games_total_games_under_20.5": {
+      "n": 1,
+      "wins": 0,
+      "losses": 1,
+      "pushes": 0,
+      "net_units": -1.0,
+      "hit_rate": 0.0,
+      "roi_pct": -100.0
     }
   },
   "by_market_family": {
-    "pp_batter_home_runs": {
-      "n": 4,
-      "wins": 4,
-      "losses": 0,
-      "pushes": 0,
-      "net_units": 1.562,
-      "hit_rate": 1.0
-    },
-    "ml_away": {
-      "n": 43,
-      "wins": 27,
-      "losses": 16,
-      "pushes": 0,
-      "net_units": 6.203,
-      "hit_rate": 0.6279
-    },
-    "pp_batter_rbis": {
-      "n": 7,
-      "wins": 6,
-      "losses": 1,
-      "pushes": 0,
-      "net_units": -0.035,
-      "hit_rate": 0.8571
-    },
-    "pp_batter_hrr": {
-      "n": 508,
-      "wins": 414,
-      "losses": 94,
-      "pushes": 0,
-      "net_units": 191.305,
-      "hit_rate": 0.815
-    },
     "top": {
       "n": 342,
       "wins": 167,
@@ -1239,6 +1234,14 @@
       "net_units": -0.836,
       "hit_rate": 0.5676
     },
+    "pp_batter_hrr": {
+      "n": 507,
+      "wins": 413,
+      "losses": 94,
+      "pushes": 0,
+      "net_units": 190.57,
+      "hit_rate": 0.8146
+    },
     "to_score_run_yes": {
       "n": 156,
       "wins": 66,
@@ -1278,6 +1281,14 @@
       "pushes": 0,
       "net_units": -142.147,
       "hit_rate": 0.1686
+    },
+    "ml_away": {
+      "n": 42,
+      "wins": 26,
+      "losses": 16,
+      "pushes": 0,
+      "net_units": 5.043,
+      "hit_rate": 0.619
     },
     "under": {
       "n": 71,
@@ -1487,6 +1498,14 @@
       "net_units": -3.78,
       "hit_rate": 0.4545
     },
+    "pp_batter_rbis": {
+      "n": 5,
+      "wins": 5,
+      "losses": 0,
+      "pushes": 0,
+      "net_units": 0.23,
+      "hit_rate": 1.0
+    },
     "tb_3plus_no": {
       "n": 4,
       "wins": 4,
@@ -1502,6 +1521,14 @@
       "pushes": 0,
       "net_units": -2.0,
       "hit_rate": 0.0
+    },
+    "pp_batter_home_runs": {
+      "n": 2,
+      "wins": 2,
+      "losses": 0,
+      "pushes": 0,
+      "net_units": 0.092,
+      "hit_rate": 1.0
     },
     "home_ml": {
       "n": 10,
@@ -1526,41 +1553,33 @@
       "pushes": 0,
       "net_units": 0.532,
       "hit_rate": 1.0
+    },
+    "ml_player1": {
+      "n": 1,
+      "wins": 1,
+      "losses": 0,
+      "pushes": 0,
+      "net_units": 0.562,
+      "hit_rate": 1.0
+    },
+    "total_games_over": {
+      "n": 1,
+      "wins": 1,
+      "losses": 0,
+      "pushes": 0,
+      "net_units": 0.502,
+      "hit_rate": 1.0
+    },
+    "total_games_under": {
+      "n": 1,
+      "wins": 0,
+      "losses": 1,
+      "pushes": 0,
+      "net_units": -1.0,
+      "hit_rate": 0.0
     }
   },
   "by_canonical": {
-    "mlb_hr_0.5_under": {
-      "n": 4,
-      "wins": 4,
-      "losses": 0,
-      "pushes": 0,
-      "net_units": 1.562,
-      "hit_rate": 1.0
-    },
-    "ml_away": {
-      "n": 43,
-      "wins": 27,
-      "losses": 16,
-      "pushes": 0,
-      "net_units": 6.203,
-      "hit_rate": 0.6279
-    },
-    "mlb_rbi_1.5_under": {
-      "n": 7,
-      "wins": 6,
-      "losses": 1,
-      "pushes": 0,
-      "net_units": -0.035,
-      "hit_rate": 0.8571
-    },
-    "mlb_hrr_3.5_under": {
-      "n": 399,
-      "wins": 323,
-      "losses": 76,
-      "pushes": 0,
-      "net_units": 150.63,
-      "hit_rate": 0.8095
-    },
     "top": {
       "n": 342,
       "wins": 167,
@@ -1673,6 +1692,14 @@
       "net_units": -0.836,
       "hit_rate": 0.5676
     },
+    "mlb_hrr_3.5_under": {
+      "n": 398,
+      "wins": 322,
+      "losses": 76,
+      "pushes": 0,
+      "net_units": 149.895,
+      "hit_rate": 0.809
+    },
     "mlb_run_0.5_over": {
       "n": 156,
       "wins": 66,
@@ -1704,6 +1731,14 @@
       "pushes": 0,
       "net_units": -20.793,
       "hit_rate": 0.7538
+    },
+    "ml_away": {
+      "n": 42,
+      "wins": 26,
+      "losses": 16,
+      "pushes": 0,
+      "net_units": 5.043,
+      "hit_rate": 0.619
     },
     "under": {
       "n": 71,
@@ -1937,6 +1972,14 @@
       "net_units": 0.477,
       "hit_rate": 1.0
     },
+    "mlb_rbi_1.5_under": {
+      "n": 5,
+      "wins": 5,
+      "losses": 0,
+      "pushes": 0,
+      "net_units": 0.23,
+      "hit_rate": 1.0
+    },
     "anytime_goal": {
       "n": 2,
       "wins": 0,
@@ -1944,6 +1987,14 @@
       "pushes": 0,
       "net_units": -2.0,
       "hit_rate": 0.0
+    },
+    "mlb_hr_0.5_under": {
+      "n": 2,
+      "wins": 2,
+      "losses": 0,
+      "pushes": 0,
+      "net_units": 0.092,
+      "hit_rate": 1.0
     },
     "home_ml": {
       "n": 10,
@@ -1968,68 +2019,53 @@
       "pushes": 0,
       "net_units": 0.532,
       "hit_rate": 1.0
+    },
+    "ml_player1": {
+      "n": 1,
+      "wins": 1,
+      "losses": 0,
+      "pushes": 0,
+      "net_units": 0.562,
+      "hit_rate": 1.0
+    },
+    "total_games_over": {
+      "n": 1,
+      "wins": 1,
+      "losses": 0,
+      "pushes": 0,
+      "net_units": 0.502,
+      "hit_rate": 1.0
+    },
+    "total_games_under": {
+      "n": 1,
+      "wins": 0,
+      "losses": 1,
+      "pushes": 0,
+      "net_units": -1.0,
+      "hit_rate": 0.0
     }
   },
   "by_sport": {
-    "MLB-PP": {
-      "n": 763,
-      "settled": 551,
-      "wins": 451,
-      "losses": 100,
-      "pushes": 0,
-      "pending": 64,
-      "void": 148,
-      "net_units": 198.529,
-      "hit_rate": 0.8185,
-      "roi_pct": 36.03,
-      "markets": 4
-    },
     "MLB": {
       "n": 7548,
-      "settled": 4963,
-      "wins": 2198,
+      "settled": 4962,
+      "wins": 2197,
       "losses": 2759,
       "pushes": 6,
-      "pending": 279,
-      "void": 2306,
-      "net_units": -1032.064,
-      "hit_rate": 0.4434,
-      "roi_pct": -20.82,
+      "pending": 296,
+      "void": 2290,
+      "net_units": -1033.208,
+      "hit_rate": 0.4433,
+      "roi_pct": -20.85,
       "markets": 50
     },
-    "KBO": {
-      "n": 81,
-      "settled": 0,
-      "wins": 0,
-      "losses": 0,
-      "pushes": 0,
-      "pending": 4,
-      "void": 77,
-      "net_units": 0.0,
-      "hit_rate": null,
-      "roi_pct": null,
-      "markets": 2
-    },
-    "WNBA": {
-      "n": 338,
-      "settled": 110,
-      "wins": 78,
-      "losses": 32,
-      "pushes": 0,
-      "pending": 36,
-      "void": 192,
-      "net_units": 6.807,
-      "hit_rate": 0.7091,
-      "roi_pct": 6.19,
-      "markets": 4
-    },
     "GOLF": {
-      "n": 343,
+      "n": 348,
       "settled": 321,
       "wins": 158,
       "losses": 163,
       "pushes": 0,
-      "pending": 22,
+      "pending": 27,
       "void": 0,
       "net_units": 20.89,
       "hit_rate": 0.4922,
@@ -2048,6 +2084,32 @@
       "hit_rate": 0.4615,
       "roi_pct": -32.02,
       "markets": 6
+    },
+    "KBO": {
+      "n": 80,
+      "settled": 0,
+      "wins": 0,
+      "losses": 0,
+      "pushes": 0,
+      "pending": 4,
+      "void": 76,
+      "net_units": 0.0,
+      "hit_rate": null,
+      "roi_pct": null,
+      "markets": 2
+    },
+    "MLB-PP": {
+      "n": 756,
+      "settled": 546,
+      "wins": 447,
+      "losses": 99,
+      "pushes": 0,
+      "pending": 64,
+      "void": 146,
+      "net_units": 196.589,
+      "hit_rate": 0.8187,
+      "roi_pct": 36.01,
+      "markets": 4
     },
     "F1": {
       "n": 75,
@@ -2100,6 +2162,19 @@
       "hit_rate": 0.5,
       "roi_pct": -24.75,
       "markets": 2
+    },
+    "WNBA": {
+      "n": 336,
+      "settled": 110,
+      "wins": 78,
+      "losses": 32,
+      "pushes": 0,
+      "pending": 36,
+      "void": 190,
+      "net_units": 6.807,
+      "hit_rate": 0.7091,
+      "roi_pct": 6.19,
+      "markets": 4
     },
     "NBA": {
       "n": 237,
@@ -2154,579 +2229,26 @@
       "markets": 6
     },
     "TENNIS": {
-      "n": 14,
-      "settled": 0,
-      "wins": 0,
-      "losses": 0,
+      "n": 19,
+      "settled": 3,
+      "wins": 2,
+      "losses": 1,
       "pushes": 0,
-      "pending": 14,
+      "pending": 16,
       "void": 0,
-      "net_units": 0.0,
-      "hit_rate": null,
-      "roi_pct": null,
+      "net_units": 0.065,
+      "hit_rate": 0.6667,
+      "roi_pct": 2.17,
       "markets": 4
     }
   },
   "last_7_days": {
-    "wins": 517,
-    "losses": 766,
-    "net_units": -114.29,
-    "hit_rate": 0.403
+    "wins": 519,
+    "losses": 767,
+    "net_units": -114.226,
+    "hit_rate": 0.4036
   },
   "picks": [
-    {
-      "source": "top_25_board",
-      "sport": "MLB-PP",
-      "player_or_matchup": "Davis Martin",
-      "market": "PP_pitcher_strikeouts_over_3.5",
-      "prob": 0.7161,
-      "raw_prob": 0.919,
-      "edge_pct": 24.3,
-      "fair_american": -136,
-      "primary_source_module": "pp_over",
-      "date": "2026-05-28",
-      "pick_id": "top_25_board|MLB_PP|Davis_Martin|PP_pitcher_strikeouts_over_3_5|2026-05-28",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
-      "recorded_at": "2026-05-28T14:01:01",
-      "voided": true,
-      "voided_at": "2026-06-02T02:14:45",
-      "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.7161
-    },
-    {
-      "source": "top_25_board",
-      "sport": "MLB-PP",
-      "player_or_matchup": "Carlos Narv\u00e1ez",
-      "market": "PP_batter_home_runs_under_0.5",
-      "prob": 0.7161,
-      "raw_prob": 0.919,
-      "edge_pct": 24.3,
-      "fair_american": -136,
-      "primary_source_module": "pp_under",
-      "date": "2026-05-28",
-      "pick_id": "top_25_board|MLB_PP|Carlos_Narv_ez|PP_batter_home_runs_under_0_5|2026-05-28",
-      "settled": true,
-      "result": "won",
-      "payout_units": 0.7353,
-      "recorded_at": "2026-05-28T14:01:01",
-      "settled_at": "2026-05-29T06:07:57",
-      "p_calibrated": 0.7161
-    },
-    {
-      "source": "top_25_board",
-      "sport": "MLB",
-      "player_or_matchup": "HOU @ TEX",
-      "market": "ML_AWAY",
-      "prob": 0.5744,
-      "raw_prob": 0.6022,
-      "edge_pct": 24.1,
-      "fair_american": 116,
-      "primary_source_module": "today",
-      "date": "2026-05-28",
-      "pick_id": "top_25_board|MLB|HOU___TEX|ML_AWAY|2026-05-28",
-      "settled": true,
-      "result": "won",
-      "payout_units": 1.16,
-      "recorded_at": "2026-05-28T14:01:01",
-      "settled_at": "2026-05-29T06:07:57",
-      "outcome": {
-        "final_score": "HOU 4 @ TEX 3",
-        "total_runs": 7,
-        "verify": "HOU @ TEX: final 4-3 (total 7) on 2026-05-28",
-        "check": "verified"
-      },
-      "p_calibrated": 0.6162
-    },
-    {
-      "source": "top_25_board",
-      "sport": "MLB",
-      "player_or_matchup": "HOU @ TEX",
-      "market": "HOU_ML",
-      "prob": 0.5744,
-      "raw_prob": 0.6022,
-      "edge_pct": 24.1,
-      "fair_american": 116,
-      "primary_source_module": "today_reco",
-      "date": "2026-05-28",
-      "pick_id": "top_25_board|MLB|HOU___TEX|HOU_ML|2026-05-28",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
-      "recorded_at": "2026-05-28T14:01:01",
-      "voided": true,
-      "voided_at": "2026-06-02T02:14:45",
-      "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.5744
-    },
-    {
-      "source": "whale_whale",
-      "sport": "MLB-PP",
-      "player_or_matchup": "Taylor Trammell",
-      "market": "PP_batter_rbis_under_1.5",
-      "prob": 0.7164,
-      "edge_pct": 24.3,
-      "fair_american": -136,
-      "tier": "WHALE",
-      "confluence_score": 3.5,
-      "date": "2026-05-28",
-      "pick_id": "whale_whale|MLB_PP|Taylor_Trammell|PP_batter_rbis_under_1_5|2026-05-28",
-      "settled": true,
-      "result": "won",
-      "payout_units": 0.7353,
-      "recorded_at": "2026-05-28T14:01:01",
-      "settled_at": "2026-05-29T08:17:01",
-      "p_calibrated": 0.7164
-    },
-    {
-      "source": "lock_of_day",
-      "sport": "KBO",
-      "player_or_matchup": "Choi Jeong",
-      "market": "one_plus_tb",
-      "prob": 0.7322,
-      "edge_pct": 39.8,
-      "fair_american": -110,
-      "date": "2026-05-28",
-      "pick_id": "lock_of_day|KBO|Choi_Jeong|one_plus_tb|2026-05-28",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
-      "recorded_at": "2026-05-28T14:01:01",
-      "voided": true,
-      "voided_at": "2026-06-02T02:14:45",
-      "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.7322
-    },
-    {
-      "source": "lock_of_day",
-      "sport": "MLB-PP",
-      "player_or_matchup": "Jahmai Jones",
-      "market": "PP_batter_hrr_under_3.5",
-      "prob": 0.7164,
-      "edge_pct": 24.3,
-      "fair_american": -136,
-      "date": "2026-05-28",
-      "pick_id": "lock_of_day|MLB_PP|Jahmai_Jones|PP_batter_hrr_under_3_5|2026-05-28",
-      "settled": true,
-      "result": "won",
-      "payout_units": 0.7353,
-      "recorded_at": "2026-05-28T14:01:01",
-      "settled_at": "2026-05-29T06:07:57",
-      "outcome": {
-        "stat": "hrr",
-        "actual": 0,
-        "line": 3.5,
-        "side": "UNDER/NO",
-        "verify": "Jahmai Jones \u2014 hrr = 0 (line 3.5, bet UNDER/NO) on 2026-05-28",
-        "check": "verified"
-      },
-      "p_calibrated": 0.7817
-    },
-    {
-      "source": "lock_of_day",
-      "sport": "MLB-PP",
-      "player_or_matchup": "Gunnar Henderson",
-      "market": "PP_batter_singles_under_1.5",
-      "prob": 0.7164,
-      "edge_pct": 24.3,
-      "fair_american": -136,
-      "date": "2026-05-28",
-      "pick_id": "lock_of_day|MLB_PP|Gunnar_Henderson|PP_batter_singles_under_1_5|2026-05-28",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
-      "recorded_at": "2026-05-28T14:01:01",
-      "voided": true,
-      "voided_at": "2026-06-02T02:14:45",
-      "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.7164
-    },
-    {
-      "source": "lock_of_day",
-      "sport": "MLB-PP",
-      "player_or_matchup": "Ian Happ",
-      "market": "PP_batter_rbis_under_1.5",
-      "prob": 0.7164,
-      "edge_pct": 24.3,
-      "fair_american": -136,
-      "date": "2026-05-28",
-      "pick_id": "lock_of_day|MLB_PP|Ian_Happ|PP_batter_rbis_under_1_5|2026-05-28",
-      "settled": true,
-      "result": "lost",
-      "payout_units": -1.0,
-      "recorded_at": "2026-05-28T14:01:01",
-      "settled_at": "2026-05-29T08:17:01",
-      "p_calibrated": 0.7164
-    },
-    {
-      "source": "lock_of_day",
-      "sport": "MLB-PP",
-      "player_or_matchup": "Vladimir Guerrero Jr.",
-      "market": "PP_batter_home_runs_under_0.5",
-      "prob": 0.7162,
-      "edge_pct": 24.3,
-      "fair_american": -136,
-      "date": "2026-05-28",
-      "pick_id": "lock_of_day|MLB_PP|Vladimir_Guerrero_Jr_|PP_batter_home_runs_under_0_5|2026-05-28",
-      "settled": true,
-      "result": "won",
-      "payout_units": 0.7353,
-      "recorded_at": "2026-05-28T14:01:01",
-      "settled_at": "2026-05-29T08:17:01",
-      "p_calibrated": 0.7162
-    },
-    {
-      "source": "mlb_f5",
-      "sport": "MLB",
-      "player_or_matchup": "LAA @ DET",
-      "market": "f5_total_over_4",
-      "prob": 0.948,
-      "fair_american": -1829,
-      "p_predicted": 0.948,
-      "date": "2026-05-28",
-      "pick_id": "mlb_f5|MLB|LAA___DET|f5_total_over_4|2026-05-28",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
-      "recorded_at": "2026-05-28T14:01:01",
-      "voided": true,
-      "voided_at": "2026-05-31T15:22:23",
-      "voided_reason": "mis-graded prop (was scored as a full-game total); voided",
-      "p_calibrated": 0.948
-    },
-    {
-      "source": "mlb_f5",
-      "sport": "MLB",
-      "player_or_matchup": "ATL @ BOS",
-      "market": "f5_total_under_4",
-      "prob": 0.683,
-      "fair_american": -216,
-      "p_predicted": 0.683,
-      "date": "2026-05-28",
-      "pick_id": "mlb_f5|MLB|ATL___BOS|f5_total_under_4|2026-05-28",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
-      "recorded_at": "2026-05-28T14:01:01",
-      "voided": true,
-      "voided_at": "2026-05-31T15:22:23",
-      "voided_reason": "mis-graded prop (was scored as a full-game total); voided",
-      "p_calibrated": 0.683
-    },
-    {
-      "source": "mlb_f5",
-      "sport": "MLB",
-      "player_or_matchup": "MIN @ CHW",
-      "market": "f5_total_under_4",
-      "prob": 0.804,
-      "fair_american": -410,
-      "p_predicted": 0.804,
-      "date": "2026-05-28",
-      "pick_id": "mlb_f5|MLB|MIN___CHW|f5_total_under_4|2026-05-28",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
-      "recorded_at": "2026-05-28T14:01:01",
-      "voided": true,
-      "voided_at": "2026-05-31T15:22:23",
-      "voided_reason": "mis-graded prop (was scored as a full-game total); voided",
-      "p_calibrated": 0.804
-    },
-    {
-      "source": "mlb_team_sb_team_sb_under_0.5",
-      "sport": "MLB",
-      "player_or_matchup": "LAA (LAA @ DET)",
-      "market": "TEAM_SB_UNDER_0.5",
-      "prob": 0.657,
-      "fair_american": -192,
-      "p_predicted": 0.657,
-      "matchup": "LAA @ DET",
-      "date": "2026-05-28",
-      "pick_id": "mlb_team_sb_team_sb_under_0_5|MLB|LAA__LAA___DET_|TEAM_SB_UNDER_0_5|2026-05-28",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
-      "recorded_at": "2026-05-28T14:01:01",
-      "voided": true,
-      "voided_at": "2026-05-31T15:22:23",
-      "voided_reason": "mis-graded prop (was scored as a full-game total); voided",
-      "p_calibrated": 0.657
-    },
-    {
-      "source": "mlb_team_sb_team_sb_under_0.5",
-      "sport": "MLB",
-      "player_or_matchup": "PIT (CHC @ PIT)",
-      "market": "TEAM_SB_UNDER_0.5",
-      "prob": 0.657,
-      "fair_american": -192,
-      "p_predicted": 0.657,
-      "matchup": "CHC @ PIT",
-      "date": "2026-05-28",
-      "pick_id": "mlb_team_sb_team_sb_under_0_5|MLB|PIT__CHC___PIT_|TEAM_SB_UNDER_0_5|2026-05-28",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
-      "recorded_at": "2026-05-28T14:01:01",
-      "voided": true,
-      "voided_at": "2026-05-31T15:22:23",
-      "voided_reason": "mis-graded prop (was scored as a full-game total); voided",
-      "p_calibrated": 0.657
-    },
-    {
-      "source": "mlb_team_sb_team_sb_under_0.5",
-      "sport": "MLB",
-      "player_or_matchup": "DET (LAA @ DET)",
-      "market": "TEAM_SB_UNDER_0.5",
-      "prob": 0.684,
-      "fair_american": -216,
-      "p_predicted": 0.684,
-      "matchup": "LAA @ DET",
-      "date": "2026-05-28",
-      "pick_id": "mlb_team_sb_team_sb_under_0_5|MLB|DET__LAA___DET_|TEAM_SB_UNDER_0_5|2026-05-28",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
-      "recorded_at": "2026-05-28T14:01:01",
-      "voided": true,
-      "voided_at": "2026-05-31T15:22:23",
-      "voided_reason": "mis-graded prop (was scored as a full-game total); voided",
-      "p_calibrated": 0.684
-    },
-    {
-      "source": "mlb_h_allowed_h_under_5.0",
-      "sport": "MLB",
-      "player_or_matchup": "Chris Bassitt",
-      "market": "H_UNDER_5.0",
-      "prob": 0.662,
-      "fair_american": -196,
-      "p_predicted": 0.662,
-      "matchup": "TOR @ BAL",
-      "date": "2026-05-28",
-      "pick_id": "mlb_h_allowed_h_under_5_0|MLB|Chris_Bassitt|H_UNDER_5_0|2026-05-28",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
-      "recorded_at": "2026-05-28T14:01:01",
-      "voided": true,
-      "voided_at": "2026-06-02T02:14:45",
-      "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.662
-    },
-    {
-      "source": "mlb_h_allowed_h_under_7.0",
-      "sport": "MLB",
-      "player_or_matchup": "Jack Flaherty",
-      "market": "H_UNDER_7.0",
-      "prob": 0.652,
-      "fair_american": -187,
-      "p_predicted": 0.652,
-      "matchup": "LAA @ DET",
-      "date": "2026-05-28",
-      "pick_id": "mlb_h_allowed_h_under_7_0|MLB|Jack_Flaherty|H_UNDER_7_0|2026-05-28",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
-      "recorded_at": "2026-05-28T14:01:01",
-      "voided": true,
-      "voided_at": "2026-06-02T02:14:45",
-      "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.652
-    },
-    {
-      "source": "mlb_h_allowed_h_under_5.0",
-      "sport": "MLB",
-      "player_or_matchup": "Spencer Arrighetti",
-      "market": "H_UNDER_5.0",
-      "prob": 0.652,
-      "fair_american": -187,
-      "p_predicted": 0.652,
-      "matchup": "HOU @ TEX",
-      "date": "2026-05-28",
-      "pick_id": "mlb_h_allowed_h_under_5_0|MLB|Spencer_Arrighetti|H_UNDER_5_0|2026-05-28",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
-      "recorded_at": "2026-05-28T14:01:01",
-      "voided": true,
-      "voided_at": "2026-06-02T02:14:45",
-      "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.652
-    },
-    {
-      "source": "mlb_h_allowed_h_under_3.5",
-      "sport": "MLB",
-      "player_or_matchup": "Payton Tolle",
-      "market": "H_UNDER_3.5",
-      "prob": 0.647,
-      "fair_american": -183,
-      "p_predicted": 0.647,
-      "matchup": "ATL @ BOS",
-      "date": "2026-05-28",
-      "pick_id": "mlb_h_allowed_h_under_3_5|MLB|Payton_Tolle|H_UNDER_3_5|2026-05-28",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
-      "recorded_at": "2026-05-28T14:01:01",
-      "voided": true,
-      "voided_at": "2026-06-02T02:14:45",
-      "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.647
-    },
-    {
-      "source": "mlb_h_allowed_h_under_5.0",
-      "sport": "MLB",
-      "player_or_matchup": "Chris Sale",
-      "market": "H_UNDER_5.0",
-      "prob": 0.641,
-      "fair_american": -178,
-      "p_predicted": 0.641,
-      "matchup": "ATL @ BOS",
-      "date": "2026-05-28",
-      "pick_id": "mlb_h_allowed_h_under_5_0|MLB|Chris_Sale|H_UNDER_5_0|2026-05-28",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
-      "recorded_at": "2026-05-28T14:01:01",
-      "voided": true,
-      "voided_at": "2026-06-02T02:14:45",
-      "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.641
-    },
-    {
-      "source": "mlb_h_allowed_h_under_5.0",
-      "sport": "MLB",
-      "player_or_matchup": "Patrick Corbin",
-      "market": "H_UNDER_5.0",
-      "prob": 0.641,
-      "fair_american": -178,
-      "p_predicted": 0.641,
-      "matchup": "TOR @ BAL",
-      "date": "2026-05-28",
-      "pick_id": "mlb_h_allowed_h_under_5_0|MLB|Patrick_Corbin|H_UNDER_5_0|2026-05-28",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
-      "recorded_at": "2026-05-28T14:01:01",
-      "voided": true,
-      "voided_at": "2026-06-02T02:14:45",
-      "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.641
-    },
-    {
-      "source": "mlb_h_allowed_h_under_5.0",
-      "sport": "MLB",
-      "player_or_matchup": "Davis Martin",
-      "market": "H_UNDER_5.0",
-      "prob": 0.635,
-      "fair_american": -174,
-      "p_predicted": 0.635,
-      "matchup": "MIN @ CHW",
-      "date": "2026-05-28",
-      "pick_id": "mlb_h_allowed_h_under_5_0|MLB|Davis_Martin|H_UNDER_5_0|2026-05-28",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
-      "recorded_at": "2026-05-28T14:01:01",
-      "voided": true,
-      "voided_at": "2026-06-02T02:14:45",
-      "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.635
-    },
-    {
-      "source": "mlb_h_allowed_h_under_7.0",
-      "sport": "MLB",
-      "player_or_matchup": "Grayson Rodriguez",
-      "market": "H_UNDER_7.0",
-      "prob": 0.633,
-      "fair_american": -172,
-      "p_predicted": 0.633,
-      "matchup": "LAA @ DET",
-      "date": "2026-05-28",
-      "pick_id": "mlb_h_allowed_h_under_7_0|MLB|Grayson_Rodriguez|H_UNDER_7_0|2026-05-28",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
-      "recorded_at": "2026-05-28T14:01:01",
-      "voided": true,
-      "voided_at": "2026-06-02T02:14:45",
-      "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.633
-    },
-    {
-      "source": "mlb_h_allowed_h_under_5.0",
-      "sport": "MLB",
-      "player_or_matchup": "Nathan Eovaldi",
-      "market": "H_UNDER_5.0",
-      "prob": 0.627,
-      "fair_american": -168,
-      "p_predicted": 0.627,
-      "matchup": "HOU @ TEX",
-      "date": "2026-05-28",
-      "pick_id": "mlb_h_allowed_h_under_5_0|MLB|Nathan_Eovaldi|H_UNDER_5_0|2026-05-28",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
-      "recorded_at": "2026-05-28T14:01:01",
-      "voided": true,
-      "voided_at": "2026-06-02T02:14:45",
-      "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.627
-    },
-    {
-      "source": "wnba_3pm_3pm_over_1.5",
-      "sport": "WNBA",
-      "player_or_matchup": "rhyne howard",
-      "market": "3PM_OVER_1.5",
-      "prob": 0.644,
-      "fair_american": -181,
-      "p_predicted": 0.644,
-      "matchup": "ATL @ MIN",
-      "date": "2026-05-28",
-      "pick_id": "wnba_3pm_3pm_over_1_5|WNBA|rhyne_howard|3PM_OVER_1_5|2026-05-28",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
-      "recorded_at": "2026-05-28T14:01:01",
-      "voided": true,
-      "outcome": {
-        "stat": "fg3m",
-        "actual": 2,
-        "line": 1.5,
-        "side": "OVER",
-        "verify": "rhyne howard \u2014 fg3m = 2 (line 1.5, bet over) on 2026-05-28"
-      },
-      "voided_at": "2026-06-05T07:58:07",
-      "voided_reason": "mis-graded prop (was scored as a full-game total); voided",
-      "p_calibrated": 0.644
-    },
-    {
-      "source": "wnba_3pm_3pm_under_1.5",
-      "sport": "WNBA",
-      "player_or_matchup": "kennedy burke",
-      "market": "3PM_UNDER_1.5",
-      "prob": 0.72,
-      "fair_american": -257,
-      "p_predicted": 0.72,
-      "matchup": "PHX @ NYL",
-      "date": "2026-05-28",
-      "pick_id": "wnba_3pm_3pm_under_1_5|WNBA|kennedy_burke|3PM_UNDER_1_5|2026-05-28",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
-      "recorded_at": "2026-05-28T14:01:01",
-      "voided": true,
-      "outcome": {
-        "stat": "fg3m",
-        "actual": 0,
-        "line": 1.5,
-        "side": "UNDER",
-        "verify": "kennedy burke \u2014 fg3m = 0 (line 1.5, bet under) on 2026-05-28"
-      },
-      "voided_at": "2026-06-05T07:58:07",
-      "voided_reason": "mis-graded prop (was scored as a full-game total); voided",
-      "p_calibrated": 0.72
-    },
     {
       "source": "mlb_pk_k_under_7.5",
       "sport": "MLB",
@@ -5032,7 +4554,7 @@
       "voided": true,
       "voided_at": "2026-06-03T00:16:44",
       "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "lock_of_day",
@@ -5152,7 +4674,7 @@
         "verify": "Jahmai Jones \u2014 hrr = 0 (line 3.5, bet UNDER/NO) on 2026-05-29",
         "check": "verified"
       },
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "lock_of_day",
@@ -11387,7 +10909,7 @@
         "verify": "Fernando Tatis Jr. \u2014 hrr = 5 (line 3.5, bet UNDER/NO) on 2026-05-29",
         "check": "verified"
       },
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "top_25_board",
@@ -11408,7 +10930,7 @@
       "voided": true,
       "voided_at": "2026-06-03T00:16:44",
       "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "top_25_board",
@@ -11435,7 +10957,7 @@
         "verify": "Vinnie Pasquantino \u2014 hrr = 3 (line 3.5, bet UNDER/NO) on 2026-05-29",
         "check": "verified"
       },
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "top_25_board",
@@ -11462,7 +10984,7 @@
         "verify": "Kyle Stowers \u2014 hrr = 5 (line 3.5, bet UNDER/NO) on 2026-05-29",
         "check": "verified"
       },
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "top_25_board",
@@ -11672,7 +11194,7 @@
         "verify": "Fernando Tatis Jr. \u2014 hrr = 5 (line 3.5, bet UNDER/NO) on 2026-05-29",
         "check": "verified"
       },
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "lock_of_day",
@@ -11691,7 +11213,7 @@
       "voided": true,
       "voided_at": "2026-06-03T00:16:44",
       "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "lock_of_day",
@@ -11716,7 +11238,7 @@
         "verify": "Vinnie Pasquantino \u2014 hrr = 3 (line 3.5, bet UNDER/NO) on 2026-05-29",
         "check": "verified"
       },
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "lock_of_day",
@@ -11766,7 +11288,7 @@
         "verify": "Kyle Stowers \u2014 hrr = 5 (line 3.5, bet UNDER/NO) on 2026-05-29",
         "check": "verified"
       },
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "whale_strong",
@@ -20037,7 +19559,7 @@
         "verify": "Kyle Isbel \u2014 hrr = 0 (line 3.5, bet UNDER/NO) on 2026-05-29",
         "check": "verified"
       },
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "top_25_board",
@@ -20083,7 +19605,7 @@
         "verify": "Kyle Isbel \u2014 hrr = 0 (line 3.5, bet UNDER/NO) on 2026-05-29",
         "check": "verified"
       },
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "top_25_board",
@@ -20110,7 +19632,7 @@
         "verify": "Kyle Isbel \u2014 hrr = 1 (line 3.5, bet UNDER/NO) on 2026-05-30",
         "check": "verified"
       },
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "top_25_board",
@@ -20145,7 +19667,7 @@
           "reason": "stat revised after settlement; re-graded vs current box score"
         }
       ],
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "top_25_board",
@@ -20166,7 +19688,7 @@
       "voided": true,
       "voided_at": "2026-06-04T00:12:48",
       "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "top_25_board",
@@ -20193,7 +19715,7 @@
         "verify": "Vinnie Pasquantino \u2014 hrr = 3 (line 3.5, bet UNDER/NO) on 2026-05-30",
         "check": "verified"
       },
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "top_25_board",
@@ -20247,7 +19769,7 @@
         "verify": "Kyle Stowers \u2014 hrr = 0 (line 3.5, bet UNDER/NO) on 2026-05-30",
         "check": "verified"
       },
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "top_25_board",
@@ -21092,7 +20614,7 @@
           "reason": "stat revised after settlement; re-graded vs current box score"
         }
       ],
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "lock_of_day",
@@ -21111,7 +20633,7 @@
       "voided": true,
       "voided_at": "2026-06-04T00:12:48",
       "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "lock_of_day",
@@ -21136,7 +20658,7 @@
         "verify": "Vinnie Pasquantino \u2014 hrr = 3 (line 3.5, bet UNDER/NO) on 2026-05-30",
         "check": "verified"
       },
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "lock_of_day",
@@ -21186,7 +20708,7 @@
         "verify": "Kyle Stowers \u2014 hrr = 0 (line 3.5, bet UNDER/NO) on 2026-05-30",
         "check": "verified"
       },
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "lock_of_day",
@@ -21211,7 +20733,7 @@
         "verify": "Kyle Isbel \u2014 hrr = 1 (line 3.5, bet UNDER/NO) on 2026-05-30",
         "check": "verified"
       },
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "pod",
@@ -39073,7 +38595,7 @@
       "voided": true,
       "voided_at": "2026-06-04T00:12:48",
       "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "top_25_board",
@@ -39154,7 +38676,7 @@
         "verify": "Nick Fortes \u2014 hrr = 0 (line 3.5, bet UNDER/NO) on 2026-05-30",
         "check": "verified"
       },
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "top_25_board",
@@ -39181,7 +38703,7 @@
         "verify": "Alejandro Osuna \u2014 hrr = 0 (line 3.5, bet UNDER/NO) on 2026-05-30",
         "check": "verified"
       },
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "lock_of_day",
@@ -39200,7 +38722,7 @@
       "voided": true,
       "voided_at": "2026-06-04T00:12:48",
       "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "lock_of_day",
@@ -39275,7 +38797,7 @@
         "verify": "Nick Fortes \u2014 hrr = 0 (line 3.5, bet UNDER/NO) on 2026-05-30",
         "check": "verified"
       },
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "mlb_rl_home_minus_1.5",
@@ -40608,7 +40130,7 @@
       "voided": true,
       "voided_at": "2026-06-04T00:12:48",
       "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "top_25_board",
@@ -40635,7 +40157,7 @@
         "verify": "Alec Bohm \u2014 hrr = 3 (line 3.5, bet UNDER/NO) on 2026-05-30",
         "check": "verified"
       },
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "top_25_board",
@@ -40700,7 +40222,7 @@
       "voided": true,
       "voided_at": "2026-06-04T00:12:48",
       "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "top_25_board",
@@ -40755,7 +40277,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-05T08:26:35",
-      "p_calibrated": 0.7931
+      "p_calibrated": 0.7855
     },
     {
       "source": "top_25_board",
@@ -40844,7 +40366,7 @@
         "check": "verified"
       },
       "settled_at": "2026-05-31T21:11:49",
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "top_25_board",
@@ -40871,7 +40393,7 @@
         "check": "verified"
       },
       "settled_at": "2026-05-31T21:11:49",
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "top_25_board",
@@ -41204,7 +40726,7 @@
         "check": "verified"
       },
       "settled_at": "2026-05-31T21:11:49",
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "lock_of_day",
@@ -41229,7 +40751,7 @@
         "check": "verified"
       },
       "settled_at": "2026-05-31T21:11:49",
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "lock_of_day",
@@ -41255,7 +40777,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-05T08:26:35",
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "lock_of_day",
@@ -41280,7 +40802,7 @@
         "check": "verified"
       },
       "settled_at": "2026-05-31T21:11:49",
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "lock_of_day",
@@ -41330,7 +40852,7 @@
         "check": "verified"
       },
       "settled_at": "2026-05-31T21:11:49",
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "lock_of_day",
@@ -41399,7 +40921,7 @@
       "voided": true,
       "voided_at": "2026-06-05T00:21:40",
       "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "lock_of_day",
@@ -41501,7 +41023,7 @@
         "check": "verified"
       },
       "settled_at": "2026-05-31T21:11:49",
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "pod",
@@ -50543,7 +50065,7 @@
       "voided": true,
       "voided_at": "2026-06-05T00:21:40",
       "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.7997
+      "p_calibrated": 0.7937
     },
     {
       "source": "top_25_board",
@@ -50570,7 +50092,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-01T02:14:06",
-      "p_calibrated": 0.7988
+      "p_calibrated": 0.7925
     },
     {
       "source": "top_25_board",
@@ -50597,7 +50119,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-01T02:14:06",
-      "p_calibrated": 0.7969
+      "p_calibrated": 0.7902
     },
     {
       "source": "lock_of_day",
@@ -50666,7 +50188,7 @@
       "voided": true,
       "voided_at": "2026-06-05T00:21:40",
       "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.7997
+      "p_calibrated": 0.7937
     },
     {
       "source": "lock_of_day",
@@ -50691,7 +50213,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-01T02:14:06",
-      "p_calibrated": 0.7988
+      "p_calibrated": 0.7925
     },
     {
       "source": "lock_of_day",
@@ -50716,7 +50238,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-01T02:14:06",
-      "p_calibrated": 0.7969
+      "p_calibrated": 0.7902
     },
     {
       "source": "mlb_run_to_score_run_no",
@@ -51286,7 +50808,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-01T18:55:33",
-      "p_calibrated": 0.8196
+      "p_calibrated": 0.8181
     },
     {
       "source": "top_25_board",
@@ -51313,7 +50835,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-01T18:55:33",
-      "p_calibrated": 0.8045
+      "p_calibrated": 0.7995
     },
     {
       "source": "top_25_board",
@@ -51340,7 +50862,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-01T18:55:33",
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "top_25_board",
@@ -51421,7 +50943,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-01T18:55:33",
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "top_25_board",
@@ -51551,7 +51073,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-01T18:55:33",
-      "p_calibrated": 0.8196
+      "p_calibrated": 0.8181
     },
     {
       "source": "lock_of_day",
@@ -51576,7 +51098,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-01T18:55:33",
-      "p_calibrated": 0.8045
+      "p_calibrated": 0.7995
     },
     {
       "source": "lock_of_day",
@@ -51601,7 +51123,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-01T18:55:33",
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "lock_of_day",
@@ -51678,7 +51200,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-02T04:22:03",
-      "p_calibrated": 0.8196
+      "p_calibrated": 0.8181
     },
     {
       "source": "top_25_board",
@@ -51699,7 +51221,7 @@
       "voided": true,
       "voided_at": "2026-06-06T01:55:12",
       "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.8045
+      "p_calibrated": 0.7995
     },
     {
       "source": "top_25_board",
@@ -51720,7 +51242,7 @@
       "voided": true,
       "voided_at": "2026-06-06T01:55:12",
       "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "top_25_board",
@@ -51789,7 +51311,7 @@
       "voided": true,
       "voided_at": "2026-06-06T01:55:12",
       "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "top_25_board",
@@ -51984,7 +51506,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-02T04:22:03",
-      "p_calibrated": 0.8196
+      "p_calibrated": 0.8181
     },
     {
       "source": "whale_strong",
@@ -52005,7 +51527,7 @@
       "voided": true,
       "voided_at": "2026-06-06T01:55:12",
       "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.8045
+      "p_calibrated": 0.7995
     },
     {
       "source": "whale_strong",
@@ -52091,7 +51613,7 @@
       "voided": true,
       "voided_at": "2026-06-06T01:55:12",
       "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.8007
+      "p_calibrated": 0.7948
     },
     {
       "source": "lock_of_day",
@@ -52154,7 +51676,7 @@
       "voided": true,
       "voided_at": "2026-06-06T01:55:12",
       "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.7864
+      "p_calibrated": 0.7774
     },
     {
       "source": "lock_of_day",
@@ -52223,7 +51745,7 @@
       "voided": true,
       "voided_at": "2026-06-06T01:55:12",
       "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.7997
+      "p_calibrated": 0.7937
     },
     {
       "source": "lock_of_day",
@@ -52248,7 +51770,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-02T04:22:03",
-      "p_calibrated": 0.7988
+      "p_calibrated": 0.7925
     },
     {
       "source": "lock_of_day",
@@ -52281,7 +51803,7 @@
           "reason": "stat revised after settlement; re-graded vs current box score"
         }
       ],
-      "p_calibrated": 0.7969
+      "p_calibrated": 0.7902
     },
     {
       "source": "lock_of_day",
@@ -52306,7 +51828,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-02T04:22:03",
-      "p_calibrated": 0.8196
+      "p_calibrated": 0.8181
     },
     {
       "source": "lock_of_day",
@@ -52325,7 +51847,7 @@
       "voided": true,
       "voided_at": "2026-06-06T01:55:12",
       "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.8045
+      "p_calibrated": 0.7995
     },
     {
       "source": "lock_of_day",
@@ -52344,7 +51866,7 @@
       "voided": true,
       "voided_at": "2026-06-06T01:55:12",
       "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "lock_of_day",
@@ -55608,7 +55130,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-02T08:19:01",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "top_25_board",
@@ -55635,7 +55157,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-02T08:19:01",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "top_25_board",
@@ -57930,7 +57452,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-02T08:19:01",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "whale_strong",
@@ -59831,7 +59353,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-03T12:56:07",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "top_25_board",
@@ -59858,7 +59380,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-03T12:56:07",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "top_25_board",
@@ -60046,7 +59568,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-03T12:56:07",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "whale_strong",
@@ -60179,7 +59701,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-03T12:56:07",
-      "p_calibrated": 0.8301
+      "p_calibrated": 0.8309
     },
     {
       "source": "lock_of_day",
@@ -60204,7 +59726,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-03T12:56:07",
-      "p_calibrated": 0.8149
+      "p_calibrated": 0.8123
     },
     {
       "source": "lock_of_day",
@@ -60229,7 +59751,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-03T12:56:07",
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "lock_of_day",
@@ -60404,7 +59926,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-03T12:56:07",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "pod",
@@ -67207,7 +66729,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-03T12:56:07",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "top_25_board",
@@ -67234,7 +66756,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-03T12:56:07",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "top_25_board",
@@ -67361,7 +66883,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-03T12:56:07",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "lock_of_day",
@@ -67386,7 +66908,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-03T12:56:07",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "whale_strong",
@@ -67459,7 +66981,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-03T12:56:07",
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "lock_of_day",
@@ -67484,7 +67006,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-03T12:56:07",
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "mlb_run_to_score_run_yes",
@@ -68872,7 +68394,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-03T12:56:07",
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "top_25_board",
@@ -68899,7 +68421,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-03T12:56:07",
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "top_25_board",
@@ -68926,7 +68448,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-03T12:56:07",
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "top_25_board",
@@ -69011,7 +68533,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-03T12:56:07",
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "lock_of_day",
@@ -69036,7 +68558,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-03T12:56:07",
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "lock_of_day",
@@ -69061,7 +68583,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-03T12:56:07",
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "top_25_board",
@@ -69088,7 +68610,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-04T12:55:46",
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "top_25_board",
@@ -69107,7 +68629,7 @@
       "payout_units": 0.7353,
       "recorded_at": "2026-06-03T00:16:44",
       "voided": false,
-      "p_calibrated": 0.7817,
+      "p_calibrated": 0.7739,
       "outcome": {
         "stat": "hrr",
         "actual": 0,
@@ -69143,7 +68665,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-03T22:36:45",
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "top_25_board",
@@ -69170,7 +68692,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-04T12:55:46",
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "top_25_board",
@@ -69527,7 +69049,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-04T12:55:46",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "lock_of_day",
@@ -69722,7 +69244,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-05T08:26:35",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "lock_of_day",
@@ -69747,7 +69269,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-05T08:26:35",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "lock_of_day",
@@ -69772,7 +69294,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-03T22:36:45",
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "lock_of_day",
@@ -69797,7 +69319,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-04T12:55:46",
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "lock_of_day",
@@ -69814,7 +69336,7 @@
       "payout_units": 0.7353,
       "recorded_at": "2026-06-03T00:16:44",
       "voided": false,
-      "p_calibrated": 0.7817,
+      "p_calibrated": 0.7739,
       "outcome": {
         "stat": "hrr",
         "actual": 0,
@@ -69848,7 +69370,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-04T12:55:46",
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "mlb_qs_quality_start_no",
@@ -79214,7 +78736,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-04T12:55:46",
-      "p_calibrated": 0.7959
+      "p_calibrated": 0.789
     },
     {
       "source": "top_25_board",
@@ -79241,7 +78763,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-04T12:55:46",
-      "p_calibrated": 0.7959
+      "p_calibrated": 0.789
     },
     {
       "source": "top_25_board",
@@ -79289,7 +78811,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-04T12:55:46",
-      "p_calibrated": 0.7836
+      "p_calibrated": 0.7739
     },
     {
       "source": "top_25_board",
@@ -79408,7 +78930,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-04T12:55:46",
-      "p_calibrated": 0.7959
+      "p_calibrated": 0.789
     },
     {
       "source": "lock_of_day",
@@ -79433,7 +78955,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-04T12:55:46",
-      "p_calibrated": 0.7959
+      "p_calibrated": 0.789
     },
     {
       "source": "lock_of_day",
@@ -87528,7 +87050,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-04T21:55:53",
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "lock_of_day",
@@ -87547,7 +87069,7 @@
       "voided": true,
       "voided_at": "2026-06-09T01:31:25",
       "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "lock_of_day",
@@ -87566,7 +87088,7 @@
       "voided": true,
       "voided_at": "2026-06-09T01:31:25",
       "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "lock_of_day",
@@ -87591,7 +87113,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-05T08:26:35",
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "lock_of_day",
@@ -87679,7 +87201,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-05T08:26:35",
-      "p_calibrated": 0.7959
+      "p_calibrated": 0.789
     },
     {
       "source": "lock_of_day",
@@ -87704,7 +87226,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-04T21:55:53",
-      "p_calibrated": 0.7959
+      "p_calibrated": 0.789
     },
     {
       "source": "lock_of_day",
@@ -98590,7 +98112,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-05T02:03:43",
-      "p_calibrated": 0.8016
+      "p_calibrated": 0.796
     },
     {
       "source": "top_25_board",
@@ -98617,7 +98139,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-05T12:45:14",
-      "p_calibrated": 0.7978
+      "p_calibrated": 0.7913
     },
     {
       "source": "top_25_board",
@@ -98698,7 +98220,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-05T02:03:43",
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "top_25_board",
@@ -98725,7 +98247,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-05T08:26:35",
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "lock_of_day",
@@ -98750,7 +98272,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-05T02:03:43",
-      "p_calibrated": 0.8016
+      "p_calibrated": 0.796
     },
     {
       "source": "lock_of_day",
@@ -98775,7 +98297,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-05T12:45:14",
-      "p_calibrated": 0.7978
+      "p_calibrated": 0.7913
     },
     {
       "source": "lock_of_day",
@@ -98825,7 +98347,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-05T02:03:43",
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "soccer_total_total_under_3.5",
@@ -99396,7 +98918,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-05T11:23:10",
-      "p_calibrated": 0.7988
+      "p_calibrated": 0.7925
     },
     {
       "source": "mlb_2plus_hits_hits_2plus_yes",
@@ -104250,7 +103772,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-06T07:02:43",
-      "p_calibrated": 0.8016
+      "p_calibrated": 0.796
     },
     {
       "source": "top_25_board",
@@ -104277,7 +103799,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-06T07:02:43",
-      "p_calibrated": 0.7978
+      "p_calibrated": 0.7913
     },
     {
       "source": "top_25_board",
@@ -104325,7 +103847,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-06T07:02:43",
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "top_25_board",
@@ -104352,7 +103874,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-06T07:02:43",
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "top_25_board",
@@ -104379,7 +103901,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-06T07:02:43",
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "top_25_board",
@@ -104565,7 +104087,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-06T07:02:43",
-      "p_calibrated": 0.8016
+      "p_calibrated": 0.796
     },
     {
       "source": "whale_strong",
@@ -104592,7 +104114,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-06T07:02:43",
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "whale_strong",
@@ -104733,7 +104255,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-06T07:02:43",
-      "p_calibrated": 0.8016
+      "p_calibrated": 0.796
     },
     {
       "source": "lock_of_day",
@@ -104758,7 +104280,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-06T07:02:43",
-      "p_calibrated": 0.7978
+      "p_calibrated": 0.7913
     },
     {
       "source": "lock_of_day",
@@ -104827,7 +104349,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-06T07:02:43",
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "lock_of_day",
@@ -104852,7 +104374,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-06T07:02:43",
-      "p_calibrated": 0.7988
+      "p_calibrated": 0.7925
     },
     {
       "source": "lock_of_day",
@@ -104877,7 +104399,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-06T07:02:43",
-      "p_calibrated": 0.7978
+      "p_calibrated": 0.7913
     },
     {
       "source": "lock_of_day",
@@ -104921,7 +104443,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-06T07:02:43",
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "lock_of_day",
@@ -104946,7 +104468,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-06T07:02:43",
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "mlb_run_to_score_run_yes",
@@ -113096,7 +112618,7 @@
         "verify": "Salvador Perez \u2014 hrr = 2 (line 3.5, bet UNDER/NO) on 2026-06-04",
         "check": "verified"
       },
-      "p_calibrated": 0.7978
+      "p_calibrated": 0.7913
     },
     {
       "pick_id": "lock_of_day|MLB_PP|Tyler_Heineman|PP_batter_hrr_under_2_5|2026-06-04",
@@ -113148,7 +112670,7 @@
         "verify": "Geraldo Perdomo \u2014 hrr = 3 (line 3.5, bet UNDER/NO) on 2026-06-04",
         "check": "verified"
       },
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "top_25_board",
@@ -113175,7 +112697,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-05T21:36:37",
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "top_25_board",
@@ -113384,7 +112906,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-06T07:02:43",
-      "p_calibrated": 0.7836
+      "p_calibrated": 0.7739
     },
     {
       "source": "pod",
@@ -115251,7 +114773,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-06T07:02:43",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "top_25_board",
@@ -115278,7 +114800,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-06T07:02:43",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "top_25_board",
@@ -115305,7 +114827,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-06T07:02:43",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "top_25_board",
@@ -115351,7 +114873,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-06T07:02:43",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "lock_of_day",
@@ -115376,7 +114898,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-06T07:02:43",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "mlb_h_allowed_h_under_6.0",
@@ -125294,7 +124816,7 @@
         "verify": "Salvador Perez \u2014 hrr = 0 (line 3.5, bet UNDER/NO) on 2026-05-19",
         "check": "verified"
       },
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "pick_id": "lock_of_day|MLB_PP|Shea_Langeliers|PP_batter_hrr_over_0_5|2026-05-19",
@@ -125398,7 +124920,7 @@
         "verify": "Salvador Perez \u2014 hrr = 5 (line 3.5, bet UNDER/NO) on 2026-05-20",
         "check": "verified"
       },
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "pick_id": "lock_of_day|MLB_PP|Shea_Langeliers|PP_batter_hrr_over_0_5|2026-05-20",
@@ -125476,7 +124998,7 @@
         "verify": "Isaac Collins \u2014 hrr = 0 (line 3.5, bet UNDER/NO) on 2026-05-20",
         "check": "verified"
       },
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "pick_id": "lock_of_day|MLB_PP|James_Outman|PP_batter_total_bases_under_2_5|2026-05-20",
@@ -125528,7 +125050,7 @@
         "verify": "Fernando Tatis Jr. \u2014 hrr = 1 (line 3.5, bet UNDER/NO) on 2026-05-20",
         "check": "verified"
       },
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "top_25_board",
@@ -131868,7 +131390,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-06T21:24:19",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "top_25_board",
@@ -131895,7 +131417,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-06T21:24:19",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "top_25_board",
@@ -131922,7 +131444,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-07T08:15:15",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "top_25_board",
@@ -131940,7 +131462,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-06T01:55:12",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 0,
@@ -132166,7 +131688,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-06T21:24:19",
-      "p_calibrated": 0.8092
+      "p_calibrated": 0.8053
     },
     {
       "source": "lock_of_day",
@@ -132182,7 +131704,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-06T01:55:12",
-      "p_calibrated": 0.8045,
+      "p_calibrated": 0.7995,
       "voided": true,
       "voided_at": "2026-06-11T00:13:12",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -132210,7 +131732,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-06T21:24:19",
-      "p_calibrated": 0.7855
+      "p_calibrated": 0.7762
     },
     {
       "source": "lock_of_day",
@@ -132235,7 +131757,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-06T21:24:19",
-      "p_calibrated": 0.7836
+      "p_calibrated": 0.7739
     },
     {
       "source": "lock_of_day",
@@ -132260,7 +131782,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-06T21:24:19",
-      "p_calibrated": 0.7836
+      "p_calibrated": 0.7739
     },
     {
       "source": "lock_of_day",
@@ -132285,7 +131807,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-06T21:24:19",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "lock_of_day",
@@ -132310,7 +131832,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-07T08:15:15",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "lock_of_day",
@@ -132326,7 +131848,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-06T01:55:12",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 0,
@@ -151032,7 +150554,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-07T11:58:34",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "top_25_board",
@@ -151059,7 +150581,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-07T11:58:34",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "top_25_board",
@@ -151077,7 +150599,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-06T11:40:52",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "voided": true,
       "voided_at": "2026-06-11T00:13:12",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -151098,7 +150620,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-06T11:40:52",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "voided": true,
       "voided_at": "2026-06-11T00:13:12",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -151128,7 +150650,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-07T01:36:04",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "top_25_board",
@@ -151246,7 +150768,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-07T11:58:34",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "lock_of_day",
@@ -151271,7 +150793,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-07T11:58:34",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "lock_of_day",
@@ -151287,7 +150809,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-06T11:40:52",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "voided": true,
       "voided_at": "2026-06-11T00:13:12",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -151483,7 +151005,7 @@
         "verify": "Andr\u00e9s Gim\u00e9nez \u2014 hrr = 3 (line 3.5, bet UNDER/NO) on 2026-06-06",
         "check": "verified"
       },
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "pick_id": "lock_of_day|MLB_PP|Nick_Fortes|PP_batter_hrr_under_3_5|2026-06-06",
@@ -151509,7 +151031,7 @@
         "verify": "Nick Fortes \u2014 hrr = 0 (line 3.5, bet UNDER/NO) on 2026-06-06",
         "check": "verified"
       },
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "top_25_board",
@@ -151536,7 +151058,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-07T11:58:34",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "top_25_board",
@@ -151563,7 +151085,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-07T11:58:34",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "top_25_board",
@@ -153749,7 +153271,7 @@
         "verify": "Alex Bregman \u2014 hrr = 0 (line 3.5, bet UNDER/NO) on 2026-06-06",
         "check": "verified"
       },
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "top_25_board",
@@ -153776,7 +153298,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-07T11:58:34",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "top_25_board",
@@ -153803,7 +153325,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-09T12:44:08",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "top_25_board",
@@ -153857,7 +153379,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-09T08:01:13",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "top_25_board",
@@ -153928,7 +153450,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-09T12:44:08",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "mlb_2plus_hits_hits_2plus_no",
@@ -154085,7 +153607,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-09T08:01:13",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "consensus_hit_strong",
@@ -156138,7 +155660,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-08T12:37:41",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "top_25_board",
@@ -156165,7 +155687,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-07T21:24:59",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "top_25_board",
@@ -156192,7 +155714,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-07T21:24:59",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "top_25_board",
@@ -156210,7 +155732,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-07T01:36:04",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "voided": true,
       "voided_at": "2026-06-12T00:20:29",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -156275,7 +155797,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-09T08:01:13",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "top_25_board",
@@ -156486,7 +156008,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-09T08:01:13",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "whale_strong",
@@ -156630,7 +156152,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-07T21:24:59",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "lock_of_day",
@@ -156646,7 +156168,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-07T01:36:04",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "voided": true,
       "voided_at": "2026-06-12T00:20:29",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -156674,7 +156196,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-07T21:24:59",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "lock_of_day",
@@ -156699,7 +156221,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-07T21:24:59",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "lock_of_day",
@@ -156715,7 +156237,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-07T01:36:04",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "voided": true,
       "voided_at": "2026-06-12T00:20:29",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -156734,7 +156256,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-07T01:36:04",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "voided": true,
       "voided_at": "2026-06-12T00:20:29",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -156762,7 +156284,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-07T21:24:59",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "lock_of_day",
@@ -156787,7 +156309,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-07T21:24:59",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "lock_of_day",
@@ -156803,7 +156325,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-07T01:36:04",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "voided": true,
       "voided_at": "2026-06-12T00:20:29",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -156831,7 +156353,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-08T12:37:41",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "lock_of_day",
@@ -156847,7 +156369,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-07T01:36:04",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "voided": true,
       "voided_at": "2026-06-12T00:20:29",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -165302,7 +164824,7 @@
         "verify": "Kyle Higashioka \u2014 hrr = 3 (line 3.5, bet UNDER/NO) on 2026-05-23",
         "check": "verified"
       },
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "pick_id": "lock_of_day|MLB_PP|Kyle_Manzardo|PP_batter_rbis_under_1_5|2026-05-23",
@@ -165338,7 +164860,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-07T11:58:34",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "voided": true,
       "voided_at": "2026-06-12T00:20:29",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -165368,7 +164890,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-08T01:59:59",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "top_25_board",
@@ -165416,7 +164938,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-08T01:59:59",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "top_25_board",
@@ -165483,7 +165005,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-08T01:59:59",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "lock_of_day",
@@ -165586,7 +165108,7 @@
         "verify": "Endy Rodr\u00edguez \u2014 hrr = 1 (line 3.5, bet UNDER/NO) on 2026-06-07",
         "check": "verified"
       },
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "top_25_board",
@@ -165652,7 +165174,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-07T21:24:59",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 1,
@@ -165679,7 +165201,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-07T21:24:59",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "voided": false,
       "outcome": {
         "stat": "hrr",
@@ -167494,7 +167016,7 @@
         "verify": "Fernando Tatis Jr. \u2014 hrr = 1 (line 3.5, bet UNDER/NO) on 2026-06-07",
         "check": "verified"
       },
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "pick_id": "lock_of_day|MLB_PP|Jackson_Merrill|PP_batter_hrr_under_3_5|2026-06-07",
@@ -167520,7 +167042,7 @@
         "verify": "Jackson Merrill \u2014 hrr = 1 (line 3.5, bet UNDER/NO) on 2026-06-07",
         "check": "verified"
       },
-      "p_calibrated": 0.8073
+      "p_calibrated": 0.803
     },
     {
       "source": "top_25_board",
@@ -167547,7 +167069,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-08T12:37:41",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "top_25_board",
@@ -167574,7 +167096,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-08T12:37:41",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "top_25_board",
@@ -167601,7 +167123,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-08T12:37:41",
-      "p_calibrated": 0.8073
+      "p_calibrated": 0.803
     },
     {
       "source": "top_25_board",
@@ -167731,7 +167253,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-08T12:37:41",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "mlb_hit_to_record_hit_yes",
@@ -168764,7 +168286,7 @@
         "verify": "Kyle Higashioka \u2014 hrr = 0 (line 3.5, bet UNDER/NO) on 2026-05-24",
         "check": "verified"
       },
-      "p_calibrated": 0.7817
+      "p_calibrated": 0.7739
     },
     {
       "source": "top_25_board",
@@ -168803,7 +168325,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-08T01:59:59",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "voided": true,
       "voided_at": "2026-06-13T02:47:52",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -168833,7 +168355,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-09T08:01:13",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "top_25_board",
@@ -168860,7 +168382,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-09T08:01:13",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "top_25_board",
@@ -168887,7 +168409,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-09T08:01:13",
-      "p_calibrated": 0.8073
+      "p_calibrated": 0.803
     },
     {
       "source": "top_25_board",
@@ -169091,7 +168613,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-08T01:59:59",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "voided": true,
       "voided_at": "2026-06-13T02:47:52",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -169110,7 +168632,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-08T01:59:59",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "voided": true,
       "voided_at": "2026-06-13T02:47:52",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -169129,7 +168651,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-08T01:59:59",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "voided": true,
       "voided_at": "2026-06-13T02:47:52",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -169157,7 +168679,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-09T12:44:08",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "lock_of_day",
@@ -169198,7 +168720,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-08T01:59:59",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "voided": true,
       "voided_at": "2026-06-13T02:47:52",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -169217,7 +168739,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-08T01:59:59",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "voided": true,
       "voided_at": "2026-06-13T02:47:52",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -169293,7 +168815,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-08T01:59:59",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "voided": true,
       "voided_at": "2026-06-13T02:47:52",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -169321,7 +168843,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-09T08:01:13",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "lock_of_day",
@@ -169346,7 +168868,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-09T08:01:13",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "lock_of_day",
@@ -169371,7 +168893,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-09T08:01:13",
-      "p_calibrated": 0.8073
+      "p_calibrated": 0.803
     },
     {
       "source": "mlb_run_to_score_run_yes",
@@ -173802,7 +173324,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-09T08:01:13",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "top_25_board",
@@ -173829,7 +173351,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-09T08:01:13",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "top_25_board",
@@ -173856,7 +173378,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-09T08:01:13",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "top_25_board",
@@ -173923,7 +173445,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-09T08:01:13",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "lock_of_day",
@@ -173948,7 +173470,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-09T08:01:13",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "ufc_r1_fight_r1_finish_yes",
@@ -176023,7 +175545,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-08T23:24:42",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "voided": true,
       "voided_at": "2026-06-13T02:47:52",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -176044,7 +175566,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-08T23:24:42",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "voided": true,
       "voided_at": "2026-06-13T02:47:52",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -176084,7 +175606,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-08T23:24:42",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "voided": true,
       "voided_at": "2026-06-13T02:47:52",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -176103,7 +175625,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-08T23:24:42",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "voided": true,
       "voided_at": "2026-06-13T02:47:52",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -177508,7 +177030,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-09T01:31:25",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 1,
@@ -177535,7 +177057,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-09T01:31:25",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 0,
@@ -177562,7 +177084,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-09T01:31:25",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 2,
@@ -177589,7 +177111,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-09T01:31:25",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 6,
@@ -177616,7 +177138,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-09T01:31:25",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 3,
@@ -177643,7 +177165,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-09T01:31:25",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 5,
@@ -177842,7 +177364,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-09T01:31:25",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 4,
@@ -177867,7 +177389,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-09T01:31:25",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 0,
@@ -177892,7 +177414,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-09T01:31:25",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 5,
@@ -177917,7 +177439,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-09T01:31:25",
-      "p_calibrated": 0.8139,
+      "p_calibrated": 0.8111,
       "outcome": {
         "stat": "hrr",
         "actual": 4,
@@ -177942,7 +177464,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-09T01:31:25",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 1,
@@ -177967,7 +177489,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-09T01:31:25",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 2,
@@ -177992,7 +177514,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-09T01:31:25",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 6,
@@ -178017,7 +177539,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-09T01:31:25",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 3,
@@ -180922,7 +180444,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-09T09:36:13",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 1,
@@ -181049,7 +180571,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-09T12:44:08",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 0,
@@ -181076,7 +180598,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-09T12:44:08",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 0,
@@ -181103,7 +180625,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-09T12:44:08",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 0,
@@ -181130,7 +180652,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-09T12:44:08",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "voided": true,
       "voided_at": "2026-06-14T00:01:46",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -181151,7 +180673,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-09T12:44:08",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 5,
@@ -181197,7 +180719,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-09T12:44:08",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 0,
@@ -181222,7 +180744,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-09T12:44:08",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 0,
@@ -181247,7 +180769,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-09T12:44:08",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 0,
@@ -181272,7 +180794,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-09T12:44:08",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "voided": true,
       "voided_at": "2026-06-14T00:01:46",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -183148,7 +182670,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-10T01:35:49",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 0,
@@ -183175,7 +182697,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-10T01:35:49",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 4,
@@ -183202,7 +182724,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-10T01:35:49",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 2,
@@ -183229,7 +182751,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-10T01:35:49",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 7,
@@ -183256,7 +182778,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-10T01:35:49",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 1,
@@ -183283,7 +182805,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-10T01:35:49",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 0,
@@ -183442,7 +182964,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-10T01:35:49",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 1,
@@ -183467,7 +182989,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-10T01:35:49",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 1,
@@ -183492,7 +183014,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-10T01:35:49",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 7,
@@ -183517,7 +183039,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-10T01:35:49",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 2,
@@ -183542,7 +183064,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-10T01:35:49",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 1,
@@ -183567,7 +183089,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-10T01:35:49",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 0,
@@ -183592,7 +183114,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-10T01:35:49",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 3,
@@ -183617,7 +183139,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-10T01:35:49",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 2,
@@ -183642,7 +183164,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-10T01:35:49",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 2,
@@ -183667,7 +183189,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-10T01:35:49",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 4,
@@ -186077,7 +185599,7 @@
         "verify": "Francisco Alvarez \u2014 hrr = 1 (line 3.5, bet UNDER/NO) on 2026-06-09",
         "check": "verified"
       },
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "top_25_board",
@@ -186095,7 +185617,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-10T18:27:34",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 7,
@@ -186143,7 +185665,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-10T18:27:34",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 2,
@@ -186170,7 +185692,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-10T18:27:34",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 0,
@@ -186197,7 +185719,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-10T18:27:34",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 5,
@@ -186331,7 +185853,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-10T18:27:34",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 7,
@@ -186375,7 +185897,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-10T18:27:34",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 2,
@@ -186400,7 +185922,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-10T18:27:34",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 0,
@@ -187950,7 +187472,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-10T23:29:28",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 2,
@@ -188133,7 +187655,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-10T23:29:28",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 5,
@@ -188186,7 +187708,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-10T23:52:57",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 4,
@@ -188874,7 +188396,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-11T00:13:12",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 1,
@@ -188901,7 +188423,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-11T00:13:12",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 0,
@@ -188928,7 +188450,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-11T00:13:12",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 5,
@@ -188955,7 +188477,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-11T00:13:12",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 1,
@@ -188982,7 +188504,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-11T00:13:12",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 0,
@@ -189143,7 +188665,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-11T00:13:12",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 1,
@@ -189224,7 +188746,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-11T00:13:12",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "voided": true,
       "voided_at": "2026-06-16T00:01:42",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -189243,7 +188765,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-11T00:13:12",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 1,
@@ -189268,7 +188790,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-11T00:13:12",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 0,
@@ -189293,7 +188815,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-11T00:13:12",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "voided": true,
       "voided_at": "2026-06-16T00:01:42",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -189312,7 +188834,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-11T00:13:12",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "voided": true,
       "voided_at": "2026-06-16T00:01:42",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -189331,7 +188853,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-11T00:13:12",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "voided": true,
       "voided_at": "2026-06-16T00:01:42",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -189369,7 +188891,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-11T00:13:12",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 0,
@@ -189394,7 +188916,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-11T00:13:12",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 5,
@@ -189419,7 +188941,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-11T00:13:12",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 1,
@@ -191500,7 +191022,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-11T14:08:59",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 7,
@@ -191527,7 +191049,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-11T14:08:59",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "voided": true,
       "voided_at": "2026-06-16T00:01:42",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -191548,7 +191070,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-11T14:08:59",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 0,
@@ -191573,7 +191095,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-11T14:08:59",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 7,
@@ -191598,7 +191120,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-11T14:08:59",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 0,
@@ -191623,7 +191145,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-11T14:08:59",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "voided": true,
       "voided_at": "2026-06-16T00:01:42",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -191642,7 +191164,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-11T14:08:59",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 0,
@@ -192400,7 +191922,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-11T22:58:40",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 7,
@@ -193947,7 +193469,7 @@
         "verify": "Geraldo Perdomo \u2014 hrr = 0 (line 3.5, bet UNDER/NO) on 2026-06-11",
         "check": "verified"
       },
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "pick_id": "lock_of_day|MLB_PP|Tommy_Troy|PP_batter_hrr_under_3_5|2026-06-11",
@@ -193973,7 +193495,7 @@
         "verify": "Tommy Troy \u2014 hrr = 0 (line 3.5, bet UNDER/NO) on 2026-06-11",
         "check": "verified"
       },
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "top_25_board",
@@ -193991,7 +193513,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-11T23:28:59",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "voided": true,
       "voided_at": "2026-06-16T00:01:42",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -194012,7 +193534,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-11T23:28:59",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "voided": true,
       "voided_at": "2026-06-16T00:01:42",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -194033,7 +193555,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-11T23:28:59",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 0,
@@ -194060,7 +193582,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-11T23:28:59",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 0,
@@ -194087,7 +193609,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-11T23:28:59",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "voided": true,
       "voided_at": "2026-06-16T00:01:42",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -194169,7 +193691,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-11T23:28:59",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "voided": true,
       "voided_at": "2026-06-16T00:01:42",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -194188,7 +193710,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-11T23:28:59",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "voided": true,
       "voided_at": "2026-06-16T00:01:42",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -194207,7 +193729,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-11T23:28:59",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "voided": true,
       "voided_at": "2026-06-16T00:01:42",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -194907,7 +194429,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-12T00:20:29",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 3,
@@ -194934,7 +194456,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-12T00:20:29",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 2,
@@ -194961,7 +194483,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-12T00:20:29",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 2,
@@ -194988,7 +194510,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-12T00:20:29",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "voided": true,
       "voided_at": "2026-06-17T03:26:15",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -195009,7 +194531,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-12T00:20:29",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 0,
@@ -195179,7 +194701,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-12T00:20:29",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "voided": true,
       "voided_at": "2026-06-17T03:26:15",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -195198,7 +194720,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-12T00:20:29",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "voided": true,
       "voided_at": "2026-06-17T03:26:15",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -195217,7 +194739,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-12T00:20:29",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 2,
@@ -195242,7 +194764,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-12T00:20:29",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 4,
@@ -195267,7 +194789,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-12T00:20:29",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 0,
@@ -195292,7 +194814,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-12T00:20:29",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 3,
@@ -195317,7 +194839,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-12T00:20:29",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 1,
@@ -195342,7 +194864,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-12T00:20:29",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "voided": true,
       "voided_at": "2026-06-17T03:26:15",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -195361,7 +194883,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-12T00:20:29",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 3,
@@ -195386,7 +194908,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-12T00:20:29",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 2,
@@ -195411,7 +194933,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-12T00:20:29",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 2,
@@ -195436,7 +194958,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-12T00:20:29",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "voided": true,
       "voided_at": "2026-06-17T03:26:15",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -195455,7 +194977,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-12T00:20:29",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 0,
@@ -197203,7 +196725,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-12T05:39:02",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 0,
@@ -197498,7 +197020,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-12T12:20:43",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "voided": true,
       "voided_at": "2026-06-17T03:26:15",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -197519,7 +197041,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-12T12:20:43",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "voided": true,
       "voided_at": "2026-06-17T03:26:15",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -197540,7 +197062,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-12T12:20:43",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 2,
@@ -197567,7 +197089,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-12T12:20:43",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 4,
@@ -197634,7 +197156,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-12T12:20:43",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "voided": true,
       "voided_at": "2026-06-17T03:26:15",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -197653,7 +197175,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-12T12:20:43",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "voided": true,
       "voided_at": "2026-06-17T03:26:15",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -197900,7 +197422,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-12T23:48:21",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 2,
@@ -197927,7 +197449,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-12T23:48:21",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 0,
@@ -198020,7 +197542,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-12T23:48:21",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 2,
@@ -198045,7 +197567,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-12T23:48:21",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 4,
@@ -202183,7 +201705,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-13T02:47:51",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 1,
@@ -202210,7 +201732,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-13T02:47:51",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 0,
@@ -202237,7 +201759,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-13T02:47:51",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 1,
@@ -202264,7 +201786,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-13T02:47:51",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 0,
@@ -202291,7 +201813,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-13T02:47:51",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "voided": true,
       "voided_at": "2026-06-18T03:25:07",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -202312,7 +201834,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-13T02:47:51",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 1,
@@ -202493,7 +202015,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-13T02:47:51",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 1,
@@ -202518,7 +202040,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-13T02:47:51",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 0,
@@ -202543,7 +202065,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-13T02:47:51",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 0,
@@ -202568,7 +202090,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-13T02:47:51",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 0,
@@ -202593,7 +202115,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-13T02:47:51",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 1,
@@ -202618,7 +202140,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-13T02:47:51",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 0,
@@ -202643,7 +202165,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-13T02:47:51",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 0,
@@ -202668,7 +202190,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-13T02:47:51",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 1,
@@ -202693,7 +202215,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-13T02:47:51",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 0,
@@ -202718,7 +202240,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-13T02:47:51",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "voided": true,
       "voided_at": "2026-06-18T03:25:07",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -207603,7 +207125,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-13T12:01:38",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 0,
@@ -207630,7 +207152,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-13T12:01:38",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 4,
@@ -207657,7 +207179,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-13T12:01:38",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 4,
@@ -207684,7 +207206,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-13T12:01:38",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 2,
@@ -207772,7 +207294,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-13T12:01:38",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 4,
@@ -207797,7 +207319,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-13T12:01:38",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 4,
@@ -207822,7 +207344,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-13T12:01:38",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 2,
@@ -207847,7 +207369,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-13T12:01:38",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 1,
@@ -211419,7 +210941,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-14T00:01:46",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 4,
@@ -211446,7 +210968,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-14T00:01:46",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 4,
@@ -211473,7 +210995,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-14T00:01:46",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "voided": true,
       "voided_at": "2026-06-19T00:14:33",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -211494,7 +211016,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-14T00:01:46",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 0,
@@ -211521,7 +211043,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-14T00:01:46",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 3,
@@ -211548,7 +211070,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-14T00:01:46",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 2,
@@ -211665,7 +211187,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-14T00:01:46",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "voided": true,
       "voided_at": "2026-06-19T00:14:33",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -211684,7 +211206,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-14T00:01:46",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 2,
@@ -211709,7 +211231,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-14T00:01:46",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 2,
@@ -211734,7 +211256,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-14T00:01:46",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "voided": true,
       "voided_at": "2026-06-19T00:14:33",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -211753,7 +211275,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-14T00:01:46",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 0,
@@ -211778,7 +211300,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-14T00:01:46",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 4,
@@ -211803,7 +211325,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-14T00:01:46",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 4,
@@ -211828,7 +211350,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-14T00:01:46",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "voided": true,
       "voided_at": "2026-06-19T00:14:33",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -211847,7 +211369,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-14T00:01:46",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 0,
@@ -211872,7 +211394,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-14T00:01:46",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 3,
@@ -214785,7 +214307,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-14T12:06:41",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "voided": true,
       "voided_at": "2026-06-19T00:14:33",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -214806,7 +214328,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-14T12:06:41",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "voided": true,
       "voided_at": "2026-06-19T00:14:33",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -214827,7 +214349,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-14T12:06:41",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 3,
@@ -214862,7 +214384,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-14T12:06:41",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 2,
@@ -214937,7 +214459,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-14T12:06:41",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "voided": true,
       "voided_at": "2026-06-19T00:14:33",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -214956,7 +214478,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-14T12:06:41",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "voided": true,
       "voided_at": "2026-06-19T00:14:33",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -214975,7 +214497,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-14T12:06:41",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 3,
@@ -215239,7 +214761,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-14T18:20:26",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 0,
@@ -215266,7 +214788,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-14T18:20:26",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "voided": true,
       "voided_at": "2026-06-19T00:14:33",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -215287,7 +214809,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-14T18:20:26",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "voided": true,
       "voided_at": "2026-06-19T00:14:33",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -215398,7 +214920,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-14T18:20:26",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 0,
@@ -215423,7 +214945,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-14T18:20:26",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "voided": true,
       "voided_at": "2026-06-19T00:14:33",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -216774,7 +216296,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-14T23:09:31",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 3,
@@ -216801,7 +216323,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-14T23:09:31",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "voided": true,
       "voided_at": "2026-06-19T00:14:33",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -216862,7 +216384,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-14T23:09:31",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 3,
@@ -217430,7 +216952,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-15T00:04:45",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "top_25_board",
@@ -217448,7 +216970,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-15T00:04:45",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 5,
@@ -217475,7 +216997,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-15T00:04:45",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 2,
@@ -217502,7 +217024,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-15T00:04:45",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 0,
@@ -217529,7 +217051,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-15T00:04:45",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "top_25_board",
@@ -217547,7 +217069,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-15T00:04:45",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "top_25_board",
@@ -217614,7 +217136,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-15T00:04:45",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 4,
@@ -217639,7 +217161,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-15T00:04:45",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 0,
@@ -217664,7 +217186,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-15T00:04:45",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 0,
@@ -217689,7 +217211,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-15T00:04:45",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 0,
@@ -217714,7 +217236,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-15T00:04:45",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "lock_of_day",
@@ -217730,7 +217252,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-15T00:04:45",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 10,
@@ -217755,7 +217277,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-15T00:04:45",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "lock_of_day",
@@ -217771,7 +217293,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-15T00:04:45",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "lock_of_day",
@@ -217787,7 +217309,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-15T00:04:45",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 5,
@@ -217812,7 +217334,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-15T00:04:45",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "lock_of_day",
@@ -217828,7 +217350,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-15T00:04:45",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 1,
@@ -217853,7 +217375,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-15T00:04:45",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 2,
@@ -217878,7 +217400,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-15T00:04:45",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "ufc_r1_fight_r1_finish_yes",
@@ -219055,7 +218577,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-16T00:01:42",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 1,
@@ -219082,7 +218604,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-16T00:01:42",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 2,
@@ -219109,7 +218631,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-16T00:01:42",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 0,
@@ -219136,7 +218658,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-16T00:01:42",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 2,
@@ -219163,7 +218685,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-16T00:01:42",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 0,
@@ -219190,7 +218712,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-16T00:01:42",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 0,
@@ -219275,7 +218797,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-16T00:01:42",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 6,
@@ -219300,7 +218822,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-16T00:01:42",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 2,
@@ -219325,7 +218847,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-16T00:01:42",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 1,
@@ -219350,7 +218872,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-16T00:01:42",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 1,
@@ -219375,7 +218897,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-16T00:01:42",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 1,
@@ -219400,7 +218922,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-16T00:01:42",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 0,
@@ -219425,7 +218947,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-16T00:01:42",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "lock_of_day",
@@ -219441,7 +218963,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-16T00:01:42",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "lock_of_day",
@@ -219457,7 +218979,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-16T00:01:42",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 2,
@@ -219482,7 +219004,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-16T00:01:42",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "lock_of_day",
@@ -219498,7 +219020,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-16T00:01:42",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 1,
@@ -219523,7 +219045,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-16T00:01:42",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 0,
@@ -219548,7 +219070,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-16T00:01:42",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 0,
@@ -221088,7 +220610,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-16T13:31:03",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 1,
@@ -221115,7 +220637,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-16T13:31:03",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 2,
@@ -221142,7 +220664,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-16T13:31:03",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 1,
@@ -221169,7 +220691,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-16T13:31:03",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "top_25_board",
@@ -221187,7 +220709,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-16T13:31:03",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 0,
@@ -221214,7 +220736,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-16T13:31:03",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 1,
@@ -221264,7 +220786,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-16T13:31:03",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 1,
@@ -221289,7 +220811,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-16T13:31:03",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 2,
@@ -221314,7 +220836,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-16T13:31:03",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 1,
@@ -221339,7 +220861,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-16T13:31:03",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "lock_of_day",
@@ -221355,7 +220877,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-16T13:31:03",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 0,
@@ -221382,7 +220904,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-16T15:29:49",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 4,
@@ -221409,7 +220931,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-16T15:29:49",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "top_25_board",
@@ -221472,7 +220994,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-16T15:29:49",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 4,
@@ -221856,7 +221378,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-16T23:28:42",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 1,
@@ -222004,7 +221526,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-16T23:28:42",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 1,
@@ -226527,7 +226049,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-17T03:26:15",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 0,
@@ -226554,7 +226076,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-17T03:26:15",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "top_25_board",
@@ -226572,7 +226094,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-17T03:26:15",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 2,
@@ -226599,7 +226121,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-17T03:26:15",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 5,
@@ -226626,7 +226148,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-17T03:26:15",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 0,
@@ -226653,7 +226175,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-17T03:26:15",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 2,
@@ -226862,7 +226384,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-17T03:26:15",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 1,
@@ -226887,7 +226409,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-17T03:26:15",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 0,
@@ -226912,7 +226434,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-17T03:26:15",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 2,
@@ -226937,7 +226459,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-17T03:26:15",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "lock_of_day",
@@ -226953,7 +226475,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-17T03:26:15",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 0,
@@ -226978,7 +226500,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-17T03:26:15",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 1,
@@ -227003,7 +226525,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-17T03:26:15",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "lock_of_day",
@@ -227019,7 +226541,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-17T03:26:15",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 0,
@@ -227044,7 +226566,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-17T03:26:15",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "lock_of_day",
@@ -227060,7 +226582,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-17T03:26:15",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 2,
@@ -227085,7 +226607,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-17T03:26:15",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "lock_of_day",
@@ -227101,7 +226623,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-17T03:26:15",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 5,
@@ -227126,7 +226648,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-17T03:26:15",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 0,
@@ -230555,7 +230077,7 @@
       "payout_units": 0.0456,
       "settled_at": "2026-05-28T08:08:47",
       "_bootstrapped_from": "locks_history",
-      "p_calibrated": 0.7817,
+      "p_calibrated": 0.7739,
       "outcome": {
         "stat": "hrr",
         "actual": 3,
@@ -230938,7 +230460,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-17T12:51:48",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "top_25_board",
@@ -230956,7 +230478,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-17T12:51:48",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 5,
@@ -230983,7 +230505,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-17T12:51:48",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 0,
@@ -231010,7 +230532,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-17T12:51:48",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "top_25_board",
@@ -231044,7 +230566,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-17T12:51:48",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "lock_of_day",
@@ -231060,7 +230582,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-17T12:51:48",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 5,
@@ -231085,7 +230607,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-17T12:51:48",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 0,
@@ -231110,7 +230632,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-17T12:51:48",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "top_25_board",
@@ -231128,7 +230650,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-17T13:51:01",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "mlb_under_alert",
@@ -231166,7 +230688,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-17T13:51:01",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "soccer_total_total_under_3.5",
@@ -231565,7 +231087,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-17T23:26:55",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 1,
@@ -231592,7 +231114,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-17T23:26:55",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 2,
@@ -231619,7 +231141,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-17T23:26:55",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 0,
@@ -231646,7 +231168,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-17T23:26:55",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "top_25_board",
@@ -231797,7 +231319,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-17T23:26:55",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 2,
@@ -231822,7 +231344,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-17T23:26:55",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 0,
@@ -233628,7 +233150,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-17T23:53:10",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 2,
@@ -234225,7 +233747,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-18T03:25:07",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 0,
@@ -234252,7 +233774,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-18T03:25:07",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 1,
@@ -234279,7 +233801,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-18T03:25:07",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "top_25_board",
@@ -234297,7 +233819,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-18T03:25:07",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 3,
@@ -234324,7 +233846,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-18T03:25:07",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "top_25_board",
@@ -234342,7 +233864,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-18T03:25:07",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "top_25_board",
@@ -234489,7 +234011,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-18T03:25:07",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 3,
@@ -234538,7 +234060,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-18T03:25:07",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "lock_of_day",
@@ -234554,7 +234076,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-18T03:25:07",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 0,
@@ -234579,7 +234101,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-18T03:25:07",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "lock_of_day",
@@ -234595,7 +234117,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-18T03:25:07",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 1,
@@ -234620,7 +234142,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-18T03:25:07",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 0,
@@ -234645,7 +234167,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-18T03:25:07",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "lock_of_day",
@@ -234661,7 +234183,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-18T03:25:07",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "lock_of_day",
@@ -234677,7 +234199,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-18T03:25:07",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 1,
@@ -234702,7 +234224,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-18T03:25:07",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 1,
@@ -234727,7 +234249,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-18T03:25:07",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "lock_of_day",
@@ -234743,7 +234265,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-18T03:25:07",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "lock_of_day",
@@ -234759,7 +234281,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-18T03:25:07",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 3,
@@ -234784,7 +234306,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-18T03:25:07",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "mlb_hit_to_record_hit_no",
@@ -237349,7 +236871,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-18T12:17:25",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "top_25_board",
@@ -237367,7 +236889,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-18T12:17:25",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 2,
@@ -237394,7 +236916,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-18T12:17:25",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 1,
@@ -237421,7 +236943,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-18T12:17:25",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 0,
@@ -237446,7 +236968,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-18T12:17:25",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 2,
@@ -237611,7 +237133,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-18T17:15:32",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 1,
@@ -237654,7 +237176,7 @@
       "result": "won",
       "payout_units": 0.7353,
       "recorded_at": "2026-06-18T17:15:32",
-      "p_calibrated": 0.831,
+      "p_calibrated": 0.8332,
       "outcome": {
         "stat": "hrr",
         "actual": 0,
@@ -238511,7 +238033,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-19T00:14:33",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "top_25_board",
@@ -238529,7 +238051,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-19T00:14:33",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "top_25_board",
@@ -238547,7 +238069,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-19T00:14:33",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "top_25_board",
@@ -238565,7 +238087,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-19T00:14:33",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "top_25_board",
@@ -238583,7 +238105,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-19T00:14:33",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "top_25_board",
@@ -238601,7 +238123,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-19T00:14:33",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "top_25_board",
@@ -238637,7 +238159,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-19T00:14:33",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "whale_strong",
@@ -238655,7 +238177,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-19T00:14:33",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "consensus_hit_strong",
@@ -238686,7 +238208,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-19T00:14:33",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "lock_of_day",
@@ -238702,7 +238224,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-19T00:14:33",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "lock_of_day",
@@ -238718,7 +238240,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-19T00:14:33",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "lock_of_day",
@@ -238734,7 +238256,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-19T00:14:33",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "lock_of_day",
@@ -238750,7 +238272,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-19T00:14:33",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "lock_of_day",
@@ -238766,7 +238288,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-19T00:14:33",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "lock_of_day",
@@ -238782,7 +238304,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-19T00:14:33",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "lock_of_day",
@@ -238798,7 +238320,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-19T00:14:33",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "lock_of_day",
@@ -238814,7 +238336,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-19T00:14:33",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "ufc_r1_fight_r1_finish_yes",
@@ -240003,11 +239525,20 @@
       "matchup": "Taylor Fritz vs Ben Shelton",
       "date": "2026-06-19",
       "pick_id": "tennis_ml_ml_player1|TENNIS|Taylor_Fritz_vs_Ben_Shelton|ML_PLAYER1|2026-06-19",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "won",
+      "payout_units": 0.5618,
       "recorded_at": "2026-06-19T05:26:53",
-      "p_calibrated": 0.64
+      "p_calibrated": 0.64,
+      "outcome": {
+        "match": "Taylor Fritz vs Ben Shelton",
+        "winner": "Taylor Fritz",
+        "sets": "2-1",
+        "total_games": 39,
+        "market": "ML_PLAYER1",
+        "verify": "Taylor Fritz won 2-1 (39 games) \u2014 ML_PLAYER1"
+      },
+      "settled_at": "2026-06-19T17:50:47"
     },
     {
       "source": "tennis_games_total_games_under_19.5",
@@ -240037,11 +239568,20 @@
       "matchup": "Taylor Fritz vs Ben Shelton",
       "date": "2026-06-19",
       "pick_id": "tennis_games_total_games_over_16_5|TENNIS|Taylor_Fritz_vs_Ben_Shelton|TOTAL_GAMES_OVER_16_5|2026-06-19",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "won",
+      "payout_units": 0.5025,
       "recorded_at": "2026-06-19T05:26:53",
-      "p_calibrated": 0.666
+      "p_calibrated": 0.666,
+      "outcome": {
+        "match": "Taylor Fritz vs Ben Shelton",
+        "winner": "Taylor Fritz",
+        "sets": "2-1",
+        "total_games": 39,
+        "market": "TOTAL_GAMES_OVER_16.5",
+        "verify": "Taylor Fritz won 2-1 (39 games) \u2014 TOTAL_GAMES_OVER_16.5"
+      },
+      "settled_at": "2026-06-19T17:50:47"
     },
     {
       "source": "tennis_games_total_games_under_20.5",
@@ -240054,11 +239594,20 @@
       "matchup": "Madison Keys vs Jessica Pegula",
       "date": "2026-06-19",
       "pick_id": "tennis_games_total_games_under_20_5|TENNIS|Madison_Keys_vs_Jessica_Pegula|TOTAL_GAMES_UNDER_20_5|2026-06-19",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "lost",
+      "payout_units": -1.0,
       "recorded_at": "2026-06-19T05:26:53",
-      "p_calibrated": 0.691
+      "p_calibrated": 0.691,
+      "outcome": {
+        "match": "Madison Keys vs Jessica Pegula",
+        "winner": "Jessica Pegula",
+        "sets": "0-2",
+        "total_games": 26,
+        "market": "TOTAL_GAMES_UNDER_20.5",
+        "verify": "Jessica Pegula won 0-2 (26 games) \u2014 TOTAL_GAMES_UNDER_20.5"
+      },
+      "settled_at": "2026-06-19T17:50:47"
     },
     {
       "source": "tennis_games_total_games_over_17.5",
@@ -240760,7 +240309,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-19T12:50:51",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "top_25_board",
@@ -240778,7 +240327,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-19T12:50:51",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "top_25_board",
@@ -240796,7 +240345,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-19T12:50:51",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "top_25_board",
@@ -240848,7 +240397,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-19T12:50:51",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "lock_of_day",
@@ -240864,7 +240413,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-19T12:50:51",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "lock_of_day",
@@ -240880,7 +240429,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-19T12:50:51",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "mlb_game_total_game_total_over_7.5",
@@ -241171,7 +240720,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-19T16:41:00",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "top_25_board",
@@ -241189,7 +240738,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-19T16:41:00",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "top_25_board",
@@ -241223,7 +240772,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-19T16:41:00",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "lock_of_day",
@@ -241239,7 +240788,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-19T16:41:00",
-      "p_calibrated": 0.831
+      "p_calibrated": 0.8332
     },
     {
       "source": "mlb_2plus_hits_hits_2plus_yes",
@@ -241257,6 +240806,471 @@
       "payout_units": null,
       "recorded_at": "2026-06-19T16:41:00",
       "p_calibrated": 0.3299
+    },
+    {
+      "source": "consensus_hit_strong",
+      "sport": "MLB",
+      "player_or_matchup": "Pete Crow-Armstrong",
+      "market": "1_plus_hit",
+      "prob": null,
+      "tier": "STRONG",
+      "n_agreeing": 3,
+      "date": "2026-06-19",
+      "pick_id": "consensus_hit_strong|MLB|Pete_Crow_Armstrong|1_plus_hit|2026-06-19",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-06-19T17:50:47"
+    },
+    {
+      "source": "golf_top_10",
+      "sport": "GOLF",
+      "player_or_matchup": "Spencer Tibbits",
+      "market": "TOP_10",
+      "prob": 0.379,
+      "fair_american": 164,
+      "p_predicted": 0.379,
+      "matchup": "U.S. Open",
+      "date": "2026-06-19",
+      "pick_id": "golf_top_10|GOLF|Spencer_Tibbits|TOP_10|2026-06-19",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-06-19T17:50:47",
+      "p_calibrated": 0.4146
+    },
+    {
+      "source": "golf_top_20",
+      "sport": "GOLF",
+      "player_or_matchup": "Brian Harman",
+      "market": "TOP_20",
+      "prob": 0.552,
+      "fair_american": -123,
+      "p_predicted": 0.552,
+      "matchup": "U.S. Open",
+      "date": "2026-06-19",
+      "pick_id": "golf_top_20|GOLF|Brian_Harman|TOP_20|2026-06-19",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-06-19T17:50:47",
+      "p_calibrated": 0.5393
+    },
+    {
+      "source": "golf_top_20",
+      "sport": "GOLF",
+      "player_or_matchup": "Robert MacIntyre",
+      "market": "TOP_20",
+      "prob": 0.543,
+      "fair_american": -119,
+      "p_predicted": 0.543,
+      "matchup": "U.S. Open",
+      "date": "2026-06-19",
+      "pick_id": "golf_top_20|GOLF|Robert_MacIntyre|TOP_20|2026-06-19",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-06-19T17:50:47",
+      "p_calibrated": 0.5347
+    },
+    {
+      "source": "golf_top_20",
+      "sport": "GOLF",
+      "player_or_matchup": "Jackson Van Paris",
+      "market": "TOP_20",
+      "prob": 0.472,
+      "fair_american": 112,
+      "p_predicted": 0.472,
+      "matchup": "U.S. Open",
+      "date": "2026-06-19",
+      "pick_id": "golf_top_20|GOLF|Jackson_Van_Paris|TOP_20|2026-06-19",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-06-19T17:50:47",
+      "p_calibrated": 0.504
+    },
+    {
+      "source": "golf_top_20",
+      "sport": "GOLF",
+      "player_or_matchup": "William Mouw",
+      "market": "TOP_20",
+      "prob": 0.465,
+      "fair_american": 115,
+      "p_predicted": 0.465,
+      "matchup": "U.S. Open",
+      "date": "2026-06-19",
+      "pick_id": "golf_top_20|GOLF|William_Mouw|TOP_20|2026-06-19",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-06-19T17:50:47",
+      "p_calibrated": 0.4963
+    },
+    {
+      "source": "tennis_ml_ml_player2",
+      "sport": "TENNIS",
+      "player_or_matchup": "Jessica Pegula vs Aryna Sabalenka",
+      "market": "ML_PLAYER2",
+      "prob": 0.715,
+      "fair_american": -251,
+      "p_predicted": 0.715,
+      "matchup": "Jessica Pegula vs Aryna Sabalenka",
+      "date": "2026-06-19",
+      "pick_id": "tennis_ml_ml_player2|TENNIS|Jessica_Pegula_vs_Aryna_Sabalenka|ML_PLAYER2|2026-06-19",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-06-19T17:50:47",
+      "p_calibrated": 0.715
+    },
+    {
+      "source": "tennis_games_total_games_under_18.5",
+      "sport": "TENNIS",
+      "player_or_matchup": "Jessica Pegula vs Aryna Sabalenka",
+      "market": "TOTAL_GAMES_UNDER_18.5",
+      "prob": 0.716,
+      "fair_american": -252,
+      "p_predicted": 0.716,
+      "matchup": "Jessica Pegula vs Aryna Sabalenka",
+      "date": "2026-06-19",
+      "pick_id": "tennis_games_total_games_under_18_5|TENNIS|Jessica_Pegula_vs_Aryna_Sabalenka|TOTAL_GAMES_UNDER_18_5|2026-06-19",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-06-19T17:50:47",
+      "p_calibrated": 0.716
+    },
+    {
+      "source": "tennis_games_total_games_under_20.5",
+      "sport": "TENNIS",
+      "player_or_matchup": "Taylor Fritz vs Alexander Zverev",
+      "market": "TOTAL_GAMES_UNDER_20.5",
+      "prob": 0.691,
+      "fair_american": -224,
+      "p_predicted": 0.691,
+      "matchup": "Taylor Fritz vs Alexander Zverev",
+      "date": "2026-06-19",
+      "pick_id": "tennis_games_total_games_under_20_5|TENNIS|Taylor_Fritz_vs_Alexander_Zverev|TOTAL_GAMES_UNDER_20_5|2026-06-19",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-06-19T17:50:47",
+      "p_calibrated": 0.691
+    },
+    {
+      "source": "tennis_aces_aces_under_13.5",
+      "sport": "TENNIS",
+      "player_or_matchup": "alexander zverev",
+      "market": "ACES_UNDER_13.5",
+      "prob": 0.713,
+      "fair_american": -248,
+      "p_predicted": 0.713,
+      "matchup": "Taylor Fritz vs Alexander Zverev",
+      "date": "2026-06-19",
+      "pick_id": "tennis_aces_aces_under_13_5|TENNIS|alexander_zverev|ACES_UNDER_13_5|2026-06-19",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-06-19T17:50:47",
+      "p_calibrated": 0.713
+    },
+    {
+      "source": "tennis_aces_aces_under_6.5",
+      "sport": "TENNIS",
+      "player_or_matchup": "aryna sabalenka",
+      "market": "ACES_UNDER_6.5",
+      "prob": 0.705,
+      "fair_american": -239,
+      "p_predicted": 0.705,
+      "matchup": "Jessica Pegula vs Aryna Sabalenka",
+      "date": "2026-06-19",
+      "pick_id": "tennis_aces_aces_under_6_5|TENNIS|aryna_sabalenka|ACES_UNDER_6_5|2026-06-19",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-06-19T17:50:47",
+      "p_calibrated": 0.705
+    },
+    {
+      "source": "mlb_3plus_tb_tb_3plus_yes",
+      "sport": "MLB",
+      "player_or_matchup": "Seiya Suzuki",
+      "market": "TB_3PLUS_YES",
+      "prob": 0.396,
+      "fair_american": 153,
+      "p_predicted": 0.396,
+      "matchup": "TOR @ CHC",
+      "date": "2026-06-19",
+      "pick_id": "mlb_3plus_tb_tb_3plus_yes|MLB|Seiya_Suzuki|TB_3PLUS_YES|2026-06-19",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-06-19T17:50:47",
+      "p_calibrated": 0.3412
+    },
+    {
+      "source": "mlb_3plus_tb_tb_3plus_yes",
+      "sport": "MLB",
+      "player_or_matchup": "Jes\u00fas S\u00e1nchez",
+      "market": "TB_3PLUS_YES",
+      "prob": 0.298,
+      "fair_american": 236,
+      "p_predicted": 0.298,
+      "matchup": "TOR @ CHC",
+      "date": "2026-06-19",
+      "pick_id": "mlb_3plus_tb_tb_3plus_yes|MLB|Jes_s_S_nchez|TB_3PLUS_YES|2026-06-19",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-06-19T17:50:47",
+      "p_calibrated": 0.2218
+    },
+    {
+      "source": "mlb_3plus_tb_tb_3plus_yes",
+      "sport": "MLB",
+      "player_or_matchup": "Michael Busch",
+      "market": "TB_3PLUS_YES",
+      "prob": 0.291,
+      "fair_american": 244,
+      "p_predicted": 0.291,
+      "matchup": "TOR @ CHC",
+      "date": "2026-06-19",
+      "pick_id": "mlb_3plus_tb_tb_3plus_yes|MLB|Michael_Busch|TB_3PLUS_YES|2026-06-19",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-06-19T17:50:47",
+      "p_calibrated": 0.2218
+    },
+    {
+      "source": "mlb_3plus_tb_tb_3plus_yes",
+      "sport": "MLB",
+      "player_or_matchup": "Ian Happ",
+      "market": "TB_3PLUS_YES",
+      "prob": 0.287,
+      "fair_american": 248,
+      "p_predicted": 0.287,
+      "matchup": "TOR @ CHC",
+      "date": "2026-06-19",
+      "pick_id": "mlb_3plus_tb_tb_3plus_yes|MLB|Ian_Happ|TB_3PLUS_YES|2026-06-19",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-06-19T17:50:47",
+      "p_calibrated": 0.2218
+    },
+    {
+      "source": "mlb_3plus_tb_tb_3plus_yes",
+      "sport": "MLB",
+      "player_or_matchup": "Yohendrick Pi\u00f1ango",
+      "market": "TB_3PLUS_YES",
+      "prob": 0.287,
+      "fair_american": 248,
+      "p_predicted": 0.287,
+      "matchup": "TOR @ CHC",
+      "date": "2026-06-19",
+      "pick_id": "mlb_3plus_tb_tb_3plus_yes|MLB|Yohendrick_Pi_ango|TB_3PLUS_YES|2026-06-19",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-06-19T17:50:47",
+      "p_calibrated": 0.2218
+    },
+    {
+      "source": "mlb_3plus_tb_tb_3plus_yes",
+      "sport": "MLB",
+      "player_or_matchup": "Davis Schneider",
+      "market": "TB_3PLUS_YES",
+      "prob": 0.254,
+      "fair_american": 294,
+      "p_predicted": 0.254,
+      "matchup": "TOR @ CHC",
+      "date": "2026-06-19",
+      "pick_id": "mlb_3plus_tb_tb_3plus_yes|MLB|Davis_Schneider|TB_3PLUS_YES|2026-06-19",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-06-19T17:50:47",
+      "p_calibrated": 0.2218
+    },
+    {
+      "source": "mlb_3plus_tb_tb_3plus_yes",
+      "sport": "MLB",
+      "player_or_matchup": "Nathan Lukes",
+      "market": "TB_3PLUS_YES",
+      "prob": 0.238,
+      "fair_american": 320,
+      "p_predicted": 0.238,
+      "matchup": "TOR @ CHC",
+      "date": "2026-06-19",
+      "pick_id": "mlb_3plus_tb_tb_3plus_yes|MLB|Nathan_Lukes|TB_3PLUS_YES|2026-06-19",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-06-19T17:50:47",
+      "p_calibrated": 0.2218
+    },
+    {
+      "source": "mlb_3plus_tb_tb_3plus_yes",
+      "sport": "MLB",
+      "player_or_matchup": "George Springer",
+      "market": "TB_3PLUS_YES",
+      "prob": 0.229,
+      "fair_american": 337,
+      "p_predicted": 0.229,
+      "matchup": "TOR @ CHC",
+      "date": "2026-06-19",
+      "pick_id": "mlb_3plus_tb_tb_3plus_yes|MLB|George_Springer|TB_3PLUS_YES|2026-06-19",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-06-19T17:50:47",
+      "p_calibrated": 0.2218
+    },
+    {
+      "source": "mlb_xbh_1_plus_xbh",
+      "projection": 0.56,
+      "sport": "MLB",
+      "player_or_matchup": "Seiya Suzuki",
+      "market": "1_PLUS_XBH",
+      "prob": 0.429,
+      "fair_american": 133,
+      "p_predicted": 0.429,
+      "matchup": "TOR @ CHC",
+      "date": "2026-06-19",
+      "pick_id": "mlb_xbh_1_plus_xbh|MLB|Seiya_Suzuki|1_PLUS_XBH|2026-06-19",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-06-19T17:50:47",
+      "p_calibrated": 0.3308
+    },
+    {
+      "source": "mlb_xbh_1_plus_xbh",
+      "projection": 0.545,
+      "sport": "MLB",
+      "player_or_matchup": "Matt Shaw",
+      "market": "1_PLUS_XBH",
+      "prob": 0.42,
+      "fair_american": 138,
+      "p_predicted": 0.42,
+      "matchup": "TOR @ CHC",
+      "date": "2026-06-19",
+      "pick_id": "mlb_xbh_1_plus_xbh|MLB|Matt_Shaw|1_PLUS_XBH|2026-06-19",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-06-19T17:50:47",
+      "p_calibrated": 0.3289
+    },
+    {
+      "source": "mlb_xbh_1_plus_xbh",
+      "projection": 0.487,
+      "sport": "MLB",
+      "player_or_matchup": "Michael Busch",
+      "market": "1_PLUS_XBH",
+      "prob": 0.386,
+      "fair_american": 159,
+      "p_predicted": 0.386,
+      "matchup": "TOR @ CHC",
+      "date": "2026-06-19",
+      "pick_id": "mlb_xbh_1_plus_xbh|MLB|Michael_Busch|1_PLUS_XBH|2026-06-19",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-06-19T17:50:47",
+      "p_calibrated": 0.3056
+    },
+    {
+      "source": "mlb_xbh_1_plus_xbh",
+      "projection": 0.474,
+      "sport": "MLB",
+      "player_or_matchup": "Jes\u00fas S\u00e1nchez",
+      "market": "1_PLUS_XBH",
+      "prob": 0.377,
+      "fair_american": 165,
+      "p_predicted": 0.377,
+      "matchup": "TOR @ CHC",
+      "date": "2026-06-19",
+      "pick_id": "mlb_xbh_1_plus_xbh|MLB|Jes_s_S_nchez|1_PLUS_XBH|2026-06-19",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-06-19T17:50:47",
+      "p_calibrated": 0.3056
+    },
+    {
+      "source": "mlb_xbh_1_plus_xbh",
+      "projection": 0.467,
+      "sport": "MLB",
+      "player_or_matchup": "Davis Schneider",
+      "market": "1_PLUS_XBH",
+      "prob": 0.373,
+      "fair_american": 168,
+      "p_predicted": 0.373,
+      "matchup": "TOR @ CHC",
+      "date": "2026-06-19",
+      "pick_id": "mlb_xbh_1_plus_xbh|MLB|Davis_Schneider|1_PLUS_XBH|2026-06-19",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-06-19T17:50:47",
+      "p_calibrated": 0.3056
+    },
+    {
+      "source": "mlb_xbh_1_plus_xbh",
+      "projection": 0.418,
+      "sport": "MLB",
+      "player_or_matchup": "Yohendrick Pi\u00f1ango",
+      "market": "1_PLUS_XBH",
+      "prob": 0.342,
+      "fair_american": 193,
+      "p_predicted": 0.342,
+      "matchup": "TOR @ CHC",
+      "date": "2026-06-19",
+      "pick_id": "mlb_xbh_1_plus_xbh|MLB|Yohendrick_Pi_ango|1_PLUS_XBH|2026-06-19",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-06-19T17:50:47",
+      "p_calibrated": 0.3056
+    },
+    {
+      "source": "mlb_xbh_1_plus_xbh",
+      "projection": 0.39,
+      "sport": "MLB",
+      "player_or_matchup": "George Springer",
+      "market": "1_PLUS_XBH",
+      "prob": 0.323,
+      "fair_american": 210,
+      "p_predicted": 0.323,
+      "matchup": "TOR @ CHC",
+      "date": "2026-06-19",
+      "pick_id": "mlb_xbh_1_plus_xbh|MLB|George_Springer|1_PLUS_XBH|2026-06-19",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-06-19T17:50:47",
+      "p_calibrated": 0.3056
+    },
+    {
+      "source": "mlb_hrr_3_plus_hrr",
+      "projection": 2.68,
+      "sport": "MLB",
+      "player_or_matchup": "Seiya Suzuki",
+      "market": "3_plus_hrr",
+      "prob": 0.501,
+      "fair_american": -100,
+      "p_predicted": 0.501,
+      "matchup": "TOR @ CHC",
+      "date": "2026-06-19",
+      "pick_id": "mlb_hrr_3_plus_hrr|MLB|Seiya_Suzuki|3_plus_hrr|2026-06-19",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-06-19T17:50:47",
+      "p_calibrated": 0.3138
     }
   ],
   "note": "Unified pick ledger -- records every pick the model surfaces (top_25 board, whales, consensus, unders, sharp action, locks, POD) and settles each against actual outcomes. Per-source W-L feeds back into calibration so the model learns which modules are reliable. THIS is the training signal."
