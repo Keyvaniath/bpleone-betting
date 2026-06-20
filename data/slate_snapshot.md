@@ -9,23 +9,23 @@ _6 picks consolidated from POD + Alpha + Book Edges + Parlay-of-Day._
 
 ## 🎯 Alpha Pick
 
-- **WSN @ TBR** · WSN_ML
-  Prob 60.8% · Odds +103 · Edge +23.3% · Kelly 0.227
+- **MIN @ ARI** · MIN_ML
+  Prob 59.0% · Odds +105 · Edge +20.9% · Kelly 0.199
 
 ## 📊 Book Edges
 
 - **MIN @ ARI · AWAY (AWAY)** · TEAM_ML
-  Prob 54.1% · Odds +109 · Edge +13.0% · Kelly 0.119
-- **WSN @ TBR · AWAY (AWAY)** · TEAM_ML
-  Prob 55.2% · Odds +104 · Edge +12.6% · Kelly 0.121
-- **NYM @ PHI · UNDER · O/U 7.5** · TOTAL_UNDER
-  Prob 58.3% · Odds -110 · Edge +11.3% · Kelly 0.125
+  Prob 55.5% · Odds +102 · Edge +12.0% · Kelly 0.118
+- **LAA @ OAK · OVER · O/U 9.5** · TOTAL_OVER
+  Prob 58.2% · Odds -110 · Edge +11.2% · Kelly 0.123
+- **BAL @ LAD · OVER · O/U 8.0** · TOTAL_OVER
+  Prob 57.8% · Odds -110 · Edge +10.4% · Kelly 0.114
 
 ## 🎲 Parlay
 
-- **Hunter Feduccia + WSN @ TBR** · 2-leg
-  Prob 53.1% · Odds +252 · Edge +87.1% · Kelly 0.050
+- **Hunter Feduccia + MIN @ ARI** · 2-leg
+  Prob 51.6% · Odds +256 · Edge +83.5% · Kelly 0.050
 
 ---
-_Generated 2026-06-20T16:06:41 UTC by EdgeStat._
+_Generated 2026-06-20T22:04:00 UTC by EdgeStat._
 _Stakes assume ¼-Kelly fractional sizing on a flat bankroll._

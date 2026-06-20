@@ -1,14 +1,14 @@
 # Tonight's Slate Brief — 2026-06-20
 
-## Slate Quality: 56/100 (MEDIUM)
-_17% lineups confirmed · 12 rookie SPs_
+## Slate Quality: 70/100 (MEDIUM)
+_57% lineups confirmed · 7 rookie SPs_
 **Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
-- **14 games** scheduled
+- **7 games** scheduled
 - **36 best bets** scored: 0 DK · 0 PP · 11 NRFI · 6 SGP
 - **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$48.19
-- **MC simulation:** EV +$110.27, 84% P(profit), p05 $-88.98 / p95 $278.27
+- **MC simulation:** EV +$118.65, 82% P(profit), p05 $-78.5 / p95 $303.3
 
 ## Top 5 Best Bets
 1. **TOR @ CHC YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +34.0%)
@@ -22,37 +22,38 @@ _17% lineups confirmed · 12 rookie SPs_
 5. **BOS @ SEA YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +21.1%)
    - P(YRFI) 67.1% vs baseline 46.0%
 
-## ⚠️ Trap Warnings — 15 flagged
-- **TOR @ CHC 4-leg SGP @ -188** (low):
-   - Edge +63.6% looks big but only 0 settled props on this player — model unproven
-- **CIN @ NYY 4-leg SGP @ -119** (low):
-   - Edge +34.6% looks big but only 0 settled props on this player — model unproven
+## ⚠️ Trap Warnings — 16 flagged
+- **BOS @ SEA 4-leg SGP @ -164** (low):
+   - Edge +64.2% looks big but only 0 settled props on this player — model unproven
+- **MIN @ ARI 4-leg SGP @ -144** (low):
+   - Edge +46.1% looks big but only 0 settled props on this player — model unproven
+- **PIT @ COL 4-leg SGP @ -124** (low):
+   - Edge +42.1% looks big but only 0 settled props on this player — model unproven
+- **CLE @ HOU 4-leg SGP @ -129** (low):
+   - Edge +41.6% looks big but only 0 settled props on this player — model unproven
 - **TOR @ CHC YRFI (1st-inning OVER 0.5)** (low):
    - Edge +34.0% looks big but only 0 settled props on this player — model unproven
-- **MIN @ ARI YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +29.3% looks big but only 0 settled props on this player — model unproven
-- **CLE @ HOU YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +25.3% looks big but only 0 settled props on this player — model unproven
 
 ## Weather leans
-- **UNDER lean** (wind in + cold): CHW @ DET
+- **OVER lean** (wind out + warm): PIT @ COL
 
 ## Hot streaks
-**Batters heating up:** Jonny DeLuca (heat +7.50), Colt Keith (heat +7.08), Pete Crow-Armstrong (heat +6.95)
-**Pitchers on a run:** Max Meyer (heat +4.07), Paul Skenes (heat +4.05), Andrew Abbott (heat +3.52)
+**Batters heating up:** Jonny DeLuca (heat +7.50), Victor Caratini (heat +5.93), Bryan Reynolds (heat +5.86)
+**Pitchers on a run:** Paul Skenes (heat +13.50), Yoshinobu Yamamoto (heat +7.02), Taj Bradley (heat +6.75)
 
 ## Top correlation-aware SGPs
-- **TOR @ CHC** 4-leg @ -188 fair (joint 0.65, EV +63.64%)
-   - Michael Busch UNDER 0.5 batter doubles
-   - Pete Crow-Armstrong OVER 0.5 batter total bases
-   - Pete Crow-Armstrong UNDER 0.5 batter home runs
-- **CIN @ NYY** 4-leg @ -119 fair (joint 0.54, EV +34.56%)
-   - Blake Dunn UNDER 0.5 batter rbis
-   - Blake Dunn UNDER 2.5 batter total bases
-   - Spencer Steer UNDER 0.5 batter doubles
-- **CHW @ DET** 2-leg @ -260 fair (joint 0.72, EV +25.0%)
-   - Tristan Peters OVER 0.5 batter hrr
-   - Braden Montgomery OVER 0.5 batter hrr
+- **BOS @ SEA** 4-leg @ -164 fair (joint 0.62, EV +64.23%)
+   - Colt Emerson UNDER 2.5 batter total bases
+   - Colt Emerson UNDER 1.5 batter hits
+   - Julio Rodríguez UNDER 0.5 batter doubles
+- **MIN @ ARI** 4-leg @ -144 fair (joint 0.59, EV +46.07%)
+   - Ketel Marte UNDER 0.5 batter home runs
+   - Ketel Marte OVER 0.5 batter total bases
+   - Luke Keaschall UNDER 1.5 batter singles
+- **PIT @ COL** 4-leg @ -124 fair (joint 0.55, EV +42.08%)
+   - Hunter Goodman UNDER 0.5 batter doubles
+   - Hunter Goodman OVER 0.5 batter total bases
+   - Willi Castro UNDER 1.5 batter singles
 
 ## Bullpens GASSED tonight
 Athletics, Seattle Mariners, St. Louis Cardinals, Texas Rangers, Chicago White Sox, Los Angeles Angels, Arizona Diamondbacks, Kansas City Royals
@@ -64,8 +65,8 @@ _Lean late-inning OVER on these games; fade their save situations._
 ## Golf -- U.S. Open
 - **Leader:** Wyndham Clark (-7) at #1
 - **Field:** 156 players  |  Status: In Progress
-- **Play of the Tournament:** Sam Burns TOP5 @ +604 (model 14.2%, HIGH)
-   - P(top 5) 14.2% -- lower variance than outright but compelling line.
+- **Play of the Tournament:** Sam Burns TOP5 @ +597 (model 14.3%, HIGH)
+   - P(top 5) 14.3% -- lower variance than outright but compelling line.
 
 ## NBA -- PLAYOFFS
 - New York Knicks @ San Antonio Spurs (53-29 vs 62-20) 94-90 | P(home) 0.0% fair +0 | Final
@@ -99,4 +100,4 @@ _Lean late-inning OVER on these games; fade their save situations._
 ## Self-learning calibration (esports + KBO)
 - **LOL:** 21 settled | brier 0.2649 | ECE 0.1541
    - Model over-confident; subtract 15.4pp at next inference
-- **KBO:** 3 settled | brier 0.2274 | ECE 0.0702
+- **KBO:** 4 settled | brier 0.2596 | ECE 0.0966

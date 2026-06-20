@@ -1,18 +1,18 @@
 # EdgeStat Daily Summary — 2026-06-20
 
-## 🏥 Model Health: 74.2/100 [HEALTHY]
+## 🏥 Model Health: 73.6/100 [HEALTHY]
 - Solid health - some minor issues to monitor
   - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 54.4/100
   - 🔴 Brier Trend: 29.6/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 90.0/100
-  - 🟢 Edge Count: 94.3/100
+  - 🟢 Edge Count: 88.6/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.587)
-- **Total games on board:** 106
-- **Strong home favorites:** 3 | **Strong road dogs:** 0
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.59)
+- **Total games on board:** 107
+- **Strong home favorites:** 4 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
 1. **TOR @ CHC YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
@@ -20,6 +20,9 @@
 3. **CLE @ HOU YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 4. **PIT @ COL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 5. **BOS @ SEA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+
+## 📡 Sharp Action (Line Movement)
+- [STRONG] **MIN @ ARI** ml_away: 41.67% → 47.39% (+5.7pp)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **202-40** (83.5% hit rate)
@@ -37,12 +40,12 @@
 - [MLB-PP] **J.T. Realmuto** PP_batter_hrr_under_3.5 · p=87% edge=+51.4% qK=0.062u
 
 ## 🎰 Top Balanced 2-Leg Parlays (40-65% joint)
-- [MLB-PP] Hao-Yu Lee PP_batter_hrr_under_ + [MLB] MIN @ ARI MIN_ML
-  Joint: 51% | Fair: 270 | Edge: +89.4%
-- [MLB-PP] Drew Millas PP_batter_hrr_under_ + [MLB] MIN @ ARI MIN_ML
-  Joint: 51% | Fair: 270 | Edge: +89.3%
-- [MLB-PP] Hunter Feduccia PP_batter_hrr_under_ + [MLB] MIN @ ARI MIN_ML
-  Joint: 51% | Fair: 270 | Edge: +89.3%
+- [MLB-PP] Hunter Feduccia PP_batter_hrr_under_ + [MLB] WSN @ TBR WSN_ML
+  Joint: 53% | Fair: 252 | Edge: +87.1%
+- [MLB-PP] Brice Matthews PP_batter_hrr_under_ + [MLB] WSN @ TBR WSN_ML
+  Joint: 53% | Fair: 252 | Edge: +87.0%
+- [MLB-PP] Hao-Yu Lee PP_batter_hrr_under_ + [MLB] WSN @ TBR WSN_ML
+  Joint: 53% | Fair: 252 | Edge: +87.0%
 
 ## 🎮 Player Play of the Day (cross-sport)
 - **[LOL]** Inspired UNDER 3.5 Kills | MED conviction · model 61.7% fair -161
@@ -60,19 +63,20 @@
 - Hot teams: **3** | Cold teams: **5** | Over-heavy: 0 | Under-heavy: 7
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (41)
-- STEAM_MOVE: **39**
+## ⚠️ Anomaly Detector (46)
+- RESIDUAL_DIVERGENCE: **1**
+- STEAM_MOVE: **43**
 - PEN_MISMATCH: **2**
+  - Dallas Wings (WNBA): Dallas Wings OUTPERFORMING expected margin by 6.3pts in recent games -- model bias may persist
   - WSH @ CON (WNBA): ML/TOTAL steam since open: ML +5.9pp toward CON; total -3 (UNDER) (4 snapshots)
   - DET @ HOU (MLB): ML steam since open: ML -10.8pp toward DET (4 snapshots)
   - LAA @ ARI (MLB): ML/TOTAL steam since open: ML +10.7pp toward ARI; total +0.5 (OVER) (6 snapshots)
   - DAL @ POR (WNBA): ML/TOTAL steam since open: ML +8.2pp toward POR; total -2 (UNDER) (3 snapshots)
-  - LA @ PHX (WNBA): TOTAL steam since open: total -2 (UNDER) (3 snapshots)
 
 ## 💰 Today's Portfolio (8 picks)
 - Total stake: **$340.0** (34.0% of $1000 bankroll)
-- Expected EV: **$11.19**
-  - #1 [SGP] $50 on TOR @ CHC 4-leg SGP @ -188 (P=65%)
+- Expected EV: **$8.87**
+  - #1 [SGP] $50 on BOS @ SEA 4-leg SGP @ -164 (P=62%)
   - #2 [NRFI] $50 on TOR @ CHC YRFI (1st-inning OVER 0.5) (P=80%)
   - #3 [NRFI] $50 on MIN @ ARI YRFI (1st-inning OVER 0.5) (P=75%)
   - #4 [NRFI] $50 on CLE @ HOU YRFI (1st-inning OVER 0.5) (P=71%)
@@ -116,17 +120,18 @@
   - 🔥 T3 **Tom Kim** (South Korea): -3 total -- finished T3
   - 🔥 T4 **Sam Stevens** (USA): -3 total -- finished T4
   - 🔥 T5 **Matt Fitzpatrick** (England): -3 total -- finished T5
+  - ❄️ **Dylan Wu** (USA): Sunday +4.7 vs tourney avg
 
-## 🔥 MLB Batter Heat (41 HOT / 40 COLD)
-  - 🔥 **Pete Crow-Armstrong** (CHC): L14 .448 / season .283 (+165pts)
+## 🔥 MLB Batter Heat (42 HOT / 44 COLD)
+  - 🔥 **Pete Crow-Armstrong** (CHC): L14 .448 / season .286 (+162pts)
   - 🔥 **Bo Bichette** (NYM): L14 .400 / season .250 (+150pts)
-  - 🔥 **Nasim Nuñez** (WSH): L14 .375 / season .225 (+150pts)
+  - 🔥 **Nasim Nuñez** (WSH): L14 .375 / season .227 (+148pts)
   - 🔥 **Victor Caratini** (MIN): L14 .372 / season .231 (+141pts)
   - 🔥 **Seiya Suzuki** (CHC): L14 .383 / season .269 (+114pts)
   - ❄️ **Ildemaro Vargas** (AZ): L14 .059 / season .261 (-202pts) -- FADE props
-  - ❄️ **Chandler Simpson** (TB): L14 .081 / season .259 (-178pts) -- FADE props
-  - ❄️ **Spencer Steer** (CIN): L14 .070 / season .241 (-171pts) -- FADE props
+  - ❄️ **Spencer Steer** (CIN): L14 .067 / season .240 (-173pts) -- FADE props
   - ❄️ **Carlos Cortes** (ATH): L14 .116 / season .278 (-162pts) -- FADE props
+  - ❄️ **Chandler Simpson** (TB): L14 .111 / season .260 (-149pts) -- FADE props
   - ❄️ **Michael Conforto** (CHC): L14 .074 / season .222 (-148pts) -- FADE props
 
 ## 📈 Streak Regression Alerts (1)
