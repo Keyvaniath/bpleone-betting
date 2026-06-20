@@ -4,14 +4,14 @@
 
 _Pipeline health: **DEGRADED** (14/15 artifacts ok; 1 empty, 0 stale)._ 
 
-_Generated at 2026-06-20T22:05:00 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-06-20T23:09:30 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
 **PIT @ COL - OVER_10.5**
 - Market: -110
-- Model probability: 83.2%
-- Raw edge: +58.9%
+- Model probability: 82.3%
+- Raw edge: +57.15%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
@@ -20,13 +20,13 @@ _Generated at 2026-06-20T22:05:00 UTC. Game lines source: **Bovada (fallback -- 
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 7:15p ET | CLE @ HOU | Daikin Park | indoor | HOU_ML +15.69% |
-| 7:15p ET | NYM @ PHI | Citizens Bank Park | 72F 6mph | UNDER_7.5 +18.11% |
-| 9:10p ET | PIT @ COL | Coors Field | 64F 15mph | OVER_10.5 +58.9% |
-| 10:05p ET | LAA @ OAK | Sutter Health Park | 63F 6mph | OVER_9.5 +30.91% |
+| 7:15p ET | CLE @ HOU | Daikin Park | indoor | HOU_ML +14.26% |
+| 7:15p ET | NYM @ PHI | Citizens Bank Park | 71F 7mph | UNDER_7.5 +17.31% |
+| 9:10p ET | PIT @ COL | Coors Field | 67F 12mph | OVER_10.5 +57.15% |
+| 10:05p ET | LAA @ OAK | Sutter Health Park | 63F 7mph | OVER_9.5 +32.59% |
 | 10:10p ET | BAL @ LAD | UNIQLO Field at Dodger Stadium | 59F 3mph | OVER_8.0 +35.06% |
-| 10:10p ET | BOS @ SEA | T-Mobile Park | indoor | SEA_ML +13.4% |
-| 10:10p ET | MIN @ ARI | Chase Field | indoor | MIN_ML +26.18% |
+| 10:10p ET | BOS @ SEA | T-Mobile Park | indoor | SEA_ML +12.62% |
+| 10:10p ET | MIN @ ARI | Chase Field | indoor | MIN_ML +24.33% |
 
 ## Parlays - top 5
 
@@ -64,13 +64,13 @@ Cumulative graded plays: 118214. Wins: 87366. Hit rate: 73.9%.
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| BAL @ LAD | 53.7% | -116 | 3.11 | -277 | +277 |
+| BAL @ LAD | 53.7% | -116 | 3.09 | -277 | +277 |
 | BOS @ SEA | 32.9% | +204 | 5.56 | +105 | -105 |
 | CLE @ HOU | 28.7% | +248 | 6.24 | -136 | +136 |
-| LAA @ OAK | 50.3% | -101 | 3.52 | -101 | +101 |
+| LAA @ OAK | 50.3% | -101 | 3.55 | -101 | +101 |
 | MIN @ ARI | 24.7% | +304 | 6.99 | +270 | -270 |
-| NYM @ PHI | 44.9% | +123 | 4.03 | -116 | +116 |
-| PIT @ COL | 31.8% | +214 | 5.24 | +928 | -928 |
+| NYM @ PHI | 44.9% | +123 | 4.06 | -116 | +116 |
+| PIT @ COL | 31.8% | +214 | 5.26 | +926 | -926 |
 
 ## Team Form (last 10)
 
