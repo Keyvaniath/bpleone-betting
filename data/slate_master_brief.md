@@ -1,48 +1,55 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-06-20T05:07:48 UTC_
+_Generated 2026-06-20T11:14:25 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -13
+- **Score:** -11
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 16
-- **Total FADES:** 77
+- **Total STRONG:** 15
+- **Total FADES:** 71
+
+## Lock of the Night
+- **Subject:** Freddy Peralta
+- **Source:** ELITE_BOARD
+- **Sport:** MLB
+- **Score:** 15.0
+- **Details:** NYM @ PHI
 
 ## Top 5 Curated Picks
-1. **GOLF / Wyndham Clark** (GOLF_PLAYER, score=213.14)
+1. **GOLF / Wyndham Clark** (GOLF_PLAYER, score=216.14)
    - Play: Wyndham Clark (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **WNBA / napheesa collier** (WNBA_PLAYER, score=156.0)
-   - Play: napheesa collier (PLAYER_STRONG)
-   - Rationale: Cross-sport top pick (WNBA_PLAYER)
-3. **GOLF / Xander Schauffele** (GOLF_PLAYER, score=145.79)
+2. **GOLF / Xander Schauffele** (GOLF_PLAYER, score=153.0)
    - Play: Xander Schauffele (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-4. **MLB / ?** (MLB_TEAM, score=82.29)
-   - Play: ? (TEAM_STRONG)
-   - Rationale: Cross-sport top pick (MLB_TEAM)
+3. **MLB / Chris Sale** (MLB_PITCHER, score=63.58)
+   - Play: Chris Sale (PITCHER_STRONG)
+   - Rationale: Cross-sport top pick (MLB_PITCHER)
+4. **MLB / Kyle Harrison** (MLB_PITCHER, score=61.83)
+   - Play: Kyle Harrison (PITCHER_STRONG)
+   - Rationale: Cross-sport top pick (MLB_PITCHER)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
   - Wyndham Clark top 10 finish
   - Xander Schauffele top 10 finish
-  - Matt Fitzpatrick top 10 finish
+  - Tom Kim top 10 finish
 
 ## Slate ROI Projection
-- **Picks:** 0
-- **Avg edge:** 0%
+- **Picks:** 3
+- **Avg edge:** -0.91%
 - **Expected ROI (1/4 Kelly):** 0.0%
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **MLB** / Randy Vásquez (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **MLB** / Roki Sasaki (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **MLB** / Jacob Misiorowski (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **MLB** / Michael Soroka (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **MLB** / Landen Roupp (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **NHL** / connor hellebuyck (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / calvin pickard (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / stuart skinner (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / Connor Mcdavid (SKATER_FADE)
+  - Fade angle: SOG UNDER + no goal
+- **NHL** / Leon Draisaitl (SKATER_FADE)
+  - Fade angle: SOG UNDER + no goal
