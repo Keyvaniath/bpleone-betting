@@ -1,31 +1,31 @@
-# EdgeStat Slate — 2026-06-19
+# EdgeStat Slate — 2026-06-20
 
 _6 picks consolidated from POD + Alpha + Book Edges + Parlay-of-Day._
 
 ## ⭐ Play of the Day
 
 - **Nick Madrigal** · PP_batter_hrr_under_3.5
-  Prob 87.4% · Odds -136 · Edge +51.7% · Kelly 0.250
+  Prob 87.4% · Odds -136 · Edge +51.6% · Kelly 0.250
 
 ## 🎯 Alpha Pick
 
-- **PIT @ COL** · PIT_ML
-  Prob 70.1% · Odds -142 · Edge +19.4% · Kelly 0.250
+- **MIN @ ARI** · MIN_ML
+  Prob 58.6% · Odds +113 · Edge +24.9% · Kelly 0.220
 
 ## 📊 Book Edges
 
-- **LAA @ OAK · AWAY (AWAY)** · TEAM_ML
-  Prob 48.6% · Odds +130 · Edge +11.8% · Kelly 0.090
+- **WSN @ TBR · AWAY (AWAY)** · TEAM_ML
+  Prob 57.1% · Odds +100 · Edge +14.1% · Kelly 0.141
+- **CHW @ DET · AWAY (AWAY)** · TEAM_ML
+  Prob 57.0% · Odds +100 · Edge +14.1% · Kelly 0.141
 - **MIN @ ARI · AWAY (AWAY)** · TEAM_ML
-  Prob 45.7% · Odds +144 · Edge +11.4% · Kelly 0.079
-- **WSN @ TBR · OVER · O/U 8.5** · TOTAL_OVER
-  Prob 58.2% · Odds -110 · Edge +11.1% · Kelly 0.122
+  Prob 53.3% · Odds +113 · Edge +13.5% · Kelly 0.120
 
 ## 🎲 Parlay
 
-- **Nick Madrigal + PIT @ COL** · 2-leg
-  Prob 61.2% · Odds +196 · Edge +81.1% · Kelly 0.050
+- **Nick Madrigal + MIN @ ARI** · 2-leg
+  Prob 51.2% · Odds +270 · Edge +89.3% · Kelly 0.050
 
 ---
-_Generated 2026-06-19T22:59:04 UTC by EdgeStat._
+_Generated 2026-06-20T05:07:53 UTC by EdgeStat._
 _Stakes assume ¼-Kelly fractional sizing on a flat bankroll._

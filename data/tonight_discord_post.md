@@ -1,7 +1,5 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:15 F:90
-
-:lock: **LOCK:** Randy Vásquez (MLB)
+_NO_ACTION_NIGHT_ | L:0 S:16 F:77
 
 :dart: **Top Picks:**
 1. [GOLF] Wyndham Clark -- Wyndham Clark (PLAYER_STRONG)
@@ -9,7 +7,7 @@ _NO_ACTION_NIGHT_ | L:0 S:15 F:90
 3. [GOLF] Xander Schauffele -- Xander Schauffele (PLAYER_STRONG)
 
 :chains: **Top Parlays:**
-- [WNBA] napheesa collier (2 legs, p=0.2874)
+- [WNBA] napheesa collier (2 legs, p=0.2726)
 
 :coin: Bankroll Advisory: STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 
