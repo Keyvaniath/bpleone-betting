@@ -1,13 +1,13 @@
 # EdgeStat Daily Summary — 2026-06-20
 
-## 🏥 Model Health: 71.9/100 [HEALTHY]
+## 🏥 Model Health: 74.2/100 [HEALTHY]
 - Solid health - some minor issues to monitor
   - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 54.4/100
   - 🔴 Brier Trend: 29.6/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 90.0/100
-  - 🟡 Edge Count: 71.4/100
+  - 🟢 Edge Count: 94.3/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.587)
@@ -21,29 +21,25 @@
 4. **PIT @ COL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 5. **BOS @ SEA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 
-## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB-PP]** Mickey Gasper PP_batter_hrr_under_3.5 -- 87% / +51.2% (score 2.5)
-- [STRONG] **[MLB]** CIN @ NYY NYY_ML -- 81% / +21.5% (score 2.5)
-
-## 📉 Strong UNDER Signals
-- [STRONG 5.0] **LAA @ OAK** model 11.24 vs market 23.5
-
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **202-40** (83.5% hit rate)
 - Net units: **+6.73u** | ROI: **+44.9%**
 - Last 7d: 42-10 (80.8%) | net +1.29u
 
-**Today's 5 Locks:**
+**Today's 8 Locks:**
 - [MLB-PP] **Nick Madrigal** PP_batter_hrr_under_3.5 · p=87% edge=+51.6% qK=0.062u
 - [MLB-PP] **Alex Bregman** PP_batter_hrr_under_3.5 · p=87% edge=+51.6% qK=0.062u
 - [MLB-PP] **Hunter Feduccia** PP_batter_hrr_under_3.5 · p=87% edge=+51.5% qK=0.062u
 - [MLB-PP] **Salvador Perez** PP_batter_hrr_under_3.5 · p=87% edge=+51.3% qK=0.062u
 - [MLB-PP] **Hao-Yu Lee** PP_batter_hrr_under_3.5 · p=87% edge=+51.2% qK=0.062u
+- [MLB-PP] **Drew Millas** PP_batter_hrr_under_3.5 · p=87% edge=+51.6% qK=0.062u
+- [MLB-PP] **Brice Matthews** PP_batter_hrr_under_3.5 · p=87% edge=+51.5% qK=0.062u
+- [MLB-PP] **J.T. Realmuto** PP_batter_hrr_under_3.5 · p=87% edge=+51.4% qK=0.062u
 
 ## 🎰 Top Balanced 2-Leg Parlays (40-65% joint)
-- [MLB-PP] Nick Madrigal PP_batter_hrr_under_ + [MLB] MIN @ ARI MIN_ML
-  Joint: 51% | Fair: 270 | Edge: +89.3%
-- [MLB-PP] Alex Bregman PP_batter_hrr_under_ + [MLB] MIN @ ARI MIN_ML
+- [MLB-PP] Hao-Yu Lee PP_batter_hrr_under_ + [MLB] MIN @ ARI MIN_ML
+  Joint: 51% | Fair: 270 | Edge: +89.4%
+- [MLB-PP] Drew Millas PP_batter_hrr_under_ + [MLB] MIN @ ARI MIN_ML
   Joint: 51% | Fair: 270 | Edge: +89.3%
 - [MLB-PP] Hunter Feduccia PP_batter_hrr_under_ + [MLB] MIN @ ARI MIN_ML
   Joint: 51% | Fair: 270 | Edge: +89.3%
@@ -64,32 +60,31 @@
 - Hot teams: **3** | Cold teams: **5** | Over-heavy: 0 | Under-heavy: 7
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (46)
+## ⚠️ Anomaly Detector (41)
 - STEAM_MOVE: **39**
-- PEN_MISMATCH: **4**
-- COMPOUND_BULLPEN: **3**
+- PEN_MISMATCH: **2**
   - WSH @ CON (WNBA): ML/TOTAL steam since open: ML +5.9pp toward CON; total -3 (UNDER) (4 snapshots)
   - DET @ HOU (MLB): ML steam since open: ML -10.8pp toward DET (4 snapshots)
   - LAA @ ARI (MLB): ML/TOTAL steam since open: ML +10.7pp toward ARI; total +0.5 (OVER) (6 snapshots)
   - DAL @ POR (WNBA): ML/TOTAL steam since open: ML +8.2pp toward POR; total -2 (UNDER) (3 snapshots)
   - LA @ PHX (WNBA): TOTAL steam since open: total -2 (UNDER) (3 snapshots)
 
-## 💰 Today's Portfolio (9 picks)
-- Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$12.27**
-  - #1 [NRFI] $50 on TOR @ CHC YRFI (1st-inning OVER 0.5) (P=80%)
-  - #2 [NRFI] $50 on MIN @ ARI YRFI (1st-inning OVER 0.5) (P=75%)
-  - #3 [NRFI] $50 on CLE @ HOU YRFI (1st-inning OVER 0.5) (P=71%)
-  - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
-  - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
+## 💰 Today's Portfolio (8 picks)
+- Total stake: **$340.0** (34.0% of $1000 bankroll)
+- Expected EV: **$11.19**
+  - #1 [SGP] $50 on TOR @ CHC 4-leg SGP @ -188 (P=65%)
+  - #2 [NRFI] $50 on TOR @ CHC YRFI (1st-inning OVER 0.5) (P=80%)
+  - #3 [NRFI] $50 on MIN @ ARI YRFI (1st-inning OVER 0.5) (P=75%)
+  - #4 [NRFI] $50 on CLE @ HOU YRFI (1st-inning OVER 0.5) (P=71%)
+  - #5 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
 
-## 🎯 Convergence Picks (8 stacked games)
-- ELITE: **2** · HIGH: 0 · MED: 6
-  - [ELITE] Toronto Tempo @ Connecticut Sun : 5 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ATS)
-  - [ELITE] Minnesota Lynx @ Golden State Valkyries : 5 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ANOMALY)
+## 🎯 Convergence Picks (6 stacked games)
+- ELITE: **2** · HIGH: 0 · MED: 4
+  - [ELITE] Toronto Tempo @ Connecticut Sun : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
+  - [ELITE] Minnesota Lynx @ Golden State Valkyries : 4 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ATS)
   - [MED] New York Knicks @ San Antonio Spurs : 2 signals (ATS, ATS)
   - [MED] Washington Mystics @ New York Liberty : 2 signals (HEAT_COLD, HEAT_COLD)
-  - [MED] Atlanta United FC @ Columbus Crew : 2 signals (ATS, ATS)
+  - [MED] Portland Timbers @ Seattle Sounders FC : 2 signals (PREGAME, ATS)
 
 ## ⚾ Top MLB Pitcher K Plays (10)
 - **Yoshinobu Yamamoto** OVER 4.5 K (78%) fair -347
@@ -134,9 +129,7 @@
   - ❄️ **Carlos Cortes** (ATH): L14 .116 / season .278 (-162pts) -- FADE props
   - ❄️ **Michael Conforto** (CHC): L14 .074 / season .222 (-148pts) -- FADE props
 
-## 📈 Streak Regression Alerts (3)
-- [WNBA] Connecticut Sun on L5 L10 0-5 -- Connecticut Sun on L5 -- no historical sample
-- [WNBA] Minnesota Lynx on W3 L10 4-1 -- Minnesota Lynx on W3 -- no historical sample
+## 📈 Streak Regression Alerts (1)
 - [CWS] Oklahoma Sooners on W3 L10 3-0 -- Oklahoma Sooners on W3 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
