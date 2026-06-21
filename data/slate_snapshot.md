@@ -4,28 +4,28 @@ _6 picks consolidated from POD + Alpha + Book Edges + Parlay-of-Day._
 
 ## ⭐ Play of the Day
 
-- **Brice Matthews** · PP_batter_hrr_under_3.5
-  Prob 87.4% · Odds -136 · Edge +51.6% · Kelly 0.250
+- **Henry Bolte** · PP_batter_hrr_under_3.5
+  Prob 87.4% · Odds -136 · Edge +51.7% · Kelly 0.250
 
 ## 🎯 Alpha Pick
 
 - **CIN @ NYY** · NYY_ML
-  Prob 66.9% · Odds -122 · Edge +21.7% · Kelly 0.250
+  Prob 62.4% · Odds -105 · Edge +21.8% · Kelly 0.229
 
 ## 📊 Book Edges
 
-- **SDP @ TEX · HOME (HOME)** · TEAM_ML
-  Prob 59.1% · Odds -110 · Edge +12.7% · Kelly 0.140
-- **TOR @ CHC · AWAY (AWAY)** · TEAM_ML
-  Prob 56.0% · Odds +100 · Edge +12.0% · Kelly 0.120
+- **MIN @ ARI · OVER · O/U 8.5** · TOTAL_OVER
+  Prob 58.3% · Odds -110 · Edge +11.3% · Kelly 0.124
 - **CHW @ DET · AWAY (AWAY)** · TEAM_ML
-  Prob 56.6% · Odds -103 · Edge +11.6% · Kelly 0.119
+  Prob 57.0% · Odds -105 · Edge +11.2% · Kelly 0.117
+- **WSN @ TBR · AWAY (AWAY)** · TEAM_ML
+  Prob 51.8% · Odds +114 · Edge +10.9% · Kelly 0.096
 
 ## 🎲 Parlay
 
-- **Brice Matthews + CIN @ NYY** · 2-leg
-  Prob 58.4% · Odds +216 · Edge +84.5% · Kelly 0.050
+- **Henry Bolte + CIN @ NYY** · 2-leg
+  Prob 54.5% · Odds +239 · Edge +84.7% · Kelly 0.050
 
 ---
-_Generated 2026-06-21T05:41:00 UTC by EdgeStat._
+_Generated 2026-06-21T11:47:00 UTC by EdgeStat._
 _Stakes assume ¼-Kelly fractional sizing on a flat bankroll._

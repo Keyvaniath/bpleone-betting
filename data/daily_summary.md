@@ -2,16 +2,16 @@
 
 **Model Confidence: 27.4/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
 
-_Pipeline health: **DEGRADED** (14/15 artifacts ok; 1 empty, 0 stale)._ 
+_Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
 
-_Generated at 2026-06-21T05:41:03 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-06-21T11:47:02 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
 **PIT @ COL - OVER_12.0**
 - Market: -110
-- Model probability: 90.0%
-- Raw edge: +71.78%
+- Model probability: 89.9%
+- Raw edge: +71.58%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
@@ -20,46 +20,46 @@ _Generated at 2026-06-21T05:41:03 UTC. Game lines source: **Bovada (fallback -- 
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 1:35p ET | CIN @ NYY | Yankee Stadium | 83F 7mph | OVER_8.5 +48.09% |
-| 1:35p ET | MIL @ ATL | Truist Park | 86F 7mph | OVER_8.5 +47.94% |
-| 1:40p ET | WSN @ TBR | Tropicana Field | indoor | UNDER_8.5 +10.96% |
-| 1:40p ET | CHW @ DET | Comerica Park | 76F 11mph | CHW_ML +23.2% |
-| 1:40p ET | SFG @ MIA | loanDepot park | indoor | SFG_ML +13.64% |
-| 2:10p ET | CLE @ HOU | Daikin Park | indoor | -- |
-| 2:10p ET | STL @ KCR | Kauffman Stadium | 81F 8mph | STL_ML +9.75% |
-| 2:20p ET | TOR @ CHC | Wrigley Field | 59F 15mph | TOR_ML +18.4% |
-| 2:35p ET | SDP @ TEX | Globe Life Field | indoor | UNDER_8.5 +24.6% |
-| 3:10p ET | PIT @ COL | Coors Field | 91F 19mph | OVER_12.0 +71.78% |
-| 3:15p ET | MIN @ ARI | Chase Field | indoor | OVER_8.5 +17.36% |
-| 4:05p ET | LAA @ OAK | Sutter Health Park | 70F 11mph | OVER_8.5 +33.34% |
-| 4:10p ET | BAL @ LAD | UNIQLO Field at Dodger Stadium | 71F 9mph | OVER_9.0 +29.4% |
-| 4:10p ET | BOS @ SEA | T-Mobile Park | indoor | BOS_ML +11.61% |
-| 7:20p ET | NYM @ PHI | Citizens Bank Park | 73F 2mph | UNDER_8.5 +29.85% |
+| 1:35p ET | CIN @ NYY | Yankee Stadium | 83F 6mph | OVER_8.5 +46.68% |
+| 1:35p ET | MIL @ ATL | Truist Park | 86F 6mph | OVER_8.5 +46.54% |
+| 1:40p ET | WSN @ TBR | Tropicana Field | indoor | WSN_ML +17.54% |
+| 1:40p ET | CHW @ DET | Comerica Park | 75F 9mph | CHW_ML +21.82% |
+| 1:40p ET | SFG @ MIA | loanDepot park | indoor | OVER_7.5 +16.11% |
+| 2:10p ET | CLE @ HOU | Daikin Park | indoor | OVER_8.5 +9.78% |
+| 2:10p ET | STL @ KCR | Kauffman Stadium | 79F 8mph | STL_ML +8.12% |
+| 2:20p ET | TOR @ CHC | Wrigley Field | 65F 5mph | OVER_6.5 +39.01% |
+| 2:35p ET | SDP @ TEX | Globe Life Field | indoor | TEX_ML +7.24% |
+| 3:10p ET | PIT @ COL | Coors Field | 90F 20mph | OVER_12.0 +71.58% |
+| 3:15p ET | MIN @ ARI | Chase Field | indoor | OVER_8.5 +25.53% |
+| 4:05p ET | LAA @ OAK | Sutter Health Park | 89F 10mph | OVER_9.5 +23.59% |
+| 4:10p ET | BAL @ LAD | UNIQLO Field at Dodger Stadium | 72F 8mph | OVER_9.0 +28.54% |
+| 4:10p ET | BOS @ SEA | T-Mobile Park | indoor | BOS_ML +12.12% |
+| 7:20p ET | NYM @ PHI | Citizens Bank Park | 74F 1mph | UNDER_8.0 +17.76% |
 
 ## Parlays - top 5
 
-- **2-leg @ +232 (prob 44.9%, EV +49.35%)**
-  - MIL @ ATL ATL_ML (-135, model 70.2%)
-  - SDP @ TEX TEX_ML (-110, model 64.0%)
-- **2-leg @ +282 (prob 38.6%, EV +47.53%)**
-  - TOR @ CHC TOR_ML (+100, model 59.2%)
-  - SDP @ TEX UNDER_8.5 (-110, model 65.3%)
-- **2-leg @ +264 (prob 40.1%, EV +46.23%)**
-  - SDP @ TEX UNDER_8.5 (-110, model 65.3%)
-  - MIN @ ARI OVER_8.5 (-110, model 61.5%)
-- **2-leg @ +294 (prob 37.0%, EV +45.87%)**
-  - CHW @ DET CHW_ML (-103, model 62.5%)
-  - TOR @ CHC TOR_ML (+100, model 59.2%)
-- **2-leg @ +282 (prob 38.1%, EV +45.39%)**
-  - SDP @ TEX UNDER_8.5 (-110, model 65.3%)
-  - MIN @ ARI MIN_ML (+100, model 58.3%)
+- **2-leg @ +273 (prob 39.9%, EV +48.69%)**
+  - CHW @ DET CHW_ML (-105, model 62.4%)
+  - NYM @ PHI UNDER_8.0 (-110, model 63.9%)
+- **2-leg @ +309 (prob 35.1%, EV +43.44%)**
+  - WSN @ TBR WSN_ML (+114, model 54.9%)
+  - NYM @ PHI UNDER_8.0 (-110, model 63.9%)
+- **2-leg @ +318 (prob 34.3%, EV +43.18%)**
+  - WSN @ TBR WSN_ML (+114, model 54.9%)
+  - CHW @ DET CHW_ML (-105, model 62.4%)
+- **2-leg @ +264 (prob 38.9%, EV +41.71%)**
+  - SFG @ MIA OVER_7.5 (-110, model 60.8%)
+  - NYM @ PHI UNDER_8.0 (-110, model 63.9%)
+- **2-leg @ +273 (prob 38.0%, EV +41.46%)**
+  - CHW @ DET CHW_ML (-105, model 62.4%)
+  - SFG @ MIA OVER_7.5 (-110, model 60.8%)
 
 ## Self-Learning Loop
 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
-| batter hits | 45 | 64.4% | 40.2% | 0.631 | 1.309 |
 | pitcher strikeouts | 1 | 100.0% | 33.4% | 0.556 | 1.032 |
+| batter hits | 45 | 64.4% | 40.2% | 0.631 | 1.309 |
 
 Cumulative graded plays: 118214. Wins: 87366. Hit rate: 73.9%.
 
@@ -67,20 +67,20 @@ Cumulative graded plays: 118214. Wins: 87366. Hit rate: 73.9%.
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| BAL @ LAD | 47.0% | +113 | 3.93 | -199 | +199 |
+| BAL @ LAD | 47.0% | +113 | 3.94 | -198 | +198 |
 | BOS @ SEA | 52.7% | -111 | 3.2 | +197 | -197 |
-| CHW @ DET | 33.5% | +199 | 5.29 | +292 | -292 |
-| CIN @ NYY | 46.2% | +117 | 4.04 | -142 | +142 |
+| CHW @ DET | 33.5% | +199 | 5.28 | +292 | -292 |
+| CIN @ NYY | 46.2% | +117 | 4.0 | -142 | +142 |
 | CLE @ HOU | 28.6% | +249 | 6.25 | +137 | -137 |
-| LAA @ OAK | 35.9% | +178 | 5.47 | +150 | -150 |
-| MIL @ ATL | 34.6% | +189 | 5.53 | -145 | +145 |
-| MIN @ ARI | 39.5% | +153 | 4.65 | +237 | -237 |
-| NYM @ PHI | 35.5% | +181 | 5.18 | +118 | -118 |
-| PIT @ COL | 19.2% | +421 | 7.22 | +198 | -198 |
+| LAA @ OAK | 35.9% | +178 | 5.41 | +147 | -147 |
+| MIL @ ATL | 34.6% | +189 | 5.51 | -144 | +144 |
+| MIN @ ARI | 36.5% | +174 | 5.04 | +194 | -194 |
+| NYM @ PHI | 35.5% | +181 | 5.2 | +118 | -118 |
+| PIT @ COL | 19.2% | +421 | 7.18 | +200 | -200 |
 | SDP @ TEX | 35.1% | +185 | 5.23 | +101 | -101 |
 | SFG @ MIA | 44.2% | +126 | 4.08 | +356 | -356 |
-| STL @ KCR | 63.1% | -171 | 2.3 | +264 | -264 |
-| TOR @ CHC | 50.3% | -101 | 3.26 | +252 | -252 |
+| STL @ KCR | 63.1% | -171 | 2.31 | +264 | -264 |
+| TOR @ CHC | 50.3% | -101 | 3.51 | +253 | -253 |
 | WSN @ TBR | 42.7% | +134 | 4.25 | +215 | -215 |
 
 ## Team Form (last 10)
