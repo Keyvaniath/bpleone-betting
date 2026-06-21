@@ -2,25 +2,23 @@
 
 **Model Confidence: 27.4/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
 
-_Pipeline health: **DEGRADED** (14/15 artifacts ok; 1 empty, 0 stale)._ 
+_Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
 
-_Generated at 2026-06-21T22:13:18 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-06-21T23:14:32 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
 **NYM @ PHI - UNDER_8.0**
 - Market: -110
-- Model probability: 60.8%
-- Raw edge: +16.14%
-- Recommended stake: <= 0.5u (model calibrating)
-
-> _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
+- Model probability: 60.0%
+- Raw edge: +14.57%
+- Recommended stake: 4.01u Kelly
 
 ## Full Slate (1 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 7:20p ET | NYM @ PHI | Citizens Bank Park | 72F 3mph | UNDER_8.0 +16.14% |
+| 7:20p ET | NYM @ PHI | Citizens Bank Park | 72F 4mph | UNDER_8.0 +14.57% |
 
 ## Self-Learning Loop
 
@@ -35,7 +33,7 @@ Cumulative graded plays: 118214. Wins: 87366. Hit rate: 73.9%.
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| NYM @ PHI | 35.5% | +181 | 5.24 | +118 | -118 |
+| NYM @ PHI | 35.5% | +181 | 5.29 | +117 | -117 |
 
 ## Team Form (last 10)
 

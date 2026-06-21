@@ -1,18 +1,18 @@
 # EdgeStat Daily Summary — 2026-06-21
 
-## 🏥 Model Health: 73.4/100 [HEALTHY]
+## 🏥 Model Health: 72.2/100 [HEALTHY]
 - Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 99.9/100
+  - 🟢 Calibration Freshness: 99.7/100
   - 🔴 Hit Rate Trend: 54.4/100
   - 🔴 Brier Trend: 29.6/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 90.0/100
-  - 🟢 Edge Count: 85.7/100
+  - 🟡 Edge Count: 74.3/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.588)
-- **Total games on board:** 109
-- **Strong home favorites:** 4 | **Strong road dogs:** 2
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.587)
+- **Total games on board:** 107
+- **Strong home favorites:** 3 | **Strong road dogs:** 1
 
 ## 🎯 Top 5 Best Bets
 1. **PIT @ COL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
@@ -22,9 +22,9 @@
 5. **NYM @ PHI YRFI (1st-inning OVER 0.5)** (78/100 ★★★★)
 
 ## 🔒 Locks of the Day -- Track Record
-- All-time: **210-41** (83.7% hit rate)
-- Net units: **+7.03u** | ROI: **+45.2%**
-- Last 7d: 43-9 (82.7%) | net +1.40u
+- All-time: **214-41** (83.9% hit rate)
+- Net units: **+7.22u** | ROI: **+45.6%**
+- Last 7d: 47-9 (83.9%) | net +1.58u
 
 **Today's 9 Locks:**
 - [MLB-PP] **Brice Matthews** PP_batter_hrr_under_3.5 · p=87% edge=+51.6% qK=0.062u
@@ -38,12 +38,12 @@
 - [MLB-PP] **George Springer** PP_batter_hrr_under_3.5 · p=87% edge=+51.7% qK=0.062u
 
 ## 🎰 Top Balanced 2-Leg Parlays (40-65% joint)
-- [MLB-PP] George Springer PP_batter_hrr_under_ + [MLB] CHW @ DET CHW_ML
-  Joint: 52% | Fair: 245 | Edge: +81.0%
-- [MLB-PP] Salvador Perez PP_batter_hrr_under_ + [MLB] CHW @ DET CHW_ML
-  Joint: 52% | Fair: 245 | Edge: +80.9%
-- [MLB-PP] Mitch Garver PP_batter_hrr_under_ + [MLB] CHW @ DET CHW_ML
-  Joint: 52% | Fair: 245 | Edge: +80.9%
+- [MLB-PP] George Springer PP_batter_hrr_under_ + [MLB] NYM @ PHI UNDER_8.0
+  Joint: 49% | Fair: 231 | Edge: +64.0%
+- [MLB-PP] Salvador Perez PP_batter_hrr_under_ + [MLB] NYM @ PHI UNDER_8.0
+  Joint: 49% | Fair: 231 | Edge: +63.9%
+- [MLB-PP] Mitch Garver PP_batter_hrr_under_ + [MLB] NYM @ PHI UNDER_8.0
+  Joint: 49% | Fair: 231 | Edge: +63.9%
 
 ## 🎮 Player Play of the Day (cross-sport)
 - **[LOL]** Inspired UNDER 3.5 Kills | MED conviction · model 61.7% fair -161
@@ -61,11 +61,9 @@
 - Hot teams: **4** | Cold teams: **4** | Over-heavy: 0 | Under-heavy: 4
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (47)
+## ⚠️ Anomaly Detector (44)
 - RESIDUAL_DIVERGENCE: **3**
 - STEAM_MOVE: **41**
-- COMPOUND_BULLPEN: **2**
-- PEN_MISMATCH: **1**
   - Las Vegas Aces (WNBA): Las Vegas Aces UNDERPERFORMING expected margin by 8.7pts in recent games -- model bias may persist
   - Minnesota Lynx (WNBA): Minnesota Lynx OUTPERFORMING expected margin by 15.3pts in recent games -- model bias may persist
   - Los Angeles Sparks (WNBA): Los Angeles Sparks UNDERPERFORMING expected margin by 9.6pts in recent games -- model bias may persist
@@ -83,17 +81,13 @@
 
 ## 🎯 Convergence Picks (5 stacked games)
 - ELITE: **1** · HIGH: 1 · MED: 3
-  - [ELITE] Chicago Sky @ Dallas Wings : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
-  - [HIGH] Indiana Fever @ Atlanta Dream : 3 signals (HEAT_COLD, HEAT_COLD, ATS)
+  - [ELITE] Washington Mystics @ Minnesota Lynx : 4 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ATS)
+  - [HIGH] New York Liberty @ Los Angeles Sparks : 3 signals (PREGAME, ANOMALY, ATS)
   - [MED] New York Knicks @ San Antonio Spurs : 2 signals (ATS, ATS)
   - [MED] Portland Timbers @ Seattle Sounders FC : 2 signals (PREGAME, ATS)
   - [MED] Coventry City @ Arsenal : 2 signals (PREGAME, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (12)
-- **Reid Detmers** OVER 5.5 K (77%) fair -328
-- **Nathan Eovaldi** OVER 4.5 K (76%) fair -321
-- **Kai-Wei Teng** OVER 5.5 K (73%) fair -266
-- **Dylan Cease** OVER 6.5 K (72%) fair -252
+## ⚾ Top MLB Pitcher K Plays (1)
 - **Zack Wheeler** OVER 4.5 K (71%) fair -251
 
 ## 🏀 NBA Player Heat (18 HOT / 22 COLD)
@@ -114,23 +108,30 @@
   - [LEAN] **Vinicius Oliveira** (24-4-0) vs Andre Fili -- fair -145
 
 ## ⛳ Golf Player Heat (from U.S. Open)
-  - 🔥 T1 **Wyndham Clark** (USA): -7 total -- finished T1
-  - 🔥 T2 **Scottie Scheffler** (USA): -1 total -- finished T2
-  - 🔥 T3 **Sahith Theegala** (USA): -1 total -- finished T3
-  - 🔥 T4 **Tom Kim** (South Korea): -1 total -- finished T4
-  - 🔥 T5 **Sam Stevens** (USA): -1 total -- finished T5
+  - 🔥 T2 **Sam Burns** (USA): -3 total -- finished T2, Sunday -2.2 vs tourney avg
+  - 🔥 T3 **Tom Kim** (South Korea): -2 total -- finished T3, Sunday -0.5 vs tourney avg
+  - 🔥 T4 **J.T. Poston** (USA): +0 total -- finished T4, Sunday -3.0 vs tourney avg
+  - 🔥 T5 **Keith Mitchell** (USA): +0 total -- finished T5
+  - 🔥 T6 **Scottie Scheffler** (USA): +0 total -- finished T6
+  - ❄️ **William Mouw** (USA): Sunday +6.5 vs tourney avg
+  - ❄️ **Andrew Putnam** (USA): Sunday +4.5 vs tourney avg
+  - ❄️ **Wyndham Clark** (USA): Sunday +4.0 vs tourney avg
 
-## 🔥 MLB Batter Heat (44 HOT / 41 COLD)
+## 🔥 MLB Batter Heat (43 HOT / 42 COLD)
   - 🔥 **Nasim Nuñez** (WSH): L14 .400 / season .236 (+164pts)
   - 🔥 **Pete Crow-Armstrong** (CHC): L14 .448 / season .286 (+162pts)
   - 🔥 **Victor Caratini** (MIN): L14 .400 / season .241 (+159pts)
-  - 🔥 **Lawrence Butler** (ATH): L14 .333 / season .196 (+137pts)
-  - 🔥 **Luisangel Acuña** (CWS): L14 .345 / season .213 (+132pts)
+  - 🔥 **Blaze Alexander** (BAL): L14 .450 / season .312 (+138pts)
+  - 🔥 **Lawrence Butler** (ATH): L14 .333 / season .195 (+138pts)
   - ❄️ **Ildemaro Vargas** (AZ): L14 .091 / season .263 (-172pts) -- FADE props
-  - ❄️ **Carlos Cortes** (ATH): L14 .116 / season .278 (-162pts) -- FADE props
+  - ❄️ **Carlos Cortes** (ATH): L14 .122 / season .276 (-154pts) -- FADE props
   - ❄️ **Spencer Steer** (CIN): L14 .087 / season .240 (-153pts) -- FADE props
   - ❄️ **Michael Conforto** (CHC): L14 .074 / season .222 (-148pts) -- FADE props
   - ❄️ **Luke Raley** (SEA): L14 .095 / season .240 (-145pts) -- FADE props
+
+## 📈 Streak Regression Alerts (2)
+- [WNBA] Minnesota Lynx on W3 L10 4-1 -- Minnesota Lynx on W3 -- no historical sample
+- [CWS] Oklahoma Sooners on W3 L10 3-0 -- Oklahoma Sooners on W3 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**

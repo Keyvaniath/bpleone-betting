@@ -1,18 +1,18 @@
 {
-  "generated_at": "2026-06-21T22:12:48",
-  "n_settled": 6232,
+  "generated_at": "2026-06-21T23:13:56",
+  "n_settled": 6290,
   "span": [
     "2026-05-19",
     "2026-06-21"
   ],
   "n_days": 34,
   "in_sample": {
-    "raw_roi": -12.3,
-    "raw_n": 6226,
-    "curated_roi": 18.2,
-    "curated_n": 1848,
-    "curated_hit": 66.5,
-    "families_cut": 32
+    "raw_roi": -12.7,
+    "raw_n": 6284,
+    "curated_roi": 20.7,
+    "curated_n": 1527,
+    "curated_hit": 69.7,
+    "families_cut": 33
   },
   "holdout": [
     {
@@ -20,39 +20,39 @@
       "train_start": "2026-05-19",
       "train_end": "2026-06-08",
       "test_end": "2026-06-21",
-      "train_n": 3787,
+      "train_n": 3756,
       "families_cut": 27,
-      "test_raw_roi": -6.6,
-      "test_oos_roi": 20.6,
-      "test_oos_hit": 61.0,
-      "test_oos_n": 853,
-      "test_leak_roi": 28.2
+      "test_raw_roi": -7.9,
+      "test_oos_roi": 14.4,
+      "test_oos_hit": 57.6,
+      "test_oos_n": 942,
+      "test_leak_roi": 34.1
     },
     {
       "split": "70/30",
       "train_start": "2026-05-19",
       "train_end": "2026-06-11",
       "test_end": "2026-06-21",
-      "train_n": 4288,
+      "train_n": 4257,
       "families_cut": 27,
-      "test_raw_roi": -8.8,
-      "test_oos_roi": 18.8,
-      "test_oos_hit": 59.9,
-      "test_oos_n": 705,
-      "test_leak_roi": 26.6
+      "test_raw_roi": -10.3,
+      "test_oos_roi": 11.6,
+      "test_oos_hit": 56.0,
+      "test_oos_n": 794,
+      "test_leak_roi": 34.1
     },
     {
       "split": "80/20",
       "train_start": "2026-05-19",
       "train_end": "2026-06-15",
       "test_end": "2026-06-21",
-      "train_n": 5098,
+      "train_n": 5067,
       "families_cut": 30,
-      "test_raw_roi": -7.2,
-      "test_oos_roi": 32.6,
-      "test_oos_hit": 65.1,
-      "test_oos_n": 350,
-      "test_leak_roi": 36.4
+      "test_raw_roi": -10.0,
+      "test_oos_roi": 16.9,
+      "test_oos_hit": 57.2,
+      "test_oos_n": 439,
+      "test_leak_roi": 36.6
     }
   ],
   "persistence": {
@@ -62,19 +62,14 @@
     "test_net_of_cuts": -610.0,
     "worst": [
       {
-        "family": "mlb_hr_0.5_over",
-        "n": 282,
-        "net": -90.8
-      },
-      {
         "family": "to_hit_hr_yes",
         "n": 282,
         "net": -90.8
       },
       {
-        "family": "mlb_tb_2.5_over",
-        "n": 209,
-        "net": -84.9
+        "family": "mlb_hr_0.5_over",
+        "n": 282,
+        "net": -90.8
       },
       {
         "family": "tb_3plus_yes",
@@ -82,12 +77,17 @@
         "net": -84.9
       },
       {
-        "family": "1_plus_xbh",
+        "family": "mlb_tb_2.5_over",
+        "n": 209,
+        "net": -84.9
+      },
+      {
+        "family": "mlb_xbh_0.5_over",
         "n": 546,
         "net": -78.0
       },
       {
-        "family": "mlb_xbh_0.5_over",
+        "family": "1_plus_xbh",
         "n": 546,
         "net": -78.0
       }
@@ -98,5 +98,5 @@
     "Concentrated in MLB props. The edge is largely \u201cdon't bet structurally overpriced longshot overs\u201d (HR/XBH overs, to-hit-HR YES) -- a known, persistent market inefficiency.",
     "ROI is measured at the model's fair price / settled outcome. It does NOT yet prove we beat the closing line (CLV) -- that requires the live odds feed."
   ],
-  "headline": "The curation derived on early data still returns +18.8% on the unseen later window, and the families it cut went on to lose 610u out-of-sample."
+  "headline": "The curation derived on early data still returns +11.6% on the unseen later window, and the families it cut went on to lose 610u out-of-sample."
 }
