@@ -1,58 +1,45 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-06-20T23:08:43 UTC_
+_Generated 2026-06-21T05:40:54 UTC_
 
 ## Slate Quality
-- **Tier:** STRONG_NIGHT
-- **Score:** 52
-- **Advisory:** Solid slate. Pick top STRONG/LOCK picks; consider Kelly 25-50% sizing.
+- **Tier:** NO_ACTION_NIGHT
+- **Score:** -18
+- **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 26
-- **Total FADES:** 52
-
-## Lock of the Night
-- **Subject:** Zac Gallen
-- **Source:** ELITE_BOARD
-- **Sport:** MLB
-- **Score:** 15.0
-- **Details:** MIN @ ARI
+- **Total STRONG:** 14
+- **Total FADES:** 74
 
 ## Top 5 Curated Picks
-1. **GOLF / Wyndham Clark** (GOLF_PLAYER, score=217.64)
+1. **GOLF / Wyndham Clark** (GOLF_PLAYER, score=218.57)
    - Play: Wyndham Clark (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Sam Stevens** (GOLF_PLAYER, score=180.29)
-   - Play: Sam Stevens (PLAYER_STRONG)
+2. **GOLF / Scottie Scheffler** (GOLF_PLAYER, score=161.29)
+   - Play: Scottie Scheffler (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-3. **MLB / Hunter Goodman** (MLB_BATTER, score=122.94)
-   - Play: Hunter Goodman (BATTER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_BATTER)
-4. **MLB / Kody Clemens** (MLB_BATTER, score=113.19)
-   - Play: Kody Clemens (BATTER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_BATTER)
-5. **WNBA / satou sabally** (WNBA_PLAYER, score=70.5)
-   - Play: satou sabally (PLAYER_STRONG)
-   - Rationale: Cross-sport top pick (WNBA_PLAYER)
+3. **MLB / ?** (MLB_TEAM, score=76.58)
+   - Play: ? (TEAM_STRONG)
+   - Rationale: Cross-sport top pick (MLB_TEAM)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
   - Wyndham Clark top 10 finish
-  - Sam Stevens top 10 finish
   - Scottie Scheffler top 10 finish
+  - Sam Stevens top 10 finish
 
 ## Slate ROI Projection
-- **Picks:** 1
-- **Avg edge:** -0.91%
+- **Picks:** 0
+- **Avg edge:** 0%
 - **Expected ROI (1/4 Kelly):** 0.0%
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **NHL** / stuart skinner (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / calvin pickard (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / connor hellebuyck (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / Connor Mcdavid (SKATER_FADE)
-  - Fade angle: SOG UNDER + no goal
-- **NHL** / Leon Draisaitl (SKATER_FADE)
-  - Fade angle: SOG UNDER + no goal
+- **MLB** / Zac Gallen (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Paul Skenes (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Cristopher Sánchez (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Freddy Peralta (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Walbert Ureña (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
