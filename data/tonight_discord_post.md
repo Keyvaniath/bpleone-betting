@@ -1,10 +1,10 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:19 F:58
+_NO_ACTION_NIGHT_ | L:0 S:18 F:59
 
 :dart: **Top Picks:**
 1. [GOLF] Wyndham Clark -- Wyndham Clark (PLAYER_STRONG)
 2. [GOLF] Scottie Scheffler -- Scottie Scheffler (PLAYER_STRONG)
-3. [MLB] Reid Detmers -- Reid Detmers (PITCHER_STRONG)
+3. [MLB] Logan Gilbert -- Logan Gilbert (PITCHER_STRONG)
 
 :coin: Bankroll Advisory: STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 

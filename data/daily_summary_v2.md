@@ -1,13 +1,13 @@
 # EdgeStat Daily Summary — 2026-06-21
 
-## 🏥 Model Health: 70.2/100 [HEALTHY]
+## 🏥 Model Health: 74.2/100 [HEALTHY]
 - Solid health - some minor issues to monitor
   - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 54.4/100
   - 🔴 Brier Trend: 29.6/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 90.0/100
-  - 🔴 Edge Count: 54.3/100
+  - 🟢 Edge Count: 94.3/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.586)
@@ -15,34 +15,34 @@
 - **Strong home favorites:** 2 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
-1. **PIT @ COL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-2. **CLE @ HOU YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-3. **CHW @ DET YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-4. **MIL @ ATL YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
-5. **SDP @ TEX YRFI (1st-inning OVER 0.5)** (78/100 ★★★★)
-
-## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** CIN @ NYY NYY_ML -- 67% / +21.7% (score 2.5)
+1. **SDP @ TEX 4-leg SGP @ -213** (87/100 ★★★★★)
+2. **MIN @ ARI 4-leg SGP @ -178** (81/100 ★★★★★)
+3. **PIT @ COL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+4. **CLE @ HOU YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+5. **CHW @ DET YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **210-41** (83.7% hit rate)
 - Net units: **+7.03u** | ROI: **+45.2%**
 - Last 7d: 43-9 (82.7%) | net +1.40u
 
-**Today's 5 Locks:**
+**Today's 8 Locks:**
 - [MLB-PP] **Brice Matthews** PP_batter_hrr_under_3.5 · p=87% edge=+51.6% qK=0.062u
 - [MLB-PP] **J.T. Realmuto** PP_batter_hrr_under_3.5 · p=87% edge=+51.4% qK=0.062u
 - [MLB-PP] **Henry Bolte** PP_batter_hrr_under_3.5 · p=87% edge=+51.3% qK=0.062u
 - [MLB-PP] **Matt McLain** PP_batter_hrr_under_3.5 · p=87% edge=+51.2% qK=0.062u
 - [MLB-PP] **Mitch Garver** PP_batter_hrr_under_3.5 · p=87% edge=+51.0% qK=0.062u
+- [MLB-PP] **Salvador Perez** PP_batter_hrr_under_3.5 · p=87% edge=+51.6% qK=0.062u
+- [MLB-PP] **Drew Millas** PP_batter_hrr_under_3.5 · p=87% edge=+51.6% qK=0.062u
+- [MLB-PP] **Jimmy Crooks** PP_batter_hrr_under_3.5 · p=87% edge=+51.4% qK=0.062u
 
 ## 🎰 Top Balanced 2-Leg Parlays (40-65% joint)
-- [MLB-PP] Brice Matthews PP_batter_hrr_under_ + [MLB] CIN @ NYY NYY_ML
-  Joint: 58% | Fair: 216 | Edge: +84.5%
-- [MLB-PP] J.T. Realmuto PP_batter_hrr_under_ + [MLB] CIN @ NYY NYY_ML
-  Joint: 58% | Fair: 216 | Edge: +84.2%
 - [MLB-PP] Henry Bolte PP_batter_hrr_under_ + [MLB] CIN @ NYY NYY_ML
-  Joint: 58% | Fair: 216 | Edge: +84.1%
+  Joint: 55% | Fair: 239 | Edge: +84.7%
+- [MLB-PP] Salvador Perez PP_batter_hrr_under_ + [MLB] CIN @ NYY NYY_ML
+  Joint: 54% | Fair: 239 | Edge: +84.6%
+- [MLB-PP] Drew Millas PP_batter_hrr_under_ + [MLB] CIN @ NYY NYY_ML
+  Joint: 54% | Fair: 239 | Edge: +84.5%
 
 ## 🎮 Player Play of the Day (cross-sport)
 - **[LOL]** Inspired UNDER 3.5 Kills | MED conviction · model 61.7% fair -161
@@ -61,21 +61,22 @@
 
 ## ⚠️ Anomaly Detector (40)
 - STEAM_MOVE: **37**
-- PEN_MISMATCH: **3**
+- COMPOUND_BULLPEN: **2**
+- PEN_MISMATCH: **1**
   - WSH @ CON (WNBA): ML/TOTAL steam since open: ML +5.9pp toward CON; total -3 (UNDER) (4 snapshots)
   - DET @ HOU (MLB): ML steam since open: ML -10.8pp toward DET (4 snapshots)
   - LAA @ ARI (MLB): ML/TOTAL steam since open: ML +10.7pp toward ARI; total +0.5 (OVER) (6 snapshots)
   - DAL @ POR (WNBA): ML/TOTAL steam since open: ML +8.2pp toward POR; total -2 (UNDER) (3 snapshots)
   - LA @ PHX (WNBA): TOTAL steam since open: total -2 (UNDER) (3 snapshots)
 
-## 💰 Today's Portfolio (9 picks)
-- Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$7.38**
-  - #1 [NRFI] $50 on PIT @ COL YRFI (1st-inning OVER 0.5) (P=81%)
-  - #2 [NRFI] $50 on CLE @ HOU YRFI (1st-inning OVER 0.5) (P=71%)
-  - #3 [NRFI] $50 on CHW @ DET YRFI (1st-inning OVER 0.5) (P=66%)
-  - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
-  - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
+## 💰 Today's Portfolio (8 picks)
+- Total stake: **$340.0** (34.0% of $1000 bankroll)
+- Expected EV: **$8.78**
+  - #1 [SGP] $50 on SDP @ TEX 4-leg SGP @ -213 (P=68%)
+  - #2 [SGP] $50 on MIN @ ARI 4-leg SGP @ -178 (P=64%)
+  - #3 [NRFI] $50 on PIT @ COL YRFI (1st-inning OVER 0.5) (P=81%)
+  - #4 [NRFI] $50 on CLE @ HOU YRFI (1st-inning OVER 0.5) (P=71%)
+  - #5 [NRFI] $50 on CHW @ DET YRFI (1st-inning OVER 0.5) (P=66%)
 
 ## 🎯 Convergence Picks (5 stacked games)
 - ELITE: **1** · HIGH: 1 · MED: 3
@@ -122,9 +123,9 @@
   - 🔥 **Nasim Nuñez** (WSH): L14 .381 / season .230 (+151pts)
   - 🔥 **Esteury Ruiz** (MIA): L14 .400 / season .257 (+143pts)
   - 🔥 **Lawrence Butler** (ATH): L14 .333 / season .196 (+137pts)
-  - ❄️ **Ildemaro Vargas** (AZ): L14 .088 / season .262 (-174pts) -- FADE props
   - ❄️ **Spencer Steer** (CIN): L14 .067 / season .240 (-173pts) -- FADE props
   - ❄️ **Carlos Cortes** (ATH): L14 .116 / season .278 (-162pts) -- FADE props
+  - ❄️ **Ildemaro Vargas** (AZ): L14 .118 / season .266 (-148pts) -- FADE props
   - ❄️ **Michael Conforto** (CHC): L14 .074 / season .222 (-148pts) -- FADE props
   - ❄️ **Xavier Edwards** (MIA): L14 .156 / season .286 (-130pts) -- FADE props
 

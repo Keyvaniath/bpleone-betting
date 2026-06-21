@@ -1,53 +1,61 @@
 # Tonight's Slate Brief — 2026-06-21
 
-## Slate Quality: 55/100 (MEDIUM)
-_0% lineups confirmed · 15 rookie SPs_
+## Slate Quality: 72/100 (MEDIUM)
+_60% lineups confirmed · 1 extreme-weather games · 16 rookie SPs_
 **Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
 - **15 games** scheduled
-- **38 best bets** scored: 0 DK · 0 PP · 13 NRFI · 6 SGP
+- **35 best bets** scored: 0 DK · 0 PP · 13 NRFI · 6 SGP
 - **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$45.25
-- **MC simulation:** EV +$126.21, 82% P(profit), p05 $-104.44 / p95 $346.56
+- **MC simulation:** EV +$118.75, 85% P(profit), p05 $-90.22 / p95 $291.58
 
 ## Top 5 Best Bets
-1. **PIT @ COL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +34.8%)
+1. **SDP @ TEX 4-leg SGP @ -213**  (87/100 *****, edge +80.4%)
+   - Joint prob 0.680 (correlation boost +0.209)
+   - Leg: Manny Machado UNDER 0.5 batter doubles
+2. **MIN @ ARI 4-leg SGP @ -178**  (81/100 *****, edge +67.1%)
+   - Joint prob 0.640 (correlation boost +0.161)
+   - Leg: Byron Buxton UNDER 3.5 batter total bases
+3. **PIT @ COL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +34.8%)
    - P(YRFI) 80.8% vs baseline 46.0%
-2. **CLE @ HOU YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +25.4%)
+4. **CLE @ HOU YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +25.4%)
    - P(YRFI) 71.4% vs baseline 46.0%
-3. **CHW @ DET YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +20.5%)
+5. **CHW @ DET YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +20.5%)
    - P(YRFI) 66.5% vs baseline 46.0%
-4. **MIL @ ATL YRFI (1st-inning OVER 0.5)**  (79/100 ****, edge +19.4%)
-   - P(YRFI) 65.4% vs baseline 46.0%
-5. **SDP @ TEX YRFI (1st-inning OVER 0.5)**  (78/100 ****, edge +18.9%)
-   - P(YRFI) 64.9% vs baseline 46.0%
 
 ## ⚠️ Trap Warnings — 17 flagged
-- **PIT @ COL YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +34.8% looks big but only 0 settled props on this player — model unproven
-- **CLE @ HOU YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +25.4% looks big but only 0 settled props on this player — model unproven
-- **CHW @ DET 2-leg SGP @ -234** (low):
-   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
-- **BOS @ SEA 2-leg SGP @ -192** (low):
-   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
-- **MIL @ ATL 2-leg SGP @ -201** (low):
-   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
+- **SDP @ TEX 4-leg SGP @ -213** (low):
+   - Edge +80.4% looks big but only 0 settled props on this player — model unproven
+- **MIN @ ARI 4-leg SGP @ -178** (low):
+   - Edge +67.1% looks big but only 0 settled props on this player — model unproven
+- **CLE @ HOU 4-leg SGP @ -174** (low):
+   - Edge +58.1% looks big but only 0 settled props on this player — model unproven
+- **TOR @ CHC 4-leg SGP @ -135** (low):
+   - Edge +47.3% looks big but only 0 settled props on this player — model unproven
+- **SFG @ MIA 4-leg SGP @ -118** (low):
+   - Edge +43.2% looks big but only 0 settled props on this player — model unproven
+
+## Weather leans
+- **OVER lean** (wind out + warm): PIT @ COL
 
 ## Hot streaks
 **Batters heating up:** Colt Keith (heat +8.75), Daulton Varsho (heat +7.50), Pete Crow-Armstrong (heat +6.88)
 **Pitchers on a run:** Kai-Wei Teng (heat +10.10), Keider Montero (heat +5.85), Zack Wheeler (heat +5.61)
 
 ## Top correlation-aware SGPs
-- **CHW @ DET** 2-leg @ -234 fair (joint 0.70, EV +25.0%)
-   - Keider Montero UNDER 5.5 pitcher strikeouts
-   - Davis Martin UNDER 7.5 pitcher strikeouts
-- **BOS @ SEA** 2-leg @ -192 fair (joint 0.66, EV +25.0%)
-   - Logan Gilbert UNDER 9.5 pitcher strikeouts
-   - Payton Tolle UNDER 7.5 pitcher strikeouts
-- **MIL @ ATL** 2-leg @ -201 fair (joint 0.67, EV +25.0%)
-   - Bryce Elder UNDER 6.5 pitcher strikeouts
-   - Robert Gasser OVER 3.5 pitcher strikeouts
+- **SDP @ TEX** 4-leg @ -213 fair (joint 0.68, EV +80.43%)
+   - Manny Machado UNDER 0.5 batter doubles
+   - Manny Machado UNDER 2.5 batter total bases
+   - Manny Machado UNDER 1.5 batter hits
+- **MIN @ ARI** 4-leg @ -178 fair (joint 0.64, EV +67.11%)
+   - Byron Buxton UNDER 3.5 batter total bases
+   - Byron Buxton UNDER 0.5 batter doubles
+   - Kody Clemens UNDER 0.5 batter home runs
+- **CLE @ HOU** 4-leg @ -174 fair (joint 0.64, EV +58.12%)
+   - Brayan Rocchio UNDER 0.5 batter doubles
+   - Brayan Rocchio UNDER 2.5 batter total bases
+   - Daniel Schneemann UNDER 2.5 batter total bases
 
 ## Bullpens GASSED tonight
 Athletics, San Diego Padres, Seattle Mariners, Tampa Bay Rays, Toronto Blue Jays, Chicago White Sox, Miami Marlins, New York Yankees

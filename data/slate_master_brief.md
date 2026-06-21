@@ -1,13 +1,13 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-06-21T11:46:54 UTC_
+_Generated 2026-06-21T15:59:34 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** 18
+- **Score:** 13
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 19
-- **Total FADES:** 58
+- **Total STRONG:** 18
+- **Total FADES:** 59
 
 ## Top 5 Curated Picks
 1. **GOLF / Wyndham Clark** (GOLF_PLAYER, score=219.0)
@@ -16,10 +16,10 @@ _Generated 2026-06-21T11:46:54 UTC_
 2. **GOLF / Scottie Scheffler** (GOLF_PLAYER, score=156.14)
    - Play: Scottie Scheffler (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-3. **MLB / Reid Detmers** (MLB_PITCHER, score=62.42)
-   - Play: Reid Detmers (PITCHER_STRONG)
+3. **MLB / Logan Gilbert** (MLB_PITCHER, score=60.75)
+   - Play: Logan Gilbert (PITCHER_STRONG)
    - Rationale: Cross-sport top pick (MLB_PITCHER)
-4. **MLB / Davis Martin** (MLB_PITCHER, score=61.17)
+4. **MLB / Davis Martin** (MLB_PITCHER, score=60.67)
    - Play: Davis Martin (PITCHER_STRONG)
    - Rationale: Cross-sport top pick (MLB_PITCHER)
 
@@ -36,11 +36,11 @@ _Generated 2026-06-21T11:46:54 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **NHL** / connor hellebuyck (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
 - **NHL** / stuart skinner (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
 - **NHL** / calvin pickard (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / connor hellebuyck (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
 - **NHL** / Leon Draisaitl (SKATER_FADE)
   - Fade angle: SOG UNDER + no goal
