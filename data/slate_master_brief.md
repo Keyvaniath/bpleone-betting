@@ -1,26 +1,29 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-06-21T15:59:34 UTC_
+_Generated 2026-06-21T22:12:54 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** 13
+- **Score:** -1
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 18
-- **Total FADES:** 59
+- **Total STRONG:** 16
+- **Total FADES:** 65
 
 ## Top 5 Curated Picks
 1. **GOLF / Wyndham Clark** (GOLF_PLAYER, score=219.0)
    - Play: Wyndham Clark (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Scottie Scheffler** (GOLF_PLAYER, score=156.14)
+2. **GOLF / Scottie Scheffler** (GOLF_PLAYER, score=154.64)
    - Play: Scottie Scheffler (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-3. **MLB / Logan Gilbert** (MLB_PITCHER, score=60.75)
-   - Play: Logan Gilbert (PITCHER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_PITCHER)
-4. **MLB / Davis Martin** (MLB_PITCHER, score=60.67)
-   - Play: Davis Martin (PITCHER_STRONG)
+3. **WNBA / napheesa collier** (WNBA_PLAYER, score=154.08)
+   - Play: napheesa collier (PLAYER_STRONG)
+   - Rationale: Cross-sport top pick (WNBA_PLAYER)
+4. **WNBA / breanna stewart** (WNBA_PLAYER, score=106.75)
+   - Play: breanna stewart (PLAYER_STRONG)
+   - Rationale: Cross-sport top pick (WNBA_PLAYER)
+5. **MLB / David Peterson** (MLB_PITCHER, score=59.08)
+   - Play: David Peterson (PITCHER_STRONG)
    - Rationale: Cross-sport top pick (MLB_PITCHER)
 
 ## Top Events Board
@@ -36,13 +39,13 @@ _Generated 2026-06-21T15:59:34 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **NHL** / stuart skinner (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / calvin pickard (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / connor hellebuyck (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / Leon Draisaitl (SKATER_FADE)
-  - Fade angle: SOG UNDER + no goal
-- **NHL** / Connor Mcdavid (SKATER_FADE)
-  - Fade angle: SOG UNDER + no goal
+- **MLB** / Shota Imanaga (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Dylan Cease (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Davis Martin (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Chase Burns (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Bryce Elder (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
