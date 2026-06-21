@@ -1,21 +1,21 @@
 {
-  "generated_at": "2026-06-21T18:58:23",
+  "generated_at": "2026-06-21T20:07:26",
   "stake_assumption": "1u flat per pick",
   "total_picks": 10000,
-  "n_settled": 6145,
-  "n_pending": 773,
+  "n_settled": 6146,
+  "n_pending": 772,
   "n_void": 3082,
-  "wins": 2927,
+  "wins": 2928,
   "losses": 3212,
   "pushes": 6,
-  "hit_rate": 0.4768,
-  "net_units": -729.835,
-  "roi_pct": -11.89,
+  "hit_rate": 0.4769,
+  "net_units": -728.942,
+  "roi_pct": -11.87,
   "n_calibrated_picks": 9550,
   "calibrated_reliability": {
-    "n": 6085,
-    "ece_raw": 0.1008,
-    "ece_calibrated": 0.0274,
+    "n": 6086,
+    "ece_raw": 0.1007,
+    "ece_calibrated": 0.0273,
     "brier_raw": 0.22754,
     "brier_calibrated": 0.2036,
     "note": "In-sample over the settled ledger (the isotonic transform is fit on these same outcomes); held-out 70/30 validation is in recalibration_map.json. p_predicted = raw model prob (kept untouched for the learning loop); p_calibrated = honest prob stamped per pick. Lower ECE/Brier on the calibrated column = the displayed % is truer."
@@ -43,7 +43,7 @@
     "definition": "Featured/recommended plays only -- Lock of the Day, Top 25, Whale, Sharp, Consensus (hit), Under Alerts, POD. Excludes the experimental prop feeds, which are tracked to train the model, not bet."
   },
   "n_added_this_run": 0,
-  "n_newly_settled_this_run": 0,
+  "n_newly_settled_this_run": 1,
   "n_resettled_this_run": 0,
   "n_voided_this_run": 0,
   "n_reconciled_settled_voids": 0,
@@ -959,13 +959,13 @@
       "roi_pct": 53.2
     },
     "wc_model_home_ml": {
-      "n": 11,
-      "wins": 8,
+      "n": 12,
+      "wins": 9,
       "losses": 3,
       "pushes": 0,
-      "net_units": 2.518,
-      "hit_rate": 0.7273,
-      "roi_pct": 22.89
+      "net_units": 3.411,
+      "hit_rate": 0.75,
+      "roi_pct": 28.43
     },
     "wc_model_away_ml": {
       "n": 3,
@@ -1586,12 +1586,12 @@
       "hit_rate": 1.0
     },
     "home_ml": {
-      "n": 11,
-      "wins": 8,
+      "n": 12,
+      "wins": 9,
       "losses": 3,
       "pushes": 0,
-      "net_units": 2.518,
-      "hit_rate": 0.7273
+      "net_units": 3.411,
+      "hit_rate": 0.75
     },
     "away_ml": {
       "n": 3,
@@ -2068,12 +2068,12 @@
       "hit_rate": 1.0
     },
     "home_ml": {
-      "n": 11,
-      "wins": 8,
+      "n": 12,
+      "wins": 9,
       "losses": 3,
       "pushes": 0,
-      "net_units": 2.518,
-      "hit_rate": 0.7273
+      "net_units": 3.411,
+      "hit_rate": 0.75
     },
     "away_ml": {
       "n": 3,
@@ -2304,15 +2304,15 @@
     },
     "WORLDCUP": {
       "n": 88,
-      "settled": 66,
-      "wins": 43,
+      "settled": 67,
+      "wins": 44,
       "losses": 23,
       "pushes": 0,
-      "pending": 22,
+      "pending": 21,
       "void": 0,
-      "net_units": -2.495,
-      "hit_rate": 0.6515,
-      "roi_pct": -3.78,
+      "net_units": -1.601,
+      "hit_rate": 0.6567,
+      "roi_pct": -2.39,
       "markets": 8
     },
     "TENNIS": {
@@ -2330,10 +2330,10 @@
     }
   },
   "last_7_days": {
-    "wins": 500,
+    "wins": 501,
     "losses": 713,
-    "net_units": -62.557,
-    "hit_rate": 0.4122
+    "net_units": -61.664,
+    "hit_rate": 0.4127
   },
   "picks": [
     {
@@ -210455,11 +210455,24 @@
       "matchup": "Saudi Arabia @ Spain",
       "date": "2026-06-21",
       "pick_id": "wc_model_home_ml|WORLDCUP|Saudi_Arabia___Spain|HOME_ML|2026-06-21",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "won",
+      "payout_units": 0.8929,
       "recorded_at": "2026-06-17T05:20:23",
-      "p_calibrated": 0.5291
+      "p_calibrated": 0.5291,
+      "outcome": {
+        "final_score": "Saudi Arabia 0-4 Spain",
+        "total_cards": 2,
+        "total_goals": 4,
+        "scorers": [
+          "lamine yamal",
+          "mikel oyarzabal",
+          "mikel oyarzabal"
+        ],
+        "market": "HOME_ML",
+        "verify": "Saudi Arabia 0-4 Spain: home won \u2014 HOME_ML"
+      },
+      "settled_at": "2026-06-21T20:07:26"
     },
     {
       "pick_id": "lock_of_day|MLB_PP|Hunter_Feduccia|PP_batter_hrr_under_3_5|2026-05-27",
