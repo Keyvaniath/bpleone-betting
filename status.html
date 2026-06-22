@@ -48,6 +48,12 @@
   <div class="sub">Live health of EdgeStat's data feeds and pipeline. Each feed is cross-checked against its upstream source; the freshness monitor flags any core artifact that hasn't refreshed on schedule (so a dead cron is never silent).</div>
 
   <div class="overall" id="overall"><span class="dot" id="oDot"></span><span class="lbl" id="oLbl">Loading status…</span></div>
+
+  <div class="overall" id="oddsCard" style="display:none; flex-direction:column; align-items:stretch;">
+    <div style="display:flex; align-items:center; gap:12px;"><span class="dot" id="oddsDot"></span><span class="lbl" id="oddsLbl" style="font-size:15px;">Odds feed</span></div>
+    <div id="oddsBody" style="margin-top:8px; font-size:12px; color:var(--text-2,#aab3c5); line-height:1.6; font-family:'JetBrains Mono',monospace;"></div>
+  </div>
+
   <div class="feeds" id="feeds"></div>
   <div class="meta" id="meta"></div>
 </main>
@@ -76,6 +82,25 @@ fetch('data/data_health.json?t=' + Date.now(), { cache:'no-cache' })
     document.getElementById('oDot').className = 'dot yellow';
     document.getElementById('oLbl').textContent = 'Status data unavailable';
   });
+</script>
+<script>
+(function(){
+  var E = function(s){ return String(s==null?'':s).replace(/[&<>]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c];}); };
+  fetch('data/odds_key_status.json?t='+Date.now(),{cache:'no-cache'}).then(function(r){return r.json();}).then(function(d){
+    if(!d || !d.state) return;
+    document.getElementById('oddsCard').style.display='flex';
+    var dotcls = d.state==='active'?'green':(d.state==='invalid'?'red':'yellow');
+    document.getElementById('oddsDot').className='dot '+dotcls;
+    document.getElementById('oddsLbl').textContent = 'Odds feed — '+String(d.state||'').toUpperCase();
+    var body = E(d.headline||'');
+    if (d.state!=='active' && (d.activates||[]).length) {
+      body += '<br><span style="color:var(--muted,#8a93a6);">Activates when the ODDS_API_KEY secret is set:</span><br>' + d.activates.map(function(a){return '&middot; '+E(a);}).join('<br>');
+    } else if (d.detail && d.detail.requests_remaining!=null) {
+      body += '<br><span style="color:var(--muted,#8a93a6);">requests remaining this period: '+E(d.detail.requests_remaining)+'</span>';
+    }
+    document.getElementById('oddsBody').innerHTML = body;
+  }).catch(function(){});
+})();
 </script>
 </body>
 </html>

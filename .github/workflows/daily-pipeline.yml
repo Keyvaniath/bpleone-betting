@@ -193,6 +193,12 @@ jobs:
       # Runs LAST so it captures the final state of every artifact.
       # Surfaces /audit.html.
 
+      - name: Odds-key preflight (validate ODDS_API_KEY -> data/odds_key_status.json)
+        env:
+          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+        working-directory: python
+        run: python odds_key_preflight.py || true
+
       - name: Run daily pipeline (real data → today.json + matchups.json + snapshot)
         env:
           ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
