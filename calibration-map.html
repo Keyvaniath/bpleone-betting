@@ -66,6 +66,7 @@
       <p class="muted" style="font-size:12px;margin:0 0 14px;line-height:1.6;">Curating out proven-negative families lifts the book to ~+14% — but that rule is fit on the <em>whole</em> ledger. So we froze the cut-set on an <strong>early window</strong> and scored those <strong>pre-committed</strong> cuts on the <strong>unseen later window</strong>. A curve-fit edge collapses out-of-sample; this one holds:</p>
       <div id="oosTable" style="font-family:'JetBrains Mono',monospace;"></div>
       <div id="oosPersist" style="margin-top:14px;font-size:12px;color:var(--text-2,#aab3c5);line-height:1.65;"></div>
+      <div id="oosConc" style="margin-top:12px;font-size:12px;color:var(--text-2,#aab3c5);line-height:1.65;padding:10px 12px;border:1px solid rgba(224,161,58,.25);border-radius:8px;background:rgba(224,161,58,.05);display:none;"></div>
       <details style="margin-top:14px;">
         <summary style="cursor:pointer;font-size:11px;color:var(--muted,#888);text-transform:uppercase;letter-spacing:.5px;">Honest limitations</summary>
         <ul id="oosCaveats" style="font-size:12px;color:var(--text-2,#aab3c5);line-height:1.6;margin:8px 0 0;padding-left:18px;"></ul>
@@ -96,6 +97,14 @@
       if (p.n_cut) {
         document.getElementById("oosPersist").innerHTML =
           `<strong>Persistence check:</strong> of the ${p.n_cut} family-keys cut on the training window, they went on to lose <strong style="color:#e35a5a;">${p.test_net_of_cuts}u</strong> in the unseen window — ${p.kept_losing} kept losing, only ${p.flipped} flipped positive. The losers keep losing: the cuts capture real, persistent −EV families, not noise.`;
+      }
+      const conc = d.concentration;
+      if (conc && conc.note) {
+        const oc = document.getElementById("oosConc");
+        const fl = (conc.flagged_families||[]).map(f=>`<code>${f.family}</code> (n=${f.n}, ${f.roi>=0?'+':''}${f.roi}% ROI — quarantined)`).join(", ");
+        oc.innerHTML = `<strong style="color:#e0a13a;">⚠️ Robustness —</strong> ${conc.note}` +
+          (fl ? ` <span class="muted">Flagged &amp; set aside: ${fl}.</span>` : "");
+        oc.style.display = "block";
       }
       document.getElementById("oosCaveats").innerHTML = (d.caveats||[]).map(c=>`<li>${c}</li>`).join("");
     }).catch(()=>{});

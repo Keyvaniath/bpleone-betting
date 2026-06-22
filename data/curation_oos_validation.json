@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-22T14:27:45",
+  "generated_at": "2026-06-22T09:45:15",
   "n_settled": 6425,
   "span": [
     "2026-05-19",
@@ -62,12 +62,12 @@
     "test_net_of_cuts": -636.0,
     "worst": [
       {
-        "family": "mlb_xbh_0.5_over",
+        "family": "1_plus_xbh",
         "n": 579,
         "net": -93.6
       },
       {
-        "family": "1_plus_xbh",
+        "family": "mlb_xbh_0.5_over",
         "n": 579,
         "net": -93.6
       },
@@ -93,9 +93,93 @@
       }
     ]
   },
+  "concentration": {
+    "n_surviving_families": 28,
+    "curated_net": 132.3,
+    "curated_n": 802,
+    "top2": [
+      {
+        "family": "fight_r1_finish_yes",
+        "n": 49,
+        "net": 96.2,
+        "roi": 196.3
+      },
+      {
+        "family": "mlb_hrr_3.5_under",
+        "n": 206,
+        "net": 94.6,
+        "roi": 45.9
+      }
+    ],
+    "net_top2": 190.7,
+    "net_ex_top2": -58.4,
+    "roi_ex_flagged": 4.8,
+    "n_ex_flagged": 753,
+    "top_contributors": [
+      {
+        "family": "fight_r1_finish_yes",
+        "n": 49,
+        "net": 96.2,
+        "roi": 196.3,
+        "hit": 59.2,
+        "flagged": true
+      },
+      {
+        "family": "mlb_hrr_3.5_under",
+        "n": 206,
+        "net": 94.6,
+        "roi": 45.9,
+        "hit": 84.5,
+        "flagged": false
+      },
+      {
+        "family": "home_total_over",
+        "n": 22,
+        "net": 5.6,
+        "roi": 25.6,
+        "hit": 81.8,
+        "flagged": false
+      },
+      {
+        "family": "under",
+        "n": 15,
+        "net": 3.6,
+        "roi": 24.3,
+        "hit": 66.7,
+        "flagged": false
+      },
+      {
+        "family": "home_ml",
+        "n": 13,
+        "net": 2.4,
+        "roi": 18.5,
+        "hit": 69.2,
+        "flagged": false
+      },
+      {
+        "family": "blk_stl_under",
+        "n": 8,
+        "net": 2.0,
+        "roi": 25.4,
+        "hit": 87.5,
+        "flagged": false
+      }
+    ],
+    "flagged_families": [
+      {
+        "family": "fight_r1_finish_yes",
+        "n": 49,
+        "net": 96.2,
+        "roi": 196.3,
+        "hit": 59.2,
+        "flagged": true
+      }
+    ],
+    "note": "Concentrated: the top 2 of 28 surviving families produced +191u; the other 26 combined LOST 58u. One pillar is flagged small-sample and quarantined; excluding flagged families the held-out edge is +4.8% (n=753)."
+  },
   "caveats": [
     "Short sample: ~1 month, single MLB season. The held-out tail is genuinely unseen but adjacent in time -- not a cross-season or cross-regime test.",
-    "Concentrated in MLB props. The edge is largely \u201cdon't bet structurally overpriced longshot overs\u201d (HR/XBH overs, to-hit-HR YES) -- a known, persistent market inefficiency.",
+    "Concentrated in MLB props. The edge is largely: don't bet structurally overpriced longshot overs (HR/XBH overs, to-hit-HR YES) -- a known, persistent market inefficiency.",
     "ROI is measured at the model's fair price / settled outcome. It does NOT yet prove we beat the closing line (CLV) -- that requires the live odds feed."
   ],
   "headline": "The curation derived on early data still returns +16.5% on the unseen later window, and the families it cut went on to lose 636u out-of-sample."

@@ -105,6 +105,78 @@ def _holdout(picks, dates, frac, full_cut):
     return row, (train, test, tcut)
 
 
+# A surviving family is FLAGGED ("thin, likely small-sample luck not edge") when it
+# posts an implausible ROI on a small sample -- e.g. UFC round-1-finish YES hitting
+# 59% on n=49 (real R1 finishes run ~15-25%). Quarantined from the robust headline
+# pending more data; still shown, just not trusted.
+FLAG_THIN_N = 75
+FLAG_HOT_ROI = 80.0
+
+
+def _concentration(test, tcut):
+    """Where does the curated held-out edge actually come from? Decompose the
+    surviving (un-cut) test picks by family. A "+16% held-out" that is really one
+    or two families is fragile -- so we publish the breakdown, the net excluding
+    the top 2, and the edge excluding small-sample-flagged families."""
+    agg = {}
+    for p in test:
+        if fams(p) & tcut:
+            continue
+        if p.get("result") not in ("won", "lost"):
+            continue
+        fam = canon_market_family(p.get("market"))
+        a = agg.setdefault(fam, [0, 0.0, 0])
+        a[0] += 1
+        a[1] += net(p)
+        if p.get("result") == "won":
+            a[2] += 1
+    rows = sorted(((f, n, nt, w) for f, (n, nt, w) in agg.items()), key=lambda r: -r[2])
+    tot_net = sum(r[2] for r in rows)
+    tot_n = sum(r[1] for r in rows)
+
+    def _roi(n, nt):
+        return (100 * nt / n) if n else 0.0
+
+    contributors = [{
+        "family": f, "n": n, "net": round(nt, 1),
+        "roi": round(_roi(n, nt), 1),
+        "hit": round(100 * w / n, 1) if n else 0.0,
+        "flagged": bool(n < FLAG_THIN_N and _roi(n, nt) > FLAG_HOT_ROI),
+    } for f, n, nt, w in rows]
+    flagged = [c for c in contributors if c["flagged"]]
+    flag_fams = {c["family"] for c in flagged}
+
+    top2 = rows[:2]
+    net_top2 = round(sum(r[2] for r in top2), 1)
+    net_ex_top2 = round(tot_net - net_top2, 1)
+    ex_n = sum(r[1] for r in rows if r[0] not in flag_fams)
+    ex_net = sum(r[2] for r in rows if r[0] not in flag_fams)
+    roi_ex_flagged = round(100 * ex_net / ex_n, 1) if ex_n else 0.0
+
+    return {
+        "n_surviving_families": len(rows),
+        "curated_net": round(tot_net, 1),
+        "curated_n": tot_n,
+        "top2": [{"family": r[0], "n": r[1], "net": round(r[2], 1),
+                  "roi": round(_roi(r[1], r[2]), 1)} for r in top2],
+        "net_top2": net_top2,
+        "net_ex_top2": net_ex_top2,
+        "roi_ex_flagged": roi_ex_flagged,
+        "n_ex_flagged": ex_n,
+        "top_contributors": contributors[:6],
+        "flagged_families": flagged,
+        "note": (
+            f"Concentrated: the top 2 of {len(rows)} surviving families produced "
+            f"{net_top2:+.0f}u; the other {len(rows) - 2} combined "
+            f"{'made' if net_ex_top2 >= 0 else 'LOST'} {abs(net_ex_top2):.0f}u."
+            + (f" One pillar is flagged small-sample and quarantined; excluding flagged "
+               f"families the held-out edge is {roi_ex_flagged:+.1f}% (n={ex_n})."
+               if flagged else
+               " No surviving family trips the small-sample flag at current thresholds.")
+        ),
+    }
+
+
 def build():
     picks = load_picks()
     picks.sort(key=lambda p: (p.get("date") or "", p.get("recorded_at") or ""))
@@ -134,6 +206,7 @@ def build():
     flip = sum(1 for _, n, nt in rows if n >= 5 and nt > 0)
     netcuts = sum(nt for _, n, nt in rows)
     worst = [{"family": f, "n": n, "net": round(nt, 1)} for f, n, nt in rows if n >= 3][:6]
+    concentration = _concentration(test, tcut)
 
     h70 = next(h for h in holdout if h["split"] == "70/30")
     return {
@@ -151,11 +224,12 @@ def build():
             "n_cut": len(tcut), "kept_losing": kept, "flipped": flip,
             "test_net_of_cuts": round(netcuts, 0), "worst": worst,
         },
+        "concentration": concentration,
         "caveats": [
             "Short sample: ~1 month, single MLB season. The held-out tail is genuinely "
             "unseen but adjacent in time -- not a cross-season or cross-regime test.",
-            "Concentrated in MLB props. The edge is largely “don't bet structurally "
-            "overpriced longshot overs” (HR/XBH overs, to-hit-HR YES) -- a known, "
+            "Concentrated in MLB props. The edge is largely: don't bet structurally "
+            "overpriced longshot overs (HR/XBH overs, to-hit-HR YES) -- a known, "
             "persistent market inefficiency.",
             "ROI is measured at the model's fair price / settled outcome. It does NOT yet "
             "prove we beat the closing line (CLV) -- that requires the live odds feed.",
