@@ -1,18 +1,18 @@
 # EdgeStat Daily Summary — 2026-06-22
 
-## 🏥 Model Health: 71.7/100 [HEALTHY]
+## 🏥 Model Health: 71.9/100 [HEALTHY]
 - Solid health - some minor issues to monitor
   - 🟢 Calibration Freshness: 100.0/100
   - 🔴 Hit Rate Trend: 54.4/100
   - 🔴 Brier Trend: 29.6/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 90.0/100
-  - 🟡 Edge Count: 68.6/100
+  - 🟡 Edge Count: 71.4/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.586)
-- **Total games on board:** 105
-- **Strong home favorites:** 2 | **Strong road dogs:** 0
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.585)
+- **Total games on board:** 110
+- **Strong home favorites:** 5 | **Strong road dogs:** 2
 
 ## 🎯 Top 5 Best Bets
 1. **NYY @ DET 4-leg SGP @ -219** (88/100 ★★★★★)
@@ -21,12 +21,15 @@
 4. **CHC @ NYM YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 5. **TEX @ MIA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 
+## 📉 Strong UNDER Signals
+- [STRONG 5.8] **TEX @ MIA** model 7.58 vs market 8.5
+
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **219-41** (84.2% hit rate)
 - Net units: **+7.44u** | ROI: **+46.2%**
 - Last 7d: 46-6 (88.5%) | net +1.73u
 
-**Today's 10 Locks:**
+**Today's 11 Locks:**
 - [MLB-PP] **Francisco Alvarez** PP_batter_hrr_under_3.5 · p=87% edge=+50.7% qK=0.062u
 - [MLB-PP] **Brett Baty** PP_batter_hrr_under_3.5 · p=87% edge=+50.5% qK=0.062u
 - [MLB-PP] **Derek Hill** PP_batter_hrr_under_3.5 · p=86% edge=+49.8% qK=0.062u
@@ -37,14 +40,15 @@
 - [MLB-PP] **Isaac Collins** PP_batter_hrr_under_3.5 · p=87% edge=+51.3% qK=0.062u
 - [MLB-PP] **Matt McLain** PP_batter_hrr_under_3.5 · p=87% edge=+51.2% qK=0.062u
 - [MLB-PP] **Brett Sullivan** PP_batter_hrr_under_3.5 · p=87% edge=+51.2% qK=0.062u
+- [MLB-PP] **Alex Freeland** PP_batter_hrr_under_3.5 · p=87% edge=+51.4% qK=0.062u
 
 ## 🎰 Top Balanced 2-Leg Parlays (40-65% joint)
+- [MLB-PP] George Springer PP_batter_hrr_under_ + [MLB] CHC @ NYM CHC_ML
+  Joint: 58% | Fair: 211 | Edge: +80.7%
 - [MLB-PP] George Springer PP_batter_hrr_under_ + [MLB] ATL @ SDP ATL_ML
-  Joint: 54% | Fair: 237 | Edge: +82.7%
-- [MLB-PP] Salvador Perez PP_batter_hrr_under_ + [MLB] ATL @ SDP ATL_ML
-  Joint: 54% | Fair: 237 | Edge: +82.3%
-- [MLB-PP] Isaac Collins PP_batter_hrr_under_ + [MLB] ATL @ SDP ATL_ML
-  Joint: 54% | Fair: 237 | Edge: +82.3%
+  Joint: 55% | Fair: 231 | Edge: +80.6%
+- [MLB-PP] Francisco Alvarez PP_batter_hrr_under_ + [MLB] CHC @ NYM CHC_ML
+  Joint: 58% | Fair: 211 | Edge: +80.5%
 
 ## 🎮 Player Play of the Day (cross-sport)
 - **[LOL]** Inspired UNDER 3.5 Kills | MED conviction · model 61.7% fair -161
@@ -61,15 +65,16 @@
 - Hot teams: **2** | Cold teams: **4** | Over-heavy: 0 | Under-heavy: 7
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (42)
-- STEAM_MOVE: **39**
+## ⚠️ Anomaly Detector (52)
+- RESIDUAL_DIVERGENCE: **5**
+- STEAM_MOVE: **44**
 - COMPOUND_BULLPEN: **1**
 - PEN_MISMATCH: **2**
-  - WSH @ CON (WNBA): ML/TOTAL steam since open: ML +5.9pp toward CON; total -3 (UNDER) (4 snapshots)
-  - DET @ HOU (MLB): ML steam since open: ML -10.8pp toward DET (4 snapshots)
-  - LAA @ ARI (MLB): ML/TOTAL steam since open: ML +10.7pp toward ARI; total +0.5 (OVER) (6 snapshots)
-  - DAL @ POR (WNBA): ML/TOTAL steam since open: ML +8.2pp toward POR; total -2 (UNDER) (3 snapshots)
-  - LA @ PHX (WNBA): TOTAL steam since open: total -2 (UNDER) (3 snapshots)
+  - Chicago Sky (WNBA): Chicago Sky OUTPERFORMING expected margin by 7.5pts in recent games -- model bias may persist
+  - Atlanta Dream (WNBA): Atlanta Dream OUTPERFORMING expected margin by 9.8pts in recent games -- model bias may persist
+  - Toronto Tempo (WNBA): Toronto Tempo UNDERPERFORMING expected margin by 11.5pts in recent games -- model bias may persist
+  - Indiana Fever (WNBA): Indiana Fever UNDERPERFORMING expected margin by 7.3pts in recent games -- model bias may persist
+  - North Carolina Tar Heels (CWS): North Carolina Tar Heels OUTPERFORMING expected margin by 7.7pts in recent games -- model bias may persist
 
 ## 💰 Today's Portfolio (8 picks)
 - Total stake: **$340.0** (34.0% of $1000 bankroll)
@@ -122,7 +127,7 @@
   - ❄️ **Andrew Putnam** (USA): Sunday +4.5 vs tourney avg
   - ❄️ **Wyndham Clark** (USA): Sunday +4.0 vs tourney avg
 
-## 🔥 MLB Batter Heat (42 HOT / 43 COLD)
+## 🔥 MLB Batter Heat (43 HOT / 45 COLD)
   - 🔥 **Nasim Nuñez** (WSH): L14 .400 / season .236 (+164pts)
   - 🔥 **Pete Crow-Armstrong** (CHC): L14 .448 / season .286 (+162pts)
   - 🔥 **Victor Caratini** (MIN): L14 .400 / season .241 (+159pts)
