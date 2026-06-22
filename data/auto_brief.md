@@ -1,28 +1,31 @@
 # Tonight's Slate Brief — 2026-06-22
 
-## Slate Quality: 55/100 (MEDIUM)
-_0% lineups confirmed · 8 rookie SPs_
+## Slate Quality: 57/100 (MEDIUM)
+_3% lineups confirmed · 7 rookie SPs_
 **Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
 - **13 games** scheduled
-- **29 best bets** scored: 0 DK · 0 PP · 10 NRFI · 6 SGP
+- **30 best bets** scored: 0 DK · 0 PP · 11 NRFI · 6 SGP
 - **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$47.01
-- **MC simulation:** EV +$145.3, 89% P(profit), p05 $-74.73 / p95 $319.54
+- **MC simulation:** EV +$160.77, 84% P(profit), p05 $-108.1 / p95 $364.99
 
 ## Top 5 Best Bets
-1. **CLE @ CHW YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +31.4%)
+1. **NYY @ DET 4-leg SGP @ -219**  (88/100 *****, edge +83.5%)
+   - Joint prob 0.686 (correlation boost +0.219)
+   - Leg: Spencer Torkelson UNDER 0.5 batter home runs
+2. **CLE @ CHW YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +31.4%)
    - P(YRFI) 77.4% vs baseline 46.0%
-2. **BOS @ COL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +30.6%)
+3. **BOS @ COL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +30.6%)
    - P(YRFI) 76.6% vs baseline 46.0%
-3. **CHC @ NYM YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +28.4%)
+4. **CHC @ NYM YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +28.4%)
    - P(YRFI) 74.4% vs baseline 46.0%
-4. **TEX @ MIA YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +24.8%)
+5. **TEX @ MIA YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +24.8%)
    - P(YRFI) 70.8% vs baseline 46.0%
-5. **BAL @ LAA YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +21.8%)
-   - P(YRFI) 67.8% vs baseline 46.0%
 
-## ⚠️ Trap Warnings — 16 flagged
+## ⚠️ Trap Warnings — 17 flagged
+- **NYY @ DET 4-leg SGP @ -219** (low):
+   - Edge +83.5% looks big but only 0 settled props on this player — model unproven
 - **CLE @ CHW YRFI (1st-inning OVER 0.5)** (low):
    - Edge +31.4% looks big but only 0 settled props on this player — model unproven
 - **BOS @ COL YRFI (1st-inning OVER 0.5)** (low):
@@ -31,23 +34,22 @@ _0% lineups confirmed · 8 rookie SPs_
    - Edge +28.4% looks big but only 0 settled props on this player — model unproven
 - **HOU @ TOR 2-leg SGP @ -202** (low):
    - Edge +25.0% looks big but only 0 settled props on this player — model unproven
-- **KCR @ TBR 2-leg SGP @ -216** (low):
-   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
 
 ## Hot streaks
 **Batters heating up:** Daulton Varsho (heat +7.50), Kyle Schwarber (heat +7.05), Jonny DeLuca (heat +6.58)
-**Pitchers on a run:** Dylan Cease (heat +12.60), Ryan Feltner (heat +6.86), Kyle Bradish (heat +6.07)
+**Pitchers on a run:** Ryan Feltner (heat +6.86), Kyle Bradish (heat +6.07), Framber Valdez (heat +3.83)
 
 ## Top correlation-aware SGPs
+- **NYY @ DET** 4-leg @ -219 fair (joint 0.69, EV +83.54%)
+   - Spencer Torkelson UNDER 0.5 batter home runs
+   - Spencer Torkelson UNDER 1.5 batter hits
+   - James Outman UNDER 0.5 batter doubles
 - **HOU @ TOR** 2-leg @ -202 fair (joint 0.67, EV +25.0%)
    - Hunter Brown OVER 5.5 pitcher strikeouts
-   - Dylan Cease OVER 6.5 pitcher strikeouts
+   - Dylan Cease OVER 7 pitcher strikeouts
 - **KCR @ TBR** 2-leg @ -216 fair (joint 0.68, EV +25.0%)
    - Drew Rasmussen OVER 4.5 pitcher strikeouts
    - Drew Rasmussen UNDER 9.5 pitcher strikeouts
-- **CLE @ CHW** 2-leg @ -222 fair (joint 0.69, EV +25.0%)
-   - Anthony Kay UNDER 6.5 pitcher strikeouts
-   - Gavin Williams UNDER 8.5 pitcher strikeouts
 
 ## Bullpens GASSED tonight
 Athletics, Pittsburgh Pirates, San Diego Padres, St. Louis Cardinals, Tampa Bay Rays, Texas Rangers, Minnesota Twins, Philadelphia Phillies
@@ -55,6 +57,7 @@ _Lean late-inning OVER on these games; fade their save situations._
 
 ## NRFI/YRFI strong leans
 - **YRFI** (1st-inning OVER): CLE @ CHW, BOS @ COL, CHC @ NYM, TEX @ MIA, BAL @ LAA
+- **NRFI** (1st-inning UNDER): HOU @ TOR
 
 ## NBA -- PLAYOFFS
 - New York Knicks @ San Antonio Spurs (53-29 vs 62-20) 94-90 | P(home) 0.0% fair +0 | Final

@@ -9,23 +9,23 @@ _6 picks consolidated from POD + Alpha + Book Edges + Parlay-of-Day._
 
 ## 🎯 Alpha Pick
 
-- **ATL @ SDP** · ATL_ML
-  Prob 62.0% · Odds -106 · Edge +20.4% · Kelly 0.217
+- **CHC @ NYM** · CHC_ML
+  Prob 66.4% · Odds -126 · Edge +19.2% · Kelly 0.241
 
 ## 📊 Book Edges
 
-- **ARI @ STL · OVER · O/U 8.5** · TOTAL_OVER
-  Prob 58.3% · Odds -110 · Edge +11.3% · Kelly 0.125
 - **ATL @ SDP · AWAY (AWAY)** · TEAM_ML
-  Prob 57.2% · Odds -106 · Edge +11.1% · Kelly 0.117
-- **CLE @ CHW · OVER · O/U 7.5** · TOTAL_OVER
-  Prob 58.1% · Odds -110 · Edge +11.0% · Kelly 0.121
+  Prob 58.1% · Odds -109 · Edge +11.3% · Kelly 0.123
+- **ARI @ STL · OVER · O/U 8.5** · TOTAL_OVER
+  Prob 58.3% · Odds -110 · Edge +11.2% · Kelly 0.124
+- **BAL @ LAA · OVER · O/U 9.0** · TOTAL_OVER
+  Prob 58.3% · Odds -110 · Edge +11.2% · Kelly 0.124
 
 ## 🎲 Parlay
 
-- **George Springer + ATL @ SDP** · 2-leg
-  Prob 54.2% · Odds +237 · Edge +82.7% · Kelly 0.050
+- **George Springer + CHC @ NYM** · 2-leg
+  Prob 58.1% · Odds +211 · Edge +80.7% · Kelly 0.050
 
 ---
-_Generated 2026-06-22T14:27:57 UTC by EdgeStat._
+_Generated 2026-06-22T18:22:48 UTC by EdgeStat._
 _Stakes assume ¼-Kelly fractional sizing on a flat bankroll._

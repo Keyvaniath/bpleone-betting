@@ -1,13 +1,13 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-06-22T14:27:51 UTC_
+_Generated 2026-06-22T18:22:43 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** 0
+- **Score:** -2
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
 - **Total STRONG:** 7
-- **Total FADES:** 28
+- **Total FADES:** 30
 
 ## Lock of the Night
 - **Subject:** Foster Griffin
@@ -17,11 +17,11 @@ _Generated 2026-06-22T14:27:51 UTC_
 - **Details:** PHI @ WSN
 
 ## Top 5 Curated Picks
-1. **GOLF / Keith Mitchell** (GOLF_PLAYER, score=219.29)
-   - Play: Keith Mitchell (PLAYER_STRONG)
+1. **GOLF / Sam Burns** (GOLF_PLAYER, score=219.29)
+   - Play: Sam Burns (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / J.T. Poston** (GOLF_PLAYER, score=219.29)
-   - Play: J.T. Poston (PLAYER_STRONG)
+2. **GOLF / Wyndham Clark** (GOLF_PLAYER, score=219.29)
+   - Play: Wyndham Clark (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
 3. **MLB / Drew Rasmussen** (MLB_PITCHER, score=60.25)
    - Play: Drew Rasmussen (PITCHER_STRONG)
@@ -32,9 +32,9 @@ _Generated 2026-06-22T14:27:51 UTC_
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
-  - Keith Mitchell top 10 finish
-  - J.T. Poston top 10 finish
+  - Sam Burns top 10 finish
   - Wyndham Clark top 10 finish
+  - Keith Mitchell top 10 finish
 
 ## Slate ROI Projection
 - **Picks:** 2
@@ -49,7 +49,7 @@ _Generated 2026-06-22T14:27:51 UTC_
   - Fade angle: saves UNDER + win NO
 - **NHL** / connor hellebuyck (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / Leon Draisaitl (SKATER_FADE)
-  - Fade angle: SOG UNDER + no goal
 - **NHL** / Connor Mcdavid (SKATER_FADE)
+  - Fade angle: SOG UNDER + no goal
+- **NHL** / Leon Draisaitl (SKATER_FADE)
   - Fade angle: SOG UNDER + no goal

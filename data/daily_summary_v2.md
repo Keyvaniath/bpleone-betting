@@ -1,13 +1,13 @@
 # EdgeStat Daily Summary — 2026-06-22
 
-## 🏥 Model Health: 66.5/100 [OK]
-- Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.8/100
+## 🏥 Model Health: 71.7/100 [HEALTHY]
+- Solid health - some minor issues to monitor
+  - 🟢 Calibration Freshness: 100.0/100
   - 🔴 Hit Rate Trend: 54.4/100
   - 🔴 Brier Trend: 29.6/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 90.0/100
-  - 🔴 Edge Count: 17.1/100
+  - 🟡 Edge Count: 68.6/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.586)
@@ -15,35 +15,36 @@
 - **Strong home favorites:** 2 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
-1. **CLE @ CHW YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-2. **BOS @ COL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-3. **CHC @ NYM YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-4. **TEX @ MIA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-5. **BAL @ LAA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-
-## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB-PP]** Brett Baty PP_batter_hrr_under_3.5 -- 87% / +50.5% (score 2.5)
-- [STRONG] **[MLB]** CHC @ NYM CHC_ML -- 65% / +20.2% (score 2.5)
+1. **NYY @ DET 4-leg SGP @ -219** (88/100 ★★★★★)
+2. **CLE @ CHW YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+3. **BOS @ COL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+4. **CHC @ NYM YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+5. **TEX @ MIA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **219-41** (84.2% hit rate)
 - Net units: **+7.44u** | ROI: **+46.2%**
 - Last 7d: 46-6 (88.5%) | net +1.73u
 
-**Today's 5 Locks:**
+**Today's 10 Locks:**
 - [MLB-PP] **Francisco Alvarez** PP_batter_hrr_under_3.5 · p=87% edge=+50.7% qK=0.062u
 - [MLB-PP] **Brett Baty** PP_batter_hrr_under_3.5 · p=87% edge=+50.5% qK=0.062u
 - [MLB-PP] **Derek Hill** PP_batter_hrr_under_3.5 · p=86% edge=+49.8% qK=0.062u
 - [MLB-PP] **J.T. Realmuto** PP_batter_hrr_under_3.5 · p=86% edge=+49.5% qK=0.062u
 - [MLB-PP] **Marcus Semien** PP_batter_hrr_under_3.5 · p=86% edge=+48.8% qK=0.062u
+- [MLB-PP] **George Springer** PP_batter_hrr_under_3.5 · p=87% edge=+51.7% qK=0.062u
+- [MLB-PP] **Salvador Perez** PP_batter_hrr_under_3.5 · p=87% edge=+51.4% qK=0.062u
+- [MLB-PP] **Isaac Collins** PP_batter_hrr_under_3.5 · p=87% edge=+51.3% qK=0.062u
+- [MLB-PP] **Matt McLain** PP_batter_hrr_under_3.5 · p=87% edge=+51.2% qK=0.062u
+- [MLB-PP] **Brett Sullivan** PP_batter_hrr_under_3.5 · p=87% edge=+51.2% qK=0.062u
 
 ## 🎰 Top Balanced 2-Leg Parlays (40-65% joint)
-- [MLB-PP] Francisco Alvarez PP_batter_hrr_under_ + [KBO] Choi Jeong one_plus_tb
-  Joint: 64% | Fair: 231 | Edge: +110.6%
-- [MLB-PP] Brett Baty PP_batter_hrr_under_ + [KBO] Choi Jeong one_plus_tb
-  Joint: 63% | Fair: 231 | Edge: +110.3%
-- [MLB-PP] Francisco Alvarez PP_batter_hrr_under_ + [KBO] Jose Pirela one_plus_tb
-  Joint: 63% | Fair: 231 | Edge: +109.8%
+- [MLB-PP] George Springer PP_batter_hrr_under_ + [MLB] ATL @ SDP ATL_ML
+  Joint: 54% | Fair: 237 | Edge: +82.7%
+- [MLB-PP] Salvador Perez PP_batter_hrr_under_ + [MLB] ATL @ SDP ATL_ML
+  Joint: 54% | Fair: 237 | Edge: +82.3%
+- [MLB-PP] Isaac Collins PP_batter_hrr_under_ + [MLB] ATL @ SDP ATL_ML
+  Joint: 54% | Fair: 237 | Edge: +82.3%
 
 ## 🎮 Player Play of the Day (cross-sport)
 - **[LOL]** Inspired UNDER 3.5 Kills | MED conviction · model 61.7% fair -161
@@ -60,24 +61,24 @@
 - Hot teams: **2** | Cold teams: **4** | Over-heavy: 0 | Under-heavy: 7
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (50)
+## ⚠️ Anomaly Detector (42)
 - STEAM_MOVE: **39**
-- COMPOUND_BULLPEN: **7**
-- PEN_MISMATCH: **4**
+- COMPOUND_BULLPEN: **1**
+- PEN_MISMATCH: **2**
   - WSH @ CON (WNBA): ML/TOTAL steam since open: ML +5.9pp toward CON; total -3 (UNDER) (4 snapshots)
   - DET @ HOU (MLB): ML steam since open: ML -10.8pp toward DET (4 snapshots)
   - LAA @ ARI (MLB): ML/TOTAL steam since open: ML +10.7pp toward ARI; total +0.5 (OVER) (6 snapshots)
   - DAL @ POR (WNBA): ML/TOTAL steam since open: ML +8.2pp toward POR; total -2 (UNDER) (3 snapshots)
   - LA @ PHX (WNBA): TOTAL steam since open: total -2 (UNDER) (3 snapshots)
 
-## 💰 Today's Portfolio (9 picks)
-- Total stake: **$330.0** (33.0% of $1000 bankroll)
-- Expected EV: **$14.12**
-  - #1 [NRFI] $50 on CLE @ CHW YRFI (1st-inning OVER 0.5) (P=77%)
-  - #2 [NRFI] $50 on BOS @ COL YRFI (1st-inning OVER 0.5) (P=77%)
-  - #3 [NRFI] $50 on CHC @ NYM YRFI (1st-inning OVER 0.5) (P=74%)
-  - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
-  - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
+## 💰 Today's Portfolio (8 picks)
+- Total stake: **$340.0** (34.0% of $1000 bankroll)
+- Expected EV: **$15.19**
+  - #1 [SGP] $50 on NYY @ DET 4-leg SGP @ -219 (P=69%)
+  - #2 [NRFI] $50 on CLE @ CHW YRFI (1st-inning OVER 0.5) (P=77%)
+  - #3 [NRFI] $50 on BOS @ COL YRFI (1st-inning OVER 0.5) (P=77%)
+  - #4 [NRFI] $50 on CHC @ NYM YRFI (1st-inning OVER 0.5) (P=74%)
+  - #5 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
 
 ## 🎯 Convergence Picks (6 stacked games)
 - ELITE: **1** · HIGH: 1 · MED: 4
@@ -91,8 +92,8 @@
 - **Drew Rasmussen** OVER 4.5 K (78%) fair -347
 - **Gavin Williams** OVER 4.5 K (75%) fair -295
 - **Kyle Bradish** OVER 4.5 K (75%) fair -295
+- **Dylan Cease** OVER 6.5 K (72%) fair -252
 - **Foster Griffin** OVER 4.5 K (70%) fair -232
-- **Hunter Brown** OVER 6.5 K (67%) fair -205
 
 ## 🏀 NBA Player Heat (18 HOT / 22 COLD)
   - 🔥 **Jeremiah Fears** (NO): L5 31.8/5.8/6.0 vs season 16.9/3.2/4.0 [PTS +14.9, REB +2.6, AST +2.0]
