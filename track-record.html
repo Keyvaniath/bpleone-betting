@@ -121,6 +121,33 @@
     }).catch(()=>{});
   </script>
 
+  <!-- Prospective forward-test: zero-hindsight, accrues daily (auto-updating) -->
+  <section class="card" id="fwdCard" style="margin-bottom:18px; border-left:3px solid #5fb3e0; display:none;">
+    <div class="card-head"><span>🔮 Prospective Forward-Test — zero hindsight</span><span class="muted" id="fwdMeta">—</span></div>
+    <div style="padding:14px 18px;">
+      <p class="muted" style="font-size:12px;margin:0 0 12px;line-height:1.6;">The held-out test above splits the existing ledger. This is stricter: we <strong>froze the curation rule on a fixed date and never refit it</strong>, then score <strong>only</strong> picks settled <em>after</em> that date. Every outcome here postdates the rule — there's no way to fit to it. It starts near-empty and builds daily.</p>
+      <div id="fwdBody" style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:1.7;"></div>
+    </div>
+  </section>
+  <script>
+  fetch("data/forward_test.json", { cache:"no-cache" }).then(r=>r.json()).then(d=>{
+    if (!d || !d.anchor) return;
+    document.getElementById("fwdCard").style.display = "block";
+    document.getElementById("fwdMeta").textContent =
+      `anchored ${d.anchor} · ${d.frozen_cut_size} families frozen · ${(d.updated_at||'').replace('T',' ').slice(0,16)}`;
+    const sgn = v => (v>=0?'+':'')+v+'%';
+    if (d.building) {
+      document.getElementById("fwdBody").innerHTML =
+        `<span style="color:#e0a13a;">Building</span> — <b>${d.n_settled_since}</b> of ${d.min_meaningful} picks settled since we froze the rule on <b>${d.anchor}</b>. ` +
+        `Check back as it fills; a clean prospective sample is worth more than any backtest.`;
+    } else {
+      document.getElementById("fwdBody").innerHTML =
+        `Since <b>${d.anchor}</b>, on <b>${d.n_settled_since}</b> picks settled against the frozen rule: ` +
+        `curated <b style="color:#58c878;">${sgn(d.curated_roi)}</b> (hit ${d.curated_hit}%) vs raw firehose <b style="color:#e35a5a;">${sgn(d.raw_roi)}</b>. Zero hindsight.`;
+    }
+  }).catch(()=>{});
+  </script>
+
   <!-- CLV per bet (NEW) -->
   <section id="clvBetCard" class="card" style="margin-bottom: 18px; display:none;">
     <div class="card-head"><span>📈 CLV Per Bet — beating the close</span><span class="muted" id="cpbMeta">--</span></div>

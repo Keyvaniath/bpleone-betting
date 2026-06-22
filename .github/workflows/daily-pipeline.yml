@@ -614,6 +614,9 @@ jobs:
       - name: Out-of-sample curation validation (held-out edge proof -> track-record / calibration-map)
         working-directory: python
         run: python validate_curation_oos.py || true
+      - name: Prospective forward-test (no-hindsight; anchor + frozen cut-set persisted)
+        working-directory: python
+        run: python forward_test.py || true
       - name: Cross-sport parlay builder (2-leg + 3-leg combos with same-game correlation)
         working-directory: python
         run: python cross_sport_parlay_builder.py
