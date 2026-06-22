@@ -285,7 +285,7 @@
       <span style="font-size:10px;text-transform:uppercase;letter-spacing:.6px;color:#8a93a6;">📡 On the tape right now</span>
       <a href="alerts.html" style="font-size:11px;color:#58c878;text-decoration:underline;text-decoration-color:rgba(88,200,120,.4);">full feed →</a>
     </div>
-    <div id="liveTapeRows" style="display:grid;gap:7px;"></div>
+    <div id="liveTapeRows" style="display:grid;gap:7px;grid-template-columns:minmax(0,1fr);"></div>
   </section>
   <script>
   fetch("data/alerts_feed.json", { cache: "no-cache" }).then(r => r.json()).then(d => {
@@ -295,7 +295,7 @@
     const LAB = { STEAM:"Steam", SHARP:"Sharp", EDGE:"Edge", WC:"World Cup", HOOPS:"Hoops" };
     const esc = s => String(s == null ? "" : s).replace(/[&<>]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
     document.getElementById("liveTapeRows").innerHTML = items.map(i => `
-      <a href="${esc(i.link || 'alerts.html')}" style="display:flex;align-items:center;gap:11px;padding:10px 13px;border:1px solid rgba(255,255,255,.07);border-radius:9px;text-decoration:none;font-family:'JetBrains Mono',monospace;">
+      <a href="${esc(i.link || 'alerts.html')}" style="display:flex;min-width:0;align-items:center;gap:11px;padding:10px 13px;border:1px solid rgba(255,255,255,.07);border-radius:9px;text-decoration:none;font-family:'JetBrains Mono',monospace;">
         <span style="font-size:16px;">${i.icon || '•'}</span>
         <span style="flex:1;min-width:0;">
           <span style="display:block;font-size:13px;color:var(--text,#e8edf4);font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${esc(i.title)}</span>
