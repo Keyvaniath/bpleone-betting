@@ -148,6 +148,37 @@
   }).catch(()=>{});
   </script>
 
+  <!-- Durable-edge spotlight: deep dive on the one family that carries the edge (auto-updating) -->
+  <section class="card" id="durCard" style="margin-bottom:18px; border-left:3px solid #b08aff; display:none;">
+    <div class="card-head"><span>🔬 Durable-Edge Spotlight</span><span class="muted" id="durMeta">—</span></div>
+    <div style="padding:14px 18px;">
+      <p class="muted" style="font-size:12px;margin:0 0 10px;line-height:1.6;">The held-out test showed the edge is concentrated. This is the deep dive on the one well-sampled, durable family that carries it — stress-tested by sub-condition, with honest sizing.</p>
+      <p style="font-size:13.5px;color:#fff;margin:0 0 6px;font-weight:600;" id="durLabel">—</p>
+      <div id="durStats" style="font-family:'JetBrains Mono',monospace;font-size:13px;margin-bottom:10px;"></div>
+      <p style="font-size:12.5px;line-height:1.6;margin:0 0 10px;color:var(--text-2,#aab3c5);" id="durVerdict"></p>
+      <div id="durSizing" style="font-size:12.5px;line-height:1.6;padding:10px 12px;border:1px solid rgba(176,138,255,.25);border-radius:8px;background:rgba(176,138,255,.05);"></div>
+      <details style="margin-top:12px;"><summary style="cursor:pointer;font-size:11px;color:var(--muted,#888);text-transform:uppercase;letter-spacing:.5px;">Sizing caveats</summary>
+        <ul id="durCaveats" style="font-size:12px;color:var(--text-2,#aab3c5);line-height:1.6;margin:8px 0 0;padding-left:18px;"></ul></details>
+    </div>
+  </section>
+  <script>
+  fetch("data/durable_edge_analysis.json",{cache:"no-cache"}).then(r=>r.json()).then(d=>{
+    if(!d || !d.overall) return;
+    document.getElementById("durCard").style.display="block";
+    document.getElementById("durMeta").textContent = `${d.overall.n} settled · ${(d.generated_at||'').replace('T',' ').slice(0,16)}`;
+    document.getElementById("durLabel").textContent = d.label;
+    const o=d.overall;
+    document.getElementById("durStats").innerHTML =
+      `<b>${o.wins}-${o.losses}</b> &nbsp;·&nbsp; hit <b style="color:#58c878;">${o.hit}%</b> &nbsp;·&nbsp; ROI <b style="color:#58c878;">+${o.roi}%</b> &nbsp;·&nbsp; net <b>${o.net>=0?'+':''}${o.net}u</b>`;
+    document.getElementById("durVerdict").innerHTML = "<b>Verdict —</b> "+d.verdict;
+    const s=d.sizing;
+    document.getElementById("durSizing").innerHTML =
+      `<b style="color:#b08aff;">Sizing:</b> win prob ${(100*s.win_prob).toFixed(0)}% at ~${s.avg_decimal_odds} decimal → EV <b>+${(100*s.ev_per_unit).toFixed(0)}%</b>/unit. `+
+      `Full Kelly is <b>${s.full_kelly_pct}%</b> — far too aggressive; bet <b>${s.recommended}</b> and cap slate exposure (these legs correlate).`;
+    document.getElementById("durCaveats").innerHTML = (d.caveats||[]).map(c=>`<li>${c}</li>`).join("");
+  }).catch(()=>{});
+  </script>
+
   <!-- CLV per bet (NEW) -->
   <section id="clvBetCard" class="card" style="margin-bottom: 18px; display:none;">
     <div class="card-head"><span>📈 CLV Per Bet — beating the close</span><span class="muted" id="cpbMeta">--</span></div>
