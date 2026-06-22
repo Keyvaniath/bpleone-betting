@@ -1,44 +1,60 @@
 # Tonight's Slate Brief — 2026-06-22
 
-## Slate Quality: 54/100 (LOW)
+## Slate Quality: 55/100 (MEDIUM)
 _0% lineups confirmed · 8 rookie SPs_
-**Recommendation:** Defensive sizing tonight; stick to highest-confidence plays.
+**Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
 - **13 games** scheduled
-- **11 best bets** scored: 0 DK · 0 PP · 1 NRFI · 0 SGP
-- **MC simulation:** EV +$11.53, 64% P(profit), p05 $-50.0 / p95 $45.45
+- **29 best bets** scored: 0 DK · 0 PP · 10 NRFI · 6 SGP
+- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$47.01
+- **MC simulation:** EV +$145.3, 89% P(profit), p05 $-74.73 / p95 $319.54
 
 ## Top 5 Best Bets
-1. **NYM @ PHI YRFI (1st-inning OVER 0.5)**  (78/100 ****, edge +18.5%)
-   - P(YRFI) 64.5% vs baseline 46.0%
-2. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
-   - Player prop quality score 1.1935
-   - Elite player
-3. **LOL ShowMaker OVER 3.5 Kills**  (78/100 ****, edge —)
-   - Player prop quality score 1.1892
-   - Elite player
-4. **LOL Peyz OVER 4.5 Kills**  (78/100 ****, edge —)
-   - Player prop quality score 1.184
-   - Elite player
-5. **LOL Relove Deep Cross Gaming vs Karmine Corp ML @ -108**  (76/100 *****, edge —)
-   - Model 52.0% (fair -108)
-   - MSI
+1. **CLE @ CHW YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +31.4%)
+   - P(YRFI) 77.4% vs baseline 46.0%
+2. **BOS @ COL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +30.6%)
+   - P(YRFI) 76.6% vs baseline 46.0%
+3. **CHC @ NYM YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +28.4%)
+   - P(YRFI) 74.4% vs baseline 46.0%
+4. **TEX @ MIA YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +24.8%)
+   - P(YRFI) 70.8% vs baseline 46.0%
+5. **BAL @ LAA YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +21.8%)
+   - P(YRFI) 67.8% vs baseline 46.0%
 
-## ⚠️ Trap Warnings — 1 flagged
-- **NYM @ PHI YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +18.5% looks big but only 0 settled props on this player — model unproven
+## ⚠️ Trap Warnings — 16 flagged
+- **CLE @ CHW YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +31.4% looks big but only 0 settled props on this player — model unproven
+- **BOS @ COL YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +30.6% looks big but only 0 settled props on this player — model unproven
+- **CHC @ NYM YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +28.4% looks big but only 0 settled props on this player — model unproven
+- **HOU @ TOR 2-leg SGP @ -202** (low):
+   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
+- **KCR @ TBR 2-leg SGP @ -216** (low):
+   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
 
 ## Hot streaks
-**Batters heating up:** Kyle Schwarber (heat +3.15), Bryce Harper (heat +1.44), Carson Benge (heat +1.30)
-**Pitchers on a run:** Zack Wheeler (heat +3.54), David Peterson (heat -2.08)
+**Batters heating up:** Daulton Varsho (heat +7.50), Kyle Schwarber (heat +7.05), Jonny DeLuca (heat +6.58)
+**Pitchers on a run:** Dylan Cease (heat +12.60), Ryan Feltner (heat +6.86), Kyle Bradish (heat +6.07)
+
+## Top correlation-aware SGPs
+- **HOU @ TOR** 2-leg @ -202 fair (joint 0.67, EV +25.0%)
+   - Hunter Brown OVER 5.5 pitcher strikeouts
+   - Dylan Cease OVER 6.5 pitcher strikeouts
+- **KCR @ TBR** 2-leg @ -216 fair (joint 0.68, EV +25.0%)
+   - Drew Rasmussen OVER 4.5 pitcher strikeouts
+   - Drew Rasmussen UNDER 9.5 pitcher strikeouts
+- **CLE @ CHW** 2-leg @ -222 fair (joint 0.69, EV +25.0%)
+   - Anthony Kay UNDER 6.5 pitcher strikeouts
+   - Gavin Williams UNDER 8.5 pitcher strikeouts
 
 ## Bullpens GASSED tonight
-Athletics, San Diego Padres, Seattle Mariners, St. Louis Cardinals, Tampa Bay Rays, Texas Rangers, Toronto Blue Jays, Minnesota Twins
+Athletics, Pittsburgh Pirates, San Diego Padres, St. Louis Cardinals, Tampa Bay Rays, Texas Rangers, Minnesota Twins, Philadelphia Phillies
 _Lean late-inning OVER on these games; fade their save situations._
 
 ## NRFI/YRFI strong leans
-- **YRFI** (1st-inning OVER): NYM @ PHI
+- **YRFI** (1st-inning OVER): CLE @ CHW, BOS @ COL, CHC @ NYM, TEX @ MIA, BAL @ LAA
 
 ## NBA -- PLAYOFFS
 - New York Knicks @ San Antonio Spurs (53-29 vs 62-20) 94-90 | P(home) 0.0% fair +0 | Final
