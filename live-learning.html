@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Live Learning — watch EdgeStat's model update itself from settled outcomes: calibration retraining, source-trust re-weighting, and per-sport bias correction, refreshed every few hours. 21+.">
+<link rel="canonical" href="https://betting.bpleone.com/live-learning.html">
+<meta name="theme-color" content="#0d1017">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EdgeStat">
+<meta property="og:title" content="Live Learning | EdgeStat">
+<meta property="og:description" content="Watch the model update itself from settled outcomes — calibration, source-trust weights, per-sport bias, live.">
+<title>Live Learning | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .wrap { max-width: 900px; margin: 0 auto; padding: 26px 22px 12px; }
+  h1 { font-size: 27px; margin: 0 0 6px; }
+  .sub { color: var(--muted,#8a93a6); font-size: 13px; line-height:1.65; margin-bottom: 18px; max-width: 760px; }
+  .sub b { color: #cfe9d6; }
+  .loops { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:20px; }
+  .loop { min-width:0; flex:1 1 220px; border:1px solid rgba(255,255,255,.1); border-radius:10px; padding:11px 14px; font-family:'JetBrains Mono',monospace; }
+  .loop .nm { font-size:11px; text-transform:uppercase; letter-spacing:.5px; color:var(--muted,#8a93a6); display:flex; align-items:center; gap:7px; }
+  .loop .ago { font-size:15px; font-weight:700; color:#e9edf4; margin-top:4px; }
+  .pdot { width:9px;height:9px;border-radius:50%;display:inline-block;flex:0 0 auto; }
+  .pdot.live{background:#58c878;box-shadow:0 0 8px rgba(88,200,120,.7);} .pdot.warn{background:#e8b54e;}
+  .card { border:1px solid rgba(255,255,255,.1); border-radius:13px; padding:18px 20px; margin-bottom:16px; }
+  .card h2 { font-size:15px; margin:0 0 4px; }
+  .card .cap { color:var(--muted,#8a93a6); font-size:12px; line-height:1.6; margin:0 0 14px; }
+  .ece { display:flex; align-items:center; gap:14px; flex-wrap:wrap; font-family:'JetBrains Mono',monospace; }
+  .ece .big { font-size:30px; font-weight:800; }
+  .bar { height:9px; border-radius:5px; background:rgba(255,255,255,.08); overflow:hidden; flex:1 1 180px; min-width:120px; }
+  .bar > span { display:block; height:100%; background:linear-gradient(90deg,#e35a5a,#e8b54e); }
+  .barC > span { background:linear-gradient(90deg,#3aa564,#58c878); }
+  .tscroll { overflow-x:auto; }
+  table { width:100%; border-collapse:collapse; font-family:'JetBrains Mono',monospace; font-size:12.5px; min-width:430px; }
+  th,td { padding:7px 9px; text-align:right; border-bottom:1px solid rgba(255,255,255,.05); white-space:nowrap; }
+  th { color:var(--muted,#8a93a6); font-size:10px; text-transform:uppercase; letter-spacing:.5px; }
+  td.l, th.l { text-align:left; }
+  .up{color:#58c878;} .down{color:#e35a5a;}
+  .meta { color:var(--muted,#8a93a6); font-size:11px; margin-top:14px; font-family:'JetBrains Mono',monospace; }
+</style>
+<script src="js/nav.js"></script>
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a>
+    <span class="tagline">by bpleone</span>
+  </div>
+  <nav class="mainnav"><!-- nav.js injects here --></nav>
+  <div class="topbar-actions"><div class="ticker">LEARNING</div></div>
+</header>
+
+<main class="wrap">
+  <h1>🧠 Live Learning</h1>
+  <p class="sub">The model updates itself from <b>settled outcomes</b>. Every few hours, fresh results retrain the probability <b>calibration</b>, re-weight which pick-sources to <b>trust</b>, and re-fit <b>per-sport bias</b> — no human in the loop. This is what it's doing right now, straight from the live artifacts. <span id="verdict"></span></p>
+
+  <div class="loops" id="loops"></div>
+
+  <section class="card">
+    <h2>1 · Calibration — the displayed probabilities get truer</h2>
+    <p class="cap">An isotonic transform is re-fit from every settled outcome so a posted "70%" actually hits ~70%. Lower calibration error (ECE) = more honest numbers. This is the single most-retrained piece.</p>
+    <div class="ece" id="calBody"><span class="muted">Loading…</span></div>
+  </section>
+
+  <section class="card">
+    <h2>2 · Source trust — learned from realized hit rate</h2>
+    <p class="cap">Each pick-source starts at a prior weight and moves toward what it has actually <i>done</i>. Sources that keep hitting earn trust; chronic losers get downweighted (Wilson-guarded so a hot streak can't overfit). The biggest moves:</p>
+    <div class="tscroll"><table id="wTable"><thead><tr><th class="l">Pick source</th><th>Prior</th><th>Learned</th><th>Move</th><th>Settled</th><th>Hit%</th></tr></thead><tbody id="wBody"><tr><td class="l muted" colspan="6">Loading…</td></tr></tbody></table></div>
+  </section>
+
+  <section class="card">
+    <h2>3 · Per-sport bias correction</h2>
+    <p class="cap">Each desk's model is checked against real results and nudged for systematic bias once enough games settle (Brier = calibration quality, lower is better). "Applied" means the correction is live in the boards.</p>
+    <div class="tscroll"><table id="sTable"><thead><tr><th class="l">Sport</th><th>Games</th><th>Hit%</th><th>Brier</th><th>Bias</th><th>Applied</th></tr></thead><tbody id="sBody"><tr><td class="l muted" colspan="6">Loading…</td></tr></tbody></table></div>
+  </section>
+
+  <p class="meta" id="meta"></p>
+</main>
+
+<script>
+(function(){
+  var J = function(p){ return fetch('data/'+p+'?t='+Date.now(),{cache:'no-cache'}).then(function(r){return r.json();}).catch(function(){return {};}); };
+  // artifact timestamps are naive UTC (no Z); treat them as UTC so "ago" is correct in any local tz.
+  var toMs = function(ts){ if(!ts) return NaN; var s=String(ts); if(s.indexOf('T')>0 && !/[Zz]$|[+-]\d\d:?\d\d$/.test(s)) s+='Z'; return new Date(s).getTime(); };
+  var ago = function(ts){ var t=toMs(ts); if(isNaN(t)) return null; var m=Math.round((Date.now()-t)/60000); if(m<0) m=0; if(m<60) return m+'m ago'; var h=Math.round(m/60); if(h<48) return h+'h ago'; return Math.round(h/24)+'d ago'; };
+  var pct = function(v){ return v==null?'—':(100*v).toFixed(1)+'%'; };
+
+  Promise.all([J('recalibration_map.json'),J('learned_weights.json'),J('self_training_summary.json'),J('ledger_summary.json')]).then(function(res){
+    var rc=res[0], lw=res[1], st=res[2], ls=res[3];
+
+    // --- loops live strip ---
+    var trainTs = (st.generated_at>rc.generated_at?st.generated_at:rc.generated_at);
+    var beatTs  = (lw.generated_at>(ls.generated_at||'')?lw.generated_at:ls.generated_at);
+    var freshDot = function(ts, maxMin){ var ms=Date.now()-toMs(ts); return (!isNaN(ms)&&ms>=-120000&&ms < maxMin*60000)?'live':'warn'; };
+    document.getElementById('loops').innerHTML =
+      '<div class="loop"><div class="nm"><span class="pdot '+freshDot(beatTs,30)+'"></span>Heartbeat · 5-min loop</div><div class="ago">'+(ago(beatTs)||'—')+'</div></div>'+
+      '<div class="loop"><div class="nm"><span class="pdot '+freshDot(trainTs,240)+'"></span>Training loop · ~2h</div><div class="ago">'+(ago(trainTs)||'—')+'</div></div>'+
+      '<div class="loop"><div class="nm"><span class="pdot live"></span>Outcomes learned from</div><div class="ago">'+((rc.n_settled||ls.n_settled||0).toLocaleString())+'</div></div>';
+
+    // --- 1. calibration ---
+    if (rc.ece_before!=null && rc.ece_after!=null){
+      var pctReduce = Math.round(100*(rc.ece_before-rc.ece_after)/rc.ece_before);
+      document.getElementById('calBody').innerHTML =
+        '<span class="big down">'+pct(rc.ece_before)+'</span><span class="muted" style="font-size:18px;">→</span><span class="big up">'+pct(rc.ece_after)+'</span>'+
+        '<span class="bar barC"><span style="width:'+Math.max(6,100-pctReduce)+'%;"></span></span>'+
+        '<span class="muted" style="font-size:12px;flex:1 1 100%;">Calibration error cut <b class="up">'+pctReduce+'%</b> · retrained on <b>'+(rc.n_settled||0).toLocaleString()+'</b> settled outcomes across <b>'+(rc.n_families_transformed||0)+'</b> market families.</span>';
+    } else { document.getElementById('calBody').innerHTML='<span class="muted">calibration map not available</span>'; }
+
+    // --- 2. source trust ---
+    var ws = lw.weights||{};
+    var movers = Object.keys(ws).map(function(k){return {k:k,v:ws[k]};})
+      .filter(function(o){return o.v && (o.v.n_settled||0)>=20 && o.v.delta_from_prior!=null;})
+      .sort(function(a,b){return Math.abs(b.v.delta_from_prior)-Math.abs(a.v.delta_from_prior);}).slice(0,10);
+    document.getElementById('wBody').innerHTML = movers.length ? movers.map(function(o){
+      var d=o.v.delta_from_prior, cls=d>=0?'up':'down';
+      return '<tr><td class="l">'+o.k.replace(/_/g,' ')+'</td><td>'+o.v.prior+'</td><td><b>'+(o.v.w_final!=null?o.v.w_final.toFixed(2):'—')+'</b></td>'+
+        '<td class="'+cls+'">'+(d>=0?'▲ +':'▼ ')+d.toFixed(2)+'</td><td class="muted">'+o.v.n_settled+'</td><td>'+pct(o.v.hit_rate)+'</td></tr>';
+    }).join('') : '<tr><td class="l muted" colspan="6">building — needs n≥20 settled per source</td></tr>';
+
+    // --- 3. per-sport bias ---
+    var bs = st.by_sport||{};
+    var rows = Object.keys(bs).map(function(k){return {k:k,v:bs[k]};}).filter(function(o){return (o.v.n_games||0)>0;})
+      .sort(function(a,b){return (b.v.n_games||0)-(a.v.n_games||0);});
+    document.getElementById('sBody').innerHTML = rows.length ? rows.map(function(o){
+      var v=o.v, ap=v.recommendation_applied;
+      return '<tr><td class="l">'+o.k.toUpperCase()+'</td><td class="muted">'+v.n_games+'</td><td>'+pct(v.hit_rate)+'</td>'+
+        '<td>'+(v.brier!=null?v.brier.toFixed(3):'—')+'</td><td>'+(v.bias!=null?(v.bias>=0?'+':'')+v.bias.toFixed(3):'—')+'</td>'+
+        '<td class="'+(ap?'up':'muted')+'">'+(ap?'✓ live':'—')+'</td></tr>';
+    }).join('') : '<tr><td class="l muted" colspan="6">no settled games yet</td></tr>';
+
+    document.getElementById('verdict').innerHTML = (rc.ece_before!=null)
+      ? 'Right now: calibration is <b>live</b> and the source weights moved on real results — not a static model.' : '';
+    document.getElementById('meta').textContent =
+      'Live from the pipeline artifacts · calibration '+(ago(rc.generated_at)||'?')+' · weights '+(ago(lw.generated_at)||'?')+' · bias '+(ago(st.generated_at)||'?');
+  });
+})();
+</script>
+</body>
+</html>

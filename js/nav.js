@@ -123,6 +123,7 @@
     { href: "module-performance.html",  label: "🧠 Module Performance" },
     { href: "audit.html",               label: "Audit" },
     { section: "Self-Learning" },
+    { href: "live-learning.html",       label: "📡 Live Learning" },
     { href: "self-learning.html",       label: "🧠 Self-Learning" },
     { href: "learning.html",            label: "Learning" },
     { href: "training.html",            label: "Training" },
