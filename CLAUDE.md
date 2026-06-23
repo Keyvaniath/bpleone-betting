@@ -73,9 +73,13 @@ bpleone-site/
     `cloudflare-worker/src/billing.js` + `js/premium.js` + `pricing.html`, inert until
     configured). Owner-action checklist + deploy steps in **GO-OFFICIAL.md** /
     **SUBSCRIPTION_SETUP.md** (LLC, attorney, data license, Stripe account).
-  - **Known data-blocked:** `ODDS_API_KEY` still lapsed → player-prop BOOK lines dark
-    (pp_advantage dormant); game lines come free from ESPN. This is the one structural
-    unlock left and needs Brandon's payment.
+  - **Known data-blocked (CORRECTED 2026-06-23):** `ODDS_API_KEY` is NOT lapsed/unset —
+    `odds_key_preflight.py` validated it live in the cron: the secret IS set and the key
+    is VALID (returns 40 sports), but its monthly quota is **EXHAUSTED (1 request left;
+    a free/low tier the pipeline burned through)**. So player-prop BOOK lines are dark for
+    lack of REQUEST BUDGET, not a missing key. The lever is **raising the plan tier** (more
+    requests/mo) — NOT buying a new key. Game lines come free from ESPN regardless. Live
+    state on status.html (Odds feed row); setup in ODDS_KEY_SETUP.md.
 
 - **Live in production:** `https://betting.bpleone.com` — GitHub Pages, valid
   Let's Encrypt cert (CN=betting.bpleone.com). Repo `Keyvaniath/bpleone-betting`

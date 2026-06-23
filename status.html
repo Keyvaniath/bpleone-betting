@@ -89,11 +89,11 @@ fetch('data/data_health.json?t=' + Date.now(), { cache:'no-cache' })
   fetch('data/odds_key_status.json?t='+Date.now(),{cache:'no-cache'}).then(function(r){return r.json();}).then(function(d){
     if(!d || !d.state) return;
     document.getElementById('oddsCard').style.display='flex';
-    var dotcls = d.state==='active'?'green':(d.state==='invalid'?'red':'yellow');
+    var dotcls = d.state==='active'?'green':((d.state==='invalid'||d.state==='exhausted')?'red':'yellow');
     document.getElementById('oddsDot').className='dot '+dotcls;
-    document.getElementById('oddsLbl').textContent = 'Odds feed — '+String(d.state||'').toUpperCase();
+    document.getElementById('oddsLbl').textContent = 'Odds feed — '+String(d.state||'').replace('_',' ').toUpperCase();
     var body = E(d.headline||'');
-    if (d.state!=='active' && (d.activates||[]).length) {
+    if (d.key_set===false && (d.activates||[]).length) {
       body += '<br><span style="color:var(--muted,#8a93a6);">Activates when the ODDS_API_KEY secret is set:</span><br>' + d.activates.map(function(a){return '&middot; '+E(a);}).join('<br>');
     } else if (d.detail && d.detail.requests_remaining!=null) {
       body += '<br><span style="color:var(--muted,#8a93a6);">requests remaining this period: '+E(d.detail.requests_remaining)+'</span>';

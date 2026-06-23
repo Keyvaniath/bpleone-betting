@@ -27,6 +27,10 @@ OUT = os.path.join(DATA_DIR, "odds_key_status.json")
 # /v4/sports is the documented free endpoint -- it validates the key WITHOUT spending
 # a request from the monthly quota, so running this preflight 3x/day costs nothing.
 VALIDATE_URL = "https://api.the-odds-api.com/v4/sports/?apiKey={}"
+# A valid key with a near-empty monthly quota still can't fetch props, so report that
+# distinctly instead of a misleading "active". Each odds/props pull costs requests.
+LOW_QUOTA = 100   # warn below this
+EXHAUSTED = 5     # effectively unusable at/below this
 
 ACTIVATES = [
     "Player-prop BOOK lines (DraftKings / 8-book via The Odds API) -- the paid cross-check",
@@ -72,8 +76,23 @@ def build():
                     "player-prop BOOK feed and the edges/CLV that depend on it are dormant.",
         }
     state, detail = _validate(key)
+    # A valid key with a near-empty quota can't actually fetch props -- surface that as
+    # its own state so it isn't mistaken for a healthy "active" feed. The real blocker
+    # then reads as quota (bump the plan tier), NOT a missing key.
+    rem = detail.get("requests_remaining")
+    rem_int = int(rem) if (rem is not None and str(rem).lstrip("-").isdigit()) else None
+    if state == "active" and rem_int is not None:
+        if rem_int <= EXHAUSTED:
+            state = "exhausted"
+        elif rem_int <= LOW_QUOTA:
+            state = "low_quota"
     headline = {
         "active": "Odds feed ACTIVE -- paid key validated, player-prop book feed is live.",
+        "low_quota": "Odds key VALID but quota running low ({} requests left this month) -- "
+                     "prop fetches stop when it hits 0.".format(rem_int),
+        "exhausted": "Odds key VALID but quota EXHAUSTED ({} left) -- the key works, there's just "
+                     "no request budget to fetch props. Raise the plan tier (or cut fetch "
+                     "frequency); you do NOT need a new key.".format(rem_int),
         "invalid": "Odds key INVALID -- the secret is set but rejected by the API (check the key).",
         "unknown": "Odds key set -- validation call did not confirm (network/API hiccup); will recheck next run.",
     }.get(state, "Odds key set.")
@@ -81,6 +100,7 @@ def build():
         "checked_at": now,
         "key_set": True,
         "state": state,
+        "requests_remaining": rem_int,
         "headline": headline,
         "detail": detail,
         "activates": ACTIVATES,
