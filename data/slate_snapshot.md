@@ -1,4 +1,4 @@
-# EdgeStat Slate — 2026-06-22
+# EdgeStat Slate — 2026-06-23
 
 _6 picks consolidated from POD + Alpha + Book Edges + Parlay-of-Day._
 
@@ -9,23 +9,23 @@ _6 picks consolidated from POD + Alpha + Book Edges + Parlay-of-Day._
 
 ## 🎯 Alpha Pick
 
-- **LAD @ MIN** · LAD_ML
-  Prob 73.7% · Odds -149 · Edge +23.2% · Kelly 0.250
+- **CHC @ NYM** · CHC_ML
+  Prob 61.3% · Odds +100 · Edge +22.6% · Kelly 0.226
 
 ## 📊 Book Edges
 
-- **ARI @ STL · OVER · O/U 8.5** · TOTAL_OVER
+- **ATL @ SDP · AWAY (AWAY)** · TEAM_ML
+  Prob 57.2% · Odds +100 · Edge +14.3% · Kelly 0.143
+- **HOU @ TOR · AWAY (AWAY)** · TEAM_ML
+  Prob 50.7% · Odds +120 · Edge +11.5% · Kelly 0.096
+- **ATL @ SDP · UNDER · O/U 8.5** · TOTAL_UNDER
   Prob 58.3% · Odds -110 · Edge +11.3% · Kelly 0.125
-- **CLE @ CHW · OVER · O/U 7.5** · TOTAL_OVER
-  Prob 58.3% · Odds -110 · Edge +11.3% · Kelly 0.124
-- **BAL @ LAA · OVER · O/U 9.0** · TOTAL_OVER
-  Prob 58.3% · Odds -110 · Edge +11.2% · Kelly 0.124
 
 ## 🎲 Parlay
 
-- **George Springer + LAD @ MIN** · 2-leg
-  Prob 64.5% · Odds +190 · Edge +86.9% · Kelly 0.050
+- **George Springer + CHC @ NYM** · 2-leg
+  Prob 53.6% · Odds +247 · Edge +85.9% · Kelly 0.050
 
 ---
-_Generated 2026-06-22T23:24:46 UTC by EdgeStat._
+_Generated 2026-06-23T11:52:27 UTC by EdgeStat._
 _Stakes assume ¼-Kelly fractional sizing on a flat bankroll._
