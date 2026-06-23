@@ -204,12 +204,17 @@ function renderRecent(tr) {
             ? (r.model_prob_over * 100).toFixed(1) + "% (gave OVER)"
             : ((1 - r.model_prob_over) * 100).toFixed(1) + "% (gave UNDER)")
         : "--";
+      const hasLine = r.line != null && r.line !== "";
+      const hasActual = r.actual != null && r.actual !== "";
+      const detail = hasActual
+        ? `<strong>actual ${r.actual}</strong>${hasLine ? " vs line " + r.line : ""}${modelP !== "--" ? " (model " + modelP + ")" : ""}`
+        : (modelP !== "--" ? "(model " + modelP + ")" : "—");
       return `<div class="recent-row">
         <span>${r.date}</span>
         <span>${r.player || "?"}</span>
-        <span>${(r.market || "").replace(/_/g, " ")} ${r.line}</span>
-        <span><strong>actual ${r.actual}</strong> vs line ${r.line} (model ${modelP})</span>
-        <span>${r.play}</span>
+        <span>${(r.market || "").replace(/_/g, " ")}${hasLine ? " " + r.line : ""}</span>
+        <span>${detail}</span>
+        <span>${r.play || ""}</span>
         <span class="${resCls}">${resTxt}</span>
       </div>`;
     }
@@ -228,7 +233,19 @@ function renderRecent(tr) {
 
 Promise.all([
   fetch("data/calibration_live.json", { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
-  fetch("data/track_record.json", { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
+  // Real settled records from the live ledger. Replaces the deprecated synthetic
+  // track_record.json (118k backfilled props frozen at 2026-06-02) so the loop
+  // status count and "Recently Settled" list reflect actual graded picks.
+  fetch("data/all_picks_ledger.json", { cache: "no-cache" }).then(r => r.json()).then(L => {
+    const sp = (L.picks || []).filter(p => p.settled && (p.result === "won" || p.result === "lost" || p.result === "push") && !p.voided);
+    return {
+      props: sp.map(p => ({ date: p.date, player: p.player_or_matchup || "?", market: p.market,
+        line: (p.outcome || {}).line, actual: (p.outcome || {}).actual, play: (p.outcome || {}).side,
+        play_hit: p.result === "won" ? true : (p.result === "lost" ? false : null) })),
+      games: [],
+      last_settled_date: sp.length ? sp.map(p => p.date).filter(Boolean).sort().slice(-1)[0] : null
+    };
+  }).catch(() => ({})),
   fetch("data/clv_log.json", { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
   fetch("data/trained_params.json", { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
 ]).then(([cal, tr, clv, trained]) => {

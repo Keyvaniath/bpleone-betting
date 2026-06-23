@@ -151,7 +151,12 @@ const TIER_COLORS = {
 Promise.all([
   fetch("data/model_confidence.json", { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
   fetch("data/calibration_live.json", { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
-  fetch("data/track_record.json", { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
+  // Real settled records from the live ledger (replaces the deprecated synthetic
+  // track_record.json: 118k backfilled props frozen at 2026-06-02).
+  fetch("data/all_picks_ledger.json", { cache: "no-cache" }).then(r => r.json()).then(L => {
+    const sp = (L.picks || []).filter(p => p.settled && (p.result === "won" || p.result === "lost" || p.result === "push") && !p.voided);
+    return { props: sp.map(p => ({ date: p.date, player: p.player_or_matchup || "?", market: p.market })) };
+  }).catch(() => ({})),
   fetch("data/residuals.json", { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
   fetch("data/anomalies.json", { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
   fetch("data/walk_forward.json", { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
@@ -197,19 +202,15 @@ Promise.all([
     }).join("");
   }
 
-  // Training data summary
+  // Training data summary -- from the live settled ledger (real graded picks)
   const props = (tr && tr.props) || [];
-  const live = props.filter(p => p.source !== "backfill");
-  const backfill = props.filter(p => p.source === "backfill");
   const dates = Array.from(new Set(props.map(p => p.date).filter(Boolean))).sort();
   const dateRange = dates.length ? `${dates[0]} -- ${dates[dates.length-1]}` : "(no data)";
   document.getElementById("trTrainingData").innerHTML = `
-    <div><strong>Live settled records:</strong> ${live.length} (real production runs since loop started)</div>
-    <div><strong>Backfill records:</strong> ${backfill.length} (retroactive model runs on completed games for calibration training)</div>
-    <div><strong>Total:</strong> ${props.length} prop outcomes</div>
+    <div><strong>Settled records (live ledger):</strong> ${props.length.toLocaleString()} graded picks the loop trains on</div>
     <div><strong>Date range:</strong> ${dateRange}</div>
     <div><strong>Markets covered:</strong> ${Object.keys(markets).length}</div>
-    <div><strong>Pipeline runs since loop started:</strong> daily 6 AM / 1 PM / 6 PM ET via GitHub Actions cron</div>
+    <div><strong>Pipeline cadence:</strong> daily 6 AM / 1 PM / 6 PM ET + 5-min heartbeat via GitHub Actions</div>
     <div><strong>Bayesian shrinkage anchor:</strong> N_PRIOR = ${cal.shrinkage_n_prior ?? 30}</div>
     <div><strong>Last calibration refresh:</strong> ${(cal.generated_at || "?").replace("T", " ")} UTC</div>`;
 
