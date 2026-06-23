@@ -1,54 +1,64 @@
 # Tonight's Slate Brief — 2026-06-23
 
-## Slate Quality: 55/100 (MEDIUM)
+## Slate Quality: 54/100 (LOW)
 _0% lineups confirmed · 11 rookie SPs_
-**Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
+**Recommendation:** Defensive sizing tonight; stick to highest-confidence plays.
 
 ## Slate
 - **15 games** scheduled
-- **21 best bets** scored: 0 DK · 0 PP · 6 NRFI · 1 SGP
-- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$47.01
-- **MC simulation:** EV +$98.82, 74% P(profit), p05 $-109.1 / p95 $272.7
+- **31 best bets** scored: 0 DK · 0 PP · 13 NRFI · 6 SGP
+- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$60.09
+- **MC simulation:** EV +$179.06, 89% P(profit), p05 $-60.13 / p95 $404.64
 
 ## Top 5 Best Bets
-1. **CLE @ CHW YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +31.4%)
-   - P(YRFI) 77.4% vs baseline 46.0%
-2. **BOS @ COL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +30.6%)
-   - P(YRFI) 76.6% vs baseline 46.0%
-3. **BAL @ LAA YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +21.8%)
-   - P(YRFI) 67.8% vs baseline 46.0%
-4. **ARI @ STL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +21.6%)
-   - P(YRFI) 67.6% vs baseline 46.0%
-5. **LAD @ MIN YRFI (1st-inning OVER 0.5)**  (79/100 ****, edge +19.9%)
-   - P(YRFI) 65.9% vs baseline 46.0%
+1. **CHC @ NYM YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +38.2%)
+   - P(YRFI) 84.2% vs baseline 46.0%
+2. **BOS @ COL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +37.5%)
+   - P(YRFI) 83.5% vs baseline 46.0%
+3. **MIL @ CIN YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +33.6%)
+   - P(YRFI) 79.6% vs baseline 46.0%
+4. **OAK @ SFG YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +27.3%)
+   - P(YRFI) 73.3% vs baseline 46.0%
+5. **SEA @ PIT YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +25.4%)
+   - P(YRFI) 71.4% vs baseline 46.0%
 
-## ⚠️ Trap Warnings — 7 flagged
-- **CLE @ CHW YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +31.4% looks big but only 0 settled props on this player — model unproven
+## ⚠️ Trap Warnings — 18 flagged
+- **CHC @ NYM YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +38.2% looks big but only 0 settled props on this player — model unproven
 - **BOS @ COL YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +30.6% looks big but only 0 settled props on this player — model unproven
-- **CHC @ NYM 2-leg SGP @ -181** (low):
-   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
-- **BAL @ LAA YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +21.8% looks big but only 0 settled props on this player — model unproven
-- **ARI @ STL YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +21.6% looks big but only 0 settled props on this player — model unproven
+   - Edge +37.5% looks big but only 0 settled props on this player — model unproven
+- **MIL @ CIN YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +33.6% looks big but only 0 settled props on this player — model unproven
+- **OAK @ SFG YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +27.3% looks big but only 0 settled props on this player — model unproven
+- **SEA @ PIT YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +25.4% looks big but only 0 settled props on this player — model unproven
+
+## Weather leans
+- **UNDER lean** (wind in + cold): OAK @ SFG
 
 ## Hot streaks
-**Batters heating up:** Pete Crow-Armstrong (heat +6.85), Kyle Schwarber (heat +6.85), Kyle Stowers (heat +6.12)
-**Pitchers on a run:** Brandon Woodruff (heat +15.00), Dylan Cease (heat +11.81), Kyle Bradish (heat +11.78)
+**Batters heating up:** Jorge Soler (heat +7.50), Pete Crow-Armstrong (heat +6.85), Kyle Schwarber (heat +6.85)
+**Pitchers on a run:** Paul Sewald (heat +9.00), Mitch Keller (heat +6.32), Robbie Ray (heat +5.04)
 
 ## Top correlation-aware SGPs
-- **CHC @ NYM** 2-leg @ -181 fair (joint 0.64, EV +25.0%)
-   - Kodai Senga OVER 3.5 pitcher strikeouts
-   - Kodai Senga UNDER 7.5 pitcher strikeouts
+- **PHI @ WSN** 2-leg @ -220 fair (joint 0.69, EV +25.0%)
+   - Jesús Luzardo UNDER 9.5 pitcher strikeouts
+   - Jesús Luzardo OVER 4.5 pitcher strikeouts
+- **ATL @ SDP** 2-leg @ -215 fair (joint 0.68, EV +25.0%)
+   - JR Ritchie OVER 2.5 pitcher strikeouts
+   - JR Ritchie UNDER 6.5 pitcher strikeouts
+- **LAD @ MIN** 2-leg @ -146 fair (joint 0.59, EV +25.0%)
+   - Justin Wrobleski UNDER 5.5 pitcher strikeouts
+   - Justin Wrobleski UNDER 4.5 pitcher strikeouts
 
 ## Bullpens GASSED tonight
-Athletics, Pittsburgh Pirates, San Diego Padres, St. Louis Cardinals, Tampa Bay Rays, Texas Rangers, Minnesota Twins, Philadelphia Phillies
+Pittsburgh Pirates, San Diego Padres, St. Louis Cardinals, Tampa Bay Rays, Texas Rangers, Minnesota Twins, Philadelphia Phillies, Miami Marlins
 _Lean late-inning OVER on these games; fade their save situations._
 
 ## NRFI/YRFI strong leans
-- **YRFI** (1st-inning OVER): CLE @ CHW, BOS @ COL, BAL @ LAA, ARI @ STL, LAD @ MIN
+- **YRFI** (1st-inning OVER): CHC @ NYM, BOS @ COL, MIL @ CIN, OAK @ SFG, SEA @ PIT
+- **NRFI** (1st-inning UNDER): LAD @ MIN
 
 ## NBA -- PLAYOFFS
 - New York Knicks @ San Antonio Spurs (53-29 vs 62-20) 94-90 | P(home) 0.0% fair +0 | Final
@@ -83,4 +93,4 @@ _Lean late-inning OVER on these games; fade their save situations._
 ## Self-learning calibration (esports + KBO)
 - **LOL:** 21 settled | brier 0.2649 | ECE 0.1541
    - Model over-confident; subtract 15.4pp at next inference
-- **KBO:** 6 settled | brier 0.2899 | ECE 0.2618
+- **KBO:** 7 settled | brier 0.2981 | ECE 0.3085
