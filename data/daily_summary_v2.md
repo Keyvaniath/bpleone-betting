@@ -1,18 +1,18 @@
 # EdgeStat Daily Summary — 2026-06-23
 
-## 🏥 Model Health: 69.4/100 [OK]
-- Operational but room to improve - check yellow components
+## 🏥 Model Health: 72.2/100 [HEALTHY]
+- Solid health - some minor issues to monitor
   - 🟢 Calibration Freshness: 100.0/100
   - 🔴 Hit Rate Trend: 54.4/100
   - 🔴 Brier Trend: 29.6/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 90.0/100
-  - 🔴 Edge Count: 45.7/100
+  - 🟡 Edge Count: 74.3/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.585)
-- **Total games on board:** 106
-- **Strong home favorites:** 2 | **Strong road dogs:** 0
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.587)
+- **Total games on board:** 107
+- **Strong home favorites:** 3 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
 1. **CHC @ NYM YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
@@ -21,28 +21,27 @@
 4. **OAK @ SFG YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 5. **SEA @ PIT YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 
-## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** BAL @ LAA BAL_ML -- 76% / +22.2% (score 2.5)
-
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **225-41** (84.6% hit rate)
 - Net units: **+7.72u** | ROI: **+46.8%**
 - Last 7d: 52-6 (89.7%) | net +2.00u
 
-**Today's 5 Locks:**
+**Today's 7 Locks:**
 - [MLB-PP] **George Springer** PP_batter_hrr_under_3.5 · p=87% edge=+51.7% qK=0.062u
 - [MLB-PP] **Francisco Alvarez** PP_batter_hrr_under_3.5 · p=87% edge=+51.5% qK=0.062u
 - [MLB-PP] **Brett Sullivan** PP_batter_hrr_under_3.5 · p=87% edge=+51.5% qK=0.062u
 - [MLB-PP] **Alex Freeland** PP_batter_hrr_under_3.5 · p=87% edge=+51.4% qK=0.062u
 - [MLB-PP] **Salvador Perez** PP_batter_hrr_under_3.5 · p=87% edge=+51.2% qK=0.062u
+- [MLB-PP] **Matt McLain** PP_batter_hrr_under_3.5 · p=87% edge=+51.7% qK=0.062u
+- [MLB-PP] **Joey Loperfido** PP_batter_hrr_under_3.5 · p=87% edge=+51.6% qK=0.062u
 
 ## 🎰 Top Balanced 2-Leg Parlays (40-65% joint)
+- [MLB-PP] Salvador Perez PP_batter_hrr_under_ + [MLB] CHC @ NYM CHC_ML
+  Joint: 55% | Fair: 233 | Edge: +82.3%
 - [MLB-PP] George Springer PP_batter_hrr_under_ + [MLB] CHC @ NYM CHC_ML
-  Joint: 54% | Fair: 247 | Edge: +85.9%
-- [MLB-PP] Francisco Alvarez PP_batter_hrr_under_ + [MLB] CHC @ NYM CHC_ML
-  Joint: 54% | Fair: 247 | Edge: +85.7%
-- [MLB-PP] Brett Sullivan PP_batter_hrr_under_ + [MLB] CHC @ NYM CHC_ML
-  Joint: 53% | Fair: 247 | Edge: +85.6%
+  Joint: 55% | Fair: 233 | Edge: +82.2%
+- [MLB-PP] Matt McLain PP_batter_hrr_under_ + [MLB] CHC @ NYM CHC_ML
+  Joint: 55% | Fair: 233 | Edge: +82.2%
 
 ## 🎮 Player Play of the Day (cross-sport)
 - **[LOL]** Inspired UNDER 3.5 Kills | MED conviction · model 61.7% fair -161
@@ -51,7 +50,8 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (2)
+## ⚡ Pre-Game HIGH Conviction (3)
+- [WNBA] **Las Vegas Aces** HOME (4-1 L10) · model 71.9% fair -256
 - [MLS] **CF Montréal** HOME (None L10) · model 71.5% fair -251
 - [MLS] **Seattle Sounders FC** HOME (0-1 L10) · model 66.7% fair -200
 
@@ -59,11 +59,11 @@
 - Hot teams: **3** | Cold teams: **3** | Over-heavy: 0 | Under-heavy: 7
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (42)
+## ⚠️ Anomaly Detector (44)
 - RESIDUAL_DIVERGENCE: **1**
-- STEAM_MOVE: **38**
+- STEAM_MOVE: **41**
+- PEN_MISMATCH: **1**
 - COMPOUND_BULLPEN: **1**
-- PEN_MISMATCH: **2**
   - Vegas Golden Knights (NHL): Vegas Golden Knights OUTPERFORMING expected margin by 11.0pts in recent games -- model bias may persist
   - WSH @ CON (WNBA): ML/TOTAL steam since open: ML +5.9pp toward CON; total -3 (UNDER) (4 snapshots)
   - DET @ HOU (MLB): ML steam since open: ML -10.8pp toward DET (4 snapshots)
@@ -111,18 +111,15 @@
   - [LEAN] **Asu Almabayev** (23-3-0) vs Charles Johnson -- fair -150
   - [LEAN] **Daniil Donchenko** (14-2-0) vs Theodor Berggren -- fair -149
 
-## ⛳ Golf Player Heat (from U.S. Open)
-  - 🔥 T2 **Sam Burns** (USA): -3 total -- finished T2, Sunday -2.2 vs tourney avg
-  - 🔥 T3 **Tom Kim** (South Korea): -1 total -- finished T3
-  - 🔥 T4 **J.T. Poston** (USA): +0 total -- finished T4, Sunday -3.0 vs tourney avg
-  - 🔥 T5 **Keith Mitchell** (USA): +0 total -- finished T5
-  - 🔥 T6 **Scottie Scheffler** (USA): +0 total -- finished T6
-  - ❄️ **William Mouw** (USA): Sunday +6.5 vs tourney avg
-  - ❄️ **Andrew Putnam** (USA): Sunday +4.5 vs tourney avg
-  - ❄️ **Wyndham Clark** (USA): Sunday +4.0 vs tourney avg
+## ⛳ Golf Player Heat (from Travelers Championship)
+  - 🔥 T1 **Ryan Fox** (New Zealand): +0 total -- finished T1
+  - 🔥 T2 **Matt McCarty** (USA): +0 total -- finished T2
+  - 🔥 T3 **Tom Hoge** (USA): +0 total -- finished T3
+  - 🔥 T4 **Jackson Suber** (USA): +0 total -- finished T4
+  - 🔥 T5 **Nicolai Højgaard** (Denmark): +0 total -- finished T5
 
-## 🔥 MLB Batter Heat (39 HOT / 45 COLD)
-  - 🔥 **Nasim Nuñez** (WSH): L14 .426 / season .241 (+185pts)
+## 🔥 MLB Batter Heat (40 HOT / 44 COLD)
+  - 🔥 **Nasim Nuñez** (WSH): L14 .429 / season .241 (+188pts)
   - 🔥 **Pete Crow-Armstrong** (CHC): L14 .448 / season .286 (+162pts)
   - 🔥 **Victor Caratini** (MIN): L14 .378 / season .236 (+142pts)
   - 🔥 **Luisangel Acuña** (CWS): L14 .355 / season .215 (+140pts)
@@ -131,7 +128,7 @@
   - ❄️ **Carlos Cortes** (ATH): L14 .122 / season .276 (-154pts) -- FADE props
   - ❄️ **Spencer Steer** (CIN): L14 .083 / season .237 (-154pts) -- FADE props
   - ❄️ **Michael Conforto** (CHC): L14 .074 / season .222 (-148pts) -- FADE props
-  - ❄️ **Luke Raley** (SEA): L14 .095 / season .240 (-145pts) -- FADE props
+  - ❄️ **Luke Raley** (SEA): L14 .098 / season .238 (-140pts) -- FADE props
 
 ## 📈 Streak Regression Alerts (1)
 - [NHL] Vegas Golden Knights on L3 L10 0-3 -- Vegas Golden Knights on L3 -- no historical sample
@@ -148,4 +145,4 @@
 - **NHL**: n=3 games · hit rate 66.7% · bias +18.0pp
 - **WNBA**: n=41 games · hit rate 63.4% · bias -5.9pp [calibration applied]
 - **MLB**: n=183 games · hit rate 46.5% · bias -2.6pp [calibration applied]
-- **CWS**: n=5 games · hit rate 0.0% · bias +59.5pp
+- **CWS**: n=7 games · hit rate 0.0% · bias +66.2pp

@@ -2,9 +2,6 @@
 
 _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 
-## 💪 STRONG (1 picks)
-- [MLB] BAL @ LAA BAL_ML · 76% / +22.2%
-
 ## 🔒 5 Daily Locks
 - **George Springer** PP_batter_hrr_under_3.5 (MLB-PP) -- 87% / +51.7%
 - **Francisco Alvarez** PP_batter_hrr_under_3.5 (MLB-PP) -- 87% / +51.5%
@@ -16,8 +13,8 @@ _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 
 ## 🎰 Tonight's Best Parlay
 - **Salvador Perez** PP_batter_hrr_under_3.5 + **CHC @ NYM** CHC_ML
-- Joint 55% · fair +233 · edge +82.3%
+- Joint 60% · fair +224 · edge +93.8%
 
 ---
-_Generated 2026-06-23T16:47:41_
+_Generated 2026-06-23T23:09:57_
 _Full breakdown: /tonight · Full history: /locks-of-day_

@@ -1,12 +1,11 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:6 F:35
+_NO_ACTION_NIGHT_ | L:0 S:2 F:37
 
 :lock: **LOCK:** Nick Lodolo (MLB)
 
 :dart: **Top Picks:**
-1. [GOLF] J.T. Poston -- J.T. Poston (PLAYER_STRONG)
-2. [GOLF] Wyndham Clark -- Wyndham Clark (PLAYER_STRONG)
-3. [MLB] Jesús Luzardo -- Jesús Luzardo (PITCHER_STRONG)
+1. [WNBA] breanna stewart -- breanna stewart (PLAYER_STRONG)
+2. [WNBA] a'ja wilson -- a'ja wilson (PLAYER_STRONG)
 
 :coin: Bankroll Advisory: STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 

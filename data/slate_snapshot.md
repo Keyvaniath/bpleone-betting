@@ -10,22 +10,22 @@ _6 picks consolidated from POD + Alpha + Book Edges + Parlay-of-Day._
 ## 🎯 Alpha Pick
 
 - **CHC @ NYM** · CHC_ML
-  Prob 62.6% · Odds -109 · Edge +20.1% · Kelly 0.219
+  Prob 68.3% · Odds -115 · Edge +27.8% · Kelly 0.250
 
 ## 📊 Book Edges
 
 - **MIL @ CIN · AWAY (AWAY)** · TEAM_ML
-  Prob 58.2% · Odds -109 · Edge +11.6% · Kelly 0.127
-- **PHI @ WSN · OVER · O/U 8.5** · TOTAL_OVER
-  Prob 58.3% · Odds -110 · Edge +11.4% · Kelly 0.125
-- **ATL @ SDP · UNDER · O/U 8.5** · TOTAL_UNDER
-  Prob 58.3% · Odds -110 · Edge +11.3% · Kelly 0.125
+  Prob 57.9% · Odds -108 · Edge +11.4% · Kelly 0.124
+- **CHC @ NYM · OVER · O/U 8.5** · TOTAL_OVER
+  Prob 58.3% · Odds -110 · Edge +11.2% · Kelly 0.124
+- **ATL @ SDP · AWAY (AWAY)** · TEAM_ML
+  Prob 58.8% · Odds -112 · Edge +11.2% · Kelly 0.126
 
 ## 🎲 Parlay
 
 - **Salvador Perez + CHC @ NYM** · 2-leg
-  Prob 54.8% · Odds +233 · Edge +82.3% · Kelly 0.050
+  Prob 59.7% · Odds +224 · Edge +93.8% · Kelly 0.050
 
 ---
-_Generated 2026-06-23T16:47:54 UTC by EdgeStat._
+_Generated 2026-06-23T23:10:08 UTC by EdgeStat._
 _Stakes assume ¼-Kelly fractional sizing on a flat bankroll._
