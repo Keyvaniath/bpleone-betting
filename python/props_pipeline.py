@@ -70,6 +70,18 @@ def _api_key() -> Optional[str]:
     return os.environ.get("ODDS_API_KEY")
 
 
+# Request-budget guard: skip paid prop fetches when the monthly quota is low (falls back
+# to the free/no-prop path). Defensive import so the module still loads standalone.
+try:
+    from odds_budget import should_fetch as _budget_ok, record_spend as _budget_spend
+except Exception:
+    def _budget_ok(cost=1):
+        return True
+
+    def _budget_spend(cost=1):
+        pass
+
+
 def fetch_events() -> List[Dict[str, Any]]:
     """List today's MLB events. Free, no credit cost."""
     key = _api_key()
@@ -86,6 +98,9 @@ def fetch_event_props(event_id: str, markets: List[str]) -> Dict[str, Any]:
     key = _api_key()
     if not key or requests is None:
         return {}
+    cost = len(markets) or 1
+    if not _budget_ok(cost):          # quota low -> skip (no props this run, free path)
+        return {}
     r = requests.get(
         f"{ODDS_BASE}/sports/baseball_mlb/events/{event_id}/odds",
         params={
@@ -99,6 +114,7 @@ def fetch_event_props(event_id: str, markets: List[str]) -> Dict[str, Any]:
     )
     if not r.ok:
         return {}
+    _budget_spend(cost)
     return r.json()
 
 

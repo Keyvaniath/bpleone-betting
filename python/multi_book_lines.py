@@ -48,6 +48,16 @@ ESPN_MLB_URL = "https://site.api.espn.com/apis/site/v2/sports/baseball/mlb/score
 # The Odds API (needs key) -- 8+ books aggregated
 ODDS_API_URL = "https://api.the-odds-api.com/v4/sports/baseball_mlb/odds"
 
+# Request-budget guard (skip paid fetches when quota is low -> free ESPN fallback).
+try:
+    from odds_budget import should_fetch as _budget_ok, record_spend as _budget_spend
+except Exception:
+    def _budget_ok(cost=1):
+        return True
+
+    def _budget_spend(cost=1):
+        pass
+
 
 def _load(p):
     if not os.path.exists(p): return {}
@@ -157,10 +167,11 @@ def _fetch_draftkings_mlb() -> Dict[str, Dict[str, Any]]:
 def _fetch_odds_api_mlb() -> Dict[str, Dict[str, Any]]:
     """Fetch from The Odds API if key set. Returns dict by matchup key."""
     key = os.environ.get("ODDS_API_KEY")
-    if not key: return {}
+    if not key or not _budget_ok(3): return {}
     url = f"{ODDS_API_URL}?apiKey={key}&regions=us&markets=h2h,spreads,totals&oddsFormat=american"
     data = _http(url, timeout=12)
     if not data or not isinstance(data, list): return {}
+    _budget_spend(3)
     out = {}
     for g in data:
         away = (g.get("away_team") or "").upper()

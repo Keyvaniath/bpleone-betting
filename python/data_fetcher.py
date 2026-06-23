@@ -91,6 +91,16 @@ def fetch_team_stats(team_id: int, season: int) -> Dict[str, Any]:
 ODDS_API_KEY = os.environ.get("ODDS_API_KEY", "")
 ODDS_BASE = "https://api.the-odds-api.com/v4"
 
+# Request-budget guard (skip paid fetches when the monthly quota is low).
+try:
+    from odds_budget import should_fetch as _budget_ok, record_spend as _budget_spend
+except Exception:
+    def _budget_ok(cost=1):
+        return True
+
+    def _budget_spend(cost=1):
+        pass
+
 
 def fetch_mlb_odds(markets: str = "h2h,spreads,totals",
                    regions: str = "us",
@@ -100,6 +110,8 @@ def fetch_mlb_odds(markets: str = "h2h,spreads,totals",
         raise RuntimeError("requests not installed: pip install requests")
     if not ODDS_API_KEY:
         raise RuntimeError("Set ODDS_API_KEY environment variable. Get one at the-odds-api.com.")
+    if not _budget_ok(3):           # quota low -> skip (caller falls back to free ESPN lines)
+        return []
     params = {
         "apiKey": ODDS_API_KEY,
         "regions": regions,
@@ -110,6 +122,7 @@ def fetch_mlb_odds(markets: str = "h2h,spreads,totals",
         params["bookmakers"] = bookmakers
     r = requests.get(f"{ODDS_BASE}/sports/baseball_mlb/odds/", params=params, timeout=15)
     r.raise_for_status()
+    _budget_spend(3)
     return r.json()
 
 
