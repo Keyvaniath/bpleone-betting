@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-06-23T00:20:19",
+  "generated_at": "2026-06-23T04:33:18",
   "shrinkage_prior_n": 30,
   "n_sources_with_data": 13,
-  "n_families_with_data": 34,
-  "n_canonical_with_data": 36,
+  "n_families_with_data": 35,
+  "n_canonical_with_data": 37,
   "weights": {
     "today": {
       "prior": 0.8,
@@ -396,10 +396,10 @@
       "w_observed": 0.847,
       "pull_toward_observed": 0.552,
       "w_target_uncapped": 0.781,
-      "w_learned": 0.775,
-      "w_final": 0.775,
+      "w_learned": 0.78,
+      "w_final": 0.78,
       "user_override": null,
-      "delta_from_prior": 0.075,
+      "delta_from_prior": 0.08,
       "guard_grade": "B",
       "guard_used_wilson_lo": false,
       "guard_max_delta": 0.0054,
@@ -728,8 +728,8 @@
   },
   "weights_by_family": {
     "to_hit_hr_yes": {
-      "n_settled": 548,
-      "hit_rate": 0.1569,
+      "n_settled": 545,
+      "hit_rate": 0.1578,
       "w_learned": 0.313
     },
     "1_plus_xbh": {
@@ -763,9 +763,9 @@
       "w_learned": 0.503
     },
     "over": {
-      "n_settled": 87,
-      "hit_rate": 0.5517,
-      "w_learned": 0.472
+      "n_settled": 88,
+      "hit_rate": 0.5568,
+      "w_learned": 0.48
     },
     "top": {
       "n_settled": 419,
@@ -838,14 +838,14 @@
       "w_learned": 0.698
     },
     "3pm_under": {
-      "n_settled": 28,
-      "hit_rate": 0.75,
-      "w_learned": 0.614
+      "n_settled": 29,
+      "hit_rate": 0.7586,
+      "w_learned": 0.628
     },
     "blk_stl_under": {
-      "n_settled": 25,
-      "hit_rate": 0.68,
-      "w_learned": 0.536
+      "n_settled": 26,
+      "hit_rate": 0.6923,
+      "w_learned": 0.55
     },
     "home_total_over": {
       "n_settled": 50,
@@ -896,12 +896,17 @@
       "n_settled": 55,
       "hit_rate": 0.3818,
       "w_learned": 0.388
+    },
+    "home_ml": {
+      "n_settled": 15,
+      "hit_rate": 0.7333,
+      "w_learned": 0.537
     }
   },
   "weights_by_canonical": {
     "mlb_hr_0.5_over": {
-      "n_settled": 548,
-      "hit_rate": 0.1569,
+      "n_settled": 545,
+      "hit_rate": 0.1578,
       "w_learned": 0.313
     },
     "mlb_xbh_0.5_over": {
@@ -935,9 +940,9 @@
       "w_learned": 0.503
     },
     "over": {
-      "n_settled": 87,
-      "hit_rate": 0.5517,
-      "w_learned": 0.472
+      "n_settled": 88,
+      "hit_rate": 0.5568,
+      "w_learned": 0.48
     },
     "top": {
       "n_settled": 419,
@@ -1015,14 +1020,14 @@
       "w_learned": 0.69
     },
     "3pm_under": {
-      "n_settled": 28,
-      "hit_rate": 0.75,
-      "w_learned": 0.614
+      "n_settled": 29,
+      "hit_rate": 0.7586,
+      "w_learned": 0.628
     },
     "blk_stl_under": {
-      "n_settled": 25,
-      "hit_rate": 0.68,
-      "w_learned": 0.536
+      "n_settled": 26,
+      "hit_rate": 0.6923,
+      "w_learned": 0.55
     },
     "home_total_over": {
       "n_settled": 50,
@@ -1078,6 +1083,11 @@
       "n_settled": 55,
       "hit_rate": 0.3818,
       "w_learned": 0.388
+    },
+    "home_ml": {
+      "n_settled": 15,
+      "hit_rate": 0.7333,
+      "w_learned": 0.537
     }
   },
   "note": "Per-source AND per-market-family shrinkage weights learned from all_picks_ledger settled outcomes. Sources/families that hit > 55% earn higher weight; < 45% get pushed toward baseline. Shrunk by sample size (30+ settled to fully trust). todays_top_plays.py applies the source weight if the source matches, else the market-family weight, else the prior."
