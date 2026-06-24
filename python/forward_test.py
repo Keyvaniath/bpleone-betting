@@ -20,7 +20,8 @@ from prob_calibration import canon_market_family, market_family, CURATE_MIN_N, C
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 LEDGER = os.path.join(DATA_DIR, "all_picks_ledger.json")
 OUT = os.path.join(DATA_DIR, "forward_test.json")
-MIN_MEANINGFUL = 50   # below this many settled picks, label the result "building"
+MIN_MEANINGFUL = 150  # below this many settled picks, stay "building" -- an ROI on <150 is noise
+STABLE_N = 400        # below this, flag the shown number as a still-small, regressing sample
 
 
 def _load_picks():
@@ -96,15 +97,18 @@ def build():
     raw = _score(post, [])
     cur = _score(post, frozen)
     building = cur["n"] < MIN_MEANINGFUL
+    small_sample = cur["n"] < STABLE_N
 
     if building:
         note = (f"Cut-set frozen on {anchor} ({len(frozen)} families) and never refit. "
                 f"Scoring only picks settled on/after that date -- building: "
                 f"{cur['n']}/{MIN_MEANINGFUL} settled so far.")
     else:
+        tail = (" Still a small sample -- early prospective ROI is noisy; expect regression "
+                "toward the held-out edge as it grows." if small_sample else "")
         note = (f"Cut-set frozen on {anchor} ({len(frozen)} families) and never refit. "
                 f"{cur['n']} picks settled since: curated {cur['roi']:+.1f}% "
-                f"vs raw {raw['roi']:+.1f}% -- zero hindsight.")
+                f"vs raw {raw['roi']:+.1f}% -- zero hindsight." + tail)
 
     return {
         "updated_at": datetime.datetime.now().isoformat(timespec="seconds"),
@@ -117,6 +121,7 @@ def build():
         "raw_roi": raw["roi"], "raw_n": raw["n"],
         "curated_roi": cur["roi"], "curated_hit": cur["hit"], "curated_net": cur["net"],
         "building": building,
+        "small_sample": small_sample,
         "min_meaningful": MIN_MEANINGFUL,
         "note": note,
     }

@@ -141,9 +141,10 @@
         `<span style="color:#e0a13a;">Building</span> — <b>${d.n_settled_since}</b> of ${d.min_meaningful} picks settled since we froze the rule on <b>${d.anchor}</b>. ` +
         `Check back as it fills; a clean prospective sample is worth more than any backtest.`;
     } else {
+      var cav = d.small_sample ? ` <span style="color:#e0a13a;">Small sample (n=${d.n_settled_since}) — early prospective ROI is noisy; expect regression toward the held-out edge.</span>` : "";
       document.getElementById("fwdBody").innerHTML =
         `Since <b>${d.anchor}</b>, on <b>${d.n_settled_since}</b> picks settled against the frozen rule: ` +
-        `curated <b style="color:#58c878;">${sgn(d.curated_roi)}</b> (hit ${d.curated_hit}%) vs raw firehose <b style="color:#e35a5a;">${sgn(d.raw_roi)}</b>. Zero hindsight.`;
+        `curated <b style="color:#58c878;">${sgn(d.curated_roi)}</b> (hit ${d.curated_hit}%) vs raw firehose <b style="color:#e35a5a;">${sgn(d.raw_roi)}</b>. Zero hindsight.` + cav;
     }
   }).catch(()=>{});
   </script>
