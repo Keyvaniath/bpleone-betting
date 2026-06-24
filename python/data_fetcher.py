@@ -133,6 +133,9 @@ def fetch_mlb_player_props(event_id: str,
         raise RuntimeError("requests not installed: pip install requests")
     if not ODDS_API_KEY:
         raise RuntimeError("Set ODDS_API_KEY environment variable.")
+    cost = markets.count(",") + 1
+    if not _budget_ok(cost):        # quota low -> skip (no props this run)
+        return {}
     params = {
         "apiKey": ODDS_API_KEY,
         "regions": "us",
@@ -142,6 +145,7 @@ def fetch_mlb_player_props(event_id: str,
     r = requests.get(f"{ODDS_BASE}/sports/baseball_mlb/events/{event_id}/odds",
                      params=params, timeout=15)
     r.raise_for_status()
+    _budget_spend(cost)
     return r.json()
 
 
