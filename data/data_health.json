@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-06-24T11:40:51",
+  "generated_at": "2026-06-24T16:29:02",
   "overall": "red",
-  "n_green": 9,
+  "n_green": 7,
   "n_yellow": 0,
-  "n_red": 1,
+  "n_red": 3,
   "checks": [
     {
       "feed": "freshness",
@@ -18,24 +18,24 @@
         "sport_coverage.json": 0.0,
         "todays_top_plays.json": 0.0,
         "alpha_pick_of_day.json": 0.0,
-        "alerts_feed.json": 1.8,
-        "calibration_map.json": 0.2,
+        "alerts_feed.json": 3.9,
+        "calibration_map.json": 0.1,
         "espn_odds.json": 0.0
       }
     },
     {
       "feed": "mlb",
-      "status": "green",
+      "status": "red",
       "findings": [
-        "16 total (16 pre / 0 live / 0 final), local pre=16, live=0"
+        "MLB has 1 live games but live_state.json shows 0 (age 11min)"
       ],
       "upstream_count": 16,
-      "upstream_pregame": 16,
-      "upstream_live": 0,
+      "upstream_pregame": 15,
+      "upstream_live": 1,
       "upstream_final": 0,
-      "local_count": 16,
+      "local_count": 15,
       "local_live": 0,
-      "live_state_age_min": 13
+      "live_state_age_min": 11
     },
     {
       "feed": "nba",
@@ -46,18 +46,18 @@
       "upstream_count": 1,
       "local_count": 1,
       "upstream_live": 0,
-      "local_age_min": 9
+      "local_age_min": 8
     },
     {
       "feed": "wnba",
-      "status": "green",
+      "status": "red",
       "findings": [
-        "1 events matched (0 live)"
+        "WNBA count mismatch: local=1 vs ESPN=4"
       ],
-      "upstream_count": 1,
+      "upstream_count": 4,
       "local_count": 1,
       "upstream_live": 0,
-      "local_age_min": 13
+      "local_age_min": 11
     },
     {
       "feed": "nhl",
@@ -68,7 +68,7 @@
       "upstream_count": 2,
       "local_count": 2,
       "upstream_live": 0,
-      "local_age_min": 9
+      "local_age_min": 8
     },
     {
       "feed": "mls",
@@ -79,7 +79,7 @@
       "upstream_count": 4,
       "local_count": 4,
       "upstream_live": 0,
-      "local_age_min": 13
+      "local_age_min": 11
     },
     {
       "feed": "epl",
@@ -90,17 +90,18 @@
       "upstream_count": 1,
       "local_count": 1,
       "upstream_live": 0,
-      "local_age_min": 13
+      "local_age_min": 11
     },
     {
       "feed": "pitcher_matchup",
       "status": "green",
       "findings": [
-        "30/30 pre-game probables matched"
+        "29/30 pre-game probables matched",
+        "missing: ['Shota Imanaga']"
       ],
       "upstream_count": 30,
-      "local_count": 32,
-      "matched": 30
+      "local_count": 30,
+      "matched": 29
     },
     {
       "feed": "props",
@@ -120,7 +121,7 @@
       ],
       "upstream_players": 72,
       "local_players": 72,
-      "local_age_min": 13
+      "local_age_min": 11
     }
   ]
 }

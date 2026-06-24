@@ -1,60 +1,66 @@
 # Tonight's Slate Brief — 2026-06-24
 
-## Slate Quality: 54/100 (LOW)
-_0% lineups confirmed · 11 rookie SPs_
-**Recommendation:** Defensive sizing tonight; stick to highest-confidence plays.
+## Slate Quality: 60/100 (MEDIUM)
+_20% lineups confirmed · 11 rookie SPs_
+**Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
-- **16 games** scheduled
-- **23 best bets** scored: 0 DK · 0 PP · 8 NRFI · 1 SGP
-- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$60.09
-- **MC simulation:** EV +$136.37, 88% P(profit), p05 $-56.6 / p95 $325.2
+- **15 games** scheduled
+- **31 best bets** scored: 0 DK · 0 PP · 11 NRFI · 6 SGP
+- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$41.24
+- **MC simulation:** EV +$119.9, 81% P(profit), p05 $-113.49 / p95 $345.97
 
 ## Top 5 Best Bets
-1. **LAD @ MIN 4-leg SGP @ -262**  (100/100 *****, edge +495.2%)
-   - Joint prob 0.724 (correlation boost +0.572)
-   - Leg: Shohei Ohtani UNDER 1.5 batter hits
-2. **CHC @ NYM YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +38.2%)
-   - P(YRFI) 84.2% vs baseline 46.0%
-3. **BOS @ COL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +37.5%)
-   - P(YRFI) 83.5% vs baseline 46.0%
-4. **MIL @ CIN YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +33.6%)
-   - P(YRFI) 79.6% vs baseline 46.0%
-5. **OAK @ SFG YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +27.3%)
-   - P(YRFI) 73.3% vs baseline 46.0%
+1. **LAD @ MIN 4-leg SGP @ -129**  (100/100 *****, edge +142.2%)
+   - Joint prob 0.564 (correlation boost +0.273)
+   - Leg: Shohei Ohtani UNDER 0.5 batter doubles
+2. **HOU @ TOR YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +31.1%)
+   - P(YRFI) 77.1% vs baseline 46.0%
+3. **BAL @ LAA YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +24.9%)
+   - P(YRFI) 70.9% vs baseline 46.0%
+4. **BOS @ COL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +21.7%)
+   - P(YRFI) 67.7% vs baseline 46.0%
+5. **PHI @ WSN YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +21.1%)
+   - P(YRFI) 67.1% vs baseline 46.0%
 
-## ⚠️ Trap Warnings — 11 flagged
-- **LAD @ MIN 4-leg SGP @ -262** (low):
-   - Edge +495.2% looks big but only 0 settled props on this player — model unproven
-- **CHC @ NYM YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +38.2% looks big but only 0 settled props on this player — model unproven
-- **BOS @ COL YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +37.5% looks big but only 0 settled props on this player — model unproven
-- **MIL @ CIN YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +33.6% looks big but only 0 settled props on this player — model unproven
-- **OAK @ SFG YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +27.3% looks big but only 0 settled props on this player — model unproven
+## ⚠️ Trap Warnings — 19 flagged
+- **LAD @ MIN 4-leg SGP @ -129** (low):
+   - Edge +142.2% looks big but only 0 settled props on this player — model unproven
+- **CLE @ CHW 4-leg SGP @ -175** (low):
+   - Edge +58.0% looks big but only 0 settled props on this player — model unproven
+- **HOU @ TOR YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +31.1% looks big but only 0 settled props on this player — model unproven
+- **BOS @ COL 2-leg SGP @ -258** (low):
+   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
+- **NYY @ DET 2-leg SGP @ -256** (low):
+   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
 
 ## Weather leans
-- **UNDER lean** (wind in + cold): OAK @ SFG
+- **OVER lean** (wind out + warm): BOS @ COL
 
 ## Hot streaks
-**Batters heating up:** Jac Caglianone (heat +7.86), Kyle Schwarber (heat +6.35), Daulton Varsho (heat +5.99)
-**Pitchers on a run:** Jesús Luzardo (heat +14.18), Parker Messick (heat +11.20), Sean Burke (heat +8.56)
+**Batters heating up:** Jac Caglianone (heat +7.86), Kyle Schwarber (heat +6.35), Josh Rojas (heat +6.00)
+**Pitchers on a run:** Trey Gibson (heat +7.76), Bryan Woo (heat +4.64), Kyle Freeland (heat +4.50)
 
 ## Top correlation-aware SGPs
-- **LAD @ MIN** 4-leg @ -262 fair (joint 0.72, EV +495.24%)
+- **LAD @ MIN** 4-leg @ -129 fair (joint 0.56, EV +142.16%)
+   - Shohei Ohtani UNDER 0.5 batter doubles
    - Shohei Ohtani UNDER 1.5 batter hits
-   - Shohei Ohtani OVER 0.5 batter hits
-   - Shohei Ohtani OVER 1.5 batter total bases
+   - Shohei Ohtani UNDER 2.5 batter total bases
+- **CLE @ CHW** 4-leg @ -175 fair (joint 0.64, EV +57.97%)
+   - Daniel Schneemann UNDER 2.5 batter total bases
+   - Daniel Schneemann UNDER 0.5 batter doubles
+   - Brayan Rocchio UNDER 0.5 batter doubles
+- **BOS @ COL** 2-leg @ -258 fair (joint 0.72, EV +25.0%)
+   - Hunter Goodman UNDER 0.5 batter doubles
+   - Wilyer Abreu UNDER 1.5 batter singles
 
 ## Bullpens GASSED tonight
-Pittsburgh Pirates, San Diego Padres, St. Louis Cardinals, Tampa Bay Rays, Texas Rangers, Minnesota Twins, Philadelphia Phillies, Miami Marlins
+San Diego Padres, Tampa Bay Rays, Texas Rangers, Toronto Blue Jays, Minnesota Twins, Philadelphia Phillies, Milwaukee Brewers, Los Angeles Angels
 _Lean late-inning OVER on these games; fade their save situations._
 
 ## NRFI/YRFI strong leans
-- **YRFI** (1st-inning OVER): CHC @ NYM, BOS @ COL, MIL @ CIN, OAK @ SFG, CLE @ CHW
-- **NRFI** (1st-inning UNDER): LAD @ MIN
+- **YRFI** (1st-inning OVER): HOU @ TOR, BAL @ LAA, BOS @ COL, PHI @ WSN, SEA @ PIT
 
 ## Golf -- Travelers Championship
 - **Leader:** Ryan Fox (E) at #1
@@ -93,4 +99,4 @@ _Lean late-inning OVER on these games; fade their save situations._
 ## Self-learning calibration (esports + KBO)
 - **LOL:** 21 settled | brier 0.2649 | ECE 0.1541
    - Model over-confident; subtract 15.4pp at next inference
-- **KBO:** 9 settled | brier 0.3126 | ECE 0.3739
+- **KBO:** 10 settled | brier 0.2971 | ECE 0.2969
