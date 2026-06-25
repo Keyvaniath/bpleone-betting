@@ -1,49 +1,57 @@
-# EdgeStat Daily Brief - 2026-06-24
+# EdgeStat Daily Brief - 2026-06-25
 
 **Model Confidence: 27.4/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
 
-_Pipeline health: **DEGRADED** (14/15 artifacts ok; 1 empty, 0 stale)._ 
+_Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
 
-_Generated at 2026-06-24T23:09:35 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-06-25T11:30:48 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
-**ATL @ SDP - ATL_ML**
-- Market: -121
-- Model probability: 75.9%
-- Raw edge: +38.7%
+**CHC @ NYM - CHC_ML**
+- Market: -110
+- Model probability: 80.6%
+- Raw edge: +53.82%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
 
-## Full Slate (6 games)
+## Full Slate (9 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 7:10p ET | CHC @ NYM | Citi Field | 70F 4mph | CHC_ML +15.87% |
-| 7:10p ET | MIL @ CIN | Great American Ball Park | 70F 3mph | MIL_ML +33.77% |
-| 7:40p ET | LAD @ MIN | Target Field | 64F 5mph | LAD_ML +18.02% |
-| 7:45p ET | ARI @ STL | Busch Stadium | 74F 5mph | OVER_9.0 +7.89% |
-| 8:40p ET | ATL @ SDP | Petco Park | 66F 6mph | ATL_ML +38.7% |
-| 9:45p ET | OAK @ SFG | Oracle Park | 56F 11mph | OAK_ML +33.7% |
+| 12:10p ET | KCR @ TBR | Tropicana Field | indoor | UNDER_8.5 +23.52% |
+| 12:35p ET | SEA @ PIT | PNC Park | 84F 11mph | PIT_ML +9.38% |
+| 3:45p ET | OAK @ SFG | Oracle Park | 63F 19mph | OVER_9.0 +29.84% |
+| 6:40p ET | HOU @ DET | Comerica Park | 68F 2mph | OVER_9.0 +14.27% |
+| 6:45p ET | PHI @ WSN | Nationals Park | 77F 11mph | WSN_ML +31.51% |
+| 7:07p ET | TEX @ TOR | Rogers Centre | indoor | TEX_ML +12.99% |
+| 7:10p ET | CHC @ NYM | Citi Field | 70F 9mph | CHC_ML +53.82% |
+| 7:10p ET | NYY @ BOS | Fenway Park | 70F 3mph | NYY_ML +39.81% |
+| 7:45p ET | ARI @ STL | Busch Stadium | 72F 2mph | STL_ML +9.98% |
 
 ## Parlays - top 5
 
-- **2-leg @ +278 (prob 39.3%, EV +48.42%)**
-  - CHC @ NYM CHC_ML (-102, model 60.6%)
-  - BOS @ COL OVER_11.0 (-110, model 64.8%)
-- **2-leg @ +264 (prob 40.6%, EV +47.89%)**
-  - BOS @ COL OVER_11.0 (-110, model 64.8%)
-  - SEA @ PIT UNDER_8.0 (-110, model 62.6%)
-- **2-leg @ +278 (prob 38.0%, EV +43.47%)**
-  - CHC @ NYM CHC_ML (-102, model 60.6%)
-  - SEA @ PIT UNDER_8.0 (-110, model 62.6%)
-- **2-leg @ +301 (prob 35.8%, EV +43.36%)**
-  - BOS @ COL OVER_11.0 (-110, model 64.8%)
-  - PHI @ WSN WSN_ML (+110, model 55.2%)
-- **2-leg @ +305 (prob 35.0%, EV +41.71%)**
-  - BOS @ COL OVER_11.0 (-110, model 64.8%)
-  - NYY @ DET NYY_ML (+112, model 54.0%)
+- **3-leg @ +727 (prob 18.1%, EV +49.57%)**
+  - KCR @ TBR UNDER_8.5 (-110, model 64.7%)
+  - SEA @ PIT OVER_8.5 (-110, model 56.1%)
+  - TEX @ TOR TEX_ML (+127, model 49.8%)
+- **3-leg @ +705 (prob 18.6%, EV +49.43%)**
+  - KCR @ TBR UNDER_8.5 (-110, model 64.7%)
+  - SEA @ PIT PIT_ML (+121, model 49.5%)
+  - CHC @ NYM UNDER_8.5 (-110, model 57.9%)
+- **3-leg @ +727 (prob 18.0%, EV +48.74%)**
+  - KCR @ TBR UNDER_8.5 (-110, model 64.7%)
+  - TEX @ TOR TEX_ML (+127, model 49.8%)
+  - ARI @ STL OVER_9.0 (-110, model 55.8%)
+- **3-leg @ +628 (prob 20.4%, EV +48.58%)**
+  - KCR @ TBR UNDER_8.5 (-110, model 64.7%)
+  - SEA @ PIT PIT_ML (+121, model 49.5%)
+  - ARI @ STL STL_ML (-138, model 63.8%)
+- **3-leg @ +615 (prob 20.6%, EV +47.56%)**
+  - KCR @ TBR UNDER_8.5 (-110, model 64.7%)
+  - HOU @ DET HOU_ML (-104, model 55.1%)
+  - CHC @ NYM UNDER_8.5 (-110, model 57.9%)
 
 ## Self-Learning Loop
 
@@ -58,29 +66,36 @@ Cumulative graded plays: 118214. Wins: 87366. Hit rate: 73.9%.
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| ARI @ STL | 37.4% | +167 | 5.08 | +134 | -134 |
-| ATL @ SDP | 49.8% | +101 | 3.37 | +618 | -618 |
-| CHC @ NYM | 42.8% | +134 | 4.34 | +292 | -292 |
-| HOU @ TOR | 22.9% | +336 | 7.36 | -- | -- |
-| LAD @ MIN | 56.5% | -130 | 2.86 | +479 | -479 |
-| MIL @ CIN | 37.0% | +171 | 5.05 | +551 | -551 |
-| OAK @ SFG | 39.9% | +151 | 4.92 | +444 | -444 |
+| ARI @ STL | 26.0% | +284 | 6.76 | -105 | +105 |
+| CHC @ NYM | 33.7% | +196 | 5.68 | +789 | -789 |
+| HOU @ DET | 43.6% | +129 | 4.2 | +204 | -204 |
+| KCR @ TBR | 25.4% | +293 | 6.85 | +123 | -123 |
+| NYY @ BOS | 49.0% | +104 | 3.57 | +1198 | -1198 |
+| OAK @ SFG | 25.4% | +294 | 7.69 | -165 | +165 |
+| PHI @ WSN | 43.0% | +132 | 4.36 | +157 | -157 |
+| SEA @ PIT | 57.0% | -133 | 3.02 | +174 | -174 |
+| TEX @ TOR | 39.8% | +151 | 4.6 | +176 | -176 |
+
+## Travel / Rest Flags
+
+- **NYY @ BOS** (home): travel + back-to-back (+2h tz shift)
 
 ## Team Form (last 10)
 
-**Hot:** CHC 7-3 (W1, +26), PHI 6-4 (W1, +18), KC 6-4 (W2, +16), MIL 6-4 (W3, +13), MIN 6-4 (L2, +12)
+**Hot:** CHC 7-3 (W3, +28), PHI 6-4 (W2, +18), MIL 7-3 (W4, +15), KC 6-4 (L1, +15), MIN 6-4 (L3, +14)
 
-**Cold:** ATL 3-7 (L3, -22), TEX 4-6 (L1, -19), CWS 4-6 (W2, -18), ATH 4-6 (L3, -17), NYM 4-6 (L3, -16)
+**Cold:** NYM 3-7 (L5, -28), ATL 2-8 (L4, -27), SEA 4-6 (L1, -26), ATH 3-7 (L4, -20), TEX 4-6 (L2, -18)
 
 ## Gassed Bullpens (> 8.0 IP in 2 days)
 
-- SD: 10.3 IP across 2 games
-- TEX: 12.6 IP across 2 games
+- SD: 11.4 IP across 2 games
 - TOR: 9.5 IP across 2 games
-- MIN: 9.3 IP across 2 games
-- PHI: 9.1 IP across 2 games
-- HOU: 10.4 IP across 2 games
-- LAD: 10.0 IP across 2 games
+- MIN: 10.0 IP across 2 games
+- CWS: 10.4 IP across 2 games
+- LAA: 8.6 IP across 2 games
+- CHC: 11.2 IP across 3 games
+- HOU: 9.1 IP across 2 games
+- WSH: 11.1 IP across 2 games
 
 ## Loop Activity (since last refresh)
 
@@ -96,4 +111,4 @@ _The model is suggesting 1 parameter tweak based on its own performance. Apply v
 ---
 
 _EdgeStat is a research desk. Bet responsibly. 21+. 1-800-GAMBLER._
-_Source: github.com/Keyvaniath/bpleone-betting - last settled 2026-06-23._
+_Source: github.com/Keyvaniath/bpleone-betting - last settled 2026-06-24._
