@@ -4,28 +4,28 @@ _6 picks consolidated from POD + Alpha + Book Edges + Parlay-of-Day._
 
 ## ⭐ Play of the Day
 
-- **George Springer** · PP_batter_hrr_under_3.5
-  Prob 87.5% · Odds -136 · Edge +51.8% · Kelly 0.250
+- **Isaac Collins** · PP_batter_hrr_under_3.5
+  Prob 87.4% · Odds -136 · Edge +51.7% · Kelly 0.250
 
 ## 🎯 Alpha Pick
 
-- **NYY @ BOS** · NYY_ML
-  Prob 76.4% · Odds -161 · Edge +23.9% · Kelly 0.250
+- **CHC @ NYM** · CHC_ML
+  Prob 63.4% · Odds -108 · Edge +22.1% · Kelly 0.239
 
 ## 📊 Book Edges
 
 - **PHI @ WSN · HOME (HOME)** · TEAM_ML
-  Prob 46.4% · Odds +150 · Edge +16.1% · Kelly 0.107
-- **NYY @ BOS · OVER · O/U 7.5** · TOTAL_OVER
-  Prob 58.3% · Odds -110 · Edge +11.3% · Kelly 0.125
-- **OAK @ SFG · OVER · O/U 9.0** · TOTAL_OVER
-  Prob 58.3% · Odds -110 · Edge +11.2% · Kelly 0.124
+  Prob 47.9% · Odds +139 · Edge +14.4% · Kelly 0.103
+- **NYY @ BOS · OVER · O/U 8.0** · TOTAL_OVER
+  Prob 58.2% · Odds -110 · Edge +11.1% · Kelly 0.122
+- **HOU @ DET · OVER · O/U 9.0** · TOTAL_OVER
+  Prob 58.0% · Odds -110 · Edge +10.8% · Kelly 0.119
 
 ## 🎲 Parlay
 
-- **George Springer + CHC @ NYM** · 2-leg
-  Prob 55.7% · Odds +231 · Edge +84.4% · Kelly 0.050
+- **Isaac Collins + CHC @ NYM** · 2-leg
+  Prob 55.4% · Odds +234 · Edge +85.2% · Kelly 0.050
 
 ---
-_Generated 2026-06-25T11:30:45 UTC by EdgeStat._
+_Generated 2026-06-25T16:30:48 UTC by EdgeStat._
 _Stakes assume ¼-Kelly fractional sizing on a flat bankroll._
