@@ -1,23 +1,23 @@
 {
-  "generated_at": "2026-06-25T20:21:50",
+  "generated_at": "2026-06-25T20:24:36",
   "stake_assumption": "1u flat per pick",
   "total_picks": 10000,
-  "n_settled": 6360,
-  "n_pending": 619,
+  "n_settled": 6359,
+  "n_pending": 620,
   "n_void": 3021,
   "wins": 2938,
-  "losses": 3416,
+  "losses": 3415,
   "pushes": 6,
-  "hit_rate": 0.4624,
-  "net_units": -750.747,
-  "roi_pct": -11.82,
+  "hit_rate": 0.4625,
+  "net_units": -749.747,
+  "roi_pct": -11.8,
   "n_calibrated_picks": 9442,
   "calibrated_reliability": {
-    "n": 6293,
-    "ece_raw": 0.0997,
+    "n": 6292,
+    "ece_raw": 0.0996,
     "ece_calibrated": 0.0257,
-    "brier_raw": 0.22439,
-    "brier_calibrated": 0.20035,
+    "brier_raw": 0.22435,
+    "brier_calibrated": 0.20036,
     "note": "In-sample over the settled ledger (the isotonic transform is fit on these same outcomes); held-out 70/30 validation is in recalibration_map.json. p_predicted = raw model prob (kept untouched for the learning loop); p_calibrated = honest prob stamped per pick. Lower ECE/Brier on the calibrated column = the displayed % is truer."
   },
   "curated": {
@@ -42,7 +42,7 @@
     ],
     "definition": "Featured/recommended plays only -- Lock of the Day, Top 25, Whale, Sharp, Consensus (hit), Under Alerts, POD. Excludes the experimental prop feeds, which are tracked to train the model, not bet."
   },
-  "n_added_this_run": 0,
+  "n_added_this_run": 1,
   "n_newly_settled_this_run": 0,
   "n_resettled_this_run": 0,
   "n_voided_this_run": 0,
@@ -50,13 +50,13 @@
   "n_bootstrapped_from_locks_history": 0,
   "by_source": {
     "mlb_total_bases_2plus": {
-      "n": 147,
+      "n": 146,
       "wins": 36,
-      "losses": 111,
+      "losses": 110,
       "pushes": 0,
-      "net_units": -94.718,
-      "hit_rate": 0.2449,
-      "roi_pct": -64.43
+      "net_units": -93.718,
+      "hit_rate": 0.2466,
+      "roi_pct": -64.19
     },
     "pod": {
       "n": 15,
@@ -1258,12 +1258,12 @@
   },
   "by_market_family": {
     "2_plus_total_bases": {
-      "n": 147,
+      "n": 146,
       "wins": 36,
-      "losses": 111,
+      "losses": 110,
       "pushes": 0,
-      "net_units": -94.718,
-      "hit_rate": 0.2449
+      "net_units": -93.718,
+      "hit_rate": 0.2466
     },
     "over": {
       "n": 97,
@@ -1724,12 +1724,12 @@
   },
   "by_canonical": {
     "mlb_tb_1.5_over": {
-      "n": 147,
+      "n": 146,
       "wins": 36,
-      "losses": 111,
+      "losses": 110,
       "pushes": 0,
-      "net_units": -94.718,
-      "hit_rate": 0.2449
+      "net_units": -93.718,
+      "hit_rate": 0.2466
     },
     "over": {
       "n": 97,
@@ -2207,15 +2207,15 @@
   "by_sport": {
     "MLB": {
       "n": 7357,
-      "settled": 4816,
+      "settled": 4815,
       "wins": 1922,
-      "losses": 2888,
+      "losses": 2887,
       "pushes": 6,
-      "pending": 380,
+      "pending": 381,
       "void": 2161,
-      "net_units": -1119.135,
-      "hit_rate": 0.3996,
-      "roi_pct": -23.27,
+      "net_units": -1118.135,
+      "hit_rate": 0.3997,
+      "roi_pct": -23.25,
       "markets": 48
     },
     "MLB-PP": {
@@ -2395,32 +2395,6 @@
     "hit_rate": 0.3813
   },
   "picks": [
-    {
-      "source": "mlb_total_bases_2plus",
-      "sport": "MLB",
-      "player_or_matchup": "J.P. Crawford",
-      "market": "2_plus_total_bases",
-      "prob": 0.651,
-      "fair_american": -187,
-      "p_predicted": 0.651,
-      "matchup": "ARI @ SEA",
-      "date": "2026-05-31",
-      "pick_id": "mlb_total_bases_2plus|MLB|J_P__Crawford|2_plus_total_bases|2026-05-31",
-      "settled": true,
-      "result": "lost",
-      "payout_units": -1.0,
-      "recorded_at": "2026-05-31T02:05:42",
-      "outcome": {
-        "stat": "tb",
-        "actual": 1,
-        "line": 2.0,
-        "side": "OVER/YES",
-        "verify": "J.P. Crawford \u2014 tb = 1 (line 2.0, bet OVER/YES) on 2026-05-31",
-        "check": "verified"
-      },
-      "settled_at": "2026-05-31T21:11:49",
-      "p_calibrated": 0.3512
-    },
     {
       "source": "mlb_total_bases_2plus",
       "sport": "MLB",
@@ -240923,6 +240897,23 @@
       "payout_units": null,
       "recorded_at": "2026-06-25T16:38:53",
       "p_calibrated": 0.2946
+    },
+    {
+      "source": "sharp_strong",
+      "sport": "MLB",
+      "player_or_matchup": "OAK @ SFG",
+      "market": "ml_home",
+      "prob": 0.6608,
+      "edge_pct": 18.9,
+      "tier": "STRONG",
+      "shift_pp": 7.61,
+      "date": "2026-06-25",
+      "pick_id": "sharp_strong|MLB|OAK___SFG|ml_home|2026-06-25",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-06-25T20:24:36",
+      "p_calibrated": 0.6608
     }
   ],
   "note": "Unified pick ledger -- records every pick the model surfaces (top_25 board, whales, consensus, unders, sharp action, locks, POD) and settles each against actual outcomes. Per-source W-L feeds back into calibration so the model learns which modules are reliable. THIS is the training signal."
