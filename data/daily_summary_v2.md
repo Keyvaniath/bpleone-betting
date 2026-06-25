@@ -1,18 +1,18 @@
 # EdgeStat Daily Summary — 2026-06-25
 
-## 🏥 Model Health: 68.8/100 [OK]
-- Operational but room to improve - check yellow components
+## 🏥 Model Health: 70.4/100 [HEALTHY]
+- Solid health - some minor issues to monitor
   - 🟢 Calibration Freshness: 100.0/100
   - 🔴 Hit Rate Trend: 54.4/100
   - 🔴 Brier Trend: 29.6/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 90.0/100
-  - 🔴 Edge Count: 40.0/100
+  - 🟢 Data Health: 85.0/100
+  - 🟡 Edge Count: 65.7/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.585)
-- **Total games on board:** 107
-- **Strong home favorites:** 2 | **Strong road dogs:** 0
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.58)
+- **Total games on board:** 110
+- **Strong home favorites:** 3 | **Strong road dogs:** 1
 
 ## 🎯 Top 5 Best Bets
 1. **OAK @ SFG YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
@@ -22,31 +22,35 @@
 5. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** OAK @ SFG ML_HOME -- 67% / +16.9% (score 2.8)
-- [STRONG] **[MLB]** NYY @ BOS NYY_ML -- 76% / +23.9% (score 2.5)
+- [STRONG] **[MLB]** OAK @ SFG ML_HOME -- 66% / +18.9% (score 2.8)
 
 ## 📡 Sharp Action (Line Movement)
-- [MODERATE] **OAK @ SFG** ml_home: 55.36% → 58.68% (+3.3pp)
+- [ELITE] **OAK @ SFG** ml_home: 55.36% → 92.31% (+37.0pp)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **235-44** (84.2% hit rate)
 - Net units: **+7.99u** | ROI: **+46.2%**
 - Last 7d: 44-6 (88.0%) | net +1.63u
 
-**Today's 5 Locks:**
+**Today's 10 Locks:**
 - [MLB-PP] **George Springer** PP_batter_hrr_under_3.5 · p=87% edge=+51.8% qK=0.062u
 - [MLB-PP] **Nick Fortes** PP_batter_hrr_under_3.5 · p=87% edge=+51.7% qK=0.062u
 - [MLB-PP] **Matt McLain** PP_batter_hrr_under_3.5 · p=87% edge=+51.7% qK=0.062u
 - [MLB-PP] **Lourdes Gurriel Jr.** PP_batter_hrr_under_3.5 · p=87% edge=+51.6% qK=0.062u
 - [MLB-PP] **Drew Gilbert** PP_batter_hrr_under_3.5 · p=87% edge=+51.5% qK=0.062u
+- [MLB-PP] **Isaac Collins** PP_batter_hrr_under_3.5 · p=87% edge=+51.7% qK=0.062u
+- [MLB-PP] **Adrian Del Castillo** PP_batter_hrr_under_3.5 · p=87% edge=+51.7% qK=0.062u
+- [MLB-PP] **Kameron Misner** PP_batter_hrr_under_3.5 · p=87% edge=+51.5% qK=0.062u
+- [MLB-PP] **Starling Marte** PP_batter_hrr_under_3.5 · p=87% edge=+51.4% qK=0.062u
+- [MLB-PP] **Salvador Perez** PP_batter_hrr_under_3.5 · p=87% edge=+51.4% qK=0.062u
 
 ## 🎰 Top Balanced 2-Leg Parlays (40-65% joint)
-- [MLB-PP] George Springer PP_batter_hrr_under_ + [MLB] CHC @ NYM CHC_ML
-  Joint: 56% | Fair: 231 | Edge: +84.4%
-- [MLB-PP] Nick Fortes PP_batter_hrr_under_ + [MLB] CHC @ NYM CHC_ML
-  Joint: 56% | Fair: 231 | Edge: +84.4%
-- [MLB-PP] Matt McLain PP_batter_hrr_under_ + [MLB] CHC @ NYM CHC_ML
-  Joint: 56% | Fair: 231 | Edge: +84.3%
+- [MLB-PP] Isaac Collins PP_batter_hrr_under_ + [MLB] CHC @ NYM CHC_ML
+  Joint: 55% | Fair: 234 | Edge: +85.2%
+- [MLB-PP] Adrian Del Castillo PP_batter_hrr_under_ + [MLB] CHC @ NYM CHC_ML
+  Joint: 55% | Fair: 234 | Edge: +85.2%
+- [MLB-PP] Kameron Misner PP_batter_hrr_under_ + [MLB] CHC @ NYM CHC_ML
+  Joint: 55% | Fair: 234 | Edge: +85.1%
 
 ## 🎮 Player Play of the Day (cross-sport)
 - **[LOL]** Inspired UNDER 3.5 Kills | MED conviction · model 61.7% fair -161
@@ -63,15 +67,15 @@
 - Hot teams: **0** | Cold teams: **1** | Over-heavy: 0 | Under-heavy: 9
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (43)
-- STEAM_MOVE: **40**
-- COMPOUND_BULLPEN: **2**
+## ⚠️ Anomaly Detector (46)
+- STEAM_MOVE: **42**
+- COMPOUND_BULLPEN: **3**
 - PEN_MISMATCH: **1**
   - WSH @ CON (WNBA): ML/TOTAL steam since open: ML +5.9pp toward CON; total -3 (UNDER) (4 snapshots)
   - DET @ HOU (MLB): ML steam since open: ML -10.8pp toward DET (4 snapshots)
   - LAA @ ARI (MLB): ML/TOTAL steam since open: ML +10.7pp toward ARI; total +0.5 (OVER) (6 snapshots)
   - CHI @ DAL (WNBA): ML/TOTAL steam since open: ML +3.3pp toward DAL; total +2 (OVER) (6 snapshots)
-  - BAL @ LAA (MLB): ML steam since open: ML +9.6pp toward LAA (4 snapshots)
+  - NY @ SEA (WNBA): ML/TOTAL steam since open: ML +8.9pp toward SEA; total -2 (UNDER) (2 snapshots)
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
@@ -115,23 +119,23 @@
   - [LEAN] **Daniil Donchenko** (14-2-0) vs Theodor Berggren -- fair -149
 
 ## ⛳ Golf Player Heat (from Travelers Championship)
-  - 🔥 T1 **Ryan Fox** (New Zealand): +0 total -- finished T1
-  - 🔥 T2 **Matt McCarty** (USA): +0 total -- finished T2
-  - 🔥 T3 **Tom Hoge** (USA): +0 total -- finished T3
-  - 🔥 T4 **Jackson Suber** (USA): +0 total -- finished T4
-  - 🔥 T5 **Nicolai Højgaard** (Denmark): +0 total -- finished T5
+  - 🔥 T1 **Eric Cole** (USA): -7 total -- finished T1
+  - 🔥 T2 **Brandt Snedeker** (USA): -5 total -- finished T2
+  - 🔥 T3 **Ben James** (USA): -4 total -- finished T3
+  - 🔥 T4 **Ben Griffin** (USA): -4 total -- finished T4
+  - 🔥 T5 **Tom Hoge** (USA): -3 total -- finished T5
 
-## 🔥 MLB Batter Heat (52 HOT / 43 COLD)
+## 🔥 MLB Batter Heat (46 HOT / 45 COLD)
+  - 🔥 **Nasim Nuñez** (WSH): L14 .409 / season .241 (+168pts)
   - 🔥 **Victor Caratini** (MIN): L14 .400 / season .242 (+158pts)
   - 🔥 **Luisangel Acuña** (CWS): L14 .367 / season .211 (+156pts)
-  - 🔥 **Nasim Nuñez** (WSH): L14 .391 / season .238 (+153pts)
   - 🔥 **Logan O'Hoppe** (LAA): L14 .390 / season .240 (+150pts)
-  - 🔥 **Bryan Reynolds** (PIT): L14 .407 / season .290 (+117pts)
+  - 🔥 **Pete Crow-Armstrong** (CHC): L14 .436 / season .287 (+149pts)
   - ❄️ **Jorge Mateo** (ATL): L14 .107 / season .262 (-155pts) -- FADE props
   - ❄️ **Carlos Cortes** (ATH): L14 .122 / season .276 (-154pts) -- FADE props
   - ❄️ **Ildemaro Vargas** (AZ): L14 .121 / season .261 (-140pts) -- FADE props
   - ❄️ **David Fry** (CLE): L14 .071 / season .211 (-140pts) -- FADE props
-  - ❄️ **Michael Conforto** (CHC): L14 .097 / season .223 (-126pts) -- FADE props
+  - ❄️ **Colby Thomas** (ATH): L14 .080 / season .206 (-126pts) -- FADE props
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**

@@ -2,9 +2,8 @@
 
 _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 
-## 💪 STRONG (2 picks)
-- [MLB] OAK @ SFG ML_HOME · 67% / +16.9%
-- [MLB] NYY @ BOS NYY_ML · 76% / +23.9%
+## 💪 STRONG (1 picks)
+- [MLB] OAK @ SFG ML_HOME · 66% / +18.9%
 
 ## 🔒 5 Daily Locks
 - **George Springer** PP_batter_hrr_under_3.5 (MLB-PP) -- 87% / +51.8%
@@ -17,14 +16,19 @@ _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 - **Kameron Misner** PP_batter_hrr_under_3.5 (MLB-PP) -- 87% / +51.5%
 - **Starling Marte** PP_batter_hrr_under_3.5 (MLB-PP) -- 87% / +51.4%
 - **Salvador Perez** PP_batter_hrr_under_3.5 (MLB-PP) -- 87% / +51.4%
+- **Choi Jeong** one_plus_tb (KBO) -- 73% / +39.8%
+- **Jose Pirela** one_plus_tb (KBO) -- 73% / +39.2%
+- **Koo Ja-wook** one_plus_tb (KBO) -- 73% / +38.9%
+- **Mel Rojas Jr.** one_plus_tb (KBO) -- 73% / +38.5%
+- **Austin Dean** one_plus_tb (KBO) -- 73% / +38.5%
 
 ## 📡 Sharp Money Following Model
-- **OAK @ SFG** ml_home: line moved 55.36% → 58.68% (+3.3pp)
+- **OAK @ SFG** ml_home: line moved 55.36% → 92.31% (+37.0pp)
 
 ## 🎰 Tonight's Best Parlay
-- **Isaac Collins** PP_batter_hrr_under_3.5 + **CHC @ NYM** CHC_ML
-- Joint 55% · fair +234 · edge +85.2%
+- **Choi Jeong** one_plus_tb + **Jose Pirela** one_plus_tb
+- Joint 53% · fair +264 · edge +94.6%
 
 ---
-_Generated 2026-06-25T16:30:37_
+_Generated 2026-06-25T23:22:18_
 _Full breakdown: /tonight · Full history: /locks-of-day_

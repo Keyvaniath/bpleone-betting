@@ -4,30 +4,25 @@
 
 _Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
 
-_Generated at 2026-06-25T16:31:00 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-06-25T23:22:33 UTC. Game lines source: **placeholder -110 (no real book today)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
-**CHC @ NYM - CHC_ML**
-- Market: -108
-- Model probability: 80.7%
-- Raw edge: +55.35%
+**CIN @ COL - CIN_ML**
+- Market: -110
+- Model probability: 73.7%
+- Raw edge: +40.74%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
 
-## Full Slate (8 games)
+## Full Slate (3 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 12:35p ET | SEA @ PIT | PNC Park | 80F 10mph | PIT_ML +12.38% |
-| 3:45p ET | OAK @ SFG | Oracle Park | 62F 18mph | OVER_8.0 +49.41% |
-| 6:40p ET | HOU @ DET | Comerica Park | 68F 6mph | OVER_9.0 +21.27% |
-| 6:45p ET | PHI @ WSN | Nationals Park | 76F 12mph | WSN_ML +25.74% |
-| 7:07p ET | TEX @ TOR | Rogers Centre | indoor | TEX_ML +12.99% |
-| 7:10p ET | CHC @ NYM | Citi Field | 70F 10mph | CHC_ML +55.35% |
-| 7:10p ET | NYY @ BOS | Fenway Park | 70F 8mph | NYY_ML +45.31% |
-| 7:45p ET | ARI @ STL | Busch Stadium | 76F 2mph | STL_ML +10.14% |
+| 7:05p ET | SDP @ LAD | Petco Park | 62F -6mph | LAD_ML +25.43% |
+| 6:45p ET | BOS @ NYY | Yankee Stadium | 71F 12mph | OVER_9.0 +30.97% |
+| 9:40p ET | CIN @ COL | Coors Field | 74F 4mph | CIN_ML +40.74% |
 
 ## Parlays - top 5
 
@@ -64,14 +59,9 @@ Cumulative graded plays: 118214. Wins: 87366. Hit rate: 73.9%.
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| ARI @ STL | 26.0% | +284 | 6.62 | -106 | +106 |
-| CHC @ NYM | 33.7% | +196 | 5.73 | +792 | -792 |
-| HOU @ DET | 43.6% | +129 | 4.3 | +204 | -204 |
-| NYY @ BOS | 49.0% | +104 | 3.69 | +1238 | -1238 |
-| OAK @ SFG | 25.4% | +294 | 7.67 | -164 | +164 |
-| PHI @ WSN | 43.0% | +132 | 4.35 | +156 | -156 |
-| SEA @ PIT | 57.0% | -133 | 2.99 | +176 | -176 |
-| TEX @ TOR | 39.8% | +151 | 4.6 | +176 | -176 |
+| BOS @ NYY | -- | -- | -- | +115 | -115 |
+| CIN @ COL | -- | -- | -- | +465 | -465 |
+| SDP @ LAD | -- | -- | -- | -166 | +166 |
 
 ## Travel / Rest Flags
 
