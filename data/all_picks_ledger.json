@@ -1,23 +1,23 @@
 {
-  "generated_at": "2026-06-26T17:42:51",
+  "generated_at": "2026-06-26T19:22:44",
   "stake_assumption": "1u flat per pick",
   "total_picks": 10000,
-  "n_settled": 6340,
-  "n_pending": 680,
+  "n_settled": 6339,
+  "n_pending": 681,
   "n_void": 2980,
-  "wins": 2928,
+  "wins": 2927,
   "losses": 3406,
   "pushes": 6,
-  "hit_rate": 0.4623,
-  "net_units": -748.524,
-  "roi_pct": -11.82,
-  "n_calibrated_picks": 9419,
+  "hit_rate": 0.4622,
+  "net_units": -749.311,
+  "roi_pct": -11.83,
+  "n_calibrated_picks": 9418,
   "calibrated_reliability": {
-    "n": 6273,
-    "ece_raw": 0.0992,
-    "ece_calibrated": 0.0252,
+    "n": 6272,
+    "ece_raw": 0.0993,
+    "ece_calibrated": 0.0253,
     "brier_raw": 0.22459,
-    "brier_calibrated": 0.20098,
+    "brier_calibrated": 0.20099,
     "note": "In-sample over the settled ledger (the isotonic transform is fit on these same outcomes); held-out 70/30 validation is in recalibration_map.json. p_predicted = raw model prob (kept untouched for the learning loop); p_calibrated = honest prob stamped per pick. Lower ECE/Brier on the calibrated column = the displayed % is truer."
   },
   "curated": {
@@ -42,7 +42,7 @@
     ],
     "definition": "Featured/recommended plays only -- Lock of the Day, Top 25, Whale, Sharp, Consensus (hit), Under Alerts, POD. Excludes the experimental prop feeds, which are tracked to train the model, not bet."
   },
-  "n_added_this_run": 0,
+  "n_added_this_run": 1,
   "n_newly_settled_this_run": 0,
   "n_resettled_this_run": 0,
   "n_voided_this_run": 0,
@@ -50,13 +50,13 @@
   "n_bootstrapped_from_locks_history": 0,
   "by_source": {
     "golf_top_10": {
-      "n": 160,
-      "wins": 58,
+      "n": 159,
+      "wins": 57,
       "losses": 102,
       "pushes": 0,
-      "net_units": -25.796,
-      "hit_rate": 0.3625,
-      "roi_pct": -16.12
+      "net_units": -26.584,
+      "hit_rate": 0.3585,
+      "roi_pct": -16.72
     },
     "golf_top_20": {
       "n": 183,
@@ -1267,12 +1267,12 @@
   },
   "by_market_family": {
     "top": {
-      "n": 393,
-      "wins": 187,
+      "n": 392,
+      "wins": 186,
       "losses": 206,
       "pushes": 0,
-      "net_units": 0.563,
-      "hit_rate": 0.4758
+      "net_units": -0.225,
+      "hit_rate": 0.4745
     },
     "walk_1plus_no": {
       "n": 102,
@@ -1733,12 +1733,12 @@
   },
   "by_canonical": {
     "top": {
-      "n": 393,
-      "wins": 187,
+      "n": 392,
+      "wins": 186,
       "losses": 206,
       "pushes": 0,
-      "net_units": 0.563,
-      "hit_rate": 0.4758
+      "net_units": -0.225,
+      "hit_rate": 0.4745
     },
     "mlb_walk_0.5_under": {
       "n": 102,
@@ -2215,25 +2215,25 @@
   },
   "by_sport": {
     "GOLF": {
-      "n": 423,
-      "settled": 378,
-      "wins": 181,
+      "n": 422,
+      "settled": 377,
+      "wins": 180,
       "losses": 197,
       "pushes": 0,
       "pending": 45,
       "void": 0,
-      "net_units": 6.174,
-      "hit_rate": 0.4788,
-      "roi_pct": 1.63,
+      "net_units": 5.387,
+      "hit_rate": 0.4775,
+      "roi_pct": 1.43,
       "markets": 3
     },
     "MLB": {
-      "n": 7303,
+      "n": 7304,
       "settled": 4800,
       "wins": 1913,
       "losses": 2881,
       "pushes": 6,
-      "pending": 370,
+      "pending": 371,
       "void": 2133,
       "net_units": -1116.559,
       "hit_rate": 0.399,
@@ -2404,31 +2404,6 @@
     "hit_rate": 0.3854
   },
   "picks": [
-    {
-      "source": "golf_top_10",
-      "sport": "GOLF",
-      "player_or_matchup": "Nico Echavarria",
-      "market": "TOP_10",
-      "prob": 0.559,
-      "fair_american": -127,
-      "p_predicted": 0.559,
-      "matchup": "Charles Schwab Challenge",
-      "date": "2026-06-01",
-      "pick_id": "golf_top_10|GOLF|Nico_Echavarria|TOP_10|2026-06-01",
-      "settled": true,
-      "result": "won",
-      "payout_units": 0.7874,
-      "recorded_at": "2026-06-01T02:14:06",
-      "outcome": {
-        "tournament": "Charles Schwab Challenge",
-        "finish": "T6",
-        "to_par": -10,
-        "market": "TOP_10",
-        "verify": "Nico Echavarria finished T6 (-10) at Charles Schwab Challenge \u2014 TOP_10"
-      },
-      "settled_at": "2026-06-03T22:36:45",
-      "p_calibrated": 0.5806
-    },
     {
       "source": "golf_top_10",
       "sport": "GOLF",
@@ -240510,6 +240485,22 @@
       "payout_units": null,
       "recorded_at": "2026-06-26T16:25:51",
       "p_calibrated": 0.6827
+    },
+    {
+      "source": "rlm_strong",
+      "sport": "MLB",
+      "player_or_matchup": "AWA @ HOM",
+      "market": "AWAY ML",
+      "prob": null,
+      "fair_american": 106,
+      "rlm_strength": "STRONG",
+      "line_delta_pp": -12.24,
+      "date": "2026-06-26",
+      "pick_id": "rlm_strong|MLB|AWA___HOM|AWAY_ML|2026-06-26",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-06-26T19:22:44"
     }
   ],
   "note": "Unified pick ledger -- records every pick the model surfaces (top_25 board, whales, consensus, unders, sharp action, locks, POD) and settles each against actual outcomes. Per-source W-L feeds back into calibration so the model learns which modules are reliable. THIS is the training signal."
