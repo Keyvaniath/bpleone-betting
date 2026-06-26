@@ -1,18 +1,18 @@
 # EdgeStat Daily Summary — 2026-06-26
 
-## 🏥 Model Health: 68.8/100 [OK]
-- Operational but room to improve - check yellow components
+## 🏥 Model Health: 71.9/100 [HEALTHY]
+- Solid health - some minor issues to monitor
   - 🟢 Calibration Freshness: 100.0/100
   - 🔴 Hit Rate Trend: 54.4/100
   - 🔴 Brier Trend: 29.6/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 90.0/100
-  - 🔴 Edge Count: 40.0/100
+  - 🟡 Edge Count: 71.4/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.585)
-- **Total games on board:** 107
-- **Strong home favorites:** 2 | **Strong road dogs:** 0
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.579)
+- **Total games on board:** 112
+- **Strong home favorites:** 2 | **Strong road dogs:** 1
 
 ## 🎯 Top 5 Best Bets
 1. **TEX @ TOR YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
@@ -20,9 +20,6 @@
 3. **COL @ MIN YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 4. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
 5. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
-
-## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** LAD @ SDP LAD_ML -- 71% / +20.1% (score 2.5)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **235-44** (84.2% hit rate)
@@ -51,7 +48,8 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (2)
+## ⚡ Pre-Game HIGH Conviction (3)
+- [WNBA] **Washington Mystics** AWAY (4-2 L10) · model 73.4% fair -276
 - [MLS] **CF Montréal** HOME (None L10) · model 71.5% fair -251
 - [MLS] **Seattle Sounders FC** HOME (0-1 L10) · model 66.7% fair -200
 
@@ -59,15 +57,15 @@
 - Hot teams: **0** | Cold teams: **0** | Over-heavy: 0 | Under-heavy: 8
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (45)
-- STEAM_MOVE: **37**
-- COMPOUND_BULLPEN: **5**
+## ⚠️ Anomaly Detector (43)
+- RESIDUAL_DIVERGENCE: **1**
+- STEAM_MOVE: **39**
 - PEN_MISMATCH: **3**
+  - Portland Fire (WNBA): Portland Fire UNDERPERFORMING expected margin by 23.7pts in recent games -- model bias may persist
   - CHI @ DAL (WNBA): ML/TOTAL steam since open: ML +3.3pp toward DAL; total +2 (OVER) (6 snapshots)
   - NY @ SEA (WNBA): ML/TOTAL steam since open: ML +8.9pp toward SEA; total -2 (UNDER) (2 snapshots)
   - BAL @ LAA (MLB): ML steam since open: ML +9.6pp toward LAA (4 snapshots)
   - PIT @ COL (MLB): ML/TOTAL steam since open: ML +8.4pp toward COL; total +1 (OVER) (6 snapshots)
-  - OAK @ SFG (MLB): ML/TOTAL steam since open: ML +5.8pp toward SFG; total -0.5 (UNDER) (5 snapshots)
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
@@ -111,13 +109,13 @@
   - [LEAN] **Daniil Donchenko** (14-2-0) vs Theodor Berggren -- fair -149
 
 ## ⛳ Golf Player Heat (from Travelers Championship)
-  - 🔥 T1 **Eric Cole** (USA): -7 total -- finished T1
-  - 🔥 T2 **Nico Echavarria** (Colombia): -6 total -- finished T2
-  - 🔥 T3 **Ben Griffin** (USA): -6 total -- finished T3
-  - 🔥 T4 **Matt Fitzpatrick** (England): -6 total -- finished T4
-  - 🔥 T5 **Kristoffer Reitan** (Norway): -6 total -- finished T5
+  - 🔥 T1 **Viktor Hovland** (Norway): -10 total -- finished T1
+  - 🔥 T2 **Brian Campbell** (USA): -9 total -- finished T2
+  - 🔥 T3 **Akshay Bhatia** (USA): -9 total -- finished T3
+  - 🔥 T4 **Bud Cauley** (USA): -9 total -- finished T4
+  - 🔥 T5 **Scottie Scheffler** (USA): -9 total -- finished T5
 
-## 🔥 MLB Batter Heat (45 HOT / 46 COLD)
+## 🔥 MLB Batter Heat (44 HOT / 44 COLD)
   - 🔥 **Nasim Nuñez** (WSH): L14 .400 / season .240 (+160pts)
   - 🔥 **Victor Caratini** (MIN): L14 .400 / season .242 (+158pts)
   - 🔥 **Luisangel Acuña** (CWS): L14 .367 / season .211 (+156pts)

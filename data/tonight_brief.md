@@ -2,9 +2,6 @@
 
 _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 
-## 💪 STRONG (1 picks)
-- [MLB] LAD @ SDP LAD_ML · 71% / +20.1%
-
 ## 🔒 5 Daily Locks
 - **Choi Jeong** one_plus_tb (KBO) -- 73% / +39.8%
 - **Jose Pirela** one_plus_tb (KBO) -- 73% / +39.2%
@@ -17,5 +14,5 @@ _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 - Joint 53% · fair +264 · edge +94.6%
 
 ---
-_Generated 2026-06-26T16:25:54_
+_Generated 2026-06-26T23:12:31_
 _Full breakdown: /tonight · Full history: /locks-of-day_
