@@ -1,48 +1,35 @@
 # EdgeStat Daily Summary — 2026-06-26
 
-## 🏥 Model Health: 68.4/100 [OK]
+## 🏥 Model Health: 68.8/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.9/100
+  - 🟢 Calibration Freshness: 100.0/100
   - 🔴 Hit Rate Trend: 54.4/100
   - 🔴 Brier Trend: 29.6/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟡 Data Health: 75.0/100
-  - 🟡 Edge Count: 65.7/100
+  - 🟢 Data Health: 90.0/100
+  - 🔴 Edge Count: 40.0/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.584)
-- **Total games on board:** 123
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.585)
+- **Total games on board:** 107
 - **Strong home favorites:** 2 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
-1. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
-2. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
-3. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
-4. **GOLF Eric Cole WIN @ 561 (Travelers Championship)** (78/100 ★★★★★)
-5. **GOLF Scottie Scheffler WIN @ 521 (Travelers Championship)** (78/100 ★★★★★)
+1. **TEX @ TOR YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+2. **ARI @ TBR YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+3. **COL @ MIN YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+4. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
+5. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** CIN @ COL CIN_ML -- 65% / +24.4% (score 2.5)
-
-## 📡 Sharp Action (Line Movement)
-- [ELITE] **BOS @ NYY** over_9.0: 52.38% → 63.64% (+11.3pp)
+- [STRONG] **[MLB]** LAD @ SDP LAD_ML -- 71% / +20.1% (score 2.5)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **235-44** (84.2% hit rate)
 - Net units: **+7.99u** | ROI: **+46.2%**
-- Last 7d: 44-6 (88.0%) | net +1.63u
+- Last 7d: 38-6 (86.4%) | net +1.36u
 
-**Today's 15 Locks:**
-- [MLB-PP] **George Springer** PP_batter_hrr_under_3.5 · p=87% edge=+51.8% qK=0.062u
-- [MLB-PP] **Nick Fortes** PP_batter_hrr_under_3.5 · p=87% edge=+51.7% qK=0.062u
-- [MLB-PP] **Matt McLain** PP_batter_hrr_under_3.5 · p=87% edge=+51.7% qK=0.062u
-- [MLB-PP] **Lourdes Gurriel Jr.** PP_batter_hrr_under_3.5 · p=87% edge=+51.6% qK=0.062u
-- [MLB-PP] **Drew Gilbert** PP_batter_hrr_under_3.5 · p=87% edge=+51.5% qK=0.062u
-- [MLB-PP] **Isaac Collins** PP_batter_hrr_under_3.5 · p=87% edge=+51.7% qK=0.062u
-- [MLB-PP] **Adrian Del Castillo** PP_batter_hrr_under_3.5 · p=87% edge=+51.7% qK=0.062u
-- [MLB-PP] **Kameron Misner** PP_batter_hrr_under_3.5 · p=87% edge=+51.5% qK=0.062u
-- [MLB-PP] **Starling Marte** PP_batter_hrr_under_3.5 · p=87% edge=+51.4% qK=0.062u
-- [MLB-PP] **Salvador Perez** PP_batter_hrr_under_3.5 · p=87% edge=+51.4% qK=0.062u
+**Today's 5 Locks:**
 - [KBO] **Choi Jeong** one_plus_tb · p=73% edge=+39.8% qK=0.062u
 - [KBO] **Jose Pirela** one_plus_tb · p=73% edge=+39.2% qK=0.062u
 - [KBO] **Koo Ja-wook** one_plus_tb · p=73% edge=+38.9% qK=0.062u
@@ -72,30 +59,39 @@
 - Hot teams: **0** | Cold teams: **0** | Over-heavy: 0 | Under-heavy: 8
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (37)
+## ⚠️ Anomaly Detector (45)
 - STEAM_MOVE: **37**
+- COMPOUND_BULLPEN: **5**
+- PEN_MISMATCH: **3**
   - CHI @ DAL (WNBA): ML/TOTAL steam since open: ML +3.3pp toward DAL; total +2 (OVER) (6 snapshots)
   - NY @ SEA (WNBA): ML/TOTAL steam since open: ML +8.9pp toward SEA; total -2 (UNDER) (2 snapshots)
   - BAL @ LAA (MLB): ML steam since open: ML +9.6pp toward LAA (4 snapshots)
   - PIT @ COL (MLB): ML/TOTAL steam since open: ML +8.4pp toward COL; total +1 (OVER) (6 snapshots)
   - OAK @ SFG (MLB): ML/TOTAL steam since open: ML +5.8pp toward SFG; total -0.5 (UNDER) (5 snapshots)
 
-## 💰 Today's Portfolio (10 picks)
-- Total stake: **$335.0** (33.5% of $1000 bankroll)
-- Expected EV: **$-7.58**
-  - #1 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
-  - #2 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
-  - #3 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
-  - #4 [GOLF] $35 on GOLF Eric Cole WIN @ 561 (Travelers Championship) (P=15%)
-  - #5 [GOLF] $35 on GOLF Scottie Scheffler WIN @ 521 (Travelers Championship) (P=16%)
+## 💰 Today's Portfolio (9 picks)
+- Total stake: **$345.0** (34.5% of $1000 bankroll)
+- Expected EV: **$4.13**
+  - #1 [NRFI] $50 on TEX @ TOR YRFI (1st-inning OVER 0.5) (P=76%)
+  - #2 [NRFI] $50 on ARI @ TBR YRFI (1st-inning OVER 0.5) (P=71%)
+  - #3 [NRFI] $50 on COL @ MIN YRFI (1st-inning OVER 0.5) (P=69%)
+  - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
+  - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
 ## 🎯 Convergence Picks (5 stacked games)
-- ELITE: **1** · HIGH: 1 · MED: 3
-  - [ELITE] Dallas Wings @ Las Vegas Aces : 5 signals (PREGAME, HEAT_COLD, HEAT_COLD, ATS)
-  - [HIGH] New York Liberty @ Seattle Storm : 3 signals (HEAT_COLD, HEAT_COLD, ATS)
+- ELITE: **0** · HIGH: 1 · MED: 4
+  - [HIGH] Dallas Wings @ Las Vegas Aces : 3 signals (HEAT_COLD, HEAT_COLD, ATS)
   - [MED] New York Knicks @ San Antonio Spurs : 2 signals (ATS, ATS)
+  - [MED] New York Liberty @ Seattle Storm : 2 signals (HEAT_COLD, ATS)
   - [MED] Portland Timbers @ Seattle Sounders FC : 2 signals (PREGAME, ATS)
   - [MED] Coventry City @ Arsenal : 2 signals (PREGAME, ATS)
+
+## ⚾ Top MLB Pitcher K Plays (12)
+- **Paul Skenes** OVER 5.5 K (77%) fair -337
+- **Jacob Misiorowski** OVER 7.5 K (77%) fair -332
+- **Zack Wheeler** OVER 4.5 K (76%) fair -321
+- **Roki Sasaki** OVER 4.5 K (71%) fair -251
+- **Max Meyer** OVER 5.5 K (71%) fair -250
 
 ## 🏀 NBA Player Heat (18 HOT / 22 COLD)
   - 🔥 **Jeremiah Fears** (NO): L5 31.8/5.8/6.0 vs season 16.9/3.2/4.0 [PTS +14.9, REB +2.6, AST +2.0]
@@ -132,9 +128,6 @@
   - ❄️ **Ildemaro Vargas** (AZ): L14 .121 / season .261 (-140pts) -- FADE props
   - ❄️ **David Fry** (CLE): L14 .071 / season .211 (-140pts) -- FADE props
   - ❄️ **Colby Thomas** (ATH): L14 .080 / season .206 (-126pts) -- FADE props
-
-## 📈 Streak Regression Alerts (1)
-- [WNBA] Seattle Storm on L4 L10 0-4 -- Seattle Storm on L4 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**

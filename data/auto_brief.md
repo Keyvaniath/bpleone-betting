@@ -6,26 +6,42 @@ _0% lineups confirmed · 12 rookie SPs_
 
 ## Slate
 - **15 games** scheduled
-- **19 best bets** scored: 0 DK · 0 PP · 0 NRFI · 0 SGP
+- **30 best bets** scored: 0 DK · 0 PP · 11 NRFI · 0 SGP
+- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$39.77
+- **MC simulation:** EV +$95.19, 79% P(profit), p05 $-110.04 / p95 $268.65
 
 ## Top 5 Best Bets
-1. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
+1. **TEX @ TOR YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +29.5%)
+   - P(YRFI) 75.5% vs baseline 46.0%
+2. **ARI @ TBR YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +24.9%)
+   - P(YRFI) 70.9% vs baseline 46.0%
+3. **COL @ MIN YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +23.3%)
+   - P(YRFI) 69.3% vs baseline 46.0%
+4. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
    - Player prop quality score 1.1935
    - Elite player
-2. **LOL ShowMaker OVER 3.5 Kills**  (78/100 ****, edge —)
+5. **LOL ShowMaker OVER 3.5 Kills**  (78/100 ****, edge —)
    - Player prop quality score 1.1892
    - Elite player
-3. **LOL Peyz OVER 4.5 Kills**  (78/100 ****, edge —)
-   - Player prop quality score 1.184
-   - Elite player
-4. **GOLF Eric Cole WIN @ 561 (Travelers Championship)**  (78/100 *****, edge —)
-   - P(win) 15.1% with 2 round(s) left -- sweet-spot value at #1 (-7).
-5. **GOLF Scottie Scheffler WIN @ 521 (Travelers Championship)**  (78/100 *****, edge —)
-   - P(win) 16.1% with 2 round(s) left -- sweet-spot value at #7 (-6).
+
+## ⚠️ Trap Warnings — 10 flagged
+- **TEX @ TOR YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +29.5% looks big but only 0 settled props on this player — model unproven
+- **ARI @ TBR YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +24.9% looks big but only 0 settled props on this player — model unproven
+- **COL @ MIN YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +23.3% looks big but only 0 settled props on this player — model unproven
+- **NYY @ BOS YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +17.5% looks big but only 0 settled props on this player — model unproven
+- **SEA @ CLE YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +17.0% looks big but only 0 settled props on this player — model unproven
 
 ## Bullpens GASSED tonight
-Athletics, Pittsburgh Pirates, San Diego Padres, Seattle Mariners, Tampa Bay Rays, Texas Rangers, Toronto Blue Jays, Minnesota Twins
+Athletics, Pittsburgh Pirates, Seattle Mariners, Tampa Bay Rays, Toronto Blue Jays, Philadelphia Phillies, Chicago White Sox, Los Angeles Angels
 _Lean late-inning OVER on these games; fade their save situations._
+
+## NRFI/YRFI strong leans
+- **YRFI** (1st-inning OVER): TEX @ TOR, ARI @ TBR, COL @ MIN, NYY @ BOS, SEA @ CLE
 
 ## Golf -- Travelers Championship
 - **Leader:** Eric Cole (-7) at #1
@@ -67,4 +83,4 @@ _Lean late-inning OVER on these games; fade their save situations._
 ## Self-learning calibration (esports + KBO)
 - **LOL:** 21 settled | brier 0.2649 | ECE 0.1541
    - Model over-confident; subtract 15.4pp at next inference
-- **KBO:** 12 settled | brier 0.2748 | ECE 0.1801
+- **KBO:** 14 settled | brier 0.2727 | ECE 0.1679
