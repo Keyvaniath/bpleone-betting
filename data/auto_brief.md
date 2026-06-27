@@ -1,48 +1,67 @@
 # Tonight's Slate Brief — 2026-06-27
 
-## Slate Quality: 52/100 (LOW)
-_0% lineups confirmed · 13 rookie SPs_
-**Recommendation:** Defensive sizing tonight; stick to highest-confidence plays.
+## Slate Quality: 55/100 (MEDIUM)
+_10% lineups confirmed · 13 rookie SPs_
+**Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
 - **15 games** scheduled
-- **30 best bets** scored: 0 DK · 0 PP · 11 NRFI · 0 SGP
-- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$54.58
-- **MC simulation:** EV +$125.73, 86% P(profit), p05 $-83.34 / p95 $315.41
+- **36 best bets** scored: 0 DK · 0 PP · 11 NRFI · 6 SGP
+- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$31.89
+- **MC simulation:** EV +$96.03, 77% P(profit), p05 $-141.89 / p95 $299.89
 
 ## Top 5 Best Bets
-1. **KCR @ CHW YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +40.4%)
-   - P(YRFI) 86.4% vs baseline 46.0%
-2. **TEX @ TOR YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +29.5%)
-   - P(YRFI) 75.5% vs baseline 46.0%
-3. **ARI @ TBR YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +24.9%)
-   - P(YRFI) 70.9% vs baseline 46.0%
-4. **COL @ MIN YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +23.3%)
-   - P(YRFI) 69.3% vs baseline 46.0%
-5. **PHI @ NYM YRFI (1st-inning OVER 0.5)**  (79/100 ****, edge +19.6%)
-   - P(YRFI) 65.5% vs baseline 46.0%
+1. **NYY @ BOS 4-leg SGP @ -176**  (81/100 *****, edge +67.0%)
+   - Joint prob 0.637 (correlation boost +0.160)
+   - Leg: Willson Contreras UNDER 0.5 batter doubles
+2. **CHC @ MIL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +26.8%)
+   - P(YRFI) 72.8% vs baseline 46.0%
+3. **OAK @ LAA YRFI (1st-inning OVER 0.5)**  (79/100 ****, edge +19.4%)
+   - P(YRFI) 65.4% vs baseline 46.0%
+4. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
+   - Player prop quality score 1.1935
+   - Elite player
+5. **LOL ShowMaker OVER 3.5 Kills**  (78/100 ****, edge —)
+   - Player prop quality score 1.1892
+   - Elite player
 
-## ⚠️ Trap Warnings — 10 flagged
-- **KCR @ CHW YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +40.4% looks big but only 0 settled props on this player — model unproven
-- **TEX @ TOR YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +29.5% looks big but only 0 settled props on this player — model unproven
-- **ARI @ TBR YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +24.9% looks big but only 0 settled props on this player — model unproven
-- **COL @ MIN YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +23.3% looks big but only 0 settled props on this player — model unproven
-- **PHI @ NYM YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +19.6% looks big but only 0 settled props on this player — model unproven
+## ⚠️ Trap Warnings — 16 flagged
+- **NYY @ BOS 4-leg SGP @ -176** (low):
+   - Edge +67.0% looks big but only 0 settled props on this player — model unproven
+- **CHC @ MIL YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +26.8% looks big but only 0 settled props on this player — model unproven
+- **HOU @ DET 2-leg SGP @ -259** (low):
+   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
+- **OAK @ LAA 2-leg SGP @ -224** (low):
+   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
+- **CIN @ PIT 2-leg SGP @ -214** (low):
+   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
 
 ## Weather leans
-- **UNDER lean** (wind in + cold): ATL @ SFG
+- **OVER lean** (wind out + warm): HOU @ DET
+
+## Hot streaks
+**Batters heating up:** Konnor Griffin (heat +8.50), Kyle Schwarber (heat +6.49), Jac Caglianone (heat +5.77)
+**Pitchers on a run:** Cole Sulser (heat +11.32), Jake Bennett (heat +7.92), Ryan Gusto (heat +6.42)
+
+## Top correlation-aware SGPs
+- **NYY @ BOS** 4-leg @ -176 fair (joint 0.64, EV +67.0%)
+   - Willson Contreras UNDER 0.5 batter doubles
+   - Willson Contreras OVER 0.5 batter total bases
+   - Jarren Duran UNDER 2.5 batter total bases
+- **HOU @ DET** 2-leg @ -259 fair (joint 0.72, EV +25.0%)
+   - Cam Smith UNDER 0.5 batter doubles
+   - Spencer Torkelson UNDER 0.5 batter home runs
+- **OAK @ LAA** 2-leg @ -224 fair (joint 0.69, EV +25.0%)
+   - Jack Perkins UNDER 9.5 pitcher strikeouts
+   - Reid Detmers UNDER 8.5 pitcher strikeouts
 
 ## Bullpens GASSED tonight
-Athletics, Pittsburgh Pirates, Seattle Mariners, Tampa Bay Rays, Toronto Blue Jays, Philadelphia Phillies, Chicago White Sox, Los Angeles Angels
+Pittsburgh Pirates, Tampa Bay Rays, Toronto Blue Jays, Philadelphia Phillies, Chicago Cubs, Houston Astros, Kansas City Royals, New York Mets
 _Lean late-inning OVER on these games; fade their save situations._
 
 ## NRFI/YRFI strong leans
-- **YRFI** (1st-inning OVER): KCR @ CHW, TEX @ TOR, ARI @ TBR, COL @ MIN, PHI @ NYM
+- **YRFI** (1st-inning OVER): CHC @ MIL, OAK @ LAA, HOU @ DET, COL @ MIN, NYY @ BOS
 
 ## Golf -- Travelers Championship
 - **Leader:** Scottie Scheffler (-16) at #1
@@ -86,4 +105,4 @@ _Lean late-inning OVER on these games; fade their save situations._
 ## Self-learning calibration (esports + KBO)
 - **LOL:** 21 settled | brier 0.2649 | ECE 0.1541
    - Model over-confident; subtract 15.4pp at next inference
-- **KBO:** 16 settled | brier 0.2719 | ECE 0.1595
+- **KBO:** 17 settled | brier 0.265 | ECE 0.127

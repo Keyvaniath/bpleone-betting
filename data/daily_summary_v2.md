@@ -1,33 +1,37 @@
 # EdgeStat Daily Summary — 2026-06-27
 
-## 🏥 Model Health: 69.9/100 [OK]
-- Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 100.0/100
+## 🏥 Model Health: 71.9/100 [HEALTHY]
+- Solid health - some minor issues to monitor
+  - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 54.4/100
   - 🔴 Brier Trend: 29.6/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 80.0/100
+  - 🟢 Data Health: 90.0/100
   - 🟡 Edge Count: 71.4/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.583)
-- **Total games on board:** 125
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.584)
+- **Total games on board:** 109
 - **Strong home favorites:** 2 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
-1. **KCR @ CHW YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-2. **TEX @ TOR YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-3. **ARI @ TBR YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-4. **COL @ MIN YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-5. **PHI @ NYM YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
+1. **NYY @ BOS 4-leg SGP @ -176** (81/100 ★★★★★)
+2. **CHC @ MIL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+3. **OAK @ LAA YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
+4. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
+5. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
 
 ## 📡 Sharp Action (Line Movement)
-- [MODERATE] **ARI @ TBR** ml_home: 58.51% → 61.54% (+3.0pp)
+- [MODERATE] **ARI @ TBR** under_8.0: 51.22% → 54.55% (+3.3pp)
+
+## 📉 Strong UNDER Signals
+- [STRONG 6.4] **ARI @ TBR** model 6.53 vs market 8.0
+- [STRONG 5.5] **PHI @ NYM** model 6.19 vs market 8.5
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **235-44** (84.2% hit rate)
 - Net units: **+7.99u** | ROI: **+46.2%**
-- Last 7d: 38-6 (86.4%) | net +1.36u
+- Last 7d: 33-4 (89.2%) | net +1.26u
 
 **Today's 5 Locks:**
 - [KBO] **Choi Jeong** one_plus_tb · p=73% edge=+39.8% qK=0.062u
@@ -59,8 +63,9 @@
 - Hot teams: **0** | Cold teams: **0** | Over-heavy: 0 | Under-heavy: 8
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (36)
+## ⚠️ Anomaly Detector (38)
 - STEAM_MOVE: **33**
+- COMPOUND_BULLPEN: **2**
 - PEN_MISMATCH: **3**
   - CHI @ DAL (WNBA): ML/TOTAL steam since open: ML +3.3pp toward DAL; total +2 (OVER) (6 snapshots)
   - NY @ SEA (WNBA): ML/TOTAL steam since open: ML +8.9pp toward SEA; total -2 (UNDER) (2 snapshots)
@@ -70,27 +75,26 @@
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$16.98**
-  - #1 [NRFI] $50 on KCR @ CHW YRFI (1st-inning OVER 0.5) (P=86%)
-  - #2 [NRFI] $50 on TEX @ TOR YRFI (1st-inning OVER 0.5) (P=76%)
-  - #3 [NRFI] $50 on ARI @ TBR YRFI (1st-inning OVER 0.5) (P=71%)
+- Expected EV: **$-5.95**
+  - #1 [SGP] $50 on NYY @ BOS 4-leg SGP @ -176 (P=64%)
+  - #2 [NRFI] $50 on CHC @ MIL YRFI (1st-inning OVER 0.5) (P=73%)
+  - #3 [NRFI] $35 on OAK @ LAA YRFI (1st-inning OVER 0.5) (P=65%)
   - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
-## 🎯 Convergence Picks (6 stacked games)
-- ELITE: **0** · HIGH: 1 · MED: 5
-  - [HIGH] Portland Fire @ Chicago Sky : 3 signals (ANOMALY, ATS, ATS)
+## 🎯 Convergence Picks (4 stacked games)
+- ELITE: **0** · HIGH: 1 · MED: 3
+  - [HIGH] Atlanta Dream @ Golden State Valkyries : 3 signals (HEAT_COLD, HEAT_COLD, ATS)
   - [MED] New York Knicks @ San Antonio Spurs : 2 signals (ATS, ATS)
-  - [MED] Washington Mystics @ Connecticut Sun : 2 signals (PREGAME, HEAT_COLD)
-  - [MED] Atlanta Dream @ Golden State Valkyries : 2 signals (HEAT_COLD, ATS)
   - [MED] Portland Timbers @ Seattle Sounders FC : 2 signals (PREGAME, ATS)
+  - [MED] Coventry City @ Arsenal : 2 signals (PREGAME, ATS)
 
 ## ⚾ Top MLB Pitcher K Plays (11)
-- **Jacob Misiorowski** OVER 7.5 K (77%) fair -332
-- **Zack Wheeler** OVER 4.5 K (76%) fair -321
-- **Roki Sasaki** OVER 4.5 K (71%) fair -251
-- **Max Meyer** OVER 5.5 K (71%) fair -250
-- **Taj Bradley** OVER 4.5 K (70%) fair -232
+- **Dylan Cease** OVER 6.5 K (76%) fair -310
+- **Logan Gilbert** OVER 5.5 K (71%) fair -250
+- **Reid Detmers** OVER 5.5 K (71%) fair -250
+- **Chase Burns** OVER 5.5 K (70%) fair -233
+- **Foster Griffin** OVER 4.5 K (70%) fair -232
 
 ## 🏀 NBA Player Heat (18 HOT / 22 COLD)
   - 🔥 **Jeremiah Fears** (NO): L5 31.8/5.8/6.0 vs season 16.9/3.2/4.0 [PTS +14.9, REB +2.6, AST +2.0]
