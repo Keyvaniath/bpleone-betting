@@ -16,18 +16,20 @@ _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 - **Noelvi Marte** PP_batter_hrr_under_3.5 (MLB-PP) -- 88% / +51.9%
 - **Drew Gilbert** PP_batter_hrr_under_3.5 (MLB-PP) -- 87% / +51.8%
 - **Lane Thomas** PP_batter_hrr_under_3.5 (MLB-PP) -- 87% / +51.6%
+- **Adrian Del Castillo** PP_batter_hrr_under_3.5 (MLB-PP) -- 87% / +51.7%
+- **Brett Sullivan** PP_batter_hrr_under_3.5 (MLB-PP) -- 87% / +51.6%
+- **Elias Díaz** PP_batter_hrr_over_0.5 (MLB-PP) -- 87% / +51.6%
 
 ## 📡 Sharp Money Following Model
-- **PHI @ NYM** under_9.0: line moved 50.0% → 53.49% (+3.5pp)
+- **PHI @ NYM** under_9.0: line moved 50.0% → 56.52% (+6.5pp)
 
 ## 📉 Under Bets
-- **ARI @ TBR** UNDER 8.5 — model 6.53 [ELITE signal]
-- **LAD @ SDP** UNDER 8.0 — model 6.4 [STRONG signal]
+- **LAD @ SDP** UNDER 8.0 — model 6.45 [STRONG signal]
 
 ## 🎰 Tonight's Best Parlay
-- **Noelvi Marte** PP_batter_hrr_under_3.5 + **LAD @ SDP** UNDER_8.0
-- Joint 53% · fair +231 · edge +77.1%
+- **Alex Bregman** PP_batter_hrr_under_3.5 + **LAD @ SDP** UNDER_8.0
+- Joint 53% · fair +231 · edge +76.3%
 
 ---
-_Generated 2026-06-27T22:01:53_
+_Generated 2026-06-27T23:11:29_
 _Full breakdown: /tonight · Full history: /locks-of-day_

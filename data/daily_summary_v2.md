@@ -1,8 +1,8 @@
 # EdgeStat Daily Summary — 2026-06-27
 
-## 🏥 Model Health: 73.6/100 [HEALTHY]
+## 🏥 Model Health: 73.7/100 [HEALTHY]
 - Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 99.9/100
+  - 🟢 Calibration Freshness: 100.0/100
   - 🔴 Hit Rate Trend: 54.4/100
   - 🔴 Brier Trend: 29.6/100
   - 🟢 Pipeline Audit: 100.0/100
@@ -22,16 +22,16 @@
 5. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
 
 ## 📡 Sharp Action (Line Movement)
-- [MODERATE] **PHI @ NYM** under_9.0: 50.0% → 53.49% (+3.5pp)
+- [STRONG] **PHI @ NYM** under_9.0: 50.0% → 56.52% (+6.5pp)
 
 ## 📉 Strong UNDER Signals
-- [ELITE 6.5] **PHI @ NYM** model 6.29 vs market 9.0
-- [STRONG 6.4] **ARI @ TBR** model 6.53 vs market 8.0
+- [ELITE 6.5] **ARI @ TBR** model 6.53 vs market 8.5
+- [STRONG 5.5] **LAD @ SDP** model 6.4 vs market 8.0
 
 ## 🔒 Locks of the Day -- Track Record
-- All-time: **239-44** (84.5% hit rate)
-- Net units: **+8.17u** | ROI: **+46.6%**
-- Last 7d: 37-4 (90.2%) | net +1.44u
+- All-time: **243-44** (84.7% hit rate)
+- Net units: **+8.35u** | ROI: **+46.9%**
+- Last 7d: 41-4 (91.1%) | net +1.62u
 
 **Today's 13 Locks:**
 - [KBO] **Choi Jeong** one_plus_tb · p=73% edge=+39.8% qK=0.062u
@@ -49,12 +49,12 @@
 - [MLB-PP] **Lane Thomas** PP_batter_hrr_under_3.5 · p=87% edge=+51.6% qK=0.062u
 
 ## 🎰 Top Balanced 2-Leg Parlays (40-65% joint)
-- [MLB-PP] Noelvi Marte PP_batter_hrr_under_ + [MLB] PHI @ NYM PHI_ML
-  Joint: 51% | Fair: 266 | Edge: +88.1%
-- [MLB-PP] Isaac Collins PP_batter_hrr_under_ + [MLB] PHI @ NYM PHI_ML
-  Joint: 51% | Fair: 266 | Edge: +88.1%
-- [MLB-PP] Alex Bregman PP_batter_hrr_under_ + [MLB] PHI @ NYM PHI_ML
-  Joint: 51% | Fair: 266 | Edge: +88.1%
+- [MLB-PP] Noelvi Marte PP_batter_hrr_under_ + [MLB] LAD @ SDP UNDER_8.0
+  Joint: 53% | Fair: 231 | Edge: +77.1%
+- [MLB-PP] Isaac Collins PP_batter_hrr_under_ + [MLB] LAD @ SDP UNDER_8.0
+  Joint: 53% | Fair: 231 | Edge: +77.1%
+- [MLB-PP] Alex Bregman PP_batter_hrr_under_ + [MLB] LAD @ SDP UNDER_8.0
+  Joint: 53% | Fair: 231 | Edge: +77.1%
 
 ## 🎮 Player Play of the Day (cross-sport)
 - **[LOL]** Inspired UNDER 3.5 Kills | MED conviction · model 61.7% fair -161
@@ -72,16 +72,16 @@
 - Hot teams: **0** | Cold teams: **0** | Over-heavy: 0 | Under-heavy: 8
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (41)
+## ⚠️ Anomaly Detector (40)
 - RESIDUAL_DIVERGENCE: **1**
 - STEAM_MOVE: **36**
-- PEN_MISMATCH: **3**
+- PEN_MISMATCH: **2**
 - COMPOUND_BULLPEN: **1**
   - Los Angeles Sparks (WNBA): Los Angeles Sparks UNDERPERFORMING expected margin by 12.4pts in recent games -- model bias may persist
   - CHI @ DAL (WNBA): ML/TOTAL steam since open: ML +3.3pp toward DAL; total +2 (OVER) (6 snapshots)
   - NY @ SEA (WNBA): ML/TOTAL steam since open: ML +8.9pp toward SEA; total -2 (UNDER) (2 snapshots)
+  - LA @ IND (WNBA): TOTAL steam since open: ML +0.5pp toward IND; total +2 (OVER) (4 snapshots)
   - BAL @ LAA (MLB): ML steam since open: ML +9.6pp toward LAA (4 snapshots)
-  - PIT @ COL (MLB): ML/TOTAL steam since open: ML +8.4pp toward COL; total +1 (OVER) (6 snapshots)
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
@@ -94,17 +94,17 @@
 
 ## 🎯 Convergence Picks (4 stacked games)
 - ELITE: **0** · HIGH: 1 · MED: 3
-  - [HIGH] Atlanta Dream @ Golden State Valkyries : 3 signals (HEAT_COLD, HEAT_COLD, ATS)
+  - [HIGH] Los Angeles Sparks @ Indiana Fever : 3 signals (PREGAME, HEAT_COLD, ANOMALY)
   - [MED] New York Knicks @ San Antonio Spurs : 2 signals (ATS, ATS)
   - [MED] Portland Timbers @ Seattle Sounders FC : 2 signals (PREGAME, ATS)
   - [MED] Coventry City @ Arsenal : 2 signals (PREGAME, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (11)
-- **Dylan Cease** OVER 6.5 K (76%) fair -310
+## ⚾ Top MLB Pitcher K Plays (6)
 - **Logan Gilbert** OVER 5.5 K (71%) fair -250
 - **Reid Detmers** OVER 5.5 K (71%) fair -250
-- **Chase Burns** OVER 5.5 K (70%) fair -233
 - **Foster Griffin** OVER 4.5 K (70%) fair -232
+- **Kyle Harrison** OVER 5.5 K (68%) fair -214
+- **Yoshinobu Yamamoto** OVER 5.5 K (67%) fair -200
 
 ## 🏀 NBA Player Heat (18 HOT / 22 COLD)
   - 🔥 **Jeremiah Fears** (NO): L5 31.8/5.8/6.0 vs season 16.9/3.2/4.0 [PTS +14.9, REB +2.6, AST +2.0]
@@ -117,20 +117,20 @@
   - ❄️ **Caleb Love** (POR): L5 2.6 vs season 10.8 [PTS -8.2, REB -2.1, AST -2.4] -- FADE OVER props
 
 ## 🥊 UFC Fight Matchups (UFC Fight Night: Fiziev vs. Torres)
-  - [FAVORITE] **Farman Hasanov** (5-0-0) vs Eric Nolan -- fair -211
+  - [FAVORITE] **Farman Hasanov** (6-0-0) vs Eric Nolan -- fair -234
   - [FAVORITE] **Abdul-Rakhman Yakhyaev** (10-0-0) vs Julius Walker -- fair -199
   - [FAVORITE] **Nursulton Ruziboev** (37-9-2) vs Andrey Pulyaev -- fair -186
   - [LEAN] **Daniil Donchenko** (15-2-0) vs Theodor Berggren -- fair -174
-  - [LEAN] **Asu Almabayev** (23-3-0) vs Charles Johnson -- fair -150
+  - [LEAN] **Asu Almabayev** (24-3-0) vs Charles Johnson -- fair -160
 
 ## ⛳ Golf Player Heat (from Travelers Championship)
-  - 🔥 T1 **Scottie Scheffler** (USA): -16 total -- finished T1
-  - 🔥 T2 **Viktor Hovland** (Norway): -14 total -- finished T2
-  - 🔥 T3 **Akshay Bhatia** (USA): -12 total -- finished T3
-  - 🔥 T4 **Eric Cole** (USA): -12 total -- finished T4
-  - 🔥 T5 **Matt Fitzpatrick** (England): -10 total -- finished T5
+  - 🔥 T1 **Viktor Hovland** (Norway): -20 total -- finished T1
+  - 🔥 T2 **Scottie Scheffler** (USA): -19 total -- finished T2
+  - 🔥 T3 **Patrick Cantlay** (USA): -15 total -- finished T3
+  - 🔥 T4 **Akshay Bhatia** (USA): -15 total -- finished T4
+  - 🔥 T5 **Shane Lowry** (Ireland): -13 total -- finished T5
 
-## 🔥 MLB Batter Heat (51 HOT / 43 COLD)
+## 🔥 MLB Batter Heat (51 HOT / 44 COLD)
   - 🔥 **Luisangel Acuña** (CWS): L14 .393 / season .222 (+171pts)
   - 🔥 **Nasim Nuñez** (WSH): L14 .395 / season .238 (+157pts)
   - 🔥 **Logan O'Hoppe** (LAA): L14 .366 / season .234 (+132pts)

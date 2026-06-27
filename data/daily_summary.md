@@ -4,31 +4,26 @@
 
 _Pipeline health: **DEGRADED** (14/15 artifacts ok; 1 empty, 0 stale)._ 
 
-_Generated at 2026-06-27T22:02:52 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-06-27T23:13:06 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
-**COL @ MIN - OVER_9.5**
+**LAD @ SDP - UNDER_8.0**
 - Market: -110
-- Model probability: 81.0%
-- Raw edge: +54.73%
+- Model probability: 73.8%
+- Raw edge: +40.94%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
 
-## Full Slate (9 games)
+## Full Slate (4 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 6:10p ET | ARI @ TBR | Tropicana Field | indoor | UNDER_8.5 +50.46% |
-| 7:05p ET | WSN @ BAL | Oriole Park at Camden Yards | 72F 1mph | OVER_9.0 +29.39% |
-| 7:10p ET | SEA @ CLE | Progressive Field | 69F 3mph | UNDER_7.5 +10.3% |
-| 7:10p ET | COL @ MIN | Target Field | 75F 6mph | OVER_9.5 +54.73% |
-| 7:10p ET | CHC @ MIL | American Family Field | indoor | OVER_8.0 +11.54% |
-| 7:15p ET | MIA @ STL | Busch Stadium | 76F 3mph | MIA_ML +3.44% |
-| 8:40p ET | LAD @ SDP | Petco Park | 65F 3mph | UNDER_8.0 +42.19% |
-| 9:05p ET | ATL @ SFG | Oracle Park | 57F 10mph | UNDER_8.0 +12.08% |
-| 9:38p ET | OAK @ LAA | Angel Stadium | 64F 6mph | OVER_8.5 +6.69% |
+| 7:15p ET | MIA @ STL | Busch Stadium | 76F 2mph | MIA_ML +5.39% |
+| 8:40p ET | LAD @ SDP | Petco Park | 65F 4mph | UNDER_8.0 +40.94% |
+| 9:05p ET | ATL @ SFG | Oracle Park | 57F 9mph | UNDER_8.0 +13.6% |
+| 9:38p ET | OAK @ LAA | Angel Stadium | 64F 5mph | OVER_8.0 +17.48% |
 
 ## Parlays - top 5
 
@@ -66,15 +61,14 @@ Cumulative graded plays: 118214. Wins: 87366. Hit rate: 73.9%.
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| ARI @ TBR | 52.4% | -110 | 3.23 | +220 | -220 |
-| ATL @ SFG | 41.5% | +141 | 4.68 | +175 | -175 |
-| CHC @ MIL | 27.2% | +267 | 6.5 | -102 | +102 |
-| COL @ MIN | 37.5% | +167 | 4.82 | +128 | -128 |
-| LAD @ SDP | 56.6% | -131 | 2.84 | +568 | -568 |
-| MIA @ STL | 42.3% | +136 | 4.26 | +160 | -160 |
-| OAK @ LAA | 34.6% | +189 | 5.5 | +166 | -166 |
-| SEA @ CLE | 53.9% | -117 | 3.05 | +284 | -284 |
-| WSN @ BAL | 59.2% | -145 | 2.62 | +159 | -159 |
+| ATL @ SFG | 41.5% | +141 | 4.66 | +176 | -176 |
+| CHC @ MIL | 27.2% | +267 | 6.5 | -- | -- |
+| COL @ MIN | 37.5% | +167 | 4.9 | -- | -- |
+| LAD @ SDP | 56.6% | -131 | 2.87 | +569 | -569 |
+| MIA @ STL | 42.3% | +136 | 4.23 | +160 | -160 |
+| OAK @ LAA | 34.6% | +189 | 5.49 | +166 | -166 |
+| SEA @ CLE | 53.9% | -117 | 3.09 | -- | -- |
+| WSN @ BAL | 59.2% | -145 | 2.62 | -- | -- |
 
 ## Team Form (last 10)
 
