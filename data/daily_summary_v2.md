@@ -2,7 +2,7 @@
 
 ## 🏥 Model Health: 73.6/100 [HEALTHY]
 - Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 99.7/100
+  - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 54.4/100
   - 🔴 Brier Trend: 29.6/100
   - 🟢 Pipeline Audit: 100.0/100
@@ -10,19 +10,22 @@
   - 🟢 Edge Count: 88.6/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.584)
-- **Total games on board:** 109
-- **Strong home favorites:** 2 | **Strong road dogs:** 0
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.582)
+- **Total games on board:** 111
+- **Strong home favorites:** 3 | **Strong road dogs:** 1
 
 ## 🎯 Top 5 Best Bets
-1. **CHC @ MIL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-2. **OAK @ LAA YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
-3. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
-4. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
-5. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
+1. **SEA @ CLE 4-leg SGP @ -238** (86/100 ★★★★★)
+2. **ARI @ TBR 4-leg SGP @ -209** (82/100 ★★★★★)
+3. **CHC @ MIL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+4. **OAK @ LAA YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
+5. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
+
+## 📡 Sharp Action (Line Movement)
+- [MODERATE] **PHI @ NYM** under_9.0: 50.0% → 53.49% (+3.5pp)
 
 ## 📉 Strong UNDER Signals
-- [ELITE 6.5] **PHI @ NYM** model 6.37 vs market 9.0
+- [ELITE 6.5] **PHI @ NYM** model 6.29 vs market 9.0
 - [STRONG 6.4] **ARI @ TBR** model 6.53 vs market 8.0
 
 ## 🔒 Locks of the Day -- Track Record
@@ -30,7 +33,7 @@
 - Net units: **+8.17u** | ROI: **+46.6%**
 - Last 7d: 37-4 (90.2%) | net +1.44u
 
-**Today's 10 Locks:**
+**Today's 13 Locks:**
 - [KBO] **Choi Jeong** one_plus_tb · p=73% edge=+39.8% qK=0.062u
 - [KBO] **Jose Pirela** one_plus_tb · p=73% edge=+39.2% qK=0.062u
 - [KBO] **Koo Ja-wook** one_plus_tb · p=73% edge=+38.9% qK=0.062u
@@ -41,13 +44,16 @@
 - [MLB-PP] **Lourdes Gurriel Jr.** PP_batter_hrr_under_3.5 · p=87% edge=+51.8% qK=0.062u
 - [MLB-PP] **Ryan Kreidler** PP_batter_hrr_over_0.5 · p=87% edge=+51.5% qK=0.062u
 - [MLB-PP] **Christian Vázquez** PP_batter_hrr_under_3.5 · p=87% edge=+51.4% qK=0.062u
+- [MLB-PP] **Noelvi Marte** PP_batter_hrr_under_3.5 · p=88% edge=+51.9% qK=0.062u
+- [MLB-PP] **Drew Gilbert** PP_batter_hrr_under_3.5 · p=87% edge=+51.8% qK=0.062u
+- [MLB-PP] **Lane Thomas** PP_batter_hrr_under_3.5 · p=87% edge=+51.6% qK=0.062u
 
 ## 🎰 Top Balanced 2-Leg Parlays (40-65% joint)
+- [MLB-PP] Noelvi Marte PP_batter_hrr_under_ + [MLB] PHI @ NYM PHI_ML
+  Joint: 51% | Fair: 266 | Edge: +88.1%
 - [MLB-PP] Isaac Collins PP_batter_hrr_under_ + [MLB] PHI @ NYM PHI_ML
-  Joint: 51% | Fair: 266 | Edge: +88.3%
+  Joint: 51% | Fair: 266 | Edge: +88.1%
 - [MLB-PP] Alex Bregman PP_batter_hrr_under_ + [MLB] PHI @ NYM PHI_ML
-  Joint: 51% | Fair: 266 | Edge: +88.3%
-- [MLB-PP] Lourdes Gurriel Jr. PP_batter_hrr_under_ + [MLB] PHI @ NYM PHI_ML
   Joint: 51% | Fair: 266 | Edge: +88.1%
 
 ## 🎮 Player Play of the Day (cross-sport)
@@ -57,7 +63,8 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (2)
+## ⚡ Pre-Game HIGH Conviction (3)
+- [WNBA] **Indiana Fever** HOME (3-3 L10) · model 72.6% fair -265
 - [MLS] **CF Montréal** HOME (None L10) · model 71.5% fair -251
 - [MLS] **Seattle Sounders FC** HOME (0-1 L10) · model 66.7% fair -200
 
@@ -65,24 +72,25 @@
 - Hot teams: **0** | Cold teams: **0** | Over-heavy: 0 | Under-heavy: 8
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (37)
-- STEAM_MOVE: **33**
+## ⚠️ Anomaly Detector (41)
+- RESIDUAL_DIVERGENCE: **1**
+- STEAM_MOVE: **36**
 - PEN_MISMATCH: **3**
 - COMPOUND_BULLPEN: **1**
+  - Los Angeles Sparks (WNBA): Los Angeles Sparks UNDERPERFORMING expected margin by 12.4pts in recent games -- model bias may persist
   - CHI @ DAL (WNBA): ML/TOTAL steam since open: ML +3.3pp toward DAL; total +2 (OVER) (6 snapshots)
   - NY @ SEA (WNBA): ML/TOTAL steam since open: ML +8.9pp toward SEA; total -2 (UNDER) (2 snapshots)
   - BAL @ LAA (MLB): ML steam since open: ML +9.6pp toward LAA (4 snapshots)
   - PIT @ COL (MLB): ML/TOTAL steam since open: ML +8.4pp toward COL; total +1 (OVER) (6 snapshots)
-  - OAK @ SFG (MLB): ML/TOTAL steam since open: ML +5.8pp toward SFG; total -0.5 (UNDER) (5 snapshots)
 
 ## 💰 Today's Portfolio (9 picks)
-- Total stake: **$330.0** (33.0% of $1000 bankroll)
-- Expected EV: **$-5.54**
-  - #1 [NRFI] $50 on CHC @ MIL YRFI (1st-inning OVER 0.5) (P=73%)
-  - #2 [NRFI] $35 on OAK @ LAA YRFI (1st-inning OVER 0.5) (P=65%)
-  - #3 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
-  - #4 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
-  - #5 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
+- Total stake: **$345.0** (34.5% of $1000 bankroll)
+- Expected EV: **$-1.56**
+  - #1 [SGP] $50 on SEA @ CLE 4-leg SGP @ -238 (P=70%)
+  - #2 [SGP] $50 on ARI @ TBR 4-leg SGP @ -209 (P=68%)
+  - #3 [NRFI] $50 on CHC @ MIL YRFI (1st-inning OVER 0.5) (P=73%)
+  - #4 [NRFI] $35 on OAK @ LAA YRFI (1st-inning OVER 0.5) (P=65%)
+  - #5 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
 
 ## 🎯 Convergence Picks (4 stacked games)
 - ELITE: **0** · HIGH: 1 · MED: 3
@@ -110,10 +118,10 @@
 
 ## 🥊 UFC Fight Matchups (UFC Fight Night: Fiziev vs. Torres)
   - [FAVORITE] **Farman Hasanov** (5-0-0) vs Eric Nolan -- fair -211
-  - [LEAN] **Abdul-Rakhman Yakhyaev** (9-0-0) vs Julius Walker -- fair -167
-  - [LEAN] **Nursulton Ruziboev** (36-9-2) vs Andrey Pulyaev -- fair -165
+  - [FAVORITE] **Abdul-Rakhman Yakhyaev** (10-0-0) vs Julius Walker -- fair -199
+  - [FAVORITE] **Nursulton Ruziboev** (37-9-2) vs Andrey Pulyaev -- fair -186
+  - [LEAN] **Daniil Donchenko** (15-2-0) vs Theodor Berggren -- fair -174
   - [LEAN] **Asu Almabayev** (23-3-0) vs Charles Johnson -- fair -150
-  - [LEAN] **Daniil Donchenko** (14-2-0) vs Theodor Berggren -- fair -149
 
 ## ⛳ Golf Player Heat (from Travelers Championship)
   - 🔥 T1 **Scottie Scheffler** (USA): -16 total -- finished T1
@@ -122,12 +130,12 @@
   - 🔥 T4 **Eric Cole** (USA): -12 total -- finished T4
   - 🔥 T5 **Matt Fitzpatrick** (England): -10 total -- finished T5
 
-## 🔥 MLB Batter Heat (49 HOT / 41 COLD)
+## 🔥 MLB Batter Heat (51 HOT / 43 COLD)
+  - 🔥 **Luisangel Acuña** (CWS): L14 .393 / season .222 (+171pts)
   - 🔥 **Nasim Nuñez** (WSH): L14 .395 / season .238 (+157pts)
-  - 🔥 **Luisangel Acuña** (CWS): L14 .379 / season .222 (+157pts)
-  - 🔥 **Caleb Durbin** (BOS): L14 .367 / season .229 (+138pts)
   - 🔥 **Logan O'Hoppe** (LAA): L14 .366 / season .234 (+132pts)
   - 🔥 **Pete Crow-Armstrong** (CHC): L14 .414 / season .284 (+130pts)
+  - 🔥 **Hao-Yu Lee** (DET): L14 .390 / season .261 (+129pts)
   - ❄️ **Jorge Mateo** (ATL): L14 .107 / season .262 (-155pts) -- FADE props
   - ❄️ **Carlos Cortes** (ATH): L14 .122 / season .276 (-154pts) -- FADE props
   - ❄️ **Ildemaro Vargas** (AZ): L14 .121 / season .260 (-139pts) -- FADE props

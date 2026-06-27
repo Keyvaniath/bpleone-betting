@@ -1,13 +1,13 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-06-27T15:34:59 UTC_
+_Generated 2026-06-27T22:02:02 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** 12
+- **Score:** -5
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 17
-- **Total FADES:** 56
+- **Total STRONG:** 15
+- **Total FADES:** 65
 
 ## Lock of the Night
 - **Subject:** Foster Griffin
@@ -20,15 +20,15 @@ _Generated 2026-06-27T15:34:59 UTC_
 1. **GOLF / Scottie Scheffler** (GOLF_PLAYER, score=218.57)
    - Play: Scottie Scheffler (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Viktor Hovland** (GOLF_PLAYER, score=209.86)
+2. **GOLF / Viktor Hovland** (GOLF_PLAYER, score=209.0)
    - Play: Viktor Hovland (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-3. **MLB / Willson Contreras** (MLB_BATTER, score=106.63)
-   - Play: Willson Contreras (BATTER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_BATTER)
-4. **MLB / Caleb Durbin** (MLB_BATTER, score=100.06)
-   - Play: Caleb Durbin (BATTER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_BATTER)
+3. **WNBA / caitlin clark** (WNBA_PLAYER, score=155.0)
+   - Play: caitlin clark (PLAYER_STRONG)
+   - Rationale: Cross-sport top pick (WNBA_PLAYER)
+4. **WNBA / kelsey mitchell** (WNBA_PLAYER, score=113.25)
+   - Play: kelsey mitchell (PLAYER_STRONG)
+   - Rationale: Cross-sport top pick (WNBA_PLAYER)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
@@ -45,11 +45,11 @@ _Generated 2026-06-27T15:34:59 UTC_
 ## Top Fades
 - **NHL** / stuart skinner (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / samsonov ilya (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
 - **NHL** / adin hill (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / kevin lankinen (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
 - **NHL** / thatcher demko (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / joseph woll (GOALIE_FADE)
+- **NHL** / calvin pickard (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
