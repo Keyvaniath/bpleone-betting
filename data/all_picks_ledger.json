@@ -1,33 +1,33 @@
 {
-  "generated_at": "2026-06-27T07:40:26",
+  "generated_at": "2026-06-27T09:07:59",
   "stake_assumption": "1u flat per pick",
   "total_picks": 10000,
-  "n_settled": 6191,
-  "n_pending": 897,
-  "n_void": 2912,
-  "wins": 2854,
-  "losses": 3331,
+  "n_settled": 6174,
+  "n_pending": 930,
+  "n_void": 2896,
+  "wins": 2846,
+  "losses": 3322,
   "pushes": 6,
   "hit_rate": 0.4614,
-  "net_units": -728.604,
-  "roi_pct": -11.78,
-  "n_calibrated_picks": 9399,
+  "net_units": -723.773,
+  "roi_pct": -11.73,
+  "n_calibrated_picks": 9397,
   "calibrated_reliability": {
-    "n": 6127,
-    "ece_raw": 0.0982,
-    "ece_calibrated": 0.0244,
-    "brier_raw": 0.22404,
-    "brier_calibrated": 0.20117,
+    "n": 6110,
+    "ece_raw": 0.0981,
+    "ece_calibrated": 0.0246,
+    "brier_raw": 0.22394,
+    "brier_calibrated": 0.20116,
     "note": "In-sample over the settled ledger (the isotonic transform is fit on these same outcomes); held-out 70/30 validation is in recalibration_map.json. p_predicted = raw model prob (kept untouched for the learning loop); p_calibrated = honest prob stamped per pick. Lower ECE/Brier on the calibrated column = the displayed % is truer."
   },
   "curated": {
-    "n_settled": 785,
-    "wins": 595,
-    "losses": 184,
+    "n_settled": 787,
+    "wins": 596,
+    "losses": 185,
     "pushes": 6,
-    "hit_rate": 0.7638,
-    "net_units": 218.651,
-    "roi_pct": 28.07,
+    "hit_rate": 0.7631,
+    "net_units": 218.351,
+    "roi_pct": 27.96,
     "sources": [
       "consensus_hit_elite",
       "consensus_hit_strong",
@@ -42,58 +42,13 @@
     ],
     "definition": "Featured/recommended plays only -- Lock of the Day, Top 25, Whale, Sharp, Consensus (hit), Under Alerts, POD. Excludes the experimental prop feeds, which are tracked to train the model, not bet."
   },
-  "n_added_this_run": 0,
-  "n_newly_settled_this_run": 4,
+  "n_added_this_run": 35,
+  "n_newly_settled_this_run": 2,
   "n_resettled_this_run": 0,
   "n_voided_this_run": 0,
   "n_reconciled_settled_voids": 0,
   "n_bootstrapped_from_locks_history": 0,
   "by_source": {
-    "mlb_run_to_score_run_no": {
-      "n": 287,
-      "wins": 194,
-      "losses": 93,
-      "pushes": 0,
-      "net_units": 4.246,
-      "hit_rate": 0.676,
-      "roi_pct": 1.48
-    },
-    "mlb_hit_to_record_hit_yes": {
-      "n": 51,
-      "wins": 31,
-      "losses": 20,
-      "pushes": 0,
-      "net_units": -14.465,
-      "hit_rate": 0.6078,
-      "roi_pct": -28.36
-    },
-    "mlb_hit_to_record_hit_no": {
-      "n": 191,
-      "wins": 97,
-      "losses": 94,
-      "pushes": 0,
-      "net_units": -21.721,
-      "hit_rate": 0.5079,
-      "roi_pct": -11.37
-    },
-    "f1_quali_pole": {
-      "n": 25,
-      "wins": 1,
-      "losses": 24,
-      "pushes": 0,
-      "net_units": -22.26,
-      "hit_rate": 0.04,
-      "roi_pct": -89.04
-    },
-    "f1_quali_top_6": {
-      "n": 10,
-      "wins": 5,
-      "losses": 5,
-      "pushes": 0,
-      "net_units": -2.27,
-      "hit_rate": 0.5,
-      "roi_pct": -22.7
-    },
     "wnba_3pm_3pm_under_1.0": {
       "n": 4,
       "wins": 1,
@@ -194,13 +149,13 @@
       "roi_pct": -67.55
     },
     "top_25_board": {
-      "n": 323,
-      "wins": 228,
+      "n": 324,
+      "wins": 229,
       "losses": 91,
       "pushes": 4,
-      "net_units": 83.535,
-      "hit_rate": 0.7147,
-      "roi_pct": 26.19
+      "net_units": 84.234,
+      "hit_rate": 0.7156,
+      "roi_pct": 26.32
     },
     "whale_strong": {
       "n": 20,
@@ -228,6 +183,15 @@
       "net_units": -46.623,
       "hit_rate": 0.422,
       "roi_pct": -42.77
+    },
+    "mlb_run_to_score_run_no": {
+      "n": 282,
+      "wins": 189,
+      "losses": 93,
+      "pushes": 0,
+      "net_units": 1.802,
+      "hit_rate": 0.6702,
+      "roi_pct": 0.64
     },
     "wnba_alts_home_total_over_75.2": {
       "n": 2,
@@ -318,6 +282,24 @@
       "net_units": 13.48,
       "hit_rate": 0.7,
       "roi_pct": 33.7
+    },
+    "f1_quali_pole": {
+      "n": 20,
+      "wins": 1,
+      "losses": 19,
+      "pushes": 0,
+      "net_units": -17.26,
+      "hit_rate": 0.05,
+      "roi_pct": -86.3
+    },
+    "f1_quali_top_6": {
+      "n": 8,
+      "wins": 4,
+      "losses": 4,
+      "pushes": 0,
+      "net_units": -1.816,
+      "hit_rate": 0.5,
+      "roi_pct": -22.7
     },
     "golf_top_20": {
       "n": 176,
@@ -437,13 +419,13 @@
       "roi_pct": 59.25
     },
     "sharp_elite": {
-      "n": 8,
+      "n": 9,
       "wins": 6,
-      "losses": 2,
+      "losses": 3,
       "pushes": 0,
-      "net_units": 3.46,
-      "hit_rate": 0.75,
-      "roi_pct": 43.25
+      "net_units": 2.46,
+      "hit_rate": 0.6667,
+      "roi_pct": 27.33
     },
     "sharp_strong": {
       "n": 8,
@@ -480,6 +462,24 @@
       "net_units": -1.0,
       "hit_rate": 0.0,
       "roi_pct": -100.0
+    },
+    "mlb_hit_to_record_hit_yes": {
+      "n": 48,
+      "wins": 31,
+      "losses": 17,
+      "pushes": 0,
+      "net_units": -11.465,
+      "hit_rate": 0.6458,
+      "roi_pct": -23.89
+    },
+    "mlb_hit_to_record_hit_no": {
+      "n": 187,
+      "wins": 94,
+      "losses": 93,
+      "pushes": 0,
+      "net_units": -22.601,
+      "hit_rate": 0.5027,
+      "roi_pct": -12.09
     },
     "mlb_game_total_game_total_under_10.5": {
       "n": 5,
@@ -1266,46 +1266,6 @@
     }
   },
   "by_market_family": {
-    "to_score_run_no": {
-      "n": 287,
-      "wins": 194,
-      "losses": 93,
-      "pushes": 0,
-      "net_units": 4.246,
-      "hit_rate": 0.676
-    },
-    "to_record_hit_yes": {
-      "n": 51,
-      "wins": 31,
-      "losses": 20,
-      "pushes": 0,
-      "net_units": -14.465,
-      "hit_rate": 0.6078
-    },
-    "to_record_hit_no": {
-      "n": 191,
-      "wins": 97,
-      "losses": 94,
-      "pushes": 0,
-      "net_units": -21.721,
-      "hit_rate": 0.5079
-    },
-    "pole": {
-      "n": 25,
-      "wins": 1,
-      "losses": 24,
-      "pushes": 0,
-      "net_units": -22.26,
-      "hit_rate": 0.04
-    },
-    "top": {
-      "n": 380,
-      "wins": 176,
-      "losses": 204,
-      "pushes": 0,
-      "net_units": -6.553,
-      "hit_rate": 0.4632
-    },
     "3pm_under": {
       "n": 35,
       "wins": 26,
@@ -1395,12 +1355,12 @@
       "hit_rate": 0.2256
     },
     "ml_home": {
-      "n": 10,
-      "wins": 4,
+      "n": 11,
+      "wins": 5,
       "losses": 6,
       "pushes": 0,
-      "net_units": -3.237,
-      "hit_rate": 0.4
+      "net_units": -2.538,
+      "hit_rate": 0.4545
     },
     "pp_batter_hrr": {
       "n": 547,
@@ -1417,6 +1377,14 @@
       "pushes": 0,
       "net_units": -46.623,
       "hit_rate": 0.422
+    },
+    "to_score_run_no": {
+      "n": 282,
+      "wins": 189,
+      "losses": 93,
+      "pushes": 0,
+      "net_units": 1.802,
+      "hit_rate": 0.6702
     },
     "home_total_over": {
       "n": 62,
@@ -1457,6 +1425,22 @@
       "pushes": 0,
       "net_units": 12.48,
       "hit_rate": 0.6829
+    },
+    "pole": {
+      "n": 20,
+      "wins": 1,
+      "losses": 19,
+      "pushes": 0,
+      "net_units": -17.26,
+      "hit_rate": 0.05
+    },
+    "top": {
+      "n": 378,
+      "wins": 175,
+      "losses": 203,
+      "pushes": 0,
+      "net_units": -6.098,
+      "hit_rate": 0.463
     },
     "steals_over": {
       "n": 4,
@@ -1507,12 +1491,12 @@
       "hit_rate": 0.6066
     },
     "ml_away": {
-      "n": 53,
+      "n": 54,
       "wins": 34,
-      "losses": 19,
+      "losses": 20,
       "pushes": 0,
-      "net_units": 9.254,
-      "hit_rate": 0.6415
+      "net_units": 8.254,
+      "hit_rate": 0.6296
     },
     "fight_r1_finish_yes": {
       "n": 110,
@@ -1521,6 +1505,22 @@
       "pushes": 0,
       "net_units": 189.12,
       "hit_rate": 0.5818
+    },
+    "to_record_hit_yes": {
+      "n": 48,
+      "wins": 31,
+      "losses": 17,
+      "pushes": 0,
+      "net_units": -11.465,
+      "hit_rate": 0.6458
+    },
+    "to_record_hit_no": {
+      "n": 187,
+      "wins": 94,
+      "losses": 93,
+      "pushes": 0,
+      "net_units": -22.601,
+      "hit_rate": 0.5027
     },
     "hits_2plus_yes": {
       "n": 68,
@@ -1732,46 +1732,6 @@
     }
   },
   "by_canonical": {
-    "mlb_run_0.5_under": {
-      "n": 287,
-      "wins": 194,
-      "losses": 93,
-      "pushes": 0,
-      "net_units": 4.246,
-      "hit_rate": 0.676
-    },
-    "mlb_hit_0.5_over": {
-      "n": 92,
-      "wins": 59,
-      "losses": 33,
-      "pushes": 0,
-      "net_units": -1.985,
-      "hit_rate": 0.6413
-    },
-    "mlb_hit_0.5_under": {
-      "n": 191,
-      "wins": 97,
-      "losses": 94,
-      "pushes": 0,
-      "net_units": -21.721,
-      "hit_rate": 0.5079
-    },
-    "pole": {
-      "n": 25,
-      "wins": 1,
-      "losses": 24,
-      "pushes": 0,
-      "net_units": -22.26,
-      "hit_rate": 0.04
-    },
-    "top": {
-      "n": 380,
-      "wins": 176,
-      "losses": 204,
-      "pushes": 0,
-      "net_units": -6.553,
-      "hit_rate": 0.4632
-    },
     "3pm_under": {
       "n": 35,
       "wins": 26,
@@ -1861,12 +1821,12 @@
       "hit_rate": 0.2256
     },
     "ml_home": {
-      "n": 10,
-      "wins": 4,
+      "n": 11,
+      "wins": 5,
       "losses": 6,
       "pushes": 0,
-      "net_units": -3.237,
-      "hit_rate": 0.4
+      "net_units": -2.538,
+      "hit_rate": 0.4545
     },
     "mlb_hrr_4.5_under": {
       "n": 44,
@@ -1891,6 +1851,14 @@
       "pushes": 0,
       "net_units": -46.623,
       "hit_rate": 0.422
+    },
+    "mlb_run_0.5_under": {
+      "n": 282,
+      "wins": 189,
+      "losses": 93,
+      "pushes": 0,
+      "net_units": 1.802,
+      "hit_rate": 0.6702
     },
     "home_total_over": {
       "n": 62,
@@ -1924,6 +1892,14 @@
       "net_units": -1.472,
       "hit_rate": 0.5579
     },
+    "mlb_hit_0.5_over": {
+      "n": 89,
+      "wins": 59,
+      "losses": 30,
+      "pushes": 0,
+      "net_units": 1.015,
+      "hit_rate": 0.6629
+    },
     "mlb_hrr_0.5_over": {
       "n": 14,
       "wins": 10,
@@ -1931,6 +1907,22 @@
       "pushes": 0,
       "net_units": 0.901,
       "hit_rate": 0.7143
+    },
+    "pole": {
+      "n": 20,
+      "wins": 1,
+      "losses": 19,
+      "pushes": 0,
+      "net_units": -17.26,
+      "hit_rate": 0.05
+    },
+    "top": {
+      "n": 378,
+      "wins": 175,
+      "losses": 203,
+      "pushes": 0,
+      "net_units": -6.098,
+      "hit_rate": 0.463
     },
     "steals_over": {
       "n": 4,
@@ -1989,12 +1981,12 @@
       "hit_rate": 0.5
     },
     "ml_away": {
-      "n": 53,
+      "n": 54,
       "wins": 34,
-      "losses": 19,
+      "losses": 20,
       "pushes": 0,
-      "net_units": 9.254,
-      "hit_rate": 0.6415
+      "net_units": 8.254,
+      "hit_rate": 0.6296
     },
     "fight_r1_finish_yes": {
       "n": 110,
@@ -2003,6 +1995,14 @@
       "pushes": 0,
       "net_units": 189.12,
       "hit_rate": 0.5818
+    },
+    "mlb_hit_0.5_under": {
+      "n": 187,
+      "wins": 94,
+      "losses": 93,
+      "pushes": 0,
+      "net_units": -22.601,
+      "hit_rate": 0.5027
     },
     "mlb_hit_1.5_over": {
       "n": 68,
@@ -2215,30 +2215,17 @@
   },
   "by_sport": {
     "MLB": {
-      "n": 7306,
-      "settled": 4675,
-      "wins": 1861,
-      "losses": 2808,
+      "n": 7289,
+      "settled": 4665,
+      "wins": 1854,
+      "losses": 2805,
       "pushes": 6,
-      "pending": 544,
-      "void": 2087,
-      "net_units": -1074.542,
-      "hit_rate": 0.3986,
-      "roi_pct": -23.01,
+      "pending": 553,
+      "void": 2071,
+      "net_units": -1075.168,
+      "hit_rate": 0.3979,
+      "roi_pct": -23.08,
       "markets": 48
-    },
-    "F1": {
-      "n": 47,
-      "settled": 40,
-      "wins": 7,
-      "losses": 33,
-      "pushes": 0,
-      "pending": 7,
-      "void": 0,
-      "net_units": -27.872,
-      "hit_rate": 0.175,
-      "roi_pct": -69.68,
-      "markets": 3
     },
     "MLS": {
       "n": 29,
@@ -2331,13 +2318,26 @@
       "roi_pct": null,
       "markets": 2
     },
+    "F1": {
+      "n": 40,
+      "settled": 33,
+      "wins": 6,
+      "losses": 27,
+      "pushes": 0,
+      "pending": 7,
+      "void": 0,
+      "net_units": -22.418,
+      "hit_rate": 0.1818,
+      "roi_pct": -67.93,
+      "markets": 3
+    },
     "GOLF": {
-      "n": 439,
+      "n": 453,
       "settled": 365,
       "wins": 170,
       "losses": 195,
       "pushes": 0,
-      "pending": 74,
+      "pending": 88,
       "void": 0,
       "net_units": -0.94,
       "hit_rate": 0.4658,
@@ -2371,12 +2371,12 @@
       "markets": 5
     },
     "WORLDCUP": {
-      "n": 147,
+      "n": 157,
       "settled": 135,
       "wins": 89,
       "losses": 46,
       "pushes": 0,
-      "pending": 12,
+      "pending": 22,
       "void": 0,
       "net_units": -1.157,
       "hit_rate": 0.6593,
@@ -2398,815 +2398,12 @@
     }
   },
   "last_7_days": {
-    "wins": 430,
-    "losses": 673,
-    "net_units": -133.492,
-    "hit_rate": 0.3898
+    "wins": 431,
+    "losses": 674,
+    "net_units": -133.792,
+    "hit_rate": 0.39
   },
   "picks": [
-    {
-      "source": "mlb_run_to_score_run_no",
-      "sport": "MLB",
-      "player_or_matchup": "Nasim Nu\u00f1ez",
-      "market": "TO_SCORE_RUN_NO",
-      "prob": 0.643,
-      "fair_american": -180,
-      "p_predicted": 0.643,
-      "matchup": "MIA @ WSN",
-      "date": "2026-06-02",
-      "pick_id": "mlb_run_to_score_run_no|MLB|Nasim_Nu_ez|TO_SCORE_RUN_NO|2026-06-02",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
-      "recorded_at": "2026-06-02T02:14:45",
-      "voided": true,
-      "voided_at": "2026-06-07T01:36:04",
-      "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.6649
-    },
-    {
-      "source": "mlb_run_to_score_run_no",
-      "sport": "MLB",
-      "player_or_matchup": "Tyler Stephenson",
-      "market": "TO_SCORE_RUN_NO",
-      "prob": 0.643,
-      "fair_american": -180,
-      "p_predicted": 0.643,
-      "matchup": "KCR @ CIN",
-      "date": "2026-06-02",
-      "pick_id": "mlb_run_to_score_run_no|MLB|Tyler_Stephenson|TO_SCORE_RUN_NO|2026-06-02",
-      "settled": true,
-      "result": "won",
-      "payout_units": 0.5556,
-      "recorded_at": "2026-06-02T02:14:45",
-      "outcome": {
-        "stat": "runs",
-        "actual": 0,
-        "line": 0.5,
-        "side": "UNDER/NO",
-        "verify": "Tyler Stephenson \u2014 runs = 0 (line 0.5, bet UNDER/NO) on 2026-06-02",
-        "check": "verified"
-      },
-      "settled_at": "2026-06-03T12:56:07",
-      "p_calibrated": 0.6649
-    },
-    {
-      "source": "mlb_run_to_score_run_no",
-      "sport": "MLB",
-      "player_or_matchup": "Vinnie Pasquantino",
-      "market": "TO_SCORE_RUN_NO",
-      "prob": 0.643,
-      "fair_american": -180,
-      "p_predicted": 0.643,
-      "matchup": "KCR @ CIN",
-      "date": "2026-06-02",
-      "pick_id": "mlb_run_to_score_run_no|MLB|Vinnie_Pasquantino|TO_SCORE_RUN_NO|2026-06-02",
-      "settled": true,
-      "result": "won",
-      "payout_units": 0.5556,
-      "recorded_at": "2026-06-02T02:14:45",
-      "outcome": {
-        "stat": "runs",
-        "actual": 0,
-        "line": 0.5,
-        "side": "UNDER/NO",
-        "verify": "Vinnie Pasquantino \u2014 runs = 0 (line 0.5, bet UNDER/NO) on 2026-06-02",
-        "check": "verified"
-      },
-      "settled_at": "2026-06-03T12:56:07",
-      "p_calibrated": 0.6649
-    },
-    {
-      "source": "mlb_run_to_score_run_no",
-      "sport": "MLB",
-      "player_or_matchup": "Isaac Collins",
-      "market": "TO_SCORE_RUN_NO",
-      "prob": 0.643,
-      "fair_american": -180,
-      "p_predicted": 0.643,
-      "matchup": "KCR @ CIN",
-      "date": "2026-06-02",
-      "pick_id": "mlb_run_to_score_run_no|MLB|Isaac_Collins|TO_SCORE_RUN_NO|2026-06-02",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
-      "recorded_at": "2026-06-02T02:14:45",
-      "voided": true,
-      "voided_at": "2026-06-07T01:36:04",
-      "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.6649
-    },
-    {
-      "source": "mlb_run_to_score_run_no",
-      "sport": "MLB",
-      "player_or_matchup": "Edwin Arroyo",
-      "market": "TO_SCORE_RUN_NO",
-      "prob": 0.653,
-      "fair_american": -188,
-      "p_predicted": 0.653,
-      "matchup": "KCR @ CIN",
-      "date": "2026-06-02",
-      "pick_id": "mlb_run_to_score_run_no|MLB|Edwin_Arroyo|TO_SCORE_RUN_NO|2026-06-02",
-      "settled": true,
-      "result": "won",
-      "payout_units": 0.5319,
-      "recorded_at": "2026-06-02T02:14:45",
-      "outcome": {
-        "stat": "runs",
-        "actual": 0,
-        "line": 0.5,
-        "side": "UNDER/NO",
-        "verify": "Edwin Arroyo \u2014 runs = 0 (line 0.5, bet UNDER/NO) on 2026-06-02",
-        "check": "verified"
-      },
-      "settled_at": "2026-06-03T12:56:07",
-      "p_calibrated": 0.6649
-    },
-    {
-      "source": "mlb_run_to_score_run_no",
-      "sport": "MLB",
-      "player_or_matchup": "Jos\u00e9 Tena",
-      "market": "TO_SCORE_RUN_NO",
-      "prob": 0.714,
-      "fair_american": -250,
-      "p_predicted": 0.714,
-      "matchup": "MIA @ WSN",
-      "date": "2026-06-02",
-      "pick_id": "mlb_run_to_score_run_no|MLB|Jos__Tena|TO_SCORE_RUN_NO|2026-06-02",
-      "settled": true,
-      "result": "won",
-      "payout_units": 0.4,
-      "recorded_at": "2026-06-02T02:14:45",
-      "outcome": {
-        "stat": "runs",
-        "actual": 0,
-        "line": 0.5,
-        "side": "UNDER/NO",
-        "verify": "Jos\u00e9 Tena \u2014 runs = 0 (line 0.5, bet UNDER/NO) on 2026-06-02",
-        "check": "verified"
-      },
-      "settled_at": "2026-06-03T14:44:35",
-      "p_calibrated": 0.741
-    },
-    {
-      "source": "mlb_run_to_score_run_no",
-      "sport": "MLB",
-      "player_or_matchup": "Carter Jensen",
-      "market": "TO_SCORE_RUN_NO",
-      "prob": 0.714,
-      "fair_american": -250,
-      "p_predicted": 0.714,
-      "matchup": "KCR @ CIN",
-      "date": "2026-06-02",
-      "pick_id": "mlb_run_to_score_run_no|MLB|Carter_Jensen|TO_SCORE_RUN_NO|2026-06-02",
-      "settled": true,
-      "result": "won",
-      "payout_units": 0.4,
-      "recorded_at": "2026-06-02T02:14:45",
-      "outcome": {
-        "stat": "runs",
-        "actual": 0,
-        "line": 0.5,
-        "side": "UNDER/NO",
-        "verify": "Carter Jensen \u2014 runs = 0 (line 0.5, bet UNDER/NO) on 2026-06-02",
-        "check": "verified"
-      },
-      "settled_at": "2026-06-03T12:56:07",
-      "p_calibrated": 0.741
-    },
-    {
-      "source": "mlb_hit_to_record_hit_yes",
-      "sport": "MLB",
-      "player_or_matchup": "James Wood",
-      "market": "TO_RECORD_HIT_YES",
-      "prob": 0.887,
-      "fair_american": -787,
-      "p_predicted": 0.887,
-      "matchup": "MIA @ WSN",
-      "date": "2026-06-02",
-      "pick_id": "mlb_hit_to_record_hit_yes|MLB|James_Wood|TO_RECORD_HIT_YES|2026-06-02",
-      "settled": true,
-      "result": "lost",
-      "payout_units": -1.0,
-      "recorded_at": "2026-06-02T02:14:45",
-      "outcome": {
-        "stat": "hits",
-        "actual": 0,
-        "line": 0.5,
-        "side": "OVER/YES",
-        "verify": "James Wood \u2014 hits = 0 (line 0.5, bet OVER/YES) on 2026-06-02",
-        "check": "verified"
-      },
-      "settled_at": "2026-06-03T12:56:07",
-      "p_calibrated": 0.661
-    },
-    {
-      "source": "mlb_hit_to_record_hit_yes",
-      "sport": "MLB",
-      "player_or_matchup": "Keibert Ruiz",
-      "market": "TO_RECORD_HIT_YES",
-      "prob": 0.833,
-      "fair_american": -497,
-      "p_predicted": 0.833,
-      "matchup": "MIA @ WSN",
-      "date": "2026-06-02",
-      "pick_id": "mlb_hit_to_record_hit_yes|MLB|Keibert_Ruiz|TO_RECORD_HIT_YES|2026-06-02",
-      "settled": true,
-      "result": "lost",
-      "payout_units": -1.0,
-      "recorded_at": "2026-06-02T02:14:45",
-      "outcome": {
-        "stat": "hits",
-        "actual": 0,
-        "line": 0.5,
-        "side": "OVER/YES",
-        "verify": "Keibert Ruiz \u2014 hits = 0 (line 0.5, bet OVER/YES) on 2026-06-02",
-        "check": "verified"
-      },
-      "settled_at": "2026-06-03T14:44:35",
-      "p_calibrated": 0.6507
-    },
-    {
-      "source": "mlb_hit_to_record_hit_yes",
-      "sport": "MLB",
-      "player_or_matchup": "Sal Stewart",
-      "market": "TO_RECORD_HIT_YES",
-      "prob": 0.806,
-      "fair_american": -416,
-      "p_predicted": 0.806,
-      "matchup": "KCR @ CIN",
-      "date": "2026-06-02",
-      "pick_id": "mlb_hit_to_record_hit_yes|MLB|Sal_Stewart|TO_RECORD_HIT_YES|2026-06-02",
-      "settled": true,
-      "result": "lost",
-      "payout_units": -1.0,
-      "recorded_at": "2026-06-02T02:14:45",
-      "outcome": {
-        "stat": "hits",
-        "actual": 0,
-        "line": 0.5,
-        "side": "OVER/YES",
-        "verify": "Sal Stewart \u2014 hits = 0 (line 0.5, bet OVER/YES) on 2026-06-02",
-        "check": "verified"
-      },
-      "settled_at": "2026-06-03T12:56:07",
-      "p_calibrated": 0.6456
-    },
-    {
-      "source": "mlb_hit_to_record_hit_no",
-      "sport": "MLB",
-      "player_or_matchup": "Isaac Collins",
-      "market": "TO_RECORD_HIT_NO",
-      "prob": 0.509,
-      "fair_american": -104,
-      "p_predicted": 0.509,
-      "matchup": "KCR @ CIN",
-      "date": "2026-06-02",
-      "pick_id": "mlb_hit_to_record_hit_no|MLB|Isaac_Collins|TO_RECORD_HIT_NO|2026-06-02",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
-      "recorded_at": "2026-06-02T02:14:45",
-      "voided": true,
-      "voided_at": "2026-06-07T01:36:04",
-      "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.4358
-    },
-    {
-      "source": "mlb_hit_to_record_hit_no",
-      "sport": "MLB",
-      "player_or_matchup": "Matt McLain",
-      "market": "TO_RECORD_HIT_NO",
-      "prob": 0.533,
-      "fair_american": -114,
-      "p_predicted": 0.533,
-      "matchup": "KCR @ CIN",
-      "date": "2026-06-02",
-      "pick_id": "mlb_hit_to_record_hit_no|MLB|Matt_McLain|TO_RECORD_HIT_NO|2026-06-02",
-      "settled": true,
-      "result": "won",
-      "payout_units": 0.8772,
-      "recorded_at": "2026-06-02T02:14:45",
-      "outcome": {
-        "stat": "hits",
-        "actual": 0,
-        "line": 0.5,
-        "side": "UNDER/NO",
-        "verify": "Matt McLain \u2014 hits = 0 (line 0.5, bet UNDER/NO) on 2026-06-02",
-        "check": "verified"
-      },
-      "settled_at": "2026-06-03T12:56:07",
-      "p_calibrated": 0.5413
-    },
-    {
-      "source": "mlb_hit_to_record_hit_no",
-      "sport": "MLB",
-      "player_or_matchup": "Nasim Nu\u00f1ez",
-      "market": "TO_RECORD_HIT_NO",
-      "prob": 0.639,
-      "fair_american": -177,
-      "p_predicted": 0.639,
-      "matchup": "MIA @ WSN",
-      "date": "2026-06-02",
-      "pick_id": "mlb_hit_to_record_hit_no|MLB|Nasim_Nu_ez|TO_RECORD_HIT_NO|2026-06-02",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
-      "recorded_at": "2026-06-02T02:14:45",
-      "voided": true,
-      "voided_at": "2026-06-07T01:36:04",
-      "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.5497
-    },
-    {
-      "source": "mlb_hit_to_record_hit_no",
-      "sport": "MLB",
-      "player_or_matchup": "Jos\u00e9 Tena",
-      "market": "TO_RECORD_HIT_NO",
-      "prob": 0.645,
-      "fair_american": -182,
-      "p_predicted": 0.645,
-      "matchup": "MIA @ WSN",
-      "date": "2026-06-02",
-      "pick_id": "mlb_hit_to_record_hit_no|MLB|Jos__Tena|TO_RECORD_HIT_NO|2026-06-02",
-      "settled": true,
-      "result": "won",
-      "payout_units": 0.5495,
-      "recorded_at": "2026-06-02T02:14:45",
-      "outcome": {
-        "stat": "hits",
-        "actual": 0,
-        "line": 0.5,
-        "side": "UNDER/NO",
-        "verify": "Jos\u00e9 Tena \u2014 hits = 0 (line 0.5, bet UNDER/NO) on 2026-06-02",
-        "check": "verified"
-      },
-      "settled_at": "2026-06-03T14:44:35",
-      "p_calibrated": 0.5519
-    },
-    {
-      "source": "mlb_hit_to_record_hit_no",
-      "sport": "MLB",
-      "player_or_matchup": "Nick Loftin",
-      "market": "TO_RECORD_HIT_NO",
-      "prob": 0.678,
-      "fair_american": -210,
-      "p_predicted": 0.678,
-      "matchup": "KCR @ CIN",
-      "date": "2026-06-02",
-      "pick_id": "mlb_hit_to_record_hit_no|MLB|Nick_Loftin|TO_RECORD_HIT_NO|2026-06-02",
-      "settled": true,
-      "result": "lost",
-      "payout_units": -1.0,
-      "recorded_at": "2026-06-02T02:14:45",
-      "outcome": {
-        "stat": "hits",
-        "actual": 1,
-        "line": 0.5,
-        "side": "UNDER/NO",
-        "verify": "Nick Loftin \u2014 hits = 1 (line 0.5, bet UNDER/NO) on 2026-06-02",
-        "check": "verified"
-      },
-      "settled_at": "2026-06-03T12:56:07",
-      "p_calibrated": 0.5637
-    },
-    {
-      "source": "mlb_hit_to_record_hit_no",
-      "sport": "MLB",
-      "player_or_matchup": "Lane Thomas",
-      "market": "TO_RECORD_HIT_NO",
-      "prob": 0.689,
-      "fair_american": -221,
-      "p_predicted": 0.689,
-      "matchup": "KCR @ CIN",
-      "date": "2026-06-02",
-      "pick_id": "mlb_hit_to_record_hit_no|MLB|Lane_Thomas|TO_RECORD_HIT_NO|2026-06-02",
-      "settled": true,
-      "result": "won",
-      "payout_units": 0.4525,
-      "recorded_at": "2026-06-02T02:14:45",
-      "outcome": {
-        "stat": "hits",
-        "actual": 0,
-        "line": 0.5,
-        "side": "UNDER/NO",
-        "verify": "Lane Thomas \u2014 hits = 0 (line 0.5, bet UNDER/NO) on 2026-06-02",
-        "check": "verified"
-      },
-      "settled_at": "2026-06-03T12:56:07",
-      "p_calibrated": 0.5676
-    },
-    {
-      "source": "mlb_inn_7_9_inn_7_9_under_3.5",
-      "sport": "MLB",
-      "player_or_matchup": "CHW @ MIN",
-      "market": "INN_7_9_UNDER_3.5",
-      "prob": 0.638,
-      "fair_american": -176,
-      "p_predicted": 0.638,
-      "matchup": "CHW @ MIN",
-      "date": "2026-06-02",
-      "pick_id": "mlb_inn_7_9_inn_7_9_under_3_5|MLB|CHW___MIN|INN_7_9_UNDER_3_5|2026-06-02",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
-      "recorded_at": "2026-06-02T02:14:45",
-      "voided": true,
-      "voided_at": "2026-06-07T01:36:04",
-      "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.638
-    },
-    {
-      "source": "mlb_inn_1_3_inn_1_3_under_2.5",
-      "sport": "MLB",
-      "player_or_matchup": "DET @ TBR",
-      "market": "INN_1_3_UNDER_2.5",
-      "prob": 0.666,
-      "fair_american": -199,
-      "p_predicted": 0.666,
-      "matchup": "DET @ TBR",
-      "date": "2026-06-02",
-      "pick_id": "mlb_inn_1_3_inn_1_3_under_2_5|MLB|DET___TBR|INN_1_3_UNDER_2_5|2026-06-02",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
-      "recorded_at": "2026-06-02T02:14:45",
-      "voided": true,
-      "voided_at": "2026-06-07T01:36:04",
-      "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.666
-    },
-    {
-      "source": "mlb_f5",
-      "sport": "MLB",
-      "player_or_matchup": "KCR @ CIN",
-      "market": "f5_total_over_4",
-      "prob": 0.964,
-      "fair_american": -2694,
-      "p_predicted": 0.964,
-      "date": "2026-06-02",
-      "pick_id": "mlb_f5|MLB|KCR___CIN|f5_total_over_4|2026-06-02",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
-      "recorded_at": "2026-06-02T02:14:45",
-      "voided": true,
-      "voided_at": "2026-06-07T01:36:04",
-      "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.964
-    },
-    {
-      "source": "mlb_f5",
-      "sport": "MLB",
-      "player_or_matchup": "SFG @ MIL",
-      "market": "f5_total_under_4",
-      "prob": 0.668,
-      "fair_american": -201,
-      "p_predicted": 0.668,
-      "date": "2026-06-02",
-      "pick_id": "mlb_f5|MLB|SFG___MIL|f5_total_under_4|2026-06-02",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
-      "recorded_at": "2026-06-02T02:14:45",
-      "voided": true,
-      "voided_at": "2026-06-07T01:36:04",
-      "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.668
-    },
-    {
-      "source": "mlb_f5",
-      "sport": "MLB",
-      "player_or_matchup": "DET @ TBR",
-      "market": "f5_total_under_4",
-      "prob": 0.749,
-      "fair_american": -298,
-      "p_predicted": 0.749,
-      "date": "2026-06-02",
-      "pick_id": "mlb_f5|MLB|DET___TBR|f5_total_under_4|2026-06-02",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
-      "recorded_at": "2026-06-02T02:14:45",
-      "voided": true,
-      "voided_at": "2026-06-07T01:36:04",
-      "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.749
-    },
-    {
-      "source": "mlb_f5",
-      "sport": "MLB",
-      "player_or_matchup": "NYM @ SEA",
-      "market": "f5_total_under_4",
-      "prob": 0.823,
-      "fair_american": -465,
-      "p_predicted": 0.823,
-      "date": "2026-06-02",
-      "pick_id": "mlb_f5|MLB|NYM___SEA|f5_total_under_4|2026-06-02",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
-      "recorded_at": "2026-06-02T02:14:45",
-      "voided": true,
-      "voided_at": "2026-06-07T01:36:04",
-      "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.823
-    },
-    {
-      "source": "f1_quali_pole",
-      "sport": "F1",
-      "player_or_matchup": "charles leclerc",
-      "market": "POLE",
-      "prob": 0.482,
-      "fair_american": 107,
-      "p_predicted": 0.482,
-      "matchup": "Unknown",
-      "date": "2026-06-02",
-      "pick_id": "f1_quali_pole|F1|charles_leclerc|POLE|2026-06-02",
-      "settled": true,
-      "result": "lost",
-      "payout_units": -1.0,
-      "recorded_at": "2026-06-02T02:14:45",
-      "outcome": {
-        "event": "Monaco Grand Prix",
-        "session": "qualifying",
-        "position": 4,
-        "market": "POLE",
-        "verify": "Charles Leclerc qualifying P4 at Monaco Grand Prix \u2014 POLE"
-      },
-      "settled_at": "2026-06-06T21:24:19",
-      "p_calibrated": 0.482
-    },
-    {
-      "source": "f1_quali_pole",
-      "sport": "F1",
-      "player_or_matchup": "lando norris",
-      "market": "POLE",
-      "prob": 0.462,
-      "fair_american": 116,
-      "p_predicted": 0.462,
-      "matchup": "Unknown",
-      "date": "2026-06-02",
-      "pick_id": "f1_quali_pole|F1|lando_norris|POLE|2026-06-02",
-      "settled": true,
-      "result": "lost",
-      "payout_units": -1.0,
-      "recorded_at": "2026-06-02T02:14:45",
-      "outcome": {
-        "event": "Monaco Grand Prix",
-        "session": "qualifying",
-        "position": 8,
-        "market": "POLE",
-        "verify": "Lando Norris qualifying P8 at Monaco Grand Prix \u2014 POLE"
-      },
-      "settled_at": "2026-06-06T21:24:19",
-      "p_calibrated": 0.462
-    },
-    {
-      "source": "f1_quali_pole",
-      "sport": "F1",
-      "player_or_matchup": "carlos sainz",
-      "market": "POLE",
-      "prob": 0.403,
-      "fair_american": 148,
-      "p_predicted": 0.403,
-      "matchup": "Unknown",
-      "date": "2026-06-02",
-      "pick_id": "f1_quali_pole|F1|carlos_sainz|POLE|2026-06-02",
-      "settled": true,
-      "result": "lost",
-      "payout_units": -1.0,
-      "recorded_at": "2026-06-02T02:14:45",
-      "outcome": {
-        "event": "Monaco Grand Prix",
-        "session": "qualifying",
-        "position": 12,
-        "market": "POLE",
-        "verify": "Carlos Sainz qualifying P12 at Monaco Grand Prix \u2014 POLE"
-      },
-      "settled_at": "2026-06-06T21:24:19",
-      "p_calibrated": 0.403
-    },
-    {
-      "source": "f1_quali_pole",
-      "sport": "F1",
-      "player_or_matchup": "oscar piastri",
-      "market": "POLE",
-      "prob": 0.384,
-      "fair_american": 160,
-      "p_predicted": 0.384,
-      "matchup": "Unknown",
-      "date": "2026-06-02",
-      "pick_id": "f1_quali_pole|F1|oscar_piastri|POLE|2026-06-02",
-      "settled": true,
-      "result": "lost",
-      "payout_units": -1.0,
-      "recorded_at": "2026-06-02T02:14:45",
-      "outcome": {
-        "event": "Monaco Grand Prix",
-        "session": "qualifying",
-        "position": 7,
-        "market": "POLE",
-        "verify": "Oscar Piastri qualifying P7 at Monaco Grand Prix \u2014 POLE"
-      },
-      "settled_at": "2026-06-06T21:24:19",
-      "p_calibrated": 0.384
-    },
-    {
-      "source": "f1_quali_pole",
-      "sport": "F1",
-      "player_or_matchup": "george russell",
-      "market": "POLE",
-      "prob": 0.365,
-      "fair_american": 174,
-      "p_predicted": 0.365,
-      "matchup": "Unknown",
-      "date": "2026-06-02",
-      "pick_id": "f1_quali_pole|F1|george_russell|POLE|2026-06-02",
-      "settled": true,
-      "result": "lost",
-      "payout_units": -1.0,
-      "recorded_at": "2026-06-02T02:14:45",
-      "outcome": {
-        "event": "Monaco Grand Prix",
-        "session": "qualifying",
-        "position": 6,
-        "market": "POLE",
-        "verify": "George Russell qualifying P6 at Monaco Grand Prix \u2014 POLE"
-      },
-      "settled_at": "2026-06-06T21:24:19",
-      "p_calibrated": 0.365
-    },
-    {
-      "source": "f1_quali_top_6",
-      "sport": "F1",
-      "player_or_matchup": "lewis hamilton",
-      "market": "TOP_6",
-      "prob": 0.646,
-      "fair_american": -183,
-      "p_predicted": 0.646,
-      "matchup": "Unknown",
-      "date": "2026-06-02",
-      "pick_id": "f1_quali_top_6|F1|lewis_hamilton|TOP_6|2026-06-02",
-      "settled": true,
-      "result": "won",
-      "payout_units": 0.5464,
-      "recorded_at": "2026-06-02T02:14:45",
-      "outcome": {
-        "event": "Monaco Grand Prix",
-        "session": "qualifying",
-        "position": 3,
-        "market": "TOP_6",
-        "verify": "Lewis Hamilton qualifying P3 at Monaco Grand Prix \u2014 TOP_6"
-      },
-      "settled_at": "2026-06-06T21:24:19",
-      "p_calibrated": 0.5984
-    },
-    {
-      "source": "f1_quali_top_6",
-      "sport": "F1",
-      "player_or_matchup": "fernando alonso",
-      "market": "TOP_6",
-      "prob": 0.628,
-      "fair_american": -169,
-      "p_predicted": 0.628,
-      "matchup": "Unknown",
-      "date": "2026-06-02",
-      "pick_id": "f1_quali_top_6|F1|fernando_alonso|TOP_6|2026-06-02",
-      "settled": true,
-      "result": "lost",
-      "payout_units": -1.0,
-      "recorded_at": "2026-06-02T02:14:45",
-      "outcome": {
-        "event": "Monaco Grand Prix",
-        "session": "qualifying",
-        "position": 21,
-        "market": "TOP_6",
-        "verify": "Fernando Alonso qualifying P21 at Monaco Grand Prix \u2014 TOP_6"
-      },
-      "settled_at": "2026-06-06T21:24:19",
-      "p_calibrated": 0.597
-    },
-    {
-      "source": "mlb_team_sb_team_sb_under_0.5",
-      "sport": "MLB",
-      "player_or_matchup": "LAA (COL @ LAA)",
-      "market": "TEAM_SB_UNDER_0.5",
-      "prob": 0.657,
-      "fair_american": -192,
-      "p_predicted": 0.657,
-      "matchup": "COL @ LAA",
-      "date": "2026-06-02",
-      "pick_id": "mlb_team_sb_team_sb_under_0_5|MLB|LAA__COL___LAA_|TEAM_SB_UNDER_0_5|2026-06-02",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
-      "recorded_at": "2026-06-02T02:14:45",
-      "voided": true,
-      "voided_at": "2026-06-07T01:36:04",
-      "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.657
-    },
-    {
-      "source": "mlb_team_sb_team_sb_under_0.5",
-      "sport": "MLB",
-      "player_or_matchup": "DET (DET @ TBR)",
-      "market": "TEAM_SB_UNDER_0.5",
-      "prob": 0.684,
-      "fair_american": -216,
-      "p_predicted": 0.684,
-      "matchup": "DET @ TBR",
-      "date": "2026-06-02",
-      "pick_id": "mlb_team_sb_team_sb_under_0_5|MLB|DET__DET___TBR_|TEAM_SB_UNDER_0_5|2026-06-02",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
-      "recorded_at": "2026-06-02T02:14:45",
-      "voided": true,
-      "voided_at": "2026-06-07T01:36:04",
-      "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.684
-    },
-    {
-      "source": "mlb_team_sb_team_sb_under_0.5",
-      "sport": "MLB",
-      "player_or_matchup": "COL (COL @ LAA)",
-      "market": "TEAM_SB_UNDER_0.5",
-      "prob": 0.705,
-      "fair_american": -239,
-      "p_predicted": 0.705,
-      "matchup": "COL @ LAA",
-      "date": "2026-06-02",
-      "pick_id": "mlb_team_sb_team_sb_under_0_5|MLB|COL__COL___LAA_|TEAM_SB_UNDER_0_5|2026-06-02",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
-      "recorded_at": "2026-06-02T02:14:45",
-      "voided": true,
-      "voided_at": "2026-06-07T01:36:04",
-      "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.705
-    },
-    {
-      "source": "mlb_team_sb_team_sb_under_0.5",
-      "sport": "MLB",
-      "player_or_matchup": "MIA (MIA @ WSN)",
-      "market": "TEAM_SB_UNDER_0.5",
-      "prob": 0.726,
-      "fair_american": -265,
-      "p_predicted": 0.726,
-      "matchup": "MIA @ WSN",
-      "date": "2026-06-02",
-      "pick_id": "mlb_team_sb_team_sb_under_0_5|MLB|MIA__MIA___WSN_|TEAM_SB_UNDER_0_5|2026-06-02",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
-      "recorded_at": "2026-06-02T02:14:45",
-      "voided": true,
-      "voided_at": "2026-06-07T01:36:04",
-      "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.726
-    },
-    {
-      "source": "mlb_h_allowed_h_under_6.0",
-      "sport": "MLB",
-      "player_or_matchup": "Eduardo Rodriguez",
-      "market": "H_UNDER_6.0",
-      "prob": 0.719,
-      "fair_american": -256,
-      "p_predicted": 0.719,
-      "matchup": "LAD @ ARI",
-      "date": "2026-06-02",
-      "pick_id": "mlb_h_allowed_h_under_6_0|MLB|Eduardo_Rodriguez|H_UNDER_6_0|2026-06-02",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
-      "recorded_at": "2026-06-02T02:14:45",
-      "voided": true,
-      "voided_at": "2026-06-07T01:36:04",
-      "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.719
-    },
-    {
-      "source": "mlb_h_allowed_h_under_5.0",
-      "sport": "MLB",
-      "player_or_matchup": "Emerson Hancock",
-      "market": "H_UNDER_5.0",
-      "prob": 0.699,
-      "fair_american": -233,
-      "p_predicted": 0.699,
-      "matchup": "NYM @ SEA",
-      "date": "2026-06-02",
-      "pick_id": "mlb_h_allowed_h_under_5_0|MLB|Emerson_Hancock|H_UNDER_5_0|2026-06-02",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
-      "recorded_at": "2026-06-02T02:14:45",
-      "voided": true,
-      "voided_at": "2026-06-07T01:36:04",
-      "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.699
-    },
     {
       "source": "mlb_h_allowed_h_under_5.0",
       "sport": "MLB",
@@ -40634,7 +39831,7 @@
       "voided": true,
       "voided_at": "2026-06-09T01:31:25",
       "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.5515
+      "p_calibrated": 0.5611
     },
     {
       "source": "soccer_total_total_under_3.5",
@@ -40654,7 +39851,7 @@
       "voided": true,
       "voided_at": "2026-06-09T01:31:25",
       "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.5601
+      "p_calibrated": 0.5695
     },
     {
       "source": "soccer_clean_sheet_home_clean_sheet_no",
@@ -40674,7 +39871,7 @@
       "voided": true,
       "voided_at": "2026-06-09T01:31:25",
       "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.6685
+      "p_calibrated": 0.6763
     },
     {
       "source": "soccer_clean_sheet_home_clean_sheet_no",
@@ -40694,7 +39891,7 @@
       "voided": true,
       "voided_at": "2026-06-09T01:31:25",
       "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.6677
+      "p_calibrated": 0.6754
     },
     {
       "source": "soccer_clean_sheet_home_clean_sheet_no",
@@ -40714,7 +39911,7 @@
       "voided": true,
       "voided_at": "2026-06-09T01:31:25",
       "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.6704
+      "p_calibrated": 0.6781
     },
     {
       "source": "soccer_clean_sheet_home_clean_sheet_no",
@@ -40734,7 +39931,7 @@
       "voided": true,
       "voided_at": "2026-06-09T01:31:25",
       "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.6677
+      "p_calibrated": 0.6754
     },
     {
       "source": "soccer_clean_sheet_home_clean_sheet_no",
@@ -40754,7 +39951,7 @@
       "voided": true,
       "voided_at": "2026-06-09T01:31:25",
       "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.6673
+      "p_calibrated": 0.675
     },
     {
       "source": "soccer_clean_sheet_home_clean_sheet_no",
@@ -40774,7 +39971,7 @@
       "voided": true,
       "voided_at": "2026-06-09T01:31:25",
       "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.6674
+      "p_calibrated": 0.6751
     },
     {
       "source": "soccer_clean_sheet_home_clean_sheet_no",
@@ -40794,7 +39991,7 @@
       "voided": true,
       "voided_at": "2026-06-09T01:31:25",
       "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.6673
+      "p_calibrated": 0.675
     },
     {
       "source": "soccer_clean_sheet_home_clean_sheet_no",
@@ -40814,7 +40011,7 @@
       "voided": true,
       "voided_at": "2026-06-09T01:31:25",
       "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.6681
+      "p_calibrated": 0.6758
     },
     {
       "source": "soccer_clean_sheet_home_clean_sheet_no",
@@ -40834,7 +40031,7 @@
       "voided": true,
       "voided_at": "2026-06-09T01:31:25",
       "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.6684
+      "p_calibrated": 0.6761
     },
     {
       "source": "soccer_clean_sheet_home_clean_sheet_no",
@@ -40854,7 +40051,7 @@
       "voided": true,
       "voided_at": "2026-06-09T01:31:25",
       "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.6674
+      "p_calibrated": 0.6751
     },
     {
       "source": "soccer_clean_sheet_home_clean_sheet_no",
@@ -40874,7 +40071,7 @@
       "voided": true,
       "voided_at": "2026-06-09T01:31:25",
       "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.6657
+      "p_calibrated": 0.6735
     },
     {
       "source": "soccer_clean_sheet_home_clean_sheet_no",
@@ -40894,7 +40091,7 @@
       "voided": true,
       "voided_at": "2026-06-09T01:31:25",
       "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.6627
+      "p_calibrated": 0.6705
     },
     {
       "source": "soccer_clean_sheet_home_clean_sheet_no",
@@ -40914,7 +40111,7 @@
       "voided": true,
       "voided_at": "2026-06-09T01:31:25",
       "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.6655
+      "p_calibrated": 0.6733
     },
     {
       "source": "mlb_game_total_game_total_under_10.5",
@@ -43048,7 +42245,7 @@
       "payout_units": 0.6289,
       "recorded_at": "2026-06-04T22:59:26",
       "voided": false,
-      "p_calibrated": 0.5515,
+      "p_calibrated": 0.5611,
       "outcome": {
         "final_score": "Arsenal 2-1 Crystal Palace",
         "total_cards": 1,
@@ -43079,7 +42276,7 @@
       "payout_units": -1.0,
       "recorded_at": "2026-06-04T22:59:26",
       "voided": false,
-      "p_calibrated": 0.5601,
+      "p_calibrated": 0.5695,
       "outcome": {
         "final_score": "Philadelphia Union 4-6 Inter Miami CF",
         "total_cards": 9,
@@ -43117,7 +42314,7 @@
       "payout_units": 0.3096,
       "recorded_at": "2026-06-04T22:59:26",
       "voided": false,
-      "p_calibrated": 0.6685,
+      "p_calibrated": 0.6763,
       "outcome": {
         "final_score": "Manchester United 3-0 Brighton & Hove Albion",
         "total_cards": 1,
@@ -43148,7 +42345,7 @@
       "payout_units": 0.3215,
       "recorded_at": "2026-06-04T22:59:26",
       "voided": false,
-      "p_calibrated": 0.6677,
+      "p_calibrated": 0.6754,
       "outcome": {
         "final_score": "Wolverhampton Wanderers 1-1 Burnley",
         "total_cards": 4,
@@ -43178,7 +42375,7 @@
       "payout_units": 0.289,
       "recorded_at": "2026-06-04T22:59:26",
       "voided": false,
-      "p_calibrated": 0.6704,
+      "p_calibrated": 0.6781,
       "outcome": {
         "final_score": "Arsenal 2-1 Crystal Palace",
         "total_cards": 1,
@@ -43209,7 +42406,7 @@
       "payout_units": -1.0,
       "recorded_at": "2026-06-04T22:59:26",
       "voided": false,
-      "p_calibrated": 0.6677,
+      "p_calibrated": 0.6754,
       "outcome": {
         "final_score": "Newcastle United 0-2 Fulham",
         "total_cards": 4,
@@ -43239,7 +42436,7 @@
       "payout_units": 0.3257,
       "recorded_at": "2026-06-04T22:59:26",
       "voided": false,
-      "p_calibrated": 0.6673,
+      "p_calibrated": 0.675,
       "outcome": {
         "final_score": "Brentford 1-1 Liverpool",
         "total_cards": 5,
@@ -43269,7 +42466,7 @@
       "payout_units": 0.3236,
       "recorded_at": "2026-06-04T22:59:26",
       "voided": false,
-      "p_calibrated": 0.6674,
+      "p_calibrated": 0.6751,
       "outcome": {
         "final_score": "Aston Villa 2-1 Manchester City",
         "total_cards": 1,
@@ -43300,7 +42497,7 @@
       "payout_units": 0.3257,
       "recorded_at": "2026-06-04T22:59:26",
       "voided": false,
-      "p_calibrated": 0.6673,
+      "p_calibrated": 0.675,
       "outcome": {
         "final_score": "AFC Bournemouth 1-1 Nottingham Forest",
         "total_cards": 2,
@@ -43330,7 +42527,7 @@
       "payout_units": 0.3155,
       "recorded_at": "2026-06-04T22:59:26",
       "voided": false,
-      "p_calibrated": 0.6681,
+      "p_calibrated": 0.6758,
       "outcome": {
         "final_score": "Chelsea 1-2 Sunderland",
         "total_cards": 10,
@@ -43360,7 +42557,7 @@
       "payout_units": -1.0,
       "recorded_at": "2026-06-04T22:59:26",
       "voided": false,
-      "p_calibrated": 0.6684,
+      "p_calibrated": 0.6761,
       "outcome": {
         "final_score": "Everton 0-1 Tottenham Hotspur",
         "total_cards": 5,
@@ -43389,7 +42586,7 @@
       "payout_units": -1.0,
       "recorded_at": "2026-06-04T22:59:26",
       "voided": false,
-      "p_calibrated": 0.6674,
+      "p_calibrated": 0.6751,
       "outcome": {
         "final_score": "Leeds United 0-3 West Ham United",
         "total_cards": 3,
@@ -43420,7 +42617,7 @@
       "payout_units": -1.0,
       "recorded_at": "2026-06-04T22:59:26",
       "voided": false,
-      "p_calibrated": 0.6657,
+      "p_calibrated": 0.6735,
       "outcome": {
         "final_score": "Atlanta United FC 0-2 Columbus Crew",
         "total_cards": 6,
@@ -43450,7 +42647,7 @@
       "payout_units": 0.3861,
       "recorded_at": "2026-06-04T22:59:26",
       "voided": false,
-      "p_calibrated": 0.6627,
+      "p_calibrated": 0.6705,
       "outcome": {
         "final_score": "Philadelphia Union 4-6 Inter Miami CF",
         "total_cards": 9,
@@ -43488,7 +42685,7 @@
       "payout_units": -1.0,
       "recorded_at": "2026-06-04T22:59:26",
       "voided": false,
-      "p_calibrated": 0.6655,
+      "p_calibrated": 0.6733,
       "outcome": {
         "final_score": "Seattle Sounders FC 0-1 LAFC",
         "total_cards": 0,
@@ -140549,7 +139746,7 @@
       "result": "won",
       "payout_units": 0.3268,
       "recorded_at": "2026-06-12T23:48:21",
-      "p_calibrated": 0.6671,
+      "p_calibrated": 0.6749,
       "outcome": {
         "final_score": "Bosnia-Herzegovina 1-1 Canada",
         "total_cards": 5,
@@ -140578,7 +139775,7 @@
       "result": "won",
       "payout_units": 0.3268,
       "recorded_at": "2026-06-12T23:48:21",
-      "p_calibrated": 0.6671,
+      "p_calibrated": 0.6749,
       "outcome": {
         "final_score": "Paraguay 1-4 United States",
         "total_cards": 6,
@@ -149810,7 +149007,7 @@
       "result": "won",
       "payout_units": 0.3268,
       "recorded_at": "2026-06-13T12:01:38",
-      "p_calibrated": 0.6671,
+      "p_calibrated": 0.6749,
       "outcome": {
         "final_score": "Switzerland 1-1 Qatar",
         "total_cards": 3,
@@ -149838,7 +149035,7 @@
       "result": "won",
       "payout_units": 0.3268,
       "recorded_at": "2026-06-13T12:01:38",
-      "p_calibrated": 0.6671,
+      "p_calibrated": 0.6749,
       "outcome": {
         "final_score": "Morocco 1-1 Brazil",
         "total_cards": 2,
@@ -149867,7 +149064,7 @@
       "result": "won",
       "payout_units": 0.3268,
       "recorded_at": "2026-06-13T12:01:38",
-      "p_calibrated": 0.6671,
+      "p_calibrated": 0.6749,
       "outcome": {
         "final_score": "Scotland 1-0 Haiti",
         "total_cards": 4,
@@ -156469,7 +155666,7 @@
       "result": "won",
       "payout_units": 0.5464,
       "recorded_at": "2026-06-14T08:48:54",
-      "p_calibrated": 0.5601,
+      "p_calibrated": 0.5695,
       "outcome": {
         "final_score": "Scotland 1-0 Haiti",
         "total_cards": 4,
@@ -156871,7 +156068,7 @@
       "result": "won",
       "payout_units": 0.5464,
       "recorded_at": "2026-06-14T12:18:13",
-      "p_calibrated": 0.5601,
+      "p_calibrated": 0.5695,
       "outcome": {
         "final_score": "T\u00fcrkiye 0-2 Australia",
         "total_cards": 1,
@@ -156900,7 +156097,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-14T12:18:13",
-      "p_calibrated": 0.6637,
+      "p_calibrated": 0.6715,
       "outcome": {
         "final_score": "T\u00fcrkiye 0-2 Australia",
         "total_cards": 1,
@@ -156929,7 +156126,7 @@
       "result": "won",
       "payout_units": 0.3268,
       "recorded_at": "2026-06-14T12:18:13",
-      "p_calibrated": 0.6671,
+      "p_calibrated": 0.6749,
       "outcome": {
         "final_score": "Cura\u00e7ao 1-7 Germany",
         "total_cards": 0,
@@ -156964,7 +156161,7 @@
       "result": "won",
       "payout_units": 0.3268,
       "recorded_at": "2026-06-14T12:18:13",
-      "p_calibrated": 0.6671,
+      "p_calibrated": 0.6749,
       "outcome": {
         "final_score": "Japan 2-2 Netherlands",
         "total_cards": 3,
@@ -156995,7 +156192,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-14T12:18:13",
-      "p_calibrated": 0.6671,
+      "p_calibrated": 0.6749,
       "outcome": {
         "final_score": "Ecuador 0-1 Ivory Coast",
         "total_cards": 4,
@@ -157023,7 +156220,7 @@
       "result": "won",
       "payout_units": 0.3268,
       "recorded_at": "2026-06-14T12:18:13",
-      "p_calibrated": 0.6671,
+      "p_calibrated": 0.6749,
       "outcome": {
         "final_score": "Tunisia 1-5 Sweden",
         "total_cards": 1,
@@ -158999,7 +158196,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-14T23:39:50",
-      "p_calibrated": 0.5601,
+      "p_calibrated": 0.5695,
       "outcome": {
         "final_score": "Cura\u00e7ao 1-7 Germany",
         "total_cards": 0,
@@ -162984,7 +162181,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-16T10:30:40",
-      "p_calibrated": 0.6671,
+      "p_calibrated": 0.6749,
       "outcome": {
         "final_score": "Cape Verde 0-0 Spain",
         "total_cards": 2,
@@ -163010,7 +162207,7 @@
       "result": "won",
       "payout_units": 0.3268,
       "recorded_at": "2026-06-16T10:30:40",
-      "p_calibrated": 0.6671,
+      "p_calibrated": 0.6749,
       "outcome": {
         "final_score": "Egypt 1-1 Belgium",
         "total_cards": 4,
@@ -163038,7 +162235,7 @@
       "result": "won",
       "payout_units": 0.3268,
       "recorded_at": "2026-06-16T10:30:40",
-      "p_calibrated": 0.6671,
+      "p_calibrated": 0.6749,
       "outcome": {
         "final_score": "Uruguay 1-1 Saudi Arabia",
         "total_cards": 1,
@@ -163067,7 +162264,7 @@
       "result": "won",
       "payout_units": 0.3268,
       "recorded_at": "2026-06-16T10:30:40",
-      "p_calibrated": 0.6671,
+      "p_calibrated": 0.6749,
       "outcome": {
         "final_score": "New Zealand 2-2 Iran",
         "total_cards": 1,
@@ -163766,7 +162963,7 @@
       "result": "won",
       "payout_units": 0.3268,
       "recorded_at": "2026-06-16T15:29:49",
-      "p_calibrated": 0.6671,
+      "p_calibrated": 0.6749,
       "outcome": {
         "final_score": "Senegal 1-3 France",
         "total_cards": 0,
@@ -163797,7 +162994,7 @@
       "result": "won",
       "payout_units": 0.3268,
       "recorded_at": "2026-06-16T15:29:49",
-      "p_calibrated": 0.6671,
+      "p_calibrated": 0.6749,
       "outcome": {
         "final_score": "Norway 4-1 Iraq",
         "total_cards": 1,
@@ -163828,7 +163025,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-16T15:29:49",
-      "p_calibrated": 0.6671,
+      "p_calibrated": 0.6749,
       "outcome": {
         "final_score": "Algeria 0-3 Argentina",
         "total_cards": 0,
@@ -164338,7 +163535,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-16T23:28:42",
-      "p_calibrated": 0.5601,
+      "p_calibrated": 0.5695,
       "outcome": {
         "final_score": "Senegal 1-3 France",
         "total_cards": 0,
@@ -173268,7 +172465,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-17T08:40:40",
-      "p_calibrated": 0.5601,
+      "p_calibrated": 0.5695,
       "outcome": {
         "final_score": "Norway 4-1 Iraq",
         "total_cards": 1,
@@ -173299,7 +172496,7 @@
       "result": "won",
       "payout_units": 0.5464,
       "recorded_at": "2026-06-17T08:40:40",
-      "p_calibrated": 0.5601,
+      "p_calibrated": 0.5695,
       "outcome": {
         "final_score": "Algeria 0-3 Argentina",
         "total_cards": 0,
@@ -173756,7 +172953,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-17T13:51:01",
-      "p_calibrated": 0.5601,
+      "p_calibrated": 0.5695,
       "outcome": {
         "final_score": "Jordan 1-3 Austria",
         "total_cards": 1,
@@ -173786,7 +172983,7 @@
       "result": "won",
       "payout_units": 0.3717,
       "recorded_at": "2026-06-17T13:51:01",
-      "p_calibrated": 0.6637,
+      "p_calibrated": 0.6715,
       "outcome": {
         "final_score": "Jordan 1-3 Austria",
         "total_cards": 1,
@@ -173816,7 +173013,7 @@
       "result": "won",
       "payout_units": 0.3268,
       "recorded_at": "2026-06-17T13:51:01",
-      "p_calibrated": 0.6671,
+      "p_calibrated": 0.6749,
       "outcome": {
         "final_score": "Congo DR 1-1 Portugal",
         "total_cards": 4,
@@ -173845,7 +173042,7 @@
       "result": "won",
       "payout_units": 0.3268,
       "recorded_at": "2026-06-17T13:51:01",
-      "p_calibrated": 0.6671,
+      "p_calibrated": 0.6749,
       "outcome": {
         "final_score": "Croatia 2-4 England",
         "total_cards": 0,
@@ -173878,7 +173075,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-17T13:51:01",
-      "p_calibrated": 0.6671,
+      "p_calibrated": 0.6749,
       "outcome": {
         "final_score": "Panama 0-1 Ghana",
         "total_cards": 3,
@@ -173906,7 +173103,7 @@
       "result": "won",
       "payout_units": 0.3268,
       "recorded_at": "2026-06-17T13:51:01",
-      "p_calibrated": 0.6671,
+      "p_calibrated": 0.6749,
       "outcome": {
         "final_score": "Colombia 3-1 Uzbekistan",
         "total_cards": 2,
@@ -174439,7 +173636,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-17T23:26:55",
-      "p_calibrated": 0.5601,
+      "p_calibrated": 0.5695,
       "outcome": {
         "final_score": "Croatia 2-4 England",
         "total_cards": 0,
@@ -180209,7 +179406,7 @@
       "result": "won",
       "payout_units": 0.5464,
       "recorded_at": "2026-06-18T08:23:47",
-      "p_calibrated": 0.5601,
+      "p_calibrated": 0.5695,
       "outcome": {
         "final_score": "Panama 0-1 Ghana",
         "total_cards": 3,
@@ -180237,7 +179434,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-18T08:23:47",
-      "p_calibrated": 0.5601,
+      "p_calibrated": 0.5695,
       "outcome": {
         "final_score": "Colombia 3-1 Uzbekistan",
         "total_cards": 2,
@@ -180495,7 +179692,7 @@
       "result": "won",
       "payout_units": 0.3268,
       "recorded_at": "2026-06-18T15:56:17",
-      "p_calibrated": 0.6671,
+      "p_calibrated": 0.6749,
       "outcome": {
         "final_score": "South Africa 1-1 Czechia",
         "total_cards": 3,
@@ -180524,7 +179721,7 @@
       "result": "won",
       "payout_units": 0.3268,
       "recorded_at": "2026-06-18T15:56:17",
-      "p_calibrated": 0.6671,
+      "p_calibrated": 0.6749,
       "outcome": {
         "final_score": "Bosnia-Herzegovina 1-4 Switzerland",
         "total_cards": 4,
@@ -180556,7 +179753,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-18T15:56:17",
-      "p_calibrated": 0.6671,
+      "p_calibrated": 0.6749,
       "outcome": {
         "final_score": "Qatar 0-6 Canada",
         "total_cards": 4,
@@ -180588,7 +179785,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-18T15:56:17",
-      "p_calibrated": 0.6671,
+      "p_calibrated": 0.6749,
       "outcome": {
         "final_score": "South Korea 0-1 Mexico",
         "total_cards": 2,
@@ -182151,7 +181348,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-19T00:14:33",
-      "p_calibrated": 0.5601,
+      "p_calibrated": 0.5695,
       "outcome": {
         "final_score": "Bosnia-Herzegovina 1-4 Switzerland",
         "total_cards": 4,
@@ -184455,7 +183652,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-19T09:58:41",
-      "p_calibrated": 0.5601,
+      "p_calibrated": 0.5695,
       "outcome": {
         "final_score": "Qatar 0-6 Canada",
         "total_cards": 4,
@@ -184969,7 +184166,7 @@
       "result": "won",
       "payout_units": 0.5464,
       "recorded_at": "2026-06-19T15:45:17",
-      "p_calibrated": 0.5601,
+      "p_calibrated": 0.5695,
       "outcome": {
         "final_score": "Morocco 1-0 Scotland",
         "total_cards": 2,
@@ -184997,7 +184194,7 @@
       "result": "won",
       "payout_units": 0.5464,
       "recorded_at": "2026-06-19T15:45:17",
-      "p_calibrated": 0.5601,
+      "p_calibrated": 0.5695,
       "outcome": {
         "final_score": "Haiti 0-3 Brazil",
         "total_cards": 4,
@@ -185027,7 +184224,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-19T15:45:17",
-      "p_calibrated": 0.6678
+      "p_calibrated": 0.6756
     },
     {
       "source": "soccer_clean_sheet_home_clean_sheet_no",
@@ -185044,7 +184241,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-19T15:45:17",
-      "p_calibrated": 0.6671,
+      "p_calibrated": 0.6749,
       "outcome": {
         "final_score": "Australia 0-2 United States",
         "total_cards": 7,
@@ -185072,7 +184269,7 @@
       "result": "won",
       "payout_units": 0.4237,
       "recorded_at": "2026-06-19T15:45:17",
-      "p_calibrated": 0.66,
+      "p_calibrated": 0.6679,
       "outcome": {
         "final_score": "Morocco 1-0 Scotland",
         "total_cards": 2,
@@ -185100,7 +184297,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-19T15:45:17",
-      "p_calibrated": 0.6703,
+      "p_calibrated": 0.6779,
       "outcome": {
         "final_score": "Haiti 0-3 Brazil",
         "total_cards": 4,
@@ -185130,7 +184327,7 @@
       "result": "won",
       "payout_units": 0.3268,
       "recorded_at": "2026-06-19T15:45:17",
-      "p_calibrated": 0.6671,
+      "p_calibrated": 0.6749,
       "outcome": {
         "final_score": "Paraguay 1-0 T\u00fcrkiye",
         "total_cards": 4,
@@ -192929,7 +192126,7 @@
       "result": "won",
       "payout_units": 0.5464,
       "recorded_at": "2026-06-20T05:55:43",
-      "p_calibrated": 0.5601,
+      "p_calibrated": 0.5695,
       "outcome": {
         "final_score": "Paraguay 1-0 T\u00fcrkiye",
         "total_cards": 4,
@@ -193673,7 +192870,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-20T12:12:32",
-      "p_calibrated": 0.5601
+      "p_calibrated": 0.5695
     },
     {
       "source": "soccer_total_total_under_3.5",
@@ -193690,7 +192887,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-20T12:12:32",
-      "p_calibrated": 0.5601,
+      "p_calibrated": 0.5695,
       "outcome": {
         "final_score": "Sweden 1-5 Netherlands",
         "total_cards": 3,
@@ -193723,7 +192920,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-20T12:12:32",
-      "p_calibrated": 0.664
+      "p_calibrated": 0.6718
     },
     {
       "source": "soccer_clean_sheet_home_clean_sheet_no",
@@ -193740,7 +192937,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-20T12:12:32",
-      "p_calibrated": 0.6663
+      "p_calibrated": 0.674
     },
     {
       "source": "soccer_clean_sheet_home_clean_sheet_no",
@@ -193757,7 +192954,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-20T12:12:32",
-      "p_calibrated": 0.6657
+      "p_calibrated": 0.6735
     },
     {
       "source": "soccer_clean_sheet_home_clean_sheet_no",
@@ -193774,7 +192971,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-20T12:12:32",
-      "p_calibrated": 0.6645
+      "p_calibrated": 0.6724
     },
     {
       "source": "soccer_clean_sheet_away_clean_sheet_no",
@@ -193824,7 +193021,7 @@
       "result": "won",
       "payout_units": 0.3268,
       "recorded_at": "2026-06-20T12:12:32",
-      "p_calibrated": 0.6671,
+      "p_calibrated": 0.6749,
       "outcome": {
         "final_score": "Ivory Coast 1-2 Germany",
         "total_cards": 0,
@@ -193854,7 +193051,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-20T12:12:32",
-      "p_calibrated": 0.6671,
+      "p_calibrated": 0.6749,
       "outcome": {
         "final_score": "Cura\u00e7ao 0-0 Ecuador",
         "total_cards": 6,
@@ -194865,7 +194062,7 @@
       "result": "won",
       "payout_units": 0.2976,
       "recorded_at": "2026-06-20T22:48:45",
-      "p_calibrated": 0.6695,
+      "p_calibrated": 0.6772,
       "outcome": {
         "final_score": "Sweden 1-5 Netherlands",
         "total_cards": 3,
@@ -204145,7 +203342,7 @@
       "result": "won",
       "payout_units": 0.3268,
       "recorded_at": "2026-06-21T12:22:37",
-      "p_calibrated": 0.6671,
+      "p_calibrated": 0.6749,
       "outcome": {
         "final_score": "Japan 4-0 Tunisia",
         "total_cards": 0,
@@ -204176,7 +203373,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-21T12:22:37",
-      "p_calibrated": 0.6671,
+      "p_calibrated": 0.6749,
       "outcome": {
         "final_score": "Saudi Arabia 0-4 Spain",
         "total_cards": 2,
@@ -204206,7 +203403,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-21T12:22:37",
-      "p_calibrated": 0.6671,
+      "p_calibrated": 0.6749,
       "outcome": {
         "final_score": "Iran 0-0 Belgium",
         "total_cards": 3,
@@ -204232,7 +203429,7 @@
       "result": "won",
       "payout_units": 0.3268,
       "recorded_at": "2026-06-21T12:22:37",
-      "p_calibrated": 0.6671,
+      "p_calibrated": 0.6749,
       "outcome": {
         "final_score": "Cape Verde 2-2 Uruguay",
         "total_cards": 4,
@@ -204263,7 +203460,7 @@
       "result": "won",
       "payout_units": 0.3268,
       "recorded_at": "2026-06-21T12:22:37",
-      "p_calibrated": 0.6671,
+      "p_calibrated": 0.6749,
       "outcome": {
         "final_score": "Egypt 3-1 New Zealand",
         "total_cards": 3,
@@ -206485,7 +205682,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-21T23:06:10",
-      "p_calibrated": 0.5601,
+      "p_calibrated": 0.5695,
       "outcome": {
         "final_score": "Saudi Arabia 0-4 Spain",
         "total_cards": 2,
@@ -210640,7 +209837,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-22T11:21:12",
-      "p_calibrated": 0.5601,
+      "p_calibrated": 0.5695,
       "outcome": {
         "final_score": "Egypt 3-1 New Zealand",
         "total_cards": 3,
@@ -211240,7 +210437,7 @@
       "result": "won",
       "payout_units": 0.5464,
       "recorded_at": "2026-06-22T18:22:33",
-      "p_calibrated": 0.5601,
+      "p_calibrated": 0.5695,
       "outcome": {
         "final_score": "Iraq 0-3 France",
         "total_cards": 1,
@@ -211270,7 +210467,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-22T18:22:33",
-      "p_calibrated": 0.5601,
+      "p_calibrated": 0.5695,
       "outcome": {
         "final_score": "Senegal 2-3 Norway",
         "total_cards": 0,
@@ -211302,7 +210499,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-22T18:22:33",
-      "p_calibrated": 0.6671,
+      "p_calibrated": 0.6749,
       "outcome": {
         "final_score": "Austria 0-2 Argentina",
         "total_cards": 4,
@@ -211331,7 +210528,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-22T18:22:33",
-      "p_calibrated": 0.6637,
+      "p_calibrated": 0.6715,
       "outcome": {
         "final_score": "Iraq 0-3 France",
         "total_cards": 1,
@@ -211361,7 +210558,7 @@
       "result": "won",
       "payout_units": 0.3717,
       "recorded_at": "2026-06-22T18:22:33",
-      "p_calibrated": 0.6637,
+      "p_calibrated": 0.6715,
       "outcome": {
         "final_score": "Senegal 2-3 Norway",
         "total_cards": 0,
@@ -211393,7 +210590,7 @@
       "result": "won",
       "payout_units": 0.3268,
       "recorded_at": "2026-06-22T18:22:33",
-      "p_calibrated": 0.6671,
+      "p_calibrated": 0.6749,
       "outcome": {
         "final_score": "Algeria 2-1 Jordan",
         "total_cards": 2,
@@ -217118,7 +216315,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-23T12:49:37",
-      "p_calibrated": 0.5601,
+      "p_calibrated": 0.5695,
       "outcome": {
         "final_score": "Uzbekistan 0-5 Portugal",
         "total_cards": 2,
@@ -217149,7 +216346,7 @@
       "result": "won",
       "payout_units": 0.5464,
       "recorded_at": "2026-06-23T12:49:37",
-      "p_calibrated": 0.5601,
+      "p_calibrated": 0.5695,
       "outcome": {
         "final_score": "Congo DR 0-1 Colombia",
         "total_cards": 3,
@@ -217177,7 +216374,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-23T12:49:37",
-      "p_calibrated": 0.6703,
+      "p_calibrated": 0.6779,
       "outcome": {
         "final_score": "Uzbekistan 0-5 Portugal",
         "total_cards": 2,
@@ -217208,7 +216405,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-23T12:49:37",
-      "p_calibrated": 0.6671,
+      "p_calibrated": 0.6749,
       "outcome": {
         "final_score": "Ghana 0-0 England",
         "total_cards": 2,
@@ -217234,7 +216431,7 @@
       "result": "won",
       "payout_units": 0.3268,
       "recorded_at": "2026-06-23T12:49:37",
-      "p_calibrated": 0.6671,
+      "p_calibrated": 0.6749,
       "outcome": {
         "final_score": "Croatia 1-0 Panama",
         "total_cards": 2,
@@ -217262,7 +216459,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-23T12:49:37",
-      "p_calibrated": 0.66,
+      "p_calibrated": 0.6679,
       "outcome": {
         "final_score": "Congo DR 0-1 Colombia",
         "total_cards": 3,
@@ -222668,7 +221865,7 @@
       "result": "won",
       "payout_units": 0.5464,
       "recorded_at": "2026-06-24T12:31:15",
-      "p_calibrated": 0.5601,
+      "p_calibrated": 0.5695,
       "outcome": {
         "final_score": "Brazil 3-0 Scotland",
         "total_cards": 3,
@@ -222698,7 +221895,7 @@
       "result": "won",
       "payout_units": 0.5464,
       "recorded_at": "2026-06-24T12:31:15",
-      "p_calibrated": 0.5601,
+      "p_calibrated": 0.5695,
       "outcome": {
         "final_score": "Mexico 3-0 Czechia",
         "total_cards": 1,
@@ -222728,7 +221925,7 @@
       "result": "won",
       "payout_units": 0.5464,
       "recorded_at": "2026-06-24T12:31:15",
-      "p_calibrated": 0.5601,
+      "p_calibrated": 0.5695,
       "outcome": {
         "final_score": "South Korea 0-1 South Africa",
         "total_cards": 2,
@@ -222756,7 +221953,7 @@
       "result": "won",
       "payout_units": 0.3268,
       "recorded_at": "2026-06-24T12:31:15",
-      "p_calibrated": 0.6671,
+      "p_calibrated": 0.6749,
       "outcome": {
         "final_score": "Qatar 1-3 Bosnia-Herzegovina",
         "total_cards": 2,
@@ -222786,7 +221983,7 @@
       "result": "won",
       "payout_units": 0.3268,
       "recorded_at": "2026-06-24T12:31:15",
-      "p_calibrated": 0.6671,
+      "p_calibrated": 0.6749,
       "outcome": {
         "final_score": "Canada 1-2 Switzerland",
         "total_cards": 3,
@@ -222816,7 +222013,7 @@
       "result": "won",
       "payout_units": 0.3268,
       "recorded_at": "2026-06-24T12:31:15",
-      "p_calibrated": 0.6671,
+      "p_calibrated": 0.6749,
       "outcome": {
         "final_score": "Haiti 2-4 Morocco",
         "total_cards": 3,
@@ -222848,7 +222045,7 @@
       "result": "won",
       "payout_units": 0.3597,
       "recorded_at": "2026-06-24T12:31:15",
-      "p_calibrated": 0.6645,
+      "p_calibrated": 0.6724,
       "outcome": {
         "final_score": "Brazil 3-0 Scotland",
         "total_cards": 3,
@@ -224102,7 +223299,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-24T23:37:05",
-      "p_calibrated": 0.5601,
+      "p_calibrated": 0.5695,
       "outcome": {
         "final_score": "Qatar 1-3 Bosnia-Herzegovina",
         "total_cards": 2,
@@ -224132,7 +223329,7 @@
       "result": "won",
       "payout_units": 0.5464,
       "recorded_at": "2026-06-24T23:37:05",
-      "p_calibrated": 0.5601,
+      "p_calibrated": 0.5695,
       "outcome": {
         "final_score": "Canada 1-2 Switzerland",
         "total_cards": 3,
@@ -228927,7 +228124,7 @@
       "result": "won",
       "payout_units": 0.5464,
       "recorded_at": "2026-06-25T12:34:25",
-      "p_calibrated": 0.5601,
+      "p_calibrated": 0.5695,
       "outcome": {
         "final_score": "Ivory Coast 2-0 Cura\u00e7ao",
         "total_cards": 3,
@@ -228956,7 +228153,7 @@
       "result": "won",
       "payout_units": 0.5464,
       "recorded_at": "2026-06-25T12:34:25",
-      "p_calibrated": 0.5601,
+      "p_calibrated": 0.5695,
       "outcome": {
         "final_score": "Germany 1-2 Ecuador",
         "total_cards": 4,
@@ -228986,7 +228183,7 @@
       "result": "won",
       "payout_units": 0.5464,
       "recorded_at": "2026-06-25T12:34:25",
-      "p_calibrated": 0.5601,
+      "p_calibrated": 0.5695,
       "outcome": {
         "final_score": "Sweden 1-1 Japan",
         "total_cards": 3,
@@ -229015,7 +228212,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-25T12:34:25",
-      "p_calibrated": 0.5601,
+      "p_calibrated": 0.5695,
       "outcome": {
         "final_score": "United States 2-3 T\u00fcrkiye",
         "total_cards": 1,
@@ -229047,7 +228244,7 @@
       "result": "won",
       "payout_units": 0.2976,
       "recorded_at": "2026-06-25T12:34:25",
-      "p_calibrated": 0.6695,
+      "p_calibrated": 0.6772,
       "outcome": {
         "final_score": "Sweden 1-1 Japan",
         "total_cards": 3,
@@ -229076,7 +228273,7 @@
       "result": "won",
       "payout_units": 0.3268,
       "recorded_at": "2026-06-25T12:34:25",
-      "p_calibrated": 0.6671,
+      "p_calibrated": 0.6749,
       "outcome": {
         "final_score": "Netherlands 3-1 Tunisia",
         "total_cards": 0,
@@ -229106,7 +228303,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-25T12:34:25",
-      "p_calibrated": 0.6671,
+      "p_calibrated": 0.6749,
       "outcome": {
         "final_score": "Australia 0-0 Paraguay",
         "total_cards": 2,
@@ -229132,7 +228329,7 @@
       "result": "won",
       "payout_units": 0.2899,
       "recorded_at": "2026-06-25T12:34:25",
-      "p_calibrated": 0.6703,
+      "p_calibrated": 0.6779,
       "outcome": {
         "final_score": "United States 2-3 T\u00fcrkiye",
         "total_cards": 1,
@@ -230326,7 +229523,7 @@
       "result": "won",
       "payout_units": 0.2857,
       "recorded_at": "2026-06-25T23:48:18",
-      "p_calibrated": 0.6707,
+      "p_calibrated": 0.6784,
       "outcome": {
         "final_score": "Germany 1-2 Ecuador",
         "total_cards": 4,
@@ -230856,11 +230053,18 @@
       "shift_pp": 10.34,
       "date": "2026-06-26",
       "pick_id": "sharp_elite|MLB|NYY___BOS|ml_away|2026-06-26",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "lost",
+      "payout_units": -1.0,
       "recorded_at": "2026-06-26T01:36:03",
-      "p_calibrated": 0.6474
+      "p_calibrated": 0.6474,
+      "outcome": {
+        "final_score": "NYY 1 @ BOS 6",
+        "total_runs": 7,
+        "verify": "NYY @ BOS: final 1-6 (total 7) on 2026-06-26",
+        "check": "verified"
+      },
+      "settled_at": "2026-06-27T09:07:59"
     },
     {
       "source": "lock_of_day",
@@ -232928,7 +232132,7 @@
       "result": "won",
       "payout_units": 0.5464,
       "recorded_at": "2026-06-26T12:28:41",
-      "p_calibrated": 0.5601,
+      "p_calibrated": 0.5695,
       "outcome": {
         "final_score": "Spain 1-0 Uruguay",
         "total_cards": 5,
@@ -232956,7 +232160,7 @@
       "result": "won",
       "payout_units": 0.5464,
       "recorded_at": "2026-06-26T12:28:41",
-      "p_calibrated": 0.5601,
+      "p_calibrated": 0.5695,
       "outcome": {
         "final_score": "Iran 1-1 Egypt",
         "total_cards": 7,
@@ -232985,7 +232189,7 @@
       "result": "won",
       "payout_units": 0.3268,
       "recorded_at": "2026-06-26T12:28:41",
-      "p_calibrated": 0.6671,
+      "p_calibrated": 0.6749,
       "outcome": {
         "final_score": "France 4-1 Norway",
         "total_cards": 2,
@@ -233017,7 +232221,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-26T12:28:41",
-      "p_calibrated": 0.6671,
+      "p_calibrated": 0.6749,
       "outcome": {
         "final_score": "Iraq 0-5 Senegal",
         "total_cards": 5,
@@ -233049,7 +232253,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-26T12:28:41",
-      "p_calibrated": 0.668,
+      "p_calibrated": 0.6757,
       "outcome": {
         "final_score": "Saudi Arabia 0-0 Cape Verde",
         "total_cards": 4,
@@ -233075,7 +232279,7 @@
       "result": "won",
       "payout_units": 0.2899,
       "recorded_at": "2026-06-26T12:28:41",
-      "p_calibrated": 0.6703,
+      "p_calibrated": 0.6779,
       "outcome": {
         "final_score": "Spain 1-0 Uruguay",
         "total_cards": 5,
@@ -233103,7 +232307,7 @@
       "result": "won",
       "payout_units": 0.3717,
       "recorded_at": "2026-06-26T12:28:41",
-      "p_calibrated": 0.6637,
+      "p_calibrated": 0.6715,
       "outcome": {
         "final_score": "Iran 1-1 Egypt",
         "total_cards": 7,
@@ -233132,7 +232336,7 @@
       "result": "won",
       "payout_units": 0.3367,
       "recorded_at": "2026-06-26T12:28:41",
-      "p_calibrated": 0.6664,
+      "p_calibrated": 0.6742,
       "outcome": {
         "final_score": "Belgium 5-1 New Zealand",
         "total_cards": 2,
@@ -233231,11 +232435,18 @@
       "primary_source_module": "today",
       "date": "2026-06-26",
       "pick_id": "top_25_board|MLB|ARI___TBR|ML_HOME|2026-06-26",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "won",
+      "payout_units": 0.6993,
       "recorded_at": "2026-06-26T16:25:51",
-      "p_calibrated": 0.6827
+      "p_calibrated": 0.6827,
+      "outcome": {
+        "final_score": "ARI 1 @ TB 6",
+        "total_runs": 7,
+        "verify": "ARI @ TB: final 1-6 (total 7) on 2026-06-26",
+        "check": "verified"
+      },
+      "settled_at": "2026-06-27T09:07:59"
     },
     {
       "source": "top_25_board",
@@ -233625,7 +232836,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-06-26T23:37:22",
-      "p_calibrated": 0.5601
+      "p_calibrated": 0.5695
     },
     {
       "source": "wnba_alts_home_total_over_76.3",
@@ -239068,6 +238279,602 @@
       "settled_at": "2026-06-03T12:56:07",
       "_bootstrapped_from": "locks_history",
       "p_calibrated": 0.8229
+    },
+    {
+      "source": "top_25_board",
+      "sport": "MLB",
+      "player_or_matchup": "PHI @ NYM",
+      "market": "PHI_ML",
+      "prob": 0.5819,
+      "raw_prob": 0.6612,
+      "edge_pct": 25.7,
+      "fair_american": 116,
+      "primary_source_module": "today_reco",
+      "date": "2026-06-27",
+      "pick_id": "top_25_board|MLB|PHI___NYM|PHI_ML|2026-06-27",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-06-27T09:07:59",
+      "p_calibrated": 0.5819
+    },
+    {
+      "source": "top_25_board",
+      "sport": "MLB",
+      "player_or_matchup": "KCR @ CHW",
+      "market": "ML_HOME",
+      "prob": 0.6917,
+      "raw_prob": 0.7175,
+      "edge_pct": 17.5,
+      "fair_american": -143,
+      "primary_source_module": "today",
+      "date": "2026-06-27",
+      "pick_id": "top_25_board|MLB|KCR___CHW|ML_HOME|2026-06-27",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-06-27T09:07:59",
+      "p_calibrated": 0.6917
+    },
+    {
+      "source": "top_25_board",
+      "sport": "MLB",
+      "player_or_matchup": "KCR @ CHW",
+      "market": "CHW_ML",
+      "prob": 0.6917,
+      "raw_prob": 0.7175,
+      "edge_pct": 17.5,
+      "fair_american": -143,
+      "primary_source_module": "today_reco",
+      "date": "2026-06-27",
+      "pick_id": "top_25_board|MLB|KCR___CHW|CHW_ML|2026-06-27",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-06-27T09:07:59",
+      "p_calibrated": 0.6917
+    },
+    {
+      "source": "top_25_board",
+      "sport": "MLB",
+      "player_or_matchup": "ARI @ TBR",
+      "market": "UNDER_8.0",
+      "prob": 0.6043,
+      "raw_prob": 0.7283,
+      "edge_pct": 15.4,
+      "fair_american": -110,
+      "primary_source_module": "today_reco",
+      "date": "2026-06-27",
+      "pick_id": "top_25_board|MLB|ARI___TBR|UNDER_8_0|2026-06-27",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-06-27T09:07:59",
+      "p_calibrated": 0.5759
+    },
+    {
+      "source": "top_25_board",
+      "sport": "MLB",
+      "player_or_matchup": "COL @ MIN",
+      "market": "OVER_9.0",
+      "prob": 0.6033,
+      "raw_prob": 0.8508,
+      "edge_pct": 15.2,
+      "fair_american": -110,
+      "primary_source_module": "today_reco",
+      "date": "2026-06-27",
+      "pick_id": "top_25_board|MLB|COL___MIN|OVER_9_0|2026-06-27",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-06-27T09:07:59",
+      "p_calibrated": 0.5327
+    },
+    {
+      "source": "mlb_under_alert",
+      "sport": "MLB",
+      "player_or_matchup": "ARI @ TBR",
+      "market": "UNDER_8.0",
+      "prob": null,
+      "tier": "STRONG",
+      "under_signal_score": 6.44,
+      "date": "2026-06-27",
+      "pick_id": "mlb_under_alert|MLB|ARI___TBR|UNDER_8_0|2026-06-27",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-06-27T09:07:59"
+    },
+    {
+      "source": "mlb_under_alert",
+      "sport": "MLB",
+      "player_or_matchup": "PHI @ NYM",
+      "market": "UNDER_8.5",
+      "prob": null,
+      "tier": "STRONG",
+      "under_signal_score": 5.5,
+      "date": "2026-06-27",
+      "pick_id": "mlb_under_alert|MLB|PHI___NYM|UNDER_8_5|2026-06-27",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-06-27T09:07:59"
+    },
+    {
+      "source": "golf_top_10",
+      "sport": "GOLF",
+      "player_or_matchup": "Matt Fitzpatrick",
+      "market": "TOP_10",
+      "prob": 0.592,
+      "fair_american": -145,
+      "p_predicted": 0.592,
+      "matchup": "Travelers Championship",
+      "date": "2026-06-27",
+      "pick_id": "golf_top_10|GOLF|Matt_Fitzpatrick|TOP_10|2026-06-27",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-06-27T09:07:59",
+      "p_calibrated": 0.5943
+    },
+    {
+      "source": "golf_top_10",
+      "sport": "GOLF",
+      "player_or_matchup": "Bud Cauley",
+      "market": "TOP_10",
+      "prob": 0.565,
+      "fair_american": -130,
+      "p_predicted": 0.565,
+      "matchup": "Travelers Championship",
+      "date": "2026-06-27",
+      "pick_id": "golf_top_10|GOLF|Bud_Cauley|TOP_10|2026-06-27",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-06-27T09:07:59",
+      "p_calibrated": 0.575
+    },
+    {
+      "source": "golf_top_10",
+      "sport": "GOLF",
+      "player_or_matchup": "Ben Griffin",
+      "market": "TOP_10",
+      "prob": 0.559,
+      "fair_american": -127,
+      "p_predicted": 0.559,
+      "matchup": "Travelers Championship",
+      "date": "2026-06-27",
+      "pick_id": "golf_top_10|GOLF|Ben_Griffin|TOP_10|2026-06-27",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-06-27T09:07:59",
+      "p_calibrated": 0.5698
+    },
+    {
+      "source": "golf_top_10",
+      "sport": "GOLF",
+      "player_or_matchup": "Tommy Fleetwood",
+      "market": "TOP_10",
+      "prob": 0.431,
+      "fair_american": 132,
+      "p_predicted": 0.431,
+      "matchup": "Travelers Championship",
+      "date": "2026-06-27",
+      "pick_id": "golf_top_10|GOLF|Tommy_Fleetwood|TOP_10|2026-06-27",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-06-27T09:07:59",
+      "p_calibrated": 0.4175
+    },
+    {
+      "source": "golf_top_10",
+      "sport": "GOLF",
+      "player_or_matchup": "Patrick Cantlay",
+      "market": "TOP_10",
+      "prob": 0.429,
+      "fair_american": 133,
+      "p_predicted": 0.429,
+      "matchup": "Travelers Championship",
+      "date": "2026-06-27",
+      "pick_id": "golf_top_10|GOLF|Patrick_Cantlay|TOP_10|2026-06-27",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-06-27T09:07:59",
+      "p_calibrated": 0.4175
+    },
+    {
+      "source": "golf_top_10",
+      "sport": "GOLF",
+      "player_or_matchup": "Maverick McNealy",
+      "market": "TOP_10",
+      "prob": 0.39,
+      "fair_american": 157,
+      "p_predicted": 0.39,
+      "matchup": "Travelers Championship",
+      "date": "2026-06-27",
+      "pick_id": "golf_top_10|GOLF|Maverick_McNealy|TOP_10|2026-06-27",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-06-27T09:07:59",
+      "p_calibrated": 0.3854
+    },
+    {
+      "source": "golf_top_10",
+      "sport": "GOLF",
+      "player_or_matchup": "Justin Rose",
+      "market": "TOP_10",
+      "prob": 0.38,
+      "fair_american": 163,
+      "p_predicted": 0.38,
+      "matchup": "Travelers Championship",
+      "date": "2026-06-27",
+      "pick_id": "golf_top_10|GOLF|Justin_Rose|TOP_10|2026-06-27",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-06-27T09:07:59",
+      "p_calibrated": 0.3761
+    },
+    {
+      "source": "golf_top_10",
+      "sport": "GOLF",
+      "player_or_matchup": "Brian Campbell",
+      "market": "TOP_10",
+      "prob": 0.363,
+      "fair_american": 176,
+      "p_predicted": 0.363,
+      "matchup": "Travelers Championship",
+      "date": "2026-06-27",
+      "pick_id": "golf_top_10|GOLF|Brian_Campbell|TOP_10|2026-06-27",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-06-27T09:07:59",
+      "p_calibrated": 0.3603
+    },
+    {
+      "source": "golf_top_10",
+      "sport": "GOLF",
+      "player_or_matchup": "J.J. Spaun",
+      "market": "TOP_10",
+      "prob": 0.354,
+      "fair_american": 182,
+      "p_predicted": 0.354,
+      "matchup": "Travelers Championship",
+      "date": "2026-06-27",
+      "pick_id": "golf_top_10|GOLF|J_J__Spaun|TOP_10|2026-06-27",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-06-27T09:07:59",
+      "p_calibrated": 0.3519
+    },
+    {
+      "source": "golf_top_20",
+      "sport": "GOLF",
+      "player_or_matchup": "Wyndham Clark",
+      "market": "TOP_20",
+      "prob": 0.654,
+      "fair_american": -189,
+      "p_predicted": 0.654,
+      "matchup": "Travelers Championship",
+      "date": "2026-06-27",
+      "pick_id": "golf_top_20|GOLF|Wyndham_Clark|TOP_20|2026-06-27",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-06-27T09:07:59",
+      "p_calibrated": 0.599
+    },
+    {
+      "source": "golf_top_20",
+      "sport": "GOLF",
+      "player_or_matchup": "Robert MacIntyre",
+      "market": "TOP_20",
+      "prob": 0.607,
+      "fair_american": -155,
+      "p_predicted": 0.607,
+      "matchup": "Travelers Championship",
+      "date": "2026-06-27",
+      "pick_id": "golf_top_20|GOLF|Robert_MacIntyre|TOP_20|2026-06-27",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-06-27T09:07:59",
+      "p_calibrated": 0.5954
+    },
+    {
+      "source": "golf_top_20",
+      "sport": "GOLF",
+      "player_or_matchup": "Ben James",
+      "market": "TOP_20",
+      "prob": 0.552,
+      "fair_american": -123,
+      "p_predicted": 0.552,
+      "matchup": "Travelers Championship",
+      "date": "2026-06-27",
+      "pick_id": "golf_top_20|GOLF|Ben_James|TOP_20|2026-06-27",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-06-27T09:07:59",
+      "p_calibrated": 0.5636
+    },
+    {
+      "source": "golf_top_20",
+      "sport": "GOLF",
+      "player_or_matchup": "Kurt Kitayama",
+      "market": "TOP_20",
+      "prob": 0.554,
+      "fair_american": -124,
+      "p_predicted": 0.554,
+      "matchup": "Travelers Championship",
+      "date": "2026-06-27",
+      "pick_id": "golf_top_20|GOLF|Kurt_Kitayama|TOP_20|2026-06-27",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-06-27T09:07:59",
+      "p_calibrated": 0.5654
+    },
+    {
+      "source": "golf_top_20",
+      "sport": "GOLF",
+      "player_or_matchup": "Harris English",
+      "market": "TOP_20",
+      "prob": 0.543,
+      "fair_american": -119,
+      "p_predicted": 0.543,
+      "matchup": "Travelers Championship",
+      "date": "2026-06-27",
+      "pick_id": "golf_top_20|GOLF|Harris_English|TOP_20|2026-06-27",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-06-27T09:07:59",
+      "p_calibrated": 0.5557
+    },
+    {
+      "source": "soccer_total_total_under_3.5",
+      "sport": "WORLDCUP",
+      "player_or_matchup": "Ghana @ Croatia",
+      "market": "TOTAL_UNDER_3.5",
+      "prob": 0.647,
+      "fair_american": -183,
+      "p_predicted": 0.647,
+      "matchup": "Ghana @ Croatia",
+      "date": "2026-06-27",
+      "pick_id": "soccer_total_total_under_3_5|WORLDCUP|Ghana___Croatia|TOTAL_UNDER_3_5|2026-06-27",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-06-27T09:07:59",
+      "p_calibrated": 0.5695
+    },
+    {
+      "source": "soccer_total_total_under_3.5",
+      "sport": "WORLDCUP",
+      "player_or_matchup": "Portugal @ Colombia",
+      "market": "TOTAL_UNDER_3.5",
+      "prob": 0.647,
+      "fair_american": -183,
+      "p_predicted": 0.647,
+      "matchup": "Portugal @ Colombia",
+      "date": "2026-06-27",
+      "pick_id": "soccer_total_total_under_3_5|WORLDCUP|Portugal___Colombia|TOTAL_UNDER_3_5|2026-06-27",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-06-27T09:07:59",
+      "p_calibrated": 0.5695
+    },
+    {
+      "source": "soccer_total_total_under_3.5",
+      "sport": "WORLDCUP",
+      "player_or_matchup": "Uzbekistan @ Congo DR",
+      "market": "TOTAL_UNDER_3.5",
+      "prob": 0.647,
+      "fair_american": -183,
+      "p_predicted": 0.647,
+      "matchup": "Uzbekistan @ Congo DR",
+      "date": "2026-06-27",
+      "pick_id": "soccer_total_total_under_3_5|WORLDCUP|Uzbekistan___Congo_DR|TOTAL_UNDER_3_5|2026-06-27",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-06-27T09:07:59",
+      "p_calibrated": 0.5695
+    },
+    {
+      "source": "soccer_total_total_under_3.5",
+      "sport": "WORLDCUP",
+      "player_or_matchup": "Argentina @ Jordan",
+      "market": "TOTAL_UNDER_3.5",
+      "prob": 0.647,
+      "fair_american": -183,
+      "p_predicted": 0.647,
+      "matchup": "Argentina @ Jordan",
+      "date": "2026-06-28",
+      "pick_id": "soccer_total_total_under_3_5|WORLDCUP|Argentina___Jordan|TOTAL_UNDER_3_5|2026-06-28",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-06-27T09:07:59",
+      "p_calibrated": 0.5695
+    },
+    {
+      "source": "soccer_clean_sheet_home_clean_sheet_no",
+      "sport": "WORLDCUP",
+      "player_or_matchup": "Ghana @ Croatia",
+      "market": "HOME_CLEAN_SHEET_NO",
+      "prob": 0.735,
+      "fair_american": -278,
+      "p_predicted": 0.735,
+      "matchup": "Ghana @ Croatia",
+      "date": "2026-06-27",
+      "pick_id": "soccer_clean_sheet_home_clean_sheet_no|WORLDCUP|Ghana___Croatia|HOME_CLEAN_SHEET_NO|2026-06-27",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-06-27T09:07:59",
+      "p_calibrated": 0.6724
+    },
+    {
+      "source": "soccer_clean_sheet_home_clean_sheet_no",
+      "sport": "WORLDCUP",
+      "player_or_matchup": "England @ Panama",
+      "market": "HOME_CLEAN_SHEET_NO",
+      "prob": 0.753,
+      "fair_american": -306,
+      "p_predicted": 0.753,
+      "matchup": "England @ Panama",
+      "date": "2026-06-27",
+      "pick_id": "soccer_clean_sheet_home_clean_sheet_no|WORLDCUP|England___Panama|HOME_CLEAN_SHEET_NO|2026-06-27",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-06-27T09:07:59",
+      "p_calibrated": 0.6749
+    },
+    {
+      "source": "soccer_clean_sheet_home_clean_sheet_no",
+      "sport": "WORLDCUP",
+      "player_or_matchup": "Portugal @ Colombia",
+      "market": "HOME_CLEAN_SHEET_NO",
+      "prob": 0.729,
+      "fair_american": -269,
+      "p_predicted": 0.729,
+      "matchup": "Portugal @ Colombia",
+      "date": "2026-06-27",
+      "pick_id": "soccer_clean_sheet_home_clean_sheet_no|WORLDCUP|Portugal___Colombia|HOME_CLEAN_SHEET_NO|2026-06-27",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-06-27T09:07:59",
+      "p_calibrated": 0.6715
+    },
+    {
+      "source": "soccer_clean_sheet_home_clean_sheet_no",
+      "sport": "WORLDCUP",
+      "player_or_matchup": "Uzbekistan @ Congo DR",
+      "market": "HOME_CLEAN_SHEET_NO",
+      "prob": 0.77,
+      "fair_american": -336,
+      "p_predicted": 0.77,
+      "matchup": "Uzbekistan @ Congo DR",
+      "date": "2026-06-27",
+      "pick_id": "soccer_clean_sheet_home_clean_sheet_no|WORLDCUP|Uzbekistan___Congo_DR|HOME_CLEAN_SHEET_NO|2026-06-27",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-06-27T09:07:59",
+      "p_calibrated": 0.6772
+    },
+    {
+      "source": "soccer_clean_sheet_home_clean_sheet_no",
+      "sport": "WORLDCUP",
+      "player_or_matchup": "Austria @ Algeria",
+      "market": "HOME_CLEAN_SHEET_NO",
+      "prob": 0.753,
+      "fair_american": -306,
+      "p_predicted": 0.753,
+      "matchup": "Austria @ Algeria",
+      "date": "2026-06-28",
+      "pick_id": "soccer_clean_sheet_home_clean_sheet_no|WORLDCUP|Austria___Algeria|HOME_CLEAN_SHEET_NO|2026-06-28",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-06-27T09:07:59",
+      "p_calibrated": 0.6749
+    },
+    {
+      "source": "soccer_clean_sheet_home_clean_sheet_no",
+      "sport": "WORLDCUP",
+      "player_or_matchup": "Argentina @ Jordan",
+      "market": "HOME_CLEAN_SHEET_NO",
+      "prob": 0.775,
+      "fair_american": -345,
+      "p_predicted": 0.775,
+      "matchup": "Argentina @ Jordan",
+      "date": "2026-06-28",
+      "pick_id": "soccer_clean_sheet_home_clean_sheet_no|WORLDCUP|Argentina___Jordan|HOME_CLEAN_SHEET_NO|2026-06-28",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-06-27T09:07:59",
+      "p_calibrated": 0.6779
+    },
+    {
+      "source": "mlb_rl_away_minus_1.5",
+      "sport": "MLB",
+      "player_or_matchup": "SEA @ CLE",
+      "market": "AWAY_MINUS_1.5",
+      "prob": 0.451,
+      "fair_american": 122,
+      "p_predicted": 0.451,
+      "matchup": "SEA @ CLE",
+      "date": "2026-06-27",
+      "pick_id": "mlb_rl_away_minus_1_5|MLB|SEA___CLE|AWAY_MINUS_1_5|2026-06-27",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-06-27T09:07:59",
+      "p_calibrated": 0.451
+    },
+    {
+      "source": "mlb_rl_away_minus_1.5",
+      "sport": "MLB",
+      "player_or_matchup": "PHI @ NYM",
+      "market": "AWAY_MINUS_1.5",
+      "prob": 0.515,
+      "fair_american": -106,
+      "p_predicted": 0.515,
+      "matchup": "PHI @ NYM",
+      "date": "2026-06-27",
+      "pick_id": "mlb_rl_away_minus_1_5|MLB|PHI___NYM|AWAY_MINUS_1_5|2026-06-27",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-06-27T09:07:59",
+      "p_calibrated": 0.515
+    },
+    {
+      "source": "mlb_rl_home_minus_1.5",
+      "sport": "MLB",
+      "player_or_matchup": "CHC @ MIL",
+      "market": "HOME_MINUS_1.5",
+      "prob": 0.556,
+      "fair_american": -125,
+      "p_predicted": 0.556,
+      "matchup": "CHC @ MIL",
+      "date": "2026-06-27",
+      "pick_id": "mlb_rl_home_minus_1_5|MLB|CHC___MIL|HOME_MINUS_1_5|2026-06-27",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-06-27T09:07:59",
+      "p_calibrated": 0.556
+    },
+    {
+      "source": "mlb_rl_home_minus_1.5",
+      "sport": "MLB",
+      "player_or_matchup": "TEX @ TOR",
+      "market": "HOME_MINUS_1.5",
+      "prob": 0.557,
+      "fair_american": -126,
+      "p_predicted": 0.557,
+      "matchup": "TEX @ TOR",
+      "date": "2026-06-27",
+      "pick_id": "mlb_rl_home_minus_1_5|MLB|TEX___TOR|HOME_MINUS_1_5|2026-06-27",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-06-27T09:07:59",
+      "p_calibrated": 0.557
     }
   ],
   "note": "Unified pick ledger -- records every pick the model surfaces (top_25 board, whales, consensus, unders, sharp action, locks, POD) and settles each against actual outcomes. Per-source W-L feeds back into calibration so the model learns which modules are reliable. THIS is the training signal."
