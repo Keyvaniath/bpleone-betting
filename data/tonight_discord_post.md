@@ -1,12 +1,10 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:14 F:66
-
-:lock: **LOCK:** Colin Rea (MLB)
+_NO_ACTION_NIGHT_ | L:0 S:17 F:66
 
 :dart: **Top Picks:**
-1. [GOLF] Viktor Hovland -- Viktor Hovland (PLAYER_STRONG)
-2. [GOLF] Scottie Scheffler -- Scottie Scheffler (PLAYER_STRONG)
-3. [WNBA] angel reese -- angel reese (PLAYER_STRONG)
+1. [GOLF] Scottie Scheffler -- Scottie Scheffler (PLAYER_STRONG)
+2. [GOLF] Viktor Hovland -- Viktor Hovland (PLAYER_STRONG)
+3. [MLB] ? -- ? (TEAM_STRONG)
 
 :coin: Bankroll Advisory: STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 

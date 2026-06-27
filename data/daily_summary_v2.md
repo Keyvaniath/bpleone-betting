@@ -1,25 +1,28 @@
-# EdgeStat Daily Summary — 2026-06-26
+# EdgeStat Daily Summary — 2026-06-27
 
-## 🏥 Model Health: 71.9/100 [HEALTHY]
-- Solid health - some minor issues to monitor
+## 🏥 Model Health: 69.9/100 [OK]
+- Operational but room to improve - check yellow components
   - 🟢 Calibration Freshness: 100.0/100
   - 🔴 Hit Rate Trend: 54.4/100
   - 🔴 Brier Trend: 29.6/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 90.0/100
+  - 🟢 Data Health: 80.0/100
   - 🟡 Edge Count: 71.4/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.579)
-- **Total games on board:** 112
-- **Strong home favorites:** 2 | **Strong road dogs:** 1
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.583)
+- **Total games on board:** 125
+- **Strong home favorites:** 2 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
-1. **TEX @ TOR YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-2. **ARI @ TBR YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-3. **COL @ MIN YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-4. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
-5. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
+1. **KCR @ CHW YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+2. **TEX @ TOR YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+3. **ARI @ TBR YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+4. **COL @ MIN YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+5. **PHI @ NYM YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
+
+## 📡 Sharp Action (Line Movement)
+- [MODERATE] **ARI @ TBR** ml_home: 58.51% → 61.54% (+3.0pp)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **235-44** (84.2% hit rate)
@@ -48,8 +51,7 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (3)
-- [WNBA] **Washington Mystics** AWAY (4-2 L10) · model 73.4% fair -276
+## ⚡ Pre-Game HIGH Conviction (2)
 - [MLS] **CF Montréal** HOME (None L10) · model 71.5% fair -251
 - [MLS] **Seattle Sounders FC** HOME (0-1 L10) · model 66.7% fair -200
 
@@ -57,39 +59,38 @@
 - Hot teams: **0** | Cold teams: **0** | Over-heavy: 0 | Under-heavy: 8
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (43)
-- RESIDUAL_DIVERGENCE: **1**
-- STEAM_MOVE: **39**
+## ⚠️ Anomaly Detector (36)
+- STEAM_MOVE: **33**
 - PEN_MISMATCH: **3**
-  - Portland Fire (WNBA): Portland Fire UNDERPERFORMING expected margin by 23.7pts in recent games -- model bias may persist
   - CHI @ DAL (WNBA): ML/TOTAL steam since open: ML +3.3pp toward DAL; total +2 (OVER) (6 snapshots)
   - NY @ SEA (WNBA): ML/TOTAL steam since open: ML +8.9pp toward SEA; total -2 (UNDER) (2 snapshots)
   - BAL @ LAA (MLB): ML steam since open: ML +9.6pp toward LAA (4 snapshots)
   - PIT @ COL (MLB): ML/TOTAL steam since open: ML +8.4pp toward COL; total +1 (OVER) (6 snapshots)
+  - OAK @ SFG (MLB): ML/TOTAL steam since open: ML +5.8pp toward SFG; total -0.5 (UNDER) (5 snapshots)
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$4.13**
-  - #1 [NRFI] $50 on TEX @ TOR YRFI (1st-inning OVER 0.5) (P=76%)
-  - #2 [NRFI] $50 on ARI @ TBR YRFI (1st-inning OVER 0.5) (P=71%)
-  - #3 [NRFI] $50 on COL @ MIN YRFI (1st-inning OVER 0.5) (P=69%)
+- Expected EV: **$16.98**
+  - #1 [NRFI] $50 on KCR @ CHW YRFI (1st-inning OVER 0.5) (P=86%)
+  - #2 [NRFI] $50 on TEX @ TOR YRFI (1st-inning OVER 0.5) (P=76%)
+  - #3 [NRFI] $50 on ARI @ TBR YRFI (1st-inning OVER 0.5) (P=71%)
   - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
-## 🎯 Convergence Picks (5 stacked games)
-- ELITE: **0** · HIGH: 1 · MED: 4
-  - [HIGH] Dallas Wings @ Las Vegas Aces : 3 signals (HEAT_COLD, HEAT_COLD, ATS)
+## 🎯 Convergence Picks (6 stacked games)
+- ELITE: **0** · HIGH: 1 · MED: 5
+  - [HIGH] Portland Fire @ Chicago Sky : 3 signals (ANOMALY, ATS, ATS)
   - [MED] New York Knicks @ San Antonio Spurs : 2 signals (ATS, ATS)
-  - [MED] New York Liberty @ Seattle Storm : 2 signals (HEAT_COLD, ATS)
+  - [MED] Washington Mystics @ Connecticut Sun : 2 signals (PREGAME, HEAT_COLD)
+  - [MED] Atlanta Dream @ Golden State Valkyries : 2 signals (HEAT_COLD, ATS)
   - [MED] Portland Timbers @ Seattle Sounders FC : 2 signals (PREGAME, ATS)
-  - [MED] Coventry City @ Arsenal : 2 signals (PREGAME, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (12)
-- **Paul Skenes** OVER 5.5 K (77%) fair -337
+## ⚾ Top MLB Pitcher K Plays (11)
 - **Jacob Misiorowski** OVER 7.5 K (77%) fair -332
 - **Zack Wheeler** OVER 4.5 K (76%) fair -321
 - **Roki Sasaki** OVER 4.5 K (71%) fair -251
 - **Max Meyer** OVER 5.5 K (71%) fair -250
+- **Taj Bradley** OVER 4.5 K (70%) fair -232
 
 ## 🏀 NBA Player Heat (18 HOT / 22 COLD)
   - 🔥 **Jeremiah Fears** (NO): L5 31.8/5.8/6.0 vs season 16.9/3.2/4.0 [PTS +14.9, REB +2.6, AST +2.0]
@@ -109,22 +110,22 @@
   - [LEAN] **Daniil Donchenko** (14-2-0) vs Theodor Berggren -- fair -149
 
 ## ⛳ Golf Player Heat (from Travelers Championship)
-  - 🔥 T1 **Viktor Hovland** (Norway): -10 total -- finished T1
-  - 🔥 T2 **Brian Campbell** (USA): -9 total -- finished T2
-  - 🔥 T3 **Akshay Bhatia** (USA): -9 total -- finished T3
-  - 🔥 T4 **Bud Cauley** (USA): -9 total -- finished T4
-  - 🔥 T5 **Scottie Scheffler** (USA): -9 total -- finished T5
+  - 🔥 T1 **Scottie Scheffler** (USA): -16 total -- finished T1
+  - 🔥 T2 **Viktor Hovland** (Norway): -14 total -- finished T2
+  - 🔥 T3 **Akshay Bhatia** (USA): -12 total -- finished T3
+  - 🔥 T4 **Eric Cole** (USA): -12 total -- finished T4
+  - 🔥 T5 **Bud Cauley** (USA): -10 total -- finished T5
 
-## 🔥 MLB Batter Heat (44 HOT / 44 COLD)
-  - 🔥 **Nasim Nuñez** (WSH): L14 .400 / season .240 (+160pts)
-  - 🔥 **Victor Caratini** (MIN): L14 .400 / season .242 (+158pts)
-  - 🔥 **Luisangel Acuña** (CWS): L14 .367 / season .211 (+156pts)
-  - 🔥 **Logan O'Hoppe** (LAA): L14 .390 / season .240 (+150pts)
-  - 🔥 **Pete Crow-Armstrong** (CHC): L14 .424 / season .287 (+137pts)
+## 🔥 MLB Batter Heat (49 HOT / 41 COLD)
+  - 🔥 **Nasim Nuñez** (WSH): L14 .395 / season .238 (+157pts)
+  - 🔥 **Luisangel Acuña** (CWS): L14 .379 / season .222 (+157pts)
+  - 🔥 **Caleb Durbin** (BOS): L14 .367 / season .229 (+138pts)
+  - 🔥 **Logan O'Hoppe** (LAA): L14 .366 / season .234 (+132pts)
+  - 🔥 **Pete Crow-Armstrong** (CHC): L14 .414 / season .284 (+130pts)
   - ❄️ **Jorge Mateo** (ATL): L14 .107 / season .262 (-155pts) -- FADE props
   - ❄️ **Carlos Cortes** (ATH): L14 .122 / season .276 (-154pts) -- FADE props
-  - ❄️ **Ildemaro Vargas** (AZ): L14 .121 / season .261 (-140pts) -- FADE props
-  - ❄️ **David Fry** (CLE): L14 .071 / season .211 (-140pts) -- FADE props
+  - ❄️ **Ildemaro Vargas** (AZ): L14 .121 / season .260 (-139pts) -- FADE props
+  - ❄️ **David Fry** (CLE): L14 .077 / season .209 (-132pts) -- FADE props
   - ❄️ **Colby Thomas** (ATH): L14 .080 / season .206 (-126pts) -- FADE props
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
@@ -137,6 +138,6 @@
 ## 🤖 Self-Training Status
 - **NBA**: n=1 games · hit rate 0.0% · bias +55.0pp
 - **NHL**: n=1 games · hit rate 0.0% · bias +52.9pp
-- **WNBA**: n=40 games · hit rate 47.5% · bias -7.4pp [calibration applied]
-- **MLB**: n=185 games · hit rate 45.4% · bias +2.3pp [calibration applied]
+- **WNBA**: n=41 games · hit rate 41.5% · bias -11.4pp [calibration applied]
+- **MLB**: n=185 games · hit rate 43.2% · bias +2.7pp [calibration applied]
 - **CWS**: n=3 games · hit rate 0.0% · bias +67.5pp

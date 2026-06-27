@@ -1,58 +1,45 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-06-26T23:12:38 UTC_
+_Generated 2026-06-27T07:55:15 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -10
+- **Score:** 2
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 14
+- **Total STRONG:** 17
 - **Total FADES:** 66
 
-## Lock of the Night
-- **Subject:** Colin Rea
-- **Source:** ELITE_BOARD
-- **Sport:** MLB
-- **Score:** 15.0
-- **Details:** CHC @ MIL
-
 ## Top 5 Curated Picks
-1. **GOLF / Viktor Hovland** (GOLF_PLAYER, score=188.79)
-   - Play: Viktor Hovland (PLAYER_STRONG)
-   - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Scottie Scheffler** (GOLF_PLAYER, score=167.07)
+1. **GOLF / Scottie Scheffler** (GOLF_PLAYER, score=218.57)
    - Play: Scottie Scheffler (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-3. **WNBA / angel reese** (WNBA_PLAYER, score=60.0)
-   - Play: angel reese (PLAYER_STRONG)
-   - Rationale: Cross-sport top pick (WNBA_PLAYER)
-4. **MLB / Nathan Eovaldi** (MLB_PITCHER, score=59.25)
-   - Play: Nathan Eovaldi (PITCHER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_PITCHER)
-5. **MLB / J.T. Ginn** (MLB_PITCHER, score=57.67)
-   - Play: J.T. Ginn (PITCHER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_PITCHER)
+2. **GOLF / Viktor Hovland** (GOLF_PLAYER, score=209.86)
+   - Play: Viktor Hovland (PLAYER_STRONG)
+   - Rationale: Cross-sport top pick (GOLF_PLAYER)
+3. **MLB / ?** (MLB_TEAM, score=81.33)
+   - Play: ? (TEAM_STRONG)
+   - Rationale: Cross-sport top pick (MLB_TEAM)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
-  - Viktor Hovland top 10 finish
   - Scottie Scheffler top 10 finish
+  - Viktor Hovland top 10 finish
   - Akshay Bhatia top 10 finish
 
 ## Slate ROI Projection
-- **Picks:** 4
-- **Avg edge:** -0.91%
+- **Picks:** 0
+- **Avg edge:** 0%
 - **Expected ROI (1/4 Kelly):** 0.0%
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **NHL** / calvin pickard (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / joseph woll (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / anthony stolarz (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / logan thompson_2 (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / stuart skinner (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
+- **MLB** / Michael McGreevy (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Tomoyuki Sugano (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Colin Rea (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Roki Sasaki (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / J.T. Ginn (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
