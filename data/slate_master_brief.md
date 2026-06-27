@@ -1,13 +1,20 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-06-27T14:27:26 UTC_
+_Generated 2026-06-27T15:34:59 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -3
+- **Score:** 12
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 13
-- **Total FADES:** 55
+- **Total STRONG:** 17
+- **Total FADES:** 56
+
+## Lock of the Night
+- **Subject:** Foster Griffin
+- **Source:** ELITE_BOARD
+- **Sport:** MLB
+- **Score:** 15.0
+- **Details:** WSN @ BAL
 
 ## Top 5 Curated Picks
 1. **GOLF / Scottie Scheffler** (GOLF_PLAYER, score=218.57)
@@ -16,9 +23,12 @@ _Generated 2026-06-27T14:27:26 UTC_
 2. **GOLF / Viktor Hovland** (GOLF_PLAYER, score=209.86)
    - Play: Viktor Hovland (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-3. **MLB / Dylan Cease** (MLB_PITCHER, score=64.42)
-   - Play: Dylan Cease (PITCHER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_PITCHER)
+3. **MLB / Willson Contreras** (MLB_BATTER, score=106.63)
+   - Play: Willson Contreras (BATTER_STRONG)
+   - Rationale: Cross-sport top pick (MLB_BATTER)
+4. **MLB / Caleb Durbin** (MLB_BATTER, score=100.06)
+   - Play: Caleb Durbin (BATTER_STRONG)
+   - Rationale: Cross-sport top pick (MLB_BATTER)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
@@ -27,19 +37,19 @@ _Generated 2026-06-27T14:27:26 UTC_
   - Akshay Bhatia top 10 finish
 
 ## Slate ROI Projection
-- **Picks:** 0
-- **Avg edge:** 0%
+- **Picks:** 1
+- **Avg edge:** -0.91%
 - **Expected ROI (1/4 Kelly):** 0.0%
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **NHL** / adin hill (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
 - **NHL** / stuart skinner (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / connor hellebuyck (GOALIE_FADE)
+- **NHL** / samsonov ilya (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / kevin lankinen (GOALIE_FADE)
+- **NHL** / adin hill (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / thatcher demko (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
 - **NHL** / joseph woll (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO

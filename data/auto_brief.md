@@ -1,7 +1,7 @@
 # Tonight's Slate Brief — 2026-06-27
 
-## Slate Quality: 55/100 (MEDIUM)
-_10% lineups confirmed · 13 rookie SPs_
+## Slate Quality: 56/100 (MEDIUM)
+_13% lineups confirmed · 13 rookie SPs_
 **Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
@@ -11,50 +11,49 @@ _10% lineups confirmed · 13 rookie SPs_
 - **MC simulation:** EV +$96.03, 77% P(profit), p05 $-141.89 / p95 $299.89
 
 ## Top 5 Best Bets
-1. **NYY @ BOS 4-leg SGP @ -176**  (81/100 *****, edge +67.0%)
-   - Joint prob 0.637 (correlation boost +0.160)
-   - Leg: Willson Contreras UNDER 0.5 batter doubles
-2. **CHC @ MIL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +26.8%)
+1. **CHC @ MIL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +26.8%)
    - P(YRFI) 72.8% vs baseline 46.0%
-3. **OAK @ LAA YRFI (1st-inning OVER 0.5)**  (79/100 ****, edge +19.4%)
+2. **OAK @ LAA YRFI (1st-inning OVER 0.5)**  (79/100 ****, edge +19.4%)
    - P(YRFI) 65.4% vs baseline 46.0%
-4. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
+3. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
    - Player prop quality score 1.1935
    - Elite player
-5. **LOL ShowMaker OVER 3.5 Kills**  (78/100 ****, edge —)
+4. **LOL ShowMaker OVER 3.5 Kills**  (78/100 ****, edge —)
    - Player prop quality score 1.1892
+   - Elite player
+5. **LOL Peyz OVER 4.5 Kills**  (78/100 ****, edge —)
+   - Player prop quality score 1.184
    - Elite player
 
 ## ⚠️ Trap Warnings — 16 flagged
-- **NYY @ BOS 4-leg SGP @ -176** (low):
-   - Edge +67.0% looks big but only 0 settled props on this player — model unproven
 - **CHC @ MIL YRFI (1st-inning OVER 0.5)** (low):
    - Edge +26.8% looks big but only 0 settled props on this player — model unproven
-- **HOU @ DET 2-leg SGP @ -259** (low):
+- **HOU @ DET 2-leg SGP @ -260** (low):
    - Edge +25.0% looks big but only 0 settled props on this player — model unproven
-- **OAK @ LAA 2-leg SGP @ -224** (low):
+- **NYY @ BOS 2-leg SGP @ -260** (low):
+   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
+- **OAK @ LAA 2-leg SGP @ -219** (low):
    - Edge +25.0% looks big but only 0 settled props on this player — model unproven
 - **CIN @ PIT 2-leg SGP @ -214** (low):
    - Edge +25.0% looks big but only 0 settled props on this player — model unproven
 
 ## Weather leans
-- **OVER lean** (wind out + warm): HOU @ DET
+- **UNDER lean** (wind in + cold): ATL @ SFG
 
 ## Hot streaks
-**Batters heating up:** Konnor Griffin (heat +8.50), Kyle Schwarber (heat +6.49), Jac Caglianone (heat +5.77)
+**Batters heating up:** Konnor Griffin (heat +8.50), Kyle Schwarber (heat +6.49), Kazuma Okamoto (heat +6.46)
 **Pitchers on a run:** Cole Sulser (heat +11.32), Jake Bennett (heat +7.92), Ryan Gusto (heat +6.42)
 
 ## Top correlation-aware SGPs
-- **NYY @ BOS** 4-leg @ -176 fair (joint 0.64, EV +67.0%)
-   - Willson Contreras UNDER 0.5 batter doubles
-   - Willson Contreras OVER 0.5 batter total bases
-   - Jarren Duran UNDER 2.5 batter total bases
-- **HOU @ DET** 2-leg @ -259 fair (joint 0.72, EV +25.0%)
+- **HOU @ DET** 2-leg @ -260 fair (joint 0.72, EV +25.0%)
    - Cam Smith UNDER 0.5 batter doubles
    - Spencer Torkelson UNDER 0.5 batter home runs
-- **OAK @ LAA** 2-leg @ -224 fair (joint 0.69, EV +25.0%)
+- **NYY @ BOS** 2-leg @ -260 fair (joint 0.72, EV +25.0%)
+   - Carlos Narváez UNDER 2.5 batter hrr
+   - Amed Rosario UNDER 1.5 batter rbis
+- **OAK @ LAA** 2-leg @ -219 fair (joint 0.69, EV +25.0%)
    - Jack Perkins UNDER 9.5 pitcher strikeouts
-   - Reid Detmers UNDER 8.5 pitcher strikeouts
+   - Jack Perkins OVER 4.5 pitcher strikeouts
 
 ## Bullpens GASSED tonight
 Pittsburgh Pirates, Tampa Bay Rays, Toronto Blue Jays, Philadelphia Phillies, Chicago Cubs, Houston Astros, Kansas City Royals, New York Mets
@@ -66,8 +65,8 @@ _Lean late-inning OVER on these games; fade their save situations._
 ## Golf -- Travelers Championship
 - **Leader:** Scottie Scheffler (-16) at #1
 - **Field:** 72 players  |  Status: In Progress
-- **Play of the Tournament:** Patrick Cantlay TOP5 @ +608 (model 14.1%, HIGH)
-   - P(top 5) 14.1% -- lower variance than outright but compelling line.
+- **Play of the Tournament:** Patrick Cantlay TOP5 @ +600 (model 14.3%, HIGH)
+   - P(top 5) 14.3% -- lower variance than outright but compelling line.
 
 ## NBA -- PLAYOFFS
 - New York Knicks @ San Antonio Spurs (53-29 vs 62-20) 94-90 | P(home) 0.0% fair +0 | Final
@@ -105,4 +104,4 @@ _Lean late-inning OVER on these games; fade their save situations._
 ## Self-learning calibration (esports + KBO)
 - **LOL:** 21 settled | brier 0.2649 | ECE 0.1541
    - Model over-confident; subtract 15.4pp at next inference
-- **KBO:** 17 settled | brier 0.265 | ECE 0.127
+- **KBO:** 18 settled | brier 0.2589 | ECE 0.0981

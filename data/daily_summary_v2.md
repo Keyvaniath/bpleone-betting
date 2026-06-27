@@ -1,13 +1,13 @@
 # EdgeStat Daily Summary — 2026-06-27
 
-## 🏥 Model Health: 71.9/100 [HEALTHY]
+## 🏥 Model Health: 73.6/100 [HEALTHY]
 - Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 99.9/100
+  - 🟢 Calibration Freshness: 99.7/100
   - 🔴 Hit Rate Trend: 54.4/100
   - 🔴 Brier Trend: 29.6/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 90.0/100
-  - 🟡 Edge Count: 71.4/100
+  - 🟢 Edge Count: 88.6/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.584)
@@ -15,38 +15,40 @@
 - **Strong home favorites:** 2 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
-1. **NYY @ BOS 4-leg SGP @ -176** (81/100 ★★★★★)
-2. **CHC @ MIL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-3. **OAK @ LAA YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
-4. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
-5. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
-
-## 📡 Sharp Action (Line Movement)
-- [MODERATE] **ARI @ TBR** under_8.0: 51.22% → 54.55% (+3.3pp)
+1. **CHC @ MIL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+2. **OAK @ LAA YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
+3. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
+4. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
+5. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
 
 ## 📉 Strong UNDER Signals
+- [ELITE 6.5] **PHI @ NYM** model 6.37 vs market 9.0
 - [STRONG 6.4] **ARI @ TBR** model 6.53 vs market 8.0
-- [STRONG 5.5] **PHI @ NYM** model 6.19 vs market 8.5
 
 ## 🔒 Locks of the Day -- Track Record
-- All-time: **235-44** (84.2% hit rate)
-- Net units: **+7.99u** | ROI: **+46.2%**
-- Last 7d: 33-4 (89.2%) | net +1.26u
+- All-time: **239-44** (84.5% hit rate)
+- Net units: **+8.17u** | ROI: **+46.6%**
+- Last 7d: 37-4 (90.2%) | net +1.44u
 
-**Today's 5 Locks:**
+**Today's 10 Locks:**
 - [KBO] **Choi Jeong** one_plus_tb · p=73% edge=+39.8% qK=0.062u
 - [KBO] **Jose Pirela** one_plus_tb · p=73% edge=+39.2% qK=0.062u
 - [KBO] **Koo Ja-wook** one_plus_tb · p=73% edge=+38.9% qK=0.062u
 - [KBO] **Mel Rojas Jr.** one_plus_tb · p=73% edge=+38.5% qK=0.062u
 - [KBO] **Austin Dean** one_plus_tb · p=73% edge=+38.5% qK=0.062u
+- [MLB-PP] **Isaac Collins** PP_batter_hrr_under_3.5 · p=88% edge=+51.9% qK=0.062u
+- [MLB-PP] **Alex Bregman** PP_batter_hrr_under_3.5 · p=88% edge=+51.8% qK=0.062u
+- [MLB-PP] **Lourdes Gurriel Jr.** PP_batter_hrr_under_3.5 · p=87% edge=+51.8% qK=0.062u
+- [MLB-PP] **Ryan Kreidler** PP_batter_hrr_over_0.5 · p=87% edge=+51.5% qK=0.062u
+- [MLB-PP] **Christian Vázquez** PP_batter_hrr_under_3.5 · p=87% edge=+51.4% qK=0.062u
 
 ## 🎰 Top Balanced 2-Leg Parlays (40-65% joint)
-- [KBO] Choi Jeong one_plus_tb + [KBO] Jose Pirela one_plus_tb
-  Joint: 53% | Fair: 264 | Edge: +94.6%
-- [KBO] Choi Jeong one_plus_tb + [KBO] Koo Ja-wook one_plus_tb
-  Joint: 53% | Fair: 264 | Edge: +94.1%
-- [KBO] Choi Jeong one_plus_tb + [KBO] Mel Rojas Jr. one_plus_tb
-  Joint: 53% | Fair: 264 | Edge: +93.6%
+- [MLB-PP] Isaac Collins PP_batter_hrr_under_ + [MLB] PHI @ NYM PHI_ML
+  Joint: 51% | Fair: 266 | Edge: +88.3%
+- [MLB-PP] Alex Bregman PP_batter_hrr_under_ + [MLB] PHI @ NYM PHI_ML
+  Joint: 51% | Fair: 266 | Edge: +88.3%
+- [MLB-PP] Lourdes Gurriel Jr. PP_batter_hrr_under_ + [MLB] PHI @ NYM PHI_ML
+  Joint: 51% | Fair: 266 | Edge: +88.1%
 
 ## 🎮 Player Play of the Day (cross-sport)
 - **[LOL]** Inspired UNDER 3.5 Kills | MED conviction · model 61.7% fair -161
@@ -63,10 +65,10 @@
 - Hot teams: **0** | Cold teams: **0** | Over-heavy: 0 | Under-heavy: 8
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (38)
+## ⚠️ Anomaly Detector (37)
 - STEAM_MOVE: **33**
-- COMPOUND_BULLPEN: **2**
 - PEN_MISMATCH: **3**
+- COMPOUND_BULLPEN: **1**
   - CHI @ DAL (WNBA): ML/TOTAL steam since open: ML +3.3pp toward DAL; total +2 (OVER) (6 snapshots)
   - NY @ SEA (WNBA): ML/TOTAL steam since open: ML +8.9pp toward SEA; total -2 (UNDER) (2 snapshots)
   - BAL @ LAA (MLB): ML steam since open: ML +9.6pp toward LAA (4 snapshots)
@@ -74,13 +76,13 @@
   - OAK @ SFG (MLB): ML/TOTAL steam since open: ML +5.8pp toward SFG; total -0.5 (UNDER) (5 snapshots)
 
 ## 💰 Today's Portfolio (9 picks)
-- Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$-5.95**
-  - #1 [SGP] $50 on NYY @ BOS 4-leg SGP @ -176 (P=64%)
-  - #2 [NRFI] $50 on CHC @ MIL YRFI (1st-inning OVER 0.5) (P=73%)
-  - #3 [NRFI] $35 on OAK @ LAA YRFI (1st-inning OVER 0.5) (P=65%)
-  - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
-  - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
+- Total stake: **$330.0** (33.0% of $1000 bankroll)
+- Expected EV: **$-5.54**
+  - #1 [NRFI] $50 on CHC @ MIL YRFI (1st-inning OVER 0.5) (P=73%)
+  - #2 [NRFI] $35 on OAK @ LAA YRFI (1st-inning OVER 0.5) (P=65%)
+  - #3 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
+  - #4 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
+  - #5 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
 
 ## 🎯 Convergence Picks (4 stacked games)
 - ELITE: **0** · HIGH: 1 · MED: 3
@@ -118,7 +120,7 @@
   - 🔥 T2 **Viktor Hovland** (Norway): -14 total -- finished T2
   - 🔥 T3 **Akshay Bhatia** (USA): -12 total -- finished T3
   - 🔥 T4 **Eric Cole** (USA): -12 total -- finished T4
-  - 🔥 T5 **Bud Cauley** (USA): -10 total -- finished T5
+  - 🔥 T5 **Matt Fitzpatrick** (England): -10 total -- finished T5
 
 ## 🔥 MLB Batter Heat (49 HOT / 41 COLD)
   - 🔥 **Nasim Nuñez** (WSH): L14 .395 / season .238 (+157pts)
