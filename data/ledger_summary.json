@@ -1,23 +1,23 @@
 {
-  "generated_at": "2026-06-27T15:34:48",
+  "generated_at": "2026-06-27T15:41:36",
   "stake_assumption": "1u flat per pick",
   "total_picks": 10000,
-  "n_settled": 6359,
-  "n_pending": 782,
-  "n_void": 2859,
-  "wins": 2921,
+  "n_settled": 6358,
+  "n_pending": 805,
+  "n_void": 2837,
+  "wins": 2920,
   "losses": 3432,
   "pushes": 6,
-  "hit_rate": 0.4598,
-  "net_units": -713.081,
-  "roi_pct": -11.22,
-  "n_calibrated_picks": 9396,
+  "hit_rate": 0.4597,
+  "net_units": -713.659,
+  "roi_pct": -11.24,
+  "n_calibrated_picks": 9395,
   "calibrated_reliability": {
-    "n": 6294,
-    "ece_raw": 0.0961,
-    "ece_calibrated": 0.0239,
-    "brier_raw": 0.22427,
-    "brier_calibrated": 0.20118,
+    "n": 6293,
+    "ece_raw": 0.0962,
+    "ece_calibrated": 0.0235,
+    "brier_raw": 0.22428,
+    "brier_calibrated": 0.20095,
     "note": "In-sample over the settled ledger (the isotonic transform is fit on these same outcomes); held-out 70/30 validation is in recalibration_map.json. p_predicted = raw model prob (kept untouched for the learning loop); p_calibrated = honest prob stamped per pick. Lower ECE/Brier on the calibrated column = the displayed % is truer."
   },
   "curated": {
@@ -42,22 +42,13 @@
     ],
     "definition": "Featured/recommended plays only -- Lock of the Day, Top 25, Whale, Sharp, Consensus (hit), Under Alerts, POD. Excludes the experimental prop feeds, which are tracked to train the model, not bet."
   },
-  "n_added_this_run": 19,
-  "n_newly_settled_this_run": 26,
+  "n_added_this_run": 23,
+  "n_newly_settled_this_run": 0,
   "n_resettled_this_run": 0,
   "n_voided_this_run": 0,
-  "n_reconciled_settled_voids": 2,
+  "n_reconciled_settled_voids": 0,
   "n_bootstrapped_from_locks_history": 0,
   "by_source": {
-    "wnba_3pm_3pm_under_1.0": {
-      "n": 5,
-      "wins": 2,
-      "losses": 3,
-      "pushes": 0,
-      "net_units": -1.827,
-      "hit_rate": 0.4,
-      "roi_pct": -36.54
-    },
     "wnba_blkstl_blk_stl_under_1.5": {
       "n": 7,
       "wins": 4,
@@ -832,6 +823,15 @@
       "hit_rate": 0.5,
       "roi_pct": -29.6
     },
+    "wnba_3pm_3pm_under_1.0": {
+      "n": 4,
+      "wins": 1,
+      "losses": 3,
+      "pushes": 0,
+      "net_units": -2.405,
+      "hit_rate": 0.25,
+      "roi_pct": -60.12
+    },
     "wnba_3pm_3pm_under_1.5": {
       "n": 6,
       "wins": 5,
@@ -1275,14 +1275,6 @@
     }
   },
   "by_market_family": {
-    "3pm_under": {
-      "n": 36,
-      "wins": 27,
-      "losses": 9,
-      "pushes": 0,
-      "net_units": 3.812,
-      "hit_rate": 0.75
-    },
     "blk_stl_under": {
       "n": 32,
       "wins": 21,
@@ -1402,6 +1394,14 @@
       "pushes": 0,
       "net_units": 16.355,
       "hit_rate": 0.8154
+    },
+    "3pm_under": {
+      "n": 35,
+      "wins": 26,
+      "losses": 9,
+      "pushes": 0,
+      "net_units": 3.235,
+      "hit_rate": 0.7429
     },
     "3pm_over": {
       "n": 16,
@@ -1741,14 +1741,6 @@
     }
   },
   "by_canonical": {
-    "3pm_under": {
-      "n": 36,
-      "wins": 27,
-      "losses": 9,
-      "pushes": 0,
-      "net_units": 3.812,
-      "hit_rate": 0.75
-    },
     "blk_stl_under": {
       "n": 32,
       "wins": 21,
@@ -1876,6 +1868,14 @@
       "pushes": 0,
       "net_units": 16.355,
       "hit_rate": 0.8154
+    },
+    "3pm_under": {
+      "n": 35,
+      "wins": 26,
+      "losses": 9,
+      "pushes": 0,
+      "net_units": 3.235,
+      "hit_rate": 0.7429
     },
     "3pm_over": {
       "n": 16,
@@ -2223,57 +2223,44 @@
     }
   },
   "by_sport": {
-    "EPL": {
-      "n": 87,
-      "settled": 31,
-      "wins": 20,
-      "losses": 11,
-      "pushes": 0,
-      "pending": 3,
-      "void": 53,
-      "net_units": -1.613,
-      "hit_rate": 0.6452,
-      "roi_pct": -5.2,
-      "markets": 5
-    },
-    "WNBA": {
-      "n": 399,
-      "settled": 160,
-      "wins": 114,
-      "losses": 46,
-      "pushes": 0,
-      "pending": 51,
-      "void": 188,
-      "net_units": 11.501,
-      "hit_rate": 0.7125,
-      "roi_pct": 7.19,
-      "markets": 4
+    "MLB": {
+      "n": 7312,
+      "settled": 4798,
+      "wins": 1893,
+      "losses": 2899,
+      "pushes": 6,
+      "pending": 460,
+      "void": 2054,
+      "net_units": -1105.086,
+      "hit_rate": 0.395,
+      "roi_pct": -23.06,
+      "markets": 48
     },
     "NBA": {
-      "n": 119,
+      "n": 108,
       "settled": 24,
       "wins": 18,
       "losses": 6,
       "pushes": 0,
       "pending": 0,
-      "void": 95,
+      "void": 84,
       "net_units": 2.202,
       "hit_rate": 0.75,
       "roi_pct": 9.18,
       "markets": 9
     },
-    "MLB": {
-      "n": 7294,
-      "settled": 4798,
-      "wins": 1893,
-      "losses": 2899,
-      "pushes": 6,
-      "pending": 438,
-      "void": 2058,
-      "net_units": -1105.086,
-      "hit_rate": 0.395,
-      "roi_pct": -23.06,
-      "markets": 48
+    "WNBA": {
+      "n": 393,
+      "settled": 159,
+      "wins": 113,
+      "losses": 46,
+      "pushes": 0,
+      "pending": 51,
+      "void": 183,
+      "net_units": 10.921,
+      "hit_rate": 0.7107,
+      "roi_pct": 6.87,
+      "markets": 4
     },
     "NHL": {
       "n": 183,
@@ -2328,12 +2315,12 @@
       "markets": 3
     },
     "GOLF": {
-      "n": 453,
+      "n": 454,
       "settled": 365,
       "wins": 170,
       "losses": 195,
       "pushes": 0,
-      "pending": 88,
+      "pending": 89,
       "void": 0,
       "net_units": -0.94,
       "hit_rate": 0.4658,
@@ -2352,6 +2339,19 @@
       "hit_rate": 0.2857,
       "roi_pct": -58.63,
       "markets": 4
+    },
+    "EPL": {
+      "n": 85,
+      "settled": 31,
+      "wins": 20,
+      "losses": 11,
+      "pushes": 0,
+      "pending": 3,
+      "void": 51,
+      "net_units": -1.613,
+      "hit_rate": 0.6452,
+      "roi_pct": -5.2,
+      "markets": 5
     },
     "UFC": {
       "n": 150,
