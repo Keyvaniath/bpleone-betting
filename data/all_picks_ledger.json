@@ -1,33 +1,33 @@
 {
-  "generated_at": "2026-06-27T20:54:36",
+  "generated_at": "2026-06-27T21:32:41",
   "stake_assumption": "1u flat per pick",
   "total_picks": 10000,
-  "n_settled": 6358,
-  "n_pending": 806,
+  "n_settled": 6359,
+  "n_pending": 805,
   "n_void": 2836,
-  "wins": 2920,
+  "wins": 2921,
   "losses": 3432,
   "pushes": 6,
-  "hit_rate": 0.4597,
-  "net_units": -713.659,
-  "roi_pct": -11.24,
+  "hit_rate": 0.4598,
+  "net_units": -712.75,
+  "roi_pct": -11.22,
   "n_calibrated_picks": 9394,
   "calibrated_reliability": {
-    "n": 6293,
-    "ece_raw": 0.0962,
+    "n": 6294,
+    "ece_raw": 0.0961,
     "ece_calibrated": 0.0234,
-    "brier_raw": 0.22428,
+    "brier_raw": 0.22427,
     "brier_calibrated": 0.20095,
     "note": "In-sample over the settled ledger (the isotonic transform is fit on these same outcomes); held-out 70/30 validation is in recalibration_map.json. p_predicted = raw model prob (kept untouched for the learning loop); p_calibrated = honest prob stamped per pick. Lower ECE/Brier on the calibrated column = the displayed % is truer."
   },
   "curated": {
-    "n_settled": 804,
-    "wins": 611,
+    "n_settled": 805,
+    "wins": 612,
     "losses": 187,
     "pushes": 6,
-    "hit_rate": 0.7657,
-    "net_units": 227.38,
-    "roi_pct": 28.49,
+    "hit_rate": 0.766,
+    "net_units": 228.289,
+    "roi_pct": 28.57,
     "sources": [
       "consensus_hit_elite",
       "consensus_hit_strong",
@@ -43,7 +43,7 @@
     "definition": "Featured/recommended plays only -- Lock of the Day, Top 25, Whale, Sharp, Consensus (hit), Under Alerts, POD. Excludes the experimental prop feeds, which are tracked to train the model, not bet."
   },
   "n_added_this_run": 0,
-  "n_newly_settled_this_run": 0,
+  "n_newly_settled_this_run": 1,
   "n_resettled_this_run": 0,
   "n_voided_this_run": 0,
   "n_reconciled_settled_voids": 0,
@@ -140,13 +140,13 @@
       "roi_pct": -67.55
     },
     "top_25_board": {
-      "n": 329,
-      "wins": 233,
+      "n": 330,
+      "wins": 234,
       "losses": 92,
       "pushes": 4,
-      "net_units": 86.174,
-      "hit_rate": 0.7169,
-      "roi_pct": 26.52
+      "net_units": 87.083,
+      "hit_rate": 0.7178,
+      "roi_pct": 26.71
     },
     "whale_strong": {
       "n": 20,
@@ -1420,12 +1420,12 @@
       "hit_rate": 0.6667
     },
     "over": {
-      "n": 97,
-      "wins": 53,
+      "n": 98,
+      "wins": 54,
       "losses": 42,
       "pushes": 2,
-      "net_units": -1.472,
-      "hit_rate": 0.5579
+      "net_units": -0.563,
+      "hit_rate": 0.5625
     },
     "1_plus_hit": {
       "n": 42,
@@ -1894,12 +1894,12 @@
       "hit_rate": 0.6667
     },
     "over": {
-      "n": 97,
-      "wins": 53,
+      "n": 98,
+      "wins": 54,
       "losses": 42,
       "pushes": 2,
-      "net_units": -1.472,
-      "hit_rate": 0.5579
+      "net_units": -0.563,
+      "hit_rate": 0.5625
     },
     "mlb_hit_0.5_over": {
       "n": 90,
@@ -2225,15 +2225,15 @@
   "by_sport": {
     "MLB": {
       "n": 7312,
-      "settled": 4798,
-      "wins": 1893,
+      "settled": 4799,
+      "wins": 1894,
       "losses": 2899,
       "pushes": 6,
-      "pending": 461,
+      "pending": 460,
       "void": 2053,
-      "net_units": -1105.086,
-      "hit_rate": 0.395,
-      "roi_pct": -23.06,
+      "net_units": -1104.177,
+      "hit_rate": 0.3952,
+      "roi_pct": -23.04,
       "markets": 48
     },
     "NBA": {
@@ -2407,10 +2407,10 @@
     }
   },
   "last_7_days": {
-    "wins": 506,
+    "wins": 507,
     "losses": 784,
-    "net_units": -123.1,
-    "hit_rate": 0.3922
+    "net_units": -122.191,
+    "hit_rate": 0.3927
   },
   "picks": [
     {
@@ -238813,11 +238813,17 @@
       "primary_source_module": "today_reco",
       "date": "2026-06-27",
       "pick_id": "top_25_board|MLB|COL___MIN|OVER_9_0|2026-06-27",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "won",
+      "payout_units": 0.9091,
       "recorded_at": "2026-06-27T09:07:59",
-      "p_calibrated": 0.5327
+      "p_calibrated": 0.5327,
+      "outcome": {
+        "final_score": "COL 8 @ MIN 9",
+        "total_runs": 17,
+        "verify": "COL @ MIN: final 8-9 (total 17 runs) on 2026-06-27"
+      },
+      "settled_at": "2026-06-27T21:32:41"
     },
     {
       "source": "mlb_under_alert",
