@@ -140,14 +140,18 @@ function showTab(tab) {
   } else if (tab === 'recent') {
     title = '📜 Recent Picks (last 30)';
     body = renderRecent(DATA.picks || []);
-    meta = `${(DATA.picks || []).length} total in ledger`;
+    meta = `${DATA.n_settled != null ? DATA.n_settled : (DATA.picks || []).length} settled in ledger · showing the most recent`;
   }
   document.getElementById('tab_title').textContent = title;
   document.getElementById('container').innerHTML = body;
   document.getElementById('meta').textContent = meta;
 }
 
-fetch("data/all_picks_ledger.json?t=" + Date.now(), { cache: "no-cache" })
+// recent_picks.json (~150KB) = a drop-in lighter ledger: every top-level rollup field
+// (total_picks/n_settled/hit_rate/net_units/roi_pct/by_source/by_market_family/by_sport)
+// PLUS only the last 200 settled picks. This page renders rollups + a "recent" list, so it
+// never needed the full 7.4MB per-pick array.
+fetch("data/recent_picks.json?t=" + Date.now(), { cache: "no-cache" })
   .then(r => r.json())
   .then(d => {
     DATA = d;
@@ -162,7 +166,7 @@ fetch("data/all_picks_ledger.json?t=" + Date.now(), { cache: "no-cache" })
     document.querySelectorAll('.tab').forEach(t => t.addEventListener('click', () => showTab(t.dataset.tab)));
   })
   .catch(err => {
-    document.getElementById('container').innerHTML = `<p class="muted">Could not load all_picks_ledger.json (${err.message}).</p>`;
+    document.getElementById('container').innerHTML = `<p class="muted">Could not load recent_picks.json (${err.message}).</p>`;
   });
 </script>
 </body>
