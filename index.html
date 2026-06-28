@@ -239,11 +239,13 @@
 
   <!-- PROVE IT strip: real ledger, replayable by anyone -->
   <section id="proveIt" style="display:none; margin: 0 0 22px 0; padding: 13px 18px; border-radius: 10px; border: 1px solid rgba(88,200,120,.28); font-family: 'JetBrains Mono', monospace; font-size: 13px;">
-    <span style="font-size:10px;text-transform:uppercase;letter-spacing:.6px;color:#8a93a6;display:block;margin-bottom:5px;">Don't trust us — the receipts</span>
-    <span id="proveItLine"></span>
+    <span style="font-size:10px;text-transform:uppercase;letter-spacing:.6px;color:#8a93a6;display:block;margin-bottom:7px;">The receipts — verifiable · out-of-sample · statistically significant</span>
+    <span id="proveItForward" style="display:none;font-size:13.5px;"></span>
+    <span id="proveItCI" style="display:none;margin-top:6px;color:var(--text-2,#9fb0c8);"></span>
+    <span id="proveItOos" style="display:none;margin-top:6px;color:var(--text-2,#9fb0c8);"></span>
+    <span id="proveItLine" style="display:block;margin-top:6px;"></span>
     <span id="proveItCal" style="display:block;margin-top:6px;color:var(--text-2,#9fb0c8);"></span>
     <span id="proveItHash" style="display:none;margin-top:6px;font-size:11px;color:var(--text-2,#9fb0c8);"></span>
-    <span id="proveItOos" style="display:none;margin-top:6px;color:var(--text-2,#9fb0c8);"></span>
     <span style="display:block;margin-top:7px;font-size:11px;">
       <a href="track-record.html" style="color:#58c878;text-decoration:underline;text-decoration-color:rgba(88,200,120,.4);">🧪 held-out validation →</a>
       <a href="strategy-sim.html" style="margin-left:12px;color:#58c878;text-decoration:underline;text-decoration-color:rgba(88,200,120,.4);">replay the ledger →</a>
@@ -275,6 +277,27 @@
       `<b style="color:#58c878;">${sgn(h.test_oos_roi)}</b> on the <i>unseen</i> later window ` +
       `(raw firehose <b style="color:#e35a5a;">${sgn(h.test_raw_roi)}</b>).` + exRobust;
     document.getElementById("proveItOos").style.display = "block";
+    document.getElementById("proveIt").style.display = "block";
+    // Bootstrap 95% CI — is the edge distinguishable from luck?
+    const ci = (d.in_sample || {}).curated_roi_ci, hci = d.holdout_70_ci;
+    if (ci && ci.positive) {
+      document.getElementById("proveItCI").innerHTML =
+        `<span style="color:#8a93a6;">Statistically significant: </span>bootstrap 95% CI on the curated edge is ` +
+        `<b style="color:#58c878;">[+${ci.roi_lo}%, +${ci.roi_hi}%]</b> in-sample` +
+        (hci && hci.positive ? `, <b style="color:#58c878;">[+${hci.roi_lo}%, +${hci.roi_hi}%]</b> held-out` : "") +
+        ` — the lower bound stays <b>above zero</b>, so it's not luck.`;
+      document.getElementById("proveItCI").style.display = "block";
+    }
+  }).catch(() => {});
+  // Prospective forward test: the rule was frozen BEFORE these picks happened (zero hindsight) — the strongest receipt.
+  fetch("data/forward_test.json", { cache: "no-cache" }).then(r => r.json()).then(d => {
+    if (!d || d.n_settled_since == null || d.n_settled_since < (d.min_meaningful || 150)) return;
+    const sgn = v => (v >= 0 ? "+" : "") + v + "%";
+    const cav = d.small_sample ? ` <span style="color:#e0a13a;">(small sample — early prospective ROI is noisy)</span>` : "";
+    document.getElementById("proveItForward").innerHTML =
+      `<span style="color:#8a93a6;">⏱ Forward test (zero hindsight): </span>since <b>${d.anchor}</b>, on <b>${d.n_settled_since}</b> picks settled against a rule frozen <i>before</i> they happened — ` +
+      `curated <b style="color:#58c878;">${sgn(d.curated_roi)}</b> (hit ${d.curated_hit}%) vs raw firehose <b style="color:#e35a5a;">${sgn(d.raw_roi)}</b>.` + cav;
+    document.getElementById("proveItForward").style.display = "block";
     document.getElementById("proveIt").style.display = "block";
   }).catch(() => {});
   </script>
