@@ -3,137 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Consensus Picks · EdgeStat — quantitative sports-betting analytics: model edges, calibrated probabilities, and an honest settled track record across MLB, NBA, NHL, golf, tennis, soccer and more. Informational only, 21+.">
-<link rel="canonical" href="https://betting.bpleone.com/consensus-picks.html">
-<meta name="theme-color" content="#0d1017">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="EdgeStat">
-<meta property="og:title" content="Consensus Picks | EdgeStat">
-<meta property="og:description" content="Consensus Picks · EdgeStat — quantitative sports-betting analytics: model edges, calibrated probabilities, and an honest settled track record across MLB, NBA, NHL, golf, tennis, soccer and more. Informational only, 21+.">
-<meta property="og:url" content="https://betting.bpleone.com/consensus-picks.html">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Consensus Picks | EdgeStat">
-<meta name="twitter:description" content="Consensus Picks · EdgeStat — quantitative sports-betting analytics: model edges, calibrated probabilities, and an honest settled track record across MLB, NBA, NHL, golf, tennis, soccer and more. Informational only, 21+.">
-<title>Consensus Picks | EdgeStat</title>
-<link rel="stylesheet" href="css/style.css">
-<script src="js/nav.js"></script>
-<style>
-  .consensus-row { display: grid; grid-template-columns: 80px 1.4fr 1fr 110px; gap: 10px; padding: 11px 14px; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 12px; border-bottom: 1px solid rgba(255,255,255,0.04); }
-  .consensus-row.head { background: rgba(255,255,255,0.04); color: var(--muted,#888); font-size: 10px; text-transform: uppercase; padding: 8px 14px; }
-  .consensus-row.elite { border-left: 3px solid #d4a04a; background: rgba(212,160,74,0.06); }
-  .consensus-row.strong { border-left: 3px solid #58c878; background: rgba(88,200,120,0.04); }
-  .consensus-row.good { border-left: 3px solid #888; }
-  .consensus-row.fade { border-left: 3px solid #e35a5a; background: rgba(227,90,90,0.03); }
-  .tier-pill { display: inline-block; padding: 3px 9px; border-radius: 4px; font-size: 10px; font-weight: 700; text-align: center; }
-  .tier-elite { background: rgba(212,160,74,0.2); color: #d4a04a; }
-  .tier-strong { background: rgba(88,200,120,0.2); color: #58c878; }
-  .tier-good { background: rgba(255,255,255,0.08); color: var(--text-2,#aaa); }
-  .src-tag { display: inline-block; padding: 2px 6px; margin-right: 4px; border-radius: 3px; font-size: 9px; background: rgba(255,255,255,0.05); color: var(--text-2,#aaa); }
-  .info-card { padding: 16px 20px; background: linear-gradient(135deg, rgba(212,160,74,0.1), rgba(212,160,74,0.02)); border: 1px solid rgba(212,160,74,0.3); border-radius: 10px; margin-bottom: 18px; }
-  .tab-strip { display: flex; gap: 4px; margin-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); }
-  .tab { padding: 8px 14px; cursor: pointer; font-size: 12px; color: var(--text-2,#aaa); border-bottom: 2px solid transparent; }
-  .tab.active { color: var(--accent,#d4a04a); border-bottom-color: var(--accent,#d4a04a); }
-</style>
+<meta name="robots" content="noindex">
+<title>Today's Picks | EdgeStat</title>
+<link rel="canonical" href="https://betting.bpleone.com/picks.html">
+<!-- This board was consolidated into the unified Today's Picks hub (picks.html).
+     Kept as a redirect so existing links/bookmarks still resolve. Reversible: the
+     full prior page is in git history. -->
+<script>location.replace("picks.html#consensus");</script>
+<meta http-equiv="refresh" content="0; url=picks.html#consensus">
+<style>body{{font-family:-apple-system,BlinkMacSystemFont,sans-serif;background:#0d1017;color:#e9edf4;padding:48px;text-align:center;}}a{{color:#58c878;}}</style>
 </head>
-<body class="page-consensus">
-<header class="topbar">
-  <div class="brand"><a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a><span class="tagline">by bpleone</span></div>
-  <nav class="mainnav"><!-- nav.js injects --></nav>
-  <div class="topbar-actions"><div class="ticker">LIVE</div></div>
-</header>
-<main class="container">
-  <section class="page-head">
-    <h1>🎯 Consensus Picks — Multi-Module Agreement</h1>
-    <p class="muted" id="status">Loading…</p>
-  </section>
-  <div class="info-card">
-    <strong style="color:#d4a04a;">What this is:</strong>
-    <span style="color: var(--text-2,#aaa); font-size:13px;">
-      A single deep module flagging a batter is informative. When 3+ INDEPENDENT modules
-      (xwOBA pitch-arsenal matchup, home/away day/night splits, season vsL/vsR) all
-      agree on the same direction, the signal compounds and variance drops. STRONG and
-      ELITE tiers are the picks worth sizing up.
-    </span>
-  </div>
-
-  <section class="metric-strip">
-    <div class="metric"><span class="metric-num" id="m_total">--</span><span class="metric-label">Batters Analyzed</span></div>
-    <div class="metric"><span class="metric-num" id="m_hit_boost">--</span><span class="metric-label">Hit Boost Consensus</span></div>
-    <div class="metric"><span class="metric-num" id="m_hr_boost">--</span><span class="metric-label">HR Boost Consensus</span></div>
-    <div class="metric"><span class="metric-num" id="m_strong">--</span><span class="metric-label">STRONG / ELITE</span></div>
-  </section>
-
-  <div class="tab-strip">
-    <div class="tab active" data-tab="hit_boost">Hit Boost Consensus</div>
-    <div class="tab" data-tab="hr_boost">HR Boost Consensus</div>
-    <div class="tab" data-tab="hit_fade">Hit Fade Consensus</div>
-  </div>
-
-  <section class="card">
-    <div class="card-head"><span id="tab_title">🎯 Hit Boost Consensus</span><span class="muted" id="meta">--</span></div>
-    <div id="container"></div>
-  </section>
-</main>
-<script src="js/nav_badge.js"></script>
-<script>
-let DATA = null;
-function tierClass(t) { return t.toLowerCase(); }
-function tierPill(t) {
-  return `<span class="tier-pill tier-${t.toLowerCase()}">${t}</span>`;
-}
-function renderConsensus(rows, type) {
-  if (!rows || rows.length === 0) return '<p class="muted" style="padding:14px;">No consensus picks meeting threshold yet.</p>';
-  const sourceKey = type === 'hit_fade' ? 'hit_fade_sources' : (type === 'hr_boost' ? 'hr_boost_sources' : 'hit_boost_sources');
-  let html = `<div class="consensus-row head">
-    <span>Tier</span><span>Batter</span><span>Agreeing Modules</span><span>N / 3 agree</span>
-  </div>`;
-  rows.forEach(r => {
-    const tier = r.tier || 'GOOD';
-    const rowCls = type === 'hit_fade' ? 'fade' : tierClass(tier);
-    const sources = (r[sourceKey] || []).map(s => `<span class="src-tag">${s}</span>`).join('');
-    html += `<div class="consensus-row ${rowCls}">
-      <span>${tierPill(tier)}</span>
-      <span><strong>${r.batter || '?'}</strong></span>
-      <span>${sources}</span>
-      <span style="font-weight:700; text-align:center;">${r.n_agreeing}/3</span>
-    </div>`;
-  });
-  return html;
-}
-function showTab(tab) {
-  document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.dataset.tab === tab));
-  let rows = [], title = '';
-  if (tab === 'hit_boost') {
-    rows = DATA.top_15_hit_boost_consensus || [];
-    title = '🎯 Hit Boost Consensus (multiple modules say HIT)';
-  } else if (tab === 'hr_boost') {
-    rows = DATA.top_15_hr_boost_consensus || [];
-    title = '💥 HR Boost Consensus (multiple modules say HR potential)';
-  } else if (tab === 'hit_fade') {
-    rows = DATA.top_10_hit_fade_consensus || [];
-    title = '📉 Hit Fade Consensus (multiple modules say AVOID)';
-  }
-  document.getElementById('tab_title').textContent = title;
-  document.getElementById('container').innerHTML = renderConsensus(rows, tab);
-  document.getElementById('meta').textContent = `${rows.length} consensus picks shown`;
-}
-fetch("data/consensus_picks.json?t=" + Date.now(), { cache: "no-cache" })
-  .then(r => r.json())
-  .then(d => {
-    DATA = d;
-    document.getElementById('m_total').textContent = d.n_unique_batters || 0;
-    document.getElementById('m_hit_boost').textContent = d.n_hit_boost_consensus || 0;
-    document.getElementById('m_hr_boost').textContent = d.n_hr_boost_consensus || 0;
-    const strongOrElite = ((d.hit_boost_tiers || {}).STRONG || 0) + ((d.hit_boost_tiers || {}).ELITE || 0) +
-                           ((d.hr_boost_tiers || {}).STRONG || 0) + ((d.hr_boost_tiers || {}).ELITE || 0);
-    document.getElementById('m_strong').textContent = strongOrElite;
-    document.getElementById('status').textContent = `${d.n_unique_batters} batters · ${d.n_hit_boost_consensus + d.n_hr_boost_consensus} total consensus picks · ${(d.generated_at||'').slice(0,19).replace('T',' ')}`;
-    showTab('hit_boost');
-    document.querySelectorAll('.tab').forEach(t => t.addEventListener('click', () => showTab(t.dataset.tab)));
-  })
-  .catch(err => {
-    document.getElementById('container').innerHTML = `<p class="muted">Could not load consensus_picks.json (${err.message}).</p>`;
-  });
-</script>
+<body>
+  <p>This board now lives in the unified <a href="picks.html#consensus">Today's Picks</a> page. Redirecting…</p>
 </body>
 </html>

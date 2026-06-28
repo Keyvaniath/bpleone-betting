@@ -3,132 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Fade Picks · EdgeStat — quantitative sports-betting analytics: model edges, calibrated probabilities, and an honest settled track record across MLB, NBA, NHL, golf, tennis, soccer and more. Informational only, 21+.">
-<link rel="canonical" href="https://betting.bpleone.com/fade-picks.html">
-<meta name="theme-color" content="#0d1017">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="EdgeStat">
-<meta property="og:title" content="Fade Picks | EdgeStat">
-<meta property="og:description" content="Fade Picks · EdgeStat — quantitative sports-betting analytics: model edges, calibrated probabilities, and an honest settled track record across MLB, NBA, NHL, golf, tennis, soccer and more. Informational only, 21+.">
-<meta property="og:url" content="https://betting.bpleone.com/fade-picks.html">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Fade Picks | EdgeStat">
-<meta name="twitter:description" content="Fade Picks · EdgeStat — quantitative sports-betting analytics: model edges, calibrated probabilities, and an honest settled track record across MLB, NBA, NHL, golf, tennis, soccer and more. Informational only, 21+.">
-<title>Fade Picks | EdgeStat</title>
-<link rel="stylesheet" href="css/style.css">
-<script src="js/nav.js"></script>
-<style>
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
-  .container { max-width: 1100px; margin: 0 auto; padding: 24px; }
-  h1 { font-size: 26px; margin: 0 0 6px 0; }
-  .sub { color: var(--muted, #888); font-size: 13px; margin-bottom: 24px; max-width: 740px; line-height: 1.55; }
-  .sub strong { color: #e35a5a; }
-
-  .panel { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; overflow: hidden; margin-bottom: 16px; }
-  .panel h2 { font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--muted,#888); margin: 0; padding: 12px 16px; border-bottom: 1px solid rgba(255,255,255,0.06); }
-
-  .row {
-    display: grid;
-    grid-template-columns: 1.4fr 90px 1.4fr 80px 90px 90px 100px;
-    gap: 12px;
-    padding: 10px 16px;
-    align-items: center;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
-    border-bottom: 1px solid rgba(255,255,255,0.04);
-  }
-  .row.head { background: rgba(255,255,255,0.05); color: var(--muted, #888); font-size: 10px; text-transform: uppercase; padding: 9px 16px; }
-  .row:hover:not(.head) { background: rgba(255,255,255,0.03); }
-  .num { text-align: right; font-variant-numeric: tabular-nums; }
-  .tag-livedog { background: rgba(227, 90, 90, 0.18); color: #e35a5a; font-size: 10px; padding: 2px 7px; border-radius: 3px; font-weight: 700; }
-  .tag-coin { background: rgba(212, 160, 74, 0.18); color: #d4a04a; font-size: 10px; padding: 2px 7px; border-radius: 3px; font-weight: 700; }
-
-  .explainer { color: var(--muted,#aaa); font-size: 13px; line-height: 1.65; padding: 14px 18px; background: rgba(227, 90, 90, 0.05); border-left: 3px solid #e35a5a; border-radius: 4px; }
-  .explainer strong { color: #e35a5a; }
-
-  .empty { padding: 24px; text-align: center; color: var(--muted, #888); font-style: italic; }
-</style>
+<meta name="robots" content="noindex">
+<title>Today's Picks | EdgeStat</title>
+<link rel="canonical" href="https://betting.bpleone.com/picks.html">
+<!-- This board was consolidated into the unified Today's Picks hub (picks.html).
+     Kept as a redirect so existing links/bookmarks still resolve. Reversible: the
+     full prior page is in git history. -->
+<script>location.replace("picks.html#fade");</script>
+<meta http-equiv="refresh" content="0; url=picks.html#fade">
+<style>body{{font-family:-apple-system,BlinkMacSystemFont,sans-serif;background:#0d1017;color:#e9edf4;padding:48px;text-align:center;}}a{{color:#58c878;}}</style>
 </head>
 <body>
-<nav-bar></nav-bar>
-<div class="container">
-
-<h1>Fade Picks of the Day</h1>
-<div class="sub">
-  The inverse of Alpha Pick. Where the book has a side over-priced and
-  the <strong>underdog has positive expected value</strong>. Live dogs
-  (model prob 30-40%) and toss-ups (40-50%) where the model thinks the
-  side has fair value despite being the underdog.
-</div>
-
-<div class="panel">
-  <h2 id="title">Today's Fade Candidates</h2>
-  <div class="row head">
-    <div>Sport / Player</div>
-    <div>Type</div>
-    <div>Market</div>
-    <div class="num">Prob</div>
-    <div class="num">Fair Odds</div>
-    <div class="num">ROI</div>
-    <div class="num">¼-Kelly</div>
-  </div>
-  <div id="rows"></div>
-</div>
-
-<div class="explainer">
-  <strong>How fading works:</strong> When the book sets a favorite at -200
-  (implies 66.7%) but the model says it's actually 55% — that means the
-  underdog (priced at +180, implies 35.7%) is actually 45% in model terms.
-  The dog has positive EV.
-  <br><br>
-  Currently the system uses model fair odds as a proxy since live book
-  odds aren't pulled. When the-odds-api is integrated, this list will get
-  much sharper — comparing model_prob directly to book's implied price
-  and surfacing only genuine over-pricings.
-</div>
-
-<div style="margin-top: 16px; font-size: 11px; color: var(--muted,#888);" id="meta">Loading…</div>
-
-</div>
-
-<script>
-function fmtPct(x, d=1) { return x == null ? '—' : (x*100).toFixed(d) + '%'; }
-function fmtSigned(x, d=1) { if (x == null) return '—'; const s = (x*100).toFixed(d); return (x>=0?'+':'') + s + '%'; }
-function fmtOdds(a) { if (a == null) return '—'; return (a >= 0 ? '+' : '') + a; }
-
-async function load() {
-  let d;
-  try {
-    const r = await fetch('data/fade_picks.json?t=' + Date.now());
-    d = await r.json();
-  } catch (e) {
-    document.getElementById('rows').innerHTML = '<div class="empty">Failed to load fade_picks.json</div>';
-    return;
-  }
-  const fades = d.all_fades || [];
-  document.getElementById('title').textContent = "Today's Fade Candidates (" + fades.length + ")";
-  if (fades.length === 0) {
-    document.getElementById('rows').innerHTML =
-      '<div class="empty">No fade opportunities today. Top-25 board is dominated by favorites; check back at next refresh or when live book odds get wired in.</div>';
-  } else {
-    const html = fades.slice(0, 30).map(f => `
-      <div class="row">
-        <div>${f.sport || ''} · ${f.player_or_matchup || ''} <span style="color:var(--muted,#888);">${f.team ? '('+f.team+')' : ''}</span></div>
-        <div>${f.fade_type === 'live_dog' ? '<span class="tag-livedog">LIVE DOG</span>' : '<span class="tag-coin">COIN FLIP</span>'}</div>
-        <div style="color:var(--muted,#aaa);font-size:11px;">${(f.market || '').slice(0,30)}</div>
-        <div class="num">${fmtPct(f.model_prob)}</div>
-        <div class="num" style="color:#d4a04a;">${fmtOdds(f.fair_american)}</div>
-        <div class="num" style="color:${f.roi_per_dollar>=0?'#58c878':'#e35a5a'};">${fmtSigned(f.roi_per_dollar)}</div>
-        <div class="num">${f.unit_size_quarter_kelly != null ? f.unit_size_quarter_kelly.toFixed(3) + 'u' : '—'}</div>
-      </div>
-    `).join('');
-    document.getElementById('rows').innerHTML = html;
-  }
-  document.getElementById('meta').textContent = 'Generated ' + (d.generated_at || '—');
-}
-
-load();
-setInterval(load, 5 * 60 * 1000);
-</script>
+  <p>This board now lives in the unified <a href="picks.html#fade">Today's Picks</a> page. Redirecting…</p>
 </body>
 </html>

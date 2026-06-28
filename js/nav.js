@@ -51,18 +51,15 @@
   // PICKS -- the actionable daily output (the money pages).
   const PICKS = [
     { section: "Daily Board" },
+    { href: "picks.html",               label: "🎯 Today's Picks (all boards)" },
     { href: "alerts.html",              label: "📡 The Tape (live signals)" },
-    { href: "todays-top-plays.html",    label: "⭐ Today's Top Plays" },
-    { href: "top-3-picks.html",         label: "🥇 Top 3 Picks of the Day" },
     { href: "alpha-pick.html",          label: "★ Alpha Pick" },
     { href: "alpha-scanner.html",       label: "🛰️ Cross-Sport Alpha Scanner" },
     { href: "high-confidence.html",     label: "💎 High-Confidence Board" },
-    { href: "locks-of-day.html",        label: "🔒 Locks of the Day" },
     { href: "best-bets.html",           label: "✓ Best Bets" },
-    { href: "consensus-picks.html",     label: "🎯 Consensus Picks" },
-    { href: "convergence.html",         label: "🎯 Convergence Picks" },
     { href: "confluence.html",          label: "🔗 Confluence Top-5" },
-    { href: "fade-picks.html",          label: "✗ Fade Picks" },
+    // Locks · Top Plays · Top-3 · Consensus · Convergence · Fades now live as
+    // filters inside picks.html (the hub); their old URLs redirect there.
     { section: "Parlays & DFS" },
     { href: "cross-sport-parlays.html", label: "🎰 Cross-Sport Parlays" },
     { href: "props-parlay.html",        label: "🎯 Props-Only Parlays" },

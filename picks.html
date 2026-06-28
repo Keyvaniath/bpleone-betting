@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Today's Picks · EdgeStat — every curated pick board (Locks, Alpha, High-Confidence, Best Bets, Consensus, Top Plays, Convergence, Fades) in one filterable view. Calibrated probabilities, honest track record. Informational only, 21+.">
+<link rel="canonical" href="https://betting.bpleone.com/picks.html">
+<meta name="theme-color" content="#0d1017">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EdgeStat">
+<meta property="og:title" content="Today's Picks | EdgeStat">
+<meta property="og:description" content="Every curated pick board in one filterable view — Locks, Alpha, High-Confidence, Best Bets, Consensus, Top Plays, Convergence, Fades.">
+<meta property="og:url" content="https://betting.bpleone.com/picks.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Today's Picks | EdgeStat">
+<meta name="twitter:description" content="Every curated pick board in one filterable view.">
+<title>Today's Picks | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/nav.js"></script>
+<style>
+  .container { max-width: 1140px; }
+  .sub { color: var(--muted,#8a93a6); font-size: 13px; max-width: 760px; line-height: 1.6; margin: 4px 0 18px; }
+  .sub a { color: #58c878; }
+
+  .filterbar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 8px; }
+  .chip { border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.03); color: var(--text-2,#aaa);
+          padding: 6px 12px; border-radius: 20px; font-size: 12px; cursor: pointer; font-family: inherit; transition: all .12s;
+          white-space: nowrap; }
+  .chip:hover { background: rgba(255,255,255,0.07); }
+  .chip.active { color: #0a0a0a; font-weight: 700; border-color: transparent; }
+  .chip .n { opacity: .7; margin-left: 4px; font-size: 11px; }
+  .controls { display:flex; gap:10px; align-items:center; margin: 10px 0 16px; flex-wrap: wrap; }
+  select.sportsel { background:#0c0e13; color: var(--text,#e9edf4); border:1px solid rgba(255,255,255,0.14);
+                    border-radius:6px; padding:6px 10px; font-family: inherit; font-size:12px; }
+  .meta { color: var(--muted,#888); font-size: 11px; font-family:'JetBrains Mono',monospace; margin-left: auto; }
+
+  .ptable { border:1px solid rgba(255,255,255,0.07); border-radius:10px; overflow:hidden; }
+  .prow { display:grid; grid-template-columns: 104px 56px 1.7fr 1.5fr 74px 70px 72px; gap:12px; padding:11px 16px;
+          align-items:center; font-family:'JetBrains Mono',monospace; font-size:12px;
+          border-bottom:1px solid rgba(255,255,255,0.04); }
+  .prow.head { background: rgba(255,255,255,0.05); color: var(--muted,#888); font-size:10px; text-transform:uppercase; letter-spacing:.5px; }
+  .prow:last-child { border-bottom:none; }
+  .num { text-align:right; font-variant-numeric: tabular-nums; }
+  .catbadge { padding:3px 8px; border-radius:4px; font-size:9px; font-weight:700; text-transform:uppercase; text-align:center; letter-spacing:.3px; }
+  .subj { font-weight:600; color: var(--text,#e9edf4); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .mkt { color: var(--text-2,#9fb0c8); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .sport { font-size:10px; color: var(--muted,#888); }
+  .pos { color:#58c878; } .neg { color:#e35a5a; } .gold { color:#d4a04a; }
+  .empty { padding: 40px 20px; text-align:center; color: var(--muted,#888); font-style: italic; }
+  .disclaimer { color: var(--muted,#6b7280); font-size:11px; margin-top:16px; line-height:1.6; }
+</style>
+</head>
+<body class="page-picks">
+<header class="topbar">
+  <div class="brand">
+    <a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a>
+    <span class="tagline">by bpleone</span>
+  </div>
+  <nav class="mainnav"><!-- nav.js injects here --></nav>
+  <div class="topbar-actions"><div class="ticker" id="liveTicker">LIVE</div></div>
+</header>
+
+<main class="container">
+  <section class="page-head">
+    <h1>🎯 Today's Picks</h1>
+    <div class="sub">
+      Every curated pick board in one place — <strong>Locks, Alpha, High-Confidence, Best Bets,
+      Consensus, Top Plays, Convergence, and Fades</strong>. Filter by category or sport. Probabilities are
+      calibrated where the source provides them; each pick is filed under its highest-conviction board.
+      For the flagship deep-dive see <a href="play-of-day.html">Play of the Day →</a>, and the honest
+      <a href="track-record.html">track record →</a>.
+    </div>
+  </section>
+
+  <div class="filterbar" id="catChips"></div>
+  <div class="controls">
+    <label style="font-size:11px;color:var(--muted,#888);">Sport
+      <select class="sportsel" id="sportSel"><option value="all">All sports</option></select>
+    </label>
+    <span class="meta" id="meta">—</span>
+  </div>
+
+  <div class="ptable">
+    <div class="prow head">
+      <div>Board</div><div>Sport</div><div>Pick</div><div>Market</div>
+      <div class="num">Model</div><div class="num">Fair</div><div class="num">Edge</div>
+    </div>
+    <div id="rows"><div class="empty">Loading today's picks…</div></div>
+  </div>
+
+  <p class="disclaimer">
+    Informational / educational only — not betting advice. Model probabilities are estimates; past
+    performance does not guarantee future results. 21+. If gambling is a problem, call 1-800-GAMBLER.
+  </p>
+</main>
+
+<script>
+const CAT_COLOR = {
+  locks:"#d4a04a", alpha:"#58c878", slate:"#588cc8", highconf:"#b450dc",
+  best:"#3ad17e", consensus:"#22d3ee", topplays:"#e0a13a", convergence:"#fb923c", fade:"#8a93a6"
+};
+let DATA = null;
+const state = { category: "all", sport: "all" };
+
+function fmtProb(p){ return p == null ? "—" : (p*100).toFixed(1) + "%"; }
+function fmtAm(x){ if (x == null) return "—"; return (x >= 0 ? "+" : "") + Math.round(x); }
+function fmtEdge(x){ if (x == null) return "—"; return (x >= 0 ? "+" : "") + x.toFixed(1) + "%"; }
+function probClass(p){ if (p == null) return ""; if (p >= 0.62) return "pos"; if (p >= 0.52) return "gold"; return ""; }
+
+function renderChips(){
+  const cats = (DATA.all_categories || []).filter(c => c.n > 0);
+  const total = (DATA.picks || []).length;
+  const mk = (key, label, n, color) => {
+    const active = state.category === key;
+    const style = active ? `background:${color};` : "";
+    return `<button class="chip ${active?'active':''}" style="${style}" data-cat="${key}">${label}<span class="n">${n}</span></button>`;
+  };
+  let html = mk("all", "All", total, "#e9edf4");
+  html += cats.map(c => mk(c.key, c.label, c.n, CAT_COLOR[c.key] || "#aaa")).join("");
+  document.getElementById("catChips").innerHTML = html;
+  document.querySelectorAll("#catChips .chip").forEach(b =>
+    b.addEventListener("click", () => { state.category = b.dataset.cat; renderChips(); renderRows(); }));
+}
+
+function renderSportSel(){
+  const sports = Array.from(new Set((DATA.picks || []).map(p => p.sport))).sort();
+  const sel = document.getElementById("sportSel");
+  sel.innerHTML = '<option value="all">All sports</option>' +
+    sports.map(s => `<option value="${s}">${s}</option>`).join("");
+  sel.value = state.sport;
+  sel.onchange = () => { state.sport = sel.value; renderRows(); };
+}
+
+function renderRows(){
+  let picks = DATA.picks || [];
+  if (state.category !== "all") picks = picks.filter(p => p.category === state.category);
+  if (state.sport !== "all") picks = picks.filter(p => p.sport === state.sport);
+  const el = document.getElementById("rows");
+  if (!picks.length){
+    el.innerHTML = `<div class="empty">No live picks in this view right now.<br>
+      The morning slate posts around 7am PT — or clear the filters above.</div>`;
+    document.getElementById("meta").textContent = `0 of ${(DATA.picks||[]).length} picks`;
+    return;
+  }
+  el.innerHTML = picks.map(p => {
+    const c = CAT_COLOR[p.category] || "#aaa";
+    return `<div class="prow">
+      <div><span class="catbadge" style="background:${c};color:#0a0a0a;">${p.category_label}</span></div>
+      <div class="sport">${p.sport || "—"}</div>
+      <div class="subj" title="${p.subject||''}">${p.subject || "—"}</div>
+      <div class="mkt" title="${p.market||''}">${(p.market || "—").toString().replace(/_/g," ")}</div>
+      <div class="num ${probClass(p.prob)}">${fmtProb(p.prob)}</div>
+      <div class="num">${fmtAm(p.fair_american)}</div>
+      <div class="num ${p.edge_pct==null?'':(p.edge_pct>=0?'pos':'neg')}">${fmtEdge(p.edge_pct)}</div>
+    </div>`;
+  }).join("");
+  document.getElementById("meta").textContent =
+    `${picks.length} of ${(DATA.picks||[]).length} picks · updated ${(DATA.generated_at||'').slice(11,16)} UTC`;
+}
+
+fetch("data/todays_picks.json?t=" + Date.now(), { cache: "no-cache" })
+  .then(r => r.json())
+  .then(d => {
+    DATA = d;
+    // Deep-link: redirect stubs from the retired board pages land on their category
+    // (e.g. locks-of-day.html -> picks.html#locks pre-selects the Locks filter).
+    const h = (location.hash || "").replace("#", "");
+    if (h && (DATA.all_categories || []).some(c => c.key === h)) state.category = h;
+    renderChips(); renderSportSel(); renderRows();
+  })
+  .catch(err => {
+    document.getElementById("rows").innerHTML =
+      `<div class="empty">Could not load today's picks (${err.message}).</div>`;
+  });
+</script>
+</body>
+</html>
