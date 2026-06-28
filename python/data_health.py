@@ -297,6 +297,44 @@ def _check_freshness():
             "n_stale": len(stale), "ages_h": ages}
 
 
+# Per-DESK producers the per-sport checks above don't cover. Unlike the core artifacts
+# these are SEASON-DEPENDENT: content legitimately empties off-season / between events,
+# so we monitor ONLY whether the producer still runs (generated_at advancing) and cap
+# the alarm at YELLOW -- a quiet desk is usually off-season, not breakage. Thresholds
+# are generous so the normal 3x/day pipeline cadence never trips a false alarm.
+DESK_FRESHNESS = [
+    ("tennis_state.json", 18), ("ufc_state.json", 36), ("f1_state.json", 30),
+    ("kbo_state.json", 18), ("cs_state.json", 18), ("cws_state.json", 36),
+    ("worldcup_cards.json", 18),
+]
+
+
+def _check_desks():
+    """Producer-liveness monitor for desks the per-sport checks don't cover. Catches a
+    silently-dead desk feed (a pipeline step that stopped writing its artifact) without
+    false-alarming on a legitimately-empty off-season desk -- it inspects generated_at
+    age only, not content, and tops out at YELLOW."""
+    stale, ages = [], {}
+    for fn, max_h in DESK_FRESHNESS:
+        d = _load(fn)
+        if d is None:
+            continue  # artifact absent -> desk may simply be off; not an error here
+        age = _gen_age_h(d)
+        if age is None:
+            continue
+        ages[fn] = round(age, 1)
+        if age > max_h:
+            stale.append(f"{fn}: {age:.0f}h old (>{max_h}h)")
+    status = "yellow" if stale else "green"
+    if stale:
+        findings = stale + ["Desk producer(s) quiet -- likely off-season/between-events, "
+                            "but verify the feed if unexpected."]
+    else:
+        findings = [f"{len(ages)} desk producers fresh"]
+    return {"feed": "desks", "status": status, "findings": findings,
+            "n_stale": len(stale), "ages_h": ages}
+
+
 def run() -> Dict[str, Any]:
     checks = [
         _check_freshness(),
@@ -309,6 +347,7 @@ def run() -> Dict[str, Any]:
         _check_pitcher_matchup(),
         _check_props(),
         _check_golf(),
+        _check_desks(),
     ]
     n_green = sum(1 for c in checks if c.get("status") == "green")
     n_yellow = sum(1 for c in checks if c.get("status") == "yellow")
