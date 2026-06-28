@@ -131,22 +131,46 @@ def _check_espn(sport, espn_url, local_file):
 
 
 def _check_props():
-    """Surface the Odds API quota / API key issue cleanly."""
+    """Surface the Odds API quota / API key state HONESTLY.
+
+    props.json is empty whenever player-prop book odds can't be fetched, but that
+    is NOT automatically a red alarm. The usual cause is the paid Odds API key
+    being quota-exhausted -- key valid, just no request budget -- a known, expected
+    degraded state with a clear lever (raise the plan tier), not a broken feed. We
+    defer to odds_key_preflight's persisted verdict (odds_key_status.json) so the
+    canary reserves RED for a genuinely missing/unset key and uses YELLOW for the
+    known quota degradation. A permanently-red canary masks real new failures.
+    Game lines + model/calibration boards are unaffected (they need no paid key).
+    """
     p = _load("props.json") or {}
     props = p.get("props") or []
     games = p.get("games") or []
-    has_key_env = bool(os.environ.get("ODDS_API_KEY"))
-    findings = []
-    status = "green"
-    if not props and not games:
-        status = "red"
-        if not has_key_env:
-            findings.append("ODDS_API_KEY not set in env (locally) — check GitHub secret")
-        findings.append("props.json has 0 props + 0 games. Odds API key may be missing or quota exhausted.")
+    if props or games:
+        return {"feed": "props", "status": "green",
+                "findings": [f"{len(props)} props across {len(games)} games"],
+                "n_props": len(props), "n_games": len(games)}
+    # Empty props.json -> classify by the AUTHORITATIVE key state, not a guess.
+    ks = _load("odds_key_status.json") or {}
+    state = ks.get("state")
+    headline = ks.get("headline")
+    if state in ("exhausted", "low_quota"):
+        status = "yellow"  # valid key, no request budget: degraded, not broken
+        findings = [headline or "Odds key valid but quota exhausted -- player props dark until the plan tier is raised.",
+                    "Game lines + model/calibration boards unaffected (they don't need the paid key)."]
+    elif state == "active":
+        status = "yellow"  # has budget but still empty -> a real, unexpected gap
+        findings = ["Odds key ACTIVE (quota available) but props.json has 0 props -- check run_props_batch / upstream player-prop availability."]
+    elif state == "dormant" or ks.get("key_set") is False:
+        status = "red"  # genuine config problem: the secret is missing/unset
+        findings = ["ODDS_API_KEY not set (preflight: dormant) -- the GitHub secret is missing/unset."]
     else:
-        findings.append(f"{len(props)} props across {len(games)} games")
+        has_key_env = bool(os.environ.get("ODDS_API_KEY"))
+        status = "red" if not has_key_env else "yellow"
+        findings = ["props.json empty and odds_key_status.json unavailable.",
+                    ("ODDS_API_KEY not set in env (locally) -- check the GitHub secret." if not has_key_env
+                     else "Key present in env; props empty -- likely quota exhausted.")]
     return {"feed": "props", "status": status, "findings": findings,
-            "n_props": len(props), "n_games": len(games)}
+            "n_props": len(props), "n_games": len(games), "odds_key_state": state}
 
 
 def _check_pitcher_matchup():

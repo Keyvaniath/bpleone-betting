@@ -89,7 +89,10 @@ fetch('data/data_health.json?t=' + Date.now(), { cache:'no-cache' })
   fetch('data/odds_key_status.json?t='+Date.now(),{cache:'no-cache'}).then(function(r){return r.json();}).then(function(d){
     if(!d || !d.state) return;
     document.getElementById('oddsCard').style.display='flex';
-    var dotcls = d.state==='active'?'green':((d.state==='invalid'||d.state==='exhausted')?'red':'yellow');
+    // active=green; invalid (key rejected) is the only genuine breakage=red;
+    // exhausted/low_quota/dormant are valid-but-degraded (key works, no budget /
+    // not yet enabled)=yellow. Matches data_health's props canary.
+    var dotcls = d.state==='active'?'green':(d.state==='invalid'?'red':'yellow');
     document.getElementById('oddsDot').className='dot '+dotcls;
     document.getElementById('oddsLbl').textContent = 'Odds feed — '+String(d.state||'').replace('_',' ').toUpperCase();
     var body = E(d.headline||'');
