@@ -20,8 +20,15 @@ Set one secret and it activates on the next run.
 
 Game-line CLV ([clv.html](clv.html)) and everything model-side already run **without** the key — they're unaffected.
 
+## Recommended tier (the actual decision)
+**The Odds API "20K" plan — $30/mo, 20,000 requests/month.** The desk's MLB-prop-CLV
+pull runs ≈5K requests/month, so 20K gives ~4× headroom and room for a second prop
+sport. The next tier up (100K, $59/mo) is overkill until you scale props across many
+sports. Free 500/mo is what's currently exhausted. This is the single highest-ROI add —
+but it's a **purchase only you can make**; I can't buy a key or set the secret.
+
 ## Steps (≈5 minutes — all owner actions; I can't buy a key or set a secret for you)
-1. **Get a key** at <https://the-odds-api.com> — free tier is 500 requests/month; paid tiers (~$30+/mo) raise the cap. The props pull is the only quota-hungry step.
+1. **Raise the plan** at <https://the-odds-api.com> to the **20K / $30-mo tier** (the key is already valid — you're upgrading its quota, not creating a new key). The props pull is the only quota-hungry step.
 2. **Add the GitHub secret:** repo **Settings → Secrets and variables → Actions → New repository secret** → name it **exactly** `ODDS_API_KEY`, paste the key. (The workflows already reference `${{ secrets.ODDS_API_KEY }}`.)
 3. *(Optional)* add a repo **variable** `EDGESTAT_PROPS_MAX_GAMES` to cap quota use: `8` on the free tier, `16`+ on a paid tier.
 4. **Trigger a run** so you don't wait for the 14:00 UTC cron: `gh workflow run daily-pipeline.yml` (or the Actions tab → Daily MLB Pipeline → Run workflow).
@@ -42,8 +49,11 @@ Every paid Odds API call is now gated through `python/odds_budget.py`:
 
 When the quota is low, paid fetches are **skipped** and the desk falls back to the free ESPN
 game lines (the same graceful path as no key) — so an exhausted key never error-spams. **When
-you upgrade the tier, set `ODDS_DAILY_CAP`** to roughly `monthly_quota ÷ 30 × 0.8` (e.g. ~2,600
-for a 100k/mo plan). Per-day spend is logged to `data/odds_spend_log.json`.
+you upgrade the tier, set `ODDS_DAILY_CAP`** to roughly `monthly_quota ÷ 30 × 0.8` —
+**~200 for the recommended 20k/mo plan** (the desk needs only ~167/day, so 200 covers it with
+headroom while still protecting the monthly pool), or ~2,600 for a 100k/mo plan. The default
+`40` is deliberately low so an un-upgraded key can't burn out — bump it the same day you raise
+the tier. Per-day spend is logged to `data/odds_spend_log.json`.
 
 ## After it's live — the payoff
 Once props have an open→close book history (a few days), the prop-CLV path confirms whether
