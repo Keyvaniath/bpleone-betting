@@ -1223,13 +1223,12 @@ fetch("data/clv_log.json", { cache: "no-cache" })
   .catch(() => { const el = document.getElementById("mSharp"); if (el) el.textContent = "--"; });
 
 // Hero stats: ALL settled picks (lock_of_day + pod + top_25_board + ...).
-// 2026-05-21: switched from pod_pl.json (POD-only, 1 record showing 0-1) to
-// all_picks_ledger.json (every settled pick across every source — currently
-// 4-2 +0.18u). Brandon was confused why dashboard showed 0-1 when his actual
-// record was 4-2 — that gap was because the hero card scoped to POD-only.
+// Reads ledger_summary.json (the precomputed rollup) — IDENTICAL top-level and
+// curated fields as all_picks_ledger.json, but ~49KB vs 7.4MB (152x lighter), so
+// the homepage no longer downloads the full per-pick ledger just for ~6 numbers.
 // POD-specific record still lives on pod-history.html.
 (function loadHeroStats() {
-  fetch("data/all_picks_ledger.json", { cache: "no-cache" })
+  fetch("data/ledger_summary.json", { cache: "no-cache" })
     .then(r => r.json())
     .then(d => {
       const set = (id, v, color) => { const el = document.getElementById(id); if (el) { el.textContent = v; if (color) el.style.color = color; } };
