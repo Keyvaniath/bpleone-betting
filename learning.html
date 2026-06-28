@@ -134,7 +134,7 @@ function renderMarkets(cal) {
 function renderLoopStatus(cal, tr) {
   const el = document.getElementById("loopStatus");
   if (!el) return;
-  const propsSettled = (tr.props || []).length;
+  const propsSettled = tr.n_settled_total != null ? tr.n_settled_total : (tr.props || []).length;
   const gamesSettled = (tr.games || []).length;
   const lastDate = tr.last_settled_date || "--";
   const markets = cal.markets || {};
@@ -188,7 +188,7 @@ function renderRecent(tr) {
                ...(tr.games || []).map(r => ({ ...r, kind: "game" }))];
   all.sort((a, b) => (b.date || "").localeCompare(a.date || ""));
   const recent = all.slice(0, 50);
-  document.getElementById("recentCount").textContent = `${all.length} settled total`;
+  document.getElementById("recentCount").textContent = `${tr.n_settled_total != null ? tr.n_settled_total : all.length} settled total · showing the most recent`;
   if (!recent.length) {
     list.innerHTML = `<p class="empty">No settled records yet. The outcomes ingestion job runs every morning.</p>`;
     return;
@@ -236,14 +236,19 @@ Promise.all([
   // Real settled records from the live ledger. Replaces the deprecated synthetic
   // track_record.json (118k backfilled props frozen at 2026-06-02) so the loop
   // status count and "Recently Settled" list reflect actual graded picks.
-  fetch("data/all_picks_ledger.json", { cache: "no-cache" }).then(r => r.json()).then(L => {
+  // recent_picks.json (~150KB) is a drop-in lighter ledger: rollup fields + only the last
+  // 200 settled picks. The full 7.4MB per-pick array isn't needed to render a recent list
+  // plus a settled COUNT -- the count/last-date come from the carried n_settled/date_range.
+  fetch("data/recent_picks.json", { cache: "no-cache" }).then(r => r.json()).then(L => {
     const sp = (L.picks || []).filter(p => p.settled && (p.result === "won" || p.result === "lost" || p.result === "push") && !p.voided);
+    const dr = L.date_range || [];
     return {
       props: sp.map(p => ({ date: p.date, player: p.player_or_matchup || "?", market: p.market,
         line: (p.outcome || {}).line, actual: (p.outcome || {}).actual, play: (p.outcome || {}).side,
         play_hit: p.result === "won" ? true : (p.result === "lost" ? false : null) })),
       games: [],
-      last_settled_date: sp.length ? sp.map(p => p.date).filter(Boolean).sort().slice(-1)[0] : null
+      n_settled_total: L.n_settled != null ? L.n_settled : sp.length,
+      last_settled_date: dr[1] || (sp.length ? sp.map(p => p.date).filter(Boolean).sort().slice(-1)[0] : null)
     };
   }).catch(() => ({})),
   fetch("data/clv_log.json", { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),

@@ -153,9 +153,13 @@ Promise.all([
   fetch("data/calibration_live.json", { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
   // Real settled records from the live ledger (replaces the deprecated synthetic
   // track_record.json: 118k backfilled props frozen at 2026-06-02).
-  fetch("data/all_picks_ledger.json", { cache: "no-cache" }).then(r => r.json()).then(L => {
+  // recent_picks.json (~150KB) is a drop-in lighter ledger: rollups + only the last 200
+  // settled picks. This page shows a settled COUNT + date range + markets-covered, so it
+  // reads the carried n_settled/date_range rather than counting the (now trimmed) array.
+  fetch("data/recent_picks.json", { cache: "no-cache" }).then(r => r.json()).then(L => {
     const sp = (L.picks || []).filter(p => p.settled && (p.result === "won" || p.result === "lost" || p.result === "push") && !p.voided);
-    return { props: sp.map(p => ({ date: p.date, player: p.player_or_matchup || "?", market: p.market })) };
+    return { props: sp.map(p => ({ date: p.date, player: p.player_or_matchup || "?", market: p.market })),
+      n_settled_total: L.n_settled != null ? L.n_settled : sp.length, date_range: L.date_range || [] };
   }).catch(() => ({})),
   fetch("data/residuals.json", { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
   fetch("data/anomalies.json", { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
@@ -203,11 +207,11 @@ Promise.all([
   }
 
   // Training data summary -- from the live settled ledger (real graded picks)
-  const props = (tr && tr.props) || [];
-  const dates = Array.from(new Set(props.map(p => p.date).filter(Boolean))).sort();
-  const dateRange = dates.length ? `${dates[0]} -- ${dates[dates.length-1]}` : "(no data)";
+  const nSettled = (tr && tr.n_settled_total != null) ? tr.n_settled_total : ((tr && tr.props) || []).length;
+  const dr = (tr && tr.date_range) || [];
+  const dateRange = (dr[0] && dr[1]) ? `${dr[0]} -- ${dr[1]}` : "(no data)";
   document.getElementById("trTrainingData").innerHTML = `
-    <div><strong>Settled records (live ledger):</strong> ${props.length.toLocaleString()} graded picks the loop trains on</div>
+    <div><strong>Settled records (live ledger):</strong> ${nSettled.toLocaleString()} graded picks the loop trains on</div>
     <div><strong>Date range:</strong> ${dateRange}</div>
     <div><strong>Markets covered:</strong> ${Object.keys(markets).length}</div>
     <div><strong>Pipeline cadence:</strong> daily 6 AM / 1 PM / 6 PM ET + 5-min heartbeat via GitHub Actions</div>
