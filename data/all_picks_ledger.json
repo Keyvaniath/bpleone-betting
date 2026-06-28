@@ -1,23 +1,23 @@
 {
-  "generated_at": "2026-06-28T20:55:34",
+  "generated_at": "2026-06-28T21:31:57",
   "stake_assumption": "1u flat per pick",
   "total_picks": 10000,
-  "n_settled": 6402,
-  "n_pending": 938,
+  "n_settled": 6403,
+  "n_pending": 937,
   "n_void": 2660,
   "wins": 2877,
-  "losses": 3517,
+  "losses": 3518,
   "pushes": 8,
-  "hit_rate": 0.45,
-  "net_units": -732.324,
-  "roi_pct": -11.45,
+  "hit_rate": 0.4499,
+  "net_units": -733.324,
+  "roi_pct": -11.47,
   "n_calibrated_picks": 9360,
   "calibrated_reliability": {
-    "n": 6326,
-    "ece_raw": 0.0938,
-    "ece_calibrated": 0.0228,
-    "brier_raw": 0.22187,
-    "brier_calibrated": 0.19992,
+    "n": 6327,
+    "ece_raw": 0.0939,
+    "ece_calibrated": 0.0229,
+    "brier_raw": 0.22188,
+    "brier_calibrated": 0.19993,
     "note": "In-sample over the settled ledger (the isotonic transform is fit on these same outcomes); held-out 70/30 validation is in recalibration_map.json. p_predicted = raw model prob (kept untouched for the learning loop); p_calibrated = honest prob stamped per pick. Lower ECE/Brier on the calibrated column = the displayed % is truer."
   },
   "curated": {
@@ -43,7 +43,7 @@
     "definition": "Featured/recommended plays only -- Lock of the Day, Top 25, Whale, Sharp, Consensus (hit), Under Alerts, POD. Excludes the experimental prop feeds, which are tracked to train the model, not bet."
   },
   "n_added_this_run": 0,
-  "n_newly_settled_this_run": 0,
+  "n_newly_settled_this_run": 1,
   "n_resettled_this_run": 0,
   "n_voided_this_run": 0,
   "n_reconciled_settled_voids": 0,
@@ -905,13 +905,13 @@
       "roi_pct": 53.2
     },
     "wc_model_home_ml": {
-      "n": 22,
+      "n": 23,
       "wins": 15,
-      "losses": 7,
+      "losses": 8,
       "pushes": 0,
-      "net_units": 3.555,
-      "hit_rate": 0.6818,
-      "roi_pct": 16.16
+      "net_units": 2.555,
+      "hit_rate": 0.6522,
+      "roi_pct": 11.11
     },
     "wc_model_away_ml": {
       "n": 8,
@@ -1676,12 +1676,12 @@
       "hit_rate": 1.0
     },
     "home_ml": {
-      "n": 22,
+      "n": 23,
       "wins": 15,
-      "losses": 7,
+      "losses": 8,
       "pushes": 0,
-      "net_units": 3.555,
-      "hit_rate": 0.6818
+      "net_units": 2.555,
+      "hit_rate": 0.6522
     },
     "away_ml": {
       "n": 8,
@@ -2158,12 +2158,12 @@
       "hit_rate": 1.0
     },
     "home_ml": {
-      "n": 22,
+      "n": 23,
       "wins": 15,
-      "losses": 7,
+      "losses": 8,
       "pushes": 0,
-      "net_units": 3.555,
-      "hit_rate": 0.6818
+      "net_units": 2.555,
+      "hit_rate": 0.6522
     },
     "away_ml": {
       "n": 8,
@@ -2381,15 +2381,15 @@
     },
     "WORLDCUP": {
       "n": 163,
-      "settled": 155,
+      "settled": 156,
       "wins": 102,
-      "losses": 53,
+      "losses": 54,
       "pushes": 0,
-      "pending": 8,
+      "pending": 7,
       "void": 0,
-      "net_units": -1.548,
-      "hit_rate": 0.6581,
-      "roi_pct": -1.0,
+      "net_units": -2.548,
+      "hit_rate": 0.6538,
+      "roi_pct": -1.63,
       "markets": 9
     },
     "TENNIS": {
@@ -2408,9 +2408,9 @@
   },
   "last_7_days": {
     "wins": 525,
-    "losses": 805,
-    "net_units": -125.38,
-    "hit_rate": 0.3947
+    "losses": 806,
+    "net_units": -126.38,
+    "hit_rate": 0.3944
   },
   "picks": [
     {
@@ -214591,11 +214591,22 @@
       "matchup": "Canada @ South Africa",
       "date": "2026-06-28",
       "pick_id": "wc_model_home_ml|WORLDCUP|Canada___South_Africa|HOME_ML|2026-06-28",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "lost",
+      "payout_units": -1.0,
       "recorded_at": "2026-06-25T04:37:28",
-      "p_calibrated": 0.507
+      "p_calibrated": 0.507,
+      "outcome": {
+        "final_score": "Canada 1-0 South Africa",
+        "total_cards": 2,
+        "total_goals": 1,
+        "scorers": [
+          "stephen eust\u00e1quio"
+        ],
+        "market": "HOME_ML",
+        "verify": "Canada 1-0 South Africa: home did not win \u2014 HOME_ML"
+      },
+      "settled_at": "2026-06-28T21:31:57"
     },
     {
       "source": "wc_model_away_ml",
