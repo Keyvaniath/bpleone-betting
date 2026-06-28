@@ -1,23 +1,23 @@
 {
-  "generated_at": "2026-06-28T18:17:26",
+  "generated_at": "2026-06-28T19:49:06",
   "stake_assumption": "1u flat per pick",
   "total_picks": 10000,
-  "n_settled": 6403,
-  "n_pending": 936,
-  "n_void": 2661,
+  "n_settled": 6402,
+  "n_pending": 938,
+  "n_void": 2660,
   "wins": 2877,
-  "losses": 3518,
+  "losses": 3517,
   "pushes": 8,
-  "hit_rate": 0.4499,
-  "net_units": -733.324,
-  "roi_pct": -11.47,
+  "hit_rate": 0.45,
+  "net_units": -732.324,
+  "roi_pct": -11.45,
   "n_calibrated_picks": 9360,
   "calibrated_reliability": {
-    "n": 6327,
-    "ece_raw": 0.0939,
-    "ece_calibrated": 0.0229,
-    "brier_raw": 0.2219,
-    "brier_calibrated": 0.19995,
+    "n": 6326,
+    "ece_raw": 0.0938,
+    "ece_calibrated": 0.0228,
+    "brier_raw": 0.22187,
+    "brier_calibrated": 0.19992,
     "note": "In-sample over the settled ledger (the isotonic transform is fit on these same outcomes); held-out 70/30 validation is in recalibration_map.json. p_predicted = raw model prob (kept untouched for the learning loop); p_calibrated = honest prob stamped per pick. Lower ECE/Brier on the calibrated column = the displayed % is truer."
   },
   "curated": {
@@ -42,22 +42,13 @@
     ],
     "definition": "Featured/recommended plays only -- Lock of the Day, Top 25, Whale, Sharp, Consensus (hit), Under Alerts, POD. Excludes the experimental prop feeds, which are tracked to train the model, not bet."
   },
-  "n_added_this_run": 0,
+  "n_added_this_run": 2,
   "n_newly_settled_this_run": 0,
   "n_resettled_this_run": 0,
   "n_voided_this_run": 0,
   "n_reconciled_settled_voids": 0,
   "n_bootstrapped_from_locks_history": 0,
   "by_source": {
-    "nba_ast_ast_over_3.0": {
-      "n": 2,
-      "wins": 0,
-      "losses": 2,
-      "pushes": 0,
-      "net_units": -2.0,
-      "hit_rate": 0.0,
-      "roi_pct": -100.0
-    },
     "mlb_xbh_1_plus_xbh": {
       "n": 1376,
       "wins": 405,
@@ -372,6 +363,15 @@
       "net_units": -5.841,
       "hit_rate": 0.52,
       "roi_pct": -23.36
+    },
+    "nba_ast_ast_over_3.0": {
+      "n": 1,
+      "wins": 0,
+      "losses": 1,
+      "pushes": 0,
+      "net_units": -1.0,
+      "hit_rate": 0.0,
+      "roi_pct": -100.0
     },
     "mlb_game_total_game_total_under_10.5": {
       "n": 5,
@@ -1275,14 +1275,6 @@
     }
   },
   "by_market_family": {
-    "ast_over": {
-      "n": 4,
-      "wins": 2,
-      "losses": 2,
-      "pushes": 0,
-      "net_units": -0.93,
-      "hit_rate": 0.5
-    },
     "1_plus_xbh": {
       "n": 1376,
       "wins": 405,
@@ -1506,6 +1498,14 @@
       "pushes": 0,
       "net_units": -5.841,
       "hit_rate": 0.52
+    },
+    "ast_over": {
+      "n": 3,
+      "wins": 2,
+      "losses": 1,
+      "pushes": 0,
+      "net_units": 0.07,
+      "hit_rate": 0.6667
     },
     "hits_2plus_yes": {
       "n": 76,
@@ -1741,14 +1741,6 @@
     }
   },
   "by_canonical": {
-    "ast_over": {
-      "n": 4,
-      "wins": 2,
-      "losses": 2,
-      "pushes": 0,
-      "net_units": -0.93,
-      "hit_rate": 0.5
-    },
     "mlb_xbh_0.5_over": {
       "n": 1376,
       "wins": 405,
@@ -1980,6 +1972,14 @@
       "pushes": 0,
       "net_units": -5.841,
       "hit_rate": 0.52
+    },
+    "ast_over": {
+      "n": 3,
+      "wins": 2,
+      "losses": 1,
+      "pushes": 0,
+      "net_units": 0.07,
+      "hit_rate": 0.6667
     },
     "mlb_hit_1.5_over": {
       "n": 76,
@@ -2223,26 +2223,13 @@
     }
   },
   "by_sport": {
-    "NBA": {
-      "n": 79,
-      "settled": 13,
-      "wins": 9,
-      "losses": 4,
-      "pushes": 0,
-      "pending": 0,
-      "void": 66,
-      "net_units": 0.101,
-      "hit_rate": 0.6923,
-      "roi_pct": 0.78,
-      "markets": 9
-    },
     "MLB": {
-      "n": 7327,
+      "n": 7329,
       "settled": 4832,
       "wins": 1852,
       "losses": 2972,
       "pushes": 8,
-      "pending": 563,
+      "pending": 565,
       "void": 1932,
       "net_units": -1115.017,
       "hit_rate": 0.3839,
@@ -2366,6 +2353,19 @@
       "roi_pct": -5.2,
       "markets": 5
     },
+    "NBA": {
+      "n": 77,
+      "settled": 12,
+      "wins": 9,
+      "losses": 3,
+      "pushes": 0,
+      "pending": 0,
+      "void": 65,
+      "net_units": 1.1,
+      "hit_rate": 0.75,
+      "roi_pct": 9.17,
+      "markets": 9
+    },
     "NHL": {
       "n": 193,
       "settled": 41,
@@ -2413,52 +2413,6 @@
     "hit_rate": 0.3947
   },
   "picks": [
-    {
-      "source": "nba_ast_ast_over_6.5",
-      "sport": "NBA",
-      "player_or_matchup": "chris paul",
-      "market": "AST_OVER_6.5",
-      "prob": 0.633,
-      "fair_american": -172,
-      "p_predicted": 0.633,
-      "matchup": "NYK @ SAS",
-      "date": "2026-06-03",
-      "pick_id": "nba_ast_ast_over_6_5|NBA|chris_paul|AST_OVER_6_5|2026-06-03",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
-      "recorded_at": "2026-06-03T00:16:44",
-      "voided": true,
-      "voided_at": "2026-06-08T01:59:59",
-      "voided_reason": "unsettleable: no outcome feed within 4 days",
-      "p_calibrated": 0.633
-    },
-    {
-      "source": "nba_ast_ast_over_3.0",
-      "sport": "NBA",
-      "player_or_matchup": "victor wembanyama",
-      "market": "AST_OVER_3.0",
-      "prob": 0.631,
-      "fair_american": -171,
-      "p_predicted": 0.631,
-      "matchup": "NYK @ SAS",
-      "date": "2026-06-03",
-      "pick_id": "nba_ast_ast_over_3_0|NBA|victor_wembanyama|AST_OVER_3_0|2026-06-03",
-      "settled": true,
-      "result": "lost",
-      "payout_units": -1.0,
-      "recorded_at": "2026-06-03T00:16:44",
-      "voided": false,
-      "p_calibrated": 0.631,
-      "outcome": {
-        "stat": "ast",
-        "actual": 2,
-        "line": 3.0,
-        "side": "OVER",
-        "verify": "victor wembanyama \u2014 ast = 2 (line 3.0, bet over) on 2026-06-03"
-      },
-      "settled_at": "2026-06-10T09:21:47"
-    },
     {
       "source": "mlb_xbh_1_plus_xbh",
       "sport": "MLB",
@@ -240155,6 +240109,40 @@
       "payout_units": null,
       "recorded_at": "2026-06-28T15:44:06",
       "p_calibrated": 0.3086
+    },
+    {
+      "source": "sharp_elite",
+      "sport": "MLB",
+      "player_or_matchup": "CIN @ PIT",
+      "market": "ml_home",
+      "prob": 0.702,
+      "edge_pct": 23.0,
+      "tier": "ELITE",
+      "shift_pp": 25.86,
+      "date": "2026-06-28",
+      "pick_id": "sharp_elite|MLB|CIN___PIT|ml_home|2026-06-28",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-06-28T19:49:06",
+      "p_calibrated": 0.702
+    },
+    {
+      "source": "sharp_elite",
+      "sport": "MLB",
+      "player_or_matchup": "TEX @ TOR",
+      "market": "ml_away",
+      "prob": 0.5846,
+      "edge_pct": 23.9,
+      "tier": "ELITE",
+      "shift_pp": 15.32,
+      "date": "2026-06-28",
+      "pick_id": "sharp_elite|MLB|TEX___TOR|ml_away|2026-06-28",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-06-28T19:49:06",
+      "p_calibrated": 0.6031
     }
   ],
   "note": "Unified pick ledger -- records every pick the model surfaces (top_25 board, whales, consensus, unders, sharp action, locks, POD) and settles each against actual outcomes. Per-source W-L feeds back into calibration so the model learns which modules are reliable. THIS is the training signal."

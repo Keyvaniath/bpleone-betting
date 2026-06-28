@@ -1,23 +1,23 @@
 {
-  "generated_at": "2026-06-28T18:17:26",
+  "generated_at": "2026-06-28T19:49:06",
   "stake_assumption": "1u flat per pick",
   "total_picks": 10000,
-  "n_settled": 6403,
-  "n_pending": 936,
-  "n_void": 2661,
+  "n_settled": 6402,
+  "n_pending": 938,
+  "n_void": 2660,
   "wins": 2877,
-  "losses": 3518,
+  "losses": 3517,
   "pushes": 8,
-  "hit_rate": 0.4499,
-  "net_units": -733.324,
-  "roi_pct": -11.47,
+  "hit_rate": 0.45,
+  "net_units": -732.324,
+  "roi_pct": -11.45,
   "n_calibrated_picks": 9360,
   "calibrated_reliability": {
-    "n": 6327,
-    "ece_raw": 0.0939,
-    "ece_calibrated": 0.0229,
-    "brier_raw": 0.2219,
-    "brier_calibrated": 0.19995,
+    "n": 6326,
+    "ece_raw": 0.0938,
+    "ece_calibrated": 0.0228,
+    "brier_raw": 0.22187,
+    "brier_calibrated": 0.19992,
     "note": "In-sample over the settled ledger (the isotonic transform is fit on these same outcomes); held-out 70/30 validation is in recalibration_map.json. p_predicted = raw model prob (kept untouched for the learning loop); p_calibrated = honest prob stamped per pick. Lower ECE/Brier on the calibrated column = the displayed % is truer."
   },
   "curated": {
@@ -42,22 +42,13 @@
     ],
     "definition": "Featured/recommended plays only -- Lock of the Day, Top 25, Whale, Sharp, Consensus (hit), Under Alerts, POD. Excludes the experimental prop feeds, which are tracked to train the model, not bet."
   },
-  "n_added_this_run": 0,
+  "n_added_this_run": 2,
   "n_newly_settled_this_run": 0,
   "n_resettled_this_run": 0,
   "n_voided_this_run": 0,
   "n_reconciled_settled_voids": 0,
   "n_bootstrapped_from_locks_history": 0,
   "by_source": {
-    "nba_ast_ast_over_3.0": {
-      "n": 2,
-      "wins": 0,
-      "losses": 2,
-      "pushes": 0,
-      "net_units": -2.0,
-      "hit_rate": 0.0,
-      "roi_pct": -100.0
-    },
     "mlb_xbh_1_plus_xbh": {
       "n": 1376,
       "wins": 405,
@@ -372,6 +363,15 @@
       "net_units": -5.841,
       "hit_rate": 0.52,
       "roi_pct": -23.36
+    },
+    "nba_ast_ast_over_3.0": {
+      "n": 1,
+      "wins": 0,
+      "losses": 1,
+      "pushes": 0,
+      "net_units": -1.0,
+      "hit_rate": 0.0,
+      "roi_pct": -100.0
     },
     "mlb_game_total_game_total_under_10.5": {
       "n": 5,
@@ -1275,14 +1275,6 @@
     }
   },
   "by_market_family": {
-    "ast_over": {
-      "n": 4,
-      "wins": 2,
-      "losses": 2,
-      "pushes": 0,
-      "net_units": -0.93,
-      "hit_rate": 0.5
-    },
     "1_plus_xbh": {
       "n": 1376,
       "wins": 405,
@@ -1506,6 +1498,14 @@
       "pushes": 0,
       "net_units": -5.841,
       "hit_rate": 0.52
+    },
+    "ast_over": {
+      "n": 3,
+      "wins": 2,
+      "losses": 1,
+      "pushes": 0,
+      "net_units": 0.07,
+      "hit_rate": 0.6667
     },
     "hits_2plus_yes": {
       "n": 76,
@@ -1741,14 +1741,6 @@
     }
   },
   "by_canonical": {
-    "ast_over": {
-      "n": 4,
-      "wins": 2,
-      "losses": 2,
-      "pushes": 0,
-      "net_units": -0.93,
-      "hit_rate": 0.5
-    },
     "mlb_xbh_0.5_over": {
       "n": 1376,
       "wins": 405,
@@ -1980,6 +1972,14 @@
       "pushes": 0,
       "net_units": -5.841,
       "hit_rate": 0.52
+    },
+    "ast_over": {
+      "n": 3,
+      "wins": 2,
+      "losses": 1,
+      "pushes": 0,
+      "net_units": 0.07,
+      "hit_rate": 0.6667
     },
     "mlb_hit_1.5_over": {
       "n": 76,
@@ -2223,26 +2223,13 @@
     }
   },
   "by_sport": {
-    "NBA": {
-      "n": 79,
-      "settled": 13,
-      "wins": 9,
-      "losses": 4,
-      "pushes": 0,
-      "pending": 0,
-      "void": 66,
-      "net_units": 0.101,
-      "hit_rate": 0.6923,
-      "roi_pct": 0.78,
-      "markets": 9
-    },
     "MLB": {
-      "n": 7327,
+      "n": 7329,
       "settled": 4832,
       "wins": 1852,
       "losses": 2972,
       "pushes": 8,
-      "pending": 563,
+      "pending": 565,
       "void": 1932,
       "net_units": -1115.017,
       "hit_rate": 0.3839,
@@ -2365,6 +2352,19 @@
       "hit_rate": 0.6452,
       "roi_pct": -5.2,
       "markets": 5
+    },
+    "NBA": {
+      "n": 77,
+      "settled": 12,
+      "wins": 9,
+      "losses": 3,
+      "pushes": 0,
+      "pending": 0,
+      "void": 65,
+      "net_units": 1.1,
+      "hit_rate": 0.75,
+      "roi_pct": 9.17,
+      "markets": 9
     },
     "NHL": {
       "n": 193,
