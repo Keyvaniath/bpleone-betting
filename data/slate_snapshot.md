@@ -1,6 +1,6 @@
 # EdgeStat Slate — 2026-06-28
 
-_6 picks consolidated from POD + Alpha + Book Edges + Parlay-of-Day._
+_5 picks consolidated from POD + Alpha + Book Edges + Parlay-of-Day._
 
 ## ⭐ Play of the Day
 
@@ -9,23 +9,21 @@ _6 picks consolidated from POD + Alpha + Book Edges + Parlay-of-Day._
 
 ## 🎯 Alpha Pick
 
-- **TEX @ TOR** · TEX_ML
-  Prob 64.6% · Odds +112 · Edge +36.9% · Kelly 0.250
+- **NYY @ BOS** · NYY_ML
+  Prob 62.0% · Odds -105 · Edge +21.1% · Kelly 0.222
 
 ## 📊 Book Edges
 
-- **CIN @ PIT · OVER · O/U 9.0** · TOTAL_OVER
-  Prob 58.3% · Odds -110 · Edge +11.3% · Kelly 0.124
 - **NYY @ BOS · AWAY (AWAY)** · TEAM_ML
-  Prob 56.4% · Odds -103 · Edge +11.1% · Kelly 0.114
-- **ARI @ TBR · OVER · O/U 7.5** · TOTAL_OVER
-  Prob 57.7% · Odds -110 · Edge +10.1% · Kelly 0.111
+  Prob 56.3% · Odds -103 · Edge +11.0% · Kelly 0.113
+- **NYY @ BOS · OVER · O/U 8.0** · TOTAL_OVER
+  Prob 56.6% · Odds -110 · Edge +8.0% · Kelly 0.088
 
 ## 🎲 Parlay
 
-- **Noelvi Marte + TEX @ TOR** · 2-leg
-  Prob 56.5% · Odds +268 · Edge +107.9% · Kelly 0.050
+- **Noelvi Marte + NYY @ BOS** · 2-leg
+  Prob 54.3% · Odds +239 · Edge +83.9% · Kelly 0.050
 
 ---
-_Generated 2026-06-28T15:36:02 UTC by EdgeStat._
+_Generated 2026-06-28T21:54:19 UTC by EdgeStat._
 _Stakes assume ¼-Kelly fractional sizing on a flat bankroll._

@@ -1,61 +1,49 @@
 # Tonight's Slate Brief — 2026-06-28
 
-## Slate Quality: 62/100 (MEDIUM)
-_50% lineups confirmed · 1 extreme-weather games · 11 rookie SPs_
-**Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
+## Slate Quality: 100/100 (HIGH)
+_100% lineups confirmed_
+**Recommendation:** Play normal Kelly sizing.
 
 ## Slate
-- **15 games** scheduled
-- **35 best bets** scored: 0 DK · 0 PP · 13 NRFI · 6 SGP
+- **1 games** scheduled
+- **31 best bets** scored: 0 DK · 0 PP · 13 NRFI · 1 SGP
 - **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$60.64
-- **MC simulation:** EV +$122.35, 87% P(profit), p05 $-77.47 / p95 $283.4
+- **MC simulation:** EV +$133.25, 86% P(profit), p05 $-76.06 / p95 $320.37
 
 ## Top 5 Best Bets
-1. **SEA @ CLE 4-leg SGP @ -510**  (97/100 *****, edge +105.3%)
-   - Joint prob 0.836 (correlation boost +0.327)
-   - Leg: Colt Emerson UNDER 1.5 batter hits
-2. **ARI @ TBR 4-leg SGP @ -208**  (82/100 *****, edge +68.1%)
-   - Joint prob 0.675 (correlation boost +0.173)
-   - Leg: Ketel Marte OVER 0.5 batter total bases
-3. **OAK @ LAA YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +38.6%)
+1. **OAK @ LAA YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +38.6%)
    - P(YRFI) 84.6% vs baseline 46.0%
-4. **TEX @ TOR YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +37.7%)
+2. **TEX @ TOR YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +37.7%)
    - P(YRFI) 83.7% vs baseline 46.0%
-5. **SEA @ CLE YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +26.9%)
+3. **SEA @ CLE YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +26.9%)
    - P(YRFI) 72.9% vs baseline 46.0%
+4. **COL @ MIN YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +23.8%)
+   - P(YRFI) 69.8% vs baseline 46.0%
+5. **NYY @ BOS 4-leg SGP @ -172**  (78/100 *****, edge +58.8%)
+   - Joint prob 0.632 (correlation boost +0.135)
+   - Leg: José Caballero UNDER 0.5 batter doubles
 
-## ⚠️ Trap Warnings — 18 flagged
-- **SEA @ CLE 4-leg SGP @ -510** (low):
-   - Edge +105.3% looks big but only 0 settled props on this player — model unproven
-- **ARI @ TBR 4-leg SGP @ -208** (low):
-   - Edge +68.1% looks big but only 0 settled props on this player — model unproven
-- **TEX @ TOR 4-leg SGP @ -157** (low):
-   - Edge +62.9% looks big but only 0 settled props on this player — model unproven
-- **HOU @ DET 4-leg SGP @ -158** (low):
-   - Edge +62.5% looks big but only 0 settled props on this player — model unproven
-- **PHI @ NYM 4-leg SGP @ -175** (low):
-   - Edge +57.8% looks big but only 0 settled props on this player — model unproven
-
-## Weather leans
-- **OVER lean** (wind out + warm): MIA @ STL, COL @ MIN
+## ⚠️ Trap Warnings — 13 flagged
+- **NYY @ BOS 4-leg SGP @ -172** (low):
+   - Edge +58.8% looks big but only 0 settled props on this player — model unproven
+- **OAK @ LAA YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +38.6% looks big but only 0 settled props on this player — model unproven
+- **TEX @ TOR YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +37.7% looks big but only 0 settled props on this player — model unproven
+- **SEA @ CLE YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +26.9% looks big but only 0 settled props on this player — model unproven
+- **COL @ MIN YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +23.8% looks big but only 0 settled props on this player — model unproven
 
 ## Hot streaks
-**Batters heating up:** Konnor Griffin (heat +8.50), Yohendrick Piñango (heat +7.50), Junior Caminero (heat +6.95)
-**Pitchers on a run:** Kumar Rocker (heat +8.56), Jesús Luzardo (heat +8.15), Brandon Woodruff (heat +7.75)
+**Batters heating up:** Junior Caminero (heat +7.39), Luis García Jr. (heat +5.17), Joc Pederson (heat +5.05)
+**Pitchers on a run:** Jack Flaherty (heat +16.20), Chris Sale (heat +14.25), Jesús Luzardo (heat +13.89)
 
 ## Top correlation-aware SGPs
-- **SEA @ CLE** 4-leg @ -510 fair (joint 0.84, EV +105.34%)
-   - Colt Emerson UNDER 1.5 batter hits
-   - Colt Emerson UNDER 2.5 batter total bases
-   - Colt Emerson UNDER 0.5 batter home runs
-- **ARI @ TBR** 4-leg @ -208 fair (joint 0.68, EV +68.07%)
-   - Ketel Marte OVER 0.5 batter total bases
-   - Corbin Carroll OVER 0.5 batter total bases
-   - Corbin Carroll UNDER 0.5 batter home runs
-- **TEX @ TOR** 4-leg @ -157 fair (joint 0.61, EV +62.89%)
-   - Andrés Giménez UNDER 2.5 batter total bases
-   - Nathan Lukes UNDER 2.5 batter total bases
-   - Andrés Giménez UNDER 0.5 batter doubles
+- **NYY @ BOS** 4-leg @ -172 fair (joint 0.63, EV +58.83%)
+   - José Caballero UNDER 0.5 batter doubles
+   - Willson Contreras OVER 0.5 batter total bases
+   - José Caballero UNDER 2.5 batter total bases
 
 ## Bullpens GASSED tonight
 Pittsburgh Pirates, San Diego Padres, Tampa Bay Rays, Toronto Blue Jays, Philadelphia Phillies, Atlanta Braves, Chicago White Sox, Miami Marlins
@@ -67,8 +55,8 @@ _Lean late-inning OVER on these games; fade their save situations._
 ## Golf -- Travelers Championship
 - **Leader:** Viktor Hovland (-20) at #1
 - **Field:** 72 players  |  Status: In Progress
-- **Play of the Tournament:** Alex Fitzpatrick TOP10 @ +594 (model 14.4%, HIGH)
-   - P(top 10) 14.4% -- safest finish bet (#17 (-11)).
+- **Play of the Tournament:** Alex Fitzpatrick TOP10 @ +597 (model 14.3%, HIGH)
+   - P(top 10) 14.3% -- safest finish bet (#17 (-11)).
 
 ## NBA -- PLAYOFFS
 - New York Knicks @ San Antonio Spurs (53-29 vs 62-20) 94-90 | P(home) 0.0% fair +0 | Final
