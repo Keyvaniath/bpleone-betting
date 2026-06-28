@@ -186,10 +186,12 @@ function renderRows(targetId, dict) {
 async function load() {
   let d;
   try {
-    const r = await fetch('data/all_picks_ledger.json?t=' + Date.now());
+    // ledger_summary.json (~49KB) carries total_picks/n_settled/hit_rate/by_sport/by_source;
+    // the full 7.4MB per-pick ledger isn't needed here (this page renders no per-pick rows).
+    const r = await fetch('data/ledger_summary.json?t=' + Date.now());
     d = await r.json();
   } catch (e) {
-    document.getElementById('mf-rows').innerHTML = '<div style="padding:20px;color:#888;">Failed to load all_picks_ledger.json</div>';
+    document.getElementById('mf-rows').innerHTML = '<div style="padding:20px;color:#888;">Failed to load ledger_summary.json</div>';
     return;
   }
   document.getElementById('s-total').textContent = d.total_picks || 0;
