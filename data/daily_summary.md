@@ -2,16 +2,16 @@
 
 **Model Confidence: 27.4/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
 
-_Pipeline health: **DEGRADED** (14/15 artifacts ok; 1 empty, 0 stale)._ 
+_Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
 
-_Generated at 2026-06-28T21:54:29 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-06-28T23:13:27 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
 **NYY @ BOS - NYY_ML**
-- Market: -105
-- Model probability: 69.2%
-- Raw edge: +35.17%
+- Market: -109
+- Model probability: 69.3%
+- Raw edge: +32.88%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
@@ -20,7 +20,7 @@ _Generated at 2026-06-28T21:54:29 UTC. Game lines source: **Bovada (fallback -- 
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 7:20p ET | NYY @ BOS | Fenway Park | 69F 4mph | NYY_ML +35.17% |
+| 7:20p ET | NYY @ BOS | Fenway Park | 69F 5mph | NYY_ML +32.88% |
 
 ## Self-Learning Loop
 
@@ -35,7 +35,7 @@ Cumulative graded plays: 118214. Wins: 87366. Hit rate: 73.9%.
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| NYY @ BOS | 44.0% | +127 | 4.22 | +398 | -398 |
+| NYY @ BOS | 44.0% | +127 | 4.24 | +398 | -398 |
 
 ## Team Form (last 10)
 

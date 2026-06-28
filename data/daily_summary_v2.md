@@ -1,18 +1,18 @@
 # EdgeStat Daily Summary — 2026-06-28
 
-## 🏥 Model Health: 74.5/100 [HEALTHY]
+## 🏥 Model Health: 73.3/100 [HEALTHY]
 - Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 99.9/100
+  - 🟢 Calibration Freshness: 100.0/100
   - 🔴 Hit Rate Trend: 54.4/100
   - 🔴 Brier Trend: 29.6/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 95.5/100
-  - 🟢 Edge Count: 85.7/100
+  - 🟡 Edge Count: 74.3/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.576)
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.583)
 - **Total games on board:** 112
-- **Strong home favorites:** 3 | **Strong road dogs:** 2
+- **Strong home favorites:** 4 | **Strong road dogs:** 1
 
 ## 🎯 Top 5 Best Bets
 1. **OAK @ LAA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
@@ -21,21 +21,12 @@
 4. **COL @ MIN YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 5. **NYY @ BOS 4-leg SGP @ -172** (78/100 ★★★★★)
 
-## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** CIN @ PIT ML_HOME -- 70% / +23.0% (score 2.5)
-- [STRONG] **[MLB]** CIN @ PIT PIT_ML -- 70% / +23.0% (score 2.5)
-- [STRONG] **[MLB]** LAD @ SDP LAD_ML -- 71% / +22.4% (score 2.5)
-
-## 📡 Sharp Action (Line Movement)
-- [ELITE] **TEX @ TOR** ml_away: 43.86% → 81.31% (+37.5pp)
-- [ELITE] **CIN @ PIT** ml_home: 68.25% → 91.67% (+23.4pp)
-
 ## 🔒 Locks of the Day -- Track Record
-- All-time: **249-44** (85.0% hit rate)
-- Net units: **+8.63u** | ROI: **+47.5%**
-- Last 7d: 39-3 (92.9%) | net +1.59u
+- All-time: **258-44** (85.4% hit rate)
+- Net units: **+9.04u** | ROI: **+48.3%**
+- Last 7d: 48-3 (94.1%) | net +2.00u
 
-**Today's 11 Locks:**
+**Today's 12 Locks:**
 - [MLB-PP] **Alex Bregman** PP_batter_hrr_under_3.5 · p=88% edge=+51.9% qK=0.062u
 - [MLB-PP] **Drew Gilbert** PP_batter_hrr_under_3.5 · p=87% edge=+51.8% qK=0.062u
 - [MLB-PP] **Adrian Del Castillo** PP_batter_hrr_under_3.5 · p=87% edge=+51.7% qK=0.062u
@@ -47,14 +38,15 @@
 - [MLB-PP] **Alex Freeland** PP_batter_hrr_under_3.5 · p=87% edge=+51.4% qK=0.062u
 - [MLB-PP] **Noelvi Marte** PP_batter_hrr_under_3.5 · p=88% edge=+51.9% qK=0.062u
 - [MLB-PP] **Colby Thomas** PP_batter_hrr_under_3.5 · p=87% edge=+51.8% qK=0.062u
+- [MLB-PP] **Brett Baty** PP_batter_hrr_under_3.5 · p=87% edge=+51.7% qK=0.062u
 
 ## 🎰 Top Balanced 2-Leg Parlays (40-65% joint)
-- [MLB-PP] Noelvi Marte PP_batter_hrr_under_ + [MLB] TEX @ TOR TEX_ML
-  Joint: 57% | Fair: 268 | Edge: +107.9%
-- [MLB-PP] Mitch Garver PP_batter_hrr_under_ + [MLB] TEX @ TOR TEX_ML
-  Joint: 57% | Fair: 268 | Edge: +107.9%
-- [MLB-PP] Marcell Ozuna PP_batter_hrr_under_ + [MLB] TEX @ TOR TEX_ML
-  Joint: 56% | Fair: 268 | Edge: +107.8%
+- [MLB-PP] Noelvi Marte PP_batter_hrr_under_ + [MLB] NYY @ BOS NYY_ML
+  Joint: 54% | Fair: 239 | Edge: +83.9%
+- [MLB-PP] Mitch Garver PP_batter_hrr_under_ + [MLB] NYY @ BOS NYY_ML
+  Joint: 54% | Fair: 239 | Edge: +83.9%
+- [MLB-PP] Alex Bregman PP_batter_hrr_under_ + [MLB] NYY @ BOS NYY_ML
+  Joint: 54% | Fair: 239 | Edge: +83.8%
 
 ## 🎮 Player Play of the Day (cross-sport)
 - **[LOL]** Inspired UNDER 3.5 Kills | MED conviction · model 61.7% fair -161
@@ -72,11 +64,9 @@
 - Hot teams: **0** | Cold teams: **0** | Over-heavy: 0 | Under-heavy: 5
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (43)
+## ⚠️ Anomaly Detector (39)
 - RESIDUAL_DIVERGENCE: **2**
 - STEAM_MOVE: **37**
-- COMPOUND_BULLPEN: **2**
-- PEN_MISMATCH: **2**
   - Portland Fire (WNBA): Portland Fire UNDERPERFORMING expected margin by 20.9pts in recent games -- model bias may persist
   - Chicago Sky (WNBA): Chicago Sky OUTPERFORMING expected margin by 11.0pts in recent games -- model bias may persist
   - LA @ IND (WNBA): TOTAL steam since open: total +4 (OVER) (6 snapshots)
@@ -92,17 +82,15 @@
   - #4 [SGP] $35 on NYY @ BOS 4-leg SGP @ -172 (P=63%)
   - #5 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
 
-## 🎯 Convergence Picks (3 stacked games)
-- ELITE: **0** · HIGH: 0 · MED: 3
+## 🎯 Convergence Picks (6 stacked games)
+- ELITE: **1** · HIGH: 1 · MED: 4
+  - [ELITE] New York Liberty @ Golden State Valkyries : 5 signals (PREGAME, HEAT_COLD, HEAT_COLD, ATS)
+  - [HIGH] Portland Fire @ Washington Mystics : 3 signals (HEAT_COLD, ANOMALY, ATS)
   - [MED] New York Knicks @ San Antonio Spurs : 2 signals (ATS, ATS)
+  - [MED] Las Vegas Aces @ Chicago Sky : 2 signals (ANOMALY, ATS)
   - [MED] Portland Timbers @ Seattle Sounders FC : 2 signals (PREGAME, ATS)
-  - [MED] Coventry City @ Arsenal : 2 signals (PREGAME, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (10)
-- **Drew Rasmussen** OVER 4.5 K (78%) fair -347
-- **Chris Sale** OVER 5.5 K (77%) fair -337
-- **Luinder Avila** OVER 4.5 K (77%) fair -332
-- **Gavin Williams** OVER 4.5 K (76%) fair -321
+## ⚾ Top MLB Pitcher K Plays (1)
 - **Sonny Gray** OVER 4.5 K (76%) fair -321
 
 ## 🏀 NBA Player Heat (18 HOT / 22 COLD)
@@ -123,23 +111,26 @@
   - [LEAN] **Asu Almabayev** (24-3-0) vs Charles Johnson -- fair -160
 
 ## ⛳ Golf Player Heat (from Travelers Championship)
-  - 🔥 T1 **Viktor Hovland** (Norway): -20 total -- finished T1
-  - 🔥 T2 **Scottie Scheffler** (USA): -19 total -- finished T2
-  - 🔥 T3 **Patrick Cantlay** (USA): -15 total -- finished T3
-  - 🔥 T4 **Akshay Bhatia** (USA): -15 total -- finished T4
-  - 🔥 T5 **Shane Lowry** (Ireland): -13 total -- finished T5
+  - 🔥 T2 **Collin Morikawa** (USA): -20 total -- finished T2, Sunday -4.0 vs tourney avg
+  - 🔥 T3 **Wyndham Clark** (USA): -19 total -- finished T3, Sunday -1.2 vs tourney avg
+  - 🔥 T5 **Matt Fitzpatrick** (England): -18 total -- finished T5, Sunday -0.5 vs tourney avg
+  - 🔥 T6 **Akshay Bhatia** (USA): -18 total -- finished T6
+  - 🔥 T7 **Corey Conners** (Canada): -17 total -- finished T7, Sunday -2.8 vs tourney avg
+  - ❄️ **Viktor Hovland** (Norway): Sunday +5.8 vs tourney avg
+  - ❄️ **J.T. Poston** (USA): Sunday +5.8 vs tourney avg
+  - ❄️ **Si Woo Kim** (South Korea): Sunday +5.2 vs tourney avg
 
 ## 🔥 MLB Batter Heat (47 HOT / 44 COLD)
   - 🔥 **Nasim Nuñez** (WSH): L14 .415 / season .237 (+178pts)
   - 🔥 **Luisangel Acuña** (CWS): L14 .393 / season .222 (+171pts)
   - 🔥 **Tyler Stephenson** (CIN): L14 .357 / season .224 (+133pts)
+  - 🔥 **Mookie Betts** (LAD): L14 .368 / season .236 (+132pts)
   - 🔥 **Josh Lowe** (LAA): L14 .333 / season .204 (+129pts)
-  - 🔥 **Carter Jensen** (KC): L14 .379 / season .251 (+128pts)
   - ❄️ **Carlos Cortes** (ATH): L14 .111 / season .275 (-164pts) -- FADE props
   - ❄️ **Mickey Moniak** (COL): L14 .108 / season .268 (-160pts) -- FADE props
-  - ❄️ **Jorge Mateo** (ATL): L14 .107 / season .262 (-155pts) -- FADE props
-  - ❄️ **Drake Baldwin** (ATL): L14 .102 / season .257 (-155pts) -- FADE props
+  - ❄️ **Drake Baldwin** (ATL): L14 .100 / season .255 (-155pts) -- FADE props
   - ❄️ **Ildemaro Vargas** (AZ): L14 .111 / season .256 (-145pts) -- FADE props
+  - ❄️ **Jorge Mateo** (ATL): L14 .120 / season .262 (-142pts) -- FADE props
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**
