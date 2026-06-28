@@ -154,7 +154,6 @@
     { href: "brief.html",               label: "Brief" },
     { section: "Learn" },
     { href: "learn.html",               label: "🎓 EdgeStat Academy" },
-    { href: "methodology.html",         label: "📐 Methodology" },
     { href: "about.html",               label: "About" },
     { section: "Legal & Trust" },
     { href: "responsible-gambling.html", label: "🛟 Responsible Gambling" },
