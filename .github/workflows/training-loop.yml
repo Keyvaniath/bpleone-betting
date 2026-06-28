@@ -118,7 +118,13 @@ jobs:
               else
                 git checkout --ours . 2>/dev/null || true
                 git add -A
-                GIT_EDITOR=true git rebase --continue || git rebase --abort
+                # GUARD: a partial 'checkout --ours' can leave conflict markers in some
+                # files; 'git add -A' would stage them and 'rebase --continue' would COMMIT
+                # them, corrupting data/*.json on main. Never commit markers -- abort + retry.
+                if git diff --cached -U0 | grep -qE '^\+(<<<<<<<|=======|>>>>>>>)'; then
+                  git rebase --abort; sleep 5; continue
+                fi
+                GIT_EDITOR=true git rebase --continue || { git rebase --abort; sleep 5; continue; }
                 git push && { echo "pushed after conflict resolution"; exit 0; }
               fi
               sleep 5
