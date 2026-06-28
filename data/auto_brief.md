@@ -1,63 +1,66 @@
 # Tonight's Slate Brief — 2026-06-28
 
-## Slate Quality: 52/100 (LOW)
-_0% lineups confirmed · 1 extreme-weather games · 11 rookie SPs_
-**Recommendation:** Defensive sizing tonight; stick to highest-confidence plays.
+## Slate Quality: 55/100 (MEDIUM)
+_6% lineups confirmed · 11 rookie SPs_
+**Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
 - **15 games** scheduled
-- **26 best bets** scored: 0 DK · 0 PP · 5 NRFI · 2 SGP
-- **Auto-portfolio:** 1 picks, $50.0 stake (5.0%), expected +$19.45
-- **MC simulation:** EV +$48.08, 66% P(profit), p05 $-114.45 / p95 $190.8
+- **38 best bets** scored: 0 DK · 0 PP · 13 NRFI · 6 SGP
+- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$60.64
+- **MC simulation:** EV +$123.63, 85% P(profit), p05 $-64.55 / p95 $300.44
 
 ## Top 5 Best Bets
-1. **CHC @ MIL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +26.8%)
-   - P(YRFI) 72.8% vs baseline 46.0%
-2. **OAK @ LAA YRFI (1st-inning OVER 0.5)**  (79/100 ****, edge +19.4%)
-   - P(YRFI) 65.4% vs baseline 46.0%
-3. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
-   - Player prop quality score 1.1935
-   - Elite player
-4. **LOL ShowMaker OVER 3.5 Kills**  (78/100 ****, edge —)
-   - Player prop quality score 1.1892
-   - Elite player
-5. **LOL Peyz OVER 4.5 Kills**  (78/100 ****, edge —)
-   - Player prop quality score 1.184
-   - Elite player
+1. **CIN @ PIT 4-leg SGP @ -190**  (84/100 *****, edge +74.2%)
+   - Joint prob 0.655 (correlation boost +0.185)
+   - Leg: Elly De La Cruz OVER 0.5 batter total bases
+2. **OAK @ LAA YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +38.6%)
+   - P(YRFI) 84.6% vs baseline 46.0%
+3. **TEX @ TOR YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +37.7%)
+   - P(YRFI) 83.7% vs baseline 46.0%
+4. **SEA @ CLE YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +26.9%)
+   - P(YRFI) 72.9% vs baseline 46.0%
+5. **COL @ MIN YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +23.8%)
+   - P(YRFI) 69.8% vs baseline 46.0%
 
-## ⚠️ Trap Warnings — 7 flagged
-- **CHC @ MIL YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +26.8% looks big but only 0 settled props on this player — model unproven
-- **HOU @ DET 2-leg SGP @ -189** (low):
-   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
-- **TEX @ TOR 2-leg SGP @ -127** (low):
-   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
+## ⚠️ Trap Warnings — 18 flagged
+- **CIN @ PIT 4-leg SGP @ -190** (low):
+   - Edge +74.2% looks big but only 0 settled props on this player — model unproven
+- **HOU @ DET 4-leg SGP @ -114** (low):
+   - Edge +43.8% looks big but only 0 settled props on this player — model unproven
 - **OAK @ LAA YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +19.4% looks big but only 0 settled props on this player — model unproven
-- **COL @ MIN YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +16.5% looks big but only 0 settled props on this player — model unproven
+   - Edge +38.6% looks big but only 0 settled props on this player — model unproven
+- **TEX @ TOR YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +37.7% looks big but only 0 settled props on this player — model unproven
+- **SEA @ CLE YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +26.9% looks big but only 0 settled props on this player — model unproven
 
 ## Weather leans
-- **OVER lean** (wind out + warm): MIA @ STL
+- **OVER lean** (wind out + warm): MIA @ STL, SEA @ CLE
 
 ## Hot streaks
-**Batters heating up:** Yohendrick Piñango (heat +7.50), Junior Caminero (heat +6.95), William Contreras (heat +5.30)
-**Pitchers on a run:** Kyle Harrison (heat +14.40), Kumar Rocker (heat +14.40), Ryan Gusto (heat +11.15)
+**Batters heating up:** Konnor Griffin (heat +8.50), Yohendrick Piñango (heat +7.50), Junior Caminero (heat +6.95)
+**Pitchers on a run:** Kumar Rocker (heat +8.56), Jesús Luzardo (heat +8.15), Brandon Woodruff (heat +7.75)
 
 ## Top correlation-aware SGPs
-- **HOU @ DET** 2-leg @ -189 fair (joint 0.65, EV +25.0%)
-   - Jack Flaherty OVER 3.5 pitcher strikeouts
-   - Hunter Brown UNDER 9.5 pitcher strikeouts
-- **TEX @ TOR** 2-leg @ -127 fair (joint 0.56, EV +25.0%)
-   - Kumar Rocker UNDER 6.5 pitcher strikeouts
-   - Kumar Rocker OVER 3.5 pitcher strikeouts
+- **CIN @ PIT** 4-leg @ -190 fair (joint 0.66, EV +74.2%)
+   - Elly De La Cruz OVER 0.5 batter total bases
+   - Elly De La Cruz UNDER 0.5 batter home runs
+   - JJ Bleday UNDER 0.5 batter home runs
+- **HOU @ DET** 4-leg @ -114 fair (joint 0.53, EV +43.81%)
+   - Dillon Dingler UNDER 3.5 batter total bases
+   - Kerry Carpenter UNDER 0.5 batter home runs
+   - Kerry Carpenter UNDER 1.5 batter rbis
+- **KCR @ CHW** 2-leg @ -181 fair (joint 0.64, EV +25.0%)
+   - Luinder Avila UNDER 7.5 pitcher strikeouts
+   - Luinder Avila OVER 3.5 pitcher strikeouts
 
 ## Bullpens GASSED tonight
-Pittsburgh Pirates, Tampa Bay Rays, Toronto Blue Jays, Philadelphia Phillies, New York Yankees, Boston Red Sox, Chicago Cubs, Detroit Tigers
+Pittsburgh Pirates, San Diego Padres, Tampa Bay Rays, Toronto Blue Jays, Philadelphia Phillies, Atlanta Braves, Chicago White Sox, Miami Marlins
 _Lean late-inning OVER on these games; fade their save situations._
 
 ## NRFI/YRFI strong leans
-- **YRFI** (1st-inning OVER): CHC @ MIL, OAK @ LAA, COL @ MIN, ATL @ SFG, MIA @ STL
+- **YRFI** (1st-inning OVER): OAK @ LAA, TEX @ TOR, SEA @ CLE, COL @ MIN, LAD @ SDP
 
 ## Golf -- Travelers Championship
 - **Leader:** Viktor Hovland (-20) at #1
@@ -75,23 +78,15 @@ _Lean late-inning OVER on these games; fade their save situations._
 - Vegas Golden Knights @ Los Angeles Kings (0-0-0 vs 0-0-0)  | P(home) 52.9% fair -112 | Scheduled
 - Vancouver Canucks @ Seattle Kraken (0-0-0 vs 0-0-0)  | P(home) 52.9% fair -112 | Scheduled
 
-## KBO -- 2026 Korean Baseball
-- Hanwha Eagles @ SSG Landers | P(home) 62.6% fair -167 | total 10 R
-- KIA Tigers @ Doosan Bears | P(home) 46.5% fair +115 | total 9 R
-- KT Wiz @ Samsung Lions | P(home) 57.0% fair -132 | total 10 R
-- LG Twins @ Lotte Giants | P(home) 40.4% fair +147 | total 10 R
-- Kiwoom Heroes @ NC Dinos | P(home) 61.7% fair -161 | total 10 R
-- **KBO POD:** LG Twins ML vs Lotte Giants (KBO) (HIGH)
+## LoL Esports -- 0 live, 7 upcoming
+- [MSI] Karmine Corp vs T1 BO5 | P(A) 25.0% fair +301/-301
+- [MSI] Relove Deep Cross Gaming vs Team Liquid Alienware BO5 | P(A) 61.8% fair -162/+162
+- [MSI] TBD vs TBD BO5 | P(A) 50.0% fair -100/-100
+- [MSI] TBD vs TBD BO5 | P(A) 50.0% fair -100/-100
+- [MSI] TBD vs TBD BO5 | P(A) 50.0% fair -100/-100
+- **LoL POT:** Relove Deep Cross Gaming ML vs Team Liquid Alienware (MSI, BO5) (HIGH)
 
-## LoL Esports -- 1 live, 7 upcoming
-- [MSI] T1 vs Team Liquid Alienware BO5 | P(A) 84.7% fair -555/+555
-- [MSI] Karmine Corp vs Relove Deep Cross Gaming BO5 | P(A) 48.0% fair +108/-108
-- [MSI] TBD vs TBD BO5 | P(A) 50.0% fair -100/-100
-- [MSI] TBD vs TBD BO5 | P(A) 50.0% fair -100/-100
-- [MSI] TBD vs TBD BO5 | P(A) 50.0% fair -100/-100
-- **LoL POT:** Relove Deep Cross Gaming ML vs Karmine Corp (MSI, BO5) (HIGH)
-
-## Player Play of the Day -- across all sports (3526 candidates scanned)
+## Player Play of the Day -- across all sports (3509 candidates scanned)
 - **[LOL]** Inspired UNDER 3.5 Kills | model 61.7% fair -161 (ELITE)
 - **[LOL]** ShowMaker OVER 3.5 Kills | model 62.5% fair -167 (ELITE)
 - **[LOL]** Peyz OVER 4.5 Kills | model 61.3% fair -158 (ELITE)
@@ -99,7 +94,7 @@ _Lean late-inning OVER on these games; fade their save situations._
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | model 61.0% fair -157 (ELITE)
 
 ## Self-learning calibration (esports + KBO)
-- **LOL:** 21 settled | brier 0.2649 | ECE 0.1541
-   - Model over-confident; subtract 15.4pp at next inference
+- **LOL:** 22 settled | brier 0.2652 | ECE 0.1707
+   - Model over-confident; subtract 17.1pp at next inference
 - **KBO:** 21 settled | brier 0.2444 | ECE 0.08
    - Model over-confident; subtract 2.7pp at next inference
