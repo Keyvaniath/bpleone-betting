@@ -56,6 +56,7 @@
     <h1>Model Calibration</h1>
     <p>We publish our calibration. For every market family, this is what the model <b>predicted</b> versus what <b>actually happened</b> across every settled bet — straight from the results ledger, no synthetic data. A positive gap means the model was overconfident. Families proven to lose money are <span class="pos">curated out</span> of the boards entirely; well-sampled families have their displayed probabilities <span class="neg">calibrated</span> toward the realized rate. This is the engine behind the High Confidence Board.</p>
     <p class="muted" style="font-size:12.5px;">Curated-out families split two ways: <span class="pos">overconfident</span> — the model's probability itself is broken (realized far below predicted), so the edge is fake at <i>any</i> price; and <span style="color:#e8b54e;">priced-short</span> — the probability is roughly right but the bet loses at fair odds (it could still be +EV at a soft book line). The distinction is why we curate by ROI, not hit rate.</p>
+    <p class="muted" style="font-size:12.5px;">Curation runs on <b>every</b> pipeline cycle, so a family that turns into a proven loser is dropped automatically — the book can't quietly accumulate dead weight. The converse holds too: no family that <i>survives</i> the cut is a persistent loser (one that bleeds across <i>both</i> halves of the settled record). What's left is the clean subset — the losers are removed, not hidden.</p>
   </section>
 
   <!-- Held-out validation: does the curated edge survive out-of-sample? (auto-updating) -->
