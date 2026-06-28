@@ -2,11 +2,10 @@
 
 _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 
-## 💪 STRONG (4 picks)
-- [MLB] TEX @ TOR TEX_ML · 65% / +35.6%
-- [MLB] CIN @ PIT ML_HOME · 70% / +22.4%
-- [MLB] CIN @ PIT PIT_ML · 70% / +22.4%
-- [MLB] LAD @ SDP LAD_ML · 71% / +20.9%
+## 💪 STRONG (3 picks)
+- [MLB] LAD @ SDP LAD_ML · 71% / +22.1%
+- [MLB] CIN @ PIT ML_HOME · 71% / +21.7%
+- [MLB] CIN @ PIT PIT_ML · 71% / +21.7%
 
 ## 🔒 5 Daily Locks
 - **Alex Bregman** PP_batter_hrr_under_3.5 (MLB-PP) -- 88% / +51.9%
@@ -18,14 +17,16 @@ _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 - **Marcell Ozuna** PP_batter_hrr_under_3.5 (MLB-PP) -- 87% / +51.6%
 - **Kameron Misner** PP_batter_hrr_under_3.5 (MLB-PP) -- 87% / +51.4%
 - **Alex Freeland** PP_batter_hrr_under_3.5 (MLB-PP) -- 87% / +51.4%
+- **Noelvi Marte** PP_batter_hrr_under_3.5 (MLB-PP) -- 88% / +51.9%
+- **Colby Thomas** PP_batter_hrr_under_3.5 (MLB-PP) -- 87% / +51.8%
 
 ## 📡 Sharp Money Following Model
 - **TEX @ TOR** ml_away: line moved 43.86% → 47.85% (+4.0pp)
 
 ## 🎰 Tonight's Best Parlay
-- **Mitch Garver** PP_batter_hrr_under_3.5 + **TEX @ TOR** TEX_ML
-- Joint 56% · fair +270 · edge +108.6%
+- **Noelvi Marte** PP_batter_hrr_under_3.5 + **TEX @ TOR** TEX_ML
+- Joint 57% · fair +268 · edge +107.9%
 
 ---
-_Generated 2026-06-28T14:40:40_
+_Generated 2026-06-28T15:35:48_
 _Full breakdown: /tonight · Full history: /locks-of-day_

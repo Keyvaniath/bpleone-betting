@@ -1,13 +1,13 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-06-28T14:40:46 UTC_
+_Generated 2026-06-28T15:35:56 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -6
+- **Score:** -7
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
 - **Total STRONG:** 12
-- **Total FADES:** 54
+- **Total FADES:** 55
 
 ## Lock of the Night
 - **Subject:** Merrill Kelly
@@ -23,11 +23,11 @@ _Generated 2026-06-28T14:40:46 UTC_
 2. **GOLF / Scottie Scheffler** (GOLF_PLAYER, score=218.36)
    - Play: Scottie Scheffler (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-3. **MLB / Jesús Luzardo** (MLB_PITCHER, score=60.75)
-   - Play: Jesús Luzardo (PITCHER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_PITCHER)
-4. **MLB / Drew Rasmussen** (MLB_PITCHER, score=60.25)
+3. **MLB / Drew Rasmussen** (MLB_PITCHER, score=60.58)
    - Play: Drew Rasmussen (PITCHER_STRONG)
+   - Rationale: Cross-sport top pick (MLB_PITCHER)
+4. **MLB / Jesús Luzardo** (MLB_PITCHER, score=60.42)
+   - Play: Jesús Luzardo (PITCHER_STRONG)
    - Rationale: Cross-sport top pick (MLB_PITCHER)
 
 ## Top Events Board
@@ -43,13 +43,13 @@ _Generated 2026-06-28T14:40:46 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **NHL** / thatcher demko (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
 - **NHL** / connor hellebuyck (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / kevin lankinen (GOALIE_FADE)
+- **NHL** / logan thompson_2 (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / samsonov ilya (GOALIE_FADE)
+- **NHL** / anthony stolarz (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / joseph woll (GOALIE_FADE)
+- **NHL** / calvin pickard (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / thatcher demko (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO

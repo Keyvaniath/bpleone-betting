@@ -1,13 +1,13 @@
 # EdgeStat Daily Summary — 2026-06-28
 
-## 🏥 Model Health: 70.8/100 [HEALTHY]
+## 🏥 Model Health: 74.2/100 [HEALTHY]
 - Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 99.9/100
+  - 🟢 Calibration Freshness: 99.6/100
   - 🔴 Hit Rate Trend: 54.4/100
   - 🔴 Brier Trend: 29.6/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 90.0/100
-  - 🟡 Edge Count: 60.0/100
+  - 🟢 Edge Count: 94.3/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.584)
@@ -15,40 +15,43 @@
 - **Strong home favorites:** 2 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
-1. **CIN @ PIT 4-leg SGP @ -190** (84/100 ★★★★★)
-2. **OAK @ LAA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-3. **TEX @ TOR YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-4. **SEA @ CLE YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-5. **COL @ MIN YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+1. **SEA @ CLE 4-leg SGP @ -510** (97/100 ★★★★★)
+2. **ARI @ TBR 4-leg SGP @ -208** (82/100 ★★★★★)
+3. **OAK @ LAA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+4. **TEX @ TOR YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+5. **SEA @ CLE YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** TEX @ TOR TEX_ML -- 65% / +35.6% (score 2.5)
-- [STRONG] **[MLB]** CIN @ PIT ML_HOME -- 70% / +22.4% (score 2.5)
-- [STRONG] **[MLB]** CIN @ PIT PIT_ML -- 70% / +22.4% (score 2.5)
-- [STRONG] **[MLB]** LAD @ SDP LAD_ML -- 71% / +20.9% (score 2.5)
+- [STRONG] **[MLB]** LAD @ SDP LAD_ML -- 71% / +22.1% (score 2.5)
+- [STRONG] **[MLB]** CIN @ PIT ML_HOME -- 71% / +21.7% (score 2.5)
+- [STRONG] **[MLB]** CIN @ PIT PIT_ML -- 71% / +21.7% (score 2.5)
 
 ## 📡 Sharp Action (Line Movement)
 - [MODERATE] **TEX @ TOR** ml_away: 43.86% → 47.85% (+4.0pp)
 
 ## 🔒 Locks of the Day -- Track Record
-- All-time: **248-44** (84.9% hit rate)
-- Net units: **+8.58u** | ROI: **+47.4%**
-- Last 7d: 38-3 (92.7%) | net +1.55u
+- All-time: **249-44** (85.0% hit rate)
+- Net units: **+8.63u** | ROI: **+47.5%**
+- Last 7d: 39-3 (92.9%) | net +1.59u
 
-**Today's 5 Locks:**
+**Today's 9 Locks:**
 - [MLB-PP] **Alex Bregman** PP_batter_hrr_under_3.5 · p=88% edge=+51.9% qK=0.062u
 - [MLB-PP] **Drew Gilbert** PP_batter_hrr_under_3.5 · p=87% edge=+51.8% qK=0.062u
 - [MLB-PP] **Adrian Del Castillo** PP_batter_hrr_under_3.5 · p=87% edge=+51.7% qK=0.062u
 - [MLB-PP] **Brett Sullivan** PP_batter_hrr_under_3.5 · p=87% edge=+51.6% qK=0.062u
 - [MLB-PP] **Elias Díaz** PP_batter_hrr_over_0.5 · p=87% edge=+51.6% qK=0.062u
+- [MLB-PP] **Mitch Garver** PP_batter_hrr_under_3.5 · p=88% edge=+51.9% qK=0.062u
+- [MLB-PP] **Marcell Ozuna** PP_batter_hrr_under_3.5 · p=87% edge=+51.6% qK=0.062u
+- [MLB-PP] **Kameron Misner** PP_batter_hrr_under_3.5 · p=87% edge=+51.4% qK=0.062u
+- [MLB-PP] **Alex Freeland** PP_batter_hrr_under_3.5 · p=87% edge=+51.4% qK=0.062u
 
 ## 🎰 Top Balanced 2-Leg Parlays (40-65% joint)
+- [MLB-PP] Mitch Garver PP_batter_hrr_under_ + [MLB] TEX @ TOR TEX_ML
+  Joint: 56% | Fair: 270 | Edge: +108.6%
 - [MLB-PP] Alex Bregman PP_batter_hrr_under_ + [MLB] TEX @ TOR TEX_ML
-  Joint: 57% | Fair: 261 | Edge: +105.9%
-- [MLB-PP] Drew Gilbert PP_batter_hrr_under_ + [MLB] TEX @ TOR TEX_ML
-  Joint: 57% | Fair: 261 | Edge: +105.8%
-- [MLB-PP] Adrian Del Castillo PP_batter_hrr_under_ + [MLB] TEX @ TOR TEX_ML
-  Joint: 57% | Fair: 261 | Edge: +105.6%
+  Joint: 56% | Fair: 270 | Edge: +108.5%
+- [MLB-PP] Marcell Ozuna PP_batter_hrr_under_ + [MLB] TEX @ TOR TEX_ML
+  Joint: 56% | Fair: 270 | Edge: +108.3%
 
 ## 🎮 Player Play of the Day (cross-sport)
 - **[LOL]** Inspired UNDER 3.5 Kills | MED conviction · model 61.7% fair -161
@@ -65,24 +68,24 @@
 - Hot teams: **0** | Cold teams: **0** | Over-heavy: 0 | Under-heavy: 5
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (37)
+## ⚠️ Anomaly Detector (36)
 - STEAM_MOVE: **32**
-- COMPOUND_BULLPEN: **1**
-- PEN_MISMATCH: **4**
+- COMPOUND_BULLPEN: **2**
+- PEN_MISMATCH: **2**
   - LA @ IND (WNBA): TOTAL steam since open: total +4 (OVER) (6 snapshots)
   - CHI @ DAL (WNBA): ML/TOTAL steam since open: ML +3.3pp toward DAL; total +2 (OVER) (6 snapshots)
   - NY @ SEA (WNBA): ML/TOTAL steam since open: ML +8.9pp toward SEA; total -2 (UNDER) (2 snapshots)
   - BAL @ LAA (MLB): ML steam since open: ML +9.6pp toward LAA (4 snapshots)
   - PIT @ COL (MLB): ML/TOTAL steam since open: ML +8.4pp toward COL; total +1 (OVER) (6 snapshots)
 
-## 💰 Today's Portfolio (8 picks)
-- Total stake: **$340.0** (34.0% of $1000 bankroll)
-- Expected EV: **$22.42**
-  - #1 [SGP] $50 on CIN @ PIT 4-leg SGP @ -190 (P=66%)
-  - #2 [NRFI] $50 on OAK @ LAA YRFI (1st-inning OVER 0.5) (P=85%)
-  - #3 [NRFI] $50 on TEX @ TOR YRFI (1st-inning OVER 0.5) (P=84%)
-  - #4 [NRFI] $50 on SEA @ CLE YRFI (1st-inning OVER 0.5) (P=73%)
-  - #5 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
+## 💰 Today's Portfolio (7 picks)
+- Total stake: **$335.0** (33.5% of $1000 bankroll)
+- Expected EV: **$37.53**
+  - #1 [SGP] $50 on SEA @ CLE 4-leg SGP @ -510 (P=84%)
+  - #2 [SGP] $50 on ARI @ TBR 4-leg SGP @ -208 (P=68%)
+  - #3 [SGP] $50 on TEX @ TOR 4-leg SGP @ -157 (P=61%)
+  - #4 [NRFI] $50 on OAK @ LAA YRFI (1st-inning OVER 0.5) (P=85%)
+  - #5 [NRFI] $50 on TEX @ TOR YRFI (1st-inning OVER 0.5) (P=84%)
 
 ## 🎯 Convergence Picks (3 stacked games)
 - ELITE: **0** · HIGH: 0 · MED: 3
@@ -121,7 +124,7 @@
   - 🔥 T4 **Akshay Bhatia** (USA): -15 total -- finished T4
   - 🔥 T5 **Shane Lowry** (Ireland): -13 total -- finished T5
 
-## 🔥 MLB Batter Heat (50 HOT / 43 COLD)
+## 🔥 MLB Batter Heat (49 HOT / 43 COLD)
   - 🔥 **Luisangel Acuña** (CWS): L14 .393 / season .222 (+171pts)
   - 🔥 **Nasim Nuñez** (WSH): L14 .386 / season .237 (+149pts)
   - 🔥 **Lawrence Butler** (ATH): L14 .342 / season .198 (+144pts)
