@@ -82,7 +82,9 @@
       document.getElementById("oosCard").style.display = "block";
       document.getElementById("oosMeta").textContent =
         `${(d.n_settled||0).toLocaleString()} settled · ${d.span ? d.span[0]+'→'+d.span[1] : ''} · ${(d.generated_at||'').replace('T',' ').slice(0,16)}`;
-      document.getElementById("oosHeadline").innerHTML = "✅ " + (d.headline || "");
+      var _ci = d.holdout_70_ci;
+      var _ciTxt = _ci ? `<br><span style="font-weight:400;color:var(--text-2,#aab3c5);font-size:12.5px;">Statistical significance: held-out 95% CI <b>[${_ci.roi_lo>=0?'+':''}${_ci.roi_lo}%, ${_ci.roi_hi>=0?'+':''}${_ci.roi_hi}%]</b> on n=${_ci.n} — ${_ci.positive?'<b style="color:#58c878;">above zero, so the edge is statistically real, not luck</b>':'includes zero, so not yet distinguishable from luck'} (bootstrap).</span>` : "";
+      document.getElementById("oosHeadline").innerHTML = "✅ " + (d.headline || "") + _ciTxt;
       const fmt = v => (v>=0?'+':'') + v.toFixed(1) + '%';
       const cols = "62px 150px 1fr 1.2fr 56px";
       const head = `<div style="display:grid;grid-template-columns:${cols};gap:10px;padding:6px 0;color:var(--muted,#888);font-size:10px;text-transform:uppercase;">

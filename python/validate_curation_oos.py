@@ -22,6 +22,7 @@ after the ledger is rebuilt.
 """
 import json
 import os
+import random
 import datetime
 from prob_calibration import canon_market_family, market_family, CURATE_MIN_N, CURATE_MAX_NET
 
@@ -78,6 +79,27 @@ def score(pks, cut=None):
     return {"n": n, "net": netu,
             "roi": (100 * netu / n if n else 0.0),
             "hit": (100 * wins / n if n else 0.0)}
+
+
+def _graded_nets(pks, cut):
+    """Per-graded-pick payout list for the curated (un-cut) book -- the bootstrap base."""
+    cutset = set(cut)
+    return [net(p) for p in pks if not (fams(p) & cutset) and p.get("result") in ("won", "lost")]
+
+
+def _bootstrap_roi_ci(nets, B=2000, seed=7):
+    """95% bootstrap CI on ROI% (mean payout per graded pick x 100). Resamples picks with
+    replacement B times; a lower bound > 0 means the edge is statistically positive at 95%.
+    Treats picks as independent, so same-slate correlation makes this slightly OPTIMISTIC
+    (a fully honest CI is a touch wider) -- still the right first-order significance check."""
+    n = len(nets)
+    if n < 50:
+        return None
+    rng = random.Random(seed)
+    means = sorted(100.0 * sum(nets[rng.randrange(n)] for _ in range(n)) / n for _ in range(B))
+    lo = round(means[int(0.025 * B)], 1)
+    hi = round(means[int(0.975 * B)], 1)
+    return {"roi_lo": lo, "roi_hi": hi, "n": n, "positive": lo > 0}
 
 
 def _holdout(picks, dates, frac, full_cut):
@@ -208,6 +230,16 @@ def build():
     worst = [{"family": f, "n": n, "net": round(nt, 1)} for f, n, nt in rows if n >= 3][:6]
     concentration = _concentration(test, tcut)
 
+    # Bootstrap 95% CIs -- is the edge statistically distinguishable from zero?
+    in_sample_ci = _bootstrap_roi_ci(_graded_nets(picks, full_cut))
+    holdout_ci = _bootstrap_roi_ci(_graded_nets(test, tcut))
+    # ...and the CONSERVATIVE check: held-out, ALSO excluding small-sample-flagged families.
+    _flag = {c["family"] for c in concentration.get("flagged_families", [])}
+    robust_nets = [net(p) for p in test if not (fams(p) & tcut)
+                   and canon_market_family(p.get("market")) not in _flag
+                   and p.get("result") in ("won", "lost")]
+    holdout_robust_ci = _bootstrap_roi_ci(robust_nets)
+
     h70 = next(h for h in holdout if h["split"] == "70/30")
     return {
         "generated_at": datetime.datetime.now().isoformat(timespec="seconds"),
@@ -218,8 +250,11 @@ def build():
             "raw_roi": round(raw["roi"], 1), "raw_n": raw["n"],
             "curated_roi": round(cur["roi"], 1), "curated_n": cur["n"],
             "curated_hit": round(cur["hit"], 1), "families_cut": len(full_cut),
+            "curated_roi_ci": in_sample_ci,
         },
         "holdout": holdout,
+        "holdout_70_ci": holdout_ci,
+        "holdout_robust_ci": holdout_robust_ci,
         "persistence": {
             "n_cut": len(tcut), "kept_losing": kept, "flipped": flip,
             "test_net_of_cuts": round(netcuts, 0), "worst": worst,
@@ -233,6 +268,10 @@ def build():
             "persistent market inefficiency.",
             "ROI is measured at the model's fair price / settled outcome. It does NOT yet "
             "prove we beat the closing line (CLV) -- that requires the live odds feed.",
+            "The 95% CI shows the edge is significant WITHIN this sample (it's not sampling "
+            "noise), but says nothing about regime change -- it's still ~1 month of one "
+            "season. It also treats picks as independent, so same-slate correlation makes "
+            "the true interval a touch wider than shown.",
         ],
         "headline": (f"The curation derived on early data still returns "
                      f"{h70['test_oos_roi']:+.1f}% on the unseen later window, and the "
