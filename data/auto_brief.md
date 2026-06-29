@@ -6,60 +6,64 @@ _0% lineups confirmed · 9 rookie SPs_
 
 ## Slate
 - **13 games** scheduled
-- **20 best bets** scored: 0 DK · 0 PP · 1 NRFI · 3 SGP
-- **MC simulation:** EV +$1.28, 56% P(profit), p05 $-18.74 / p95 $17.04
+- **36 best bets** scored: 0 DK · 0 PP · 11 NRFI · 6 SGP
+- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$32.36
+- **MC simulation:** EV +$91.46, 75% P(profit), p05 $-124.8 / p95 $301.53
 
 ## Top 5 Best Bets
-1. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
+1. **CIN @ MIL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +23.8%)
+   - P(YRFI) 69.8% vs baseline 46.0%
+2. **LAA @ SEA YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +22.9%)
+   - P(YRFI) 68.9% vs baseline 46.0%
+3. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
    - Player prop quality score 1.1935
    - Elite player
-2. **LOL ShowMaker OVER 3.5 Kills**  (78/100 ****, edge —)
+4. **LOL ShowMaker OVER 3.5 Kills**  (78/100 ****, edge —)
    - Player prop quality score 1.1892
    - Elite player
-3. **LOL Peyz OVER 4.5 Kills**  (78/100 ****, edge —)
+5. **LOL Peyz OVER 4.5 Kills**  (78/100 ****, edge —)
    - Player prop quality score 1.184
    - Elite player
-4. **LOL Relove Deep Cross Gaming vs Team Liquid Alienware ML @ -162**  (76/100 *****, edge —)
-   - Model 61.8% (fair -162)
-   - MSI
-5. **LOL T1 vs Karmine Corp ML @ -301**  (76/100 *****, edge —)
-   - Model 75.0% (fair -301)
-   - MSI
 
-## ⚠️ Trap Warnings — 4 flagged
-- **CIN @ MIL 2-leg SGP @ -230** (low):
+## ⚠️ Trap Warnings — 16 flagged
+- **CIN @ MIL 2-leg SGP @ -256** (low):
    - Edge +25.0% looks big but only 0 settled props on this player — model unproven
-- **PIT @ PHI 2-leg SGP @ -183** (low):
+- **DET @ NYY 2-leg SGP @ -229** (low):
    - Edge +25.0% looks big but only 0 settled props on this player — model unproven
-- **MIN @ HOU 2-leg SGP @ -182** (low):
+- **TEX @ CLE 2-leg SGP @ -220** (low):
    - Edge +25.0% looks big but only 0 settled props on this player — model unproven
-- **NYY @ BOS YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +9.9% looks big but only 0 settled props on this player — model unproven
+- **LAA @ SEA 2-leg SGP @ -219** (low):
+   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
+- **NYM @ TOR 2-leg SGP @ -215** (low):
+   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
 
 ## Hot streaks
-**Batters heating up:** Esmerlyn Valdez (heat +6.66), Cam Smith (heat +3.14), Tyler Callihan (heat +2.68)
-**Pitchers on a run:** Braxton Ashcraft (heat +14.25), Nick Lodolo (heat +13.50), Peter Lambert (heat +9.64)
+**Batters heating up:** Esmerlyn Valdez (heat +6.66), Mookie Betts (heat +4.83), Brandon Marsh (heat +4.60)
+**Pitchers on a run:** Ryan Johnson (heat +9.44), Nick Lodolo (heat +8.96), Gage Jump (heat +8.30)
 
 ## Top correlation-aware SGPs
-- **CIN @ MIL** 2-leg @ -230 fair (joint 0.70, EV +25.0%)
+- **CIN @ MIL** 2-leg @ -256 fair (joint 0.72, EV +25.0%)
+   - Robert Gasser UNDER 8.5 pitcher strikeouts
    - Robert Gasser OVER 3.5 pitcher strikeouts
-   - Nick Lodolo UNDER 6.5 pitcher strikeouts
-- **PIT @ PHI** 2-leg @ -183 fair (joint 0.65, EV +25.0%)
-   - Aaron Nola UNDER 7.5 pitcher strikeouts
-   - Aaron Nola OVER 3.5 pitcher strikeouts
-- **MIN @ HOU** 2-leg @ -182 fair (joint 0.65, EV +25.0%)
-   - Peter Lambert OVER 3.5 pitcher strikeouts
-   - Peter Lambert UNDER 7.5 pitcher strikeouts
+- **DET @ NYY** 2-leg @ -229 fair (joint 0.70, EV +25.0%)
+   - Casey Mize UNDER 7.5 pitcher strikeouts
+   - Ryan Weathers UNDER 8.5 pitcher strikeouts
+- **TEX @ CLE** 2-leg @ -220 fair (joint 0.69, EV +25.0%)
+   - Parker Messick UNDER 9.5 pitcher strikeouts
+   - Parker Messick OVER 4.5 pitcher strikeouts
 
 ## Bullpens GASSED tonight
-Pittsburgh Pirates, San Diego Padres, St. Louis Cardinals, Tampa Bay Rays, Texas Rangers, Toronto Blue Jays, Minnesota Twins, Philadelphia Phillies
+Pittsburgh Pirates, San Diego Padres, Tampa Bay Rays, Texas Rangers, Toronto Blue Jays, Philadelphia Phillies, Chicago White Sox, Milwaukee Brewers
 _Lean late-inning OVER on these games; fade their save situations._
+
+## NRFI/YRFI strong leans
+- **YRFI** (1st-inning OVER): CIN @ MIL, LAA @ SEA, NYM @ TOR, DET @ NYY, MIA @ COL
 
 ## Golf -- Travelers Championship
 - **Leader:** Scottie Scheffler (-21) at #1
 - **Field:** 72 players  |  Status: In Progress
-- **Play of the Tournament:** Hideki Matsuyama TOP10 @ +675 (model 12.9%, MED)
-   - P(top 10) 12.9% -- safest finish bet (#20 (-14)).
+- **Play of the Tournament:** Collin Morikawa WIN @ +597 (model 14.3%, HIGH)
+   - P(win) 14.3% with 1 round(s) left -- sweet-spot value at #3 (-20).
 
 ## NBA -- PLAYOFFS
 - New York Knicks @ San Antonio Spurs (53-29 vs 62-20) 94-90 | P(home) 0.0% fair +0 | Final
@@ -79,13 +83,13 @@ _Lean late-inning OVER on these games; fade their save situations._
 - Samsung Lions @ NC Dinos | P(home) 43.8% fair +128 | total 8 R
 - **KBO POD:** Doosan Bears ML vs Lotte Giants (KBO) (HIGH)
 
-## LoL Esports -- 0 live, 7 upcoming
-- [MSI] T1 vs Karmine Corp BO5 | P(A) 56.7% fair -131/+131
-- [MSI] Relove Deep Cross Gaming vs Team Liquid Alienware BO5 | P(A) 64.8% fair -184/+184
+## LoL Esports -- 0 live, 6 upcoming
+- [MSI] Team Liquid Alienware vs Karmine Corp BO5 | P(A) 35.6% fair +181/-181
+- [MSI] TBD vs T1 BO5 | P(A) 34.1% fair +194/-194
 - [MSI] TBD vs TBD BO5 | P(A) 50.0% fair -100/-100
 - [MSI] TBD vs TBD BO5 | P(A) 50.0% fair -100/-100
 - [MSI] TBD vs TBD BO5 | P(A) 50.0% fair -100/-100
-- **LoL POT:** T1 ML vs Karmine Corp (MSI, BO5) (HIGH)
+- **LoL POT:** Karmine Corp ML vs Team Liquid Alienware (MSI, BO5) (HIGH)
 
 ## Player Play of the Day -- across all sports (3529 candidates scanned)
 - **[LOL]** Inspired UNDER 3.5 Kills | model 61.7% fair -161 (ELITE)
@@ -95,7 +99,7 @@ _Lean late-inning OVER on these games; fade their save situations._
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | model 61.0% fair -157 (ELITE)
 
 ## Self-learning calibration (esports + KBO)
-- **LOL:** 22 settled | brier 0.2652 | ECE 0.1707
-   - Model over-confident; subtract 17.1pp at next inference
+- **LOL:** 24 settled | brier 0.2668 | ECE 0.1641
+   - Model over-confident; subtract 16.4pp at next inference
 - **KBO:** 21 settled | brier 0.2444 | ECE 0.08
    - Model over-confident; subtract 2.7pp at next inference
