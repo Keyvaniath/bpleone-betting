@@ -4,28 +4,28 @@ _6 picks consolidated from POD + Alpha + Book Edges + Parlay-of-Day._
 
 ## ⭐ Play of the Day
 
-- **Henry Davis** · PP_batter_hrr_under_3.5
-  Prob 87.6% · Odds -136 · Edge +52.0% · Kelly 0.250
+- **Tyler Stephenson** · PP_batter_hrr_under_3.5
+  Prob 87.5% · Odds -136 · Edge +51.8% · Kelly 0.250
 
 ## 🎯 Alpha Pick
 
 - **TEX @ CLE** · TEX_ML
-  Prob 55.2% · Odds +127 · Edge +25.4% · Kelly 0.200
+  Prob 55.3% · Odds +127 · Edge +25.4% · Kelly 0.200
 
 ## 📊 Book Edges
 
 - **TEX @ CLE · AWAY (AWAY)** · TEAM_ML
-  Prob 50.5% · Odds +127 · Edge +14.7% · Kelly 0.116
-- **CHW @ BAL · AWAY (AWAY)** · TEAM_ML
-  Prob 51.2% · Odds +120 · Edge +12.7% · Kelly 0.105
+  Prob 51.0% · Odds +124 · Edge +14.3% · Kelly 0.115
 - **LAD @ OAK · HOME (HOME)** · TEAM_ML
-  Prob 57.6% · Odds -107 · Edge +11.4% · Kelly 0.122
+  Prob 57.3% · Odds -105 · Edge +11.9% · Kelly 0.125
+- **SFG @ ARI · AWAY (AWAY)** · TEAM_ML
+  Prob 50.9% · Odds +119 · Edge +11.5% · Kelly 0.096
 
 ## 🎲 Parlay
 
-- **Henry Davis + TEX @ CLE** · 2-leg
-  Prob 48.4% · Odds +294 · Edge +90.5% · Kelly 0.050
+- **Tyler Stephenson + TEX @ CLE** · 2-leg
+  Prob 48.3% · Odds +294 · Edge +90.4% · Kelly 0.050
 
 ---
-_Generated 2026-06-29T13:01:48 UTC by EdgeStat._
+_Generated 2026-06-29T17:05:41 UTC by EdgeStat._
 _Stakes assume ¼-Kelly fractional sizing on a flat bankroll._

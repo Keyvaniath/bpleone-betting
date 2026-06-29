@@ -1,13 +1,13 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-06-29T13:01:43 UTC_
+_Generated 2026-06-29T17:05:36 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -13
+- **Score:** -18
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 12
-- **Total FADES:** 61
+- **Total STRONG:** 11
+- **Total FADES:** 62
 
 ## Lock of the Night
 - **Subject:** Zebby Matthews
@@ -23,9 +23,6 @@ _Generated 2026-06-29T13:01:43 UTC_
 2. **GOLF / Viktor Hovland** (GOLF_PLAYER, score=208.0)
    - Play: Viktor Hovland (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-3. **MLB / Gage Jump** (MLB_PITCHER, score=59.33)
-   - Play: Gage Jump (PITCHER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_PITCHER)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
@@ -42,11 +39,11 @@ _Generated 2026-06-29T13:01:43 UTC_
 ## Top Fades
 - **NHL** / stuart skinner (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / adin hill (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / calvin pickard (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / kevin lankinen (GOALIE_FADE)
+- **NHL** / thatcher demko (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
 - **NHL** / samsonov ilya (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / adin hill (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / kevin lankinen (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO

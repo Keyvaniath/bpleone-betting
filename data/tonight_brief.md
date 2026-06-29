@@ -11,11 +11,17 @@ _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 - **Josh Lowe** PP_batter_hrr_under_3.5 (MLB-PP) -- 87% / +51.7%
 - **Henry Bolte** PP_batter_hrr_under_3.5 (MLB-PP) -- 87% / +51.7%
 - **Spencer Torkelson** PP_batter_hrr_under_3.5 (MLB-PP) -- 87% / +51.5%
+- **Tyler Stephenson** PP_batter_hrr_under_3.5 (MLB-PP) -- 87% / +51.8%
+- **Andrés Chaparro** PP_batter_hrr_under_3.5 (MLB-PP) -- 87% / +51.5%
+- **Masataka Yoshida** PP_batter_hrr_under_3.5 (MLB-PP) -- 87% / +51.3%
+
+## 📡 Sharp Money Following Model
+- **LAD @ OAK** ml_home: line moved 49.02% → 52.15% (+3.1pp)
 
 ## 🎰 Tonight's Best Parlay
-- **Henry Davis** PP_batter_hrr_under_3.5 + **TEX @ CLE** TEX_ML
-- Joint 48% · fair +294 · edge +90.5%
+- **Tyler Stephenson** PP_batter_hrr_under_3.5 + **TEX @ CLE** TEX_ML
+- Joint 48% · fair +294 · edge +90.4%
 
 ---
-_Generated 2026-06-29T13:01:37_
+_Generated 2026-06-29T17:05:30_
 _Full breakdown: /tonight · Full history: /locks-of-day_

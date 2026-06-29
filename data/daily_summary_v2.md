@@ -1,13 +1,13 @@
 # EdgeStat Daily Summary — 2026-06-29
 
-## 🏥 Model Health: 70.2/100 [HEALTHY]
+## 🏥 Model Health: 74.7/100 [HEALTHY]
 - Solid health - some minor issues to monitor
   - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 54.4/100
   - 🔴 Brier Trend: 29.6/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 95.5/100
-  - 🔴 Edge Count: 42.9/100
+  - 🟢 Edge Count: 88.6/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.584)
@@ -21,25 +21,31 @@
 4. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
 5. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
 
+## 📡 Sharp Action (Line Movement)
+- [MODERATE] **LAD @ OAK** ml_home: 49.02% → 52.15% (+3.1pp)
+
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **262-44** (85.6% hit rate)
 - Net units: **+9.22u** | ROI: **+48.6%**
 - Last 7d: 43-3 (93.5%) | net +1.77u
 
-**Today's 5 Locks:**
+**Today's 8 Locks:**
 - [MLB-PP] **Henry Davis** PP_batter_hrr_under_3.5 · p=87% edge=+50.5% qK=0.062u
 - [MLB-PP] **Marcell Ozuna** PP_batter_hrr_under_3.5 · p=87% edge=+50.4% qK=0.062u
 - [MLB-PP] **Royce Lewis** PP_batter_hrr_under_3.5 · p=86% edge=+48.8% qK=0.062u
 - [MLB-PP] **Jasson Domínguez** PP_batter_hrr_under_3.5 · p=86% edge=+48.7% qK=0.062u
 - [MLB-PP] **Joey Loperfido** PP_batter_hrr_under_3.5 · p=86% edge=+48.5% qK=0.062u
+- [MLB-PP] **Josh Lowe** PP_batter_hrr_under_3.5 · p=87% edge=+51.7% qK=0.062u
+- [MLB-PP] **Henry Bolte** PP_batter_hrr_under_3.5 · p=87% edge=+51.7% qK=0.062u
+- [MLB-PP] **Spencer Torkelson** PP_batter_hrr_under_3.5 · p=87% edge=+51.5% qK=0.062u
 
 ## 🎰 Top Balanced 2-Leg Parlays (40-65% joint)
-- [MLB-PP] Henry Davis PP_batter_hrr_under_ + [KBO] Choi Jeong one_plus_tb
-  Joint: 64% | Fair: 231 | Edge: +110.4%
-- [MLB-PP] Marcell Ozuna PP_batter_hrr_under_ + [KBO] Choi Jeong one_plus_tb
-  Joint: 63% | Fair: 231 | Edge: +110.3%
-- [MLB-PP] Henry Davis PP_batter_hrr_under_ + [KBO] Jose Pirela one_plus_tb
-  Joint: 63% | Fair: 231 | Edge: +109.5%
+- [MLB-PP] Henry Davis PP_batter_hrr_under_ + [MLB] TEX @ CLE TEX_ML
+  Joint: 48% | Fair: 294 | Edge: +90.5%
+- [MLB-PP] Marcell Ozuna PP_batter_hrr_under_ + [MLB] TEX @ CLE TEX_ML
+  Joint: 48% | Fair: 294 | Edge: +90.4%
+- [MLB-PP] Josh Lowe PP_batter_hrr_under_ + [MLB] TEX @ CLE TEX_ML
+  Joint: 48% | Fair: 294 | Edge: +90.2%
 
 ## 🎮 Player Play of the Day (cross-sport)
 - **[LOL]** Inspired UNDER 3.5 Kills | MED conviction · model 61.7% fair -161
@@ -56,10 +62,9 @@
 - Hot teams: **0** | Cold teams: **1** | Over-heavy: 0 | Under-heavy: 8
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (36)
+## ⚠️ Anomaly Detector (34)
 - STEAM_MOVE: **33**
-- COMPOUND_BULLPEN: **2**
-- PEN_MISMATCH: **1**
+- COMPOUND_BULLPEN: **1**
   - LA @ IND (WNBA): TOTAL steam since open: total +4 (OVER) (6 snapshots)
   - ATL @ SFG (MLB): ML/TOTAL steam since open: ML -16.4pp toward ATL; total -0.5 (UNDER) (8 snapshots)
   - CHI @ DAL (WNBA): ML/TOTAL steam since open: ML +3.3pp toward DAL; total +2 (OVER) (6 snapshots)
@@ -100,12 +105,12 @@
   - ❄️ **Nickeil Alexander-Walker** (ATL): L5 13.0 vs season 21.3 [PTS -8.3] -- FADE OVER props
   - ❄️ **Caleb Love** (POR): L5 2.6 vs season 10.8 [PTS -8.2, REB -2.1, AST -2.4] -- FADE OVER props
 
-## 🥊 UFC Fight Matchups (UFC Fight Night: Fiziev vs. Torres)
-  - [FAVORITE] **Farman Hasanov** (6-0-0) vs Eric Nolan -- fair -234
-  - [FAVORITE] **Abdul-Rakhman Yakhyaev** (10-0-0) vs Julius Walker -- fair -199
-  - [FAVORITE] **Nursulton Ruziboev** (37-9-2) vs Andrey Pulyaev -- fair -186
-  - [LEAN] **Daniil Donchenko** (15-2-0) vs Theodor Berggren -- fair -174
-  - [LEAN] **Asu Almabayev** (24-3-0) vs Charles Johnson -- fair -160
+## 🥊 UFC Fight Matchups (UFC 329: McGregor vs. Holloway 2)
+  - [FAVORITE] **Gable Steveson** (3-0-0) vs Elisha Ellison -- fair -193
+  - [LEAN] **Luke Riley** (13-0-0) vs Kai Kamaka III -- fair -175
+  - [LEAN] **Farid Basharat** (15-0-0) vs Ethyn Ewing -- fair -152
+  - [LEAN] **Lone'er Kavanagh** (10-1-0) vs Brandon Royval -- fair -151
+  - [COIN_FLIP] **Damian Pinas** (9-1-0) vs Cesar Almeida -- fair -133
 
 ## ⛳ Golf Player Heat (from Travelers Championship)
   - 🔥 T1 **Scottie Scheffler** (USA): -21 total -- finished T1
@@ -128,9 +133,6 @@
   - ❄️ **Drake Baldwin** (ATL): L14 .100 / season .255 (-155pts) -- FADE props
   - ❄️ **Ildemaro Vargas** (AZ): L14 .111 / season .256 (-145pts) -- FADE props
   - ❄️ **Jorge Mateo** (ATL): L14 .120 / season .262 (-142pts) -- FADE props
-
-## 📈 Streak Regression Alerts (1)
-- [WNBA] Golden State Valkyries on W3 L10 3-2 -- Golden State Valkyries on W3 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**

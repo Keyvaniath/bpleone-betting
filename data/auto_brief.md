@@ -28,32 +28,32 @@ _0% lineups confirmed · 9 rookie SPs_
 ## ⚠️ Trap Warnings — 16 flagged
 - **CIN @ MIL 2-leg SGP @ -256** (low):
    - Edge +25.0% looks big but only 0 settled props on this player — model unproven
+- **CHW @ BAL 2-leg SGP @ -210** (low):
+   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
 - **DET @ NYY 2-leg SGP @ -229** (low):
    - Edge +25.0% looks big but only 0 settled props on this player — model unproven
 - **TEX @ CLE 2-leg SGP @ -220** (low):
    - Edge +25.0% looks big but only 0 settled props on this player — model unproven
-- **LAA @ SEA 2-leg SGP @ -219** (low):
-   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
-- **NYM @ TOR 2-leg SGP @ -215** (low):
+- **WSN @ BOS 2-leg SGP @ -206** (low):
    - Edge +25.0% looks big but only 0 settled props on this player — model unproven
 
 ## Hot streaks
-**Batters heating up:** Esmerlyn Valdez (heat +6.66), Mookie Betts (heat +4.83), Brandon Marsh (heat +4.60)
+**Batters heating up:** Luis García Jr. (heat +9.34), Esmerlyn Valdez (heat +6.66), Miguel Vargas (heat +5.36)
 **Pitchers on a run:** Ryan Johnson (heat +9.44), Nick Lodolo (heat +8.96), Gage Jump (heat +8.30)
 
 ## Top correlation-aware SGPs
 - **CIN @ MIL** 2-leg @ -256 fair (joint 0.72, EV +25.0%)
    - Robert Gasser UNDER 8.5 pitcher strikeouts
    - Robert Gasser OVER 3.5 pitcher strikeouts
+- **CHW @ BAL** 2-leg @ -210 fair (joint 0.68, EV +25.0%)
+   - Shane Baz UNDER 7.5 pitcher strikeouts
+   - Sean Burke UNDER 8.5 pitcher strikeouts
 - **DET @ NYY** 2-leg @ -229 fair (joint 0.70, EV +25.0%)
    - Casey Mize UNDER 7.5 pitcher strikeouts
    - Ryan Weathers UNDER 8.5 pitcher strikeouts
-- **TEX @ CLE** 2-leg @ -220 fair (joint 0.69, EV +25.0%)
-   - Parker Messick UNDER 9.5 pitcher strikeouts
-   - Parker Messick OVER 4.5 pitcher strikeouts
 
 ## Bullpens GASSED tonight
-Pittsburgh Pirates, San Diego Padres, Tampa Bay Rays, Texas Rangers, Toronto Blue Jays, Philadelphia Phillies, Chicago White Sox, Milwaukee Brewers
+Pittsburgh Pirates, San Diego Padres, Tampa Bay Rays, Texas Rangers, Toronto Blue Jays, Philadelphia Phillies, Chicago White Sox, New York Yankees
 _Lean late-inning OVER on these games; fade their save situations._
 
 ## NRFI/YRFI strong leans
@@ -91,7 +91,7 @@ _Lean late-inning OVER on these games; fade their save situations._
 - [MSI] TBD vs TBD BO5 | P(A) 50.0% fair -100/-100
 - **LoL POT:** Karmine Corp ML vs Team Liquid Alienware (MSI, BO5) (HIGH)
 
-## Player Play of the Day -- across all sports (3529 candidates scanned)
+## Player Play of the Day -- across all sports (3535 candidates scanned)
 - **[LOL]** Inspired UNDER 3.5 Kills | model 61.7% fair -161 (ELITE)
 - **[LOL]** ShowMaker OVER 3.5 Kills | model 62.5% fair -167 (ELITE)
 - **[LOL]** Peyz OVER 4.5 Kills | model 61.3% fair -158 (ELITE)

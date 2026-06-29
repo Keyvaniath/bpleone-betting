@@ -15,28 +15,28 @@
     "data": {
       "duration_s": 2.2,
       "exit_code": 0,
-      "summary": "SUMMARY: 368 ok / 1 empty / 284 flagged / 0 stale24h / 0 stale72h",
+      "summary": "SUMMARY: 370 ok / 1 empty / 282 flagged / 0 stale24h / 0 stale72h",
       "stderr_truncated": ""
     },
     "data_health": {
-      "duration_s": 0.4,
+      "duration_s": 0.7,
       "exit_code": 0,
       "summary": "[OK] desks              | 7 desk producers fresh",
       "stderr_truncated": ""
     }
   },
-  "generated_at": "2026-06-29T13:02:08",
-  "total_duration_s": 4.0,
+  "generated_at": "2026-06-29T17:06:01",
+  "total_duration_s": 4.4,
   "artifacts": {
     "module_import_audit.json": {
-      "generated_at": "2026-06-29T13:02:06",
+      "generated_at": "2026-06-29T17:05:58",
       "n_total": 604,
       "n_ok": 604,
       "n_fail": 0,
       "failures": []
     },
     "html_audit.json": {
-      "generated_at": "2026-06-29T13:02:06",
+      "generated_at": "2026-06-29T17:05:58",
       "summary": {
         "ok": 107,
         "no_nav_js": 10,
@@ -208,14 +208,14 @@
       }
     },
     "data_stub_audit.json": {
-      "generated_at": "2026-06-29T13:02:08",
+      "generated_at": "2026-06-29T17:06:00",
       "summary": {
         "empty": 1,
         "stub_flagged": 0,
-        "zero_count": 284,
+        "zero_count": 282,
         "stale_24h": 0,
         "stale_72h": 0,
-        "ok": 368
+        "ok": 370
       },
       "empty": [
         [
@@ -293,16 +293,12 @@
           "n_stale_or_missing=0"
         ],
         [
-          "data_health.json",
-          "n_red=0"
-        ],
-        [
           "data_source_health.json",
           "contains 'sample'"
         ],
         [
-          "espn_odds.json",
-          "n_priced=0"
+          "drift_alerts.json",
+          "n_alerts=0"
         ],
         [
           "esports_alerts.json",
@@ -327,10 +323,6 @@
         [
           "fade_picks.json",
           "n_fades=0"
-        ],
-        [
-          "game_calibrated.json",
-          "n_games=0"
         ],
         [
           "golf_player_confluence_score.json",
@@ -530,7 +522,7 @@
         ],
         [
           "mlb_dominant_outing_alerts.json",
-          "n_elite=0"
+          "n_alerts=0; n_elite=0"
         ],
         [
           "mlb_doubles_props.json",
@@ -554,7 +546,7 @@
         ],
         [
           "mlb_full_game_pitching_chain.json",
-          "n_chain_lock=0"
+          "n_chain_lock=0; n_chain_strong=0"
         ],
         [
           "mlb_game_first_inning_hit_yn.json",
@@ -566,7 +558,7 @@
         ],
         [
           "mlb_game_preview.json",
-          "n_locks=0; n_strong=0; n_lean=0"
+          "n_locks=0; n_strong=0"
         ],
         [
           "mlb_game_run_diff_props.json",
@@ -630,15 +622,11 @@
         ],
         [
           "mlb_pitcher_confluence_score.json",
-          "n_lock=0"
+          "n_lock=0; n_strong=0"
         ],
         [
           "mlb_pitcher_edge_composite.json",
           "n_elite_matchups=0; n_strong=0; n_bad_spots=0"
-        ],
-        [
-          "mlb_pitcher_er_props.json",
-          "n_strong_edges=0"
         ],
         [
           "mlb_pitcher_form_regression.json",
@@ -1241,6 +1229,10 @@
           "n_matches=0; n_strong_edges=0"
         ],
         [
+          "tennis_breaks_of_serve.json",
+          "n_strong_edges=0"
+        ],
+        [
           "tennis_dominance_alerts.json",
           "n_alerts=0; n_elite=0"
         ],
@@ -1263,6 +1255,10 @@
         [
           "tennis_pot_history.json",
           "n_pending=0; n_voided=0; n_settled_this_run=0"
+        ],
+        [
+          "tennis_set_score_props.json",
+          "n_strong_edges=0"
         ],
         [
           "tennis_tiebreak_predictor.json",
@@ -1307,10 +1303,6 @@
         [
           "velocity_decay.json",
           "n_pitchers=0; n_concerning=0"
-        ],
-        [
-          "weather_drift.json",
-          "n_drifts=0"
         ],
         [
           "wnba_extended_props.json",
@@ -1365,11 +1357,11 @@
       "stale_72h": []
     },
     "data_health.json": {
-      "generated_at": "2026-06-29T13:02:08",
-      "overall": "yellow",
-      "n_green": 10,
+      "generated_at": "2026-06-29T17:06:01",
+      "overall": "red",
+      "n_green": 9,
       "n_yellow": 1,
-      "n_red": 0,
+      "n_red": 1,
       "checks": [
         {
           "feed": "freshness",
@@ -1384,8 +1376,8 @@
             "sport_coverage.json": 0.0,
             "todays_top_plays.json": 0.0,
             "alpha_pick_of_day.json": 0.0,
-            "alerts_feed.json": 1.6,
-            "calibration_map.json": 0.2,
+            "alerts_feed.json": 0.8,
+            "calibration_map.json": 0.1,
             "espn_odds.json": 0.0
           }
         },
@@ -1401,7 +1393,7 @@
           "upstream_final": 0,
           "local_count": 13,
           "local_live": 0,
-          "live_state_age_min": 13
+          "live_state_age_min": 10
         },
         {
           "feed": "nba",
@@ -1412,18 +1404,18 @@
           "upstream_count": 1,
           "local_count": 1,
           "upstream_live": 0,
-          "local_age_min": 10
+          "local_age_min": 7
         },
         {
           "feed": "wnba",
-          "status": "green",
+          "status": "red",
           "findings": [
-            "4 events matched (0 live)"
+            "WNBA count mismatch: local=4 vs ESPN=1"
           ],
-          "upstream_count": 4,
+          "upstream_count": 1,
           "local_count": 4,
           "upstream_live": 0,
-          "local_age_min": 13
+          "local_age_min": 10
         },
         {
           "feed": "nhl",
@@ -1434,7 +1426,7 @@
           "upstream_count": 5,
           "local_count": 5,
           "upstream_live": 0,
-          "local_age_min": 10
+          "local_age_min": 7
         },
         {
           "feed": "mls",
@@ -1445,7 +1437,7 @@
           "upstream_count": 4,
           "local_count": 4,
           "upstream_live": 0,
-          "local_age_min": 13
+          "local_age_min": 10
         },
         {
           "feed": "epl",
@@ -1456,7 +1448,7 @@
           "upstream_count": 1,
           "local_count": 1,
           "upstream_live": 0,
-          "local_age_min": 13
+          "local_age_min": 10
         },
         {
           "feed": "pitcher_matchup",
@@ -1483,11 +1475,11 @@
           "feed": "golf",
           "status": "green",
           "findings": [
-            "72 golfers tracked (1 active events)"
+            "72 golfers tracked (0 active events)"
           ],
           "upstream_players": 72,
           "local_players": 72,
-          "local_age_min": 13
+          "local_age_min": 10
         },
         {
           "feed": "desks",
@@ -1498,11 +1490,11 @@
           "n_stale": 0,
           "ages_h": {
             "tennis_state.json": 0.0,
-            "ufc_state.json": 10.9,
-            "f1_state.json": 10.9,
-            "kbo_state.json": 3.1,
-            "cs_state.json": 3.1,
-            "cws_state.json": 10.9,
+            "ufc_state.json": 4.1,
+            "f1_state.json": 4.1,
+            "kbo_state.json": 4.1,
+            "cs_state.json": 4.1,
+            "cws_state.json": 4.1,
             "worldcup_cards.json": 0.0
           }
         }
