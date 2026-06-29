@@ -1,88 +1,91 @@
 {
-  "generated_at": "2026-06-28T22:58:22",
+  "generated_at": "2026-06-29T01:55:50",
   "sport": "mlb",
   "n_games": 185,
-  "hit_rate": 0.4541,
-  "brier_score": 0.3296,
-  "log_loss": 0.9251,
-  "avg_predicted_home_winprob": 0.531,
+  "hit_rate": 0.4919,
+  "brier_score": 0.324,
+  "log_loss": 0.9221,
+  "avg_predicted_home_winprob": 0.5468,
   "avg_actual_home_winrate": 0.5135,
-  "bias": 0.0175,
+  "bias": 0.0333,
   "reliability_bins": [
     {
       "lo": 0.0,
       "hi": 0.1,
-      "n": 10,
-      "predicted_avg": 0.063,
-      "actual_avg": 0.7
+      "n": 9,
+      "predicted_avg": 0.068,
+      "actual_avg": 0.222
     },
     {
       "lo": 0.1,
       "hi": 0.2,
-      "n": 9,
-      "predicted_avg": 0.159,
-      "actual_avg": 0.444
+      "n": 10,
+      "predicted_avg": 0.15,
+      "actual_avg": 0.6
     },
     {
       "lo": 0.2,
       "hi": 0.3,
-      "n": 13,
-      "predicted_avg": 0.241,
-      "actual_avg": 0.462
+      "n": 10,
+      "predicted_avg": 0.257,
+      "actual_avg": 0.6
     },
     {
       "lo": 0.3,
       "hi": 0.4,
-      "n": 19,
-      "predicted_avg": 0.359,
-      "actual_avg": 0.684
+      "n": 23,
+      "predicted_avg": 0.346,
+      "actual_avg": 0.652
     },
     {
       "lo": 0.4,
       "hi": 0.5,
-      "n": 20,
-      "predicted_avg": 0.46,
-      "actual_avg": 0.55
+      "n": 16,
+      "predicted_avg": 0.445,
+      "actual_avg": 0.438
     },
     {
       "lo": 0.5,
       "hi": 0.6,
-      "n": 49,
-      "predicted_avg": 0.538,
-      "actual_avg": 0.51
+      "n": 51,
+      "predicted_avg": 0.541,
+      "actual_avg": 0.588
     },
     {
       "lo": 0.6,
       "hi": 0.7,
-      "n": 19,
-      "predicted_avg": 0.653,
-      "actual_avg": 0.421
+      "n": 17,
+      "predicted_avg": 0.667,
+      "actual_avg": 0.412
     },
     {
       "lo": 0.7,
       "hi": 0.8,
       "n": 16,
-      "predicted_avg": 0.758,
+      "predicted_avg": 0.761,
       "actual_avg": 0.625
     },
     {
       "lo": 0.8,
       "hi": 0.9,
-      "n": 20,
-      "predicted_avg": 0.839,
-      "actual_avg": 0.35
+      "n": 10,
+      "predicted_avg": 0.846,
+      "actual_avg": 0.1
     },
     {
       "lo": 0.9,
       "hi": 1.0,
-      "n": 10,
-      "predicted_avg": 0.935,
-      "actual_avg": 0.4
+      "n": 23,
+      "predicted_avg": 0.949,
+      "actual_avg": 0.478
     }
   ],
   "recommendation": {
-    "applied": false,
-    "note": "model is well-calibrated (<2pp bias)"
+    "applied": true,
+    "bias_pp": 3.3,
+    "shrinkage": 1.0,
+    "recommended_shift": -0.0333,
+    "note": "Model over-predicting home by 3.3pp; subtract 3.3pp from P(home) (shrinkage 100%)"
   },
   "n_teams_tracked": 30
 }
