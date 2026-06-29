@@ -1,23 +1,23 @@
 {
-  "generated_at": "2026-06-29T21:45:26",
+  "generated_at": "2026-06-29T21:46:25",
   "stake_assumption": "1u flat per pick",
   "total_picks": 10000,
-  "n_settled": 6690,
-  "n_pending": 662,
+  "n_settled": 6691,
+  "n_pending": 661,
   "n_void": 2648,
-  "wins": 2978,
+  "wins": 2979,
   "losses": 3704,
   "pushes": 8,
-  "hit_rate": 0.4457,
-  "net_units": -783.568,
-  "roi_pct": -11.73,
+  "hit_rate": 0.4458,
+  "net_units": -782.606,
+  "roi_pct": -11.71,
   "n_calibrated_picks": 9342,
   "calibrated_reliability": {
-    "n": 6610,
-    "ece_raw": 0.0913,
-    "ece_calibrated": 0.0216,
+    "n": 6611,
+    "ece_raw": 0.0912,
+    "ece_calibrated": 0.0215,
     "brier_raw": 0.21975,
-    "brier_calibrated": 0.1985,
+    "brier_calibrated": 0.19851,
     "note": "In-sample over the settled ledger (the isotonic transform is fit on these same outcomes); held-out 70/30 validation is in recalibration_map.json. p_predicted = raw model prob (kept untouched for the learning loop); p_calibrated = honest prob stamped per pick. Lower ECE/Brier on the calibrated column = the displayed % is truer."
   },
   "curated": {
@@ -43,7 +43,7 @@
     "definition": "Featured/recommended plays only -- Lock of the Day, Top 25, Whale, Sharp, Consensus (hit), Under Alerts, POD. Excludes the experimental prop feeds, which are tracked to train the model, not bet."
   },
   "n_added_this_run": 0,
-  "n_newly_settled_this_run": 0,
+  "n_newly_settled_this_run": 1,
   "n_resettled_this_run": 0,
   "n_voided_this_run": 0,
   "n_reconciled_settled_voids": 0,
@@ -905,13 +905,13 @@
       "roi_pct": 53.2
     },
     "wc_model_home_ml": {
-      "n": 23,
-      "wins": 15,
+      "n": 24,
+      "wins": 16,
       "losses": 8,
       "pushes": 0,
-      "net_units": 2.555,
-      "hit_rate": 0.6522,
-      "roi_pct": 11.11
+      "net_units": 3.517,
+      "hit_rate": 0.6667,
+      "roi_pct": 14.65
     },
     "wc_model_away_ml": {
       "n": 8,
@@ -1712,12 +1712,12 @@
       "hit_rate": 1.0
     },
     "home_ml": {
-      "n": 23,
-      "wins": 15,
+      "n": 24,
+      "wins": 16,
       "losses": 8,
       "pushes": 0,
-      "net_units": 2.555,
-      "hit_rate": 0.6522
+      "net_units": 3.517,
+      "hit_rate": 0.6667
     },
     "away_ml": {
       "n": 8,
@@ -2194,12 +2194,12 @@
       "hit_rate": 1.0
     },
     "home_ml": {
-      "n": 23,
-      "wins": 15,
+      "n": 24,
+      "wins": 16,
       "losses": 8,
       "pushes": 0,
-      "net_units": 2.555,
-      "hit_rate": 0.6522
+      "net_units": 3.517,
+      "hit_rate": 0.6667
     },
     "away_ml": {
       "n": 8,
@@ -2417,15 +2417,15 @@
     },
     "WORLDCUP": {
       "n": 170,
-      "settled": 157,
-      "wins": 103,
+      "settled": 158,
+      "wins": 104,
       "losses": 54,
       "pushes": 0,
-      "pending": 13,
+      "pending": 12,
       "void": 0,
-      "net_units": -2.221,
-      "hit_rate": 0.6561,
-      "roi_pct": -1.41,
+      "net_units": -1.26,
+      "hit_rate": 0.6582,
+      "roi_pct": -0.8,
       "markets": 9
     },
     "TENNIS": {
@@ -2443,10 +2443,10 @@
     }
   },
   "last_7_days": {
-    "wins": 555,
+    "wins": 556,
     "losses": 887,
-    "net_units": -178.283,
-    "hit_rate": 0.3849
+    "net_units": -177.321,
+    "hit_rate": 0.3853
   },
   "picks": [
     {
@@ -214735,11 +214735,24 @@
       "matchup": "Japan @ Brazil",
       "date": "2026-06-29",
       "pick_id": "wc_model_home_ml|WORLDCUP|Japan___Brazil|HOME_ML|2026-06-29",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "won",
+      "payout_units": 0.9615,
       "recorded_at": "2026-06-26T04:43:44",
-      "p_calibrated": 0.5095
+      "p_calibrated": 0.5095,
+      "outcome": {
+        "final_score": "Japan 1-2 Brazil",
+        "total_cards": 5,
+        "total_goals": 3,
+        "scorers": [
+          "kaishu sano",
+          "casemiro",
+          "gabriel martinelli"
+        ],
+        "market": "HOME_ML",
+        "verify": "Japan 1-2 Brazil: home won \u2014 HOME_ML"
+      },
+      "settled_at": "2026-06-29T21:46:25"
     },
     {
       "source": "top_25_board",
