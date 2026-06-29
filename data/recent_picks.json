@@ -1,33 +1,33 @@
 {
- "generated_at": "2026-06-28T23:12:48",
+ "generated_at": "2026-06-28T21:54:02",
  "stake_assumption": "1u flat per pick",
  "total_picks": 10000,
- "n_settled": 6500,
- "n_pending": 844,
- "n_void": 2656,
- "wins": 2910,
- "losses": 3582,
+ "n_settled": 6529,
+ "n_pending": 812,
+ "n_void": 2659,
+ "wins": 2914,
+ "losses": 3607,
  "pushes": 8,
- "hit_rate": 0.4482,
- "net_units": -760.26,
- "roi_pct": -11.71,
+ "hit_rate": 0.4469,
+ "net_units": -775.469,
+ "roi_pct": -11.89,
  "n_calibrated_picks": 9360,
  "calibrated_reliability": {
-  "n": 6422,
-  "ece_raw": 0.0931,
-  "ece_calibrated": 0.0222,
-  "brier_raw": 0.2205,
-  "brier_calibrated": 0.19873,
+  "n": 6451,
+  "ece_raw": 0.0937,
+  "ece_calibrated": 0.0234,
+  "brier_raw": 0.22055,
+  "brier_calibrated": 0.1987,
   "note": "In-sample over the settled ledger (the isotonic transform is fit on these same outcomes); held-out 70/30 validation is in recalibration_map.json. p_predicted = raw model prob (kept untouched for the learning loop); p_calibrated = honest prob stamped per pick. Lower ECE/Brier on the calibrated column = the displayed % is truer."
  },
  "curated": {
-  "n_settled": 841,
-  "wins": 641,
+  "n_settled": 838,
+  "wins": 638,
   "losses": 192,
   "pushes": 8,
-  "hit_rate": 0.7695,
-  "net_units": 235.351,
-  "roi_pct": 28.25,
+  "hit_rate": 0.7687,
+  "net_units": 235.214,
+  "roi_pct": 28.34,
   "sources": [
    "consensus_hit_elite",
    "consensus_hit_strong",
@@ -42,21 +42,39 @@
   ],
   "definition": "Featured/recommended plays only -- Lock of the Day, Top 25, Whale, Sharp, Consensus (hit), Under Alerts, POD. Excludes the experimental prop feeds, which are tracked to train the model, not bet."
  },
- "n_added_this_run": 9,
- "n_newly_settled_this_run": 2,
+ "n_added_this_run": 2,
+ "n_newly_settled_this_run": 128,
  "n_resettled_this_run": 0,
  "n_voided_this_run": 0,
- "n_reconciled_settled_voids": 0,
- "n_bootstrapped_from_locks_history": 3,
+ "n_reconciled_settled_voids": 1,
+ "n_bootstrapped_from_locks_history": 1,
  "by_source": {
-  "mlb_hrr_3_plus_hrr": {
-   "n": 324,
-   "wins": 76,
-   "losses": 248,
+  "mlb_xbh_1_plus_xbh": {
+   "n": 1408,
+   "wins": 411,
+   "losses": 997,
    "pushes": 0,
-   "net_units": -186.465,
-   "hit_rate": 0.2346,
-   "roi_pct": -57.55
+   "net_units": -300.61,
+   "hit_rate": 0.2919,
+   "roi_pct": -21.35
+  },
+  "mlb_xbh_no_xbh": {
+   "n": 11,
+   "wins": 5,
+   "losses": 6,
+   "pushes": 0,
+   "net_units": -5.024,
+   "hit_rate": 0.4545,
+   "roi_pct": -45.67
+  },
+  "mlb_hrr_3_plus_hrr": {
+   "n": 329,
+   "wins": 77,
+   "losses": 252,
+   "pushes": 0,
+   "net_units": -189.776,
+   "hit_rate": 0.234,
+   "roi_pct": -57.68
   },
   "mlb_hrr_2_plus_hrr": {
    "n": 15,
@@ -104,13 +122,13 @@
    "roi_pct": 14.54
   },
   "lock_of_day": {
-   "n": 378,
-   "wins": 318,
+   "n": 375,
+   "wins": 315,
    "losses": 60,
    "pushes": 0,
-   "net_units": 110.632,
-   "hit_rate": 0.8413,
-   "roi_pct": 29.27
+   "net_units": 110.494,
+   "hit_rate": 0.84,
+   "roi_pct": 29.47
   },
   "whale_whale": {
    "n": 2,
@@ -156,24 +174,6 @@
    "net_units": -79.494,
    "hit_rate": 0.5894,
    "roi_pct": -16.16
-  },
-  "mlb_xbh_1_plus_xbh": {
-   "n": 1381,
-   "wins": 406,
-   "losses": 975,
-   "pushes": 0,
-   "net_units": -287.63,
-   "hit_rate": 0.294,
-   "roi_pct": -20.83
-  },
-  "mlb_xbh_no_xbh": {
-   "n": 9,
-   "wins": 4,
-   "losses": 5,
-   "pushes": 0,
-   "net_units": -4.242,
-   "hit_rate": 0.4444,
-   "roi_pct": -47.13
   },
   "sharp_strong": {
    "n": 9,
@@ -851,11 +851,11 @@
    "roi_pct": -23.25
   },
   "wnba_blkstl_blk_stl_under_1.0": {
-   "n": 3,
+   "n": 1,
    "wins": 0,
-   "losses": 3,
+   "losses": 1,
    "pushes": 0,
-   "net_units": -3.0,
+   "net_units": -1.0,
    "hit_rate": 0.0,
    "roi_pct": -100.0
   },
@@ -1275,13 +1275,29 @@
   }
  },
  "by_market_family": {
-  "3_plus_hrr": {
-   "n": 324,
-   "wins": 76,
-   "losses": 248,
+  "1_plus_xbh": {
+   "n": 1408,
+   "wins": 411,
+   "losses": 997,
    "pushes": 0,
-   "net_units": -186.465,
-   "hit_rate": 0.2346
+   "net_units": -300.61,
+   "hit_rate": 0.2919
+  },
+  "no_xbh": {
+   "n": 11,
+   "wins": 5,
+   "losses": 6,
+   "pushes": 0,
+   "net_units": -5.024,
+   "hit_rate": 0.4545
+  },
+  "3_plus_hrr": {
+   "n": 329,
+   "wins": 77,
+   "losses": 252,
+   "pushes": 0,
+   "net_units": -189.776,
+   "hit_rate": 0.234
   },
   "2_plus_hrr": {
    "n": 15,
@@ -1324,12 +1340,12 @@
    "hit_rate": 0.5657
   },
   "pp_batter_hrr": {
-   "n": 578,
-   "wins": 483,
+   "n": 575,
+   "wins": 480,
    "losses": 95,
    "pushes": 0,
-   "net_units": 212.696,
-   "hit_rate": 0.8356
+   "net_units": 212.558,
+   "hit_rate": 0.8348
   },
   "ml_away": {
    "n": 56,
@@ -1362,22 +1378,6 @@
    "pushes": 0,
    "net_units": -79.494,
    "hit_rate": 0.5894
-  },
-  "1_plus_xbh": {
-   "n": 1381,
-   "wins": 406,
-   "losses": 975,
-   "pushes": 0,
-   "net_units": -287.63,
-   "hit_rate": 0.294
-  },
-  "no_xbh": {
-   "n": 9,
-   "wins": 4,
-   "losses": 5,
-   "pushes": 0,
-   "net_units": -4.242,
-   "hit_rate": 0.4444
   },
   "fight_r1_finish_yes": {
    "n": 160,
@@ -1564,12 +1564,12 @@
    "hit_rate": 0.4
   },
   "blk_stl_under": {
-   "n": 29,
+   "n": 27,
    "wins": 18,
-   "losses": 11,
+   "losses": 9,
    "pushes": 0,
-   "net_units": -2.783,
-   "hit_rate": 0.6207
+   "net_units": -0.783,
+   "hit_rate": 0.6667
   },
   "blk_stl_over": {
    "n": 14,
@@ -1741,13 +1741,29 @@
   }
  },
  "by_canonical": {
-  "mlb_hrr_2.5_over": {
-   "n": 324,
-   "wins": 76,
-   "losses": 248,
+  "mlb_xbh_0.5_over": {
+   "n": 1408,
+   "wins": 411,
+   "losses": 997,
    "pushes": 0,
-   "net_units": -186.465,
-   "hit_rate": 0.2346
+   "net_units": -300.61,
+   "hit_rate": 0.2919
+  },
+  "mlb_xbh_0.5_under": {
+   "n": 11,
+   "wins": 5,
+   "losses": 6,
+   "pushes": 0,
+   "net_units": -5.024,
+   "hit_rate": 0.4545
+  },
+  "mlb_hrr_2.5_over": {
+   "n": 329,
+   "wins": 77,
+   "losses": 252,
+   "pushes": 0,
+   "net_units": -189.776,
+   "hit_rate": 0.234
   },
   "mlb_hrr_1.5_over": {
    "n": 15,
@@ -1798,12 +1814,12 @@
    "hit_rate": 0.5
   },
   "mlb_hrr_3.5_under": {
-   "n": 511,
-   "wins": 428,
+   "n": 508,
+   "wins": 425,
    "losses": 83,
    "pushes": 0,
-   "net_units": 206.452,
-   "hit_rate": 0.8376
+   "net_units": 206.314,
+   "hit_rate": 0.8366
   },
   "ml_away": {
    "n": 56,
@@ -1836,22 +1852,6 @@
    "pushes": 0,
    "net_units": -79.494,
    "hit_rate": 0.5894
-  },
-  "mlb_xbh_0.5_over": {
-   "n": 1381,
-   "wins": 406,
-   "losses": 975,
-   "pushes": 0,
-   "net_units": -287.63,
-   "hit_rate": 0.294
-  },
-  "mlb_xbh_0.5_under": {
-   "n": 9,
-   "wins": 4,
-   "losses": 5,
-   "pushes": 0,
-   "net_units": -4.242,
-   "hit_rate": 0.4444
   },
   "fight_r1_finish_yes": {
    "n": 160,
@@ -2038,12 +2038,12 @@
    "hit_rate": 0.4
   },
   "blk_stl_under": {
-   "n": 29,
+   "n": 27,
    "wins": 18,
-   "losses": 11,
+   "losses": 9,
    "pushes": 0,
-   "net_units": -2.783,
-   "hit_rate": 0.6207
+   "net_units": -0.783,
+   "hit_rate": 0.6667
   },
   "blk_stl_over": {
    "n": 14,
@@ -2224,29 +2224,29 @@
  },
  "by_sport": {
   "MLB": {
-   "n": 7303,
-   "settled": 4908,
-   "wins": 1867,
-   "losses": 3033,
+   "n": 7327,
+   "settled": 4942,
+   "wins": 1874,
+   "losses": 3060,
    "pushes": 8,
-   "pending": 466,
-   "void": 1929,
-   "net_units": -1149.426,
-   "hit_rate": 0.381,
-   "roi_pct": -23.46,
+   "pending": 453,
+   "void": 1932,
+   "net_units": -1166.495,
+   "hit_rate": 0.3798,
+   "roi_pct": -23.64,
    "markets": 48
   },
   "MLB-PP": {
-   "n": 835,
-   "settled": 608,
-   "wins": 510,
+   "n": 826,
+   "settled": 605,
+   "wins": 507,
    "losses": 98,
    "pushes": 0,
-   "pending": 44,
+   "pending": 38,
    "void": 183,
-   "net_units": 213.752,
-   "hit_rate": 0.8388,
-   "roi_pct": 35.16,
+   "net_units": 213.614,
+   "hit_rate": 0.838,
+   "roi_pct": 35.31,
    "markets": 3
   },
   "UFC": {
@@ -2263,12 +2263,12 @@
    "markets": 1
   },
   "KBO": {
-   "n": 96,
+   "n": 93,
    "settled": 0,
    "wins": 0,
    "losses": 0,
    "pushes": 0,
-   "pending": 41,
+   "pending": 38,
    "void": 55,
    "net_units": 0.0,
    "hit_rate": null,
@@ -2289,16 +2289,16 @@
    "markets": 5
   },
   "WNBA": {
-   "n": 392,
-   "settled": 152,
+   "n": 380,
+   "settled": 150,
    "wins": 107,
-   "losses": 45,
+   "losses": 43,
    "pushes": 0,
-   "pending": 64,
+   "pending": 54,
    "void": 176,
-   "net_units": 9.267,
-   "hit_rate": 0.7039,
-   "roi_pct": 6.1,
+   "net_units": 11.267,
+   "hit_rate": 0.7133,
+   "roi_pct": 7.51,
    "markets": 4
   },
   "F1": {
@@ -2407,13 +2407,143 @@
   }
  },
  "last_7_days": {
-  "wins": 565,
-  "losses": 900,
-  "net_units": -173.389,
-  "hit_rate": 0.3857
+  "wins": 562,
+  "losses": 898,
+  "net_units": -171.526,
+  "hit_rate": 0.3849
  },
  "note": "Unified pick ledger -- records every pick the model surfaces (top_25 board, whales, consensus, unders, sharp action, locks, POD) and settles each against actual outcomes. Per-source W-L feeds back into calibration so the model learns which modules are reliable. THIS is the training signal.",
  "picks": [
+  {
+   "source": "mlb_hr_yn_to_hit_hr_yes",
+   "sport": "MLB",
+   "player_or_matchup": "TJ Rumfield",
+   "market": "TO_HIT_HR_YES",
+   "prob": 0.332,
+   "fair_american": 201,
+   "p_predicted": 0.332,
+   "matchup": "COL @ MIN",
+   "date": "2026-06-27",
+   "pick_id": "mlb_hr_yn_to_hit_hr_yes|MLB|TJ_Rumfield|TO_HIT_HR_YES|2026-06-27",
+   "settled": true,
+   "result": "lost",
+   "payout_units": -1.0,
+   "recorded_at": "2026-06-27T23:30:55",
+   "p_calibrated": 0.2182,
+   "outcome": {
+    "stat": "hr",
+    "actual": 0,
+    "line": 0.5,
+    "side": "OVER/YES",
+    "verify": "TJ Rumfield \u2014 hr = 0 (line 0.5, bet OVER/YES) on 2026-06-27",
+    "check": "verified"
+   },
+   "settled_at": "2026-06-28T11:59:49"
+  },
+  {
+   "source": "mlb_hr_yn_to_hit_hr_yes",
+   "sport": "MLB",
+   "player_or_matchup": "Dominic Canzone",
+   "market": "TO_HIT_HR_YES",
+   "prob": 0.317,
+   "fair_american": 215,
+   "p_predicted": 0.317,
+   "matchup": "SEA @ CLE",
+   "date": "2026-06-27",
+   "pick_id": "mlb_hr_yn_to_hit_hr_yes|MLB|Dominic_Canzone|TO_HIT_HR_YES|2026-06-27",
+   "settled": true,
+   "result": "lost",
+   "payout_units": -1.0,
+   "recorded_at": "2026-06-27T23:30:55",
+   "p_calibrated": 0.2119,
+   "outcome": {
+    "stat": "hr",
+    "actual": 0,
+    "line": 0.5,
+    "side": "OVER/YES",
+    "verify": "Dominic Canzone \u2014 hr = 0 (line 0.5, bet OVER/YES) on 2026-06-27",
+    "check": "verified"
+   },
+   "settled_at": "2026-06-28T11:59:49"
+  },
+  {
+   "source": "mlb_hr_yn_to_hit_hr_yes",
+   "sport": "MLB",
+   "player_or_matchup": "Bryce Eldridge",
+   "market": "TO_HIT_HR_YES",
+   "prob": 0.309,
+   "fair_american": 223,
+   "p_predicted": 0.309,
+   "matchup": "ATL @ SFG",
+   "date": "2026-06-27",
+   "pick_id": "mlb_hr_yn_to_hit_hr_yes|MLB|Bryce_Eldridge|TO_HIT_HR_YES|2026-06-27",
+   "settled": true,
+   "result": "lost",
+   "payout_units": -1.0,
+   "recorded_at": "2026-06-27T23:30:55",
+   "p_calibrated": 0.2069,
+   "outcome": {
+    "stat": "hr",
+    "actual": 0,
+    "line": 0.5,
+    "side": "OVER/YES",
+    "verify": "Bryce Eldridge \u2014 hr = 0 (line 0.5, bet OVER/YES) on 2026-06-27",
+    "check": "verified"
+   },
+   "settled_at": "2026-06-28T11:59:49"
+  },
+  {
+   "source": "mlb_hr_yn_to_hit_hr_yes",
+   "sport": "MLB",
+   "player_or_matchup": "Brooks Lee",
+   "market": "TO_HIT_HR_YES",
+   "prob": 0.307,
+   "fair_american": 226,
+   "p_predicted": 0.307,
+   "matchup": "COL @ MIN",
+   "date": "2026-06-27",
+   "pick_id": "mlb_hr_yn_to_hit_hr_yes|MLB|Brooks_Lee|TO_HIT_HR_YES|2026-06-27",
+   "settled": true,
+   "result": "lost",
+   "payout_units": -1.0,
+   "recorded_at": "2026-06-27T23:30:55",
+   "p_calibrated": 0.2056,
+   "outcome": {
+    "stat": "hr",
+    "actual": 0,
+    "line": 0.5,
+    "side": "OVER/YES",
+    "verify": "Brooks Lee \u2014 hr = 0 (line 0.5, bet OVER/YES) on 2026-06-27",
+    "check": "verified"
+   },
+   "settled_at": "2026-06-28T11:59:49"
+  },
+  {
+   "source": "mlb_hr_yn_to_hit_hr_yes",
+   "sport": "MLB",
+   "player_or_matchup": "Rafael Devers",
+   "market": "TO_HIT_HR_YES",
+   "prob": 0.3,
+   "fair_american": 233,
+   "p_predicted": 0.3,
+   "matchup": "ATL @ SFG",
+   "date": "2026-06-27",
+   "pick_id": "mlb_hr_yn_to_hit_hr_yes|MLB|Rafael_Devers|TO_HIT_HR_YES|2026-06-27",
+   "settled": true,
+   "result": "won",
+   "payout_units": 2.33,
+   "recorded_at": "2026-06-27T23:30:55",
+   "p_calibrated": 0.2013,
+   "outcome": {
+    "stat": "hr",
+    "actual": 2,
+    "line": 0.5,
+    "side": "OVER/YES",
+    "verify": "Rafael Devers \u2014 hr = 2 (line 0.5, bet OVER/YES) on 2026-06-27",
+    "check": "verified"
+   },
+   "settled_at": "2026-06-28T11:59:49"
+  },
   {
    "source": "mlb_hr_yn_to_hit_hr_yes",
    "sport": "MLB",
@@ -2429,7 +2559,7 @@
    "result": "won",
    "payout_units": 2.36,
    "recorded_at": "2026-06-27T23:30:55",
-   "p_calibrated": 0.1906,
+   "p_calibrated": 0.2,
    "outcome": {
     "stat": "hr",
     "actual": 3,
@@ -2455,7 +2585,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-27T23:30:55",
-   "p_calibrated": 0.1862,
+   "p_calibrated": 0.1963,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -2481,7 +2611,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-27T23:30:55",
-   "p_calibrated": 0.1727,
+   "p_calibrated": 0.1839,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -2507,7 +2637,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-27T23:30:55",
-   "p_calibrated": 0.1707,
+   "p_calibrated": 0.1808,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -2533,7 +2663,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-27T23:30:55",
-   "p_calibrated": 0.1688,
+   "p_calibrated": 0.1778,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -2559,7 +2689,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-27T23:30:55",
-   "p_calibrated": 0.1684,
+   "p_calibrated": 0.1772,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -2585,7 +2715,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-27T23:30:55",
-   "p_calibrated": 0.1661,
+   "p_calibrated": 0.1736,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -2611,7 +2741,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-27T23:30:55",
-   "p_calibrated": 0.1642,
+   "p_calibrated": 0.1705,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -2637,7 +2767,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-27T23:30:55",
-   "p_calibrated": 0.1634,
+   "p_calibrated": 0.1693,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -2663,7 +2793,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-27T23:30:55",
-   "p_calibrated": 0.1602,
+   "p_calibrated": 0.1654,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -2689,7 +2819,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-27T23:30:55",
-   "p_calibrated": 0.1602,
+   "p_calibrated": 0.1654,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -2715,7 +2845,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-27T23:30:55",
-   "p_calibrated": 0.1602,
+   "p_calibrated": 0.1654,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -2741,7 +2871,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-27T23:30:55",
-   "p_calibrated": 0.1602,
+   "p_calibrated": 0.1654,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -2767,7 +2897,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-27T23:30:55",
-   "p_calibrated": 0.1602,
+   "p_calibrated": 0.1654,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -2793,7 +2923,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-27T23:30:55",
-   "p_calibrated": 0.1602,
+   "p_calibrated": 0.1654,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -2819,7 +2949,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-27T23:30:55",
-   "p_calibrated": 0.1602,
+   "p_calibrated": 0.1654,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -2845,7 +2975,7 @@
    "result": "won",
    "payout_units": 3.82,
    "recorded_at": "2026-06-27T23:30:55",
-   "p_calibrated": 0.1602,
+   "p_calibrated": 0.1654,
    "outcome": {
     "stat": "hr",
     "actual": 1,
@@ -2871,7 +3001,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-27T23:30:55",
-   "p_calibrated": 0.1602,
+   "p_calibrated": 0.1654,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -2897,7 +3027,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-27T23:30:55",
-   "p_calibrated": 0.1602,
+   "p_calibrated": 0.1654,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -2923,7 +3053,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-27T23:30:55",
-   "p_calibrated": 0.1602,
+   "p_calibrated": 0.1654,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -2949,7 +3079,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-27T23:30:55",
-   "p_calibrated": 0.1602,
+   "p_calibrated": 0.1654,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -2975,7 +3105,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-27T23:30:55",
-   "p_calibrated": 0.1602,
+   "p_calibrated": 0.1654,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -3001,7 +3131,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-27T23:30:55",
-   "p_calibrated": 0.1602,
+   "p_calibrated": 0.1654,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -3027,7 +3157,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-27T23:30:55",
-   "p_calibrated": 0.1602,
+   "p_calibrated": 0.1654,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -3053,7 +3183,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-27T23:30:55",
-   "p_calibrated": 0.1602,
+   "p_calibrated": 0.1654,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -3079,7 +3209,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-27T23:30:55",
-   "p_calibrated": 0.1602,
+   "p_calibrated": 0.1654,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -3105,7 +3235,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-27T23:30:55",
-   "p_calibrated": 0.1602,
+   "p_calibrated": 0.1654,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -3131,7 +3261,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-27T23:30:55",
-   "p_calibrated": 0.1602,
+   "p_calibrated": 0.1654,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -3157,7 +3287,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-27T23:30:55",
-   "p_calibrated": 0.1602,
+   "p_calibrated": 0.1654,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -3183,7 +3313,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-27T23:30:55",
-   "p_calibrated": 0.1602,
+   "p_calibrated": 0.1654,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -3209,7 +3339,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-27T23:30:55",
-   "p_calibrated": 0.1602,
+   "p_calibrated": 0.1654,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -3235,7 +3365,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-27T23:30:55",
-   "p_calibrated": 0.1602,
+   "p_calibrated": 0.1654,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -3261,7 +3391,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-27T23:30:55",
-   "p_calibrated": 0.1602,
+   "p_calibrated": 0.1654,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -3287,7 +3417,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-27T23:30:55",
-   "p_calibrated": 0.1471,
+   "p_calibrated": 0.152,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -3313,7 +3443,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-27T23:30:55",
-   "p_calibrated": 0.1391,
+   "p_calibrated": 0.1428,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -3339,7 +3469,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-27T23:30:55",
-   "p_calibrated": 0.1391,
+   "p_calibrated": 0.1428,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -3365,7 +3495,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-27T23:30:55",
-   "p_calibrated": 0.1391,
+   "p_calibrated": 0.1428,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -3391,7 +3521,7 @@
    "result": "won",
    "payout_units": 5.33,
    "recorded_at": "2026-06-27T23:30:55",
-   "p_calibrated": 0.1312,
+   "p_calibrated": 0.1336,
    "outcome": {
     "stat": "hr",
     "actual": 1,
@@ -3417,7 +3547,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-27T23:30:55",
-   "p_calibrated": 0.1193,
+   "p_calibrated": 0.1198,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -3443,7 +3573,7 @@
    "result": "won",
    "payout_units": 5.58,
    "recorded_at": "2026-06-27T23:30:55",
-   "p_calibrated": 0.1074,
+   "p_calibrated": 0.106,
    "outcome": {
     "stat": "hr",
     "actual": 1,
@@ -3469,7 +3599,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-27T23:30:55",
-   "p_calibrated": 0.0883,
+   "p_calibrated": 0.0825,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -3495,7 +3625,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-27T23:30:55",
-   "p_calibrated": 0.0883,
+   "p_calibrated": 0.0825,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -3521,7 +3651,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-27T23:30:55",
-   "p_calibrated": 0.2909,
+   "p_calibrated": 0.2895,
    "outcome": {
     "stat": "tb",
     "actual": 2,
@@ -3547,7 +3677,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-27T23:30:55",
-   "p_calibrated": 0.2909,
+   "p_calibrated": 0.2895,
    "outcome": {
     "stat": "tb",
     "actual": 0,
@@ -3573,7 +3703,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-27T23:30:55",
-   "p_calibrated": 0.2909,
+   "p_calibrated": 0.2895,
    "outcome": {
     "stat": "tb",
     "actual": 2,
@@ -3599,7 +3729,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-27T23:30:55",
-   "p_calibrated": 0.2909,
+   "p_calibrated": 0.2895,
    "outcome": {
     "stat": "tb",
     "actual": 1,
@@ -3625,7 +3755,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-27T23:30:55",
-   "p_calibrated": 0.2909,
+   "p_calibrated": 0.2895,
    "outcome": {
     "stat": "tb",
     "actual": 1,
@@ -3652,7 +3782,7 @@
    "result": "won",
    "payout_units": 1.94,
    "recorded_at": "2026-06-27T23:30:55",
-   "p_calibrated": 0.2985,
+   "p_calibrated": 0.2988,
    "outcome": {
     "stat": "xbh",
     "actual": 1,
@@ -3679,7 +3809,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-27T23:30:55",
-   "p_calibrated": 0.2985,
+   "p_calibrated": 0.2988,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -3706,7 +3836,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-27T23:30:55",
-   "p_calibrated": 0.2985,
+   "p_calibrated": 0.2988,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -3733,7 +3863,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-27T23:30:55",
-   "p_calibrated": 0.3083,
+   "p_calibrated": 0.3086,
    "outcome": {
     "stat": "hrr",
     "actual": 2,
@@ -3760,7 +3890,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-27T23:30:55",
-   "p_calibrated": 0.3083,
+   "p_calibrated": 0.3086,
    "outcome": {
     "stat": "hrr",
     "actual": 2,
@@ -3787,7 +3917,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-27T23:30:55",
-   "p_calibrated": 0.3083,
+   "p_calibrated": 0.3086,
    "outcome": {
     "stat": "hrr",
     "actual": 3,
@@ -3814,7 +3944,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-27T23:30:55",
-   "p_calibrated": 0.3083,
+   "p_calibrated": 0.3086,
    "outcome": {
     "stat": "hrr",
     "actual": 2,
@@ -3949,56 +4079,6 @@
    "settled_at": "2026-06-28T04:55:50"
   },
   {
-   "source": "wnba_blkstl_blk_stl_under_1.0",
-   "sport": "WNBA",
-   "player_or_matchup": "azura stevens",
-   "market": "BLK_STL_UNDER_1.0",
-   "prob": 0.633,
-   "fair_american": -172,
-   "p_predicted": 0.633,
-   "matchup": "LAS @ IND",
-   "date": "2026-06-28",
-   "pick_id": "wnba_blkstl_blk_stl_under_1_0|WNBA|azura_stevens|BLK_STL_UNDER_1_0|2026-06-28",
-   "settled": true,
-   "result": "lost",
-   "payout_units": -1.0,
-   "recorded_at": "2026-06-27T23:04:07",
-   "p_calibrated": 0.633,
-   "outcome": {
-    "stat": "blk_stl",
-    "actual": 2,
-    "line": 1.0,
-    "side": "UNDER",
-    "verify": "azura stevens \u2014 blk_stl = 2 (line 1.0, bet under) on 2026-06-28"
-   },
-   "settled_at": "2026-06-28T23:12:48"
-  },
-  {
-   "source": "wnba_blkstl_blk_stl_under_1.0",
-   "sport": "WNBA",
-   "player_or_matchup": "nalyssa smith",
-   "market": "BLK_STL_UNDER_1.0",
-   "prob": 0.633,
-   "fair_american": -172,
-   "p_predicted": 0.633,
-   "matchup": "LAS @ IND",
-   "date": "2026-06-28",
-   "pick_id": "wnba_blkstl_blk_stl_under_1_0|WNBA|nalyssa_smith|BLK_STL_UNDER_1_0|2026-06-28",
-   "settled": true,
-   "result": "lost",
-   "payout_units": -1.0,
-   "recorded_at": "2026-06-27T23:04:07",
-   "p_calibrated": 0.633,
-   "outcome": {
-    "stat": "blk_stl",
-    "actual": 2,
-    "line": 1.0,
-    "side": "UNDER",
-    "verify": "nalyssa smith \u2014 blk_stl = 2 (line 1.0, bet under) on 2026-06-28"
-   },
-   "settled_at": "2026-06-28T23:12:48"
-  },
-  {
    "source": "top_25_board",
    "sport": "MLB-PP",
    "player_or_matchup": "Alex Bregman",
@@ -4014,7 +4094,7 @@
    "result": "won",
    "payout_units": 0.7353,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.9275,
+   "p_calibrated": 0.912,
    "outcome": {
     "stat": "hrr",
     "actual": 1,
@@ -4040,7 +4120,7 @@
    "result": "won",
    "payout_units": 0.7353,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.9242,
+   "p_calibrated": 0.912,
    "outcome": {
     "stat": "hrr",
     "actual": 1,
@@ -4092,7 +4172,7 @@
    "result": "won",
    "payout_units": 0.7353,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.8518,
+   "p_calibrated": 0.864,
    "outcome": {
     "stat": "hrr",
     "actual": 3,
@@ -4231,7 +4311,7 @@
    "result": "won",
    "payout_units": 0.7353,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.9275,
+   "p_calibrated": 0.912,
    "outcome": {
     "stat": "hrr",
     "actual": 3,
@@ -4255,7 +4335,7 @@
    "result": "won",
    "payout_units": 0.7353,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.9275,
+   "p_calibrated": 0.912,
    "outcome": {
     "stat": "hrr",
     "actual": 1,
@@ -4279,7 +4359,7 @@
    "result": "won",
    "payout_units": 0.7353,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.9275,
+   "p_calibrated": 0.912,
    "outcome": {
     "stat": "hrr",
     "actual": 1,
@@ -4327,7 +4407,7 @@
    "result": "won",
    "payout_units": 0.7353,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.9275,
+   "p_calibrated": 0.912,
    "outcome": {
     "stat": "hrr",
     "actual": 1,
@@ -4351,7 +4431,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.9193,
+   "p_calibrated": 0.9096,
    "outcome": {
     "stat": "hrr",
     "actual": 4,
@@ -4375,7 +4455,7 @@
    "result": "won",
    "payout_units": 0.7353,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.9242,
+   "p_calibrated": 0.912,
    "outcome": {
     "stat": "hrr",
     "actual": 1,
@@ -4424,7 +4504,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.4266,
+   "p_calibrated": 0.4633,
    "outcome": {
     "stat": "hits",
     "actual": 1,
@@ -4449,7 +4529,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.4291,
+   "p_calibrated": 0.4641,
    "outcome": {
     "stat": "hits",
     "actual": 3,
@@ -4474,7 +4554,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.4439,
+   "p_calibrated": 0.4716,
    "outcome": {
     "stat": "hits",
     "actual": 1,
@@ -4499,7 +4579,7 @@
    "result": "won",
    "payout_units": 0.9259,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.4873,
+   "p_calibrated": 0.4941,
    "outcome": {
     "stat": "hits",
     "actual": 0,
@@ -4524,7 +4604,7 @@
    "result": "won",
    "payout_units": 0.9091,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.5091,
+   "p_calibrated": 0.5057,
    "outcome": {
     "stat": "hits",
     "actual": 0,
@@ -4549,7 +4629,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.5091,
+   "p_calibrated": 0.5057,
    "outcome": {
     "stat": "hits",
     "actual": 1,
@@ -4574,7 +4654,7 @@
    "result": "won",
    "payout_units": 0.8621,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.5335,
+   "p_calibrated": 0.5223,
    "outcome": {
     "stat": "hits",
     "actual": 0,
@@ -4599,7 +4679,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.5335,
+   "p_calibrated": 0.5223,
    "outcome": {
     "stat": "hits",
     "actual": 1,
@@ -4624,7 +4704,7 @@
    "result": "won",
    "payout_units": 0.7752,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.5335,
+   "p_calibrated": 0.5223,
    "outcome": {
     "stat": "hits",
     "actual": 0,
@@ -4649,7 +4729,7 @@
    "result": "won",
    "payout_units": 0.6944,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.5335,
+   "p_calibrated": 0.5223,
    "outcome": {
     "stat": "hits",
     "actual": 0,
@@ -4925,7 +5005,7 @@
    "result": "won",
    "payout_units": 0.8696,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.4285,
+   "p_calibrated": 0.4104,
    "outcome": {
     "stat": "bb",
     "actual": 1,
@@ -4951,7 +5031,7 @@
    "result": "won",
    "payout_units": 0.9174,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.4265,
+   "p_calibrated": 0.4083,
    "outcome": {
     "stat": "bb",
     "actual": 2,
@@ -4977,7 +5057,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.4222,
+   "p_calibrated": 0.4036,
    "outcome": {
     "stat": "bb",
     "actual": 0,
@@ -5003,7 +5083,7 @@
    "result": "won",
    "payout_units": 1.13,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.4193,
+   "p_calibrated": 0.4005,
    "outcome": {
     "stat": "bb",
     "actual": 1,
@@ -5029,7 +5109,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.4134,
+   "p_calibrated": 0.3942,
    "outcome": {
     "stat": "bb",
     "actual": 0,
@@ -5055,7 +5135,7 @@
    "result": "won",
    "payout_units": 1.36,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.4127,
+   "p_calibrated": 0.3934,
    "outcome": {
     "stat": "bb",
     "actual": 1,
@@ -5080,7 +5160,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.2099,
+   "p_calibrated": 0.2182,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -5105,7 +5185,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.2099,
+   "p_calibrated": 0.2182,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -5130,7 +5210,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.2099,
+   "p_calibrated": 0.2182,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -5155,7 +5235,7 @@
    "result": "won",
    "payout_units": 1.97,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.2099,
+   "p_calibrated": 0.2182,
    "outcome": {
     "stat": "hr",
     "actual": 2,
@@ -5180,7 +5260,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.2099,
+   "p_calibrated": 0.2182,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -5205,7 +5285,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.2099,
+   "p_calibrated": 0.2182,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -5230,7 +5310,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.1972,
+   "p_calibrated": 0.2056,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -5255,7 +5335,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.1921,
+   "p_calibrated": 0.2013,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -5280,7 +5360,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.1906,
+   "p_calibrated": 0.2,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -5305,7 +5385,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.1862,
+   "p_calibrated": 0.1963,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -5330,7 +5410,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.1727,
+   "p_calibrated": 0.1839,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -5355,7 +5435,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.1707,
+   "p_calibrated": 0.1808,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -5380,7 +5460,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.1688,
+   "p_calibrated": 0.1778,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -5405,7 +5485,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.1684,
+   "p_calibrated": 0.1772,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -5430,7 +5510,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.1661,
+   "p_calibrated": 0.1736,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -5455,7 +5535,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.1642,
+   "p_calibrated": 0.1705,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -5480,7 +5560,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.1634,
+   "p_calibrated": 0.1693,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -5505,7 +5585,7 @@
    "result": "won",
    "payout_units": 3.3,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.1602,
+   "p_calibrated": 0.1654,
    "outcome": {
     "stat": "hr",
     "actual": 1,
@@ -5530,7 +5610,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.1602,
+   "p_calibrated": 0.1654,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -5555,7 +5635,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.1602,
+   "p_calibrated": 0.1654,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -5580,7 +5660,7 @@
    "result": "won",
    "payout_units": 3.51,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.1602,
+   "p_calibrated": 0.1654,
    "outcome": {
     "stat": "hr",
     "actual": 1,
@@ -5605,7 +5685,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.1602,
+   "p_calibrated": 0.1654,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -5630,7 +5710,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.1602,
+   "p_calibrated": 0.1654,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -5655,7 +5735,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.1602,
+   "p_calibrated": 0.1654,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -5680,7 +5760,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.1602,
+   "p_calibrated": 0.1654,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -5705,7 +5785,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.1602,
+   "p_calibrated": 0.1654,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -5730,7 +5810,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.1602,
+   "p_calibrated": 0.1654,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -5755,7 +5835,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.1602,
+   "p_calibrated": 0.1654,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -5780,7 +5860,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.1602,
+   "p_calibrated": 0.1654,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -5805,7 +5885,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.1602,
+   "p_calibrated": 0.1654,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -5830,7 +5910,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.1602,
+   "p_calibrated": 0.1654,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -5855,7 +5935,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.1602,
+   "p_calibrated": 0.1654,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -5880,7 +5960,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.1602,
+   "p_calibrated": 0.1654,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -5905,7 +5985,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.1602,
+   "p_calibrated": 0.1654,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -5930,7 +6010,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.1602,
+   "p_calibrated": 0.1654,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -5955,7 +6035,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.1602,
+   "p_calibrated": 0.1654,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -5980,7 +6060,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.1602,
+   "p_calibrated": 0.1654,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -6005,7 +6085,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.1602,
+   "p_calibrated": 0.1654,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -6030,7 +6110,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.1602,
+   "p_calibrated": 0.1654,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -6055,7 +6135,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.1391,
+   "p_calibrated": 0.1428,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -6080,7 +6160,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.1391,
+   "p_calibrated": 0.1428,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -6105,7 +6185,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.1312,
+   "p_calibrated": 0.1336,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -6130,7 +6210,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.1193,
+   "p_calibrated": 0.1198,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -6155,7 +6235,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.1074,
+   "p_calibrated": 0.106,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -6180,7 +6260,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.0883,
+   "p_calibrated": 0.0825,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -6205,7 +6285,7 @@
    "result": "won",
    "payout_units": 6.13,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.0883,
+   "p_calibrated": 0.0825,
    "outcome": {
     "stat": "hr",
     "actual": 1,
@@ -6230,7 +6310,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.2936,
+   "p_calibrated": 0.297,
    "outcome": {
     "stat": "hits",
     "actual": 0,
@@ -6255,7 +6335,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.2909,
+   "p_calibrated": 0.2895,
    "outcome": {
     "stat": "tb",
     "actual": 1,
@@ -6280,7 +6360,7 @@
    "result": "won",
    "payout_units": 1.62,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.2909,
+   "p_calibrated": 0.2895,
    "outcome": {
     "stat": "tb",
     "actual": 4,
@@ -6305,7 +6385,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.2909,
+   "p_calibrated": 0.2895,
    "outcome": {
     "stat": "tb",
     "actual": 2,
@@ -6330,7 +6410,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.2909,
+   "p_calibrated": 0.2895,
    "outcome": {
     "stat": "tb",
     "actual": 2,
@@ -6355,7 +6435,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.2909,
+   "p_calibrated": 0.2895,
    "outcome": {
     "stat": "tb",
     "actual": 1,
@@ -6381,7 +6461,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.304,
+   "p_calibrated": 0.3057,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -6407,7 +6487,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.304,
+   "p_calibrated": 0.3057,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -6433,7 +6513,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.3029,
+   "p_calibrated": 0.3044,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -6459,7 +6539,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.3026,
+   "p_calibrated": 0.304,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -6485,7 +6565,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.3,
+   "p_calibrated": 0.3007,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -6511,7 +6591,7 @@
    "result": "won",
    "payout_units": 1.39,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.2989,
+   "p_calibrated": 0.2994,
    "outcome": {
     "stat": "xbh",
     "actual": 1,
@@ -6537,7 +6617,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.2987,
+   "p_calibrated": 0.2991,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -6563,7 +6643,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.2985,
+   "p_calibrated": 0.2988,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -6589,7 +6669,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.2985,
+   "p_calibrated": 0.2988,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -6615,7 +6695,7 @@
    "result": "won",
    "payout_units": 1.47,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.2985,
+   "p_calibrated": 0.2988,
    "outcome": {
     "stat": "xbh",
     "actual": 1,
@@ -6641,7 +6721,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.2985,
+   "p_calibrated": 0.2988,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -6667,7 +6747,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.2985,
+   "p_calibrated": 0.2988,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -6693,7 +6773,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.2985,
+   "p_calibrated": 0.2988,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -6719,7 +6799,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.2985,
+   "p_calibrated": 0.2988,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -6745,7 +6825,7 @@
    "result": "won",
    "payout_units": 1.61,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.2985,
+   "p_calibrated": 0.2988,
    "outcome": {
     "stat": "xbh",
     "actual": 1,
@@ -6771,7 +6851,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.2985,
+   "p_calibrated": 0.2988,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -6797,7 +6877,7 @@
    "result": "won",
    "payout_units": 1.66,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.2985,
+   "p_calibrated": 0.2988,
    "outcome": {
     "stat": "xbh",
     "actual": 1,
@@ -6823,7 +6903,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.2985,
+   "p_calibrated": 0.2988,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -6849,7 +6929,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.2985,
+   "p_calibrated": 0.2988,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -6875,7 +6955,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.2985,
+   "p_calibrated": 0.2988,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -6901,7 +6981,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.2985,
+   "p_calibrated": 0.2988,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -6927,7 +7007,7 @@
    "result": "won",
    "payout_units": 1.71,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.2985,
+   "p_calibrated": 0.2988,
    "outcome": {
     "stat": "xbh",
     "actual": 1,
@@ -6953,7 +7033,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.2985,
+   "p_calibrated": 0.2988,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -6979,7 +7059,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.2985,
+   "p_calibrated": 0.2988,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -7005,7 +7085,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.2985,
+   "p_calibrated": 0.2988,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -7031,7 +7111,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.2985,
+   "p_calibrated": 0.2988,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -7057,7 +7137,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.2985,
+   "p_calibrated": 0.2988,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -7083,7 +7163,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.2985,
+   "p_calibrated": 0.2988,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -7109,7 +7189,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.2985,
+   "p_calibrated": 0.2988,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -7135,7 +7215,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.2985,
+   "p_calibrated": 0.2988,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -7161,7 +7241,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.2985,
+   "p_calibrated": 0.2988,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -7187,7 +7267,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.2985,
+   "p_calibrated": 0.2988,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -7213,7 +7293,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.2985,
+   "p_calibrated": 0.2988,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -7239,7 +7319,7 @@
    "result": "won",
    "payout_units": 2.12,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.2985,
+   "p_calibrated": 0.2988,
    "outcome": {
     "stat": "xbh",
     "actual": 1,
@@ -7265,7 +7345,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.3083,
+   "p_calibrated": 0.3086,
    "outcome": {
     "stat": "hrr",
     "actual": 0,
@@ -7291,7 +7371,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.3083,
+   "p_calibrated": 0.3086,
    "outcome": {
     "stat": "hrr",
     "actual": 0,
@@ -7317,7 +7397,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.3083,
+   "p_calibrated": 0.3086,
    "outcome": {
     "stat": "hrr",
     "actual": 3,
@@ -7343,7 +7423,7 @@
    "result": "won",
    "payout_units": 0.7874,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.3083,
+   "p_calibrated": 0.3086,
    "outcome": {
     "stat": "hrr",
     "actual": 4,
@@ -7369,7 +7449,7 @@
    "result": "won",
    "payout_units": 0.7937,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.3083,
+   "p_calibrated": 0.3086,
    "outcome": {
     "stat": "hrr",
     "actual": 11,
@@ -7395,7 +7475,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.3083,
+   "p_calibrated": 0.3086,
    "outcome": {
     "stat": "hrr",
     "actual": 0,
@@ -7421,7 +7501,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-06-28T00:14:10",
-   "p_calibrated": 0.3083,
+   "p_calibrated": 0.3086,
    "outcome": {
     "stat": "hrr",
     "actual": 0,
@@ -7455,85 +7535,7 @@
     "verify": "Brett Baty \u2014 hrr = 1 (line 3.5, bet UNDER/NO) on 2026-06-28",
     "check": "verified"
    },
-   "p_calibrated": 0.9275
-  },
-  {
-   "pick_id": "lock_of_day|MLB_PP|Henry_Davis|PP_batter_hrr_under_3_5|2026-06-28",
-   "source": "lock_of_day",
-   "sport": "MLB-PP",
-   "player_or_matchup": "Henry Davis",
-   "market": "PP_batter_hrr_under_3.5",
-   "prob": 0.8753,
-   "edge_pct": 51.9,
-   "fair_american": -136,
-   "date": "2026-06-28",
-   "recorded_at": "2026-06-28T23:12:06",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.0456,
-   "settled_at": "2026-06-28T23:12:07",
-   "_bootstrapped_from": "locks_history",
-   "outcome": {
-    "stat": "hrr",
-    "actual": 1,
-    "line": 3.5,
-    "side": "UNDER/NO",
-    "verify": "Henry Davis \u2014 hrr = 1 (line 3.5, bet UNDER/NO) on 2026-06-28",
-    "check": "verified"
-   },
-   "p_calibrated": 0.9275
-  },
-  {
-   "pick_id": "lock_of_day|MLB_PP|Royce_Lewis|PP_batter_hrr_under_3_5|2026-06-28",
-   "source": "lock_of_day",
-   "sport": "MLB-PP",
-   "player_or_matchup": "Royce Lewis",
-   "market": "PP_batter_hrr_under_3.5",
-   "prob": 0.8652,
-   "edge_pct": 50.1,
-   "fair_american": -136,
-   "date": "2026-06-28",
-   "recorded_at": "2026-06-28T23:12:06",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.0456,
-   "settled_at": "2026-06-28T23:12:07",
-   "_bootstrapped_from": "locks_history",
-   "outcome": {
-    "stat": "hrr",
-    "actual": 2,
-    "line": 3.5,
-    "side": "UNDER/NO",
-    "verify": "Royce Lewis \u2014 hrr = 2 (line 3.5, bet UNDER/NO) on 2026-06-28",
-    "check": "verified"
-   },
-   "p_calibrated": 0.8231
-  },
-  {
-   "pick_id": "lock_of_day|MLB_PP|Joey_Loperfido|PP_batter_hrr_under_3_5|2026-06-28",
-   "source": "lock_of_day",
-   "sport": "MLB-PP",
-   "player_or_matchup": "Joey Loperfido",
-   "market": "PP_batter_hrr_under_3.5",
-   "prob": 0.8637,
-   "edge_pct": 49.9,
-   "fair_american": -136,
-   "date": "2026-06-28",
-   "recorded_at": "2026-06-28T23:12:06",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.0456,
-   "settled_at": "2026-06-28T23:12:07",
-   "_bootstrapped_from": "locks_history",
-   "outcome": {
-    "stat": "hrr",
-    "actual": 0,
-    "line": 3.5,
-    "side": "UNDER/NO",
-    "verify": "Joey Loperfido \u2014 hrr = 0 (line 3.5, bet UNDER/NO) on 2026-06-28",
-    "check": "verified"
-   },
-   "p_calibrated": 0.8231
+   "p_calibrated": 0.912
   }
  ],
  "recent_window": 200,
@@ -7541,5 +7543,5 @@
   "2026-05-19",
   "2026-06-28"
  ],
- "digest_generated_at": "2026-06-28T23:12:49"
+ "digest_generated_at": "2026-06-28T21:54:03"
 }
