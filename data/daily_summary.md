@@ -2,37 +2,35 @@
 
 **Model Confidence: 27.4/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
 
-_Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
+_Pipeline health: **DEGRADED** (14/15 artifacts ok; 1 empty, 0 stale)._ 
 
-_Generated at 2026-06-29T17:05:46 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-06-29T23:05:14 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
-**PIT @ PHI - PIT_ML**
-- Market: -107
+**MIA @ COL - OVER_11.5**
+- Market: -110
 - Model probability: 80.8%
-- Raw edge: +56.24%
+- Raw edge: +54.15%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
 
-## Full Slate (13 games)
+## Full Slate (11 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 6:35p ET | CHW @ BAL | Oriole Park at Camden Yards | 79F 4mph | CHW_ML +19.14% |
-| 6:40p ET | PIT @ PHI | Citizens Bank Park | 76F 4mph | PIT_ML +56.24% |
-| 7:05p ET | DET @ NYY | Yankee Stadium | 72F 3mph | OVER_8.0 +14.73% |
+| 7:05p ET | DET @ NYY | Yankee Stadium | 72F 4mph | OVER_8.0 +16.4% |
 | 7:07p ET | NYM @ TOR | Rogers Centre | indoor | UNDER_8.5 +30.23% |
-| 7:10p ET | WSN @ BOS | Fenway Park | 65F 2mph | OVER_8.5 +10.66% |
-| 7:10p ET | TEX @ CLE | Progressive Field | 77F 3mph | TEX_ML +31.8% |
-| 7:40p ET | CIN @ MIL | American Family Field | indoor | MIL_ML +19.15% |
-| 8:05p ET | SDP @ CHC | Wrigley Field | 80F 7mph | UNDER_11.0 +40.72% |
+| 7:10p ET | WSN @ BOS | Fenway Park | 67F 4mph | OVER_8.0 +22.49% |
+| 7:10p ET | TEX @ CLE | Progressive Field | 79F 5mph | TEX_ML +35.5% |
+| 7:40p ET | CIN @ MIL | American Family Field | indoor | MIL_ML +20.58% |
+| 8:05p ET | SDP @ CHC | Wrigley Field | 80F 7mph | UNDER_11.5 +31.53% |
 | 8:10p ET | MIN @ HOU | Daikin Park | indoor | OVER_9.0 +32.28% |
-| 8:40p ET | MIA @ COL | Coors Field | 73F 4mph | OVER_11.5 +8.69% |
-| 9:40p ET | LAD @ OAK | Sutter Health Park | 74F 6mph | OAK_ML +24.62% |
+| 8:40p ET | MIA @ COL | Coors Field | 72F 6mph | OVER_11.5 +54.15% |
+| 9:40p ET | LAD @ OAK | Sutter Health Park | 73F 6mph | OAK_ML +29.43% |
 | 9:40p ET | LAA @ SEA | T-Mobile Park | indoor | OVER_7.5 +18.28% |
-| 9:40p ET | SFG @ ARI | Chase Field | indoor | SFG_ML +16.85% |
+| 9:40p ET | SFG @ ARI | Chase Field | indoor | SFG_ML +16.94% |
 
 ## Parlays - top 5
 
@@ -56,8 +54,8 @@ _Generated at 2026-06-29T17:05:46 UTC. Game lines source: **Bovada (fallback -- 
 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
-| batter hits | 45 | 64.4% | 40.2% | 0.631 | 1.309 |
 | pitcher strikeouts | 1 | 100.0% | 33.4% | 0.556 | 1.032 |
+| batter hits | 45 | 64.4% | 40.2% | 0.631 | 1.309 |
 
 Cumulative graded plays: 118214. Wins: 87366. Hit rate: 73.9%.
 
@@ -65,19 +63,17 @@ Cumulative graded plays: 118214. Wins: 87366. Hit rate: 73.9%.
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| CHW @ BAL | 38.5% | +160 | 4.85 | +206 | -206 |
 | CIN @ MIL | 30.2% | +231 | 5.98 | -139 | +139 |
-| DET @ NYY | 37.2% | +169 | 4.96 | +149 | -149 |
+| DET @ NYY | 37.2% | +169 | 4.92 | +148 | -148 |
 | LAA @ SEA | 31.1% | +221 | 5.84 | -141 | +141 |
-| LAD @ OAK | 53.9% | -117 | 3.2 | -113 | +113 |
-| MIA @ COL | 37.8% | +165 | 4.99 | +192 | -192 |
+| LAD @ OAK | 53.9% | -117 | 3.19 | -113 | +113 |
+| MIA @ COL | 21.7% | +361 | 7.74 | +536 | -536 |
 | MIN @ HOU | 41.6% | +141 | 4.39 | +116 | -116 |
 | NYM @ TOR | 36.3% | +176 | 5.07 | +143 | -143 |
-| PIT @ PHI | 41.9% | +139 | 4.46 | +743 | -743 |
-| SDP @ CHC | 42.9% | +133 | 4.41 | -122 | +122 |
+| SDP @ CHC | 33.2% | +201 | 5.72 | -193 | +193 |
 | SFG @ ARI | 41.8% | +139 | 4.36 | +202 | -202 |
-| TEX @ CLE | 61.2% | -158 | 2.5 | +257 | -257 |
-| WSN @ BOS | 50.5% | -102 | 3.38 | -118 | +118 |
+| TEX @ CLE | 61.2% | -158 | 2.53 | +257 | -257 |
+| WSN @ BOS | 50.5% | -102 | 3.4 | -118 | +118 |
 
 ## Travel / Rest Flags
 

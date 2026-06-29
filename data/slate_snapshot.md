@@ -9,23 +9,23 @@ _6 picks consolidated from POD + Alpha + Book Edges + Parlay-of-Day._
 
 ## 🎯 Alpha Pick
 
-- **TEX @ CLE** · TEX_ML
-  Prob 55.3% · Odds +127 · Edge +25.4% · Kelly 0.200
+- **LAD @ OAK** · ML_HOME
+  Prob 61.1% · Odds +101 · Edge +22.9% · Kelly 0.227
 
 ## 📊 Book Edges
 
 - **TEX @ CLE · AWAY (AWAY)** · TEAM_ML
-  Prob 51.0% · Odds +124 · Edge +14.3% · Kelly 0.115
+  Prob 49.9% · Odds +130 · Edge +14.8% · Kelly 0.114
 - **LAD @ OAK · HOME (HOME)** · TEAM_ML
-  Prob 57.3% · Odds -105 · Edge +11.9% · Kelly 0.125
-- **SFG @ ARI · AWAY (AWAY)** · TEAM_ML
-  Prob 50.9% · Odds +119 · Edge +11.5% · Kelly 0.096
+  Prob 56.3% · Odds -101 · Edge +12.0% · Kelly 0.121
+- **NYM @ TOR · UNDER · O/U 8.5** · TOTAL_UNDER
+  Prob 58.3% · Odds -110 · Edge +11.2% · Kelly 0.123
 
 ## 🎲 Parlay
 
-- **Tyler Stephenson + TEX @ CLE** · 2-leg
-  Prob 48.3% · Odds +294 · Edge +90.4% · Kelly 0.050
+- **Tyler Stephenson + LAD @ OAK** · 2-leg
+  Prob 53.5% · Odds +249 · Edge +86.5% · Kelly 0.050
 
 ---
-_Generated 2026-06-29T17:05:41 UTC by EdgeStat._
+_Generated 2026-06-29T23:03:33 UTC by EdgeStat._
 _Stakes assume ¼-Kelly fractional sizing on a flat bankroll._

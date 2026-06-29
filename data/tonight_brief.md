@@ -15,13 +15,10 @@ _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 - **Andrés Chaparro** PP_batter_hrr_under_3.5 (MLB-PP) -- 87% / +51.5%
 - **Masataka Yoshida** PP_batter_hrr_under_3.5 (MLB-PP) -- 87% / +51.3%
 
-## 📡 Sharp Money Following Model
-- **LAD @ OAK** ml_home: line moved 49.02% → 52.15% (+3.1pp)
-
 ## 🎰 Tonight's Best Parlay
-- **Tyler Stephenson** PP_batter_hrr_under_3.5 + **TEX @ CLE** TEX_ML
-- Joint 48% · fair +294 · edge +90.4%
+- **Tyler Stephenson** PP_batter_hrr_under_3.5 + **LAD @ OAK** ML_HOME
+- Joint 53% · fair +249 · edge +86.5%
 
 ---
-_Generated 2026-06-29T17:05:30_
+_Generated 2026-06-29T23:03:21_
 _Full breakdown: /tonight · Full history: /locks-of-day_

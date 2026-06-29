@@ -1,8 +1,8 @@
 # EdgeStat Daily Summary — 2026-06-29
 
-## 🏥 Model Health: 74.7/100 [HEALTHY]
+## 🏥 Model Health: 74.8/100 [HEALTHY]
 - Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 99.9/100
+  - 🟢 Calibration Freshness: 100.0/100
   - 🔴 Hit Rate Trend: 54.4/100
   - 🔴 Brier Trend: 29.6/100
   - 🟢 Pipeline Audit: 100.0/100
@@ -11,8 +11,8 @@
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.584)
-- **Total games on board:** 109
-- **Strong home favorites:** 2 | **Strong road dogs:** 0
+- **Total games on board:** 110
+- **Strong home favorites:** 3 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
 1. **CIN @ MIL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
@@ -21,15 +21,12 @@
 4. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
 5. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
 
-## 📡 Sharp Action (Line Movement)
-- [MODERATE] **LAD @ OAK** ml_home: 49.02% → 52.15% (+3.1pp)
-
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **262-44** (85.6% hit rate)
 - Net units: **+9.22u** | ROI: **+48.6%**
 - Last 7d: 43-3 (93.5%) | net +1.77u
 
-**Today's 8 Locks:**
+**Today's 11 Locks:**
 - [MLB-PP] **Henry Davis** PP_batter_hrr_under_3.5 · p=87% edge=+50.5% qK=0.062u
 - [MLB-PP] **Marcell Ozuna** PP_batter_hrr_under_3.5 · p=87% edge=+50.4% qK=0.062u
 - [MLB-PP] **Royce Lewis** PP_batter_hrr_under_3.5 · p=86% edge=+48.8% qK=0.062u
@@ -38,11 +35,14 @@
 - [MLB-PP] **Josh Lowe** PP_batter_hrr_under_3.5 · p=87% edge=+51.7% qK=0.062u
 - [MLB-PP] **Henry Bolte** PP_batter_hrr_under_3.5 · p=87% edge=+51.7% qK=0.062u
 - [MLB-PP] **Spencer Torkelson** PP_batter_hrr_under_3.5 · p=87% edge=+51.5% qK=0.062u
+- [MLB-PP] **Tyler Stephenson** PP_batter_hrr_under_3.5 · p=87% edge=+51.8% qK=0.062u
+- [MLB-PP] **Andrés Chaparro** PP_batter_hrr_under_3.5 · p=87% edge=+51.5% qK=0.062u
+- [MLB-PP] **Masataka Yoshida** PP_batter_hrr_under_3.5 · p=87% edge=+51.3% qK=0.062u
 
 ## 🎰 Top Balanced 2-Leg Parlays (40-65% joint)
-- [MLB-PP] Henry Davis PP_batter_hrr_under_ + [MLB] TEX @ CLE TEX_ML
-  Joint: 48% | Fair: 294 | Edge: +90.5%
-- [MLB-PP] Marcell Ozuna PP_batter_hrr_under_ + [MLB] TEX @ CLE TEX_ML
+- [MLB-PP] Tyler Stephenson PP_batter_hrr_under_ + [MLB] TEX @ CLE TEX_ML
+  Joint: 48% | Fair: 294 | Edge: +90.4%
+- [MLB-PP] Henry Bolte PP_batter_hrr_under_ + [MLB] TEX @ CLE TEX_ML
   Joint: 48% | Fair: 294 | Edge: +90.4%
 - [MLB-PP] Josh Lowe PP_batter_hrr_under_ + [MLB] TEX @ CLE TEX_ML
   Joint: 48% | Fair: 294 | Edge: +90.2%
@@ -62,8 +62,8 @@
 - Hot teams: **0** | Cold teams: **1** | Over-heavy: 0 | Under-heavy: 8
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (34)
-- STEAM_MOVE: **33**
+## ⚠️ Anomaly Detector (37)
+- STEAM_MOVE: **36**
 - COMPOUND_BULLPEN: **1**
   - LA @ IND (WNBA): TOTAL steam since open: total +4 (OVER) (6 snapshots)
   - ATL @ SFG (MLB): ML/TOTAL steam since open: ML -16.4pp toward ATL; total -0.5 (UNDER) (8 snapshots)
@@ -95,7 +95,7 @@
 - **Miles Mikolas** OVER 5.5 K (74%) fair -280
 - **Braxton Ashcraft** OVER 5.5 K (70%) fair -233
 
-## 🏀 NBA Player Heat (18 HOT / 22 COLD)
+## 🏀 NBA Player Heat (19 HOT / 22 COLD)
   - 🔥 **Jeremiah Fears** (NO): L5 31.8/5.8/6.0 vs season 16.9/3.2/4.0 [PTS +14.9, REB +2.6, AST +2.0]
   - 🔥 **AJ Green** (MIL): L5 18.6/4.2/1.8 vs season 11.3/3.4/1.9 [PTS +7.3]
   - 🔥 **Dillon Brooks** (PHX): L5 26.0/6.0/1.8 vs season 19.4/4.2/1.9 [PTS +6.6]
@@ -113,8 +113,8 @@
   - [COIN_FLIP] **Damian Pinas** (9-1-0) vs Cesar Almeida -- fair -133
 
 ## ⛳ Golf Player Heat (from Travelers Championship)
-  - 🔥 T1 **Scottie Scheffler** (USA): -21 total -- finished T1
-  - 🔥 T2 **Viktor Hovland** (Norway): -21 total -- finished T2
+  - 🔥 T1 **Viktor Hovland** (Norway): -22 total -- finished T1
+  - 🔥 T2 **Scottie Scheffler** (USA): -21 total -- finished T2
   - 🔥 T3 **Collin Morikawa** (USA): -20 total -- finished T3, Sunday -4.0 vs tourney avg
   - 🔥 T4 **Matt Fitzpatrick** (England): -19 total -- finished T4, Sunday -1.2 vs tourney avg
   - 🔥 T5 **Wyndham Clark** (USA): -18 total -- finished T5, Sunday -0.5 vs tourney avg
@@ -122,7 +122,7 @@
   - ❄️ **Eric Cole** (USA): Sunday +5.5 vs tourney avg
   - ❄️ **Si Woo Kim** (South Korea): Sunday +5.2 vs tourney avg
 
-## 🔥 MLB Batter Heat (48 HOT / 45 COLD)
+## 🔥 MLB Batter Heat (49 HOT / 46 COLD)
   - 🔥 **Nasim Nuñez** (WSH): L14 .415 / season .237 (+178pts)
   - 🔥 **Luisangel Acuña** (CWS): L14 .393 / season .222 (+171pts)
   - 🔥 **Tyler Stephenson** (CIN): L14 .357 / season .224 (+133pts)
