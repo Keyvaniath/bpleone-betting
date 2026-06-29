@@ -2942,12 +2942,33 @@ def run() -> Dict[str, Any]:
                   "reliable. THIS is the training signal."),
     }
     os.makedirs(DATA_DIR, exist_ok=True)
+    # TRIPWIRE (defense-in-depth): the settled count only ever GROWS (picks settle, never
+    # un-settle), so a large DROP means the prior ledger failed to load (corruption / parse
+    # error) and we're about to reset from scratch -- which wiped 6,500 settled picks once
+    # (2026-06-29). Compare against an independent high-water sidecar that survives a
+    # corrupted ledger, and refuse to overwrite the good files with a catastrophic shrink.
+    new_settled = sum(1 for p in history if p.get("settled"))
+    _hw_path = os.path.join(DATA_DIR, "ledger_highwater.json")
+    try:
+        _hw = int((json.load(open(_hw_path, encoding="utf-8")) or {}).get("max_settled", 0))
+    except Exception:
+        _hw = 0
+    if _hw > 200 and new_settled < _hw * 0.5:
+        print(f"[all_picks_tracker] ABORT WRITE: settled would drop {_hw} (high-water) -> "
+              f"{new_settled} (>50%); corrupted/empty load suspected. Existing ledger + "
+              f"summary left UNTOUCHED for recovery.")
+        return payload
     with open(OUT, "w") as f: json.dump(payload, f, indent=2)
     # Compact summary (all rollups, minus the multi-MB picks array) so the public
     # track-record page renders by-sport / by-source without pulling the full ledger.
     summary = {k: v for k, v in payload.items() if k != "picks"}
     with open(os.path.join(DATA_DIR, "ledger_summary.json"), "w") as f:
         json.dump(summary, f, indent=2)
+    try:  # advance the high-water mark only after a healthy write
+        with open(_hw_path, "w", encoding="utf-8") as f:
+            json.dump({"max_settled": max(_hw, new_settled)}, f)
+    except Exception:
+        pass
     return payload
 
 
