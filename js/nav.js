@@ -120,12 +120,11 @@
     { href: "module-performance.html",  label: "🧠 Module Performance" },
     { href: "audit.html",               label: "Audit" },
     { section: "Self-Learning" },
-    { href: "live-learning.html",       label: "📡 Live Learning" },
-    { href: "self-learning.html",       label: "🧠 Self-Learning" },
-    { href: "learning.html",            label: "Learning" },
-    { href: "training.html",            label: "Training" },
+    { href: "live-learning.html",       label: "📡 Live Learning (hub)" },
     { href: "learning-integrity.html",  label: "🔬 Learning Integrity" },
     { href: "model-control.html",       label: "🎛 Model Control" },
+    // Self-Learning · Learning · Training consolidated into live-learning.html;
+    // their old URLs redirect there.
   ];
   // MORE -- account, system health, daily reads, education.
   const MORE = [

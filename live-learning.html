@@ -75,6 +75,13 @@
     <div class="tscroll"><table id="sTable"><thead><tr><th class="l">Sport</th><th>Games</th><th>Hit%</th><th>Brier</th><th>Bias</th><th>Applied</th></tr></thead><tbody id="sBody"><tr><td class="l muted" colspan="6">Loading…</td></tr></tbody></table></div>
   </section>
 
+  <section class="card">
+    <h2>4 · Training readiness — is it safe to size real money yet?</h2>
+    <p class="cap">A composite gauge of whether the model is calibrated and sampled <i>enough</i> to trust for sizing, vs research-only. Built from calibration quality, sample sufficiency, residual stability, and realized ROI — plus the loop's own most recent notes.</p>
+    <div id="confBody"><span class="muted">Loading…</span></div>
+    <div id="feedBody" style="margin-top:12px;"></div>
+  </section>
+
   <p class="meta" id="meta"></p>
 </main>
 
@@ -86,8 +93,8 @@
   var ago = function(ts){ var t=toMs(ts); if(isNaN(t)) return null; var m=Math.round((Date.now()-t)/60000); if(m<0) m=0; if(m<60) return m+'m ago'; var h=Math.round(m/60); if(h<48) return h+'h ago'; return Math.round(h/24)+'d ago'; };
   var pct = function(v){ return v==null?'—':(100*v).toFixed(1)+'%'; };
 
-  Promise.all([J('recalibration_map.json'),J('learned_weights.json'),J('self_training_summary.json'),J('ledger_summary.json')]).then(function(res){
-    var rc=res[0], lw=res[1], st=res[2], ls=res[3];
+  Promise.all([J('recalibration_map.json'),J('learned_weights.json'),J('self_training_summary.json'),J('ledger_summary.json'),J('model_confidence.json'),J('training_feedback.json')]).then(function(res){
+    var rc=res[0], lw=res[1], st=res[2], ls=res[3], mc=res[4], tf=res[5];
 
     // --- loops live strip ---
     var trainTs = (st.generated_at>rc.generated_at?st.generated_at:rc.generated_at);
@@ -128,6 +135,29 @@
         '<td>'+(v.brier!=null?v.brier.toFixed(3):'—')+'</td><td>'+(v.bias!=null?(v.bias>=0?'+':'')+v.bias.toFixed(3):'—')+'</td>'+
         '<td class="'+(ap?'up':'muted')+'">'+(ap?'✓ live':'—')+'</td></tr>';
     }).join('') : '<tr><td class="l muted" colspan="6">no settled games yet</td></tr>';
+
+    // --- 4. training readiness ---
+    var TIER={green:'#58c878',yellow:'#e8b54e',red:'#e35a5a'};
+    if (mc.score!=null){
+      var col=TIER[mc.tier]||'#8a93a6', comp=mc.components||{};
+      var compRow=Object.keys(comp).map(function(k){
+        return '<span style="display:inline-block;margin:0 14px 6px 0;font-size:11px;color:#8a93a6;">'+k.replace(/_/g,' ')+': <b style="color:#e9edf4;">'+Math.round(100*(comp[k]||0))+'%</b></span>';
+      }).join('');
+      document.getElementById('confBody').innerHTML=
+        '<div class="ece"><span class="big" style="color:'+col+';">'+mc.score.toFixed(0)+'</span>'+
+        '<span style="padding:3px 10px;border-radius:5px;background:'+col+';color:#0a0a0a;font-size:11px;font-weight:700;text-transform:uppercase;">'+(mc.tier||'')+'</span>'+
+        '<span class="muted" style="font-size:12px;flex:1 1 100%;margin-top:6px;">'+(mc.message||'')+'</span></div>'+
+        (compRow?'<div style="margin-top:10px;">'+compRow+'</div>':'');
+    } else { document.getElementById('confBody').innerHTML='<span class="muted">confidence score not available</span>'; }
+    var ents=(tf.entries||[]).slice(-3).reverse();
+    if (ents.length){
+      document.getElementById('feedBody').innerHTML='<div style="font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:#8a93a6;margin-bottom:6px;">Latest training-loop notes</div>'+
+        ents.map(function(e){
+          var msg=e.message||e.note||e.summary||e.text||(typeof e==='string'?e:JSON.stringify(e));
+          var when=e.date||e.generated_at||e.ts||e.timestamp||'';
+          return '<div style="font-size:12px;color:#cfe9d6;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.05);"><span class="muted" style="font-size:10px;">'+String(when).slice(0,16).replace('T',' ')+'</span> '+msg+'</div>';
+        }).join('');
+    }
 
     document.getElementById('verdict').innerHTML = (rc.ece_before!=null)
       ? 'Right now: calibration is <b>live</b> and the source weights moved on real results — not a static model.' : '';
