@@ -41,6 +41,26 @@ bpleone-site/
 
 ## Current deployment state (LIVE)
 
+- **2026-06-29 — Picks hub + ledger-integrity incident (newest, read first):**
+  - **Picks hub** (`picks.html` + `python/todays_picks.py` -> `data/todays_picks.json`):
+    one filterable board consolidating the curated pick boards (Locks/Alpha/Best-Bets/
+    Consensus/Top-Plays/Convergence/Fades). Six board pages (todays-top-plays, top-3-picks,
+    locks-of-day, consensus-picks, convergence, fade-picks) are now **redirect stubs** ->
+    `picks.html#<category>`. Template for the rest of `CONSOLIDATION-ROADMAP.md`.
+  - **DATA-LOSS INCIDENT + safeguards (do NOT remove these):** a cron git-race committed
+    merge-conflict markers into `data/*.json`; `all_picks_ledger.json` became unparseable,
+    so `all_picks_tracker._load()` returned `{}` and the next run **reset the ledger from
+    scratch** (6,506 settled -> 305, curated +235u -> +8.9u). Three layers now protect it:
+    (1) **marker guard** in all 5 committing workflows (never commit conflict markers --
+    abort+retry); (2) **tripwire** in `all_picks_tracker` (refuses to overwrite the ledger
+    if settled would drop >50% vs `data/ledger_highwater.json`, an independent high-water
+    sidecar that survives a corrupted ledger); (3) recovery-from-git pattern. If you ever
+    see the ledger shrink, restore from the last good commit (`git show <sha>:data/
+    all_picks_ledger.json`) -- the cron then re-accumulates on top.
+  - Earlier 2026-06-28: dead-board cleanup (17 removed), homepage proof-hero (forward-test
+    + bootstrap CI lead the receipts band), data-health canary honesty (quota-exhausted =
+    yellow not red) + desk-coverage check, page-weight digests (recent_picks.json).
+
 - **2026-06-19 session additions (read first — newest state):**
   - **17 sport desks, all live** (`sport_coverage.py` / sport-coverage.html). Added
     **Tennis** as a full desk: `tennis_pipeline.py` pulls upcoming ATP/WTA from ESPN's
