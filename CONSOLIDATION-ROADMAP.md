@@ -57,9 +57,20 @@ public face; fold the other two in as expandable sections.
 in the nav). Zero capability lost; every old URL still resolves via its redirect stub.
 
 ## Done already
+- **Cluster 1 — Picks hub** ✅ `picks.html` + `todays_picks.py`; 6 board pages redirect in.
+- **Cluster 3 — Learning hub** ✅ `live-learning.html` absorbed self-learning/learning/training
+  (added a 4th "training readiness" section); 3 pages redirect in. (Done out of order — it was
+  the most ready, since live-learning already existed as the consolidated dashboard.)
 - Literal duplicate `methodology.html` nav entry removed (was in both Models and More).
 - 17 dead boards (generated, surfaced by nothing) deleted — see the cleanup commit.
 
 ## Not started (needs a green light per cluster)
-Clusters 1-5 above. Recommend starting with **Picks hub** (biggest win) as the
-template PR, then repeating the method for 2-5.
+- **Cluster 2 — Proof / performance hub.** NOTE on re-scope: of the 8 pages, only two pairs are
+  genuinely redundant — `accuracy` ↔ `module-performance` (both per-source/sport/market
+  breakdowns) and `reliability` ↔ `model-health`. The rest (`track-record`, `pod-history`,
+  `lifecycle`, `audit`) are distinct angles, so merge the two pairs (redirect the weaker into
+  the denser) rather than forcing 8→2.
+- **Cluster 4 — Daily reads** (3→1) and **Cluster 5 — System/data** (3→1): smaller, lower-risk.
+
+Lesson from clusters 1 & 3: only the Picks boards were true duplicates. The rest are facets,
+so "consolidate" means absorb-into-a-dashboard or merge-the-redundant-pair, not flat redirect.
