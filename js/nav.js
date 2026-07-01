@@ -44,7 +44,7 @@
   // professional IA. { section } entries render as non-clickable group headers.
   const TOP = [
     { href: "index.html",       label: "Dashboard" },
-    { href: "top-edges.html",   label: "🎯 Top Edges" },
+    { href: "picks.html",       label: "🎯 Today's Picks" },
     { href: "play-of-day.html", label: "★ Play of Day" },
     { href: "tonight.html",     label: "🌙 Tonight" },
   ];
@@ -52,6 +52,7 @@
   const PICKS = [
     { section: "Daily Board" },
     { href: "picks.html",               label: "🎯 Today's Picks (all boards)" },
+    { href: "top-edges.html",           label: "🎯 Top Calibrated Edges" },
     { href: "alerts.html",              label: "📡 The Tape (live signals)" },
     { href: "alpha-pick.html",          label: "★ Alpha Pick" },
     { href: "alpha-scanner.html",       label: "🛰️ Cross-Sport Alpha Scanner" },
