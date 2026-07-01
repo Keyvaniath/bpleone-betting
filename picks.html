@@ -41,6 +41,12 @@
   .prow.head { background: rgba(255,255,255,0.05); color: var(--muted,#888); font-size:10px; text-transform:uppercase; letter-spacing:.5px; }
   .prow:last-child { border-bottom:none; }
   .num { text-align:right; font-variant-numeric: tabular-nums; }
+  .sortable { cursor:pointer; user-select:none; }
+  .sortable:hover { color:var(--text,#e9edf4); }
+  .sarrow { font-size:9px; opacity:.85; }
+  #slateSummary { display:flex; gap:18px; flex-wrap:wrap; margin:0 0 12px; font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--muted,#8a93a6); }
+  #slateSummary b { color:#e9edf4; }
+  #slateSummary .hi { color:#58c878; }
   .catbadge { padding:3px 8px; border-radius:4px; font-size:9px; font-weight:700; text-transform:uppercase; text-align:center; letter-spacing:.3px; }
   .subj { font-weight:600; color: var(--text,#e9edf4); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
   .mkt { color: var(--text-2,#9fb0c8); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
@@ -80,10 +86,14 @@
     <span class="meta" id="meta">—</span>
   </div>
 
+  <div id="slateSummary"></div>
+
   <div class="ptable">
     <div class="prow head">
       <div>Board</div><div>Sport</div><div>Pick</div><div>Market</div>
-      <div class="num">Model</div><div class="num">Fair</div><div class="num">Edge</div>
+      <div class="num sortable" data-sort="prob">Model <span class="sarrow" id="ar_prob"></span></div>
+      <div class="num">Fair</div>
+      <div class="num sortable" data-sort="edge_pct">Edge <span class="sarrow" id="ar_edge_pct"></span></div>
     </div>
     <div id="rows"><div class="empty">Loading today's picks…</div></div>
   </div>
@@ -100,7 +110,7 @@ const CAT_COLOR = {
   best:"#3ad17e", consensus:"#22d3ee", topplays:"#e0a13a", convergence:"#fb923c", fade:"#8a93a6"
 };
 let DATA = null;
-const state = { category: "all", sport: "all" };
+const state = { category: "all", sport: "all", sortKey: "prob", sortDir: -1 };
 
 function fmtProb(p){ return p == null ? "—" : (p*100).toFixed(1) + "%"; }
 function fmtAm(x){ if (x == null) return "—"; return (x >= 0 ? "+" : "") + Math.round(x); }
@@ -131,10 +141,35 @@ function renderSportSel(){
   sel.onchange = () => { state.sport = sel.value; renderRows(); };
 }
 
+function renderSummary(picks){
+  const el = document.getElementById("slateSummary");
+  if (!el) return;
+  if (!picks.length){ el.innerHTML = ""; return; }
+  const probs = picks.map(p => p.prob).filter(v => v != null);
+  const avg = probs.length ? probs.reduce((a,b) => a+b, 0) / probs.length : null;
+  const top = picks.reduce((m,p) => (p.prob != null && (!m || p.prob > m.prob)) ? p : m, null);
+  el.innerHTML =
+    '<span><b>' + picks.length + '</b> picks shown</span>' +
+    (avg != null ? '<span>avg model prob <b>' + (avg*100).toFixed(1) + '%</b></span>' : '') +
+    (top ? '<span>top conviction: <b class="hi">' + top.subject + '</b> ' + (top.prob*100).toFixed(0) + '%</span>' : '');
+}
+function updateArrows(){
+  ["prob","edge_pct"].forEach(function(key){
+    var a = document.getElementById("ar_" + key);
+    if (a) a.textContent = (state.sortKey === key) ? (state.sortDir < 0 ? "▼" : "▲") : "";
+  });
+}
 function renderRows(){
   let picks = DATA.picks || [];
   if (state.category !== "all") picks = picks.filter(p => p.category === state.category);
   if (state.sport !== "all") picks = picks.filter(p => p.sport === state.sport);
+  const k = state.sortKey, dir = state.sortDir;
+  picks = picks.slice().sort((a,b) => {
+    const av = a[k], bv = b[k], an = (av == null), bn = (bv == null);
+    if (an && bn) return 0; if (an) return 1; if (bn) return -1;   // nulls sink
+    return (av - bv) * dir;
+  });
+  renderSummary(picks);
   const el = document.getElementById("rows");
   if (!picks.length){
     el.innerHTML = `<div class="empty">No live picks in this view right now.<br>
@@ -166,7 +201,15 @@ fetch("data/todays_picks.json?t=" + Date.now(), { cache: "no-cache" })
     // (e.g. locks-of-day.html -> picks.html#locks pre-selects the Locks filter).
     const h = (location.hash || "").replace("#", "");
     if (h && (DATA.all_categories || []).some(c => c.key === h)) state.category = h;
-    renderChips(); renderSportSel(); renderRows();
+    document.querySelectorAll(".prow.head .sortable").forEach(function(hd){
+      hd.addEventListener("click", function(){
+        var key = hd.dataset.sort;
+        if (state.sortKey === key) state.sortDir = -state.sortDir;   // toggle direction
+        else { state.sortKey = key; state.sortDir = -1; }            // new column: desc first
+        updateArrows(); renderRows();
+      });
+    });
+    updateArrows(); renderChips(); renderSportSel(); renderRows();
   })
   .catch(err => {
     document.getElementById("rows").innerHTML =
