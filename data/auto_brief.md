@@ -1,69 +1,53 @@
-# Tonight's Slate Brief — 2026-06-29
+# Tonight's Slate Brief — 2026-07-02
 
 ## Slate Quality: 55/100 (MEDIUM)
-_0% lineups confirmed · 9 rookie SPs_
+_0% lineups confirmed · 10 rookie SPs_
 **Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
-- **13 games** scheduled
-- **36 best bets** scored: 0 DK · 0 PP · 11 NRFI · 6 SGP
-- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$32.36
-- **MC simulation:** EV +$91.46, 75% P(profit), p05 $-124.8 / p95 $301.53
+- **9 games** scheduled
+- **33 best bets** scored: 10 DK · 0 PP · 9 NRFI · 0 SGP
+- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$41.33
+- **MC simulation:** EV +$151.51, 86% P(profit), p05 $-73.3 / p95 $367.03
 
 ## Top 5 Best Bets
-1. **CIN @ MIL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +23.8%)
+1. **MIA @ COL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +32.3%)
+   - P(YRFI) 78.3% vs baseline 46.0%
+2. **CIN @ MIL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +23.8%)
    - P(YRFI) 69.8% vs baseline 46.0%
-2. **LAA @ SEA YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +22.9%)
+3. **LAA @ SEA YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +22.9%)
    - P(YRFI) 68.9% vs baseline 46.0%
-3. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
+4. **SDP @ CHC YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +20.8%)
+   - P(YRFI) 66.8% vs baseline 46.0%
+5. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
    - Player prop quality score 1.1935
    - Elite player
-4. **LOL ShowMaker OVER 3.5 Kills**  (78/100 ****, edge —)
-   - Player prop quality score 1.1892
-   - Elite player
-5. **LOL Peyz OVER 4.5 Kills**  (78/100 ****, edge —)
-   - Player prop quality score 1.184
-   - Elite player
 
-## ⚠️ Trap Warnings — 16 flagged
-- **CIN @ MIL 2-leg SGP @ -256** (low):
-   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
-- **CHW @ BAL 2-leg SGP @ -210** (low):
-   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
-- **DET @ NYY 2-leg SGP @ -229** (low):
-   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
-- **TEX @ CLE 2-leg SGP @ -220** (low):
-   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
-- **WSN @ BOS 2-leg SGP @ -206** (low):
-   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
+## ⚠️ Trap Warnings — 10 flagged
+- **Tyler Tolbert OVER 0.5 batter hits** (low):
+   - Edge +32.5% looks big but only 0 settled props on this player — model unproven
+- **MIA @ COL YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +32.3% looks big but only 0 settled props on this player — model unproven
+- **Kahlil Watson OVER 0.5 batter hits** (low):
+   - Edge +30.8% looks big but only 0 settled props on this player — model unproven
+- **CIN @ MIL YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +23.8% looks big but only 0 settled props on this player — model unproven
+- **LAA @ SEA YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +22.9% looks big but only 0 settled props on this player — model unproven
 
 ## Hot streaks
-**Batters heating up:** Luis García Jr. (heat +9.34), Esmerlyn Valdez (heat +6.66), Miguel Vargas (heat +5.36)
-**Pitchers on a run:** Ryan Johnson (heat +9.44), Nick Lodolo (heat +8.96), Gage Jump (heat +8.30)
-
-## Top correlation-aware SGPs
-- **CIN @ MIL** 2-leg @ -256 fair (joint 0.72, EV +25.0%)
-   - Robert Gasser UNDER 8.5 pitcher strikeouts
-   - Robert Gasser OVER 3.5 pitcher strikeouts
-- **CHW @ BAL** 2-leg @ -210 fair (joint 0.68, EV +25.0%)
-   - Shane Baz UNDER 7.5 pitcher strikeouts
-   - Sean Burke UNDER 8.5 pitcher strikeouts
-- **DET @ NYY** 2-leg @ -229 fair (joint 0.70, EV +25.0%)
-   - Casey Mize UNDER 7.5 pitcher strikeouts
-   - Ryan Weathers UNDER 8.5 pitcher strikeouts
+**Batters heating up:** Hunter Goodman (heat +7.64), Esmerlyn Valdez (heat +6.14), Dansby Swanson (heat +5.78)
+**Pitchers on a run:** Casey Mize (heat +12.86), Sean Burke (heat +11.81), Ryan Weathers (heat +10.80)
 
 ## Bullpens GASSED tonight
 Pittsburgh Pirates, San Diego Padres, Tampa Bay Rays, Texas Rangers, Toronto Blue Jays, Philadelphia Phillies, Chicago White Sox, New York Yankees
 _Lean late-inning OVER on these games; fade their save situations._
 
 ## NRFI/YRFI strong leans
-- **YRFI** (1st-inning OVER): CIN @ MIL, LAA @ SEA, NYM @ TOR, DET @ NYY, MIA @ COL
+- **YRFI** (1st-inning OVER): MIA @ COL, CIN @ MIL, LAA @ SEA, SDP @ CHC, NYM @ TOR
 
-## Golf -- Travelers Championship
-- **Leader:** Scottie Scheffler (-21) at #1
-- **Field:** 72 players  |  Status: In Progress
-- **Play of the Tournament:** Collin Morikawa WIN @ +597 (model 14.3%, HIGH)
-   - P(win) 14.3% with 1 round(s) left -- sweet-spot value at #3 (-20).
+## Cross-book pricing
+28 props softer on one book — see /props for details.
 
 ## NBA -- PLAYOFFS
 - New York Knicks @ San Antonio Spurs (53-29 vs 62-20) 94-90 | P(home) 0.0% fair +0 | Final
@@ -83,13 +67,13 @@ _Lean late-inning OVER on these games; fade their save situations._
 - Samsung Lions @ NC Dinos | P(home) 43.8% fair +128 | total 8 R
 - **KBO POD:** Doosan Bears ML vs Lotte Giants (KBO) (HIGH)
 
-## LoL Esports -- 0 live, 6 upcoming
-- [MSI] Team Liquid Alienware vs Karmine Corp BO5 | P(A) 35.6% fair +181/-181
-- [MSI] TBD vs T1 BO5 | P(A) 34.1% fair +194/-194
+## LoL Esports -- 0 live, 10 upcoming
+- [MSI] Hanwha Life Esports vs Team Secret Whales BO5 | P(A) 62.5% fair -167/+167
+- [MSI] G2 Esports vs TOP ESPORTS BO5 | P(A) 49.4% fair +102/-102
+- [MSI] LYON vs FURIA BO5 | P(A) 39.3% fair +155/-155
+- [MSI] BILIBILI GAMING vs T1 BO5 | P(A) 44.2% fair +126/-126
 - [MSI] TBD vs TBD BO5 | P(A) 50.0% fair -100/-100
-- [MSI] TBD vs TBD BO5 | P(A) 50.0% fair -100/-100
-- [MSI] TBD vs TBD BO5 | P(A) 50.0% fair -100/-100
-- **LoL POT:** Karmine Corp ML vs Team Liquid Alienware (MSI, BO5) (HIGH)
+- **LoL POT:** FURIA ML vs LYON (MSI, BO5) (HIGH)
 
 ## Player Play of the Day -- across all sports (3535 candidates scanned)
 - **[LOL]** Inspired UNDER 3.5 Kills | model 61.7% fair -161 (ELITE)
@@ -99,7 +83,6 @@ _Lean late-inning OVER on these games; fade their save situations._
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | model 61.0% fair -157 (ELITE)
 
 ## Self-learning calibration (esports + KBO)
-- **LOL:** 24 settled | brier 0.2668 | ECE 0.1641
-   - Model over-confident; subtract 16.4pp at next inference
-- **KBO:** 21 settled | brier 0.2444 | ECE 0.08
-   - Model over-confident; subtract 2.7pp at next inference
+- **LOL:** 25 settled | brier 0.2727 | ECE 0.1833
+   - Model over-confident; subtract 18.3pp at next inference
+- **KBO:** 22 settled | brier 0.2404 | ECE 0.0944

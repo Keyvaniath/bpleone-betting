@@ -1,55 +1,48 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-06-29T23:03:27 UTC_
+_Generated 2026-07-02T05:02:44 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -21
+- **Score:** -24
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
 - **Total STRONG:** 7
-- **Total FADES:** 49
-
-## Lock of the Night
-- **Subject:** Zebby Matthews
-- **Source:** ELITE_BOARD
-- **Sport:** MLB
-- **Score:** 15.0
-- **Details:** MIN @ HOU
+- **Total FADES:** 52
 
 ## Top 5 Curated Picks
-1. **GOLF / Viktor Hovland** (GOLF_PLAYER, score=219.29)
-   - Play: Viktor Hovland (PLAYER_STRONG)
+1. **GOLF / Scottie Scheffler** (GOLF_PLAYER, score=219.29)
+   - Play: Scottie Scheffler (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
 2. **GOLF / Wyndham Clark** (GOLF_PLAYER, score=219.29)
    - Play: Wyndham Clark (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-3. **WNBA / breanna stewart** (WNBA_PLAYER, score=94.58)
-   - Play: breanna stewart (PLAYER_STRONG)
-   - Rationale: Cross-sport top pick (WNBA_PLAYER)
-4. **WNBA / a'ja wilson** (WNBA_PLAYER, score=62.92)
-   - Play: a'ja wilson (PLAYER_STRONG)
+3. **MLB / ?** (MLB_TEAM, score=72.04)
+   - Play: ? (TEAM_STRONG)
+   - Rationale: Cross-sport top pick (MLB_TEAM)
+4. **WNBA / kahleah copper** (WNBA_PLAYER, score=69.0)
+   - Play: kahleah copper (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (WNBA_PLAYER)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
-  - Viktor Hovland top 10 finish
+  - Scottie Scheffler top 10 finish
   - Wyndham Clark top 10 finish
   - Matt Fitzpatrick top 10 finish
 
 ## Slate ROI Projection
-- **Picks:** 1
-- **Avg edge:** -0.91%
+- **Picks:** 0
+- **Avg edge:** 0%
 - **Expected ROI (1/4 Kelly):** 0.0%
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **NHL** / kevin lankinen (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / samsonov ilya (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / joseph woll (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / thatcher demko (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / adin hill (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
+- **MLB** / Griffin Canning (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Gage Jump (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Peter Lambert (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Trey Yesavage (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Parker Messick (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
