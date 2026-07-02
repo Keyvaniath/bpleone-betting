@@ -212,6 +212,7 @@
     <div class="card-head"><span>🧬 Where the Alpha Lives — family durability</span><span class="muted" id="fdMeta">—</span></div>
     <div style="padding:14px 18px;">
       <p class="muted" style="font-size:12px;margin:0 0 12px;line-height:1.6;">Every surviving market family with a real sample, ranked by the <strong>lower bound</strong> of its bootstrap 95% CI — a family is only as good as the worst its sample plausibly allows. <strong>DURABLE</strong> needs a CI floor above zero <em>and</em> a positive ROI in both chronological halves; a hot headline with a CI spanning zero is labeled <strong>FRAGILE</strong>, not edge.</p>
+      <div id="fdBook" style="display:none;margin:0 0 12px;padding:10px 14px;border:1px solid rgba(88,200,120,.3);border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:13px;line-height:1.7;"></div>
       <div style="overflow-x:auto;">
         <div style="min-width:640px;">
           <div style="display:grid;grid-template-columns:1.6fr 92px 56px 76px 120px 110px;gap:10px;padding:5px 10px;font-size:10px;text-transform:uppercase;color:#8a93a6;font-family:'JetBrains Mono',monospace;">
@@ -231,6 +232,14 @@
       `${d.n_families_evaluated} families · ${t.DURABLE||0} durable · ${(d.generated_at||'').replace('T',' ').slice(0,16)}`;
     const TIER_C={DURABLE:"#58c878",PROMISING:"#e0a13a",FRAGILE:"#e35a5a",NEGATIVE:"#8a93a6"};
     const sgn=v=>(v>=0?'+':'')+v+'%';
+    const bk=d.durable_book;
+    if (bk && bk.n){
+      document.getElementById("fdBook").innerHTML =
+        `<span style="color:#8a93a6;">The durable book — only the ${bk.families.length} DURABLE families: </span>` +
+        `<b>${bk.n}</b> settled · ROI <b style="color:#58c878;">${sgn(bk.roi)}</b> · net <b style="color:#58c878;">+${bk.net_units}u</b> · ` +
+        `hit ${(100*bk.hit).toFixed(1)}% · 95% CI <b>[${sgn(bk.ci_lo)}, ${sgn(bk.ci_hi)}]</b> — the CI floor is ${sgn(bk.ci_lo)}.`;
+      document.getElementById("fdBook").style.display="block";
+    }
     document.getElementById("fdRows").innerHTML = d.families.map(f=>{
       const c=TIER_C[f.tier]||"#aaa";
       return `<div style="display:grid;grid-template-columns:1.6fr 92px 56px 76px 120px 110px;gap:10px;padding:7px 10px;border-bottom:1px solid rgba(255,255,255,.05);font-family:'JetBrains Mono',monospace;font-size:12px;align-items:center;">

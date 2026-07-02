@@ -105,7 +105,23 @@ def build():
     for r in rows:
         tiers[r["tier"]] = tiers.get(r["tier"], 0) + 1
 
+    # The "durable book": what betting ONLY the DURABLE tier would have produced.
+    dur_fams = {r["family"] for r in rows if r["tier"] == "DURABLE"}
+    dur_nets, dur_wins = [], 0
+    for fam in dur_fams:
+        for p in by_fam[fam]:
+            dur_nets.append(_net(p))
+            dur_wins += 1 if p.get("result") == "won" else 0
+    durable_book = None
+    if dur_nets:
+        lo, hi = _boot_ci(dur_nets, seed=11)
+        durable_book = {"n": len(dur_nets), "families": sorted(dur_fams),
+                        "roi": _roi(dur_nets), "net_units": round(sum(dur_nets), 1),
+                        "hit": round(dur_wins / len(dur_nets), 3),
+                        "ci_lo": lo, "ci_hi": hi}
+
     return {
+        "durable_book": durable_book,
         "generated_at": datetime.datetime.now().isoformat(timespec="seconds"),
         "n_settled_total": len(settled),
         "n_families_cut": len(cut),
