@@ -2,32 +2,28 @@
 
 **Model Confidence: 37.1/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
 
-_Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
+_Pipeline health: **DEGRADED** (14/15 artifacts ok; 1 empty, 0 stale)._ 
 
-_Generated at 2026-07-02T16:16:09 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-07-02T23:07:04 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
-**CHW @ CLE - CHW_ML**
-- Market: -107
-- Model probability: 74.3%
-- Raw edge: +43.81%
+**STL @ ATL - STL_ML**
+- Market: -101
+- Model probability: 64.1%
+- Raw edge: +27.65%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
 
-## Full Slate (9 games)
+## Full Slate (5 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 12:35p ET | PIT @ PHI | Citizens Bank Park | 104F 8mph | OVER_10.5 +12.93% |
-| 2:10p ET | CIN @ MIL | American Family Field | indoor | MIL_ML +19.99% |
-| 3:10p ET | MIA @ COL | Coors Field | 91F 10mph | OVER_12.0 +40.1% |
-| 6:40p ET | CHW @ CLE | Progressive Field | 86F 4mph | CHW_ML +43.81% |
-| 7:15p ET | STL @ ATL | Truist Park | 86F 4mph | OVER_8.5 +27.63% |
-| 7:40p ET | TBR @ KCR | Kauffman Stadium | 84F 7mph | TBR_ML +24.81% |
+| 7:15p ET | STL @ ATL | Truist Park | 82F 3mph | STL_ML +27.65% |
+| 7:40p ET | TBR @ KCR | Kauffman Stadium | 84F 9mph | TBR_ML +23.4% |
 | 8:05p ET | DET @ TEX | Globe Life Field | indoor | OVER_7.5 +19.51% |
-| 9:40p ET | LAA @ SEA | T-Mobile Park | indoor | LAA_ML +19.58% |
+| 9:40p ET | LAA @ SEA | T-Mobile Park | indoor | LAA_ML +26.56% |
 | 10:10p ET | SDP @ LAD | UNIQLO Field at Dodger Stadium | 60F 3mph | LAD_ML +26.45% |
 
 ## Parlays - top 5
@@ -62,15 +58,11 @@ Cumulative graded plays: 118214. Wins: 87366. Hit rate: 73.9%.
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| CHW @ CLE | 43.3% | +131 | 4.29 | +528 | -528 |
-| CIN @ MIL | 60.7% | -154 | 2.5 | -212 | +212 |
 | DET @ TEX | 48.2% | +108 | 3.65 | +178 | -178 |
 | LAA @ SEA | 48.0% | +108 | 3.67 | +142 | -142 |
-| MIA @ COL | 26.1% | +283 | 6.67 | +300 | -300 |
-| PIT @ PHI | 26.9% | +271 | 6.73 | +107 | -107 |
-| SDP @ LAD | 20.6% | +384 | 8.03 | -294 | +294 |
-| STL @ ATL | 47.2% | +112 | 3.82 | +302 | -302 |
-| TBR @ KCR | 51.3% | -105 | 3.44 | +396 | -396 |
+| SDP @ LAD | 20.6% | +384 | 8.02 | -294 | +294 |
+| STL @ ATL | 47.2% | +112 | 3.83 | +303 | -303 |
+| TBR @ KCR | 51.3% | -105 | 3.48 | +398 | -398 |
 
 ## Travel / Rest Flags
 
