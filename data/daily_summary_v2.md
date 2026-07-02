@@ -1,55 +1,55 @@
 # EdgeStat Daily Summary — 2026-07-02
 
-## 🏥 Model Health: 70.2/100 [HEALTHY]
+## 🏥 Model Health: 74.8/100 [HEALTHY]
 - Solid health - some minor issues to monitor
   - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 54.4/100
   - 🔴 Brier Trend: 29.6/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟡 Data Health: 72.7/100
-  - 🟢 Edge Count: 88.6/100
+  - 🟢 Data Health: 100.0/100
+  - 🟢 Edge Count: 80.0/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.582)
-- **Total games on board:** 128
+- **Total games on board:** 112
 - **Strong home favorites:** 3 | **Strong road dogs:** 1
 
 ## 🎯 Top 5 Best Bets
-1. **MIA @ COL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-2. **CIN @ MIL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-3. **LAA @ SEA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-4. **SDP @ CHC YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-5. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
+1. **SDP @ LAD YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+2. **MIA @ COL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+3. **PIT @ PHI YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+4. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
+5. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
+
+## 🐋 Whale Picks (Max Confluence)
+- [WHALE] **[MLB]** CIN @ MIL ML_HOME -- 77% / +16.0% (score 3.5)
+- [STRONG] **[MLB]** CHW @ CLE CHW_ML -- 67% / +21.3% (score 2.5)
 
 ## 📡 Sharp Action (Line Movement)
-- [ELITE] **SDP @ CHC** ml_home: 60.32% → 97.06% (+36.7pp)
-- [STRONG] **CIN @ MIL** ml_home: 60.47% → 66.56% (+6.1pp)
+- [STRONG] **CIN @ MIL** ml_home: 60.47% → 66.44% (+6.0pp)
+
+## 📉 Strong UNDER Signals
+- [STRONG 5.5] **LAA @ SEA** model 6.99 vs market 7.5
 
 ## 🔒 Locks of the Day -- Track Record
-- All-time: **262-44** (85.6% hit rate)
-- Net units: **+9.22u** | ROI: **+48.6%**
-- Last 7d: 43-3 (93.5%) | net +1.77u
+- All-time: **271-44** (86.0% hit rate)
+- Net units: **+9.63u** | ROI: **+49.3%**
+- Last 7d: 36-0 (100.0%) | net +1.64u
 
-**Today's 11 Locks:**
-- [MLB-PP] **Henry Davis** PP_batter_hrr_under_3.5 · p=87% edge=+50.5% qK=0.062u
-- [MLB-PP] **Marcell Ozuna** PP_batter_hrr_under_3.5 · p=87% edge=+50.4% qK=0.062u
-- [MLB-PP] **Royce Lewis** PP_batter_hrr_under_3.5 · p=86% edge=+48.8% qK=0.062u
-- [MLB-PP] **Jasson Domínguez** PP_batter_hrr_under_3.5 · p=86% edge=+48.7% qK=0.062u
-- [MLB-PP] **Joey Loperfido** PP_batter_hrr_under_3.5 · p=86% edge=+48.5% qK=0.062u
+**Today's 5 Locks:**
+- [MLB-PP] **Tyler Stephenson** PP_batter_hrr_under_3.5 · p=88% edge=+51.9% qK=0.062u
+- [MLB-PP] **Henry Bolte** PP_batter_hrr_under_3.5 · p=87% edge=+51.8% qK=0.062u
 - [MLB-PP] **Josh Lowe** PP_batter_hrr_under_3.5 · p=87% edge=+51.7% qK=0.062u
-- [MLB-PP] **Henry Bolte** PP_batter_hrr_under_3.5 · p=87% edge=+51.7% qK=0.062u
-- [MLB-PP] **Spencer Torkelson** PP_batter_hrr_under_3.5 · p=87% edge=+51.5% qK=0.062u
-- [MLB-PP] **Tyler Stephenson** PP_batter_hrr_under_3.5 · p=87% edge=+51.8% qK=0.062u
 - [MLB-PP] **Andrés Chaparro** PP_batter_hrr_under_3.5 · p=87% edge=+51.5% qK=0.062u
-- [MLB-PP] **Masataka Yoshida** PP_batter_hrr_under_3.5 · p=87% edge=+51.3% qK=0.062u
+- [MLB-PP] **Masataka Yoshida** PP_batter_hrr_under_3.5 · p=87% edge=+51.4% qK=0.062u
 
 ## 🎰 Top Balanced 2-Leg Parlays (40-65% joint)
-- [MLB-PP] Tyler Stephenson PP_batter_hrr_under_ + [MLB] LAD @ OAK ML_HOME
-  Joint: 53% | Fair: 249 | Edge: +86.5%
-- [MLB-PP] Tyler Stephenson PP_batter_hrr_under_ + [MLB] LAD @ OAK OAK_ML
-  Joint: 53% | Fair: 249 | Edge: +86.5%
-- [MLB-PP] Henry Bolte PP_batter_hrr_under_ + [MLB] LAD @ OAK ML_HOME
-  Joint: 53% | Fair: 249 | Edge: +86.5%
+- [MLB-PP] Tyler Stephenson PP_batter_hrr_under_ + [MLB] STL @ ATL STL_ML
+  Joint: 54% | Fair: 244 | Edge: +84.5%
+- [MLB-PP] Henry Bolte PP_batter_hrr_under_ + [MLB] STL @ ATL STL_ML
+  Joint: 54% | Fair: 244 | Edge: +84.5%
+- [MLB-PP] Josh Lowe PP_batter_hrr_under_ + [MLB] STL @ ATL STL_ML
+  Joint: 54% | Fair: 244 | Edge: +84.3%
 
 ## 🎮 Player Play of the Day (cross-sport)
 - **[LOL]** Inspired UNDER 3.5 Kills | MED conviction · model 61.7% fair -161
@@ -66,38 +66,39 @@
 - Hot teams: **0** | Cold teams: **1** | Over-heavy: 0 | Under-heavy: 3
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (35)
-- RESIDUAL_DIVERGENCE: **1**
+## ⚠️ Anomaly Detector (38)
+- RESIDUAL_DIVERGENCE: **4**
 - STEAM_MOVE: **33**
 - COMPOUND_BULLPEN: **1**
-  - Connecticut Sun (WNBA): Connecticut Sun OUTPERFORMING expected margin by 10.4pts in recent games -- model bias may persist
+  - Atlanta Dream (WNBA): Atlanta Dream UNDERPERFORMING expected margin by 9.7pts in recent games -- model bias may persist
+  - Connecticut Sun (WNBA): Connecticut Sun OUTPERFORMING expected margin by 13.6pts in recent games -- model bias may persist
+  - Dallas Wings (WNBA): Dallas Wings UNDERPERFORMING expected margin by 12.5pts in recent games -- model bias may persist
+  - Seattle Storm (WNBA): Seattle Storm OUTPERFORMING expected margin by 9.2pts in recent games -- model bias may persist
   - LA @ IND (WNBA): TOTAL steam since open: total +4 (OVER) (6 snapshots)
-  - ATL @ SFG (MLB): ML/TOTAL steam since open: ML -16.4pp toward ATL; total -0.5 (UNDER) (8 snapshots)
-  - LV @ NY (WNBA): ML/TOTAL steam since open: ML +12.4pp toward NY; total -1 (UNDER) (4 snapshots)
-  - NY @ SEA (WNBA): ML/TOTAL steam since open: ML +8.9pp toward SEA; total -2 (UNDER) (2 snapshots)
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$4.99**
-  - #1 [NRFI] $50 on MIA @ COL YRFI (1st-inning OVER 0.5) (P=78%)
-  - #2 [NRFI] $50 on CIN @ MIL YRFI (1st-inning OVER 0.5) (P=70%)
-  - #3 [NRFI] $50 on LAA @ SEA YRFI (1st-inning OVER 0.5) (P=69%)
+- Expected EV: **$12.03**
+  - #1 [NRFI] $50 on SDP @ LAD YRFI (1st-inning OVER 0.5) (P=79%)
+  - #2 [NRFI] $50 on MIA @ COL YRFI (1st-inning OVER 0.5) (P=74%)
+  - #3 [NRFI] $50 on PIT @ PHI YRFI (1st-inning OVER 0.5) (P=73%)
   - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
-## 🎯 Convergence Picks (4 stacked games)
-- ELITE: **1** · HIGH: 0 · MED: 3
-  - [ELITE] Las Vegas Aces @ New York Liberty : 5 signals (PREGAME, HEAT_COLD, HEAT_COLD, ATS)
+## 🎯 Convergence Picks (6 stacked games)
+- ELITE: **1** · HIGH: 1 · MED: 4
+  - [ELITE] Dallas Wings @ Connecticut Sun : 5 signals (PREGAME, ANOMALY, ANOMALY, ATS)
+  - [HIGH] Atlanta Dream @ Washington Mystics : 3 signals (HEAT_COLD, ANOMALY, ATS)
   - [MED] New York Knicks @ San Antonio Spurs : 2 signals (ATS, ATS)
+  - [MED] Seattle Storm @ Phoenix Mercury : 2 signals (ANOMALY, ATS)
   - [MED] Portland Timbers @ Seattle Sounders FC : 2 signals (PREGAME, ATS)
-  - [MED] Coventry City @ Arsenal : 2 signals (PREGAME, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (9)
-- **Ryan Weathers** OVER 4.5 K (75%) fair -295
-- **Parker Messick** OVER 4.5 K (75%) fair -295
-- **Miles Mikolas** OVER 5.5 K (74%) fair -280
-- **Gage Jump** OVER 4.5 K (69%) fair -224
-- **Trey Yesavage** OVER 4.5 K (62%) fair -166
+## ⚾ Top MLB Pitcher K Plays (5)
+- **Bryce Miller** OVER 5.5 K (77%) fair -340
+- **Jacob Misiorowski** OVER 7.5 K (73%) fair -272
+- **Dustin May** OVER 5.5 K (72%) fair -253
+- **Nathan Eovaldi** OVER 5.5 K (67%) fair -200
+- **Roki Sasaki** OVER 4.5 K (58%) fair -141
 
 ## 🏀 NBA Player Heat (18 HOT / 23 COLD)
   - 🔥 **Jeremiah Fears** (NO): L5 31.8/5.8/6.0 vs season 16.9/3.2/4.0 [PTS +14.9, REB +2.6, AST +2.0]
@@ -116,15 +117,12 @@
   - [LEAN] **Lone'er Kavanagh** (10-1-0) vs Brandon Royval -- fair -151
   - [COIN_FLIP] **Damian Pinas** (9-1-0) vs Cesar Almeida -- fair -133
 
-## ⛳ Golf Player Heat (from Travelers Championship)
-  - 🔥 T1 **Viktor Hovland** (Norway): -22 total -- finished T1
-  - 🔥 T2 **Scottie Scheffler** (USA): -21 total -- finished T2
-  - 🔥 T3 **Collin Morikawa** (USA): -20 total -- finished T3, Sunday -4.0 vs tourney avg
-  - 🔥 T4 **Matt Fitzpatrick** (England): -19 total -- finished T4, Sunday -1.2 vs tourney avg
-  - 🔥 T5 **Wyndham Clark** (USA): -18 total -- finished T5, Sunday -0.5 vs tourney avg
-  - ❄️ **J.T. Poston** (USA): Sunday +5.8 vs tourney avg
-  - ❄️ **Eric Cole** (USA): Sunday +5.5 vs tourney avg
-  - ❄️ **Si Woo Kim** (South Korea): Sunday +5.2 vs tourney avg
+## ⛳ Golf Player Heat (from John Deere Classic)
+  - 🔥 T1 **Luke List** (USA): +0 total -- finished T1
+  - 🔥 T2 **Ryan Brehm** (USA): +0 total -- finished T2
+  - 🔥 T3 **Rafael Campos** (Puerto Rico): +0 total -- finished T3
+  - 🔥 T4 **Beau Hossler** (USA): +0 total -- finished T4
+  - 🔥 T5 **Tyler Duncan** (USA): +0 total -- finished T5
 
 ## 🔥 MLB Batter Heat (49 HOT / 48 COLD)
   - 🔥 **Caleb Durbin** (BOS): L14 .396 / season .229 (+167pts)
@@ -137,6 +135,9 @@
   - ❄️ **Brice Matthews** (HOU): L14 .038 / season .191 (-153pts) -- FADE props
   - ❄️ **JJ Bleday** (CIN): L14 .098 / season .236 (-138pts) -- FADE props
   - ❄️ **Mickey Moniak** (COL): L14 .150 / season .271 (-121pts) -- FADE props
+
+## 📈 Streak Regression Alerts (1)
+- [WNBA] Atlanta Dream on L3 L10 2-3 -- Atlanta Dream on L3 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**

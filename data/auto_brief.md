@@ -6,48 +6,61 @@ _0% lineups confirmed · 10 rookie SPs_
 
 ## Slate
 - **9 games** scheduled
-- **33 best bets** scored: 10 DK · 0 PP · 9 NRFI · 0 SGP
-- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$41.33
-- **MC simulation:** EV +$151.51, 86% P(profit), p05 $-73.3 / p95 $367.03
+- **50 best bets** scored: 0 DK · 20 PP · 7 NRFI · 6 SGP
+- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$46.28
+- **MC simulation:** EV +$74.83, 82% P(profit), p05 $-79.4 / p95 $198.67
 
 ## Top 5 Best Bets
-1. **MIA @ COL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +32.3%)
-   - P(YRFI) 78.3% vs baseline 46.0%
-2. **CIN @ MIL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +23.8%)
-   - P(YRFI) 69.8% vs baseline 46.0%
-3. **LAA @ SEA YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +22.9%)
-   - P(YRFI) 68.9% vs baseline 46.0%
-4. **SDP @ CHC YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +20.8%)
-   - P(YRFI) 66.8% vs baseline 46.0%
-5. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
+1. **SDP @ LAD YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +33.4%)
+   - P(YRFI) 79.4% vs baseline 46.0%
+2. **MIA @ COL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +27.9%)
+   - P(YRFI) 73.9% vs baseline 46.0%
+3. **PIT @ PHI YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +27.1%)
+   - P(YRFI) 73.1% vs baseline 46.0%
+4. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
    - Player prop quality score 1.1935
    - Elite player
+5. **LOL ShowMaker OVER 3.5 Kills**  (78/100 ****, edge —)
+   - Player prop quality score 1.1892
+   - Elite player
 
-## ⚠️ Trap Warnings — 10 flagged
-- **Tyler Tolbert OVER 0.5 batter hits** (low):
-   - Edge +32.5% looks big but only 0 settled props on this player — model unproven
+## ⚠️ Trap Warnings — 18 flagged
+- **SDP @ LAD YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +33.4% looks big but only 0 settled props on this player — model unproven
 - **MIA @ COL YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +32.3% looks big but only 0 settled props on this player — model unproven
-- **Kahlil Watson OVER 0.5 batter hits** (low):
-   - Edge +30.8% looks big but only 0 settled props on this player — model unproven
-- **CIN @ MIL YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +23.8% looks big but only 0 settled props on this player — model unproven
-- **LAA @ SEA YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +22.9% looks big but only 0 settled props on this player — model unproven
+   - Edge +27.9% looks big but only 0 settled props on this player — model unproven
+- **PIT @ PHI YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +27.1% looks big but only 0 settled props on this player — model unproven
+- **STL @ ATL 2-leg SGP @ -112** (low):
+   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
+- **CIN @ MIL 2-leg SGP @ -193** (low):
+   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
 
 ## Hot streaks
-**Batters heating up:** Hunter Goodman (heat +7.64), Esmerlyn Valdez (heat +6.14), Dansby Swanson (heat +5.78)
-**Pitchers on a run:** Casey Mize (heat +12.86), Sean Burke (heat +11.81), Ryan Weathers (heat +10.80)
+**Batters heating up:** Junior Caminero (heat +10.58), Hunter Goodman (heat +7.64), Cedric Mullins (heat +5.42)
+**Pitchers on a run:** Bryce Miller (heat +5.43), Ryan Gusto (heat +4.89), Nathan Eovaldi (heat +4.49)
+
+## Top correlation-aware SGPs
+- **STL @ ATL** 2-leg @ -112 fair (joint 0.53, EV +25.0%)
+   - Dustin May OVER 4.5 pitcher strikeouts
+   - Dustin May UNDER 7.5 pitcher strikeouts
+- **CIN @ MIL** 2-leg @ -193 fair (joint 0.66, EV +25.0%)
+   - Chase Burns UNDER 10.5 pitcher strikeouts
+   - Chase Burns OVER 5.5 pitcher strikeouts
+- **LAA @ SEA** 2-leg @ -191 fair (joint 0.66, EV +25.0%)
+   - Walbert Ureña UNDER 7.5 pitcher strikeouts
+   - Bryce Miller UNDER 9.5 pitcher strikeouts
 
 ## Bullpens GASSED tonight
-Pittsburgh Pirates, San Diego Padres, Tampa Bay Rays, Texas Rangers, Toronto Blue Jays, Philadelphia Phillies, Chicago White Sox, New York Yankees
+San Diego Padres, San Francisco Giants, Toronto Blue Jays, Minnesota Twins, Atlanta Braves, Chicago White Sox, New York Yankees, Milwaukee Brewers
 _Lean late-inning OVER on these games; fade their save situations._
 
 ## NRFI/YRFI strong leans
-- **YRFI** (1st-inning OVER): MIA @ COL, CIN @ MIL, LAA @ SEA, SDP @ CHC, NYM @ TOR
+- **YRFI** (1st-inning OVER): SDP @ LAD, MIA @ COL, PIT @ PHI, CHW @ CLE
 
-## Cross-book pricing
-28 props softer on one book — see /props for details.
+## Golf -- John Deere Classic
+- **Leader:** Luke List (E) at #1
+- **Field:** 144 players  |  Status: Scheduled
 
 ## NBA -- PLAYOFFS
 - New York Knicks @ San Antonio Spurs (53-29 vs 62-20) 94-90 | P(home) 0.0% fair +0 | Final
@@ -85,4 +98,5 @@ _Lean late-inning OVER on these games; fade their save situations._
 ## Self-learning calibration (esports + KBO)
 - **LOL:** 25 settled | brier 0.2727 | ECE 0.1833
    - Model over-confident; subtract 18.3pp at next inference
-- **KBO:** 22 settled | brier 0.2404 | ECE 0.0944
+- **KBO:** 23 settled | brier 0.2458 | ECE 0.064
+   - Model over-confident; subtract 3.4pp at next inference

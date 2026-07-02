@@ -4,28 +4,28 @@ _6 picks consolidated from POD + Alpha + Book Edges + Parlay-of-Day._
 
 ## ⭐ Play of the Day
 
-- **Tyler Stephenson** · PP_batter_hrr_under_3.5
-  Prob 87.5% · Odds -136 · Edge +51.9% · Kelly 0.250
+- **Lane Thomas** · PP_batter_hrr_under_3.5
+  Prob 87.6% · Odds -136 · Edge +52.0% · Kelly 0.250
 
 ## 🎯 Alpha Pick
 
-- **STL @ ATL** · STL_ML
-  Prob 61.4% · Odds -102 · Edge +21.5% · Kelly 0.220
+- **CHW @ CLE** · CHW_ML
+  Prob 66.4% · Odds -119 · Edge +22.1% · Kelly 0.250
 
 ## 📊 Book Edges
 
 - **LAA @ SEA · AWAY (AWAY)** · TEAM_ML
-  Prob 41.1% · Odds +177 · Edge +14.0% · Kelly 0.079
+  Prob 41.1% · Odds +178 · Edge +14.2% · Kelly 0.080
 - **STL @ ATL · AWAY (AWAY)** · TEAM_ML
-  Prob 56.6% · Odds -102 · Edge +12.0% · Kelly 0.123
-- **PIT @ PHI · OVER · O/U 10.0** · TOTAL_OVER
-  Prob 58.3% · Odds -110 · Edge +11.3% · Kelly 0.124
+  Prob 57.2% · Odds -105 · Edge +11.7% · Kelly 0.122
+- **TBR @ KCR · AWAY (AWAY)** · TEAM_ML
+  Prob 60.5% · Odds -120 · Edge +10.8% · Kelly 0.130
 
 ## 🎲 Parlay
 
-- **Tyler Stephenson + STL @ ATL** · 2-leg
-  Prob 53.7% · Odds +244 · Edge +84.5% · Kelly 0.050
+- **Lane Thomas + CHW @ CLE** · 2-leg
+  Prob 58.1% · Odds +219 · Edge +85.6% · Kelly 0.050
 
 ---
-_Generated 2026-07-02T05:02:50 UTC by EdgeStat._
+_Generated 2026-07-02T11:32:14 UTC by EdgeStat._
 _Stakes assume ¼-Kelly fractional sizing on a flat bankroll._

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-02T05:03:31",
+  "generated_at": "2026-07-02T11:32:49",
   "sports": {
     "lol": {
       "n_total": 29,
@@ -50,11 +50,11 @@
       }
     },
     "kbo": {
-      "n_total": 25,
-      "n_settled": 22,
-      "brier": 0.2404,
-      "log_loss": 0.6737,
-      "ece": 0.0944,
+      "n_total": 26,
+      "n_settled": 23,
+      "brier": 0.2458,
+      "log_loss": 0.6847,
+      "ece": 0.064,
       "reliability_bins": [
         {
           "low": 0.5,
@@ -69,17 +69,20 @@
         {
           "low": 0.6,
           "high": 0.7,
-          "n": 10,
-          "expected": 6.051999999999999,
+          "n": 11,
+          "expected": 6.656099999999999,
           "actual_wins": 7,
-          "expected_rate": 0.6052,
-          "actual_rate": 0.7,
-          "delta": 0.0948
+          "expected_rate": 0.6051,
+          "actual_rate": 0.6364,
+          "delta": 0.0313
         }
       ],
       "calibration_recommendation": {
-        "applied": false,
-        "note": "model is well-calibrated (|shift| < 2pp)"
+        "applied": true,
+        "predicted_mean_winprob": 0.5993,
+        "actual_hit_rate": 0.5652,
+        "recommended_shift_pp": -3.41,
+        "note": "Model over-confident; subtract 3.4pp at next inference"
       }
     }
   }

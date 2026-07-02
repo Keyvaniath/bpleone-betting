@@ -4,14 +4,14 @@
 
 _Pipeline health: **DEGRADED** (14/15 artifacts ok; 1 empty, 0 stale)._ 
 
-_Generated at 2026-07-02T05:02:53 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-07-02T11:32:17 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
-**MIA @ COL - OVER_8.5**
+**MIA @ COL - OVER_12.0**
 - Market: -110
-- Model probability: 96.2%
-- Raw edge: +83.6%
+- Model probability: 73.3%
+- Raw edge: +39.88%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
@@ -20,58 +20,38 @@ _Generated at 2026-07-02T05:02:53 UTC. Game lines source: **Bovada (fallback -- 
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 12:35p ET | PIT @ PHI | Citizens Bank Park | 104F 9mph | OVER_10.0 +25.54% |
-| 2:10p ET | CIN @ MIL | American Family Field | indoor | MIL_ML +19.99% |
-| 3:10p ET | MIA @ COL | Coors Field | 94F 13mph | OVER_8.5 +83.6% |
-| 6:40p ET | CHW @ CLE | Progressive Field | 87F 5mph | CHW_ML +35.99% |
-| 7:15p ET | STL @ ATL | Truist Park | 80F 6mph | STL_ML +28.17% |
-| 7:40p ET | TBR @ KCR | Kauffman Stadium | 85F 7mph | TBR_ML +40.2% |
+| 12:35p ET | PIT @ PHI | Citizens Bank Park | 104F 8mph | OVER_10.5 +12.93% |
+| 2:10p ET | CIN @ MIL | American Family Field | indoor | MIL_ML +21.02% |
+| 3:10p ET | MIA @ COL | Coors Field | 93F 9mph | OVER_12.0 +39.88% |
+| 6:40p ET | CHW @ CLE | Progressive Field | 87F 4mph | CHW_ML +36.87% |
+| 7:15p ET | STL @ ATL | Truist Park | 86F 4mph | STL_ML +25.18% |
+| 7:40p ET | TBR @ KCR | Kauffman Stadium | 85F 7mph | TBR_ML +28.52% |
 | 8:05p ET | DET @ TEX | Globe Life Field | indoor | OVER_7.5 +19.51% |
-| 9:40p ET | LAA @ SEA | T-Mobile Park | indoor | LAA_ML +19.58% |
-| 10:10p ET | SDP @ LAD | UNIQLO Field at Dodger Stadium | 59F 3mph | LAD_ML +26.38% |
-
-## PrizePicks - 49 lines softer than DraftKings
-
-| Player | Market | PP line | DK line | Δ | Favor | Model % |
-|---|---|---|---|---|---|---|
-| Brandon Marsh | Total Bases | 5.5 | 1.5 | +4.0 | UNDER | 98.7% |
-| Esmerlyn Valdez | Total Bases | 5.5 | 1.5 | +4.0 | UNDER | 95.2% |
-| Jacob Misiorowski | Pitcher Strikeouts | 13.5 | 9.5 | +4.0 | UNDER | 89.3% |
-| Jordan Walker | Total Bases | 4.5 | 1.5 | +3.0 | UNDER | 95.3% |
-| Alec Burleson | Total Bases | 4.5 | 1.5 | +3.0 | UNDER | 95.3% |
-| Michael Harris II | Total Bases | 4.5 | 1.5 | +3.0 | UNDER | 94.5% |
-| Dustin May | Pitcher Strikeouts | 7.5 | 4.5 | +3.0 | UNDER | 70.5% |
-| Tristan Peters | Hits | 2.5 | 0.5 | +2.0 | UNDER | 91.8% |
-| Brandon Marsh | Total Bases | 3.5 | 1.5 | +2.0 | UNDER | 87.6% |
-| Jordan Walker | Total Bases | 3.5 | 1.5 | +2.0 | UNDER | 86.9% |
-| Alec Burleson | Total Bases | 3.5 | 1.5 | +2.0 | UNDER | 86.8% |
-| Michael Harris II | Total Bases | 3.5 | 1.5 | +2.0 | UNDER | 85.2% |
-| Jacob Misiorowski | Pitcher Strikeouts | 11.5 | 9.5 | +2.0 | UNDER | 74.4% |
-| Jacob Misiorowski | Pitcher Strikeouts | 7.5 | 9.5 | -2.0 | OVER | 74.0% |
-| Esmerlyn Valdez | Total Bases | 3.5 | 1.5 | +2.0 | UNDER | 73.9% |
+| 9:40p ET | LAA @ SEA | T-Mobile Park | indoor | LAA_ML +21.33% |
+| 10:10p ET | SDP @ LAD | UNIQLO Field at Dodger Stadium | 60F 2mph | LAD_ML +26.3% |
 
 ## Parlays - top 5
 
-- **3-leg @ +504 (prob 24.8%, EV +49.96%)**
-  - PIT @ PHI PHI_ML (-131, model 59.9%)
-  - MIA @ COL MIA_ML (-126, model 66.2%)
+- **3-leg @ +770 (prob 17.2%, EV +49.99%)**
+  - PIT @ PHI PHI_ML (-130, model 59.9%)
+  - MIA @ COL MIA_ML (-130, model 65.9%)
+  - LAA @ SEA LAA_ML (+178, model 43.6%)
+- **3-leg @ +452 (prob 27.1%, EV +49.8%)**
+  - CIN @ MIL MIL_ML (-194, model 79.9%)
+  - CHW @ CLE OVER_8.0 (-110, model 54.2%)
   - DET @ TEX OVER_7.5 (-110, model 62.6%)
-- **3-leg @ +1005 (prob 13.3%, EV +47.05%)**
-  - STL @ ATL OVER_9.0 (-110, model 60.0%)
-  - DET @ TEX DET_ML (+109, model 50.8%)
-  - LAA @ SEA LAA_ML (+177, model 43.6%)
-- **3-leg @ +1005 (prob 13.3%, EV +46.93%)**
-  - DET @ TEX DET_ML (+109, model 50.8%)
-  - LAA @ SEA LAA_ML (+177, model 43.6%)
+- **3-leg @ +913 (prob 14.8%, EV +49.76%)**
+  - STL @ ATL OVER_9.0 (-110, model 60.6%)
+  - LAA @ SEA LAA_ML (+178, model 43.6%)
+  - SDP @ LAD OVER_9.0 (-110, model 55.9%)
+- **3-leg @ +596 (prob 21.5%, EV +49.64%)**
+  - PIT @ PHI OVER_10.5 (-110, model 59.2%)
+  - STL @ ATL OVER_9.0 (-110, model 60.6%)
   - LAA @ SEA UNDER_7.5 (-110, model 60.0%)
-- **3-leg @ +832 (prob 15.7%, EV +46.45%)**
-  - PIT @ PHI PHI_ML (-131, model 59.9%)
-  - STL @ ATL OVER_9.0 (-110, model 60.0%)
-  - LAA @ SEA LAA_ML (+177, model 43.6%)
-- **3-leg @ +832 (prob 15.7%, EV +46.33%)**
-  - PIT @ PHI PHI_ML (-131, model 59.9%)
-  - LAA @ SEA LAA_ML (+177, model 43.6%)
-  - LAA @ SEA UNDER_7.5 (-110, model 60.0%)
+- **3-leg @ +374 (prob 31.5%, EV +49.63%)**
+  - PIT @ PHI PHI_ML (-130, model 59.9%)
+  - CIN @ MIL MIL_ML (-194, model 79.9%)
+  - MIA @ COL MIA_ML (-130, model 65.9%)
 
 ## Self-Learning Loop
 
@@ -85,15 +65,15 @@ Cumulative graded plays: 118214. Wins: 87366. Hit rate: 73.9%.
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| CHW @ CLE | 43.3% | +131 | 4.3 | +530 | -530 |
+| CHW @ CLE | 43.3% | +131 | 4.26 | +529 | -529 |
 | CIN @ MIL | 60.7% | -154 | 2.5 | -212 | +212 |
 | DET @ TEX | 48.2% | +108 | 3.65 | +178 | -178 |
 | LAA @ SEA | 48.0% | +108 | 3.67 | +142 | -142 |
-| MIA @ COL | 26.1% | +283 | 7.11 | +301 | -301 |
-| PIT @ PHI | 26.9% | +271 | 6.75 | +107 | -107 |
-| SDP @ LAD | 20.6% | +384 | 8.02 | -293 | +293 |
-| STL @ ATL | 47.2% | +112 | 3.91 | +302 | -302 |
-| TBR @ KCR | 51.3% | -105 | 3.43 | +397 | -397 |
+| MIA @ COL | 26.1% | +283 | 6.59 | +300 | -300 |
+| PIT @ PHI | 26.9% | +271 | 6.8 | +107 | -107 |
+| SDP @ LAD | 20.6% | +384 | 8.02 | -291 | +291 |
+| STL @ ATL | 47.2% | +112 | 3.83 | +302 | -302 |
+| TBR @ KCR | 51.3% | -105 | 3.44 | +397 | -397 |
 
 ## Travel / Rest Flags
 
@@ -118,7 +98,7 @@ Cumulative graded plays: 118214. Wins: 87366. Hit rate: 73.9%.
 
 ## Loop Activity (since last refresh)
 
-- Confidence delta: **+9.7**
+- Confidence delta: **+0.0**
 
 ## Model Recommendations (operator review)
 

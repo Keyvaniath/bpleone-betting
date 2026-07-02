@@ -1,33 +1,21 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-07-02T05:02:44 UTC_
+_Generated 2026-07-02T11:32:09 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -24
+- **Score:** -175
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 7
-- **Total FADES:** 52
+- **Total STRONG:** 2
+- **Total FADES:** 183
 
 ## Top 5 Curated Picks
-1. **GOLF / Scottie Scheffler** (GOLF_PLAYER, score=219.29)
-   - Play: Scottie Scheffler (PLAYER_STRONG)
-   - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Wyndham Clark** (GOLF_PLAYER, score=219.29)
-   - Play: Wyndham Clark (PLAYER_STRONG)
-   - Rationale: Cross-sport top pick (GOLF_PLAYER)
-3. **MLB / ?** (MLB_TEAM, score=72.04)
-   - Play: ? (TEAM_STRONG)
-   - Rationale: Cross-sport top pick (MLB_TEAM)
-4. **WNBA / kahleah copper** (WNBA_PLAYER, score=69.0)
+1. **WNBA / kahleah copper** (WNBA_PLAYER, score=69.0)
    - Play: kahleah copper (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (WNBA_PLAYER)
-
-## Top Events Board
-- **GOLF** / ? (TOURNAMENT_STRONG)
-  - Scottie Scheffler top 10 finish
-  - Wyndham Clark top 10 finish
-  - Matt Fitzpatrick top 10 finish
+2. **MLB / Walbert Ureña** (MLB_PITCHER, score=59.0)
+   - Play: Walbert Ureña (PITCHER_STRONG)
+   - Rationale: Cross-sport top pick (MLB_PITCHER)
 
 ## Slate ROI Projection
 - **Picks:** 0
@@ -36,13 +24,13 @@ _Generated 2026-07-02T05:02:44 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **MLB** / Griffin Canning (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **MLB** / Gage Jump (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **MLB** / Peter Lambert (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **MLB** / Trey Yesavage (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **MLB** / Parker Messick (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **NHL** / stuart skinner (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / adin hill (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / samsonov ilya (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / anthony stolarz (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / thatcher demko (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
