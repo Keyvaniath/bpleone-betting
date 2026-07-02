@@ -1,0 +1,127 @@
+{
+ "generated_at": "2026-07-02T13:10:23",
+ "n_settled_total": 6639,
+ "n_families_cut": 30,
+ "n_families_evaluated": 8,
+ "min_n": 40,
+ "durable_n": 100,
+ "tiers": {
+  "DURABLE": 2,
+  "PROMISING": 1,
+  "FRAGILE": 3,
+  "NEGATIVE": 2
+ },
+ "families": [
+  {
+   "family": "fight_r1_finish_yes",
+   "n": 160,
+   "hit": 0.531,
+   "net_units": 220.3,
+   "roi": 137.7,
+   "ci_lo": 103.0,
+   "ci_hi": 174.2,
+   "h1_roi": 163.2,
+   "h2_roi": 112.1,
+   "both_halves_positive": true,
+   "tier": "DURABLE"
+  },
+  {
+   "family": "mlb_hrr_3.5_under",
+   "n": 555,
+   "hit": 0.845,
+   "net_units": 232.6,
+   "roi": 41.9,
+   "ci_lo": 37.0,
+   "ci_hi": 46.9,
+   "h1_roi": 30.7,
+   "h2_roi": 53.1,
+   "both_halves_positive": true,
+   "tier": "DURABLE"
+  },
+  {
+   "family": "home_total_over",
+   "n": 65,
+   "hit": 0.846,
+   "net_units": 19.4,
+   "roi": 29.9,
+   "ci_lo": 15.7,
+   "ci_hi": 41.7,
+   "h1_roi": 24.7,
+   "h2_roi": 34.9,
+   "both_halves_positive": true,
+   "tier": "PROMISING"
+  },
+  {
+   "family": "under",
+   "n": 73,
+   "hit": 0.658,
+   "net_units": 13.1,
+   "roi": 18.0,
+   "ci_lo": -1.4,
+   "ci_hi": 38.4,
+   "h1_roi": -2.1,
+   "h2_roi": 37.6,
+   "both_halves_positive": false,
+   "tier": "FRAGILE"
+  },
+  {
+   "family": "mlb_run_0.5_under",
+   "n": 197,
+   "hit": 0.66,
+   "net_units": -2.5,
+   "roi": -1.3,
+   "ci_lo": -10.7,
+   "ci_hi": 7.7,
+   "h1_roi": -0.3,
+   "h2_roi": -2.2,
+   "both_halves_positive": false,
+   "tier": "NEGATIVE"
+  },
+  {
+   "family": "mlb_hit_0.5_over",
+   "n": 108,
+   "hit": 0.63,
+   "net_units": 0.6,
+   "roi": 0.6,
+   "ci_lo": -15.5,
+   "ci_hi": 16.5,
+   "h1_roi": -15.6,
+   "h2_roi": 16.7,
+   "both_halves_positive": false,
+   "tier": "FRAGILE"
+  },
+  {
+   "family": "ml_away",
+   "n": 52,
+   "hit": 0.577,
+   "net_units": 4.5,
+   "roi": 8.6,
+   "ci_lo": -18.5,
+   "ci_hi": 33.6,
+   "h1_roi": 21.7,
+   "h2_roi": -4.5,
+   "both_halves_positive": false,
+   "tier": "FRAGILE"
+  },
+  {
+   "family": "over",
+   "n": 103,
+   "hit": 0.544,
+   "net_units": -3.7,
+   "roi": -3.6,
+   "ci_lo": -22.1,
+   "ci_hi": 14.1,
+   "h1_roi": 20.2,
+   "h2_roi": -27.0,
+   "both_halves_positive": false,
+   "tier": "NEGATIVE"
+  }
+ ],
+ "method_note": "Every surviving (non-cut) family with n >= 40 graded picks, ranked by the LOWER bound of a 1000-resample bootstrap 95% CI on ROI. DURABLE = CI floor above zero AND positive in both chronological halves AND n >= 100. A big headline ROI with a CI spanning zero or a losing second half is FRAGILE, not edge.",
+ "caveats": [
+  "Bootstrap CIs treat picks as independent; correlated slates (same game/day) understate variance.",
+  "Split-half stability is a coarse regime check, not a forecast.",
+  "Families below n=40 are unscored -- absence here is not endorsement.",
+  "All numbers are 1u-flat on the ledger's recorded payouts."
+ ]
+}

@@ -207,6 +207,44 @@
   }).catch(()=>{});
   </script>
 
+  <!-- Family durability scorecard: EVERY surviving family, CI + split-half tiered (auto-updating) -->
+  <section class="card" id="famDurCard" style="margin-bottom:18px; border-left:3px solid #58c878; display:none;">
+    <div class="card-head"><span>🧬 Where the Alpha Lives — family durability</span><span class="muted" id="fdMeta">—</span></div>
+    <div style="padding:14px 18px;">
+      <p class="muted" style="font-size:12px;margin:0 0 12px;line-height:1.6;">Every surviving market family with a real sample, ranked by the <strong>lower bound</strong> of its bootstrap 95% CI — a family is only as good as the worst its sample plausibly allows. <strong>DURABLE</strong> needs a CI floor above zero <em>and</em> a positive ROI in both chronological halves; a hot headline with a CI spanning zero is labeled <strong>FRAGILE</strong>, not edge.</p>
+      <div style="overflow-x:auto;">
+        <div style="min-width:640px;">
+          <div style="display:grid;grid-template-columns:1.6fr 92px 56px 76px 120px 110px;gap:10px;padding:5px 10px;font-size:10px;text-transform:uppercase;color:#8a93a6;font-family:'JetBrains Mono',monospace;">
+            <span>Family</span><span>Tier</span><span>N</span><span>ROI</span><span>95% CI</span><span>Halves</span></div>
+          <div id="fdRows"></div>
+        </div>
+      </div>
+      <p class="muted" id="fdNote" style="font-size:11px;margin:10px 0 0;line-height:1.6;"></p>
+    </div>
+  </section>
+  <script>
+  fetch("data/family_durability.json",{cache:"no-cache"}).then(r=>r.json()).then(d=>{
+    if(!d || !(d.families||[]).length) return;
+    document.getElementById("famDurCard").style.display="block";
+    const t=d.tiers||{};
+    document.getElementById("fdMeta").textContent =
+      `${d.n_families_evaluated} families · ${t.DURABLE||0} durable · ${(d.generated_at||'').replace('T',' ').slice(0,16)}`;
+    const TIER_C={DURABLE:"#58c878",PROMISING:"#e0a13a",FRAGILE:"#e35a5a",NEGATIVE:"#8a93a6"};
+    const sgn=v=>(v>=0?'+':'')+v+'%';
+    document.getElementById("fdRows").innerHTML = d.families.map(f=>{
+      const c=TIER_C[f.tier]||"#aaa";
+      return `<div style="display:grid;grid-template-columns:1.6fr 92px 56px 76px 120px 110px;gap:10px;padding:7px 10px;border-bottom:1px solid rgba(255,255,255,.05);font-family:'JetBrains Mono',monospace;font-size:12px;align-items:center;">
+        <span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${f.family.replace(/_/g,' ')}</span>
+        <span style="color:${c};font-weight:700;font-size:10px;">${f.tier}</span>
+        <span class="muted">${f.n}</span>
+        <span style="color:${f.roi>=0?'#58c878':'#e35a5a'};"><b>${sgn(f.roi)}</b></span>
+        <span class="muted">[${sgn(f.ci_lo)}, ${sgn(f.ci_hi)}]</span>
+        <span class="muted">${sgn(f.h1_roi)} / ${sgn(f.h2_roi)}</span></div>`;
+    }).join("");
+    document.getElementById("fdNote").textContent = d.method_note||"";
+  }).catch(()=>{});
+  </script>
+
   <!-- CLV per bet (NEW) -->
   <section id="clvBetCard" class="card" style="margin-bottom: 18px; display:none;">
     <div class="card-head"><span>📈 CLV Per Bet — beating the close</span><span class="muted" id="cpbMeta">--</span></div>

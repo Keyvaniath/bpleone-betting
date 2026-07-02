@@ -629,6 +629,9 @@ jobs:
       - name: Durable-edge deep dive (robustness + sizing for the carry family)
         working-directory: python
         run: python durable_edge_analysis.py || true
+      - name: Family durability scorecard (per-family CI + split-half tiers)
+        working-directory: python
+        run: python family_durability.py || true
       - name: Cross-sport parlay builder (2-leg + 3-leg combos with same-game correlation)
         working-directory: python
         run: python cross_sport_parlay_builder.py
