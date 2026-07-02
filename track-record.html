@@ -129,6 +129,7 @@
     <div style="padding:14px 18px;">
       <p class="muted" style="font-size:12px;margin:0 0 12px;line-height:1.6;">The held-out test above splits the existing ledger. This is stricter: we <strong>froze the curation rule on a fixed date and never refit it</strong>, then score <strong>only</strong> picks settled <em>after</em> that date. Every outcome here postdates the rule — there's no way to fit to it. It starts near-empty and builds daily.</p>
       <div id="fwdBody" style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:1.7;"></div>
+      <div id="fwdLadder" style="display:none;margin-top:14px;"></div>
     </div>
   </section>
   <script>
@@ -147,6 +148,30 @@
       document.getElementById("fwdBody").innerHTML =
         `Since <b>${d.anchor}</b>, on <b>${d.n_settled_since}</b> picks settled against the frozen rule: ` +
         `curated <b style="color:#58c878;">${sgn(d.curated_roi)}</b> (hit ${d.curated_hit}%) vs raw firehose <b style="color:#e35a5a;">${sgn(d.raw_roi)}</b>. Zero hindsight.` + cav;
+    }
+    // Walk-forward LADDER: repeated frozen experiments, each scored on its own future.
+    const exps = d.experiments || [];
+    if (exps.length > 1) {
+      const rows = exps.map(e => {
+        const status = e.building
+          ? `<span style="color:#e0a13a;">building ${e.n_settled_since}/${d.min_meaningful}</span>`
+          : (e.small_sample ? `<span style="color:#e0a13a;">small n</span>`
+                            : `<span style="color:#58c878;">matured</span>`);
+        const cROI = e.building ? '<span class="muted">—</span>'
+          : `<b style="color:${e.curated_roi>=0?'#58c878':'#e35a5a'};">${sgn(e.curated_roi)}</b>`;
+        const rROI = e.building ? '<span class="muted">—</span>'
+          : `<span style="color:${e.raw_roi>=0?'#58c878':'#e35a5a'};">${sgn(e.raw_roi)}</span>`;
+        return `<div style="display:grid;grid-template-columns:110px 70px 70px 90px 90px 1fr;gap:10px;padding:6px 10px;border-bottom:1px solid rgba(255,255,255,.05);font-family:'JetBrains Mono',monospace;font-size:12px;">
+          <span>${e.anchor}</span><span class="muted">${e.frozen_cut_size} fam</span>
+          <span>n=${e.n_settled_since}</span><span>${cROI}</span><span>${rROI}</span><span>${status}</span></div>`;
+      }).join("");
+      document.getElementById("fwdLadder").innerHTML =
+        `<div style="font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:#8a93a6;margin-bottom:6px;">
+          Walk-forward ladder — a new rule is frozen each time the last one matures · <b style="color:#58c878;">${d.ladder_beat_raw}/${d.ladder_meaningful}</b> matured rungs beat the raw firehose</div>
+        <div style="display:grid;grid-template-columns:110px 70px 70px 90px 90px 1fr;gap:10px;padding:4px 10px;font-size:10px;text-transform:uppercase;color:#8a93a6;font-family:'JetBrains Mono',monospace;">
+          <span>Frozen on</span><span>Cut</span><span>Since</span><span>Curated</span><span>Raw</span><span>Status</span></div>` + rows +
+        `<p class="muted" style="font-size:11px;margin:8px 0 0;line-height:1.6;">${d.ladder_note||''}</p>`;
+      document.getElementById("fwdLadder").style.display = "block";
     }
   }).catch(()=>{});
   </script>
