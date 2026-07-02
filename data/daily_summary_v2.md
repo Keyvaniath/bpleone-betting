@@ -1,13 +1,13 @@
 # EdgeStat Daily Summary — 2026-07-02
 
-## 🏥 Model Health: 74.8/100 [HEALTHY]
+## 🏥 Model Health: 75.9/100 [HEALTHY]
 - Solid health - some minor issues to monitor
   - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 54.4/100
   - 🔴 Brier Trend: 29.6/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 100.0/100
-  - 🟢 Edge Count: 80.0/100
+  - 🟢 Data Health: 95.5/100
+  - 🟢 Edge Count: 100/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.582)
@@ -22,8 +22,8 @@
 5. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
-- [WHALE] **[MLB]** CIN @ MIL ML_HOME -- 77% / +16.0% (score 3.5)
-- [STRONG] **[MLB]** CHW @ CLE CHW_ML -- 67% / +21.3% (score 2.5)
+- [WHALE] **[MLB]** CIN @ MIL ML_HOME -- 77% / +16.8% (score 3.5)
+- [STRONG] **[MLB]** CHW @ CLE CHW_ML -- 66% / +22.1% (score 2.5)
 
 ## 📡 Sharp Action (Line Movement)
 - [STRONG] **CIN @ MIL** ml_home: 60.47% → 66.44% (+6.0pp)
@@ -32,24 +32,28 @@
 - [STRONG 5.5] **LAA @ SEA** model 6.99 vs market 7.5
 
 ## 🔒 Locks of the Day -- Track Record
-- All-time: **271-44** (86.0% hit rate)
-- Net units: **+9.63u** | ROI: **+49.3%**
-- Last 7d: 36-0 (100.0%) | net +1.64u
+- All-time: **272-44** (86.1% hit rate)
+- Net units: **+9.68u** | ROI: **+49.4%**
+- Last 7d: 37-0 (100.0%) | net +1.69u
 
-**Today's 5 Locks:**
+**Today's 9 Locks:**
 - [MLB-PP] **Tyler Stephenson** PP_batter_hrr_under_3.5 · p=88% edge=+51.9% qK=0.062u
 - [MLB-PP] **Henry Bolte** PP_batter_hrr_under_3.5 · p=87% edge=+51.8% qK=0.062u
 - [MLB-PP] **Josh Lowe** PP_batter_hrr_under_3.5 · p=87% edge=+51.7% qK=0.062u
 - [MLB-PP] **Andrés Chaparro** PP_batter_hrr_under_3.5 · p=87% edge=+51.5% qK=0.062u
 - [MLB-PP] **Masataka Yoshida** PP_batter_hrr_under_3.5 · p=87% edge=+51.4% qK=0.062u
+- [MLB-PP] **Lane Thomas** PP_batter_hrr_under_3.5 · p=88% edge=+52.0% qK=0.062u
+- [MLB-PP] **Taylor Walls** PP_batter_hrr_under_3.5 · p=87% edge=+51.7% qK=0.062u
+- [MLB-PP] **Alex Freeland** PP_batter_hrr_under_3.5 · p=87% edge=+51.7% qK=0.062u
+- [MLB-PP] **Eugenio Suárez** PP_batter_hrr_under_3.5 · p=87% edge=+51.6% qK=0.062u
 
 ## 🎰 Top Balanced 2-Leg Parlays (40-65% joint)
-- [MLB-PP] Tyler Stephenson PP_batter_hrr_under_ + [MLB] STL @ ATL STL_ML
-  Joint: 54% | Fair: 244 | Edge: +84.5%
-- [MLB-PP] Henry Bolte PP_batter_hrr_under_ + [MLB] STL @ ATL STL_ML
-  Joint: 54% | Fair: 244 | Edge: +84.5%
-- [MLB-PP] Josh Lowe PP_batter_hrr_under_ + [MLB] STL @ ATL STL_ML
-  Joint: 54% | Fair: 244 | Edge: +84.3%
+- [MLB-PP] Lane Thomas PP_batter_hrr_under_ + [MLB] CHW @ CLE CHW_ML
+  Joint: 58% | Fair: 219 | Edge: +85.6%
+- [MLB-PP] Tyler Stephenson PP_batter_hrr_under_ + [MLB] CHW @ CLE CHW_ML
+  Joint: 58% | Fair: 219 | Edge: +85.3%
+- [MLB-PP] Taylor Walls PP_batter_hrr_under_ + [MLB] CHW @ CLE CHW_ML
+  Joint: 58% | Fair: 219 | Edge: +85.3%
 
 ## 🎮 Player Play of the Day (cross-sport)
 - **[LOL]** Inspired UNDER 3.5 Kills | MED conviction · model 61.7% fair -161

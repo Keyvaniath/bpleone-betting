@@ -10,7 +10,7 @@ _6 picks consolidated from POD + Alpha + Book Edges + Parlay-of-Day._
 ## 🎯 Alpha Pick
 
 - **CHW @ CLE** · CHW_ML
-  Prob 66.4% · Odds -119 · Edge +22.1% · Kelly 0.250
+  Prob 65.3% · Odds -107 · Edge +26.3% · Kelly 0.250
 
 ## 📊 Book Edges
 
@@ -18,14 +18,14 @@ _6 picks consolidated from POD + Alpha + Book Edges + Parlay-of-Day._
   Prob 41.1% · Odds +178 · Edge +14.2% · Kelly 0.080
 - **STL @ ATL · AWAY (AWAY)** · TEAM_ML
   Prob 57.2% · Odds -105 · Edge +11.7% · Kelly 0.122
-- **TBR @ KCR · AWAY (AWAY)** · TEAM_ML
-  Prob 60.5% · Odds -120 · Edge +10.8% · Kelly 0.130
+- **STL @ ATL · OVER · O/U 8.5** · TOTAL_OVER
+  Prob 58.3% · Odds -110 · Edge +11.4% · Kelly 0.125
 
 ## 🎲 Parlay
 
 - **Lane Thomas + CHW @ CLE** · 2-leg
-  Prob 58.1% · Odds +219 · Edge +85.6% · Kelly 0.050
+  Prob 57.2% · Odds +236 · Edge +91.9% · Kelly 0.050
 
 ---
-_Generated 2026-07-02T11:32:14 UTC by EdgeStat._
+_Generated 2026-07-02T16:15:24 UTC by EdgeStat._
 _Stakes assume ¼-Kelly fractional sizing on a flat bankroll._

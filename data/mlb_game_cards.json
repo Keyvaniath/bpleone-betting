@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-02T11:21:12",
+  "generated_at": "2026-07-02T16:07:10",
   "date": "2026-07-02",
   "n_games": 9,
   "method_note": "Per-game unified card: today.json model+market+recs joined with every per-matchup player/game prop. Live score/win-prob overlaid client-side from live_state.json + live_game.json.",
@@ -17,14 +17,14 @@
         "temp_f": 104,
         "wind_mph": 8,
         "is_indoor": false,
-        "wind_dir_deg": 234,
-        "carry_index": 0.369,
-        "precip_pct": 1
+        "wind_dir_deg": 253,
+        "carry_index": 0.254,
+        "precip_pct": 0
       },
       "umpire": {
-        "ump_name": null,
-        "ump_label": null,
-        "ump_k_mult": null
+        "ump_name": "Jansen Visconti",
+        "ump_label": "no tendency data",
+        "ump_k_mult": 1.0
       },
       "model": {
         "fair_home_ml": -149,
@@ -35,8 +35,8 @@
         "p_over_market": 0.5916
       },
       "market": {
-        "home_ml": -130,
-        "away_ml": 108,
+        "home_ml": -135,
+        "away_ml": 113,
         "total": 10.5,
         "book": "bovada"
       },
@@ -52,10 +52,10 @@
         {
           "label": "PHI_ML",
           "model_prob": 0.599,
-          "market_price": -130,
-          "edge_pct": 5.99,
-          "kelly_units": 1.95,
-          "confidence": "High"
+          "market_price": -135,
+          "edge_pct": 4.28,
+          "kelly_units": 1.44,
+          "confidence": "Medium"
         }
       ],
       "pitchers": {
@@ -108,24 +108,24 @@
             "pitcher": "Jared Jones",
             "status": "STEADY",
             "trend": null,
-            "tier": null,
+            "tier": "NEUTRAL_FORM",
             "k9_delta": 0.0,
             "era_delta": 0.0,
             "recent_k_per_9_l3": 8.5,
             "recent_era_l3": 4.2,
-            "form_index": null,
+            "form_index": 50.0,
             "leans": []
           },
           "home": {
             "pitcher": "Alan Rangel",
             "status": "STEADY",
             "trend": null,
-            "tier": null,
+            "tier": "NEUTRAL_FORM",
             "k9_delta": 0.0,
             "era_delta": 0.0,
             "recent_k_per_9_l3": 8.5,
             "recent_era_l3": 4.2,
-            "form_index": null,
+            "form_index": 50.0,
             "leans": []
           }
         },
@@ -150,24 +150,6 @@
         },
         "hot_cold": [
           {
-            "name": "Esmerlyn Valdez",
-            "team": "PIT",
-            "kind": "hot",
-            "heat": 6.141,
-            "recent_ops": 1.643,
-            "season_ops": 0.0,
-            "order": null
-          },
-          {
-            "name": "Brandon Marsh",
-            "team": "PHI",
-            "kind": "hot",
-            "heat": 5.009,
-            "recent_ops": 1.077,
-            "season_ops": 0.0,
-            "order": null
-          },
-          {
             "name": "Bryce Harper",
             "team": "PHI",
             "kind": "hot",
@@ -183,6 +165,24 @@
             "heat": 4.249,
             "recent_ops": 1.052,
             "season_ops": 0.0,
+            "order": null
+          },
+          {
+            "name": "J.T. Realmuto",
+            "team": "PHI",
+            "kind": "cold",
+            "heat": -0.64,
+            "recent_ops": 0.49,
+            "season_ops": 0.605,
+            "order": null
+          },
+          {
+            "name": "Kyle Schwarber",
+            "team": "PHI",
+            "kind": "cold",
+            "heat": -1.486,
+            "recent_ops": 0.745,
+            "season_ops": 0.942,
             "order": null
           }
         ]
@@ -249,25 +249,34 @@
       "line_movement": {
         "model_home_implied": 59.9,
         "market": {
-          "home_ml": -130,
-          "away_ml": 108,
+          "home_ml": -135,
+          "away_ml": 113,
           "total": 10.5,
           "book": "bovada",
-          "home_implied": 56.5
+          "home_implied": 57.4
         },
-        "edge_vs_market_pp": 3.4,
+        "edge_vs_market_pp": 2.5,
         "has_timeseries": false
       },
-      "n_predictions": 11,
+      "n_predictions": 10,
       "predictions": [
         {
           "family": "pitcher",
           "stat": "Win",
           "subject": "Jared Jones",
           "market": "PITCHER_WIN_NO",
-          "prob": 0.839,
+          "prob": 0.838,
           "fair_odds": -519,
           "edge": "STRONG_NO"
+        },
+        {
+          "family": "game",
+          "stat": "Total (alt)",
+          "subject": "PIT @ PHI",
+          "market": "GAME_TOTAL_UNDER_10.5",
+          "prob": 0.687,
+          "fair_odds": -219,
+          "edge": "STRONG_TOTAL"
         },
         {
           "family": "game",
@@ -283,27 +292,9 @@
           "stat": "Earned runs",
           "subject": "Alan Rangel",
           "market": "ER_UNDER_3.5",
-          "prob": 0.629,
-          "fair_odds": -170,
+          "prob": 0.623,
+          "fair_odds": -165,
           "edge": "STRONG_UNDER"
-        },
-        {
-          "family": "pitcher",
-          "stat": "Hits allowed",
-          "subject": "Alan Rangel",
-          "market": "H_UNDER_5.0",
-          "prob": 0.621,
-          "fair_odds": -164,
-          "edge": "STRONG_UNDER"
-        },
-        {
-          "family": "game",
-          "stat": "Total (alt)",
-          "subject": "PIT @ PHI",
-          "market": "GAME_TOTAL_UNDER_9.5",
-          "prob": 0.593,
-          "fair_odds": -146,
-          "edge": "STRONG_TOTAL"
         },
         {
           "family": "pitcher",
@@ -328,8 +319,8 @@
           "stat": "Run line",
           "subject": "PIT @ PHI",
           "market": "HOME_MINUS_1.5",
-          "prob": 0.539,
-          "fair_odds": -117,
+          "prob": 0.537,
+          "fair_odds": -116,
           "edge": "STRONG_HOME_-1.5"
         },
         {
@@ -379,9 +370,9 @@
         "precip_pct": 0
       },
       "umpire": {
-        "ump_name": null,
-        "ump_label": null,
-        "ump_k_mult": null
+        "ump_name": "Dan Merzel",
+        "ump_label": "no tendency data",
+        "ump_k_mult": 1.0
       },
       "model": {
         "fair_home_ml": -396,
@@ -389,29 +380,21 @@
         "fair_total": 7.32,
         "p_home_win": 0.7986,
         "p_away_win": 0.2014,
-        "p_over_market": 0.5973
+        "p_over_market": 0.5234
       },
       "market": {
-        "home_ml": -194,
-        "away_ml": 159,
-        "total": 6.5,
+        "home_ml": -199,
+        "away_ml": 164,
+        "total": 7.0,
         "book": "bovada"
       },
       "recommendations": [
         {
           "label": "MIL_ML",
           "model_prob": 0.7986,
-          "market_price": -194,
-          "edge_pct": 21.02,
+          "market_price": -199,
+          "edge_pct": 19.99,
           "kelly_units": 5.0,
-          "confidence": "High"
-        },
-        {
-          "label": "OVER_6.5",
-          "model_prob": 0.5973,
-          "market_price": -110,
-          "edge_pct": 14.04,
-          "kelly_units": 3.86,
           "confidence": "High"
         }
       ],
@@ -461,24 +444,24 @@
             "pitcher": "Chase Burns",
             "status": "STEADY",
             "trend": null,
-            "tier": null,
+            "tier": "NEUTRAL_FORM",
             "k9_delta": 0.0,
             "era_delta": 0.0,
             "recent_k_per_9_l3": 12.9,
             "recent_era_l3": 2.62,
-            "form_index": null,
+            "form_index": 50.0,
             "leans": []
           },
           "home": {
             "pitcher": "Jacob Misiorowski",
             "status": "STEADY",
             "trend": null,
-            "tier": null,
+            "tier": "NEUTRAL_FORM",
             "k9_delta": 0.0,
             "era_delta": 0.0,
             "recent_k_per_9_l3": 12.44,
             "recent_era_l3": 0.65,
-            "form_index": null,
+            "form_index": 50.0,
             "leans": []
           }
         },
@@ -503,22 +486,13 @@
         },
         "hot_cold": [
           {
-            "name": "Garrett Mitchell",
-            "team": "MIL",
-            "kind": "hot",
-            "heat": 4.131,
-            "recent_ops": 1.648,
-            "season_ops": 0.0,
-            "order": 6
-          },
-          {
             "name": "Sal Stewart",
             "team": "CIN",
             "kind": "hot",
             "heat": 3.665,
             "recent_ops": 1.0,
             "season_ops": 0.0,
-            "order": 2
+            "order": null
           },
           {
             "name": "Jackson Chourio",
@@ -527,7 +501,43 @@
             "heat": 3.659,
             "recent_ops": 0.997,
             "season_ops": 0.0,
-            "order": 1
+            "order": null
+          },
+          {
+            "name": "Jake Bauers",
+            "team": "MIL",
+            "kind": "cold",
+            "heat": -0.527,
+            "recent_ops": 0.689,
+            "season_ops": 0.87,
+            "order": null
+          },
+          {
+            "name": "TJ Friedl",
+            "team": "CIN",
+            "kind": "cold",
+            "heat": -0.946,
+            "recent_ops": 0.125,
+            "season_ops": 0.498,
+            "order": null
+          },
+          {
+            "name": "Nathaniel Lowe",
+            "team": "CIN",
+            "kind": "cold",
+            "heat": -1.114,
+            "recent_ops": 0.6,
+            "season_ops": 0.816,
+            "order": null
+          },
+          {
+            "name": "JJ Bleday",
+            "team": "CIN",
+            "kind": "cold",
+            "heat": -1.848,
+            "recent_ops": 0.485,
+            "season_ops": 0.839,
+            "order": null
           }
         ]
       },
@@ -607,16 +617,16 @@
       "line_movement": {
         "model_home_implied": 79.9,
         "market": {
-          "home_ml": -194,
-          "away_ml": 159,
-          "total": 6.5,
+          "home_ml": -199,
+          "away_ml": 164,
+          "total": 7.0,
           "book": "bovada",
-          "home_implied": 66.0
+          "home_implied": 66.6
         },
-        "edge_vs_market_pp": 13.9,
+        "edge_vs_market_pp": 13.3,
         "has_timeseries": false
       },
-      "n_predictions": 9,
+      "n_predictions": 8,
       "predictions": [
         {
           "family": "pitcher",
@@ -626,15 +636,6 @@
           "prob": 0.901,
           "fair_odds": -914,
           "edge": "STRONG_NO"
-        },
-        {
-          "family": "game",
-          "stat": "Total (alt)",
-          "subject": "CIN @ MIL",
-          "market": "GAME_TOTAL_UNDER_8.5",
-          "prob": 0.678,
-          "fair_odds": -211,
-          "edge": "STRONG_TOTAL"
         },
         {
           "family": "pitcher",
@@ -711,47 +712,47 @@
       "time": "3:10p ET",
       "park": "Coors Field",
       "weather": {
-        "temp_f": 93,
-        "wind_mph": 9,
+        "temp_f": 91,
+        "wind_mph": 10,
         "is_indoor": false,
-        "wind_dir_deg": 72,
-        "carry_index": -0.179,
+        "wind_dir_deg": 84,
+        "carry_index": -0.07,
         "precip_pct": 5
       },
       "umpire": {
-        "ump_name": null,
-        "ump_label": null,
-        "ump_k_mult": null
+        "ump_name": "Ramon De Jesus",
+        "ump_label": "no tendency data",
+        "ump_k_mult": 1.0
       },
       "model": {
         "fair_home_ml": 194,
         "fair_away_ml": -194,
-        "fair_total": 14.48,
-        "p_home_win": 0.3406,
-        "p_away_win": 0.6594,
+        "fair_total": 14.49,
+        "p_home_win": 0.3405,
+        "p_away_win": 0.6595,
         "p_over_market": 0
       },
       "market": {
-        "home_ml": 108,
-        "away_ml": -130,
+        "home_ml": 119,
+        "away_ml": -142,
         "total": 12.0,
         "book": "bovada"
       },
       "recommendations": [
         {
           "label": "OVER_12.0",
-          "model_prob": 0.7327,
+          "model_prob": 0.7338,
           "market_price": -110,
-          "edge_pct": 39.88,
+          "edge_pct": 40.1,
           "kelly_units": 5.0,
           "confidence": "High"
         },
         {
           "label": "MIA_ML",
-          "model_prob": 0.6594,
-          "market_price": -130,
-          "edge_pct": 16.66,
-          "kelly_units": 5.0,
+          "model_prob": 0.6595,
+          "market_price": -142,
+          "edge_pct": 12.39,
+          "kelly_units": 4.4,
           "confidence": "High"
         }
       ],
@@ -805,24 +806,24 @@
             "pitcher": "Ryan Gusto",
             "status": "STEADY",
             "trend": null,
-            "tier": null,
+            "tier": "NEUTRAL_FORM",
             "k9_delta": 0.0,
             "era_delta": 0.0,
             "recent_k_per_9_l3": 8.5,
             "recent_era_l3": 4.2,
-            "form_index": null,
+            "form_index": 50.0,
             "leans": []
           },
           "home": {
             "pitcher": "Michael Lorenzen",
             "status": "STEADY",
             "trend": null,
-            "tier": null,
+            "tier": "NEUTRAL_FORM",
             "k9_delta": 0.0,
             "era_delta": 0.0,
             "recent_k_per_9_l3": 8.5,
             "recent_era_l3": 4.2,
-            "form_index": null,
+            "form_index": 50.0,
             "leans": []
           }
         },
@@ -853,7 +854,16 @@
             "heat": 7.64,
             "recent_ops": 1.32,
             "season_ops": 0.0,
-            "order": 3
+            "order": null
+          },
+          {
+            "name": "Kyle Karros",
+            "team": "COL",
+            "kind": "hot",
+            "heat": 4.717,
+            "recent_ops": 1.526,
+            "season_ops": 0.0,
+            "order": null
           },
           {
             "name": "Javier Sanoja",
@@ -862,16 +872,34 @@
             "heat": 4.2,
             "recent_ops": 1.6,
             "season_ops": 0.0,
-            "order": 5
+            "order": null
           },
           {
-            "name": "Brian Navarreto",
+            "name": "Joe Mack",
+            "team": "MIA",
+            "kind": "hot",
+            "heat": 3.397,
+            "recent_ops": 0.866,
+            "season_ops": 0.0,
+            "order": null
+          },
+          {
+            "name": "Mickey Moniak",
+            "team": "COL",
+            "kind": "hot",
+            "heat": 3.357,
+            "recent_ops": 0.846,
+            "season_ops": 0.0,
+            "order": null
+          },
+          {
+            "name": "Jakob Marsee",
             "team": "MIA",
             "kind": "cold",
-            "heat": 0.0,
-            "recent_ops": 0,
-            "season_ops": 0.0,
-            "order": 8
+            "heat": -0.916,
+            "recent_ops": 0.255,
+            "season_ops": 0.594,
+            "order": null
           }
         ]
       },
@@ -937,13 +965,13 @@
       "line_movement": {
         "model_home_implied": 34.1,
         "market": {
-          "home_ml": 108,
-          "away_ml": -130,
+          "home_ml": 119,
+          "away_ml": -142,
           "total": 12.0,
           "book": "bovada",
-          "home_implied": 48.1
+          "home_implied": 45.7
         },
-        "edge_vs_market_pp": -14.0,
+        "edge_vs_market_pp": -11.6,
         "has_timeseries": false
       },
       "n_predictions": 9,
@@ -953,8 +981,8 @@
           "stat": "Win",
           "subject": "Michael Lorenzen",
           "market": "PITCHER_WIN_NO",
-          "prob": 0.864,
-          "fair_odds": -634,
+          "prob": 0.863,
+          "fair_odds": -629,
           "edge": "STRONG_NO"
         },
         {
@@ -978,10 +1006,10 @@
         {
           "family": "pitcher",
           "stat": "Hits allowed",
-          "subject": "Michael Lorenzen",
-          "market": "H_UNDER_8.0",
-          "prob": 0.667,
-          "fair_odds": -201,
+          "subject": "Ryan Gusto",
+          "market": "H_UNDER_7.0",
+          "prob": 0.636,
+          "fair_odds": -175,
           "edge": "STRONG_UNDER"
         },
         {
@@ -1041,11 +1069,11 @@
       "time": "6:40p ET",
       "park": "Progressive Field",
       "weather": {
-        "temp_f": 87,
+        "temp_f": 86,
         "wind_mph": 4,
         "is_indoor": false,
-        "wind_dir_deg": 235,
-        "carry_index": 0.164,
+        "wind_dir_deg": 212,
+        "carry_index": 0.237,
         "precip_pct": 1
       },
       "umpire": {
@@ -1056,33 +1084,25 @@
       "model": {
         "fair_home_ml": 290,
         "fair_away_ml": -290,
-        "fair_total": 8.48,
-        "p_home_win": 0.2563,
-        "p_away_win": 0.7437,
-        "p_over_market": 0.5425
+        "fair_total": 8.45,
+        "p_home_win": 0.2567,
+        "p_away_win": 0.7433,
+        "p_over_market": 0.4698
       },
       "market": {
-        "home_ml": -101,
-        "away_ml": -119,
-        "total": 8.0,
+        "home_ml": -113,
+        "away_ml": -107,
+        "total": 8.5,
         "book": "bovada"
       },
       "recommendations": [
         {
           "label": "CHW_ML",
-          "model_prob": 0.7437,
-          "market_price": -119,
-          "edge_pct": 36.87,
+          "model_prob": 0.7433,
+          "market_price": -107,
+          "edge_pct": 43.81,
           "kelly_units": 5.0,
           "confidence": "High"
-        },
-        {
-          "label": "OVER_8.0",
-          "model_prob": 0.5425,
-          "market_price": -110,
-          "edge_pct": 3.57,
-          "kelly_units": 0.98,
-          "confidence": "Medium"
         }
       ],
       "pitchers": {
@@ -1135,24 +1155,24 @@
             "pitcher": "Davis Martin",
             "status": "STEADY",
             "trend": null,
-            "tier": null,
+            "tier": "NEUTRAL_FORM",
             "k9_delta": 0.0,
             "era_delta": 0.0,
             "recent_k_per_9_l3": 7.71,
             "recent_era_l3": 2.95,
-            "form_index": null,
+            "form_index": 50.0,
             "leans": []
           },
           "home": {
             "pitcher": "Slade Cecconi",
             "status": "STEADY",
             "trend": null,
-            "tier": null,
+            "tier": "NEUTRAL_FORM",
             "k9_delta": 0.0,
             "era_delta": 0.0,
             "recent_k_per_9_l3": 8.5,
             "recent_era_l3": 4.2,
-            "form_index": null,
+            "form_index": 50.0,
             "leans": []
           }
         },
@@ -1175,17 +1195,7 @@
           },
           "leans": []
         },
-        "hot_cold": [
-          {
-            "name": "Patrick Bailey",
-            "team": "CLE",
-            "kind": "cold",
-            "heat": 0.0,
-            "recent_ops": 0,
-            "season_ops": 0.0,
-            "order": null
-          }
-        ]
+        "hot_cold": []
       },
       "h2h": {
         "season_series": {
@@ -1225,15 +1235,15 @@
         }
       },
       "line_movement": {
-        "model_home_implied": 25.6,
+        "model_home_implied": 25.7,
         "market": {
-          "home_ml": -101,
-          "away_ml": -119,
-          "total": 8.0,
+          "home_ml": -113,
+          "away_ml": -107,
+          "total": 8.5,
           "book": "bovada",
-          "home_implied": 50.2
+          "home_implied": 53.1
         },
-        "edge_vs_market_pp": -24.6,
+        "edge_vs_market_pp": -27.4,
         "has_timeseries": false
       },
       "n_predictions": 11,
@@ -1244,7 +1254,7 @@
           "subject": "Slade Cecconi",
           "market": "PITCHER_WIN_NO",
           "prob": 0.897,
-          "fair_odds": -871,
+          "fair_odds": -868,
           "edge": "STRONG_NO"
         },
         {
@@ -1252,26 +1262,26 @@
           "stat": "Total (alt)",
           "subject": "CHW @ CLE",
           "market": "GAME_TOTAL_UNDER_9.5",
-          "prob": 0.666,
-          "fair_odds": -199,
+          "prob": 0.692,
+          "fair_odds": -225,
           "edge": "STRONG_TOTAL"
-        },
-        {
-          "family": "pitcher",
-          "stat": "Strikeouts",
-          "subject": "Davis Martin",
-          "market": "K_UNDER_5.5",
-          "prob": 0.647,
-          "fair_odds": -184,
-          "edge": "STRONG_UNDER"
         },
         {
           "family": "pitcher",
           "stat": "Hits allowed",
           "subject": "Slade Cecconi",
           "market": "H_UNDER_6.0",
+          "prob": 0.651,
+          "fair_odds": -186,
+          "edge": "STRONG_UNDER"
+        },
+        {
+          "family": "pitcher",
+          "stat": "Strikeouts",
+          "subject": "Davis Martin",
+          "market": "K_UNDER_5.5",
           "prob": 0.645,
-          "fair_odds": -182,
+          "fair_odds": -181,
           "edge": "STRONG_UNDER"
         },
         {
@@ -1279,8 +1289,8 @@
           "stat": "Hits allowed",
           "subject": "Davis Martin",
           "market": "H_UNDER_5.0",
-          "prob": 0.622,
-          "fair_odds": -165,
+          "prob": 0.627,
+          "fair_odds": -168,
           "edge": "STRONG_UNDER"
         },
         {
@@ -1352,9 +1362,9 @@
         "temp_f": 86,
         "wind_mph": 4,
         "is_indoor": false,
-        "wind_dir_deg": 180,
-        "carry_index": 0.193,
-        "precip_pct": 2
+        "wind_dir_deg": 177,
+        "carry_index": 0.181,
+        "precip_pct": 1
       },
       "umpire": {
         "ump_name": null,
@@ -1367,29 +1377,29 @@
         "fair_total": 10.01,
         "p_home_win": 0.3588,
         "p_away_win": 0.6412,
-        "p_over_market": 0.606
+        "p_over_market": 0.6685
       },
       "market": {
-        "home_ml": -115,
-        "away_ml": -105,
-        "total": 9.0,
+        "home_ml": -117,
+        "away_ml": -103,
+        "total": 8.5,
         "book": "bovada"
       },
       "recommendations": [
         {
-          "label": "STL_ML",
-          "model_prob": 0.6412,
-          "market_price": -105,
-          "edge_pct": 25.18,
+          "label": "OVER_8.5",
+          "model_prob": 0.6685,
+          "market_price": -110,
+          "edge_pct": 27.63,
           "kelly_units": 5.0,
           "confidence": "High"
         },
         {
-          "label": "OVER_9.0",
-          "model_prob": 0.606,
-          "market_price": -110,
-          "edge_pct": 15.7,
-          "kelly_units": 4.32,
+          "label": "STL_ML",
+          "model_prob": 0.6412,
+          "market_price": -103,
+          "edge_pct": 26.36,
+          "kelly_units": 5.0,
           "confidence": "High"
         }
       ],
@@ -1443,24 +1453,24 @@
             "pitcher": "Dustin May",
             "status": "STEADY",
             "trend": null,
-            "tier": null,
+            "tier": "NEUTRAL_FORM",
             "k9_delta": 0.0,
             "era_delta": 0.0,
             "recent_k_per_9_l3": 10.0,
             "recent_era_l3": 2.6,
-            "form_index": null,
+            "form_index": 50.0,
             "leans": []
           },
           "home": {
             "pitcher": "Hurston Waldrep",
             "status": "STEADY",
             "trend": null,
-            "tier": null,
+            "tier": "NEUTRAL_FORM",
             "k9_delta": 0.0,
             "era_delta": 0.0,
             "recent_k_per_9_l3": 8.5,
             "recent_era_l3": 4.2,
-            "form_index": null,
+            "form_index": 50.0,
             "leans": []
           }
         },
@@ -1483,7 +1493,35 @@
           },
           "leans": []
         },
-        "hot_cold": []
+        "hot_cold": [
+          {
+            "name": "Jordan Walker",
+            "team": "STL",
+            "kind": "cold",
+            "heat": -1.685,
+            "recent_ops": 0.564,
+            "season_ops": 0.851,
+            "order": null
+          },
+          {
+            "name": "Michael Harris II",
+            "team": "ATL",
+            "kind": "cold",
+            "heat": -1.833,
+            "recent_ops": 0.349,
+            "season_ops": 0.817,
+            "order": null
+          },
+          {
+            "name": "Alec Burleson",
+            "team": "STL",
+            "kind": "cold",
+            "heat": -2.281,
+            "recent_ops": 0.067,
+            "season_ops": 0.811,
+            "order": null
+          }
+        ]
       },
       "h2h": {
         "season_series": {
@@ -1533,13 +1571,13 @@
       "line_movement": {
         "model_home_implied": 35.9,
         "market": {
-          "home_ml": -115,
-          "away_ml": -105,
-          "total": 9.0,
+          "home_ml": -117,
+          "away_ml": -103,
+          "total": 8.5,
           "book": "bovada",
-          "home_implied": 53.5
+          "home_implied": 53.9
         },
-        "edge_vs_market_pp": -17.6,
+        "edge_vs_market_pp": -18.0,
         "has_timeseries": false
       },
       "n_predictions": 11,
@@ -1550,7 +1588,7 @@
           "subject": "Hurston Waldrep",
           "market": "PITCHER_WIN_NO",
           "prob": 0.855,
-          "fair_odds": -591,
+          "fair_odds": -592,
           "edge": "STRONG_NO"
         },
         {
@@ -1576,9 +1614,18 @@
           "stat": "Hits allowed",
           "subject": "Dustin May",
           "market": "H_UNDER_5.0",
-          "prob": 0.624,
-          "fair_odds": -166,
+          "prob": 0.627,
+          "fair_odds": -168,
           "edge": "STRONG_UNDER"
+        },
+        {
+          "family": "game",
+          "stat": "Run line",
+          "subject": "STL @ ATL",
+          "market": "AWAY_MINUS_1.5",
+          "prob": 0.595,
+          "fair_odds": -147,
+          "edge": "STRONG_AWAY_-1.5"
         },
         {
           "family": "pitcher",
@@ -1588,15 +1635,6 @@
           "prob": 0.593,
           "fair_odds": -146,
           "edge": "STANDARD_OVER"
-        },
-        {
-          "family": "game",
-          "stat": "Run line",
-          "subject": "STL @ ATL",
-          "market": "AWAY_MINUS_1.5",
-          "prob": 0.593,
-          "fair_odds": -146,
-          "edge": "STRONG_AWAY_-1.5"
         },
         {
           "family": "pitcher",
@@ -1655,12 +1693,12 @@
       "time": "7:40p ET",
       "park": "Kauffman Stadium",
       "weather": {
-        "temp_f": 85,
+        "temp_f": 84,
         "wind_mph": 7,
         "is_indoor": false,
-        "wind_dir_deg": 182,
+        "wind_dir_deg": 186,
         "carry_index": 0.321,
-        "precip_pct": 2
+        "precip_pct": 1
       },
       "umpire": {
         "ump_name": null,
@@ -1670,25 +1708,33 @@
       "model": {
         "fair_home_ml": 234,
         "fair_away_ml": -234,
-        "fair_total": 10.44,
-        "p_home_win": 0.299,
-        "p_away_win": 0.701,
-        "p_over_market": 0.4715
+        "fair_total": 10.4,
+        "p_home_win": 0.2993,
+        "p_away_win": 0.7007,
+        "p_over_market": 0.4672
       },
       "market": {
-        "home_ml": 100,
-        "away_ml": -120,
+        "home_ml": 107,
+        "away_ml": -128,
         "total": 10.5,
         "book": "bovada"
       },
       "recommendations": [
         {
           "label": "TBR_ML",
-          "model_prob": 0.701,
-          "market_price": -120,
-          "edge_pct": 28.52,
+          "model_prob": 0.7007,
+          "market_price": -128,
+          "edge_pct": 24.81,
           "kelly_units": 5.0,
           "confidence": "High"
+        },
+        {
+          "label": "UNDER_10.5",
+          "model_prob": 0.5328,
+          "market_price": -110,
+          "edge_pct": 1.73,
+          "kelly_units": 0.47,
+          "confidence": "Low"
         }
       ],
       "pitchers": {
@@ -1737,24 +1783,24 @@
             "pitcher": "Ian Seymour",
             "status": "STEADY",
             "trend": null,
-            "tier": null,
+            "tier": "NEUTRAL_FORM",
             "k9_delta": 0.0,
             "era_delta": 0.0,
             "recent_k_per_9_l3": 8.5,
             "recent_era_l3": 4.2,
-            "form_index": null,
+            "form_index": 50.0,
             "leans": []
           },
           "home": {
             "pitcher": "Stephen Kolek",
             "status": "STEADY",
             "trend": null,
-            "tier": null,
+            "tier": "NEUTRAL_FORM",
             "k9_delta": 0.0,
             "era_delta": 0.0,
             "recent_k_per_9_l3": 8.5,
             "recent_era_l3": 4.2,
-            "form_index": null,
+            "form_index": 50.0,
             "leans": []
           }
         },
@@ -1819,13 +1865,13 @@
       "line_movement": {
         "model_home_implied": 29.9,
         "market": {
-          "home_ml": 100,
-          "away_ml": -120,
+          "home_ml": 107,
+          "away_ml": -128,
           "total": 10.5,
           "book": "bovada",
-          "home_implied": 50.0
+          "home_implied": 48.3
         },
-        "edge_vs_market_pp": -20.1,
+        "edge_vs_market_pp": -18.4,
         "has_timeseries": false
       },
       "n_predictions": 9,
@@ -1844,8 +1890,8 @@
           "stat": "Hits allowed",
           "subject": "Ian Seymour",
           "market": "H_UNDER_5.0",
-          "prob": 0.72,
-          "fair_odds": -257,
+          "prob": 0.718,
+          "fair_odds": -254,
           "edge": "STRONG_UNDER"
         },
         {
@@ -1944,8 +1990,8 @@
         "p_over_market": 0.626
       },
       "market": {
-        "home_ml": -130,
-        "away_ml": 108,
+        "home_ml": -119,
+        "away_ml": -101,
         "total": 7.5,
         "book": "bovada"
       },
@@ -1956,14 +2002,6 @@
           "market_price": -110,
           "edge_pct": 19.51,
           "kelly_units": 5.0,
-          "confidence": "High"
-        },
-        {
-          "label": "DET_ML",
-          "model_prob": 0.5078,
-          "market_price": 108,
-          "edge_pct": 5.62,
-          "kelly_units": 1.3,
           "confidence": "High"
         }
       ],
@@ -2013,24 +2051,24 @@
             "pitcher": "Framber Valdez",
             "status": "STEADY",
             "trend": null,
-            "tier": null,
+            "tier": "NEUTRAL_FORM",
             "k9_delta": 0.0,
             "era_delta": 0.0,
             "recent_k_per_9_l3": 6.9,
             "recent_era_l3": 3.74,
-            "form_index": null,
+            "form_index": 50.0,
             "leans": []
           },
           "home": {
             "pitcher": "Nathan Eovaldi",
             "status": "STEADY",
             "trend": null,
-            "tier": null,
+            "tier": "NEUTRAL_FORM",
             "k9_delta": 0.0,
             "era_delta": 0.0,
             "recent_k_per_9_l3": 9.23,
             "recent_era_l3": 3.76,
-            "form_index": null,
+            "form_index": 50.0,
             "leans": []
           }
         },
@@ -2055,12 +2093,39 @@
         },
         "hot_cold": [
           {
+            "name": "Kerry Carpenter",
+            "team": "DET",
+            "kind": "hot",
+            "heat": 4.277,
+            "recent_ops": 1.066,
+            "season_ops": 0.0,
+            "order": null
+          },
+          {
             "name": "Justin Foscue",
             "team": "TEX",
             "kind": "hot",
             "heat": 3.722,
             "recent_ops": 1.236,
             "season_ops": 0.0,
+            "order": null
+          },
+          {
+            "name": "Spencer Torkelson",
+            "team": "DET",
+            "kind": "hot",
+            "heat": 3.3,
+            "recent_ops": 0.935,
+            "season_ops": 0.0,
+            "order": null
+          },
+          {
+            "name": "Kyle Higashioka",
+            "team": "TEX",
+            "kind": "cold",
+            "heat": -0.669,
+            "recent_ops": 0.582,
+            "season_ops": 0.656,
             "order": null
           }
         ]
@@ -2083,13 +2148,13 @@
       "line_movement": {
         "model_home_implied": 49.2,
         "market": {
-          "home_ml": -130,
-          "away_ml": 108,
+          "home_ml": -119,
+          "away_ml": -101,
           "total": 7.5,
           "book": "bovada",
-          "home_implied": 56.5
+          "home_implied": 54.3
         },
-        "edge_vs_market_pp": -7.3,
+        "edge_vs_market_pp": -5.1,
         "has_timeseries": false
       },
       "n_predictions": 12,
@@ -2235,8 +2300,8 @@
         "p_over_market": 0.4001
       },
       "market": {
-        "home_ml": -218,
-        "away_ml": 178,
+        "home_ml": -214,
+        "away_ml": 174,
         "total": 7.5,
         "book": "bovada"
       },
@@ -2244,9 +2309,9 @@
         {
           "label": "LAA_ML",
           "model_prob": 0.4364,
-          "market_price": 178,
-          "edge_pct": 21.33,
-          "kelly_units": 3.0,
+          "market_price": 174,
+          "edge_pct": 19.58,
+          "kelly_units": 2.81,
           "confidence": "High"
         },
         {
@@ -2304,24 +2369,24 @@
             "pitcher": "Walbert Ure\u00f1a",
             "status": "STEADY",
             "trend": null,
-            "tier": null,
+            "tier": "NEUTRAL_FORM",
             "k9_delta": 0.0,
             "era_delta": 0.0,
             "recent_k_per_9_l3": 8.73,
             "recent_era_l3": 3.05,
-            "form_index": null,
+            "form_index": 50.0,
             "leans": []
           },
           "home": {
             "pitcher": "Bryce Miller",
             "status": "STEADY",
             "trend": null,
-            "tier": null,
+            "tier": "NEUTRAL_FORM",
             "k9_delta": 0.0,
             "era_delta": 0.0,
             "recent_k_per_9_l3": 8.5,
             "recent_era_l3": 4.2,
-            "form_index": null,
+            "form_index": 50.0,
             "leans": []
           }
         },
@@ -2352,6 +2417,24 @@
             "heat": 3.78,
             "recent_ops": 1.39,
             "season_ops": 0.0,
+            "order": null
+          },
+          {
+            "name": "Cole Young",
+            "team": "SEA",
+            "kind": "hot",
+            "heat": 3.633,
+            "recent_ops": 0.984,
+            "season_ops": 0.0,
+            "order": null
+          },
+          {
+            "name": "Cal Raleigh",
+            "team": "SEA",
+            "kind": "cold",
+            "heat": -0.779,
+            "recent_ops": 0.546,
+            "season_ops": 0.572,
             "order": null
           }
         ]
@@ -2404,13 +2487,13 @@
       "line_movement": {
         "model_home_implied": 56.4,
         "market": {
-          "home_ml": -218,
-          "away_ml": 178,
+          "home_ml": -214,
+          "away_ml": 174,
           "total": 7.5,
           "book": "bovada",
-          "home_implied": 68.6
+          "home_implied": 68.2
         },
-        "edge_vs_market_pp": -12.2,
+        "edge_vs_market_pp": -11.8,
         "has_timeseries": false
       },
       "n_predictions": 12,
@@ -2536,10 +2619,10 @@
       "park": "UNIQLO Field at Dodger Stadium",
       "weather": {
         "temp_f": 60,
-        "wind_mph": 2,
+        "wind_mph": 3,
         "is_indoor": false,
-        "wind_dir_deg": 190,
-        "carry_index": 0.161,
+        "wind_dir_deg": 172,
+        "carry_index": 0.179,
         "precip_pct": 0
       },
       "umpire": {
@@ -2548,12 +2631,12 @@
         "ump_k_mult": null
       },
       "model": {
-        "fair_home_ml": -511,
-        "fair_away_ml": 511,
-        "fair_total": 9.63,
-        "p_home_win": 0.8363,
-        "p_away_win": 0.1637,
-        "p_over_market": 0.5589
+        "fair_home_ml": -515,
+        "fair_away_ml": 515,
+        "fair_total": 9.7,
+        "p_home_win": 0.8373,
+        "p_away_win": 0.1627,
+        "p_over_market": 0.5684
       },
       "market": {
         "home_ml": -196,
@@ -2564,18 +2647,18 @@
       "recommendations": [
         {
           "label": "LAD_ML",
-          "model_prob": 0.8363,
+          "model_prob": 0.8373,
           "market_price": -196,
-          "edge_pct": 26.3,
+          "edge_pct": 26.45,
           "kelly_units": 5.0,
           "confidence": "High"
         },
         {
           "label": "OVER_9.0",
-          "model_prob": 0.5589,
+          "model_prob": 0.5684,
           "market_price": -110,
-          "edge_pct": 6.71,
-          "kelly_units": 1.84,
+          "edge_pct": 8.51,
+          "kelly_units": 2.34,
           "confidence": "High"
         }
       ],
@@ -2629,24 +2712,24 @@
             "pitcher": "Randy V\u00e1squez",
             "status": "STEADY",
             "trend": null,
-            "tier": null,
+            "tier": "NEUTRAL_FORM",
             "k9_delta": 0.0,
             "era_delta": 0.0,
             "recent_k_per_9_l3": 8.5,
             "recent_era_l3": 4.2,
-            "form_index": null,
+            "form_index": 50.0,
             "leans": []
           },
           "home": {
             "pitcher": "Roki Sasaki",
             "status": "STEADY",
             "trend": null,
-            "tier": null,
+            "tier": "NEUTRAL_FORM",
             "k9_delta": 0.0,
             "era_delta": 0.0,
             "recent_k_per_9_l3": 8.5,
             "recent_era_l3": 4.2,
-            "form_index": null,
+            "form_index": 50.0,
             "leans": []
           }
         },
@@ -2677,7 +2760,34 @@
             "heat": 4.146,
             "recent_ops": 1.073,
             "season_ops": 0.0,
-            "order": 4
+            "order": null
+          },
+          {
+            "name": "Miguel Rojas",
+            "team": "LAD",
+            "kind": "hot",
+            "heat": 3.424,
+            "recent_ops": 1.212,
+            "season_ops": 0.0,
+            "order": null
+          },
+          {
+            "name": "Freddie Freeman",
+            "team": "LAD",
+            "kind": "hot",
+            "heat": 3.365,
+            "recent_ops": 1.265,
+            "season_ops": 0.0,
+            "order": null
+          },
+          {
+            "name": "Shohei Ohtani",
+            "team": "LAD",
+            "kind": "cold",
+            "heat": -0.767,
+            "recent_ops": 0.68,
+            "season_ops": 0.939,
+            "order": null
           }
         ]
       },
@@ -2719,7 +2829,7 @@
         }
       },
       "line_movement": {
-        "model_home_implied": 83.6,
+        "model_home_implied": 83.7,
         "market": {
           "home_ml": -196,
           "away_ml": 161,
@@ -2727,7 +2837,7 @@
           "book": "bovada",
           "home_implied": 66.2
         },
-        "edge_vs_market_pp": 17.4,
+        "edge_vs_market_pp": 17.5,
         "has_timeseries": false
       },
       "n_predictions": 10,
@@ -2738,7 +2848,7 @@
           "subject": "Randy V\u00e1squez",
           "market": "PITCHER_WIN_NO",
           "prob": 0.934,
-          "fair_odds": -1421,
+          "fair_odds": -1416,
           "edge": "STRONG_NO"
         },
         {
@@ -2746,8 +2856,8 @@
           "stat": "Hits allowed",
           "subject": "Randy V\u00e1squez",
           "market": "H_UNDER_7.0",
-          "prob": 0.673,
-          "fair_odds": -206,
+          "prob": 0.672,
+          "fair_odds": -205,
           "edge": "STRONG_UNDER"
         },
         {
@@ -2755,8 +2865,8 @@
           "stat": "Total (alt)",
           "subject": "SDP @ LAD",
           "market": "GAME_TOTAL_UNDER_9.5",
-          "prob": 0.671,
-          "fair_odds": -204,
+          "prob": 0.645,
+          "fair_odds": -182,
           "edge": "STRONG_TOTAL"
         },
         {
@@ -2764,7 +2874,7 @@
           "stat": "Hits allowed",
           "subject": "Roki Sasaki",
           "market": "H_UNDER_5.0",
-          "prob": 0.622,
+          "prob": 0.621,
           "fair_odds": -164,
           "edge": "STRONG_UNDER"
         },

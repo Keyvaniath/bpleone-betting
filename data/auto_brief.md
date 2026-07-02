@@ -1,12 +1,12 @@
 # Tonight's Slate Brief — 2026-07-02
 
-## Slate Quality: 55/100 (MEDIUM)
-_0% lineups confirmed · 10 rookie SPs_
+## Slate Quality: 64/100 (MEDIUM)
+_27% lineups confirmed · 10 rookie SPs_
 **Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
 - **9 games** scheduled
-- **50 best bets** scored: 0 DK · 20 PP · 7 NRFI · 6 SGP
+- **30 best bets** scored: 0 DK · 0 PP · 7 NRFI · 6 SGP
 - **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$46.28
 - **MC simulation:** EV +$74.83, 82% P(profit), p05 $-79.4 / p95 $198.67
 
@@ -24,32 +24,34 @@ _0% lineups confirmed · 10 rookie SPs_
    - Player prop quality score 1.1892
    - Elite player
 
-## ⚠️ Trap Warnings — 18 flagged
+## ⚠️ Trap Warnings — 10 flagged
+- **MIA @ COL 4-leg SGP @ -107** (low):
+   - Edge +45.0% looks big but only 0 settled props on this player — model unproven
+- **PIT @ PHI 4-leg SGP @ -121** (low):
+   - Edge +42.8% looks big but only 0 settled props on this player — model unproven
 - **SDP @ LAD YRFI (1st-inning OVER 0.5)** (low):
    - Edge +33.4% looks big but only 0 settled props on this player — model unproven
 - **MIA @ COL YRFI (1st-inning OVER 0.5)** (low):
    - Edge +27.9% looks big but only 0 settled props on this player — model unproven
 - **PIT @ PHI YRFI (1st-inning OVER 0.5)** (low):
    - Edge +27.1% looks big but only 0 settled props on this player — model unproven
-- **STL @ ATL 2-leg SGP @ -112** (low):
-   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
-- **CIN @ MIL 2-leg SGP @ -193** (low):
-   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
 
 ## Hot streaks
-**Batters heating up:** Junior Caminero (heat +10.58), Hunter Goodman (heat +7.64), Cedric Mullins (heat +5.42)
+**Batters heating up:** Junior Caminero (heat +10.58), Hunter Goodman (heat +7.64), Esmerlyn Valdez (heat +6.14)
 **Pitchers on a run:** Bryce Miller (heat +5.43), Ryan Gusto (heat +4.89), Nathan Eovaldi (heat +4.49)
 
 ## Top correlation-aware SGPs
-- **STL @ ATL** 2-leg @ -112 fair (joint 0.53, EV +25.0%)
-   - Dustin May OVER 4.5 pitcher strikeouts
-   - Dustin May UNDER 7.5 pitcher strikeouts
-- **CIN @ MIL** 2-leg @ -193 fair (joint 0.66, EV +25.0%)
-   - Chase Burns UNDER 10.5 pitcher strikeouts
-   - Chase Burns OVER 5.5 pitcher strikeouts
-- **LAA @ SEA** 2-leg @ -191 fair (joint 0.66, EV +25.0%)
-   - Walbert Ureña UNDER 7.5 pitcher strikeouts
-   - Bryce Miller UNDER 9.5 pitcher strikeouts
+- **MIA @ COL** 4-leg @ -107 fair (joint 0.52, EV +44.98%)
+   - Willi Castro UNDER 0.5 batter doubles
+   - Willi Castro UNDER 2.5 batter total bases
+   - Troy Johnston UNDER 1.5 batter singles
+- **PIT @ PHI** 4-leg @ -121 fair (joint 0.55, EV +42.79%)
+   - Trea Turner UNDER 0.5 batter doubles
+   - Trea Turner UNDER 2.5 batter total bases
+   - Justin Crawford UNDER 0.5 batter doubles
+- **CIN @ MIL** 2-leg @ -254 fair (joint 0.72, EV +25.0%)
+   - Nathaniel Lowe OVER 0.5 batter hrr
+   - Brice Turang UNDER 1.5 batter runs
 
 ## Bullpens GASSED tonight
 San Diego Padres, San Francisco Giants, Toronto Blue Jays, Minnesota Twins, Atlanta Braves, Chicago White Sox, New York Yankees, Milwaukee Brewers
@@ -73,12 +75,12 @@ _Lean late-inning OVER on these games; fade their save situations._
 - Vancouver Canucks @ Seattle Kraken (0-0-0 vs 0-0-0)  | P(home) 52.9% fair -112 | Scheduled
 
 ## KBO -- 2026 Korean Baseball
-- KT Wiz @ Hanwha Eagles | P(home) 43.0% fair +133 | total 9 R
-- LG Twins @ Kiwoom Heroes | P(home) 29.6% fair +238 | total 9 R
-- Lotte Giants @ Doosan Bears | P(home) 60.4% fair -153 | total 9 R
-- SSG Landers @ KIA Tigers | P(home) 63.7% fair -176 | total 8 R
-- Samsung Lions @ NC Dinos | P(home) 43.8% fair +128 | total 8 R
-- **KBO POD:** Doosan Bears ML vs Lotte Giants (KBO) (HIGH)
+- Hanwha Eagles @ LG Twins | P(home) 70.9% fair -243 | total 9 R
+- Lotte Giants @ KT Wiz | P(home) 57.6% fair -136 | total 9 R
+- NC Dinos @ KIA Tigers | P(home) 66.6% fair -199 | total 8 R
+- Doosan Bears @ Kiwoom Heroes | P(home) 35.7% fair +180 | total 9 R
+- Samsung Lions @ SSG Landers | P(home) 47.2% fair +112 | total 8 R
+- **KBO POD:** KT Wiz ML vs Lotte Giants (KBO) (HIGH)
 
 ## LoL Esports -- 0 live, 10 upcoming
 - [MSI] Hanwha Life Esports vs Team Secret Whales BO5 | P(A) 62.5% fair -167/+167

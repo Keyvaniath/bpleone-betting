@@ -2,16 +2,16 @@
 
 **Model Confidence: 37.1/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
 
-_Pipeline health: **DEGRADED** (14/15 artifacts ok; 1 empty, 0 stale)._ 
+_Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
 
-_Generated at 2026-07-02T11:32:17 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-07-02T16:16:09 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
-**MIA @ COL - OVER_12.0**
-- Market: -110
-- Model probability: 73.3%
-- Raw edge: +39.88%
+**CHW @ CLE - CHW_ML**
+- Market: -107
+- Model probability: 74.3%
+- Raw edge: +43.81%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
@@ -21,37 +21,34 @@ _Generated at 2026-07-02T11:32:17 UTC. Game lines source: **Bovada (fallback -- 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
 | 12:35p ET | PIT @ PHI | Citizens Bank Park | 104F 8mph | OVER_10.5 +12.93% |
-| 2:10p ET | CIN @ MIL | American Family Field | indoor | MIL_ML +21.02% |
-| 3:10p ET | MIA @ COL | Coors Field | 93F 9mph | OVER_12.0 +39.88% |
-| 6:40p ET | CHW @ CLE | Progressive Field | 87F 4mph | CHW_ML +36.87% |
-| 7:15p ET | STL @ ATL | Truist Park | 86F 4mph | STL_ML +25.18% |
-| 7:40p ET | TBR @ KCR | Kauffman Stadium | 85F 7mph | TBR_ML +28.52% |
+| 2:10p ET | CIN @ MIL | American Family Field | indoor | MIL_ML +19.99% |
+| 3:10p ET | MIA @ COL | Coors Field | 91F 10mph | OVER_12.0 +40.1% |
+| 6:40p ET | CHW @ CLE | Progressive Field | 86F 4mph | CHW_ML +43.81% |
+| 7:15p ET | STL @ ATL | Truist Park | 86F 4mph | OVER_8.5 +27.63% |
+| 7:40p ET | TBR @ KCR | Kauffman Stadium | 84F 7mph | TBR_ML +24.81% |
 | 8:05p ET | DET @ TEX | Globe Life Field | indoor | OVER_7.5 +19.51% |
-| 9:40p ET | LAA @ SEA | T-Mobile Park | indoor | LAA_ML +21.33% |
-| 10:10p ET | SDP @ LAD | UNIQLO Field at Dodger Stadium | 60F 2mph | LAD_ML +26.3% |
+| 9:40p ET | LAA @ SEA | T-Mobile Park | indoor | LAA_ML +19.58% |
+| 10:10p ET | SDP @ LAD | UNIQLO Field at Dodger Stadium | 60F 3mph | LAD_ML +26.45% |
 
 ## Parlays - top 5
 
-- **3-leg @ +770 (prob 17.2%, EV +49.99%)**
-  - PIT @ PHI PHI_ML (-130, model 59.9%)
-  - MIA @ COL MIA_ML (-130, model 65.9%)
-  - LAA @ SEA LAA_ML (+178, model 43.6%)
-- **3-leg @ +452 (prob 27.1%, EV +49.8%)**
-  - CIN @ MIL MIL_ML (-194, model 79.9%)
-  - CHW @ CLE OVER_8.0 (-110, model 54.2%)
+- **2-leg @ +168 (prob 56.0%, EV +49.76%)**
+  - CIN @ MIL MIL_ML (-199, model 79.9%)
+  - TBR @ KCR TBR_ML (-128, model 70.1%)
+- **3-leg @ +617 (prob 20.9%, EV +49.6%)**
+  - PIT @ PHI PHI_ML (-135, model 59.9%)
+  - CIN @ MIL MIL_ML (-199, model 79.9%)
+  - LAA @ SEA LAA_ML (+174, model 43.6%)
+- **3-leg @ +399 (prob 29.9%, EV +49.52%)**
+  - PIT @ PHI PHI_ML (-135, model 59.9%)
+  - CIN @ MIL MIL_ML (-199, model 79.9%)
   - DET @ TEX OVER_7.5 (-110, model 62.6%)
-- **3-leg @ +913 (prob 14.8%, EV +49.76%)**
-  - STL @ ATL OVER_9.0 (-110, model 60.6%)
-  - LAA @ SEA LAA_ML (+178, model 43.6%)
-  - SDP @ LAD OVER_9.0 (-110, model 55.9%)
-- **3-leg @ +596 (prob 21.5%, EV +49.64%)**
-  - PIT @ PHI OVER_10.5 (-110, model 59.2%)
-  - STL @ ATL OVER_9.0 (-110, model 60.6%)
-  - LAA @ SEA UNDER_7.5 (-110, model 60.0%)
-- **3-leg @ +374 (prob 31.5%, EV +49.63%)**
-  - PIT @ PHI PHI_ML (-130, model 59.9%)
-  - CIN @ MIL MIL_ML (-194, model 79.9%)
-  - MIA @ COL MIA_ML (-130, model 65.9%)
+- **2-leg @ +388 (prob 30.6%, EV +49.24%)**
+  - TBR @ KCR TBR_ML (-128, model 70.1%)
+  - LAA @ SEA LAA_ML (+174, model 43.6%)
+- **2-leg @ +240 (prob 43.9%, EV +49.16%)**
+  - TBR @ KCR TBR_ML (-128, model 70.1%)
+  - DET @ TEX OVER_7.5 (-110, model 62.6%)
 
 ## Self-Learning Loop
 
@@ -65,15 +62,15 @@ Cumulative graded plays: 118214. Wins: 87366. Hit rate: 73.9%.
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| CHW @ CLE | 43.3% | +131 | 4.26 | +529 | -529 |
+| CHW @ CLE | 43.3% | +131 | 4.29 | +528 | -528 |
 | CIN @ MIL | 60.7% | -154 | 2.5 | -212 | +212 |
 | DET @ TEX | 48.2% | +108 | 3.65 | +178 | -178 |
 | LAA @ SEA | 48.0% | +108 | 3.67 | +142 | -142 |
-| MIA @ COL | 26.1% | +283 | 6.59 | +300 | -300 |
-| PIT @ PHI | 26.9% | +271 | 6.8 | +107 | -107 |
-| SDP @ LAD | 20.6% | +384 | 8.02 | -291 | +291 |
-| STL @ ATL | 47.2% | +112 | 3.83 | +302 | -302 |
-| TBR @ KCR | 51.3% | -105 | 3.44 | +397 | -397 |
+| MIA @ COL | 26.1% | +283 | 6.67 | +300 | -300 |
+| PIT @ PHI | 26.9% | +271 | 6.73 | +107 | -107 |
+| SDP @ LAD | 20.6% | +384 | 8.03 | -294 | +294 |
+| STL @ ATL | 47.2% | +112 | 3.82 | +302 | -302 |
+| TBR @ KCR | 51.3% | -105 | 3.44 | +396 | -396 |
 
 ## Travel / Rest Flags
 
