@@ -1,33 +1,33 @@
 {
-  "generated_at": "2026-07-03T23:30:45",
+  "generated_at": "2026-07-03T23:42:41",
   "stake_assumption": "1u flat per pick",
   "total_picks": 10000,
-  "n_settled": 6562,
+  "n_settled": 6563,
   "n_pending": 749,
-  "n_void": 2689,
-  "wins": 2887,
-  "losses": 3667,
+  "n_void": 2688,
+  "wins": 2886,
+  "losses": 3669,
   "pushes": 8,
-  "hit_rate": 0.4405,
-  "net_units": -701.521,
-  "roi_pct": -10.7,
+  "hit_rate": 0.4403,
+  "net_units": -703.07,
+  "roi_pct": -10.73,
   "n_calibrated_picks": 9202,
   "calibrated_reliability": {
-    "n": 6466,
-    "ece_raw": 0.0842,
-    "ece_calibrated": 0.0178,
-    "brier_raw": 0.21655,
-    "brier_calibrated": 0.19664,
+    "n": 6467,
+    "ece_raw": 0.0845,
+    "ece_calibrated": 0.0164,
+    "brier_raw": 0.21673,
+    "brier_calibrated": 0.19661,
     "note": "In-sample over the settled ledger (the isotonic transform is fit on these same outcomes); held-out 70/30 validation is in recalibration_map.json. p_predicted = raw model prob (kept untouched for the learning loop); p_calibrated = honest prob stamped per pick. Lower ECE/Brier on the calibrated column = the displayed % is truer."
   },
   "curated": {
-    "n_settled": 901,
-    "wins": 698,
-    "losses": 195,
+    "n_settled": 902,
+    "wins": 697,
+    "losses": 197,
     "pushes": 8,
-    "hit_rate": 0.7816,
-    "net_units": 273.801,
-    "roi_pct": 30.66,
+    "hit_rate": 0.7796,
+    "net_units": 272.252,
+    "roi_pct": 30.45,
     "sources": [
       "consensus_hit_elite",
       "consensus_hit_strong",
@@ -41,22 +41,13 @@
     ],
     "definition": "Featured/recommended plays only -- Lock of the Day, Top 25, Whale, Sharp, Consensus (hit), Under Alerts, POD. Excludes the experimental prop feeds, which are tracked to train the model, not bet."
   },
-  "n_added_this_run": 65,
+  "n_added_this_run": 0,
   "n_newly_settled_this_run": 0,
   "n_resettled_this_run": 0,
   "n_voided_this_run": 0,
   "n_reconciled_settled_voids": 0,
-  "n_bootstrapped_from_locks_history": 0,
+  "n_bootstrapped_from_locks_history": 3,
   "by_source": {
-    "lock_of_day": {
-      "n": 405,
-      "wins": 345,
-      "losses": 60,
-      "pushes": 0,
-      "net_units": 126.152,
-      "hit_rate": 0.8519,
-      "roi_pct": 31.15
-    },
     "mlb_run_to_score_run_yes": {
       "n": 52,
       "wins": 21,
@@ -290,6 +281,15 @@
       "net_units": -50.834,
       "hit_rate": 0.2338,
       "roi_pct": -66.02
+    },
+    "lock_of_day": {
+      "n": 406,
+      "wins": 344,
+      "losses": 62,
+      "pushes": 0,
+      "net_units": 124.604,
+      "hit_rate": 0.8473,
+      "roi_pct": 30.69
     },
     "top_25_board": {
       "n": 354,
@@ -1220,14 +1220,6 @@
     }
   },
   "by_market_family": {
-    "pp_batter_hrr": {
-      "n": 619,
-      "wins": 524,
-      "losses": 95,
-      "pushes": 0,
-      "net_units": 238.506,
-      "hit_rate": 0.8465
-    },
     "to_score_run_yes": {
       "n": 52,
       "wins": 21,
@@ -1427,6 +1419,14 @@
       "pushes": 0,
       "net_units": -50.834,
       "hit_rate": 0.2338
+    },
+    "pp_batter_hrr": {
+      "n": 620,
+      "wins": 523,
+      "losses": 97,
+      "pushes": 0,
+      "net_units": 236.958,
+      "hit_rate": 0.8435
     },
     "home_total_over": {
       "n": 66,
@@ -1662,14 +1662,6 @@
     }
   },
   "by_canonical": {
-    "mlb_hrr_3.5_under": {
-      "n": 557,
-      "wins": 474,
-      "losses": 83,
-      "pushes": 0,
-      "net_units": 238.004,
-      "hit_rate": 0.851
-    },
     "mlb_run_0.5_over": {
       "n": 52,
       "wins": 21,
@@ -1869,6 +1861,14 @@
       "pushes": 0,
       "net_units": -50.834,
       "hit_rate": 0.2338
+    },
+    "mlb_hrr_3.5_under": {
+      "n": 558,
+      "wins": 473,
+      "losses": 85,
+      "pushes": 0,
+      "net_units": 236.456,
+      "hit_rate": 0.8477
     },
     "mlb_hrr_2.5_under": {
       "n": 14,
@@ -2120,19 +2120,6 @@
     }
   },
   "by_sport": {
-    "MLB-PP": {
-      "n": 909,
-      "settled": 649,
-      "wins": 551,
-      "losses": 98,
-      "pushes": 0,
-      "pending": 58,
-      "void": 202,
-      "net_units": 239.562,
-      "hit_rate": 0.849,
-      "roi_pct": 36.91,
-      "markets": 3
-    },
     "MLB": {
       "n": 7185,
       "settled": 4809,
@@ -2210,6 +2197,19 @@
       "hit_rate": 0.4872,
       "roi_pct": -28.53,
       "markets": 6
+    },
+    "MLB-PP": {
+      "n": 909,
+      "settled": 650,
+      "wins": 550,
+      "losses": 100,
+      "pushes": 0,
+      "pending": 58,
+      "void": 201,
+      "net_units": 238.014,
+      "hit_rate": 0.8462,
+      "roi_pct": 36.62,
+      "markets": 3
     },
     "KBO": {
       "n": 85,
