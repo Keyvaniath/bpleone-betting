@@ -1,9 +1,9 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:17 F:142
+_NO_ACTION_NIGHT_ | L:0 S:10 F:107
 
 :dart: **Top Picks:**
-1. [GOLF] Lucas Glover -- Lucas Glover (PLAYER_STRONG)
-2. [GOLF] Lee Hodges -- Lee Hodges (PLAYER_STRONG)
+1. [GOLF] Zac Blair -- Zac Blair (PLAYER_STRONG)
+2. [GOLF] Lucas Glover -- Lucas Glover (PLAYER_STRONG)
 3. [MLB] ? -- ? (TEAM_STRONG)
 
 :coin: Bankroll Advisory: STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.

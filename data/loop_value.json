@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-07-02T16:16:42",
+  "generated_at": "2026-07-03T08:10:25",
   "n_records": 118254,
   "raw": {
     "n": 118254,
-    "hit_rate": 0.7313,
-    "brier": 0.1749
+    "hit_rate": 0.739,
+    "brier": 0.1736
   },
   "calibrated": {
     "n": 118254,
@@ -12,20 +12,10 @@
     "brier": 0.1736
   },
   "value_add": {
-    "hit_rate_pp": 0.77,
-    "brier_delta": -0.0013
+    "hit_rate_pp": 0.0,
+    "brier_delta": 0.0
   },
   "by_market": [
-    {
-      "market": "batter_hits",
-      "n": 22599,
-      "raw_hit_rate": 0.6578,
-      "cal_hit_rate": 0.6982,
-      "delta_pp": 4.04,
-      "raw_brier": 0.2039,
-      "cal_brier": 0.197,
-      "brier_delta": -0.0069
-    },
     {
       "market": "pitcher_strikeouts",
       "n": 5445,
@@ -34,6 +24,16 @@
       "delta_pp": 0.0,
       "raw_brier": 0.1674,
       "cal_brier": 0.1674,
+      "brier_delta": 0.0
+    },
+    {
+      "market": "batter_hits",
+      "n": 22599,
+      "raw_hit_rate": 0.6982,
+      "cal_hit_rate": 0.6982,
+      "delta_pp": 0.0,
+      "raw_brier": 0.197,
+      "cal_brier": 0.197,
       "brier_delta": 0.0
     },
     {
@@ -97,43 +97,16 @@
       "brier_delta": 0.0
     }
   ],
-  "trailing_30d": {
-    "raw": {
-      "n": 23,
-      "hit_rate": 0.3478,
-      "brier": 0.334
-    },
-    "calibrated": {
-      "n": 23,
-      "hit_rate": 0.5217,
-      "brier": 0.2864
-    },
-    "value_add": {
-      "hit_rate_pp": 17.39,
-      "brier_delta": -0.0476
-    },
-    "by_market": [
-      {
-        "market": "batter_hits",
-        "n": 23,
-        "raw_hit_rate": 0.3478,
-        "cal_hit_rate": 0.5217,
-        "delta_pp": 17.39,
-        "raw_brier": 0.334,
-        "cal_brier": 0.2864,
-        "brier_delta": -0.0476
-      }
-    ]
-  },
+  "trailing_30d": {},
   "correction_factors_used": {
-    "batter_total_bases": 1.0,
-    "batter_runs_scored": 1.0,
-    "batter_doubles": 1.0,
-    "batter_singles": 1.0,
-    "batter_home_runs": 1.0,
-    "pitcher_strikeouts": 1.0,
+    "batter_hits": 1.0,
     "batter_rbis": 1.0,
-    "batter_hits": 1.2776
+    "pitcher_strikeouts": 1.0,
+    "batter_runs_scored": 1.0,
+    "batter_total_bases": 1.0,
+    "batter_singles": 1.0,
+    "batter_doubles": 1.0,
+    "batter_home_runs": 1.0
   },
   "note": "Raw prob estimated by dividing calibrated prob by the current market-level correction factor. Approximation -- doesn't account for historical CF drift -- but directionally captures loop value."
 }
