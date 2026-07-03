@@ -21,14 +21,15 @@ _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 - **Koo Ja-wook** one_plus_tb (KBO) -- 73% / +38.9%
 - **Mel Rojas Jr.** one_plus_tb (KBO) -- 73% / +38.5%
 - **Austin Dean** one_plus_tb (KBO) -- 73% / +38.5%
+- **Masataka Yoshida** PP_batter_hrr_under_3.5 (MLB-PP) -- 87% / +51.7%
 
 ## 📉 Under Bets
 - **TOR @ SEA** UNDER 7.0 — model 6.1 [STRONG signal]
 
 ## 🎰 Tonight's Best Parlay
-- **Choi Jeong** one_plus_tb + **Jose Pirela** one_plus_tb
-- Joint 53% · fair +264 · edge +94.6%
+- **Henry Davis** PP_batter_hrr_under_3.5 + **MIL @ ARI** MIL_ML
+- Joint 63% · fair +194 · edge +84.9%
 
 ---
-_Generated 2026-07-03T16:04:34_
+_Generated 2026-07-03T23:04:41_
 _Full breakdown: /tonight · Full history: /locks-of-day_

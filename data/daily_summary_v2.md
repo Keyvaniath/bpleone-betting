@@ -1,13 +1,13 @@
 # EdgeStat Daily Summary — 2026-07-03
 
-## 🏥 Model Health: 74.0/100 [HEALTHY]
+## 🏥 Model Health: 73.3/100 [HEALTHY]
 - Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 99.7/100
+  - 🟢 Calibration Freshness: 100.0/100
   - 🔴 Hit Rate Trend: 54.4/100
   - 🔴 Brier Trend: 29.6/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 86.4/100
-  - 🟢 Edge Count: 100/100
+  - 🟢 Data Health: 95.5/100
+  - 🟡 Edge Count: 74.3/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.586)
@@ -32,7 +32,7 @@
 - Net units: **+9.84u** | ROI: **+49.3%**
 - Last 7d: 36-1 (97.3%) | net +1.58u
 
-**Today's 10 Locks:**
+**Today's 15 Locks:**
 - [MLB-PP] **Lane Thomas** PP_batter_hrr_under_3.5 · p=88% edge=+52.0% qK=0.062u
 - [MLB-PP] **Jared Triolo** PP_batter_hrr_under_3.5 · p=88% edge=+51.9% qK=0.062u
 - [MLB-PP] **Alex Freeland** PP_batter_hrr_under_3.5 · p=88% edge=+51.8% qK=0.062u
@@ -43,14 +43,19 @@
 - [MLB-PP] **Weston Wilson** PP_batter_hrr_under_3.5 · p=88% edge=+51.9% qK=0.062u
 - [MLB-PP] **Alejandro Kirk** PP_batter_hrr_under_3.5 · p=88% edge=+51.9% qK=0.062u
 - [MLB-PP] **Brett Baty** PP_batter_hrr_under_3.5 · p=88% edge=+51.9% qK=0.062u
+- [KBO] **Choi Jeong** one_plus_tb · p=73% edge=+39.8% qK=0.062u
+- [KBO] **Jose Pirela** one_plus_tb · p=73% edge=+39.2% qK=0.062u
+- [KBO] **Koo Ja-wook** one_plus_tb · p=73% edge=+38.9% qK=0.062u
+- [KBO] **Mel Rojas Jr.** one_plus_tb · p=73% edge=+38.5% qK=0.062u
+- [KBO] **Austin Dean** one_plus_tb · p=73% edge=+38.5% qK=0.062u
 
 ## 🎰 Top Balanced 2-Leg Parlays (40-65% joint)
-- [MLB-PP] Cedric Mullins PP_batter_hrr_under_ + [MLB] BAL @ CIN BAL_ML
-  Joint: 58% | Fair: 215 | Edge: +83.0%
-- [MLB-PP] Henry Davis PP_batter_hrr_under_ + [MLB] BAL @ CIN BAL_ML
-  Joint: 58% | Fair: 215 | Edge: +82.9%
-- [MLB-PP] Weston Wilson PP_batter_hrr_under_ + [MLB] BAL @ CIN BAL_ML
-  Joint: 58% | Fair: 215 | Edge: +82.9%
+- [KBO] Choi Jeong one_plus_tb + [KBO] Jose Pirela one_plus_tb
+  Joint: 53% | Fair: 264 | Edge: +94.6%
+- [KBO] Choi Jeong one_plus_tb + [KBO] Koo Ja-wook one_plus_tb
+  Joint: 53% | Fair: 264 | Edge: +94.1%
+- [KBO] Choi Jeong one_plus_tb + [KBO] Mel Rojas Jr. one_plus_tb
+  Joint: 53% | Fair: 264 | Edge: +93.6%
 
 ## 🎮 Player Play of the Day (cross-sport)
 - **[LOL]** Inspired UNDER 3.5 Kills | MED conviction · model 61.7% fair -161
@@ -67,15 +72,16 @@
 - Hot teams: **1** | Cold teams: **1** | Over-heavy: 0 | Under-heavy: 3
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (35)
-- STEAM_MOVE: **29**
+## ⚠️ Anomaly Detector (42)
+- RESIDUAL_DIVERGENCE: **1**
+- STEAM_MOVE: **35**
 - COMPOUND_BULLPEN: **4**
 - PEN_MISMATCH: **2**
+  - New York Liberty (WNBA): New York Liberty OUTPERFORMING expected margin by 7.5pts in recent games -- model bias may persist
   - LA @ IND (WNBA): TOTAL steam since open: total +4 (OVER) (6 snapshots)
   - ATL @ SFG (MLB): ML/TOTAL steam since open: ML -16.4pp toward ATL; total -0.5 (UNDER) (8 snapshots)
   - LV @ NY (WNBA): ML/TOTAL steam since open: ML +12.4pp toward NY; total -1 (UNDER) (4 snapshots)
   - NY @ SEA (WNBA): ML/TOTAL steam since open: ML +8.9pp toward SEA; total -2 (UNDER) (2 snapshots)
-  - CIN @ MIL (MLB): ML/TOTAL steam since open: ML +6.3pp toward MIL; total -2 (UNDER) (4 snapshots)
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
@@ -86,11 +92,10 @@
   - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
-## 🎯 Convergence Picks (5 stacked games)
-- ELITE: **0** · HIGH: 1 · MED: 4
-  - [HIGH] Atlanta Dream @ Washington Mystics : 3 signals (HEAT_COLD, HEAT_COLD, ATS)
+## 🎯 Convergence Picks (4 stacked games)
+- ELITE: **1** · HIGH: 0 · MED: 3
+  - [ELITE] Minnesota Lynx @ New York Liberty : 4 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
   - [MED] New York Knicks @ San Antonio Spurs : 2 signals (ATS, ATS)
-  - [MED] Seattle Storm @ Phoenix Mercury : 2 signals (HEAT_COLD, ATS)
   - [MED] Portland Timbers @ Seattle Sounders FC : 2 signals (PREGAME, ATS)
   - [MED] Coventry City @ Arsenal : 2 signals (PREGAME, ATS)
 
@@ -120,14 +125,14 @@
 
 ## ⛳ Golf Player Heat (from John Deere Classic)
   - 🔥 T1 **Zach Johnson** (USA): -9 total -- finished T1
-  - 🔥 T2 **Pontus Nyholm** (Sweden): -8 total -- finished T2
+  - 🔥 T2 **Tom Kim** (South Korea): -8 total -- finished T2
   - 🔥 T3 **Lucas Glover** (USA): -8 total -- finished T3
   - 🔥 T4 **Zac Blair** (USA): -8 total -- finished T4
-  - 🔥 T5 **Tom Kim** (South Korea): -7 total -- finished T5
+  - 🔥 T5 **Harry Higgs** (USA): -7 total -- finished T5
 
-## 🔥 MLB Batter Heat (54 HOT / 49 COLD)
+## 🔥 MLB Batter Heat (52 HOT / 47 COLD)
   - 🔥 **Caleb Durbin** (BOS): L14 .396 / season .229 (+167pts)
-  - 🔥 **Dansby Swanson** (CHC): L14 .352 / season .210 (+142pts)
+  - 🔥 **Dansby Swanson** (CHC): L14 .352 / season .208 (+144pts)
   - 🔥 **Owen Caissie** (MIA): L14 .378 / season .239 (+139pts)
   - 🔥 **Josh Lowe** (LAA): L14 .350 / season .212 (+138pts)
   - 🔥 **Trevor Larnach** (MIN): L14 .426 / season .291 (+135pts)

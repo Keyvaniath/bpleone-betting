@@ -1,23 +1,23 @@
 {
- "generated_at": "2026-07-03T16:04:31",
+ "generated_at": "2026-07-03T23:04:34",
  "stake_assumption": "1u flat per pick",
  "total_picks": 10000,
- "n_settled": 6632,
- "n_pending": 664,
- "n_void": 2704,
- "wins": 2916,
- "losses": 3708,
+ "n_settled": 6614,
+ "n_pending": 684,
+ "n_void": 2702,
+ "wins": 2909,
+ "losses": 3697,
  "pushes": 8,
- "hit_rate": 0.4402,
- "net_units": -707.569,
- "roi_pct": -10.68,
+ "hit_rate": 0.4404,
+ "net_units": -707.765,
+ "roi_pct": -10.71,
  "n_calibrated_picks": 9202,
  "calibrated_reliability": {
-  "n": 6536,
-  "ece_raw": 0.0848,
-  "ece_calibrated": 0.0178,
-  "brier_raw": 0.21721,
-  "brier_calibrated": 0.19721,
+  "n": 6518,
+  "ece_raw": 0.085,
+  "ece_calibrated": 0.0176,
+  "brier_raw": 0.2172,
+  "brier_calibrated": 0.19719,
   "note": "In-sample over the settled ledger (the isotonic transform is fit on these same outcomes); held-out 70/30 validation is in recalibration_map.json. p_predicted = raw model prob (kept untouched for the learning loop); p_calibrated = honest prob stamped per pick. Lower ECE/Brier on the calibrated column = the displayed % is truer."
  },
  "curated": {
@@ -41,30 +41,21 @@
   ],
   "definition": "Featured/recommended plays only -- Lock of the Day, Top 25, Whale, Sharp, Consensus (hit), Under Alerts, POD. Excludes the experimental prop feeds, which are tracked to train the model, not bet."
  },
- "n_added_this_run": 14,
- "n_newly_settled_this_run": 0,
+ "n_added_this_run": 4,
+ "n_newly_settled_this_run": 3,
  "n_resettled_this_run": 0,
  "n_voided_this_run": 0,
  "n_reconciled_settled_voids": 0,
  "n_bootstrapped_from_locks_history": 0,
  "by_source": {
-  "mlb_bk_k_1plus_yes": {
-   "n": 348,
-   "wins": 207,
-   "losses": 141,
-   "pushes": 0,
-   "net_units": -53.771,
-   "hit_rate": 0.5948,
-   "roi_pct": -15.45
-  },
   "mlb_3plus_tb_tb_3plus_yes": {
-   "n": 589,
-   "wins": 140,
-   "losses": 449,
+   "n": 574,
+   "wins": 135,
+   "losses": 439,
    "pushes": 0,
    "net_units": -160.59,
-   "hit_rate": 0.2377,
-   "roi_pct": -27.26
+   "hit_rate": 0.2352,
+   "roi_pct": -27.98
   },
   "mlb_xbh_1_plus_xbh": {
    "n": 1590,
@@ -218,6 +209,15 @@
    "net_units": 0.791,
    "hit_rate": 0.8718,
    "roi_pct": 2.03
+  },
+  "mlb_bk_k_1plus_yes": {
+   "n": 342,
+   "wins": 204,
+   "losses": 138,
+   "pushes": 0,
+   "net_units": -52.295,
+   "hit_rate": 0.5965,
+   "roi_pct": -15.29
   },
   "mlb_bk_k_1plus_no": {
    "n": 11,
@@ -778,13 +778,13 @@
    "roi_pct": 52.24
   },
   "soccer_clean_sheet_home_clean_sheet_no": {
-   "n": 76,
-   "wins": 52,
+   "n": 77,
+   "wins": 53,
    "losses": 24,
    "pushes": 0,
-   "net_units": -6.927,
-   "hit_rate": 0.6842,
-   "roi_pct": -9.11
+   "net_units": -6.6,
+   "hit_rate": 0.6883,
+   "roi_pct": -8.57
   },
   "wnba_alts_home_total_over_74.4": {
    "n": 1,
@@ -1021,13 +1021,13 @@
    "roi_pct": 53.5
   },
   "tennis_games_total_games_under_21.5": {
-   "n": 4,
+   "n": 6,
    "wins": 4,
-   "losses": 0,
+   "losses": 2,
    "pushes": 0,
-   "net_units": 1.686,
-   "hit_rate": 1.0,
-   "roi_pct": 42.15
+   "net_units": -0.314,
+   "hit_rate": 0.6667,
+   "roi_pct": -5.23
   },
   "soccer_clean_sheet_away_clean_sheet_no": {
    "n": 1,
@@ -1220,21 +1220,13 @@
   }
  },
  "by_market_family": {
-  "k_1plus_yes": {
-   "n": 348,
-   "wins": 207,
-   "losses": 141,
-   "pushes": 0,
-   "net_units": -53.771,
-   "hit_rate": 0.5948
-  },
   "tb_3plus_yes": {
-   "n": 589,
-   "wins": 140,
-   "losses": 449,
+   "n": 574,
+   "wins": 135,
+   "losses": 439,
    "pushes": 0,
    "net_units": -160.59,
-   "hit_rate": 0.2377
+   "hit_rate": 0.2352
   },
   "1_plus_xbh": {
    "n": 1590,
@@ -1363,6 +1355,14 @@
    "pushes": 0,
    "net_units": 0.791,
    "hit_rate": 0.8718
+  },
+  "k_1plus_yes": {
+   "n": 342,
+   "wins": 204,
+   "losses": 138,
+   "pushes": 0,
+   "net_units": -52.295,
+   "hit_rate": 0.5965
   },
   "k_1plus_no": {
    "n": 11,
@@ -1597,12 +1597,12 @@
    "hit_rate": 0.875
   },
   "home_clean_sheet_no": {
-   "n": 76,
-   "wins": 52,
+   "n": 77,
+   "wins": 53,
    "losses": 24,
    "pushes": 0,
-   "net_units": -6.927,
-   "hit_rate": 0.6842
+   "net_units": -6.6,
+   "hit_rate": 0.6883
   },
   "ast_under": {
    "n": 3,
@@ -1637,12 +1637,12 @@
    "hit_rate": 1.0
   },
   "total_games_under": {
-   "n": 14,
+   "n": 16,
    "wins": 6,
-   "losses": 8,
+   "losses": 10,
    "pushes": 0,
-   "net_units": -5.52,
-   "hit_rate": 0.4286
+   "net_units": -7.52,
+   "hit_rate": 0.375
   },
   "total_games_over": {
    "n": 10,
@@ -1662,21 +1662,13 @@
   }
  },
  "by_canonical": {
-  "mlb_bk_0.5_over": {
-   "n": 348,
-   "wins": 207,
-   "losses": 141,
-   "pushes": 0,
-   "net_units": -53.771,
-   "hit_rate": 0.5948
-  },
   "mlb_tb_2.5_over": {
-   "n": 589,
-   "wins": 140,
-   "losses": 449,
+   "n": 574,
+   "wins": 135,
+   "losses": 439,
    "pushes": 0,
    "net_units": -160.59,
-   "hit_rate": 0.2377
+   "hit_rate": 0.2352
   },
   "mlb_xbh_0.5_over": {
    "n": 1590,
@@ -1813,6 +1805,14 @@
    "pushes": 0,
    "net_units": 0.791,
    "hit_rate": 0.8718
+  },
+  "mlb_bk_0.5_over": {
+   "n": 342,
+   "wins": 204,
+   "losses": 138,
+   "pushes": 0,
+   "net_units": -52.295,
+   "hit_rate": 0.5965
   },
   "mlb_bk_0.5_under": {
    "n": 11,
@@ -2055,12 +2055,12 @@
    "hit_rate": 0.875
   },
   "home_clean_sheet_no": {
-   "n": 76,
-   "wins": 52,
+   "n": 77,
+   "wins": 53,
    "losses": 24,
    "pushes": 0,
-   "net_units": -6.927,
-   "hit_rate": 0.6842
+   "net_units": -6.6,
+   "hit_rate": 0.6883
   },
   "ast_under": {
    "n": 3,
@@ -2095,12 +2095,12 @@
    "hit_rate": 1.0
   },
   "total_games_under": {
-   "n": 14,
+   "n": 16,
    "wins": 6,
-   "losses": 8,
+   "losses": 10,
    "pushes": 0,
-   "net_units": -5.52,
-   "hit_rate": 0.4286
+   "net_units": -7.52,
+   "hit_rate": 0.375
   },
   "total_games_over": {
    "n": 10,
@@ -2121,25 +2121,25 @@
  },
  "by_sport": {
   "MLB": {
-   "n": 7187,
-   "settled": 4869,
-   "wins": 1766,
-   "losses": 3095,
+   "n": 7167,
+   "settled": 4848,
+   "wins": 1758,
+   "losses": 3082,
    "pushes": 8,
-   "pending": 350,
-   "void": 1968,
-   "net_units": -1125.919,
-   "hit_rate": 0.3633,
-   "roi_pct": -23.16,
+   "pending": 353,
+   "void": 1966,
+   "net_units": -1124.442,
+   "hit_rate": 0.3632,
+   "roi_pct": -23.23,
    "markets": 47
   },
   "MLB-PP": {
-   "n": 923,
+   "n": 924,
    "settled": 662,
    "wins": 560,
    "losses": 102,
    "pushes": 0,
-   "pending": 57,
+   "pending": 58,
    "void": 204,
    "net_units": 242.177,
    "hit_rate": 0.8459,
@@ -2173,12 +2173,12 @@
    "markets": 1
   },
   "GOLF": {
-   "n": 539,
+   "n": 546,
    "settled": 496,
    "wins": 222,
    "losses": 274,
    "pushes": 0,
-   "pending": 43,
+   "pending": 50,
    "void": 0,
    "net_units": -26.787,
    "hit_rate": 0.4476,
@@ -2186,12 +2186,12 @@
    "markets": 3
   },
   "WNBA": {
-   "n": 388,
+   "n": 400,
    "settled": 159,
    "wins": 114,
    "losses": 45,
    "pushes": 0,
-   "pending": 16,
+   "pending": 28,
    "void": 213,
    "net_units": 13.385,
    "hit_rate": 0.717,
@@ -2265,117 +2265,39 @@
   },
   "WORLDCUP": {
    "n": 184,
-   "settled": 171,
-   "wins": 113,
+   "settled": 172,
+   "wins": 114,
    "losses": 58,
    "pushes": 0,
-   "pending": 13,
+   "pending": 12,
    "void": 0,
-   "net_units": -0.563,
-   "hit_rate": 0.6608,
-   "roi_pct": -0.33,
+   "net_units": -0.236,
+   "hit_rate": 0.6628,
+   "roi_pct": -0.14,
    "markets": 9
   },
   "TENNIS": {
    "n": 98,
-   "settled": 34,
+   "settled": 36,
    "wins": 18,
-   "losses": 16,
+   "losses": 18,
    "pushes": 0,
-   "pending": 27,
+   "pending": 25,
    "void": 37,
-   "net_units": -7.686,
-   "hit_rate": 0.5294,
-   "roi_pct": -22.61,
+   "net_units": -9.686,
+   "hit_rate": 0.5,
+   "roi_pct": -26.91,
    "markets": 5
   }
  },
  "last_7_days": {
-  "wins": 519,
-  "losses": 758,
-  "net_units": -99.329,
-  "hit_rate": 0.4064
+  "wins": 520,
+  "losses": 760,
+  "net_units": -101.002,
+  "hit_rate": 0.4062
  },
  "note": "Unified pick ledger -- records every pick the model surfaces (top_25 board, whales, consensus, unders, sharp action, locks, POD) and settles each against actual outcomes. Per-source W-L feeds back into calibration so the model learns which modules are reliable. THIS is the training signal.",
  "picks": [
-  {
-   "source": "mlb_2plus_hits_hits_2plus_yes",
-   "sport": "MLB",
-   "player_or_matchup": "Pete Crow-Armstrong",
-   "market": "HITS_2PLUS_YES",
-   "prob": 0.442,
-   "fair_american": 126,
-   "p_predicted": 0.442,
-   "matchup": "SDP @ CHC",
-   "date": "2026-07-01",
-   "pick_id": "mlb_2plus_hits_hits_2plus_yes|MLB|Pete_Crow_Armstrong|HITS_2PLUS_YES|2026-07-01",
-   "settled": true,
-   "result": "won",
-   "payout_units": 1.26,
-   "recorded_at": "2026-07-01T00:01:54",
-   "p_calibrated": 0.3168,
-   "outcome": {
-    "stat": "hits",
-    "actual": 2,
-    "line": 1.5,
-    "side": "OVER/YES",
-    "verify": "Pete Crow-Armstrong \u2014 hits = 2 (line 1.5, bet OVER/YES) on 2026-07-01",
-    "check": "verified"
-   },
-   "settled_at": "2026-07-01T22:40:10"
-  },
-  {
-   "source": "mlb_2plus_hits_hits_2plus_yes",
-   "sport": "MLB",
-   "player_or_matchup": "TJ Rumfield",
-   "market": "HITS_2PLUS_YES",
-   "prob": 0.442,
-   "fair_american": 126,
-   "p_predicted": 0.442,
-   "matchup": "MIA @ COL",
-   "date": "2026-07-01",
-   "pick_id": "mlb_2plus_hits_hits_2plus_yes|MLB|TJ_Rumfield|HITS_2PLUS_YES|2026-07-01",
-   "settled": true,
-   "result": "lost",
-   "payout_units": -1.0,
-   "recorded_at": "2026-07-01T00:01:54",
-   "p_calibrated": 0.3168,
-   "outcome": {
-    "stat": "hits",
-    "actual": 0,
-    "line": 1.5,
-    "side": "OVER/YES",
-    "verify": "TJ Rumfield \u2014 hits = 0 (line 1.5, bet OVER/YES) on 2026-07-01",
-    "check": "verified"
-   },
-   "settled_at": "2026-07-02T05:02:29"
-  },
-  {
-   "source": "mlb_3plus_tb_tb_3plus_yes",
-   "sport": "MLB",
-   "player_or_matchup": "Manny Machado",
-   "market": "TB_3PLUS_YES",
-   "prob": 0.398,
-   "fair_american": 151,
-   "p_predicted": 0.398,
-   "matchup": "SDP @ CHC",
-   "date": "2026-07-01",
-   "pick_id": "mlb_3plus_tb_tb_3plus_yes|MLB|Manny_Machado|TB_3PLUS_YES|2026-07-01",
-   "settled": true,
-   "result": "lost",
-   "payout_units": -1.0,
-   "recorded_at": "2026-07-01T00:01:54",
-   "p_calibrated": 0.2883,
-   "outcome": {
-    "stat": "tb",
-    "actual": 2,
-    "line": 2.5,
-    "side": "OVER/YES",
-    "verify": "Manny Machado \u2014 tb = 2 (line 2.5, bet OVER/YES) on 2026-07-01",
-    "check": "verified"
-   },
-   "settled_at": "2026-07-01T19:44:40"
-  },
   {
    "source": "mlb_3plus_tb_tb_3plus_yes",
    "sport": "MLB",
@@ -2391,7 +2313,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-01T00:01:54",
-   "p_calibrated": 0.2883,
+   "p_calibrated": 0.2905,
    "outcome": {
     "stat": "tb",
     "actual": 1,
@@ -4489,7 +4411,7 @@
    "result": "won",
    "payout_units": 1.51,
    "recorded_at": "2026-07-02T02:40:54",
-   "p_calibrated": 0.2883,
+   "p_calibrated": 0.2905,
    "outcome": {
     "stat": "tb",
     "actual": 4,
@@ -5424,6 +5346,32 @@
    "settled_at": "2026-07-03T04:12:45"
   },
   {
+   "source": "tennis_games_total_games_under_21.5",
+   "sport": "TENNIS",
+   "player_or_matchup": "Tommy Paul vs Hubert Hurkacz",
+   "market": "TOTAL_GAMES_UNDER_21.5",
+   "prob": 0.691,
+   "fair_american": -224,
+   "p_predicted": 0.691,
+   "matchup": "Tommy Paul vs Hubert Hurkacz",
+   "date": "2026-07-02",
+   "pick_id": "tennis_games_total_games_under_21_5|TENNIS|Tommy_Paul_vs_Hubert_Hurkacz|TOTAL_GAMES_UNDER_21_5|2026-07-02",
+   "settled": true,
+   "result": "lost",
+   "payout_units": -1.0,
+   "recorded_at": "2026-07-02T06:25:11",
+   "p_calibrated": 0.691,
+   "outcome": {
+    "match": "Tommy Paul vs Hubert Hurkacz",
+    "winner": "Hubert Hurkacz",
+    "sets": "1-3",
+    "total_games": 43,
+    "market": "TOTAL_GAMES_UNDER_21.5",
+    "verify": "Hubert Hurkacz won 1-3 (43 games) \u2014 TOTAL_GAMES_UNDER_21.5"
+   },
+   "settled_at": "2026-07-03T23:04:34"
+  },
+  {
    "source": "mlb_game_total_game_total_under_9.5",
    "sport": "MLB",
    "player_or_matchup": "PIT @ PHI",
@@ -5782,7 +5730,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-02T17:39:59",
-   "p_calibrated": 0.2883,
+   "p_calibrated": 0.2905,
    "outcome": {
     "stat": "tb",
     "actual": 1,
@@ -5808,7 +5756,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-02T17:39:59",
-   "p_calibrated": 0.2883,
+   "p_calibrated": 0.2905,
    "outcome": {
     "stat": "tb",
     "actual": 1,
@@ -5834,7 +5782,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-02T17:39:59",
-   "p_calibrated": 0.2883,
+   "p_calibrated": 0.2905,
    "outcome": {
     "stat": "tb",
     "actual": 2,
@@ -5860,7 +5808,7 @@
    "result": "won",
    "payout_units": 1.82,
    "recorded_at": "2026-07-02T17:39:59",
-   "p_calibrated": 0.2883,
+   "p_calibrated": 0.2905,
    "outcome": {
     "stat": "tb",
     "actual": 4,
@@ -5886,7 +5834,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-02T17:39:59",
-   "p_calibrated": 0.2142,
+   "p_calibrated": 0.2039,
    "outcome": {
     "stat": "tb",
     "actual": 0,
@@ -5912,7 +5860,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-02T17:39:59",
-   "p_calibrated": 0.2142,
+   "p_calibrated": 0.2039,
    "outcome": {
     "stat": "tb",
     "actual": 2,
@@ -5938,7 +5886,7 @@
    "result": "won",
    "payout_units": 2.66,
    "recorded_at": "2026-07-02T17:39:59",
-   "p_calibrated": 0.2142,
+   "p_calibrated": 0.2039,
    "outcome": {
     "stat": "tb",
     "actual": 4,
@@ -5964,7 +5912,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-02T17:39:59",
-   "p_calibrated": 0.2132,
+   "p_calibrated": 0.2039,
    "outcome": {
     "stat": "tb",
     "actual": 1,
@@ -5990,7 +5938,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-02T17:39:59",
-   "p_calibrated": 0.2118,
+   "p_calibrated": 0.2039,
    "outcome": {
     "stat": "tb",
     "actual": 1,
@@ -6016,7 +5964,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-02T17:39:59",
-   "p_calibrated": 0.2116,
+   "p_calibrated": 0.2039,
    "outcome": {
     "stat": "tb",
     "actual": 2,
@@ -6042,7 +5990,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-02T17:39:59",
-   "p_calibrated": 0.2098,
+   "p_calibrated": 0.2039,
    "outcome": {
     "stat": "tb",
     "actual": 0,
@@ -6068,7 +6016,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-02T17:39:59",
-   "p_calibrated": 0.2084,
+   "p_calibrated": 0.2039,
    "outcome": {
     "stat": "tb",
     "actual": 1,
@@ -6094,7 +6042,7 @@
    "result": "won",
    "payout_units": 3.55,
    "recorded_at": "2026-07-02T17:39:59",
-   "p_calibrated": 0.2084,
+   "p_calibrated": 0.2039,
    "outcome": {
     "stat": "tb",
     "actual": 3,
@@ -6710,7 +6658,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-02T23:32:43",
-   "p_calibrated": 0.2883,
+   "p_calibrated": 0.2905,
    "outcome": {
     "stat": "tb",
     "actual": 1,
@@ -6736,7 +6684,7 @@
    "result": "won",
    "payout_units": 1.7,
    "recorded_at": "2026-07-02T23:32:43",
-   "p_calibrated": 0.2883,
+   "p_calibrated": 0.2905,
    "outcome": {
     "stat": "tb",
     "actual": 3,
@@ -6762,7 +6710,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-02T23:32:43",
-   "p_calibrated": 0.2142,
+   "p_calibrated": 0.2039,
    "outcome": {
     "stat": "tb",
     "actual": 1,
@@ -6788,7 +6736,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-02T23:32:43",
-   "p_calibrated": 0.2142,
+   "p_calibrated": 0.2039,
    "outcome": {
     "stat": "tb",
     "actual": 0,
@@ -6814,7 +6762,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-02T23:32:43",
-   "p_calibrated": 0.2142,
+   "p_calibrated": 0.2039,
    "outcome": {
     "stat": "tb",
     "actual": 0,
@@ -6840,7 +6788,7 @@
    "result": "won",
    "payout_units": 2.34,
    "recorded_at": "2026-07-02T23:32:43",
-   "p_calibrated": 0.2142,
+   "p_calibrated": 0.2039,
    "outcome": {
     "stat": "tb",
     "actual": 4,
@@ -6866,7 +6814,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-02T23:32:43",
-   "p_calibrated": 0.2142,
+   "p_calibrated": 0.2039,
    "outcome": {
     "stat": "tb",
     "actual": 0,
@@ -6892,7 +6840,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-02T23:32:43",
-   "p_calibrated": 0.2142,
+   "p_calibrated": 0.2039,
    "outcome": {
     "stat": "tb",
     "actual": 1,
@@ -6918,7 +6866,7 @@
    "result": "won",
    "payout_units": 2.61,
    "recorded_at": "2026-07-02T23:32:43",
-   "p_calibrated": 0.2142,
+   "p_calibrated": 0.2039,
    "outcome": {
     "stat": "tb",
     "actual": 5,
@@ -6944,7 +6892,7 @@
    "result": "won",
    "payout_units": 2.69,
    "recorded_at": "2026-07-02T23:32:43",
-   "p_calibrated": 0.2138,
+   "p_calibrated": 0.2039,
    "outcome": {
     "stat": "tb",
     "actual": 3,
@@ -6970,7 +6918,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-02T23:32:43",
-   "p_calibrated": 0.2124,
+   "p_calibrated": 0.2039,
    "outcome": {
     "stat": "tb",
     "actual": 0,
@@ -6996,7 +6944,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-02T23:32:43",
-   "p_calibrated": 0.2124,
+   "p_calibrated": 0.2039,
    "outcome": {
     "stat": "tb",
     "actual": 2,
@@ -7022,7 +6970,7 @@
    "result": "won",
    "payout_units": 2.8,
    "recorded_at": "2026-07-02T23:32:43",
-   "p_calibrated": 0.2122,
+   "p_calibrated": 0.2039,
    "outcome": {
     "stat": "tb",
     "actual": 3,
@@ -7048,7 +6996,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-02T23:32:43",
-   "p_calibrated": 0.2116,
+   "p_calibrated": 0.2039,
    "outcome": {
     "stat": "tb",
     "actual": 2,
@@ -7074,7 +7022,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-02T23:32:43",
-   "p_calibrated": 0.2106,
+   "p_calibrated": 0.2039,
    "outcome": {
     "stat": "tb",
     "actual": 1,
@@ -7653,6 +7601,66 @@
     "verify": "Algeria 0-2 Switzerland: home clean sheet = True \u2014 HOME_CLEAN_SHEET_NO"
    },
    "settled_at": "2026-07-03T07:42:15"
+  },
+  {
+   "source": "tennis_games_total_games_under_21.5",
+   "sport": "TENNIS",
+   "player_or_matchup": "Tommy Paul vs Hubert Hurkacz",
+   "market": "TOTAL_GAMES_UNDER_21.5",
+   "prob": 0.691,
+   "fair_american": -224,
+   "p_predicted": 0.691,
+   "matchup": "Tommy Paul vs Hubert Hurkacz",
+   "date": "2026-07-03",
+   "pick_id": "tennis_games_total_games_under_21_5|TENNIS|Tommy_Paul_vs_Hubert_Hurkacz|TOTAL_GAMES_UNDER_21_5|2026-07-03",
+   "settled": true,
+   "result": "lost",
+   "payout_units": -1.0,
+   "recorded_at": "2026-07-03T00:10:50",
+   "p_calibrated": 0.691,
+   "outcome": {
+    "match": "Tommy Paul vs Hubert Hurkacz",
+    "winner": "Hubert Hurkacz",
+    "sets": "1-3",
+    "total_games": 43,
+    "market": "TOTAL_GAMES_UNDER_21.5",
+    "verify": "Hubert Hurkacz won 1-3 (43 games) \u2014 TOTAL_GAMES_UNDER_21.5"
+   },
+   "settled_at": "2026-07-03T23:04:34"
+  },
+  {
+   "source": "soccer_clean_sheet_home_clean_sheet_no",
+   "sport": "WORLDCUP",
+   "player_or_matchup": "Egypt @ Australia",
+   "market": "HOME_CLEAN_SHEET_NO",
+   "prob": 0.753,
+   "fair_american": -306,
+   "p_predicted": 0.753,
+   "matchup": "Egypt @ Australia",
+   "date": "2026-07-03",
+   "pick_id": "soccer_clean_sheet_home_clean_sheet_no|WORLDCUP|Egypt___Australia|HOME_CLEAN_SHEET_NO|2026-07-03",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.3268,
+   "recorded_at": "2026-07-03T11:02:47",
+   "p_calibrated": 0.6936,
+   "outcome": {
+    "final_score": "Egypt 1-1 Australia",
+    "total_cards": 2,
+    "total_goals": 2,
+    "scorers": [
+     "emam ashour",
+     "mahmoud saber",
+     "jackson irvine",
+     "ramy rabia",
+     "awer mabil",
+     "mohamed salah",
+     "hossam abdelmaguid"
+    ],
+    "market": "HOME_CLEAN_SHEET_NO",
+    "verify": "Egypt 1-1 Australia: home clean sheet = False \u2014 HOME_CLEAN_SHEET_NO"
+   },
+   "settled_at": "2026-07-03T23:04:34"
   }
  ],
  "recent_window": 200,
@@ -7660,5 +7668,5 @@
   "2026-05-19",
   "2026-07-03"
  ],
- "digest_generated_at": "2026-07-03T16:04:31"
+ "digest_generated_at": "2026-07-03T23:04:35"
 }

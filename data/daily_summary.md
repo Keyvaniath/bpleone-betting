@@ -2,36 +2,34 @@
 
 **Model Confidence: 7.5/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
 
-_Pipeline health: **WARNING** (11/15 artifacts ok; 4 empty, 0 stale)._ 
+_Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
 
-_Generated at 2026-07-03T16:04:46 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-07-03T23:05:40 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
-**MIN @ NYY - OVER_10.0**
+**MIN @ NYY - OVER_9.5**
 - Market: -110
-- Model probability: 86.2%
-- Raw edge: +64.56%
+- Model probability: 81.3%
+- Raw edge: +55.25%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
 
-## Full Slate (13 games)
+## Full Slate (11 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 4:05p ET | STL @ CHC | Wrigley Field | 76F 5mph | UNDER_11.0 +19.71% |
-| 6:45p ET | PIT @ WSN | Nationals Park | 93F 4mph | OVER_9.5 +43.8% |
-| 7:05p ET | MIN @ NYY | Yankee Stadium | 91F 14mph | OVER_10.0 +64.56% |
-| 7:10p ET | BAL @ CIN | Great American Ball Park | 85F 3mph | BAL_ML +25.48% |
-| 7:10p ET | CHW @ CLE | Progressive Field | 85F 6mph | CHW_ML +22.96% |
-| 7:15p ET | NYM @ ATL | Truist Park | 78F 5mph | UNDER_9.0 +10.77% |
-| 8:10p ET | SFG @ COL | Coors Field | 74F 8mph | OVER_11.0 +59.02% |
+| 7:05p ET | MIN @ NYY | Yankee Stadium | 80F 5mph | OVER_9.5 +55.25% |
+| 7:10p ET | BAL @ CIN | Great American Ball Park | 86F 3mph | BAL_ML +24.19% |
+| 7:10p ET | CHW @ CLE | Progressive Field | 79F 6mph | CHW_ML +21.39% |
+| 7:15p ET | NYM @ ATL | Truist Park | 76F 3mph | UNDER_9.0 +15.6% |
+| 8:10p ET | SFG @ COL | Coors Field | 75F 7mph | OVER_11.5 +33.27% |
 | 8:15p ET | TBR @ HOU | Daikin Park | indoor | TBR_ML +23.5% |
 | 9:38p ET | BOS @ LAA | Angel Stadium | 67F 4mph | UNDER_7.5 +10.29% |
-| 9:40p ET | MIA @ OAK | Sutter Health Park | 71F 7mph | -- |
-| 9:45p ET | MIL @ ARI | Chase Field | indoor | MIL_ML +32.15% |
-| 10:10p ET | SDP @ LAD | UNIQLO Field at Dodger Stadium | 61F 3mph | LAD_ML +25.54% |
+| 9:40p ET | MIA @ OAK | Sutter Health Park | 69F 7mph | -- |
+| 9:45p ET | MIL @ ARI | Chase Field | indoor | MIL_ML +36.11% |
+| 10:10p ET | SDP @ LAD | UNIQLO Field at Dodger Stadium | 60F 3mph | LAD_ML +24.39% |
 | 10:10p ET | TOR @ SEA | T-Mobile Park | indoor | UNDER_7.0 +26.05% |
 
 ## Parlays - top 5
@@ -67,17 +65,15 @@ Cumulative graded plays: 118214. Wins: 87366. Hit rate: 73.9%.
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| BAL @ CIN | 42.4% | +136 | 4.35 | +367 | -367 |
-| BOS @ LAA | 52.0% | -109 | 3.34 | +172 | -172 |
-| CHW @ CLE | 31.3% | +219 | 5.79 | +242 | -242 |
-| MIA @ OAK | 28.9% | +246 | 6.43 | +113 | -113 |
+| BAL @ CIN | 42.4% | +136 | 4.37 | +367 | -367 |
+| BOS @ LAA | 52.0% | -109 | 3.32 | +172 | -172 |
+| CHW @ CLE | 31.3% | +219 | 5.59 | +243 | -243 |
+| MIA @ OAK | 28.9% | +246 | 6.44 | +114 | -114 |
 | MIL @ ARI | 51.3% | -105 | 3.34 | +758 | -758 |
-| MIN @ NYY | 30.6% | +227 | 6.45 | -170 | +170 |
-| NYM @ ATL | 44.4% | +125 | 4.02 | +125 | -125 |
-| PIT @ WSN | 52.4% | -110 | 3.3 | +211 | -211 |
-| SDP @ LAD | 46.4% | +116 | 3.91 | -457 | +457 |
-| SFG @ COL | 36.6% | +173 | 4.78 | +217 | -217 |
-| STL @ CHC | 32.5% | +208 | 5.48 | +103 | -103 |
+| MIN @ NYY | 30.6% | +227 | 5.96 | -158 | +158 |
+| NYM @ ATL | 44.4% | +125 | 4.05 | +126 | -126 |
+| SDP @ LAD | 46.4% | +116 | 3.91 | -466 | +466 |
+| SFG @ COL | 50.4% | -102 | 3.46 | +380 | -380 |
 | TBR @ HOU | 27.6% | +262 | 6.43 | +309 | -309 |
 | TOR @ SEA | 44.5% | +125 | 4.04 | +286 | -286 |
 

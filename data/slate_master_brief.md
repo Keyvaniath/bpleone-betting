@@ -1,20 +1,20 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-07-03T16:04:39 UTC_
+_Generated 2026-07-03T23:04:48 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -37
+- **Score:** -44
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 15
-- **Total FADES:** 97
+- **Total STRONG:** 14
+- **Total FADES:** 100
 
 ## Top 5 Curated Picks
-1. **GOLF / Zach Johnson** (GOLF_PLAYER, score=160.71)
+1. **GOLF / Zach Johnson** (GOLF_PLAYER, score=156.57)
    - Play: Zach Johnson (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Pontus Nyholm** (GOLF_PLAYER, score=122.36)
-   - Play: Pontus Nyholm (PLAYER_STRONG)
+2. **GOLF / Tom Kim** (GOLF_PLAYER, score=125.0)
+   - Play: Tom Kim (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
 3. **WNBA / a'ja wilson** (WNBA_PLAYER, score=64.33)
    - Play: a'ja wilson (PLAYER_STRONG)
@@ -29,7 +29,7 @@ _Generated 2026-07-03T16:04:39 UTC_
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
   - Zach Johnson top 10 finish
-  - Pontus Nyholm top 10 finish
+  - Tom Kim top 10 finish
   - Lucas Glover top 10 finish
 
 ## Slate ROI Projection
@@ -39,13 +39,13 @@ _Generated 2026-07-03T16:04:39 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **NHL** / anthony stolarz (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / joseph woll (GOALIE_FADE)
+- **NHL** / samsonov ilya (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
 - **NHL** / adin hill (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / stuart skinner (GOALIE_FADE)
+- **NHL** / anthony stolarz (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
 - **NHL** / thatcher demko (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / joseph woll (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
