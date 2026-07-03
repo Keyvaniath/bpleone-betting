@@ -4,14 +4,14 @@
 
 _Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
 
-_Generated at 2026-07-03T08:09:44 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-07-03T15:07:49 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
-**SFG @ COL - OVER_11.0**
+**MIN @ NYY - OVER_10.0**
 - Market: -110
-- Model probability: 82.2%
-- Raw edge: +56.95%
+- Model probability: 86.2%
+- Raw edge: +64.56%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
@@ -20,57 +20,41 @@ _Generated at 2026-07-03T08:09:44 UTC. Game lines source: **Bovada (fallback -- 
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 4:05p ET | STL @ CHC | Wrigley Field | 75F 2mph | OVER_8.5 +23.88% |
-| 6:45p ET | PIT @ WSN | Nationals Park | 91F 1mph | OVER_9.5 +37.57% |
-| 7:05p ET | MIN @ NYY | Yankee Stadium | 84F 6mph | OVER_10.0 +50.58% |
-| 7:10p ET | BAL @ CIN | Great American Ball Park | 87F 2mph | OVER_10.0 +31.99% |
-| 7:10p ET | CHW @ CLE | Progressive Field | 84F 5mph | CHW_ML +26.37% |
-| 7:15p ET | NYM @ ATL | Truist Park | 82F 2mph | UNDER_9.5 +25.29% |
-| 8:10p ET | SFG @ COL | Coors Field | 75F 6mph | OVER_11.0 +56.95% |
-| 8:15p ET | TBR @ HOU | Daikin Park | indoor | OVER_8.0 +30.47% |
-| 9:38p ET | BOS @ LAA | Angel Stadium | 70F 5mph | UNDER_8.0 +19.42% |
-| 9:40p ET | MIA @ OAK | Sutter Health Park | 70F 6mph | OAK_ML +4.85% |
-| 9:45p ET | MIL @ ARI | Chase Field | indoor | MIL_ML +29.01% |
-| 10:10p ET | SDP @ LAD | UNIQLO Field at Dodger Stadium | 61F 3mph | LAD_ML +24.16% |
+| 4:05p ET | STL @ CHC | Wrigley Field | 76F 5mph | UNDER_10.5 +8.75% |
+| 6:45p ET | PIT @ WSN | Nationals Park | 93F 4mph | OVER_9.5 +43.8% |
+| 7:05p ET | MIN @ NYY | Yankee Stadium | 91F 14mph | OVER_10.0 +64.56% |
+| 7:10p ET | BAL @ CIN | Great American Ball Park | 85F 3mph | BAL_ML +25.48% |
+| 7:10p ET | CHW @ CLE | Progressive Field | 85F 6mph | CHW_ML +23.54% |
+| 7:15p ET | NYM @ ATL | Truist Park | 78F 5mph | UNDER_9.0 +10.77% |
+| 8:10p ET | SFG @ COL | Coors Field | 74F 8mph | OVER_11.0 +59.02% |
+| 8:15p ET | TBR @ HOU | Daikin Park | indoor | TBR_ML +20.91% |
+| 9:38p ET | BOS @ LAA | Angel Stadium | 67F 4mph | UNDER_7.5 +10.29% |
+| 9:40p ET | MIA @ OAK | Sutter Health Park | 71F 7mph | -- |
+| 9:45p ET | MIL @ ARI | Chase Field | indoor | MIL_ML +32.83% |
+| 10:10p ET | SDP @ LAD | UNIQLO Field at Dodger Stadium | 61F 3mph | LAD_ML +25.54% |
 | 10:10p ET | TOR @ SEA | T-Mobile Park | indoor | UNDER_7.0 +26.05% |
-
-## PrizePicks - 95 lines softer than DraftKings
-
-| Player | Market | PP line | DK line | Δ | Favor | Model % |
-|---|---|---|---|---|---|---|
-| Kody Clemens | Total Bases | 6.5 | 1.5 | +5.0 | UNDER | 99.8% |
-| Juan Soto | Total Bases | 6.5 | 1.5 | +5.0 | UNDER | 99.5% |
-| Mauricio Dubón | Total Bases | 5.5 | 1.5 | +4.0 | UNDER | 99.4% |
-| Blaze Alexander | Total Bases | 5.5 | 1.5 | +4.0 | UNDER | 99.3% |
-| Brandon Lowe | Total Bases | 5.5 | 1.5 | +4.0 | UNDER | 99.1% |
-| Miguel Vargas | Total Bases | 5.5 | 1.5 | +4.0 | UNDER | 98.8% |
-| Matt Olson | Total Bases | 5.5 | 1.5 | +4.0 | UNDER | 98.6% |
-| Michael Harris II | Total Bases | 5.5 | 1.5 | +4.0 | UNDER | 98.2% |
-| Luis García Jr. | Total Bases | 5.5 | 1.5 | +4.0 | UNDER | 98.2% |
-| Nelson Velázquez | Total Bases | 5.5 | 1.5 | +4.0 | UNDER | 97.2% |
-| Gerrit Cole | Pitcher Strikeouts | 9.5 | 5.5 | +4.0 | UNDER | 96.2% |
-| Esmerlyn Valdez | Total Bases | 5.5 | 1.5 | +4.0 | UNDER | 95.7% |
-| Foster Griffin | Pitcher Strikeouts | 10.5 | 6.5 | +4.0 | UNDER | 92.0% |
-| Gavin Williams | Pitcher Strikeouts | 9.5 | 5.5 | +4.0 | UNDER | 85.9% |
-| Mike Paredes | Pitcher Strikeouts | 6.5 | 3.5 | +3.0 | UNDER | 99.1% |
 
 ## Parlays - top 5
 
-- **2-leg @ +318 (prob 35.8%, EV +49.78%)**
-  - Rhys Hoskins UNDER 0.5 batter_hits (+119, model 55.6%)
-  - TBR @ HOU TBR_ML (-110, model 64.4%)
-- **2-leg @ +297 (prob 37.6%, EV +49.51%)**
-  - Matt Olson OVER 1.5 batter_total_bases (+108, model 57.6%)
-  - NYM @ ATL UNDER_9.0 (-110, model 65.4%)
-- **2-leg @ +493 (prob 25.2%, EV +49.37%)**
-  - Michael Busch UNDER 0.5 batter_hits (+171, model 45.2%)
-  - Rhys Hoskins UNDER 0.5 batter_hits (+119, model 55.6%)
-- **2-leg @ +368 (prob 31.9%, EV +49.05%)**
-  - Miguel Vargas OVER 1.5 batter_total_bases (+125, model 55.3%)
-  - Matt Olson OVER 1.5 batter_total_bases (+108, model 57.6%)
-- **2-leg @ +356 (prob 32.7%, EV +48.87%)**
-  - Matt Olson OVER 1.5 batter_total_bases (+108, model 57.6%)
-  - PIT @ WSN PIT_ML (+119, model 56.8%)
+- **3-leg @ +618 (prob 20.9%, EV +49.95%)**
+  - CHW @ CLE CHW_ML (+111, model 58.6%)
+  - BOS @ LAA UNDER_7.5 (-110, model 60.0%)
+  - TOR @ SEA TOR_ML (-128, model 59.5%)
+- **3-leg @ +576 (prob 22.1%, EV +49.43%)**
+  - CHW @ CLE OVER_8.0 (-110, model 63.5%)
+  - NYM @ ATL ATL_ML (-117, model 58.0%)
+  - BOS @ LAA UNDER_7.5 (-110, model 60.0%)
+- **2-leg @ +296 (prob 37.7%, EV +49.37%)**
+  - CHW @ CLE CHW_ML (+111, model 58.6%)
+  - TBR @ HOU TBR_ML (-114, model 64.4%)
+- **3-leg @ +596 (prob 21.4%, EV +49.17%)**
+  - CHW @ CLE OVER_8.0 (-110, model 63.5%)
+  - BOS @ LAA UNDER_7.5 (-110, model 60.0%)
+  - MIL @ ARI UNDER_9.0 (-110, model 56.3%)
+- **3-leg @ +454 (prob 26.9%, EV +49.02%)**
+  - MIN @ NYY NYY_ML (-192, model 72.5%)
+  - BAL @ CIN OVER_10.5 (-110, model 63.9%)
+  - NYM @ ATL UNDER_9.0 (-110, model 58.0%)
 
 ## Self-Learning Loop
 
@@ -84,16 +68,16 @@ Cumulative graded plays: 118214. Wins: 87366. Hit rate: 73.9%.
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
 | BAL @ CIN | 42.4% | +136 | 4.35 | +367 | -367 |
-| BOS @ LAA | 52.0% | -109 | 3.33 | +171 | -171 |
-| CHW @ CLE | 31.3% | +219 | 5.95 | +242 | -242 |
-| MIA @ OAK | 28.9% | +246 | 6.4 | +114 | -114 |
+| BOS @ LAA | 52.0% | -109 | 3.34 | +172 | -172 |
+| CHW @ CLE | 31.3% | +219 | 5.79 | +242 | -242 |
+| MIA @ OAK | 28.9% | +246 | 6.43 | +114 | -114 |
 | MIL @ ARI | 51.3% | -105 | 3.34 | +758 | -758 |
-| MIN @ NYY | 30.6% | +227 | 5.94 | -160 | +160 |
-| NYM @ ATL | 44.4% | +125 | 4.07 | +125 | -125 |
-| PIT @ WSN | 52.4% | -110 | 3.24 | +211 | -211 |
-| SDP @ LAD | 46.4% | +116 | 3.89 | -457 | +457 |
-| SFG @ COL | 36.6% | +173 | 5.1 | +217 | -217 |
-| STL @ CHC | 32.5% | +208 | 5.61 | +104 | -104 |
+| MIN @ NYY | 30.6% | +227 | 6.45 | -170 | +170 |
+| NYM @ ATL | 44.4% | +125 | 4.02 | +125 | -125 |
+| PIT @ WSN | 52.4% | -110 | 3.3 | +211 | -211 |
+| SDP @ LAD | 46.4% | +116 | 3.91 | -457 | +457 |
+| SFG @ COL | 36.6% | +173 | 4.78 | +217 | -217 |
+| STL @ CHC | 32.5% | +208 | 5.48 | +103 | -103 |
 | TBR @ HOU | 27.6% | +262 | 6.43 | +309 | -309 |
 | TOR @ SEA | 44.5% | +125 | 4.04 | +286 | -286 |
 
@@ -121,7 +105,7 @@ Cumulative graded plays: 118214. Wins: 87366. Hit rate: 73.9%.
 
 ## Loop Activity (since last refresh)
 
-- Confidence delta: **-29.6**
+- Confidence delta: **+0.0**
 
 ## Model Recommendations (operator review)
 

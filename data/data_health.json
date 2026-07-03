@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-07-03T08:09:59",
-  "overall": "green",
-  "n_green": 11,
-  "n_yellow": 0,
-  "n_red": 0,
+  "generated_at": "2026-07-03T15:08:04",
+  "overall": "red",
+  "n_green": 9,
+  "n_yellow": 1,
+  "n_red": 1,
   "checks": [
     {
       "feed": "freshness",
@@ -18,8 +18,8 @@
         "sport_coverage.json": 0.0,
         "todays_top_plays.json": 0.0,
         "alpha_pick_of_day.json": 0.0,
-        "alerts_feed.json": 0.4,
-        "calibration_map.json": 0.2,
+        "alerts_feed.json": 0.5,
+        "calibration_map.json": 0.1,
         "espn_odds.json": 0.0
       }
     },
@@ -35,7 +35,7 @@
       "upstream_final": 0,
       "local_count": 13,
       "local_live": 0,
-      "live_state_age_min": 19
+      "live_state_age_min": 10
     },
     {
       "feed": "nba",
@@ -46,18 +46,18 @@
       "upstream_count": 1,
       "local_count": 1,
       "upstream_live": 0,
-      "local_age_min": 14
+      "local_age_min": 7
     },
     {
       "feed": "wnba",
-      "status": "green",
+      "status": "red",
       "findings": [
-        "3 events matched (0 live)"
+        "WNBA count mismatch: local=3 vs ESPN=2"
       ],
-      "upstream_count": 3,
+      "upstream_count": 2,
       "local_count": 3,
       "upstream_live": 0,
-      "local_age_min": 19
+      "local_age_min": 10
     },
     {
       "feed": "nhl",
@@ -68,7 +68,7 @@
       "upstream_count": 5,
       "local_count": 5,
       "upstream_live": 0,
-      "local_age_min": 14
+      "local_age_min": 7
     },
     {
       "feed": "mls",
@@ -79,7 +79,7 @@
       "upstream_count": 4,
       "local_count": 4,
       "upstream_live": 0,
-      "local_age_min": 19
+      "local_age_min": 10
     },
     {
       "feed": "epl",
@@ -90,7 +90,7 @@
       "upstream_count": 1,
       "local_count": 1,
       "upstream_live": 0,
-      "local_age_min": 19
+      "local_age_min": 10
     },
     {
       "feed": "pitcher_matchup",
@@ -104,12 +104,13 @@
     },
     {
       "feed": "props",
-      "status": "green",
+      "status": "yellow",
       "findings": [
-        "0 props across 7 games"
+        "Odds key ACTIVE (quota available) but props.json has 0 props -- check run_props_batch / upstream player-prop availability."
       ],
       "n_props": 0,
-      "n_games": 7
+      "n_games": 0,
+      "odds_key_state": "active"
     },
     {
       "feed": "golf",
@@ -119,7 +120,7 @@
       ],
       "upstream_players": 144,
       "local_players": 144,
-      "local_age_min": 19
+      "local_age_min": 10
     },
     {
       "feed": "desks",
@@ -130,11 +131,11 @@
       "n_stale": 0,
       "ages_h": {
         "tennis_state.json": 0.0,
-        "ufc_state.json": 9.0,
-        "f1_state.json": 9.0,
-        "kbo_state.json": 0.6,
-        "cs_state.json": 0.6,
-        "cws_state.json": 9.0,
+        "ufc_state.json": 7.0,
+        "f1_state.json": 7.0,
+        "kbo_state.json": 7.0,
+        "cs_state.json": 7.0,
+        "cws_state.json": 7.0,
         "worldcup_cards.json": 0.0
       }
     }
