@@ -1,28 +1,28 @@
 # EdgeStat Daily Summary — 2026-07-03
 
-## 🏥 Model Health: 76.2/100 [HEALTHY]
+## 🏥 Model Health: 74.0/100 [HEALTHY]
 - Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 99.9/100
+  - 🟢 Calibration Freshness: 99.7/100
   - 🔴 Hit Rate Trend: 54.4/100
   - 🔴 Brier Trend: 29.6/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 100.0/100
-  - 🟢 Edge Count: 94.3/100
+  - 🟢 Data Health: 86.4/100
+  - 🟢 Edge Count: 100/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.584)
-- **Total games on board:** 109
-- **Strong home favorites:** 2 | **Strong road dogs:** 0
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.586)
+- **Total games on board:** 111
+- **Strong home favorites:** 3 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
-1. **SDP @ LAD 4-leg SGP @ -463** (100/100 ★★★★★)
-2. **TBR @ HOU YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-3. **MIA @ OAK YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-4. **MIN @ NYY YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-5. **CHW @ CLE YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+1. **TBR @ HOU YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+2. **MIA @ OAK YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+3. **MIN @ NYY YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+4. **CHW @ CLE YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+5. **STL @ CHC YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** BAL @ CIN BAL_ML -- 66% / +20.7% (score 2.5)
+- [STRONG] **[MLB]** BAL @ CIN BAL_ML -- 66% / +20.4% (score 2.5)
 
 ## 📉 Strong UNDER Signals
 - [STRONG 5.3] **TOR @ SEA** model 6.1 vs market 7.0
@@ -32,20 +32,25 @@
 - Net units: **+9.84u** | ROI: **+49.3%**
 - Last 7d: 36-1 (97.3%) | net +1.58u
 
-**Today's 5 Locks:**
+**Today's 10 Locks:**
 - [MLB-PP] **Lane Thomas** PP_batter_hrr_under_3.5 · p=88% edge=+52.0% qK=0.062u
 - [MLB-PP] **Jared Triolo** PP_batter_hrr_under_3.5 · p=88% edge=+51.9% qK=0.062u
 - [MLB-PP] **Alex Freeland** PP_batter_hrr_under_3.5 · p=88% edge=+51.8% qK=0.062u
 - [MLB-PP] **Hao-Yu Lee** PP_batter_hrr_under_3.5 · p=87% edge=+51.7% qK=0.062u
 - [MLB-PP] **Eugenio Suárez** PP_batter_hrr_under_3.5 · p=87% edge=+51.6% qK=0.062u
+- [MLB-PP] **Cedric Mullins** PP_batter_hrr_under_3.5 · p=88% edge=+52.0% qK=0.062u
+- [MLB-PP] **Henry Davis** PP_batter_hrr_under_3.5 · p=88% edge=+51.9% qK=0.062u
+- [MLB-PP] **Weston Wilson** PP_batter_hrr_under_3.5 · p=88% edge=+51.9% qK=0.062u
+- [MLB-PP] **Alejandro Kirk** PP_batter_hrr_under_3.5 · p=88% edge=+51.9% qK=0.062u
+- [MLB-PP] **Brett Baty** PP_batter_hrr_under_3.5 · p=88% edge=+51.9% qK=0.062u
 
 ## 🎰 Top Balanced 2-Leg Parlays (40-65% joint)
-- [MLB-PP] Lane Thomas PP_batter_hrr_under_ + [MLB] BAL @ CIN BAL_ML
-  Joint: 58% | Fair: 216 | Edge: +83.5%
-- [MLB-PP] Jared Triolo PP_batter_hrr_under_ + [MLB] BAL @ CIN BAL_ML
-  Joint: 58% | Fair: 216 | Edge: +83.4%
-- [MLB-PP] Alex Freeland PP_batter_hrr_under_ + [MLB] BAL @ CIN BAL_ML
-  Joint: 58% | Fair: 216 | Edge: +83.3%
+- [MLB-PP] Cedric Mullins PP_batter_hrr_under_ + [MLB] BAL @ CIN BAL_ML
+  Joint: 58% | Fair: 215 | Edge: +83.0%
+- [MLB-PP] Henry Davis PP_batter_hrr_under_ + [MLB] BAL @ CIN BAL_ML
+  Joint: 58% | Fair: 215 | Edge: +82.9%
+- [MLB-PP] Weston Wilson PP_batter_hrr_under_ + [MLB] BAL @ CIN BAL_ML
+  Joint: 58% | Fair: 215 | Edge: +82.9%
 
 ## 🎮 Player Play of the Day (cross-sport)
 - **[LOL]** Inspired UNDER 3.5 Kills | MED conviction · model 61.7% fair -161
@@ -62,24 +67,24 @@
 - Hot teams: **1** | Cold teams: **1** | Over-heavy: 0 | Under-heavy: 3
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (34)
+## ⚠️ Anomaly Detector (35)
 - STEAM_MOVE: **29**
-- COMPOUND_BULLPEN: **2**
-- PEN_MISMATCH: **3**
+- COMPOUND_BULLPEN: **4**
+- PEN_MISMATCH: **2**
   - LA @ IND (WNBA): TOTAL steam since open: total +4 (OVER) (6 snapshots)
   - ATL @ SFG (MLB): ML/TOTAL steam since open: ML -16.4pp toward ATL; total -0.5 (UNDER) (8 snapshots)
   - LV @ NY (WNBA): ML/TOTAL steam since open: ML +12.4pp toward NY; total -1 (UNDER) (4 snapshots)
   - NY @ SEA (WNBA): ML/TOTAL steam since open: ML +8.9pp toward SEA; total -2 (UNDER) (2 snapshots)
   - CIN @ MIL (MLB): ML/TOTAL steam since open: ML +6.3pp toward MIL; total -2 (UNDER) (4 snapshots)
 
-## 💰 Today's Portfolio (8 picks)
-- Total stake: **$340.0** (34.0% of $1000 bankroll)
-- Expected EV: **$13.74**
-  - #1 [SGP] $50 on SDP @ LAD 4-leg SGP @ -463 (P=82%)
-  - #2 [NRFI] $50 on TBR @ HOU YRFI (1st-inning OVER 0.5) (P=72%)
-  - #3 [NRFI] $50 on MIA @ OAK YRFI (1st-inning OVER 0.5) (P=71%)
-  - #4 [NRFI] $50 on MIN @ NYY YRFI (1st-inning OVER 0.5) (P=69%)
-  - #5 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
+## 💰 Today's Portfolio (9 picks)
+- Total stake: **$345.0** (34.5% of $1000 bankroll)
+- Expected EV: **$2.07**
+  - #1 [NRFI] $50 on TBR @ HOU YRFI (1st-inning OVER 0.5) (P=72%)
+  - #2 [NRFI] $50 on MIA @ OAK YRFI (1st-inning OVER 0.5) (P=71%)
+  - #3 [NRFI] $50 on MIN @ NYY YRFI (1st-inning OVER 0.5) (P=69%)
+  - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
+  - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
 ## 🎯 Convergence Picks (5 stacked games)
 - ELITE: **0** · HIGH: 1 · MED: 4
@@ -114,13 +119,13 @@
   - [COIN_FLIP] **Damian Pinas** (9-1-0) vs Cesar Almeida -- fair -133
 
 ## ⛳ Golf Player Heat (from John Deere Classic)
-  - 🔥 T1 **Lucas Glover** (USA): -8 total -- finished T1
-  - 🔥 T2 **Zac Blair** (USA): -8 total -- finished T2
-  - 🔥 T3 **Lee Hodges** (USA): -7 total -- finished T3
-  - 🔥 T4 **Stephan Jaeger** (Germany): -7 total -- finished T4
-  - 🔥 T5 **Zach Johnson** (USA): -7 total -- finished T5
+  - 🔥 T1 **Zach Johnson** (USA): -9 total -- finished T1
+  - 🔥 T2 **Pontus Nyholm** (Sweden): -8 total -- finished T2
+  - 🔥 T3 **Lucas Glover** (USA): -8 total -- finished T3
+  - 🔥 T4 **Zac Blair** (USA): -8 total -- finished T4
+  - 🔥 T5 **Tom Kim** (South Korea): -7 total -- finished T5
 
-## 🔥 MLB Batter Heat (55 HOT / 49 COLD)
+## 🔥 MLB Batter Heat (54 HOT / 49 COLD)
   - 🔥 **Caleb Durbin** (BOS): L14 .396 / season .229 (+167pts)
   - 🔥 **Dansby Swanson** (CHC): L14 .352 / season .210 (+142pts)
   - 🔥 **Owen Caissie** (MIA): L14 .378 / season .239 (+139pts)

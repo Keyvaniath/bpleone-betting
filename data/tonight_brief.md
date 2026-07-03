@@ -3,7 +3,7 @@
 _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 
 ## 💪 STRONG (1 picks)
-- [MLB] BAL @ CIN BAL_ML · 66% / +20.7%
+- [MLB] BAL @ CIN BAL_ML · 66% / +20.4%
 
 ## 🔒 5 Daily Locks
 - **Lane Thomas** PP_batter_hrr_under_3.5 (MLB-PP) -- 88% / +52.0%
@@ -16,14 +16,19 @@ _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 - **Weston Wilson** PP_batter_hrr_under_3.5 (MLB-PP) -- 88% / +51.9%
 - **Alejandro Kirk** PP_batter_hrr_under_3.5 (MLB-PP) -- 88% / +51.9%
 - **Brett Baty** PP_batter_hrr_under_3.5 (MLB-PP) -- 88% / +51.9%
+- **Choi Jeong** one_plus_tb (KBO) -- 73% / +39.8%
+- **Jose Pirela** one_plus_tb (KBO) -- 73% / +39.2%
+- **Koo Ja-wook** one_plus_tb (KBO) -- 73% / +38.9%
+- **Mel Rojas Jr.** one_plus_tb (KBO) -- 73% / +38.5%
+- **Austin Dean** one_plus_tb (KBO) -- 73% / +38.5%
 
 ## 📉 Under Bets
 - **TOR @ SEA** UNDER 7.0 — model 6.1 [STRONG signal]
 
 ## 🎰 Tonight's Best Parlay
-- **Cedric Mullins** PP_batter_hrr_under_3.5 + **BAL @ CIN** BAL_ML
-- Joint 58% · fair +215 · edge +83.0%
+- **Choi Jeong** one_plus_tb + **Jose Pirela** one_plus_tb
+- Joint 53% · fair +264 · edge +94.6%
 
 ---
-_Generated 2026-07-03T15:07:34_
+_Generated 2026-07-03T16:04:34_
 _Full breakdown: /tonight · Full history: /locks-of-day_

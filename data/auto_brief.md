@@ -6,50 +6,33 @@ _0% lineups confirmed · 10 rookie SPs_
 
 ## Slate
 - **13 games** scheduled
-- **50 best bets** scored: 0 DK · 17 PP · 10 NRFI · 6 SGP
+- **31 best bets** scored: 0 DK · 0 PP · 10 NRFI · 0 SGP
 - **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$36.96
 - **MC simulation:** EV +$98.61, 81% P(profit), p05 $-92.7 / p95 $281.16
 
 ## Top 5 Best Bets
-1. **SDP @ LAD 4-leg SGP @ -463**  (100/100 *****, edge +187.6%)
-   - Joint prob 0.823 (correlation boost +0.465)
-   - Leg: Shohei Ohtani OVER 0.5 batter total bases
-2. **TBR @ HOU YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +26.4%)
+1. **TBR @ HOU YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +26.4%)
    - P(YRFI) 72.4% vs baseline 46.0%
-3. **MIA @ OAK YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +25.1%)
+2. **MIA @ OAK YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +25.1%)
    - P(YRFI) 71.1% vs baseline 46.0%
-4. **MIN @ NYY YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +23.4%)
+3. **MIN @ NYY YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +23.4%)
    - P(YRFI) 69.4% vs baseline 46.0%
-5. **CHW @ CLE YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +22.7%)
+4. **CHW @ CLE YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +22.7%)
    - P(YRFI) 68.7% vs baseline 46.0%
+5. **STL @ CHC YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +21.5%)
+   - P(YRFI) 67.5% vs baseline 46.0%
 
-## ⚠️ Trap Warnings — 27 flagged
-- **SDP @ LAD 4-leg SGP @ -463** (low):
-   - Edge +187.6% looks big but only 0 settled props on this player — model unproven
+## ⚠️ Trap Warnings — 9 flagged
 - **TBR @ HOU YRFI (1st-inning OVER 0.5)** (low):
    - Edge +26.4% looks big but only 0 settled props on this player — model unproven
 - **MIA @ OAK YRFI (1st-inning OVER 0.5)** (low):
    - Edge +25.1% looks big but only 0 settled props on this player — model unproven
-- **CHW @ CLE 2-leg SGP @ -210** (low):
-   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
-- **NYM @ ATL 2-leg SGP @ -186** (low):
-   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
-
-## Hot streaks
-**Batters heating up:** Hunter Goodman (heat +7.64), Junior Caminero (heat +6.85), Dansby Swanson (heat +6.72)
-**Pitchers on a run:** Trevor Rogers (heat +4.82), Kyle Harrison (heat +4.46), Foster Griffin (heat +4.07)
-
-## Top correlation-aware SGPs
-- **SDP @ LAD** 4-leg @ -463 fair (joint 0.82, EV +187.56%)
-   - Shohei Ohtani OVER 0.5 batter total bases
-   - Shohei Ohtani UNDER 0.5 batter home runs
-   - Shohei Ohtani UNDER 1.5 batter hits
-- **CHW @ CLE** 2-leg @ -210 fair (joint 0.68, EV +25.0%)
-   - Anthony Kay UNDER 6.5 pitcher strikeouts
-   - Gavin Williams OVER 4.5 pitcher strikeouts
-- **NYM @ ATL** 2-leg @ -186 fair (joint 0.65, EV +25.0%)
-   - Christian Scott OVER 3.5 pitcher strikeouts
-   - Grant Holmes UNDER 5.5 pitcher strikeouts
+- **MIN @ NYY YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +23.4% looks big but only 0 settled props on this player — model unproven
+- **CHW @ CLE YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +22.7% looks big but only 0 settled props on this player — model unproven
+- **STL @ CHC YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +21.5% looks big but only 0 settled props on this player — model unproven
 
 ## Bullpens GASSED tonight
 Pittsburgh Pirates, San Diego Padres, St. Louis Cardinals, Toronto Blue Jays, Philadelphia Phillies, Atlanta Braves, Chicago White Sox, Miami Marlins
@@ -59,10 +42,10 @@ _Lean late-inning OVER on these games; fade their save situations._
 - **YRFI** (1st-inning OVER): TBR @ HOU, MIA @ OAK, MIN @ NYY, CHW @ CLE, STL @ CHC
 
 ## Golf -- John Deere Classic
-- **Leader:** Lucas Glover (-8) at #1
+- **Leader:** Zach Johnson (-9) at #1
 - **Field:** 144 players  |  Status: In Progress
-- **Play of the Tournament:** Tom Kim TOP10 @ +613 (model 14.0%, HIGH)
-   - P(top 10) 14.0% -- safest finish bet (#33 (-4)).
+- **Play of the Tournament:** Pontus Nyholm WIN @ +663 (model 13.1%, HIGH)
+   - P(win) 13.1% with 1 round(s) left -- sweet-spot value at #2 (-8).
 
 ## NBA -- PLAYOFFS
 - New York Knicks @ San Antonio Spurs (53-29 vs 62-20) 94-90 | P(home) 0.0% fair +0 | Final
@@ -100,5 +83,5 @@ _Lean late-inning OVER on these games; fade their save situations._
 ## Self-learning calibration (esports + KBO)
 - **LOL:** 25 settled | brier 0.2727 | ECE 0.1833
    - Model over-confident; subtract 18.3pp at next inference
-- **KBO:** 24 settled | brier 0.2494 | ECE 0.0854
-   - Model over-confident; subtract 5.7pp at next inference
+- **KBO:** 25 settled | brier 0.2529 | ECE 0.1052
+   - Model over-confident; subtract 7.8pp at next inference

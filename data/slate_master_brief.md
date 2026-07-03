@@ -1,30 +1,36 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-07-03T15:07:41 UTC_
+_Generated 2026-07-03T16:04:39 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -72
+- **Score:** -37
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 9
-- **Total FADES:** 108
+- **Total STRONG:** 15
+- **Total FADES:** 97
 
 ## Top 5 Curated Picks
-1. **GOLF / Zac Blair** (GOLF_PLAYER, score=135.43)
-   - Play: Zac Blair (PLAYER_STRONG)
+1. **GOLF / Zach Johnson** (GOLF_PLAYER, score=160.71)
+   - Play: Zach Johnson (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Lucas Glover** (GOLF_PLAYER, score=134.36)
-   - Play: Lucas Glover (PLAYER_STRONG)
+2. **GOLF / Pontus Nyholm** (GOLF_PLAYER, score=122.36)
+   - Play: Pontus Nyholm (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-3. **MLB / Christian Scott** (MLB_PITCHER, score=61.5)
+3. **WNBA / a'ja wilson** (WNBA_PLAYER, score=64.33)
+   - Play: a'ja wilson (PLAYER_STRONG)
+   - Rationale: Cross-sport top pick (WNBA_PLAYER)
+4. **MLB / Christian Scott** (MLB_PITCHER, score=61.5)
    - Play: Christian Scott (PITCHER_STRONG)
    - Rationale: Cross-sport top pick (MLB_PITCHER)
+5. **WNBA / angel reese** (WNBA_PLAYER, score=60.58)
+   - Play: angel reese (PLAYER_STRONG)
+   - Rationale: Cross-sport top pick (WNBA_PLAYER)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
-  - Zac Blair top 10 finish
+  - Zach Johnson top 10 finish
+  - Pontus Nyholm top 10 finish
   - Lucas Glover top 10 finish
-  - Lee Hodges top 10 finish
 
 ## Slate ROI Projection
 - **Picks:** 0
@@ -33,13 +39,13 @@ _Generated 2026-07-03T15:07:41 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **NHL** / joseph woll (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / samsonov ilya (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
 - **NHL** / anthony stolarz (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / logan thompson_2 (GOALIE_FADE)
+- **NHL** / joseph woll (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
 - **NHL** / adin hill (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / stuart skinner (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / thatcher demko (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO

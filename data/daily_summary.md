@@ -2,9 +2,9 @@
 
 **Model Confidence: 7.5/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
 
-_Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
+_Pipeline health: **WARNING** (11/15 artifacts ok; 4 empty, 0 stale)._ 
 
-_Generated at 2026-07-03T15:07:49 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-07-03T16:04:46 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
@@ -20,41 +20,41 @@ _Generated at 2026-07-03T15:07:49 UTC. Game lines source: **Bovada (fallback -- 
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 4:05p ET | STL @ CHC | Wrigley Field | 76F 5mph | UNDER_10.5 +8.75% |
+| 4:05p ET | STL @ CHC | Wrigley Field | 76F 5mph | UNDER_11.0 +19.71% |
 | 6:45p ET | PIT @ WSN | Nationals Park | 93F 4mph | OVER_9.5 +43.8% |
 | 7:05p ET | MIN @ NYY | Yankee Stadium | 91F 14mph | OVER_10.0 +64.56% |
 | 7:10p ET | BAL @ CIN | Great American Ball Park | 85F 3mph | BAL_ML +25.48% |
-| 7:10p ET | CHW @ CLE | Progressive Field | 85F 6mph | CHW_ML +23.54% |
+| 7:10p ET | CHW @ CLE | Progressive Field | 85F 6mph | CHW_ML +22.96% |
 | 7:15p ET | NYM @ ATL | Truist Park | 78F 5mph | UNDER_9.0 +10.77% |
 | 8:10p ET | SFG @ COL | Coors Field | 74F 8mph | OVER_11.0 +59.02% |
-| 8:15p ET | TBR @ HOU | Daikin Park | indoor | TBR_ML +20.91% |
+| 8:15p ET | TBR @ HOU | Daikin Park | indoor | TBR_ML +23.5% |
 | 9:38p ET | BOS @ LAA | Angel Stadium | 67F 4mph | UNDER_7.5 +10.29% |
 | 9:40p ET | MIA @ OAK | Sutter Health Park | 71F 7mph | -- |
-| 9:45p ET | MIL @ ARI | Chase Field | indoor | MIL_ML +32.83% |
+| 9:45p ET | MIL @ ARI | Chase Field | indoor | MIL_ML +32.15% |
 | 10:10p ET | SDP @ LAD | UNIQLO Field at Dodger Stadium | 61F 3mph | LAD_ML +25.54% |
 | 10:10p ET | TOR @ SEA | T-Mobile Park | indoor | UNDER_7.0 +26.05% |
 
 ## Parlays - top 5
 
-- **3-leg @ +618 (prob 20.9%, EV +49.95%)**
-  - CHW @ CLE CHW_ML (+111, model 58.6%)
+- **3-leg @ +587 (prob 21.8%, EV +49.95%)**
+  - STL @ CHC UNDER_11.0 (-110, model 62.7%)
+  - NYM @ ATL ATL_ML (-113, model 58.0%)
   - BOS @ LAA UNDER_7.5 (-110, model 60.0%)
-  - TOR @ SEA TOR_ML (-128, model 59.5%)
-- **3-leg @ +576 (prob 22.1%, EV +49.43%)**
+- **2-leg @ +266 (prob 40.9%, EV +49.74%)**
   - CHW @ CLE OVER_8.0 (-110, model 63.5%)
-  - NYM @ ATL ATL_ML (-117, model 58.0%)
+  - TBR @ HOU TBR_ML (-109, model 64.4%)
+- **3-leg @ +590 (prob 21.7%, EV +49.63%)**
+  - NYM @ ATL UNDER_9.0 (-110, model 58.0%)
+  - NYM @ ATL ATL_ML (-113, model 58.0%)
+  - TBR @ HOU TBR_ML (-109, model 64.4%)
+- **3-leg @ +596 (prob 21.4%, EV +49.18%)**
+  - STL @ CHC UNDER_11.0 (-110, model 62.7%)
   - BOS @ LAA UNDER_7.5 (-110, model 60.0%)
-- **2-leg @ +296 (prob 37.7%, EV +49.37%)**
-  - CHW @ CLE CHW_ML (+111, model 58.6%)
-  - TBR @ HOU TBR_ML (-114, model 64.4%)
+  - MIA @ OAK UNDER_10.5 (-110, model 57.0%)
 - **3-leg @ +596 (prob 21.4%, EV +49.17%)**
   - CHW @ CLE OVER_8.0 (-110, model 63.5%)
   - BOS @ LAA UNDER_7.5 (-110, model 60.0%)
   - MIL @ ARI UNDER_9.0 (-110, model 56.3%)
-- **3-leg @ +454 (prob 26.9%, EV +49.02%)**
-  - MIN @ NYY NYY_ML (-192, model 72.5%)
-  - BAL @ CIN OVER_10.5 (-110, model 63.9%)
-  - NYM @ ATL UNDER_9.0 (-110, model 58.0%)
 
 ## Self-Learning Loop
 
@@ -70,7 +70,7 @@ Cumulative graded plays: 118214. Wins: 87366. Hit rate: 73.9%.
 | BAL @ CIN | 42.4% | +136 | 4.35 | +367 | -367 |
 | BOS @ LAA | 52.0% | -109 | 3.34 | +172 | -172 |
 | CHW @ CLE | 31.3% | +219 | 5.79 | +242 | -242 |
-| MIA @ OAK | 28.9% | +246 | 6.43 | +114 | -114 |
+| MIA @ OAK | 28.9% | +246 | 6.43 | +113 | -113 |
 | MIL @ ARI | 51.3% | -105 | 3.34 | +758 | -758 |
 | MIN @ NYY | 30.6% | +227 | 6.45 | -170 | +170 |
 | NYM @ ATL | 44.4% | +125 | 4.02 | +125 | -125 |

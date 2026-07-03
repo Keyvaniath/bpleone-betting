@@ -1,10 +1,10 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:9 F:108
+_NO_ACTION_NIGHT_ | L:0 S:15 F:97
 
 :dart: **Top Picks:**
-1. [GOLF] Zac Blair -- Zac Blair (PLAYER_STRONG)
-2. [GOLF] Lucas Glover -- Lucas Glover (PLAYER_STRONG)
-3. [MLB] Christian Scott -- Christian Scott (PITCHER_STRONG)
+1. [GOLF] Zach Johnson -- Zach Johnson (PLAYER_STRONG)
+2. [GOLF] Pontus Nyholm -- Pontus Nyholm (PLAYER_STRONG)
+3. [WNBA] a'ja wilson -- a'ja wilson (PLAYER_STRONG)
 
 :coin: Bankroll Advisory: STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 
