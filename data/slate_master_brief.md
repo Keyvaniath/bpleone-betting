@@ -1,36 +1,30 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-07-03T23:04:48 UTC_
+_Generated 2026-07-04T07:45:08 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -44
+- **Score:** -45
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 14
-- **Total FADES:** 100
+- **Total STRONG:** 11
+- **Total FADES:** 89
 
 ## Top 5 Curated Picks
-1. **GOLF / Zach Johnson** (GOLF_PLAYER, score=156.57)
-   - Play: Zach Johnson (PLAYER_STRONG)
+1. **GOLF / Lucas Glover** (GOLF_PLAYER, score=209.86)
+   - Play: Lucas Glover (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Tom Kim** (GOLF_PLAYER, score=125.0)
-   - Play: Tom Kim (PLAYER_STRONG)
+2. **GOLF / Lee Hodges** (GOLF_PLAYER, score=170.36)
+   - Play: Lee Hodges (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-3. **WNBA / a'ja wilson** (WNBA_PLAYER, score=64.33)
-   - Play: a'ja wilson (PLAYER_STRONG)
-   - Rationale: Cross-sport top pick (WNBA_PLAYER)
-4. **MLB / Christian Scott** (MLB_PITCHER, score=61.5)
-   - Play: Christian Scott (PITCHER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_PITCHER)
-5. **WNBA / angel reese** (WNBA_PLAYER, score=60.58)
-   - Play: angel reese (PLAYER_STRONG)
-   - Rationale: Cross-sport top pick (WNBA_PLAYER)
+3. **MLB / ?** (MLB_TEAM, score=72.42)
+   - Play: ? (TEAM_STRONG)
+   - Rationale: Cross-sport top pick (MLB_TEAM)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
-  - Zach Johnson top 10 finish
-  - Tom Kim top 10 finish
   - Lucas Glover top 10 finish
+  - Lee Hodges top 10 finish
+  - Zac Blair top 10 finish
 
 ## Slate ROI Projection
 - **Picks:** 0
@@ -39,13 +33,13 @@ _Generated 2026-07-03T23:04:48 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **NHL** / samsonov ilya (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / adin hill (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / anthony stolarz (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / thatcher demko (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / joseph woll (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
+- **MLB** / Gavin Williams (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Anthony Kay (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Christian Scott (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Ryan Feltner (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Michael King (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES

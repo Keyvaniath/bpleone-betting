@@ -1,4 +1,4 @@
-# EdgeStat Slate — 2026-07-03
+# EdgeStat Slate — 2026-07-04
 
 _6 picks consolidated from POD + Alpha + Book Edges + Parlay-of-Day._
 
@@ -9,23 +9,23 @@ _6 picks consolidated from POD + Alpha + Book Edges + Parlay-of-Day._
 
 ## 🎯 Alpha Pick
 
-- **MIL @ ARI** · MIL_ML
-  Prob 71.8% · Odds -144 · Edge +21.6% · Kelly 0.250
+- **MIN @ NYY** · MIN_ML
+  Prob 55.0% · Odds +139 · Edge +31.5% · Kelly 0.226
 
 ## 📊 Book Edges
 
 - **CHW @ CLE · AWAY (AWAY)** · TEAM_ML
-  Prob 52.8% · Odds +114 · Edge +12.9% · Kelly 0.113
-- **TOR @ SEA · UNDER · O/U 7.0** · TOTAL_UNDER
-  Prob 58.3% · Odds -110 · Edge +11.3% · Kelly 0.125
-- **TBR @ HOU · AWAY (AWAY)** · TEAM_ML
-  Prob 58.2% · Odds -110 · Edge +11.1% · Kelly 0.122
+  Prob 51.7% · Odds +119 · Edge +13.2% · Kelly 0.111
+- **MIN @ NYY · AWAY (AWAY)** · TEAM_ML
+  Prob 46.9% · Odds +139 · Edge +12.0% · Kelly 0.086
+- **TOR @ SEA · OVER · O/U 7.5** · TOTAL_OVER
+  Prob 58.3% · Odds -110 · Edge +11.3% · Kelly 0.124
 
 ## 🎲 Parlay
 
-- **Henry Davis + MIL @ ARI** · 2-leg
-  Prob 62.9% · Odds +194 · Edge +84.9% · Kelly 0.050
+- **Henry Davis + MIN @ NYY** · 2-leg
+  Prob 48.2% · Odds +315 · Edge +99.8% · Kelly 0.050
 
 ---
-_Generated 2026-07-03T23:04:53 UTC by EdgeStat._
+_Generated 2026-07-04T07:45:13 UTC by EdgeStat._
 _Stakes assume ¼-Kelly fractional sizing on a flat bankroll._
