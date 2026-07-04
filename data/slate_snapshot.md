@@ -9,23 +9,23 @@ _6 picks consolidated from POD + Alpha + Book Edges + Parlay-of-Day._
 
 ## 🎯 Alpha Pick
 
-- **MIN @ NYY** · MIN_ML
-  Prob 55.1% · Odds +131 · Edge +27.4% · Kelly 0.209
+- **MIL @ ARI** · MIL_ML
+  Prob 75.9% · Odds -160 · Edge +23.4% · Kelly 0.250
 
 ## 📊 Book Edges
 
-- **PIT @ WSN · HOME (HOME)** · TEAM_ML
-  Prob 49.6% · Odds +132 · Edge +15.2% · Kelly 0.115
 - **CHW @ CLE · AWAY (AWAY)** · TEAM_ML
-  Prob 51.7% · Odds +119 · Edge +13.2% · Kelly 0.111
-- **MIN @ NYY · AWAY (AWAY)** · TEAM_ML
-  Prob 49.2% · Odds +130 · Edge +13.2% · Kelly 0.102
+  Prob 51.1% · Odds +123 · Edge +14.0% · Kelly 0.114
+- **BAL @ CIN · AWAY (AWAY)** · TEAM_ML
+  Prob 53.6% · Odds +109 · Edge +12.0% · Kelly 0.110
+- **TBR @ HOU · AWAY (AWAY)** · TEAM_ML
+  Prob 56.4% · Odds -102 · Edge +11.8% · Kelly 0.120
 
 ## 🎲 Parlay
 
-- **Eugenio Suárez + MIN @ NYY** · 2-leg
-  Prob 48.3% · Odds +301 · Edge +93.7% · Kelly 0.050
+- **Eugenio Suárez + CHW @ CLE** · 2-leg
+  Prob 48.4% · Odds +277 · Edge +82.1% · Kelly 0.050
 
 ---
-_Generated 2026-07-04T15:13:04 UTC by EdgeStat._
+_Generated 2026-07-04T21:51:29 UTC by EdgeStat._
 _Stakes assume ¼-Kelly fractional sizing on a flat bankroll._

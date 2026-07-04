@@ -1,35 +1,38 @@
 # EdgeStat Daily Summary — 2026-07-04
 
-## 🏥 Model Health: 75.9/100 [HEALTHY]
+## 🏥 Model Health: 74.4/100 [HEALTHY]
 - Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 99.7/100
+  - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 54.4/100
   - 🔴 Brier Trend: 29.6/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 95.5/100
-  - 🟢 Edge Count: 100/100
+  - 🟢 Data Health: 90.9/100
+  - 🟢 Edge Count: 94.3/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.584)
-- **Total games on board:** 109
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.583)
+- **Total games on board:** 110
 - **Strong home favorites:** 2 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
-1. **MIA @ OAK YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-2. **MIN @ NYY YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-3. **SFG @ COL YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
-4. **BOS @ LAA YRFI (1st-inning OVER 0.5)** (78/100 ★★★★)
-5. **SDP @ LAD YRFI (1st-inning OVER 0.5)** (78/100 ★★★★)
+1. **SFG @ COL 4-leg SGP @ -201** (83/100 ★★★★★)
+2. **PHI @ KCR 4-leg SGP @ -215** (81/100 ★★★★★)
+3. **MIA @ OAK YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+4. **MIN @ NYY YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+5. **SFG @ COL YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** MIL @ ARI MIL_ML -- 76% / +24.6% (score 2.5)
+- [WHALE] **[MLB]** TOR @ SEA ML_HOME -- 71% / +15.4% (score 3.5)
+
+## 📡 Sharp Action (Line Movement)
+- [ELITE] **TOR @ SEA** ml_home: 48.08% → 67.74% (+19.7pp)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **284-45** (86.3% hit rate)
 - Net units: **+10.16u** | ROI: **+49.8%**
 - Last 7d: 43-1 (97.7%) | net +1.90u
 
-**Today's 8 Locks:**
+**Today's 10 Locks:**
 - [MLB-PP] **Henry Davis** PP_batter_hrr_under_3.5 · p=88% edge=+51.9% qK=0.062u
 - [MLB-PP] **Cedric Mullins** PP_batter_hrr_under_3.5 · p=88% edge=+51.9% qK=0.062u
 - [MLB-PP] **Alejandro Kirk** PP_batter_hrr_under_3.5 · p=88% edge=+51.9% qK=0.062u
@@ -38,14 +41,16 @@
 - [MLB-PP] **Eugenio Suárez** PP_batter_hrr_under_3.5 · p=88% edge=+52.1% qK=0.062u
 - [MLB-PP] **Alex Freeland** PP_batter_hrr_under_3.5 · p=88% edge=+52.1% qK=0.062u
 - [MLB-PP] **Starling Marte** PP_batter_hrr_under_3.5 · p=87% edge=+51.8% qK=0.062u
+- [MLB-PP] **Jasson Domínguez** PP_batter_hrr_under_3.5 · p=88% edge=+51.9% qK=0.062u
+- [MLB-PP] **Austin Riley** PP_batter_hrr_under_3.5 · p=87% edge=+51.8% qK=0.062u
 
 ## 🎰 Top Balanced 2-Leg Parlays (40-65% joint)
 - [MLB-PP] Eugenio Suárez PP_batter_hrr_under_ + [MLB] MIN @ NYY MIN_ML
-  Joint: 48% | Fair: 310 | Edge: +97.8%
-- [MLB-PP] Alex Freeland PP_batter_hrr_under_ + [MLB] MIN @ NYY MIN_ML
-  Joint: 48% | Fair: 310 | Edge: +97.8%
-- [MLB-PP] Brett Baty PP_batter_hrr_under_ + [MLB] MIN @ NYY MIN_ML
-  Joint: 48% | Fair: 310 | Edge: +97.7%
+  Joint: 48% | Fair: 301 | Edge: +93.7%
+- [MLB-PP] Henry Davis PP_batter_hrr_under_ + [MLB] MIN @ NYY MIN_ML
+  Joint: 48% | Fair: 301 | Edge: +93.6%
+- [MLB-PP] Jasson Domínguez PP_batter_hrr_under_ + [MLB] MIN @ NYY MIN_ML
+  Joint: 48% | Fair: 301 | Edge: +93.4%
 
 ## 🎮 Player Play of the Day (cross-sport)
 - **[LOL]** Inspired UNDER 3.5 Kills | MED conviction · model 61.7% fair -161
@@ -62,24 +67,25 @@
 - Hot teams: **2** | Cold teams: **1** | Over-heavy: 0 | Under-heavy: 4
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (38)
-- STEAM_MOVE: **34**
+## ⚠️ Anomaly Detector (40)
+- RESIDUAL_DIVERGENCE: **1**
+- STEAM_MOVE: **35**
 - COMPOUND_BULLPEN: **2**
 - PEN_MISMATCH: **2**
+  - Portland Fire (WNBA): Portland Fire UNDERPERFORMING expected margin by 17.9pts in recent games -- model bias may persist
   - LA @ IND (WNBA): TOTAL steam since open: total +4 (OVER) (6 snapshots)
   - ATL @ SFG (MLB): ML/TOTAL steam since open: ML -16.4pp toward ATL; total -0.5 (UNDER) (8 snapshots)
-  - TOR @ SEA (MLB): ML/TOTAL steam since open: ML +12.6pp toward SEA; total +0.5 (OVER) (5 snapshots)
+  - TOR @ SEA (MLB): ML/TOTAL steam since open: ML +13.5pp toward SEA; total +0.5 (OVER) (7 snapshots)
   - LV @ NY (WNBA): ML/TOTAL steam since open: ML +12.4pp toward NY; total -1 (UNDER) (4 snapshots)
-  - NY @ SEA (WNBA): ML/TOTAL steam since open: ML +8.9pp toward SEA; total -2 (UNDER) (2 snapshots)
 
-## 💰 Today's Portfolio (9 picks)
-- Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$-4.19**
-  - #1 [NRFI] $50 on MIA @ OAK YRFI (1st-inning OVER 0.5) (P=73%)
-  - #2 [NRFI] $50 on MIN @ NYY YRFI (1st-inning OVER 0.5) (P=66%)
-  - #3 [NRFI] $35 on SFG @ COL YRFI (1st-inning OVER 0.5) (P=66%)
-  - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
-  - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
+## 💰 Today's Portfolio (8 picks)
+- Total stake: **$340.0** (34.0% of $1000 bankroll)
+- Expected EV: **$-2.93**
+  - #1 [SGP] $50 on SFG @ COL 4-leg SGP @ -201 (P=67%)
+  - #2 [SGP] $50 on PHI @ KCR 4-leg SGP @ -215 (P=68%)
+  - #3 [NRFI] $50 on MIA @ OAK YRFI (1st-inning OVER 0.5) (P=73%)
+  - #4 [NRFI] $50 on MIN @ NYY YRFI (1st-inning OVER 0.5) (P=66%)
+  - #5 [NRFI] $35 on SFG @ COL YRFI (1st-inning OVER 0.5) (P=66%)
 
 ## 🎯 Convergence Picks (5 stacked games)
 - ELITE: **1** · HIGH: 0 · MED: 4
@@ -123,7 +129,7 @@
   - ❄️ **Noah Goodwin** (USA): Sunday +3.5 vs tourney avg
   - ❄️ **Taylor Pendrith** (Canada): Sunday +3.5 vs tourney avg
 
-## 🔥 MLB Batter Heat (45 HOT / 43 COLD)
+## 🔥 MLB Batter Heat (46 HOT / 44 COLD)
   - 🔥 **Caleb Durbin** (BOS): L14 .396 / season .230 (+166pts)
   - 🔥 **Dansby Swanson** (CHC): L14 .352 / season .208 (+144pts)
   - 🔥 **Javier Sanoja** (MIA): L14 .421 / season .281 (+140pts)
@@ -132,8 +138,8 @@
   - ❄️ **Drake Baldwin** (ATL): L14 .074 / season .251 (-177pts) -- FADE props
   - ❄️ **Carlos Cortes** (ATH): L14 .118 / season .277 (-159pts) -- FADE props
   - ❄️ **Brice Matthews** (HOU): L14 .038 / season .191 (-153pts) -- FADE props
-  - ❄️ **Cody Bellinger** (NYY): L14 .102 / season .252 (-150pts) -- FADE props
-  - ❄️ **Jorge Mateo** (ATL): L14 .138 / season .252 (-114pts) -- FADE props
+  - ❄️ **Ben Rice** (NYY): L14 .135 / season .267 (-132pts) -- FADE props
+  - ❄️ **Cody Bellinger** (NYY): L14 .120 / season .251 (-131pts) -- FADE props
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**

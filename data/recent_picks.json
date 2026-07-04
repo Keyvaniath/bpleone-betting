@@ -1,23 +1,23 @@
 {
- "generated_at": "2026-07-04T15:12:45",
+ "generated_at": "2026-07-04T21:51:10",
  "stake_assumption": "1u flat per pick",
  "total_picks": 10000,
- "n_settled": 6494,
- "n_pending": 784,
- "n_void": 2722,
- "wins": 2846,
- "losses": 3640,
+ "n_settled": 6503,
+ "n_pending": 781,
+ "n_void": 2716,
+ "wins": 2850,
+ "losses": 3645,
  "pushes": 8,
  "hit_rate": 0.4388,
- "net_units": -681.816,
- "roi_pct": -10.51,
+ "net_units": -677.315,
+ "roi_pct": -10.43,
  "n_calibrated_picks": 9165,
  "calibrated_reliability": {
-  "n": 6397,
-  "ece_raw": 0.085,
-  "ece_calibrated": 0.0168,
-  "brier_raw": 0.21606,
-  "brier_calibrated": 0.19577,
+  "n": 6406,
+  "ece_raw": 0.0848,
+  "ece_calibrated": 0.019,
+  "brier_raw": 0.21631,
+  "brier_calibrated": 0.19787,
   "note": "In-sample over the settled ledger (the isotonic transform is fit on these same outcomes); held-out 70/30 validation is in recalibration_map.json. p_predicted = raw model prob (kept untouched for the learning loop); p_calibrated = honest prob stamped per pick. Lower ECE/Brier on the calibrated column = the displayed % is truer."
  },
  "curated": {
@@ -41,57 +41,21 @@
   ],
   "definition": "Featured/recommended plays only -- Lock of the Day, Top 25, Whale, Sharp, Consensus (hit), Under Alerts, POD. Excludes the experimental prop feeds, which are tracked to train the model, not bet."
  },
- "n_added_this_run": 21,
- "n_newly_settled_this_run": 0,
+ "n_added_this_run": 5,
+ "n_newly_settled_this_run": 25,
  "n_resettled_this_run": 0,
  "n_voided_this_run": 0,
  "n_reconciled_settled_voids": 0,
  "n_bootstrapped_from_locks_history": 0,
  "by_source": {
-  "mlb_rbi_1plus_rbi_1plus_yes": {
-   "n": 31,
-   "wins": 6,
-   "losses": 25,
-   "pushes": 0,
-   "net_units": -23.575,
-   "hit_rate": 0.1935,
-   "roi_pct": -76.05
-  },
-  "mlb_rbi_1plus_rbi_1plus_no": {
-   "n": 48,
-   "wins": 33,
-   "losses": 15,
-   "pushes": 0,
-   "net_units": -6.035,
-   "hit_rate": 0.6875,
-   "roi_pct": -12.57
-  },
-  "mlb_game_total_game_total_under_10.5": {
-   "n": 4,
-   "wins": 2,
-   "losses": 2,
-   "pushes": 0,
-   "net_units": -0.834,
-   "hit_rate": 0.5,
-   "roi_pct": -20.85
-  },
-  "mlb_game_total_game_total_over_7.5": {
-   "n": 10,
-   "wins": 8,
-   "losses": 2,
-   "pushes": 0,
-   "net_units": 2.493,
-   "hit_rate": 0.8,
-   "roi_pct": 24.93
-  },
   "mlb_xbh_1_plus_xbh": {
    "n": 1626,
-   "wins": 479,
-   "losses": 1147,
+   "wins": 482,
+   "losses": 1144,
    "pushes": 0,
-   "net_units": -341.1,
-   "hit_rate": 0.2946,
-   "roi_pct": -20.98
+   "net_units": -332.15,
+   "hit_rate": 0.2964,
+   "roi_pct": -20.43
   },
   "mlb_xbh_no_xbh": {
    "n": 5,
@@ -103,13 +67,13 @@
    "roi_pct": -75.8
   },
   "mlb_hrr_3_plus_hrr": {
-   "n": 351,
+   "n": 354,
    "wins": 85,
-   "losses": 266,
+   "losses": 269,
    "pushes": 0,
-   "net_units": -197.369,
-   "hit_rate": 0.2422,
-   "roi_pct": -56.23
+   "net_units": -200.369,
+   "hit_rate": 0.2401,
+   "roi_pct": -56.6
   },
   "mlb_hrr_2_plus_hrr": {
    "n": 9,
@@ -184,13 +148,13 @@
    "roi_pct": 5.56
   },
   "mlb_2plus_hits_hits_2plus_yes": {
-   "n": 90,
-   "wins": 25,
+   "n": 91,
+   "wins": 26,
    "losses": 65,
    "pushes": 0,
-   "net_units": -35.614,
-   "hit_rate": 0.2778,
-   "roi_pct": -39.57
+   "net_units": -34.564,
+   "hit_rate": 0.2857,
+   "roi_pct": -37.98
   },
   "mlb_2plus_hits_hits_2plus_no": {
    "n": 168,
@@ -200,6 +164,24 @@
    "net_units": -11.086,
    "hit_rate": 0.7679,
    "roi_pct": -6.6
+  },
+  "mlb_rbi_1plus_rbi_1plus_yes": {
+   "n": 27,
+   "wins": 4,
+   "losses": 23,
+   "pushes": 0,
+   "net_units": -22.015,
+   "hit_rate": 0.1481,
+   "roi_pct": -81.54
+  },
+  "mlb_rbi_1plus_rbi_1plus_no": {
+   "n": 44,
+   "wins": 29,
+   "losses": 15,
+   "pushes": 0,
+   "net_units": -7.122,
+   "hit_rate": 0.6591,
+   "roi_pct": -16.19
   },
   "mlb_run_to_score_run_yes": {
    "n": 41,
@@ -265,13 +247,13 @@
    "roi_pct": -47.93
   },
   "wnba_blkstl_blk_stl_under_2.5": {
-   "n": 15,
+   "n": 16,
    "wins": 10,
-   "losses": 5,
+   "losses": 6,
    "pushes": 0,
-   "net_units": -0.321,
-   "hit_rate": 0.6667,
-   "roi_pct": -2.14
+   "net_units": -1.321,
+   "hit_rate": 0.625,
+   "roi_pct": -8.26
   },
   "mlb_bk_k_1plus_yes": {
    "n": 321,
@@ -301,13 +283,22 @@
    "roi_pct": -16.7
   },
   "mlb_3plus_tb_tb_3plus_yes": {
-   "n": 574,
-   "wins": 134,
-   "losses": 440,
+   "n": 577,
+   "wins": 135,
+   "losses": 442,
    "pushes": 0,
-   "net_units": -163.57,
-   "hit_rate": 0.2334,
-   "roi_pct": -28.5
+   "net_units": -163.85,
+   "hit_rate": 0.234,
+   "roi_pct": -28.4
+  },
+  "mlb_game_total_game_total_over_7.5": {
+   "n": 9,
+   "wins": 8,
+   "losses": 1,
+   "pushes": 0,
+   "net_units": 3.493,
+   "hit_rate": 0.8889,
+   "roi_pct": 38.81
   },
   "mlb_hit_to_record_hit_yes": {
    "n": 37,
@@ -389,6 +380,15 @@
    "net_units": 216.64,
    "hit_rate": 0.5355,
    "roi_pct": 139.77
+  },
+  "mlb_game_total_game_total_under_10.5": {
+   "n": 3,
+   "wins": 1,
+   "losses": 2,
+   "pushes": 0,
+   "net_units": -1.329,
+   "hit_rate": 0.3333,
+   "roi_pct": -44.3
   },
   "sharp_elite": {
    "n": 11,
@@ -643,13 +643,13 @@
    "roi_pct": 53.5
   },
   "wnba_ast_over_1.5": {
-   "n": 1,
-   "wins": 1,
+   "n": 2,
+   "wins": 2,
    "losses": 0,
    "pushes": 0,
-   "net_units": 0.538,
+   "net_units": 1.064,
    "hit_rate": 1.0,
-   "roi_pct": 53.8
+   "roi_pct": 53.2
   },
   "wnba_3pm_3pm_over_2.5": {
    "n": 3,
@@ -706,11 +706,11 @@
    "roi_pct": -45.2
   },
   "f1_quali_top_6": {
-   "n": 4,
-   "wins": 2,
-   "losses": 2,
+   "n": 6,
+   "wins": 3,
+   "losses": 3,
    "pushes": 0,
-   "net_units": -0.908,
+   "net_units": -1.362,
    "hit_rate": 0.5,
    "roi_pct": -22.7
   },
@@ -778,13 +778,13 @@
    "roi_pct": 52.24
   },
   "soccer_clean_sheet_home_clean_sheet_no": {
-   "n": 79,
-   "wins": 54,
+   "n": 80,
+   "wins": 55,
    "losses": 25,
    "pushes": 0,
-   "net_units": -7.273,
-   "hit_rate": 0.6835,
-   "roi_pct": -9.21
+   "net_units": -6.946,
+   "hit_rate": 0.6875,
+   "roi_pct": -8.68
   },
   "wnba_alts_home_total_over_74.4": {
    "n": 1,
@@ -877,13 +877,13 @@
    "roi_pct": 52.8
   },
   "f1_quali_top_3": {
-   "n": 10,
-   "wins": 3,
-   "losses": 7,
+   "n": 15,
+   "wins": 4,
+   "losses": 11,
    "pushes": 0,
-   "net_units": -5.282,
-   "hit_rate": 0.3,
-   "roi_pct": -52.82
+   "net_units": -8.88,
+   "hit_rate": 0.2667,
+   "roi_pct": -59.2
   },
   "wnba_alts_home_total_over_78.4": {
    "n": 1,
@@ -1165,13 +1165,13 @@
    "roi_pct": 53.5
   },
   "tennis_games_total_games_over_18.5": {
-   "n": 6,
-   "wins": 6,
+   "n": 8,
+   "wins": 8,
    "losses": 0,
    "pushes": 0,
-   "net_units": 2.901,
+   "net_units": 3.905,
    "hit_rate": 1.0,
-   "roi_pct": 48.35
+   "roi_pct": 48.81
   },
   "wnba_alts_home_total_over_72.4": {
    "n": 1,
@@ -1247,45 +1247,13 @@
   }
  },
  "by_market_family": {
-  "rbi_1plus_yes": {
-   "n": 31,
-   "wins": 6,
-   "losses": 25,
-   "pushes": 0,
-   "net_units": -23.575,
-   "hit_rate": 0.1935
-  },
-  "rbi_1plus_no": {
-   "n": 48,
-   "wins": 33,
-   "losses": 15,
-   "pushes": 0,
-   "net_units": -6.035,
-   "hit_rate": 0.6875
-  },
-  "under": {
-   "n": 79,
-   "wins": 50,
-   "losses": 23,
-   "pushes": 6,
-   "net_units": 17.35,
-   "hit_rate": 0.6849
-  },
-  "over": {
-   "n": 102,
-   "wins": 54,
-   "losses": 46,
-   "pushes": 2,
-   "net_units": -3.691,
-   "hit_rate": 0.54
-  },
   "1_plus_xbh": {
    "n": 1626,
-   "wins": 479,
-   "losses": 1147,
+   "wins": 482,
+   "losses": 1144,
    "pushes": 0,
-   "net_units": -341.1,
-   "hit_rate": 0.2946
+   "net_units": -332.15,
+   "hit_rate": 0.2964
   },
   "no_xbh": {
    "n": 5,
@@ -1296,12 +1264,12 @@
    "hit_rate": 0.2
   },
   "3_plus_hrr": {
-   "n": 351,
+   "n": 354,
    "wins": 85,
-   "losses": 266,
+   "losses": 269,
    "pushes": 0,
-   "net_units": -197.369,
-   "hit_rate": 0.2422
+   "net_units": -200.369,
+   "hit_rate": 0.2401
   },
   "2_plus_hrr": {
    "n": 9,
@@ -1327,21 +1295,37 @@
    "net_units": 252.485,
    "hit_rate": 0.8491
   },
+  "under": {
+   "n": 78,
+   "wins": 49,
+   "losses": 23,
+   "pushes": 6,
+   "net_units": 16.854,
+   "hit_rate": 0.6806
+  },
   "top": {
-   "n": 499,
-   "wins": 223,
-   "losses": 276,
+   "n": 506,
+   "wins": 225,
+   "losses": 281,
    "pushes": 0,
-   "net_units": -29.63,
-   "hit_rate": 0.4469
+   "net_units": -33.682,
+   "hit_rate": 0.4447
+  },
+  "over": {
+   "n": 101,
+   "wins": 54,
+   "losses": 45,
+   "pushes": 2,
+   "net_units": -2.691,
+   "hit_rate": 0.5455
   },
   "hits_2plus_yes": {
-   "n": 90,
-   "wins": 25,
+   "n": 91,
+   "wins": 26,
    "losses": 65,
    "pushes": 0,
-   "net_units": -35.614,
-   "hit_rate": 0.2778
+   "net_units": -34.564,
+   "hit_rate": 0.2857
   },
   "hits_2plus_no": {
    "n": 168,
@@ -1350,6 +1334,22 @@
    "pushes": 0,
    "net_units": -11.086,
    "hit_rate": 0.7679
+  },
+  "rbi_1plus_yes": {
+   "n": 27,
+   "wins": 4,
+   "losses": 23,
+   "pushes": 0,
+   "net_units": -22.015,
+   "hit_rate": 0.1481
+  },
+  "rbi_1plus_no": {
+   "n": 44,
+   "wins": 29,
+   "losses": 15,
+   "pushes": 0,
+   "net_units": -7.122,
+   "hit_rate": 0.6591
   },
   "to_score_run_yes": {
    "n": 41,
@@ -1384,12 +1384,12 @@
    "hit_rate": 0.5294
   },
   "blk_stl_under": {
-   "n": 30,
+   "n": 31,
    "wins": 17,
-   "losses": 13,
+   "losses": 14,
    "pushes": 0,
-   "net_units": -5.189,
-   "hit_rate": 0.5667
+   "net_units": -6.189,
+   "hit_rate": 0.5484
   },
   "k_1plus_yes": {
    "n": 321,
@@ -1416,12 +1416,12 @@
    "hit_rate": 0.5652
   },
   "tb_3plus_yes": {
-   "n": 574,
-   "wins": 134,
-   "losses": 440,
+   "n": 577,
+   "wins": 135,
+   "losses": 442,
    "pushes": 0,
-   "net_units": -163.57,
-   "hit_rate": 0.2334
+   "net_units": -163.85,
+   "hit_rate": 0.234
   },
   "pp_batter_total_bases": {
    "n": 20,
@@ -1584,11 +1584,11 @@
    "hit_rate": 1.0
   },
   "ast_over": {
-   "n": 2,
-   "wins": 2,
+   "n": 3,
+   "wins": 3,
    "losses": 0,
    "pushes": 0,
-   "net_units": 1.07,
+   "net_units": 1.596,
    "hit_rate": 1.0
   },
   "away_plus": {
@@ -1624,12 +1624,12 @@
    "hit_rate": 0.875
   },
   "home_clean_sheet_no": {
-   "n": 79,
-   "wins": 54,
+   "n": 80,
+   "wins": 55,
    "losses": 25,
    "pushes": 0,
-   "net_units": -7.273,
-   "hit_rate": 0.6835
+   "net_units": -6.946,
+   "hit_rate": 0.6875
   },
   "ast_under": {
    "n": 3,
@@ -1672,11 +1672,11 @@
    "hit_rate": 0.3333
   },
   "total_games_over": {
-   "n": 10,
-   "wins": 10,
+   "n": 12,
+   "wins": 12,
    "losses": 0,
    "pushes": 0,
-   "net_units": 4.742,
+   "net_units": 5.748,
    "hit_rate": 1.0
   },
   "away_clean_sheet_no": {
@@ -1689,45 +1689,13 @@
   }
  },
  "by_canonical": {
-  "mlb_rbi_0.5_over": {
-   "n": 31,
-   "wins": 6,
-   "losses": 25,
-   "pushes": 0,
-   "net_units": -23.575,
-   "hit_rate": 0.1935
-  },
-  "mlb_rbi_0.5_under": {
-   "n": 48,
-   "wins": 33,
-   "losses": 15,
-   "pushes": 0,
-   "net_units": -6.035,
-   "hit_rate": 0.6875
-  },
-  "under": {
-   "n": 79,
-   "wins": 50,
-   "losses": 23,
-   "pushes": 6,
-   "net_units": 17.35,
-   "hit_rate": 0.6849
-  },
-  "over": {
-   "n": 102,
-   "wins": 54,
-   "losses": 46,
-   "pushes": 2,
-   "net_units": -3.691,
-   "hit_rate": 0.54
-  },
   "mlb_xbh_0.5_over": {
    "n": 1626,
-   "wins": 479,
-   "losses": 1147,
+   "wins": 482,
+   "losses": 1144,
    "pushes": 0,
-   "net_units": -341.1,
-   "hit_rate": 0.2946
+   "net_units": -332.15,
+   "hit_rate": 0.2964
   },
   "mlb_xbh_0.5_under": {
    "n": 5,
@@ -1738,12 +1706,12 @@
    "hit_rate": 0.2
   },
   "mlb_hrr_2.5_over": {
-   "n": 351,
+   "n": 354,
    "wins": 85,
-   "losses": 266,
+   "losses": 269,
    "pushes": 0,
-   "net_units": -197.369,
-   "hit_rate": 0.2422
+   "net_units": -200.369,
+   "hit_rate": 0.2401
   },
   "mlb_hrr_1.5_over": {
    "n": 9,
@@ -1777,21 +1745,37 @@
    "net_units": -4.03,
    "hit_rate": 0.4286
   },
+  "under": {
+   "n": 78,
+   "wins": 49,
+   "losses": 23,
+   "pushes": 6,
+   "net_units": 16.854,
+   "hit_rate": 0.6806
+  },
   "top": {
-   "n": 499,
-   "wins": 223,
-   "losses": 276,
+   "n": 506,
+   "wins": 225,
+   "losses": 281,
    "pushes": 0,
-   "net_units": -29.63,
-   "hit_rate": 0.4469
+   "net_units": -33.682,
+   "hit_rate": 0.4447
+  },
+  "over": {
+   "n": 101,
+   "wins": 54,
+   "losses": 45,
+   "pushes": 2,
+   "net_units": -2.691,
+   "hit_rate": 0.5455
   },
   "mlb_hit_1.5_over": {
-   "n": 90,
-   "wins": 25,
+   "n": 91,
+   "wins": 26,
    "losses": 65,
    "pushes": 0,
-   "net_units": -35.614,
-   "hit_rate": 0.2778
+   "net_units": -34.564,
+   "hit_rate": 0.2857
   },
   "mlb_hit_1.5_under": {
    "n": 168,
@@ -1800,6 +1784,22 @@
    "pushes": 0,
    "net_units": -11.086,
    "hit_rate": 0.7679
+  },
+  "mlb_rbi_0.5_over": {
+   "n": 27,
+   "wins": 4,
+   "losses": 23,
+   "pushes": 0,
+   "net_units": -22.015,
+   "hit_rate": 0.1481
+  },
+  "mlb_rbi_0.5_under": {
+   "n": 44,
+   "wins": 29,
+   "losses": 15,
+   "pushes": 0,
+   "net_units": -7.122,
+   "hit_rate": 0.6591
   },
   "mlb_run_0.5_over": {
    "n": 41,
@@ -1834,12 +1834,12 @@
    "hit_rate": 0.5294
   },
   "blk_stl_under": {
-   "n": 30,
+   "n": 31,
    "wins": 17,
-   "losses": 13,
+   "losses": 14,
    "pushes": 0,
-   "net_units": -5.189,
-   "hit_rate": 0.5667
+   "net_units": -6.189,
+   "hit_rate": 0.5484
   },
   "mlb_bk_0.5_over": {
    "n": 321,
@@ -1866,12 +1866,12 @@
    "hit_rate": 0.5652
   },
   "mlb_tb_2.5_over": {
-   "n": 574,
-   "wins": 134,
-   "losses": 440,
+   "n": 577,
+   "wins": 135,
+   "losses": 442,
    "pushes": 0,
-   "net_units": -163.57,
-   "hit_rate": 0.2334
+   "net_units": -163.85,
+   "hit_rate": 0.234
   },
   "mlb_tb_3.5_under": {
    "n": 18,
@@ -2042,11 +2042,11 @@
    "hit_rate": 1.0
   },
   "ast_over": {
-   "n": 2,
-   "wins": 2,
+   "n": 3,
+   "wins": 3,
    "losses": 0,
    "pushes": 0,
-   "net_units": 1.07,
+   "net_units": 1.596,
    "hit_rate": 1.0
   },
   "away_plus": {
@@ -2082,12 +2082,12 @@
    "hit_rate": 0.875
   },
   "home_clean_sheet_no": {
-   "n": 79,
-   "wins": 54,
+   "n": 80,
+   "wins": 55,
    "losses": 25,
    "pushes": 0,
-   "net_units": -7.273,
-   "hit_rate": 0.6835
+   "net_units": -6.946,
+   "hit_rate": 0.6875
   },
   "ast_under": {
    "n": 3,
@@ -2130,11 +2130,11 @@
    "hit_rate": 0.3333
   },
   "total_games_over": {
-   "n": 10,
-   "wins": 10,
+   "n": 12,
+   "wins": 12,
    "losses": 0,
    "pushes": 0,
-   "net_units": 4.742,
+   "net_units": 5.748,
    "hit_rate": 1.0
   },
   "away_clean_sheet_no": {
@@ -2148,25 +2148,25 @@
  },
  "by_sport": {
   "MLB": {
-   "n": 7110,
-   "settled": 4724,
-   "wins": 1682,
-   "losses": 3034,
+   "n": 7107,
+   "settled": 4721,
+   "wins": 1680,
+   "losses": 3033,
    "pushes": 8,
-   "pending": 426,
-   "void": 1960,
-   "net_units": -1110.147,
-   "hit_rate": 0.3567,
-   "roi_pct": -23.54,
+   "pending": 432,
+   "void": 1954,
+   "net_units": -1102.45,
+   "hit_rate": 0.3565,
+   "roi_pct": -23.39,
    "markets": 47
   },
   "MLB-PP": {
-   "n": 937,
+   "n": 940,
    "settled": 673,
    "wins": 573,
    "losses": 100,
    "pushes": 0,
-   "pending": 61,
+   "pending": 64,
    "void": 203,
    "net_units": 253.541,
    "hit_rate": 0.8514,
@@ -2188,15 +2188,15 @@
   },
   "WNBA": {
    "n": 400,
-   "settled": 163,
-   "wins": 117,
-   "losses": 46,
+   "settled": 165,
+   "wins": 118,
+   "losses": 47,
    "pushes": 0,
-   "pending": 21,
+   "pending": 19,
    "void": 216,
-   "net_units": 13.894,
-   "hit_rate": 0.7178,
-   "roi_pct": 8.52,
+   "net_units": 13.42,
+   "hit_rate": 0.7152,
+   "roi_pct": 8.13,
    "markets": 4
   },
   "NHL": {
@@ -2279,791 +2279,52 @@
   },
   "F1": {
    "n": 26,
-   "settled": 19,
-   "wins": 6,
-   "losses": 13,
+   "settled": 26,
+   "wins": 8,
+   "losses": 18,
    "pushes": 0,
-   "pending": 7,
+   "pending": 0,
    "void": 0,
-   "net_units": -8.45,
-   "hit_rate": 0.3158,
-   "roi_pct": -44.47,
+   "net_units": -12.502,
+   "hit_rate": 0.3077,
+   "roi_pct": -48.08,
    "markets": 3
   },
   "WORLDCUP": {
    "n": 187,
-   "settled": 177,
-   "wins": 118,
+   "settled": 178,
+   "wins": 119,
    "losses": 59,
    "pushes": 0,
-   "pending": 9,
+   "pending": 8,
    "void": 1,
-   "net_units": 1.343,
-   "hit_rate": 0.6667,
-   "roi_pct": 0.76,
+   "net_units": 1.67,
+   "hit_rate": 0.6685,
+   "roi_pct": 0.94,
    "markets": 9
   },
   "TENNIS": {
    "n": 111,
-   "settled": 38,
-   "wins": 18,
+   "settled": 40,
+   "wins": 20,
    "losses": 20,
    "pushes": 0,
-   "pending": 28,
+   "pending": 26,
    "void": 45,
-   "net_units": -11.686,
-   "hit_rate": 0.4737,
-   "roi_pct": -30.75,
+   "net_units": -10.681,
+   "hit_rate": 0.5,
+   "roi_pct": -26.7,
    "markets": 5
   }
  },
  "last_7_days": {
-  "wins": 500,
-  "losses": 729,
-  "net_units": -118.0,
-  "hit_rate": 0.4068
+  "wins": 512,
+  "losses": 745,
+  "net_units": -121.174,
+  "hit_rate": 0.4073
  },
  "note": "Unified pick ledger -- records every pick the model surfaces (top_25 board, whales, consensus, unders, sharp action, locks, POD) and settles each against actual outcomes. Per-source W-L feeds back into calibration so the model learns which modules are reliable. THIS is the training signal.",
  "picks": [
-  {
-   "source": "top_25_board",
-   "sport": "MLB-PP",
-   "player_or_matchup": "Taylor Walls",
-   "market": "PP_batter_hrr_under_3.5",
-   "prob": 0.8744,
-   "raw_prob": 0.9178,
-   "edge_pct": 51.7,
-   "fair_american": -136,
-   "primary_source_module": "pp_under",
-   "date": "2026-07-02",
-   "pick_id": "top_25_board|MLB_PP|Taylor_Walls|PP_batter_hrr_under_3_5|2026-07-02",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.7353,
-   "recorded_at": "2026-07-02T11:32:00",
-   "p_calibrated": 0.9437,
-   "outcome": {
-    "stat": "hrr",
-    "actual": 3,
-    "line": 3.5,
-    "side": "UNDER/NO",
-    "verify": "Taylor Walls \u2014 hrr = 3 (line 3.5, bet UNDER/NO) on 2026-07-02",
-    "check": "verified"
-   },
-   "settled_at": "2026-07-03T08:09:22"
-  },
-  {
-   "source": "top_25_board",
-   "sport": "MLB-PP",
-   "player_or_matchup": "Eugenio Su\u00e1rez",
-   "market": "PP_batter_hrr_under_3.5",
-   "prob": 0.8738,
-   "raw_prob": 0.9171,
-   "edge_pct": 51.6,
-   "fair_american": -136,
-   "primary_source_module": "pp_under",
-   "date": "2026-07-02",
-   "pick_id": "top_25_board|MLB_PP|Eugenio_Su_rez|PP_batter_hrr_under_3_5|2026-07-02",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.7353,
-   "recorded_at": "2026-07-02T11:32:00",
-   "p_calibrated": 0.8898,
-   "outcome": {
-    "stat": "hrr",
-    "actual": 2,
-    "line": 3.5,
-    "side": "UNDER/NO",
-    "verify": "Eugenio Su\u00e1rez \u2014 hrr = 2 (line 3.5, bet UNDER/NO) on 2026-07-02",
-    "check": "verified"
-   },
-   "settled_at": "2026-07-03T08:09:22"
-  },
-  {
-   "source": "top_25_board",
-   "sport": "MLB-PP",
-   "player_or_matchup": "Hao-Yu Lee",
-   "market": "PP_batter_hrr_under_3.5",
-   "prob": 0.8737,
-   "raw_prob": 0.917,
-   "edge_pct": 51.6,
-   "fair_american": -136,
-   "primary_source_module": "pp_under",
-   "date": "2026-07-02",
-   "pick_id": "top_25_board|MLB_PP|Hao_Yu_Lee|PP_batter_hrr_under_3_5|2026-07-02",
-   "settled": true,
-   "result": "lost",
-   "payout_units": -1.0,
-   "recorded_at": "2026-07-02T11:32:00",
-   "p_calibrated": 0.8808,
-   "outcome": {
-    "stat": "hrr",
-    "actual": 4,
-    "line": 3.5,
-    "side": "UNDER/NO",
-    "verify": "Hao-Yu Lee \u2014 hrr = 4 (line 3.5, bet UNDER/NO) on 2026-07-02",
-    "check": "verified"
-   },
-   "settled_at": "2026-07-03T08:09:22"
-  },
-  {
-   "source": "lock_of_day",
-   "sport": "MLB-PP",
-   "player_or_matchup": "Lane Thomas",
-   "market": "PP_batter_hrr_under_3.5",
-   "prob": 0.876,
-   "edge_pct": 52.0,
-   "fair_american": -136,
-   "date": "2026-07-02",
-   "pick_id": "lock_of_day|MLB_PP|Lane_Thomas|PP_batter_hrr_under_3_5|2026-07-02",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.7353,
-   "recorded_at": "2026-07-02T11:32:00",
-   "p_calibrated": 0.9706,
-   "outcome": {
-    "stat": "hrr",
-    "actual": 1,
-    "line": 3.5,
-    "side": "UNDER/NO",
-    "verify": "Lane Thomas \u2014 hrr = 1 (line 3.5, bet UNDER/NO) on 2026-07-02",
-    "check": "verified"
-   },
-   "settled_at": "2026-07-03T08:09:22"
-  },
-  {
-   "source": "lock_of_day",
-   "sport": "MLB-PP",
-   "player_or_matchup": "Taylor Walls",
-   "market": "PP_batter_hrr_under_3.5",
-   "prob": 0.8744,
-   "edge_pct": 51.7,
-   "fair_american": -136,
-   "date": "2026-07-02",
-   "pick_id": "lock_of_day|MLB_PP|Taylor_Walls|PP_batter_hrr_under_3_5|2026-07-02",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.7353,
-   "recorded_at": "2026-07-02T11:32:00",
-   "p_calibrated": 0.9437,
-   "outcome": {
-    "stat": "hrr",
-    "actual": 3,
-    "line": 3.5,
-    "side": "UNDER/NO",
-    "verify": "Taylor Walls \u2014 hrr = 3 (line 3.5, bet UNDER/NO) on 2026-07-02",
-    "check": "verified"
-   },
-   "settled_at": "2026-07-03T08:09:22"
-  },
-  {
-   "source": "lock_of_day",
-   "sport": "MLB-PP",
-   "player_or_matchup": "Eugenio Su\u00e1rez",
-   "market": "PP_batter_hrr_under_3.5",
-   "prob": 0.8738,
-   "edge_pct": 51.6,
-   "fair_american": -136,
-   "date": "2026-07-02",
-   "pick_id": "lock_of_day|MLB_PP|Eugenio_Su_rez|PP_batter_hrr_under_3_5|2026-07-02",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.7353,
-   "recorded_at": "2026-07-02T11:32:00",
-   "p_calibrated": 0.8898,
-   "outcome": {
-    "stat": "hrr",
-    "actual": 2,
-    "line": 3.5,
-    "side": "UNDER/NO",
-    "verify": "Eugenio Su\u00e1rez \u2014 hrr = 2 (line 3.5, bet UNDER/NO) on 2026-07-02",
-    "check": "verified"
-   },
-   "settled_at": "2026-07-03T08:09:22"
-  },
-  {
-   "source": "soccer_clean_sheet_home_clean_sheet_no",
-   "sport": "WORLDCUP",
-   "player_or_matchup": "Austria @ Spain",
-   "market": "HOME_CLEAN_SHEET_NO",
-   "prob": 0.753,
-   "fair_american": -306,
-   "p_predicted": 0.753,
-   "matchup": "Austria @ Spain",
-   "date": "2026-07-02",
-   "pick_id": "soccer_clean_sheet_home_clean_sheet_no|WORLDCUP|Austria___Spain|HOME_CLEAN_SHEET_NO|2026-07-02",
-   "settled": true,
-   "result": "lost",
-   "payout_units": -1.0,
-   "recorded_at": "2026-07-02T12:23:00",
-   "p_calibrated": 0.6927,
-   "outcome": {
-    "final_score": "Austria 0-3 Spain",
-    "total_cards": 1,
-    "total_goals": 3,
-    "scorers": [
-     "mikel oyarzabal",
-     "pedro porro",
-     "mikel oyarzabal"
-    ],
-    "market": "HOME_CLEAN_SHEET_NO",
-    "verify": "Austria 0-3 Spain: home clean sheet = True \u2014 HOME_CLEAN_SHEET_NO"
-   },
-   "settled_at": "2026-07-03T04:06:58"
-  },
-  {
-   "source": "soccer_clean_sheet_home_clean_sheet_no",
-   "sport": "WORLDCUP",
-   "player_or_matchup": "Croatia @ Portugal",
-   "market": "HOME_CLEAN_SHEET_NO",
-   "prob": 0.753,
-   "fair_american": -306,
-   "p_predicted": 0.753,
-   "matchup": "Croatia @ Portugal",
-   "date": "2026-07-02",
-   "pick_id": "soccer_clean_sheet_home_clean_sheet_no|WORLDCUP|Croatia___Portugal|HOME_CLEAN_SHEET_NO|2026-07-02",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.3268,
-   "recorded_at": "2026-07-02T12:23:00",
-   "p_calibrated": 0.6927,
-   "outcome": {
-    "final_score": "Croatia 1-2 Portugal",
-    "total_cards": 3,
-    "total_goals": 3,
-    "scorers": [
-     "ivan perisic",
-     "cristiano ronaldo",
-     "gon\u00e7alo ramos"
-    ],
-    "market": "HOME_CLEAN_SHEET_NO",
-    "verify": "Croatia 1-2 Portugal: home clean sheet = False \u2014 HOME_CLEAN_SHEET_NO"
-   },
-   "settled_at": "2026-07-03T04:12:45"
-  },
-  {
-   "source": "lock_of_day",
-   "sport": "MLB-PP",
-   "player_or_matchup": "Hao-Yu Lee",
-   "market": "PP_batter_hrr_under_3.5",
-   "prob": 0.8743,
-   "edge_pct": 51.7,
-   "fair_american": -136,
-   "date": "2026-07-02",
-   "pick_id": "lock_of_day|MLB_PP|Hao_Yu_Lee|PP_batter_hrr_under_3_5|2026-07-02",
-   "settled": true,
-   "result": "lost",
-   "payout_units": -1.0,
-   "recorded_at": "2026-07-02T16:15:09",
-   "p_calibrated": 0.9347,
-   "outcome": {
-    "stat": "hrr",
-    "actual": 4,
-    "line": 3.5,
-    "side": "UNDER/NO",
-    "verify": "Hao-Yu Lee \u2014 hrr = 4 (line 3.5, bet UNDER/NO) on 2026-07-02",
-    "check": "verified"
-   },
-   "settled_at": "2026-07-03T08:09:22"
-  },
-  {
-   "source": "mlb_2plus_hits_hits_2plus_yes",
-   "sport": "MLB",
-   "player_or_matchup": "Trea Turner",
-   "market": "HITS_2PLUS_YES",
-   "prob": 0.442,
-   "fair_american": 126,
-   "p_predicted": 0.442,
-   "matchup": "PIT @ PHI",
-   "date": "2026-07-02",
-   "pick_id": "mlb_2plus_hits_hits_2plus_yes|MLB|Trea_Turner|HITS_2PLUS_YES|2026-07-02",
-   "settled": true,
-   "result": "lost",
-   "payout_units": -1.0,
-   "recorded_at": "2026-07-02T16:15:09",
-   "p_calibrated": 0.3168,
-   "outcome": {
-    "stat": "hits",
-    "actual": 1,
-    "line": 1.5,
-    "side": "OVER/YES",
-    "verify": "Trea Turner \u2014 hits = 1 (line 1.5, bet OVER/YES) on 2026-07-02",
-    "check": "verified"
-   },
-   "settled_at": "2026-07-03T08:09:22"
-  },
-  {
-   "source": "mlb_2plus_hits_hits_2plus_yes",
-   "sport": "MLB",
-   "player_or_matchup": "Bryce Harper",
-   "market": "HITS_2PLUS_YES",
-   "prob": 0.442,
-   "fair_american": 126,
-   "p_predicted": 0.442,
-   "matchup": "PIT @ PHI",
-   "date": "2026-07-02",
-   "pick_id": "mlb_2plus_hits_hits_2plus_yes|MLB|Bryce_Harper|HITS_2PLUS_YES|2026-07-02",
-   "settled": true,
-   "result": "lost",
-   "payout_units": -1.0,
-   "recorded_at": "2026-07-02T16:15:09",
-   "p_calibrated": 0.3168,
-   "outcome": {
-    "stat": "hits",
-    "actual": 1,
-    "line": 1.5,
-    "side": "OVER/YES",
-    "verify": "Bryce Harper \u2014 hits = 1 (line 1.5, bet OVER/YES) on 2026-07-02",
-    "check": "verified"
-   },
-   "settled_at": "2026-07-03T08:09:22"
-  },
-  {
-   "source": "mlb_3plus_tb_tb_3plus_yes",
-   "sport": "MLB",
-   "player_or_matchup": "Trea Turner",
-   "market": "TB_3PLUS_YES",
-   "prob": 0.396,
-   "fair_american": 153,
-   "p_predicted": 0.396,
-   "matchup": "PIT @ PHI",
-   "date": "2026-07-02",
-   "pick_id": "mlb_3plus_tb_tb_3plus_yes|MLB|Trea_Turner|TB_3PLUS_YES|2026-07-02",
-   "settled": true,
-   "result": "lost",
-   "payout_units": -1.0,
-   "recorded_at": "2026-07-02T17:39:59",
-   "p_calibrated": 0.2825,
-   "outcome": {
-    "stat": "tb",
-    "actual": 1,
-    "line": 2.5,
-    "side": "OVER/YES",
-    "verify": "Trea Turner \u2014 tb = 1 (line 2.5, bet OVER/YES) on 2026-07-02",
-    "check": "verified"
-   },
-   "settled_at": "2026-07-03T08:09:22"
-  },
-  {
-   "source": "mlb_3plus_tb_tb_3plus_yes",
-   "sport": "MLB",
-   "player_or_matchup": "Bryan Reynolds",
-   "market": "TB_3PLUS_YES",
-   "prob": 0.392,
-   "fair_american": 155,
-   "p_predicted": 0.392,
-   "matchup": "PIT @ PHI",
-   "date": "2026-07-02",
-   "pick_id": "mlb_3plus_tb_tb_3plus_yes|MLB|Bryan_Reynolds|TB_3PLUS_YES|2026-07-02",
-   "settled": true,
-   "result": "lost",
-   "payout_units": -1.0,
-   "recorded_at": "2026-07-02T17:39:59",
-   "p_calibrated": 0.2825,
-   "outcome": {
-    "stat": "tb",
-    "actual": 1,
-    "line": 2.5,
-    "side": "OVER/YES",
-    "verify": "Bryan Reynolds \u2014 tb = 1 (line 2.5, bet OVER/YES) on 2026-07-02",
-    "check": "verified"
-   },
-   "settled_at": "2026-07-03T08:09:22"
-  },
-  {
-   "source": "mlb_3plus_tb_tb_3plus_yes",
-   "sport": "MLB",
-   "player_or_matchup": "Ryan O'Hearn",
-   "market": "TB_3PLUS_YES",
-   "prob": 0.357,
-   "fair_american": 180,
-   "p_predicted": 0.357,
-   "matchup": "PIT @ PHI",
-   "date": "2026-07-02",
-   "pick_id": "mlb_3plus_tb_tb_3plus_yes|MLB|Ryan_O_Hearn|TB_3PLUS_YES|2026-07-02",
-   "settled": true,
-   "result": "lost",
-   "payout_units": -1.0,
-   "recorded_at": "2026-07-02T17:39:59",
-   "p_calibrated": 0.2825,
-   "outcome": {
-    "stat": "tb",
-    "actual": 2,
-    "line": 2.5,
-    "side": "OVER/YES",
-    "verify": "Ryan O'Hearn \u2014 tb = 2 (line 2.5, bet OVER/YES) on 2026-07-02",
-    "check": "verified"
-   },
-   "settled_at": "2026-07-03T08:09:22"
-  },
-  {
-   "source": "mlb_3plus_tb_tb_3plus_yes",
-   "sport": "MLB",
-   "player_or_matchup": "Endy Rodr\u00edguez",
-   "market": "TB_3PLUS_YES",
-   "prob": 0.354,
-   "fair_american": 182,
-   "p_predicted": 0.354,
-   "matchup": "PIT @ PHI",
-   "date": "2026-07-02",
-   "pick_id": "mlb_3plus_tb_tb_3plus_yes|MLB|Endy_Rodr_guez|TB_3PLUS_YES|2026-07-02",
-   "settled": true,
-   "result": "won",
-   "payout_units": 1.82,
-   "recorded_at": "2026-07-02T17:39:59",
-   "p_calibrated": 0.2825,
-   "outcome": {
-    "stat": "tb",
-    "actual": 4,
-    "line": 2.5,
-    "side": "OVER/YES",
-    "verify": "Endy Rodr\u00edguez \u2014 tb = 4 (line 2.5, bet OVER/YES) on 2026-07-02",
-    "check": "verified"
-   },
-   "settled_at": "2026-07-03T08:09:22"
-  },
-  {
-   "source": "mlb_3plus_tb_tb_3plus_yes",
-   "sport": "MLB",
-   "player_or_matchup": "William Contreras",
-   "market": "TB_3PLUS_YES",
-   "prob": 0.321,
-   "fair_american": 212,
-   "p_predicted": 0.321,
-   "matchup": "CIN @ MIL",
-   "date": "2026-07-02",
-   "pick_id": "mlb_3plus_tb_tb_3plus_yes|MLB|William_Contreras|TB_3PLUS_YES|2026-07-02",
-   "settled": true,
-   "result": "lost",
-   "payout_units": -1.0,
-   "recorded_at": "2026-07-02T17:39:59",
-   "p_calibrated": 0.2027,
-   "outcome": {
-    "stat": "tb",
-    "actual": 0,
-    "line": 2.5,
-    "side": "OVER/YES",
-    "verify": "William Contreras \u2014 tb = 0 (line 2.5, bet OVER/YES) on 2026-07-02",
-    "check": "verified"
-   },
-   "settled_at": "2026-07-03T08:09:22"
-  },
-  {
-   "source": "mlb_3plus_tb_tb_3plus_yes",
-   "sport": "MLB",
-   "player_or_matchup": "Brett Sullivan",
-   "market": "TB_3PLUS_YES",
-   "prob": 0.303,
-   "fair_american": 230,
-   "p_predicted": 0.303,
-   "matchup": "MIA @ COL",
-   "date": "2026-07-02",
-   "pick_id": "mlb_3plus_tb_tb_3plus_yes|MLB|Brett_Sullivan|TB_3PLUS_YES|2026-07-02",
-   "settled": true,
-   "result": "lost",
-   "payout_units": -1.0,
-   "recorded_at": "2026-07-02T17:39:59",
-   "p_calibrated": 0.2027,
-   "outcome": {
-    "stat": "tb",
-    "actual": 2,
-    "line": 2.5,
-    "side": "OVER/YES",
-    "verify": "Brett Sullivan \u2014 tb = 2 (line 2.5, bet OVER/YES) on 2026-07-02",
-    "check": "verified"
-   },
-   "settled_at": "2026-07-03T08:09:22"
-  },
-  {
-   "source": "mlb_3plus_tb_tb_3plus_yes",
-   "sport": "MLB",
-   "player_or_matchup": "Garrett Mitchell",
-   "market": "TB_3PLUS_YES",
-   "prob": 0.273,
-   "fair_american": 266,
-   "p_predicted": 0.273,
-   "matchup": "CIN @ MIL",
-   "date": "2026-07-02",
-   "pick_id": "mlb_3plus_tb_tb_3plus_yes|MLB|Garrett_Mitchell|TB_3PLUS_YES|2026-07-02",
-   "settled": true,
-   "result": "won",
-   "payout_units": 2.66,
-   "recorded_at": "2026-07-02T17:39:59",
-   "p_calibrated": 0.2027,
-   "outcome": {
-    "stat": "tb",
-    "actual": 4,
-    "line": 2.5,
-    "side": "OVER/YES",
-    "verify": "Garrett Mitchell \u2014 tb = 4 (line 2.5, bet OVER/YES) on 2026-07-02",
-    "check": "verified"
-   },
-   "settled_at": "2026-07-03T08:09:22"
-  },
-  {
-   "source": "mlb_3plus_tb_tb_3plus_yes",
-   "sport": "MLB",
-   "player_or_matchup": "Jackson Chourio",
-   "market": "TB_3PLUS_YES",
-   "prob": 0.268,
-   "fair_american": 273,
-   "p_predicted": 0.268,
-   "matchup": "CIN @ MIL",
-   "date": "2026-07-02",
-   "pick_id": "mlb_3plus_tb_tb_3plus_yes|MLB|Jackson_Chourio|TB_3PLUS_YES|2026-07-02",
-   "settled": true,
-   "result": "lost",
-   "payout_units": -1.0,
-   "recorded_at": "2026-07-02T17:39:59",
-   "p_calibrated": 0.2027,
-   "outcome": {
-    "stat": "tb",
-    "actual": 1,
-    "line": 2.5,
-    "side": "OVER/YES",
-    "verify": "Jackson Chourio \u2014 tb = 1 (line 2.5, bet OVER/YES) on 2026-07-02",
-    "check": "verified"
-   },
-   "settled_at": "2026-07-03T08:09:22"
-  },
-  {
-   "source": "mlb_3plus_tb_tb_3plus_yes",
-   "sport": "MLB",
-   "player_or_matchup": "Willi Castro",
-   "market": "TB_3PLUS_YES",
-   "prob": 0.261,
-   "fair_american": 283,
-   "p_predicted": 0.261,
-   "matchup": "MIA @ COL",
-   "date": "2026-07-02",
-   "pick_id": "mlb_3plus_tb_tb_3plus_yes|MLB|Willi_Castro|TB_3PLUS_YES|2026-07-02",
-   "settled": true,
-   "result": "lost",
-   "payout_units": -1.0,
-   "recorded_at": "2026-07-02T17:39:59",
-   "p_calibrated": 0.2027,
-   "outcome": {
-    "stat": "tb",
-    "actual": 1,
-    "line": 2.5,
-    "side": "OVER/YES",
-    "verify": "Willi Castro \u2014 tb = 1 (line 2.5, bet OVER/YES) on 2026-07-02",
-    "check": "verified"
-   },
-   "settled_at": "2026-07-03T08:09:22"
-  },
-  {
-   "source": "mlb_3plus_tb_tb_3plus_yes",
-   "sport": "MLB",
-   "player_or_matchup": "Brandon Lowe",
-   "market": "TB_3PLUS_YES",
-   "prob": 0.26,
-   "fair_american": 285,
-   "p_predicted": 0.26,
-   "matchup": "PIT @ PHI",
-   "date": "2026-07-02",
-   "pick_id": "mlb_3plus_tb_tb_3plus_yes|MLB|Brandon_Lowe|TB_3PLUS_YES|2026-07-02",
-   "settled": true,
-   "result": "lost",
-   "payout_units": -1.0,
-   "recorded_at": "2026-07-02T17:39:59",
-   "p_calibrated": 0.2027,
-   "outcome": {
-    "stat": "tb",
-    "actual": 2,
-    "line": 2.5,
-    "side": "OVER/YES",
-    "verify": "Brandon Lowe \u2014 tb = 2 (line 2.5, bet OVER/YES) on 2026-07-02",
-    "check": "verified"
-   },
-   "settled_at": "2026-07-03T08:09:22"
-  },
-  {
-   "source": "mlb_3plus_tb_tb_3plus_yes",
-   "sport": "MLB",
-   "player_or_matchup": "Sal Frelick",
-   "market": "TB_3PLUS_YES",
-   "prob": 0.251,
-   "fair_american": 298,
-   "p_predicted": 0.251,
-   "matchup": "CIN @ MIL",
-   "date": "2026-07-02",
-   "pick_id": "mlb_3plus_tb_tb_3plus_yes|MLB|Sal_Frelick|TB_3PLUS_YES|2026-07-02",
-   "settled": true,
-   "result": "lost",
-   "payout_units": -1.0,
-   "recorded_at": "2026-07-02T17:39:59",
-   "p_calibrated": 0.2027,
-   "outcome": {
-    "stat": "tb",
-    "actual": 0,
-    "line": 2.5,
-    "side": "OVER/YES",
-    "verify": "Sal Frelick \u2014 tb = 0 (line 2.5, bet OVER/YES) on 2026-07-02",
-    "check": "verified"
-   },
-   "settled_at": "2026-07-03T08:09:22"
-  },
-  {
-   "source": "mlb_3plus_tb_tb_3plus_yes",
-   "sport": "MLB",
-   "player_or_matchup": "Eugenio Su\u00e1rez",
-   "market": "TB_3PLUS_YES",
-   "prob": 0.227,
-   "fair_american": 341,
-   "p_predicted": 0.227,
-   "matchup": "CIN @ MIL",
-   "date": "2026-07-02",
-   "pick_id": "mlb_3plus_tb_tb_3plus_yes|MLB|Eugenio_Su_rez|TB_3PLUS_YES|2026-07-02",
-   "settled": true,
-   "result": "lost",
-   "payout_units": -1.0,
-   "recorded_at": "2026-07-02T17:39:59",
-   "p_calibrated": 0.2027,
-   "outcome": {
-    "stat": "tb",
-    "actual": 1,
-    "line": 2.5,
-    "side": "OVER/YES",
-    "verify": "Eugenio Su\u00e1rez \u2014 tb = 1 (line 2.5, bet OVER/YES) on 2026-07-02",
-    "check": "verified"
-   },
-   "settled_at": "2026-07-03T08:09:22"
-  },
-  {
-   "source": "mlb_3plus_tb_tb_3plus_yes",
-   "sport": "MLB",
-   "player_or_matchup": "Troy Johnston",
-   "market": "TB_3PLUS_YES",
-   "prob": 0.22,
-   "fair_american": 355,
-   "p_predicted": 0.22,
-   "matchup": "MIA @ COL",
-   "date": "2026-07-02",
-   "pick_id": "mlb_3plus_tb_tb_3plus_yes|MLB|Troy_Johnston|TB_3PLUS_YES|2026-07-02",
-   "settled": true,
-   "result": "won",
-   "payout_units": 3.55,
-   "recorded_at": "2026-07-02T17:39:59",
-   "p_calibrated": 0.2027,
-   "outcome": {
-    "stat": "tb",
-    "actual": 3,
-    "line": 2.5,
-    "side": "OVER/YES",
-    "verify": "Troy Johnston \u2014 tb = 3 (line 2.5, bet OVER/YES) on 2026-07-02",
-    "check": "verified"
-   },
-   "settled_at": "2026-07-03T08:09:22"
-  },
-  {
-   "source": "mlb_xbh_1_plus_xbh",
-   "projection": 0.551,
-   "sport": "MLB",
-   "player_or_matchup": "Endy Rodr\u00edguez",
-   "market": "1_PLUS_XBH",
-   "prob": 0.423,
-   "fair_american": 136,
-   "p_predicted": 0.423,
-   "matchup": "PIT @ PHI",
-   "date": "2026-07-02",
-   "pick_id": "mlb_xbh_1_plus_xbh|MLB|Endy_Rodr_guez|1_PLUS_XBH|2026-07-02",
-   "settled": true,
-   "result": "won",
-   "payout_units": 1.36,
-   "recorded_at": "2026-07-02T17:39:59",
-   "p_calibrated": 0.3087,
-   "outcome": {
-    "stat": "xbh",
-    "actual": 1,
-    "line": 0.5,
-    "side": "OVER/YES",
-    "verify": "Endy Rodr\u00edguez \u2014 xbh = 1 (line 0.5, bet OVER/YES) on 2026-07-02",
-    "check": "verified"
-   },
-   "settled_at": "2026-07-03T08:09:22"
-  },
-  {
-   "source": "mlb_xbh_1_plus_xbh",
-   "projection": 0.526,
-   "sport": "MLB",
-   "player_or_matchup": "TJ Rumfield",
-   "market": "1_PLUS_XBH",
-   "prob": 0.409,
-   "fair_american": 145,
-   "p_predicted": 0.409,
-   "matchup": "MIA @ COL",
-   "date": "2026-07-02",
-   "pick_id": "mlb_xbh_1_plus_xbh|MLB|TJ_Rumfield|1_PLUS_XBH|2026-07-02",
-   "settled": true,
-   "result": "won",
-   "payout_units": 1.45,
-   "recorded_at": "2026-07-02T17:39:59",
-   "p_calibrated": 0.3053,
-   "outcome": {
-    "stat": "xbh",
-    "actual": 1,
-    "line": 0.5,
-    "side": "OVER/YES",
-    "verify": "TJ Rumfield \u2014 xbh = 1 (line 0.5, bet OVER/YES) on 2026-07-02",
-    "check": "verified"
-   },
-   "settled_at": "2026-07-03T08:09:22"
-  },
-  {
-   "source": "mlb_xbh_1_plus_xbh",
-   "projection": 0.515,
-   "sport": "MLB",
-   "player_or_matchup": "Eugenio Su\u00e1rez",
-   "market": "1_PLUS_XBH",
-   "prob": 0.403,
-   "fair_american": 148,
-   "p_predicted": 0.403,
-   "matchup": "CIN @ MIL",
-   "date": "2026-07-02",
-   "pick_id": "mlb_xbh_1_plus_xbh|MLB|Eugenio_Su_rez|1_PLUS_XBH|2026-07-02",
-   "settled": true,
-   "result": "lost",
-   "payout_units": -1.0,
-   "recorded_at": "2026-07-02T17:39:59",
-   "p_calibrated": 0.304,
-   "outcome": {
-    "stat": "xbh",
-    "actual": 0,
-    "line": 0.5,
-    "side": "OVER/YES",
-    "verify": "Eugenio Su\u00e1rez \u2014 xbh = 0 (line 0.5, bet OVER/YES) on 2026-07-02",
-    "check": "verified"
-   },
-   "settled_at": "2026-07-03T08:09:22"
-  },
-  {
-   "source": "mlb_xbh_1_plus_xbh",
-   "projection": 0.508,
-   "sport": "MLB",
-   "player_or_matchup": "Ryan O'Hearn",
-   "market": "1_PLUS_XBH",
-   "prob": 0.398,
-   "fair_american": 151,
-   "p_predicted": 0.398,
-   "matchup": "PIT @ PHI",
-   "date": "2026-07-02",
-   "pick_id": "mlb_xbh_1_plus_xbh|MLB|Ryan_O_Hearn|1_PLUS_XBH|2026-07-02",
-   "settled": true,
-   "result": "won",
-   "payout_units": 1.51,
-   "recorded_at": "2026-07-02T17:39:59",
-   "p_calibrated": 0.303,
-   "outcome": {
-    "stat": "xbh",
-    "actual": 1,
-    "line": 0.5,
-    "side": "OVER/YES",
-    "verify": "Ryan O'Hearn \u2014 xbh = 1 (line 0.5, bet OVER/YES) on 2026-07-02",
-    "check": "verified"
-   },
-   "settled_at": "2026-07-03T08:09:22"
-  },
   {
    "source": "mlb_xbh_1_plus_xbh",
    "projection": 0.507,
@@ -3080,7 +2341,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-02T17:39:59",
-   "p_calibrated": 0.3028,
+   "p_calibrated": 0.3036,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -3107,7 +2368,7 @@
    "result": "won",
    "payout_units": 1.55,
    "recorded_at": "2026-07-02T17:39:59",
-   "p_calibrated": 0.3022,
+   "p_calibrated": 0.3029,
    "outcome": {
     "stat": "xbh",
     "actual": 1,
@@ -3134,7 +2395,7 @@
    "result": "won",
    "payout_units": 1.55,
    "recorded_at": "2026-07-02T17:39:59",
-   "p_calibrated": 0.3022,
+   "p_calibrated": 0.3029,
    "outcome": {
     "stat": "xbh",
     "actual": 2,
@@ -3161,7 +2422,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-02T17:39:59",
-   "p_calibrated": 0.3022,
+   "p_calibrated": 0.3029,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -3188,7 +2449,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-02T17:39:59",
-   "p_calibrated": 0.3022,
+   "p_calibrated": 0.3029,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -3215,7 +2476,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-02T17:39:59",
-   "p_calibrated": 0.3022,
+   "p_calibrated": 0.3029,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -3242,7 +2503,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-02T17:39:59",
-   "p_calibrated": 0.2971,
+   "p_calibrated": 0.2981,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -3269,7 +2530,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-02T17:39:59",
-   "p_calibrated": 0.2922,
+   "p_calibrated": 0.2932,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -3296,7 +2557,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-02T17:39:59",
-   "p_calibrated": 0.2922,
+   "p_calibrated": 0.2932,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -3323,7 +2584,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-02T17:39:59",
-   "p_calibrated": 0.2922,
+   "p_calibrated": 0.2932,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -3350,7 +2611,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-02T17:39:59",
-   "p_calibrated": 0.2922,
+   "p_calibrated": 0.2932,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -3561,7 +2822,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-02T23:32:43",
-   "p_calibrated": 0.2825,
+   "p_calibrated": 0.2893,
    "outcome": {
     "stat": "tb",
     "actual": 1,
@@ -3587,7 +2848,7 @@
    "result": "won",
    "payout_units": 1.7,
    "recorded_at": "2026-07-02T23:32:43",
-   "p_calibrated": 0.2825,
+   "p_calibrated": 0.2893,
    "outcome": {
     "stat": "tb",
     "actual": 3,
@@ -3613,7 +2874,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-02T23:32:43",
-   "p_calibrated": 0.2027,
+   "p_calibrated": 0.2051,
    "outcome": {
     "stat": "tb",
     "actual": 1,
@@ -3639,7 +2900,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-02T23:32:43",
-   "p_calibrated": 0.2027,
+   "p_calibrated": 0.2051,
    "outcome": {
     "stat": "tb",
     "actual": 0,
@@ -3665,7 +2926,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-02T23:32:43",
-   "p_calibrated": 0.2027,
+   "p_calibrated": 0.2051,
    "outcome": {
     "stat": "tb",
     "actual": 0,
@@ -3691,7 +2952,7 @@
    "result": "won",
    "payout_units": 2.34,
    "recorded_at": "2026-07-02T23:32:43",
-   "p_calibrated": 0.2027,
+   "p_calibrated": 0.2051,
    "outcome": {
     "stat": "tb",
     "actual": 4,
@@ -3717,7 +2978,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-02T23:32:43",
-   "p_calibrated": 0.2027,
+   "p_calibrated": 0.2051,
    "outcome": {
     "stat": "tb",
     "actual": 0,
@@ -3743,7 +3004,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-02T23:32:43",
-   "p_calibrated": 0.2027,
+   "p_calibrated": 0.2051,
    "outcome": {
     "stat": "tb",
     "actual": 1,
@@ -3769,7 +3030,7 @@
    "result": "won",
    "payout_units": 2.61,
    "recorded_at": "2026-07-02T23:32:43",
-   "p_calibrated": 0.2027,
+   "p_calibrated": 0.2051,
    "outcome": {
     "stat": "tb",
     "actual": 5,
@@ -3795,7 +3056,7 @@
    "result": "won",
    "payout_units": 2.69,
    "recorded_at": "2026-07-02T23:32:43",
-   "p_calibrated": 0.2027,
+   "p_calibrated": 0.2051,
    "outcome": {
     "stat": "tb",
     "actual": 3,
@@ -3821,7 +3082,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-02T23:32:43",
-   "p_calibrated": 0.2027,
+   "p_calibrated": 0.2051,
    "outcome": {
     "stat": "tb",
     "actual": 0,
@@ -3847,7 +3108,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-02T23:32:43",
-   "p_calibrated": 0.2027,
+   "p_calibrated": 0.2051,
    "outcome": {
     "stat": "tb",
     "actual": 2,
@@ -3873,7 +3134,7 @@
    "result": "won",
    "payout_units": 2.8,
    "recorded_at": "2026-07-02T23:32:43",
-   "p_calibrated": 0.2027,
+   "p_calibrated": 0.2051,
    "outcome": {
     "stat": "tb",
     "actual": 3,
@@ -3899,7 +3160,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-02T23:32:43",
-   "p_calibrated": 0.2027,
+   "p_calibrated": 0.2051,
    "outcome": {
     "stat": "tb",
     "actual": 2,
@@ -3925,7 +3186,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-02T23:32:43",
-   "p_calibrated": 0.2027,
+   "p_calibrated": 0.2051,
    "outcome": {
     "stat": "tb",
     "actual": 1,
@@ -3952,7 +3213,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-02T23:32:43",
-   "p_calibrated": 0.3119,
+   "p_calibrated": 0.3083,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -3979,7 +3240,7 @@
    "result": "won",
    "payout_units": 1.34,
    "recorded_at": "2026-07-02T23:32:43",
-   "p_calibrated": 0.3102,
+   "p_calibrated": 0.3083,
    "outcome": {
     "stat": "xbh",
     "actual": 1,
@@ -4006,7 +3267,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-02T23:32:43",
-   "p_calibrated": 0.2922,
+   "p_calibrated": 0.2932,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -4033,7 +3294,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-02T23:32:43",
-   "p_calibrated": 0.2922,
+   "p_calibrated": 0.2932,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -4060,7 +3321,7 @@
    "result": "won",
    "payout_units": 1.85,
    "recorded_at": "2026-07-02T23:32:43",
-   "p_calibrated": 0.2922,
+   "p_calibrated": 0.2932,
    "outcome": {
     "stat": "xbh",
     "actual": 1,
@@ -4087,7 +3348,7 @@
    "result": "won",
    "payout_units": 1.87,
    "recorded_at": "2026-07-02T23:32:43",
-   "p_calibrated": 0.2922,
+   "p_calibrated": 0.2932,
    "outcome": {
     "stat": "xbh",
     "actual": 1,
@@ -4114,7 +3375,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-02T23:32:43",
-   "p_calibrated": 0.2922,
+   "p_calibrated": 0.2932,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -4141,7 +3402,7 @@
    "result": "won",
    "payout_units": 1.92,
    "recorded_at": "2026-07-02T23:32:43",
-   "p_calibrated": 0.2922,
+   "p_calibrated": 0.2932,
    "outcome": {
     "stat": "xbh",
     "actual": 1,
@@ -4168,7 +3429,7 @@
    "result": "won",
    "payout_units": 1.95,
    "recorded_at": "2026-07-02T23:32:43",
-   "p_calibrated": 0.2922,
+   "p_calibrated": 0.2932,
    "outcome": {
     "stat": "xbh",
     "actual": 1,
@@ -4195,7 +3456,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-02T23:32:43",
-   "p_calibrated": 0.2922,
+   "p_calibrated": 0.2932,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -4222,7 +3483,7 @@
    "result": "won",
    "payout_units": 1.96,
    "recorded_at": "2026-07-02T23:32:43",
-   "p_calibrated": 0.2922,
+   "p_calibrated": 0.2932,
    "outcome": {
     "stat": "xbh",
     "actual": 1,
@@ -4249,7 +3510,7 @@
    "result": "won",
    "payout_units": 1.97,
    "recorded_at": "2026-07-02T23:32:43",
-   "p_calibrated": 0.2922,
+   "p_calibrated": 0.2932,
    "outcome": {
     "stat": "xbh",
     "actual": 1,
@@ -4276,7 +3537,7 @@
    "result": "won",
    "payout_units": 1.98,
    "recorded_at": "2026-07-02T23:32:43",
-   "p_calibrated": 0.2922,
+   "p_calibrated": 0.2932,
    "outcome": {
     "stat": "xbh",
     "actual": 1,
@@ -4303,7 +3564,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-02T23:32:43",
-   "p_calibrated": 0.2922,
+   "p_calibrated": 0.2932,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -4330,7 +3591,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-02T23:32:43",
-   "p_calibrated": 0.2922,
+   "p_calibrated": 0.2932,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -4522,7 +3783,7 @@
    "result": "won",
    "payout_units": 0.91,
    "recorded_at": "2026-06-29T05:02:47",
-   "p_calibrated": 0.5027,
+   "p_calibrated": 0.4667,
    "outcome": {
     "final_score": "Cape Verde 2-3 Argentina",
     "total_cards": 2,
@@ -4567,6 +3828,181 @@
    "settled_at": "2026-07-04T04:06:11"
   },
   {
+   "source": "f1_quali_top_3",
+   "sport": "F1",
+   "player_or_matchup": "charles leclerc",
+   "market": "TOP_3",
+   "prob": 0.713,
+   "fair_american": -249,
+   "p_predicted": 0.713,
+   "matchup": "Pirelli British Grand Prix",
+   "date": "2026-07-03",
+   "pick_id": "f1_quali_top_3|F1|charles_leclerc|TOP_3|2026-07-03",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.4016,
+   "recorded_at": "2026-07-02T06:25:11",
+   "p_calibrated": 0.6083,
+   "outcome": {
+    "event": "Pirelli British Grand Prix",
+    "session": "qualifying",
+    "position": 2,
+    "market": "TOP_3",
+    "verify": "Charles Leclerc qualifying P2 at Pirelli British Grand Prix \u2014 TOP_3"
+   },
+   "settled_at": "2026-07-04T21:51:10"
+  },
+  {
+   "source": "f1_quali_top_3",
+   "sport": "F1",
+   "player_or_matchup": "lando norris",
+   "market": "TOP_3",
+   "prob": 0.696,
+   "fair_american": -229,
+   "p_predicted": 0.696,
+   "matchup": "Pirelli British Grand Prix",
+   "date": "2026-07-03",
+   "pick_id": "f1_quali_top_3|F1|lando_norris|TOP_3|2026-07-03",
+   "settled": true,
+   "result": "lost",
+   "payout_units": -1.0,
+   "recorded_at": "2026-07-02T06:25:11",
+   "p_calibrated": 0.6083,
+   "outcome": {
+    "event": "Pirelli British Grand Prix",
+    "session": "qualifying",
+    "position": 6,
+    "market": "TOP_3",
+    "verify": "Lando Norris qualifying P6 at Pirelli British Grand Prix \u2014 TOP_3"
+   },
+   "settled_at": "2026-07-04T21:51:10"
+  },
+  {
+   "source": "f1_quali_top_3",
+   "sport": "F1",
+   "player_or_matchup": "carlos sainz",
+   "market": "TOP_3",
+   "prob": 0.642,
+   "fair_american": -179,
+   "p_predicted": 0.642,
+   "matchup": "Pirelli British Grand Prix",
+   "date": "2026-07-03",
+   "pick_id": "f1_quali_top_3|F1|carlos_sainz|TOP_3|2026-07-03",
+   "settled": true,
+   "result": "lost",
+   "payout_units": -1.0,
+   "recorded_at": "2026-07-02T06:25:11",
+   "p_calibrated": 0.597,
+   "outcome": {
+    "event": "Pirelli British Grand Prix",
+    "session": "qualifying",
+    "position": 15,
+    "market": "TOP_3",
+    "verify": "Carlos Sainz qualifying P15 at Pirelli British Grand Prix \u2014 TOP_3"
+   },
+   "settled_at": "2026-07-04T21:51:10"
+  },
+  {
+   "source": "f1_quali_top_3",
+   "sport": "F1",
+   "player_or_matchup": "oscar piastri",
+   "market": "TOP_3",
+   "prob": 0.623,
+   "fair_american": -165,
+   "p_predicted": 0.623,
+   "matchup": "Pirelli British Grand Prix",
+   "date": "2026-07-03",
+   "pick_id": "f1_quali_top_3|F1|oscar_piastri|TOP_3|2026-07-03",
+   "settled": true,
+   "result": "lost",
+   "payout_units": -1.0,
+   "recorded_at": "2026-07-02T06:25:11",
+   "p_calibrated": 0.5887,
+   "outcome": {
+    "event": "Pirelli British Grand Prix",
+    "session": "qualifying",
+    "position": 8,
+    "market": "TOP_3",
+    "verify": "Oscar Piastri qualifying P8 at Pirelli British Grand Prix \u2014 TOP_3"
+   },
+   "settled_at": "2026-07-04T21:51:10"
+  },
+  {
+   "source": "f1_quali_top_3",
+   "sport": "F1",
+   "player_or_matchup": "george russell",
+   "market": "TOP_3",
+   "prob": 0.604,
+   "fair_american": -152,
+   "p_predicted": 0.604,
+   "matchup": "Pirelli British Grand Prix",
+   "date": "2026-07-03",
+   "pick_id": "f1_quali_top_3|F1|george_russell|TOP_3|2026-07-03",
+   "settled": true,
+   "result": "lost",
+   "payout_units": -1.0,
+   "recorded_at": "2026-07-02T06:25:11",
+   "p_calibrated": 0.5805,
+   "outcome": {
+    "event": "Pirelli British Grand Prix",
+    "session": "qualifying",
+    "position": 4,
+    "market": "TOP_3",
+    "verify": "George Russell qualifying P4 at Pirelli British Grand Prix \u2014 TOP_3"
+   },
+   "settled_at": "2026-07-04T21:51:10"
+  },
+  {
+   "source": "f1_quali_top_6",
+   "sport": "F1",
+   "player_or_matchup": "lewis hamilton",
+   "market": "TOP_6",
+   "prob": 0.646,
+   "fair_american": -183,
+   "p_predicted": 0.646,
+   "matchup": "Pirelli British Grand Prix",
+   "date": "2026-07-03",
+   "pick_id": "f1_quali_top_6|F1|lewis_hamilton|TOP_6|2026-07-03",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.5464,
+   "recorded_at": "2026-07-02T06:25:11",
+   "p_calibrated": 0.5988,
+   "outcome": {
+    "event": "Pirelli British Grand Prix",
+    "session": "qualifying",
+    "position": 3,
+    "market": "TOP_6",
+    "verify": "Lewis Hamilton qualifying P3 at Pirelli British Grand Prix \u2014 TOP_6"
+   },
+   "settled_at": "2026-07-04T21:51:10"
+  },
+  {
+   "source": "f1_quali_top_6",
+   "sport": "F1",
+   "player_or_matchup": "fernando alonso",
+   "market": "TOP_6",
+   "prob": 0.628,
+   "fair_american": -169,
+   "p_predicted": 0.628,
+   "matchup": "Pirelli British Grand Prix",
+   "date": "2026-07-03",
+   "pick_id": "f1_quali_top_6|F1|fernando_alonso|TOP_6|2026-07-03",
+   "settled": true,
+   "result": "lost",
+   "payout_units": -1.0,
+   "recorded_at": "2026-07-02T06:25:11",
+   "p_calibrated": 0.5909,
+   "outcome": {
+    "event": "Pirelli British Grand Prix",
+    "session": "qualifying",
+    "position": 22,
+    "market": "TOP_6",
+    "verify": "Fernando Alonso qualifying P22 at Pirelli British Grand Prix \u2014 TOP_6"
+   },
+   "settled_at": "2026-07-04T21:51:10"
+  },
+  {
    "source": "wnba_blkstl_blk_stl_under_1.0",
    "sport": "WNBA",
    "player_or_matchup": "natasha cloud",
@@ -4581,7 +4017,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-02T06:25:11",
-   "p_calibrated": 0.5882,
+   "p_calibrated": 0.5745,
    "outcome": {
     "stat": "blk_stl",
     "actual": 2,
@@ -4606,7 +4042,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-02T12:23:00",
-   "p_calibrated": 0.6927,
+   "p_calibrated": 0.7008,
    "outcome": {
     "final_score": "Algeria 0-2 Switzerland",
     "total_cards": 2,
@@ -4944,7 +4380,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-03T00:10:50",
-   "p_calibrated": 0.2825,
+   "p_calibrated": 0.2893,
    "outcome": {
     "stat": "tb",
     "actual": 0,
@@ -4970,7 +4406,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-03T00:10:50",
-   "p_calibrated": 0.2027,
+   "p_calibrated": 0.2051,
    "outcome": {
     "stat": "tb",
     "actual": 0,
@@ -4996,7 +4432,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-03T00:10:50",
-   "p_calibrated": 0.2027,
+   "p_calibrated": 0.2051,
    "outcome": {
     "stat": "tb",
     "actual": 1,
@@ -5022,7 +4458,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-03T00:10:50",
-   "p_calibrated": 0.2027,
+   "p_calibrated": 0.2051,
    "outcome": {
     "stat": "tb",
     "actual": 1,
@@ -5048,7 +4484,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-03T00:10:50",
-   "p_calibrated": 0.2027,
+   "p_calibrated": 0.2051,
    "outcome": {
     "stat": "tb",
     "actual": 1,
@@ -5074,7 +4510,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-03T00:10:50",
-   "p_calibrated": 0.2027,
+   "p_calibrated": 0.2051,
    "outcome": {
     "stat": "tb",
     "actual": 0,
@@ -5100,7 +4536,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-03T00:10:50",
-   "p_calibrated": 0.2027,
+   "p_calibrated": 0.2051,
    "outcome": {
     "stat": "tb",
     "actual": 0,
@@ -5126,7 +4562,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-03T00:10:50",
-   "p_calibrated": 0.2027,
+   "p_calibrated": 0.2051,
    "outcome": {
     "stat": "tb",
     "actual": 0,
@@ -5152,7 +4588,7 @@
    "result": "won",
    "payout_units": 2.79,
    "recorded_at": "2026-07-03T00:10:50",
-   "p_calibrated": 0.2027,
+   "p_calibrated": 0.2051,
    "outcome": {
     "stat": "tb",
     "actual": 4,
@@ -5178,7 +4614,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-03T00:10:50",
-   "p_calibrated": 0.2027,
+   "p_calibrated": 0.2051,
    "outcome": {
     "stat": "tb",
     "actual": 1,
@@ -5204,7 +4640,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-03T00:10:50",
-   "p_calibrated": 0.2027,
+   "p_calibrated": 0.2051,
    "outcome": {
     "stat": "tb",
     "actual": 0,
@@ -5231,7 +4667,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-03T00:10:50",
-   "p_calibrated": 0.303,
+   "p_calibrated": 0.3039,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -5258,7 +4694,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-03T00:10:50",
-   "p_calibrated": 0.303,
+   "p_calibrated": 0.3039,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -5285,7 +4721,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-03T00:10:50",
-   "p_calibrated": 0.2922,
+   "p_calibrated": 0.2932,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -5312,7 +4748,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-03T00:10:50",
-   "p_calibrated": 0.2922,
+   "p_calibrated": 0.2932,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -5339,7 +4775,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-03T00:10:50",
-   "p_calibrated": 0.2922,
+   "p_calibrated": 0.2932,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -5366,7 +4802,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-03T00:10:50",
-   "p_calibrated": 0.2922,
+   "p_calibrated": 0.2932,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -5393,7 +4829,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-03T00:10:50",
-   "p_calibrated": 0.2922,
+   "p_calibrated": 0.2932,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -5420,7 +4856,7 @@
    "result": "won",
    "payout_units": 1.97,
    "recorded_at": "2026-07-03T00:10:50",
-   "p_calibrated": 0.2922,
+   "p_calibrated": 0.2932,
    "outcome": {
     "stat": "xbh",
     "actual": 1,
@@ -5447,7 +4883,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-03T00:10:50",
-   "p_calibrated": 0.2922,
+   "p_calibrated": 0.2932,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -5474,7 +4910,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-03T00:10:50",
-   "p_calibrated": 0.2922,
+   "p_calibrated": 0.2932,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -5553,7 +4989,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-03T08:09:22",
-   "p_calibrated": 0.6564,
+   "p_calibrated": 0.6872,
    "outcome": {
     "final_score": "MIN 2 @ NYY 5",
     "total_runs": 7,
@@ -5577,7 +5013,7 @@
    "result": "won",
    "payout_units": 0.3268,
    "recorded_at": "2026-07-03T11:02:47",
-   "p_calibrated": 0.6927,
+   "p_calibrated": 0.7008,
    "outcome": {
     "final_score": "Egypt 1-1 Australia",
     "total_cards": 2,
@@ -5611,7 +5047,7 @@
    "result": "won",
    "payout_units": 0.3268,
    "recorded_at": "2026-07-03T11:02:47",
-   "p_calibrated": 0.6927,
+   "p_calibrated": 0.7008,
    "outcome": {
     "final_score": "Cape Verde 2-3 Argentina",
     "total_cards": 2,
@@ -5652,6 +5088,32 @@
     "verify": "Elise Mertens won 0-2 (20 games) \u2014 TOTAL_GAMES_UNDER_16.5"
    },
    "settled_at": "2026-07-04T14:23:13"
+  },
+  {
+   "source": "tennis_games_total_games_over_18.5",
+   "sport": "TENNIS",
+   "player_or_matchup": "Madison Keys vs Amanda Anisimova",
+   "market": "TOTAL_GAMES_OVER_18.5",
+   "prob": 0.666,
+   "fair_american": -199,
+   "p_predicted": 0.666,
+   "matchup": "Madison Keys vs Amanda Anisimova",
+   "date": "2026-07-03",
+   "pick_id": "tennis_games_total_games_over_18_5|TENNIS|Madison_Keys_vs_Amanda_Anisimova|TOTAL_GAMES_OVER_18_5|2026-07-03",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.5025,
+   "recorded_at": "2026-07-03T11:02:47",
+   "p_calibrated": 0.666,
+   "outcome": {
+    "match": "Madison Keys vs Amanda Anisimova",
+    "winner": "Madison Keys",
+    "sets": "2-1",
+    "total_games": 26,
+    "market": "TOTAL_GAMES_OVER_18.5",
+    "verify": "Madison Keys won 2-1 (26 games) \u2014 TOTAL_GAMES_OVER_18.5"
+   },
+   "settled_at": "2026-07-04T21:51:10"
   },
   {
    "source": "top_25_board",
@@ -5824,7 +5286,7 @@
    "result": "won",
    "payout_units": 0.6849,
    "recorded_at": "2026-07-03T16:04:31",
-   "p_calibrated": 0.6368,
+   "p_calibrated": 0.6309,
    "outcome": {
     "final_score": "MIN 2 @ NYY 5",
     "total_runs": 7,
@@ -6002,7 +5464,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-03T23:30:45",
-   "p_calibrated": 0.2825,
+   "p_calibrated": 0.2893,
    "outcome": {
     "stat": "tb",
     "actual": 0,
@@ -6028,7 +5490,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-03T23:30:45",
-   "p_calibrated": 0.2825,
+   "p_calibrated": 0.2893,
    "outcome": {
     "stat": "tb",
     "actual": 1,
@@ -6054,7 +5516,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-03T23:30:45",
-   "p_calibrated": 0.2825,
+   "p_calibrated": 0.2893,
    "outcome": {
     "stat": "tb",
     "actual": 1,
@@ -6080,7 +5542,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-03T23:30:45",
-   "p_calibrated": 0.2825,
+   "p_calibrated": 0.2893,
    "outcome": {
     "stat": "tb",
     "actual": 0,
@@ -6106,7 +5568,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-03T23:30:45",
-   "p_calibrated": 0.2825,
+   "p_calibrated": 0.2893,
    "outcome": {
     "stat": "tb",
     "actual": 1,
@@ -6132,7 +5594,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-03T23:30:45",
-   "p_calibrated": 0.2825,
+   "p_calibrated": 0.2893,
    "outcome": {
     "stat": "tb",
     "actual": 0,
@@ -6158,7 +5620,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-03T23:30:45",
-   "p_calibrated": 0.2825,
+   "p_calibrated": 0.2893,
    "outcome": {
     "stat": "tb",
     "actual": 0,
@@ -6185,7 +5647,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-03T23:30:45",
-   "p_calibrated": 0.3128,
+   "p_calibrated": 0.3083,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -6212,7 +5674,7 @@
    "result": "won",
    "payout_units": 1.24,
    "recorded_at": "2026-07-03T23:30:45",
-   "p_calibrated": 0.3128,
+   "p_calibrated": 0.3083,
    "outcome": {
     "stat": "xbh",
     "actual": 1,
@@ -6239,7 +5701,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-03T23:30:45",
-   "p_calibrated": 0.3128,
+   "p_calibrated": 0.3083,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -6266,7 +5728,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-03T23:30:45",
-   "p_calibrated": 0.3102,
+   "p_calibrated": 0.3083,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -6293,7 +5755,7 @@
    "result": "won",
    "payout_units": 1.37,
    "recorded_at": "2026-07-03T23:30:45",
-   "p_calibrated": 0.3084,
+   "p_calibrated": 0.3083,
    "outcome": {
     "stat": "xbh",
     "actual": 1,
@@ -6320,7 +5782,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-03T23:30:45",
-   "p_calibrated": 0.3084,
+   "p_calibrated": 0.3083,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -6347,7 +5809,7 @@
    "result": "won",
    "payout_units": 1.38,
    "recorded_at": "2026-07-03T23:30:45",
-   "p_calibrated": 0.3082,
+   "p_calibrated": 0.3083,
    "outcome": {
     "stat": "xbh",
     "actual": 1,
@@ -6374,7 +5836,7 @@
    "result": "won",
    "payout_units": 1.39,
    "recorded_at": "2026-07-03T23:30:45",
-   "p_calibrated": 0.3076,
+   "p_calibrated": 0.3083,
    "outcome": {
     "stat": "xbh",
     "actual": 1,
@@ -6401,7 +5863,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-03T23:30:45",
-   "p_calibrated": 0.3066,
+   "p_calibrated": 0.3079,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -6428,7 +5890,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-03T23:30:45",
-   "p_calibrated": 0.3066,
+   "p_calibrated": 0.3079,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -6455,7 +5917,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-03T23:30:45",
-   "p_calibrated": 0.3053,
+   "p_calibrated": 0.3065,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -6482,7 +5944,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-03T23:30:45",
-   "p_calibrated": 0.3045,
+   "p_calibrated": 0.3056,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -6509,7 +5971,7 @@
    "result": "won",
    "payout_units": 1.48,
    "recorded_at": "2026-07-03T23:30:45",
-   "p_calibrated": 0.304,
+   "p_calibrated": 0.3051,
    "outcome": {
     "stat": "xbh",
     "actual": 1,
@@ -6536,7 +5998,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-03T23:30:45",
-   "p_calibrated": 0.303,
+   "p_calibrated": 0.3039,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -6563,7 +6025,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-03T23:30:45",
-   "p_calibrated": 0.3022,
+   "p_calibrated": 0.3029,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -6590,7 +6052,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-03T23:30:45",
-   "p_calibrated": 0.3022,
+   "p_calibrated": 0.3029,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -6617,7 +6079,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-03T23:30:45",
-   "p_calibrated": 0.3022,
+   "p_calibrated": 0.3029,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -6644,7 +6106,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-03T23:30:45",
-   "p_calibrated": 0.3022,
+   "p_calibrated": 0.3029,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -6671,7 +6133,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-03T23:30:45",
-   "p_calibrated": 0.3022,
+   "p_calibrated": 0.3029,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -6698,7 +6160,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-03T23:30:45",
-   "p_calibrated": 0.3022,
+   "p_calibrated": 0.3029,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -6725,7 +6187,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-03T23:30:45",
-   "p_calibrated": 0.3022,
+   "p_calibrated": 0.3029,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -6752,7 +6214,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-03T23:30:45",
-   "p_calibrated": 0.3022,
+   "p_calibrated": 0.3029,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -6779,7 +6241,7 @@
    "result": "won",
    "payout_units": 1.67,
    "recorded_at": "2026-07-03T23:30:45",
-   "p_calibrated": 0.3002,
+   "p_calibrated": 0.3012,
    "outcome": {
     "stat": "xbh",
     "actual": 1,
@@ -6806,7 +6268,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-03T23:30:45",
-   "p_calibrated": 0.2955,
+   "p_calibrated": 0.2965,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -6833,7 +6295,7 @@
    "result": "won",
    "payout_units": 1.72,
    "recorded_at": "2026-07-03T23:30:45",
-   "p_calibrated": 0.2947,
+   "p_calibrated": 0.2958,
    "outcome": {
     "stat": "xbh",
     "actual": 1,
@@ -6860,7 +6322,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-03T23:30:45",
-   "p_calibrated": 0.2922,
+   "p_calibrated": 0.2932,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -6887,7 +6349,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-03T23:30:45",
-   "p_calibrated": 0.2922,
+   "p_calibrated": 0.2932,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -6914,7 +6376,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-03T23:30:45",
-   "p_calibrated": 0.2922,
+   "p_calibrated": 0.2932,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -6941,7 +6403,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-03T23:30:45",
-   "p_calibrated": 0.2922,
+   "p_calibrated": 0.2932,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -6968,7 +6430,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-03T23:30:45",
-   "p_calibrated": 0.2922,
+   "p_calibrated": 0.2932,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -6995,7 +6457,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-03T23:30:45",
-   "p_calibrated": 0.2922,
+   "p_calibrated": 0.2932,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -7022,7 +6484,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-03T23:30:45",
-   "p_calibrated": 0.2922,
+   "p_calibrated": 0.2932,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -7049,7 +6511,7 @@
    "result": "won",
    "payout_units": 1.92,
    "recorded_at": "2026-07-03T23:30:45",
-   "p_calibrated": 0.2922,
+   "p_calibrated": 0.2932,
    "outcome": {
     "stat": "xbh",
     "actual": 1,
@@ -7076,7 +6538,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-03T23:30:45",
-   "p_calibrated": 0.2922,
+   "p_calibrated": 0.2932,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -7103,7 +6565,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-03T23:30:45",
-   "p_calibrated": 0.2922,
+   "p_calibrated": 0.2932,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -7130,7 +6592,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-03T23:30:45",
-   "p_calibrated": 0.2922,
+   "p_calibrated": 0.2932,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -7157,7 +6619,7 @@
    "result": "won",
    "payout_units": 2.0,
    "recorded_at": "2026-07-03T23:30:45",
-   "p_calibrated": 0.2922,
+   "p_calibrated": 0.2932,
    "outcome": {
     "stat": "xbh",
     "actual": 2,
@@ -7184,7 +6646,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-03T23:30:45",
-   "p_calibrated": 0.2922,
+   "p_calibrated": 0.2932,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -7211,7 +6673,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-03T23:30:45",
-   "p_calibrated": 0.2922,
+   "p_calibrated": 0.2932,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -7238,7 +6700,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-03T23:30:45",
-   "p_calibrated": 0.2922,
+   "p_calibrated": 0.2932,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -7265,7 +6727,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-03T23:30:45",
-   "p_calibrated": 0.2922,
+   "p_calibrated": 0.2932,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -7561,7 +7023,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-03T11:02:47",
-   "p_calibrated": 0.6927,
+   "p_calibrated": 0.7008,
    "outcome": {
     "final_score": "Ghana 0-1 Colombia",
     "total_cards": 5,
@@ -7573,6 +7035,56 @@
     "verify": "Ghana 0-1 Colombia: home clean sheet = True \u2014 HOME_CLEAN_SHEET_NO"
    },
    "settled_at": "2026-07-04T04:06:11"
+  },
+  {
+   "source": "wnba_ast_over_1.5",
+   "sport": "WNBA",
+   "player_or_matchup": "angel reese",
+   "market": "AST_OVER_1.5",
+   "prob": 0.655,
+   "fair_american": -190,
+   "p_predicted": 0.655,
+   "matchup": "CHI @ LV",
+   "date": "2026-07-04",
+   "pick_id": "wnba_ast_over_1_5|WNBA|angel_reese|AST_OVER_1_5|2026-07-04",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.5263,
+   "recorded_at": "2026-07-03T17:18:09",
+   "p_calibrated": 0.655,
+   "outcome": {
+    "stat": "ast",
+    "actual": 3,
+    "line": 1.5,
+    "side": "OVER",
+    "verify": "angel reese \u2014 ast = 3 (line 1.5, bet over) on 2026-07-04"
+   },
+   "settled_at": "2026-07-04T19:41:02"
+  },
+  {
+   "source": "wnba_blkstl_blk_stl_under_2.5",
+   "sport": "WNBA",
+   "player_or_matchup": "angel reese",
+   "market": "BLK_STL_UNDER_2.5",
+   "prob": 0.64,
+   "fair_american": -178,
+   "p_predicted": 0.64,
+   "matchup": "CHI @ LVA",
+   "date": "2026-07-04",
+   "pick_id": "wnba_blkstl_blk_stl_under_2_5|WNBA|angel_reese|BLK_STL_UNDER_2_5|2026-07-04",
+   "settled": true,
+   "result": "lost",
+   "payout_units": -1.0,
+   "recorded_at": "2026-07-03T17:18:09",
+   "p_calibrated": 0.574,
+   "outcome": {
+    "stat": "blk_stl",
+    "actual": 3,
+    "line": 2.5,
+    "side": "UNDER",
+    "verify": "angel reese \u2014 blk_stl = 3 (line 2.5, bet under) on 2026-07-04"
+   },
+   "settled_at": "2026-07-04T19:41:02"
   },
   {
    "source": "top_25_board",
@@ -7590,7 +7102,7 @@
    "result": "won",
    "payout_units": 0.9091,
    "recorded_at": "2026-07-04T01:17:14",
-   "p_calibrated": 0.6399,
+   "p_calibrated": 0.6341,
    "outcome": {
     "final_score": "TOR 2 @ SEA 0",
     "total_runs": 2,
@@ -7644,6 +7156,474 @@
     "verify": "Elise Mertens won 0-2 (20 games) \u2014 TOTAL_GAMES_UNDER_16.5"
    },
    "settled_at": "2026-07-04T14:23:13"
+  },
+  {
+   "source": "tennis_games_total_games_over_18.5",
+   "sport": "TENNIS",
+   "player_or_matchup": "Madison Keys vs Amanda Anisimova",
+   "market": "TOTAL_GAMES_OVER_18.5",
+   "prob": 0.666,
+   "fair_american": -199,
+   "p_predicted": 0.666,
+   "matchup": "Madison Keys vs Amanda Anisimova",
+   "date": "2026-07-04",
+   "pick_id": "tennis_games_total_games_over_18_5|TENNIS|Madison_Keys_vs_Amanda_Anisimova|TOTAL_GAMES_OVER_18_5|2026-07-04",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.5025,
+   "recorded_at": "2026-07-04T01:17:14",
+   "p_calibrated": 0.666,
+   "outcome": {
+    "match": "Madison Keys vs Amanda Anisimova",
+    "winner": "Madison Keys",
+    "sets": "2-1",
+    "total_games": 26,
+    "market": "TOTAL_GAMES_OVER_18.5",
+    "verify": "Madison Keys won 2-1 (26 games) \u2014 TOTAL_GAMES_OVER_18.5"
+   },
+   "settled_at": "2026-07-04T21:51:10"
+  },
+  {
+   "source": "mlb_2plus_hits_hits_2plus_yes",
+   "sport": "MLB",
+   "player_or_matchup": "Trevor Larnach",
+   "market": "HITS_2PLUS_YES",
+   "prob": 0.489,
+   "fair_american": 105,
+   "p_predicted": 0.489,
+   "matchup": "MIN @ NYY",
+   "date": "2026-07-04",
+   "pick_id": "mlb_2plus_hits_hits_2plus_yes|MLB|Trevor_Larnach|HITS_2PLUS_YES|2026-07-04",
+   "settled": true,
+   "result": "won",
+   "payout_units": 1.05,
+   "recorded_at": "2026-07-04T01:17:14",
+   "p_calibrated": 0.3384,
+   "outcome": {
+    "stat": "hits",
+    "actual": 2,
+    "line": 1.5,
+    "side": "OVER/YES",
+    "verify": "Trevor Larnach \u2014 hits = 2 (line 1.5, bet OVER/YES) on 2026-07-04"
+   },
+   "settled_at": "2026-07-04T21:51:10"
+  },
+  {
+   "source": "mlb_3plus_tb_tb_3plus_yes",
+   "sport": "MLB",
+   "player_or_matchup": "Brooks Lee",
+   "market": "TB_3PLUS_YES",
+   "prob": 0.39,
+   "fair_american": 156,
+   "p_predicted": 0.39,
+   "matchup": "MIN @ NYY",
+   "date": "2026-07-04",
+   "pick_id": "mlb_3plus_tb_tb_3plus_yes|MLB|Brooks_Lee|TB_3PLUS_YES|2026-07-04",
+   "settled": true,
+   "result": "lost",
+   "payout_units": -1.0,
+   "recorded_at": "2026-07-04T01:17:14",
+   "p_calibrated": 0.2893,
+   "outcome": {
+    "stat": "tb",
+    "actual": 0,
+    "line": 2.5,
+    "side": "OVER/YES",
+    "verify": "Brooks Lee \u2014 tb = 0 (line 2.5, bet OVER/YES) on 2026-07-04"
+   },
+   "settled_at": "2026-07-04T21:51:10"
+  },
+  {
+   "source": "mlb_3plus_tb_tb_3plus_yes",
+   "sport": "MLB",
+   "player_or_matchup": "Kazuma Okamoto",
+   "market": "TB_3PLUS_YES",
+   "prob": 0.379,
+   "fair_american": 164,
+   "p_predicted": 0.379,
+   "matchup": "TOR @ SEA",
+   "date": "2026-07-04",
+   "pick_id": "mlb_3plus_tb_tb_3plus_yes|MLB|Kazuma_Okamoto|TB_3PLUS_YES|2026-07-04",
+   "settled": true,
+   "result": "lost",
+   "payout_units": -1.0,
+   "recorded_at": "2026-07-04T01:17:14",
+   "p_calibrated": 0.2893,
+   "outcome": {
+    "stat": "tb",
+    "actual": 0,
+    "line": 2.5,
+    "side": "OVER/YES",
+    "verify": "Kazuma Okamoto \u2014 tb = 0 (line 2.5, bet OVER/YES) on 2026-07-04"
+   },
+   "settled_at": "2026-07-04T21:51:10"
+  },
+  {
+   "source": "mlb_3plus_tb_tb_3plus_yes",
+   "sport": "MLB",
+   "player_or_matchup": "Josh Bell",
+   "market": "TB_3PLUS_YES",
+   "prob": 0.368,
+   "fair_american": 172,
+   "p_predicted": 0.368,
+   "matchup": "MIN @ NYY",
+   "date": "2026-07-04",
+   "pick_id": "mlb_3plus_tb_tb_3plus_yes|MLB|Josh_Bell|TB_3PLUS_YES|2026-07-04",
+   "settled": true,
+   "result": "won",
+   "payout_units": 1.72,
+   "recorded_at": "2026-07-04T01:17:14",
+   "p_calibrated": 0.2893,
+   "outcome": {
+    "stat": "tb",
+    "actual": 10,
+    "line": 2.5,
+    "side": "OVER/YES",
+    "verify": "Josh Bell \u2014 tb = 10 (line 2.5, bet OVER/YES) on 2026-07-04"
+   },
+   "settled_at": "2026-07-04T21:51:10"
+  },
+  {
+   "source": "mlb_xbh_1_plus_xbh",
+   "projection": 0.59,
+   "sport": "MLB",
+   "player_or_matchup": "Trevor Larnach",
+   "market": "1_PLUS_XBH",
+   "prob": 0.445,
+   "fair_american": 124,
+   "p_predicted": 0.445,
+   "matchup": "MIN @ NYY",
+   "date": "2026-07-04",
+   "pick_id": "mlb_xbh_1_plus_xbh|MLB|Trevor_Larnach|1_PLUS_XBH|2026-07-04",
+   "settled": true,
+   "result": "won",
+   "payout_units": 1.24,
+   "recorded_at": "2026-07-04T01:17:14",
+   "p_calibrated": 0.3083,
+   "outcome": {
+    "stat": "xbh",
+    "actual": 1,
+    "line": 0.5,
+    "side": "OVER/YES",
+    "verify": "Trevor Larnach \u2014 xbh = 1 (line 0.5, bet OVER/YES) on 2026-07-04"
+   },
+   "settled_at": "2026-07-04T21:51:10"
+  },
+  {
+   "source": "mlb_xbh_1_plus_xbh",
+   "projection": 0.559,
+   "sport": "MLB",
+   "player_or_matchup": "Brooks Lee",
+   "market": "1_PLUS_XBH",
+   "prob": 0.428,
+   "fair_american": 134,
+   "p_predicted": 0.428,
+   "matchup": "MIN @ NYY",
+   "date": "2026-07-04",
+   "pick_id": "mlb_xbh_1_plus_xbh|MLB|Brooks_Lee|1_PLUS_XBH|2026-07-04",
+   "settled": true,
+   "result": "lost",
+   "payout_units": -1.0,
+   "recorded_at": "2026-07-04T01:17:14",
+   "p_calibrated": 0.3083,
+   "outcome": {
+    "stat": "xbh",
+    "actual": 0,
+    "line": 0.5,
+    "side": "OVER/YES",
+    "verify": "Brooks Lee \u2014 xbh = 0 (line 0.5, bet OVER/YES) on 2026-07-04"
+   },
+   "settled_at": "2026-07-04T21:51:10"
+  },
+  {
+   "source": "mlb_xbh_1_plus_xbh",
+   "projection": 0.487,
+   "sport": "MLB",
+   "player_or_matchup": "Kazuma Okamoto",
+   "market": "1_PLUS_XBH",
+   "prob": 0.386,
+   "fair_american": 159,
+   "p_predicted": 0.386,
+   "matchup": "TOR @ SEA",
+   "date": "2026-07-04",
+   "pick_id": "mlb_xbh_1_plus_xbh|MLB|Kazuma_Okamoto|1_PLUS_XBH|2026-07-04",
+   "settled": true,
+   "result": "lost",
+   "payout_units": -1.0,
+   "recorded_at": "2026-07-04T01:17:14",
+   "p_calibrated": 0.3029,
+   "outcome": {
+    "stat": "xbh",
+    "actual": 0,
+    "line": 0.5,
+    "side": "OVER/YES",
+    "verify": "Kazuma Okamoto \u2014 xbh = 0 (line 0.5, bet OVER/YES) on 2026-07-04"
+   },
+   "settled_at": "2026-07-04T21:51:10"
+  },
+  {
+   "source": "mlb_xbh_1_plus_xbh",
+   "projection": 0.484,
+   "sport": "MLB",
+   "player_or_matchup": "Daulton Varsho",
+   "market": "1_PLUS_XBH",
+   "prob": 0.384,
+   "fair_american": 160,
+   "p_predicted": 0.384,
+   "matchup": "TOR @ SEA",
+   "date": "2026-07-04",
+   "pick_id": "mlb_xbh_1_plus_xbh|MLB|Daulton_Varsho|1_PLUS_XBH|2026-07-04",
+   "settled": true,
+   "result": "lost",
+   "payout_units": -1.0,
+   "recorded_at": "2026-07-04T01:17:14",
+   "p_calibrated": 0.3029,
+   "outcome": {
+    "stat": "xbh",
+    "actual": 0,
+    "line": 0.5,
+    "side": "OVER/YES",
+    "verify": "Daulton Varsho \u2014 xbh = 0 (line 0.5, bet OVER/YES) on 2026-07-04"
+   },
+   "settled_at": "2026-07-04T21:51:10"
+  },
+  {
+   "source": "mlb_xbh_1_plus_xbh",
+   "projection": 0.423,
+   "sport": "MLB",
+   "player_or_matchup": "Cole Young",
+   "market": "1_PLUS_XBH",
+   "prob": 0.345,
+   "fair_american": 190,
+   "p_predicted": 0.345,
+   "matchup": "TOR @ SEA",
+   "date": "2026-07-04",
+   "pick_id": "mlb_xbh_1_plus_xbh|MLB|Cole_Young|1_PLUS_XBH|2026-07-04",
+   "settled": true,
+   "result": "won",
+   "payout_units": 1.9,
+   "recorded_at": "2026-07-04T01:17:14",
+   "p_calibrated": 0.2932,
+   "outcome": {
+    "stat": "xbh",
+    "actual": 1,
+    "line": 0.5,
+    "side": "OVER/YES",
+    "verify": "Cole Young \u2014 xbh = 1 (line 0.5, bet OVER/YES) on 2026-07-04"
+   },
+   "settled_at": "2026-07-04T21:51:10"
+  },
+  {
+   "source": "mlb_xbh_1_plus_xbh",
+   "projection": 0.419,
+   "sport": "MLB",
+   "player_or_matchup": "Trent Grisham",
+   "market": "1_PLUS_XBH",
+   "prob": 0.342,
+   "fair_american": 192,
+   "p_predicted": 0.342,
+   "matchup": "MIN @ NYY",
+   "date": "2026-07-04",
+   "pick_id": "mlb_xbh_1_plus_xbh|MLB|Trent_Grisham|1_PLUS_XBH|2026-07-04",
+   "settled": true,
+   "result": "lost",
+   "payout_units": -1.0,
+   "recorded_at": "2026-07-04T01:17:14",
+   "p_calibrated": 0.2932,
+   "outcome": {
+    "stat": "xbh",
+    "actual": 0,
+    "line": 0.5,
+    "side": "OVER/YES",
+    "verify": "Trent Grisham \u2014 xbh = 0 (line 0.5, bet OVER/YES) on 2026-07-04"
+   },
+   "settled_at": "2026-07-04T21:51:10"
+  },
+  {
+   "source": "mlb_xbh_1_plus_xbh",
+   "projection": 0.413,
+   "sport": "MLB",
+   "player_or_matchup": "Ryan Kreidler",
+   "market": "1_PLUS_XBH",
+   "prob": 0.338,
+   "fair_american": 196,
+   "p_predicted": 0.338,
+   "matchup": "MIN @ NYY",
+   "date": "2026-07-04",
+   "pick_id": "mlb_xbh_1_plus_xbh|MLB|Ryan_Kreidler|1_PLUS_XBH|2026-07-04",
+   "settled": true,
+   "result": "lost",
+   "payout_units": -1.0,
+   "recorded_at": "2026-07-04T01:17:14",
+   "p_calibrated": 0.2932,
+   "outcome": {
+    "stat": "xbh",
+    "actual": 0,
+    "line": 0.5,
+    "side": "OVER/YES",
+    "verify": "Ryan Kreidler \u2014 xbh = 0 (line 0.5, bet OVER/YES) on 2026-07-04"
+   },
+   "settled_at": "2026-07-04T21:51:10"
+  },
+  {
+   "source": "mlb_xbh_1_plus_xbh",
+   "projection": 0.405,
+   "sport": "MLB",
+   "player_or_matchup": "Kody Clemens",
+   "market": "1_PLUS_XBH",
+   "prob": 0.333,
+   "fair_american": 200,
+   "p_predicted": 0.333,
+   "matchup": "MIN @ NYY",
+   "date": "2026-07-04",
+   "pick_id": "mlb_xbh_1_plus_xbh|MLB|Kody_Clemens|1_PLUS_XBH|2026-07-04",
+   "settled": true,
+   "result": "won",
+   "payout_units": 2.0,
+   "recorded_at": "2026-07-04T01:17:14",
+   "p_calibrated": 0.2932,
+   "outcome": {
+    "stat": "xbh",
+    "actual": 1,
+    "line": 0.5,
+    "side": "OVER/YES",
+    "verify": "Kody Clemens \u2014 xbh = 1 (line 0.5, bet OVER/YES) on 2026-07-04"
+   },
+   "settled_at": "2026-07-04T21:51:10"
+  },
+  {
+   "source": "mlb_xbh_1_plus_xbh",
+   "projection": 0.388,
+   "sport": "MLB",
+   "player_or_matchup": "Dominic Canzone",
+   "market": "1_PLUS_XBH",
+   "prob": 0.322,
+   "fair_american": 211,
+   "p_predicted": 0.322,
+   "matchup": "TOR @ SEA",
+   "date": "2026-07-04",
+   "pick_id": "mlb_xbh_1_plus_xbh|MLB|Dominic_Canzone|1_PLUS_XBH|2026-07-04",
+   "settled": true,
+   "result": "won",
+   "payout_units": 2.11,
+   "recorded_at": "2026-07-04T01:17:14",
+   "p_calibrated": 0.2932,
+   "outcome": {
+    "stat": "xbh",
+    "actual": 1,
+    "line": 0.5,
+    "side": "OVER/YES",
+    "verify": "Dominic Canzone \u2014 xbh = 1 (line 0.5, bet OVER/YES) on 2026-07-04"
+   },
+   "settled_at": "2026-07-04T21:51:10"
+  },
+  {
+   "source": "mlb_hrr_3_plus_hrr",
+   "projection": 2.88,
+   "sport": "MLB",
+   "player_or_matchup": "Trent Grisham",
+   "market": "3_plus_hrr",
+   "prob": 0.549,
+   "fair_american": -122,
+   "p_predicted": 0.549,
+   "matchup": "MIN @ NYY",
+   "date": "2026-07-04",
+   "pick_id": "mlb_hrr_3_plus_hrr|MLB|Trent_Grisham|3_plus_hrr|2026-07-04",
+   "settled": true,
+   "result": "lost",
+   "payout_units": -1.0,
+   "recorded_at": "2026-07-04T01:17:14",
+   "p_calibrated": 0.3107,
+   "outcome": {
+    "stat": "hrr",
+    "actual": 1,
+    "line": 3.0,
+    "side": "OVER/YES",
+    "verify": "Trent Grisham \u2014 hrr = 1 (line 3.0, bet OVER/YES) on 2026-07-04"
+   },
+   "settled_at": "2026-07-04T21:51:10"
+  },
+  {
+   "source": "mlb_hrr_3_plus_hrr",
+   "projection": 2.86,
+   "sport": "MLB",
+   "player_or_matchup": "Kazuma Okamoto",
+   "market": "3_plus_hrr",
+   "prob": 0.545,
+   "fair_american": -120,
+   "p_predicted": 0.545,
+   "matchup": "TOR @ SEA",
+   "date": "2026-07-04",
+   "pick_id": "mlb_hrr_3_plus_hrr|MLB|Kazuma_Okamoto|3_plus_hrr|2026-07-04",
+   "settled": true,
+   "result": "lost",
+   "payout_units": -1.0,
+   "recorded_at": "2026-07-04T01:17:14",
+   "p_calibrated": 0.3107,
+   "outcome": {
+    "stat": "hrr",
+    "actual": 0,
+    "line": 3.0,
+    "side": "OVER/YES",
+    "verify": "Kazuma Okamoto \u2014 hrr = 0 (line 3.0, bet OVER/YES) on 2026-07-04"
+   },
+   "settled_at": "2026-07-04T21:51:10"
+  },
+  {
+   "source": "mlb_hrr_3_plus_hrr",
+   "projection": 2.71,
+   "sport": "MLB",
+   "player_or_matchup": "Ryan Kreidler",
+   "market": "3_plus_hrr",
+   "prob": 0.509,
+   "fair_american": -104,
+   "p_predicted": 0.509,
+   "matchup": "MIN @ NYY",
+   "date": "2026-07-04",
+   "pick_id": "mlb_hrr_3_plus_hrr|MLB|Ryan_Kreidler|3_plus_hrr|2026-07-04",
+   "settled": true,
+   "result": "lost",
+   "payout_units": -1.0,
+   "recorded_at": "2026-07-04T01:17:14",
+   "p_calibrated": 0.3107,
+   "outcome": {
+    "stat": "hrr",
+    "actual": 0,
+    "line": 3.0,
+    "side": "OVER/YES",
+    "verify": "Ryan Kreidler \u2014 hrr = 0 (line 3.0, bet OVER/YES) on 2026-07-04"
+   },
+   "settled_at": "2026-07-04T21:51:10"
+  },
+  {
+   "source": "soccer_clean_sheet_home_clean_sheet_no",
+   "sport": "WORLDCUP",
+   "player_or_matchup": "Morocco @ Canada",
+   "market": "HOME_CLEAN_SHEET_NO",
+   "prob": 0.753,
+   "fair_american": -306,
+   "p_predicted": 0.753,
+   "matchup": "Morocco @ Canada",
+   "date": "2026-07-04",
+   "pick_id": "soccer_clean_sheet_home_clean_sheet_no|WORLDCUP|Morocco___Canada|HOME_CLEAN_SHEET_NO|2026-07-04",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.3268,
+   "recorded_at": "2026-07-04T08:04:22",
+   "p_calibrated": 0.7008,
+   "outcome": {
+    "final_score": "Morocco 3-0 Canada",
+    "total_cards": 8,
+    "total_goals": 3,
+    "scorers": [
+     "azzedine ounahi",
+     "azzedine ounahi",
+     "soufiane rahimi"
+    ],
+    "market": "HOME_CLEAN_SHEET_NO",
+    "verify": "Morocco 3-0 Canada: home clean sheet = False \u2014 HOME_CLEAN_SHEET_NO"
+   },
+   "settled_at": "2026-07-04T20:34:51"
   }
  ],
  "recent_window": 200,
@@ -7651,5 +7631,5 @@
   "2026-05-19",
   "2026-07-04"
  ],
- "digest_generated_at": "2026-07-04T15:12:46"
+ "digest_generated_at": "2026-07-04T21:51:11"
 }

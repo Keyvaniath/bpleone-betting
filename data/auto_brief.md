@@ -1,57 +1,58 @@
 # Tonight's Slate Brief — 2026-07-04
 
-## Slate Quality: 57/100 (MEDIUM)
-_13% lineups confirmed · 11 rookie SPs · 1 high early-hook risk SPs_
-**Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
+## Slate Quality: 75/100 (HIGH)
+_63% lineups confirmed · 7 rookie SPs_
+**Recommendation:** Play normal Kelly sizing.
 
 ## Slate
-- **14 games** scheduled
+- **11 games** scheduled
 - **38 best bets** scored: 0 DK · 0 PP · 12 NRFI · 6 SGP
 - **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$32.33
-- **MC simulation:** EV +$112.91, 74% P(profit), p05 $-118.12 / p95 $346.51
+- **MC simulation:** EV +$102.27, 82% P(profit), p05 $-150.68 / p95 $301.81
 
 ## Top 5 Best Bets
-1. **MIA @ OAK YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +26.6%)
+1. **SFG @ COL 4-leg SGP @ -201**  (83/100 *****, edge +70.2%)
+   - Joint prob 0.668 (correlation boost +0.177)
+   - Leg: Rafael Devers UNDER 0.5 batter home runs
+2. **PHI @ KCR 4-leg SGP @ -215**  (81/100 *****, edge +66.0%)
+   - Joint prob 0.683 (correlation boost +0.169)
+   - Leg: Brandon Marsh OVER 0.5 batter total bases
+3. **MIA @ OAK YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +26.6%)
    - P(YRFI) 72.5% vs baseline 46.0%
-2. **MIN @ NYY YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +20.1%)
+4. **MIN @ NYY YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +20.1%)
    - P(YRFI) 66.1% vs baseline 46.0%
-3. **SFG @ COL YRFI (1st-inning OVER 0.5)**  (79/100 ****, edge +19.6%)
+5. **SFG @ COL YRFI (1st-inning OVER 0.5)**  (79/100 ****, edge +19.6%)
    - P(YRFI) 65.6% vs baseline 46.0%
-4. **BOS @ LAA YRFI (1st-inning OVER 0.5)**  (78/100 ****, edge +18.6%)
-   - P(YRFI) 64.6% vs baseline 46.0%
-5. **SDP @ LAD YRFI (1st-inning OVER 0.5)**  (78/100 ****, edge +18.1%)
-   - P(YRFI) 64.1% vs baseline 46.0%
 
-## ⚠️ Trap Warnings — 17 flagged
-- **MIA @ OAK YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +26.6% looks big but only 0 settled props on this player — model unproven
-- **TOR @ SEA 2-leg SGP @ -257** (low):
-   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
-- **PIT @ WSN 2-leg SGP @ -254** (low):
-   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
-- **MIN @ NYY 2-leg SGP @ -253** (low):
-   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
-- **SDP @ LAD 2-leg SGP @ -215** (low):
-   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
-
-## SP early-hook risk
-HIGH risk: Carson Palmquist
-_Fade their K OVERs; lean OPP team total OVER and F5._
+## ⚠️ Trap Warnings — 16 flagged
+- **SFG @ COL 4-leg SGP @ -201** (low):
+   - Edge +70.2% looks big but only 0 settled props on this player — model unproven
+- **PHI @ KCR 4-leg SGP @ -215** (low):
+   - Edge +66.0% looks big but only 0 settled props on this player — model unproven
+- **MIL @ ARI 4-leg SGP @ -109** (low):
+   - Edge +45.1% looks big but only 0 settled props on this player — model unproven
+- **STL @ CHC 4-leg SGP @ -119** (low):
+   - Edge +42.4% looks big but only 0 settled props on this player — model unproven
+- **NYM @ ATL 4-leg SGP @ -128** (low):
+   - Edge +41.7% looks big but only 0 settled props on this player — model unproven
 
 ## Hot streaks
-**Batters heating up:** Trent Grisham (heat +9.67), Dansby Swanson (heat +6.95), Hunter Goodman (heat +6.80)
-**Pitchers on a run:** Jack Flaherty (heat +7.61), Brandon Young (heat +7.07), Sean Burke (heat +4.42)
+**Batters heating up:** Dansby Swanson (heat +6.95), Hunter Goodman (heat +6.80), Junior Caminero (heat +6.70)
+**Pitchers on a run:** Brandon Woodruff (heat +9.53), Brandon Young (heat +7.07), Yoshinobu Yamamoto (heat +4.50)
 
 ## Top correlation-aware SGPs
-- **TOR @ SEA** 2-leg @ -257 fair (joint 0.72, EV +25.0%)
-   - Logan Gilbert OVER 5 pitcher strikeouts
-   - Logan Gilbert OVER 4.5 pitcher strikeouts
-- **PIT @ WSN** 2-leg @ -254 fair (joint 0.72, EV +25.0%)
-   - Ryan O'Hearn UNDER 0.5 batter doubles
-   - Braxton Ashcraft OVER 4.5 pitcher strikeouts
-- **MIN @ NYY** 2-leg @ -253 fair (joint 0.72, EV +25.0%)
-   - Cody Bellinger UNDER 3.5 batter hrr
-   - Ben Rice UNDER 1.5 batter runs
+- **SFG @ COL** 4-leg @ -201 fair (joint 0.67, EV +70.17%)
+   - Rafael Devers UNDER 0.5 batter home runs
+   - Heliot Ramos OVER 0.5 batter total bases
+   - Heliot Ramos UNDER 0.5 batter home runs
+- **PHI @ KCR** 4-leg @ -215 fair (joint 0.68, EV +66.01%)
+   - Brandon Marsh OVER 0.5 batter total bases
+   - Bobby Witt Jr. OVER 0.5 batter total bases
+   - Brandon Marsh UNDER 0.5 batter home runs
+- **MIL @ ARI** 4-leg @ -109 fair (joint 0.52, EV +45.14%)
+   - Corbin Carroll OVER 0.5 batter total bases
+   - Corbin Carroll UNDER 0.5 batter doubles
+   - Ketel Marte UNDER 0.5 batter doubles
 
 ## Bullpens GASSED tonight
 Pittsburgh Pirates, San Diego Padres, St. Louis Cardinals, Tampa Bay Rays, Chicago White Sox, Miami Marlins, Milwaukee Brewers, Los Angeles Angels
@@ -63,8 +64,8 @@ _Lean late-inning OVER on these games; fade their save situations._
 ## Golf -- John Deere Classic
 - **Leader:** Lucas Glover (-14) at #1
 - **Field:** 144 players  |  Status: In Progress
-- **Play of the Tournament:** Lee Hodges WIN @ +546 (model 15.5%, HIGH)
-   - P(win) 15.5% with 1 round(s) left -- sweet-spot value at #2 (-12).
+- **Play of the Tournament:** Lee Hodges WIN @ +549 (model 15.4%, HIGH)
+   - P(win) 15.4% with 1 round(s) left -- sweet-spot value at #2 (-12).
 
 ## NBA -- PLAYOFFS
 - New York Knicks @ San Antonio Spurs (53-29 vs 62-20) 94-90 | P(home) 0.0% fair +0 | Final
@@ -102,5 +103,5 @@ _Lean late-inning OVER on these games; fade their save situations._
 ## Self-learning calibration (esports + KBO)
 - **LOL:** 26 settled | brier 0.2764 | ECE 0.1996
    - Model over-confident; subtract 20.0pp at next inference
-- **KBO:** 29 settled | brier 0.2642 | ECE 0.1705
-   - Model over-confident; subtract 14.7pp at next inference
+- **KBO:** 30 settled | brier 0.2664 | ECE 0.184
+   - Model over-confident; subtract 16.1pp at next inference
