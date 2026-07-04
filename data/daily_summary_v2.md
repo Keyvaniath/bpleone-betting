@@ -2,12 +2,12 @@
 
 ## 🏥 Model Health: 75.9/100 [HEALTHY]
 - Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 99.9/100
+  - 🟢 Calibration Freshness: 99.7/100
   - 🔴 Hit Rate Trend: 54.4/100
   - 🔴 Brier Trend: 29.6/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 100.0/100
-  - 🟢 Edge Count: 91.4/100
+  - 🟢 Data Health: 95.5/100
+  - 🟢 Edge Count: 100/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.584)
@@ -22,27 +22,30 @@
 5. **SDP @ LAD YRFI (1st-inning OVER 0.5)** (78/100 ★★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** TOR @ SEA SEA_ML -- 74% / +20.5% (score 2.5)
+- [STRONG] **[MLB]** MIL @ ARI MIL_ML -- 76% / +24.6% (score 2.5)
 
 ## 🔒 Locks of the Day -- Track Record
-- All-time: **283-45** (86.3% hit rate)
-- Net units: **+10.12u** | ROI: **+49.7%**
-- Last 7d: 42-1 (97.7%) | net +1.85u
+- All-time: **284-45** (86.3% hit rate)
+- Net units: **+10.16u** | ROI: **+49.8%**
+- Last 7d: 43-1 (97.7%) | net +1.90u
 
-**Today's 5 Locks:**
+**Today's 8 Locks:**
 - [MLB-PP] **Henry Davis** PP_batter_hrr_under_3.5 · p=88% edge=+51.9% qK=0.062u
 - [MLB-PP] **Cedric Mullins** PP_batter_hrr_under_3.5 · p=88% edge=+51.9% qK=0.062u
 - [MLB-PP] **Alejandro Kirk** PP_batter_hrr_under_3.5 · p=88% edge=+51.9% qK=0.062u
 - [MLB-PP] **Brett Baty** PP_batter_hrr_under_3.5 · p=88% edge=+51.9% qK=0.062u
 - [MLB-PP] **Masataka Yoshida** PP_batter_hrr_under_3.5 · p=87% edge=+51.7% qK=0.062u
+- [MLB-PP] **Eugenio Suárez** PP_batter_hrr_under_3.5 · p=88% edge=+52.1% qK=0.062u
+- [MLB-PP] **Alex Freeland** PP_batter_hrr_under_3.5 · p=88% edge=+52.1% qK=0.062u
+- [MLB-PP] **Starling Marte** PP_batter_hrr_under_3.5 · p=87% edge=+51.8% qK=0.062u
 
 ## 🎰 Top Balanced 2-Leg Parlays (40-65% joint)
-- [MLB-PP] Henry Davis PP_batter_hrr_under_ + [MLB] MIN @ NYY MIN_ML
-  Joint: 48% | Fair: 315 | Edge: +99.8%
-- [MLB-PP] Cedric Mullins PP_batter_hrr_under_ + [MLB] MIN @ NYY MIN_ML
-  Joint: 48% | Fair: 315 | Edge: +99.7%
-- [MLB-PP] Alejandro Kirk PP_batter_hrr_under_ + [MLB] MIN @ NYY MIN_ML
-  Joint: 48% | Fair: 315 | Edge: +99.7%
+- [MLB-PP] Eugenio Suárez PP_batter_hrr_under_ + [MLB] MIN @ NYY MIN_ML
+  Joint: 48% | Fair: 310 | Edge: +97.8%
+- [MLB-PP] Alex Freeland PP_batter_hrr_under_ + [MLB] MIN @ NYY MIN_ML
+  Joint: 48% | Fair: 310 | Edge: +97.8%
+- [MLB-PP] Brett Baty PP_batter_hrr_under_ + [MLB] MIN @ NYY MIN_ML
+  Joint: 48% | Fair: 310 | Edge: +97.7%
 
 ## 🎮 Player Play of the Day (cross-sport)
 - **[LOL]** Inspired UNDER 3.5 Kills | MED conviction · model 61.7% fair -161
@@ -59,10 +62,10 @@
 - Hot teams: **2** | Cold teams: **1** | Over-heavy: 0 | Under-heavy: 4
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (39)
+## ⚠️ Anomaly Detector (38)
 - STEAM_MOVE: **34**
+- COMPOUND_BULLPEN: **2**
 - PEN_MISMATCH: **2**
-- COMPOUND_BULLPEN: **3**
   - LA @ IND (WNBA): TOTAL steam since open: total +4 (OVER) (6 snapshots)
   - ATL @ SFG (MLB): ML/TOTAL steam since open: ML -16.4pp toward ATL; total -0.5 (UNDER) (8 snapshots)
   - TOR @ SEA (MLB): ML/TOTAL steam since open: ML +12.6pp toward SEA; total +0.5 (OVER) (5 snapshots)
@@ -71,7 +74,7 @@
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$-4.25**
+- Expected EV: **$-4.19**
   - #1 [NRFI] $50 on MIA @ OAK YRFI (1st-inning OVER 0.5) (P=73%)
   - #2 [NRFI] $50 on MIN @ NYY YRFI (1st-inning OVER 0.5) (P=66%)
   - #3 [NRFI] $35 on SFG @ COL YRFI (1st-inning OVER 0.5) (P=66%)

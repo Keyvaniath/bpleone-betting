@@ -1,13 +1,13 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-07-04T14:23:26 UTC_
+_Generated 2026-07-04T15:12:59 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -34
+- **Score:** -12
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 13
-- **Total FADES:** 86
+- **Total STRONG:** 18
+- **Total FADES:** 84
 
 ## Lock of the Night
 - **Subject:** Aaron Civale
@@ -20,15 +20,15 @@ _Generated 2026-07-04T14:23:26 UTC_
 1. **GOLF / Lucas Glover** (GOLF_PLAYER, score=210.07)
    - Play: Lucas Glover (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Lee Hodges** (GOLF_PLAYER, score=170.86)
+2. **GOLF / Lee Hodges** (GOLF_PLAYER, score=171.0)
    - Play: Lee Hodges (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-3. **MLB / Chris Sale** (MLB_PITCHER, score=63.17)
-   - Play: Chris Sale (PITCHER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_PITCHER)
-4. **MLB / Sonny Gray** (MLB_PITCHER, score=60.75)
-   - Play: Sonny Gray (PITCHER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_PITCHER)
+3. **MLB / Luis García Jr.** (MLB_BATTER, score=165.5)
+   - Play: Luis García Jr. (BATTER_STRONG)
+   - Rationale: Cross-sport top pick (MLB_BATTER)
+4. **MLB / ?** (MLB_TEAM, score=90.71)
+   - Play: ? (TEAM_STRONG)
+   - Rationale: Cross-sport top pick (MLB_TEAM)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
@@ -43,13 +43,13 @@ _Generated 2026-07-04T14:23:26 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
+- **NHL** / kevin lankinen (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
 - **NHL** / adin hill (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / calvin pickard (GOALIE_FADE)
+- **NHL** / joseph woll (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
 - **NHL** / stuart skinner (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / anthony stolarz (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
 - **NHL** / thatcher demko (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
