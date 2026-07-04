@@ -4,14 +4,14 @@
 
 _Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
 
-_Generated at 2026-07-04T21:52:36 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-07-04T23:01:00 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
 **SFG @ COL - OVER_12.0**
 - Market: -110
-- Model probability: 88.0%
-- Raw edge: +68.04%
+- Model probability: 87.8%
+- Raw edge: +67.51%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
@@ -20,16 +20,16 @@ _Generated at 2026-07-04T21:52:36 UTC. Game lines source: **Bovada (fallback -- 
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 7:10p ET | BAL @ CIN | Great American Ball Park | 80F 3mph | OVER_9.0 +22.08% |
+| 7:10p ET | BAL @ CIN | Great American Ball Park | 81F 3mph | OVER_9.0 +22.83% |
 | 7:10p ET | TBR @ HOU | Daikin Park | indoor | OVER_7.0 +25.37% |
-| 7:10p ET | CHW @ CLE | Progressive Field | 76F 2mph | CHW_ML +24.7% |
-| 8:08p ET | STL @ CHC | Wrigley Field | 68F 6mph | OVER_8.0 +51.88% |
-| 8:08p ET | NYM @ ATL | Truist Park | 79F 1mph | UNDER_8.0 +30.47% |
-| 8:10p ET | SFG @ COL | Coors Field | 76F 5mph | OVER_12.0 +68.04% |
-| 8:10p ET | PHI @ KCR | Kauffman Stadium | 69F 2mph | UNDER_9.0 +30.17% |
-| 9:38p ET | BOS @ LAA | Angel Stadium | 69F 4mph | -- |
-| 9:40p ET | MIA @ OAK | Sutter Health Park | 70F 10mph | OVER_11.0 +20.74% |
-| 9:40p ET | MIL @ ARI | Chase Field | indoor | MIL_ML +38.98% |
+| 7:10p ET | CHW @ CLE | Progressive Field | 76F 4mph | CHW_ML +24.26% |
+| 8:08p ET | STL @ CHC | Wrigley Field | 67F 8mph | OVER_8.0 +53.82% |
+| 8:08p ET | NYM @ ATL | Truist Park | 75F 3mph | UNDER_8.0 +30.09% |
+| 8:10p ET | SFG @ COL | Coors Field | 76F 4mph | OVER_12.0 +67.51% |
+| 8:10p ET | PHI @ KCR | Kauffman Stadium | 68F 2mph | UNDER_9.0 +30.85% |
+| 9:38p ET | BOS @ LAA | Angel Stadium | 68F 4mph | -- |
+| 9:40p ET | MIA @ OAK | Sutter Health Park | 71F 10mph | MIA_ML +13.03% |
+| 9:40p ET | MIL @ ARI | Chase Field | indoor | MIL_ML +36.43% |
 | 10:10p ET | SDP @ LAD | UNIQLO Field at Dodger Stadium | 63F 3mph | LAD_ML +18.51% |
 
 ## Parlays - top 5
@@ -65,16 +65,16 @@ Cumulative graded plays: 118214. Wins: 87366. Hit rate: 73.9%.
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| BAL @ CIN | 40.0% | +150 | 4.68 | +233 | -233 |
-| BOS @ LAA | 35.4% | +183 | 5.32 | +281 | -281 |
-| CHW @ CLE | 51.5% | -106 | 3.35 | +243 | -243 |
-| MIA @ OAK | 27.5% | +264 | 6.85 | +308 | -308 |
+| BAL @ CIN | 40.0% | +150 | 4.64 | +233 | -233 |
+| BOS @ LAA | 35.4% | +183 | 5.33 | +281 | -281 |
+| CHW @ CLE | 51.5% | -106 | 3.25 | +243 | -243 |
+| MIA @ OAK | 27.5% | +264 | 6.83 | +308 | -308 |
 | MIL @ ARI | 36.9% | +171 | 4.98 | +1102 | -1102 |
-| NYM @ ATL | 47.6% | +110 | 3.75 | -156 | +156 |
-| PHI @ KCR | 55.5% | -125 | 2.99 | +266 | -266 |
-| SDP @ LAD | 39.2% | +155 | 4.73 | -326 | +326 |
-| SFG @ COL | 22.0% | +355 | 7.7 | +239 | -239 |
-| STL @ CHC | 46.3% | +116 | 3.7 | +139 | -139 |
+| NYM @ ATL | 47.6% | +110 | 3.79 | -156 | +156 |
+| PHI @ KCR | 55.5% | -125 | 2.97 | +266 | -266 |
+| SDP @ LAD | 39.2% | +155 | 4.74 | -326 | +326 |
+| SFG @ COL | 22.0% | +355 | 7.77 | +245 | -245 |
+| STL @ CHC | 46.3% | +116 | 3.71 | +138 | -138 |
 | TBR @ HOU | 63.3% | -173 | 2.28 | +297 | -297 |
 
 ## Team Form (last 10)

@@ -10,7 +10,7 @@ _6 picks consolidated from POD + Alpha + Book Edges + Parlay-of-Day._
 ## 🎯 Alpha Pick
 
 - **MIL @ ARI** · MIL_ML
-  Prob 75.9% · Odds -160 · Edge +23.4% · Kelly 0.250
+  Prob 76.0% · Odds -162 · Edge +23.0% · Kelly 0.250
 
 ## 📊 Book Edges
 
@@ -23,9 +23,9 @@ _6 picks consolidated from POD + Alpha + Book Edges + Parlay-of-Day._
 
 ## 🎲 Parlay
 
-- **Eugenio Suárez + CHW @ CLE** · 2-leg
-  Prob 48.4% · Odds +277 · Edge +82.1% · Kelly 0.050
+- **Eugenio Suárez + TBR @ HOU** · 2-leg
+  Prob 52.7% · Odds +247 · Edge +82.8% · Kelly 0.050
 
 ---
-_Generated 2026-07-04T21:51:29 UTC by EdgeStat._
+_Generated 2026-07-04T23:00:12 UTC by EdgeStat._
 _Stakes assume ¼-Kelly fractional sizing on a flat bankroll._

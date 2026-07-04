@@ -2,11 +2,8 @@
 
 _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 
-## 🐋 WHALES (size up max)
-- **MLB** · TOR @ SEA ML_HOME · 71% / +15.4%
-  - Top-25 board pick: 71% prob, +15.4% edge
-  - Sharp action ELITE: line shifted +13.31pp our way
-  - Source: game-line model (high reliability)
+## 💪 STRONG (1 picks)
+- [MLB] MIL @ ARI MIL_ML · 76% / +23.4%
 
 ## 🔒 5 Daily Locks
 - **Henry Davis** PP_batter_hrr_under_3.5 (MLB-PP) -- 88% / +51.9%
@@ -20,14 +17,12 @@ _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 - **Jasson Domínguez** PP_batter_hrr_under_3.5 (MLB-PP) -- 88% / +51.9%
 - **Austin Riley** PP_batter_hrr_under_3.5 (MLB-PP) -- 87% / +51.8%
 - **Luisangel Acuña** PP_batter_hrr_under_3.5 (MLB-PP) -- 87% / +51.6%
-
-## 📡 Sharp Money Following Model
-- **TOR @ SEA** ml_home: line moved 48.08% → 67.74% (+19.7pp)
+- **Ezequiel Tovar** PP_batter_hrr_under_3.5 (MLB-PP) -- 87% / +51.4%
 
 ## 🎰 Tonight's Best Parlay
-- **Eugenio Suárez** PP_batter_hrr_under_3.5 + **CHW @ CLE** CHW_ML
-- Joint 48% · fair +277 · edge +82.1%
+- **Eugenio Suárez** PP_batter_hrr_under_3.5 + **TBR @ HOU** TBR_ML
+- Joint 53% · fair +247 · edge +82.8%
 
 ---
-_Generated 2026-07-04T21:51:17_
+_Generated 2026-07-04T23:00:00_
 _Full breakdown: /tonight · Full history: /locks-of-day_
