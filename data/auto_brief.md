@@ -1,71 +1,71 @@
-# Tonight's Slate Brief — 2026-07-04
+# Tonight's Slate Brief — 2026-07-05
 
-## Slate Quality: 75/100 (HIGH)
-_63% lineups confirmed · 7 rookie SPs_
-**Recommendation:** Play normal Kelly sizing.
+## Slate Quality: 54/100 (LOW)
+_0% lineups confirmed · 14 rookie SPs_
+**Recommendation:** Defensive sizing tonight; stick to highest-confidence plays.
 
 ## Slate
-- **11 games** scheduled
-- **38 best bets** scored: 0 DK · 0 PP · 12 NRFI · 6 SGP
-- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$32.33
-- **MC simulation:** EV +$102.27, 82% P(profit), p05 $-150.68 / p95 $301.81
+- **15 games** scheduled
+- **36 best bets** scored: 5 DK · 0 PP · 9 NRFI · 2 SGP
+- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$43.71
+- **MC simulation:** EV +$89.21, 82% P(profit), p05 $-85.04 / p95 $296.76
 
 ## Top 5 Best Bets
-1. **SFG @ COL 4-leg SGP @ -201**  (83/100 *****, edge +70.2%)
-   - Joint prob 0.668 (correlation boost +0.177)
-   - Leg: Rafael Devers UNDER 0.5 batter home runs
-2. **PHI @ KCR 4-leg SGP @ -215**  (81/100 *****, edge +66.0%)
-   - Joint prob 0.683 (correlation boost +0.169)
-   - Leg: Brandon Marsh OVER 0.5 batter total bases
-3. **MIA @ OAK YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +26.6%)
+1. **SFG @ COL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +32.0%)
+   - P(YRFI) 78.0% vs baseline 46.0%
+2. **MIA @ OAK YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +26.6%)
    - P(YRFI) 72.5% vs baseline 46.0%
-4. **MIN @ NYY YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +20.1%)
-   - P(YRFI) 66.1% vs baseline 46.0%
-5. **SFG @ COL YRFI (1st-inning OVER 0.5)**  (79/100 ****, edge +19.6%)
-   - P(YRFI) 65.6% vs baseline 46.0%
+3. **BOS @ LAA YRFI (1st-inning OVER 0.5)**  (78/100 ****, edge +18.6%)
+   - P(YRFI) 64.6% vs baseline 46.0%
+4. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
+   - Player prop quality score 1.1935
+   - Elite player
+5. **LOL ShowMaker OVER 3.5 Kills**  (78/100 ****, edge —)
+   - Player prop quality score 1.1892
+   - Elite player
 
-## ⚠️ Trap Warnings — 16 flagged
-- **SFG @ COL 4-leg SGP @ -201** (low):
-   - Edge +70.2% looks big but only 0 settled props on this player — model unproven
-- **PHI @ KCR 4-leg SGP @ -215** (low):
-   - Edge +66.0% looks big but only 0 settled props on this player — model unproven
-- **MIL @ ARI 4-leg SGP @ -109** (low):
-   - Edge +45.1% looks big but only 0 settled props on this player — model unproven
-- **STL @ CHC 4-leg SGP @ -119** (low):
-   - Edge +42.4% looks big but only 0 settled props on this player — model unproven
-- **NYM @ ATL 4-leg SGP @ -128** (low):
-   - Edge +41.7% looks big but only 0 settled props on this player — model unproven
+## ⚠️ Trap Warnings — 10 flagged
+- **SFG @ COL YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +32.0% looks big but only 0 settled props on this player — model unproven
+- **MIA @ OAK YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +26.6% looks big but only 0 settled props on this player — model unproven
+- **PIT @ WSN 2-leg SGP @ +124** (low):
+   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
+- **MIN @ NYY 2-leg SGP @ +118** (low):
+   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
+- **Nick Lodolo UNDER 5.5 pitcher strikeouts** (low):
+   - Edge +24.9% looks big but only 0 settled props on this player — model unproven
+
+## Weather leans
+- **OVER lean** (wind out + warm): PHI @ KCR
 
 ## Hot streaks
-**Batters heating up:** Dansby Swanson (heat +6.95), Hunter Goodman (heat +6.80), Junior Caminero (heat +6.70)
-**Pitchers on a run:** Brandon Woodruff (heat +9.53), Brandon Young (heat +7.07), Yoshinobu Yamamoto (heat +4.50)
+**Batters heating up:** Dansby Swanson (heat +7.08), Luis García Jr. (heat +6.17), Josh Bell (heat +5.93)
+**Pitchers on a run:** Cade Cavalli (heat +16.71), Yoshinobu Yamamoto (heat +12.86), Jesús Luzardo (heat +11.45)
 
 ## Top correlation-aware SGPs
-- **SFG @ COL** 4-leg @ -201 fair (joint 0.67, EV +70.17%)
-   - Rafael Devers UNDER 0.5 batter home runs
-   - Heliot Ramos OVER 0.5 batter total bases
-   - Heliot Ramos UNDER 0.5 batter home runs
-- **PHI @ KCR** 4-leg @ -215 fair (joint 0.68, EV +66.01%)
-   - Brandon Marsh OVER 0.5 batter total bases
-   - Bobby Witt Jr. OVER 0.5 batter total bases
-   - Brandon Marsh UNDER 0.5 batter home runs
-- **MIL @ ARI** 4-leg @ -109 fair (joint 0.52, EV +45.14%)
-   - Corbin Carroll OVER 0.5 batter total bases
-   - Corbin Carroll UNDER 0.5 batter doubles
-   - Ketel Marte UNDER 0.5 batter doubles
+- **PIT @ WSN** 2-leg @ +124 fair (joint 0.45, EV +25.0%)
+   - Cade Cavalli OVER 5.5 pitcher strikeouts
+   - Cade Cavalli OVER 6.5 pitcher strikeouts
+- **MIN @ NYY** 2-leg @ +118 fair (joint 0.46, EV +25.0%)
+   - Joe Ryan UNDER 9.5 pitcher strikeouts
+   - Joe Ryan OVER 6.5 pitcher strikeouts
 
 ## Bullpens GASSED tonight
-Pittsburgh Pirates, San Diego Padres, St. Louis Cardinals, Tampa Bay Rays, Chicago White Sox, Miami Marlins, Milwaukee Brewers, Los Angeles Angels
+Pittsburgh Pirates, San Diego Padres, St. Louis Cardinals, Tampa Bay Rays, Minnesota Twins, Chicago White Sox, Miami Marlins, New York Yankees
 _Lean late-inning OVER on these games; fade their save situations._
 
 ## NRFI/YRFI strong leans
-- **YRFI** (1st-inning OVER): MIA @ OAK, MIN @ NYY, SFG @ COL, BOS @ LAA, SDP @ LAD
+- **YRFI** (1st-inning OVER): SFG @ COL, MIA @ OAK, BOS @ LAA, MIL @ ARI, SDP @ LAD
+
+## Cross-book pricing
+50 props softer on one book — see /props for details.
 
 ## Golf -- John Deere Classic
-- **Leader:** Lucas Glover (-14) at #1
+- **Leader:** Lee Hodges (-16) at #1
 - **Field:** 144 players  |  Status: In Progress
-- **Play of the Tournament:** Lee Hodges WIN @ +549 (model 15.4%, HIGH)
-   - P(win) 15.4% with 1 round(s) left -- sweet-spot value at #2 (-12).
+- **Play of the Tournament:** Jackson Suber WIN @ +701 (model 12.5%, HIGH)
+   - P(win) 12.5% with 1 round(s) left -- sweet-spot value at #3 (-15).
 
 ## NBA -- PLAYOFFS
 - New York Knicks @ San Antonio Spurs (53-29 vs 62-20) 94-90 | P(home) 0.0% fair +0 | Final
@@ -78,22 +78,19 @@ _Lean late-inning OVER on these games; fade their save situations._
 - Vancouver Canucks @ Seattle Kraken (0-0-0 vs 0-0-0)  | P(home) 52.9% fair -112 | Scheduled
 
 ## KBO -- 2026 Korean Baseball
-- Doosan Bears @ Kiwoom Heroes | P(home) 37.6% fair +166 | total 10 R
-- Hanwha Eagles @ LG Twins | P(home) 67.3% fair -206 | total 10 R
-- Lotte Giants @ KT Wiz | P(home) 57.6% fair -136 | total 10 R
-- NC Dinos @ KIA Tigers | P(home) 64.2% fair -179 | total 9 R
-- Samsung Lions @ SSG Landers | P(home) 50.6% fair -102 | total 10 R
+- Lotte Giants @ KT Wiz | P(home) 57.6% fair -136 | total 9 R
+- Samsung Lions @ SSG Landers | P(home) 47.1% fair +112 | total 8 R
 - **KBO POD:** KT Wiz ML vs Lotte Giants (KBO) (HIGH)
 
-## LoL Esports -- 0 live, 7 upcoming
-- [MSI] Team Secret Whales vs TOP ESPORTS BO5 | P(A) 49.2% fair +103/-103
-- [MSI] Hanwha Life Esports vs G2 Esports BO5 | P(A) 62.7% fair -168/+168
+## LoL Esports -- 0 live, 6 upcoming
 - [MSI] BILIBILI GAMING vs LYON BO5 | P(A) 72.5% fair -264/+264
 - [MSI] T1 vs FURIA BO5 | P(A) 70.3% fair -237/+237
-- [MSI] TBD vs TBD BO5 | P(A) 50.0% fair -100/-100
-- **LoL POT:** Hanwha Life Esports ML vs G2 Esports (MSI, BO5) (HIGH)
+- [MSI] TBD vs G2 Esports BO5 | P(A) 50.2% fair -101/+101
+- [MSI] TBD vs Team Secret Whales BO5 | P(A) 49.6% fair +101/-101
+- [MSI] TBD vs Hanwha Life Esports BO5 | P(A) 29.6% fair +238/-238
+- **LoL POT:** T1 ML vs FURIA (MSI, BO5) (HIGH)
 
-## Player Play of the Day -- across all sports (3526 candidates scanned)
+## Player Play of the Day -- across all sports (3517 candidates scanned)
 - **[LOL]** Inspired UNDER 3.5 Kills | model 61.7% fair -161 (ELITE)
 - **[LOL]** ShowMaker OVER 3.5 Kills | model 62.5% fair -167 (ELITE)
 - **[LOL]** Peyz OVER 4.5 Kills | model 61.3% fair -158 (ELITE)
@@ -101,7 +98,7 @@ _Lean late-inning OVER on these games; fade their save situations._
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | model 61.0% fair -157 (ELITE)
 
 ## Self-learning calibration (esports + KBO)
-- **LOL:** 26 settled | brier 0.2764 | ECE 0.1996
-   - Model over-confident; subtract 20.0pp at next inference
-- **KBO:** 30 settled | brier 0.2664 | ECE 0.184
-   - Model over-confident; subtract 16.1pp at next inference
+- **LOL:** 27 settled | brier 0.2713 | ECE 0.1784
+   - Model over-confident; subtract 17.8pp at next inference
+- **KBO:** 32 settled | brier 0.2705 | ECE 0.2085
+   - Model over-confident; subtract 18.7pp at next inference

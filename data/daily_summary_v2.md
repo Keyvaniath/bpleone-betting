@@ -1,35 +1,35 @@
-# EdgeStat Daily Summary — 2026-07-04
+# EdgeStat Daily Summary — 2026-07-05
 
-## 🏥 Model Health: 74.4/100 [HEALTHY]
+## 🏥 Model Health: 73.5/100 [HEALTHY]
 - Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 100.0/100
+  - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 54.4/100
   - 🔴 Brier Trend: 29.6/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 90.9/100
+  - 🟢 Data Health: 86.4/100
   - 🟢 Edge Count: 94.3/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.583)
-- **Total games on board:** 110
+- **Total games on board:** 125
 - **Strong home favorites:** 2 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
-1. **SFG @ COL 4-leg SGP @ -201** (83/100 ★★★★★)
-2. **PHI @ KCR 4-leg SGP @ -215** (81/100 ★★★★★)
-3. **MIA @ OAK YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-4. **MIN @ NYY YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-5. **SFG @ COL YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
+1. **SFG @ COL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+2. **MIA @ OAK YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+3. **BOS @ LAA YRFI (1st-inning OVER 0.5)** (78/100 ★★★★)
+4. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
+5. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** MIL @ ARI MIL_ML -- 76% / +23.4% (score 2.5)
+- [STRONG] **[MLB]** MIL @ ARI MIL_ML -- 76% / +23.0% (score 2.5)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **284-46** (86.1% hit rate)
 - Net units: **+10.10u** | ROI: **+49.4%**
 - Last 7d: 43-2 (95.6%) | net +1.84u
 
-**Today's 11 Locks:**
+**Today's 12 Locks:**
 - [MLB-PP] **Henry Davis** PP_batter_hrr_under_3.5 · p=88% edge=+51.9% qK=0.062u
 - [MLB-PP] **Cedric Mullins** PP_batter_hrr_under_3.5 · p=88% edge=+51.9% qK=0.062u
 - [MLB-PP] **Alejandro Kirk** PP_batter_hrr_under_3.5 · p=88% edge=+51.9% qK=0.062u
@@ -41,14 +41,15 @@
 - [MLB-PP] **Jasson Domínguez** PP_batter_hrr_under_3.5 · p=88% edge=+51.9% qK=0.062u
 - [MLB-PP] **Austin Riley** PP_batter_hrr_under_3.5 · p=87% edge=+51.8% qK=0.062u
 - [MLB-PP] **Luisangel Acuña** PP_batter_hrr_under_3.5 · p=87% edge=+51.6% qK=0.062u
+- [MLB-PP] **Ezequiel Tovar** PP_batter_hrr_under_3.5 · p=87% edge=+51.4% qK=0.062u
 
 ## 🎰 Top Balanced 2-Leg Parlays (40-65% joint)
-- [MLB-PP] Eugenio Suárez PP_batter_hrr_under_ + [MLB] CHW @ CLE CHW_ML
-  Joint: 48% | Fair: 277 | Edge: +82.1%
-- [MLB-PP] Jasson Domínguez PP_batter_hrr_under_ + [MLB] CHW @ CLE CHW_ML
-  Joint: 48% | Fair: 277 | Edge: +81.9%
-- [MLB-PP] Starling Marte PP_batter_hrr_under_ + [MLB] CHW @ CLE CHW_ML
-  Joint: 48% | Fair: 277 | Edge: +81.8%
+- [MLB-PP] Eugenio Suárez PP_batter_hrr_under_ + [MLB] TBR @ HOU TBR_ML
+  Joint: 53% | Fair: 247 | Edge: +82.8%
+- [MLB-PP] Starling Marte PP_batter_hrr_under_ + [MLB] TBR @ HOU TBR_ML
+  Joint: 53% | Fair: 247 | Edge: +82.5%
+- [MLB-PP] Austin Riley PP_batter_hrr_under_ + [MLB] TBR @ HOU TBR_ML
+  Joint: 53% | Fair: 247 | Edge: +82.4%
 
 ## 🎮 Player Play of the Day (cross-sport)
 - **[LOL]** Inspired UNDER 3.5 Kills | MED conviction · model 61.7% fair -161
@@ -62,28 +63,27 @@
 - [MLS] **Seattle Sounders FC** HOME (0-1 L10) · model 66.7% fair -200
 
 ## 🔥/❄️ Heat / Cold Signals
-- Hot teams: **2** | Cold teams: **1** | Over-heavy: 0 | Under-heavy: 4
+- Hot teams: **2** | Cold teams: **1** | Over-heavy: 0 | Under-heavy: 3
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (40)
-- RESIDUAL_DIVERGENCE: **1**
-- STEAM_MOVE: **35**
+## ⚠️ Anomaly Detector (36)
+- STEAM_MOVE: **32**
 - COMPOUND_BULLPEN: **2**
 - PEN_MISMATCH: **2**
-  - Portland Fire (WNBA): Portland Fire UNDERPERFORMING expected margin by 17.9pts in recent games -- model bias may persist
   - LA @ IND (WNBA): TOTAL steam since open: total +4 (OVER) (6 snapshots)
   - ATL @ SFG (MLB): ML/TOTAL steam since open: ML -16.4pp toward ATL; total -0.5 (UNDER) (8 snapshots)
   - TOR @ SEA (MLB): ML/TOTAL steam since open: ML +13.5pp toward SEA; total +0.5 (OVER) (7 snapshots)
   - LV @ NY (WNBA): ML/TOTAL steam since open: ML +12.4pp toward NY; total -1 (UNDER) (4 snapshots)
+  - CIN @ MIL (MLB): ML/TOTAL steam since open: ML +6.3pp toward MIL; total -2 (UNDER) (4 snapshots)
 
-## 💰 Today's Portfolio (8 picks)
-- Total stake: **$340.0** (34.0% of $1000 bankroll)
-- Expected EV: **$-2.93**
-  - #1 [SGP] $50 on SFG @ COL 4-leg SGP @ -201 (P=67%)
-  - #2 [SGP] $50 on PHI @ KCR 4-leg SGP @ -215 (P=68%)
-  - #3 [NRFI] $50 on MIA @ OAK YRFI (1st-inning OVER 0.5) (P=73%)
-  - #4 [NRFI] $50 on MIN @ NYY YRFI (1st-inning OVER 0.5) (P=66%)
-  - #5 [NRFI] $35 on SFG @ COL YRFI (1st-inning OVER 0.5) (P=66%)
+## 💰 Today's Portfolio (9 picks)
+- Total stake: **$345.0** (34.5% of $1000 bankroll)
+- Expected EV: **$4.19**
+  - #1 [NRFI] $50 on SFG @ COL YRFI (1st-inning OVER 0.5) (P=78%)
+  - #2 [NRFI] $50 on MIA @ OAK YRFI (1st-inning OVER 0.5) (P=73%)
+  - #3 [NRFI] $35 on BOS @ LAA YRFI (1st-inning OVER 0.5) (P=65%)
+  - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
+  - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
 ## 🎯 Convergence Picks (5 stacked games)
 - ELITE: **0** · HIGH: 2 · MED: 3
@@ -118,26 +118,26 @@
   - [COIN_FLIP] **Damian Pinas** (9-1-0) vs Cesar Almeida -- fair -133
 
 ## ⛳ Golf Player Heat (from John Deere Classic)
-  - 🔥 T1 **Zac Blair** (USA): -16 total -- finished T1
-  - 🔥 T2 **Ben Kohles** (USA): -15 total -- finished T2
+  - 🔥 T1 **Lee Hodges** (USA): -16 total -- finished T1
+  - 🔥 T2 **Lucas Glover** (USA): -16 total -- finished T2
   - 🔥 T3 **Jackson Suber** (USA): -15 total -- finished T3
-  - 🔥 T4 **Lee Hodges** (USA): -15 total -- finished T4
-  - 🔥 T5 **Lucas Glover** (USA): -15 total -- finished T5
+  - 🔥 T4 **Ben Kohles** (USA): -15 total -- finished T4
+  - 🔥 T5 **Zac Blair** (USA): -15 total -- finished T5
   - ❄️ **Haotong Li** (China): Sunday +3.5 vs tourney avg
   - ❄️ **Noah Goodwin** (USA): Sunday +3.5 vs tourney avg
   - ❄️ **Taylor Pendrith** (Canada): Sunday +3.5 vs tourney avg
 
-## 🔥 MLB Batter Heat (45 HOT / 44 COLD)
-  - 🔥 **Caleb Durbin** (BOS): L14 .396 / season .230 (+166pts)
-  - 🔥 **Dansby Swanson** (CHC): L14 .352 / season .208 (+144pts)
-  - 🔥 **Javier Sanoja** (MIA): L14 .421 / season .281 (+140pts)
-  - 🔥 **Owen Caissie** (MIA): L14 .378 / season .238 (+140pts)
+## 🔥 MLB Batter Heat (42 HOT / 40 COLD)
+  - 🔥 **Javier Sanoja** (MIA): L14 .459 / season .281 (+178pts)
   - 🔥 **Miguel Rojas** (LAD): L14 .429 / season .291 (+138pts)
-  - ❄️ **Drake Baldwin** (ATL): L14 .074 / season .251 (-177pts) -- FADE props
-  - ❄️ **Carlos Cortes** (ATH): L14 .118 / season .277 (-159pts) -- FADE props
+  - 🔥 **Luisangel Acuña** (CWS): L14 .357 / season .221 (+136pts)
+  - 🔥 **Dansby Swanson** (CHC): L14 .340 / season .206 (+134pts)
+  - 🔥 **Bryce Harper** (PHI): L14 .393 / season .274 (+119pts)
+  - ❄️ **Drake Baldwin** (ATL): L14 .057 / season .247 (-190pts) -- FADE props
   - ❄️ **Brice Matthews** (HOU): L14 .038 / season .191 (-153pts) -- FADE props
+  - ❄️ **Jorge Mateo** (ATL): L14 .103 / season .252 (-149pts) -- FADE props
+  - ❄️ **Carlos Cortes** (ATH): L14 .147 / season .281 (-134pts) -- FADE props
   - ❄️ **Ben Rice** (NYY): L14 .135 / season .267 (-132pts) -- FADE props
-  - ❄️ **Cody Bellinger** (NYY): L14 .120 / season .251 (-131pts) -- FADE props
 
 ## 📈 Streak Regression Alerts (1)
 - [WNBA] Portland Fire on L3 L10 0-3 -- Portland Fire on L3 -- no historical sample
@@ -150,8 +150,8 @@
   - ⚠️ batter_rbis (Brier Δ -0.0052)
 
 ## 🧠 Training Convergence
-- ELITE: **0** · HEALTHY: 0 · OK: 0 · DEGRADED: **2**
+- ELITE: **0** · HEALTHY: 0 · OK: 0 · DEGRADED: **1**
 
 ## 🤖 Self-Training Status
-- **WNBA**: n=34 games · hit rate 50.0% · bias -22.6pp [calibration applied]
-- **MLB**: n=188 games · hit rate 52.7% · bias +5.5pp [calibration applied]
+- **WNBA**: n=33 games · hit rate 48.5% · bias -11.3pp [calibration applied]
+- **MLB**: n=189 games · hit rate 56.6% · bias +3.4pp [calibration applied]
