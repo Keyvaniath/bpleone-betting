@@ -4,14 +4,14 @@
 
 _Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
 
-_Generated at 2026-07-05T22:02:37 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-07-05T23:07:14 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
 **SDP @ LAD - OVER_10.0**
 - Market: -110
-- Model probability: 75.3%
-- Raw edge: +43.79%
+- Model probability: 75.1%
+- Raw edge: +43.37%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
@@ -20,8 +20,8 @@ _Generated at 2026-07-05T22:02:37 UTC. Game lines source: **Bovada (fallback -- 
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 7:20p ET | SDP @ LAD | UNIQLO Field at Dodger Stadium | 69F 6mph | OVER_10.0 +43.79% |
-| 9:30p ET | BOS @ LAA | Angel Stadium | 70F 3mph | BOS_ML +23.02% |
+| 7:20p ET | SDP @ LAD | UNIQLO Field at Dodger Stadium | 69F 5mph | OVER_10.0 +43.37% |
+| 9:30p ET | BOS @ LAA | Angel Stadium | 70F 4mph | BOS_ML +22.3% |
 
 ## Parlays - top 1
 
@@ -40,8 +40,8 @@ Cumulative graded plays: 118214. Wins: 87366. Hit rate: 73.9%.
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| BOS @ LAA | 44.2% | +126 | 4.17 | +577 | -577 |
-| SDP @ LAD | 23.6% | +324 | 7.45 | -1096 | +1096 |
+| BOS @ LAA | 44.2% | +126 | 4.16 | +579 | -579 |
+| SDP @ LAD | 23.6% | +324 | 7.37 | -1118 | +1118 |
 
 ## Team Form (last 10)
 
