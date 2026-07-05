@@ -1,12 +1,10 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:13 F:73
-
-:lock: **LOCK:** Tyler Mahle (MLB)
+_NO_ACTION_NIGHT_ | L:0 S:9 F:49
 
 :dart: **Top Picks:**
-1. [GOLF] Lee Hodges -- Lee Hodges (PLAYER_STRONG)
-2. [GOLF] Lucas Glover -- Lucas Glover (PLAYER_STRONG)
-3. [MLB] Ranger Suarez -- Ranger Suarez (PITCHER_STRONG)
+1. [WNBA] caitlin clark -- caitlin clark (PLAYER_STRONG)
+2. [MLB] ? -- ? (TEAM_STRONG)
+3. [WNBA] kelsey mitchell -- kelsey mitchell (PLAYER_STRONG)
 
 :coin: Bankroll Advisory: STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 

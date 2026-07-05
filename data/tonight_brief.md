@@ -13,16 +13,10 @@ _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 - **Alex Bregman** PP_batter_hrr_under_3.5 (MLB-PP) -- 87% / +51.8%
 - **Christian Vázquez** PP_batter_hrr_under_3.5 (MLB-PP) -- 87% / +51.5%
 
-## 📡 Sharp Money Following Model
-- **TOR @ SEA** under_7.5: line moved 50.0% → 54.55% (+4.5pp)
-
-## 📉 Under Bets
-- **TOR @ SEA** UNDER 7.5 — model 6.66 [ELITE signal]
-
 ## 🎰 Tonight's Best Parlay
-- **Lane Thomas** PP_batter_hrr_under_3.5 + **CHW @ CLE** CHW_ML
-- Joint 49% · fair +285 · edge +87.2%
+- **Lane Thomas** PP_batter_hrr_under_3.5 + **BOS @ LAA** BOS_ML
+- Joint 64% · fair +182 · edge +80.8%
 
 ---
-_Generated 2026-07-05T15:26:01_
+_Generated 2026-07-05T22:01:46_
 _Full breakdown: /tonight · Full history: /locks-of-day_
