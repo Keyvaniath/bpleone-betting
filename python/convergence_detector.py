@@ -80,16 +80,23 @@ def run() -> Dict[str, Any]:
                 })
 
     games: List[Dict[str, Any]] = []
-    games.extend(matchups.get("games") or [])
-    games.extend(today.get("games") or [])
-    # Add other-sport scoreboards (each emits state -> games)
+    # matchups.json / today.json are the MLB slate -- stamp them so the default
+    # never has to guess.
+    for g in (matchups.get("games") or []) + (today.get("games") or []):
+        g.setdefault("sport", "MLB")
+        games.append(g)
+    # Add other-sport scoreboards (each emits state -> games). Stamp each game
+    # with ITS sport -- these entries carry no sport field, and without the stamp
+    # every WNBA/NBA/MLS convergence row surfaced publicly tagged as "MLB".
     for sport_state in ("nba_state.json", "nhl_state.json", "wnba_state.json",
                           "mls_state.json", "epl_state.json"):
         s = _load(sport_state)
+        sport_tag = sport_state.split("_")[0].upper()
         for g in (s.get("games") or []):
             # Normalize keys
             g.setdefault("home_team", g.get("home"))
             g.setdefault("away_team", g.get("away"))
+            g.setdefault("sport", sport_tag)
             games.append(g)
 
     pre_alerts = pregame.get("alerts") or []

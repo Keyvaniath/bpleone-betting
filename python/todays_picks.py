@@ -58,8 +58,9 @@ def _num(x):
 
 def _norm(raw):
     """Map a board's pick (varied schemas) to the hub's common schema."""
-    subject = (raw.get("player") or raw.get("player_or_matchup") or raw.get("subject")
-               or raw.get("name") or raw.get("matchup") or raw.get("title") or "?")
+    subject = (raw.get("player") or raw.get("batter") or raw.get("player_or_matchup")
+               or raw.get("subject") or raw.get("name") or raw.get("matchup")
+               or raw.get("title") or raw.get("label") or "?")
     return {
         "sport": raw.get("sport") or "?",
         "subject": str(subject),
