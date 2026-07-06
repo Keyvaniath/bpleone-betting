@@ -56,13 +56,33 @@ def _num(x):
     return x if isinstance(x, (int, float)) else None
 
 
+def _infer_sport(raw, subject, market):
+    """best_bets / consensus entries carry no sport field -- infer it from the
+    market/label instead of showing '?' on the public hub."""
+    s = raw.get("sport") or raw.get("league")
+    if s:
+        return s
+    blob = f"{subject} {market}".lower()
+    if "lol" in blob or "kills" in blob:
+        return "LOL"
+    if "mls " in blob or blob.startswith("mls"):
+        return "MLS"
+    if blob.startswith("cs ") or "(bo3)" in blob or "(bo5)" in blob:
+        return "CS"
+    if any(k in blob for k in ("first inning", "first_inning", "yrfi", "nrfi",
+                                "sgp", "1 plus hit", "1_plus_hit", "hit")):
+        return "MLB"
+    return "?"
+
+
 def _norm(raw):
     """Map a board's pick (varied schemas) to the hub's common schema."""
     subject = (raw.get("player") or raw.get("batter") or raw.get("player_or_matchup")
                or raw.get("subject") or raw.get("name") or raw.get("matchup")
                or raw.get("title") or raw.get("label") or "?")
+    _market = raw.get("market") or raw.get("play") or raw.get("type_label") or ""
     return {
-        "sport": raw.get("sport") or "?",
+        "sport": _infer_sport(raw, str(subject), str(_market)),
         "subject": str(subject),
         "matchup": raw.get("matchup") or "",
         "market": raw.get("market") or raw.get("play") or raw.get("type_label") or "",
