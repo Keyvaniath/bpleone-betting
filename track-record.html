@@ -683,15 +683,20 @@ fetch("data/pod_pl.json", { cache: "no-cache" })
       const section = document.createElement("section");
       section.className = "card";
       section.style.marginBottom = "24px";
-      const rows = graded.slice(-30).reverse().map(p => `
-        <div style="display:grid; grid-template-columns: 100px 220px 1fr auto auto; gap:14px; padding:8px 14px;
+      // POD entries are game-line picks: date / matchup / label (the play) / market_price / payout_units / result.
+      const rows = graded.slice(-30).reverse().map(p => {
+        const won = p.result === "won", push = p.result === "push";
+        const pu = p.payout_units;
+        return `
+        <div style="display:grid; grid-template-columns: 100px 160px 1fr auto auto; gap:14px; padding:8px 14px;
                     border-bottom:1px solid rgba(255,255,255,0.04); font-family:'JetBrains Mono',monospace; font-size:12px;">
-          <span>${p.date}</span>
-          <span><strong>${p.player}</strong></span>
-          <span class="muted">${(p.market||"").replace(/_/g," ")} ${p.line} - actual ${p.actual} - ${p.play}</span>
-          <span>${p.edge_pct != null ? (p.edge_pct >= 0 ? "+" : "") + p.edge_pct + "%" : "--"}</span>
-          <span style="color:${p.play_hit === true ? "#58c878" : "#e35a5a"}; font-weight:600;">${p.play_hit === true ? "WIN" : "LOSS"}</span>
-        </div>`).join("");
+          <span>${p.date || ""}</span>
+          <span><strong>${p.matchup || ""}</strong></span>
+          <span class="muted">${(p.label || "").replace(/_/g, " ")}${p.market_price != null ? " @ " + p.market_price : ""}</span>
+          <span style="color:${(pu||0) >= 0 ? "#58c878" : "#e35a5a"};">${pu != null ? (pu >= 0 ? "+" : "") + pu.toFixed(2) + "u" : "--"}</span>
+          <span style="color:${won ? "#58c878" : (push ? "#d4a04a" : "#e35a5a")}; font-weight:600;">${won ? "WIN" : (push ? "PUSH" : "LOSS")}</span>
+        </div>`;
+      }).join("");
       section.innerHTML = `<div class="card-head"><span>Live Settled Plays (last 30)</span><span class="muted">${graded.length} total</span></div>${rows}`;
       const after = head;
       after.parentNode.insertBefore(section, after.nextSibling);

@@ -1,7 +1,17 @@
 """
 EdgeStat -- per-bet CLV (closing line value) tracker.
 
-For every settled prop in track_record, computes:
+HONESTY NOTE (2026-07-05): previously read the deprecated SYNTHETIC
+track_record.json (118k backfilled props) and used the model's own probability
+as the "closing" -- a self-referential proxy on fake entries, shown on the
+public track-record page as "gold-standard proof". Now reads the REAL ledger
+(all_picks_ledger.json). Real picks don't carry book opening/closing prop
+prices while the paid odds feed is quota-dark, so n_with_clv is 0 and the
+front-end card auto-hides -- honest silence until real prop closes exist
+(the odds-tier upgrade lights this up). Game-line CLV (real, from the free
+ESPN odds history) lives separately in clv_log.json / clv.html.
+
+For every settled prop, computes:
   - opening implied price (best_edge_pct + dk_over/under tells us this)
   - closing implied price (from clv_log.json snapshot at game start)
   - CLV% = closing_implied - opening_implied   (positive = we beat the close)
@@ -32,7 +42,7 @@ from typing import Any, Dict, List
 
 
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
-TR_PATH = os.path.join(DATA_DIR, "track_record.json")
+LEDGER = os.path.join(DATA_DIR, "all_picks_ledger.json")
 CLV_LOG_PATH = os.path.join(DATA_DIR, "clv_log.json")
 OUT_PATH = os.path.join(DATA_DIR, "clv_per_bet.json")
 
@@ -88,8 +98,27 @@ def _clv_for_prop(r: Dict[str, Any]) -> Dict[str, Any]:
 
 
 def run() -> Dict[str, Any]:
-    tr = _load(TR_PATH)
-    props = tr.get("props") or []
+    # REAL settled picks from the ledger, mapped to the prop shape this module
+    # scores. Book opening/closing prop prices (dk_over/dk_under) don't exist
+    # while the paid odds feed is dark -> _clv_for_prop skips every pick ->
+    # n_with_clv = 0 and the public card auto-hides. No synthetic CLV.
+    led = _load(LEDGER)
+    props = []
+    for p in (led.get("picks") or []):
+        if not p.get("settled") or p.get("result") not in ("won", "lost") or p.get("voided"):
+            continue
+        o = p.get("outcome") or {}
+        props.append({
+            "date": p.get("date"),
+            "player": p.get("player_or_matchup"),
+            "player_id": None,
+            "market": p.get("market"),
+            "line": o.get("line"),
+            "play": o.get("side"),
+            "actual": o.get("actual"),
+            "play_hit": p.get("result") == "won",
+            "dk_over": None, "dk_under": None, "model_prob_over": None,
+        })
     today = dt.date.today()
     cutoff_30d = today - dt.timedelta(days=30)
 

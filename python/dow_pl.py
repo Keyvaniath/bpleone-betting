@@ -1,12 +1,13 @@
 """
-EdgeStat -- day-of-week + time-of-day P&L analysis.
+EdgeStat -- day-of-week P&L analysis, from the REAL settled ledger.
 
-Slices the operator's settled track record by:
-  - Day of week (Mon - Sun)
-  - Hour bucket (morning / afternoon / evening / late-night)
-  - Per-market by-day-of-week
-to surface personal performance patterns. "Brandon's Sunday hit rate is
-49%; his Tuesday hit rate is 58%" type insights.
+Slices the settled pick record by day of week (Mon - Sun) and per-market
+by-day-of-week to surface performance patterns.
+
+HONESTY NOTE: previously read the deprecated SYNTHETIC track_record.json
+(118k backfilled props frozen 2026-06-02), which put absurd +40%-every-day
+splits on the public track-record page. Now reads all_picks_ledger.json --
+real graded picks, net from the ledger's recorded payout_units, 1u flat.
 
 Output: data/dow_pl.json
 """
@@ -19,7 +20,7 @@ from typing import Any, Dict, List
 
 
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
-TR_PATH = os.path.join(DATA_DIR, "track_record.json")
+LEDGER = os.path.join(DATA_DIR, "all_picks_ledger.json")
 OUT_PATH = os.path.join(DATA_DIR, "dow_pl.json")
 
 DAY_NAMES = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
@@ -35,24 +36,19 @@ def _load(p: str) -> Dict[str, Any]:
         return {}
 
 
-def _payout(price):
-    if price is None:
-        return 0
-    return price / 100 if price >= 0 else 100 / abs(price)
+def _net(p) -> float:
+    pu = p.get("payout_units")
+    if pu is not None:
+        return float(pu)
+    return 0.91 if p.get("result") == "won" else (-1.0 if p.get("result") == "lost" else 0.0)
 
 
 def _agg(records: List[Dict[str, Any]]) -> Dict[str, Any]:
-    settled = [r for r in records if r.get("play_hit") is True or r.get("play_hit") is False]
+    settled = [r for r in records if r.get("result") in ("won", "lost")]
     if not settled:
         return {"n": 0, "wins": 0, "hit_rate": None, "net_units": 0, "roi_pct": None}
-    wins = sum(1 for r in settled if r["play_hit"] is True)
-    net = 0
-    for r in settled:
-        price = r.get("dk_over") if r.get("play") == "OVER" else r.get("dk_under") if r.get("play") == "UNDER" else -110
-        if r["play_hit"] is True:
-            net += _payout(price if price is not None else -110)
-        else:
-            net -= 1
+    wins = sum(1 for r in settled if r["result"] == "won")
+    net = sum(_net(r) for r in settled)
     return {
         "n": len(settled),
         "wins": wins, "losses": len(settled) - wins,
@@ -63,8 +59,10 @@ def _agg(records: List[Dict[str, Any]]) -> Dict[str, Any]:
 
 
 def run() -> Dict[str, Any]:
-    tr = _load(TR_PATH)
-    props = tr.get("props") or []
+    led = _load(LEDGER)
+    props = [p for p in (led.get("picks") or [])
+             if p.get("settled") and p.get("result") in ("won", "lost")
+             and not p.get("voided")]
     by_dow: Dict[int, List[Dict[str, Any]]] = {i: [] for i in range(7)}
     by_market_dow: Dict[str, Dict[int, List[Dict[str, Any]]]] = {}
     for r in props:
