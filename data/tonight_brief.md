@@ -14,8 +14,8 @@ _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 
 ## 🎰 Tonight's Best Parlay
 - **Joey Ortiz** PP_batter_hrr_under_3.5 + **TOR @ SFG** SFG_ML
-- Joint 55% · fair +236 · edge +83.8%
+- Joint 55% · fair +231 · edge +81.5%
 
 ---
-_Generated 2026-07-06T17:04:55_
+_Generated 2026-07-06T23:10:54_
 _Full breakdown: /tonight · Full history: /locks-of-day_

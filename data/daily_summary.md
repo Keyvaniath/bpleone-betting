@@ -2,32 +2,29 @@
 
 **Model Confidence: 7.5/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
 
-_Pipeline health: **WARNING** (12/15 artifacts ok; 3 empty, 0 stale)._ 
+_Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
 
-_Generated at 2026-07-06T17:05:25 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-07-06T23:12:10 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
-**COL @ LAD - OVER_9.5**
+**COL @ LAD - OVER_10.0**
 - Market: -110
-- Model probability: 87.5%
-- Raw edge: +67.08%
+- Model probability: 84.2%
+- Raw edge: +60.76%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
 
-## Full Slate (8 games)
+## Full Slate (5 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 2:10p ET | PHI @ KCR | Kauffman Stadium | 91F 7mph | UNDER_8.5 +3.31% |
-| 6:40p ET | NYY @ TBR | Tropicana Field | indoor | NYY_ML +29.83% |
-| 6:45p ET | HOU @ WSN | Nationals Park | 78F 6mph | OVER_10.0 +56.71% |
-| 7:15p ET | NYM @ ATL | Truist Park | 76F 2mph | ATL_ML +24.55% |
-| 7:45p ET | MIL @ STL | Busch Stadium | 78F 5mph | MIL_ML +12.3% |
+| 7:15p ET | NYM @ ATL | Truist Park | 75F 0mph | ATL_ML +23.41% |
+| 7:45p ET | MIL @ STL | Busch Stadium | 76F 3mph | MIL_ML +6.53% |
 | 9:40p ET | ARI @ SDP | Petco Park | 66F 4mph | UNDER_8.5 +32.52% |
-| 9:45p ET | TOR @ SFG | Oracle Park | 55F 14mph | SFG_ML +25.58% |
-| 10:10p ET | COL @ LAD | UNIQLO Field at Dodger Stadium | 64F 4mph | OVER_9.5 +67.08% |
+| 9:45p ET | TOR @ SFG | Oracle Park | 55F 12mph | SFG_ML +24.28% |
+| 10:10p ET | COL @ LAD | UNIQLO Field at Dodger Stadium | 65F 4mph | OVER_10.0 +60.76% |
 
 ## Parlays - top 5
 
@@ -57,20 +54,17 @@ _Generated at 2026-07-06T17:05:25 UTC. Game lines source: **Bovada (fallback -- 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
 
-Cumulative graded plays: 118214. Wins: 87366. Hit rate: 73.9%.
+Cumulative graded plays: 6520. Wins: 2755. Hit rate: 42.3%.
 
 ## Auxiliary Markets (Model Fair Prices)
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| ARI @ SDP | 34.2% | +193 | 5.26 | +138 | -138 |
-| COL @ LAD | 35.9% | +179 | 5.16 | -130 | +130 |
-| HOU @ WSN | 29.4% | +240 | 5.86 | -100 | +100 |
-| MIL @ STL | 57.4% | -134 | 2.7 | +254 | -254 |
-| NYM @ ATL | 47.8% | +109 | 3.75 | -137 | +137 |
-| NYY @ TBR | 53.5% | -115 | 3.13 | +376 | -376 |
-| PHI @ KCR | 32.5% | +207 | 5.4 | +414 | -414 |
-| TOR @ SFG | 43.4% | +130 | 4.54 | -104 | +104 |
+| ARI @ SDP | 34.2% | +193 | 5.24 | +138 | -138 |
+| COL @ LAD | 35.9% | +179 | 5.14 | -130 | +130 |
+| MIL @ STL | 57.4% | -134 | 2.73 | +255 | -255 |
+| NYM @ ATL | 47.8% | +109 | 3.7 | -135 | +135 |
+| TOR @ SFG | 43.4% | +130 | 4.51 | -103 | +103 |
 
 ## Team Form (last 10)
 
@@ -103,4 +97,4 @@ _The model is suggesting 1 parameter tweak based on its own performance. Apply v
 ---
 
 _EdgeStat is a research desk. Bet responsibly. 21+. 1-800-GAMBLER._
-_Source: github.com/Keyvaniath/bpleone-betting - last settled 2026-07-05._
+_Source: github.com/Keyvaniath/bpleone-betting - last settled 2026-07-06._

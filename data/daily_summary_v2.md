@@ -1,18 +1,18 @@
 # EdgeStat Daily Summary — 2026-07-06
 
-## 🏥 Model Health: 75.9/100 [HEALTHY]
+## 🏥 Model Health: 71.6/100 [HEALTHY]
 - Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 99.9/100
+  - 🟢 Calibration Freshness: 100.0/100
   - 🔴 Hit Rate Trend: 54.4/100
   - 🔴 Brier Trend: 29.6/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 95.5/100
-  - 🟢 Edge Count: 100/100
+  - 🔴 Edge Count: 57.1/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.583)
-- **Total games on board:** 110
-- **Strong home favorites:** 2 | **Strong road dogs:** 0
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.588)
+- **Total games on board:** 114
+- **Strong home favorites:** 4 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
 1. **PHI @ KCR 4-leg SGP @ -215** (81/100 ★★★★★)
@@ -26,7 +26,7 @@
 - Net units: **+10.38u** | ROI: **+48.1%**
 - Last 7d: 33-7 (82.5%) | net +1.07u
 
-**Today's 7 Locks:**
+**Today's 8 Locks:**
 - [MLB-PP] **Brett Baty** PP_batter_hrr_under_3.5 · p=88% edge=+51.9% qK=0.062u
 - [MLB-PP] **Masataka Yoshida** PP_batter_hrr_under_3.5 · p=88% edge=+51.9% qK=0.062u
 - [MLB-PP] **Lane Thomas** PP_batter_hrr_under_3.5 · p=87% edge=+51.3% qK=0.062u
@@ -34,14 +34,15 @@
 - [MLB-PP] **Logan O'Hoppe** PP_batter_hrr_under_3.5 · p=87% edge=+50.9% qK=0.062u
 - [MLB-PP] **Lourdes Gurriel Jr.** PP_batter_hrr_under_3.5 · p=88% edge=+52.0% qK=0.062u
 - [MLB-PP] **Ezequiel Tovar** PP_batter_hrr_under_3.5 · p=88% edge=+51.9% qK=0.062u
+- [MLB-PP] **Joey Ortiz** PP_batter_hrr_under_3.5 · p=88% edge=+52.0% qK=0.062u
 
 ## 🎰 Top Balanced 2-Leg Parlays (40-65% joint)
-- [MLB-PP] Lourdes Gurriel Jr. PP_batter_hrr_under_ + [MLB] NYY @ TBR NYY_ML
-  Joint: 53% | Fair: 247 | Edge: +83.7%
-- [MLB-PP] Ezequiel Tovar PP_batter_hrr_under_ + [MLB] NYY @ TBR NYY_ML
-  Joint: 53% | Fair: 247 | Edge: +83.7%
-- [MLB-PP] Brett Baty PP_batter_hrr_under_ + [MLB] NYY @ TBR NYY_ML
-  Joint: 53% | Fair: 247 | Edge: +83.6%
+- [MLB-PP] Joey Ortiz PP_batter_hrr_under_ + [MLB] TOR @ SFG SFG_ML
+  Joint: 55% | Fair: 236 | Edge: +83.8%
+- [MLB-PP] Lourdes Gurriel Jr. PP_batter_hrr_under_ + [MLB] TOR @ SFG SFG_ML
+  Joint: 55% | Fair: 236 | Edge: +83.8%
+- [MLB-PP] Ezequiel Tovar PP_batter_hrr_under_ + [MLB] TOR @ SFG SFG_ML
+  Joint: 55% | Fair: 236 | Edge: +83.8%
 
 ## 🎮 Player Play of the Day (cross-sport)
 - **[LOL]** Inspired UNDER 3.5 Kills | MED conviction · model 61.7% fair -161
@@ -58,15 +59,16 @@
 - Hot teams: **2** | Cold teams: **1** | Over-heavy: 0 | Under-heavy: 2
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (40)
-- STEAM_MOVE: **35**
+## ⚠️ Anomaly Detector (45)
+- RESIDUAL_DIVERGENCE: **1**
+- STEAM_MOVE: **39**
 - COMPOUND_BULLPEN: **4**
 - PEN_MISMATCH: **1**
+  - Minnesota Lynx (WNBA): Minnesota Lynx UNDERPERFORMING expected margin by 7.7pts in recent games -- model bias may persist
   - LA @ IND (WNBA): TOTAL steam since open: total +4 (OVER) (6 snapshots)
   - ATL @ SFG (MLB): ML/TOTAL steam since open: ML -16.4pp toward ATL; total -0.5 (UNDER) (8 snapshots)
   - TOR @ SEA (MLB): ML/TOTAL steam since open: ML +13.5pp toward SEA; total +0.5 (OVER) (7 snapshots)
   - LV @ NY (WNBA): ML/TOTAL steam since open: ML +12.4pp toward NY; total -1 (UNDER) (4 snapshots)
-  - NYM @ ATL (MLB): ML/TOTAL steam since open: ML -11.8pp toward NYM; total +1 (OVER) (7 snapshots)
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$330.0** (33.0% of $1000 bankroll)
@@ -119,17 +121,17 @@
   - ❄️ **Andrew Putnam** (USA): Sunday +5.0 vs tourney avg
   - ❄️ **Gordon Sargent** (USA): Sunday +4.5 vs tourney avg
 
-## 🔥 MLB Batter Heat (47 HOT / 41 COLD)
+## 🔥 MLB Batter Heat (47 HOT / 43 COLD)
   - 🔥 **Dansby Swanson** (CHC): L14 .340 / season .207 (+133pts)
   - 🔥 **Javier Sanoja** (MIA): L14 .410 / season .278 (+132pts)
   - 🔥 **Miguel Rojas** (LAD): L14 .423 / season .295 (+128pts)
   - 🔥 **Nick Gonzales** (PIT): L14 .431 / season .312 (+119pts)
   - 🔥 **TJ Rumfield** (COL): L14 .412 / season .301 (+111pts)
   - ❄️ **Drake Baldwin** (ATL): L14 .094 / season .251 (-157pts) -- FADE props
+  - ❄️ **Braden Shewmake** (HOU): L14 .091 / season .243 (-152pts) -- FADE props
   - ❄️ **Jorge Mateo** (ATL): L14 .100 / season .248 (-148pts) -- FADE props
-  - ❄️ **Carlos Cortes** (ATH): L14 .162 / season .281 (-119pts) -- FADE props
-  - ❄️ **Cody Bellinger** (NYY): L14 .137 / season .251 (-114pts) -- FADE props
-  - ❄️ **Ben Rice** (NYY): L14 .157 / season .267 (-110pts) -- FADE props
+  - ❄️ **Cody Bellinger** (NYY): L14 .104 / season .250 (-146pts) -- FADE props
+  - ❄️ **Ben Rice** (NYY): L14 .122 / season .266 (-144pts) -- FADE props
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**
