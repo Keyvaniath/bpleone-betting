@@ -63,7 +63,7 @@
   <div class="bynum" id="bynum">
     <span class="b"><span class="lab">settled picks (ledger)</span><b id="mSettled" class="mono">—</b><span class="sub">public, append-only — no revisions</span></span>
     <span class="b"><span class="lab">model calibration (ECE)</span><b class="mono"><span id="mEceRaw" class="down">—</span> → <span id="mEceCal" class="up">—</span></b><span class="sub">raw model → calibrated</span></span>
-    <span class="b"><span class="lab">curation ROI swing</span><b class="mono"><span class="down">−15.2%</span> → <span class="up">+14.1%</span></b><span class="sub">dropping proven-negative families</span></span>
+    <span class="b"><span class="lab">curation ROI swing</span><b class="mono"><span id="mCurRaw" class="down">—</span> → <span id="mCurCur" class="up">—</span></b><span class="sub">dropping proven-negative families</span></span>
     <span class="b"><span class="lab">closing line value</span><b id="mClv" class="mono">—</b><span class="sub">beat-the-close rate, published either way</span></span>
   </div>
   <p class="muted2" style="font-size:11px;font-family:'JetBrains Mono',monospace;margin:4px 0 0;" id="bynumNote"></p>
@@ -107,7 +107,7 @@
     <span class="tag">Curation · proven-negative families</span>
     <h3>The model finds edges; curation throws out the bad ones</h3>
     <p>A market family is <b>proven-negative</b> once it has lost money over a real sample (n ≥ 25, net ≤ −5u). Those families are <b>hard-excluded</b> from every board we surface. This is the single highest-impact lever in the whole system — and it's not modeling, it's discipline.</p>
-    <div class="eq">Raw firehose, all families &nbsp; <span class="res down">−15.2% ROI</span> &nbsp;&nbsp;→&nbsp;&nbsp; honest book, losers dropped &nbsp; <span class="res up">+14.1% ROI</span> <span class="muted2">(1,469 bets · 67.5% hit · in-sample)</span></div>
+    <div class="eq">Raw firehose, all families &nbsp; <span class="res down" id="mEqRaw">—</span> &nbsp;&nbsp;→&nbsp;&nbsp; honest book, losers dropped &nbsp; <span class="res up" id="mEqCur">—</span> <span class="muted2" id="mEqDetail">(in-sample)</span></div>
     <p>We publish <i>both</i> numbers — the raw firehose and the curated book — on the <a href="strategy-sim.html">Strategy Simulator</a>, where you can replay the entire ledger yourself with any filter and reproduce the track record exactly.</p>
     <p id="mHeldoutWrap" style="display:none;margin-top:12px;padding:11px 14px;border:1px solid rgba(88,200,120,.22);border-radius:8px;background:rgba(88,200,120,.04);font-size:13px;line-height:1.6;">
       <b>And it survives out-of-sample —</b> <span id="mHeldoutBody"></span> <a href="track-record.html" style="color:#58c878;">held-out validation →</a>
@@ -140,7 +140,7 @@
     <h3>What the numbers do — and don't — mean</h3>
     <ul>
       <li><b>Calibration makes the model <i>true</i>, not <i>profitable</i>.</b> Pricing at your own fair odds is 0-EV by construction. Calibration's job is to make a displayed 70% actually mean 70% — so that real book edges are real, not artifacts of overconfidence.</li>
-      <li><b>ROI comes from curation, not the model.</b> The +14.1% book is the raw firehose with the proven losers removed. We show the −15.2% firehose right next to it so the lift is auditable. Held out (cut-set frozen on early data, scored on the unseen window) it stays positive but is <b>concentrated</b> in a couple of families — so we publish the per-family decomposition and the robust, small-sample-flagged-excluded figure, not just the headline.</li>
+      <li><b>ROI comes from curation, not the model.</b> The curated book is just the raw firehose with the proven losers removed. We show the losing firehose right next to it so the lift is auditable. Held out (cut-set frozen on early data, scored on the unseen window) it stays positive but is <b>concentrated</b> in a couple of families — so we publish the per-family decomposition and the robust, small-sample-flagged-excluded figure, not just the headline.</li>
       <li><b>CLV is published in both directions.</b> Below-50% beat-the-close rates stay on the site. The metric only means something if you can't hide from it.</li>
       <li><b>Variance is real and the sample is finite.</b> Every probability is a long-run statement. Short runs deviate. Bet accordingly — and only what you can afford to lose. 21+. 1-800-GAMBLER.</li>
     </ul>
@@ -203,6 +203,18 @@ fetch("data/curation_oos_validation.json", { cache: "no-cache" }).then(r => r.js
     body += `It's <b>concentrated</b>, though — the top 2 of ${c.n_surviving_families} surviving families carry it; excluding small-sample-flagged families the robust figure is <b class="up">${sgn(c.roi_ex_flagged)}</b>. We publish the full per-family breakdown, not just the headline. `;
   document.getElementById("mHeldoutBody").innerHTML = body;
   document.getElementById("mHeldoutWrap").style.display = "block";
+  // Live-fill the curation ROI swing (hero strip + equation) so the numbers can
+  // never go stale again -- they previously hardcoded a month-old -15.2%/+14.1%.
+  const ins = d.in_sample || {};
+  const set = (id, v) => { const e = document.getElementById(id); if (e) e.textContent = v; };
+  if (ins.raw_roi != null && ins.curated_roi != null) {
+    set("mCurRaw", sgn(ins.raw_roi));
+    set("mCurCur", sgn(ins.curated_roi));
+    set("mEqRaw", sgn(ins.raw_roi) + " ROI");
+    set("mEqCur", sgn(ins.curated_roi) + " ROI");
+    if (ins.curated_n != null && ins.curated_hit != null)
+      set("mEqDetail", `(${ins.curated_n.toLocaleString()} bets · ${ins.curated_hit}% hit · in-sample)`);
+  }
 }).catch(() => {});
 </script>
 <script src="js/nav_badge.js"></script>
