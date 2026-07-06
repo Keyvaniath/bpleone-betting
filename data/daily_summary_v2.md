@@ -1,45 +1,35 @@
 # EdgeStat Daily Summary — 2026-07-06
 
-## 🏥 Model Health: 70.1/100 [HEALTHY]
+## 🏥 Model Health: 72.2/100 [HEALTHY]
 - Solid health - some minor issues to monitor
   - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 54.4/100
   - 🔴 Brier Trend: 29.6/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 86.4/100
-  - 🟡 Edge Count: 60.0/100
+  - 🟢 Data Health: 100.0/100
+  - 🔴 Edge Count: 54.3/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.583)
-- **Total games on board:** 125
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.584)
+- **Total games on board:** 109
 - **Strong home favorites:** 2 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
-1. **SDP @ LAD YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-2. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
-3. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
-4. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
-5. **LOL T1 vs FURIA ML @ -237** (76/100 ★★★★★)
-
-## 📡 Sharp Action (Line Movement)
-- [ELITE] **BOS @ LAA** ml_away: 51.22% → 62.69% (+11.5pp)
+1. **HOU @ WSN YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+2. **PHI @ KCR YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+3. **ARI @ SDP YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
+4. **COL @ LAD YRFI (1st-inning OVER 0.5)** (78/100 ★★★★)
+5. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
 
 ## 🔒 Locks of the Day -- Track Record
-- All-time: **296-50** (85.5% hit rate)
-- Net units: **+10.40u** | ROI: **+48.5%**
-- Last 7d: 46-6 (88.5%) | net +1.73u
+- All-time: **297-51** (85.3% hit rate)
+- Net units: **+10.38u** | ROI: **+48.1%**
+- Last 7d: 33-7 (82.5%) | net +1.07u
 
-**Today's 12 Locks:**
-- [MLB-PP] **Eugenio Suárez** PP_batter_hrr_under_3.5 · p=88% edge=+52.1% qK=0.062u
-- [MLB-PP] **Starling Marte** PP_batter_hrr_under_3.5 · p=87% edge=+51.8% qK=0.062u
-- [MLB-PP] **Austin Riley** PP_batter_hrr_under_3.5 · p=87% edge=+51.8% qK=0.062u
-- [MLB-PP] **Luisangel Acuña** PP_batter_hrr_under_3.5 · p=87% edge=+51.6% qK=0.062u
-- [MLB-PP] **Ezequiel Tovar** PP_batter_hrr_under_3.5 · p=87% edge=+51.4% qK=0.062u
-- [MLB-PP] **Lane Thomas** PP_batter_hrr_under_3.5 · p=88% edge=+52.1% qK=0.062u
-- [MLB-PP] **Masataka Yoshida** PP_batter_hrr_under_3.5 · p=87% edge=+51.8% qK=0.062u
-- [MLB-PP] **Alex Bregman** PP_batter_hrr_under_3.5 · p=87% edge=+51.8% qK=0.062u
-- [MLB-PP] **Christian Vázquez** PP_batter_hrr_under_3.5 · p=87% edge=+51.5% qK=0.062u
+**Today's 5 Locks:**
 - [MLB-PP] **Brett Baty** PP_batter_hrr_under_3.5 · p=88% edge=+51.9% qK=0.062u
+- [MLB-PP] **Masataka Yoshida** PP_batter_hrr_under_3.5 · p=88% edge=+51.9% qK=0.062u
+- [MLB-PP] **Lane Thomas** PP_batter_hrr_under_3.5 · p=87% edge=+51.3% qK=0.062u
 - [MLB-PP] **Isaac Collins** PP_batter_hrr_under_3.5 · p=87% edge=+51.1% qK=0.062u
 - [MLB-PP] **Logan O'Hoppe** PP_batter_hrr_under_3.5 · p=87% edge=+50.9% qK=0.062u
 
@@ -66,9 +56,10 @@
 - Hot teams: **2** | Cold teams: **1** | Over-heavy: 0 | Under-heavy: 2
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (36)
+## ⚠️ Anomaly Detector (41)
 - STEAM_MOVE: **35**
-- COMPOUND_BULLPEN: **1**
+- COMPOUND_BULLPEN: **4**
+- PEN_MISMATCH: **2**
   - LA @ IND (WNBA): TOTAL steam since open: total +4 (OVER) (6 snapshots)
   - ATL @ SFG (MLB): ML/TOTAL steam since open: ML -16.4pp toward ATL; total -0.5 (UNDER) (8 snapshots)
   - TOR @ SEA (MLB): ML/TOTAL steam since open: ML +13.5pp toward SEA; total +0.5 (OVER) (7 snapshots)
@@ -76,24 +67,28 @@
   - NYM @ ATL (MLB): ML/TOTAL steam since open: ML -11.8pp toward NYM; total +1 (OVER) (7 snapshots)
 
 ## 💰 Today's Portfolio (11 picks)
-- Total stake: **$295.0** (29.5% of $1000 bankroll)
-- Expected EV: **$-7.89**
-  - #1 [NRFI] $50 on SDP @ LAD YRFI (1st-inning OVER 0.5) (P=76%)
-  - #2 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
-  - #3 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
-  - #4 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
-  - #5 [NRFI] $20 on BOS @ LAA YRFI (1st-inning OVER 0.5) (P=56%)
+- Total stake: **$340.0** (34.0% of $1000 bankroll)
+- Expected EV: **$-6.98**
+  - #1 [NRFI] $50 on HOU @ WSN YRFI (1st-inning OVER 0.5) (P=71%)
+  - #2 [NRFI] $50 on PHI @ KCR YRFI (1st-inning OVER 0.5) (P=67%)
+  - #3 [NRFI] $35 on ARI @ SDP YRFI (1st-inning OVER 0.5) (P=66%)
+  - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
+  - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
-## 🎯 Convergence Picks (4 stacked games)
-- ELITE: **0** · HIGH: 1 · MED: 3
-  - [HIGH] Indiana Fever @ Las Vegas Aces : 3 signals (HEAT_COLD, ATS, ATS)
+## 🎯 Convergence Picks (5 stacked games)
+- ELITE: **0** · HIGH: 0 · MED: 5
   - [MED] New York Knicks @ San Antonio Spurs : 2 signals (ATS, ATS)
+  - [MED] Dallas Wings @ Toronto Tempo : 2 signals (ATS, ATS)
+  - [MED] Indiana Fever @ Las Vegas Aces : 2 signals (HEAT_COLD, ATS)
   - [MED] Portland Timbers @ Seattle Sounders FC : 2 signals (PREGAME, ATS)
   - [MED] Coventry City @ Arsenal : 2 signals (PREGAME, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (2)
-- **Ranger Suarez** OVER 4.5 K (78%) fair -347
-- **Emmet Sheehan** OVER 4.5 K (62%) fair -164
+## ⚾ Top MLB Pitcher K Plays (6)
+- **Reynaldo López** OVER 4.5 K (78%) fair -349
+- **Kevin Gausman** OVER 4.5 K (75%) fair -303
+- **Shane Drohan** OVER 6.5 K (73%) fair -269
+- **Brandon Pfaadt** OVER 6.5 K (71%) fair -245
+- **Cristopher Sánchez** OVER 5.5 K (70%) fair -233
 
 ## 🏀 NBA Player Heat (19 HOT / 23 COLD)
   - 🔥 **Jeremiah Fears** (NO): L5 31.8/5.8/6.0 vs season 16.9/3.2/4.0 [PTS +14.9, REB +2.6, AST +2.0]
