@@ -2,16 +2,16 @@
 
 **Model Confidence: 7.5/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
 
-_Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
+_Pipeline health: **WARNING** (12/15 artifacts ok; 3 empty, 0 stale)._ 
 
-_Generated at 2026-07-06T12:36:20 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-07-06T17:05:25 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
-**COL @ LAD - OVER_10.0**
+**COL @ LAD - OVER_9.5**
 - Market: -110
-- Model probability: 83.2%
-- Raw edge: +58.9%
+- Model probability: 87.5%
+- Raw edge: +67.08%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
@@ -20,37 +20,37 @@ _Generated at 2026-07-06T12:36:20 UTC. Game lines source: **Bovada (fallback -- 
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 2:10p ET | PHI @ KCR | Kauffman Stadium | 92F 7mph | -- |
-| 6:40p ET | NYY @ TBR | Tropicana Field | indoor | NYY_ML +34.82% |
-| 6:45p ET | HOU @ WSN | Nationals Park | 76F 4mph | OVER_10.0 +52.74% |
-| 7:15p ET | NYM @ ATL | Truist Park | 76F 4mph | ATL_ML +23.99% |
-| 7:45p ET | MIL @ STL | Busch Stadium | 78F 6mph | MIL_ML +8.78% |
+| 2:10p ET | PHI @ KCR | Kauffman Stadium | 91F 7mph | UNDER_8.5 +3.31% |
+| 6:40p ET | NYY @ TBR | Tropicana Field | indoor | NYY_ML +29.83% |
+| 6:45p ET | HOU @ WSN | Nationals Park | 78F 6mph | OVER_10.0 +56.71% |
+| 7:15p ET | NYM @ ATL | Truist Park | 76F 2mph | ATL_ML +24.55% |
+| 7:45p ET | MIL @ STL | Busch Stadium | 78F 5mph | MIL_ML +12.3% |
 | 9:40p ET | ARI @ SDP | Petco Park | 66F 4mph | UNDER_8.5 +32.52% |
-| 9:45p ET | TOR @ SFG | Oracle Park | 55F 13mph | SFG_ML +25.48% |
-| 10:10p ET | COL @ LAD | UNIQLO Field at Dodger Stadium | 64F 3mph | OVER_10.0 +58.9% |
+| 9:45p ET | TOR @ SFG | Oracle Park | 55F 14mph | SFG_ML +25.58% |
+| 10:10p ET | COL @ LAD | UNIQLO Field at Dodger Stadium | 64F 4mph | OVER_9.5 +67.08% |
 
 ## Parlays - top 5
 
-- **3-leg @ +509 (prob 24.3%, EV +47.79%)**
-  - HOU @ WSN WSN_ML (-119, model 60.7%)
-  - NYM @ ATL ATL_ML (-131, model 70.5%)
-  - ARI @ SDP SDP_ML (-114, model 56.6%)
-- **3-leg @ +520 (prob 23.8%, EV +47.19%)**
-  - HOU @ WSN WSN_ML (-119, model 60.7%)
-  - NYM @ ATL ATL_ML (-131, model 70.5%)
-  - NYM @ ATL UNDER_9.0 (-110, model 55.5%)
-- **3-leg @ +512 (prob 23.6%, EV +44.47%)**
-  - NYM @ ATL ATL_ML (-131, model 70.5%)
-  - MIL @ STL MIL_ML (-118, model 59.1%)
-  - ARI @ SDP SDP_ML (-114, model 56.6%)
-- **3-leg @ +522 (prob 23.1%, EV +43.89%)**
-  - NYM @ ATL ATL_ML (-131, model 70.5%)
-  - NYM @ ATL UNDER_9.0 (-110, model 55.5%)
-  - MIL @ STL MIL_ML (-118, model 59.1%)
-- **3-leg @ +532 (prob 22.2%, EV +40.12%)**
-  - NYM @ ATL ATL_ML (-131, model 70.5%)
-  - NYM @ ATL UNDER_9.0 (-110, model 55.5%)
-  - ARI @ SDP SDP_ML (-114, model 56.6%)
+- **3-leg @ +522 (prob 23.2%, EV +44.12%)**
+  - PHI @ KCR UNDER_8.5 (-110, model 54.1%)
+  - HOU @ WSN WSN_ML (-118, model 60.8%)
+  - NYM @ ATL ATL_ML (-131, model 70.4%)
+- **3-leg @ +540 (prob 22.5%, EV +44.04%)**
+  - PHI @ KCR UNDER_8.5 (-110, model 54.1%)
+  - NYM @ ATL ATL_ML (-131, model 70.4%)
+  - MIL @ STL MIL_ML (-111, model 59.1%)
+- **3-leg @ +543 (prob 22.4%, EV +43.64%)**
+  - PHI @ KCR UNDER_8.5 (-110, model 54.1%)
+  - NYM @ ATL ATL_ML (-131, model 70.4%)
+  - TOR @ SFG UNDER_8.0 (-110, model 58.7%)
+- **3-leg @ +570 (prob 21.1%, EV +41.32%)**
+  - HOU @ WSN WSN_ML (-118, model 60.8%)
+  - MIL @ STL MIL_ML (-111, model 59.1%)
+  - TOR @ SFG UNDER_8.0 (-110, model 58.7%)
+- **3-leg @ +543 (prob 21.8%, EV +40.28%)**
+  - PHI @ KCR UNDER_8.5 (-110, model 54.1%)
+  - NYM @ ATL ATL_ML (-131, model 70.4%)
+  - NYM @ ATL UNDER_9.0 (-110, model 57.3%)
 
 ## Self-Learning Loop
 
@@ -64,13 +64,13 @@ Cumulative graded plays: 118214. Wins: 87366. Hit rate: 73.9%.
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
 | ARI @ SDP | 34.2% | +193 | 5.26 | +138 | -138 |
-| COL @ LAD | 35.9% | +179 | 5.18 | -129 | +129 |
-| HOU @ WSN | 29.4% | +240 | 5.98 | +101 | -101 |
-| MIL @ STL | 57.4% | -134 | 2.68 | +254 | -254 |
-| NYM @ ATL | 47.8% | +109 | 3.78 | -138 | +138 |
+| COL @ LAD | 35.9% | +179 | 5.16 | -130 | +130 |
+| HOU @ WSN | 29.4% | +240 | 5.86 | -100 | +100 |
+| MIL @ STL | 57.4% | -134 | 2.7 | +254 | -254 |
+| NYM @ ATL | 47.8% | +109 | 3.75 | -137 | +137 |
 | NYY @ TBR | 53.5% | -115 | 3.13 | +376 | -376 |
-| PHI @ KCR | 32.5% | +207 | 5.41 | +414 | -414 |
-| TOR @ SFG | 43.4% | +130 | 4.53 | -104 | +104 |
+| PHI @ KCR | 32.5% | +207 | 5.4 | +414 | -414 |
+| TOR @ SFG | 43.4% | +130 | 4.54 | -104 | +104 |
 
 ## Team Form (last 10)
 

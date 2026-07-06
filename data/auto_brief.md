@@ -1,38 +1,38 @@
 # Tonight's Slate Brief — 2026-07-06
 
-## Slate Quality: 49/100 (LOW)
-_0% lineups confirmed · 6 rookie SPs_
+## Slate Quality: 53/100 (LOW)
+_12% lineups confirmed · 6 rookie SPs_
 **Recommendation:** Defensive sizing tonight; stick to highest-confidence plays.
 
 ## Slate
 - **8 games** scheduled
-- **50 best bets** scored: 0 DK · 24 PP · 6 NRFI · 6 SGP
+- **25 best bets** scored: 0 DK · 0 PP · 6 NRFI · 6 SGP
 - **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$31.8
 - **MC simulation:** EV +$57.62, 76% P(profit), p05 $-84.56 / p95 $201.79
 
 ## Top 5 Best Bets
-1. **HOU @ WSN YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +24.6%)
+1. **PHI @ KCR 4-leg SGP @ -215**  (81/100 *****, edge +66.1%)
+   - Joint prob 0.683 (correlation boost +0.169)
+   - Leg: Bobby Witt Jr. UNDER 0.5 batter home runs
+2. **HOU @ WSN YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +24.6%)
    - P(YRFI) 70.6% vs baseline 46.0%
-2. **PHI @ KCR YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +21.5%)
+3. **PHI @ KCR YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +21.5%)
    - P(YRFI) 67.5% vs baseline 46.0%
-3. **ARI @ SDP YRFI (1st-inning OVER 0.5)**  (79/100 ****, edge +19.8%)
+4. **ARI @ SDP YRFI (1st-inning OVER 0.5)**  (79/100 ****, edge +19.8%)
    - P(YRFI) 65.8% vs baseline 46.0%
-4. **COL @ LAD YRFI (1st-inning OVER 0.5)**  (78/100 ****, edge +18.1%)
+5. **COL @ LAD YRFI (1st-inning OVER 0.5)**  (78/100 ****, edge +18.1%)
    - P(YRFI) 64.1% vs baseline 46.0%
-5. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
-   - Player prop quality score 1.1935
-   - Elite player
 
-## ⚠️ Trap Warnings — 24 flagged
-- **TOR @ SFG 2-leg SGP @ -159** (low):
-   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
-- **MIL @ STL 2-leg SGP @ -175** (low):
-   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
+## ⚠️ Trap Warnings — 11 flagged
+- **PHI @ KCR 4-leg SGP @ -215** (low):
+   - Edge +66.1% looks big but only 0 settled props on this player — model unproven
 - **HOU @ WSN 2-leg SGP @ -246** (low):
    - Edge +25.0% looks big but only 0 settled props on this player — model unproven
-- **PHI @ KCR 2-leg SGP @ -216** (low):
-   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
 - **NYM @ ATL 2-leg SGP @ -220** (low):
+   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
+- **ARI @ SDP 2-leg SGP @ -195** (low):
+   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
+- **NYY @ TBR 2-leg SGP @ -193** (low):
    - Edge +25.0% looks big but only 0 settled props on this player — model unproven
 
 ## Weather leans
@@ -40,19 +40,20 @@ _0% lineups confirmed · 6 rookie SPs_
 - **UNDER lean** (wind in + cold): TOR @ SFG
 
 ## Hot streaks
-**Batters heating up:** Yordan Alvarez (heat +6.21), James Wood (heat +5.45), Nathan Church (heat +4.36)
+**Batters heating up:** Yordan Alvarez (heat +6.21), Rafael Devers (heat +6.08), Junior Caminero (heat +5.37)
 **Pitchers on a run:** Kyle Freeland (heat +6.47), Reynaldo López (heat +3.54), Kevin Gausman (heat +2.94)
 
 ## Top correlation-aware SGPs
-- **TOR @ SFG** 2-leg @ -159 fair (joint 0.61, EV +25.0%)
-   - Landen Roupp UNDER 8.5 pitcher strikeouts
-   - Landen Roupp OVER 4.5 pitcher strikeouts
-- **MIL @ STL** 2-leg @ -175 fair (joint 0.64, EV +25.0%)
-   - Shane Drohan OVER 3.5 pitcher strikeouts
-   - Shane Drohan UNDER 7.5 pitcher strikeouts
+- **PHI @ KCR** 4-leg @ -215 fair (joint 0.68, EV +66.07%)
+   - Bobby Witt Jr. UNDER 0.5 batter home runs
+   - Brandon Marsh OVER 0.5 batter total bases
+   - Brandon Marsh UNDER 0.5 batter home runs
 - **HOU @ WSN** 2-leg @ -246 fair (joint 0.71, EV +25.0%)
    - Mike Burrows UNDER 6.5 pitcher strikeouts
    - Miles Mikolas UNDER 4.5 pitcher strikeouts
+- **NYM @ ATL** 2-leg @ -220 fair (joint 0.69, EV +25.0%)
+   - Reynaldo López UNDER 6.5 pitcher strikeouts
+   - Reynaldo López OVER 2.5 pitcher strikeouts
 
 ## Bullpens GASSED tonight
 Athletics, Pittsburgh Pirates, San Diego Padres, St. Louis Cardinals, Texas Rangers, Atlanta Braves, Chicago White Sox, New York Yankees
@@ -68,8 +69,8 @@ _Lean late-inning OVER on these games; fade their save situations._
 - Montreal Canadiens @ Toronto Maple Leafs (0-0-0 vs 0-0-0)  | P(home) 52.9% fair -112 | Scheduled
 - Toronto Maple Leafs @ Montreal Canadiens (0-0-0 vs 0-0-0)  | P(home) 52.9% fair -112 | Scheduled
 - Winnipeg Jets @ Edmonton Oilers (0-0-0 vs 0-0-0)  | P(home) 52.9% fair -112 | Scheduled
+- Chicago Blackhawks @ Minnesota Wild (0-0-0 vs 0-0-0)  | P(home) 52.9% fair -112 | Scheduled
 - Vegas Golden Knights @ Los Angeles Kings (0-0-0 vs 0-0-0)  | P(home) 52.9% fair -112 | Scheduled
-- Vancouver Canucks @ Seattle Kraken (0-0-0 vs 0-0-0)  | P(home) 52.9% fair -112 | Scheduled
 
 ## KBO -- 2026 Korean Baseball
 - KIA Tigers @ Lotte Giants | P(home) 36.1% fair +177 | total 9 R
