@@ -109,6 +109,7 @@
     { href: "backtest-replayer.html",   label: "🔁 Backtest Replayer" },
     { href: "residuals.html",           label: "Residuals" },
     { section: "Performance & Proof" },
+    { href: "proof.html",               label: "⟁ The Proof Card" },
     { href: "track-record.html",        label: "Track Record" },
     { href: "clv.html",                 label: "🎯 Closing Line Value" },
     { href: "calibration-map.html",     label: "🎯 Model Calibration" },

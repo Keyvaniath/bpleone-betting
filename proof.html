@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="The Proof Card · EdgeStat — the entire evidence stack on one page: zero-hindsight forward tests, the durable book with its CI floor, held-out validation, calibration, and the tamper-evident ledger hash. Auto-updating. 21+.">
+<link rel="canonical" href="https://betting.bpleone.com/proof.html">
+<meta name="theme-color" content="#0d1017">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EdgeStat">
+<meta property="og:title" content="The Proof Card | EdgeStat">
+<meta property="og:description" content="The entire evidence stack on one page — zero-hindsight forward tests, CI floors, and a tamper-evident ledger.">
+<meta property="og:url" content="https://betting.bpleone.com/proof.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Proof Card | EdgeStat">
+<meta name="twitter:description" content="The entire evidence stack on one page — zero-hindsight forward tests, CI floors, and a tamper-evident ledger.">
+<title>The Proof Card | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/nav.js"></script>
+<style>
+  .pcard-wrap { max-width: 760px; margin: 0 auto; padding: 26px 18px 30px; }
+  .pcard { border:1px solid rgba(88,200,120,.35); border-radius:16px; background:
+           linear-gradient(160deg, rgba(88,200,120,.06), rgba(13,16,23,0) 40%);
+           padding: 24px 26px 18px; }
+  .pc-head { display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:6px;
+             border-bottom:1px solid rgba(255,255,255,.08); padding-bottom:12px; margin-bottom:16px; }
+  .pc-head h1 { font-size:21px; margin:0; }
+  .pc-head .as-of { font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--muted,#8a93a6); }
+  .pc-sec { margin-bottom:16px; }
+  .pc-lab { font-size:10px; text-transform:uppercase; letter-spacing:.7px; color:#8a93a6; margin-bottom:6px; }
+  .pc-big { font-family:'JetBrains Mono',monospace; font-size:15px; line-height:1.75; }
+  .pc-big b.up { color:#58c878; } .pc-big b.down { color:#e35a5a; }
+  .pc-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:10px; }
+  .pc-stat { border:1px solid rgba(255,255,255,.08); border-radius:10px; padding:10px 13px; }
+  .pc-stat .v { font-family:'JetBrains Mono',monospace; font-size:20px; font-weight:800; }
+  .pc-stat .v.up { color:#58c878; }
+  .pc-stat .k { font-size:9.5px; text-transform:uppercase; letter-spacing:.5px; color:#8a93a6; margin-top:3px; line-height:1.4; }
+  .pc-ladder { font-family:'JetBrains Mono',monospace; font-size:12.5px; }
+  .pc-ladder .lrow { display:grid; grid-template-columns:96px 54px 64px 84px 84px 1fr; gap:8px; padding:5px 2px;
+                     border-bottom:1px solid rgba(255,255,255,.05); }
+  .pc-ladder .lrow.hd { color:#8a93a6; font-size:9.5px; text-transform:uppercase; }
+  .pc-hash { font-family:'JetBrains Mono',monospace; font-size:10.5px; color:#8a93a6; word-break:break-all;
+             border-top:1px solid rgba(255,255,255,.08); padding-top:12px; line-height:1.7; }
+  .pc-hash b { color:#58c878; }
+  .pc-foot { display:flex; justify-content:space-between; flex-wrap:wrap; gap:6px; margin-top:10px;
+             font-size:10.5px; color:#6b7280; }
+  .pc-links { margin-top:14px; font-size:12px; }
+  .pc-links a { color:#58c878; margin-right:14px; }
+</style>
+</head>
+<body class="page-proof">
+<header class="topbar">
+  <div class="brand">
+    <a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a>
+    <span class="tagline">by bpleone</span>
+  </div>
+  <nav class="mainnav"><!-- nav.js injects here --></nav>
+  <div class="topbar-actions"><div class="ticker">PROOF</div></div>
+</header>
+
+<main class="pcard-wrap">
+  <div class="pcard" id="pcard">
+    <div class="pc-head">
+      <h1>⟁ EdgeStat — The Proof Card</h1>
+      <span class="as-of" id="pcAsOf">—</span>
+    </div>
+
+    <div class="pc-sec">
+      <div class="pc-lab">Zero-hindsight forward tests — rules frozen <em>before</em> the picks they're scored on</div>
+      <div class="pc-ladder" id="pcLadder"><span class="muted">Loading…</span></div>
+    </div>
+
+    <div class="pc-sec">
+      <div class="pc-lab">The durable book — only families with a CI floor above zero, positive in both halves</div>
+      <div class="pc-big" id="pcDurable">—</div>
+    </div>
+
+    <div class="pc-sec">
+      <div class="pc-grid" id="pcStats"></div>
+    </div>
+
+    <div class="pc-hash" id="pcHash">—</div>
+
+    <div class="pc-foot">
+      <span>betting.bpleone.com/proof · every number auto-computed from the public ledger</span>
+      <span>informational only · 21+ · 1-800-GAMBLER</span>
+    </div>
+  </div>
+
+  <p class="pc-links">
+    <a href="track-record.html">full track record →</a>
+    <a href="strategy-sim.html">replay the ledger yourself →</a>
+    <a href="methodology.html">methodology →</a>
+  </p>
+</main>
+
+<script>
+const J = p => fetch('data/' + p + '?t=' + Date.now(), {cache:'no-cache'}).then(r => r.json()).catch(() => ({}));
+const sgn = v => (v >= 0 ? '+' : '') + v + '%';
+
+Promise.all([J('forward_test.json'), J('family_durability.json'), J('curation_oos_validation.json'),
+             J('ledger_summary.json'), J('ledger_hashchain.json')]).then(([fwd, dur, oos, led, hash]) => {
+  document.getElementById('pcAsOf').textContent =
+    'auto-updated ' + ((fwd.updated_at || '').replace('T',' ').slice(0,16)) + ' UTC';
+
+  // --- forward-test ladder ---
+  const exps = fwd.experiments || (fwd.anchor ? [fwd] : []);
+  if (exps.length){
+    let html = `<div class="lrow hd"><span>Rule frozen</span><span>Cut</span><span>Since</span><span>Curated</span><span>Raw</span><span>Status</span></div>`;
+    html += exps.map(e => {
+      const b = e.building;
+      const cur = b ? '<span class="muted">—</span>' : `<b style="color:#58c878;">${sgn(e.curated_roi)}</b>`;
+      const raw = b ? '<span class="muted">—</span>' : `<span style="color:#e35a5a;">${sgn(e.raw_roi)}</span>`;
+      const st  = b ? `<span style="color:#e0a13a;">building ${e.n_settled_since}/${fwd.min_meaningful||150}</span>`
+                    : (e.small_sample ? '<span style="color:#e0a13a;">small n</span>' : '<span style="color:#58c878;">matured ✓</span>');
+      return `<div class="lrow"><span>${e.anchor}</span><span class="muted">${e.frozen_cut_size}f</span><span>n=${e.n_settled_since}</span><span>${cur}</span><span>${raw}</span><span>${st}</span></div>`;
+    }).join('');
+    document.getElementById('pcLadder').innerHTML = html;
+  }
+
+  // --- durable book ---
+  const bk = dur.durable_book;
+  if (bk && bk.n){
+    document.getElementById('pcDurable').innerHTML =
+      `<b>${bk.n}</b> settled across <b>${bk.families.length}</b> families · ROI <b class="up">${sgn(bk.roi)}</b> · ` +
+      `net <b class="up">+${bk.net_units}u</b> · hit ${(100*bk.hit).toFixed(1)}% · ` +
+      `95% CI <b>[${sgn(bk.ci_lo)}, ${sgn(bk.ci_hi)}]</b> — <b class="up">the floor is ${sgn(bk.ci_lo)}</b>`;
+  }
+
+  // --- stat tiles ---
+  const ins = oos.in_sample || {}, hci = oos.holdout_70_ci || {};
+  const cur = led.curated || {};
+  const cal = led.calibrated_reliability || {};
+  const tiles = [];
+  if (cur.net_units != null) tiles.push({v:'+' + Math.round(cur.net_units) + 'u', k:`curated book (${cur.n_settled} picks · ${(100*(cur.hit_rate||0)).toFixed(0)}% hit · 1u flat)`, up:1});
+  if (ins.curated_roi != null && ins.raw_roi != null) tiles.push({v:sgn(ins.raw_roi) + ' → ' + sgn(ins.curated_roi), k:'raw firehose → curated (same model, losers dropped)', up:1});
+  if (hci.roi_lo != null) tiles.push({v:`[${sgn(hci.roi_lo)}, ${sgn(hci.roi_hi)}]`, k:'held-out 95% CI — floor above zero = not luck', up:1});
+  if (cal.ece_raw != null && cal.ece_calibrated != null) tiles.push({v:(100*cal.ece_raw).toFixed(1) + '% → ' + (100*cal.ece_calibrated).toFixed(1) + '%', k:'calibration error, raw → calibrated (a 70% hits ~70%)', up:1});
+  document.getElementById('pcStats').innerHTML = tiles.map(t =>
+    `<div class="pc-stat"><div class="v ${t.up?'up':''}">${t.v}</div><div class="k">${t.k}</div></div>`).join('');
+
+  // --- tamper-evident hash ---
+  if (hash.head){
+    document.getElementById('pcHash').innerHTML =
+      `tamper-evident record: <b>${(hash.n_settled||0).toLocaleString()}</b> settled picks in an append-only SHA-256 chain · ` +
+      `head <b>${hash.head}</b><br>alter any past result and this fingerprint changes — save it, re-check anytime.`;
+  }
+});
+</script>
+</body>
+</html>
