@@ -73,10 +73,16 @@ def _day_stats(records: List[Dict[str, Any]]) -> Dict[str, Any]:
     brier = sum(brier_terms) / len(brier_terms) if brier_terms else None
     mae = sum(abs_residuals) / len(abs_residuals) if abs_residuals else None
 
-    # ROI (1u flat) on records with real prices
+    # ROI (1u flat). Real-ledger records carry the settled payout directly
+    # (payout_units); the legacy dk-price reconstruction stays as fallback.
     roi_stake = 0.0
     roi_pl = 0.0
     for r in records:
+        pu = r.get("payout_units")
+        if pu is not None and r.get("play_hit") is not None:
+            roi_stake += 1.0
+            roi_pl += float(pu)
+            continue
         if r.get("dk_over") is None and r.get("dk_under") is None:
             continue
         if r.get("play") not in ("OVER", "UNDER"):
@@ -105,15 +111,37 @@ def _day_stats(records: List[Dict[str, Any]]) -> Dict[str, Any]:
     }
 
 
+def _real_props() -> List[Dict[str, Any]]:
+    """Settled picks from the REAL ledger, mapped to this module's record shape.
+    Replaces the deprecated SYNTHETIC track_record.json (frozen 6/02). Brier is
+    scored on the RAW p_predicted (the learning signal) vs the settled result;
+    ROI comes from the ledger's recorded payout_units."""
+    p = os.path.join(DATA_DIR, "all_picks_ledger.json")
+    try:
+        with open(p, encoding="utf-8") as f:
+            led = json.load(f)
+    except Exception:
+        return []
+    out = []
+    for pk in (led.get("picks") or []):
+        if not pk.get("settled") or pk.get("voided") or pk.get("result") not in ("won", "lost"):
+            continue
+        o = pk.get("outcome") or {}
+        won = pk.get("result") == "won"
+        out.append({
+            "date": pk.get("date"),
+            "play_hit": won,
+            "model_prob_over": pk.get("p_predicted"),
+            "over_hit": won,
+            "model_projection": pk.get("projection"),
+            "actual": o.get("actual"),
+            "payout_units": pk.get("payout_units"),
+        })
+    return out
+
+
 def run() -> Dict[str, Any]:
-    if not os.path.exists(TR_PATH):
-        payload = {"generated_at": dt.datetime.now().isoformat(timespec="seconds"),
-                   "by_date": [], "trends": {}}
-        _write(payload)
-        return payload
-    with open(TR_PATH) as f:
-        tr = json.load(f)
-    props = tr.get("props", [])
+    props = _real_props()
 
     by_date: Dict[str, List[Dict[str, Any]]] = {}
     for r in props:
@@ -128,14 +156,20 @@ def run() -> Dict[str, Any]:
         stats["date"] = date
         per_day.append(stats)
 
-    # Linear trends on dates with enough samples
+    # Linear trends on dates with enough samples. Pair x with y PER METRIC --
+    # zipping a full-length xs against a filtered ys was a latent index-error
+    # (never fired on the synthetic feed where every day had every metric).
     eligible = [d for d in per_day if d.get("graded", 0) >= 10]
     trends: Dict[str, Optional[float]] = {}
     if len(eligible) >= 2:
-        xs = list(range(len(eligible)))
-        trends["hit_rate_slope"] = _linreg_slope(xs, [d["hit_rate"] for d in eligible if d.get("hit_rate") is not None])
-        trends["brier_slope"]    = _linreg_slope(xs, [d["brier"]    for d in eligible if d.get("brier") is not None])
-        trends["mae_slope"]      = _linreg_slope(xs, [d["mae_residual"] for d in eligible if d.get("mae_residual") is not None])
+        def _metric_slope(key: str) -> Optional[float]:
+            pairs = [(i, d[key]) for i, d in enumerate(eligible) if d.get(key) is not None]
+            if len(pairs) < 2:
+                return None
+            return _linreg_slope([p[0] for p in pairs], [p[1] for p in pairs])
+        trends["hit_rate_slope"] = _metric_slope("hit_rate")
+        trends["brier_slope"]    = _metric_slope("brier")
+        trends["mae_slope"]      = _metric_slope("mae_residual")
         trends["days_used"] = len(eligible)
     else:
         trends["note"] = f"Need >=2 days with >=10 graded plays each; have {len(eligible)}"
