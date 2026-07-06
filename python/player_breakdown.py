@@ -66,13 +66,11 @@ MATCHUPS_PATH = os.path.join(DATA_DIR, "matchups.json")
 PROPS_PATH = os.path.join(DATA_DIR, "props.json")
 PICKEM_PATH = os.path.join(DATA_DIR, "pickem.json")
 GAMELOGS_PATH = os.path.join(DATA_DIR, "player_gamelogs.json")
-TR_PATH = os.path.join(DATA_DIR, "track_record.json")
 BIAS_PATH = os.path.join(DATA_DIR, "player_bias.json")
 OUT_PATH = os.path.join(DATA_DIR, "player_breakdowns.json")
 
 MLB_API = "https://statsapi.mlb.com/api/v1"
 HTTP_TIMEOUT = 8
-MIN_TR_PROPS = 5    # minimum settled props to qualify a player not on tonight's slate
 
 try:
     import config as _cfg
@@ -623,7 +621,6 @@ def run() -> Dict[str, Any]:
     props_data = _load(PROPS_PATH)
     pickem = _load(PICKEM_PATH)
     gamelogs = _load(GAMELOGS_PATH)
-    tr = _load(TR_PATH)
     bias = _load(BIAS_PATH)
     bias_map = bias.get("by_pid_market") or {}
 
@@ -654,21 +651,14 @@ def run() -> Dict[str, Any]:
         elif pid and pid in player_ids and not player_ids[pid].get("team"):
             player_ids[pid]["team"] = p.get("team")
 
-    # From track record (players with 5+ settled props -- even if not on slate)
-    tr_props = tr.get("props") or []
-    counts: Dict[int, int] = {}
-    name_by_id: Dict[int, str] = {}
-    for r in tr_props:
-        pid = r.get("player_id")
-        if not pid:
-            continue
-        counts[pid] = counts.get(pid, 0) + 1
-        if pid not in name_by_id:
-            name_by_id[pid] = r.get("player") or ""
-    for pid, n in counts.items():
-        if n >= MIN_TR_PROPS and pid not in player_ids:
-            player_ids[pid] = {"name": name_by_id.get(pid, ""), "team": None,
-                                "kind": "batter", "on_slate": False}
+    # (Removed: candidate expansion + per-player accuracy/ump panels from the
+    # deprecated SYNTHETIC track_record.json. It padded the list with stale
+    # off-slate players and computed "model accuracy on this player" from FAKE
+    # props. The real ledger keys picks by name, not MLB player_id, so a
+    # pid-join can't be honest -- tr_props stays empty and those panels render
+    # as absent rather than synthetic. Live candidates all arrive via tonight's
+    # matchups / open props / pickem above.)
+    tr_props: List[Dict[str, Any]] = []
 
     gl_by_id = gamelogs.get("by_player_id") or {}
 
