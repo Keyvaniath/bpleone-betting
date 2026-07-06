@@ -41,7 +41,35 @@ bpleone-site/
 
 ## Current deployment state (LIVE)
 
-- **2026-06-29 — Picks hub + ledger-integrity incident (newest, read first):**
+- **2026-07-02→06 — Rigor ladder + synthetic decontamination (newest, read first):**
+  - **Walk-forward LADDER** (`forward_test.py`): the forward test now auto-freezes a NEW
+    cut-set rung whenever the newest one matures (>=400 settled, >=7d apart, cap 12).
+    Rung 1 (6/22) matured at n=540: curated +42.3% vs raw -13.3%, zero hindsight. Rung 2
+    froze 7/02. Ladder table on track-record.html; top-level artifact fields mirror rung 1.
+  - **Family durability scorecard** (`family_durability.py` -> track-record card): every
+    surviving family tiered by bootstrap-CI floor + split-half stability. 2 DURABLE
+    carriers (fight_r1_finish_yes n=155 CI-floor +105%; mlb_hrr_3.5_under n=612).
+    "Durable book" aggregate: ~767 settled, +62% ROI, CI floor ~+54%.
+  - **SYNTHETIC DECONTAMINATION (do not regress):** data/track_record.json is the
+    deprecated SYNTHETIC feed (118k fake props, FROZEN 6/02). Purged from all public
+    surfaces: dow_pl.py + clv_per_bet.py + daily_summary.py + residuals.py + anomalies.py
+    now read the REAL ledger (adapter maps picks -> {date, player: player_or_matchup,
+    market, model_projection: projection, actual: outcome.actual}); the CLV-per-bet card
+    auto-hides until real prop closes exist. 10 dead modules REMOVED from the workflows
+    (walk_forward, player_bias, learning_curves, loop_value, streak_chart_data,
+    training_progress, per_prop_ci, multiplier_tuner, context_calibration,
+    backfill_context). Legacy chain still wired but verified no-op (all corrections 1.0):
+    outcomes.py / calibration_runner.py / model_trainer.py -- final retirement is a
+    flagged owner task; calibration_runner.load_corrections() feeds pipeline.py so
+    disconnecting it is a MODEL-BEHAVIOR decision, don't do it casually.
+  - **Stale-number policy:** the curation headline (+14.1%/-15.2% era) drifted badly.
+    calibration-map/track-record/methodology now LIVE-FILL those numbers from
+    curation_oos_validation.json in_sample -- never hardcode ledger-derived numbers in HTML.
+  - Picks-hub data fixes: convergence_detector stamps each scoreboard's sport (was all
+    "MLB"); todays_picks maps label/batter subjects + infers sport (no "?" rows). Homepage
+    Locks card labeled as quarter-Kelly basis (net/ROI are on ~21u risked, not 1u flat).
+
+- **2026-06-29 — Picks hub + ledger-integrity incident (read first):**
   - **Picks hub** (`picks.html` + `python/todays_picks.py` -> `data/todays_picks.json`):
     one filterable board consolidating the curated pick boards (Locks/Alpha/Best-Bets/
     Consensus/Top-Plays/Convergence/Fades). Six board pages (todays-top-plays, top-3-picks,
