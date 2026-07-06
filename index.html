@@ -1512,15 +1512,16 @@ Promise.all([
           <div style="font-size:18px; font-weight:700;">${fmtPct(d.hit_rate)}</div>
         </div>
         <div style="text-align:center;">
-          <div style="font-size:9px; color:var(--muted,#888); text-transform:uppercase;">Net Units</div>
+          <div style="font-size:9px; color:var(--muted,#888); text-transform:uppercase;" title="P&L at quarter-Kelly stakes (avg ~0.06u per lock), not 1u flat">Net (¼-Kelly)</div>
           <div style="font-size:18px;">${fmtUnits(d.net_units)}</div>
         </div>
         <div style="text-align:center;">
-          <div style="font-size:9px; color:var(--muted,#888); text-transform:uppercase;">ROI</div>
+          <div style="font-size:9px; color:var(--muted,#888); text-transform:uppercase;" title="Return on total capital risked at quarter-Kelly sizing">ROI on risked</div>
           <div style="font-size:18px;">${d.roi_pct == null ? '—' : (d.roi_pct >= 0 ? '<span style="color:#58c878;font-weight:700;">+'+d.roi_pct.toFixed(1)+'%</span>' : '<span style="color:#e35a5a;font-weight:700;">'+d.roi_pct.toFixed(1)+'%</span>')}</div>
         </div>
         ${clvCell}
       </div>
+      <p class="muted" style="font-size:10px; margin:0 0 10px; line-height:1.5;">Locks are staked at <strong>¼-Kelly</strong> (heavy favorites → small stakes, avg ~${d.total_risked_units && d.n_settled ? (d.total_risked_units/d.n_settled).toFixed(2) : '0.06'}u). Net is on <strong>${d.total_risked_units != null ? d.total_risked_units.toFixed(1) : '—'}u total risked</strong> — not 1u flat like the other cards; the 1u-flat lock record lives in Performance by Strategy on the <a href="track-record.html" style="color:#58c878;">track record</a>.</p>
       <div style="font-size:11px; color:var(--muted,#888); text-transform:uppercase; margin-bottom:8px;">🔒 Today's ${todays.length} Locks (recorded ${(d.generated_at||'').slice(11,16)} UTC)</div>
       ${todayHtml}
     `;
