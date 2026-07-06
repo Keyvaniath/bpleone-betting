@@ -111,10 +111,6 @@ jobs:
       # One-shot enrichment of track_record settled props with HP umpire +
       # venue + day/night tags (where missing). Caps at 500 records per run
       # to be polite to MLB Stats API. Idempotent + safe to repeat.
-      - name: Backfill track_record context (ump / venue / night)
-        if: github.event.schedule == '0 14 * * *' || github.event_name == 'workflow_dispatch'
-        working-directory: python
-        run: python backfill_context.py
 
       # Per-player deep-dive precompute: aggregates season + career + L/R + H/A
       # splits from MLB Stats API (free), joins with matchups for BvP H2H +
@@ -145,24 +141,12 @@ jobs:
 
       # Walk-forward backtest: rolling-window evaluation proving the model
       # IS improving (Brier shrinks day over day with bias correction applied).
-      - name: Walk-forward backtest
-        if: github.event.schedule == '0 14 * * *' || github.event_name == 'workflow_dispatch'
-        working-directory: python
-        run: python walk_forward.py
 
       # Per-player bias overrides: bespoke multipliers for players the
       # market-level bias correction can't fix (z >= 2 systematic outliers).
-      - name: Compute per-player bias overrides
-        if: github.event.schedule == '0 14 * * *' || github.event_name == 'workflow_dispatch'
-        working-directory: python
-        run: python player_bias.py
 
       # Secondary multiplier tuner: grid-search amplifier on opp_mult,
       # umpire_k_mult, park_hand_mult per market.
-      - name: Tune secondary multipliers
-        if: github.event.schedule == '0 14 * * *' || github.event_name == 'workflow_dispatch'
-        working-directory: python
-        run: python multiplier_tuner.py
 
       # Training feedback log: writes a "what changed this run" entry to
       # training_feedback.json so /training renders a feed of recent activity.
@@ -1118,28 +1102,12 @@ jobs:
         run: python notify_discord.py
 
       # Per-market learning curves: rolling Brier per market
-      - name: Compute learning curves
-        if: github.event.schedule == '0 14 * * *' || github.event_name == 'workflow_dispatch'
-        working-directory: python
-        run: python learning_curves.py
 
       # Context-conditional bias slices (indoor/outdoor, L/R pitcher)
-      - name: Context-conditional calibration
-        if: github.event.schedule == '0 14 * * *' || github.event_name == 'workflow_dispatch'
-        working-directory: python
-        run: python context_calibration.py
 
       # Loop value quantifier (raw vs calibrated A/B)
-      - name: Quantify loop value-add
-        if: github.event.schedule == '0 14 * * *' || github.event_name == 'workflow_dispatch'
-        working-directory: python
-        run: python loop_value.py
 
       # Per-market training progress + ETA
-      - name: Training progress + ETA
-        if: github.event.schedule == '0 14 * * *' || github.event_name == 'workflow_dispatch'
-        working-directory: python
-        run: python training_progress.py
 
       # Recommendation trust score
       - name: Recommendation trust score
@@ -1157,10 +1125,6 @@ jobs:
 
       # Per-prop confidence interval via bootstrap (uncertainty band on the
       # model probability for every best bet).
-      - name: Per-prop confidence intervals
-        if: github.event.schedule == '0 14 * * *' || github.event_name == 'workflow_dispatch'
-        working-directory: python
-        run: python per_prop_ci.py
 
       # Weather drift detector: alerts when game-time wind/temp shifts
       # materially vs morning forecast.
@@ -1170,10 +1134,6 @@ jobs:
         run: python forecast_weather_drift.py
 
       # Per-player rolling-5-game streak chart data for /player sparklines.
-      - name: Build streak chart data
-        if: github.event.schedule == '0 14 * * *' || github.event_name == 'workflow_dispatch'
-        working-directory: python
-        run: python streak_chart_data.py
 
       # "Anyone HR in this game" probability + fair odds per game.
       - name: Score Anyone-HR fair odds

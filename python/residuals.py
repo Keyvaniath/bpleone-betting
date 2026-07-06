@@ -140,21 +140,35 @@ def _worst_misses(records: List[Dict[str, Any]], top_n: int = 5) -> List[Dict[st
     return out
 
 
+def _real_props() -> List[Dict[str, Any]]:
+    """Settled picks from the REAL ledger, mapped to the record shape this module
+    scores ({date, player, market, model_projection, actual}). Replaces the
+    deprecated SYNTHETIC track_record.json (118k backfilled props frozen 6/02),
+    whose 30-day window had gone empty -- this module was a silent no-op."""
+    p = os.path.join(DATA_DIR, "all_picks_ledger.json")
+    try:
+        with open(p, encoding="utf-8") as f:
+            led = json.load(f)
+    except Exception:
+        return []
+    out = []
+    for pk in (led.get("picks") or []):
+        if not pk.get("settled") or pk.get("voided"):
+            continue
+        o = pk.get("outcome") or {}
+        out.append({
+            "date": pk.get("date"),
+            "player": pk.get("player_or_matchup"),
+            "market": pk.get("market"),
+            "model_projection": pk.get("projection"),
+            "actual": o.get("actual"),
+        })
+    return out
+
+
 def run(today: Optional[dt.date] = None) -> Dict[str, Any]:
     today = today or dt.date.today()
-    if not os.path.exists(TR_PATH):
-        payload = {
-            "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
-            "warning": "no track_record.json yet",
-            "markets": {},
-            "player_systematic": [],
-        }
-        _write(payload)
-        return payload
-
-    with open(TR_PATH) as f:
-        tr = json.load(f)
-    props = tr.get("props", [])
+    props = _real_props()
 
     # Pre-compute residual = actual - model_projection per record
     enriched: List[Dict[str, Any]] = []

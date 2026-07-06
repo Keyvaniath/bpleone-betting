@@ -48,16 +48,33 @@ except Exception:
     OUTLIER_Z_THRESHOLD = 3.0
 
 
-def run() -> Dict[str, Any]:
-    if not os.path.exists(TR_PATH):
-        payload = {"generated_at": dt.datetime.now().isoformat(timespec="seconds"),
-                   "systematic": [], "outlier_days": []}
-        _write(payload)
-        return payload
+def _real_props():
+    """Settled picks from the REAL ledger, mapped to {date, player, market,
+    model_projection, actual}. Replaces the deprecated SYNTHETIC
+    track_record.json (frozen 6/02; this module had gone silent no-op)."""
+    p = os.path.join(DATA_DIR, "all_picks_ledger.json")
+    try:
+        with open(p, encoding="utf-8") as f:
+            led = json.load(f)
+    except Exception:
+        return []
+    out = []
+    for pk in (led.get("picks") or []):
+        if not pk.get("settled") or pk.get("voided"):
+            continue
+        o = pk.get("outcome") or {}
+        out.append({
+            "date": pk.get("date"),
+            "player": pk.get("player_or_matchup"),
+            "market": pk.get("market"),
+            "model_projection": pk.get("projection"),
+            "actual": o.get("actual"),
+        })
+    return out
 
-    with open(TR_PATH) as f:
-        tr = json.load(f)
-    props = tr.get("props", [])
+
+def run() -> Dict[str, Any]:
+    props = _real_props()
 
     # Per-market residual distribution
     market_residuals: Dict[str, List[float]] = {}

@@ -45,7 +45,8 @@ def build_summary() -> str:
     pickem = _load("pickem.json")
     parlays = _load("parlays.json")
     cal = _load("calibration_live.json")
-    tr = _load("track_record.json")
+    # Real ledger rollup (was the deprecated synthetic track_record.json).
+    tr = _load("recent_picks.json")
     inj = _load("injuries_live.json")
     form = _load("team_form.json")
     bp = _load("bullpen_workload.json")
@@ -166,8 +167,8 @@ def build_summary() -> str:
                          f"{m.get('bias', 1):.3f} | "
                          f"{m.get('correction_factor', 1):.3f} |")
         lines.append("")
-        graded = sum(1 for p in (tr.get('props') or []) if p.get('play_hit') is not None)
-        wins = sum(1 for p in (tr.get('props') or []) if p.get('play_hit') is True)
+        graded = tr.get('n_settled') or 0
+        wins = round((tr.get('hit_rate') or 0) * graded)
         if graded:
             lines.append(f"Cumulative graded plays: {graded}. Wins: {wins}. "
                          f"Hit rate: {wins/graded*100:.1f}%.")
@@ -292,8 +293,9 @@ def build_summary() -> str:
     lines.append("---")
     lines.append("")
     lines.append(f"_EdgeStat is a research desk. Bet responsibly. 21+. 1-800-GAMBLER._")
+    _last = (tr.get('date_range') or [None, None])[1]
     lines.append(f"_Source: github.com/Keyvaniath/bpleone-betting - "
-                 f"{tr.get('last_settled_date') and ('last settled ' + tr['last_settled_date']) or 'no settled data yet'}._")
+                 f"{_last and ('last settled ' + _last) or 'no settled data yet'}._")
     return "\n".join(lines)
 
 

@@ -56,19 +56,10 @@ jobs:
       - name: Model trainer (fitted bias + statcast blend)
         working-directory: python
         run: python model_trainer.py || true
-      - name: Multiplier tuner (opp/umpire/park amplifiers)
-        working-directory: python
-        run: python multiplier_tuner.py || true
 
       # === Per-player bias detection ===
-      - name: Per-player bias overrides
-        working-directory: python
-        run: python player_bias.py || true
 
       # === Walk-forward backtest ===
-      - name: Walk-forward backtest
-        working-directory: python
-        run: python walk_forward.py || true
 
       # === Param recommender ===
       - name: Parameter recommender
@@ -82,9 +73,6 @@ jobs:
       - name: Training feedback logger
         working-directory: python
         run: python training_feedback.py || true
-      - name: Training progress + ETA
-        working-directory: python
-        run: python training_progress.py || true
       - name: Training convergence tracker
         working-directory: python
         run: python training_convergence.py || true
