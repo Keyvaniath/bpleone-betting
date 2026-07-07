@@ -1,12 +1,12 @@
 # EdgeStat Daily Summary — 2026-07-07
 
-## 🏥 Model Health: 66.9/100 [OK]
+## 🏥 Model Health: 67.7/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.6/100
-  - 🔴 Hit Rate Trend: 5.1/100
-  - 🔴 Brier Trend: 39.0/100
+  - 🟢 Calibration Freshness: 100.0/100
+  - 🔴 Hit Rate Trend: 5.5/100
+  - 🔴 Brier Trend: 37.6/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 90.9/100
+  - 🟢 Data Health: 95.5/100
   - 🟢 Edge Count: 100/100
 
 ## 🌐 Slate Overview
@@ -22,15 +22,15 @@
 5. **ATL @ PIT YRFI (1st-inning OVER 0.5)** (78/100 ★★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** HOU @ WSN WSN_ML -- 68% / +24.1% (score 2.5)
-- [STRONG] **[MLB]** MIL @ STL MIL_ML -- 70% / +21.9% (score 2.5)
+- [STRONG] **[MLB]** MIL @ STL MIL_ML -- 69% / +25.0% (score 2.5)
+- [STRONG] **[MLB]** HOU @ WSN WSN_ML -- 68% / +24.0% (score 2.5)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **301-54** (84.8% hit rate)
 - Net units: **+10.38u** | ROI: **+47.1%**
 - Last 7d: 28-10 (73.7%) | net +0.66u
 
-**Today's 8 Locks:**
+**Today's 9 Locks:**
 - [MLB-PP] **Joey Ortiz** PP_batter_hrr_under_3.5 · p=88% edge=+52.0% qK=0.062u
 - [MLB-PP] **Lourdes Gurriel Jr.** PP_batter_hrr_under_3.5 · p=88% edge=+52.0% qK=0.062u
 - [MLB-PP] **Ezequiel Tovar** PP_batter_hrr_under_3.5 · p=88% edge=+52.0% qK=0.062u
@@ -39,14 +39,15 @@
 - [MLB-PP] **Noelvi Marte** PP_batter_hrr_under_3.5 · p=88% edge=+51.9% qK=0.062u
 - [MLB-PP] **Christian Vázquez** PP_batter_hrr_under_3.5 · p=88% edge=+51.9% qK=0.062u
 - [MLB-PP] **J.P. Crawford** PP_batter_hrr_under_3.5 · p=87% edge=+51.8% qK=0.062u
+- [MLB-PP] **Salvador Perez** PP_batter_hrr_under_3.5 · p=88% edge=+52.0% qK=0.062u
 
 ## 🎰 Top Balanced 2-Leg Parlays (40-65% joint)
-- [MLB-PP] Brett Baty PP_batter_hrr_under_ + [MLB] HOU @ WSN WSN_ML
-  Joint: 60% | Fair: 216 | Edge: +88.5%
-- [MLB-PP] Noelvi Marte PP_batter_hrr_under_ + [MLB] HOU @ WSN WSN_ML
-  Joint: 60% | Fair: 216 | Edge: +88.4%
-- [MLB-PP] Christian Vázquez PP_batter_hrr_under_ + [MLB] HOU @ WSN WSN_ML
-  Joint: 60% | Fair: 216 | Edge: +88.4%
+- [MLB-PP] Salvador Perez PP_batter_hrr_under_ + [MLB] MIL @ STL MIL_ML
+  Joint: 61% | Fair: 213 | Edge: +90.1%
+- [MLB-PP] Brett Baty PP_batter_hrr_under_ + [MLB] MIL @ STL MIL_ML
+  Joint: 61% | Fair: 213 | Edge: +90.0%
+- [MLB-PP] Noelvi Marte PP_batter_hrr_under_ + [MLB] MIL @ STL MIL_ML
+  Joint: 61% | Fair: 213 | Edge: +89.9%
 
 ## 🎮 Player Play of the Day (cross-sport)
 - **[LOL]** Inspired UNDER 3.5 Kills | MED conviction · model 61.7% fair -161
@@ -64,14 +65,15 @@
 - Hot teams: **2** | Cold teams: **2** | Over-heavy: 0 | Under-heavy: 1
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (33)
-- STEAM_MOVE: **32**
+## ⚠️ Anomaly Detector (39)
+- RESIDUAL_DIVERGENCE: **3**
+- STEAM_MOVE: **35**
 - COMPOUND_BULLPEN: **1**
+  - New York Liberty (WNBA): New York Liberty OUTPERFORMING expected margin by 6.3pts in recent games -- model bias may persist
+  - Dallas Wings (WNBA): Dallas Wings OUTPERFORMING expected margin by 7.0pts in recent games -- model bias may persist
+  - Phoenix Mercury (WNBA): Phoenix Mercury OUTPERFORMING expected margin by 11.3pts in recent games -- model bias may persist
   - TOR @ SEA (MLB): ML/TOTAL steam since open: ML +13.5pp toward SEA; total +0.5 (OVER) (7 snapshots)
   - LV @ NY (WNBA): ML/TOTAL steam since open: ML +12.4pp toward NY; total -1 (UNDER) (4 snapshots)
-  - NYM @ ATL (MLB): ML/TOTAL steam since open: ML -11.8pp toward NYM; total +1 (OVER) (7 snapshots)
-  - CIN @ MIL (MLB): ML/TOTAL steam since open: ML +6.3pp toward MIL; total -2 (UNDER) (4 snapshots)
-  - DAL @ CON (WNBA): ML/TOTAL steam since open: ML +3.9pp toward CON; total +2 (OVER) (9 snapshots)
 
 ## 💰 Today's Portfolio (8 picks)
 - Total stake: **$340.0** (34.0% of $1000 bankroll)
@@ -82,15 +84,15 @@
   - #4 [NRFI] $50 on LAA @ TEX YRFI (1st-inning OVER 0.5) (P=69%)
   - #5 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
 
-## 🎯 Convergence Picks (6 stacked games)
-- ELITE: **0** · HIGH: 0 · MED: 6
+## 🎯 Convergence Picks (5 stacked games)
+- ELITE: **2** · HIGH: 0 · MED: 3
+  - [ELITE] Dallas Wings @ New York Liberty : 4 signals (ANOMALY, ANOMALY, ATS, ATS)
+  - [ELITE] Chicago Sky @ Phoenix Mercury : 4 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
   - [MED] New York Knicks @ San Antonio Spurs : 2 signals (ATS, ATS)
-  - [MED] Golden State Valkyries @ Washington Mystics : 2 signals (HEAT_COLD, ATS)
-  - [MED] Connecticut Sun @ Minnesota Lynx : 2 signals (ATS, ATS)
-  - [MED] Seattle Storm @ Los Angeles Sparks : 2 signals (HEAT_COLD, ATS)
   - [MED] Portland Timbers @ Seattle Sounders FC : 2 signals (PREGAME, ATS)
+  - [MED] Coventry City @ Arsenal : 2 signals (PREGAME, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (11)
+## ⚾ Top MLB Pitcher K Plays (12)
 - **Max Meyer** OVER 4.5 K (78%) fair -347
 - **Taj Bradley** OVER 4.5 K (76%) fair -313
 - **Tarik Skubal** OVER 5.5 K (75%) fair -292
@@ -121,17 +123,20 @@
   - 🔥 T4 **Mac Meissner** (USA): +0 total -- finished T4
   - 🔥 T5 **Martin Couvra** (France): +0 total -- finished T5
 
-## 🔥 MLB Batter Heat (46 HOT / 42 COLD)
+## 🔥 MLB Batter Heat (42 HOT / 48 COLD)
   - 🔥 **Dansby Swanson** (CHC): L14 .340 / season .207 (+133pts)
   - 🔥 **Javier Sanoja** (MIA): L14 .410 / season .278 (+132pts)
-  - 🔥 **Nick Gonzales** (PIT): L14 .431 / season .312 (+119pts)
-  - 🔥 **Miguel Rojas** (LAD): L14 .407 / season .290 (+117pts)
-  - 🔥 **Garrett Mitchell** (MIL): L14 .385 / season .269 (+116pts)
-  - ❄️ **Cody Bellinger** (NYY): L14 .098 / season .248 (-150pts) -- FADE props
+  - 🔥 **Garrett Mitchell** (MIL): L14 .400 / season .273 (+127pts)
+  - 🔥 **Luis García Jr.** (WSH): L14 .404 / season .283 (+121pts)
+  - 🔥 **Nick Gonzales** (PIT): L14 .431 / season .314 (+117pts)
+  - ❄️ **Cody Bellinger** (NYY): L14 .082 / season .247 (-165pts) -- FADE props
   - ❄️ **Jorge Mateo** (ATL): L14 .107 / season .248 (-141pts) -- FADE props
-  - ❄️ **Ben Rice** (NYY): L14 .135 / season .267 (-132pts) -- FADE props
-  - ❄️ **Drake Baldwin** (ATL): L14 .132 / season .255 (-123pts) -- FADE props
   - ❄️ **Braden Shewmake** (HOU): L14 .135 / season .256 (-121pts) -- FADE props
+  - ❄️ **Carlos Cortes** (ATH): L14 .162 / season .281 (-119pts) -- FADE props
+  - ❄️ **Luke Raley** (SEA): L14 .111 / season .227 (-116pts) -- FADE props
+
+## 📈 Streak Regression Alerts (1)
+- [WNBA] Phoenix Mercury on W3 L10 3-0 -- Phoenix Mercury on W3 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**

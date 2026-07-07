@@ -3,8 +3,8 @@
 _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 
 ## 💪 STRONG (2 picks)
-- [MLB] HOU @ WSN WSN_ML · 68% / +24.1%
-- [MLB] MIL @ STL MIL_ML · 70% / +21.9%
+- [MLB] MIL @ STL MIL_ML · 69% / +25.0%
+- [MLB] HOU @ WSN WSN_ML · 68% / +24.0%
 
 ## 🔒 5 Daily Locks
 - **Joey Ortiz** PP_batter_hrr_under_3.5 (MLB-PP) -- 88% / +52.0%
@@ -16,11 +16,12 @@ _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 - **Christian Vázquez** PP_batter_hrr_under_3.5 (MLB-PP) -- 88% / +51.9%
 - **J.P. Crawford** PP_batter_hrr_under_3.5 (MLB-PP) -- 87% / +51.8%
 - **Salvador Perez** PP_batter_hrr_under_3.5 (MLB-PP) -- 88% / +52.0%
+- **Jared Triolo** PP_batter_hrr_under_3.5 (MLB-PP) -- 88% / +52.0%
 
 ## 🎰 Tonight's Best Parlay
-- **Salvador Perez** PP_batter_hrr_under_3.5 + **MIL @ STL** MIL_ML
-- Joint 61% · fair +213 · edge +90.1%
+- **Jared Triolo** PP_batter_hrr_under_3.5 + **KCR @ NYM** KCR_ML
+- Joint 50% · fair +284 · edge +90.9%
 
 ---
-_Generated 2026-07-07T16:47:23_
+_Generated 2026-07-07T23:07:31_
 _Full breakdown: /tonight · Full history: /locks-of-day_
