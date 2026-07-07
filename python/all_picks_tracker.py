@@ -2720,7 +2720,27 @@ def run() -> Dict[str, Any]:
     n_resettled = _resettle_on_revision(history)
 
     if len(history) > MAX_PICKS:
-        history = history[-MAX_PICKS:]
+        # Evict SIGNAL-FREE entries first -- never settled history while any exist.
+        # The old tail-cut (history[-MAX_PICKS:]) chopped the OLDEST entries, which
+        # are settled track record, while thousands of voided picks survived --
+        # settled count was eroding ~170/day at the cap (caught 2026-07-06 when
+        # n_settled fell 6526 -> 6357 with 2,840 voided hogging the window).
+        # Priority: (1) voided picks, oldest first (excluded from every stat);
+        # (2) stale pendings >14d old that will never grade (dead events);
+        # (3) only then the original oldest-first tail cut, as last resort.
+        overflow = len(history) - MAX_PICKS
+        stale_cutoff = (dt.date.today() - dt.timedelta(days=14)).isoformat()
+        voided_idx = [i for i, p in enumerate(history) if p.get("voided")]
+        stale_pend_idx = [i for i, p in enumerate(history)
+                          if not p.get("voided") and not p.get("settled")
+                          and (p.get("date") or "9999") < stale_cutoff]
+        drop = set(voided_idx[:overflow])
+        if len(drop) < overflow:
+            drop |= set(stale_pend_idx[:overflow - len(drop)])
+        if drop:
+            history = [p for i, p in enumerate(history) if i not in drop]
+        if len(history) > MAX_PICKS:
+            history = history[-MAX_PICKS:]
 
     # Honest prob at the SOURCE: stamp each pick's calibrated probability ADDITIVELY
     # from its raw p_predicted (which stays untouched -- see _calibrated_prob). Done
