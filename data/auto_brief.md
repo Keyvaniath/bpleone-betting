@@ -1,55 +1,65 @@
 # Tonight's Slate Brief — 2026-07-07
 
-## Slate Quality: 55/100 (MEDIUM)
-_0% lineups confirmed · 12 rookie SPs_
+## Slate Quality: 57/100 (MEDIUM)
+_6% lineups confirmed · 14 rookie SPs_
 **Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
 - **16 games** scheduled
-- **24 best bets** scored: 7 DK · 0 PP · 4 NRFI · 0 SGP
-- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$24.06
-- **MC simulation:** EV +$50.84, 71% P(profit), p05 $-123.97 / p95 $213.82
+- **50 best bets** scored: 1 DK · 18 PP · 12 NRFI · 6 SGP
+- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$48.42
+- **MC simulation:** EV +$118.19, 82% P(profit), p05 $-96.92 / p95 $314.09
 
 ## Top 5 Best Bets
-1. **ARI @ SDP YRFI (1st-inning OVER 0.5)**  (79/100 ****, edge +19.8%)
-   - P(YRFI) 65.8% vs baseline 46.0%
-2. **COL @ LAD YRFI (1st-inning OVER 0.5)**  (78/100 ****, edge +18.1%)
-   - P(YRFI) 64.1% vs baseline 46.0%
-3. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
-   - Player prop quality score 1.1935
-   - Elite player
-4. **LOL ShowMaker OVER 3.5 Kills**  (78/100 ****, edge —)
-   - Player prop quality score 1.1892
-   - Elite player
-5. **LOL Peyz OVER 4.5 Kills**  (78/100 ****, edge —)
-   - Player prop quality score 1.184
-   - Elite player
+1. **MIL @ STL 4-leg SGP @ -140**  (81/100 *****, edge +65.5%)
+   - Joint prob 0.583 (correlation boost +0.143)
+   - Leg: Christian Yelich UNDER 0.5 batter doubles
+2. **ARI @ SDP YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +35.9%)
+   - P(YRFI) 81.9% vs baseline 46.0%
+3. **BOS @ CHW YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +27.6%)
+   - P(YRFI) 73.6% vs baseline 46.0%
+4. **LAA @ TEX YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +23.1%)
+   - P(YRFI) 69.2% vs baseline 46.0%
+5. **ATL @ PIT YRFI (1st-inning OVER 0.5)**  (78/100 ****, edge +18.5%)
+   - P(YRFI) 64.5% vs baseline 46.0%
 
-## ⚠️ Trap Warnings — 10 flagged
-- **Jimmy Crooks OVER 0.5 batter hits** (low):
-   - Edge +26.1% looks big but only 0 settled props on this player — model unproven
-- **Alex Bregman UNDER 0.5 batter hits** (low):
-   - Edge +25.1% looks big but only 0 settled props on this player — model unproven
-- **Michael Busch UNDER 0.5 batter hits** (low):
-   - Edge +24.2% looks big but only 0 settled props on this player — model unproven
-- **Nathan Church OVER 0.5 batter hits** (low):
-   - Edge +20.4% looks big but only 0 settled props on this player — model unproven
-- **Jose Altuve UNDER 0.5 batter hits** (low):
-   - Edge +20.1% looks big but only 0 settled props on this player — model unproven
+## ⚠️ Trap Warnings — 25 flagged
+- **MIL @ STL 4-leg SGP @ -140** (low):
+   - Edge +65.5% looks big but only 0 settled props on this player — model unproven
+- **ARI @ SDP YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +35.9% looks big but only 0 settled props on this player — model unproven
+- **BOS @ CHW YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +27.6% looks big but only 0 settled props on this player — model unproven
+- **OAK @ DET 2-leg SGP @ -209** (low):
+   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
+- **HOU @ WSN 2-leg SGP @ -155** (low):
+   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
 
 ## Hot streaks
-**Batters heating up:** Dansby Swanson (heat +8.22), Luke Maile (heat +7.80), Rafael Devers (heat +6.24)
-**Pitchers on a run:** Noah Schultz (heat +11.43), Kevin Gausman (heat +9.93), Griffin Jax (heat +9.81)
+**Batters heating up:** Dansby Swanson (heat +8.22), Riley Greene (heat +7.21), Rafael Devers (heat +6.24)
+**Pitchers on a run:** Taj Bradley (heat +10.48), Justin Wrobleski (heat +7.44), Noah Schultz (heat +5.99)
+
+## Top correlation-aware SGPs
+- **MIL @ STL** 4-leg @ -140 fair (joint 0.58, EV +65.52%)
+   - Christian Yelich UNDER 0.5 batter doubles
+   - Lars Nootbaar UNDER 0.5 batter doubles
+   - Lars Nootbaar OVER 0.5 batter total bases
+- **OAK @ DET** 2-leg @ -209 fair (joint 0.68, EV +25.0%)
+   - J.T. Ginn UNDER 7.5 pitcher strikeouts
+   - Tarik Skubal UNDER 9.5 pitcher strikeouts
+- **HOU @ WSN** 2-leg @ -155 fair (joint 0.61, EV +25.0%)
+   - Tatsuya Imai OVER 5.5 pitcher strikeouts
+   - Andrew Alvarez OVER 4.5 pitcher strikeouts
 
 ## Bullpens GASSED tonight
-Athletics, Pittsburgh Pirates, San Diego Padres, St. Louis Cardinals, Texas Rangers, Atlanta Braves, Chicago White Sox, New York Yankees
+Athletics, San Diego Padres, St. Louis Cardinals, Tampa Bay Rays, Atlanta Braves, Chicago White Sox, Milwaukee Brewers, Arizona Diamondbacks
 _Lean late-inning OVER on these games; fade their save situations._
 
 ## NRFI/YRFI strong leans
-- **YRFI** (1st-inning OVER): ARI @ SDP, COL @ LAD, TOR @ SFG
+- **YRFI** (1st-inning OVER): ARI @ SDP, BOS @ CHW, LAA @ TEX, ATL @ PIT, KCR @ NYM
 
 ## Cross-book pricing
-30 props softer on one book — see /props for details.
+50 props softer on one book — see /props for details.
 
 ## NBA -- PLAYOFFS
 - New York Knicks @ San Antonio Spurs (53-29 vs 62-20) 94-90 | P(home) 0.0% fair +0 | Final
@@ -69,7 +79,7 @@ _Lean late-inning OVER on these games; fade their save situations._
 - Kiwoom Heroes @ KT Wiz | P(home) 63.6% fair -175 | total 10 R
 - **KBO POD:** KIA Tigers ML vs Lotte Giants (KBO) (HIGH)
 
-## LoL Esports -- 0 live, 5 upcoming
+## LoL Esports -- 0 live, 6 upcoming
 - [MSI] LYON vs Team Secret Whales BO5 | P(A) 40.7% fair +146/-146
 - [MSI] G2 Esports vs T1 BO5 | P(A) 31.0% fair +222/-222
 - [MSI] Hanwha Life Esports vs BILIBILI GAMING BO5 | P(A) 48.9% fair +104/-104
@@ -77,7 +87,7 @@ _Lean late-inning OVER on these games; fade their save situations._
 - [MSI] TBD vs TBD BO5 | P(A) 50.0% fair -100/-100
 - **LoL POT:** Team Secret Whales ML vs LYON (MSI, BO5) (HIGH)
 
-## Player Play of the Day -- across all sports (3538 candidates scanned)
+## Player Play of the Day -- across all sports (3560 candidates scanned)
 - **[LOL]** Inspired UNDER 3.5 Kills | model 61.7% fair -161 (ELITE)
 - **[LOL]** ShowMaker OVER 3.5 Kills | model 62.5% fair -167 (ELITE)
 - **[LOL]** Peyz OVER 4.5 Kills | model 61.3% fair -158 (ELITE)
@@ -87,5 +97,5 @@ _Lean late-inning OVER on these games; fade their save situations._
 ## Self-learning calibration (esports + KBO)
 - **LOL:** 28 settled | brier 0.2648 | ECE 0.1826
    - Model over-confident; subtract 16.1pp at next inference
-- **KBO:** 32 settled | brier 0.2705 | ECE 0.2085
-   - Model over-confident; subtract 18.7pp at next inference
+- **KBO:** 33 settled | brier 0.2747 | ECE 0.2007
+   - Model over-confident; subtract 20.1pp at next inference
