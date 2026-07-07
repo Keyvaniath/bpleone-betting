@@ -1,49 +1,45 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-07-06T23:11:00 UTC_
+_Generated 2026-07-07T08:13:15 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -30
+- **Score:** -25
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 5
-- **Total FADES:** 50
-
-## Lock of the Night
-- **Subject:** Eric Lauer
-- **Source:** ELITE_BOARD
-- **Sport:** MLB
-- **Score:** 15.0
-- **Details:** COL @ LAD
+- **Total STRONG:** 6
+- **Total FADES:** 49
 
 ## Top 5 Curated Picks
-1. **GOLF / Lee Hodges** (GOLF_PLAYER, score=219.29)
-   - Play: Lee Hodges (PLAYER_STRONG)
+1. **GOLF / Lucas Glover** (GOLF_PLAYER, score=219.29)
+   - Play: Lucas Glover (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Max Homa** (GOLF_PLAYER, score=219.29)
-   - Play: Max Homa (PLAYER_STRONG)
+2. **GOLF / Chris Gotterup** (GOLF_PLAYER, score=219.29)
+   - Play: Chris Gotterup (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
+3. **MLB / ?** (MLB_TEAM, score=73.54)
+   - Play: ? (TEAM_STRONG)
+   - Rationale: Cross-sport top pick (MLB_TEAM)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
-  - Lee Hodges top 10 finish
-  - Max Homa top 10 finish
   - Lucas Glover top 10 finish
+  - Chris Gotterup top 10 finish
+  - Ben Kohles top 10 finish
 
 ## Slate ROI Projection
-- **Picks:** 2
-- **Avg edge:** -0.91%
+- **Picks:** 0
+- **Avg edge:** 0%
 - **Expected ROI (1/4 Kelly):** 0.0%
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **MLB** / Miles Mikolas (PITCHER_FADE)
+- **MLB** / Freddy Peralta (PITCHER_FADE)
   - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **MLB** / Cristopher Sánchez (PITCHER_FADE)
+- **MLB** / Eric Lauer (PITCHER_FADE)
   - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **NHL** / calvin pickard (GOALIE_FADE)
+- **MLB** / Kevin Gausman (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **NHL** / marc-andre fleury (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / thatcher demko (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / adin hill (GOALIE_FADE)
+- **NHL** / logan thompson_2 (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO

@@ -1,25 +1,31 @@
-# EdgeStat Daily Summary — 2026-07-06
+# EdgeStat Daily Summary — 2026-07-07
 
-## 🏥 Model Health: 71.6/100 [HEALTHY]
-- Solid health - some minor issues to monitor
+## 🏥 Model Health: 58.6/100 [OK]
+- Operational but room to improve - check yellow components
   - 🟢 Calibration Freshness: 100.0/100
-  - 🔴 Hit Rate Trend: 54.4/100
-  - 🔴 Brier Trend: 29.6/100
+  - 🔴 Hit Rate Trend: 0/100
+  - 🔴 Brier Trend: 27.8/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 95.5/100
+  - 🟢 Data Health: 86.4/100
   - 🔴 Edge Count: 57.1/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.588)
-- **Total games on board:** 114
-- **Strong home favorites:** 4 | **Strong road dogs:** 0
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.582)
+- **Total games on board:** 127
+- **Strong home favorites:** 2 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
-1. **PHI @ KCR 4-leg SGP @ -215** (81/100 ★★★★★)
-2. **HOU @ WSN YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-3. **PHI @ KCR YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-4. **ARI @ SDP YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
-5. **COL @ LAD YRFI (1st-inning OVER 0.5)** (78/100 ★★★★)
+1. **ARI @ SDP YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
+2. **COL @ LAD YRFI (1st-inning OVER 0.5)** (78/100 ★★★★)
+3. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
+4. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
+5. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
+
+## 🐋 Whale Picks (Max Confluence)
+- [STRONG] **[MLB-PP]** Lane Thomas PP_batter_hrr_under_3.5 -- 87% / +51.3% (score 2.5)
+
+## 📡 Sharp Action (Line Movement)
+- [ELITE] **NYM @ ATL** ml_home: 54.95% → 70.59% (+15.6pp)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **297-51** (85.3% hit rate)
@@ -38,11 +44,11 @@
 
 ## 🎰 Top Balanced 2-Leg Parlays (40-65% joint)
 - [MLB-PP] Joey Ortiz PP_batter_hrr_under_ + [MLB] TOR @ SFG SFG_ML
-  Joint: 55% | Fair: 236 | Edge: +83.8%
+  Joint: 55% | Fair: 231 | Edge: +81.5%
 - [MLB-PP] Lourdes Gurriel Jr. PP_batter_hrr_under_ + [MLB] TOR @ SFG SFG_ML
-  Joint: 55% | Fair: 236 | Edge: +83.8%
+  Joint: 55% | Fair: 231 | Edge: +81.5%
 - [MLB-PP] Ezequiel Tovar PP_batter_hrr_under_ + [MLB] TOR @ SFG SFG_ML
-  Joint: 55% | Fair: 236 | Edge: +83.8%
+  Joint: 55% | Fair: 231 | Edge: +81.5%
 
 ## 🎮 Player Play of the Day (cross-sport)
 - **[LOL]** Inspired UNDER 3.5 Kills | MED conviction · model 61.7% fair -161
@@ -56,43 +62,41 @@
 - [MLS] **Seattle Sounders FC** HOME (0-1 L10) · model 66.7% fair -200
 
 ## 🔥/❄️ Heat / Cold Signals
-- Hot teams: **2** | Cold teams: **1** | Over-heavy: 0 | Under-heavy: 2
+- Hot teams: **2** | Cold teams: **2** | Over-heavy: 0 | Under-heavy: 1
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (45)
+## ⚠️ Anomaly Detector (34)
 - RESIDUAL_DIVERGENCE: **1**
-- STEAM_MOVE: **39**
-- COMPOUND_BULLPEN: **4**
-- PEN_MISMATCH: **1**
+- STEAM_MOVE: **31**
+- COMPOUND_BULLPEN: **2**
   - Minnesota Lynx (WNBA): Minnesota Lynx UNDERPERFORMING expected margin by 7.7pts in recent games -- model bias may persist
-  - LA @ IND (WNBA): TOTAL steam since open: total +4 (OVER) (6 snapshots)
-  - ATL @ SFG (MLB): ML/TOTAL steam since open: ML -16.4pp toward ATL; total -0.5 (UNDER) (8 snapshots)
   - TOR @ SEA (MLB): ML/TOTAL steam since open: ML +13.5pp toward SEA; total +0.5 (OVER) (7 snapshots)
   - LV @ NY (WNBA): ML/TOTAL steam since open: ML +12.4pp toward NY; total -1 (UNDER) (4 snapshots)
+  - NYM @ ATL (MLB): ML/TOTAL steam since open: ML -11.8pp toward NYM; total +1 (OVER) (7 snapshots)
+  - CIN @ MIL (MLB): ML/TOTAL steam since open: ML +6.3pp toward MIL; total -2 (UNDER) (4 snapshots)
 
-## 💰 Today's Portfolio (9 picks)
+## 💰 Today's Portfolio (12 picks)
 - Total stake: **$330.0** (33.0% of $1000 bankroll)
-- Expected EV: **$-3.29**
-  - #1 [SGP] $50 on PHI @ KCR 4-leg SGP @ -215 (P=68%)
-  - #2 [NRFI] $50 on HOU @ WSN YRFI (1st-inning OVER 0.5) (P=71%)
-  - #3 [NRFI] $50 on PHI @ KCR YRFI (1st-inning OVER 0.5) (P=67%)
-  - #4 [NRFI] $35 on ARI @ SDP YRFI (1st-inning OVER 0.5) (P=66%)
-  - #5 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
+- Expected EV: **$-14.68**
+  - #1 [NRFI] $35 on ARI @ SDP YRFI (1st-inning OVER 0.5) (P=66%)
+  - #2 [NRFI] $35 on COL @ LAD YRFI (1st-inning OVER 0.5) (P=64%)
+  - #3 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
+  - #4 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
+  - #5 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
 
 ## 🎯 Convergence Picks (5 stacked games)
-- ELITE: **0** · HIGH: 0 · MED: 5
+- ELITE: **0** · HIGH: 2 · MED: 3
+  - [HIGH] Golden State Valkyries @ Washington Mystics : 3 signals (HEAT_COLD, ATS, ATS)
+  - [HIGH] Connecticut Sun @ Minnesota Lynx : 3 signals (ANOMALY, ATS, ATS)
   - [MED] New York Knicks @ San Antonio Spurs : 2 signals (ATS, ATS)
-  - [MED] Dallas Wings @ Toronto Tempo : 2 signals (ATS, ATS)
-  - [MED] Indiana Fever @ Las Vegas Aces : 2 signals (HEAT_COLD, ATS)
   - [MED] Portland Timbers @ Seattle Sounders FC : 2 signals (PREGAME, ATS)
   - [MED] Coventry City @ Arsenal : 2 signals (PREGAME, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (6)
+## ⚾ Top MLB Pitcher K Plays (4)
 - **Reynaldo López** OVER 4.5 K (78%) fair -349
 - **Kevin Gausman** OVER 4.5 K (75%) fair -303
 - **Shane Drohan** OVER 6.5 K (73%) fair -269
 - **Brandon Pfaadt** OVER 6.5 K (71%) fair -245
-- **Cristopher Sánchez** OVER 5.5 K (70%) fair -233
 
 ## 🏀 NBA Player Heat (19 HOT / 23 COLD)
   - 🔥 **Jeremiah Fears** (NO): L5 31.8/5.8/6.0 vs season 16.9/3.2/4.0 [PTS +14.9, REB +2.6, AST +2.0]
@@ -121,17 +125,20 @@
   - ❄️ **Andrew Putnam** (USA): Sunday +5.0 vs tourney avg
   - ❄️ **Gordon Sargent** (USA): Sunday +4.5 vs tourney avg
 
-## 🔥 MLB Batter Heat (47 HOT / 43 COLD)
+## 🔥 MLB Batter Heat (46 HOT / 42 COLD)
   - 🔥 **Dansby Swanson** (CHC): L14 .340 / season .207 (+133pts)
   - 🔥 **Javier Sanoja** (MIA): L14 .410 / season .278 (+132pts)
-  - 🔥 **Miguel Rojas** (LAD): L14 .423 / season .295 (+128pts)
   - 🔥 **Nick Gonzales** (PIT): L14 .431 / season .312 (+119pts)
-  - 🔥 **TJ Rumfield** (COL): L14 .412 / season .301 (+111pts)
-  - ❄️ **Drake Baldwin** (ATL): L14 .094 / season .251 (-157pts) -- FADE props
-  - ❄️ **Braden Shewmake** (HOU): L14 .091 / season .243 (-152pts) -- FADE props
-  - ❄️ **Jorge Mateo** (ATL): L14 .100 / season .248 (-148pts) -- FADE props
-  - ❄️ **Cody Bellinger** (NYY): L14 .104 / season .250 (-146pts) -- FADE props
-  - ❄️ **Ben Rice** (NYY): L14 .122 / season .266 (-144pts) -- FADE props
+  - 🔥 **Miguel Rojas** (LAD): L14 .407 / season .290 (+117pts)
+  - 🔥 **Garrett Mitchell** (MIL): L14 .385 / season .269 (+116pts)
+  - ❄️ **Cody Bellinger** (NYY): L14 .098 / season .248 (-150pts) -- FADE props
+  - ❄️ **Jorge Mateo** (ATL): L14 .107 / season .248 (-141pts) -- FADE props
+  - ❄️ **Ben Rice** (NYY): L14 .135 / season .267 (-132pts) -- FADE props
+  - ❄️ **Drake Baldwin** (ATL): L14 .132 / season .255 (-123pts) -- FADE props
+  - ❄️ **Braden Shewmake** (HOU): L14 .135 / season .256 (-121pts) -- FADE props
+
+## 📈 Streak Regression Alerts (1)
+- [WNBA] Golden State Valkyries on W4 L10 4-0 -- Golden State Valkyries on W4 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**
@@ -141,5 +148,5 @@
   - ⚠️ batter_rbis (Brier Δ -0.0052)
 
 ## 🤖 Self-Training Status
-- **WNBA**: n=32 games · hit rate 53.1% · bias -9.9pp [calibration applied]
-- **MLB**: n=190 games · hit rate 56.3% · bias +3.0pp [calibration applied]
+- **WNBA**: n=31 games · hit rate 51.6% · bias +0.8pp
+- **MLB**: n=186 games · hit rate 54.3% · bias +3.2pp [calibration applied]
