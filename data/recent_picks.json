@@ -1,21 +1,21 @@
 {
- "generated_at": "2026-07-07T15:47:50",
+ "generated_at": "2026-07-07T16:47:17",
  "stake_assumption": "1u flat per pick",
  "total_picks": 10000,
  "n_settled": 6493,
- "n_pending": 696,
- "n_void": 2811,
- "wins": 2716,
- "losses": 3769,
+ "n_pending": 708,
+ "n_void": 2799,
+ "wins": 2715,
+ "losses": 3770,
  "pushes": 8,
- "hit_rate": 0.4188,
- "net_units": -733.303,
- "roi_pct": -11.31,
+ "hit_rate": 0.4187,
+ "net_units": -735.293,
+ "roi_pct": -11.34,
  "n_calibrated_picks": 9067,
  "calibrated_reliability": {
   "n": 6392,
-  "ece_raw": 0.0834,
-  "ece_calibrated": 0.0168,
+  "ece_raw": 0.0836,
+  "ece_calibrated": 0.0164,
   "brier_raw": 0.21205,
   "brier_calibrated": 0.19536,
   "note": "In-sample over the settled ledger (the isotonic transform is fit on these same outcomes); held-out 70/30 validation is in recalibration_map.json. p_predicted = raw model prob (kept untouched for the learning loop); p_calibrated = honest prob stamped per pick. Lower ECE/Brier on the calibrated column = the displayed % is truer."
@@ -41,11 +41,11 @@
   ],
   "definition": "Featured/recommended plays only -- Lock of the Day, Top 25, Whale, Sharp, Consensus (hit), Under Alerts, POD. Excludes the experimental prop feeds, which are tracked to train the model, not bet."
  },
- "n_added_this_run": 8,
- "n_newly_settled_this_run": 15,
+ "n_added_this_run": 12,
+ "n_newly_settled_this_run": 0,
  "n_resettled_this_run": 1,
  "n_voided_this_run": 0,
- "n_reconciled_settled_voids": 1,
+ "n_reconciled_settled_voids": 0,
  "n_bootstrapped_from_locks_history": 0,
  "by_source": {
   "mlb_hit_to_record_hit_yes": {
@@ -59,12 +59,12 @@
   },
   "mlb_hit_to_record_hit_no": {
    "n": 213,
-   "wins": 105,
-   "losses": 108,
+   "wins": 104,
+   "losses": 109,
    "pushes": 0,
-   "net_units": -21.747,
-   "hit_rate": 0.493,
-   "roi_pct": -10.21
+   "net_units": -23.738,
+   "hit_rate": 0.4883,
+   "roi_pct": -11.14
   },
   "ufc_r1_fight_r1_finish_yes": {
    "n": 155,
@@ -1293,11 +1293,11 @@
   },
   "to_record_hit_no": {
    "n": 213,
-   "wins": 105,
-   "losses": 108,
+   "wins": 104,
+   "losses": 109,
    "pushes": 0,
-   "net_units": -21.747,
-   "hit_rate": 0.493
+   "net_units": -23.738,
+   "hit_rate": 0.4883
   },
   "fight_r1_finish_yes": {
    "n": 155,
@@ -1727,11 +1727,11 @@
   },
   "mlb_hit_0.5_under": {
    "n": 213,
-   "wins": 105,
-   "losses": 108,
+   "wins": 104,
+   "losses": 109,
    "pushes": 0,
-   "net_units": -21.747,
-   "hit_rate": 0.493
+   "net_units": -23.738,
+   "hit_rate": 0.4883
   },
   "fight_r1_finish_yes": {
    "n": 155,
@@ -2168,16 +2168,16 @@
  },
  "by_sport": {
   "MLB": {
-   "n": 6890,
+   "n": 6888,
    "settled": 4535,
-   "wins": 1459,
-   "losses": 3068,
+   "wins": 1458,
+   "losses": 3069,
    "pushes": 8,
-   "pending": 397,
-   "void": 1958,
-   "net_units": -1126.591,
-   "hit_rate": 0.3223,
-   "roi_pct": -24.89,
+   "pending": 407,
+   "void": 1946,
+   "net_units": -1128.581,
+   "hit_rate": 0.3221,
+   "roi_pct": -24.93,
    "markets": 47
   },
   "UFC": {
@@ -2246,12 +2246,12 @@
    "markets": 6
   },
   "MLB-PP": {
-   "n": 1000,
+   "n": 1002,
    "settled": 727,
    "wins": 607,
    "losses": 120,
    "pushes": 0,
-   "pending": 54,
+   "pending": 56,
    "void": 219,
    "net_units": 253.268,
    "hit_rate": 0.8349,
@@ -2338,10 +2338,10 @@
   }
  },
  "last_7_days": {
-  "wins": 424,
-  "losses": 724,
-  "net_units": -215.562,
-  "hit_rate": 0.3693
+  "wins": 423,
+  "losses": 725,
+  "net_units": -217.552,
+  "hit_rate": 0.3685
  },
  "note": "Unified pick ledger -- records every pick the model surfaces (top_25 board, whales, consensus, unders, sharp action, locks, POD) and settles each against actual outcomes. Per-source W-L feeds back into calibration so the model learns which modules are reliable. THIS is the training signal.",
  "picks": [
@@ -2442,7 +2442,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-05T22:38:45",
-   "p_calibrated": 0.8662,
+   "p_calibrated": 0.8562,
    "outcome": {
     "stat": "hrr",
     "actual": 4,
@@ -2667,7 +2667,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-05T22:38:45",
-   "p_calibrated": 0.3141,
+   "p_calibrated": 0.323,
    "outcome": {
     "stat": "hits",
     "actual": 0,
@@ -2745,7 +2745,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-05T22:38:45",
-   "p_calibrated": 0.2748,
+   "p_calibrated": 0.2749,
    "outcome": {
     "stat": "tb",
     "actual": 0,
@@ -2771,7 +2771,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-05T22:38:45",
-   "p_calibrated": 0.216,
+   "p_calibrated": 0.2152,
    "outcome": {
     "stat": "tb",
     "actual": 1,
@@ -2797,7 +2797,7 @@
    "result": "won",
    "payout_units": 2.66,
    "recorded_at": "2026-07-05T22:38:45",
-   "p_calibrated": 0.216,
+   "p_calibrated": 0.2152,
    "outcome": {
     "stat": "tb",
     "actual": 7,
@@ -2823,7 +2823,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-05T22:38:45",
-   "p_calibrated": 0.216,
+   "p_calibrated": 0.2152,
    "outcome": {
     "stat": "tb",
     "actual": 1,
@@ -2849,7 +2849,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-05T22:38:45",
-   "p_calibrated": 0.197,
+   "p_calibrated": 0.1967,
    "outcome": {
     "stat": "tb",
     "actual": 0,
@@ -2928,7 +2928,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-05T22:38:45",
-   "p_calibrated": 0.3175,
+   "p_calibrated": 0.317,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -2955,7 +2955,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-05T22:38:45",
-   "p_calibrated": 0.2895,
+   "p_calibrated": 0.2888,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -2982,7 +2982,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-05T22:38:45",
-   "p_calibrated": 0.2895,
+   "p_calibrated": 0.2888,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -3071,7 +3071,7 @@
     "verify": "Isaac Collins \u2014 hrr = 3 (line 3.5, bet UNDER/NO) on 2026-07-05",
     "check": "verified"
    },
-   "p_calibrated": 0.8284
+   "p_calibrated": 0.8321
   },
   {
    "source": "top_25_board",
@@ -3089,7 +3089,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-05T23:06:27",
-   "p_calibrated": 0.8662,
+   "p_calibrated": 0.8562,
    "outcome": {
     "stat": "hrr",
     "actual": 4,
@@ -3116,7 +3116,7 @@
    "result": "won",
    "payout_units": 0.7353,
    "recorded_at": "2026-07-05T23:06:27",
-   "p_calibrated": 0.8284,
+   "p_calibrated": 0.8321,
    "outcome": {
     "stat": "hrr",
     "actual": 3,
@@ -3143,7 +3143,7 @@
    "result": "won",
    "payout_units": 0.7353,
    "recorded_at": "2026-07-05T23:06:27",
-   "p_calibrated": 0.8284,
+   "p_calibrated": 0.8321,
    "outcome": {
     "stat": "hrr",
     "actual": 1,
@@ -3192,7 +3192,7 @@
    "result": "won",
    "payout_units": 0.7353,
    "recorded_at": "2026-07-05T23:06:27",
-   "p_calibrated": 0.8284,
+   "p_calibrated": 0.8321,
    "outcome": {
     "stat": "hrr",
     "actual": 1,
@@ -3218,7 +3218,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-05T23:30:51",
-   "p_calibrated": 0.4786,
+   "p_calibrated": 0.4788,
    "outcome": {
     "stat": "hits",
     "actual": 1,
@@ -3546,7 +3546,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-05T23:30:51",
-   "p_calibrated": 0.1861,
+   "p_calibrated": 0.1892,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -3572,7 +3572,7 @@
    "result": "won",
    "payout_units": 3.12,
    "recorded_at": "2026-07-05T23:30:51",
-   "p_calibrated": 0.1633,
+   "p_calibrated": 0.1647,
    "outcome": {
     "stat": "hr",
     "actual": 1,
@@ -3702,7 +3702,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-05T23:30:51",
-   "p_calibrated": 0.1573,
+   "p_calibrated": 0.1572,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -3728,7 +3728,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-05T23:30:51",
-   "p_calibrated": 0.1452,
+   "p_calibrated": 0.1444,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -3754,7 +3754,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-05T23:30:51",
-   "p_calibrated": 0.1452,
+   "p_calibrated": 0.1444,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -3780,7 +3780,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-05T23:30:51",
-   "p_calibrated": 0.1452,
+   "p_calibrated": 0.1444,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -3806,7 +3806,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-05T23:30:51",
-   "p_calibrated": 0.1452,
+   "p_calibrated": 0.1444,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -3910,7 +3910,7 @@
    "result": "won",
    "payout_units": 2.14,
    "recorded_at": "2026-07-05T23:30:51",
-   "p_calibrated": 0.216,
+   "p_calibrated": 0.2152,
    "outcome": {
     "stat": "tb",
     "actual": 4,
@@ -3936,7 +3936,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-05T23:30:51",
-   "p_calibrated": 0.216,
+   "p_calibrated": 0.2152,
    "outcome": {
     "stat": "tb",
     "actual": 0,
@@ -4015,7 +4015,7 @@
    "result": "won",
    "payout_units": 1.29,
    "recorded_at": "2026-07-05T23:30:51",
-   "p_calibrated": 0.3209,
+   "p_calibrated": 0.3208,
    "outcome": {
     "stat": "xbh",
     "actual": 1,
@@ -4069,7 +4069,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-05T23:30:51",
-   "p_calibrated": 0.2895,
+   "p_calibrated": 0.2888,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -4182,7 +4182,7 @@
    "result": "won",
    "payout_units": 0.7353,
    "recorded_at": "2026-07-06T01:24:02",
-   "p_calibrated": 0.8662,
+   "p_calibrated": 0.8562,
    "outcome": {
     "stat": "hrr",
     "actual": 1,
@@ -4209,7 +4209,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-06T01:24:02",
-   "p_calibrated": 0.8402,
+   "p_calibrated": 0.8396,
    "outcome": {
     "stat": "hrr",
     "actual": 4,
@@ -4236,7 +4236,7 @@
    "result": "won",
    "payout_units": 0.7353,
    "recorded_at": "2026-07-06T01:24:02",
-   "p_calibrated": 0.8284,
+   "p_calibrated": 0.8321,
    "outcome": {
     "stat": "hrr",
     "actual": 1,
@@ -4263,7 +4263,7 @@
    "result": "won",
    "payout_units": 0.7353,
    "recorded_at": "2026-07-06T01:24:02",
-   "p_calibrated": 0.8284,
+   "p_calibrated": 0.8321,
    "outcome": {
     "stat": "hrr",
     "actual": 0,
@@ -4336,7 +4336,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-06T01:24:02",
-   "p_calibrated": 0.8662,
+   "p_calibrated": 0.8562,
    "outcome": {
     "stat": "hrr",
     "actual": 5,
@@ -4361,7 +4361,7 @@
    "result": "won",
    "payout_units": 0.7353,
    "recorded_at": "2026-07-06T01:24:02",
-   "p_calibrated": 0.8662,
+   "p_calibrated": 0.8562,
    "outcome": {
     "stat": "hrr",
     "actual": 0,
@@ -4386,7 +4386,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-06T01:24:02",
-   "p_calibrated": 0.8615,
+   "p_calibrated": 0.8532,
    "outcome": {
     "stat": "hrr",
     "actual": 5,
@@ -4411,7 +4411,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-06T01:24:02",
-   "p_calibrated": 0.8662,
+   "p_calibrated": 0.8562,
    "outcome": {
     "stat": "hrr",
     "actual": 4,
@@ -4436,7 +4436,7 @@
    "result": "won",
    "payout_units": 0.7353,
    "recorded_at": "2026-07-06T01:24:02",
-   "p_calibrated": 0.8662,
+   "p_calibrated": 0.8562,
    "outcome": {
     "stat": "hrr",
     "actual": 1,
@@ -4461,7 +4461,7 @@
    "result": "won",
    "payout_units": 0.7353,
    "recorded_at": "2026-07-06T01:24:02",
-   "p_calibrated": 0.8284,
+   "p_calibrated": 0.8321,
    "outcome": {
     "stat": "hrr",
     "actual": 1,
@@ -4487,7 +4487,7 @@
    "result": "won",
    "payout_units": 0.9615,
    "recorded_at": "2026-07-06T01:24:02",
-   "p_calibrated": 0.4786,
+   "p_calibrated": 0.4788,
    "outcome": {
     "stat": "hits",
     "actual": 0,
@@ -4915,7 +4915,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-06T01:24:02",
-   "p_calibrated": 0.1861,
+   "p_calibrated": 0.1892,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -4941,7 +4941,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-06T01:24:02",
-   "p_calibrated": 0.1633,
+   "p_calibrated": 0.1647,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -5071,7 +5071,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-06T01:24:02",
-   "p_calibrated": 0.1573,
+   "p_calibrated": 0.1572,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -5097,7 +5097,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-06T01:24:02",
-   "p_calibrated": 0.1452,
+   "p_calibrated": 0.1444,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -5123,7 +5123,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-06T01:24:02",
-   "p_calibrated": 0.1452,
+   "p_calibrated": 0.1444,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -5149,7 +5149,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-06T01:24:02",
-   "p_calibrated": 0.1452,
+   "p_calibrated": 0.1444,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -5175,7 +5175,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-06T01:24:02",
-   "p_calibrated": 0.3141,
+   "p_calibrated": 0.323,
    "outcome": {
     "stat": "hits",
     "actual": 1,
@@ -5201,7 +5201,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-06T01:24:02",
-   "p_calibrated": 0.3141,
+   "p_calibrated": 0.323,
    "outcome": {
     "stat": "hits",
     "actual": 0,
@@ -5279,7 +5279,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-06T01:24:02",
-   "p_calibrated": 0.216,
+   "p_calibrated": 0.2152,
    "outcome": {
     "stat": "tb",
     "actual": 0,
@@ -5305,7 +5305,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-06T01:24:02",
-   "p_calibrated": 0.2152,
+   "p_calibrated": 0.2147,
    "outcome": {
     "stat": "tb",
     "actual": 1,
@@ -5384,7 +5384,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-06T01:24:02",
-   "p_calibrated": 0.3209,
+   "p_calibrated": 0.3208,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -5411,7 +5411,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-06T01:24:02",
-   "p_calibrated": 0.3175,
+   "p_calibrated": 0.317,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -5438,7 +5438,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-06T01:24:02",
-   "p_calibrated": 0.3151,
+   "p_calibrated": 0.3142,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -5465,7 +5465,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-06T01:24:02",
-   "p_calibrated": 0.3082,
+   "p_calibrated": 0.3071,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -5519,7 +5519,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-06T01:24:02",
-   "p_calibrated": 0.2895,
+   "p_calibrated": 0.2888,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -5678,7 +5678,7 @@
    "result": "won",
    "payout_units": 0.7353,
    "recorded_at": "2026-07-06T12:35:58",
-   "p_calibrated": 0.8662,
+   "p_calibrated": 0.8562,
    "outcome": {
     "stat": "hrr",
     "actual": 3,
@@ -5705,7 +5705,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-06T12:35:58",
-   "p_calibrated": 0.8662,
+   "p_calibrated": 0.8562,
    "outcome": {
     "stat": "hrr",
     "actual": 5,
@@ -5732,7 +5732,7 @@
    "result": "won",
    "payout_units": 0.7353,
    "recorded_at": "2026-07-06T12:35:58",
-   "p_calibrated": 0.8284,
+   "p_calibrated": 0.8321,
    "outcome": {
     "stat": "hrr",
     "actual": 0,
@@ -5757,7 +5757,7 @@
    "result": "won",
    "payout_units": 0.7353,
    "recorded_at": "2026-07-06T12:35:58",
-   "p_calibrated": 0.8662,
+   "p_calibrated": 0.8562,
    "outcome": {
     "stat": "hrr",
     "actual": 3,
@@ -5812,7 +5812,7 @@
    "result": "won",
    "payout_units": 0.7353,
    "recorded_at": "2026-07-06T17:04:48",
-   "p_calibrated": 0.8662,
+   "p_calibrated": 0.8562,
    "outcome": {
     "stat": "hrr",
     "actual": 1,
@@ -5837,7 +5837,7 @@
    "result": "won",
    "payout_units": 0.7353,
    "recorded_at": "2026-07-06T17:04:48",
-   "p_calibrated": 0.8662,
+   "p_calibrated": 0.8562,
    "outcome": {
     "stat": "hrr",
     "actual": 1,
@@ -5913,7 +5913,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-06T18:06:55",
-   "p_calibrated": 0.227,
+   "p_calibrated": 0.2263,
    "outcome": {
     "stat": "tb",
     "actual": 1,
@@ -5939,7 +5939,7 @@
    "result": "won",
    "payout_units": 2.36,
    "recorded_at": "2026-07-06T18:06:55",
-   "p_calibrated": 0.216,
+   "p_calibrated": 0.2152,
    "outcome": {
     "stat": "tb",
     "actual": 4,
@@ -5965,7 +5965,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-06T18:06:55",
-   "p_calibrated": 0.216,
+   "p_calibrated": 0.2152,
    "outcome": {
     "stat": "tb",
     "actual": 0,
@@ -5992,7 +5992,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-06T18:06:55",
-   "p_calibrated": 0.3101,
+   "p_calibrated": 0.3088,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -6019,7 +6019,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-06T18:06:55",
-   "p_calibrated": 0.3045,
+   "p_calibrated": 0.3036,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -6046,7 +6046,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-06T18:06:55",
-   "p_calibrated": 0.2934,
+   "p_calibrated": 0.2932,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -6181,7 +6181,7 @@
    "result": "won",
    "payout_units": 1.92,
    "recorded_at": "2026-07-06T18:06:55",
-   "p_calibrated": 0.2898,
+   "p_calibrated": 0.2893,
    "outcome": {
     "stat": "xbh",
     "actual": 2,
@@ -6208,7 +6208,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-06T18:06:55",
-   "p_calibrated": 0.2895,
+   "p_calibrated": 0.2888,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -6235,7 +6235,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-06T18:06:55",
-   "p_calibrated": 0.2895,
+   "p_calibrated": 0.2888,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -6343,7 +6343,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-06T23:33:35",
-   "p_calibrated": 0.8402,
+   "p_calibrated": 0.8396,
    "outcome": {
     "stat": "hrr",
     "actual": 4,
@@ -6468,7 +6468,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-06T23:33:35",
-   "p_calibrated": 0.3141,
+   "p_calibrated": 0.323,
    "outcome": {
     "stat": "hits",
     "actual": 0,
@@ -6494,7 +6494,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-06T23:33:35",
-   "p_calibrated": 0.3141,
+   "p_calibrated": 0.323,
    "outcome": {
     "stat": "hits",
     "actual": 1,
@@ -6650,7 +6650,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-06T23:33:35",
-   "p_calibrated": 0.216,
+   "p_calibrated": 0.2152,
    "outcome": {
     "stat": "tb",
     "actual": 0,
@@ -6676,7 +6676,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-06T23:33:35",
-   "p_calibrated": 0.216,
+   "p_calibrated": 0.2152,
    "outcome": {
     "stat": "tb",
     "actual": 2,
@@ -6702,7 +6702,7 @@
    "result": "won",
    "payout_units": 2.26,
    "recorded_at": "2026-07-06T23:33:35",
-   "p_calibrated": 0.216,
+   "p_calibrated": 0.2152,
    "outcome": {
     "stat": "tb",
     "actual": 4,
@@ -6728,7 +6728,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-06T23:33:35",
-   "p_calibrated": 0.216,
+   "p_calibrated": 0.2152,
    "outcome": {
     "stat": "tb",
     "actual": 0,
@@ -6754,7 +6754,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-06T23:33:35",
-   "p_calibrated": 0.216,
+   "p_calibrated": 0.2152,
    "outcome": {
     "stat": "tb",
     "actual": 0,
@@ -6780,7 +6780,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-06T23:33:35",
-   "p_calibrated": 0.216,
+   "p_calibrated": 0.2152,
    "outcome": {
     "stat": "tb",
     "actual": 0,
@@ -6806,7 +6806,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-06T23:33:35",
-   "p_calibrated": 0.216,
+   "p_calibrated": 0.2152,
    "outcome": {
     "stat": "tb",
     "actual": 0,
@@ -6887,7 +6887,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-06T23:33:35",
-   "p_calibrated": 0.3189,
+   "p_calibrated": 0.3186,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -6914,7 +6914,7 @@
    "result": "won",
    "payout_units": 1.43,
    "recorded_at": "2026-07-06T23:33:35",
-   "p_calibrated": 0.3073,
+   "p_calibrated": 0.3062,
    "outcome": {
     "stat": "xbh",
     "actual": 1,
@@ -6941,7 +6941,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-06T23:33:35",
-   "p_calibrated": 0.2934,
+   "p_calibrated": 0.2932,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -6968,7 +6968,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-06T23:33:35",
-   "p_calibrated": 0.2934,
+   "p_calibrated": 0.2932,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -7103,7 +7103,7 @@
    "result": "won",
    "payout_units": 1.88,
    "recorded_at": "2026-07-06T23:33:35",
-   "p_calibrated": 0.2904,
+   "p_calibrated": 0.2901,
    "outcome": {
     "stat": "xbh",
     "actual": 1,
@@ -7130,7 +7130,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-06T23:33:35",
-   "p_calibrated": 0.2903,
+   "p_calibrated": 0.2899,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -7157,7 +7157,7 @@
    "result": "won",
    "payout_units": 1.93,
    "recorded_at": "2026-07-06T23:33:35",
-   "p_calibrated": 0.2897,
+   "p_calibrated": 0.2891,
    "outcome": {
     "stat": "xbh",
     "actual": 1,
@@ -7184,7 +7184,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-06T23:33:35",
-   "p_calibrated": 0.2897,
+   "p_calibrated": 0.2891,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -7211,7 +7211,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-06T23:33:35",
-   "p_calibrated": 0.2895,
+   "p_calibrated": 0.2888,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -7238,7 +7238,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-06T23:33:35",
-   "p_calibrated": 0.2895,
+   "p_calibrated": 0.2888,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -7265,7 +7265,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-06T23:33:35",
-   "p_calibrated": 0.2895,
+   "p_calibrated": 0.2888,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -7574,5 +7574,5 @@
   "2026-05-19",
   "2026-07-07"
  ],
- "digest_generated_at": "2026-07-07T15:47:51"
+ "digest_generated_at": "2026-07-07T16:47:18"
 }
