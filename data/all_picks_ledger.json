@@ -1,23 +1,23 @@
 {
-  "generated_at": "2026-07-08T21:39:11",
+  "generated_at": "2026-07-08T22:43:10",
   "stake_assumption": "1u flat per pick",
   "total_picks": 10000,
-  "n_settled": 6645,
-  "n_pending": 734,
+  "n_settled": 6646,
+  "n_pending": 733,
   "n_void": 2621,
-  "wins": 2766,
+  "wins": 2767,
   "losses": 3871,
   "pushes": 8,
   "hit_rate": 0.4168,
-  "net_units": -776.501,
-  "roi_pct": -11.7,
+  "net_units": -775.816,
+  "roi_pct": -11.69,
   "n_calibrated_picks": 9040,
   "calibrated_reliability": {
-    "n": 6542,
-    "ece_raw": 0.0851,
-    "ece_calibrated": 0.0174,
-    "brier_raw": 0.21241,
-    "brier_calibrated": 0.19562,
+    "n": 6543,
+    "ece_raw": 0.085,
+    "ece_calibrated": 0.0173,
+    "brier_raw": 0.2124,
+    "brier_calibrated": 0.19561,
     "note": "In-sample over the settled ledger (the isotonic transform is fit on these same outcomes); held-out 70/30 validation is in recalibration_map.json. p_predicted = raw model prob (kept untouched for the learning loop); p_calibrated = honest prob stamped per pick. Lower ECE/Brier on the calibrated column = the displayed % is truer."
   },
   "curated": {
@@ -42,7 +42,7 @@
     "definition": "Featured/recommended plays only -- Lock of the Day, Top 25, Whale, Sharp, Consensus (hit), Under Alerts, POD. Excludes the experimental prop feeds, which are tracked to train the model, not bet."
   },
   "n_added_this_run": 0,
-  "n_newly_settled_this_run": 0,
+  "n_newly_settled_this_run": 1,
   "n_resettled_this_run": 0,
   "n_voided_this_run": 0,
   "n_reconciled_settled_voids": 0,
@@ -220,13 +220,13 @@
       "roi_pct": 34.43
     },
     "mlb_game_total_game_total_under_9.5": {
-      "n": 18,
-      "wins": 11,
+      "n": 19,
+      "wins": 12,
       "losses": 7,
       "pushes": 0,
-      "net_units": -0.61,
-      "hit_rate": 0.6111,
-      "roi_pct": -3.39
+      "net_units": 0.075,
+      "hit_rate": 0.6316,
+      "roi_pct": 0.39
     },
     "mlb_game_total_game_total_over_6.5": {
       "n": 9,
@@ -1422,12 +1422,12 @@
       "hit_rate": 0.75
     },
     "under": {
-      "n": 74,
-      "wins": 47,
+      "n": 75,
+      "wins": 48,
       "losses": 21,
       "pushes": 6,
-      "net_units": 17.894,
-      "hit_rate": 0.6912
+      "net_units": 18.579,
+      "hit_rate": 0.6957
     },
     "over": {
       "n": 105,
@@ -1856,12 +1856,12 @@
       "hit_rate": 0.75
     },
     "under": {
-      "n": 74,
-      "wins": 47,
+      "n": 75,
+      "wins": 48,
       "losses": 21,
       "pushes": 6,
-      "net_units": 17.894,
-      "hit_rate": 0.6912
+      "net_units": 18.579,
+      "hit_rate": 0.6957
     },
     "over": {
       "n": 105,
@@ -2187,15 +2187,15 @@
   "by_sport": {
     "MLB": {
       "n": 6823,
-      "settled": 4654,
-      "wins": 1490,
+      "settled": 4655,
+      "wins": 1491,
       "losses": 3156,
       "pushes": 8,
-      "pending": 428,
+      "pending": 427,
       "void": 1741,
-      "net_units": -1168.718,
-      "hit_rate": 0.3207,
-      "roi_pct": -25.16,
+      "net_units": -1168.033,
+      "hit_rate": 0.3209,
+      "roi_pct": -25.14,
       "markets": 46
     },
     "UFC": {
@@ -2356,10 +2356,10 @@
     }
   },
   "last_7_days": {
-    "wins": 438,
+    "wins": 439,
     "losses": 772,
-    "net_units": -244.066,
-    "hit_rate": 0.362
+    "net_units": -243.381,
+    "hit_rate": 0.3625
   },
   "picks": [
     {
@@ -241012,11 +241012,17 @@
       "matchup": "COL @ LAD",
       "date": "2026-07-08",
       "pick_id": "mlb_game_total_game_total_under_9_5|MLB|COL___LAD|under_9_5|2026-07-08",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "won",
+      "payout_units": 0.6849,
       "recorded_at": "2026-07-08T10:31:45",
-      "p_calibrated": 0.6352
+      "p_calibrated": 0.6352,
+      "outcome": {
+        "final_score": "COL 4 @ LAD 3",
+        "total_runs": 7,
+        "verify": "COL @ LAD: final 4-3 (total 7 runs) on 2026-07-08"
+      },
+      "settled_at": "2026-07-08T22:43:10"
     },
     {
       "source": "pod",
