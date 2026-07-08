@@ -143,6 +143,89 @@ fetch('data/alpha_pod_record.json?t=' + Date.now()).then(function (r) { return r
 }).catch(function () {});
 </script>
 
+<!-- THE ONE PICK: the single best Alpha play each day, tracked on its own (backfilled
+     from the ledger). Answers "what if we didn't bet the whole board?" -->
+<section id="onePickCard" style="display:none; margin:0 0 22px; border:1px solid rgba(212,160,74,.28); border-radius:12px; background:linear-gradient(180deg,rgba(212,160,74,.06),rgba(255,255,255,.01)); overflow:hidden;">
+  <div style="padding:14px 18px 6px;">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;">
+      <h2 style="margin:0;font-size:16px;">🎯 The One Pick <span style="color:var(--muted,#888);font-weight:400;font-size:12px;">— the single best Alpha play each day, tracked on its own</span></h2>
+      <span id="opStreak" style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted,#888);"></span>
+    </div>
+    <p style="margin:6px 0 0;font-size:12.5px;color:var(--text-2,#9fb0c8);line-height:1.6;">
+      The full Alpha board surfaces dozens of plays a day — great in aggregate, but hard to <em>follow</em>.
+      This isolates the <strong>single highest-EV pick</strong> each slate (flat 1u, backfilled from the public
+      ledger, selected on pre-game odds only) so there's one number to watch.
+    </p>
+  </div>
+  <div id="opStats" style="display:flex;flex-wrap:wrap;gap:0;border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06);"></div>
+  <div id="opCompare" style="padding:11px 18px;font-size:12px;color:var(--text-2,#9fb0c8);line-height:1.6;border-bottom:1px solid rgba(255,255,255,.06);"></div>
+  <div style="padding:6px 18px 4px;font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted,#888);font-family:'JetBrains Mono',monospace;">Daily record — newest first</div>
+  <div style="overflow-x:auto;">
+    <div id="opRows" style="min-width:520px;font-family:'JetBrains Mono',monospace;font-size:12px;padding:0 8px 10px;"></div>
+  </div>
+  <details style="padding:0 18px 14px;">
+    <summary style="cursor:pointer;font-size:11px;color:var(--muted,#888);text-transform:uppercase;letter-spacing:.5px;">Why one pick ≠ the whole board</summary>
+    <p id="opNote" style="font-size:12px;color:var(--text-2,#9fb0c8);line-height:1.65;margin:8px 0 0;"></p>
+  </details>
+</section>
+<script>
+fetch('data/alpha_pick_record.json?t=' + Date.now()).then(function (r) { return r.json(); }).then(function (d) {
+  if (!d || !d.record) return;
+  var r = d.record, r30 = d.record_last_30 || {}, b = d.board || {};
+  var card = document.getElementById('onePickCard');
+  var col = function (v) { return v == null ? '#9fb0c8' : (v >= 0 ? '#58c878' : '#e35a5a'); };
+  var pc = function (v) { return v == null ? '—' : (v >= 0 ? '+' : '') + (+v).toFixed(1) + '%'; };
+  // streak
+  var st = d.streak || {};
+  if (st.kind && st.n) {
+    document.getElementById('opStreak').innerHTML = 'current streak: <b style="color:' +
+      (st.kind === 'won' ? '#58c878' : '#e35a5a') + ';">' + st.n + (st.kind === 'won' ? 'W' : 'L') + '</b>';
+  }
+  // stat cells
+  var cell = function (lab, val, color) {
+    return '<div style="flex:1 1 96px;padding:11px 14px;border-right:1px solid rgba(255,255,255,.06);">' +
+      '<div style="font-size:9.5px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted,#888);">' + lab + '</div>' +
+      '<div style="font-size:18px;font-weight:700;color:' + (color || 'inherit') + ';font-family:\'JetBrains Mono\',monospace;margin-top:2px;">' + val + '</div></div>';
+  };
+  var rec = r.wins + '-' + r.losses + (r.pushes ? '-' + r.pushes : '');
+  document.getElementById('opStats').innerHTML =
+    cell('Record', rec, '#e8ecf3') +
+    cell('Hit rate', r.hit_rate != null ? Math.round(r.hit_rate * 100) + '%' : '—', '#e8ecf3') +
+    cell('ROI / bet', pc(r.roi_pct), col(r.roi_pct)) +
+    cell('Net (1u flat)', (r.net_units >= 0 ? '+' : '') + r.net_units + 'u', col(r.net_units)) +
+    cell('Last 30d', pc(r30.roi_pct), col(r30.roi_pct));
+  // honest ETF comparison
+  document.getElementById('opCompare').innerHTML =
+    '<strong style="color:#d4a04a;">One pick vs the board:</strong> ' +
+    'this single play runs <b style="color:' + col(r.roi_pct) + ';">' + pc(r.roi_pct) + '</b> at ' +
+    (r.hit_rate != null ? Math.round(r.hit_rate * 100) + '%' : '—') + ' over ' + r.n_settled + ' settled — ' +
+    (b.roi_pct != null ? 'right alongside the full <b>curated board</b> (<b style="color:#58c878;">+' +
+      (+b.roi_pct).toFixed(1) + '%</b> at <b>' + Math.round((b.hit_rate || 0) * 100) + '%</b> across ~' +
+      (b.n_settled || 0) + ' plays). ' : '') +
+    'That <em>both</em> clear a real edge is the point — it\'s the model + curation, not luck. But one bet a day is far higher variance (~' +
+    r.n_settled + ' bets vs ~' + (b.n_settled || 0) + '): follow the one pick as a headline; the board\'s larger sample is the bankable number.';
+  // rows
+  var rowsHtml = (d.history || []).slice(0, 20).map(function (h) {
+    var res = h.result, badge, bc;
+    if (res === 'won') { badge = 'WIN'; bc = '#58c878'; }
+    else if (res === 'lost') { badge = 'LOSS'; bc = '#e35a5a'; }
+    else if (res === 'pending') { badge = '•••'; bc = '#888'; }
+    else { badge = 'PUSH'; bc = '#d4a04a'; }
+    var pu = h.payout_units;
+    return '<div style="display:grid;grid-template-columns:82px 1fr 128px 54px 60px;gap:8px;padding:6px 10px;border-bottom:1px solid rgba(255,255,255,.04);align-items:center;">' +
+      '<span style="color:var(--muted,#888);">' + h.date + '</span>' +
+      '<span><b>' + (h.player_or_matchup || '') + '</b> <span style="color:var(--muted,#888);font-size:11px;">' + String(h.market || '').replace(/_/g, ' ').toLowerCase() + '</span></span>' +
+      '<span style="color:#9fb0c8;font-size:11px;">' + (h.sport || '') + (h.fair_american != null ? ' @ ' + h.fair_american : '') + '</span>' +
+      '<span style="color:' + (h.roi_model_pct >= 0 ? '#58c878' : '#e35a5a') + ';">' + (h.roi_model_pct >= 0 ? '+' : '') + h.roi_model_pct + '%</span>' +
+      '<span style="color:' + bc + ';font-weight:700;">' + badge + (pu != null && res !== 'pending' ? ' <span style="font-weight:400;color:var(--muted,#888);font-size:10px;">' + (pu >= 0 ? '+' : '') + pu + '</span>' : '') + '</span>' +
+      '</div>';
+  }).join('');
+  document.getElementById('opRows').innerHTML = rowsHtml || '<div style="padding:12px;color:var(--muted,#888);">building…</div>';
+  document.getElementById('opNote').textContent = d.note || '';
+  card.style.display = 'block';
+}).catch(function () {});
+</script>
+
 <div class="alpha-hero" id="alpha-hero">
   <div class="tag-row">
     <div class="tag tag-alpha">★ ALPHA PICK</div>
