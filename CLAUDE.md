@@ -41,7 +41,20 @@ bpleone-site/
 
 ## Current deployment state (LIVE)
 
-- **2026-07-02→06 — Rigor ladder + synthetic decontamination (newest, read first):**
+- **2026-07-08 — "The One Pick" alpha single-pick tracker (newest, read first):**
+  Brandon wanted the single best Alpha pick per day tracked separately (the full board
+  "feels like an ETF"). `alpha_pick_record.py` → `alpha_pick_record.json` → card on
+  alpha-pick.html. Rule: the single highest model-EV **MLB player prop** each slate,
+  flat 1u, backfilled from the ledger, selected on pre-game prob+odds ONLY (no
+  hindsight). Two selection lessons baked in: (1) game moneylines void in the ledger →
+  the old headline "record" was 0-0/14-void → restrict to player props; (2) the live
+  game-line Alpha prob cap of 0.85 is WRONG for props (it excluded the proven
+  hrr-under family ~0.86 and left the model's overrated coinflip props) → prop ceiling
+  raised to 0.90. Result: 32-5, 86% hit, +50% ROI (51-day backfill) beside the curated
+  board's +30%; honest framing = both clear a real edge but one bet/day is far higher
+  variance (~50 vs ~1000). Wired into daily-pipeline after alpha_pod_tracker.
+
+- **2026-07-02→06 — Rigor ladder + synthetic decontamination:**
   - **Walk-forward LADDER** (`forward_test.py`): the forward test now auto-freezes a NEW
     cut-set rung whenever the newest one matures (>=400 settled, >=7d apart, cap 12).
     Rung 1 (6/22) matured at n=540: curated +42.3% vs raw -13.3%, zero hindsight. Rung 2
