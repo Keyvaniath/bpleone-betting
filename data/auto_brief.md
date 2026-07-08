@@ -40,10 +40,6 @@ _0% lineups confirmed · 16 rookie SPs_
 ## Weather leans
 - **UNDER lean** (wind in + cold): TOR @ SFG
 
-## Hot streaks
-**Batters heating up:** James Wood (heat +3.59), Matt Olson (heat +1.82), Ben Rice (heat +1.51)
-**Pitchers on a run:** Dylan Cease (heat -0.69), Spencer Arrighetti (heat -1.97), Dean Kremer (heat -3.75)
-
 ## Bullpens GASSED tonight
 San Diego Padres, San Francisco Giants, St. Louis Cardinals, Tampa Bay Rays, Toronto Blue Jays, Atlanta Braves, Milwaukee Brewers, Arizona Diamondbacks
 _Lean late-inning OVER on these games; fade their save situations._
@@ -80,7 +76,7 @@ _Lean late-inning OVER on these games; fade their save situations._
 - [MSI] TBD vs TBD BO5 | P(A) 50.0% fair -100/-100
 - **LoL POT:** G2 Esports ML vs LYON (MSI, BO5) (HIGH)
 
-## Player Play of the Day -- across all sports (3612 candidates scanned)
+## Player Play of the Day -- across all sports (3621 candidates scanned)
 - **[LOL]** Inspired UNDER 3.5 Kills | model 61.7% fair -161 (ELITE)
 - **[LOL]** ShowMaker OVER 3.5 Kills | model 62.5% fair -167 (ELITE)
 - **[LOL]** Peyz OVER 4.5 Kills | model 61.3% fair -158 (ELITE)

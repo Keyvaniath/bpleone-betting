@@ -1,13 +1,13 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-07-08T15:14:26 UTC_
+_Generated 2026-07-08T16:11:15 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -173
+- **Score:** -160
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 6
-- **Total FADES:** 197
+- **Total STRONG:** 10
+- **Total FADES:** 200
 
 ## Lock of the Night
 - **Subject:** Michael McGreevy
@@ -17,10 +17,16 @@ _Generated 2026-07-08T15:14:26 UTC_
 - **Details:** MIL @ STL
 
 ## Top 5 Curated Picks
-1. **MLB / Chase Burns** (MLB_PITCHER, score=64.42)
+1. **WNBA / caitlin clark** (WNBA_PLAYER, score=153.67)
+   - Play: caitlin clark (PLAYER_STRONG)
+   - Rationale: Cross-sport top pick (WNBA_PLAYER)
+2. **WNBA / napheesa collier** (WNBA_PLAYER, score=131.75)
+   - Play: napheesa collier (PLAYER_STRONG)
+   - Rationale: Cross-sport top pick (WNBA_PLAYER)
+3. **MLB / Chase Burns** (MLB_PITCHER, score=64.42)
    - Play: Chase Burns (PITCHER_STRONG)
    - Rationale: Cross-sport top pick (MLB_PITCHER)
-2. **MLB / Dylan Cease** (MLB_PITCHER, score=64.42)
+4. **MLB / Dylan Cease** (MLB_PITCHER, score=64.42)
    - Play: Dylan Cease (PITCHER_STRONG)
    - Rationale: Cross-sport top pick (MLB_PITCHER)
 
@@ -31,13 +37,13 @@ _Generated 2026-07-08T15:14:26 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
+- **NHL** / joseph woll (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / adin hill (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
 - **NHL** / thatcher demko (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
+- **NHL** / jake oettinger (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
 - **NHL** / anthony stolarz (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / calvin pickard (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / samsonov ilya (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / casey desmith (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO

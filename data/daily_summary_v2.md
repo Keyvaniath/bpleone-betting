@@ -1,18 +1,18 @@
 # EdgeStat Daily Summary — 2026-07-08
 
-## 🏥 Model Health: 60.0/100 [OK]
+## 🏥 Model Health: 62.5/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.9/100
+  - 🟢 Calibration Freshness: 99.6/100
   - 🔴 Hit Rate Trend: 0/100
-  - 🔴 Brier Trend: 22.2/100
+  - 🔴 Brier Trend: 46.6/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 86.4/100
-  - 🟢 Edge Count: 82.9/100
+  - 🟡 Edge Count: 60.0/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.583)
-- **Total games on board:** 111
-- **Strong home favorites:** 2 | **Strong road dogs:** 0
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.573)
+- **Total games on board:** 114
+- **Strong home favorites:** 2 | **Strong road dogs:** 3
 
 ## 🎯 Top 5 Best Bets
 1. **COL @ LAD YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
@@ -21,25 +21,33 @@
 4. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
 5. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
 
+## 🐋 Whale Picks (Max Confluence)
+- [STRONG] **[MLB]** CLE @ MIN MIN_ML -- 67% / +20.2% (score 2.5)
+
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-57** (84.3% hit rate)
 - Net units: **+10.46u** | ROI: **+46.4%**
 - Last 7d: 34-13 (72.3%) | net +0.74u
 
-**Today's 5 Locks:**
+**Today's 10 Locks:**
 - [MLB-PP] **Jared Triolo** PP_batter_hrr_under_3.5 · p=88% edge=+52.0% qK=0.062u
 - [MLB-PP] **Salvador Perez** PP_batter_hrr_under_3.5 · p=88% edge=+52.0% qK=0.062u
 - [MLB-PP] **Brett Baty** PP_batter_hrr_under_3.5 · p=88% edge=+52.0% qK=0.062u
 - [MLB-PP] **Noelvi Marte** PP_batter_hrr_under_3.5 · p=88% edge=+51.9% qK=0.062u
 - [MLB-PP] **Christian Vázquez** PP_batter_hrr_under_3.5 · p=88% edge=+51.9% qK=0.062u
+- [KBO] **Choi Jeong** one_plus_tb · p=73% edge=+39.8% qK=0.062u
+- [KBO] **Jose Pirela** one_plus_tb · p=73% edge=+39.2% qK=0.062u
+- [KBO] **Koo Ja-wook** one_plus_tb · p=73% edge=+38.9% qK=0.062u
+- [KBO] **Mel Rojas Jr.** one_plus_tb · p=73% edge=+38.5% qK=0.062u
+- [KBO] **Austin Dean** one_plus_tb · p=73% edge=+38.5% qK=0.062u
 
 ## 🎰 Top Balanced 2-Leg Parlays (40-65% joint)
-- [MLB-PP] Jared Triolo PP_batter_hrr_under_ + [MLB] CHC @ BAL CHC_ML
-  Joint: 51% | Fair: 261 | Edge: +82.6%
-- [MLB-PP] Salvador Perez PP_batter_hrr_under_ + [MLB] CHC @ BAL CHC_ML
-  Joint: 51% | Fair: 261 | Edge: +82.5%
-- [MLB-PP] Brett Baty PP_batter_hrr_under_ + [MLB] CHC @ BAL CHC_ML
-  Joint: 51% | Fair: 261 | Edge: +82.5%
+- [KBO] Choi Jeong one_plus_tb + [KBO] Jose Pirela one_plus_tb
+  Joint: 53% | Fair: 264 | Edge: +94.6%
+- [KBO] Choi Jeong one_plus_tb + [KBO] Koo Ja-wook one_plus_tb
+  Joint: 53% | Fair: 264 | Edge: +94.1%
+- [KBO] Choi Jeong one_plus_tb + [KBO] Mel Rojas Jr. one_plus_tb
+  Joint: 53% | Fair: 264 | Edge: +93.6%
 
 ## 🎮 Player Play of the Day (cross-sport)
 - **[LOL]** Inspired UNDER 3.5 Kills | MED conviction · model 61.7% fair -161
@@ -48,17 +56,20 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (2)
+## ⚡ Pre-Game HIGH Conviction (4)
+- [WNBA] **Golden State Valkyries** AWAY (5-0 L10) · model 73.8% fair -282
 - [MLS] **CF Montréal** HOME (None L10) · model 71.5% fair -251
+- [WNBA] **Indiana Fever** AWAY (2-1 L10) · model 68.5% fair -217
 - [MLS] **Seattle Sounders FC** HOME (0-1 L10) · model 66.7% fair -200
 
 ## 🔥/❄️ Heat / Cold Signals
 - Hot teams: **1** | Cold teams: **2** | Over-heavy: 0 | Under-heavy: 0
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (36)
+## ⚠️ Anomaly Detector (39)
 - STEAM_MOVE: **34**
-- COMPOUND_BULLPEN: **2**
+- COMPOUND_BULLPEN: **3**
+- PEN_MISMATCH: **2**
   - MIL @ STL (MLB): ML/TOTAL steam since open: ML +14.4pp toward STL; total +1 (OVER) (7 snapshots)
   - TOR @ SEA (MLB): ML/TOTAL steam since open: ML +13.5pp toward SEA; total +0.5 (OVER) (7 snapshots)
   - LV @ NY (WNBA): ML/TOTAL steam since open: ML +12.4pp toward NY; total -1 (UNDER) (4 snapshots)
