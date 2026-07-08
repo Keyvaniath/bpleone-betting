@@ -441,7 +441,14 @@ fetch("data/today.json", { cache: "no-cache" })
         altBody.innerHTML = recs.slice(0, 8).map(r => {
           const ep = r.edge_pct;
           const cls = ep >= 5 ? "rec bet" : ep >= 3 ? "rec lean" : "rec skip";
-          const verdict = ep >= 5 ? `BET — ${(r.kelly_units ?? 0).toFixed(1)}u` : ep >= 3 ? `LEAN — ${(r.kelly_units ?? 0).toFixed(1)}u` : "SKIP";
+          // Honor the SAME pre-calibration cap the headline card applies (edge >= 15
+          // means the raw edge is inflated, so size <= 0.5u, not the raw 5u-capped
+          // Kelly). Without this the table recommended "BET — 5.0u" on the exact pick
+          // the rest of the page flags as <= 0.5u pre-calibration -- a flagship
+          // self-contradiction that oversized an admittedly-unreliable edge.
+          const preCal = ep != null && ep >= 15;
+          const stake = preCal ? "<= 0.5u" : (r.kelly_units ?? 0).toFixed(1) + "u";
+          const verdict = ep >= 5 ? `BET — ${stake}` : ep >= 3 ? `LEAN — ${stake}` : "SKIP";
           const isPod = r.label && pod.label && r.label === pod.label && r.market === pod.market;
           return `<tr>
             <td>${r.market || "—"}</td>
