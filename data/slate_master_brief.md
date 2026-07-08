@@ -1,13 +1,13 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-07-08T16:11:15 UTC_
+_Generated 2026-07-08T23:10:41 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -160
+- **Score:** -167
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 10
-- **Total FADES:** 200
+- **Total STRONG:** 7
+- **Total FADES:** 195
 
 ## Lock of the Night
 - **Subject:** Michael McGreevy
@@ -26,8 +26,8 @@ _Generated 2026-07-08T16:11:15 UTC_
 3. **MLB / Chase Burns** (MLB_PITCHER, score=64.42)
    - Play: Chase Burns (PITCHER_STRONG)
    - Rationale: Cross-sport top pick (MLB_PITCHER)
-4. **MLB / Dylan Cease** (MLB_PITCHER, score=64.42)
-   - Play: Dylan Cease (PITCHER_STRONG)
+4. **MLB / Christian Scott** (MLB_PITCHER, score=62.25)
+   - Play: Christian Scott (PITCHER_STRONG)
    - Rationale: Cross-sport top pick (MLB_PITCHER)
 
 ## Slate ROI Projection
@@ -37,13 +37,13 @@ _Generated 2026-07-08T16:11:15 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **NHL** / joseph woll (GOALIE_FADE)
+- **NHL** / stuart skinner (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / adin hill (GOALIE_FADE)
+- **NHL** / calvin pickard (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / thatcher demko (GOALIE_FADE)
+- **NHL** / kevin lankinen (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / jake oettinger (GOALIE_FADE)
+- **NHL** / casey desmith (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / anthony stolarz (GOALIE_FADE)
+- **NHL** / marc-andre fleury (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO

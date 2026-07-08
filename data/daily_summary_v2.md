@@ -1,12 +1,12 @@
 # EdgeStat Daily Summary — 2026-07-08
 
-## 🏥 Model Health: 62.5/100 [OK]
+## 🏥 Model Health: 64.4/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.6/100
+  - 🟢 Calibration Freshness: 100.0/100
   - 🔴 Hit Rate Trend: 0/100
   - 🔴 Brier Trend: 46.6/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 86.4/100
+  - 🟢 Data Health: 95.5/100
   - 🟡 Edge Count: 60.0/100
 
 ## 🌐 Slate Overview
@@ -20,9 +20,6 @@
 3. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
 4. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
 5. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
-
-## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** CLE @ MIN MIN_ML -- 67% / +20.2% (score 2.5)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-57** (84.3% hit rate)
@@ -66,15 +63,16 @@
 - Hot teams: **1** | Cold teams: **2** | Over-heavy: 0 | Under-heavy: 0
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (39)
-- STEAM_MOVE: **34**
+## ⚠️ Anomaly Detector (50)
+- RESIDUAL_DIVERGENCE: **3**
+- STEAM_MOVE: **42**
 - COMPOUND_BULLPEN: **3**
 - PEN_MISMATCH: **2**
+  - Minnesota Lynx (WNBA): Minnesota Lynx UNDERPERFORMING expected margin by 10.9pts in recent games -- model bias may persist
+  - Los Angeles Sparks (WNBA): Los Angeles Sparks UNDERPERFORMING expected margin by 20.0pts in recent games -- model bias may persist
+  - Indiana Fever (WNBA): Indiana Fever OUTPERFORMING expected margin by 15.2pts in recent games -- model bias may persist
   - MIL @ STL (MLB): ML/TOTAL steam since open: ML +14.4pp toward STL; total +1 (OVER) (7 snapshots)
   - TOR @ SEA (MLB): ML/TOTAL steam since open: ML +13.5pp toward SEA; total +0.5 (OVER) (7 snapshots)
-  - LV @ NY (WNBA): ML/TOTAL steam since open: ML +12.4pp toward NY; total -1 (UNDER) (4 snapshots)
-  - NYM @ ATL (MLB): ML/TOTAL steam since open: ML -11.8pp toward NYM; total +1 (OVER) (7 snapshots)
-  - CIN @ MIL (MLB): ML/TOTAL steam since open: ML +6.3pp toward MIL; total -2 (UNDER) (4 snapshots)
 
 ## 💰 Today's Portfolio (12 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
@@ -85,16 +83,18 @@
   - #4 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
 
-## 🎯 Convergence Picks (3 stacked games)
-- ELITE: **0** · HIGH: 0 · MED: 3
+## 🎯 Convergence Picks (6 stacked games)
+- ELITE: **1** · HIGH: 2 · MED: 3
+  - [ELITE] Indiana Fever @ Los Angeles Sparks : 6 signals (PREGAME, HEAT_COLD, ANOMALY, ANOMALY)
+  - [HIGH] Golden State Valkyries @ Toronto Tempo : 3 signals (PREGAME, HEAT_COLD, ATS)
+  - [HIGH] Minnesota Lynx @ Connecticut Sun : 3 signals (ANOMALY, ATS, ATS)
   - [MED] New York Knicks @ San Antonio Spurs : 2 signals (ATS, ATS)
   - [MED] Portland Timbers @ Seattle Sounders FC : 2 signals (PREGAME, ATS)
-  - [MED] Coventry City @ Arsenal : 2 signals (PREGAME, ATS)
 
 ## ⚾ Top MLB Pitcher K Plays (11)
 - **Chase Burns** OVER 5.5 K (77%) fair -337
 - **Tyler Phillips** OVER 5.5 K (75%) fair -301
-- **Kyle Harrison** OVER 4.5 K (73%) fair -276
+- **Kyle Harrison** OVER 5.5 K (74%) fair -284
 - **MacKenzie Gore** OVER 4.5 K (73%) fair -271
 - **Foster Griffin** OVER 4.5 K (68%) fair -213
 
@@ -122,17 +122,21 @@
   - 🔥 T4 **Mac Meissner** (USA): +0 total -- finished T4
   - 🔥 T5 **Martin Couvra** (France): +0 total -- finished T5
 
-## 🔥 MLB Batter Heat (46 HOT / 47 COLD)
+## 🔥 MLB Batter Heat (45 HOT / 44 COLD)
   - 🔥 **Garrett Mitchell** (MIL): L14 .421 / season .272 (+149pts)
-  - 🔥 **Luis García Jr.** (WSH): L14 .408 / season .285 (+123pts)
+  - 🔥 **Luis García Jr.** (WSH): L14 .413 / season .284 (+129pts)
   - 🔥 **Justin Foscue** (TEX): L14 .407 / season .284 (+123pts)
-  - 🔥 **Dansby Swanson** (CHC): L14 .333 / season .211 (+122pts)
   - 🔥 **Javier Sanoja** (MIA): L14 .395 / season .277 (+118pts)
-  - ❄️ **Cody Bellinger** (NYY): L14 .096 / season .248 (-152pts) -- FADE props
-  - ❄️ **Jorge Mateo** (ATL): L14 .107 / season .248 (-141pts) -- FADE props
-  - ❄️ **Carlos Cortes** (ATH): L14 .162 / season .281 (-119pts) -- FADE props
-  - ❄️ **Drake Baldwin** (ATL): L14 .137 / season .253 (-116pts) -- FADE props
-  - ❄️ **Eric Haase** (SF): L14 .054 / season .167 (-113pts) -- FADE props
+  - 🔥 **Esmerlyn Valdez** (PIT): L14 .417 / season .307 (+110pts)
+  - ❄️ **Cody Bellinger** (NYY): L14 .100 / season .247 (-147pts) -- FADE props
+  - ❄️ **Jorge Mateo** (ATL): L14 .111 / season .248 (-137pts) -- FADE props
+  - ❄️ **Eric Haase** (SF): L14 .029 / season .162 (-133pts) -- FADE props
+  - ❄️ **Casey Schmitt** (SF): L14 .151 / season .275 (-124pts) -- FADE props
+  - ❄️ **Jung Hoo Lee** (SF): L14 .192 / season .308 (-116pts) -- FADE props
+
+## 📈 Streak Regression Alerts (2)
+- [WNBA] Golden State Valkyries on W5 L10 5-0 -- Golden State Valkyries on W5 -- no historical sample
+- [WNBA] Los Angeles Sparks on L3 L10 0-3 -- Los Angeles Sparks on L3 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**

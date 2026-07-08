@@ -1,5 +1,5 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:10 F:200
+_NO_ACTION_NIGHT_ | L:0 S:7 F:195
 
 :lock: **LOCK:** Michael McGreevy (MLB)
 
