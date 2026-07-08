@@ -53,6 +53,14 @@ bpleone-site/
   raised to 0.90. Result: 32-5, 86% hit, +50% ROI (51-day backfill) beside the curated
   board's +30%; honest framing = both clear a real edge but one bet/day is far higher
   variance (~50 vs ~1000). Wired into daily-pipeline after alpha_pod_tracker.
+  **Follow-up "Alpha Props" (same module, payload.props_slate): the One Pick + up to 2
+  diversified extras = highest-EV pick from each NEXT distinct market family, hard
+  no-two-share-a-market rule (genuinely different bets, never a re-stamp). Design
+  chosen by a 4-way Workflow design panel; 2 adversarial verifier agents CONFIRMED the
+  record. TWO GUARDS: dedup by (player,market,odds) — the ledger stores each wager
+  TWICE (top_25_board + lock_of_day) so top-N would double-count; families chosen by
+  pre-game EV only, never past ROI. Slate 48-17 / 74% / +28% / ~1.75/day; per-slot
+  breakdown shows the edge is ALL in the anchor (slot0 +54%, diversifiers ~breakeven).**
 
 - **2026-07-02→06 — Rigor ladder + synthetic decontamination:**
   - **Walk-forward LADDER** (`forward_test.py`): the forward test now auto-freezes a NEW
