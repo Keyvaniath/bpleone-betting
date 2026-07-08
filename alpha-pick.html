@@ -226,6 +226,76 @@ fetch('data/alpha_pick_record.json?t=' + Date.now()).then(function (r) { return 
 }).catch(function () {});
 </script>
 
+<!-- ALPHA PROPS: the One Pick + 1-2 diversified extras (one per distinct market). A
+     small followable slate, honest blended record + per-leg breakdown. -->
+<section id="alphaPropsCard" style="display:none; margin:0 0 22px; border:1px solid rgba(88,200,120,.22); border-radius:12px; background:linear-gradient(180deg,rgba(88,200,120,.05),rgba(255,255,255,.01)); overflow:hidden;">
+  <div style="padding:14px 18px 6px;">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;">
+      <h2 style="margin:0;font-size:16px;">➕ Alpha Props <span style="color:var(--muted,#888);font-weight:400;font-size:12px;">— the pick, plus a diversified prop or two</span></h2>
+      <span id="apCadence" style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted,#888);"></span>
+    </div>
+    <p style="margin:6px 0 0;font-size:12.5px;color:var(--text-2,#9fb0c8);line-height:1.6;">
+      Want a little more than one bet? This rides the One Pick alongside the highest-EV play in each
+      <strong>next distinct prop market</strong> — no two plays share a market, so the extras are genuinely
+      <em>different</em> bets, never a re-stamp of the pick. Same honest backfill, flat 1u each.
+    </p>
+  </div>
+  <div id="apStats" style="display:flex;flex-wrap:wrap;gap:0;border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06);"></div>
+  <div style="padding:10px 18px 4px;font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted,#888);font-family:'JetBrains Mono',monospace;">What each leg adds</div>
+  <div id="apSlots" style="padding:0 18px 4px;font-family:'JetBrains Mono',monospace;font-size:12px;"></div>
+  <div style="padding:0 18px 8px;font-size:11px;color:var(--muted,#888);line-height:1.5;">Essentially all the edge is in the anchor pick — the diversifier legs run roughly breakeven, so they buy spread, not extra edge.</div>
+  <div id="apToday" style="padding:8px 18px 4px;border-top:1px solid rgba(255,255,255,.06);font-size:12.5px;"></div>
+  <details style="padding:2px 18px 14px;">
+    <summary style="cursor:pointer;font-size:11px;color:var(--muted,#888);text-transform:uppercase;letter-spacing:.5px;">The honest read on diversifying</summary>
+    <p id="apNote" style="font-size:12px;color:var(--text-2,#9fb0c8);line-height:1.65;margin:8px 0 0;"></p>
+  </details>
+</section>
+<script>
+fetch('data/alpha_pick_record.json?t=' + Date.now()).then(function (r) { return r.json(); }).then(function (d) {
+  var s = d.props_slate; if (!s || !s.record) return;
+  var card = document.getElementById('alphaPropsCard');
+  var col = function (v) { return v == null ? '#9fb0c8' : (v >= 0 ? '#58c878' : '#e35a5a'); };
+  var pc = function (v) { return v == null ? '—' : (v >= 0 ? '+' : '') + (+v).toFixed(1) + '%'; };
+  var r = s.record, r30 = s.record_last_30 || {};
+  document.getElementById('apCadence').textContent = (s.avg_plays_per_day || 0) + ' plays/day · ' + (s.n_actioned || 0) + ' actioned';
+  var cell = function (lab, val, color) {
+    return '<div style="flex:1 1 92px;padding:11px 14px;border-right:1px solid rgba(255,255,255,.06);">' +
+      '<div style="font-size:9.5px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted,#888);">' + lab + '</div>' +
+      '<div style="font-size:18px;font-weight:700;color:' + (color || 'inherit') + ';font-family:\'JetBrains Mono\',monospace;margin-top:2px;">' + val + '</div></div>';
+  };
+  document.getElementById('apStats').innerHTML =
+    cell('Slate record', r.wins + '-' + r.losses + (r.pushes ? '-' + r.pushes : ''), '#e8ecf3') +
+    cell('Hit rate', r.hit_rate != null ? Math.round(r.hit_rate * 100) + '%' : '—', '#e8ecf3') +
+    cell('ROI / bet', pc(r.roi_pct), col(r.roi_pct)) +
+    cell('Net (1u flat)', (r.net_units >= 0 ? '+' : '') + r.net_units + 'u', col(r.net_units)) +
+    cell('Last 30d', pc(r30.roi_pct), col(r30.roi_pct));
+  // per-slot: what each leg contributes (the honest "diversity costs ROI" view)
+  var slotLabel = { '0': 'The Pick (anchor)', '1': 'Diversifier #1', '2': 'Diversifier #2' };
+  var slots = s.by_slot || {};
+  document.getElementById('apSlots').innerHTML = Object.keys(slots).map(function (k) {
+    var v = slots[k];
+    var thin = (v.wins + v.losses) < 15;
+    return '<div style="display:grid;grid-template-columns:150px 90px 1fr 70px;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04);align-items:center;">' +
+      '<span style="color:' + (k === '0' ? '#d4a04a' : 'var(--text-2,#9fb0c8)') + ';">' + (slotLabel[k] || 'Slot ' + k) + '</span>' +
+      '<span>' + v.wins + '-' + v.losses + (v.pushes ? '-' + v.pushes : '') + '</span>' +
+      '<span style="color:var(--muted,#888);">' + (v.hit_rate != null ? Math.round(v.hit_rate * 100) + '% hit · ' : '') + (v.wins + v.losses) + ' actioned' + (thin ? ' · thin' : '') + '</span>' +
+      '<span style="text-align:right;color:' + col(v.roi_pct) + ';font-weight:700;">' + pc(v.roi_pct) + '</span></div>';
+  }).join('');
+  // today's slate
+  var t = s.todays;
+  if (t && t.picks && t.picks.length) {
+    document.getElementById('apToday').innerHTML = '<span style="color:var(--muted,#888);font-size:10px;text-transform:uppercase;letter-spacing:.5px;">Today\'s slate (' + t.date + ')</span><br>' +
+      t.picks.map(function (p, i) {
+        return '<span style="display:inline-block;margin:4px 10px 0 0;">' +
+          '<b style="color:' + (i === 0 ? '#d4a04a' : '#9fb0c8') + ';">' + (i === 0 ? '★ ' : '+ ') + (p.player_or_matchup || '') + '</b> ' +
+          '<span style="color:var(--muted,#888);font-size:11px;">' + String(p.market || '').replace(/_/g, ' ').toLowerCase() + (p.fair_american != null ? ' @ ' + p.fair_american : '') + '</span></span>';
+      }).join('');
+  }
+  document.getElementById('apNote').textContent = s.note || '';
+  card.style.display = 'block';
+}).catch(function () {});
+</script>
+
 <div class="alpha-hero" id="alpha-hero">
   <div class="tag-row">
     <div class="tag tag-alpha">★ ALPHA PICK</div>

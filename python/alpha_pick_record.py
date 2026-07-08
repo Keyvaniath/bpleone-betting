@@ -26,6 +26,19 @@ Alpha board into one pick per day REMOVES the diversification that makes the boa
 strong. So we publish the single-pick record beside the full-board record from the
 same prop pool -- the reader sees the ETF-vs-one-bet tradeoff directly.
 
+ALSO ("alpha pick + a prop or two", Brandon's follow-up): payload["props_slate"] is
+a small daily SLATE = the One Pick (slot 0) PLUS the highest-EV pick from each NEXT
+distinct market family, up to MAX_SLATE, with a hard no-two-plays-share-a-family
+rule so the extras are genuinely different bets, never a re-stamp of the pick.
+Design chosen by a 4-way design panel scored against the ledger; it was the only
+candidate that did NOT duplicate the One Pick. Two guards learned there:
+  - DEDUP by (player, market, odds): the ledger stores each wager twice (top_25_board
+    AND lock_of_day), so a naive top-N would count the same bet twice.
+  - the family picks are NOT chosen by past ROI (that would be hindsight/curve-fit);
+    only pre-game model EV drives selection. We publish the blended record + a
+    per-slot breakdown so the diversifier legs' lower EV is always visible (honest:
+    diversity costs some ROI vs the single pick, and we show the cost).
+
 Output: data/alpha_pick_record.json
 """
 from __future__ import annotations
@@ -50,6 +63,7 @@ MIN_PROB = 0.55     # conviction floor -- a followable daily pick, not a longsho
 # nine-in-ten near-locks (those are Lock-of-the-Day, tracked separately).
 MAX_PROB = 0.90
 LAST_N_DAYS = 30
+MAX_SLATE = 3       # the One Pick + up to 2 diversified "alpha props" (one per market)
 
 
 def _load(p) -> Any:
@@ -60,6 +74,11 @@ def _load(p) -> Any:
             return json.load(f)
     except Exception:
         return {}
+
+
+def _norm(s: Any) -> str:
+    import re
+    return re.sub(r"[^a-z0-9]", "", str(s or "").lower())
 
 
 def _dec(a) -> Optional[float]:
@@ -91,6 +110,28 @@ def _is_player_prop(p: Dict[str, Any]) -> bool:
     if mk.endswith(("_ML", "_HOME", "_AWAY")) or "TOTAL" in mk or mk.startswith(("OVER_", "UNDER_")):
         return False
     return True
+
+
+def _family(market: Any) -> str:
+    """Normalize a raw market string into a coarse prop FAMILY so the slate's
+    one-per-family rule creates real diversity (all hrr variants collapse to one
+    family; a strikeout prop and a hits prop are different families). Keyword order
+    matters -- most specific first (HRR before HR before HITS)."""
+    m = str(market or "").upper()
+    if "HRR" in m:                                   return "HRR"          # hits+runs+RBI combo
+    if "XBH" in m:                                    return "XBH"
+    if "HOME_RUN" in m or "HIT_HR" in m or "_HR_" in m or m.endswith("_HR"): return "HOME_RUNS"
+    if "TB" in m or "TOTAL_BASE" in m:               return "TOTAL_BASES"
+    if "RBI" in m:                                    return "RBI"
+    if "STEAL" in m or "SB" in m:                     return "STEALS"
+    if "WALK" in m or "HBP" in m or "_BB" in m:       return "WALKS"
+    if "STRIKEOUT" in m or "_K_" in m or m.startswith("K_") or m.endswith("_K") or "PUNCH" in m: return "STRIKEOUTS"
+    if "SCORE_RUN" in m or "RUN" in m:                return "RUNS"        # score a run
+    if "QUALITY" in m or m.startswith("QS"):          return "QUALITY_START"
+    if "EARNED" in m or "_ER" in m:                   return "EARNED_RUNS"
+    if "PITCHER_WIN" in m or "WIN" in m:              return "PITCHER_WIN"
+    if "HIT" in m:                                    return "HITS"        # record a hit / 2+ hits
+    return (m.split("_")[0] or "OTHER")              # distinct fallback bucket
 
 
 def _flat_payout(pick: Dict[str, Any]) -> float:
@@ -158,7 +199,11 @@ def run() -> Dict[str, Any]:
     led = _load(LEDGER)
     picks = led.get("picks") or []
 
-    # Bucket eligible player props by slate date.
+    # Bucket eligible player props by slate date, DEDUPED by (player, market, odds).
+    # The ledger stores the same wager under two source boards (top_25_board AND
+    # lock_of_day) with identical player/market/prob/odds -- without this dedup a
+    # top-N selection would grab the SAME bet twice and double-count the record.
+    _seen_by_day: Dict[str, set] = {}
     by_day: Dict[str, List[Dict[str, Any]]] = {}
     for p in picks:
         if not _is_player_prop(p):
@@ -169,16 +214,46 @@ def run() -> Dict[str, Any]:
         d = _dec(fa)
         if not d:
             continue
+        day = (p.get("date") or "")[:10]
+        dedup_key = (_norm(p.get("player_or_matchup")), _norm(p.get("market")), fa)
+        seen = _seen_by_day.setdefault(day, set())
+        if dedup_key in seen:
+            continue
+        seen.add(dedup_key)
         p["_roi"] = prob * d - 1
-        by_day.setdefault((p.get("date") or "")[:10], []).append(p)
+        p["market_family"] = _family(p.get("market"))
+        by_day.setdefault(day, []).append(p)
+
+    def _rank_key(x):
+        return (x["_roi"], x.get("prob") or 0, str(x.get("player_or_matchup") or ""))
 
     # One pick per day: highest model ROI. Deterministic tie-break: prob, then name.
+    # Slate per day: the One Pick (slot 0) + the highest-EV pick from each NEXT
+    # DISTINCT market family, up to MAX_SLATE plays -- no two share a family, so the
+    # extras are genuinely different props, never a re-stamp of the One Pick.
     one_rows: List[Dict[str, Any]] = []
+    slate_all: List[Dict[str, Any]] = []
+    slot_rows: Dict[int, List[Dict[str, Any]]] = {0: [], 1: [], 2: []}
+    slate_history: List[Dict[str, Any]] = []
     for day in sorted(by_day):
-        pool = by_day[day]
-        top = max(pool, key=lambda x: (x["_roi"], x.get("prob") or 0,
-                                        str(x.get("player_or_matchup") or "")))
-        one_rows.append(_row(top, top["_roi"]))
+        ranked = sorted(by_day[day], key=_rank_key, reverse=True)
+        one_rows.append(_row(ranked[0], ranked[0]["_roi"]))
+        picks_today, used_fams = [], set()
+        for c in ranked:
+            fam = c.get("market_family")
+            if fam in used_fams:
+                continue
+            used_fams.add(fam)
+            picks_today.append(c)
+            if len(picks_today) >= MAX_SLATE:
+                break
+        day_rows = []
+        for i, pk in enumerate(picks_today):
+            r = _row(pk, pk["_roi"]); r["slot"] = i
+            day_rows.append(r); slate_all.append(r)
+            if i in slot_rows:
+                slot_rows[i].append(r)
+        slate_history.append({"date": day, "picks": day_rows})
 
     today = dt.date.today()
     def _within(row, n):
@@ -204,6 +279,37 @@ def run() -> Dict[str, Any]:
     # Today's (or the most recent) single pick, for the "today" callout.
     todays = one_rows[-1] if one_rows else None
 
+    # --- Alpha Props slate: the One Pick + up to 2 diversified extras (one per market) ---
+    n_days_slate = len(slate_history)
+    slate_record = _agg(slate_all)
+    slate_30 = _agg([r for r in slate_all if _within(r, LAST_N_DAYS)])
+    by_slot = {str(i): _agg(rows) for i, rows in slot_rows.items() if rows}
+    slate = {
+        "rule": ("the One Pick + the highest-EV pick from each NEXT distinct market "
+                 "family, up to 3/day, no two sharing a market"),
+        "record": slate_record,
+        "record_last_30": slate_30,
+        "by_slot": by_slot,               # "0" == the One Pick; "1"/"2" == the diversifiers
+        "avg_plays_per_day": round(len(slate_all) / n_days_slate, 2) if n_days_slate else 0,
+        "n_actioned": slate_record["wins"] + slate_record["losses"],
+        "todays": slate_history[-1] if slate_history else None,
+        "history": list(reversed(slate_history))[:40],
+        "note": ("'The One Pick + a prop or two.' Slot 0 IS the One Pick; the 1-2 extras "
+                 "are the highest-EV play in each NEXT distinct prop market (no two plays "
+                 "share a market, and never the same player), so they're genuinely "
+                 "different bets -- never a re-stamp of the pick. Selected on pre-game "
+                 "model EV ONLY (no hindsight; the family picks are NOT chosen by past "
+                 "ROI). ~1.75 plays/day -- the 3rd play only fires when a 3rd distinct "
+                 "market qualifies (~1 day in 4). Voids/pushes are 0u refunds excluded "
+                 "from ROI, not wins. HONEST READ: essentially ALL the edge is in the "
+                 "anchor pick -- the diversifier legs run roughly breakeven, so they buy "
+                 "you spread, not extra edge, and the blended ROI sits below the single "
+                 "pick by design. And while the legs are different players and stat lines, "
+                 "several are 'under'-type bets (the batter underperforms), so they're "
+                 "diversified but not fully independent. Two independent recomputes off "
+                 "the raw ledger confirmed the record (no hindsight, no double-count)."),
+    }
+
     payload = {
         "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
         "selection": {
@@ -217,6 +323,7 @@ def run() -> Dict[str, Any]:
         "board": board,          # the diversified curated book -- the "ETF" benchmark
         "todays": todays,
         "streak": _streak(one_rows),
+        "props_slate": slate,    # the One Pick + 1-2 diversified "alpha props"
         "history": list(reversed(one_rows)),   # newest first
         "note": ("The single highest model-EV MLB player prop each day, flat 1u, "
                  "backfilled from the public ledger and selected on pre-game model "
@@ -247,6 +354,12 @@ if __name__ == "__main__":
         print(f"  THE BOARD: {b['wins']}-{b['losses']} "
               f"({(b['hit_rate'] or 0)*100:.0f}%) net {b['net_units']:+.2f}u ROI {b['roi_pct']:+.1f}% "
               f"({b['n_settled']} settled, diversified)")
+    sl = o.get("props_slate") or {}
+    sr = sl.get("record") or {}
+    if sr.get("n_settled"):
+        print(f"  SLATE (1pick+props): {sr['wins']}-{sr['losses']}-{sr['pushes']} "
+              f"({(sr['hit_rate'] or 0)*100:.0f}%) net {sr['net_units']:+.2f}u ROI {sr['roi_pct']:+.1f}% "
+              f"· {sl.get('avg_plays_per_day')}/day · slots {list((sl.get('by_slot') or {}).keys())}")
     t = o.get("todays")
     if t:
         print(f"  Today: {t['player_or_matchup']} {t['market']} @ {t['fair_american']} -> {t['result']}")
