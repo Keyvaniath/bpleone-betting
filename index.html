@@ -295,9 +295,19 @@
     if (!d || d.n_settled_since == null || d.n_settled_since < (d.min_meaningful || 150)) return;
     const sgn = v => (v >= 0 ? "+" : "") + v + "%";
     const cav = d.small_sample ? ` <span style="color:#e0a13a;">(small sample — early prospective ROI is noisy)</span>` : "";
+    // When the walk-forward LADDER has matured a 2nd (or later) independently-frozen
+    // cut-set that ALSO beats raw, the claim is materially stronger than one window --
+    // surface the count so the homepage reflects the actual weight of evidence.
+    let repeat = "";
+    if ((d.ladder_meaningful || 0) >= 2 && (d.ladder_beat_raw || 0) >= 2) {
+      const m = d.ladder_meaningful, b = d.ladder_beat_raw;
+      repeat = b === m
+        ? ` <span style="color:#58c878;">Confirmed again on <b>${m}</b> independently-frozen windows — every one beat the firehose.</span>`
+        : ` <span style="color:#58c878;"><b>${b}/${m}</b> independently-frozen windows beat the firehose.</span>`;
+    }
     document.getElementById("proveItForward").innerHTML =
       `<span style="color:#8a93a6;">⏱ Forward test (zero hindsight): </span>since <b>${d.anchor}</b>, on <b>${d.n_settled_since}</b> picks settled against a rule frozen <i>before</i> they happened — ` +
-      `curated <b style="color:#58c878;">${sgn(d.curated_roi)}</b> (hit ${d.curated_hit}%) vs raw firehose <b style="color:#e35a5a;">${sgn(d.raw_roi)}</b>.` + cav;
+      `curated <b style="color:#58c878;">${sgn(d.curated_roi)}</b> (hit ${d.curated_hit}%) vs raw firehose <b style="color:#e35a5a;">${sgn(d.raw_roi)}</b>.` + repeat + cav;
     document.getElementById("proveItForward").style.display = "block";
     document.getElementById("proveIt").style.display = "block";
   }).catch(() => {});
