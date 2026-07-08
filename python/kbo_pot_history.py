@@ -146,26 +146,48 @@ def run():
     hist: List[Dict[str, Any]] = _load(HIST_PATH).get("history") or []
     today = dt.date.today().isoformat()
 
-    # Collapse duplicate PENDING picks for the same matchup+kind (same game snapshotted
-    # on multiple days before the dedup-by-matchup fix; keep earliest).
-    _seen, _dd = set(), []
-    for h in sorted(hist, key=lambda x: x.get("date") or ""):
-        if not h.get("settled") and not h.get("voided"):
-            mk = (h.get("team"), h.get("opponent"), h.get("kind"))
-            if mk in _seen:
-                continue
-            _seen.add(mk)
-        _dd.append(h)
-    hist = _dd
+    # Collapse duplicate rows by the GAME'S STABLE IDENTITY, across the whole history
+    # (not just pending). The prior dedup only touched pending picks and keyed on
+    # matchup, so once a pick settled the same physical game could re-enter as a fresh
+    # row and settle AGAIN against the same Daum final -- double-counting it. That
+    # inflated the public KBO record ~2x (38 rows / 13-22-2 was really 20 games /
+    # 6-11-2). Key on game_id + kind (a game's ML and its total are distinct bets);
+    # fall back to date+teams+kind when game_id is missing. Prefer a settled row, then
+    # pending, then voided; earliest-added breaks ties for determinism.
+    def _identity(h):
+        gid = h.get("game_id")
+        if gid:
+            return ("gid", str(gid), h.get("kind"))
+        return ("tm", str(h.get("game_date") or h.get("date"))[:10],
+                frozenset({h.get("team"), h.get("opponent")}), h.get("kind"))
 
-    # Snapshot the current POD once per (date, matchup, kind).
+    def _rank(h):
+        tier = 0 if h.get("settled") else (2 if h.get("voided") else 1)
+        return (tier, h.get("added_at") or h.get("date") or "")
+
+    _best: Dict[Any, Dict[str, Any]] = {}
+    for h in hist:
+        k = _identity(h)
+        cur = _best.get(k)
+        if cur is None or _rank(h) < _rank(cur):
+            _best[k] = h
+    hist = list(_best.values())
+
+    # Snapshot the current POD once. Skip if this exact game (game_id) is ALREADY in
+    # history in any state -- once it settled we must not re-add it as a fresh pending
+    # row (the double-count that produced the inflated record). Fall back to a
+    # pending-matchup guard when the POD carries no game_id.
     pot = bestbet.get("top_bet")
     if pot and pot.get("kind") in ("ML", "OVER", "UNDER"):
-        # Dedup by matchup while still PENDING (not by date): the same game can be the
-        # POD several days running, which would double-count it in the record.
+        _gid = str(pot.get("game_id") or "")
         mk = (pot.get("team"), pot.get("opponent"), pot.get("kind"))
-        if not any((h.get("team"), h.get("opponent"), h.get("kind")) == mk
-                   and not h.get("settled") and not h.get("voided") for h in hist):
+        _already = (
+            any(str(h.get("game_id") or "") == _gid and h.get("kind") == pot.get("kind") for h in hist)
+            if _gid else
+            any((h.get("team"), h.get("opponent"), h.get("kind")) == mk
+                and not h.get("settled") and not h.get("voided") for h in hist)
+        )
+        if not _already:
             hist.append({
                 "date": today,
                 "game_date": pot.get("game_date") or today,
