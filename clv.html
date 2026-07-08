@@ -68,11 +68,16 @@ Promise.all([
     model_edge_pct:g.lean_edge_pp,
   }));
   const rows=(d.rows||[]).concat(bbRows);
-  const bbcv=bb.clv||{};
-  const nT=(d.n_tracked||0)+(bbcv.n_tracked||0);
-  const nB=(d.n_beat_close||0)+(bbcv.n_beat_close||0);
+  // Headline is an EXACT rollup of the rows shown below -- never a separate summary
+  // block. bb.clv is a rolling historical aggregate (n_tracked can be 12) while
+  // bb.games only holds today's slate (often 1 lean with clv_pp), so adding the two
+  // summaries printed "22 tracked / 7 beat" above a table of 11 -- unreconcilable on
+  // the one page whose whole point is that every number ties to a visible row.
+  const clvRows=rows.filter(r=>r.clv_pp!=null);
+  const nT=clvRows.length;
+  const nB=clvRows.filter(r=>r.beat_close).length;
   const rate=nT?nB/nT:null;
-  const avg=nT?(((d.avg_clv_pp||0)*(d.n_tracked||0)+(bbcv.avg_clv_pp||0)*(bbcv.n_tracked||0))/nT):null;
+  const avg=nT?(clvRows.reduce((s,r)=>s+(r.clv_pp||0),0)/nT):null;
   document.getElementById("big").innerHTML = (nT? `
     <span class="b"><span class="lab">beat the close</span><b class="${(rate||0)>=0.5?'up':'down'}">${rate==null?'—':(100*rate).toFixed(0)+'%'}</b> <span class="muted">${nB}/${nT}</span></span>
     <span class="b"><span class="lab">avg CLV</span><b class="${(avg||0)>=0?'up':'down'}">${avg==null?'—':(avg>0?'+':'')+avg.toFixed(2)+'pp'}</b></span>
@@ -83,7 +88,7 @@ Promise.all([
     <div class="clvrow">
       <span class="sport">${esc(r.sport)}</span>
       <span><b>${esc(r.matchup)}</b> <span class="muted">${esc(r.side)} ${esc(r.team||'')}</span></span>
-      <span class="r muted">${ml(r.open_american)}→${ml(r.close_american)}</span>
+      <span class="r muted">${(r.open_american==null&&r.close_american==null)?'<span title="Basketball CLV is measured on de-vigged win-probability movement from ESPN book odds; no American open→close line is retained.">de-vig prob</span>':ml(r.open_american)+'→'+ml(r.close_american)}</span>
       <span class="r"><b class="${r.clv_pp>=0?'up':'down'}">${r.clv_pp>0?'+':''}${r.clv_pp}pp</b></span>
       <span><span class="pill ${r.beat_close?'beat':'lost'}">${r.beat_close?'beat':'lost'}</span></span>
       <span class="r muted">${r.model_edge_pct==null?'—':r.model_edge_pct+'%'}</span>
