@@ -8,14 +8,16 @@ _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 - **Brett Baty** PP_batter_hrr_under_3.5 (MLB-PP) -- 88% / +52.0%
 - **Noelvi Marte** PP_batter_hrr_under_3.5 (MLB-PP) -- 88% / +51.9%
 - **Christian Vázquez** PP_batter_hrr_under_3.5 (MLB-PP) -- 88% / +51.9%
-
-## 📡 Sharp Money Following Model
-- **CLE @ MIN** ml_home: line moved 54.13% → 57.26% (+3.1pp)
+- **Choi Jeong** one_plus_tb (KBO) -- 73% / +39.8%
+- **Jose Pirela** one_plus_tb (KBO) -- 73% / +39.2%
+- **Koo Ja-wook** one_plus_tb (KBO) -- 73% / +38.9%
+- **Mel Rojas Jr.** one_plus_tb (KBO) -- 73% / +38.5%
+- **Austin Dean** one_plus_tb (KBO) -- 73% / +38.5%
 
 ## 🎰 Tonight's Best Parlay
-- **Jared Triolo** PP_batter_hrr_under_3.5 + **CHC @ BAL** CHC_ML
-- Joint 51% · fair +261 · edge +82.6%
+- **Choi Jeong** one_plus_tb + **Jose Pirela** one_plus_tb
+- Joint 53% · fair +264 · edge +94.6%
 
 ---
-_Generated 2026-07-08T07:27:43_
+_Generated 2026-07-08T15:14:20_
 _Full breakdown: /tonight · Full history: /locks-of-day_
