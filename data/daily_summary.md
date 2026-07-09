@@ -2,36 +2,28 @@
 
 **Model Confidence: 22.0/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
 
-_Pipeline health: **WARNING** (12/15 artifacts ok; 3 empty, 0 stale)._ 
+_Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
 
-_Generated at 2026-07-09T16:36:27 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-07-09T23:13:06 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
-**COL @ SFG - OVER_8.5**
+**ARI @ SDP - UNDER_9.0**
 - Market: -110
-- Model probability: 71.6%
-- Raw edge: +36.66%
+- Model probability: 65.1%
+- Raw edge: +24.38%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
 
-## Full Slate (12 games)
+## Full Slate (4 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 1:10p ET | KCR @ NYM | Citi Field | 75F 10mph | KCR_ML +18.56% |
-| 1:10p ET | NYY @ TBR | Tropicana Field | indoor | NYY_ML +11.44% |
-| 1:35p ET | CHC @ BAL | Oriole Park at Camden Yards | 85F 4mph | CHC_ML +22.89% |
-| 1:40p ET | CLE @ MIN | Target Field | 86F 1mph | OVER_8.5 +14.47% |
-| 2:10p ET | BOS @ CHW | Rate Field | 83F 6mph | OVER_9.0 +17.13% |
-| 6:40p ET | OAK @ DET | Comerica Park | 79F 5mph | OVER_9.0 +4.08% |
-| 6:40p ET | SEA @ MIA | loanDepot park | indoor | UNDER_8.0 +21.39% |
-| 7:10p ET | PHI @ CIN | Great American Ball Park | 76F 4mph | PHI_ML +20.51% |
-| 7:45p ET | MIL @ STL | Busch Stadium | 76F 4mph | MIL_ML +20.98% |
-| 8:05p ET | LAA @ TEX | Globe Life Field | indoor | OVER_7.0 +29.44% |
-| 9:40p ET | ARI @ SDP | Petco Park | 65F 3mph | UNDER_9.0 +22.05% |
-| 9:45p ET | COL @ SFG | Oracle Park | 57F 10mph | OVER_8.5 +36.66% |
+| 7:45p ET | MIL @ STL | Busch Stadium | 76F 2mph | MIL_ML +23.0% |
+| 8:05p ET | LAA @ TEX | Globe Life Field | indoor | OVER_7.5 +17.07% |
+| 9:40p ET | ARI @ SDP | Petco Park | 64F 2mph | UNDER_9.0 +24.38% |
+| 9:45p ET | COL @ SFG | Oracle Park | 56F 8mph | OVER_9.0 +12.1% |
 
 ## Parlays - top 5
 
@@ -56,25 +48,17 @@ _Generated at 2026-07-09T16:36:27 UTC. Game lines source: **Bovada (fallback -- 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
 
-Cumulative graded plays: 6681. Wins: 2785. Hit rate: 41.7%.
+Cumulative graded plays: 6683. Wins: 2785. Hit rate: 41.7%.
 
 ## Auxiliary Markets (Model Fair Prices)
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| ARI @ SDP | 36.7% | +172 | 5.09 | +158 | -158 |
-| ATL @ PIT | 22.2% | +349 | 7.51 | -- | -- |
-| BOS @ CHW | 42.6% | +135 | 4.18 | +145 | -145 |
-| CHC @ BAL | 25.4% | +293 | 7.05 | +241 | -241 |
-| CLE @ MIN | 28.2% | +254 | 6.27 | +134 | -134 |
-| COL @ SFG | 48.5% | +106 | 3.87 | +142 | -142 |
-| KCR @ NYM | 42.3% | +137 | 4.53 | +207 | -207 |
+| ARI @ SDP | 36.7% | +172 | 5.07 | +159 | -159 |
+| COL @ SFG | 51.0% | -104 | 3.55 | +117 | -117 |
 | LAA @ TEX | 35.1% | +185 | 5.24 | +196 | -196 |
-| MIL @ STL | 55.1% | -123 | 2.9 | +435 | -435 |
-| NYY @ TBR | 56.3% | -129 | 2.87 | +172 | -172 |
-| OAK @ DET | 24.9% | +302 | 7.0 | +157 | -157 |
-| PHI @ CIN | 42.9% | +133 | 4.14 | +530 | -530 |
-| SEA @ MIA | 36.9% | +171 | 4.98 | +172 | -172 |
+| MIL @ STL | 55.1% | -123 | 2.98 | +433 | -433 |
+| PHI @ CIN | 42.9% | +133 | 4.23 | -- | -- |
 
 ## Team Form (last 10)
 

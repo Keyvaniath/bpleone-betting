@@ -1,13 +1,13 @@
 # EdgeStat Daily Summary — 2026-07-09
 
-## 🏥 Model Health: 66.6/100 [OK]
+## 🏥 Model Health: 55.1/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.7/100
+  - 🟢 Calibration Freshness: 100.0/100
   - 🔴 Hit Rate Trend: 0/100
-  - 🔴 Brier Trend: 53.3/100
+  - 🔴 Brier Trend: 1.9/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 95.5/100
-  - 🟡 Edge Count: 68.6/100
+  - 🟢 Data Health: 90.9/100
+  - 🟡 Edge Count: 65.7/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.579)
@@ -60,8 +60,8 @@
 - Hot teams: **1** | Cold teams: **2** | Over-heavy: 0 | Under-heavy: 0
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (44)
-- STEAM_MOVE: **40**
+## ⚠️ Anomaly Detector (46)
+- STEAM_MOVE: **42**
 - COMPOUND_BULLPEN: **3**
 - PEN_MISMATCH: **1**
   - MIL @ STL (MLB): ML/TOTAL steam since open: ML +14.4pp toward STL; total +1 (OVER) (7 snapshots)
@@ -80,10 +80,10 @@
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
 ## 🎯 Convergence Picks (5 stacked games)
-- ELITE: **0** · HIGH: 0 · MED: 5
+- ELITE: **0** · HIGH: 1 · MED: 4
+  - [HIGH] Indiana Fever @ Phoenix Mercury : 3 signals (PREGAME, ATS, ATS)
   - [MED] New York Knicks @ San Antonio Spurs : 2 signals (ATS, ATS)
-  - [MED] Golden State Valkyries @ Toronto Tempo : 2 signals (HEAT_COLD, HEAT_COLD)
-  - [MED] Indiana Fever @ Los Angeles Sparks : 2 signals (ATS, ATS)
+  - [MED] Seattle Storm @ Atlanta Dream : 2 signals (HEAT_COLD, ATS)
   - [MED] Portland Timbers @ Seattle Sounders FC : 2 signals (PREGAME, ATS)
   - [MED] Coventry City @ Arsenal : 2 signals (PREGAME, ATS)
 
@@ -118,17 +118,20 @@
   - 🔥 T4 **Rory McIlroy** (Northern Ireland): -5 total -- finished T4
   - 🔥 T5 **Brooks Koepka** (USA): -4 total -- finished T5
 
-## 🔥 MLB Batter Heat (40 HOT / 42 COLD)
+## 🔥 MLB Batter Heat (36 HOT / 43 COLD)
   - 🔥 **Luis García Jr.** (WSH): L14 .449 / season .291 (+158pts)
   - 🔥 **Garrett Mitchell** (MIL): L14 .425 / season .276 (+149pts)
-  - 🔥 **Luisangel Acuña** (CWS): L14 .360 / season .229 (+131pts)
+  - 🔥 **Luisangel Acuña** (CWS): L14 .360 / season .233 (+127pts)
   - 🔥 **Javier Sanoja** (MIA): L14 .391 / season .278 (+113pts)
-  - 🔥 **Derek Hill** (PHI): L14 .355 / season .250 (+105pts)
-  - ❄️ **Cody Bellinger** (NYY): L14 .094 / season .245 (-151pts) -- FADE props
+  - 🔥 **Wyatt Langford** (TEX): L14 .390 / season .278 (+112pts)
   - ❄️ **Jorge Mateo** (ATL): L14 .100 / season .242 (-142pts) -- FADE props
   - ❄️ **Eric Haase** (SF): L14 .029 / season .162 (-133pts) -- FADE props
   - ❄️ **Corbin Carroll** (AZ): L14 .135 / season .261 (-126pts) -- FADE props
   - ❄️ **Casey Schmitt** (SF): L14 .151 / season .275 (-124pts) -- FADE props
+  - ❄️ **Cody Bellinger** (NYY): L14 .125 / season .247 (-122pts) -- FADE props
+
+## 📈 Streak Regression Alerts (1)
+- [WNBA] Atlanta Dream on L4 L10 0-4 -- Atlanta Dream on L4 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**

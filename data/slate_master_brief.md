@@ -1,37 +1,30 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-07-09T16:35:45 UTC_
+_Generated 2026-07-09T23:12:26 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -28
+- **Score:** -57
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 31
-- **Total FADES:** 152
-
-## Lock of the Night
-- **Subject:** Michael Wacha
-- **Source:** ELITE_BOARD
-- **Sport:** MLB
-- **Score:** 15.0
-- **Details:** KCR @ NYM
+- **Total STRONG:** 20
+- **Total FADES:** 137
 
 ## Top 5 Curated Picks
-1. **MLB / Junior Caminero** (MLB_BATTER, score=161.0)
-   - Play: Junior Caminero (BATTER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_BATTER)
-2. **GOLF / Rory McIlroy** (GOLF_PLAYER, score=123.79)
+1. **GOLF / Rory McIlroy** (GOLF_PLAYER, score=121.21)
    - Play: Rory McIlroy (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-3. **MLB / Dansby Swanson** (MLB_BATTER, score=119.56)
-   - Play: Dansby Swanson (BATTER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_BATTER)
-4. **GOLF / Patrick Cantlay** (GOLF_PLAYER, score=114.0)
+2. **GOLF / Patrick Cantlay** (GOLF_PLAYER, score=111.43)
    - Play: Patrick Cantlay (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-5. **WNBA / caitlin clark** (WNBA_PLAYER, score=107.33)
+3. **WNBA / caitlin clark** (WNBA_PLAYER, score=107.33)
    - Play: caitlin clark (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (WNBA_PLAYER)
+4. **WNBA / kahleah copper** (WNBA_PLAYER, score=93.5)
+   - Play: kahleah copper (PLAYER_STRONG)
+   - Rationale: Cross-sport top pick (WNBA_PLAYER)
+5. **MLB / ?** (MLB_TEAM, score=77.0)
+   - Play: ? (TEAM_STRONG)
+   - Rationale: Cross-sport top pick (MLB_TEAM)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
@@ -40,19 +33,19 @@ _Generated 2026-07-09T16:35:45 UTC_
   - Tom Kim top 10 finish
 
 ## Slate ROI Projection
-- **Picks:** 1
-- **Avg edge:** -0.91%
+- **Picks:** 0
+- **Avg edge:** 0%
 - **Expected ROI (1/4 Kelly):** 0.0%
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **NHL** / adin hill (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / calvin pickard (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / stuart skinner (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / kevin lankinen (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / logan thompson_2 (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
+- **MLB** / Anthony Kay (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Michael Wacha (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Gavin Williams (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Bryce Elder (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Drew Rasmussen (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
