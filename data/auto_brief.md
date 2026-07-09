@@ -1,51 +1,48 @@
-# Tonight's Slate Brief — 2026-07-08
+# Tonight's Slate Brief — 2026-07-09
 
-## Slate Quality: 54/100 (LOW)
-_0% lineups confirmed · 16 rookie SPs_
-**Recommendation:** Defensive sizing tonight; stick to highest-confidence plays.
+## Slate Quality: 58/100 (MEDIUM)
+_0% lineups confirmed · 4 rookie SPs_
+**Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
-- **15 games** scheduled
-- **26 best bets** scored: 0 DK · 0 PP · 11 NRFI · 0 SGP
-- **Auto-portfolio:** 1 picks, $50.0 stake (5.0%), expected +$17.67
-- **MC simulation:** EV +$76.24, 73% P(profit), p05 $-129.23 / p95 $270.41
+- **13 games** scheduled
+- **26 best bets** scored: 5 DK · 0 PP · 7 NRFI · 0 SGP
+- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$28.01
+- **MC simulation:** EV +$67.45, 73% P(profit), p05 $-118.44 / p95 $242.73
 
 ## Top 5 Best Bets
 1. **COL @ LAD YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +24.9%)
    - P(YRFI) 70.9% vs baseline 46.0%
-2. **OAK @ DET YRFI (1st-inning OVER 0.5)**  (79/100 ****, edge +19.1%)
-   - P(YRFI) 65.1% vs baseline 46.0%
-3. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
+2. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
    - Player prop quality score 1.1935
    - Elite player
-4. **LOL ShowMaker OVER 3.5 Kills**  (78/100 ****, edge —)
+3. **LOL ShowMaker OVER 3.5 Kills**  (78/100 ****, edge —)
    - Player prop quality score 1.1892
    - Elite player
-5. **LOL Peyz OVER 4.5 Kills**  (78/100 ****, edge —)
+4. **LOL Peyz OVER 4.5 Kills**  (78/100 ****, edge —)
    - Player prop quality score 1.184
    - Elite player
+5. **LAA @ TEX YRFI (1st-inning OVER 0.5)**  (77/100 ****, edge +17.2%)
+   - P(YRFI) 63.2% vs baseline 46.0%
 
-## ⚠️ Trap Warnings — 12 flagged
+## ⚠️ Trap Warnings — 13 flagged
+- **Bailey Ober UNDER 3.5 pitcher strikeouts** (low):
+   - Edge +31.2% looks big but only 0 settled props on this player — model unproven
+- **Framber Valdez UNDER 5.5 pitcher strikeouts** (low):
+   - Edge +28.0% looks big but only 0 settled props on this player — model unproven
 - **COL @ LAD YRFI (1st-inning OVER 0.5)** (low):
    - Edge +24.9% looks big but only 0 settled props on this player — model unproven
-- **OAK @ DET YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +19.1% looks big but only 0 settled props on this player — model unproven
-- **LAA @ TEX YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +17.2% looks big but only 0 settled props on this player — model unproven
-- **CLE @ MIN YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +15.9% looks big but only 0 settled props on this player — model unproven
-- **HOU @ WSN YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +15.3% looks big but only 0 settled props on this player — model unproven
-
-## Weather leans
-- **UNDER lean** (wind in + cold): TOR @ SFG
+- **Alex Bregman UNDER 0.5 batter hits** (low):
+   - Edge +23.7% looks big but only 0 settled props on this player — model unproven
+- **Travis Bazzana UNDER 0.5 batter hits** (low):
+   - Edge +20.5% looks big but only 0 settled props on this player — model unproven
 
 ## Bullpens GASSED tonight
 San Diego Padres, San Francisco Giants, St. Louis Cardinals, Tampa Bay Rays, Toronto Blue Jays, Atlanta Braves, Milwaukee Brewers, Arizona Diamondbacks
 _Lean late-inning OVER on these games; fade their save situations._
 
 ## NRFI/YRFI strong leans
-- **YRFI** (1st-inning OVER): COL @ LAD, OAK @ DET, LAA @ TEX, CLE @ MIN, HOU @ WSN
+- **YRFI** (1st-inning OVER): COL @ LAD, LAA @ TEX, CLE @ MIN, PHI @ CIN
 
 ## Golf -- Genesis Scottish Open
 - **Leader:** Joost Luiten (E) at #1
@@ -62,21 +59,21 @@ _Lean late-inning OVER on these games; fade their save situations._
 - Chicago Blackhawks @ Minnesota Wild (0-0-0 vs 0-0-0)  | P(home) 52.9% fair -112 | Scheduled
 
 ## KBO -- 2026 Korean Baseball
-- KIA Tigers @ Lotte Giants | P(home) 35.7% fair +180 | total 8 R
-- LG Twins @ Samsung Lions | P(home) 50.1% fair -101 | total 8 R
-- NC Dinos @ Hanwha Eagles | P(home) 44.7% fair +124 | total 9 R
-- SSG Landers @ Doosan Bears | P(home) 54.2% fair -118 | total 8 R
-- Kiwoom Heroes @ KT Wiz | P(home) 66.3% fair -196 | total 9 R
+- KIA Tigers @ Lotte Giants | P(home) 36.1% fair +177 | total 9 R
+- LG Twins @ Samsung Lions | P(home) 49.8% fair +101 | total 9 R
+- NC Dinos @ Hanwha Eagles | P(home) 44.2% fair +126 | total 9 R
+- SSG Landers @ Doosan Bears | P(home) 54.3% fair -119 | total 9 R
+- Kiwoom Heroes @ KT Wiz | P(home) 66.8% fair -201 | total 10 R
 - **KBO POD:** KIA Tigers ML vs Lotte Giants (KBO) (MED)
 
-## LoL Esports -- 0 live, 4 upcoming
-- [MSI] Hanwha Life Esports vs BILIBILI GAMING BO5 | P(A) 48.9% fair +104/-104
+## LoL Esports -- 1 live, 3 upcoming
+- [MSI] BILIBILI GAMING vs Hanwha Life Esports BO5 | P(A) 51.1% fair -104/+104
 - [MSI] LYON vs G2 Esports BO5 | P(A) 41.1% fair +143/-143
 - [MSI] TBD vs TBD BO5 | P(A) 50.0% fair -100/-100
 - [MSI] TBD vs TBD BO5 | P(A) 50.0% fair -100/-100
 - **LoL POT:** G2 Esports ML vs LYON (MSI, BO5) (HIGH)
 
-## Player Play of the Day -- across all sports (3621 candidates scanned)
+## Player Play of the Day -- across all sports (3620 candidates scanned)
 - **[LOL]** Inspired UNDER 3.5 Kills | model 61.7% fair -161 (ELITE)
 - **[LOL]** ShowMaker OVER 3.5 Kills | model 62.5% fair -167 (ELITE)
 - **[LOL]** Peyz OVER 4.5 Kills | model 61.3% fair -158 (ELITE)

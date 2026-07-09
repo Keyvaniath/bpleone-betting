@@ -1,25 +1,28 @@
-# EdgeStat Daily Summary — 2026-07-08
+# EdgeStat Daily Summary — 2026-07-09
 
-## 🏥 Model Health: 64.4/100 [OK]
+## 🏥 Model Health: 62.6/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 100.0/100
+  - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 0/100
   - 🔴 Brier Trend: 46.6/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 95.5/100
+  - 🟢 Data Health: 86.4/100
   - 🟡 Edge Count: 60.0/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.573)
-- **Total games on board:** 114
-- **Strong home favorites:** 2 | **Strong road dogs:** 3
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.582)
+- **Total games on board:** 127
+- **Strong home favorites:** 2 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
 1. **COL @ LAD YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-2. **OAK @ DET YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
-3. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
-4. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
-5. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
+2. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
+3. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
+4. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
+5. **LAA @ TEX YRFI (1st-inning OVER 0.5)** (77/100 ★★★★)
+
+## 📉 Strong UNDER Signals
+- [STRONG 5.0] **PHI @ CIN** model 8.73 vs market 9.5
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-57** (84.3% hit rate)
@@ -53,35 +56,32 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (4)
-- [WNBA] **Golden State Valkyries** AWAY (5-0 L10) · model 73.8% fair -282
+## ⚡ Pre-Game HIGH Conviction (2)
 - [MLS] **CF Montréal** HOME (None L10) · model 71.5% fair -251
-- [WNBA] **Indiana Fever** AWAY (2-1 L10) · model 68.5% fair -217
 - [MLS] **Seattle Sounders FC** HOME (0-1 L10) · model 66.7% fair -200
 
 ## 🔥/❄️ Heat / Cold Signals
 - Hot teams: **1** | Cold teams: **2** | Over-heavy: 0 | Under-heavy: 0
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (50)
-- RESIDUAL_DIVERGENCE: **3**
-- STEAM_MOVE: **42**
-- COMPOUND_BULLPEN: **3**
-- PEN_MISMATCH: **2**
-  - Minnesota Lynx (WNBA): Minnesota Lynx UNDERPERFORMING expected margin by 10.9pts in recent games -- model bias may persist
-  - Los Angeles Sparks (WNBA): Los Angeles Sparks UNDERPERFORMING expected margin by 20.0pts in recent games -- model bias may persist
-  - Indiana Fever (WNBA): Indiana Fever OUTPERFORMING expected margin by 15.2pts in recent games -- model bias may persist
+## ⚠️ Anomaly Detector (42)
+- STEAM_MOVE: **39**
+- COMPOUND_BULLPEN: **2**
+- PEN_MISMATCH: **1**
   - MIL @ STL (MLB): ML/TOTAL steam since open: ML +14.4pp toward STL; total +1 (OVER) (7 snapshots)
   - TOR @ SEA (MLB): ML/TOTAL steam since open: ML +13.5pp toward SEA; total +0.5 (OVER) (7 snapshots)
+  - NYM @ ATL (MLB): ML/TOTAL steam since open: ML -11.8pp toward NYM; total +1 (OVER) (7 snapshots)
+  - CIN @ MIL (MLB): ML/TOTAL steam since open: ML +6.3pp toward MIL; total -2 (UNDER) (4 snapshots)
+  - DAL @ CON (WNBA): ML/TOTAL steam since open: ML +3.9pp toward CON; total +2 (OVER) (9 snapshots)
 
 ## 💰 Today's Portfolio (12 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$-25.7**
+- Expected EV: **$-27.39**
   - #1 [NRFI] $50 on COL @ LAD YRFI (1st-inning OVER 0.5) (P=71%)
-  - #2 [NRFI] $35 on OAK @ DET YRFI (1st-inning OVER 0.5) (P=65%)
-  - #3 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
-  - #4 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
-  - #5 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
+  - #2 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
+  - #3 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
+  - #4 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
+  - #5 [NRFI] $35 on LAA @ TEX YRFI (1st-inning OVER 0.5) (P=63%)
 
 ## 🎯 Convergence Picks (6 stacked games)
 - ELITE: **1** · HIGH: 2 · MED: 3
@@ -91,14 +91,14 @@
   - [MED] New York Knicks @ San Antonio Spurs : 2 signals (ATS, ATS)
   - [MED] Portland Timbers @ Seattle Sounders FC : 2 signals (PREGAME, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (11)
+## ⚾ Top MLB Pitcher K Plays (6)
 - **Chase Burns** OVER 5.5 K (77%) fair -337
-- **Tyler Phillips** OVER 5.5 K (75%) fair -301
 - **Kyle Harrison** OVER 5.5 K (74%) fair -284
 - **MacKenzie Gore** OVER 4.5 K (73%) fair -271
-- **Foster Griffin** OVER 4.5 K (68%) fair -213
+- **Christian Scott** OVER 4.5 K (66%) fair -195
+- **Connor Prielipp** OVER 4.5 K (62%) fair -165
 
-## 🏀 NBA Player Heat (19 HOT / 23 COLD)
+## 🏀 NBA Player Heat (18 HOT / 23 COLD)
   - 🔥 **Jeremiah Fears** (NO): L5 31.8/5.8/6.0 vs season 16.9/3.2/4.0 [PTS +14.9, REB +2.6, AST +2.0]
   - 🔥 **AJ Green** (MIL): L5 18.6/4.2/1.8 vs season 11.3/3.4/1.9 [PTS +7.3]
   - 🔥 **Dillon Brooks** (PHX): L5 26.0/6.0/1.8 vs season 19.4/4.2/1.9 [PTS +6.6]
@@ -122,17 +122,17 @@
   - 🔥 T4 **Mac Meissner** (USA): +0 total -- finished T4
   - 🔥 T5 **Martin Couvra** (France): +0 total -- finished T5
 
-## 🔥 MLB Batter Heat (45 HOT / 44 COLD)
-  - 🔥 **Garrett Mitchell** (MIL): L14 .421 / season .272 (+149pts)
-  - 🔥 **Luis García Jr.** (WSH): L14 .413 / season .284 (+129pts)
-  - 🔥 **Justin Foscue** (TEX): L14 .407 / season .284 (+123pts)
-  - 🔥 **Javier Sanoja** (MIA): L14 .395 / season .277 (+118pts)
-  - 🔥 **Esmerlyn Valdez** (PIT): L14 .417 / season .307 (+110pts)
-  - ❄️ **Cody Bellinger** (NYY): L14 .100 / season .247 (-147pts) -- FADE props
-  - ❄️ **Jorge Mateo** (ATL): L14 .111 / season .248 (-137pts) -- FADE props
+## 🔥 MLB Batter Heat (39 HOT / 42 COLD)
+  - 🔥 **Luis García Jr.** (WSH): L14 .449 / season .291 (+158pts)
+  - 🔥 **Garrett Mitchell** (MIL): L14 .425 / season .276 (+149pts)
+  - 🔥 **Luisangel Acuña** (CWS): L14 .360 / season .229 (+131pts)
+  - 🔥 **Javier Sanoja** (MIA): L14 .391 / season .278 (+113pts)
+  - 🔥 **Derek Hill** (PHI): L14 .355 / season .250 (+105pts)
+  - ❄️ **Cody Bellinger** (NYY): L14 .094 / season .245 (-151pts) -- FADE props
+  - ❄️ **Jorge Mateo** (ATL): L14 .100 / season .242 (-142pts) -- FADE props
   - ❄️ **Eric Haase** (SF): L14 .029 / season .162 (-133pts) -- FADE props
+  - ❄️ **Corbin Carroll** (AZ): L14 .135 / season .261 (-126pts) -- FADE props
   - ❄️ **Casey Schmitt** (SF): L14 .151 / season .275 (-124pts) -- FADE props
-  - ❄️ **Jung Hoo Lee** (SF): L14 .192 / season .308 (-116pts) -- FADE props
 
 ## 📈 Streak Regression Alerts (2)
 - [WNBA] Golden State Valkyries on W5 L10 5-0 -- Golden State Valkyries on W5 -- no historical sample
@@ -146,5 +146,5 @@
   - ⚠️ batter_rbis (Brier Δ -0.0052)
 
 ## 🤖 Self-Training Status
-- **WNBA**: n=32 games · hit rate 59.4% · bias +5.0pp [calibration applied]
-- **MLB**: n=187 games · hit rate 56.1% · bias +2.8pp [calibration applied]
+- **WNBA**: n=31 games · hit rate 61.3% · bias +3.5pp [calibration applied]
+- **MLB**: n=186 games · hit rate 52.7% · bias +1.3pp
