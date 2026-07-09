@@ -1,8 +1,9 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:1 F:200
+_NO_ACTION_NIGHT_ | L:0 S:5 F:176
 
 :dart: **Top Picks:**
-1. [MLB] ? -- ? (TEAM_STRONG)
+1. [GOLF] Scott Jamieson -- Scott Jamieson (PLAYER_STRONG)
+2. [GOLF] Bernd Wiesberger -- Bernd Wiesberger (PLAYER_STRONG)
 
 :coin: Bankroll Advisory: STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 

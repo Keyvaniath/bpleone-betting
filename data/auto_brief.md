@@ -1,52 +1,58 @@
 # Tonight's Slate Brief — 2026-07-09
 
-## Slate Quality: 58/100 (MEDIUM)
-_0% lineups confirmed · 4 rookie SPs_
+## Slate Quality: 71/100 (MEDIUM)
+_46% lineups confirmed · 4 rookie SPs_
 **Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
 - **13 games** scheduled
-- **26 best bets** scored: 5 DK · 0 PP · 7 NRFI · 0 SGP
-- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$28.01
-- **MC simulation:** EV +$67.45, 73% P(profit), p05 $-118.44 / p95 $242.73
+- **29 best bets** scored: 0 DK · 0 PP · 11 NRFI · 0 SGP
+- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$45.93
+- **MC simulation:** EV +$125.91, 84% P(profit), p05 $-89.5 / p95 $300.57
 
 ## Top 5 Best Bets
-1. **COL @ LAD YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +24.9%)
-   - P(YRFI) 70.9% vs baseline 46.0%
-2. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
-   - Player prop quality score 1.1935
-   - Elite player
-3. **LOL ShowMaker OVER 3.5 Kills**  (78/100 ****, edge —)
-   - Player prop quality score 1.1892
-   - Elite player
-4. **LOL Peyz OVER 4.5 Kills**  (78/100 ****, edge —)
-   - Player prop quality score 1.184
-   - Elite player
-5. **LAA @ TEX YRFI (1st-inning OVER 0.5)**  (77/100 ****, edge +17.2%)
-   - P(YRFI) 63.2% vs baseline 46.0%
+1. **ATL @ PIT YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +31.8%)
+   - P(YRFI) 77.8% vs baseline 46.0%
+2. **OAK @ DET YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +29.1%)
+   - P(YRFI) 75.1% vs baseline 46.0%
+3. **CHC @ BAL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +28.6%)
+   - P(YRFI) 74.6% vs baseline 46.0%
+4. **CLE @ MIN YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +25.8%)
+   - P(YRFI) 71.8% vs baseline 46.0%
+5. **LAA @ TEX YRFI (1st-inning OVER 0.5)**  (78/100 ****, edge +18.9%)
+   - P(YRFI) 64.9% vs baseline 46.0%
 
-## ⚠️ Trap Warnings — 13 flagged
-- **Bailey Ober UNDER 3.5 pitcher strikeouts** (low):
-   - Edge +31.2% looks big but only 0 settled props on this player — model unproven
-- **Framber Valdez UNDER 5.5 pitcher strikeouts** (low):
-   - Edge +28.0% looks big but only 0 settled props on this player — model unproven
-- **COL @ LAD YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +24.9% looks big but only 0 settled props on this player — model unproven
-- **Alex Bregman UNDER 0.5 batter hits** (low):
-   - Edge +23.7% looks big but only 0 settled props on this player — model unproven
-- **Travis Bazzana UNDER 0.5 batter hits** (low):
-   - Edge +20.5% looks big but only 0 settled props on this player — model unproven
+## ⚠️ Trap Warnings — 10 flagged
+- **ATL @ PIT YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +31.8% looks big but only 0 settled props on this player — model unproven
+- **OAK @ DET YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +29.1% looks big but only 0 settled props on this player — model unproven
+- **CHC @ BAL YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +28.6% looks big but only 0 settled props on this player — model unproven
+- **CLE @ MIN YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +25.8% looks big but only 0 settled props on this player — model unproven
+- **LAA @ TEX YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +18.9% looks big but only 0 settled props on this player — model unproven
+
+## Weather leans
+- **UNDER lean** (wind in + cold): COL @ SFG
+
+## Hot streaks
+**Batters heating up:** Tyler Tolbert (heat +4.23), Kody Clemens (heat +2.24), Ryan O'Hearn (heat +2.16)
+**Pitchers on a run:** Framber Valdez (heat -7.53)
 
 ## Bullpens GASSED tonight
-San Diego Padres, San Francisco Giants, St. Louis Cardinals, Tampa Bay Rays, Toronto Blue Jays, Atlanta Braves, Milwaukee Brewers, Arizona Diamondbacks
+Athletics, Pittsburgh Pirates, San Diego Padres, Seattle Mariners, San Francisco Giants, St. Louis Cardinals, Texas Rangers, Atlanta Braves
 _Lean late-inning OVER on these games; fade their save situations._
 
 ## NRFI/YRFI strong leans
-- **YRFI** (1st-inning OVER): COL @ LAD, LAA @ TEX, CLE @ MIN, PHI @ CIN
+- **YRFI** (1st-inning OVER): ATL @ PIT, OAK @ DET, CHC @ BAL, CLE @ MIN, LAA @ TEX
 
 ## Golf -- Genesis Scottish Open
-- **Leader:** Joost Luiten (E) at #1
-- **Field:** 156 players  |  Status: Scheduled
+- **Leader:** Marcus Armitage (-3) at #1
+- **Field:** 156 players  |  Status: In Progress
+- **Play of the Tournament:** Tom Kim TOP5 @ +526 (model 16.0%, HIGH)
+   - P(top 5) 16.0% -- lower variance than outright but compelling line.
 
 ## NBA -- PLAYOFFS
 - New York Knicks @ San Antonio Spurs (53-29 vs 62-20) 94-90 | P(home) 0.0% fair +0 | Final
@@ -58,22 +64,13 @@ _Lean late-inning OVER on these games; fade their save situations._
 - Winnipeg Jets @ Edmonton Oilers (0-0-0 vs 0-0-0)  | P(home) 52.9% fair -112 | Scheduled
 - Chicago Blackhawks @ Minnesota Wild (0-0-0 vs 0-0-0)  | P(home) 52.9% fair -112 | Scheduled
 
-## KBO -- 2026 Korean Baseball
-- KIA Tigers @ Lotte Giants | P(home) 36.1% fair +177 | total 9 R
-- LG Twins @ Samsung Lions | P(home) 49.8% fair +101 | total 9 R
-- NC Dinos @ Hanwha Eagles | P(home) 44.2% fair +126 | total 9 R
-- SSG Landers @ Doosan Bears | P(home) 54.3% fair -119 | total 9 R
-- Kiwoom Heroes @ KT Wiz | P(home) 66.8% fair -201 | total 10 R
-- **KBO POD:** KIA Tigers ML vs Lotte Giants (KBO) (MED)
-
-## LoL Esports -- 1 live, 3 upcoming
-- [MSI] BILIBILI GAMING vs Hanwha Life Esports BO5 | P(A) 51.1% fair -104/+104
+## LoL Esports -- 0 live, 3 upcoming
 - [MSI] LYON vs G2 Esports BO5 | P(A) 41.1% fair +143/-143
-- [MSI] TBD vs TBD BO5 | P(A) 50.0% fair -100/-100
-- [MSI] TBD vs TBD BO5 | P(A) 50.0% fair -100/-100
+- [MSI] TBD vs Hanwha Life Esports BO5 | P(A) 33.7% fair +197/-197
+- [MSI] TBD vs BILIBILI GAMING BO5 | P(A) 25.0% fair +300/-300
 - **LoL POT:** G2 Esports ML vs LYON (MSI, BO5) (HIGH)
 
-## Player Play of the Day -- across all sports (3620 candidates scanned)
+## Player Play of the Day -- across all sports (3601 candidates scanned)
 - **[LOL]** Inspired UNDER 3.5 Kills | model 61.7% fair -161 (ELITE)
 - **[LOL]** ShowMaker OVER 3.5 Kills | model 62.5% fair -167 (ELITE)
 - **[LOL]** Peyz OVER 4.5 Kills | model 61.3% fair -158 (ELITE)

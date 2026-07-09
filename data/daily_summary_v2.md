@@ -1,40 +1,35 @@
 # EdgeStat Daily Summary — 2026-07-09
 
-## 🏥 Model Health: 62.6/100 [OK]
+## 🏥 Model Health: 62.1/100 [OK]
 - Operational but room to improve - check yellow components
   - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 0/100
-  - 🔴 Brier Trend: 46.6/100
+  - 🔴 Brier Trend: 30.4/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 86.4/100
+  - 🟢 Data Health: 100.0/100
   - 🟡 Edge Count: 60.0/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.582)
-- **Total games on board:** 127
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.583)
+- **Total games on board:** 111
 - **Strong home favorites:** 2 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
-1. **COL @ LAD YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-2. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
-3. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
-4. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
-5. **LAA @ TEX YRFI (1st-inning OVER 0.5)** (77/100 ★★★★)
+1. **ATL @ PIT YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+2. **OAK @ DET YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+3. **CHC @ BAL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+4. **CLE @ MIN YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+5. **LAA @ TEX YRFI (1st-inning OVER 0.5)** (78/100 ★★★★)
 
 ## 📉 Strong UNDER Signals
-- [STRONG 5.0] **PHI @ CIN** model 8.73 vs market 9.5
+- [STRONG 5.1] **SEA @ MIA** model 7.2 vs market 8.0
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-57** (84.3% hit rate)
 - Net units: **+10.46u** | ROI: **+46.4%**
 - Last 7d: 34-13 (72.3%) | net +0.74u
 
-**Today's 10 Locks:**
-- [MLB-PP] **Jared Triolo** PP_batter_hrr_under_3.5 · p=88% edge=+52.0% qK=0.062u
-- [MLB-PP] **Salvador Perez** PP_batter_hrr_under_3.5 · p=88% edge=+52.0% qK=0.062u
-- [MLB-PP] **Brett Baty** PP_batter_hrr_under_3.5 · p=88% edge=+52.0% qK=0.062u
-- [MLB-PP] **Noelvi Marte** PP_batter_hrr_under_3.5 · p=88% edge=+51.9% qK=0.062u
-- [MLB-PP] **Christian Vázquez** PP_batter_hrr_under_3.5 · p=88% edge=+51.9% qK=0.062u
+**Today's 5 Locks:**
 - [KBO] **Choi Jeong** one_plus_tb · p=73% edge=+39.8% qK=0.062u
 - [KBO] **Jose Pirela** one_plus_tb · p=73% edge=+39.2% qK=0.062u
 - [KBO] **Koo Ja-wook** one_plus_tb · p=73% edge=+38.9% qK=0.062u
@@ -64,39 +59,39 @@
 - Hot teams: **1** | Cold teams: **2** | Over-heavy: 0 | Under-heavy: 0
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (42)
+## ⚠️ Anomaly Detector (43)
 - STEAM_MOVE: **39**
 - COMPOUND_BULLPEN: **2**
-- PEN_MISMATCH: **1**
+- PEN_MISMATCH: **2**
   - MIL @ STL (MLB): ML/TOTAL steam since open: ML +14.4pp toward STL; total +1 (OVER) (7 snapshots)
   - TOR @ SEA (MLB): ML/TOTAL steam since open: ML +13.5pp toward SEA; total +0.5 (OVER) (7 snapshots)
   - NYM @ ATL (MLB): ML/TOTAL steam since open: ML -11.8pp toward NYM; total +1 (OVER) (7 snapshots)
   - CIN @ MIL (MLB): ML/TOTAL steam since open: ML +6.3pp toward MIL; total -2 (UNDER) (4 snapshots)
   - DAL @ CON (WNBA): ML/TOTAL steam since open: ML +3.9pp toward CON; total +2 (OVER) (9 snapshots)
 
-## 💰 Today's Portfolio (12 picks)
+## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$-27.39**
-  - #1 [NRFI] $50 on COL @ LAD YRFI (1st-inning OVER 0.5) (P=71%)
-  - #2 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
-  - #3 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
-  - #4 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
-  - #5 [NRFI] $35 on LAA @ TEX YRFI (1st-inning OVER 0.5) (P=63%)
+- Expected EV: **$12.95**
+  - #1 [NRFI] $50 on ATL @ PIT YRFI (1st-inning OVER 0.5) (P=78%)
+  - #2 [NRFI] $50 on OAK @ DET YRFI (1st-inning OVER 0.5) (P=75%)
+  - #3 [NRFI] $50 on CHC @ BAL YRFI (1st-inning OVER 0.5) (P=75%)
+  - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
+  - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
-## 🎯 Convergence Picks (6 stacked games)
-- ELITE: **1** · HIGH: 2 · MED: 3
-  - [ELITE] Indiana Fever @ Los Angeles Sparks : 6 signals (PREGAME, HEAT_COLD, ANOMALY, ANOMALY)
-  - [HIGH] Golden State Valkyries @ Toronto Tempo : 3 signals (PREGAME, HEAT_COLD, ATS)
-  - [HIGH] Minnesota Lynx @ Connecticut Sun : 3 signals (ANOMALY, ATS, ATS)
+## 🎯 Convergence Picks (5 stacked games)
+- ELITE: **0** · HIGH: 0 · MED: 5
   - [MED] New York Knicks @ San Antonio Spurs : 2 signals (ATS, ATS)
+  - [MED] Golden State Valkyries @ Toronto Tempo : 2 signals (HEAT_COLD, HEAT_COLD)
+  - [MED] Indiana Fever @ Los Angeles Sparks : 2 signals (ATS, ATS)
   - [MED] Portland Timbers @ Seattle Sounders FC : 2 signals (PREGAME, ATS)
+  - [MED] Coventry City @ Arsenal : 2 signals (PREGAME, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (6)
-- **Chase Burns** OVER 5.5 K (77%) fair -337
-- **Kyle Harrison** OVER 5.5 K (74%) fair -284
-- **MacKenzie Gore** OVER 4.5 K (73%) fair -271
-- **Christian Scott** OVER 4.5 K (66%) fair -195
-- **Connor Prielipp** OVER 4.5 K (62%) fair -165
+## ⚾ Top MLB Pitcher K Plays (7)
+- **Drew Rasmussen** OVER 4.5 K (76%) fair -321
+- **Gavin Williams** OVER 4.5 K (75%) fair -295
+- **Bryce Miller** OVER 5.5 K (75%) fair -292
+- **Jesús Luzardo** OVER 5.5 K (75%) fair -292
+- **Logan Henderson** OVER 4.5 K (72%) fair -251
 
 ## 🏀 NBA Player Heat (18 HOT / 23 COLD)
   - 🔥 **Jeremiah Fears** (NO): L5 31.8/5.8/6.0 vs season 16.9/3.2/4.0 [PTS +14.9, REB +2.6, AST +2.0]
@@ -116,13 +111,13 @@
   - [COIN_FLIP] **Damian Pinas** (9-1-0) vs Cesar Almeida -- fair -133
 
 ## ⛳ Golf Player Heat (from Genesis Scottish Open)
-  - 🔥 T1 **Joost Luiten** (Netherlands): +0 total -- finished T1
-  - 🔥 T2 **Max McGreevy** (USA): +0 total -- finished T2
-  - 🔥 T3 **Frederic LaCroix** (France): +0 total -- finished T3
-  - 🔥 T4 **Mac Meissner** (USA): +0 total -- finished T4
-  - 🔥 T5 **Martin Couvra** (France): +0 total -- finished T5
+  - 🔥 T1 **Marcus Armitage** (England): -3 total -- finished T1
+  - 🔥 T2 **Scott Jamieson** (Scotland): -3 total -- finished T2
+  - 🔥 T3 **Bernd Wiesberger** (Austria): -3 total -- finished T3
+  - 🔥 T4 **Tom Kim** (South Korea): -2 total -- finished T4
+  - 🔥 T5 **Michael Kim** (USA): -2 total -- finished T5
 
-## 🔥 MLB Batter Heat (39 HOT / 42 COLD)
+## 🔥 MLB Batter Heat (40 HOT / 42 COLD)
   - 🔥 **Luis García Jr.** (WSH): L14 .449 / season .291 (+158pts)
   - 🔥 **Garrett Mitchell** (MIL): L14 .425 / season .276 (+149pts)
   - 🔥 **Luisangel Acuña** (CWS): L14 .360 / season .229 (+131pts)
@@ -133,10 +128,6 @@
   - ❄️ **Eric Haase** (SF): L14 .029 / season .162 (-133pts) -- FADE props
   - ❄️ **Corbin Carroll** (AZ): L14 .135 / season .261 (-126pts) -- FADE props
   - ❄️ **Casey Schmitt** (SF): L14 .151 / season .275 (-124pts) -- FADE props
-
-## 📈 Streak Regression Alerts (2)
-- [WNBA] Golden State Valkyries on W5 L10 5-0 -- Golden State Valkyries on W5 -- no historical sample
-- [WNBA] Los Angeles Sparks on L3 L10 0-3 -- Los Angeles Sparks on L3 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**
