@@ -1,18 +1,18 @@
 # EdgeStat Daily Summary — 2026-07-09
 
-## 🏥 Model Health: 62.1/100 [OK]
+## 🏥 Model Health: 66.6/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.9/100
+  - 🟢 Calibration Freshness: 99.7/100
   - 🔴 Hit Rate Trend: 0/100
-  - 🔴 Brier Trend: 30.4/100
+  - 🔴 Brier Trend: 53.3/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 100.0/100
-  - 🟡 Edge Count: 60.0/100
+  - 🟢 Data Health: 95.5/100
+  - 🟡 Edge Count: 68.6/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.583)
-- **Total games on board:** 111
-- **Strong home favorites:** 2 | **Strong road dogs:** 0
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.579)
+- **Total games on board:** 114
+- **Strong home favorites:** 3 | **Strong road dogs:** 2
 
 ## 🎯 Top 5 Best Bets
 1. **ATL @ PIT YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
@@ -51,18 +51,19 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (2)
+## ⚡ Pre-Game HIGH Conviction (3)
 - [MLS] **CF Montréal** HOME (None L10) · model 71.5% fair -251
+- [WNBA] **Indiana Fever** AWAY (2-1 L10) · model 69.8% fair -231
 - [MLS] **Seattle Sounders FC** HOME (0-1 L10) · model 66.7% fair -200
 
 ## 🔥/❄️ Heat / Cold Signals
 - Hot teams: **1** | Cold teams: **2** | Over-heavy: 0 | Under-heavy: 0
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (43)
-- STEAM_MOVE: **39**
-- COMPOUND_BULLPEN: **2**
-- PEN_MISMATCH: **2**
+## ⚠️ Anomaly Detector (44)
+- STEAM_MOVE: **40**
+- COMPOUND_BULLPEN: **3**
+- PEN_MISMATCH: **1**
   - MIL @ STL (MLB): ML/TOTAL steam since open: ML +14.4pp toward STL; total +1 (OVER) (7 snapshots)
   - TOR @ SEA (MLB): ML/TOTAL steam since open: ML +13.5pp toward SEA; total +0.5 (OVER) (7 snapshots)
   - NYM @ ATL (MLB): ML/TOTAL steam since open: ML -11.8pp toward NYM; total +1 (OVER) (7 snapshots)
@@ -71,7 +72,7 @@
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$12.95**
+- Expected EV: **$12.94**
   - #1 [NRFI] $50 on ATL @ PIT YRFI (1st-inning OVER 0.5) (P=78%)
   - #2 [NRFI] $50 on OAK @ DET YRFI (1st-inning OVER 0.5) (P=75%)
   - #3 [NRFI] $50 on CHC @ BAL YRFI (1st-inning OVER 0.5) (P=75%)
@@ -111,11 +112,11 @@
   - [COIN_FLIP] **Damian Pinas** (9-1-0) vs Cesar Almeida -- fair -133
 
 ## ⛳ Golf Player Heat (from Genesis Scottish Open)
-  - 🔥 T1 **Marcus Armitage** (England): -3 total -- finished T1
-  - 🔥 T2 **Scott Jamieson** (Scotland): -3 total -- finished T2
-  - 🔥 T3 **Bernd Wiesberger** (Austria): -3 total -- finished T3
-  - 🔥 T4 **Tom Kim** (South Korea): -2 total -- finished T4
-  - 🔥 T5 **Michael Kim** (USA): -2 total -- finished T5
+  - 🔥 T1 **Tom Kim** (South Korea): -5 total -- finished T1
+  - 🔥 T2 **Bernd Wiesberger** (Austria): -5 total -- finished T2
+  - 🔥 T3 **Patrick Cantlay** (USA): -5 total -- finished T3
+  - 🔥 T4 **Rory McIlroy** (Northern Ireland): -5 total -- finished T4
+  - 🔥 T5 **Brooks Koepka** (USA): -4 total -- finished T5
 
 ## 🔥 MLB Batter Heat (40 HOT / 42 COLD)
   - 🔥 **Luis García Jr.** (WSH): L14 .449 / season .291 (+158pts)

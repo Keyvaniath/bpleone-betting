@@ -5,10 +5,10 @@ _46% lineups confirmed · 4 rookie SPs_
 **Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
-- **13 games** scheduled
-- **29 best bets** scored: 0 DK · 0 PP · 11 NRFI · 0 SGP
+- **12 games** scheduled
+- **28 best bets** scored: 0 DK · 0 PP · 10 NRFI · 0 SGP
 - **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$45.93
-- **MC simulation:** EV +$125.91, 84% P(profit), p05 $-89.5 / p95 $300.57
+- **MC simulation:** EV +$125.76, 85% P(profit), p05 $-92.54 / p95 $294.61
 
 ## Top 5 Best Bets
 1. **ATL @ PIT YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +31.8%)
@@ -37,10 +37,6 @@ _46% lineups confirmed · 4 rookie SPs_
 ## Weather leans
 - **UNDER lean** (wind in + cold): COL @ SFG
 
-## Hot streaks
-**Batters heating up:** Tyler Tolbert (heat +4.23), Kody Clemens (heat +2.24), Ryan O'Hearn (heat +2.16)
-**Pitchers on a run:** Framber Valdez (heat -7.53)
-
 ## Bullpens GASSED tonight
 Athletics, Pittsburgh Pirates, San Diego Padres, Seattle Mariners, San Francisco Giants, St. Louis Cardinals, Texas Rangers, Atlanta Braves
 _Lean late-inning OVER on these games; fade their save situations._
@@ -49,10 +45,10 @@ _Lean late-inning OVER on these games; fade their save situations._
 - **YRFI** (1st-inning OVER): ATL @ PIT, OAK @ DET, CHC @ BAL, CLE @ MIN, LAA @ TEX
 
 ## Golf -- Genesis Scottish Open
-- **Leader:** Marcus Armitage (-3) at #1
+- **Leader:** Tom Kim (-5) at #1
 - **Field:** 156 players  |  Status: In Progress
-- **Play of the Tournament:** Tom Kim TOP5 @ +526 (model 16.0%, HIGH)
-   - P(top 5) 16.0% -- lower variance than outright but compelling line.
+- **Play of the Tournament:** Patrick Cantlay WIN @ +569 (model 14.9%, HIGH)
+   - P(win) 14.9% with 2 round(s) left -- sweet-spot value at #3 (-5).
 
 ## NBA -- PLAYOFFS
 - New York Knicks @ San Antonio Spurs (53-29 vs 62-20) 94-90 | P(home) 0.0% fair +0 | Final
