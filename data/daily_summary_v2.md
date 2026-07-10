@@ -1,18 +1,18 @@
 # EdgeStat Daily Summary — 2026-07-10
 
-## 🏥 Model Health: 63.3/100 [OK]
+## 🏥 Model Health: 64.5/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 100.0/100
+  - 🟢 Calibration Freshness: 99.7/100
   - 🔴 Hit Rate Trend: 0/100
-  - 🔴 Brier Trend: 24.9/100
+  - 🔴 Brier Trend: 25.5/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 100.0/100
-  - 🟢 Edge Count: 82.9/100
+  - 🟢 Edge Count: 94.3/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.583)
-- **Total games on board:** 111
-- **Strong home favorites:** 2 | **Strong road dogs:** 0
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.576)
+- **Total games on board:** 114
+- **Strong home favorites:** 3 | **Strong road dogs:** 2
 
 ## 🎯 Top 5 Best Bets
 1. **TOR @ SDP YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
@@ -21,13 +21,16 @@
 4. **OAK @ CHW YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 5. **CHC @ CIN YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
 
+## 🐋 Whale Picks (Max Confluence)
+- [STRONG] **[MLB]** CHC @ CIN CHC_ML -- 65% / +20.7% (score 2.5)
+
 ## 📉 Strong UNDER Signals
 - [STRONG 5.1] **SEA @ TBR** model 7.19 vs market 8.0
 
 ## 🔒 Locks of the Day -- Track Record
-- All-time: **307-57** (84.3% hit rate)
-- Net units: **+10.46u** | ROI: **+46.4%**
-- Last 7d: 29-12 (70.7%) | net +0.58u
+- All-time: **307-58** (84.1% hit rate)
+- Net units: **+10.40u** | ROI: **+46.0%**
+- Last 7d: 29-13 (69.0%) | net +0.52u
 
 **Today's 5 Locks:**
 - [KBO] **Choi Jeong** one_plus_tb · p=73% edge=+39.8% qK=0.062u
@@ -51,7 +54,8 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (2)
+## ⚡ Pre-Game HIGH Conviction (3)
+- [WNBA] **Dallas Wings** AWAY (3-1 L10) · model 71.9% fair -255
 - [MLS] **CF Montréal** HOME (None L10) · model 71.5% fair -251
 - [MLS] **Seattle Sounders FC** HOME (0-1 L10) · model 66.7% fair -200
 
@@ -59,10 +63,10 @@
 - Hot teams: **2** | Cold teams: **1** | Over-heavy: 0 | Under-heavy: 0
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (45)
+## ⚠️ Anomaly Detector (44)
 - STEAM_MOVE: **41**
-- PEN_MISMATCH: **2**
 - COMPOUND_BULLPEN: **2**
+- PEN_MISMATCH: **1**
   - MIL @ STL (MLB): ML/TOTAL steam since open: ML +14.4pp toward STL; total +1 (OVER) (7 snapshots)
   - TOR @ SEA (MLB): ML/TOTAL steam since open: ML +13.5pp toward SEA; total +0.5 (OVER) (7 snapshots)
   - NYM @ ATL (MLB): ML/TOTAL steam since open: ML -11.8pp toward NYM; total +1 (OVER) (7 snapshots)
@@ -71,7 +75,7 @@
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$-8.21**
+- Expected EV: **$5.19**
   - #1 [NRFI] $50 on TOR @ SDP YRFI (1st-inning OVER 0.5) (P=76%)
   - #2 [NRFI] $50 on LAA @ MIN YRFI (1st-inning OVER 0.5) (P=71%)
   - #3 [NRFI] $50 on NYY @ WSN YRFI (1st-inning OVER 0.5) (P=70%)
@@ -109,13 +113,13 @@
   - [COIN_FLIP] **Damian Pinas** (9-1-0) vs Cesar Almeida -- fair -133
 
 ## ⛳ Golf Player Heat (from Genesis Scottish Open)
-  - 🔥 T1 **Jordan Smith** (England): -6 total -- finished T1
-  - 🔥 T2 **Rasmus Højgaard** (Denmark): -6 total -- finished T2
-  - 🔥 T3 **Tom Kim** (South Korea): -5 total -- finished T3
-  - 🔥 T4 **Bernd Wiesberger** (Austria): -5 total -- finished T4
-  - 🔥 T5 **Patrick Cantlay** (USA): -5 total -- finished T5
+  - 🔥 T1 **Jordan Smith** (England): -9 total -- finished T1
+  - 🔥 T2 **Rory McIlroy** (Northern Ireland): -9 total -- finished T2
+  - 🔥 T3 **Matt Fitzpatrick** (England): -8 total -- finished T3
+  - 🔥 T4 **Nicolai von Dellingshausen** (Germany): -7 total -- finished T4
+  - 🔥 T5 **Tom Kim** (South Korea): -7 total -- finished T5
 
-## 🔥 MLB Batter Heat (36 HOT / 46 COLD)
+## 🔥 MLB Batter Heat (36 HOT / 45 COLD)
   - 🔥 **Luis García Jr.** (WSH): L14 .449 / season .291 (+158pts)
   - 🔥 **Javier Sanoja** (MIA): L14 .419 / season .278 (+141pts)
   - 🔥 **Garrett Mitchell** (MIL): L14 .415 / season .274 (+141pts)
