@@ -1,28 +1,29 @@
-# EdgeStat Daily Summary — 2026-07-09
+# EdgeStat Daily Summary — 2026-07-10
 
-## 🏥 Model Health: 55.1/100 [OK]
-- Operational but room to improve - check yellow components
+## 🏥 Model Health: 54.2/100 [DEGRADED]
+- Several components weak - review red items
   - 🟢 Calibration Freshness: 100.0/100
   - 🔴 Hit Rate Trend: 0/100
   - 🔴 Brier Trend: 1.9/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 90.9/100
+  - 🟢 Data Health: 86.4/100
   - 🟡 Edge Count: 65.7/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.579)
-- **Total games on board:** 114
-- **Strong home favorites:** 3 | **Strong road dogs:** 2
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.582)
+- **Total games on board:** 127
+- **Strong home favorites:** 2 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
-1. **ATL @ PIT YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-2. **OAK @ DET YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-3. **CHC @ BAL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-4. **CLE @ MIN YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-5. **LAA @ TEX YRFI (1st-inning OVER 0.5)** (78/100 ★★★★)
+1. **LAA @ TEX YRFI (1st-inning OVER 0.5)** (78/100 ★★★★)
+2. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
+3. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
+4. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
+5. **GOLF Andrew Novak TOP5 @ 576 (Genesis Scottish Open)** (78/100 ★★★★★)
 
-## 📉 Strong UNDER Signals
-- [STRONG 5.1] **SEA @ MIA** model 7.2 vs market 8.0
+## 📡 Sharp Action (Line Movement)
+- [ELITE] **MIL @ STL** ml_away: 54.13% → 92.31% (+38.2pp)
+- [MODERATE] **LAA @ TEX** over_7.5: 54.55% → 59.18% (+4.6pp)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-57** (84.3% hit rate)
@@ -51,18 +52,16 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (3)
+## ⚡ Pre-Game HIGH Conviction (2)
 - [MLS] **CF Montréal** HOME (None L10) · model 71.5% fair -251
-- [WNBA] **Indiana Fever** AWAY (2-1 L10) · model 69.8% fair -231
 - [MLS] **Seattle Sounders FC** HOME (0-1 L10) · model 66.7% fair -200
 
 ## 🔥/❄️ Heat / Cold Signals
-- Hot teams: **1** | Cold teams: **2** | Over-heavy: 0 | Under-heavy: 0
+- Hot teams: **2** | Cold teams: **1** | Over-heavy: 0 | Under-heavy: 0
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (46)
-- STEAM_MOVE: **42**
-- COMPOUND_BULLPEN: **3**
+## ⚠️ Anomaly Detector (42)
+- STEAM_MOVE: **41**
 - PEN_MISMATCH: **1**
   - MIL @ STL (MLB): ML/TOTAL steam since open: ML +14.4pp toward STL; total +1 (OVER) (7 snapshots)
   - TOR @ SEA (MLB): ML/TOTAL steam since open: ML +13.5pp toward SEA; total +0.5 (OVER) (7 snapshots)
@@ -70,14 +69,14 @@
   - CIN @ MIL (MLB): ML/TOTAL steam since open: ML +6.3pp toward MIL; total -2 (UNDER) (4 snapshots)
   - DAL @ CON (WNBA): ML/TOTAL steam since open: ML +3.9pp toward CON; total +2 (OVER) (9 snapshots)
 
-## 💰 Today's Portfolio (9 picks)
-- Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$12.94**
-  - #1 [NRFI] $50 on ATL @ PIT YRFI (1st-inning OVER 0.5) (P=78%)
-  - #2 [NRFI] $50 on OAK @ DET YRFI (1st-inning OVER 0.5) (P=75%)
-  - #3 [NRFI] $50 on CHC @ BAL YRFI (1st-inning OVER 0.5) (P=75%)
-  - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
-  - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
+## 💰 Today's Portfolio (10 picks)
+- Total stake: **$335.0** (33.5% of $1000 bankroll)
+- Expected EV: **$-24.44**
+  - #1 [NRFI] $35 on LAA @ TEX YRFI (1st-inning OVER 0.5) (P=65%)
+  - #2 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
+  - #3 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
+  - #4 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
+  - #5 [GOLF] $35 on GOLF Andrew Novak TOP5 @ 576 (Genesis Scottish Open) (P=15%)
 
 ## 🎯 Convergence Picks (5 stacked games)
 - ELITE: **0** · HIGH: 1 · MED: 4
@@ -87,12 +86,10 @@
   - [MED] Portland Timbers @ Seattle Sounders FC : 2 signals (PREGAME, ATS)
   - [MED] Coventry City @ Arsenal : 2 signals (PREGAME, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (7)
-- **Drew Rasmussen** OVER 4.5 K (76%) fair -321
-- **Gavin Williams** OVER 4.5 K (75%) fair -295
-- **Bryce Miller** OVER 5.5 K (75%) fair -292
+## ⚾ Top MLB Pitcher K Plays (3)
 - **Jesús Luzardo** OVER 5.5 K (75%) fair -292
 - **Logan Henderson** OVER 4.5 K (72%) fair -251
+- **Reid Detmers** OVER 5.5 K (70%) fair -233
 
 ## 🏀 NBA Player Heat (18 HOT / 23 COLD)
   - 🔥 **Jeremiah Fears** (NO): L5 31.8/5.8/6.0 vs season 16.9/3.2/4.0 [PTS +14.9, REB +2.6, AST +2.0]
@@ -116,19 +113,19 @@
   - 🔥 T2 **Bernd Wiesberger** (Austria): -5 total -- finished T2
   - 🔥 T3 **Patrick Cantlay** (USA): -5 total -- finished T3
   - 🔥 T4 **Rory McIlroy** (Northern Ireland): -5 total -- finished T4
-  - 🔥 T5 **Brooks Koepka** (USA): -4 total -- finished T5
+  - 🔥 T5 **Rasmus Højgaard** (Denmark): -5 total -- finished T5
 
-## 🔥 MLB Batter Heat (36 HOT / 43 COLD)
+## 🔥 MLB Batter Heat (37 HOT / 46 COLD)
   - 🔥 **Luis García Jr.** (WSH): L14 .449 / season .291 (+158pts)
-  - 🔥 **Garrett Mitchell** (MIL): L14 .425 / season .276 (+149pts)
+  - 🔥 **Javier Sanoja** (MIA): L14 .419 / season .278 (+141pts)
+  - 🔥 **Garrett Mitchell** (MIL): L14 .415 / season .274 (+141pts)
   - 🔥 **Luisangel Acuña** (CWS): L14 .360 / season .233 (+127pts)
-  - 🔥 **Javier Sanoja** (MIA): L14 .391 / season .278 (+113pts)
-  - 🔥 **Wyatt Langford** (TEX): L14 .390 / season .278 (+112pts)
+  - 🔥 **Justin Crawford** (PHI): L14 .378 / season .263 (+115pts)
   - ❄️ **Jorge Mateo** (ATL): L14 .100 / season .242 (-142pts) -- FADE props
   - ❄️ **Eric Haase** (SF): L14 .029 / season .162 (-133pts) -- FADE props
-  - ❄️ **Corbin Carroll** (AZ): L14 .135 / season .261 (-126pts) -- FADE props
-  - ❄️ **Casey Schmitt** (SF): L14 .151 / season .275 (-124pts) -- FADE props
+  - ❄️ **Jung Hoo Lee** (SF): L14 .180 / season .309 (-129pts) -- FADE props
   - ❄️ **Cody Bellinger** (NYY): L14 .125 / season .247 (-122pts) -- FADE props
+  - ❄️ **Paul Goldschmidt** (NYY): L14 .140 / season .257 (-117pts) -- FADE props
 
 ## 📈 Streak Regression Alerts (1)
 - [WNBA] Atlanta Dream on L4 L10 0-4 -- Atlanta Dream on L4 -- no historical sample
@@ -141,5 +138,5 @@
   - ⚠️ batter_rbis (Brier Δ -0.0052)
 
 ## 🤖 Self-Training Status
-- **WNBA**: n=31 games · hit rate 61.3% · bias +3.5pp [calibration applied]
-- **MLB**: n=186 games · hit rate 52.7% · bias +1.3pp
+- **WNBA**: n=31 games · hit rate 54.8% · bias +5.6pp [calibration applied]
+- **MLB**: n=191 games · hit rate 52.4% · bias +1.8pp

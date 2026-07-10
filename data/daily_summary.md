@@ -1,81 +1,101 @@
-# EdgeStat Daily Brief - 2026-07-09
+# EdgeStat Daily Brief - 2026-07-10
 
 **Model Confidence: 22.0/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
 
-_Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
+_Pipeline health: **WARNING** (12/15 artifacts ok; 3 empty, 0 stale)._ 
 
-_Generated at 2026-07-09T23:13:06 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-07-10T08:11:10 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
-**ARI @ SDP - UNDER_9.0**
+**CHC @ CIN - OVER_9.5**
 - Market: -110
-- Model probability: 65.1%
-- Raw edge: +24.38%
+- Model probability: 88.9%
+- Raw edge: +69.77%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
 
-## Full Slate (4 games)
+## Full Slate (15 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 7:45p ET | MIL @ STL | Busch Stadium | 76F 2mph | MIL_ML +23.0% |
-| 8:05p ET | LAA @ TEX | Globe Life Field | indoor | OVER_7.5 +17.07% |
-| 9:40p ET | ARI @ SDP | Petco Park | 64F 2mph | UNDER_9.0 +24.38% |
-| 9:45p ET | COL @ SFG | Oracle Park | 56F 8mph | OVER_9.0 +12.1% |
+| 6:40p ET | PHI @ DET | Comerica Park | 76F 5mph | DET_ML +19.62% |
+| 6:40p ET | MIL @ PIT | PNC Park | 72F 1mph | OVER_8.0 +24.81% |
+| 6:45p ET | NYY @ WSN | Nationals Park | 77F 1mph | WSN_ML +58.69% |
+| 7:05p ET | KCR @ BAL | Oriole Park at Camden Yards | 75F 3mph | -- |
+| 7:10p ET | CHC @ CIN | Great American Ball Park | 76F 4mph | OVER_9.5 +69.77% |
+| 7:10p ET | SEA @ TBR | Tropicana Field | indoor | UNDER_8.0 +21.76% |
+| 7:10p ET | CLE @ MIA | loanDepot park | indoor | MIA_ML +13.98% |
+| 7:15p ET | BOS @ NYM | Citi Field | 78F 4mph | UNDER_7.5 +13.24% |
+| 7:40p ET | OAK @ CHW | Rate Field | 70F 7mph | OVER_9.0 +56.65% |
+| 8:05p ET | HOU @ TEX | Globe Life Field | indoor | OVER_8.0 +38.1% |
+| 8:10p ET | LAA @ MIN | Target Field | 76F 4mph | OVER_9.0 +48.01% |
+| 8:15p ET | ATL @ STL | Busch Stadium | 77F 11mph | OVER_7.5 +21.11% |
+| 9:40p ET | TOR @ SDP | Petco Park | 64F 3mph | OVER_8.0 +35.55% |
+| 10:10p ET | ARI @ LAD | UNIQLO Field at Dodger Stadium | 66F 5mph | LAD_ML +19.94% |
+| 10:15p ET | COL @ SFG | Oracle Park | 55F 9mph | OVER_8.5 +46.77% |
 
 ## Parlays - top 5
 
-- **2-leg @ +293 (prob 38.1%, EV +49.97%)**
-  - CHC @ BAL CHC_ML (+106, model 59.7%)
-  - ARI @ SDP UNDER_9.0 (-110, model 63.9%)
-- **2-leg @ +293 (prob 37.9%, EV +49.17%)**
-  - CHC @ BAL CHC_ML (+106, model 59.7%)
-  - SEA @ MIA UNDER_8.0 (-110, model 63.6%)
-- **2-leg @ +254 (prob 42.0%, EV +48.66%)**
-  - CHC @ BAL CHC_ML (+106, model 59.7%)
-  - MIL @ STL MIL_ML (-139, model 70.4%)
-- **2-leg @ +264 (prob 40.6%, EV +48.17%)**
-  - SEA @ MIA UNDER_8.0 (-110, model 63.6%)
-  - ARI @ SDP UNDER_9.0 (-110, model 63.9%)
-- **2-leg @ +229 (prob 45.1%, EV +48.07%)**
-  - CHC @ BAL CHC_ML (+106, model 59.7%)
-  - PHI @ CIN PHI_ML (-168, model 75.5%)
+- **2-leg @ +326 (prob 35.2%, EV +50.0%)**
+  - Jazz Chisholm Jr. UNDER 0.5 batter_hits (+171, model 45.4%)
+  - OAK @ CHW CHW_ML (-175, model 77.7%)
+- **2-leg @ +255 (prob 42.2%, EV +49.95%)**
+  - Bryce Harper OVER 1.5 batter_total_bases (+126, model 54.4%)
+  - OAK @ CHW CHW_ML (-175, model 77.7%)
+- **2-leg @ +417 (prob 29.0%, EV +49.82%)**
+  - Noelvi Marte UNDER 0.5 batter_hits (+171, model 44.3%)
+  - MIL @ PIT OVER_8.0 (-110, model 65.4%)
+- **2-leg @ +417 (prob 28.9%, EV +49.64%)**
+  - Jazz Chisholm Jr. UNDER 0.5 batter_hits (+171, model 45.4%)
+  - SEA @ TBR UNDER_8.0 (-110, model 63.8%)
+- **2-leg @ +331 (prob 34.7%, EV +49.59%)**
+  - Bryce Harper OVER 1.5 batter_total_bases (+126, model 54.4%)
+  - SEA @ TBR UNDER_8.0 (-110, model 63.8%)
 
 ## Self-Learning Loop
 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
 
-Cumulative graded plays: 6683. Wins: 2785. Hit rate: 41.7%.
+Cumulative graded plays: 6697. Wins: 2795. Hit rate: 41.7%.
 
 ## Auxiliary Markets (Model Fair Prices)
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| ARI @ SDP | 36.7% | +172 | 5.07 | +159 | -159 |
-| COL @ SFG | 51.0% | -104 | 3.55 | +117 | -117 |
-| LAA @ TEX | 35.1% | +185 | 5.24 | +196 | -196 |
-| MIL @ STL | 55.1% | -123 | 2.98 | +433 | -433 |
-| PHI @ CIN | 42.9% | +133 | 4.23 | -- | -- |
+| ARI @ LAD | 57.7% | -136 | 2.82 | -366 | +366 |
+| ATL @ STL | 63.8% | -177 | 2.19 | +394 | -394 |
+| BOS @ NYM | 56.1% | -128 | 2.97 | +218 | -218 |
+| CHC @ CIN | 34.2% | +192 | 16.09 | +731 | -731 |
+| CLE @ MIA | 49.6% | +102 | 3.51 | +111 | -111 |
+| COL @ SFG | 34.7% | +188 | 5.6 | +138 | -138 |
+| HOU @ TEX | 42.9% | +133 | 4.24 | +148 | -148 |
+| KCR @ BAL | 38.7% | +158 | 4.7 | +113 | -113 |
+| LAA @ MIN | 28.6% | +249 | 6.1 | +104 | -104 |
+| MIL @ PIT | 49.7% | +101 | 3.52 | -109 | +109 |
+| NYY @ WSN | 30.4% | +229 | 5.98 | -121 | +121 |
+| OAK @ CHW | 31.2% | +220 | 5.59 | -215 | +215 |
+| PHI @ DET | 37.8% | +165 | 4.86 | -113 | +113 |
+| SEA @ TBR | 48.6% | +106 | 3.61 | +123 | -123 |
+| TOR @ SDP | 23.8% | +320 | 7.31 | +101 | -101 |
 
 ## Team Form (last 10)
 
-**Hot:** DET 7-3 (W4, +19), SEA 5-5 (L2, +18), CHC 8-2 (W3, +18), TB 7-3 (W2, +16), MIA 7-3 (W5, +16)
+**Hot:** DET 8-2 (W5, +24), MIA 8-2 (W6, +21), SEA 5-5 (L3, +15), MIN 7-3 (L1, +14), BOS 8-2 (W6, +14)
 
-**Cold:** ATH 1-9 (L5, -33), SD 3-7 (W2, -28), NYY 2-8 (L2, -25), SF 4-6 (L2, -22), NYM 4-6 (W1, -16)
+**Cold:** ATH 1-9 (L6, -33), SD 3-7 (L1, -29), SF 4-6 (W1, -17), NYY 3-7 (W1, -16), LAA 2-8 (L1, -13)
 
 ## Gassed Bullpens (> 8.0 IP in 2 days)
 
-- SF: 8.2 IP across 2 games
-- STL: 13.5 IP across 3 games
-- TEX: 8.0 IP across 2 games
-- ATL: 8.2 IP across 2 games
-- CWS: 8.3 IP across 2 games
-- MIA: 9.0 IP across 2 games
-- HOU: 8.4 IP across 2 games
-- KC: 9.1 IP across 2 games
+- ATH: 9.4 IP across 2 games
+- PIT: 8.3 IP across 2 games
+- TB: 8.4 IP across 2 games
+- ATL: 8.3 IP across 2 games
+- CWS: 8.2 IP across 2 games
+- LAA: 9.1 IP across 2 games
+- KC: 8.7 IP across 2 games
 
 ## Loop Activity (since last refresh)
 
