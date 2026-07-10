@@ -1,13 +1,13 @@
 # EdgeStat Daily Summary — 2026-07-10
 
-## 🏥 Model Health: 64.5/100 [OK]
+## 🏥 Model Health: 59.5/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.7/100
+  - 🟢 Calibration Freshness: 100.0/100
   - 🔴 Hit Rate Trend: 0/100
-  - 🔴 Brier Trend: 25.5/100
+  - 🔴 Brier Trend: 20.4/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 100.0/100
-  - 🟢 Edge Count: 94.3/100
+  - 🟢 Data Health: 95.5/100
+  - 🟡 Edge Count: 62.9/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.576)
@@ -20,9 +20,6 @@
 3. **NYY @ WSN YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 4. **OAK @ CHW YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 5. **CHC @ CIN YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
-
-## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** CHC @ CIN CHC_ML -- 65% / +20.7% (score 2.5)
 
 ## 📉 Strong UNDER Signals
 - [STRONG 5.1] **SEA @ TBR** model 7.19 vs market 8.0
@@ -63,15 +60,16 @@
 - Hot teams: **2** | Cold teams: **1** | Over-heavy: 0 | Under-heavy: 0
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (44)
-- STEAM_MOVE: **41**
+## ⚠️ Anomaly Detector (51)
+- RESIDUAL_DIVERGENCE: **3**
+- STEAM_MOVE: **45**
 - COMPOUND_BULLPEN: **2**
 - PEN_MISMATCH: **1**
+  - Connecticut Sun (WNBA): Connecticut Sun UNDERPERFORMING expected margin by 6.7pts in recent games -- model bias may persist
+  - Dallas Wings (WNBA): Dallas Wings OUTPERFORMING expected margin by 7.2pts in recent games -- model bias may persist
+  - Chicago Sky (WNBA): Chicago Sky OUTPERFORMING expected margin by 7.5pts in recent games -- model bias may persist
   - MIL @ STL (MLB): ML/TOTAL steam since open: ML +14.4pp toward STL; total +1 (OVER) (7 snapshots)
   - TOR @ SEA (MLB): ML/TOTAL steam since open: ML +13.5pp toward SEA; total +0.5 (OVER) (7 snapshots)
-  - NYM @ ATL (MLB): ML/TOTAL steam since open: ML -11.8pp toward NYM; total +1 (OVER) (7 snapshots)
-  - CIN @ MIL (MLB): ML/TOTAL steam since open: ML +6.3pp toward MIL; total -2 (UNDER) (4 snapshots)
-  - DAL @ CON (WNBA): ML/TOTAL steam since open: ML +3.9pp toward CON; total +2 (OVER) (9 snapshots)
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
@@ -82,11 +80,13 @@
   - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
-## 🎯 Convergence Picks (3 stacked games)
-- ELITE: **0** · HIGH: 0 · MED: 3
+## 🎯 Convergence Picks (6 stacked games)
+- ELITE: **1** · HIGH: 1 · MED: 4
+  - [ELITE] Dallas Wings @ Toronto Tempo : 6 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
+  - [HIGH] Chicago Sky @ Los Angeles Sparks : 3 signals (PREGAME, ANOMALY, ATS)
   - [MED] New York Knicks @ San Antonio Spurs : 2 signals (ATS, ATS)
+  - [MED] Golden State Valkyries @ Connecticut Sun : 2 signals (HEAT_COLD, ANOMALY)
   - [MED] Portland Timbers @ Seattle Sounders FC : 2 signals (PREGAME, ATS)
-  - [MED] Coventry City @ Arsenal : 2 signals (PREGAME, ATS)
 
 ## ⚾ Top MLB Pitcher K Plays (12)
 - **Hunter Greene** OVER 4.5 K (78%) fair -349
@@ -114,12 +114,12 @@
 
 ## ⛳ Golf Player Heat (from Genesis Scottish Open)
   - 🔥 T1 **Jordan Smith** (England): -9 total -- finished T1
-  - 🔥 T2 **Rory McIlroy** (Northern Ireland): -9 total -- finished T2
-  - 🔥 T3 **Matt Fitzpatrick** (England): -8 total -- finished T3
-  - 🔥 T4 **Nicolai von Dellingshausen** (Germany): -7 total -- finished T4
-  - 🔥 T5 **Tom Kim** (South Korea): -7 total -- finished T5
+  - 🔥 T2 **Tom Kim** (South Korea): -9 total -- finished T2
+  - 🔥 T3 **Rory McIlroy** (Northern Ireland): -9 total -- finished T3
+  - 🔥 T4 **Matt Fitzpatrick** (England): -8 total -- finished T4
+  - 🔥 T5 **Nicolai von Dellingshausen** (Germany): -7 total -- finished T5
 
-## 🔥 MLB Batter Heat (36 HOT / 45 COLD)
+## 🔥 MLB Batter Heat (38 HOT / 44 COLD)
   - 🔥 **Luis García Jr.** (WSH): L14 .449 / season .291 (+158pts)
   - 🔥 **Javier Sanoja** (MIA): L14 .419 / season .278 (+141pts)
   - 🔥 **Garrett Mitchell** (MIL): L14 .415 / season .274 (+141pts)
@@ -130,6 +130,11 @@
   - ❄️ **Jung Hoo Lee** (SF): L14 .180 / season .309 (-129pts) -- FADE props
   - ❄️ **Cody Bellinger** (NYY): L14 .125 / season .247 (-122pts) -- FADE props
   - ❄️ **Paul Goldschmidt** (NYY): L14 .140 / season .257 (-117pts) -- FADE props
+
+## 📈 Streak Regression Alerts (3)
+- [WNBA] Golden State Valkyries on W5 L10 5-0 -- Golden State Valkyries on W5 -- no historical sample
+- [WNBA] Toronto Tempo on L3 L10 0-3 -- Toronto Tempo on L3 -- no historical sample
+- [WNBA] Dallas Wings on W3 L10 3-1 -- Dallas Wings on W3 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**

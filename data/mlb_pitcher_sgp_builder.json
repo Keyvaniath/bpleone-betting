@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-10T16:34:06",
-  "n_stacks": 30,
-  "n_prime": 27,
+  "generated_at": "2026-07-10T23:03:18",
+  "n_stacks": 22,
+  "n_prime": 19,
   "rho": 0.45,
   "method_note": "Pitcher same-game stack. Legs (K OVER confident line, ER UNDER 3.5 via Poisson(proj_er), Outs OVER 14.5, Quality Start YES) kept if each >= 0.45. naive_joint=product; correlated_joint=naive+RHO*(min_leg-naive), RHO=0.45 captures same-game positive correlation (naive parlay under-prices these). Tiers PRIME>=.45, STRONG>=.32, VALUE>=.22.",
   "rows": [
@@ -9,8 +9,12 @@
       "pitcher": "Eduardo Rodriguez",
       "team": "AZ",
       "matchup": "ARI @ LAD",
-      "n_legs": 2,
+      "n_legs": 3,
       "legs": [
+        {
+          "market": "K OVER 3.5",
+          "prob": 0.773
+        },
         {
           "market": "ER UNDER 3.5",
           "prob": 0.949
@@ -20,56 +24,35 @@
           "prob": 0.695
         }
       ],
-      "naive_joint": 0.66,
-      "correlated_joint": 0.676,
-      "correlation_boost_pct": 2.4,
-      "fair_american": -208,
+      "naive_joint": 0.51,
+      "correlated_joint": 0.593,
+      "correlation_boost_pct": 16.3,
+      "fair_american": -146,
       "tier": "PRIME_STACK"
     },
     {
-      "pitcher": "Robbie Ray",
-      "team": "SF",
-      "matchup": "COL @ SFG",
-      "n_legs": 2,
-      "legs": [
-        {
-          "market": "ER UNDER 3.5",
-          "prob": 0.928
-        },
-        {
-          "market": "Outs OVER 14.5",
-          "prob": 0.684
-        }
-      ],
-      "naive_joint": 0.635,
-      "correlated_joint": 0.657,
-      "correlation_boost_pct": 3.5,
-      "fair_american": -191,
-      "tier": "PRIME_STACK"
-    },
-    {
-      "pitcher": "Sonny Gray",
-      "team": "BOS",
-      "matchup": "BOS @ NYM",
+      "pitcher": "Chris Sale",
+      "team": "ATL",
+      "matchup": "ATL @ STL",
       "n_legs": 3,
       "legs": [
         {
-          "market": "K OVER 4.5",
-          "prob": 0.777
+          "market": "K OVER 7.5",
+          "prob": 0.712
         },
         {
           "market": "ER UNDER 3.5",
-          "prob": 0.937
+          "prob": 0.938
         },
         {
           "market": "Outs OVER 14.5",
           "prob": 0.689
         }
       ],
-      "naive_joint": 0.502,
-      "correlated_joint": 0.586,
-      "correlation_boost_pct": 16.8,
-      "fair_american": -142,
+      "naive_joint": 0.46,
+      "correlated_joint": 0.563,
+      "correlation_boost_pct": 22.4,
+      "fair_american": -129,
       "tier": "PRIME_STACK"
     },
     {
@@ -94,103 +77,28 @@
       "tier": "PRIME_STACK"
     },
     {
-      "pitcher": "Chris Sale",
-      "team": "ATL",
-      "matchup": "ATL @ STL",
-      "n_legs": 3,
-      "legs": [
-        {
-          "market": "K OVER 5.5",
-          "prob": 0.697
-        },
-        {
-          "market": "ER UNDER 3.5",
-          "prob": 0.938
-        },
-        {
-          "market": "Outs OVER 14.5",
-          "prob": 0.689
-        }
-      ],
-      "naive_joint": 0.45,
-      "correlated_joint": 0.558,
-      "correlation_boost_pct": 23.8,
-      "fair_american": -126,
-      "tier": "PRIME_STACK"
-    },
-    {
-      "pitcher": "Nolan McLean",
-      "team": "NYM",
-      "matchup": "BOS @ NYM",
+      "pitcher": "Robbie Ray",
+      "team": "SF",
+      "matchup": "COL @ SFG",
       "n_legs": 3,
       "legs": [
         {
           "market": "K OVER 4.5",
-          "prob": 0.735
+          "prob": 0.69
         },
         {
           "market": "ER UNDER 3.5",
-          "prob": 0.911
+          "prob": 0.928
         },
         {
           "market": "Outs OVER 14.5",
-          "prob": 0.675
+          "prob": 0.684
         }
       ],
-      "naive_joint": 0.452,
-      "correlated_joint": 0.552,
-      "correlation_boost_pct": 22.2,
-      "fair_american": -123,
-      "tier": "PRIME_STACK"
-    },
-    {
-      "pitcher": "Brandon Young",
-      "team": "BAL",
-      "matchup": "KCR @ BAL",
-      "n_legs": 3,
-      "legs": [
-        {
-          "market": "K OVER 3.5",
-          "prob": 0.741
-        },
-        {
-          "market": "ER UNDER 3.5",
-          "prob": 0.901
-        },
-        {
-          "market": "Outs OVER 14.5",
-          "prob": 0.671
-        }
-      ],
-      "naive_joint": 0.448,
-      "correlated_joint": 0.548,
-      "correlation_boost_pct": 22.4,
-      "fair_american": -121,
-      "tier": "PRIME_STACK"
-    },
-    {
-      "pitcher": "Sean Burke",
-      "team": "CWS",
-      "matchup": "OAK @ CHW",
-      "n_legs": 3,
-      "legs": [
-        {
-          "market": "K OVER 5.5",
-          "prob": 0.766
-        },
-        {
-          "market": "ER UNDER 3.5",
-          "prob": 0.888
-        },
-        {
-          "market": "Outs OVER 14.5",
-          "prob": 0.664
-        }
-      ],
-      "naive_joint": 0.452,
-      "correlated_joint": 0.547,
-      "correlation_boost_pct": 21.2,
-      "fair_american": -121,
+      "naive_joint": 0.438,
+      "correlated_joint": 0.549,
+      "correlation_boost_pct": 25.3,
+      "fair_american": -122,
       "tier": "PRIME_STACK"
     },
     {
@@ -200,8 +108,8 @@
       "n_legs": 3,
       "legs": [
         {
-          "market": "K OVER 4.5",
-          "prob": 0.661
+          "market": "K OVER 5.5",
+          "prob": 0.751
         },
         {
           "market": "ER UNDER 3.5",
@@ -212,85 +120,60 @@
           "prob": 0.653
         }
       ],
-      "naive_joint": 0.373,
-      "correlated_joint": 0.499,
-      "correlation_boost_pct": 33.8,
-      "fair_american": 100,
+      "naive_joint": 0.424,
+      "correlated_joint": 0.527,
+      "correlation_boost_pct": 24.4,
+      "fair_american": -111,
       "tier": "PRIME_STACK"
     },
     {
-      "pitcher": "Sandy Alcantara",
-      "team": "MIA",
-      "matchup": "CLE @ MIA",
+      "pitcher": "Sean Burke",
+      "team": "CWS",
+      "matchup": "OAK @ CHW",
       "n_legs": 3,
       "legs": [
         {
-          "market": "K OVER 3.5",
-          "prob": 0.798
+          "market": "K OVER 8.5",
+          "prob": 0.678
         },
         {
           "market": "ER UNDER 3.5",
-          "prob": 0.785
+          "prob": 0.888
         },
         {
           "market": "Outs OVER 14.5",
-          "prob": 0.625
+          "prob": 0.664
         }
       ],
-      "naive_joint": 0.392,
-      "correlated_joint": 0.497,
-      "correlation_boost_pct": 26.8,
-      "fair_american": 101,
+      "naive_joint": 0.4,
+      "correlated_joint": 0.519,
+      "correlation_boost_pct": 29.7,
+      "fair_american": -108,
       "tier": "PRIME_STACK"
     },
     {
-      "pitcher": "Brandon Sproat",
-      "team": "MIL",
-      "matchup": "MIL @ PIT",
-      "n_legs": 3,
-      "legs": [
-        {
-          "market": "K OVER 3.5",
-          "prob": 0.772
-        },
-        {
-          "market": "ER UNDER 3.5",
-          "prob": 0.797
-        },
-        {
-          "market": "Outs OVER 14.5",
-          "prob": 0.629
-        }
-      ],
-      "naive_joint": 0.387,
-      "correlated_joint": 0.496,
-      "correlation_boost_pct": 28.1,
-      "fair_american": 102,
-      "tier": "PRIME_STACK"
-    },
-    {
-      "pitcher": "Braxton Ashcraft",
-      "team": "PIT",
-      "matchup": "MIL @ PIT",
+      "pitcher": "Brandon Young",
+      "team": "BAL",
+      "matchup": "KCR @ BAL",
       "n_legs": 3,
       "legs": [
         {
           "market": "K OVER 5.5",
-          "prob": 0.713
+          "prob": 0.654
         },
         {
           "market": "ER UNDER 3.5",
-          "prob": 0.813
+          "prob": 0.901
         },
         {
           "market": "Outs OVER 14.5",
-          "prob": 0.636
+          "prob": 0.671
         }
       ],
-      "naive_joint": 0.369,
-      "correlated_joint": 0.489,
-      "correlation_boost_pct": 32.6,
-      "fair_american": 105,
+      "naive_joint": 0.395,
+      "correlated_joint": 0.512,
+      "correlation_boost_pct": 29.4,
+      "fair_american": -105,
       "tier": "PRIME_STACK"
     },
     {
@@ -300,8 +183,8 @@
       "n_legs": 3,
       "legs": [
         {
-          "market": "K OVER 3.5",
-          "prob": 0.715
+          "market": "K OVER 4.5",
+          "prob": 0.776
         },
         {
           "market": "ER UNDER 3.5",
@@ -312,91 +195,91 @@
           "prob": 0.634
         }
       ],
-      "naive_joint": 0.367,
-      "correlated_joint": 0.487,
-      "correlation_boost_pct": 32.8,
-      "fair_american": 105,
+      "naive_joint": 0.398,
+      "correlated_joint": 0.504,
+      "correlation_boost_pct": 26.7,
+      "fair_american": -102,
       "tier": "PRIME_STACK"
     },
     {
-      "pitcher": "JP Sears",
+      "pitcher": "Sandy Alcantara",
+      "team": "MIA",
+      "matchup": "CLE @ MIA",
+      "n_legs": 3,
+      "legs": [
+        {
+          "market": "K OVER 5.5",
+          "prob": 0.732
+        },
+        {
+          "market": "ER UNDER 3.5",
+          "prob": 0.785
+        },
+        {
+          "market": "Outs OVER 14.5",
+          "prob": 0.625
+        }
+      ],
+      "naive_joint": 0.359,
+      "correlated_joint": 0.479,
+      "correlation_boost_pct": 33.3,
+      "fair_american": 109,
+      "tier": "PRIME_STACK"
+    },
+    {
+      "pitcher": "Tanner Gordon",
+      "team": null,
+      "matchup": "COL @ SFG",
+      "n_legs": 3,
+      "legs": [
+        {
+          "market": "K OVER 3.5",
+          "prob": 0.736
+        },
+        {
+          "market": "ER UNDER 3.5",
+          "prob": 0.764
+        },
+        {
+          "market": "Outs OVER 14.5",
+          "prob": 0.616
+        }
+      ],
+      "naive_joint": 0.346,
+      "correlated_joint": 0.468,
+      "correlation_boost_pct": 35.0,
+      "fair_american": 114,
+      "tier": "PRIME_STACK"
+    },
+    {
+      "pitcher": "Kyle Hurt",
+      "team": null,
+      "matchup": "ARI @ LAD",
+      "n_legs": 3,
+      "legs": [
+        {
+          "market": "K OVER 3.5",
+          "prob": 0.736
+        },
+        {
+          "market": "ER UNDER 3.5",
+          "prob": 0.764
+        },
+        {
+          "market": "Outs OVER 14.5",
+          "prob": 0.616
+        }
+      ],
+      "naive_joint": 0.346,
+      "correlated_joint": 0.468,
+      "correlation_boost_pct": 35.0,
+      "fair_american": 114,
+      "tier": "PRIME_STACK"
+    },
+    {
+      "pitcher": "Shane Bieber",
       "team": null,
       "matchup": "TOR @ SDP",
-      "n_legs": 3,
-      "legs": [
-        {
-          "market": "K OVER 3.5",
-          "prob": 0.736
-        },
-        {
-          "market": "ER UNDER 3.5",
-          "prob": 0.764
-        },
-        {
-          "market": "Outs OVER 14.5",
-          "prob": 0.616
-        }
-      ],
-      "naive_joint": 0.346,
-      "correlated_joint": 0.468,
-      "correlation_boost_pct": 35.0,
-      "fair_american": 114,
-      "tier": "PRIME_STACK"
-    },
-    {
-      "pitcher": "Jack Flaherty",
-      "team": null,
-      "matchup": "PHI @ DET",
-      "n_legs": 3,
-      "legs": [
-        {
-          "market": "K OVER 3.5",
-          "prob": 0.736
-        },
-        {
-          "market": "ER UNDER 3.5",
-          "prob": 0.764
-        },
-        {
-          "market": "Outs OVER 14.5",
-          "prob": 0.616
-        }
-      ],
-      "naive_joint": 0.346,
-      "correlated_joint": 0.468,
-      "correlation_boost_pct": 35.0,
-      "fair_american": 114,
-      "tier": "PRIME_STACK"
-    },
-    {
-      "pitcher": "Ryan Weathers",
-      "team": null,
-      "matchup": "NYY @ WSN",
-      "n_legs": 3,
-      "legs": [
-        {
-          "market": "K OVER 3.5",
-          "prob": 0.736
-        },
-        {
-          "market": "ER UNDER 3.5",
-          "prob": 0.764
-        },
-        {
-          "market": "Outs OVER 14.5",
-          "prob": 0.616
-        }
-      ],
-      "naive_joint": 0.346,
-      "correlated_joint": 0.468,
-      "correlation_boost_pct": 35.0,
-      "fair_american": 114,
-      "tier": "PRIME_STACK"
-    },
-    {
-      "pitcher": "Luinder Avila",
-      "team": null,
-      "matchup": "KCR @ BAL",
       "n_legs": 3,
       "legs": [
         {
@@ -444,109 +327,9 @@
       "tier": "PRIME_STACK"
     },
     {
-      "pitcher": "Luis Castillo",
+      "pitcher": "Luinder Avila",
       "team": null,
-      "matchup": "SEA @ TBR",
-      "n_legs": 3,
-      "legs": [
-        {
-          "market": "K OVER 3.5",
-          "prob": 0.736
-        },
-        {
-          "market": "ER UNDER 3.5",
-          "prob": 0.764
-        },
-        {
-          "market": "Outs OVER 14.5",
-          "prob": 0.616
-        }
-      ],
-      "naive_joint": 0.346,
-      "correlated_joint": 0.468,
-      "correlation_boost_pct": 35.0,
-      "fair_american": 114,
-      "tier": "PRIME_STACK"
-    },
-    {
-      "pitcher": "Jacob Lopez",
-      "team": null,
-      "matchup": "OAK @ CHW",
-      "n_legs": 3,
-      "legs": [
-        {
-          "market": "K OVER 3.5",
-          "prob": 0.736
-        },
-        {
-          "market": "ER UNDER 3.5",
-          "prob": 0.764
-        },
-        {
-          "market": "Outs OVER 14.5",
-          "prob": 0.616
-        }
-      ],
-      "naive_joint": 0.346,
-      "correlated_joint": 0.468,
-      "correlation_boost_pct": 35.0,
-      "fair_american": 114,
-      "tier": "PRIME_STACK"
-    },
-    {
-      "pitcher": "Tanner Gordon",
-      "team": null,
-      "matchup": "COL @ SFG",
-      "n_legs": 3,
-      "legs": [
-        {
-          "market": "K OVER 3.5",
-          "prob": 0.736
-        },
-        {
-          "market": "ER UNDER 3.5",
-          "prob": 0.764
-        },
-        {
-          "market": "Outs OVER 14.5",
-          "prob": 0.616
-        }
-      ],
-      "naive_joint": 0.346,
-      "correlated_joint": 0.468,
-      "correlation_boost_pct": 35.0,
-      "fair_american": 114,
-      "tier": "PRIME_STACK"
-    },
-    {
-      "pitcher": "Carson Palmquist",
-      "team": null,
-      "matchup": "NYY @ WSN",
-      "n_legs": 3,
-      "legs": [
-        {
-          "market": "K OVER 3.5",
-          "prob": 0.736
-        },
-        {
-          "market": "ER UNDER 3.5",
-          "prob": 0.764
-        },
-        {
-          "market": "Outs OVER 14.5",
-          "prob": 0.616
-        }
-      ],
-      "naive_joint": 0.346,
-      "correlated_joint": 0.468,
-      "correlation_boost_pct": 35.0,
-      "fair_american": 114,
-      "tier": "PRIME_STACK"
-    },
-    {
-      "pitcher": "Shane Bieber",
-      "team": null,
-      "matchup": "TOR @ SDP",
+      "matchup": "KCR @ BAL",
       "n_legs": 3,
       "legs": [
         {
@@ -619,9 +402,9 @@
       "tier": "PRIME_STACK"
     },
     {
-      "pitcher": "Aaron Nola",
+      "pitcher": "JP Sears",
       "team": null,
-      "matchup": "PHI @ DET",
+      "matchup": "TOR @ SDP",
       "n_legs": 3,
       "legs": [
         {
@@ -644,9 +427,34 @@
       "tier": "PRIME_STACK"
     },
     {
-      "pitcher": "Shohei Ohtani",
+      "pitcher": "Luis Castillo",
       "team": null,
-      "matchup": "ARI @ LAD",
+      "matchup": "SEA @ TBR",
+      "n_legs": 3,
+      "legs": [
+        {
+          "market": "K OVER 3.5",
+          "prob": 0.736
+        },
+        {
+          "market": "ER UNDER 3.5",
+          "prob": 0.764
+        },
+        {
+          "market": "Outs OVER 14.5",
+          "prob": 0.616
+        }
+      ],
+      "naive_joint": 0.346,
+      "correlated_joint": 0.468,
+      "correlation_boost_pct": 35.0,
+      "fair_american": 114,
+      "tier": "PRIME_STACK"
+    },
+    {
+      "pitcher": "Jacob Lopez",
+      "team": null,
+      "matchup": "OAK @ CHW",
       "n_legs": 3,
       "legs": [
         {
@@ -675,8 +483,8 @@
       "n_legs": 3,
       "legs": [
         {
-          "market": "K OVER 3.5",
-          "prob": 0.739
+          "market": "K OVER 4.5",
+          "prob": 0.786
         },
         {
           "market": "ER UNDER 3.5",
@@ -687,10 +495,10 @@
           "prob": 0.574
         }
       ],
-      "naive_joint": 0.277,
-      "correlated_joint": 0.41,
-      "correlation_boost_pct": 48.4,
-      "fair_american": 144,
+      "naive_joint": 0.294,
+      "correlated_joint": 0.42,
+      "correlation_boost_pct": 42.8,
+      "fair_american": 138,
       "tier": "STRONG_STACK"
     },
     {
@@ -700,8 +508,8 @@
       "n_legs": 3,
       "legs": [
         {
-          "market": "K OVER 3.5",
-          "prob": 0.718
+          "market": "K OVER 4.5",
+          "prob": 0.767
         },
         {
           "market": "ER UNDER 3.5",
@@ -712,10 +520,10 @@
           "prob": 0.565
         }
       ],
-      "naive_joint": 0.254,
-      "correlated_joint": 0.394,
-      "correlation_boost_pct": 55.0,
-      "fair_american": 154,
+      "naive_joint": 0.272,
+      "correlated_joint": 0.404,
+      "correlation_boost_pct": 48.6,
+      "fair_american": 148,
       "tier": "STRONG_STACK"
     },
     {
@@ -730,7 +538,7 @@
         },
         {
           "market": "ER UNDER 3.5",
-          "prob": 0.764
+          "prob": 0.762
         },
         {
           "market": "Outs OVER 14.5",
@@ -741,9 +549,9 @@
           "prob": 0.45
         }
       ],
-      "naive_joint": 0.156,
+      "naive_joint": 0.155,
       "correlated_joint": 0.288,
-      "correlation_boost_pct": 84.9,
+      "correlation_boost_pct": 85.3,
       "fair_american": 247,
       "tier": "VALUE_STACK"
     }

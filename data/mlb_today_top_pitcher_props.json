@@ -1,19 +1,19 @@
 {
-  "generated_at": "2026-07-10T16:34:06",
-  "n_pitchers_with_edges": 29,
+  "generated_at": "2026-07-10T23:03:18",
+  "n_pitchers_with_edges": 21,
   "PITCHER_PLAY_OF_THE_DAY": {
-    "pitcher": "Sean Burke",
-    "composite_score": 0.675,
-    "n_strong_edges": 6,
-    "net_direction": "STRONG_OVER",
-    "directions_OVER": 5,
-    "directions_UNDER": 1,
+    "pitcher": "Kyle Leahy",
+    "composite_score": 0.572,
+    "n_strong_edges": 3,
+    "net_direction": "LEAN_UNDER",
+    "directions_OVER": 1,
+    "directions_UNDER": 2,
     "edges": [
       {
         "source": "strikeouts",
-        "market": "K_OVER_6.5",
+        "market": "K_OVER_5.5",
         "direction": "OVER",
-        "p": 0.632,
+        "p": 0.631,
         "fair_odds": -171,
         "edge_class": "STRONG_OVER",
         "weight": 1.0
@@ -22,64 +22,37 @@
         "source": "hits_allowed",
         "market": "H_UNDER_5.0",
         "direction": "UNDER",
-        "p": 0.637,
-        "fair_odds": -176,
+        "p": 0.654,
+        "fair_odds": -189,
         "edge_class": "STRONG_UNDER",
         "weight": 0.75
       },
       {
-        "source": "edge_composite",
-        "market": "K_OVER",
-        "direction": "OVER",
-        "p": 0.6,
-        "fair_odds": null,
-        "edge_class": "STRONG_DIR",
-        "weight": 1.1
-      },
-      {
-        "source": "edge_composite",
-        "market": "OUTS_OVER",
-        "direction": "OVER",
-        "p": 0.6,
-        "fair_odds": null,
-        "edge_class": "STRONG_DIR",
-        "weight": 1.1
-      },
-      {
-        "source": "edge_composite",
-        "market": "QS_YES",
-        "direction": "OVER",
-        "p": 0.6,
-        "fair_odds": null,
-        "edge_class": "STRONG_DIR",
-        "weight": 1.1
-      },
-      {
-        "source": "edge_composite",
-        "market": "1ST_INN_ER_NO",
-        "direction": "OVER",
-        "p": 0.6,
-        "fair_odds": null,
-        "edge_class": "STRONG_DIR",
-        "weight": 1.1
+        "source": "win",
+        "market": "PITCHER_WIN_NO",
+        "direction": "UNDER",
+        "p": 0.883,
+        "fair_odds": -752,
+        "edge_class": "STRONG_NO",
+        "weight": 0.85
       }
     ]
   },
   "method_note": "Aggregates STRONG edges across 11 pitcher prop modules. Composite = sum(edge_pct * source_weight) per starter. Net direction = STRONG_OVER/UNDER if 2x majority OVER/UNDER, LEAN_OVER/UNDER if simple majority, MIXED otherwise.",
   "top_15_pitchers": [
     {
-      "pitcher": "Sean Burke",
-      "composite_score": 0.675,
-      "n_strong_edges": 6,
-      "net_direction": "STRONG_OVER",
-      "directions_OVER": 5,
-      "directions_UNDER": 1,
+      "pitcher": "Kyle Leahy",
+      "composite_score": 0.572,
+      "n_strong_edges": 3,
+      "net_direction": "LEAN_UNDER",
+      "directions_OVER": 1,
+      "directions_UNDER": 2,
       "edges": [
         {
           "source": "strikeouts",
-          "market": "K_OVER_6.5",
+          "market": "K_OVER_5.5",
           "direction": "OVER",
-          "p": 0.632,
+          "p": 0.631,
           "fair_odds": -171,
           "edge_class": "STRONG_OVER",
           "weight": 1.0
@@ -88,8 +61,36 @@
           "source": "hits_allowed",
           "market": "H_UNDER_5.0",
           "direction": "UNDER",
-          "p": 0.637,
-          "fair_odds": -176,
+          "p": 0.654,
+          "fair_odds": -189,
+          "edge_class": "STRONG_UNDER",
+          "weight": 0.75
+        },
+        {
+          "source": "win",
+          "market": "PITCHER_WIN_NO",
+          "direction": "UNDER",
+          "p": 0.883,
+          "fair_odds": -752,
+          "edge_class": "STRONG_NO",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "pitcher": "Sean Burke",
+      "composite_score": 0.555,
+      "n_strong_edges": 5,
+      "net_direction": "STRONG_OVER",
+      "directions_OVER": 4,
+      "directions_UNDER": 1,
+      "edges": [
+        {
+          "source": "hits_allowed",
+          "market": "H_UNDER_5.0",
+          "direction": "UNDER",
+          "p": 0.654,
+          "fair_odds": -189,
           "edge_class": "STRONG_UNDER",
           "weight": 0.75
         },
@@ -132,80 +133,6 @@
       ]
     },
     {
-      "pitcher": "Eduardo Rodriguez",
-      "composite_score": 0.651,
-      "n_strong_edges": 3,
-      "net_direction": "STRONG_UNDER",
-      "directions_OVER": 0,
-      "directions_UNDER": 3,
-      "edges": [
-        {
-          "source": "strikeouts",
-          "market": "K_UNDER_4.5",
-          "direction": "UNDER",
-          "p": 0.629,
-          "fair_odds": -169,
-          "edge_class": "STRONG_UNDER",
-          "weight": 1.0
-        },
-        {
-          "source": "hits_allowed",
-          "market": "H_UNDER_6.0",
-          "direction": "UNDER",
-          "p": 0.717,
-          "fair_odds": -253,
-          "edge_class": "STRONG_UNDER",
-          "weight": 0.75
-        },
-        {
-          "source": "win",
-          "market": "PITCHER_WIN_NO",
-          "direction": "UNDER",
-          "p": 0.923,
-          "fair_odds": -1192,
-          "edge_class": "STRONG_NO",
-          "weight": 0.85
-        }
-      ]
-    },
-    {
-      "pitcher": "Kyle Leahy",
-      "composite_score": 0.568,
-      "n_strong_edges": 3,
-      "net_direction": "STRONG_UNDER",
-      "directions_OVER": 0,
-      "directions_UNDER": 3,
-      "edges": [
-        {
-          "source": "strikeouts",
-          "market": "K_UNDER_5.5",
-          "direction": "UNDER",
-          "p": 0.64,
-          "fair_odds": -178,
-          "edge_class": "STRONG_UNDER",
-          "weight": 1.0
-        },
-        {
-          "source": "hits_allowed",
-          "market": "H_UNDER_5.0",
-          "direction": "UNDER",
-          "p": 0.639,
-          "fair_odds": -177,
-          "edge_class": "STRONG_UNDER",
-          "weight": 0.75
-        },
-        {
-          "source": "win",
-          "market": "PITCHER_WIN_NO",
-          "direction": "UNDER",
-          "p": 0.881,
-          "fair_odds": -739,
-          "edge_class": "STRONG_NO",
-          "weight": 0.85
-        }
-      ]
-    },
-    {
       "pitcher": "Hunter Brown",
       "composite_score": 0.547,
       "n_strong_edges": 3,
@@ -236,7 +163,7 @@
           "market": "PITCHER_WIN_NO",
           "direction": "UNDER",
           "p": 0.81,
-          "fair_odds": -427,
+          "fair_odds": -426,
           "edge_class": "STRONG_NO",
           "weight": 0.85
         }
@@ -244,7 +171,7 @@
     },
     {
       "pitcher": "Hunter Greene",
-      "composite_score": 0.508,
+      "composite_score": 0.499,
       "n_strong_edges": 2,
       "net_direction": "STRONG_UNDER",
       "directions_OVER": 0,
@@ -254,8 +181,8 @@
           "source": "hits_allowed",
           "market": "H_UNDER_8.0",
           "direction": "UNDER",
-          "p": 0.694,
-          "fair_odds": -226,
+          "p": 0.683,
+          "fair_odds": -215,
           "edge_class": "STRONG_UNDER",
           "weight": 0.75
         },
@@ -264,15 +191,15 @@
           "market": "PITCHER_WIN_NO",
           "direction": "UNDER",
           "p": 0.926,
-          "fair_odds": -1248,
+          "fair_odds": -1255,
           "edge_class": "STRONG_NO",
           "weight": 0.85
         }
       ]
     },
     {
-      "pitcher": "Jacob Lopez",
-      "composite_score": 0.458,
+      "pitcher": "Eduardo Rodriguez",
+      "composite_score": 0.498,
       "n_strong_edges": 2,
       "net_direction": "STRONG_UNDER",
       "directions_OVER": 0,
@@ -280,10 +207,10 @@
       "edges": [
         {
           "source": "hits_allowed",
-          "market": "H_UNDER_7.0",
+          "market": "H_UNDER_6.0",
           "direction": "UNDER",
-          "p": 0.647,
-          "fair_odds": -183,
+          "p": 0.717,
+          "fair_odds": -253,
           "edge_class": "STRONG_UNDER",
           "weight": 0.75
         },
@@ -291,16 +218,16 @@
           "source": "win",
           "market": "PITCHER_WIN_NO",
           "direction": "UNDER",
-          "p": 0.909,
-          "fair_odds": -1005,
+          "p": 0.895,
+          "fair_odds": -855,
           "edge_class": "STRONG_NO",
           "weight": 0.85
         }
       ]
     },
     {
-      "pitcher": "Shane Bieber",
-      "composite_score": 0.435,
+      "pitcher": "Jacob Lopez",
+      "composite_score": 0.474,
       "n_strong_edges": 2,
       "net_direction": "STRONG_UNDER",
       "directions_OVER": 0,
@@ -310,8 +237,36 @@
           "source": "hits_allowed",
           "market": "H_UNDER_7.0",
           "direction": "UNDER",
-          "p": 0.686,
-          "fair_odds": -218,
+          "p": 0.666,
+          "fair_odds": -200,
+          "edge_class": "STRONG_UNDER",
+          "weight": 0.75
+        },
+        {
+          "source": "win",
+          "market": "PITCHER_WIN_NO",
+          "direction": "UNDER",
+          "p": 0.911,
+          "fair_odds": -1025,
+          "edge_class": "STRONG_NO",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "pitcher": "Shane Bieber",
+      "composite_score": 0.433,
+      "n_strong_edges": 2,
+      "net_direction": "STRONG_UNDER",
+      "directions_OVER": 0,
+      "directions_UNDER": 2,
+      "edges": [
+        {
+          "source": "hits_allowed",
+          "market": "H_UNDER_7.0",
+          "direction": "UNDER",
+          "p": 0.683,
+          "fair_odds": -215,
           "edge_class": "STRONG_UNDER",
           "weight": 0.75
         },
@@ -320,7 +275,7 @@
           "market": "PITCHER_WIN_NO",
           "direction": "UNDER",
           "p": 0.848,
-          "fair_odds": -556,
+          "fair_odds": -557,
           "edge_class": "STRONG_NO",
           "weight": 0.85
         }
@@ -355,34 +310,6 @@
       ]
     },
     {
-      "pitcher": "Ryan Weathers",
-      "composite_score": 0.411,
-      "n_strong_edges": 2,
-      "net_direction": "STRONG_UNDER",
-      "directions_OVER": 0,
-      "directions_UNDER": 2,
-      "edges": [
-        {
-          "source": "hits_allowed",
-          "market": "H_UNDER_5.0",
-          "direction": "UNDER",
-          "p": 0.627,
-          "fair_odds": -168,
-          "edge_class": "STRONG_UNDER",
-          "weight": 0.75
-        },
-        {
-          "source": "win",
-          "market": "PITCHER_WIN_NO",
-          "direction": "UNDER",
-          "p": 0.871,
-          "fair_odds": -673,
-          "edge_class": "STRONG_NO",
-          "weight": 0.85
-        }
-      ]
-    },
-    {
       "pitcher": "Cal Quantrill",
       "composite_score": 0.408,
       "n_strong_edges": 2,
@@ -411,36 +338,8 @@
       ]
     },
     {
-      "pitcher": "Parker Messick",
-      "composite_score": 0.404,
-      "n_strong_edges": 2,
-      "net_direction": "MIXED",
-      "directions_OVER": 1,
-      "directions_UNDER": 1,
-      "edges": [
-        {
-          "source": "strikeouts",
-          "market": "K_OVER_4.5",
-          "direction": "OVER",
-          "p": 0.661,
-          "fair_odds": -195,
-          "edge_class": "STRONG_OVER",
-          "weight": 1.0
-        },
-        {
-          "source": "win",
-          "market": "PITCHER_WIN_NO",
-          "direction": "UNDER",
-          "p": 0.786,
-          "fair_odds": -366,
-          "edge_class": "STRONG_NO",
-          "weight": 0.85
-        }
-      ]
-    },
-    {
       "pitcher": "Luinder Avila",
-      "composite_score": 0.399,
+      "composite_score": 0.397,
       "n_strong_edges": 2,
       "net_direction": "STRONG_UNDER",
       "directions_OVER": 0,
@@ -450,8 +349,8 @@
           "source": "hits_allowed",
           "market": "H_UNDER_7.0",
           "direction": "UNDER",
-          "p": 0.651,
-          "fair_odds": -187,
+          "p": 0.648,
+          "fair_odds": -184,
           "edge_class": "STRONG_UNDER",
           "weight": 0.75
         },
@@ -468,7 +367,7 @@
     },
     {
       "pitcher": "Tanner Gordon",
-      "composite_score": 0.38,
+      "composite_score": 0.383,
       "n_strong_edges": 2,
       "net_direction": "STRONG_UNDER",
       "directions_OVER": 0,
@@ -478,8 +377,8 @@
           "source": "hits_allowed",
           "market": "H_UNDER_7.0",
           "direction": "UNDER",
-          "p": 0.651,
-          "fair_odds": -187,
+          "p": 0.655,
+          "fair_odds": -190,
           "edge_class": "STRONG_UNDER",
           "weight": 0.75
         },
@@ -495,8 +394,8 @@
       ]
     },
     {
-      "pitcher": "Brandon Sproat",
-      "composite_score": 0.321,
+      "pitcher": "Grayson Rodriguez",
+      "composite_score": 0.29,
       "n_strong_edges": 1,
       "net_direction": "STRONG_UNDER",
       "directions_OVER": 0,
@@ -506,16 +405,81 @@
           "source": "win",
           "market": "PITCHER_WIN_NO",
           "direction": "UNDER",
-          "p": 0.878,
-          "fair_odds": -722,
+          "p": 0.841,
+          "fair_odds": -529,
           "edge_class": "STRONG_NO",
           "weight": 0.85
         }
       ]
     },
     {
-      "pitcher": "Aaron Nola",
-      "composite_score": 0.308,
+      "pitcher": "Zebby Matthews",
+      "composite_score": 0.285,
+      "n_strong_edges": 3,
+      "net_direction": "LEAN_OVER",
+      "directions_OVER": 2,
+      "directions_UNDER": 1,
+      "edges": [
+        {
+          "source": "strikeouts",
+          "market": "K_OVER_5.5",
+          "direction": "OVER",
+          "p": 0.643,
+          "fair_odds": -180,
+          "edge_class": "STRONG_OVER",
+          "weight": 1.0
+        },
+        {
+          "source": "hits_allowed",
+          "market": "H_UNDER_5.0",
+          "direction": "UNDER",
+          "p": 0.633,
+          "fair_odds": -173,
+          "edge_class": "STRONG_UNDER",
+          "weight": 0.75
+        },
+        {
+          "source": "1st_inning_er",
+          "market": "1ST_INN_ER_YES",
+          "direction": "OVER",
+          "p": 0.439,
+          "fair_odds": 128,
+          "edge_class": "STRONG_YES",
+          "weight": 0.7
+        }
+      ]
+    },
+    {
+      "pitcher": "Brandon Young",
+      "composite_score": 0.263,
+      "n_strong_edges": 2,
+      "net_direction": "MIXED",
+      "directions_OVER": 1,
+      "directions_UNDER": 1,
+      "edges": [
+        {
+          "source": "strikeouts",
+          "market": "K_OVER_5.5",
+          "direction": "OVER",
+          "p": 0.654,
+          "fair_odds": -189,
+          "edge_class": "STRONG_OVER",
+          "weight": 1.0
+        },
+        {
+          "source": "hits_allowed",
+          "market": "H_UNDER_5.0",
+          "direction": "UNDER",
+          "p": 0.645,
+          "fair_odds": -181,
+          "edge_class": "STRONG_UNDER",
+          "weight": 0.75
+        }
+      ]
+    },
+    {
+      "pitcher": "Parker Messick",
+      "composite_score": 0.243,
       "n_strong_edges": 1,
       "net_direction": "STRONG_UNDER",
       "directions_OVER": 0,
@@ -525,8 +489,8 @@
           "source": "win",
           "market": "PITCHER_WIN_NO",
           "direction": "UNDER",
-          "p": 0.862,
-          "fair_odds": -624,
+          "p": 0.786,
+          "fair_odds": -366,
           "edge_class": "STRONG_NO",
           "weight": 0.85
         }
