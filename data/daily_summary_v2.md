@@ -1,10 +1,10 @@
 # EdgeStat Daily Summary — 2026-07-11
 
-## 🏥 Model Health: 58.9/100 [OK]
+## 🏥 Model Health: 62.9/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.9/100
+  - 🟢 Calibration Freshness: 100.0/100
   - 🔴 Hit Rate Trend: 0/100
-  - 🔴 Brier Trend: 23.3/100
+  - 🔴 Brier Trend: 43.4/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 95.5/100
   - 🔴 Edge Count: 51.4/100
@@ -21,8 +21,12 @@
 4. **TOR @ SDP YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 5. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
 
+## 📡 Sharp Action (Line Movement)
+- [MODERATE] **CHC @ CIN** over_9.0: 50.0% → 53.49% (+3.5pp)
+- [MODERATE] **TOR @ SDP** under_8.5: 51.22% → 54.55% (+3.3pp)
+
 ## 📉 Strong UNDER Signals
-- [STRONG 6.0] **TOR @ SDP** model 6.47 vs market 8.0
+- [STRONG 6.0] **TOR @ SDP** model 6.63 vs market 8.5
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-58** (84.1% hit rate)
@@ -59,11 +63,10 @@
 - Hot teams: **2** | Cold teams: **1** | Over-heavy: 0 | Under-heavy: 0
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (52)
+## ⚠️ Anomaly Detector (49)
 - RESIDUAL_DIVERGENCE: **1**
 - STEAM_MOVE: **46**
-- COMPOUND_BULLPEN: **4**
-- PEN_MISMATCH: **1**
+- COMPOUND_BULLPEN: **2**
   - Atlanta Dream (WNBA): Atlanta Dream OUTPERFORMING expected margin by 9.0pts in recent games -- model bias may persist
   - GS @ CON (WNBA): TOTAL steam since open: ML +2.2pp toward CON; total -3 (UNDER) (3 snapshots)
   - MIL @ STL (MLB): ML/TOTAL steam since open: ML +14.4pp toward STL; total +1 (OVER) (7 snapshots)
@@ -79,20 +82,18 @@
   - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
-## 🎯 Convergence Picks (5 stacked games)
-- ELITE: **0** · HIGH: 0 · MED: 5
+## 🎯 Convergence Picks (4 stacked games)
+- ELITE: **0** · HIGH: 1 · MED: 3
+  - [HIGH] Portland Fire @ Atlanta Dream : 3 signals (ANOMALY, ATS, ATS)
   - [MED] New York Knicks @ San Antonio Spurs : 2 signals (ATS, ATS)
-  - [MED] Golden State Valkyries @ Connecticut Sun : 2 signals (HEAT_COLD, ATS)
-  - [MED] Dallas Wings @ Toronto Tempo : 2 signals (HEAT_COLD, HEAT_COLD)
   - [MED] Portland Timbers @ Seattle Sounders FC : 2 signals (PREGAME, ATS)
   - [MED] Coventry City @ Arsenal : 2 signals (PREGAME, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (11)
+## ⚾ Top MLB Pitcher K Plays (4)
 - **Yoshinobu Yamamoto** OVER 4.5 K (78%) fair -347
-- **Joe Ryan** OVER 5.5 K (77%) fair -337
 - **Reynaldo López** OVER 4.5 K (76%) fair -309
-- **Eury Pérez** OVER 4.5 K (75%) fair -295
 - **Cristopher Sánchez** OVER 5.5 K (72%) fair -253
+- **Noah Cameron** OVER 4.5 K (63%) fair -171
 
 ## 🏀 NBA Player Heat (18 HOT / 23 COLD)
   - 🔥 **Jeremiah Fears** (NO): L5 31.8/5.8/6.0 vs season 16.9/3.2/4.0 [PTS +14.9, REB +2.6, AST +2.0]
@@ -107,31 +108,31 @@
 ## 🥊 UFC Fight Matchups (UFC 329: McGregor vs. Holloway 2)
   - [FAVORITE] **Gable Steveson** (3-0-0) vs Elisha Ellison -- fair -193
   - [LEAN] **Luke Riley** (13-0-0) vs Kai Kamaka III -- fair -175
+  - [LEAN] **Ryan Gandra** (10-1-0) vs Zach Reese -- fair -151
   - [LEAN] **Lone'er Kavanagh** (10-1-0) vs Brandon Royval -- fair -151
   - [LEAN] **Farid Basharat** (15-0-0) vs John Garza -- fair -147
-  - [COIN_FLIP] **Damian Pinas** (9-1-0) vs Cesar Almeida -- fair -133
 
 ## ⛳ Golf Player Heat (from Genesis Scottish Open)
-  - 🔥 T1 **Jordan Smith** (England): -9 total -- finished T1
-  - 🔥 T2 **Rory McIlroy** (Northern Ireland): -9 total -- finished T2
-  - 🔥 T3 **Tom Kim** (South Korea): -9 total -- finished T3
-  - 🔥 T4 **Matt Fitzpatrick** (England): -8 total -- finished T4
-  - 🔥 T5 **Min Woo Lee** (Australia): -8 total -- finished T5
+  - 🔥 T1 **Michael Thorbjornsen** (USA): -11 total -- finished T1
+  - 🔥 T2 **Matt Fitzpatrick** (England): -11 total -- finished T2
+  - 🔥 T3 **Johnny Keefer** (USA): -10 total -- finished T3
+  - 🔥 T4 **Kevin Roy** (USA): -10 total -- finished T4
+  - 🔥 T5 **Wyndham Clark** (USA): -10 total -- finished T5
   - ❄️ **Bernd Wiesberger** (Austria): Sunday +6.5 vs tourney avg
   - ❄️ **Marcel Siem** (Germany): Sunday +5.0 vs tourney avg
   - ❄️ **Patrick Cantlay** (USA): Sunday +4.5 vs tourney avg
 
-## 🔥 MLB Batter Heat (41 HOT / 37 COLD)
+## 🔥 MLB Batter Heat (39 HOT / 41 COLD)
   - 🔥 **Luisangel Acuña** (CWS): L14 .400 / season .242 (+158pts)
-  - 🔥 **Derek Hill** (PHI): L14 .414 / season .264 (+150pts)
-  - 🔥 **Garrett Mitchell** (MIL): L14 .422 / season .277 (+145pts)
+  - 🔥 **Derek Hill** (PHI): L14 .407 / season .262 (+145pts)
+  - 🔥 **Garrett Mitchell** (MIL): L14 .404 / season .274 (+130pts)
   - 🔥 **Justin Crawford** (PHI): L14 .378 / season .263 (+115pts)
-  - 🔥 **Rafael Devers** (SF): L14 .362 / season .251 (+111pts)
-  - ❄️ **Paul Goldschmidt** (NYY): L14 .122 / season .257 (-135pts) -- FADE props
+  - 🔥 **Luis García Jr.** (WSH): L14 .396 / season .287 (+109pts)
   - ❄️ **Jorge Mateo** (ATL): L14 .107 / season .242 (-135pts) -- FADE props
   - ❄️ **Eric Haase** (SF): L14 .029 / season .162 (-133pts) -- FADE props
   - ❄️ **Henry Bolte** (ATH): L14 .137 / season .266 (-129pts) -- FADE props
-  - ❄️ **Jung Hoo Lee** (SF): L14 .188 / season .307 (-119pts) -- FADE props
+  - ❄️ **Jung Hoo Lee** (SF): L14 .184 / season .306 (-122pts) -- FADE props
+  - ❄️ **Paul Goldschmidt** (NYY): L14 .137 / season .259 (-122pts) -- FADE props
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**

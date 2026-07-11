@@ -1,13 +1,15 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:19 F:84
-
-:lock: **LOCK:** Trey Yesavage (MLB)
+_MODEST_NIGHT_ | L:0 S:28 F:73
 
 :dart: **Top Picks:**
-1. [GOLF] Rory McIlroy -- Rory McIlroy (PLAYER_STRONG)
-2. [GOLF] Tom Kim -- Tom Kim (PLAYER_STRONG)
-3. [WNBA] kahleah copper -- kahleah copper (PLAYER_STRONG)
+1. [GOLF] Matt Fitzpatrick -- Matt Fitzpatrick (PLAYER_STRONG)
+2. [GOLF] Michael Thorbjornsen -- Michael Thorbjornsen (PLAYER_STRONG)
+3. [MLB] Wyatt Langford -- Wyatt Langford (BATTER_STRONG)
 
-:coin: Bankroll Advisory: STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
+:chains: **Top Parlays:**
+- [MLB] Wyatt Langford (3 legs, p=0.4292)
+- [MLB] Yordan Alvarez (2 legs, p=0.4124)
+
+:coin: Bankroll Advisory: Light slate. Limit to 1-3 strongest plays; use 25% Kelly or less.
 
 _EdgeStat: ML-driven sports betting analytics. Not financial advice._

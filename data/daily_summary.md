@@ -4,7 +4,7 @@
 
 _Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
 
-_Generated at 2026-07-11T21:43:47 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-07-11T22:50:31 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
@@ -16,17 +16,16 @@ _Generated at 2026-07-11T21:43:47 UTC. Game lines source: **Bovada (fallback -- 
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
 
-## Full Slate (7 games)
+## Full Slate (6 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 6:10p ET | PHI @ DET | Comerica Park | 74F 7mph | DET_ML +9.05% |
 | 7:05p ET | KCR @ BAL | Oriole Park at Camden Yards | 73F 4mph | KCR_ML +10.02% |
 | 7:05p ET | HOU @ TEX | Globe Life Field | indoor | OVER_9.0 +8.5% |
 | 7:10p ET | CHC @ CIN | Great American Ball Park | 71F 4mph | OVER_9.0 +55.29% |
-| 7:15p ET | ATL @ STL | Busch Stadium | 74F 3mph | ATL_ML +31.17% |
-| 8:40p ET | TOR @ SDP | Petco Park | 68F 4mph | UNDER_8.5 +48.23% |
-| 9:10p ET | ARI @ LAD | UNIQLO Field at Dodger Stadium | 67F 2mph | LAD_ML +29.78% |
+| 7:15p ET | ATL @ STL | Busch Stadium | 73F 4mph | ATL_ML +31.22% |
+| 8:40p ET | TOR @ SDP | Petco Park | 67F 3mph | UNDER_8.5 +49.96% |
+| 9:10p ET | ARI @ LAD | UNIQLO Field at Dodger Stadium | 66F 4mph | LAD_ML +30.0% |
 
 ## Parlays - top 5
 
@@ -56,19 +55,18 @@ _Generated at 2026-07-11T21:43:47 UTC. Game lines source: **Bovada (fallback -- 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
 
-Cumulative graded plays: 6790. Wins: 2838. Hit rate: 41.8%.
+Cumulative graded plays: 6803. Wins: 2851. Hit rate: 41.9%.
 
 ## Auxiliary Markets (Model Fair Prices)
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| ARI @ LAD | 60.1% | -151 | 2.55 | -393 | +393 |
-| ATL @ STL | 40.8% | +145 | 4.41 | +288 | -288 |
-| CHC @ CIN | 48.8% | +105 | 3.64 | +254 | -254 |
+| ARI @ LAD | 60.1% | -151 | 2.61 | -400 | +400 |
+| ATL @ STL | 40.8% | +145 | 4.45 | +288 | -288 |
+| CHC @ CIN | 48.8% | +105 | 3.61 | +254 | -254 |
 | HOU @ TEX | 45.1% | +122 | 3.98 | +132 | -132 |
-| KCR @ BAL | 31.5% | +218 | 5.65 | +157 | -157 |
-| PHI @ DET | 38.5% | +160 | 4.89 | +131 | -131 |
-| TOR @ SDP | 32.5% | +207 | 5.5 | +240 | -240 |
+| KCR @ BAL | 31.5% | +218 | 5.69 | +157 | -157 |
+| TOR @ SDP | 32.5% | +207 | 5.52 | +241 | -241 |
 
 ## Team Form (last 10)
 

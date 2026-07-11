@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-11T21:34:09",
+  "generated_at": "2026-07-11T22:41:09",
   "n_families": 56,
   "n_curated_out": 14,
   "n_calibrated": 12,
@@ -8,16 +8,16 @@
   "units_protected_by_curation": -1298.4,
   "guard_impact": {
     "all": {
-      "n": 6766,
-      "net_units": -797.3,
-      "roi_pct": -11.8,
-      "hit_rate": 0.4168
+      "n": 6780,
+      "net_units": -756.0,
+      "roi_pct": -11.2,
+      "hit_rate": 0.418
     },
     "after_curation": {
-      "n": 1734,
-      "net_units": 501.0,
-      "roi_pct": 28.9,
-      "hit_rate": 0.7099
+      "n": 1748,
+      "net_units": 542.3,
+      "roi_pct": 31.0,
+      "hit_rate": 0.7122
     },
     "curated_out": {
       "n": 5032,
@@ -46,6 +46,19 @@
     },
     "desks": [
       {
+        "sport": "UFC",
+        "n": 169,
+        "wins": 97,
+        "net_raw": 257.9,
+        "net_curated": 257.9,
+        "n_curated": 169,
+        "hit_rate": 0.574,
+        "roi_raw": 152.6,
+        "roi_curated": 152.6,
+        "proven_negative_desk": false,
+        "status": "profitable"
+      },
+      {
         "sport": "MLB-PP",
         "n": 753,
         "wins": 622,
@@ -55,19 +68,6 @@
         "hit_rate": 0.826,
         "roi_raw": 31.2,
         "roi_curated": 31.2,
-        "proven_negative_desk": false,
-        "status": "profitable"
-      },
-      {
-        "sport": "UFC",
-        "n": 155,
-        "wins": 83,
-        "net_raw": 216.6,
-        "net_curated": 216.6,
-        "n_curated": 155,
-        "hit_rate": 0.5355,
-        "roi_raw": 139.8,
-        "roi_curated": 139.8,
         "proven_negative_desk": false,
         "status": "profitable"
       },
@@ -190,9 +190,9 @@
       }
     ]
   },
-  "overall_avg_model_pred": 0.4875,
-  "overall_realized_hit_rate": 0.4168,
-  "overall_overconfidence_gap": 0.0707,
+  "overall_avg_model_pred": 0.487,
+  "overall_realized_hit_rate": 0.418,
+  "overall_overconfidence_gap": 0.069,
   "method_note": "Per market family, the model's average predicted probability vs the realized hit rate over all settled bets in that family. Positive overconfidence_gap = the model was too high. Families proven to lose money are curated out of the boards; well-sampled families have their displayed probabilities calibrated toward the realized rate.",
   "families": [
     {
@@ -251,6 +251,17 @@
       "miscalibration": "overconfident"
     },
     {
+      "family": "fight_r1_finish_yes",
+      "n_settled": 169,
+      "avg_model_pred": 0.228,
+      "realized_hit_rate": 0.574,
+      "overconfidence_gap": -0.3459,
+      "net_units": 257.94,
+      "roi_pct": 152.6,
+      "status": "calibrated",
+      "miscalibration": "ok"
+    },
+    {
       "family": "mlb_hrr_2.5_over",
       "n_settled": 388,
       "avg_model_pred": 0.5575,
@@ -260,17 +271,6 @@
       "roi_pct": -57.9,
       "status": "curated_out",
       "miscalibration": "overconfident"
-    },
-    {
-      "family": "fight_r1_finish_yes",
-      "n_settled": 155,
-      "avg_model_pred": 0.2258,
-      "realized_hit_rate": 0.5355,
-      "overconfidence_gap": -0.3097,
-      "net_units": 216.64,
-      "roi_pct": 139.8,
-      "status": "calibrated",
-      "miscalibration": "ok"
     },
     {
       "family": "home_plus",
