@@ -1,55 +1,59 @@
-# Tonight's Slate Brief — 2026-07-10
+# Tonight's Slate Brief — 2026-07-11
 
-## Slate Quality: 55/100 (MEDIUM)
+## Slate Quality: 54/100 (LOW)
 _0% lineups confirmed · 13 rookie SPs_
-**Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
+**Recommendation:** Defensive sizing tonight; stick to highest-confidence plays.
 
 ## Slate
-- **15 games** scheduled
-- **27 best bets** scored: 0 DK · 0 PP · 10 NRFI · 0 SGP
+- **16 games** scheduled
+- **41 best bets** scored: 16 DK · 0 PP · 9 NRFI · 1 SGP
 - **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$40.83
-- **MC simulation:** EV +$128.58, 82% P(profit), p05 $-96.15 / p95 $333.24
+- **MC simulation:** EV +$117.9, 86% P(profit), p05 $-94.01 / p95 $294.14
 
 ## Top 5 Best Bets
 1. **TOR @ SDP YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +30.2%)
    - P(YRFI) 76.2% vs baseline 46.0%
 2. **LAA @ MIN YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +25.4%)
    - P(YRFI) 71.4% vs baseline 46.0%
-3. **NYY @ WSN YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +23.6%)
-   - P(YRFI) 69.6% vs baseline 46.0%
-4. **OAK @ CHW YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +22.8%)
+3. **OAK @ CHW YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +22.8%)
    - P(YRFI) 68.8% vs baseline 46.0%
+4. **ARI @ LAD YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +22.3%)
+   - P(YRFI) 68.3% vs baseline 46.0%
 5. **CHC @ CIN YRFI (1st-inning OVER 0.5)**  (79/100 ****, edge +19.8%)
    - P(YRFI) 65.8% vs baseline 46.0%
 
-## ⚠️ Trap Warnings — 10 flagged
+## ⚠️ Trap Warnings — 23 flagged
 - **TOR @ SDP YRFI (1st-inning OVER 0.5)** (low):
    - Edge +30.2% looks big but only 0 settled props on this player — model unproven
+- **Jazz Chisholm Jr. UNDER 0.5 batter hits** (low):
+   - Edge +27.5% looks big but only 0 settled props on this player — model unproven
+- **Max Schuemann UNDER 0.5 batter hits** (low):
+   - Edge +25.8% looks big but only 0 settled props on this player — model unproven
 - **LAA @ MIN YRFI (1st-inning OVER 0.5)** (low):
    - Edge +25.4% looks big but only 0 settled props on this player — model unproven
-- **NYY @ WSN YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +23.6% looks big but only 0 settled props on this player — model unproven
-- **OAK @ CHW YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +22.8% looks big but only 0 settled props on this player — model unproven
-- **CHC @ CIN YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +19.8% looks big but only 0 settled props on this player — model unproven
+- **NYY @ WSN 2-leg SGP @ +149** (low):
+   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
 
-## Hot streaks
-**Batters heating up:** James Wood (heat +2.45), Bryan Reynolds (heat +2.21), Ryan O'Hearn (heat +2.04)
-**Pitchers on a run:** Braxton Ashcraft (heat +1.80), Ryan Weathers (heat +1.00), Brandon Sproat (heat +0.87)
+## Weather leans
+- **UNDER lean** (wind in + cold): COL @ SFG
+
+## Top correlation-aware SGPs
+- **NYY @ WSN** 2-leg @ +149 fair (joint 0.40, EV +25.0%)
+   - Cam Schlittler OVER 5.5 pitcher strikeouts
+   - Miles Mikolas UNDER 3.5 pitcher strikeouts
 
 ## Bullpens GASSED tonight
 Athletics, Pittsburgh Pirates, San Diego Padres, St. Louis Cardinals, Tampa Bay Rays, Minnesota Twins, Philadelphia Phillies, Atlanta Braves
 _Lean late-inning OVER on these games; fade their save situations._
 
 ## NRFI/YRFI strong leans
-- **YRFI** (1st-inning OVER): TOR @ SDP, LAA @ MIN, NYY @ WSN, OAK @ CHW, CHC @ CIN
+- **YRFI** (1st-inning OVER): TOR @ SDP, LAA @ MIN, OAK @ CHW, ARI @ LAD, CHC @ CIN
 
 ## Golf -- Genesis Scottish Open
 - **Leader:** Jordan Smith (-9) at #1
 - **Field:** 156 players  |  Status: In Progress
-- **Play of the Tournament:** Joost Luiten TOP5 @ +555 (model 15.3%, HIGH)
-   - P(top 5) 15.3% -- lower variance than outright but compelling line.
+- **Play of the Tournament:** Jordan Smith WIN @ +443 (model 18.4%, HIGH)
+   - P(win) 18.4% with 1 round(s) left -- sweet-spot value at #1 (-9).
 
 ## NBA -- PLAYOFFS
 - New York Knicks @ San Antonio Spurs (53-29 vs 62-20) 94-90 | P(home) 0.0% fair +0 | Final
