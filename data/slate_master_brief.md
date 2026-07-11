@@ -1,13 +1,13 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-07-11T14:18:44 UTC_
+_Generated 2026-07-11T15:00:10 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -25
+- **Score:** -8
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 17
-- **Total FADES:** 93
+- **Total STRONG:** 20
+- **Total FADES:** 88
 
 ## Lock of the Night
 - **Subject:** Bubba Chandler
@@ -17,18 +17,18 @@ _Generated 2026-07-11T14:18:44 UTC_
 - **Details:** MIL @ PIT
 
 ## Top 5 Curated Picks
-1. **GOLF / Rory McIlroy** (GOLF_PLAYER, score=171.07)
+1. **GOLF / Rory McIlroy** (GOLF_PLAYER, score=168.0)
    - Play: Rory McIlroy (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Tom Kim** (GOLF_PLAYER, score=155.14)
+2. **GOLF / Tom Kim** (GOLF_PLAYER, score=148.43)
    - Play: Tom Kim (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-3. **MLB / Joe Ryan** (MLB_PITCHER, score=63.67)
-   - Play: Joe Ryan (PITCHER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_PITCHER)
-4. **MLB / Noah Cameron** (MLB_PITCHER, score=59.75)
-   - Play: Noah Cameron (PITCHER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_PITCHER)
+3. **MLB / Ryan O'Hearn** (MLB_BATTER, score=115.62)
+   - Play: Ryan O'Hearn (BATTER_STRONG)
+   - Rationale: Cross-sport top pick (MLB_BATTER)
+4. **MLB / Esmerlyn Valdez** (MLB_BATTER, score=109.44)
+   - Play: Esmerlyn Valdez (BATTER_STRONG)
+   - Rationale: Cross-sport top pick (MLB_BATTER)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
@@ -43,13 +43,13 @@ _Generated 2026-07-11T14:18:44 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **MLB** / Miles Mikolas (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **NHL** / stuart skinner (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / logan thompson_2 (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / adin hill (GOALIE_FADE)
+- **NHL** / calvin pickard (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
 - **NHL** / marc-andre fleury (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / filip gustavsson (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / samsonov ilya (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / adin hill (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO

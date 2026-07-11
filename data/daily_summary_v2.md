@@ -1,13 +1,13 @@
 # EdgeStat Daily Summary — 2026-07-11
 
-## 🏥 Model Health: 65.0/100 [OK]
+## 🏥 Model Health: 60.0/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.9/100
+  - 🟢 Calibration Freshness: 99.7/100
   - 🔴 Hit Rate Trend: 0/100
   - 🔴 Brier Trend: 24.9/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 100.0/100
-  - 🟢 Edge Count: 100/100
+  - 🟢 Data Health: 95.5/100
+  - 🟡 Edge Count: 60.0/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.583)
@@ -19,10 +19,10 @@
 2. **OAK @ CHW YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 3. **KCR @ BAL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 4. **TOR @ SDP YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-5. **NYY @ WSN YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
+5. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
 
 ## 📉 Strong UNDER Signals
-- [STRONG 5.9] **TOR @ SDP** model 6.55 vs market 8.0
+- [STRONG 5.9] **TOR @ SDP** model 6.57 vs market 8.0
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-58** (84.1% hit rate)
@@ -59,9 +59,9 @@
 - Hot teams: **2** | Cold teams: **1** | Over-heavy: 0 | Under-heavy: 0
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (47)
+## ⚠️ Anomaly Detector (46)
 - STEAM_MOVE: **41**
-- COMPOUND_BULLPEN: **5**
+- COMPOUND_BULLPEN: **4**
 - PEN_MISMATCH: **1**
   - GS @ CON (WNBA): TOTAL steam since open: ML +2.2pp toward CON; total -3 (UNDER) (3 snapshots)
   - MIL @ STL (MLB): ML/TOTAL steam since open: ML +14.4pp toward STL; total +1 (OVER) (7 snapshots)
@@ -71,7 +71,7 @@
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$1.28**
+- Expected EV: **$1.35**
   - #1 [NRFI] $50 on COL @ SFG YRFI (1st-inning OVER 0.5) (P=72%)
   - #2 [NRFI] $50 on OAK @ CHW YRFI (1st-inning OVER 0.5) (P=72%)
   - #3 [NRFI] $50 on KCR @ BAL YRFI (1st-inning OVER 0.5) (P=69%)
@@ -112,15 +112,15 @@
 
 ## ⛳ Golf Player Heat (from Genesis Scottish Open)
   - 🔥 T1 **Jordan Smith** (England): -9 total -- finished T1
-  - 🔥 T2 **Tom Kim** (South Korea): -9 total -- finished T2
-  - 🔥 T3 **Rory McIlroy** (Northern Ireland): -9 total -- finished T3
+  - 🔥 T2 **Rory McIlroy** (Northern Ireland): -9 total -- finished T2
+  - 🔥 T3 **Tom Kim** (South Korea): -9 total -- finished T3
   - 🔥 T4 **Matt Fitzpatrick** (England): -8 total -- finished T4
   - 🔥 T5 **Min Woo Lee** (Australia): -8 total -- finished T5
   - ❄️ **Bernd Wiesberger** (Austria): Sunday +6.5 vs tourney avg
   - ❄️ **Marcel Siem** (Germany): Sunday +5.0 vs tourney avg
   - ❄️ **Patrick Cantlay** (USA): Sunday +4.5 vs tourney avg
 
-## 🔥 MLB Batter Heat (35 HOT / 41 COLD)
+## 🔥 MLB Batter Heat (35 HOT / 40 COLD)
   - 🔥 **Derek Hill** (PHI): L14 .414 / season .264 (+150pts)
   - 🔥 **Garrett Mitchell** (MIL): L14 .415 / season .274 (+141pts)
   - 🔥 **Luisangel Acuña** (CWS): L14 .360 / season .233 (+127pts)
