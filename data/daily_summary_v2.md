@@ -1,36 +1,33 @@
 # EdgeStat Daily Summary — 2026-07-11
 
-## 🏥 Model Health: 57.6/100 [OK]
+## 🏥 Model Health: 65.0/100 [OK]
 - Operational but room to improve - check yellow components
   - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 0/100
-  - 🔴 Brier Trend: 20.4/100
+  - 🔴 Brier Trend: 24.9/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 86.4/100
-  - 🟡 Edge Count: 62.9/100
+  - 🟢 Data Health: 100.0/100
+  - 🟢 Edge Count: 100/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.582)
-- **Total games on board:** 127
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.583)
+- **Total games on board:** 111
 - **Strong home favorites:** 2 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
-1. **TOR @ SDP YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-2. **LAA @ MIN YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-3. **OAK @ CHW YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-4. **ARI @ LAD YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-5. **CHC @ CIN YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
-
-## 📡 Sharp Action (Line Movement)
-- [MODERATE] **CHC @ CIN** over_9.5: 50.0% → 53.49% (+3.5pp)
+1. **COL @ SFG YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+2. **OAK @ CHW YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+3. **KCR @ BAL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+4. **TOR @ SDP YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+5. **NYY @ WSN YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
 
 ## 📉 Strong UNDER Signals
-- [STRONG 6.1] **SEA @ TBR** model 7.19 vs market 8.5
+- [STRONG 5.9] **TOR @ SDP** model 6.55 vs market 8.0
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-58** (84.1% hit rate)
 - Net units: **+10.40u** | ROI: **+46.0%**
-- Last 7d: 29-13 (69.0%) | net +0.52u
+- Last 7d: 23-13 (63.9%) | net +0.24u
 
 **Today's 5 Locks:**
 - [KBO] **Choi Jeong** one_plus_tb · p=73% edge=+39.8% qK=0.062u
@@ -62,9 +59,9 @@
 - Hot teams: **2** | Cold teams: **1** | Over-heavy: 0 | Under-heavy: 0
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (44)
+## ⚠️ Anomaly Detector (47)
 - STEAM_MOVE: **41**
-- COMPOUND_BULLPEN: **2**
+- COMPOUND_BULLPEN: **5**
 - PEN_MISMATCH: **1**
   - GS @ CON (WNBA): TOTAL steam since open: ML +2.2pp toward CON; total -3 (UNDER) (3 snapshots)
   - MIL @ STL (MLB): ML/TOTAL steam since open: ML +14.4pp toward STL; total +1 (OVER) (7 snapshots)
@@ -74,27 +71,27 @@
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$4.58**
-  - #1 [NRFI] $50 on TOR @ SDP YRFI (1st-inning OVER 0.5) (P=76%)
-  - #2 [NRFI] $50 on LAA @ MIN YRFI (1st-inning OVER 0.5) (P=71%)
-  - #3 [NRFI] $50 on OAK @ CHW YRFI (1st-inning OVER 0.5) (P=69%)
+- Expected EV: **$1.28**
+  - #1 [NRFI] $50 on COL @ SFG YRFI (1st-inning OVER 0.5) (P=72%)
+  - #2 [NRFI] $50 on OAK @ CHW YRFI (1st-inning OVER 0.5) (P=72%)
+  - #3 [NRFI] $50 on KCR @ BAL YRFI (1st-inning OVER 0.5) (P=69%)
   - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
-## 🎯 Convergence Picks (6 stacked games)
-- ELITE: **1** · HIGH: 1 · MED: 4
-  - [ELITE] Dallas Wings @ Toronto Tempo : 6 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
-  - [HIGH] Chicago Sky @ Los Angeles Sparks : 3 signals (PREGAME, ANOMALY, ATS)
+## 🎯 Convergence Picks (5 stacked games)
+- ELITE: **0** · HIGH: 0 · MED: 5
   - [MED] New York Knicks @ San Antonio Spurs : 2 signals (ATS, ATS)
-  - [MED] Golden State Valkyries @ Connecticut Sun : 2 signals (HEAT_COLD, ANOMALY)
+  - [MED] Golden State Valkyries @ Connecticut Sun : 2 signals (HEAT_COLD, ATS)
+  - [MED] Dallas Wings @ Toronto Tempo : 2 signals (HEAT_COLD, HEAT_COLD)
   - [MED] Portland Timbers @ Seattle Sounders FC : 2 signals (PREGAME, ATS)
+  - [MED] Coventry City @ Arsenal : 2 signals (PREGAME, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (7)
-- **Hunter Greene** OVER 4.5 K (78%) fair -349
-- **Sean Burke** OVER 5.5 K (76%) fair -314
-- **Chris Sale** OVER 5.5 K (70%) fair -233
-- **Luinder Avila** OVER 4.5 K (69%) fair -223
-- **Hunter Brown** OVER 4.5 K (69%) fair -218
+## ⚾ Top MLB Pitcher K Plays (11)
+- **Yoshinobu Yamamoto** OVER 4.5 K (78%) fair -347
+- **Joe Ryan** OVER 5.5 K (77%) fair -337
+- **Reynaldo López** OVER 4.5 K (76%) fair -309
+- **Eury Pérez** OVER 4.5 K (75%) fair -295
+- **Cristopher Sánchez** OVER 5.5 K (72%) fair -253
 
 ## 🏀 NBA Player Heat (18 HOT / 23 COLD)
   - 🔥 **Jeremiah Fears** (NO): L5 31.8/5.8/6.0 vs season 16.9/3.2/4.0 [PTS +14.9, REB +2.6, AST +2.0]
@@ -134,11 +131,6 @@
   - ❄️ **Jung Hoo Lee** (SF): L14 .180 / season .309 (-129pts) -- FADE props
   - ❄️ **Paul Goldschmidt** (NYY): L14 .137 / season .260 (-123pts) -- FADE props
   - ❄️ **Corbin Carroll** (AZ): L14 .140 / season .258 (-118pts) -- FADE props
-
-## 📈 Streak Regression Alerts (3)
-- [WNBA] Golden State Valkyries on W5 L10 5-0 -- Golden State Valkyries on W5 -- no historical sample
-- [WNBA] Toronto Tempo on L3 L10 0-3 -- Toronto Tempo on L3 -- no historical sample
-- [WNBA] Dallas Wings on W3 L10 3-1 -- Dallas Wings on W3 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**

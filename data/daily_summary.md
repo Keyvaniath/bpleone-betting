@@ -2,9 +2,9 @@
 
 **Model Confidence: 21.9/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
 
-_Pipeline health: **WARNING** (12/15 artifacts ok; 3 empty, 0 stale)._ 
+_Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
 
-_Generated at 2026-07-11T07:07:59 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-07-11T14:19:02 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
@@ -20,67 +20,67 @@ _Generated at 2026-07-11T07:07:59 UTC. Game lines source: **Bovada (fallback -- 
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 12:05p ET | MIL @ PIT | PNC Park | 84F 5mph | PIT_ML +33.19% |
-| 4:05p ET | MIL @ PIT | PNC Park | 84F 5mph | OVER_8.5 +28.71% |
-| 2:10p ET | LAA @ MIN | Target Field | 92F 6mph | OVER_9.0 +49.77% |
-| 2:10p ET | OAK @ CHW | Rate Field | 78F 13mph | CHW_ML +29.4% |
-| 4:05p ET | COL @ SFG | Oracle Park | 68F 19mph | OVER_8.5 +63.26% |
-| 4:05p ET | NYY @ WSN | Nationals Park | 83F 5mph | OVER_9.0 +38.34% |
-| 4:10p ET | BOS @ NYM | Citi Field | 81F 3mph | BOS_ML +32.57% |
-| 4:10p ET | SEA @ TBR | Tropicana Field | indoor | UNDER_7.5 +3.27% |
-| 4:10p ET | CLE @ MIA | loanDepot park | indoor | MIA_ML +20.49% |
-| 6:10p ET | PHI @ DET | Comerica Park | 70F 4mph | DET_ML +25.74% |
-| 7:05p ET | KCR @ BAL | Oriole Park at Camden Yards | 73F 4mph | OVER_9.0 +17.27% |
+| 12:05p ET | MIL @ PIT | PNC Park | 86F 5mph | PIT_ML +35.25% |
+| 4:05p ET | MIL @ PIT | PNC Park | 86F 5mph | OVER_9.0 +18.34% |
+| 2:10p ET | LAA @ MIN | Target Field | 92F 7mph | OVER_9.0 +51.15% |
+| 2:10p ET | OAK @ CHW | Rate Field | 77F 13mph | OVER_8.5 +31.42% |
+| 4:05p ET | COL @ SFG | Oracle Park | 68F 18mph | OVER_8.5 +63.26% |
+| 4:05p ET | NYY @ WSN | Nationals Park | 82F 2mph | OVER_9.0 +25.5% |
+| 4:10p ET | BOS @ NYM | Citi Field | 73F 3mph | BOS_ML +34.64% |
+| 4:10p ET | SEA @ TBR | Tropicana Field | indoor | TBR_ML +2.5% |
+| 4:10p ET | CLE @ MIA | loanDepot park | indoor | MIA_ML +20.17% |
+| 6:10p ET | PHI @ DET | Comerica Park | 75F 7mph | DET_ML +25.51% |
+| 7:05p ET | KCR @ BAL | Oriole Park at Camden Yards | 75F 9mph | OVER_9.0 +27.26% |
 | 7:05p ET | HOU @ TEX | Globe Life Field | indoor | OVER_8.5 +20.75% |
-| 7:10p ET | CHC @ CIN | Great American Ball Park | 70F 1mph | OVER_10.0 +31.61% |
-| 7:15p ET | ATL @ STL | Busch Stadium | 72F 4mph | OVER_8.5 +17.03% |
-| 8:40p ET | TOR @ SDP | Petco Park | 67F 3mph | UNDER_8.0 +38.48% |
-| 9:10p ET | ARI @ LAD | UNIQLO Field at Dodger Stadium | 68F 4mph | LAD_ML +18.18% |
+| 7:10p ET | CHC @ CIN | Great American Ball Park | 72F 5mph | OVER_10.0 +39.95% |
+| 7:15p ET | ATL @ STL | Busch Stadium | 74F 4mph | OVER_8.0 +30.13% |
+| 8:40p ET | TOR @ SDP | Petco Park | 68F 3mph | UNDER_8.0 +37.89% |
+| 9:10p ET | ARI @ LAD | UNIQLO Field at Dodger Stadium | 68F 4mph | LAD_ML +17.17% |
 
 ## Parlays - top 5
 
-- **2-leg @ +225 (prob 46.1%, EV +49.89%)**
-  - Cam Schlittler OVER 5.5 pitcher_strikeouts (-142, model 70.4%)
-  - PHI @ DET UNDER_7.5 (-110, model 65.5%)
-- **2-leg @ +347 (prob 33.4%, EV +49.05%)**
-  - Jake McCarthy OVER 1.5 batter_total_bases (+134, model 51.0%)
-  - PHI @ DET UNDER_7.5 (-110, model 65.5%)
-- **2-leg @ +305 (prob 36.8%, EV +48.91%)**
-  - Mickey Moniak OVER 1.5 batter_total_bases (+112, model 58.2%)
+- **2-leg @ +322 (prob 35.4%, EV +49.08%)**
+  - PHI @ DET DET_ML (+116, model 57.8%)
+  - CHC @ CIN CHC_ML (-105, model 61.1%)
+- **2-leg @ +312 (prob 35.8%, EV +47.8%)**
+  - MIL @ PIT OVER_9.0 (-110, model 62.0%)
+  - PHI @ DET DET_ML (+116, model 57.8%)
+- **2-leg @ +312 (prob 35.8%, EV +47.75%)**
+  - MIL @ PIT OVER_9.0 (-110, model 62.0%)
+  - PHI @ DET DET_ML (+116, model 57.8%)
+- **2-leg @ +188 (prob 50.8%, EV +46.34%)**
+  - PHI @ DET DET_ML (+116, model 57.8%)
+  - ARI @ LAD LAD_ML (-300, model 87.9%)
+- **2-leg @ +269 (prob 39.5%, EV +46.05%)**
   - HOU @ TEX OVER_8.5 (-110, model 63.2%)
-- **2-leg @ +254 (prob 41.9%, EV +48.59%)**
-  - Mickey Moniak OVER 1.5 batter_total_bases (+112, model 58.2%)
-  - CLE @ MIA MIA_ML (-149, model 72.1%)
-- **2-leg @ +305 (prob 36.7%, EV +48.58%)**
-  - Mickey Moniak OVER 1.5 batter_total_bases (+112, model 58.2%)
-  - OAK @ CHW OVER_9.0 (-110, model 63.1%)
+  - ATL @ STL ATL_ML (-107, model 62.5%)
 
 ## Self-Learning Loop
 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
 
-Cumulative graded plays: 6749. Wins: 2817. Hit rate: 41.7%.
+Cumulative graded plays: 6773. Wins: 2824. Hit rate: 41.7%.
 
 ## Auxiliary Markets (Model Fair Prices)
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| ARI @ LAD | 60.1% | -151 | 2.62 | -404 | +404 |
-| ATL @ STL | 40.8% | +145 | 4.47 | +287 | -287 |
-| BOS @ NYM | 41.2% | +142 | 4.36 | +256 | -256 |
-| CHC @ CIN | 48.8% | +105 | 3.62 | +254 | -254 |
+| ARI @ LAD | 60.1% | -151 | 2.61 | -404 | +404 |
+| ATL @ STL | 40.8% | +145 | 4.44 | +288 | -288 |
+| BOS @ NYM | 41.2% | +142 | 4.42 | +256 | -256 |
+| CHC @ CIN | 48.8% | +105 | 3.66 | +254 | -254 |
 | CLE @ MIA | 51.4% | -106 | 3.32 | -147 | +147 |
 | COL @ SFG | 28.2% | +255 | 7.12 | +133 | -133 |
 | HOU @ TEX | 45.1% | +122 | 3.98 | +132 | -132 |
-| KCR @ BAL | 31.5% | +218 | 5.63 | +157 | -157 |
-| LAA @ MIN | 49.7% | +101 | 3.59 | -333 | +333 |
-| MIL @ PIT | 49.7% | +101 | 4.19 | +265 | -265 |
-| NYY @ WSN | 34.4% | +191 | 5.17 | +632 | -632 |
-| OAK @ CHW | 28.4% | +252 | 5.79 | -119 | +119 |
-| PHI @ DET | 38.5% | +160 | 4.82 | +134 | -134 |
+| KCR @ BAL | 31.5% | +218 | 5.69 | +155 | -155 |
+| LAA @ MIN | 49.7% | +101 | 3.6 | -335 | +335 |
+| MIL @ PIT | 49.7% | +101 | 4.05 | +265 | -265 |
+| NYY @ WSN | 49.4% | +102 | 3.49 | +526 | -526 |
+| OAK @ CHW | 28.4% | +252 | 5.81 | -118 | +118 |
+| PHI @ DET | 38.5% | +160 | 4.87 | +131 | -131 |
 | SEA @ TBR | 53.3% | -114 | 3.14 | +150 | -150 |
-| TOR @ SDP | 32.5% | +207 | 5.71 | +241 | -241 |
+| TOR @ SDP | 32.5% | +207 | 5.63 | +241 | -241 |
 
 ## Team Form (last 10)
 
@@ -99,7 +99,7 @@ Cumulative graded plays: 6749. Wins: 2817. Hit rate: 41.7%.
 
 ## Loop Activity (since last refresh)
 
-- Confidence delta: **-0.1**
+- Confidence delta: **+0.0**
 
 ## Model Recommendations (operator review)
 
