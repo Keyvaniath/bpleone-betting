@@ -1,18 +1,18 @@
 # EdgeStat Daily Summary — 2026-07-11
 
-## 🏥 Model Health: 60.0/100 [OK]
+## 🏥 Model Health: 58.9/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.7/100
+  - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 0/100
-  - 🔴 Brier Trend: 24.9/100
+  - 🔴 Brier Trend: 23.3/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 95.5/100
-  - 🟡 Edge Count: 60.0/100
+  - 🔴 Edge Count: 51.4/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.583)
-- **Total games on board:** 111
-- **Strong home favorites:** 2 | **Strong road dogs:** 0
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.579)
+- **Total games on board:** 113
+- **Strong home favorites:** 3 | **Strong road dogs:** 1
 
 ## 🎯 Top 5 Best Bets
 1. **COL @ SFG YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
@@ -22,7 +22,7 @@
 5. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
 
 ## 📉 Strong UNDER Signals
-- [STRONG 5.9] **TOR @ SDP** model 6.57 vs market 8.0
+- [STRONG 6.0] **TOR @ SDP** model 6.47 vs market 8.0
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-58** (84.1% hit rate)
@@ -59,15 +59,16 @@
 - Hot teams: **2** | Cold teams: **1** | Over-heavy: 0 | Under-heavy: 0
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (46)
-- STEAM_MOVE: **41**
+## ⚠️ Anomaly Detector (52)
+- RESIDUAL_DIVERGENCE: **1**
+- STEAM_MOVE: **46**
 - COMPOUND_BULLPEN: **4**
 - PEN_MISMATCH: **1**
+  - Atlanta Dream (WNBA): Atlanta Dream OUTPERFORMING expected margin by 9.0pts in recent games -- model bias may persist
   - GS @ CON (WNBA): TOTAL steam since open: ML +2.2pp toward CON; total -3 (UNDER) (3 snapshots)
   - MIL @ STL (MLB): ML/TOTAL steam since open: ML +14.4pp toward STL; total +1 (OVER) (7 snapshots)
   - TOR @ SEA (MLB): ML/TOTAL steam since open: ML +13.5pp toward SEA; total +0.5 (OVER) (7 snapshots)
   - NYM @ ATL (MLB): ML/TOTAL steam since open: ML -11.8pp toward NYM; total +1 (OVER) (7 snapshots)
-  - DAL @ CON (WNBA): ML/TOTAL steam since open: ML +3.9pp toward CON; total +2 (OVER) (9 snapshots)
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
@@ -120,17 +121,17 @@
   - ❄️ **Marcel Siem** (Germany): Sunday +5.0 vs tourney avg
   - ❄️ **Patrick Cantlay** (USA): Sunday +4.5 vs tourney avg
 
-## 🔥 MLB Batter Heat (35 HOT / 40 COLD)
+## 🔥 MLB Batter Heat (41 HOT / 37 COLD)
+  - 🔥 **Luisangel Acuña** (CWS): L14 .400 / season .242 (+158pts)
   - 🔥 **Derek Hill** (PHI): L14 .414 / season .264 (+150pts)
-  - 🔥 **Garrett Mitchell** (MIL): L14 .415 / season .274 (+141pts)
-  - 🔥 **Luisangel Acuña** (CWS): L14 .360 / season .233 (+127pts)
-  - 🔥 **Chase DeLauter** (CLE): L14 .400 / season .282 (+118pts)
-  - 🔥 **Luis García Jr.** (WSH): L14 .404 / season .287 (+117pts)
+  - 🔥 **Garrett Mitchell** (MIL): L14 .422 / season .277 (+145pts)
+  - 🔥 **Justin Crawford** (PHI): L14 .378 / season .263 (+115pts)
+  - 🔥 **Rafael Devers** (SF): L14 .362 / season .251 (+111pts)
+  - ❄️ **Paul Goldschmidt** (NYY): L14 .122 / season .257 (-135pts) -- FADE props
   - ❄️ **Jorge Mateo** (ATL): L14 .107 / season .242 (-135pts) -- FADE props
   - ❄️ **Eric Haase** (SF): L14 .029 / season .162 (-133pts) -- FADE props
-  - ❄️ **Jung Hoo Lee** (SF): L14 .180 / season .309 (-129pts) -- FADE props
-  - ❄️ **Paul Goldschmidt** (NYY): L14 .137 / season .260 (-123pts) -- FADE props
-  - ❄️ **Corbin Carroll** (AZ): L14 .140 / season .258 (-118pts) -- FADE props
+  - ❄️ **Henry Bolte** (ATH): L14 .137 / season .266 (-129pts) -- FADE props
+  - ❄️ **Jung Hoo Lee** (SF): L14 .188 / season .307 (-119pts) -- FADE props
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**

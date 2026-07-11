@@ -1,11 +1,11 @@
 # Tonight's Slate Brief — 2026-07-11
 
-## Slate Quality: 56/100 (MEDIUM)
-_6% lineups confirmed · 14 rookie SPs_
-**Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
+## Slate Quality: 88/100 (HIGH)
+_100% lineups confirmed · 4 rookie SPs_
+**Recommendation:** Play normal Kelly sizing.
 
 ## Slate
-- **16 games** scheduled
+- **7 games** scheduled
 - **23 best bets** scored: 0 DK · 0 PP · 10 NRFI · 0 SGP
 - **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$36.88
 - **MC simulation:** EV +$91.59, 77% P(profit), p05 $-106.28 / p95 $264.4
@@ -35,9 +35,6 @@ _6% lineups confirmed · 14 rookie SPs_
 - **PHI @ DET YRFI (1st-inning OVER 0.5)** (low):
    - Edge +15.5% looks big but only 0 settled props on this player — model unproven
 
-## Weather leans
-- **UNDER lean** (wind in + cold): COL @ SFG
-
 ## Bullpens GASSED tonight
 Athletics, San Diego Padres, San Francisco Giants, St. Louis Cardinals, Tampa Bay Rays, Minnesota Twins, Atlanta Braves, New York Yankees
 _Lean late-inning OVER on these games; fade their save situations._
@@ -48,8 +45,8 @@ _Lean late-inning OVER on these games; fade their save situations._
 ## Golf -- Genesis Scottish Open
 - **Leader:** Jordan Smith (-9) at #1
 - **Field:** 156 players  |  Status: In Progress
-- **Play of the Tournament:** Tom Kim WIN @ +487 (model 17.0%, HIGH)
-   - P(win) 17.0% with 1 round(s) left -- sweet-spot value at #3 (-9).
+- **Play of the Tournament:** Chris Gotterup TOP5 @ +542 (model 15.6%, HIGH)
+   - P(top 5) 15.6% -- lower variance than outright but compelling line.
 
 ## NBA -- PLAYOFFS
 - New York Knicks @ San Antonio Spurs (53-29 vs 62-20) 94-90 | P(home) 0.0% fair +0 | Final

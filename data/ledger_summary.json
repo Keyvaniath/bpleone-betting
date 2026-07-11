@@ -1,23 +1,23 @@
 {
-  "generated_at": "2026-07-11T21:09:56",
+  "generated_at": "2026-07-11T21:42:22",
   "stake_assumption": "1u flat per pick",
   "total_picks": 10000,
-  "n_settled": 6776,
-  "n_pending": 1118,
-  "n_void": 2106,
-  "wins": 2820,
+  "n_settled": 6790,
+  "n_pending": 1116,
+  "n_void": 2094,
+  "wins": 2834,
   "losses": 3946,
   "pushes": 10,
-  "hit_rate": 0.4168,
-  "net_units": -797.335,
-  "roi_pct": -11.78,
+  "hit_rate": 0.418,
+  "net_units": -756.035,
+  "roi_pct": -11.15,
   "n_calibrated_picks": 9090,
   "calibrated_reliability": {
-    "n": 6665,
-    "ece_raw": 0.0854,
-    "ece_calibrated": 0.0166,
-    "brier_raw": 0.21313,
-    "brier_calibrated": 0.19522,
+    "n": 6679,
+    "ece_raw": 0.0836,
+    "ece_calibrated": 0.0176,
+    "brier_raw": 0.21386,
+    "brier_calibrated": 0.19527,
     "note": "In-sample over the settled ledger (the isotonic transform is fit on these same outcomes); held-out 70/30 validation is in recalibration_map.json. p_predicted = raw model prob (kept untouched for the learning loop); p_calibrated = honest prob stamped per pick. Lower ECE/Brier on the calibrated column = the displayed % is truer."
   },
   "curated": {
@@ -41,11 +41,11 @@
     ],
     "definition": "Featured/recommended plays only -- Lock of the Day, Top 25, Whale, Sharp, Consensus (hit), Under Alerts, POD. Excludes the experimental prop feeds, which are tracked to train the model, not bet."
   },
-  "n_added_this_run": 0,
-  "n_newly_settled_this_run": 0,
+  "n_added_this_run": 4,
+  "n_newly_settled_this_run": 14,
   "n_resettled_this_run": 0,
   "n_voided_this_run": 0,
-  "n_reconciled_settled_voids": 0,
+  "n_reconciled_settled_voids": 8,
   "n_bootstrapped_from_locks_history": 0,
   "by_source": {
     "mlb_hit_to_record_hit_yes": {
@@ -67,13 +67,13 @@
       "roi_pct": -11.9
     },
     "ufc_r1_fight_r1_finish_yes": {
-      "n": 155,
-      "wins": 83,
+      "n": 169,
+      "wins": 97,
       "losses": 72,
       "pushes": 0,
-      "net_units": 216.64,
-      "hit_rate": 0.5355,
-      "roi_pct": 139.77
+      "net_units": 257.94,
+      "hit_rate": 0.574,
+      "roi_pct": 152.63
     },
     "golf_top_5": {
       "n": 49,
@@ -1372,12 +1372,12 @@
       "hit_rate": 0.4839
     },
     "fight_r1_finish_yes": {
-      "n": 155,
-      "wins": 83,
+      "n": 169,
+      "wins": 97,
       "losses": 72,
       "pushes": 0,
-      "net_units": 216.64,
-      "hit_rate": 0.5355
+      "net_units": 257.94,
+      "hit_rate": 0.574
     },
     "top": {
       "n": 611,
@@ -1806,12 +1806,12 @@
       "hit_rate": 0.4839
     },
     "fight_r1_finish_yes": {
-      "n": 155,
-      "wins": 83,
+      "n": 169,
+      "wins": 97,
       "losses": 72,
       "pushes": 0,
-      "net_units": 216.64,
-      "hit_rate": 0.5355
+      "net_units": 257.94,
+      "hit_rate": 0.574
     },
     "top": {
       "n": 611,
@@ -2245,8 +2245,8 @@
       "wins": 1523,
       "losses": 3217,
       "pushes": 10,
-      "pending": 708,
-      "void": 1329,
+      "pending": 712,
+      "void": 1325,
       "net_units": -1186.261,
       "hit_rate": 0.3213,
       "roi_pct": -25.03,
@@ -2254,15 +2254,15 @@
     },
     "UFC": {
       "n": 247,
-      "settled": 155,
-      "wins": 83,
+      "settled": 169,
+      "wins": 97,
       "losses": 72,
       "pushes": 0,
-      "pending": 36,
-      "void": 56,
-      "net_units": 216.64,
-      "hit_rate": 0.5355,
-      "roi_pct": 139.77,
+      "pending": 30,
+      "void": 48,
+      "net_units": 257.94,
+      "hit_rate": 0.574,
+      "roi_pct": 152.63,
       "markets": 1
     },
     "GOLF": {
@@ -2397,10 +2397,10 @@
     }
   },
   "last_7_days": {
-    "wins": 327,
+    "wins": 336,
     "losses": 615,
-    "net_units": -225.691,
-    "hit_rate": 0.3471
+    "net_units": -199.141,
+    "hit_rate": 0.3533
   },
   "note": "Unified pick ledger -- records every pick the model surfaces (top_25 board, whales, consensus, unders, sharp action, locks, POD) and settles each against actual outcomes. Per-source W-L feeds back into calibration so the model learns which modules are reliable. THIS is the training signal."
 }

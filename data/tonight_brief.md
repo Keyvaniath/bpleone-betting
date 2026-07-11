@@ -10,12 +10,12 @@ _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 - **Austin Dean** one_plus_tb (KBO) -- 73% / +38.5%
 
 ## 📉 Under Bets
-- **TOR @ SDP** UNDER 8.0 — model 6.47 [STRONG signal]
+- **TOR @ SDP** UNDER 8.5 — model 6.63 [STRONG signal]
 
 ## 🎰 Tonight's Best Parlay
 - **Choi Jeong** one_plus_tb + **Jose Pirela** one_plus_tb
 - Joint 53% · fair +264 · edge +94.6%
 
 ---
-_Generated 2026-07-11T15:00:03_
+_Generated 2026-07-11T21:42:30_
 _Full breakdown: /tonight · Full history: /locks-of-day_
