@@ -44,6 +44,12 @@ def _load(p):
 
 def _add(picks, sport, player, team, market, prob, fair, source):
     if prob is None or not (MIN_PROB <= prob <= MAX_PROB): return
+    # Some feeds emit team as a dict (e.g. {abbr, name}) -- normalize to a short
+    # string so the artifact is clean and the debug print can't crash the
+    # pipeline (2026-07-12: a dict team here TypeError'd the whole daily run).
+    if isinstance(team, dict):
+        team = team.get("abbr") or team.get("abbreviation") or team.get("name")
+    team = str(team) if team not in (None, "") else None
     picks.append({
         "sport": sport, "player": player, "team": team,
         "market": market, "prob": round(prob, 4),
@@ -260,5 +266,6 @@ if __name__ == "__main__":
     for x in p["top_50"][:15]:
         fair = x.get("fair_american")
         fair_str = f"fair {fair:+d}" if isinstance(fair, int) else "fair --"
-        print(f"    [{x['sport']:7s}] {x['player'][:22]:22s} ({x.get('team') or '--':4s}) "
-              f"{x['market'][:32]:32s} p={x['prob']*100:.0f}% {fair_str}")
+        tm = str(x.get("team") or "--")[:4]
+        print(f"    [{str(x.get('sport') or ''):7s}] {str(x.get('player') or '')[:22]:22s} ({tm:4s}) "
+              f"{str(x.get('market') or '')[:32]:32s} p={(x.get('prob') or 0)*100:.0f}% {fair_str}")
