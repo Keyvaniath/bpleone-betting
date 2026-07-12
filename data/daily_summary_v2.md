@@ -1,18 +1,18 @@
 # EdgeStat Daily Summary — 2026-07-12
 
-## 🏥 Model Health: 67.2/100 [OK]
+## 🏥 Model Health: 67.0/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.7/100
+  - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 15.6/100
   - 🔴 Brier Trend: 46.7/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 95.5/100
-  - 🔴 Edge Count: 57.1/100
+  - 🔴 Edge Count: 54.3/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.583)
-- **Total games on board:** 111
-- **Strong home favorites:** 2 | **Strong road dogs:** 0
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.589)
+- **Total games on board:** 115
+- **Strong home favorites:** 5 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
 1. **KCR @ BAL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
@@ -22,12 +22,15 @@
 5. **NYY @ WSN YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
-- [WHALE] **[MLB]** HOU @ TEX ML_HOME -- 69% / +18.6% (score 3.5)
-- [STRONG] **[MLB]** HOU @ TEX TEX_ML -- 73% / +25.2% (score 2.5)
-- [STRONG] **[MLB]** CHC @ CIN CHC_ML -- 69% / +22.1% (score 2.5)
+- [WHALE] **[MLB]** HOU @ TEX ML_HOME -- 69% / +19.0% (score 3.5)
+- [STRONG] **[MLB]** HOU @ TEX TEX_ML -- 72% / +25.8% (score 2.5)
+- [STRONG] **[MLB]** CHC @ CIN CHC_ML -- 69% / +22.9% (score 2.5)
 
 ## 📡 Sharp Action (Line Movement)
-- [ELITE] **HOU @ TEX** ml_home: 45.25% → 57.98% (+12.7pp)
+- [ELITE] **HOU @ TEX** ml_home: 45.25% → 64.91% (+19.7pp)
+
+## 📉 Strong UNDER Signals
+- [STRONG 5.0] **SEA @ TBR** model 7.24 vs market 8.0
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-58** (84.1% hit rate)
@@ -56,7 +59,8 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (2)
+## ⚡ Pre-Game HIGH Conviction (3)
+- [WNBA] **Dallas Wings** HOME (4-1 L10) · model 72.7% fair -266
 - [MLS] **CF Montréal** HOME (None L10) · model 71.5% fair -251
 - [MLS] **Seattle Sounders FC** HOME (0-1 L10) · model 66.7% fair -200
 
@@ -64,8 +68,8 @@
 - Hot teams: **2** | Cold teams: **2** | Over-heavy: 0 | Under-heavy: 1
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (51)
-- STEAM_MOVE: **44**
+## ⚠️ Anomaly Detector (54)
+- STEAM_MOVE: **47**
 - COMPOUND_BULLPEN: **6**
 - PEN_MISMATCH: **1**
   - GS @ CON (WNBA): TOTAL steam since open: ML +2.2pp toward CON; total -3 (UNDER) (3 snapshots)
@@ -76,7 +80,7 @@
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$6.22**
+- Expected EV: **$6.2**
   - #1 [NRFI] $50 on KCR @ BAL YRFI (1st-inning OVER 0.5) (P=76%)
   - #2 [NRFI] $50 on OAK @ CHW YRFI (1st-inning OVER 0.5) (P=72%)
   - #3 [NRFI] $50 on HOU @ TEX YRFI (1st-inning OVER 0.5) (P=71%)
@@ -115,26 +119,26 @@
   - [LEAN] **Ryan Gandra** (10-1-0) vs Zach Reese -- fair -151
 
 ## ⛳ Golf Player Heat (from Genesis Scottish Open)
-  - 🔥 T1 **Robert MacIntyre** (Scotland): -13 total -- finished T1
-  - 🔥 T2 **Matt Fitzpatrick** (England): -13 total -- finished T2
-  - 🔥 T3 **Chris Gotterup** (USA): -12 total -- finished T3
-  - 🔥 T4 **Tom Kim** (South Korea): -12 total -- finished T4
-  - 🔥 T6 **Victor Perez** (France): -11 total -- finished T6, Sunday -1.2 vs tourney avg
+  - 🔥 T1 **Tom Kim** (South Korea): -13 total -- finished T1
+  - 🔥 T5 **Victor Perez** (France): -11 total -- finished T5, Sunday -1.2 vs tourney avg
+  - 🔥 T6 **Chris Gotterup** (USA): -11 total -- finished T6
+  - 🔥 T7 **Rory McIlroy** (Northern Ireland): -10 total -- finished T7, Sunday -1.5 vs tourney avg
+  - 🔥 T8 **Si Woo Kim** (South Korea): -10 total -- finished T8, Sunday -0.5 vs tourney avg
   - ❄️ **Bernd Wiesberger** (Austria): Sunday +6.5 vs tourney avg
   - ❄️ **Guido Migliozzi** (Italy): Sunday +5.8 vs tourney avg
   - ❄️ **Marcel Siem** (Germany): Sunday +5.0 vs tourney avg
 
-## 🔥 MLB Batter Heat (40 HOT / 40 COLD)
+## 🔥 MLB Batter Heat (38 HOT / 35 COLD)
   - 🔥 **Luisangel Acuña** (CWS): L14 .400 / season .242 (+158pts)
-  - 🔥 **Derek Hill** (PHI): L14 .414 / season .266 (+148pts)
-  - 🔥 **Garrett Mitchell** (MIL): L14 .404 / season .274 (+130pts)
+  - 🔥 **James Wood** (WSH): L14 .400 / season .279 (+121pts)
+  - 🔥 **Garrett Mitchell** (MIL): L14 .392 / season .274 (+118pts)
   - 🔥 **Miguel Rojas** (LAD): L14 .407 / season .290 (+117pts)
   - 🔥 **Justin Crawford** (PHI): L14 .378 / season .263 (+115pts)
+  - ❄️ **Corbin Carroll** (AZ): L14 .083 / season .254 (-171pts) -- FADE props
   - ❄️ **Jorge Mateo** (ATL): L14 .074 / season .238 (-164pts) -- FADE props
-  - ❄️ **Corbin Carroll** (AZ): L14 .100 / season .255 (-155pts) -- FADE props
-  - ❄️ **Eric Haase** (SF): L14 .029 / season .162 (-133pts) -- FADE props
-  - ❄️ **William Contreras** (MIL): L14 .151 / season .282 (-131pts) -- FADE props
-  - ❄️ **Daulton Varsho** (TOR): L14 .109 / season .240 (-131pts) -- FADE props
+  - ❄️ **Oswald Peraza** (LAA): L14 .079 / season .239 (-160pts) -- FADE props
+  - ❄️ **Paul Goldschmidt** (NYY): L14 .104 / season .258 (-154pts) -- FADE props
+  - ❄️ **Henry Bolte** (ATH): L14 .120 / season .261 (-141pts) -- FADE props
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**

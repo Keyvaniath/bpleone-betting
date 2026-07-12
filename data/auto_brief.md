@@ -1,12 +1,12 @@
 # Tonight's Slate Brief — 2026-07-12
 
 ## Slate Quality: 70/100 (MEDIUM)
-_53% lineups confirmed · 14 rookie SPs_
+_0% lineups confirmed_
 **Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
-- **15 games** scheduled
-- **24 best bets** scored: 0 DK · 0 PP · 12 NRFI · 0 SGP
+- **3 games** scheduled
+- **25 best bets** scored: 0 DK · 0 PP · 12 NRFI · 0 SGP
 - **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$40.66
 - **MC simulation:** EV +$115.71, 82% P(profit), p05 $-100.85 / p95 $324.84
 
@@ -22,7 +22,7 @@ _53% lineups confirmed · 14 rookie SPs_
 5. **NYY @ WSN YRFI (1st-inning OVER 0.5)**  (79/100 ****, edge +19.3%)
    - P(YRFI) 65.3% vs baseline 46.0%
 
-## ⚠️ Trap Warnings — 12 flagged
+## ⚠️ Trap Warnings — 14 flagged
 - **KCR @ BAL YRFI (1st-inning OVER 0.5)** (low):
    - Edge +29.7% looks big but only 0 settled props on this player — model unproven
 - **OAK @ CHW YRFI (1st-inning OVER 0.5)** (low):
@@ -34,9 +34,6 @@ _53% lineups confirmed · 14 rookie SPs_
 - **NYY @ WSN YRFI (1st-inning OVER 0.5)** (low):
    - Edge +19.3% looks big but only 0 settled props on this player — model unproven
 
-## Weather leans
-- **UNDER lean** (wind in + cold): COL @ SFG
-
 ## Bullpens GASSED tonight
 Athletics, Pittsburgh Pirates, San Diego Padres, St. Louis Cardinals, Tampa Bay Rays, Toronto Blue Jays, Minnesota Twins, Atlanta Braves
 _Lean late-inning OVER on these games; fade their save situations._
@@ -45,10 +42,10 @@ _Lean late-inning OVER on these games; fade their save situations._
 - **YRFI** (1st-inning OVER): KCR @ BAL, OAK @ CHW, HOU @ TEX, TOR @ SDP, NYY @ WSN
 
 ## Golf -- Genesis Scottish Open
-- **Leader:** Robert MacIntyre (-13) at #1
+- **Leader:** Tom Kim (-13) at #1
 - **Field:** 156 players  |  Status: In Progress
-- **Play of the Tournament:** Johnny Keefer TOP5 @ +551 (model 15.4%, HIGH)
-   - P(top 5) 15.4% -- lower variance than outright but compelling line.
+- **Play of the Tournament:** Min Woo Lee WIN @ +536 (model 15.7%, HIGH)
+   - P(win) 15.7% with 1 round(s) left -- sweet-spot value at #3 (-12).
 
 ## NBA -- PLAYOFFS
 - New York Knicks @ San Antonio Spurs (53-29 vs 62-20) 94-90 | P(home) 0.0% fair +0 | Final
