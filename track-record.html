@@ -604,14 +604,19 @@ fetch("data/pod_pl.json", { cache: "no-cache" })
     setText("trkRoi",   roi    != null ? fmtSigned(roi,   1, "%")   : "--");
     setText("trkPlays", String(graded.length));
     setText("trkDD",    graded.length ? fmtSigned(dd, 1, "u") : "--");
-    // CLV separately from clv_log so the tile reflects what was actually captured.
-    fetch("data/clv_log.json", { cache: "no-cache" }).then(r => r.json())
-      .then(c => {
-        const recs = (c.records || []).filter(r => r.clv_pct != null);
-        if (!recs.length) return;
-        const avg = recs.reduce((s, r) => s + Number(r.clv_pct), 0) / recs.length;
-        setText("trkClv", fmtSigned(avg, 2, "%"));
-      }).catch(() => {});
+    // CLV: the SAME exact-rows rollup clv.html uses (clv_tracker rows + basketball
+    // leans with a measured clv_pp) so the two flagship surfaces can never
+    // disagree. Was clv_log.json -- a third source with a different universe.
+    Promise.all([
+      fetch("data/clv_tracker.json", { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
+      fetch("data/nba_book_edges.json", { cache: "no-cache" }).then(r => r.json()).catch(() => ({})),
+    ]).then(([d, bb]) => {
+      const rows = (d.rows || []).concat((bb.games || []).filter(g => g.clv_pp != null));
+      const withClv = rows.filter(r => r.clv_pp != null);
+      if (!withClv.length) return;
+      const avg = withClv.reduce((s, r) => s + Number(r.clv_pp), 0) / withClv.length;
+      setText("trkClv", fmtSigned(avg, 2, "pp"));
+    }).catch(() => {});
 
     const note = document.createElement("p");
     note.className = "muted";

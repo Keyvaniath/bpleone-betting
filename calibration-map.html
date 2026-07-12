@@ -203,6 +203,7 @@ fetch("data/calibration_map.json", { cache: "no-cache" }).then(r => r.json()).th
         <span style="font-size:13px;">Raw firehose <b style="color:#ff8a8a;">${a.roi_pct}% ROI</b> <span class="muted">(${a.n} settled bets · ${a.net_units}u)</span></span>
         <span style="color:#8a93a6;">&rarr; drop the proven-losing families &rarr;</span>
         <span style="font-size:16px;"><b style="color:#5fe0a0;">+${c.roi_pct}% ROI</b> <span class="muted">(${c.n} bets · ${c.hit_rate!=null?(100*c.hit_rate).toFixed(0)+'% hit · ':''}+${c.net_units}u)</span></span>
+        <span style="font-size:10.5px; color:#8a93a6; width:100%;">Universe: the WHOLE ledger with proven-negative families removed — a family-level replay. The Track Record's "curated" number counts only the recommended boards (locks/top-25/whale/sharp/consensus), a different, smaller universe — the two are meant to differ.</span>
       </div>`;
   }
   document.getElementById("sumStrip").innerHTML = `

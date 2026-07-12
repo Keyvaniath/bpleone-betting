@@ -101,8 +101,8 @@
     <span class="tag">Calibration · isotonic recalibration</span>
     <h3>A displayed 70% really hits ≈ 70%</h3>
     <p>Left alone, the raw model is <b>overconfident</b> — it says 80% when the real rate is closer to 68%. We learn a per-family <b>monotonic isotonic transform</b> (predicted probability → realized rate) from the settled ledger: prediction-bucketed, Bayesian-shrunk, pooled by adjacent-violators, with family-average and identity fallbacks for thin samples.</p>
-    <div class="eq">ECE&nbsp; raw <span class="res down" id="dEceRaw">10.9%</span> &nbsp;→&nbsp; calibrated <span class="res up" id="dEceCal">2.7%</span> &nbsp;&nbsp;·&nbsp;&nbsp; Brier 0.235 → 0.203</div>
-    <p>It generalizes: fit on 70% of the ledger / tested on the held-out 30%, ECE still collapses 12.6% → 5.4%. A regression test fails the build if the transform ever stops improving ECE, stops being monotonic, or stops being identity-safe.</p>
+    <div class="eq">ECE&nbsp; raw <span class="res down" id="dEceRaw">10.9%</span> &nbsp;→&nbsp; calibrated <span class="res up" id="dEceCal">2.7%</span> &nbsp;&nbsp;·&nbsp;&nbsp; Brier <span id="dBrierRaw">—</span> → <span id="dBrierCal">—</span></div>
+    <p>It generalizes: in a one-off 70/30 held-out validation (fit on 70% of the ledger, tested on the unseen 30%, run 2026-06), ECE still collapsed 12.6% → 5.4%. A regression test fails the build if the transform ever stops improving ECE, stops being monotonic, or stops being identity-safe.</p>
   </div>
 
   <div class="deep">
@@ -178,6 +178,11 @@ Promise.all([
     document.getElementById("mEceCal").textContent = c;
     document.getElementById("dEceRaw").textContent = r;
     document.getElementById("dEceCal").textContent = c;
+  }
+  // Live-fill Brier from the same reliability block (was hardcoded and drifted).
+  if (cr.brier_raw != null && cr.brier_calibrated != null) {
+    document.getElementById("dBrierRaw").textContent = cr.brier_raw.toFixed(3);
+    document.getElementById("dBrierCal").textContent = cr.brier_calibrated.toFixed(3);
   }
   // Cross-sport beat-the-close: MLB game leans + basketball model leans.
   const a = clv || {}, b = (bb && bb.clv) || {};

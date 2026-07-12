@@ -3,82 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Account · EdgeStat — quantitative sports-betting analytics: model edges, calibrated probabilities, and an honest settled track record across MLB, NBA, NHL, golf, tennis, soccer and more. Informational only, 21+.">
-<link rel="canonical" href="https://betting.bpleone.com/account.html">
-<meta name="theme-color" content="#0d1017">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="EdgeStat">
-<meta property="og:title" content="Account | EdgeStat">
-<meta property="og:description" content="Account · EdgeStat — quantitative sports-betting analytics: model edges, calibrated probabilities, and an honest settled track record across MLB, NBA, NHL, golf, tennis, soccer and more. Informational only, 21+.">
-<meta property="og:url" content="https://betting.bpleone.com/account.html">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Account | EdgeStat">
-<meta name="twitter:description" content="Account · EdgeStat — quantitative sports-betting analytics: model edges, calibrated probabilities, and an honest settled track record across MLB, NBA, NHL, golf, tennis, soccer and more. Informational only, 21+.">
-<title>Account | EdgeStat</title>
-<link rel="stylesheet" href="css/style.css">
-<script src="js/nav.js"></script>
-<style>
-  .acct-wrap { max-width: 520px; margin: 48px auto; }
-  .acct-card { padding: 28px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.02); }
-  .acct-card h1 { font-size: 22px; margin: 0 0 16px; }
-  .acct-row { display:flex; justify-content:space-between; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 13px; }
-  .acct-row .k { color: var(--text-2,#9fb0c8); }
-  .acct-row .v { font-family: 'JetBrains Mono', monospace; }
-  .acct-btn { margin-top: 20px; padding: 10px 16px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.18);
-              background: transparent; color: var(--text,#eaeaea); cursor: pointer; font-size: 13px; font-weight: 600; }
-  .acct-muted { color: var(--text-2,#9fb0c8); font-size: 13px; line-height: 1.6; }
-</style>
+<meta name="robots" content="noindex">
+<title>Your Account | EdgeStat</title>
+<link rel="canonical" href="https://betting.bpleone.com/login.html">
+<!-- Accounts are pre-launch (login.html says "launching shortly"). This page was
+     fully built but linked from nowhere (2026-07-11 audit: reachable-but-linkless
+     dead end). Redirect to login until accounts go live; the full prior page is
+     in git history — restore it when the account system launches. -->
+<script>location.replace("login.html");</script>
+<meta http-equiv="refresh" content="0; url=login.html">
+<style>body{font-family:-apple-system,BlinkMacSystemFont,sans-serif;background:#0d1017;color:#e9edf4;padding:48px;text-align:center;}a{color:#58c878;}</style>
 </head>
-<body class="page-account">
-<header class="topbar">
-  <div class="brand"><a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a><span class="tagline">by bpleone</span></div>
-  <nav class="mainnav"><!-- nav.js injects --></nav>
-  <div class="topbar-actions"><div class="ticker">LIVE</div></div>
-</header>
-
-<main class="container">
-  <div class="acct-wrap">
-    <div class="acct-card" id="acctCard">
-      <h1>Your account</h1>
-      <p class="acct-muted" id="acctStatus">Loading…</p>
-    </div>
-  </div>
-</main>
-
-<script src="js/nav_badge.js"></script>
-<script src="js/auth-config.js"></script>
-<script src="js/auth.js"></script>
-<script>
-(function () {
-  var card = document.getElementById("acctCard");
-  var status = document.getElementById("acctStatus");
-
-  if (!window.EdgeStatAuth || !window.EdgeStatAuth.configured) {
-    status.innerHTML = "Free accounts are launching shortly. The sign-in system is built and live; it activates as soon as the auth provider is connected.";
-    return;
-  }
-
-  // Supabase's detectSessionInUrl handles the magic-link / OAuth callback when
-  // the client is created; give it a tick, then read the user.
-  setTimeout(async function () {
-    var user = await window.EdgeStatAuth.getUser();
-    if (!user) {
-      status.innerHTML = 'You are not signed in. <a href="login.html" style="color:var(--accent,#4ade80);">Sign in</a> — it is free and takes 10 seconds.';
-      return;
-    }
-    var created = user.created_at ? new Date(user.created_at).toLocaleDateString() : "—";
-    var provider = (user.app_metadata && user.app_metadata.provider) || "email";
-    card.innerHTML =
-      '<h1>Your account</h1>' +
-      '<div class="acct-row"><span class="k">Email</span><span class="v">' + (user.email || "—") + '</span></div>' +
-      '<div class="acct-row"><span class="k">Sign-in method</span><span class="v">' + provider + '</span></div>' +
-      '<div class="acct-row"><span class="k">Member since</span><span class="v">' + created + '</span></div>' +
-      '<p class="acct-muted" style="margin-top:16px;">You are signed in. All EdgeStat boards are free to access. Saved bets and personalized boards are coming soon to your account.</p>' +
-      '<button class="acct-btn" id="acctSignOut" type="button">Sign out</button>';
-    var btn = document.getElementById("acctSignOut");
-    if (btn) btn.addEventListener("click", function () { window.EdgeStatAuth.signOut(); });
-  }, 400);
-})();
-</script>
+<body>
+  <p>Accounts are launching shortly — see <a href="login.html">sign in</a>. Redirecting…</p>
 </body>
 </html>

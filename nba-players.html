@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="NBA Player Props · EdgeStat — quantitative sports-betting analytics: model edges, calibrated probabilities, and an honest settled track record across MLB, NBA, NHL, golf, tennis, soccer and more. Informational only, 21+.">
+<link rel="canonical" href="https://betting.bpleone.com/nba-players.html">
+<meta name="theme-color" content="#0d1017">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EdgeStat">
+<meta property="og:title" content="NBA Player Props | EdgeStat">
+<meta property="og:description" content="NBA Player Props · EdgeStat — quantitative sports-betting analytics: model edges, calibrated probabilities, and an honest settled track record across MLB, NBA, NHL, golf, tennis, soccer and more. Informational only, 21+.">
+<meta property="og:url" content="https://betting.bpleone.com/nba-players.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="NBA Player Props | EdgeStat">
+<meta name="twitter:description" content="NBA Player Props · EdgeStat — quantitative sports-betting analytics: model edges, calibrated probabilities, and an honest settled track record across MLB, NBA, NHL, golf, tennis, soccer and more. Informational only, 21+.">
+<title>NBA Player Props | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .player-card { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.04); cursor:pointer; }
+  .player-card:hover { background: rgba(196,62,62,0.06); }
+  .player-card.expanded { background: rgba(196,62,62,0.08); border-left: 3px solid #c43e3e; }
+  .stat-block { display:grid; grid-template-columns: repeat(6, 1fr); gap:10px; margin-top:10px; font-size:12px; }
+  .prop-row { display:grid; grid-template-columns: 60px 80px 80px 80px 90px 90px; gap:8px; padding:6px 0; font-family:'JetBrains Mono',monospace; font-size:11px; border-bottom:1px dashed rgba(255,255,255,0.04); }
+  .prop-row.head { color: var(--muted, #888); text-transform: uppercase; font-size: 10px; }
+  .filter-bar { display:flex; gap:8px; padding:8px 16px; flex-wrap:wrap; }
+  .filter-pill { display:inline-block; padding:5px 12px; border-radius:14px; background:rgba(255,255,255,0.06); cursor:pointer; font-size:11px; }
+  .filter-pill.active { background:#c43e3e; color:#fff; }
+  .real-badge { display:inline-block; padding:2px 8px; border-radius:4px; background: linear-gradient(90deg, #58c878, #d4a04a); color:#0a0a0a; font-size:9px; font-weight:700; }
+</style>
+<script src="js/nav.js"></script>
+</head>
+<body class="page-nba-real">
+<header class="topbar">
+  <div class="brand">
+    <a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a>
+    <span class="tagline">by bpleone</span>
+  </div>
+  <nav class="mainnav"><!-- nav.js injects here --></nav>
+  <div class="topbar-actions"><div class="ticker">LIVE</div></div>
+</header>
+<main class="container">
+  <section class="page-head">
+    <h1>NBA Player Props — <span class="real-badge">live ESPN data</span></h1>
+    <p id="status" class="muted">Loading per-game averages from last 20 games for every NBA starter…</p>
+  </section>
+  <section class="metric-strip">
+    <div class="metric"><span class="metric-num" id="m_players">--</span><span class="metric-label">Players</span></div>
+    <div class="metric"><span class="metric-num" id="m_props">--</span><span class="metric-label">Prop Projections</span></div>
+    <div class="metric"><span class="metric-num" id="m_games">--</span><span class="metric-label">Avg Games/Player</span></div>
+    <div class="metric"><span class="metric-num" id="m_topscorer">--</span><span class="metric-label">Top Scorer</span></div>
+  </section>
+  <section class="card" style="margin-bottom: 24px;">
+    <div class="card-head"><span>🏀 Filter</span></div>
+    <div class="filter-bar" id="filterBar">
+      <span class="filter-pill active" data-filter="all">All</span>
+      <span class="filter-pill" data-filter="stars">Stars (20+ PPG)</span>
+      <span class="filter-pill" data-filter="role">Role players (12-19 PPG)</span>
+      <span class="filter-pill" data-filter="bench">Bench (under 12)</span>
+    </div>
+  </section>
+  <section class="card">
+    <div class="card-head"><span>📊 Roster — click any player for full prop matrix</span><span class="muted" id="rosterMeta">--</span></div>
+    <div id="rosterList"><p class="muted" style="padding:14px;">Loading…</p></div>
+  </section>
+</main>
+
+<script src="js/nav_badge.js"></script>
+<script>
+let allPlayers = [];
+let currentFilter = "all";
+const fmtAmer = (a) => a == null ? "—" : (a >= 0 ? "+" + a : String(a));
+
+function renderRoster() {
+  let filtered = allPlayers;
+  if (currentFilter === "stars") filtered = filtered.filter(p => (p.stats.pts_per_game || 0) >= 20);
+  else if (currentFilter === "role") filtered = filtered.filter(p => {
+    const pts = p.stats.pts_per_game || 0;
+    return pts >= 12 && pts < 20;
+  });
+  else if (currentFilter === "bench") filtered = filtered.filter(p => (p.stats.pts_per_game || 0) < 12);
+
+  document.getElementById("rosterMeta").textContent = `${filtered.length} players shown`;
+  if (!filtered.length) {
+    document.getElementById("rosterList").innerHTML = `<p class="muted" style="padding:14px;">No players match.</p>`;
+    return;
+  }
+  document.getElementById("rosterList").innerHTML = filtered.slice(0, 200).map((p, i) => {
+    const id = `proj_${i}`;
+    const s = p.stats;
+    return `<div class="player-card" onclick="this.classList.toggle('expanded'); document.getElementById('${id}').style.display = this.classList.contains('expanded') ? 'block' : 'none';">
+      <div style="display:flex; justify-content:space-between; align-items:center;">
+        <div>
+          <span style="font-size:14px; font-weight:700; margin-right:8px;">${p.name}</span>
+          <span class="muted" style="font-size:11px;">${p.position || ''}</span>
+          ${s.pts_per_game >= 25 ? '<span class="real-badge" style="margin-left:6px;">SUPERSTAR</span>' : s.pts_per_game >= 20 ? '<span class="real-badge" style="margin-left:6px;">STAR</span>' : ''}
+        </div>
+        <div>
+          <span style="font-size:11px; color:#888;">${p.team_abbr} · ${p.n_games} game logs</span>
+          <span style="margin-left:8px; font-family:'JetBrains Mono', monospace; font-size:14px; font-weight:700; color:#c43e3e;">${s.pts_per_game} PPG</span>
+        </div>
+      </div>
+      <div class="stat-block">
+        <div><span class="muted" style="font-size:10px;">MIN:</span> <strong>${s.min_per_game}</strong></div>
+        <div><span class="muted" style="font-size:10px;">PTS:</span> <strong>${s.pts_per_game}</strong></div>
+        <div><span class="muted" style="font-size:10px;">REB:</span> <strong>${s.reb_per_game}</strong></div>
+        <div><span class="muted" style="font-size:10px;">AST:</span> <strong>${s.ast_per_game}</strong></div>
+        <div><span class="muted" style="font-size:10px;">3PM:</span> <strong>${s.threes_per_game}</strong></div>
+        <div><span class="muted" style="font-size:10px;">FG%:</span> <strong>${s.fg_pct}</strong></div>
+      </div>
+      <div id="${id}" style="display:none; margin-top:12px;">
+        <div style="font-size:11px; text-transform:uppercase; color:#c43e3e; margin-bottom:8px;">Prop Projections (${p.props.length} markets, real Poisson from last ${p.n_games} games)</div>
+        <div class="prop-row head"><span>Market</span><span>Line</span><span>Model μ</span><span>P(over)</span><span>Fair Over</span><span>Fair Under</span></div>
+        ${(p.props || []).map(prop => `<div class="prop-row">
+          <span>${prop.market}</span>
+          <span>${prop.line}</span>
+          <span class="muted">${prop.model_mean}</span>
+          <span style="color:${prop.p_over >= 0.6 ? '#58c878' : prop.p_over <= 0.4 ? '#e35a5a' : ''}">${(prop.p_over * 100).toFixed(1)}%</span>
+          <span>${fmtAmer(prop.fair_over_american)}</span>
+          <span>${fmtAmer(prop.fair_under_american)}</span>
+        </div>`).join("")}
+      </div>
+    </div>`;
+  }).join("");
+}
+
+fetch("data/real_player_props_nba.json?t=" + Date.now(), { cache: "no-cache" })
+  .then(r => r.json())
+  .then(d => {
+    allPlayers = d.players || [];
+    document.getElementById("status").textContent = `${d.n_players} NBA players · ${d.n_props} prop projections · refresh: ${(d.generated_at || '').replace('T',' ')}`;
+    document.getElementById("m_players").textContent = d.n_players || 0;
+    document.getElementById("m_props").textContent = d.n_props || 0;
+    if (allPlayers.length) {
+      const avg = (allPlayers.reduce((s, p) => s + p.n_games, 0) / allPlayers.length).toFixed(1);
+      document.getElementById("m_games").textContent = avg;
+      document.getElementById("m_topscorer").textContent = `${allPlayers[0].name.split(' ').pop()} ${allPlayers[0].stats.pts_per_game}`;
+    }
+    renderRoster();
+  })
+  .catch(err => {
+    document.getElementById("rosterList").innerHTML = `<p class="muted" style="padding:14px;">Could not load NBA player props (${err.message}).</p>`;
+  });
+
+document.getElementById("filterBar").addEventListener("click", e => {
+  const t = e.target.closest(".filter-pill");
+  if (!t) return;
+  currentFilter = t.dataset.filter;
+  document.querySelectorAll("#filterBar .filter-pill").forEach(p => p.classList.toggle("active", p.dataset.filter === currentFilter));
+  renderRoster();
+});
+</script>
+</body>
+</html>

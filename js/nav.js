@@ -30,9 +30,9 @@
     { href: "tennis.html", label: "🎾 Tennis" },
   ];
   const PLAYERS = [
-    { href: "nba-players-real.html",  label: "NBA Players" },
-    { href: "wnba-players-real.html", label: "WNBA Players" },
-    { href: "nhl-players-real.html",  label: "NHL Players" },
+    { href: "nba-players.html",  label: "NBA Players" },
+    { href: "wnba-players.html", label: "WNBA Players" },
+    { href: "nhl-players.html",  label: "NHL Players" },
     { href: "lol-players.html",       label: "LoL Players" },
     { href: "cs-players.html",        label: "CS Players" },
     { href: "kbo-players.html",       label: "KBO Players" },
