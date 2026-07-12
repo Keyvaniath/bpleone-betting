@@ -1,45 +1,45 @@
 # Tonight's Slate Brief — 2026-07-12
 
-## Slate Quality: 55/100 (MEDIUM)
-_0% lineups confirmed · 14 rookie SPs_
+## Slate Quality: 61/100 (MEDIUM)
+_16% lineups confirmed · 14 rookie SPs_
 **Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
 - **15 games** scheduled
 - **25 best bets** scored: 0 DK · 0 PP · 12 NRFI · 0 SGP
 - **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$40.66
-- **MC simulation:** EV +$105.67, 80% P(profit), p05 $-113.04 / p95 $302.79
+- **MC simulation:** EV +$115.71, 82% P(profit), p05 $-100.85 / p95 $324.84
 
 ## Top 5 Best Bets
 1. **KCR @ BAL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +29.7%)
    - P(YRFI) 75.7% vs baseline 46.0%
 2. **OAK @ CHW YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +25.7%)
    - P(YRFI) 71.7% vs baseline 46.0%
-3. **TOR @ SDP YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +20.9%)
+3. **HOU @ TEX YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +25.1%)
+   - P(YRFI) 71.1% vs baseline 46.0%
+4. **TOR @ SDP YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +20.9%)
    - P(YRFI) 66.9% vs baseline 46.0%
-4. **NYY @ WSN YRFI (1st-inning OVER 0.5)**  (79/100 ****, edge +19.3%)
+5. **NYY @ WSN YRFI (1st-inning OVER 0.5)**  (79/100 ****, edge +19.3%)
    - P(YRFI) 65.3% vs baseline 46.0%
-5. **MIL @ PIT YRFI (1st-inning OVER 0.5)**  (78/100 ****, edge +18.6%)
-   - P(YRFI) 64.5% vs baseline 46.0%
 
 ## ⚠️ Trap Warnings — 12 flagged
 - **KCR @ BAL YRFI (1st-inning OVER 0.5)** (low):
    - Edge +29.7% looks big but only 0 settled props on this player — model unproven
 - **OAK @ CHW YRFI (1st-inning OVER 0.5)** (low):
    - Edge +25.7% looks big but only 0 settled props on this player — model unproven
+- **HOU @ TEX YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +25.1% looks big but only 0 settled props on this player — model unproven
 - **TOR @ SDP YRFI (1st-inning OVER 0.5)** (low):
    - Edge +20.9% looks big but only 0 settled props on this player — model unproven
 - **NYY @ WSN YRFI (1st-inning OVER 0.5)** (low):
    - Edge +19.3% looks big but only 0 settled props on this player — model unproven
-- **MIL @ PIT YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +18.6% looks big but only 0 settled props on this player — model unproven
 
 ## Bullpens GASSED tonight
-Athletics, Pittsburgh Pirates, St. Louis Cardinals, Tampa Bay Rays, Minnesota Twins, Atlanta Braves, Chicago White Sox, Milwaukee Brewers
+Athletics, Pittsburgh Pirates, San Diego Padres, St. Louis Cardinals, Tampa Bay Rays, Toronto Blue Jays, Minnesota Twins, Atlanta Braves
 _Lean late-inning OVER on these games; fade their save situations._
 
 ## NRFI/YRFI strong leans
-- **YRFI** (1st-inning OVER): KCR @ BAL, OAK @ CHW, TOR @ SDP, NYY @ WSN, MIL @ PIT
+- **YRFI** (1st-inning OVER): KCR @ BAL, OAK @ CHW, HOU @ TEX, TOR @ SDP, NYY @ WSN
 
 ## Golf -- Genesis Scottish Open
 - **Leader:** Michael Thorbjornsen (-11) at #1
@@ -57,10 +57,6 @@ _Lean late-inning OVER on these games; fade their save situations._
 - Winnipeg Jets @ Edmonton Oilers (0-0-0 vs 0-0-0)  | P(home) 52.9% fair -112 | Scheduled
 - Chicago Blackhawks @ Minnesota Wild (0-0-0 vs 0-0-0)  | P(home) 52.9% fair -112 | Scheduled
 
-## LoL Esports -- 0 live, 1 upcoming
-- [MSI] Hanwha Life Esports vs BILIBILI GAMING BO5 | P(A) 43.2% fair +131/-131
-- **LoL POT:** BILIBILI GAMING ML vs Hanwha Life Esports (MSI, BO5) (HIGH)
-
 ## Player Play of the Day -- across all sports (3604 candidates scanned)
 - **[LOL]** Inspired UNDER 3.5 Kills | model 61.7% fair -161 (ELITE)
 - **[LOL]** ShowMaker OVER 3.5 Kills | model 62.5% fair -167 (ELITE)
@@ -69,6 +65,6 @@ _Lean late-inning OVER on these games; fade their save situations._
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | model 61.0% fair -157 (ELITE)
 
 ## Self-learning calibration (esports + KBO)
-- **LOL:** 31 settled | brier 0.2658 | ECE 0.1916
-   - Model over-confident; subtract 17.2pp at next inference
+- **LOL:** 32 settled | brier 0.2633 | ECE 0.1722
+   - Model over-confident; subtract 15.4pp at next inference
 - **KBO:** 18 settled | brier 0.2959 | ECE 0.2685

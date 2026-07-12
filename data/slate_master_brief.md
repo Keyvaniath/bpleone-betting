@@ -1,13 +1,13 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-07-12T05:28:13 UTC_
+_Generated 2026-07-12T14:20:59 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -35
+- **Score:** -34
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
 - **Total STRONG:** 11
-- **Total FADES:** 79
+- **Total FADES:** 78
 
 ## Lock of the Night
 - **Subject:** Seth Lugo
@@ -37,13 +37,13 @@ _Generated 2026-07-12T05:28:13 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **NHL** / samsonov ilya (GOALIE_FADE)
+- **NHL** / thatcher demko (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
 - **NHL** / logan thompson_2 (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / thatcher demko (GOALIE_FADE)
+- **NHL** / filip gustavsson (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / adin hill (GOALIE_FADE)
+- **NHL** / stuart skinner (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / anthony stolarz (GOALIE_FADE)
+- **NHL** / kevin lankinen (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO

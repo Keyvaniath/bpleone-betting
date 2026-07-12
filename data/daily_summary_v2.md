@@ -1,13 +1,13 @@
 # EdgeStat Daily Summary — 2026-07-12
 
-## 🏥 Model Health: 52.8/100 [DEGRADED]
-- Several components weak - review red items
+## 🏥 Model Health: 68.5/100 [OK]
+- Operational but room to improve - check yellow components
   - 🟢 Calibration Freshness: 99.9/100
-  - 🔴 Hit Rate Trend: 0/100
-  - 🔴 Brier Trend: 0/100
+  - 🔴 Hit Rate Trend: 22.5/100
+  - 🔴 Brier Trend: 45.8/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 95.5/100
-  - 🔴 Edge Count: 37.1/100
+  - 🔴 Edge Count: 57.1/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.583)
@@ -17,16 +17,16 @@
 ## 🎯 Top 5 Best Bets
 1. **KCR @ BAL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 2. **OAK @ CHW YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-3. **TOR @ SDP YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-4. **NYY @ WSN YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
-5. **MIL @ PIT YRFI (1st-inning OVER 0.5)** (78/100 ★★★★)
+3. **HOU @ TEX YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+4. **TOR @ SDP YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+5. **NYY @ WSN YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
+- [STRONG] **[MLB]** HOU @ TEX TEX_ML -- 73% / +25.2% (score 2.5)
 - [STRONG] **[MLB]** CHC @ CIN CHC_ML -- 69% / +23.4% (score 2.5)
-- [STRONG] **[MLB]** TOR @ SDP TOR_ML -- 68% / +21.3% (score 2.5)
 
 ## 📡 Sharp Action (Line Movement)
-- [MODERATE] **LAA @ MIN** over_8.5: 51.22% → 54.55% (+3.3pp)
+- [ELITE] **HOU @ TEX** ml_home: 45.25% → 57.98% (+12.7pp)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-58** (84.1% hit rate)
@@ -65,7 +65,8 @@
 
 ## ⚠️ Anomaly Detector (49)
 - STEAM_MOVE: **44**
-- COMPOUND_BULLPEN: **5**
+- COMPOUND_BULLPEN: **4**
+- PEN_MISMATCH: **1**
   - GS @ CON (WNBA): TOTAL steam since open: ML +2.2pp toward CON; total -3 (UNDER) (3 snapshots)
   - MIL @ STL (MLB): ML/TOTAL steam since open: ML +14.4pp toward STL; total +1 (OVER) (7 snapshots)
   - TOR @ SEA (MLB): ML/TOTAL steam since open: ML +13.5pp toward SEA; total +0.5 (OVER) (7 snapshots)
@@ -74,10 +75,10 @@
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$3.1**
+- Expected EV: **$6.24**
   - #1 [NRFI] $50 on KCR @ BAL YRFI (1st-inning OVER 0.5) (P=76%)
   - #2 [NRFI] $50 on OAK @ CHW YRFI (1st-inning OVER 0.5) (P=72%)
-  - #3 [NRFI] $50 on TOR @ SDP YRFI (1st-inning OVER 0.5) (P=67%)
+  - #3 [NRFI] $50 on HOU @ TEX YRFI (1st-inning OVER 0.5) (P=71%)
   - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
@@ -88,12 +89,12 @@
   - [MED] Portland Timbers @ Seattle Sounders FC : 2 signals (PREGAME, ATS)
   - [MED] Coventry City @ Arsenal : 2 signals (PREGAME, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (12)
+## ⚾ Top MLB Pitcher K Plays (13)
 - **Kevin Gausman** OVER 4.5 K (75%) fair -303
+- **MacKenzie Gore** OVER 4.5 K (73%) fair -271
 - **Paul Skenes** OVER 5.5 K (73%) fair -270
 - **JR Ritchie** OVER 4.5 K (71%) fair -251
 - **Tarik Skubal** OVER 5.5 K (69%) fair -226
-- **Tyler Phillips** OVER 5.5 K (68%) fair -216
 
 ## 🏀 NBA Player Heat (18 HOT / 23 COLD)
   - 🔥 **Jeremiah Fears** (NO): L5 31.8/5.8/6.0 vs season 16.9/3.2/4.0 [PTS +14.9, REB +2.6, AST +2.0]
@@ -122,7 +123,7 @@
   - ❄️ **Marcel Siem** (Germany): Sunday +5.0 vs tourney avg
   - ❄️ **Patrick Cantlay** (USA): Sunday +4.5 vs tourney avg
 
-## 🔥 MLB Batter Heat (40 HOT / 39 COLD)
+## 🔥 MLB Batter Heat (40 HOT / 40 COLD)
   - 🔥 **Luisangel Acuña** (CWS): L14 .400 / season .242 (+158pts)
   - 🔥 **Derek Hill** (PHI): L14 .414 / season .266 (+148pts)
   - 🔥 **Garrett Mitchell** (MIL): L14 .404 / season .274 (+130pts)
