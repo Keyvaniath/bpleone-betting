@@ -296,6 +296,35 @@ fetch('data/alpha_pick_record.json?t=' + Date.now()).then(function (r) { return 
 }).catch(function () {});
 </script>
 
+<!-- SHARE / daily tweet: one-tap "Post to X" (opens the composer pre-filled) -->
+<section id="tweetCard" style="display:none; margin:0 0 22px; border:1px solid rgba(29,155,240,.28); border-radius:12px; background:linear-gradient(180deg,rgba(29,155,240,.06),rgba(255,255,255,.01)); overflow:hidden;">
+  <div style="padding:13px 18px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
+    <span style="font-size:14px;font-weight:600;">📣 Share today's pick</span>
+    <span id="twChars" style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted,#888);"></span>
+  </div>
+  <pre id="twText" style="margin:0;padding:0 18px 12px;white-space:pre-wrap;font-family:inherit;font-size:13px;line-height:1.55;color:var(--text,#dfe6f2);"></pre>
+  <div style="display:flex;gap:10px;padding:0 18px 16px;flex-wrap:wrap;">
+    <a id="twPost" href="#" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;background:#1d9bf0;color:#fff;font-weight:600;font-size:13px;padding:9px 16px;border-radius:999px;text-decoration:none;">𝕏&nbsp; Post to X</a>
+    <button id="twCopy" style="background:rgba(255,255,255,.06);color:var(--text,#dfe6f2);border:1px solid rgba(255,255,255,.14);font-size:13px;padding:9px 16px;border-radius:999px;cursor:pointer;">Copy text</button>
+  </div>
+</section>
+<script>
+fetch('data/alpha_tweet.json?t=' + Date.now()).then(function (r) { return r.json(); }).then(function (d) {
+  if (!d || !d.tweet) return;
+  document.getElementById('twText').textContent = d.tweet;
+  document.getElementById('twChars').textContent = d.char_count + '/280 · ' + (d.date || '');
+  document.getElementById('twPost').href = d.intent_url || ('https://twitter.com/intent/tweet?text=' + encodeURIComponent(d.tweet));
+  var btn = document.getElementById('twCopy');
+  btn.addEventListener('click', function () {
+    navigator.clipboard.writeText(d.tweet).then(function () {
+      var o = btn.textContent; btn.textContent = 'Copied ✓';
+      setTimeout(function () { btn.textContent = o; }, 1500);
+    }).catch(function () {});
+  });
+  document.getElementById('tweetCard').style.display = 'block';
+}).catch(function () {});
+</script>
+
 <div class="alpha-hero" id="alpha-hero">
   <div class="tag-row">
     <div class="tag tag-alpha">★ ALPHA PICK</div>

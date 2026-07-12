@@ -588,6 +588,9 @@ jobs:
       - name: Alpha "One Pick" record (single best MLB prop/day, backfilled from ledger)
         working-directory: python
         run: python alpha_pick_record.py || true
+      - name: Daily Alpha tweet (compose ready-to-post text from the live record)
+        working-directory: python
+        run: python alpha_tweet.py || true
       - name: World Cup model report card (accuracy + calibration from settled picks)
         working-directory: python
         run: python worldcup_accuracy.py || true
