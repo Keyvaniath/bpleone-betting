@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Everything on EdgeStat — every page, grouped and searchable, with live badges for what's in season right now. Quantitative sports-betting analytics; informational only, 21+.">
+<link rel="canonical" href="https://betting.bpleone.com/directory.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EdgeStat">
+<meta property="og:title" content="Everything | EdgeStat">
+<meta property="og:url" content="https://betting.bpleone.com/directory.html">
+<title>Everything — Site Directory | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/nav.js"></script>
+<style>
+  .dir-head { display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:10px; }
+  .dir-search { width:100%; max-width:420px; padding:10px 14px; border-radius:9px; border:1px solid rgba(255,255,255,.14);
+                background:rgba(255,255,255,.03); color:var(--text,#e8edf4); font-size:14px; font-family:inherit; }
+  .dir-search:focus { outline:none; border-color:var(--accent,#d4a04a); }
+  .dir-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:14px; margin-top:18px; }
+  .dir-card { border:1px solid rgba(255,255,255,.08); border-radius:11px; background:rgba(255,255,255,.015); padding:14px 16px; }
+  .dir-card h2 { margin:0 0 8px; font-size:12px; text-transform:uppercase; letter-spacing:.6px; color:var(--muted,#8a93a6); }
+  .dir-card a { display:flex; justify-content:space-between; align-items:center; gap:8px; padding:5px 8px; margin:0 -8px;
+                border-radius:6px; font-size:13px; color:var(--text-2,#b9c3d4); text-decoration:none; }
+  .dir-card a:hover { background:rgba(255,255,255,.05); color:var(--text,#e8edf4); }
+  .b-live { font-size:9.5px; font-weight:700; color:#5fe0a0; border:1px solid rgba(95,224,160,.4); border-radius:999px; padding:1px 7px; white-space:nowrap; }
+  .b-next { font-size:9.5px; color:var(--muted,#8a93a6); white-space:nowrap; }
+  .b-shim { font-size:9.5px; color:var(--muted,#666); white-space:nowrap; }
+  .dir-live-strip { display:flex; flex-wrap:wrap; gap:8px; margin:14px 0 4px; }
+  .dir-live-strip a { display:inline-flex; align-items:center; gap:6px; font-size:12.5px; padding:6px 12px; border-radius:999px;
+                      border:1px solid rgba(95,224,160,.35); background:rgba(95,224,160,.06); color:var(--text,#e8edf4); text-decoration:none; }
+  .dir-live-strip .dot { width:7px; height:7px; border-radius:50%; background:#5fe0a0; box-shadow:0 0 6px rgba(95,224,160,.8); }
+</style>
+</head>
+<body class="page-about">
+<header class="topbar">
+  <div class="brand">
+    <a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a>
+    <span class="tagline">by bpleone</span>
+  </div>
+  <nav class="mainnav"><!-- nav.js injects here --></nav>
+</header>
+
+<main class="container">
+  <section class="page-head">
+    <div class="dir-head">
+      <h1>Everything</h1>
+      <input id="dirSearch" class="dir-search" type="search" placeholder="Search all pages… (e.g. calibration, parlay, WNBA)" autocomplete="off">
+    </div>
+    <p style="max-width:720px;line-height:1.6;color:var(--text-2,#9fb0c8);font-size:13.5px;">
+      Every page on EdgeStat, grouped and searchable. <span class="b-live" style="vertical-align:1px;">LIVE</span> = that
+      sport has action on the board right now; <span class="b-next">next Sep 9</span> = off-season, next slate shown.
+    </p>
+    <div id="liveStrip" class="dir-live-strip"></div>
+  </section>
+
+  <div id="dirGrid" class="dir-grid"><p class="muted" style="padding:16px;">Loading directory…</p></div>
+  <p class="muted" id="dirMeta" style="font-family:'JetBrains Mono',monospace;font-size:11px;margin-top:16px;"></p>
+</main>
+
+<script>
+fetch("data/site_directory.json?t=" + Date.now()).then(function (r) { return r.json(); }).then(function (d) {
+  var sportsBy = {};
+  (d.sports || []).forEach(function (s) { sportsBy[s.key] = s; });
+
+  // Live strip: one-tap chips to everything with action right now.
+  var live = (d.sports || []).filter(function (s) { return s.live; });
+  document.getElementById("liveStrip").innerHTML = live.map(function (s) {
+    return '<a href="' + s.href + '"><span class="dot"></span>' + s.label +
+      (s.n_today ? ' <span style="color:var(--muted,#8a93a6);font-size:11px;">' + s.n_today + ' today</span>' : '') + '</a>';
+  }).join("");
+
+  function badge(p) {
+    if (p.shim) return '<span class="b-shim">→ redirect</span>';
+    var s = p.sport_key ? sportsBy[p.sport_key] : null;
+    if (!s) return "";
+    if (s.live) return '<span class="b-live">LIVE' + (s.n_today ? " · " + s.n_today : "") + '</span>';
+    if (s.next_date) return '<span class="b-next">next ' + s.next_date.slice(5).replace("-", "/") + '</span>';
+    return '<span class="b-next">' + (s.status || "no games today") + '</span>';
+  }
+
+  function render(filter) {
+    var q = (filter || "").toLowerCase().trim();
+    var html = (d.groups || []).map(function (g) {
+      var rows = g.pages.filter(function (p) {
+        return !q || (p.label + " " + p.href + " " + g.group).toLowerCase().indexOf(q) > -1;
+      });
+      if (!rows.length) return "";
+      return '<div class="dir-card"><h2>' + g.group + '</h2>' +
+        rows.map(function (p) {
+          return '<a href="' + p.href + '"><span>' + p.label + '</span>' + badge(p) + '</a>';
+        }).join("") + '</div>';
+    }).filter(Boolean).join("");
+    document.getElementById("dirGrid").innerHTML = html || '<p class="muted" style="padding:16px;">No pages match.</p>';
+  }
+  render("");
+  document.getElementById("dirSearch").addEventListener("input", function (e) { render(e.target.value); });
+  document.getElementById("dirMeta").textContent =
+    (d.n_pages || 0) + " pages · " + (d.n_live_sports || 0) + " live sports · updated " + (d.generated_at || "").replace("T", " ").slice(0, 16);
+}).catch(function () {
+  document.getElementById("dirGrid").innerHTML = '<p class="muted" style="padding:16px;">Directory unavailable — pipeline may not have run yet.</p>';
+});
+</script>
+
+<footer class="site-footer"><div class="foot-bot"><span>© 2026 bpleone.com</span><span>Built in SoCal ☀️</span></div></footer>
+<script src="js/nav_badge.js"></script>
+</body>
+</html>

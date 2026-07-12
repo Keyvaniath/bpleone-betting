@@ -54,7 +54,25 @@
       <div style="font-size:14px;font-weight:700;color:var(--text,#e8edf4);">📐 How it works</div>
       <div style="font-size:11.5px;color:var(--text-2,#9fb0c8);margin-top:3px;">Models, calibration, honesty</div></a>
   </div>
+  <!-- LIVE NOW strip: one-tap chips to every sport with action on the board right
+       now (fed by site_directory.json), plus the full directory. -->
+  <div id="liveNowStrip" style="display:none;flex-wrap:wrap;gap:8px;margin-top:10px;align-items:center;"></div>
 </section>
+<script>
+fetch('data/site_directory.json?t=' + Date.now()).then(function(r){return r.json();}).then(function(d){
+  var live = (d.sports || []).filter(function(s){ return s.live; });
+  if (!live.length) return;
+  var el = document.getElementById('liveNowStrip');
+  el.innerHTML = '<span style="font-size:10px;text-transform:uppercase;letter-spacing:.6px;color:var(--muted,#8a93a6);">Live now</span>' +
+    live.map(function(s){
+      return '<a href="' + s.href + '" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;padding:5px 11px;border-radius:999px;border:1px solid rgba(95,224,160,.35);background:rgba(95,224,160,.06);color:var(--text,#e8edf4);text-decoration:none;">' +
+        '<span style="width:6px;height:6px;border-radius:50%;background:#5fe0a0;box-shadow:0 0 5px rgba(95,224,160,.8);"></span>' + s.label +
+        (s.n_today ? ' <span style="color:var(--muted,#8a93a6);font-size:10.5px;">' + s.n_today + '</span>' : '') + '</a>';
+    }).join('') +
+    '<a href="directory.html" style="font-size:11.5px;color:var(--muted,#8a93a6);text-decoration:underline;text-underline-offset:3px;">everything →</a>';
+  el.style.display = 'flex';
+}).catch(function(){});
+</script>
 <script>
 /* HONESTY BANNER: if data-health says the local MLB slate is missing games vs the
    upstream schedule, say so instead of silently rendering a partial board. */

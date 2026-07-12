@@ -47,6 +47,7 @@
     { href: "picks.html",       label: "🎯 Today's Picks" },
     { href: "play-of-day.html", label: "★ Play of Day" },
     { href: "tonight.html",     label: "🌙 Tonight" },
+    { href: "directory.html",   label: "🗺 Everything" },
   ];
   // PICKS -- the actionable daily output. SLIMMED 2026-07-12 (site audit: 7
   // near-synonymous boards were listed with no guidance): the nav keeps ONE
@@ -216,6 +217,33 @@
         document.querySelectorAll(".dd-menu").forEach(m => m.style.display = "none");
       }
     });
+
+    // LIVE badges on the Sports/Players menus + hub links anywhere in the nav:
+    // a green dot = that sport has action on the board right now; off-season
+    // hubs get a muted "next <date>" hint so no link is a dead end. Data comes
+    // from data/site_directory.json (normalized server-side per feed).
+    fetch("data/site_directory.json?t=" + Date.now())
+      .then(r => r.json())
+      .then(d => {
+        (d.sports || []).forEach(s => {
+          document.querySelectorAll(`.dd-menu a[href="${s.href}"]`).forEach(a => {
+            if (a.querySelector(".nav-live")) return;
+            const tag = document.createElement("span");
+            tag.className = "nav-live";
+            if (s.live) {
+              tag.textContent = "●";
+              tag.title = s.n_today ? `${s.n_today} on the board today` : "live now";
+              tag.style.cssText = "color:#5fe0a0;font-size:8px;margin-left:6px;vertical-align:1px;";
+            } else if (s.next_date) {
+              tag.textContent = "next " + s.next_date.slice(5).replace("-", "/");
+              tag.style.cssText = "color:#6b7280;font-size:9px;margin-left:6px;";
+            } else {
+              return;
+            }
+            a.appendChild(tag);
+          });
+        });
+      }).catch(() => {});
   }
 
   // Site-wide customer-auth loader: pulls in the (free, passwordless) account

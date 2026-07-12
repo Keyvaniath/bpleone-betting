@@ -234,6 +234,10 @@ jobs:
         working-directory: python
         run: python model_health.py || true
 
+      - name: Site directory live-status refresh
+        working-directory: python
+        run: python site_directory.py || true
+
       # if: always() -- commit refreshed data even if an earlier best-effort
       # step failed or was bounded out (only the overall job timeout can skip it).
       - name: Commit if changed

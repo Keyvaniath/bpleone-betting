@@ -1378,6 +1378,10 @@ jobs:
         working-directory: python
         run: python notify.py
 
+      - name: Site directory + live-status map (nav badges + Everything page)
+        working-directory: python
+        run: python site_directory.py || true
+
       - name: Commit + push if data changed
         # RESILIENCE (added 2026-06-02): run even when an earlier step failed, so a
         # single bad module can never again freeze the slate. On 2026-06-01 a
