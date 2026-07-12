@@ -41,7 +41,34 @@ bpleone-site/
 
 ## Current deployment state (LIVE)
 
-- **2026-07-08 — "The One Pick" alpha single-pick tracker (newest, read first):**
+- **2026-07-11/12 — THE DUPLICATE-WAGER CORRECTION (newest, read first — the headline
+  numbers DROPPED on purpose):** a 5-dimension full-site audit found the flagship
+  proof stack resting on a physically impossible UFC record (fight_r1_finish_yes:
+  60.4% round-1 finishes graded against a ~23% price). Investigation: grading was
+  CORRECT; the corruption was DUPLICATION — pick_id includes the snapshot date, so a
+  future event on a board for days re-entered daily (182 UFC "picks" = 26 fights; one
+  fight counted 13x), plus twin boards (top_25_board + lock_of_day) double-recorded
+  the same wager. Ledger-wide: 1,509 duplicate picks (781 settled, +335u phantom).
+  FIX (all_picks_tracker.py, commit 226efceb4): `_collapse_duplicate_wagers()` voids
+  extras keyed by wager identity + byte-identical outcome (idempotent, every run) +
+  an ADD-GUARD (skip picks whose wager is already pending; event sports also skip
+  14-day-settled repeats) + `_reconcile_settled_voids` respects duplicate-voids.
+  CONSEQUENCE: settled 6,803→6,022; UFC family → 19-13/+52u; durable book, curated
+  ROI, family durability, money map, calibration ALL recompute lower on following
+  runs. **Do not "fix" the lower numbers back — they are the honest ones.** Never
+  hardcode pre-collapse figures (+550u durable, +65.1%, UFC +139.8%/+216u).
+  Also shipped from the audit: honest "today" slates (espn_generic + nba/nhl
+  pipelines only count games starting today ET — NFL was showing September Week 1 as
+  "today"), slate-incomplete banner (index+mlb read data_health's local-vs-upstream
+  gap), WWNBA typo, canonical track-record hero link, dead redirect anchors,
+  methodology mobile table. Remaining: nav IA consolidation + P2 polish (chips
+  task_4dd41347 / task_f2ad5edb). Audit also confirmed: 0 broken links across all
+  128 pages, ~130 JSON endpoints all valid, mobile/responsive strong.
+  Daily 9am-PT alpha tweet pipeline: alpha_tweet.py → data/alpha_tweet.json →
+  "Post to X" one-tap card on alpha-pick.html (+ scheduled task
+  daily-alpha-tweet-9am-pt). Posting is MANUAL by design.
+
+- **2026-07-08 — "The One Pick" alpha single-pick tracker:**
   Brandon wanted the single best Alpha pick per day tracked separately (the full board
   "feels like an ETF"). `alpha_pick_record.py` → `alpha_pick_record.json` → card on
   alpha-pick.html. Rule: the single highest model-EV **MLB player prop** each slate,
