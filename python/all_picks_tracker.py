@@ -2854,8 +2854,12 @@ def run() -> Dict[str, Any]:
             p["p_calibrated"] = cal
             n_calibrated += 1
 
-    # Aggregate stats (void is neither settled nor pending -- excluded from both)
-    settled = [p for p in history if p.get("settled")]
+    # Aggregate stats (void is neither settled nor pending -- excluded from both).
+    # NOTE the voided check: since the duplicate-wager collapse, a pick can be BOTH
+    # settled and voided (a dup copy of an already-counted wager) -- those must not
+    # count in the record, or the summary re-inflates by exactly the phantom units
+    # the collapse removed.
+    settled = [p for p in history if p.get("settled") and not p.get("voided")]
     pending = [p for p in history if not p.get("settled") and not p.get("voided")]
     n_void = sum(1 for p in history if p.get("voided"))
     wins = sum(1 for p in settled if p["result"] == "won")
@@ -3067,7 +3071,10 @@ def run() -> Dict[str, Any]:
     # error) and we're about to reset from scratch -- which wiped 6,500 settled picks once
     # (2026-06-29). Compare against an independent high-water sidecar that survives a
     # corrupted ledger, and refuse to overwrite the good files with a catastrophic shrink.
-    new_settled = sum(1 for p in history if p.get("settled"))
+    # Count only non-void settled (duplicate-collapsed copies are settled+voided
+    # and don't belong in the record; the 50% threshold absorbs the one-time step
+    # down from the collapse itself).
+    new_settled = sum(1 for p in history if p.get("settled") and not p.get("voided"))
     _hw_path = os.path.join(DATA_DIR, "ledger_highwater.json")
     try:
         _hw = int((json.load(open(_hw_path, encoding="utf-8")) or {}).get("max_settled", 0))
