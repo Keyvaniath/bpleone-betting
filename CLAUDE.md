@@ -53,10 +53,20 @@ bpleone-site/
   extras keyed by wager identity + byte-identical outcome (idempotent, every run) +
   an ADD-GUARD (skip picks whose wager is already pending; event sports also skip
   14-day-settled repeats) + `_reconcile_settled_voids` respects duplicate-voids.
-  CONSEQUENCE: settled 6,803→6,022; UFC family → 19-13/+52u; durable book, curated
-  ROI, family durability, money map, calibration ALL recompute lower on following
-  runs. **Do not "fix" the lower numbers back — they are the honest ones.** Never
-  hardcode pre-collapse figures (+550u durable, +65.1%, UFC +139.8%/+216u).
+  CONSEQUENCE (final post-correction state, verified on prod 2026-07-12): settled
+  6,803→6,049; curated book +300u/+30.3% → **+185u/+23.8%**; durable book
+  +550u/65.1% → **+147.6u/35.7% (CI floor 30.0)**; UFC family → **23-14/+67.7u**.
+  Still a real, defensible edge — just honest. **Do not "fix" the lower numbers
+  back — they are the correct ones.** Never hardcode pre-collapse figures
+  (+550u durable, +65.1%, UFC +139.8%/+216u, curated +300u/+30.3%).
+  FOLLOW-THROUGH (same day): a pick can now be BOTH settled and voided (dup copy),
+  so every consumer's record predicate must be `settled AND NOT voided`. A 6-agent
+  sweep audited all 30 ledger consumers: 17 had the stale filter (fixed in
+  4a6f2f679 — incl. prob_calibration's curation stats, recalibration's isotonic
+  fit, confluence double-agreement, d1_sync logging dups as W/L); 12 safe; 1 n/a.
+  Any NEW ledger consumer must use the canonical predicate. Also fixed: a dict
+  `team` field crashed the daily pipeline's debug print (slate_player_pot) —
+  display code must never abort the run.
   Also shipped from the audit: honest "today" slates (espn_generic + nba/nhl
   pipelines only count games starting today ET — NFL was showing September Week 1 as
   "today"), slate-incomplete banner (index+mlb read data_health's local-vs-upstream
