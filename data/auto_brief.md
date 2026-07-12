@@ -1,53 +1,45 @@
 # Tonight's Slate Brief — 2026-07-12
 
-## Slate Quality: 54/100 (LOW)
+## Slate Quality: 55/100 (MEDIUM)
 _0% lineups confirmed · 14 rookie SPs_
-**Recommendation:** Defensive sizing tonight; stick to highest-confidence plays.
+**Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
 - **15 games** scheduled
-- **18 best bets** scored: 0 DK · 0 PP · 5 NRFI · 0 SGP
-- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$29.8
-- **MC simulation:** EV +$41.11, 67% P(profit), p05 $-94.31 / p95 $172.5
+- **25 best bets** scored: 0 DK · 0 PP · 12 NRFI · 0 SGP
+- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$40.66
+- **MC simulation:** EV +$105.67, 80% P(profit), p05 $-113.04 / p95 $302.79
 
 ## Top 5 Best Bets
-1. **KCR @ BAL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +22.5%)
-   - P(YRFI) 68.5% vs baseline 46.0%
-2. **TOR @ SDP YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +21.5%)
-   - P(YRFI) 67.5% vs baseline 46.0%
-3. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
-   - Player prop quality score 1.1935
-   - Elite player
-4. **LOL ShowMaker OVER 3.5 Kills**  (78/100 ****, edge —)
-   - Player prop quality score 1.1892
-   - Elite player
-5. **LOL Peyz OVER 4.5 Kills**  (78/100 ****, edge —)
-   - Player prop quality score 1.184
-   - Elite player
+1. **KCR @ BAL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +29.7%)
+   - P(YRFI) 75.7% vs baseline 46.0%
+2. **OAK @ CHW YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +25.7%)
+   - P(YRFI) 71.7% vs baseline 46.0%
+3. **TOR @ SDP YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +20.9%)
+   - P(YRFI) 66.9% vs baseline 46.0%
+4. **NYY @ WSN YRFI (1st-inning OVER 0.5)**  (79/100 ****, edge +19.3%)
+   - P(YRFI) 65.3% vs baseline 46.0%
+5. **MIL @ PIT YRFI (1st-inning OVER 0.5)**  (78/100 ****, edge +18.6%)
+   - P(YRFI) 64.5% vs baseline 46.0%
 
-## ⚠️ Trap Warnings — 4 flagged
+## ⚠️ Trap Warnings — 12 flagged
 - **KCR @ BAL YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +22.5% looks big but only 0 settled props on this player — model unproven
+   - Edge +29.7% looks big but only 0 settled props on this player — model unproven
+- **OAK @ CHW YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +25.7% looks big but only 0 settled props on this player — model unproven
 - **TOR @ SDP YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +21.5% looks big but only 0 settled props on this player — model unproven
-- **ATL @ STL YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +13.2% looks big but only 0 settled props on this player — model unproven
-- **HOU @ TEX YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +8.9% looks big but only 0 settled props on this player — model unproven
-
-## Weather leans
-- **UNDER lean** (wind in + cold): COL @ SFG
-
-## Hot streaks
-**Batters heating up:** Shohei Ohtani (heat +1.75), Nolan Arenado (heat +1.59), Max Kepler (heat +1.03)
-**Pitchers on a run:** Brandon Pfaadt (heat +3.88), Trey Yesavage (heat +0.50)
+   - Edge +20.9% looks big but only 0 settled props on this player — model unproven
+- **NYY @ WSN YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +19.3% looks big but only 0 settled props on this player — model unproven
+- **MIL @ PIT YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +18.6% looks big but only 0 settled props on this player — model unproven
 
 ## Bullpens GASSED tonight
-Athletics, Pittsburgh Pirates, San Diego Padres, San Francisco Giants, St. Louis Cardinals, Tampa Bay Rays, Minnesota Twins, Atlanta Braves
+Athletics, Pittsburgh Pirates, St. Louis Cardinals, Tampa Bay Rays, Minnesota Twins, Atlanta Braves, Chicago White Sox, Milwaukee Brewers
 _Lean late-inning OVER on these games; fade their save situations._
 
 ## NRFI/YRFI strong leans
-- **YRFI** (1st-inning OVER): KCR @ BAL, TOR @ SDP, ATL @ STL
+- **YRFI** (1st-inning OVER): KCR @ BAL, OAK @ CHW, TOR @ SDP, NYY @ WSN, MIL @ PIT
 
 ## Golf -- Genesis Scottish Open
 - **Leader:** Michael Thorbjornsen (-11) at #1

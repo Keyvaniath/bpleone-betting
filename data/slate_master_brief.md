@@ -1,13 +1,20 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-07-12T01:44:50 UTC_
+_Generated 2026-07-12T05:28:13 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -33
+- **Score:** -35
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
 - **Total STRONG:** 11
-- **Total FADES:** 77
+- **Total FADES:** 79
+
+## Lock of the Night
+- **Subject:** Seth Lugo
+- **Source:** ELITE_BOARD
+- **Sport:** MLB
+- **Score:** 15.0
+- **Details:** KCR @ BAL
 
 ## Top 5 Curated Picks
 1. **GOLF / Matt Fitzpatrick** (GOLF_PLAYER, score=156.29)
@@ -24,19 +31,19 @@ _Generated 2026-07-12T01:44:50 UTC_
   - Wyndham Clark top 10 finish
 
 ## Slate ROI Projection
-- **Picks:** 0
-- **Avg edge:** 0%
+- **Picks:** 2
+- **Avg edge:** -0.91%
 - **Expected ROI (1/4 Kelly):** 0.0%
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **MLB** / Peter Lambert (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **MLB** / Kyle Bradish (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
 - **NHL** / samsonov ilya (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / joseph woll (GOALIE_FADE)
+- **NHL** / logan thompson_2 (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / jake oettinger (GOALIE_FADE)
+- **NHL** / thatcher demko (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / adin hill (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / anthony stolarz (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO

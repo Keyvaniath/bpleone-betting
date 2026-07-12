@@ -1,37 +1,37 @@
 # EdgeStat Daily Summary — 2026-07-12
 
-## 🏥 Model Health: 62.0/100 [OK]
-- Operational but room to improve - check yellow components
+## 🏥 Model Health: 52.8/100 [DEGRADED]
+- Several components weak - review red items
   - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 0/100
-  - 🔴 Brier Trend: 43.4/100
+  - 🔴 Brier Trend: 0/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 90.9/100
-  - 🔴 Edge Count: 51.4/100
+  - 🟢 Data Health: 95.5/100
+  - 🔴 Edge Count: 37.1/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.582)
-- **Total games on board:** 127
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.583)
+- **Total games on board:** 111
 - **Strong home favorites:** 2 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
 1. **KCR @ BAL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-2. **TOR @ SDP YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-3. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
-4. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
-5. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
+2. **OAK @ CHW YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+3. **TOR @ SDP YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+4. **NYY @ WSN YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
+5. **MIL @ PIT YRFI (1st-inning OVER 0.5)** (78/100 ★★★★)
+
+## 🐋 Whale Picks (Max Confluence)
+- [STRONG] **[MLB]** CHC @ CIN CHC_ML -- 69% / +23.4% (score 2.5)
+- [STRONG] **[MLB]** TOR @ SDP TOR_ML -- 68% / +21.3% (score 2.5)
 
 ## 📡 Sharp Action (Line Movement)
-- [MODERATE] **CHC @ CIN** over_9.0: 50.0% → 53.49% (+3.5pp)
-- [MODERATE] **TOR @ SDP** under_8.5: 51.22% → 54.55% (+3.3pp)
-
-## 📉 Strong UNDER Signals
-- [STRONG 5.0] **SEA @ TBR** model 7.24 vs market 8.0
+- [MODERATE] **LAA @ MIN** over_8.5: 51.22% → 54.55% (+3.3pp)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-58** (84.1% hit rate)
 - Net units: **+10.40u** | ROI: **+46.0%**
-- Last 7d: 23-13 (63.9%) | net +0.24u
+- Last 7d: 17-9 (65.4%) | net +0.22u
 
 **Today's 5 Locks:**
 - [KBO] **Choi Jeong** one_plus_tb · p=73% edge=+39.8% qK=0.062u
@@ -64,8 +64,8 @@
 - Heating-up players: **20** | Cooling-down: 20
 
 ## ⚠️ Anomaly Detector (49)
-- STEAM_MOVE: **47**
-- COMPOUND_BULLPEN: **2**
+- STEAM_MOVE: **44**
+- COMPOUND_BULLPEN: **5**
   - GS @ CON (WNBA): TOTAL steam since open: ML +2.2pp toward CON; total -3 (UNDER) (3 snapshots)
   - MIL @ STL (MLB): ML/TOTAL steam since open: ML +14.4pp toward STL; total +1 (OVER) (7 snapshots)
   - TOR @ SEA (MLB): ML/TOTAL steam since open: ML +13.5pp toward SEA; total +0.5 (OVER) (7 snapshots)
@@ -74,16 +74,16 @@
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$-9.58**
-  - #1 [NRFI] $50 on KCR @ BAL YRFI (1st-inning OVER 0.5) (P=69%)
-  - #2 [NRFI] $50 on TOR @ SDP YRFI (1st-inning OVER 0.5) (P=67%)
-  - #3 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
-  - #4 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
-  - #5 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
+- Expected EV: **$3.1**
+  - #1 [NRFI] $50 on KCR @ BAL YRFI (1st-inning OVER 0.5) (P=76%)
+  - #2 [NRFI] $50 on OAK @ CHW YRFI (1st-inning OVER 0.5) (P=72%)
+  - #3 [NRFI] $50 on TOR @ SDP YRFI (1st-inning OVER 0.5) (P=67%)
+  - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
+  - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
 ## 🎯 Convergence Picks (4 stacked games)
 - ELITE: **0** · HIGH: 1 · MED: 3
-  - [HIGH] Portland Fire @ Atlanta Dream : 3 signals (ANOMALY, ATS, ATS)
+  - [HIGH] Phoenix Mercury @ Las Vegas Aces : 3 signals (HEAT_COLD, HEAT_COLD, ATS)
   - [MED] New York Knicks @ San Antonio Spurs : 2 signals (ATS, ATS)
   - [MED] Portland Timbers @ Seattle Sounders FC : 2 signals (PREGAME, ATS)
   - [MED] Coventry City @ Arsenal : 2 signals (PREGAME, ATS)
@@ -106,9 +106,9 @@
   - ❄️ **Nickeil Alexander-Walker** (ATL): L5 13.0 vs season 21.3 [PTS -8.3] -- FADE OVER props
 
 ## 🥊 UFC Fight Matchups (UFC 329: McGregor vs. Holloway 2)
-  - [FAVORITE] **Gable Steveson** (3-0-0) vs Elisha Ellison -- fair -193
+  - [FAVORITE] **Gable Steveson** (4-0-0) vs Elisha Ellison -- fair -237
   - [FAVORITE] **Farid Basharat** (16-0-0) vs John Garza -- fair -191
-  - [LEAN] **Luke Riley** (13-0-0) vs Kai Kamaka III -- fair -175
+  - [LEAN] **Luke Riley** (14-0-0) vs Kai Kamaka III -- fair -185
   - [LEAN] **Damian Pinas** (10-1-0) vs Cesar Almeida -- fair -164
   - [LEAN] **Ryan Gandra** (10-1-0) vs Zach Reese -- fair -151
 
@@ -122,17 +122,17 @@
   - ❄️ **Marcel Siem** (Germany): Sunday +5.0 vs tourney avg
   - ❄️ **Patrick Cantlay** (USA): Sunday +4.5 vs tourney avg
 
-## 🔥 MLB Batter Heat (39 HOT / 38 COLD)
+## 🔥 MLB Batter Heat (40 HOT / 39 COLD)
   - 🔥 **Luisangel Acuña** (CWS): L14 .400 / season .242 (+158pts)
   - 🔥 **Derek Hill** (PHI): L14 .414 / season .266 (+148pts)
   - 🔥 **Garrett Mitchell** (MIL): L14 .404 / season .274 (+130pts)
+  - 🔥 **Miguel Rojas** (LAD): L14 .407 / season .290 (+117pts)
   - 🔥 **Justin Crawford** (PHI): L14 .378 / season .263 (+115pts)
-  - 🔥 **James Wood** (WSH): L14 .385 / season .278 (+107pts)
   - ❄️ **Jorge Mateo** (ATL): L14 .074 / season .238 (-164pts) -- FADE props
-  - ❄️ **Corbin Carroll** (AZ): L14 .106 / season .257 (-151pts) -- FADE props
+  - ❄️ **Corbin Carroll** (AZ): L14 .100 / season .255 (-155pts) -- FADE props
   - ❄️ **Eric Haase** (SF): L14 .029 / season .162 (-133pts) -- FADE props
   - ❄️ **William Contreras** (MIL): L14 .151 / season .282 (-131pts) -- FADE props
-  - ❄️ **Henry Bolte** (ATH): L14 .137 / season .266 (-129pts) -- FADE props
+  - ❄️ **Daulton Varsho** (TOR): L14 .109 / season .240 (-131pts) -- FADE props
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**
@@ -143,4 +143,4 @@
 
 ## 🤖 Self-Training Status
 - **WNBA**: n=31 games · hit rate 38.7% · bias +13.3pp [calibration applied]
-- **MLB**: n=186 games · hit rate 55.4% · bias +2.9pp [calibration applied]
+- **MLB**: n=191 games · hit rate 55.0% · bias +3.0pp [calibration applied]

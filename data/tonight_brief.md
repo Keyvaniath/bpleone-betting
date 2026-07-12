@@ -2,6 +2,10 @@
 
 _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 
+## 💪 STRONG (2 picks)
+- [MLB] CHC @ CIN CHC_ML · 69% / +23.4%
+- [MLB] TOR @ SDP TOR_ML · 68% / +21.3%
+
 ## 🔒 5 Daily Locks
 - **Choi Jeong** one_plus_tb (KBO) -- 73% / +39.8%
 - **Jose Pirela** one_plus_tb (KBO) -- 73% / +39.2%
@@ -10,13 +14,12 @@ _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 - **Austin Dean** one_plus_tb (KBO) -- 73% / +38.5%
 
 ## 📡 Sharp Money Following Model
-- **CHC @ CIN** over_9.0: line moved 50.0% → 53.49% (+3.5pp)
-- **TOR @ SDP** under_8.5: line moved 51.22% → 54.55% (+3.3pp)
+- **LAA @ MIN** over_8.5: line moved 51.22% → 54.55% (+3.3pp)
 
 ## 🎰 Tonight's Best Parlay
 - **Choi Jeong** one_plus_tb + **Jose Pirela** one_plus_tb
 - Joint 53% · fair +264 · edge +94.6%
 
 ---
-_Generated 2026-07-12T01:44:43_
+_Generated 2026-07-12T05:28:05_
 _Full breakdown: /tonight · Full history: /locks-of-day_
