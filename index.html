@@ -36,6 +36,22 @@
 </header>
 
 <main class="container">
+<script>
+/* HONESTY BANNER: if data-health says the local MLB slate is missing games vs the
+   upstream schedule, say so instead of silently rendering a partial board. */
+fetch('data/data_health.json?t=' + Date.now()).then(function(r){return r.json();}).then(function(h){
+  var m = (h.checks || []).find(function(c){ return c.feed === 'mlb'; });
+  if (!m || m.local_count == null || m.upstream_pregame == null) return;
+  if (m.local_count >= m.upstream_pregame || m.upstream_pregame <= 0) return;
+  var el = document.createElement('div');
+  el.style.cssText = 'margin:10px 0 14px;padding:10px 14px;border:1px solid rgba(224,161,58,.35);border-radius:9px;background:rgba(224,161,58,.07);font-size:12.5px;line-height:1.5;color:#e0c48a;';
+  el.innerHTML = '⚠️ <strong>Slate incomplete:</strong> showing <b>' + m.local_count +
+    '</b> of <b>' + m.upstream_pregame + '</b> scheduled MLB games — ingestion is catching up; the full board loads on the next refresh. <a href="status.html" style="color:#e0c48a;text-decoration:underline;">status →</a>';
+  var main = document.querySelector('main.container');
+  if (main) main.insertBefore(el, main.firstChild);
+}).catch(function(){});
+</script>
+
 
   <!-- DATA STALENESS BANNER (auto-shows when slate/odds feed is stale, auto-hides when fresh) -->
   <div id="staleBanner" class="stale-banner" hidden></div>
