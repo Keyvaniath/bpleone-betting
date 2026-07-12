@@ -1,52 +1,59 @@
-# Tonight's Slate Brief — 2026-07-11
+# Tonight's Slate Brief — 2026-07-12
 
-## Slate Quality: 88/100 (HIGH)
-_100% lineups confirmed · 4 rookie SPs_
-**Recommendation:** Play normal Kelly sizing.
+## Slate Quality: 54/100 (LOW)
+_0% lineups confirmed · 14 rookie SPs_
+**Recommendation:** Defensive sizing tonight; stick to highest-confidence plays.
 
 ## Slate
-- **7 games** scheduled
-- **23 best bets** scored: 0 DK · 0 PP · 10 NRFI · 0 SGP
-- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$36.88
-- **MC simulation:** EV +$91.59, 77% P(profit), p05 $-106.28 / p95 $264.4
+- **15 games** scheduled
+- **18 best bets** scored: 0 DK · 0 PP · 5 NRFI · 0 SGP
+- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$29.8
+- **MC simulation:** EV +$41.11, 67% P(profit), p05 $-94.31 / p95 $172.5
 
 ## Top 5 Best Bets
-1. **COL @ SFG YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +25.8%)
-   - P(YRFI) 71.8% vs baseline 46.0%
-2. **OAK @ CHW YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +25.6%)
-   - P(YRFI) 71.6% vs baseline 46.0%
-3. **KCR @ BAL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +22.5%)
+1. **KCR @ BAL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +22.5%)
    - P(YRFI) 68.5% vs baseline 46.0%
-4. **TOR @ SDP YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +21.5%)
+2. **TOR @ SDP YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +21.5%)
    - P(YRFI) 67.5% vs baseline 46.0%
-5. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
+3. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
    - Player prop quality score 1.1935
    - Elite player
+4. **LOL ShowMaker OVER 3.5 Kills**  (78/100 ****, edge —)
+   - Player prop quality score 1.1892
+   - Elite player
+5. **LOL Peyz OVER 4.5 Kills**  (78/100 ****, edge —)
+   - Player prop quality score 1.184
+   - Elite player
 
-## ⚠️ Trap Warnings — 9 flagged
-- **COL @ SFG YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +25.8% looks big but only 0 settled props on this player — model unproven
-- **OAK @ CHW YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +25.6% looks big but only 0 settled props on this player — model unproven
+## ⚠️ Trap Warnings — 4 flagged
 - **KCR @ BAL YRFI (1st-inning OVER 0.5)** (low):
    - Edge +22.5% looks big but only 0 settled props on this player — model unproven
 - **TOR @ SDP YRFI (1st-inning OVER 0.5)** (low):
    - Edge +21.5% looks big but only 0 settled props on this player — model unproven
-- **PHI @ DET YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +15.5% looks big but only 0 settled props on this player — model unproven
+- **ATL @ STL YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +13.2% looks big but only 0 settled props on this player — model unproven
+- **HOU @ TEX YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +8.9% looks big but only 0 settled props on this player — model unproven
+
+## Weather leans
+- **UNDER lean** (wind in + cold): COL @ SFG
+
+## Hot streaks
+**Batters heating up:** Shohei Ohtani (heat +1.75), Nolan Arenado (heat +1.59), Max Kepler (heat +1.03)
+**Pitchers on a run:** Brandon Pfaadt (heat +3.88), Trey Yesavage (heat +0.50)
 
 ## Bullpens GASSED tonight
-Athletics, San Diego Padres, San Francisco Giants, St. Louis Cardinals, Tampa Bay Rays, Minnesota Twins, Atlanta Braves, New York Yankees
+Athletics, Pittsburgh Pirates, San Diego Padres, San Francisco Giants, St. Louis Cardinals, Tampa Bay Rays, Minnesota Twins, Atlanta Braves
 _Lean late-inning OVER on these games; fade their save situations._
 
 ## NRFI/YRFI strong leans
-- **YRFI** (1st-inning OVER): COL @ SFG, OAK @ CHW, KCR @ BAL, TOR @ SDP, PHI @ DET
+- **YRFI** (1st-inning OVER): KCR @ BAL, TOR @ SDP, ATL @ STL
 
 ## Golf -- Genesis Scottish Open
-- **Leader:** Jordan Smith (-9) at #1
+- **Leader:** Michael Thorbjornsen (-11) at #1
 - **Field:** 156 players  |  Status: In Progress
-- **Play of the Tournament:** Chris Gotterup TOP5 @ +542 (model 15.6%, HIGH)
-   - P(top 5) 15.6% -- lower variance than outright but compelling line.
+- **Play of the Tournament:** Si Woo Kim TOP10 @ +564 (model 15.1%, HIGH)
+   - P(top 10) 15.1% -- safest finish bet (#17 (-7)).
 
 ## NBA -- PLAYOFFS
 - New York Knicks @ San Antonio Spurs (53-29 vs 62-20) 94-90 | P(home) 0.0% fair +0 | Final

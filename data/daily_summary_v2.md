@@ -26,7 +26,7 @@
 - [MODERATE] **TOR @ SDP** under_8.5: 51.22% → 54.55% (+3.3pp)
 
 ## 📉 Strong UNDER Signals
-- [STRONG 6.0] **TOR @ SDP** model 6.55 vs market 8.5
+- [STRONG 5.0] **SEA @ TBR** model 7.24 vs market 8.0
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-58** (84.1% hit rate)
@@ -88,10 +88,12 @@
   - [MED] Portland Timbers @ Seattle Sounders FC : 2 signals (PREGAME, ATS)
   - [MED] Coventry City @ Arsenal : 2 signals (PREGAME, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (3)
-- **Yoshinobu Yamamoto** OVER 4.5 K (78%) fair -347
-- **Reynaldo López** OVER 4.5 K (76%) fair -309
-- **Noah Cameron** OVER 4.5 K (63%) fair -171
+## ⚾ Top MLB Pitcher K Plays (12)
+- **Kevin Gausman** OVER 4.5 K (75%) fair -303
+- **Paul Skenes** OVER 5.5 K (73%) fair -270
+- **JR Ritchie** OVER 4.5 K (71%) fair -251
+- **Tarik Skubal** OVER 5.5 K (69%) fair -226
+- **Tyler Phillips** OVER 5.5 K (68%) fair -216
 
 ## 🏀 NBA Player Heat (18 HOT / 23 COLD)
   - 🔥 **Jeremiah Fears** (NO): L5 31.8/5.8/6.0 vs season 16.9/3.2/4.0 [PTS +14.9, REB +2.6, AST +2.0]
@@ -120,7 +122,7 @@
   - ❄️ **Marcel Siem** (Germany): Sunday +5.0 vs tourney avg
   - ❄️ **Patrick Cantlay** (USA): Sunday +4.5 vs tourney avg
 
-## 🔥 MLB Batter Heat (38 HOT / 38 COLD)
+## 🔥 MLB Batter Heat (39 HOT / 38 COLD)
   - 🔥 **Luisangel Acuña** (CWS): L14 .400 / season .242 (+158pts)
   - 🔥 **Derek Hill** (PHI): L14 .414 / season .266 (+148pts)
   - 🔥 **Garrett Mitchell** (MIL): L14 .404 / season .274 (+130pts)
