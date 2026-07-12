@@ -1,36 +1,33 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-07-12T21:47:00 UTC_
+_Generated 2026-07-12T22:56:56 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** 16
+- **Score:** 7
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 22
-- **Total FADES:** 72
+- **Total STRONG:** 17
+- **Total FADES:** 61
 
 ## Top 5 Curated Picks
-1. **GOLF / Tom Kim** (GOLF_PLAYER, score=183.57)
-   - Play: Tom Kim (PLAYER_STRONG)
+1. **GOLF / Taylor Pendrith** (GOLF_PLAYER, score=163.0)
+   - Play: Taylor Pendrith (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Min Woo Lee** (GOLF_PLAYER, score=155.79)
-   - Play: Min Woo Lee (PLAYER_STRONG)
+2. **GOLF / Steven Fisk** (GOLF_PLAYER, score=159.86)
+   - Play: Steven Fisk (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
 3. **WNBA / caitlin clark** (WNBA_PLAYER, score=109.17)
    - Play: caitlin clark (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (WNBA_PLAYER)
-4. **WNBA / breanna stewart** (WNBA_PLAYER, score=101.17)
-   - Play: breanna stewart (PLAYER_STRONG)
+4. **WNBA / kelsey mitchell** (WNBA_PLAYER, score=100.25)
+   - Play: kelsey mitchell (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (WNBA_PLAYER)
-5. **MLB / ?** (MLB_TEAM, score=79.08)
-   - Play: ? (TEAM_STRONG)
-   - Rationale: Cross-sport top pick (MLB_TEAM)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
-  - Tom Kim top 10 finish
-  - Min Woo Lee top 10 finish
-  - Robert MacIntyre top 10 finish
+  - Taylor Pendrith top 10 finish
+  - Steven Fisk top 10 finish
+  - Lucas Glover top 10 finish
 
 ## Slate ROI Projection
 - **Picks:** 0
@@ -39,13 +36,13 @@ _Generated 2026-07-12T21:47:00 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **MLB** / Matthew Boyd (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **MLB** / Paul Skenes (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **MLB** / Robert Gasser (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **MLB** / Shane Baz (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **MLB** / Payton Tolle (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **NHL** / adin hill (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / filip gustavsson (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / logan thompson_2 (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / connor hellebuyck (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / samsonov ilya (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO

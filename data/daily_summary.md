@@ -2,9 +2,9 @@
 
 **Model Confidence: 21.7/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
 
-_Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
+_Pipeline health: **WARNING** (12/15 artifacts ok; 3 empty, 0 stale)._ 
 
-_Generated at 2026-07-12T21:47:09 UTC. Game lines source: **placeholder -110 (no real book today)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-07-12T22:57:10 UTC. Game lines source: **placeholder -110 (no real book today)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
@@ -35,7 +35,7 @@ _Generated at 2026-07-12T21:47:09 UTC. Game lines source: **placeholder -110 (no
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
 
-Cumulative graded plays: 6127. Wins: 2414. Hit rate: 39.4%.
+Cumulative graded plays: 6146. Wins: 2427. Hit rate: 39.5%.
 
 ## Auxiliary Markets (Model Fair Prices)
 

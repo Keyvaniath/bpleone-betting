@@ -1,18 +1,18 @@
 # EdgeStat Daily Summary — 2026-07-12
 
-## 🏥 Model Health: 67.0/100 [OK]
+## 🏥 Model Health: 66.3/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.9/100
+  - 🟢 Calibration Freshness: 99.5/100
   - 🔴 Hit Rate Trend: 15.6/100
   - 🔴 Brier Trend: 46.7/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 95.5/100
-  - 🔴 Edge Count: 54.3/100
+  - 🟢 Data Health: 90.9/100
+  - 🔴 Edge Count: 57.1/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.589)
-- **Total games on board:** 115
-- **Strong home favorites:** 5 | **Strong road dogs:** 0
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.584)
+- **Total games on board:** 113
+- **Strong home favorites:** 3 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
 1. **KCR @ BAL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
@@ -22,15 +22,10 @@
 5. **NYY @ WSN YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
-- [WHALE] **[MLB]** HOU @ TEX ML_HOME -- 69% / +19.0% (score 3.5)
-- [STRONG] **[MLB]** HOU @ TEX TEX_ML -- 72% / +25.8% (score 2.5)
-- [STRONG] **[MLB]** CHC @ CIN CHC_ML -- 69% / +22.9% (score 2.5)
+- [STRONG] **[MLB]** CIN @ COL CIN_ML -- 65% / +24.4% (score 2.5)
 
 ## 📡 Sharp Action (Line Movement)
-- [ELITE] **HOU @ TEX** ml_home: 45.25% → 64.91% (+19.7pp)
-
-## 📉 Strong UNDER Signals
-- [STRONG 5.0] **SEA @ TBR** model 7.24 vs market 8.0
+- [ELITE] **BOS @ NYY** over_9.0: 52.38% → 63.64% (+11.3pp)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-58** (84.1% hit rate)
@@ -68,10 +63,8 @@
 - Hot teams: **2** | Cold teams: **2** | Over-heavy: 0 | Under-heavy: 1
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (54)
+## ⚠️ Anomaly Detector (47)
 - STEAM_MOVE: **47**
-- COMPOUND_BULLPEN: **6**
-- PEN_MISMATCH: **1**
   - GS @ CON (WNBA): TOTAL steam since open: ML +2.2pp toward CON; total -3 (UNDER) (3 snapshots)
   - MIL @ STL (MLB): ML/TOTAL steam since open: ML +14.4pp toward STL; total +1 (OVER) (7 snapshots)
   - TOR @ SEA (MLB): ML/TOTAL steam since open: ML +13.5pp toward SEA; total +0.5 (OVER) (7 snapshots)
@@ -87,19 +80,13 @@
   - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
-## 🎯 Convergence Picks (4 stacked games)
-- ELITE: **0** · HIGH: 1 · MED: 3
-  - [HIGH] Phoenix Mercury @ Las Vegas Aces : 3 signals (HEAT_COLD, HEAT_COLD, ATS)
+## 🎯 Convergence Picks (7 stacked games)
+- ELITE: **0** · HIGH: 1 · MED: 6
+  - [HIGH] Indiana Fever @ Las Vegas Aces : 3 signals (PREGAME, HEAT_COLD, ATS)
   - [MED] New York Knicks @ San Antonio Spurs : 2 signals (ATS, ATS)
-  - [MED] Portland Timbers @ Seattle Sounders FC : 2 signals (PREGAME, ATS)
-  - [MED] Coventry City @ Arsenal : 2 signals (PREGAME, ATS)
-
-## ⚾ Top MLB Pitcher K Plays (13)
-- **Kevin Gausman** OVER 4.5 K (75%) fair -303
-- **MacKenzie Gore** OVER 4.5 K (73%) fair -271
-- **Paul Skenes** OVER 5.5 K (73%) fair -270
-- **JR Ritchie** OVER 4.5 K (71%) fair -251
-- **Tarik Skubal** OVER 5.5 K (69%) fair -226
+  - [MED] New York Liberty @ Toronto Tempo : 2 signals (HEAT_COLD, ATS)
+  - [MED] Seattle Storm @ Washington Mystics : 2 signals (ATS, ATS)
+  - [MED] Chicago Sky @ Dallas Wings : 2 signals (PREGAME, HEAT_COLD)
 
 ## 🏀 NBA Player Heat (18 HOT / 23 COLD)
   - 🔥 **Jeremiah Fears** (NO): L5 31.8/5.8/6.0 vs season 16.9/3.2/4.0 [PTS +14.9, REB +2.6, AST +2.0]
@@ -118,27 +105,31 @@
   - [LEAN] **Damian Pinas** (10-1-0) vs Cesar Almeida -- fair -164
   - [LEAN] **Ryan Gandra** (10-1-0) vs Zach Reese -- fair -151
 
-## ⛳ Golf Player Heat (from Genesis Scottish Open)
-  - 🔥 T1 **Tom Kim** (South Korea): -13 total -- finished T1
-  - 🔥 T5 **Victor Perez** (France): -11 total -- finished T5, Sunday -1.2 vs tourney avg
-  - 🔥 T6 **Chris Gotterup** (USA): -11 total -- finished T6
-  - 🔥 T7 **Rory McIlroy** (Northern Ireland): -10 total -- finished T7, Sunday -1.5 vs tourney avg
-  - 🔥 T8 **Si Woo Kim** (South Korea): -10 total -- finished T8, Sunday -0.5 vs tourney avg
-  - ❄️ **Bernd Wiesberger** (Austria): Sunday +6.5 vs tourney avg
-  - ❄️ **Guido Migliozzi** (Italy): Sunday +5.8 vs tourney avg
-  - ❄️ **Marcel Siem** (Germany): Sunday +5.0 vs tourney avg
+## ⛳ Golf Player Heat (from ISCO Championship)
+  - 🔥 T1 **Taylor Pendrith** (Canada): -15 total -- finished T1, Sunday -0.2 vs tourney avg
+  - 🔥 T2 **Steven Fisk** (USA): -15 total -- finished T2
+  - 🔥 T4 **Davis Chatfield** (USA): -14 total -- finished T4, Sunday -0.5 vs tourney avg
+  - 🔥 T5 **Kris Ventura** (Norway): -14 total -- finished T5, Sunday -0.5 vs tourney avg
+  - 🔥 T6 **Ben Silverman** (Canada): -14 total -- finished T6
+  - ❄️ **Christo Lamprecht** (South Africa): Sunday +7.5 vs tourney avg
+  - ❄️ **Chan Kim** (USA): Sunday +5.5 vs tourney avg
+  - ❄️ **Jeffrey Kang** (USA): Sunday +5.0 vs tourney avg
 
-## 🔥 MLB Batter Heat (38 HOT / 35 COLD)
+## 🔥 MLB Batter Heat (37 HOT / 36 COLD)
   - 🔥 **Luisangel Acuña** (CWS): L14 .400 / season .242 (+158pts)
   - 🔥 **James Wood** (WSH): L14 .400 / season .279 (+121pts)
   - 🔥 **Garrett Mitchell** (MIL): L14 .392 / season .274 (+118pts)
   - 🔥 **Miguel Rojas** (LAD): L14 .407 / season .290 (+117pts)
   - 🔥 **Justin Crawford** (PHI): L14 .378 / season .263 (+115pts)
-  - ❄️ **Corbin Carroll** (AZ): L14 .083 / season .254 (-171pts) -- FADE props
+  - ❄️ **Corbin Carroll** (AZ): L14 .080 / season .252 (-172pts) -- FADE props
   - ❄️ **Jorge Mateo** (ATL): L14 .074 / season .238 (-164pts) -- FADE props
   - ❄️ **Oswald Peraza** (LAA): L14 .079 / season .239 (-160pts) -- FADE props
   - ❄️ **Paul Goldschmidt** (NYY): L14 .104 / season .258 (-154pts) -- FADE props
   - ❄️ **Henry Bolte** (ATH): L14 .120 / season .261 (-141pts) -- FADE props
+
+## 📈 Streak Regression Alerts (2)
+- [WNBA] Toronto Tempo on L3 L10 0-3 -- Toronto Tempo on L3 -- no historical sample
+- [WNBA] Dallas Wings on W4 L10 4-1 -- Dallas Wings on W4 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**

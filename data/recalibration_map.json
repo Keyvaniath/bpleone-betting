@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-07-12T21:47:21",
-  "n_settled": 6028,
+  "generated_at": "2026-07-12T22:57:20",
+  "n_settled": 6047,
   "n_families_transformed": 24,
   "n_families_bucketed": 14,
-  "ece_before": 0.0927,
+  "ece_before": 0.0929,
   "ece_after": 0.0182,
-  "ece_improvement": 0.0745,
-  "brier_before": 0.21152,
-  "brier_after": 0.19401,
+  "ece_improvement": 0.0748,
+  "brier_before": 0.21163,
+  "brier_after": 0.19414,
   "method_note": "Per market family, a monotonic (isotonic) curve maps the model's predicted probability to the realized hit rate, learned from settled outcomes. Bucketed for well-sampled families (preserves ranking), a family-average Bayesian blend for mid-sample, identity below that. ECE = expected calibration error (lower = the displayed % is truer). This makes the model honest at the source; it does not create edge (that needs a market price).",
   "families": [
     {
@@ -528,6 +528,52 @@
       }
     },
     {
+      "family": "mlb_hrr_3.5_under",
+      "n": 447,
+      "method": "bucketed",
+      "avg_pred_raw": 0.8627,
+      "avg_pred_calibrated": 0.8322,
+      "realized": 0.8255,
+      "ece_raw": 0.0429,
+      "ece_calibrated": 0.0067,
+      "transform": {
+        "anchors": [
+          [
+            0.8275,
+            0.8177
+          ],
+          [
+            0.8561,
+            0.8177
+          ],
+          [
+            0.8613,
+            0.8326
+          ],
+          [
+            0.8658,
+            0.8326
+          ],
+          [
+            0.87,
+            0.8326
+          ],
+          [
+            0.8722,
+            0.8326
+          ],
+          [
+            0.8738,
+            0.8454
+          ],
+          [
+            0.8753,
+            0.8456
+          ]
+        ]
+      }
+    },
+    {
       "family": "home_clean_sheet_no",
       "n": 91,
       "method": "bucketed",
@@ -575,52 +621,6 @@
           [
             0.8539,
             0.8011
-          ]
-        ]
-      }
-    },
-    {
-      "family": "mlb_hrr_3.5_under",
-      "n": 428,
-      "method": "bucketed",
-      "avg_pred_raw": 0.8627,
-      "avg_pred_calibrated": 0.8377,
-      "realized": 0.8318,
-      "ece_raw": 0.0368,
-      "ece_calibrated": 0.0059,
-      "transform": {
-        "anchors": [
-          [
-            0.8266,
-            0.817
-          ],
-          [
-            0.8557,
-            0.8195
-          ],
-          [
-            0.861,
-            0.8384
-          ],
-          [
-            0.8663,
-            0.8384
-          ],
-          [
-            0.8705,
-            0.8384
-          ],
-          [
-            0.8724,
-            0.8493
-          ],
-          [
-            0.8739,
-            0.8493
-          ],
-          [
-            0.8753,
-            0.8493
           ]
         ]
       }
