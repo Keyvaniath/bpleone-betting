@@ -54,7 +54,7 @@ def _result_class(r: str) -> str:
 
 def run() -> Dict[str, Any]:
     ledger = _load(LEDGER)
-    picks = [p for p in (ledger.get("picks") or []) if p.get("settled")]
+    picks = [p for p in (ledger.get("picks") or []) if p.get("settled") and not p.get("voided")]
     # Chronological order -- realized track record, no look-ahead.
     picks.sort(key=lambda p: (p.get("date") or "", p.get("recorded_at") or ""))
 

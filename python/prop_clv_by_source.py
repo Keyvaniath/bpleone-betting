@@ -87,6 +87,8 @@ def run() -> Dict[str, Any]:
     matched = 0
     if canonical_market is not None and clv_idx:
         for p in (ledger.get("picks") or []):
+            if p.get("voided"):
+                continue  # duplicate-collapsed copies must not add CLV samples
             canon = canonical_market(p.get("market"))
             if not canon:
                 continue

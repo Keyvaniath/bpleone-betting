@@ -66,7 +66,7 @@ def run() -> Dict[str, Any]:
     neg = pc.proven_negative_families()
     oc = pc.overconfident_families()
 
-    settled = [p for p in picks if p.get("result") in ("won", "lost", "push")]
+    settled = [p for p in picks if p.get("result") in ("won", "lost", "push") and not p.get("voided")]
     settled.sort(key=lambda p: (p.get("date") or "", p.get("recorded_at") or ""))
 
     dates: List[str] = []

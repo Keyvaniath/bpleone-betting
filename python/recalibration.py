@@ -64,7 +64,7 @@ def _pairs_by_family() -> Dict[str, List[Tuple[float, int]]]:
     """{canonical_family: [(predicted_prob, outcome 0/1), ...]} from settled picks."""
     out: Dict[str, List[Tuple[float, int]]] = {}
     for p in (_load_ledger().get("picks") or []):
-        if p.get("result") not in ("won", "lost"):
+        if p.get("voided") or p.get("result") not in ("won", "lost"):
             continue
         pr = p.get("p_predicted")
         if pr is None:

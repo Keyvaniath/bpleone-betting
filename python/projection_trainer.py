@@ -47,7 +47,7 @@ def _pairs_by_family() -> Dict[str, List[Tuple[float, float]]]:
         picks = []
     out: Dict[str, List[Tuple[float, float]]] = {}
     for p in picks:
-        if p.get("result") not in ("won", "lost", "push"):
+        if p.get("voided") or p.get("result") not in ("won", "lost", "push"):
             continue
         proj = p.get("projection")
         actual = (p.get("outcome") or {}).get("actual")

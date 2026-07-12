@@ -67,7 +67,7 @@ def run() -> Dict[str, Any]:
     by_source: Dict[str, Dict[str, Any]] = {}
     matched = 0
     for p in (ledger.get("picks") or []):
-        if not p.get("settled"):
+        if not p.get("settled") or p.get("voided"):
             continue
         side = _side_of(p.get("market"))
         if not side:

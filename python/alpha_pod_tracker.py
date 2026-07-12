@@ -85,7 +85,7 @@ def _settle_leg(leg: Dict[str, Any], idx: Dict[Tuple[str, str], List[Dict[str, A
             s += 3
         if mk and (mk in pm or pm in mk):
             s += 2
-        if p.get("settled"):
+        if p.get("settled") and not p.get("voided"):
             s += 1
         return s
 

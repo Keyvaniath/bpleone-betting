@@ -206,7 +206,7 @@ def run() -> Dict[str, Any]:
     _seen_by_day: Dict[str, set] = {}
     by_day: Dict[str, List[Dict[str, Any]]] = {}
     for p in picks:
-        if not _is_player_prop(p):
+        if p.get("voided") or not _is_player_prop(p):
             continue
         prob, fa = p.get("prob"), p.get("fair_american")
         if prob is None or fa is None or not (MIN_PROB <= prob <= MAX_PROB):

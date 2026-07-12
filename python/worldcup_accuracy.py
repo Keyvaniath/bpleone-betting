@@ -40,7 +40,7 @@ def _settled_wc() -> List[Dict[str, Any]]:
             continue
         if not str(p.get("source") or "").startswith("wc_model"):
             continue
-        if p.get("result") not in ("won", "lost"):
+        if p.get("voided") or p.get("result") not in ("won", "lost"):
             continue
         pr = p.get("p_predicted")
         if pr is None:

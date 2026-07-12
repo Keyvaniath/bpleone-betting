@@ -42,7 +42,7 @@ def build():
     import datetime
     d = json.load(open(LEDGER, encoding="utf-8"))
     picks = [p for p in (d.get("picks") or [])
-             if p.get("settled") and p.get("result") in ("won", "lost")
+             if p.get("settled") and not p.get("voided") and p.get("result") in ("won", "lost")
              and canon_market_family(p.get("market")) == FAMILY]
     if len(picks) < 30:
         return {"generated_at": datetime.datetime.now().isoformat(timespec="seconds"),

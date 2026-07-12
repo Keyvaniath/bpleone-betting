@@ -24,7 +24,7 @@ KEEP = 200
 def build():
     d = json.load(open(LEDGER, encoding="utf-8"))
     picks = d.get("picks") or []
-    settled = [p for p in picks if p.get("settled")]
+    settled = [p for p in picks if p.get("settled") and not p.get("voided")]
     settled.sort(key=lambda p: (p.get("date") or "",
                                 p.get("recorded_at") or p.get("settled_at") or ""))
     sdates = sorted(p.get("date") for p in settled if p.get("date"))

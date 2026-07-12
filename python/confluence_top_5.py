@@ -96,7 +96,7 @@ def run() -> Dict[str, Any]:
     today_str = dt.datetime.utcnow().strftime("%Y-%m-%d")
     clusters = defaultdict(list)
     for p in picks:
-        if (p.get("result") or "pending").lower() not in ("pending", ""): continue
+        if p.get("voided") or (p.get("result") or "pending").lower() not in ("pending", ""): continue
         if p.get("date") and p["date"] != today_str: continue
         key = (
             (p.get("player_or_matchup") or "").lower().strip(),

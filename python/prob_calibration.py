@@ -278,7 +278,7 @@ def overconfident_families(min_gap: float = OVERCONF_MIN_GAP, min_n: int = OVERC
     d = _load_ledger()
     agg: Dict[str, Dict[str, float]] = {}
     for p in (d.get("picks") or []):
-        if p.get("result") not in ("won", "lost"):
+        if p.get("voided") or not p.get("settled") or p.get("result") not in ("won", "lost"):
             continue
         fam = canon_market_family(p.get("market"))
         pred = p.get("p_predicted")

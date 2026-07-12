@@ -94,7 +94,7 @@ def _normalize_pick(p: Dict[str, Any]) -> Dict[str, Any]:
         "tier": p.get("tier"),
         # Normalize outcome: UPPERCASE + map past-tense variants to canonical
         # WIN/LOSS/PUSH/PENDING/VOID (what the SQL filters expect)
-        "outcome": _norm_outcome(p.get("result") or p.get("outcome") or "PENDING"),
+        "outcome": "VOID" if p.get("voided") else _norm_outcome(p.get("result") or p.get("outcome") or "PENDING"),
         "date": p.get("date") or dt.datetime.utcnow().strftime("%Y-%m-%d"),
         "created_at": p.get("recorded_at") or p.get("created_at") or dt.datetime.utcnow().isoformat(timespec="seconds"),
         "model_version": _get_model_version(),

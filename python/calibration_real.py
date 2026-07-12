@@ -40,7 +40,7 @@ def run() -> Dict[str, Any]:
     preds: List[float] = []
     y: List[int] = []
     for p in picks:
-        if p.get("result") not in ("won", "lost"):
+        if p.get("voided") or p.get("result") not in ("won", "lost"):
             continue
         pr = p.get("p_predicted")
         if pr is None:

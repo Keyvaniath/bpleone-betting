@@ -51,7 +51,7 @@ def run() -> Dict[str, Any]:
 
     agg: Dict[str, Dict[str, float]] = {}
     for p in picks:
-        if p.get("result") not in ("won", "lost"):   # ledger uses won/lost/push/pending
+        if p.get("voided") or p.get("result") not in ("won", "lost"):   # ledger uses won/lost/push/pending
             continue
         fam = pc.canon_market_family(p.get("market"))
         pred = p.get("p_predicted")
@@ -117,7 +117,7 @@ def run() -> Dict[str, Any]:
         n = w = 0
         net = 0.0
         for p in picks:
-            if p.get("result") not in ("won", "lost"):
+            if p.get("voided") or p.get("result") not in ("won", "lost"):
                 continue
             if not keep(pc.canon_market_family(p.get("market"))):
                 continue

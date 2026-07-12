@@ -228,6 +228,8 @@ def run() -> Dict[str, Any]:
     picks_by_source: Dict[str, List[Dict[str, Any]]] = {}
     pick_ids_by_source: Dict[str, List[str]] = {}
     for p in picks:
+        if p.get("voided"):
+            continue  # duplicate-collapsed copies must not enter training/metrics
         src = p.get("source") or "unknown"
         picks_by_source.setdefault(src, []).append(p)
         pid = p.get("pick_id") or p.get("id") or f"{src}|{p.get('player')}|{p.get('market')}|{p.get('date')}"
