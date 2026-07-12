@@ -41,6 +41,21 @@ bpleone-site/
 
 ## Current deployment state (LIVE)
 
+- **2026-07-12 — IA consolidation + P2 polish (audit follow-through, all shipped):**
+  nav.js slimmed 113 -> 64 links (dropdowns now Sports 19 / Players 7 / Picks 8 /
+  Edges 9 / Models 8 / More 9; cut pages stay reachable by URL — do NOT re-add them
+  to the menu without a reason); homepage "Start here" strip (4 canonical doors);
+  backtest.html retitled "Performance Analytics" (unique CLV/drawdown content kept,
+  no longer claims to be the track record); nba/wnba/nhl-players-real.html renamed
+  to clean URLs with redirect shims (never resurrect "(REAL)" scaffolding);
+  account.html redirects to login until accounts launch; methodology Brier
+  live-fills from calibrated_reliability (70/30 holdout sentence is DATE-STAMPED —
+  no live artifact exists for it); track-record's Avg CLV tile uses the SAME
+  exact-rows rollup as clv.html (clv_tracker rows + bb leans — never reintroduce
+  clv_log.json as a third source); calibration-map guard banner carries a universe
+  caption (whole-ledger replay vs recommended-boards record — meant to differ).
+  All 8 changes prod-verified. Both follow-up chips dismissed (done in-session).
+
 - **2026-07-11/12 — THE DUPLICATE-WAGER CORRECTION (newest, read first — the headline
   numbers DROPPED on purpose):** a 5-dimension full-site audit found the flagship
   proof stack resting on a physically impossible UFC record (fight_r1_finish_yes:
