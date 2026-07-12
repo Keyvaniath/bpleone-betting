@@ -48,117 +48,76 @@
     { href: "play-of-day.html", label: "★ Play of Day" },
     { href: "tonight.html",     label: "🌙 Tonight" },
   ];
-  // PICKS -- the actionable daily output (the money pages).
+  // PICKS -- the actionable daily output. SLIMMED 2026-07-12 (site audit: 7
+  // near-synonymous boards were listed with no guidance): the nav keeps ONE
+  // canonical entry per job; everything cut stays reachable by URL and from
+  // in-page links (top-edges/confluence/alpha-scanner/props-parlay/parlays/
+  // pickem were dropped from the MENU only, not the site).
   const PICKS = [
     { section: "Daily Board" },
     { href: "picks.html",               label: "🎯 Today's Picks (all boards)" },
-    { href: "top-edges.html",           label: "🎯 Top Calibrated Edges" },
-    { href: "alerts.html",              label: "📡 The Tape (live signals)" },
-    { href: "alpha-pick.html",          label: "★ Alpha Pick" },
-    { href: "alpha-scanner.html",       label: "🛰️ Cross-Sport Alpha Scanner" },
+    { href: "alpha-pick.html",          label: "★ Alpha Pick of the Day" },
     { href: "high-confidence.html",     label: "💎 High-Confidence Board" },
     { href: "best-bets.html",           label: "✓ Best Bets" },
-    { href: "confluence.html",          label: "🔗 Confluence Top-5" },
-    // Locks · Top Plays · Top-3 · Consensus · Convergence · Fades now live as
-    // filters inside picks.html (the hub); their old URLs redirect there.
+    { href: "alerts.html",              label: "📡 The Tape (live signals)" },
     { section: "Parlays & DFS" },
     { href: "cross-sport-parlays.html", label: "🎰 Cross-Sport Parlays" },
-    { href: "props-parlay.html",        label: "🎯 Props-Only Parlays" },
     { href: "prizepicks-value.html",    label: "🃏 PrizePicks Value" },
-    { href: "parlays.html",             label: "Parlays" },
-    { href: "pickem.html",              label: "Pick-Em" },
     { href: "props.html",               label: "Player Props" },
   ];
-  // EDGES -- market & line analysis, matchups, live.
+  // EDGES -- market & line analysis, matchups, live. SLIMMED 2026-07-12: one
+  // canonical entry per job; cut items remain reachable by URL / in-page links.
   const EDGES = [
     { section: "Markets & Lines" },
     { href: "book-edges.html",          label: "📊 Book Edges" },
     { href: "deep-edges.html",          label: "🔬 Deep Edges" },
     { href: "line-movement.html",       label: "📈 Line Movement / Steam" },
     { href: "line-shop.html",           label: "💰 Line Shop" },
-    { href: "arbitrage.html",           label: "Arbitrage" },
-    { href: "linemaker.html",           label: "Linemaker" },
-    { href: "anomalies.html",           label: "⚠️ Anomalies" },
-    { href: "heat-map.html",            label: "🔥 Heat Map (hot/cold)" },
-    { href: "hot-streaks.html",         label: "🔥 Hot Streaks" },
-    { href: "ats-dashboard.html",       label: "📊 ATS Dashboard" },
-    { href: "nrfi.html",                label: "NRFI" },
-    { href: "slate-player-pot.html",    label: "🎯 Slate Player Pot" },
     { section: "MLB Matchups" },
     { href: "pitcher-matchup.html",     label: "⚾ Pitcher Matchup" },
     { href: "batter-sp-edges.html",     label: "🎯 Batter vs SP Edges" },
-    { href: "batter-splits.html",       label: "📊 Batter Splits (H/A + D/N)" },
-    { href: "b2b-fatigue.html",         label: "😴 B2B Fatigue" },
-    { href: "matchups.html",            label: "Best Matchups" },
+    { href: "batter-splits.html",       label: "📊 Batter Splits" },
     { section: "Live" },
     { href: "live-now.html",            label: "Live Now" },
-    { href: "live.html",                label: "MLB Live" },
-    { href: "live-momentum.html",       label: "📈 Live Momentum" },
     { href: "golf-live.html",           label: "⛳ Golf Live" },
   ];
-  // MODELS -- the quant: lab, performance proof, self-learning.
+  // MODELS -- the quant: proof first, then the lab. SLIMMED 2026-07-12 (site
+  // audit: ~16 overlapping proof/performance pages were all listed): the nav
+  // keeps the canonical entry per job -- Track Record IS the proof page,
+  // Methodology IS the how, calibration-map IS the calibration view. Cut items
+  // (proof, models, research, model-cards, simulator, backtest*, residuals,
+  // reliability, pod-history, lifecycle, module-performance, audit,
+  // learning-integrity, model-control) stay reachable by URL / in-page links.
   const MODELS = [
-    { section: "Lab & Research" },
-    { href: "ml-lab.html",              label: "ML Lab" },
-    { href: "models.html",              label: "Models" },
-    { href: "research.html",            label: "Research" },
-    { href: "methodology.html",         label: "📐 Methodology" },
-    { href: "model-cards.html",         label: "🗂️ Model Cards" },
-    { href: "simulator.html",           label: "Simulator" },
-    { href: "backtest-dashboard.html",  label: "Backtest Dashboard" },
-    { href: "backtest-replayer.html",   label: "🔁 Backtest Replayer" },
-    { href: "residuals.html",           label: "Residuals" },
     { section: "Performance & Proof" },
-    { href: "proof.html",               label: "⟁ The Proof Card" },
-    { href: "track-record.html",        label: "Track Record" },
-    { href: "clv.html",                 label: "🎯 Closing Line Value" },
+    { href: "track-record.html",        label: "⟁ Track Record (the proof)" },
     { href: "calibration-map.html",     label: "🎯 Model Calibration" },
     { href: "strategy-sim.html",        label: "🎛️ Strategy Simulator" },
-    { href: "reliability.html",         label: "Esports Calibration" },
+    { href: "clv.html",                 label: "🎯 Closing Line Value" },
+    { section: "Lab" },
+    { href: "methodology.html",         label: "📐 Methodology" },
+    { href: "ml-lab.html",              label: "ML Lab" },
     { href: "model-health.html",        label: "🏥 Model Health" },
-    { href: "pod-history.html",         label: "POD History" },
-    { href: "lifecycle.html",           label: "📈 Lifecycle" },
-    { href: "module-performance.html",  label: "🧠 Module Performance" },
-    { href: "audit.html",               label: "Audit" },
-    { section: "Self-Learning" },
     { href: "live-learning.html",       label: "📡 Live Learning (hub)" },
-    { href: "learning-integrity.html",  label: "🔬 Learning Integrity" },
-    { href: "model-control.html",       label: "🎛 Model Control" },
-    // Self-Learning · Learning · Training consolidated into live-learning.html;
-    // their old URLs redirect there.
   ];
-  // MORE -- account, system health, daily reads, education.
+  // MORE -- account, system, daily read, education. SLIMMED 2026-07-12: legal
+  // links (terms/privacy/disclaimer/affiliate/responsible-gambling) live in the
+  // GLOBAL FOOTER on every page, so they left the menu; bet-slate/hedge/config/
+  // data-health/data-integrity/sport-coverage/pulse/train-your-read/daily-
+  // summary/brief/data-sources remain reachable by URL / in-page links.
   const MORE = [
-    { section: "Account" },
+    { section: "Account & Bets" },
     { href: "support.html",             label: "♥ Support / Tip" },
     { href: "pricing.html",             label: "⭐ Pricing / Go Pro" },
     { href: "sportsbooks.html",         label: "🎟 Where to Bet" },
     { href: "bankroll.html",            label: "Bankroll" },
     { href: "my-bets.html",             label: "My Bets" },
-    { href: "bet-slate.html",           label: "📝 Bet Slate" },
-    { href: "hedge.html",               label: "Hedge Calculator" },
-    { href: "config.html",              label: "Config" },
-    { section: "Data & System" },
+    { section: "System & Reads" },
     { href: "status.html",              label: "🟢 System Status" },
-    { href: "data-health.html",         label: "📡 Data Health" },
-    { href: "data-integrity.html",      label: "🔍 Data Integrity" },
-    { href: "sport-coverage.html",      label: "🌐 Sport Coverage" },
-    { href: "pulse.html",               label: "📡 Pulse" },
-    { section: "Daily Reads" },
-    { href: "train-your-read.html",     label: "🎯 Train Your Read" },
     { href: "todays-brief.html",        label: "📋 Today's Master Brief" },
-    { href: "daily-summary.html",       label: "📰 Daily Summary" },
-    { href: "brief.html",               label: "Brief" },
     { section: "Learn" },
     { href: "learn.html",               label: "🎓 EdgeStat Academy" },
     { href: "about.html",               label: "About" },
-    { section: "Legal & Trust" },
-    { href: "responsible-gambling.html", label: "🛟 Responsible Gambling" },
-    { href: "data-sources.html",        label: "🗂 Data Sources" },
-    { href: "terms.html",               label: "Terms of Service" },
-    { href: "privacy.html",             label: "Privacy Policy" },
-    { href: "disclaimer.html",          label: "Disclaimer" },
-    { href: "affiliate-disclosure.html", label: "Affiliate Disclosure" },
   ];
 
   function buildDropdown(label, items, currentPath) {
