@@ -243,18 +243,58 @@ def run(cfg: Dict[str, Any]) -> Dict[str, Any]:
     season_type = (sb.get("season") or {}).get("type")
     season_label = SPORT_LABELS.get(season_type, "season")
 
+    # HONESTY: ESPN's scoreboard serves the NEXT slate when a league is idle --
+    # e.g. the NFL endpoint returns Week 1 (September) games in July, which this
+    # module used to count and caption as "on the board today". Only games whose
+    # start falls on TODAY (US/Eastern, the site's slate convention) -- or that
+    # are literally live -- count as today's. games[] still carries the full
+    # board (downstream modules price upcoming fixtures from it); the COUNT and
+    # the user-facing note must not lie about what "today" is.
+    def _et_date(iso) -> str:
+        try:
+            d = dt.datetime.fromisoformat(str(iso).replace("Z", "+00:00"))
+            try:
+                from zoneinfo import ZoneInfo
+                d = d.astimezone(ZoneInfo("America/New_York"))
+            except Exception:
+                d = d - dt.timedelta(hours=4)  # EDT fallback
+            return d.date().isoformat()
+        except Exception:
+            return ""
+
+    try:
+        from zoneinfo import ZoneInfo
+        _today_et = dt.datetime.now(ZoneInfo("America/New_York")).date().isoformat()
+    except Exception:
+        _today_et = (dt.datetime.utcnow() - dt.timedelta(hours=4)).date().isoformat()
+
+    today_games = [g for g in games
+                   if g.get("state") == "in" or _et_date(g.get("date")) == _today_et]
+    upcoming = [g for g in games if g not in today_games and g.get("state") != "post"]
+    next_date = min((_et_date(g.get("date")) for g in upcoming if _et_date(g.get("date"))),
+                    default=None)
+    if today_games:
+        note = f"{len(today_games)} game(s) on the board today ({season_label})."
+    elif upcoming:
+        note = (f"No games today — next slate {next_date} "
+                f"({len(upcoming)} upcoming, {season_label}).")
+    else:
+        note = f"No games today ({season_label})."
+
     payload = {
         "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
         "league": cfg.get("league_label", sport_key.upper()),
-        "active_season": len(events) > 0 or season_type in (2, 3),
+        "active_season": len(today_games) > 0 or season_type in (2, 3),
         "season_year": season,
         "season_status": season_label,
-        "n_games_today": len(games),
+        "n_games_today": len(today_games),
+        "n_upcoming": len(upcoming),
+        "next_game_date": next_date,
         "calibration_shift_pp": round(cal_shift * 100, 1) if cal_shift else 0,
         "self_training_applied": cal_shift != 0,
         "games": games,
         "enabled": True,
-        "note": f"{len(games)} game(s) on the board today ({season_label}).",
+        "note": note,
     }
     os.makedirs(DATA_DIR, exist_ok=True)
     with open(out_path, "w") as f: json.dump(payload, f, indent=2)

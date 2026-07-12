@@ -147,6 +147,7 @@ def _parse_game(comp: Dict[str, Any], status: Dict[str, Any]) -> Dict[str, Any]:
     return {
         "id": comp.get("id"),
         "matchup": f"{a_team} @ {h_team}",
+        "date": comp.get("date"),
         "home_team": h_team,
         "away_team": a_team,
         "home_record": f"{h_rec['wins']}-{h_rec['losses']}-{h_rec['otl']}",
@@ -221,17 +222,47 @@ def run() -> Dict[str, Any]:
         season_type, "unknown"
     )
 
+
+    # HONESTY: ESPN serves the NEXT slate when the league is idle (past playoff
+    # game / future preseason surfaced months out). Count as "today" only games
+    # starting today US/Eastern or literally live; keep games[] intact for
+    # downstream consumers, but never caption future/past slates as today's.
+    def _et_date(iso):
+        try:
+            d = dt.datetime.fromisoformat(str(iso).replace("Z", "+00:00"))
+            try:
+                from zoneinfo import ZoneInfo
+                d = d.astimezone(ZoneInfo("America/New_York"))
+            except Exception:
+                d = d - dt.timedelta(hours=4)
+            return d.date().isoformat()
+        except Exception:
+            return ""
+    try:
+        from zoneinfo import ZoneInfo
+        _today_et = dt.datetime.now(ZoneInfo("America/New_York")).date().isoformat()
+    except Exception:
+        _today_et = (dt.datetime.utcnow() - dt.timedelta(hours=4)).date().isoformat()
+    today_games = [g for g in games
+                   if g.get("state") == "in" or _et_date(g.get("date")) == _today_et]
+    upcoming = [g for g in games if g not in today_games and g.get("state") != "post"]
+    next_date = min((_et_date(g.get("date")) for g in upcoming if _et_date(g.get("date"))), default=None)
+
     payload = {
         "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
-        "active_season": len(events) > 0 or season_type in (2, 3),
+        "active_season": len(today_games) > 0 or season_type in (2, 3),
         "season_year": season,
         "season_status": season_label,
-        "n_games_today": len(games),
+        "n_games_today": len(today_games),
+        "n_upcoming": len(upcoming),
+        "next_game_date": next_date,
         "calibration_shift_pp": round(cal_shift * 100, 1) if cal_shift else 0,
         "self_training_applied": cal_shift != 0,
         "games": games,
         "enabled": True,
-        "note": f"{len(games)} NHL game(s) on the board today ({season_label}).",
+        "note": (f"{len(today_games)} NHL game(s) on the board today ({season_label})." if today_games
+                 else (f"No NHL games today — next slate {next_date} ({len(upcoming)} upcoming, {season_label})." if upcoming
+                       else f"No NHL games today ({season_label}).")),
     }
     os.makedirs(DATA_DIR, exist_ok=True)
     with open(OUT_PATH, "w") as f:
