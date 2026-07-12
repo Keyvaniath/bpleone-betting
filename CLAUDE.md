@@ -41,6 +41,17 @@ bpleone-site/
 
 ## Current deployment state (LIVE)
 
+- **2026-07-12 — Live-aware UI ("links to everything that work for LIVE data"):**
+  `site_directory.py` -> `data/site_directory.json` = full page catalog (125 pages,
+  13 groups) + per-sport live status normalized from the *_state feeds (per-feed
+  adapters live in THIS module only — add new sports there). Consumers:
+  directory.html (the "Everything" page: searchable, LIVE badges w/ today-counts,
+  "next MM/DD" for off-season, shims flagged), nav.js (🗺 Everything in the top bar
+  + green live dots / next-date hints on Sports & Players menu entries), index.html
+  ("Live now" chip strip under Start-here + "everything →"). Runs in daily-pipeline
+  (pre-commit) AND the heartbeat, so badges stay fresh all day. Prod-verified:
+  13 groups / 125 links / 8 live sports, zero console errors.
+
 - **2026-07-12 — IA consolidation + P2 polish (audit follow-through, all shipped):**
   nav.js slimmed 113 -> 64 links (dropdowns now Sports 19 / Players 7 / Picks 8 /
   Edges 9 / Models 8 / More 9; cut pages stay reachable by URL — do NOT re-add them
