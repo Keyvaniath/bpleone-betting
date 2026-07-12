@@ -2452,6 +2452,11 @@ def _reconcile_settled_voids(history: List[Dict[str, Any]]) -> int:
     n = 0
     for p in history:
         if p.get("settled") and p.get("voided"):
+            # A duplicate-wager void is INTENTIONAL on a settled pick (the same
+            # event was counted more than once; the extra copies are voided by
+            # _collapse_duplicate_wagers). Never resurrect those.
+            if str(p.get("voided_reason") or "").startswith("duplicate wager"):
+                continue
             p["voided"] = False
             p.pop("voided_reason", None)
             p.pop("voided_at", None)
@@ -2665,6 +2670,70 @@ def _resettle_on_revision(history: List[Dict[str, Any]]) -> int:
     return n_flip
 
 
+def _wager_key(p) -> tuple:
+    """A pick's WAGER identity -- what bet this is, independent of which board
+    surfaced it or which day it was snapshotted. One wager = one position."""
+    return (_safe_id(p.get("sport")), _safe_id(p.get("player_or_matchup")),
+            _safe_id(p.get("market")))
+
+
+def _collapse_duplicate_wagers(history) -> int:
+    """One wager must count ONCE in the public record. Two historical leak paths
+    violated that (caught by the 2026-07-11 site audit):
+
+      1. EVENT RE-ADDS: pick_id includes the snapshot date, so a FUTURE event that
+         sits on a board for days (a UFC fight, a golf outright, a tennis match)
+         re-entered daily as a "new" pick -- then every copy settled against the
+         same result. fight_r1_finish_yes showed 182 settled "picks" that were 26
+         distinct fights (one fight counted 13x), injecting ~+244u of phantom
+         profit that inflated the durable-book / curated headlines and even the
+         calibration fit.
+      2. TWIN BOARDS: the same wager recorded the same day by two sources
+         (top_25_board AND lock_of_day) -> different pick_id -> both settled
+         (~+105u double-counted on MLB props).
+
+    Collapse: group SETTLED non-void picks by (wager identity + identical outcome
+    payload) -- byte-identical outcomes mean the same physical result, so this
+    can never merge two genuinely different games. Keep the FIRST copy (earliest
+    settled_at/recorded_at); VOID the extras (audit trail preserved -- rows stay,
+    flagged) so every downstream consumer recomputes honestly. Also collapses
+    PENDING dups of the same wager (keep earliest). Idempotent."""
+    n = 0
+    # settled dups: same wager + same outcome payload
+    groups: Dict[tuple, List[Dict[str, Any]]] = {}
+    for p in history:
+        if not p.get("settled") or p.get("voided") or not p.get("outcome"):
+            continue
+        k = _wager_key(p) + (json.dumps(p["outcome"], sort_keys=True, default=str),)
+        groups.setdefault(k, []).append(p)
+    for k, g in groups.items():
+        if len(g) < 2:
+            continue
+        g.sort(key=lambda x: (x.get("settled_at") or "", x.get("recorded_at") or "", x.get("date") or ""))
+        for extra in g[1:]:
+            extra["voided"] = True
+            extra["voided_at"] = dt.datetime.now().isoformat(timespec="seconds")
+            extra["voided_reason"] = ("duplicate wager: same event/bet recorded more than once "
+                                      "(event re-add or twin board); collapsed to the first copy")
+            n += 1
+    # pending dups: same wager awaiting settlement more than once
+    pend: Dict[tuple, List[Dict[str, Any]]] = {}
+    for p in history:
+        if p.get("settled") or p.get("voided"):
+            continue
+        pend.setdefault(_wager_key(p), []).append(p)
+    for k, g in pend.items():
+        if len(g) < 2:
+            continue
+        g.sort(key=lambda x: (x.get("recorded_at") or "", x.get("date") or ""))
+        for extra in g[1:]:
+            extra["voided"] = True
+            extra["voided_at"] = dt.datetime.now().isoformat(timespec="seconds")
+            extra["voided_reason"] = "duplicate wager: same bet already pending; collapsed to the first copy"
+            n += 1
+    return n
+
+
 def run() -> Dict[str, Any]:
     state = _load(OUT)
     history = state.get("picks") or []
@@ -2677,11 +2746,34 @@ def run() -> Dict[str, Any]:
     today_picks = _collect_picks_from_sources()
     n_added = 0
     now_iso = dt.datetime.now().isoformat(timespec="seconds")
+
+    # ADD-GUARD (one wager = one position): skip a pick whose WAGER is already on
+    # the book. (a) Same wager PENDING -- blocks a future event (UFC fight, golf
+    # outright, tennis match) re-entering daily while it sits on a board, and a
+    # twin board re-recording the same bet the same day. (b) Same wager SETTLED
+    # within 14 days, for one-off EVENT sports only -- a stale board can't re-add
+    # a fight that already happened. Daily sports (MLB etc.) are exempt from (b):
+    # the same player+market tomorrow is a genuinely new game.
+    _EVENT_SPORTS = {"ufc", "golf", "tennis", "cs", "boxing", "f1"}
+    _cutoff = (dt.date.today() - dt.timedelta(days=14)).isoformat()
+    _open_wagers = {_wager_key(p) for p in history if not p.get("settled") and not p.get("voided")}
+    _recent_event_wagers = {
+        _wager_key(p) for p in history
+        if p.get("settled") and not p.get("voided")
+        and _safe_id(p.get("sport")) in _EVENT_SPORTS
+        and str(p.get("settled_at") or "")[:10] >= _cutoff
+    }
+    n_dup_blocked = 0
     for p in today_picks:
         if p["pick_id"] in existing_ids: continue
+        wk = _wager_key(p)
+        if wk in _open_wagers or wk in _recent_event_wagers:
+            n_dup_blocked += 1
+            continue
         p["recorded_at"] = now_iso
         history.append(p)
         existing_ids.add(p["pick_id"])
+        _open_wagers.add(wk)
         n_added += 1
 
     # Backfill newly-carried fields onto PENDING picks collected before a
@@ -2703,6 +2795,12 @@ def run() -> Dict[str, Any]:
     # sport's grader shipped, then settled once it did). Run before the void sweep
     # + stats so nothing is counted as both settled and void.
     n_reconciled = _reconcile_settled_voids(history)
+
+    # One wager = one position: void duplicate copies of the same settled event /
+    # same pending bet (see _collapse_duplicate_wagers). Runs every cycle; the
+    # first run is the big historical correction (~781 duplicate settled picks,
+    # ~+335u of phantom profit, found by the 2026-07-11 audit).
+    n_dups_collapsed = _collapse_duplicate_wagers(history)
 
     # Void picks that can never settle (no outcome feed, > VOID_AFTER_DAYS old)
     # so 'pending' stays honest and the ledger self-cleans.
@@ -2943,6 +3041,8 @@ def run() -> Dict[str, Any]:
         "n_newly_settled_this_run": n_newly_settled,
         "n_resettled_this_run": n_resettled,
         "n_voided_this_run": n_voided_this_run,
+        "n_duplicates_collapsed_this_run": n_dups_collapsed,
+        "n_duplicate_adds_blocked_this_run": n_dup_blocked,
         "n_reconciled_settled_voids": n_reconciled,
         "n_bootstrapped_from_locks_history": n_bootstrapped,
         "by_source": by_source,
