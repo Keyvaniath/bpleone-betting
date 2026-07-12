@@ -1,13 +1,13 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-07-12T14:20:59 UTC_
+_Generated 2026-07-12T15:01:42 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -34
+- **Score:** -3
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 11
-- **Total FADES:** 78
+- **Total STRONG:** 17
+- **Total FADES:** 71
 
 ## Lock of the Night
 - **Subject:** Seth Lugo
@@ -17,18 +17,24 @@ _Generated 2026-07-12T14:20:59 UTC_
 - **Details:** KCR @ BAL
 
 ## Top 5 Curated Picks
-1. **GOLF / Matt Fitzpatrick** (GOLF_PLAYER, score=156.29)
+1. **GOLF / Robert MacIntyre** (GOLF_PLAYER, score=182.36)
+   - Play: Robert MacIntyre (PLAYER_STRONG)
+   - Rationale: Cross-sport top pick (GOLF_PLAYER)
+2. **GOLF / Matt Fitzpatrick** (GOLF_PLAYER, score=178.79)
    - Play: Matt Fitzpatrick (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Michael Thorbjornsen** (GOLF_PLAYER, score=151.86)
-   - Play: Michael Thorbjornsen (PLAYER_STRONG)
-   - Rationale: Cross-sport top pick (GOLF_PLAYER)
+3. **MLB / Junior Caminero** (MLB_BATTER, score=146.38)
+   - Play: Junior Caminero (BATTER_STRONG)
+   - Rationale: Cross-sport top pick (MLB_BATTER)
+4. **MLB / Esmerlyn Valdez** (MLB_BATTER, score=123.5)
+   - Play: Esmerlyn Valdez (BATTER_STRONG)
+   - Rationale: Cross-sport top pick (MLB_BATTER)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
+  - Robert MacIntyre top 10 finish
   - Matt Fitzpatrick top 10 finish
-  - Michael Thorbjornsen top 10 finish
-  - Wyndham Clark top 10 finish
+  - Min Woo Lee top 10 finish
 
 ## Slate ROI Projection
 - **Picks:** 2
@@ -37,13 +43,13 @@ _Generated 2026-07-12T14:20:59 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **NHL** / thatcher demko (GOALIE_FADE)
+- **NHL** / jake oettinger (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / logan thompson_2 (GOALIE_FADE)
+- **NHL** / calvin pickard (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / filip gustavsson (GOALIE_FADE)
+- **NHL** / anthony stolarz (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / stuart skinner (GOALIE_FADE)
+- **NHL** / connor hellebuyck (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / kevin lankinen (GOALIE_FADE)
+- **NHL** / marc-andre fleury (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO

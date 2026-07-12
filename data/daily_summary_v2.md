@@ -1,10 +1,10 @@
 # EdgeStat Daily Summary — 2026-07-12
 
-## 🏥 Model Health: 68.5/100 [OK]
+## 🏥 Model Health: 67.2/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.9/100
-  - 🔴 Hit Rate Trend: 22.5/100
-  - 🔴 Brier Trend: 45.8/100
+  - 🟢 Calibration Freshness: 99.7/100
+  - 🔴 Hit Rate Trend: 15.6/100
+  - 🔴 Brier Trend: 46.7/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 95.5/100
   - 🔴 Edge Count: 57.1/100
@@ -22,8 +22,9 @@
 5. **NYY @ WSN YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
+- [WHALE] **[MLB]** HOU @ TEX ML_HOME -- 69% / +18.6% (score 3.5)
 - [STRONG] **[MLB]** HOU @ TEX TEX_ML -- 73% / +25.2% (score 2.5)
-- [STRONG] **[MLB]** CHC @ CIN CHC_ML -- 69% / +23.4% (score 2.5)
+- [STRONG] **[MLB]** CHC @ CIN CHC_ML -- 69% / +22.1% (score 2.5)
 
 ## 📡 Sharp Action (Line Movement)
 - [ELITE] **HOU @ TEX** ml_home: 45.25% → 57.98% (+12.7pp)
@@ -63,9 +64,9 @@
 - Hot teams: **2** | Cold teams: **2** | Over-heavy: 0 | Under-heavy: 1
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (49)
+## ⚠️ Anomaly Detector (51)
 - STEAM_MOVE: **44**
-- COMPOUND_BULLPEN: **4**
+- COMPOUND_BULLPEN: **6**
 - PEN_MISMATCH: **1**
   - GS @ CON (WNBA): TOTAL steam since open: ML +2.2pp toward CON; total -3 (UNDER) (3 snapshots)
   - MIL @ STL (MLB): ML/TOTAL steam since open: ML +14.4pp toward STL; total +1 (OVER) (7 snapshots)
@@ -75,7 +76,7 @@
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$6.24**
+- Expected EV: **$6.22**
   - #1 [NRFI] $50 on KCR @ BAL YRFI (1st-inning OVER 0.5) (P=76%)
   - #2 [NRFI] $50 on OAK @ CHW YRFI (1st-inning OVER 0.5) (P=72%)
   - #3 [NRFI] $50 on HOU @ TEX YRFI (1st-inning OVER 0.5) (P=71%)
@@ -114,14 +115,14 @@
   - [LEAN] **Ryan Gandra** (10-1-0) vs Zach Reese -- fair -151
 
 ## ⛳ Golf Player Heat (from Genesis Scottish Open)
-  - 🔥 T1 **Michael Thorbjornsen** (USA): -11 total -- finished T1
-  - 🔥 T2 **Matt Fitzpatrick** (England): -11 total -- finished T2
-  - 🔥 T3 **Johnny Keefer** (USA): -10 total -- finished T3
-  - 🔥 T4 **Kevin Roy** (USA): -10 total -- finished T4
-  - 🔥 T5 **Wyndham Clark** (USA): -10 total -- finished T5
+  - 🔥 T1 **Robert MacIntyre** (Scotland): -13 total -- finished T1
+  - 🔥 T2 **Matt Fitzpatrick** (England): -13 total -- finished T2
+  - 🔥 T3 **Chris Gotterup** (USA): -12 total -- finished T3
+  - 🔥 T4 **Tom Kim** (South Korea): -12 total -- finished T4
+  - 🔥 T6 **Victor Perez** (France): -11 total -- finished T6, Sunday -1.2 vs tourney avg
   - ❄️ **Bernd Wiesberger** (Austria): Sunday +6.5 vs tourney avg
+  - ❄️ **Guido Migliozzi** (Italy): Sunday +5.8 vs tourney avg
   - ❄️ **Marcel Siem** (Germany): Sunday +5.0 vs tourney avg
-  - ❄️ **Patrick Cantlay** (USA): Sunday +4.5 vs tourney avg
 
 ## 🔥 MLB Batter Heat (40 HOT / 40 COLD)
   - 🔥 **Luisangel Acuña** (CWS): L14 .400 / season .242 (+158pts)
