@@ -4,7 +4,7 @@
 
 _Pipeline health: **WARNING** (11/15 artifacts ok; 4 empty, 0 stale)._ 
 
-_Generated at 2026-07-13T15:44:41 UTC. Game lines source: **placeholder -110 (no real book today)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-07-13T16:41:52 UTC. Game lines source: **placeholder -110 (no real book today)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
@@ -35,7 +35,7 @@ _Generated at 2026-07-13T15:44:41 UTC. Game lines source: **placeholder -110 (no
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
 
-Cumulative graded plays: 6223. Wins: 2482. Hit rate: 39.9%.
+Cumulative graded plays: 6227. Wins: 2485. Hit rate: 39.9%.
 
 ## Auxiliary Markets (Model Fair Prices)
 

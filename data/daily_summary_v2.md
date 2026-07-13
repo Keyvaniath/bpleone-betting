@@ -1,25 +1,25 @@
 # EdgeStat Daily Summary — 2026-07-13
 
-## 🏥 Model Health: 55.2/100 [OK]
-- Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.9/100
+## 🏥 Model Health: 51.5/100 [DEGRADED]
+- Several components weak - review red items
+  - 🟢 Calibration Freshness: 99.7/100
   - 🔴 Hit Rate Trend: 0/100
-  - 🔴 Brier Trend: 20.6/100
+  - 🔴 Brier Trend: 19.7/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 95.5/100
-  - 🔴 Edge Count: 20.0/100
+  - 🟢 Data Health: 86.4/100
+  - 🔴 Edge Count: 2.9/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.583)
-- **Total games on board:** 111
-- **Strong home favorites:** 2 | **Strong road dogs:** 0
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.585)
+- **Total games on board:** 113
+- **Strong home favorites:** 3 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
 1. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
 2. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
 3. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
-4. **MLS St. Louis CITY SC ML (4-4-6) vs Sporting Kansas City** (65/100 ★★★)
-5. **MLS Seattle Sounders FC ML (7-3-3) vs Portland Timbers** (65/100 ★★★)
+4. **WNBA Atlanta Dream ML (13-10) vs Los Angeles Sparks** (65/100 ★★★)
+5. **MLS St. Louis CITY SC ML (4-4-6) vs Sporting Kansas City** (65/100 ★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
 - [STRONG] **[MLB]** CIN @ COL CIN_ML -- 65% / +24.4% (score 2.5)
@@ -70,14 +70,14 @@
   - ATL @ STL (MLB): ML/TOTAL steam since open: ML +10.5pp toward STL; total +0.5 (OVER) (7 snapshots)
   - SEA @ LA (WNBA): TOTAL steam since open: ML +0.7pp toward LA; total +2 (OVER) (5 snapshots)
 
-## 💰 Today's Portfolio (6 picks)
-- Total stake: **$165.0** (16.5% of $1000 bankroll)
-- Expected EV: **$-7.62**
+## 💰 Today's Portfolio (7 picks)
+- Total stake: **$185.0** (18.5% of $1000 bankroll)
+- Expected EV: **$-7.59**
   - #1 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #2 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
   - #3 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
-  - #4 [MLS] $20 on MLS St. Louis CITY SC ML (4-4-6) vs Sporting Kansas City (P=55%)
-  - #5 [MLS] $20 on MLS Seattle Sounders FC ML (7-3-3) vs Portland Timbers (P=67%)
+  - #4 [WNBA] $20 on WNBA Atlanta Dream ML (13-10) vs Los Angeles Sparks (P=56%)
+  - #5 [MLS] $20 on MLS St. Louis CITY SC ML (4-4-6) vs Sporting Kansas City (P=55%)
 
 ## 🎯 Convergence Picks (4 stacked games)
 - ELITE: **0** · HIGH: 0 · MED: 4
