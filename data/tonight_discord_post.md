@@ -2,8 +2,8 @@
 _NO_ACTION_NIGHT_ | L:0 S:9 F:41
 
 :dart: **Top Picks:**
-1. [GOLF] Ben Silverman -- Ben Silverman (PLAYER_STRONG)
-2. [GOLF] Kristoffer Ventura -- Kristoffer Ventura (PLAYER_STRONG)
+1. [GOLF] Taylor Pendrith -- Taylor Pendrith (PLAYER_STRONG)
+2. [GOLF] Aaron Wise -- Aaron Wise (PLAYER_STRONG)
 3. [WNBA] napheesa collier -- napheesa collier (PLAYER_STRONG)
 
 :chains: **Top Parlays:**

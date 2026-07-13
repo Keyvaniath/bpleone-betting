@@ -1,13 +1,13 @@
 # EdgeStat Daily Summary — 2026-07-13
 
-## 🏥 Model Health: 51.5/100 [DEGRADED]
+## 🏥 Model Health: 53.6/100 [DEGRADED]
 - Several components weak - review red items
-  - 🟢 Calibration Freshness: 99.7/100
+  - 🟢 Calibration Freshness: 100.0/100
   - 🔴 Hit Rate Trend: 0/100
   - 🔴 Brier Trend: 19.7/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 86.4/100
-  - 🔴 Edge Count: 2.9/100
+  - 🟢 Data Health: 95.5/100
+  - 🔴 Edge Count: 5.7/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.585)
@@ -62,13 +62,14 @@
 - Hot teams: **2** | Cold teams: **1** | Over-heavy: 0 | Under-heavy: 1
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (43)
+## ⚠️ Anomaly Detector (46)
+- RESIDUAL_DIVERGENCE: **3**
 - STEAM_MOVE: **43**
+  - Los Angeles Sparks (WNBA): Los Angeles Sparks OUTPERFORMING expected margin by 7.0pts in recent games -- model bias may persist
+  - Minnesota Lynx (WNBA): Minnesota Lynx OUTPERFORMING expected margin by 6.7pts in recent games -- model bias may persist
+  - Phoenix Mercury (WNBA): Phoenix Mercury UNDERPERFORMING expected margin by 13.6pts in recent games -- model bias may persist
   - GS @ CON (WNBA): TOTAL steam since open: ML +2.2pp toward CON; total -3 (UNDER) (3 snapshots)
   - MIL @ STL (MLB): ML/TOTAL steam since open: ML +14.4pp toward STL; total +1 (OVER) (7 snapshots)
-  - NYM @ ATL (MLB): ML/TOTAL steam since open: ML -11.8pp toward NYM; total +1 (OVER) (7 snapshots)
-  - ATL @ STL (MLB): ML/TOTAL steam since open: ML +10.5pp toward STL; total +0.5 (OVER) (7 snapshots)
-  - SEA @ LA (WNBA): TOTAL steam since open: ML +0.7pp toward LA; total +2 (OVER) (5 snapshots)
 
 ## 💰 Today's Portfolio (7 picks)
 - Total stake: **$185.0** (18.5% of $1000 bankroll)
@@ -79,10 +80,11 @@
   - #4 [WNBA] $20 on WNBA Atlanta Dream ML (13-10) vs Los Angeles Sparks (P=56%)
   - #5 [MLS] $20 on MLS St. Louis CITY SC ML (4-4-6) vs Sporting Kansas City (P=55%)
 
-## 🎯 Convergence Picks (4 stacked games)
-- ELITE: **0** · HIGH: 0 · MED: 4
+## 🎯 Convergence Picks (5 stacked games)
+- ELITE: **1** · HIGH: 1 · MED: 3
+  - [ELITE] Phoenix Mercury @ Minnesota Lynx : 4 signals (HEAT_COLD, ANOMALY, ANOMALY, ATS)
+  - [HIGH] Los Angeles Sparks @ Atlanta Dream : 3 signals (PREGAME, ANOMALY, ATS)
   - [MED] New York Knicks @ San Antonio Spurs : 2 signals (ATS, ATS)
-  - [MED] Indiana Fever @ Las Vegas Aces : 2 signals (HEAT_COLD, ATS)
   - [MED] Portland Timbers @ Seattle Sounders FC : 2 signals (PREGAME, ATS)
   - [MED] Coventry City @ Arsenal : 2 signals (PREGAME, ATS)
 
@@ -124,6 +126,9 @@
   - ❄️ **Oswald Peraza** (LAA): L14 .079 / season .239 (-160pts) -- FADE props
   - ❄️ **Paul Goldschmidt** (NYY): L14 .104 / season .258 (-154pts) -- FADE props
   - ❄️ **Henry Bolte** (ATH): L14 .120 / season .261 (-141pts) -- FADE props
+
+## 📈 Streak Regression Alerts (1)
+- [WNBA] Phoenix Mercury on L3 L10 1-3 -- Phoenix Mercury on L3 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**
