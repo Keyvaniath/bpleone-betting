@@ -1,25 +1,25 @@
 # EdgeStat Daily Summary — 2026-07-13
 
-## 🏥 Model Health: 67.3/100 [OK]
+## 🏥 Model Health: 55.2/100 [OK]
 - Operational but room to improve - check yellow components
   - 🟢 Calibration Freshness: 99.9/100
-  - 🔴 Hit Rate Trend: 15.6/100
-  - 🔴 Brier Trend: 46.7/100
+  - 🔴 Hit Rate Trend: 0/100
+  - 🔴 Brier Trend: 20.6/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 95.5/100
-  - 🔴 Edge Count: 57.1/100
+  - 🔴 Edge Count: 20.0/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.582)
-- **Total games on board:** 127
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.583)
+- **Total games on board:** 111
 - **Strong home favorites:** 2 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
 1. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
 2. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
 3. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
-4. **GOLF Ben James TOP10 @ 568 (ISCO Championship)** (78/100 ★★★★★)
-5. **GOLF Stephan Jaeger TOP10 @ 554 (ISCO Championship)** (78/100 ★★★★★)
+4. **MLS St. Louis CITY SC ML (4-4-6) vs Sporting Kansas City** (65/100 ★★★)
+5. **MLS Seattle Sounders FC ML (7-3-3) vs Portland Timbers** (65/100 ★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
 - [STRONG] **[MLB]** CIN @ COL CIN_ML -- 65% / +24.4% (score 2.5)
@@ -30,7 +30,7 @@
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-58** (84.1% hit rate)
 - Net units: **+10.40u** | ROI: **+46.0%**
-- Last 7d: 17-9 (65.4%) | net +0.22u
+- Last 7d: 10-6 (62.5%) | net +0.08u
 
 **Today's 5 Locks:**
 - [KBO] **Choi Jeong** one_plus_tb · p=73% edge=+39.8% qK=0.062u
@@ -70,22 +70,21 @@
   - ATL @ STL (MLB): ML/TOTAL steam since open: ML +10.5pp toward STL; total +0.5 (OVER) (7 snapshots)
   - SEA @ LA (WNBA): TOTAL steam since open: ML +0.7pp toward LA; total +2 (OVER) (5 snapshots)
 
-## 💰 Today's Portfolio (9 picks)
-- Total stake: **$270.0** (27.0% of $1000 bankroll)
-- Expected EV: **$-7.59**
+## 💰 Today's Portfolio (6 picks)
+- Total stake: **$165.0** (16.5% of $1000 bankroll)
+- Expected EV: **$-7.62**
   - #1 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #2 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
   - #3 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
-  - #4 [GOLF] $35 on GOLF Ben James TOP10 @ 568 (ISCO Championship) (P=15%)
-  - #5 [GOLF] $35 on GOLF Stephan Jaeger TOP10 @ 554 (ISCO Championship) (P=15%)
+  - #4 [MLS] $20 on MLS St. Louis CITY SC ML (4-4-6) vs Sporting Kansas City (P=55%)
+  - #5 [MLS] $20 on MLS Seattle Sounders FC ML (7-3-3) vs Portland Timbers (P=67%)
 
-## 🎯 Convergence Picks (7 stacked games)
-- ELITE: **0** · HIGH: 1 · MED: 6
-  - [HIGH] Indiana Fever @ Las Vegas Aces : 3 signals (PREGAME, HEAT_COLD, ATS)
+## 🎯 Convergence Picks (4 stacked games)
+- ELITE: **0** · HIGH: 0 · MED: 4
   - [MED] New York Knicks @ San Antonio Spurs : 2 signals (ATS, ATS)
-  - [MED] New York Liberty @ Toronto Tempo : 2 signals (HEAT_COLD, ATS)
-  - [MED] Seattle Storm @ Washington Mystics : 2 signals (ATS, ATS)
-  - [MED] Chicago Sky @ Dallas Wings : 2 signals (PREGAME, HEAT_COLD)
+  - [MED] Indiana Fever @ Las Vegas Aces : 2 signals (HEAT_COLD, ATS)
+  - [MED] Portland Timbers @ Seattle Sounders FC : 2 signals (PREGAME, ATS)
+  - [MED] Coventry City @ Arsenal : 2 signals (PREGAME, ATS)
 
 ## 🏀 NBA Player Heat (18 HOT / 23 COLD)
   - 🔥 **Jeremiah Fears** (NO): L5 31.8/5.8/6.0 vs season 16.9/3.2/4.0 [PTS +14.9, REB +2.6, AST +2.0]
@@ -97,19 +96,19 @@
   - ❄️ **Bones Hyland** (MIN): L5 0.8 vs season 9.2 [PTS -8.4] -- FADE OVER props
   - ❄️ **Nickeil Alexander-Walker** (ATL): L5 13.0 vs season 21.3 [PTS -8.3] -- FADE OVER props
 
-## 🥊 UFC Fight Matchups (UFC 329: McGregor vs. Holloway 2)
-  - [FAVORITE] **Gable Steveson** (4-0-0) vs Elisha Ellison -- fair -237
-  - [FAVORITE] **Farid Basharat** (16-0-0) vs John Garza -- fair -191
-  - [LEAN] **Luke Riley** (14-0-0) vs Kai Kamaka III -- fair -185
-  - [LEAN] **Damian Pinas** (10-1-0) vs Cesar Almeida -- fair -164
-  - [LEAN] **Ryan Gandra** (10-1-0) vs Zach Reese -- fair -151
+## 🥊 UFC Fight Matchups (UFC Fight Night: Du Plessis vs. Usman)
+  - [LEAN] **Levi Rodrigues Jr.** (5-0-0) vs Felipe Franco -- fair -143
+  - [LEAN] **Christian Leroy Duncan** (14-2-0) vs Jared Cannonier -- fair -142
+  - [LEAN] **Anna Melisano** (6-1-0) vs Dione Barbosa -- fair -141
+  - [LEAN] **RJ Harris** (5-0-0) vs Alvin Hines -- fair -133
+  - [COIN_FLIP] **Fatima Kline** (9-1-0) vs Tabatha Ricci -- fair -132
 
 ## ⛳ Golf Player Heat (from ISCO Championship)
-  - 🔥 T1 **Taylor Pendrith** (Canada): -16 total -- finished T1, Sunday -1.0 vs tourney avg
-  - 🔥 T2 **Steven Fisk** (USA): -16 total -- finished T2
+  - 🔥 T1 **Steven Fisk** (USA): -16 total -- finished T1
+  - 🔥 T2 **Taylor Pendrith** (Canada): -15 total -- finished T2
   - 🔥 T3 **Ben Silverman** (Canada): -15 total -- finished T3, Sunday -0.2 vs tourney avg
   - 🔥 T4 **Aaron Wise** (USA): -15 total -- finished T4
-  - 🔥 T5 **Kris Ventura** (Norway): -14 total -- finished T5, Sunday -0.5 vs tourney avg
+  - 🔥 T5 **Kristoffer Ventura** (Norway): -14 total -- finished T5, Sunday -0.5 vs tourney avg
   - ❄️ **Christo Lamprecht** (South Africa): Sunday +7.5 vs tourney avg
   - ❄️ **Chan Kim** (USA): Sunday +7.0 vs tourney avg
   - ❄️ **Jeffrey Kang** (USA): Sunday +5.0 vs tourney avg
@@ -125,9 +124,6 @@
   - ❄️ **Oswald Peraza** (LAA): L14 .079 / season .239 (-160pts) -- FADE props
   - ❄️ **Paul Goldschmidt** (NYY): L14 .104 / season .258 (-154pts) -- FADE props
   - ❄️ **Henry Bolte** (ATH): L14 .120 / season .261 (-141pts) -- FADE props
-
-## 📈 Streak Regression Alerts (1)
-- [WNBA] Dallas Wings on W4 L10 4-1 -- Dallas Wings on W4 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**

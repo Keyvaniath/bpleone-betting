@@ -13,30 +13,30 @@
       "stderr_truncated": ""
     },
     "data": {
-      "duration_s": 1.8,
+      "duration_s": 2.0,
       "exit_code": 0,
-      "summary": "SUMMARY: 311 ok / 3 empty / 346 flagged / 0 stale24h / 0 stale72h",
+      "summary": "SUMMARY: 312 ok / 3 empty / 345 flagged / 0 stale24h / 0 stale72h",
       "stderr_truncated": ""
     },
     "data_health": {
-      "duration_s": 1.0,
+      "duration_s": 0.7,
       "exit_code": 0,
       "summary": "[OK] desks              | 7 desk producers fresh",
       "stderr_truncated": ""
     }
   },
-  "generated_at": "2026-07-13T08:09:09",
-  "total_duration_s": 4.3,
+  "generated_at": "2026-07-13T15:44:55",
+  "total_duration_s": 4.1,
   "artifacts": {
     "module_import_audit.json": {
-      "generated_at": "2026-07-13T08:09:06",
+      "generated_at": "2026-07-13T15:44:53",
       "n_total": 608,
       "n_ok": 608,
       "n_fail": 0,
       "failures": []
     },
     "html_audit.json": {
-      "generated_at": "2026-07-13T08:09:06",
+      "generated_at": "2026-07-13T15:44:53",
       "summary": {
         "ok": 108,
         "no_nav_js": 14,
@@ -221,14 +221,14 @@
       }
     },
     "data_stub_audit.json": {
-      "generated_at": "2026-07-13T08:09:08",
+      "generated_at": "2026-07-13T15:44:55",
       "summary": {
         "empty": 3,
         "stub_flagged": 0,
-        "zero_count": 346,
+        "zero_count": 345,
         "stale_24h": 0,
         "stale_72h": 0,
-        "ok": 311
+        "ok": 312
       },
       "empty": [
         [
@@ -334,20 +334,16 @@
           "n_stale_or_missing=0"
         ],
         [
-          "data_health.json",
-          "n_red=0"
-        ],
-        [
           "data_source_health.json",
           "contains 'sample'"
         ],
         [
-          "elite_alerts_board.json",
-          "n_elites=0"
+          "drift_alerts.json",
+          "n_alerts=0"
         ],
         [
-          "espn_odds.json",
-          "n_priced=0"
+          "elite_alerts_board.json",
+          "n_elites=0"
         ],
         [
           "esports_alerts.json",
@@ -392,6 +388,10 @@
         [
           "golf_round_score_props.json",
           "n_strong_edges=0"
+        ],
+        [
+          "golf_top_finish_props.json",
+          "n_strong=0"
         ],
         [
           "golf_tournament_preview.json",
@@ -490,10 +490,6 @@
           "n_alerts=0"
         ],
         [
-          "live_locks_status.json",
-          "n_locks_today=0"
-        ],
-        [
           "live_momentum.json",
           "n_games=0; n_alerts=0"
         ],
@@ -511,7 +507,7 @@
         ],
         [
           "locks_history.json",
-          "n_newly_settled_this_run=0"
+          "n_added_this_run=0; n_newly_settled_this_run=0"
         ],
         [
           "lol_parlays.json",
@@ -1379,7 +1375,7 @@
         ],
         [
           "prediction_log.json",
-          "n_new_this_run=0"
+          "n_new_this_run=0; n_settled_this_run=0"
         ],
         [
           "prizepicks_lines.json",
@@ -1482,10 +1478,6 @@
           "n_alerts=0"
         ],
         [
-          "survivor_pool.json",
-          "n_candidates=0; n_locks=0; n_strong=0"
-        ],
-        [
           "tennis_1st_set_winner.json",
           "n_matches=0; n_strong_edges=0"
         ],
@@ -1586,6 +1578,10 @@
           "n_drifts=0"
         ],
         [
+          "wnba_extended_props.json",
+          "n_active_teams=0"
+        ],
+        [
           "wnba_game_preview.json",
           "n_games=0; n_locks=0; n_strong=0"
         ],
@@ -1634,11 +1630,11 @@
       "stale_72h": []
     },
     "data_health.json": {
-      "generated_at": "2026-07-13T08:09:09",
-      "overall": "yellow",
-      "n_green": 10,
+      "generated_at": "2026-07-13T15:44:55",
+      "overall": "red",
+      "n_green": 9,
       "n_yellow": 1,
-      "n_red": 0,
+      "n_red": 1,
       "checks": [
         {
           "feed": "freshness",
@@ -1653,8 +1649,8 @@
             "sport_coverage.json": 0.0,
             "todays_top_plays.json": 0.0,
             "alpha_pick_of_day.json": 0.0,
-            "alerts_feed.json": 0.4,
-            "calibration_map.json": 0.3,
+            "alerts_feed.json": 0.5,
+            "calibration_map.json": 0.2,
             "espn_odds.json": 0.0
           }
         },
@@ -1670,7 +1666,7 @@
           "upstream_final": 0,
           "local_count": 3,
           "local_live": 0,
-          "live_state_age_min": 16
+          "live_state_age_min": 11
         },
         {
           "feed": "nba",
@@ -1681,18 +1677,18 @@
           "upstream_count": 1,
           "local_count": 1,
           "upstream_live": 0,
-          "local_age_min": 15
+          "local_age_min": 10
         },
         {
           "feed": "wnba",
-          "status": "green",
+          "status": "red",
           "findings": [
-            "4 events matched (0 live)"
+            "WNBA count mismatch: local=4 vs ESPN=2"
           ],
-          "upstream_count": 4,
+          "upstream_count": 2,
           "local_count": 4,
           "upstream_live": 0,
-          "local_age_min": 16
+          "local_age_min": 11
         },
         {
           "feed": "nhl",
@@ -1703,7 +1699,7 @@
           "upstream_count": 7,
           "local_count": 7,
           "upstream_live": 0,
-          "local_age_min": 15
+          "local_age_min": 10
         },
         {
           "feed": "mls",
@@ -1714,7 +1710,7 @@
           "upstream_count": 4,
           "local_count": 4,
           "upstream_live": 0,
-          "local_age_min": 16
+          "local_age_min": 11
         },
         {
           "feed": "epl",
@@ -1725,7 +1721,7 @@
           "upstream_count": 1,
           "local_count": 1,
           "upstream_live": 0,
-          "local_age_min": 16
+          "local_age_min": 11
         },
         {
           "feed": "pitcher_matchup",
@@ -1741,7 +1737,7 @@
           "feed": "props",
           "status": "yellow",
           "findings": [
-            "Odds key VALID but quota running low (94 requests left this month) -- prop fetches stop when it hits 0.",
+            "Odds key VALID but quota running low (85 requests left this month) -- prop fetches stop when it hits 0.",
             "Game lines + model/calibration boards unaffected (they don't need the paid key)."
           ],
           "n_props": 0,
@@ -1756,7 +1752,7 @@
           ],
           "upstream_players": 300,
           "local_players": 144,
-          "local_age_min": 16
+          "local_age_min": 11
         },
         {
           "feed": "desks",
@@ -1767,11 +1763,11 @@
           "n_stale": 0,
           "ages_h": {
             "tennis_state.json": 0.0,
-            "ufc_state.json": 9.2,
-            "f1_state.json": 9.2,
-            "kbo_state.json": 1.3,
-            "cs_state.json": 1.3,
-            "cws_state.json": 9.2,
+            "ufc_state.json": 7.6,
+            "f1_state.json": 7.6,
+            "kbo_state.json": 7.6,
+            "cs_state.json": 7.6,
+            "cws_state.json": 7.6,
             "worldcup_cards.json": 0.0
           }
         }

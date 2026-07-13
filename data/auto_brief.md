@@ -6,7 +6,7 @@ _0% lineups confirmed_
 
 ## Slate
 - **3 games** scheduled
-- **12 best bets** scored: 0 DK · 0 PP · 0 NRFI · 0 SGP
+- **6 best bets** scored: 0 DK · 0 PP · 0 NRFI · 0 SGP
 
 ## Top 5 Best Bets
 1. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
@@ -18,20 +18,14 @@ _0% lineups confirmed_
 3. **LOL Peyz OVER 4.5 Kills**  (78/100 ****, edge —)
    - Player prop quality score 1.184
    - Elite player
-4. **GOLF Ben James TOP10 @ 568 (ISCO Championship)**  (78/100 *****, edge —)
-   - P(top 10) 15.0% -- safest finish bet (#17 (-11)).
-5. **GOLF Stephan Jaeger TOP10 @ 554 (ISCO Championship)**  (78/100 *****, edge —)
-   - P(top 10) 15.3% -- safest finish bet (#20 (-11)).
+4. **MLS St. Louis CITY SC ML (4-4-6) vs Sporting Kansas City**  (65/100 ***, edge —)
+   - ELO 1500.0 vs 1524.9; HFA included
+5. **MLS Seattle Sounders FC ML (7-3-3) vs Portland Timbers**  (65/100 ***, edge —)
+   - ELO 1610.5 vs 1550.0; HFA included
 
 ## Bullpens GASSED tonight
-Athletics, Pittsburgh Pirates, San Diego Padres, Seattle Mariners, St. Louis Cardinals, Tampa Bay Rays, Texas Rangers, Toronto Blue Jays
+Pittsburgh Pirates, San Diego Padres, Seattle Mariners, St. Louis Cardinals, Tampa Bay Rays, Texas Rangers, Toronto Blue Jays, Atlanta Braves
 _Lean late-inning OVER on these games; fade their save situations._
-
-## Golf -- ISCO Championship
-- **Leader:** Taylor Pendrith (-16) at #1
-- **Field:** 144 players  |  Status: In Progress
-- **Play of the Tournament:** Ben James TOP10 @ +568 (model 15.0%, HIGH)
-   - P(top 10) 15.0% -- safest finish bet (#17 (-11)).
 
 ## NBA -- PLAYOFFS
 - New York Knicks @ San Antonio Spurs (53-29 vs 62-20) 94-90 | P(home) 0.0% fair +0 | Final
