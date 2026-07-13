@@ -1,25 +1,25 @@
-# EdgeStat Daily Summary — 2026-07-12
+# EdgeStat Daily Summary — 2026-07-13
 
-## 🏥 Model Health: 66.3/100 [OK]
+## 🏥 Model Health: 67.3/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.5/100
+  - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 15.6/100
   - 🔴 Brier Trend: 46.7/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 90.9/100
+  - 🟢 Data Health: 95.5/100
   - 🔴 Edge Count: 57.1/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.584)
-- **Total games on board:** 113
-- **Strong home favorites:** 3 | **Strong road dogs:** 0
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.582)
+- **Total games on board:** 127
+- **Strong home favorites:** 2 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
-1. **KCR @ BAL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-2. **OAK @ CHW YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-3. **HOU @ TEX YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-4. **TOR @ SDP YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-5. **NYY @ WSN YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
+1. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
+2. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
+3. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
+4. **GOLF Ben James TOP10 @ 568 (ISCO Championship)** (78/100 ★★★★★)
+5. **GOLF Stephan Jaeger TOP10 @ 554 (ISCO Championship)** (78/100 ★★★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
 - [STRONG] **[MLB]** CIN @ COL CIN_ML -- 65% / +24.4% (score 2.5)
@@ -54,31 +54,30 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (3)
-- [WNBA] **Dallas Wings** HOME (4-1 L10) · model 72.7% fair -266
+## ⚡ Pre-Game HIGH Conviction (2)
 - [MLS] **CF Montréal** HOME (None L10) · model 71.5% fair -251
 - [MLS] **Seattle Sounders FC** HOME (0-1 L10) · model 66.7% fair -200
 
 ## 🔥/❄️ Heat / Cold Signals
-- Hot teams: **2** | Cold teams: **2** | Over-heavy: 0 | Under-heavy: 1
+- Hot teams: **2** | Cold teams: **1** | Over-heavy: 0 | Under-heavy: 1
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (47)
-- STEAM_MOVE: **47**
+## ⚠️ Anomaly Detector (43)
+- STEAM_MOVE: **43**
   - GS @ CON (WNBA): TOTAL steam since open: ML +2.2pp toward CON; total -3 (UNDER) (3 snapshots)
   - MIL @ STL (MLB): ML/TOTAL steam since open: ML +14.4pp toward STL; total +1 (OVER) (7 snapshots)
-  - TOR @ SEA (MLB): ML/TOTAL steam since open: ML +13.5pp toward SEA; total +0.5 (OVER) (7 snapshots)
   - NYM @ ATL (MLB): ML/TOTAL steam since open: ML -11.8pp toward NYM; total +1 (OVER) (7 snapshots)
   - ATL @ STL (MLB): ML/TOTAL steam since open: ML +10.5pp toward STL; total +0.5 (OVER) (7 snapshots)
+  - SEA @ LA (WNBA): TOTAL steam since open: ML +0.7pp toward LA; total +2 (OVER) (5 snapshots)
 
 ## 💰 Today's Portfolio (9 picks)
-- Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$6.2**
-  - #1 [NRFI] $50 on KCR @ BAL YRFI (1st-inning OVER 0.5) (P=76%)
-  - #2 [NRFI] $50 on OAK @ CHW YRFI (1st-inning OVER 0.5) (P=72%)
-  - #3 [NRFI] $50 on HOU @ TEX YRFI (1st-inning OVER 0.5) (P=71%)
-  - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
-  - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
+- Total stake: **$270.0** (27.0% of $1000 bankroll)
+- Expected EV: **$-7.59**
+  - #1 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
+  - #2 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
+  - #3 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
+  - #4 [GOLF] $35 on GOLF Ben James TOP10 @ 568 (ISCO Championship) (P=15%)
+  - #5 [GOLF] $35 on GOLF Stephan Jaeger TOP10 @ 554 (ISCO Championship) (P=15%)
 
 ## 🎯 Convergence Picks (7 stacked games)
 - ELITE: **0** · HIGH: 1 · MED: 6
@@ -106,16 +105,16 @@
   - [LEAN] **Ryan Gandra** (10-1-0) vs Zach Reese -- fair -151
 
 ## ⛳ Golf Player Heat (from ISCO Championship)
-  - 🔥 T1 **Taylor Pendrith** (Canada): -15 total -- finished T1, Sunday -0.2 vs tourney avg
-  - 🔥 T2 **Steven Fisk** (USA): -15 total -- finished T2
-  - 🔥 T4 **Davis Chatfield** (USA): -14 total -- finished T4, Sunday -0.5 vs tourney avg
+  - 🔥 T1 **Taylor Pendrith** (Canada): -16 total -- finished T1, Sunday -1.0 vs tourney avg
+  - 🔥 T2 **Steven Fisk** (USA): -16 total -- finished T2
+  - 🔥 T3 **Ben Silverman** (Canada): -15 total -- finished T3, Sunday -0.2 vs tourney avg
+  - 🔥 T4 **Aaron Wise** (USA): -15 total -- finished T4
   - 🔥 T5 **Kris Ventura** (Norway): -14 total -- finished T5, Sunday -0.5 vs tourney avg
-  - 🔥 T6 **Ben Silverman** (Canada): -14 total -- finished T6
   - ❄️ **Christo Lamprecht** (South Africa): Sunday +7.5 vs tourney avg
-  - ❄️ **Chan Kim** (USA): Sunday +5.5 vs tourney avg
+  - ❄️ **Chan Kim** (USA): Sunday +7.0 vs tourney avg
   - ❄️ **Jeffrey Kang** (USA): Sunday +5.0 vs tourney avg
 
-## 🔥 MLB Batter Heat (37 HOT / 36 COLD)
+## 🔥 MLB Batter Heat (38 HOT / 36 COLD)
   - 🔥 **Luisangel Acuña** (CWS): L14 .400 / season .242 (+158pts)
   - 🔥 **James Wood** (WSH): L14 .400 / season .279 (+121pts)
   - 🔥 **Garrett Mitchell** (MIL): L14 .392 / season .274 (+118pts)
@@ -127,8 +126,7 @@
   - ❄️ **Paul Goldschmidt** (NYY): L14 .104 / season .258 (-154pts) -- FADE props
   - ❄️ **Henry Bolte** (ATH): L14 .120 / season .261 (-141pts) -- FADE props
 
-## 📈 Streak Regression Alerts (2)
-- [WNBA] Toronto Tempo on L3 L10 0-3 -- Toronto Tempo on L3 -- no historical sample
+## 📈 Streak Regression Alerts (1)
 - [WNBA] Dallas Wings on W4 L10 4-1 -- Dallas Wings on W4 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
@@ -139,5 +137,5 @@
   - ⚠️ batter_rbis (Brier Δ -0.0052)
 
 ## 🤖 Self-Training Status
-- **WNBA**: n=31 games · hit rate 38.7% · bias +13.3pp [calibration applied]
-- **MLB**: n=191 games · hit rate 55.0% · bias +3.0pp [calibration applied]
+- **WNBA**: n=31 games · hit rate 51.6% · bias +6.6pp [calibration applied]
+- **MLB**: n=191 games · hit rate 52.9% · bias +4.2pp [calibration applied]

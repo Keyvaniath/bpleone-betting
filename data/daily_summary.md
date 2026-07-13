@@ -1,10 +1,10 @@
-# EdgeStat Daily Brief - 2026-07-12
+# EdgeStat Daily Brief - 2026-07-13
 
-**Model Confidence: 21.7/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
+**Model Confidence: 22.0/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
 
-_Pipeline health: **WARNING** (12/15 artifacts ok; 3 empty, 0 stale)._ 
+_Pipeline health: **WARNING** (11/15 artifacts ok; 4 empty, 0 stale)._ 
 
-_Generated at 2026-07-12T22:57:10 UTC. Game lines source: **placeholder -110 (no real book today)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-07-13T08:08:55 UTC. Game lines source: **placeholder -110 (no real book today)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
@@ -35,7 +35,7 @@ _Generated at 2026-07-12T22:57:10 UTC. Game lines source: **placeholder -110 (no
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
 
-Cumulative graded plays: 6146. Wins: 2427. Hit rate: 39.5%.
+Cumulative graded plays: 6189. Wins: 2455. Hit rate: 39.7%.
 
 ## Auxiliary Markets (Model Fair Prices)
 
@@ -49,22 +49,22 @@ Cumulative graded plays: 6146. Wins: 2427. Hit rate: 39.5%.
 
 **Hot:** BOS 9-1 (W9, +26), PIT 7-3 (W3, +24), BAL 7-3 (W4, +19), MIN 7-3 (W2, +17), DET 7-3 (L2, +17)
 
-**Cold:** ATH 1-9 (L9, -41), PHI 5-5 (W2, -20), NYM 4-6 (L3, -16), LAD 5-5 (L2, -12), TEX 5-5 (W1, -12)
+**Cold:** ATH 1-9 (L9, -41), PHI 5-5 (W2, -20), NYM 4-6 (L3, -16), TEX 5-5 (W1, -12), LAA 2-8 (L2, -10)
 
 ## Gassed Bullpens (> 8.0 IP in 2 days)
 
-- ATH: 11.4 IP across 3 games
 - PIT: 11.3 IP across 3 games
-- SD: 10.5 IP across 2 games
-- SEA: 10.5 IP across 3 games
-- STL: 12.6 IP across 3 games
-- TB: 11.7 IP across 3 games
-- TEX: 9.0 IP across 3 games
-- TOR: 10.2 IP across 2 games
+- SD: 11.3 IP across 2 games
+- SEA: 8.2 IP across 2 games
+- TB: 8.5 IP across 2 games
+- TOR: 8.1 IP across 2 games
+- ATL: 9.7 IP across 2 games
+- CWS: 11.3 IP across 2 games
+- MIA: 10.3 IP across 2 games
 
 ## Loop Activity (since last refresh)
 
-- Confidence delta: **+0.0**
+- Confidence delta: **+0.3**
 
 ## Model Recommendations (operator review)
 
