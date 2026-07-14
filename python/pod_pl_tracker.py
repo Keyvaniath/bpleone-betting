@@ -181,6 +181,18 @@ def run() -> Dict[str, Any]:
         pod = _pick_today_pod()
         if pod and pod.get("matchup") and pod.get("label"):
             decimal_odds = _american_to_decimal(pod.get("market_price")) or 1.91
+            # PRICE SANITY: during odds-feed outages the upstream POD can carry a
+            # garbage price (2026-07-12: TEX_ML "priced" +2100 with model 52% ->
+            # "edge 1053%" -> settled as a +21u phantom on the homepage record).
+            # A POD is a high-confidence play; if the price implies a longshot
+            # (>+1000) or an absurd model edge (>100%), the PRICE is what's
+            # broken -- record at the model's fair price instead and flag it.
+            mp = pod.get("model_prob")
+            price_suspect = False
+            implied_edge = (mp * decimal_odds - 1) if (mp and decimal_odds) else 0
+            if decimal_odds > 11.0 or implied_edge > 1.0:
+                price_suspect = True
+                decimal_odds = round(1.0 / mp, 3) if mp and mp > 0.05 else 1.91
             entry = {
                 "date": today_str,
                 "recorded_at": dt.datetime.now().isoformat(timespec="seconds"),
@@ -190,6 +202,7 @@ def run() -> Dict[str, Any]:
                 "market_price": pod.get("market_price"),
                 "decimal_odds": round(decimal_odds, 3),
                 "raw_edge_pct": pod.get("edge_pct"),   # tracking what was called, not "true" edge
+                "price_suspect": price_suspect,
                 "settled": False,
                 "result": "pending",
                 "payout_units": None,
@@ -197,6 +210,26 @@ def run() -> Dict[str, Any]:
             }
             history.append(entry)
             n_added = 1
+
+    # REPAIR (idempotent): fix already-settled entries whose payout was computed
+    # from a glitched price -- re-derive at the model's fair odds and flag.
+    for pod in history:
+        if not pod.get("settled") or pod.get("payout_corrected"):
+            continue
+        dec = pod.get("decimal_odds") or 0
+        mp = pod.get("model_prob")
+        edge = (mp * dec - 1) if (mp and dec) else 0
+        if dec > 11.0 or edge > 1.0:
+            fair = round(1.0 / mp, 3) if mp and mp > 0.05 else 1.91
+            pod["decimal_odds"] = fair
+            pod["price_suspect"] = True
+            pod["payout_corrected"] = True
+            pod["correction_note"] = ("payout re-derived at model fair odds; recorded "
+                                      "price was a feed glitch (implausible for a POD)")
+            if pod.get("result") == "won":
+                pod["payout_units"] = round(fair - 1, 3)
+            elif pod.get("result") == "lost":
+                pod["payout_units"] = -1.0
 
     # Settle any pending entries
     n_newly_settled = 0
