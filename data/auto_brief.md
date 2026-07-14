@@ -6,7 +6,9 @@ _100% lineups confirmed_
 
 ## Slate
 - **1 games** scheduled
-- **6 best bets** scored: 0 DK · 0 PP · 0 NRFI · 0 SGP
+- **7 best bets** scored: 0 DK · 0 PP · 1 NRFI · 0 SGP
+- **Auto-portfolio:** 1 picks, $10.81 stake (1.08%), expected +$0.42
+- **MC simulation:** EV +$0.43, 54% P(profit), p05 $-10.81 / p95 $9.83
 
 ## Top 5 Best Bets
 1. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
@@ -18,13 +20,17 @@ _100% lineups confirmed_
 3. **LOL Peyz OVER 4.5 Kills**  (78/100 ****, edge —)
    - Player prop quality score 1.184
    - Elite player
-4. **MLS St. Louis CITY SC ML (4-4-6) vs Sporting Kansas City**  (65/100 ***, edge —)
+4. **AME @ NAT YRFI (1st-inning OVER 0.5)**  (68/100 ***, edge +8.4%)
+   - P(YRFI) 54.4% vs baseline 46.0%
+5. **MLS St. Louis CITY SC ML (4-4-6) vs Sporting Kansas City**  (65/100 ***, edge —)
    - ELO 1500.0 vs 1524.9; HFA included
-5. **MLS Seattle Sounders FC ML (7-3-3) vs Portland Timbers**  (65/100 ***, edge —)
-   - ELO 1610.5 vs 1550.0; HFA included
+
+## ⚠️ Trap Warnings — 1 flagged
+- **AME @ NAT YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +8.4% looks big but only 0 settled props on this player — model unproven
 
 ## Bullpens GASSED tonight
-Pittsburgh Pirates, San Diego Padres, Seattle Mariners, St. Louis Cardinals, Tampa Bay Rays, Texas Rangers, Toronto Blue Jays, Atlanta Braves
+Seattle Mariners, Atlanta Braves, Miami Marlins, Boston Red Sox
 _Lean late-inning OVER on these games; fade their save situations._
 
 ## NBA -- PLAYOFFS
