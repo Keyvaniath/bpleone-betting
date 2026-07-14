@@ -25,10 +25,11 @@ create accounts); after that the machine runs itself and posting is one tap a da
 
 **Location:** `SoCal` · **Website:** `betting.bpleone.com`
 
-**Avatar:** the ⟁ logo mark on the dark background (screenshot the site logo, or
-I'll generate a proper SVG/PNG on request).
-**Banner idea:** dark background + the live record strip ("45-7 · 87% hit · +50% ROI
-— every pick public") — I can generate this as an image whenever you want it.
+**Avatar:** `assets/x-avatar.png` (400×400, the ⟁ mark on brand dark — also at
+https://betting.bpleone.com/assets/x-avatar.png once deployed).
+**Banner:** `assets/x-banner.png` (1500×500 — wordmark + "One pick a day. Every
+result public — win or lose." + url + 21+ chip). No numbers on the banner by
+design: records go stale, taglines don't.
 
 Settings: enable 2FA; turn OFF "let people tag you in photos" (bot-magnet).
 
@@ -119,9 +120,15 @@ account — scheduled sends silently failed on a big day).
 
 ---
 
-## 6. What I still owe / can do on request
+## 6. The weekly receipts thread (built)
 
-- Avatar + banner image files
-- A weekly-receipts thread composer (auto-drafted from the ledger, like the daily one)
+`weekly_receipts_thread.py` drafts a rolling trailing-week thread on every
+pipeline run — hook (week record), day-by-day ✅/❌ receipts, closer with the
+running record + link. Find it on **betting.bpleone.com/alpha-pick** under the
+share card → "🧵 Weekly receipts thread": post tweet 1 with the 𝕏 button, then
+Copy/paste each numbered tweet as a reply. Best cadence: Sunday or Monday morning.
+
+## 7. Still available on request
+
 - Auto-posting via the X API — needs YOU to create an X developer account + app
   keys first; until then, manual one-tap posting is the durable design.

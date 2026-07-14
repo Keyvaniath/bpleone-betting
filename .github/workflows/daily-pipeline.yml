@@ -591,6 +591,9 @@ jobs:
       - name: Daily Alpha tweet (compose ready-to-post text from the live record)
         working-directory: python
         run: python alpha_tweet.py || true
+      - name: Weekly receipts thread (rolling trailing-week, ready to post any day)
+        working-directory: python
+        run: python weekly_receipts_thread.py || true
       - name: World Cup model report card (accuracy + calibration from settled picks)
         working-directory: python
         run: python worldcup_accuracy.py || true

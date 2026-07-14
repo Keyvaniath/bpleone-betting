@@ -307,6 +307,11 @@ fetch('data/alpha_pick_record.json?t=' + Date.now()).then(function (r) { return 
     <a id="twPost" href="#" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;background:#1d9bf0;color:#fff;font-weight:600;font-size:13px;padding:9px 16px;border-radius:999px;text-decoration:none;">𝕏&nbsp; Post to X</a>
     <button id="twCopy" style="background:rgba(255,255,255,.06);color:var(--text,#dfe6f2);border:1px solid rgba(255,255,255,.14);font-size:13px;padding:9px 16px;border-radius:999px;cursor:pointer;">Copy text</button>
   </div>
+  <details id="wkThreadWrap" style="display:none;border-top:1px solid rgba(255,255,255,.06);padding:10px 18px 16px;">
+    <summary style="cursor:pointer;font-size:12px;color:var(--muted,#888);text-transform:uppercase;letter-spacing:.5px;">🧵 Weekly receipts thread (post any day — tweet 1, then paste replies)</summary>
+    <div id="wkThreadMeta" style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted,#888);margin:8px 0;"></div>
+    <div id="wkThreadList"></div>
+  </details>
 </section>
 <script>
 fetch('data/alpha_tweet.json?t=' + Date.now()).then(function (r) { return r.json(); }).then(function (d) {
@@ -322,6 +327,35 @@ fetch('data/alpha_tweet.json?t=' + Date.now()).then(function (r) { return r.json
     }).catch(function () {});
   });
   document.getElementById('tweetCard').style.display = 'block';
+}).catch(function () {});
+
+// Weekly receipts thread (rolling trailing week; post any day).
+fetch('data/weekly_thread.json?t=' + Date.now()).then(function (r) { return r.json(); }).then(function (d) {
+  var tweets = d.tweets || [];
+  if (!tweets.length) return;
+  var wrap = document.getElementById('wkThreadWrap');
+  var wk = d.week || {};
+  document.getElementById('wkThreadMeta').textContent =
+    'trailing ' + (d.window_days || 7) + 'd: ' + (wk.wins || 0) + '-' + (wk.losses || 0) +
+    ' · ' + ((wk.net_units >= 0 ? '+' : '') + (wk.net_units || 0)) + 'u · ' + tweets.length + ' tweets';
+  document.getElementById('wkThreadList').innerHTML = tweets.map(function (t, i) {
+    return '<div style="border:1px solid rgba(255,255,255,.08);border-radius:9px;padding:10px 12px;margin-bottom:8px;">' +
+      '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">' +
+        '<span style="font-size:10px;color:var(--muted,#888);font-family:\'JetBrains Mono\',monospace;">tweet ' + t.n + '/' + tweets.length + ' · ' + t.char_count + '/280' + (i === 0 ? ' · post this one first' : ' · paste as reply') + '</span>' +
+        '<span style="display:flex;gap:6px;">' +
+          (i === 0 && d.intent_url ? '<a href="' + d.intent_url + '" target="_blank" rel="noopener" style="font-size:11px;background:#1d9bf0;color:#fff;padding:3px 10px;border-radius:999px;text-decoration:none;font-weight:600;">𝕏 Post</a>' : '') +
+          '<button data-wk-copy="' + i + '" style="font-size:11px;background:rgba(255,255,255,.06);color:var(--text-2,#b9c3d4);border:1px solid rgba(255,255,255,.14);padding:3px 10px;border-radius:999px;cursor:pointer;">Copy</button>' +
+        '</span></div>' +
+      '<pre style="margin:0;white-space:pre-wrap;font-family:inherit;font-size:12.5px;line-height:1.5;color:var(--text,#dfe6f2);">' + t.text.replace(/&/g, '&amp;').replace(/</g, '&lt;') + '</pre></div>';
+  }).join('');
+  document.getElementById('wkThreadList').addEventListener('click', function (e) {
+    var b = e.target.closest('[data-wk-copy]');
+    if (!b) return;
+    navigator.clipboard.writeText(tweets[+b.dataset.wkCopy].text).then(function () {
+      var o = b.textContent; b.textContent = '✓'; setTimeout(function () { b.textContent = o; }, 1200);
+    }).catch(function () {});
+  });
+  wrap.style.display = 'block';
 }).catch(function () {});
 </script>
 
