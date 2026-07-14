@@ -1,13 +1,13 @@
 # EdgeStat Daily Summary — 2026-07-14
 
-## 🏥 Model Health: 57.6/100 [OK]
+## 🏥 Model Health: 57.8/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.9/100
+  - 🟢 Calibration Freshness: 99.4/100
   - 🔴 Hit Rate Trend: 20.5/100
   - 🔴 Brier Trend: 20.5/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 95.5/100
-  - 🔴 Edge Count: 2.9/100
+  - 🔴 Edge Count: 5.7/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.583)

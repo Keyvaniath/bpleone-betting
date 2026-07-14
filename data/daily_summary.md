@@ -4,21 +4,21 @@
 
 _Pipeline health: **WARNING** (11/15 artifacts ok; 4 empty, 0 stale)._ 
 
-_Generated at 2026-07-14T14:46:53 UTC. Game lines source: **placeholder -110 (no real book today)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-07-14T15:32:46 UTC. Game lines source: **placeholder -110 (no real book today)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
 **AME @ NAT - AME_ML**
 - Market: +100
 - Model probability: 54.6%
-- Raw edge: +9.11%
+- Raw edge: +9.13%
 - Recommended stake: 2.28u Kelly
 
 ## Full Slate (1 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 8:00p ET | AME @ NAT | Citizens Bank Park | 79F 8mph | AME_ML +9.11% |
+| 8:00p ET | AME @ NAT | Citizens Bank Park | 80F 8mph | AME_ML +9.13% |
 
 ## Self-Learning Loop
 
@@ -31,7 +31,7 @@ Cumulative graded plays: 6249. Wins: 2505. Hit rate: 40.1%.
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| AME @ NAT | 45.6% | +119 | 4.11 | +212 | -212 |
+| AME @ NAT | 45.6% | +119 | 4.1 | +211 | -211 |
 
 ## Team Form (last 10)
 
