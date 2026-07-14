@@ -102,18 +102,39 @@ def _record_line(rec: Dict[str, Any]) -> str:
     return " · ".join(bits)
 
 
+def _yesterday_receipt(history: List[Dict[str, Any]], today: Optional[str]) -> Optional[str]:
+    """The most recent GRADED pick before today, as a one-line receipt.
+    Wins AND losses both post -- the receipts-every-day habit IS the brand;
+    an account that only surfaces wins reads as a tout."""
+    for h in history or []:   # history is newest-first
+        if today and h.get("date") == today:
+            continue
+        res = h.get("result")
+        if res not in ("won", "lost"):
+            continue
+        mark = "✅" if res == "won" else "❌"
+        pu = h.get("payout_units")
+        put = f" {'+' if (pu or 0) >= 0 else ''}{round(pu, 2)}u" if isinstance(pu, (int, float)) else ""
+        name = h.get("player_or_matchup") or "?"
+        mk = _humanize_market(h.get("market"))
+        return f"Yesterday: {name} {mk} {mark}{put}"
+    return None
+
+
 def _compose(date: str, picks: List[Dict[str, Any]], rec: Dict[str, Any],
-             include_props: bool) -> str:
+             include_props: bool, receipt: Optional[str] = None,
+             terse: bool = False) -> str:
     lines = ["\U0001F3AF Alpha Pick of the Day", ""]
     lines.append(_pick_line(picks[0]))
     if include_props and len(picks) > 1:
         for extra in picks[1:]:
             lines.append(_pick_line(extra, lead="+ "))
     lines.append("")
+    if receipt:
+        lines.append(receipt)
     rl = _record_line(rec)
     if rl:
-        lines.append(f"Track record: {rl}")
-        lines.append("Every pick public, graded on the box score.")
+        lines.append(f"Record: {rl}" + ("" if terse else " — every pick public, graded on the box score."))
         lines.append("")
     lines.append(f"Full slate + receipts → {SITE}")
     lines.append("")
@@ -149,13 +170,20 @@ def run() -> Dict[str, Any]:
         _write(payload)
         return payload
 
-    # Compose: full (with props) if it fits, else short (One Pick only).
-    full = _compose(date, picks, record, include_props=True)
-    short = _compose(date, picks, record, include_props=False)
-    tweet = full if len(full) <= TWEET_MAX else short
-    if len(tweet) > TWEET_MAX:
-        # last resort: drop the record continuity line
-        tweet = tweet.replace("Every pick public, graded on the box score.\n", "")
+    # Yesterday's graded result (win OR loss) -- the daily receipt that builds trust.
+    receipt = _yesterday_receipt(rec_data.get("history") or [], date)
+
+    # Compose, slimming in priority order. The RECEIPT is the proof and outranks
+    # the tagline: props go first, then the tagline, then (only if still over)
+    # the receipt itself.
+    candidates = [
+        _compose(date, picks, record, include_props=True, receipt=receipt),
+        _compose(date, picks, record, include_props=False, receipt=receipt),
+        _compose(date, picks, record, include_props=True, receipt=receipt, terse=True),
+        _compose(date, picks, record, include_props=False, receipt=receipt, terse=True),
+        _compose(date, picks, record, include_props=False, receipt=None, terse=True),
+    ]
+    tweet = next((c for c in candidates if len(c) <= TWEET_MAX), candidates[-1])
 
     payload = {
         "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
@@ -163,6 +191,7 @@ def run() -> Dict[str, Any]:
         "tweet": tweet,
         "char_count": len(tweet),
         "intent_url": _intent(tweet),
+        "receipt": receipt,
         "picks": [{"name": p.get("player_or_matchup"),
                    "market": _humanize_market(p.get("market")),
                    "odds": _odds(p.get("fair_american")),
@@ -170,8 +199,9 @@ def run() -> Dict[str, Any]:
         "record": {"wins": record.get("wins"), "losses": record.get("losses"),
                    "hit_rate": record.get("hit_rate"), "roi_pct": record.get("roi_pct")},
         "variants": {
-            "short": {"text": short, "char_count": len(short), "intent_url": _intent(short)},
-            "with_props": {"text": full, "char_count": len(full), "intent_url": _intent(full)},
+            "with_props": {"text": candidates[0], "char_count": len(candidates[0]), "intent_url": _intent(candidates[0])},
+            "short": {"text": candidates[1], "char_count": len(candidates[1]), "intent_url": _intent(candidates[1])},
+            "bare": {"text": candidates[-1], "char_count": len(candidates[-1]), "intent_url": _intent(candidates[-1])},
         },
         "note": ("Auto-composed from the live alpha record so the tweet always matches "
                  "the public numbers. Posting is manual: open intent_url (or tap 'Post "
