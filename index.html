@@ -551,7 +551,7 @@ fetch('data/data_health.json?t=' + Date.now()).then(function(r){return r.json();
     </div>
     <div style="padding: 14px 16px; display:grid; grid-template-columns: 1fr 1fr; gap: 14px;">
       <div>
-        <div class="muted" style="font-size:10px; text-transform:uppercase; letter-spacing:1px;">Leader</div>
+        <div class="muted" style="font-size:10px; text-transform:uppercase; letter-spacing:1px;" data-golf-leader-label>Leader</div>
         <div style="font-size:18px; font-weight:700;" id="golfTourneyLeader">--</div>
         <div class="muted" style="font-size:11px;" id="golfTourneyLeaderScore">--</div>
       </div>
@@ -1045,10 +1045,17 @@ Promise.all([
   card.style.display = "block";
   document.getElementById("golfTourneyName").textContent = t.name;
   document.getElementById("golfTourneyMeta").textContent = `${t.status || ''} · ${state.n_players || 0} players`;
-  const leader = state.current_leader || {};
-  document.getElementById("golfTourneyLeader").textContent = leader.name || "—";
-  document.getElementById("golfTourneyLeaderScore").textContent =
-    `${leader.total_to_par || '—'} · #${leader.order || '?'}${leader.thru ? ' · thru ' + leader.thru : ''}`;
+  // A "leader" only exists once play has started -- before the first tee time
+  // the feed's current_leader is just the first name on an unplayed list.
+  const started = !/scheduled|pre/i.test(t.status || '');
+  const leader = started ? (state.current_leader || {}) : {};
+  const leaderLabel = document.querySelector('#golfTourneyCard [data-golf-leader-label]');
+  if (leaderLabel) leaderLabel.textContent = started ? 'LEADER' : 'FIELD SET';
+  document.getElementById("golfTourneyLeader").textContent =
+    started ? (leader.name || "—") : "Tees off soon";
+  document.getElementById("golfTourneyLeaderScore").textContent = started
+    ? `${leader.total_to_par || '—'} · #${leader.order || '?'}${leader.thru ? ' · thru ' + leader.thru : ''}`
+    : `${state.n_players || 0} players in the field`;
   const pot = bestbet.top_bet;
   if (pot) {
     document.getElementById("golfTourneyPot").textContent =

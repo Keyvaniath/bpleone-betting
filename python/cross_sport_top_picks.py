@@ -79,9 +79,14 @@ def run() -> Dict[str, Any]:
             raw_score = r.get(score_field, 0) or 0
             # Normalize to 0-100 range per source
             norm_score = (raw_score / norm) * 50 if norm else raw_score
+            # Subject fallback chain: some feeds omit the name field (e.g. the
+            # All-Star team row carried team=None) -- fall back to side/matchup
+            # rather than rendering a literal "?" on the homepage board.
+            subject = (r.get(name_field) or r.get("side") or r.get("label")
+                       or r.get("matchup") or "").strip() or None
             all_picks.append({
                 "source": source_id,
-                "subject": r.get(name_field) or "?",
+                "subject": subject or "(unnamed)",
                 "team": r.get("team"),
                 "matchup": r.get("matchup"),
                 "tier": tier,
