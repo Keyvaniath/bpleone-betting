@@ -1137,10 +1137,24 @@ fetch("data/multi_sport_top.json?t=" + Date.now(), { cache: "no-cache" })
 const renderSport = (data, cardId, titleId, metaId, bodyId, anchor, emoji) => {
   const card = document.getElementById(cardId);
   if (!card) return;
-  const games = (data && data.games) || [];
+  let games = (data && data.games) || [];
   if (!games.length) return;
+  // De-dup mirrored matchups the feed sometimes carries (A@B and B@A same slate).
+  const seen = new Set();
+  games = games.filter(g => {
+    const k = [g.away_team, g.home_team].sort().join('|') + '|' + (g.date || '');
+    if (seen.has(k)) return false;
+    seen.add(k); return true;
+  });
   card.style.display = 'block';
-  document.getElementById(titleId).textContent = `${emoji} ${games.length} game${games.length===1?'':'s'} today`;
+  // HONEST "today": the feed's n_games_today is today-ET-only (2026-07-12 fix);
+  // games[] may be the NEXT slate when the league is idle -- label it as such
+  // instead of calling September games "today".
+  const nToday = (data && data.n_games_today != null) ? data.n_games_today : games.length;
+  document.getElementById(titleId).textContent = nToday > 0
+    ? `${emoji} ${nToday} game${nToday===1?'':'s'} today`
+    : (data.next_game_date ? `${emoji} No games today — next slate ${data.next_game_date}`
+                           : `${emoji} No games today`);
   document.getElementById(metaId).textContent = data.season_status || '';
   const top3 = games.slice(0, 3);
   const fmtAmer = (a) => a == null ? "—" : (a >= 0 ? "+" + a : String(a));
