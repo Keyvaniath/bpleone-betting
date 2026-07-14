@@ -1,25 +1,25 @@
-# EdgeStat Daily Summary — 2026-07-13
+# EdgeStat Daily Summary — 2026-07-14
 
-## 🏥 Model Health: 53.6/100 [DEGRADED]
+## 🏥 Model Health: 51.8/100 [DEGRADED]
 - Several components weak - review red items
-  - 🟢 Calibration Freshness: 100.0/100
+  - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 0/100
   - 🔴 Brier Trend: 19.7/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 95.5/100
+  - 🟢 Data Health: 86.4/100
   - 🔴 Edge Count: 5.7/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.585)
-- **Total games on board:** 113
-- **Strong home favorites:** 3 | **Strong road dogs:** 0
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.582)
+- **Total games on board:** 127
+- **Strong home favorites:** 2 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
 1. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
 2. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
 3. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
-4. **WNBA Atlanta Dream ML (13-10) vs Los Angeles Sparks** (65/100 ★★★)
-5. **MLS St. Louis CITY SC ML (4-4-6) vs Sporting Kansas City** (65/100 ★★★)
+4. **MLS St. Louis CITY SC ML (4-4-6) vs Sporting Kansas City** (65/100 ★★★)
+5. **MLS Seattle Sounders FC ML (7-3-3) vs Portland Timbers** (65/100 ★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
 - [STRONG] **[MLB]** CIN @ COL CIN_ML -- 65% / +24.4% (score 2.5)
@@ -62,23 +62,22 @@
 - Hot teams: **2** | Cold teams: **1** | Over-heavy: 0 | Under-heavy: 1
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (46)
-- RESIDUAL_DIVERGENCE: **3**
-- STEAM_MOVE: **43**
-  - Los Angeles Sparks (WNBA): Los Angeles Sparks OUTPERFORMING expected margin by 7.0pts in recent games -- model bias may persist
-  - Minnesota Lynx (WNBA): Minnesota Lynx OUTPERFORMING expected margin by 6.7pts in recent games -- model bias may persist
-  - Phoenix Mercury (WNBA): Phoenix Mercury UNDERPERFORMING expected margin by 13.6pts in recent games -- model bias may persist
+## ⚠️ Anomaly Detector (37)
+- STEAM_MOVE: **37**
   - GS @ CON (WNBA): TOTAL steam since open: ML +2.2pp toward CON; total -3 (UNDER) (3 snapshots)
   - MIL @ STL (MLB): ML/TOTAL steam since open: ML +14.4pp toward STL; total +1 (OVER) (7 snapshots)
+  - ATL @ STL (MLB): ML/TOTAL steam since open: ML +10.5pp toward STL; total +0.5 (OVER) (7 snapshots)
+  - SEA @ LA (WNBA): TOTAL steam since open: ML +0.7pp toward LA; total +2 (OVER) (5 snapshots)
+  - MIN @ CON (WNBA): TOTAL steam since open: ML -1.1pp toward MIN; total -2 (UNDER) (5 snapshots)
 
-## 💰 Today's Portfolio (7 picks)
-- Total stake: **$185.0** (18.5% of $1000 bankroll)
-- Expected EV: **$-7.59**
+## 💰 Today's Portfolio (6 picks)
+- Total stake: **$165.0** (16.5% of $1000 bankroll)
+- Expected EV: **$-7.62**
   - #1 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #2 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
   - #3 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
-  - #4 [WNBA] $20 on WNBA Atlanta Dream ML (13-10) vs Los Angeles Sparks (P=56%)
-  - #5 [MLS] $20 on MLS St. Louis CITY SC ML (4-4-6) vs Sporting Kansas City (P=55%)
+  - #4 [MLS] $20 on MLS St. Louis CITY SC ML (4-4-6) vs Sporting Kansas City (P=55%)
+  - #5 [MLS] $20 on MLS Seattle Sounders FC ML (7-3-3) vs Portland Timbers (P=67%)
 
 ## 🎯 Convergence Picks (5 stacked games)
 - ELITE: **1** · HIGH: 1 · MED: 3
@@ -138,5 +137,5 @@
   - ⚠️ batter_rbis (Brier Δ -0.0052)
 
 ## 🤖 Self-Training Status
-- **WNBA**: n=31 games · hit rate 51.6% · bias +6.6pp [calibration applied]
-- **MLB**: n=191 games · hit rate 52.9% · bias +4.2pp [calibration applied]
+- **WNBA**: n=33 games · hit rate 51.5% · bias +3.0pp [calibration applied]
+- **MLB**: n=178 games · hit rate 48.3% · bias +5.8pp [calibration applied]

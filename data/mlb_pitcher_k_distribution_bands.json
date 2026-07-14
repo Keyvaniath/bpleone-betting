@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-13T22:57:09",
-  "n_pitchers": 0,
-  "n_with_confident_8plus": 0,
+  "generated_at": "2026-07-14T06:53:45",
+  "n_pitchers": 2,
+  "n_with_confident_8plus": 2,
   "alt_lines": [
     4,
     5,
@@ -12,5 +12,48 @@
     10
   ],
   "method_note": "Poisson(lambda=proj_k) strikeout count model. Prefers matchup proj_k (lineup-adjusted), falls back to opp/park-adj expected_k. Emits P(K>=n) ladder for n=4..10, floor/median/ceiling (25/50/85 pctile), coin_flip_line (P>=.50) and confident_line (P>=.65).",
-  "rows": []
+  "rows": [
+    {
+      "pitcher": "Dylan Cease",
+      "team": "TOR",
+      "matchup": "AME @ NAT",
+      "proj_k_mean": 11.89,
+      "floor_k": 9,
+      "median_k": 12,
+      "ceiling_k": 15,
+      "alt_ladder": {
+        "p_4plus": 0.998,
+        "p_5plus": 0.992,
+        "p_6plus": 0.978,
+        "p_7plus": 0.951,
+        "p_8plus": 0.906,
+        "p_9plus": 0.838,
+        "p_10plus": 0.748
+      },
+      "coin_flip_line": 10,
+      "confident_line": 10,
+      "lean": "K OVER 9.5"
+    },
+    {
+      "pitcher": "Cristopher S\u00e1nchez",
+      "team": "PHI",
+      "matchup": "AME @ NAT",
+      "proj_k_mean": 8.94,
+      "floor_k": 7,
+      "median_k": 9,
+      "ceiling_k": 12,
+      "alt_ladder": {
+        "p_4plus": 0.978,
+        "p_5plus": 0.943,
+        "p_6plus": 0.881,
+        "p_7plus": 0.788,
+        "p_8plus": 0.669,
+        "p_9plus": 0.536,
+        "p_10plus": 0.405
+      },
+      "coin_flip_line": 9,
+      "confident_line": 8,
+      "lean": "K OVER 8.5"
+    }
+  ]
 }

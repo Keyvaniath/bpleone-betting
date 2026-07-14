@@ -1,13 +1,9 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:9 F:41
+_NO_ACTION_NIGHT_ | L:0 S:5 F:41
 
 :dart: **Top Picks:**
-1. [GOLF] Taylor Pendrith -- Taylor Pendrith (PLAYER_STRONG)
-2. [GOLF] Aaron Wise -- Aaron Wise (PLAYER_STRONG)
-3. [WNBA] napheesa collier -- napheesa collier (PLAYER_STRONG)
-
-:chains: **Top Parlays:**
-- [WNBA] napheesa collier (2 legs, p=0.3197)
+1. [GOLF] Ben Silverman -- Ben Silverman (PLAYER_STRONG)
+2. [GOLF] Steven Fisk -- Steven Fisk (PLAYER_STRONG)
 
 :coin: Bankroll Advisory: STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 

@@ -1,49 +1,37 @@
-# EdgeStat Daily Brief - 2026-07-13
+# EdgeStat Daily Brief - 2026-07-14
 
-**Model Confidence: 22.0/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
+**Model Confidence: 22.2/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
 
 _Pipeline health: **WARNING** (11/15 artifacts ok; 4 empty, 0 stale)._ 
 
-_Generated at 2026-07-13T22:57:17 UTC. Game lines source: **placeholder -110 (no real book today)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-07-14T06:54:09 UTC. Game lines source: **placeholder -110 (no real book today)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
-**CIN @ COL - CIN_ML**
+**AME @ NAT - UNDER_8.5**
 - Market: -110
-- Model probability: 73.7%
-- Raw edge: +40.74%
-- Recommended stake: <= 0.5u (model calibrating)
+- Model probability: 57.9%
+- Raw edge: +10.58%
+- Recommended stake: 2.91u Kelly
 
-> _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
-
-## Full Slate (3 games)
+## Full Slate (1 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 7:05p ET | SDP @ LAD | Petco Park | 62F -6mph | LAD_ML +25.43% |
-| 6:45p ET | BOS @ NYY | Yankee Stadium | 71F 12mph | OVER_9.0 +30.97% |
-| 9:40p ET | CIN @ COL | Coors Field | 74F 4mph | CIN_ML +40.74% |
-
-## Parlays - top 1
-
-- **2-leg @ +240 (prob 36.6%, EV +24.49%)**
-  - BOS @ NYY NYY_ML (-128, model 58.7%)
-  - CIN @ COL OVER_10.5 (-110, model 62.4%)
+| 8:00p ET | AME @ NAT | Citizens Bank Park | 77F 8mph | UNDER_8.5 +10.58% |
 
 ## Self-Learning Loop
 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
 
-Cumulative graded plays: 6243. Wins: 2499. Hit rate: 40.0%.
+Cumulative graded plays: 6249. Wins: 2505. Hit rate: 40.1%.
 
 ## Auxiliary Markets (Model Fair Prices)
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| BOS @ NYY | -- | -- | -- | +115 | -115 |
-| CIN @ COL | -- | -- | -- | +465 | -465 |
-| SDP @ LAD | -- | -- | -- | -166 | +166 |
+| AME @ NAT | 45.6% | +119 | 4.12 | +212 | -212 |
 
 ## Team Form (last 10)
 
@@ -51,20 +39,9 @@ Cumulative graded plays: 6243. Wins: 2499. Hit rate: 40.0%.
 
 **Cold:** ATH 1-9 (L9, -41), PHI 5-5 (W2, -20), NYM 4-6 (L3, -16), TEX 5-5 (W1, -12), LAA 2-8 (L2, -10)
 
-## Gassed Bullpens (> 8.0 IP in 2 days)
-
-- PIT: 11.3 IP across 3 games
-- SD: 11.3 IP across 2 games
-- SEA: 8.2 IP across 2 games
-- TB: 8.5 IP across 2 games
-- TOR: 8.1 IP across 2 games
-- ATL: 9.7 IP across 2 games
-- CWS: 11.3 IP across 2 games
-- MIA: 10.3 IP across 2 games
-
 ## Loop Activity (since last refresh)
 
-- Confidence delta: **+0.0**
+- Confidence delta: **+0.2**
 
 ## Model Recommendations (operator review)
 
@@ -76,4 +53,4 @@ _The model is suggesting 1 parameter tweak based on its own performance. Apply v
 ---
 
 _EdgeStat is a research desk. Bet responsibly. 21+. 1-800-GAMBLER._
-_Source: github.com/Keyvaniath/bpleone-betting - last settled 2026-07-12._
+_Source: github.com/Keyvaniath/bpleone-betting - last settled 2026-07-13._
