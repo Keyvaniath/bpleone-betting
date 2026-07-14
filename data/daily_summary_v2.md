@@ -1,13 +1,13 @@
 # EdgeStat Daily Summary — 2026-07-14
 
-## 🏥 Model Health: 57.9/100 [OK]
+## 🏥 Model Health: 67.0/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.9/100
-  - 🔴 Hit Rate Trend: 20.5/100
-  - 🔴 Brier Trend: 20.5/100
+  - 🟢 Calibration Freshness: 100.0/100
+  - 🔴 Hit Rate Trend: 47.6/100
+  - 🔴 Brier Trend: 34.8/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 95.5/100
-  - 🔴 Edge Count: 5.7/100
+  - 🔴 Edge Count: 14.3/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.581)
@@ -74,9 +74,11 @@
   - #4 [NRFI] $20 on AME @ NAT YRFI (1st-inning OVER 0.5) (P=54%)
   - #5 [MLS] $20 on MLS St. Louis CITY SC ML (4-4-6) vs Sporting Kansas City (P=55%)
 
-## 🎯 Convergence Picks (3 stacked games)
-- ELITE: **0** · HIGH: 0 · MED: 3
+## 🎯 Convergence Picks (5 stacked games)
+- ELITE: **1** · HIGH: 0 · MED: 4
+  - [ELITE] Washington Mystics @ Toronto Tempo : 4 signals (PREGAME, ANOMALY, ATS, ATS)
   - [MED] New York Knicks @ San Antonio Spurs : 2 signals (ATS, ATS)
+  - [MED] Portland Fire @ Connecticut Sun : 2 signals (ATS, ATS)
   - [MED] Portland Timbers @ Seattle Sounders FC : 2 signals (PREGAME, ATS)
   - [MED] Coventry City @ Arsenal : 2 signals (PREGAME, ATS)
 

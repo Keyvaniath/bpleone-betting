@@ -4,7 +4,7 @@
 
 _Pipeline health: **WARNING** (11/15 artifacts ok; 4 empty, 0 stale)._ 
 
-_Generated at 2026-07-14T21:46:31 UTC. Game lines source: **placeholder -110 (no real book today)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-07-14T23:02:22 UTC. Game lines source: **placeholder -110 (no real book today)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
@@ -31,7 +31,7 @@ Cumulative graded plays: 6250. Wins: 2506. Hit rate: 40.1%.
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| AME @ NAT | 45.6% | +119 | 4.09 | +212 | -212 |
+| AME @ NAT | 45.6% | +119 | 4.1 | +212 | -212 |
 
 ## Team Form (last 10)
 
