@@ -1,10 +1,9 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:9 F:41
+_NO_ACTION_NIGHT_ | L:0 S:4 F:187
 
 :dart: **Top Picks:**
-1. [GOLF] Taylor Pendrith -- Taylor Pendrith (PLAYER_STRONG)
-2. [GOLF] Steven Fisk -- Steven Fisk (PLAYER_STRONG)
-3. [MLB] ? -- ? (TEAM_STRONG)
+1. [MLB] AWAY -- AWAY (TEAM_STRONG)
+2. [MLB] Yordan Alvarez -- Yordan Alvarez (BATTER_STRONG)
 
 :chains: **Top Parlays:**
 - [MLB] Junior Caminero (2 legs, p=0.4895)

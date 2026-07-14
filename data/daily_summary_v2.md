@@ -1,8 +1,8 @@
 # EdgeStat Daily Summary — 2026-07-14
 
-## 🏥 Model Health: 57.8/100 [OK]
+## 🏥 Model Health: 57.9/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.4/100
+  - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 20.5/100
   - 🔴 Brier Trend: 20.5/100
   - 🟢 Pipeline Audit: 100.0/100
@@ -10,8 +10,8 @@
   - 🔴 Edge Count: 5.7/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.583)
-- **Total games on board:** 111
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.581)
+- **Total games on board:** 112
 - **Strong home favorites:** 2 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
@@ -56,17 +56,18 @@
 - Hot teams: **2** | Cold teams: **1** | Over-heavy: 0 | Under-heavy: 1
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (37)
-- STEAM_MOVE: **37**
+## ⚠️ Anomaly Detector (40)
+- RESIDUAL_DIVERGENCE: **1**
+- STEAM_MOVE: **39**
+  - Toronto Tempo (WNBA): Toronto Tempo OUTPERFORMING expected margin by 7.0pts in recent games -- model bias may persist
   - GS @ CON (WNBA): TOTAL steam since open: ML +2.2pp toward CON; total -3 (UNDER) (3 snapshots)
   - MIL @ STL (MLB): ML/TOTAL steam since open: ML +14.4pp toward STL; total +1 (OVER) (7 snapshots)
   - ATL @ STL (MLB): ML/TOTAL steam since open: ML +10.5pp toward STL; total +0.5 (OVER) (7 snapshots)
   - SEA @ LA (WNBA): TOTAL steam since open: ML +0.7pp toward LA; total +2 (OVER) (5 snapshots)
-  - MIN @ CON (WNBA): TOTAL steam since open: ML -1.1pp toward MIN; total -2 (UNDER) (5 snapshots)
 
-## 💰 Today's Portfolio (7 picks)
-- Total stake: **$185.0** (18.5% of $1000 bankroll)
-- Expected EV: **$-11.28**
+## 💰 Today's Portfolio (10 picks)
+- Total stake: **$245.0** (24.5% of $1000 bankroll)
+- Expected EV: **$-48.6**
   - #1 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #2 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
   - #3 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
@@ -99,17 +100,14 @@
   - [LEAN] **RJ Harris** (5-0-0) vs Alvin Hines -- fair -133
   - [COIN_FLIP] **Fatima Kline** (9-1-0) vs Tabatha Ricci -- fair -132
 
-## ⛳ Golf Player Heat (from ISCO Championship)
-  - 🔥 T1 **Steven Fisk** (USA): -16 total -- finished T1
-  - 🔥 T2 **Taylor Pendrith** (Canada): -15 total -- finished T2
-  - 🔥 T3 **Ben Silverman** (Canada): -15 total -- finished T3, Sunday -0.2 vs tourney avg
-  - 🔥 T4 **Aaron Wise** (USA): -15 total -- finished T4
-  - 🔥 T5 **Kristoffer Ventura** (Norway): -14 total -- finished T5, Sunday -0.5 vs tourney avg
-  - ❄️ **Christo Lamprecht** (South Africa): Sunday +7.5 vs tourney avg
-  - ❄️ **Chan Kim** (USA): Sunday +7.0 vs tourney avg
-  - ❄️ **Jeffrey Kang** (USA): Sunday +5.0 vs tourney avg
+## ⛳ Golf Player Heat (from The Open)
+  - 🔥 T1 **Thomas Detry** (Belgium): +0 total -- finished T1
+  - 🔥 T2 **Matthew Baldwin** (England): +0 total -- finished T2
+  - 🔥 T3 **James Nicholas** (USA): +0 total -- finished T3
+  - 🔥 T4 **Andy Sullivan** (England): +0 total -- finished T4
+  - 🔥 T5 **Michael Kim** (USA): +0 total -- finished T5
 
-## 🔥 MLB Batter Heat (38 HOT / 36 COLD)
+## 🔥 MLB Batter Heat (39 HOT / 35 COLD)
   - 🔥 **Luisangel Acuña** (CWS): L14 .400 / season .242 (+158pts)
   - 🔥 **James Wood** (WSH): L14 .400 / season .279 (+121pts)
   - 🔥 **Garrett Mitchell** (MIL): L14 .392 / season .274 (+118pts)

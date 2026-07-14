@@ -1,23 +1,23 @@
 {
- "generated_at": "2026-07-14T15:32:10",
+ "generated_at": "2026-07-14T21:45:52",
  "stake_assumption": "1u flat per pick",
  "total_picks": 10000,
- "n_settled": 6249,
- "n_pending": 382,
+ "n_settled": 6250,
+ "n_pending": 381,
  "n_void": 3369,
- "wins": 2502,
+ "wins": 2503,
  "losses": 3740,
  "pushes": 7,
- "hit_rate": 0.4008,
- "net_units": -1032.313,
- "roi_pct": -16.54,
+ "hit_rate": 0.4009,
+ "net_units": -1031.986,
+ "roi_pct": -16.53,
  "n_calibrated_picks": 9086,
  "calibrated_reliability": {
-  "n": 6149,
-  "ece_raw": 0.0905,
+  "n": 6150,
+  "ece_raw": 0.0904,
   "ece_calibrated": 0.0176,
-  "brier_raw": 0.21127,
-  "brier_calibrated": 0.19412,
+  "brier_raw": 0.21125,
+  "brier_calibrated": 0.19411,
   "note": "In-sample over the settled ledger (the isotonic transform is fit on these same outcomes); held-out 70/30 validation is in recalibration_map.json. p_predicted = raw model prob (kept untouched for the learning loop); p_calibrated = honest prob stamped per pick. Lower ECE/Brier on the calibrated column = the displayed % is truer."
  },
  "curated": {
@@ -40,12 +40,12 @@
   ],
   "definition": "Featured/recommended plays only -- Lock of the Day, Top 25, Whale, Sharp, Consensus (hit), Under Alerts, POD. Excludes the experimental prop feeds, which are tracked to train the model, not bet."
  },
- "n_added_this_run": 13,
+ "n_added_this_run": 0,
  "n_newly_settled_this_run": 0,
  "n_resettled_this_run": 0,
  "n_voided_this_run": 0,
  "n_duplicates_collapsed_this_run": 0,
- "n_duplicate_adds_blocked_this_run": 97,
+ "n_duplicate_adds_blocked_this_run": 96,
  "n_reconciled_settled_voids": 0,
  "n_bootstrapped_from_locks_history": 0,
  "by_source": {
@@ -734,13 +734,13 @@
    "roi_pct": 53.84
   },
   "soccer_clean_sheet_home_clean_sheet_no": {
-   "n": 91,
-   "wins": 64,
+   "n": 92,
+   "wins": 65,
    "losses": 27,
    "pushes": 0,
-   "net_units": -6.003,
-   "hit_rate": 0.7033,
-   "roi_pct": -6.6
+   "net_units": -5.676,
+   "hit_rate": 0.7065,
+   "roi_pct": -6.17
   },
   "wnba_alts_home_total_over_74.4": {
    "n": 1,
@@ -1752,12 +1752,12 @@
    "hit_rate": 0.8889
   },
   "home_clean_sheet_no": {
-   "n": 91,
-   "wins": 64,
+   "n": 92,
+   "wins": 65,
    "losses": 27,
    "pushes": 0,
-   "net_units": -6.003,
-   "hit_rate": 0.7033
+   "net_units": -5.676,
+   "hit_rate": 0.7065
   },
   "ast_under": {
    "n": 4,
@@ -2202,12 +2202,12 @@
    "hit_rate": 0.8889
   },
   "home_clean_sheet_no": {
-   "n": 91,
-   "wins": 64,
+   "n": 92,
+   "wins": 65,
    "losses": 27,
    "pushes": 0,
-   "net_units": -6.003,
-   "hit_rate": 0.7033
+   "net_units": -5.676,
+   "hit_rate": 0.7065
   },
   "ast_under": {
    "n": 4,
@@ -2386,15 +2386,15 @@
   },
   "WORLDCUP": {
    "n": 205,
-   "settled": 194,
-   "wins": 131,
+   "settled": 195,
+   "wins": 132,
    "losses": 63,
    "pushes": 0,
-   "pending": 7,
+   "pending": 6,
    "void": 4,
-   "net_units": 3.054,
-   "hit_rate": 0.6753,
-   "roi_pct": 1.57,
+   "net_units": 3.381,
+   "hit_rate": 0.6769,
+   "roi_pct": 1.73,
    "markets": 9
   },
   "TENNIS": {
@@ -2425,42 +2425,13 @@
   }
  },
  "last_7_days": {
-  "wins": 163,
+  "wins": 164,
   "losses": 227,
-  "net_units": -46.358,
-  "hit_rate": 0.4179
+  "net_units": -46.031,
+  "hit_rate": 0.4194
  },
  "note": "Unified pick ledger -- records every pick the model surfaces (top_25 board, whales, consensus, unders, sharp action, locks, POD) and settles each against actual outcomes. Per-source W-L feeds back into calibration so the model learns which modules are reliable. THIS is the training signal.",
  "picks": [
-  {
-   "source": "soccer_clean_sheet_home_clean_sheet_no",
-   "sport": "WORLDCUP",
-   "player_or_matchup": "Morocco @ France",
-   "market": "HOME_CLEAN_SHEET_NO",
-   "prob": 0.753,
-   "fair_american": -306,
-   "p_predicted": 0.753,
-   "matchup": "Morocco @ France",
-   "date": "2026-07-09",
-   "pick_id": "soccer_clean_sheet_home_clean_sheet_no|WORLDCUP|Morocco___France|HOME_CLEAN_SHEET_NO|2026-07-09",
-   "settled": true,
-   "result": "lost",
-   "payout_units": -1.0,
-   "recorded_at": "2026-07-08T10:31:45",
-   "p_calibrated": 0.717,
-   "outcome": {
-    "final_score": "Morocco 0-2 France",
-    "total_cards": 1,
-    "total_goals": 2,
-    "scorers": [
-     "kylian mbapp\u00e9",
-     "ousmane demb\u00e9l\u00e9"
-    ],
-    "market": "HOME_CLEAN_SHEET_NO",
-    "verify": "Morocco 0-2 France: home clean sheet = True \u2014 HOME_CLEAN_SHEET_NO"
-   },
-   "settled_at": "2026-07-09T23:12:12"
-  },
   {
    "source": "wnba_3pm_3pm_under_3.5",
    "sport": "WNBA",
@@ -4858,7 +4829,7 @@
    "result": "won",
    "payout_units": 0.3268,
    "recorded_at": "2026-07-10T09:55:48",
-   "p_calibrated": 0.717,
+   "p_calibrated": 0.7173,
    "outcome": {
     "final_score": "Belgium 1-2 Spain",
     "total_cards": 4,
@@ -5925,7 +5896,7 @@
    "result": "won",
    "payout_units": 0.3268,
    "recorded_at": "2026-07-11T14:59:56",
-   "p_calibrated": 0.717,
+   "p_calibrated": 0.7173,
    "outcome": {
     "final_score": "England 2-1 Norway",
     "total_cards": 1,
@@ -6330,7 +6301,7 @@
    "result": "won",
    "payout_units": 0.3268,
    "recorded_at": "2026-07-11T14:59:56",
-   "p_calibrated": 0.717,
+   "p_calibrated": 0.7173,
    "outcome": {
     "final_score": "Switzerland 1-3 Argentina",
     "total_cards": 5,
@@ -7516,12 +7487,41 @@
     "verify": "rhyne howard \u2014 blk_stl = 2 (line 4.0, bet under) on 2026-07-13"
    },
    "settled_at": "2026-07-14T06:29:08"
+  },
+  {
+   "source": "soccer_clean_sheet_home_clean_sheet_no",
+   "sport": "WORLDCUP",
+   "player_or_matchup": "Spain @ France",
+   "market": "HOME_CLEAN_SHEET_NO",
+   "prob": 0.753,
+   "fair_american": -306,
+   "p_predicted": 0.753,
+   "matchup": "Spain @ France",
+   "date": "2026-07-14",
+   "pick_id": "soccer_clean_sheet_home_clean_sheet_no|WORLDCUP|Spain___France|HOME_CLEAN_SHEET_NO|2026-07-14",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.3268,
+   "recorded_at": "2026-07-12T06:28:16",
+   "p_calibrated": 0.7173,
+   "outcome": {
+    "final_score": "Spain 2-0 France",
+    "total_cards": 3,
+    "total_goals": 2,
+    "scorers": [
+     "mikel oyarzabal",
+     "pedro porro"
+    ],
+    "market": "HOME_CLEAN_SHEET_NO",
+    "verify": "Spain 2-0 France: home clean sheet = False \u2014 HOME_CLEAN_SHEET_NO"
+   },
+   "settled_at": "2026-07-14T21:18:06"
   }
  ],
  "recent_window": 200,
  "date_range": [
   "2026-05-19",
-  "2026-07-13"
+  "2026-07-14"
  ],
- "digest_generated_at": "2026-07-14T15:32:11"
+ "digest_generated_at": "2026-07-14T21:45:53"
 }
