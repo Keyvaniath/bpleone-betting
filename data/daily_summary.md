@@ -1,24 +1,34 @@
-# EdgeStat Daily Brief - 2026-07-14
+# EdgeStat Daily Brief - 2026-07-15
 
 **Model Confidence: 22.2/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
 
 _Pipeline health: **WARNING** (11/15 artifacts ok; 4 empty, 0 stale)._ 
 
-_Generated at 2026-07-14T23:02:22 UTC. Game lines source: **placeholder -110 (no real book today)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-07-15T07:12:48 UTC. Game lines source: **placeholder -110 (no real book today)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
-**AME @ NAT - UNDER_8.5**
+**CIN @ COL - CIN_ML**
 - Market: -110
-- Model probability: 58.3%
-- Raw edge: +11.32%
-- Recommended stake: 3.11u Kelly
+- Model probability: 73.7%
+- Raw edge: +40.74%
+- Recommended stake: <= 0.5u (model calibrating)
 
-## Full Slate (1 games)
+> _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
+
+## Full Slate (3 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 8:00p ET | AME @ NAT | Citizens Bank Park | 76F 8mph | UNDER_8.5 +11.32% |
+| 7:05p ET | SDP @ LAD | Petco Park | 62F -6mph | LAD_ML +25.43% |
+| 6:45p ET | BOS @ NYY | Yankee Stadium | 71F 12mph | OVER_9.0 +30.97% |
+| 9:40p ET | CIN @ COL | Coors Field | 74F 4mph | CIN_ML +40.74% |
+
+## Parlays - top 1
+
+- **2-leg @ +240 (prob 36.6%, EV +24.49%)**
+  - BOS @ NYY NYY_ML (-128, model 58.7%)
+  - CIN @ COL OVER_10.5 (-110, model 62.4%)
 
 ## Self-Learning Loop
 
@@ -31,7 +41,9 @@ Cumulative graded plays: 6250. Wins: 2506. Hit rate: 40.1%.
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| AME @ NAT | 45.6% | +119 | 4.1 | +212 | -212 |
+| BOS @ NYY | -- | -- | -- | +115 | -115 |
+| CIN @ COL | -- | -- | -- | +465 | -465 |
+| SDP @ LAD | -- | -- | -- | -166 | +166 |
 
 ## Team Form (last 10)
 

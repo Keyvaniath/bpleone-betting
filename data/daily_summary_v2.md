@@ -1,8 +1,8 @@
-# EdgeStat Daily Summary — 2026-07-14
+# EdgeStat Daily Summary — 2026-07-15
 
 ## 🏥 Model Health: 67.0/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 100.0/100
+  - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 47.6/100
   - 🔴 Brier Trend: 34.8/100
   - 🟢 Pipeline Audit: 100.0/100
@@ -10,16 +10,16 @@
   - 🔴 Edge Count: 14.3/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.581)
-- **Total games on board:** 112
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.582)
+- **Total games on board:** 127
 - **Strong home favorites:** 2 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
 1. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
 2. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
 3. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
-4. **AME @ NAT YRFI (1st-inning OVER 0.5)** (68/100 ★★★)
-5. **MLS St. Louis CITY SC ML (4-4-6) vs Sporting Kansas City** (65/100 ★★★)
+4. **LOL 2-leg parlay @ +300** (70/100 ★★★★)
+5. **AME @ NAT YRFI (1st-inning OVER 0.5)** (68/100 ★★★)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-58** (84.1% hit rate)
@@ -53,21 +53,20 @@
 - [MLS] **Seattle Sounders FC** HOME (0-1 L10) · model 66.7% fair -200
 
 ## 🔥/❄️ Heat / Cold Signals
-- Hot teams: **2** | Cold teams: **1** | Over-heavy: 0 | Under-heavy: 1
+- Hot teams: **2** | Cold teams: **2** | Over-heavy: 0 | Under-heavy: 0
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (40)
-- RESIDUAL_DIVERGENCE: **1**
-- STEAM_MOVE: **39**
-  - Toronto Tempo (WNBA): Toronto Tempo OUTPERFORMING expected margin by 7.0pts in recent games -- model bias may persist
+## ⚠️ Anomaly Detector (37)
+- STEAM_MOVE: **37**
   - GS @ CON (WNBA): TOTAL steam since open: ML +2.2pp toward CON; total -3 (UNDER) (3 snapshots)
   - MIL @ STL (MLB): ML/TOTAL steam since open: ML +14.4pp toward STL; total +1 (OVER) (7 snapshots)
   - ATL @ STL (MLB): ML/TOTAL steam since open: ML +10.5pp toward STL; total +0.5 (OVER) (7 snapshots)
   - SEA @ LA (WNBA): TOTAL steam since open: ML +0.7pp toward LA; total +2 (OVER) (5 snapshots)
+  - MIN @ CON (WNBA): TOTAL steam since open: ML -1.1pp toward MIN; total -2 (UNDER) (5 snapshots)
 
-## 💰 Today's Portfolio (10 picks)
-- Total stake: **$245.0** (24.5% of $1000 bankroll)
-- Expected EV: **$-48.6**
+## 💰 Today's Portfolio (9 picks)
+- Total stake: **$225.0** (22.5% of $1000 bankroll)
+- Expected EV: **$-48.58**
   - #1 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #2 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
   - #3 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
@@ -129,5 +128,5 @@
   - ⚠️ batter_rbis (Brier Δ -0.0052)
 
 ## 🤖 Self-Training Status
-- **WNBA**: n=33 games · hit rate 51.5% · bias +3.0pp [calibration applied]
-- **MLB**: n=178 games · hit rate 48.3% · bias +5.8pp [calibration applied]
+- **WNBA**: n=34 games · hit rate 50.0% · bias +4.7pp [calibration applied]
+- **MLB**: n=164 games · hit rate 46.3% · bias +6.2pp [calibration applied]
