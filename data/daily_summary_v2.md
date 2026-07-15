@@ -1,13 +1,13 @@
 # EdgeStat Daily Summary — 2026-07-15
 
-## 🏥 Model Health: 60.3/100 [OK]
+## 🏥 Model Health: 62.6/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.9/100
+  - 🟢 Calibration Freshness: 100.0/100
   - 🔴 Hit Rate Trend: 27.2/100
   - 🔴 Brier Trend: 17.5/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 95.5/100
-  - 🔴 Edge Count: 22.9/100
+  - 🔴 Edge Count: 45.7/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.581)
@@ -80,8 +80,9 @@
   - #4 [KBO] $35 on KBO LG Twins vs KT Wiz ML @ -157 (P=61%)
   - #5 [KBO] $35 on KBO Samsung Lions vs Lotte Giants ML @ -168 (P=63%)
 
-## 🎯 Convergence Picks (3 stacked games)
-- ELITE: **0** · HIGH: 0 · MED: 3
+## 🎯 Convergence Picks (4 stacked games)
+- ELITE: **1** · HIGH: 0 · MED: 3
+  - [ELITE] Golden State Valkyries @ Indiana Fever : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
   - [MED] New York Knicks @ San Antonio Spurs : 2 signals (ATS, ATS)
   - [MED] Portland Timbers @ Seattle Sounders FC : 2 signals (PREGAME, ATS)
   - [MED] Coventry City @ Arsenal : 2 signals (PREGAME, ATS)
@@ -121,6 +122,9 @@
   - ❄️ **Oswald Peraza** (LAA): L14 .079 / season .239 (-160pts) -- FADE props
   - ❄️ **Paul Goldschmidt** (NYY): L14 .104 / season .258 (-154pts) -- FADE props
   - ❄️ **Henry Bolte** (ATH): L14 .120 / season .261 (-141pts) -- FADE props
+
+## 📈 Streak Regression Alerts (1)
+- [WNBA] Golden State Valkyries on W4 L10 4-0 -- Golden State Valkyries on W4 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**

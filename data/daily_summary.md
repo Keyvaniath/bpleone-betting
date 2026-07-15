@@ -2,9 +2,9 @@
 
 **Model Confidence: 22.2/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
 
-_Pipeline health: **WARNING** (11/15 artifacts ok; 4 empty, 0 stale)._ 
+_Pipeline health: **WARNING** (12/15 artifacts ok; 3 empty, 0 stale)._ 
 
-_Generated at 2026-07-15T21:50:45 UTC. Game lines source: **placeholder -110 (no real book today)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-07-15T23:09:44 UTC. Game lines source: **placeholder -110 (no real book today)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
@@ -47,7 +47,7 @@ _Generated at 2026-07-15T21:50:45 UTC. Game lines source: **placeholder -110 (no
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
 
-Cumulative graded plays: 6251. Wins: 2506. Hit rate: 40.1%.
+Cumulative graded plays: 6252. Wins: 2507. Hit rate: 40.1%.
 
 ## Auxiliary Markets (Model Fair Prices)
 
@@ -77,4 +77,4 @@ _The model is suggesting 1 parameter tweak based on its own performance. Apply v
 ---
 
 _EdgeStat is a research desk. Bet responsibly. 21+. 1-800-GAMBLER._
-_Source: github.com/Keyvaniath/bpleone-betting - last settled 2026-07-14._
+_Source: github.com/Keyvaniath/bpleone-betting - last settled 2026-07-15._

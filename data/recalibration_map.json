@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-07-15T21:50:54",
-  "n_settled": 6151,
+  "generated_at": "2026-07-15T23:09:56",
+  "n_settled": 6152,
   "n_families_transformed": 24,
   "n_families_bucketed": 14,
   "ece_before": 0.0905,
   "ece_after": 0.0176,
   "ece_improvement": 0.0729,
-  "brier_before": 0.21128,
-  "brier_after": 0.19417,
+  "brier_before": 0.21126,
+  "brier_after": 0.19416,
   "method_note": "Per market family, a monotonic (isotonic) curve maps the model's predicted probability to the realized hit rate, learned from settled outcomes. Bucketed for well-sampled families (preserves ranking), a family-average Bayesian blend for mid-sample, identity below that. ECE = expected calibration error (lower = the displayed % is truer). This makes the model honest at the source; it does not create edge (that needs a market price).",
   "families": [
     {
@@ -574,32 +574,6 @@
       }
     },
     {
-      "family": "home_clean_sheet_no",
-      "n": 92,
-      "method": "bucketed",
-      "avg_pred_raw": 0.752,
-      "avg_pred_calibrated": 0.718,
-      "realized": 0.7065,
-      "ece_raw": 0.0455,
-      "ece_calibrated": 0.0115,
-      "transform": {
-        "anchors": [
-          [
-            0.7438,
-            0.7173
-          ],
-          [
-            0.753,
-            0.7173
-          ],
-          [
-            0.7592,
-            0.7235
-          ]
-        ]
-      }
-    },
-    {
       "family": "mlb_hit_1.5_under",
       "n": 97,
       "method": "bucketed",
@@ -621,6 +595,32 @@
           [
             0.8539,
             0.8011
+          ]
+        ]
+      }
+    },
+    {
+      "family": "home_clean_sheet_no",
+      "n": 93,
+      "method": "bucketed",
+      "avg_pred_raw": 0.752,
+      "avg_pred_calibrated": 0.7208,
+      "realized": 0.7097,
+      "ece_raw": 0.0423,
+      "ece_calibrated": 0.0111,
+      "transform": {
+        "anchors": [
+          [
+            0.7438,
+            0.7205
+          ],
+          [
+            0.753,
+            0.7205
+          ],
+          [
+            0.7592,
+            0.7235
           ]
         ]
       }

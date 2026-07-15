@@ -1,5 +1,5 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-07-15T21:50:38 UTC_
+_Generated 2026-07-15T23:09:36 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
@@ -24,13 +24,13 @@ _Generated 2026-07-15T21:50:38 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **NHL** / jake oettinger (GOALIE_FADE)
+- **NHL** / joseph woll (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / stuart skinner (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
 - **NHL** / kevin lankinen (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / marc-andre fleury (GOALIE_FADE)
+- **NHL** / anthony stolarz (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / samsonov ilya (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / adin hill (GOALIE_FADE)
+- **NHL** / thatcher demko (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO

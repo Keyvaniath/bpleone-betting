@@ -1,23 +1,23 @@
 {
- "generated_at": "2026-07-15T21:50:26",
+ "generated_at": "2026-07-15T23:09:22",
  "stake_assumption": "1u flat per pick",
  "total_picks": 10000,
- "n_settled": 6251,
- "n_pending": 323,
- "n_void": 3426,
- "wins": 2503,
+ "n_settled": 6252,
+ "n_pending": 326,
+ "n_void": 3422,
+ "wins": 2504,
  "losses": 3741,
  "pushes": 7,
- "hit_rate": 0.4009,
- "net_units": -1032.986,
+ "hit_rate": 0.401,
+ "net_units": -1032.659,
  "roi_pct": -16.54,
- "n_calibrated_picks": 9092,
+ "n_calibrated_picks": 9096,
  "calibrated_reliability": {
-  "n": 6151,
+  "n": 6152,
   "ece_raw": 0.0905,
   "ece_calibrated": 0.0176,
-  "brier_raw": 0.21128,
-  "brier_calibrated": 0.19417,
+  "brier_raw": 0.21126,
+  "brier_calibrated": 0.19416,
   "note": "In-sample over the settled ledger (the isotonic transform is fit on these same outcomes); held-out 70/30 validation is in recalibration_map.json. p_predicted = raw model prob (kept untouched for the learning loop); p_calibrated = honest prob stamped per pick. Lower ECE/Brier on the calibrated column = the displayed % is truer."
  },
  "curated": {
@@ -734,13 +734,13 @@
    "roi_pct": 53.84
   },
   "soccer_clean_sheet_home_clean_sheet_no": {
-   "n": 92,
-   "wins": 65,
+   "n": 93,
+   "wins": 66,
    "losses": 27,
    "pushes": 0,
-   "net_units": -5.676,
-   "hit_rate": 0.7065,
-   "roi_pct": -6.17
+   "net_units": -5.349,
+   "hit_rate": 0.7097,
+   "roi_pct": -5.75
   },
   "wnba_alts_home_total_over_74.4": {
    "n": 1,
@@ -1761,12 +1761,12 @@
    "hit_rate": 0.8889
   },
   "home_clean_sheet_no": {
-   "n": 92,
-   "wins": 65,
+   "n": 93,
+   "wins": 66,
    "losses": 27,
    "pushes": 0,
-   "net_units": -5.676,
-   "hit_rate": 0.7065
+   "net_units": -5.349,
+   "hit_rate": 0.7097
   },
   "ast_under": {
    "n": 4,
@@ -2211,12 +2211,12 @@
    "hit_rate": 0.8889
   },
   "home_clean_sheet_no": {
-   "n": 92,
-   "wins": 65,
+   "n": 93,
+   "wins": 66,
    "losses": 27,
    "pushes": 0,
-   "net_units": -5.676,
-   "hit_rate": 0.7065
+   "net_units": -5.349,
+   "hit_rate": 0.7097
   },
   "ast_under": {
    "n": 4,
@@ -2277,13 +2277,13 @@
  },
  "by_sport": {
   "MLB": {
-   "n": 6919,
+   "n": 6915,
    "settled": 4747,
    "wins": 1518,
    "losses": 3222,
    "pushes": 7,
    "pending": 229,
-   "void": 1943,
+   "void": 1939,
    "net_units": -1193.458,
    "hit_rate": 0.3203,
    "roi_pct": -25.18,
@@ -2342,12 +2342,12 @@
    "markets": 3
   },
   "WNBA": {
-   "n": 411,
+   "n": 415,
    "settled": 209,
    "wins": 153,
    "losses": 56,
    "pushes": 0,
-   "pending": 30,
+   "pending": 34,
    "void": 172,
    "net_units": 22.38,
    "hit_rate": 0.7321,
@@ -2395,15 +2395,15 @@
   },
   "WORLDCUP": {
    "n": 208,
-   "settled": 195,
-   "wins": 132,
+   "settled": 196,
+   "wins": 133,
    "losses": 63,
    "pushes": 0,
-   "pending": 7,
+   "pending": 6,
    "void": 6,
-   "net_units": 3.381,
-   "hit_rate": 0.6769,
-   "roi_pct": 1.73,
+   "net_units": 3.708,
+   "hit_rate": 0.6786,
+   "roi_pct": 1.89,
    "markets": 9
   },
   "TENNIS": {
@@ -2434,38 +2434,13 @@
   }
  },
  "last_7_days": {
-  "wins": 116,
+  "wins": 117,
   "losses": 133,
-  "net_units": -9.557,
-  "hit_rate": 0.4659
+  "net_units": -9.23,
+  "hit_rate": 0.468
  },
  "note": "Unified pick ledger -- records every pick the model surfaces (top_25 board, whales, consensus, unders, sharp action, locks, POD) and settles each against actual outcomes. Per-source W-L feeds back into calibration so the model learns which modules are reliable. THIS is the training signal.",
  "picks": [
-  {
-   "source": "wnba_3pm_3pm_over_0.5",
-   "sport": "WNBA",
-   "player_or_matchup": "lexie hull",
-   "market": "3PM_OVER_0.5",
-   "prob": 0.626,
-   "fair_american": -167,
-   "p_predicted": 0.626,
-   "matchup": "IND @ LAS",
-   "date": "2026-07-09",
-   "pick_id": "wnba_3pm_3pm_over_0_5|WNBA|lexie_hull|3PM_OVER_0_5|2026-07-09",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.5988,
-   "recorded_at": "2026-07-08T17:23:43",
-   "p_calibrated": 0.626,
-   "outcome": {
-    "stat": "fg3m",
-    "actual": 2,
-    "line": 0.5,
-    "side": "OVER",
-    "verify": "lexie hull \u2014 fg3m = 2 (line 0.5, bet over) on 2026-07-09"
-   },
-   "settled_at": "2026-07-10T04:27:39"
-  },
   {
    "source": "wnba_blkstl_blk_stl_over_0.5",
    "sport": "WNBA",
@@ -4813,7 +4788,7 @@
    "result": "won",
    "payout_units": 0.3268,
    "recorded_at": "2026-07-10T09:55:48",
-   "p_calibrated": 0.7173,
+   "p_calibrated": 0.7205,
    "outcome": {
     "final_score": "Belgium 1-2 Spain",
     "total_cards": 4,
@@ -5880,7 +5855,7 @@
    "result": "won",
    "payout_units": 0.3268,
    "recorded_at": "2026-07-11T14:59:56",
-   "p_calibrated": 0.7173,
+   "p_calibrated": 0.7205,
    "outcome": {
     "final_score": "England 2-1 Norway",
     "total_cards": 1,
@@ -6285,7 +6260,7 @@
    "result": "won",
    "payout_units": 0.3268,
    "recorded_at": "2026-07-11T14:59:56",
-   "p_calibrated": 0.7173,
+   "p_calibrated": 0.7205,
    "outcome": {
     "final_score": "Switzerland 1-3 Argentina",
     "total_cards": 5,
@@ -7487,7 +7462,7 @@
    "result": "won",
    "payout_units": 0.3268,
    "recorded_at": "2026-07-12T06:28:16",
-   "p_calibrated": 0.7173,
+   "p_calibrated": 0.7205,
    "outcome": {
     "final_score": "Spain 2-0 France",
     "total_cards": 3,
@@ -7525,12 +7500,42 @@
     "verify": "WSH @ TOR: home scored 62 (line 76.6, bet over) on 2026-07-14"
    },
    "settled_at": "2026-07-15T10:17:21"
+  },
+  {
+   "source": "soccer_clean_sheet_home_clean_sheet_no",
+   "sport": "WORLDCUP",
+   "player_or_matchup": "Argentina @ England",
+   "market": "HOME_CLEAN_SHEET_NO",
+   "prob": 0.753,
+   "fair_american": -306,
+   "p_predicted": 0.753,
+   "matchup": "Argentina @ England",
+   "date": "2026-07-15",
+   "pick_id": "soccer_clean_sheet_home_clean_sheet_no|WORLDCUP|Argentina___England|HOME_CLEAN_SHEET_NO|2026-07-15",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.3268,
+   "recorded_at": "2026-07-15T10:17:21",
+   "p_calibrated": 0.7205,
+   "outcome": {
+    "final_score": "Argentina 2-1 England",
+    "total_cards": 4,
+    "total_goals": 3,
+    "scorers": [
+     "anthony gordon",
+     "enzo fern\u00e1ndez",
+     "lautaro mart\u00ednez"
+    ],
+    "market": "HOME_CLEAN_SHEET_NO",
+    "verify": "Argentina 2-1 England: home clean sheet = False \u2014 HOME_CLEAN_SHEET_NO"
+   },
+   "settled_at": "2026-07-15T22:39:30"
   }
  ],
  "recent_window": 200,
  "date_range": [
   "2026-05-19",
-  "2026-07-14"
+  "2026-07-15"
  ],
- "digest_generated_at": "2026-07-15T21:50:27"
+ "digest_generated_at": "2026-07-15T23:09:23"
 }
