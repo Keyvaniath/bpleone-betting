@@ -1,23 +1,23 @@
 {
- "generated_at": "2026-07-15T07:12:30",
+ "generated_at": "2026-07-15T14:37:17",
  "stake_assumption": "1u flat per pick",
  "total_picks": 10000,
- "n_settled": 6250,
+ "n_settled": 6251,
  "n_pending": 323,
- "n_void": 3427,
+ "n_void": 3426,
  "wins": 2503,
- "losses": 3740,
+ "losses": 3741,
  "pushes": 7,
  "hit_rate": 0.4009,
- "net_units": -1031.986,
- "roi_pct": -16.53,
- "n_calibrated_picks": 9091,
+ "net_units": -1032.986,
+ "roi_pct": -16.54,
+ "n_calibrated_picks": 9092,
  "calibrated_reliability": {
-  "n": 6150,
-  "ece_raw": 0.0904,
+  "n": 6151,
+  "ece_raw": 0.0905,
   "ece_calibrated": 0.0176,
-  "brier_raw": 0.21125,
-  "brier_calibrated": 0.19411,
+  "brier_raw": 0.21128,
+  "brier_calibrated": 0.19417,
   "note": "In-sample over the settled ledger (the isotonic transform is fit on these same outcomes); held-out 70/30 validation is in recalibration_map.json. p_predicted = raw model prob (kept untouched for the learning loop); p_calibrated = honest prob stamped per pick. Lower ECE/Brier on the calibrated column = the displayed % is truer."
  },
  "curated": {
@@ -45,7 +45,7 @@
  "n_resettled_this_run": 0,
  "n_voided_this_run": 0,
  "n_duplicates_collapsed_this_run": 0,
- "n_duplicate_adds_blocked_this_run": 124,
+ "n_duplicate_adds_blocked_this_run": 95,
  "n_reconciled_settled_voids": 0,
  "n_bootstrapped_from_locks_history": 0,
  "by_source": {
@@ -1380,6 +1380,15 @@
    "net_units": 0.535,
    "hit_rate": 1.0,
    "roi_pct": 53.5
+  },
+  "wnba_alts_home_total_over_76.6": {
+   "n": 1,
+   "wins": 0,
+   "losses": 1,
+   "pushes": 0,
+   "net_units": -1.0,
+   "hit_rate": 0.0,
+   "roi_pct": -100.0
   }
  },
  "by_market_family": {
@@ -1592,12 +1601,12 @@
    "hit_rate": 0.6842
   },
   "home_total_over": {
-   "n": 90,
+   "n": 91,
    "wins": 72,
-   "losses": 18,
+   "losses": 19,
    "pushes": 0,
-   "net_units": 20.52,
-   "hit_rate": 0.8
+   "net_units": 19.52,
+   "hit_rate": 0.7912
   },
   "3pm_under": {
    "n": 41,
@@ -2042,12 +2051,12 @@
    "hit_rate": 0.6842
   },
   "home_total_over": {
-   "n": 90,
+   "n": 91,
    "wins": 72,
-   "losses": 18,
+   "losses": 19,
    "pushes": 0,
-   "net_units": 20.52,
-   "hit_rate": 0.8
+   "net_units": 19.52,
+   "hit_rate": 0.7912
   },
   "3pm_under": {
    "n": 41,
@@ -2268,13 +2277,13 @@
  },
  "by_sport": {
   "MLB": {
-   "n": 6920,
+   "n": 6919,
    "settled": 4747,
    "wins": 1518,
    "losses": 3222,
    "pushes": 7,
    "pending": 229,
-   "void": 1944,
+   "void": 1943,
    "net_units": -1193.458,
    "hit_rate": 0.3203,
    "roi_pct": -25.18,
@@ -2334,15 +2343,15 @@
   },
   "WNBA": {
    "n": 411,
-   "settled": 208,
+   "settled": 209,
    "wins": 153,
-   "losses": 55,
+   "losses": 56,
    "pushes": 0,
-   "pending": 31,
+   "pending": 30,
    "void": 172,
-   "net_units": 23.38,
-   "hit_rate": 0.7356,
-   "roi_pct": 11.24,
+   "net_units": 22.38,
+   "hit_rate": 0.7321,
+   "roi_pct": 10.71,
    "markets": 4
   },
   "EPL": {
@@ -2385,12 +2394,12 @@
    "markets": 3
   },
   "WORLDCUP": {
-   "n": 207,
+   "n": 208,
    "settled": 195,
    "wins": 132,
    "losses": 63,
    "pushes": 0,
-   "pending": 6,
+   "pending": 7,
    "void": 6,
    "net_units": 3.381,
    "hit_rate": 0.6769,
@@ -2426,37 +2435,12 @@
  },
  "last_7_days": {
   "wins": 116,
-  "losses": 132,
-  "net_units": -8.557,
-  "hit_rate": 0.4677
+  "losses": 133,
+  "net_units": -9.557,
+  "hit_rate": 0.4659
  },
  "note": "Unified pick ledger -- records every pick the model surfaces (top_25 board, whales, consensus, unders, sharp action, locks, POD) and settles each against actual outcomes. Per-source W-L feeds back into calibration so the model learns which modules are reliable. THIS is the training signal.",
  "picks": [
-  {
-   "source": "wnba_3pm_3pm_under_3.5",
-   "sport": "WNBA",
-   "player_or_matchup": "kelsey mitchell",
-   "market": "3PM_UNDER_3.5",
-   "prob": 0.671,
-   "fair_american": -204,
-   "p_predicted": 0.671,
-   "matchup": "IND @ LAS",
-   "date": "2026-07-09",
-   "pick_id": "wnba_3pm_3pm_under_3_5|WNBA|kelsey_mitchell|3PM_UNDER_3_5|2026-07-09",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.4902,
-   "recorded_at": "2026-07-08T17:23:43",
-   "p_calibrated": 0.6991,
-   "outcome": {
-    "stat": "fg3m",
-    "actual": 3,
-    "line": 3.5,
-    "side": "UNDER",
-    "verify": "kelsey mitchell \u2014 fg3m = 3 (line 3.5, bet under) on 2026-07-09"
-   },
-   "settled_at": "2026-07-10T04:27:39"
-  },
   {
    "source": "wnba_3pm_3pm_over_0.5",
    "sport": "WNBA",
@@ -3642,7 +3626,7 @@
    "result": "won",
    "payout_units": 0.5348,
    "recorded_at": "2026-07-09T17:50:43",
-   "p_calibrated": 0.7574,
+   "p_calibrated": 0.7516,
    "outcome": {
     "final_score": "SEA 78 @ ATL 89",
     "team_total": 89,
@@ -3667,7 +3651,7 @@
    "result": "won",
    "payout_units": 0.5348,
    "recorded_at": "2026-07-09T17:50:43",
-   "p_calibrated": 0.7574,
+   "p_calibrated": 0.7516,
    "outcome": {
     "final_score": "IND 92 @ PHX 89",
     "team_total": 89,
@@ -3692,7 +3676,7 @@
    "result": "won",
    "payout_units": 0.5348,
    "recorded_at": "2026-07-09T17:50:43",
-   "p_calibrated": 0.7574,
+   "p_calibrated": 0.7516,
    "outcome": {
     "final_score": "LV 88 @ POR 80",
     "team_total": 80,
@@ -5234,7 +5218,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-10T17:43:17",
-   "p_calibrated": 0.7574,
+   "p_calibrated": 0.7516,
    "outcome": {
     "final_score": "GS 79 @ CON 64",
     "team_total": 64,
@@ -5259,7 +5243,7 @@
    "result": "won",
    "payout_units": 0.5348,
    "recorded_at": "2026-07-10T17:43:17",
-   "p_calibrated": 0.7574,
+   "p_calibrated": 0.7516,
    "outcome": {
     "final_score": "DAL 108 @ TOR 95",
     "team_total": 95,
@@ -5284,7 +5268,7 @@
    "result": "won",
    "payout_units": 0.5348,
    "recorded_at": "2026-07-10T17:43:17",
-   "p_calibrated": 0.7574,
+   "p_calibrated": 0.7516,
    "outcome": {
     "final_score": "CHI 87 @ LA 102",
     "team_total": 102,
@@ -6076,7 +6060,7 @@
    "result": "won",
    "payout_units": 0.5348,
    "recorded_at": "2026-07-11T22:06:10",
-   "p_calibrated": 0.7574,
+   "p_calibrated": 0.7516,
    "outcome": {
     "final_score": "POR 102 @ ATL 92",
     "team_total": 92,
@@ -6101,7 +6085,7 @@
    "result": "won",
    "payout_units": 0.5348,
    "recorded_at": "2026-07-11T22:06:10",
-   "p_calibrated": 0.7574,
+   "p_calibrated": 0.7516,
    "outcome": {
     "final_score": "PHX 58 @ LV 106",
     "team_total": 106,
@@ -6828,7 +6812,7 @@
    "result": "won",
    "payout_units": 0.5348,
    "recorded_at": "2026-07-12T22:06:26",
-   "p_calibrated": 0.7574,
+   "p_calibrated": 0.7516,
    "outcome": {
     "final_score": "NY 91 @ TOR 93",
     "team_total": 93,
@@ -6853,7 +6837,7 @@
    "result": "won",
    "payout_units": 0.5348,
    "recorded_at": "2026-07-12T22:06:26",
-   "p_calibrated": 0.7574,
+   "p_calibrated": 0.7516,
    "outcome": {
     "final_score": "SEA 79 @ WSH 84",
     "team_total": 84,
@@ -6878,7 +6862,7 @@
    "result": "won",
    "payout_units": 0.5348,
    "recorded_at": "2026-07-12T22:06:26",
-   "p_calibrated": 0.7574,
+   "p_calibrated": 0.7516,
    "outcome": {
     "final_score": "CHI 91 @ DAL 96",
     "team_total": 96,
@@ -6903,7 +6887,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-12T22:06:26",
-   "p_calibrated": 0.7574,
+   "p_calibrated": 0.7516,
    "outcome": {
     "final_score": "IND 109 @ LV 75",
     "team_total": 75,
@@ -7403,7 +7387,7 @@
    "result": "won",
    "payout_units": 0.5348,
    "recorded_at": "2026-07-13T17:50:36",
-   "p_calibrated": 0.7574,
+   "p_calibrated": 0.7516,
    "outcome": {
     "final_score": "LA 92 @ ATL 101",
     "team_total": 101,
@@ -7428,7 +7412,7 @@
    "result": "won",
    "payout_units": 0.5348,
    "recorded_at": "2026-07-13T17:50:36",
-   "p_calibrated": 0.7574,
+   "p_calibrated": 0.7516,
    "outcome": {
     "final_score": "PHX 100 @ MIN 104",
     "team_total": 104,
@@ -7516,6 +7500,31 @@
     "verify": "Spain 2-0 France: home clean sheet = False \u2014 HOME_CLEAN_SHEET_NO"
    },
    "settled_at": "2026-07-14T21:18:06"
+  },
+  {
+   "source": "wnba_alts_home_total_over_76.6",
+   "sport": "WNBA",
+   "player_or_matchup": "WAS @ TOR",
+   "market": "HOME_TOTAL_OVER_76.6",
+   "prob": 0.651,
+   "fair_american": -187,
+   "p_predicted": 0.651,
+   "matchup": "WAS @ TOR",
+   "date": "2026-07-14",
+   "pick_id": "wnba_alts_home_total_over_76_6|WNBA|WAS___TOR|HOME_TOTAL_OVER_76_6|2026-07-14",
+   "settled": true,
+   "result": "lost",
+   "payout_units": -1.0,
+   "recorded_at": "2026-07-14T21:52:33",
+   "p_calibrated": 0.7516,
+   "outcome": {
+    "final_score": "WSH 79 @ TOR 62",
+    "team_total": 62,
+    "line": 76.6,
+    "side": "OVER",
+    "verify": "WSH @ TOR: home scored 62 (line 76.6, bet over) on 2026-07-14"
+   },
+   "settled_at": "2026-07-15T10:17:21"
   }
  ],
  "recent_window": 200,
@@ -7523,5 +7532,5 @@
   "2026-05-19",
   "2026-07-14"
  ],
- "digest_generated_at": "2026-07-15T07:12:31"
+ "digest_generated_at": "2026-07-15T14:37:18"
 }

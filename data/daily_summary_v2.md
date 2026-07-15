@@ -10,21 +10,24 @@
   - 🔴 Edge Count: 14.3/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.582)
-- **Total games on board:** 127
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.583)
+- **Total games on board:** 111
 - **Strong home favorites:** 2 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
 1. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
 2. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
 3. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
-4. **LOL 2-leg parlay @ +300** (70/100 ★★★★)
-5. **AME @ NAT YRFI (1st-inning OVER 0.5)** (68/100 ★★★)
+4. **KBO LG Twins vs KT Wiz ML @ -157** (76/100 ★★★★★)
+5. **KBO Samsung Lions vs Lotte Giants ML @ -168** (76/100 ★★★★★)
+
+## 🐋 Whale Picks (Max Confluence)
+- [STRONG] **[MLB]** CIN @ COL CIN_ML -- 65% / +24.4% (score 2.5)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-58** (84.1% hit rate)
 - Net units: **+10.40u** | ROI: **+46.0%**
-- Last 7d: 6-4 (60.0%) | net +0.03u
+- Last 7d: 0-1 (0.0%) | net -0.06u
 
 **Today's 5 Locks:**
 - [KBO] **Choi Jeong** one_plus_tb · p=73% edge=+39.8% qK=0.062u
@@ -64,25 +67,20 @@
   - SEA @ LA (WNBA): TOTAL steam since open: ML +0.7pp toward LA; total +2 (OVER) (5 snapshots)
   - MIN @ CON (WNBA): TOTAL steam since open: ML -1.1pp toward MIN; total -2 (UNDER) (5 snapshots)
 
-## 💰 Today's Portfolio (9 picks)
-- Total stake: **$225.0** (22.5% of $1000 bankroll)
-- Expected EV: **$-48.58**
+## 💰 Today's Portfolio (11 picks)
+- Total stake: **$310.0** (31.0% of $1000 bankroll)
+- Expected EV: **$-45.01**
   - #1 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #2 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
   - #3 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
-  - #4 [NRFI] $20 on AME @ NAT YRFI (1st-inning OVER 0.5) (P=54%)
-  - #5 [MLS] $20 on MLS St. Louis CITY SC ML (4-4-6) vs Sporting Kansas City (P=55%)
+  - #4 [KBO] $35 on KBO LG Twins vs KT Wiz ML @ -157 (P=61%)
+  - #5 [KBO] $35 on KBO Samsung Lions vs Lotte Giants ML @ -168 (P=63%)
 
-## 🎯 Convergence Picks (5 stacked games)
-- ELITE: **1** · HIGH: 0 · MED: 4
-  - [ELITE] Washington Mystics @ Toronto Tempo : 4 signals (PREGAME, ANOMALY, ATS, ATS)
+## 🎯 Convergence Picks (3 stacked games)
+- ELITE: **0** · HIGH: 0 · MED: 3
   - [MED] New York Knicks @ San Antonio Spurs : 2 signals (ATS, ATS)
-  - [MED] Portland Fire @ Connecticut Sun : 2 signals (ATS, ATS)
   - [MED] Portland Timbers @ Seattle Sounders FC : 2 signals (PREGAME, ATS)
   - [MED] Coventry City @ Arsenal : 2 signals (PREGAME, ATS)
-
-## ⚾ Top MLB Pitcher K Plays (1)
-- **Dylan Cease** OVER 7.5 K (69%) fair -223
 
 ## 🏀 NBA Player Heat (18 HOT / 23 COLD)
   - 🔥 **Jeremiah Fears** (NO): L5 31.8/5.8/6.0 vs season 16.9/3.2/4.0 [PTS +14.9, REB +2.6, AST +2.0]

@@ -1,8 +1,5 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:1 F:189
-
-:dart: **Top Picks:**
-1. [MLB] AWAY -- AWAY (TEAM_STRONG)
+_NO_ACTION_NIGHT_ | L:0 S:0 F:187
 
 :coin: Bankroll Advisory: STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 

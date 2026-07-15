@@ -6,8 +6,7 @@ _0% lineups confirmed_
 
 ## Slate
 - **3 games** scheduled
-- **10 best bets** scored: 0 DK · 0 PP · 1 NRFI · 0 SGP
-- **MC simulation:** EV +$0.43, 54% P(profit), p05 $-10.81 / p95 $9.83
+- **12 best bets** scored: 0 DK · 0 PP · 0 NRFI · 0 SGP
 
 ## Top 5 Best Bets
 1. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
@@ -19,23 +18,18 @@ _0% lineups confirmed_
 3. **LOL Peyz OVER 4.5 Kills**  (78/100 ****, edge —)
    - Player prop quality score 1.184
    - Elite player
-4. **LOL 2-leg parlay @ +300**  (70/100 ****, edge +0.0%)
-   - Joint 25.0% across 2 different series
-   - Conviction ML vs Cupid Esports (NACL BO3)
-5. **AME @ NAT YRFI (1st-inning OVER 0.5)**  (68/100 ***, edge +8.4%)
-   - P(YRFI) 54.4% vs baseline 46.0%
+4. **KBO LG Twins vs KT Wiz ML @ -157**  (76/100 *****, edge —)
+   - Model 61.0% (fair -157)
+   - 
+5. **KBO Samsung Lions vs Lotte Giants ML @ -168**  (76/100 *****, edge —)
+   - Model 62.6% (fair -168)
+   - 
 
-## ⚠️ Trap Warnings — 3 flagged
+## ⚠️ Trap Warnings — 2 flagged
 - **GOLF 3-leg parlay @ +2121** (low):
    - Edge +10.2% looks big but only 0 settled props on this player — model unproven
 - **GOLF 3-leg parlay @ +2122** (low):
    - Edge +10.2% looks big but only 0 settled props on this player — model unproven
-- **AME @ NAT YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +8.4% looks big but only 0 settled props on this player — model unproven
-
-## Bullpens GASSED tonight
-Seattle Mariners, Atlanta Braves, Miami Marlins, Boston Red Sox
-_Lean late-inning OVER on these games; fade their save situations._
 
 ## Golf -- The Open
 - **Leader:** Thomas Detry (E) at #1
@@ -59,11 +53,12 @@ _Lean late-inning OVER on these games; fade their save situations._
 - Kiwoom Heroes @ Hanwha Eagles | P(home) 57.2% fair -134 | total 10 R
 - **KBO POD:** LG Twins ML vs KT Wiz (KBO) (HIGH)
 
-## LoL Esports -- 0 live, 2 upcoming
+## LoL Esports -- 0 live, 3 upcoming
 - [NACL] Conviction vs Cupid Esports BO3 | P(A) 50.0% fair -100/-100
 - [NACL] Maryville University vs Dorado Gaming BO3 | P(A) 50.0% fair -100/-100
+- [LJL] RAYN Clocks vs L Guide Gaming BO5 | P(A) 50.0% fair -100/-100
 
-## Player Play of the Day -- across all sports (3611 candidates scanned)
+## Player Play of the Day -- across all sports (3614 candidates scanned)
 - **[LOL]** Inspired UNDER 3.5 Kills | model 61.7% fair -161 (ELITE)
 - **[LOL]** ShowMaker OVER 3.5 Kills | model 62.5% fair -167 (ELITE)
 - **[LOL]** Peyz OVER 4.5 Kills | model 61.3% fair -158 (ELITE)
