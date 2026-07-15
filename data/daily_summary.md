@@ -4,7 +4,7 @@
 
 _Pipeline health: **WARNING** (11/15 artifacts ok; 4 empty, 0 stale)._ 
 
-_Generated at 2026-07-15T14:37:36 UTC. Game lines source: **placeholder -110 (no real book today)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-07-15T15:31:47 UTC. Game lines source: **placeholder -110 (no real book today)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 

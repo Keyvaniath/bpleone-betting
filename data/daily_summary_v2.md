@@ -1,13 +1,13 @@
 # EdgeStat Daily Summary — 2026-07-15
 
-## 🏥 Model Health: 67.0/100 [OK]
+## 🏥 Model Health: 60.0/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.9/100
-  - 🔴 Hit Rate Trend: 47.6/100
-  - 🔴 Brier Trend: 34.8/100
+  - 🟢 Calibration Freshness: 99.6/100
+  - 🔴 Hit Rate Trend: 27.2/100
+  - 🔴 Brier Trend: 17.5/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 95.5/100
-  - 🔴 Edge Count: 14.3/100
+  - 🔴 Edge Count: 20.0/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.583)
@@ -23,6 +23,9 @@
 
 ## 🐋 Whale Picks (Max Confluence)
 - [STRONG] **[MLB]** CIN @ COL CIN_ML -- 65% / +24.4% (score 2.5)
+
+## 📡 Sharp Action (Line Movement)
+- [ELITE] **BOS @ NYY** over_9.0: 52.38% → 63.64% (+11.3pp)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-58** (84.1% hit rate)
