@@ -6,7 +6,8 @@ _0% lineups confirmed_
 
 ## Slate
 - **3 games** scheduled
-- **13 best bets** scored: 0 DK · 0 PP · 0 NRFI · 0 SGP
+- **21 best bets** scored: 7 DK · 0 PP · 0 NRFI · 0 SGP
+- **MC simulation:** EV +$36.46, 69% P(profit), p05 $-120.01 / p95 $181.54
 
 ## Top 5 Best Bets
 1. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
@@ -25,7 +26,13 @@ _0% lineups confirmed_
    - Model 62.6% (fair -168)
    - 
 
-## ⚠️ Trap Warnings — 2 flagged
+## ⚠️ Trap Warnings — 7 flagged
+- **Christian Scott OVER 5.5 pitcher strikeouts** (low):
+   - Edge +30.4% looks big but only 0 settled props on this player — model unproven
+- **Aaron Nola OVER 5.5 pitcher strikeouts** (low):
+   - Edge +29.5% looks big but only 0 settled props on this player — model unproven
+- **Jorge Polanco UNDER 0.5 batter hits** (low):
+   - Edge +14.6% looks big but only 0 settled props on this player — model unproven
 - **GOLF 3-leg parlay @ +2121** (low):
    - Edge +10.2% looks big but only 0 settled props on this player — model unproven
 - **GOLF 3-leg parlay @ +2122** (low):
@@ -53,10 +60,13 @@ _0% lineups confirmed_
 - Kiwoom Heroes @ Hanwha Eagles | P(home) 57.2% fair -134 | total 10 R
 - **KBO POD:** LG Twins ML vs KT Wiz (KBO) (HIGH)
 
-## LoL Esports -- 0 live, 3 upcoming
+## LoL Esports -- 0 live, 6 upcoming
 - [NACL] Conviction vs Cupid Esports BO3 | P(A) 50.0% fair -100/-100
 - [NACL] Maryville University vs Dorado Gaming BO3 | P(A) 50.0% fair -100/-100
 - [LJL] RAYN Clocks vs L Guide Gaming BO5 | P(A) 50.0% fair -100/-100
+- [NACL] Blue Otter vs CCG Esports BO3 | P(A) 50.0% fair -100/-100
+- [NACL] Ole Miss Esports vs Winthrop University BO3 | P(A) 50.0% fair -100/-100
+- **LoL POT:** New Meta ML vs Arneb (LJL, BO5) (HIGH)
 
 ## Player Play of the Day -- across all sports (3639 candidates scanned)
 - **[LOL]** Inspired UNDER 3.5 Kills | model 61.7% fair -161 (ELITE)

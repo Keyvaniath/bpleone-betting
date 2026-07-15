@@ -1,18 +1,18 @@
 # EdgeStat Daily Summary — 2026-07-15
 
-## 🏥 Model Health: 60.0/100 [OK]
+## 🏥 Model Health: 60.3/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.6/100
+  - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 27.2/100
   - 🔴 Brier Trend: 17.5/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 95.5/100
-  - 🔴 Edge Count: 20.0/100
+  - 🔴 Edge Count: 22.9/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.583)
-- **Total games on board:** 111
-- **Strong home favorites:** 2 | **Strong road dogs:** 0
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.581)
+- **Total games on board:** 112
+- **Strong home favorites:** 2 | **Strong road dogs:** 1
 
 ## 🎯 Top 5 Best Bets
 1. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
@@ -62,17 +62,18 @@
 - Hot teams: **2** | Cold teams: **2** | Over-heavy: 0 | Under-heavy: 0
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (37)
-- STEAM_MOVE: **37**
+## ⚠️ Anomaly Detector (41)
+- RESIDUAL_DIVERGENCE: **1**
+- STEAM_MOVE: **40**
+  - Indiana Fever (WNBA): Indiana Fever OUTPERFORMING expected margin by 8.0pts in recent games -- model bias may persist
+  - NYM @ PHI (MLB): TOTAL steam since open: ML -1.8pp toward NYM; total +9.5 (OVER) (3 snapshots)
   - GS @ CON (WNBA): TOTAL steam since open: ML +2.2pp toward CON; total -3 (UNDER) (3 snapshots)
   - MIL @ STL (MLB): ML/TOTAL steam since open: ML +14.4pp toward STL; total +1 (OVER) (7 snapshots)
   - ATL @ STL (MLB): ML/TOTAL steam since open: ML +10.5pp toward STL; total +0.5 (OVER) (7 snapshots)
-  - SEA @ LA (WNBA): TOTAL steam since open: ML +0.7pp toward LA; total +2 (OVER) (5 snapshots)
-  - MIN @ CON (WNBA): TOTAL steam since open: ML -1.1pp toward MIN; total -2 (UNDER) (5 snapshots)
 
-## 💰 Today's Portfolio (11 picks)
-- Total stake: **$310.0** (31.0% of $1000 bankroll)
-- Expected EV: **$-45.01**
+## 💰 Today's Portfolio (12 picks)
+- Total stake: **$330.0** (33.0% of $1000 bankroll)
+- Expected EV: **$-44.99**
   - #1 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #2 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
   - #3 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)

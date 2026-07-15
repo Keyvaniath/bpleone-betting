@@ -4,7 +4,7 @@
 
 _Pipeline health: **WARNING** (11/15 artifacts ok; 4 empty, 0 stale)._ 
 
-_Generated at 2026-07-15T15:31:47 UTC. Game lines source: **placeholder -110 (no real book today)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-07-15T21:50:45 UTC. Game lines source: **placeholder -110 (no real book today)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
@@ -24,10 +24,22 @@ _Generated at 2026-07-15T15:31:47 UTC. Game lines source: **placeholder -110 (no
 | 6:45p ET | BOS @ NYY | Yankee Stadium | 71F 12mph | OVER_9.0 +30.97% |
 | 9:40p ET | CIN @ COL | Coors Field | 74F 4mph | CIN_ML +40.74% |
 
-## Parlays - top 1
+## Parlays - top 5
 
-- **2-leg @ +240 (prob 36.6%, EV +24.49%)**
-  - BOS @ NYY NYY_ML (-128, model 58.7%)
+- **2-leg @ +284 (prob 38.1%, EV +46.11%)**
+  - Juan Soto OVER 1.5 batter_total_bases (+101, model 61.0%)
+  - CIN @ COL OVER_10.5 (-110, model 62.4%)
+- **2-leg @ +354 (prob 30.7%, EV +39.49%)**
+  - Carson Benge OVER 1.5 batter_total_bases (+138, model 49.2%)
+  - CIN @ COL OVER_10.5 (-110, model 62.4%)
+- **2-leg @ +289 (prob 35.5%, EV +38.3%)**
+  - Kyle Schwarber OVER 1.5 batter_total_bases (+104, model 56.9%)
+  - CIN @ COL OVER_10.5 (-110, model 62.4%)
+- **2-leg @ +373 (prob 28.8%, EV +36.48%)**
+  - Jorge Polanco UNDER 0.5 batter_hits (+148, model 46.2%)
+  - CIN @ COL OVER_10.5 (-110, model 62.4%)
+- **2-leg @ +301 (prob 33.6%, EV +34.69%)**
+  - Brandon Marsh OVER 1.5 batter_total_bases (+110, model 53.8%)
   - CIN @ COL OVER_10.5 (-110, model 62.4%)
 
 ## Self-Learning Loop
