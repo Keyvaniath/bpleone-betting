@@ -1,37 +1,37 @@
 # EdgeStat Daily Brief - 2026-07-16
 
-**Model Confidence: 22.2/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
+**Model Confidence: 22.4/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
 
-_Pipeline health: **WARNING** (12/15 artifacts ok; 3 empty, 0 stale)._ 
+_Pipeline health: **WARNING** (11/15 artifacts ok; 4 empty, 0 stale)._ 
 
-_Generated at 2026-07-16T07:25:32 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-07-16T14:44:48 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
 **NYM @ PHI - NYM_ML**
 - Market: +113
 - Model probability: 49.6%
-- Raw edge: +5.68%
+- Raw edge: +5.67%
 - Recommended stake: 1.26u Kelly
 
 ## Full Slate (1 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 7:10p ET | NYM @ PHI | Citizens Bank Park | 81F 6mph | NYM_ML +5.68% |
+| 7:10p ET | NYM @ PHI | Citizens Bank Park | 82F 6mph | NYM_ML +5.67% |
 
 ## Self-Learning Loop
 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
 
-Cumulative graded plays: 6273. Wins: 2514. Hit rate: 40.1%.
+Cumulative graded plays: 6274. Wins: 2514. Hit rate: 40.1%.
 
 ## Auxiliary Markets (Model Fair Prices)
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| NYM @ PHI | 32.1% | +212 | 5.48 | +166 | -166 |
+| NYM @ PHI | 32.1% | +212 | 5.46 | +166 | -166 |
 
 ## Team Form (last 10)
 
@@ -41,7 +41,7 @@ Cumulative graded plays: 6273. Wins: 2514. Hit rate: 40.1%.
 
 ## Loop Activity (since last refresh)
 
-- Confidence delta: **+0.0**
+- Confidence delta: **+0.2**
 
 ## Model Recommendations (operator review)
 

@@ -6,38 +6,39 @@ _0% lineups confirmed · 1 rookie SPs_
 
 ## Slate
 - **1 games** scheduled
-- **14 best bets** scored: 0 DK · 0 PP · 0 NRFI · 0 SGP
+- **19 best bets** scored: 0 DK · 0 PP · 1 NRFI · 0 SGP
+- **Auto-portfolio:** 1 picks, $50.0 stake (5.0%), expected +$14.85
+- **MC simulation:** EV +$14.85, 68% P(profit), p05 $-50.0 / p95 $45.45
 
 ## Top 5 Best Bets
-1. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
+1. **NYM @ PHI YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +21.9%)
+   - P(YRFI) 67.9% vs baseline 46.0%
+2. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
    - Player prop quality score 1.1935
    - Elite player
-2. **LOL ShowMaker OVER 3.5 Kills**  (78/100 ****, edge —)
+3. **LOL ShowMaker OVER 3.5 Kills**  (78/100 ****, edge —)
    - Player prop quality score 1.1892
    - Elite player
-3. **LOL Peyz OVER 4.5 Kills**  (78/100 ****, edge —)
+4. **LOL Peyz OVER 4.5 Kills**  (78/100 ****, edge —)
    - Player prop quality score 1.184
    - Elite player
-4. **KBO LG Twins vs KT Wiz ML @ -157**  (76/100 *****, edge —)
-   - Model 61.0% (fair -157)
-   - 
-5. **KBO Samsung Lions vs Lotte Giants ML @ -168**  (76/100 *****, edge —)
-   - Model 62.6% (fair -168)
-   - 
+5. **GOLF Daniel Hillier TOP10 @ 580 (The Open)**  (78/100 *****, edge —)
+   - P(top 10) 14.7% -- safest finish bet (#3 (-1)).
 
 ## ⚠️ Trap Warnings — 2 flagged
-- **GOLF 3-leg parlay @ +2121** (low):
-   - Edge +10.2% looks big but only 0 settled props on this player — model unproven
-- **GOLF 3-leg parlay @ +2122** (low):
-   - Edge +10.2% looks big but only 0 settled props on this player — model unproven
+- **NYM @ PHI YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +21.9% looks big but only 0 settled props on this player — model unproven
+- **GOLF 3-leg parlay @ +2075** (low):
+   - Edge +9.8% looks big but only 0 settled props on this player — model unproven
 
-## Hot streaks
-**Batters heating up:** Brett Baty (heat +1.37), Francisco Lindor (heat +1.22), Bryson Stott (heat -0.10)
-**Pitchers on a run:** Aaron Nola (heat +6.01)
+## NRFI/YRFI strong leans
+- **YRFI** (1st-inning OVER): NYM @ PHI
 
 ## Golf -- The Open
-- **Leader:** Thomas Detry (E) at #1
-- **Field:** 156 players  |  Status: Scheduled
+- **Leader:** Thomas Detry (-2) at #1
+- **Field:** 156 players  |  Status: In Progress
+- **Play of the Tournament:** Daniel Hillier TOP10 @ +580 (model 14.7%, HIGH)
+   - P(top 10) 14.7% -- safest finish bet (#3 (-1)).
 
 ## NBA -- PLAYOFFS
 - New York Knicks @ San Antonio Spurs (53-29 vs 62-20) 94-90 | P(home) 0.0% fair +0 | Final
@@ -57,13 +58,13 @@ _0% lineups confirmed · 1 rookie SPs_
 - Kiwoom Heroes @ Hanwha Eagles | P(home) 55.5% fair -125 | total 10 R
 - **KBO POD:** LG Twins ML vs KT Wiz (KBO) (HIGH)
 
-## LoL Esports -- 0 live, 6 upcoming
+## LoL Esports -- 0 live, 7 upcoming
 - [NACL] Conviction vs Cupid Esports BO3 | P(A) 50.0% fair -100/-100
 - [NACL] Maryville University vs Dorado Gaming BO3 | P(A) 50.0% fair -100/-100
 - [LJL] RAYN Clocks vs L Guide Gaming BO5 | P(A) 50.0% fair -100/-100
 - [NACL] Blue Otter vs CCG Esports BO3 | P(A) 50.0% fair -100/-100
 - [NACL] Ole Miss Esports vs Winthrop University BO3 | P(A) 50.0% fair -100/-100
-- **LoL POT:** New Meta ML vs Arneb (LJL, BO5) (HIGH)
+- **LoL POT:** FENNEL ML vs TBD (LJL, BO5) (HIGH)
 
 ## Player Play of the Day -- across all sports (3637 candidates scanned)
 - **[LOL]** Inspired UNDER 3.5 Kills | model 61.7% fair -161 (ELITE)
@@ -75,4 +76,5 @@ _0% lineups confirmed · 1 rookie SPs_
 ## Self-learning calibration (esports + KBO)
 - **LOL:** 32 settled | brier 0.2633 | ECE 0.1722
    - Model over-confident; subtract 15.4pp at next inference
-- **KBO:** 18 settled | brier 0.2959 | ECE 0.2685
+- **KBO:** 20 settled | brier 0.3027 | ECE 0.3019
+   - Model over-confident; subtract 30.2pp at next inference

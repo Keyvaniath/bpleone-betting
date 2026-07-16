@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-07-16T07:26:13",
+  "generated_at": "2026-07-16T14:45:22",
   "sports": {
     "lol": {
-      "n_total": 37,
+      "n_total": 38,
       "n_settled": 32,
       "brier": 0.2633,
       "log_loss": 0.7199,
@@ -60,36 +60,39 @@
       }
     },
     "kbo": {
-      "n_total": 22,
-      "n_settled": 18,
-      "brier": 0.2959,
-      "log_loss": 0.7869,
-      "ece": 0.2685,
+      "n_total": 23,
+      "n_settled": 20,
+      "brier": 0.3027,
+      "log_loss": 0.8007,
+      "ece": 0.3019,
       "reliability_bins": [
         {
           "low": 0.5,
           "high": 0.6,
-          "n": 9,
-          "expected": 5.3,
+          "n": 10,
+          "expected": 5.896399999999999,
           "actual_wins": 3,
-          "expected_rate": 0.5889,
-          "actual_rate": 0.3333,
-          "delta": -0.2556
+          "expected_rate": 0.5896,
+          "actual_rate": 0.3,
+          "delta": -0.2896
         },
         {
           "low": 0.6,
           "high": 0.7,
-          "n": 9,
-          "expected": 5.531999999999999,
+          "n": 10,
+          "expected": 6.142099999999999,
           "actual_wins": 3,
-          "expected_rate": 0.6147,
-          "actual_rate": 0.3333,
-          "delta": -0.2814
+          "expected_rate": 0.6142,
+          "actual_rate": 0.3,
+          "delta": -0.3142
         }
       ],
       "calibration_recommendation": {
-        "applied": false,
-        "note": "need >= 20 settled bets (have 18)"
+        "applied": true,
+        "predicted_mean_winprob": 0.6019,
+        "actual_hit_rate": 0.3,
+        "recommended_shift_pp": -30.19,
+        "note": "Model over-confident; subtract 30.2pp at next inference"
       }
     }
   }

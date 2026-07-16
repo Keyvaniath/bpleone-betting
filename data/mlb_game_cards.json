@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-16T07:10:07",
+  "generated_at": "2026-07-16T14:38:09",
   "date": "2026-07-16",
   "n_games": 1,
   "method_note": "Per-game unified card: today.json model+market+recs joined with every per-matchup player/game prop. Live score/win-prob overlaid client-side from live_state.json + live_game.json.",
@@ -14,12 +14,12 @@
       "time": "7:10p ET",
       "park": "Citizens Bank Park",
       "weather": {
-        "temp_f": 81,
+        "temp_f": 82,
         "wind_mph": 6,
         "is_indoor": false,
-        "wind_dir_deg": 16,
-        "carry_index": -0.371,
-        "precip_pct": 3
+        "wind_dir_deg": 10,
+        "carry_index": -0.407,
+        "precip_pct": 1
       },
       "umpire": {
         "ump_name": null,
@@ -29,10 +29,10 @@
       "model": {
         "fair_home_ml": -102,
         "fair_away_ml": 102,
-        "fair_total": 9.34,
+        "fair_total": 9.37,
         "p_home_win": 0.5039,
         "p_away_win": 0.4961,
-        "p_over_market": 0.4572
+        "p_over_market": 0.4613
       },
       "market": {
         "home_ml": -135,
@@ -45,17 +45,17 @@
           "label": "NYM_ML",
           "model_prob": 0.4961,
           "market_price": 113,
-          "edge_pct": 5.68,
+          "edge_pct": 5.67,
           "kelly_units": 1.26,
           "confidence": "High"
         },
         {
           "label": "UNDER_9.5",
-          "model_prob": 0.5428,
+          "model_prob": 0.5387,
           "market_price": -110,
-          "edge_pct": 3.63,
-          "kelly_units": 1.0,
-          "confidence": "Medium"
+          "edge_pct": 2.84,
+          "kelly_units": 0.78,
+          "confidence": "Low"
         }
       ],
       "pitchers": {
@@ -96,18 +96,54 @@
           }
         },
         "ats": {
-          "away": {
-            "ats_record": "8-3-0",
-            "cover_pct": 0.727,
-            "signal": "MODEL_UNDERRATES"
-          },
-          "home": null
-        },
-        "pitcher_form": {
           "away": null,
           "home": null
         },
-        "bullpen": null,
+        "pitcher_form": {
+          "away": {
+            "pitcher": "Christian Scott",
+            "status": "STEADY",
+            "trend": null,
+            "tier": null,
+            "k9_delta": 0.0,
+            "era_delta": 0.0,
+            "recent_k_per_9_l3": 10.57,
+            "recent_era_l3": 3.05,
+            "form_index": null,
+            "leans": []
+          },
+          "home": {
+            "pitcher": "Aaron Nola",
+            "status": "STEADY",
+            "trend": null,
+            "tier": null,
+            "k9_delta": 0.0,
+            "era_delta": 0.0,
+            "recent_k_per_9_l3": 8.5,
+            "recent_era_l3": 4.2,
+            "form_index": null,
+            "leans": []
+          }
+        },
+        "bullpen": {
+          "away_pen": {
+            "score": 35.0,
+            "tier": "NORMAL",
+            "appearances_3d": 0,
+            "pen_ip_3d": 0.0,
+            "pitchers_25plus_24h": 0,
+            "closer_used_yesterday": false
+          },
+          "home_pen": {
+            "score": 35.0,
+            "tier": "NORMAL",
+            "appearances_3d": 0,
+            "pen_ip_3d": 0.0,
+            "pitchers_25plus_24h": 0,
+            "closer_used_yesterday": false
+          },
+          "leans": []
+        },
         "hot_cold": []
       },
       "h2h": {
@@ -119,7 +155,11 @@
           "n": 0
         },
         "recent_meetings": [],
-        "current_series": null
+        "current_series": {
+          "series_number": 1,
+          "prior_results": [],
+          "note": "first meeting / no recent H2H"
+        }
       },
       "line_movement": {
         "model_home_implied": 50.4,
@@ -133,8 +173,153 @@
         "edge_vs_market_pp": -7.0,
         "has_timeseries": false
       },
-      "n_predictions": 0,
-      "predictions": []
+      "n_predictions": 16,
+      "predictions": [
+        {
+          "family": "pitcher",
+          "stat": "Win",
+          "subject": "Christian Scott",
+          "market": "PITCHER_WIN_NO",
+          "prob": 0.846,
+          "fair_odds": -551,
+          "edge": "STRONG_NO"
+        },
+        {
+          "family": "pitcher",
+          "stat": "Win",
+          "subject": "Aaron Nola",
+          "market": "PITCHER_WIN_NO",
+          "prob": 0.797,
+          "fair_odds": -392,
+          "edge": "STRONG_NO"
+        },
+        {
+          "family": "pitcher",
+          "stat": "Quality start",
+          "subject": "Christian Scott",
+          "market": "QUALITY_START_NO",
+          "prob": 0.747,
+          "fair_odds": -295,
+          "edge": "STRONG_NO"
+        },
+        {
+          "family": "pitcher",
+          "stat": "Hits allowed",
+          "subject": "Christian Scott",
+          "market": "H_UNDER_5.0",
+          "prob": 0.683,
+          "fair_odds": -215,
+          "edge": "STRONG_UNDER"
+        },
+        {
+          "family": "pitcher",
+          "stat": "Hits allowed",
+          "subject": "Aaron Nola",
+          "market": "H_UNDER_6.0",
+          "prob": 0.682,
+          "fair_odds": -215,
+          "edge": "STRONG_UNDER"
+        },
+        {
+          "family": "game",
+          "stat": "Run line",
+          "subject": "NYM @ PHI",
+          "market": "AWAY_PLUS_1.5",
+          "prob": 0.681,
+          "fair_odds": -214,
+          "edge": "STRONG_AWAY_+1.5"
+        },
+        {
+          "family": "pitcher",
+          "stat": "Strikeouts",
+          "subject": "Christian Scott",
+          "market": "K_OVER_4.5",
+          "prob": 0.67,
+          "fair_odds": -203,
+          "edge": "STRONG_OVER"
+        },
+        {
+          "family": "game",
+          "stat": "Total (alt)",
+          "subject": "NYM @ PHI",
+          "market": "GAME_TOTAL_UNDER_9.5",
+          "prob": 0.635,
+          "fair_odds": -174,
+          "edge": "STRONG_TOTAL"
+        },
+        {
+          "family": "pitcher",
+          "stat": "Earned runs",
+          "subject": "Aaron Nola",
+          "market": "Earned runs",
+          "prob": 0.619,
+          "fair_odds": null,
+          "edge": "NONE"
+        },
+        {
+          "family": "pitcher",
+          "stat": "Outs",
+          "subject": "Aaron Nola",
+          "market": "OUTS_OVER_16.0",
+          "prob": 0.584,
+          "fair_odds": -140,
+          "edge": "STANDARD_OVER"
+        },
+        {
+          "family": "pitcher",
+          "stat": "Outs",
+          "subject": "Christian Scott",
+          "market": "OUTS_OVER_16.0",
+          "prob": 0.584,
+          "fair_odds": -140,
+          "edge": "STANDARD_OVER"
+        },
+        {
+          "family": "pitcher",
+          "stat": "Earned runs",
+          "subject": "Christian Scott",
+          "market": "Earned runs",
+          "prob": 0.413,
+          "fair_odds": null,
+          "edge": "NONE"
+        },
+        {
+          "family": "pitcher",
+          "stat": "Walks",
+          "subject": "Aaron Nola",
+          "market": "Walks",
+          "prob": 0.268,
+          "fair_odds": null,
+          "edge": "NONE"
+        },
+        {
+          "family": "pitcher",
+          "stat": "Walks",
+          "subject": "Christian Scott",
+          "market": "Walks",
+          "prob": 0.268,
+          "fair_odds": null,
+          "edge": "NONE"
+        },
+        {
+          "family": "game",
+          "stat": "Team steals",
+          "subject": "NYM",
+          "market": "Team steals",
+          "prob": 0.071,
+          "fair_odds": null,
+          "edge": "NONE"
+        },
+        {
+          "family": "game",
+          "stat": "Team steals",
+          "subject": "PHI",
+          "market": "Team steals",
+          "prob": 0.018,
+          "fair_odds": null,
+          "edge": "NONE"
+        }
+      ]
     }
   ]
 }

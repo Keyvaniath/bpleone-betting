@@ -1,23 +1,23 @@
 {
- "generated_at": "2026-07-16T07:25:08",
+ "generated_at": "2026-07-16T14:44:28",
  "stake_assumption": "1u flat per pick",
  "total_picks": 10000,
- "n_settled": 6273,
+ "n_settled": 6274,
  "n_pending": 208,
- "n_void": 3519,
+ "n_void": 3518,
  "wins": 2511,
- "losses": 3755,
+ "losses": 3756,
  "pushes": 7,
  "hit_rate": 0.4007,
- "net_units": -1036.225,
- "roi_pct": -16.54,
+ "net_units": -1037.225,
+ "roi_pct": -16.55,
  "n_calibrated_picks": 9094,
  "calibrated_reliability": {
-  "n": 6173,
-  "ece_raw": 0.0904,
-  "ece_calibrated": 0.0174,
-  "brier_raw": 0.21136,
-  "brier_calibrated": 0.1944,
+  "n": 6174,
+  "ece_raw": 0.0905,
+  "ece_calibrated": 0.0179,
+  "brier_raw": 0.21139,
+  "brier_calibrated": 0.19445,
   "note": "In-sample over the settled ledger (the isotonic transform is fit on these same outcomes); held-out 70/30 validation is in recalibration_map.json. p_predicted = raw model prob (kept untouched for the learning loop); p_calibrated = honest prob stamped per pick. Lower ECE/Brier on the calibrated column = the displayed % is truer."
  },
  "curated": {
@@ -40,13 +40,13 @@
   ],
   "definition": "Featured/recommended plays only -- Lock of the Day, Top 25, Whale, Sharp, Consensus (hit), Under Alerts, POD. Excludes the experimental prop feeds, which are tracked to train the model, not bet."
  },
- "n_added_this_run": 1,
- "n_newly_settled_this_run": 34,
- "n_resettled_this_run": 4,
+ "n_added_this_run": 0,
+ "n_newly_settled_this_run": 0,
+ "n_resettled_this_run": 0,
  "n_voided_this_run": 0,
  "n_duplicates_collapsed_this_run": 0,
- "n_duplicate_adds_blocked_this_run": 88,
- "n_reconciled_settled_voids": 20,
+ "n_duplicate_adds_blocked_this_run": 84,
+ "n_reconciled_settled_voids": 0,
  "n_bootstrapped_from_locks_history": 0,
  "by_source": {
   "mlb_hit_to_record_hit_yes": {
@@ -1382,11 +1382,11 @@
    "roi_pct": 53.5
   },
   "wnba_alts_home_total_over_76.6": {
-   "n": 1,
+   "n": 2,
    "wins": 0,
-   "losses": 1,
+   "losses": 2,
    "pushes": 0,
-   "net_units": -1.0,
+   "net_units": -2.0,
    "hit_rate": 0.0,
    "roi_pct": -100.0
   }
@@ -1601,12 +1601,12 @@
    "hit_rate": 0.6842
   },
   "home_total_over": {
-   "n": 91,
+   "n": 92,
    "wins": 72,
-   "losses": 19,
+   "losses": 20,
    "pushes": 0,
-   "net_units": 19.52,
-   "hit_rate": 0.7912
+   "net_units": 18.52,
+   "hit_rate": 0.7826
   },
   "3pm_under": {
    "n": 41,
@@ -2051,12 +2051,12 @@
    "hit_rate": 0.6842
   },
   "home_total_over": {
-   "n": 91,
+   "n": 92,
    "wins": 72,
-   "losses": 19,
+   "losses": 20,
    "pushes": 0,
-   "net_units": 19.52,
-   "hit_rate": 0.7912
+   "net_units": 18.52,
+   "hit_rate": 0.7826
   },
   "3pm_under": {
    "n": 41,
@@ -2277,13 +2277,13 @@
  },
  "by_sport": {
   "MLB": {
-   "n": 6915,
+   "n": 6914,
    "settled": 4767,
    "wins": 1525,
    "losses": 3235,
    "pushes": 7,
    "pending": 124,
-   "void": 2024,
+   "void": 2023,
    "net_units": -1196.024,
    "hit_rate": 0.3204,
    "roi_pct": -25.13,
@@ -2343,15 +2343,15 @@
   },
   "WNBA": {
    "n": 415,
-   "settled": 209,
+   "settled": 210,
    "wins": 153,
-   "losses": 56,
+   "losses": 57,
    "pushes": 0,
-   "pending": 23,
+   "pending": 22,
    "void": 183,
-   "net_units": 22.38,
-   "hit_rate": 0.7321,
-   "roi_pct": 10.71,
+   "net_units": 21.38,
+   "hit_rate": 0.7286,
+   "roi_pct": 10.18,
    "markets": 4
   },
   "EPL": {
@@ -2394,12 +2394,12 @@
    "markets": 3
   },
   "WORLDCUP": {
-   "n": 208,
+   "n": 209,
    "settled": 196,
    "wins": 133,
    "losses": 63,
    "pushes": 0,
-   "pending": 5,
+   "pending": 6,
    "void": 7,
    "net_units": 3.708,
    "hit_rate": 0.6786,
@@ -2435,37 +2435,12 @@
  },
  "last_7_days": {
   "wins": 102,
-  "losses": 117,
-  "net_units": -6.021,
-  "hit_rate": 0.4658
+  "losses": 118,
+  "net_units": -7.021,
+  "hit_rate": 0.4636
  },
  "note": "Unified pick ledger -- records every pick the model surfaces (top_25 board, whales, consensus, unders, sharp action, locks, POD) and settles each against actual outcomes. Per-source W-L feeds back into calibration so the model learns which modules are reliable. THIS is the training signal.",
  "picks": [
-  {
-   "source": "top_25_board",
-   "sport": "MLB",
-   "player_or_matchup": "MIL @ STL",
-   "market": "UNDER_8.5",
-   "prob": 0.609,
-   "raw_prob": 0.6514,
-   "edge_pct": 16.3,
-   "fair_american": -110,
-   "primary_source_module": "today_reco",
-   "date": "2026-07-09",
-   "pick_id": "top_25_board|MLB|MIL___STL|UNDER_8_5|2026-07-09",
-   "settled": true,
-   "result": "lost",
-   "payout_units": -1.0,
-   "recorded_at": "2026-07-09T08:17:41",
-   "p_calibrated": 0.6617,
-   "outcome": {
-    "final_score": "MIL 8 @ STL 4",
-    "total_runs": 12,
-    "verify": "MIL @ STL: final 8-4 (total 12) on 2026-07-09",
-    "check": "verified"
-   },
-   "settled_at": "2026-07-10T09:55:48"
-  },
   {
    "source": "top_25_board",
    "sport": "MLB",
@@ -2557,7 +2532,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-09T15:55:50",
-   "p_calibrated": 0.3201,
+   "p_calibrated": 0.3203,
    "outcome": {
     "stat": "hits",
     "actual": 0,
@@ -2757,7 +2732,7 @@
    "result": "won",
    "payout_units": 1.74,
    "recorded_at": "2026-07-09T16:35:31",
-   "p_calibrated": 0.2832,
+   "p_calibrated": 0.2853,
    "outcome": {
     "stat": "tb",
     "actual": 3,
@@ -2783,7 +2758,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-09T16:35:31",
-   "p_calibrated": 0.2225,
+   "p_calibrated": 0.2164,
    "voided": false,
    "outcome": {
     "stat": "tb",
@@ -2835,7 +2810,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-09T16:35:31",
-   "p_calibrated": 0.3241,
+   "p_calibrated": 0.3255,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -2862,7 +2837,7 @@
    "result": "won",
    "payout_units": 1.72,
    "recorded_at": "2026-07-09T16:35:31",
-   "p_calibrated": 0.2883,
+   "p_calibrated": 0.2897,
    "outcome": {
     "stat": "xbh",
     "actual": 1,
@@ -2889,7 +2864,7 @@
    "result": "won",
    "payout_units": 2.09,
    "recorded_at": "2026-07-09T16:35:31",
-   "p_calibrated": 0.2881,
+   "p_calibrated": 0.2854,
    "outcome": {
     "stat": "xbh",
     "actual": 1,
@@ -2916,7 +2891,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-09T16:35:31",
-   "p_calibrated": 0.2961,
+   "p_calibrated": 0.2983,
    "outcome": {
     "stat": "hrr",
     "actual": 2,
@@ -2942,7 +2917,7 @@
    "result": "won",
    "payout_units": 0.9174,
    "recorded_at": "2026-07-09T17:50:43",
-   "p_calibrated": 0.5061,
+   "p_calibrated": 0.5062,
    "outcome": {
     "stat": "hits",
     "actual": 0,
@@ -2968,7 +2943,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-09T17:50:43",
-   "p_calibrated": 0.5061,
+   "p_calibrated": 0.5062,
    "outcome": {
     "stat": "hits",
     "actual": 1,
@@ -2994,7 +2969,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-09T17:50:43",
-   "p_calibrated": 0.5061,
+   "p_calibrated": 0.5062,
    "voided": false,
    "outcome": {
     "stat": "hits",
@@ -3271,7 +3246,7 @@
    "result": "won",
    "payout_units": 0.5348,
    "recorded_at": "2026-07-09T17:50:43",
-   "p_calibrated": 0.7516,
+   "p_calibrated": 0.7453,
    "outcome": {
     "final_score": "SEA 78 @ ATL 89",
     "team_total": 89,
@@ -3296,7 +3271,7 @@
    "result": "won",
    "payout_units": 0.5348,
    "recorded_at": "2026-07-09T17:50:43",
-   "p_calibrated": 0.7516,
+   "p_calibrated": 0.7453,
    "outcome": {
     "final_score": "IND 92 @ PHX 89",
     "team_total": 89,
@@ -3321,7 +3296,7 @@
    "result": "won",
    "payout_units": 0.5348,
    "recorded_at": "2026-07-09T17:50:43",
-   "p_calibrated": 0.7516,
+   "p_calibrated": 0.7453,
    "outcome": {
     "final_score": "LV 88 @ POR 80",
     "team_total": 80,
@@ -3347,7 +3322,7 @@
    "result": "won",
    "payout_units": 0.8475,
    "recorded_at": "2026-07-09T17:50:43",
-   "p_calibrated": 0.4759,
+   "p_calibrated": 0.4764,
    "outcome": {
     "stat": "bb",
     "actual": 1,
@@ -3374,7 +3349,7 @@
    "result": "won",
    "payout_units": 0.9091,
    "recorded_at": "2026-07-09T17:50:43",
-   "p_calibrated": 0.4759,
+   "p_calibrated": 0.4764,
    "voided": false,
    "outcome": {
     "stat": "bb",
@@ -3402,7 +3377,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-09T17:50:43",
-   "p_calibrated": 0.452,
+   "p_calibrated": 0.4511,
    "outcome": {
     "stat": "bb",
     "actual": 0,
@@ -3429,7 +3404,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-09T17:50:43",
-   "p_calibrated": 0.3717,
+   "p_calibrated": 0.3795,
    "outcome": {
     "stat": "bb",
     "actual": 0,
@@ -3455,7 +3430,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-09T17:50:43",
-   "p_calibrated": 0.2038,
+   "p_calibrated": 0.2027,
    "voided": false,
    "outcome": {
     "stat": "hr",
@@ -3482,7 +3457,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-09T17:50:43",
-   "p_calibrated": 0.2038,
+   "p_calibrated": 0.2027,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -3508,7 +3483,7 @@
    "result": "won",
    "payout_units": 1.8,
    "recorded_at": "2026-07-09T17:50:43",
-   "p_calibrated": 0.2038,
+   "p_calibrated": 0.2027,
    "outcome": {
     "stat": "hr",
     "actual": 2,
@@ -3534,7 +3509,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-09T17:50:43",
-   "p_calibrated": 0.2038,
+   "p_calibrated": 0.2027,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -3560,7 +3535,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-09T17:50:43",
-   "p_calibrated": 0.177,
+   "p_calibrated": 0.1755,
    "voided": false,
    "outcome": {
     "stat": "hr",
@@ -3587,7 +3562,7 @@
    "result": "won",
    "payout_units": 2.9,
    "recorded_at": "2026-07-09T17:50:43",
-   "p_calibrated": 0.1616,
+   "p_calibrated": 0.1632,
    "voided": false,
    "outcome": {
     "stat": "hr",
@@ -3614,7 +3589,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-09T17:50:43",
-   "p_calibrated": 0.1588,
+   "p_calibrated": 0.1632,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -3640,7 +3615,7 @@
    "result": "won",
    "payout_units": 4.27,
    "recorded_at": "2026-07-09T17:50:43",
-   "p_calibrated": 0.1427,
+   "p_calibrated": 0.1473,
    "outcome": {
     "stat": "hr",
     "actual": 1,
@@ -3666,7 +3641,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-09T17:50:43",
-   "p_calibrated": 0.1413,
+   "p_calibrated": 0.1459,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -3692,7 +3667,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-09T17:50:43",
-   "p_calibrated": 0.1413,
+   "p_calibrated": 0.1459,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -3718,7 +3693,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-09T17:50:43",
-   "p_calibrated": 0.0948,
+   "p_calibrated": 0.0845,
    "voided": false,
    "outcome": {
     "stat": "hr",
@@ -3745,7 +3720,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-09T17:50:43",
-   "p_calibrated": 0.0943,
+   "p_calibrated": 0.0836,
    "outcome": {
     "stat": "hr",
     "actual": 0,
@@ -3771,7 +3746,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-09T17:50:43",
-   "p_calibrated": 0.255,
+   "p_calibrated": 0.2536,
    "outcome": {
     "stat": "tb",
     "actual": 1,
@@ -3798,7 +3773,7 @@
    "result": "won",
    "payout_units": 1.4,
    "recorded_at": "2026-07-09T17:50:43",
-   "p_calibrated": 0.3241,
+   "p_calibrated": 0.3255,
    "outcome": {
     "stat": "xbh",
     "actual": 1,
@@ -3825,7 +3800,7 @@
    "result": "won",
    "payout_units": 0.7752,
    "recorded_at": "2026-07-09T17:50:43",
-   "p_calibrated": 0.2961,
+   "p_calibrated": 0.2983,
    "voided": false,
    "outcome": {
     "stat": "hrr",
@@ -3853,7 +3828,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-09T17:50:43",
-   "p_calibrated": 0.2961,
+   "p_calibrated": 0.2983,
    "outcome": {
     "stat": "hrr",
     "actual": 2,
@@ -3929,7 +3904,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-09T23:12:12",
-   "p_calibrated": 0.3201,
+   "p_calibrated": 0.3203,
    "voided": false,
    "outcome": {
     "stat": "hits",
@@ -4158,7 +4133,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-09T23:40:16",
-   "p_calibrated": 0.2163,
+   "p_calibrated": 0.2139,
    "outcome": {
     "stat": "tb",
     "actual": 0,
@@ -4184,7 +4159,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-09T23:40:16",
-   "p_calibrated": 0.2163,
+   "p_calibrated": 0.2139,
    "outcome": {
     "stat": "tb",
     "actual": 1,
@@ -4210,7 +4185,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-09T23:40:16",
-   "p_calibrated": 0.2163,
+   "p_calibrated": 0.2139,
    "outcome": {
     "stat": "tb",
     "actual": 2,
@@ -4237,7 +4212,7 @@
    "result": "won",
    "payout_units": 1.25,
    "recorded_at": "2026-07-09T23:40:16",
-   "p_calibrated": 0.3241,
+   "p_calibrated": 0.3255,
    "outcome": {
     "stat": "xbh",
     "actual": 1,
@@ -4264,7 +4239,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-09T23:40:16",
-   "p_calibrated": 0.3241,
+   "p_calibrated": 0.3255,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -4291,7 +4266,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-09T23:40:16",
-   "p_calibrated": 0.2881,
+   "p_calibrated": 0.2854,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -4318,7 +4293,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-09T23:40:16",
-   "p_calibrated": 0.2881,
+   "p_calibrated": 0.2854,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -4345,7 +4320,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-09T23:40:16",
-   "p_calibrated": 0.2961,
+   "p_calibrated": 0.2983,
    "outcome": {
     "stat": "hrr",
     "actual": 2,
@@ -4372,7 +4347,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-09T23:40:16",
-   "p_calibrated": 0.2961,
+   "p_calibrated": 0.2983,
    "voided": false,
    "outcome": {
     "stat": "hrr",
@@ -4474,7 +4449,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-10T02:24:16",
-   "p_calibrated": 0.2163,
+   "p_calibrated": 0.2139,
    "voided": false,
    "outcome": {
     "stat": "tb",
@@ -4501,7 +4476,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-10T02:24:16",
-   "p_calibrated": 0.2163,
+   "p_calibrated": 0.2139,
    "voided": false,
    "outcome": {
     "stat": "tb",
@@ -4528,7 +4503,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-10T02:24:16",
-   "p_calibrated": 0.2163,
+   "p_calibrated": 0.2139,
    "voided": false,
    "outcome": {
     "stat": "tb",
@@ -4556,7 +4531,7 @@
    "result": "won",
    "payout_units": 1.25,
    "recorded_at": "2026-07-10T02:24:16",
-   "p_calibrated": 0.3241,
+   "p_calibrated": 0.3255,
    "outcome": {
     "stat": "xbh",
     "actual": 1,
@@ -4583,7 +4558,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-10T02:24:16",
-   "p_calibrated": 0.3241,
+   "p_calibrated": 0.3255,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -4610,7 +4585,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-10T02:24:16",
-   "p_calibrated": 0.2881,
+   "p_calibrated": 0.2854,
    "voided": false,
    "outcome": {
     "stat": "xbh",
@@ -4638,7 +4613,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-10T02:24:16",
-   "p_calibrated": 0.2961,
+   "p_calibrated": 0.2983,
    "outcome": {
     "stat": "hrr",
     "actual": 1,
@@ -4665,7 +4640,7 @@
    "result": "won",
    "payout_units": 0.9091,
    "recorded_at": "2026-07-10T09:55:48",
-   "p_calibrated": 0.556,
+   "p_calibrated": 0.5912,
    "outcome": {
     "final_score": "COL 2 @ SF 8",
     "total_runs": 10,
@@ -4690,7 +4665,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-10T09:55:48",
-   "p_calibrated": 0.5546,
+   "p_calibrated": 0.5885,
    "outcome": {
     "final_score": "CHC 0 @ CIN 4",
     "total_runs": 4,
@@ -5191,7 +5166,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-10T17:43:17",
-   "p_calibrated": 0.7516,
+   "p_calibrated": 0.7453,
    "outcome": {
     "final_score": "GS 79 @ CON 64",
     "team_total": 64,
@@ -5216,7 +5191,7 @@
    "result": "won",
    "payout_units": 0.5348,
    "recorded_at": "2026-07-10T17:43:17",
-   "p_calibrated": 0.7516,
+   "p_calibrated": 0.7453,
    "outcome": {
     "final_score": "DAL 108 @ TOR 95",
     "team_total": 95,
@@ -5241,7 +5216,7 @@
    "result": "won",
    "payout_units": 0.5348,
    "recorded_at": "2026-07-10T17:43:17",
-   "p_calibrated": 0.7516,
+   "p_calibrated": 0.7453,
    "outcome": {
     "final_score": "CHI 87 @ LA 102",
     "team_total": 102,
@@ -5367,7 +5342,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-10T23:16:38",
-   "p_calibrated": 0.3241,
+   "p_calibrated": 0.3255,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -5394,7 +5369,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-10T23:16:38",
-   "p_calibrated": 0.2883,
+   "p_calibrated": 0.2897,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -5421,7 +5396,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-10T23:16:38",
-   "p_calibrated": 0.2883,
+   "p_calibrated": 0.2897,
    "outcome": {
     "stat": "xbh",
     "actual": 0,
@@ -5448,7 +5423,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-10T23:16:38",
-   "p_calibrated": 0.2961,
+   "p_calibrated": 0.2983,
    "outcome": {
     "stat": "hrr",
     "actual": 2,
@@ -5506,7 +5481,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-11T01:06:37",
-   "p_calibrated": 0.5654,
+   "p_calibrated": 0.6084,
    "outcome": {
     "final_score": "CHC 5 @ CIN 3",
     "total_runs": 8,
@@ -5555,7 +5530,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-11T01:06:37",
-   "p_calibrated": 0.5654,
+   "p_calibrated": 0.6084,
    "outcome": {
     "final_score": "CHC 5 @ CIN 3",
     "total_runs": 8,
@@ -6033,7 +6008,7 @@
    "result": "won",
    "payout_units": 0.5348,
    "recorded_at": "2026-07-11T22:06:10",
-   "p_calibrated": 0.7516,
+   "p_calibrated": 0.7453,
    "outcome": {
     "final_score": "POR 102 @ ATL 92",
     "team_total": 92,
@@ -6058,7 +6033,7 @@
    "result": "won",
    "payout_units": 0.5348,
    "recorded_at": "2026-07-11T22:06:10",
-   "p_calibrated": 0.7516,
+   "p_calibrated": 0.7453,
    "outcome": {
     "final_score": "PHX 58 @ LV 106",
     "team_total": 106,
@@ -6290,7 +6265,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-12T01:44:36",
-   "p_calibrated": 0.5596,
+   "p_calibrated": 0.5978,
    "outcome": {
     "final_score": "LAA 2 @ MIN 4",
     "total_runs": 6,
@@ -6315,7 +6290,7 @@
    "result": "won",
    "payout_units": 0.9091,
    "recorded_at": "2026-07-12T01:44:36",
-   "p_calibrated": 0.556,
+   "p_calibrated": 0.5912,
    "outcome": {
     "final_score": "MIL 5 @ PIT 14",
     "total_runs": 19,
@@ -6365,7 +6340,7 @@
    "result": "won",
    "payout_units": 0.9091,
    "recorded_at": "2026-07-12T06:28:16",
-   "p_calibrated": 0.5604,
+   "p_calibrated": 0.5991,
    "outcome": {
     "final_score": "CHC 8 @ CIN 4",
     "total_runs": 12,
@@ -6685,7 +6660,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-12T15:27:38",
-   "p_calibrated": 0.2832,
+   "p_calibrated": 0.2853,
    "outcome": {
     "stat": "tb",
     "actual": 2,
@@ -6811,7 +6786,7 @@
    "result": "won",
    "payout_units": 0.5348,
    "recorded_at": "2026-07-12T22:06:26",
-   "p_calibrated": 0.7516,
+   "p_calibrated": 0.7453,
    "outcome": {
     "final_score": "NY 91 @ TOR 93",
     "team_total": 93,
@@ -6836,7 +6811,7 @@
    "result": "won",
    "payout_units": 0.5348,
    "recorded_at": "2026-07-12T22:06:26",
-   "p_calibrated": 0.7516,
+   "p_calibrated": 0.7453,
    "outcome": {
     "final_score": "SEA 79 @ WSH 84",
     "team_total": 84,
@@ -6861,7 +6836,7 @@
    "result": "won",
    "payout_units": 0.5348,
    "recorded_at": "2026-07-12T22:06:26",
-   "p_calibrated": 0.7516,
+   "p_calibrated": 0.7453,
    "outcome": {
     "final_score": "CHI 91 @ DAL 96",
     "team_total": 96,
@@ -6886,7 +6861,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-12T22:06:26",
-   "p_calibrated": 0.7516,
+   "p_calibrated": 0.7453,
    "outcome": {
     "final_score": "IND 109 @ LV 75",
     "team_total": 75,
@@ -7386,7 +7361,7 @@
    "result": "won",
    "payout_units": 0.5348,
    "recorded_at": "2026-07-13T17:50:36",
-   "p_calibrated": 0.7516,
+   "p_calibrated": 0.7453,
    "outcome": {
     "final_score": "LA 92 @ ATL 101",
     "team_total": 101,
@@ -7411,7 +7386,7 @@
    "result": "won",
    "payout_units": 0.5348,
    "recorded_at": "2026-07-13T17:50:36",
-   "p_calibrated": 0.7516,
+   "p_calibrated": 0.7453,
    "outcome": {
     "final_score": "PHX 100 @ MIN 104",
     "team_total": 104,
@@ -7515,7 +7490,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-14T21:52:33",
-   "p_calibrated": 0.7516,
+   "p_calibrated": 0.7453,
    "outcome": {
     "final_score": "WSH 79 @ TOR 62",
     "team_total": 62,
@@ -7554,6 +7529,31 @@
     "verify": "Argentina 2-1 England: home clean sheet = False \u2014 HOME_CLEAN_SHEET_NO"
    },
    "settled_at": "2026-07-15T22:39:30"
+  },
+  {
+   "source": "wnba_alts_home_total_over_76.6",
+   "sport": "WNBA",
+   "player_or_matchup": "GOL @ IND",
+   "market": "HOME_TOTAL_OVER_76.6",
+   "prob": 0.651,
+   "fair_american": -187,
+   "p_predicted": 0.651,
+   "matchup": "GOL @ IND",
+   "date": "2026-07-15",
+   "pick_id": "wnba_alts_home_total_over_76_6|WNBA|GOL___IND|HOME_TOTAL_OVER_76_6|2026-07-15",
+   "settled": true,
+   "result": "lost",
+   "payout_units": -1.0,
+   "recorded_at": "2026-07-15T22:39:30",
+   "p_calibrated": 0.7453,
+   "outcome": {
+    "final_score": "GS 88 @ IND 75",
+    "team_total": 75,
+    "line": 76.6,
+    "side": "OVER",
+    "verify": "GS @ IND: home scored 75 (line 76.6, bet over) on 2026-07-15"
+   },
+   "settled_at": "2026-07-16T11:56:57"
   }
  ],
  "recent_window": 200,
@@ -7561,5 +7561,5 @@
   "2026-05-19",
   "2026-07-15"
  ],
- "digest_generated_at": "2026-07-16T07:25:09"
+ "digest_generated_at": "2026-07-16T14:44:29"
 }

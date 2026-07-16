@@ -1,36 +1,29 @@
 # EdgeStat Daily Summary — 2026-07-16
 
-## 🏥 Model Health: 61.7/100 [OK]
+## 🏥 Model Health: 68.5/100 [OK]
 - Operational but room to improve - check yellow components
   - 🟢 Calibration Freshness: 99.9/100
-  - 🔴 Hit Rate Trend: 27.2/100
-  - 🔴 Brier Trend: 17.5/100
+  - 🔴 Hit Rate Trend: 51.0/100
+  - 🔴 Brier Trend: 33.2/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 90.9/100
-  - 🔴 Edge Count: 45.7/100
+  - 🟢 Data Health: 95.5/100
+  - 🔴 Edge Count: 25.7/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.582)
-- **Total games on board:** 127
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.583)
+- **Total games on board:** 111
 - **Strong home favorites:** 2 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
-1. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
-2. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
-3. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
-4. **KBO LG Twins vs KT Wiz ML @ -157** (76/100 ★★★★★)
-5. **KBO Samsung Lions vs Lotte Giants ML @ -168** (76/100 ★★★★★)
-
-## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** CIN @ COL CIN_ML -- 65% / +24.4% (score 2.5)
-
-## 📡 Sharp Action (Line Movement)
-- [ELITE] **BOS @ NYY** over_9.0: 52.38% → 63.64% (+11.3pp)
+1. **NYM @ PHI YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+2. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
+3. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
+4. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
+5. **GOLF Daniel Hillier TOP10 @ 580 (The Open)** (78/100 ★★★★★)
 
 ## 🔒 Locks of the Day -- Track Record
-- All-time: **307-58** (84.1% hit rate)
-- Net units: **+10.40u** | ROI: **+46.0%**
-- Last 7d: 0-1 (0.0%) | net -0.06u
+- All-time: **307-59** (83.9% hit rate)
+- Net units: **+10.34u** | ROI: **+45.6%**
 
 **Today's 5 Locks:**
 - [KBO] **Choi Jeong** one_plus_tb · p=73% edge=+39.8% qK=0.062u
@@ -70,21 +63,24 @@
   - MIN @ CON (WNBA): TOTAL steam since open: ML -1.1pp toward MIN; total -2 (UNDER) (5 snapshots)
   - IND @ LA (WNBA): TOTAL steam since open: ML +0.5pp toward LA; total -2 (UNDER) (5 snapshots)
 
-## 💰 Today's Portfolio (11 picks)
-- Total stake: **$310.0** (31.0% of $1000 bankroll)
-- Expected EV: **$-45.01**
-  - #1 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
-  - #2 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
-  - #3 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
-  - #4 [KBO] $35 on KBO LG Twins vs KT Wiz ML @ -157 (P=61%)
-  - #5 [KBO] $35 on KBO Samsung Lions vs Lotte Giants ML @ -168 (P=63%)
+## 💰 Today's Portfolio (9 picks)
+- Total stake: **$330.0** (33.0% of $1000 bankroll)
+- Expected EV: **$-6.68**
+  - #1 [NRFI] $50 on NYM @ PHI YRFI (1st-inning OVER 0.5) (P=68%)
+  - #2 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
+  - #3 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
+  - #4 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
+  - #5 [GOLF] $35 on GOLF Daniel Hillier TOP10 @ 580 (The Open) (P=15%)
 
 ## 🎯 Convergence Picks (4 stacked games)
-- ELITE: **1** · HIGH: 0 · MED: 3
-  - [ELITE] Golden State Valkyries @ Indiana Fever : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
+- ELITE: **0** · HIGH: 0 · MED: 4
   - [MED] New York Knicks @ San Antonio Spurs : 2 signals (ATS, ATS)
+  - [MED] Seattle Storm @ Chicago Sky : 2 signals (HEAT_COLD, HEAT_COLD)
   - [MED] Portland Timbers @ Seattle Sounders FC : 2 signals (PREGAME, ATS)
   - [MED] Coventry City @ Arsenal : 2 signals (PREGAME, ATS)
+
+## ⚾ Top MLB Pitcher K Plays (1)
+- **Christian Scott** OVER 4.5 K (66%) fair -195
 
 ## 🏀 NBA Player Heat (18 HOT / 23 COLD)
   - 🔥 **Jeremiah Fears** (NO): L5 31.8/5.8/6.0 vs season 16.9/3.2/4.0 [PTS +14.9, REB +2.6, AST +2.0]
@@ -104,11 +100,11 @@
   - [COIN_FLIP] **Fatima Kline** (9-1-0) vs Tabatha Ricci -- fair -132
 
 ## ⛳ Golf Player Heat (from The Open)
-  - 🔥 T1 **Thomas Detry** (Belgium): +0 total -- finished T1
-  - 🔥 T2 **Matthew Baldwin** (England): +0 total -- finished T2
-  - 🔥 T3 **James Nicholas** (USA): +0 total -- finished T3
-  - 🔥 T4 **Andy Sullivan** (England): +0 total -- finished T4
-  - 🔥 T5 **Michael Kim** (USA): +0 total -- finished T5
+  - 🔥 T1 **Thomas Detry** (Belgium): -2 total -- finished T1
+  - 🔥 T2 **Robert MacIntyre** (Scotland): -2 total -- finished T2
+  - 🔥 T3 **Daniel Hillier** (New Zealand): -1 total -- finished T3
+  - 🔥 T4 **Henrik Stenson** (Sweden): -1 total -- finished T4
+  - 🔥 T5 **Joe Dean** (England): -1 total -- finished T5
 
 ## 🔥 MLB Batter Heat (39 HOT / 35 COLD)
   - 🔥 **Luisangel Acuña** (CWS): L14 .400 / season .242 (+158pts)
@@ -121,9 +117,6 @@
   - ❄️ **Oswald Peraza** (LAA): L14 .079 / season .239 (-160pts) -- FADE props
   - ❄️ **Paul Goldschmidt** (NYY): L14 .104 / season .258 (-154pts) -- FADE props
   - ❄️ **Henry Bolte** (ATH): L14 .120 / season .261 (-141pts) -- FADE props
-
-## 📈 Streak Regression Alerts (1)
-- [WNBA] Golden State Valkyries on W4 L10 4-0 -- Golden State Valkyries on W4 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**
