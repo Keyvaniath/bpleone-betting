@@ -1,13 +1,13 @@
 # EdgeStat Daily Summary — 2026-07-16
 
-## 🏥 Model Health: 68.5/100 [OK]
+## 🏥 Model Health: 62.2/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.9/100
-  - 🔴 Hit Rate Trend: 51.0/100
-  - 🔴 Brier Trend: 33.2/100
+  - 🟢 Calibration Freshness: 99.8/100
+  - 🔴 Hit Rate Trend: 28.6/100
+  - 🔴 Brier Trend: 17.3/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 95.5/100
-  - 🔴 Edge Count: 25.7/100
+  - 🔴 Edge Count: 40.0/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.583)
@@ -19,7 +19,7 @@
 2. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
 3. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
 4. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
-5. **GOLF Daniel Hillier TOP10 @ 580 (The Open)** (78/100 ★★★★★)
+5. **GOLF Sungjae Im WIN @ 544 (The Open)** (78/100 ★★★★★)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -70,7 +70,7 @@
   - #2 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #3 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
   - #4 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
-  - #5 [GOLF] $35 on GOLF Daniel Hillier TOP10 @ 580 (The Open) (P=15%)
+  - #5 [GOLF] $35 on GOLF Sungjae Im WIN @ 544 (The Open) (P=16%)
 
 ## 🎯 Convergence Picks (4 stacked games)
 - ELITE: **0** · HIGH: 0 · MED: 4
@@ -100,11 +100,11 @@
   - [COIN_FLIP] **Fatima Kline** (9-1-0) vs Tabatha Ricci -- fair -132
 
 ## ⛳ Golf Player Heat (from The Open)
-  - 🔥 T1 **Thomas Detry** (Belgium): -2 total -- finished T1
-  - 🔥 T2 **Robert MacIntyre** (Scotland): -2 total -- finished T2
-  - 🔥 T3 **Daniel Hillier** (New Zealand): -1 total -- finished T3
-  - 🔥 T4 **Henrik Stenson** (Sweden): -1 total -- finished T4
-  - 🔥 T5 **Joe Dean** (England): -1 total -- finished T5
+  - 🔥 T1 **Daniel Brown** (England): -4 total -- finished T1
+  - 🔥 T2 **Sungjae Im** (South Korea): -4 total -- finished T2
+  - 🔥 T3 **Thomas Detry** (Belgium): -3 total -- finished T3
+  - 🔥 T4 **Robert MacIntyre** (Scotland): -3 total -- finished T4
+  - 🔥 T5 **Francesco Molinari** (Italy): -3 total -- finished T5
 
 ## 🔥 MLB Batter Heat (39 HOT / 35 COLD)
   - 🔥 **Luisangel Acuña** (CWS): L14 .400 / season .242 (+158pts)

@@ -6,7 +6,7 @@ _0% lineups confirmed · 1 rookie SPs_
 
 ## Slate
 - **1 games** scheduled
-- **19 best bets** scored: 0 DK · 0 PP · 1 NRFI · 0 SGP
+- **20 best bets** scored: 0 DK · 0 PP · 1 NRFI · 0 SGP
 - **Auto-portfolio:** 1 picks, $50.0 stake (5.0%), expected +$14.85
 - **MC simulation:** EV +$14.85, 68% P(profit), p05 $-50.0 / p95 $45.45
 
@@ -22,23 +22,21 @@ _0% lineups confirmed · 1 rookie SPs_
 4. **LOL Peyz OVER 4.5 Kills**  (78/100 ****, edge —)
    - Player prop quality score 1.184
    - Elite player
-5. **GOLF Daniel Hillier TOP10 @ 580 (The Open)**  (78/100 *****, edge —)
-   - P(top 10) 14.7% -- safest finish bet (#3 (-1)).
+5. **GOLF Sungjae Im WIN @ 544 (The Open)**  (78/100 *****, edge —)
+   - P(win) 15.5% with 2 round(s) left -- sweet-spot value at #2 (-4).
 
-## ⚠️ Trap Warnings — 2 flagged
+## ⚠️ Trap Warnings — 1 flagged
 - **NYM @ PHI YRFI (1st-inning OVER 0.5)** (low):
    - Edge +21.9% looks big but only 0 settled props on this player — model unproven
-- **GOLF 3-leg parlay @ +2075** (low):
-   - Edge +9.8% looks big but only 0 settled props on this player — model unproven
 
 ## NRFI/YRFI strong leans
 - **YRFI** (1st-inning OVER): NYM @ PHI
 
 ## Golf -- The Open
-- **Leader:** Thomas Detry (-2) at #1
+- **Leader:** Daniel Brown (-4) at #1
 - **Field:** 156 players  |  Status: In Progress
-- **Play of the Tournament:** Daniel Hillier TOP10 @ +580 (model 14.7%, HIGH)
-   - P(top 10) 14.7% -- safest finish bet (#3 (-1)).
+- **Play of the Tournament:** Sungjae Im WIN @ +544 (model 15.5%, HIGH)
+   - P(win) 15.5% with 2 round(s) left -- sweet-spot value at #2 (-4).
 
 ## NBA -- PLAYOFFS
 - New York Knicks @ San Antonio Spurs (53-29 vs 62-20) 94-90 | P(home) 0.0% fair +0 | Final
@@ -66,7 +64,7 @@ _0% lineups confirmed · 1 rookie SPs_
 - [NACL] Ole Miss Esports vs Winthrop University BO3 | P(A) 50.0% fair -100/-100
 - **LoL POT:** FENNEL ML vs TBD (LJL, BO5) (HIGH)
 
-## Player Play of the Day -- across all sports (3637 candidates scanned)
+## Player Play of the Day -- across all sports (3643 candidates scanned)
 - **[LOL]** Inspired UNDER 3.5 Kills | model 61.7% fair -161 (ELITE)
 - **[LOL]** ShowMaker OVER 3.5 Kills | model 62.5% fair -167 (ELITE)
 - **[LOL]** Peyz OVER 4.5 Kills | model 61.3% fair -158 (ELITE)
