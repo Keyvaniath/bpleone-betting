@@ -1,13 +1,12 @@
-# Tonight's Slate Brief — 2026-07-15
+# Tonight's Slate Brief — 2026-07-16
 
-## Slate Quality: 70/100 (MEDIUM)
-_0% lineups confirmed_
+## Slate Quality: 67/100 (MEDIUM)
+_0% lineups confirmed · 1 rookie SPs_
 **Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
-- **3 games** scheduled
-- **21 best bets** scored: 7 DK · 0 PP · 0 NRFI · 0 SGP
-- **MC simulation:** EV +$36.46, 69% P(profit), p05 $-120.01 / p95 $181.54
+- **1 games** scheduled
+- **14 best bets** scored: 0 DK · 0 PP · 0 NRFI · 0 SGP
 
 ## Top 5 Best Bets
 1. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
@@ -26,17 +25,15 @@ _0% lineups confirmed_
    - Model 62.6% (fair -168)
    - 
 
-## ⚠️ Trap Warnings — 7 flagged
-- **Christian Scott OVER 5.5 pitcher strikeouts** (low):
-   - Edge +30.4% looks big but only 0 settled props on this player — model unproven
-- **Aaron Nola OVER 5.5 pitcher strikeouts** (low):
-   - Edge +29.5% looks big but only 0 settled props on this player — model unproven
-- **Jorge Polanco UNDER 0.5 batter hits** (low):
-   - Edge +14.6% looks big but only 0 settled props on this player — model unproven
+## ⚠️ Trap Warnings — 2 flagged
 - **GOLF 3-leg parlay @ +2121** (low):
    - Edge +10.2% looks big but only 0 settled props on this player — model unproven
 - **GOLF 3-leg parlay @ +2122** (low):
    - Edge +10.2% looks big but only 0 settled props on this player — model unproven
+
+## Hot streaks
+**Batters heating up:** Brett Baty (heat +1.37), Francisco Lindor (heat +1.22), Bryson Stott (heat -0.10)
+**Pitchers on a run:** Aaron Nola (heat +6.01)
 
 ## Golf -- The Open
 - **Leader:** Thomas Detry (E) at #1
@@ -53,11 +50,11 @@ _0% lineups confirmed_
 - Chicago Blackhawks @ Minnesota Wild (0-0-0 vs 0-0-0)  | P(home) 52.9% fair -112 | Scheduled
 
 ## KBO -- 2026 Korean Baseball
-- KIA Tigers @ SSG Landers | P(home) 42.8% fair +134 | total 9 R
-- KT Wiz @ LG Twins | P(home) 61.0% fair -157 | total 9 R
-- Lotte Giants @ Samsung Lions | P(home) 62.6% fair -168 | total 9 R
-- Doosan Bears @ NC Dinos | P(home) 47.5% fair +110 | total 9 R
-- Kiwoom Heroes @ Hanwha Eagles | P(home) 57.2% fair -134 | total 10 R
+- KIA Tigers @ SSG Landers | P(home) 45.1% fair +122 | total 9 R
+- KT Wiz @ LG Twins | P(home) 59.6% fair -148 | total 10 R
+- Lotte Giants @ Samsung Lions | P(home) 61.6% fair -160 | total 10 R
+- Doosan Bears @ NC Dinos | P(home) 46.8% fair +114 | total 10 R
+- Kiwoom Heroes @ Hanwha Eagles | P(home) 55.5% fair -125 | total 10 R
 - **KBO POD:** LG Twins ML vs KT Wiz (KBO) (HIGH)
 
 ## LoL Esports -- 0 live, 6 upcoming
@@ -68,7 +65,7 @@ _0% lineups confirmed_
 - [NACL] Ole Miss Esports vs Winthrop University BO3 | P(A) 50.0% fair -100/-100
 - **LoL POT:** New Meta ML vs Arneb (LJL, BO5) (HIGH)
 
-## Player Play of the Day -- across all sports (3639 candidates scanned)
+## Player Play of the Day -- across all sports (3637 candidates scanned)
 - **[LOL]** Inspired UNDER 3.5 Kills | model 61.7% fair -161 (ELITE)
 - **[LOL]** ShowMaker OVER 3.5 Kills | model 62.5% fair -167 (ELITE)
 - **[LOL]** Peyz OVER 4.5 Kills | model 61.3% fair -158 (ELITE)

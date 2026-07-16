@@ -1,61 +1,37 @@
-# EdgeStat Daily Brief - 2026-07-15
+# EdgeStat Daily Brief - 2026-07-16
 
 **Model Confidence: 22.2/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
 
 _Pipeline health: **WARNING** (12/15 artifacts ok; 3 empty, 0 stale)._ 
 
-_Generated at 2026-07-15T23:09:44 UTC. Game lines source: **placeholder -110 (no real book today)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-07-16T07:25:32 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
-**CIN @ COL - CIN_ML**
-- Market: -110
-- Model probability: 73.7%
-- Raw edge: +40.74%
-- Recommended stake: <= 0.5u (model calibrating)
+**NYM @ PHI - NYM_ML**
+- Market: +113
+- Model probability: 49.6%
+- Raw edge: +5.68%
+- Recommended stake: 1.26u Kelly
 
-> _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
-
-## Full Slate (3 games)
+## Full Slate (1 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 7:05p ET | SDP @ LAD | Petco Park | 62F -6mph | LAD_ML +25.43% |
-| 6:45p ET | BOS @ NYY | Yankee Stadium | 71F 12mph | OVER_9.0 +30.97% |
-| 9:40p ET | CIN @ COL | Coors Field | 74F 4mph | CIN_ML +40.74% |
-
-## Parlays - top 5
-
-- **2-leg @ +284 (prob 38.1%, EV +46.11%)**
-  - Juan Soto OVER 1.5 batter_total_bases (+101, model 61.0%)
-  - CIN @ COL OVER_10.5 (-110, model 62.4%)
-- **2-leg @ +354 (prob 30.7%, EV +39.49%)**
-  - Carson Benge OVER 1.5 batter_total_bases (+138, model 49.2%)
-  - CIN @ COL OVER_10.5 (-110, model 62.4%)
-- **2-leg @ +289 (prob 35.5%, EV +38.3%)**
-  - Kyle Schwarber OVER 1.5 batter_total_bases (+104, model 56.9%)
-  - CIN @ COL OVER_10.5 (-110, model 62.4%)
-- **2-leg @ +373 (prob 28.8%, EV +36.48%)**
-  - Jorge Polanco UNDER 0.5 batter_hits (+148, model 46.2%)
-  - CIN @ COL OVER_10.5 (-110, model 62.4%)
-- **2-leg @ +301 (prob 33.6%, EV +34.69%)**
-  - Brandon Marsh OVER 1.5 batter_total_bases (+110, model 53.8%)
-  - CIN @ COL OVER_10.5 (-110, model 62.4%)
+| 7:10p ET | NYM @ PHI | Citizens Bank Park | 81F 6mph | NYM_ML +5.68% |
 
 ## Self-Learning Loop
 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
 
-Cumulative graded plays: 6252. Wins: 2507. Hit rate: 40.1%.
+Cumulative graded plays: 6273. Wins: 2514. Hit rate: 40.1%.
 
 ## Auxiliary Markets (Model Fair Prices)
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| BOS @ NYY | -- | -- | -- | +115 | -115 |
-| CIN @ COL | -- | -- | -- | +465 | -465 |
-| SDP @ LAD | -- | -- | -- | -166 | +166 |
+| NYM @ PHI | 32.1% | +212 | 5.48 | +166 | -166 |
 
 ## Team Form (last 10)
 

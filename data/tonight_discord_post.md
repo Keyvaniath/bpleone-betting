@@ -1,9 +1,5 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:2 F:187
-
-:dart: **Top Picks:**
-1. [WNBA] caitlin clark -- caitlin clark (PLAYER_STRONG)
-2. [WNBA] kelsey mitchell -- kelsey mitchell (PLAYER_STRONG)
+_NO_ACTION_NIGHT_ | L:0 S:0 F:187
 
 :coin: Bankroll Advisory: STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 
