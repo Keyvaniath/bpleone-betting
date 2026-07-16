@@ -1,17 +1,17 @@
 # EdgeStat Daily Summary — 2026-07-16
 
-## 🏥 Model Health: 62.6/100 [OK]
+## 🏥 Model Health: 62.9/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.9/100
+  - 🟢 Calibration Freshness: 100.0/100
   - 🔴 Hit Rate Trend: 28.6/100
   - 🔴 Brier Trend: 17.3/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 95.5/100
-  - 🔴 Edge Count: 42.9/100
+  - 🔴 Edge Count: 45.7/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.583)
-- **Total games on board:** 112
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.584)
+- **Total games on board:** 111
 - **Strong home favorites:** 3 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
@@ -60,7 +60,7 @@
 - RESIDUAL_DIVERGENCE: **1**
 - STEAM_MOVE: **37**
   - Portland Fire (WNBA): Portland Fire UNDERPERFORMING expected margin by 8.3pts in recent games -- model bias may persist
-  - NYM @ PHI (MLB): ML/TOTAL steam since open: ML -3.7pp toward NYM; total +9.5 (OVER) (7 snapshots)
+  - NYM @ PHI (MLB): ML/TOTAL steam since open: ML -3.8pp toward NYM; total +9.5 (OVER) (8 snapshots)
   - GS @ CON (WNBA): TOTAL steam since open: ML +2.2pp toward CON; total -3 (UNDER) (3 snapshots)
   - ATL @ STL (MLB): ML/TOTAL steam since open: ML +10.5pp toward STL; total +0.5 (OVER) (7 snapshots)
   - MIN @ CON (WNBA): TOTAL steam since open: ML -1.1pp toward MIN; total -2 (UNDER) (5 snapshots)
@@ -74,10 +74,11 @@
   - #4 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
   - #5 [GOLF] $35 on GOLF Sungjae Im WIN @ 559 (The Open) (P=15%)
 
-## 🎯 Convergence Picks (4 stacked games)
-- ELITE: **0** · HIGH: 0 · MED: 4
+## 🎯 Convergence Picks (5 stacked games)
+- ELITE: **0** · HIGH: 2 · MED: 3
+  - [HIGH] Portland Fire @ Washington Mystics : 3 signals (PREGAME, ANOMALY, ATS)
+  - [HIGH] New York Liberty @ Dallas Wings : 3 signals (HEAT_COLD, HEAT_COLD, ATS)
   - [MED] New York Knicks @ San Antonio Spurs : 2 signals (ATS, ATS)
-  - [MED] Seattle Storm @ Chicago Sky : 2 signals (HEAT_COLD, HEAT_COLD)
   - [MED] Portland Timbers @ Seattle Sounders FC : 2 signals (PREGAME, ATS)
   - [MED] Coventry City @ Arsenal : 2 signals (PREGAME, ATS)
 
@@ -102,18 +103,18 @@
   - [COIN_FLIP] **Fatima Kline** (9-1-0) vs Tabatha Ricci -- fair -132
 
 ## ⛳ Golf Player Heat (from The Open)
-  - 🔥 T1 **Daniel Brown** (England): -4 total -- finished T1
-  - 🔥 T2 **Sungjae Im** (South Korea): -4 total -- finished T2
-  - 🔥 T3 **Thomas Detry** (Belgium): -3 total -- finished T3
-  - 🔥 T4 **Robert MacIntyre** (Scotland): -3 total -- finished T4
-  - 🔥 T5 **Francesco Molinari** (Italy): -3 total -- finished T5
+  - 🔥 T1 **Jackson Suber** (USA): -5 total -- finished T1
+  - 🔥 T2 **Daniel Brown** (England): -4 total -- finished T2
+  - 🔥 T3 **Sungjae Im** (South Korea): -4 total -- finished T3
+  - 🔥 T4 **Thomas Detry** (Belgium): -3 total -- finished T4
+  - 🔥 T5 **Robert MacIntyre** (Scotland): -3 total -- finished T5
 
 ## 🔥 MLB Batter Heat (39 HOT / 35 COLD)
   - 🔥 **Luisangel Acuña** (CWS): L14 .400 / season .242 (+158pts)
   - 🔥 **James Wood** (WSH): L14 .400 / season .279 (+121pts)
   - 🔥 **Garrett Mitchell** (MIL): L14 .392 / season .274 (+118pts)
   - 🔥 **Miguel Rojas** (LAD): L14 .407 / season .290 (+117pts)
-  - 🔥 **Justin Crawford** (PHI): L14 .378 / season .263 (+115pts)
+  - 🔥 **José Tena** (WSH): L14 .353 / season .241 (+112pts)
   - ❄️ **Corbin Carroll** (AZ): L14 .080 / season .252 (-172pts) -- FADE props
   - ❄️ **Jorge Mateo** (ATL): L14 .074 / season .238 (-164pts) -- FADE props
   - ❄️ **Oswald Peraza** (LAA): L14 .079 / season .239 (-160pts) -- FADE props

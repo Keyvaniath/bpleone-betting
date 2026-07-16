@@ -2,36 +2,42 @@
 
 **Model Confidence: 22.4/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
 
-_Pipeline health: **WARNING** (11/15 artifacts ok; 4 empty, 0 stale)._ 
+_Pipeline health: **WARNING** (12/15 artifacts ok; 3 empty, 0 stale)._ 
 
-_Generated at 2026-07-16T21:56:04 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-07-16T23:00:56 UTC. Game lines source: **placeholder -110 (no real book today)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
-**NYM @ PHI - UNDER_9.5**
+**CIN @ COL - CIN_ML**
 - Market: -110
-- Model probability: 55.2%
-- Raw edge: +5.41%
-- Recommended stake: 1.49u Kelly
+- Model probability: 73.7%
+- Raw edge: +40.74%
+- Recommended stake: <= 0.5u (model calibrating)
 
-## Full Slate (1 games)
+> _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
+
+## Full Slate (3 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 6:10p ET | NYM @ PHI | Citizens Bank Park | 81F 5mph | UNDER_9.5 +5.41% |
+| 7:05p ET | SDP @ LAD | Petco Park | 62F -6mph | LAD_ML +25.43% |
+| 6:45p ET | BOS @ NYY | Yankee Stadium | 71F 12mph | OVER_9.0 +30.97% |
+| 9:40p ET | CIN @ COL | Coors Field | 74F 4mph | CIN_ML +40.74% |
 
 ## Self-Learning Loop
 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
 
-Cumulative graded plays: 6274. Wins: 2514. Hit rate: 40.1%.
+Cumulative graded plays: 6275. Wins: 2515. Hit rate: 40.1%.
 
 ## Auxiliary Markets (Model Fair Prices)
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| NYM @ PHI | 32.1% | +212 | 5.53 | +167 | -167 |
+| BOS @ NYY | -- | -- | -- | +115 | -115 |
+| CIN @ COL | -- | -- | -- | +465 | -465 |
+| SDP @ LAD | -- | -- | -- | -166 | +166 |
 
 ## Team Form (last 10)
 

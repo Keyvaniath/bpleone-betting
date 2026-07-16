@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-07-16T21:56:15",
-  "n_settled": 6174,
+  "generated_at": "2026-07-16T23:01:08",
+  "n_settled": 6175,
   "n_families_transformed": 24,
   "n_families_bucketed": 14,
   "ece_before": 0.0905,
   "ece_after": 0.0179,
   "ece_improvement": 0.0726,
-  "brier_before": 0.21139,
-  "brier_after": 0.19445,
+  "brier_before": 0.21136,
+  "brier_after": 0.19443,
   "method_note": "Per market family, a monotonic (isotonic) curve maps the model's predicted probability to the realized hit rate, learned from settled outcomes. Bucketed for well-sampled families (preserves ranking), a family-average Bayesian blend for mid-sample, identity below that. ECE = expected calibration error (lower = the displayed % is truer). This makes the model honest at the source; it does not create edge (that needs a market price).",
   "families": [
     {
@@ -515,35 +515,48 @@
       }
     },
     {
+      "family": "blk_stl_under",
+      "n": 34,
+      "method": "family_avg",
+      "avg_pred_raw": 0.6718,
+      "avg_pred_calibrated": 0.6317,
+      "realized": 0.6176,
+      "ece_raw": 0.0542,
+      "ece_calibrated": 0.0141,
+      "transform": {
+        "realized": 0.6176
+      }
+    },
+    {
       "family": "mlb_hrr_3.5_under",
-      "n": 504,
+      "n": 505,
       "method": "bucketed",
       "avg_pred_raw": 0.8635,
-      "avg_pred_calibrated": 0.8282,
-      "realized": 0.8214,
-      "ece_raw": 0.0471,
-      "ece_calibrated": 0.0068,
+      "avg_pred_calibrated": 0.8285,
+      "realized": 0.8218,
+      "ece_raw": 0.0467,
+      "ece_calibrated": 0.0067,
       "transform": {
         "anchors": [
           [
             0.8304,
-            0.8225
+            0.8229
           ],
           [
             0.8571,
-            0.8225
+            0.8229
           ],
           [
             0.8624,
-            0.8225
+            0.8229
           ],
           [
             0.8669,
-            0.8225
+            0.8229
           ],
           [
-            0.8702,
-            0.8225
+            0.8703,
+            0.8229
           ],
           [
             0.872,
@@ -558,19 +571,6 @@
             0.8399
           ]
         ]
-      }
-    },
-    {
-      "family": "blk_stl_under",
-      "n": 34,
-      "method": "family_avg",
-      "avg_pred_raw": 0.6718,
-      "avg_pred_calibrated": 0.6317,
-      "realized": 0.6176,
-      "ece_raw": 0.0542,
-      "ece_calibrated": 0.0141,
-      "transform": {
-        "realized": 0.6176
       }
     },
     {

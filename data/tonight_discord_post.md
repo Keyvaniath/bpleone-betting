@@ -1,10 +1,9 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:12 F:131
+_NO_ACTION_NIGHT_ | L:0 S:14 F:124
 
 :dart: **Top Picks:**
-1. [GOLF] Sungjae Im -- Sungjae Im (PLAYER_STRONG)
-2. [GOLF] Daniel Brown -- Daniel Brown (PLAYER_STRONG)
-3. [MLB] Christian Scott -- Christian Scott (PITCHER_STRONG)
+1. [GOLF] Jackson Suber -- Jackson Suber (PLAYER_STRONG)
+2. [GOLF] Sungjae Im -- Sungjae Im (PLAYER_STRONG)
 
 :coin: Bankroll Advisory: STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 
