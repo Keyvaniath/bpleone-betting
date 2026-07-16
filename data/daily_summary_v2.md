@@ -1,25 +1,25 @@
 # EdgeStat Daily Summary — 2026-07-16
 
-## 🏥 Model Health: 62.2/100 [OK]
+## 🏥 Model Health: 62.6/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.8/100
+  - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 28.6/100
   - 🔴 Brier Trend: 17.3/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 95.5/100
-  - 🔴 Edge Count: 40.0/100
+  - 🔴 Edge Count: 42.9/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.583)
-- **Total games on board:** 111
-- **Strong home favorites:** 2 | **Strong road dogs:** 0
+- **Total games on board:** 112
+- **Strong home favorites:** 3 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
 1. **NYM @ PHI YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 2. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
 3. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
 4. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
-5. **GOLF Sungjae Im WIN @ 544 (The Open)** (78/100 ★★★★★)
+5. **GOLF Sungjae Im WIN @ 559 (The Open)** (78/100 ★★★★★)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -47,30 +47,32 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (2)
+## ⚡ Pre-Game HIGH Conviction (3)
 - [MLS] **CF Montréal** HOME (None L10) · model 71.5% fair -251
 - [MLS] **Seattle Sounders FC** HOME (0-1 L10) · model 66.7% fair -200
+- [WNBA] **Washington Mystics** HOME (3-1 L10) · model 63.1% fair -171
 
 ## 🔥/❄️ Heat / Cold Signals
 - Hot teams: **2** | Cold teams: **3** | Over-heavy: 0 | Under-heavy: 2
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (37)
+## ⚠️ Anomaly Detector (38)
+- RESIDUAL_DIVERGENCE: **1**
 - STEAM_MOVE: **37**
-  - NYM @ PHI (MLB): ML/TOTAL steam since open: ML -2.7pp toward NYM; total +9.5 (OVER) (4 snapshots)
+  - Portland Fire (WNBA): Portland Fire UNDERPERFORMING expected margin by 8.3pts in recent games -- model bias may persist
+  - NYM @ PHI (MLB): ML/TOTAL steam since open: ML -3.7pp toward NYM; total +9.5 (OVER) (7 snapshots)
   - GS @ CON (WNBA): TOTAL steam since open: ML +2.2pp toward CON; total -3 (UNDER) (3 snapshots)
   - ATL @ STL (MLB): ML/TOTAL steam since open: ML +10.5pp toward STL; total +0.5 (OVER) (7 snapshots)
   - MIN @ CON (WNBA): TOTAL steam since open: ML -1.1pp toward MIN; total -2 (UNDER) (5 snapshots)
-  - IND @ LA (WNBA): TOTAL steam since open: ML +0.5pp toward LA; total -2 (UNDER) (5 snapshots)
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$330.0** (33.0% of $1000 bankroll)
-- Expected EV: **$-6.68**
+- Expected EV: **$-6.65**
   - #1 [NRFI] $50 on NYM @ PHI YRFI (1st-inning OVER 0.5) (P=68%)
   - #2 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #3 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
   - #4 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
-  - #5 [GOLF] $35 on GOLF Sungjae Im WIN @ 544 (The Open) (P=16%)
+  - #5 [GOLF] $35 on GOLF Sungjae Im WIN @ 559 (The Open) (P=15%)
 
 ## 🎯 Convergence Picks (4 stacked games)
 - ELITE: **0** · HIGH: 0 · MED: 4

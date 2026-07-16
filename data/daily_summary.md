@@ -4,21 +4,21 @@
 
 _Pipeline health: **WARNING** (11/15 artifacts ok; 4 empty, 0 stale)._ 
 
-_Generated at 2026-07-16T15:49:48 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-07-16T21:56:04 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
-**NYM @ PHI - NYM_ML**
-- Market: +111
-- Model probability: 49.6%
-- Raw edge: +4.68%
-- Recommended stake: 1.05u Kelly
+**NYM @ PHI - UNDER_9.5**
+- Market: -110
+- Model probability: 55.2%
+- Raw edge: +5.41%
+- Recommended stake: 1.49u Kelly
 
 ## Full Slate (1 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 7:10p ET | NYM @ PHI | Citizens Bank Park | 83F 5mph | NYM_ML +4.68% |
+| 6:10p ET | NYM @ PHI | Citizens Bank Park | 81F 5mph | UNDER_9.5 +5.41% |
 
 ## Self-Learning Loop
 
@@ -31,7 +31,7 @@ Cumulative graded plays: 6274. Wins: 2514. Hit rate: 40.1%.
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| NYM @ PHI | 32.1% | +212 | 5.48 | +166 | -166 |
+| NYM @ PHI | 32.1% | +212 | 5.53 | +167 | -167 |
 
 ## Team Form (last 10)
 

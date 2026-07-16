@@ -1,12 +1,12 @@
 # Tonight's Slate Brief — 2026-07-16
 
-## Slate Quality: 67/100 (MEDIUM)
-_0% lineups confirmed · 1 rookie SPs_
-**Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
+## Slate Quality: 97/100 (HIGH)
+_100% lineups confirmed · 1 rookie SPs_
+**Recommendation:** Play normal Kelly sizing.
 
 ## Slate
 - **1 games** scheduled
-- **20 best bets** scored: 0 DK · 0 PP · 1 NRFI · 0 SGP
+- **21 best bets** scored: 0 DK · 0 PP · 1 NRFI · 0 SGP
 - **Auto-portfolio:** 1 picks, $50.0 stake (5.0%), expected +$14.85
 - **MC simulation:** EV +$14.85, 68% P(profit), p05 $-50.0 / p95 $45.45
 
@@ -22,8 +22,8 @@ _0% lineups confirmed · 1 rookie SPs_
 4. **LOL Peyz OVER 4.5 Kills**  (78/100 ****, edge —)
    - Player prop quality score 1.184
    - Elite player
-5. **GOLF Sungjae Im WIN @ 544 (The Open)**  (78/100 *****, edge —)
-   - P(win) 15.5% with 2 round(s) left -- sweet-spot value at #2 (-4).
+5. **GOLF Sungjae Im WIN @ 559 (The Open)**  (78/100 *****, edge —)
+   - P(win) 15.2% with 2 round(s) left -- sweet-spot value at #2 (-4).
 
 ## ⚠️ Trap Warnings — 1 flagged
 - **NYM @ PHI YRFI (1st-inning OVER 0.5)** (low):
@@ -35,8 +35,8 @@ _0% lineups confirmed · 1 rookie SPs_
 ## Golf -- The Open
 - **Leader:** Daniel Brown (-4) at #1
 - **Field:** 156 players  |  Status: In Progress
-- **Play of the Tournament:** Sungjae Im WIN @ +544 (model 15.5%, HIGH)
-   - P(win) 15.5% with 2 round(s) left -- sweet-spot value at #2 (-4).
+- **Play of the Tournament:** Sungjae Im WIN @ +559 (model 15.2%, HIGH)
+   - P(win) 15.2% with 2 round(s) left -- sweet-spot value at #2 (-4).
 
 ## NBA -- PLAYOFFS
 - New York Knicks @ San Antonio Spurs (53-29 vs 62-20) 94-90 | P(home) 0.0% fair +0 | Final
@@ -56,8 +56,8 @@ _0% lineups confirmed · 1 rookie SPs_
 - Kiwoom Heroes @ Hanwha Eagles | P(home) 55.5% fair -125 | total 10 R
 - **KBO POD:** LG Twins ML vs KT Wiz (KBO) (HIGH)
 
-## LoL Esports -- 0 live, 7 upcoming
-- [NACL] Conviction vs Cupid Esports BO3 | P(A) 50.0% fair -100/-100
+## LoL Esports -- 1 live, 8 upcoming
+- [NACL] Cupid Esports vs Conviction BO3 | P(A) 50.0% fair -100/-100
 - [NACL] Maryville University vs Dorado Gaming BO3 | P(A) 50.0% fair -100/-100
 - [LJL] RAYN Clocks vs L Guide Gaming BO5 | P(A) 50.0% fair -100/-100
 - [NACL] Blue Otter vs CCG Esports BO3 | P(A) 50.0% fair -100/-100

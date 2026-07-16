@@ -1,5 +1,5 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:11 F:141
+_NO_ACTION_NIGHT_ | L:0 S:12 F:131
 
 :dart: **Top Picks:**
 1. [GOLF] Sungjae Im -- Sungjae Im (PLAYER_STRONG)
