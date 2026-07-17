@@ -1,33 +1,48 @@
 # Tonight's Slate Brief — 2026-07-17
 
 ## Slate Quality: 55/100 (MEDIUM)
-_0% lineups confirmed · 12 rookie SPs_
+_3% lineups confirmed · 12 rookie SPs_
 **Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
 - **15 games** scheduled
-- **17 best bets** scored: 0 DK · 0 PP · 0 NRFI · 0 SGP
+- **30 best bets** scored: 0 DK · 0 PP · 12 NRFI · 0 SGP
+- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$37.42
+- **MC simulation:** EV +$94.55, 78% P(profit), p05 $-116.64 / p95 $281.74
 
 ## Top 5 Best Bets
-1. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
+1. **LAD @ NYY YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +29.5%)
+   - P(YRFI) 75.5% vs baseline 46.0%
+2. **MIN @ CHC YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +22.4%)
+   - P(YRFI) 68.4% vs baseline 46.0%
+3. **SDP @ KCR YRFI (1st-inning OVER 0.5)**  (79/100 ****, edge +19.4%)
+   - P(YRFI) 65.4% vs baseline 46.0%
+4. **WSN @ OAK YRFI (1st-inning OVER 0.5)**  (78/100 ****, edge +18.4%)
+   - P(YRFI) 64.4% vs baseline 46.0%
+5. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
    - Player prop quality score 1.1935
    - Elite player
-2. **LOL ShowMaker OVER 3.5 Kills**  (78/100 ****, edge —)
-   - Player prop quality score 1.1892
-   - Elite player
-3. **LOL Peyz OVER 4.5 Kills**  (78/100 ****, edge —)
-   - Player prop quality score 1.184
-   - Elite player
-4. **GOLF Collin Morikawa TOP5 @ 619 (The Open)**  (78/100 *****, edge —)
-   - P(top 5) 13.9% -- lower variance than outright but compelling line.
-5. **GOLF MJ Daffue TOP5 @ 492 (The Open)**  (78/100 *****, edge —)
-   - P(top 5) 16.9% -- lower variance than outright but compelling line.
+
+## ⚠️ Trap Warnings — 11 flagged
+- **LAD @ NYY YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +29.5% looks big but only 0 settled props on this player — model unproven
+- **MIN @ CHC YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +22.4% looks big but only 0 settled props on this player — model unproven
+- **SDP @ KCR YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +19.4% looks big but only 0 settled props on this player — model unproven
+- **WSN @ OAK YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +18.4% looks big but only 0 settled props on this player — model unproven
+- **CIN @ COL YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +17.5% looks big but only 0 settled props on this player — model unproven
+
+## NRFI/YRFI strong leans
+- **YRFI** (1st-inning OVER): LAD @ NYY, MIN @ CHC, SDP @ KCR, WSN @ OAK, CIN @ COL
 
 ## Golf -- The Open
 - **Leader:** Jackson Suber (-5) at #1
 - **Field:** 156 players  |  Status: In Progress
-- **Play of the Tournament:** Collin Morikawa TOP5 @ +619 (model 13.9%, HIGH)
-   - P(top 5) 13.9% -- lower variance than outright but compelling line.
+- **Play of the Tournament:** Ryan Gerard TOP5 @ +516 (model 16.2%, HIGH)
+   - P(top 5) 16.2% -- lower variance than outright but compelling line.
 
 ## NBA -- PLAYOFFS
 - New York Knicks @ San Antonio Spurs (53-29 vs 62-20) 94-90 | P(home) 0.0% fair +0 | Final
@@ -47,12 +62,12 @@ _0% lineups confirmed · 12 rookie SPs_
 - Kiwoom Heroes @ Hanwha Eagles | P(home) 56.7% fair -131 | total 9 R
 - **KBO POD:** KIA Tigers ML vs SSG Landers (KBO) (HIGH)
 
-## LoL Esports -- 0 live, 8 upcoming
-- [LJL] RAYN Clocks vs L Guide Gaming BO5 | P(A) 50.0% fair -100/-100
+## LoL Esports -- 0 live, 9 upcoming
 - [NACL] Blue Otter vs CCG Esports BO3 | P(A) 50.0% fair -100/-100
 - [NACL] Ole Miss Esports vs Winthrop University BO3 | P(A) 50.0% fair -100/-100
 - [LJL] Arneb vs New Meta BO5 | P(A) 45.4% fair +121/-121
 - [LJL] TBD vs FENNEL BO5 | P(A) 41.3% fair +142/-142
+- [LJL] TBD vs UWinks BO5 | P(A) 54.6% fair -121/+121
 - **LoL POT:** FENNEL ML vs TBD (LJL, BO5) (HIGH)
 
 ## Player Play of the Day -- across all sports (3646 candidates scanned)
@@ -65,5 +80,5 @@ _0% lineups confirmed · 12 rookie SPs_
 ## Self-learning calibration (esports + KBO)
 - **LOL:** 32 settled | brier 0.2633 | ECE 0.1722
    - Model over-confident; subtract 15.4pp at next inference
-- **KBO:** 21 settled | brier 0.3046 | ECE 0.3154
-   - Model over-confident; subtract 31.5pp at next inference
+- **KBO:** 22 settled | brier 0.2986 | ECE 0.2821
+   - Model over-confident; subtract 28.2pp at next inference

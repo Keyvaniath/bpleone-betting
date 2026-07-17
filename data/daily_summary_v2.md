@@ -1,31 +1,31 @@
 # EdgeStat Daily Summary — 2026-07-17
 
-## 🏥 Model Health: 60.1/100 [OK]
+## 🏥 Model Health: 69.3/100 [OK]
 - Operational but room to improve - check yellow components
   - 🟢 Calibration Freshness: 99.9/100
-  - 🔴 Hit Rate Trend: 28.6/100
-  - 🔴 Brier Trend: 17.3/100
+  - 🟡 Hit Rate Trend: 66.7/100
+  - 🔴 Brier Trend: 26.1/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 81.8/100
-  - 🔴 Edge Count: 45.7/100
+  - 🟢 Data Health: 86.4/100
+  - 🔴 Edge Count: 34.3/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.581)
-- **Total games on board:** 123
-- **Strong home favorites:** 0 | **Strong road dogs:** 0
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.583)
+- **Total games on board:** 109
+- **Strong home favorites:** 1 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
-1. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
-2. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
-3. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
-4. **GOLF Collin Morikawa TOP5 @ 619 (The Open)** (78/100 ★★★★★)
-5. **GOLF MJ Daffue TOP5 @ 492 (The Open)** (78/100 ★★★★★)
+1. **LAD @ NYY YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+2. **MIN @ CHC YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+3. **SDP @ KCR YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
+4. **WSN @ OAK YRFI (1st-inning OVER 0.5)** (78/100 ★★★★)
+5. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** CIN @ COL CIN_ML -- 65% / +24.4% (score 2.5)
+- [STRONG] **[MLB]** CIN @ COL COL_ML -- 66% / +22.5% (score 2.5)
 
-## 📡 Sharp Action (Line Movement)
-- [ELITE] **BOS @ NYY** over_9.0: 52.38% → 63.64% (+11.3pp)
+## 📉 Strong UNDER Signals
+- [STRONG 5.5] **SDP @ KCR** model 8.64 vs market 10.5
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -66,21 +66,28 @@
   - SEA @ ATL (WNBA): ML/TOTAL steam since open: ML +3.3pp toward ATL; total +2 (OVER) (7 snapshots)
 
 ## 💰 Today's Portfolio (9 picks)
-- Total stake: **$300.0** (30.0% of $1000 bankroll)
-- Expected EV: **$-7.71**
-  - #1 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
-  - #2 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
-  - #3 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
-  - #4 [GOLF] $35 on GOLF Collin Morikawa TOP5 @ 619 (The Open) (P=14%)
-  - #5 [GOLF] $35 on GOLF MJ Daffue TOP5 @ 492 (The Open) (P=17%)
+- Total stake: **$345.0** (34.5% of $1000 bankroll)
+- Expected EV: **$-0.31**
+  - #1 [NRFI] $50 on LAD @ NYY YRFI (1st-inning OVER 0.5) (P=76%)
+  - #2 [NRFI] $50 on MIN @ CHC YRFI (1st-inning OVER 0.5) (P=68%)
+  - #3 [NRFI] $35 on SDP @ KCR YRFI (1st-inning OVER 0.5) (P=65%)
+  - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
+  - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
-## 🎯 Convergence Picks (5 stacked games)
-- ELITE: **0** · HIGH: 2 · MED: 3
-  - [HIGH] Portland Fire @ Washington Mystics : 3 signals (PREGAME, ANOMALY, ATS)
+## 🎯 Convergence Picks (6 stacked games)
+- ELITE: **0** · HIGH: 1 · MED: 5
   - [HIGH] New York Liberty @ Dallas Wings : 3 signals (HEAT_COLD, HEAT_COLD, ATS)
   - [MED] New York Knicks @ San Antonio Spurs : 2 signals (ATS, ATS)
-  - [MED] Portland Timbers @ Seattle Sounders FC : 2 signals (PREGAME, ATS)
-  - [MED] Coventry City @ Arsenal : 2 signals (PREGAME, ATS)
+  - [MED] Toronto FC @ CF Montréal : 2 signals (ATS, ATS)
+  - [MED] Sporting Kansas City @ St. Louis CITY SC : 2 signals (ATS, ATS)
+  - [MED] Portland Timbers @ Seattle Sounders FC : 2 signals (ATS, ATS)
+
+## ⚾ Top MLB Pitcher K Plays (10)
+- **Cade Cavalli** OVER 4.5 K (76%) fair -311
+- **Gavin Williams** OVER 4.5 K (75%) fair -295
+- **Dean Kremer** OVER 4.5 K (72%) fair -251
+- **Sandy Alcantara** OVER 4.5 K (71%) fair -251
+- **Reid Detmers** OVER 4.5 K (71%) fair -251
 
 ## 🏀 NBA Player Heat (18 HOT / 23 COLD)
   - 🔥 **Jeremiah Fears** (NO): L5 31.8/5.8/6.0 vs season 16.9/3.2/4.0 [PTS +14.9, REB +2.6, AST +2.0]
@@ -103,8 +110,8 @@
   - 🔥 T1 **Jackson Suber** (USA): -5 total -- finished T1
   - 🔥 T2 **Daniel Brown** (England): -4 total -- finished T2
   - 🔥 T3 **Sungjae Im** (South Korea): -4 total -- finished T3
-  - 🔥 T4 **Thomas Detry** (Belgium): -3 total -- finished T4
-  - 🔥 T5 **Robert MacIntyre** (Scotland): -3 total -- finished T5
+  - 🔥 T4 **Matt Wallace** (England): -3 total -- finished T4, Sunday -0.5 vs tourney avg
+  - 🔥 T5 **Thomas Detry** (Belgium): -3 total -- finished T5
 
 ## 🔥 MLB Batter Heat (39 HOT / 36 COLD)
   - 🔥 **Luisangel Acuña** (CWS): L14 .400 / season .242 (+158pts)
