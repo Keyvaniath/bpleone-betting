@@ -1,12 +1,12 @@
 # Tonight's Slate Brief — 2026-07-17
 
-## Slate Quality: 57/100 (MEDIUM)
-_6% lineups confirmed · 12 rookie SPs_
-**Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
+## Slate Quality: 78/100 (HIGH)
+_76% lineups confirmed · 12 rookie SPs_
+**Recommendation:** Play normal Kelly sizing.
 
 ## Slate
-- **15 games** scheduled
-- **30 best bets** scored: 0 DK · 0 PP · 12 NRFI · 0 SGP
+- **13 games** scheduled
+- **33 best bets** scored: 0 DK · 0 PP · 12 NRFI · 0 SGP
 - **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$37.42
 - **MC simulation:** EV +$94.55, 78% P(profit), p05 $-116.64 / p95 $281.74
 
@@ -23,7 +23,7 @@ _6% lineups confirmed · 12 rookie SPs_
    - Player prop quality score 1.1935
    - Elite player
 
-## ⚠️ Trap Warnings — 12 flagged
+## ⚠️ Trap Warnings — 11 flagged
 - **LAD @ NYY YRFI (1st-inning OVER 0.5)** (low):
    - Edge +29.5% looks big but only 0 settled props on this player — model unproven
 - **MIN @ CHC YRFI (1st-inning OVER 0.5)** (low):
@@ -41,8 +41,8 @@ _6% lineups confirmed · 12 rookie SPs_
 ## Golf -- The Open
 - **Leader:** Lucas Herbert (-8) at #1
 - **Field:** 156 players  |  Status: In Progress
-- **Play of the Tournament:** Alex Smalley TOP5 @ +565 (model 15.0%, HIGH)
-   - P(top 5) 15.0% -- lower variance than outright but compelling line.
+- **Play of the Tournament:** Francesco Molinari TOP5 @ +574 (model 14.8%, HIGH)
+   - P(top 5) 14.8% -- lower variance than outright but compelling line.
 
 ## NBA -- PLAYOFFS
 - New York Knicks @ San Antonio Spurs (53-29 vs 62-20) 94-90 | P(home) 0.0% fair +0 | Final
@@ -62,8 +62,8 @@ _6% lineups confirmed · 12 rookie SPs_
 - Kiwoom Heroes @ Hanwha Eagles | P(home) 56.7% fair -131 | total 9 R
 - **KBO POD:** KIA Tigers ML vs SSG Landers (KBO) (HIGH)
 
-## LoL Esports -- 0 live, 9 upcoming
-- [NACL] Blue Otter vs CCG Esports BO3 | P(A) 50.0% fair -100/-100
+## LoL Esports -- 1 live, 8 upcoming
+- [NACL] CCG Esports vs Blue Otter BO3 | P(A) 50.0% fair -100/-100
 - [NACL] Ole Miss Esports vs Winthrop University BO3 | P(A) 50.0% fair -100/-100
 - [LJL] Arneb vs New Meta BO5 | P(A) 45.4% fair +121/-121
 - [LJL] TBD vs FENNEL BO5 | P(A) 41.3% fair +142/-142

@@ -4,60 +4,58 @@
 
 _Pipeline health: **WARNING** (12/15 artifacts ok; 3 empty, 0 stale)._ 
 
-_Generated at 2026-07-17T15:19:32 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-07-17T21:39:17 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
-**LAD @ NYY - OVER_9.0**
+**MIN @ CHC - OVER_9.0**
 - Market: -110
-- Model probability: 83.0%
-- Raw edge: +58.43%
+- Model probability: 83.6%
+- Raw edge: +59.57%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
 
-## Full Slate (15 games)
+## Full Slate (13 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 1:35p ET | TBR @ BOS | Fenway Park | 86F 10mph | OVER_9.0 +4.87% |
-| 7:10p ET | TBR @ BOS | Fenway Park | 86F 10mph | OVER_9.0 +20.47% |
-| 7:05p ET | LAD @ NYY | Yankee Stadium | 74F 6mph | OVER_9.0 +58.43% |
-| 7:10p ET | PIT @ CLE | Progressive Field | 78F 5mph | PIT_ML +43.6% |
-| 7:15p ET | TEX @ ATL | Truist Park | 78F 3mph | OVER_8.0 +11.58% |
-| 7:15p ET | CHW @ TOR | Rogers Centre | indoor | CHW_ML +6.59% |
-| 7:40p ET | MIA @ MIL | American Family Field | indoor | MIL_ML +7.83% |
-| 8:05p ET | MIN @ CHC | Wrigley Field | 84F 7mph | OVER_11.0 +30.42% |
+| 7:10p ET | TBR @ BOS | Fenway Park | 69F 4mph | UNDER_9.5 +30.93% |
+| 7:05p ET | LAD @ NYY | Yankee Stadium | 74F 5mph | OVER_9.0 +57.18% |
+| 7:15p ET | TEX @ ATL | Truist Park | 76F 4mph | ATL_ML +31.22% |
+| 7:15p ET | CHW @ TOR | Rogers Centre | indoor | UNDER_8.5 +1.54% |
+| 7:40p ET | MIA @ MIL | American Family Field | indoor | OVER_7.5 +15.75% |
+| 8:05p ET | MIN @ CHC | Wrigley Field | 80F 5mph | OVER_9.0 +59.57% |
 | 8:10p ET | BAL @ HOU | Daikin Park | indoor | OVER_8.5 +57.43% |
-| 8:10p ET | SDP @ KCR | Kauffman Stadium | 79F 6mph | UNDER_10.0 +31.17% |
-| 8:40p ET | CIN @ COL | Coors Field | 79F 5mph | COL_ML +54.64% |
-| 9:38p ET | DET @ LAA | Angel Stadium | 69F 4mph | UNDER_8.5 +4.75% |
-| 9:40p ET | WSN @ OAK | Sutter Health Park | 69F 10mph | WSN_ML +25.38% |
-| 9:40p ET | STL @ ARI | Chase Field | indoor | STL_ML +28.23% |
-| 10:10p ET | SFG @ SEA | T-Mobile Park | indoor | SFG_ML +24.93% |
+| 8:10p ET | SDP @ KCR | Kauffman Stadium | 81F 6mph | UNDER_10.0 +29.79% |
+| 8:40p ET | CIN @ COL | Coors Field | 80F 4mph | COL_ML +55.15% |
+| 9:38p ET | DET @ LAA | Angel Stadium | 69F 4mph | LAA_ML +28.64% |
+| 9:40p ET | WSN @ OAK | Sutter Health Park | 68F 11mph | WSN_ML +37.32% |
+| 9:40p ET | STL @ ARI | Chase Field | indoor | STL_ML +32.85% |
+| 10:10p ET | SFG @ SEA | T-Mobile Park | indoor | SFG_ML +16.85% |
 
 ## Parlays - top 5
 
-- **3-leg @ +527 (prob 23.9%, EV +49.9%)**
-  - TBR @ BOS OVER_9.0 (-110, model 63.1%)
-  - TBR @ BOS TBR_ML (-103, model 58.5%)
-  - MIA @ MIL MIL_ML (-150, model 64.7%)
-- **3-leg @ +843 (prob 15.8%, EV +49.22%)**
-  - CHW @ TOR CHW_ML (+113, model 50.0%)
-  - CIN @ COL OVER_12.0 (-110, model 58.7%)
-  - SFG @ SEA SFG_ML (+132, model 53.8%)
-- **3-leg @ +893 (prob 15.0%, EV +48.79%)**
-  - CHW @ TOR CHW_ML (+113, model 50.0%)
-  - SDP @ KCR KCR_ML (+101, model 55.6%)
-  - SFG @ SEA SFG_ML (+132, model 53.8%)
-- **3-leg @ +567 (prob 22.3%, EV +48.74%)**
-  - TBR @ BOS TBR_ML (-103, model 58.5%)
-  - TEX @ ATL ATL_ML (-218, model 70.7%)
-  - SFG @ SEA SFG_ML (+132, model 53.8%)
-- **3-leg @ +843 (prob 15.8%, EV +48.56%)**
-  - TEX @ ATL OVER_8.0 (-110, model 58.4%)
-  - CHW @ TOR CHW_ML (+113, model 50.0%)
-  - SFG @ SEA SFG_ML (+132, model 53.8%)
+- **3-leg @ +539 (prob 23.4%, EV +49.57%)**
+  - TBR @ BOS BOS_ML (-121, model 65.0%)
+  - MIA @ MIL MIL_ML (-138, model 64.7%)
+  - SDP @ KCR KCR_ML (+103, model 55.6%)
+- **3-leg @ +691 (prob 18.8%, EV +48.86%)**
+  - MIA @ MIL OVER_7.5 (-110, model 60.6%)
+  - DET @ LAA UNDER_8.5 (-110, model 57.6%)
+  - SFG @ SEA SFG_ML (+117, model 53.8%)
+- **3-leg @ +608 (prob 21.0%, EV +48.7%)**
+  - TBR @ BOS BOS_ML (-121, model 65.0%)
+  - SDP @ KCR KCR_ML (+103, model 55.6%)
+  - CIN @ COL OVER_12.0 (-110, model 58.1%)
+- **3-leg @ +608 (prob 20.8%, EV +47.52%)**
+  - TBR @ BOS BOS_ML (-121, model 65.0%)
+  - SDP @ KCR KCR_ML (+103, model 55.6%)
+  - DET @ LAA UNDER_8.5 (-110, model 57.6%)
+- **3-leg @ +660 (prob 19.4%, EV +47.2%)**
+  - MIA @ MIL MIL_ML (-138, model 64.7%)
+  - SDP @ KCR KCR_ML (+103, model 55.6%)
+  - SFG @ SEA SFG_ML (+117, model 53.8%)
 
 ## Self-Learning Loop
 
@@ -72,18 +70,17 @@ Cumulative graded plays: 6289. Wins: 2526. Hit rate: 40.2%.
 |---|---|---|---|---|---|
 | BAL @ HOU | 45.2% | +121 | 3.97 | -143 | +143 |
 | CHW @ TOR | 42.8% | +134 | 4.24 | +174 | -174 |
-| CIN @ COL | 36.5% | +174 | 5.18 | -309 | +309 |
-| DET @ LAA | 44.1% | +127 | 4.2 | +184 | -184 |
-| LAD @ NYY | 24.5% | +309 | 6.99 | +130 | -130 |
+| CIN @ COL | 36.5% | +174 | 5.17 | -307 | +307 |
+| DET @ LAA | 44.1% | +127 | 4.2 | +185 | -185 |
+| LAD @ NYY | 24.5% | +309 | 6.95 | +131 | -131 |
 | MIA @ MIL | 46.1% | +117 | 3.87 | -105 | +105 |
-| MIN @ CHC | 31.6% | +217 | 6.04 | +112 | -112 |
-| PIT @ CLE | 45.6% | +119 | 4.01 | +398 | -398 |
-| SDP @ KCR | 34.6% | +189 | 5.5 | +137 | -137 |
+| MIN @ CHC | 31.6% | +217 | 5.97 | +114 | -114 |
+| SDP @ KCR | 34.6% | +189 | 5.48 | +137 | -137 |
 | SFG @ SEA | 53.5% | -115 | 3.13 | +216 | -216 |
-| STL @ ARI | 37.5% | +167 | 4.9 | +363 | -363 |
-| TBR @ BOS | 52.0% | -108 | 4.94 | +235 | -235 |
-| TEX @ ATL | 58.4% | -140 | 2.67 | -140 | +140 |
-| WSN @ OAK | 35.6% | +181 | 5.41 | +318 | -318 |
+| STL @ ARI | 47.1% | +112 | 3.77 | +357 | -357 |
+| TBR @ BOS | 45.4% | +120 | 3.86 | -106 | +106 |
+| TEX @ ATL | 58.4% | -140 | 2.73 | -140 | +140 |
+| WSN @ OAK | 35.6% | +181 | 5.45 | +318 | -318 |
 
 ## Travel / Rest Flags
 
@@ -98,9 +95,9 @@ Cumulative graded plays: 6289. Wins: 2526. Hit rate: 40.2%.
 
 ## Team Form (last 10)
 
-**Hot:** BOS 9-1 (W9, +26), PIT 7-3 (W3, +24), BAL 7-3 (W4, +19), MIN 7-3 (W2, +17), DET 7-3 (L2, +17)
+**Hot:** BOS 10-0 (W10, +44), PIT 7-3 (W3, +24), BAL 7-3 (W4, +19), MIN 7-3 (W2, +17), DET 7-3 (L2, +17)
 
-**Cold:** ATH 1-9 (L9, -41), PHI 5-5 (L1, -18), TEX 5-5 (W1, -12), NYM 5-5 (W1, -11), LAA 2-8 (L2, -10)
+**Cold:** ATH 1-9 (L9, -41), PHI 5-5 (L1, -18), TB 4-6 (L2, -17), TEX 5-5 (W1, -12), NYM 5-5 (W1, -11)
 
 ## Loop Activity (since last refresh)
 

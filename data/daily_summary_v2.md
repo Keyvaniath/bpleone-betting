@@ -1,8 +1,8 @@
 # EdgeStat Daily Summary — 2026-07-17
 
-## 🏥 Model Health: 72.5/100 [HEALTHY]
+## 🏥 Model Health: 72.6/100 [HEALTHY]
 - Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 99.7/100
+  - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 59.9/100
   - 🔴 Brier Trend: 21.8/100
   - 🟢 Pipeline Audit: 100.0/100
@@ -10,9 +10,9 @@
   - 🟡 Edge Count: 71.4/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.583)
-- **Total games on board:** 109
-- **Strong home favorites:** 1 | **Strong road dogs:** 0
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.58)
+- **Total games on board:** 113
+- **Strong home favorites:** 2 | **Strong road dogs:** 2
 
 ## 🎯 Top 5 Best Bets
 1. **LAD @ NYY YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
@@ -22,10 +22,10 @@
 5. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** CIN @ COL COL_ML -- 66% / +22.5% (score 2.5)
+- [STRONG] **[MLB]** CIN @ COL COL_ML -- 66% / +21.9% (score 2.5)
 
 ## 📉 Strong UNDER Signals
-- [STRONG 5.5] **SDP @ KCR** model 8.7 vs market 10.5
+- [STRONG 5.2] **SDP @ KCR** model 8.67 vs market 10.0
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -53,21 +53,26 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
+## ⚡ Pre-Game HIGH Conviction (2)
+- [WNBA] **Atlanta Dream** AWAY (2-2 L10) · model 69.1% fair -224
+- [WNBA] **Los Angeles Sparks** AWAY (2-3 L10) · model 63.3% fair -172
+
 ## 🔥/❄️ Heat / Cold Signals
 - Hot teams: **2** | Cold teams: **3** | Over-heavy: 0 | Under-heavy: 1
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (31)
-- STEAM_MOVE: **31**
+## ⚠️ Anomaly Detector (38)
+- RESIDUAL_DIVERGENCE: **3**
+- STEAM_MOVE: **35**
+  - Atlanta Dream (WNBA): Atlanta Dream OUTPERFORMING expected margin by 6.2pts in recent games -- model bias may persist
+  - Phoenix Mercury (WNBA): Phoenix Mercury UNDERPERFORMING expected margin by 10.3pts in recent games -- model bias may persist
+  - Connecticut Sun (WNBA): Connecticut Sun UNDERPERFORMING expected margin by 6.8pts in recent games -- model bias may persist
   - NYM @ PHI (MLB): ML/TOTAL steam since open: ML -3.8pp toward NYM; total +9.5 (OVER) (8 snapshots)
   - GS @ CON (WNBA): TOTAL steam since open: ML +2.2pp toward CON; total -3 (UNDER) (3 snapshots)
-  - ATL @ STL (MLB): ML/TOTAL steam since open: ML +10.5pp toward STL; total +0.5 (OVER) (7 snapshots)
-  - IND @ LA (WNBA): TOTAL steam since open: ML +0.5pp toward LA; total -2 (UNDER) (5 snapshots)
-  - SEA @ ATL (WNBA): ML/TOTAL steam since open: ML +3.3pp toward ATL; total +2 (OVER) (7 snapshots)
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$-0.28**
+- Expected EV: **$-0.29**
   - #1 [NRFI] $50 on LAD @ NYY YRFI (1st-inning OVER 0.5) (P=76%)
   - #2 [NRFI] $50 on MIN @ CHC YRFI (1st-inning OVER 0.5) (P=68%)
   - #3 [NRFI] $35 on SDP @ KCR YRFI (1st-inning OVER 0.5) (P=65%)
@@ -109,10 +114,11 @@
   - 🔥 T2 **Cameron Young** (USA): -6 total -- finished T2
   - 🔥 T3 **Jackson Suber** (USA): -6 total -- finished T3
   - 🔥 T4 **Sam Burns** (USA): -5 total -- finished T4, Sunday -5.5 vs tourney avg
-  - 🔥 T5 **Sungjae Im** (South Korea): -5 total -- finished T5
+  - 🔥 T5 **Matt Wallace** (England): -4 total -- finished T5, Sunday -1.0 vs tourney avg
+  - ❄️ **Daniel Brown** (England): Sunday +3.0 vs tourney avg
   - ❄️ **Henrik Stenson** (Sweden): Sunday +3.0 vs tourney avg
 
-## 🔥 MLB Batter Heat (39 HOT / 36 COLD)
+## 🔥 MLB Batter Heat (40 HOT / 36 COLD)
   - 🔥 **Luisangel Acuña** (CWS): L14 .400 / season .242 (+158pts)
   - 🔥 **James Wood** (WSH): L14 .400 / season .279 (+121pts)
   - 🔥 **Garrett Mitchell** (MIL): L14 .392 / season .274 (+118pts)
