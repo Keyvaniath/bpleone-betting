@@ -1,13 +1,13 @@
 # EdgeStat Daily Summary — 2026-07-17
 
-## 🏥 Model Health: 69.3/100 [OK]
-- Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.9/100
-  - 🟡 Hit Rate Trend: 66.7/100
-  - 🔴 Brier Trend: 26.1/100
+## 🏥 Model Health: 72.5/100 [HEALTHY]
+- Solid health - some minor issues to monitor
+  - 🟢 Calibration Freshness: 99.7/100
+  - 🔴 Hit Rate Trend: 59.9/100
+  - 🔴 Brier Trend: 21.8/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 86.4/100
-  - 🔴 Edge Count: 34.3/100
+  - 🟢 Data Health: 95.5/100
+  - 🟡 Edge Count: 71.4/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.583)
@@ -25,7 +25,7 @@
 - [STRONG] **[MLB]** CIN @ COL COL_ML -- 66% / +22.5% (score 2.5)
 
 ## 📉 Strong UNDER Signals
-- [STRONG 5.5] **SDP @ KCR** model 8.64 vs market 10.5
+- [STRONG 5.5] **SDP @ KCR** model 8.7 vs market 10.5
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -67,20 +67,18 @@
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$-0.31**
+- Expected EV: **$-0.28**
   - #1 [NRFI] $50 on LAD @ NYY YRFI (1st-inning OVER 0.5) (P=76%)
   - #2 [NRFI] $50 on MIN @ CHC YRFI (1st-inning OVER 0.5) (P=68%)
   - #3 [NRFI] $35 on SDP @ KCR YRFI (1st-inning OVER 0.5) (P=65%)
   - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
-## 🎯 Convergence Picks (6 stacked games)
-- ELITE: **0** · HIGH: 1 · MED: 5
+## 🎯 Convergence Picks (3 stacked games)
+- ELITE: **0** · HIGH: 1 · MED: 2
   - [HIGH] New York Liberty @ Dallas Wings : 3 signals (HEAT_COLD, HEAT_COLD, ATS)
   - [MED] New York Knicks @ San Antonio Spurs : 2 signals (ATS, ATS)
-  - [MED] Toronto FC @ CF Montréal : 2 signals (ATS, ATS)
-  - [MED] Sporting Kansas City @ St. Louis CITY SC : 2 signals (ATS, ATS)
-  - [MED] Portland Timbers @ Seattle Sounders FC : 2 signals (ATS, ATS)
+  - [MED] Coventry City @ Arsenal : 2 signals (PREGAME, ATS)
 
 ## ⚾ Top MLB Pitcher K Plays (10)
 - **Cade Cavalli** OVER 4.5 K (76%) fair -311
@@ -107,11 +105,12 @@
   - [COIN_FLIP] **Fatima Kline** (9-1-0) vs Tabatha Ricci -- fair -132
 
 ## ⛳ Golf Player Heat (from The Open)
-  - 🔥 T1 **Jackson Suber** (USA): -5 total -- finished T1
-  - 🔥 T2 **Daniel Brown** (England): -4 total -- finished T2
-  - 🔥 T3 **Sungjae Im** (South Korea): -4 total -- finished T3
-  - 🔥 T4 **Matt Wallace** (England): -3 total -- finished T4, Sunday -0.5 vs tourney avg
-  - 🔥 T5 **Thomas Detry** (Belgium): -3 total -- finished T5
+  - 🔥 T1 **Lucas Herbert** (Australia): -8 total -- finished T1, Sunday -4.0 vs tourney avg
+  - 🔥 T2 **Cameron Young** (USA): -6 total -- finished T2
+  - 🔥 T3 **Jackson Suber** (USA): -6 total -- finished T3
+  - 🔥 T4 **Sam Burns** (USA): -5 total -- finished T4, Sunday -5.5 vs tourney avg
+  - 🔥 T5 **Sungjae Im** (South Korea): -5 total -- finished T5
+  - ❄️ **Henrik Stenson** (Sweden): Sunday +3.0 vs tourney avg
 
 ## 🔥 MLB Batter Heat (39 HOT / 36 COLD)
   - 🔥 **Luisangel Acuña** (CWS): L14 .400 / season .242 (+158pts)

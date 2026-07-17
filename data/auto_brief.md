@@ -1,7 +1,7 @@
 # Tonight's Slate Brief — 2026-07-17
 
-## Slate Quality: 55/100 (MEDIUM)
-_3% lineups confirmed · 12 rookie SPs_
+## Slate Quality: 57/100 (MEDIUM)
+_6% lineups confirmed · 12 rookie SPs_
 **Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
@@ -23,7 +23,7 @@ _3% lineups confirmed · 12 rookie SPs_
    - Player prop quality score 1.1935
    - Elite player
 
-## ⚠️ Trap Warnings — 11 flagged
+## ⚠️ Trap Warnings — 12 flagged
 - **LAD @ NYY YRFI (1st-inning OVER 0.5)** (low):
    - Edge +29.5% looks big but only 0 settled props on this player — model unproven
 - **MIN @ CHC YRFI (1st-inning OVER 0.5)** (low):
@@ -39,10 +39,10 @@ _3% lineups confirmed · 12 rookie SPs_
 - **YRFI** (1st-inning OVER): LAD @ NYY, MIN @ CHC, SDP @ KCR, WSN @ OAK, CIN @ COL
 
 ## Golf -- The Open
-- **Leader:** Jackson Suber (-5) at #1
+- **Leader:** Lucas Herbert (-8) at #1
 - **Field:** 156 players  |  Status: In Progress
-- **Play of the Tournament:** Ryan Gerard TOP5 @ +516 (model 16.2%, HIGH)
-   - P(top 5) 16.2% -- lower variance than outright but compelling line.
+- **Play of the Tournament:** Alex Smalley TOP5 @ +565 (model 15.0%, HIGH)
+   - P(top 5) 15.0% -- lower variance than outright but compelling line.
 
 ## NBA -- PLAYOFFS
 - New York Knicks @ San Antonio Spurs (53-29 vs 62-20) 94-90 | P(home) 0.0% fair +0 | Final

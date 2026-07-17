@@ -1,10 +1,9 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:15 F:134
+_NO_ACTION_NIGHT_ | L:0 S:11 F:118
 
 :dart: **Top Picks:**
-1. [GOLF] Jackson Suber -- Jackson Suber (PLAYER_STRONG)
-2. [GOLF] Sungjae Im -- Sungjae Im (PLAYER_STRONG)
-3. [MLB] Griffin Jax -- Griffin Jax (PITCHER_STRONG)
+1. [GOLF] Lucas Herbert -- Lucas Herbert (PLAYER_STRONG)
+2. [GOLF] Cameron Young -- Cameron Young (PLAYER_STRONG)
 
 :coin: Bankroll Advisory: STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 
