@@ -1,7 +1,53 @@
 {
-  "generated_at": "2026-07-17T06:35:33",
-  "matchup": "CIN @ COL",
-  "label": "CIN_ML",
-  "error": "No matching game in matchups.json",
-  "factors": []
+  "generated_at": "2026-07-17T07:10:09",
+  "matchup": "BAL @ HOU",
+  "label": "OVER_8.5",
+  "model_fair_total": null,
+  "market_total": 8.5,
+  "factors": [
+    {
+      "name": "Starting Pitcher (Kremer vs Lambert)",
+      "contribution": -0.322,
+      "unit": "runs",
+      "detail": "Kremer ERA 4.09 vs Lambert ERA 3.14 (avg 3.62 vs league 4.20)"
+    },
+    {
+      "name": "Lineup Strength (OPS)",
+      "contribution": 0.023,
+      "unit": "runs",
+      "detail": "avg team OPS 0.725 vs league 0.720"
+    },
+    {
+      "name": "Bullpen Freshness (IP last 2d)",
+      "contribution": -0.2,
+      "unit": "runs",
+      "detail": "avg pen IP last 2d: 0.0 (>4 = tired)"
+    },
+    {
+      "name": "Park Factor (Daikin Park)",
+      "contribution": 0.0,
+      "unit": "runs",
+      "detail": "carry index 0.50 vs neutral 0.50"
+    },
+    {
+      "name": "Weather (Indoor)",
+      "contribution": -0.1,
+      "unit": "runs",
+      "detail": "Indoor game - no wind/temp variance"
+    },
+    {
+      "name": "Umpire (?)",
+      "contribution": -0.0,
+      "unit": "runs",
+      "detail": "K mult 1.00 (>1.0 = tight zone, fewer runs)"
+    },
+    {
+      "name": "Pitcher Recent Form (3 starts vs season)",
+      "contribution": -0.037,
+      "unit": "runs",
+      "detail": "mean recent-vs-season ERA delta"
+    }
+  ],
+  "total_contribution_runs": -0.636,
+  "note": "Each factor is the marginal expected-runs contribution to the game total. Positive = pushes total UP (favors OVER). Negative = favors UNDER. Sum across factors approximates the model's edge vs league baseline."
 }

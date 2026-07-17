@@ -1,25 +1,31 @@
-# EdgeStat Daily Summary — 2026-07-16
+# EdgeStat Daily Summary — 2026-07-17
 
-## 🏥 Model Health: 62.9/100 [OK]
+## 🏥 Model Health: 60.1/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 100.0/100
+  - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 28.6/100
   - 🔴 Brier Trend: 17.3/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 95.5/100
+  - 🟢 Data Health: 81.8/100
   - 🔴 Edge Count: 45.7/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.584)
-- **Total games on board:** 111
-- **Strong home favorites:** 3 | **Strong road dogs:** 0
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.581)
+- **Total games on board:** 123
+- **Strong home favorites:** 0 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
-1. **NYM @ PHI YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-2. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
-3. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
-4. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
-5. **GOLF Sungjae Im WIN @ 559 (The Open)** (78/100 ★★★★★)
+1. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
+2. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
+3. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
+4. **GOLF Collin Morikawa TOP5 @ 619 (The Open)** (78/100 ★★★★★)
+5. **GOLF MJ Daffue TOP5 @ 492 (The Open)** (78/100 ★★★★★)
+
+## 🐋 Whale Picks (Max Confluence)
+- [STRONG] **[MLB]** CIN @ COL CIN_ML -- 65% / +24.4% (score 2.5)
+
+## 📡 Sharp Action (Line Movement)
+- [ELITE] **BOS @ NYY** over_9.0: 52.38% → 63.64% (+11.3pp)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -47,32 +53,26 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (3)
-- [MLS] **CF Montréal** HOME (None L10) · model 71.5% fair -251
-- [MLS] **Seattle Sounders FC** HOME (0-1 L10) · model 66.7% fair -200
-- [WNBA] **Washington Mystics** HOME (3-1 L10) · model 63.1% fair -171
-
 ## 🔥/❄️ Heat / Cold Signals
-- Hot teams: **2** | Cold teams: **3** | Over-heavy: 0 | Under-heavy: 2
+- Hot teams: **2** | Cold teams: **3** | Over-heavy: 0 | Under-heavy: 1
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (38)
-- RESIDUAL_DIVERGENCE: **1**
-- STEAM_MOVE: **37**
-  - Portland Fire (WNBA): Portland Fire UNDERPERFORMING expected margin by 8.3pts in recent games -- model bias may persist
+## ⚠️ Anomaly Detector (31)
+- STEAM_MOVE: **31**
   - NYM @ PHI (MLB): ML/TOTAL steam since open: ML -3.8pp toward NYM; total +9.5 (OVER) (8 snapshots)
   - GS @ CON (WNBA): TOTAL steam since open: ML +2.2pp toward CON; total -3 (UNDER) (3 snapshots)
   - ATL @ STL (MLB): ML/TOTAL steam since open: ML +10.5pp toward STL; total +0.5 (OVER) (7 snapshots)
-  - MIN @ CON (WNBA): TOTAL steam since open: ML -1.1pp toward MIN; total -2 (UNDER) (5 snapshots)
+  - IND @ LA (WNBA): TOTAL steam since open: ML +0.5pp toward LA; total -2 (UNDER) (5 snapshots)
+  - SEA @ ATL (WNBA): ML/TOTAL steam since open: ML +3.3pp toward ATL; total +2 (OVER) (7 snapshots)
 
 ## 💰 Today's Portfolio (9 picks)
-- Total stake: **$330.0** (33.0% of $1000 bankroll)
-- Expected EV: **$-6.65**
-  - #1 [NRFI] $50 on NYM @ PHI YRFI (1st-inning OVER 0.5) (P=68%)
-  - #2 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
-  - #3 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
-  - #4 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
-  - #5 [GOLF] $35 on GOLF Sungjae Im WIN @ 559 (The Open) (P=15%)
+- Total stake: **$300.0** (30.0% of $1000 bankroll)
+- Expected EV: **$-7.71**
+  - #1 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
+  - #2 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
+  - #3 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
+  - #4 [GOLF] $35 on GOLF Collin Morikawa TOP5 @ 619 (The Open) (P=14%)
+  - #5 [GOLF] $35 on GOLF MJ Daffue TOP5 @ 492 (The Open) (P=17%)
 
 ## 🎯 Convergence Picks (5 stacked games)
 - ELITE: **0** · HIGH: 2 · MED: 3
@@ -81,9 +81,6 @@
   - [MED] New York Knicks @ San Antonio Spurs : 2 signals (ATS, ATS)
   - [MED] Portland Timbers @ Seattle Sounders FC : 2 signals (PREGAME, ATS)
   - [MED] Coventry City @ Arsenal : 2 signals (PREGAME, ATS)
-
-## ⚾ Top MLB Pitcher K Plays (1)
-- **Christian Scott** OVER 4.5 K (66%) fair -195
 
 ## 🏀 NBA Player Heat (18 HOT / 23 COLD)
   - 🔥 **Jeremiah Fears** (NO): L5 31.8/5.8/6.0 vs season 16.9/3.2/4.0 [PTS +14.9, REB +2.6, AST +2.0]
@@ -109,7 +106,7 @@
   - 🔥 T4 **Thomas Detry** (Belgium): -3 total -- finished T4
   - 🔥 T5 **Robert MacIntyre** (Scotland): -3 total -- finished T5
 
-## 🔥 MLB Batter Heat (39 HOT / 35 COLD)
+## 🔥 MLB Batter Heat (39 HOT / 36 COLD)
   - 🔥 **Luisangel Acuña** (CWS): L14 .400 / season .242 (+158pts)
   - 🔥 **James Wood** (WSH): L14 .400 / season .279 (+121pts)
   - 🔥 **Garrett Mitchell** (MIL): L14 .392 / season .274 (+118pts)
@@ -129,5 +126,6 @@
   - ⚠️ batter_rbis (Brier Δ -0.0052)
 
 ## 🤖 Self-Training Status
-- **WNBA**: n=37 games · hit rate 54.0% · bias +3.5pp [calibration applied]
-- **MLB**: n=150 games · hit rate 46.7% · bias +10.4pp [calibration applied]
+- **WNBA**: n=35 games · hit rate 45.7% · bias +6.9pp [calibration applied]
+- **MLS**: n=3 games · hit rate 33.3% · bias +8.6pp
+- **MLB**: n=142 games · hit rate 47.9% · bias +8.4pp [calibration applied]

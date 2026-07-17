@@ -1,5 +1,5 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:14 F:124
+_NO_ACTION_NIGHT_ | L:0 S:14 F:122
 
 :dart: **Top Picks:**
 1. [GOLF] Jackson Suber -- Jackson Suber (PLAYER_STRONG)
