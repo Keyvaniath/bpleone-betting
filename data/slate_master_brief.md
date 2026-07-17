@@ -1,36 +1,36 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-07-17T21:38:30 UTC_
+_Generated 2026-07-17T22:50:49 UTC_
 
 ## Slate Quality
-- **Tier:** NO_ACTION_NIGHT
-- **Score:** -32
-- **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
+- **Tier:** STRONG_NIGHT
+- **Score:** 57
+- **Advisory:** Solid slate. Pick top STRONG/LOCK picks; consider Kelly 25-50% sizing.
 - **Total LOCKs:** 0
-- **Total STRONG:** 20
-- **Total FADES:** 112
+- **Total STRONG:** 38
+- **Total FADES:** 95
 
 ## Top 5 Curated Picks
-1. **GOLF / Lucas Herbert** (GOLF_PLAYER, score=181.0)
+1. **GOLF / Lucas Herbert** (GOLF_PLAYER, score=187.29)
    - Play: Lucas Herbert (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Cameron Young** (GOLF_PLAYER, score=122.71)
+2. **MLB / Ben Rice** (MLB_BATTER, score=137.94)
+   - Play: Ben Rice (BATTER_STRONG)
+   - Rationale: Cross-sport top pick (MLB_BATTER)
+3. **MLB / Yordan Alvarez** (MLB_BATTER, score=127.44)
+   - Play: Yordan Alvarez (BATTER_STRONG)
+   - Rationale: Cross-sport top pick (MLB_BATTER)
+4. **GOLF / Cameron Young** (GOLF_PLAYER, score=122.21)
    - Play: Cameron Young (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-3. **WNBA / caitlin clark** (WNBA_PLAYER, score=100.25)
+5. **WNBA / caitlin clark** (WNBA_PLAYER, score=100.25)
    - Play: caitlin clark (PLAYER_STRONG)
-   - Rationale: Cross-sport top pick (WNBA_PLAYER)
-4. **MLB / Junior Caminero** (MLB_BATTER, score=94.25)
-   - Play: Junior Caminero (BATTER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_BATTER)
-5. **WNBA / kahleah copper** (WNBA_PLAYER, score=71.0)
-   - Play: kahleah copper (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (WNBA_PLAYER)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
   - Lucas Herbert top 10 finish
   - Cameron Young top 10 finish
-  - Jackson Suber top 10 finish
+  - Ryan Gerard top 10 finish
 
 ## Slate ROI Projection
 - **Picks:** 0
@@ -39,13 +39,13 @@ _Generated 2026-07-17T21:38:30 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **MLB** / Jake Bennett (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **NHL** / filip gustavsson (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / connor hellebuyck (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / marc-andre fleury (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
 - **NHL** / jake oettinger (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / samsonov ilya (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / thatcher demko (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / logan thompson_2 (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / adin hill (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO

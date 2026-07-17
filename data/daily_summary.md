@@ -4,14 +4,14 @@
 
 _Pipeline health: **WARNING** (12/15 artifacts ok; 3 empty, 0 stale)._ 
 
-_Generated at 2026-07-17T21:39:17 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-07-17T22:51:56 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
 **MIN @ CHC - OVER_9.0**
 - Market: -110
-- Model probability: 83.6%
-- Raw edge: +59.57%
+- Model probability: 83.3%
+- Raw edge: +59.03%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
@@ -20,19 +20,19 @@ _Generated at 2026-07-17T21:39:17 UTC. Game lines source: **Bovada (fallback -- 
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 7:10p ET | TBR @ BOS | Fenway Park | 69F 4mph | UNDER_9.5 +30.93% |
-| 7:05p ET | LAD @ NYY | Yankee Stadium | 74F 5mph | OVER_9.0 +57.18% |
-| 7:15p ET | TEX @ ATL | Truist Park | 76F 4mph | ATL_ML +31.22% |
+| 7:10p ET | TBR @ BOS | Fenway Park | 70F 1mph | UNDER_9.5 +34.87% |
+| 7:05p ET | LAD @ NYY | Yankee Stadium | 73F 4mph | OVER_9.0 +55.32% |
+| 7:15p ET | TEX @ ATL | Truist Park | 73F 1mph | ATL_ML +30.61% |
 | 7:15p ET | CHW @ TOR | Rogers Centre | indoor | UNDER_8.5 +1.54% |
 | 7:40p ET | MIA @ MIL | American Family Field | indoor | OVER_7.5 +15.75% |
-| 8:05p ET | MIN @ CHC | Wrigley Field | 80F 5mph | OVER_9.0 +59.57% |
+| 8:05p ET | MIN @ CHC | Wrigley Field | 79F 5mph | OVER_9.0 +59.03% |
 | 8:10p ET | BAL @ HOU | Daikin Park | indoor | OVER_8.5 +57.43% |
-| 8:10p ET | SDP @ KCR | Kauffman Stadium | 81F 6mph | UNDER_10.0 +29.79% |
-| 8:40p ET | CIN @ COL | Coors Field | 80F 4mph | COL_ML +55.15% |
-| 9:38p ET | DET @ LAA | Angel Stadium | 69F 4mph | LAA_ML +28.64% |
-| 9:40p ET | WSN @ OAK | Sutter Health Park | 68F 11mph | WSN_ML +37.32% |
+| 8:10p ET | SDP @ KCR | Kauffman Stadium | 80F 6mph | UNDER_10.0 +30.48% |
+| 8:40p ET | CIN @ COL | Coors Field | 77F 7mph | COL_ML +55.44% |
+| 9:38p ET | DET @ LAA | Angel Stadium | 69F 4mph | LAA_ML +28.6% |
+| 9:40p ET | WSN @ OAK | Sutter Health Park | 69F 11mph | WSN_ML +37.38% |
 | 9:40p ET | STL @ ARI | Chase Field | indoor | STL_ML +32.85% |
-| 10:10p ET | SFG @ SEA | T-Mobile Park | indoor | SFG_ML +16.85% |
+| 10:10p ET | SFG @ SEA | T-Mobile Park | indoor | SFG_ML +17.93% |
 
 ## Parlays - top 5
 
@@ -62,7 +62,7 @@ _Generated at 2026-07-17T21:39:17 UTC. Game lines source: **Bovada (fallback -- 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
 
-Cumulative graded plays: 6289. Wins: 2526. Hit rate: 40.2%.
+Cumulative graded plays: 6294. Wins: 2531. Hit rate: 40.2%.
 
 ## Auxiliary Markets (Model Fair Prices)
 
@@ -70,17 +70,17 @@ Cumulative graded plays: 6289. Wins: 2526. Hit rate: 40.2%.
 |---|---|---|---|---|---|
 | BAL @ HOU | 45.2% | +121 | 3.97 | -143 | +143 |
 | CHW @ TOR | 42.8% | +134 | 4.24 | +174 | -174 |
-| CIN @ COL | 36.5% | +174 | 5.17 | -307 | +307 |
-| DET @ LAA | 44.1% | +127 | 4.2 | +185 | -185 |
-| LAD @ NYY | 24.5% | +309 | 6.95 | +131 | -131 |
+| CIN @ COL | 36.5% | +174 | 5.25 | -311 | +311 |
+| DET @ LAA | 44.1% | +127 | 4.19 | +184 | -184 |
+| LAD @ NYY | 24.5% | +309 | 6.98 | +131 | -131 |
 | MIA @ MIL | 46.1% | +117 | 3.87 | -105 | +105 |
 | MIN @ CHC | 31.6% | +217 | 5.97 | +114 | -114 |
-| SDP @ KCR | 34.6% | +189 | 5.48 | +137 | -137 |
+| SDP @ KCR | 34.6% | +189 | 5.51 | +137 | -137 |
 | SFG @ SEA | 53.5% | -115 | 3.13 | +216 | -216 |
 | STL @ ARI | 47.1% | +112 | 3.77 | +357 | -357 |
-| TBR @ BOS | 45.4% | +120 | 3.86 | -106 | +106 |
-| TEX @ ATL | 58.4% | -140 | 2.73 | -140 | +140 |
-| WSN @ OAK | 35.6% | +181 | 5.45 | +318 | -318 |
+| TBR @ BOS | 45.4% | +120 | 3.96 | -105 | +105 |
+| TEX @ ATL | 58.4% | -140 | 2.69 | -136 | +136 |
+| WSN @ OAK | 35.6% | +181 | 5.44 | +318 | -318 |
 
 ## Travel / Rest Flags
 

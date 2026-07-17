@@ -1,13 +1,13 @@
 # EdgeStat Daily Summary — 2026-07-17
 
-## 🏥 Model Health: 72.6/100 [HEALTHY]
+## 🏥 Model Health: 73.5/100 [HEALTHY]
 - Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 99.9/100
+  - 🟢 Calibration Freshness: 100.0/100
   - 🔴 Hit Rate Trend: 59.9/100
-  - 🔴 Brier Trend: 21.8/100
+  - 🔴 Brier Trend: 22.3/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 95.5/100
-  - 🟡 Edge Count: 71.4/100
+  - 🟢 Edge Count: 80.0/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.58)
@@ -22,10 +22,10 @@
 5. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** CIN @ COL COL_ML -- 66% / +21.9% (score 2.5)
+- [STRONG] **[MLB]** CIN @ COL COL_ML -- 66% / +22.1% (score 2.5)
 
 ## 📉 Strong UNDER Signals
-- [STRONG 5.2] **SDP @ KCR** model 8.67 vs market 10.0
+- [STRONG 5.0] **SDP @ KCR** model 8.73 vs market 10.0
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -61,9 +61,9 @@
 - Hot teams: **2** | Cold teams: **3** | Over-heavy: 0 | Under-heavy: 1
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (38)
+## ⚠️ Anomaly Detector (39)
 - RESIDUAL_DIVERGENCE: **3**
-- STEAM_MOVE: **35**
+- STEAM_MOVE: **36**
   - Atlanta Dream (WNBA): Atlanta Dream OUTPERFORMING expected margin by 6.2pts in recent games -- model bias may persist
   - Phoenix Mercury (WNBA): Phoenix Mercury UNDERPERFORMING expected margin by 10.3pts in recent games -- model bias may persist
   - Connecticut Sun (WNBA): Connecticut Sun UNDERPERFORMING expected margin by 6.8pts in recent games -- model bias may persist
@@ -79,18 +79,20 @@
   - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
-## 🎯 Convergence Picks (3 stacked games)
-- ELITE: **0** · HIGH: 1 · MED: 2
-  - [HIGH] New York Liberty @ Dallas Wings : 3 signals (HEAT_COLD, HEAT_COLD, ATS)
+## 🎯 Convergence Picks (5 stacked games)
+- ELITE: **1** · HIGH: 0 · MED: 4
+  - [ELITE] Connecticut Sun @ Phoenix Mercury : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ANOMALY)
   - [MED] New York Knicks @ San Antonio Spurs : 2 signals (ATS, ATS)
+  - [MED] Seattle Storm @ Indiana Fever : 2 signals (HEAT_COLD, ATS)
+  - [MED] Atlanta Dream @ Toronto Tempo : 2 signals (PREGAME, ANOMALY)
   - [MED] Coventry City @ Arsenal : 2 signals (PREGAME, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (10)
+## ⚾ Top MLB Pitcher K Plays (9)
 - **Cade Cavalli** OVER 4.5 K (76%) fair -311
-- **Gavin Williams** OVER 4.5 K (75%) fair -295
 - **Dean Kremer** OVER 4.5 K (72%) fair -251
 - **Sandy Alcantara** OVER 4.5 K (71%) fair -251
 - **Reid Detmers** OVER 4.5 K (71%) fair -251
+- **Eduardo Rivera** OVER 4.5 K (71%) fair -250
 
 ## 🏀 NBA Player Heat (18 HOT / 23 COLD)
   - 🔥 **Jeremiah Fears** (NO): L5 31.8/5.8/6.0 vs season 16.9/3.2/4.0 [PTS +14.9, REB +2.6, AST +2.0]
@@ -110,13 +112,11 @@
   - [COIN_FLIP] **Fatima Kline** (9-1-0) vs Tabatha Ricci -- fair -132
 
 ## ⛳ Golf Player Heat (from The Open)
-  - 🔥 T1 **Lucas Herbert** (Australia): -8 total -- finished T1, Sunday -4.0 vs tourney avg
+  - 🔥 T1 **Lucas Herbert** (Australia): -8 total -- finished T1
   - 🔥 T2 **Cameron Young** (USA): -6 total -- finished T2
-  - 🔥 T3 **Jackson Suber** (USA): -6 total -- finished T3
-  - 🔥 T4 **Sam Burns** (USA): -5 total -- finished T4, Sunday -5.5 vs tourney avg
-  - 🔥 T5 **Matt Wallace** (England): -4 total -- finished T5, Sunday -1.0 vs tourney avg
-  - ❄️ **Daniel Brown** (England): Sunday +3.0 vs tourney avg
-  - ❄️ **Henrik Stenson** (Sweden): Sunday +3.0 vs tourney avg
+  - 🔥 T3 **Ryan Gerard** (USA): -6 total -- finished T3
+  - 🔥 T4 **Jackson Suber** (USA): -6 total -- finished T4
+  - 🔥 T5 **Sam Burns** (USA): -5 total -- finished T5
 
 ## 🔥 MLB Batter Heat (40 HOT / 36 COLD)
   - 🔥 **Luisangel Acuña** (CWS): L14 .400 / season .242 (+158pts)
@@ -129,6 +129,10 @@
   - ❄️ **Oswald Peraza** (LAA): L14 .079 / season .239 (-160pts) -- FADE props
   - ❄️ **Paul Goldschmidt** (NYY): L14 .104 / season .258 (-154pts) -- FADE props
   - ❄️ **Henry Bolte** (ATH): L14 .120 / season .261 (-141pts) -- FADE props
+
+## 📈 Streak Regression Alerts (2)
+- [WNBA] Seattle Storm on L3 L10 1-4 -- Seattle Storm on L3 -- no historical sample
+- [WNBA] Phoenix Mercury on L4 L10 0-4 -- Phoenix Mercury on L4 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**
