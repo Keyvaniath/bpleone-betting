@@ -1,10 +1,10 @@
 # EdgeStat Daily Summary — 2026-07-18
 
-## 🏥 Model Health: 75.9/100 [HEALTHY]
+## 🏥 Model Health: 72.8/100 [HEALTHY]
 - Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 99.9/100
-  - 🟡 Hit Rate Trend: 73.5/100
-  - 🔴 Brier Trend: 27.7/100
+  - 🟢 Calibration Freshness: 99.6/100
+  - 🟡 Hit Rate Trend: 65.9/100
+  - 🔴 Brier Trend: 20.1/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 95.5/100
   - 🟡 Edge Count: 65.7/100
@@ -22,8 +22,8 @@
 5. **SFG @ SEA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** CHW @ TOR CHW_ML -- 69% / +29.0% (score 2.5)
-- [STRONG] **[MLB]** TBR @ BOS BOS_ML -- 67% / +21.7% (score 2.5)
+- [STRONG] **[MLB]** CHW @ TOR CHW_ML -- 69% / +28.5% (score 2.5)
+- [STRONG] **[MLB]** TEX @ ATL ATL_ML -- 68% / +27.5% (score 2.5)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -65,7 +65,7 @@
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$-5.42**
+- Expected EV: **$13.05**
   - #1 [NRFI] $50 on CIN @ COL YRFI (1st-inning OVER 0.5) (P=81%)
   - #2 [NRFI] $50 on CHW @ TOR YRFI (1st-inning OVER 0.5) (P=75%)
   - #3 [NRFI] $50 on BAL @ HOU YRFI (1st-inning OVER 0.5) (P=72%)
@@ -105,11 +105,12 @@
   - [COIN_FLIP] **Fatima Kline** (9-1-0) vs Tabatha Ricci -- fair -132
 
 ## ⛳ Golf Player Heat (from The Open)
-  - 🔥 T1 **Lucas Herbert** (Australia): -8 total -- finished T1
-  - 🔥 T2 **Cameron Young** (USA): -6 total -- finished T2
-  - 🔥 T3 **Ryan Gerard** (USA): -6 total -- finished T3
-  - 🔥 T4 **Jackson Suber** (USA): -6 total -- finished T4
-  - 🔥 T5 **Sam Burns** (USA): -5 total -- finished T5
+  - 🔥 T1 **Ryan Fox** (New Zealand): -8 total -- finished T1, Sunday -5.3 vs tourney avg
+  - 🔥 T2 **Lucas Herbert** (Australia): -8 total -- finished T2
+  - 🔥 T3 **Cameron Young** (USA): -6 total -- finished T3
+  - 🔥 T4 **Ryan Gerard** (USA): -6 total -- finished T4
+  - 🔥 T5 **Jackson Suber** (USA): -6 total -- finished T5
+  - ❄️ **Chris Gotterup** (USA): Sunday +3.3 vs tourney avg
 
 ## 🔥 MLB Batter Heat (40 HOT / 43 COLD)
   - 🔥 **James Wood** (WSH): L14 .412 / season .278 (+134pts)
