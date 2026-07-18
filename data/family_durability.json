@@ -1,37 +1,38 @@
 {
  "durable_book": {
-  "n": 514,
+  "n": 522,
   "families": [
    "mlb_hrr_3.5_under"
   ],
-  "roi": 29.0,
-  "net_units": 149.2,
-  "hit": 0.825,
+  "roi": 28.6,
+  "net_units": 149.3,
+  "hit": 0.822,
   "ci_lo": 24.0,
-  "ci_hi": 34.0
+  "ci_hi": 33.5
  },
- "generated_at": "2026-07-17T22:50:42",
- "n_settled_total": 6287,
- "n_families_cut": 23,
- "n_families_evaluated": 7,
+ "generated_at": "2026-07-18T06:47:44",
+ "n_settled_total": 6300,
+ "n_families_cut": 22,
+ "n_families_evaluated": 8,
  "min_n": 40,
  "durable_n": 100,
  "tiers": {
   "DURABLE": 1,
   "PROMISING": 4,
-  "FRAGILE": 2
+  "FRAGILE": 2,
+  "NEGATIVE": 1
  },
  "families": [
   {
    "family": "mlb_hrr_3.5_under",
-   "n": 514,
-   "hit": 0.825,
-   "net_units": 149.2,
-   "roi": 29.0,
-   "ci_lo": 24.1,
-   "ci_hi": 33.7,
-   "h1_roi": 19.3,
-   "h2_roi": 38.7,
+   "n": 522,
+   "hit": 0.822,
+   "net_units": 149.3,
+   "roi": 28.6,
+   "ci_lo": 23.7,
+   "ci_hi": 33.4,
+   "h1_roi": 19.5,
+   "h2_roi": 37.7,
    "both_halves_positive": true,
    "tier": "DURABLE"
   },
@@ -51,13 +52,13 @@
   {
    "family": "under",
    "n": 78,
-   "hit": 0.667,
-   "net_units": 16.8,
-   "roi": 21.5,
-   "ci_lo": 1.6,
-   "ci_hi": 40.2,
+   "hit": 0.654,
+   "net_units": 14.9,
+   "roi": 19.0,
+   "ci_lo": 0.1,
+   "ci_hi": 37.7,
    "h1_roi": 8.8,
-   "h2_roi": 34.2,
+   "h2_roi": 29.3,
    "both_halves_positive": true,
    "tier": "PROMISING"
   },
@@ -112,6 +113,19 @@
    "h2_roi": 13.4,
    "both_halves_positive": false,
    "tier": "FRAGILE"
+  },
+  {
+   "family": "total_under",
+   "n": 42,
+   "hit": 0.571,
+   "net_units": -4.9,
+   "roi": -11.6,
+   "ci_lo": -33.7,
+   "ci_hi": 10.5,
+   "h1_roi": -41.1,
+   "h2_roi": 17.8,
+   "both_halves_positive": false,
+   "tier": "NEGATIVE"
   }
  ],
  "method_note": "Every surviving (non-cut) family with n >= 40 graded picks, ranked by the LOWER bound of a 1000-resample bootstrap 95% CI on ROI. DURABLE = CI floor above zero AND positive in both chronological halves AND n >= 100. A big headline ROI with a CI spanning zero or a losing second half is FRAGILE, not edge.",

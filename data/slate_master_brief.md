@@ -1,30 +1,27 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-07-17T22:50:49 UTC_
+_Generated 2026-07-18T06:47:50 UTC_
 
 ## Slate Quality
-- **Tier:** STRONG_NIGHT
-- **Score:** 57
-- **Advisory:** Solid slate. Pick top STRONG/LOCK picks; consider Kelly 25-50% sizing.
+- **Tier:** NO_ACTION_NIGHT
+- **Score:** -48
+- **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 38
-- **Total FADES:** 95
+- **Total STRONG:** 14
+- **Total FADES:** 104
 
 ## Top 5 Curated Picks
 1. **GOLF / Lucas Herbert** (GOLF_PLAYER, score=187.29)
    - Play: Lucas Herbert (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **MLB / Ben Rice** (MLB_BATTER, score=137.94)
-   - Play: Ben Rice (BATTER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_BATTER)
-3. **MLB / Yordan Alvarez** (MLB_BATTER, score=127.44)
-   - Play: Yordan Alvarez (BATTER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_BATTER)
-4. **GOLF / Cameron Young** (GOLF_PLAYER, score=122.21)
+2. **GOLF / Cameron Young** (GOLF_PLAYER, score=122.21)
    - Play: Cameron Young (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-5. **WNBA / caitlin clark** (WNBA_PLAYER, score=100.25)
-   - Play: caitlin clark (PLAYER_STRONG)
-   - Rationale: Cross-sport top pick (WNBA_PLAYER)
+3. **MLB / HOME** (MLB_TEAM, score=87.12)
+   - Play: HOME (TEAM_STRONG)
+   - Rationale: Cross-sport top pick (MLB_TEAM)
+4. **MLB / AWAY** (MLB_TEAM, score=78.54)
+   - Play: AWAY (TEAM_STRONG)
+   - Rationale: Cross-sport top pick (MLB_TEAM)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
@@ -39,13 +36,13 @@ _Generated 2026-07-17T22:50:49 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **NHL** / jake oettinger (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / samsonov ilya (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / thatcher demko (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / logan thompson_2 (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / adin hill (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
+- **MLB** / Chris Sale (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Gerrit Cole (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Brady Singer (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Sandy Alcantara (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Cade Cavalli (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES

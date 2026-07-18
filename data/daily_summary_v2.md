@@ -1,18 +1,18 @@
-# EdgeStat Daily Summary — 2026-07-17
+# EdgeStat Daily Summary — 2026-07-18
 
-## 🏥 Model Health: 73.5/100 [HEALTHY]
+## 🏥 Model Health: 71.7/100 [HEALTHY]
 - Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 100.0/100
+  - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 59.9/100
   - 🔴 Brier Trend: 22.3/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 95.5/100
+  - 🟢 Data Health: 86.4/100
   - 🟢 Edge Count: 80.0/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.58)
-- **Total games on board:** 113
-- **Strong home favorites:** 2 | **Strong road dogs:** 2
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.581)
+- **Total games on board:** 123
+- **Strong home favorites:** 0 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
 1. **LAD @ NYY YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
@@ -22,10 +22,10 @@
 5. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** CIN @ COL COL_ML -- 66% / +22.1% (score 2.5)
+- [STRONG] **[MLB]** CIN @ COL COL_ML -- 66% / +22.2% (score 2.5)
 
 ## 📉 Strong UNDER Signals
-- [STRONG 5.0] **SDP @ KCR** model 8.73 vs market 10.0
+- [STRONG 5.1] **SDP @ KCR** model 8.7 vs market 10.0
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -53,26 +53,21 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (2)
-- [WNBA] **Atlanta Dream** AWAY (2-2 L10) · model 69.1% fair -224
-- [WNBA] **Los Angeles Sparks** AWAY (2-3 L10) · model 63.3% fair -172
-
 ## 🔥/❄️ Heat / Cold Signals
-- Hot teams: **2** | Cold teams: **3** | Over-heavy: 0 | Under-heavy: 1
+- Hot teams: **3** | Cold teams: **3** | Over-heavy: 0 | Under-heavy: 4
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (39)
-- RESIDUAL_DIVERGENCE: **3**
-- STEAM_MOVE: **36**
-  - Atlanta Dream (WNBA): Atlanta Dream OUTPERFORMING expected margin by 6.2pts in recent games -- model bias may persist
-  - Phoenix Mercury (WNBA): Phoenix Mercury UNDERPERFORMING expected margin by 10.3pts in recent games -- model bias may persist
-  - Connecticut Sun (WNBA): Connecticut Sun UNDERPERFORMING expected margin by 6.8pts in recent games -- model bias may persist
+## ⚠️ Anomaly Detector (31)
+- STEAM_MOVE: **31**
   - NYM @ PHI (MLB): ML/TOTAL steam since open: ML -3.8pp toward NYM; total +9.5 (OVER) (8 snapshots)
   - GS @ CON (WNBA): TOTAL steam since open: ML +2.2pp toward CON; total -3 (UNDER) (3 snapshots)
+  - ATL @ STL (MLB): ML/TOTAL steam since open: ML +10.5pp toward STL; total +0.5 (OVER) (7 snapshots)
+  - SEA @ ATL (WNBA): ML/TOTAL steam since open: ML +3.3pp toward ATL; total +2 (OVER) (7 snapshots)
+  - NY @ TOR (WNBA): TOTAL steam since open: total +2 (OVER) (2 snapshots)
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$-0.29**
+- Expected EV: **$-0.34**
   - #1 [NRFI] $50 on LAD @ NYY YRFI (1st-inning OVER 0.5) (P=76%)
   - #2 [NRFI] $50 on MIN @ CHC YRFI (1st-inning OVER 0.5) (P=68%)
   - #3 [NRFI] $35 on SDP @ KCR YRFI (1st-inning OVER 0.5) (P=65%)
@@ -118,17 +113,17 @@
   - 🔥 T4 **Jackson Suber** (USA): -6 total -- finished T4
   - 🔥 T5 **Sam Burns** (USA): -5 total -- finished T5
 
-## 🔥 MLB Batter Heat (40 HOT / 36 COLD)
-  - 🔥 **Luisangel Acuña** (CWS): L14 .400 / season .242 (+158pts)
-  - 🔥 **James Wood** (WSH): L14 .400 / season .279 (+121pts)
-  - 🔥 **Garrett Mitchell** (MIL): L14 .392 / season .274 (+118pts)
+## 🔥 MLB Batter Heat (40 HOT / 43 COLD)
+  - 🔥 **James Wood** (WSH): L14 .412 / season .278 (+134pts)
+  - 🔥 **Curtis Mead** (WSH): L14 .382 / season .257 (+125pts)
+  - 🔥 **Miguel Andujar** (SD): L14 .389 / season .268 (+121pts)
   - 🔥 **Miguel Rojas** (LAD): L14 .407 / season .290 (+117pts)
-  - 🔥 **José Tena** (WSH): L14 .353 / season .241 (+112pts)
-  - ❄️ **Corbin Carroll** (AZ): L14 .080 / season .252 (-172pts) -- FADE props
-  - ❄️ **Jorge Mateo** (ATL): L14 .074 / season .238 (-164pts) -- FADE props
-  - ❄️ **Oswald Peraza** (LAA): L14 .079 / season .239 (-160pts) -- FADE props
-  - ❄️ **Paul Goldschmidt** (NYY): L14 .104 / season .258 (-154pts) -- FADE props
-  - ❄️ **Henry Bolte** (ATH): L14 .120 / season .261 (-141pts) -- FADE props
+  - 🔥 **Garrett Mitchell** (MIL): L14 .392 / season .277 (+115pts)
+  - ❄️ **Paul Goldschmidt** (NYY): L14 .064 / season .255 (-191pts) -- FADE props
+  - ❄️ **Oswald Peraza** (LAA): L14 .079 / season .238 (-159pts) -- FADE props
+  - ❄️ **Corbin Carroll** (AZ): L14 .100 / season .252 (-152pts) -- FADE props
+  - ❄️ **Teoscar Hernández** (LAD): L14 .111 / season .244 (-133pts) -- FADE props
+  - ❄️ **Leody Taveras** (BAL): L14 .103 / season .236 (-133pts) -- FADE props
 
 ## 📈 Streak Regression Alerts (2)
 - [WNBA] Seattle Storm on L3 L10 1-4 -- Seattle Storm on L3 -- no historical sample
@@ -142,6 +137,6 @@
   - ⚠️ batter_rbis (Brier Δ -0.0052)
 
 ## 🤖 Self-Training Status
-- **WNBA**: n=35 games · hit rate 45.7% · bias +6.9pp [calibration applied]
-- **MLS**: n=3 games · hit rate 33.3% · bias +8.6pp
-- **MLB**: n=142 games · hit rate 47.9% · bias +8.4pp [calibration applied]
+- **WNBA**: n=37 games · hit rate 51.3% · bias +8.6pp [calibration applied]
+- **MLS**: n=5 games · hit rate 40.0% · bias +8.6pp
+- **MLB**: n=143 games · hit rate 49.6% · bias +8.0pp [calibration applied]

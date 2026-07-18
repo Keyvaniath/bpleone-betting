@@ -1,14 +1,14 @@
-# Tonight's Slate Brief — 2026-07-17
+# Tonight's Slate Brief — 2026-07-18
 
-## Slate Quality: 78/100 (HIGH)
-_76% lineups confirmed · 12 rookie SPs_
-**Recommendation:** Play normal Kelly sizing.
+## Slate Quality: 52/100 (LOW)
+_0% lineups confirmed · 10 rookie SPs_
+**Recommendation:** Defensive sizing tonight; stick to highest-confidence plays.
 
 ## Slate
-- **13 games** scheduled
-- **33 best bets** scored: 0 DK · 0 PP · 12 NRFI · 0 SGP
+- **16 games** scheduled
+- **28 best bets** scored: 0 DK · 0 PP · 11 NRFI · 0 SGP
 - **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$37.42
-- **MC simulation:** EV +$94.55, 78% P(profit), p05 $-116.64 / p95 $281.74
+- **MC simulation:** EV +$76.77, 77% P(profit), p05 $-103.73 / p95 $245.31
 
 ## Top 5 Best Bets
 1. **LAD @ NYY YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +29.5%)
@@ -23,7 +23,7 @@ _76% lineups confirmed · 12 rookie SPs_
    - Player prop quality score 1.1935
    - Elite player
 
-## ⚠️ Trap Warnings — 11 flagged
+## ⚠️ Trap Warnings — 9 flagged
 - **LAD @ NYY YRFI (1st-inning OVER 0.5)** (low):
    - Edge +29.5% looks big but only 0 settled props on this player — model unproven
 - **MIN @ CHC YRFI (1st-inning OVER 0.5)** (low):
@@ -35,14 +35,17 @@ _76% lineups confirmed · 12 rookie SPs_
 - **CIN @ COL YRFI (1st-inning OVER 0.5)** (low):
    - Edge +17.5% looks big but only 0 settled props on this player — model unproven
 
+## Weather leans
+- **OVER lean** (wind out + warm): CIN @ COL, MIN @ CHC
+
 ## NRFI/YRFI strong leans
 - **YRFI** (1st-inning OVER): LAD @ NYY, MIN @ CHC, SDP @ KCR, WSN @ OAK, CIN @ COL
 
 ## Golf -- The Open
 - **Leader:** Lucas Herbert (-8) at #1
 - **Field:** 156 players  |  Status: In Progress
-- **Play of the Tournament:** Francesco Molinari TOP5 @ +574 (model 14.8%, HIGH)
-   - P(top 5) 14.8% -- lower variance than outright but compelling line.
+- **Play of the Tournament:** Tommy Fleetwood TOP5 @ +554 (model 15.3%, HIGH)
+   - P(top 5) 15.3% -- lower variance than outright but compelling line.
 
 ## NBA -- PLAYOFFS
 - New York Knicks @ San Antonio Spurs (53-29 vs 62-20) 94-90 | P(home) 0.0% fair +0 | Final
@@ -55,22 +58,22 @@ _76% lineups confirmed · 12 rookie SPs_
 - Chicago Blackhawks @ Minnesota Wild (0-0-0 vs 0-0-0)  | P(home) 52.9% fair -112 | Scheduled
 
 ## KBO -- 2026 Korean Baseball
-- KIA Tigers @ SSG Landers | P(home) 41.6% fair +141 | total 8 R
-- KT Wiz @ LG Twins | P(home) 62.4% fair -166 | total 8 R
-- Lotte Giants @ Samsung Lions | P(home) 64.0% fair -178 | total 8 R
-- Doosan Bears @ NC Dinos | P(home) 48.1% fair +108 | total 8 R
-- Kiwoom Heroes @ Hanwha Eagles | P(home) 56.7% fair -131 | total 9 R
-- **KBO POD:** KIA Tigers ML vs SSG Landers (KBO) (HIGH)
+- KIA Tigers @ SSG Landers | P(home) 42.8% fair +134 | total 9 R
+- KT Wiz @ LG Twins | P(home) 61.0% fair -157 | total 9 R
+- Lotte Giants @ Samsung Lions | P(home) 62.6% fair -168 | total 9 R
+- Doosan Bears @ NC Dinos | P(home) 47.5% fair +110 | total 9 R
+- Kiwoom Heroes @ Hanwha Eagles | P(home) 57.2% fair -134 | total 10 R
+- **KBO POD:** LG Twins ML vs KT Wiz (KBO) (HIGH)
 
-## LoL Esports -- 1 live, 8 upcoming
-- [NACL] CCG Esports vs Blue Otter BO3 | P(A) 50.0% fair -100/-100
-- [NACL] Ole Miss Esports vs Winthrop University BO3 | P(A) 50.0% fair -100/-100
+## LoL Esports -- 0 live, 7 upcoming
 - [LJL] Arneb vs New Meta BO5 | P(A) 45.4% fair +121/-121
 - [LJL] TBD vs FENNEL BO5 | P(A) 41.3% fair +142/-142
 - [LJL] TBD vs UWinks BO5 | P(A) 54.6% fair -121/+121
+- [NLC] Verdant vs Absolved BO3 | P(A) 50.0% fair -100/-100
+- [NLC] Bulldog Esports vs Brod & Friends BO3 | P(A) 50.0% fair -100/-100
 - **LoL POT:** FENNEL ML vs TBD (LJL, BO5) (HIGH)
 
-## Player Play of the Day -- across all sports (3646 candidates scanned)
+## Player Play of the Day -- across all sports (3645 candidates scanned)
 - **[LOL]** Inspired UNDER 3.5 Kills | model 61.7% fair -161 (ELITE)
 - **[LOL]** ShowMaker OVER 3.5 Kills | model 62.5% fair -167 (ELITE)
 - **[LOL]** Peyz OVER 4.5 Kills | model 61.3% fair -158 (ELITE)
@@ -80,5 +83,5 @@ _76% lineups confirmed · 12 rookie SPs_
 ## Self-learning calibration (esports + KBO)
 - **LOL:** 32 settled | brier 0.2633 | ECE 0.1722
    - Model over-confident; subtract 15.4pp at next inference
-- **KBO:** 22 settled | brier 0.2986 | ECE 0.2821
-   - Model over-confident; subtract 28.2pp at next inference
+- **KBO:** 23 settled | brier 0.3018 | ECE 0.2964
+   - Model over-confident; subtract 29.6pp at next inference
