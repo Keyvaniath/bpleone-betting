@@ -2,8 +2,9 @@
 
 _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 
-## 💪 STRONG (1 picks)
-- [MLB] CIN @ COL COL_ML · 66% / +22.2%
+## 💪 STRONG (2 picks)
+- [MLB] CHW @ TOR CHW_ML · 69% / +29.0%
+- [MLB] TBR @ BOS BOS_ML · 67% / +21.7%
 
 ## 🔒 5 Daily Locks
 - **Choi Jeong** one_plus_tb (KBO) -- 73% / +39.8%
@@ -17,5 +18,5 @@ _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 - Joint 53% · fair +264 · edge +94.6%
 
 ---
-_Generated 2026-07-18T06:47:44_
+_Generated 2026-07-18T14:19:41_
 _Full breakdown: /tonight · Full history: /locks-of-day_

@@ -1,31 +1,29 @@
 # EdgeStat Daily Summary — 2026-07-18
 
-## 🏥 Model Health: 71.7/100 [HEALTHY]
+## 🏥 Model Health: 75.9/100 [HEALTHY]
 - Solid health - some minor issues to monitor
   - 🟢 Calibration Freshness: 99.9/100
-  - 🔴 Hit Rate Trend: 59.9/100
-  - 🔴 Brier Trend: 22.3/100
+  - 🟡 Hit Rate Trend: 73.5/100
+  - 🔴 Brier Trend: 27.7/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 86.4/100
-  - 🟢 Edge Count: 80.0/100
+  - 🟢 Data Health: 95.5/100
+  - 🟡 Edge Count: 65.7/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.581)
-- **Total games on board:** 123
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.582)
+- **Total games on board:** 107
 - **Strong home favorites:** 0 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
-1. **LAD @ NYY YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-2. **MIN @ CHC YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-3. **SDP @ KCR YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
-4. **WSN @ OAK YRFI (1st-inning OVER 0.5)** (78/100 ★★★★)
-5. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
+1. **CIN @ COL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+2. **CHW @ TOR YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+3. **BAL @ HOU YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+4. **DET @ LAA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+5. **SFG @ SEA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** CIN @ COL COL_ML -- 66% / +22.2% (score 2.5)
-
-## 📉 Strong UNDER Signals
-- [STRONG 5.1] **SDP @ KCR** model 8.7 vs market 10.0
+- [STRONG] **[MLB]** CHW @ TOR CHW_ML -- 69% / +29.0% (score 2.5)
+- [STRONG] **[MLB]** TBR @ BOS BOS_ML -- 67% / +21.7% (score 2.5)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -67,27 +65,27 @@
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$-0.34**
-  - #1 [NRFI] $50 on LAD @ NYY YRFI (1st-inning OVER 0.5) (P=76%)
-  - #2 [NRFI] $50 on MIN @ CHC YRFI (1st-inning OVER 0.5) (P=68%)
-  - #3 [NRFI] $35 on SDP @ KCR YRFI (1st-inning OVER 0.5) (P=65%)
+- Expected EV: **$-5.42**
+  - #1 [NRFI] $50 on CIN @ COL YRFI (1st-inning OVER 0.5) (P=81%)
+  - #2 [NRFI] $50 on CHW @ TOR YRFI (1st-inning OVER 0.5) (P=75%)
+  - #3 [NRFI] $50 on BAL @ HOU YRFI (1st-inning OVER 0.5) (P=72%)
   - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
-## 🎯 Convergence Picks (5 stacked games)
-- ELITE: **1** · HIGH: 0 · MED: 4
-  - [ELITE] Connecticut Sun @ Phoenix Mercury : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ANOMALY)
+## 🎯 Convergence Picks (6 stacked games)
+- ELITE: **1** · HIGH: 1 · MED: 4
+  - [ELITE] Seattle Storm @ Indiana Fever : 5 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ATS)
+  - [HIGH] Los Angeles Sparks @ Chicago Sky : 3 signals (HEAT_COLD, ATS, ATS)
   - [MED] New York Knicks @ San Antonio Spurs : 2 signals (ATS, ATS)
-  - [MED] Seattle Storm @ Indiana Fever : 2 signals (HEAT_COLD, ATS)
-  - [MED] Atlanta Dream @ Toronto Tempo : 2 signals (PREGAME, ANOMALY)
-  - [MED] Coventry City @ Arsenal : 2 signals (PREGAME, ATS)
+  - [MED] Atlanta United FC @ Nashville SC : 2 signals (ATS, ATS)
+  - [MED] LAFC @ LA Galaxy : 2 signals (ATS, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (9)
-- **Cade Cavalli** OVER 4.5 K (76%) fair -311
-- **Dean Kremer** OVER 4.5 K (72%) fair -251
-- **Sandy Alcantara** OVER 4.5 K (71%) fair -251
-- **Reid Detmers** OVER 4.5 K (71%) fair -251
-- **Eduardo Rivera** OVER 4.5 K (71%) fair -250
+## ⚾ Top MLB Pitcher K Plays (12)
+- **Gavin Williams** OVER 4.5 K (75%) fair -295
+- **MacKenzie Gore** OVER 4.5 K (75%) fair -295
+- **Dustin May** OVER 5.5 K (74%) fair -284
+- **Ryan Weathers** OVER 4.5 K (73%) fair -265
+- **Max Meyer** OVER 4.5 K (71%) fair -251
 
 ## 🏀 NBA Player Heat (18 HOT / 23 COLD)
   - 🔥 **Jeremiah Fears** (NO): L5 31.8/5.8/6.0 vs season 16.9/3.2/4.0 [PTS +14.9, REB +2.6, AST +2.0]
@@ -124,10 +122,6 @@
   - ❄️ **Corbin Carroll** (AZ): L14 .100 / season .252 (-152pts) -- FADE props
   - ❄️ **Teoscar Hernández** (LAD): L14 .111 / season .244 (-133pts) -- FADE props
   - ❄️ **Leody Taveras** (BAL): L14 .103 / season .236 (-133pts) -- FADE props
-
-## 📈 Streak Regression Alerts (2)
-- [WNBA] Seattle Storm on L3 L10 1-4 -- Seattle Storm on L3 -- no historical sample
-- [WNBA] Phoenix Mercury on L4 L10 0-4 -- Phoenix Mercury on L4 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**

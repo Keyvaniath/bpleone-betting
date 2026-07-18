@@ -1,45 +1,45 @@
 # Tonight's Slate Brief — 2026-07-18
 
-## Slate Quality: 52/100 (LOW)
-_0% lineups confirmed · 10 rookie SPs_
-**Recommendation:** Defensive sizing tonight; stick to highest-confidence plays.
+## Slate Quality: 55/100 (MEDIUM)
+_3% lineups confirmed · 10 rookie SPs_
+**Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
 - **16 games** scheduled
 - **28 best bets** scored: 0 DK · 0 PP · 11 NRFI · 0 SGP
-- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$37.42
-- **MC simulation:** EV +$76.77, 77% P(profit), p05 $-103.73 / p95 $245.31
+- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$48.73
+- **MC simulation:** EV +$130.79, 84% P(profit), p05 $-87.17 / p95 $333.12
 
 ## Top 5 Best Bets
-1. **LAD @ NYY YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +29.5%)
-   - P(YRFI) 75.5% vs baseline 46.0%
-2. **MIN @ CHC YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +22.4%)
-   - P(YRFI) 68.4% vs baseline 46.0%
-3. **SDP @ KCR YRFI (1st-inning OVER 0.5)**  (79/100 ****, edge +19.4%)
-   - P(YRFI) 65.4% vs baseline 46.0%
-4. **WSN @ OAK YRFI (1st-inning OVER 0.5)**  (78/100 ****, edge +18.4%)
-   - P(YRFI) 64.4% vs baseline 46.0%
-5. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
-   - Player prop quality score 1.1935
-   - Elite player
+1. **CIN @ COL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +35.2%)
+   - P(YRFI) 81.2% vs baseline 46.0%
+2. **CHW @ TOR YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +28.6%)
+   - P(YRFI) 74.6% vs baseline 46.0%
+3. **BAL @ HOU YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +25.8%)
+   - P(YRFI) 71.8% vs baseline 46.0%
+4. **DET @ LAA YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +22.7%)
+   - P(YRFI) 68.7% vs baseline 46.0%
+5. **SFG @ SEA YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +20.2%)
+   - P(YRFI) 66.2% vs baseline 46.0%
 
-## ⚠️ Trap Warnings — 9 flagged
-- **LAD @ NYY YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +29.5% looks big but only 0 settled props on this player — model unproven
-- **MIN @ CHC YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +22.4% looks big but only 0 settled props on this player — model unproven
-- **SDP @ KCR YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +19.4% looks big but only 0 settled props on this player — model unproven
-- **WSN @ OAK YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +18.4% looks big but only 0 settled props on this player — model unproven
+## ⚠️ Trap Warnings — 11 flagged
 - **CIN @ COL YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +17.5% looks big but only 0 settled props on this player — model unproven
+   - Edge +35.2% looks big but only 0 settled props on this player — model unproven
+- **CHW @ TOR YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +28.6% looks big but only 0 settled props on this player — model unproven
+- **BAL @ HOU YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +25.8% looks big but only 0 settled props on this player — model unproven
+- **DET @ LAA YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +22.7% looks big but only 0 settled props on this player — model unproven
+- **SFG @ SEA YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +20.2% looks big but only 0 settled props on this player — model unproven
 
-## Weather leans
-- **OVER lean** (wind out + warm): CIN @ COL, MIN @ CHC
+## Bullpens GASSED tonight
+Tampa Bay Rays, Boston Red Sox
+_Lean late-inning OVER on these games; fade their save situations._
 
 ## NRFI/YRFI strong leans
-- **YRFI** (1st-inning OVER): LAD @ NYY, MIN @ CHC, SDP @ KCR, WSN @ OAK, CIN @ COL
+- **YRFI** (1st-inning OVER): CIN @ COL, CHW @ TOR, BAL @ HOU, DET @ LAA, SFG @ SEA
 
 ## Golf -- The Open
 - **Leader:** Lucas Herbert (-8) at #1
@@ -65,13 +65,13 @@ _0% lineups confirmed · 10 rookie SPs_
 - Kiwoom Heroes @ Hanwha Eagles | P(home) 57.2% fair -134 | total 10 R
 - **KBO POD:** LG Twins ML vs KT Wiz (KBO) (HIGH)
 
-## LoL Esports -- 0 live, 7 upcoming
-- [LJL] Arneb vs New Meta BO5 | P(A) 45.4% fair +121/-121
-- [LJL] TBD vs FENNEL BO5 | P(A) 41.3% fair +142/-142
-- [LJL] TBD vs UWinks BO5 | P(A) 54.6% fair -121/+121
+## LoL Esports -- 0 live, 6 upcoming
+- [LJL] FENNEL vs L Guide Gaming BO5 | P(A) 53.8% fair -116/+116
+- [LJL] UWinks vs New Meta BO5 | P(A) 40.6% fair +146/-146
 - [NLC] Verdant vs Absolved BO3 | P(A) 50.0% fair -100/-100
 - [NLC] Bulldog Esports vs Brod & Friends BO3 | P(A) 50.0% fair -100/-100
-- **LoL POT:** FENNEL ML vs TBD (LJL, BO5) (HIGH)
+- [NLC] Arctic Pandas vs Sørby Esports BO3 | P(A) 50.0% fair -100/-100
+- **LoL POT:** New Meta ML vs UWinks (LJL, BO5) (HIGH)
 
 ## Player Play of the Day -- across all sports (3645 candidates scanned)
 - **[LOL]** Inspired UNDER 3.5 Kills | model 61.7% fair -161 (ELITE)
@@ -81,7 +81,7 @@ _0% lineups confirmed · 10 rookie SPs_
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | model 61.0% fair -157 (ELITE)
 
 ## Self-learning calibration (esports + KBO)
-- **LOL:** 32 settled | brier 0.2633 | ECE 0.1722
-   - Model over-confident; subtract 15.4pp at next inference
-- **KBO:** 23 settled | brier 0.3018 | ECE 0.2964
-   - Model over-confident; subtract 29.6pp at next inference
+- **LOL:** 33 settled | brier 0.2616 | ECE 0.1531
+   - Model over-confident; subtract 13.5pp at next inference
+- **KBO:** 24 settled | brier 0.3047 | ECE 0.3095
+   - Model over-confident; subtract 30.9pp at next inference
