@@ -1,12 +1,12 @@
 # Tonight's Slate Brief — 2026-07-18
 
-## Slate Quality: 53/100 (LOW)
-_3% lineups confirmed · 10 rookie SPs_
-**Recommendation:** Defensive sizing tonight; stick to highest-confidence plays.
+## Slate Quality: 73/100 (MEDIUM)
+_50% lineups confirmed · 2 rookie SPs_
+**Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
-- **16 games** scheduled
-- **27 best bets** scored: 0 DK · 0 PP · 11 NRFI · 0 SGP
+- **4 games** scheduled
+- **28 best bets** scored: 0 DK · 0 PP · 11 NRFI · 0 SGP
 - **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$48.73
 - **MC simulation:** EV +$131.19, 84% P(profit), p05 $-90.64 / p95 $317.66
 
@@ -22,7 +22,7 @@ _3% lineups confirmed · 10 rookie SPs_
 5. **SFG @ SEA YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +20.2%)
    - P(YRFI) 66.2% vs baseline 46.0%
 
-## ⚠️ Trap Warnings — 11 flagged
+## ⚠️ Trap Warnings — 12 flagged
 - **CIN @ COL YRFI (1st-inning OVER 0.5)** (low):
    - Edge +35.2% looks big but only 0 settled props on this player — model unproven
 - **CHW @ TOR YRFI (1st-inning OVER 0.5)** (low):
@@ -35,7 +35,7 @@ _3% lineups confirmed · 10 rookie SPs_
    - Edge +20.2% looks big but only 0 settled props on this player — model unproven
 
 ## Weather leans
-- **OVER lean** (wind out + warm): MIN @ CHC
+- **OVER lean** (wind out + warm): PIT @ CLE
 
 ## Bullpens GASSED tonight
 Tampa Bay Rays, Boston Red Sox
@@ -47,8 +47,8 @@ _Lean late-inning OVER on these games; fade their save situations._
 ## Golf -- The Open
 - **Leader:** Ryan Fox (-8) at #1
 - **Field:** 156 players  |  Status: In Progress
-- **Play of the Tournament:** Scottie Scheffler TOP5 @ +579 (model 14.7%, HIGH)
-   - P(top 5) 14.7% -- lower variance than outright but compelling line.
+- **Play of the Tournament:** Thomas Detry TOP5 @ +602 (model 14.2%, HIGH)
+   - P(top 5) 14.2% -- lower variance than outright but compelling line.
 
 ## NBA -- PLAYOFFS
 - New York Knicks @ San Antonio Spurs (53-29 vs 62-20) 94-90 | P(home) 0.0% fair +0 | Final

@@ -1,18 +1,18 @@
 # EdgeStat Daily Summary — 2026-07-18
 
-## 🏥 Model Health: 72.8/100 [HEALTHY]
+## 🏥 Model Health: 72.6/100 [HEALTHY]
 - Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 99.6/100
+  - 🟢 Calibration Freshness: 99.9/100
   - 🟡 Hit Rate Trend: 65.9/100
   - 🔴 Brier Trend: 20.1/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 95.5/100
-  - 🟡 Edge Count: 65.7/100
+  - 🟡 Edge Count: 62.9/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.582)
-- **Total games on board:** 107
-- **Strong home favorites:** 0 | **Strong road dogs:** 0
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.583)
+- **Total games on board:** 110
+- **Strong home favorites:** 2 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
 1. **CIN @ COL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
@@ -22,8 +22,8 @@
 5. **SFG @ SEA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** CHW @ TOR CHW_ML -- 69% / +28.5% (score 2.5)
-- [STRONG] **[MLB]** TEX @ ATL ATL_ML -- 68% / +27.5% (score 2.5)
+- [STRONG] **[MLB]** CHW @ TOR CHW_ML -- 68% / +31.5% (score 2.5)
+- [STRONG] **[MLB]** TEX @ ATL ATL_ML -- 69% / +27.2% (score 2.5)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -51,21 +51,25 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
+## ⚡ Pre-Game HIGH Conviction (2)
+- [WNBA] **Minnesota Lynx** HOME (4-1 L10) · model 74.1% fair -286
+- [WNBA] **Golden State Valkyries** HOME (5-0 L10) · model 65.0% fair -186
+
 ## 🔥/❄️ Heat / Cold Signals
 - Hot teams: **3** | Cold teams: **3** | Over-heavy: 0 | Under-heavy: 4
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (31)
-- STEAM_MOVE: **31**
+## ⚠️ Anomaly Detector (39)
+- STEAM_MOVE: **39**
   - NYM @ PHI (MLB): ML/TOTAL steam since open: ML -3.8pp toward NYM; total +9.5 (OVER) (8 snapshots)
   - GS @ CON (WNBA): TOTAL steam since open: ML +2.2pp toward CON; total -3 (UNDER) (3 snapshots)
+  - MIN @ CHC (MLB): TOTAL steam since open: ML +0.6pp toward CHC; total -2.5 (UNDER) (8 snapshots)
   - ATL @ STL (MLB): ML/TOTAL steam since open: ML +10.5pp toward STL; total +0.5 (OVER) (7 snapshots)
   - SEA @ ATL (WNBA): ML/TOTAL steam since open: ML +3.3pp toward ATL; total +2 (OVER) (7 snapshots)
-  - NY @ TOR (WNBA): TOTAL steam since open: total +2 (OVER) (2 snapshots)
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$13.05**
+- Expected EV: **$13.06**
   - #1 [NRFI] $50 on CIN @ COL YRFI (1st-inning OVER 0.5) (P=81%)
   - #2 [NRFI] $50 on CHW @ TOR YRFI (1st-inning OVER 0.5) (P=75%)
   - #3 [NRFI] $50 on BAL @ HOU YRFI (1st-inning OVER 0.5) (P=72%)
@@ -107,22 +111,24 @@
 ## ⛳ Golf Player Heat (from The Open)
   - 🔥 T1 **Ryan Fox** (New Zealand): -8 total -- finished T1, Sunday -5.3 vs tourney avg
   - 🔥 T2 **Lucas Herbert** (Australia): -8 total -- finished T2
-  - 🔥 T3 **Cameron Young** (USA): -6 total -- finished T3
-  - 🔥 T4 **Ryan Gerard** (USA): -6 total -- finished T4
-  - 🔥 T5 **Jackson Suber** (USA): -6 total -- finished T5
+  - 🔥 T3 **Si Woo Kim** (South Korea): -6 total -- finished T3
+  - 🔥 T4 **Sam Burns** (USA): -6 total -- finished T4
+  - 🔥 T5 **Ryan Gerard** (USA): -6 total -- finished T5
+  - ❄️ **Matthew Southgate** (England): Sunday +4.0 vs tourney avg
+  - ❄️ **Jesper Svensson** (Sweden): Sunday +3.7 vs tourney avg
   - ❄️ **Chris Gotterup** (USA): Sunday +3.3 vs tourney avg
 
-## 🔥 MLB Batter Heat (40 HOT / 43 COLD)
+## 🔥 MLB Batter Heat (42 HOT / 47 COLD)
+  - 🔥 **Tyrone Taylor** (NYM): L14 .370 / season .226 (+144pts)
+  - 🔥 **Steven Kwan** (CLE): L14 .368 / season .230 (+138pts)
   - 🔥 **James Wood** (WSH): L14 .412 / season .278 (+134pts)
+  - 🔥 **Luke Keaschall** (MIN): L14 .395 / season .263 (+132pts)
   - 🔥 **Curtis Mead** (WSH): L14 .382 / season .257 (+125pts)
-  - 🔥 **Miguel Andujar** (SD): L14 .389 / season .268 (+121pts)
-  - 🔥 **Miguel Rojas** (LAD): L14 .407 / season .290 (+117pts)
-  - 🔥 **Garrett Mitchell** (MIL): L14 .392 / season .277 (+115pts)
   - ❄️ **Paul Goldschmidt** (NYY): L14 .064 / season .255 (-191pts) -- FADE props
   - ❄️ **Oswald Peraza** (LAA): L14 .079 / season .238 (-159pts) -- FADE props
-  - ❄️ **Corbin Carroll** (AZ): L14 .100 / season .252 (-152pts) -- FADE props
+  - ❄️ **Brandon Marsh** (PHI): L14 .137 / season .295 (-158pts) -- FADE props
+  - ❄️ **Corbin Carroll** (AZ): L14 .100 / season .251 (-151pts) -- FADE props
   - ❄️ **Teoscar Hernández** (LAD): L14 .111 / season .244 (-133pts) -- FADE props
-  - ❄️ **Leody Taveras** (BAL): L14 .103 / season .236 (-133pts) -- FADE props
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**

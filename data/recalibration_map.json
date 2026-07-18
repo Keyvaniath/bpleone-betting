@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-07-18T15:02:23",
-  "n_settled": 6219,
+  "generated_at": "2026-07-18T21:42:39",
+  "n_settled": 6231,
   "n_families_transformed": 24,
   "n_families_bucketed": 14,
-  "ece_before": 0.0897,
-  "ece_after": 0.0176,
-  "ece_improvement": 0.0721,
-  "brier_before": 0.21109,
-  "brier_after": 0.1943,
+  "ece_before": 0.0898,
+  "ece_after": 0.0175,
+  "ece_improvement": 0.0723,
+  "brier_before": 0.21106,
+  "brier_after": 0.19424,
   "method_note": "Per market family, a monotonic (isotonic) curve maps the model's predicted probability to the realized hit rate, learned from settled outcomes. Bucketed for well-sampled families (preserves ranking), a family-average Bayesian blend for mid-sample, identity below that. ECE = expected calibration error (lower = the displayed % is truer). This makes the model honest at the source; it does not create edge (that needs a market price).",
   "families": [
     {
@@ -334,6 +334,52 @@
       }
     },
     {
+      "family": "top",
+      "n": 404,
+      "method": "bucketed",
+      "avg_pred_raw": 0.4709,
+      "avg_pred_calibrated": 0.4035,
+      "realized": 0.3886,
+      "ece_raw": 0.0935,
+      "ece_calibrated": 0.0148,
+      "transform": {
+        "anchors": [
+          [
+            0.2837,
+            0.292
+          ],
+          [
+            0.3418,
+            0.292
+          ],
+          [
+            0.4159,
+            0.3084
+          ],
+          [
+            0.4633,
+            0.3084
+          ],
+          [
+            0.4914,
+            0.4661
+          ],
+          [
+            0.5333,
+            0.5227
+          ],
+          [
+            0.5815,
+            0.5227
+          ],
+          [
+            0.6566,
+            0.5227
+          ]
+        ]
+      }
+    },
+    {
       "family": "mlb_xbh_0.5_over",
       "n": 1823,
       "method": "bucketed",
@@ -375,52 +421,6 @@
           [
             0.437,
             0.3255
-          ]
-        ]
-      }
-    },
-    {
-      "family": "top",
-      "n": 397,
-      "method": "bucketed",
-      "avg_pred_raw": 0.4677,
-      "avg_pred_calibrated": 0.4052,
-      "realized": 0.3904,
-      "ece_raw": 0.0888,
-      "ece_calibrated": 0.0154,
-      "transform": {
-        "anchors": [
-          [
-            0.2837,
-            0.2888
-          ],
-          [
-            0.3407,
-            0.2888
-          ],
-          [
-            0.4119,
-            0.2888
-          ],
-          [
-            0.4616,
-            0.3367
-          ],
-          [
-            0.4891,
-            0.4495
-          ],
-          [
-            0.5289,
-            0.53
-          ],
-          [
-            0.5754,
-            0.53
-          ],
-          [
-            0.6502,
-            0.53
           ]
         ]
       }
@@ -542,46 +542,46 @@
     },
     {
       "family": "mlb_hrr_3.5_under",
-      "n": 522,
+      "n": 527,
       "method": "bucketed",
-      "avg_pred_raw": 0.8637,
-      "avg_pred_calibrated": 0.8289,
-      "realized": 0.8218,
-      "ece_raw": 0.0467,
-      "ece_calibrated": 0.0071,
+      "avg_pred_raw": 0.8638,
+      "avg_pred_calibrated": 0.8302,
+      "realized": 0.8235,
+      "ece_raw": 0.0451,
+      "ece_calibrated": 0.0066,
       "transform": {
         "anchors": [
           [
-            0.8311,
-            0.8178
+            0.8314,
+            0.8202
           ],
           [
-            0.8573,
-            0.8285
+            0.8575,
+            0.8248
           ],
           [
-            0.8627,
-            0.8285
+            0.8628,
+            0.8248
           ],
           [
-            0.8672,
-            0.8285
+            0.8673,
+            0.8248
           ],
           [
-            0.8704,
-            0.8285
+            0.8705,
+            0.8248
           ],
           [
             0.8721,
-            0.8285
+            0.8394
           ],
           [
             0.8736,
-            0.8285
+            0.8394
           ],
           [
             0.8752,
-            0.8377
+            0.8398
           ]
         ]
       }
