@@ -4,26 +4,25 @@
 
 _Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
 
-_Generated at 2026-07-18T21:42:28 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-07-18T22:51:29 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
-**PIT @ CLE - UNDER_8.5**
+**WSN @ OAK - OVER_11.5**
 - Market: -110
-- Model probability: 81.8%
-- Raw edge: +56.14%
+- Model probability: 75.4%
+- Raw edge: +43.97%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
 
-## Full Slate (4 games)
+## Full Slate (3 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 7:10p ET | PIT @ CLE | Progressive Field | 71F 12mph | UNDER_8.5 +56.14% |
 | 8:08p ET | SFG @ SEA | T-Mobile Park | indoor | SFG_ML +24.1% |
-| 10:05p ET | WSN @ OAK | Sutter Health Park | 66F 6mph | OVER_11.5 +43.19% |
-| 10:07p ET | DET @ LAA | Angel Stadium | 70F 3mph | DET_ML +7.08% |
+| 10:05p ET | WSN @ OAK | Sutter Health Park | 67F 6mph | OVER_11.5 +43.97% |
+| 10:07p ET | DET @ LAA | Angel Stadium | 69F 3mph | DET_ML +6.69% |
 
 ## Parlays - top 5
 
@@ -53,16 +52,15 @@ _Generated at 2026-07-18T21:42:28 UTC. Game lines source: **Bovada (fallback -- 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
 
-Cumulative graded plays: 6331. Wins: 2556. Hit rate: 40.4%.
+Cumulative graded plays: 6332. Wins: 2556. Hit rate: 40.4%.
 
 ## Auxiliary Markets (Model Fair Prices)
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| DET @ LAA | 31.3% | +219 | 5.92 | +460 | -460 |
-| PIT @ CLE | 53.1% | -113 | 2.93 | +138 | -138 |
+| DET @ LAA | 31.3% | +219 | 5.91 | +460 | -460 |
 | SFG @ SEA | 33.8% | +196 | 5.43 | +212 | -212 |
-| WSN @ OAK | 34.7% | +188 | 5.43 | +173 | -173 |
+| WSN @ OAK | 34.7% | +188 | 5.44 | +173 | -173 |
 
 ## Team Form (last 10)
 

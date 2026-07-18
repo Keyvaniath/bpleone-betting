@@ -1,20 +1,20 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-07-18T21:42:02 UTC_
+_Generated 2026-07-18T22:50:41 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -16
+- **Score:** -2
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 17
-- **Total FADES:** 84
+- **Total STRONG:** 18
+- **Total FADES:** 74
 
 ## Top 5 Curated Picks
-1. **GOLF / Ryan Fox** (GOLF_PLAYER, score=172.57)
-   - Play: Ryan Fox (PLAYER_STRONG)
+1. **GOLF / Sam Burns** (GOLF_PLAYER, score=208.43)
+   - Play: Sam Burns (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Lucas Herbert** (GOLF_PLAYER, score=171.29)
-   - Play: Lucas Herbert (PLAYER_STRONG)
+2. **GOLF / Si Woo Kim** (GOLF_PLAYER, score=166.71)
+   - Play: Si Woo Kim (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
 3. **WNBA / napheesa collier** (WNBA_PLAYER, score=146.75)
    - Play: napheesa collier (PLAYER_STRONG)
@@ -22,15 +22,15 @@ _Generated 2026-07-18T21:42:02 UTC_
 4. **WNBA / breanna stewart** (WNBA_PLAYER, score=120.25)
    - Play: breanna stewart (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (WNBA_PLAYER)
-5. **MLB / Brayan Rocchio** (MLB_BATTER, score=85.25)
-   - Play: Brayan Rocchio (BATTER_STRONG)
+5. **MLB / Rafael Devers** (MLB_BATTER, score=117.31)
+   - Play: Rafael Devers (BATTER_STRONG)
    - Rationale: Cross-sport top pick (MLB_BATTER)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
-  - Ryan Fox top 10 finish
-  - Lucas Herbert top 10 finish
+  - Sam Burns top 10 finish
   - Si Woo Kim top 10 finish
+  - Ryan Fox top 10 finish
 
 ## Slate ROI Projection
 - **Picks:** 0
@@ -39,13 +39,13 @@ _Generated 2026-07-18T21:42:02 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **MLB** / Spencer Arrighetti (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **MLB** / Taj Bradley (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **MLB** / Gavin Williams (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **NHL** / calvin pickard (GOALIE_FADE)
+- **NHL** / adin hill (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / jake oettinger (GOALIE_FADE)
+- **NHL** / kevin lankinen (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / thatcher demko (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / logan thompson_2 (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / samsonov ilya (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO

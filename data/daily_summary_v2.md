@@ -1,13 +1,13 @@
 # EdgeStat Daily Summary — 2026-07-18
 
-## 🏥 Model Health: 72.6/100 [HEALTHY]
+## 🏥 Model Health: 72.9/100 [HEALTHY]
 - Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 99.9/100
+  - 🟢 Calibration Freshness: 100.0/100
   - 🟡 Hit Rate Trend: 65.9/100
   - 🔴 Brier Trend: 20.1/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 95.5/100
-  - 🟡 Edge Count: 62.9/100
+  - 🟡 Edge Count: 65.7/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.583)
@@ -21,9 +21,11 @@
 4. **DET @ LAA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 5. **SFG @ SEA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 
-## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** CHW @ TOR CHW_ML -- 68% / +31.5% (score 2.5)
-- [STRONG] **[MLB]** TEX @ ATL ATL_ML -- 69% / +27.2% (score 2.5)
+## 📡 Sharp Action (Line Movement)
+- [ELITE] **DET @ LAA** ml_away: 51.46% → 67.32% (+15.9pp)
+
+## 📉 Strong UNDER Signals
+- [STRONG 5.5] **PIT @ CLE** model 6.27 vs market 8.5
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -76,20 +78,19 @@
   - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
-## 🎯 Convergence Picks (6 stacked games)
-- ELITE: **1** · HIGH: 1 · MED: 4
-  - [ELITE] Seattle Storm @ Indiana Fever : 5 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ATS)
-  - [HIGH] Los Angeles Sparks @ Chicago Sky : 3 signals (HEAT_COLD, ATS, ATS)
+## 🎯 Convergence Picks (7 stacked games)
+- ELITE: **1** · HIGH: 1 · MED: 5
+  - [ELITE] New York Liberty @ Indiana Fever : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
+  - [HIGH] Washington Mystics @ Golden State Valkyries : 3 signals (PREGAME, HEAT_COLD, ATS)
   - [MED] New York Knicks @ San Antonio Spurs : 2 signals (ATS, ATS)
+  - [MED] Portland Fire @ Minnesota Lynx : 2 signals (PREGAME, HEAT_COLD)
   - [MED] Atlanta United FC @ Nashville SC : 2 signals (ATS, ATS)
-  - [MED] LAFC @ LA Galaxy : 2 signals (ATS, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (12)
-- **Gavin Williams** OVER 4.5 K (75%) fair -295
-- **MacKenzie Gore** OVER 4.5 K (75%) fair -295
-- **Dustin May** OVER 5.5 K (74%) fair -284
-- **Ryan Weathers** OVER 4.5 K (73%) fair -265
-- **Max Meyer** OVER 4.5 K (71%) fair -251
+## ⚾ Top MLB Pitcher K Plays (4)
+- **Logan Allen** OVER 5.5 K (70%) fair -233
+- **Tarik Skubal** OVER 5.5 K (70%) fair -233
+- **Bryan Woo** OVER 4.5 K (67%) fair -199
+- **J.T. Ginn** OVER 4.5 K (58%) fair -138
 
 ## 🏀 NBA Player Heat (18 HOT / 23 COLD)
   - 🔥 **Jeremiah Fears** (NO): L5 31.8/5.8/6.0 vs season 16.9/3.2/4.0 [PTS +14.9, REB +2.6, AST +2.0]
@@ -102,33 +103,35 @@
   - ❄️ **Nickeil Alexander-Walker** (ATL): L5 13.0 vs season 21.3 [PTS -8.3] -- FADE OVER props
 
 ## 🥊 UFC Fight Matchups (UFC Fight Night: Du Plessis vs. Usman)
+  - [LEAN] **RJ Harris** (5-0-0) vs Alvin Hines -- fair -167
   - [LEAN] **Levi Rodrigues Jr.** (5-0-0) vs Felipe Franco -- fair -143
   - [LEAN] **Christian Leroy Duncan** (14-2-0) vs Jared Cannonier -- fair -142
-  - [LEAN] **Anna Melisano** (6-1-0) vs Dione Barbosa -- fair -141
-  - [LEAN] **RJ Harris** (5-0-0) vs Alvin Hines -- fair -133
   - [COIN_FLIP] **Fatima Kline** (9-1-0) vs Tabatha Ricci -- fair -132
+  - [COIN_FLIP] **Austin Bashi** (14-1-0) vs Jose Miguel Delgado -- fair -125
 
 ## ⛳ Golf Player Heat (from The Open)
-  - 🔥 T1 **Ryan Fox** (New Zealand): -8 total -- finished T1, Sunday -5.3 vs tourney avg
-  - 🔥 T2 **Lucas Herbert** (Australia): -8 total -- finished T2
-  - 🔥 T3 **Si Woo Kim** (South Korea): -6 total -- finished T3
-  - 🔥 T4 **Sam Burns** (USA): -6 total -- finished T4
-  - 🔥 T5 **Ryan Gerard** (USA): -6 total -- finished T5
-  - ❄️ **Matthew Southgate** (England): Sunday +4.0 vs tourney avg
-  - ❄️ **Jesper Svensson** (Sweden): Sunday +3.7 vs tourney avg
-  - ❄️ **Chris Gotterup** (USA): Sunday +3.3 vs tourney avg
+  - 🔥 T1 **Sam Burns** (USA): -10 total -- finished T1
+  - 🔥 T2 **Ryan Fox** (New Zealand): -8 total -- finished T2
+  - 🔥 T3 **Si Woo Kim** (South Korea): -8 total -- finished T3
+  - 🔥 T4 **Ryan Gerard** (USA): -7 total -- finished T4
+  - 🔥 T5 **Lucas Herbert** (Australia): -7 total -- finished T5
 
-## 🔥 MLB Batter Heat (42 HOT / 47 COLD)
+## 🔥 MLB Batter Heat (43 HOT / 45 COLD)
   - 🔥 **Tyrone Taylor** (NYM): L14 .370 / season .226 (+144pts)
   - 🔥 **Steven Kwan** (CLE): L14 .368 / season .230 (+138pts)
   - 🔥 **James Wood** (WSH): L14 .412 / season .278 (+134pts)
   - 🔥 **Luke Keaschall** (MIN): L14 .395 / season .263 (+132pts)
   - 🔥 **Curtis Mead** (WSH): L14 .382 / season .257 (+125pts)
   - ❄️ **Paul Goldschmidt** (NYY): L14 .064 / season .255 (-191pts) -- FADE props
+  - ❄️ **Brandon Marsh** (PHI): L14 .135 / season .294 (-159pts) -- FADE props
   - ❄️ **Oswald Peraza** (LAA): L14 .079 / season .238 (-159pts) -- FADE props
-  - ❄️ **Brandon Marsh** (PHI): L14 .137 / season .295 (-158pts) -- FADE props
-  - ❄️ **Corbin Carroll** (AZ): L14 .100 / season .251 (-151pts) -- FADE props
+  - ❄️ **Corbin Carroll** (AZ): L14 .098 / season .250 (-152pts) -- FADE props
   - ❄️ **Teoscar Hernández** (LAD): L14 .111 / season .244 (-133pts) -- FADE props
+
+## 📈 Streak Regression Alerts (3)
+- [WNBA] New York Liberty on L3 L10 0-3 -- New York Liberty on L3 -- no historical sample
+- [WNBA] Minnesota Lynx on W4 L10 4-1 -- Minnesota Lynx on W4 -- no historical sample
+- [WNBA] Golden State Valkyries on W5 L10 5-0 -- Golden State Valkyries on W5 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**
