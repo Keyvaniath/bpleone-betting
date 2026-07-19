@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-07-18T23:14:05",
+  "generated_at": "2026-07-19T00:08:38",
   "stake_assumption": "1u flat per pick",
   "total_picks": 10000,
   "n_settled": 6336,
-  "n_pending": 494,
-  "n_void": 3170,
+  "n_pending": 461,
+  "n_void": 3203,
   "wins": 2557,
   "losses": 3772,
   "pushes": 7,
@@ -15,7 +15,7 @@
   "calibrated_reliability": {
     "n": 6236,
     "ece_raw": 0.0897,
-    "ece_calibrated": 0.0174,
+    "ece_calibrated": 0.0175,
     "brier_raw": 0.21091,
     "brier_calibrated": 0.19417,
     "note": "In-sample over the settled ledger (the isotonic transform is fit on these same outcomes); held-out 70/30 validation is in recalibration_map.json. p_predicted = raw model prob (kept untouched for the learning loop); p_calibrated = honest prob stamped per pick. Lower ECE/Brier on the calibrated column = the displayed % is truer."
@@ -41,13 +41,13 @@
     "definition": "Featured/recommended plays only -- Lock of the Day, Top 25, Whale, Sharp, Consensus (hit), Under Alerts, POD. Excludes the experimental prop feeds, which are tracked to train the model, not bet."
   },
   "n_added_this_run": 0,
-  "n_newly_settled_this_run": 1,
+  "n_newly_settled_this_run": 0,
   "n_resettled_this_run": 0,
-  "n_voided_this_run": 0,
+  "n_voided_this_run": 33,
   "n_duplicates_collapsed_this_run": 0,
-  "n_duplicate_adds_blocked_this_run": 35,
+  "n_duplicate_adds_blocked_this_run": 156,
   "n_reconciled_settled_voids": 0,
-  "n_bootstrapped_from_locks_history": 3,
+  "n_bootstrapped_from_locks_history": 0,
   "by_source": {
     "mlb_hit_to_record_hit_yes": {
       "n": 19,
@@ -2309,8 +2309,8 @@
       "wins": 1525,
       "losses": 3235,
       "pushes": 7,
-      "pending": 369,
-      "void": 1868,
+      "pending": 343,
+      "void": 1894,
       "net_units": -1196.023,
       "hit_rate": 0.3204,
       "roi_pct": -25.13,
@@ -2374,8 +2374,8 @@
       "wins": 162,
       "losses": 61,
       "pushes": 0,
-      "pending": 24,
-      "void": 152,
+      "pending": 19,
+      "void": 157,
       "net_units": 22.031,
       "hit_rate": 0.7265,
       "roi_pct": 9.88,
@@ -2426,8 +2426,8 @@
       "wins": 134,
       "losses": 63,
       "pushes": 0,
-      "pending": 5,
-      "void": 7,
+      "pending": 3,
+      "void": 9,
       "net_units": 4.035,
       "hit_rate": 0.6802,
       "roi_pct": 2.05,
@@ -2461,10 +2461,10 @@
     }
   },
   "last_7_days": {
-    "wins": 73,
-    "losses": 46,
-    "net_units": 10.55,
-    "hit_rate": 0.6134
+    "wins": 59,
+    "losses": 30,
+    "net_units": 15.108,
+    "hit_rate": 0.6629
   },
   "note": "Unified pick ledger -- records every pick the model surfaces (top_25 board, whales, consensus, unders, sharp action, locks, POD) and settles each against actual outcomes. Per-source W-L feeds back into calibration so the model learns which modules are reliable. THIS is the training signal."
 }
