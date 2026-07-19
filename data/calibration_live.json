@@ -1,14 +1,21 @@
 {
-  "generated_at": "2026-07-19T02:35:39",
+  "generated_at": "2026-07-19T05:52:40",
   "lookback_days": 30,
   "shrinkage_n_prior": 5,
   "shrinkage_min_n": 1,
   "shrinkage_note": "Per-market correction = data_weight * raw_correction + (1 - data_weight) * 1.0; data_weight = n / (n + 5). Below n=1 the factor is forced to 1.0. Caps at +/- 25%.",
   "markets": {
-    "pitcher_strikeouts": {
+    "batter_singles": {
       "n": 0,
       "correction_factor": 1.0,
-      "n_prior_used": 10,
+      "n_prior_used": 6,
+      "data_weight": 0.0,
+      "raw_correction": 1.0
+    },
+    "batter_hits": {
+      "n": 0,
+      "correction_factor": 1.0,
+      "n_prior_used": 6,
       "data_weight": 0.0,
       "raw_correction": 1.0
     },
@@ -26,13 +33,6 @@
       "data_weight": 0.0,
       "raw_correction": 1.0
     },
-    "batter_hits": {
-      "n": 0,
-      "correction_factor": 1.0,
-      "n_prior_used": 6,
-      "data_weight": 0.0,
-      "raw_correction": 1.0
-    },
     "batter_runs_scored": {
       "n": 0,
       "correction_factor": 1.0,
@@ -40,17 +40,17 @@
       "data_weight": 0.0,
       "raw_correction": 1.0
     },
-    "batter_singles": {
-      "n": 0,
-      "correction_factor": 1.0,
-      "n_prior_used": 6,
-      "data_weight": 0.0,
-      "raw_correction": 1.0
-    },
     "batter_home_runs": {
       "n": 0,
       "correction_factor": 1.0,
       "n_prior_used": 12,
+      "data_weight": 0.0,
+      "raw_correction": 1.0
+    },
+    "pitcher_strikeouts": {
+      "n": 0,
+      "correction_factor": 1.0,
+      "n_prior_used": 10,
       "data_weight": 0.0,
       "raw_correction": 1.0
     },
@@ -63,19 +63,19 @@
     }
   },
   "games_overall": {
-    "n": 181,
+    "n": 184,
     "n_with_projection": 0,
-    "implied_over_rate": 0.5402,
-    "actual_over_rate": 0.4365,
-    "bias": 1.2361,
-    "brier": 0.2949,
-    "log_loss": 0.9967,
-    "ece": 0.1872,
+    "implied_over_rate": 0.5367,
+    "actual_over_rate": 0.4348,
+    "bias": 1.2329,
+    "brier": 0.2982,
+    "log_loss": 1.1004,
+    "ece": 0.1901,
     "rmse": null,
     "plays_n": 0,
     "plays_won": 0,
     "plays_lost": 0,
     "roi_pct": 0.0,
-    "correction_factor": 0.8141
+    "correction_factor": 0.8161
   }
 }
