@@ -1,11 +1,11 @@
 # Tonight's Slate Brief — 2026-07-19
 
-## Slate Quality: 65/100 (MEDIUM)
-_34% lineups confirmed · 14 rookie SPs_
-**Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
+## Slate Quality: 97/100 (HIGH)
+_100% lineups confirmed · 1 rookie SPs_
+**Recommendation:** Play normal Kelly sizing.
 
 ## Slate
-- **16 games** scheduled
+- **1 games** scheduled
 - **28 best bets** scored: 0 DK · 0 PP · 13 NRFI · 0 SGP
 - **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$39.28
 - **MC simulation:** EV +$114.96, 80% P(profit), p05 $-111.47 / p95 $325.19
@@ -35,9 +35,6 @@ _34% lineups confirmed · 14 rookie SPs_
 - **MIA @ MIL YRFI (1st-inning OVER 0.5)** (low):
    - Edge +17.4% looks big but only 0 settled props on this player — model unproven
 
-## Weather leans
-- **OVER lean** (wind out + warm): CIN @ COL
-
 ## Bullpens GASSED tonight
 Athletics, Pittsburgh Pirates, San Diego Padres, Seattle Mariners, Tampa Bay Rays, Toronto Blue Jays, Minnesota Twins, Atlanta Braves
 _Lean late-inning OVER on these games; fade their save situations._
@@ -47,10 +44,10 @@ _Lean late-inning OVER on these games; fade their save situations._
 - **NRFI** (1st-inning UNDER): TBR @ BOS
 
 ## Golf -- The Open
-- **Leader:** Sam Burns (-10) at #1
+- **Leader:** Cameron Young (-10) at #1
 - **Field:** 156 players  |  Status: In Progress
-- **Play of the Tournament:** Ryan Fox WIN @ +550 (model 15.4%, HIGH)
-   - P(win) 15.4% with 1 round(s) left -- sweet-spot value at #3 (-9).
+- **Play of the Tournament:** Ryan Fox WIN @ +618 (model 13.9%, HIGH)
+   - P(win) 13.9% with 1 round(s) left -- sweet-spot value at #3 (-9).
 
 ## NBA -- PLAYOFFS
 - New York Knicks @ San Antonio Spurs (53-29 vs 62-20) 94-90 | P(home) 0.0% fair +0 | Final
