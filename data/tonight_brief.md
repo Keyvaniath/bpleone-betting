@@ -1,4 +1,4 @@
-# 🌙 Tonight's Brief — 2026-07-18
+# 🌙 Tonight's Brief — 2026-07-19
 
 _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 
@@ -10,12 +10,12 @@ _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 - **Austin Dean** one_plus_tb (KBO) -- 73% / +38.5%
 
 ## 📡 Sharp Money Following Model
-- **DET @ LAA** ml_away: line moved 51.46% → 67.32% (+15.9pp)
+- **DET @ LAA** ml_away: line moved 51.46% → 60.78% (+9.3pp)
 
 ## 🎰 Tonight's Best Parlay
 - **Choi Jeong** one_plus_tb + **Jose Pirela** one_plus_tb
 - Joint 53% · fair +264 · edge +94.6%
 
 ---
-_Generated 2026-07-18T22:50:35_
+_Generated 2026-07-19T07:28:08_
 _Full breakdown: /tonight · Full history: /locks-of-day_

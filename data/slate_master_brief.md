@@ -1,13 +1,13 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-07-18T22:50:41 UTC_
+_Generated 2026-07-19T07:28:14 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -2
+- **Score:** -28
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 18
-- **Total FADES:** 74
+- **Total STRONG:** 12
+- **Total FADES:** 76
 
 ## Top 5 Curated Picks
 1. **GOLF / Sam Burns** (GOLF_PLAYER, score=208.43)
@@ -16,15 +16,12 @@ _Generated 2026-07-18T22:50:41 UTC_
 2. **GOLF / Si Woo Kim** (GOLF_PLAYER, score=166.71)
    - Play: Si Woo Kim (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-3. **WNBA / napheesa collier** (WNBA_PLAYER, score=146.75)
-   - Play: napheesa collier (PLAYER_STRONG)
-   - Rationale: Cross-sport top pick (WNBA_PLAYER)
-4. **WNBA / breanna stewart** (WNBA_PLAYER, score=120.25)
-   - Play: breanna stewart (PLAYER_STRONG)
-   - Rationale: Cross-sport top pick (WNBA_PLAYER)
-5. **MLB / Rafael Devers** (MLB_BATTER, score=117.31)
-   - Play: Rafael Devers (BATTER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_BATTER)
+3. **MLB / AWAY** (MLB_TEAM, score=83.75)
+   - Play: AWAY (TEAM_STRONG)
+   - Rationale: Cross-sport top pick (MLB_TEAM)
+4. **MLB / HOME** (MLB_TEAM, score=81.88)
+   - Play: HOME (TEAM_STRONG)
+   - Rationale: Cross-sport top pick (MLB_TEAM)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
@@ -39,13 +36,13 @@ _Generated 2026-07-18T22:50:41 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **NHL** / adin hill (GOALIE_FADE)
+- **MLB** / Logan Webb (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Zack Littell (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / J.T. Ginn (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **NHL** / anthony stolarz (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / kevin lankinen (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / thatcher demko (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / logan thompson_2 (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / samsonov ilya (GOALIE_FADE)
+- **NHL** / calvin pickard (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
