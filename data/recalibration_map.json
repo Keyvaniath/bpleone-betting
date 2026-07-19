@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-07-19T07:28:31",
-  "n_settled": 6245,
+  "generated_at": "2026-07-19T14:21:40",
+  "n_settled": 6253,
   "n_families_transformed": 24,
   "n_families_bucketed": 14,
-  "ece_before": 0.0895,
-  "ece_after": 0.0175,
-  "ece_improvement": 0.072,
-  "brier_before": 0.21073,
-  "brier_after": 0.19425,
+  "ece_before": 0.0891,
+  "ece_after": 0.0173,
+  "ece_improvement": 0.0718,
+  "brier_before": 0.21057,
+  "brier_after": 0.1941,
   "method_note": "Per market family, a monotonic (isotonic) curve maps the model's predicted probability to the realized hit rate, learned from settled outcomes. Bucketed for well-sampled families (preserves ranking), a family-average Bayesian blend for mid-sample, identity below that. ECE = expected calibration error (lower = the displayed % is truer). This makes the model honest at the source; it does not create edge (that needs a market price).",
   "families": [
     {
@@ -152,42 +152,46 @@
       }
     },
     {
+      "family": "under",
+      "n": 64,
+      "method": "family_avg",
+      "avg_pred_raw": 0.6094,
+      "avg_pred_calibrated": 0.6488,
+      "realized": 0.6562,
+      "ece_raw": 0.1032,
+      "ece_calibrated": 0.0074,
+      "transform": {
+        "realized": 0.6562
+      }
+    },
+    {
       "family": "home_total_over",
-      "n": 97,
+      "n": 100,
       "method": "bucketed",
       "avg_pred_raw": 0.651,
-      "avg_pred_calibrated": 0.7479,
-      "realized": 0.7835,
-      "ece_raw": 0.1325,
-      "ece_calibrated": 0.0356,
+      "avg_pred_calibrated": 0.7427,
+      "realized": 0.79,
+      "ece_raw": 0.139,
+      "ece_calibrated": 0.0473,
       "transform": {
         "anchors": [
           [
             0.651,
-            0.7479
+            0.7427
           ],
           [
             0.651,
-            0.7479
+            0.7427
           ],
           [
             0.651,
-            0.7479
+            0.7427
+          ],
+          [
+            0.651,
+            0.7517
           ]
         ]
-      }
-    },
-    {
-      "family": "under",
-      "n": 63,
-      "method": "family_avg",
-      "avg_pred_raw": 0.6093,
-      "avg_pred_calibrated": 0.6442,
-      "realized": 0.6508,
-      "ece_raw": 0.0987,
-      "ece_calibrated": 0.0066,
-      "transform": {
-        "realized": 0.6508
       }
     },
     {
@@ -542,46 +546,46 @@
     },
     {
       "family": "mlb_hrr_3.5_under",
-      "n": 530,
+      "n": 533,
       "method": "bucketed",
       "avg_pred_raw": 0.8639,
-      "avg_pred_calibrated": 0.8309,
-      "realized": 0.8245,
-      "ece_raw": 0.0441,
-      "ece_calibrated": 0.0064,
+      "avg_pred_calibrated": 0.8324,
+      "realized": 0.8255,
+      "ece_raw": 0.0432,
+      "ece_calibrated": 0.0069,
       "transform": {
         "anchors": [
           [
-            0.8314,
-            0.8202
+            0.8318,
+            0.8099
           ],
           [
-            0.8575,
-            0.8227
+            0.8576,
+            0.8232
           ],
           [
             0.8629,
-            0.8227
+            0.8232
           ],
           [
             0.8674,
-            0.8227
+            0.8232
           ],
           [
-            0.8705,
-            0.8227
+            0.8706,
+            0.8232
           ],
           [
             0.8722,
-            0.8445
+            0.8494
           ],
           [
             0.8737,
-            0.8445
+            0.8494
           ],
           [
-            0.8752,
-            0.8445
+            0.8751,
+            0.8494
           ]
         ]
       }
@@ -640,15 +644,15 @@
     },
     {
       "family": "ml_away",
-      "n": 53,
+      "n": 54,
       "method": "family_avg",
-      "avg_pred_raw": 0.6092,
-      "avg_pred_calibrated": 0.5894,
-      "realized": 0.5849,
-      "ece_raw": 0.0243,
-      "ece_calibrated": 0.0045,
+      "avg_pred_raw": 0.6108,
+      "avg_pred_calibrated": 0.5959,
+      "realized": 0.5926,
+      "ece_raw": 0.0182,
+      "ece_calibrated": 0.0033,
       "transform": {
-        "realized": 0.5849
+        "realized": 0.5926
       }
     },
     {

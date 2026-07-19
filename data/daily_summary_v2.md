@@ -1,28 +1,31 @@
 # EdgeStat Daily Summary — 2026-07-19
 
-## 🏥 Model Health: 71.0/100 [HEALTHY]
-- Solid health - some minor issues to monitor
+## 🏥 Model Health: 69.8/100 [OK]
+- Operational but room to improve - check yellow components
   - 🟢 Calibration Freshness: 99.9/100
-  - 🟡 Hit Rate Trend: 65.9/100
-  - 🔴 Brier Trend: 20.1/100
+  - 🔴 Hit Rate Trend: 58.7/100
+  - 🔴 Brier Trend: 20.7/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 86.4/100
-  - 🟡 Edge Count: 65.7/100
+  - 🟢 Data Health: 95.5/100
+  - 🔴 Edge Count: 48.6/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.583)
-- **Total games on board:** 138
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.584)
+- **Total games on board:** 122
 - **Strong home favorites:** 6 | **Strong road dogs:** 2
 
 ## 🎯 Top 5 Best Bets
-1. **DET @ LAA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-2. **SFG @ SEA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+1. **CIN @ COL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+2. **SDP @ KCR YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 3. **WSN @ OAK YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
-4. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
-5. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
+4. **BAL @ HOU YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
+5. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
 
-## 📡 Sharp Action (Line Movement)
-- [ELITE] **DET @ LAA** ml_away: 51.46% → 60.78% (+9.3pp)
+## 🐋 Whale Picks (Max Confluence)
+- [STRONG] **[MLB]** PIT @ CLE PIT_ML -- 70% / +24.9% (score 2.5)
+- [STRONG] **[MLB]** WSN @ OAK WSN_ML -- 71% / +22.0% (score 2.5)
+- [STRONG] **[MLB]** DET @ LAA DET_ML -- 74% / +21.0% (score 2.5)
+- [STRONG] **[MLB]** SDP @ KCR KCR_ML -- 68% / +20.2% (score 2.5)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -60,8 +63,9 @@
 - Hot teams: **3** | Cold teams: **3** | Over-heavy: 0 | Under-heavy: 3
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (35)
+## ⚠️ Anomaly Detector (36)
 - STEAM_MOVE: **35**
+- COMPOUND_BULLPEN: **1**
   - NYM @ PHI (MLB): ML/TOTAL steam since open: ML -3.8pp toward NYM; total +9.5 (OVER) (8 snapshots)
   - NY @ IND (WNBA): ML/TOTAL steam since open: ML +3.1pp toward IND; total +4 (OVER) (7 snapshots)
   - MIN @ CHC (MLB): TOTAL steam since open: ML +0.6pp toward CHC; total -2.5 (UNDER) (8 snapshots)
@@ -70,25 +74,27 @@
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$-7.17**
-  - #1 [NRFI] $50 on DET @ LAA YRFI (1st-inning OVER 0.5) (P=69%)
-  - #2 [NRFI] $50 on SFG @ SEA YRFI (1st-inning OVER 0.5) (P=66%)
+- Expected EV: **$1.1**
+  - #1 [NRFI] $50 on CIN @ COL YRFI (1st-inning OVER 0.5) (P=78%)
+  - #2 [NRFI] $50 on SDP @ KCR YRFI (1st-inning OVER 0.5) (P=68%)
   - #3 [NRFI] $35 on WSN @ OAK YRFI (1st-inning OVER 0.5) (P=65%)
   - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
-## 🎯 Convergence Picks (7 stacked games)
-- ELITE: **1** · HIGH: 1 · MED: 5
-  - [ELITE] New York Liberty @ Indiana Fever : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
-  - [HIGH] Washington Mystics @ Golden State Valkyries : 3 signals (PREGAME, HEAT_COLD, ATS)
+## 🎯 Convergence Picks (10 stacked games)
+- ELITE: **0** · HIGH: 2 · MED: 8
+  - [HIGH] Portland Fire @ Minnesota Lynx : 3 signals (HEAT_COLD, HEAT_COLD, ATS)
+  - [HIGH] St. Louis CITY SC @ LA Galaxy : 3 signals (PREGAME, ATS, ATS)
   - [MED] New York Knicks @ San Antonio Spurs : 2 signals (ATS, ATS)
-  - [MED] Portland Fire @ Minnesota Lynx : 2 signals (PREGAME, HEAT_COLD)
-  - [MED] Atlanta United FC @ Nashville SC : 2 signals (ATS, ATS)
+  - [MED] New York Liberty @ Indiana Fever : 2 signals (HEAT_COLD, ATS)
+  - [MED] Atlanta United FC @ Charlotte FC : 2 signals (PREGAME, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (3)
-- **Tarik Skubal** OVER 5.5 K (67%) fair -207
-- **Bryan Woo** OVER 4.5 K (67%) fair -199
-- **J.T. Ginn** OVER 4.5 K (58%) fair -138
+## ⚾ Top MLB Pitcher K Plays (13)
+- **Sean Burke** OVER 5.5 K (77%) fair -337
+- **Sonny Gray** OVER 4.5 K (76%) fair -321
+- **Yoshinobu Yamamoto** OVER 4.5 K (75%) fair -295
+- **Nolan McLean** OVER 4.5 K (75%) fair -295
+- **Eury Pérez** OVER 4.5 K (75%) fair -295
 
 ## 🏀 NBA Player Heat (18 HOT / 23 COLD)
   - 🔥 **Jeremiah Fears** (NO): L5 31.8/5.8/6.0 vs season 16.9/3.2/4.0 [PTS +14.9, REB +2.6, AST +2.0]
@@ -102,10 +108,10 @@
 
 ## 🥊 UFC Fight Matchups (UFC Fight Night: Du Plessis vs. Usman)
   - [LEAN] **RJ Harris** (6-0-0) vs Alvin Hines -- fair -167
+  - [LEAN] **Christian Leroy Duncan** (15-2-0) vs Jared Cannonier -- fair -153
+  - [LEAN] **Fatima Kline** (10-1-0) vs Tabatha Ricci -- fair -149
   - [LEAN] **Ezra Elliott** (8-0-0) vs Damien Anderson -- fair -147
   - [LEAN] **Alden Coria** (13-3-0) vs Stewart Nicoll -- fair -146
-  - [LEAN] **Levi Rodrigues Jr.** (5-0-0) vs Felipe Franco -- fair -143
-  - [LEAN] **Christian Leroy Duncan** (14-2-0) vs Jared Cannonier -- fair -142
 
 ## ⛳ Golf Player Heat (from The Open)
   - 🔥 T1 **Sam Burns** (USA): -10 total -- finished T1
@@ -125,11 +131,6 @@
   - ❄️ **Oswald Peraza** (LAA): L14 .079 / season .238 (-159pts) -- FADE props
   - ❄️ **Corbin Carroll** (AZ): L14 .098 / season .250 (-152pts) -- FADE props
   - ❄️ **Teoscar Hernández** (LAD): L14 .111 / season .244 (-133pts) -- FADE props
-
-## 📈 Streak Regression Alerts (3)
-- [WNBA] New York Liberty on L3 L10 0-3 -- New York Liberty on L3 -- no historical sample
-- [WNBA] Minnesota Lynx on W4 L10 4-1 -- Minnesota Lynx on W4 -- no historical sample
-- [WNBA] Golden State Valkyries on W5 L10 5-0 -- Golden State Valkyries on W5 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**
