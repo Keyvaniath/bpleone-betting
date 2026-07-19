@@ -1,36 +1,36 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-07-19T21:41:32 UTC_
+_Generated 2026-07-19T22:51:41 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -2
+- **Score:** -1
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 21
-- **Total FADES:** 86
+- **Total STRONG:** 10
+- **Total FADES:** 41
 
 ## Top 5 Curated Picks
-1. **GOLF / Si Woo Kim** (GOLF_PLAYER, score=202.29)
-   - Play: Si Woo Kim (PLAYER_STRONG)
+1. **GOLF / Stefano Mazzoli** (GOLF_PLAYER, score=219.29)
+   - Play: Stefano Mazzoli (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Cameron Young** (GOLF_PLAYER, score=199.5)
-   - Play: Cameron Young (PLAYER_STRONG)
+2. **GOLF / Todd Clements** (GOLF_PLAYER, score=219.29)
+   - Play: Todd Clements (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-3. **MLB / Ben Rice** (MLB_BATTER, score=135.69)
+3. **MLB / Ben Rice** (MLB_BATTER, score=135.12)
    - Play: Ben Rice (BATTER_STRONG)
    - Rationale: Cross-sport top pick (MLB_BATTER)
-4. **MLB / AWAY** (MLB_TEAM, score=115.5)
-   - Play: AWAY (TEAM_STRONG)
-   - Rationale: Cross-sport top pick (MLB_TEAM)
-5. **WNBA / kahleah copper** (WNBA_PLAYER, score=71.92)
+4. **WNBA / kahleah copper** (WNBA_PLAYER, score=71.92)
    - Play: kahleah copper (PLAYER_STRONG)
+   - Rationale: Cross-sport top pick (WNBA_PLAYER)
+5. **WNBA / allisha gray** (WNBA_PLAYER, score=69.5)
+   - Play: allisha gray (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (WNBA_PLAYER)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
-  - Si Woo Kim top 10 finish
-  - Cameron Young top 10 finish
-  - Ryan Fox top 10 finish
+  - Stefano Mazzoli top 10 finish
+  - Todd Clements top 10 finish
+  - Ben James top 10 finish
 
 ## Slate ROI Projection
 - **Picks:** 0
@@ -39,13 +39,13 @@ _Generated 2026-07-19T21:41:32 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **MLB** / Germán Márquez (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **MLB** / Shota Imanaga (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **MLB** / Cam Schlittler (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **MLB** / Trey Yesavage (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **MLB** / Sean Burke (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **NHL** / kevin lankinen (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / joseph woll (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / filip gustavsson (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / stuart skinner (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / adin hill (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO

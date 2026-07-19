@@ -4,14 +4,14 @@
 
 _Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
 
-_Generated at 2026-07-19T21:41:50 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-07-19T22:51:58 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
 **LAD @ NYY - LAD_ML**
-- Market: -128
+- Market: -139
 - Model probability: 69.3%
-- Raw edge: +23.46%
+- Raw edge: +19.18%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
@@ -20,7 +20,7 @@ _Generated at 2026-07-19T21:41:50 UTC. Game lines source: **Bovada (fallback -- 
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 7:20p ET | LAD @ NYY | Yankee Stadium | 66F 6mph | LAD_ML +23.46% |
+| 7:20p ET | LAD @ NYY | Yankee Stadium | 66F 6mph | LAD_ML +19.18% |
 
 ## Parlays - top 1
 
@@ -33,7 +33,7 @@ _Generated at 2026-07-19T21:41:50 UTC. Game lines source: **Bovada (fallback -- 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
 
-Cumulative graded plays: 6404. Wins: 2589. Hit rate: 40.4%.
+Cumulative graded plays: 6407. Wins: 2591. Hit rate: 40.4%.
 
 ## Auxiliary Markets (Model Fair Prices)
 
@@ -72,4 +72,4 @@ _The model is suggesting 1 parameter tweak based on its own performance. Apply v
 ---
 
 _EdgeStat is a research desk. Bet responsibly. 21+. 1-800-GAMBLER._
-_Source: github.com/Keyvaniath/bpleone-betting - last settled 2026-07-18._
+_Source: github.com/Keyvaniath/bpleone-betting - last settled 2026-07-19._

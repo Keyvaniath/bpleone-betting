@@ -1,16 +1,16 @@
 # EdgeStat Daily Summary — 2026-07-19
 
-## 🏥 Model Health: 67.5/100 [OK]
+## 🏥 Model Health: 68.5/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.9/100
+  - 🟢 Calibration Freshness: 100.0/100
   - 🔴 Hit Rate Trend: 39.5/100
   - 🔴 Brier Trend: 24.4/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 90.9/100
+  - 🟢 Data Health: 95.5/100
   - 🟡 Edge Count: 65.7/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.586)
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.585)
 - **Total games on board:** 124
 - **Strong home favorites:** 7 | **Strong road dogs:** 2
 
@@ -21,9 +21,8 @@
 4. **BAL @ HOU YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
 5. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
 
-## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** DET @ LAA DET_ML -- 75% / +22.2% (score 2.5)
-- [STRONG] **[MLB]** SDP @ KCR KCR_ML -- 69% / +22.2% (score 2.5)
+## 📡 Sharp Action (Line Movement)
+- [MODERATE] **LAD @ NYY** ml_away: 52.83% → 56.9% (+4.1pp)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -61,11 +60,10 @@
 - Hot teams: **3** | Cold teams: **3** | Over-heavy: 0 | Under-heavy: 3
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (46)
+## ⚠️ Anomaly Detector (42)
 - STREAK_MISMATCH: **1**
 - RESIDUAL_DIVERGENCE: **1**
 - STEAM_MOVE: **40**
-- COMPOUND_BULLPEN: **4**
   - Phoenix Mercury (WNBA): Phoenix Mercury on L5 streak but model still favors them (52%) -- may be overvalued
   - Phoenix Mercury (WNBA): Phoenix Mercury UNDERPERFORMING expected margin by 6.8pts in recent games -- model bias may persist
   - NYM @ PHI (MLB): ML/TOTAL steam since open: ML -3.8pp toward NYM; total +9.5 (OVER) (8 snapshots)
@@ -81,20 +79,13 @@
   - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
-## 🎯 Convergence Picks (10 stacked games)
-- ELITE: **0** · HIGH: 2 · MED: 8
-  - [HIGH] Portland Fire @ Minnesota Lynx : 3 signals (HEAT_COLD, HEAT_COLD, ATS)
+## 🎯 Convergence Picks (11 stacked games)
+- ELITE: **0** · HIGH: 3 · MED: 8
+  - [HIGH] Los Angeles Sparks @ Dallas Wings : 3 signals (HEAT_COLD, HEAT_COLD, ATS)
+  - [HIGH] Connecticut Sun @ Phoenix Mercury : 3 signals (HEAT_COLD, ANOMALY, ANOMALY)
   - [HIGH] St. Louis CITY SC @ LA Galaxy : 3 signals (PREGAME, ATS, ATS)
   - [MED] New York Knicks @ San Antonio Spurs : 2 signals (ATS, ATS)
-  - [MED] New York Liberty @ Indiana Fever : 2 signals (HEAT_COLD, ATS)
-  - [MED] Atlanta United FC @ Charlotte FC : 2 signals (PREGAME, ATS)
-
-## ⚾ Top MLB Pitcher K Plays (13)
-- **Sean Burke** OVER 5.5 K (77%) fair -337
-- **Sonny Gray** OVER 4.5 K (76%) fair -321
-- **Yoshinobu Yamamoto** OVER 4.5 K (75%) fair -295
-- **Nolan McLean** OVER 4.5 K (75%) fair -295
-- **Eury Pérez** OVER 4.5 K (75%) fair -295
+  - [MED] Chicago Sky @ Atlanta Dream : 2 signals (ATS, ATS)
 
 ## 🏀 NBA Player Heat (18 HOT / 23 COLD)
   - 🔥 **Jeremiah Fears** (NO): L5 31.8/5.8/6.0 vs season 16.9/3.2/4.0 [PTS +14.9, REB +2.6, AST +2.0]
@@ -113,27 +104,30 @@
   - [LEAN] **Ezra Elliott** (8-0-0) vs Damien Anderson -- fair -147
   - [LEAN] **Alden Coria** (13-3-0) vs Stewart Nicoll -- fair -146
 
-## ⛳ Golf Player Heat (from The Open)
-  - 🔥 T1 **Cameron Young** (USA): -10 total -- finished T1, Sunday -4.5 vs tourney avg
-  - 🔥 T2 **Si Woo Kim** (South Korea): -10 total -- finished T2
-  - 🔥 T3 **Ryan Fox** (New Zealand): -9 total -- finished T3
-  - 🔥 T5 **Scottie Scheffler** (USA): -7 total -- finished T5, Sunday -1.2 vs tourney avg
-  - 🔥 T6 **Casey Jarvis** (South Africa): -6 total -- finished T6, Sunday -2.5 vs tourney avg
-  - ❄️ **Alex Fitzpatrick** (England): Sunday +5.5 vs tourney avg
-  - ❄️ **Sam Burns** (USA): Sunday +4.0 vs tourney avg
-  - ❄️ **Justin Thomas** (USA): Sunday +3.8 vs tourney avg
+## ⛳ Golf Player Heat (from Corales Puntacana Championship)
+  - 🔥 T1 **Stefano Mazzoli** (Italy): -20 total -- finished T1, Sunday -1.0 vs tourney avg
+  - 🔥 T2 **Gordon Sargent** (USA): -19 total -- finished T2, Sunday -0.2 vs tourney avg
+  - 🔥 T4 **Will Gordon** (USA): -18 total -- finished T4, Sunday -1.5 vs tourney avg
+  - 🔥 T5 **Ben James** (USA): -18 total -- finished T5
+  - 🔥 T6 **Marcel Schneider** (Germany): -17 total -- finished T6
+  - ❄️ **Robert Streb** (USA): Sunday +8.5 vs tourney avg
+  - ❄️ **Dylan Frittelli** (South Africa): Sunday +8.2 vs tourney avg
+  - ❄️ **Jack Senior** (England): Sunday +5.5 vs tourney avg
 
-## 🔥 MLB Batter Heat (36 HOT / 47 COLD)
+## 🔥 MLB Batter Heat (34 HOT / 45 COLD)
   - 🔥 **Steven Kwan** (CLE): L14 .436 / season .240 (+196pts)
   - 🔥 **Tyler Stephenson** (CIN): L14 .383 / season .247 (+136pts)
+  - 🔥 **Curtis Mead** (WSH): L14 .389 / season .256 (+133pts)
   - 🔥 **Luke Keaschall** (MIN): L14 .395 / season .263 (+132pts)
-  - 🔥 **Curtis Mead** (WSH): L14 .385 / season .254 (+131pts)
   - 🔥 **Jake Cronenworth** (SD): L14 .320 / season .199 (+121pts)
   - ❄️ **Paul Goldschmidt** (NYY): L14 .064 / season .255 (-191pts) -- FADE props
   - ❄️ **Brandon Marsh** (PHI): L14 .157 / season .293 (-136pts) -- FADE props
+  - ❄️ **Corbin Carroll** (AZ): L14 .118 / season .250 (-132pts) -- FADE props
   - ❄️ **Daniel Susac** (SF): L14 .122 / season .252 (-130pts) -- FADE props
-  - ❄️ **Corbin Carroll** (AZ): L14 .122 / season .251 (-129pts) -- FADE props
-  - ❄️ **Jorge Mateo** (ATL): L14 .115 / season .244 (-129pts) -- FADE props
+  - ❄️ **Nathan Church** (STL): L14 .098 / season .228 (-130pts) -- FADE props
+
+## 📈 Streak Regression Alerts (1)
+- [WNBA] Phoenix Mercury on L5 L10 0-5 -- Phoenix Mercury on L5 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**
