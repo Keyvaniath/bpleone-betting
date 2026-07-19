@@ -1,13 +1,13 @@
 # EdgeStat Daily Summary — 2026-07-19
 
-## 🏥 Model Health: 69.8/100 [OK]
+## 🏥 Model Health: 69.5/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.9/100
-  - 🔴 Hit Rate Trend: 58.7/100
-  - 🔴 Brier Trend: 20.7/100
+  - 🟢 Calibration Freshness: 99.7/100
+  - 🔴 Hit Rate Trend: 39.5/100
+  - 🔴 Brier Trend: 24.4/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 95.5/100
-  - 🔴 Edge Count: 48.6/100
+  - 🟡 Edge Count: 77.1/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.584)
@@ -22,10 +22,10 @@
 5. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** PIT @ CLE PIT_ML -- 70% / +24.9% (score 2.5)
-- [STRONG] **[MLB]** WSN @ OAK WSN_ML -- 71% / +22.0% (score 2.5)
-- [STRONG] **[MLB]** DET @ LAA DET_ML -- 74% / +21.0% (score 2.5)
-- [STRONG] **[MLB]** SDP @ KCR KCR_ML -- 68% / +20.2% (score 2.5)
+- [STRONG] **[MLB]** PIT @ CLE PIT_ML -- 69% / +27.4% (score 2.5)
+- [STRONG] **[MLB]** SDP @ KCR KCR_ML -- 69% / +22.1% (score 2.5)
+- [STRONG] **[MLB]** DET @ LAA DET_ML -- 74% / +20.8% (score 2.5)
+- [STRONG] **[MLB]** WSN @ OAK WSN_ML -- 72% / +20.2% (score 2.5)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -56,16 +56,16 @@
 ## ⚡ Pre-Game HIGH Conviction (4)
 - [MLS] **Colorado Rapids** HOME (None L10) · model 73.6% fair -279
 - [MLS] **Vancouver Whitecaps** AWAY (None L10) · model 72.2% fair -260
-- [MLS] **Charlotte FC** HOME (None L10) · model 64.7% fair -184
+- [MLS] **Charlotte FC** HOME (None L10) · model 65.0% fair -185
 - [MLS] **Seattle Sounders FC** AWAY (0-1 L10) · model 63.6% fair -175
 
 ## 🔥/❄️ Heat / Cold Signals
 - Hot teams: **3** | Cold teams: **3** | Over-heavy: 0 | Under-heavy: 3
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (36)
+## ⚠️ Anomaly Detector (39)
 - STEAM_MOVE: **35**
-- COMPOUND_BULLPEN: **1**
+- COMPOUND_BULLPEN: **4**
   - NYM @ PHI (MLB): ML/TOTAL steam since open: ML -3.8pp toward NYM; total +9.5 (OVER) (8 snapshots)
   - NY @ IND (WNBA): ML/TOTAL steam since open: ML +3.1pp toward IND; total +4 (OVER) (7 snapshots)
   - MIN @ CHC (MLB): TOTAL steam since open: ML +0.6pp toward CHC; total -2.5 (UNDER) (8 snapshots)
@@ -74,7 +74,7 @@
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$1.1**
+- Expected EV: **$1.08**
   - #1 [NRFI] $50 on CIN @ COL YRFI (1st-inning OVER 0.5) (P=78%)
   - #2 [NRFI] $50 on SDP @ KCR YRFI (1st-inning OVER 0.5) (P=68%)
   - #3 [NRFI] $35 on WSN @ OAK YRFI (1st-inning OVER 0.5) (P=65%)
@@ -115,10 +115,13 @@
 
 ## ⛳ Golf Player Heat (from The Open)
   - 🔥 T1 **Sam Burns** (USA): -10 total -- finished T1
-  - 🔥 T2 **Ryan Fox** (New Zealand): -8 total -- finished T2
-  - 🔥 T3 **Si Woo Kim** (South Korea): -8 total -- finished T3
-  - 🔥 T4 **Ryan Gerard** (USA): -7 total -- finished T4
-  - 🔥 T5 **Lucas Herbert** (Australia): -7 total -- finished T5
+  - 🔥 T2 **Cameron Young** (USA): -9 total -- finished T2, Sunday -3.8 vs tourney avg
+  - 🔥 T3 **Ryan Fox** (New Zealand): -9 total -- finished T3
+  - 🔥 T4 **Si Woo Kim** (South Korea): -8 total -- finished T4
+  - 🔥 T5 **Scottie Scheffler** (USA): -7 total -- finished T5, Sunday -1.2 vs tourney avg
+  - ❄️ **Alex Fitzpatrick** (England): Sunday +5.5 vs tourney avg
+  - ❄️ **Justin Thomas** (USA): Sunday +3.8 vs tourney avg
+  - ❄️ **MJ Daffue** (South Africa): Sunday +3.5 vs tourney avg
 
 ## 🔥 MLB Batter Heat (42 HOT / 44 COLD)
   - 🔥 **Steven Kwan** (CLE): L14 .421 / season .237 (+184pts)
