@@ -1,28 +1,25 @@
-# EdgeStat Daily Summary — 2026-07-19
+# EdgeStat Daily Summary — 2026-07-20
 
-## 🏥 Model Health: 68.5/100 [OK]
+## 🏥 Model Health: 66.6/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 100.0/100
+  - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 39.5/100
   - 🔴 Brier Trend: 24.4/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 95.5/100
+  - 🟢 Data Health: 86.4/100
   - 🟡 Edge Count: 65.7/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.585)
-- **Total games on board:** 124
-- **Strong home favorites:** 7 | **Strong road dogs:** 2
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.583)
+- **Total games on board:** 138
+- **Strong home favorites:** 6 | **Strong road dogs:** 2
 
 ## 🎯 Top 5 Best Bets
-1. **CIN @ COL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-2. **SDP @ KCR YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-3. **WSN @ OAK YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
-4. **BAL @ HOU YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
-5. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
-
-## 📡 Sharp Action (Line Movement)
-- [MODERATE] **LAD @ NYY** ml_away: 52.83% → 56.9% (+4.1pp)
+1. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
+2. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
+3. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
+4. **LOL New Meta vs UWinks ML @ -146** (76/100 ★★★★★)
+5. **LOL 3-leg parlay @ +700** (70/100 ★★★★)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -57,27 +54,25 @@
 - [MLS] **Seattle Sounders FC** AWAY (0-1 L10) · model 63.6% fair -175
 
 ## 🔥/❄️ Heat / Cold Signals
-- Hot teams: **3** | Cold teams: **3** | Over-heavy: 0 | Under-heavy: 3
+- Hot teams: **4** | Cold teams: **3** | Over-heavy: 0 | Under-heavy: 5
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (42)
-- STREAK_MISMATCH: **1**
-- RESIDUAL_DIVERGENCE: **1**
-- STEAM_MOVE: **40**
-  - Phoenix Mercury (WNBA): Phoenix Mercury on L5 streak but model still favors them (52%) -- may be overvalued
-  - Phoenix Mercury (WNBA): Phoenix Mercury UNDERPERFORMING expected margin by 6.8pts in recent games -- model bias may persist
+## ⚠️ Anomaly Detector (31)
+- STEAM_MOVE: **31**
   - NYM @ PHI (MLB): ML/TOTAL steam since open: ML -3.8pp toward NYM; total +9.5 (OVER) (8 snapshots)
   - NY @ IND (WNBA): ML/TOTAL steam since open: ML +3.1pp toward IND; total +4 (OVER) (7 snapshots)
-  - CON @ PHX (WNBA): TOTAL steam since open: ML +2.3pp toward PHX; total -3 (UNDER) (3 snapshots)
+  - CON @ PHX (WNBA): TOTAL steam since open: ML +1.0pp toward PHX; total -3 (UNDER) (4 snapshots)
+  - MIN @ CHC (MLB): TOTAL steam since open: ML +0.6pp toward CHC; total -2.5 (UNDER) (8 snapshots)
+  - NY @ TOR (WNBA): TOTAL steam since open: total +2 (OVER) (2 snapshots)
 
-## 💰 Today's Portfolio (9 picks)
-- Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$1.09**
-  - #1 [NRFI] $50 on CIN @ COL YRFI (1st-inning OVER 0.5) (P=78%)
-  - #2 [NRFI] $50 on SDP @ KCR YRFI (1st-inning OVER 0.5) (P=68%)
-  - #3 [NRFI] $35 on WSN @ OAK YRFI (1st-inning OVER 0.5) (P=65%)
-  - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
-  - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
+## 💰 Today's Portfolio (6 picks)
+- Total stake: **$165.0** (16.5% of $1000 bankroll)
+- Expected EV: **$-7.67**
+  - #1 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
+  - #2 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
+  - #3 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
+  - #4 [MLS] $20 on MLS Columbus Crew ML (4-4-7) vs New York City FC (P=55%)
+  - #5 [MLS] $20 on MLS Inter Miami CF ML (9-4-2) vs Chicago Fire FC (P=53%)
 
 ## 🎯 Convergence Picks (11 stacked games)
 - ELITE: **0** · HIGH: 3 · MED: 8
@@ -114,17 +109,17 @@
   - ❄️ **Dylan Frittelli** (South Africa): Sunday +8.2 vs tourney avg
   - ❄️ **Jack Senior** (England): Sunday +5.5 vs tourney avg
 
-## 🔥 MLB Batter Heat (34 HOT / 45 COLD)
+## 🔥 MLB Batter Heat (34 HOT / 44 COLD)
   - 🔥 **Steven Kwan** (CLE): L14 .436 / season .240 (+196pts)
+  - 🔥 **Miguel Rojas** (LAD): L14 .429 / season .293 (+136pts)
   - 🔥 **Tyler Stephenson** (CIN): L14 .383 / season .247 (+136pts)
   - 🔥 **Curtis Mead** (WSH): L14 .389 / season .256 (+133pts)
   - 🔥 **Luke Keaschall** (MIN): L14 .395 / season .263 (+132pts)
-  - 🔥 **Jake Cronenworth** (SD): L14 .320 / season .199 (+121pts)
-  - ❄️ **Paul Goldschmidt** (NYY): L14 .064 / season .255 (-191pts) -- FADE props
+  - ❄️ **Teoscar Hernández** (LAD): L14 .087 / season .241 (-154pts) -- FADE props
+  - ❄️ **Paul Goldschmidt** (NYY): L14 .106 / season .259 (-153pts) -- FADE props
   - ❄️ **Brandon Marsh** (PHI): L14 .157 / season .293 (-136pts) -- FADE props
+  - ❄️ **Nathan Church** (STL): L14 .093 / season .226 (-133pts) -- FADE props
   - ❄️ **Corbin Carroll** (AZ): L14 .118 / season .250 (-132pts) -- FADE props
-  - ❄️ **Daniel Susac** (SF): L14 .122 / season .252 (-130pts) -- FADE props
-  - ❄️ **Nathan Church** (STL): L14 .098 / season .228 (-130pts) -- FADE props
 
 ## 📈 Streak Regression Alerts (1)
 - [WNBA] Phoenix Mercury on L5 L10 0-5 -- Phoenix Mercury on L5 -- no historical sample
@@ -137,6 +132,6 @@
   - ⚠️ batter_rbis (Brier Δ -0.0052)
 
 ## 🤖 Self-Training Status
-- **WNBA**: n=38 games · hit rate 55.3% · bias +5.4pp [calibration applied]
+- **WNBA**: n=39 games · hit rate 53.8% · bias +1.9pp
 - **MLS**: n=5 games · hit rate 40.0% · bias +8.6pp
-- **MLB**: n=143 games · hit rate 48.9% · bias +3.8pp [calibration applied]
+- **MLB**: n=144 games · hit rate 51.4% · bias +2.9pp [calibration applied]
