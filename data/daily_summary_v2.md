@@ -1,17 +1,17 @@
 # EdgeStat Daily Summary — 2026-07-20
 
-## 🏥 Model Health: 60.8/100 [OK]
+## 🏥 Model Health: 63.0/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.5/100
+  - 🟢 Calibration Freshness: 100.0/100
   - 🔴 Hit Rate Trend: 20.1/100
   - 🔴 Brier Trend: 22.1/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 86.4/100
-  - 🔴 Edge Count: 51.4/100
+  - 🟢 Data Health: 95.5/100
+  - 🔴 Edge Count: 54.3/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.58)
-- **Total games on board:** 126
+- **Total games on board:** 127
 - **Strong home favorites:** 8 | **Strong road dogs:** 4
 
 ## 🎯 Top 5 Best Bets
@@ -22,9 +22,12 @@
 5. **PIT @ NYY YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** SDP @ ATL ATL_ML -- 70% / +22.6% (score 2.5)
-- [STRONG] **[MLB]** WSN @ COL WSN_ML -- 68% / +22.5% (score 2.5)
-- [STRONG] **[MLB]** MIN @ CLE MIN_ML -- 67% / +22.3% (score 2.5)
+- [STRONG] **[MLB]** SDP @ ATL ATL_ML -- 70% / +22.5% (score 2.5)
+- [STRONG] **[MLB]** MIN @ CLE MIN_ML -- 67% / +22.4% (score 2.5)
+- [STRONG] **[MLB]** WSN @ COL WSN_ML -- 68% / +22.2% (score 2.5)
+
+## 📡 Sharp Action (Line Movement)
+- [MODERATE] **CHW @ TEX** over_7.5: 51.22% → 54.55% (+3.3pp)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -63,15 +66,15 @@
 - Hot teams: **4** | Cold teams: **3** | Over-heavy: 0 | Under-heavy: 5
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (38)
-- STEAM_MOVE: **31**
+## ⚠️ Anomaly Detector (45)
+- STEAM_MOVE: **38**
 - COMPOUND_BULLPEN: **6**
 - PEN_MISMATCH: **1**
   - NYM @ PHI (MLB): ML/TOTAL steam since open: ML -3.8pp toward NYM; total +9.5 (OVER) (8 snapshots)
   - NY @ IND (WNBA): ML/TOTAL steam since open: ML +3.1pp toward IND; total +4 (OVER) (7 snapshots)
+  - NY @ DAL (WNBA): TOTAL steam since open: ML -1.7pp toward NY; total -4 (UNDER) (4 snapshots)
   - CON @ PHX (WNBA): TOTAL steam since open: ML +1.0pp toward PHX; total -3 (UNDER) (4 snapshots)
   - MIN @ CHC (MLB): TOTAL steam since open: ML +0.6pp toward CHC; total -2.5 (UNDER) (8 snapshots)
-  - NY @ TOR (WNBA): TOTAL steam since open: total +2 (OVER) (2 snapshots)
 
 ## 💰 Today's Portfolio (10 picks)
 - Total stake: **$335.0** (33.5% of $1000 bankroll)
@@ -82,13 +85,13 @@
   - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
-## 🎯 Convergence Picks (11 stacked games)
-- ELITE: **0** · HIGH: 4 · MED: 7
-  - [HIGH] Los Angeles Sparks @ Dallas Wings : 3 signals (HEAT_COLD, HEAT_COLD, ATS)
-  - [HIGH] Chicago Sky @ Atlanta Dream : 3 signals (HEAT_COLD, HEAT_COLD, ATS)
-  - [HIGH] Connecticut Sun @ Phoenix Mercury : 3 signals (HEAT_COLD, HEAT_COLD, ATS)
+## 🎯 Convergence Picks (10 stacked games)
+- ELITE: **2** · HIGH: 1 · MED: 7
+  - [ELITE] New York Liberty @ Dallas Wings : 5 signals (PREGAME, HEAT_COLD, HEAT_COLD, ATS)
+  - [ELITE] Minnesota Lynx @ Seattle Storm : 4 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ATS)
   - [HIGH] St. Louis CITY SC @ LA Galaxy : 3 signals (PREGAME, ATS, ATS)
   - [MED] New York Knicks @ San Antonio Spurs : 2 signals (ATS, ATS)
+  - [MED] Atlanta United FC @ Charlotte FC : 2 signals (PREGAME, ATS)
 
 ## ⚾ Top MLB Pitcher K Plays (10)
 - **Andrew Alvarez** OVER 6.5 K (78%) fair -349
@@ -97,15 +100,10 @@
 - **Braxton Ashcraft** OVER 5.5 K (73%) fair -270
 - **Jacob deGrom** OVER 5.5 K (73%) fair -270
 
-## 🏀 NBA Player Heat (18 HOT / 23 COLD)
-  - 🔥 **Jeremiah Fears** (NO): L5 31.8/5.8/6.0 vs season 16.9/3.2/4.0 [PTS +14.9, REB +2.6, AST +2.0]
-  - 🔥 **AJ Green** (MIL): L5 18.6/4.2/1.8 vs season 11.3/3.4/1.9 [PTS +7.3]
-  - 🔥 **Dillon Brooks** (PHX): L5 26.0/6.0/1.8 vs season 19.4/4.2/1.9 [PTS +6.6]
-  - 🔥 **Paolo Banchero** (ORL): L5 28.6/9.6/6.4 vs season 22.6/8.2/5.9 [PTS +6.0]
-  - 🔥 **Scottie Barnes** (TOR): L5 24.4/7.6/9.6 vs season 18.6/5.8/8.8 [PTS +5.8]
-  - ❄️ **Damian Lillard** (POR): L5 7.0 vs season 19.1 [PTS -12.1] -- FADE OVER props
-  - ❄️ **Bones Hyland** (MIN): L5 0.8 vs season 9.2 [PTS -8.4] -- FADE OVER props
+## 🏀 NBA Player Heat (1 HOT / 2 COLD)
+  - 🔥 **Zach Edey** (MEM): L5 15.6/13.8/1.4 vs season 13.6/11.1/1.1 [REB +2.7]
   - ❄️ **Nickeil Alexander-Walker** (ATL): L5 13.0 vs season 21.3 [PTS -8.3] -- FADE OVER props
+  - ❄️ **Jerami Grant** (MEM): L5 10.4 vs season 16.4 [PTS -6.0] -- FADE OVER props
 
 ## 🥊 UFC Fight Matchups (UFC Fight Night: Ankalaev vs. Guskov)
   - [FAVORITE] **Magomed Tuchalov** (6-0-0) vs Brendson Ribeiro -- fair -193
@@ -124,8 +122,8 @@
   - ❄️ **Dylan Frittelli** (South Africa): Sunday +8.2 vs tourney avg
   - ❄️ **Jack Senior** (England): Sunday +5.5 vs tourney avg
 
-## 🔥 MLB Batter Heat (34 HOT / 44 COLD)
-  - 🔥 **Steven Kwan** (CLE): L14 .436 / season .240 (+196pts)
+## 🔥 MLB Batter Heat (35 HOT / 44 COLD)
+  - 🔥 **Steven Kwan** (CLE): L14 .421 / season .239 (+182pts)
   - 🔥 **Miguel Rojas** (LAD): L14 .429 / season .293 (+136pts)
   - 🔥 **Tyler Stephenson** (CIN): L14 .383 / season .247 (+136pts)
   - 🔥 **Curtis Mead** (WSH): L14 .389 / season .256 (+133pts)
@@ -135,6 +133,13 @@
   - ❄️ **Brandon Marsh** (PHI): L14 .157 / season .293 (-136pts) -- FADE props
   - ❄️ **Nathan Church** (STL): L14 .093 / season .226 (-133pts) -- FADE props
   - ❄️ **Corbin Carroll** (AZ): L14 .118 / season .250 (-132pts) -- FADE props
+
+## 📈 Streak Regression Alerts (5)
+- [WNBA] Dallas Wings on W4 L10 4-0 -- Dallas Wings on W4 -- no historical sample
+- [WNBA] New York Liberty on L4 L10 0-4 -- New York Liberty on L4 -- no historical sample
+- [WNBA] Golden State Valkyries on W5 L10 5-0 -- Golden State Valkyries on W5 -- no historical sample
+- [WNBA] Seattle Storm on L4 L10 1-4 -- Seattle Storm on L4 -- no historical sample
+- [WNBA] Minnesota Lynx on W5 L10 5-0 -- Minnesota Lynx on W5 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**

@@ -1,13 +1,13 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-07-20T15:58:14 UTC_
+_Generated 2026-07-20T23:04:22 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -20
+- **Score:** -21
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
 - **Total STRONG:** 9
-- **Total FADES:** 56
+- **Total FADES:** 57
 
 ## Lock of the Night
 - **Subject:** George Kirby
@@ -17,11 +17,11 @@ _Generated 2026-07-20T15:58:14 UTC_
 - **Details:** CIN @ SEA
 
 ## Top 5 Curated Picks
-1. **GOLF / Stefano Mazzoli** (GOLF_PLAYER, score=219.29)
-   - Play: Stefano Mazzoli (PLAYER_STRONG)
+1. **GOLF / Todd Clements** (GOLF_PLAYER, score=219.29)
+   - Play: Todd Clements (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Gordon Sargent** (GOLF_PLAYER, score=219.29)
-   - Play: Gordon Sargent (PLAYER_STRONG)
+2. **GOLF / Will Gordon** (GOLF_PLAYER, score=219.29)
+   - Play: Will Gordon (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
 3. **WNBA / napheesa collier** (WNBA_PLAYER, score=148.83)
    - Play: napheesa collier (PLAYER_STRONG)
@@ -35,12 +35,12 @@ _Generated 2026-07-20T15:58:14 UTC_
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
-  - Stefano Mazzoli top 10 finish
-  - Gordon Sargent top 10 finish
+  - Todd Clements top 10 finish
+  - Will Gordon top 10 finish
   - Ben James top 10 finish
 
 ## Slate ROI Projection
-- **Picks:** 1
+- **Picks:** 2
 - **Avg edge:** -0.91%
 - **Expected ROI (1/4 Kelly):** 0.0%
 - **Expected P&L on $100:** $0.0
@@ -48,11 +48,11 @@ _Generated 2026-07-20T15:58:14 UTC_
 ## Top Fades
 - **NHL** / anthony stolarz (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / logan thompson_2 (GOALIE_FADE)
+- **NHL** / calvin pickard (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / casey desmith (GOALIE_FADE)
+- **NHL** / joseph woll (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / thatcher demko (GOALIE_FADE)
+- **NHL** / jake oettinger (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / marc-andre fleury (GOALIE_FADE)
+- **NHL** / kevin lankinen (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO

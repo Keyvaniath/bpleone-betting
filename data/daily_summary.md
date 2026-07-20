@@ -4,7 +4,7 @@
 
 _Pipeline health: **WARNING** (12/15 artifacts ok; 3 empty, 0 stale)._ 
 
-_Generated at 2026-07-20T15:58:22 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-07-20T23:06:12 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
@@ -16,25 +16,24 @@ _Generated at 2026-07-20T15:58:22 UTC. Game lines source: **Bovada (fallback -- 
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
 
-## Full Slate (15 games)
+## Full Slate (14 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 6:40p ET | MIN @ CLE | Progressive Field | 76F 4mph | MIN_ML +37.26% |
-| 7:05p ET | PIT @ NYY | Yankee Stadium | 70F 6mph | OVER_7.5 +58.8% |
-| 7:07p ET | TBR @ TOR | Rogers Centre | indoor | TBR_ML +14.64% |
-| 7:10p ET | BAL @ BOS | Fenway Park | 70F 10mph | UNDER_9.0 +9.17% |
-| 7:10p ET | LAD @ PHI | Citizens Bank Park | 72F 7mph | LAD_ML +34.33% |
-| 7:15p ET | SDP @ ATL | Truist Park | 84F 4mph | ATL_ML +38.31% |
-| 7:40p ET | SFG @ KCR | Kauffman Stadium | 80F 5mph | SFG_ML +17.68% |
-| 7:40p ET | NYM @ MIL | American Family Field | indoor | MIL_ML +23.34% |
-| 8:05p ET | DET @ CHC | Wrigley Field | 74F 22mph | DET_ML +24.76% |
+| 7:05p ET | PIT @ NYY | Yankee Stadium | 70F 5mph | PIT_ML +31.37% |
+| 7:07p ET | TBR @ TOR | Rogers Centre | indoor | UNDER_7.5 +2.4% |
+| 7:10p ET | BAL @ BOS | Fenway Park | 69F 8mph | BAL_ML +4.71% |
+| 7:10p ET | LAD @ PHI | Citizens Bank Park | 72F 7mph | LAD_ML +31.28% |
+| 7:15p ET | SDP @ ATL | Truist Park | 83F 4mph | ATL_ML +37.34% |
+| 7:40p ET | SFG @ KCR | Kauffman Stadium | 89F 6mph | SFG_ML +16.89% |
+| 7:40p ET | NYM @ MIL | American Family Field | indoor | MIL_ML +44.53% |
+| 8:05p ET | DET @ CHC | Wrigley Field | 73F 8mph | OVER_8.5 +50.22% |
 | 8:05p ET | CHW @ TEX | Globe Life Field | indoor | OVER_7.5 +47.62% |
-| 8:10p ET | MIA @ HOU | Daikin Park | indoor | OVER_8.5 +28.83% |
-| 8:40p ET | WSN @ COL | Coors Field | 90F 3mph | OVER_12.0 +50.34% |
+| 8:10p ET | MIA @ HOU | Daikin Park | indoor | MIA_ML +22.15% |
+| 8:40p ET | WSN @ COL | Coors Field | 85F 3mph | WSN_ML +50.38% |
 | 9:40p ET | OAK @ ARI | Chase Field | indoor | OVER_9.0 +59.95% |
-| 9:40p ET | CIN @ SEA | T-Mobile Park | indoor | SEA_ML +3.33% |
-| 10:10p ET | STL @ LAA | Angel Stadium | 70F 4mph | UNDER_9.0 +5.81% |
+| 9:40p ET | CIN @ SEA | T-Mobile Park | indoor | SEA_ML +13.1% |
+| 10:10p ET | STL @ LAA | Angel Stadium | 71F 3mph | UNDER_9.0 +6.76% |
 
 ## Parlays - top 5
 
@@ -65,21 +64,20 @@ Cumulative graded plays: 6433. Wins: 2609. Hit rate: 40.6%.
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| BAL @ BOS | 38.4% | +161 | 5.05 | +132 | -132 |
+| BAL @ BOS | 38.4% | +161 | 5.01 | +133 | -133 |
 | CHW @ TEX | 45.7% | +119 | 3.91 | +108 | -108 |
 | CIN @ SEA | 45.3% | +121 | 3.95 | +115 | -115 |
-| DET @ CHC | 40.8% | +145 | 5.15 | +282 | -282 |
+| DET @ CHC | 40.8% | +145 | 4.73 | +281 | -281 |
 | LAD @ PHI | 39.1% | +156 | 4.87 | +267 | -267 |
 | MIA @ HOU | 34.3% | +191 | 5.35 | +222 | -222 |
-| MIN @ CLE | 50.8% | -103 | 3.37 | +569 | -569 |
 | NYM @ MIL | 41.9% | +139 | 4.35 | -277 | +277 |
 | OAK @ ARI | 20.2% | +394 | 7.99 | +216 | -216 |
 | PIT @ NYY | 34.5% | +190 | 5.28 | +215 | -215 |
-| SDP @ ATL | 21.7% | +361 | 7.8 | -215 | +215 |
-| SFG @ KCR | 41.3% | +142 | 4.37 | +243 | -243 |
-| STL @ LAA | 51.3% | -105 | 3.42 | +200 | -200 |
-| TBR @ TOR | 59.0% | -144 | 2.64 | +168 | -168 |
-| WSN @ COL | 21.8% | +358 | 7.74 | +506 | -506 |
+| SDP @ ATL | 21.7% | +361 | 7.67 | -215 | +215 |
+| SFG @ KCR | 41.3% | +142 | 4.52 | +242 | -242 |
+| STL @ LAA | 51.3% | -105 | 3.37 | +200 | -200 |
+| TBR @ TOR | 59.0% | -144 | 2.64 | +167 | -167 |
+| WSN @ COL | 21.8% | +358 | 7.69 | +506 | -506 |
 
 ## Travel / Rest Flags
 
