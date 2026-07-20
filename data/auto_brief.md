@@ -6,7 +6,7 @@ _0% lineups confirmed · 10 rookie SPs_
 
 ## Slate
 - **15 games** scheduled
-- **23 best bets** scored: 0 DK · 0 PP · 12 NRFI · 0 SGP
+- **24 best bets** scored: 0 DK · 0 PP · 12 NRFI · 0 SGP
 - **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$50.89
 - **MC simulation:** EV +$129.31, 84% P(profit), p05 $-91.28 / p95 $326.25
 
@@ -60,10 +60,10 @@ _Lean late-inning OVER on these games; fade their save situations._
 - **KBO POD:** LG Twins ML vs NC Dinos (KBO) (MED)
 
 ## LoL Esports -- 0 live, 6 upcoming
-- [NLC] Verdant vs Absolved BO3 | P(A) 50.0% fair -100/-100
 - [NLC] Bulldog Esports vs Brod & Friends BO3 | P(A) 50.0% fair -100/-100
-- [NLC] Arctic Pandas vs Sørby Esports BO3 | P(A) 50.0% fair -100/-100
+- [NLC] Verdant vs Absolved BO3 | P(A) 50.0% fair -100/-100
 - [NLC] Lundqvist Lightside vs Bardicted to U BO3 | P(A) 50.0% fair -100/-100
+- [NLC] Arctic Pandas vs Sørby Esports BO3 | P(A) 50.0% fair -100/-100
 - [LPL] LGD GAMING vs EDWARD GAMING BO3 | P(A) 50.0% fair -100/-100
 - **LoL POT:** Xi'an Team WE ML vs TOP ESPORTS (LPL, BO3) (HIGH)
 

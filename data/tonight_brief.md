@@ -2,9 +2,10 @@
 
 _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 
-## 💪 STRONG (2 picks)
-- [MLB] WSN @ COL WSN_ML · 68% / +23.2%
-- [MLB] MIN @ CLE MIN_ML · 67% / +22.8%
+## 💪 STRONG (3 picks)
+- [MLB] SDP @ ATL ATL_ML · 70% / +22.6%
+- [MLB] WSN @ COL WSN_ML · 68% / +22.5%
+- [MLB] MIN @ CLE MIN_ML · 67% / +22.3%
 
 ## 🔒 5 Daily Locks
 - **Choi Jeong** one_plus_tb (KBO) -- 73% / +39.8%
@@ -18,5 +19,5 @@ _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 - Joint 53% · fair +264 · edge +94.6%
 
 ---
-_Generated 2026-07-20T15:12:24_
+_Generated 2026-07-20T15:58:07_
 _Full breakdown: /tonight · Full history: /locks-of-day_

@@ -1,18 +1,18 @@
 # EdgeStat Daily Summary — 2026-07-20
 
-## 🏥 Model Health: 58.5/100 [OK]
+## 🏥 Model Health: 60.8/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.9/100
-  - 🔴 Hit Rate Trend: 15.1/100
-  - 🔴 Brier Trend: 26.1/100
+  - 🟢 Calibration Freshness: 99.5/100
+  - 🔴 Hit Rate Trend: 20.1/100
+  - 🔴 Brier Trend: 22.1/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 95.5/100
-  - 🔴 Edge Count: 11.4/100
+  - 🟢 Data Health: 86.4/100
+  - 🔴 Edge Count: 51.4/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.584)
-- **Total games on board:** 122
-- **Strong home favorites:** 6 | **Strong road dogs:** 2
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.58)
+- **Total games on board:** 126
+- **Strong home favorites:** 8 | **Strong road dogs:** 4
 
 ## 🎯 Top 5 Best Bets
 1. **OAK @ ARI YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
@@ -22,8 +22,9 @@
 5. **PIT @ NYY YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** WSN @ COL WSN_ML -- 68% / +23.2% (score 2.5)
-- [STRONG] **[MLB]** MIN @ CLE MIN_ML -- 67% / +22.8% (score 2.5)
+- [STRONG] **[MLB]** SDP @ ATL ATL_ML -- 70% / +22.6% (score 2.5)
+- [STRONG] **[MLB]** WSN @ COL WSN_ML -- 68% / +22.5% (score 2.5)
+- [STRONG] **[MLB]** MIN @ CLE MIN_ML -- 67% / +22.3% (score 2.5)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -51,9 +52,10 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (4)
+## ⚡ Pre-Game HIGH Conviction (5)
 - [MLS] **Colorado Rapids** HOME (None L10) · model 73.6% fair -279
 - [MLS] **Vancouver Whitecaps** AWAY (None L10) · model 72.2% fair -260
+- [WNBA] **Dallas Wings** HOME (4-0 L10) · model 70.0% fair -233
 - [MLS] **Charlotte FC** HOME (None L10) · model 65.0% fair -185
 - [MLS] **Seattle Sounders FC** AWAY (0-1 L10) · model 63.6% fair -175
 
@@ -61,10 +63,10 @@
 - Hot teams: **4** | Cold teams: **3** | Over-heavy: 0 | Under-heavy: 5
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (41)
+## ⚠️ Anomaly Detector (38)
 - STEAM_MOVE: **31**
-- COMPOUND_BULLPEN: **5**
-- PEN_MISMATCH: **5**
+- COMPOUND_BULLPEN: **6**
+- PEN_MISMATCH: **1**
   - NYM @ PHI (MLB): ML/TOTAL steam since open: ML -3.8pp toward NYM; total +9.5 (OVER) (8 snapshots)
   - NY @ IND (WNBA): ML/TOTAL steam since open: ML +3.1pp toward IND; total +4 (OVER) (7 snapshots)
   - CON @ PHX (WNBA): TOTAL steam since open: ML +1.0pp toward PHX; total -3 (UNDER) (4 snapshots)
@@ -73,7 +75,7 @@
 
 ## 💰 Today's Portfolio (10 picks)
 - Total stake: **$335.0** (33.5% of $1000 bankroll)
-- Expected EV: **$19.9**
+- Expected EV: **$20.89**
   - #1 [NRFI] $50 on OAK @ ARI YRFI (1st-inning OVER 0.5) (P=80%)
   - #2 [NRFI] $50 on SDP @ ATL YRFI (1st-inning OVER 0.5) (P=78%)
   - #3 [NRFI] $50 on WSN @ COL YRFI (1st-inning OVER 0.5) (P=78%)
