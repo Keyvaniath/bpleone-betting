@@ -4,7 +4,7 @@
 
 _Pipeline health: **WARNING** (12/15 artifacts ok; 3 empty, 0 stale)._ 
 
-_Generated at 2026-07-20T08:01:44 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-07-20T15:12:39 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
@@ -20,71 +20,66 @@ _Generated at 2026-07-20T08:01:44 UTC. Game lines source: **Bovada (fallback -- 
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 6:40p ET | MIN @ CLE | Progressive Field | 75F 3mph | MIN_ML +38.57% |
-| 7:05p ET | PIT @ NYY | Yankee Stadium | 70F 5mph | OVER_7.5 +57.64% |
-| 7:07p ET | TBR @ TOR | Rogers Centre | indoor | TBR_ML +10.79% |
-| 7:10p ET | BAL @ BOS | Fenway Park | 70F 9mph | OVER_8.0 +5.63% |
-| 7:10p ET | LAD @ PHI | Citizens Bank Park | 70F 5mph | LAD_ML +29.8% |
-| 7:15p ET | SDP @ ATL | Truist Park | 76F 8mph | ATL_ML +31.15% |
-| 7:40p ET | SFG @ KCR | Kauffman Stadium | 90F 6mph | SFG_ML +17.49% |
-| 7:40p ET | NYM @ MIL | American Family Field | indoor | MIL_ML +22.78% |
-| 8:05p ET | DET @ CHC | Wrigley Field | 75F 6mph | UNDER_12.0 +22.56% |
+| 6:40p ET | MIN @ CLE | Progressive Field | 76F 3mph | MIN_ML +37.1% |
+| 7:05p ET | PIT @ NYY | Yankee Stadium | 70F 4mph | OVER_7.5 +56.46% |
+| 7:07p ET | TBR @ TOR | Rogers Centre | indoor | TBR_ML +15.13% |
+| 7:10p ET | BAL @ BOS | Fenway Park | 70F 9mph | UNDER_9.0 +10.8% |
+| 7:10p ET | LAD @ PHI | Citizens Bank Park | 71F 7mph | LAD_ML +33.07% |
+| 7:15p ET | SDP @ ATL | Truist Park | 85F 5mph | ATL_ML +37.64% |
+| 7:40p ET | SFG @ KCR | Kauffman Stadium | 91F 6mph | SFG_ML +18.09% |
+| 7:40p ET | NYM @ MIL | American Family Field | indoor | MIL_ML +23.34% |
+| 8:05p ET | DET @ CHC | Wrigley Field | 67F 3mph | DET_ML +23.04% |
 | 8:05p ET | CHW @ TEX | Globe Life Field | indoor | OVER_7.5 +47.62% |
 | 8:10p ET | MIA @ HOU | Daikin Park | indoor | OVER_8.5 +28.83% |
-| 8:40p ET | WSN @ COL | Coors Field | 75F 10mph | OVER_11.5 +58.17% |
+| 8:40p ET | WSN @ COL | Coors Field | 89F 2mph | OVER_12.0 +48.26% |
 | 9:40p ET | OAK @ ARI | Chase Field | indoor | OVER_9.0 +59.95% |
-| 9:40p ET | CIN @ SEA | T-Mobile Park | indoor | UNDER_7.5 +2.69% |
-| 10:10p ET | STL @ LAA | Angel Stadium | 71F 3mph | STL_ML +7.88% |
+| 9:40p ET | CIN @ SEA | T-Mobile Park | indoor | SEA_ML +3.33% |
+| 10:10p ET | STL @ LAA | Angel Stadium | 70F 4mph | UNDER_9.0 +5.81% |
 
 ## Parlays - top 5
 
-- **3-leg @ +622 (prob 20.8%, EV +49.91%)**
-  - TBR @ TOR UNDER_7.5 (-110, model 55.0%)
-  - SDP @ ATL OVER_9.0 (-110, model 64.2%)
-  - SFG @ KCR SFG_ML (-102, model 58.8%)
-- **3-leg @ +656 (prob 19.8%, EV +49.87%)**
-  - PIT @ NYY PIT_ML (-103, model 56.6%)
-  - LAD @ PHI OVER_8.0 (-110, model 65.2%)
-  - STL @ LAA STL_ML (+101, model 53.7%)
-- **3-leg @ +770 (prob 17.2%, EV +49.85%)**
-  - MIN @ CLE OVER_7.5 (-110, model 60.8%)
-  - TBR @ TOR TBR_ML (+130, model 48.2%)
-  - SFG @ KCR SFG_ML (-102, model 58.8%)
-- **3-leg @ +434 (prob 28.1%, EV +49.78%)**
-  - MIN @ CLE OVER_7.5 (-110, model 60.8%)
-  - TBR @ TOR UNDER_7.5 (-110, model 55.0%)
-  - NYM @ MIL MIL_ML (-215, model 83.8%)
-- **3-leg @ +861 (prob 15.6%, EV +49.63%)**
-  - PIT @ NYY PIT_ML (-103, model 56.6%)
-  - TBR @ TOR TBR_ML (+130, model 48.2%)
-  - MIA @ HOU MIA_ML (+112, model 57.1%)
+- **2-leg @ +280 (prob 38.6%, EV +46.74%)**
+  - SDP @ ATL OVER_9.0 (-110, model 65.1%)
+  - SFG @ KCR SFG_ML (-101, model 59.3%)
+- **2-leg @ +192 (prob 49.7%, EV +45.44%)**
+  - SFG @ KCR SFG_ML (-101, model 59.3%)
+  - NYM @ MIL MIL_ML (-213, model 83.8%)
+- **2-leg @ +291 (prob 37.1%, EV +45.4%)**
+  - SDP @ ATL OVER_9.0 (-110, model 65.1%)
+  - MIA @ HOU MIA_ML (+105, model 57.1%)
+- **2-leg @ +264 (prob 39.9%, EV +45.23%)**
+  - MIN @ CLE OVER_7.5 (-110, model 61.2%)
+  - SDP @ ATL OVER_9.0 (-110, model 65.1%)
+- **2-leg @ +290 (prob 37.2%, EV +45.1%)**
+  - SFG @ KCR SFG_ML (-101, model 59.3%)
+  - DET @ CHC DET_ML (-104, model 62.6%)
 
 ## Self-Learning Loop
 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
 
-Cumulative graded plays: 6421. Wins: 2600. Hit rate: 40.5%.
+Cumulative graded plays: 6433. Wins: 2609. Hit rate: 40.6%.
 
 ## Auxiliary Markets (Model Fair Prices)
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| BAL @ BOS | 38.4% | +161 | 5.02 | +132 | -132 |
+| BAL @ BOS | 38.4% | +161 | 5.05 | +132 | -132 |
 | CHW @ TEX | 45.7% | +119 | 3.91 | +108 | -108 |
 | CIN @ SEA | 45.3% | +121 | 3.95 | +115 | -115 |
-| DET @ CHC | 40.8% | +145 | 4.66 | +281 | -281 |
-| LAD @ PHI | 39.1% | +156 | 4.8 | +267 | -267 |
+| DET @ CHC | 40.8% | +145 | 4.42 | +281 | -281 |
+| LAD @ PHI | 39.1% | +156 | 4.81 | +267 | -267 |
 | MIA @ HOU | 34.3% | +191 | 5.35 | +222 | -222 |
-| MIN @ CLE | 50.8% | -103 | 3.38 | +567 | -567 |
+| MIN @ CLE | 50.8% | -103 | 3.37 | +568 | -568 |
 | NYM @ MIL | 41.9% | +139 | 4.35 | -277 | +277 |
 | OAK @ ARI | 20.2% | +394 | 7.99 | +216 | -216 |
-| PIT @ NYY | 34.5% | +190 | 5.29 | +215 | -215 |
-| SDP @ ATL | 21.7% | +361 | 7.98 | -216 | +216 |
-| SFG @ KCR | 41.3% | +142 | 4.6 | +242 | -242 |
-| STL @ LAA | 51.3% | -105 | 3.39 | +200 | -200 |
+| PIT @ NYY | 34.5% | +190 | 5.27 | +215 | -215 |
+| SDP @ ATL | 21.7% | +361 | 7.87 | -217 | +217 |
+| SFG @ KCR | 41.3% | +142 | 4.59 | +242 | -242 |
+| STL @ LAA | 51.3% | -105 | 3.41 | +200 | -200 |
 | TBR @ TOR | 59.0% | -144 | 2.64 | +168 | -168 |
-| WSN @ COL | 21.8% | +358 | 7.59 | +502 | -502 |
+| WSN @ COL | 21.8% | +358 | 7.53 | +508 | -508 |
 
 ## Travel / Rest Flags
 
@@ -110,7 +105,7 @@ Cumulative graded plays: 6421. Wins: 2600. Hit rate: 40.5%.
 
 ## Loop Activity (since last refresh)
 
-- Confidence delta: **-0.3**
+- Confidence delta: **+0.0**
 
 ## Model Recommendations (operator review)
 
