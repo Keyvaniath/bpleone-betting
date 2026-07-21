@@ -1,8 +1,8 @@
 # Tonight's Slate Brief — 2026-07-21
 
-## Slate Quality: 55/100 (MEDIUM)
+## Slate Quality: 52/100 (LOW)
 _0% lineups confirmed · 15 rookie SPs_
-**Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
+**Recommendation:** Defensive sizing tonight; stick to highest-confidence plays.
 
 ## Slate
 - **15 games** scheduled
@@ -33,6 +33,9 @@ _0% lineups confirmed · 15 rookie SPs_
    - Edge +28.9% looks big but only 0 settled props on this player — model unproven
 - **PIT @ NYY YRFI (1st-inning OVER 0.5)** (low):
    - Edge +27.7% looks big but only 0 settled props on this player — model unproven
+
+## Weather leans
+- **OVER lean** (wind out + warm): SFG @ KCR, DET @ CHC
 
 ## Bullpens GASSED tonight
 Athletics, Pittsburgh Pirates, San Diego Padres, Seattle Mariners, San Francisco Giants, Tampa Bay Rays, Texas Rangers, Minnesota Twins

@@ -1,13 +1,13 @@
 # EdgeStat Daily Summary — 2026-07-21
 
-## 🏥 Model Health: 64.7/100 [OK]
+## 🏥 Model Health: 64.4/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.9/100
-  - 🔴 Hit Rate Trend: 22.6/100
+  - 🟢 Calibration Freshness: 99.5/100
+  - 🔴 Hit Rate Trend: 18.5/100
   - 🔴 Brier Trend: 28.3/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 95.5/100
-  - 🔴 Edge Count: 54.3/100
+  - 🟡 Edge Count: 60.0/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.584)
@@ -20,9 +20,6 @@
 3. **SDP @ ATL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 4. **DET @ CHC YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 5. **PIT @ NYY YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-
-## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** TBR @ TOR TBR_ML -- 65% / +21.8% (score 2.5)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -60,9 +57,9 @@
 - Hot teams: **2** | Cold teams: **2** | Over-heavy: 0 | Under-heavy: 6
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (39)
+## ⚠️ Anomaly Detector (41)
 - STEAM_MOVE: **34**
-- COMPOUND_BULLPEN: **4**
+- COMPOUND_BULLPEN: **6**
 - PEN_MISMATCH: **1**
   - NYM @ PHI (MLB): ML/TOTAL steam since open: ML -3.8pp toward NYM; total +9.5 (OVER) (8 snapshots)
   - NY @ IND (WNBA): ML/TOTAL steam since open: ML +3.1pp toward IND; total +4 (OVER) (7 snapshots)
