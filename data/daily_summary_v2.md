@@ -1,18 +1,18 @@
-# EdgeStat Daily Summary — 2026-07-20
+# EdgeStat Daily Summary — 2026-07-21
 
-## 🏥 Model Health: 63.0/100 [OK]
+## 🏥 Model Health: 62.0/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 100.0/100
+  - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 20.1/100
   - 🔴 Brier Trend: 22.1/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 95.5/100
+  - 🟢 Data Health: 90.9/100
   - 🔴 Edge Count: 54.3/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.58)
-- **Total games on board:** 127
-- **Strong home favorites:** 8 | **Strong road dogs:** 4
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.583)
+- **Total games on board:** 139
+- **Strong home favorites:** 6 | **Strong road dogs:** 2
 
 ## 🎯 Top 5 Best Bets
 1. **OAK @ ARI YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
@@ -22,12 +22,10 @@
 5. **PIT @ NYY YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** SDP @ ATL ATL_ML -- 70% / +22.5% (score 2.5)
-- [STRONG] **[MLB]** MIN @ CLE MIN_ML -- 67% / +22.4% (score 2.5)
-- [STRONG] **[MLB]** WSN @ COL WSN_ML -- 68% / +22.2% (score 2.5)
+- [STRONG] **[MLB]** SDP @ ATL ATL_ML -- 70% / +22.4% (score 2.5)
 
-## 📡 Sharp Action (Line Movement)
-- [MODERATE] **CHW @ TEX** over_7.5: 51.22% → 54.55% (+3.3pp)
+## 📉 Strong UNDER Signals
+- [STRONG 5.0] **NYM @ MIL** model 7.74 vs market 8.5
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -55,50 +53,49 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (5)
+## ⚡ Pre-Game HIGH Conviction (4)
 - [MLS] **Colorado Rapids** HOME (None L10) · model 73.6% fair -279
 - [MLS] **Vancouver Whitecaps** AWAY (None L10) · model 72.2% fair -260
-- [WNBA] **Dallas Wings** HOME (4-0 L10) · model 70.0% fair -233
 - [MLS] **Charlotte FC** HOME (None L10) · model 65.0% fair -185
 - [MLS] **Seattle Sounders FC** AWAY (0-1 L10) · model 63.6% fair -175
 
 ## 🔥/❄️ Heat / Cold Signals
-- Hot teams: **4** | Cold teams: **3** | Over-heavy: 0 | Under-heavy: 5
+- Hot teams: **2** | Cold teams: **2** | Over-heavy: 0 | Under-heavy: 6
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (45)
-- STEAM_MOVE: **38**
-- COMPOUND_BULLPEN: **6**
+## ⚠️ Anomaly Detector (40)
+- STEAM_MOVE: **34**
+- COMPOUND_BULLPEN: **5**
 - PEN_MISMATCH: **1**
   - NYM @ PHI (MLB): ML/TOTAL steam since open: ML -3.8pp toward NYM; total +9.5 (OVER) (8 snapshots)
   - NY @ IND (WNBA): ML/TOTAL steam since open: ML +3.1pp toward IND; total +4 (OVER) (7 snapshots)
-  - NY @ DAL (WNBA): TOTAL steam since open: ML -1.7pp toward NY; total -4 (UNDER) (4 snapshots)
   - CON @ PHX (WNBA): TOTAL steam since open: ML +1.0pp toward PHX; total -3 (UNDER) (4 snapshots)
   - MIN @ CHC (MLB): TOTAL steam since open: ML +0.6pp toward CHC; total -2.5 (UNDER) (8 snapshots)
+  - IND @ LV (WNBA): ML/TOTAL steam since open: ML +4.7pp toward LV; total -2 (UNDER) (5 snapshots)
 
-## 💰 Today's Portfolio (10 picks)
-- Total stake: **$335.0** (33.5% of $1000 bankroll)
-- Expected EV: **$20.89**
+## 💰 Today's Portfolio (9 picks)
+- Total stake: **$330.0** (33.0% of $1000 bankroll)
+- Expected EV: **$19.96**
   - #1 [NRFI] $50 on OAK @ ARI YRFI (1st-inning OVER 0.5) (P=80%)
   - #2 [NRFI] $50 on SDP @ ATL YRFI (1st-inning OVER 0.5) (P=78%)
   - #3 [NRFI] $50 on WSN @ COL YRFI (1st-inning OVER 0.5) (P=78%)
   - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
-## 🎯 Convergence Picks (10 stacked games)
-- ELITE: **2** · HIGH: 1 · MED: 7
+## 🎯 Convergence Picks (9 stacked games)
+- ELITE: **2** · HIGH: 1 · MED: 6
   - [ELITE] New York Liberty @ Dallas Wings : 5 signals (PREGAME, HEAT_COLD, HEAT_COLD, ATS)
   - [ELITE] Minnesota Lynx @ Seattle Storm : 4 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ATS)
   - [HIGH] St. Louis CITY SC @ LA Galaxy : 3 signals (PREGAME, ATS, ATS)
-  - [MED] New York Knicks @ San Antonio Spurs : 2 signals (ATS, ATS)
   - [MED] Atlanta United FC @ Charlotte FC : 2 signals (PREGAME, ATS)
+  - [MED] Seattle Sounders FC @ Austin FC : 2 signals (PREGAME, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (10)
+## ⚾ Top MLB Pitcher K Plays (9)
 - **Andrew Alvarez** OVER 6.5 K (78%) fair -349
 - **Jacob Misiorowski** OVER 7.5 K (77%) fair -332
-- **Joe Ryan** OVER 5.5 K (73%) fair -270
 - **Braxton Ashcraft** OVER 5.5 K (73%) fair -270
 - **Jacob deGrom** OVER 5.5 K (73%) fair -270
+- **Dylan Cease** OVER 7.5 K (69%) fair -223
 
 ## 🏀 NBA Player Heat (1 HOT / 2 COLD)
   - 🔥 **Zach Edey** (MEM): L5 15.6/13.8/1.4 vs season 13.6/11.1/1.1 [REB +2.7]
@@ -108,9 +105,9 @@
 ## 🥊 UFC Fight Matchups (UFC Fight Night: Ankalaev vs. Guskov)
   - [FAVORITE] **Magomed Tuchalov** (6-0-0) vs Brendson Ribeiro -- fair -193
   - [LEAN] **Valter Walker** (15-1-0) vs Thomas Petersen -- fair -162
+  - [LEAN] **Muhammad Said** (9-0-0) vs Dustin Jacoby -- fair -159
   - [LEAN] **Nurullo Aliev** (11-0-0) vs Mike Davis -- fair -151
   - [LEAN] **Islam Dulatov** (12-1-0) vs Wellington Turman -- fair -146
-  - [COIN_FLIP] **Tyrell Fortune** (18-3-0) vs Rizvan Kuniev -- fair -130
 
 ## ⛳ Golf Player Heat (from Corales Puntacana Championship)
   - 🔥 T1 **Stefano Mazzoli** (Italy): -20 total -- finished T1, Sunday -1.0 vs tourney avg
@@ -122,17 +119,17 @@
   - ❄️ **Dylan Frittelli** (South Africa): Sunday +8.2 vs tourney avg
   - ❄️ **Jack Senior** (England): Sunday +5.5 vs tourney avg
 
-## 🔥 MLB Batter Heat (35 HOT / 44 COLD)
-  - 🔥 **Steven Kwan** (CLE): L14 .421 / season .239 (+182pts)
-  - 🔥 **Miguel Rojas** (LAD): L14 .429 / season .293 (+136pts)
-  - 🔥 **Tyler Stephenson** (CIN): L14 .383 / season .247 (+136pts)
-  - 🔥 **Curtis Mead** (WSH): L14 .389 / season .256 (+133pts)
+## 🔥 MLB Batter Heat (37 HOT / 48 COLD)
+  - 🔥 **Steven Kwan** (CLE): L14 .400 / season .238 (+162pts)
+  - 🔥 **Curtis Mead** (WSH): L14 .400 / season .262 (+138pts)
   - 🔥 **Luke Keaschall** (MIN): L14 .395 / season .263 (+132pts)
-  - ❄️ **Teoscar Hernández** (LAD): L14 .087 / season .241 (-154pts) -- FADE props
-  - ❄️ **Paul Goldschmidt** (NYY): L14 .106 / season .259 (-153pts) -- FADE props
-  - ❄️ **Brandon Marsh** (PHI): L14 .157 / season .293 (-136pts) -- FADE props
-  - ❄️ **Nathan Church** (STL): L14 .093 / season .226 (-133pts) -- FADE props
-  - ❄️ **Corbin Carroll** (AZ): L14 .118 / season .250 (-132pts) -- FADE props
+  - 🔥 **Tyler Stephenson** (CIN): L14 .367 / season .244 (+123pts)
+  - 🔥 **Lane Thomas** (KC): L14 .358 / season .244 (+114pts)
+  - ❄️ **Brandon Marsh** (PHI): L14 .137 / season .293 (-156pts) -- FADE props
+  - ❄️ **Colton Cowser** (BAL): L14 .062 / season .209 (-147pts) -- FADE props
+  - ❄️ **Teoscar Hernández** (LAD): L14 .104 / season .241 (-137pts) -- FADE props
+  - ❄️ **Paul Goldschmidt** (NYY): L14 .125 / season .259 (-134pts) -- FADE props
+  - ❄️ **Nathan Church** (STL): L14 .098 / season .231 (-133pts) -- FADE props
 
 ## 📈 Streak Regression Alerts (5)
 - [WNBA] Dallas Wings on W4 L10 4-0 -- Dallas Wings on W4 -- no historical sample
@@ -149,6 +146,6 @@
   - ⚠️ batter_rbis (Brier Δ -0.0052)
 
 ## 🤖 Self-Training Status
-- **WNBA**: n=39 games · hit rate 53.8% · bias +1.9pp
+- **WNBA**: n=40 games · hit rate 65.0% · bias +5.7pp [calibration applied]
 - **MLS**: n=5 games · hit rate 40.0% · bias +8.6pp
-- **MLB**: n=144 games · hit rate 51.4% · bias +2.9pp [calibration applied]
+- **MLB**: n=151 games · hit rate 48.3% · bias +0.2pp

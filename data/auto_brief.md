@@ -1,7 +1,7 @@
-# Tonight's Slate Brief — 2026-07-20
+# Tonight's Slate Brief — 2026-07-21
 
 ## Slate Quality: 55/100 (MEDIUM)
-_0% lineups confirmed · 10 rookie SPs_
+_0% lineups confirmed · 15 rookie SPs_
 **Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
@@ -41,8 +41,8 @@ _Lean late-inning OVER on these games; fade their save situations._
 ## NRFI/YRFI strong leans
 - **YRFI** (1st-inning OVER): OAK @ ARI, SDP @ ATL, WSN @ COL, MIA @ HOU, PIT @ NYY
 
-## NBA -- PLAYOFFS
-- New York Knicks @ San Antonio Spurs (53-29 vs 62-20) 94-90 | P(home) 0.0% fair +0 | Final
+## NBA -- PRESEASON
+- Memphis Grizzlies @ Atlanta Hawks (0-0 vs 0-0)  | P(home) 55.0% fair -122 | Scheduled
 
 ## NHL -- PRESEASON
 - Montreal Canadiens @ Toronto Maple Leafs (0-0-0 vs 0-0-0)  | P(home) 52.9% fair -112 | Scheduled
@@ -52,22 +52,21 @@ _Lean late-inning OVER on these games; fade their save situations._
 - Chicago Blackhawks @ Minnesota Wild (0-0-0 vs 0-0-0)  | P(home) 52.9% fair -112 | Scheduled
 
 ## KBO -- 2026 Korean Baseball
-- Hanwha Eagles @ KIA Tigers | P(home) 73.9% fair -283 | total 8 R
-- NC Dinos @ LG Twins | P(home) 63.9% fair -177 | total 8 R
-- Doosan Bears @ KT Wiz | P(home) 49.8% fair +101 | total 8 R
-- SSG Landers @ Lotte Giants | P(home) 46.5% fair +115 | total 9 R
-- Samsung Lions @ Kiwoom Heroes | P(home) 32.0% fair +212 | total 9 R
-- **KBO POD:** LG Twins ML vs NC Dinos (KBO) (MED)
+- Hanwha Eagles @ KIA Tigers | P(home) 72.8% fair -267 | total 9 R
+- NC Dinos @ LG Twins | P(home) 63.1% fair -171 | total 9 R
+- Doosan Bears @ KT Wiz | P(home) 49.8% fair +101 | total 9 R
+- SSG Landers @ Lotte Giants | P(home) 45.8% fair +118 | total 9 R
+- Samsung Lions @ Kiwoom Heroes | P(home) 33.2% fair +201 | total 9 R
+- **KBO POD:** LG Twins ML vs NC Dinos (KBO) (HIGH)
 
-## LoL Esports -- 0 live, 6 upcoming
-- [NLC] Bulldog Esports vs Brod & Friends BO3 | P(A) 50.0% fair -100/-100
-- [NLC] Verdant vs Absolved BO3 | P(A) 50.0% fair -100/-100
-- [NLC] Lundqvist Lightside vs Bardicted to U BO3 | P(A) 50.0% fair -100/-100
-- [NLC] Arctic Pandas vs Sørby Esports BO3 | P(A) 50.0% fair -100/-100
+## LoL Esports -- 0 live, 4 upcoming
 - [LPL] LGD GAMING vs EDWARD GAMING BO3 | P(A) 50.0% fair -100/-100
+- [LPL] TOP ESPORTS vs Xi'an Team WE BO3 | P(A) 42.4% fair +136/-136
+- [NLC] DMG Esports vs Epic Avalanche BO3 | P(A) 50.0% fair -100/-100
+- [NLC] Ruddy Corporation vs Rich Gang BO3 | P(A) 50.0% fair -100/-100
 - **LoL POT:** Xi'an Team WE ML vs TOP ESPORTS (LPL, BO3) (HIGH)
 
-## Player Play of the Day -- across all sports (3646 candidates scanned)
+## Player Play of the Day -- across all sports (3645 candidates scanned)
 - **[LOL]** Inspired UNDER 3.5 Kills | model 61.7% fair -161 (ELITE)
 - **[LOL]** ShowMaker OVER 3.5 Kills | model 62.5% fair -167 (ELITE)
 - **[LOL]** Peyz OVER 4.5 Kills | model 61.3% fair -158 (ELITE)

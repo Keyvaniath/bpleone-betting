@@ -1,58 +1,48 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-07-20T23:04:22 UTC_
+_Generated 2026-07-21T07:31:34 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -21
+- **Score:** -24
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
 - **Total STRONG:** 9
-- **Total FADES:** 57
-
-## Lock of the Night
-- **Subject:** George Kirby
-- **Source:** ELITE_BOARD
-- **Sport:** MLB
-- **Score:** 15.0
-- **Details:** CIN @ SEA
+- **Total FADES:** 60
 
 ## Top 5 Curated Picks
-1. **GOLF / Todd Clements** (GOLF_PLAYER, score=219.29)
-   - Play: Todd Clements (PLAYER_STRONG)
+1. **GOLF / Stefano Mazzoli** (GOLF_PLAYER, score=219.29)
+   - Play: Stefano Mazzoli (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Will Gordon** (GOLF_PLAYER, score=219.29)
-   - Play: Will Gordon (PLAYER_STRONG)
+2. **GOLF / Gordon Sargent** (GOLF_PLAYER, score=219.29)
+   - Play: Gordon Sargent (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-3. **WNBA / napheesa collier** (WNBA_PLAYER, score=148.83)
-   - Play: napheesa collier (PLAYER_STRONG)
-   - Rationale: Cross-sport top pick (WNBA_PLAYER)
-4. **WNBA / breanna stewart** (WNBA_PLAYER, score=113.08)
-   - Play: breanna stewart (PLAYER_STRONG)
-   - Rationale: Cross-sport top pick (WNBA_PLAYER)
-5. **MLB / Kyle Leahy** (MLB_PITCHER, score=57.5)
-   - Play: Kyle Leahy (PITCHER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_PITCHER)
+3. **MLB / HOME** (MLB_TEAM, score=75.12)
+   - Play: HOME (TEAM_STRONG)
+   - Rationale: Cross-sport top pick (MLB_TEAM)
+4. **MLB / AWAY** (MLB_TEAM, score=71.96)
+   - Play: AWAY (TEAM_STRONG)
+   - Rationale: Cross-sport top pick (MLB_TEAM)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
-  - Todd Clements top 10 finish
+  - Stefano Mazzoli top 10 finish
+  - Gordon Sargent top 10 finish
   - Will Gordon top 10 finish
-  - Ben James top 10 finish
 
 ## Slate ROI Projection
-- **Picks:** 2
-- **Avg edge:** -0.91%
+- **Picks:** 0
+- **Avg edge:** 0%
 - **Expected ROI (1/4 Kelly):** 0.0%
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **NHL** / anthony stolarz (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / calvin pickard (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / joseph woll (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / jake oettinger (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / kevin lankinen (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
+- **MLB** / Michael Wacha (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Janson Junk (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Erick Fedde (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Jacob deGrom (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Cristopher Sánchez (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
