@@ -1,13 +1,13 @@
 # EdgeStat Daily Summary — 2026-07-21
 
-## 🏥 Model Health: 62.6/100 [OK]
-- Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.9/100
-  - 🔴 Hit Rate Trend: 18.5/100
-  - 🔴 Brier Trend: 28.3/100
+## 🏥 Model Health: 71.9/100 [HEALTHY]
+- Solid health - some minor issues to monitor
+  - 🟢 Calibration Freshness: 100.0/100
+  - 🔴 Hit Rate Trend: 38.9/100
+  - 🔴 Brier Trend: 51.4/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 86.4/100
-  - 🟡 Edge Count: 60.0/100
+  - 🟡 Edge Count: 65.7/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.576)
@@ -20,6 +20,16 @@
 3. **SDP @ ATL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 4. **DET @ CHC YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 5. **PIT @ NYY YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+
+## 🐋 Whale Picks (Max Confluence)
+- [STRONG] **[MLB]** WSN @ COL WSN_ML -- 70% / +22.9% (score 2.5)
+- [STRONG] **[MLB]** LAD @ PHI LAD_ML -- 65% / +22.5% (score 2.5)
+
+## 📡 Sharp Action (Line Movement)
+- [MODERATE] **CIN @ SEA** under_8.5: 48.78% → 53.49% (+4.7pp)
+
+## 📉 Strong UNDER Signals
+- [ELITE 6.5] **CIN @ SEA** model 7.0 vs market 8.5
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -59,11 +69,10 @@
 - Hot teams: **2** | Cold teams: **2** | Over-heavy: 0 | Under-heavy: 6
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (51)
+## ⚠️ Anomaly Detector (48)
 - RESIDUAL_DIVERGENCE: **2**
-- STEAM_MOVE: **42**
-- COMPOUND_BULLPEN: **6**
-- PEN_MISMATCH: **1**
+- STEAM_MOVE: **41**
+- COMPOUND_BULLPEN: **5**
   - Minnesota Lynx (WNBA): Minnesota Lynx UNDERPERFORMING expected margin by 6.7pts in recent games -- model bias may persist
   - Portland Fire (WNBA): Portland Fire OUTPERFORMING expected margin by 9.0pts in recent games -- model bias may persist
   - NYM @ PHI (MLB): ML/TOTAL steam since open: ML -3.8pp toward NYM; total +9.5 (OVER) (8 snapshots)
@@ -79,20 +88,20 @@
   - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
-## 🎯 Convergence Picks (9 stacked games)
-- ELITE: **2** · HIGH: 1 · MED: 6
-  - [ELITE] Minnesota Lynx @ Seattle Storm : 5 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ATS)
-  - [ELITE] Las Vegas Aces @ Toronto Tempo : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
+## 🎯 Convergence Picks (12 stacked games)
+- ELITE: **2** · HIGH: 3 · MED: 7
+  - [ELITE] Minnesota Lynx @ Seattle Storm : 6 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ANOMALY)
+  - [ELITE] Phoenix Mercury @ Los Angeles Sparks : 4 signals (PREGAME, HEAT_COLD, HEAT_COLD, ATS)
+  - [HIGH] Chicago Sky @ New York Liberty : 3 signals (PREGAME, HEAT_COLD, ATS)
+  - [HIGH] Dallas Wings @ Portland Fire : 3 signals (PREGAME, ANOMALY, ATS)
   - [HIGH] St. Louis CITY SC @ LA Galaxy : 3 signals (PREGAME, ATS, ATS)
-  - [MED] Atlanta United FC @ Charlotte FC : 2 signals (PREGAME, ATS)
-  - [MED] CF Montréal @ Nashville SC : 2 signals (ATS, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (11)
+## ⚾ Top MLB Pitcher K Plays (9)
 - **Drew Rasmussen** OVER 4.5 K (77%) fair -332
 - **David Peterson** OVER 4.5 K (76%) fair -314
-- **Miles Mikolas** OVER 4.5 K (75%) fair -292
 - **Zack Wheeler** OVER 6.5 K (74%) fair -290
 - **Tyler Phillips** OVER 4.5 K (74%) fair -290
+- **Reynaldo López** OVER 4.5 K (71%) fair -243
 
 ## 🏀 NBA Player Heat (1 HOT / 2 COLD)
   - 🔥 **Zach Edey** (MEM): L5 15.6/13.8/1.4 vs season 13.6/11.1/1.1 [REB +2.7]
@@ -106,10 +115,17 @@
   - [LEAN] **Nurullo Aliev** (11-0-0) vs Mike Davis -- fair -151
   - [LEAN] **Islam Dulatov** (12-1-0) vs Wellington Turman -- fair -146
 
-## 🔥 MLB Batter Heat (37 HOT / 48 COLD)
-  - 🔥 **Steven Kwan** (CLE): L14 .400 / season .238 (+162pts)
+## ⛳ Golf Player Heat (from 3M Open)
+  - 🔥 T1 **Mackenzie Hughes** (Canada): +0 total -- finished T1
+  - 🔥 T2 **Taylor Moore** (USA): +0 total -- finished T2
+  - 🔥 T3 **Max Greyserman** (USA): +0 total -- finished T3
+  - 🔥 T4 **Rasmus Højgaard** (Denmark): +0 total -- finished T4
+  - 🔥 T5 **Lee Hodges** (USA): +0 total -- finished T5
+
+## 🔥 MLB Batter Heat (38 HOT / 47 COLD)
+  - 🔥 **Steven Kwan** (CLE): L14 .385 / season .237 (+148pts)
+  - 🔥 **Luke Keaschall** (MIN): L14 .405 / season .263 (+142pts)
   - 🔥 **Curtis Mead** (WSH): L14 .400 / season .262 (+138pts)
-  - 🔥 **Luke Keaschall** (MIN): L14 .395 / season .263 (+132pts)
   - 🔥 **Tyler Stephenson** (CIN): L14 .367 / season .244 (+123pts)
   - 🔥 **Lane Thomas** (KC): L14 .358 / season .244 (+114pts)
   - ❄️ **Brandon Marsh** (PHI): L14 .137 / season .293 (-156pts) -- FADE props
@@ -117,6 +133,11 @@
   - ❄️ **Teoscar Hernández** (LAD): L14 .104 / season .241 (-137pts) -- FADE props
   - ❄️ **Paul Goldschmidt** (NYY): L14 .125 / season .259 (-134pts) -- FADE props
   - ❄️ **Nathan Church** (STL): L14 .098 / season .231 (-133pts) -- FADE props
+
+## 📈 Streak Regression Alerts (3)
+- [WNBA] Los Angeles Sparks on L4 L10 1-4 -- Los Angeles Sparks on L4 -- no historical sample
+- [WNBA] Seattle Storm on L5 L10 0-5 -- Seattle Storm on L5 -- no historical sample
+- [WNBA] Minnesota Lynx on W6 L10 5-0 -- Minnesota Lynx on W6 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**

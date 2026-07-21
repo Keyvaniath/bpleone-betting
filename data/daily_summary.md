@@ -2,34 +2,32 @@
 
 **Model Confidence: 22.7/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
 
-_Pipeline health: **WARNING** (12/15 artifacts ok; 3 empty, 0 stale)._ 
+_Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
 
-_Generated at 2026-07-21T21:55:39 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-07-21T22:58:52 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
 **WSN @ COL - OVER_11.5**
 - Market: -110
-- Model probability: 80.8%
-- Raw edge: +54.19%
+- Model probability: 81.8%
+- Raw edge: +56.1%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
 
-## Full Slate (13 games)
+## Full Slate (11 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 6:40p ET | MIN @ CLE | Progressive Field | 73F 1mph | MIN_ML +5.21% |
-| 6:40p ET | LAD @ PHI | Citizens Bank Park | 74F 11mph | LAD_ML +28.08% |
-| 7:07p ET | TBR @ TOR | Rogers Centre | indoor | TBR_ML +29.91% |
-| 7:15p ET | SDP @ ATL | Truist Park | 81F 7mph | ATL_ML +16.78% |
-| 7:40p ET | SFG @ KCR | Kauffman Stadium | 79F 9mph | OVER_9.0 +40.08% |
+| 7:07p ET | TBR @ TOR | Rogers Centre | indoor | TBR_ML +29.36% |
+| 7:15p ET | SDP @ ATL | Truist Park | 79F 9mph | ATL_ML +17.21% |
+| 7:40p ET | SFG @ KCR | Kauffman Stadium | 78F 9mph | OVER_9.0 +39.4% |
 | 7:40p ET | NYM @ MIL | American Family Field | indoor | -- |
-| 8:05p ET | DET @ CHC | Wrigley Field | 65F 16mph | OVER_8.5 +32.24% |
+| 8:05p ET | DET @ CHC | Wrigley Field | 66F 16mph | OVER_8.5 +32.98% |
 | 8:05p ET | CHW @ TEX | Globe Life Field | indoor | OVER_8.5 +37.01% |
 | 8:10p ET | MIA @ HOU | Daikin Park | indoor | OVER_8.5 +42.81% |
-| 8:40p ET | WSN @ COL | Coors Field | 84F 6mph | OVER_11.5 +54.19% |
+| 8:40p ET | WSN @ COL | Coors Field | 76F 13mph | OVER_11.5 +56.1% |
 | 9:38p ET | STL @ LAA | Angel Stadium | 74F 4mph | UNDER_9.5 +7.45% |
 | 9:40p ET | OAK @ ARI | Chase Field | indoor | OAK_ML +5.78% |
 | 9:40p ET | CIN @ SEA | T-Mobile Park | indoor | UNDER_8.5 +39.16% |
@@ -68,17 +66,15 @@ Cumulative graded plays: 6440. Wins: 2613. Hit rate: 40.6%.
 |---|---|---|---|---|---|
 | CHW @ TEX | 29.4% | +240 | 6.12 | +159 | -159 |
 | CIN @ SEA | 42.4% | +136 | 4.29 | +204 | -204 |
-| DET @ CHC | 25.1% | +299 | 6.17 | +141 | -141 |
-| LAD @ PHI | 55.2% | -123 | 3.17 | +367 | -367 |
+| DET @ CHC | 25.1% | +299 | 6.21 | +141 | -141 |
 | MIA @ HOU | 40.4% | +148 | 4.53 | +256 | -256 |
-| MIN @ CLE | 60.1% | -151 | 2.52 | +177 | -177 |
 | NYM @ MIL | 45.0% | +122 | 3.99 | +125 | -125 |
 | OAK @ ARI | 23.9% | +319 | 7.16 | +191 | -191 |
-| SDP @ ATL | 25.1% | +299 | 7.11 | -142 | +142 |
-| SFG @ KCR | 33.4% | +200 | 5.22 | +215 | -215 |
-| STL @ LAA | 42.3% | +137 | 4.42 | +132 | -132 |
+| SDP @ ATL | 25.1% | +299 | 7.13 | -143 | +143 |
+| SFG @ KCR | 33.4% | +200 | 5.21 | +215 | -215 |
+| STL @ LAA | 42.3% | +137 | 4.41 | +132 | -132 |
 | TBR @ TOR | 41.0% | +144 | 4.46 | +392 | -392 |
-| WSN @ COL | 31.5% | +217 | 5.54 | +594 | -594 |
+| WSN @ COL | 31.5% | +217 | 5.29 | +549 | -549 |
 
 ## Team Form (last 10)
 
