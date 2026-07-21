@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-07-21T15:51:46",
-  "n_settled": 6338,
+  "generated_at": "2026-07-21T21:55:50",
+  "n_settled": 6339,
   "n_families_transformed": 24,
   "n_families_bucketed": 14,
   "ece_before": 0.0883,
   "ece_after": 0.017,
-  "ece_improvement": 0.0713,
-  "brier_before": 0.2105,
-  "brier_after": 0.19428,
+  "ece_improvement": 0.0712,
+  "brier_before": 0.21049,
+  "brier_after": 0.19429,
   "method_note": "Per market family, a monotonic (isotonic) curve maps the model's predicted probability to the realized hit rate, learned from settled outcomes. Bucketed for well-sampled families (preserves ranking), a family-average Bayesian blend for mid-sample, identity below that. ECE = expected calibration error (lower = the displayed % is truer). This makes the model honest at the source; it does not create edge (that needs a market price).",
   "families": [
     {
@@ -519,6 +519,36 @@
       }
     },
     {
+      "family": "over",
+      "n": 113,
+      "method": "bucketed",
+      "avg_pred_raw": 0.6376,
+      "avg_pred_calibrated": 0.589,
+      "realized": 0.5752,
+      "ece_raw": 0.0624,
+      "ece_calibrated": 0.0198,
+      "transform": {
+        "anchors": [
+          [
+            0.5772,
+            0.5145
+          ],
+          [
+            0.6028,
+            0.5145
+          ],
+          [
+            0.6188,
+            0.6445
+          ],
+          [
+            0.7522,
+            0.7007
+          ]
+        ]
+      }
+    },
+    {
       "family": "3pm_under",
       "n": 44,
       "method": "family_avg",
@@ -599,36 +629,6 @@
           [
             0.8539,
             0.8011
-          ]
-        ]
-      }
-    },
-    {
-      "family": "over",
-      "n": 112,
-      "method": "bucketed",
-      "avg_pred_raw": 0.6379,
-      "avg_pred_calibrated": 0.586,
-      "realized": 0.5714,
-      "ece_raw": 0.0665,
-      "ece_calibrated": 0.0333,
-      "transform": {
-        "anchors": [
-          [
-            0.5772,
-            0.5146
-          ],
-          [
-            0.6033,
-            0.5146
-          ],
-          [
-            0.619,
-            0.6357
-          ],
-          [
-            0.7522,
-            0.7007
           ]
         ]
       }

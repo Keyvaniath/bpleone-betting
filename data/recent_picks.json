@@ -1,33 +1,33 @@
 {
- "generated_at": "2026-07-21T15:51:14",
+ "generated_at": "2026-07-21T21:54:32",
  "stake_assumption": "1u flat per pick",
  "total_picks": 10000,
- "n_settled": 6439,
- "n_pending": 572,
- "n_void": 2989,
- "wins": 2609,
+ "n_settled": 6440,
+ "n_pending": 573,
+ "n_void": 2987,
+ "wins": 2610,
  "losses": 3823,
  "pushes": 7,
- "hit_rate": 0.4056,
- "net_units": -1045.296,
- "roi_pct": -16.25,
- "n_calibrated_picks": 9200,
+ "hit_rate": 0.4057,
+ "net_units": -1044.387,
+ "roi_pct": -16.23,
+ "n_calibrated_picks": 9203,
  "calibrated_reliability": {
-  "n": 6338,
+  "n": 6339,
   "ece_raw": 0.0883,
   "ece_calibrated": 0.017,
-  "brier_raw": 0.2105,
-  "brier_calibrated": 0.19428,
+  "brier_raw": 0.21049,
+  "brier_calibrated": 0.19429,
   "note": "In-sample over the settled ledger (the isotonic transform is fit on these same outcomes); held-out 70/30 validation is in recalibration_map.json. p_predicted = raw model prob (kept untouched for the learning loop); p_calibrated = honest prob stamped per pick. Lower ECE/Brier on the calibrated column = the displayed % is truer."
  },
  "curated": {
-  "n_settled": 924,
-  "wins": 694,
+  "n_settled": 925,
+  "wins": 695,
   "losses": 223,
   "pushes": 7,
-  "hit_rate": 0.7568,
-  "net_units": 192.977,
-  "roi_pct": 21.04,
+  "hit_rate": 0.7571,
+  "net_units": 193.886,
+  "roi_pct": 21.12,
   "sources": [
    "consensus_hit_elite",
    "consensus_hit_strong",
@@ -45,7 +45,7 @@
  "n_resettled_this_run": 0,
  "n_voided_this_run": 0,
  "n_duplicates_collapsed_this_run": 0,
- "n_duplicate_adds_blocked_this_run": 96,
+ "n_duplicate_adds_blocked_this_run": 101,
  "n_reconciled_settled_voids": 0,
  "n_bootstrapped_from_locks_history": 0,
  "by_source": {
@@ -275,13 +275,13 @@
    "roi_pct": 12.31
   },
   "top_25_board": {
-   "n": 407,
-   "wins": 292,
+   "n": 408,
+   "wins": 293,
    "losses": 110,
    "pushes": 5,
-   "net_units": 118.848,
-   "hit_rate": 0.7264,
-   "roi_pct": 29.56
+   "net_units": 119.757,
+   "hit_rate": 0.727,
+   "roi_pct": 29.72
   },
   "sharp_elite": {
    "n": 16,
@@ -1584,12 +1584,12 @@
    "hit_rate": 0.6463
   },
   "over": {
-   "n": 114,
-   "wins": 64,
+   "n": 115,
+   "wins": 65,
    "losses": 48,
    "pushes": 2,
-   "net_units": 5.041,
-   "hit_rate": 0.5714
+   "net_units": 5.95,
+   "hit_rate": 0.5752
   },
   "1_plus_xbh": {
    "n": 1823,
@@ -2018,12 +2018,12 @@
    "hit_rate": 0.6463
   },
   "over": {
-   "n": 114,
-   "wins": 64,
+   "n": 115,
+   "wins": 65,
    "losses": 48,
    "pushes": 2,
-   "net_units": 5.041,
-   "hit_rate": 0.5714
+   "net_units": 5.95,
+   "hit_rate": 0.5752
   },
   "mlb_xbh_0.5_over": {
    "n": 1823,
@@ -2341,15 +2341,15 @@
  "by_sport": {
   "MLB": {
    "n": 7024,
-   "settled": 4778,
-   "wins": 1534,
+   "settled": 4779,
+   "wins": 1535,
    "losses": 3237,
    "pushes": 7,
-   "pending": 467,
-   "void": 1779,
-   "net_units": -1190.179,
-   "hit_rate": 0.3215,
-   "roi_pct": -24.95,
+   "pending": 470,
+   "void": 1775,
+   "net_units": -1189.27,
+   "hit_rate": 0.3217,
+   "roi_pct": -24.92,
    "markets": 34
   },
   "UFC": {
@@ -2358,8 +2358,8 @@
    "wins": 24,
    "losses": 23,
    "pushes": 0,
-   "pending": 10,
-   "void": 148,
+   "pending": 8,
+   "void": 150,
    "net_units": 62.86,
    "hit_rate": 0.5106,
    "roi_pct": 133.74,
@@ -2510,38 +2510,13 @@
   }
  },
  "last_7_days": {
-  "wins": 70,
+  "wins": 71,
   "losses": 61,
-  "net_units": -10.629,
-  "hit_rate": 0.5344
+  "net_units": -9.72,
+  "hit_rate": 0.5379
  },
  "note": "Unified pick ledger -- records every pick the model surfaces (top_25 board, whales, consensus, unders, sharp action, locks, POD) and settles each against actual outcomes. Per-source W-L feeds back into calibration so the model learns which modules are reliable. THIS is the training signal.",
  "picks": [
-  {
-   "source": "top_25_board",
-   "sport": "MLB",
-   "player_or_matchup": "ATL @ STL",
-   "market": "ML_AWAY",
-   "prob": 0.5578,
-   "raw_prob": 0.6276,
-   "edge_pct": 16.6,
-   "fair_american": 109,
-   "primary_source_module": "today",
-   "date": "2026-07-11",
-   "pick_id": "top_25_board|MLB|ATL___STL|ML_AWAY|2026-07-11",
-   "settled": true,
-   "result": "lost",
-   "payout_units": -1.0,
-   "recorded_at": "2026-07-11T21:42:22",
-   "p_calibrated": 0.5984,
-   "outcome": {
-    "final_score": "ATL 1 @ STL 4",
-    "total_runs": 5,
-    "verify": "ATL @ STL: final 1-4 (total 5) on 2026-07-11",
-    "check": "verified"
-   },
-   "settled_at": "2026-07-12T10:02:28"
-  },
   {
    "source": "top_25_board",
    "sport": "MLB",
@@ -2583,7 +2558,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-11T21:42:22",
-   "p_calibrated": 0.5146,
+   "p_calibrated": 0.5145,
    "outcome": {
     "final_score": "CHC 5 @ CIN 3",
     "total_runs": 8,
@@ -2889,7 +2864,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-12T01:44:36",
-   "p_calibrated": 0.6033,
+   "p_calibrated": 0.612,
    "outcome": {
     "final_score": "LAA 2 @ MIN 4",
     "total_runs": 6,
@@ -2914,7 +2889,7 @@
    "result": "won",
    "payout_units": 0.9091,
    "recorded_at": "2026-07-12T01:44:36",
-   "p_calibrated": 0.5956,
+   "p_calibrated": 0.6039,
    "outcome": {
     "final_score": "MIL 5 @ PIT 14",
     "total_runs": 19,
@@ -2964,7 +2939,7 @@
    "result": "won",
    "payout_units": 0.9091,
    "recorded_at": "2026-07-12T06:28:16",
-   "p_calibrated": 0.6048,
+   "p_calibrated": 0.6136,
    "outcome": {
     "final_score": "CHC 8 @ CIN 4",
     "total_runs": 12,
@@ -6868,7 +6843,7 @@
    "result": "won",
    "payout_units": 0.9091,
    "recorded_at": "2026-07-19T07:28:03",
-   "p_calibrated": 0.5879,
+   "p_calibrated": 0.5958,
    "outcome": {
     "final_score": "MIN 1 @ CHC 10",
     "total_runs": 11,
@@ -6943,7 +6918,7 @@
    "result": "won",
    "payout_units": 0.9091,
    "recorded_at": "2026-07-19T14:20:41",
-   "p_calibrated": 0.6218,
+   "p_calibrated": 0.6315,
    "outcome": {
     "final_score": "CIN 9 @ COL 6",
     "total_runs": 15,
@@ -6968,7 +6943,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-07-19T15:01:46",
-   "p_calibrated": 0.5817,
+   "p_calibrated": 0.5892,
    "outcome": {
     "final_score": "MIA 1 @ MIL 3",
     "total_runs": 4,
@@ -7595,12 +7570,36 @@
     "check": "verified"
    },
    "settled_at": "2026-07-21T14:27:31"
+  },
+  {
+   "source": "top_25_board",
+   "sport": "MLB",
+   "player_or_matchup": "CHW @ TEX",
+   "market": "OVER_8.5",
+   "prob": 0.599,
+   "raw_prob": 0.7177,
+   "edge_pct": 14.4,
+   "fair_american": -110,
+   "primary_source_module": "today_reco",
+   "date": "2026-07-21",
+   "pick_id": "top_25_board|MLB|CHW___TEX|OVER_8_5|2026-07-21",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.9091,
+   "recorded_at": "2026-07-21T07:31:23",
+   "p_calibrated": 0.5145,
+   "outcome": {
+    "final_score": "CHW 10 @ TEX 3",
+    "total_runs": 13,
+    "verify": "CHW @ TEX: final 10-3 (total 13 runs) on 2026-07-21"
+   },
+   "settled_at": "2026-07-21T19:56:01"
   }
  ],
  "recent_window": 200,
  "date_range": [
   "2026-05-19",
-  "2026-07-20"
+  "2026-07-21"
  ],
- "digest_generated_at": "2026-07-21T15:51:15"
+ "digest_generated_at": "2026-07-21T21:54:33"
 }

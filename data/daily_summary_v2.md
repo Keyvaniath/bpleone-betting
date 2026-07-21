@@ -1,18 +1,18 @@
 # EdgeStat Daily Summary — 2026-07-21
 
-## 🏥 Model Health: 64.4/100 [OK]
+## 🏥 Model Health: 62.6/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.5/100
+  - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 18.5/100
   - 🔴 Brier Trend: 28.3/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 95.5/100
+  - 🟢 Data Health: 86.4/100
   - 🟡 Edge Count: 60.0/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.584)
-- **Total games on board:** 123
-- **Strong home favorites:** 6 | **Strong road dogs:** 2
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.576)
+- **Total games on board:** 129
+- **Strong home favorites:** 8 | **Strong road dogs:** 5
 
 ## 🎯 Top 5 Best Bets
 1. **OAK @ ARI YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
@@ -47,8 +47,10 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (4)
+## ⚡ Pre-Game HIGH Conviction (6)
+- [WNBA] **Dallas Wings** AWAY (4-1 L10) · model 74.1% fair -286
 - [MLS] **Colorado Rapids** HOME (None L10) · model 73.6% fair -279
+- [WNBA] **Las Vegas Aces** AWAY (3-1 L10) · model 72.3% fair -261
 - [MLS] **Vancouver Whitecaps** AWAY (None L10) · model 72.2% fair -260
 - [MLS] **Charlotte FC** HOME (None L10) · model 65.0% fair -185
 - [MLS] **Seattle Sounders FC** AWAY (0-1 L10) · model 63.6% fair -175
@@ -57,15 +59,16 @@
 - Hot teams: **2** | Cold teams: **2** | Over-heavy: 0 | Under-heavy: 6
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (41)
-- STEAM_MOVE: **34**
+## ⚠️ Anomaly Detector (51)
+- RESIDUAL_DIVERGENCE: **2**
+- STEAM_MOVE: **42**
 - COMPOUND_BULLPEN: **6**
 - PEN_MISMATCH: **1**
+  - Minnesota Lynx (WNBA): Minnesota Lynx UNDERPERFORMING expected margin by 6.7pts in recent games -- model bias may persist
+  - Portland Fire (WNBA): Portland Fire OUTPERFORMING expected margin by 9.0pts in recent games -- model bias may persist
   - NYM @ PHI (MLB): ML/TOTAL steam since open: ML -3.8pp toward NYM; total +9.5 (OVER) (8 snapshots)
   - NY @ IND (WNBA): ML/TOTAL steam since open: ML +3.1pp toward IND; total +4 (OVER) (7 snapshots)
   - CON @ PHX (WNBA): TOTAL steam since open: ML +1.0pp toward PHX; total -3 (UNDER) (4 snapshots)
-  - MIN @ CHC (MLB): TOTAL steam since open: ML +0.6pp toward CHC; total -2.5 (UNDER) (8 snapshots)
-  - IND @ LV (WNBA): ML/TOTAL steam since open: ML +4.7pp toward LV; total -2 (UNDER) (5 snapshots)
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
@@ -82,7 +85,7 @@
   - [ELITE] Las Vegas Aces @ Toronto Tempo : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
   - [HIGH] St. Louis CITY SC @ LA Galaxy : 3 signals (PREGAME, ATS, ATS)
   - [MED] Atlanta United FC @ Charlotte FC : 2 signals (PREGAME, ATS)
-  - [MED] Seattle Sounders FC @ Austin FC : 2 signals (PREGAME, ATS)
+  - [MED] CF Montréal @ Nashville SC : 2 signals (ATS, ATS)
 
 ## ⚾ Top MLB Pitcher K Plays (11)
 - **Drew Rasmussen** OVER 4.5 K (77%) fair -332
@@ -102,16 +105,6 @@
   - [LEAN] **Muhammad Said** (9-0-0) vs Dustin Jacoby -- fair -159
   - [LEAN] **Nurullo Aliev** (11-0-0) vs Mike Davis -- fair -151
   - [LEAN] **Islam Dulatov** (12-1-0) vs Wellington Turman -- fair -146
-
-## ⛳ Golf Player Heat (from Corales Puntacana Championship)
-  - 🔥 T1 **Stefano Mazzoli** (Italy): -20 total -- finished T1, Sunday -1.0 vs tourney avg
-  - 🔥 T2 **Gordon Sargent** (USA): -19 total -- finished T2, Sunday -0.2 vs tourney avg
-  - 🔥 T4 **Will Gordon** (USA): -18 total -- finished T4, Sunday -1.5 vs tourney avg
-  - 🔥 T5 **Ben James** (USA): -18 total -- finished T5
-  - 🔥 T6 **Marcel Schneider** (Germany): -17 total -- finished T6
-  - ❄️ **Robert Streb** (USA): Sunday +8.5 vs tourney avg
-  - ❄️ **Dylan Frittelli** (South Africa): Sunday +8.2 vs tourney avg
-  - ❄️ **Jack Senior** (England): Sunday +5.5 vs tourney avg
 
 ## 🔥 MLB Batter Heat (37 HOT / 48 COLD)
   - 🔥 **Steven Kwan** (CLE): L14 .400 / season .238 (+162pts)

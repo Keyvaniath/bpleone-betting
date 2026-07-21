@@ -1,12 +1,12 @@
 # Tonight's Slate Brief — 2026-07-21
 
-## Slate Quality: 52/100 (LOW)
-_0% lineups confirmed · 15 rookie SPs_
-**Recommendation:** Defensive sizing tonight; stick to highest-confidence plays.
+## Slate Quality: 81/100 (HIGH)
+_88% lineups confirmed · 15 rookie SPs_
+**Recommendation:** Play normal Kelly sizing.
 
 ## Slate
-- **15 games** scheduled
-- **26 best bets** scored: 0 DK · 0 PP · 13 NRFI · 0 SGP
+- **13 games** scheduled
+- **28 best bets** scored: 0 DK · 0 PP · 13 NRFI · 0 SGP
 - **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$44.93
 - **MC simulation:** EV +$161.2, 88% P(profit), p05 $-70.64 / p95 $364.22
 
@@ -35,7 +35,7 @@ _0% lineups confirmed · 15 rookie SPs_
    - Edge +27.7% looks big but only 0 settled props on this player — model unproven
 
 ## Weather leans
-- **OVER lean** (wind out + warm): SFG @ KCR, DET @ CHC
+- **OVER lean** (wind out + warm): DET @ CHC
 
 ## Bullpens GASSED tonight
 Athletics, Pittsburgh Pirates, San Diego Padres, Seattle Mariners, San Francisco Giants, Tampa Bay Rays, Texas Rangers, Minnesota Twins
@@ -43,6 +43,10 @@ _Lean late-inning OVER on these games; fade their save situations._
 
 ## NRFI/YRFI strong leans
 - **YRFI** (1st-inning OVER): OAK @ ARI, WSN @ COL, SDP @ ATL, DET @ CHC, PIT @ NYY
+
+## Golf -- 3M Open
+- **Leader:** ? (?) at #?
+- **Field:** 0 players  |  Status: Scheduled
 
 ## NBA -- PRESEASON
 - Memphis Grizzlies @ Atlanta Hawks (0-0 vs 0-0)  | P(home) 55.0% fair -122 | Scheduled
@@ -62,7 +66,7 @@ _Lean late-inning OVER on these games; fade their save situations._
 - Samsung Lions @ Kiwoom Heroes | P(home) 33.2% fair +201 | total 9 R
 - **KBO POD:** LG Twins ML vs NC Dinos (KBO) (HIGH)
 
-## LoL Esports -- 0 live, 6 upcoming
+## LoL Esports -- 0 live, 11 upcoming
 - [LPL] LGD GAMING vs EDWARD GAMING BO3 | P(A) 50.0% fair -100/-100
 - [LPL] TOP ESPORTS vs Xi'an Team WE BO3 | P(A) 42.4% fair +136/-136
 - [NLC] DMG Esports vs Epic Avalanche BO3 | P(A) 50.0% fair -100/-100
