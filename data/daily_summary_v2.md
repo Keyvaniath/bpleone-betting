@@ -1,31 +1,28 @@
 # EdgeStat Daily Summary — 2026-07-21
 
-## 🏥 Model Health: 62.0/100 [OK]
+## 🏥 Model Health: 64.7/100 [OK]
 - Operational but room to improve - check yellow components
   - 🟢 Calibration Freshness: 99.9/100
-  - 🔴 Hit Rate Trend: 20.1/100
-  - 🔴 Brier Trend: 22.1/100
+  - 🔴 Hit Rate Trend: 22.6/100
+  - 🔴 Brier Trend: 28.3/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 90.9/100
+  - 🟢 Data Health: 95.5/100
   - 🔴 Edge Count: 54.3/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.583)
-- **Total games on board:** 139
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.584)
+- **Total games on board:** 123
 - **Strong home favorites:** 6 | **Strong road dogs:** 2
 
 ## 🎯 Top 5 Best Bets
 1. **OAK @ ARI YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-2. **SDP @ ATL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-3. **WSN @ COL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-4. **MIA @ HOU YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
-5. **PIT @ NYY YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
+2. **WSN @ COL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+3. **SDP @ ATL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+4. **DET @ CHC YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+5. **PIT @ NYY YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** SDP @ ATL ATL_ML -- 70% / +22.4% (score 2.5)
-
-## 📉 Strong UNDER Signals
-- [STRONG 5.0] **NYM @ MIL** model 7.74 vs market 8.5
+- [STRONG] **[MLB]** TBR @ TOR TBR_ML -- 65% / +21.8% (score 2.5)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -63,9 +60,9 @@
 - Hot teams: **2** | Cold teams: **2** | Over-heavy: 0 | Under-heavy: 6
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (40)
+## ⚠️ Anomaly Detector (39)
 - STEAM_MOVE: **34**
-- COMPOUND_BULLPEN: **5**
+- COMPOUND_BULLPEN: **4**
 - PEN_MISMATCH: **1**
   - NYM @ PHI (MLB): ML/TOTAL steam since open: ML -3.8pp toward NYM; total +9.5 (OVER) (8 snapshots)
   - NY @ IND (WNBA): ML/TOTAL steam since open: ML +3.1pp toward IND; total +4 (OVER) (7 snapshots)
@@ -74,28 +71,28 @@
   - IND @ LV (WNBA): ML/TOTAL steam since open: ML +4.7pp toward LV; total -2 (UNDER) (5 snapshots)
 
 ## 💰 Today's Portfolio (9 picks)
-- Total stake: **$330.0** (33.0% of $1000 bankroll)
-- Expected EV: **$19.96**
-  - #1 [NRFI] $50 on OAK @ ARI YRFI (1st-inning OVER 0.5) (P=80%)
-  - #2 [NRFI] $50 on SDP @ ATL YRFI (1st-inning OVER 0.5) (P=78%)
-  - #3 [NRFI] $50 on WSN @ COL YRFI (1st-inning OVER 0.5) (P=78%)
+- Total stake: **$345.0** (34.5% of $1000 bankroll)
+- Expected EV: **$12.55**
+  - #1 [NRFI] $50 on OAK @ ARI YRFI (1st-inning OVER 0.5) (P=76%)
+  - #2 [NRFI] $50 on WSN @ COL YRFI (1st-inning OVER 0.5) (P=76%)
+  - #3 [NRFI] $50 on SDP @ ATL YRFI (1st-inning OVER 0.5) (P=75%)
   - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
 ## 🎯 Convergence Picks (9 stacked games)
 - ELITE: **2** · HIGH: 1 · MED: 6
-  - [ELITE] New York Liberty @ Dallas Wings : 5 signals (PREGAME, HEAT_COLD, HEAT_COLD, ATS)
-  - [ELITE] Minnesota Lynx @ Seattle Storm : 4 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ATS)
+  - [ELITE] Minnesota Lynx @ Seattle Storm : 5 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ATS)
+  - [ELITE] Las Vegas Aces @ Toronto Tempo : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
   - [HIGH] St. Louis CITY SC @ LA Galaxy : 3 signals (PREGAME, ATS, ATS)
   - [MED] Atlanta United FC @ Charlotte FC : 2 signals (PREGAME, ATS)
   - [MED] Seattle Sounders FC @ Austin FC : 2 signals (PREGAME, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (9)
-- **Andrew Alvarez** OVER 6.5 K (78%) fair -349
-- **Jacob Misiorowski** OVER 7.5 K (77%) fair -332
-- **Braxton Ashcraft** OVER 5.5 K (73%) fair -270
-- **Jacob deGrom** OVER 5.5 K (73%) fair -270
-- **Dylan Cease** OVER 7.5 K (69%) fair -223
+## ⚾ Top MLB Pitcher K Plays (11)
+- **Drew Rasmussen** OVER 4.5 K (77%) fair -332
+- **David Peterson** OVER 4.5 K (76%) fair -314
+- **Miles Mikolas** OVER 4.5 K (75%) fair -292
+- **Zack Wheeler** OVER 6.5 K (74%) fair -290
+- **Tyler Phillips** OVER 4.5 K (74%) fair -290
 
 ## 🏀 NBA Player Heat (1 HOT / 2 COLD)
   - 🔥 **Zach Edey** (MEM): L5 15.6/13.8/1.4 vs season 13.6/11.1/1.1 [REB +2.7]
@@ -130,13 +127,6 @@
   - ❄️ **Teoscar Hernández** (LAD): L14 .104 / season .241 (-137pts) -- FADE props
   - ❄️ **Paul Goldschmidt** (NYY): L14 .125 / season .259 (-134pts) -- FADE props
   - ❄️ **Nathan Church** (STL): L14 .098 / season .231 (-133pts) -- FADE props
-
-## 📈 Streak Regression Alerts (5)
-- [WNBA] Dallas Wings on W4 L10 4-0 -- Dallas Wings on W4 -- no historical sample
-- [WNBA] New York Liberty on L4 L10 0-4 -- New York Liberty on L4 -- no historical sample
-- [WNBA] Golden State Valkyries on W5 L10 5-0 -- Golden State Valkyries on W5 -- no historical sample
-- [WNBA] Seattle Storm on L4 L10 1-4 -- Seattle Storm on L4 -- no historical sample
-- [WNBA] Minnesota Lynx on W5 L10 5-0 -- Minnesota Lynx on W5 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**

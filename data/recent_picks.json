@@ -1,17 +1,17 @@
 {
- "generated_at": "2026-07-21T07:31:23",
+ "generated_at": "2026-07-21T14:54:35",
  "stake_assumption": "1u flat per pick",
  "total_picks": 10000,
- "n_settled": 6438,
- "n_pending": 565,
- "n_void": 2997,
+ "n_settled": 6439,
+ "n_pending": 569,
+ "n_void": 2992,
  "wins": 2609,
- "losses": 3822,
+ "losses": 3823,
  "pushes": 7,
- "hit_rate": 0.4057,
- "net_units": -1044.296,
- "roi_pct": -16.24,
- "n_calibrated_picks": 9192,
+ "hit_rate": 0.4056,
+ "net_units": -1045.296,
+ "roi_pct": -16.25,
+ "n_calibrated_picks": 9197,
  "calibrated_reliability": {
   "n": 6338,
   "ece_raw": 0.0883,
@@ -21,13 +21,13 @@
   "note": "In-sample over the settled ledger (the isotonic transform is fit on these same outcomes); held-out 70/30 validation is in recalibration_map.json. p_predicted = raw model prob (kept untouched for the learning loop); p_calibrated = honest prob stamped per pick. Lower ECE/Brier on the calibrated column = the displayed % is truer."
  },
  "curated": {
-  "n_settled": 923,
+  "n_settled": 924,
   "wins": 694,
-  "losses": 222,
+  "losses": 223,
   "pushes": 7,
-  "hit_rate": 0.7576,
-  "net_units": 193.977,
-  "roi_pct": 21.18,
+  "hit_rate": 0.7568,
+  "net_units": 192.977,
+  "roi_pct": 21.04,
   "sources": [
    "consensus_hit_elite",
    "consensus_hit_strong",
@@ -40,12 +40,12 @@
   ],
   "definition": "Featured/recommended plays only -- Lock of the Day, Top 25, Whale, Sharp, Consensus (hit), Under Alerts, POD. Excludes the experimental prop feeds, which are tracked to train the model, not bet."
  },
- "n_added_this_run": 7,
+ "n_added_this_run": 1,
  "n_newly_settled_this_run": 0,
  "n_resettled_this_run": 0,
  "n_voided_this_run": 0,
  "n_duplicates_collapsed_this_run": 0,
- "n_duplicate_adds_blocked_this_run": 182,
+ "n_duplicate_adds_blocked_this_run": 97,
  "n_reconciled_settled_voids": 0,
  "n_bootstrapped_from_locks_history": 0,
  "by_source": {
@@ -401,13 +401,13 @@
    "roi_pct": 19.69
   },
   "mlb_under_alert": {
-   "n": 19,
+   "n": 20,
    "wins": 11,
-   "losses": 6,
+   "losses": 7,
    "pushes": 2,
-   "net_units": 4.01,
-   "hit_rate": 0.6471,
-   "roi_pct": 23.59
+   "net_units": 3.01,
+   "hit_rate": 0.6111,
+   "roi_pct": 16.72
   },
   "pod": {
    "n": 13,
@@ -1576,12 +1576,12 @@
    "hit_rate": 0.75
   },
   "under": {
-   "n": 86,
+   "n": 87,
    "wins": 53,
-   "losses": 28,
+   "losses": 29,
    "pushes": 5,
-   "net_units": 15.46,
-   "hit_rate": 0.6543
+   "net_units": 14.46,
+   "hit_rate": 0.6463
   },
   "over": {
    "n": 114,
@@ -2010,12 +2010,12 @@
    "hit_rate": 0.75
   },
   "under": {
-   "n": 86,
+   "n": 87,
    "wins": 53,
-   "losses": 28,
+   "losses": 29,
    "pushes": 5,
-   "net_units": 15.46,
-   "hit_rate": 0.6543
+   "net_units": 14.46,
+   "hit_rate": 0.6463
   },
   "over": {
    "n": 114,
@@ -2340,25 +2340,25 @@
  },
  "by_sport": {
   "MLB": {
-   "n": 7026,
-   "settled": 4777,
+   "n": 7024,
+   "settled": 4778,
    "wins": 1534,
-   "losses": 3236,
+   "losses": 3237,
    "pushes": 7,
-   "pending": 462,
-   "void": 1787,
-   "net_units": -1189.179,
-   "hit_rate": 0.3216,
-   "roi_pct": -24.93,
+   "pending": 464,
+   "void": 1782,
+   "net_units": -1190.179,
+   "hit_rate": 0.3215,
+   "roi_pct": -24.95,
    "markets": 34
   },
   "UFC": {
-   "n": 204,
+   "n": 205,
    "settled": 47,
    "wins": 24,
    "losses": 23,
    "pushes": 0,
-   "pending": 9,
+   "pending": 10,
    "void": 148,
    "net_units": 62.86,
    "hit_rate": 0.5106,
@@ -2496,52 +2496,27 @@
    "markets": 2
   },
   "NBA": {
-   "n": 3,
+   "n": 4,
    "settled": 0,
    "wins": 0,
    "losses": 0,
    "pushes": 0,
-   "pending": 3,
+   "pending": 4,
    "void": 0,
    "net_units": 0.0,
    "hit_rate": null,
    "roi_pct": null,
-   "markets": 2
+   "markets": 3
   }
  },
  "last_7_days": {
   "wins": 70,
-  "losses": 60,
-  "net_units": -9.629,
-  "hit_rate": 0.5385
+  "losses": 61,
+  "net_units": -10.629,
+  "hit_rate": 0.5344
  },
  "note": "Unified pick ledger -- records every pick the model surfaces (top_25 board, whales, consensus, unders, sharp action, locks, POD) and settles each against actual outcomes. Per-source W-L feeds back into calibration so the model learns which modules are reliable. THIS is the training signal.",
  "picks": [
-  {
-   "source": "golf_top_20",
-   "sport": "GOLF",
-   "player_or_matchup": "Tom McKibbin",
-   "market": "TOP_20",
-   "prob": 0.517,
-   "fair_american": -107,
-   "p_predicted": 0.517,
-   "matchup": "Genesis Scottish Open",
-   "date": "2026-07-11",
-   "pick_id": "golf_top_20|GOLF|Tom_McKibbin|TOP_20|2026-07-11",
-   "settled": true,
-   "result": "lost",
-   "payout_units": -1.0,
-   "recorded_at": "2026-07-11T15:26:03",
-   "p_calibrated": 0.4995,
-   "outcome": {
-    "tournament": "Genesis Scottish Open",
-    "finish": "T30",
-    "to_par": -5,
-    "market": "TOP_20",
-    "verify": "Tom McKibbin finished T30 (-5) at Genesis Scottish Open \u2014 TOP_20"
-   },
-   "settled_at": "2026-07-12T21:46:46"
-  },
   {
    "source": "top_25_board",
    "sport": "MLB",
@@ -7598,6 +7573,28 @@
     "verify": "MIN @ SEA: home scored 102 (line 75.0, bet over) on 2026-07-20"
    },
    "settled_at": "2026-07-21T06:43:58"
+  },
+  {
+   "source": "mlb_under_alert",
+   "sport": "MLB",
+   "player_or_matchup": "NYM @ MIL",
+   "market": "UNDER_8.5",
+   "prob": null,
+   "tier": "STRONG",
+   "under_signal_score": 5.02,
+   "date": "2026-07-20",
+   "pick_id": "mlb_under_alert|MLB|NYM___MIL|UNDER_8_5|2026-07-20",
+   "settled": true,
+   "result": "lost",
+   "payout_units": -1.0,
+   "recorded_at": "2026-07-20T23:18:27",
+   "outcome": {
+    "final_score": "NYM 3 @ MIL 8",
+    "total_runs": 11,
+    "verify": "NYM @ MIL: final 3-8 (total 11) on 2026-07-20",
+    "check": "verified"
+   },
+   "settled_at": "2026-07-21T14:27:31"
   }
  ],
  "recent_window": 200,
@@ -7605,5 +7602,5 @@
   "2026-05-19",
   "2026-07-20"
  ],
- "digest_generated_at": "2026-07-21T07:31:24"
+ "digest_generated_at": "2026-07-21T14:54:35"
 }
