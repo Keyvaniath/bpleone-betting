@@ -1,12 +1,12 @@
 # Tonight's Slate Brief — 2026-07-22
 
-## Slate Quality: 53/100 (LOW)
-_8% lineups confirmed · 14 rookie SPs_
-**Recommendation:** Defensive sizing tonight; stick to highest-confidence plays.
+## Slate Quality: 61/100 (MEDIUM)
+_23% lineups confirmed · 14 rookie SPs_
+**Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
 - **17 games** scheduled
-- **33 best bets** scored: 0 DK · 0 PP · 13 NRFI · 0 SGP
+- **34 best bets** scored: 0 DK · 0 PP · 13 NRFI · 0 SGP
 - **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$50.09
 - **MC simulation:** EV +$153.27, 86% P(profit), p05 $-81.77 / p95 $379.75
 
@@ -35,7 +35,7 @@ _8% lineups confirmed · 14 rookie SPs_
    - Edge +22.0% looks big but only 0 settled props on this player — model unproven
 
 ## Weather leans
-- **OVER lean** (wind out + warm): WSN @ COL
+- **OVER lean** (wind out + warm): WSN @ COL, SFG @ KCR
 
 ## Bullpens GASSED tonight
 Athletics, Tampa Bay Rays, Texas Rangers, Toronto Blue Jays, Minnesota Twins, Atlanta Braves, Chicago White Sox, Miami Marlins
@@ -67,15 +67,15 @@ _Lean late-inning OVER on these games; fade their save situations._
 - Samsung Lions @ Kiwoom Heroes | P(home) 36.9% fair +171 | total 10 R
 - **KBO POD:** LG Twins ML vs NC Dinos (KBO) (HIGH)
 
-## LoL Esports -- 0 live, 9 upcoming
-- [NLC] DMG Esports vs Epic Avalanche BO3 | P(A) 50.0% fair -100/-100
+## LoL Esports -- 1 live, 7 upcoming
 - [NLC] Ruddy Corporation vs Rich Gang BO3 | P(A) 50.0% fair -100/-100
 - [NLC] Deer Gaming vs 2 Massive BO3 | P(A) 50.0% fair -100/-100
 - [NLC] Lund Esports Organization vs VES BO3 | P(A) 50.0% fair -100/-100
 - [NACL] NRG vs CCG Esports BO3 | P(A) 46.3% fair +116/-116
+- [NACL] Ole Miss Esports vs Contingent Esports BO3 | P(A) 53.7% fair -116/+116
 - **LoL POT:** BILIBILI GAMING ML vs THUNDER TALK GAMING (LPL, BO3) (HIGH)
 
-## Player Play of the Day -- across all sports (3643 candidates scanned)
+## Player Play of the Day -- across all sports (3652 candidates scanned)
 - **[LOL]** Inspired UNDER 3.5 Kills | model 61.7% fair -161 (ELITE)
 - **[LOL]** ShowMaker OVER 3.5 Kills | model 62.5% fair -167 (ELITE)
 - **[LOL]** Peyz OVER 4.5 Kills | model 61.3% fair -158 (ELITE)

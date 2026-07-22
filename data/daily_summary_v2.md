@@ -1,16 +1,16 @@
 # EdgeStat Daily Summary — 2026-07-22
 
-## 🏥 Model Health: 72.8/100 [HEALTHY]
+## 🏥 Model Health: 83.8/100 [HEALTHY]
 - Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 99.9/100
-  - 🔴 Hit Rate Trend: 38.9/100
-  - 🔴 Brier Trend: 51.4/100
+  - 🟢 Calibration Freshness: 99.7/100
+  - 🔴 Hit Rate Trend: 59.3/100
+  - 🟡 Brier Trend: 74.5/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 86.4/100
-  - 🟡 Edge Count: 74.3/100
+  - 🟢 Data Health: 95.5/100
+  - 🟢 Edge Count: 80.0/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.576)
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.577)
 - **Total games on board:** 130
 - **Strong home favorites:** 8 | **Strong road dogs:** 5
 
@@ -20,9 +20,6 @@
 3. **PIT @ NYY YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 4. **PIT @ NYY YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 5. **MIN @ CLE YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-
-## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** OAK @ ARI OAK_ML -- 65% / +28.9% (score 2.5)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -51,10 +48,10 @@
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
 ## ⚡ Pre-Game HIGH Conviction (6)
-- [WNBA] **Dallas Wings** AWAY (3-1 L10) · model 74.1% fair -286
 - [MLS] **Colorado Rapids** HOME (None L10) · model 73.6% fair -279
-- [WNBA] **Las Vegas Aces** AWAY (3-1 L10) · model 72.3% fair -261
+- [WNBA] **Dallas Wings** AWAY (3-1 L10) · model 72.8% fair -267
 - [MLS] **Vancouver Whitecaps** AWAY (None L10) · model 72.2% fair -260
+- [WNBA] **Las Vegas Aces** AWAY (3-1 L10) · model 71.0% fair -244
 - [MLS] **Charlotte FC** HOME (None L10) · model 65.0% fair -185
 - [MLS] **Seattle Sounders FC** AWAY (0-1 L10) · model 63.6% fair -175
 
@@ -62,10 +59,10 @@
 - Hot teams: **2** | Cold teams: **2** | Over-heavy: 0 | Under-heavy: 4
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (48)
+## ⚠️ Anomaly Detector (47)
 - RESIDUAL_DIVERGENCE: **3**
 - STEAM_MOVE: **40**
-- COMPOUND_BULLPEN: **4**
+- COMPOUND_BULLPEN: **3**
 - PEN_MISMATCH: **1**
   - Chicago Sky (WNBA): Chicago Sky OUTPERFORMING expected margin by 7.9pts in recent games -- model bias may persist
   - Portland Fire (WNBA): Portland Fire OUTPERFORMING expected margin by 9.0pts in recent games -- model bias may persist
@@ -118,7 +115,7 @@
   - 🔥 T4 **Rasmus Højgaard** (Denmark): +0 total -- finished T4
   - 🔥 T5 **Lee Hodges** (USA): +0 total -- finished T5
 
-## 🔥 MLB Batter Heat (41 HOT / 51 COLD)
+## 🔥 MLB Batter Heat (41 HOT / 50 COLD)
   - 🔥 **Steven Kwan** (CLE): L14 .390 / season .239 (+151pts)
   - 🔥 **Curtis Mead** (WSH): L14 .400 / season .258 (+142pts)
   - 🔥 **Tyler Stephenson** (CIN): L14 .367 / season .244 (+123pts)
