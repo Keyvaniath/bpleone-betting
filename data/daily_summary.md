@@ -4,30 +4,28 @@
 
 _Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
 
-_Generated at 2026-07-22T22:02:54 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-07-22T23:03:58 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
-**LAD @ PHI - OVER_9.5**
+**PIT @ NYY - OVER_9.0**
 - Market: -110
-- Model probability: 81.7%
-- Raw edge: +56.03%
+- Model probability: 72.3%
+- Raw edge: +38.06%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
 
-## Full Slate (9 games)
+## Full Slate (7 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 7:05p ET | PIT @ NYY | Yankee Stadium | 74F 9mph | OVER_9.0 +36.54% |
-| 7:10p ET | BAL @ BOS | Fenway Park | 67F 7mph | -- |
-| 6:40p ET | MIN @ CLE | Progressive Field | 64F 1mph | OVER_7.5 +27.24% |
-| 6:40p ET | LAD @ PHI | Citizens Bank Park | 71F 7mph | OVER_9.5 +56.03% |
+| 7:05p ET | PIT @ NYY | Yankee Stadium | 74F 10mph | OVER_9.0 +38.06% |
+| 7:10p ET | BAL @ BOS | Fenway Park | 68F 5mph | -- |
 | 7:07p ET | TBR @ TOR | Rogers Centre | indoor | TBR_ML +24.34% |
-| 7:15p ET | SDP @ ATL | Truist Park | 78F 4mph | OVER_8.0 +20.42% |
-| 8:05p ET | CHW @ TEX | Globe Life Field | indoor | TEX_ML +29.93% |
-| 8:10p ET | DET @ CHC | Wrigley Field | 66F 13mph | OVER_8.0 +43.12% |
+| 7:15p ET | SDP @ ATL | Truist Park | 77F 6mph | OVER_8.0 +22.94% |
+| 8:05p ET | CHW @ TEX | Globe Life Field | indoor | TEX_ML +30.57% |
+| 8:10p ET | DET @ CHC | Wrigley Field | 64F 3mph | OVER_8.0 +26.9% |
 | 8:10p ET | MIA @ HOU | Daikin Park | indoor | OVER_8.0 +31.04% |
 
 ## Parlays - top 5
@@ -56,20 +54,18 @@ _Generated at 2026-07-22T22:02:54 UTC. Game lines source: **Bovada (fallback -- 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
 
-Cumulative graded plays: 6461. Wins: 2632. Hit rate: 40.7%.
+Cumulative graded plays: 6464. Wins: 2635. Hit rate: 40.8%.
 
 ## Auxiliary Markets (Model Fair Prices)
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| BAL @ BOS | 57.3% | -134 | 2.85 | +143 | -143 |
+| BAL @ BOS | 57.3% | -134 | 2.84 | +143 | -143 |
 | CHW @ TEX | 24.3% | +311 | 7.07 | -103 | +103 |
-| DET @ CHC | 42.8% | +134 | 3.88 | +169 | -169 |
-| LAD @ PHI | 37.2% | +169 | 4.84 | +337 | -337 |
+| DET @ CHC | 42.8% | +134 | 4.19 | +173 | -173 |
 | MIA @ HOU | 59.1% | -145 | 2.63 | +231 | -231 |
-| MIN @ CLE | 32.0% | +213 | 5.7 | +181 | -181 |
-| PIT @ NYY | 25.0% | +300 | 7.03 | -122 | +122 |
-| SDP @ ATL | 37.9% | +164 | 4.95 | -108 | +108 |
+| PIT @ NYY | 25.0% | +300 | 7.06 | -122 | +122 |
+| SDP @ ATL | 37.9% | +164 | 4.99 | -109 | +109 |
 | TBR @ TOR | 18.4% | +442 | 8.45 | +334 | -334 |
 
 ## Team Form (last 10)

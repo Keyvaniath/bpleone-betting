@@ -1,8 +1,8 @@
 # EdgeStat Daily Summary — 2026-07-22
 
-## 🏥 Model Health: 84.1/100 [HEALTHY]
+## 🏥 Model Health: 84.2/100 [HEALTHY]
 - Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 99.9/100
+  - 🟢 Calibration Freshness: 100.0/100
   - 🔴 Hit Rate Trend: 59.3/100
   - 🟡 Brier Trend: 74.5/100
   - 🟢 Pipeline Audit: 100.0/100
@@ -10,9 +10,9 @@
   - 🟢 Edge Count: 82.9/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.572)
-- **Total games on board:** 130
-- **Strong home favorites:** 8 | **Strong road dogs:** 6
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.581)
+- **Total games on board:** 128
+- **Strong home favorites:** 8 | **Strong road dogs:** 4
 
 ## 🎯 Top 5 Best Bets
 1. **TBR @ TOR YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
@@ -59,10 +59,10 @@
 - Hot teams: **2** | Cold teams: **2** | Over-heavy: 0 | Under-heavy: 4
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (52)
+## ⚠️ Anomaly Detector (50)
 - RESIDUAL_DIVERGENCE: **3**
 - STEAM_MOVE: **45**
-- COMPOUND_BULLPEN: **3**
+- COMPOUND_BULLPEN: **1**
 - PEN_MISMATCH: **1**
   - Chicago Sky (WNBA): Chicago Sky OUTPERFORMING expected margin by 7.9pts in recent games -- model bias may persist
   - Portland Fire (WNBA): Portland Fire OUTPERFORMING expected margin by 9.0pts in recent games -- model bias may persist
@@ -79,20 +79,20 @@
   - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
-## 🎯 Convergence Picks (12 stacked games)
-- ELITE: **2** · HIGH: 2 · MED: 8
+## 🎯 Convergence Picks (11 stacked games)
+- ELITE: **2** · HIGH: 2 · MED: 7
   - [ELITE] Minnesota Lynx @ Seattle Storm : 4 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ATS)
   - [ELITE] Dallas Wings @ Portland Fire : 4 signals (PREGAME, ANOMALY, ANOMALY, ATS)
   - [HIGH] Chicago Sky @ New York Liberty : 3 signals (PREGAME, ANOMALY, ATS)
   - [HIGH] St. Louis CITY SC @ LA Galaxy : 3 signals (PREGAME, ATS, ATS)
-  - [MED] Phoenix Mercury @ Los Angeles Sparks : 2 signals (PREGAME, HEAT_COLD)
+  - [MED] Las Vegas Aces @ Washington Mystics : 2 signals (PREGAME, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (11)
-- **Hunter Dobbins** OVER 5.5 K (77%) fair -331
+## ⚾ Top MLB Pitcher K Plays (5)
 - **Sandy Alcantara** OVER 4.5 K (75%) fair -295
-- **Gage Jump** OVER 4.5 K (74%) fair -280
 - **Braydon Fisher** OVER 6.5 K (72%) fair -258
-- **Christian Scott** OVER 4.5 K (70%) fair -232
+- **Kyle Bradish** OVER 4.5 K (66%) fair -195
+- **Max Fried** OVER 4.5 K (63%) fair -171
+- **Aaron Nola** OVER 4.5 K (63%) fair -168
 
 ## 🏀 NBA Player Heat (2 HOT / 5 COLD)
   - 🔥 **Nique Clifford** (SAC): L5 19.4/5.8/4.8 vs season 13.9/5.3/4.2 [PTS +5.5]
@@ -115,17 +115,17 @@
   - 🔥 T4 **Rasmus Højgaard** (Denmark): +0 total -- finished T4
   - 🔥 T5 **Lee Hodges** (USA): +0 total -- finished T5
 
-## 🔥 MLB Batter Heat (47 HOT / 51 COLD)
-  - 🔥 **Steven Kwan** (CLE): L14 .390 / season .239 (+151pts)
+## 🔥 MLB Batter Heat (48 HOT / 56 COLD)
+  - 🔥 **Steven Kwan** (CLE): L14 .385 / season .238 (+147pts)
   - 🔥 **Curtis Mead** (WSH): L14 .400 / season .258 (+142pts)
   - 🔥 **Joey Ortiz** (MIL): L14 .364 / season .239 (+125pts)
   - 🔥 **José Tena** (WSH): L14 .364 / season .247 (+117pts)
   - 🔥 **Nasim Nuñez** (WSH): L14 .362 / season .253 (+109pts)
   - ❄️ **Brandon Marsh** (PHI): L14 .137 / season .290 (-153pts) -- FADE props
+  - ❄️ **Nathan Church** (STL): L14 .079 / season .228 (-149pts) -- FADE props
   - ❄️ **Colton Cowser** (BAL): L14 .065 / season .208 (-143pts) -- FADE props
-  - ❄️ **Teoscar Hernández** (LAD): L14 .104 / season .241 (-137pts) -- FADE props
+  - ❄️ **Henry Bolte** (ATH): L14 .114 / season .251 (-137pts) -- FADE props
   - ❄️ **Paul Goldschmidt** (NYY): L14 .125 / season .258 (-133pts) -- FADE props
-  - ❄️ **Nathan Church** (STL): L14 .098 / season .229 (-131pts) -- FADE props
 
 ## 📈 Streak Regression Alerts (3)
 - [WNBA] Los Angeles Sparks on L4 L10 1-4 -- Los Angeles Sparks on L4 -- no historical sample
