@@ -1,18 +1,18 @@
 # EdgeStat Daily Summary — 2026-07-22
 
-## 🏥 Model Health: 83.8/100 [HEALTHY]
+## 🏥 Model Health: 84.1/100 [HEALTHY]
 - Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 99.7/100
+  - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 59.3/100
   - 🟡 Brier Trend: 74.5/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 95.5/100
-  - 🟢 Edge Count: 80.0/100
+  - 🟢 Edge Count: 82.9/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.577)
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.572)
 - **Total games on board:** 130
-- **Strong home favorites:** 8 | **Strong road dogs:** 5
+- **Strong home favorites:** 8 | **Strong road dogs:** 6
 
 ## 🎯 Top 5 Best Bets
 1. **TBR @ TOR YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
@@ -59,9 +59,9 @@
 - Hot teams: **2** | Cold teams: **2** | Over-heavy: 0 | Under-heavy: 4
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (47)
+## ⚠️ Anomaly Detector (52)
 - RESIDUAL_DIVERGENCE: **3**
-- STEAM_MOVE: **40**
+- STEAM_MOVE: **45**
 - COMPOUND_BULLPEN: **3**
 - PEN_MISMATCH: **1**
   - Chicago Sky (WNBA): Chicago Sky OUTPERFORMING expected margin by 7.9pts in recent games -- model bias may persist
@@ -115,16 +115,16 @@
   - 🔥 T4 **Rasmus Højgaard** (Denmark): +0 total -- finished T4
   - 🔥 T5 **Lee Hodges** (USA): +0 total -- finished T5
 
-## 🔥 MLB Batter Heat (41 HOT / 50 COLD)
+## 🔥 MLB Batter Heat (47 HOT / 51 COLD)
   - 🔥 **Steven Kwan** (CLE): L14 .390 / season .239 (+151pts)
   - 🔥 **Curtis Mead** (WSH): L14 .400 / season .258 (+142pts)
-  - 🔥 **Tyler Stephenson** (CIN): L14 .367 / season .244 (+123pts)
-  - 🔥 **José Tena** (WSH): L14 .355 / season .243 (+112pts)
-  - 🔥 **Nolan Schanuel** (LAA): L14 .392 / season .284 (+108pts)
+  - 🔥 **Joey Ortiz** (MIL): L14 .364 / season .239 (+125pts)
+  - 🔥 **José Tena** (WSH): L14 .364 / season .247 (+117pts)
+  - 🔥 **Nasim Nuñez** (WSH): L14 .362 / season .253 (+109pts)
   - ❄️ **Brandon Marsh** (PHI): L14 .137 / season .290 (-153pts) -- FADE props
-  - ❄️ **Colton Cowser** (BAL): L14 .062 / season .209 (-147pts) -- FADE props
+  - ❄️ **Colton Cowser** (BAL): L14 .065 / season .208 (-143pts) -- FADE props
   - ❄️ **Teoscar Hernández** (LAD): L14 .104 / season .241 (-137pts) -- FADE props
-  - ❄️ **Paul Goldschmidt** (NYY): L14 .125 / season .259 (-134pts) -- FADE props
+  - ❄️ **Paul Goldschmidt** (NYY): L14 .125 / season .258 (-133pts) -- FADE props
   - ❄️ **Nathan Church** (STL): L14 .098 / season .229 (-131pts) -- FADE props
 
 ## 📈 Streak Regression Alerts (3)
