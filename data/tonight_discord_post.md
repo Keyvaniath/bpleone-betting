@@ -1,10 +1,12 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:9 F:194
+_NO_ACTION_NIGHT_ | L:0 S:8 F:194
+
+:lock: **LOCK:** Bailey Ober (MLB)
 
 :dart: **Top Picks:**
 1. [WNBA] napheesa collier -- napheesa collier (PLAYER_STRONG)
 2. [WNBA] breanna stewart -- breanna stewart (PLAYER_STRONG)
-3. [MLB] HOME -- HOME (TEAM_STRONG)
+3. [MLB] Griffin Jax -- Griffin Jax (PITCHER_STRONG)
 
 :chains: **Top Parlays:**
 - [WNBA] napheesa collier (2 legs, p=0.3403)

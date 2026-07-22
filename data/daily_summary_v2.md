@@ -1,31 +1,28 @@
 # EdgeStat Daily Summary — 2026-07-22
 
-## 🏥 Model Health: 71.9/100 [HEALTHY]
+## 🏥 Model Health: 72.8/100 [HEALTHY]
 - Solid health - some minor issues to monitor
   - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 38.9/100
   - 🔴 Brier Trend: 51.4/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 86.4/100
-  - 🟡 Edge Count: 65.7/100
+  - 🟡 Edge Count: 74.3/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.577)
-- **Total games on board:** 146
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.576)
+- **Total games on board:** 130
 - **Strong home favorites:** 8 | **Strong road dogs:** 5
 
 ## 🎯 Top 5 Best Bets
-1. **OAK @ ARI YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-2. **SDP @ ATL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-3. **DET @ CHC YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-4. **CHW @ TEX YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-5. **WSN @ COL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+1. **TBR @ TOR YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+2. **CHW @ TEX YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+3. **PIT @ NYY YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+4. **PIT @ NYY YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+5. **MIN @ CLE YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** WSN @ COL WSN_ML -- 69% / +21.6% (score 2.5)
-
-## 📉 Strong UNDER Signals
-- [ELITE 6.5] **CIN @ SEA** model 7.0 vs market 8.5
+- [STRONG] **[MLB]** OAK @ ARI OAK_ML -- 65% / +28.9% (score 2.5)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -65,39 +62,40 @@
 - Hot teams: **2** | Cold teams: **2** | Over-heavy: 0 | Under-heavy: 4
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (47)
-- RESIDUAL_DIVERGENCE: **2**
+## ⚠️ Anomaly Detector (48)
+- RESIDUAL_DIVERGENCE: **3**
 - STEAM_MOVE: **40**
-- COMPOUND_BULLPEN: **5**
-  - Minnesota Lynx (WNBA): Minnesota Lynx UNDERPERFORMING expected margin by 6.7pts in recent games -- model bias may persist
+- COMPOUND_BULLPEN: **4**
+- PEN_MISMATCH: **1**
+  - Chicago Sky (WNBA): Chicago Sky OUTPERFORMING expected margin by 7.9pts in recent games -- model bias may persist
   - Portland Fire (WNBA): Portland Fire OUTPERFORMING expected margin by 9.0pts in recent games -- model bias may persist
+  - Dallas Wings (WNBA): Dallas Wings UNDERPERFORMING expected margin by 9.4pts in recent games -- model bias may persist
   - NYM @ PHI (MLB): ML/TOTAL steam since open: ML -3.8pp toward NYM; total +9.5 (OVER) (8 snapshots)
   - NY @ IND (WNBA): ML/TOTAL steam since open: ML +3.1pp toward IND; total +4 (OVER) (7 snapshots)
-  - CON @ PHX (WNBA): TOTAL steam since open: ML +1.0pp toward PHX; total -3 (UNDER) (4 snapshots)
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$11.97**
-  - #1 [NRFI] $50 on OAK @ ARI YRFI (1st-inning OVER 0.5) (P=76%)
-  - #2 [NRFI] $50 on SDP @ ATL YRFI (1st-inning OVER 0.5) (P=75%)
-  - #3 [NRFI] $50 on DET @ CHC YRFI (1st-inning OVER 0.5) (P=75%)
+- Expected EV: **$16.5**
+  - #1 [NRFI] $50 on TBR @ TOR YRFI (1st-inning OVER 0.5) (P=82%)
+  - #2 [NRFI] $50 on CHW @ TEX YRFI (1st-inning OVER 0.5) (P=76%)
+  - #3 [NRFI] $50 on PIT @ NYY YRFI (1st-inning OVER 0.5) (P=75%)
   - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
 ## 🎯 Convergence Picks (12 stacked games)
-- ELITE: **2** · HIGH: 3 · MED: 7
-  - [ELITE] Minnesota Lynx @ Seattle Storm : 6 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ANOMALY)
-  - [ELITE] Phoenix Mercury @ Los Angeles Sparks : 4 signals (PREGAME, HEAT_COLD, HEAT_COLD, ATS)
-  - [HIGH] Chicago Sky @ New York Liberty : 3 signals (PREGAME, HEAT_COLD, ATS)
-  - [HIGH] Dallas Wings @ Portland Fire : 3 signals (PREGAME, ANOMALY, ATS)
+- ELITE: **2** · HIGH: 2 · MED: 8
+  - [ELITE] Minnesota Lynx @ Seattle Storm : 4 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ATS)
+  - [ELITE] Dallas Wings @ Portland Fire : 4 signals (PREGAME, ANOMALY, ANOMALY, ATS)
+  - [HIGH] Chicago Sky @ New York Liberty : 3 signals (PREGAME, ANOMALY, ATS)
   - [HIGH] St. Louis CITY SC @ LA Galaxy : 3 signals (PREGAME, ATS, ATS)
+  - [MED] Phoenix Mercury @ Los Angeles Sparks : 2 signals (PREGAME, HEAT_COLD)
 
-## ⚾ Top MLB Pitcher K Plays (8)
-- **Drew Rasmussen** OVER 4.5 K (77%) fair -332
-- **David Peterson** OVER 4.5 K (76%) fair -314
-- **Tyler Phillips** OVER 4.5 K (74%) fair -290
-- **Reynaldo López** OVER 4.5 K (71%) fair -243
-- **Chase Burns** OVER 5.5 K (67%) fair -200
+## ⚾ Top MLB Pitcher K Plays (11)
+- **Hunter Dobbins** OVER 5.5 K (77%) fair -331
+- **Sandy Alcantara** OVER 4.5 K (75%) fair -295
+- **Gage Jump** OVER 4.5 K (74%) fair -280
+- **Braydon Fisher** OVER 6.5 K (72%) fair -258
+- **Christian Scott** OVER 4.5 K (70%) fair -232
 
 ## 🏀 NBA Player Heat (2 HOT / 5 COLD)
   - 🔥 **Nique Clifford** (SAC): L5 19.4/5.8/4.8 vs season 13.9/5.3/4.2 [PTS +5.5]
