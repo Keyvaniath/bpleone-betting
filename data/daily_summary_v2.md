@@ -1,29 +1,28 @@
 # EdgeStat Daily Summary — 2026-07-23
 
-## 🏥 Model Health: 74.6/100 [HEALTHY]
+## 🏥 Model Health: 78.5/100 [HEALTHY]
 - Solid health - some minor issues to monitor
   - 🟢 Calibration Freshness: 99.9/100
-  - 🔴 Hit Rate Trend: 43.0/100
-  - 🔴 Brier Trend: 49.1/100
+  - 🟡 Hit Rate Trend: 63.2/100
+  - 🔴 Brier Trend: 56.5/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 90.9/100
-  - 🟢 Edge Count: 80.0/100
+  - 🟢 Data Health: 95.5/100
+  - 🔴 Edge Count: 54.3/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.577)
-- **Total games on board:** 140
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.576)
+- **Total games on board:** 124
 - **Strong home favorites:** 5 | **Strong road dogs:** 3
 
 ## 🎯 Top 5 Best Bets
 1. **TBR @ TOR YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-2. **CHW @ TEX YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-3. **PIT @ NYY YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-4. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
-5. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
+2. **KCR @ DET NRFI (no run 1st inning)** (78/100 ★★★★)
+3. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
+4. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
+5. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
 
 ## 📡 Sharp Action (Line Movement)
 - [STRONG] **TBR @ TOR** ml_away: 44.25% → 50.74% (+6.5pp)
-- [MODERATE] **PIT @ NYY** over_9.0: 52.38% → 56.52% (+4.1pp)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -69,28 +68,27 @@
   - CON @ PHX (WNBA): TOTAL steam since open: ML +1.0pp toward PHX; total -3 (UNDER) (4 snapshots)
   - MIN @ SEA (WNBA): TOTAL steam since open: ML -1.4pp toward MIN; total +3 (OVER) (9 snapshots)
 
-## 💰 Today's Portfolio (9 picks)
-- Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$16.5**
-  - #1 [NRFI] $50 on TBR @ TOR YRFI (1st-inning OVER 0.5) (P=82%)
-  - #2 [NRFI] $50 on CHW @ TEX YRFI (1st-inning OVER 0.5) (P=76%)
-  - #3 [NRFI] $50 on PIT @ NYY YRFI (1st-inning OVER 0.5) (P=75%)
-  - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
-  - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
+## 💰 Today's Portfolio (10 picks)
+- Total stake: **$335.0** (33.5% of $1000 bankroll)
+- Expected EV: **$0.57**
+  - #1 [NRFI] $50 on TBR @ TOR YRFI (1st-inning OVER 0.5) (P=77%)
+  - #2 [NRFI] $35 on KCR @ DET NRFI (no run 1st inning) (P=72%)
+  - #3 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
+  - #4 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
+  - #5 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
 
-## 🎯 Convergence Picks (11 stacked games)
-- ELITE: **2** · HIGH: 2 · MED: 7
-  - [ELITE] Minnesota Lynx @ Seattle Storm : 4 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ATS)
-  - [ELITE] Dallas Wings @ Portland Fire : 4 signals (PREGAME, ANOMALY, ANOMALY, ATS)
-  - [HIGH] Chicago Sky @ New York Liberty : 3 signals (PREGAME, ANOMALY, ATS)
-  - [HIGH] St. Louis CITY SC @ LA Galaxy : 3 signals (PREGAME, ATS, ATS)
-  - [MED] Las Vegas Aces @ Washington Mystics : 2 signals (PREGAME, ATS)
+## 🎯 Convergence Picks (18 stacked games)
+- ELITE: **1** · HIGH: 9 · MED: 8
+  - [ELITE] Minnesota Lynx @ Seattle Storm : 6 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, HEAT_COLD)
+  - [HIGH] Phoenix Mercury @ Los Angeles Sparks : 3 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD)
+  - [HIGH] Connecticut Sun @ Indiana Fever : 3 signals (HEAT_COLD, HEAT_COLD, ATS)
+  - [HIGH] Dallas Wings @ Portland Fire : 3 signals (HEAT_COLD, ATS, ATS)
+  - [HIGH] Charlotte FC @ Red Bull New York : 3 signals (PREGAME, ATS, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (4)
-- **Sandy Alcantara** OVER 4.5 K (75%) fair -295
-- **Braydon Fisher** OVER 6.5 K (72%) fair -258
-- **Kyle Bradish** OVER 4.5 K (66%) fair -195
-- **Max Fried** OVER 4.5 K (63%) fair -171
+## ⚾ Top MLB Pitcher K Plays (3)
+- **Gavin Williams** OVER 5.5 K (73%) fair -269
+- **Randy Dobnak** OVER 5.5 K (70%) fair -233
+- **Chris Sale** OVER 5.5 K (64%) fair -179
 
 ## 🏀 NBA Player Heat (2 HOT / 5 COLD)
   - 🔥 **Nique Clifford** (SAC): L5 19.4/5.8/4.8 vs season 13.9/5.3/4.2 [PTS +5.5]

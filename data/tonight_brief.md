@@ -11,12 +11,11 @@ _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 
 ## 📡 Sharp Money Following Model
 - **TBR @ TOR** ml_away: line moved 44.25% → 50.74% (+6.5pp)
-- **PIT @ NYY** over_9.0: line moved 52.38% → 56.52% (+4.1pp)
 
 ## 🎰 Tonight's Best Parlay
 - **Choi Jeong** one_plus_tb + **Jose Pirela** one_plus_tb
 - Joint 53% · fair +264 · edge +94.6%
 
 ---
-_Generated 2026-07-23T07:23:15_
+_Generated 2026-07-23T15:08:37_
 _Full breakdown: /tonight · Full history: /locks-of-day_

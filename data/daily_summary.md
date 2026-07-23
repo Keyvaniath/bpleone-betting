@@ -4,14 +4,14 @@
 
 _Pipeline health: **WARNING** (12/15 artifacts ok; 3 empty, 0 stale)._ 
 
-_Generated at 2026-07-23T07:23:29 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-07-23T15:09:13 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
 **TBR @ TOR - TBR_ML**
-- Market: -105
+- Market: -112
 - Model probability: 84.7%
-- Raw edge: +65.3%
+- Raw edge: +60.26%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
@@ -20,48 +20,48 @@ _Generated at 2026-07-23T07:23:29 UTC. Game lines source: **Bovada (fallback -- 
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 12:15p ET | SDP @ ATL | Truist Park | 90F 10mph | OVER_8.0 +32.24% |
+| 12:15p ET | SDP @ ATL | Truist Park | 90F 10mph | OVER_8.0 +22.91% |
 | 1:10p ET | MIN @ CLE | Progressive Field | 74F 10mph | OVER_7.5 +34.75% |
-| 3:07p ET | TBR @ TOR | Rogers Centre | indoor | TBR_ML +65.3% |
-| 5:15p ET | ARI @ STL | Busch Stadium | 79F 5mph | OVER_7.5 +27.19% |
+| 3:07p ET | TBR @ TOR | Rogers Centre | indoor | TBR_ML +60.26% |
+| 5:15p ET | ARI @ STL | Busch Stadium | 78F 4mph | OVER_7.5 +24.92% |
 | 6:40p ET | KCR @ DET | Comerica Park | 67F 4mph | OVER_8.0 +33.7% |
 
 ## Parlays - top 5
 
-- **3-leg @ +340 (prob 32.8%, EV +44.44%)**
-  - SDP @ ATL ATL_ML (-260, model 83.6%)
-  - MIN @ CLE MIN_ML (+117, model 53.9%)
-  - KCR @ DET DET_ML (-215, model 72.8%)
-- **3-leg @ +507 (prob 23.5%, EV +42.79%)**
-  - MIN @ CLE MIN_ML (+117, model 53.9%)
-  - ARI @ STL OVER_8.0 (-110, model 60.0%)
-  - KCR @ DET DET_ML (-215, model 72.8%)
-- **3-leg @ +287 (prob 36.5%, EV +41.46%)**
-  - SDP @ ATL ATL_ML (-260, model 83.6%)
-  - ARI @ STL OVER_8.0 (-110, model 60.0%)
-  - KCR @ DET DET_ML (-215, model 72.8%)
-- **2-leg @ +200 (prob 45.1%, EV +35.38%)**
-  - SDP @ ATL ATL_ML (-260, model 83.6%)
-  - MIN @ CLE MIN_ML (+117, model 53.9%)
-- **2-leg @ +314 (prob 32.3%, EV +33.83%)**
-  - MIN @ CLE MIN_ML (+117, model 53.9%)
-  - ARI @ STL OVER_8.0 (-110, model 60.0%)
+- **3-leg @ +282 (prob 37.6%, EV +43.66%)**
+  - SDP @ ATL ATL_ML (-260, model 79.0%)
+  - ARI @ STL OVER_7.5 (-110, model 65.4%)
+  - KCR @ DET DET_ML (-225, model 72.8%)
+- **3-leg @ +282 (prob 37.0%, EV +41.36%)**
+  - SDP @ ATL OVER_8.0 (-110, model 64.4%)
+  - SDP @ ATL ATL_ML (-260, model 79.0%)
+  - KCR @ DET DET_ML (-225, model 72.8%)
+- **3-leg @ +354 (prob 31.0%, EV +40.64%)**
+  - SDP @ ATL ATL_ML (-260, model 79.0%)
+  - MIN @ CLE MIN_ML (+127, model 53.9%)
+  - KCR @ DET DET_ML (-225, model 72.8%)
+- **2-leg @ +164 (prob 51.7%, EV +36.58%)**
+  - SDP @ ATL ATL_ML (-260, model 79.0%)
+  - ARI @ STL OVER_7.5 (-110, model 65.4%)
+- **2-leg @ +214 (prob 42.5%, EV +33.71%)**
+  - SDP @ ATL ATL_ML (-260, model 79.0%)
+  - MIN @ CLE MIN_ML (+127, model 53.9%)
 
 ## Self-Learning Loop
 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
 
-Cumulative graded plays: 6513. Wins: 2671. Hit rate: 41.0%.
+Cumulative graded plays: 6520. Wins: 2677. Hit rate: 41.1%.
 
 ## Auxiliary Markets (Model Fair Prices)
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| ARI @ STL | 54.3% | -119 | 2.95 | +160 | -160 |
+| ARI @ STL | 54.3% | -119 | 2.97 | +161 | -161 |
 | KCR @ DET | 72.1% | -258 | 1.59 | -159 | +159 |
 | MIN @ CLE | 39.0% | +156 | 4.4 | +198 | -198 |
-| SDP @ ATL | 40.9% | +145 | 4.77 | -292 | +292 |
+| SDP @ ATL | 26.0% | +285 | 7.18 | -216 | +216 |
 | TBR @ TOR | 22.8% | +339 | 7.39 | +982 | -982 |
 
 ## Travel / Rest Flags
@@ -87,7 +87,7 @@ Cumulative graded plays: 6513. Wins: 2671. Hit rate: 41.0%.
 
 ## Loop Activity (since last refresh)
 
-- Confidence delta: **+0.4**
+- Confidence delta: **+0.0**
 
 ## Model Recommendations (operator review)
 
