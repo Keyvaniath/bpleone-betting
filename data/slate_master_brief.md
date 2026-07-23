@@ -1,49 +1,36 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-07-22T23:02:44 UTC_
+_Generated 2026-07-23T07:23:21 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -104
+- **Score:** -170
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
-- **Total LOCKs:** 1
-- **Total STRONG:** 19
-- **Total FADES:** 190
-
-## Lock of the Night
-- **Subject:** DET @ CHC
-- **Source:** ELITE_BOARD
-- **Sport:** MLB
-- **Score:** 21.0
-- **Details:** DET @ CHC
+- **Total LOCKs:** 0
+- **Total STRONG:** 6
+- **Total FADES:** 194
 
 ## Top 5 Curated Picks
-1. **MLB / Yordan Alvarez** (MLB_BATTER, score=136.06)
-   - Play: Yordan Alvarez (BATTER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_BATTER)
-2. **MLB / Esmerlyn Valdez** (MLB_BATTER, score=122.56)
-   - Play: Esmerlyn Valdez (BATTER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_BATTER)
-3. **WNBA / breanna stewart** (WNBA_PLAYER, score=114.83)
-   - Play: breanna stewart (PLAYER_STRONG)
-   - Rationale: Cross-sport top pick (WNBA_PLAYER)
-4. **WNBA / caitlin clark** (WNBA_PLAYER, score=101.0)
-   - Play: caitlin clark (PLAYER_STRONG)
-   - Rationale: Cross-sport top pick (WNBA_PLAYER)
+1. **MLB / HOME** (MLB_TEAM, score=85.29)
+   - Play: HOME (TEAM_STRONG)
+   - Rationale: Cross-sport top pick (MLB_TEAM)
+2. **MLB / AWAY** (MLB_TEAM, score=80.67)
+   - Play: AWAY (TEAM_STRONG)
+   - Rationale: Cross-sport top pick (MLB_TEAM)
 
 ## Slate ROI Projection
-- **Picks:** 2
-- **Avg edge:** 4.7%
-- **Expected ROI (1/4 Kelly):** 0.31%
-- **Expected P&L on $100:** $0.31
+- **Picks:** 0
+- **Avg edge:** 0%
+- **Expected ROI (1/4 Kelly):** 0.0%
+- **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **MLB** / Bailey Ober (PITCHER_FADE)
+- **MLB** / Martín Pérez (PITCHER_FADE)
   - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **MLB** / Eric Lauer (PITCHER_FADE)
+- **MLB** / Peter Lambert (PITCHER_FADE)
   - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **NHL** / jake oettinger (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / thatcher demko (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / casey desmith (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
+- **MLB** / Max Fried (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Anthony Kay (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Sandy Alcantara (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES

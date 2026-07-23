@@ -1,25 +1,29 @@
-# EdgeStat Daily Summary — 2026-07-22
+# EdgeStat Daily Summary — 2026-07-23
 
-## 🏥 Model Health: 84.2/100 [HEALTHY]
+## 🏥 Model Health: 74.6/100 [HEALTHY]
 - Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 100.0/100
-  - 🔴 Hit Rate Trend: 59.3/100
-  - 🟡 Brier Trend: 74.5/100
+  - 🟢 Calibration Freshness: 99.9/100
+  - 🔴 Hit Rate Trend: 43.0/100
+  - 🔴 Brier Trend: 49.1/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 95.5/100
-  - 🟢 Edge Count: 82.9/100
+  - 🟢 Data Health: 90.9/100
+  - 🟢 Edge Count: 80.0/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.581)
-- **Total games on board:** 128
-- **Strong home favorites:** 8 | **Strong road dogs:** 4
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.577)
+- **Total games on board:** 140
+- **Strong home favorites:** 5 | **Strong road dogs:** 3
 
 ## 🎯 Top 5 Best Bets
 1. **TBR @ TOR YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 2. **CHW @ TEX YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 3. **PIT @ NYY YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-4. **PIT @ NYY YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-5. **MIN @ CLE YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+4. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
+5. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
+
+## 📡 Sharp Action (Line Movement)
+- [STRONG] **TBR @ TOR** ml_away: 44.25% → 50.74% (+6.5pp)
+- [MODERATE] **PIT @ NYY** over_9.0: 52.38% → 56.52% (+4.1pp)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -47,28 +51,23 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (6)
-- [MLS] **Colorado Rapids** HOME (None L10) · model 73.6% fair -279
-- [WNBA] **Dallas Wings** AWAY (3-1 L10) · model 72.8% fair -267
-- [MLS] **Vancouver Whitecaps** AWAY (None L10) · model 72.2% fair -260
-- [WNBA] **Las Vegas Aces** AWAY (3-1 L10) · model 71.0% fair -244
-- [MLS] **Charlotte FC** HOME (None L10) · model 65.0% fair -185
-- [MLS] **Seattle Sounders FC** AWAY (0-1 L10) · model 63.6% fair -175
+## ⚡ Pre-Game HIGH Conviction (3)
+- [MLS] **LAFC** HOME (2-0 L10) · model 67.9% fair -211
+- [MLS] **Vancouver Whitecaps** AWAY (0-1 L10) · model 66.5% fair -199
+- [MLS] **Nashville SC** AWAY (2-0 L10) · model 63.4% fair -173
 
 ## 🔥/❄️ Heat / Cold Signals
-- Hot teams: **2** | Cold teams: **2** | Over-heavy: 0 | Under-heavy: 4
+- Hot teams: **3** | Cold teams: **3** | Over-heavy: 0 | Under-heavy: 8
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (50)
-- RESIDUAL_DIVERGENCE: **3**
-- STEAM_MOVE: **45**
-- COMPOUND_BULLPEN: **1**
+## ⚠️ Anomaly Detector (45)
+- STEAM_MOVE: **44**
 - PEN_MISMATCH: **1**
-  - Chicago Sky (WNBA): Chicago Sky OUTPERFORMING expected margin by 7.9pts in recent games -- model bias may persist
-  - Portland Fire (WNBA): Portland Fire OUTPERFORMING expected margin by 9.0pts in recent games -- model bias may persist
-  - Dallas Wings (WNBA): Dallas Wings UNDERPERFORMING expected margin by 9.4pts in recent games -- model bias may persist
   - NYM @ PHI (MLB): ML/TOTAL steam since open: ML -3.8pp toward NYM; total +9.5 (OVER) (8 snapshots)
   - NY @ IND (WNBA): ML/TOTAL steam since open: ML +3.1pp toward IND; total +4 (OVER) (7 snapshots)
+  - DAL @ POR (WNBA): TOTAL steam since open: ML -2.1pp toward DAL; total +4 (OVER) (12 snapshots)
+  - CON @ PHX (WNBA): TOTAL steam since open: ML +1.0pp toward PHX; total -3 (UNDER) (4 snapshots)
+  - MIN @ SEA (WNBA): TOTAL steam since open: ML -1.4pp toward MIN; total +3 (OVER) (9 snapshots)
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
@@ -87,12 +86,11 @@
   - [HIGH] St. Louis CITY SC @ LA Galaxy : 3 signals (PREGAME, ATS, ATS)
   - [MED] Las Vegas Aces @ Washington Mystics : 2 signals (PREGAME, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (5)
+## ⚾ Top MLB Pitcher K Plays (4)
 - **Sandy Alcantara** OVER 4.5 K (75%) fair -295
 - **Braydon Fisher** OVER 6.5 K (72%) fair -258
 - **Kyle Bradish** OVER 4.5 K (66%) fair -195
 - **Max Fried** OVER 4.5 K (63%) fair -171
-- **Aaron Nola** OVER 4.5 K (63%) fair -168
 
 ## 🏀 NBA Player Heat (2 HOT / 5 COLD)
   - 🔥 **Nique Clifford** (SAC): L5 19.4/5.8/4.8 vs season 13.9/5.3/4.2 [PTS +5.5]
@@ -115,22 +113,17 @@
   - 🔥 T4 **Rasmus Højgaard** (Denmark): +0 total -- finished T4
   - 🔥 T5 **Lee Hodges** (USA): +0 total -- finished T5
 
-## 🔥 MLB Batter Heat (48 HOT / 56 COLD)
-  - 🔥 **Steven Kwan** (CLE): L14 .385 / season .238 (+147pts)
+## 🔥 MLB Batter Heat (49 HOT / 55 COLD)
+  - 🔥 **Steven Kwan** (CLE): L14 .419 / season .245 (+174pts)
   - 🔥 **Curtis Mead** (WSH): L14 .400 / season .258 (+142pts)
+  - 🔥 **Drake Baldwin** (ATL): L14 .412 / season .275 (+137pts)
   - 🔥 **Joey Ortiz** (MIL): L14 .364 / season .239 (+125pts)
   - 🔥 **José Tena** (WSH): L14 .364 / season .247 (+117pts)
-  - 🔥 **Nasim Nuñez** (WSH): L14 .362 / season .253 (+109pts)
-  - ❄️ **Brandon Marsh** (PHI): L14 .137 / season .290 (-153pts) -- FADE props
   - ❄️ **Nathan Church** (STL): L14 .079 / season .228 (-149pts) -- FADE props
-  - ❄️ **Colton Cowser** (BAL): L14 .065 / season .208 (-143pts) -- FADE props
+  - ❄️ **Colton Cowser** (BAL): L14 .069 / season .207 (-138pts) -- FADE props
   - ❄️ **Henry Bolte** (ATH): L14 .114 / season .251 (-137pts) -- FADE props
-  - ❄️ **Paul Goldschmidt** (NYY): L14 .125 / season .258 (-133pts) -- FADE props
-
-## 📈 Streak Regression Alerts (3)
-- [WNBA] Los Angeles Sparks on L4 L10 1-4 -- Los Angeles Sparks on L4 -- no historical sample
-- [WNBA] Seattle Storm on L5 L10 0-5 -- Seattle Storm on L5 -- no historical sample
-- [WNBA] Minnesota Lynx on W6 L10 5-0 -- Minnesota Lynx on W6 -- no historical sample
+  - ❄️ **Kerry Carpenter** (DET): L14 .073 / season .207 (-134pts) -- FADE props
+  - ❄️ **Jorge Mateo** (ATL): L14 .115 / season .244 (-129pts) -- FADE props
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**
@@ -140,6 +133,6 @@
   - ⚠️ batter_rbis (Brier Δ -0.0052)
 
 ## 🤖 Self-Training Status
-- **WNBA**: n=38 games · hit rate 65.8% · bias +4.3pp [calibration applied]
-- **MLS**: n=5 games · hit rate 40.0% · bias +8.6pp
-- **MLB**: n=148 games · hit rate 54.0% · bias +0.7pp
+- **WNBA**: n=41 games · hit rate 61.0% · bias +1.6pp
+- **MLS**: n=20 games · hit rate 50.0% · bias -1.4pp
+- **MLB**: n=150 games · hit rate 54.7% · bias +2.7pp [calibration applied]

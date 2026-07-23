@@ -1,25 +1,46 @@
 {
-  "generated_at": "2026-07-23T05:54:00",
+  "generated_at": "2026-07-23T07:18:01",
   "sport": "mls",
-  "n_games": 5,
-  "hit_rate": 0.4,
-  "brier_score": 0.2073,
-  "log_loss": 0.708,
-  "avg_predicted_home_winprob": 0.5855,
-  "avg_actual_home_winrate": 0.5,
-  "bias": 0.0855,
+  "n_games": 20,
+  "hit_rate": 0.5,
+  "brier_score": 0.1653,
+  "log_loss": 0.6439,
+  "avg_predicted_home_winprob": 0.6109,
+  "avg_actual_home_winrate": 0.625,
+  "bias": -0.0141,
   "reliability_bins": [
+    {
+      "lo": 0.0,
+      "hi": 0.1,
+      "n": 1,
+      "predicted_avg": 0.074,
+      "actual_avg": 0.0
+    },
+    {
+      "lo": 0.2,
+      "hi": 0.3,
+      "n": 1,
+      "predicted_avg": 0.251,
+      "actual_avg": 1.0
+    },
     {
       "lo": 0.5,
       "hi": 0.6,
+      "n": 13,
+      "predicted_avg": 0.585,
+      "actual_avg": 0.577
+    },
+    {
+      "lo": 0.8,
+      "hi": 0.9,
       "n": 5,
-      "predicted_avg": 0.586,
-      "actual_avg": 0.5
+      "predicted_avg": 0.856,
+      "actual_avg": 0.8
     }
   ],
   "recommendation": {
     "applied": false,
-    "note": "not enough sample size (5 games); need >= 15"
+    "note": "model is well-calibrated (<2pp bias)"
   },
-  "n_teams_tracked": 10
+  "n_teams_tracked": 30
 }
