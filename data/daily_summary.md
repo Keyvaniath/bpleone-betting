@@ -4,14 +4,14 @@
 
 _Pipeline health: **WARNING** (12/15 artifacts ok; 3 empty, 0 stale)._ 
 
-_Generated at 2026-07-23T15:09:13 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-07-23T16:09:43 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
 **TBR @ TOR - TBR_ML**
-- Market: -112
-- Model probability: 84.7%
-- Raw edge: +60.26%
+- Market: -116
+- Model probability: 86.6%
+- Raw edge: +61.25%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
@@ -22,12 +22,15 @@ _Generated at 2026-07-23T15:09:13 UTC. Game lines source: **Bovada (fallback -- 
 |---|---|---|---|---|
 | 12:15p ET | SDP @ ATL | Truist Park | 90F 10mph | OVER_8.0 +22.91% |
 | 1:10p ET | MIN @ CLE | Progressive Field | 74F 10mph | OVER_7.5 +34.75% |
-| 3:07p ET | TBR @ TOR | Rogers Centre | indoor | TBR_ML +60.26% |
+| 3:07p ET | TBR @ TOR | Rogers Centre | indoor | TBR_ML +61.25% |
 | 5:15p ET | ARI @ STL | Busch Stadium | 78F 4mph | OVER_7.5 +24.92% |
-| 6:40p ET | KCR @ DET | Comerica Park | 67F 4mph | OVER_8.0 +33.7% |
+| 6:40p ET | KCR @ DET | Comerica Park | 67F 4mph | OVER_8.5 +22.49% |
 
 ## Parlays - top 5
 
+- **2-leg @ +331 (prob 34.7%, EV +49.63%)**
+  - SDP @ ATL OVER_8.0 (-110, model 64.4%)
+  - MIN @ CLE MIN_ML (+126, model 53.9%)
 - **3-leg @ +282 (prob 37.6%, EV +43.66%)**
   - SDP @ ATL ATL_ML (-260, model 79.0%)
   - ARI @ STL OVER_7.5 (-110, model 65.4%)
@@ -36,33 +39,30 @@ _Generated at 2026-07-23T15:09:13 UTC. Game lines source: **Bovada (fallback -- 
   - SDP @ ATL OVER_8.0 (-110, model 64.4%)
   - SDP @ ATL ATL_ML (-260, model 79.0%)
   - KCR @ DET DET_ML (-225, model 72.8%)
-- **3-leg @ +354 (prob 31.0%, EV +40.64%)**
+- **3-leg @ +352 (prob 31.0%, EV +40.02%)**
   - SDP @ ATL ATL_ML (-260, model 79.0%)
-  - MIN @ CLE MIN_ML (+127, model 53.9%)
+  - MIN @ CLE MIN_ML (+126, model 53.9%)
   - KCR @ DET DET_ML (-225, model 72.8%)
 - **2-leg @ +164 (prob 51.7%, EV +36.58%)**
   - SDP @ ATL ATL_ML (-260, model 79.0%)
   - ARI @ STL OVER_7.5 (-110, model 65.4%)
-- **2-leg @ +214 (prob 42.5%, EV +33.71%)**
-  - SDP @ ATL ATL_ML (-260, model 79.0%)
-  - MIN @ CLE MIN_ML (+127, model 53.9%)
 
 ## Self-Learning Loop
 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
 
-Cumulative graded plays: 6520. Wins: 2677. Hit rate: 41.1%.
+Cumulative graded plays: 6523. Wins: 2680. Hit rate: 41.1%.
 
 ## Auxiliary Markets (Model Fair Prices)
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| ARI @ STL | 54.3% | -119 | 2.97 | +161 | -161 |
-| KCR @ DET | 72.1% | -258 | 1.59 | -159 | +159 |
-| MIN @ CLE | 39.0% | +156 | 4.4 | +198 | -198 |
-| SDP @ ATL | 26.0% | +285 | 7.18 | -216 | +216 |
-| TBR @ TOR | 22.8% | +339 | 7.39 | +982 | -982 |
+| ARI @ STL | 54.3% | -119 | 2.96 | +161 | -161 |
+| KCR @ DET | 72.1% | -258 | 1.6 | -159 | +159 |
+| MIN @ CLE | 39.0% | +156 | 4.38 | +198 | -198 |
+| SDP @ ATL | 26.0% | +285 | 7.16 | -216 | +216 |
+| TBR @ TOR | 35.4% | +182 | 5.19 | +1174 | -1174 |
 
 ## Travel / Rest Flags
 

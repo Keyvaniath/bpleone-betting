@@ -1,28 +1,28 @@
 # EdgeStat Daily Summary — 2026-07-23
 
-## 🏥 Model Health: 78.5/100 [HEALTHY]
+## 🏥 Model Health: 75.8/100 [HEALTHY]
 - Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 99.9/100
-  - 🟡 Hit Rate Trend: 63.2/100
-  - 🔴 Brier Trend: 56.5/100
+  - 🟢 Calibration Freshness: 99.5/100
+  - 🟡 Hit Rate Trend: 62.6/100
+  - 🔴 Brier Trend: 56.1/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 95.5/100
-  - 🔴 Edge Count: 54.3/100
+  - 🟢 Data Health: 86.4/100
+  - 🔴 Edge Count: 48.6/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.576)
-- **Total games on board:** 124
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.577)
+- **Total games on board:** 125
 - **Strong home favorites:** 5 | **Strong road dogs:** 3
 
 ## 🎯 Top 5 Best Bets
 1. **TBR @ TOR YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-2. **KCR @ DET NRFI (no run 1st inning)** (78/100 ★★★★)
-3. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
-4. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
-5. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
+2. **SDP @ ATL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+3. **KCR @ DET NRFI (no run 1st inning)** (78/100 ★★★★)
+4. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
+5. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
 
-## 📡 Sharp Action (Line Movement)
-- [STRONG] **TBR @ TOR** ml_away: 44.25% → 50.74% (+6.5pp)
+## 🐋 Whale Picks (Max Confluence)
+- [STRONG] **[MLB]** TBR @ TOR TBR_ML -- 66% / +24.1% (score 2.5)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -51,16 +51,17 @@
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
 ## ⚡ Pre-Game HIGH Conviction (3)
-- [MLS] **LAFC** HOME (2-0 L10) · model 67.9% fair -211
-- [MLS] **Vancouver Whitecaps** AWAY (0-1 L10) · model 66.5% fair -199
+- [MLS] **LAFC** HOME (2-0 L10) · model 69.7% fair -230
+- [MLS] **Vancouver Whitecaps** AWAY (0-1 L10) · model 64.4% fair -181
 - [MLS] **Nashville SC** AWAY (2-0 L10) · model 63.4% fair -173
 
 ## 🔥/❄️ Heat / Cold Signals
 - Hot teams: **3** | Cold teams: **3** | Over-heavy: 0 | Under-heavy: 8
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (45)
+## ⚠️ Anomaly Detector (47)
 - STEAM_MOVE: **44**
+- COMPOUND_BULLPEN: **2**
 - PEN_MISMATCH: **1**
   - NYM @ PHI (MLB): ML/TOTAL steam since open: ML -3.8pp toward NYM; total +9.5 (OVER) (8 snapshots)
   - NY @ IND (WNBA): ML/TOTAL steam since open: ML +3.1pp toward IND; total +4 (OVER) (7 snapshots)
@@ -68,14 +69,14 @@
   - CON @ PHX (WNBA): TOTAL steam since open: ML +1.0pp toward PHX; total -3 (UNDER) (4 snapshots)
   - MIN @ SEA (WNBA): TOTAL steam since open: ML -1.4pp toward MIN; total +3 (OVER) (9 snapshots)
 
-## 💰 Today's Portfolio (10 picks)
-- Total stake: **$335.0** (33.5% of $1000 bankroll)
-- Expected EV: **$0.57**
+## 💰 Today's Portfolio (9 picks)
+- Total stake: **$345.0** (34.5% of $1000 bankroll)
+- Expected EV: **$8.63**
   - #1 [NRFI] $50 on TBR @ TOR YRFI (1st-inning OVER 0.5) (P=77%)
-  - #2 [NRFI] $35 on KCR @ DET NRFI (no run 1st inning) (P=72%)
-  - #3 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
-  - #4 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
-  - #5 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
+  - #2 [NRFI] $50 on SDP @ ATL YRFI (1st-inning OVER 0.5) (P=74%)
+  - #3 [NRFI] $35 on KCR @ DET NRFI (no run 1st inning) (P=72%)
+  - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
+  - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
 ## 🎯 Convergence Picks (18 stacked games)
 - ELITE: **1** · HIGH: 9 · MED: 8
@@ -105,11 +106,11 @@
   - [LEAN] **Islam Dulatov** (12-1-0) vs Wellington Turman -- fair -146
 
 ## ⛳ Golf Player Heat (from 3M Open)
-  - 🔥 T1 **Mackenzie Hughes** (Canada): +0 total -- finished T1
-  - 🔥 T2 **Taylor Moore** (USA): +0 total -- finished T2
-  - 🔥 T3 **Max Greyserman** (USA): +0 total -- finished T3
-  - 🔥 T4 **Rasmus Højgaard** (Denmark): +0 total -- finished T4
-  - 🔥 T5 **Lee Hodges** (USA): +0 total -- finished T5
+  - 🔥 T1 **Emiliano Grillo** (Argentina): -5 total -- finished T1
+  - 🔥 T2 **Lee Hodges** (USA): -1 total -- finished T2
+  - 🔥 T3 **Vince Whaley** (USA): +0 total -- finished T3
+  - 🔥 T4 **Jake Knapp** (USA): -1 total -- finished T4
+  - 🔥 T5 **Scottie Scheffler** (USA): -1 total -- finished T5
 
 ## 🔥 MLB Batter Heat (49 HOT / 55 COLD)
   - 🔥 **Steven Kwan** (CLE): L14 .419 / season .245 (+174pts)
