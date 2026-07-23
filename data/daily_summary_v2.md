@@ -1,13 +1,13 @@
 # EdgeStat Daily Summary — 2026-07-23
 
-## 🏥 Model Health: 75.8/100 [HEALTHY]
+## 🏥 Model Health: 78.8/100 [HEALTHY]
 - Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 99.5/100
+  - 🟢 Calibration Freshness: 100.0/100
   - 🟡 Hit Rate Trend: 62.6/100
   - 🔴 Brier Trend: 56.1/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 86.4/100
-  - 🔴 Edge Count: 48.6/100
+  - 🟢 Data Health: 95.5/100
+  - 🟡 Edge Count: 60.0/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.577)
@@ -22,7 +22,7 @@
 5. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** TBR @ TOR TBR_ML -- 66% / +24.1% (score 2.5)
+- [STRONG] **[MLB]** TBR @ TOR TBR_ML -- 67% / +24.5% (score 2.5)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -78,13 +78,13 @@
   - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
-## 🎯 Convergence Picks (18 stacked games)
-- ELITE: **1** · HIGH: 9 · MED: 8
-  - [ELITE] Minnesota Lynx @ Seattle Storm : 6 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, HEAT_COLD)
-  - [HIGH] Phoenix Mercury @ Los Angeles Sparks : 3 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD)
-  - [HIGH] Connecticut Sun @ Indiana Fever : 3 signals (HEAT_COLD, HEAT_COLD, ATS)
-  - [HIGH] Dallas Wings @ Portland Fire : 3 signals (HEAT_COLD, ATS, ATS)
+## 🎯 Convergence Picks (12 stacked games)
+- ELITE: **0** · HIGH: 6 · MED: 6
   - [HIGH] Charlotte FC @ Red Bull New York : 3 signals (PREGAME, ATS, ATS)
+  - [HIGH] FC Cincinnati @ Columbus Crew : 3 signals (PREGAME, ATS, ATS)
+  - [HIGH] Inter Miami CF @ CF Montréal : 3 signals (PREGAME, ATS, ATS)
+  - [HIGH] Toronto FC @ D.C. United : 3 signals (PREGAME, ATS, ATS)
+  - [HIGH] Chicago Fire FC @ New York City FC : 3 signals (PREGAME, ATS, ATS)
 
 ## ⚾ Top MLB Pitcher K Plays (3)
 - **Gavin Williams** OVER 5.5 K (73%) fair -269
@@ -106,23 +106,23 @@
   - [LEAN] **Islam Dulatov** (12-1-0) vs Wellington Turman -- fair -146
 
 ## ⛳ Golf Player Heat (from 3M Open)
-  - 🔥 T1 **Emiliano Grillo** (Argentina): -5 total -- finished T1
-  - 🔥 T2 **Lee Hodges** (USA): -1 total -- finished T2
-  - 🔥 T3 **Vince Whaley** (USA): +0 total -- finished T3
-  - 🔥 T4 **Jake Knapp** (USA): -1 total -- finished T4
-  - 🔥 T5 **Scottie Scheffler** (USA): -1 total -- finished T5
+  - 🔥 T1 **Lucas Glover** (USA): -3 total -- finished T1
+  - 🔥 T2 **Emiliano Grillo** (Argentina): -5 total -- finished T2
+  - 🔥 T3 **John VanDerLaan** (USA): +0 total -- finished T3
+  - 🔥 T4 **Trace Crowe** (USA): -5 total -- finished T4
+  - 🔥 T5 **Lee Hodges** (USA): -2 total -- finished T5
 
-## 🔥 MLB Batter Heat (49 HOT / 55 COLD)
-  - 🔥 **Steven Kwan** (CLE): L14 .419 / season .245 (+174pts)
+## 🔥 MLB Batter Heat (49 HOT / 57 COLD)
+  - 🔥 **Steven Kwan** (CLE): L14 .432 / season .248 (+184pts)
   - 🔥 **Curtis Mead** (WSH): L14 .400 / season .258 (+142pts)
-  - 🔥 **Drake Baldwin** (ATL): L14 .412 / season .275 (+137pts)
   - 🔥 **Joey Ortiz** (MIL): L14 .364 / season .239 (+125pts)
+  - 🔥 **Drake Baldwin** (ATL): L14 .392 / season .275 (+117pts)
   - 🔥 **José Tena** (WSH): L14 .364 / season .247 (+117pts)
-  - ❄️ **Nathan Church** (STL): L14 .079 / season .228 (-149pts) -- FADE props
+  - ❄️ **Nathan Church** (STL): L14 .054 / season .226 (-172pts) -- FADE props
   - ❄️ **Colton Cowser** (BAL): L14 .069 / season .207 (-138pts) -- FADE props
   - ❄️ **Henry Bolte** (ATH): L14 .114 / season .251 (-137pts) -- FADE props
-  - ❄️ **Kerry Carpenter** (DET): L14 .073 / season .207 (-134pts) -- FADE props
   - ❄️ **Jorge Mateo** (ATL): L14 .115 / season .244 (-129pts) -- FADE props
+  - ❄️ **Paul Goldschmidt** (NYY): L14 .128 / season .255 (-127pts) -- FADE props
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**

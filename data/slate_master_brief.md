@@ -1,33 +1,30 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-07-23T16:08:57 UTC_
+_Generated 2026-07-23T23:00:49 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -117
+- **Score:** -113
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 11
+- **Total STRONG:** 12
 - **Total FADES:** 161
 
 ## Top 5 Curated Picks
-1. **GOLF / Emiliano Grillo** (GOLF_PLAYER, score=136.64)
+1. **GOLF / Emiliano Grillo** (GOLF_PLAYER, score=118.86)
    - Play: Emiliano Grillo (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **MLB / Ty France** (MLB_BATTER, score=111.5)
-   - Play: Ty France (BATTER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_BATTER)
-3. **MLB / Drake Baldwin** (MLB_BATTER, score=92.75)
-   - Play: Drake Baldwin (BATTER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_BATTER)
-4. **GOLF / Michael Brennan** (GOLF_PLAYER, score=69.21)
-   - Play: Michael Brennan (PLAYER_STRONG)
+2. **GOLF / Trace Crowe** (GOLF_PLAYER, score=115.71)
+   - Play: Trace Crowe (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
+3. **MLB / AWAY** (MLB_TEAM, score=72.42)
+   - Play: AWAY (TEAM_STRONG)
+   - Rationale: Cross-sport top pick (MLB_TEAM)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
   - Emiliano Grillo top 10 finish
-  - Michael Brennan top 10 finish
-  - Kevin Roy top 10 finish
+  - Trace Crowe top 10 finish
+  - Scottie Scheffler top 10 finish
 
 ## Slate ROI Projection
 - **Picks:** 0
@@ -36,13 +33,13 @@ _Generated 2026-07-23T16:08:57 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **NHL** / stuart skinner (GOALIE_FADE)
+- **MLB** / Taj Bradley (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **NHL** / logan thompson_2 (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / samsonov ilya (GOALIE_FADE)
+- **NHL** / kevin lankinen (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / joseph woll (GOALIE_FADE)
+- **NHL** / casey desmith (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / adin hill (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / connor hellebuyck (GOALIE_FADE)
+- **NHL** / anthony stolarz (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO

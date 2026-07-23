@@ -2,29 +2,27 @@
 
 **Model Confidence: 22.9/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
 
-_Pipeline health: **WARNING** (12/15 artifacts ok; 3 empty, 0 stale)._ 
+_Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
 
-_Generated at 2026-07-23T16:09:43 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-07-23T23:00:57 UTC. Game lines source: **placeholder -110 (no real book today)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
-**TBR @ TOR - TBR_ML**
-- Market: -116
-- Model probability: 86.6%
-- Raw edge: +61.25%
+**CIN @ COL - CIN_ML**
+- Market: -110
+- Model probability: 73.7%
+- Raw edge: +40.74%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
 
-## Full Slate (5 games)
+## Full Slate (3 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 12:15p ET | SDP @ ATL | Truist Park | 90F 10mph | OVER_8.0 +22.91% |
-| 1:10p ET | MIN @ CLE | Progressive Field | 74F 10mph | OVER_7.5 +34.75% |
-| 3:07p ET | TBR @ TOR | Rogers Centre | indoor | TBR_ML +61.25% |
-| 5:15p ET | ARI @ STL | Busch Stadium | 78F 4mph | OVER_7.5 +24.92% |
-| 6:40p ET | KCR @ DET | Comerica Park | 67F 4mph | OVER_8.5 +22.49% |
+| 7:05p ET | SDP @ LAD | Petco Park | 62F -6mph | LAD_ML +25.43% |
+| 6:45p ET | BOS @ NYY | Yankee Stadium | 71F 12mph | OVER_9.0 +30.97% |
+| 9:40p ET | CIN @ COL | Coors Field | 74F 4mph | CIN_ML +40.74% |
 
 ## Parlays - top 5
 
@@ -58,11 +56,9 @@ Cumulative graded plays: 6523. Wins: 2680. Hit rate: 41.1%.
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| ARI @ STL | 54.3% | -119 | 2.96 | +161 | -161 |
-| KCR @ DET | 72.1% | -258 | 1.6 | -159 | +159 |
-| MIN @ CLE | 39.0% | +156 | 4.38 | +198 | -198 |
-| SDP @ ATL | 26.0% | +285 | 7.16 | -216 | +216 |
-| TBR @ TOR | 35.4% | +182 | 5.19 | +1174 | -1174 |
+| BOS @ NYY | -- | -- | -- | +115 | -115 |
+| CIN @ COL | -- | -- | -- | +465 | -465 |
+| SDP @ LAD | -- | -- | -- | -166 | +166 |
 
 ## Travel / Rest Flags
 
