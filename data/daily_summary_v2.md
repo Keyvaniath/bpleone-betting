@@ -1,32 +1,28 @@
 # EdgeStat Daily Summary — 2026-07-24
 
-## 🏥 Model Health: 76.1/100 [HEALTHY]
+## 🏥 Model Health: 77.7/100 [HEALTHY]
 - Solid health - some minor issues to monitor
   - 🟢 Calibration Freshness: 99.9/100
   - 🟡 Hit Rate Trend: 62.6/100
   - 🔴 Brier Trend: 56.1/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 81.8/100
-  - 🟡 Edge Count: 60.0/100
+  - 🟢 Data Health: 95.5/100
+  - 🔴 Edge Count: 48.6/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.577)
-- **Total games on board:** 141
+- **Total games on board:** 125
 - **Strong home favorites:** 5 | **Strong road dogs:** 3
 
 ## 🎯 Top 5 Best Bets
-1. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
-2. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
-3. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
-4. **GOLF Chandler Phillips TOP5 @ 601 (3M Open)** (78/100 ★★★★★)
-5. **GOLF Jesper Svensson TOP10 @ 546 (3M Open)** (78/100 ★★★★★)
+1. **OAK @ MIN YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+2. **LAA @ SFG YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+3. **CIN @ STL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+4. **HOU @ CHW YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+5. **SEA @ TEX YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** CIN @ COL CIN_ML -- 65% / +24.4% (score 2.5)
-
-## 📡 Sharp Action (Line Movement)
-- [ELITE] **CIN @ COL** ml_away: 51.46% → 98.68% (+47.2pp)
-- [ELITE] **BOS @ NYY** over_9.0: 52.38% → 63.64% (+11.3pp)
+- [STRONG] **[MLB]** SDP @ MIA MIA_ML -- 71% / +22.2% (score 2.5)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -63,22 +59,24 @@
 - Hot teams: **3** | Cold teams: **3** | Over-heavy: 0 | Under-heavy: 5
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (42)
+## ⚠️ Anomaly Detector (48)
 - STEAM_MOVE: **42**
+- COMPOUND_BULLPEN: **4**
+- PEN_MISMATCH: **2**
   - NYM @ PHI (MLB): ML/TOTAL steam since open: ML -3.8pp toward NYM; total +9.5 (OVER) (8 snapshots)
   - NY @ IND (WNBA): ML/TOTAL steam since open: ML +3.1pp toward IND; total +4 (OVER) (7 snapshots)
   - DAL @ POR (WNBA): TOTAL steam since open: ML -2.1pp toward DAL; total +4 (OVER) (12 snapshots)
   - CON @ PHX (WNBA): TOTAL steam since open: ML +1.0pp toward PHX; total -3 (UNDER) (4 snapshots)
   - MIN @ SEA (WNBA): TOTAL steam since open: ML -1.4pp toward MIN; total +3 (OVER) (9 snapshots)
 
-## 💰 Today's Portfolio (11 picks)
-- Total stake: **$340.0** (34.0% of $1000 bankroll)
-- Expected EV: **$-7.55**
-  - #1 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
-  - #2 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
-  - #3 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
-  - #4 [GOLF] $35 on GOLF Chandler Phillips TOP5 @ 601 (3M Open) (P=14%)
-  - #5 [GOLF] $35 on GOLF Jesper Svensson TOP10 @ 546 (3M Open) (P=15%)
+## 💰 Today's Portfolio (9 picks)
+- Total stake: **$345.0** (34.5% of $1000 bankroll)
+- Expected EV: **$11.27**
+  - #1 [NRFI] $50 on OAK @ MIN YRFI (1st-inning OVER 0.5) (P=80%)
+  - #2 [NRFI] $50 on LAA @ SFG YRFI (1st-inning OVER 0.5) (P=75%)
+  - #3 [NRFI] $50 on CIN @ STL YRFI (1st-inning OVER 0.5) (P=70%)
+  - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
+  - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
 ## 🎯 Convergence Picks (12 stacked games)
 - ELITE: **0** · HIGH: 6 · MED: 6
@@ -87,6 +85,13 @@
   - [HIGH] Inter Miami CF @ CF Montréal : 3 signals (PREGAME, ATS, ATS)
   - [HIGH] Toronto FC @ D.C. United : 3 signals (PREGAME, ATS, ATS)
   - [HIGH] Chicago Fire FC @ New York City FC : 3 signals (PREGAME, ATS, ATS)
+
+## ⚾ Top MLB Pitcher K Plays (9)
+- **MacKenzie Gore** OVER 4.5 K (78%) fair -347
+- **Tarik Skubal** OVER 5.5 K (76%) fair -314
+- **Jesús Luzardo** OVER 6.5 K (70%) fair -235
+- **Trey Yesavage** OVER 4.5 K (63%) fair -171
+- **Shane Drohan** OVER 4.5 K (62%) fair -166
 
 ## 🏀 NBA Player Heat (2 HOT / 5 COLD)
   - 🔥 **Nique Clifford** (SAC): L5 19.4/5.8/4.8 vs season 13.9/5.3/4.2 [PTS +5.5]

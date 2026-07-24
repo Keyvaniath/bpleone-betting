@@ -2,16 +2,16 @@
 
 **Model Confidence: 23.1/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
 
-_Pipeline health: **WARNING** (11/15 artifacts ok; 4 empty, 0 stale)._ 
+_Pipeline health: **WARNING** (12/15 artifacts ok; 3 empty, 0 stale)._ 
 
-_Generated at 2026-07-24T07:24:16 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-07-24T14:32:54 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
 **OAK @ MIN - OVER_9.5**
 - Market: -110
-- Model probability: 86.9%
-- Raw edge: +65.83%
+- Model probability: 87.1%
+- Raw edge: +66.32%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
@@ -21,38 +21,38 @@ _Generated at 2026-07-24T07:24:16 UTC. Game lines source: **Bovada (fallback -- 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
 | 4:10p ET | COL @ MIL | American Family Field | indoor | OVER_8.5 +47.51% |
-| 6:40p ET | KCR @ DET | Comerica Park | 68F 4mph | OVER_7.5 +22.46% |
-| 6:40p ET | CHC @ PIT | PNC Park | 71F 4mph | OVER_8.5 +22.19% |
-| 6:45p ET | ARI @ WSN | Nationals Park | 74F 8mph | WSN_ML +56.51% |
-| 6:45p ET | NYY @ PHI | Citizens Bank Park | 70F 5mph | NYY_ML +8.67% |
-| 7:05p ET | ATL @ BAL | Oriole Park at Camden Yards | 71F 3mph | OVER_9.0 +24.25% |
-| 7:10p ET | LAD @ NYM | Citi Field | 67F 4mph | LAD_ML +18.24% |
+| 6:40p ET | KCR @ DET | Comerica Park | 68F 5mph | OVER_7.5 +24.06% |
+| 6:40p ET | CHC @ PIT | PNC Park | 72F 6mph | OVER_8.0 +37.16% |
+| 6:45p ET | ARI @ WSN | Nationals Park | 75F 6mph | WSN_ML +59.32% |
+| 6:45p ET | NYY @ PHI | Citizens Bank Park | 70F 5mph | NYY_ML +40.82% |
+| 7:05p ET | ATL @ BAL | Oriole Park at Camden Yards | 72F 3mph | OVER_8.5 +36.36% |
+| 7:10p ET | LAD @ NYM | Citi Field | 68F 4mph | LAD_ML +20.45% |
 | 7:10p ET | CLE @ TBR | Tropicana Field | indoor | TBR_ML +17.83% |
-| 7:10p ET | SDP @ MIA | loanDepot park | indoor | MIA_ML +37.03% |
-| 7:15p ET | TOR @ BOS | Fenway Park | 67F 4mph | BOS_ML +28.0% |
-| 7:40p ET | HOU @ CHW | Rate Field | 68F 6mph | OVER_8.5 +28.93% |
+| 7:10p ET | SDP @ MIA | loanDepot park | indoor | MIA_ML +38.31% |
+| 7:15p ET | TOR @ BOS | Fenway Park | 67F 4mph | BOS_ML +24.91% |
+| 7:40p ET | HOU @ CHW | Rate Field | 68F 5mph | CHW_ML +20.19% |
 | 8:05p ET | SEA @ TEX | Globe Life Field | indoor | TEX_ML +3.26% |
-| 8:10p ET | OAK @ MIN | Target Field | 72F 8mph | OVER_9.5 +65.83% |
-| 8:15p ET | CIN @ STL | Busch Stadium | 72F 3mph | UNDER_8.5 +3.19% |
-| 10:15p ET | LAA @ SFG | Oracle Park | 60F 12mph | OVER_8.0 +10.0% |
+| 8:10p ET | OAK @ MIN | Target Field | 73F 8mph | OVER_9.5 +66.32% |
+| 8:15p ET | CIN @ STL | Busch Stadium | 68F 2mph | STL_ML +2.96% |
+| 10:15p ET | LAA @ SFG | Oracle Park | 58F 14mph | SFG_ML +12.94% |
 
 ## Parlays - top 5
 
-- **2-leg @ +264 (prob 41.1%, EV +49.7%)**
-  - CHC @ PIT OVER_8.5 (-110, model 64.0%)
-  - TOR @ BOS UNDER_8.5 (-110, model 64.2%)
-- **2-leg @ +264 (prob 41.1%, EV +49.66%)**
-  - KCR @ DET OVER_7.5 (-110, model 64.1%)
-  - CHC @ PIT OVER_8.5 (-110, model 64.0%)
-- **2-leg @ +229 (prob 45.1%, EV +48.56%)**
-  - ATL @ BAL OVER_9.0 (-110, model 65.1%)
+- **2-leg @ +231 (prob 45.1%, EV +49.42%)**
+  - KCR @ DET OVER_7.5 (-110, model 65.0%)
+  - LAD @ NYM LAD_ML (-136, model 69.4%)
+- **2-leg @ +205 (prob 48.9%, EV +49.2%)**
+  - TOR @ BOS BOS_ML (-130, model 70.6%)
   - HOU @ CHW CHW_ML (-138, model 69.3%)
-- **2-leg @ +225 (prob 45.1%, EV +46.9%)**
-  - ATL @ BAL OVER_9.0 (-110, model 65.1%)
-  - LAD @ NYM LAD_ML (-142, model 69.4%)
-- **2-leg @ +229 (prob 44.5%, EV +46.48%)**
-  - TOR @ BOS UNDER_8.5 (-110, model 64.2%)
+- **2-leg @ +229 (prob 45.0%, EV +48.18%)**
+  - KCR @ DET OVER_7.5 (-110, model 65.0%)
   - HOU @ CHW CHW_ML (-138, model 69.3%)
+- **2-leg @ +231 (prob 44.5%, EV +47.55%)**
+  - LAD @ NYM LAD_ML (-136, model 69.4%)
+  - TOR @ BOS UNDER_8.5 (-110, model 64.2%)
+- **2-leg @ +207 (prob 47.9%, EV +47.17%)**
+  - CLE @ TBR TBR_ML (-136, model 67.9%)
+  - TOR @ BOS BOS_ML (-130, model 70.6%)
 
 ## Self-Learning Loop
 
@@ -65,21 +65,21 @@ Cumulative graded plays: 6525. Wins: 2681. Hit rate: 41.1%.
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| ARI @ WSN | 42.7% | +134 | 4.16 | -199 | +199 |
-| ATL @ BAL | 44.4% | +125 | 4.06 | +176 | -176 |
-| CHC @ PIT | 56.0% | -127 | 2.82 | +129 | -129 |
-| CIN @ STL | 30.2% | +231 | 6.0 | +105 | -105 |
+| ARI @ WSN | 42.7% | +134 | 4.21 | -197 | +197 |
+| ATL @ BAL | 44.4% | +125 | 4.09 | +176 | -176 |
+| CHC @ PIT | 56.0% | -127 | 2.85 | +129 | -129 |
+| CIN @ STL | 30.2% | +231 | 5.99 | +106 | -106 |
 | CLE @ TBR | 53.0% | -113 | 3.17 | -116 | +116 |
 | COL @ MIL | 36.4% | +175 | 5.05 | -242 | +242 |
-| HOU @ CHW | 31.2% | +220 | 5.96 | -136 | +136 |
-| KCR @ DET | 58.0% | -138 | 2.65 | -172 | +172 |
-| LAA @ SFG | 25.0% | +300 | 7.5 | -131 | +131 |
-| LAD @ NYM | 33.7% | +197 | 5.49 | +392 | -392 |
-| NYY @ PHI | 43.8% | +128 | 4.21 | +199 | -199 |
-| OAK @ MIN | 19.5% | +413 | 8.46 | +100 | -100 |
+| HOU @ CHW | 31.2% | +220 | 5.99 | -135 | +135 |
+| KCR @ DET | 58.0% | -138 | 2.65 | -173 | +173 |
+| LAA @ SFG | 25.0% | +300 | 7.58 | -132 | +132 |
+| LAD @ NYM | 33.7% | +197 | 5.43 | +392 | -392 |
+| NYY @ PHI | 58.0% | -138 | 2.73 | +331 | -331 |
+| OAK @ MIN | 19.5% | +413 | 8.49 | +100 | -100 |
 | SDP @ MIA | 41.4% | +142 | 4.41 | -225 | +225 |
 | SEA @ TEX | 32.8% | +205 | 5.58 | +165 | -165 |
-| TOR @ BOS | 38.5% | +160 | 4.82 | -133 | +133 |
+| TOR @ BOS | 38.5% | +160 | 4.87 | -133 | +133 |
 
 ## Travel / Rest Flags
 
@@ -103,7 +103,7 @@ Cumulative graded plays: 6525. Wins: 2681. Hit rate: 41.1%.
 
 ## Loop Activity (since last refresh)
 
-- Confidence delta: **+0.2**
+- Confidence delta: **+0.0**
 
 ## Model Recommendations (operator review)
 
