@@ -1,13 +1,13 @@
 # EdgeStat Daily Summary — 2026-07-24
 
-## 🏥 Model Health: 77.7/100 [HEALTHY]
+## 🏥 Model Health: 81.0/100 [HEALTHY]
 - Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 99.9/100
-  - 🟡 Hit Rate Trend: 62.6/100
+  - 🟢 Calibration Freshness: 99.8/100
+  - 🟡 Hit Rate Trend: 62.1/100
   - 🔴 Brier Trend: 56.1/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 95.5/100
-  - 🔴 Edge Count: 48.6/100
+  - 🟢 Edge Count: 82.9/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.577)
@@ -22,7 +22,7 @@
 5. **SEA @ TEX YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** SDP @ MIA MIA_ML -- 71% / +22.2% (score 2.5)
+- [STRONG] **[MLB]** SDP @ MIA MIA_ML -- 71% / +23.0% (score 2.5)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -59,9 +59,9 @@
 - Hot teams: **3** | Cold teams: **3** | Over-heavy: 0 | Under-heavy: 5
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (48)
+## ⚠️ Anomaly Detector (46)
 - STEAM_MOVE: **42**
-- COMPOUND_BULLPEN: **4**
+- COMPOUND_BULLPEN: **2**
 - PEN_MISMATCH: **2**
   - NYM @ PHI (MLB): ML/TOTAL steam since open: ML -3.8pp toward NYM; total +9.5 (OVER) (8 snapshots)
   - NY @ IND (WNBA): ML/TOTAL steam since open: ML +3.1pp toward IND; total +4 (OVER) (7 snapshots)
@@ -71,7 +71,7 @@
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$11.27**
+- Expected EV: **$11.32**
   - #1 [NRFI] $50 on OAK @ MIN YRFI (1st-inning OVER 0.5) (P=80%)
   - #2 [NRFI] $50 on LAA @ SFG YRFI (1st-inning OVER 0.5) (P=75%)
   - #3 [NRFI] $50 on CIN @ STL YRFI (1st-inning OVER 0.5) (P=70%)
@@ -88,8 +88,8 @@
 
 ## ⚾ Top MLB Pitcher K Plays (9)
 - **MacKenzie Gore** OVER 4.5 K (78%) fair -347
+- **Cam Schlittler** OVER 5.5 K (77%) fair -337
 - **Tarik Skubal** OVER 5.5 K (76%) fair -314
-- **Jesús Luzardo** OVER 6.5 K (70%) fair -235
 - **Trey Yesavage** OVER 4.5 K (63%) fair -171
 - **Shane Drohan** OVER 4.5 K (62%) fair -166
 
@@ -108,11 +108,11 @@
   - [LEAN] **Islam Dulatov** (12-1-0) vs Wellington Turman -- fair -146
 
 ## ⛳ Golf Player Heat (from 3M Open)
-  - 🔥 T1 **Ben Kohles** (USA): -9 total -- finished T1
-  - 🔥 T2 **Emiliano Grillo** (Argentina): -7 total -- finished T2
+  - 🔥 T1 **Ben Kohles** (USA): -10 total -- finished T1
+  - 🔥 T2 **Michael Kim** (USA): -8 total -- finished T2
   - 🔥 T3 **Jackson Koivun** (USA): -7 total -- finished T3
   - 🔥 T4 **Gary Woodland** (USA): -7 total -- finished T4
-  - 🔥 T5 **Scottie Scheffler** (USA): -6 total -- finished T5
+  - 🔥 T5 **Austin Smotherman** (USA): -7 total -- finished T5
 
 ## 🔥 MLB Batter Heat (50 HOT / 56 COLD)
   - 🔥 **Steven Kwan** (CLE): L14 .432 / season .248 (+184pts)

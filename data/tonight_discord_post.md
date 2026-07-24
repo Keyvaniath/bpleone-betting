@@ -1,10 +1,10 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:12 F:120
+_NO_ACTION_NIGHT_ | L:0 S:16 F:101
 
 :dart: **Top Picks:**
 1. [GOLF] Ben Kohles -- Ben Kohles (PLAYER_STRONG)
-2. [GOLF] Scottie Scheffler -- Scottie Scheffler (PLAYER_STRONG)
-3. [MLB] Tarik Skubal -- Tarik Skubal (PITCHER_STRONG)
+2. [GOLF] Michael Kim -- Michael Kim (PLAYER_STRONG)
+3. [MLB] Cam Schlittler -- Cam Schlittler (PITCHER_STRONG)
 
 :coin: Bankroll Advisory: STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 

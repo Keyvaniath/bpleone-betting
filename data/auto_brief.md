@@ -6,9 +6,9 @@ _0% lineups confirmed · 13 rookie SPs_
 
 ## Slate
 - **15 games** scheduled
-- **34 best bets** scored: 0 DK · 0 PP · 12 NRFI · 0 SGP
+- **33 best bets** scored: 0 DK · 0 PP · 11 NRFI · 0 SGP
 - **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$48.42
-- **MC simulation:** EV +$135.05, 85% P(profit), p05 $-93.06 / p95 $338.03
+- **MC simulation:** EV +$134.59, 85% P(profit), p05 $-92.66 / p95 $334.88
 
 ## Top 5 Best Bets
 1. **OAK @ MIN YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +34.5%)
@@ -22,7 +22,7 @@ _0% lineups confirmed · 13 rookie SPs_
 5. **SEA @ TEX YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +21.2%)
    - P(YRFI) 67.2% vs baseline 46.0%
 
-## ⚠️ Trap Warnings — 13 flagged
+## ⚠️ Trap Warnings — 11 flagged
 - **OAK @ MIN YRFI (1st-inning OVER 0.5)** (low):
    - Edge +34.5% looks big but only 0 settled props on this player — model unproven
 - **LAA @ SFG YRFI (1st-inning OVER 0.5)** (low):
@@ -45,10 +45,10 @@ _Lean late-inning OVER on these games; fade their save situations._
 - **YRFI** (1st-inning OVER): OAK @ MIN, LAA @ SFG, CIN @ STL, HOU @ CHW, SEA @ TEX
 
 ## Golf -- 3M Open
-- **Leader:** Ben Kohles (-9) at #1
+- **Leader:** Ben Kohles (-10) at #1
 - **Field:** 144 players  |  Status: In Progress
-- **Play of the Tournament:** Jeffrey Kang TOP10 @ +569 (model 14.9%, HIGH)
-   - P(top 10) 14.9% -- safest finish bet (#17 (-4)).
+- **Play of the Tournament:** Kevin Roy TOP5 @ +519 (model 16.2%, HIGH)
+   - P(top 5) 16.2% -- lower variance than outright but compelling line.
 
 ## NBA -- PRESEASON
 - Los Angeles Lakers @ Sacramento Kings (0-0 vs 0-0)  | P(home) 55.0% fair -122 | Scheduled
