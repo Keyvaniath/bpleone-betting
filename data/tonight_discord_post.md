@@ -1,5 +1,5 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:16 F:101
+_NO_ACTION_NIGHT_ | L:0 S:11 F:88
 
 :dart: **Top Picks:**
 1. [GOLF] Ben Kohles -- Ben Kohles (PLAYER_STRONG)

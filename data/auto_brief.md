@@ -1,11 +1,11 @@
 # Tonight's Slate Brief — 2026-07-24
 
-## Slate Quality: 54/100 (LOW)
-_0% lineups confirmed · 13 rookie SPs_
-**Recommendation:** Defensive sizing tonight; stick to highest-confidence plays.
+## Slate Quality: 83/100 (HIGH)
+_92% lineups confirmed · 12 rookie SPs_
+**Recommendation:** Play normal Kelly sizing.
 
 ## Slate
-- **15 games** scheduled
+- **14 games** scheduled
 - **33 best bets** scored: 0 DK · 0 PP · 11 NRFI · 0 SGP
 - **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$48.42
 - **MC simulation:** EV +$134.59, 85% P(profit), p05 $-92.66 / p95 $334.88
@@ -34,9 +34,6 @@ _0% lineups confirmed · 13 rookie SPs_
 - **SEA @ TEX YRFI (1st-inning OVER 0.5)** (low):
    - Edge +21.2% looks big but only 0 settled props on this player — model unproven
 
-## Weather leans
-- **UNDER lean** (wind in + cold): LAA @ SFG
-
 ## Bullpens GASSED tonight
 San Diego Padres, Tampa Bay Rays, Texas Rangers, Toronto Blue Jays, Minnesota Twins, Atlanta Braves, Arizona Diamondbacks, Boston Red Sox
 _Lean late-inning OVER on these games; fade their save situations._
@@ -45,10 +42,10 @@ _Lean late-inning OVER on these games; fade their save situations._
 - **YRFI** (1st-inning OVER): OAK @ MIN, LAA @ SFG, CIN @ STL, HOU @ CHW, SEA @ TEX
 
 ## Golf -- 3M Open
-- **Leader:** Ben Kohles (-10) at #1
+- **Leader:** Ben Kohles (-11) at #1
 - **Field:** 144 players  |  Status: In Progress
-- **Play of the Tournament:** Kevin Roy TOP5 @ +519 (model 16.2%, HIGH)
-   - P(top 5) 16.2% -- lower variance than outright but compelling line.
+- **Play of the Tournament:** Scottie Scheffler TOP5 @ +475 (model 17.4%, HIGH)
+   - P(top 5) 17.4% -- lower variance than outright but compelling line.
 
 ## NBA -- PRESEASON
 - Los Angeles Lakers @ Sacramento Kings (0-0 vs 0-0)  | P(home) 55.0% fair -122 | Scheduled
@@ -69,12 +66,12 @@ _Lean late-inning OVER on these games; fade their save situations._
 - Kiwoom Heroes @ KIA Tigers | P(home) 76.4% fair -324 | total 9 R
 - **KBO POD:** SSG Landers ML vs NC Dinos (KBO) (MED)
 
-## LoL Esports -- 1 live, 22 upcoming
-- [LEC] Movistar KOI vs G2 Esports BO3 | P(A) 43.6% fair +129/-129
-- [LEC] Team Vitality vs Karmine Corp BO3 | P(A) 47.9% fair +109/-109
+## LoL Esports -- 0 live, 25 upcoming
 - [LCS] TBD vs TBD BO3 | P(A) 50.0% fair -100/-100
 - [LPL] Xi'an Team WE vs LGD GAMING BO3 | P(A) 39.0% fair +156/-156
 - [LPL] Invictus Gaming vs WeiboGaming BO3 | P(A) 50.0% fair -100/-100
+- [LPL] TOP ESPORTS vs THUNDER TALK GAMING BO3 | P(A) 43.2% fair +131/-131
+- [LEC] Team Vitality vs G2 Esports BO3 | P(A) 37.2% fair +169/-169
 - **LoL POT:** LGD GAMING ML vs Xi'an Team WE (LPL, BO3) (HIGH)
 
 ## Player Play of the Day -- across all sports (3606 candidates scanned)
