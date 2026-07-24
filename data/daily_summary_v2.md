@@ -1,28 +1,32 @@
-# EdgeStat Daily Summary — 2026-07-23
+# EdgeStat Daily Summary — 2026-07-24
 
-## 🏥 Model Health: 78.8/100 [HEALTHY]
+## 🏥 Model Health: 76.1/100 [HEALTHY]
 - Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 100.0/100
+  - 🟢 Calibration Freshness: 99.9/100
   - 🟡 Hit Rate Trend: 62.6/100
   - 🔴 Brier Trend: 56.1/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 95.5/100
+  - 🟢 Data Health: 81.8/100
   - 🟡 Edge Count: 60.0/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.577)
-- **Total games on board:** 125
+- **Total games on board:** 141
 - **Strong home favorites:** 5 | **Strong road dogs:** 3
 
 ## 🎯 Top 5 Best Bets
-1. **TBR @ TOR YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-2. **SDP @ ATL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-3. **KCR @ DET NRFI (no run 1st inning)** (78/100 ★★★★)
-4. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
-5. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
+1. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
+2. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
+3. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
+4. **GOLF Chandler Phillips TOP5 @ 601 (3M Open)** (78/100 ★★★★★)
+5. **GOLF Jesper Svensson TOP10 @ 546 (3M Open)** (78/100 ★★★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** TBR @ TOR TBR_ML -- 67% / +24.5% (score 2.5)
+- [STRONG] **[MLB]** CIN @ COL CIN_ML -- 65% / +24.4% (score 2.5)
+
+## 📡 Sharp Action (Line Movement)
+- [ELITE] **CIN @ COL** ml_away: 51.46% → 98.68% (+47.2pp)
+- [ELITE] **BOS @ NYY** over_9.0: 52.38% → 63.64% (+11.3pp)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -56,27 +60,25 @@
 - [MLS] **Nashville SC** AWAY (2-0 L10) · model 63.4% fair -173
 
 ## 🔥/❄️ Heat / Cold Signals
-- Hot teams: **3** | Cold teams: **3** | Over-heavy: 0 | Under-heavy: 8
+- Hot teams: **3** | Cold teams: **3** | Over-heavy: 0 | Under-heavy: 5
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (47)
-- STEAM_MOVE: **44**
-- COMPOUND_BULLPEN: **2**
-- PEN_MISMATCH: **1**
+## ⚠️ Anomaly Detector (42)
+- STEAM_MOVE: **42**
   - NYM @ PHI (MLB): ML/TOTAL steam since open: ML -3.8pp toward NYM; total +9.5 (OVER) (8 snapshots)
   - NY @ IND (WNBA): ML/TOTAL steam since open: ML +3.1pp toward IND; total +4 (OVER) (7 snapshots)
   - DAL @ POR (WNBA): TOTAL steam since open: ML -2.1pp toward DAL; total +4 (OVER) (12 snapshots)
   - CON @ PHX (WNBA): TOTAL steam since open: ML +1.0pp toward PHX; total -3 (UNDER) (4 snapshots)
   - MIN @ SEA (WNBA): TOTAL steam since open: ML -1.4pp toward MIN; total +3 (OVER) (9 snapshots)
 
-## 💰 Today's Portfolio (9 picks)
-- Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$8.63**
-  - #1 [NRFI] $50 on TBR @ TOR YRFI (1st-inning OVER 0.5) (P=77%)
-  - #2 [NRFI] $50 on SDP @ ATL YRFI (1st-inning OVER 0.5) (P=74%)
-  - #3 [NRFI] $35 on KCR @ DET NRFI (no run 1st inning) (P=72%)
-  - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
-  - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
+## 💰 Today's Portfolio (11 picks)
+- Total stake: **$340.0** (34.0% of $1000 bankroll)
+- Expected EV: **$-7.55**
+  - #1 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
+  - #2 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
+  - #3 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
+  - #4 [GOLF] $35 on GOLF Chandler Phillips TOP5 @ 601 (3M Open) (P=14%)
+  - #5 [GOLF] $35 on GOLF Jesper Svensson TOP10 @ 546 (3M Open) (P=15%)
 
 ## 🎯 Convergence Picks (12 stacked games)
 - ELITE: **0** · HIGH: 6 · MED: 6
@@ -85,11 +87,6 @@
   - [HIGH] Inter Miami CF @ CF Montréal : 3 signals (PREGAME, ATS, ATS)
   - [HIGH] Toronto FC @ D.C. United : 3 signals (PREGAME, ATS, ATS)
   - [HIGH] Chicago Fire FC @ New York City FC : 3 signals (PREGAME, ATS, ATS)
-
-## ⚾ Top MLB Pitcher K Plays (3)
-- **Gavin Williams** OVER 5.5 K (73%) fair -269
-- **Randy Dobnak** OVER 5.5 K (70%) fair -233
-- **Chris Sale** OVER 5.5 K (64%) fair -179
 
 ## 🏀 NBA Player Heat (2 HOT / 5 COLD)
   - 🔥 **Nique Clifford** (SAC): L5 19.4/5.8/4.8 vs season 13.9/5.3/4.2 [PTS +5.5]
@@ -106,19 +103,19 @@
   - [LEAN] **Islam Dulatov** (12-1-0) vs Wellington Turman -- fair -146
 
 ## ⛳ Golf Player Heat (from 3M Open)
-  - 🔥 T1 **Lucas Glover** (USA): -3 total -- finished T1
-  - 🔥 T2 **Emiliano Grillo** (Argentina): -5 total -- finished T2
-  - 🔥 T3 **John VanDerLaan** (USA): +0 total -- finished T3
-  - 🔥 T4 **Trace Crowe** (USA): -5 total -- finished T4
-  - 🔥 T5 **Lee Hodges** (USA): -2 total -- finished T5
+  - 🔥 T1 **Ben Kohles** (USA): -9 total -- finished T1
+  - 🔥 T2 **Emiliano Grillo** (Argentina): -7 total -- finished T2
+  - 🔥 T3 **Jackson Koivun** (USA): -7 total -- finished T3
+  - 🔥 T4 **Gary Woodland** (USA): -7 total -- finished T4
+  - 🔥 T5 **Scottie Scheffler** (USA): -6 total -- finished T5
 
-## 🔥 MLB Batter Heat (49 HOT / 57 COLD)
+## 🔥 MLB Batter Heat (50 HOT / 56 COLD)
   - 🔥 **Steven Kwan** (CLE): L14 .432 / season .248 (+184pts)
   - 🔥 **Curtis Mead** (WSH): L14 .400 / season .258 (+142pts)
   - 🔥 **Joey Ortiz** (MIL): L14 .364 / season .239 (+125pts)
   - 🔥 **Drake Baldwin** (ATL): L14 .392 / season .275 (+117pts)
   - 🔥 **José Tena** (WSH): L14 .364 / season .247 (+117pts)
-  - ❄️ **Nathan Church** (STL): L14 .054 / season .226 (-172pts) -- FADE props
+  - ❄️ **Nathan Church** (STL): L14 .079 / season .229 (-150pts) -- FADE props
   - ❄️ **Colton Cowser** (BAL): L14 .069 / season .207 (-138pts) -- FADE props
   - ❄️ **Henry Bolte** (ATH): L14 .114 / season .251 (-137pts) -- FADE props
   - ❄️ **Jorge Mateo** (ATL): L14 .115 / season .244 (-129pts) -- FADE props
@@ -132,6 +129,6 @@
   - ⚠️ batter_rbis (Brier Δ -0.0052)
 
 ## 🤖 Self-Training Status
-- **WNBA**: n=41 games · hit rate 61.0% · bias +1.6pp
+- **WNBA**: n=38 games · hit rate 65.8% · bias -3.1pp [calibration applied]
 - **MLS**: n=20 games · hit rate 50.0% · bias -1.4pp
-- **MLB**: n=150 games · hit rate 54.7% · bias +2.7pp [calibration applied]
+- **MLB**: n=142 games · hit rate 51.4% · bias +1.7pp

@@ -1,52 +1,37 @@
-# Tonight's Slate Brief — 2026-07-23
+# Tonight's Slate Brief — 2026-07-24
 
-## Slate Quality: 63/100 (MEDIUM)
-_40% lineups confirmed · 5 rookie SPs_
+## Slate Quality: 55/100 (MEDIUM)
+_0% lineups confirmed · 12 rookie SPs_
 **Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
-- **5 games** scheduled
-- **26 best bets** scored: 0 DK · 0 PP · 4 NRFI · 0 SGP
-- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$44.32
-- **MC simulation:** EV +$70.48, 67% P(profit), p05 $-99.64 / p95 $177.34
+- **15 games** scheduled
+- **22 best bets** scored: 0 DK · 0 PP · 0 NRFI · 0 SGP
 
 ## Top 5 Best Bets
-1. **TBR @ TOR YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +31.2%)
-   - P(YRFI) 77.2% vs baseline 46.0%
-2. **SDP @ ATL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +28.0%)
-   - P(YRFI) 74.0% vs baseline 46.0%
-3. **KCR @ DET NRFI (no run 1st inning)**  (78/100 ****, edge +18.1%)
-   - P(NRFI) 72.1% vs baseline 54.0%
-4. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
+1. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
    - Player prop quality score 1.1935
    - Elite player
-5. **LOL ShowMaker OVER 3.5 Kills**  (78/100 ****, edge —)
+2. **LOL ShowMaker OVER 3.5 Kills**  (78/100 ****, edge —)
    - Player prop quality score 1.1892
    - Elite player
-
-## ⚠️ Trap Warnings — 4 flagged
-- **TBR @ TOR YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +31.2% looks big but only 0 settled props on this player — model unproven
-- **SDP @ ATL YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +28.0% looks big but only 0 settled props on this player — model unproven
-- **KCR @ DET NRFI (no run 1st inning)** (low):
-   - Edge +18.1% looks big but only 0 settled props on this player — model unproven
-- **MIN @ CLE YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +15.0% looks big but only 0 settled props on this player — model unproven
+3. **LOL Peyz OVER 4.5 Kills**  (78/100 ****, edge —)
+   - Player prop quality score 1.184
+   - Elite player
+4. **GOLF Chandler Phillips TOP5 @ 601 (3M Open)**  (78/100 *****, edge —)
+   - P(top 5) 14.3% -- lower variance than outright but compelling line.
+5. **GOLF Jesper Svensson TOP10 @ 546 (3M Open)**  (78/100 *****, edge —)
+   - P(top 10) 15.5% -- safest finish bet (#25 (-4)).
 
 ## Bullpens GASSED tonight
 Tampa Bay Rays, Texas Rangers, Toronto Blue Jays, Minnesota Twins, Atlanta Braves, Chicago White Sox, Milwaukee Brewers, Arizona Diamondbacks
 _Lean late-inning OVER on these games; fade their save situations._
 
-## NRFI/YRFI strong leans
-- **YRFI** (1st-inning OVER): TBR @ TOR, SDP @ ATL, MIN @ CLE
-- **NRFI** (1st-inning UNDER): KCR @ DET
-
 ## Golf -- 3M Open
-- **Leader:** Emiliano Grillo (-5) at #1
+- **Leader:** Ben Kohles (-9) at #1
 - **Field:** 144 players  |  Status: In Progress
-- **Play of the Tournament:** Scottie Scheffler TOP5 @ +519 (model 16.2%, HIGH)
-   - P(top 5) 16.2% -- lower variance than outright but compelling line.
+- **Play of the Tournament:** Chandler Phillips TOP5 @ +601 (model 14.3%, HIGH)
+   - P(top 5) 14.3% -- lower variance than outright but compelling line.
 
 ## NBA -- PRESEASON
 - Los Angeles Lakers @ Sacramento Kings (0-0 vs 0-0)  | P(home) 55.0% fair -122 | Scheduled
@@ -60,22 +45,22 @@ _Lean late-inning OVER on these games; fade their save situations._
 - Chicago Blackhawks @ Minnesota Wild (0-0-0 vs 0-0-0)  | P(home) 52.9% fair -112 | Scheduled
 
 ## KBO -- 2026 Korean Baseball
-- KT Wiz @ Lotte Giants | P(home) 47.7% fair +109 | total 9 R
-- LG Twins @ Hanwha Eagles | P(home) 33.6% fair +198 | total 9 R
-- NC Dinos @ SSG Landers | P(home) 56.0% fair -127 | total 8 R
-- Samsung Lions @ Doosan Bears | P(home) 49.2% fair +103 | total 8 R
-- Kiwoom Heroes @ KIA Tigers | P(home) 77.0% fair -336 | total 9 R
+- KT Wiz @ Lotte Giants | P(home) 47.6% fair +110 | total 9 R
+- LG Twins @ Hanwha Eagles | P(home) 34.5% fair +190 | total 9 R
+- NC Dinos @ SSG Landers | P(home) 55.7% fair -126 | total 9 R
+- Samsung Lions @ Doosan Bears | P(home) 50.1% fair -100 | total 9 R
+- Kiwoom Heroes @ KIA Tigers | P(home) 76.4% fair -324 | total 9 R
 - **KBO POD:** SSG Landers ML vs NC Dinos (KBO) (MED)
 
-## LoL Esports -- 0 live, 17 upcoming
-- [NACL] Blue Otter vs Cupid Esports BO3 | P(A) 42.6% fair +135/-135
-- [NACL] Conviction vs Winthrop University BO3 | P(A) 50.0% fair -100/-100
+## LoL Esports -- 0 live, 24 upcoming
 - [LJL] RAYN Clocks vs Arneb BO5 | P(A) 54.4% fair -119/+119
-- [LPL] Beijing JDG Esports vs Xi'an Team WE BO3 | P(A) 57.4% fair -135/+135
-- [LPL] BILIBILI GAMING vs EDWARD GAMING BO3 | P(A) 66.9% fair -202/+202
+- [LEC] Movistar KOI vs G2 Esports BO3 | P(A) 43.6% fair +129/-129
+- [LEC] Team Vitality vs Karmine Corp BO3 | P(A) 47.9% fair +109/-109
+- [LCS] TBD vs TBD BO3 | P(A) 50.0% fair -100/-100
+- [LPL] Xi'an Team WE vs LGD GAMING BO3 | P(A) 39.0% fair +156/-156
 - **LoL POT:** LGD GAMING ML vs Xi'an Team WE (LPL, BO3) (HIGH)
 
-## Player Play of the Day -- across all sports (3607 candidates scanned)
+## Player Play of the Day -- across all sports (3606 candidates scanned)
 - **[LOL]** Inspired UNDER 3.5 Kills | model 61.7% fair -161 (ELITE)
 - **[LOL]** ShowMaker OVER 3.5 Kills | model 62.5% fair -167 (ELITE)
 - **[LOL]** Peyz OVER 4.5 Kills | model 61.3% fair -158 (ELITE)

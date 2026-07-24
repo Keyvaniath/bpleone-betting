@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-07-23T23:00:42",
-  "n_settled": 6523,
+  "generated_at": "2026-07-24T07:24:00",
+  "n_settled": 6525,
   "span": [
     "2026-05-19",
     "2026-07-23"
@@ -8,15 +8,15 @@
   "n_days": 66,
   "in_sample": {
     "raw_roi": -15.9,
-    "raw_n": 6516,
+    "raw_n": 6518,
     "curated_roi": 16.4,
-    "curated_n": 1591,
-    "curated_hit": 72.0,
+    "curated_n": 1593,
+    "curated_hit": 71.9,
     "families_cut": 23,
     "curated_roi_ci": {
-      "roi_lo": 12.4,
-      "roi_hi": 20.5,
-      "n": 1591,
+      "roi_lo": 12.3,
+      "roi_hi": 20.6,
+      "n": 1593,
       "positive": true
     }
   },
@@ -29,10 +29,10 @@
       "train_n": 4170,
       "families_cut": 23,
       "test_raw_roi": -16.6,
-      "test_oos_roi": 25.1,
-      "test_oos_hit": 72.0,
-      "test_oos_n": 504,
-      "test_leak_roi": 25.1
+      "test_oos_roi": 25.0,
+      "test_oos_hit": 71.9,
+      "test_oos_n": 506,
+      "test_leak_roi": 25.0
     },
     {
       "split": "70/30",
@@ -42,10 +42,10 @@
       "train_n": 5345,
       "families_cut": 23,
       "test_raw_roi": -19.0,
-      "test_oos_roi": 9.9,
-      "test_oos_hit": 64.5,
-      "test_oos_n": 282,
-      "test_leak_roi": 9.9
+      "test_oos_roi": 9.8,
+      "test_oos_hit": 64.4,
+      "test_oos_n": 284,
+      "test_leak_roi": 9.8
     },
     {
       "split": "80/20",
@@ -55,22 +55,22 @@
       "train_n": 6204,
       "families_cut": 23,
       "test_raw_roi": -2.2,
-      "test_oos_roi": 11.3,
-      "test_oos_hit": 66.9,
-      "test_oos_n": 136,
-      "test_leak_roi": 11.3
+      "test_oos_roi": 11.1,
+      "test_oos_hit": 66.7,
+      "test_oos_n": 138,
+      "test_leak_roi": 11.1
     }
   ],
   "holdout_70_ci": {
     "roi_lo": -0.5,
-    "roi_hi": 20.0,
-    "n": 282,
+    "roi_hi": 20.1,
+    "n": 284,
     "positive": false
   },
   "holdout_robust_ci": {
     "roi_lo": -0.5,
-    "roi_hi": 20.0,
-    "n": 282,
+    "roi_hi": 20.1,
+    "n": 284,
     "positive": false
   },
   "persistence": {
@@ -80,22 +80,22 @@
     "test_net_of_cuts": -482.0,
     "worst": [
       {
-        "family": "mlb_xbh_0.5_over",
-        "n": 270,
-        "net": -60.8
-      },
-      {
         "family": "1_plus_xbh",
         "n": 270,
         "net": -60.8
       },
       {
-        "family": "to_hit_hr_yes",
+        "family": "mlb_xbh_0.5_over",
+        "n": 270,
+        "net": -60.8
+      },
+      {
+        "family": "mlb_hr_0.5_over",
         "n": 123,
         "net": -60.1
       },
       {
-        "family": "mlb_hr_0.5_over",
+        "family": "to_hit_hr_yes",
         "n": 123,
         "net": -60.1
       },
@@ -113,8 +113,8 @@
   },
   "concentration": {
     "n_surviving_families": 21,
-    "curated_net": 27.8,
-    "curated_n": 282,
+    "curated_net": 27.7,
+    "curated_n": 284,
     "top2": [
       {
         "family": "3pm_under",
@@ -130,9 +130,9 @@
       }
     ],
     "net_top2": 14.1,
-    "net_ex_top2": 13.7,
-    "roi_ex_flagged": 9.9,
-    "n_ex_flagged": 282,
+    "net_ex_top2": 13.6,
+    "roi_ex_flagged": 9.8,
+    "n_ex_flagged": 284,
     "top_contributors": [
       {
         "family": "3pm_under",
@@ -176,10 +176,10 @@
       },
       {
         "family": "over",
-        "n": 30,
-        "net": 4.4,
-        "roi": 14.5,
-        "hit": 60.0,
+        "n": 32,
+        "net": 4.3,
+        "roi": 13.4,
+        "hit": 59.4,
         "flagged": false
       }
     ],
@@ -192,5 +192,5 @@
     "ROI is measured at the model's fair price / settled outcome. It does NOT yet prove we beat the closing line (CLV) -- that requires the live odds feed.",
     "The 95% CI shows the edge is significant WITHIN this sample (it's not sampling noise), but says nothing about regime change -- it's still ~1 month of one season. It also treats picks as independent, so same-slate correlation makes the true interval a touch wider than shown."
   ],
-  "headline": "The curation derived on early data still returns +9.9% on the unseen later window, and the families it cut went on to lose 482u out-of-sample."
+  "headline": "The curation derived on early data still returns +9.8% on the unseen later window, and the families it cut went on to lose 482u out-of-sample."
 }
