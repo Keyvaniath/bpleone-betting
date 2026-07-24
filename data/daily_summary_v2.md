@@ -2,7 +2,7 @@
 
 ## 🏥 Model Health: 80.7/100 [HEALTHY]
 - Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 99.9/100
+  - 🟢 Calibration Freshness: 100.0/100
   - 🟡 Hit Rate Trend: 62.1/100
   - 🔴 Brier Trend: 56.1/100
   - 🟢 Pipeline Audit: 100.0/100
@@ -22,7 +22,7 @@
 5. **SEA @ TEX YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** SDP @ MIA MIA_ML -- 71% / +23.0% (score 2.5)
+- [STRONG] **[MLB]** SDP @ MIA MIA_ML -- 72% / +26.4% (score 2.5)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -86,12 +86,12 @@
   - [HIGH] Toronto FC @ D.C. United : 3 signals (PREGAME, ATS, ATS)
   - [HIGH] Chicago Fire FC @ New York City FC : 3 signals (PREGAME, ATS, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (9)
+## ⚾ Top MLB Pitcher K Plays (8)
 - **MacKenzie Gore** OVER 4.5 K (78%) fair -347
 - **Cam Schlittler** OVER 5.5 K (77%) fair -337
 - **Tarik Skubal** OVER 5.5 K (76%) fair -314
 - **Trey Yesavage** OVER 4.5 K (63%) fair -171
-- **Shane Drohan** OVER 4.5 K (62%) fair -166
+- **Joey Cantillo** OVER 4.5 K (62%) fair -160
 
 ## 🏀 NBA Player Heat (2 HOT / 5 COLD)
   - 🔥 **Nique Clifford** (SAC): L5 19.4/5.8/4.8 vs season 13.9/5.3/4.2 [PTS +5.5]
@@ -108,23 +108,23 @@
   - [LEAN] **Islam Dulatov** (12-1-0) vs Wellington Turman -- fair -146
 
 ## ⛳ Golf Player Heat (from 3M Open)
-  - 🔥 T1 **Ben Kohles** (USA): -11 total -- finished T1
-  - 🔥 T2 **Michael Kim** (USA): -10 total -- finished T2
-  - 🔥 T3 **Billy Horschel** (USA): -9 total -- finished T3
-  - 🔥 T4 **Gary Woodland** (USA): -9 total -- finished T4
-  - 🔥 T5 **Troy Merritt** (USA): -6 total -- finished T5
+  - 🔥 T1 **Michael Kim** (USA): -14 total -- finished T1
+  - 🔥 T2 **Ben Kohles** (USA): -11 total -- finished T2
+  - 🔥 T3 **Troy Merritt** (USA): -10 total -- finished T3
+  - 🔥 T4 **Jackson Koivun** (USA): -10 total -- finished T4
+  - 🔥 T5 **Zac Blair** (USA): -9 total -- finished T5
 
-## 🔥 MLB Batter Heat (49 HOT / 56 COLD)
+## 🔥 MLB Batter Heat (47 HOT / 57 COLD)
   - 🔥 **Steven Kwan** (CLE): L14 .432 / season .248 (+184pts)
-  - 🔥 **Curtis Mead** (WSH): L14 .400 / season .258 (+142pts)
-  - 🔥 **Joey Ortiz** (MIL): L14 .356 / season .237 (+119pts)
+  - 🔥 **Curtis Mead** (WSH): L14 .392 / season .257 (+135pts)
+  - 🔥 **Nasim Nuñez** (WSH): L14 .372 / season .253 (+119pts)
   - 🔥 **Drake Baldwin** (ATL): L14 .392 / season .275 (+117pts)
   - 🔥 **José Tena** (WSH): L14 .364 / season .247 (+117pts)
-  - ❄️ **Troy Johnston** (COL): L14 .118 / season .293 (-175pts) -- FADE props
+  - ❄️ **Troy Johnston** (COL): L14 .114 / season .292 (-178pts) -- FADE props
   - ❄️ **Nathan Church** (STL): L14 .079 / season .229 (-150pts) -- FADE props
   - ❄️ **Colton Cowser** (BAL): L14 .069 / season .207 (-138pts) -- FADE props
   - ❄️ **Henry Bolte** (ATH): L14 .114 / season .251 (-137pts) -- FADE props
-  - ❄️ **William Contreras** (MIL): L14 .140 / season .272 (-132pts) -- FADE props
+  - ❄️ **Jorge Mateo** (ATL): L14 .115 / season .244 (-129pts) -- FADE props
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**

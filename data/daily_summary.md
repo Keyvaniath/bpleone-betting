@@ -4,36 +4,31 @@
 
 _Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
 
-_Generated at 2026-07-24T21:56:18 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-07-24T23:08:30 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
 **OAK @ MIN - OVER_10.5**
 - Market: -110
-- Model probability: 80.5%
-- Raw edge: +53.67%
+- Model probability: 80.8%
+- Raw edge: +54.32%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
 
-## Full Slate (14 games)
+## Full Slate (9 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 6:40p ET | KCR @ DET | Comerica Park | 68F 4mph | DET_ML +16.5% |
-| 6:40p ET | CHC @ PIT | PNC Park | 70F 6mph | OVER_8.0 +35.79% |
-| 6:45p ET | ARI @ WSN | Nationals Park | 74F 4mph | WSN_ML +33.18% |
-| 6:45p ET | NYY @ PHI | Citizens Bank Park | 72F 5mph | NYY_ML +19.0% |
-| 7:05p ET | ATL @ BAL | Oriole Park at Camden Yards | 71F 4mph | OVER_9.0 +21.99% |
-| 7:10p ET | LAD @ NYM | Citi Field | 69F 6mph | OVER_8.0 +33.08% |
+| 7:10p ET | LAD @ NYM | Citi Field | 68F 4mph | OVER_8.0 +29.25% |
 | 7:10p ET | CLE @ TBR | Tropicana Field | indoor | UNDER_8.0 +18.7% |
 | 7:10p ET | SDP @ MIA | loanDepot park | indoor | MIA_ML +43.96% |
-| 7:15p ET | TOR @ BOS | Fenway Park | 68F 5mph | BOS_ML +33.85% |
+| 7:15p ET | TOR @ BOS | Fenway Park | 69F 5mph | BOS_ML +32.8% |
 | 7:40p ET | HOU @ CHW | Rate Field | 67F 6mph | CHW_ML +28.53% |
 | 8:05p ET | SEA @ TEX | Globe Life Field | indoor | -- |
-| 8:10p ET | OAK @ MIN | Target Field | 73F 9mph | OVER_10.5 +53.67% |
-| 8:15p ET | CIN @ STL | Busch Stadium | 69F 4mph | STL_ML +14.8% |
-| 10:15p ET | LAA @ SFG | Oracle Park | 59F 15mph | SFG_ML +23.98% |
+| 8:10p ET | OAK @ MIN | Target Field | 74F 9mph | OVER_10.5 +54.32% |
+| 8:15p ET | CIN @ STL | Busch Stadium | 69F 3mph | STL_ML +14.71% |
+| 10:15p ET | LAA @ SFG | Oracle Park | 59F 16mph | SFG_ML +23.7% |
 
 ## Parlays - top 5
 
@@ -64,20 +59,16 @@ Cumulative graded plays: 6525. Wins: 2681. Hit rate: 41.1%.
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| ARI @ WSN | 42.7% | +134 | 4.19 | -194 | +194 |
-| ATL @ BAL | 54.4% | -119 | 3.06 | +161 | -161 |
-| CHC @ PIT | 56.0% | -127 | 2.81 | +129 | -129 |
+| ATL @ BAL | 54.4% | -119 | 3.04 | -- | -- |
 | CIN @ STL | 30.2% | +231 | 5.94 | +105 | -105 |
 | CLE @ TBR | 53.0% | -113 | 3.17 | -116 | +116 |
-| HOU @ CHW | 31.2% | +220 | 6.02 | -135 | +135 |
-| KCR @ DET | 58.0% | -138 | 2.66 | -172 | +172 |
-| LAA @ SFG | 25.0% | +300 | 7.6 | -133 | +133 |
-| LAD @ NYM | 33.7% | +197 | 5.5 | +385 | -385 |
-| NYY @ PHI | 58.0% | -138 | 2.78 | +330 | -330 |
-| OAK @ MIN | 19.5% | +413 | 8.53 | -100 | +100 |
+| HOU @ CHW | 31.2% | +220 | 6.03 | -135 | +135 |
+| LAA @ SFG | 25.0% | +300 | 7.63 | -131 | +131 |
+| LAD @ NYM | 33.7% | +197 | 5.49 | +384 | -384 |
+| OAK @ MIN | 19.5% | +413 | 8.51 | -100 | +100 |
 | SDP @ MIA | 41.8% | +139 | 4.36 | -253 | +253 |
 | SEA @ TEX | 32.8% | +205 | 5.58 | +165 | -165 |
-| TOR @ BOS | 38.5% | +160 | 4.9 | -134 | +134 |
+| TOR @ BOS | 38.5% | +160 | 4.91 | -135 | +135 |
 
 ## Travel / Rest Flags
 
