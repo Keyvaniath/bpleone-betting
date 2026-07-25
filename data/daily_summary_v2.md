@@ -1,13 +1,13 @@
 # EdgeStat Daily Summary — 2026-07-25
 
-## 🏥 Model Health: 79.9/100 [HEALTHY]
+## 🏥 Model Health: 84.8/100 [HEALTHY]
 - Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 99.9/100
-  - 🟡 Hit Rate Trend: 62.1/100
-  - 🔴 Brier Trend: 56.1/100
+  - 🟢 Calibration Freshness: 99.7/100
+  - 🟡 Hit Rate Trend: 61.0/100
+  - 🟡 Brier Trend: 76.4/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 95.5/100
-  - 🟡 Edge Count: 71.4/100
+  - 🟢 Edge Count: 82.9/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.577)
@@ -20,6 +20,9 @@
 3. **COL @ MIL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 4. **SEA @ TEX YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
 5. **ATL @ BAL YRFI (1st-inning OVER 0.5)** (78/100 ★★★★)
+
+## 📡 Sharp Action (Line Movement)
+- [MODERATE] **CHC @ PIT** over_7.5: 50.0% → 54.55% (+4.5pp)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -56,9 +59,10 @@
 - Hot teams: **3** | Cold teams: **3** | Over-heavy: 0 | Under-heavy: 3
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (44)
+## ⚠️ Anomaly Detector (45)
 - STEAM_MOVE: **42**
 - PEN_MISMATCH: **2**
+- COMPOUND_BULLPEN: **1**
   - NY @ IND (WNBA): ML/TOTAL steam since open: ML +3.1pp toward IND; total +4 (OVER) (7 snapshots)
   - DAL @ POR (WNBA): TOTAL steam since open: ML -2.1pp toward DAL; total +4 (OVER) (12 snapshots)
   - CON @ PHX (WNBA): TOTAL steam since open: ML +1.0pp toward PHX; total -3 (UNDER) (4 snapshots)
@@ -67,7 +71,7 @@
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$-2.29**
+- Expected EV: **$-2.3**
   - #1 [NRFI] $50 on CIN @ STL YRFI (1st-inning OVER 0.5) (P=69%)
   - #2 [NRFI] $50 on NYY @ PHI YRFI (1st-inning OVER 0.5) (P=69%)
   - #3 [NRFI] $50 on COL @ MIL YRFI (1st-inning OVER 0.5) (P=69%)
@@ -98,10 +102,10 @@
 
 ## 🥊 UFC Fight Matchups (UFC Fight Night: Ankalaev vs. Guskov)
   - [FAVORITE] **Magomed Tuchalov** (6-0-0) vs Brendson Ribeiro -- fair -193
+  - [LEAN] **Nurullo Aliev** (12-0-0) vs Mike Davis -- fair -170
   - [LEAN] **Valter Walker** (15-1-0) vs Thomas Petersen -- fair -162
   - [LEAN] **Muhammad Said** (9-0-0) vs Dustin Jacoby -- fair -159
-  - [LEAN] **Nurullo Aliev** (11-0-0) vs Mike Davis -- fair -151
-  - [LEAN] **Islam Dulatov** (12-1-0) vs Wellington Turman -- fair -146
+  - [LEAN] **Abdul Hussein** (16-2-0) vs Cody Gibson -- fair -150
 
 ## ⛳ Golf Player Heat (from 3M Open)
   - 🔥 T1 **Michael Kim** (USA): -14 total -- finished T1

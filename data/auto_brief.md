@@ -22,7 +22,7 @@ _6% lineups confirmed · 1 extreme-weather games · 8 rookie SPs_
 5. **ATL @ BAL YRFI (1st-inning OVER 0.5)**  (78/100 ****, edge +18.9%)
    - P(YRFI) 64.9% vs baseline 46.0%
 
-## ⚠️ Trap Warnings — 12 flagged
+## ⚠️ Trap Warnings — 13 flagged
 - **CIN @ STL YRFI (1st-inning OVER 0.5)** (low):
    - Edge +23.5% looks big but only 0 settled props on this player — model unproven
 - **NYY @ PHI YRFI (1st-inning OVER 0.5)** (low):
@@ -48,8 +48,8 @@ _Lean late-inning OVER on these games; fade their save situations._
 ## Golf -- 3M Open
 - **Leader:** Michael Kim (-14) at #1
 - **Field:** 144 players  |  Status: In Progress
-- **Play of the Tournament:** Chandler Blanchet TOP10 @ +559 (model 15.2%, HIGH)
-   - P(top 10) 15.2% -- safest finish bet (#19 (-7)).
+- **Play of the Tournament:** John VanDerLaan TOP10 @ +599 (model 14.3%, HIGH)
+   - P(top 10) 14.3% -- safest finish bet (#14 (-7)).
 
 ## NBA -- PRESEASON
 - Los Angeles Lakers @ Sacramento Kings (0-0 vs 0-0)  | P(home) 55.0% fair -122 | Scheduled
@@ -71,7 +71,7 @@ _Lean late-inning OVER on these games; fade their save situations._
 - **KBO POD:** LG Twins ML vs Hanwha Eagles (KBO) (HIGH)
 
 ## LoL Esports -- 1 live, 21 upcoming
-- [LEC] Team Vitality vs G2 Esports BO3 | P(A) 37.2% fair +169/-169
+- [LEC] G2 Esports vs Team Vitality BO3 | P(A) 62.8% fair -169/+169
 - [CBLOL] FURIA vs LOS BO3 | P(A) 67.6% fair -209/+209
 - [LEC] Movistar KOI vs Karmine Corp BO3 | P(A) 41.3% fair +142/-142
 - [CBLOL] LOUD vs paiN Gaming BO3 | P(A) 50.0% fair -100/-100
