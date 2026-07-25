@@ -4,7 +4,7 @@
 
 _Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
 
-_Generated at 2026-07-25T21:51:31 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-07-25T23:02:57 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
@@ -16,20 +16,17 @@ _Generated at 2026-07-25T21:51:31 UTC. Game lines source: **Bovada (fallback -- 
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
 
-## Full Slate (10 games)
+## Full Slate (7 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 6:05p ET | NYY @ PHI | Citizens Bank Park | 70F 5mph | UNDER_9.0 +9.23% |
-| 6:10p ET | CLE @ TBR | Tropicana Field | indoor | TBR_ML +30.24% |
-| 6:40p ET | CHC @ PIT | PNC Park | 72F 4mph | OVER_7.5 +47.0% |
-| 7:05p ET | ATL @ BAL | Oriole Park at Camden Yards | 72F 2mph | OVER_9.0 +11.95% |
-| 7:10p ET | OAK @ MIN | Target Field | 78F 5mph | OVER_10.0 +34.72% |
-| 7:10p ET | HOU @ CHW | Rate Field | 70F 4mph | OVER_8.5 +35.42% |
+| 7:05p ET | ATL @ BAL | Oriole Park at Camden Yards | 70F 4mph | OVER_9.0 +13.92% |
+| 7:10p ET | OAK @ MIN | Target Field | 77F 4mph | OAK_ML +33.75% |
+| 7:10p ET | HOU @ CHW | Rate Field | 71F 6mph | OVER_8.5 +39.24% |
 | 7:10p ET | COL @ MIL | American Family Field | indoor | OVER_9.0 +60.21% |
-| 7:15p ET | LAD @ NYM | Citi Field | 67F 2mph | LAD_ML +19.2% |
-| 7:15p ET | CIN @ STL | Busch Stadium | 70F 6mph | CIN_ML +2.8% |
-| 7:15p ET | SEA @ TEX | Globe Life Field | indoor | OVER_7.5 +8.97% |
+| 7:15p ET | LAD @ NYM | Citi Field | 67F 3mph | LAD_ML +18.46% |
+| 7:15p ET | CIN @ STL | Busch Stadium | 81F 4mph | OVER_7.5 +11.95% |
+| 7:15p ET | SEA @ TEX | Globe Life Field | indoor | OVER_7.0 +21.99% |
 
 ## Parlays - top 5
 
@@ -65,15 +62,12 @@ Cumulative graded plays: 6542. Wins: 2687. Hit rate: 41.1%.
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| ATL @ BAL | 35.1% | +185 | 5.31 | +186 | -186 |
-| CHC @ PIT | 56.4% | -129 | 2.94 | -138 | +138 |
-| CIN @ STL | 30.5% | +228 | 5.89 | +210 | -210 |
-| CLE @ TBR | 49.0% | +104 | 3.57 | -135 | +135 |
+| ATL @ BAL | 35.1% | +185 | 5.13 | +185 | -185 |
+| CIN @ STL | 30.5% | +228 | 5.8 | +209 | -209 |
 | COL @ MIL | 31.3% | +220 | 5.81 | -144 | +144 |
-| HOU @ CHW | 38.2% | +162 | 4.94 | -114 | +114 |
+| HOU @ CHW | 38.2% | +162 | 4.99 | -115 | +115 |
 | LAD @ NYM | 58.9% | -143 | 2.66 | +501 | -501 |
-| NYY @ PHI | 31.1% | +222 | 11.63 | +232 | -232 |
-| OAK @ MIN | 40.9% | +145 | 4.4 | +232 | -232 |
+| OAK @ MIN | 40.9% | +145 | 4.44 | +233 | -233 |
 | SEA @ TEX | 34.7% | +188 | 5.29 | +183 | -183 |
 
 ## Team Form (last 10)

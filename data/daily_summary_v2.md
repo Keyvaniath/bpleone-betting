@@ -1,12 +1,12 @@
 # EdgeStat Daily Summary — 2026-07-25
 
-## 🏥 Model Health: 84.5/100 [HEALTHY]
+## 🏥 Model Health: 82.2/100 [HEALTHY]
 - Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 99.9/100
-  - 🔴 Hit Rate Trend: 58.1/100
-  - 🟡 Brier Trend: 77.3/100
+  - 🟢 Calibration Freshness: 100.0/100
+  - 🔴 Hit Rate Trend: 56.9/100
+  - 🟡 Brier Trend: 71.9/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 95.5/100
+  - 🟢 Data Health: 90.9/100
   - 🟢 Edge Count: 82.9/100
 
 ## 🌐 Slate Overview
@@ -22,8 +22,10 @@
 5. **ATL @ BAL YRFI (1st-inning OVER 0.5)** (78/100 ★★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** LAA @ SFG SFG_ML -- 67% / +21.3% (score 2.5)
-- [STRONG] **[MLB]** CHC @ PIT PIT_ML -- 67% / +21.1% (score 2.5)
+- [STRONG] **[MLB]** CHC @ PIT PIT_ML -- 67% / +20.8% (score 2.5)
+
+## 📡 Sharp Action (Line Movement)
+- [MODERATE] **CHC @ PIT** over_7.5: 50.0% → 54.55% (+4.5pp)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -60,10 +62,8 @@
 - Hot teams: **3** | Cold teams: **3** | Over-heavy: 0 | Under-heavy: 3
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (51)
+## ⚠️ Anomaly Detector (48)
 - STEAM_MOVE: **48**
-- PEN_MISMATCH: **2**
-- COMPOUND_BULLPEN: **1**
   - NY @ IND (WNBA): ML/TOTAL steam since open: ML +3.1pp toward IND; total +4 (OVER) (7 snapshots)
   - DAL @ POR (WNBA): TOTAL steam since open: ML -2.1pp toward DAL; total +4 (OVER) (12 snapshots)
   - CON @ PHX (WNBA): TOTAL steam since open: ML +1.0pp toward PHX; total -3 (UNDER) (4 snapshots)
@@ -87,12 +87,12 @@
   - [HIGH] Toronto FC @ D.C. United : 3 signals (PREGAME, ATS, ATS)
   - [HIGH] Chicago Fire FC @ New York City FC : 3 signals (PREGAME, ATS, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (12)
-- **Eury Pérez** OVER 4.5 K (76%) fair -321
+## ⚾ Top MLB Pitcher K Plays (9)
 - **Sean Burke** OVER 5.5 K (76%) fair -314
 - **Hunter Greene** OVER 6.5 K (75%) fair -298
-- **Sonny Gray** OVER 4.5 K (73%) fair -271
 - **Nolan McLean** OVER 5.5 K (73%) fair -270
+- **Ryan Weathers** OVER 4.5 K (72%) fair -257
+- **Paul Skenes** OVER 5.5 K (70%) fair -233
 
 ## 🏀 NBA Player Heat (2 HOT / 5 COLD)
   - 🔥 **Nique Clifford** (SAC): L5 19.4/5.8/4.8 vs season 13.9/5.3/4.2 [PTS +5.5]
@@ -103,25 +103,25 @@
 
 ## 🥊 UFC Fight Matchups (UFC Fight Night: Ankalaev vs. Guskov)
   - [FAVORITE] **Magomed Tuchalov** (7-0-0) vs Brendson Ribeiro -- fair -201
+  - [LEAN] **Valter Walker** (16-1-0) vs Thomas Petersen -- fair -181
   - [LEAN] **Nurullo Aliev** (12-0-0) vs Mike Davis -- fair -170
-  - [LEAN] **Valter Walker** (15-1-0) vs Thomas Petersen -- fair -162
-  - [LEAN] **Muhammad Said** (9-0-0) vs Dustin Jacoby -- fair -159
+  - [LEAN] **Muhammad Said** (10-0-0) vs Dustin Jacoby -- fair -165
   - [LEAN] **Abdul Hussein** (16-2-0) vs Cody Gibson -- fair -150
 
 ## ⛳ Golf Player Heat (from 3M Open)
-  - 🔥 T1 **Michael Kim** (USA): -14 total -- finished T1
-  - 🔥 T2 **Chandler Phillips** (USA): -11 total -- finished T2
-  - 🔥 T3 **Emiliano Grillo** (Argentina): -11 total -- finished T3
-  - 🔥 T4 **Ben Kohles** (USA): -11 total -- finished T4
-  - 🔥 T5 **Troy Merritt** (USA): -10 total -- finished T5
+  - 🔥 T1 **Jackson Koivun** (USA): -20 total -- finished T1
+  - 🔥 T2 **Emiliano Grillo** (Argentina): -17 total -- finished T2
+  - 🔥 T3 **Ben Kohles** (USA): -17 total -- finished T3
+  - 🔥 T4 **Michael Brennan** (USA): -16 total -- finished T4
+  - 🔥 T5 **Chandler Phillips** (USA): -16 total -- finished T5
   - ❄️ **Pierceson Coody** (USA): Sunday +5.0 vs tourney avg
   - ❄️ **Tom Hoge** (USA): Sunday +4.0 vs tourney avg
   - ❄️ **Jackson Suber** (USA): Sunday +3.5 vs tourney avg
 
-## 🔥 MLB Batter Heat (49 HOT / 57 COLD)
-  - 🔥 **Steven Kwan** (CLE): L14 .432 / season .248 (+184pts)
-  - 🔥 **Luis Rengifo** (SD): L14 .375 / season .233 (+142pts)
-  - 🔥 **Curtis Mead** (WSH): L14 .388 / season .255 (+133pts)
+## 🔥 MLB Batter Heat (48 HOT / 58 COLD)
+  - 🔥 **Steven Kwan** (CLE): L14 .432 / season .249 (+183pts)
+  - 🔥 **CJ Abrams** (WSH): L14 .429 / season .293 (+136pts)
+  - 🔥 **Luis Rengifo** (SD): L14 .366 / season .232 (+134pts)
   - 🔥 **Tyler O'Neill** (BAL): L14 .344 / season .214 (+130pts)
   - 🔥 **Nick Fortes** (TB): L14 .410 / season .281 (+129pts)
   - ❄️ **Troy Johnston** (COL): L14 .114 / season .292 (-178pts) -- FADE props
