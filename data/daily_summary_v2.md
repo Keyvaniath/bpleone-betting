@@ -1,10 +1,10 @@
 # EdgeStat Daily Summary — 2026-07-25
 
-## 🏥 Model Health: 84.8/100 [HEALTHY]
+## 🏥 Model Health: 84.5/100 [HEALTHY]
 - Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 99.7/100
-  - 🟡 Hit Rate Trend: 61.0/100
-  - 🟡 Brier Trend: 76.4/100
+  - 🟢 Calibration Freshness: 99.9/100
+  - 🔴 Hit Rate Trend: 58.1/100
+  - 🟡 Brier Trend: 77.3/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 95.5/100
   - 🟢 Edge Count: 82.9/100
@@ -21,8 +21,9 @@
 4. **SEA @ TEX YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
 5. **ATL @ BAL YRFI (1st-inning OVER 0.5)** (78/100 ★★★★)
 
-## 📡 Sharp Action (Line Movement)
-- [MODERATE] **CHC @ PIT** over_7.5: 50.0% → 54.55% (+4.5pp)
+## 🐋 Whale Picks (Max Confluence)
+- [STRONG] **[MLB]** LAA @ SFG SFG_ML -- 67% / +21.3% (score 2.5)
+- [STRONG] **[MLB]** CHC @ PIT PIT_ML -- 67% / +21.1% (score 2.5)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -59,8 +60,8 @@
 - Hot teams: **3** | Cold teams: **3** | Over-heavy: 0 | Under-heavy: 3
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (45)
-- STEAM_MOVE: **42**
+## ⚠️ Anomaly Detector (51)
+- STEAM_MOVE: **48**
 - PEN_MISMATCH: **2**
 - COMPOUND_BULLPEN: **1**
   - NY @ IND (WNBA): ML/TOTAL steam since open: ML +3.1pp toward IND; total +4 (OVER) (7 snapshots)
@@ -71,7 +72,7 @@
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$-2.3**
+- Expected EV: **$-2.29**
   - #1 [NRFI] $50 on CIN @ STL YRFI (1st-inning OVER 0.5) (P=69%)
   - #2 [NRFI] $50 on NYY @ PHI YRFI (1st-inning OVER 0.5) (P=69%)
   - #3 [NRFI] $50 on COL @ MIL YRFI (1st-inning OVER 0.5) (P=69%)
@@ -101,7 +102,7 @@
   - ❄️ **Jerami Grant** (MEM): L5 10.4 vs season 16.4 [PTS -6.0] -- FADE OVER props
 
 ## 🥊 UFC Fight Matchups (UFC Fight Night: Ankalaev vs. Guskov)
-  - [FAVORITE] **Magomed Tuchalov** (6-0-0) vs Brendson Ribeiro -- fair -193
+  - [FAVORITE] **Magomed Tuchalov** (7-0-0) vs Brendson Ribeiro -- fair -201
   - [LEAN] **Nurullo Aliev** (12-0-0) vs Mike Davis -- fair -170
   - [LEAN] **Valter Walker** (15-1-0) vs Thomas Petersen -- fair -162
   - [LEAN] **Muhammad Said** (9-0-0) vs Dustin Jacoby -- fair -159
@@ -117,17 +118,17 @@
   - ❄️ **Tom Hoge** (USA): Sunday +4.0 vs tourney avg
   - ❄️ **Jackson Suber** (USA): Sunday +3.5 vs tourney avg
 
-## 🔥 MLB Batter Heat (46 HOT / 53 COLD)
+## 🔥 MLB Batter Heat (49 HOT / 57 COLD)
   - 🔥 **Steven Kwan** (CLE): L14 .432 / season .248 (+184pts)
+  - 🔥 **Luis Rengifo** (SD): L14 .375 / season .233 (+142pts)
+  - 🔥 **Curtis Mead** (WSH): L14 .388 / season .255 (+133pts)
   - 🔥 **Tyler O'Neill** (BAL): L14 .344 / season .214 (+130pts)
   - 🔥 **Nick Fortes** (TB): L14 .410 / season .281 (+129pts)
-  - 🔥 **Curtis Mead** (WSH): L14 .385 / season .256 (+129pts)
-  - 🔥 **José Tena** (WSH): L14 .364 / season .246 (+118pts)
   - ❄️ **Troy Johnston** (COL): L14 .114 / season .292 (-178pts) -- FADE props
   - ❄️ **Nathan Church** (STL): L14 .086 / season .228 (-142pts) -- FADE props
-  - ❄️ **Gavin Sheets** (SD): L14 .075 / season .215 (-140pts) -- FADE props
   - ❄️ **Brandon Marsh** (PHI): L14 .149 / season .288 (-139pts) -- FADE props
   - ❄️ **Henry Bolte** (ATH): L14 .114 / season .253 (-139pts) -- FADE props
+  - ❄️ **Colton Cowser** (BAL): L14 .069 / season .206 (-137pts) -- FADE props
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**

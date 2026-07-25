@@ -1,13 +1,13 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-07-25T15:14:23 UTC_
+_Generated 2026-07-25T21:50:01 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -47
+- **Score:** -49
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
 - **Total STRONG:** 11
-- **Total FADES:** 91
+- **Total FADES:** 93
 
 ## Lock of the Night
 - **Subject:** Ryan Feltner
@@ -17,16 +17,13 @@ _Generated 2026-07-25T15:14:23 UTC_
 - **Details:** COL @ MIL
 
 ## Top 5 Curated Picks
-1. **GOLF / Michael Kim** (GOLF_PLAYER, score=211.93)
+1. **GOLF / Michael Kim** (GOLF_PLAYER, score=211.21)
    - Play: Michael Kim (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Emiliano Grillo** (GOLF_PLAYER, score=147.71)
+2. **GOLF / Emiliano Grillo** (GOLF_PLAYER, score=143.0)
    - Play: Emiliano Grillo (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-3. **MLB / Yoshinobu Yamamoto** (MLB_PITCHER, score=59.0)
-   - Play: Yoshinobu Yamamoto (PITCHER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_PITCHER)
-4. **MLB / Robert Gasser** (MLB_PITCHER, score=58.67)
+3. **MLB / Robert Gasser** (MLB_PITCHER, score=58.67)
    - Play: Robert Gasser (PITCHER_STRONG)
    - Rationale: Cross-sport top pick (MLB_PITCHER)
 
@@ -43,13 +40,13 @@ _Generated 2026-07-25T15:14:23 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **NHL** / samsonov ilya (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / stuart skinner (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / adin hill (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
+- **MLB** / Michael Wacha (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Casey Mize (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
 - **NHL** / logan thompson_2 (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / casey desmith (GOALIE_FADE)
+- **NHL** / thatcher demko (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / joseph woll (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
