@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-07-24T23:08:38",
-  "n_settled": 6424,
+  "generated_at": "2026-07-25T07:11:26",
+  "n_settled": 6425,
   "n_families_transformed": 24,
   "n_families_bucketed": 14,
-  "ece_before": 0.0861,
+  "ece_before": 0.0862,
   "ece_after": 0.0167,
-  "ece_improvement": 0.0694,
-  "brier_before": 0.20967,
-  "brier_after": 0.19362,
+  "ece_improvement": 0.0695,
+  "brier_before": 0.2097,
+  "brier_after": 0.19366,
   "method_note": "Per market family, a monotonic (isotonic) curve maps the model's predicted probability to the realized hit rate, learned from settled outcomes. Bucketed for well-sampled families (preserves ranking), a family-average Bayesian blend for mid-sample, identity below that. ECE = expected calibration error (lower = the displayed % is truer). This makes the model honest at the source; it does not create edge (that needs a market price).",
   "families": [
     {
@@ -528,6 +528,36 @@
       }
     },
     {
+      "family": "over",
+      "n": 121,
+      "method": "bucketed",
+      "avg_pred_raw": 0.6357,
+      "avg_pred_calibrated": 0.5846,
+      "realized": 0.5785,
+      "ece_raw": 0.0572,
+      "ece_calibrated": 0.0255,
+      "transform": {
+        "anchors": [
+          [
+            0.5784,
+            0.5378
+          ],
+          [
+            0.6028,
+            0.5378
+          ],
+          [
+            0.6179,
+            0.591
+          ],
+          [
+            0.7444,
+            0.7127
+          ]
+        ]
+      }
+    },
+    {
       "family": "home_clean_sheet_no",
       "n": 115,
       "method": "bucketed",
@@ -614,36 +644,6 @@
       "ece_calibrated": 0.0084,
       "transform": {
         "realized": 0.6341
-      }
-    },
-    {
-      "family": "over",
-      "n": 120,
-      "method": "bucketed",
-      "avg_pred_raw": 0.6358,
-      "avg_pred_calibrated": 0.5895,
-      "realized": 0.5833,
-      "ece_raw": 0.0525,
-      "ece_calibrated": 0.0259,
-      "transform": {
-        "anchors": [
-          [
-            0.5784,
-            0.5378
-          ],
-          [
-            0.6028,
-            0.5378
-          ],
-          [
-            0.6176,
-            0.605
-          ],
-          [
-            0.7444,
-            0.7127
-          ]
-        ]
       }
     },
     {

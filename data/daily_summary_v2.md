@@ -1,17 +1,17 @@
-# EdgeStat Daily Summary — 2026-07-24
+# EdgeStat Daily Summary — 2026-07-25
 
-## 🏥 Model Health: 80.7/100 [HEALTHY]
+## 🏥 Model Health: 78.9/100 [HEALTHY]
 - Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 100.0/100
+  - 🟢 Calibration Freshness: 99.9/100
   - 🟡 Hit Rate Trend: 62.1/100
   - 🔴 Brier Trend: 56.1/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 95.5/100
+  - 🟢 Data Health: 86.4/100
   - 🟢 Edge Count: 80.0/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.577)
-- **Total games on board:** 125
+- **Total games on board:** 141
 - **Strong home favorites:** 5 | **Strong road dogs:** 3
 
 ## 🎯 Top 5 Best Bets
@@ -56,22 +56,22 @@
 - [MLS] **Nashville SC** AWAY (2-0 L10) · model 63.4% fair -173
 
 ## 🔥/❄️ Heat / Cold Signals
-- Hot teams: **3** | Cold teams: **3** | Over-heavy: 0 | Under-heavy: 5
+- Hot teams: **3** | Cold teams: **3** | Over-heavy: 0 | Under-heavy: 3
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (47)
-- STEAM_MOVE: **43**
+## ⚠️ Anomaly Detector (46)
+- STEAM_MOVE: **42**
 - COMPOUND_BULLPEN: **2**
 - PEN_MISMATCH: **2**
-  - NYM @ PHI (MLB): ML/TOTAL steam since open: ML -3.8pp toward NYM; total +9.5 (OVER) (8 snapshots)
   - NY @ IND (WNBA): ML/TOTAL steam since open: ML +3.1pp toward IND; total +4 (OVER) (7 snapshots)
   - DAL @ POR (WNBA): TOTAL steam since open: ML -2.1pp toward DAL; total +4 (OVER) (12 snapshots)
   - CON @ PHX (WNBA): TOTAL steam since open: ML +1.0pp toward PHX; total -3 (UNDER) (4 snapshots)
   - MIN @ SEA (WNBA): TOTAL steam since open: ML -1.4pp toward MIN; total +3 (OVER) (9 snapshots)
+  - MIN @ CHC (MLB): TOTAL steam since open: ML +0.6pp toward CHC; total -2.5 (UNDER) (8 snapshots)
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$11.29**
+- Expected EV: **$11.3**
   - #1 [NRFI] $50 on OAK @ MIN YRFI (1st-inning OVER 0.5) (P=80%)
   - #2 [NRFI] $50 on LAA @ SFG YRFI (1st-inning OVER 0.5) (P=75%)
   - #3 [NRFI] $50 on CIN @ STL YRFI (1st-inning OVER 0.5) (P=70%)
@@ -86,12 +86,12 @@
   - [HIGH] Toronto FC @ D.C. United : 3 signals (PREGAME, ATS, ATS)
   - [HIGH] Chicago Fire FC @ New York City FC : 3 signals (PREGAME, ATS, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (8)
+## ⚾ Top MLB Pitcher K Plays (5)
 - **MacKenzie Gore** OVER 4.5 K (78%) fair -347
-- **Cam Schlittler** OVER 5.5 K (77%) fair -337
-- **Tarik Skubal** OVER 5.5 K (76%) fair -314
 - **Trey Yesavage** OVER 4.5 K (63%) fair -171
 - **Joey Cantillo** OVER 4.5 K (62%) fair -160
+- **Spencer Arrighetti** OVER 4.5 K (61%) fair -156
+- **Logan Webb** OVER 4.5 K (58%) fair -140
 
 ## 🏀 NBA Player Heat (2 HOT / 5 COLD)
   - 🔥 **Nique Clifford** (SAC): L5 19.4/5.8/4.8 vs season 13.9/5.3/4.2 [PTS +5.5]
@@ -110,21 +110,21 @@
 ## ⛳ Golf Player Heat (from 3M Open)
   - 🔥 T1 **Michael Kim** (USA): -14 total -- finished T1
   - 🔥 T2 **Ben Kohles** (USA): -11 total -- finished T2
-  - 🔥 T3 **Troy Merritt** (USA): -10 total -- finished T3
-  - 🔥 T4 **Jackson Koivun** (USA): -10 total -- finished T4
-  - 🔥 T5 **Zac Blair** (USA): -9 total -- finished T5
+  - 🔥 T3 **Chandler Phillips** (USA): -10 total -- finished T3
+  - 🔥 T4 **Emiliano Grillo** (Argentina): -10 total -- finished T4
+  - 🔥 T5 **Troy Merritt** (USA): -10 total -- finished T5
 
-## 🔥 MLB Batter Heat (47 HOT / 57 COLD)
+## 🔥 MLB Batter Heat (46 HOT / 53 COLD)
   - 🔥 **Steven Kwan** (CLE): L14 .432 / season .248 (+184pts)
-  - 🔥 **Curtis Mead** (WSH): L14 .392 / season .257 (+135pts)
-  - 🔥 **Nasim Nuñez** (WSH): L14 .372 / season .253 (+119pts)
-  - 🔥 **Drake Baldwin** (ATL): L14 .392 / season .275 (+117pts)
-  - 🔥 **José Tena** (WSH): L14 .364 / season .247 (+117pts)
+  - 🔥 **Tyler O'Neill** (BAL): L14 .344 / season .214 (+130pts)
+  - 🔥 **Nick Fortes** (TB): L14 .410 / season .281 (+129pts)
+  - 🔥 **Curtis Mead** (WSH): L14 .385 / season .256 (+129pts)
+  - 🔥 **José Tena** (WSH): L14 .364 / season .246 (+118pts)
   - ❄️ **Troy Johnston** (COL): L14 .114 / season .292 (-178pts) -- FADE props
-  - ❄️ **Nathan Church** (STL): L14 .079 / season .229 (-150pts) -- FADE props
-  - ❄️ **Colton Cowser** (BAL): L14 .069 / season .207 (-138pts) -- FADE props
-  - ❄️ **Henry Bolte** (ATH): L14 .114 / season .251 (-137pts) -- FADE props
-  - ❄️ **Jorge Mateo** (ATL): L14 .115 / season .244 (-129pts) -- FADE props
+  - ❄️ **Nathan Church** (STL): L14 .086 / season .228 (-142pts) -- FADE props
+  - ❄️ **Gavin Sheets** (SD): L14 .075 / season .215 (-140pts) -- FADE props
+  - ❄️ **Brandon Marsh** (PHI): L14 .149 / season .288 (-139pts) -- FADE props
+  - ❄️ **Henry Bolte** (ATH): L14 .114 / season .253 (-139pts) -- FADE props
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**
@@ -134,6 +134,6 @@
   - ⚠️ batter_rbis (Brier Δ -0.0052)
 
 ## 🤖 Self-Training Status
-- **WNBA**: n=38 games · hit rate 65.8% · bias -3.1pp [calibration applied]
+- **WNBA**: n=35 games · hit rate 62.9% · bias -2.4pp [calibration applied]
 - **MLS**: n=20 games · hit rate 50.0% · bias -1.4pp
-- **MLB**: n=142 games · hit rate 51.4% · bias +1.7pp
+- **MLB**: n=143 games · hit rate 55.2% · bias +3.0pp [calibration applied]
