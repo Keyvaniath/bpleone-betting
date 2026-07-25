@@ -1,54 +1,55 @@
 # Tonight's Slate Brief — 2026-07-25
 
-## Slate Quality: 54/100 (LOW)
-_0% lineups confirmed · 1 extreme-weather games · 8 rookie SPs_
-**Recommendation:** Defensive sizing tonight; stick to highest-confidence plays.
+## Slate Quality: 57/100 (MEDIUM)
+_6% lineups confirmed · 1 extreme-weather games · 8 rookie SPs_
+**Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
 - **15 games** scheduled
-- **30 best bets** scored: 0 DK · 0 PP · 8 NRFI · 0 SGP
-- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$48.42
-- **MC simulation:** EV +$119.91, 83% P(profit), p05 $-92.18 / p95 $286.07
+- **34 best bets** scored: 0 DK · 0 PP · 11 NRFI · 0 SGP
+- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$32.1
+- **MC simulation:** EV +$107.89, 83% P(profit), p05 $-143.32 / p95 $312.78
 
 ## Top 5 Best Bets
-1. **OAK @ MIN YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +34.5%)
-   - P(YRFI) 80.5% vs baseline 46.0%
-2. **LAA @ SFG YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +29.0%)
-   - P(YRFI) 75.0% vs baseline 46.0%
-3. **CIN @ STL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +23.8%)
-   - P(YRFI) 69.8% vs baseline 46.0%
-4. **HOU @ CHW YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +22.8%)
-   - P(YRFI) 68.8% vs baseline 46.0%
-5. **SEA @ TEX YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +21.2%)
-   - P(YRFI) 67.2% vs baseline 46.0%
+1. **CIN @ STL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +23.5%)
+   - P(YRFI) 69.5% vs baseline 46.0%
+2. **NYY @ PHI YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +22.9%)
+   - P(YRFI) 68.9% vs baseline 46.0%
+3. **COL @ MIL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +22.7%)
+   - P(YRFI) 68.7% vs baseline 46.0%
+4. **SEA @ TEX YRFI (1st-inning OVER 0.5)**  (79/100 ****, edge +19.3%)
+   - P(YRFI) 65.3% vs baseline 46.0%
+5. **ATL @ BAL YRFI (1st-inning OVER 0.5)**  (78/100 ****, edge +18.9%)
+   - P(YRFI) 64.9% vs baseline 46.0%
 
-## ⚠️ Trap Warnings — 8 flagged
-- **OAK @ MIN YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +34.5% looks big but only 0 settled props on this player — model unproven
-- **LAA @ SFG YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +29.0% looks big but only 0 settled props on this player — model unproven
+## ⚠️ Trap Warnings — 12 flagged
 - **CIN @ STL YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +23.8% looks big but only 0 settled props on this player — model unproven
-- **HOU @ CHW YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +22.8% looks big but only 0 settled props on this player — model unproven
+   - Edge +23.5% looks big but only 0 settled props on this player — model unproven
+- **NYY @ PHI YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +22.9% looks big but only 0 settled props on this player — model unproven
+- **COL @ MIL YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +22.7% looks big but only 0 settled props on this player — model unproven
 - **SEA @ TEX YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +21.2% looks big but only 0 settled props on this player — model unproven
+   - Edge +19.3% looks big but only 0 settled props on this player — model unproven
+- **ATL @ BAL YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +18.9% looks big but only 0 settled props on this player — model unproven
 
 ## Weather leans
 - **UNDER lean** (wind in + cold): LAA @ SFG
 
 ## Bullpens GASSED tonight
-San Diego Padres, Tampa Bay Rays, Texas Rangers, Toronto Blue Jays, Minnesota Twins, Atlanta Braves, Arizona Diamondbacks, Boston Red Sox
+San Diego Padres, Tampa Bay Rays, Minnesota Twins, Atlanta Braves, Arizona Diamondbacks, Cleveland Guardians, Houston Astros, Kansas City Royals
 _Lean late-inning OVER on these games; fade their save situations._
 
 ## NRFI/YRFI strong leans
-- **YRFI** (1st-inning OVER): OAK @ MIN, LAA @ SFG, CIN @ STL, HOU @ CHW, SEA @ TEX
+- **YRFI** (1st-inning OVER): CIN @ STL, NYY @ PHI, COL @ MIL, SEA @ TEX, ATL @ BAL
+- **NRFI** (1st-inning UNDER): TOR @ BOS
 
 ## Golf -- 3M Open
 - **Leader:** Michael Kim (-14) at #1
 - **Field:** 144 players  |  Status: In Progress
-- **Play of the Tournament:** Chandler Blanchet TOP10 @ +572 (model 14.9%, HIGH)
-   - P(top 10) 14.9% -- safest finish bet (#22 (-7)).
+- **Play of the Tournament:** Chandler Blanchet TOP10 @ +559 (model 15.2%, HIGH)
+   - P(top 10) 15.2% -- safest finish bet (#19 (-7)).
 
 ## NBA -- PRESEASON
 - Los Angeles Lakers @ Sacramento Kings (0-0 vs 0-0)  | P(home) 55.0% fair -122 | Scheduled
@@ -69,7 +70,7 @@ _Lean late-inning OVER on these games; fade their save situations._
 - Kiwoom Heroes @ KIA Tigers | P(home) 72.3% fair -262 | total 10 R
 - **KBO POD:** LG Twins ML vs Hanwha Eagles (KBO) (HIGH)
 
-## LoL Esports -- 0 live, 21 upcoming
+## LoL Esports -- 1 live, 21 upcoming
 - [LEC] Team Vitality vs G2 Esports BO3 | P(A) 37.2% fair +169/-169
 - [CBLOL] FURIA vs LOS BO3 | P(A) 67.6% fair -209/+209
 - [LEC] Movistar KOI vs Karmine Corp BO3 | P(A) 41.3% fair +142/-142
@@ -87,5 +88,5 @@ _Lean late-inning OVER on these games; fade their save situations._
 ## Self-learning calibration (esports + KBO)
 - **LOL:** 37 settled | brier 0.2677 | ECE 0.1748
    - Model over-confident; subtract 15.9pp at next inference
-- **KBO:** 30 settled | brier 0.3091 | ECE 0.3016
-   - Model over-confident; subtract 30.2pp at next inference
+- **KBO:** 31 settled | brier 0.3037 | ECE 0.2797
+   - Model over-confident; subtract 28.0pp at next inference

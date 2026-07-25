@@ -1,28 +1,25 @@
 # EdgeStat Daily Summary — 2026-07-25
 
-## 🏥 Model Health: 78.9/100 [HEALTHY]
+## 🏥 Model Health: 79.9/100 [HEALTHY]
 - Solid health - some minor issues to monitor
   - 🟢 Calibration Freshness: 99.9/100
   - 🟡 Hit Rate Trend: 62.1/100
   - 🔴 Brier Trend: 56.1/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 86.4/100
-  - 🟢 Edge Count: 80.0/100
+  - 🟢 Data Health: 95.5/100
+  - 🟡 Edge Count: 71.4/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.577)
-- **Total games on board:** 141
+- **Total games on board:** 125
 - **Strong home favorites:** 5 | **Strong road dogs:** 3
 
 ## 🎯 Top 5 Best Bets
-1. **OAK @ MIN YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-2. **LAA @ SFG YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-3. **CIN @ STL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-4. **HOU @ CHW YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-5. **SEA @ TEX YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-
-## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** SDP @ MIA MIA_ML -- 72% / +26.4% (score 2.5)
+1. **CIN @ STL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+2. **NYY @ PHI YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+3. **COL @ MIL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+4. **SEA @ TEX YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
+5. **ATL @ BAL YRFI (1st-inning OVER 0.5)** (78/100 ★★★★)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -59,9 +56,8 @@
 - Hot teams: **3** | Cold teams: **3** | Over-heavy: 0 | Under-heavy: 3
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (46)
+## ⚠️ Anomaly Detector (44)
 - STEAM_MOVE: **42**
-- COMPOUND_BULLPEN: **2**
 - PEN_MISMATCH: **2**
   - NY @ IND (WNBA): ML/TOTAL steam since open: ML +3.1pp toward IND; total +4 (OVER) (7 snapshots)
   - DAL @ POR (WNBA): TOTAL steam since open: ML -2.1pp toward DAL; total +4 (OVER) (12 snapshots)
@@ -71,10 +67,10 @@
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$11.3**
-  - #1 [NRFI] $50 on OAK @ MIN YRFI (1st-inning OVER 0.5) (P=80%)
-  - #2 [NRFI] $50 on LAA @ SFG YRFI (1st-inning OVER 0.5) (P=75%)
-  - #3 [NRFI] $50 on CIN @ STL YRFI (1st-inning OVER 0.5) (P=70%)
+- Expected EV: **$-2.29**
+  - #1 [NRFI] $50 on CIN @ STL YRFI (1st-inning OVER 0.5) (P=69%)
+  - #2 [NRFI] $50 on NYY @ PHI YRFI (1st-inning OVER 0.5) (P=69%)
+  - #3 [NRFI] $50 on COL @ MIL YRFI (1st-inning OVER 0.5) (P=69%)
   - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
@@ -86,12 +82,12 @@
   - [HIGH] Toronto FC @ D.C. United : 3 signals (PREGAME, ATS, ATS)
   - [HIGH] Chicago Fire FC @ New York City FC : 3 signals (PREGAME, ATS, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (5)
-- **MacKenzie Gore** OVER 4.5 K (78%) fair -347
-- **Trey Yesavage** OVER 4.5 K (63%) fair -171
-- **Joey Cantillo** OVER 4.5 K (62%) fair -160
-- **Spencer Arrighetti** OVER 4.5 K (61%) fair -156
-- **Logan Webb** OVER 4.5 K (58%) fair -140
+## ⚾ Top MLB Pitcher K Plays (12)
+- **Eury Pérez** OVER 4.5 K (76%) fair -321
+- **Sean Burke** OVER 5.5 K (76%) fair -314
+- **Hunter Greene** OVER 6.5 K (75%) fair -298
+- **Sonny Gray** OVER 4.5 K (73%) fair -271
+- **Nolan McLean** OVER 5.5 K (73%) fair -270
 
 ## 🏀 NBA Player Heat (2 HOT / 5 COLD)
   - 🔥 **Nique Clifford** (SAC): L5 19.4/5.8/4.8 vs season 13.9/5.3/4.2 [PTS +5.5]
@@ -109,10 +105,13 @@
 
 ## ⛳ Golf Player Heat (from 3M Open)
   - 🔥 T1 **Michael Kim** (USA): -14 total -- finished T1
-  - 🔥 T2 **Ben Kohles** (USA): -11 total -- finished T2
-  - 🔥 T3 **Chandler Phillips** (USA): -10 total -- finished T3
-  - 🔥 T4 **Emiliano Grillo** (Argentina): -10 total -- finished T4
+  - 🔥 T2 **Chandler Phillips** (USA): -11 total -- finished T2
+  - 🔥 T3 **Emiliano Grillo** (Argentina): -11 total -- finished T3
+  - 🔥 T4 **Ben Kohles** (USA): -11 total -- finished T4
   - 🔥 T5 **Troy Merritt** (USA): -10 total -- finished T5
+  - ❄️ **Pierceson Coody** (USA): Sunday +5.0 vs tourney avg
+  - ❄️ **Tom Hoge** (USA): Sunday +4.0 vs tourney avg
+  - ❄️ **Jackson Suber** (USA): Sunday +3.5 vs tourney avg
 
 ## 🔥 MLB Batter Heat (46 HOT / 53 COLD)
   - 🔥 **Steven Kwan** (CLE): L14 .432 / season .248 (+184pts)
