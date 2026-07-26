@@ -1,10 +1,12 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:15 F:71
+_NO_ACTION_NIGHT_ | L:0 S:17 F:70
+
+:lock: **LOCK:** Freddy Peralta (MLB)
 
 :dart: **Top Picks:**
 1. [GOLF] Jackson Koivun -- Jackson Koivun (PLAYER_STRONG)
 2. [GOLF] Emiliano Grillo -- Emiliano Grillo (PLAYER_STRONG)
-3. [MLB] AWAY -- AWAY (TEAM_STRONG)
+3. [MLB] Logan Gilbert -- Logan Gilbert (PITCHER_STRONG)
 
 :coin: Bankroll Advisory: STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 

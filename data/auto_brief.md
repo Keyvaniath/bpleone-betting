@@ -1,49 +1,45 @@
 # Tonight's Slate Brief — 2026-07-26
 
-## Slate Quality: 54/100 (LOW)
-_0% lineups confirmed · 1 extreme-weather games · 11 rookie SPs_
-**Recommendation:** Defensive sizing tonight; stick to highest-confidence plays.
+## Slate Quality: 60/100 (MEDIUM)
+_16% lineups confirmed · 11 rookie SPs_
+**Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
 - **15 games** scheduled
-- **25 best bets** scored: 0 DK · 0 PP · 6 NRFI · 0 SGP
-- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$31.9
-- **MC simulation:** EV +$69.58, 78% P(profit), p05 $-94.98 / p95 $258.91
+- **30 best bets** scored: 0 DK · 0 PP · 12 NRFI · 0 SGP
+- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$44.45
+- **MC simulation:** EV +$170.5, 86% P(profit), p05 $-91.49 / p95 $421.55
 
 ## Top 5 Best Bets
-1. **CIN @ STL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +23.5%)
-   - P(YRFI) 69.5% vs baseline 46.0%
-2. **COL @ MIL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +22.7%)
-   - P(YRFI) 68.7% vs baseline 46.0%
-3. **SEA @ TEX YRFI (1st-inning OVER 0.5)**  (79/100 ****, edge +19.3%)
-   - P(YRFI) 65.3% vs baseline 46.0%
-4. **ATL @ BAL YRFI (1st-inning OVER 0.5)**  (78/100 ****, edge +18.9%)
-   - P(YRFI) 64.9% vs baseline 46.0%
-5. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
-   - Player prop quality score 1.1935
-   - Elite player
+1. **SDP @ MIA YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +31.0%)
+   - P(YRFI) 77.0% vs baseline 46.0%
+2. **OAK @ MIN YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +28.4%)
+   - P(YRFI) 74.4% vs baseline 46.0%
+3. **CHC @ PIT YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +27.6%)
+   - P(YRFI) 73.6% vs baseline 46.0%
+4. **NYY @ PHI YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +25.7%)
+   - P(YRFI) 71.7% vs baseline 46.0%
+5. **HOU @ CHW YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +25.7%)
+   - P(YRFI) 71.7% vs baseline 46.0%
 
-## ⚠️ Trap Warnings — 6 flagged
-- **CIN @ STL YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +23.5% looks big but only 0 settled props on this player — model unproven
-- **COL @ MIL YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +22.7% looks big but only 0 settled props on this player — model unproven
-- **SEA @ TEX YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +19.3% looks big but only 0 settled props on this player — model unproven
-- **ATL @ BAL YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +18.9% looks big but only 0 settled props on this player — model unproven
+## ⚠️ Trap Warnings — 12 flagged
+- **SDP @ MIA YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +31.0% looks big but only 0 settled props on this player — model unproven
+- **OAK @ MIN YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +28.4% looks big but only 0 settled props on this player — model unproven
+- **CHC @ PIT YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +27.6% looks big but only 0 settled props on this player — model unproven
+- **NYY @ PHI YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +25.7% looks big but only 0 settled props on this player — model unproven
 - **HOU @ CHW YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +15.8% looks big but only 0 settled props on this player — model unproven
-
-## Weather leans
-- **OVER lean** (wind out + warm): CIN @ STL
+   - Edge +25.7% looks big but only 0 settled props on this player — model unproven
 
 ## Bullpens GASSED tonight
-San Diego Padres, Tampa Bay Rays, Minnesota Twins, Atlanta Braves, Arizona Diamondbacks, Cleveland Guardians, Detroit Tigers, Houston Astros
+Athletics, Pittsburgh Pirates, San Diego Padres, San Francisco Giants, Tampa Bay Rays, Minnesota Twins, Philadelphia Phillies, Atlanta Braves
 _Lean late-inning OVER on these games; fade their save situations._
 
 ## NRFI/YRFI strong leans
-- **YRFI** (1st-inning OVER): CIN @ STL, COL @ MIL, SEA @ TEX, ATL @ BAL, HOU @ CHW
+- **YRFI** (1st-inning OVER): SDP @ MIA, OAK @ MIN, CHC @ PIT, NYY @ PHI, HOU @ CHW
 
 ## Golf -- 3M Open
 - **Leader:** Jackson Koivun (-20) at #1
@@ -62,14 +58,6 @@ _Lean late-inning OVER on these games; fade their save situations._
 - Winnipeg Jets @ Edmonton Oilers (0-0-0 vs 0-0-0)  | P(home) 52.9% fair -112 | Scheduled
 - Chicago Blackhawks @ Minnesota Wild (0-0-0 vs 0-0-0)  | P(home) 52.9% fair -112 | Scheduled
 
-## KBO -- 2026 Korean Baseball
-- KT Wiz @ Lotte Giants | P(home) 47.7% fair +109 | total 9 R
-- LG Twins @ Hanwha Eagles | P(home) 33.6% fair +198 | total 9 R
-- NC Dinos @ SSG Landers | P(home) 56.0% fair -127 | total 8 R
-- Samsung Lions @ Doosan Bears | P(home) 49.2% fair +103 | total 8 R
-- Kiwoom Heroes @ KIA Tigers | P(home) 77.0% fair -336 | total 9 R
-- **KBO POD:** SSG Landers ML vs NC Dinos (KBO) (MED)
-
 ## LoL Esports -- 0 live, 17 upcoming
 - [LPL] Suzhou LNG Esports vs Shenzhen NINJAS IN PYJAMAS BO3 | P(A) 50.0% fair -100/-100
 - [LPL] EDWARD GAMING vs THUNDER TALK GAMING BO3 | P(A) 46.3% fair +116/-116
@@ -78,7 +66,7 @@ _Lean late-inning OVER on these games; fade their save situations._
 - [CBLOL] Fluxo W7M vs LEVIATÁN BO3 | P(A) 50.0% fair -100/-100
 - **LoL POT:** Team Liquid Alienware ML vs Cloud9 Kia (LCS, BO3) (HIGH)
 
-## Player Play of the Day -- across all sports (3607 candidates scanned)
+## Player Play of the Day -- across all sports (3587 candidates scanned)
 - **[LOL]** Inspired UNDER 3.5 Kills | model 61.7% fair -161 (ELITE)
 - **[LOL]** ShowMaker OVER 3.5 Kills | model 62.5% fair -167 (ELITE)
 - **[LOL]** Peyz OVER 4.5 Kills | model 61.3% fair -158 (ELITE)
