@@ -1,13 +1,13 @@
 # EdgeStat Daily Summary — 2026-07-26
 
-## 🏥 Model Health: 71.2/100 [HEALTHY]
+## 🏥 Model Health: 71.5/100 [HEALTHY]
 - Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 99.9/100
+  - 🟢 Calibration Freshness: 100.0/100
   - 🔴 Hit Rate Trend: 41.2/100
   - 🔴 Brier Trend: 36.4/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 95.5/100
-  - 🟡 Edge Count: 65.7/100
+  - 🟡 Edge Count: 68.6/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.583)
@@ -20,9 +20,6 @@
 3. **CHC @ PIT YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 4. **NYY @ PHI YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 5. **HOU @ CHW YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-
-## 📡 Sharp Action (Line Movement)
-- [ELITE] **COL @ MIL** over_7.5: 51.22% → 62.96% (+11.7pp)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -58,11 +55,9 @@
 - Hot teams: **5** | Cold teams: **8** | Over-heavy: 0 | Under-heavy: 1
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (59)
+## ⚠️ Anomaly Detector (54)
 - RESIDUAL_DIVERGENCE: **5**
 - STEAM_MOVE: **49**
-- COMPOUND_BULLPEN: **3**
-- PEN_MISMATCH: **2**
   - Connecticut Sun (WNBA): Connecticut Sun UNDERPERFORMING expected margin by 16.3pts in recent games -- model bias may persist
   - Minnesota Lynx (WNBA): Minnesota Lynx UNDERPERFORMING expected margin by 7.2pts in recent games -- model bias may persist
   - Toronto Tempo (WNBA): Toronto Tempo UNDERPERFORMING expected margin by 13.8pts in recent games -- model bias may persist
@@ -78,17 +73,16 @@
   - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
-## 🎯 Convergence Picks (2 stacked games)
-- ELITE: **0** · HIGH: 0 · MED: 2
-  - [MED] TEAM SPOON @ TEAM COOP : 2 signals (ATS, ATS)
-  - [MED] Coventry City @ Arsenal : 2 signals (PREGAME, ATS)
+## 🎯 Convergence Picks (6 stacked games)
+- ELITE: **1** · HIGH: 3 · MED: 2
+  - [ELITE] Toronto Tempo @ Minnesota Lynx : 6 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ANOMALY)
+  - [HIGH] Connecticut Sun @ Washington Mystics : 3 signals (HEAT_COLD, ANOMALY, ATS)
+  - [HIGH] Indiana Fever @ Seattle Storm : 3 signals (HEAT_COLD, HEAT_COLD, ANOMALY)
+  - [HIGH] Portland Fire @ Las Vegas Aces : 3 signals (ANOMALY, ATS, ATS)
+  - [MED] New York Liberty @ Los Angeles Sparks : 2 signals (PREGAME, HEAT_COLD)
 
-## ⚾ Top MLB Pitcher K Plays (13)
-- **Kevin Gausman** OVER 4.5 K (78%) fair -347
-- **Miles Mikolas** OVER 4.5 K (76%) fair -319
-- **Logan Gilbert** OVER 5.5 K (76%) fair -314
-- **Ronel Blanco** OVER 5.5 K (72%) fair -263
-- **Reynaldo López** OVER 4.5 K (71%) fair -251
+## ⚾ Top MLB Pitcher K Plays (1)
+- **Cristopher Sánchez** OVER 5.5 K (66%) fair -195
 
 ## 🏀 NBA Player Heat (2 HOT / 5 COLD)
   - 🔥 **Nique Clifford** (SAC): L5 19.4/5.8/4.8 vs season 13.9/5.3/4.2 [PTS +5.5]
@@ -105,16 +99,16 @@
   - [LEAN] **Abdul Hussein** (16-2-0) vs Cody Gibson -- fair -150
 
 ## ⛳ Golf Player Heat (from 3M Open)
-  - 🔥 T1 **Jackson Koivun** (USA): -20 total -- finished T1
-  - 🔥 T2 **Ben Kohles** (USA): -17 total -- finished T2
-  - 🔥 T3 **Emiliano Grillo** (Argentina): -17 total -- finished T3
-  - 🔥 T4 **Michael Brennan** (USA): -16 total -- finished T4
-  - 🔥 T5 **Chandler Phillips** (USA): -16 total -- finished T5
+  - 🔥 T1 **Jackson Koivun** (USA): -25 total -- finished T1
+  - 🔥 T2 **Scottie Scheffler** (USA): -22 total -- finished T2, Sunday -2.5 vs tourney avg
+  - 🔥 T3 **Hideki Matsuyama** (Japan): -20 total -- finished T3, Sunday -2.0 vs tourney avg
+  - 🔥 T4 **Brian Harman** (USA): -20 total -- finished T4, Sunday -1.0 vs tourney avg
+  - 🔥 T5 **Denny McCarthy** (USA): -20 total -- finished T5
+  - ❄️ **Michael Brennan** (USA): Sunday +6.2 vs tourney avg
   - ❄️ **Pierceson Coody** (USA): Sunday +5.0 vs tourney avg
-  - ❄️ **Trace Crowe** (USA): Sunday +4.5 vs tourney avg
-  - ❄️ **Tom Hoge** (USA): Sunday +4.0 vs tourney avg
+  - ❄️ **Troy Merritt** (USA): Sunday +4.5 vs tourney avg
 
-## 🔥 MLB Batter Heat (48 HOT / 60 COLD)
+## 🔥 MLB Batter Heat (48 HOT / 58 COLD)
   - 🔥 **Steven Kwan** (CLE): L14 .426 / season .248 (+178pts)
   - 🔥 **Luis Rengifo** (SD): L14 .381 / season .237 (+144pts)
   - 🔥 **Tyler Tolbert** (KC): L14 .448 / season .313 (+135pts)
@@ -125,6 +119,13 @@
   - ❄️ **Henry Bolte** (ATH): L14 .100 / season .247 (-147pts) -- FADE props
   - ❄️ **Nelson Velázquez** (STL): L14 .069 / season .209 (-140pts) -- FADE props
   - ❄️ **Nathan Church** (STL): L14 .088 / season .225 (-137pts) -- FADE props
+
+## 📈 Streak Regression Alerts (5)
+- [WNBA] Minnesota Lynx on W5 L10 5-0 -- Minnesota Lynx on W5 -- no historical sample
+- [WNBA] Toronto Tempo on L3 L10 1-3 -- Toronto Tempo on L3 -- no historical sample
+- [WNBA] Seattle Storm on L5 L10 0-5 -- Seattle Storm on L5 -- no historical sample
+- [WNBA] Indiana Fever on W3 L10 4-1 -- Indiana Fever on W3 -- no historical sample
+- [WNBA] Los Angeles Sparks on L5 L10 0-5 -- Los Angeles Sparks on L5 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**

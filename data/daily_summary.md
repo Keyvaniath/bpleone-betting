@@ -2,16 +2,16 @@
 
 **Model Confidence: 23.2/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
 
-_Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
+_Pipeline health: **WARNING** (12/15 artifacts ok; 3 empty, 0 stale)._ 
 
-_Generated at 2026-07-26T21:46:14 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-07-26T23:04:32 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
 **NYY @ PHI - NYY_ML**
-- Market: +176
+- Market: +180
 - Model probability: 52.2%
-- Raw edge: +44.06%
+- Raw edge: +46.13%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
@@ -20,20 +20,20 @@ _Generated at 2026-07-26T21:46:14 UTC. Game lines source: **Bovada (fallback -- 
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 7:20p ET | NYY @ PHI | Citizens Bank Park | 71F 6mph | NYY_ML +44.06% |
+| 7:20p ET | NYY @ PHI | Citizens Bank Park | 71F 5mph | NYY_ML +46.13% |
 
 ## Self-Learning Loop
 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
 
-Cumulative graded plays: 6589. Wins: 2717. Hit rate: 41.2%.
+Cumulative graded plays: 6646. Wins: 2742. Hit rate: 41.3%.
 
 ## Auxiliary Markets (Model Fair Prices)
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| NYY @ PHI | 28.3% | +254 | 6.55 | +190 | -190 |
+| NYY @ PHI | 28.3% | +254 | 6.53 | +191 | -191 |
 
 ## Team Form (last 10)
 
