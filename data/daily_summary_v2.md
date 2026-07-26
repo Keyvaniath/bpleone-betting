@@ -1,31 +1,25 @@
-# EdgeStat Daily Summary — 2026-07-25
+# EdgeStat Daily Summary — 2026-07-26
 
-## 🏥 Model Health: 82.2/100 [HEALTHY]
+## 🏥 Model Health: 81.3/100 [HEALTHY]
 - Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 100.0/100
+  - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 56.9/100
   - 🟡 Brier Trend: 71.9/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 90.9/100
+  - 🟢 Data Health: 86.4/100
   - 🟢 Edge Count: 82.9/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.577)
-- **Total games on board:** 125
-- **Strong home favorites:** 5 | **Strong road dogs:** 3
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.581)
+- **Total games on board:** 126
+- **Strong home favorites:** 0 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
 1. **CIN @ STL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-2. **NYY @ PHI YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-3. **COL @ MIL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-4. **SEA @ TEX YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
-5. **ATL @ BAL YRFI (1st-inning OVER 0.5)** (78/100 ★★★★)
-
-## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** CHC @ PIT PIT_ML -- 67% / +20.8% (score 2.5)
-
-## 📡 Sharp Action (Line Movement)
-- [MODERATE] **CHC @ PIT** over_7.5: 50.0% → 54.55% (+4.5pp)
+2. **COL @ MIL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+3. **SEA @ TEX YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
+4. **ATL @ BAL YRFI (1st-inning OVER 0.5)** (78/100 ★★★★)
+5. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -53,13 +47,8 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (3)
-- [MLS] **LAFC** HOME (2-0 L10) · model 69.7% fair -230
-- [MLS] **Vancouver Whitecaps** AWAY (0-1 L10) · model 64.4% fair -181
-- [MLS] **Nashville SC** AWAY (2-0 L10) · model 63.4% fair -173
-
 ## 🔥/❄️ Heat / Cold Signals
-- Hot teams: **3** | Cold teams: **3** | Over-heavy: 0 | Under-heavy: 3
+- Hot teams: **5** | Cold teams: **8** | Over-heavy: 0 | Under-heavy: 1
 - Heating-up players: **20** | Cooling-down: 20
 
 ## ⚠️ Anomaly Detector (48)
@@ -72,10 +61,10 @@
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$-2.29**
+- Expected EV: **$-4.73**
   - #1 [NRFI] $50 on CIN @ STL YRFI (1st-inning OVER 0.5) (P=69%)
-  - #2 [NRFI] $50 on NYY @ PHI YRFI (1st-inning OVER 0.5) (P=69%)
-  - #3 [NRFI] $50 on COL @ MIL YRFI (1st-inning OVER 0.5) (P=69%)
+  - #2 [NRFI] $50 on COL @ MIL YRFI (1st-inning OVER 0.5) (P=69%)
+  - #3 [NRFI] $35 on SEA @ TEX YRFI (1st-inning OVER 0.5) (P=65%)
   - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
@@ -87,12 +76,12 @@
   - [HIGH] Toronto FC @ D.C. United : 3 signals (PREGAME, ATS, ATS)
   - [HIGH] Chicago Fire FC @ New York City FC : 3 signals (PREGAME, ATS, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (9)
+## ⚾ Top MLB Pitcher K Plays (7)
 - **Sean Burke** OVER 5.5 K (76%) fair -314
 - **Hunter Greene** OVER 6.5 K (75%) fair -298
 - **Nolan McLean** OVER 5.5 K (73%) fair -270
-- **Ryan Weathers** OVER 4.5 K (72%) fair -257
-- **Paul Skenes** OVER 5.5 K (70%) fair -233
+- **Nathan Eovaldi** OVER 5.5 K (68%) fair -216
+- **Brady Basso** OVER 5.5 K (67%) fair -206
 
 ## 🏀 NBA Player Heat (2 HOT / 5 COLD)
   - 🔥 **Nique Clifford** (SAC): L5 19.4/5.8/4.8 vs season 13.9/5.3/4.2 [PTS +5.5]
@@ -118,17 +107,17 @@
   - ❄️ **Tom Hoge** (USA): Sunday +4.0 vs tourney avg
   - ❄️ **Jackson Suber** (USA): Sunday +3.5 vs tourney avg
 
-## 🔥 MLB Batter Heat (48 HOT / 58 COLD)
-  - 🔥 **Steven Kwan** (CLE): L14 .432 / season .249 (+183pts)
+## 🔥 MLB Batter Heat (50 HOT / 63 COLD)
+  - 🔥 **Steven Kwan** (CLE): L14 .413 / season .248 (+165pts)
   - 🔥 **CJ Abrams** (WSH): L14 .429 / season .293 (+136pts)
+  - 🔥 **Jackson Holliday** (BAL): L14 .364 / season .229 (+135pts)
   - 🔥 **Luis Rengifo** (SD): L14 .366 / season .232 (+134pts)
-  - 🔥 **Tyler O'Neill** (BAL): L14 .344 / season .214 (+130pts)
   - 🔥 **Nick Fortes** (TB): L14 .410 / season .281 (+129pts)
   - ❄️ **Troy Johnston** (COL): L14 .114 / season .292 (-178pts) -- FADE props
-  - ❄️ **Nathan Church** (STL): L14 .086 / season .228 (-142pts) -- FADE props
-  - ❄️ **Brandon Marsh** (PHI): L14 .149 / season .288 (-139pts) -- FADE props
-  - ❄️ **Henry Bolte** (ATH): L14 .114 / season .253 (-139pts) -- FADE props
-  - ❄️ **Colton Cowser** (BAL): L14 .069 / season .206 (-137pts) -- FADE props
+  - ❄️ **Henry Bolte** (ATH): L14 .095 / season .250 (-155pts) -- FADE props
+  - ❄️ **Nathan Church** (STL): L14 .086 / season .225 (-139pts) -- FADE props
+  - ❄️ **Daniel Susac** (SF): L14 .114 / season .250 (-136pts) -- FADE props
+  - ❄️ **Gavin Sheets** (SD): L14 .077 / season .213 (-136pts) -- FADE props
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**
@@ -138,6 +127,6 @@
   - ⚠️ batter_rbis (Brier Δ -0.0052)
 
 ## 🤖 Self-Training Status
-- **WNBA**: n=35 games · hit rate 62.9% · bias -2.4pp [calibration applied]
-- **MLS**: n=20 games · hit rate 50.0% · bias -1.4pp
-- **MLB**: n=143 games · hit rate 55.2% · bias +3.0pp [calibration applied]
+- **WNBA**: n=33 games · hit rate 69.7% · bias +0.6pp
+- **MLS**: n=35 games · hit rate 57.1% · bias -11.1pp [calibration applied]
+- **MLB**: n=142 games · hit rate 52.1% · bias +4.4pp [calibration applied]

@@ -1,13 +1,13 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-07-25T23:01:27 UTC_
+_Generated 2026-07-26T07:25:57 UTC_
 
 ## Slate Quality
-- **Tier:** MODEST_NIGHT
-- **Score:** 30
-- **Advisory:** Light slate. Limit to 1-3 strongest plays; use 25% Kelly or less.
+- **Tier:** NO_ACTION_NIGHT
+- **Score:** -11
+- **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 25
-- **Total FADES:** 70
+- **Total STRONG:** 15
+- **Total FADES:** 71
 
 ## Top 5 Curated Picks
 1. **GOLF / Jackson Koivun** (GOLF_PLAYER, score=215.07)
@@ -16,12 +16,12 @@ _Generated 2026-07-25T23:01:27 UTC_
 2. **GOLF / Emiliano Grillo** (GOLF_PLAYER, score=170.0)
    - Play: Emiliano Grillo (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-3. **MLB / Wyatt Langford** (MLB_BATTER, score=121.44)
-   - Play: Wyatt Langford (BATTER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_BATTER)
-4. **MLB / Yordan Alvarez** (MLB_BATTER, score=115.44)
-   - Play: Yordan Alvarez (BATTER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_BATTER)
+3. **MLB / AWAY** (MLB_TEAM, score=85.0)
+   - Play: AWAY (TEAM_STRONG)
+   - Rationale: Cross-sport top pick (MLB_TEAM)
+4. **MLB / HOME** (MLB_TEAM, score=74.5)
+   - Play: HOME (TEAM_STRONG)
+   - Rationale: Cross-sport top pick (MLB_TEAM)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
@@ -36,13 +36,13 @@ _Generated 2026-07-25T23:01:27 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **MLB** / Paul Skenes (PITCHER_FADE)
+- **MLB** / Nolan McLean (PITCHER_FADE)
   - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **MLB** / Tanner Bibee (PITCHER_FADE)
+- **MLB** / Brandon Young (PITCHER_FADE)
   - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **MLB** / Shota Imanaga (PITCHER_FADE)
+- **MLB** / Sean Burke (PITCHER_FADE)
   - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **MLB** / Nick Martinez (PITCHER_FADE)
+- **MLB** / Hunter Brown (PITCHER_FADE)
   - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **NHL** / stuart skinner (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
+- **MLB** / Ryan Feltner (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
