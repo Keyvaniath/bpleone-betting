@@ -1,13 +1,13 @@
 # EdgeStat Daily Summary — 2026-07-26
 
-## 🏥 Model Health: 70.7/100 [HEALTHY]
+## 🏥 Model Health: 71.7/100 [HEALTHY]
 - Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 99.9/100
-  - 🔴 Hit Rate Trend: 45.2/100
-  - 🔴 Brier Trend: 34.3/100
+  - 🟢 Calibration Freshness: 99.5/100
+  - 🔴 Hit Rate Trend: 41.2/100
+  - 🔴 Brier Trend: 36.4/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 95.5/100
-  - 🔴 Edge Count: 57.1/100
+  - 🟡 Edge Count: 71.4/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.582)
@@ -22,11 +22,7 @@
 5. **HOU @ CHW YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** HOU @ CHW CHW_ML -- 65% / +23.1% (score 2.5)
-- [STRONG] **[MLB]** CHC @ PIT PIT_ML -- 68% / +20.0% (score 2.5)
-
-## 📡 Sharp Action (Line Movement)
-- [MODERATE] **CHC @ PIT** over_8.5: 50.0% → 53.49% (+3.5pp)
+- [STRONG] **[MLB]** HOU @ CHW CHW_ML -- 65% / +24.3% (score 2.5)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -61,9 +57,9 @@
 - Hot teams: **5** | Cold teams: **8** | Over-heavy: 0 | Under-heavy: 1
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (52)
+## ⚠️ Anomaly Detector (53)
 - STEAM_MOVE: **48**
-- COMPOUND_BULLPEN: **2**
+- COMPOUND_BULLPEN: **3**
 - PEN_MISMATCH: **2**
   - NY @ IND (WNBA): ML/TOTAL steam since open: ML +3.1pp toward IND; total +4 (OVER) (7 snapshots)
   - DAL @ POR (WNBA): TOTAL steam since open: ML -2.1pp toward DAL; total +4 (OVER) (12 snapshots)
@@ -73,7 +69,7 @@
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$11.01**
+- Expected EV: **$-7.49**
   - #1 [NRFI] $50 on SDP @ MIA YRFI (1st-inning OVER 0.5) (P=77%)
   - #2 [NRFI] $50 on OAK @ MIN YRFI (1st-inning OVER 0.5) (P=74%)
   - #3 [NRFI] $50 on CHC @ PIT YRFI (1st-inning OVER 0.5) (P=74%)
@@ -108,13 +104,13 @@
 
 ## ⛳ Golf Player Heat (from 3M Open)
   - 🔥 T1 **Jackson Koivun** (USA): -20 total -- finished T1
-  - 🔥 T2 **Emiliano Grillo** (Argentina): -17 total -- finished T2
-  - 🔥 T3 **Ben Kohles** (USA): -17 total -- finished T3
+  - 🔥 T2 **Ben Kohles** (USA): -17 total -- finished T2
+  - 🔥 T3 **Emiliano Grillo** (Argentina): -17 total -- finished T3
   - 🔥 T4 **Michael Brennan** (USA): -16 total -- finished T4
   - 🔥 T5 **Chandler Phillips** (USA): -16 total -- finished T5
   - ❄️ **Pierceson Coody** (USA): Sunday +5.0 vs tourney avg
+  - ❄️ **Trace Crowe** (USA): Sunday +4.5 vs tourney avg
   - ❄️ **Tom Hoge** (USA): Sunday +4.0 vs tourney avg
-  - ❄️ **Jackson Suber** (USA): Sunday +3.5 vs tourney avg
 
 ## 🔥 MLB Batter Heat (49 HOT / 63 COLD)
   - 🔥 **Steven Kwan** (CLE): L14 .413 / season .248 (+165pts)

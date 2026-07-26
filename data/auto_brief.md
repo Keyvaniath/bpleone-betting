@@ -1,12 +1,12 @@
 # Tonight's Slate Brief — 2026-07-26
 
-## Slate Quality: 60/100 (MEDIUM)
-_16% lineups confirmed · 11 rookie SPs_
+## Slate Quality: 68/100 (MEDIUM)
+_53% lineups confirmed · 1 extreme-weather games · 11 rookie SPs_
 **Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
 - **15 games** scheduled
-- **30 best bets** scored: 0 DK · 0 PP · 12 NRFI · 0 SGP
+- **28 best bets** scored: 0 DK · 0 PP · 12 NRFI · 0 SGP
 - **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$44.45
 - **MC simulation:** EV +$170.5, 86% P(profit), p05 $-91.49 / p95 $421.55
 
@@ -22,7 +22,7 @@ _16% lineups confirmed · 11 rookie SPs_
 5. **HOU @ CHW YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +25.7%)
    - P(YRFI) 71.7% vs baseline 46.0%
 
-## ⚠️ Trap Warnings — 12 flagged
+## ⚠️ Trap Warnings — 13 flagged
 - **SDP @ MIA YRFI (1st-inning OVER 0.5)** (low):
    - Edge +31.0% looks big but only 0 settled props on this player — model unproven
 - **OAK @ MIN YRFI (1st-inning OVER 0.5)** (low):
@@ -34,6 +34,9 @@ _16% lineups confirmed · 11 rookie SPs_
 - **HOU @ CHW YRFI (1st-inning OVER 0.5)** (low):
    - Edge +25.7% looks big but only 0 settled props on this player — model unproven
 
+## Weather leans
+- **UNDER lean** (wind in + cold): LAA @ SFG
+
 ## Bullpens GASSED tonight
 Athletics, Pittsburgh Pirates, San Diego Padres, San Francisco Giants, Tampa Bay Rays, Minnesota Twins, Philadelphia Phillies, Atlanta Braves
 _Lean late-inning OVER on these games; fade their save situations._
@@ -44,7 +47,7 @@ _Lean late-inning OVER on these games; fade their save situations._
 ## Golf -- 3M Open
 - **Leader:** Jackson Koivun (-20) at #1
 - **Field:** 144 players  |  Status: In Progress
-- **Play of the Tournament:** Brian Harman TOP5 @ +562 (model 15.1%, HIGH)
+- **Play of the Tournament:** Brian Harman TOP5 @ +563 (model 15.1%, HIGH)
    - P(top 5) 15.1% -- lower variance than outright but compelling line.
 
 ## NBA -- PRESEASON
@@ -58,11 +61,11 @@ _Lean late-inning OVER on these games; fade their save situations._
 - Winnipeg Jets @ Edmonton Oilers (0-0-0 vs 0-0-0)  | P(home) 52.9% fair -112 | Scheduled
 - Chicago Blackhawks @ Minnesota Wild (0-0-0 vs 0-0-0)  | P(home) 52.9% fair -112 | Scheduled
 
-## LoL Esports -- 0 live, 17 upcoming
+## LoL Esports -- 1 live, 16 upcoming
+- [LEC] Team Vitality vs Movistar KOI BO3 | P(A) 49.4% fair +102/-102
 - [LPL] Suzhou LNG Esports vs Shenzhen NINJAS IN PYJAMAS BO3 | P(A) 50.0% fair -100/-100
 - [LPL] EDWARD GAMING vs THUNDER TALK GAMING BO3 | P(A) 46.3% fair +116/-116
 - [LPL] BILIBILI GAMING vs Anyone's Legend BO3 | P(A) 63.5% fair -174/+174
-- [LEC] Team Vitality vs Movistar KOI BO3 | P(A) 49.4% fair +102/-102
 - [CBLOL] Fluxo W7M vs LEVIATÁN BO3 | P(A) 50.0% fair -100/-100
 - **LoL POT:** Team Liquid Alienware ML vs Cloud9 Kia (LCS, BO3) (HIGH)
 
