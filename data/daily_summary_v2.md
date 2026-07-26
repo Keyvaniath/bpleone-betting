@@ -1,18 +1,18 @@
 # EdgeStat Daily Summary — 2026-07-26
 
-## 🏥 Model Health: 71.7/100 [HEALTHY]
+## 🏥 Model Health: 71.2/100 [HEALTHY]
 - Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 99.5/100
+  - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 41.2/100
   - 🔴 Brier Trend: 36.4/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 95.5/100
-  - 🟡 Edge Count: 71.4/100
+  - 🟡 Edge Count: 65.7/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.582)
-- **Total games on board:** 110
-- **Strong home favorites:** 1 | **Strong road dogs:** 0
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.583)
+- **Total games on board:** 115
+- **Strong home favorites:** 4 | **Strong road dogs:** 2
 
 ## 🎯 Top 5 Best Bets
 1. **SDP @ MIA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
@@ -21,8 +21,8 @@
 4. **NYY @ PHI YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 5. **HOU @ CHW YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 
-## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** HOU @ CHW CHW_ML -- 65% / +24.3% (score 2.5)
+## 📡 Sharp Action (Line Movement)
+- [ELITE] **COL @ MIL** over_7.5: 51.22% → 62.96% (+11.7pp)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -50,26 +50,28 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (1)
+## ⚡ Pre-Game HIGH Conviction (2)
 - [MLS] **MLS All-Stars** HOME (None L10) · model 68.5% fair -218
+- [WNBA] **New York Liberty** AWAY (2-2 L10) · model 62.7% fair -168
 
 ## 🔥/❄️ Heat / Cold Signals
 - Hot teams: **5** | Cold teams: **8** | Over-heavy: 0 | Under-heavy: 1
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (53)
-- STEAM_MOVE: **48**
+## ⚠️ Anomaly Detector (59)
+- RESIDUAL_DIVERGENCE: **5**
+- STEAM_MOVE: **49**
 - COMPOUND_BULLPEN: **3**
 - PEN_MISMATCH: **2**
-  - NY @ IND (WNBA): ML/TOTAL steam since open: ML +3.1pp toward IND; total +4 (OVER) (7 snapshots)
-  - DAL @ POR (WNBA): TOTAL steam since open: ML -2.1pp toward DAL; total +4 (OVER) (12 snapshots)
-  - CON @ PHX (WNBA): TOTAL steam since open: ML +1.0pp toward PHX; total -3 (UNDER) (4 snapshots)
-  - MIN @ SEA (WNBA): TOTAL steam since open: ML -1.4pp toward MIN; total +3 (OVER) (9 snapshots)
-  - MIN @ CHC (MLB): TOTAL steam since open: ML +0.6pp toward CHC; total -2.5 (UNDER) (8 snapshots)
+  - Connecticut Sun (WNBA): Connecticut Sun UNDERPERFORMING expected margin by 16.3pts in recent games -- model bias may persist
+  - Minnesota Lynx (WNBA): Minnesota Lynx UNDERPERFORMING expected margin by 7.2pts in recent games -- model bias may persist
+  - Toronto Tempo (WNBA): Toronto Tempo UNDERPERFORMING expected margin by 13.8pts in recent games -- model bias may persist
+  - Indiana Fever (WNBA): Indiana Fever OUTPERFORMING expected margin by 8.3pts in recent games -- model bias may persist
+  - Portland Fire (WNBA): Portland Fire OUTPERFORMING expected margin by 10.9pts in recent games -- model bias may persist
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$-7.49**
+- Expected EV: **$11.02**
   - #1 [NRFI] $50 on SDP @ MIA YRFI (1st-inning OVER 0.5) (P=77%)
   - #2 [NRFI] $50 on OAK @ MIN YRFI (1st-inning OVER 0.5) (P=74%)
   - #3 [NRFI] $50 on CHC @ PIT YRFI (1st-inning OVER 0.5) (P=74%)
@@ -112,17 +114,17 @@
   - ❄️ **Trace Crowe** (USA): Sunday +4.5 vs tourney avg
   - ❄️ **Tom Hoge** (USA): Sunday +4.0 vs tourney avg
 
-## 🔥 MLB Batter Heat (49 HOT / 63 COLD)
-  - 🔥 **Steven Kwan** (CLE): L14 .413 / season .248 (+165pts)
-  - 🔥 **CJ Abrams** (WSH): L14 .429 / season .293 (+136pts)
-  - 🔥 **Jackson Holliday** (BAL): L14 .364 / season .229 (+135pts)
-  - 🔥 **Luis Rengifo** (SD): L14 .366 / season .232 (+134pts)
-  - 🔥 **Nick Fortes** (TB): L14 .410 / season .281 (+129pts)
-  - ❄️ **Troy Johnston** (COL): L14 .114 / season .292 (-178pts) -- FADE props
-  - ❄️ **Henry Bolte** (ATH): L14 .095 / season .250 (-155pts) -- FADE props
-  - ❄️ **Nathan Church** (STL): L14 .086 / season .225 (-139pts) -- FADE props
-  - ❄️ **Daniel Susac** (SF): L14 .114 / season .250 (-136pts) -- FADE props
-  - ❄️ **Gavin Sheets** (SD): L14 .077 / season .213 (-136pts) -- FADE props
+## 🔥 MLB Batter Heat (48 HOT / 60 COLD)
+  - 🔥 **Steven Kwan** (CLE): L14 .426 / season .248 (+178pts)
+  - 🔥 **Luis Rengifo** (SD): L14 .381 / season .237 (+144pts)
+  - 🔥 **Tyler Tolbert** (KC): L14 .448 / season .313 (+135pts)
+  - 🔥 **Chandler Simpson** (TB): L14 .431 / season .296 (+135pts)
+  - 🔥 **Tyrone Taylor** (NYM): L14 .370 / season .237 (+133pts)
+  - ❄️ **Troy Johnston** (COL): L14 .105 / season .289 (-184pts) -- FADE props
+  - ❄️ **Cam Smith** (HOU): L14 .053 / season .206 (-153pts) -- FADE props
+  - ❄️ **Henry Bolte** (ATH): L14 .100 / season .247 (-147pts) -- FADE props
+  - ❄️ **Nelson Velázquez** (STL): L14 .069 / season .209 (-140pts) -- FADE props
+  - ❄️ **Nathan Church** (STL): L14 .088 / season .225 (-137pts) -- FADE props
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**

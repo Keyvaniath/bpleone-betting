@@ -1,12 +1,12 @@
 # Tonight's Slate Brief — 2026-07-26
 
-## Slate Quality: 68/100 (MEDIUM)
-_53% lineups confirmed · 1 extreme-weather games · 11 rookie SPs_
-**Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
+## Slate Quality: 100/100 (HIGH)
+_100% lineups confirmed_
+**Recommendation:** Play normal Kelly sizing.
 
 ## Slate
-- **15 games** scheduled
-- **28 best bets** scored: 0 DK · 0 PP · 12 NRFI · 0 SGP
+- **1 games** scheduled
+- **29 best bets** scored: 0 DK · 0 PP · 12 NRFI · 0 SGP
 - **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$44.45
 - **MC simulation:** EV +$170.5, 86% P(profit), p05 $-91.49 / p95 $421.55
 
@@ -34,9 +34,6 @@ _53% lineups confirmed · 1 extreme-weather games · 11 rookie SPs_
 - **HOU @ CHW YRFI (1st-inning OVER 0.5)** (low):
    - Edge +25.7% looks big but only 0 settled props on this player — model unproven
 
-## Weather leans
-- **UNDER lean** (wind in + cold): LAA @ SFG
-
 ## Bullpens GASSED tonight
 Athletics, Pittsburgh Pirates, San Diego Padres, San Francisco Giants, Tampa Bay Rays, Minnesota Twins, Philadelphia Phillies, Atlanta Braves
 _Lean late-inning OVER on these games; fade their save situations._
@@ -47,7 +44,7 @@ _Lean late-inning OVER on these games; fade their save situations._
 ## Golf -- 3M Open
 - **Leader:** Jackson Koivun (-20) at #1
 - **Field:** 144 players  |  Status: In Progress
-- **Play of the Tournament:** Brian Harman TOP5 @ +563 (model 15.1%, HIGH)
+- **Play of the Tournament:** Brian Harman TOP5 @ +564 (model 15.1%, HIGH)
    - P(top 5) 15.1% -- lower variance than outright but compelling line.
 
 ## NBA -- PRESEASON
@@ -61,12 +58,12 @@ _Lean late-inning OVER on these games; fade their save situations._
 - Winnipeg Jets @ Edmonton Oilers (0-0-0 vs 0-0-0)  | P(home) 52.9% fair -112 | Scheduled
 - Chicago Blackhawks @ Minnesota Wild (0-0-0 vs 0-0-0)  | P(home) 52.9% fair -112 | Scheduled
 
-## LoL Esports -- 1 live, 16 upcoming
-- [LEC] Team Vitality vs Movistar KOI BO3 | P(A) 49.4% fair +102/-102
-- [LPL] Suzhou LNG Esports vs Shenzhen NINJAS IN PYJAMAS BO3 | P(A) 50.0% fair -100/-100
-- [LPL] EDWARD GAMING vs THUNDER TALK GAMING BO3 | P(A) 46.3% fair +116/-116
-- [LPL] BILIBILI GAMING vs Anyone's Legend BO3 | P(A) 63.5% fair -174/+174
-- [CBLOL] Fluxo W7M vs LEVIATÁN BO3 | P(A) 50.0% fair -100/-100
+## LoL Esports -- 1 live, 9 upcoming
+- [LCS] Team Liquid Alienware vs Cloud9 Kia BO3 | P(A) 57.1% fair -133/+133
+- [LCS] Disguised vs Shopify Rebellion BO3 | P(A) 50.0% fair -100/-100
+- [LCK Challengers] T1 Esports Academy vs NS Challengers BO3 | P(A) 50.0% fair -100/-100
+- [LCK Challengers] Gen.G Global Academy vs BNK FEARX Youth BO3 | P(A) 50.0% fair -100/-100
+- [NLC] Ruddy Corporation vs VES BO3 | P(A) 50.4% fair -102/+102
 - **LoL POT:** Team Liquid Alienware ML vs Cloud9 Kia (LCS, BO3) (HIGH)
 
 ## Player Play of the Day -- across all sports (3587 candidates scanned)
