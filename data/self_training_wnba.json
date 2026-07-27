@@ -1,74 +1,63 @@
 {
-  "generated_at": "2026-07-27T06:29:43",
+  "generated_at": "2026-07-27T08:09:40",
   "sport": "wnba",
-  "n_games": 33,
-  "hit_rate": 0.697,
-  "brier_score": 0.2455,
-  "log_loss": 0.7534,
-  "avg_predicted_home_winprob": 0.5814,
-  "avg_actual_home_winrate": 0.5758,
-  "bias": 0.0056,
+  "n_games": 29,
+  "hit_rate": 0.6897,
+  "brier_score": 0.2588,
+  "log_loss": 0.7986,
+  "avg_predicted_home_winprob": 0.5194,
+  "avg_actual_home_winrate": 0.5517,
+  "bias": -0.0323,
   "reliability_bins": [
     {
       "lo": 0.0,
       "hi": 0.1,
-      "n": 4,
+      "n": 5,
       "predicted_avg": 0.063,
-      "actual_avg": 0.25
+      "actual_avg": 0.2
     },
     {
       "lo": 0.2,
       "hi": 0.3,
       "n": 2,
-      "predicted_avg": 0.225,
-      "actual_avg": 0.0
+      "predicted_avg": 0.22,
+      "actual_avg": 0.5
     },
     {
       "lo": 0.3,
       "hi": 0.4,
-      "n": 2,
-      "predicted_avg": 0.367,
-      "actual_avg": 0.5
+      "n": 3,
+      "predicted_avg": 0.369,
+      "actual_avg": 0.333
     },
     {
       "lo": 0.5,
       "hi": 0.6,
-      "n": 10,
+      "n": 11,
       "predicted_avg": 0.543,
-      "actual_avg": 0.7
-    },
-    {
-      "lo": 0.6,
-      "hi": 0.7,
-      "n": 2,
-      "predicted_avg": 0.641,
-      "actual_avg": 1.0
-    },
-    {
-      "lo": 0.7,
-      "hi": 0.8,
-      "n": 3,
-      "predicted_avg": 0.715,
-      "actual_avg": 0.667
+      "actual_avg": 0.727
     },
     {
       "lo": 0.8,
       "hi": 0.9,
-      "n": 5,
+      "n": 3,
       "predicted_avg": 0.834,
-      "actual_avg": 0.6
+      "actual_avg": 1.0
     },
     {
       "lo": 0.9,
       "hi": 1.0,
       "n": 5,
       "predicted_avg": 0.946,
-      "actual_avg": 0.6
+      "actual_avg": 0.4
     }
   ],
   "recommendation": {
-    "applied": false,
-    "note": "model is well-calibrated (<2pp bias)"
+    "applied": true,
+    "bias_pp": -3.2,
+    "shrinkage": 0.933,
+    "recommended_shift": 0.0302,
+    "note": "Model under-predicting home by 3.2pp; add 3.0pp to P(home) (shrinkage 93%)"
   },
   "n_teams_tracked": 17
 }

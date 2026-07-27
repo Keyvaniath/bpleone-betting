@@ -1,25 +1,25 @@
-# EdgeStat Daily Summary — 2026-07-26
+# EdgeStat Daily Summary — 2026-07-27
 
-## 🏥 Model Health: 71.5/100 [HEALTHY]
-- Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 100.0/100
+## 🏥 Model Health: 69.6/100 [OK]
+- Operational but room to improve - check yellow components
+  - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 41.2/100
   - 🔴 Brier Trend: 36.4/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 95.5/100
+  - 🟢 Data Health: 86.4/100
   - 🟡 Edge Count: 68.6/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.583)
-- **Total games on board:** 115
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.582)
+- **Total games on board:** 131
 - **Strong home favorites:** 4 | **Strong road dogs:** 2
 
 ## 🎯 Top 5 Best Bets
-1. **SDP @ MIA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-2. **OAK @ MIN YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-3. **CHC @ PIT YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-4. **NYY @ PHI YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-5. **HOU @ CHW YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+1. **NYY @ PHI YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+2. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
+3. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
+4. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
+5. **NBA Sacramento Kings ML (0-0) vs Los Angeles Lakers** (70/100 ★★★★)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -49,29 +49,29 @@
 
 ## ⚡ Pre-Game HIGH Conviction (2)
 - [MLS] **MLS All-Stars** HOME (None L10) · model 68.5% fair -218
-- [WNBA] **New York Liberty** AWAY (2-2 L10) · model 62.7% fair -168
+- [WNBA] **New York Liberty** AWAY (2-1 L10) · model 62.7% fair -168
 
 ## 🔥/❄️ Heat / Cold Signals
-- Hot teams: **5** | Cold teams: **8** | Over-heavy: 0 | Under-heavy: 1
+- Hot teams: **5** | Cold teams: **8** | Over-heavy: 0 | Under-heavy: 0
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (54)
+## ⚠️ Anomaly Detector (48)
 - RESIDUAL_DIVERGENCE: **5**
-- STEAM_MOVE: **49**
+- STEAM_MOVE: **43**
   - Connecticut Sun (WNBA): Connecticut Sun UNDERPERFORMING expected margin by 16.3pts in recent games -- model bias may persist
   - Minnesota Lynx (WNBA): Minnesota Lynx UNDERPERFORMING expected margin by 7.2pts in recent games -- model bias may persist
   - Toronto Tempo (WNBA): Toronto Tempo UNDERPERFORMING expected margin by 13.8pts in recent games -- model bias may persist
   - Indiana Fever (WNBA): Indiana Fever OUTPERFORMING expected margin by 8.3pts in recent games -- model bias may persist
   - Portland Fire (WNBA): Portland Fire OUTPERFORMING expected margin by 10.9pts in recent games -- model bias may persist
 
-## 💰 Today's Portfolio (9 picks)
-- Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$11.02**
-  - #1 [NRFI] $50 on SDP @ MIA YRFI (1st-inning OVER 0.5) (P=77%)
-  - #2 [NRFI] $50 on OAK @ MIN YRFI (1st-inning OVER 0.5) (P=74%)
-  - #3 [NRFI] $50 on CHC @ PIT YRFI (1st-inning OVER 0.5) (P=74%)
-  - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
-  - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
+## 💰 Today's Portfolio (7 picks)
+- Total stake: **$245.0** (24.5% of $1000 bankroll)
+- Expected EV: **$-3.75**
+  - #1 [NRFI] $50 on NYY @ PHI YRFI (1st-inning OVER 0.5) (P=72%)
+  - #2 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
+  - #3 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
+  - #4 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
+  - #5 [NBA] $35 on NBA Sacramento Kings ML (0-0) vs Los Angeles Lakers (P=55%)
 
 ## 🎯 Convergence Picks (6 stacked games)
 - ELITE: **1** · HIGH: 3 · MED: 2
@@ -108,7 +108,7 @@
   - ❄️ **Pierceson Coody** (USA): Sunday +5.0 vs tourney avg
   - ❄️ **Troy Merritt** (USA): Sunday +4.5 vs tourney avg
 
-## 🔥 MLB Batter Heat (48 HOT / 58 COLD)
+## 🔥 MLB Batter Heat (49 HOT / 57 COLD)
   - 🔥 **Steven Kwan** (CLE): L14 .426 / season .248 (+178pts)
   - 🔥 **Luis Rengifo** (SD): L14 .381 / season .237 (+144pts)
   - 🔥 **Tyler Tolbert** (KC): L14 .448 / season .313 (+135pts)
@@ -135,6 +135,6 @@
   - ⚠️ batter_rbis (Brier Δ -0.0052)
 
 ## 🤖 Self-Training Status
-- **WNBA**: n=33 games · hit rate 69.7% · bias +0.6pp
+- **WNBA**: n=29 games · hit rate 69.0% · bias -3.2pp [calibration applied]
 - **MLS**: n=35 games · hit rate 57.1% · bias -11.1pp [calibration applied]
-- **MLB**: n=142 games · hit rate 52.1% · bias +4.4pp [calibration applied]
+- **MLB**: n=142 games · hit rate 50.7% · bias +0.5pp
