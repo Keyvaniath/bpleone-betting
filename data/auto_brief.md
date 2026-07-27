@@ -1,43 +1,45 @@
 # Tonight's Slate Brief — 2026-07-27
 
-## Slate Quality: 53/100 (LOW)
+## Slate Quality: 55/100 (MEDIUM)
 _0% lineups confirmed · 12 rookie SPs_
-**Recommendation:** Defensive sizing tonight; stick to highest-confidence plays.
+**Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
 - **12 games** scheduled
-- **10 best bets** scored: 0 DK · 0 PP · 1 NRFI · 0 SGP
-- **Auto-portfolio:** 1 picks, $50.0 stake (5.0%), expected +$18.46
-- **MC simulation:** EV +$18.46, 72% P(profit), p05 $-50.0 / p95 $45.45
+- **18 best bets** scored: 0 DK · 0 PP · 8 NRFI · 0 SGP
+- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$41.86
+- **MC simulation:** EV +$102.31, 80% P(profit), p05 $-95.95 / p95 $255.44
 
 ## Top 5 Best Bets
-1. **NYY @ PHI YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +25.7%)
-   - P(YRFI) 71.7% vs baseline 46.0%
-2. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
-   - Player prop quality score 1.1935
-   - Elite player
-3. **LOL ShowMaker OVER 3.5 Kills**  (78/100 ****, edge —)
-   - Player prop quality score 1.1892
-   - Elite player
-4. **LOL Peyz OVER 4.5 Kills**  (78/100 ****, edge —)
-   - Player prop quality score 1.184
-   - Elite player
-5. **NBA Sacramento Kings ML (0-0) vs Los Angeles Lakers**  (70/100 ****, edge —)
-   - ELO 1500.0 vs 1500.0; HFA included
+1. **BOS @ OAK YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +29.8%)
+   - P(YRFI) 75.8% vs baseline 46.0%
+2. **TOR @ WSN YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +26.8%)
+   - P(YRFI) 72.8% vs baseline 46.0%
+3. **NYY @ CHW YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +24.9%)
+   - P(YRFI) 70.9% vs baseline 46.0%
+4. **CHC @ STL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +22.5%)
+   - P(YRFI) 68.5% vs baseline 46.0%
+5. **CLE @ CIN YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +22.5%)
+   - P(YRFI) 68.5% vs baseline 46.0%
 
-## ⚠️ Trap Warnings — 1 flagged
-- **NYY @ PHI YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +25.7% looks big but only 0 settled props on this player — model unproven
-
-## Weather leans
-- **UNDER lean** (wind in + cold): MIL @ SFG
+## ⚠️ Trap Warnings — 8 flagged
+- **BOS @ OAK YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +29.8% looks big but only 0 settled props on this player — model unproven
+- **TOR @ WSN YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +26.8% looks big but only 0 settled props on this player — model unproven
+- **NYY @ CHW YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +24.9% looks big but only 0 settled props on this player — model unproven
+- **CHC @ STL YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +22.5% looks big but only 0 settled props on this player — model unproven
+- **CLE @ CIN YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +22.5% looks big but only 0 settled props on this player — model unproven
 
 ## Bullpens GASSED tonight
-Athletics, Pittsburgh Pirates, San Diego Padres, Seattle Mariners, San Francisco Giants, St. Louis Cardinals, Tampa Bay Rays, Texas Rangers
+Athletics, Pittsburgh Pirates, San Diego Padres, San Francisco Giants, Minnesota Twins, Philadelphia Phillies, Atlanta Braves, Chicago White Sox
 _Lean late-inning OVER on these games; fade their save situations._
 
 ## NRFI/YRFI strong leans
-- **YRFI** (1st-inning OVER): NYY @ PHI
+- **YRFI** (1st-inning OVER): BOS @ OAK, TOR @ WSN, NYY @ CHW, CHC @ STL, CLE @ CIN
 
 ## NBA -- PRESEASON
 - Los Angeles Lakers @ Sacramento Kings (0-0 vs 0-0)  | P(home) 55.0% fair -122 | Scheduled
@@ -58,12 +60,12 @@ _Lean late-inning OVER on these games; fade their save situations._
 - Kiwoom Heroes @ LG Twins | P(home) 74.0% fair -285 | total 9 R
 - **KBO POD:** OVER 8.5 (model 10 runs) (MED)
 
-## LoL Esports -- 1 live, 7 upcoming
-- [LCK Challengers] NS Challengers vs T1 Esports Academy BO3 | P(A) 50.0% fair -100/-100
-- [LCK Challengers] Gen.G Global Academy vs BNK FEARX Youth BO3 | P(A) 50.0% fair -100/-100
+## LoL Esports -- 0 live, 7 upcoming
 - [NLC] Ruddy Corporation vs VES BO3 | P(A) 50.4% fair -102/+102
 - [NLC] Deer Gaming vs Epic Avalanche BO3 | P(A) 46.3% fair +116/-116
 - [NLC] Verdant vs Lundqvist Lightside BO3 | P(A) 50.0% fair -100/-100
+- [NLC] Arctic Pandas vs Bulldog Esports BO3 | P(A) 50.4% fair -102/+102
+- [LCK Challengers] HLE Challengers vs BRO Challengers BO3 | P(A) 50.0% fair -100/-100
 - **LoL POT:** Epic Avalanche ML vs Deer Gaming (NLC, BO3) (MED)
 
 ## Player Play of the Day -- across all sports (3515 candidates scanned)
