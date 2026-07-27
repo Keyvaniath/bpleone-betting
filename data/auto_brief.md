@@ -1,12 +1,12 @@
 # Tonight's Slate Brief — 2026-07-27
 
-## Slate Quality: 55/100 (MEDIUM)
-_0% lineups confirmed · 12 rookie SPs_
+## Slate Quality: 58/100 (MEDIUM)
+_8% lineups confirmed · 12 rookie SPs_
 **Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
 - **12 games** scheduled
-- **18 best bets** scored: 0 DK · 0 PP · 8 NRFI · 0 SGP
+- **19 best bets** scored: 0 DK · 0 PP · 8 NRFI · 0 SGP
 - **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$41.86
 - **MC simulation:** EV +$102.31, 80% P(profit), p05 $-95.95 / p95 $255.44
 
@@ -60,13 +60,13 @@ _Lean late-inning OVER on these games; fade their save situations._
 - Kiwoom Heroes @ LG Twins | P(home) 74.0% fair -285 | total 9 R
 - **KBO POD:** OVER 8.5 (model 10 runs) (MED)
 
-## LoL Esports -- 0 live, 7 upcoming
+## LoL Esports -- 0 live, 9 upcoming
 - [NLC] Ruddy Corporation vs VES BO3 | P(A) 50.4% fair -102/+102
 - [NLC] Deer Gaming vs Epic Avalanche BO3 | P(A) 46.3% fair +116/-116
 - [NLC] Verdant vs Lundqvist Lightside BO3 | P(A) 50.0% fair -100/-100
 - [NLC] Arctic Pandas vs Bulldog Esports BO3 | P(A) 50.4% fair -102/+102
 - [LCK Challengers] HLE Challengers vs BRO Challengers BO3 | P(A) 50.0% fair -100/-100
-- **LoL POT:** Epic Avalanche ML vs Deer Gaming (NLC, BO3) (MED)
+- **LoL POT:** L Guide Gaming ML vs Arneb (LJL, BO5) (HIGH)
 
 ## Player Play of the Day -- across all sports (3515 candidates scanned)
 - **[LOL]** Inspired UNDER 3.5 Kills | model 61.7% fair -161 (ELITE)

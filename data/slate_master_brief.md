@@ -1,5 +1,5 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-07-27T15:39:44 UTC_
+_Generated 2026-07-27T16:24:43 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
@@ -17,11 +17,11 @@ _Generated 2026-07-27T15:39:44 UTC_
 - **Details:** ATL @ NYM
 
 ## Top 5 Curated Picks
-1. **GOLF / Denny McCarthy** (GOLF_PLAYER, score=219.29)
-   - Play: Denny McCarthy (PLAYER_STRONG)
+1. **GOLF / Brian Harman** (GOLF_PLAYER, score=219.29)
+   - Play: Brian Harman (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Scottie Scheffler** (GOLF_PLAYER, score=219.29)
-   - Play: Scottie Scheffler (PLAYER_STRONG)
+2. **GOLF / Hideki Matsuyama** (GOLF_PLAYER, score=219.29)
+   - Play: Hideki Matsuyama (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
 3. **WNBA / napheesa collier** (WNBA_PLAYER, score=143.75)
    - Play: napheesa collier (PLAYER_STRONG)
@@ -35,9 +35,9 @@ _Generated 2026-07-27T15:39:44 UTC_
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
-  - Denny McCarthy top 10 finish
-  - Scottie Scheffler top 10 finish
+  - Brian Harman top 10 finish
   - Hideki Matsuyama top 10 finish
+  - Jackson Koivun top 10 finish
 
 ## Slate ROI Projection
 - **Picks:** 1
@@ -46,13 +46,13 @@ _Generated 2026-07-27T15:39:44 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
+- **NHL** / anthony stolarz (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / joseph woll (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / jake oettinger (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
 - **NHL** / samsonov ilya (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / stuart skinner (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / kevin lankinen (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / thatcher demko (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / filip gustavsson (GOALIE_FADE)
+- **NHL** / marc-andre fleury (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO

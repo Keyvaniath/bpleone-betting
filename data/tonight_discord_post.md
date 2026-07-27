@@ -4,8 +4,8 @@ _NO_ACTION_NIGHT_ | L:0 S:14 F:50
 :lock: **LOCK:** Martín Pérez (MLB)
 
 :dart: **Top Picks:**
-1. [GOLF] Denny McCarthy -- Denny McCarthy (PLAYER_STRONG)
-2. [GOLF] Scottie Scheffler -- Scottie Scheffler (PLAYER_STRONG)
+1. [GOLF] Brian Harman -- Brian Harman (PLAYER_STRONG)
+2. [GOLF] Hideki Matsuyama -- Hideki Matsuyama (PLAYER_STRONG)
 3. [WNBA] napheesa collier -- napheesa collier (PLAYER_STRONG)
 
 :chains: **Top Parlays:**
