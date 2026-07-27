@@ -4,34 +4,28 @@
 
 _Pipeline health: **WARNING** (12/15 artifacts ok; 3 empty, 0 stale)._ 
 
-_Generated at 2026-07-27T16:25:07 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-07-27T23:08:40 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
-**TOR @ WSN - WSN_ML**
-- Market: -122
-- Model probability: 94.3%
-- Raw edge: +71.66%
+**HOU @ LAA - OVER_8.0**
+- Market: -110
+- Model probability: 70.7%
+- Raw edge: +34.93%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
 
-## Full Slate (12 games)
+## Full Slate (6 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 2:35p ET | SEA @ TEX | Globe Life Field | indoor | TEX_ML +8.37% |
-| 6:40p ET | BAL @ DET | Comerica Park | 81F 6mph | DET_ML +3.31% |
-| 6:40p ET | ARI @ PIT | PNC Park | 78F 7mph | PIT_ML +42.5% |
-| 6:40p ET | PHI @ MIA | loanDepot park | indoor | MIA_ML +18.93% |
-| 6:45p ET | TOR @ WSN | Nationals Park | 78F 7mph | WSN_ML +71.66% |
-| 7:10p ET | CLE @ CIN | Great American Ball Park | 83F 5mph | OVER_8.5 +10.27% |
-| 7:10p ET | ATL @ NYM | Citi Field | 73F 4mph | UNDER_8.5 +19.89% |
-| 7:40p ET | NYY @ CHW | Rate Field | 77F 2mph | NYY_ML +25.2% |
-| 7:45p ET | CHC @ STL | Busch Stadium | 90F 4mph | CHC_ML +19.31% |
-| 9:38p ET | HOU @ LAA | Angel Stadium | 71F 5mph | OVER_8.5 +23.84% |
-| 9:40p ET | BOS @ OAK | Sutter Health Park | 72F 7mph | -- |
-| 9:45p ET | MIL @ SFG | Oracle Park | 59F 3mph | -- |
+| 7:10p ET | ATL @ NYM | Citi Field | 72F 4mph | NYM_ML +5.84% |
+| 7:40p ET | NYY @ CHW | Rate Field | 73F 5mph | NYY_ML +29.07% |
+| 7:45p ET | CHC @ STL | Busch Stadium | 88F 4mph | CHC_ML +28.23% |
+| 9:38p ET | HOU @ LAA | Angel Stadium | 71F 5mph | OVER_8.0 +34.93% |
+| 9:40p ET | BOS @ OAK | Sutter Health Park | 71F 6mph | BOS_ML +5.45% |
+| 9:45p ET | MIL @ SFG | Oracle Park | 58F 3mph | OVER_7.5 +30.75% |
 
 ## Parlays - top 5
 
@@ -60,24 +54,18 @@ _Generated at 2026-07-27T16:25:07 UTC. Game lines source: **Bovada (fallback -- 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
 
-Cumulative graded plays: 6661. Wins: 2756. Hit rate: 41.4%.
+Cumulative graded plays: 6664. Wins: 2758. Hit rate: 41.4%.
 
 ## Auxiliary Markets (Model Fair Prices)
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| ARI @ PIT | 41.4% | +142 | 4.57 | -213 | +213 |
-| ATL @ NYM | 54.8% | -121 | 3.05 | +220 | -220 |
-| BAL @ DET | 52.5% | -111 | 3.11 | +134 | -134 |
-| BOS @ OAK | 24.2% | +313 | 7.25 | +298 | -298 |
-| CHC @ STL | 31.5% | +218 | 5.91 | +328 | -328 |
-| CLE @ CIN | 31.5% | +217 | 5.74 | +102 | -102 |
-| HOU @ LAA | 56.6% | -130 | 2.92 | +147 | -147 |
-| MIL @ SFG | 41.4% | +142 | 4.51 | +231 | -231 |
-| NYY @ CHW | 29.1% | +243 | 6.17 | +535 | -535 |
-| PHI @ MIA | 52.4% | -110 | 3.23 | +212 | -212 |
-| SEA @ TEX | 41.1% | +143 | 4.44 | +175 | -175 |
-| TOR @ WSN | 27.2% | +268 | 6.7 | -940 | +940 |
+| ATL @ NYM | 54.8% | -121 | 3.04 | +220 | -220 |
+| BOS @ OAK | 24.2% | +313 | 7.26 | +298 | -298 |
+| CHC @ STL | 29.3% | +241 | 6.29 | +409 | -409 |
+| HOU @ LAA | 56.6% | -130 | 2.9 | +147 | -147 |
+| MIL @ SFG | 41.4% | +142 | 4.49 | +231 | -231 |
+| NYY @ CHW | 29.1% | +243 | 6.16 | +537 | -537 |
 
 ## Travel / Rest Flags
 

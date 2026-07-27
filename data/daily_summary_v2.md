@@ -1,13 +1,13 @@
 # EdgeStat Daily Summary — 2026-07-27
 
-## 🏥 Model Health: 68.2/100 [OK]
+## 🏥 Model Health: 68.6/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.7/100
+  - 🟢 Calibration Freshness: 100.0/100
   - 🔴 Hit Rate Trend: 40.6/100
   - 🔴 Brier Trend: 36.7/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 95.5/100
-  - 🔴 Edge Count: 37.1/100
+  - 🔴 Edge Count: 40.0/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.584)
@@ -22,10 +22,10 @@
 5. **CLE @ CIN YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** ARI @ PIT PIT_ML -- 69% / +25.7% (score 2.5)
+- [STRONG] **[MLB]** ARI @ PIT PIT_ML -- 68% / +25.5% (score 2.5)
 
 ## 📉 Strong UNDER Signals
-- [STRONG 5.1] **ATL @ NYM** model 7.71 vs market 8.5
+- [STRONG 5.0] **ATL @ NYM** model 7.75 vs market 8.5
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -60,9 +60,9 @@
 - Hot teams: **5** | Cold teams: **8** | Over-heavy: 0 | Under-heavy: 0
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (51)
+## ⚠️ Anomaly Detector (55)
 - RESIDUAL_DIVERGENCE: **5**
-- STEAM_MOVE: **43**
+- STEAM_MOVE: **47**
 - PEN_MISMATCH: **1**
 - COMPOUND_BULLPEN: **2**
   - Connecticut Sun (WNBA): Connecticut Sun UNDERPERFORMING expected margin by 17.0pts in recent games -- model bias may persist
@@ -119,7 +119,7 @@
   - ❄️ **Pierceson Coody** (USA): Sunday +5.0 vs tourney avg
   - ❄️ **Troy Merritt** (USA): Sunday +4.5 vs tourney avg
 
-## 🔥 MLB Batter Heat (49 HOT / 57 COLD)
+## 🔥 MLB Batter Heat (51 HOT / 52 COLD)
   - 🔥 **Steven Kwan** (CLE): L14 .426 / season .248 (+178pts)
   - 🔥 **Luis Rengifo** (SD): L14 .381 / season .237 (+144pts)
   - 🔥 **Tyler Tolbert** (KC): L14 .448 / season .313 (+135pts)
