@@ -1,31 +1,25 @@
-# EdgeStat Daily Summary — 2026-07-27
+# EdgeStat Daily Summary — 2026-07-28
 
-## 🏥 Model Health: 68.6/100 [OK]
+## 🏥 Model Health: 66.7/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 100.0/100
+  - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 40.6/100
   - 🔴 Brier Trend: 36.7/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 95.5/100
+  - 🟢 Data Health: 86.4/100
   - 🔴 Edge Count: 40.0/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.584)
-- **Total games on board:** 115
+- **Total games on board:** 116
 - **Strong home favorites:** 4 | **Strong road dogs:** 1
 
 ## 🎯 Top 5 Best Bets
 1. **BOS @ OAK YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-2. **TOR @ WSN YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-3. **NYY @ CHW YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-4. **CHC @ STL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-5. **CLE @ CIN YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-
-## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** ARI @ PIT PIT_ML -- 68% / +25.5% (score 2.5)
-
-## 📉 Strong UNDER Signals
-- [STRONG 5.0] **ATL @ NYM** model 7.75 vs market 8.5
+2. **NYY @ CHW YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+3. **CHC @ STL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+4. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
+5. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -57,13 +51,12 @@
 - [MLS] **MLS All-Stars** HOME (None L10) · model 68.5% fair -218
 
 ## 🔥/❄️ Heat / Cold Signals
-- Hot teams: **5** | Cold teams: **8** | Over-heavy: 0 | Under-heavy: 0
+- Hot teams: **4** | Cold teams: **8** | Over-heavy: 0 | Under-heavy: 0
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (55)
+## ⚠️ Anomaly Detector (45)
 - RESIDUAL_DIVERGENCE: **5**
-- STEAM_MOVE: **47**
-- PEN_MISMATCH: **1**
+- STEAM_MOVE: **38**
 - COMPOUND_BULLPEN: **2**
   - Connecticut Sun (WNBA): Connecticut Sun UNDERPERFORMING expected margin by 17.0pts in recent games -- model bias may persist
   - Minnesota Lynx (WNBA): Minnesota Lynx UNDERPERFORMING expected margin by 7.2pts in recent games -- model bias may persist
@@ -73,10 +66,10 @@
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$7.24**
+- Expected EV: **$5.65**
   - #1 [NRFI] $50 on BOS @ OAK YRFI (1st-inning OVER 0.5) (P=76%)
-  - #2 [NRFI] $50 on TOR @ WSN YRFI (1st-inning OVER 0.5) (P=73%)
-  - #3 [NRFI] $50 on NYY @ CHW YRFI (1st-inning OVER 0.5) (P=71%)
+  - #2 [NRFI] $50 on NYY @ CHW YRFI (1st-inning OVER 0.5) (P=71%)
+  - #3 [NRFI] $50 on CHC @ STL YRFI (1st-inning OVER 0.5) (P=71%)
   - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
@@ -88,12 +81,12 @@
   - [HIGH] Connecticut Sun @ Washington Mystics : 3 signals (ANOMALY, ATS, ATS)
   - [MED] Portland Fire @ Las Vegas Aces : 2 signals (ANOMALY, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (10)
-- **Chase Burns** OVER 4.5 K (78%) fair -347
-- **Zack Wheeler** OVER 6.5 K (76%) fair -310
+## ⚾ Top MLB Pitcher K Plays (5)
 - **David Peterson** OVER 4.5 K (74%) fair -279
 - **Tatsuya Imai** OVER 6.5 K (73%) fair -275
-- **George Kirby** OVER 4.5 K (73%) fair -271
+- **Payton Tolle** OVER 4.5 K (71%) fair -246
+- **Max Fried** OVER 4.5 K (70%) fair -229
+- **Brandon Sproat** OVER 4.5 K (61%) fair -159
 
 ## 🏀 NBA Player Heat (2 HOT / 5 COLD)
   - 🔥 **Nique Clifford** (SAC): L5 19.4/5.8/4.8 vs season 13.9/5.3/4.2 [PTS +5.5]
@@ -119,17 +112,17 @@
   - ❄️ **Pierceson Coody** (USA): Sunday +5.0 vs tourney avg
   - ❄️ **Troy Merritt** (USA): Sunday +4.5 vs tourney avg
 
-## 🔥 MLB Batter Heat (51 HOT / 52 COLD)
+## 🔥 MLB Batter Heat (57 HOT / 48 COLD)
   - 🔥 **Steven Kwan** (CLE): L14 .426 / season .248 (+178pts)
+  - 🔥 **Tyrone Taylor** (NYM): L14 .414 / season .250 (+164pts)
   - 🔥 **Luis Rengifo** (SD): L14 .381 / season .237 (+144pts)
+  - 🔥 **J.T. Realmuto** (PHI): L14 .364 / season .228 (+136pts)
   - 🔥 **Tyler Tolbert** (KC): L14 .448 / season .313 (+135pts)
-  - 🔥 **Chandler Simpson** (TB): L14 .431 / season .296 (+135pts)
-  - 🔥 **Tyrone Taylor** (NYM): L14 .370 / season .237 (+133pts)
   - ❄️ **Troy Johnston** (COL): L14 .105 / season .289 (-184pts) -- FADE props
-  - ❄️ **Cam Smith** (HOU): L14 .053 / season .206 (-153pts) -- FADE props
-  - ❄️ **Henry Bolte** (ATH): L14 .100 / season .247 (-147pts) -- FADE props
-  - ❄️ **Nelson Velázquez** (STL): L14 .069 / season .209 (-140pts) -- FADE props
-  - ❄️ **Nathan Church** (STL): L14 .088 / season .225 (-137pts) -- FADE props
+  - ❄️ **Henry Bolte** (ATH): L14 .073 / season .243 (-170pts) -- FADE props
+  - ❄️ **Cam Smith** (HOU): L14 .057 / season .206 (-149pts) -- FADE props
+  - ❄️ **Daniel Susac** (SF): L14 .100 / season .248 (-148pts) -- FADE props
+  - ❄️ **Brandon Marsh** (PHI): L14 .143 / season .283 (-140pts) -- FADE props
 
 ## 📈 Streak Regression Alerts (5)
 - [WNBA] Minnesota Lynx on W5 L10 5-0 -- Minnesota Lynx on W5 -- no historical sample
@@ -146,6 +139,6 @@
   - ⚠️ batter_rbis (Brier Δ -0.0052)
 
 ## 🤖 Self-Training Status
-- **WNBA**: n=29 games · hit rate 69.0% · bias -3.2pp [calibration applied]
+- **WNBA**: n=27 games · hit rate 66.7% · bias -1.0pp
 - **MLS**: n=35 games · hit rate 57.1% · bias -11.1pp [calibration applied]
-- **MLB**: n=142 games · hit rate 50.7% · bias +0.5pp
+- **MLB**: n=153 games · hit rate 49.7% · bias +0.1pp
