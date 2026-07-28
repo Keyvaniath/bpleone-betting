@@ -44,6 +44,10 @@ _Lean late-inning OVER on these games; fade their save situations._
 ## NRFI/YRFI strong leans
 - **YRFI** (1st-inning OVER): CLE @ CIN, CHC @ STL, PHI @ MIA, CLE @ CIN, SEA @ LAD
 
+## Golf -- Rocket Classic
+- **Leader:** ? (?) at #?
+- **Field:** 0 players  |  Status: Scheduled
+
 ## NBA -- PRESEASON
 - Memphis Grizzlies @ Atlanta Hawks (0-0 vs 0-0)  | P(home) 55.0% fair -122 | Scheduled
 - Los Angeles Lakers @ Sacramento Kings (0-0 vs 0-0)  | P(home) 55.0% fair -122 | Scheduled
@@ -71,7 +75,7 @@ _Lean late-inning OVER on these games; fade their save situations._
 - [LPL] TOP ESPORTS vs Anyone's Legend BO3 | P(A) 45.9% fair +118/-118
 - **LoL POT:** T1 ML vs kt Rolster (LCK, BO3) (HIGH)
 
-## Player Play of the Day -- across all sports (3513 candidates scanned)
+## Player Play of the Day -- across all sports (3516 candidates scanned)
 - **[LOL]** Inspired UNDER 3.5 Kills | model 61.7% fair -161 (ELITE)
 - **[LOL]** ShowMaker OVER 3.5 Kills | model 62.5% fair -167 (ELITE)
 - **[LOL]** Peyz OVER 4.5 Kills | model 61.3% fair -158 (ELITE)

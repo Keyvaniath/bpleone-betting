@@ -1,17 +1,17 @@
 # EdgeStat Daily Summary — 2026-07-28
 
-## 🏥 Model Health: 66.5/100 [OK]
-- Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.9/100
-  - 🔴 Hit Rate Trend: 27.0/100
+## 🏥 Model Health: 74.2/100 [HEALTHY]
+- Solid health - some minor issues to monitor
+  - 🟢 Calibration Freshness: 99.7/100
+  - 🔴 Hit Rate Trend: 50.3/100
   - 🔴 Brier Trend: 44.2/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 95.5/100
-  - 🔴 Edge Count: 31.4/100
+  - 🟡 Edge Count: 62.9/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.583)
-- **Total games on board:** 115
+- **Total games on board:** 116
 - **Strong home favorites:** 4 | **Strong road dogs:** 2
 
 ## 🎯 Top 5 Best Bets
@@ -22,7 +22,11 @@
 5. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** TOR @ WSN WSN_ML -- 71% / +21.5% (score 2.5)
+- [STRONG] **[MLB]** TOR @ WSN WSN_ML -- 71% / +21.3% (score 2.5)
+
+## 📡 Sharp Action (Line Movement)
+- [ELITE] **PHI @ MIA** ml_home: 41.84% → 53.49% (+11.7pp)
+- [MODERATE] **TOR @ WSN** over_8.5: 51.22% → 54.55% (+3.3pp)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -61,8 +65,7 @@
 ## ⚠️ Anomaly Detector (46)
 - RESIDUAL_DIVERGENCE: **4**
 - STEAM_MOVE: **38**
-- COMPOUND_BULLPEN: **3**
-- PEN_MISMATCH: **1**
+- COMPOUND_BULLPEN: **4**
   - Connecticut Sun (WNBA): Connecticut Sun UNDERPERFORMING expected margin by 14.5pts in recent games -- model bias may persist
   - Toronto Tempo (WNBA): Toronto Tempo UNDERPERFORMING expected margin by 14.0pts in recent games -- model bias may persist
   - Indiana Fever (WNBA): Indiana Fever OUTPERFORMING expected margin by 11.2pts in recent games -- model bias may persist
@@ -105,17 +108,7 @@
   - [LEAN] **Vlasto Čepo** (14-3-0) vs Gilbert Urbina -- fair -184
   - [LEAN] **Michael Oliveira** (9-0-0) vs Oban Elliott -- fair -166
   - [LEAN] **Navajo Stirling** (10-0-0) vs Jan Blachowicz -- fair -141
-  - [LEAN] **Jovan Leka** (13-2-0) vs Max Gimenis -- fair -139
-
-## ⛳ Golf Player Heat (from 3M Open)
-  - 🔥 T1 **Jackson Koivun** (USA): -25 total -- finished T1
-  - 🔥 T2 **Scottie Scheffler** (USA): -22 total -- finished T2, Sunday -2.5 vs tourney avg
-  - 🔥 T3 **Hideki Matsuyama** (Japan): -20 total -- finished T3, Sunday -2.0 vs tourney avg
-  - 🔥 T4 **Brian Harman** (USA): -20 total -- finished T4, Sunday -1.0 vs tourney avg
-  - 🔥 T5 **Denny McCarthy** (USA): -20 total -- finished T5
-  - ❄️ **Michael Brennan** (USA): Sunday +6.2 vs tourney avg
-  - ❄️ **Pierceson Coody** (USA): Sunday +5.0 vs tourney avg
-  - ❄️ **Troy Merritt** (USA): Sunday +4.5 vs tourney avg
+  - [LEAN] **Mateusz Rębecki** (20-5-0) vs Kyle Prepolec -- fair -139
 
 ## 🔥 MLB Batter Heat (57 HOT / 48 COLD)
   - 🔥 **Steven Kwan** (CLE): L14 .426 / season .248 (+178pts)
