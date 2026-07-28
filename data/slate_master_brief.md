@@ -1,12 +1,12 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-07-28T16:14:22 UTC_
+_Generated 2026-07-28T23:02:34 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -14
+- **Score:** -26
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 9
+- **Total STRONG:** 6
 - **Total FADES:** 50
 
 ## Lock of the Night
@@ -23,12 +23,9 @@ _Generated 2026-07-28T16:14:22 UTC_
 2. **WNBA / caitlin clark** (WNBA_PLAYER, score=109.0)
    - Play: caitlin clark (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (WNBA_PLAYER)
-3. **MLB / Nathaniel Lowe** (MLB_BATTER, score=96.5)
-   - Play: Nathaniel Lowe (BATTER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_BATTER)
-4. **MLB / Chase DeLauter** (MLB_BATTER, score=77.75)
-   - Play: Chase DeLauter (BATTER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_BATTER)
+3. **MLB / Anthony Kay** (MLB_PITCHER, score=58.83)
+   - Play: Anthony Kay (PITCHER_STRONG)
+   - Rationale: Cross-sport top pick (MLB_PITCHER)
 
 ## Slate ROI Projection
 - **Picks:** 1
@@ -37,13 +34,13 @@ _Generated 2026-07-28T16:14:22 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **NHL** / stuart skinner (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / anthony stolarz (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
 - **NHL** / filip gustavsson (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / casey desmith (GOALIE_FADE)
+- **NHL** / stuart skinner (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / thatcher demko (GOALIE_FADE)
+- **NHL** / logan thompson_2 (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / connor hellebuyck (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / calvin pickard (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO

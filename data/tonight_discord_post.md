@@ -1,15 +1,14 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:9 F:50
+_NO_ACTION_NIGHT_ | L:0 S:6 F:50
 
 :lock: **LOCK:** Seth Lugo (MLB)
 
 :dart: **Top Picks:**
 1. [WNBA] napheesa collier -- napheesa collier (PLAYER_STRONG)
 2. [WNBA] caitlin clark -- caitlin clark (PLAYER_STRONG)
-3. [MLB] Nathaniel Lowe -- Nathaniel Lowe (BATTER_STRONG)
+3. [MLB] Anthony Kay -- Anthony Kay (PITCHER_STRONG)
 
 :chains: **Top Parlays:**
-- [MLB] Elly De La Cruz (2 legs, p=0.3664)
 - [WNBA] napheesa collier (2 legs, p=0.2949)
 
 :coin: Bankroll Advisory: STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.

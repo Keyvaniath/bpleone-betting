@@ -1,12 +1,12 @@
 # EdgeStat Daily Summary — 2026-07-28
 
-## 🏥 Model Health: 74.2/100 [HEALTHY]
+## 🏥 Model Health: 72.5/100 [HEALTHY]
 - Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 99.7/100
+  - 🟢 Calibration Freshness: 100.0/100
   - 🔴 Hit Rate Trend: 50.3/100
   - 🔴 Brier Trend: 44.2/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 95.5/100
+  - 🟢 Data Health: 86.4/100
   - 🟡 Edge Count: 62.9/100
 
 ## 🌐 Slate Overview
@@ -22,11 +22,7 @@
 5. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** TOR @ WSN WSN_ML -- 71% / +21.3% (score 2.5)
-
-## 📡 Sharp Action (Line Movement)
-- [ELITE] **PHI @ MIA** ml_home: 41.84% → 53.49% (+11.7pp)
-- [MODERATE] **TOR @ WSN** over_8.5: 51.22% → 54.55% (+3.3pp)
+- [STRONG] **[MLB]** TOR @ WSN WSN_ML -- 71% / +21.4% (score 2.5)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -62,9 +58,9 @@
 - Hot teams: **4** | Cold teams: **8** | Over-heavy: 0 | Under-heavy: 0
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (46)
+## ⚠️ Anomaly Detector (52)
 - RESIDUAL_DIVERGENCE: **4**
-- STEAM_MOVE: **38**
+- STEAM_MOVE: **44**
 - COMPOUND_BULLPEN: **4**
   - Connecticut Sun (WNBA): Connecticut Sun UNDERPERFORMING expected margin by 14.5pts in recent games -- model bias may persist
   - Toronto Tempo (WNBA): Toronto Tempo UNDERPERFORMING expected margin by 14.0pts in recent games -- model bias may persist
@@ -110,17 +106,17 @@
   - [LEAN] **Navajo Stirling** (10-0-0) vs Jan Blachowicz -- fair -141
   - [LEAN] **Mateusz Rębecki** (20-5-0) vs Kyle Prepolec -- fair -139
 
-## 🔥 MLB Batter Heat (57 HOT / 48 COLD)
-  - 🔥 **Steven Kwan** (CLE): L14 .426 / season .248 (+178pts)
+## 🔥 MLB Batter Heat (58 HOT / 48 COLD)
   - 🔥 **Tyrone Taylor** (NYM): L14 .414 / season .250 (+164pts)
+  - 🔥 **Steven Kwan** (CLE): L14 .392 / season .247 (+145pts)
   - 🔥 **Luis Rengifo** (SD): L14 .381 / season .237 (+144pts)
   - 🔥 **J.T. Realmuto** (PHI): L14 .364 / season .228 (+136pts)
   - 🔥 **Tyler Tolbert** (KC): L14 .448 / season .313 (+135pts)
   - ❄️ **Troy Johnston** (COL): L14 .105 / season .289 (-184pts) -- FADE props
+  - ❄️ **Brandon Marsh** (PHI): L14 .109 / season .283 (-174pts) -- FADE props
   - ❄️ **Henry Bolte** (ATH): L14 .073 / season .243 (-170pts) -- FADE props
   - ❄️ **Cam Smith** (HOU): L14 .057 / season .206 (-149pts) -- FADE props
   - ❄️ **Daniel Susac** (SF): L14 .100 / season .248 (-148pts) -- FADE props
-  - ❄️ **Brandon Marsh** (PHI): L14 .143 / season .283 (-140pts) -- FADE props
 
 ## 📈 Streak Regression Alerts (5)
 - [WNBA] Minnesota Lynx on W4 L10 4-0 -- Minnesota Lynx on W4 -- no historical sample
