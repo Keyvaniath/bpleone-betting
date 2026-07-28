@@ -1,5 +1,7 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:14 F:50
+_NO_ACTION_NIGHT_ | L:0 S:11 F:51
+
+:lock: **LOCK:** Seth Lugo (MLB)
 
 :dart: **Top Picks:**
 1. [GOLF] Denny McCarthy -- Denny McCarthy (PLAYER_STRONG)

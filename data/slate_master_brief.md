@@ -1,13 +1,20 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-07-28T07:32:19 UTC_
+_Generated 2026-07-28T15:15:42 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** 6
+- **Score:** -7
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 14
-- **Total FADES:** 50
+- **Total STRONG:** 11
+- **Total FADES:** 51
+
+## Lock of the Night
+- **Subject:** Seth Lugo
+- **Source:** ELITE_BOARD
+- **Sport:** MLB
+- **Score:** 15.0
+- **Details:** KCR @ MIN
 
 ## Top 5 Curated Picks
 1. **GOLF / Denny McCarthy** (GOLF_PLAYER, score=219.29)
@@ -22,9 +29,9 @@ _Generated 2026-07-28T07:32:19 UTC_
 4. **WNBA / caitlin clark** (WNBA_PLAYER, score=109.0)
    - Play: caitlin clark (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (WNBA_PLAYER)
-5. **MLB / HOME** (MLB_TEAM, score=75.12)
-   - Play: HOME (TEAM_STRONG)
-   - Rationale: Cross-sport top pick (MLB_TEAM)
+5. **MLB / Anthony Kay** (MLB_PITCHER, score=58.83)
+   - Play: Anthony Kay (PITCHER_STRONG)
+   - Rationale: Cross-sport top pick (MLB_PITCHER)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
@@ -33,19 +40,19 @@ _Generated 2026-07-28T07:32:19 UTC_
   - Brian Harman top 10 finish
 
 ## Slate ROI Projection
-- **Picks:** 0
-- **Avg edge:** 0%
+- **Picks:** 1
+- **Avg edge:** -0.91%
 - **Expected ROI (1/4 Kelly):** 0.0%
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **MLB** / Jack Perkins (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **MLB** / Max Fried (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **MLB** / Tatsuya Imai (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **MLB** / Walbert Ureña (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **MLB** / Martín Pérez (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **NHL** / logan thompson_2 (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / anthony stolarz (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / stuart skinner (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / adin hill (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / thatcher demko (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
