@@ -1,18 +1,18 @@
 # EdgeStat Daily Summary — 2026-07-29
 
-## 🏥 Model Health: 73.8/100 [HEALTHY]
+## 🏥 Model Health: 70.9/100 [HEALTHY]
 - Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 99.9/100
-  - 🔴 Hit Rate Trend: 59.3/100
+  - 🟢 Calibration Freshness: 99.7/100
+  - 🔴 Hit Rate Trend: 51.1/100
   - 🔴 Brier Trend: 40.2/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 95.5/100
-  - 🔴 Edge Count: 48.6/100
+  - 🟢 Data Health: 86.4/100
+  - 🔴 Edge Count: 54.3/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.582)
-- **Total games on board:** 111
-- **Strong home favorites:** 1 | **Strong road dogs:** 0
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.579)
+- **Total games on board:** 113
+- **Strong home favorites:** 1 | **Strong road dogs:** 1
 
 ## 🎯 Top 5 Best Bets
 1. **HOU @ LAA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
@@ -22,10 +22,7 @@
 5. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** ARI @ PIT PIT_ML -- 69% / +20.6% (score 2.5)
-
-## 📡 Sharp Action (Line Movement)
-- [MODERATE] **ARI @ PIT** over_8.0: 51.22% → 54.55% (+3.3pp)
+- [STRONG] **[MLB]** ARI @ PIT PIT_ML -- 69% / +20.2% (score 2.5)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -60,9 +57,10 @@
 - Hot teams: **5** | Cold teams: **10** | Over-heavy: 0 | Under-heavy: 0
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (46)
-- STEAM_MOVE: **44**
-- COMPOUND_BULLPEN: **2**
+## ⚠️ Anomaly Detector (52)
+- STEAM_MOVE: **45**
+- COMPOUND_BULLPEN: **4**
+- PEN_MISMATCH: **3**
   - DAL @ POR (WNBA): TOTAL steam since open: ML -2.1pp toward DAL; total +4 (OVER) (12 snapshots)
   - CON @ WSH (WNBA): ML/TOTAL steam since open: ML +2.9pp toward WSH; total +4 (OVER) (13 snapshots)
   - CLE @ CIN (MLB): ML steam since open: ML -15.7pp toward CLE (8 snapshots)
@@ -71,7 +69,7 @@
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$-17.62**
+- Expected EV: **$1.01**
   - #1 [NRFI] $50 on HOU @ LAA YRFI (1st-inning OVER 0.5) (P=77%)
   - #2 [NRFI] $50 on CLE @ CIN YRFI (1st-inning OVER 0.5) (P=68%)
   - #3 [NRFI] $50 on TOR @ WSN YRFI (1st-inning OVER 0.5) (P=66%)

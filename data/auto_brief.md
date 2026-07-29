@@ -1,12 +1,12 @@
 # Tonight's Slate Brief — 2026-07-29
 
-## Slate Quality: 63/100 (MEDIUM)
-_28% lineups confirmed · 13 rookie SPs_
+## Slate Quality: 65/100 (MEDIUM)
+_31% lineups confirmed · 13 rookie SPs_
 **Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
 - **16 games** scheduled
-- **24 best bets** scored: 0 DK · 0 PP · 12 NRFI · 0 SGP
+- **25 best bets** scored: 0 DK · 0 PP · 12 NRFI · 0 SGP
 - **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$38.38
 - **MC simulation:** EV +$105.17, 78% P(profit), p05 $-130.83 / p95 $322.89
 
@@ -35,9 +35,6 @@ _28% lineups confirmed · 13 rookie SPs_
    - Edge +17.0% looks big but only 0 settled props on this player — model unproven
 - **BOS @ OAK YRFI (1st-inning OVER 0.5)** (low):
    - Edge +16.6% looks big but only 0 settled props on this player — model unproven
-
-## Weather leans
-- **UNDER lean** (wind in + cold): MIL @ SFG
 
 ## Bullpens GASSED tonight
 Pittsburgh Pirates, Seattle Mariners, San Francisco Giants, St. Louis Cardinals, Toronto Blue Jays, Philadelphia Phillies, Chicago White Sox, New York Yankees
@@ -68,12 +65,12 @@ _Lean late-inning OVER on these games; fade their save situations._
 - Doosan Bears @ SSG Landers | P(home) 51.2% fair -105 | total 8 R
 - Kiwoom Heroes @ LG Twins | P(home) 74.8% fair -296 | total 9 R
 
-## LoL Esports -- 0 live, 15 upcoming
+## LoL Esports -- 1 live, 13 upcoming
+- [NLC] Lund Esports Organization vs Rich Gang BO3 | P(A) 50.4% fair -102/+102
 - [LCK Challengers] DNS Challengers vs NS Challengers BO3 | P(A) 53.3% fair -114/+114
 - [LCK Challengers] Gen.G Global Academy vs KRX Challengers BO3 | P(A) 46.7% fair +114/-114
-- [NLC] Bardicted to U vs Absolved BO3 | P(A) 50.0% fair -100/-100
-- [NLC] Lund Esports Organization vs Rich Gang BO3 | P(A) 50.4% fair -102/+102
 - [NLC] DMG Esports vs 2 Massive BO3 | P(A) 46.3% fair +116/-116
+- [NLC] Brod & Friends vs Sørby Esports BO3 | P(A) 50.4% fair -102/+102
 - **LoL POT:** Hanwha Life Esports ML vs Dplus KIA (LCK, BO3) (HIGH)
 
 ## Player Play of the Day -- across all sports (3516 candidates scanned)
