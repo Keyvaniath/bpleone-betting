@@ -1,9 +1,6 @@
-# 🌙 Tonight's Brief — 2026-07-28
+# 🌙 Tonight's Brief — 2026-07-29
 
 _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
-
-## 💪 STRONG (1 picks)
-- [MLB] TOR @ WSN WSN_ML · 71% / +21.4%
 
 ## 🔒 5 Daily Locks
 - **Choi Jeong** one_plus_tb (KBO) -- 73% / +39.8%
@@ -17,5 +14,5 @@ _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 - Joint 53% · fair +264 · edge +94.6%
 
 ---
-_Generated 2026-07-28T23:02:27_
+_Generated 2026-07-29T07:38:13_
 _Full breakdown: /tonight · Full history: /locks-of-day_

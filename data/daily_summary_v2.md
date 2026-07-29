@@ -1,8 +1,8 @@
-# EdgeStat Daily Summary — 2026-07-28
+# EdgeStat Daily Summary — 2026-07-29
 
 ## 🏥 Model Health: 72.5/100 [HEALTHY]
 - Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 100.0/100
+  - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 50.3/100
   - 🔴 Brier Trend: 44.2/100
   - 🟢 Pipeline Audit: 100.0/100
@@ -10,19 +10,16 @@
   - 🟡 Edge Count: 62.9/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.583)
-- **Total games on board:** 116
-- **Strong home favorites:** 4 | **Strong road dogs:** 2
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.582)
+- **Total games on board:** 112
+- **Strong home favorites:** 1 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
-1. **CLE @ CIN YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-2. **CHC @ STL YRFI (1st-inning OVER 0.5)** (78/100 ★★★★)
-3. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
-4. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
-5. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
-
-## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** TOR @ WSN WSN_ML -- 71% / +21.4% (score 2.5)
+1. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
+2. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
+3. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
+4. **LOL T1 vs kt Rolster ML @ -142** (76/100 ★★★★★)
+5. **LOL BILIBILI GAMING vs LGD GAMING ML @ -167** (76/100 ★★★★★)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -50,32 +47,30 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (2)
+## ⚡ Pre-Game HIGH Conviction (1)
 - [MLS] **MLS All-Stars** HOME (None L10) · model 68.5% fair -218
-- [WNBA] **New York Liberty** AWAY (2-1 L10) · model 62.7% fair -168
 
 ## 🔥/❄️ Heat / Cold Signals
-- Hot teams: **4** | Cold teams: **8** | Over-heavy: 0 | Under-heavy: 0
+- Hot teams: **5** | Cold teams: **10** | Over-heavy: 0 | Under-heavy: 0
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (52)
-- RESIDUAL_DIVERGENCE: **4**
+## ⚠️ Anomaly Detector (46)
 - STEAM_MOVE: **44**
-- COMPOUND_BULLPEN: **4**
-  - Connecticut Sun (WNBA): Connecticut Sun UNDERPERFORMING expected margin by 14.5pts in recent games -- model bias may persist
-  - Toronto Tempo (WNBA): Toronto Tempo UNDERPERFORMING expected margin by 14.0pts in recent games -- model bias may persist
-  - Indiana Fever (WNBA): Indiana Fever OUTPERFORMING expected margin by 11.2pts in recent games -- model bias may persist
-  - Portland Fire (WNBA): Portland Fire OUTPERFORMING expected margin by 9.7pts in recent games -- model bias may persist
+- COMPOUND_BULLPEN: **2**
   - DAL @ POR (WNBA): TOTAL steam since open: ML -2.1pp toward DAL; total +4 (OVER) (12 snapshots)
+  - CON @ WSH (WNBA): ML/TOTAL steam since open: ML +2.9pp toward WSH; total +4 (OVER) (13 snapshots)
+  - CLE @ CIN (MLB): ML steam since open: ML -15.7pp toward CLE (8 snapshots)
+  - MIN @ SEA (WNBA): TOTAL steam since open: ML -1.4pp toward MIN; total +3 (OVER) (9 snapshots)
+  - IND @ SEA (WNBA): ML/TOTAL steam since open: ML -2.8pp toward IND; total +3 (OVER) (13 snapshots)
 
-## 💰 Today's Portfolio (10 picks)
-- Total stake: **$335.0** (33.5% of $1000 bankroll)
-- Expected EV: **$-7.9**
-  - #1 [NRFI] $50 on CLE @ CIN YRFI (1st-inning OVER 0.5) (P=68%)
-  - #2 [NRFI] $35 on CHC @ STL YRFI (1st-inning OVER 0.5) (P=64%)
-  - #3 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
-  - #4 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
-  - #5 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
+## 💰 Today's Portfolio (11 picks)
+- Total stake: **$340.0** (34.0% of $1000 bankroll)
+- Expected EV: **$-16.34**
+  - #1 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
+  - #2 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
+  - #3 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
+  - #4 [NRFI] $35 on CLE @ CIN YRFI (1st-inning OVER 0.5) (P=61%)
+  - #5 [NRFI] $35 on BOS @ OAK YRFI (1st-inning OVER 0.5) (P=61%)
 
 ## 🎯 Convergence Picks (6 stacked games)
 - ELITE: **3** · HIGH: 0 · MED: 3
@@ -85,12 +80,12 @@
   - [MED] Connecticut Sun @ Washington Mystics : 2 signals (ANOMALY, ATS)
   - [MED] Portland Fire @ Las Vegas Aces : 2 signals (ANOMALY, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (13)
-- **Chase Burns** OVER 4.5 K (78%) fair -347
+## ⚾ Top MLB Pitcher K Plays (7)
 - **Gerrit Cole** OVER 4.5 K (78%) fair -347
 - **Gage Jump** OVER 4.5 K (78%) fair -347
-- **Troy Melton** OVER 4.5 K (76%) fair -321
-- **Christian Scott** OVER 4.5 K (71%) fair -251
+- **Justin Wrobleski** OVER 4.5 K (73%) fair -271
+- **Reid Detmers** OVER 4.5 K (71%) fair -251
+- **Taj Bradley** OVER 5.5 K (70%) fair -233
 
 ## 🏀 NBA Player Heat (2 HOT / 5 COLD)
   - 🔥 **Nique Clifford** (SAC): L5 19.4/5.8/4.8 vs season 13.9/5.3/4.2 [PTS +5.5]
@@ -106,17 +101,24 @@
   - [LEAN] **Navajo Stirling** (10-0-0) vs Jan Blachowicz -- fair -141
   - [LEAN] **Mateusz Rębecki** (20-5-0) vs Kyle Prepolec -- fair -139
 
-## 🔥 MLB Batter Heat (58 HOT / 48 COLD)
+## ⛳ Golf Player Heat (from Rocket Classic)
+  - 🔥 T1 **Brendon Todd** (USA): +0 total -- finished T1
+  - 🔥 T2 **Lanto Griffin** (USA): +0 total -- finished T2
+  - 🔥 T3 **Joel Dahmen** (USA): +0 total -- finished T3
+  - 🔥 T4 **Eric Cole** (USA): +0 total -- finished T4
+  - 🔥 T5 **Max McGreevy** (USA): +0 total -- finished T5
+
+## 🔥 MLB Batter Heat (49 HOT / 59 COLD)
   - 🔥 **Tyrone Taylor** (NYM): L14 .414 / season .250 (+164pts)
-  - 🔥 **Steven Kwan** (CLE): L14 .392 / season .247 (+145pts)
-  - 🔥 **Luis Rengifo** (SD): L14 .381 / season .237 (+144pts)
+  - 🔥 **Luis Rengifo** (SD): L14 .390 / season .234 (+156pts)
+  - 🔥 **Steven Kwan** (CLE): L14 .385 / season .245 (+140pts)
   - 🔥 **J.T. Realmuto** (PHI): L14 .364 / season .228 (+136pts)
-  - 🔥 **Tyler Tolbert** (KC): L14 .448 / season .313 (+135pts)
-  - ❄️ **Troy Johnston** (COL): L14 .105 / season .289 (-184pts) -- FADE props
-  - ❄️ **Brandon Marsh** (PHI): L14 .109 / season .283 (-174pts) -- FADE props
-  - ❄️ **Henry Bolte** (ATH): L14 .073 / season .243 (-170pts) -- FADE props
-  - ❄️ **Cam Smith** (HOU): L14 .057 / season .206 (-149pts) -- FADE props
+  - 🔥 **Manny Machado** (SD): L14 .345 / season .216 (+129pts)
+  - ❄️ **Brandon Marsh** (PHI): L14 .102 / season .280 (-178pts) -- FADE props
+  - ❄️ **Troy Johnston** (COL): L14 .128 / season .288 (-160pts) -- FADE props
   - ❄️ **Daniel Susac** (SF): L14 .100 / season .248 (-148pts) -- FADE props
+  - ❄️ **Cam Smith** (HOU): L14 .057 / season .204 (-147pts) -- FADE props
+  - ❄️ **Nick Kurtz** (ATH): L14 .130 / season .260 (-130pts) -- FADE props
 
 ## 📈 Streak Regression Alerts (5)
 - [WNBA] Minnesota Lynx on W4 L10 4-0 -- Minnesota Lynx on W4 -- no historical sample
@@ -133,6 +135,6 @@
   - ⚠️ batter_rbis (Brier Δ -0.0052)
 
 ## 🤖 Self-Training Status
-- **WNBA**: n=27 games · hit rate 66.7% · bias -1.0pp
+- **WNBA**: n=30 games · hit rate 63.3% · bias -1.4pp
 - **MLS**: n=35 games · hit rate 57.1% · bias -11.1pp [calibration applied]
-- **MLB**: n=153 games · hit rate 49.7% · bias +0.1pp
+- **MLB**: n=167 games · hit rate 50.3% · bias -0.1pp
