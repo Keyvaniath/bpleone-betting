@@ -1,17 +1,17 @@
 # EdgeStat Daily Summary — 2026-07-29
 
-## 🏥 Model Health: 70.9/100 [HEALTHY]
+## 🏥 Model Health: 73.1/100 [HEALTHY]
 - Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 99.7/100
+  - 🟢 Calibration Freshness: 100.0/100
   - 🔴 Hit Rate Trend: 51.1/100
   - 🔴 Brier Trend: 40.2/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 86.4/100
-  - 🔴 Edge Count: 54.3/100
+  - 🟢 Data Health: 95.5/100
+  - 🔴 Edge Count: 57.1/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.579)
-- **Total games on board:** 113
+- **Total games on board:** 112
 - **Strong home favorites:** 1 | **Strong road dogs:** 1
 
 ## 🎯 Top 5 Best Bets
@@ -20,9 +20,6 @@
 3. **TOR @ WSN YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 4. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
 5. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
-
-## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** ARI @ PIT PIT_ML -- 69% / +20.2% (score 2.5)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -57,15 +54,16 @@
 - Hot teams: **5** | Cold teams: **10** | Over-heavy: 0 | Under-heavy: 0
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (52)
-- STEAM_MOVE: **45**
+## ⚠️ Anomaly Detector (55)
+- RESIDUAL_DIVERGENCE: **2**
+- STEAM_MOVE: **46**
 - COMPOUND_BULLPEN: **4**
 - PEN_MISMATCH: **3**
+  - Dallas Wings (WNBA): Dallas Wings UNDERPERFORMING expected margin by 6.3pts in recent games -- model bias may persist
+  - Golden State Valkyries (WNBA): Golden State Valkyries UNDERPERFORMING expected margin by 10.0pts in recent games -- model bias may persist
   - DAL @ POR (WNBA): TOTAL steam since open: ML -2.1pp toward DAL; total +4 (OVER) (12 snapshots)
   - CON @ WSH (WNBA): ML/TOTAL steam since open: ML +2.9pp toward WSH; total +4 (OVER) (13 snapshots)
   - CLE @ CIN (MLB): ML steam since open: ML -15.7pp toward CLE (8 snapshots)
-  - MIN @ SEA (WNBA): TOTAL steam since open: ML -1.4pp toward MIN; total +3 (OVER) (9 snapshots)
-  - IND @ SEA (WNBA): ML/TOTAL steam since open: ML -2.8pp toward IND; total +3 (OVER) (13 snapshots)
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
@@ -76,13 +74,11 @@
   - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
-## 🎯 Convergence Picks (6 stacked games)
-- ELITE: **0** · HIGH: 4 · MED: 2
-  - [HIGH] Connecticut Sun @ Washington Mystics : 3 signals (HEAT_COLD, ATS, ATS)
-  - [HIGH] Toronto Tempo @ Minnesota Lynx : 3 signals (HEAT_COLD, HEAT_COLD, ATS)
-  - [HIGH] Portland Fire @ Las Vegas Aces : 3 signals (HEAT_COLD, ATS, ATS)
-  - [HIGH] New York Liberty @ Los Angeles Sparks : 3 signals (HEAT_COLD, HEAT_COLD, ATS)
-  - [MED] Indiana Fever @ Seattle Storm : 2 signals (HEAT_COLD, HEAT_COLD)
+## 🎯 Convergence Picks (3 stacked games)
+- ELITE: **1** · HIGH: 1 · MED: 1
+  - [ELITE] Atlanta Dream @ Dallas Wings : 4 signals (PREGAME, ANOMALY, ATS, ATS)
+  - [HIGH] Golden State Valkyries @ Phoenix Mercury : 3 signals (ANOMALY, ATS, ATS)
+  - [MED] Coventry City @ Arsenal : 2 signals (PREGAME, ATS)
 
 ## ⚾ Top MLB Pitcher K Plays (12)
 - **Joe Ryan** OVER 4.5 K (78%) fair -347
@@ -91,12 +87,10 @@
 - **Cam Schlittler** OVER 6.5 K (74%) fair -290
 - **Trey Yesavage** OVER 4.5 K (71%) fair -251
 
-## 🏀 NBA Player Heat (2 HOT / 5 COLD)
-  - 🔥 **Nique Clifford** (SAC): L5 19.4/5.8/4.8 vs season 13.9/5.3/4.2 [PTS +5.5]
-  - 🔥 **Zach Edey** (MEM): L5 15.6/13.8/1.4 vs season 13.6/11.1/1.1 [REB +2.7]
-  - ❄️ **Nickeil Alexander-Walker** (ATL): L5 13.0 vs season 21.3 [PTS -8.3] -- FADE OVER props
-  - ❄️ **Sandro Mamukelashvili** (LAL): L5 4.0 vs season 10.4 [PTS -6.4] -- FADE OVER props
-  - ❄️ **Jerami Grant** (MEM): L5 10.4 vs season 16.4 [PTS -6.0] -- FADE OVER props
+## 🏀 NBA Player Heat (2 HOT / 1 COLD)
+  - 🔥 **Scottie Barnes** (TOR): L5 24.4/7.6/9.6 vs season 18.6/5.8/8.8 [PTS +5.8]
+  - 🔥 **RJ Barrett** (TOR): L5 24.6/7.6/4.0 vs season 21.4/5.5/3.6 [REB +2.1]
+  - ❄️ **Brandon Ingram** (TOR): L5 12.0 vs season 19.1 [PTS -7.1] -- FADE OVER props
 
 ## 🥊 UFC Fight Matchups (UFC Fight Night: Medić vs. Rodriguez)
   - [FAVORITE] **Nina Milošević** (8-1-0) vs Hailey Cowan -- fair -198
@@ -112,17 +106,17 @@
   - 🔥 T4 **Eric Cole** (USA): +0 total -- finished T4
   - 🔥 T5 **Max McGreevy** (USA): +0 total -- finished T5
 
-## 🔥 MLB Batter Heat (49 HOT / 59 COLD)
-  - 🔥 **Tyrone Taylor** (NYM): L14 .414 / season .250 (+164pts)
-  - 🔥 **Luis Rengifo** (SD): L14 .390 / season .234 (+156pts)
+## 🔥 MLB Batter Heat (48 HOT / 56 COLD)
+  - 🔥 **Tyrone Taylor** (NYM): L14 .393 / season .245 (+148pts)
   - 🔥 **Steven Kwan** (CLE): L14 .385 / season .245 (+140pts)
-  - 🔥 **J.T. Realmuto** (PHI): L14 .364 / season .228 (+136pts)
-  - 🔥 **Manny Machado** (SD): L14 .345 / season .216 (+129pts)
+  - 🔥 **Drake Baldwin** (ATL): L14 .415 / season .279 (+136pts)
+  - 🔥 **Ildemaro Vargas** (AZ): L14 .410 / season .275 (+135pts)
+  - 🔥 **Jackson Holliday** (BAL): L14 .395 / season .260 (+135pts)
+  - ❄️ **Troy Johnston** (COL): L14 .103 / season .286 (-183pts) -- FADE props
   - ❄️ **Brandon Marsh** (PHI): L14 .102 / season .280 (-178pts) -- FADE props
-  - ❄️ **Troy Johnston** (COL): L14 .128 / season .288 (-160pts) -- FADE props
-  - ❄️ **Daniel Susac** (SF): L14 .100 / season .248 (-148pts) -- FADE props
   - ❄️ **Cam Smith** (HOU): L14 .057 / season .204 (-147pts) -- FADE props
   - ❄️ **Nick Kurtz** (ATH): L14 .130 / season .260 (-130pts) -- FADE props
+  - ❄️ **Henry Bolte** (ATH): L14 .125 / season .249 (-124pts) -- FADE props
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**

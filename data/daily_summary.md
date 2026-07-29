@@ -2,40 +2,32 @@
 
 **Model Confidence: 22.8/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
 
-_Pipeline health: **WARNING** (12/15 artifacts ok; 3 empty, 0 stale)._ 
+_Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
 
-_Generated at 2026-07-29T16:09:47 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-07-29T23:02:27 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
-**COL @ SDP - COL_ML**
-- Market: +139
-- Model probability: 70.6%
-- Raw edge: +68.81%
+**CHC @ STL - CHC_ML**
+- Market: +101
+- Model probability: 62.6%
+- Raw edge: +25.77%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
 
-## Full Slate (16 games)
+## Full Slate (8 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 12:10p ET | PHI @ MIA | loanDepot park | indoor | MIA_ML +34.3% |
-| 12:35p ET | ARI @ PIT | PNC Park | 80F 13mph | OVER_8.5 +34.88% |
-| 1:05p ET | TOR @ WSN | Nationals Park | 85F 13mph | OVER_9.5 +47.22% |
-| 1:10p ET | BAL @ DET | Comerica Park | 83F 13mph | OVER_7.5 +16.54% |
-| 1:10p ET | ATL @ NYM | Citi Field | 79F 7mph | OVER_7.0 +37.1% |
-| 7:10p ET | ATL @ NYM | Citi Field | 79F 7mph | ATL_ML +17.75% |
-| 3:45p ET | MIL @ SFG | Oracle Park | 70F 18mph | OVER_7.5 +11.84% |
-| 4:10p ET | COL @ SDP | Petco Park | 75F 7mph | COL_ML +68.81% |
-| 6:40p ET | TEX @ TBR | Tropicana Field | indoor | -- |
-| 7:10p ET | CLE @ CIN | Great American Ball Park | 72F 4mph | OVER_8.5 +15.59% |
-| 7:40p ET | KCR @ MIN | Target Field | 83F 4mph | OVER_9.0 +28.26% |
-| 7:40p ET | NYY @ CHW | Rate Field | 66F 4mph | -- |
-| 7:45p ET | CHC @ STL | Busch Stadium | 77F 4mph | CHC_ML +19.03% |
-| 9:38p ET | HOU @ LAA | Angel Stadium | 69F 5mph | HOU_ML +16.61% |
-| 9:40p ET | BOS @ OAK | Sutter Health Park | 76F 7mph | BOS_ML +25.95% |
-| 10:10p ET | SEA @ LAD | UNIQLO Field at Dodger Stadium | 67F 2mph | UNDER_9.5 +4.02% |
+| 7:10p ET | ATL @ NYM | Citi Field | 69F 5mph | ATL_ML +10.1% |
+| 7:10p ET | CLE @ CIN | Great American Ball Park | 70F 6mph | OVER_8.5 +17.47% |
+| 7:40p ET | KCR @ MIN | Target Field | 81F 5mph | MIN_ML +24.3% |
+| 7:40p ET | NYY @ CHW | Rate Field | 68F 6mph | NYY_ML +13.18% |
+| 7:45p ET | CHC @ STL | Busch Stadium | 75F 4mph | CHC_ML +25.77% |
+| 9:38p ET | HOU @ LAA | Angel Stadium | 69F 5mph | OVER_9.5 +17.25% |
+| 9:40p ET | BOS @ OAK | Sutter Health Park | 75F 7mph | BOS_ML +24.34% |
+| 10:10p ET | SEA @ LAD | UNIQLO Field at Dodger Stadium | 67F 3mph | OVER_8.5 +8.18% |
 
 ## Parlays - top 5
 
@@ -60,27 +52,20 @@ _Generated at 2026-07-29T16:09:47 UTC. Game lines source: **Bovada (fallback -- 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
 
-Cumulative graded plays: 6690. Wins: 2777. Hit rate: 41.5%.
+Cumulative graded plays: 6696. Wins: 2782. Hit rate: 41.5%.
 
 ## Auxiliary Markets (Model Fair Prices)
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| ARI @ PIT | 59.1% | -145 | 2.64 | -156 | +156 |
-| ATL @ NYM | 63.2% | -172 | 2.28 | +462 | -462 |
-| BAL @ DET | 60.1% | -151 | 2.72 | -109 | +109 |
-| BOS @ OAK | 37.4% | +168 | 5.04 | +558 | -558 |
-| CHC @ STL | 42.1% | +137 | 4.22 | +295 | -295 |
-| CLE @ CIN | 32.2% | +211 | 5.82 | +188 | -188 |
-| COL @ SDP | 48.2% | +108 | 3.68 | +435 | -435 |
-| HOU @ LAA | 22.8% | +338 | 7.6 | +329 | -329 |
-| KCR @ MIN | 54.4% | -120 | 3.12 | -155 | +155 |
-| MIL @ SFG | 38.5% | +160 | 5.35 | +308 | -308 |
-| NYY @ CHW | 42.0% | +138 | 4.21 | +250 | -250 |
-| PHI @ MIA | 53.2% | -114 | 3.15 | +152 | -152 |
-| SEA @ LAD | 47.8% | +109 | 3.75 | +120 | -120 |
-| TEX @ TBR | 37.0% | +170 | 4.97 | +142 | -142 |
-| TOR @ WSN | 33.5% | +198 | 5.42 | -103 | +103 |
+| ATL @ NYM | 63.2% | -172 | 2.35 | +467 | -467 |
+| BOS @ OAK | 37.4% | +168 | 5.0 | +557 | -557 |
+| CHC @ STL | 42.1% | +137 | 4.25 | +294 | -294 |
+| CLE @ CIN | 32.2% | +211 | 5.84 | +188 | -188 |
+| HOU @ LAA | 22.8% | +338 | 7.57 | +329 | -329 |
+| KCR @ MIN | 54.4% | -120 | 3.1 | -157 | +157 |
+| NYY @ CHW | 42.0% | +138 | 4.17 | +249 | -249 |
+| SEA @ LAD | 47.8% | +109 | 3.76 | +121 | -121 |
 
 ## Team Form (last 10)
 
@@ -113,4 +98,4 @@ _The model is suggesting 1 parameter tweak based on its own performance. Apply v
 ---
 
 _EdgeStat is a research desk. Bet responsibly. 21+. 1-800-GAMBLER._
-_Source: github.com/Keyvaniath/bpleone-betting - last settled 2026-07-28._
+_Source: github.com/Keyvaniath/bpleone-betting - last settled 2026-07-29._

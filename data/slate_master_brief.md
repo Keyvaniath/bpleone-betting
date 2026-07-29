@@ -1,21 +1,21 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-07-29T16:08:24 UTC_
+_Generated 2026-07-29T23:01:41 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -131
+- **Score:** -163
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 15
-- **Total FADES:** 191
+- **Total STRONG:** 8
+- **Total FADES:** 195
 
 ## Top 5 Curated Picks
-1. **MLB / CJ Abrams** (MLB_BATTER, score=135.88)
-   - Play: CJ Abrams (BATTER_STRONG)
+1. **MLB / Drake Baldwin** (MLB_BATTER, score=108.12)
+   - Play: Drake Baldwin (BATTER_STRONG)
    - Rationale: Cross-sport top pick (MLB_BATTER)
-2. **MLB / James Wood** (MLB_BATTER, score=124.06)
-   - Play: James Wood (BATTER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_BATTER)
+2. **MLB / AWAY** (MLB_TEAM, score=72.17)
+   - Play: AWAY (TEAM_STRONG)
+   - Rationale: Cross-sport top pick (MLB_TEAM)
 3. **WNBA / satou sabally** (WNBA_PLAYER, score=69.75)
    - Play: satou sabally (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (WNBA_PLAYER)
@@ -30,13 +30,13 @@ _Generated 2026-07-29T16:08:24 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **NHL** / marc-andre fleury (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / jake oettinger (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / logan thompson_2 (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / filip gustavsson (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / adin hill (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
+- **NBA** / TOR (TEAM_FADE)
+  - Fade angle: team total UNDER
+- **NBA** / MIA (TEAM_FADE)
+  - Fade angle: team total UNDER
+- **MLB** / Trey Yesavage (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Jesús Luzardo (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Eduardo Rodriguez (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
