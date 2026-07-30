@@ -1,12 +1,12 @@
 # Tonight's Slate Brief — 2026-07-30
 
-## Slate Quality: 60/100 (MEDIUM)
-_15% lineups confirmed · 9 rookie SPs_
+## Slate Quality: 67/100 (MEDIUM)
+_40% lineups confirmed · 9 rookie SPs_
 **Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
 - **10 games** scheduled
-- **22 best bets** scored: 0 DK · 0 PP · 10 NRFI · 0 SGP
+- **30 best bets** scored: 0 DK · 0 PP · 10 NRFI · 0 SGP
 - **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$37.27
 - **MC simulation:** EV +$72.02, 76% P(profit), p05 $-106.63 / p95 $238.63
 
@@ -24,7 +24,7 @@ _15% lineups confirmed · 9 rookie SPs_
    - Player prop quality score 1.1892
    - Elite player
 
-## ⚠️ Trap Warnings — 8 flagged
+## ⚠️ Trap Warnings — 6 flagged
 - **TEX @ TBR YRFI (1st-inning OVER 0.5)** (low):
    - Edge +30.5% looks big but only 0 settled props on this player — model unproven
 - **PIT @ CIN YRFI (1st-inning OVER 0.5)** (low):
@@ -44,8 +44,10 @@ _Lean late-inning OVER on these games; fade their save situations._
 - **YRFI** (1st-inning OVER): TEX @ TBR, PIT @ CIN, KCR @ MIN, WSN @ ATL, SEA @ LAD
 
 ## Golf -- Rocket Classic
-- **Leader:** Brendon Todd (E) at #1
-- **Field:** 147 players  |  Status: Scheduled
+- **Leader:** Peter Malnati (-9) at #1
+- **Field:** 147 players  |  Status: In Progress
+- **Play of the Tournament:** Mark Hubbard TOP5 @ +591 (model 14.5%, HIGH)
+   - P(top 5) 14.5% -- lower variance than outright but compelling line.
 
 ## NBA -- PRESEASON
 - Miami Heat @ Toronto Raptors (0-0 vs 0-0)  | P(home) 55.0% fair -122 | Scheduled
@@ -65,7 +67,7 @@ _Lean late-inning OVER on these games; fade their save situations._
 - Samsung Lions @ Lotte Giants | P(home) 42.1% fair +137 | total 9 R
 - **KBO POD:** KIA Tigers ML vs NC Dinos (KBO) (HIGH)
 
-## LoL Esports -- 0 live, 18 upcoming
+## LoL Esports -- 0 live, 21 upcoming
 - [LCK Challengers] T1 Esports Academy vs DK Challengers BO3 | P(A) 50.0% fair -100/-100
 - [LCK Challengers] HLE Challengers vs BNK FEARX Youth BO3 | P(A) 43.0% fair +133/-133
 - [NACL] NRG vs Winthrop University BO3 | P(A) 53.9% fair -117/+117
