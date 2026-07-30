@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-07-30T07:28:41",
-  "n_settled": 6604,
+  "generated_at": "2026-07-30T15:10:41",
+  "n_settled": 6605,
   "n_families_transformed": 26,
   "n_families_bucketed": 14,
-  "ece_before": 0.0841,
+  "ece_before": 0.0842,
   "ece_after": 0.0172,
   "ece_improvement": 0.0669,
-  "brier_before": 0.20976,
-  "brier_after": 0.1942,
+  "brier_before": 0.20977,
+  "brier_after": 0.19422,
   "method_note": "Per market family, a monotonic (isotonic) curve maps the model's predicted probability to the realized hit rate, learned from settled outcomes. Bucketed for well-sampled families (preserves ranking), a family-average Bayesian blend for mid-sample, identity below that. ECE = expected calibration error (lower = the displayed % is truer). This makes the model honest at the source; it does not create edge (that needs a market price).",
   "families": [
     {
@@ -668,19 +668,6 @@
       }
     },
     {
-      "family": "ml_away",
-      "n": 60,
-      "method": "family_avg",
-      "avg_pred_raw": 0.6117,
-      "avg_pred_calibrated": 0.6297,
-      "realized": 0.6333,
-      "ece_raw": 0.0216,
-      "ece_calibrated": 0.0036,
-      "transform": {
-        "realized": 0.6333
-      }
-    },
-    {
       "family": "mlb_run_0.5_under",
       "n": 38,
       "method": "family_avg",
@@ -691,6 +678,19 @@
       "ece_calibrated": 0.0038,
       "transform": {
         "realized": 0.6842
+      }
+    },
+    {
+      "family": "ml_away",
+      "n": 61,
+      "method": "family_avg",
+      "avg_pred_raw": 0.611,
+      "avg_pred_calibrated": 0.621,
+      "realized": 0.623,
+      "ece_raw": 0.0119,
+      "ece_calibrated": 0.0019,
+      "transform": {
+        "realized": 0.623
       }
     },
     {

@@ -1,31 +1,28 @@
 # EdgeStat Daily Summary — 2026-07-30
 
-## 🏥 Model Health: 71.2/100 [HEALTHY]
+## 🏥 Model Health: 80.8/100 [HEALTHY]
 - Solid health - some minor issues to monitor
   - 🟢 Calibration Freshness: 99.9/100
-  - 🔴 Hit Rate Trend: 51.1/100
-  - 🔴 Brier Trend: 40.2/100
+  - 🟢 Hit Rate Trend: 82.1/100
+  - 🔴 Brier Trend: 58.1/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 86.4/100
-  - 🔴 Edge Count: 57.1/100
+  - 🟢 Data Health: 95.5/100
+  - 🔴 Edge Count: 37.1/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.584)
-- **Total games on board:** 111
+- **Total games on board:** 110
 - **Strong home favorites:** 1 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
-1. **HOU @ LAA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-2. **CLE @ CIN YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-3. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
-4. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
-5. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
+1. **TEX @ TBR YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+2. **PIT @ CIN YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+3. **KCR @ MIN YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+4. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
+5. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
-- [WHALE] **[MLB]** KCR @ MIN ML_HOME -- 67% / +15.3% (score 3.5)
-
-## 📡 Sharp Action (Line Movement)
-- [STRONG] **KCR @ MIN** ml_home: 52.38% → 58.68% (+6.3pp)
+- [STRONG] **[MLB]** PIT @ CIN PIT_ML -- 65% / +21.2% (score 2.5)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -57,38 +54,38 @@
 - Hot teams: **7** | Cold teams: **10** | Over-heavy: 0 | Under-heavy: 0
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (46)
-- RESIDUAL_DIVERGENCE: **1**
+## ⚠️ Anomaly Detector (47)
 - STEAM_MOVE: **40**
-- COMPOUND_BULLPEN: **2**
-- PEN_MISMATCH: **3**
-  - Golden State Valkyries (WNBA): Golden State Valkyries UNDERPERFORMING expected margin by 10.0pts in recent games -- model bias may persist
+- COMPOUND_BULLPEN: **3**
+- PEN_MISMATCH: **4**
   - DAL @ POR (WNBA): TOTAL steam since open: ML -2.1pp toward DAL; total +4 (OVER) (12 snapshots)
   - CON @ WSH (WNBA): ML/TOTAL steam since open: ML +2.9pp toward WSH; total +4 (OVER) (13 snapshots)
   - CLE @ CIN (MLB): ML steam since open: ML -15.7pp toward CLE (8 snapshots)
   - MIN @ SEA (WNBA): TOTAL steam since open: ML -1.4pp toward MIN; total +3 (OVER) (9 snapshots)
+  - IND @ SEA (WNBA): ML/TOTAL steam since open: ML -2.8pp toward IND; total +3 (OVER) (13 snapshots)
 
 ## 💰 Today's Portfolio (9 picks)
-- Total stake: **$315.0** (31.5% of $1000 bankroll)
-- Expected EV: **$-38.3**
-  - #1 [NRFI] $50 on HOU @ LAA YRFI (1st-inning OVER 0.5) (P=77%)
-  - #2 [NRFI] $50 on CLE @ CIN YRFI (1st-inning OVER 0.5) (P=68%)
-  - #3 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
-  - #4 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
-  - #5 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
+- Total stake: **$330.0** (33.0% of $1000 bankroll)
+- Expected EV: **$-18.23**
+  - #1 [NRFI] $50 on TEX @ TBR YRFI (1st-inning OVER 0.5) (P=76%)
+  - #2 [NRFI] $50 on PIT @ CIN YRFI (1st-inning OVER 0.5) (P=67%)
+  - #3 [NRFI] $50 on KCR @ MIN YRFI (1st-inning OVER 0.5) (P=67%)
+  - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
+  - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
-## 🎯 Convergence Picks (3 stacked games)
-- ELITE: **1** · HIGH: 1 · MED: 1
-  - [ELITE] Atlanta Dream @ Dallas Wings : 4 signals (PREGAME, ANOMALY, ATS, ATS)
-  - [HIGH] Golden State Valkyries @ Phoenix Mercury : 3 signals (ANOMALY, ATS, ATS)
+## 🎯 Convergence Picks (4 stacked games)
+- ELITE: **0** · HIGH: 1 · MED: 3
+  - [HIGH] Golden State Valkyries @ Phoenix Mercury : 3 signals (HEAT_COLD, ATS, ATS)
+  - [MED] Atlanta Dream @ Dallas Wings : 2 signals (HEAT_COLD, ATS)
+  - [MED] Toronto FC @ New York City FC : 2 signals (HEAT_COLD, ATS)
   - [MED] Coventry City @ Arsenal : 2 signals (PREGAME, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (5)
-- **Joe Ryan** OVER 4.5 K (78%) fair -347
-- **Cam Schlittler** OVER 6.5 K (74%) fair -290
-- **Christian Scott** OVER 4.5 K (71%) fair -251
-- **Brady Singer** OVER 4.5 K (68%) fair -213
-- **Dustin May** OVER 4.5 K (59%) fair -141
+## ⚾ Top MLB Pitcher K Plays (7)
+- **Nolan McLean** OVER 5.5 K (76%) fair -314
+- **Sonny Gray** OVER 4.5 K (73%) fair -271
+- **Ryan Weathers** OVER 4.5 K (67%) fair -207
+- **Bryan Woo** OVER 4.5 K (67%) fair -204
+- **Noah Cameron** OVER 4.5 K (61%) fair -156
 
 ## 🏀 NBA Player Heat (2 HOT / 1 COLD)
   - 🔥 **Scottie Barnes** (TOR): L5 24.4/7.6/9.6 vs season 18.6/5.8/8.8 [PTS +5.8]
@@ -98,9 +95,9 @@
 ## 🥊 UFC Fight Matchups (UFC Fight Night: Medić vs. Rodriguez)
   - [FAVORITE] **Nina Milošević** (8-1-0) vs Hailey Cowan -- fair -198
   - [LEAN] **Vlasto Čepo** (14-3-0) vs Gilbert Urbina -- fair -184
+  - [LEAN] **Borislav Nikolic** (16-2-0) vs Mark Vologdin -- fair -167
   - [LEAN] **Michael Oliveira** (9-0-0) vs Oban Elliott -- fair -166
   - [LEAN] **Marina Spasić** (7-1-0) vs Stephanie Luciano -- fair -150
-  - [LEAN] **Navajo Stirling** (10-0-0) vs Jan Blachowicz -- fair -141
 
 ## ⛳ Golf Player Heat (from Rocket Classic)
   - 🔥 T1 **Brendon Todd** (USA): +0 total -- finished T1
@@ -120,6 +117,9 @@
   - ❄️ **Tristan Peters** (CWS): L14 .109 / season .272 (-163pts) -- FADE props
   - ❄️ **Nick Kurtz** (ATH): L14 .133 / season .260 (-127pts) -- FADE props
   - ❄️ **Cam Smith** (HOU): L14 .083 / season .204 (-121pts) -- FADE props
+
+## 📈 Streak Regression Alerts (1)
+- [MLS] Toronto FC on L3 L10 0-3 -- Toronto FC on L3 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**

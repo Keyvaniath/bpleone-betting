@@ -1,13 +1,13 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-07-30T07:28:24 UTC_
+_Generated 2026-07-30T15:09:54 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -195
+- **Score:** -188
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
 - **Total STRONG:** 0
-- **Total FADES:** 195
+- **Total FADES:** 188
 
 ## Slate ROI Projection
 - **Picks:** 0
@@ -16,13 +16,13 @@ _Generated 2026-07-30T07:28:24 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **NBA** / TOR (TEAM_FADE)
-  - Fade angle: team total UNDER
 - **NBA** / MIA (TEAM_FADE)
   - Fade angle: team total UNDER
-- **MLB** / Christian Scott (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **MLB** / Eric Lauer (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **MLB** / Davis Martin (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **NBA** / TOR (TEAM_FADE)
+  - Fade angle: team total UNDER
+- **NHL** / connor hellebuyck (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / jake oettinger (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / kevin lankinen (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
