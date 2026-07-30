@@ -305,6 +305,8 @@ fetch('data/alpha_pick_record.json?t=' + Date.now()).then(function (r) { return 
   <pre id="twText" style="margin:0;padding:0 18px 12px;white-space:pre-wrap;font-family:inherit;font-size:13px;line-height:1.55;color:var(--text,#dfe6f2);"></pre>
   <div style="display:flex;gap:10px;padding:0 18px 16px;flex-wrap:wrap;">
     <a id="twPost" href="#" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;background:#1d9bf0;color:#fff;font-weight:600;font-size:13px;padding:9px 16px;border-radius:999px;text-decoration:none;">𝕏&nbsp; Post to X</a>
+    <a id="bskyPost" href="#" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;background:#0085ff;color:#fff;font-weight:600;font-size:13px;padding:9px 16px;border-radius:999px;text-decoration:none;">🦋 Bluesky</a>
+    <a id="threadsPost" href="#" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;background:#000;border:1px solid rgba(255,255,255,.25);color:#fff;font-weight:600;font-size:13px;padding:9px 16px;border-radius:999px;text-decoration:none;">@ Threads</a>
     <button id="twCopy" style="background:rgba(255,255,255,.06);color:var(--text,#dfe6f2);border:1px solid rgba(255,255,255,.14);font-size:13px;padding:9px 16px;border-radius:999px;cursor:pointer;">Copy text</button>
   </div>
   <details id="wkThreadWrap" style="display:none;border-top:1px solid rgba(255,255,255,.06);padding:10px 18px 16px;">
@@ -319,6 +321,10 @@ fetch('data/alpha_tweet.json?t=' + Date.now()).then(function (r) { return r.json
   document.getElementById('twText').textContent = d.tweet;
   document.getElementById('twChars').textContent = d.char_count + '/280 · ' + (d.date || '');
   document.getElementById('twPost').href = d.intent_url || ('https://twitter.com/intent/tweet?text=' + encodeURIComponent(d.tweet));
+  // Same text, every platform -- the composer is platform-agnostic by design.
+  var enc = encodeURIComponent(d.tweet);
+  document.getElementById('bskyPost').href = 'https://bsky.app/intent/compose?text=' + enc;
+  document.getElementById('threadsPost').href = 'https://www.threads.net/intent/post?text=' + enc;
   var btn = document.getElementById('twCopy');
   btn.addEventListener('click', function () {
     navigator.clipboard.writeText(d.tweet).then(function () {
