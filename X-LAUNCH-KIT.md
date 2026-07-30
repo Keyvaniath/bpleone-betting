@@ -22,6 +22,47 @@
 > alpha-pick.html beside the 𝕏 one — same text, same one tap). Everything below
 > transfers word-for-word once X is back.
 
+
+---
+
+## 0. BLUESKY — the channel we launch NOW (X is on ice)
+
+Same brand, same receipts, zero relationship to X's enforcement. This is where
+the daily broadcast starts while the appeal is pending.
+
+**Handle:** `edgestat` → **@edgestat.bsky.social** (fallback `edgestatbet`)
+**Display name:** `EdgeStat`
+**Avatar / banner:** the same `assets/x-avatar.png` + `assets/x-banner.png`
+(Bluesky uses a 3:1 banner — the 1500×500 file is exactly right).
+
+**Bio (Bluesky allows 256 chars):**
+> Quantitative sports-betting research.
+> One Alpha Pick a day — every result graded on the box score and posted, win or lose.
+> Receipts, not hype: betting.bpleone.com
+> 21+ · not betting advice
+
+**Pinned first post:**
+> Every morning: ONE pick — the highest-EV play our model finds.
+>
+> Every result graded on the box score and posted the next day, win or lose.
+> No deletes. No "DM for picks." The full ledger is public.
+>
+> betting.bpleone.com/track-record
+>
+> 21+ · not betting advice
+
+**Daily flow:** betting.bpleone.com/alpha-pick → "📣 Share today's pick" →
+**🦋 Bluesky** → composer opens pre-filled → you press post. Same weekly
+receipts thread works too (post #1, then paste the replies).
+
+**Growth on Bluesky:** the discovery model rewards feeds + replies. Join/post
+into the sports & finance custom feeds, reply substantively on big betting
+posts (a number they don't have), and pin the announcement. Same rules as
+below: no "locks", no guarantees, losses always post.
+
+> Threads is the second option but requires an Instagram account — do Bluesky
+> first, add Threads only if you already have IG.
+
 ---
 
 ## 1. Account setup (5 minutes, you)
