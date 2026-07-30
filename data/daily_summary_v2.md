@@ -1,13 +1,13 @@
 # EdgeStat Daily Summary — 2026-07-30
 
-## 🏥 Model Health: 75.4/100 [HEALTHY]
+## 🏥 Model Health: 79.6/100 [HEALTHY]
 - Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 99.5/100
+  - 🟢 Calibration Freshness: 100.0/100
   - 🔴 Hit Rate Trend: 58.8/100
   - 🔴 Brier Trend: 58.1/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 86.4/100
-  - 🔴 Edge Count: 48.6/100
+  - 🟢 Data Health: 95.5/100
+  - 🟡 Edge Count: 71.4/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.581)
@@ -22,7 +22,10 @@
 5. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** PIT @ CIN PIT_ML -- 65% / +21.6% (score 2.5)
+- [STRONG] **[MLB]** PIT @ CIN PIT_ML -- 65% / +21.2% (score 2.5)
+
+## 📡 Sharp Action (Line Movement)
+- [STRONG] **KCR @ MIN** over_9.0: 51.22% → 57.45% (+6.2pp)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -57,15 +60,16 @@
 - Hot teams: **7** | Cold teams: **10** | Over-heavy: 0 | Under-heavy: 0
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (46)
-- STEAM_MOVE: **40**
+## ⚠️ Anomaly Detector (53)
+- RESIDUAL_DIVERGENCE: **2**
+- STEAM_MOVE: **45**
 - COMPOUND_BULLPEN: **4**
 - PEN_MISMATCH: **2**
+  - Toronto Tempo (WNBA): Toronto Tempo UNDERPERFORMING expected margin by 7.3pts in recent games -- model bias may persist
+  - Connecticut Sun (WNBA): Connecticut Sun UNDERPERFORMING expected margin by 11.1pts in recent games -- model bias may persist
   - DAL @ POR (WNBA): TOTAL steam since open: ML -2.1pp toward DAL; total +4 (OVER) (12 snapshots)
   - CON @ WSH (WNBA): ML/TOTAL steam since open: ML +2.9pp toward WSH; total +4 (OVER) (13 snapshots)
   - CLE @ CIN (MLB): ML steam since open: ML -15.7pp toward CLE (8 snapshots)
-  - MIN @ SEA (WNBA): TOTAL steam since open: ML -1.4pp toward MIN; total +3 (OVER) (9 snapshots)
-  - IND @ SEA (WNBA): ML/TOTAL steam since open: ML -2.8pp toward IND; total +3 (OVER) (13 snapshots)
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
@@ -76,10 +80,11 @@
   - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
-## 🎯 Convergence Picks (4 stacked games)
-- ELITE: **0** · HIGH: 1 · MED: 3
-  - [HIGH] Golden State Valkyries @ Phoenix Mercury : 3 signals (HEAT_COLD, ATS, ATS)
-  - [MED] Atlanta Dream @ Dallas Wings : 2 signals (HEAT_COLD, ATS)
+## 🎯 Convergence Picks (5 stacked games)
+- ELITE: **2** · HIGH: 1 · MED: 2
+  - [ELITE] Minnesota Lynx @ Toronto Tempo : 5 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ATS)
+  - [ELITE] Connecticut Sun @ Chicago Sky : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
+  - [HIGH] New York Liberty @ Las Vegas Aces : 3 signals (PREGAME, HEAT_COLD, ATS)
   - [MED] Toronto FC @ New York City FC : 2 signals (HEAT_COLD, ATS)
   - [MED] Coventry City @ Arsenal : 2 signals (PREGAME, ATS)
 
@@ -104,24 +109,28 @@
 
 ## ⛳ Golf Player Heat (from Rocket Classic)
   - 🔥 T1 **Peter Malnati** (USA): -9 total -- finished T1
-  - 🔥 T2 **Michael Kim** (USA): -5 total -- finished T2
-  - 🔥 T3 **Keegan Bradley** (USA): -2 total -- finished T3
-  - 🔥 T4 **Emiliano Grillo** (Argentina): -4 total -- finished T4
-  - 🔥 T5 **Chris Kirk** (USA): -4 total -- finished T5
+  - 🔥 T2 **Rickie Fowler** (USA): -8 total -- finished T2
+  - 🔥 T3 **Keegan Bradley** (USA): -5 total -- finished T3
+  - 🔥 T4 **Michael Kim** (USA): -5 total -- finished T4
+  - 🔥 T5 **Chris Kirk** (USA): -5 total -- finished T5
 
-## 🔥 MLB Batter Heat (47 HOT / 55 COLD)
+## 🔥 MLB Batter Heat (47 HOT / 54 COLD)
   - 🔥 **Jeff McNeil** (ATH): L14 .395 / season .248 (+147pts)
   - 🔥 **Drake Baldwin** (ATL): L14 .426 / season .282 (+144pts)
   - 🔥 **Steven Kwan** (CLE): L14 .389 / season .247 (+142pts)
+  - 🔥 **Nico Hoerner** (CHC): L14 .397 / season .257 (+140pts)
   - 🔥 **Ildemaro Vargas** (AZ): L14 .410 / season .275 (+135pts)
-  - 🔥 **Jackson Holliday** (BAL): L14 .395 / season .260 (+135pts)
   - ❄️ **Troy Johnston** (COL): L14 .103 / season .286 (-183pts) -- FADE props
   - ❄️ **Brandon Marsh** (PHI): L14 .102 / season .280 (-178pts) -- FADE props
-  - ❄️ **Tristan Peters** (CWS): L14 .109 / season .272 (-163pts) -- FADE props
+  - ❄️ **Tristan Peters** (CWS): L14 .109 / season .271 (-162pts) -- FADE props
   - ❄️ **Nick Kurtz** (ATH): L14 .133 / season .260 (-127pts) -- FADE props
   - ❄️ **Cam Smith** (HOU): L14 .083 / season .204 (-121pts) -- FADE props
 
-## 📈 Streak Regression Alerts (1)
+## 📈 Streak Regression Alerts (5)
+- [WNBA] Toronto Tempo on L3 L10 0-3 -- Toronto Tempo on L3 -- no historical sample
+- [WNBA] Minnesota Lynx on W4 L10 4-0 -- Minnesota Lynx on W4 -- no historical sample
+- [WNBA] Connecticut Sun on L3 L10 1-3 -- Connecticut Sun on L3 -- no historical sample
+- [WNBA] New York Liberty on W3 L10 3-1 -- New York Liberty on W3 -- no historical sample
 - [MLS] Toronto FC on L3 L10 0-3 -- Toronto FC on L3 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)

@@ -4,32 +4,27 @@
 
 _Pipeline health: **WARNING** (12/15 artifacts ok; 3 empty, 0 stale)._ 
 
-_Generated at 2026-07-30T16:01:56 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-07-30T23:07:11 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
-**CHC @ STL - OVER_8.0**
+**PIT @ CIN - OVER_7.5**
 - Market: -110
-- Model probability: 77.2%
-- Raw edge: +47.43%
+- Model probability: 88.5%
+- Raw edge: +68.96%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
 
-## Full Slate (10 games)
+## Full Slate (5 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 12:10p ET | TEX @ TBR | Tropicana Field | indoor | OVER_8.0 +3.24% |
-| 1:40p ET | KCR @ MIN | Target Field | 90F 10mph | OVER_9.0 +45.64% |
-| 2:10p ET | NYY @ CHW | Rate Field | 78F 8mph | OVER_7.5 +34.29% |
-| 2:15p ET | CHC @ STL | Busch Stadium | 91F 6mph | OVER_8.0 +47.43% |
-| 7:10p ET | PIT @ CIN | Great American Ball Park | 75F 4mph | PIT_ML +35.39% |
-| 7:10p ET | MIA @ NYM | Citi Field | 69F 4mph | MIA_ML +15.39% |
-| 7:15p ET | WSN @ ATL | Truist Park | 75F 4mph | WSN_ML +40.63% |
-| 9:40p ET | BOS @ OAK | Sutter Health Park | 80F 7mph | OVER_10.0 +21.14% |
-| 9:40p ET | SFG @ SDP | Petco Park | 69F 4mph | SFG_ML +43.8% |
-| 10:10p ET | SEA @ LAD | UNIQLO Field at Dodger Stadium | 67F 1mph | UNDER_9.0 +14.37% |
+| 7:10p ET | PIT @ CIN | Great American Ball Park | 74F 5mph | OVER_7.5 +68.96% |
+| 7:15p ET | WSN @ ATL | Truist Park | 75F 4mph | OVER_9.0 +48.68% |
+| 9:40p ET | BOS @ OAK | Sutter Health Park | 74F 6mph | OVER_10.0 +14.47% |
+| 9:40p ET | SFG @ SDP | Petco Park | 68F 4mph | SFG_ML +51.25% |
+| 10:10p ET | SEA @ LAD | UNIQLO Field at Dodger Stadium | 67F 2mph | -- |
 
 ## Parlays - top 5
 
@@ -59,22 +54,17 @@ _Generated at 2026-07-30T16:01:56 UTC. Game lines source: **Bovada (fallback -- 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
 
-Cumulative graded plays: 6707. Wins: 2788. Hit rate: 41.6%.
+Cumulative graded plays: 6709. Wins: 2790. Hit rate: 41.6%.
 
 ## Auxiliary Markets (Model Fair Prices)
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| BOS @ OAK | 45.5% | +120 | 4.07 | +428 | -428 |
-| CHC @ STL | 47.8% | +109 | 3.58 | +221 | -221 |
-| KCR @ MIN | 33.3% | +200 | 5.66 | +143 | -143 |
-| MIA @ NYM | 60.4% | -153 | 2.5 | +226 | -226 |
-| NYY @ CHW | 47.9% | +109 | 3.61 | +179 | -179 |
-| PIT @ CIN | 32.6% | +206 | 5.72 | +450 | -450 |
-| SEA @ LAD | 41.7% | +140 | 4.39 | +114 | -114 |
-| SFG @ SDP | 47.2% | +112 | 3.83 | +292 | -292 |
-| TEX @ TBR | 23.5% | +325 | 7.23 | -114 | +114 |
-| WSN @ ATL | 36.4% | +175 | 4.98 | +251 | -251 |
+| BOS @ OAK | 45.5% | +120 | 4.0 | +425 | -425 |
+| PIT @ CIN | 32.6% | +206 | 5.72 | +451 | -451 |
+| SEA @ LAD | 41.7% | +140 | 4.43 | +114 | -114 |
+| SFG @ SDP | 47.2% | +112 | 3.7 | +292 | -292 |
+| WSN @ ATL | 36.4% | +175 | 5.01 | +251 | -251 |
 
 ## Team Form (last 10)
 
