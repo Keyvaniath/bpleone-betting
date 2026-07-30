@@ -1,5 +1,18 @@
 # EdgeStat on X — Launch Kit
 
+> ## ⚠️ STATUS 2026-07-14: X IS ON ICE — APPEAL PENDING
+> @Bpleonresearch is suspended ("permanently read-only... you won't be able to
+> create new accounts"). Creating @EdgeStatBet while suspended = ban evasion —
+> X links accounts by phone/device and would kill the new account AND hurt the
+> appeal. **Do NOT create the X account until the appeal resolves.**
+> Appeal: drafted honestly (owns the tool-assisted reply burst, commits to
+> manual-only posting) and loaded at help.x.com/en/forms/account-access/appeals
+> — Brandon submits. **Durable rule going forward: every post on every platform
+> is written by the machine, SENT by Brandon. No automation, ever.**
+> Meanwhile the daily broadcast runs on **Bluesky + Threads** (buttons live on
+> alpha-pick.html beside the 𝕏 one — same text, same one tap). Everything below
+> transfers word-for-word once X is back.
+
 Everything needed to stand up the betting-Twitter channel and start broadcasting
 the daily Alpha Pick. **Account creation is your 5-minute manual step** (I can't
 create accounts); after that the machine runs itself and posting is one tap a day.
