@@ -1,23 +1,23 @@
 {
-  "generated_at": "2026-07-30T04:18:02",
+  "generated_at": "2026-07-30T06:45:16",
   "stake_assumption": "1u flat per pick",
   "total_picks": 10000,
-  "n_settled": 6701,
-  "n_pending": 491,
+  "n_settled": 6703,
+  "n_pending": 489,
   "n_void": 2808,
-  "wins": 2783,
+  "wins": 2785,
   "losses": 3911,
   "pushes": 7,
-  "hit_rate": 0.4157,
-  "net_units": -1028.955,
-  "roi_pct": -15.37,
+  "hit_rate": 0.4159,
+  "net_units": -1027.886,
+  "roi_pct": -15.35,
   "n_calibrated_picks": 9420,
   "calibrated_reliability": {
-    "n": 6599,
-    "ece_raw": 0.084,
-    "ece_calibrated": 0.0169,
-    "brier_raw": 0.20969,
-    "brier_calibrated": 0.19416,
+    "n": 6601,
+    "ece_raw": 0.0838,
+    "ece_calibrated": 0.0168,
+    "brier_raw": 0.20966,
+    "brier_calibrated": 0.19411,
     "note": "In-sample over the settled ledger (the isotonic transform is fit on these same outcomes); held-out 70/30 validation is in recalibration_map.json. p_predicted = raw model prob (kept untouched for the learning loop); p_calibrated = honest prob stamped per pick. Lower ECE/Brier on the calibrated column = the displayed % is truer."
   },
   "curated": {
@@ -41,11 +41,11 @@
     "definition": "Featured/recommended plays only -- Lock of the Day, Top 25, Whale, Sharp, Consensus (hit), Under Alerts, POD. Excludes the experimental prop feeds, which are tracked to train the model, not bet."
   },
   "n_added_this_run": 0,
-  "n_newly_settled_this_run": 0,
+  "n_newly_settled_this_run": 2,
   "n_resettled_this_run": 0,
   "n_voided_this_run": 0,
   "n_duplicates_collapsed_this_run": 0,
-  "n_duplicate_adds_blocked_this_run": 181,
+  "n_duplicate_adds_blocked_this_run": 180,
   "n_reconciled_settled_voids": 0,
   "n_bootstrapped_from_locks_history": 0,
   "by_source": {
@@ -1301,11 +1301,11 @@
       "roi_pct": 50.9
     },
     "wnba_alts_home_total_over_73.1": {
-      "n": 1,
-      "wins": 1,
+      "n": 2,
+      "wins": 2,
       "losses": 0,
       "pushes": 0,
-      "net_units": 0.535,
+      "net_units": 1.07,
       "hit_rate": 1.0,
       "roi_pct": 53.5
     },
@@ -1517,6 +1517,15 @@
       "roi_pct": 53.5
     },
     "wnba_alts_home_total_over_78.8": {
+      "n": 1,
+      "wins": 1,
+      "losses": 0,
+      "pushes": 0,
+      "net_units": 0.535,
+      "hit_rate": 1.0,
+      "roi_pct": 53.5
+    },
+    "wnba_alts_home_total_over_78.6": {
       "n": 1,
       "wins": 1,
       "losses": 0,
@@ -1736,12 +1745,12 @@
       "hit_rate": 0.6842
     },
     "home_total_over": {
-      "n": 115,
-      "wins": 93,
+      "n": 117,
+      "wins": 95,
       "losses": 22,
       "pushes": 0,
-      "net_units": 27.755,
-      "hit_rate": 0.8087
+      "net_units": 28.825,
+      "hit_rate": 0.812
     },
     "3pm_under": {
       "n": 48,
@@ -2186,12 +2195,12 @@
       "hit_rate": 0.6842
     },
     "home_total_over": {
-      "n": 115,
-      "wins": 93,
+      "n": 117,
+      "wins": 95,
       "losses": 22,
       "pushes": 0,
-      "net_units": 27.755,
-      "hit_rate": 0.8087
+      "net_units": 28.825,
+      "hit_rate": 0.812
     },
     "3pm_under": {
       "n": 48,
@@ -2478,15 +2487,15 @@
     },
     "WNBA": {
       "n": 447,
-      "settled": 261,
-      "wins": 193,
+      "settled": 263,
+      "wins": 195,
       "losses": 68,
       "pushes": 0,
-      "pending": 46,
+      "pending": 44,
       "void": 140,
-      "net_units": 30.77,
-      "hit_rate": 0.7395,
-      "roi_pct": 11.79,
+      "net_units": 31.84,
+      "hit_rate": 0.7414,
+      "roi_pct": 12.11,
       "markets": 4
     },
     "EPL": {
@@ -2582,10 +2591,10 @@
     }
   },
   "last_7_days": {
-    "wins": 94,
+    "wins": 96,
     "losses": 67,
-    "net_units": 6.842,
-    "hit_rate": 0.5839
+    "net_units": 7.911,
+    "hit_rate": 0.589
   },
   "note": "Unified pick ledger -- records every pick the model surfaces (top_25 board, whales, consensus, unders, sharp action, locks, POD) and settles each against actual outcomes. Per-source W-L feeds back into calibration so the model learns which modules are reliable. THIS is the training signal."
 }
