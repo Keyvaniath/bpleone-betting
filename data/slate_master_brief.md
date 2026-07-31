@@ -1,21 +1,27 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-07-31T07:44:32 UTC_
+_Generated 2026-07-31T15:18:31 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -76
+- **Score:** -61
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 11
-- **Total FADES:** 120
+- **Total STRONG:** 17
+- **Total FADES:** 129
 
 ## Top 5 Curated Picks
-1. **GOLF / Peter Malnati** (GOLF_PLAYER, score=179.0)
+1. **GOLF / Peter Malnati** (GOLF_PLAYER, score=180.43)
    - Play: Peter Malnati (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Rickie Fowler** (GOLF_PLAYER, score=113.5)
+2. **GOLF / Rickie Fowler** (GOLF_PLAYER, score=114.71)
    - Play: Rickie Fowler (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
+3. **MLB / Shane Drohan** (MLB_PITCHER, score=59.67)
+   - Play: Shane Drohan (PITCHER_STRONG)
+   - Rationale: Cross-sport top pick (MLB_PITCHER)
+4. **MLB / Kyle Leahy** (MLB_PITCHER, score=59.33)
+   - Play: Kyle Leahy (PITCHER_STRONG)
+   - Rationale: Cross-sport top pick (MLB_PITCHER)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
@@ -34,9 +40,9 @@ _Generated 2026-07-31T07:44:32 UTC_
   - Fade angle: team total UNDER
 - **NBA** / MIA (TEAM_FADE)
   - Fade angle: team total UNDER
-- **MLB** / Sonny Gray (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **NHL** / jake oettinger (GOALIE_FADE)
+- **NHL** / kevin lankinen (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / calvin pickard (GOALIE_FADE)
+- **NHL** / joseph woll (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / casey desmith (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO

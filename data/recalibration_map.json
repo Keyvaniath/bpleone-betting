@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-07-31T07:44:51",
-  "n_settled": 6623,
+  "generated_at": "2026-07-31T15:18:48",
+  "n_settled": 6625,
   "n_families_transformed": 26,
   "n_families_bucketed": 14,
-  "ece_before": 0.0846,
-  "ece_after": 0.0174,
-  "ece_improvement": 0.0672,
-  "brier_before": 0.20992,
-  "brier_after": 0.19437,
+  "ece_before": 0.0847,
+  "ece_after": 0.0175,
+  "ece_improvement": 0.0673,
+  "brier_before": 0.20998,
+  "brier_after": 0.19441,
   "method_note": "Per market family, a monotonic (isotonic) curve maps the model's predicted probability to the realized hit rate, learned from settled outcomes. Bucketed for well-sampled families (preserves ranking), a family-average Bayesian blend for mid-sample, identity below that. ECE = expected calibration error (lower = the displayed % is truer). This makes the model honest at the source; it does not create edge (that needs a market price).",
   "families": [
     {
@@ -384,6 +384,40 @@
       }
     },
     {
+      "family": "over",
+      "n": 141,
+      "method": "bucketed",
+      "avg_pred_raw": 0.6327,
+      "avg_pred_calibrated": 0.5754,
+      "realized": 0.5603,
+      "ece_raw": 0.0965,
+      "ece_calibrated": 0.0206,
+      "transform": {
+        "anchors": [
+          [
+            0.5772,
+            0.5265
+          ],
+          [
+            0.5994,
+            0.5265
+          ],
+          [
+            0.6118,
+            0.5449
+          ],
+          [
+            0.6235,
+            0.6121
+          ],
+          [
+            0.7522,
+            0.7007
+          ]
+        ]
+      }
+    },
+    {
       "family": "3pm_under",
       "n": 49,
       "method": "family_avg",
@@ -497,40 +531,6 @@
           [
             0.6535,
             0.5361
-          ]
-        ]
-      }
-    },
-    {
-      "family": "over",
-      "n": 139,
-      "method": "bucketed",
-      "avg_pred_raw": 0.6329,
-      "avg_pred_calibrated": 0.5813,
-      "realized": 0.5683,
-      "ece_raw": 0.0645,
-      "ece_calibrated": 0.0171,
-      "transform": {
-        "anchors": [
-          [
-            0.5772,
-            0.5265
-          ],
-          [
-            0.5994,
-            0.5265
-          ],
-          [
-            0.6116,
-            0.5728
-          ],
-          [
-            0.6232,
-            0.612
-          ],
-          [
-            0.7522,
-            0.7007
           ]
         ]
       }

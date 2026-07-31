@@ -6,47 +6,46 @@ _0% lineups confirmed · 12 rookie SPs_
 
 ## Slate
 - **15 games** scheduled
-- **23 best bets** scored: 0 DK · 0 PP · 5 NRFI · 0 SGP
-- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$25.0
-- **MC simulation:** EV +$28.94, 69% P(profit), p05 $-85.23 / p95 $131.02
+- **30 best bets** scored: 0 DK · 0 PP · 12 NRFI · 0 SGP
+- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$42.6
+- **MC simulation:** EV +$163.0, 84% P(profit), p05 $-41.15 / p95 $340.65
 
 ## Top 5 Best Bets
-1. **PIT @ CIN YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +21.4%)
-   - P(YRFI) 67.3% vs baseline 46.0%
-2. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
-   - Player prop quality score 1.1935
-   - Elite player
-3. **LOL ShowMaker OVER 3.5 Kills**  (78/100 ****, edge —)
-   - Player prop quality score 1.1892
-   - Elite player
-4. **LOL Peyz OVER 4.5 Kills**  (78/100 ****, edge —)
-   - Player prop quality score 1.184
-   - Elite player
-5. **GOLF Chris Kirk TOP5 @ 601 (Rocket Classic)**  (78/100 *****, edge —)
-   - P(top 5) 14.3% -- lower variance than outright but compelling line.
+1. **MIL @ LAA YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +29.2%)
+   - P(YRFI) 75.2% vs baseline 46.0%
+2. **KCR @ COL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +28.1%)
+   - P(YRFI) 74.1% vs baseline 46.0%
+3. **SFG @ SDP YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +28.0%)
+   - P(YRFI) 74.0% vs baseline 46.0%
+4. **DET @ OAK YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +25.6%)
+   - P(YRFI) 71.6% vs baseline 46.0%
+5. **MIN @ SEA YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +25.0%)
+   - P(YRFI) 71.0% vs baseline 46.0%
 
-## ⚠️ Trap Warnings — 4 flagged
-- **PIT @ CIN YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +21.4% looks big but only 0 settled props on this player — model unproven
-- **WSN @ ATL YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +17.6% looks big but only 0 settled props on this player — model unproven
-- **SEA @ LAD YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +12.3% looks big but only 0 settled props on this player — model unproven
-- **BOS @ OAK YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +8.5% looks big but only 0 settled props on this player — model unproven
+## ⚠️ Trap Warnings — 11 flagged
+- **MIL @ LAA YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +29.2% looks big but only 0 settled props on this player — model unproven
+- **KCR @ COL YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +28.1% looks big but only 0 settled props on this player — model unproven
+- **SFG @ SDP YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +28.0% looks big but only 0 settled props on this player — model unproven
+- **DET @ OAK YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +25.6% looks big but only 0 settled props on this player — model unproven
+- **MIN @ SEA YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
 
 ## Bullpens GASSED tonight
-Athletics, Pittsburgh Pirates, San Diego Padres, Seattle Mariners, San Francisco Giants, St. Louis Cardinals, Tampa Bay Rays, Toronto Blue Jays
+Athletics, Pittsburgh Pirates, San Diego Padres, Seattle Mariners, San Francisco Giants, St. Louis Cardinals, Tampa Bay Rays, Texas Rangers
 _Lean late-inning OVER on these games; fade their save situations._
 
 ## NRFI/YRFI strong leans
-- **YRFI** (1st-inning OVER): PIT @ CIN, WSN @ ATL, SEA @ LAD
+- **YRFI** (1st-inning OVER): MIL @ LAA, KCR @ COL, SFG @ SDP, DET @ OAK, MIN @ SEA
 
 ## Golf -- Rocket Classic
 - **Leader:** Peter Malnati (-9) at #1
 - **Field:** 147 players  |  Status: In Progress
-- **Play of the Tournament:** Chris Kirk TOP5 @ +601 (model 14.3%, HIGH)
-   - P(top 5) 14.3% -- lower variance than outright but compelling line.
+- **Play of the Tournament:** Chris Kirk TOP5 @ +563 (model 15.1%, HIGH)
+   - P(top 5) 15.1% -- lower variance than outright but compelling line.
 
 ## NBA -- PRESEASON
 - Miami Heat @ Toronto Raptors (0-0 vs 0-0)  | P(home) 55.0% fair -122 | Scheduled
@@ -66,12 +65,12 @@ _Lean late-inning OVER on these games; fade their save situations._
 - Samsung Lions @ Lotte Giants | P(home) 42.6% fair +135 | total 10 R
 - **KBO POD:** KT Wiz ML vs Hanwha Eagles (KBO) (HIGH)
 
-## LoL Esports -- 0 live, 30 upcoming
+## LoL Esports -- 1 live, 30 upcoming
+- [LEC] Team Heretics vs Team Vitality BO3 | P(A) 53.6% fair -116/+116
 - [LCK Challengers] T1 Esports Academy vs DK Challengers BO3 | P(A) 50.0% fair -100/-100
 - [LCK Challengers] HLE Challengers vs BNK FEARX Youth BO3 | P(A) 43.0% fair +133/-133
 - [LCK Challengers] kt Challengers vs DNS Challengers BO3 | P(A) 46.7% fair +114/-114
 - [LCK Challengers] BRO Challengers vs KRX Challengers BO3 | P(A) 53.7% fair -116/+116
-- [LCK] Gen.G Esports vs T1 BO3 | P(A) 49.8% fair +101/-101
 - **LoL POT:** Beijing JDG Esports ML vs TOP ESPORTS (LPL, BO3) (HIGH)
 
 ## Player Play of the Day -- across all sports (3511 candidates scanned)
@@ -84,5 +83,5 @@ _Lean late-inning OVER on these games; fade their save situations._
 ## Self-learning calibration (esports + KBO)
 - **LOL:** 45 settled | brier 0.2716 | ECE 0.1805
    - Model over-confident; subtract 16.7pp at next inference
-- **KBO:** 36 settled | brier 0.2859 | ECE 0.2481
-   - Model over-confident; subtract 21.5pp at next inference
+- **KBO:** 39 settled | brier 0.2812 | ECE 0.2242
+   - Model over-confident; subtract 19.3pp at next inference
