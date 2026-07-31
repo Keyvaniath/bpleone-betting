@@ -105,6 +105,7 @@ fetch('data/data_health.json?t=' + Date.now()).then(function(r){return r.json();
             <div style="font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:#4ade80; font-weight:700;">★ Alpha — recommended plays</div>
             <div id="hcAlphaNet" style="font-size:30px; font-weight:800; font-family:'JetBrains Mono',monospace; margin:4px 0 2px; color:#4ade80;">--u</div>
             <div style="font-size:11px; color:var(--text-2,#9fb0c8); font-family:'JetBrains Mono',monospace;"><span id="hcAlphaRoi">--</span> ROI · <span id="hcAlphaHit">--</span> hit · <span id="hcAlphaN">--</span> plays</div>
+            <div id="hcAlphaL30" style="display:none; font-size:10.5px; color:var(--muted,#8a93a6); font-family:'JetBrains Mono',monospace; margin-top:4px;"></div>
             <div id="hcAlphaTag" style="display:none; font-size:9px; color:#d4a04a; margin-top:5px; line-height:1.4;"></div>
           </div>
           <div style="padding:14px 16px; border-radius:10px; border:1px solid rgba(255,255,255,0.10); background:rgba(255,255,255,0.02);">
@@ -1351,6 +1352,14 @@ fetch("data/clv_log.json", { cache: "no-cache" })
       set("hcAlphaRoi", fmtRoi(a.roi_pct));
       set("hcAlphaHit", fmtHit(a.hit_rate));
       set("hcAlphaN", String(a.n_settled || 0));
+      // Recent form beside the all-time number -- so a point of drift in the
+      // lifetime average always has context instead of reading as decline.
+      const l30 = a.last_30;
+      const l30el = document.getElementById("hcAlphaL30");
+      if (l30el && l30 && (l30.wins + l30.losses) > 0) {
+        l30el.textContent = `last 30d: ${l30.wins}-${l30.losses} · ${fmtRoi(l30.roi_pct)} · ${fmtNet(l30.net_units)}`;
+        l30el.style.display = "block";
+      }
       // Honest early-sample tag -- auto-hides once the sample matures.
       const tag = document.getElementById("hcAlphaTag");
       if (tag && (a.n_settled || 0) > 0 && (a.n_settled || 0) < 500) {

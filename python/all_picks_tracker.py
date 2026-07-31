@@ -2902,6 +2902,22 @@ def run() -> Dict[str, Any]:
                        "not bet."),
     }
 
+    # RECENT FORM (trailing 30 days by pick date): the all-time number alone
+    # invites "did we get worse?" confusion whenever its average drifts a point
+    # -- surface the recent window beside it so drift always has context.
+    _cut30 = (dt.date.today() - dt.timedelta(days=30)).isoformat()
+    cur30 = [p for p in cur if (p.get("date") or "") >= _cut30]
+    c30_w = sum(1 for p in cur30 if p["result"] == "won")
+    c30_l = sum(1 for p in cur30 if p["result"] == "lost")
+    c30_net = round(sum((p.get("payout_units") or 0) for p in cur30), 3)
+    c30_risked = sum(1 for p in cur30 if p["result"] != "push")
+    curated["last_30"] = {
+        "wins": c30_w, "losses": c30_l,
+        "net_units": c30_net,
+        "roi_pct": round(c30_net / c30_risked * 100, 2) if c30_risked else None,
+        "hit_rate": round(c30_w / (c30_w + c30_l), 4) if (c30_w + c30_l) else None,
+    }
+
     # Per-source breakdown
     by_source: Dict[str, Dict[str, Any]] = {}
     for p in settled:
