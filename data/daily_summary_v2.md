@@ -1,18 +1,18 @@
 # EdgeStat Daily Summary — 2026-07-31
 
-## 🏥 Model Health: 73.5/100 [HEALTHY]
+## 🏥 Model Health: 71.8/100 [HEALTHY]
 - Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 99.9/100
-  - 🔴 Hit Rate Trend: 53.0/100
-  - 🔴 Brier Trend: 52.6/100
+  - 🟢 Calibration Freshness: 99.7/100
+  - 🔴 Hit Rate Trend: 33.3/100
+  - 🔴 Brier Trend: 44.5/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 86.4/100
-  - 🔴 Edge Count: 51.4/100
+  - 🟢 Data Health: 95.5/100
+  - 🟡 Edge Count: 71.4/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.584)
-- **Total games on board:** 110
-- **Strong home favorites:** 1 | **Strong road dogs:** 0
+- **Total games on board:** 113
+- **Strong home favorites:** 2 | **Strong road dogs:** 1
 
 ## 🎯 Top 5 Best Bets
 1. **MIL @ LAA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
@@ -22,14 +22,10 @@
 5. **MIN @ SEA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** DET @ OAK DET_ML -- 75% / +22.6% (score 2.5)
-- [STRONG] **[MLB]** MIL @ LAA MIL_ML -- 77% / +22.4% (score 2.5)
-
-## 📡 Sharp Action (Line Movement)
-- [MODERATE] **WSN @ ATL** ml_away: 45.66% → 49.02% (+3.4pp)
+- [STRONG] **[MLB]** DET @ OAK DET_ML -- 74% / +24.9% (score 2.5)
+- [STRONG] **[MLB]** MIL @ LAA MIL_ML -- 77% / +22.0% (score 2.5)
 
 ## 📉 Strong UNDER Signals
-- [STRONG 5.5] **BOS @ LAD** model 7.27 vs market 8.5
 - [STRONG 5.4] **STL @ TOR** model 6.8 vs market 7.5
 
 ## 🔒 Locks of the Day -- Track Record
@@ -58,14 +54,17 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
+## ⚡ Pre-Game HIGH Conviction (1)
+- [WNBA] **Indiana Fever** AWAY (4-0 L10) · model 64.8% fair -184
+
 ## 🔥/❄️ Heat / Cold Signals
 - Hot teams: **7** | Cold teams: **10** | Over-heavy: 0 | Under-heavy: 0
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (36)
+## ⚠️ Anomaly Detector (35)
 - STEAM_MOVE: **31**
+- PEN_MISMATCH: **1**
 - COMPOUND_BULLPEN: **3**
-- PEN_MISMATCH: **2**
   - DAL @ POR (WNBA): TOTAL steam since open: ML -2.1pp toward DAL; total +4 (OVER) (12 snapshots)
   - CON @ WSH (WNBA): ML/TOTAL steam since open: ML +2.9pp toward WSH; total +4 (OVER) (13 snapshots)
   - CLE @ CIN (MLB): ML steam since open: ML -15.7pp toward CLE (8 snapshots)
@@ -74,7 +73,7 @@
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$-8.58**
+- Expected EV: **$9.9**
   - #1 [NRFI] $50 on MIL @ LAA YRFI (1st-inning OVER 0.5) (P=75%)
   - #2 [NRFI] $50 on KCR @ COL YRFI (1st-inning OVER 0.5) (P=74%)
   - #3 [NRFI] $50 on SFG @ SDP YRFI (1st-inning OVER 0.5) (P=74%)
@@ -107,13 +106,13 @@
   - [LEAN] **Marina Spasić** (7-1-0) vs Stephanie Luciano -- fair -150
 
 ## ⛳ Golf Player Heat (from Rocket Classic)
-  - 🔥 T1 **Peter Malnati** (USA): -9 total -- finished T1
-  - 🔥 T2 **Rickie Fowler** (USA): -7 total -- finished T2
-  - 🔥 T3 **Ryan Gerard** (USA): -7 total -- finished T3
-  - 🔥 T4 **Patrick Fishburn** (USA): -6 total -- finished T4
-  - 🔥 T5 **Patrick Cantlay** (USA): -6 total -- finished T5
+  - 🔥 T1 **Patrick Cantlay** (USA): -9 total -- finished T1
+  - 🔥 T2 **Peter Malnati** (USA): -9 total -- finished T2
+  - 🔥 T3 **Matt Wallace** (England): -8 total -- finished T3
+  - 🔥 T4 **Cameron Young** (USA): -8 total -- finished T4
+  - 🔥 T5 **Michael Thorbjornsen** (USA): -7 total -- finished T5
 
-## 🔥 MLB Batter Heat (49 HOT / 53 COLD)
+## 🔥 MLB Batter Heat (49 HOT / 52 COLD)
   - 🔥 **Steven Kwan** (CLE): L14 .389 / season .247 (+142pts)
   - 🔥 **Nico Hoerner** (CHC): L14 .397 / season .257 (+140pts)
   - 🔥 **Jeff McNeil** (ATH): L14 .385 / season .248 (+137pts)

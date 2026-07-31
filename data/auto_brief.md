@@ -1,12 +1,12 @@
 # Tonight's Slate Brief — 2026-07-31
 
-## Slate Quality: 55/100 (MEDIUM)
-_0% lineups confirmed · 12 rookie SPs_
+## Slate Quality: 58/100 (MEDIUM)
+_6% lineups confirmed · 12 rookie SPs_
 **Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
 - **15 games** scheduled
-- **30 best bets** scored: 0 DK · 0 PP · 12 NRFI · 0 SGP
+- **31 best bets** scored: 0 DK · 0 PP · 12 NRFI · 0 SGP
 - **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$42.6
 - **MC simulation:** EV +$163.0, 84% P(profit), p05 $-41.15 / p95 $340.65
 
@@ -22,7 +22,7 @@ _0% lineups confirmed · 12 rookie SPs_
 5. **MIN @ SEA YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +25.0%)
    - P(YRFI) 71.0% vs baseline 46.0%
 
-## ⚠️ Trap Warnings — 11 flagged
+## ⚠️ Trap Warnings — 10 flagged
 - **MIL @ LAA YRFI (1st-inning OVER 0.5)** (low):
    - Edge +29.2% looks big but only 0 settled props on this player — model unproven
 - **KCR @ COL YRFI (1st-inning OVER 0.5)** (low):
@@ -42,10 +42,10 @@ _Lean late-inning OVER on these games; fade their save situations._
 - **YRFI** (1st-inning OVER): MIL @ LAA, KCR @ COL, SFG @ SDP, DET @ OAK, MIN @ SEA
 
 ## Golf -- Rocket Classic
-- **Leader:** Peter Malnati (-9) at #1
+- **Leader:** Patrick Cantlay (-9) at #1
 - **Field:** 147 players  |  Status: In Progress
-- **Play of the Tournament:** Chris Kirk TOP5 @ +563 (model 15.1%, HIGH)
-   - P(top 5) 15.1% -- lower variance than outright but compelling line.
+- **Play of the Tournament:** Keegan Bradley TOP10 @ +549 (model 15.4%, HIGH)
+   - P(top 10) 15.4% -- safest finish bet (#24 (-5)).
 
 ## NBA -- PRESEASON
 - Miami Heat @ Toronto Raptors (0-0 vs 0-0)  | P(home) 55.0% fair -122 | Scheduled
@@ -67,10 +67,10 @@ _Lean late-inning OVER on these games; fade their save situations._
 
 ## LoL Esports -- 1 live, 30 upcoming
 - [LEC] Team Heretics vs Team Vitality BO3 | P(A) 53.6% fair -116/+116
-- [LCK Challengers] T1 Esports Academy vs DK Challengers BO3 | P(A) 50.0% fair -100/-100
 - [LCK Challengers] HLE Challengers vs BNK FEARX Youth BO3 | P(A) 43.0% fair +133/-133
 - [LCK Challengers] kt Challengers vs DNS Challengers BO3 | P(A) 46.7% fair +114/-114
 - [LCK Challengers] BRO Challengers vs KRX Challengers BO3 | P(A) 53.7% fair -116/+116
+- [LEC] Shifters vs Movistar KOI BO3 | P(A) 53.0% fair -113/+113
 - **LoL POT:** Beijing JDG Esports ML vs TOP ESPORTS (LPL, BO3) (HIGH)
 
 ## Player Play of the Day -- across all sports (3511 candidates scanned)
