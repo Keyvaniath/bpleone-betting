@@ -1,31 +1,25 @@
-# EdgeStat Daily Summary — 2026-07-30
+# EdgeStat Daily Summary — 2026-07-31
 
-## 🏥 Model Health: 79.6/100 [HEALTHY]
+## 🏥 Model Health: 77.8/100 [HEALTHY]
 - Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 100.0/100
+  - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 58.8/100
   - 🔴 Brier Trend: 58.1/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 95.5/100
+  - 🟢 Data Health: 86.4/100
   - 🟡 Edge Count: 71.4/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.581)
-- **Total games on board:** 113
-- **Strong home favorites:** 3 | **Strong road dogs:** 1
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.584)
+- **Total games on board:** 111
+- **Strong home favorites:** 1 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
-1. **TEX @ TBR YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-2. **PIT @ CIN YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-3. **KCR @ MIN YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-4. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
-5. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
-
-## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** PIT @ CIN PIT_ML -- 65% / +21.2% (score 2.5)
-
-## 📡 Sharp Action (Line Movement)
-- [STRONG] **KCR @ MIN** over_9.0: 51.22% → 57.45% (+6.2pp)
+1. **PIT @ CIN YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+2. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
+3. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
+4. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
+5. **GOLF Chris Kirk TOP5 @ 601 (Rocket Classic)** (78/100 ★★★★★)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -53,32 +47,27 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (1)
-- [WNBA] **Chicago Sky** HOME (1-2 L10) · model 64.1% fair -178
-
 ## 🔥/❄️ Heat / Cold Signals
 - Hot teams: **7** | Cold teams: **10** | Over-heavy: 0 | Under-heavy: 0
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (53)
-- RESIDUAL_DIVERGENCE: **2**
-- STEAM_MOVE: **45**
-- COMPOUND_BULLPEN: **4**
-- PEN_MISMATCH: **2**
-  - Toronto Tempo (WNBA): Toronto Tempo UNDERPERFORMING expected margin by 7.3pts in recent games -- model bias may persist
-  - Connecticut Sun (WNBA): Connecticut Sun UNDERPERFORMING expected margin by 11.1pts in recent games -- model bias may persist
+## ⚠️ Anomaly Detector (33)
+- STEAM_MOVE: **31**
+- COMPOUND_BULLPEN: **2**
   - DAL @ POR (WNBA): TOTAL steam since open: ML -2.1pp toward DAL; total +4 (OVER) (12 snapshots)
   - CON @ WSH (WNBA): ML/TOTAL steam since open: ML +2.9pp toward WSH; total +4 (OVER) (13 snapshots)
   - CLE @ CIN (MLB): ML steam since open: ML -15.7pp toward CLE (8 snapshots)
+  - IND @ SEA (WNBA): ML/TOTAL steam since open: ML -2.8pp toward IND; total +3 (OVER) (13 snapshots)
+  - ATL @ NYM (MLB): ML/TOTAL steam since open: ML -10.4pp toward ATL; total -1.5 (UNDER) (8 snapshots)
 
 ## 💰 Today's Portfolio (9 picks)
-- Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$0.23**
-  - #1 [NRFI] $50 on TEX @ TBR YRFI (1st-inning OVER 0.5) (P=76%)
-  - #2 [NRFI] $50 on PIT @ CIN YRFI (1st-inning OVER 0.5) (P=67%)
-  - #3 [NRFI] $50 on KCR @ MIN YRFI (1st-inning OVER 0.5) (P=67%)
-  - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
-  - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
+- Total stake: **$330.0** (33.0% of $1000 bankroll)
+- Expected EV: **$-8.74**
+  - #1 [NRFI] $50 on PIT @ CIN YRFI (1st-inning OVER 0.5) (P=67%)
+  - #2 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
+  - #3 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
+  - #4 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
+  - #5 [GOLF] $35 on GOLF Chris Kirk TOP5 @ 601 (Rocket Classic) (P=14%)
 
 ## 🎯 Convergence Picks (5 stacked games)
 - ELITE: **2** · HIGH: 1 · MED: 2
@@ -88,12 +77,10 @@
   - [MED] Toronto FC @ New York City FC : 2 signals (HEAT_COLD, ATS)
   - [MED] Coventry City @ Arsenal : 2 signals (PREGAME, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (7)
-- **Nolan McLean** OVER 5.5 K (76%) fair -314
+## ⚾ Top MLB Pitcher K Plays (3)
 - **Sonny Gray** OVER 4.5 K (73%) fair -271
-- **Ryan Weathers** OVER 4.5 K (67%) fair -207
 - **Bryan Woo** OVER 4.5 K (67%) fair -204
-- **Noah Cameron** OVER 4.5 K (61%) fair -156
+- **Jake Irvin** OVER 4.5 K (60%) fair -149
 
 ## 🏀 NBA Player Heat (2 HOT / 1 COLD)
   - 🔥 **Scottie Barnes** (TOR): L5 24.4/7.6/9.6 vs season 18.6/5.8/8.8 [PTS +5.8]
@@ -109,22 +96,22 @@
 
 ## ⛳ Golf Player Heat (from Rocket Classic)
   - 🔥 T1 **Peter Malnati** (USA): -9 total -- finished T1
-  - 🔥 T2 **Rickie Fowler** (USA): -8 total -- finished T2
-  - 🔥 T3 **Keegan Bradley** (USA): -5 total -- finished T3
-  - 🔥 T4 **Michael Kim** (USA): -5 total -- finished T4
-  - 🔥 T5 **Chris Kirk** (USA): -5 total -- finished T5
+  - 🔥 T2 **Rickie Fowler** (USA): -7 total -- finished T2
+  - 🔥 T3 **Ryan Gerard** (USA): -7 total -- finished T3
+  - 🔥 T4 **Patrick Fishburn** (USA): -6 total -- finished T4
+  - 🔥 T5 **Patrick Cantlay** (USA): -6 total -- finished T5
 
-## 🔥 MLB Batter Heat (47 HOT / 54 COLD)
-  - 🔥 **Jeff McNeil** (ATH): L14 .395 / season .248 (+147pts)
-  - 🔥 **Drake Baldwin** (ATL): L14 .426 / season .282 (+144pts)
+## 🔥 MLB Batter Heat (49 HOT / 53 COLD)
   - 🔥 **Steven Kwan** (CLE): L14 .389 / season .247 (+142pts)
   - 🔥 **Nico Hoerner** (CHC): L14 .397 / season .257 (+140pts)
+  - 🔥 **Jeff McNeil** (ATH): L14 .385 / season .248 (+137pts)
   - 🔥 **Ildemaro Vargas** (AZ): L14 .410 / season .275 (+135pts)
+  - 🔥 **Jackson Holliday** (BAL): L14 .395 / season .260 (+135pts)
   - ❄️ **Troy Johnston** (COL): L14 .103 / season .286 (-183pts) -- FADE props
   - ❄️ **Brandon Marsh** (PHI): L14 .102 / season .280 (-178pts) -- FADE props
   - ❄️ **Tristan Peters** (CWS): L14 .109 / season .271 (-162pts) -- FADE props
-  - ❄️ **Nick Kurtz** (ATH): L14 .133 / season .260 (-127pts) -- FADE props
-  - ❄️ **Cam Smith** (HOU): L14 .083 / season .204 (-121pts) -- FADE props
+  - ❄️ **Nick Kurtz** (ATH): L14 .111 / season .257 (-146pts) -- FADE props
+  - ❄️ **Otto Lopez** (MIA): L14 .196 / season .325 (-129pts) -- FADE props
 
 ## 📈 Streak Regression Alerts (5)
 - [WNBA] Toronto Tempo on L3 L10 0-3 -- Toronto Tempo on L3 -- no historical sample
@@ -141,6 +128,6 @@
   - ⚠️ batter_rbis (Brier Δ -0.0052)
 
 ## 🤖 Self-Training Status
-- **WNBA**: n=29 games · hit rate 65.5% · bias -1.0pp
+- **WNBA**: n=31 games · hit rate 74.2% · bias -5.2pp [calibration applied]
 - **MLS**: n=36 games · hit rate 58.3% · bias -12.0pp [calibration applied]
-- **MLB**: n=183 games · hit rate 49.7% · bias -0.3pp
+- **MLB**: n=192 games · hit rate 51.6% · bias -0.8pp

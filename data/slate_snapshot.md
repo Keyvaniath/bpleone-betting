@@ -1,4 +1,4 @@
-# EdgeStat Slate — 2026-07-30
+# EdgeStat Slate — 2026-07-31
 
 _6 picks consolidated from POD + Alpha + Book Edges + Parlay-of-Day._
 
@@ -14,12 +14,12 @@ _6 picks consolidated from POD + Alpha + Book Edges + Parlay-of-Day._
 
 ## 📊 Book Edges
 
-- **WSN @ ATL · AWAY (AWAY)** · TEAM_ML
-  Prob 48.9% · Odds +134 · Edge +14.3% · Kelly 0.107
-- **SFG @ SDP · AWAY (AWAY)** · TEAM_ML
-  Prob 47.8% · Odds +137 · Edge +13.2% · Kelly 0.096
-- **PIT @ CIN · AWAY (AWAY)** · TEAM_ML
-  Prob 60.6% · Odds -123 · Edge +9.9% · Kelly 0.122
+- **MIA @ NYM · AWAY (AWAY)** · TEAM_ML
+  Prob 54.6% · Odds +107 · Edge +13.0% · Kelly 0.121
+- **BOS @ LAD · HOME (HOME)** · TEAM_ML
+  Prob 58.9% · Odds -110 · Edge +12.4% · Kelly 0.136
+- **SFG @ SDP · HOME (HOME)** · TEAM_ML
+  Prob 58.8% · Odds -110 · Edge +12.3% · Kelly 0.135
 
 ## 🎲 Parlay
 
@@ -27,5 +27,5 @@ _6 picks consolidated from POD + Alpha + Book Edges + Parlay-of-Day._
   Prob 53.4% · Odds +264 · Edge +94.6% · Kelly 0.050
 
 ---
-_Generated 2026-07-30T23:06:36 UTC by EdgeStat._
+_Generated 2026-07-31T07:44:37 UTC by EdgeStat._
 _Stakes assume ¼-Kelly fractional sizing on a flat bankroll._
