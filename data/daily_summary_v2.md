@@ -1,13 +1,13 @@
 # EdgeStat Daily Summary — 2026-07-31
 
-## 🏥 Model Health: 71.8/100 [HEALTHY]
+## 🏥 Model Health: 72.1/100 [HEALTHY]
 - Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 99.7/100
+  - 🟢 Calibration Freshness: 100.0/100
   - 🔴 Hit Rate Trend: 33.3/100
   - 🔴 Brier Trend: 44.5/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 95.5/100
-  - 🟡 Edge Count: 71.4/100
+  - 🟡 Edge Count: 74.3/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.584)
@@ -22,10 +22,10 @@
 5. **MIN @ SEA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** DET @ OAK DET_ML -- 74% / +24.9% (score 2.5)
-- [STRONG] **[MLB]** MIL @ LAA MIL_ML -- 77% / +22.0% (score 2.5)
+- [STRONG] **[MLB]** MIL @ LAA MIL_ML -- 77% / +21.6% (score 2.5)
 
 ## 📉 Strong UNDER Signals
+- [STRONG 5.6] **BOS @ LAD** model 7.22 vs market 8.5
 - [STRONG 5.4] **STL @ TOR** model 6.8 vs market 7.5
 
 ## 🔒 Locks of the Day -- Track Record
@@ -61,15 +61,16 @@
 - Hot teams: **7** | Cold teams: **10** | Over-heavy: 0 | Under-heavy: 0
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (35)
-- STEAM_MOVE: **31**
+## ⚠️ Anomaly Detector (41)
+- RESIDUAL_DIVERGENCE: **4**
+- STEAM_MOVE: **33**
 - PEN_MISMATCH: **1**
 - COMPOUND_BULLPEN: **3**
+  - Seattle Storm (WNBA): Seattle Storm OUTPERFORMING expected margin by 8.5pts in recent games -- model bias may persist
+  - Washington Mystics (WNBA): Washington Mystics OUTPERFORMING expected margin by 8.1pts in recent games -- model bias may persist
+  - Dallas Wings (WNBA): Dallas Wings UNDERPERFORMING expected margin by 6.2pts in recent games -- model bias may persist
+  - Indiana Fever (WNBA): Indiana Fever OUTPERFORMING expected margin by 7.0pts in recent games -- model bias may persist
   - DAL @ POR (WNBA): TOTAL steam since open: ML -2.1pp toward DAL; total +4 (OVER) (12 snapshots)
-  - CON @ WSH (WNBA): ML/TOTAL steam since open: ML +2.9pp toward WSH; total +4 (OVER) (13 snapshots)
-  - CLE @ CIN (MLB): ML steam since open: ML -15.7pp toward CLE (8 snapshots)
-  - IND @ SEA (WNBA): ML/TOTAL steam since open: ML -2.8pp toward IND; total +3 (OVER) (13 snapshots)
-  - ATL @ NYM (MLB): ML/TOTAL steam since open: ML -10.4pp toward ATL; total -1.5 (UNDER) (8 snapshots)
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
@@ -80,13 +81,15 @@
   - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
-## 🎯 Convergence Picks (3 stacked games)
-- ELITE: **0** · HIGH: 1 · MED: 2
-  - [HIGH] Minnesota Lynx @ Toronto Tempo : 3 signals (HEAT_COLD, HEAT_COLD, ATS)
+## 🎯 Convergence Picks (5 stacked games)
+- ELITE: **3** · HIGH: 0 · MED: 2
+  - [ELITE] Indiana Fever @ Portland Fire : 6 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
+  - [ELITE] Seattle Storm @ Atlanta Dream : 5 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ATS)
+  - [ELITE] Dallas Wings @ Washington Mystics : 4 signals (HEAT_COLD, ANOMALY, ANOMALY, ATS)
   - [MED] Toronto FC @ New York City FC : 2 signals (HEAT_COLD, ATS)
   - [MED] Coventry City @ Arsenal : 2 signals (PREGAME, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (10)
+## ⚾ Top MLB Pitcher K Plays (9)
 - **Bryce Miller** OVER 4.5 K (76%) fair -321
 - **Paul Skenes** OVER 5.5 K (76%) fair -314
 - **Erick Fedde** OVER 4.5 K (74%) fair -280
@@ -106,15 +109,15 @@
   - [LEAN] **Marina Spasić** (7-1-0) vs Stephanie Luciano -- fair -150
 
 ## ⛳ Golf Player Heat (from Rocket Classic)
-  - 🔥 T1 **Patrick Cantlay** (USA): -9 total -- finished T1
-  - 🔥 T2 **Peter Malnati** (USA): -9 total -- finished T2
-  - 🔥 T3 **Matt Wallace** (England): -8 total -- finished T3
-  - 🔥 T4 **Cameron Young** (USA): -8 total -- finished T4
+  - 🔥 T1 **Patrick Cantlay** (USA): -10 total -- finished T1
+  - 🔥 T2 **Matt Wallace** (England): -9 total -- finished T2
+  - 🔥 T3 **Cameron Young** (USA): -9 total -- finished T3
+  - 🔥 T4 **Peter Malnati** (USA): -9 total -- finished T4
   - 🔥 T5 **Michael Thorbjornsen** (USA): -7 total -- finished T5
 
-## 🔥 MLB Batter Heat (49 HOT / 52 COLD)
+## 🔥 MLB Batter Heat (51 HOT / 51 COLD)
+  - 🔥 **Nico Hoerner** (CHC): L14 .404 / season .255 (+149pts)
   - 🔥 **Steven Kwan** (CLE): L14 .389 / season .247 (+142pts)
-  - 🔥 **Nico Hoerner** (CHC): L14 .397 / season .257 (+140pts)
   - 🔥 **Jeff McNeil** (ATH): L14 .385 / season .248 (+137pts)
   - 🔥 **Ildemaro Vargas** (AZ): L14 .410 / season .275 (+135pts)
   - 🔥 **Jackson Holliday** (BAL): L14 .395 / season .260 (+135pts)
@@ -124,8 +127,12 @@
   - ❄️ **Nick Kurtz** (ATH): L14 .111 / season .257 (-146pts) -- FADE props
   - ❄️ **Otto Lopez** (MIA): L14 .196 / season .325 (-129pts) -- FADE props
 
-## 📈 Streak Regression Alerts (1)
-- [MLS] Toronto FC on L3 L10 0-3 -- Toronto FC on L3 -- no historical sample
+## 📈 Streak Regression Alerts (6)
+- [WNBA] Atlanta Dream on W3 L10 3-0 -- Atlanta Dream on W3 -- no historical sample
+- [WNBA] Seattle Storm on L4 L10 0-4 -- Seattle Storm on L4 -- no historical sample
+- [WNBA] Washington Mystics on W3 L10 3-1 -- Washington Mystics on W3 -- no historical sample
+- [WNBA] Portland Fire on L3 L10 0-3 -- Portland Fire on L3 -- no historical sample
+- [WNBA] Indiana Fever on W4 L10 4-0 -- Indiana Fever on W4 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**
