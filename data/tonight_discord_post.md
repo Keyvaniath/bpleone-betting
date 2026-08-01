@@ -1,7 +1,7 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:15 F:104
+_NO_ACTION_NIGHT_ | L:0 S:17 F:98
 
-:lock: **LOCK:** Ryan Feltner (MLB)
+:lock: **LOCK:** Braxton Ashcraft (MLB)
 
 :dart: **Top Picks:**
 1. [GOLF] Patrick Cantlay -- Patrick Cantlay (PLAYER_STRONG)

@@ -1,12 +1,12 @@
 # Tonight's Slate Brief — 2026-08-01
 
-## Slate Quality: 54/100 (LOW)
+## Slate Quality: 55/100 (MEDIUM)
 _0% lineups confirmed · 13 rookie SPs_
-**Recommendation:** Defensive sizing tonight; stick to highest-confidence plays.
+**Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
 - **15 games** scheduled
-- **35 best bets** scored: 0 DK · 0 PP · 14 NRFI · 0 SGP
+- **36 best bets** scored: 0 DK · 0 PP · 14 NRFI · 0 SGP
 - **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$46.79
 - **MC simulation:** EV +$132.86, 84% P(profit), p05 $-76.89 / p95 $321.54
 
@@ -22,7 +22,7 @@ _0% lineups confirmed · 13 rookie SPs_
 5. **WSN @ ATL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +21.8%)
    - P(YRFI) 67.8% vs baseline 46.0%
 
-## ⚠️ Trap Warnings — 12 flagged
+## ⚠️ Trap Warnings — 11 flagged
 - **KCR @ COL YRFI (1st-inning OVER 0.5)** (low):
    - Edge +31.1% looks big but only 0 settled props on this player — model unproven
 - **TEX @ HOU YRFI (1st-inning OVER 0.5)** (low):
@@ -34,10 +34,6 @@ _0% lineups confirmed · 13 rookie SPs_
 - **WSN @ ATL YRFI (1st-inning OVER 0.5)** (low):
    - Edge +21.8% looks big but only 0 settled props on this player — model unproven
 
-## Hot streaks
-**Batters heating up:** Jeremy Pena (heat +2.15), Brandon Lowe (heat +1.61), Corey Seager (heat +1.01)
-**Pitchers on a run:** Tyler Phillips (heat +2.24), Connor Prielipp (heat +0.05)
-
 ## Bullpens GASSED tonight
 Athletics, Pittsburgh Pirates, San Diego Padres, Seattle Mariners, San Francisco Giants, Tampa Bay Rays, Texas Rangers, Minnesota Twins
 _Lean late-inning OVER on these games; fade their save situations._
@@ -48,8 +44,8 @@ _Lean late-inning OVER on these games; fade their save situations._
 ## Golf -- Rocket Classic
 - **Leader:** Cameron Young (-10) at #1
 - **Field:** 147 players  |  Status: In Progress
-- **Play of the Tournament:** Patrick Fishburn WIN @ +549 (model 15.4%, HIGH)
-   - P(win) 15.4% with 1 round(s) left -- sweet-spot value at #3 (-10).
+- **Play of the Tournament:** Michael Kim TOP5 @ +572 (model 14.9%, HIGH)
+   - P(top 5) 14.9% -- lower variance than outright but compelling line.
 
 ## NBA -- PRESEASON
 - Miami Heat @ Toronto Raptors (0-0 vs 0-0)  | P(home) 55.0% fair -122 | Scheduled
@@ -69,7 +65,7 @@ _Lean late-inning OVER on these games; fade their save situations._
 - Samsung Lions @ Lotte Giants | P(home) 41.0% fair +144 | total 8 R
 - **KBO POD:** Samsung Lions ML vs Lotte Giants (KBO) (HIGH)
 
-## LoL Esports -- 0 live, 28 upcoming
+## LoL Esports -- 1 live, 28 upcoming
 - [LEC] GIANTX vs SK Gaming BO3 | P(A) 50.0% fair -100/-100
 - [CBLOL] Vivo Keyd Stars vs FURIA BO3 | P(A) 35.4% fair +182/-182
 - [LEC] Natus Vincere vs Karmine Corp BO3 | P(A) 40.9% fair +145/-145

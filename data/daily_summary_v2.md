@@ -1,13 +1,13 @@
 # EdgeStat Daily Summary — 2026-08-01
 
-## 🏥 Model Health: 76.5/100 [HEALTHY]
+## 🏥 Model Health: 77.9/100 [HEALTHY]
 - Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 99.9/100
-  - 🔴 Hit Rate Trend: 51.9/100
+  - 🟢 Calibration Freshness: 99.7/100
+  - 🔴 Hit Rate Trend: 54.0/100
   - 🔴 Brier Trend: 47.3/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 86.4/100
-  - 🟢 Edge Count: 94.3/100
+  - 🟢 Data Health: 95.5/100
+  - 🟢 Edge Count: 85.7/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.588)
@@ -22,12 +22,12 @@
 5. **WSN @ ATL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** TEX @ HOU ML_AWAY -- 66% / +15.6% (score 2.8)
-- [STRONG] **[MLB]** TEX @ HOU TEX_ML -- 70% / +23.4% (score 2.5)
-- [STRONG] **[MLB]** PIT @ CIN PIT_ML -- 68% / +22.8% (score 2.5)
+- [STRONG] **[MLB]** TEX @ HOU ML_AWAY -- 65% / +16.9% (score 2.8)
+- [STRONG] **[MLB]** TEX @ HOU TEX_ML -- 70% / +24.8% (score 2.5)
+- [STRONG] **[MLB]** PIT @ CIN PIT_ML -- 68% / +23.4% (score 2.5)
 
-## 📉 Strong UNDER Signals
-- [STRONG 5.0] **CHW @ TBR** model 7.5 vs market 8.0
+## 📡 Sharp Action (Line Movement)
+- [MODERATE] **TEX @ HOU** ml_away: 52.61% → 56.52% (+3.9pp)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -64,10 +64,10 @@
 - Hot teams: **7** | Cold teams: **10** | Over-heavy: 0 | Under-heavy: 0
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (36)
+## ⚠️ Anomaly Detector (37)
 - RESIDUAL_DIVERGENCE: **3**
 - STEAM_MOVE: **31**
-- PEN_MISMATCH: **1**
+- PEN_MISMATCH: **2**
 - COMPOUND_BULLPEN: **1**
   - CF Montréal (MLS): CF Montréal OUTPERFORMING expected margin by 8.5pts in recent games -- model bias may persist
   - Portland Timbers (MLS): Portland Timbers UNDERPERFORMING expected margin by 7.5pts in recent games -- model bias may persist
@@ -77,19 +77,20 @@
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$14.48**
+- Expected EV: **$14.47**
   - #1 [NRFI] $50 on KCR @ COL YRFI (1st-inning OVER 0.5) (P=77%)
   - #2 [NRFI] $50 on TEX @ HOU YRFI (1st-inning OVER 0.5) (P=77%)
   - #3 [NRFI] $50 on PIT @ CIN YRFI (1st-inning OVER 0.5) (P=76%)
   - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
-## 🎯 Convergence Picks (4 stacked games)
-- ELITE: **1** · HIGH: 0 · MED: 3
+## 🎯 Convergence Picks (13 stacked games)
+- ELITE: **4** · HIGH: 3 · MED: 6
+  - [ELITE] Seattle Sounders FC @ Portland Timbers : 6 signals (PREGAME, HEAT_COLD, ANOMALY, ANOMALY)
   - [ELITE] Seattle Storm @ Atlanta Dream : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
-  - [MED] Indiana Fever @ Portland Fire : 2 signals (HEAT_COLD, HEAT_COLD)
-  - [MED] Toronto FC @ New York City FC : 2 signals (HEAT_COLD, ATS)
-  - [MED] Coventry City @ Arsenal : 2 signals (PREGAME, ATS)
+  - [ELITE] LAFC @ Vancouver Whitecaps : 4 signals (PREGAME, HEAT_COLD, ATS, ATS)
+  - [ELITE] Real Salt Lake @ St. Louis CITY SC : 4 signals (PREGAME, HEAT_COLD, ATS, ATS)
+  - [HIGH] New England Revolution @ CF Montréal : 3 signals (ANOMALY, ATS, ATS)
 
 ## ⚾ Top MLB Pitcher K Plays (15)
 - **Yoshinobu Yamamoto** OVER 4.5 K (73%) fair -271
@@ -108,12 +109,12 @@
   - [LEAN] **Vlasto Čepo** (14-3-0) vs Gilbert Urbina -- fair -184
   - [LEAN] **Borislav Nikolic** (16-2-0) vs Mark Vologdin -- fair -167
   - [LEAN] **Michael Oliveira** (9-0-0) vs Oban Elliott -- fair -166
-  - [LEAN] **Marina Spasić** (7-1-0) vs Stephanie Luciano -- fair -150
+  - [LEAN] **Navajo Stirling** (10-0-0) vs Jan Blachowicz -- fair -141
 
 ## ⛳ Golf Player Heat (from Rocket Classic)
   - 🔥 T1 **Cameron Young** (USA): -10 total -- finished T1
-  - 🔥 T2 **Patrick Cantlay** (USA): -10 total -- finished T2
-  - 🔥 T3 **Patrick Fishburn** (USA): -10 total -- finished T3
+  - 🔥 T2 **Patrick Fishburn** (USA): -10 total -- finished T2
+  - 🔥 T3 **Patrick Cantlay** (USA): -10 total -- finished T3
   - 🔥 T4 **Matt Wallace** (England): -9 total -- finished T4
   - 🔥 T5 **Rickie Fowler** (USA): -9 total -- finished T5
   - ❄️ **Hayden Springer** (USA): Sunday +5.0 vs tourney avg
@@ -131,6 +132,13 @@
   - ❄️ **Brandon Marsh** (PHI): L14 .100 / season .277 (-177pts) -- FADE props
   - ❄️ **David Fry** (CLE): L14 .040 / season .183 (-143pts) -- FADE props
   - ❄️ **Nick Kurtz** (ATH): L14 .114 / season .256 (-142pts) -- FADE props
+
+## 📈 Streak Regression Alerts (6)
+- [MLS] CF Montréal on L3 L10 0-3 -- CF Montréal on L3 -- no historical sample
+- [MLS] Atlanta United FC on L3 L10 0-3 -- Atlanta United FC on L3 -- no historical sample
+- [MLS] LAFC on W3 L10 3-0 -- LAFC on W3 -- no historical sample
+- [MLS] St. Louis CITY SC on W3 L10 3-0 -- St. Louis CITY SC on W3 -- no historical sample
+- [MLS] LA Galaxy on L3 L10 0-3 -- LA Galaxy on L3 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**
