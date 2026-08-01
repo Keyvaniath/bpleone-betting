@@ -1,18 +1,18 @@
 # EdgeStat Daily Summary — 2026-08-01
 
-## 🏥 Model Health: 77.9/100 [HEALTHY]
+## 🏥 Model Health: 72.1/100 [HEALTHY]
 - Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 99.7/100
-  - 🔴 Hit Rate Trend: 54.0/100
-  - 🔴 Brier Trend: 47.3/100
+  - 🟢 Calibration Freshness: 99.9/100
+  - 🔴 Hit Rate Trend: 25.0/100
+  - 🔴 Brier Trend: 45.8/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 95.5/100
-  - 🟢 Edge Count: 85.7/100
+  - 🟢 Edge Count: 88.6/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.588)
-- **Total games on board:** 123
-- **Strong home favorites:** 8 | **Strong road dogs:** 1
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.583)
+- **Total games on board:** 124
+- **Strong home favorites:** 8 | **Strong road dogs:** 2
 
 ## 🎯 Top 5 Best Bets
 1. **KCR @ COL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
@@ -22,12 +22,9 @@
 5. **WSN @ ATL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** TEX @ HOU ML_AWAY -- 65% / +16.9% (score 2.8)
-- [STRONG] **[MLB]** TEX @ HOU TEX_ML -- 70% / +24.8% (score 2.5)
+- [STRONG] **[MLB]** TEX @ HOU ML_AWAY -- 65% / +16.5% (score 2.8)
+- [STRONG] **[MLB]** TEX @ HOU TEX_ML -- 70% / +24.2% (score 2.5)
 - [STRONG] **[MLB]** PIT @ CIN PIT_ML -- 68% / +23.4% (score 2.5)
-
-## 📡 Sharp Action (Line Movement)
-- [MODERATE] **TEX @ HOU** ml_away: 52.61% → 56.52% (+3.9pp)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -64,9 +61,9 @@
 - Hot teams: **7** | Cold teams: **10** | Over-heavy: 0 | Under-heavy: 0
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (37)
+## ⚠️ Anomaly Detector (43)
 - RESIDUAL_DIVERGENCE: **3**
-- STEAM_MOVE: **31**
+- STEAM_MOVE: **37**
 - PEN_MISMATCH: **2**
 - COMPOUND_BULLPEN: **1**
   - CF Montréal (MLS): CF Montréal OUTPERFORMING expected margin by 8.5pts in recent games -- model bias may persist
@@ -77,7 +74,7 @@
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$14.47**
+- Expected EV: **$14.44**
   - #1 [NRFI] $50 on KCR @ COL YRFI (1st-inning OVER 0.5) (P=77%)
   - #2 [NRFI] $50 on TEX @ HOU YRFI (1st-inning OVER 0.5) (P=77%)
   - #3 [NRFI] $50 on PIT @ CIN YRFI (1st-inning OVER 0.5) (P=76%)
@@ -105,29 +102,29 @@
   - ❄️ **Brandon Ingram** (TOR): L5 12.0 vs season 19.1 [PTS -7.1] -- FADE OVER props
 
 ## 🥊 UFC Fight Matchups (UFC Fight Night: Medić vs. Rodriguez)
-  - [FAVORITE] **Nina Milošević** (8-1-0) vs Hailey Cowan -- fair -198
+  - [FAVORITE] **Nina Milošević** (9-1-0) vs Hailey Cowan -- fair -222
   - [LEAN] **Vlasto Čepo** (14-3-0) vs Gilbert Urbina -- fair -184
   - [LEAN] **Borislav Nikolic** (16-2-0) vs Mark Vologdin -- fair -167
   - [LEAN] **Michael Oliveira** (9-0-0) vs Oban Elliott -- fair -166
   - [LEAN] **Navajo Stirling** (10-0-0) vs Jan Blachowicz -- fair -141
 
 ## ⛳ Golf Player Heat (from Rocket Classic)
-  - 🔥 T1 **Cameron Young** (USA): -10 total -- finished T1
-  - 🔥 T2 **Patrick Fishburn** (USA): -10 total -- finished T2
-  - 🔥 T3 **Patrick Cantlay** (USA): -10 total -- finished T3
-  - 🔥 T4 **Matt Wallace** (England): -9 total -- finished T4
-  - 🔥 T5 **Rickie Fowler** (USA): -9 total -- finished T5
+  - 🔥 T1 **Rasmus Højgaard** (Denmark): -11 total -- finished T1
+  - 🔥 T2 **Cameron Young** (USA): -10 total -- finished T2
+  - 🔥 T3 **Patrick Fishburn** (USA): -10 total -- finished T3
+  - 🔥 T4 **Patrick Cantlay** (USA): -10 total -- finished T4
+  - 🔥 T5 **Jordan Smith** (England): -9 total -- finished T5
   - ❄️ **Hayden Springer** (USA): Sunday +5.0 vs tourney avg
   - ❄️ **Matthieu Pavon** (France): Sunday +4.0 vs tourney avg
   - ❄️ **Max McGreevy** (USA): Sunday +4.0 vs tourney avg
 
-## 🔥 MLB Batter Heat (49 HOT / 58 COLD)
+## 🔥 MLB Batter Heat (50 HOT / 57 COLD)
   - 🔥 **Steven Kwan** (CLE): L14 .423 / season .251 (+172pts)
   - 🔥 **Jackson Holliday** (BAL): L14 .410 / season .261 (+149pts)
   - 🔥 **Nico Hoerner** (CHC): L14 .404 / season .255 (+149pts)
   - 🔥 **Ildemaro Vargas** (AZ): L14 .410 / season .274 (+136pts)
   - 🔥 **Luis Rengifo** (SD): L14 .370 / season .238 (+132pts)
-  - ❄️ **Tristan Peters** (CWS): L14 .087 / season .268 (-181pts) -- FADE props
+  - ❄️ **Tristan Peters** (CWS): L14 .068 / season .266 (-198pts) -- FADE props
   - ❄️ **Troy Johnston** (COL): L14 .103 / season .283 (-180pts) -- FADE props
   - ❄️ **Brandon Marsh** (PHI): L14 .100 / season .277 (-177pts) -- FADE props
   - ❄️ **David Fry** (CLE): L14 .040 / season .183 (-143pts) -- FADE props

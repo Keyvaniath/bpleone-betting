@@ -1,11 +1,11 @@
 # Tonight's Slate Brief — 2026-08-01
 
-## Slate Quality: 55/100 (MEDIUM)
-_0% lineups confirmed · 13 rookie SPs_
+## Slate Quality: 73/100 (MEDIUM)
+_63% lineups confirmed · 9 rookie SPs_
 **Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
-- **15 games** scheduled
+- **11 games** scheduled
 - **36 best bets** scored: 0 DK · 0 PP · 14 NRFI · 0 SGP
 - **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$46.79
 - **MC simulation:** EV +$132.86, 84% P(profit), p05 $-76.89 / p95 $321.54
@@ -34,6 +34,9 @@ _0% lineups confirmed · 13 rookie SPs_
 - **WSN @ ATL YRFI (1st-inning OVER 0.5)** (low):
    - Edge +21.8% looks big but only 0 settled props on this player — model unproven
 
+## Weather leans
+- **OVER lean** (wind out + warm): NYY @ CHC
+
 ## Bullpens GASSED tonight
 Athletics, Pittsburgh Pirates, San Diego Padres, Seattle Mariners, San Francisco Giants, Tampa Bay Rays, Texas Rangers, Minnesota Twins
 _Lean late-inning OVER on these games; fade their save situations._
@@ -42,10 +45,10 @@ _Lean late-inning OVER on these games; fade their save situations._
 - **YRFI** (1st-inning OVER): KCR @ COL, TEX @ HOU, PIT @ CIN, DET @ OAK, WSN @ ATL
 
 ## Golf -- Rocket Classic
-- **Leader:** Cameron Young (-10) at #1
+- **Leader:** Rasmus Højgaard (-11) at #1
 - **Field:** 147 players  |  Status: In Progress
-- **Play of the Tournament:** Michael Kim TOP5 @ +572 (model 14.9%, HIGH)
-   - P(top 5) 14.9% -- lower variance than outright but compelling line.
+- **Play of the Tournament:** Patrick Cantlay WIN @ +561 (model 15.1%, HIGH)
+   - P(win) 15.1% with 1 round(s) left -- sweet-spot value at #4 (-10).
 
 ## NBA -- PRESEASON
 - Miami Heat @ Toronto Raptors (0-0 vs 0-0)  | P(home) 55.0% fair -122 | Scheduled
@@ -65,12 +68,12 @@ _Lean late-inning OVER on these games; fade their save situations._
 - Samsung Lions @ Lotte Giants | P(home) 41.0% fair +144 | total 8 R
 - **KBO POD:** Samsung Lions ML vs Lotte Giants (KBO) (HIGH)
 
-## LoL Esports -- 1 live, 28 upcoming
-- [LEC] GIANTX vs SK Gaming BO3 | P(A) 50.0% fair -100/-100
-- [CBLOL] Vivo Keyd Stars vs FURIA BO3 | P(A) 35.4% fair +182/-182
-- [LEC] Natus Vincere vs Karmine Corp BO3 | P(A) 40.9% fair +145/-145
-- [CBLOL] LEVIATÁN vs paiN Gaming BO3 | P(A) 50.0% fair -100/-100
-- [LCS] Cloud9 Kia vs Dignitas BO3 | P(A) 42.6% fair +134/-134
+## LoL Esports -- 1 live, 26 upcoming
+- [LCS] Dignitas vs Cloud9 Kia BO3 | P(A) 57.4% fair -134/+134
+- [LCS] Disguised vs FlyQuest BO3 | P(A) 46.3% fair +116/-116
+- [LPL] THUNDER TALK GAMING vs Xi'an Team WE BO3 | P(A) 60.8% fair -155/+155
+- [LCK] DN SOOPers vs HANJIN BRION BO3 | P(A) 49.7% fair +101/-101
+- [LPL] Invictus Gaming vs Suzhou LNG Esports BO3 | P(A) 53.7% fair -116/+116
 - **LoL POT:** Beijing JDG Esports ML vs TOP ESPORTS (LPL, BO3) (HIGH)
 
 ## Player Play of the Day -- across all sports (3514 candidates scanned)
