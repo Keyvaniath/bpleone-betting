@@ -2,7 +2,7 @@
 
 ## 🏥 Model Health: 72.1/100 [HEALTHY]
 - Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 99.9/100
+  - 🟢 Calibration Freshness: 100.0/100
   - 🔴 Hit Rate Trend: 25.0/100
   - 🔴 Brier Trend: 45.8/100
   - 🟢 Pipeline Audit: 100.0/100
@@ -10,9 +10,9 @@
   - 🟢 Edge Count: 88.6/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.583)
-- **Total games on board:** 124
-- **Strong home favorites:** 8 | **Strong road dogs:** 2
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.588)
+- **Total games on board:** 123
+- **Strong home favorites:** 8 | **Strong road dogs:** 1
 
 ## 🎯 Top 5 Best Bets
 1. **KCR @ COL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
@@ -20,11 +20,6 @@
 3. **PIT @ CIN YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 4. **DET @ OAK YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 5. **WSN @ ATL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-
-## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** TEX @ HOU ML_AWAY -- 65% / +16.5% (score 2.8)
-- [STRONG] **[MLB]** TEX @ HOU TEX_ML -- 70% / +24.2% (score 2.5)
-- [STRONG] **[MLB]** PIT @ CIN PIT_ML -- 68% / +23.4% (score 2.5)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -82,14 +77,14 @@
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
 ## 🎯 Convergence Picks (13 stacked games)
-- ELITE: **4** · HIGH: 3 · MED: 6
+- ELITE: **3** · HIGH: 4 · MED: 6
   - [ELITE] Seattle Sounders FC @ Portland Timbers : 6 signals (PREGAME, HEAT_COLD, ANOMALY, ANOMALY)
-  - [ELITE] Seattle Storm @ Atlanta Dream : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
   - [ELITE] LAFC @ Vancouver Whitecaps : 4 signals (PREGAME, HEAT_COLD, ATS, ATS)
   - [ELITE] Real Salt Lake @ St. Louis CITY SC : 4 signals (PREGAME, HEAT_COLD, ATS, ATS)
+  - [HIGH] New York Liberty @ Phoenix Mercury : 3 signals (HEAT_COLD, ATS, ATS)
   - [HIGH] New England Revolution @ CF Montréal : 3 signals (ANOMALY, ATS, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (15)
+## ⚾ Top MLB Pitcher K Plays (10)
 - **Yoshinobu Yamamoto** OVER 4.5 K (73%) fair -271
 - **Ronel Blanco** OVER 4.5 K (71%) fair -251
 - **Cristopher Sánchez** OVER 5.5 K (71%) fair -249
@@ -103,22 +98,22 @@
 
 ## 🥊 UFC Fight Matchups (UFC Fight Night: Medić vs. Rodriguez)
   - [FAVORITE] **Nina Milošević** (9-1-0) vs Hailey Cowan -- fair -222
-  - [LEAN] **Vlasto Čepo** (14-3-0) vs Gilbert Urbina -- fair -184
-  - [LEAN] **Borislav Nikolic** (16-2-0) vs Mark Vologdin -- fair -167
-  - [LEAN] **Michael Oliveira** (9-0-0) vs Oban Elliott -- fair -166
-  - [LEAN] **Navajo Stirling** (10-0-0) vs Jan Blachowicz -- fair -141
+  - [LEAN] **Borislav Nikolic** (17-2-0) vs Mark Vologdin -- fair -183
+  - [LEAN] **Michael Oliveira** (10-0-0) vs Oban Elliott -- fair -182
+  - [LEAN] **Vlasto Čepo** (14-4-0) vs Gilbert Urbina -- fair -154
+  - [LEAN] **Mateusz Rębecki** (21-5-0) vs Kyle Prepolec -- fair -149
 
 ## ⛳ Golf Player Heat (from Rocket Classic)
-  - 🔥 T1 **Rasmus Højgaard** (Denmark): -11 total -- finished T1
-  - 🔥 T2 **Cameron Young** (USA): -10 total -- finished T2
-  - 🔥 T3 **Patrick Fishburn** (USA): -10 total -- finished T3
-  - 🔥 T4 **Patrick Cantlay** (USA): -10 total -- finished T4
-  - 🔥 T5 **Jordan Smith** (England): -9 total -- finished T5
+  - 🔥 T1 **Davis Riley** (USA): -15 total -- finished T1
+  - 🔥 T2 **Michael Brennan** (USA): -14 total -- finished T2
+  - 🔥 T3 **Rasmus Højgaard** (Denmark): -12 total -- finished T3
+  - 🔥 T4 **Chris Kirk** (USA): -12 total -- finished T4
+  - 🔥 T5 **Rickie Fowler** (USA): -12 total -- finished T5
   - ❄️ **Hayden Springer** (USA): Sunday +5.0 vs tourney avg
   - ❄️ **Matthieu Pavon** (France): Sunday +4.0 vs tourney avg
   - ❄️ **Max McGreevy** (USA): Sunday +4.0 vs tourney avg
 
-## 🔥 MLB Batter Heat (50 HOT / 57 COLD)
+## 🔥 MLB Batter Heat (52 HOT / 57 COLD)
   - 🔥 **Steven Kwan** (CLE): L14 .423 / season .251 (+172pts)
   - 🔥 **Jackson Holliday** (BAL): L14 .410 / season .261 (+149pts)
   - 🔥 **Nico Hoerner** (CHC): L14 .404 / season .255 (+149pts)
@@ -130,12 +125,12 @@
   - ❄️ **David Fry** (CLE): L14 .040 / season .183 (-143pts) -- FADE props
   - ❄️ **Nick Kurtz** (ATH): L14 .114 / season .256 (-142pts) -- FADE props
 
-## 📈 Streak Regression Alerts (6)
+## 📈 Streak Regression Alerts (7)
+- [WNBA] Phoenix Mercury on W3 L10 3-0 -- Phoenix Mercury on W3 -- no historical sample
 - [MLS] CF Montréal on L3 L10 0-3 -- CF Montréal on L3 -- no historical sample
 - [MLS] Atlanta United FC on L3 L10 0-3 -- Atlanta United FC on L3 -- no historical sample
 - [MLS] LAFC on W3 L10 3-0 -- LAFC on W3 -- no historical sample
 - [MLS] St. Louis CITY SC on W3 L10 3-0 -- St. Louis CITY SC on W3 -- no historical sample
-- [MLS] LA Galaxy on L3 L10 0-3 -- LA Galaxy on L3 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**

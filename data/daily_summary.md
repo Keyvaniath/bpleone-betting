@@ -4,33 +4,32 @@
 
 _Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
 
-_Generated at 2026-08-01T21:44:38 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-08-01T22:58:28 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
-**PIT @ CIN - PIT_ML**
-- Market: +128
-- Model probability: 76.1%
-- Raw edge: +73.48%
+**WSN @ ATL - OVER_8.5**
+- Market: -110
+- Model probability: 91.5%
+- Raw edge: +74.68%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
 
-## Full Slate (11 games)
+## Full Slate (10 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 6:40p ET | PIT @ CIN | Great American Ball Park | 73F 3mph | PIT_ML +73.48% |
-| 7:05p ET | PHI @ BAL | Oriole Park at Camden Yards | 76F 5mph | OVER_7.5 +8.87% |
+| 7:05p ET | PHI @ BAL | Oriole Park at Camden Yards | 77F 4mph | OVER_7.5 +7.96% |
 | 7:10p ET | TEX @ HOU | Daikin Park | indoor | TEX_ML +63.19% |
-| 7:15p ET | ARI @ CLE | Progressive Field | 73F 4mph | CLE_ML +9.31% |
-| 7:15p ET | WSN @ ATL | Truist Park | 78F 6mph | OVER_8.5 +72.87% |
+| 7:15p ET | ARI @ CLE | Progressive Field | 76F 3mph | CLE_ML +9.34% |
+| 7:15p ET | WSN @ ATL | Truist Park | 79F 7mph | OVER_8.5 +74.68% |
 | 7:15p ET | NYY @ CHC | Wrigley Field | 69F 14mph | OVER_6.5 +55.85% |
-| 8:10p ET | KCR @ COL | Coors Field | 78F 5mph | OVER_12.5 +36.48% |
-| 8:40p ET | SFG @ SDP | Petco Park | 70F 3mph | SFG_ML +22.16% |
-| 9:10p ET | BOS @ LAD | UNIQLO Field at Dodger Stadium | 69F 3mph | UNDER_9.0 +14.61% |
+| 8:10p ET | KCR @ COL | Coors Field | 78F 6mph | OVER_12.5 +38.34% |
+| 8:40p ET | SFG @ SDP | Petco Park | 70F 2mph | SFG_ML +22.12% |
+| 9:10p ET | BOS @ LAD | UNIQLO Field at Dodger Stadium | 68F 3mph | UNDER_9.0 +15.36% |
 | 9:38p ET | MIL @ LAA | Angel Stadium | 72F 3mph | OVER_7.5 +31.13% |
-| 9:40p ET | DET @ OAK | Sutter Health Park | 81F 6mph | DET_ML +20.45% |
+| 9:40p ET | DET @ OAK | Sutter Health Park | 80F 5mph | DET_ML +20.31% |
 
 ## Parlays - top 5
 
@@ -60,23 +59,22 @@ _Generated at 2026-08-01T21:44:38 UTC. Game lines source: **Bovada (fallback -- 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
 
-Cumulative graded plays: 6838. Wins: 2842. Hit rate: 41.6%.
+Cumulative graded plays: 6839. Wins: 2842. Hit rate: 41.6%.
 
 ## Auxiliary Markets (Model Fair Prices)
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| ARI @ CLE | 46.7% | +114 | 3.8 | -106 | +106 |
-| BOS @ LAD | 44.8% | +123 | 4.08 | -116 | +116 |
-| DET @ OAK | 30.4% | +229 | 6.14 | +289 | -289 |
-| KCR @ COL | 22.9% | +336 | 7.51 | +205 | -205 |
-| MIL @ LAA | 41.0% | +144 | 4.53 | +269 | -269 |
-| NYY @ CHC | 43.2% | +131 | 3.81 | +289 | -289 |
-| PHI @ BAL | 48.4% | +107 | 3.72 | +188 | -188 |
-| PIT @ CIN | 24.3% | +311 | 7.11 | +533 | -533 |
-| SFG @ SDP | 39.8% | +151 | 4.62 | +216 | -216 |
+| ARI @ CLE | 46.7% | +114 | 3.78 | -107 | +107 |
+| BOS @ LAD | 44.8% | +123 | 4.08 | -115 | +115 |
+| DET @ OAK | 30.4% | +229 | 6.05 | +289 | -289 |
+| KCR @ COL | 22.9% | +336 | 7.64 | +205 | -205 |
+| MIL @ LAA | 41.0% | +144 | 4.51 | +269 | -269 |
+| NYY @ CHC | 43.2% | +131 | 3.79 | +289 | -289 |
+| PHI @ BAL | 48.4% | +107 | 3.68 | +189 | -189 |
+| SFG @ SDP | 39.8% | +151 | 4.6 | +217 | -217 |
 | TEX @ HOU | 23.3% | +329 | 7.28 | +628 | -628 |
-| WSN @ ATL | 32.2% | +211 | 5.83 | +111 | -111 |
+| WSN @ ATL | 34.3% | +191 | 5.51 | +115 | -115 |
 
 ## Team Form (last 10)
 
@@ -107,4 +105,4 @@ _The model is suggesting 1 parameter tweak based on its own performance. Apply v
 ---
 
 _EdgeStat is a research desk. Bet responsibly. 21+. 1-800-GAMBLER._
-_Source: github.com/Keyvaniath/bpleone-betting - last settled 2026-07-31._
+_Source: github.com/Keyvaniath/bpleone-betting - last settled 2026-08-01._
