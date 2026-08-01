@@ -1,10 +1,12 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:14 F:112
+_NO_ACTION_NIGHT_ | L:0 S:15 F:104
+
+:lock: **LOCK:** Ryan Feltner (MLB)
 
 :dart: **Top Picks:**
 1. [GOLF] Patrick Cantlay -- Patrick Cantlay (PLAYER_STRONG)
 2. [GOLF] Cameron Young -- Cameron Young (PLAYER_STRONG)
-3. [MLB] AWAY -- AWAY (TEAM_STRONG)
+3. [MLB] Drew Rasmussen -- Drew Rasmussen (PITCHER_STRONG)
 
 :coin: Bankroll Advisory: STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 
