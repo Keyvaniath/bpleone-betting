@@ -1,32 +1,31 @@
-# EdgeStat Daily Summary — 2026-07-31
+# EdgeStat Daily Summary — 2026-08-01
 
-## 🏥 Model Health: 72.1/100 [HEALTHY]
+## 🏥 Model Health: 70.3/100 [HEALTHY]
 - Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 100.0/100
+  - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 33.3/100
   - 🔴 Brier Trend: 44.5/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 95.5/100
+  - 🟢 Data Health: 86.4/100
   - 🟡 Edge Count: 74.3/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.584)
-- **Total games on board:** 113
-- **Strong home favorites:** 2 | **Strong road dogs:** 1
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.581)
+- **Total games on board:** 110
+- **Strong home favorites:** 0 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
-1. **MIL @ LAA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-2. **KCR @ COL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-3. **SFG @ SDP YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-4. **DET @ OAK YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-5. **MIN @ SEA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+1. **MIA @ NYM YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+2. **MIL @ LAA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+3. **PHI @ BAL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+4. **KCR @ COL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+5. **SFG @ SDP YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** MIL @ LAA MIL_ML -- 77% / +21.6% (score 2.5)
+- [STRONG] **[MLB]** MIL @ LAA MIL_ML -- 67% / +22.9% (score 2.5)
 
 ## 📉 Strong UNDER Signals
-- [STRONG 5.6] **BOS @ LAD** model 7.22 vs market 8.5
-- [STRONG 5.4] **STL @ TOR** model 6.8 vs market 7.5
+- [ELITE 7.0] **STL @ TOR** model 6.8 vs market 8.5
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -54,30 +53,26 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (1)
-- [WNBA] **Indiana Fever** AWAY (4-0 L10) · model 64.8% fair -184
-
 ## 🔥/❄️ Heat / Cold Signals
 - Hot teams: **7** | Cold teams: **10** | Over-heavy: 0 | Under-heavy: 0
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (41)
-- RESIDUAL_DIVERGENCE: **4**
-- STEAM_MOVE: **33**
+## ⚠️ Anomaly Detector (35)
+- STEAM_MOVE: **31**
 - PEN_MISMATCH: **1**
 - COMPOUND_BULLPEN: **3**
-  - Seattle Storm (WNBA): Seattle Storm OUTPERFORMING expected margin by 8.5pts in recent games -- model bias may persist
-  - Washington Mystics (WNBA): Washington Mystics OUTPERFORMING expected margin by 8.1pts in recent games -- model bias may persist
-  - Dallas Wings (WNBA): Dallas Wings UNDERPERFORMING expected margin by 6.2pts in recent games -- model bias may persist
-  - Indiana Fever (WNBA): Indiana Fever OUTPERFORMING expected margin by 7.0pts in recent games -- model bias may persist
-  - DAL @ POR (WNBA): TOTAL steam since open: ML -2.1pp toward DAL; total +4 (OVER) (12 snapshots)
+  - CON @ WSH (WNBA): ML/TOTAL steam since open: ML +2.9pp toward WSH; total +4 (OVER) (13 snapshots)
+  - CLE @ CIN (MLB): ML steam since open: ML -15.7pp toward CLE (8 snapshots)
+  - IND @ SEA (WNBA): ML/TOTAL steam since open: ML -2.8pp toward IND; total +3 (OVER) (13 snapshots)
+  - ATL @ NYM (MLB): ML/TOTAL steam since open: ML -10.4pp toward ATL; total -1.5 (UNDER) (8 snapshots)
+  - TOR @ MIN (WNBA): TOTAL steam since open: ML -0.1pp toward TOR; total +2 (OVER) (12 snapshots)
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$9.9**
-  - #1 [NRFI] $50 on MIL @ LAA YRFI (1st-inning OVER 0.5) (P=75%)
-  - #2 [NRFI] $50 on KCR @ COL YRFI (1st-inning OVER 0.5) (P=74%)
-  - #3 [NRFI] $50 on SFG @ SDP YRFI (1st-inning OVER 0.5) (P=74%)
+- Expected EV: **$13.97**
+  - #1 [NRFI] $50 on MIA @ NYM YRFI (1st-inning OVER 0.5) (P=80%)
+  - #2 [NRFI] $50 on MIL @ LAA YRFI (1st-inning OVER 0.5) (P=75%)
+  - #3 [NRFI] $50 on PHI @ BAL YRFI (1st-inning OVER 0.5) (P=75%)
   - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
@@ -91,10 +86,10 @@
 
 ## ⚾ Top MLB Pitcher K Plays (9)
 - **Bryce Miller** OVER 4.5 K (76%) fair -321
-- **Paul Skenes** OVER 5.5 K (76%) fair -314
 - **Erick Fedde** OVER 4.5 K (74%) fair -280
-- **Dylan Cease** OVER 7.5 K (72%) fair -255
 - **Nathan Eovaldi** OVER 5.5 K (70%) fair -233
+- **Dylan Cease** OVER 7.5 K (69%) fair -225
+- **Kodai Senga** OVER 5.5 K (69%) fair -221
 
 ## 🏀 NBA Player Heat (2 HOT / 1 COLD)
   - 🔥 **Scottie Barnes** (TOR): L5 24.4/7.6/9.6 vs season 18.6/5.8/8.8 [PTS +5.8]
@@ -109,23 +104,23 @@
   - [LEAN] **Marina Spasić** (7-1-0) vs Stephanie Luciano -- fair -150
 
 ## ⛳ Golf Player Heat (from Rocket Classic)
-  - 🔥 T1 **Patrick Cantlay** (USA): -10 total -- finished T1
-  - 🔥 T2 **Matt Wallace** (England): -9 total -- finished T2
-  - 🔥 T3 **Cameron Young** (USA): -9 total -- finished T3
-  - 🔥 T4 **Peter Malnati** (USA): -9 total -- finished T4
-  - 🔥 T5 **Michael Thorbjornsen** (USA): -7 total -- finished T5
+  - 🔥 T1 **Cameron Young** (USA): -10 total -- finished T1
+  - 🔥 T2 **Patrick Cantlay** (USA): -10 total -- finished T2
+  - 🔥 T3 **Patrick Fishburn** (USA): -10 total -- finished T3
+  - 🔥 T4 **Matt Wallace** (England): -9 total -- finished T4
+  - 🔥 T5 **Rickie Fowler** (USA): -9 total -- finished T5
 
-## 🔥 MLB Batter Heat (51 HOT / 51 COLD)
+## 🔥 MLB Batter Heat (49 HOT / 58 COLD)
+  - 🔥 **Steven Kwan** (CLE): L14 .423 / season .251 (+172pts)
+  - 🔥 **Jackson Holliday** (BAL): L14 .410 / season .261 (+149pts)
   - 🔥 **Nico Hoerner** (CHC): L14 .404 / season .255 (+149pts)
-  - 🔥 **Steven Kwan** (CLE): L14 .389 / season .247 (+142pts)
-  - 🔥 **Jeff McNeil** (ATH): L14 .385 / season .248 (+137pts)
-  - 🔥 **Ildemaro Vargas** (AZ): L14 .410 / season .275 (+135pts)
-  - 🔥 **Jackson Holliday** (BAL): L14 .395 / season .260 (+135pts)
-  - ❄️ **Troy Johnston** (COL): L14 .103 / season .286 (-183pts) -- FADE props
-  - ❄️ **Brandon Marsh** (PHI): L14 .102 / season .280 (-178pts) -- FADE props
-  - ❄️ **Tristan Peters** (CWS): L14 .109 / season .271 (-162pts) -- FADE props
-  - ❄️ **Nick Kurtz** (ATH): L14 .111 / season .257 (-146pts) -- FADE props
-  - ❄️ **Otto Lopez** (MIA): L14 .196 / season .325 (-129pts) -- FADE props
+  - 🔥 **Ildemaro Vargas** (AZ): L14 .410 / season .274 (+136pts)
+  - 🔥 **Luis Rengifo** (SD): L14 .370 / season .238 (+132pts)
+  - ❄️ **Tristan Peters** (CWS): L14 .087 / season .268 (-181pts) -- FADE props
+  - ❄️ **Troy Johnston** (COL): L14 .103 / season .283 (-180pts) -- FADE props
+  - ❄️ **Brandon Marsh** (PHI): L14 .100 / season .277 (-177pts) -- FADE props
+  - ❄️ **David Fry** (CLE): L14 .040 / season .183 (-143pts) -- FADE props
+  - ❄️ **Nick Kurtz** (ATH): L14 .114 / season .256 (-142pts) -- FADE props
 
 ## 📈 Streak Regression Alerts (6)
 - [WNBA] Atlanta Dream on W3 L10 3-0 -- Atlanta Dream on W3 -- no historical sample
@@ -142,6 +137,6 @@
   - ⚠️ batter_rbis (Brier Δ -0.0052)
 
 ## 🤖 Self-Training Status
-- **WNBA**: n=31 games · hit rate 74.2% · bias -5.2pp [calibration applied]
-- **MLS**: n=36 games · hit rate 58.3% · bias -12.0pp [calibration applied]
-- **MLB**: n=192 games · hit rate 51.6% · bias -0.8pp
+- **WNBA**: n=30 games · hit rate 80.0% · bias -4.2pp [calibration applied]
+- **MLS**: n=37 games · hit rate 56.8% · bias -10.5pp [calibration applied]
+- **MLB**: n=193 games · hit rate 54.4% · bias -0.5pp

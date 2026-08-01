@@ -1,9 +1,9 @@
-# 🌙 Tonight's Brief — 2026-07-31
+# 🌙 Tonight's Brief — 2026-08-01
 
 _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 
 ## 💪 STRONG (1 picks)
-- [MLB] MIL @ LAA MIL_ML · 77% / +21.6%
+- [MLB] MIL @ LAA MIL_ML · 67% / +22.9%
 
 ## 🔒 5 Daily Locks
 - **Choi Jeong** one_plus_tb (KBO) -- 73% / +39.8%
@@ -13,12 +13,12 @@ _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 - **Austin Dean** one_plus_tb (KBO) -- 73% / +38.5%
 
 ## 📉 Under Bets
-- **STL @ TOR** UNDER 8.5 — model 6.8 [ELITE signal]
+- **CHW @ TBR** UNDER 8.0 — model 7.5 [STRONG signal]
 
 ## 🎰 Tonight's Best Parlay
 - **Choi Jeong** one_plus_tb + **Jose Pirela** one_plus_tb
 - Joint 53% · fair +264 · edge +94.6%
 
 ---
-_Generated 2026-07-31T23:10:54_
+_Generated 2026-08-01T07:22:36_
 _Full breakdown: /tonight · Full history: /locks-of-day_
