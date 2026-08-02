@@ -2,36 +2,28 @@
 
 **Model Confidence: 22.2/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
 
-_Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
+_Pipeline health: **WARNING** (11/15 artifacts ok; 4 empty, 0 stale)._ 
 
-_Generated at 2026-08-02T21:48:05 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
-
-## Play of the Day
-
-**BOS @ LAD - BOS_ML**
-- Market: +152
-- Model probability: 40.4%
-- Raw edge: +1.74%
-- Recommended stake: 0.29u Kelly
+_Generated at 2026-08-02T22:57:03 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Full Slate (1 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 7:20p ET | BOS @ LAD | UNIQLO Field at Dodger Stadium | 72F 5mph | BOS_ML +1.74% |
+| 7:20p ET | BOS @ LAD | UNIQLO Field at Dodger Stadium | 73F 5mph | -- |
 
 ## Self-Learning Loop
 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
 
-Cumulative graded plays: 6939. Wins: 2879. Hit rate: 41.5%.
+Cumulative graded plays: 7006. Wins: 2906. Hit rate: 41.5%.
 
 ## Auxiliary Markets (Model Fair Prices)
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| BOS @ LAD | 41.9% | +138 | 4.45 | +116 | -116 |
+| BOS @ LAD | 41.9% | +138 | 4.44 | +116 | -116 |
 
 ## Team Form (last 10)
 

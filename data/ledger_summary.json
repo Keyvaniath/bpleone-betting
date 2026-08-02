@@ -1,23 +1,23 @@
 {
-  "generated_at": "2026-08-02T22:26:00",
+  "generated_at": "2026-08-02T22:56:32",
   "stake_assumption": "1u flat per pick",
   "total_picks": 10000,
-  "n_settled": 6940,
-  "n_pending": 609,
+  "n_settled": 7006,
+  "n_pending": 543,
   "n_void": 2451,
-  "wins": 2877,
-  "losses": 4056,
+  "wins": 2903,
+  "losses": 4096,
   "pushes": 7,
-  "hit_rate": 0.415,
-  "net_units": -1059.624,
-  "roi_pct": -15.28,
+  "hit_rate": 0.4148,
+  "net_units": -1073.452,
+  "roi_pct": -15.34,
   "n_calibrated_picks": 9508,
   "calibrated_reliability": {
-    "n": 6836,
-    "ece_raw": 0.0842,
-    "ece_calibrated": 0.0164,
-    "brier_raw": 0.21034,
-    "brier_calibrated": 0.19456,
+    "n": 6902,
+    "ece_raw": 0.0843,
+    "ece_calibrated": 0.0172,
+    "brier_raw": 0.21057,
+    "brier_calibrated": 0.19488,
     "note": "In-sample over the settled ledger (the isotonic transform is fit on these same outcomes); held-out 70/30 validation is in recalibration_map.json. p_predicted = raw model prob (kept untouched for the learning loop); p_calibrated = honest prob stamped per pick. Lower ECE/Brier on the calibrated column = the displayed % is truer."
   },
   "curated": {
@@ -47,11 +47,11 @@
       "hit_rate": 0.6564
     }
   },
-  "n_added_this_run": 13,
-  "n_newly_settled_this_run": 6,
+  "n_added_this_run": 0,
+  "n_newly_settled_this_run": 66,
   "n_resettled_this_run": 0,
   "n_voided_this_run": 0,
-  "n_duplicates_collapsed_this_run": 5,
+  "n_duplicates_collapsed_this_run": 0,
   "n_duplicate_adds_blocked_this_run": 45,
   "n_reconciled_settled_voids": 0,
   "n_bootstrapped_from_locks_history": 0,
@@ -93,22 +93,22 @@
       "roi_pct": 30.46
     },
     "golf_top_10": {
-      "n": 226,
-      "wins": 75,
-      "losses": 151,
+      "n": 254,
+      "wins": 86,
+      "losses": 168,
       "pushes": 0,
-      "net_units": -47.139,
-      "hit_rate": 0.3319,
-      "roi_pct": -20.86
+      "net_units": -51.906,
+      "hit_rate": 0.3386,
+      "roi_pct": -20.44
     },
     "golf_top_20": {
-      "n": 230,
-      "wins": 114,
-      "losses": 116,
+      "n": 268,
+      "wins": 129,
+      "losses": 139,
       "pushes": 0,
-      "net_units": -21.8,
-      "hit_rate": 0.4957,
-      "roi_pct": -9.48
+      "net_units": -30.86,
+      "hit_rate": 0.4813,
+      "roi_pct": -11.51
     },
     "mlb_bw_walk_1plus_yes": {
       "n": 99,
@@ -1604,12 +1604,12 @@
       "hit_rate": 0.4848
     },
     "top": {
-      "n": 537,
-      "wins": 216,
-      "losses": 321,
+      "n": 603,
+      "wins": 242,
+      "losses": 361,
       "pushes": 0,
-      "net_units": -71.802,
-      "hit_rate": 0.4022
+      "net_units": -85.631,
+      "hit_rate": 0.4013
     },
     "walk_1plus_yes": {
       "n": 99,
@@ -2038,12 +2038,12 @@
       "hit_rate": 0.4848
     },
     "top": {
-      "n": 537,
-      "wins": 216,
-      "losses": 321,
+      "n": 603,
+      "wins": 242,
+      "losses": 361,
       "pushes": 0,
-      "net_units": -71.802,
-      "hit_rate": 0.4022
+      "net_units": -85.631,
+      "hit_rate": 0.4013
     },
     "mlb_walk_0.5_over": {
       "n": 99,
@@ -2491,15 +2491,15 @@
     },
     "GOLF": {
       "n": 634,
-      "settled": 502,
-      "wins": 204,
-      "losses": 298,
+      "settled": 568,
+      "wins": 230,
+      "losses": 338,
       "pushes": 0,
-      "pending": 67,
+      "pending": 1,
       "void": 65,
-      "net_units": -54.929,
-      "hit_rate": 0.4064,
-      "roi_pct": -10.94,
+      "net_units": -68.757,
+      "hit_rate": 0.4049,
+      "roi_pct": -12.11,
       "markets": 3
     },
     "NHL": {
@@ -2634,10 +2634,10 @@
     }
   },
   "last_7_days": {
-    "wins": 105,
-    "losses": 92,
-    "net_units": 8.832,
-    "hit_rate": 0.533
+    "wins": 131,
+    "losses": 132,
+    "net_units": -4.996,
+    "hit_rate": 0.4981
   },
   "note": "Unified pick ledger -- records every pick the model surfaces (top_25 board, whales, consensus, unders, sharp action, locks, POD) and settles each against actual outcomes. Per-source W-L feeds back into calibration so the model learns which modules are reliable. THIS is the training signal."
 }

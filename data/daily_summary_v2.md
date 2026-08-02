@@ -2,7 +2,7 @@
 
 ## 🏥 Model Health: 64.5/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.9/100
+  - 🟢 Calibration Freshness: 100.0/100
   - 🔴 Hit Rate Trend: 25.0/100
   - 🔴 Brier Trend: 19.2/100
   - 🟢 Pipeline Audit: 100.0/100
@@ -10,8 +10,8 @@
   - 🟡 Edge Count: 65.7/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.585)
-- **Total games on board:** 112
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.586)
+- **Total games on board:** 111
 - **Strong home favorites:** 2 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
@@ -20,9 +20,6 @@
 3. **DET @ OAK YRFI (1st-inning OVER 0.5)** (78/100 ★★★★)
 4. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
 5. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
-
-## 📡 Sharp Action (Line Movement)
-- [ELITE] **STL @ TOR** ml_away: 38.91% → 94.74% (+55.8pp)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -54,11 +51,10 @@
 - Hot teams: **5** | Cold teams: **15** | Over-heavy: 0 | Under-heavy: 0
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (48)
+## ⚠️ Anomaly Detector (43)
 - RESIDUAL_DIVERGENCE: **3**
 - STEAM_MOVE: **39**
-- COMPOUND_BULLPEN: **4**
-- PEN_MISMATCH: **2**
+- COMPOUND_BULLPEN: **1**
   - Los Angeles Sparks (WNBA): Los Angeles Sparks OUTPERFORMING expected margin by 8.0pts in recent games -- model bias may persist
   - Connecticut Sun (WNBA): Connecticut Sun UNDERPERFORMING expected margin by 7.0pts in recent games -- model bias may persist
   - Toronto Tempo (WNBA): Toronto Tempo UNDERPERFORMING expected margin by 8.3pts in recent games -- model bias may persist
@@ -74,20 +70,16 @@
   - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
-## 🎯 Convergence Picks (13 stacked games)
-- ELITE: **2** · HIGH: 1 · MED: 10
+## 🎯 Convergence Picks (17 stacked games)
+- ELITE: **4** · HIGH: 3 · MED: 10
+  - [ELITE] Los Angeles Sparks @ Portland Fire : 5 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ATS)
+  - [ELITE] Connecticut Sun @ Dallas Wings : 4 signals (HEAT_COLD, ANOMALY, ATS, ATS)
   - [ELITE] Atlanta United FC @ Philadelphia Union : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
   - [ELITE] FC Dallas @ LA Galaxy : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
-  - [HIGH] Seattle Sounders FC @ Portland Timbers : 3 signals (HEAT_COLD, ATS, ATS)
-  - [MED] New England Revolution @ CF Montréal : 2 signals (ATS, ATS)
-  - [MED] Orlando City SC @ Red Bull New York : 2 signals (ATS, ATS)
+  - [HIGH] Indiana Fever @ Minnesota Lynx : 3 signals (HEAT_COLD, HEAT_COLD, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (13)
-- **Griffin Jax** OVER 4.5 K (76%) fair -321
-- **Cade Cavalli** OVER 5.5 K (76%) fair -314
-- **Gavin Williams** OVER 6.5 K (76%) fair -310
-- **Taj Bradley** OVER 5.5 K (75%) fair -292
-- **Jacob Misiorowski** OVER 7.5 K (74%) fair -290
+## ⚾ Top MLB Pitcher K Plays (1)
+- **Emmet Sheehan** OVER 4.5 K (63%) fair -173
 
 ## 🏀 NBA Player Heat (2 HOT / 1 COLD)
   - 🔥 **Scottie Barnes** (TOR): L5 24.4/7.6/9.6 vs season 18.6/5.8/8.8 [PTS +5.8]
@@ -102,26 +94,32 @@
   - [LEAN] **Mateusz Rębecki** (21-5-0) vs Kyle Prepolec -- fair -149
 
 ## ⛳ Golf Player Heat (from Rocket Classic)
-  - 🔥 T1 **Davis Riley** (USA): -15 total -- finished T1
-  - 🔥 T2 **Michael Brennan** (USA): -14 total -- finished T2
-  - 🔥 T3 **Rasmus Højgaard** (Denmark): -12 total -- finished T3
-  - 🔥 T4 **Chris Kirk** (USA): -12 total -- finished T4
-  - 🔥 T5 **Rickie Fowler** (USA): -12 total -- finished T5
-  - ❄️ **Hayden Springer** (USA): Sunday +5.0 vs tourney avg
-  - ❄️ **Matthieu Pavon** (France): Sunday +4.0 vs tourney avg
-  - ❄️ **Max McGreevy** (USA): Sunday +4.0 vs tourney avg
+  - 🔥 T1 **Michael Thorbjornsen** (USA): -18 total -- finished T1, Sunday -2.5 vs tourney avg
+  - 🔥 T2 **Xander Schauffele** (USA): -16 total -- finished T2, Sunday -1.0 vs tourney avg
+  - 🔥 T3 **Rasmus Højgaard** (Denmark): -15 total -- finished T3
+  - 🔥 T5 **Hideki Matsuyama** (Japan): -13 total -- finished T5, Sunday -2.8 vs tourney avg
+  - 🔥 T6 **Matt Wallace** (England): -13 total -- finished T6
+  - ❄️ **Zecheng Dou** (China): Sunday +7.2 vs tourney avg
+  - ❄️ **Tony Finau** (USA): Sunday +6.5 vs tourney avg
+  - ❄️ **Michael Brennan** (USA): Sunday +5.8 vs tourney avg
 
-## 🔥 MLB Batter Heat (49 HOT / 59 COLD)
+## 🔥 MLB Batter Heat (47 HOT / 58 COLD)
+  - 🔥 **Jackson Merrill** (SD): L14 .396 / season .237 (+159pts)
   - 🔥 **Steven Kwan** (CLE): L14 .415 / season .258 (+157pts)
-  - 🔥 **Colt Keith** (DET): L14 .421 / season .267 (+154pts)
-  - 🔥 **Jackson Merrill** (SD): L14 .385 / season .235 (+150pts)
-  - 🔥 **Luis Rengifo** (SD): L14 .386 / season .238 (+148pts)
   - 🔥 **Freddy Fermin** (SD): L14 .323 / season .179 (+144pts)
+  - 🔥 **Jeff McNeil** (ATH): L14 .390 / season .248 (+142pts)
+  - 🔥 **Andruw Monasterio** (BOS): L14 .400 / season .259 (+141pts)
   - ❄️ **David Fry** (CLE): L14 .000 / season .182 (-182pts) -- FADE props
   - ❄️ **Tristan Peters** (CWS): L14 .091 / season .267 (-176pts) -- FADE props
   - ❄️ **Troy Johnston** (COL): L14 .122 / season .283 (-161pts) -- FADE props
   - ❄️ **Nick Kurtz** (ATH): L14 .114 / season .256 (-142pts) -- FADE props
   - ❄️ **Trent Grisham** (NYY): L14 .083 / season .211 (-128pts) -- FADE props
+
+## 📈 Streak Regression Alerts (4)
+- [WNBA] Portland Fire on L3 L10 0-3 -- Portland Fire on L3 -- no historical sample
+- [WNBA] Los Angeles Sparks on L3 L10 0-3 -- Los Angeles Sparks on L3 -- no historical sample
+- [WNBA] Connecticut Sun on L4 L10 0-4 -- Connecticut Sun on L4 -- no historical sample
+- [WNBA] Toronto Tempo on L3 L10 0-3 -- Toronto Tempo on L3 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**
