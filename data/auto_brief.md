@@ -1,11 +1,11 @@
 # Tonight's Slate Brief — 2026-08-02
 
-## Slate Quality: 65/100 (MEDIUM)
-_43% lineups confirmed · 14 rookie SPs_
-**Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
+## Slate Quality: 94/100 (HIGH)
+_100% lineups confirmed · 2 rookie SPs_
+**Recommendation:** Play normal Kelly sizing.
 
 ## Slate
-- **15 games** scheduled
+- **1 games** scheduled
 - **28 best bets** scored: 0 DK · 0 PP · 13 NRFI · 0 SGP
 - **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$41.45
 - **MC simulation:** EV +$82.1, 78% P(profit), p05 $-101.52 / p95 $249.24
@@ -36,9 +36,6 @@ _43% lineups confirmed · 14 rookie SPs_
 - **BOS @ LAD YRFI (1st-inning OVER 0.5)** (low):
    - Edge +12.1% looks big but only 0 settled props on this player — model unproven
 
-## Weather leans
-- **OVER lean** (wind out + warm): NYY @ CHC
-
 ## Bullpens GASSED tonight
 Athletics, Pittsburgh Pirates, San Diego Padres, San Francisco Giants, Texas Rangers, Toronto Blue Jays, Chicago White Sox, Miami Marlins
 _Lean late-inning OVER on these games; fade their save situations._
@@ -50,7 +47,7 @@ _Lean late-inning OVER on these games; fade their save situations._
 ## Golf -- Rocket Classic
 - **Leader:** Davis Riley (-15) at #1
 - **Field:** 147 players  |  Status: In Progress
-- **Play of the Tournament:** Russell Henley TOP10 @ +579 (model 14.7%, HIGH)
+- **Play of the Tournament:** Russell Henley TOP10 @ +582 (model 14.7%, HIGH)
    - P(top 10) 14.7% -- safest finish bet (#21 (-9)).
 
 ## NBA -- PRESEASON
@@ -63,13 +60,13 @@ _Lean late-inning OVER on these games; fade their save situations._
 - Winnipeg Jets @ Edmonton Oilers (0-0-0 vs 0-0-0)  | P(home) 52.9% fair -112 | Scheduled
 - Chicago Blackhawks @ Minnesota Wild (0-0-0 vs 0-0-0)  | P(home) 52.9% fair -112 | Scheduled
 
-## LoL Esports -- 1 live, 19 upcoming
-- [LEC] G2 Esports vs SK Gaming BO3 | P(A) 52.7% fair -111/+111
-- [CBLOL] Fluxo W7M vs LOUD BO3 | P(A) 50.0% fair -100/-100
-- [LEC] Movistar KOI vs Fnatic BO3 | P(A) 50.4% fair -102/+102
-- [CBLOL] LOS vs RED Kalunga BO3 | P(A) 53.3% fair -114/+114
-- [LCS] Shopify Rebellion vs LYON BO3 | P(A) 42.0% fair +138/-138
-- **LoL POT:** LYON ML vs Shopify Rebellion (LCS, BO3) (HIGH)
+## LoL Esports -- 1 live, 14 upcoming
+- [LCS] Team Liquid Alienware vs Sentinels BO3 | P(A) 56.5% fair -130/+130
+- [LCK Challengers] BRO Challengers vs BNK FEARX Youth BO3 | P(A) 46.5% fair +115/-115
+- [PCS] CTBC Flying Oyster Academy vs Sponge Gaming BO3 | P(A) 50.0% fair -100/-100
+- [LCK Challengers] DNS Challengers vs DK Challengers BO3 | P(A) 46.7% fair +114/-114
+- [PCS] GZ Academy vs Embrace Whatever Happens BO3 | P(A) 50.0% fair -100/-100
+- **LoL POT:** Team Liquid Alienware ML vs Sentinels (LCS, BO3) (HIGH)
 
 ## Player Play of the Day -- across all sports (3494 candidates scanned)
 - **[LOL]** Inspired UNDER 3.5 Kills | model 61.7% fair -161 (ELITE)
@@ -79,7 +76,7 @@ _Lean late-inning OVER on these games; fade their save situations._
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | model 61.0% fair -157 (ELITE)
 
 ## Self-learning calibration (esports + KBO)
-- **LOL:** 48 settled | brier 0.2773 | ECE 0.2068
-   - Model over-confident; subtract 19.5pp at next inference
+- **LOL:** 49 settled | brier 0.2752 | ECE 0.1941
+   - Model over-confident; subtract 18.2pp at next inference
 - **KBO:** 41 settled | brier 0.2855 | ECE 0.2429
    - Model over-confident; subtract 21.4pp at next inference

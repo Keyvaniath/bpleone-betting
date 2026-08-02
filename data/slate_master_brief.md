@@ -1,26 +1,26 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-08-02T15:09:23 UTC_
+_Generated 2026-08-02T21:47:36 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -17
+- **Score:** -31
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 17
-- **Total FADES:** 85
+- **Total STRONG:** 15
+- **Total FADES:** 91
 
 ## Top 5 Curated Picks
-1. **GOLF / Davis Riley** (GOLF_PLAYER, score=201.86)
+1. **GOLF / Davis Riley** (GOLF_PLAYER, score=201.43)
    - Play: Davis Riley (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Michael Brennan** (GOLF_PLAYER, score=180.21)
+2. **GOLF / Michael Brennan** (GOLF_PLAYER, score=179.93)
    - Play: Michael Brennan (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-3. **MLB / Munetaka Murakami** (MLB_BATTER, score=103.06)
-   - Play: Munetaka Murakami (BATTER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_BATTER)
-4. **MLB / HOME** (MLB_TEAM, score=72.17)
+3. **MLB / HOME** (MLB_TEAM, score=74.5)
    - Play: HOME (TEAM_STRONG)
+   - Rationale: Cross-sport top pick (MLB_TEAM)
+4. **MLB / AWAY** (MLB_TEAM, score=73.83)
+   - Play: AWAY (TEAM_STRONG)
    - Rationale: Cross-sport top pick (MLB_TEAM)
 
 ## Top Events Board
@@ -36,13 +36,13 @@ _Generated 2026-08-02T15:09:23 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **NBA** / MIA (TEAM_FADE)
-  - Fade angle: team total UNDER
 - **NBA** / TOR (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NHL** / casey desmith (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / filip gustavsson (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / marc-andre fleury (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
+- **NBA** / MIA (TEAM_FADE)
+  - Fade angle: team total UNDER
+- **MLB** / Griffin Jax (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Anthony Kay (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Kyle Bradish (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES

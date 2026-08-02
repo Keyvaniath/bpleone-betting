@@ -1,18 +1,18 @@
 # EdgeStat Daily Summary — 2026-08-02
 
-## 🏥 Model Health: 67.4/100 [OK]
+## 🏥 Model Health: 64.5/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.4/100
-  - 🔴 Hit Rate Trend: 36.7/100
-  - 🔴 Brier Trend: 17.9/100
+  - 🟢 Calibration Freshness: 99.9/100
+  - 🔴 Hit Rate Trend: 25.0/100
+  - 🔴 Brier Trend: 19.2/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 95.5/100
-  - 🟡 Edge Count: 74.3/100
+  - 🟡 Edge Count: 65.7/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.581)
-- **Total games on board:** 109
-- **Strong home favorites:** 0 | **Strong road dogs:** 0
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.585)
+- **Total games on board:** 112
+- **Strong home favorites:** 2 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
 1. **KCR @ COL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
@@ -22,8 +22,7 @@
 5. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
 
 ## 📡 Sharp Action (Line Movement)
-- [ELITE] **STL @ TOR** ml_away: 38.91% → 51.22% (+12.3pp)
-- [MODERATE] **KCR @ COL** over_11.5: 50.0% → 53.49% (+3.5pp)
+- [ELITE] **STL @ TOR** ml_away: 38.91% → 94.74% (+55.8pp)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -55,19 +54,20 @@
 - Hot teams: **5** | Cold teams: **15** | Over-heavy: 0 | Under-heavy: 0
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (42)
-- STEAM_MOVE: **36**
+## ⚠️ Anomaly Detector (48)
+- RESIDUAL_DIVERGENCE: **3**
+- STEAM_MOVE: **39**
 - COMPOUND_BULLPEN: **4**
 - PEN_MISMATCH: **2**
+  - Los Angeles Sparks (WNBA): Los Angeles Sparks OUTPERFORMING expected margin by 8.0pts in recent games -- model bias may persist
+  - Connecticut Sun (WNBA): Connecticut Sun UNDERPERFORMING expected margin by 7.0pts in recent games -- model bias may persist
+  - Toronto Tempo (WNBA): Toronto Tempo UNDERPERFORMING expected margin by 8.3pts in recent games -- model bias may persist
   - CON @ WSH (WNBA): ML/TOTAL steam since open: ML +2.9pp toward WSH; total +4 (OVER) (13 snapshots)
   - CLE @ CIN (MLB): ML steam since open: ML -15.7pp toward CLE (8 snapshots)
-  - IND @ SEA (WNBA): ML/TOTAL steam since open: ML -2.8pp toward IND; total +3 (OVER) (13 snapshots)
-  - ATL @ NYM (MLB): ML/TOTAL steam since open: ML -10.4pp toward ATL; total -1.5 (UNDER) (8 snapshots)
-  - TOR @ MIN (WNBA): TOTAL steam since open: ML -0.1pp toward TOR; total +2 (OVER) (12 snapshots)
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$2.09**
+- Expected EV: **$2.1**
   - #1 [NRFI] $50 on KCR @ COL YRFI (1st-inning OVER 0.5) (P=74%)
   - #2 [NRFI] $50 on STL @ TOR YRFI (1st-inning OVER 0.5) (P=74%)
   - #3 [NRFI] $35 on DET @ OAK YRFI (1st-inning OVER 0.5) (P=64%)
@@ -111,17 +111,17 @@
   - ❄️ **Matthieu Pavon** (France): Sunday +4.0 vs tourney avg
   - ❄️ **Max McGreevy** (USA): Sunday +4.0 vs tourney avg
 
-## 🔥 MLB Batter Heat (49 HOT / 58 COLD)
-  - 🔥 **Steven Kwan** (CLE): L14 .434 / season .256 (+178pts)
+## 🔥 MLB Batter Heat (49 HOT / 59 COLD)
+  - 🔥 **Steven Kwan** (CLE): L14 .415 / season .258 (+157pts)
   - 🔥 **Colt Keith** (DET): L14 .421 / season .267 (+154pts)
-  - 🔥 **Nico Hoerner** (CHC): L14 .404 / season .257 (+147pts)
+  - 🔥 **Jackson Merrill** (SD): L14 .385 / season .235 (+150pts)
+  - 🔥 **Luis Rengifo** (SD): L14 .386 / season .238 (+148pts)
   - 🔥 **Freddy Fermin** (SD): L14 .323 / season .179 (+144pts)
-  - 🔥 **Andruw Monasterio** (BOS): L14 .400 / season .259 (+141pts)
-  - ❄️ **Tristan Peters** (CWS): L14 .068 / season .266 (-198pts) -- FADE props
   - ❄️ **David Fry** (CLE): L14 .000 / season .182 (-182pts) -- FADE props
-  - ❄️ **Troy Johnston** (COL): L14 .103 / season .283 (-180pts) -- FADE props
-  - ❄️ **Brandon Marsh** (PHI): L14 .137 / season .279 (-142pts) -- FADE props
+  - ❄️ **Tristan Peters** (CWS): L14 .091 / season .267 (-176pts) -- FADE props
+  - ❄️ **Troy Johnston** (COL): L14 .122 / season .283 (-161pts) -- FADE props
   - ❄️ **Nick Kurtz** (ATH): L14 .114 / season .256 (-142pts) -- FADE props
+  - ❄️ **Trent Grisham** (NYY): L14 .083 / season .211 (-128pts) -- FADE props
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**
