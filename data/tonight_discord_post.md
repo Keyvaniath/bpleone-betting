@@ -1,10 +1,12 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:18 F:89
+_NO_ACTION_NIGHT_ | L:0 S:15 F:85
+
+:lock: **LOCK:** Seth Lugo (MLB)
 
 :dart: **Top Picks:**
 1. [GOLF] Davis Riley -- Davis Riley (PLAYER_STRONG)
 2. [GOLF] Michael Brennan -- Michael Brennan (PLAYER_STRONG)
-3. [MLB] HOME -- HOME (TEAM_STRONG)
+3. [MLB] Gage Jump -- Gage Jump (PITCHER_STRONG)
 
 :coin: Bankroll Advisory: STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 

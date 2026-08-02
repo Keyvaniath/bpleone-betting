@@ -1,28 +1,28 @@
 # EdgeStat Daily Summary — 2026-08-02
 
-## 🏥 Model Health: 70.3/100 [HEALTHY]
+## 🏥 Model Health: 70.1/100 [HEALTHY]
 - Solid health - some minor issues to monitor
   - 🟢 Calibration Freshness: 99.9/100
-  - 🔴 Hit Rate Trend: 25.0/100
-  - 🔴 Brier Trend: 45.8/100
+  - 🔴 Hit Rate Trend: 32.6/100
+  - 🔴 Brier Trend: 18.1/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 86.4/100
-  - 🟢 Edge Count: 88.6/100
+  - 🟢 Data Health: 100.0/100
+  - 🟢 Edge Count: 100/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.581)
-- **Total games on board:** 110
+- **Total games on board:** 109
 - **Strong home favorites:** 0 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
 1. **KCR @ COL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-2. **TEX @ HOU YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-3. **DET @ OAK YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-4. **WSN @ ATL YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
-5. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
+2. **STL @ TOR YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+3. **DET @ OAK YRFI (1st-inning OVER 0.5)** (78/100 ★★★★)
+4. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
+5. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
 
 ## 📡 Sharp Action (Line Movement)
-- [MODERATE] **KCR @ COL** over_12.5: 50.0% → 53.49% (+3.5pp)
+- [ELITE] **STL @ TOR** ml_away: 38.91% → 51.22% (+12.3pp)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -54,10 +54,10 @@
 - Hot teams: **5** | Cold teams: **15** | Over-heavy: 0 | Under-heavy: 0
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (39)
+## ⚠️ Anomaly Detector (42)
 - STEAM_MOVE: **36**
+- COMPOUND_BULLPEN: **4**
 - PEN_MISMATCH: **2**
-- COMPOUND_BULLPEN: **1**
   - CON @ WSH (WNBA): ML/TOTAL steam since open: ML +2.9pp toward WSH; total +4 (OVER) (13 snapshots)
   - CLE @ CIN (MLB): ML steam since open: ML -15.7pp toward CLE (8 snapshots)
   - IND @ SEA (WNBA): ML/TOTAL steam since open: ML -2.8pp toward IND; total +3 (OVER) (13 snapshots)
@@ -66,27 +66,27 @@
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$9.88**
-  - #1 [NRFI] $50 on KCR @ COL YRFI (1st-inning OVER 0.5) (P=77%)
-  - #2 [NRFI] $50 on TEX @ HOU YRFI (1st-inning OVER 0.5) (P=77%)
-  - #3 [NRFI] $50 on DET @ OAK YRFI (1st-inning OVER 0.5) (P=70%)
+- Expected EV: **$2.09**
+  - #1 [NRFI] $50 on KCR @ COL YRFI (1st-inning OVER 0.5) (P=74%)
+  - #2 [NRFI] $50 on STL @ TOR YRFI (1st-inning OVER 0.5) (P=74%)
+  - #3 [NRFI] $35 on DET @ OAK YRFI (1st-inning OVER 0.5) (P=64%)
   - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
 ## 🎯 Convergence Picks (13 stacked games)
-- ELITE: **3** · HIGH: 4 · MED: 6
-  - [ELITE] Seattle Sounders FC @ Portland Timbers : 6 signals (PREGAME, HEAT_COLD, ANOMALY, ANOMALY)
-  - [ELITE] LAFC @ Vancouver Whitecaps : 4 signals (PREGAME, HEAT_COLD, ATS, ATS)
-  - [ELITE] Real Salt Lake @ St. Louis CITY SC : 4 signals (PREGAME, HEAT_COLD, ATS, ATS)
-  - [HIGH] New York Liberty @ Phoenix Mercury : 3 signals (HEAT_COLD, ATS, ATS)
-  - [HIGH] New England Revolution @ CF Montréal : 3 signals (ANOMALY, ATS, ATS)
+- ELITE: **2** · HIGH: 1 · MED: 10
+  - [ELITE] Atlanta United FC @ Philadelphia Union : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
+  - [ELITE] FC Dallas @ LA Galaxy : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
+  - [HIGH] Seattle Sounders FC @ Portland Timbers : 3 signals (HEAT_COLD, ATS, ATS)
+  - [MED] New England Revolution @ CF Montréal : 2 signals (ATS, ATS)
+  - [MED] Orlando City SC @ Red Bull New York : 2 signals (ATS, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (9)
-- **Yoshinobu Yamamoto** OVER 4.5 K (73%) fair -271
-- **Ronel Blanco** OVER 4.5 K (71%) fair -251
-- **Cristopher Sánchez** OVER 5.5 K (71%) fair -249
-- **David Peterson** OVER 4.5 K (70%) fair -234
-- **Miles Mikolas** OVER 4.5 K (68%) fair -217
+## ⚾ Top MLB Pitcher K Plays (13)
+- **Griffin Jax** OVER 4.5 K (76%) fair -321
+- **Cade Cavalli** OVER 5.5 K (76%) fair -314
+- **Gavin Williams** OVER 6.5 K (76%) fair -310
+- **Taj Bradley** OVER 5.5 K (75%) fair -292
+- **Jacob Misiorowski** OVER 7.5 K (74%) fair -290
 
 ## 🏀 NBA Player Heat (2 HOT / 1 COLD)
   - 🔥 **Scottie Barnes** (TOR): L5 24.4/7.6/9.6 vs season 18.6/5.8/8.8 [PTS +5.8]
@@ -121,13 +121,6 @@
   - ❄️ **Troy Johnston** (COL): L14 .103 / season .283 (-180pts) -- FADE props
   - ❄️ **Brandon Marsh** (PHI): L14 .137 / season .279 (-142pts) -- FADE props
   - ❄️ **Nick Kurtz** (ATH): L14 .114 / season .256 (-142pts) -- FADE props
-
-## 📈 Streak Regression Alerts (6)
-- [MLS] CF Montréal on L3 L10 0-3 -- CF Montréal on L3 -- no historical sample
-- [MLS] Atlanta United FC on L3 L10 0-3 -- Atlanta United FC on L3 -- no historical sample
-- [MLS] LAFC on W3 L10 3-0 -- LAFC on W3 -- no historical sample
-- [MLS] St. Louis CITY SC on W3 L10 3-0 -- St. Louis CITY SC on W3 -- no historical sample
-- [MLS] LA Galaxy on L3 L10 0-3 -- LA Galaxy on L3 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**
