@@ -1,14 +1,14 @@
 # Tonight's Slate Brief — 2026-08-02
 
-## Slate Quality: 58/100 (MEDIUM)
-_10% lineups confirmed · 14 rookie SPs_
+## Slate Quality: 65/100 (MEDIUM)
+_43% lineups confirmed · 14 rookie SPs_
 **Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
 - **15 games** scheduled
-- **31 best bets** scored: 0 DK · 0 PP · 13 NRFI · 0 SGP
+- **28 best bets** scored: 0 DK · 0 PP · 13 NRFI · 0 SGP
 - **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$41.45
-- **MC simulation:** EV +$81.35, 78% P(profit), p05 $-104.96 / p95 $249.16
+- **MC simulation:** EV +$82.1, 78% P(profit), p05 $-101.52 / p95 $249.24
 
 ## Top 5 Best Bets
 1. **KCR @ COL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +28.2%)
@@ -36,9 +36,8 @@ _10% lineups confirmed · 14 rookie SPs_
 - **BOS @ LAD YRFI (1st-inning OVER 0.5)** (low):
    - Edge +12.1% looks big but only 0 settled props on this player — model unproven
 
-## Hot streaks
-**Batters heating up:** Kyle Stowers (heat +3.03), Francisco Lindor (heat +2.14), Ryan Waldschmidt (heat +1.20)
-**Pitchers on a run:** Max Scherzer (heat +9.98), Zack Wheeler (heat +1.01), Cade Cavalli (heat -5.25)
+## Weather leans
+- **OVER lean** (wind out + warm): NYY @ CHC
 
 ## Bullpens GASSED tonight
 Athletics, Pittsburgh Pirates, San Diego Padres, San Francisco Giants, Texas Rangers, Toronto Blue Jays, Chicago White Sox, Miami Marlins
@@ -64,12 +63,12 @@ _Lean late-inning OVER on these games; fade their save situations._
 - Winnipeg Jets @ Edmonton Oilers (0-0-0 vs 0-0-0)  | P(home) 52.9% fair -112 | Scheduled
 - Chicago Blackhawks @ Minnesota Wild (0-0-0 vs 0-0-0)  | P(home) 52.9% fair -112 | Scheduled
 
-## LoL Esports -- 0 live, 20 upcoming
-- [LEC] SK Gaming vs G2 Esports BO3 | P(A) 47.3% fair +111/-111
+## LoL Esports -- 1 live, 19 upcoming
+- [LEC] G2 Esports vs SK Gaming BO3 | P(A) 52.7% fair -111/+111
 - [CBLOL] Fluxo W7M vs LOUD BO3 | P(A) 50.0% fair -100/-100
 - [LEC] Movistar KOI vs Fnatic BO3 | P(A) 50.4% fair -102/+102
 - [CBLOL] LOS vs RED Kalunga BO3 | P(A) 53.3% fair -114/+114
-- [LCS] LYON vs Shopify Rebellion BO3 | P(A) 58.0% fair -138/+138
+- [LCS] Shopify Rebellion vs LYON BO3 | P(A) 42.0% fair +138/-138
 - **LoL POT:** LYON ML vs Shopify Rebellion (LCS, BO3) (HIGH)
 
 ## Player Play of the Day -- across all sports (3494 candidates scanned)

@@ -1,13 +1,13 @@
 # EdgeStat Daily Summary — 2026-08-02
 
-## 🏥 Model Health: 70.1/100 [HEALTHY]
-- Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 99.9/100
-  - 🔴 Hit Rate Trend: 32.6/100
-  - 🔴 Brier Trend: 18.1/100
+## 🏥 Model Health: 67.4/100 [OK]
+- Operational but room to improve - check yellow components
+  - 🟢 Calibration Freshness: 99.4/100
+  - 🔴 Hit Rate Trend: 36.7/100
+  - 🔴 Brier Trend: 17.9/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 100.0/100
-  - 🟢 Edge Count: 100/100
+  - 🟢 Data Health: 95.5/100
+  - 🟡 Edge Count: 74.3/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.581)
@@ -23,6 +23,7 @@
 
 ## 📡 Sharp Action (Line Movement)
 - [ELITE] **STL @ TOR** ml_away: 38.91% → 51.22% (+12.3pp)
+- [MODERATE] **KCR @ COL** over_11.5: 50.0% → 53.49% (+3.5pp)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
