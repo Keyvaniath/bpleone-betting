@@ -6,17 +6,17 @@ _0% lineups confirmed · 1 extreme-weather games · 6 rookie SPs_
 
 ## Slate
 - **8 games** scheduled
-- **17 best bets** scored: 0 DK · 0 PP · 5 NRFI · 0 SGP
-- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$38.85
-- **MC simulation:** EV +$71.58, 80% P(profit), p05 $-59.3 / p95 $227.05
+- **18 best bets** scored: 0 DK · 0 PP · 5 NRFI · 0 SGP
+- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$40.62
+- **MC simulation:** EV +$75.6, 82% P(profit), p05 $-59.3 / p95 $227.05
 
 ## Top 5 Best Bets
 1. **TBR @ COL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +30.4%)
    - P(YRFI) 76.4% vs baseline 46.0%
-2. **TOR @ HOU YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +23.0%)
+2. **WSN @ PHI YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +24.9%)
+   - P(YRFI) 70.9% vs baseline 46.0%
+3. **TOR @ HOU YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +23.0%)
    - P(YRFI) 69.0% vs baseline 46.0%
-3. **WSN @ PHI YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +20.7%)
-   - P(YRFI) 66.7% vs baseline 46.0%
 4. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
    - Player prop quality score 1.1935
    - Elite player
@@ -27,10 +27,10 @@ _0% lineups confirmed · 1 extreme-weather games · 6 rookie SPs_
 ## ⚠️ Trap Warnings — 5 flagged
 - **TBR @ COL YRFI (1st-inning OVER 0.5)** (low):
    - Edge +30.4% looks big but only 0 settled props on this player — model unproven
+- **WSN @ PHI YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +24.9% looks big but only 0 settled props on this player — model unproven
 - **TOR @ HOU YRFI (1st-inning OVER 0.5)** (low):
    - Edge +23.0% looks big but only 0 settled props on this player — model unproven
-- **WSN @ PHI YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +20.7% looks big but only 0 settled props on this player — model unproven
 - **PIT @ MIL YRFI (1st-inning OVER 0.5)** (low):
    - Edge +17.0% looks big but only 0 settled props on this player — model unproven
 - **SFG @ TEX YRFI (1st-inning OVER 0.5)** (low):
@@ -39,16 +39,12 @@ _0% lineups confirmed · 1 extreme-weather games · 6 rookie SPs_
 ## Weather leans
 - **OVER lean** (wind out + warm): TBR @ COL
 
-## Hot streaks
-**Batters heating up:** Shohei Ohtani (heat +2.21), Joc Pederson (heat +1.71), Brandon Lowe (heat +0.85)
-**Pitchers on a run:** Ian Seymour (heat -0.45)
-
 ## Bullpens GASSED tonight
 Athletics, Pittsburgh Pirates, San Diego Padres, Atlanta Braves, Chicago White Sox, Miami Marlins, Los Angeles Angels, Arizona Diamondbacks
 _Lean late-inning OVER on these games; fade their save situations._
 
 ## NRFI/YRFI strong leans
-- **YRFI** (1st-inning OVER): TBR @ COL, TOR @ HOU, WSN @ PHI, PIT @ MIL, SFG @ TEX
+- **YRFI** (1st-inning OVER): TBR @ COL, WSN @ PHI, TOR @ HOU, PIT @ MIL, SFG @ TEX
 
 ## NBA -- PRESEASON
 - Miami Heat @ Toronto Raptors (0-0 vs 0-0)  | P(home) 55.0% fair -122 | Scheduled
