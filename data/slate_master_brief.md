@@ -1,13 +1,13 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-08-03T16:37:40 UTC_
+_Generated 2026-08-03T23:07:47 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -4
+- **Score:** -3
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
 - **Total STRONG:** 11
-- **Total FADES:** 48
+- **Total FADES:** 47
 
 ## Lock of the Night
 - **Subject:** Bubba Chandler
@@ -17,11 +17,11 @@ _Generated 2026-08-03T16:37:40 UTC_
 - **Details:** PIT @ MIL
 
 ## Top 5 Curated Picks
-1. **GOLF / Xander Schauffele** (GOLF_PLAYER, score=219.29)
-   - Play: Xander Schauffele (PLAYER_STRONG)
+1. **GOLF / Michael Thorbjornsen** (GOLF_PLAYER, score=219.29)
+   - Play: Michael Thorbjornsen (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Davis Riley** (GOLF_PLAYER, score=219.29)
-   - Play: Davis Riley (PLAYER_STRONG)
+2. **GOLF / Xander Schauffele** (GOLF_PLAYER, score=219.29)
+   - Play: Xander Schauffele (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
 3. **WNBA / breanna stewart** (WNBA_PLAYER, score=99.25)
    - Play: breanna stewart (PLAYER_STRONG)
@@ -35,12 +35,12 @@ _Generated 2026-08-03T16:37:40 UTC_
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
+  - Michael Thorbjornsen top 10 finish
   - Xander Schauffele top 10 finish
   - Davis Riley top 10 finish
-  - Michael Thorbjornsen top 10 finish
 
 ## Slate ROI Projection
-- **Picks:** 1
+- **Picks:** 2
 - **Avg edge:** -0.91%
 - **Expected ROI (1/4 Kelly):** 0.0%
 - **Expected P&L on $100:** $0.0
@@ -50,9 +50,9 @@ _Generated 2026-08-03T16:37:40 UTC_
   - Fade angle: team total UNDER
 - **NBA** / TOR (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NHL** / casey desmith (GOALIE_FADE)
+- **NHL** / logan thompson_2 (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / samsonov ilya (GOALIE_FADE)
+- **NHL** / thatcher demko (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / joseph woll (GOALIE_FADE)
+- **NHL** / calvin pickard (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
