@@ -14,5 +14,5 @@ _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 - Joint 53% · fair +264 · edge +94.6%
 
 ---
-_Generated 2026-08-03T08:17:19_
+_Generated 2026-08-03T15:46:58_
 _Full breakdown: /tonight · Full history: /locks-of-day_

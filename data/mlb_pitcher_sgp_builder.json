@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-08-03T08:17:26",
+  "generated_at": "2026-08-03T15:47:05",
   "n_stacks": 15,
-  "n_prime": 13,
+  "n_prime": 14,
   "rho": 0.45,
   "method_note": "Pitcher same-game stack. Legs (K OVER confident line, ER UNDER 3.5 via Poisson(proj_er), Outs OVER 14.5, Quality Start YES) kept if each >= 0.45. naive_joint=product; correlated_joint=naive+RHO*(min_leg-naive), RHO=0.45 captures same-game positive correlation (naive parlay under-prices these). Tiers PRIME>=.45, STRONG>=.32, VALUE>=.22.",
   "rows": [
@@ -236,9 +236,9 @@
       "tier": "PRIME_STACK"
     },
     {
-      "pitcher": "Cristian Javier",
+      "pitcher": "Andrew Alvarez",
       "team": null,
-      "matchup": "TOR @ HOU",
+      "matchup": "WSN @ PHI",
       "n_legs": 3,
       "legs": [
         {
@@ -264,6 +264,31 @@
       "pitcher": "Brandon Sproat",
       "team": null,
       "matchup": "PIT @ MIL",
+      "n_legs": 3,
+      "legs": [
+        {
+          "market": "K OVER 3.5",
+          "prob": 0.736
+        },
+        {
+          "market": "ER UNDER 3.5",
+          "prob": 0.764
+        },
+        {
+          "market": "Outs OVER 14.5",
+          "prob": 0.616
+        }
+      ],
+      "naive_joint": 0.346,
+      "correlated_joint": 0.468,
+      "correlation_boost_pct": 35.0,
+      "fair_american": 114,
+      "tier": "PRIME_STACK"
+    },
+    {
+      "pitcher": "Cristian Javier",
+      "team": null,
+      "matchup": "TOR @ HOU",
       "n_legs": 3,
       "legs": [
         {
@@ -318,7 +343,7 @@
       "legs": [
         {
           "market": "K OVER 4.5",
-          "prob": 0.667
+          "prob": 0.665
         },
         {
           "market": "ER UNDER 3.5",
@@ -329,40 +354,11 @@
           "prob": 0.576
         }
       ],
-      "naive_joint": 0.253,
+      "naive_joint": 0.252,
       "correlated_joint": 0.398,
-      "correlation_boost_pct": 57.5,
+      "correlation_boost_pct": 57.8,
       "fair_american": 151,
       "tier": "STRONG_STACK"
-    },
-    {
-      "pitcher": "Jake Bennett",
-      "team": "BOS",
-      "matchup": "BOS @ LAD",
-      "n_legs": 4,
-      "legs": [
-        {
-          "market": "K OVER 3.5",
-          "prob": 0.661
-        },
-        {
-          "market": "ER UNDER 3.5",
-          "prob": 0.785
-        },
-        {
-          "market": "Outs OVER 14.5",
-          "prob": 0.625
-        },
-        {
-          "market": "Quality Start YES",
-          "prob": 0.45
-        }
-      ],
-      "naive_joint": 0.146,
-      "correlated_joint": 0.283,
-      "correlation_boost_pct": 93.8,
-      "fair_american": 254,
-      "tier": "VALUE_STACK"
     }
   ]
 }
