@@ -1,67 +1,70 @@
 {
-  "generated_at": "2026-08-03T06:23:35",
+  "generated_at": "2026-08-03T08:05:12",
   "sport": "wnba",
-  "n_games": 29,
-  "hit_rate": 0.6897,
-  "brier_score": 0.1709,
-  "log_loss": 0.4889,
-  "avg_predicted_home_winprob": 0.532,
-  "avg_actual_home_winrate": 0.5172,
-  "bias": 0.0147,
+  "n_games": 30,
+  "hit_rate": 0.6,
+  "brier_score": 0.1881,
+  "log_loss": 0.527,
+  "avg_predicted_home_winprob": 0.5499,
+  "avg_actual_home_winrate": 0.5,
+  "bias": 0.0499,
   "reliability_bins": [
     {
       "lo": 0.0,
       "hi": 0.1,
-      "n": 6,
+      "n": 5,
       "predicted_avg": 0.063,
       "actual_avg": 0.0
     },
     {
-      "lo": 0.1,
-      "hi": 0.2,
+      "lo": 0.2,
+      "hi": 0.3,
       "n": 1,
-      "predicted_avg": 0.165,
+      "predicted_avg": 0.284,
       "actual_avg": 1.0
     },
     {
       "lo": 0.3,
       "hi": 0.4,
-      "n": 2,
+      "n": 1,
       "predicted_avg": 0.36,
-      "actual_avg": 0.5
+      "actual_avg": 1.0
     },
     {
       "lo": 0.5,
       "hi": 0.6,
-      "n": 10,
+      "n": 13,
       "predicted_avg": 0.543,
-      "actual_avg": 0.5
+      "actual_avg": 0.385
     },
     {
       "lo": 0.6,
       "hi": 0.7,
-      "n": 1,
+      "n": 2,
       "predicted_avg": 0.626,
-      "actual_avg": 0.0
+      "actual_avg": 0.5
     },
     {
       "lo": 0.8,
       "hi": 0.9,
-      "n": 4,
+      "n": 3,
       "predicted_avg": 0.834,
-      "actual_avg": 0.75
+      "actual_avg": 0.667
     },
     {
       "lo": 0.9,
       "hi": 1.0,
       "n": 5,
-      "predicted_avg": 0.955,
+      "predicted_avg": 0.946,
       "actual_avg": 1.0
     }
   ],
   "recommendation": {
-    "applied": false,
-    "note": "model is well-calibrated (<2pp bias)"
+    "applied": true,
+    "bias_pp": 5.0,
+    "shrinkage": 1.0,
+    "recommended_shift": -0.0499,
+    "note": "Model over-predicting home by 5.0pp; subtract 5.0pp from P(home) (shrinkage 100%)"
   },
   "n_teams_tracked": 17
 }
