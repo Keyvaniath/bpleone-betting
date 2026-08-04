@@ -21,9 +21,6 @@
 4. **NYM @ CLE YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
 5. **WSN @ PHI YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
 
-## 📉 Strong UNDER Signals
-- [STRONG 5.1] **DET @ SEA** model 7.19 vs market 8.0
-
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
 - Net units: **+10.34u** | ROI: **+45.6%**
@@ -65,8 +62,8 @@
   - ATL @ NYM (MLB): ML/TOTAL steam since open: ML -10.4pp toward ATL; total -1.5 (UNDER) (8 snapshots)
 
 ## 💰 Today's Portfolio (9 picks)
-- Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$10.94**
+- Total stake: **$330.0** (33.0% of $1000 bankroll)
+- Expected EV: **$11.53**
   - #1 [NRFI] $50 on LAA @ BAL YRFI (1st-inning OVER 0.5) (P=77%)
   - #2 [NRFI] $50 on MIA @ ATL YRFI (1st-inning OVER 0.5) (P=74%)
   - #3 [NRFI] $50 on TBR @ COL YRFI (1st-inning OVER 0.5) (P=74%)
