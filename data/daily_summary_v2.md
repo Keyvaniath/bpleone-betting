@@ -1,29 +1,25 @@
-# EdgeStat Daily Summary — 2026-08-03
+# EdgeStat Daily Summary — 2026-08-04
 
-## 🏥 Model Health: 58.1/100 [OK]
+## 🏥 Model Health: 56.2/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 100.0/100
+  - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 13.1/100
   - 🔴 Brier Trend: 13.1/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 95.5/100
+  - 🟢 Data Health: 86.4/100
   - 🔴 Edge Count: 37.1/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.582)
-- **Total games on board:** 112
-- **Strong home favorites:** 1 | **Strong road dogs:** 0
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.581)
+- **Total games on board:** 110
+- **Strong home favorites:** 0 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
 1. **TBR @ COL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-2. **WSN @ PHI YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-3. **TOR @ HOU YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+2. **TOR @ HOU YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+3. **SFG @ TEX YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 4. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
 5. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
-
-## 📡 Sharp Action (Line Movement)
-- [STRONG] **WSN @ PHI** over_9.0: 48.78% → 54.55% (+5.8pp)
-- [MODERATE] **PIT @ MIL** over_8.5: 51.22% → 54.55% (+3.3pp)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -55,23 +51,22 @@
 - Hot teams: **3** | Cold teams: **14** | Over-heavy: 0 | Under-heavy: 0
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (41)
-- RESIDUAL_DIVERGENCE: **4**
-- STEAM_MOVE: **35**
+## ⚠️ Anomaly Detector (36)
+- STEAM_MOVE: **34**
 - COMPOUND_BULLPEN: **1**
 - PEN_MISMATCH: **1**
-  - Las Vegas Aces (WNBA): Las Vegas Aces OUTPERFORMING expected margin by 6.3pts in recent games -- model bias may persist
-  - Seattle Storm (WNBA): Seattle Storm OUTPERFORMING expected margin by 7.0pts in recent games -- model bias may persist
-  - Chicago Sky (WNBA): Chicago Sky OUTPERFORMING expected margin by 7.9pts in recent games -- model bias may persist
-  - Phoenix Mercury (WNBA): Phoenix Mercury UNDERPERFORMING expected margin by 6.1pts in recent games -- model bias may persist
   - CON @ WSH (WNBA): ML/TOTAL steam since open: ML +2.9pp toward WSH; total +4 (OVER) (13 snapshots)
+  - CLE @ CIN (MLB): ML steam since open: ML -15.7pp toward CLE (8 snapshots)
+  - MIL @ LAA (MLB): ML/TOTAL steam since open: ML -15.3pp toward MIL; total -1 (UNDER) (7 snapshots)
+  - IND @ SEA (WNBA): ML/TOTAL steam since open: ML -2.8pp toward IND; total +3 (OVER) (13 snapshots)
+  - ATL @ NYM (MLB): ML/TOTAL steam since open: ML -10.4pp toward ATL; total -1.5 (UNDER) (8 snapshots)
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$4.61**
+- Expected EV: **$-8.0**
   - #1 [NRFI] $50 on TBR @ COL YRFI (1st-inning OVER 0.5) (P=76%)
-  - #2 [NRFI] $50 on WSN @ PHI YRFI (1st-inning OVER 0.5) (P=71%)
-  - #3 [NRFI] $50 on TOR @ HOU YRFI (1st-inning OVER 0.5) (P=69%)
+  - #2 [NRFI] $50 on TOR @ HOU YRFI (1st-inning OVER 0.5) (P=69%)
+  - #3 [NRFI] $50 on SFG @ TEX YRFI (1st-inning OVER 0.5) (P=68%)
   - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
@@ -83,9 +78,10 @@
   - [HIGH] Seattle Storm @ New York Liberty : 3 signals (HEAT_COLD, ANOMALY, ATS)
   - [HIGH] Seattle Sounders FC @ Portland Timbers : 3 signals (HEAT_COLD, ATS, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (4)
+## ⚾ Top MLB Pitcher K Plays (5)
+- **Cal Quantrill** OVER 4.5 K (77%) fair -335
 - **Cam Schlittler** OVER 6.5 K (76%) fair -310
-- **Andrew Alvarez** OVER 6.5 K (71%) fair -248
+- **Justin Wrobleski** OVER 4.5 K (70%) fair -232
 - **Brandon Sproat** OVER 4.5 K (61%) fair -157
 - **Cristian Javier** OVER 4.5 K (59%) fair -146
 
@@ -111,17 +107,17 @@
   - ❄️ **Tony Finau** (USA): Sunday +6.5 vs tourney avg
   - ❄️ **Michael Brennan** (USA): Sunday +5.8 vs tourney avg
 
-## 🔥 MLB Batter Heat (47 HOT / 52 COLD)
-  - 🔥 **Jackson Merrill** (SD): L14 .396 / season .237 (+159pts)
+## 🔥 MLB Batter Heat (50 HOT / 48 COLD)
   - 🔥 **Steven Kwan** (CLE): L14 .415 / season .258 (+157pts)
+  - 🔥 **Freddie Freeman** (LAD): L14 .463 / season .309 (+154pts)
   - 🔥 **Jeff McNeil** (ATH): L14 .405 / season .251 (+154pts)
-  - 🔥 **Freddie Freeman** (LAD): L14 .463 / season .310 (+153pts)
   - 🔥 **Freddy Fermin** (SD): L14 .323 / season .179 (+144pts)
-  - ❄️ **David Fry** (CLE): L14 .000 / season .182 (-182pts) -- FADE props
+  - 🔥 **Chandler Simpson** (TB): L14 .429 / season .298 (+131pts)
   - ❄️ **Tristan Peters** (CWS): L14 .091 / season .267 (-176pts) -- FADE props
-  - ❄️ **Troy Johnston** (COL): L14 .122 / season .283 (-161pts) -- FADE props
+  - ❄️ **Troy Johnston** (COL): L14 .133 / season .283 (-150pts) -- FADE props
   - ❄️ **Nick Kurtz** (ATH): L14 .114 / season .256 (-142pts) -- FADE props
-  - ❄️ **Trent Grisham** (NYY): L14 .083 / season .211 (-128pts) -- FADE props
+  - ❄️ **Carlos Cortes** (ATH): L14 .138 / season .262 (-124pts) -- FADE props
+  - ❄️ **Nicky Lopez** (TEX): L14 .154 / season .277 (-123pts) -- FADE props
 
 ## 📈 Streak Regression Alerts (1)
 - [WNBA] Seattle Storm on L4 L10 0-4 -- Seattle Storm on L4 -- no historical sample
@@ -134,6 +130,6 @@
   - ⚠️ batter_rbis (Brier Δ -0.0052)
 
 ## 🤖 Self-Training Status
-- **WNBA**: n=30 games · hit rate 60.0% · bias +5.0pp [calibration applied]
+- **WNBA**: n=29 games · hit rate 62.1% · bias +1.2pp
 - **MLS**: n=51 games · hit rate 51.0% · bias -12.2pp [calibration applied]
-- **MLB**: n=192 games · hit rate 56.2% · bias +0.0pp
+- **MLB**: n=185 games · hit rate 55.1% · bias +0.6pp
