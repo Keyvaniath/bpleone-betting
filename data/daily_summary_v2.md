@@ -1,25 +1,28 @@
 # EdgeStat Daily Summary — 2026-08-04
 
-## 🏥 Model Health: 56.2/100 [OK]
+## 🏥 Model Health: 62.8/100 [OK]
 - Operational but room to improve - check yellow components
   - 🟢 Calibration Freshness: 99.9/100
-  - 🔴 Hit Rate Trend: 13.1/100
-  - 🔴 Brier Trend: 13.1/100
+  - 🔴 Hit Rate Trend: 10.4/100
+  - 🔴 Brier Trend: 21.0/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 86.4/100
-  - 🔴 Edge Count: 37.1/100
+  - 🟢 Data Health: 100.0/100
+  - 🟡 Edge Count: 65.7/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.581)
-- **Total games on board:** 110
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.585)
+- **Total games on board:** 101
 - **Strong home favorites:** 0 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
-1. **TBR @ COL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-2. **TOR @ HOU YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-3. **SFG @ TEX YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-4. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
-5. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
+1. **LAA @ BAL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+2. **MIA @ ATL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+3. **TBR @ COL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+4. **NYM @ CLE YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
+5. **WSN @ PHI YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
+
+## 📉 Strong UNDER Signals
+- [STRONG 5.1] **DET @ SEA** model 7.19 vs market 8.0
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -49,12 +52,12 @@
 
 ## 🔥/❄️ Heat / Cold Signals
 - Hot teams: **3** | Cold teams: **14** | Over-heavy: 0 | Under-heavy: 0
-- Heating-up players: **20** | Cooling-down: 20
+- Heating-up players: **0** | Cooling-down: 0
 
-## ⚠️ Anomaly Detector (36)
+## ⚠️ Anomaly Detector (38)
 - STEAM_MOVE: **34**
-- COMPOUND_BULLPEN: **1**
-- PEN_MISMATCH: **1**
+- COMPOUND_BULLPEN: **2**
+- PEN_MISMATCH: **2**
   - CON @ WSH (WNBA): ML/TOTAL steam since open: ML +2.9pp toward WSH; total +4 (OVER) (13 snapshots)
   - CLE @ CIN (MLB): ML steam since open: ML -15.7pp toward CLE (8 snapshots)
   - MIL @ LAA (MLB): ML/TOTAL steam since open: ML -15.3pp toward MIL; total -1 (UNDER) (7 snapshots)
@@ -63,39 +66,34 @@
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$-8.0**
-  - #1 [NRFI] $50 on TBR @ COL YRFI (1st-inning OVER 0.5) (P=76%)
-  - #2 [NRFI] $50 on TOR @ HOU YRFI (1st-inning OVER 0.5) (P=69%)
-  - #3 [NRFI] $50 on SFG @ TEX YRFI (1st-inning OVER 0.5) (P=68%)
+- Expected EV: **$10.94**
+  - #1 [NRFI] $50 on LAA @ BAL YRFI (1st-inning OVER 0.5) (P=77%)
+  - #2 [NRFI] $50 on MIA @ ATL YRFI (1st-inning OVER 0.5) (P=74%)
+  - #3 [NRFI] $50 on TBR @ COL YRFI (1st-inning OVER 0.5) (P=74%)
   - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
-## 🎯 Convergence Picks (16 stacked games)
-- ELITE: **3** · HIGH: 2 · MED: 11
-  - [ELITE] Phoenix Mercury @ Chicago Sky : 4 signals (ANOMALY, ANOMALY, ATS, ATS)
+## 🎯 Convergence Picks (14 stacked games)
+- ELITE: **2** · HIGH: 1 · MED: 11
   - [ELITE] Atlanta United FC @ Philadelphia Union : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
   - [ELITE] FC Dallas @ LA Galaxy : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
-  - [HIGH] Seattle Storm @ New York Liberty : 3 signals (HEAT_COLD, ANOMALY, ATS)
   - [HIGH] Seattle Sounders FC @ Portland Timbers : 3 signals (HEAT_COLD, ATS, ATS)
+  - [MED] Seattle Storm @ New York Liberty : 2 signals (HEAT_COLD, ATS)
+  - [MED] New England Revolution @ CF Montréal : 2 signals (ATS, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (5)
-- **Cal Quantrill** OVER 4.5 K (77%) fair -335
-- **Cam Schlittler** OVER 6.5 K (76%) fair -310
-- **Justin Wrobleski** OVER 4.5 K (70%) fair -232
-- **Brandon Sproat** OVER 4.5 K (61%) fair -157
-- **Cristian Javier** OVER 4.5 K (59%) fair -146
-
-## 🏀 NBA Player Heat (2 HOT / 1 COLD)
-  - 🔥 **Scottie Barnes** (TOR): L5 24.4/7.6/9.6 vs season 18.6/5.8/8.8 [PTS +5.8]
-  - 🔥 **RJ Barrett** (TOR): L5 24.6/7.6/4.0 vs season 21.4/5.5/3.6 [REB +2.1]
-  - ❄️ **Brandon Ingram** (TOR): L5 12.0 vs season 19.1 [PTS -7.1] -- FADE OVER props
+## ⚾ Top MLB Pitcher K Plays (10)
+- **Blade Tidwell** OVER 7.5 K (78%) fair -354
+- **Logan Henderson** OVER 4.5 K (76%) fair -321
+- **Jesús Luzardo** OVER 6.5 K (76%) fair -310
+- **Trey Yesavage** OVER 4.5 K (73%) fair -275
+- **Joe Ryan** OVER 4.5 K (73%) fair -272
 
 ## 🥊 UFC Fight Matchups (UFC Fight Night: Gamrot vs Salkilld)
   - [FAVORITE] **Ty Miller** (7-0-0) vs Billy Ray Goff -- fair -196
   - [LEAN] **Alexia Thainara** (14-1-0) vs Amanda Lemos -- fair -165
-  - [LEAN] **José Montanha** (6-1-0) vs Louie Sutherland -- fair -138
   - [COIN_FLIP] **Jessie Rosas** (8-1-0) vs Miles Johns -- fair -123
   - [COIN_FLIP] **Guilherme Pat** (6-1-0) vs Steven Asplund -- fair -120
+  - [COIN_FLIP] **Yadier del Valle** (10-1-0) vs Darren Elkins -- fair -113
 
 ## ⛳ Golf Player Heat (from Rocket Classic)
   - 🔥 T1 **Michael Thorbjornsen** (USA): -18 total -- finished T1, Sunday -2.5 vs tourney avg
@@ -108,7 +106,7 @@
   - ❄️ **Michael Brennan** (USA): Sunday +5.8 vs tourney avg
 
 ## 🔥 MLB Batter Heat (50 HOT / 48 COLD)
-  - 🔥 **Steven Kwan** (CLE): L14 .415 / season .258 (+157pts)
+  - 🔥 **Steven Kwan** (CLE): L14 .434 / season .261 (+173pts)
   - 🔥 **Freddie Freeman** (LAD): L14 .463 / season .309 (+154pts)
   - 🔥 **Jeff McNeil** (ATH): L14 .405 / season .251 (+154pts)
   - 🔥 **Freddy Fermin** (SD): L14 .323 / season .179 (+144pts)
@@ -119,9 +117,6 @@
   - ❄️ **Carlos Cortes** (ATH): L14 .138 / season .262 (-124pts) -- FADE props
   - ❄️ **Nicky Lopez** (TEX): L14 .154 / season .277 (-123pts) -- FADE props
 
-## 📈 Streak Regression Alerts (1)
-- [WNBA] Seattle Storm on L4 L10 0-4 -- Seattle Storm on L4 -- no historical sample
-
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**
   - ✅ pitcher_strikeouts (Brier Δ +0.0060)
@@ -130,6 +125,3 @@
   - ⚠️ batter_rbis (Brier Δ -0.0052)
 
 ## 🤖 Self-Training Status
-- **WNBA**: n=29 games · hit rate 62.1% · bias +1.2pp
-- **MLS**: n=51 games · hit rate 51.0% · bias -12.2pp [calibration applied]
-- **MLB**: n=185 games · hit rate 55.1% · bias +0.6pp
