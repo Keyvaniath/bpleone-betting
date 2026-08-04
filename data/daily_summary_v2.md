@@ -77,12 +77,12 @@
   - [MED] Seattle Storm @ New York Liberty : 2 signals (HEAT_COLD, ATS)
   - [MED] New England Revolution @ CF Montréal : 2 signals (ATS, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (10)
+## ⚾ Top MLB Pitcher K Plays (11)
 - **Blade Tidwell** OVER 7.5 K (78%) fair -354
 - **Logan Henderson** OVER 4.5 K (76%) fair -321
+- **Troy Melton** OVER 4.5 K (76%) fair -321
 - **Jesús Luzardo** OVER 6.5 K (76%) fair -310
 - **Trey Yesavage** OVER 4.5 K (73%) fair -275
-- **Joe Ryan** OVER 4.5 K (73%) fair -272
 
 ## 🥊 UFC Fight Matchups (UFC Fight Night: Gamrot vs Salkilld)
   - [FAVORITE] **Ty Miller** (7-0-0) vs Billy Ray Goff -- fair -196
@@ -101,7 +101,7 @@
   - ❄️ **Tony Finau** (USA): Sunday +6.5 vs tourney avg
   - ❄️ **Michael Brennan** (USA): Sunday +5.8 vs tourney avg
 
-## 🔥 MLB Batter Heat (50 HOT / 48 COLD)
+## 🔥 MLB Batter Heat (51 HOT / 51 COLD)
   - 🔥 **Steven Kwan** (CLE): L14 .434 / season .261 (+173pts)
   - 🔥 **Freddie Freeman** (LAD): L14 .463 / season .309 (+154pts)
   - 🔥 **Jeff McNeil** (ATH): L14 .405 / season .251 (+154pts)
@@ -109,9 +109,9 @@
   - 🔥 **Chandler Simpson** (TB): L14 .429 / season .298 (+131pts)
   - ❄️ **Tristan Peters** (CWS): L14 .091 / season .267 (-176pts) -- FADE props
   - ❄️ **Troy Johnston** (COL): L14 .133 / season .283 (-150pts) -- FADE props
-  - ❄️ **Nick Kurtz** (ATH): L14 .114 / season .256 (-142pts) -- FADE props
   - ❄️ **Carlos Cortes** (ATH): L14 .138 / season .262 (-124pts) -- FADE props
   - ❄️ **Nicky Lopez** (TEX): L14 .154 / season .277 (-123pts) -- FADE props
+  - ❄️ **Connor Wong** (BOS): L14 .133 / season .255 (-122pts) -- FADE props
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**
