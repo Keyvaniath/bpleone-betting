@@ -1,33 +1,33 @@
 {
-  "generated_at": "2026-08-04T10:59:00",
+  "generated_at": "2026-08-04T14:43:31",
   "stake_assumption": "1u flat per pick",
   "total_picks": 10000,
-  "n_settled": 7119,
-  "n_pending": 386,
+  "n_settled": 7120,
+  "n_pending": 385,
   "n_void": 2495,
   "wins": 2946,
-  "losses": 4166,
+  "losses": 4167,
   "pushes": 7,
   "hit_rate": 0.4142,
-  "net_units": -1093.876,
-  "roi_pct": -15.38,
+  "net_units": -1094.876,
+  "roi_pct": -15.39,
   "n_calibrated_picks": 9511,
   "calibrated_reliability": {
-    "n": 7015,
-    "ece_raw": 0.084,
+    "n": 7016,
+    "ece_raw": 0.0841,
     "ece_calibrated": 0.0156,
-    "brier_raw": 0.21075,
-    "brier_calibrated": 0.19496,
+    "brier_raw": 0.21078,
+    "brier_calibrated": 0.19498,
     "note": "In-sample over the settled ledger (the isotonic transform is fit on these same outcomes); held-out 70/30 validation is in recalibration_map.json. p_predicted = raw model prob (kept untouched for the learning loop); p_calibrated = honest prob stamped per pick. Lower ECE/Brier on the calibrated column = the displayed % is truer."
   },
   "curated": {
-    "n_settled": 1053,
+    "n_settled": 1054,
     "wins": 788,
-    "losses": 258,
+    "losses": 259,
     "pushes": 7,
-    "hit_rate": 0.7533,
-    "net_units": 204.902,
-    "roi_pct": 19.59,
+    "hit_rate": 0.7526,
+    "net_units": 203.902,
+    "roi_pct": 19.47,
     "sources": [
       "consensus_hit_elite",
       "consensus_hit_strong",
@@ -41,14 +41,14 @@
     "definition": "Featured/recommended plays only -- Lock of the Day, Top 25, Whale, Sharp, Consensus (hit), Under Alerts, POD. Excludes the experimental prop feeds, which are tracked to train the model, not bet.",
     "last_30": {
       "wins": 120,
-      "losses": 72,
-      "net_units": 24.621,
-      "roi_pct": 12.82,
-      "hit_rate": 0.625
+      "losses": 73,
+      "net_units": 23.621,
+      "roi_pct": 12.24,
+      "hit_rate": 0.6218
     }
   },
-  "n_added_this_run": 9,
-  "n_newly_settled_this_run": 0,
+  "n_added_this_run": 0,
+  "n_newly_settled_this_run": 1,
   "n_resettled_this_run": 0,
   "n_voided_this_run": 0,
   "n_duplicates_collapsed_this_run": 0,
@@ -282,13 +282,13 @@
       "roi_pct": 10.88
     },
     "top_25_board": {
-      "n": 458,
+      "n": 459,
       "wins": 322,
-      "losses": 131,
+      "losses": 132,
       "pushes": 5,
-      "net_units": 125.484,
-      "hit_rate": 0.7108,
-      "roi_pct": 27.7
+      "net_units": 124.484,
+      "hit_rate": 0.7093,
+      "roi_pct": 27.42
     },
     "sharp_elite": {
       "n": 20,
@@ -1726,12 +1726,12 @@
       "hit_rate": 0.6484
     },
     "over": {
-      "n": 148,
+      "n": 149,
       "wins": 81,
-      "losses": 65,
+      "losses": 66,
       "pushes": 2,
-      "net_units": 3.495,
-      "hit_rate": 0.5548
+      "net_units": 2.495,
+      "hit_rate": 0.551
     },
     "1_plus_xbh": {
       "n": 1888,
@@ -2160,12 +2160,12 @@
       "hit_rate": 0.6484
     },
     "over": {
-      "n": 148,
+      "n": 149,
       "wins": 81,
-      "losses": 65,
+      "losses": 66,
       "pushes": 2,
-      "net_units": 3.495,
-      "hit_rate": 0.5548
+      "net_units": 2.495,
+      "hit_rate": 0.551
     },
     "mlb_xbh_0.5_over": {
       "n": 1888,
@@ -2483,15 +2483,15 @@
   "by_sport": {
     "MLB": {
       "n": 7272,
-      "settled": 5072,
+      "settled": 5073,
       "wins": 1633,
-      "losses": 3432,
+      "losses": 3433,
       "pushes": 7,
-      "pending": 301,
+      "pending": 300,
       "void": 1899,
-      "net_units": -1253.591,
-      "hit_rate": 0.3224,
-      "roi_pct": -24.75,
+      "net_units": -1254.591,
+      "hit_rate": 0.3223,
+      "roi_pct": -24.76,
       "markets": 34
     },
     "UFC": {
@@ -2653,9 +2653,9 @@
   },
   "last_7_days": {
     "wins": 123,
-    "losses": 140,
-    "net_units": -25.798,
-    "hit_rate": 0.4677
+    "losses": 141,
+    "net_units": -26.798,
+    "hit_rate": 0.4659
   },
   "picks": [
     {
@@ -246655,11 +246655,18 @@
       "primary_source_module": "today_reco",
       "date": "2026-08-03",
       "pick_id": "top_25_board|MLB|PIT___MIL|OVER_7_5|2026-08-03",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "lost",
+      "payout_units": -1.0,
       "recorded_at": "2026-08-03T23:30:21",
-      "p_calibrated": 0.5361
+      "p_calibrated": 0.5361,
+      "outcome": {
+        "final_score": "PIT 4 @ MIL 3",
+        "total_runs": 7,
+        "verify": "PIT @ MIL: final 4-3 (total 7) on 2026-08-03",
+        "check": "verified"
+      },
+      "settled_at": "2026-08-04T14:43:31"
     },
     {
       "source": "top_25_board",
