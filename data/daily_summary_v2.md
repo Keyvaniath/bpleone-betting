@@ -1,8 +1,8 @@
 # EdgeStat Daily Summary — 2026-08-04
 
-## 🏥 Model Health: 53.9/100 [DEGRADED]
+## 🏥 Model Health: 54.0/100 [DEGRADED]
 - Several components weak - review red items
-  - 🟢 Calibration Freshness: 99.9/100
+  - 🟢 Calibration Freshness: 100.0/100
   - 🔴 Hit Rate Trend: 6.3/100
   - 🔴 Brier Trend: 21.0/100
   - 🟢 Pipeline Audit: 100.0/100
@@ -20,6 +20,10 @@
 3. **TBR @ COL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 4. **NYM @ CLE YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
 5. **WSN @ PHI YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
+
+## 📉 Strong UNDER Signals
+- [STRONG 6.4] **DET @ SEA** model 7.06 vs market 8.0
+- [STRONG 5.0] **SDP @ ARI** model 8.73 vs market 9.5
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -101,12 +105,12 @@
   - ❄️ **Tony Finau** (USA): Sunday +6.5 vs tourney avg
   - ❄️ **Michael Brennan** (USA): Sunday +5.8 vs tourney avg
 
-## 🔥 MLB Batter Heat (51 HOT / 51 COLD)
-  - 🔥 **Steven Kwan** (CLE): L14 .434 / season .261 (+173pts)
+## 🔥 MLB Batter Heat (52 HOT / 52 COLD)
   - 🔥 **Freddie Freeman** (LAD): L14 .463 / season .309 (+154pts)
-  - 🔥 **Jeff McNeil** (ATH): L14 .405 / season .251 (+154pts)
+  - 🔥 **Steven Kwan** (CLE): L14 .408 / season .261 (+147pts)
   - 🔥 **Freddy Fermin** (SD): L14 .323 / season .179 (+144pts)
   - 🔥 **Chandler Simpson** (TB): L14 .429 / season .298 (+131pts)
+  - 🔥 **Jeff McNeil** (ATH): L14 .378 / season .253 (+125pts)
   - ❄️ **Tristan Peters** (CWS): L14 .091 / season .267 (-176pts) -- FADE props
   - ❄️ **Troy Johnston** (COL): L14 .133 / season .283 (-150pts) -- FADE props
   - ❄️ **Carlos Cortes** (ATH): L14 .138 / season .262 (-124pts) -- FADE props
