@@ -22,8 +22,7 @@
 5. **WSN @ PHI YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
 
 ## 📉 Strong UNDER Signals
-- [STRONG 6.4] **DET @ SEA** model 7.06 vs market 8.0
-- [STRONG 5.0] **SDP @ ARI** model 8.73 vs market 9.5
+- [STRONG 5.6] **NYM @ CLE** model 7.21 vs market 8.5
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -81,12 +80,12 @@
   - [MED] Seattle Storm @ New York Liberty : 2 signals (HEAT_COLD, ATS)
   - [MED] New England Revolution @ CF Montréal : 2 signals (ATS, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (8)
-- **Blade Tidwell** OVER 7.5 K (78%) fair -354
-- **Logan Henderson** OVER 4.5 K (76%) fair -321
-- **Troy Melton** OVER 4.5 K (76%) fair -321
-- **Trey Yesavage** OVER 4.5 K (73%) fair -275
-- **Joe Ryan** OVER 4.5 K (73%) fair -272
+## ⚾ Top MLB Pitcher K Plays (9)
+- **Noah Cameron** OVER 4.5 K (73%) fair -275
+- **Sean Burke** OVER 6.5 K (73%) fair -271
+- **Eury Pérez** OVER 4.5 K (73%) fair -271
+- **Reid Detmers** OVER 4.5 K (71%) fair -251
+- **Paul Skenes** OVER 5.5 K (71%) fair -250
 
 ## 🥊 UFC Fight Matchups (UFC Fight Night: Gamrot vs Salkilld)
   - [FAVORITE] **Ty Miller** (7-0-0) vs Billy Ray Goff -- fair -196
@@ -105,15 +104,15 @@
   - ❄️ **Tony Finau** (USA): Sunday +6.5 vs tourney avg
   - ❄️ **Michael Brennan** (USA): Sunday +5.8 vs tourney avg
 
-## 🔥 MLB Batter Heat (51 HOT / 54 COLD)
-  - 🔥 **Jackson Merrill** (SD): L14 .412 / season .242 (+170pts)
+## 🔥 MLB Batter Heat (52 HOT / 55 COLD)
   - 🔥 **Freddie Freeman** (LAD): L14 .473 / season .310 (+163pts)
-  - 🔥 **Freddy Fermin** (SD): L14 .323 / season .181 (+142pts)
+  - 🔥 **Jackson Merrill** (SD): L14 .404 / season .241 (+163pts)
+  - 🔥 **Freddy Fermin** (SD): L14 .344 / season .186 (+158pts)
   - 🔥 **Jeff McNeil** (ATH): L14 .390 / season .254 (+136pts)
   - 🔥 **Steven Kwan** (CLE): L14 .396 / season .261 (+135pts)
   - ❄️ **Tristan Peters** (CWS): L14 .093 / season .265 (-172pts) -- FADE props
   - ❄️ **Garrett Mitchell** (MIL): L14 .109 / season .258 (-149pts) -- FADE props
-  - ❄️ **Troy Johnston** (COL): L14 .140 / season .282 (-142pts) -- FADE props
+  - ❄️ **Troy Johnston** (COL): L14 .136 / season .281 (-145pts) -- FADE props
   - ❄️ **Justin Foscue** (TEX): L14 .115 / season .252 (-137pts) -- FADE props
   - ❄️ **Esmerlyn Valdez** (PIT): L14 .119 / season .253 (-134pts) -- FADE props
 
