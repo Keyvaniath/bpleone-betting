@@ -1,12 +1,12 @@
-# EdgeStat Daily Summary — 2026-08-04
+# EdgeStat Daily Summary — 2026-08-05
 
-## 🏥 Model Health: 54.0/100 [DEGRADED]
+## 🏥 Model Health: 53.0/100 [DEGRADED]
 - Several components weak - review red items
-  - 🟢 Calibration Freshness: 100.0/100
+  - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 6.3/100
   - 🔴 Brier Trend: 21.0/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟡 Data Health: 68.2/100
+  - 🟡 Data Health: 63.6/100
   - 🔴 Edge Count: 48.6/100
 
 ## 🌐 Slate Overview
@@ -81,12 +81,12 @@
   - [MED] Seattle Storm @ New York Liberty : 2 signals (HEAT_COLD, ATS)
   - [MED] New England Revolution @ CF Montréal : 2 signals (ATS, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (11)
+## ⚾ Top MLB Pitcher K Plays (8)
 - **Blade Tidwell** OVER 7.5 K (78%) fair -354
 - **Logan Henderson** OVER 4.5 K (76%) fair -321
 - **Troy Melton** OVER 4.5 K (76%) fair -321
-- **Jesús Luzardo** OVER 6.5 K (76%) fair -310
 - **Trey Yesavage** OVER 4.5 K (73%) fair -275
+- **Joe Ryan** OVER 4.5 K (73%) fair -272
 
 ## 🥊 UFC Fight Matchups (UFC Fight Night: Gamrot vs Salkilld)
   - [FAVORITE] **Ty Miller** (7-0-0) vs Billy Ray Goff -- fair -196
@@ -105,17 +105,17 @@
   - ❄️ **Tony Finau** (USA): Sunday +6.5 vs tourney avg
   - ❄️ **Michael Brennan** (USA): Sunday +5.8 vs tourney avg
 
-## 🔥 MLB Batter Heat (52 HOT / 52 COLD)
-  - 🔥 **Freddie Freeman** (LAD): L14 .463 / season .309 (+154pts)
-  - 🔥 **Steven Kwan** (CLE): L14 .408 / season .261 (+147pts)
-  - 🔥 **Freddy Fermin** (SD): L14 .323 / season .179 (+144pts)
-  - 🔥 **Chandler Simpson** (TB): L14 .429 / season .298 (+131pts)
-  - 🔥 **Jeff McNeil** (ATH): L14 .378 / season .253 (+125pts)
-  - ❄️ **Tristan Peters** (CWS): L14 .091 / season .267 (-176pts) -- FADE props
-  - ❄️ **Troy Johnston** (COL): L14 .133 / season .283 (-150pts) -- FADE props
-  - ❄️ **Carlos Cortes** (ATH): L14 .138 / season .262 (-124pts) -- FADE props
-  - ❄️ **Nicky Lopez** (TEX): L14 .154 / season .277 (-123pts) -- FADE props
-  - ❄️ **Connor Wong** (BOS): L14 .133 / season .255 (-122pts) -- FADE props
+## 🔥 MLB Batter Heat (51 HOT / 54 COLD)
+  - 🔥 **Jackson Merrill** (SD): L14 .412 / season .242 (+170pts)
+  - 🔥 **Freddie Freeman** (LAD): L14 .473 / season .310 (+163pts)
+  - 🔥 **Freddy Fermin** (SD): L14 .323 / season .181 (+142pts)
+  - 🔥 **Jeff McNeil** (ATH): L14 .390 / season .254 (+136pts)
+  - 🔥 **Steven Kwan** (CLE): L14 .396 / season .261 (+135pts)
+  - ❄️ **Tristan Peters** (CWS): L14 .093 / season .265 (-172pts) -- FADE props
+  - ❄️ **Garrett Mitchell** (MIL): L14 .109 / season .258 (-149pts) -- FADE props
+  - ❄️ **Troy Johnston** (COL): L14 .140 / season .282 (-142pts) -- FADE props
+  - ❄️ **Justin Foscue** (TEX): L14 .115 / season .252 (-137pts) -- FADE props
+  - ❄️ **Esmerlyn Valdez** (PIT): L14 .119 / season .253 (-134pts) -- FADE props
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**
