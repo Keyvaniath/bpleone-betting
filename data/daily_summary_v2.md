@@ -21,6 +21,9 @@
 4. **NYM @ CLE YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
 5. **WSN @ PHI YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
 
+## 📡 Sharp Action (Line Movement)
+- [MODERATE] **NYM @ CLE** under_8.5: 48.78% → 52.38% (+3.6pp)
+
 ## 📉 Strong UNDER Signals
 - [STRONG 5.6] **NYM @ CLE** model 7.21 vs market 8.5
 
