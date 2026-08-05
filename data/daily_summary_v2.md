@@ -24,9 +24,6 @@
 ## 📡 Sharp Action (Line Movement)
 - [MODERATE] **NYM @ CLE** under_8.5: 48.78% → 52.38% (+3.6pp)
 
-## 📉 Strong UNDER Signals
-- [STRONG 5.6] **NYM @ CLE** model 7.21 vs market 8.5
-
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
 - Net units: **+10.34u** | ROI: **+45.6%**
