@@ -1,12 +1,12 @@
 # EdgeStat Daily Summary — 2026-08-05
 
-## 🏥 Model Health: 53.0/100 [DEGRADED]
+## 🏥 Model Health: 51.2/100 [DEGRADED]
 - Several components weak - review red items
   - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 6.3/100
   - 🔴 Brier Trend: 21.0/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟡 Data Health: 63.6/100
+  - 🔴 Data Health: 54.5/100
   - 🔴 Edge Count: 48.6/100
 
 ## 🌐 Slate Overview
@@ -22,7 +22,8 @@
 5. **WSN @ PHI YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
 
 ## 📡 Sharp Action (Line Movement)
-- [MODERATE] **NYM @ CLE** under_8.5: 48.78% → 52.38% (+3.6pp)
+- [MODERATE] **MIN @ KCR** over_8.5: 48.78% → 53.49% (+4.7pp)
+- [MODERATE] **WSN @ PHI** over_9.5: 48.78% → 52.38% (+3.6pp)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -114,7 +115,7 @@
   - ❄️ **Garrett Mitchell** (MIL): L14 .109 / season .258 (-149pts) -- FADE props
   - ❄️ **Troy Johnston** (COL): L14 .136 / season .281 (-145pts) -- FADE props
   - ❄️ **Justin Foscue** (TEX): L14 .115 / season .252 (-137pts) -- FADE props
-  - ❄️ **Esmerlyn Valdez** (PIT): L14 .119 / season .253 (-134pts) -- FADE props
+  - ❄️ **Nathan Lukes** (TOR): L14 .132 / season .266 (-134pts) -- FADE props
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**
