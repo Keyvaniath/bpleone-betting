@@ -2,7 +2,7 @@
 
 ## 🏥 Model Health: 50.3/100 [DEGRADED]
 - Several components weak - review red items
-  - 🟢 Calibration Freshness: 99.9/100
+  - 🟢 Calibration Freshness: 100.0/100
   - 🔴 Hit Rate Trend: 6.3/100
   - 🔴 Brier Trend: 21.0/100
   - 🟢 Pipeline Audit: 100.0/100
@@ -24,7 +24,6 @@
 ## 📡 Sharp Action (Line Movement)
 - [STRONG] **WSN @ PHI** over_9.5: 48.78% → 54.55% (+5.8pp)
 - [MODERATE] **MIN @ KCR** over_8.5: 48.78% → 52.38% (+3.6pp)
-- [MODERATE] **OAK @ CIN** over_9.5: 52.38% → 55.56% (+3.2pp)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -106,12 +105,12 @@
   - ❄️ **Tony Finau** (USA): Sunday +6.5 vs tourney avg
   - ❄️ **Michael Brennan** (USA): Sunday +5.8 vs tourney avg
 
-## 🔥 MLB Batter Heat (45 HOT / 52 COLD)
+## 🔥 MLB Batter Heat (44 HOT / 51 COLD)
   - 🔥 **Freddie Freeman** (LAD): L14 .481 / season .310 (+171pts)
   - 🔥 **Jackson Merrill** (SD): L14 .404 / season .241 (+163pts)
   - 🔥 **Freddy Fermin** (SD): L14 .344 / season .186 (+158pts)
-  - 🔥 **Jeff McNeil** (ATH): L14 .390 / season .254 (+136pts)
-  - 🔥 **Steven Kwan** (CLE): L14 .396 / season .261 (+135pts)
+  - 🔥 **Jeff McNeil** (ATH): L14 .390 / season .253 (+137pts)
+  - 🔥 **Colt Keith** (DET): L14 .405 / season .273 (+132pts)
   - ❄️ **Tristan Peters** (CWS): L14 .093 / season .265 (-172pts) -- FADE props
   - ❄️ **Garrett Mitchell** (MIL): L14 .109 / season .258 (-149pts) -- FADE props
   - ❄️ **Troy Johnston** (COL): L14 .136 / season .281 (-145pts) -- FADE props
