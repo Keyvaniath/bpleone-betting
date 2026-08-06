@@ -1,12 +1,12 @@
-# EdgeStat Daily Summary — 2026-08-05
+# EdgeStat Daily Summary — 2026-08-06
 
-## 🏥 Model Health: 50.3/100 [DEGRADED]
+## 🏥 Model Health: 49.4/100 [DEGRADED]
 - Several components weak - review red items
-  - 🟢 Calibration Freshness: 100.0/100
+  - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 6.3/100
   - 🔴 Brier Trend: 21.0/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🔴 Data Health: 50.0/100
+  - 🔴 Data Health: 45.5/100
   - 🔴 Edge Count: 48.6/100
 
 ## 🌐 Slate Overview
@@ -22,8 +22,7 @@
 5. **WSN @ PHI YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
 
 ## 📡 Sharp Action (Line Movement)
-- [STRONG] **WSN @ PHI** over_9.5: 48.78% → 54.55% (+5.8pp)
-- [MODERATE] **MIN @ KCR** over_8.5: 48.78% → 52.38% (+3.6pp)
+- [MODERATE] **MIN @ KCR** over_9.0: 48.78% → 52.38% (+3.6pp)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -55,14 +54,14 @@
 - Hot teams: **3** | Cold teams: **14** | Over-heavy: 0 | Under-heavy: 0
 - Heating-up players: **0** | Cooling-down: 0
 
-## ⚠️ Anomaly Detector (35)
-- STEAM_MOVE: **34**
+## ⚠️ Anomaly Detector (32)
+- STEAM_MOVE: **31**
 - COMPOUND_BULLPEN: **1**
-  - CON @ WSH (WNBA): ML/TOTAL steam since open: ML +2.9pp toward WSH; total +4 (OVER) (13 snapshots)
-  - CLE @ CIN (MLB): ML steam since open: ML -15.7pp toward CLE (8 snapshots)
   - MIL @ LAA (MLB): ML/TOTAL steam since open: ML -15.3pp toward MIL; total -1 (UNDER) (7 snapshots)
   - IND @ SEA (WNBA): ML/TOTAL steam since open: ML -2.8pp toward IND; total +3 (OVER) (13 snapshots)
   - ATL @ NYM (MLB): ML/TOTAL steam since open: ML -10.4pp toward ATL; total -1.5 (UNDER) (8 snapshots)
+  - TOR @ MIN (WNBA): TOTAL steam since open: ML -0.1pp toward TOR; total +2 (OVER) (12 snapshots)
+  - IND @ POR (WNBA): TOTAL steam since open: ML -0.1pp toward IND; total -2 (UNDER) (5 snapshots)
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$330.0** (33.0% of $1000 bankroll)
@@ -81,12 +80,12 @@
   - [MED] Seattle Storm @ New York Liberty : 2 signals (HEAT_COLD, ATS)
   - [MED] New England Revolution @ CF Montréal : 2 signals (ATS, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (9)
+## ⚾ Top MLB Pitcher K Plays (6)
 - **Noah Cameron** OVER 4.5 K (73%) fair -275
 - **Sean Burke** OVER 6.5 K (73%) fair -271
 - **Eury Pérez** OVER 4.5 K (73%) fair -271
-- **Reid Detmers** OVER 4.5 K (71%) fair -251
 - **Paul Skenes** OVER 5.5 K (71%) fair -250
+- **Bryan Woo** OVER 4.5 K (69%) fair -219
 
 ## 🥊 UFC Fight Matchups (UFC Fight Night: Gamrot vs Salkilld)
   - [FAVORITE] **Ty Miller** (7-0-0) vs Billy Ray Goff -- fair -196
@@ -105,16 +104,16 @@
   - ❄️ **Tony Finau** (USA): Sunday +6.5 vs tourney avg
   - ❄️ **Michael Brennan** (USA): Sunday +5.8 vs tourney avg
 
-## 🔥 MLB Batter Heat (44 HOT / 51 COLD)
+## 🔥 MLB Batter Heat (41 HOT / 56 COLD)
   - 🔥 **Freddie Freeman** (LAD): L14 .481 / season .310 (+171pts)
-  - 🔥 **Jackson Merrill** (SD): L14 .404 / season .241 (+163pts)
   - 🔥 **Freddy Fermin** (SD): L14 .344 / season .186 (+158pts)
-  - 🔥 **Jeff McNeil** (ATH): L14 .390 / season .253 (+137pts)
-  - 🔥 **Colt Keith** (DET): L14 .405 / season .273 (+132pts)
-  - ❄️ **Tristan Peters** (CWS): L14 .093 / season .265 (-172pts) -- FADE props
-  - ❄️ **Garrett Mitchell** (MIL): L14 .109 / season .258 (-149pts) -- FADE props
+  - 🔥 **Zach McKinstry** (DET): L14 .375 / season .219 (+156pts)
+  - 🔥 **Jackson Merrill** (SD): L14 .373 / season .240 (+133pts)
+  - 🔥 **James McCann** (AZ): L14 .438 / season .306 (+132pts)
+  - ❄️ **Tristan Peters** (CWS): L14 .073 / season .262 (-189pts) -- FADE props
+  - ❄️ **Garrett Mitchell** (MIL): L14 .111 / season .257 (-146pts) -- FADE props
   - ❄️ **Troy Johnston** (COL): L14 .136 / season .281 (-145pts) -- FADE props
-  - ❄️ **Esmerlyn Valdez** (PIT): L14 .119 / season .253 (-134pts) -- FADE props
+  - ❄️ **Ben Rice** (NYY): L14 .120 / season .260 (-140pts) -- FADE props
   - ❄️ **Carlos Cortes** (ATH): L14 .129 / season .260 (-131pts) -- FADE props
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
