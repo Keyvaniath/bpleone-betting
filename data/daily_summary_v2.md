@@ -1,13 +1,13 @@
 # EdgeStat Daily Summary — 2026-08-06
 
-## 🏥 Model Health: 49.4/100 [DEGRADED]
-- Several components weak - review red items
+## 🏥 Model Health: 55.6/100 [OK]
+- Operational but room to improve - check yellow components
   - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 6.3/100
   - 🔴 Brier Trend: 21.0/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🔴 Data Health: 45.5/100
-  - 🔴 Edge Count: 48.6/100
+  - 🔴 Data Health: 59.1/100
+  - 🟢 Edge Count: 82.9/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.585)
@@ -20,9 +20,6 @@
 3. **TBR @ COL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 4. **NYM @ CLE YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
 5. **WSN @ PHI YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
-
-## 📡 Sharp Action (Line Movement)
-- [MODERATE] **MIN @ KCR** over_9.0: 48.78% → 52.38% (+3.6pp)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -80,12 +77,12 @@
   - [MED] Seattle Storm @ New York Liberty : 2 signals (HEAT_COLD, ATS)
   - [MED] New England Revolution @ CF Montréal : 2 signals (ATS, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (6)
-- **Noah Cameron** OVER 4.5 K (73%) fair -275
-- **Sean Burke** OVER 6.5 K (73%) fair -271
-- **Eury Pérez** OVER 4.5 K (73%) fair -271
-- **Paul Skenes** OVER 5.5 K (71%) fair -250
-- **Bryan Woo** OVER 4.5 K (69%) fair -219
+## ⚾ Top MLB Pitcher K Plays (8)
+- **Nolan McLean** OVER 5.5 K (76%) fair -314
+- **Cristopher Sánchez** OVER 5.5 K (73%) fair -277
+- **Ranger Suarez** OVER 4.5 K (73%) fair -275
+- **David Peterson** OVER 4.5 K (72%) fair -262
+- **Braxton Ashcraft** OVER 5.5 K (68%) fair -214
 
 ## 🥊 UFC Fight Matchups (UFC Fight Night: Gamrot vs Salkilld)
   - [FAVORITE] **Ty Miller** (7-0-0) vs Billy Ray Goff -- fair -196
@@ -104,12 +101,12 @@
   - ❄️ **Tony Finau** (USA): Sunday +6.5 vs tourney avg
   - ❄️ **Michael Brennan** (USA): Sunday +5.8 vs tourney avg
 
-## 🔥 MLB Batter Heat (41 HOT / 56 COLD)
+## 🔥 MLB Batter Heat (42 HOT / 56 COLD)
   - 🔥 **Freddie Freeman** (LAD): L14 .481 / season .310 (+171pts)
   - 🔥 **Freddy Fermin** (SD): L14 .344 / season .186 (+158pts)
   - 🔥 **Zach McKinstry** (DET): L14 .375 / season .219 (+156pts)
   - 🔥 **Jackson Merrill** (SD): L14 .373 / season .240 (+133pts)
-  - 🔥 **James McCann** (AZ): L14 .438 / season .306 (+132pts)
+  - 🔥 **James McCann** (AZ): L14 .429 / season .303 (+126pts)
   - ❄️ **Tristan Peters** (CWS): L14 .073 / season .262 (-189pts) -- FADE props
   - ❄️ **Garrett Mitchell** (MIL): L14 .111 / season .257 (-146pts) -- FADE props
   - ❄️ **Troy Johnston** (COL): L14 .136 / season .281 (-145pts) -- FADE props
