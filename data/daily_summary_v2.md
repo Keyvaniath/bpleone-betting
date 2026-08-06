@@ -1,13 +1,13 @@
 # EdgeStat Daily Summary — 2026-08-06
 
-## 🏥 Model Health: 55.6/100 [OK]
-- Operational but room to improve - check yellow components
+## 🏥 Model Health: 51.2/100 [DEGRADED]
+- Several components weak - review red items
   - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 6.3/100
   - 🔴 Brier Trend: 21.0/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🔴 Data Health: 59.1/100
-  - 🟢 Edge Count: 82.9/100
+  - 🔴 Data Health: 54.5/100
+  - 🔴 Edge Count: 48.6/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.585)
@@ -20,6 +20,9 @@
 3. **TBR @ COL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 4. **NYM @ CLE YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
 5. **WSN @ PHI YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
+
+## 📡 Sharp Action (Line Movement)
+- [MODERATE] **DET @ SEA** ml_away: 43.48% → 48.31% (+4.8pp)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
