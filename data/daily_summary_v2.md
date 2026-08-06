@@ -1,10 +1,10 @@
 # EdgeStat Daily Summary — 2026-08-06
 
-## 🏥 Model Health: 51.2/100 [DEGRADED]
+## 🏥 Model Health: 50.5/100 [DEGRADED]
 - Several components weak - review red items
   - 🟢 Calibration Freshness: 99.9/100
-  - 🔴 Hit Rate Trend: 6.3/100
-  - 🔴 Brier Trend: 21.0/100
+  - 🔴 Hit Rate Trend: 0/100
+  - 🔴 Brier Trend: 23.9/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🔴 Data Health: 54.5/100
   - 🔴 Edge Count: 48.6/100
