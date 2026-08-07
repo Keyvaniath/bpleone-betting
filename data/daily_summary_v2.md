@@ -1,4 +1,4 @@
-# EdgeStat Daily Summary — 2026-08-06
+# EdgeStat Daily Summary — 2026-08-07
 
 ## 🏥 Model Health: 50.5/100 [DEGRADED]
 - Several components weak - review red items
@@ -22,7 +22,12 @@
 5. **WSN @ PHI YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
 
 ## 📡 Sharp Action (Line Movement)
-- [MODERATE] **DET @ SEA** ml_away: 43.48% → 48.31% (+4.8pp)
+- [ELITE] **LAA @ BAL** ml_home: 57.08% → 66.1% (+9.0pp)
+- [MODERATE] **NYM @ CLE** under_8.5: 48.78% → 53.49% (+4.7pp)
+
+## 📉 Strong UNDER Signals
+- [STRONG 6.2] **DET @ SEA** model 7.13 vs market 8.5
+- [STRONG 6.2] **NYM @ CLE** model 7.42 vs market 8.5
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -54,14 +59,14 @@
 - Hot teams: **3** | Cold teams: **14** | Over-heavy: 0 | Under-heavy: 0
 - Heating-up players: **0** | Cooling-down: 0
 
-## ⚠️ Anomaly Detector (32)
-- STEAM_MOVE: **31**
+## ⚠️ Anomaly Detector (23)
+- STEAM_MOVE: **22**
 - COMPOUND_BULLPEN: **1**
   - MIL @ LAA (MLB): ML/TOTAL steam since open: ML -15.3pp toward MIL; total -1 (UNDER) (7 snapshots)
-  - IND @ SEA (WNBA): ML/TOTAL steam since open: ML -2.8pp toward IND; total +3 (OVER) (13 snapshots)
-  - ATL @ NYM (MLB): ML/TOTAL steam since open: ML -10.4pp toward ATL; total -1.5 (UNDER) (8 snapshots)
-  - TOR @ MIN (WNBA): TOTAL steam since open: ML -0.1pp toward TOR; total +2 (OVER) (12 snapshots)
   - IND @ POR (WNBA): TOTAL steam since open: ML -0.1pp toward IND; total -2 (UNDER) (5 snapshots)
+  - TEX @ HOU (MLB): ML/TOTAL steam since open: ML -7.5pp toward TEX; total +0.5 (OVER) (9 snapshots)
+  - DET @ OAK (MLB): ML/TOTAL steam since open: ML +6.6pp toward OAK; total -0.5 (UNDER) (6 snapshots)
+  - NY @ LV (WNBA): ML/TOTAL steam since open: ML -4.8pp toward NY; total +1 (OVER) (6 snapshots)
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$330.0** (33.0% of $1000 bankroll)
@@ -104,17 +109,17 @@
   - ❄️ **Tony Finau** (USA): Sunday +6.5 vs tourney avg
   - ❄️ **Michael Brennan** (USA): Sunday +5.8 vs tourney avg
 
-## 🔥 MLB Batter Heat (42 HOT / 56 COLD)
+## 🔥 MLB Batter Heat (45 HOT / 54 COLD)
   - 🔥 **Freddie Freeman** (LAD): L14 .481 / season .310 (+171pts)
   - 🔥 **Freddy Fermin** (SD): L14 .344 / season .186 (+158pts)
-  - 🔥 **Zach McKinstry** (DET): L14 .375 / season .219 (+156pts)
+  - 🔥 **Zach McKinstry** (DET): L14 .357 / season .216 (+141pts)
   - 🔥 **Jackson Merrill** (SD): L14 .373 / season .240 (+133pts)
-  - 🔥 **James McCann** (AZ): L14 .429 / season .303 (+126pts)
-  - ❄️ **Tristan Peters** (CWS): L14 .073 / season .262 (-189pts) -- FADE props
-  - ❄️ **Garrett Mitchell** (MIL): L14 .111 / season .257 (-146pts) -- FADE props
+  - 🔥 **Jacob Young** (WSH): L14 .371 / season .242 (+129pts)
+  - ❄️ **Tristan Peters** (CWS): L14 .075 / season .261 (-186pts) -- FADE props
+  - ❄️ **Garrett Mitchell** (MIL): L14 .089 / season .257 (-168pts) -- FADE props
   - ❄️ **Troy Johnston** (COL): L14 .136 / season .281 (-145pts) -- FADE props
+  - ❄️ **Jesús Sánchez** (TOR): L14 .128 / season .268 (-140pts) -- FADE props
   - ❄️ **Ben Rice** (NYY): L14 .120 / season .260 (-140pts) -- FADE props
-  - ❄️ **Carlos Cortes** (ATH): L14 .129 / season .260 (-131pts) -- FADE props
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**
