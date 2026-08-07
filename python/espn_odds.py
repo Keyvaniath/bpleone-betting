@@ -62,7 +62,7 @@ def _norm(sport: str, abbr: Optional[str]) -> Optional[str]:
 
 
 def _get(url: str) -> Dict[str, Any]:
-    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (EdgeStat)"})
+    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (EdgeStat)", "Accept": "application/json, text/plain, */*"})
     with urllib.request.urlopen(req, timeout=25) as r:
         return json.load(r)
 

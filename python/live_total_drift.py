@@ -36,7 +36,7 @@ LEAGUE_RPI = 0.55
 
 def _http(url):
     try:
-        req = urllib.request.Request(url, headers={"User-Agent": "EdgeStat/1.0"})
+        req = urllib.request.Request(url, headers={"User-Agent": "EdgeStat/1.0", "Accept": "application/json, text/plain, */*"})
         with urllib.request.urlopen(req, timeout=10) as r:
             return json.loads(r.read().decode("utf-8"))
     except Exception:

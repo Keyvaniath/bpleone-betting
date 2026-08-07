@@ -91,7 +91,7 @@ def _load(p: str) -> Dict[str, Any]:
 
 def _http_json(url: str) -> Optional[Dict[str, Any]]:
     try:
-        req = urllib.request.Request(url, headers={"User-Agent": "EdgeStat/1.0"})
+        req = urllib.request.Request(url, headers={"User-Agent": "EdgeStat/1.0", "Accept": "application/json, text/plain, */*"})
         with urllib.request.urlopen(req, timeout=HTTP_TIMEOUT) as r:
             return json.loads(r.read().decode("utf-8"))
     except Exception:

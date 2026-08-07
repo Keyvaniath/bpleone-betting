@@ -39,7 +39,7 @@ OUT = os.path.join(DATA_DIR, "worldcup_cards.json")
 
 SB = "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?dates={d}"
 STANDINGS = "https://site.api.espn.com/apis/v2/sports/soccer/fifa.world/standings"
-UA = {"User-Agent": "Mozilla/5.0"}
+UA = {"User-Agent": "Mozilla/5.0", "Accept": "application/json, text/plain, */*"}
 
 # ---------------------------------------------------------------------------
 # Seed strength: coarse public-knowledge FIFA-ranking tiers, NOT precise

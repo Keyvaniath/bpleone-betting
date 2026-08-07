@@ -22,7 +22,7 @@ DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 STATE = os.path.join(DATA_DIR, "cws_state.json")
 OUT = os.path.join(DATA_DIR, "cws_pot_history.json")
 SUMMARY = "https://site.api.espn.com/apis/site/v2/sports/baseball/college-baseball/summary?event={id}"
-UA = {"User-Agent": "Mozilla/5.0"}
+UA = {"User-Agent": "Mozilla/5.0", "Accept": "application/json, text/plain, */*"}
 MAX_HISTORY = 400
 
 

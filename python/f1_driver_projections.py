@@ -36,7 +36,7 @@ F1_GRID_SIZE = 20    # roughly 20 drivers race each weekend
 
 def _http(url, timeout=12):
     try:
-        req = urllib.request.Request(url, headers={"User-Agent": "EdgeStat/1.0"})
+        req = urllib.request.Request(url, headers={"User-Agent": "EdgeStat/1.0", "Accept": "application/json, text/plain, */*"})
         with urllib.request.urlopen(req, timeout=timeout) as r:
             return json.loads(r.read().decode("utf-8"))
     except Exception:

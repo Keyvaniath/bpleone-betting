@@ -29,7 +29,7 @@ OUT = os.path.join(DATA_DIR, "ufc_matchup.json")
 
 def _http(url, timeout=8):
     try:
-        req = urllib.request.Request(url, headers={"User-Agent": "EdgeStat/1.0"})
+        req = urllib.request.Request(url, headers={"User-Agent": "EdgeStat/1.0", "Accept": "application/json, text/plain, */*"})
         with urllib.request.urlopen(req, timeout=timeout) as r:
             return json.loads(r.read().decode())
     except Exception:

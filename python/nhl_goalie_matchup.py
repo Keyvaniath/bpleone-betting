@@ -28,6 +28,7 @@ from __future__ import annotations
 import os
 import json
 import math
+import time
 import urllib.request
 import datetime as dt
 from typing import Any, Dict, List, Optional
@@ -48,13 +49,18 @@ RECENT_WEIGHT = 0.30   # 30% recent / 70% season-blend
 POST_WEIGHT_PLAYOFFS = 0.60   # during playoffs, weight postseason more
 
 
-def _http(url, timeout=10):
-    try:
-        req = urllib.request.Request(url, headers={"User-Agent": "EdgeStat/1.0"})
-        with urllib.request.urlopen(req, timeout=timeout) as r:
-            return json.loads(r.read().decode("utf-8"))
-    except Exception:
-        return None
+def _http(url, timeout=10, retries=1):
+    # retries>1 matters in CI: the pipeline makes hundreds of ESPN calls per
+    # run, so by the time this module fires the runner IP is often throttled.
+    for attempt in range(retries):
+        try:
+            req = urllib.request.Request(url, headers={"User-Agent": "EdgeStat/1.0", "Accept": "application/json, text/plain, */*"})
+            with urllib.request.urlopen(req, timeout=timeout) as r:
+                return json.loads(r.read().decode("utf-8"))
+        except Exception:
+            if attempt < retries - 1:
+                time.sleep(3 * (attempt + 1))
+    return None
 
 
 def _load(p):
@@ -183,11 +189,19 @@ def _opp_shots_for_per_game(team_name: str, nhl_state: Dict[str, Any]) -> float:
 
 
 def run() -> Dict[str, Any]:
-    sb = _http(SCOREBOARD_URL)
+    sb = _http(SCOREBOARD_URL, retries=3)
     nhl_state = _load(os.path.join(DATA_DIR, "nhl_state.json"))
     if not sb:
+        # Same shape as the success payload — consumers (and the __main__
+        # summary print) must never KeyError on the degraded path.
         out = {"generated_at": dt.datetime.now().isoformat(timespec="seconds"),
-                "error": "ESPN scoreboard unreachable", "games": []}
+                "error": "ESPN scoreboard unreachable",
+                "n_games": 0, "n_picks": 0,
+                "league_avg_sv_pct": LEAGUE_AVG_SV_PCT,
+                "league_avg_shots": LEAGUE_AVG_SHOTS,
+                "is_playoffs": False,
+                "top_picks": [], "games": []}
+        os.makedirs(DATA_DIR, exist_ok=True)
         with open(OUT, "w") as f: json.dump(out, f, indent=2)
         return out
 
@@ -326,19 +340,27 @@ def run() -> Dict[str, Any]:
 
 
 if __name__ == "__main__":
+    # Display only — must never abort the run (a KeyError here killed the
+    # whole daily pipeline when the degraded payload lacked count keys).
     p = run()
-    print(f"NHL goalie matchup: {p['n_games']} games, {p['n_picks']} picks")
-    for g in p["games"]:
-        print(f"\n  {g['matchup']}:")
-        for t in g["teams"]:
+    print(f"NHL goalie matchup: {p.get('n_games', 0)} games, {p.get('n_picks', 0)} picks")
+    if p.get("error"):
+        print(f"  (degraded: {p['error']})")
+    for g in p.get("games") or []:
+        print(f"\n  {g.get('matchup','?')}:")
+        for t in g.get("teams") or []:
             ssn = t.get("season_stats") or {}
             post = t.get("postseason_stats") or {}
-            print(f"    {t['team_abbr']:3s} {t['goalie_name'] or '?'}: "
+            blended = t.get("blended_sv_pct")
+            blended_txt = f"{blended:.3f}" if blended is not None else "?"
+            print(f"    {t.get('team_abbr','?'):3s} {t.get('goalie_name') or '?'}: "
                   f"season SV%={ssn.get('sv_pct','?')} ({ssn.get('n_starts',0)} GS) | "
                   f"playoff SV%={post.get('sv_pct','?')} ({post.get('n_starts',0)} GS) | "
-                  f"blended {t['blended_sv_pct']:.3f}")
-            print(f"      vs {t.get('opposing_goalie','?')} -> exp goals {t['expected_goals_for']:.2f}")
+                  f"blended {blended_txt}")
+            eg = t.get("expected_goals_for")
+            if eg is not None:
+                print(f"      vs {t.get('opposing_goalie','?')} -> exp goals {eg:.2f}")
     print(f"\n  Top 8 picks:")
-    for pp in p["top_picks"][:8]:
-        print(f"    {pp['matchup'][:25]:25s} {pp.get('market','?')[:30]:30s} "
-              f"p={pp['prob']*100:.0f}% fair={pp['fair']}")
+    for pp in (p.get("top_picks") or [])[:8]:
+        print(f"    {pp.get('matchup','?')[:25]:25s} {pp.get('market','?')[:30]:30s} "
+              f"p={pp.get('prob',0)*100:.0f}% fair={pp.get('fair')}")
