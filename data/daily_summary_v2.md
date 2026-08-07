@@ -1,13 +1,13 @@
 # EdgeStat Daily Summary — 2026-08-07
 
-## 🏥 Model Health: 50.5/100 [DEGRADED]
+## 🏥 Model Health: 53.4/100 [DEGRADED]
 - Several components weak - review red items
   - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 0/100
   - 🔴 Brier Trend: 23.9/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🔴 Data Health: 54.5/100
-  - 🔴 Edge Count: 48.6/100
+  - 🔴 Data Health: 59.1/100
+  - 🟡 Edge Count: 68.6/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.585)
@@ -20,10 +20,6 @@
 3. **TBR @ COL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 4. **NYM @ CLE YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
 5. **WSN @ PHI YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
-
-## 📡 Sharp Action (Line Movement)
-- [ELITE] **LAA @ BAL** ml_home: 57.08% → 66.1% (+9.0pp)
-- [MODERATE] **NYM @ CLE** under_8.5: 48.78% → 53.49% (+4.7pp)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -55,8 +51,9 @@
 - Hot teams: **3** | Cold teams: **14** | Over-heavy: 0 | Under-heavy: 0
 - Heating-up players: **0** | Cooling-down: 0
 
-## ⚠️ Anomaly Detector (23)
+## ⚠️ Anomaly Detector (24)
 - STEAM_MOVE: **22**
+- PEN_MISMATCH: **1**
 - COMPOUND_BULLPEN: **1**
   - MIL @ LAA (MLB): ML/TOTAL steam since open: ML -15.3pp toward MIL; total -1 (UNDER) (7 snapshots)
   - IND @ POR (WNBA): TOTAL steam since open: ML -0.1pp toward IND; total -2 (UNDER) (5 snapshots)
@@ -105,13 +102,13 @@
   - ❄️ **Tony Finau** (USA): Sunday +6.5 vs tourney avg
   - ❄️ **Michael Brennan** (USA): Sunday +5.8 vs tourney avg
 
-## 🔥 MLB Batter Heat (45 HOT / 54 COLD)
+## 🔥 MLB Batter Heat (46 HOT / 50 COLD)
   - 🔥 **Freddie Freeman** (LAD): L14 .481 / season .310 (+171pts)
-  - 🔥 **Freddy Fermin** (SD): L14 .344 / season .186 (+158pts)
+  - 🔥 **Freddy Fermin** (SD): L14 .343 / season .187 (+156pts)
   - 🔥 **Zach McKinstry** (DET): L14 .357 / season .216 (+141pts)
-  - 🔥 **Jackson Merrill** (SD): L14 .373 / season .240 (+133pts)
   - 🔥 **Jacob Young** (WSH): L14 .371 / season .242 (+129pts)
-  - ❄️ **Tristan Peters** (CWS): L14 .073 / season .261 (-188pts) -- FADE props
+  - 🔥 **James McCann** (AZ): L14 .429 / season .303 (+126pts)
+  - ❄️ **Tristan Peters** (CWS): L14 .095 / season .263 (-168pts) -- FADE props
   - ❄️ **Garrett Mitchell** (MIL): L14 .089 / season .257 (-168pts) -- FADE props
   - ❄️ **Troy Johnston** (COL): L14 .136 / season .281 (-145pts) -- FADE props
   - ❄️ **Jesús Sánchez** (TOR): L14 .128 / season .268 (-140pts) -- FADE props
