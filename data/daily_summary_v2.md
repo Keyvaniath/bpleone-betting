@@ -25,10 +25,6 @@
 - [ELITE] **LAA @ BAL** ml_home: 57.08% → 66.1% (+9.0pp)
 - [MODERATE] **NYM @ CLE** under_8.5: 48.78% → 53.49% (+4.7pp)
 
-## 📉 Strong UNDER Signals
-- [STRONG 6.2] **DET @ SEA** model 7.13 vs market 8.5
-- [STRONG 6.2] **NYM @ CLE** model 7.42 vs market 8.5
-
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
 - Net units: **+10.34u** | ROI: **+45.6%**
@@ -85,12 +81,12 @@
   - [MED] Seattle Storm @ New York Liberty : 2 signals (HEAT_COLD, ATS)
   - [MED] New England Revolution @ CF Montréal : 2 signals (ATS, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (8)
-- **Nolan McLean** OVER 5.5 K (76%) fair -314
-- **Cristopher Sánchez** OVER 5.5 K (73%) fair -277
-- **Ranger Suarez** OVER 4.5 K (73%) fair -275
-- **David Peterson** OVER 4.5 K (72%) fair -262
-- **Braxton Ashcraft** OVER 5.5 K (68%) fair -214
+## ⚾ Top MLB Pitcher K Plays (13)
+- **Payton Tolle** OVER 4.5 K (76%) fair -311
+- **Carmen Mlodzinski** OVER 6.5 K (74%) fair -278
+- **Drew Rasmussen** OVER 4.5 K (73%) fair -275
+- **Nathan Eovaldi** OVER 5.5 K (73%) fair -270
+- **Zack Wheeler** OVER 5.5 K (70%) fair -233
 
 ## 🥊 UFC Fight Matchups (UFC Fight Night: Gamrot vs Salkilld)
   - [FAVORITE] **Ty Miller** (7-0-0) vs Billy Ray Goff -- fair -196
@@ -115,7 +111,7 @@
   - 🔥 **Zach McKinstry** (DET): L14 .357 / season .216 (+141pts)
   - 🔥 **Jackson Merrill** (SD): L14 .373 / season .240 (+133pts)
   - 🔥 **Jacob Young** (WSH): L14 .371 / season .242 (+129pts)
-  - ❄️ **Tristan Peters** (CWS): L14 .075 / season .261 (-186pts) -- FADE props
+  - ❄️ **Tristan Peters** (CWS): L14 .073 / season .261 (-188pts) -- FADE props
   - ❄️ **Garrett Mitchell** (MIL): L14 .089 / season .257 (-168pts) -- FADE props
   - ❄️ **Troy Johnston** (COL): L14 .136 / season .281 (-145pts) -- FADE props
   - ❄️ **Jesús Sánchez** (TOR): L14 .128 / season .268 (-140pts) -- FADE props
