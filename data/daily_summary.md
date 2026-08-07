@@ -4,37 +4,34 @@
 
 _Pipeline health: **WARNING** (12/15 artifacts ok; 3 empty, 0 stale)._ 
 
-_Generated at 2026-08-07T17:04:18 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-08-07T22:36:39 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
-**LAA @ MIA - OVER_8.5**
+**LAA @ MIA - OVER_8.0**
 - Market: -110
-- Model probability: 87.9%
-- Raw edge: +67.74%
+- Model probability: 90.5%
+- Raw edge: +72.87%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
 
-## Full Slate (15 games)
+## Full Slate (12 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 6:40p ET | NYM @ PIT | PNC Park | 73F 3mph | PIT_ML +16.16% |
-| 6:40p ET | TOR @ PHI | Citizens Bank Park | 83F 11mph | OVER_7.5 +18.72% |
-| 6:45p ET | CIN @ WSN | Nationals Park | 82F 2mph | WSN_ML +48.06% |
-| 7:05p ET | ATL @ NYY | Yankee Stadium | 76F 3mph | OVER_8.0 +13.83% |
-| 7:10p ET | OAK @ BOS | Fenway Park | 82F 5mph | OVER_8.5 +36.71% |
-| 7:10p ET | LAA @ MIA | loanDepot park | indoor | OVER_8.5 +67.74% |
-| 7:40p ET | CLE @ CHW | Rate Field | 75F 6mph | OVER_7.5 +14.8% |
+| 6:40p ET | NYM @ PIT | PNC Park | 74F 3mph | PIT_ML +13.77% |
+| 7:10p ET | OAK @ BOS | Fenway Park | 79F 5mph | OVER_9.5 +11.7% |
+| 7:10p ET | LAA @ MIA | loanDepot park | indoor | OVER_8.0 +72.87% |
+| 7:40p ET | CLE @ CHW | Rate Field | 74F 5mph | CHW_ML +4.17% |
 | 7:40p ET | MIN @ MIL | American Family Field | indoor | OVER_8.0 +32.37% |
-| 8:10p ET | CHC @ KCR | Kauffman Stadium | 78F 5mph | KCR_ML +3.68% |
-| 8:15p ET | COL @ STL | Busch Stadium | 78F 5mph | OVER_8.5 +48.39% |
+| 8:10p ET | CHC @ KCR | Kauffman Stadium | 75F 6mph | UNDER_9.5 +8.16% |
+| 8:15p ET | COL @ STL | Busch Stadium | 77F 4mph | OVER_9.0 +35.93% |
 | 8:15p ET | BAL @ TEX | Globe Life Field | indoor | OVER_7.5 +27.23% |
-| 9:40p ET | LAD @ ARI | Chase Field | indoor | OVER_9.0 +48.68% |
-| 9:40p ET | HOU @ SDP | Petco Park | 71F 3mph | OVER_8.5 +36.59% |
-| 9:45p ET | TBR @ SEA | T-Mobile Park | indoor | TBR_ML +27.54% |
-| 10:15p ET | DET @ SFG | Oracle Park | 56F 10mph | UNDER_8.5 +10.67% |
+| 9:40p ET | LAD @ ARI | Chase Field | indoor | OVER_8.5 +57.61% |
+| 9:40p ET | HOU @ SDP | Petco Park | 72F 3mph | OVER_8.5 +37.3% |
+| 9:45p ET | TBR @ SEA | T-Mobile Park | indoor | TBR_ML +29.45% |
+| 10:15p ET | DET @ SFG | Oracle Park | 56F 10mph | DET_ML +13.65% |
 
 ## Parlays - top 5
 
@@ -70,21 +67,18 @@ Cumulative graded plays: 7243. Wins: 2977. Hit rate: 41.1%.
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| ATL @ NYY | 40.1% | +149 | 4.48 | -114 | +114 |
 | BAL @ TEX | 39.8% | +152 | 4.61 | +196 | -196 |
-| CHC @ KCR | 58.8% | -142 | 2.63 | +226 | -226 |
-| CIN @ WSN | 40.9% | +144 | 4.52 | -243 | +243 |
-| CLE @ CHW | 37.2% | +169 | 5.13 | +175 | -175 |
-| COL @ STL | 35.4% | +182 | 5.3 | +107 | -107 |
-| DET @ SFG | 51.6% | -107 | 3.54 | +273 | -273 |
-| HOU @ SDP | 37.7% | +165 | 4.82 | +108 | -108 |
+| CHC @ KCR | 54.6% | -120 | 3.05 | +281 | -281 |
+| CLE @ CHW | 37.2% | +169 | 5.1 | +176 | -176 |
+| COL @ STL | 35.4% | +182 | 5.18 | +108 | -108 |
+| DET @ SFG | 51.6% | -107 | 3.52 | +273 | -273 |
+| HOU @ SDP | 37.7% | +165 | 4.81 | +108 | -108 |
 | LAA @ MIA | 44.2% | +126 | 8.38 | -665 | +665 |
 | LAD @ ARI | 43.8% | +129 | 4.13 | +528 | -528 |
 | MIN @ MIL | 26.5% | +278 | 6.64 | -204 | +204 |
-| NYM @ PIT | 62.9% | -169 | 2.31 | -115 | +115 |
-| OAK @ BOS | 29.2% | +242 | 6.33 | -166 | +166 |
+| NYM @ PIT | 62.9% | -169 | 2.27 | -115 | +115 |
+| OAK @ BOS | 29.2% | +242 | 6.32 | -165 | +165 |
 | TBR @ SEA | 55.2% | -123 | 2.97 | +346 | -346 |
-| TOR @ PHI | 47.8% | +109 | 3.62 | -111 | +111 |
 
 ## Travel / Rest Flags
 

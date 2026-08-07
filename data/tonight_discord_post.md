@@ -1,9 +1,12 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:5 F:45
+_NO_ACTION_NIGHT_ | L:0 S:15 F:88
+
+:lock: **LOCK:** Ryan Feltner (MLB)
 
 :dart: **Top Picks:**
-1. [GOLF] Xander Schauffele -- Xander Schauffele (PLAYER_STRONG)
-2. [GOLF] Michael Thorbjornsen -- Michael Thorbjornsen (PLAYER_STRONG)
+1. [GOLF] Ben James -- Ben James (PLAYER_STRONG)
+2. [GOLF] Sahith Theegala -- Sahith Theegala (PLAYER_STRONG)
+3. [WNBA] kahleah copper -- kahleah copper (PLAYER_STRONG)
 
 :coin: Bankroll Advisory: STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 

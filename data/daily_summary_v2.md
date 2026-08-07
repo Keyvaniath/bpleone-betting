@@ -1,18 +1,18 @@
 # EdgeStat Daily Summary — 2026-08-07
 
-## 🏥 Model Health: 49.7/100 [DEGRADED]
-- Several components weak - review red items
+## 🏥 Model Health: 57.9/100 [OK]
+- Operational but room to improve - check yellow components
   - 🟢 Calibration Freshness: 100.0/100
   - 🔴 Hit Rate Trend: 19.6/100
   - 🔴 Brier Trend: 0/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🔴 Data Health: 54.5/100
+  - 🟢 Data Health: 95.5/100
   - 🔴 Edge Count: 48.6/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.581)
-- **Total games on board:** 108
-- **Strong home favorites:** 0 | **Strong road dogs:** 0
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.578)
+- **Total games on board:** 113
+- **Strong home favorites:** 1 | **Strong road dogs:** 1
 
 ## 🎯 Top 5 Best Bets
 1. **LAA @ BAL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
@@ -21,8 +21,8 @@
 4. **NYM @ CLE YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
 5. **WSN @ PHI YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
 
-## 📉 Strong UNDER Signals
-- [ELITE 7.5] **TBR @ SEA** model 6.6 vs market 8.5
+## 🐋 Whale Picks (Max Confluence)
+- [STRONG] **[MLB]** LAA @ MIA MIA_ML -- 73% / +21.7% (score 2.5)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -50,19 +50,23 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
+## ⚡ Pre-Game HIGH Conviction (1)
+- [WNBA] **Phoenix Mercury** AWAY (2-2 L10) · model 62.4% fair -166
+
 ## 🔥/❄️ Heat / Cold Signals
 - Hot teams: **3** | Cold teams: **13** | Over-heavy: 0 | Under-heavy: 0
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (24)
-- STEAM_MOVE: **22**
+## ⚠️ Anomaly Detector (28)
+- RESIDUAL_DIVERGENCE: **3**
+- STEAM_MOVE: **23**
 - PEN_MISMATCH: **1**
 - COMPOUND_BULLPEN: **1**
+  - Connecticut Sun (WNBA): Connecticut Sun UNDERPERFORMING expected margin by 8.0pts in recent games -- model bias may persist
+  - Dallas Wings (WNBA): Dallas Wings OUTPERFORMING expected margin by 10.9pts in recent games -- model bias may persist
+  - New England Revolution (MLS): New England Revolution UNDERPERFORMING expected margin by 7.4pts in recent games -- model bias may persist
   - MIL @ LAA (MLB): ML/TOTAL steam since open: ML -15.3pp toward MIL; total -1 (UNDER) (7 snapshots)
   - IND @ POR (WNBA): TOTAL steam since open: ML -0.1pp toward IND; total -2 (UNDER) (5 snapshots)
-  - TEX @ HOU (MLB): ML/TOTAL steam since open: ML -7.5pp toward TEX; total +0.5 (OVER) (9 snapshots)
-  - DET @ OAK (MLB): ML/TOTAL steam since open: ML +6.6pp toward OAK; total -0.5 (UNDER) (6 snapshots)
-  - NY @ LV (WNBA): ML/TOTAL steam since open: ML -4.8pp toward NY; total +1 (OVER) (6 snapshots)
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$330.0** (33.0% of $1000 bankroll)
@@ -72,14 +76,6 @@
   - #3 [NRFI] $50 on TBR @ COL YRFI (1st-inning OVER 0.5) (P=74%)
   - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
-
-## 🎯 Convergence Picks (14 stacked games)
-- ELITE: **2** · HIGH: 1 · MED: 11
-  - [ELITE] Atlanta United FC @ Philadelphia Union : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
-  - [ELITE] FC Dallas @ LA Galaxy : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
-  - [HIGH] Seattle Sounders FC @ Portland Timbers : 3 signals (HEAT_COLD, ATS, ATS)
-  - [MED] Seattle Storm @ New York Liberty : 2 signals (HEAT_COLD, ATS)
-  - [MED] New England Revolution @ CF Montréal : 2 signals (ATS, ATS)
 
 ## ⚾ Top MLB Pitcher K Plays (13)
 - **Payton Tolle** OVER 4.5 K (76%) fair -311
@@ -96,21 +92,18 @@
 ## 🥊 UFC Fight Matchups (UFC Fight Night: Gamrot vs Salkilld)
   - [FAVORITE] **Ty Miller** (7-0-0) vs Billy Ray Goff -- fair -196
   - [LEAN] **Alexia Thainara** (14-1-0) vs Amanda Lemos -- fair -165
-  - [COIN_FLIP] **Jessie Rosas** (8-1-0) vs Miles Johns -- fair -123
+  - [LEAN] **José Montanha** (6-1-0) vs Louie Sutherland -- fair -138
   - [COIN_FLIP] **Guilherme Pat** (6-1-0) vs Steven Asplund -- fair -120
   - [COIN_FLIP] **Yadier del Valle** (10-1-0) vs Darren Elkins -- fair -113
 
-## ⛳ Golf Player Heat (from Rocket Classic)
-  - 🔥 T1 **Michael Thorbjornsen** (USA): -18 total -- finished T1, Sunday -2.5 vs tourney avg
-  - 🔥 T2 **Xander Schauffele** (USA): -16 total -- finished T2, Sunday -1.0 vs tourney avg
-  - 🔥 T4 **Rasmus Højgaard** (Denmark): -14 total -- finished T4
-  - 🔥 T5 **Hideki Matsuyama** (Japan): -13 total -- finished T5, Sunday -2.8 vs tourney avg
-  - 🔥 T6 **Matt Wallace** (England): -13 total -- finished T6
-  - ❄️ **Zecheng Dou** (China): Sunday +7.2 vs tourney avg
-  - ❄️ **Tony Finau** (USA): Sunday +6.5 vs tourney avg
-  - ❄️ **Michael Brennan** (USA): Sunday +5.8 vs tourney avg
+## ⛳ Golf Player Heat (from Wyndham Championship)
+  - 🔥 T1 **Ben James** (USA): -12 total -- finished T1
+  - 🔥 T2 **Alex Smalley** (USA): -9 total -- finished T2
+  - 🔥 T3 **Alex Noren** (Sweden): -9 total -- finished T3
+  - 🔥 T4 **David Skinns** (England): -9 total -- finished T4
+  - 🔥 T5 **Max Greyserman** (USA): -9 total -- finished T5
 
-## 🔥 MLB Batter Heat (46 HOT / 50 COLD)
+## 🔥 MLB Batter Heat (46 HOT / 49 COLD)
   - 🔥 **Freddie Freeman** (LAD): L14 .481 / season .310 (+171pts)
   - 🔥 **Freddy Fermin** (SD): L14 .343 / season .187 (+156pts)
   - 🔥 **Zach McKinstry** (DET): L14 .357 / season .216 (+141pts)
