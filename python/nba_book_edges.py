@@ -24,7 +24,7 @@ DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 OUT = os.path.join(DATA_DIR, "nba_book_edges.json")
 HIST = os.path.join(DATA_DIR, "nba_odds_history.json")
 SB = "https://site.api.espn.com/apis/site/v2/sports/basketball/{lg}/scoreboard?dates={d}"
-UA = {"User-Agent": "Mozilla/5.0", "Accept": "application/json, text/plain, */*"}
+UA = {"User-Agent": "EdgeStat/1.0", "Accept": "application/json, text/plain, */*"}
 LEAGUES = ("nba", "wnba")
 MIN_EDGE_PP = 1.0    # surface a side as a lean when the model beats the de-vig book by >=1pp
 MOVE_EPS = 0.004     # only snapshot history when the de-vig home line moves >=0.4pp
