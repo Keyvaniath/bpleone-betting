@@ -41,6 +41,23 @@ bpleone-site/
 
 ## Current deployment state (LIVE)
 
+- **2026-08-07 — ESPN 403 OUTAGE + fetch-header rules (do not regress):** ESPN
+  (Akamai) began 403ing ~Aug 6: (1) any request with NO `Accept` header (urllib
+  sends none by default; curl sends `Accept: */*`, so manual curl checks LIE);
+  (2) from datacenter IPs (GitHub Actions), any Mozilla/browser-claiming UA
+  whose TLS fingerprint is Python's (home IPs tolerate this — a local pass does
+  NOT prove CI will pass; validate header changes in an Actions run). Every
+  ESPN fetch now sends the honest `"User-Agent": "EdgeStat/1.0"` +
+  `"Accept": "application/json, text/plain, */*"` — never "upgrade" a fetcher
+  to a fake Chrome UA. The outage was silent for a day because every module
+  degrades gracefully; the loud failure was nhl_goalie_matchup's degraded
+  payload missing n_games/n_picks → KeyError in its __main__ summary print →
+  10 straight daily-pipeline failures (same class as the slate_player_pot
+  crash: DISPLAY CODE MUST NEVER ABORT THE RUN — degraded payloads must be
+  shape-identical to success payloads, prints use .get()). NB: PrizePicks
+  keeps its own browser-header stack (their bot-wall wants the opposite);
+  the EdgeStat-UA rule is for ESPN hosts.
+
 - **2026-07-12 — Live-aware UI ("links to everything that work for LIVE data"):**
   `site_directory.py` -> `data/site_directory.json` = full page catalog (125 pages,
   13 groups) + per-sport live status normalized from the *_state feeds (per-feed
