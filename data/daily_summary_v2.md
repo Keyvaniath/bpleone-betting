@@ -1,10 +1,10 @@
 # EdgeStat Daily Summary — 2026-08-07
 
-## 🏥 Model Health: 50.5/100 [DEGRADED]
+## 🏥 Model Health: 49.7/100 [DEGRADED]
 - Several components weak - review red items
   - 🟢 Calibration Freshness: 99.9/100
-  - 🔴 Hit Rate Trend: 0/100
-  - 🔴 Brier Trend: 23.9/100
+  - 🔴 Hit Rate Trend: 19.6/100
+  - 🔴 Brier Trend: 0/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🔴 Data Health: 54.5/100
   - 🔴 Edge Count: 48.6/100
@@ -20,9 +20,6 @@
 3. **TBR @ COL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 4. **NYM @ CLE YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
 5. **WSN @ PHI YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
-
-## 📉 Strong UNDER Signals
-- [ELITE 7.5] **TBR @ SEA** model 6.6 vs market 8.5
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
