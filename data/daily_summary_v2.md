@@ -2,7 +2,7 @@
 
 ## 🏥 Model Health: 49.7/100 [DEGRADED]
 - Several components weak - review red items
-  - 🟢 Calibration Freshness: 99.9/100
+  - 🟢 Calibration Freshness: 100.0/100
   - 🔴 Hit Rate Trend: 19.6/100
   - 🔴 Brier Trend: 0/100
   - 🟢 Pipeline Audit: 100.0/100
@@ -10,8 +10,8 @@
   - 🔴 Edge Count: 48.6/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.585)
-- **Total games on board:** 100
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.581)
+- **Total games on board:** 108
 - **Strong home favorites:** 0 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
@@ -20,6 +20,9 @@
 3. **TBR @ COL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 4. **NYM @ CLE YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
 5. **WSN @ PHI YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
+
+## 📉 Strong UNDER Signals
+- [ELITE 7.5] **TBR @ SEA** model 6.6 vs market 8.5
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -48,8 +51,8 @@
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
 ## 🔥/❄️ Heat / Cold Signals
-- Hot teams: **3** | Cold teams: **14** | Over-heavy: 0 | Under-heavy: 0
-- Heating-up players: **0** | Cooling-down: 0
+- Hot teams: **3** | Cold teams: **13** | Over-heavy: 0 | Under-heavy: 0
+- Heating-up players: **20** | Cooling-down: 20
 
 ## ⚠️ Anomaly Detector (24)
 - STEAM_MOVE: **22**
@@ -84,6 +87,11 @@
 - **Drew Rasmussen** OVER 4.5 K (73%) fair -275
 - **Nathan Eovaldi** OVER 5.5 K (73%) fair -270
 - **Zack Wheeler** OVER 5.5 K (70%) fair -233
+
+## 🏀 NBA Player Heat (2 HOT / 1 COLD)
+  - 🔥 **Scottie Barnes** (TOR): L5 24.4/7.6/9.6 vs season 18.6/5.8/8.8 [PTS +5.8]
+  - 🔥 **RJ Barrett** (TOR): L5 24.6/7.6/4.0 vs season 21.4/5.5/3.6 [REB +2.1]
+  - ❄️ **Brandon Ingram** (TOR): L5 12.0 vs season 19.1 [PTS -7.1] -- FADE OVER props
 
 ## 🥊 UFC Fight Matchups (UFC Fight Night: Gamrot vs Salkilld)
   - [FAVORITE] **Ty Miller** (7-0-0) vs Billy Ray Goff -- fair -196
@@ -122,3 +130,6 @@
   - ⚠️ batter_rbis (Brier Δ -0.0052)
 
 ## 🤖 Self-Training Status
+- **WNBA**: n=31 games · hit rate 71.0% · bias +1.9pp
+- **MLS**: n=48 games · hit rate 54.2% · bias -14.1pp [calibration applied]
+- **MLB**: n=191 games · hit rate 59.7% · bias +1.2pp

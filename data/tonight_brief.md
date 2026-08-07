@@ -1,4 +1,4 @@
-# 🌙 Tonight's Brief — 2026-08-04
+# 🌙 Tonight's Brief — 2026-08-07
 
 _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 
@@ -9,13 +9,10 @@ _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 - **Mel Rojas Jr.** one_plus_tb (KBO) -- 73% / +38.5%
 - **Austin Dean** one_plus_tb (KBO) -- 73% / +38.5%
 
-## 📉 Under Bets
-- **DET @ SEA** UNDER 8.0 — model 7.19 [STRONG signal]
-
 ## 🎰 Tonight's Best Parlay
 - **Choi Jeong** one_plus_tb + **Jose Pirela** one_plus_tb
 - Joint 53% · fair +264 · edge +94.6%
 
 ---
-_Generated 2026-08-04T07:33:53_
+_Generated 2026-08-07T17:04:05_
 _Full breakdown: /tonight · Full history: /locks-of-day_
