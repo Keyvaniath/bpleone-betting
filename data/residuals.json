@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-08-07T06:02:06",
+  "generated_at": "2026-08-07T09:40:39",
   "lookback_days": 30,
   "min_player_n": 2,
   "markets": {
     "1_PLUS_XBH": {
-      "n": 111,
-      "mean_residual": -0.083,
-      "median_residual": -0.425,
-      "std_residual": 0.652,
-      "mae": 0.574,
-      "rmse": 0.658,
+      "n": 138,
+      "mean_residual": -0.106,
+      "median_residual": -0.433,
+      "std_residual": 0.622,
+      "mae": 0.56,
+      "rmse": 0.631,
       "histogram": {
         "edges": [
           -2.602,
@@ -30,9 +30,9 @@
           0,
           0,
           0,
-          76,
+          95,
           0,
-          27,
+          35,
           0,
           7,
           0,
@@ -41,14 +41,14 @@
       },
       "by_projection_band": {
         "0.5-1": {
-          "n": 38,
-          "mean_residual": -0.19,
-          "mae": 0.602
+          "n": 50,
+          "mean_residual": -0.217,
+          "mae": 0.584
         },
         "0-0.5": {
-          "n": 73,
-          "mean_residual": -0.028,
-          "mae": 0.559
+          "n": 88,
+          "mean_residual": -0.042,
+          "mae": 0.546
         }
       },
       "worst_misses": [
@@ -93,15 +93,15 @@
           "residual": 1.511
         }
       ],
-      "direction": "balanced (model centered on actual)"
+      "direction": "model OVER-predicts by avg 0.106 -> shrink projections"
     },
     "3_plus_hrr": {
-      "n": 39,
-      "mean_residual": -1.215,
-      "median_residual": -1.77,
-      "std_residual": 1.849,
-      "mae": 1.947,
-      "rmse": 2.213,
+      "n": 44,
+      "mean_residual": -1.176,
+      "median_residual": -1.75,
+      "std_residual": 1.787,
+      "mae": 1.88,
+      "rmse": 2.139,
       "histogram": {
         "edges": [
           -4.01,
@@ -120,12 +120,12 @@
         "counts": [
           0,
           16,
-          2,
           4,
-          6,
+          4,
+          8,
           4,
           2,
-          2,
+          3,
           1,
           1,
           1
@@ -138,9 +138,9 @@
           "mae": 1.896
         },
         "2-3": {
-          "n": 31,
-          "mean_residual": -1.039,
-          "mae": 1.961
+          "n": 36,
+          "mean_residual": -1.016,
+          "mae": 1.876
         }
       },
       "worst_misses": [
@@ -185,15 +185,15 @@
           "residual": -3.0
         }
       ],
-      "direction": "model OVER-predicts by avg 1.215 -> shrink projections"
+      "direction": "model OVER-predicts by avg 1.176 -> shrink projections"
     },
     "WALK_1PLUS_YES": {
-      "n": 29,
-      "mean_residual": 0.124,
-      "median_residual": 0.223,
-      "std_residual": 0.847,
-      "mae": 0.718,
-      "rmse": 0.856,
+      "n": 32,
+      "mean_residual": 0.052,
+      "median_residual": -0.553,
+      "std_residual": 0.837,
+      "mae": 0.711,
+      "rmse": 0.839,
       "histogram": {
         "edges": [
           -2.342,
@@ -213,8 +213,8 @@
           0,
           0,
           0,
-          5,
-          9,
+          6,
+          11,
           0,
           9,
           0,
@@ -225,9 +225,9 @@
       },
       "by_projection_band": {
         "0.5-1": {
-          "n": 29,
-          "mean_residual": 0.124,
-          "mae": 0.718
+          "n": 32,
+          "mean_residual": 0.052,
+          "mae": 0.711
         }
       },
       "worst_misses": [
@@ -272,7 +272,7 @@
           "residual": 1.376
         }
       ],
-      "direction": "model UNDER-predicts by avg 0.124 -> boost projections"
+      "direction": "balanced (model centered on actual)"
     }
   },
   "player_systematic": [
@@ -306,6 +306,14 @@
       "n": 3,
       "mean_residual": -1.867,
       "mae": 1.867,
+      "suggests": "shrink"
+    },
+    {
+      "player": "Munetaka Murakami",
+      "market": "3_plus_hrr",
+      "n": 2,
+      "mean_residual": -1.36,
+      "mae": 1.36,
       "suggests": "shrink"
     },
     {
@@ -365,6 +373,30 @@
       "suggests": "boost"
     },
     {
+      "player": "Munetaka Murakami",
+      "market": "1_PLUS_XBH",
+      "n": 3,
+      "mean_residual": -0.577,
+      "mae": 0.577,
+      "suggests": "shrink"
+    },
+    {
+      "player": "Miguel Vargas",
+      "market": "WALK_1PLUS_YES",
+      "n": 2,
+      "mean_residual": -0.573,
+      "mae": 0.573,
+      "suggests": "shrink"
+    },
+    {
+      "player": "Wilyer Abreu",
+      "market": "1_PLUS_XBH",
+      "n": 2,
+      "mean_residual": -0.571,
+      "mae": 0.571,
+      "suggests": "shrink"
+    },
+    {
       "player": "Jonathan Aranda",
       "market": "WALK_1PLUS_YES",
       "n": 2,
@@ -389,20 +421,12 @@
       "suggests": "shrink"
     },
     {
-      "player": "Jac Caglianone",
+      "player": "Royce Lewis",
       "market": "1_PLUS_XBH",
       "n": 2,
-      "mean_residual": 0.53,
-      "mae": 0.53,
-      "suggests": "boost"
-    },
-    {
-      "player": "Miguel Vargas",
-      "market": "1_PLUS_XBH",
-      "n": 2,
-      "mean_residual": -0.522,
-      "mae": 0.522,
-      "suggests": "shrink"
+      "mean_residual": -0.491,
+      "mae": 0.491,
+      "suggests": "ok"
     },
     {
       "player": "Brandon Marsh",
@@ -410,6 +434,30 @@
       "n": 2,
       "mean_residual": -0.489,
       "mae": 0.489,
+      "suggests": "ok"
+    },
+    {
+      "player": "Isaac Collins",
+      "market": "1_PLUS_XBH",
+      "n": 2,
+      "mean_residual": -0.489,
+      "mae": 0.489,
+      "suggests": "ok"
+    },
+    {
+      "player": "Manny Machado",
+      "market": "1_PLUS_XBH",
+      "n": 2,
+      "mean_residual": -0.489,
+      "mae": 0.489,
+      "suggests": "ok"
+    },
+    {
+      "player": "Kody Clemens",
+      "market": "1_PLUS_XBH",
+      "n": 3,
+      "mean_residual": 0.48,
+      "mae": 0.48,
       "suggests": "ok"
     },
     {
@@ -426,6 +474,14 @@
       "n": 2,
       "mean_residual": 0.476,
       "mae": 0.956,
+      "suggests": "ok"
+    },
+    {
+      "player": "Brooks Lee",
+      "market": "1_PLUS_XBH",
+      "n": 2,
+      "mean_residual": -0.451,
+      "mae": 0.451,
       "suggests": "ok"
     },
     {
@@ -450,6 +506,14 @@
       "n": 2,
       "mean_residual": -0.439,
       "mae": 0.439,
+      "suggests": "ok"
+    },
+    {
+      "player": "Bobby Witt Jr.",
+      "market": "1_PLUS_XBH",
+      "n": 2,
+      "mean_residual": -0.427,
+      "mae": 0.427,
       "suggests": "ok"
     },
     {
@@ -517,6 +581,14 @@
       "suggests": "ok"
     },
     {
+      "player": "Salvador Perez",
+      "market": "1_PLUS_XBH",
+      "n": 3,
+      "mean_residual": 0.226,
+      "mae": 0.526,
+      "suggests": "ok"
+    },
+    {
       "player": "Elly De La Cruz",
       "market": "1_PLUS_XBH",
       "n": 3,
@@ -546,6 +618,30 @@
       "n": 2,
       "mean_residual": 0.195,
       "mae": 1.085,
+      "suggests": "ok"
+    },
+    {
+      "player": "Jac Caglianone",
+      "market": "1_PLUS_XBH",
+      "n": 3,
+      "mean_residual": 0.181,
+      "mae": 0.525,
+      "suggests": "ok"
+    },
+    {
+      "player": "Miguel Vargas",
+      "market": "1_PLUS_XBH",
+      "n": 3,
+      "mean_residual": -0.177,
+      "mae": 0.518,
+      "suggests": "ok"
+    },
+    {
+      "player": "Manny Machado",
+      "market": "3_plus_hrr",
+      "n": 2,
+      "mean_residual": 0.165,
+      "mae": 1.045,
       "suggests": "ok"
     },
     {
@@ -579,73 +675,9 @@
       "mean_residual": -0.115,
       "mae": 0.691,
       "suggests": "ok"
-    },
-    {
-      "player": "Nolan Arenado",
-      "market": "1_PLUS_XBH",
-      "n": 3,
-      "mean_residual": -0.093,
-      "mae": 0.5,
-      "suggests": "ok"
-    },
-    {
-      "player": "Bryce Harper",
-      "market": "1_PLUS_XBH",
-      "n": 3,
-      "mean_residual": -0.088,
-      "mae": 0.443,
-      "suggests": "ok"
-    },
-    {
-      "player": "Jackson Chourio",
-      "market": "1_PLUS_XBH",
-      "n": 2,
-      "mean_residual": 0.081,
-      "mae": 0.5,
-      "suggests": "ok"
-    },
-    {
-      "player": "Rafael Devers",
-      "market": "1_PLUS_XBH",
-      "n": 3,
-      "mean_residual": 0.078,
-      "mae": 0.47,
-      "suggests": "ok"
-    },
-    {
-      "player": "Jackson Holliday",
-      "market": "WALK_1PLUS_YES",
-      "n": 2,
-      "mean_residual": -0.072,
-      "mae": 0.487,
-      "suggests": "ok"
-    },
-    {
-      "player": "Steven Kwan",
-      "market": "1_PLUS_XBH",
-      "n": 2,
-      "mean_residual": 0.057,
-      "mae": 0.52,
-      "suggests": "ok"
-    },
-    {
-      "player": "Cedric Mullins",
-      "market": "1_PLUS_XBH",
-      "n": 2,
-      "mean_residual": 0.04,
-      "mae": 0.5,
-      "suggests": "ok"
-    },
-    {
-      "player": "Juan Soto",
-      "market": "1_PLUS_XBH",
-      "n": 2,
-      "mean_residual": 0.003,
-      "mae": 0.466,
-      "suggests": "ok"
     }
   ],
-  "total_props_analyzed": 179,
+  "total_props_analyzed": 214,
   "by_park": {},
   "by_handedness": {}
 }
