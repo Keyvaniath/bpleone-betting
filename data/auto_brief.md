@@ -23,7 +23,7 @@ _0% lineups confirmed · 13 rookie SPs_
    - Player prop quality score 1.1935
    - Elite player
 
-## ⚠️ Trap Warnings — 7 flagged
+## ⚠️ Trap Warnings — 9 flagged
 - **TOR @ PHI YRFI (1st-inning OVER 0.5)** (low):
    - Edge +27.4% looks big but only 0 settled props on this player — model unproven
 - **BAL @ TEX YRFI (1st-inning OVER 0.5)** (low):
@@ -35,10 +35,6 @@ _0% lineups confirmed · 13 rookie SPs_
 - **DET @ SFG YRFI (1st-inning OVER 0.5)** (low):
    - Edge +17.8% looks big but only 0 settled props on this player — model unproven
 
-## Hot streaks
-**Batters heating up:** Wilyer Abreu (heat +3.90), Ali Sanchez (heat +0.93), Henry Bolte (heat +0.91)
-**Pitchers on a run:** Gerrit Cole (heat -0.68), Jake Bennett (heat -0.89)
-
 ## Bullpens GASSED tonight
 Athletics, Pittsburgh Pirates, San Diego Padres, San Francisco Giants, Toronto Blue Jays, Minnesota Twins, Philadelphia Phillies, Atlanta Braves
 _Lean late-inning OVER on these games; fade their save situations._
@@ -49,8 +45,8 @@ _Lean late-inning OVER on these games; fade their save situations._
 ## Golf -- Wyndham Championship
 - **Leader:** Beau Hossler (-12) at #1
 - **Field:** 147 players  |  Status: In Progress
-- **Play of the Tournament:** Ben James WIN @ +539 (model 15.7%, HIGH)
-   - P(win) 15.7% with 1 round(s) left -- sweet-spot value at #3 (-11).
+- **Play of the Tournament:** Ben James WIN @ +541 (model 15.6%, HIGH)
+   - P(win) 15.6% with 1 round(s) left -- sweet-spot value at #3 (-11).
 
 ## NBA -- PRESEASON
 - Miami Heat @ Toronto Raptors (0-0 vs 0-0)  | P(home) 55.0% fair -122 | Scheduled

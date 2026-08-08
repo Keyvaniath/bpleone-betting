@@ -1,5 +1,5 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:14 F:90
+_NO_ACTION_NIGHT_ | L:0 S:14 F:98
 
 :dart: **Top Picks:**
 1. [GOLF] Beau Hossler -- Beau Hossler (PLAYER_STRONG)

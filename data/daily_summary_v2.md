@@ -1,13 +1,13 @@
 # EdgeStat Daily Summary — 2026-08-08
 
-## 🏥 Model Health: 71.7/100 [HEALTHY]
-- Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 99.9/100
+## 🏥 Model Health: 66.9/100 [OK]
+- Operational but room to improve - check yellow components
+  - 🟢 Calibration Freshness: 99.7/100
   - 🔴 Hit Rate Trend: 0/100
-  - 🟡 Brier Trend: 61.3/100
+  - 🟡 Brier Trend: 62.2/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 100.0/100
-  - 🟢 Edge Count: 94.3/100
+  - 🟢 Data Health: 95.5/100
+  - 🔴 Edge Count: 54.3/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.582)
@@ -51,9 +51,9 @@
 - Hot teams: **4** | Cold teams: **12** | Over-heavy: 0 | Under-heavy: 0
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (24)
+## ⚠️ Anomaly Detector (26)
 - STEAM_MOVE: **20**
-- PEN_MISMATCH: **3**
+- PEN_MISMATCH: **5**
 - COMPOUND_BULLPEN: **1**
   - MIL @ LAA (MLB): ML/TOTAL steam since open: ML -15.3pp toward MIL; total -1 (UNDER) (7 snapshots)
   - IND @ POR (WNBA): TOTAL steam since open: ML -0.1pp toward IND; total -2 (UNDER) (5 snapshots)
@@ -99,7 +99,7 @@
   - 🔥 T2 **Jordan Smith** (England): -11 total -- finished T2
   - 🔥 T3 **Ben James** (USA): -11 total -- finished T3
   - 🔥 T4 **Alex Smalley** (USA): -9 total -- finished T4
-  - 🔥 T5 **Alex Noren** (Sweden): -9 total -- finished T5
+  - 🔥 T5 **Rico Hoey** (Philippines): -9 total -- finished T5
   - ❄️ **Nick Dunlap** (USA): Sunday +5.5 vs tourney avg
   - ❄️ **Troy Merritt** (USA): Sunday +4.5 vs tourney avg
   - ❄️ **Karl Vilips** (Australia): Sunday +4.0 vs tourney avg

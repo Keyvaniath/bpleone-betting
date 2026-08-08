@@ -1,19 +1,19 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-08-08T13:40:10 UTC_
+_Generated 2026-08-08T14:45:09 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -34
+- **Score:** -42
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
 - **Total STRONG:** 14
-- **Total FADES:** 90
+- **Total FADES:** 98
 
 ## Top 5 Curated Picks
-1. **GOLF / Beau Hossler** (GOLF_PLAYER, score=182.21)
+1. **GOLF / Beau Hossler** (GOLF_PLAYER, score=180.57)
    - Play: Beau Hossler (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Jordan Smith** (GOLF_PLAYER, score=147.79)
+2. **GOLF / Jordan Smith** (GOLF_PLAYER, score=145.14)
    - Play: Jordan Smith (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
 3. **MLB / Landen Roupp** (MLB_PITCHER, score=57.58)
@@ -37,9 +37,9 @@ _Generated 2026-08-08T13:40:10 UTC_
   - Fade angle: team total UNDER
 - **NBA** / MIA (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NHL** / jake oettinger (GOALIE_FADE)
+- **NHL** / stuart skinner (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / thatcher demko (GOALIE_FADE)
+- **NHL** / marc-andre fleury (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / logan thompson_2 (GOALIE_FADE)
+- **NHL** / anthony stolarz (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
