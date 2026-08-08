@@ -1,18 +1,18 @@
 # EdgeStat Daily Summary — 2026-08-08
 
-## 🏥 Model Health: 66.8/100 [OK]
-- Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.9/100
-  - 🔴 Hit Rate Trend: 0/100
-  - 🟡 Brier Trend: 61.6/100
+## 🏥 Model Health: 74.4/100 [HEALTHY]
+- Solid health - some minor issues to monitor
+  - 🟢 Calibration Freshness: 100.0/100
+  - 🔴 Hit Rate Trend: 17.6/100
+  - 🟢 Brier Trend: 81.9/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 95.5/100
   - 🔴 Edge Count: 54.3/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.578)
-- **Total games on board:** 112
-- **Strong home favorites:** 2 | **Strong road dogs:** 1
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.58)
+- **Total games on board:** 111
+- **Strong home favorites:** 1 | **Strong road dogs:** 1
 
 ## 🎯 Top 5 Best Bets
 1. **TOR @ PHI YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
@@ -20,9 +20,6 @@
 3. **OAK @ BOS YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 4. **COL @ STL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 5. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
-
-## 📉 Strong UNDER Signals
-- [STRONG 5.3] **TBR @ SEA** model 7.11 vs market 8.5
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -54,10 +51,10 @@
 - Hot teams: **4** | Cold teams: **12** | Over-heavy: 0 | Under-heavy: 0
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (30)
+## ⚠️ Anomaly Detector (28)
 - STEAM_MOVE: **24**
-- PEN_MISMATCH: **5**
 - COMPOUND_BULLPEN: **1**
+- PEN_MISMATCH: **3**
   - MIL @ LAA (MLB): ML/TOTAL steam since open: ML -15.3pp toward MIL; total -1 (UNDER) (7 snapshots)
   - IND @ POR (WNBA): TOTAL steam since open: ML -0.1pp toward IND; total -2 (UNDER) (5 snapshots)
   - TEX @ HOU (MLB): ML/TOTAL steam since open: ML -7.5pp toward TEX; total +0.5 (OVER) (9 snapshots)
@@ -75,15 +72,15 @@
 
 ## 🎯 Convergence Picks (2 stacked games)
 - ELITE: **0** · HIGH: 0 · MED: 2
-  - [MED] Golden State Valkyries @ Dallas Wings : 2 signals (HEAT_COLD, ATS)
+  - [MED] Seattle Storm @ Portland Fire : 2 signals (HEAT_COLD, ATS)
   - [MED] Coventry City @ Arsenal : 2 signals (PREGAME, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (13)
-- **Chris Sale** OVER 5.5 K (75%) fair -301
+## ⚾ Top MLB Pitcher K Plays (10)
 - **Peter Lambert** OVER 4.5 K (75%) fair -295
 - **Chase Burns** OVER 4.5 K (73%) fair -271
 - **Yoshinobu Yamamoto** OVER 4.5 K (71%) fair -251
 - **Taj Bradley** OVER 5.5 K (71%) fair -250
+- **Jacob deGrom** OVER 5.5 K (68%) fair -214
 
 ## 🏀 NBA Player Heat (2 HOT / 1 COLD)
   - 🔥 **Scottie Barnes** (TOR): L5 24.4/7.6/9.6 vs season 18.6/5.8/8.8 [PTS +5.8]
@@ -98,16 +95,16 @@
   - [COIN_FLIP] **Yadier del Valle** (10-1-0) vs Darren Elkins -- fair -113
 
 ## ⛳ Golf Player Heat (from Wyndham Championship)
-  - 🔥 T1 **Beau Hossler** (USA): -12 total -- finished T1
-  - 🔥 T2 **Jordan Smith** (England): -11 total -- finished T2
-  - 🔥 T3 **Ben James** (USA): -11 total -- finished T3
-  - 🔥 T4 **Nico Echavarria** (Colombia): -9 total -- finished T4
-  - 🔥 T5 **Justin Lower** (USA): -9 total -- finished T5
+  - 🔥 T1 **Beau Hossler** (USA): -17 total -- finished T1
+  - 🔥 T2 **Michael Brennan** (USA): -16 total -- finished T2
+  - 🔥 T3 **Tom Kim** (South Korea): -15 total -- finished T3
+  - 🔥 T4 **Alex Smalley** (USA): -14 total -- finished T4
+  - 🔥 T5 **Alex Noren** (Sweden): -14 total -- finished T5
   - ❄️ **Nick Dunlap** (USA): Sunday +5.5 vs tourney avg
   - ❄️ **Troy Merritt** (USA): Sunday +4.5 vs tourney avg
   - ❄️ **Karl Vilips** (Australia): Sunday +4.0 vs tourney avg
 
-## 🔥 MLB Batter Heat (42 HOT / 52 COLD)
+## 🔥 MLB Batter Heat (45 HOT / 51 COLD)
   - 🔥 **Zach McKinstry** (DET): L14 .390 / season .221 (+169pts)
   - 🔥 **Freddie Freeman** (LAD): L14 .463 / season .307 (+156pts)
   - 🔥 **Freddy Fermin** (SD): L14 .343 / season .187 (+156pts)
@@ -118,6 +115,9 @@
   - ❄️ **Nasim Nuñez** (WSH): L14 .087 / season .231 (-144pts) -- FADE props
   - ❄️ **Troy Johnston** (COL): L14 .140 / season .279 (-139pts) -- FADE props
   - ❄️ **Brayan Rocchio** (CLE): L14 .115 / season .254 (-139pts) -- FADE props
+
+## 📈 Streak Regression Alerts (1)
+- [WNBA] Seattle Storm on L4 L10 0-4 -- Seattle Storm on L4 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**

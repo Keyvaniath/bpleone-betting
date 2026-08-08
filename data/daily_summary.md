@@ -4,34 +4,33 @@
 
 _Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
 
-_Generated at 2026-08-08T21:24:35 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-08-08T22:36:41 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
-**TOR @ PHI - OVER_8.0**
+**MIN @ MIL - OVER_7.5**
 - Market: -110
-- Model probability: 82.9%
-- Raw edge: +58.2%
+- Model probability: 76.2%
+- Raw edge: +45.47%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
 
-## Full Slate (12 games)
+## Full Slate (11 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 6:05p ET | TOR @ PHI | Citizens Bank Park | 77F 3mph | OVER_8.0 +58.2% |
 | 6:40p ET | NYM @ PIT | PNC Park | 74F 6mph | OVER_8.0 +23.21% |
-| 6:45p ET | CIN @ WSN | Nationals Park | 85F 1mph | WSN_ML +45.58% |
+| 6:45p ET | CIN @ WSN | Nationals Park | 79F 4mph | WSN_ML +44.3% |
 | 7:10p ET | CHC @ KCR | Kauffman Stadium | 80F 8mph | CHC_ML +21.48% |
 | 7:10p ET | MIN @ MIL | American Family Field | indoor | OVER_7.5 +45.47% |
-| 7:15p ET | HOU @ SDP | Petco Park | 74F 6mph | HOU_ML +26.37% |
-| 7:15p ET | DET @ SFG | Oracle Park | 59F 9mph | OVER_7.5 +4.7% |
-| 7:15p ET | COL @ STL | Busch Stadium | 80F 5mph | OVER_9.0 +32.99% |
-| 7:15p ET | BAL @ TEX | Globe Life Field | indoor | TEX_ML +4.52% |
+| 7:15p ET | HOU @ SDP | Petco Park | 74F 6mph | HOU_ML +27.0% |
+| 7:15p ET | DET @ SFG | Oracle Park | 60F 9mph | OVER_7.5 +5.48% |
+| 7:15p ET | COL @ STL | Busch Stadium | 81F 4mph | COL_ML +32.77% |
+| 7:15p ET | BAL @ TEX | Globe Life Field | indoor | TEX_ML +3.79% |
 | 7:15p ET | CLE @ CHW | Rate Field | 69F 5mph | -- |
 | 8:10p ET | LAD @ ARI | Chase Field | indoor | LAD_ML +19.75% |
-| 9:50p ET | TBR @ SEA | T-Mobile Park | indoor | TBR_ML +20.5% |
+| 9:50p ET | TBR @ SEA | T-Mobile Park | indoor | TBR_ML +19.32% |
 
 ## Parlays - top 5
 
@@ -60,24 +59,23 @@ _Generated at 2026-08-08T21:24:35 UTC. Game lines source: **Bovada (fallback -- 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
 
-Cumulative graded plays: 7284. Wins: 2989. Hit rate: 41.0%.
+Cumulative graded plays: 7286. Wins: 2990. Hit rate: 41.0%.
 
 ## Auxiliary Markets (Model Fair Prices)
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
 | BAL @ TEX | 27.4% | +265 | 6.47 | +123 | -123 |
-| CHC @ KCR | 42.5% | +135 | 4.19 | +521 | -521 |
-| CIN @ WSN | 54.9% | -122 | 3.0 | -120 | +120 |
-| CLE @ CHW | 54.8% | -121 | 3.05 | +154 | -154 |
-| COL @ STL | 32.2% | +211 | 5.69 | +204 | -204 |
+| CHC @ KCR | 42.5% | +135 | 4.21 | +521 | -521 |
+| CIN @ WSN | 54.9% | -122 | 3.06 | -120 | +120 |
+| CLE @ CHW | 54.8% | -121 | 3.03 | +154 | -154 |
+| COL @ STL | 32.2% | +211 | 5.71 | +204 | -204 |
 | DET @ SFG | 36.2% | +176 | 5.38 | +193 | -193 |
-| HOU @ SDP | 48.5% | +106 | 3.51 | +297 | -297 |
+| HOU @ SDP | 48.5% | +106 | 3.5 | +297 | -297 |
 | LAD @ ARI | 59.8% | -149 | 2.57 | +468 | -468 |
 | MIN @ MIL | 48.2% | +108 | 3.65 | +115 | -115 |
-| NYM @ PIT | 56.8% | -131 | 2.94 | -109 | +109 |
+| NYM @ PIT | 56.8% | -131 | 2.92 | -109 | +109 |
 | TBR @ SEA | 53.1% | -113 | 3.16 | +281 | -281 |
-| TOR @ PHI | 26.6% | +275 | 6.75 | -156 | +156 |
 
 ## Team Form (last 10)
 
