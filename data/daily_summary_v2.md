@@ -1,18 +1,18 @@
 # EdgeStat Daily Summary — 2026-08-08
 
-## 🏥 Model Health: 66.9/100 [OK]
+## 🏥 Model Health: 66.8/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.7/100
+  - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 0/100
-  - 🟡 Brier Trend: 62.2/100
+  - 🟡 Brier Trend: 61.6/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 95.5/100
   - 🔴 Edge Count: 54.3/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.582)
-- **Total games on board:** 110
-- **Strong home favorites:** 1 | **Strong road dogs:** 0
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.578)
+- **Total games on board:** 112
+- **Strong home favorites:** 2 | **Strong road dogs:** 1
 
 ## 🎯 Top 5 Best Bets
 1. **TOR @ PHI YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
@@ -20,6 +20,9 @@
 3. **OAK @ BOS YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 4. **COL @ STL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 5. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
+
+## 📉 Strong UNDER Signals
+- [STRONG 5.3] **TBR @ SEA** model 7.11 vs market 8.5
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -51,8 +54,8 @@
 - Hot teams: **4** | Cold teams: **12** | Over-heavy: 0 | Under-heavy: 0
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (26)
-- STEAM_MOVE: **20**
+## ⚠️ Anomaly Detector (30)
+- STEAM_MOVE: **24**
 - PEN_MISMATCH: **5**
 - COMPOUND_BULLPEN: **1**
   - MIL @ LAA (MLB): ML/TOTAL steam since open: ML -15.3pp toward MIL; total -1 (UNDER) (7 snapshots)
@@ -63,7 +66,7 @@
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$5.5**
+- Expected EV: **$5.52**
   - #1 [NRFI] $50 on TOR @ PHI YRFI (1st-inning OVER 0.5) (P=73%)
   - #2 [NRFI] $50 on BAL @ TEX YRFI (1st-inning OVER 0.5) (P=73%)
   - #3 [NRFI] $50 on OAK @ BOS YRFI (1st-inning OVER 0.5) (P=72%)
@@ -98,18 +101,18 @@
   - 🔥 T1 **Beau Hossler** (USA): -12 total -- finished T1
   - 🔥 T2 **Jordan Smith** (England): -11 total -- finished T2
   - 🔥 T3 **Ben James** (USA): -11 total -- finished T3
-  - 🔥 T4 **Alex Smalley** (USA): -9 total -- finished T4
-  - 🔥 T5 **Rico Hoey** (Philippines): -9 total -- finished T5
+  - 🔥 T4 **Nico Echavarria** (Colombia): -9 total -- finished T4
+  - 🔥 T5 **Justin Lower** (USA): -9 total -- finished T5
   - ❄️ **Nick Dunlap** (USA): Sunday +5.5 vs tourney avg
   - ❄️ **Troy Merritt** (USA): Sunday +4.5 vs tourney avg
   - ❄️ **Karl Vilips** (Australia): Sunday +4.0 vs tourney avg
 
-## 🔥 MLB Batter Heat (42 HOT / 53 COLD)
+## 🔥 MLB Batter Heat (42 HOT / 52 COLD)
   - 🔥 **Zach McKinstry** (DET): L14 .390 / season .221 (+169pts)
   - 🔥 **Freddie Freeman** (LAD): L14 .463 / season .307 (+156pts)
   - 🔥 **Freddy Fermin** (SD): L14 .343 / season .187 (+156pts)
   - 🔥 **Steven Kwan** (CLE): L14 .411 / season .264 (+147pts)
-  - 🔥 **James McCann** (AZ): L14 .429 / season .303 (+126pts)
+  - 🔥 **Austin Wells** (NYY): L14 .303 / season .173 (+130pts)
   - ❄️ **Tristan Peters** (CWS): L14 .095 / season .263 (-168pts) -- FADE props
   - ❄️ **Garrett Mitchell** (MIL): L14 .109 / season .257 (-148pts) -- FADE props
   - ❄️ **Nasim Nuñez** (WSH): L14 .087 / season .231 (-144pts) -- FADE props
