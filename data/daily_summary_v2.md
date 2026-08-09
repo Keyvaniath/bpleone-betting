@@ -1,25 +1,25 @@
-# EdgeStat Daily Summary — 2026-08-08
+# EdgeStat Daily Summary — 2026-08-09
 
-## 🏥 Model Health: 74.4/100 [HEALTHY]
+## 🏥 Model Health: 72.6/100 [HEALTHY]
 - Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 100.0/100
+  - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 17.6/100
   - 🟢 Brier Trend: 81.9/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 95.5/100
+  - 🟢 Data Health: 86.4/100
   - 🔴 Edge Count: 54.3/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.58)
-- **Total games on board:** 111
-- **Strong home favorites:** 1 | **Strong road dogs:** 1
+- **Total games on board:** 113
+- **Strong home favorites:** 0 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
-1. **TOR @ PHI YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-2. **BAL @ TEX YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-3. **OAK @ BOS YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-4. **COL @ STL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-5. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
+1. **BAL @ TEX YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+2. **COL @ STL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+3. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
+4. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
+5. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -48,7 +48,7 @@
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
 ## 🔥/❄️ Heat / Cold Signals
-- Hot teams: **4** | Cold teams: **12** | Over-heavy: 0 | Under-heavy: 0
+- Hot teams: **5** | Cold teams: **12** | Over-heavy: 0 | Under-heavy: 1
 - Heating-up players: **20** | Cooling-down: 20
 
 ## ⚠️ Anomaly Detector (28)
@@ -59,23 +59,23 @@
   - IND @ POR (WNBA): TOTAL steam since open: ML -0.1pp toward IND; total -2 (UNDER) (5 snapshots)
   - TEX @ HOU (MLB): ML/TOTAL steam since open: ML -7.5pp toward TEX; total +0.5 (OVER) (9 snapshots)
   - DET @ OAK (MLB): ML/TOTAL steam since open: ML +6.6pp toward OAK; total -0.5 (UNDER) (6 snapshots)
-  - NY @ LV (WNBA): ML/TOTAL steam since open: ML -4.8pp toward NY; total +1 (OVER) (6 snapshots)
+  - MIN @ SEA (MLB): TOTAL steam since open: total -1 (UNDER) (9 snapshots)
 
 ## 💰 Today's Portfolio (9 picks)
-- Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$5.52**
-  - #1 [NRFI] $50 on TOR @ PHI YRFI (1st-inning OVER 0.5) (P=73%)
-  - #2 [NRFI] $50 on BAL @ TEX YRFI (1st-inning OVER 0.5) (P=73%)
-  - #3 [NRFI] $50 on OAK @ BOS YRFI (1st-inning OVER 0.5) (P=72%)
-  - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
-  - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
+- Total stake: **$330.0** (33.0% of $1000 bankroll)
+- Expected EV: **$-3.8**
+  - #1 [NRFI] $50 on BAL @ TEX YRFI (1st-inning OVER 0.5) (P=73%)
+  - #2 [NRFI] $50 on COL @ STL YRFI (1st-inning OVER 0.5) (P=68%)
+  - #3 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
+  - #4 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
+  - #5 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
 
 ## 🎯 Convergence Picks (2 stacked games)
 - ELITE: **0** · HIGH: 0 · MED: 2
   - [MED] Seattle Storm @ Portland Fire : 2 signals (HEAT_COLD, ATS)
   - [MED] Coventry City @ Arsenal : 2 signals (PREGAME, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (10)
+## ⚾ Top MLB Pitcher K Plays (9)
 - **Peter Lambert** OVER 4.5 K (75%) fair -295
 - **Chase Burns** OVER 4.5 K (73%) fair -271
 - **Yoshinobu Yamamoto** OVER 4.5 K (71%) fair -251
@@ -91,12 +91,12 @@
   - [FAVORITE] **Ty Miller** (7-0-0) vs Billy Ray Goff -- fair -196
   - [LEAN] **Alexia Thainara** (14-1-0) vs Amanda Lemos -- fair -165
   - [LEAN] **José Montanha** (6-1-0) vs Louie Sutherland -- fair -138
-  - [COIN_FLIP] **Guilherme Pat** (6-1-0) vs Steven Asplund -- fair -120
-  - [COIN_FLIP] **Yadier del Valle** (10-1-0) vs Darren Elkins -- fair -113
+  - [LEAN] **Carol Foro** (10-1-0) vs Gigi Canuto -- fair -137
+  - [COIN_FLIP] **Miles Johns** (16-5-0) vs Gianni Vazquez -- fair -125
 
 ## ⛳ Golf Player Heat (from Wyndham Championship)
-  - 🔥 T1 **Beau Hossler** (USA): -17 total -- finished T1
-  - 🔥 T2 **Michael Brennan** (USA): -16 total -- finished T2
+  - 🔥 T1 **Michael Brennan** (USA): -16 total -- finished T1
+  - 🔥 T2 **Beau Hossler** (USA): -16 total -- finished T2
   - 🔥 T3 **Tom Kim** (South Korea): -15 total -- finished T3
   - 🔥 T4 **Alex Smalley** (USA): -14 total -- finished T4
   - 🔥 T5 **Alex Noren** (Sweden): -14 total -- finished T5
@@ -104,17 +104,17 @@
   - ❄️ **Troy Merritt** (USA): Sunday +4.5 vs tourney avg
   - ❄️ **Karl Vilips** (Australia): Sunday +4.0 vs tourney avg
 
-## 🔥 MLB Batter Heat (45 HOT / 51 COLD)
-  - 🔥 **Zach McKinstry** (DET): L14 .390 / season .221 (+169pts)
-  - 🔥 **Freddie Freeman** (LAD): L14 .463 / season .307 (+156pts)
+## 🔥 MLB Batter Heat (42 HOT / 51 COLD)
   - 🔥 **Freddy Fermin** (SD): L14 .343 / season .187 (+156pts)
-  - 🔥 **Steven Kwan** (CLE): L14 .411 / season .264 (+147pts)
-  - 🔥 **Austin Wells** (NYY): L14 .303 / season .173 (+130pts)
-  - ❄️ **Tristan Peters** (CWS): L14 .095 / season .263 (-168pts) -- FADE props
-  - ❄️ **Garrett Mitchell** (MIL): L14 .109 / season .257 (-148pts) -- FADE props
-  - ❄️ **Nasim Nuñez** (WSH): L14 .087 / season .231 (-144pts) -- FADE props
+  - 🔥 **Colt Keith** (DET): L14 .415 / season .272 (+143pts)
+  - 🔥 **Zach McKinstry** (DET): L14 .357 / season .221 (+136pts)
+  - 🔥 **Steven Kwan** (CLE): L14 .397 / season .263 (+134pts)
+  - 🔥 **Jackson Merrill** (SD): L14 .375 / season .242 (+133pts)
+  - ❄️ **Garrett Mitchell** (MIL): L14 .106 / season .254 (-148pts) -- FADE props
+  - ❄️ **Tristan Peters** (CWS): L14 .125 / season .265 (-140pts) -- FADE props
+  - ❄️ **Nasim Nuñez** (WSH): L14 .089 / season .229 (-140pts) -- FADE props
   - ❄️ **Troy Johnston** (COL): L14 .140 / season .279 (-139pts) -- FADE props
-  - ❄️ **Brayan Rocchio** (CLE): L14 .115 / season .254 (-139pts) -- FADE props
+  - ❄️ **Nicky Lopez** (TEX): L14 .143 / season .274 (-131pts) -- FADE props
 
 ## 📈 Streak Regression Alerts (1)
 - [WNBA] Seattle Storm on L4 L10 0-4 -- Seattle Storm on L4 -- no historical sample
@@ -127,6 +127,6 @@
   - ⚠️ batter_rbis (Brier Δ -0.0052)
 
 ## 🤖 Self-Training Status
-- **WNBA**: n=34 games · hit rate 70.6% · bias -1.2pp
-- **MLS**: n=46 games · hit rate 52.2% · bias -16.1pp [calibration applied]
-- **MLB**: n=191 games · hit rate 57.1% · bias +0.2pp
+- **WNBA**: n=36 games · hit rate 69.4% · bias -3.0pp [calibration applied]
+- **MLS**: n=47 games · hit rate 53.2% · bias -15.0pp [calibration applied]
+- **MLB**: n=191 games · hit rate 55.5% · bias +0.6pp

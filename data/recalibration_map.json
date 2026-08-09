@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-08-08T22:36:56",
-  "n_settled": 7182,
+  "generated_at": "2026-08-09T05:44:58",
+  "n_settled": 7190,
   "n_families_transformed": 26,
   "n_families_bucketed": 14,
-  "ece_before": 0.0864,
-  "ece_after": 0.0167,
-  "ece_improvement": 0.0696,
-  "brier_before": 0.21101,
-  "brier_after": 0.19481,
+  "ece_before": 0.0862,
+  "ece_after": 0.0168,
+  "ece_improvement": 0.0694,
+  "brier_before": 0.21112,
+  "brier_after": 0.19486,
   "method_note": "Per market family, a monotonic (isotonic) curve maps the model's predicted probability to the realized hit rate, learned from settled outcomes. Bucketed for well-sampled families (preserves ranking), a family-average Bayesian blend for mid-sample, identity below that. ECE = expected calibration error (lower = the displayed % is truer). This makes the model honest at the source; it does not create edge (that needs a market price).",
   "families": [
     {
@@ -71,15 +71,15 @@
     },
     {
       "family": "fight_r1_finish_yes",
-      "n": 68,
+      "n": 73,
       "method": "family_avg",
-      "avg_pred_raw": 0.2279,
-      "avg_pred_calibrated": 0.4467,
-      "realized": 0.4853,
-      "ece_raw": 0.2574,
-      "ece_calibrated": 0.0386,
+      "avg_pred_raw": 0.2271,
+      "avg_pred_calibrated": 0.4556,
+      "realized": 0.4932,
+      "ece_raw": 0.2661,
+      "ece_calibrated": 0.0375,
       "transform": {
-        "realized": 0.4853
+        "realized": 0.4932
       }
     },
     {
@@ -620,27 +620,14 @@
       }
     },
     {
-      "family": "cards_under",
-      "n": 42,
-      "method": "family_avg",
-      "avg_pred_raw": 0.6778,
-      "avg_pred_calibrated": 0.6507,
-      "realized": 0.6429,
-      "ece_raw": 0.035,
-      "ece_calibrated": 0.0078,
-      "transform": {
-        "realized": 0.6429
-      }
-    },
-    {
       "family": "home_clean_sheet_no",
-      "n": 146,
+      "n": 147,
       "method": "bucketed",
       "avg_pred_raw": 0.7482,
-      "avg_pred_calibrated": 0.724,
-      "realized": 0.7123,
-      "ece_raw": 0.0359,
-      "ece_calibrated": 0.0116,
+      "avg_pred_calibrated": 0.7256,
+      "realized": 0.7143,
+      "ece_raw": 0.0339,
+      "ece_calibrated": 0.0113,
       "transform": {
         "anchors": [
           [
@@ -648,20 +635,20 @@
             0.6274
           ],
           [
-            0.7469,
-            0.7463
+            0.7468,
+            0.7482
           ],
           [
             0.753,
-            0.7463
+            0.7482
           ],
           [
             0.753,
-            0.7463
+            0.7482
           ],
           [
             0.7608,
-            0.7463
+            0.7482
           ]
         ]
       }
@@ -677,6 +664,19 @@
       "ece_calibrated": 0.0073,
       "transform": {
         "realized": 0.6765
+      }
+    },
+    {
+      "family": "cards_under",
+      "n": 43,
+      "method": "family_avg",
+      "avg_pred_raw": 0.6776,
+      "avg_pred_calibrated": 0.657,
+      "realized": 0.6512,
+      "ece_raw": 0.0264,
+      "ece_calibrated": 0.0058,
+      "transform": {
+        "realized": 0.6512
       }
     },
     {
@@ -1028,13 +1028,13 @@
     },
     {
       "family": "total_games_over",
-      "n": 11,
+      "n": 12,
       "method": "identity",
-      "avg_pred_raw": 0.6819,
-      "avg_pred_calibrated": 0.6819,
-      "realized": 0.8182,
-      "ece_raw": 0.1363,
-      "ece_calibrated": 0.1363,
+      "avg_pred_raw": 0.6806,
+      "avg_pred_calibrated": 0.6806,
+      "realized": 0.75,
+      "ece_raw": 0.0694,
+      "ece_calibrated": 0.0694,
       "transform": null
     },
     {
