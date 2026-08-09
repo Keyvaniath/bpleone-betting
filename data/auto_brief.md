@@ -1,14 +1,14 @@
 # Tonight's Slate Brief — 2026-08-09
 
-## Slate Quality: 58/100 (MEDIUM)
-_16% lineups confirmed · 1 extreme-weather games · 17 rookie SPs_
-**Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
+## Slate Quality: 85/100 (HIGH)
+_50% lineups confirmed_
+**Recommendation:** Play normal Kelly sizing.
 
 ## Slate
-- **15 games** scheduled
-- **28 best bets** scored: 0 DK · 0 PP · 13 NRFI · 0 SGP
+- **1 games** scheduled
+- **26 best bets** scored: 0 DK · 0 PP · 11 NRFI · 0 SGP
 - **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$48.19
-- **MC simulation:** EV +$128.84, 83% P(profit), p05 $-101.68 / p95 $337.24
+- **MC simulation:** EV +$115.0, 84% P(profit), p05 $-93.91 / p95 $296.6
 
 ## Top 5 Best Bets
 1. **COL @ STL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +34.5%)
@@ -17,33 +17,31 @@ _16% lineups confirmed · 1 extreme-weather games · 17 rookie SPs_
    - P(YRFI) 74.8% vs baseline 46.0%
 3. **LAA @ MIA YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +22.0%)
    - P(YRFI) 68.0% vs baseline 46.0%
-4. **OAK @ BOS YRFI (1st-inning OVER 0.5)**  (79/100 ****, edge +19.7%)
-   - P(YRFI) 65.7% vs baseline 46.0%
-5. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
+4. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
    - Player prop quality score 1.1935
    - Elite player
+5. **LOL ShowMaker OVER 3.5 Kills**  (78/100 ****, edge —)
+   - Player prop quality score 1.1892
+   - Elite player
 
-## ⚠️ Trap Warnings — 12 flagged
+## ⚠️ Trap Warnings — 9 flagged
 - **COL @ STL YRFI (1st-inning OVER 0.5)** (low):
    - Edge +34.5% looks big but only 0 settled props on this player — model unproven
 - **CLE @ CHW YRFI (1st-inning OVER 0.5)** (low):
    - Edge +28.8% looks big but only 0 settled props on this player — model unproven
 - **LAA @ MIA YRFI (1st-inning OVER 0.5)** (low):
    - Edge +22.0% looks big but only 0 settled props on this player — model unproven
-- **OAK @ BOS YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +19.7% looks big but only 0 settled props on this player — model unproven
 - **LAD @ ARI YRFI (1st-inning OVER 0.5)** (low):
    - Edge +16.7% looks big but only 0 settled props on this player — model unproven
-
-## Weather leans
-- **OVER lean** (wind out + warm): COL @ STL
+- **BAL @ TEX YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +14.7% looks big but only 0 settled props on this player — model unproven
 
 ## Bullpens GASSED tonight
 Athletics, Pittsburgh Pirates, San Diego Padres, San Francisco Giants, St. Louis Cardinals, Tampa Bay Rays, Texas Rangers, Toronto Blue Jays
 _Lean late-inning OVER on these games; fade their save situations._
 
 ## NRFI/YRFI strong leans
-- **YRFI** (1st-inning OVER): COL @ STL, CLE @ CHW, LAA @ MIA, OAK @ BOS, LAD @ ARI
+- **YRFI** (1st-inning OVER): COL @ STL, CLE @ CHW, LAA @ MIA, LAD @ ARI, BAL @ TEX
 - **NRFI** (1st-inning UNDER): CHC @ KCR, DET @ SFG
 
 ## Golf -- Wyndham Championship
@@ -62,13 +60,13 @@ _Lean late-inning OVER on these games; fade their save situations._
 - Winnipeg Jets @ Edmonton Oilers (0-0-0 vs 0-0-0)  | P(home) 52.9% fair -112 | Scheduled
 - Chicago Blackhawks @ Minnesota Wild (0-0-0 vs 0-0-0)  | P(home) 52.9% fair -112 | Scheduled
 
-## LoL Esports -- 0 live, 22 upcoming
-- [LEC] G2 Esports vs Team Heretics BO3 | P(A) 62.7% fair -168/+168
-- [CBLOL] LOUD vs Vivo Keyd Stars BO3 | P(A) 40.0% fair +150/-150
-- [LEC] Karmine Corp vs Fnatic BO3 | P(A) 71.0% fair -244/+244
-- [CBLOL] Fluxo W7M vs FURIA BO3 | P(A) 27.9% fair +259/-259
+## LoL Esports -- 1 live, 22 upcoming
 - [LCS] Dignitas vs LYON BO3 | P(A) 32.0% fair +212/-212
-- **LoL POT:** Karmine Corp 2-0 SWEEP vs Fnatic (LEC) (HIGH)
+- [LCS] FlyQuest vs Team Liquid Alienware BO3 | P(A) 43.7% fair +129/-129
+- [LCK Challengers] DNS Challengers vs kt Challengers BO3 | P(A) 57.4% fair -135/+135
+- [PCS] Sponge Gaming vs GZ Academy BO3 | P(A) 50.0% fair -100/-100
+- [LCK Challengers] HLE Challengers vs Gen.G Global Academy BO3 | P(A) 59.3% fair -146/+146
+- **LoL POT:** Dplus KIA ML vs kt Rolster (LCK, BO3) (HIGH)
 
 ## Player Play of the Day -- across all sports (3504 candidates scanned)
 - **[LOL]** Inspired UNDER 3.5 Kills | model 61.7% fair -161 (ELITE)
@@ -78,7 +76,7 @@ _Lean late-inning OVER on these games; fade their save situations._
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | model 61.0% fair -157 (ELITE)
 
 ## Self-learning calibration (esports + KBO)
-- **LOL:** 52 settled | brier 0.2687 | ECE 0.1598
-   - Model over-confident; subtract 14.8pp at next inference
+- **LOL:** 53 settled | brier 0.2701 | ECE 0.1678
+   - Model over-confident; subtract 13.4pp at next inference
 - **KBO:** 42 settled | brier 0.2829 | ECE 0.2272
    - Model over-confident; subtract 19.9pp at next inference
