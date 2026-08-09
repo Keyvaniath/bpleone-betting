@@ -1,23 +1,23 @@
 {
-  "generated_at": "2026-08-09T18:29:55",
+  "generated_at": "2026-08-09T19:05:43",
   "stake_assumption": "1u flat per pick",
   "total_picks": 10000,
-  "n_settled": 7329,
-  "n_pending": 427,
+  "n_settled": 7330,
+  "n_pending": 426,
   "n_void": 2244,
-  "wins": 3010,
+  "wins": 3011,
   "losses": 4312,
   "pushes": 7,
-  "hit_rate": 0.4111,
-  "net_units": -1129.145,
-  "roi_pct": -15.42,
+  "hit_rate": 0.4112,
+  "net_units": -1128.71,
+  "roi_pct": -15.41,
   "n_calibrated_picks": 9530,
   "calibrated_reliability": {
-    "n": 7225,
+    "n": 7226,
     "ece_raw": 0.0856,
     "ece_calibrated": 0.0161,
-    "brier_raw": 0.21126,
-    "brier_calibrated": 0.19509,
+    "brier_raw": 0.21124,
+    "brier_calibrated": 0.19508,
     "note": "In-sample over the settled ledger (the isotonic transform is fit on these same outcomes); held-out 70/30 validation is in recalibration_map.json. p_predicted = raw model prob (kept untouched for the learning loop); p_calibrated = honest prob stamped per pick. Lower ECE/Brier on the calibrated column = the displayed % is truer."
   },
   "curated": {
@@ -48,7 +48,7 @@
     }
   },
   "n_added_this_run": 0,
-  "n_newly_settled_this_run": 0,
+  "n_newly_settled_this_run": 1,
   "n_resettled_this_run": 0,
   "n_voided_this_run": 0,
   "n_duplicates_collapsed_this_run": 0,
@@ -354,13 +354,13 @@
       "roi_pct": 2.33
     },
     "wnba_3pm_3pm_under_2.5": {
-      "n": 20,
-      "wins": 16,
+      "n": 21,
+      "wins": 17,
       "losses": 4,
       "pushes": 0,
-      "net_units": 3.393,
-      "hit_rate": 0.8,
-      "roi_pct": 16.96
+      "net_units": 3.828,
+      "hit_rate": 0.8095,
+      "roi_pct": 18.23
     },
     "wnba_blkstl_blk_stl_under_3.5": {
       "n": 6,
@@ -1832,12 +1832,12 @@
       "hit_rate": 0.8222
     },
     "3pm_under": {
-      "n": 55,
-      "wins": 40,
+      "n": 56,
+      "wins": 41,
       "losses": 15,
       "pushes": 0,
-      "net_units": 3.896,
-      "hit_rate": 0.7273
+      "net_units": 4.331,
+      "hit_rate": 0.7321
     },
     "blk_stl_under": {
       "n": 49,
@@ -2282,12 +2282,12 @@
       "hit_rate": 0.8222
     },
     "3pm_under": {
-      "n": 55,
-      "wins": 40,
+      "n": 56,
+      "wins": 41,
       "losses": 15,
       "pushes": 0,
-      "net_units": 3.896,
-      "hit_rate": 0.7273
+      "net_units": 4.331,
+      "hit_rate": 0.7321
     },
     "blk_stl_under": {
       "n": 49,
@@ -2566,15 +2566,15 @@
     },
     "WNBA": {
       "n": 461,
-      "settled": 306,
-      "wins": 228,
+      "settled": 307,
+      "wins": 229,
       "losses": 78,
       "pushes": 0,
-      "pending": 9,
+      "pending": 8,
       "void": 146,
-      "net_units": 39.173,
-      "hit_rate": 0.7451,
-      "roi_pct": 12.8,
+      "net_units": 39.608,
+      "hit_rate": 0.7459,
+      "roi_pct": 12.9,
       "markets": 4
     },
     "EPL": {
@@ -2670,10 +2670,10 @@
     }
   },
   "last_7_days": {
-    "wins": 73,
+    "wins": 74,
     "losses": 59,
-    "net_units": 33.643,
-    "hit_rate": 0.553
+    "net_units": 34.078,
+    "hit_rate": 0.5564
   },
   "picks": [
     {
@@ -244982,11 +244982,19 @@
       "matchup": "SEA @ POR",
       "date": "2026-08-09",
       "pick_id": "wnba_3pm_3pm_under_2_5|WNBA|jewell_loyd|3PM_UNDER_2_5|2026-08-09",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "won",
+      "payout_units": 0.4348,
       "recorded_at": "2026-08-08T21:55:12",
-      "p_calibrated": 0.7219
+      "p_calibrated": 0.7219,
+      "outcome": {
+        "stat": "fg3m",
+        "actual": 0,
+        "line": 2.5,
+        "side": "UNDER",
+        "verify": "jewell loyd \u2014 fg3m = 0 (line 2.5, bet under) on 2026-08-09"
+      },
+      "settled_at": "2026-08-09T19:05:43"
     },
     {
       "source": "wnba_3pm_3pm_under_1.0",
