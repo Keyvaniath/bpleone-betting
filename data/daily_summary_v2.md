@@ -1,13 +1,13 @@
 # EdgeStat Daily Summary — 2026-08-09
 
-## 🏥 Model Health: 74.7/100 [HEALTHY]
+## 🏥 Model Health: 70.6/100 [HEALTHY]
 - Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 99.9/100
-  - 🔴 Hit Rate Trend: 19.3/100
-  - 🟡 Brier Trend: 72.8/100
+  - 🟢 Calibration Freshness: 99.7/100
+  - 🔴 Hit Rate Trend: 14.1/100
+  - 🟡 Brier Trend: 60.9/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 100.0/100
-  - 🟡 Edge Count: 62.9/100
+  - 🟢 Data Health: 95.5/100
+  - 🟡 Edge Count: 65.7/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.58)
@@ -21,11 +21,8 @@
 4. **OAK @ BOS YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
 5. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
 
-## 📡 Sharp Action (Line Movement)
-- [ELITE] **TBR @ SEA** under_8.5: 52.38% → 60.78% (+8.4pp)
-
-## 📉 Strong UNDER Signals
-- [STRONG 6.0] **TBR @ SEA** model 7.23 vs market 8.5
+## 🐋 Whale Picks (Max Confluence)
+- [STRONG] **[MLB]** CIN @ WSN WSN_ML -- 65% / +25.6% (score 2.5)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -57,10 +54,10 @@
 - Hot teams: **5** | Cold teams: **12** | Over-heavy: 0 | Under-heavy: 1
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (30)
+## ⚠️ Anomaly Detector (28)
 - STEAM_MOVE: **24**
-- PEN_MISMATCH: **5**
-- COMPOUND_BULLPEN: **1**
+- COMPOUND_BULLPEN: **3**
+- PEN_MISMATCH: **1**
   - MIL @ LAA (MLB): ML/TOTAL steam since open: ML -15.3pp toward MIL; total -1 (UNDER) (7 snapshots)
   - IND @ POR (WNBA): TOTAL steam since open: ML -0.1pp toward IND; total -2 (UNDER) (5 snapshots)
   - TEX @ HOU (MLB): ML/TOTAL steam since open: ML -7.5pp toward TEX; total +0.5 (OVER) (9 snapshots)
@@ -69,7 +66,7 @@
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$9.86**
+- Expected EV: **$9.85**
   - #1 [NRFI] $50 on COL @ STL YRFI (1st-inning OVER 0.5) (P=80%)
   - #2 [NRFI] $50 on CLE @ CHW YRFI (1st-inning OVER 0.5) (P=75%)
   - #3 [NRFI] $50 on LAA @ MIA YRFI (1st-inning OVER 0.5) (P=68%)
@@ -105,8 +102,8 @@
   - 🔥 T1 **Michael Brennan** (USA): -16 total -- finished T1
   - 🔥 T2 **Beau Hossler** (USA): -16 total -- finished T2
   - 🔥 T3 **Tom Kim** (South Korea): -15 total -- finished T3
-  - 🔥 T4 **Alex Smalley** (USA): -14 total -- finished T4
-  - 🔥 T5 **Alex Noren** (Sweden): -14 total -- finished T5
+  - 🔥 T4 **Alex Noren** (Sweden): -14 total -- finished T4
+  - 🔥 T5 **Alex Smalley** (USA): -14 total -- finished T5
   - ❄️ **Nick Dunlap** (USA): Sunday +5.5 vs tourney avg
   - ❄️ **Troy Merritt** (USA): Sunday +4.5 vs tourney avg
   - ❄️ **Karl Vilips** (Australia): Sunday +4.0 vs tourney avg

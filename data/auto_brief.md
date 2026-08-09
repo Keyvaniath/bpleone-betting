@@ -1,8 +1,8 @@
 # Tonight's Slate Brief — 2026-08-09
 
-## Slate Quality: 51/100 (LOW)
-_0% lineups confirmed · 1 extreme-weather games · 15 rookie SPs_
-**Recommendation:** Defensive sizing tonight; stick to highest-confidence plays.
+## Slate Quality: 58/100 (MEDIUM)
+_16% lineups confirmed · 1 extreme-weather games · 17 rookie SPs_
+**Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
 - **15 games** scheduled
@@ -23,7 +23,7 @@ _0% lineups confirmed · 1 extreme-weather games · 15 rookie SPs_
    - Player prop quality score 1.1935
    - Elite player
 
-## ⚠️ Trap Warnings — 11 flagged
+## ⚠️ Trap Warnings — 12 flagged
 - **COL @ STL YRFI (1st-inning OVER 0.5)** (low):
    - Edge +34.5% looks big but only 0 settled props on this player — model unproven
 - **CLE @ CHW YRFI (1st-inning OVER 0.5)** (low):
@@ -37,11 +37,6 @@ _0% lineups confirmed · 1 extreme-weather games · 15 rookie SPs_
 
 ## Weather leans
 - **OVER lean** (wind out + warm): COL @ STL
-- **UNDER lean** (wind in + cold): DET @ SFG
-
-## Hot streaks
-**Batters heating up:** Eugenio Suarez (heat +1.99), Jac Caglianone (heat +1.93), Ronald Acuna Jr. (heat +1.90)
-**Pitchers on a run:** Sean Manaea (heat +2.42)
 
 ## Bullpens GASSED tonight
 Athletics, Pittsburgh Pirates, San Diego Padres, San Francisco Giants, St. Louis Cardinals, Tampa Bay Rays, Texas Rangers, Toronto Blue Jays
@@ -54,8 +49,8 @@ _Lean late-inning OVER on these games; fade their save situations._
 ## Golf -- Wyndham Championship
 - **Leader:** Michael Brennan (-16) at #1
 - **Field:** 147 players  |  Status: In Progress
-- **Play of the Tournament:** Tom Kim WIN @ +484 (model 17.1%, HIGH)
-   - P(win) 17.1% with 1 round(s) left -- sweet-spot value at #3 (-15).
+- **Play of the Tournament:** Tom Kim WIN @ +481 (model 17.2%, HIGH)
+   - P(win) 17.2% with 1 round(s) left -- sweet-spot value at #3 (-15).
 
 ## NBA -- PRESEASON
 - Miami Heat @ Toronto Raptors (0-0 vs 0-0)  | P(home) 55.0% fair -122 | Scheduled

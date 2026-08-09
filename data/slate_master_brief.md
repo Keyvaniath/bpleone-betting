@@ -1,5 +1,5 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-08-09T13:44:39 UTC_
+_Generated 2026-08-09T14:40:29 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
@@ -20,7 +20,7 @@ _Generated 2026-08-09T13:44:39 UTC_
 1. **GOLF / Michael Brennan** (GOLF_PLAYER, score=204.93)
    - Play: Michael Brennan (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Beau Hossler** (GOLF_PLAYER, score=204.14)
+2. **GOLF / Beau Hossler** (GOLF_PLAYER, score=204.0)
    - Play: Beau Hossler (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
 
@@ -41,9 +41,9 @@ _Generated 2026-08-09T13:44:39 UTC_
   - Fade angle: team total UNDER
 - **NBA** / MIA (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NHL** / joseph woll (GOALIE_FADE)
+- **NHL** / calvin pickard (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / samsonov ilya (GOALIE_FADE)
+- **NHL** / casey desmith (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / kevin lankinen (GOALIE_FADE)
+- **NHL** / adin hill (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
