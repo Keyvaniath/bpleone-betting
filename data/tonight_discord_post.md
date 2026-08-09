@@ -1,13 +1,9 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:14 F:83
+_NO_ACTION_NIGHT_ | L:0 S:11 F:53
 
 :dart: **Top Picks:**
 1. [GOLF] Michael Brennan -- Michael Brennan (PLAYER_STRONG)
-2. [GOLF] Beau Hossler -- Beau Hossler (PLAYER_STRONG)
-3. [WNBA] napheesa collier -- napheesa collier (PLAYER_STRONG)
-
-:chains: **Top Parlays:**
-- [WNBA] napheesa collier (2 legs, p=0.2797)
+2. [GOLF] Ben James -- Ben James (PLAYER_STRONG)
 
 :coin: Bankroll Advisory: STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 

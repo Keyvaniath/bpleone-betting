@@ -1,18 +1,18 @@
 # EdgeStat Daily Summary — 2026-08-09
 
-## 🏥 Model Health: 68.2/100 [OK]
-- Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.9/100
-  - 🔴 Hit Rate Trend: 10.5/100
-  - 🔴 Brier Trend: 52.2/100
+## 🏥 Model Health: 74.0/100 [HEALTHY]
+- Solid health - some minor issues to monitor
+  - 🟢 Calibration Freshness: 100.0/100
+  - 🔴 Hit Rate Trend: 27.1/100
+  - 🟡 Brier Trend: 67.3/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 95.5/100
-  - 🟡 Edge Count: 65.7/100
+  - 🟡 Edge Count: 60.0/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.581)
-- **Total games on board:** 116
-- **Strong home favorites:** 1 | **Strong road dogs:** 1
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.578)
+- **Total games on board:** 115
+- **Strong home favorites:** 0 | **Strong road dogs:** 1
 
 ## 🎯 Top 5 Best Bets
 1. **COL @ STL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
@@ -20,12 +20,6 @@
 3. **LAA @ MIA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 4. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
 5. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
-
-## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** CIN @ WSN WSN_ML -- 66% / +23.1% (score 2.5)
-
-## 📡 Sharp Action (Line Movement)
-- [ELITE] **CIN @ WSN** ml_home: 54.34% → 86.67% (+32.3pp)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -60,11 +54,9 @@
 - Hot teams: **5** | Cold teams: **12** | Over-heavy: 0 | Under-heavy: 1
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (32)
+## ⚠️ Anomaly Detector (28)
 - RESIDUAL_DIVERGENCE: **1**
 - STEAM_MOVE: **27**
-- COMPOUND_BULLPEN: **3**
-- PEN_MISMATCH: **1**
   - Dallas Wings (WNBA): Dallas Wings OUTPERFORMING expected margin by 7.7pts in recent games -- model bias may persist
   - MIL @ LAA (MLB): ML/TOTAL steam since open: ML -15.3pp toward MIL; total -1 (UNDER) (7 snapshots)
   - IND @ POR (WNBA): TOTAL steam since open: ML -0.1pp toward IND; total -2 (UNDER) (5 snapshots)
@@ -80,18 +72,13 @@
   - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
-## 🎯 Convergence Picks (3 stacked games)
-- ELITE: **0** · HIGH: 1 · MED: 2
+## 🎯 Convergence Picks (5 stacked games)
+- ELITE: **0** · HIGH: 2 · MED: 3
+  - [HIGH] Golden State Valkyries @ Los Angeles Sparks : 3 signals (PREGAME, HEAT_COLD, ATS)
   - [HIGH] Houston Dynamo FC @ New England Revolution : 3 signals (HEAT_COLD, ATS, ATS)
-  - [MED] Las Vegas Aces @ Minnesota Lynx : 2 signals (HEAT_COLD, ATS)
+  - [MED] Las Vegas Aces @ New York Liberty : 2 signals (HEAT_COLD, HEAT_COLD)
+  - [MED] Dallas Wings @ Minnesota Lynx : 2 signals (ANOMALY, ATS)
   - [MED] Coventry City @ Arsenal : 2 signals (PREGAME, ATS)
-
-## ⚾ Top MLB Pitcher K Plays (10)
-- **Jacob Misiorowski** OVER 7.5 K (77%) fair -332
-- **Troy Melton** OVER 4.5 K (75%) fair -295
-- **Jesús Luzardo** OVER 6.5 K (73%) fair -271
-- **Kumar Rocker** OVER 4.5 K (71%) fair -251
-- **Justin Wrobleski** OVER 4.5 K (70%) fair -232
 
 ## 🏀 NBA Player Heat (2 HOT / 1 COLD)
   - 🔥 **Scottie Barnes** (TOR): L5 24.4/7.6/9.6 vs season 18.6/5.8/8.8 [PTS +5.8]
@@ -106,26 +93,29 @@
   - [COIN_FLIP] **Miles Johns** (16-5-0) vs Gianni Vazquez -- fair -125
 
 ## ⛳ Golf Player Heat (from Wyndham Championship)
-  - 🔥 T1 **Michael Brennan** (USA): -16 total -- finished T1
-  - 🔥 T2 **Beau Hossler** (USA): -16 total -- finished T2
-  - 🔥 T3 **Tom Kim** (South Korea): -15 total -- finished T3
-  - 🔥 T4 **Alex Noren** (Sweden): -14 total -- finished T4
-  - 🔥 T5 **Alex Smalley** (USA): -14 total -- finished T5
+  - 🔥 T1 **Michael Brennan** (USA): -21 total -- finished T1
+  - 🔥 T2 **Ben James** (USA): -18 total -- finished T2, Sunday -4.5 vs tourney avg
+  - 🔥 T4 **Kevin Yu** (Chinese Taipei): -16 total -- finished T4
+  - 🔥 T5 **Harry Hall** (England): -15 total -- finished T5, Sunday -0.2 vs tourney avg
+  - 🔥 T7 **Andrew Novak** (USA): -14 total -- finished T7, Sunday -3.5 vs tourney avg
+  - ❄️ **Erik van Rooyen** (South Africa): Sunday +7.8 vs tourney avg
+  - ❄️ **Sahith Theegala** (USA): Sunday +5.5 vs tourney avg
   - ❄️ **Nick Dunlap** (USA): Sunday +5.5 vs tourney avg
-  - ❄️ **Troy Merritt** (USA): Sunday +4.5 vs tourney avg
-  - ❄️ **Karl Vilips** (Australia): Sunday +4.0 vs tourney avg
 
-## 🔥 MLB Batter Heat (47 HOT / 57 COLD)
+## 🔥 MLB Batter Heat (47 HOT / 58 COLD)
   - 🔥 **Freddy Fermin** (SD): L14 .343 / season .187 (+156pts)
-  - 🔥 **Spencer Torkelson** (DET): L14 .373 / season .226 (+147pts)
-  - 🔥 **Zach McKinstry** (DET): L14 .366 / season .223 (+143pts)
+  - 🔥 **Spencer Torkelson** (DET): L14 .377 / season .227 (+150pts)
   - 🔥 **Bryson Stott** (PHI): L14 .405 / season .263 (+142pts)
-  - 🔥 **Colt Keith** (DET): L14 .410 / season .270 (+140pts)
-  - ❄️ **Brayan Rocchio** (CLE): L14 .104 / season .254 (-150pts) -- FADE props
-  - ❄️ **Nicky Lopez** (TEX): L14 .128 / season .274 (-146pts) -- FADE props
+  - 🔥 **Zach McKinstry** (DET): L14 .357 / season .223 (+134pts)
+  - 🔥 **Jackson Merrill** (SD): L14 .375 / season .242 (+133pts)
+  - ❄️ **Brayan Rocchio** (CLE): L14 .100 / season .252 (-152pts) -- FADE props
   - ❄️ **Tristan Peters** (CWS): L14 .125 / season .265 (-140pts) -- FADE props
   - ❄️ **Troy Johnston** (COL): L14 .140 / season .279 (-139pts) -- FADE props
-  - ❄️ **Tommy Edman** (LAD): L14 .154 / season .283 (-129pts) -- FADE props
+  - ❄️ **Tommy Edman** (LAD): L14 .148 / season .279 (-131pts) -- FADE props
+  - ❄️ **Nicky Lopez** (TEX): L14 .150 / season .278 (-128pts) -- FADE props
+
+## 📈 Streak Regression Alerts (1)
+- [WNBA] Golden State Valkyries on W3 L10 3-1 -- Golden State Valkyries on W3 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**

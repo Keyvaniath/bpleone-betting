@@ -2,36 +2,38 @@
 
 **Model Confidence: 20.6/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
 
-_Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
+_Pipeline health: **WARNING** (12/15 artifacts ok; 3 empty, 0 stale)._ 
 
-_Generated at 2026-08-09T21:23:26 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-08-09T22:38:51 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
 **HOU @ SDP - HOU_ML**
-- Market: +102
+- Market: +103
 - Model probability: 56.9%
-- Raw edge: +14.93%
-- Recommended stake: 3.66u Kelly
+- Raw edge: +15.5%
+- Recommended stake: <= 0.5u (model calibrating)
+
+> _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
 
 ## Full Slate (1 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 8:20p ET | HOU @ SDP | Petco Park | 72F 3mph | HOU_ML +14.93% |
+| 8:20p ET | HOU @ SDP | Petco Park | 72F 3mph | HOU_ML +15.5% |
 
 ## Self-Learning Loop
 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
 
-Cumulative graded plays: 7330. Wins: 3014. Hit rate: 41.1%.
+Cumulative graded plays: 7372. Wins: 3029. Hit rate: 41.1%.
 
 ## Auxiliary Markets (Model Fair Prices)
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| HOU @ SDP | 51.2% | -105 | 3.38 | +224 | -224 |
+| HOU @ SDP | 51.2% | -105 | 3.39 | +224 | -224 |
 
 ## Team Form (last 10)
 
