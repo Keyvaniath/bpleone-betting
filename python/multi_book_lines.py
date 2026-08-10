@@ -69,7 +69,8 @@ def _load(p):
 def _http(url: str, timeout: float = 10.0) -> Any:
     if not urlopen: return None
     try:
-        req = Request(url, headers={"User-Agent": USER_AGENT, "Accept": "application/json"})
+        ua = "EdgeStat/1.0" if "espn.com" in url else USER_AGENT
+        req = Request(url, headers={"User-Agent": ua, "Accept": "application/json"})
         with urlopen(req, timeout=timeout) as r:
             return json.loads(r.read().decode("utf-8", errors="ignore"))
     except Exception:

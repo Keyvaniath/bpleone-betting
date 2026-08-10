@@ -85,7 +85,8 @@ def _ping(url: str, timeout: float = 8.0) -> Dict[str, Any]:
 
     start = time.time()
     try:
-        req = Request(url, headers={"User-Agent": USER_AGENT, "Accept": "application/json"})
+        ua = "EdgeStat/1.0" if "espn.com" in url else USER_AGENT
+        req = Request(url, headers={"User-Agent": ua, "Accept": "application/json"})
         with urlopen(req, timeout=timeout) as r:
             elapsed_ms = int((time.time() - start) * 1000)
             code = r.getcode()
