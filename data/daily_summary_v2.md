@@ -1,18 +1,18 @@
 # EdgeStat Daily Summary — 2026-08-10
 
-## 🏥 Model Health: 64.6/100 [OK]
+## 🏥 Model Health: 62.2/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.5/100
+  - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 0/100
-  - 🔴 Brier Trend: 56.5/100
+  - 🔴 Brier Trend: 44.2/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 95.5/100
   - 🔴 Edge Count: 42.9/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.58)
-- **Total games on board:** 114
-- **Strong home favorites:** 0 | **Strong road dogs:** 0
+- **Total games on board:** 116
+- **Strong home favorites:** 1 | **Strong road dogs:** 1
 
 ## 🎯 Top 5 Best Bets
 1. **TBR @ OAK YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
@@ -21,9 +21,8 @@
 4. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
 5. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
 
-## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** BOS @ TOR BOS_ML -- 75% / +21.8% (score 2.5)
-- [STRONG] **[MLB]** BAL @ MIN BAL_ML -- 66% / +21.2% (score 2.5)
+## 📉 Strong UNDER Signals
+- [ELITE 6.5] **MIL @ SDP** model 6.79 vs market 8.5
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -51,18 +50,22 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
+## ⚡ Pre-Game HIGH Conviction (1)
+- [WNBA] **Chicago Sky** AWAY (3-2 L10) · model 67.1% fair -204
+
 ## 🔥/❄️ Heat / Cold Signals
 - Hot teams: **5** | Cold teams: **13** | Over-heavy: 0 | Under-heavy: 4
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (25)
-- STEAM_MOVE: **21**
+## ⚠️ Anomaly Detector (32)
+- RESIDUAL_DIVERGENCE: **1**
+- STEAM_MOVE: **27**
 - COMPOUND_BULLPEN: **4**
+  - Toronto Tempo (WNBA): Toronto Tempo UNDERPERFORMING expected margin by 10.2pts in recent games -- model bias may persist
   - MIL @ LAA (MLB): ML/TOTAL steam since open: ML -15.3pp toward MIL; total -1 (UNDER) (7 snapshots)
+  - CHI @ SEA (WNBA): TOTAL steam since open: ML -1.9pp toward CHI; total +2 (OVER) (4 snapshots)
   - LAD @ ARI (MLB): ML/TOTAL steam since open: ML +7.7pp toward ARI; total +0.5 (OVER) (7 snapshots)
   - DET @ OAK (MLB): ML/TOTAL steam since open: ML +6.6pp toward OAK; total -0.5 (UNDER) (6 snapshots)
-  - BOS @ LAD (MLB): TOTAL steam since open: ML +1.3pp toward LAD; total +1 (OVER) (9 snapshots)
-  - CON @ DAL (WNBA): TOTAL steam since open: total -1 (UNDER) (4 snapshots)
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
@@ -110,7 +113,7 @@
   - ❄️ **Sahith Theegala** (USA): Sunday +5.5 vs tourney avg
   - ❄️ **Nick Dunlap** (USA): Sunday +5.5 vs tourney avg
 
-## 🔥 MLB Batter Heat (45 HOT / 58 COLD)
+## 🔥 MLB Batter Heat (44 HOT / 58 COLD)
   - 🔥 **Freddy Fermin** (SD): L14 .351 / season .194 (+157pts)
   - 🔥 **Spencer Torkelson** (DET): L14 .377 / season .227 (+150pts)
   - 🔥 **Bryson Stott** (PHI): L14 .405 / season .263 (+142pts)

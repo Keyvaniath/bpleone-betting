@@ -4,7 +4,7 @@
 
 _Pipeline health: **WARNING** (12/15 artifacts ok; 3 empty, 0 stale)._ 
 
-_Generated at 2026-08-10T15:05:19 UTC. Game lines source: **placeholder -110 (no real book today)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-08-10T21:39:28 UTC. Game lines source: **placeholder -110 (no real book today)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
@@ -21,36 +21,36 @@ _Generated at 2026-08-10T15:05:19 UTC. Game lines source: **placeholder -110 (no
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
 | 7:07p ET | BOS @ TOR | Rogers Centre | indoor | BOS_ML +67.8% |
-| 7:15p ET | NYM @ ATL | Truist Park | 81F 4mph | ATL_ML +7.85% |
-| 7:40p ET | BAL @ MIN | Target Field | 79F 4mph | OVER_8.5 +41.63% |
-| 7:45p ET | PHI @ STL | Busch Stadium | 86F 7mph | OVER_8.5 +24.76% |
-| 9:38p ET | TEX @ LAA | Angel Stadium | 70F 3mph | TEX_ML +13.12% |
+| 7:15p ET | NYM @ ATL | Truist Park | 79F 3mph | ATL_ML +7.75% |
+| 7:40p ET | BAL @ MIN | Target Field | 76F 4mph | OVER_8.5 +39.61% |
+| 7:45p ET | PHI @ STL | Busch Stadium | 85F 4mph | OVER_8.5 +18.98% |
+| 9:38p ET | TEX @ LAA | Angel Stadium | 70F 4mph | TEX_ML +13.18% |
 | 9:40p ET | COL @ ARI | Chase Field | indoor | COL_ML +5.34% |
-| 9:40p ET | TBR @ OAK | Sutter Health Park | 71F 8mph | OVER_8.5 +63.79% |
-| 9:40p ET | MIL @ SDP | Petco Park | 71F 3mph | UNDER_8.5 +44.35% |
-| 9:45p ET | HOU @ SFG | Oracle Park | 57F 12mph | UNDER_8.5 +22.64% |
-| 10:10p ET | KCR @ LAD | UNIQLO Field at Dodger Stadium | 68F 3mph | LAD_ML +52.66% |
+| 9:40p ET | TBR @ OAK | Sutter Health Park | 70F 9mph | OVER_8.5 +64.36% |
+| 9:40p ET | MIL @ SDP | Petco Park | 71F 4mph | UNDER_8.5 +43.07% |
+| 9:45p ET | HOU @ SFG | Oracle Park | 55F 12mph | UNDER_8.5 +24.12% |
+| 10:10p ET | KCR @ LAD | UNIQLO Field at Dodger Stadium | 74F 5mph | LAD_ML +53.5% |
 
 ## Parlays - top 5
 
-- **3-leg @ +629 (prob 20.6%, EV +49.93%)**
-  - BOS @ TOR OVER_8.5 (-110, model 59.8%)
-  - PHI @ STL OVER_8.5 (-110, model 65.3%)
-  - COL @ ARI COL_ML (+100, model 52.7%)
-- **3-leg @ +664 (prob 19.6%, EV +49.49%)**
-  - NYM @ ATL ATL_ML (-110, model 56.5%)
+- **3-leg @ +664 (prob 19.6%, EV +49.56%)**
+  - NYM @ ATL ATL_ML (-110, model 56.4%)
   - TEX @ LAA TEX_ML (+100, model 56.6%)
   - MIL @ SDP MIL_ML (+100, model 61.3%)
-- **3-leg @ +629 (prob 20.4%, EV +49.0%)**
-  - NYM @ ATL ATL_ML (-110, model 56.5%)
-  - PHI @ STL OVER_8.5 (-110, model 65.3%)
-  - HOU @ SFG HOU_ML (+100, model 55.4%)
-- **3-leg @ +664 (prob 19.5%, EV +48.66%)**
-  - PHI @ STL OVER_8.5 (-110, model 65.3%)
+- **3-leg @ +664 (prob 19.6%, EV +49.37%)**
   - TEX @ LAA TEX_ML (+100, model 56.6%)
+  - TEX @ LAA UNDER_8.5 (-110, model 56.4%)
+  - MIL @ SDP MIL_ML (+100, model 61.3%)
+- **3-leg @ +664 (prob 19.5%, EV +49.12%)**
+  - PHI @ STL OVER_8.5 (-110, model 62.3%)
+  - TEX @ LAA TEX_ML (+100, model 56.6%)
+  - HOU @ SFG HOU_ML (+100, model 55.4%)
+- **3-leg @ +664 (prob 19.3%, EV +47.39%)**
+  - BOS @ TOR OVER_8.5 (-110, model 59.8%)
   - COL @ ARI COL_ML (+100, model 52.7%)
-- **3-leg @ +664 (prob 19.4%, EV +48.34%)**
-  - TEX @ LAA UNDER_8.5 (-110, model 57.3%)
+  - MIL @ SDP MIL_ML (+100, model 61.3%)
+- **3-leg @ +664 (prob 19.2%, EV +46.34%)**
+  - NYM @ ATL ATL_ML (-110, model 56.4%)
   - MIL @ SDP MIL_ML (+100, model 61.3%)
   - HOU @ SFG HOU_ML (+100, model 55.4%)
 
@@ -65,16 +65,16 @@ Cumulative graded plays: 7840. Wins: 3134. Hit rate: 40.0%.
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| BAL @ MIN | 27.2% | +268 | 6.33 | +362 | -362 |
+| BAL @ MIN | 27.2% | +268 | 6.35 | +362 | -362 |
 | BOS @ TOR | 24.1% | +315 | 7.12 | +964 | -964 |
 | COL @ ARI | 41.5% | +141 | 4.4 | +194 | -194 |
-| HOU @ SFG | 52.2% | -109 | 3.5 | +224 | -224 |
-| KCR @ LAD | 60.0% | -150 | 2.58 | -226 | +226 |
-| MIL @ SDP | 43.6% | +129 | 4.13 | +298 | -298 |
-| NYM @ ATL | 49.0% | +104 | 3.65 | +132 | -132 |
-| PHI @ STL | 38.4% | +161 | 4.92 | +142 | -142 |
-| TBR @ OAK | 23.2% | +330 | 7.53 | +442 | -442 |
-| TEX @ LAA | 43.1% | +132 | 4.29 | +230 | -230 |
+| HOU @ SFG | 52.2% | -109 | 3.49 | +224 | -224 |
+| KCR @ LAD | 60.0% | -150 | 2.6 | -234 | +234 |
+| MIL @ SDP | 43.6% | +129 | 4.08 | +298 | -298 |
+| NYM @ ATL | 49.0% | +104 | 3.63 | +133 | -133 |
+| PHI @ STL | 38.4% | +161 | 4.84 | +143 | -143 |
+| TBR @ OAK | 23.2% | +330 | 7.56 | +442 | -442 |
+| TEX @ LAA | 43.1% | +132 | 4.31 | +230 | -230 |
 
 ## Travel / Rest Flags
 
@@ -103,7 +103,7 @@ Cumulative graded plays: 7840. Wins: 3134. Hit rate: 40.0%.
 
 ## Loop Activity (since last refresh)
 
-- Confidence delta: **-0.6**
+- Confidence delta: **+0.0**
 
 ## Model Recommendations (operator review)
 

@@ -1,9 +1,10 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:5 F:48
+_NO_ACTION_NIGHT_ | L:0 S:7 F:46
 
 :dart: **Top Picks:**
-1. [GOLF] Beau Hossler -- Beau Hossler (PLAYER_STRONG)
+1. [GOLF] Harry Hall -- Harry Hall (PLAYER_STRONG)
 2. [GOLF] Michael Brennan -- Michael Brennan (PLAYER_STRONG)
+3. [WNBA] allisha gray -- allisha gray (PLAYER_STRONG)
 
 :coin: Bankroll Advisory: STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 

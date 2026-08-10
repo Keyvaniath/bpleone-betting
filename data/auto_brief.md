@@ -1,12 +1,12 @@
 # Tonight's Slate Brief — 2026-08-10
 
-## Slate Quality: 53/100 (LOW)
-_0% lineups confirmed · 9 rookie SPs · 1 high early-hook risk SPs_
-**Recommendation:** Defensive sizing tonight; stick to highest-confidence plays.
+## Slate Quality: 68/100 (MEDIUM)
+_50% lineups confirmed · 9 rookie SPs · 1 high early-hook risk SPs_
+**Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
 - **10 games** scheduled
-- **20 best bets** scored: 0 DK · 0 PP · 8 NRFI · 0 SGP
+- **21 best bets** scored: 0 DK · 0 PP · 8 NRFI · 0 SGP
 - **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$45.73
 - **MC simulation:** EV +$87.06, 80% P(profit), p05 $-84.51 / p95 $241.73
 
@@ -65,12 +65,12 @@ _Lean late-inning OVER on these games; fade their save situations._
 - Samsung Lions @ KIA Tigers | P(home) 58.3% fair -140 | total 8 R
 - **KBO POD:** SSG Landers ML vs Lotte Giants (KBO) (HIGH)
 
-## LoL Esports -- 1 live, 17 upcoming
-- [LEC] SK Gaming vs Team Vitality BO3 | P(A) 46.2% fair +117/-117
-- [NLC] Ruddy Corporation vs Lundqvist Lightside BO3 | P(A) 50.7% fair -103/+103
-- [NLC] Bulldog Esports vs Bardicted to U BO3 | P(A) 56.9% fair -132/+132
-- [LEC] Natus Vincere vs G2 Esports BO3 | P(A) 41.1% fair +143/-143
-- [NLC] Arctic Pandas vs Brod & Friends BO3 | P(A) 49.6% fair +102/-102
+## LoL Esports -- 1 live, 13 upcoming
+- [CBLOL] LEVIATÁN vs RED Kalunga BO3 | P(A) 45.5% fair +120/-120
+- [CBLOL] LOS vs paiN Gaming BO3 | P(A) 57.4% fair -135/+135
+- [LJL] L Guide Gaming vs UWinks BO5 | P(A) 63.4% fair -173/+173
+- [LCK Challengers] KRX Challengers vs BNK FEARX Youth BO3 | P(A) 47.4% fair +111/-111
+- [PCS] CTBC Flying Oyster Academy vs Embrace Whatever Happens BO3 | P(A) 50.0% fair -100/-100
 - **LoL POT:** Dplus KIA ML vs kt Rolster (LCK, BO3) (HIGH)
 
 ## Player Play of the Day -- across all sports (3486 candidates scanned)
@@ -81,7 +81,7 @@ _Lean late-inning OVER on these games; fade their save situations._
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | model 61.0% fair -157 (ELITE)
 
 ## Self-learning calibration (esports + KBO)
-- **LOL:** 53 settled | brier 0.2701 | ECE 0.1678
-   - Model over-confident; subtract 13.4pp at next inference
+- **LOL:** 54 settled | brier 0.2682 | ECE 0.1571
+   - Model over-confident; subtract 12.4pp at next inference
 - **KBO:** 42 settled | brier 0.2829 | ECE 0.2272
    - Model over-confident; subtract 19.9pp at next inference
