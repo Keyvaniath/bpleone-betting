@@ -27,6 +27,17 @@
 
 ## 0. BLUESKY — the channel we launch NOW (X is on ice)
 
+> **STATUS 2026-08-10: ACCOUNT LIVE — @edgestat.bsky.social.** Brandon created
+> the account (signed up as brandonpleone → handle changed to `edgestat` in
+> Settings→Account→Handle, brand secured). Display name `EdgeStat` + the
+> 256-char bio (incl. the NO-PICK line) are saved. Followed the Sports
+> Coverage starter pack (~60). REMAINING: (1) avatar+banner upload — native
+> file picker, Brandon's click; files staged at Desktop\edgestat-avatar.png +
+> edgestat-banner.png; (2) email verify (code in Gmail); (3) pinned
+> announcement + first pick post — composer pre-filled by the machine, Brandon
+> presses Post. Optional upgrade later: domain handle @betting.bpleone.com via
+> one DNS TXT record (self-verifies the brand).
+
 Same brand, same receipts, zero relationship to X's enforcement. This is where
 the daily broadcast starts while the appeal is pending.
 
