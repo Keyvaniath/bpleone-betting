@@ -1,23 +1,23 @@
 {
-  "generated_at": "2026-08-10T09:52:08",
+  "generated_at": "2026-08-10T11:28:28",
   "stake_assumption": "1u flat per pick",
   "total_picks": 10000,
-  "n_settled": 7381,
-  "n_pending": 415,
-  "n_void": 2204,
-  "wins": 3031,
-  "losses": 4343,
+  "n_settled": 7390,
+  "n_pending": 399,
+  "n_void": 2211,
+  "wins": 3038,
+  "losses": 4345,
   "pushes": 7,
-  "hit_rate": 0.411,
-  "net_units": -1136.53,
-  "roi_pct": -15.41,
+  "hit_rate": 0.4115,
+  "net_units": -1133.104,
+  "roi_pct": -15.35,
   "n_calibrated_picks": 9526,
   "calibrated_reliability": {
-    "n": 7277,
-    "ece_raw": 0.086,
-    "ece_calibrated": 0.0159,
-    "brier_raw": 0.2116,
-    "brier_calibrated": 0.19539,
+    "n": 7286,
+    "ece_raw": 0.0855,
+    "ece_calibrated": 0.0153,
+    "brier_raw": 0.21153,
+    "brier_calibrated": 0.19543,
     "note": "In-sample over the settled ledger (the isotonic transform is fit on these same outcomes); held-out 70/30 validation is in recalibration_map.json. p_predicted = raw model prob (kept untouched for the learning loop); p_calibrated = honest prob stamped per pick. Lower ECE/Brier on the calibrated column = the displayed % is truer."
   },
   "curated": {
@@ -48,10 +48,10 @@
     }
   },
   "n_added_this_run": 0,
-  "n_newly_settled_this_run": 7,
+  "n_newly_settled_this_run": 16,
   "n_resettled_this_run": 0,
   "n_voided_this_run": 0,
-  "n_duplicates_collapsed_this_run": 0,
+  "n_duplicates_collapsed_this_run": 7,
   "n_duplicate_adds_blocked_this_run": 97,
   "n_reconciled_settled_voids": 0,
   "n_bootstrapped_from_locks_history": 0,
@@ -84,31 +84,31 @@
       "roi_pct": 126.68
     },
     "golf_top_5": {
-      "n": 49,
-      "wins": 17,
-      "losses": 32,
+      "n": 51,
+      "wins": 18,
+      "losses": 33,
       "pushes": 0,
-      "net_units": 19.32,
-      "hit_rate": 0.3469,
-      "roi_pct": 39.43
+      "net_units": 20.2,
+      "hit_rate": 0.3529,
+      "roi_pct": 39.61
     },
     "golf_top_10": {
-      "n": 273,
-      "wins": 93,
-      "losses": 180,
+      "n": 276,
+      "wins": 95,
+      "losses": 181,
       "pushes": 0,
-      "net_units": -53.486,
-      "hit_rate": 0.3407,
-      "roi_pct": -19.59
+      "net_units": -52.824,
+      "hit_rate": 0.3442,
+      "roi_pct": -19.14
     },
     "golf_top_20": {
-      "n": 294,
-      "wins": 139,
+      "n": 298,
+      "wins": 143,
       "losses": 155,
       "pushes": 0,
-      "net_units": -37.274,
-      "hit_rate": 0.4728,
-      "roi_pct": -12.68
+      "net_units": -35.39,
+      "hit_rate": 0.4799,
+      "roi_pct": -11.88
     },
     "mlb_bw_walk_1plus_yes": {
       "n": 116,
@@ -1649,12 +1649,12 @@
       "hit_rate": 0.4932
     },
     "top": {
-      "n": 651,
-      "wins": 261,
-      "losses": 390,
+      "n": 660,
+      "wins": 268,
+      "losses": 392,
       "pushes": 0,
-      "net_units": -88.315,
-      "hit_rate": 0.4009
+      "net_units": -84.89,
+      "hit_rate": 0.4061
     },
     "walk_1plus_yes": {
       "n": 116,
@@ -2083,12 +2083,12 @@
       "hit_rate": 0.4932
     },
     "top": {
-      "n": 651,
-      "wins": 261,
-      "losses": 390,
+      "n": 660,
+      "wins": 268,
+      "losses": 392,
       "pushes": 0,
-      "net_units": -88.315,
-      "hit_rate": 0.4009
+      "net_units": -84.89,
+      "hit_rate": 0.4061
     },
     "mlb_walk_0.5_over": {
       "n": 116,
@@ -2536,15 +2536,15 @@
     },
     "GOLF": {
       "n": 680,
-      "settled": 616,
-      "wins": 249,
-      "losses": 367,
+      "settled": 625,
+      "wins": 256,
+      "losses": 369,
       "pushes": 0,
-      "pending": 16,
-      "void": 48,
-      "net_units": -71.441,
-      "hit_rate": 0.4042,
-      "roi_pct": -11.6,
+      "pending": 0,
+      "void": 55,
+      "net_units": -68.016,
+      "hit_rate": 0.4096,
+      "roi_pct": -10.88,
       "markets": 3
     },
     "NHL": {
@@ -2679,10 +2679,10 @@
     }
   },
   "last_7_days": {
-    "wins": 62,
-    "losses": 68,
-    "net_units": 10.067,
-    "hit_rate": 0.4769
+    "wins": 69,
+    "losses": 70,
+    "net_units": 13.492,
+    "hit_rate": 0.4964
   },
   "note": "Unified pick ledger -- records every pick the model surfaces (top_25 board, whales, consensus, unders, sharp action, locks, POD) and settles each against actual outcomes. Per-source W-L feeds back into calibration so the model learns which modules are reliable. THIS is the training signal."
 }
