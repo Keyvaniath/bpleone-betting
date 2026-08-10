@@ -82,9 +82,17 @@ def _pick_line(p: Dict[str, Any], lead: str = "") -> str:
     name = p.get("player_or_matchup") or "?"
     mk = _humanize_market(p.get("market"))
     od = _odds(p.get("fair_american"))
-    prob = p.get("model_prob")
+    # the calibrated prob is the honest number when the record carries one (v2 picks)
+    prob = p.get("model_prob_calibrated")
+    if not isinstance(prob, (int, float)):
+        prob = p.get("model_prob")
     tail = f" ({od})" if od else ""
     probtxt = f" · model {round(prob * 100)}%" if isinstance(prob, (int, float)) else ""
+    m = str(p.get("market") or "").upper()
+    if m in ("ML_HOME", "ML_AWAY") and "@" in name:
+        away, _, home = [s.strip() for s in name.partition("@")]
+        side = home if m == "ML_HOME" else away
+        return f"{lead}{side} moneyline ({name}){tail}{probtxt}"
     return f"{lead}{name} — {mk}{tail}{probtxt}"
 
 
@@ -116,6 +124,11 @@ def _yesterday_receipt(history: List[Dict[str, Any]], today: Optional[str]) -> O
         pu = h.get("payout_units")
         put = f" {'+' if (pu or 0) >= 0 else ''}{round(pu, 2)}u" if isinstance(pu, (int, float)) else ""
         name = h.get("player_or_matchup") or "?"
+        m = str(h.get("market") or "").upper()
+        if m in ("ML_HOME", "ML_AWAY") and "@" in name:
+            away, _, home = [s.strip() for s in name.partition("@")]
+            side = home if m == "ML_HOME" else away
+            return f"Yesterday: {side} moneyline ({name}) {mark}{put}"
         mk = _humanize_market(h.get("market"))
         return f"Yesterday: {name} {mk} {mark}{put}"
     return None
@@ -165,6 +178,35 @@ def run() -> Dict[str, Any]:
         date = None
 
     if not picks:
+        # v2 NO-PICK day: nothing cleared the curation/edge gate. That's a real,
+        # postable message -- "we don't force bets" is the brand working, not a
+        # gap in it -- and the receipt + record still ride along.
+        if (one or {}).get("no_pick"):
+            date = one.get("date")
+            receipt = _yesterday_receipt(rec_data.get("history") or [], date)
+            lines = ["\U0001F3AF Alpha Pick of the Day", "",
+                     "No pick today. Nothing on the slate clears our edge gate, "
+                     "and we don't force bets.", ""]
+            if receipt:
+                lines.append(receipt)
+            rl = _record_line(record)
+            if rl:
+                lines.append(f"Record: {rl}")
+            lines += ["", f"Receipts → {SITE}", "", "21+ · not betting advice"]
+            tweet = "\n".join(lines)
+            payload = {
+                "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
+                "date": date, "no_pick": True,
+                "tweet": tweet, "char_count": len(tweet),
+                "intent_url": _intent(tweet), "receipt": receipt, "picks": [],
+                "record": {"wins": record.get("wins"), "losses": record.get("losses"),
+                           "hit_rate": record.get("hit_rate"), "roi_pct": record.get("roi_pct")},
+                "variants": {"bare": {"text": tweet, "char_count": len(tweet),
+                                      "intent_url": _intent(tweet)}},
+                "note": "No-pick day: the gate found no qualifying edge. Posting is manual.",
+            }
+            _write(payload)
+            return payload
         payload = {"generated_at": dt.datetime.now().isoformat(timespec="seconds"),
                    "date": date, "tweet": None, "warning": "no alpha pick available today"}
         _write(payload)

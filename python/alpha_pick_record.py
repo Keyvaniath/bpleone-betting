@@ -48,10 +48,13 @@ import json
 import datetime as dt
 from typing import Any, Dict, List, Optional
 
+import prob_calibration as pc
+
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 LEDGER = os.path.join(DATA_DIR, "all_picks_ledger.json")
 SUMMARY = os.path.join(DATA_DIR, "ledger_summary.json")
 OUT = os.path.join(DATA_DIR, "alpha_pick_record.json")
+V2_SELECTIONS = os.path.join(DATA_DIR, "alpha_v2_selections.json")
 
 MIN_PROB = 0.55     # conviction floor -- a followable daily pick, not a longshot
 # Ceiling on model prob. NOTE: the live game-line Alpha rule caps at 0.85 (above that a
@@ -64,6 +67,46 @@ MIN_PROB = 0.55     # conviction floor -- a followable daily pick, not a longsho
 MAX_PROB = 0.90
 LAST_N_DAYS = 30
 MAX_SLATE = 3       # the One Pick + up to 2 diversified "alpha props" (one per market)
+
+# ---- RULE v2 (2026-08-10, forward-only) -- the curation gate ------------------
+# WHY: the profitable prop families were PrizePicks-soft-line unders; that feed
+# died 2026-07-09 (hard 403, TLS-fingerprint bot-wall). What remained in the
+# daily pool were the model's own fair-odds prop feeds -- dominated by the
+# overconfident families the site's honesty layer already excludes from every
+# curated board (hit_no, hr_yn, xbh, 3plus_tb...). v1's "highest raw-EV prop"
+# rule kept selecting from them (it went 3-8 over its last 11), violating the
+# site rule that any surfaced pick routes through prob_calibration.
+# THE GATE (applies only to days >= V2_RULE_DATE -- the published v1 history is
+# replayed byte-identically and is never restated):
+#   - family must NOT be proven-negative or overconfident (prob_calibration)
+#   - prob is CALIBRATED (empirical_calibrate); the conviction band applies to
+#     the calibrated prob
+#   - calibrated EV at the recorded odds must clear V2_MIN_EDGE. Picks are
+#     recorded at model-fair odds, so raw EV == 0 by construction: only
+#     families the model has PROVEN underconfident (realized > predicted) can
+#     clear a positive calibrated edge. No proven edge that day -> NO PICK
+#     (published honestly; we don't force bets).
+# Each v2 day's selection is LOCKED on first sight (data/alpha_v2_selections.json,
+# append-only): once a day's pick (or no-pick) is chosen it never changes, even
+# if later ledger entries or a drifted calibration map would now choose
+# differently -- a receipts channel must have an immutable past.
+V2_RULE_DATE = "2026-08-10"
+V2_MIN_EDGE = 0.02  # min calibrated EV -- clears fair-odds rounding noise, demands a real edge
+
+
+def _v2_gate(raw_prob: float, dec_odds: float, market: Any):
+    """Curation gate for v2 days. None = excluded; else (calibrated_EV, calibrated_prob)."""
+    if pc.is_proven_negative(market) or pc.is_overconfident(market):
+        return None
+    p_cal, _meta = pc.empirical_calibrate(raw_prob, market)
+    if p_cal is None:
+        p_cal = raw_prob   # unmapped family: raw prob at fair odds = EV 0 -> fails the edge bar
+    if not (MIN_PROB <= p_cal <= MAX_PROB):
+        return None
+    ev = p_cal * dec_odds - 1
+    if ev < V2_MIN_EDGE:
+        return None
+    return ev, round(p_cal, 4)
 
 
 def _load(p) -> Any:
@@ -110,6 +153,19 @@ def _is_player_prop(p: Dict[str, Any]) -> bool:
     if mk.endswith(("_ML", "_HOME", "_AWAY")) or "TOTAL" in mk or mk.startswith(("OVER_", "UNDER_")):
         return False
     return True
+
+
+def _is_mlb_moneyline(p: Dict[str, Any]) -> bool:
+    """v2 pool widening (2026-08-10): MLB team MONEYLINES join the candidate pool.
+    v1 excluded all game lines because moneylines used to VOID in the ledger (no
+    settlement feed) -- false since espn_odds settlement wired. The family now
+    settles cleanly (n>100 with a materially positive ledger record), it is priced
+    against a REAL free book line (not model-fair odds), and it's the one daily
+    family the ledger shows the model consistently underconfident on. It faces the
+    exact same v2 gate as the props. Totals stay OUT of the flagship pool."""
+    if str(p.get("sport") or "").upper() not in _MLB_SPORTS:
+        return False
+    return str(p.get("market") or "").upper().startswith("ML_")
 
 
 def _family(market: Any) -> str:
@@ -205,39 +261,65 @@ def run() -> Dict[str, Any]:
     # top-N selection would grab the SAME bet twice and double-count the record.
     _seen_by_day: Dict[str, set] = {}
     by_day: Dict[str, List[Dict[str, Any]]] = {}
+    # v2 support: every deduped candidate (pre-gate) so locked selections stay
+    # resolvable even if a later calibration map would gate them out, and so a
+    # day where EVERYTHING gets gated out is still visible as a no-pick day.
+    ungated_by_day: Dict[str, Dict[tuple, Dict[str, Any]]] = {}
     for p in picks:
-        if p.get("voided") or not _is_player_prop(p):
+        if p.get("voided"):
+            continue
+        day = (p.get("date") or "")[:10]
+        # v1 pool: MLB player props only. v2 pool (>= rule date): props + MLB
+        # moneylines (see _is_mlb_moneyline for the dated rationale).
+        if not _is_player_prop(p) and not (day >= V2_RULE_DATE and _is_mlb_moneyline(p)):
             continue
         prob, fa = p.get("prob"), p.get("fair_american")
-        if prob is None or fa is None or not (MIN_PROB <= prob <= MAX_PROB):
+        if prob is None or fa is None:
             continue
         d = _dec(fa)
         if not d:
             continue
-        day = (p.get("date") or "")[:10]
         dedup_key = (_norm(p.get("player_or_matchup")), _norm(p.get("market")), fa)
         seen = _seen_by_day.setdefault(day, set())
-        if dedup_key in seen:
-            continue
-        seen.add(dedup_key)
-        p["_roi"] = prob * d - 1
-        p["market_family"] = _family(p.get("market"))
-        by_day.setdefault(day, []).append(p)
+        if day < V2_RULE_DATE:
+            # v1 rule, replayed byte-identically (band on RAW prob before the
+            # dedup claim, rank on raw EV) -- the published history never moves.
+            if not (MIN_PROB <= prob <= MAX_PROB):
+                continue
+            if dedup_key in seen:
+                continue
+            seen.add(dedup_key)
+            p["_roi"] = prob * d - 1
+            p["market_family"] = _family(p.get("market"))
+            by_day.setdefault(day, []).append(p)
+        else:
+            if dedup_key in seen:
+                continue
+            seen.add(dedup_key)
+            p["market_family"] = _family(p.get("market"))
+            ungated_by_day.setdefault(day, {})[dedup_key] = p
+            gate = _v2_gate(prob, d, p.get("market"))
+            if gate is None:
+                continue
+            p["_roi"], p["_p_cal"] = gate
+            by_day.setdefault(day, []).append(p)
 
     def _rank_key(x):
         return (x["_roi"], x.get("prob") or 0, str(x.get("player_or_matchup") or ""))
 
-    # One pick per day: highest model ROI. Deterministic tie-break: prob, then name.
-    # Slate per day: the One Pick (slot 0) + the highest-EV pick from each NEXT
-    # DISTINCT market family, up to MAX_SLATE plays -- no two share a family, so the
-    # extras are genuinely different props, never a re-stamp of the One Pick.
-    one_rows: List[Dict[str, Any]] = []
-    slate_all: List[Dict[str, Any]] = []
-    slot_rows: Dict[int, List[Dict[str, Any]]] = {0: [], 1: [], 2: []}
-    slate_history: List[Dict[str, Any]] = []
-    for day in sorted(by_day):
-        ranked = sorted(by_day[day], key=_rank_key, reverse=True)
-        one_rows.append(_row(ranked[0], ranked[0]["_roi"]))
+    def _lock_key(p: Dict[str, Any]) -> str:
+        return "|".join([_norm(p.get("player_or_matchup")), _norm(p.get("market")),
+                         str(p.get("fair_american"))])
+
+    def _ensure_roi(p: Dict[str, Any]) -> None:
+        """A locked pick that today's calibration map would now gate out still
+        needs a display EV (the lock outranks the gate -- published is published)."""
+        if "_roi" not in p:
+            d = _dec(p.get("fair_american")) or 1.0
+            p_cal, _m = pc.empirical_calibrate(p.get("prob"), p.get("market"))
+            p["_roi"] = ((p_cal if p_cal is not None else (p.get("prob") or 0)) * d) - 1
+
+    def _pick_slate(ranked: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
         picks_today, used_fams = [], set()
         for c in ranked:
             fam = c.get("market_family")
@@ -247,13 +329,67 @@ def run() -> Dict[str, Any]:
             picks_today.append(c)
             if len(picks_today) >= MAX_SLATE:
                 break
+        return picks_today
+
+    # One pick per day: highest model ROI. Deterministic tie-break: prob, then name.
+    # Slate per day: the One Pick (slot 0) + the highest-EV pick from each NEXT
+    # DISTINCT market family, up to MAX_SLATE plays -- no two share a family, so the
+    # extras are genuinely different props, never a re-stamp of the One Pick.
+    # v2 days: the day's selection (or its no-pick) LOCKS on first sight and then
+    # replays verbatim forever -- late ledger arrivals or a drifted calibration map
+    # never rewrite a published day.
+    locks: Dict[str, Any] = _load(V2_SELECTIONS) or {}
+    locks_changed = False
+    no_pick_days: List[str] = []
+    one_rows: List[Dict[str, Any]] = []
+    slate_all: List[Dict[str, Any]] = []
+    slot_rows: Dict[int, List[Dict[str, Any]]] = {0: [], 1: [], 2: []}
+    slate_history: List[Dict[str, Any]] = []
+    all_days = sorted(set(by_day) | set(ungated_by_day))
+    for day in all_days:
+        ranked = sorted(by_day.get(day) or [], key=_rank_key, reverse=True)
+        if day < V2_RULE_DATE:
+            picks_today = _pick_slate(ranked)
+        else:
+            lock = locks.get(day)
+            if lock is not None:
+                idx = {_lock_key(p): p for p in (ungated_by_day.get(day) or {}).values()}
+                picks_today = [idx[k] for k in (lock.get("keys") or []) if k in idx]
+                for pk in picks_today:
+                    _ensure_roi(pk)
+                if not picks_today and not lock.get("no_pick"):
+                    continue   # locked picks aged out of the capped ledger: day drops out
+            else:
+                picks_today = _pick_slate(ranked)
+                locks[day] = {"keys": [_lock_key(pk) for pk in picks_today],
+                              "no_pick": not picks_today,
+                              "locked_at": dt.datetime.now().isoformat(timespec="seconds")}
+                locks_changed = True
+            if not picks_today:
+                no_pick_days.append(day)
+                slate_history.append({"date": day, "picks": [], "no_pick": True})
+                continue
         day_rows = []
         for i, pk in enumerate(picks_today):
-            r = _row(pk, pk["_roi"]); r["slot"] = i
+            r = _row(pk, pk["_roi"])
+            if day >= V2_RULE_DATE:
+                r["rule"] = "v2"
+                if pk.get("_p_cal") is not None:
+                    r["model_prob_calibrated"] = pk["_p_cal"]
+            if i == 0:
+                one_rows.append(dict(r))   # One Pick history row carries no slot key (v1 shape)
+            r["slot"] = i
             day_rows.append(r); slate_all.append(r)
             if i in slot_rows:
                 slot_rows[i].append(r)
         slate_history.append({"date": day, "picks": day_rows})
+
+    if locks_changed:
+        try:
+            with open(V2_SELECTIONS, "w", encoding="utf-8") as f:
+                json.dump(locks, f, indent=2, sort_keys=True)
+        except OSError:
+            pass
 
     today = dt.date.today()
     def _within(row, n):
@@ -264,6 +400,7 @@ def run() -> Dict[str, Any]:
 
     record = _agg(one_rows)
     record_30 = _agg([r for r in one_rows if _within(r, LAST_N_DAYS)])
+    record_v2 = _agg([r for r in one_rows if r.get("rule") == "v2"])
 
     # Diversified benchmark = the full CURATED book (the "ETF" Brandon likes): the
     # honest apples-to-apples comparison for "one bet vs the whole board." Pulled
@@ -276,8 +413,19 @@ def run() -> Dict[str, Any]:
         "label": "Full curated book (diversified, all surfaced picks)",
     }
 
-    # Today's (or the most recent) single pick, for the "today" callout.
-    todays = one_rows[-1] if one_rows else None
+    # Today's (or the most recent) single pick, for the "today" callout. If the
+    # most recent slate day is a v2 NO-PICK day, say exactly that -- never silently
+    # re-surface an older pick as if it were today's.
+    latest_day = all_days[-1] if all_days else None
+    if one_rows and latest_day and one_rows[-1]["date"] == latest_day:
+        todays = one_rows[-1]
+    elif latest_day and latest_day >= V2_RULE_DATE:
+        todays = {"date": latest_day, "no_pick": True,
+                  "note": ("No qualifying pick: nothing on the slate cleared the v2 gate "
+                           "(family with a proven non-negative record + calibrated EV >= "
+                           f"+{V2_MIN_EDGE:.0%}). We don't force bets.")}
+    else:
+        todays = one_rows[-1] if one_rows else None
 
     # --- Alpha Props slate: the One Pick + up to 2 diversified extras (one per market) ---
     n_days_slate = len(slate_history)
@@ -316,10 +464,31 @@ def run() -> Dict[str, Any]:
             "rule": "single highest model-EV MLB player prop per slate",
             "min_prob": MIN_PROB, "max_prob": MAX_PROB,
             "stake": "1u flat", "settled_from": "all_picks_ledger.json",
+            "rule_v2": {
+                "since": V2_RULE_DATE,
+                "what": ("curation gate: the pick must come from a market family that is "
+                         "neither proven-negative nor overconfident, its prob is CALIBRATED "
+                         "(empirical, ledger-learned), and its calibrated EV at the recorded "
+                         "odds must clear the minimum edge -- otherwise the day is an honest "
+                         "NO PICK. Pool widened to MLB team MONEYLINES (their v1 exclusion "
+                         "reason -- 'MLs void in the ledger' -- died when espn_odds "
+                         "settlement wired; the family settles cleanly at n>100 with a "
+                         "materially positive record, priced against a real book line). "
+                         "Totals stay out. Selections lock on first sight and never change."),
+                "min_calibrated_edge": V2_MIN_EDGE,
+                "why": ("the PrizePicks soft-line feed (home of the proven under families) "
+                        "died 2026-07-09; the remaining fair-odds prop pool is dominated by "
+                        "families the site's honesty layer excludes everywhere else. v1's "
+                        "raw-EV rule kept selecting from them (3-8 over its last 11)."),
+                "history_policy": ("days before the rule date replay under v1 byte-identically; "
+                                   "the published record is never restated"),
+            },
         },
         "launch_date": one_rows[0]["date"] if one_rows else None,
         "record": record,
         "record_last_30": record_30,
+        "record_v2": record_v2,
+        "no_pick_days_v2": {"n": len(no_pick_days), "recent": no_pick_days[-10:]},
         "board": board,          # the diversified curated book -- the "ETF" benchmark
         "todays": todays,
         "streak": _streak(one_rows),
@@ -335,7 +504,12 @@ def run() -> Dict[str, Any]:
                  "single pick and the diversified board clear a real edge, which is "
                  "what you'd expect if the edge lives in the model + curation rather "
                  "than luck. Follow the one pick as a headline to watch; the board's "
-                 "larger-sample ROI is the bankable, robust number."),
+                 "larger-sample ROI is the bankable, robust number. RULE AMENDMENT "
+                 "2026-08-10 (v2, forward-only): picks now route through the same "
+                 "curation + calibration gate as every other surfaced board -- "
+                 "proven-negative and overconfident families are excluded and the "
+                 "calibrated edge must clear +2%, else the day is an honest NO PICK. "
+                 "History before that date is the v1 rule's record, unrestated."),
     }
     os.makedirs(DATA_DIR, exist_ok=True)
     with open(OUT, "w", encoding="utf-8") as f:
@@ -360,6 +534,12 @@ if __name__ == "__main__":
         print(f"  SLATE (1pick+props): {sr['wins']}-{sr['losses']}-{sr['pushes']} "
               f"({(sr['hit_rate'] or 0)*100:.0f}%) net {sr['net_units']:+.2f}u ROI {sr['roi_pct']:+.1f}% "
               f"· {sl.get('avg_plays_per_day')}/day · slots {list((sl.get('by_slot') or {}).keys())}")
+    rv2 = o.get("record_v2") or {}
+    npv2 = o.get("no_pick_days_v2") or {}
+    print(f"  V2 (since 2026-08-10): {rv2.get('wins', 0)}-{rv2.get('losses', 0)} over "
+          f"{rv2.get('n_days', 0)} pick day(s), {npv2.get('n', 0)} no-pick day(s)")
     t = o.get("todays")
-    if t:
-        print(f"  Today: {t['player_or_matchup']} {t['market']} @ {t['fair_american']} -> {t['result']}")
+    if t and t.get("no_pick"):
+        print(f"  Today ({t.get('date')}): NO PICK -- nothing cleared the v2 gate")
+    elif t:
+        print(f"  Today: {t.get('player_or_matchup')} {t.get('market')} @ {t.get('fair_american')} -> {t.get('result')}")

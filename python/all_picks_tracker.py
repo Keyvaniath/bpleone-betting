@@ -2756,7 +2756,11 @@ def run() -> Dict[str, Any]:
     # the same player+market tomorrow is a genuinely new game.
     _EVENT_SPORTS = {"ufc", "golf", "tennis", "cs", "boxing", "f1"}
     _cutoff = (dt.date.today() - dt.timedelta(days=14)).isoformat()
-    _open_wagers = {_wager_key(p) for p in history if not p.get("settled") and not p.get("voided")}
+    _open_by_key: Dict[tuple, Dict[str, Any]] = {}
+    for _p in history:
+        if not _p.get("settled") and not _p.get("voided"):
+            _open_by_key.setdefault(_wager_key(_p), _p)
+    _open_wagers = set(_open_by_key)
     _recent_event_wagers = {
         _wager_key(p) for p in history
         if p.get("settled") and not p.get("voided")
@@ -2769,11 +2773,26 @@ def run() -> Dict[str, Any]:
         wk = _wager_key(p)
         if wk in _open_wagers or wk in _recent_event_wagers:
             n_dup_blocked += 1
+            # ATTRIBUTION: one wager = one position, but the record must still know
+            # every board that OFFERED the wager while it was open. Without this,
+            # whichever feed runs first keeps sole credit -- post-guard, the curated
+            # book silently drained to game-lines-only exactly this way (the boards'
+            # prop copies were skipped because an experimental feed recorded the
+            # same wager minutes earlier). Stamp the kept OPEN copy; never touch
+            # settled picks (a wager that settled before a board re-offered it was
+            # genuinely not on that board while actionable).
+            kept = _open_by_key.get(wk)
+            src = p.get("source")
+            if kept is not None and src and src != kept.get("source"):
+                also = kept.setdefault("also_sources", [])
+                if src not in also:
+                    also.append(src)
             continue
         p["recorded_at"] = now_iso
         history.append(p)
         existing_ids.add(p["pick_id"])
         _open_wagers.add(wk)
+        _open_by_key.setdefault(wk, p)
         n_added += 1
 
     # Backfill newly-carried fields onto PENDING picks collected before a
@@ -2882,7 +2901,16 @@ def run() -> Dict[str, Any]:
         s = src or ""
         return any(s == pre or s.startswith(pre) for pre in _CURATED_PREFIXES)
 
-    cur = [p for p in settled if _is_curated(p.get("source"))]
+    def _is_curated_pick(p):
+        # A wager counts as curated if the copy the guard kept came from a curated
+        # source OR if a curated board offered the same wager while it was open
+        # (also_sources, stamped by the ADD-GUARD). One row either way -- attribution
+        # only, never a double count.
+        if _is_curated(p.get("source")):
+            return True
+        return any(_is_curated(s) for s in (p.get("also_sources") or ()))
+
+    cur = [p for p in settled if _is_curated_pick(p)]
     c_wins = sum(1 for p in cur if p["result"] == "won")
     c_losses = sum(1 for p in cur if p["result"] == "lost")
     c_pushes = sum(1 for p in cur if p["result"] == "push")

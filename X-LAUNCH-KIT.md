@@ -95,12 +95,16 @@ Settings: enable 2FA; turn OFF "let people tag you in photos" (bot-magnet).
 
 **Post 1 — the announcement (pin this):**
 > Every morning we post ONE pick — the highest-EV play our model finds.
+> Some days it finds nothing that clears our edge gate — then we say NO PICK.
+> We don't force bets.
 >
 > Every result gets graded on the box score and posted the next day, win or lose.
 > No deleted tweets. No "DM for picks." The whole ledger is public:
 > betting.bpleone.com/track-record
 >
-> Current record: 45-7 · 87% · +50% ROI. Receipts start tomorrow. 21+
+> Current record: [pull the LIVE number off betting.bpleone.com/alpha-pick as you
+> post — NEVER type a remembered record; they go stale the day you write them
+> down]. Receipts start tomorrow. 21+
 
 **Post 2 — the proof link (reply to Post 1, making a mini-thread):**
 > How it works, in 60 seconds:
@@ -135,6 +139,10 @@ Settings: enable 2FA; turn OFF "let people tag you in photos" (bot-magnet).
   ```
 - **Losses post too.** The ❌ days are what make the ✅ days credible. Never skip
   a down day — that's the whole brand.
+- **NO-PICK days post too** (rule v2, 2026-08-10): when nothing clears the
+  curation + calibrated-edge gate, the composer writes an honest "No pick today
+  — we don't force bets" post. Send it. No other capper posts that; the
+  discipline IS the differentiator.
 
 ---
 

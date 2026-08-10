@@ -41,6 +41,40 @@ bpleone-site/
 
 ## Current deployment state (LIVE)
 
+- **2026-08-10 — ALPHA PICK RULE v2 + curated-attribution fix (read before touching
+  alpha_pick_record / the curated stats):** investigation of the flat last-30
+  (curated 54-50/−0.8u vs +23.8% prior) found THREE stacked causes. (1) The
+  PrizePicks feed DIED 2026-07-09 — hard 403 even from a home IP with browser
+  headers (TLS-fingerprint wall); prizepicks_lines.json has 0 lines. The proven
+  soft-line under families (PP_batter_hrr_under_*: 533-110, +149u lifetime) went
+  dormant with it — that WAS most of the +23.8% era. Revival needs a real props
+  data source (paid Odds API tier), not headers. (2) The ADD-GUARD let whichever
+  feed ran first keep sole credit for a wager, so the curated boards' copies were
+  skipped and the curated record silently drained to game-lines-only. FIX:
+  the guard now stamps `also_sources` on the kept OPEN copy and the curated
+  rollup counts source OR also_sources (attribution only — still one row, never
+  a double count). Settled picks are never stamped retroactively. (3) MLB game
+  totals went 5-16/−11.5u in August (stale-input suspicion during the ESPN
+  outage) — lifetime the class is +2.1%/n=239 so it does NOT meet the frozen
+  proven-negative bar; NOT cut (that would be tail-chasing); watch it.
+  **ALPHA PICK RULE v2 (forward-only, date-gated at 2026-08-10):** v1's raw-EV
+  rule was selecting from proven-negative families (hit_no etc.) once PP died —
+  3-8 over its last 11, violating the "every surfaced pick routes through
+  prob_calibration" rule. v2: candidates must clear is_proven_negative +
+  is_overconfident, the conviction band applies to the CALIBRATED prob, and
+  calibrated EV at recorded odds must clear +2% — else an honest NO-PICK day
+  (real payload + postable "we don't force bets" tweet; alpha_tweet.py and
+  alpha-pick.html both render it). Pool widened to MLB MONEYLINES (v1 excluded
+  them because "MLs void in the ledger" — false since espn_odds settlement;
+  family is 68-38/+21% lifetime, priced against a real book line; totals stay
+  out). Days < 2026-08-10 replay under v1 BYTE-IDENTICALLY — the 48-16 v1
+  record is never restated; payload discloses rule_v2 + record_v2 and the page
+  carries a dated amendment note. Each v2 day's selection LOCKS on first sight
+  in data/alpha_v2_selections.json (append-only, cron-committed) and replays
+  from the lock forever — late ledger arrivals or calibration drift must never
+  rewrite a published day. Do NOT delete the sidecar; do NOT "fix" a locked
+  day's pick.
+
 - **2026-08-07 — ESPN 403 OUTAGE + fetch-header rules (do not regress):** ESPN
   (Akamai) began 403ing ~Aug 6: (1) any request with NO `Accept` header (urllib
   sends none by default; curl sends `Accept: */*`, so manual curl checks LIE);

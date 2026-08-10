@@ -156,9 +156,17 @@ fetch('data/alpha_pod_record.json?t=' + Date.now()).then(function (r) { return r
       This isolates the <strong>single highest-EV pick</strong> each slate (flat 1u, backfilled from the public
       ledger, selected on pre-game odds only) so there's one number to watch.
     </p>
+    <p style="margin:6px 0 0;font-size:11px;color:var(--muted,#8a93a6);line-height:1.55;">
+      <b style="color:#d4a04a;">Rule v2 — Aug 10, 2026 (forward-only):</b> picks now route through the same
+      curation + calibration gate as every other board — proven-negative / overconfident families are excluded,
+      the calibrated edge must clear +2%, MLB moneylines joined the pool (their old exclusion reason, "MLs void
+      in the ledger," died once free-line settlement wired), and a slate with no qualifying edge is an honest
+      <b>NO PICK</b> day. History before that date is the v1 rule's record, unrestated.
+    </p>
   </div>
   <div id="opStats" style="display:flex;flex-wrap:wrap;gap:0;border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06);"></div>
   <div id="opCompare" style="padding:11px 18px;font-size:12px;color:var(--text-2,#9fb0c8);line-height:1.6;border-bottom:1px solid rgba(255,255,255,.06);"></div>
+  <div id="opToday" style="display:none;padding:9px 18px;border-bottom:1px solid rgba(255,255,255,.06);font-size:12.5px;"></div>
   <div style="padding:6px 18px 4px;font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted,#888);font-family:'JetBrains Mono',monospace;">Daily record — newest first</div>
   <div style="overflow-x:auto;">
     <div id="opRows" style="min-width:520px;font-family:'JetBrains Mono',monospace;font-size:12px;padding:0 8px 10px;"></div>
@@ -204,6 +212,35 @@ fetch('data/alpha_pick_record.json?t=' + Date.now()).then(function (r) { return 
       (b.n_settled || 0) + ' plays). ' : '') +
     'That <em>both</em> clear a real edge is the point — it\'s the model + curation, not luck. But one bet a day is far higher variance (~' +
     r.n_settled + ' bets vs ~' + (b.n_settled || 0) + '): follow the one pick as a headline; the board\'s larger sample is the bankable number.';
+  // human market text (moneylines read as "SIDE moneyline", not "ml away")
+  var mkH = function (m, name) {
+    m = String(m || '').toUpperCase();
+    if ((m === 'ML_HOME' || m === 'ML_AWAY') && name && name.indexOf('@') > -1) {
+      var parts = name.split('@');
+      return ((m === 'ML_HOME' ? parts[1] : parts[0]) || '').trim() + ' moneyline';
+    }
+    return String(m).replace(/_/g, ' ').toLowerCase();
+  };
+  // today's callout — v2 makes "no pick" a real published outcome, so say it plainly
+  var td = d.todays, tEl = document.getElementById('opToday');
+  if (tEl && td) {
+    if (td.no_pick) {
+      tEl.innerHTML = '<span style="color:#d4a04a;font-weight:600;">No pick today.</span> ' +
+        '<span style="color:var(--text-2,#9fb0c8);">Nothing on the slate clears the edge gate — we don\'t force bets.</span>';
+      tEl.style.display = 'block';
+    } else if (td.result === 'pending') {
+      var tprob = td.model_prob_calibrated || td.model_prob;
+      var isML = String(td.market || '').toUpperCase().indexOf('ML_') === 0;
+      var head = isML ? mkH(td.market, td.player_or_matchup) : (td.player_or_matchup || '');
+      var sub = isML ? '(' + (td.player_or_matchup || '') + ')' : mkH(td.market, td.player_or_matchup);
+      tEl.innerHTML = '<span style="color:var(--muted,#888);font-size:10px;text-transform:uppercase;letter-spacing:.5px;">Today (' + td.date + ')</span><br>' +
+        '<b style="color:#d4a04a;">★ ' + head + '</b> ' +
+        '<span style="color:var(--text-2,#9fb0c8);">' + sub +
+        (td.fair_american != null ? ' @ ' + td.fair_american : '') +
+        (tprob ? ' · model ' + Math.round(tprob * 100) + '%' + (td.model_prob_calibrated ? ' (calibrated)' : '') : '') + '</span>';
+      tEl.style.display = 'block';
+    }
+  }
   // rows
   var rowsHtml = (d.history || []).slice(0, 20).map(function (h) {
     var res = h.result, badge, bc;
@@ -214,7 +251,7 @@ fetch('data/alpha_pick_record.json?t=' + Date.now()).then(function (r) { return 
     var pu = h.payout_units;
     return '<div style="display:grid;grid-template-columns:82px 1fr 128px 54px 60px;gap:8px;padding:6px 10px;border-bottom:1px solid rgba(255,255,255,.04);align-items:center;">' +
       '<span style="color:var(--muted,#888);">' + h.date + '</span>' +
-      '<span><b>' + (h.player_or_matchup || '') + '</b> <span style="color:var(--muted,#888);font-size:11px;">' + String(h.market || '').replace(/_/g, ' ').toLowerCase() + '</span></span>' +
+      '<span><b>' + (h.player_or_matchup || '') + '</b> <span style="color:var(--muted,#888);font-size:11px;">' + mkH(h.market, h.player_or_matchup) + '</span></span>' +
       '<span style="color:#9fb0c8;font-size:11px;">' + (h.sport || '') + (h.fair_american != null ? ' @ ' + h.fair_american : '') + '</span>' +
       '<span style="color:' + (h.roi_model_pct >= 0 ? '#58c878' : '#e35a5a') + ';">' + (h.roi_model_pct >= 0 ? '+' : '') + h.roi_model_pct + '%</span>' +
       '<span style="color:' + bc + ';font-weight:700;">' + badge + (pu != null && res !== 'pending' ? ' <span style="font-weight:400;color:var(--muted,#888);font-size:10px;">' + (pu >= 0 ? '+' : '') + pu + '</span>' : '') + '</span>' +
@@ -283,12 +320,24 @@ fetch('data/alpha_pick_record.json?t=' + Date.now()).then(function (r) { return 
   }).join('');
   // today's slate
   var t = s.todays;
-  if (t && t.picks && t.picks.length) {
+  var mkH2 = function (m, name) {
+    m = String(m || '').toUpperCase();
+    if ((m === 'ML_HOME' || m === 'ML_AWAY') && name && name.indexOf('@') > -1) {
+      var parts = name.split('@');
+      return ((m === 'ML_HOME' ? parts[1] : parts[0]) || '').trim() + ' moneyline';
+    }
+    return String(m).replace(/_/g, ' ').toLowerCase();
+  };
+  if (t && t.no_pick) {
+    document.getElementById('apToday').innerHTML =
+      '<span style="color:#d4a04a;font-weight:600;">No slate today.</span> ' +
+      '<span style="color:var(--text-2,#9fb0c8);">Nothing clears the edge gate — we don\'t force bets.</span>';
+  } else if (t && t.picks && t.picks.length) {
     document.getElementById('apToday').innerHTML = '<span style="color:var(--muted,#888);font-size:10px;text-transform:uppercase;letter-spacing:.5px;">Today\'s slate (' + t.date + ')</span><br>' +
       t.picks.map(function (p, i) {
         return '<span style="display:inline-block;margin:4px 10px 0 0;">' +
           '<b style="color:' + (i === 0 ? '#d4a04a' : '#9fb0c8') + ';">' + (i === 0 ? '★ ' : '+ ') + (p.player_or_matchup || '') + '</b> ' +
-          '<span style="color:var(--muted,#888);font-size:11px;">' + String(p.market || '').replace(/_/g, ' ').toLowerCase() + (p.fair_american != null ? ' @ ' + p.fair_american : '') + '</span></span>';
+          '<span style="color:var(--muted,#888);font-size:11px;">' + mkH2(p.market, p.player_or_matchup) + (p.fair_american != null ? ' @ ' + p.fair_american : '') + '</span></span>';
       }).join('');
   }
   document.getElementById('apNote').textContent = s.note || '';
