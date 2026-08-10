@@ -65,8 +65,8 @@ _Lean late-inning OVER on these games; fade their save situations._
 - Samsung Lions @ KIA Tigers | P(home) 58.3% fair -140 | total 8 R
 - **KBO POD:** SSG Landers ML vs Lotte Giants (KBO) (HIGH)
 
-## LoL Esports -- 0 live, 18 upcoming
-- [LEC] Team Vitality vs SK Gaming BO3 | P(A) 53.8% fair -117/+117
+## LoL Esports -- 1 live, 17 upcoming
+- [LEC] SK Gaming vs Team Vitality BO3 | P(A) 46.2% fair +117/-117
 - [NLC] Ruddy Corporation vs Lundqvist Lightside BO3 | P(A) 50.7% fair -103/+103
 - [NLC] Bulldog Esports vs Bardicted to U BO3 | P(A) 56.9% fair -132/+132
 - [LEC] Natus Vincere vs G2 Esports BO3 | P(A) 41.1% fair +143/-143

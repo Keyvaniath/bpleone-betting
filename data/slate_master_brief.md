@@ -1,5 +1,5 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-08-10T14:39:15 UTC_
+_Generated 2026-08-10T15:05:11 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
@@ -10,18 +10,18 @@ _Generated 2026-08-10T14:39:15 UTC_
 - **Total FADES:** 48
 
 ## Top 5 Curated Picks
-1. **GOLF / Kevin Yu** (GOLF_PLAYER, score=219.29)
-   - Play: Kevin Yu (PLAYER_STRONG)
-   - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Beau Hossler** (GOLF_PLAYER, score=219.29)
+1. **GOLF / Beau Hossler** (GOLF_PLAYER, score=219.29)
    - Play: Beau Hossler (PLAYER_STRONG)
+   - Rationale: Cross-sport top pick (GOLF_PLAYER)
+2. **GOLF / Michael Brennan** (GOLF_PLAYER, score=219.29)
+   - Play: Michael Brennan (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
-  - Kevin Yu top 10 finish
   - Beau Hossler top 10 finish
-  - Ben James top 10 finish
+  - Michael Brennan top 10 finish
+  - Harry Hall top 10 finish
 
 ## Slate ROI Projection
 - **Picks:** 0
@@ -34,9 +34,9 @@ _Generated 2026-08-10T14:39:15 UTC_
   - Fade angle: team total UNDER
 - **NBA** / TOR (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NHL** / kevin lankinen (GOALIE_FADE)
+- **NHL** / connor hellebuyck (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / calvin pickard (GOALIE_FADE)
+- **NHL** / joseph woll (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / filip gustavsson (GOALIE_FADE)
+- **NHL** / jake oettinger (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
