@@ -1,10 +1,10 @@
 # EdgeStat Daily Brief - 2026-08-10
 
-**Model Confidence: 20.9/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
+**Model Confidence: 20.8/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
 
-_Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
+_Pipeline health: **WARNING** (12/15 artifacts ok; 3 empty, 0 stale)._ 
 
-_Generated at 2026-08-10T14:17:24 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-08-10T14:39:24 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
@@ -20,12 +20,12 @@ _Generated at 2026-08-10T14:17:24 UTC. Game lines source: **Bovada (fallback -- 
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 7:07p ET | BOS @ TOR | Rogers Centre | indoor | BOS_ML +36.34% |
+| 7:07p ET | BOS @ TOR | Rogers Centre | indoor | BOS_ML +37.0% |
 | 7:15p ET | NYM @ ATL | Truist Park | 81F 3mph | -- |
 | 7:40p ET | BAL @ MIN | Target Field | 80F 4mph | OVER_8.5 +42.29% |
 | 7:45p ET | PHI @ STL | Busch Stadium | 86F 6mph | OVER_9.0 +10.94% |
 | 9:38p ET | TEX @ LAA | Angel Stadium | 70F 3mph | TEX_ML +5.32% |
-| 9:40p ET | COL @ ARI | Chase Field | indoor | COL_ML +41.69% |
+| 9:40p ET | COL @ ARI | Chase Field | indoor | COL_ML +42.21% |
 | 9:40p ET | TBR @ OAK | Sutter Health Park | 71F 8mph | OVER_10.0 +38.31% |
 | 9:40p ET | MIL @ SDP | Petco Park | 71F 3mph | MIL_ML +11.91% |
 | 9:45p ET | HOU @ SFG | Oracle Park | 57F 11mph | UNDER_8.5 +24.12% |
@@ -33,22 +33,22 @@ _Generated at 2026-08-10T14:17:24 UTC. Game lines source: **Bovada (fallback -- 
 
 ## Parlays - top 5
 
-- **3-leg @ +382 (prob 31.0%, EV +49.23%)**
-  - COL @ ARI UNDER_9.0 (-110, model 60.8%)
-  - KCR @ LAD OVER_7.5 (-110, model 63.8%)
-  - KCR @ LAD LAD_ML (-310, model 79.8%)
+- **3-leg @ +633 (prob 20.4%, EV +49.73%)**
+  - PHI @ STL OVER_9.0 (-110, model 58.1%)
+  - PHI @ STL STL_ML (+101, model 53.9%)
+  - KCR @ LAD OVER_7.5 (-110, model 65.3%)
 - **3-leg @ +633 (prob 20.4%, EV +49.14%)**
   - PHI @ STL OVER_9.0 (-110, model 58.1%)
   - PHI @ STL STL_ML (+101, model 53.9%)
   - HOU @ SFG UNDER_8.5 (-110, model 65.0%)
-- **3-leg @ +579 (prob 21.9%, EV +48.99%)**
-  - TEX @ LAA TEX_ML (-116, model 56.6%)
-  - COL @ ARI UNDER_9.0 (-110, model 60.8%)
-  - KCR @ LAD OVER_7.5 (-110, model 63.8%)
-- **3-leg @ +601 (prob 21.1%, EV +47.76%)**
-  - PHI @ STL STL_ML (+101, model 53.9%)
+- **3-leg @ +566 (prob 22.2%, EV +47.96%)**
   - MIL @ SDP MIL_ML (-121, model 61.3%)
-  - KCR @ LAD OVER_7.5 (-110, model 63.8%)
+  - MIL @ SDP UNDER_7.0 (-110, model 55.6%)
+  - KCR @ LAD OVER_7.5 (-110, model 65.3%)
+- **3-leg @ +361 (prob 32.0%, EV +47.39%)**
+  - MIL @ SDP MIL_ML (-121, model 61.3%)
+  - KCR @ LAD OVER_7.5 (-110, model 65.3%)
+  - KCR @ LAD LAD_ML (-310, model 79.9%)
 - **3-leg @ +566 (prob 22.1%, EV +47.37%)**
   - MIL @ SDP MIL_ML (-121, model 61.3%)
   - MIL @ SDP UNDER_7.0 (-110, model 55.6%)
@@ -59,7 +59,7 @@ _Generated at 2026-08-10T14:17:24 UTC. Game lines source: **Bovada (fallback -- 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
 
-Cumulative graded plays: 7409. Wins: 3046. Hit rate: 41.1%.
+Cumulative graded plays: 7842. Wins: 3136. Hit rate: 40.0%.
 
 ## Auxiliary Markets (Model Fair Prices)
 
@@ -103,7 +103,7 @@ Cumulative graded plays: 7409. Wins: 3046. Hit rate: 41.1%.
 
 ## Loop Activity (since last refresh)
 
-- Confidence delta: **+0.0**
+- Confidence delta: **-0.1**
 
 ## Model Recommendations (operator review)
 

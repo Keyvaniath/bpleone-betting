@@ -1,7 +1,7 @@
 {
   "phases": {
     "imports": {
-      "duration_s": 1.4,
+      "duration_s": 1.5,
       "exit_code": 0,
       "summary": "SUMMARY: 609 import-ok / 0 import-fail",
       "stderr_truncated": ""
@@ -15,28 +15,28 @@
     "data": {
       "duration_s": 1.9,
       "exit_code": 0,
-      "summary": "SUMMARY: 370 ok / 2 empty / 289 flagged / 0 stale24h / 0 stale72h",
+      "summary": "SUMMARY: 369 ok / 2 empty / 290 flagged / 0 stale24h / 0 stale72h",
       "stderr_truncated": ""
     },
     "data_health": {
-      "duration_s": 0.6,
+      "duration_s": 0.9,
       "exit_code": 0,
       "summary": "[OK] desks              | 7 desk producers fresh",
       "stderr_truncated": ""
     }
   },
-  "generated_at": "2026-08-10T14:17:39",
-  "total_duration_s": 4.0,
+  "generated_at": "2026-08-10T14:39:40",
+  "total_duration_s": 4.3,
   "artifacts": {
     "module_import_audit.json": {
-      "generated_at": "2026-08-10T14:17:36",
+      "generated_at": "2026-08-10T14:39:37",
       "n_total": 609,
       "n_ok": 609,
       "n_fail": 0,
       "failures": []
     },
     "html_audit.json": {
-      "generated_at": "2026-08-10T14:17:36",
+      "generated_at": "2026-08-10T14:39:37",
       "summary": {
         "ok": 108,
         "no_nav_js": 14,
@@ -221,14 +221,14 @@
       }
     },
     "data_stub_audit.json": {
-      "generated_at": "2026-08-10T14:17:38",
+      "generated_at": "2026-08-10T14:39:39",
       "summary": {
         "empty": 2,
         "stub_flagged": 0,
-        "zero_count": 289,
+        "zero_count": 290,
         "stale_24h": 0,
         "stale_72h": 0,
-        "ok": 370
+        "ok": 369
       },
       "empty": [
         [
@@ -432,6 +432,10 @@
         [
           "historical_nhl.json",
           "n_games=0"
+        ],
+        [
+          "hot_streaks.json",
+          "n_batters_scored=0; n_pitchers_scored=0"
         ],
         [
           "injury_news.json",
@@ -1170,6 +1174,10 @@
           "n_pending_clv=0"
         ],
         [
+          "rationales.json",
+          "count=0"
+        ],
+        [
           "recommendation_trust.json",
           "n_concluded=0; n_improved=0; n_degraded=0"
         ],
@@ -1338,10 +1346,6 @@
           "n_pitchers=0; n_concerning=0"
         ],
         [
-          "weather_drift.json",
-          "n_drifts=0"
-        ],
-        [
           "weekly_recap.json",
           "n_settled=0"
         ],
@@ -1402,7 +1406,7 @@
       "stale_72h": []
     },
     "data_health.json": {
-      "generated_at": "2026-08-10T14:17:39",
+      "generated_at": "2026-08-10T14:39:40",
       "overall": "yellow",
       "n_green": 10,
       "n_yellow": 1,
@@ -1421,7 +1425,7 @@
             "sport_coverage.json": 0.0,
             "todays_top_plays.json": 0.0,
             "alpha_pick_of_day.json": 0.0,
-            "alerts_feed.json": 0.5,
+            "alerts_feed.json": 0.4,
             "calibration_map.json": 0.2,
             "espn_odds.json": 0.0
           }
@@ -1438,7 +1442,7 @@
           "upstream_final": 0,
           "local_count": 10,
           "local_live": 0,
-          "live_state_age_min": 12
+          "live_state_age_min": 17
         },
         {
           "feed": "nba",
@@ -1449,7 +1453,7 @@
           "upstream_count": 1,
           "local_count": 1,
           "upstream_live": 0,
-          "local_age_min": 10
+          "local_age_min": 14
         },
         {
           "feed": "wnba",
@@ -1460,7 +1464,7 @@
           "upstream_count": 4,
           "local_count": 4,
           "upstream_live": 0,
-          "local_age_min": 12
+          "local_age_min": 17
         },
         {
           "feed": "nhl",
@@ -1471,7 +1475,7 @@
           "upstream_count": 7,
           "local_count": 7,
           "upstream_live": 0,
-          "local_age_min": 10
+          "local_age_min": 14
         },
         {
           "feed": "mls",
@@ -1482,7 +1486,7 @@
           "upstream_count": 1,
           "local_count": 1,
           "upstream_live": 0,
-          "local_age_min": 12
+          "local_age_min": 17
         },
         {
           "feed": "epl",
@@ -1493,7 +1497,7 @@
           "upstream_count": 1,
           "local_count": 1,
           "upstream_live": 0,
-          "local_age_min": 12
+          "local_age_min": 17
         },
         {
           "feed": "pitcher_matchup",
@@ -1523,7 +1527,7 @@
           ],
           "upstream_players": 147,
           "local_players": 147,
-          "local_age_min": 12
+          "local_age_min": 17
         },
         {
           "feed": "desks",
@@ -1534,11 +1538,11 @@
           "n_stale": 0,
           "ages_h": {
             "tennis_state.json": 0.0,
-            "ufc_state.json": 8.1,
-            "f1_state.json": 8.1,
-            "kbo_state.json": 8.1,
-            "cs_state.json": 8.1,
-            "cws_state.json": 8.1,
+            "ufc_state.json": 0.4,
+            "f1_state.json": 0.4,
+            "kbo_state.json": 0.4,
+            "cs_state.json": 0.4,
+            "cws_state.json": 0.4,
             "worldcup_cards.json": 0.0
           }
         }

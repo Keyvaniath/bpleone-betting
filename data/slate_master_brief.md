@@ -1,5 +1,5 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-08-10T14:17:13 UTC_
+_Generated 2026-08-10T14:39:15 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
@@ -10,18 +10,18 @@ _Generated 2026-08-10T14:17:13 UTC_
 - **Total FADES:** 48
 
 ## Top 5 Curated Picks
-1. **GOLF / Beau Hossler** (GOLF_PLAYER, score=219.29)
-   - Play: Beau Hossler (PLAYER_STRONG)
+1. **GOLF / Kevin Yu** (GOLF_PLAYER, score=219.29)
+   - Play: Kevin Yu (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Ben James** (GOLF_PLAYER, score=219.29)
-   - Play: Ben James (PLAYER_STRONG)
+2. **GOLF / Beau Hossler** (GOLF_PLAYER, score=219.29)
+   - Play: Beau Hossler (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
+  - Kevin Yu top 10 finish
   - Beau Hossler top 10 finish
   - Ben James top 10 finish
-  - Kevin Yu top 10 finish
 
 ## Slate ROI Projection
 - **Picks:** 0
@@ -30,13 +30,13 @@ _Generated 2026-08-10T14:17:13 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **NBA** / TOR (TEAM_FADE)
-  - Fade angle: team total UNDER
 - **NBA** / MIA (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NHL** / anthony stolarz (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
+- **NBA** / TOR (TEAM_FADE)
+  - Fade angle: team total UNDER
 - **NHL** / kevin lankinen (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / logan thompson_2 (GOALIE_FADE)
+- **NHL** / calvin pickard (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / filip gustavsson (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO

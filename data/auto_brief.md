@@ -40,10 +40,6 @@ _0% lineups confirmed · 9 rookie SPs · 1 high early-hook risk SPs_
 HIGH risk: Blade Tidwell
 _Fade their K OVERs; lean OPP team total OVER and F5._
 
-## Hot streaks
-**Batters heating up:** Matt Olson (heat +1.48), Mickey Moniak (heat +0.93), Ivan Herrera (heat +0.86)
-**Pitchers on a run:** Andrew Painter (heat +3.56), Christian Scott (heat +0.34), MacKenzie Gore (heat -1.51)
-
 ## Bullpens GASSED tonight
 Pittsburgh Pirates, San Diego Padres, Seattle Mariners, St. Louis Cardinals, Tampa Bay Rays, Texas Rangers, Toronto Blue Jays, Minnesota Twins
 _Lean late-inning OVER on these games; fade their save situations._

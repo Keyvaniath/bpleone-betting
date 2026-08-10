@@ -1,13 +1,13 @@
 # EdgeStat Daily Summary — 2026-08-10
 
-## 🏥 Model Health: 68.0/100 [OK]
+## 🏥 Model Health: 64.7/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.9/100
-  - 🔴 Hit Rate Trend: 12.6/100
-  - 🔴 Brier Trend: 54.6/100
+  - 🟢 Calibration Freshness: 99.6/100
+  - 🔴 Hit Rate Trend: 0.9/100
+  - 🔴 Brier Trend: 56.1/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 100.0/100
-  - 🔴 Edge Count: 45.7/100
+  - 🟢 Data Health: 95.5/100
+  - 🔴 Edge Count: 42.9/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.58)
@@ -20,6 +20,10 @@
 3. **BAL @ MIN YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 4. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
 5. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
+
+## 🐋 Whale Picks (Max Confluence)
+- [STRONG] **[MLB]** BOS @ TOR BOS_ML -- 75% / +21.8% (score 2.5)
+- [STRONG] **[MLB]** BAL @ MIN BAL_ML -- 66% / +21.2% (score 2.5)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -51,10 +55,9 @@
 - Hot teams: **5** | Cold teams: **13** | Over-heavy: 0 | Under-heavy: 4
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (28)
+## ⚠️ Anomaly Detector (25)
 - STEAM_MOVE: **21**
-- COMPOUND_BULLPEN: **5**
-- PEN_MISMATCH: **2**
+- COMPOUND_BULLPEN: **4**
   - MIL @ LAA (MLB): ML/TOTAL steam since open: ML -15.3pp toward MIL; total -1 (UNDER) (7 snapshots)
   - LAD @ ARI (MLB): ML/TOTAL steam since open: ML +7.7pp toward ARI; total +0.5 (OVER) (7 snapshots)
   - DET @ OAK (MLB): ML/TOTAL steam since open: ML +6.6pp toward OAK; total -0.5 (UNDER) (6 snapshots)
