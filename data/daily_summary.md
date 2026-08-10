@@ -4,14 +4,14 @@
 
 _Pipeline health: **WARNING** (12/15 artifacts ok; 3 empty, 0 stale)._ 
 
-_Generated at 2026-08-10T21:39:28 UTC. Game lines source: **placeholder -110 (no real book today)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-08-10T22:38:15 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
 **BOS @ TOR - BOS_ML**
-- Market: +100
+- Market: +130
 - Model probability: 83.9%
-- Raw edge: +67.8%
+- Raw edge: +92.97%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
@@ -20,16 +20,16 @@ _Generated at 2026-08-10T21:39:28 UTC. Game lines source: **placeholder -110 (no
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 7:07p ET | BOS @ TOR | Rogers Centre | indoor | BOS_ML +67.8% |
-| 7:15p ET | NYM @ ATL | Truist Park | 79F 3mph | ATL_ML +7.75% |
-| 7:40p ET | BAL @ MIN | Target Field | 76F 4mph | OVER_8.5 +39.61% |
-| 7:45p ET | PHI @ STL | Busch Stadium | 85F 4mph | OVER_8.5 +18.98% |
-| 9:38p ET | TEX @ LAA | Angel Stadium | 70F 4mph | TEX_ML +13.18% |
-| 9:40p ET | COL @ ARI | Chase Field | indoor | COL_ML +5.34% |
-| 9:40p ET | TBR @ OAK | Sutter Health Park | 70F 9mph | OVER_8.5 +64.36% |
-| 9:40p ET | MIL @ SDP | Petco Park | 71F 4mph | UNDER_8.5 +43.07% |
-| 9:45p ET | HOU @ SFG | Oracle Park | 55F 12mph | UNDER_8.5 +24.12% |
-| 10:10p ET | KCR @ LAD | UNIQLO Field at Dodger Stadium | 74F 5mph | LAD_ML +53.5% |
+| 7:07p ET | BOS @ TOR | Rogers Centre | indoor | BOS_ML +92.97% |
+| 7:15p ET | NYM @ ATL | Truist Park | 79F 4mph | -- |
+| 7:40p ET | BAL @ MIN | Target Field | 76F 4mph | BAL_ML +32.79% |
+| 7:45p ET | PHI @ STL | Busch Stadium | 84F 4mph | STL_ML +28.7% |
+| 9:38p ET | TEX @ LAA | Angel Stadium | 71F 4mph | TEX_ML +7.14% |
+| 9:40p ET | COL @ ARI | Chase Field | indoor | UNDER_9.5 +28.32% |
+| 9:40p ET | TBR @ OAK | Sutter Health Park | 70F 8mph | OVER_10.0 +34.93% |
+| 9:40p ET | MIL @ SDP | Petco Park | 71F 4mph | UNDER_7.5 +18.78% |
+| 9:45p ET | HOU @ SFG | Oracle Park | 56F 11mph | SFG_ML +18.91% |
+| 10:10p ET | KCR @ LAD | UNIQLO Field at Dodger Stadium | 67F 3mph | LAD_ML +9.52% |
 
 ## Parlays - top 5
 
@@ -65,16 +65,16 @@ Cumulative graded plays: 7840. Wins: 3134. Hit rate: 40.0%.
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| BAL @ MIN | 27.2% | +268 | 6.35 | +362 | -362 |
+| BAL @ MIN | 27.2% | +268 | 6.36 | +362 | -362 |
 | BOS @ TOR | 24.1% | +315 | 7.12 | +964 | -964 |
 | COL @ ARI | 41.5% | +141 | 4.4 | +194 | -194 |
-| HOU @ SFG | 52.2% | -109 | 3.49 | +224 | -224 |
-| KCR @ LAD | 60.0% | -150 | 2.6 | -234 | +234 |
-| MIL @ SDP | 43.6% | +129 | 4.08 | +298 | -298 |
-| NYM @ ATL | 49.0% | +104 | 3.63 | +133 | -133 |
-| PHI @ STL | 38.4% | +161 | 4.84 | +143 | -143 |
-| TBR @ OAK | 23.2% | +330 | 7.56 | +442 | -442 |
-| TEX @ LAA | 43.1% | +132 | 4.31 | +230 | -230 |
+| HOU @ SFG | 52.2% | -109 | 3.48 | +225 | -225 |
+| KCR @ LAD | 60.0% | -150 | 2.6 | -225 | +225 |
+| MIL @ SDP | 43.6% | +129 | 4.07 | +298 | -298 |
+| NYM @ ATL | 49.0% | +104 | 3.65 | +132 | -132 |
+| PHI @ STL | 38.4% | +161 | 4.86 | +144 | -144 |
+| TBR @ OAK | 23.2% | +330 | 7.55 | +440 | -440 |
+| TEX @ LAA | 43.1% | +132 | 4.32 | +230 | -230 |
 
 ## Travel / Rest Flags
 

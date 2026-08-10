@@ -1,13 +1,13 @@
 # EdgeStat Daily Summary — 2026-08-10
 
-## 🏥 Model Health: 62.2/100 [OK]
+## 🏥 Model Health: 62.5/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.9/100
+  - 🟢 Calibration Freshness: 99.6/100
   - 🔴 Hit Rate Trend: 0/100
   - 🔴 Brier Trend: 44.2/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 95.5/100
-  - 🔴 Edge Count: 42.9/100
+  - 🔴 Edge Count: 45.7/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.58)
@@ -22,7 +22,7 @@
 5. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
 
 ## 📉 Strong UNDER Signals
-- [ELITE 6.5] **MIL @ SDP** model 6.79 vs market 8.5
+- [ELITE 6.5] **MIL @ SDP** model 6.84 vs market 8.5
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -76,12 +76,11 @@
   - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
-## 🎯 Convergence Picks (5 stacked games)
-- ELITE: **1** · HIGH: 2 · MED: 2
-  - [ELITE] Dallas Wings @ Minnesota Lynx : 5 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ATS)
-  - [HIGH] Phoenix Mercury @ Washington Mystics : 3 signals (HEAT_COLD, HEAT_COLD, ATS)
+## 🎯 Convergence Picks (4 stacked games)
+- ELITE: **0** · HIGH: 2 · MED: 2
+  - [HIGH] Toronto Tempo @ Atlanta Dream : 3 signals (HEAT_COLD, ANOMALY, ATS)
   - [HIGH] Houston Dynamo FC @ New England Revolution : 3 signals (HEAT_COLD, ATS, ATS)
-  - [MED] Las Vegas Aces @ New York Liberty : 2 signals (HEAT_COLD, HEAT_COLD)
+  - [MED] Chicago Sky @ Seattle Storm : 2 signals (PREGAME, HEAT_COLD)
   - [MED] Coventry City @ Arsenal : 2 signals (PREGAME, ATS)
 
 ## ⚾ Top MLB Pitcher K Plays (8)
@@ -124,6 +123,10 @@
   - ❄️ **Brayan Rocchio** (CLE): L14 .118 / season .254 (-136pts) -- FADE props
   - ❄️ **Tommy Edman** (LAD): L14 .148 / season .279 (-131pts) -- FADE props
   - ❄️ **Nicky Lopez** (TEX): L14 .150 / season .278 (-128pts) -- FADE props
+
+## 📈 Streak Regression Alerts (2)
+- [WNBA] Toronto Tempo on L5 L10 0-5 -- Toronto Tempo on L5 -- no historical sample
+- [WNBA] Seattle Storm on L5 L10 0-5 -- Seattle Storm on L5 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**
