@@ -1,32 +1,53 @@
 {
-  "generated_at": "2026-08-10T06:11:10",
+  "generated_at": "2026-08-10T14:17:01",
   "selection": {
     "rule": "single highest model-EV MLB player prop per slate",
     "min_prob": 0.55,
     "max_prob": 0.9,
     "stake": "1u flat",
-    "settled_from": "all_picks_ledger.json"
+    "settled_from": "all_picks_ledger.json",
+    "rule_v2": {
+      "since": "2026-08-10",
+      "what": "curation gate: the pick must come from a market family that is neither proven-negative nor overconfident, its prob is CALIBRATED (empirical, ledger-learned), and its calibrated EV at the recorded odds must clear the minimum edge -- otherwise the day is an honest NO PICK. Pool widened to MLB team MONEYLINES (their v1 exclusion reason -- 'MLs void in the ledger' -- died when espn_odds settlement wired; the family settles cleanly at n>100 with a materially positive record, priced against a real book line). Totals stay out. Selections lock on first sight and never change.",
+      "min_calibrated_edge": 0.02,
+      "why": "the PrizePicks soft-line feed (home of the proven under families) died 2026-07-09; the remaining fair-odds prop pool is dominated by families the site's honesty layer excludes everywhere else. v1's raw-EV rule kept selecting from them (3-8 over its last 11).",
+      "history_policy": "days before the rule date replay under v1 byte-identically; the published record is never restated"
+    }
   },
   "launch_date": "2026-05-19",
   "record": {
-    "n_days": 67,
-    "n_settled": 64,
+    "n_days": 69,
+    "n_settled": 66,
     "wins": 48,
-    "losses": 16,
+    "losses": 18,
     "pushes": 0,
-    "hit_rate": 0.75,
-    "net_units": 19.32,
-    "roi_pct": 30.19
+    "hit_rate": 0.7273,
+    "net_units": 17.32,
+    "roi_pct": 26.24
   },
   "record_last_30": {
-    "n_days": 14,
-    "n_settled": 11,
+    "n_days": 16,
+    "n_settled": 13,
     "wins": 3,
-    "losses": 8,
+    "losses": 10,
     "pushes": 0,
-    "hit_rate": 0.2727,
-    "net_units": -5.76,
-    "roi_pct": -52.36
+    "hit_rate": 0.2308,
+    "net_units": -7.76,
+    "roi_pct": -59.69
+  },
+  "record_v2": {
+    "n_days": 1,
+    "n_settled": 0,
+    "wins": 0,
+    "losses": 0,
+    "pushes": 0,
+    "hit_rate": null,
+    "net_units": 0,
+    "roi_pct": null
+  },
+  "no_pick_days_v2": {
+    "n": 0,
+    "recent": []
   },
   "board": {
     "n_settled": 1073,
@@ -38,54 +59,56 @@
     "label": "Full curated book (diversified, all surfaced picks)"
   },
   "todays": {
-    "date": "2026-08-09",
-    "player_or_matchup": "Andruw Monasterio",
+    "date": "2026-08-10",
+    "player_or_matchup": "BAL @ MIN",
     "team": null,
     "sport": "MLB",
-    "market": "3_plus_hrr",
-    "market_family": "HRR",
-    "model_prob": 0.56,
-    "fair_american": -127,
-    "roi_model_pct": 0.1,
+    "market": "ML_AWAY",
+    "market_family": "ML",
+    "model_prob": 0.592,
+    "fair_american": -112,
+    "roi_model_pct": 16.5,
     "result": "pending",
-    "payout_units": null
+    "payout_units": null,
+    "rule": "v2",
+    "model_prob_calibrated": 0.6157
   },
   "streak": {
-    "kind": "won",
+    "kind": "lost",
     "n": 1
   },
   "props_slate": {
     "rule": "the One Pick + the highest-EV pick from each NEXT distinct market family, up to 3/day, no two sharing a market",
     "record": {
-      "n_days": 109,
-      "n_settled": 105,
+      "n_days": 111,
+      "n_settled": 107,
       "wins": 67,
-      "losses": 38,
+      "losses": 40,
       "pushes": 0,
-      "hit_rate": 0.6381,
-      "net_units": 10.44,
-      "roi_pct": 9.94
+      "hit_rate": 0.6262,
+      "net_units": 8.44,
+      "roi_pct": 7.89
     },
     "record_last_30": {
-      "n_days": 22,
-      "n_settled": 18,
+      "n_days": 24,
+      "n_settled": 20,
       "wins": 3,
-      "losses": 15,
+      "losses": 17,
       "pushes": 0,
-      "hit_rate": 0.1667,
-      "net_units": -12.76,
-      "roi_pct": -70.89
+      "hit_rate": 0.15,
+      "net_units": -14.76,
+      "roi_pct": -73.8
     },
     "by_slot": {
       "0": {
-        "n_days": 67,
-        "n_settled": 64,
+        "n_days": 69,
+        "n_settled": 66,
         "wins": 48,
-        "losses": 16,
+        "losses": 18,
         "pushes": 0,
-        "hit_rate": 0.75,
-        "net_units": 19.32,
-        "roi_pct": 30.19
+        "hit_rate": 0.7273,
+        "net_units": 17.32,
+        "roi_pct": 26.24
       },
       "1": {
         "n_days": 32,
@@ -108,28 +131,51 @@
         "roi_pct": -2.7
       }
     },
-    "avg_plays_per_day": 1.63,
-    "n_actioned": 105,
+    "avg_plays_per_day": 1.61,
+    "n_actioned": 107,
     "todays": {
-      "date": "2026-08-09",
+      "date": "2026-08-10",
       "picks": [
         {
-          "date": "2026-08-09",
-          "player_or_matchup": "Andruw Monasterio",
+          "date": "2026-08-10",
+          "player_or_matchup": "BAL @ MIN",
           "team": null,
           "sport": "MLB",
-          "market": "3_plus_hrr",
-          "market_family": "HRR",
-          "model_prob": 0.56,
-          "fair_american": -127,
-          "roi_model_pct": 0.1,
+          "market": "ML_AWAY",
+          "market_family": "ML",
+          "model_prob": 0.592,
+          "fair_american": -112,
+          "roi_model_pct": 16.5,
           "result": "pending",
           "payout_units": null,
+          "rule": "v2",
+          "model_prob_calibrated": 0.6157,
           "slot": 0
         }
       ]
     },
     "history": [
+      {
+        "date": "2026-08-10",
+        "picks": [
+          {
+            "date": "2026-08-10",
+            "player_or_matchup": "BAL @ MIN",
+            "team": null,
+            "sport": "MLB",
+            "market": "ML_AWAY",
+            "market_family": "ML",
+            "model_prob": 0.592,
+            "fair_american": -112,
+            "roi_model_pct": 16.5,
+            "result": "pending",
+            "payout_units": null,
+            "rule": "v2",
+            "model_prob_calibrated": 0.6157,
+            "slot": 0
+          }
+        ]
+      },
       {
         "date": "2026-08-09",
         "picks": [
@@ -195,8 +241,8 @@
             "model_prob": 0.569,
             "fair_american": -132,
             "roi_model_pct": 0.0,
-            "result": "pending",
-            "payout_units": null,
+            "result": "lost",
+            "payout_units": -1.0,
             "slot": 0
           }
         ]
@@ -346,6 +392,25 @@
             "model_prob": 0.597,
             "fair_american": -148,
             "roi_model_pct": 0.0,
+            "result": "lost",
+            "payout_units": -1.0,
+            "slot": 0
+          }
+        ]
+      },
+      {
+        "date": "2026-07-25",
+        "picks": [
+          {
+            "date": "2026-07-25",
+            "player_or_matchup": "Hunter Goodman",
+            "team": null,
+            "sport": "MLB",
+            "market": "3_plus_hrr",
+            "market_family": "HRR",
+            "model_prob": 0.568,
+            "fair_american": -131,
+            "roi_model_pct": 0.2,
             "result": "lost",
             "payout_units": -1.0,
             "slot": 0
@@ -1173,77 +1238,26 @@
             "slot": 2
           }
         ]
-      },
-      {
-        "date": "2026-06-16",
-        "picks": [
-          {
-            "date": "2026-06-16",
-            "player_or_matchup": "Masataka Yoshida",
-            "team": null,
-            "sport": "MLB-PP",
-            "market": "PP_batter_hrr_under_3.5",
-            "market_family": "HRR",
-            "model_prob": 0.8718,
-            "fair_american": -136,
-            "roi_model_pct": 51.3,
-            "result": "won",
-            "payout_units": 0.735,
-            "slot": 0
-          },
-          {
-            "date": "2026-06-16",
-            "player_or_matchup": "Rhys Hoskins",
-            "team": null,
-            "sport": "MLB",
-            "market": "TO_RECORD_HIT_NO",
-            "market_family": "HITS",
-            "model_prob": 0.584,
-            "fair_american": -140,
-            "roi_model_pct": 0.1,
-            "result": "lost",
-            "payout_units": -1.0,
-            "slot": 1
-          },
-          {
-            "date": "2026-06-16",
-            "player_or_matchup": "Nick Kurtz",
-            "team": null,
-            "sport": "MLB",
-            "market": "TO_HIT_HR_YES",
-            "market_family": "HOME_RUNS",
-            "model_prob": 0.585,
-            "fair_american": -141,
-            "roi_model_pct": -0.0,
-            "result": "lost",
-            "payout_units": -1.0,
-            "slot": 2
-          }
-        ]
-      },
-      {
-        "date": "2026-06-15",
-        "picks": [
-          {
-            "date": "2026-06-15",
-            "player_or_matchup": "Eugenio Su\u00e1rez",
-            "team": null,
-            "sport": "MLB-PP",
-            "market": "PP_batter_hrr_under_3.5",
-            "market_family": "HRR",
-            "model_prob": 0.871,
-            "fair_american": -136,
-            "roi_model_pct": 51.1,
-            "result": "lost",
-            "payout_units": -1.0,
-            "slot": 0
-          }
-        ]
       }
     ],
     "note": "'The One Pick + a prop or two.' Slot 0 IS the One Pick; the 1-2 extras are the highest-EV play in each NEXT distinct prop market (no two plays share a market, and never the same player), so they're genuinely different bets -- never a re-stamp of the pick. Selected on pre-game model EV ONLY (no hindsight; the family picks are NOT chosen by past ROI). ~1.75 plays/day -- the 3rd play only fires when a 3rd distinct market qualifies (~1 day in 4). Voids/pushes are 0u refunds excluded from ROI, not wins. HONEST READ: essentially ALL the edge is in the anchor pick -- the diversifier legs run roughly breakeven, so they buy you spread, not extra edge, and the blended ROI sits below the single pick by design. And while the legs are different players and stat lines, several are 'under'-type bets (the batter underperforms), so they're diversified but not fully independent. Two independent recomputes off the raw ledger confirmed the record (no hindsight, no double-count)."
   },
   "history": [
+    {
+      "date": "2026-08-10",
+      "player_or_matchup": "BAL @ MIN",
+      "team": null,
+      "sport": "MLB",
+      "market": "ML_AWAY",
+      "market_family": "ML",
+      "model_prob": 0.592,
+      "fair_american": -112,
+      "roi_model_pct": 16.5,
+      "result": "pending",
+      "payout_units": null,
+      "rule": "v2",
+      "model_prob_calibrated": 0.6157
+    },
     {
       "date": "2026-08-09",
       "player_or_matchup": "Andruw Monasterio",
@@ -1280,8 +1294,8 @@
       "model_prob": 0.569,
       "fair_american": -132,
       "roi_model_pct": 0.0,
-      "result": "pending",
-      "payout_units": null
+      "result": "lost",
+      "payout_units": -1.0
     },
     {
       "date": "2026-08-02",
@@ -1345,6 +1359,19 @@
       "model_prob": 0.597,
       "fair_american": -148,
       "roi_model_pct": 0.0,
+      "result": "lost",
+      "payout_units": -1.0
+    },
+    {
+      "date": "2026-07-25",
+      "player_or_matchup": "Hunter Goodman",
+      "team": null,
+      "sport": "MLB",
+      "market": "3_plus_hrr",
+      "market_family": "HRR",
+      "model_prob": 0.568,
+      "fair_american": -131,
+      "roi_model_pct": 0.2,
       "result": "lost",
       "payout_units": -1.0
     },
@@ -2116,5 +2143,5 @@
       "payout_units": 0.735
     }
   ],
-  "note": "The single highest model-EV MLB player prop each day, flat 1u, backfilled from the public ledger and selected on pre-game model probability and odds only -- the ranking never sees the outcome. It has run ahead of even the full curated book -- but on ~50 bets versus the board's ~1,000, so treat its ROI as noisier: one bet a day is far higher variance, and a cold week swings it hard. The point isn't one number beating the other -- it's that BOTH the single pick and the diversified board clear a real edge, which is what you'd expect if the edge lives in the model + curation rather than luck. Follow the one pick as a headline to watch; the board's larger-sample ROI is the bankable, robust number."
+  "note": "The single highest model-EV MLB player prop each day, flat 1u, backfilled from the public ledger and selected on pre-game model probability and odds only -- the ranking never sees the outcome. It has run ahead of even the full curated book -- but on ~50 bets versus the board's ~1,000, so treat its ROI as noisier: one bet a day is far higher variance, and a cold week swings it hard. The point isn't one number beating the other -- it's that BOTH the single pick and the diversified board clear a real edge, which is what you'd expect if the edge lives in the model + curation rather than luck. Follow the one pick as a headline to watch; the board's larger-sample ROI is the bankable, robust number. RULE AMENDMENT 2026-08-10 (v2, forward-only): picks now route through the same curation + calibration gate as every other surfaced board -- proven-negative and overconfident families are excluded and the calibrated edge must clear +2%, else the day is an honest NO PICK. History before that date is the v1 rule's record, unrestated."
 }

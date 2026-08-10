@@ -1,13 +1,13 @@
 # EdgeStat Daily Summary — 2026-08-10
 
-## 🏥 Model Health: 72.1/100 [HEALTHY]
-- Solid health - some minor issues to monitor
+## 🏥 Model Health: 68.0/100 [OK]
+- Operational but room to improve - check yellow components
   - 🟢 Calibration Freshness: 99.9/100
-  - 🔴 Hit Rate Trend: 27.1/100
-  - 🟡 Brier Trend: 67.3/100
+  - 🔴 Hit Rate Trend: 12.6/100
+  - 🔴 Brier Trend: 54.6/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 86.4/100
-  - 🟡 Edge Count: 60.0/100
+  - 🟢 Data Health: 100.0/100
+  - 🔴 Edge Count: 45.7/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.58)
@@ -15,11 +15,11 @@
 - **Strong home favorites:** 0 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
-1. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
-2. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
-3. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
-4. **LOL Dplus KIA vs kt Rolster ML @ -149** (76/100 ★★★★★)
-5. **LOL G2 Esports vs Natus Vincere ML @ -143** (76/100 ★★★★★)
+1. **TBR @ OAK YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+2. **BOS @ TOR YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+3. **BAL @ MIN YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+4. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
+5. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -51,41 +51,51 @@
 - Hot teams: **5** | Cold teams: **13** | Over-heavy: 0 | Under-heavy: 4
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (21)
+## ⚠️ Anomaly Detector (28)
 - STEAM_MOVE: **21**
+- COMPOUND_BULLPEN: **5**
+- PEN_MISMATCH: **2**
   - MIL @ LAA (MLB): ML/TOTAL steam since open: ML -15.3pp toward MIL; total -1 (UNDER) (7 snapshots)
   - LAD @ ARI (MLB): ML/TOTAL steam since open: ML +7.7pp toward ARI; total +0.5 (OVER) (7 snapshots)
   - DET @ OAK (MLB): ML/TOTAL steam since open: ML +6.6pp toward OAK; total -0.5 (UNDER) (6 snapshots)
   - BOS @ LAD (MLB): TOTAL steam since open: ML +1.3pp toward LAD; total +1 (OVER) (9 snapshots)
   - CON @ DAL (WNBA): TOTAL steam since open: total -1 (UNDER) (4 snapshots)
 
-## 💰 Today's Portfolio (5 picks)
-- Total stake: **$160.0** (16.0% of $1000 bankroll)
-- Expected EV: **$-13.82**
-  - #1 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
-  - #2 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
-  - #3 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
-  - #4 [NBA] $35 on NBA Toronto Raptors ML (0-0) vs Miami Heat (P=55%)
-  - #5 [SGP] $20 on PHI @ STL 2-leg SGP @ +118 (P=46%)
+## 💰 Today's Portfolio (9 picks)
+- Total stake: **$345.0** (34.5% of $1000 bankroll)
+- Expected EV: **$11.47**
+  - #1 [NRFI] $50 on TBR @ OAK YRFI (1st-inning OVER 0.5) (P=77%)
+  - #2 [NRFI] $50 on BOS @ TOR YRFI (1st-inning OVER 0.5) (P=76%)
+  - #3 [NRFI] $50 on BAL @ MIN YRFI (1st-inning OVER 0.5) (P=73%)
+  - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
+  - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
-## 🎯 Convergence Picks (4 stacked games)
-- ELITE: **0** · HIGH: 2 · MED: 2
-  - [HIGH] Golden State Valkyries @ Los Angeles Sparks : 3 signals (PREGAME, HEAT_COLD, ATS)
+## 🎯 Convergence Picks (5 stacked games)
+- ELITE: **1** · HIGH: 2 · MED: 2
+  - [ELITE] Dallas Wings @ Minnesota Lynx : 5 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ATS)
+  - [HIGH] Phoenix Mercury @ Washington Mystics : 3 signals (HEAT_COLD, HEAT_COLD, ATS)
   - [HIGH] Houston Dynamo FC @ New England Revolution : 3 signals (HEAT_COLD, ATS, ATS)
   - [MED] Las Vegas Aces @ New York Liberty : 2 signals (HEAT_COLD, HEAT_COLD)
   - [MED] Coventry City @ Arsenal : 2 signals (PREGAME, ATS)
+
+## ⚾ Top MLB Pitcher K Plays (8)
+- **Sonny Gray** OVER 4.5 K (76%) fair -321
+- **Logan Henderson** OVER 4.5 K (76%) fair -321
+- **Trevor Rogers** OVER 4.5 K (75%) fair -295
+- **Reid Detmers** OVER 4.5 K (75%) fair -295
+- **Hunter Dobbins** OVER 5.5 K (72%) fair -262
 
 ## 🏀 NBA Player Heat (2 HOT / 1 COLD)
   - 🔥 **Scottie Barnes** (TOR): L5 24.4/7.6/9.6 vs season 18.6/5.8/8.8 [PTS +5.8]
   - 🔥 **RJ Barrett** (TOR): L5 24.6/7.6/4.0 vs season 21.4/5.5/3.6 [REB +2.1]
   - ❄️ **Brandon Ingram** (TOR): L5 12.0 vs season 19.1 [PTS -7.1] -- FADE OVER props
 
-## 🥊 UFC Fight Matchups (UFC Fight Night: Gamrot vs Salkilld)
-  - [FAVORITE] **Ty Miller** (8-0-0) vs Billy Ray Goff -- fair -217
-  - [LEAN] **Alexia Thainara** (15-1-0) vs Amanda Lemos -- fair -178
-  - [LEAN] **José Montanha** (7-1-0) vs Louie Sutherland -- fair -156
-  - [LEAN] **Carol Foro** (10-1-0) vs Gigi Canuto -- fair -137
-  - [COIN_FLIP] **Miles Johns** (16-5-0) vs Gianni Vazquez -- fair -125
+## 🥊 UFC Fight Matchups (Dana White's Contender Series: Season 10, Week 1)
+  - [LEAN] **Jon Kunneman** (10-0-0) vs Joe Kropschot -- fair -185
+  - [LEAN] **Anthony Wint** (6-0-0) vs Matt Adams -- fair -178
+  - [COIN_FLIP] **Bilal Hasan** (8-0-0) vs Mridul Saikia -- fair -126
+  - [COIN_FLIP] **Abe Alsaghir** (8-0-0) vs Fabrizio Escarrega -- fair -126
+  - [COIN_FLIP] **Tom Pagliarulo** (10-2-0) vs Ananias Mulumba -- fair -115
 
 ## ⛳ Golf Player Heat (from Wyndham Championship)
   - 🔥 T1 **Michael Brennan** (USA): -22 total -- finished T1, Sunday -0.5 vs tourney avg
@@ -108,9 +118,6 @@
   - ❄️ **Brayan Rocchio** (CLE): L14 .118 / season .254 (-136pts) -- FADE props
   - ❄️ **Tommy Edman** (LAD): L14 .148 / season .279 (-131pts) -- FADE props
   - ❄️ **Nicky Lopez** (TEX): L14 .150 / season .278 (-128pts) -- FADE props
-
-## 📈 Streak Regression Alerts (1)
-- [WNBA] Golden State Valkyries on W3 L10 3-1 -- Golden State Valkyries on W3 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**
