@@ -69,7 +69,14 @@ def _line(h: Dict[str, Any]) -> str:
     mark = "✅" if h.get("result") == "won" else "❌"
     pu = h.get("payout_units")
     put = f" {'+' if (pu or 0) >= 0 else ''}{round(pu, 2)}u" if isinstance(pu, (int, float)) else ""
-    return f"{_dow(h.get('date') or '')} — {h.get('player_or_matchup') or '?'} {_mk(h.get('market'))} {mark}{put}"
+    name = h.get("player_or_matchup") or "?"
+    m = str(h.get("market") or "").upper()
+    # v2 moneyline picks read as "SIDE moneyline", not a raw market code
+    if m in ("ML_HOME", "ML_AWAY") and "@" in name:
+        away, _, home = [s.strip() for s in name.partition("@")]
+        side = home if m == "ML_HOME" else away
+        return f"{_dow(h.get('date') or '')} — {side} moneyline ({name}) {mark}{put}"
+    return f"{_dow(h.get('date') or '')} — {name} {_mk(h.get('market'))} {mark}{put}"
 
 
 def run() -> Dict[str, Any]:

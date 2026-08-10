@@ -65,6 +65,37 @@ def _player_ids_today() -> Dict[int, Dict[str, str]]:
     return out
 
 
+LEDGER_PATH = os.path.join(DATA_DIR, "all_picks_ledger.json")
+
+
+def _pending_ledger_players() -> List[Dict[str, str]]:
+    """{name, kind} for every player on a PENDING MLB ledger pick.
+
+    THE SETTLEMENT UNIVERSE (2026-08-10): 'players with open props today' is the
+    props boards' universe, NOT the ledger's -- the model prop feeds enter picks
+    for players the boards never list, and when the boards go quiet (dead
+    PrizePicks feed, exhausted odds quota) those players' gamelogs were never
+    fetched, so their pending picks could never grade and aged into
+    'unsettleable' voids with the box scores sitting one API call away. The
+    grader (all_picks_tracker._grade_batter_prop) reads THIS file, so the fetch
+    set must cover the ledger's pendings."""
+    led = _load(LEDGER_PATH)
+    seen: Set[str] = set()
+    out: List[Dict[str, str]] = []
+    for p in led.get("picks") or []:
+        if p.get("settled") or p.get("voided"):
+            continue
+        if str(p.get("sport") or "").upper() not in ("MLB", "MLB-PP"):
+            continue
+        nm = str(p.get("player_or_matchup") or "").strip()
+        if not nm or "@" in nm or nm.lower() in seen:
+            continue
+        seen.add(nm.lower())
+        kind = "pitcher" if "pitcher" in str(p.get("market") or "").lower() else "batter"
+        out.append({"name": nm, "kind": kind})
+    return out
+
+
 # Lazily-populated team_id -> home_park_name map. Lets us tag venue per game
 # from the batter gamelog without N extra schedule-lookups per game.
 _TEAM_VENUES: Dict[int, str] = {}
@@ -211,14 +242,39 @@ def _pitcher_gamelog(pid: int, n: int = GAMELOG_DEPTH) -> List[Dict[str, Any]]:
 
 def run() -> Dict[str, Any]:
     pids = _player_ids_today()
+    # Extend with the SETTLEMENT universe: players on pending MLB ledger picks
+    # whose gamelogs the grader needs. Names resolve to ids via the cached
+    # people-search (sr.pitcher_id_by_name is a generic person lookup).
+    have_names = {str(v.get("name") or "").lower() for v in pids.values()}
+    n_ledger = 0
+    for info in _pending_ledger_players():
+        if len(pids) >= MAX_PLAYERS:
+            break
+        if info["name"].lower() in have_names:
+            continue
+        pid = sr.pitcher_id_by_name(info["name"])
+        if pid and int(pid) not in pids:
+            pids[int(pid)] = info
+            have_names.add(info["name"].lower())
+            n_ledger += 1
     pids_limited = dict(list(pids.items())[:MAX_PLAYERS])
-    print(f"  pulling gamelogs for {len(pids_limited)} players (of {len(pids)} with props today)")
+    print(f"  pulling gamelogs for {len(pids_limited)} players "
+          f"({len(pids) - n_ledger} with props today + {n_ledger} from pending ledger picks)")
     out: Dict[str, Any] = {}
     for i, (pid, info) in enumerate(pids_limited.items()):
         if i % 50 == 0:
             print(f"    {i}/{len(pids_limited)}...")
         games = _batter_gamelog(pid) if info["kind"] == "batter" else _pitcher_gamelog(pid)
         out[str(pid)] = {"name": info["name"], "kind": info["kind"], "games": games}
+    # NO-CLOBBER: an empty fetch (outage, empty boards) must not overwrite a
+    # useful cache with nothing -- the grader would lose its only box-score
+    # source. Keep the old file and say so.
+    if not out:
+        prev = _load(OUT_PATH)
+        if prev.get("by_player_id"):
+            print("  no players resolved -- keeping the existing gamelog cache "
+                  f"({len(prev['by_player_id'])} players) instead of clobbering it")
+            return prev
     payload = {
         "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
         "depth": GAMELOG_DEPTH,

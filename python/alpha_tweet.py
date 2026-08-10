@@ -124,13 +124,24 @@ def _yesterday_receipt(history: List[Dict[str, Any]], today: Optional[str]) -> O
         pu = h.get("payout_units")
         put = f" {'+' if (pu or 0) >= 0 else ''}{round(pu, 2)}u" if isinstance(pu, (int, float)) else ""
         name = h.get("player_or_matchup") or "?"
+        # Label honestly: "Yesterday" only when the receipt IS yesterday's slate.
+        # After a settlement gap, an 8-day-old result billed as "Yesterday" reads
+        # as a fresh receipt -- that's a tout move. Date it instead.
+        lead = "Yesterday"
+        try:
+            gap = (dt.date.fromisoformat(today) - dt.date.fromisoformat(h.get("date"))).days
+            if gap > 1:
+                d0 = dt.date.fromisoformat(h.get("date"))
+                lead = f"{d0.month}/{d0.day}"
+        except (TypeError, ValueError):
+            pass
         m = str(h.get("market") or "").upper()
         if m in ("ML_HOME", "ML_AWAY") and "@" in name:
             away, _, home = [s.strip() for s in name.partition("@")]
             side = home if m == "ML_HOME" else away
-            return f"Yesterday: {side} moneyline ({name}) {mark}{put}"
+            return f"{lead}: {side} moneyline ({name}) {mark}{put}"
         mk = _humanize_market(h.get("market"))
-        return f"Yesterday: {name} {mk} {mark}{put}"
+        return f"{lead}: {name} {mk} {mark}{put}"
     return None
 
 

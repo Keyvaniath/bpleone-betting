@@ -74,6 +74,20 @@ bpleone-site/
   from the lock forever — late ledger arrivals or calibration drift must never
   rewrite a published day. Do NOT delete the sidecar; do NOT "fix" a locked
   day's pick.
+  **SAME-DAY FOLLOW-UP — the SETTLEMENT-UNIVERSE fix (player_gamelogs.py):**
+  the gamelog fetch universe was "players with open props today" (props.json +
+  pickem.json) but the GRADER's universe is "players on pending ledger picks" —
+  disjoint sets once the boards went quiet (dead PP feed, exhausted odds
+  quota). Result: MLB batter props entered by the model feeds could never
+  grade; a 439-pick settlement backlog had silently accrued (the One Pick
+  record was 48-16 only because its 8/3+ losses couldn't settle; truth after
+  the fix = 48-22/+19%). player_gamelogs.py now ALSO fetches everyone on a
+  pending MLB ledger pick (names resolve via sr.pitcher_id_by_name — a generic
+  cached people-search) and refuses to clobber a useful cache with an empty
+  fetch. If pendings ever pile up >2 days again, check THIS file's universe
+  first. Also: the daily tweet's receipt now DATES itself when it isn't
+  literally yesterday's slate ("8/2: …" not "Yesterday: …" after a gap), and
+  weekly_receipts_thread renders ML picks as "SIDE moneyline (A @ B)".
 
 - **2026-08-07 — ESPN 403 OUTAGE + fetch-header rules (do not regress):** ESPN
   (Akamai) began 403ing ~Aug 6: (1) any request with NO `Accept` header (urllib
