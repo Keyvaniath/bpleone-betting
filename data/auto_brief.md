@@ -35,10 +35,6 @@ _0% lineups confirmed · 8 rookie SPs_
 - **BAL @ MIN YRFI (1st-inning OVER 0.5)** (low):
    - Edge +17.2% looks big but only 0 settled props on this player — model unproven
 
-## Hot streaks
-**Batters heating up:** Charles McAdoo (heat +7.98), Harry Ford (heat +1.12), Ian Happ (heat +0.99)
-**Pitchers on a run:** Tanner Bibee (heat +8.26), Dylan Cease (heat +0.89), Brandon Young (heat -0.53)
-
 ## Bullpens GASSED tonight
 Pittsburgh Pirates, San Diego Padres, St. Louis Cardinals, Tampa Bay Rays, Texas Rangers, Toronto Blue Jays, Philadelphia Phillies, Atlanta Braves
 _Lean late-inning OVER on these games; fade their save situations._
@@ -64,7 +60,7 @@ _Lean late-inning OVER on these games; fade their save situations._
 - Samsung Lions @ KIA Tigers | P(home) 58.2% fair -139 | total 8 R
 - **KBO POD:** SSG Landers ML vs Lotte Giants (KBO) (HIGH)
 
-## LoL Esports -- 0 live, 9 upcoming
+## LoL Esports -- 0 live, 11 upcoming
 - [LCK Challengers] BRO Challengers vs HLE Challengers BO3 | P(A) 54.4% fair -119/+119
 - [LCK] DN SOOPers vs NONGSHIM RED FORCE BO3 | P(A) 50.9% fair -104/+104
 - [LPL] EDWARD GAMING vs Anyone's Legend BO3 | P(A) 36.0% fair +177/-177

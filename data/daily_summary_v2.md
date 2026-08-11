@@ -1,13 +1,13 @@
 # EdgeStat Daily Summary — 2026-08-11
 
-## 🏥 Model Health: 66.0/100 [OK]
+## 🏥 Model Health: 67.7/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.9/100
+  - 🟢 Calibration Freshness: 99.7/100
   - 🔴 Hit Rate Trend: 0/100
-  - 🔴 Brier Trend: 44.2/100
+  - 🟡 Brier Trend: 69.0/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 100.0/100
-  - 🟡 Edge Count: 71.4/100
+  - 🟢 Data Health: 95.5/100
+  - 🔴 Edge Count: 48.6/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.58)
@@ -22,8 +22,8 @@
 5. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
-- [WHALE] **[MLB]** MIL @ SDP ML_AWAY -- 67% / +14.0% (score 3.5)
-- [STRONG] **[MLB]** MIL @ SDP MIL_ML -- 71% / +20.1% (score 2.5)
+- [WHALE] **[MLB]** MIL @ SDP ML_AWAY -- 67% / +13.6% (score 3.5)
+- [STRONG] **[MLB]** MIL @ SDP MIL_ML -- 70% / +20.0% (score 2.5)
 
 ## 📡 Sharp Action (Line Movement)
 - [STRONG] **MIL @ SDP** ml_away: 51.46% → 58.16% (+6.7pp)
@@ -58,9 +58,8 @@
 - Hot teams: **5** | Cold teams: **12** | Over-heavy: 0 | Under-heavy: 8
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (25)
+## ⚠️ Anomaly Detector (22)
 - STEAM_MOVE: **21**
-- COMPOUND_BULLPEN: **3**
 - PEN_MISMATCH: **1**
   - CHI @ SEA (WNBA): TOTAL steam since open: ML -1.9pp toward CHI; total +2 (OVER) (4 snapshots)
   - LAD @ ARI (MLB): ML/TOTAL steam since open: ML +7.7pp toward ARI; total +0.5 (OVER) (7 snapshots)
