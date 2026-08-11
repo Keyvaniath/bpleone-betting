@@ -1,12 +1,12 @@
 # Tonight's Slate Brief — 2026-08-11
 
-## Slate Quality: 55/100 (MEDIUM)
-_0% lineups confirmed · 8 rookie SPs_
-**Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
+## Slate Quality: 76/100 (HIGH)
+_66% lineups confirmed · 9 rookie SPs_
+**Recommendation:** Play normal Kelly sizing.
 
 ## Slate
 - **15 games** scheduled
-- **22 best bets** scored: 0 DK · 0 PP · 10 NRFI · 0 SGP
+- **25 best bets** scored: 0 DK · 0 PP · 10 NRFI · 0 SGP
 - **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$49.6
 - **MC simulation:** EV +$99.92, 80% P(profit), p05 $-101.14 / p95 $272.83
 
@@ -60,7 +60,7 @@ _Lean late-inning OVER on these games; fade their save situations._
 - Samsung Lions @ KIA Tigers | P(home) 58.2% fair -139 | total 8 R
 - **KBO POD:** SSG Landers ML vs Lotte Giants (KBO) (HIGH)
 
-## LoL Esports -- 0 live, 11 upcoming
+## LoL Esports -- 0 live, 17 upcoming
 - [LCK Challengers] BRO Challengers vs HLE Challengers BO3 | P(A) 54.4% fair -119/+119
 - [LCK] DN SOOPers vs NONGSHIM RED FORCE BO3 | P(A) 50.9% fair -104/+104
 - [LPL] EDWARD GAMING vs Anyone's Legend BO3 | P(A) 36.0% fair +177/-177
