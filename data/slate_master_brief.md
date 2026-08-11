@@ -1,34 +1,44 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-08-11T06:00:32 UTC_
+_Generated 2026-08-11T14:15:37 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -27
+- **Score:** -20
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
 - **Total STRONG:** 7
-- **Total FADES:** 55
+- **Total FADES:** 48
+
+## Lock of the Night
+- **Subject:** Hunter Brown
+- **Source:** ELITE_BOARD
+- **Sport:** MLB
+- **Score:** 15.0
+- **Details:** HOU @ SFG
 
 ## Top 5 Curated Picks
-1. **GOLF / Kevin Yu** (GOLF_PLAYER, score=219.29)
-   - Play: Kevin Yu (PLAYER_STRONG)
+1. **GOLF / Beau Hossler** (GOLF_PLAYER, score=219.29)
+   - Play: Beau Hossler (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
 2. **GOLF / Ben James** (GOLF_PLAYER, score=219.29)
    - Play: Ben James (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-3. **MLB / AWAY** (MLB_TEAM, score=75.08)
-   - Play: AWAY (TEAM_STRONG)
-   - Rationale: Cross-sport top pick (MLB_TEAM)
+3. **MLB / Ryan Weathers** (MLB_PITCHER, score=60.0)
+   - Play: Ryan Weathers (PITCHER_STRONG)
+   - Rationale: Cross-sport top pick (MLB_PITCHER)
+4. **MLB / Brandon Young** (MLB_PITCHER, score=59.33)
+   - Play: Brandon Young (PITCHER_STRONG)
+   - Rationale: Cross-sport top pick (MLB_PITCHER)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
-  - Kevin Yu top 10 finish
-  - Ben James top 10 finish
   - Beau Hossler top 10 finish
+  - Ben James top 10 finish
+  - Harry Hall top 10 finish
 
 ## Slate ROI Projection
-- **Picks:** 0
-- **Avg edge:** 0%
+- **Picks:** 2
+- **Avg edge:** -0.91%
 - **Expected ROI (1/4 Kelly):** 0.0%
 - **Expected P&L on $100:** $0.0
 
@@ -37,9 +47,9 @@ _Generated 2026-08-11T06:00:32 UTC_
   - Fade angle: team total UNDER
 - **NBA** / MIA (TEAM_FADE)
   - Fade angle: team total UNDER
-- **MLB** / MacKenzie Gore (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **MLB** / Reid Detmers (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **MLB** / Sonny Gray (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **NHL** / casey desmith (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / anthony stolarz (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / jake oettinger (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO

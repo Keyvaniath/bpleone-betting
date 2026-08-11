@@ -1,13 +1,13 @@
 # EdgeStat Daily Summary — 2026-08-11
 
-## 🏥 Model Health: 60.7/100 [OK]
+## 🏥 Model Health: 66.0/100 [OK]
 - Operational but room to improve - check yellow components
   - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 0/100
   - 🔴 Brier Trend: 44.2/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 86.4/100
-  - 🔴 Edge Count: 45.7/100
+  - 🟢 Data Health: 100.0/100
+  - 🟡 Edge Count: 71.4/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.58)
@@ -15,17 +15,18 @@
 - **Strong home favorites:** 0 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
-1. **TBR @ OAK YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-2. **BOS @ TOR YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-3. **BAL @ MIN YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-4. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
-5. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
+1. **KCR @ LAD YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+2. **TEX @ LAA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+3. **TBR @ OAK YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+4. **PIT @ MIA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+5. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
+
+## 🐋 Whale Picks (Max Confluence)
+- [WHALE] **[MLB]** MIL @ SDP ML_AWAY -- 67% / +14.0% (score 3.5)
+- [STRONG] **[MLB]** MIL @ SDP MIL_ML -- 71% / +20.1% (score 2.5)
 
 ## 📡 Sharp Action (Line Movement)
-- [MODERATE] **COL @ ARI** under_9.5: 50.0% → 54.55% (+4.5pp)
-
-## 📉 Strong UNDER Signals
-- [STRONG 5.3] **COL @ ARI** model 8.35 vs market 9.5
+- [STRONG] **MIL @ SDP** ml_away: 51.46% → 58.16% (+6.7pp)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -59,7 +60,8 @@
 
 ## ⚠️ Anomaly Detector (25)
 - STEAM_MOVE: **21**
-- COMPOUND_BULLPEN: **4**
+- COMPOUND_BULLPEN: **3**
+- PEN_MISMATCH: **1**
   - CHI @ SEA (WNBA): TOTAL steam since open: ML -1.9pp toward CHI; total +2 (OVER) (4 snapshots)
   - LAD @ ARI (MLB): ML/TOTAL steam since open: ML +7.7pp toward ARI; total +0.5 (OVER) (7 snapshots)
   - TOR @ GS (WNBA): TOTAL steam since open: total -1 (UNDER) (5 snapshots)
@@ -68,26 +70,26 @@
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$11.47**
-  - #1 [NRFI] $50 on TBR @ OAK YRFI (1st-inning OVER 0.5) (P=77%)
-  - #2 [NRFI] $50 on BOS @ TOR YRFI (1st-inning OVER 0.5) (P=76%)
-  - #3 [NRFI] $50 on BAL @ MIN YRFI (1st-inning OVER 0.5) (P=73%)
+- Expected EV: **$10.48**
+  - #1 [NRFI] $50 on KCR @ LAD YRFI (1st-inning OVER 0.5) (P=79%)
+  - #2 [NRFI] $50 on TEX @ LAA YRFI (1st-inning OVER 0.5) (P=78%)
+  - #3 [NRFI] $50 on TBR @ OAK YRFI (1st-inning OVER 0.5) (P=67%)
   - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
 ## 🎯 Convergence Picks (4 stacked games)
-- ELITE: **0** · HIGH: 2 · MED: 2
-  - [HIGH] Toronto Tempo @ Atlanta Dream : 3 signals (HEAT_COLD, ANOMALY, ATS)
+- ELITE: **2** · HIGH: 1 · MED: 1
+  - [ELITE] Toronto Tempo @ Atlanta Dream : 5 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ATS)
+  - [ELITE] Chicago Sky @ Seattle Storm : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
   - [HIGH] Houston Dynamo FC @ New England Revolution : 3 signals (HEAT_COLD, ATS, ATS)
-  - [MED] Chicago Sky @ Seattle Storm : 2 signals (PREGAME, HEAT_COLD)
   - [MED] Coventry City @ Arsenal : 2 signals (PREGAME, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (8)
-- **Sonny Gray** OVER 4.5 K (76%) fair -321
-- **Logan Henderson** OVER 4.5 K (76%) fair -321
-- **Trevor Rogers** OVER 4.5 K (75%) fair -295
-- **Reid Detmers** OVER 4.5 K (75%) fair -295
-- **Hunter Dobbins** OVER 5.5 K (72%) fair -262
+## ⚾ Top MLB Pitcher K Plays (9)
+- **Cristopher Sánchez** OVER 5.5 K (75%) fair -301
+- **Nolan McLean** OVER 5.5 K (75%) fair -292
+- **Kyle Harrison** OVER 4.5 K (73%) fair -274
+- **Eury Pérez** OVER 4.5 K (73%) fair -271
+- **Bryan Woo** OVER 4.5 K (71%) fair -251
 
 ## 🏀 NBA Player Heat (2 HOT / 1 COLD)
   - 🔥 **Scottie Barnes** (TOR): L5 24.4/7.6/9.6 vs season 18.6/5.8/8.8 [PTS +5.8]
@@ -122,10 +124,6 @@
   - ❄️ **Nicky Lopez** (TEX): L14 .135 / season .276 (-141pts) -- FADE props
   - ❄️ **Wyatt Langford** (TEX): L14 .122 / season .259 (-137pts) -- FADE props
   - ❄️ **Brayan Rocchio** (CLE): L14 .118 / season .254 (-136pts) -- FADE props
-
-## 📈 Streak Regression Alerts (2)
-- [WNBA] Toronto Tempo on L5 L10 0-5 -- Toronto Tempo on L5 -- no historical sample
-- [WNBA] Seattle Storm on L5 L10 0-5 -- Seattle Storm on L5 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**
