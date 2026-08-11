@@ -2,39 +2,36 @@
 
 **Model Confidence: 20.4/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
 
-_Pipeline health: **WARNING** (12/15 artifacts ok; 3 empty, 0 stale)._ 
+_Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
 
-_Generated at 2026-08-11T21:39:30 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-08-11T22:52:42 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
-**CHC @ WSN - OVER_9.0**
+**COL @ ARI - OVER_9.5**
 - Market: -110
-- Model probability: 81.9%
-- Raw edge: +56.34%
+- Model probability: 80.5%
+- Raw edge: +53.65%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
 
-## Full Slate (15 games)
+## Full Slate (12 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 6:40p ET | CLE @ DET | Comerica Park | 71F 6mph | DET_ML +28.08% |
-| 6:40p ET | PIT @ MIA | loanDepot park | indoor | OVER_7.0 +23.42% |
-| 6:45p ET | CHC @ WSN | Nationals Park | 78F 2mph | OVER_9.0 +56.34% |
 | 7:05p ET | SEA @ NYY | Yankee Stadium | 74F 3mph | UNDER_8.5 +20.35% |
 | 7:07p ET | BOS @ TOR | Rogers Centre | indoor | UNDER_7.5 +21.11% |
-| 7:15p ET | NYM @ ATL | Truist Park | 76F 1mph | UNDER_9.0 +13.18% |
-| 7:40p ET | BAL @ MIN | Target Field | 80F 4mph | OVER_8.5 +31.69% |
-| 7:40p ET | CIN @ CHW | Rate Field | 71F 4mph | OVER_8.5 +16.53% |
+| 7:15p ET | NYM @ ATL | Truist Park | 74F 3mph | UNDER_9.0 +11.26% |
+| 7:40p ET | BAL @ MIN | Target Field | 79F 5mph | OVER_8.5 +32.6% |
+| 7:40p ET | CIN @ CHW | Rate Field | 72F 5mph | OVER_8.5 +19.02% |
 | 7:45p ET | PHI @ STL | Busch Stadium | 86F 5mph | UNDER_8.5 +19.19% |
-| 9:38p ET | TEX @ LAA | Angel Stadium | 71F 6mph | TEX_ML +42.75% |
+| 9:38p ET | TEX @ LAA | Angel Stadium | 71F 6mph | TEX_ML +44.61% |
 | 9:40p ET | COL @ ARI | Chase Field | indoor | OVER_9.5 +53.65% |
-| 9:40p ET | TBR @ OAK | Sutter Health Park | 69F 9mph | OVER_10.5 +28.26% |
+| 9:40p ET | TBR @ OAK | Sutter Health Park | 68F 9mph | OVER_10.5 +27.42% |
 | 9:40p ET | MIL @ SDP | Petco Park | 72F 2mph | MIL_ML +35.48% |
-| 9:45p ET | HOU @ SFG | Oracle Park | 58F 10mph | OVER_8.0 +37.18% |
-| 10:10p ET | KCR @ LAD | UNIQLO Field at Dodger Stadium | 69F 5mph | LAD_ML +27.14% |
+| 9:45p ET | HOU @ SFG | Oracle Park | 56F 11mph | OVER_8.0 +37.19% |
+| 10:10p ET | KCR @ LAD | UNIQLO Field at Dodger Stadium | 69F 3mph | LAD_ML +26.85% |
 
 ## Parlays - top 5
 
@@ -65,21 +62,21 @@ Cumulative graded plays: 7976. Wins: 3170. Hit rate: 39.7%.
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| BAL @ MIN | 36.8% | +172 | 4.94 | +175 | -175 |
+| BAL @ MIN | 36.8% | +172 | 4.9 | +175 | -175 |
 | BOS @ TOR | 63.0% | -170 | 2.31 | +182 | -182 |
-| CHC @ WSN | 46.1% | +117 | 3.86 | +171 | -171 |
-| CIN @ CHW | 53.7% | -116 | 3.11 | -140 | +140 |
-| CLE @ DET | 55.3% | -124 | 2.94 | -150 | +150 |
+| CHC @ WSN | 46.1% | +117 | 3.87 | -- | -- |
+| CIN @ CHW | 53.7% | -116 | 3.14 | -141 | +141 |
+| CLE @ DET | 55.3% | -124 | 2.96 | -- | -- |
 | COL @ ARI | 43.9% | +128 | 4.11 | +159 | -159 |
-| HOU @ SFG | 28.9% | +246 | 6.59 | +311 | -311 |
-| KCR @ LAD | 21.1% | +373 | 8.0 | -352 | +352 |
-| MIL @ SDP | 46.6% | +114 | 3.79 | +527 | -527 |
-| NYM @ ATL | 47.4% | +111 | 3.7 | +130 | -130 |
+| HOU @ SFG | 28.9% | +246 | 6.61 | +311 | -311 |
+| KCR @ LAD | 21.1% | +373 | 7.91 | -345 | +345 |
+| MIL @ SDP | 46.6% | +114 | 3.76 | +527 | -527 |
+| NYM @ ATL | 47.4% | +111 | 3.8 | +129 | -129 |
 | PHI @ STL | 58.1% | -139 | 2.77 | +276 | -276 |
-| PIT @ MIA | 33.7% | +197 | 5.44 | +238 | -238 |
+| PIT @ MIA | 33.7% | +197 | 5.44 | -- | -- |
 | SEA @ NYY | 44.7% | +124 | 4.1 | +114 | -114 |
-| TBR @ OAK | 32.6% | +206 | 5.82 | +621 | -621 |
-| TEX @ LAA | 22.1% | +352 | 7.76 | +1236 | -1236 |
+| TBR @ OAK | 32.6% | +206 | 5.82 | +620 | -620 |
+| TEX @ LAA | 22.1% | +352 | 7.79 | +1236 | -1236 |
 
 ## Travel / Rest Flags
 

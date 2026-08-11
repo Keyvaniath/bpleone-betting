@@ -1,13 +1,13 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-08-11T21:38:29 UTC_
+_Generated 2026-08-11T22:51:24 UTC_
 
 ## Slate Quality
-- **Tier:** NO_ACTION_NIGHT
-- **Score:** -1
-- **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
+- **Tier:** MODEST_NIGHT
+- **Score:** 39
+- **Advisory:** Light slate. Limit to 1-3 strongest plays; use 25% Kelly or less.
 - **Total LOCKs:** 0
-- **Total STRONG:** 12
-- **Total FADES:** 49
+- **Total STRONG:** 24
+- **Total FADES:** 57
 
 ## Lock of the Night
 - **Subject:** Hunter Brown
@@ -17,30 +17,21 @@ _Generated 2026-08-11T21:38:29 UTC_
 - **Details:** HOU @ SFG
 
 ## Top 5 Curated Picks
-1. **GOLF / Beau Hossler** (GOLF_PLAYER, score=219.29)
-   - Play: Beau Hossler (PLAYER_STRONG)
-   - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Ben James** (GOLF_PLAYER, score=219.29)
-   - Play: Ben James (PLAYER_STRONG)
-   - Rationale: Cross-sport top pick (GOLF_PLAYER)
-3. **WNBA / caitlin clark** (WNBA_PLAYER, score=159.83)
+1. **WNBA / caitlin clark** (WNBA_PLAYER, score=159.83)
    - Play: caitlin clark (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (WNBA_PLAYER)
-4. **WNBA / breanna stewart** (WNBA_PLAYER, score=121.58)
+2. **WNBA / breanna stewart** (WNBA_PLAYER, score=121.58)
    - Play: breanna stewart (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (WNBA_PLAYER)
-5. **MLB / Ryan Weathers** (MLB_PITCHER, score=60.0)
-   - Play: Ryan Weathers (PITCHER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_PITCHER)
-
-## Top Events Board
-- **GOLF** / ? (TOURNAMENT_STRONG)
-  - Beau Hossler top 10 finish
-  - Ben James top 10 finish
-  - Harry Hall top 10 finish
+3. **MLB / Dillon Dingler** (MLB_BATTER, score=112.25)
+   - Play: Dillon Dingler (BATTER_STRONG)
+   - Rationale: Cross-sport top pick (MLB_BATTER)
+4. **MLB / Matt Olson** (MLB_BATTER, score=103.44)
+   - Play: Matt Olson (BATTER_STRONG)
+   - Rationale: Cross-sport top pick (MLB_BATTER)
 
 ## Slate ROI Projection
-- **Picks:** 2
+- **Picks:** 1
 - **Avg edge:** -0.91%
 - **Expected ROI (1/4 Kelly):** 0.0%
 - **Expected P&L on $100:** $0.0
@@ -50,9 +41,9 @@ _Generated 2026-08-11T21:38:29 UTC_
   - Fade angle: team total UNDER
 - **NBA** / MIA (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NHL** / jake oettinger (GOALIE_FADE)
+- **NHL** / adin hill (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / marc-andre fleury (GOALIE_FADE)
+- **NHL** / filip gustavsson (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
 - **NHL** / samsonov ilya (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO

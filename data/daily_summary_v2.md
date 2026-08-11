@@ -1,13 +1,13 @@
 # EdgeStat Daily Summary — 2026-08-11
 
-## 🏥 Model Health: 67.7/100 [OK]
+## 🏥 Model Health: 68.6/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.9/100
+  - 🟢 Calibration Freshness: 100.0/100
   - 🔴 Hit Rate Trend: 0/100
   - 🟡 Brier Trend: 69.0/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 95.5/100
-  - 🔴 Edge Count: 48.6/100
+  - 🔴 Edge Count: 57.1/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.582)
@@ -20,6 +20,12 @@
 3. **TBR @ OAK YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 4. **PIT @ MIA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 5. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
+
+## 🐋 Whale Picks (Max Confluence)
+- [STRONG] **[MLB]** MIL @ SDP MIL_ML -- 66% / +21.3% (score 2.5)
+
+## 📉 Strong UNDER Signals
+- [STRONG 6.0] **BOS @ TOR** model 6.76 vs market 7.5
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -58,7 +64,7 @@
 - STEAM_MOVE: **25**
 - PEN_MISMATCH: **1**
   - CHI @ SEA (WNBA): TOTAL steam since open: ML -1.9pp toward CHI; total +2 (OVER) (4 snapshots)
-  - NY @ IND (WNBA): TOTAL steam since open: ML +1.9pp toward IND; total -2 (UNDER) (4 snapshots)
+  - NY @ IND (WNBA): TOTAL steam since open: ML +0.9pp toward IND; total -2 (UNDER) (5 snapshots)
   - PHX @ LA (WNBA): TOTAL steam since open: ML -0.9pp toward PHX; total +2 (OVER) (4 snapshots)
   - LAD @ ARI (MLB): ML/TOTAL steam since open: ML +7.7pp toward ARI; total +0.5 (OVER) (7 snapshots)
   - TOR @ GS (WNBA): TOTAL steam since open: total -1 (UNDER) (5 snapshots)
@@ -72,11 +78,12 @@
   - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
-## 🎯 Convergence Picks (4 stacked games)
-- ELITE: **2** · HIGH: 1 · MED: 1
-  - [ELITE] Toronto Tempo @ Atlanta Dream : 5 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ATS)
-  - [ELITE] Chicago Sky @ Seattle Storm : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
+## 🎯 Convergence Picks (5 stacked games)
+- ELITE: **0** · HIGH: 3 · MED: 2
+  - [HIGH] New York Liberty @ Indiana Fever : 3 signals (PREGAME, HEAT_COLD, HEAT_COLD)
+  - [HIGH] Phoenix Mercury @ Los Angeles Sparks : 3 signals (PREGAME, HEAT_COLD, ATS)
   - [HIGH] Houston Dynamo FC @ New England Revolution : 3 signals (HEAT_COLD, ATS, ATS)
+  - [MED] Washington Mystics @ Las Vegas Aces : 2 signals (PREGAME, HEAT_COLD)
   - [MED] Coventry City @ Arsenal : 2 signals (PREGAME, ATS)
 
 ## ⚾ Top MLB Pitcher K Plays (9)
@@ -92,26 +99,23 @@
   - ❄️ **Brandon Ingram** (TOR): L5 12.0 vs season 19.1 [PTS -7.1] -- FADE OVER props
 
 ## 🥊 UFC Fight Matchups (Dana White's Contender Series: Season 10, Week 1)
-  - [LEAN] **Jon Kunneman** (10-0-0) vs Joe Kropschot -- fair -185
+  - [STRONG_FAVORITE] **Jon Kunneman** (10-0-0) vs Joseph Kropschot -- fair -316
   - [LEAN] **Anthony Wint** (6-0-0) vs Matt Adams -- fair -178
   - [COIN_FLIP] **Bilal Hasan** (8-0-0) vs Mridul Saikia -- fair -126
   - [COIN_FLIP] **Abe Alsaghir** (8-0-0) vs Fabrizio Escarrega -- fair -126
   - [COIN_FLIP] **Tom Pagliarulo** (10-2-0) vs Ananias Mulumba -- fair -115
 
-## ⛳ Golf Player Heat (from Wyndham Championship)
-  - 🔥 T1 **Michael Brennan** (USA): -22 total -- finished T1, Sunday -0.5 vs tourney avg
-  - 🔥 T2 **Beau Hossler** (USA): -19 total -- finished T2
-  - 🔥 T3 **Ben James** (USA): -18 total -- finished T3, Sunday -4.5 vs tourney avg
-  - 🔥 T4 **Kevin Yu** (Chinese Taipei): -16 total -- finished T4
-  - 🔥 T5 **Harry Hall** (England): -15 total -- finished T5, Sunday -0.2 vs tourney avg
-  - ❄️ **Erik van Rooyen** (South Africa): Sunday +7.8 vs tourney avg
-  - ❄️ **Sahith Theegala** (USA): Sunday +5.5 vs tourney avg
-  - ❄️ **Nick Dunlap** (USA): Sunday +5.5 vs tourney avg
+## ⛳ Golf Player Heat (from FedEx St. Jude Championship)
+  - 🔥 T1 **Jackson Koivun** (USA): +0 total -- finished T1
+  - 🔥 T2 **Sam Stevens** (USA): +0 total -- finished T2
+  - 🔥 T3 **Pierceson Coody** (USA): +0 total -- finished T3
+  - 🔥 T4 **Harris English** (USA): +0 total -- finished T4
+  - 🔥 T5 **Maverick McNealy** (USA): +0 total -- finished T5
 
-## 🔥 MLB Batter Heat (44 HOT / 62 COLD)
+## 🔥 MLB Batter Heat (43 HOT / 61 COLD)
   - 🔥 **Freddy Fermin** (SD): L14 .350 / season .197 (+153pts)
   - 🔥 **Spencer Torkelson** (DET): L14 .377 / season .227 (+150pts)
-  - 🔥 **Zach McKinstry** (DET): L14 .357 / season .223 (+134pts)
+  - 🔥 **Zach McKinstry** (DET): L14 .368 / season .223 (+145pts)
   - 🔥 **Colt Keith** (DET): L14 .400 / season .269 (+131pts)
   - 🔥 **Royce Lewis** (MIN): L14 .364 / season .239 (+125pts)
   - ❄️ **Tristan Peters** (CWS): L14 .108 / season .265 (-157pts) -- FADE props
@@ -119,6 +123,11 @@
   - ❄️ **Nicky Lopez** (TEX): L14 .135 / season .276 (-141pts) -- FADE props
   - ❄️ **Wyatt Langford** (TEX): L14 .122 / season .259 (-137pts) -- FADE props
   - ❄️ **Brayan Rocchio** (CLE): L14 .118 / season .254 (-136pts) -- FADE props
+
+## 📈 Streak Regression Alerts (3)
+- [WNBA] New York Liberty on W4 L10 4-1 -- New York Liberty on W4 -- no historical sample
+- [WNBA] Washington Mystics on W5 L10 5-0 -- Washington Mystics on W5 -- no historical sample
+- [WNBA] Phoenix Mercury on L3 L10 1-4 -- Phoenix Mercury on L3 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**
