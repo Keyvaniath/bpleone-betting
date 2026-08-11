@@ -1,36 +1,30 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-08-10T22:37:29 UTC_
+_Generated 2026-08-11T06:00:32 UTC_
 
 ## Slate Quality
-- **Tier:** MODEST_NIGHT
-- **Score:** 22
-- **Advisory:** Light slate. Limit to 1-3 strongest plays; use 25% Kelly or less.
+- **Tier:** NO_ACTION_NIGHT
+- **Score:** -27
+- **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 17
-- **Total FADES:** 46
+- **Total STRONG:** 7
+- **Total FADES:** 55
 
 ## Top 5 Curated Picks
-1. **GOLF / Ben James** (GOLF_PLAYER, score=219.29)
+1. **GOLF / Kevin Yu** (GOLF_PLAYER, score=219.29)
+   - Play: Kevin Yu (PLAYER_STRONG)
+   - Rationale: Cross-sport top pick (GOLF_PLAYER)
+2. **GOLF / Ben James** (GOLF_PLAYER, score=219.29)
    - Play: Ben James (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Michael Brennan** (GOLF_PLAYER, score=219.29)
-   - Play: Michael Brennan (PLAYER_STRONG)
-   - Rationale: Cross-sport top pick (GOLF_PLAYER)
-3. **MLB / Matt Olson** (MLB_BATTER, score=139.81)
-   - Play: Matt Olson (BATTER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_BATTER)
-4. **MLB / Bryce Harper** (MLB_BATTER, score=113.94)
-   - Play: Bryce Harper (BATTER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_BATTER)
-5. **WNBA / allisha gray** (WNBA_PLAYER, score=62.42)
-   - Play: allisha gray (PLAYER_STRONG)
-   - Rationale: Cross-sport top pick (WNBA_PLAYER)
+3. **MLB / AWAY** (MLB_TEAM, score=75.08)
+   - Play: AWAY (TEAM_STRONG)
+   - Rationale: Cross-sport top pick (MLB_TEAM)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
-  - Ben James top 10 finish
-  - Michael Brennan top 10 finish
   - Kevin Yu top 10 finish
+  - Ben James top 10 finish
+  - Beau Hossler top 10 finish
 
 ## Slate ROI Projection
 - **Picks:** 0
@@ -43,9 +37,9 @@ _Generated 2026-08-10T22:37:29 UTC_
   - Fade angle: team total UNDER
 - **NBA** / MIA (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NHL** / filip gustavsson (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / jake oettinger (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / casey desmith (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
+- **MLB** / MacKenzie Gore (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Reid Detmers (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Sonny Gray (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES

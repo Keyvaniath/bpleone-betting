@@ -1,18 +1,18 @@
-# EdgeStat Daily Summary — 2026-08-10
+# EdgeStat Daily Summary — 2026-08-11
 
-## 🏥 Model Health: 62.5/100 [OK]
+## 🏥 Model Health: 60.7/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.6/100
+  - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 0/100
   - 🔴 Brier Trend: 44.2/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 95.5/100
+  - 🟢 Data Health: 86.4/100
   - 🔴 Edge Count: 45.7/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.58)
-- **Total games on board:** 116
-- **Strong home favorites:** 1 | **Strong road dogs:** 1
+- **Total games on board:** 114
+- **Strong home favorites:** 0 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
 1. **TBR @ OAK YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
@@ -21,8 +21,11 @@
 4. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
 5. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
 
+## 📡 Sharp Action (Line Movement)
+- [MODERATE] **COL @ ARI** under_9.5: 50.0% → 54.55% (+4.5pp)
+
 ## 📉 Strong UNDER Signals
-- [ELITE 6.5] **MIL @ SDP** model 6.84 vs market 8.5
+- [STRONG 5.3] **COL @ ARI** model 8.35 vs market 9.5
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -50,22 +53,18 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (1)
-- [WNBA] **Chicago Sky** AWAY (3-2 L10) · model 67.1% fair -204
-
 ## 🔥/❄️ Heat / Cold Signals
-- Hot teams: **5** | Cold teams: **13** | Over-heavy: 0 | Under-heavy: 4
+- Hot teams: **5** | Cold teams: **12** | Over-heavy: 0 | Under-heavy: 8
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (32)
-- RESIDUAL_DIVERGENCE: **1**
-- STEAM_MOVE: **27**
+## ⚠️ Anomaly Detector (25)
+- STEAM_MOVE: **21**
 - COMPOUND_BULLPEN: **4**
-  - Toronto Tempo (WNBA): Toronto Tempo UNDERPERFORMING expected margin by 10.2pts in recent games -- model bias may persist
-  - MIL @ LAA (MLB): ML/TOTAL steam since open: ML -15.3pp toward MIL; total -1 (UNDER) (7 snapshots)
   - CHI @ SEA (WNBA): TOTAL steam since open: ML -1.9pp toward CHI; total +2 (OVER) (4 snapshots)
   - LAD @ ARI (MLB): ML/TOTAL steam since open: ML +7.7pp toward ARI; total +0.5 (OVER) (7 snapshots)
-  - DET @ OAK (MLB): ML/TOTAL steam since open: ML +6.6pp toward OAK; total -0.5 (UNDER) (6 snapshots)
+  - TOR @ GS (WNBA): TOTAL steam since open: total -1 (UNDER) (5 snapshots)
+  - SEA @ NY (WNBA): TOTAL steam since open: total -1 (UNDER) (4 snapshots)
+  - PHX @ CHI (WNBA): TOTAL steam since open: ML -1.0pp toward PHX; total +1 (OVER) (3 snapshots)
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
@@ -112,17 +111,17 @@
   - ❄️ **Sahith Theegala** (USA): Sunday +5.5 vs tourney avg
   - ❄️ **Nick Dunlap** (USA): Sunday +5.5 vs tourney avg
 
-## 🔥 MLB Batter Heat (44 HOT / 58 COLD)
-  - 🔥 **Freddy Fermin** (SD): L14 .351 / season .194 (+157pts)
+## 🔥 MLB Batter Heat (45 HOT / 61 COLD)
+  - 🔥 **Freddy Fermin** (SD): L14 .350 / season .197 (+153pts)
   - 🔥 **Spencer Torkelson** (DET): L14 .377 / season .227 (+150pts)
-  - 🔥 **Bryson Stott** (PHI): L14 .405 / season .263 (+142pts)
   - 🔥 **Zach McKinstry** (DET): L14 .357 / season .223 (+134pts)
   - 🔥 **Colt Keith** (DET): L14 .400 / season .269 (+131pts)
+  - 🔥 **Royce Lewis** (MIN): L14 .364 / season .239 (+125pts)
   - ❄️ **Tristan Peters** (CWS): L14 .108 / season .265 (-157pts) -- FADE props
-  - ❄️ **Troy Johnston** (COL): L14 .140 / season .279 (-139pts) -- FADE props
+  - ❄️ **Carlos Cortes** (ATH): L14 .107 / season .258 (-151pts) -- FADE props
+  - ❄️ **Nicky Lopez** (TEX): L14 .135 / season .276 (-141pts) -- FADE props
+  - ❄️ **Wyatt Langford** (TEX): L14 .122 / season .259 (-137pts) -- FADE props
   - ❄️ **Brayan Rocchio** (CLE): L14 .118 / season .254 (-136pts) -- FADE props
-  - ❄️ **Tommy Edman** (LAD): L14 .148 / season .279 (-131pts) -- FADE props
-  - ❄️ **Nicky Lopez** (TEX): L14 .150 / season .278 (-128pts) -- FADE props
 
 ## 📈 Streak Regression Alerts (2)
 - [WNBA] Toronto Tempo on L5 L10 0-5 -- Toronto Tempo on L5 -- no historical sample
@@ -136,6 +135,6 @@
   - ⚠️ batter_rbis (Brier Δ -0.0052)
 
 ## 🤖 Self-Training Status
-- **WNBA**: n=40 games · hit rate 72.5% · bias -3.1pp [calibration applied]
+- **WNBA**: n=42 games · hit rate 71.4% · bias -5.3pp [calibration applied]
 - **MLS**: n=47 games · hit rate 53.2% · bias -15.0pp [calibration applied]
-- **MLB**: n=191 games · hit rate 52.9% · bias -0.5pp
+- **MLB**: n=190 games · hit rate 53.2% · bias +0.7pp
