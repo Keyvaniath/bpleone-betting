@@ -1,49 +1,42 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-08-11T22:51:24 UTC_
+_Generated 2026-08-12T06:18:07 UTC_
 
 ## Slate Quality
-- **Tier:** MODEST_NIGHT
-- **Score:** 39
-- **Advisory:** Light slate. Limit to 1-3 strongest plays; use 25% Kelly or less.
+- **Tier:** NO_ACTION_NIGHT
+- **Score:** -48
+- **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 24
-- **Total FADES:** 57
-
-## Lock of the Night
-- **Subject:** Hunter Brown
-- **Source:** ELITE_BOARD
-- **Sport:** MLB
-- **Score:** 15.0
-- **Details:** HOU @ SFG
+- **Total STRONG:** 5
+- **Total FADES:** 68
 
 ## Top 5 Curated Picks
-1. **WNBA / caitlin clark** (WNBA_PLAYER, score=159.83)
-   - Play: caitlin clark (PLAYER_STRONG)
-   - Rationale: Cross-sport top pick (WNBA_PLAYER)
-2. **WNBA / breanna stewart** (WNBA_PLAYER, score=121.58)
-   - Play: breanna stewart (PLAYER_STRONG)
-   - Rationale: Cross-sport top pick (WNBA_PLAYER)
-3. **MLB / Dillon Dingler** (MLB_BATTER, score=112.25)
-   - Play: Dillon Dingler (BATTER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_BATTER)
-4. **MLB / Matt Olson** (MLB_BATTER, score=103.44)
-   - Play: Matt Olson (BATTER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_BATTER)
+1. **MLB / AWAY** (MLB_TEAM, score=84.21)
+   - Play: AWAY (TEAM_STRONG)
+   - Rationale: Cross-sport top pick (MLB_TEAM)
+2. **MLB / HOME** (MLB_TEAM, score=80.58)
+   - Play: HOME (TEAM_STRONG)
+   - Rationale: Cross-sport top pick (MLB_TEAM)
+3. **GOLF / Scottie Scheffler** (GOLF_PLAYER, score=50.21)
+   - Play: Scottie Scheffler (PLAYER_STRONG)
+   - Rationale: Cross-sport top pick (GOLF_PLAYER)
+4. **GOLF / Rory McIlroy** (GOLF_PLAYER, score=48.07)
+   - Play: Rory McIlroy (PLAYER_STRONG)
+   - Rationale: Cross-sport top pick (GOLF_PLAYER)
 
 ## Slate ROI Projection
-- **Picks:** 1
-- **Avg edge:** -0.91%
+- **Picks:** 0
+- **Avg edge:** 0%
 - **Expected ROI (1/4 Kelly):** 0.0%
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **NBA** / TOR (TEAM_FADE)
-  - Fade angle: team total UNDER
 - **NBA** / MIA (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NHL** / adin hill (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / filip gustavsson (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / samsonov ilya (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
+- **NBA** / TOR (TEAM_FADE)
+  - Fade angle: team total UNDER
+- **MLB** / Eury Pérez (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Nolan McLean (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Bryan Woo (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
