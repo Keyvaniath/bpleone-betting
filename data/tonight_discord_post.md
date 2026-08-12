@@ -4,9 +4,12 @@ _NO_ACTION_NIGHT_ | L:0 S:4 F:55
 :lock: **LOCK:** Janson Junk (MLB)
 
 :dart: **Top Picks:**
-1. [MLB] Shane Baz -- Shane Baz (PITCHER_STRONG)
-2. [MLB] Merrill Kelly -- Merrill Kelly (PITCHER_STRONG)
+1. [WNBA] napheesa collier -- napheesa collier (PLAYER_STRONG)
+2. [WNBA] angel reese -- angel reese (PLAYER_STRONG)
 3. [GOLF] Scottie Scheffler -- Scottie Scheffler (PLAYER_STRONG)
+
+:chains: **Top Parlays:**
+- [WNBA] napheesa collier (2 legs, p=0.2789)
 
 :coin: Bankroll Advisory: STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 

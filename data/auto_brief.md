@@ -1,11 +1,11 @@
 # Tonight's Slate Brief — 2026-08-12
 
-## Slate Quality: 56/100 (MEDIUM)
-_3% lineups confirmed · 11 rookie SPs_
-**Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
+## Slate Quality: 79/100 (HIGH)
+_77% lineups confirmed · 7 rookie SPs_
+**Recommendation:** Play normal Kelly sizing.
 
 ## Slate
-- **15 games** scheduled
+- **9 games** scheduled
 - **30 best bets** scored: 0 DK · 0 PP · 14 NRFI · 0 SGP
 - **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$34.22
 - **MC simulation:** EV +$122.9, 82% P(profit), p05 $-102.07 / p95 $336.75
@@ -33,6 +33,9 @@ _3% lineups confirmed · 11 rookie SPs_
    - Edge +23.1% looks big but only 0 settled props on this player — model unproven
 - **TEX @ LAA YRFI (1st-inning OVER 0.5)** (low):
    - Edge +21.9% looks big but only 0 settled props on this player — model unproven
+
+## Hot streaks
+**Batters heating up:** Josh Bell (heat +1.07), Royce Lewis (heat +0.24), Brooks Lee (heat +0.22)
 
 ## Bullpens GASSED tonight
 Athletics, San Diego Padres, San Francisco Giants, St. Louis Cardinals, Toronto Blue Jays, Atlanta Braves, Los Angeles Angels, Arizona Diamondbacks
@@ -63,13 +66,13 @@ _Lean late-inning OVER on these games; fade their save situations._
 - Samsung Lions @ KIA Tigers | P(home) 57.8% fair -137 | total 9 R
 - **KBO POD:** SSG Landers ML vs Lotte Giants (KBO) (HIGH)
 
-## LoL Esports -- 0 live, 13 upcoming
-- [LCK Challengers] HLE Challengers vs BRO Challengers BO3 | P(A) 45.6% fair +119/-119
-- [NLC] VES vs Rich Gang BO3 | P(A) 52.6% fair -111/+111
-- [NLC] Lund Esports Organization vs Epic Avalanche BO3 | P(A) 50.6% fair -102/+102
-- [NLC] DMG Esports vs Absolved BO3 | P(A) 46.2% fair +116/-116
+## LoL Esports -- 1 live, 25 upcoming
 - [NACL] Ole Miss Esports vs Cupid Esports BO3 | P(A) 47.3% fair +111/-111
-- **LoL POT:** BILIBILI GAMING 2-0 SWEEP vs THUNDER TALK GAMING (LPL) (HIGH)
+- [LCK Challengers] HLE Challengers vs BRO Challengers BO3 | P(A) 45.6% fair +119/-119
+- [NACL] Conviction vs CCG Esports BO3 | P(A) 51.2% fair -105/+105
+- [LCK Challengers] Gen.G Global Academy vs KRX Challengers BO3 | P(A) 37.3% fair +168/-168
+- [LCK Challengers] kt Challengers vs NS Challengers BO3 | P(A) 53.4% fair -115/+115
+- **LoL POT:** LGD GAMING ML vs EDWARD GAMING (LPL, BO3) (HIGH)
 
 ## Player Play of the Day -- across all sports (3486 candidates scanned)
 - **[LOL]** Inspired UNDER 3.5 Kills | model 61.7% fair -161 (ELITE)
