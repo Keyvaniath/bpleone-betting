@@ -1,8 +1,8 @@
 # Tonight's Slate Brief — 2026-08-12
 
-## Slate Quality: 54/100 (LOW)
-_0% lineups confirmed · 11 rookie SPs_
-**Recommendation:** Defensive sizing tonight; stick to highest-confidence plays.
+## Slate Quality: 56/100 (MEDIUM)
+_3% lineups confirmed · 11 rookie SPs_
+**Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
 - **15 games** scheduled
@@ -33,13 +33,6 @@ _0% lineups confirmed · 11 rookie SPs_
    - Edge +23.1% looks big but only 0 settled props on this player — model unproven
 - **TEX @ LAA YRFI (1st-inning OVER 0.5)** (low):
    - Edge +21.9% looks big but only 0 settled props on this player — model unproven
-
-## Weather leans
-- **OVER lean** (wind out + warm): PHI @ STL
-
-## Hot streaks
-**Batters heating up:** Jackson Merrill (heat +2.18), Pete Alonso (heat +1.73), Angel Martinez (heat +0.66)
-**Pitchers on a run:** Kyle Leahy (heat +6.39), Merrill Kelly (heat +2.00), Zack Wheeler (heat -2.68)
 
 ## Bullpens GASSED tonight
 Athletics, San Diego Padres, San Francisco Giants, St. Louis Cardinals, Toronto Blue Jays, Atlanta Braves, Los Angeles Angels, Arizona Diamondbacks
@@ -78,7 +71,7 @@ _Lean late-inning OVER on these games; fade their save situations._
 - [NACL] Ole Miss Esports vs Cupid Esports BO3 | P(A) 47.3% fair +111/-111
 - **LoL POT:** BILIBILI GAMING 2-0 SWEEP vs THUNDER TALK GAMING (LPL) (HIGH)
 
-## Player Play of the Day -- across all sports (3483 candidates scanned)
+## Player Play of the Day -- across all sports (3486 candidates scanned)
 - **[LOL]** Inspired UNDER 3.5 Kills | model 61.7% fair -161 (ELITE)
 - **[LOL]** ShowMaker OVER 3.5 Kills | model 62.5% fair -167 (ELITE)
 - **[LOL]** Peyz OVER 4.5 Kills | model 61.3% fair -158 (ELITE)

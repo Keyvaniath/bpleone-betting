@@ -1,13 +1,13 @@
 # EdgeStat Daily Summary — 2026-08-12
 
-## 🏥 Model Health: 72.6/100 [HEALTHY]
-- Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 99.9/100
+## 🏥 Model Health: 66.2/100 [OK]
+- Operational but room to improve - check yellow components
+  - 🟢 Calibration Freshness: 99.7/100
   - 🔴 Hit Rate Trend: 0/100
-  - 🟡 Brier Trend: 69.0/100
+  - 🔴 Brier Trend: 50.2/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 100.0/100
-  - 🟢 Edge Count: 88.6/100
+  - 🟢 Data Health: 95.5/100
+  - 🟡 Edge Count: 71.4/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.595)
@@ -21,11 +21,8 @@
 4. **COL @ ARI YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 5. **TEX @ LAA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 
-## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** TEX @ LAA TEX_ML -- 71% / +22.6% (score 2.5)
-
-## 📡 Sharp Action (Line Movement)
-- [STRONG] **TBR @ OAK** ml_away: 60.78% → 67.11% (+6.3pp)
+## 📉 Strong UNDER Signals
+- [ELITE 7.2] **BOS @ TOR** model 7.13 vs market 8.5
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -60,11 +57,9 @@
 - Hot teams: **3** | Cold teams: **12** | Over-heavy: 0 | Under-heavy: 4
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (30)
+## ⚠️ Anomaly Detector (28)
 - RESIDUAL_DIVERGENCE: **7**
 - STEAM_MOVE: **21**
-- COMPOUND_BULLPEN: **1**
-- PEN_MISMATCH: **1**
   - Red Bull New York (MLS): Red Bull New York OUTPERFORMING expected margin by 9.0pts in recent games -- model bias may persist
   - CF Montréal (MLS): CF Montréal OUTPERFORMING expected margin by 11.9pts in recent games -- model bias may persist
   - Charlotte FC (MLS): Charlotte FC UNDERPERFORMING expected margin by 8.9pts in recent games -- model bias may persist

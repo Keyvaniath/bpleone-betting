@@ -1,5 +1,5 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-08-12T14:16:28 UTC_
+_Generated 2026-08-12T15:18:26 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
@@ -31,19 +31,19 @@ _Generated 2026-08-12T14:16:28 UTC_
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
 
 ## Slate ROI Projection
-- **Picks:** 1
+- **Picks:** 2
 - **Avg edge:** -0.91%
 - **Expected ROI (1/4 Kelly):** 0.0%
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **NBA** / TOR (TEAM_FADE)
-  - Fade angle: team total UNDER
 - **NBA** / MIA (TEAM_FADE)
   - Fade angle: team total UNDER
+- **NBA** / TOR (TEAM_FADE)
+  - Fade angle: team total UNDER
+- **NHL** / adin hill (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
 - **NHL** / logan thompson_2 (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / stuart skinner (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / joseph woll (GOALIE_FADE)
+- **NHL** / samsonov ilya (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
