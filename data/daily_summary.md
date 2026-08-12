@@ -4,31 +4,28 @@
 
 _Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
 
-_Generated at 2026-08-12T21:42:01 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-08-12T22:51:25 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
-**CHC @ WSN - OVER_8.5**
+**TEX @ LAA - OVER_8.5**
 - Market: -110
-- Model probability: 84.6%
-- Raw edge: +61.56%
+- Model probability: 80.1%
+- Raw edge: +52.97%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
 
-## Full Slate (9 games)
+## Full Slate (6 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 6:40p ET | CLE @ DET | Comerica Park | 72F 9mph | DET_ML +40.03% |
-| 6:40p ET | PIT @ MIA | loanDepot park | indoor | OVER_7.5 +31.77% |
-| 6:45p ET | CHC @ WSN | Nationals Park | 77F 5mph | OVER_8.5 +61.56% |
-| 7:05p ET | SEA @ NYY | Yankee Stadium | 74F 6mph | NYY_ML +11.96% |
+| 7:05p ET | SEA @ NYY | Yankee Stadium | 75F 6mph | NYY_ML +12.01% |
 | 7:07p ET | BOS @ TOR | Rogers Centre | indoor | UNDER_8.0 +23.34% |
-| 7:15p ET | NYM @ ATL | Truist Park | 78F 4mph | OVER_8.5 +2.77% |
-| 7:40p ET | CIN @ CHW | Rate Field | 73F 3mph | OVER_8.5 +27.28% |
-| 10:10p ET | KCR @ LAD | UNIQLO Field at Dodger Stadium | 67F 3mph | KCR_ML +31.67% |
-| 10:10p ET | TEX @ LAA | Angel Stadium | 69F 4mph | OVER_8.5 +49.83% |
+| 7:15p ET | NYM @ ATL | Truist Park | 79F 4mph | OVER_8.5 +3.54% |
+| 7:40p ET | CIN @ CHW | Rate Field | 73F 4mph | OVER_8.5 +28.95% |
+| 10:10p ET | KCR @ LAD | UNIQLO Field at Dodger Stadium | 68F 3mph | KCR_ML +40.73% |
+| 10:10p ET | TEX @ LAA | Angel Stadium | 69F 4mph | OVER_8.5 +52.97% |
 
 ## Parlays - top 5
 
@@ -64,14 +61,14 @@ Cumulative graded plays: 8215. Wins: 3238. Hit rate: 39.4%.
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
 | BOS @ TOR | 47.4% | +111 | 3.73 | +476 | -476 |
-| CHC @ WSN | 43.5% | +130 | 4.28 | +174 | -174 |
-| CIN @ CHW | 30.0% | +233 | 6.15 | +114 | -114 |
-| CLE @ DET | 37.6% | +166 | 4.82 | -126 | +126 |
+| CHC @ WSN | 43.5% | +130 | 4.16 | -- | -- |
+| CIN @ CHW | 30.0% | +233 | 6.18 | +114 | -114 |
+| CLE @ DET | 37.6% | +166 | 4.89 | -- | -- |
 | KCR @ LAD | 30.2% | +231 | 6.06 | +151 | -151 |
-| NYM @ ATL | 47.2% | +112 | 3.85 | +103 | -103 |
-| PIT @ MIA | 45.3% | +121 | 3.96 | +219 | -219 |
-| SEA @ NYY | 29.4% | +240 | 6.2 | -115 | +115 |
-| TEX @ LAA | 32.1% | +211 | 5.84 | +654 | -654 |
+| NYM @ ATL | 47.2% | +112 | 3.84 | +103 | -103 |
+| PIT @ MIA | 45.3% | +121 | 3.96 | -- | -- |
+| SEA @ NYY | 29.4% | +240 | 6.25 | -115 | +115 |
+| TEX @ LAA | 32.1% | +211 | 5.81 | +660 | -660 |
 
 ## Team Form (last 10)
 

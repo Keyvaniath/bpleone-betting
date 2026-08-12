@@ -1,15 +1,16 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:4 F:55
+_NO_ACTION_NIGHT_ | L:0 S:18 F:54
 
-:lock: **LOCK:** Janson Junk (MLB)
+:lock: **LOCK:** Luis Castillo (MLB)
 
 :dart: **Top Picks:**
-1. [WNBA] napheesa collier -- napheesa collier (PLAYER_STRONG)
-2. [WNBA] angel reese -- angel reese (PLAYER_STRONG)
-3. [GOLF] Scottie Scheffler -- Scottie Scheffler (PLAYER_STRONG)
+1. [MLB] Matt Olson -- Matt Olson (BATTER_STRONG)
+2. [WNBA] napheesa collier -- napheesa collier (PLAYER_STRONG)
+3. [MLB] Pete Crow-Armstrong -- Pete Crow-Armstrong (BATTER_STRONG)
 
 :chains: **Top Parlays:**
-- [WNBA] napheesa collier (2 legs, p=0.2789)
+- [MLB] Matt Olson (3 legs, p=0.4088)
+- [MLB] Wilyer Abreu (2 legs, p=0.3924)
 
 :coin: Bankroll Advisory: STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 
