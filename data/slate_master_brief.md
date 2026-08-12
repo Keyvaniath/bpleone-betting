@@ -1,21 +1,28 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-08-12T06:18:07 UTC_
+_Generated 2026-08-12T14:16:28 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -48
+- **Score:** -39
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 5
-- **Total FADES:** 68
+- **Total STRONG:** 4
+- **Total FADES:** 55
+
+## Lock of the Night
+- **Subject:** Janson Junk
+- **Source:** ELITE_BOARD
+- **Sport:** MLB
+- **Score:** 15.0
+- **Details:** PIT @ MIA
 
 ## Top 5 Curated Picks
-1. **MLB / AWAY** (MLB_TEAM, score=84.21)
-   - Play: AWAY (TEAM_STRONG)
-   - Rationale: Cross-sport top pick (MLB_TEAM)
-2. **MLB / HOME** (MLB_TEAM, score=80.58)
-   - Play: HOME (TEAM_STRONG)
-   - Rationale: Cross-sport top pick (MLB_TEAM)
+1. **MLB / Shane Baz** (MLB_PITCHER, score=58.42)
+   - Play: Shane Baz (PITCHER_STRONG)
+   - Rationale: Cross-sport top pick (MLB_PITCHER)
+2. **MLB / Merrill Kelly** (MLB_PITCHER, score=56.67)
+   - Play: Merrill Kelly (PITCHER_STRONG)
+   - Rationale: Cross-sport top pick (MLB_PITCHER)
 3. **GOLF / Scottie Scheffler** (GOLF_PLAYER, score=50.21)
    - Play: Scottie Scheffler (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
@@ -24,19 +31,19 @@ _Generated 2026-08-12T06:18:07 UTC_
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
 
 ## Slate ROI Projection
-- **Picks:** 0
-- **Avg edge:** 0%
+- **Picks:** 1
+- **Avg edge:** -0.91%
 - **Expected ROI (1/4 Kelly):** 0.0%
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **NBA** / MIA (TEAM_FADE)
-  - Fade angle: team total UNDER
 - **NBA** / TOR (TEAM_FADE)
   - Fade angle: team total UNDER
-- **MLB** / Eury Pérez (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **MLB** / Nolan McLean (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **MLB** / Bryan Woo (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **NBA** / MIA (TEAM_FADE)
+  - Fade angle: team total UNDER
+- **NHL** / logan thompson_2 (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / stuart skinner (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / joseph woll (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
