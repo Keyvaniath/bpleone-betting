@@ -1,28 +1,28 @@
 # EdgeStat Daily Summary — 2026-08-13
 
-## 🏥 Model Health: 63.8/100 [OK]
+## 🏥 Model Health: 65.0/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.7/100
+  - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 0/100
   - 🔴 Brier Trend: 48.0/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 95.5/100
-  - 🔴 Edge Count: 51.4/100
+  - 🟡 Edge Count: 62.9/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.591)
-- **Total games on board:** 141
-- **Strong home favorites:** 10 | **Strong road dogs:** 1
+- **Total games on board:** 144
+- **Strong home favorites:** 12 | **Strong road dogs:** 2
 
 ## 🎯 Top 5 Best Bets
 1. **CIN @ CHW YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 2. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
 3. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
 4. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
-5. **GOLF Sepp Straka TOP5 @ 591 (FedEx St. Jude Championship)** (78/100 ★★★★★)
+5. **GOLF Viktor Hovland TOP5 @ 558 (FedEx St. Jude Championship)** (78/100 ★★★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** BOS @ TOR BOS_ML -- 76% / +22.4% (score 2.5)
+- [STRONG] **[MLB]** SEA @ NYY NYY_ML -- 66% / +26.6% (score 2.5)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -50,30 +50,31 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (1)
+## ⚡ Pre-Game HIGH Conviction (2)
 - [MLS] **Orlando City SC** HOME (1-1 L10) · model 74.0% fair -284
+- [WNBA] **Atlanta Dream** AWAY (3-2 L10) · model 72.3% fair -261
 
 ## 🔥/❄️ Heat / Cold Signals
 - Hot teams: **3** | Cold teams: **1** | Over-heavy: 0 | Under-heavy: 5
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (27)
-- STEAM_MOVE: **24**
+## ⚠️ Anomaly Detector (31)
+- STEAM_MOVE: **28**
 - COMPOUND_BULLPEN: **3**
   - CHI @ SEA (WNBA): TOTAL steam since open: ML -1.9pp toward CHI; total +2 (OVER) (4 snapshots)
   - NY @ IND (WNBA): TOTAL steam since open: ML +0.9pp toward IND; total -2 (UNDER) (5 snapshots)
   - PHX @ LA (WNBA): TOTAL steam since open: ML -0.9pp toward PHX; total +2 (OVER) (4 snapshots)
+  - ATL @ CON (WNBA): TOTAL steam since open: ML +0.4pp toward CON; total -2 (UNDER) (3 snapshots)
   - LAD @ ARI (MLB): ML/TOTAL steam since open: ML +7.7pp toward ARI; total +0.5 (OVER) (7 snapshots)
-  - TBR @ OAK (MLB): ML/TOTAL steam since open: ML -6.2pp toward TBR; total -1 (UNDER) (5 snapshots)
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$330.0** (33.0% of $1000 bankroll)
-- Expected EV: **$-4.49**
+- Expected EV: **$-4.51**
   - #1 [NRFI] $50 on CIN @ CHW YRFI (1st-inning OVER 0.5) (P=73%)
   - #2 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #3 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
   - #4 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
-  - #5 [GOLF] $35 on GOLF Sepp Straka TOP5 @ 591 (FedEx St. Jude Championship) (P=14%)
+  - #5 [GOLF] $35 on GOLF Viktor Hovland TOP5 @ 558 (FedEx St. Jude Championship) (P=15%)
 
 ## 🎯 Convergence Picks (6 stacked games)
 - ELITE: **1** · HIGH: 1 · MED: 4
@@ -103,21 +104,21 @@
   - [LEAN] **Joel Álvarez** (23-4-0) vs Chidi Njokuani -- fair -134
 
 ## ⛳ Golf Player Heat (from FedEx St. Jude Championship)
-  - 🔥 T1 **Pierceson Coody** (USA): -4 total -- finished T1
+  - 🔥 T1 **Harris English** (USA): -4 total -- finished T1
   - 🔥 T2 **Tommy Fleetwood** (England): -4 total -- finished T2
-  - 🔥 T3 **Harris English** (USA): -2 total -- finished T3
-  - 🔥 T4 **Maverick McNealy** (USA): -1 total -- finished T4
-  - 🔥 T5 **Nico Echavarria** (Colombia): -1 total -- finished T5
+  - 🔥 T3 **Kurt Kitayama** (USA): -3 total -- finished T3
+  - 🔥 T4 **Gary Woodland** (USA): -2 total -- finished T4
+  - 🔥 T5 **Sam Stevens** (USA): -1 total -- finished T5
 
-## 🔥 MLB Batter Heat (47 HOT / 54 COLD)
-  - 🔥 **Spencer Torkelson** (DET): L14 .375 / season .229 (+146pts)
+## 🔥 MLB Batter Heat (44 HOT / 56 COLD)
+  - 🔥 **Spencer Torkelson** (DET): L14 .375 / season .232 (+143pts)
   - 🔥 **Freddy Fermin** (SD): L14 .333 / season .194 (+139pts)
   - 🔥 **Royce Lewis** (MIN): L14 .379 / season .245 (+134pts)
-  - 🔥 **Zach McKinstry** (DET): L14 .357 / season .223 (+134pts)
   - 🔥 **Cam Smith** (HOU): L14 .354 / season .224 (+130pts)
+  - 🔥 **Jacob Young** (WSH): L14 .368 / season .248 (+120pts)
   - ❄️ **Nicky Lopez** (TEX): L14 .108 / season .269 (-161pts) -- FADE props
   - ❄️ **Carlos Cortes** (ATH): L14 .097 / season .258 (-161pts) -- FADE props
-  - ❄️ **Tristan Peters** (CWS): L14 .114 / season .264 (-150pts) -- FADE props
+  - ❄️ **Tristan Peters** (CWS): L14 .114 / season .263 (-149pts) -- FADE props
   - ❄️ **Wyatt Langford** (TEX): L14 .109 / season .253 (-144pts) -- FADE props
   - ❄️ **Trevor Larnach** (MIN): L14 .130 / season .270 (-140pts) -- FADE props
 

@@ -1,13 +1,13 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-08-13T15:02:40 UTC_
+_Generated 2026-08-13T21:44:59 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -48
+- **Score:** -59
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 9
-- **Total FADES:** 84
+- **Total STRONG:** 8
+- **Total FADES:** 91
 
 ## Lock of the Night
 - **Subject:** Aaron Nola
@@ -17,39 +17,39 @@ _Generated 2026-08-13T15:02:40 UTC_
 - **Details:** PHI @ MIN
 
 ## Top 5 Curated Picks
-1. **GOLF / Tommy Fleetwood** (GOLF_PLAYER, score=152.29)
+1. **GOLF / Tommy Fleetwood** (GOLF_PLAYER, score=147.43)
    - Play: Tommy Fleetwood (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Pierceson Coody** (GOLF_PLAYER, score=131.79)
-   - Play: Pierceson Coody (PLAYER_STRONG)
+2. **GOLF / Harris English** (GOLF_PLAYER, score=127.64)
+   - Play: Harris English (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-3. **MLB / Griffin Conine** (MLB_BATTER, score=85.62)
-   - Play: Griffin Conine (BATTER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_BATTER)
-4. **MLB / Eduardo Valencia** (MLB_BATTER, score=84.12)
-   - Play: Eduardo Valencia (BATTER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_BATTER)
+3. **WNBA / breanna stewart** (WNBA_PLAYER, score=112.0)
+   - Play: breanna stewart (PLAYER_STRONG)
+   - Rationale: Cross-sport top pick (WNBA_PLAYER)
+4. **WNBA / a'ja wilson** (WNBA_PLAYER, score=63.0)
+   - Play: a'ja wilson (PLAYER_STRONG)
+   - Rationale: Cross-sport top pick (WNBA_PLAYER)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
   - Tommy Fleetwood top 10 finish
-  - Pierceson Coody top 10 finish
-  - Scottie Scheffler top 10 finish
+  - Harris English top 10 finish
+  - Kurt Kitayama top 10 finish
 
 ## Slate ROI Projection
-- **Picks:** 2
+- **Picks:** 1
 - **Avg edge:** -0.91%
 - **Expected ROI (1/4 Kelly):** 0.0%
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **NBA** / TOR (TEAM_FADE)
-  - Fade angle: team total UNDER
 - **NBA** / MIA (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NHL** / samsonov ilya (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / adin hill (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / casey desmith (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
+- **NBA** / TOR (TEAM_FADE)
+  - Fade angle: team total UNDER
+- **MLB** / Parker Messick (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Braxton Ashcraft (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Keider Montero (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
