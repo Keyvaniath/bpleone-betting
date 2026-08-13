@@ -1,33 +1,33 @@
 {
-  "generated_at": "2026-08-13T07:56:55",
+  "generated_at": "2026-08-13T09:35:31",
   "stake_assumption": "1u flat per pick",
   "total_picks": 10000,
-  "n_settled": 8245,
-  "n_pending": 458,
+  "n_settled": 8246,
+  "n_pending": 457,
   "n_void": 1297,
   "wins": 3244,
-  "losses": 4994,
+  "losses": 4995,
   "pushes": 7,
-  "hit_rate": 0.3938,
-  "net_units": -1443.193,
-  "roi_pct": -17.52,
+  "hit_rate": 0.3937,
+  "net_units": -1444.193,
+  "roi_pct": -17.53,
   "n_calibrated_picks": 9601,
   "calibrated_reliability": {
-    "n": 8138,
-    "ece_raw": 0.0896,
-    "ece_calibrated": 0.0144,
-    "brier_raw": 0.21002,
-    "brier_calibrated": 0.19312,
+    "n": 8139,
+    "ece_raw": 0.0897,
+    "ece_calibrated": 0.0145,
+    "brier_raw": 0.21005,
+    "brier_calibrated": 0.19314,
     "note": "In-sample over the settled ledger (the isotonic transform is fit on these same outcomes); held-out 70/30 validation is in recalibration_map.json. p_predicted = raw model prob (kept untouched for the learning loop); p_calibrated = honest prob stamped per pick. Lower ECE/Brier on the calibrated column = the displayed % is truer."
   },
   "curated": {
-    "n_settled": 1079,
+    "n_settled": 1080,
     "wins": 791,
-    "losses": 281,
+    "losses": 282,
     "pushes": 7,
-    "hit_rate": 0.7379,
-    "net_units": 185.006,
-    "roi_pct": 17.26,
+    "hit_rate": 0.7372,
+    "net_units": 184.006,
+    "roi_pct": 17.15,
     "sources": [
       "consensus_hit_elite",
       "consensus_hit_strong",
@@ -41,14 +41,14 @@
     "definition": "Featured/recommended plays only -- Lock of the Day, Top 25, Whale, Sharp, Consensus (hit), Under Alerts, POD. Excludes the experimental prop feeds, which are tracked to train the model, not bet.",
     "last_30": {
       "wins": 49,
-      "losses": 50,
-      "net_units": -5.18,
-      "roi_pct": -5.23,
-      "hit_rate": 0.4949
+      "losses": 51,
+      "net_units": -6.18,
+      "roi_pct": -6.18,
+      "hit_rate": 0.49
     }
   },
   "n_added_this_run": 0,
-  "n_newly_settled_this_run": 0,
+  "n_newly_settled_this_run": 1,
   "n_resettled_this_run": 0,
   "n_voided_this_run": 0,
   "n_duplicates_collapsed_this_run": 0,
@@ -300,13 +300,13 @@
       "roi_pct": 62.35
     },
     "sharp_strong": {
-      "n": 18,
+      "n": 19,
       "wins": 9,
-      "losses": 9,
+      "losses": 10,
       "pushes": 0,
-      "net_units": -0.81,
-      "hit_rate": 0.5,
-      "roi_pct": -4.5
+      "net_units": -1.81,
+      "hit_rate": 0.4737,
+      "roi_pct": -9.53
     },
     "mlb_run_to_score_run_yes": {
       "n": 12,
@@ -1836,12 +1836,12 @@
       "hit_rate": 0.8333
     },
     "ml_away": {
-      "n": 76,
+      "n": 77,
       "wins": 44,
-      "losses": 32,
+      "losses": 33,
       "pushes": 0,
-      "net_units": 8.228,
-      "hit_rate": 0.5789
+      "net_units": 7.228,
+      "hit_rate": 0.5714
     },
     "to_score_run_yes": {
       "n": 12,
@@ -2278,12 +2278,12 @@
       "hit_rate": 1.0
     },
     "ml_away": {
-      "n": 76,
+      "n": 77,
       "wins": 44,
-      "losses": 32,
+      "losses": 33,
       "pushes": 0,
-      "net_units": 8.228,
-      "hit_rate": 0.5789
+      "net_units": 7.228,
+      "hit_rate": 0.5714
     },
     "mlb_hrr_3.5_under": {
       "n": 600,
@@ -2537,15 +2537,15 @@
   "by_sport": {
     "MLB": {
       "n": 7236,
-      "settled": 6093,
+      "settled": 6094,
       "wins": 1873,
-      "losses": 4213,
+      "losses": 4214,
       "pushes": 7,
-      "pending": 249,
+      "pending": 248,
       "void": 894,
-      "net_units": -1612.843,
-      "hit_rate": 0.3078,
-      "roi_pct": -26.5,
+      "net_units": -1613.843,
+      "hit_rate": 0.3077,
+      "roi_pct": -26.51,
       "markets": 33
     },
     "UFC": {
@@ -2720,9 +2720,9 @@
   },
   "last_7_days": {
     "wins": 195,
-    "losses": 465,
-    "net_units": -184.743,
-    "hit_rate": 0.2955
+    "losses": 466,
+    "net_units": -185.743,
+    "hit_rate": 0.295
   },
   "note": "Unified pick ledger -- records every pick the model surfaces (top_25 board, whales, consensus, unders, sharp action, locks, POD) and settles each against actual outcomes. Per-source W-L feeds back into calibration so the model learns which modules are reliable. THIS is the training signal."
 }
