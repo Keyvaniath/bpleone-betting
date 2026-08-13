@@ -1,12 +1,12 @@
 # Tonight's Slate Brief — 2026-08-13
 
-## Slate Quality: 59/100 (MEDIUM)
-_11% lineups confirmed · 9 rookie SPs_
+## Slate Quality: 65/100 (MEDIUM)
+_33% lineups confirmed · 9 rookie SPs_
 **Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
 - **9 games** scheduled
-- **23 best bets** scored: 0 DK · 0 PP · 7 NRFI · 0 SGP
+- **27 best bets** scored: 0 DK · 0 PP · 7 NRFI · 0 SGP
 - **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$30.41
 - **MC simulation:** EV +$46.83, 71% P(profit), p05 $-114.06 / p95 $191.95
 
@@ -22,8 +22,8 @@ _11% lineups confirmed · 9 rookie SPs_
 4. **LOL Peyz OVER 4.5 Kills**  (78/100 ****, edge —)
    - Player prop quality score 1.184
    - Elite player
-5. **BOS @ TOR YRFI (1st-inning OVER 0.5)**  (77/100 ****, edge +17.5%)
-   - P(YRFI) 63.5% vs baseline 46.0%
+5. **GOLF Sepp Straka TOP5 @ 591 (FedEx St. Jude Championship)**  (78/100 *****, edge —)
+   - P(top 5) 14.5% -- lower variance than outright but compelling line.
 
 ## ⚠️ Trap Warnings — 5 flagged
 - **CIN @ CHW YRFI (1st-inning OVER 0.5)** (low):
@@ -38,8 +38,7 @@ _11% lineups confirmed · 9 rookie SPs_
    - Edge +10.6% looks big but only 0 settled props on this player — model unproven
 
 ## Hot streaks
-**Batters heating up:** Alex Bregman (heat +5.08), Chase Meidroth (heat +4.49), Ian Happ (heat +1.26)
-**Pitchers on a run:** Payton Tolle (heat +11.42), Max Fried (heat +3.09), Taj Bradley (heat +1.66)
+**Batters heating up:** Spencer Torkelson (heat -0.20)
 
 ## Bullpens GASSED tonight
 Athletics, Pittsburgh Pirates, San Diego Padres, St. Louis Cardinals, Minnesota Twins, Atlanta Braves, New York Yankees, Arizona Diamondbacks
@@ -49,8 +48,10 @@ _Lean late-inning OVER on these games; fade their save situations._
 - **YRFI** (1st-inning OVER): CIN @ CHW, BOS @ TOR, MIL @ LAD, PHI @ MIN, PIT @ MIA
 
 ## Golf -- FedEx St. Jude Championship
-- **Leader:** Jackson Koivun (E) at #1
-- **Field:** 69 players  |  Status: Scheduled
+- **Leader:** Pierceson Coody (-4) at #1
+- **Field:** 69 players  |  Status: In Progress
+- **Play of the Tournament:** Sepp Straka TOP5 @ +591 (model 14.5%, HIGH)
+   - P(top 5) 14.5% -- lower variance than outright but compelling line.
 
 ## NBA -- PRESEASON
 - Miami Heat @ Toronto Raptors (0-0 vs 0-0)  | P(home) 55.0% fair -122 | Scheduled
@@ -70,13 +71,13 @@ _Lean late-inning OVER on these games; fade their save situations._
 - Kiwoom Heroes @ KT Wiz | P(home) 66.2% fair -196 | total 9 R
 - **KBO POD:** LG Twins ML vs SSG Landers (KBO) (HIGH)
 
-## LoL Esports -- 0 live, 24 upcoming
+## LoL Esports -- 0 live, 27 upcoming
 - [NACL] Maryville University vs Winthrop University BO3 | P(A) 51.0% fair -104/+104
 - [NACL] Ole Miss Esports vs Dorado Gaming BO3 | P(A) 44.5% fair +125/-125
 - [LCK Challengers] T1 Esports Academy vs DK Challengers BO3 | P(A) 57.2% fair -134/+134
 - [NACL] NRG vs Contingent Esports BO3 | P(A) 66.1% fair -195/+195
 - [LCK Challengers] BNK FEARX Youth vs BRO Challengers BO3 | P(A) 56.7% fair -131/+131
-- **LoL POT:** LGD GAMING ML vs EDWARD GAMING (LPL, BO3) (HIGH)
+- **LoL POT:** Shopify Rebellion ML vs Dignitas (LCS, BO3) (HIGH)
 
 ## Player Play of the Day -- across all sports (3489 candidates scanned)
 - **[LOL]** Inspired UNDER 3.5 Kills | model 61.7% fair -161 (ELITE)

@@ -1,13 +1,13 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-08-13T14:16:09 UTC_
+_Generated 2026-08-13T15:02:40 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -42
+- **Score:** -48
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 4
-- **Total FADES:** 58
+- **Total STRONG:** 9
+- **Total FADES:** 84
 
 ## Lock of the Night
 - **Subject:** Aaron Nola
@@ -17,21 +17,27 @@ _Generated 2026-08-13T14:16:09 UTC_
 - **Details:** PHI @ MIN
 
 ## Top 5 Curated Picks
-1. **MLB / Logan Gilbert** (MLB_PITCHER, score=59.58)
-   - Play: Logan Gilbert (PITCHER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_PITCHER)
-2. **MLB / Parker Messick** (MLB_PITCHER, score=57.92)
-   - Play: Parker Messick (PITCHER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_PITCHER)
-3. **GOLF / Scottie Scheffler** (GOLF_PLAYER, score=50.21)
-   - Play: Scottie Scheffler (PLAYER_STRONG)
+1. **GOLF / Tommy Fleetwood** (GOLF_PLAYER, score=152.29)
+   - Play: Tommy Fleetwood (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-4. **GOLF / Rory McIlroy** (GOLF_PLAYER, score=48.07)
-   - Play: Rory McIlroy (PLAYER_STRONG)
+2. **GOLF / Pierceson Coody** (GOLF_PLAYER, score=131.79)
+   - Play: Pierceson Coody (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
+3. **MLB / Griffin Conine** (MLB_BATTER, score=85.62)
+   - Play: Griffin Conine (BATTER_STRONG)
+   - Rationale: Cross-sport top pick (MLB_BATTER)
+4. **MLB / Eduardo Valencia** (MLB_BATTER, score=84.12)
+   - Play: Eduardo Valencia (BATTER_STRONG)
+   - Rationale: Cross-sport top pick (MLB_BATTER)
+
+## Top Events Board
+- **GOLF** / ? (TOURNAMENT_STRONG)
+  - Tommy Fleetwood top 10 finish
+  - Pierceson Coody top 10 finish
+  - Scottie Scheffler top 10 finish
 
 ## Slate ROI Projection
-- **Picks:** 1
+- **Picks:** 2
 - **Avg edge:** -0.91%
 - **Expected ROI (1/4 Kelly):** 0.0%
 - **Expected P&L on $100:** $0.0
@@ -41,9 +47,9 @@ _Generated 2026-08-13T14:16:09 UTC_
   - Fade angle: team total UNDER
 - **NBA** / MIA (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NHL** / connor hellebuyck (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
 - **NHL** / samsonov ilya (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / anthony stolarz (GOALIE_FADE)
+- **NHL** / adin hill (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / casey desmith (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO

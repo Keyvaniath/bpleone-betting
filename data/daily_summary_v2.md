@@ -1,13 +1,13 @@
 # EdgeStat Daily Summary — 2026-08-13
 
-## 🏥 Model Health: 68.1/100 [OK]
+## 🏥 Model Health: 63.8/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.9/100
+  - 🟢 Calibration Freshness: 99.7/100
   - 🔴 Hit Rate Trend: 0/100
-  - 🔴 Brier Trend: 49.3/100
+  - 🔴 Brier Trend: 48.0/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 100.0/100
-  - 🟢 Edge Count: 82.9/100
+  - 🟢 Data Health: 95.5/100
+  - 🔴 Edge Count: 51.4/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.591)
@@ -19,10 +19,10 @@
 2. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
 3. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
 4. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
-5. **BOS @ TOR YRFI (1st-inning OVER 0.5)** (77/100 ★★★★)
+5. **GOLF Sepp Straka TOP5 @ 591 (FedEx St. Jude Championship)** (78/100 ★★★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** BOS @ TOR BOS_ML -- 76% / +21.3% (score 2.5)
+- [STRONG] **[MLB]** BOS @ TOR BOS_ML -- 76% / +22.4% (score 2.5)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -57,9 +57,9 @@
 - Hot teams: **3** | Cold teams: **1** | Over-heavy: 0 | Under-heavy: 5
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (25)
+## ⚠️ Anomaly Detector (27)
 - STEAM_MOVE: **24**
-- COMPOUND_BULLPEN: **1**
+- COMPOUND_BULLPEN: **3**
   - CHI @ SEA (WNBA): TOTAL steam since open: ML -1.9pp toward CHI; total +2 (OVER) (4 snapshots)
   - NY @ IND (WNBA): TOTAL steam since open: ML +0.9pp toward IND; total -2 (UNDER) (5 snapshots)
   - PHX @ LA (WNBA): TOTAL steam since open: ML -0.9pp toward PHX; total +2 (OVER) (4 snapshots)
@@ -68,12 +68,12 @@
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$330.0** (33.0% of $1000 bankroll)
-- Expected EV: **$-7.05**
+- Expected EV: **$-4.49**
   - #1 [NRFI] $50 on CIN @ CHW YRFI (1st-inning OVER 0.5) (P=73%)
   - #2 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #3 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
   - #4 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
-  - #5 [NRFI] $35 on BOS @ TOR YRFI (1st-inning OVER 0.5) (P=63%)
+  - #5 [GOLF] $35 on GOLF Sepp Straka TOP5 @ 591 (FedEx St. Jude Championship) (P=14%)
 
 ## 🎯 Convergence Picks (6 stacked games)
 - ELITE: **1** · HIGH: 1 · MED: 4
@@ -103,11 +103,11 @@
   - [LEAN] **Joel Álvarez** (23-4-0) vs Chidi Njokuani -- fair -134
 
 ## ⛳ Golf Player Heat (from FedEx St. Jude Championship)
-  - 🔥 T1 **Jackson Koivun** (USA): +0 total -- finished T1
-  - 🔥 T2 **Sam Stevens** (USA): +0 total -- finished T2
-  - 🔥 T3 **Pierceson Coody** (USA): +0 total -- finished T3
-  - 🔥 T4 **Harris English** (USA): +0 total -- finished T4
-  - 🔥 T5 **Maverick McNealy** (USA): +0 total -- finished T5
+  - 🔥 T1 **Pierceson Coody** (USA): -4 total -- finished T1
+  - 🔥 T2 **Tommy Fleetwood** (England): -4 total -- finished T2
+  - 🔥 T3 **Harris English** (USA): -2 total -- finished T3
+  - 🔥 T4 **Maverick McNealy** (USA): -1 total -- finished T4
+  - 🔥 T5 **Nico Echavarria** (Colombia): -1 total -- finished T5
 
 ## 🔥 MLB Batter Heat (47 HOT / 54 COLD)
   - 🔥 **Spencer Torkelson** (DET): L14 .375 / season .229 (+146pts)

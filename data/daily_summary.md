@@ -2,9 +2,9 @@
 
 **Model Confidence: 22.9/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
 
-_Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
+_Pipeline health: **WARNING** (12/15 artifacts ok; 3 empty, 0 stale)._ 
 
-_Generated at 2026-08-13T14:16:27 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-08-13T15:03:25 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
@@ -20,36 +20,38 @@ _Generated at 2026-08-13T14:16:27 UTC. Game lines source: **Bovada (fallback -- 
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 1:10p ET | CLE @ DET | Comerica Park | 88F 7mph | DET_ML +26.42% |
+| 1:10p ET | CLE @ DET | Comerica Park | 85F 9mph | DET_ML +21.6% |
 | 1:10p ET | PIT @ MIA | loanDepot park | indoor | OVER_8.0 +21.12% |
-| 1:35p ET | SEA @ NYY | Yankee Stadium | 87F 9mph | NYY_ML +26.42% |
-| 2:10p ET | CIN @ CHW | Rate Field | 74F 3mph | CHW_ML +24.75% |
-| 3:07p ET | BOS @ TOR | Rogers Centre | indoor | BOS_ML +37.39% |
+| 1:35p ET | SEA @ NYY | Yankee Stadium | 87F 11mph | NYY_ML +26.69% |
+| 2:10p ET | CIN @ CHW | Rate Field | 75F 8mph | OVER_8.5 +27.87% |
+| 3:07p ET | BOS @ TOR | Rogers Centre | indoor | BOS_ML +37.07% |
 | 4:05p ET | CHC @ WSN | Nationals Park | 86F 4mph | OVER_9.0 +43.62% |
-| 7:30p ET | PHI @ MIN | Field of Dreams | 70F 0mph | MIN_ML +22.18% |
+| 7:30p ET | PHI @ MIN | Field of Dreams | 70F 0mph | MIN_ML +21.13% |
 | 10:07p ET | TEX @ LAA | Angel Stadium | 69F 4mph | OVER_7.5 +2.58% |
-| 10:10p ET | MIL @ LAD | UNIQLO Field at Dodger Stadium | 68F 3mph | MIL_ML +20.39% |
+| 10:10p ET | MIL @ LAD | UNIQLO Field at Dodger Stadium | 68F 4mph | MIL_ML +20.43% |
 
 ## Parlays - top 5
 
-- **3-leg @ +871 (prob 15.4%, EV +49.87%)**
-  - SEA @ NYY OVER_7.5 (-110, model 57.6%)
-  - CHC @ WSN WSN_ML (+127, model 49.9%)
-  - MIL @ LAD MIL_ML (+124, model 53.8%)
-- **2-leg @ +264 (prob 40.9%, EV +49.21%)**
-  - BOS @ TOR OVER_8.0 (-110, model 65.4%)
+- **3-leg @ +596 (prob 21.5%, EV +49.84%)**
+  - CLE @ DET UNDER_8.5 (-110, model 59.3%)
+  - PIT @ MIA OVER_8.5 (-110, model 57.0%)
+  - PHI @ MIN MIN_ML (-110, model 63.7%)
+- **3-leg @ +700 (prob 18.7%, EV +49.82%)**
+  - PIT @ MIA PIT_ML (+100, model 56.8%)
+  - TEX @ LAA TEX_ML (+100, model 61.3%)
+  - MIL @ LAD MIL_ML (+100, model 53.8%)
+- **3-leg @ +629 (prob 20.5%, EV +49.79%)**
+  - CLE @ DET UNDER_8.5 (-110, model 59.3%)
+  - PIT @ MIA PIT_ML (+100, model 56.8%)
+  - MIL @ LAD OVER_8.5 (-110, model 61.0%)
+- **3-leg @ +629 (prob 20.5%, EV +49.57%)**
   - PHI @ MIN OVER_8.5 (-110, model 62.6%)
-- **2-leg @ +231 (prob 45.0%, EV +48.99%)**
-  - CIN @ CHW CHW_ML (-136, model 71.9%)
-  - PHI @ MIN OVER_8.5 (-110, model 62.6%)
-- **3-leg @ +727 (prob 18.0%, EV +48.66%)**
-  - SEA @ NYY OVER_7.5 (-110, model 57.6%)
-  - CHC @ WSN WSN_ML (+127, model 49.9%)
-  - PHI @ MIN OVER_8.5 (-110, model 62.6%)
-- **3-leg @ +596 (prob 21.3%, EV +48.03%)**
-  - SEA @ NYY OVER_7.5 (-110, model 57.6%)
-  - CIN @ CHW OVER_8.5 (-110, model 61.5%)
-  - MIL @ LAD OVER_8.5 (-110, model 60.1%)
+  - MIL @ LAD OVER_8.5 (-110, model 61.0%)
+  - MIL @ LAD MIL_ML (+100, model 53.8%)
+- **3-leg @ +596 (prob 21.5%, EV +49.53%)**
+  - PIT @ MIA OVER_8.5 (-110, model 57.0%)
+  - BOS @ TOR OVER_8.5 (-110, model 59.2%)
+  - PHI @ MIN MIN_ML (-110, model 63.7%)
 
 ## Self-Learning Loop
 
@@ -63,13 +65,13 @@ Cumulative graded plays: 8404. Wins: 3291. Hit rate: 39.2%.
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
 | BOS @ TOR | 36.5% | +174 | 5.04 | +1053 | -1053 |
-| CHC @ WSN | 46.2% | +117 | 3.78 | +161 | -161 |
-| CIN @ CHW | 26.9% | +272 | 6.47 | -151 | +151 |
-| CLE @ DET | 49.2% | +103 | 3.61 | +110 | -110 |
-| MIL @ LAD | 38.4% | +161 | 4.89 | +196 | -196 |
+| CHC @ WSN | 46.2% | +117 | 3.77 | +161 | -161 |
+| CIN @ CHW | 26.9% | +272 | 6.36 | -156 | +156 |
+| CLE @ DET | 49.2% | +103 | 3.4 | +109 | -109 |
+| MIL @ LAD | 38.4% | +161 | 4.92 | +196 | -196 |
 | PHI @ MIN | 40.1% | +150 | 4.57 | -105 | +105 |
 | PIT @ MIA | 43.4% | +130 | 4.17 | +225 | -225 |
-| SEA @ NYY | 46.5% | +115 | 3.97 | -172 | +172 |
+| SEA @ NYY | 46.5% | +115 | 4.01 | -175 | +175 |
 | TEX @ LAA | 50.4% | -102 | 3.49 | +284 | -284 |
 
 ## Team Form (last 10)
@@ -89,7 +91,7 @@ Cumulative graded plays: 8404. Wins: 3291. Hit rate: 39.2%.
 
 ## Loop Activity (since last refresh)
 
-- Confidence delta: **+1.2**
+- Confidence delta: **+0.0**
 
 ## Model Recommendations (operator review)
 
