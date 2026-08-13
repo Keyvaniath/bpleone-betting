@@ -1,35 +1,28 @@
-# EdgeStat Daily Summary — 2026-08-12
+# EdgeStat Daily Summary — 2026-08-13
 
-## 🏥 Model Health: 69.9/100 [OK]
+## 🏥 Model Health: 68.2/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.6/100
+  - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 0/100
   - 🟡 Brier Trend: 68.8/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 95.5/100
+  - 🟢 Data Health: 86.4/100
   - 🟡 Edge Count: 71.4/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.597)
-- **Total games on board:** 128
-- **Strong home favorites:** 12 | **Strong road dogs:** 2
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.595)
+- **Total games on board:** 125
+- **Strong home favorites:** 10 | **Strong road dogs:** 1
 
 ## 🎯 Top 5 Best Bets
 1. **SEA @ NYY YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 2. **CIN @ CHW YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 3. **KCR @ LAD YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-4. **COL @ ARI YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-5. **TEX @ LAA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-
-## 🐋 Whale Picks (Max Confluence)
-- [WHALE] **[MLB]** TEX @ LAA ML_AWAY -- 67% / +13.0% (score 3.5)
-- [STRONG] **[MLB]** TEX @ LAA TEX_ML -- 71% / +20.3% (score 2.5)
-
-## 📡 Sharp Action (Line Movement)
-- [STRONG] **TEX @ LAA** ml_away: 53.92% → 59.18% (+5.3pp)
+4. **TEX @ LAA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+5. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
 
 ## 📉 Strong UNDER Signals
-- [STRONG 6.2] **BOS @ TOR** model 7.13 vs market 8.0
+- [ELITE 7.2] **BOS @ TOR** model 7.13 vs market 8.5
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -58,20 +51,20 @@
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
 ## ⚡ Pre-Game HIGH Conviction (1)
-- [MLS] **Orlando City SC** HOME (2-1 L10) · model 74.0% fair -284
+- [MLS] **Orlando City SC** HOME (1-1 L10) · model 74.0% fair -284
 
 ## 🔥/❄️ Heat / Cold Signals
-- Hot teams: **3** | Cold teams: **12** | Over-heavy: 0 | Under-heavy: 4
+- Hot teams: **3** | Cold teams: **1** | Over-heavy: 0 | Under-heavy: 5
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (35)
-- RESIDUAL_DIVERGENCE: **9**
-- STEAM_MOVE: **26**
-  - Toronto Tempo (WNBA): Toronto Tempo UNDERPERFORMING expected margin by 12.6pts in recent games -- model bias may persist
-  - Minnesota Lynx (WNBA): Minnesota Lynx OUTPERFORMING expected margin by 6.5pts in recent games -- model bias may persist
+## ⚠️ Anomaly Detector (31)
+- RESIDUAL_DIVERGENCE: **7**
+- STEAM_MOVE: **24**
   - Red Bull New York (MLS): Red Bull New York OUTPERFORMING expected margin by 9.0pts in recent games -- model bias may persist
   - CF Montréal (MLS): CF Montréal OUTPERFORMING expected margin by 11.9pts in recent games -- model bias may persist
   - Charlotte FC (MLS): Charlotte FC UNDERPERFORMING expected margin by 8.9pts in recent games -- model bias may persist
+  - Columbus Crew (MLS): Columbus Crew OUTPERFORMING expected margin by 10.0pts in recent games -- model bias may persist
+  - FC Cincinnati (MLS): FC Cincinnati UNDERPERFORMING expected margin by 8.5pts in recent games -- model bias may persist
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
@@ -116,16 +109,16 @@
   - 🔥 T4 **Harris English** (USA): +0 total -- finished T4
   - 🔥 T5 **Maverick McNealy** (USA): +0 total -- finished T5
 
-## 🔥 MLB Batter Heat (43 HOT / 55 COLD)
-  - 🔥 **Spencer Torkelson** (DET): L14 .382 / season .228 (+154pts)
+## 🔥 MLB Batter Heat (47 HOT / 54 COLD)
+  - 🔥 **Spencer Torkelson** (DET): L14 .375 / season .229 (+146pts)
   - 🔥 **Freddy Fermin** (SD): L14 .333 / season .194 (+139pts)
   - 🔥 **Royce Lewis** (MIN): L14 .379 / season .245 (+134pts)
-  - 🔥 **Jacob Young** (WSH): L14 .378 / season .245 (+133pts)
+  - 🔥 **Zach McKinstry** (DET): L14 .357 / season .223 (+134pts)
   - 🔥 **Cam Smith** (HOU): L14 .354 / season .224 (+130pts)
-  - ❄️ **Tristan Peters** (CWS): L14 .083 / season .264 (-181pts) -- FADE props
-  - ❄️ **Nicky Lopez** (TEX): L14 .108 / season .272 (-164pts) -- FADE props
+  - ❄️ **Nicky Lopez** (TEX): L14 .108 / season .269 (-161pts) -- FADE props
   - ❄️ **Carlos Cortes** (ATH): L14 .097 / season .258 (-161pts) -- FADE props
-  - ❄️ **Esmerlyn Valdez** (PIT): L14 .098 / season .244 (-146pts) -- FADE props
+  - ❄️ **Tristan Peters** (CWS): L14 .114 / season .264 (-150pts) -- FADE props
+  - ❄️ **Wyatt Langford** (TEX): L14 .109 / season .253 (-144pts) -- FADE props
   - ❄️ **Trevor Larnach** (MIN): L14 .130 / season .270 (-140pts) -- FADE props
 
 ## 📈 Streak Regression Alerts (11)
@@ -143,6 +136,6 @@
   - ⚠️ batter_rbis (Brier Δ -0.0052)
 
 ## 🤖 Self-Training Status
-- **WNBA**: n=40 games · hit rate 62.5% · bias -6.8pp [calibration applied]
-- **MLS**: n=47 games · hit rate 53.2% · bias -15.0pp [calibration applied]
-- **MLB**: n=190 games · hit rate 53.2% · bias -1.2pp
+- **WNBA**: n=41 games · hit rate 65.8% · bias -7.8pp [calibration applied]
+- **MLS**: n=32 games · hit rate 50.0% · bias -16.4pp [calibration applied]
+- **MLB**: n=189 games · hit rate 54.0% · bias -2.9pp [calibration applied]

@@ -1,52 +1,39 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-08-12T22:48:35 UTC_
+_Generated 2026-08-13T06:15:50 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** 18
+- **Score:** -48
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 18
-- **Total FADES:** 54
-
-## Lock of the Night
-- **Subject:** Luis Castillo
-- **Source:** ELITE_BOARD
-- **Sport:** MLB
-- **Score:** 15.0
-- **Details:** CIN @ CHW
+- **Total STRONG:** 3
+- **Total FADES:** 60
 
 ## Top 5 Curated Picks
-1. **MLB / Matt Olson** (MLB_BATTER, score=145.62)
-   - Play: Matt Olson (BATTER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_BATTER)
-2. **WNBA / napheesa collier** (WNBA_PLAYER, score=138.67)
-   - Play: napheesa collier (PLAYER_STRONG)
-   - Rationale: Cross-sport top pick (WNBA_PLAYER)
-3. **MLB / Pete Crow-Armstrong** (MLB_BATTER, score=109.25)
-   - Play: Pete Crow-Armstrong (BATTER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_BATTER)
-4. **WNBA / angel reese** (WNBA_PLAYER, score=59.67)
-   - Play: angel reese (PLAYER_STRONG)
-   - Rationale: Cross-sport top pick (WNBA_PLAYER)
-5. **GOLF / Scottie Scheffler** (GOLF_PLAYER, score=50.21)
+1. **MLB / AWAY** (MLB_TEAM, score=89.0)
+   - Play: AWAY (TEAM_STRONG)
+   - Rationale: Cross-sport top pick (MLB_TEAM)
+2. **GOLF / Scottie Scheffler** (GOLF_PLAYER, score=50.21)
    - Play: Scottie Scheffler (PLAYER_STRONG)
+   - Rationale: Cross-sport top pick (GOLF_PLAYER)
+3. **GOLF / Rory McIlroy** (GOLF_PLAYER, score=48.07)
+   - Play: Rory McIlroy (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
 
 ## Slate ROI Projection
-- **Picks:** 1
-- **Avg edge:** -0.91%
+- **Picks:** 0
+- **Avg edge:** 0%
 - **Expected ROI (1/4 Kelly):** 0.0%
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **NBA** / MIA (TEAM_FADE)
-  - Fade angle: team total UNDER
+- **MLB** / Luis Castillo (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
 - **NBA** / TOR (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NHL** / anthony stolarz (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / casey desmith (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / joseph woll (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
+- **NBA** / MIA (TEAM_FADE)
+  - Fade angle: team total UNDER
+- **MLB** / Bryce Miller (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Framber Valdez (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES

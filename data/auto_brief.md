@@ -1,14 +1,14 @@
-# Tonight's Slate Brief — 2026-08-12
+# Tonight's Slate Brief — 2026-08-13
 
-## Slate Quality: 79/100 (HIGH)
-_77% lineups confirmed · 7 rookie SPs_
-**Recommendation:** Play normal Kelly sizing.
+## Slate Quality: 55/100 (MEDIUM)
+_0% lineups confirmed · 9 rookie SPs_
+**Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
 - **9 games** scheduled
-- **30 best bets** scored: 0 DK · 0 PP · 14 NRFI · 0 SGP
+- **34 best bets** scored: 9 DK · 0 PP · 9 NRFI · 0 SGP
 - **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$34.22
-- **MC simulation:** EV +$122.9, 82% P(profit), p05 $-102.07 / p95 $336.75
+- **MC simulation:** EV +$77.41, 80% P(profit), p05 $-91.69 / p95 $237.73
 
 ## Top 5 Best Bets
 1. **SEA @ NYY YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +24.6%)
@@ -17,32 +17,34 @@ _77% lineups confirmed · 7 rookie SPs_
    - P(YRFI) 70.0% vs baseline 46.0%
 3. **KCR @ LAD YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +23.8%)
    - P(YRFI) 69.8% vs baseline 46.0%
-4. **COL @ ARI YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +23.1%)
-   - P(YRFI) 69.1% vs baseline 46.0%
-5. **TEX @ LAA YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +21.9%)
+4. **TEX @ LAA YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +21.9%)
    - P(YRFI) 67.9% vs baseline 46.0%
+5. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
+   - Player prop quality score 1.1935
+   - Elite player
 
-## ⚠️ Trap Warnings — 12 flagged
+## ⚠️ Trap Warnings — 16 flagged
+- **Alex Bregman UNDER 0.5 batter hits** (high):
+   - Edge +15.7% looks big but only 0 settled props on this player — model unproven
+   - Batter heating up: heating up: 1.115 ops recent vs 0.759 season (+0.356)
+- **Parker Messick OVER 5.5 pitcher strikeouts** (low):
+   - Edge +26.1% looks big but only 0 settled props on this player — model unproven
+- **Taj Bradley OVER 5.5 pitcher strikeouts** (low):
+   - Edge +24.9% looks big but only 0 settled props on this player — model unproven
 - **SEA @ NYY YRFI (1st-inning OVER 0.5)** (low):
    - Edge +24.6% looks big but only 0 settled props on this player — model unproven
 - **CIN @ CHW YRFI (1st-inning OVER 0.5)** (low):
    - Edge +24.0% looks big but only 0 settled props on this player — model unproven
-- **KCR @ LAD YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +23.8% looks big but only 0 settled props on this player — model unproven
-- **COL @ ARI YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +23.1% looks big but only 0 settled props on this player — model unproven
-- **TEX @ LAA YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +21.9% looks big but only 0 settled props on this player — model unproven
 
 ## Hot streaks
-**Batters heating up:** Josh Bell (heat +1.07), Royce Lewis (heat +0.24), Brooks Lee (heat +0.22)
+**Batters heating up:** Chase Meidroth (heat +6.54), Trent Grisham (heat +5.90), Josh Naylor (heat +5.57)
 
 ## Bullpens GASSED tonight
-Athletics, San Diego Padres, San Francisco Giants, St. Louis Cardinals, Toronto Blue Jays, Atlanta Braves, Los Angeles Angels, Arizona Diamondbacks
+Athletics, San Diego Padres, San Francisco Giants, St. Louis Cardinals, Toronto Blue Jays, Minnesota Twins, Philadelphia Phillies, Atlanta Braves
 _Lean late-inning OVER on these games; fade their save situations._
 
 ## NRFI/YRFI strong leans
-- **YRFI** (1st-inning OVER): SEA @ NYY, CIN @ CHW, KCR @ LAD, COL @ ARI, TEX @ LAA
+- **YRFI** (1st-inning OVER): SEA @ NYY, CIN @ CHW, KCR @ LAD, TEX @ LAA, CLE @ DET
 
 ## Golf -- FedEx St. Jude Championship
 - **Leader:** Jackson Koivun (E) at #1
@@ -59,22 +61,22 @@ _Lean late-inning OVER on these games; fade their save situations._
 - Chicago Blackhawks @ Minnesota Wild (0-0-0 vs 0-0-0)  | P(home) 52.9% fair -112 | Scheduled
 
 ## KBO -- 2026 Korean Baseball
-- Hanwha Eagles @ Doosan Bears | P(home) 63.6% fair -174 | total 10 R
-- KT Wiz @ NC Dinos | P(home) 50.4% fair -102 | total 10 R
-- LG Twins @ Kiwoom Heroes | P(home) 34.5% fair +190 | total 10 R
-- Lotte Giants @ SSG Landers | P(home) 60.0% fair -150 | total 10 R
-- Samsung Lions @ KIA Tigers | P(home) 57.8% fair -137 | total 9 R
+- Hanwha Eagles @ Doosan Bears | P(home) 65.7% fair -192 | total 9 R
+- KT Wiz @ NC Dinos | P(home) 50.6% fair -103 | total 9 R
+- LG Twins @ Kiwoom Heroes | P(home) 30.1% fair +232 | total 9 R
+- Lotte Giants @ SSG Landers | P(home) 59.0% fair -144 | total 9 R
+- Samsung Lions @ KIA Tigers | P(home) 58.3% fair -140 | total 8 R
 - **KBO POD:** SSG Landers ML vs Lotte Giants (KBO) (HIGH)
 
-## LoL Esports -- 1 live, 25 upcoming
-- [NACL] Ole Miss Esports vs Cupid Esports BO3 | P(A) 47.3% fair +111/-111
+## LoL Esports -- 0 live, 22 upcoming
 - [LCK Challengers] HLE Challengers vs BRO Challengers BO3 | P(A) 45.6% fair +119/-119
-- [NACL] Conviction vs CCG Esports BO3 | P(A) 51.2% fair -105/+105
-- [LCK Challengers] Gen.G Global Academy vs KRX Challengers BO3 | P(A) 37.3% fair +168/-168
+- [LCK Challengers] KRX Challengers vs Gen.G Global Academy BO3 | P(A) 62.7% fair -168/+168
 - [LCK Challengers] kt Challengers vs NS Challengers BO3 | P(A) 53.4% fair -115/+115
+- [LCK] KIWOOM DRX vs BNK FEARX BO3 | P(A) 48.8% fair +105/-105
+- [LCK] Gen.G Esports vs Hanwha Life Esports BO3 | P(A) 45.8% fair +119/-119
 - **LoL POT:** LGD GAMING ML vs EDWARD GAMING (LPL, BO3) (HIGH)
 
-## Player Play of the Day -- across all sports (3486 candidates scanned)
+## Player Play of the Day -- across all sports (3489 candidates scanned)
 - **[LOL]** Inspired UNDER 3.5 Kills | model 61.7% fair -161 (ELITE)
 - **[LOL]** ShowMaker OVER 3.5 Kills | model 62.5% fair -167 (ELITE)
 - **[LOL]** Peyz OVER 4.5 Kills | model 61.3% fair -158 (ELITE)
@@ -82,7 +84,7 @@ _Lean late-inning OVER on these games; fade their save situations._
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | model 61.0% fair -157 (ELITE)
 
 ## Self-learning calibration (esports + KBO)
-- **LOL:** 55 settled | brier 0.2663 | ECE 0.147
-   - Model over-confident; subtract 11.5pp at next inference
+- **LOL:** 56 settled | brier 0.265 | ECE 0.1365
+   - Model over-confident; subtract 12.1pp at next inference
 - **KBO:** 45 settled | brier 0.2749 | ECE 0.1851
    - Model over-confident; subtract 15.8pp at next inference
