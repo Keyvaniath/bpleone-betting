@@ -967,6 +967,12 @@ jobs:
       - name: NFL player-prop projections (model side -> generate->settle->learn)
         working-directory: python
         run: python nfl_player_props.py || true
+      # NFL DFS: DK Classic salaries (public lobby API) + DK-scored Monte Carlo
+      # projections + exact salary-cap optimal lineups. Preseason slates are
+      # skipped by the module's own gate; baselines cache-fill at <=120/run.
+      - name: NFL DFS (DraftKings salaries -> MC projections -> optimal lineups)
+        working-directory: python
+        run: python nfl_dfs.py || true
       - name: NCAA Football scoreboard
         working-directory: python
         run: python ncaaf_pipeline.py

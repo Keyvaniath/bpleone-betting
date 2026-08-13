@@ -41,6 +41,31 @@ bpleone-site/
 
 ## Current deployment state (LIVE)
 
+- **2026-08-13 (later) — NFL DFS DESK (nfl_dfs.py -> data/nfl_dfs.json ->
+  nfl-dfs.html):** weekly DraftKings projections from OUR Monte Carlo + exact
+  salary-cap optimal lineups. Salaries come from DK's PUBLIC endpoints
+  (www.draftkings.com/lobby/getcontests?sport=NFL -> ContestTypeId 21 classic
+  groups -> api.draftkings.com/draftgroups/v1/draftgroups/{id}/draftables;
+  EdgeStat UA works; preseason slates skipped by the same Week-1 gate; slate
+  cached no-clobber in nfl_dfs_salaries.json). Projections: the props desk's
+  play-level MC (_sim_player) DK-scored PER SIMULATION (100/300-yd bonuses land
+  on tail sims) -> mean/floor p10/ceiling p90/value. Baseline priority:
+  curated NFL_PLAYER_DB > 2025 season per-game rates (ESPN core-API athlete
+  statistics, one-time-cached in data/nfl_2025_baselines.json -- do NOT
+  delete; ~700 players seeded locally; CI tops up new slate players at
+  <=NFL_DFS_FETCH_CAP=120/run) > current-season gamelogs (>=3 games; the
+  rookie path). DST is VEGAS-IMPLIED (opp implied total -> DK points-allowed
+  tier curve + league-avg sacks/TO/TD ~= +5.9 base), labeled as such, flat
+  league-average when lines haven't posted. OPTIMIZER: exact 0/1 DP over
+  (position-counts x $100 salary buckets) for DK Classic
+  (QB/2RB/3WR/TE/FLEX/DST, $50k) -- verified against brute-force enumeration
+  in the module's __main__ self-test (run it after ANY optimizer edit); three
+  builds (mean/p90 ceiling/p10 cash) + budget variants (45/48/50k) off one DP
+  table. O/IR players excluded from pools; unprojected players (rookies w/o
+  2025 stats) counted + top names disclosed, never silently dropped. DFS rows
+  NEVER enter the betting ledger. Wired into daily-pipeline after
+  nfl_player_props; page linked from nfl.html + directory ("Parlays & DFS").
+
 - **2026-08-13 — NFL SEASON BUILD-OUT + the preseason honesty gate:** football
   is live in the odds stack — espn_odds DEFAULT_SPORTS now includes
   nfl/ncaaf/ncaab (SPORT_PATHS already had them); real DK lines flow to the

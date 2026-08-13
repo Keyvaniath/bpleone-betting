@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="NFL DFS Desk · EdgeStat — DraftKings projections from our play-level Monte Carlo (mean / floor / ceiling per player) and exact salary-cap optimal lineups. Informational only, 21+.">
+<link rel="canonical" href="https://betting.bpleone.com/nfl-dfs.html">
+<meta name="theme-color" content="#0d1017">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EdgeStat">
+<meta property="og:title" content="NFL DFS Desk — Projections &amp; Optimal Lineups | EdgeStat">
+<meta property="og:description" content="DraftKings NFL projections from a play-level Monte Carlo — mean, floor, ceiling per player — plus exact salary-cap optimal lineups. Informational only, 21+.">
+<meta property="og:url" content="https://betting.bpleone.com/nfl-dfs.html">
+<meta property="og:image" content="https://betting.bpleone.com/assets/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://betting.bpleone.com/assets/og-card.png">
+<meta name="twitter:title" content="NFL DFS Desk — Projections &amp; Optimal Lineups | EdgeStat">
+<meta name="twitter:description" content="DraftKings NFL projections from a play-level Monte Carlo plus exact salary-cap optimal lineups. Informational only, 21+.">
+<title>NFL DFS Desk — DraftKings Projections &amp; Optimal Lineups | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .dfs-row { display:grid; grid-template-columns: 1.5fr 46px 110px 70px 64px 64px 64px 64px 110px; gap:10px; padding:9px 14px; border-bottom:1px solid rgba(255,255,255,0.04); font-family:'JetBrains Mono',monospace; font-size:12px; align-items:center; }
+  .dfs-row.head { background:rgba(255,255,255,0.04); color:var(--muted,#888); font-size:10px; text-transform:uppercase; position:sticky; top:0; }
+  .lu-card { flex:1 1 300px; border:1px solid rgba(255,255,255,.08); border-radius:10px; overflow:hidden; }
+  .lu-head { padding:10px 14px; font-weight:700; border-bottom:1px solid rgba(255,255,255,.06); display:flex; justify-content:space-between; align-items:baseline; }
+  .lu-slot { display:grid; grid-template-columns: 48px 1.5fr 44px 70px 56px; gap:8px; padding:6px 14px; border-bottom:1px solid rgba(255,255,255,.04); font-family:'JetBrains Mono',monospace; font-size:11.5px; }
+  .posbtn { background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.12); color:var(--text-2,#b9c3d4); font-size:11px; padding:5px 14px; border-radius:999px; cursor:pointer; }
+  .posbtn.on { background:rgba(212,160,74,.18); border-color:#d4a04a; color:#d4a04a; font-weight:700; }
+  .srcb { font-size:9px; padding:1px 6px; border-radius:6px; background:rgba(255,255,255,.06); color:var(--muted,#8a93a6); }
+  .stat-q { color:#d4a04a; font-weight:700; }
+</style>
+<script src="js/nav.js"></script>
+</head>
+<body class="page-nfl-dfs">
+<header class="topbar">
+  <div class="brand">
+    <a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a>
+    <span class="tagline">by bpleone</span>
+  </div>
+  <nav class="mainnav"><!-- nav.js injects here --></nav>
+  <div class="topbar-actions"><div class="ticker">DFS</div></div>
+</header>
+<main class="container">
+  <section class="page-head">
+    <h1>🏈 NFL DFS Desk <span class="muted" style="font-size:14px;font-weight:400;">— DraftKings projections &amp; optimal lineups from our Monte Carlo</span></h1>
+    <p id="dfs_status" class="muted">Loading slate…</p>
+  </section>
+  <section class="metric-strip">
+    <div class="metric"><span class="metric-num" id="m_slate">--</span><span class="metric-label">Slate Games</span></div>
+    <div class="metric"><span class="metric-num" id="m_sal">--</span><span class="metric-label">Salaried Players</span></div>
+    <div class="metric"><span class="metric-num" id="m_proj">--</span><span class="metric-label">Model-Projected</span></div>
+    <div class="metric"><span class="metric-num" id="m_dst">--</span><span class="metric-label">DSTs w/ Lines</span></div>
+  </section>
+
+  <section class="card" style="margin-bottom:24px;">
+    <div class="card-head"><span>🧮 <strong>Optimal Lineups</strong> <span class="muted" style="font-size:10px;">exact salary-cap DP · $50,000 · QB/2RB/3WR/TE/FLEX/DST</span></span><span class="muted" id="lu_meta">--</span></div>
+    <div id="lu_wrap" style="display:flex; gap:14px; flex-wrap:wrap; padding:14px;"><p class="muted">Loading…</p></div>
+    <div id="lu_budget" class="muted" style="padding:0 16px 12px; font-size:11.5px; font-family:'JetBrains Mono',monospace;"></div>
+  </section>
+
+  <section class="card" style="margin-bottom:24px;">
+    <div class="card-head"><span>📊 <strong>Player Projections</strong> <span class="muted" style="font-size:10px;">DK points per sim — mean · floor p10 · ceiling p90</span></span><span class="muted" id="pj_meta">--</span></div>
+    <div id="pos_filters" style="display:flex; gap:8px; padding:10px 14px 4px; flex-wrap:wrap;"></div>
+    <div style="overflow-x:auto;">
+      <div style="min-width:860px;">
+        <div class="dfs-row head">
+          <span>Player</span><span>Pos</span><span>Game</span><span>Salary</span><span>Proj</span><span>Floor</span><span>Ceil</span><span>Val/$K</span><span>Source</span>
+        </div>
+        <div id="pj_list"><p class="muted" style="padding:14px;">Loading…</p></div>
+      </div>
+    </div>
+    <div style="padding:8px 16px;"><button id="pj_more" class="posbtn" style="display:none;">Show all</button></div>
+  </section>
+
+  <section class="card" style="margin-bottom:24px;">
+    <div class="card-head"><span>🧾 <strong>Method &amp; honesty notes</strong></span></div>
+    <p id="mn_text" class="muted" style="font-size:12px; line-height:1.65; padding:12px 16px 4px;"></p>
+    <ul id="mn_disc" style="font-size:11.5px; color:var(--muted,#8a93a6); line-height:1.6; padding:4px 16px 14px 34px;"></ul>
+  </section>
+</main>
+<script src="js/nav_badge.js"></script>
+<script>
+const $ = (id) => document.getElementById(id);
+let DATA = null, POS = 'ALL', SHOWN = 60;
+
+function fmtSal(s) { return s == null ? '—' : '$' + s.toLocaleString(); }
+
+function renderProjections() {
+  const rows = (DATA.projections || []).filter(p => POS === 'ALL' || p.pos === POS);
+  const html = rows.slice(0, SHOWN).map(p => {
+    const st = p.status && p.status !== 'None' ? ` <span class="stat-q">${p.status}</span>` : '';
+    return `<div class="dfs-row">
+      <span><strong>${p.name}</strong>${st}</span>
+      <span>${p.pos}</span>
+      <span class="muted" style="font-size:10.5px;">${p.game || '—'}</span>
+      <span>${fmtSal(p.salary)}</span>
+      <span style="font-weight:700;">${p.proj}</span>
+      <span class="muted">${p.floor}</span>
+      <span style="color:#58c878;">${p.ceiling}</span>
+      <span>${p.value ?? '—'}</span>
+      <span><span class="srcb">${p.source}</span></span>
+    </div>`;
+  }).join('');
+  $('pj_list').innerHTML = html || '<p class="muted" style="padding:14px;">No projections for this filter.</p>';
+  $('pj_more').style.display = rows.length > SHOWN ? 'inline-block' : 'none';
+}
+
+fetch('data/nfl_dfs.json?t=' + Date.now(), { cache: 'no-cache' })
+  .then(r => r.json())
+  .then(d => {
+    DATA = d;
+    if (!d.slate) {
+      $('dfs_status').textContent = d.note || 'No slate available.';
+      $('lu_wrap').innerHTML = '<p class="muted">' + (d.note || 'No slate.') + '</p>';
+      $('pj_list').innerHTML = '<p class="muted" style="padding:14px;">' + (d.note || 'No slate.') + '</p>';
+      return;
+    }
+    const u = d.universe || {};
+    $('dfs_status').innerHTML = `DraftKings Classic slate <b>${d.slate.start}</b> · draft group ${d.slate.draft_group_id} · refreshed ${(d.generated_at || '').replace('T', ' ')}`;
+    $('m_slate').textContent = d.slate.n_games ?? '--';
+    $('m_sal').textContent = d.slate.n_salaried ?? '--';
+    $('m_proj').textContent = u.n_projected ?? '--';
+    $('m_dst').textContent = (u.n_dst_with_lines ?? 0) + '/' + (u.n_dst ?? 0);
+
+    // lineups
+    const builds = [['optimal', '⭐ Optimal', 'max mean projection'],
+                    ['ceiling', '🚀 Ceiling', 'max p90 — GPP leverage'],
+                    ['cash', '🛡 Cash', 'max p10 floor — cash games']];
+    const lw = $('lu_wrap');
+    lw.innerHTML = '';
+    let any = false;
+    builds.forEach(([key, label, sub]) => {
+      const b = (d.lineups || {})[key];
+      if (!b || !(b.slots || []).length) return;
+      any = true;
+      const rows = b.slots.map(s =>
+        `<div class="lu-slot"><span class="muted">${s.slot}</span><span><strong>${s.name}</strong></span><span class="muted">${s.team}</span><span>${fmtSal(s.salary)}</span><span style="font-weight:700;">${s.proj}</span></div>`).join('');
+      lw.insertAdjacentHTML('beforeend',
+        `<div class="lu-card">
+           <div class="lu-head"><span>${label} <span class="muted" style="font-size:10px;font-weight:400;">${sub}</span></span>
+             <span style="font-family:'JetBrains Mono',monospace;font-size:12px;">${b.proj_total} pts · ${fmtSal(b.salary_used)}</span></div>
+           ${rows}
+         </div>`);
+    });
+    if (!any) lw.innerHTML = '<p class="muted">No feasible lineups yet (pool too thin or no DSTs).</p>';
+    const bt = d.budget_variants || [];
+    if (bt.length) {
+      $('lu_budget').textContent = 'Budget sensitivity (optimal build): ' +
+        bt.map(b => `$${(b.cap / 1000)}k → ${b.proj_total ?? '—'} pts`).join(' · ');
+    }
+    $('lu_meta').textContent = 'objectives: mean / p90 / p10';
+
+    // projections + filters
+    const posList = ['ALL', 'QB', 'RB', 'WR', 'TE', 'DST'];
+    $('pos_filters').innerHTML = posList.map(p =>
+      `<button class="posbtn ${p === 'ALL' ? 'on' : ''}" data-pos="${p}">${p}</button>`).join('');
+    $('pos_filters').addEventListener('click', (e) => {
+      const b = e.target.closest('[data-pos]');
+      if (!b) return;
+      POS = b.dataset.pos; SHOWN = 60;
+      document.querySelectorAll('.posbtn[data-pos]').forEach(x => x.classList.toggle('on', x === b));
+      renderProjections();
+    });
+    $('pj_more').addEventListener('click', () => { SHOWN = 10000; renderProjections(); });
+    $('pj_meta').textContent = (d.projections || []).length + ' players · ' + (u.n_unprojected || 0) + ' unprojected';
+    renderProjections();
+
+    // method + disclosures
+    $('mn_text').textContent = d.method_note || '';
+    $('mn_disc').innerHTML = (d.disclosures || []).map(x => '<li>' + x + '</li>').join('');
+  })
+  .catch(err => { $('dfs_status').textContent = 'Could not load nfl_dfs.json (' + err.message + ')'; });
+</script>
+</body>
+</html>
