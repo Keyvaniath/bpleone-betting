@@ -4,14 +4,14 @@
 
 _Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
 
-_Generated at 2026-08-13T21:45:22 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-08-13T22:51:57 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
-**MIL @ LAD - MIL_ML**
-- Market: +157
-- Model probability: 53.8%
-- Raw edge: +38.13%
+**MIL @ LAD - OVER_7.5**
+- Market: -110
+- Model probability: 72.5%
+- Raw edge: +38.46%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
@@ -20,9 +20,9 @@ _Generated at 2026-08-13T21:45:22 UTC. Game lines source: **Bovada (fallback -- 
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 7:30p ET | PHI @ MIN | Field of Dreams | 70F 0mph | MIN_ML +21.13% |
+| 7:30p ET | PHI @ MIN | Field of Dreams | 70F 0mph | MIN_ML +20.11% |
 | 10:07p ET | TEX @ LAA | Angel Stadium | 70F 4mph | OVER_7.5 +3.33% |
-| 10:10p ET | MIL @ LAD | UNIQLO Field at Dodger Stadium | 68F 3mph | MIL_ML +38.13% |
+| 10:10p ET | MIL @ LAD | UNIQLO Field at Dodger Stadium | 68F 3mph | OVER_7.5 +38.46% |
 
 ## Parlays - top 4
 
@@ -51,7 +51,7 @@ Cumulative graded plays: 8405. Wins: 3291. Hit rate: 39.2%.
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| MIL @ LAD | 38.4% | +161 | 4.89 | +196 | -196 |
+| MIL @ LAD | 38.4% | +161 | 4.88 | +196 | -196 |
 | PHI @ MIN | 40.1% | +150 | 4.57 | -105 | +105 |
 | TEX @ LAA | 50.4% | -102 | 3.52 | +284 | -284 |
 
