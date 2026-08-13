@@ -1,17 +1,17 @@
 # EdgeStat Daily Brief - 2026-08-13
 
-**Model Confidence: 21.7/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
+**Model Confidence: 22.9/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
 
-_Pipeline health: **WARNING** (12/15 artifacts ok; 3 empty, 0 stale)._ 
+_Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
 
-_Generated at 2026-08-13T06:15:58 UTC. Game lines source: **placeholder -110 (no real book today)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-08-13T14:16:27 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
-**BOS @ TOR - BOS_ML**
-- Market: +100
-- Model probability: 85.0%
-- Raw edge: +69.91%
+**CHC @ WSN - OVER_9.0**
+- Market: -110
+- Model probability: 75.2%
+- Raw edge: +43.62%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
@@ -20,54 +20,57 @@ _Generated at 2026-08-13T06:15:58 UTC. Game lines source: **placeholder -110 (no
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 1:10p ET | CLE @ DET | Comerica Park | 85F 7mph | DET_ML +17.62% |
-| 1:10p ET | PIT @ MIA | loanDepot park | indoor | PIT_ML +13.65% |
-| 1:35p ET | SEA @ NYY | Yankee Stadium | 86F 12mph | NYY_ML +44.43% |
-| 2:10p ET | CIN @ CHW | Rate Field | 75F 2mph | CHW_ML +37.15% |
-| 3:07p ET | BOS @ TOR | Rogers Centre | indoor | BOS_ML +69.91% |
-| 4:05p ET | CHC @ WSN | Nationals Park | 86F 4mph | OVER_8.5 +53.18% |
-| 7:30p ET | PHI @ MIN | Field of Dreams | 70F 0mph | MIN_ML +21.65% |
-| 10:07p ET | TEX @ LAA | Angel Stadium | 69F 4mph | TEX_ML +22.62% |
-| 10:10p ET | MIL @ LAD | UNIQLO Field at Dodger Stadium | 68F 3mph | OVER_8.5 +14.74% |
+| 1:10p ET | CLE @ DET | Comerica Park | 88F 7mph | DET_ML +26.42% |
+| 1:10p ET | PIT @ MIA | loanDepot park | indoor | OVER_8.0 +21.12% |
+| 1:35p ET | SEA @ NYY | Yankee Stadium | 87F 9mph | NYY_ML +26.42% |
+| 2:10p ET | CIN @ CHW | Rate Field | 74F 3mph | CHW_ML +24.75% |
+| 3:07p ET | BOS @ TOR | Rogers Centre | indoor | BOS_ML +37.39% |
+| 4:05p ET | CHC @ WSN | Nationals Park | 86F 4mph | OVER_9.0 +43.62% |
+| 7:30p ET | PHI @ MIN | Field of Dreams | 70F 0mph | MIN_ML +22.18% |
+| 10:07p ET | TEX @ LAA | Angel Stadium | 69F 4mph | OVER_7.5 +2.58% |
+| 10:10p ET | MIL @ LAD | UNIQLO Field at Dodger Stadium | 68F 3mph | MIL_ML +20.39% |
 
 ## Parlays - top 5
 
-- **2-leg @ +288 (prob 38.6%, EV +49.63%)**
-  - CIN @ CHW CHW_ML (-137, model 71.8%)
+- **3-leg @ +871 (prob 15.4%, EV +49.87%)**
+  - SEA @ NYY OVER_7.5 (-110, model 57.6%)
+  - CHC @ WSN WSN_ML (+127, model 49.9%)
   - MIL @ LAD MIL_ML (+124, model 53.8%)
-- **2-leg @ +258 (prob 41.7%, EV +49.44%)**
-  - BOS @ TOR OVER_8.0 (-110, model 65.4%)
-  - PHI @ MIN MIN_ML (-114, model 63.7%)
-- **2-leg @ +230 (prob 45.3%, EV +49.37%)**
-  - Taj Bradley OVER 5.5 pitcher_strikeouts (-132, model 71.0%)
-  - PHI @ MIN MIN_ML (-114, model 63.7%)
 - **2-leg @ +264 (prob 40.9%, EV +49.21%)**
   - BOS @ TOR OVER_8.0 (-110, model 65.4%)
   - PHI @ MIN OVER_8.5 (-110, model 62.6%)
-- **2-leg @ +236 (prob 44.5%, EV +49.14%)**
-  - Taj Bradley OVER 5.5 pitcher_strikeouts (-132, model 71.0%)
+- **2-leg @ +231 (prob 45.0%, EV +48.99%)**
+  - CIN @ CHW CHW_ML (-136, model 71.9%)
   - PHI @ MIN OVER_8.5 (-110, model 62.6%)
+- **3-leg @ +727 (prob 18.0%, EV +48.66%)**
+  - SEA @ NYY OVER_7.5 (-110, model 57.6%)
+  - CHC @ WSN WSN_ML (+127, model 49.9%)
+  - PHI @ MIN OVER_8.5 (-110, model 62.6%)
+- **3-leg @ +596 (prob 21.3%, EV +48.03%)**
+  - SEA @ NYY OVER_7.5 (-110, model 57.6%)
+  - CIN @ CHW OVER_8.5 (-110, model 61.5%)
+  - MIL @ LAD OVER_8.5 (-110, model 60.1%)
 
 ## Self-Learning Loop
 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
 
-Cumulative graded plays: 8245. Wins: 3247. Hit rate: 39.4%.
+Cumulative graded plays: 8404. Wins: 3291. Hit rate: 39.2%.
 
 ## Auxiliary Markets (Model Fair Prices)
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
 | BOS @ TOR | 36.5% | +174 | 5.04 | +1053 | -1053 |
-| CHC @ WSN | 46.2% | +117 | 3.77 | +161 | -161 |
-| CIN @ CHW | 26.9% | +272 | 6.52 | -150 | +150 |
-| CLE @ DET | 49.2% | +103 | 3.38 | +110 | -110 |
-| MIL @ LAD | 38.4% | +161 | 4.86 | +196 | -196 |
+| CHC @ WSN | 46.2% | +117 | 3.78 | +161 | -161 |
+| CIN @ CHW | 26.9% | +272 | 6.47 | -151 | +151 |
+| CLE @ DET | 49.2% | +103 | 3.61 | +110 | -110 |
+| MIL @ LAD | 38.4% | +161 | 4.89 | +196 | -196 |
 | PHI @ MIN | 40.1% | +150 | 4.57 | -105 | +105 |
 | PIT @ MIA | 43.4% | +130 | 4.17 | +225 | -225 |
-| SEA @ NYY | 46.5% | +115 | 4.03 | -175 | +175 |
-| TEX @ LAA | 50.4% | -102 | 3.52 | +284 | -284 |
+| SEA @ NYY | 46.5% | +115 | 3.97 | -172 | +172 |
+| TEX @ LAA | 50.4% | -102 | 3.49 | +284 | -284 |
 
 ## Team Form (last 10)
 
@@ -86,7 +89,7 @@ Cumulative graded plays: 8245. Wins: 3247. Hit rate: 39.4%.
 
 ## Loop Activity (since last refresh)
 
-- Confidence delta: **+0.1**
+- Confidence delta: **+1.2**
 
 ## Model Recommendations (operator review)
 

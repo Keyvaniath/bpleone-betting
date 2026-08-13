@@ -1,50 +1,52 @@
 # Tonight's Slate Brief — 2026-08-13
 
-## Slate Quality: 55/100 (MEDIUM)
-_0% lineups confirmed · 9 rookie SPs_
+## Slate Quality: 59/100 (MEDIUM)
+_11% lineups confirmed · 9 rookie SPs_
 **Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
 - **9 games** scheduled
-- **34 best bets** scored: 9 DK · 0 PP · 9 NRFI · 0 SGP
-- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$34.22
-- **MC simulation:** EV +$77.41, 80% P(profit), p05 $-91.69 / p95 $237.73
+- **23 best bets** scored: 0 DK · 0 PP · 7 NRFI · 0 SGP
+- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$30.41
+- **MC simulation:** EV +$46.83, 71% P(profit), p05 $-114.06 / p95 $191.95
 
 ## Top 5 Best Bets
-1. **SEA @ NYY YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +24.6%)
-   - P(YRFI) 70.6% vs baseline 46.0%
-2. **CIN @ CHW YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +24.0%)
-   - P(YRFI) 70.0% vs baseline 46.0%
-3. **KCR @ LAD YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +23.8%)
-   - P(YRFI) 69.8% vs baseline 46.0%
-4. **TEX @ LAA YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +21.9%)
-   - P(YRFI) 67.9% vs baseline 46.0%
-5. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
+1. **CIN @ CHW YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +27.1%)
+   - P(YRFI) 73.1% vs baseline 46.0%
+2. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
    - Player prop quality score 1.1935
    - Elite player
+3. **LOL ShowMaker OVER 3.5 Kills**  (78/100 ****, edge —)
+   - Player prop quality score 1.1892
+   - Elite player
+4. **LOL Peyz OVER 4.5 Kills**  (78/100 ****, edge —)
+   - Player prop quality score 1.184
+   - Elite player
+5. **BOS @ TOR YRFI (1st-inning OVER 0.5)**  (77/100 ****, edge +17.5%)
+   - P(YRFI) 63.5% vs baseline 46.0%
 
-## ⚠️ Trap Warnings — 16 flagged
-- **Alex Bregman UNDER 0.5 batter hits** (high):
-   - Edge +15.7% looks big but only 0 settled props on this player — model unproven
-   - Batter heating up: heating up: 1.115 ops recent vs 0.759 season (+0.356)
-- **Parker Messick OVER 5.5 pitcher strikeouts** (low):
-   - Edge +26.1% looks big but only 0 settled props on this player — model unproven
-- **Taj Bradley OVER 5.5 pitcher strikeouts** (low):
-   - Edge +24.9% looks big but only 0 settled props on this player — model unproven
-- **SEA @ NYY YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +24.6% looks big but only 0 settled props on this player — model unproven
+## ⚠️ Trap Warnings — 5 flagged
 - **CIN @ CHW YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +24.0% looks big but only 0 settled props on this player — model unproven
+   - Edge +27.1% looks big but only 0 settled props on this player — model unproven
+- **BOS @ TOR YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +17.5% looks big but only 0 settled props on this player — model unproven
+- **MIL @ LAD YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +15.7% looks big but only 0 settled props on this player — model unproven
+- **PHI @ MIN YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +13.9% looks big but only 0 settled props on this player — model unproven
+- **PIT @ MIA YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +10.6% looks big but only 0 settled props on this player — model unproven
 
 ## Hot streaks
-**Batters heating up:** Chase Meidroth (heat +6.54), Trent Grisham (heat +5.90), Josh Naylor (heat +5.57)
+**Batters heating up:** Alex Bregman (heat +5.08), Chase Meidroth (heat +4.49), Ian Happ (heat +1.26)
+**Pitchers on a run:** Payton Tolle (heat +11.42), Max Fried (heat +3.09), Taj Bradley (heat +1.66)
 
 ## Bullpens GASSED tonight
-Athletics, San Diego Padres, San Francisco Giants, St. Louis Cardinals, Toronto Blue Jays, Minnesota Twins, Philadelphia Phillies, Atlanta Braves
+Athletics, Pittsburgh Pirates, San Diego Padres, St. Louis Cardinals, Minnesota Twins, Atlanta Braves, New York Yankees, Arizona Diamondbacks
 _Lean late-inning OVER on these games; fade their save situations._
 
 ## NRFI/YRFI strong leans
-- **YRFI** (1st-inning OVER): SEA @ NYY, CIN @ CHW, KCR @ LAD, TEX @ LAA, CLE @ DET
+- **YRFI** (1st-inning OVER): CIN @ CHW, BOS @ TOR, MIL @ LAD, PHI @ MIN, PIT @ MIA
 
 ## Golf -- FedEx St. Jude Championship
 - **Leader:** Jackson Koivun (E) at #1
@@ -61,19 +63,19 @@ _Lean late-inning OVER on these games; fade their save situations._
 - Chicago Blackhawks @ Minnesota Wild (0-0-0 vs 0-0-0)  | P(home) 52.9% fair -112 | Scheduled
 
 ## KBO -- 2026 Korean Baseball
-- Hanwha Eagles @ Doosan Bears | P(home) 65.7% fair -192 | total 9 R
-- KT Wiz @ NC Dinos | P(home) 50.6% fair -103 | total 9 R
-- LG Twins @ Kiwoom Heroes | P(home) 30.1% fair +232 | total 9 R
-- Lotte Giants @ SSG Landers | P(home) 59.0% fair -144 | total 9 R
-- Samsung Lions @ KIA Tigers | P(home) 58.3% fair -140 | total 8 R
-- **KBO POD:** SSG Landers ML vs Lotte Giants (KBO) (HIGH)
+- Hanwha Eagles @ Samsung Lions | P(home) 68.8% fair -220 | total 9 R
+- NC Dinos @ Lotte Giants | P(home) 49.7% fair +101 | total 9 R
+- Doosan Bears @ KIA Tigers | P(home) 62.1% fair -164 | total 8 R
+- SSG Landers @ LG Twins | P(home) 60.6% fair -154 | total 8 R
+- Kiwoom Heroes @ KT Wiz | P(home) 66.2% fair -196 | total 9 R
+- **KBO POD:** LG Twins ML vs SSG Landers (KBO) (HIGH)
 
-## LoL Esports -- 0 live, 22 upcoming
-- [LCK Challengers] HLE Challengers vs BRO Challengers BO3 | P(A) 45.6% fair +119/-119
-- [LCK Challengers] KRX Challengers vs Gen.G Global Academy BO3 | P(A) 62.7% fair -168/+168
-- [LCK Challengers] kt Challengers vs NS Challengers BO3 | P(A) 53.4% fair -115/+115
-- [LCK] KIWOOM DRX vs BNK FEARX BO3 | P(A) 48.8% fair +105/-105
-- [LCK] Gen.G Esports vs Hanwha Life Esports BO3 | P(A) 45.8% fair +119/-119
+## LoL Esports -- 0 live, 24 upcoming
+- [NACL] Maryville University vs Winthrop University BO3 | P(A) 51.0% fair -104/+104
+- [NACL] Ole Miss Esports vs Dorado Gaming BO3 | P(A) 44.5% fair +125/-125
+- [LCK Challengers] T1 Esports Academy vs DK Challengers BO3 | P(A) 57.2% fair -134/+134
+- [NACL] NRG vs Contingent Esports BO3 | P(A) 66.1% fair -195/+195
+- [LCK Challengers] BNK FEARX Youth vs BRO Challengers BO3 | P(A) 56.7% fair -131/+131
 - **LoL POT:** LGD GAMING ML vs EDWARD GAMING (LPL, BO3) (HIGH)
 
 ## Player Play of the Day -- across all sports (3489 candidates scanned)
