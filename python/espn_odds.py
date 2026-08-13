@@ -29,7 +29,10 @@ OUT = os.path.join(DATA_DIR, "espn_odds.json")
 HISTORY = os.path.join(DATA_DIR, "odds_history.json")
 
 # Sports pulled by default each run (off-season leagues just return 0 games).
-DEFAULT_SPORTS = ["mlb", "nba", "nhl", "wnba"]
+# 2026-08-13: football added for the season -- NFL preseason is live now, NCAAF
+# starts late Aug, NCAAB self-activates in Nov. Free ESPN lines feed the desks,
+# line_movement, and clv_tracker (all sport-generic) with zero extra plumbing.
+DEFAULT_SPORTS = ["mlb", "nba", "nhl", "wnba", "nfl", "ncaaf", "ncaab"]
 MAX_SNAPSHOTS = 80      # per game-day, bounds the history file
 HISTORY_KEEP_DAYS = 8   # prune game-days older than this
 

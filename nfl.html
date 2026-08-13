@@ -46,6 +46,12 @@
     <h1 id="sb_title">National Football League Desk — Loading…</h1>
     <p id="sb_status" class="muted">Pulling live ESPN scoreboard…</p>
   </section>
+  <section id="presBanner" style="display:none; margin:0 0 20px; padding:10px 16px; border:1px solid rgba(212,160,74,.35); border-left:3px solid #d4a04a; border-radius:8px; background:rgba(212,160,74,.07); font-size:12.5px; color:var(--text-2,#b9c3d4); line-height:1.55;">
+    🏈 <b style="color:#d4a04a;">Preseason.</b> Starters rotate on coach scripts, so the model takes
+    <b>no picks</b> until Week&nbsp;1 — a season-baseline projection on a preseason snap count would be
+    structurally wrong, not just noisy. Live scores and book lines below are real; model props resume
+    automatically at Week&nbsp;1.
+  </section>
   <section class="metric-strip">
     <div class="metric"><span class="metric-num" id="m_games">--</span><span class="metric-label">Games Today</span></div>
     <div class="metric"><span class="metric-num" id="m_live">--</span><span class="metric-label">In Progress</span></div>
@@ -59,6 +65,14 @@
       <span>Matchup</span><span>Records</span><span>Score</span><span>P(home)</span><span>Home Fair</span><span>Away Fair</span><span>Status</span>
     </div>
     <div id="sb_list"><p class="muted" style="padding:14px;">Loading…</p></div>
+  </section>
+  <section class="card" style="margin-bottom:24px;">
+    <div class="card-head"><span>📈 <strong>Live Book Lines</strong> <span class="muted" style="font-size:10px;">DraftKings via ESPN — free feed, refreshed by the heartbeat</span></span><span class="muted" id="ln_meta">--</span></div>
+    <div id="ln_list"><p class="muted" style="padding:14px;">Loading…</p></div>
+  </section>
+  <section class="card" style="margin-bottom:24px;">
+    <div class="card-head"><span>🎯 <strong>Model Props</strong> <span class="muted" style="font-size:10px;">play-level Monte Carlo · odds-independent · graded on the box score</span></span><span class="muted" id="pr_meta">--</span></div>
+    <div id="pr_list"><p class="muted" style="padding:14px;">Loading…</p></div>
   </section>
 </main>
 <script src="js/nav_badge.js"></script>
@@ -76,19 +90,29 @@ fetch("data/nfl_state.json?t=" + Date.now(), { cache: "no-cache" })
     setText("m_live", games.filter(g => g.state === 'in').length);
     setText("m_final", games.filter(g => g.state === 'post').length);
     setText("m_season", (d.season_status || '—').toUpperCase());
+    if ((d.season_status || '').toLowerCase() === 'preseason') {
+      const pb = document.getElementById('presBanner');
+      if (pb) pb.style.display = 'block';
+    }
     if (!games.length) { document.getElementById("sb_list").innerHTML = '<p class="muted" style="padding:14px;">No games scheduled.</p>'; return; }
+    // Preseason: the synthetic ELO runs on season win-pct, which is 0-0 (or one
+    // meaningless preseason result) in August -- printing "85%" off that would
+    // contradict the banner right above it. Blank the model columns until Week 1.
+    const pres = (d.season_status || '').toLowerCase() === 'preseason';
     document.getElementById("sb_list").innerHTML = games.map(g => {
       const cls = g.state === 'in' ? 'live' : g.state === 'post' ? 'final' : '';
       const pillCls = g.state === 'in' ? 'live' : g.state === 'post' ? 'final' : 'sched';
       const scoreText = g.state === 'pre' ? '—' : `${g.away_score ?? '?'}-${g.home_score ?? '?'}`;
       const betKey = `NFL|${g.home_team}|ML|${g.fair_home_american}`;
+      const pTxt = pres ? '—' : `${(g.p_home_win * 100).toFixed(1)}%`;
+      const pCol = pres ? 'var(--muted,#888)' : (g.p_home_win >= 0.6 ? '#58c878' : g.p_home_win <= 0.4 ? '#e35a5a' : 'var(--text-2,#aaa)');
       return `<div class="sb-row ${cls}" data-bet-key="${betKey}" data-bet-label="${g.home_team} ML vs ${g.away_team}" data-bet-play="ML" data-bet-src="NFL">
         <span><strong>${g.matchup}</strong></span>
         <span class="muted" style="font-size:10px;">${g.away_record} / ${g.home_record}</span>
         <span style="font-weight:700;">${scoreText}</span>
-        <span style="color:${g.p_home_win >= 0.6 ? '#58c878' : g.p_home_win <= 0.4 ? '#e35a5a' : 'var(--text-2,#aaa)'}; font-weight:700;">${(g.p_home_win * 100).toFixed(1)}%</span>
-        <span>${fmtAmer(g.fair_home_american)}</span>
-        <span>${fmtAmer(g.fair_away_american)}</span>
+        <span style="color:${pCol}; font-weight:700;">${pTxt}</span>
+        <span>${pres ? '—' : fmtAmer(g.fair_home_american)}</span>
+        <span>${pres ? '—' : fmtAmer(g.fair_away_american)}</span>
         <span class="pill ${pillCls}">${g.status || g.state || '—'}</span>
       </div>`;
     }).join("");
@@ -97,6 +121,62 @@ fetch("data/nfl_state.json?t=" + Date.now(), { cache: "no-cache" })
   .catch(err => {
     document.getElementById("sb_list").innerHTML = `<p class="muted" style="padding:14px;">Could not load nfl_state.json (${err.message}).</p>`;
   });
+// Live book lines (espn_odds free feed; NFL rows appear once the pipeline's
+// espn_odds run includes football -- close to game day for preseason).
+fetch("data/espn_odds.json?t=" + Date.now(), { cache: "no-cache" })
+  .then(r => r.json())
+  .then(d => {
+    const rows = (d.games || []).filter(g => (g.sport || '').toUpperCase() === 'NFL');
+    const el = document.getElementById('ln_list');
+    if (!el) return;
+    const cols = 'grid-template-columns:1.6fr 90px 90px 90px 110px;';
+    if (!rows.length) {
+      el.innerHTML = '<p class="muted" style="padding:14px;">No NFL lines on the free feed right now — ESPN posts book lines close to kickoff.</p>';
+      return;
+    }
+    el.innerHTML = '<div class="sb-row head" style="' + cols + '"><span>Matchup</span><span>Away ML</span><span>Home ML</span><span>Spread</span><span>Total</span></div>' +
+      rows.map(g => {
+        const m = g.market || {};
+        return '<div class="sb-row" style="' + cols + '">' +
+          '<span><strong>' + g.matchup + '</strong></span>' +
+          '<span>' + fmtAmer(m.ml_away) + '</span>' +
+          '<span>' + fmtAmer(m.ml_home) + '</span>' +
+          '<span>' + (m.spread != null ? m.spread : '—') + '</span>' +
+          '<span>' + (m.total != null ? 'O/U ' + m.total : '—') + '</span></div>';
+      }).join('');
+    const meta = document.getElementById('ln_meta');
+    if (meta) meta.textContent = rows.length + ' games · ' + (d.generated_at || '').replace('T', ' ') + ' UTC';
+  }).catch(() => {});
+
+// Model props (nfl_player_props). During preseason the generator is GATED and
+// publishes the why -- render it instead of pretending there are no games.
+fetch("data/nfl_player_props.json?t=" + Date.now(), { cache: "no-cache" })
+  .then(r => r.json())
+  .then(d => {
+    const el = document.getElementById('pr_list');
+    if (!el) return;
+    const strong = d.strong_edges || [];
+    if (d.preseason_note || !strong.length) {
+      el.innerHTML = '<p class="muted" style="padding:14px;">' + (d.preseason_note || 'No model props today.') + '</p>';
+      const meta = document.getElementById('pr_meta');
+      if (meta) meta.textContent = (d.season_status || '').toUpperCase();
+      return;
+    }
+    const cols = 'grid-template-columns:1.3fr 110px 1.6fr 70px 80px;';
+    el.innerHTML = '<div class="sb-row head" style="' + cols + '"><span>Player</span><span>Team</span><span>Model lean</span><span>P</span><span>Fair</span></div>' +
+      strong.slice(0, 14).map(rw => {
+        const bm = rw.best_market || {};
+        return '<div class="sb-row" style="' + cols + '">' +
+          '<span><strong>' + rw.player + '</strong></span>' +
+          '<span class="muted" style="font-size:10px;">' + rw.team + ' v ' + rw.opp_team + '</span>' +
+          '<span>' + String(bm.market || '').replace(/_/g, ' ').toLowerCase() + '</span>' +
+          '<span style="font-weight:700;">' + (bm.p != null ? Math.round(bm.p * 100) + '%' : '—') + '</span>' +
+          '<span>' + fmtAmer(bm.fair_odds) + '</span></div>';
+      }).join('');
+    const meta = document.getElementById('pr_meta');
+    if (meta) meta.textContent = (d.n_strong_edges || 0) + ' edges · ' + (d.generated_at || '').replace('T', ' ') + ' UTC';
+  }).catch(() => {});
+
 setInterval(() => location.reload(), 5 * 60 * 1000);
 </script>
 </body>

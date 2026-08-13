@@ -41,6 +41,25 @@ bpleone-site/
 
 ## Current deployment state (LIVE)
 
+- **2026-08-13 — NFL SEASON BUILD-OUT + the preseason honesty gate:** football
+  is live in the odds stack — espn_odds DEFAULT_SPORTS now includes
+  nfl/ncaaf/ncaab (SPORT_PATHS already had them); real DK lines flow to the
+  desks, line_movement, and clv_tracker with zero extra plumbing (all
+  sport-generic; verified 16 NFL + 99 NCAAF games priced). nfl.html is a real
+  desk now: preseason banner, Live Book Lines card (espn_odds NFL rows), Model
+  Props card (nfl_player_props strong_edges). **THE GATE (do not regress):**
+  nfl_player_props takes NO picks while nfl_state.season_status == "preseason"
+  — season-baseline projections priced starters as if they'd play four
+  quarters (0.80 conviction at -400 on six-snap cameos); 95 such preseason
+  props had already entered the ledger and were retired by
+  all_picks_tracker._void_preseason_nfl (idempotent, runs BEFORE settlement so
+  they can never grade first; _reconcile_settled_voids treats 'preseason'
+  voids as intentional, same as 'duplicate wager'). The gated payload is
+  shape-identical (rows/strong_edges empty + preseason_note) and the page
+  renders the why; nfl.html also blanks the synthetic-ELO P(home)/fair columns
+  during preseason (0-0 records make them fiction). Everything self-activates
+  at Week 1 (2026-09-08 cutoff constant _NFL_2026_WEEK1).
+
 - **2026-08-10 — ALPHA PICK RULE v2 + curated-attribution fix (read before touching
   alpha_pick_record / the curated stats):** investigation of the flat last-30
   (curated 54-50/−0.8u vs +23.8% prior) found THREE stacked causes. (1) The

@@ -247,6 +247,36 @@ def run() -> Dict[str, Any]:
     games = state.get("games") or state.get("events") or []
     gl = _load(os.path.join(DATA_DIR, "nfl_player_gamelogs.json")).get("by_name") or {}
 
+    # PRESEASON GATE (2026-08-13): the projections are season-baseline usage
+    # (2025 gamelogs + priors). In preseason, starters play a series or two on a
+    # coach's script -- the projection is structurally WRONG, not just noisy
+    # (0.80 "conviction" on a starter who'll log six snaps). Before this gate,
+    # 95 preseason props entered the ledger at up to -400 fair odds. No picks
+    # until the regular season; payload stays shape-identical so no consumer
+    # breaks, and the page can render the why.
+    season_status = str(state.get("season_status") or "").lower()
+    if season_status == "preseason":
+        out = {
+            "generated_at": dt.datetime.utcnow().isoformat(timespec="seconds"),
+            "season_status": season_status,
+            "n_props": 0,
+            "n_strong_edges": 0,
+            "n_players_in_db": len(NFL_PLAYER_DB),
+            "method_note": ("NFL model-conviction props (odds-independent). "
+                            "GATED for preseason: starters rotate on coach scripts, "
+                            "so season-baseline projections don't price these games. "
+                            "Model props resume Week 1 automatically."),
+            "preseason_note": ("Preseason: no model props. Usage is coach-scripted "
+                               "and starters play snippets -- a season-baseline "
+                               "projection can't price that honestly. Resumes Week 1."),
+            "rows": [],
+            "strong_edges": [],
+        }
+        os.makedirs(DATA_DIR, exist_ok=True)
+        with open(OUT, "w") as f:
+            json.dump(out, f, indent=2)
+        return out
+
     today = dt.date.today()
     horizon = today + dt.timedelta(days=HORIZON_DAYS)
 
@@ -344,6 +374,7 @@ def run() -> Dict[str, Any]:
     strong = [r for r in rows if r.get("best_market")]
     out = {
         "generated_at": dt.datetime.utcnow().isoformat(timespec="seconds"),
+        "season_status": season_status or "regular",
         "n_props": len(rows),
         "n_strong_edges": len(strong),
         "n_players_in_db": len(NFL_PLAYER_DB),

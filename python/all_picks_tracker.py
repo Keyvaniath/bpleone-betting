@@ -2439,6 +2439,40 @@ def _void_stale_pending(history: List[Dict[str, Any]]) -> int:
     return n
 
 
+# 2026 NFL Week 1 kickoff week. Preseason games before this date are not
+# priceable by the season-baseline model (see nfl_player_props' preseason gate).
+_NFL_2026_WEEK1 = "2026-09-08"
+
+
+def _void_preseason_nfl(history: List[Dict[str, Any]]) -> int:
+    """Void NFL model-prop picks taken on PRESEASON games (idempotent).
+
+    95 preseason props entered the ledger before the generator's preseason gate
+    shipped (2026-08-13) -- season-baseline projections priced starters as if
+    they'd play four quarters (0.80 conviction at -400 on players who log six
+    snaps). Grading those off real box scores would pour structural noise into
+    the record and the nfl_* family calibration, so they are no-actioned. Runs
+    BEFORE settlement so a preseason pick can never grade first;
+    _reconcile_settled_voids treats 'preseason' voids as intentional.
+    """
+    n = 0
+    for p in history:
+        if p.get("voided"):
+            continue
+        if str(p.get("sport") or "").upper() != "NFL":
+            continue
+        if not str(p.get("source") or "").startswith("nfl_"):
+            continue
+        if (p.get("date") or "")[:10] >= _NFL_2026_WEEK1:
+            continue
+        p["voided"] = True
+        p["voided_at"] = dt.datetime.now().isoformat(timespec="seconds")
+        p["voided_reason"] = ("preseason: season-baseline projections don't price "
+                              "coach-scripted preseason usage; NFL picks start Week 1")
+        n += 1
+    return n
+
+
 def _reconcile_settled_voids(history: List[Dict[str, Any]]) -> int:
     """Clear a stale void from any pick that is now settled with a real outcome.
 
@@ -2456,6 +2490,11 @@ def _reconcile_settled_voids(history: List[Dict[str, Any]]) -> int:
             # event was counted more than once; the extra copies are voided by
             # _collapse_duplicate_wagers). Never resurrect those.
             if str(p.get("voided_reason") or "").startswith("duplicate wager"):
+                continue
+            # Preseason voids are intentional too -- a graded preseason prop must
+            # never resurrect into the record (the game is structurally
+            # unpriceable by the season-baseline model, win or lose).
+            if str(p.get("voided_reason") or "").startswith("preseason"):
                 continue
             p["voided"] = False
             p.pop("voided_reason", None)
@@ -2806,6 +2845,10 @@ def run() -> Dict[str, Any]:
         fresh = today_by_id.get(p.get("pick_id"))
         if fresh and fresh.get("projection") is not None and p.get("projection") is None:
             p["projection"] = fresh["projection"]
+
+    # Retire preseason NFL props BEFORE settlement -- a preseason pick must
+    # never grade into the record (see _void_preseason_nfl).
+    n_preseason_voided = _void_preseason_nfl(history)
 
     # Settle anything pending
     n_newly_settled = _settle_picks(history)
