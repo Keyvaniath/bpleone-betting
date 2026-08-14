@@ -47,7 +47,26 @@ def compute_residuals(sport: str) -> Dict[str, Any]:
     h = _load(os.path.join(DATA_DIR, f"historical_{sport}.json"))
     games = h.get("games") or []
     if not games:
-        return {"sport": sport, "n_games": 0, "teams": {}}
+        # SHAPE-IDENTICAL degraded payload (off-season / no history yet) -- a
+        # missing key here printed "ERROR: 'n_teams'" for every dark sport on
+        # every pipeline run. Same rule as everywhere: display code must never
+        # look broken because a season is over. Written to disk so the page
+        # shows an honest empty state instead of a stale season.
+        payload = {
+            "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
+            "sport": sport,
+            "n_teams": 0,
+            "n_historical_games": 0,
+            "most_underrated": [],
+            "most_overrated": [],
+            "teams": {},
+            "note": "no historical games (off-season or feed dark)",
+        }
+        out_path = os.path.join(DATA_DIR, f"team_residuals_{sport}.json")
+        os.makedirs(DATA_DIR, exist_ok=True)
+        with open(out_path, "w") as f:
+            json.dump(payload, f, indent=2)
+        return payload
 
     games_sorted = sorted(games, key=lambda g: g["date"])
     records: Dict[str, Dict[str, int]] = {}
@@ -127,9 +146,13 @@ def run() -> Dict[str, int]:
     for sport in SPORTS:
         try:
             p = compute_residuals(sport)
+            n_teams = p.get("n_teams", 0)
+            if not n_teams:
+                results[sport] = "no history (off-season)"
+                continue
             n_under = len(p.get("most_underrated", []))
             n_over = len(p.get("most_overrated", []))
-            results[sport] = f"{p['n_teams']} teams ({n_under} underrated, {n_over} overrated)"
+            results[sport] = f"{n_teams} teams ({n_under} underrated, {n_over} overrated)"
         except Exception as e:
             results[sport] = f"ERROR: {e}"
     return results
