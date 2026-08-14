@@ -196,6 +196,9 @@ jobs:
         env:
           ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
           EDGESTAT_PROPS_MAX_GAMES: ${{ vars.EDGESTAT_PROPS_MAX_GAMES || '16' }}
+          # Optional market override (comma-separated). Set the repo variable to
+          # stretch a thin monthly quota; empty = module defaults (4 markets).
+          EDGESTAT_PROPS_MARKETS: ${{ vars.EDGESTAT_PROPS_MARKETS || '' }}
         working-directory: python
         run: python props_pipeline.py
 

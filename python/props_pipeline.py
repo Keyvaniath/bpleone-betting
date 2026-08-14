@@ -1292,10 +1292,34 @@ def write_props(payload: Dict[str, Any], path: str = OUT_PATH) -> None:
 
 
 if __name__ == "__main__":
-    payload = build_props()
-    write_props(payload)
-    # Print top 5 edges
-    for r in payload.get("top_edges", [])[:5]:
-        print(f"  {r['play']:5} {r['player']:24} {r['market']:22} {r['line']:>5} | "
-              f"DK {r.get('dk_over')}/{r.get('dk_under')} | model {r['model_prob_over']:.2%} | "
-              f"edge {r.get('best_edge_pct')}%")
+    # QUOTA GUARDS (2026-08-14). The pipeline runs 3x/day but every event call
+    # costs paid credits (odds_spend_log shows the 40/day cap maxed daily), and
+    # the AFTERNOON runs -- fully budget-skipped -- were overwriting the
+    # morning's real book props with an empty payload. The site had props every
+    # morning and lost them by 2 PM, while data_health flagged
+    # "key ACTIVE but props.json has 0 props".
+    #   1. ONCE PER DAY: if today's props.json already has games, keep it and
+    #      spend nothing.
+    #   2. NO-CLOBBER: a budget-skipped (0-game) build never overwrites a
+    #      same-day file that has games.
+    #   A STALE file (yesterday's) is still replaced even by an empty build --
+    #   dead lines are worse than no lines.
+    _existing: Dict[str, Any] = {}
+    try:
+        with open(OUT_PATH, encoding="utf-8") as _f:
+            _existing = json.load(_f)
+    except Exception:
+        pass
+    _today = dt.date.today().isoformat()
+    _ex_fresh = str(_existing.get("generated_at", ""))[:10] == _today and bool(_existing.get("games"))
+    if _ex_fresh:
+        print(f"[props] today's book props already fetched "
+              f"({len(_existing['games'])} games) -- keeping them, 0 credits spent")
+    else:
+        payload = build_props()
+        write_props(payload)
+        # Print top 5 edges
+        for r in payload.get("top_edges", [])[:5]:
+            print(f"  {r['play']:5} {r['player']:24} {r['market']:22} {r['line']:>5} | "
+                  f"DK {r.get('dk_over')}/{r.get('dk_under')} | model {r['model_prob_over']:.2%} | "
+                  f"edge {r.get('best_edge_pct')}%")
