@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="NFL Player Projections · EdgeStat — per-player Monte Carlo distributions: every market, every standard line, floor/median/ceiling, DK points. Informational only, 21+.">
+<link rel="canonical" href="https://betting.bpleone.com/nfl-players.html">
+<meta name="theme-color" content="#0d1017">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EdgeStat">
+<meta property="og:title" content="NFL Player Projections | EdgeStat">
+<meta property="og:description" content="Per-player NFL Monte Carlo distributions — every market, every standard line, floor/median/ceiling, DK fantasy points. Informational only, 21+.">
+<meta property="og:url" content="https://betting.bpleone.com/nfl-players.html">
+<meta property="og:image" content="https://betting.bpleone.com/assets/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://betting.bpleone.com/assets/og-card.png">
+<meta name="twitter:title" content="NFL Player Projections | EdgeStat">
+<meta name="twitter:description" content="Per-player NFL Monte Carlo distributions — every market, every line, floor/median/ceiling, DK points. Informational only, 21+.">
+<title>NFL Player Projections | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .pl-card { border:1px solid rgba(255,255,255,.07); border-radius:10px; margin:0 14px 10px; overflow:hidden; }
+  .pl-head { display:grid; grid-template-columns: 1.6fr 50px 120px 90px 90px 90px 30px; gap:10px; padding:10px 14px; cursor:pointer; align-items:center; font-family:'JetBrains Mono',monospace; font-size:12.5px; }
+  .pl-head:hover { background:rgba(255,255,255,.03); }
+  .pl-body { display:none; border-top:1px solid rgba(255,255,255,.06); padding:10px 14px 14px; }
+  .pl-card.open .pl-body { display:block; }
+  .mk-row { display:grid; grid-template-columns: 130px 70px 70px 110px 1fr; gap:10px; padding:5px 0; border-bottom:1px solid rgba(255,255,255,.04); font-family:'JetBrains Mono',monospace; font-size:11.5px; align-items:center; }
+  .mk-row.head { color:var(--muted,#888); font-size:9.5px; text-transform:uppercase; }
+  .lnchip { display:inline-block; margin:1px 4px 1px 0; padding:1px 7px; border-radius:6px; background:rgba(255,255,255,.05); font-size:10.5px; }
+  .lnchip b.o { color:#58c878; } .lnchip b.u { color:#e35a5a; }
+  .posbtn { background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.12); color:var(--text-2,#b9c3d4); font-size:11px; padding:5px 14px; border-radius:999px; cursor:pointer; }
+  .posbtn.on { background:rgba(212,160,74,.18); border-color:#d4a04a; color:#d4a04a; font-weight:700; }
+  .srcb { font-size:9px; padding:1px 6px; border-radius:6px; background:rgba(255,255,255,.06); color:var(--muted,#8a93a6); }
+  #q { background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.14); color:var(--text,#dfe6f2); border-radius:8px; padding:7px 12px; font-size:13px; min-width:220px; }
+</style>
+<script src="js/nav.js"></script>
+</head>
+<body class="page-nfl-players">
+<header class="topbar">
+  <div class="brand">
+    <a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a>
+    <span class="tagline">by bpleone</span>
+  </div>
+  <nav class="mainnav"><!-- nav.js injects here --></nav>
+  <div class="topbar-actions"><div class="ticker">NFL</div></div>
+</header>
+<main class="container">
+  <section class="page-head">
+    <h1>🏈 NFL Player Projections <span class="muted" style="font-size:14px;font-weight:400;">— the full Monte Carlo, player by player</span></h1>
+    <p id="pp_status" class="muted">Loading…</p>
+  </section>
+  <section id="prevBanner" style="display:none; margin:0 0 18px; padding:10px 16px; border:1px solid rgba(80,150,220,.4); border-left:3px solid #5096dc; border-radius:8px; background:rgba(80,150,220,.07); font-size:12.5px; color:var(--text-2,#b9c3d4); line-height:1.55;"></section>
+  <section class="metric-strip">
+    <div class="metric"><span class="metric-num" id="m_players">--</span><span class="metric-label">Players Projected</span></div>
+    <div class="metric"><span class="metric-num" id="m_mode">--</span><span class="metric-label">Mode</span></div>
+    <div class="metric"><span class="metric-num" id="m_week">--</span><span class="metric-label">Slate</span></div>
+    <div class="metric"><span class="metric-num" id="m_markets">--</span><span class="metric-label">Priced Markets</span></div>
+  </section>
+  <section class="card" style="margin-bottom:24px;">
+    <div class="card-head">
+      <span>🔬 <strong>Player Explorer</strong> <span class="muted" style="font-size:10px;">click a player for every market, every line, full distribution</span></span>
+      <span style="display:flex; gap:8px; align-items:center;">
+        <input id="q" type="search" placeholder="Search player / team…">
+      </span>
+    </div>
+    <div id="pos_filters" style="display:flex; gap:8px; padding:10px 14px 8px; flex-wrap:wrap;"></div>
+    <div class="pl-head" style="cursor:default; color:var(--muted,#888); font-size:10px; text-transform:uppercase;">
+      <span>Player</span><span>Pos</span><span>Game</span><span>DK Proj</span><span>Floor–Ceil</span><span>Salary</span><span></span>
+    </div>
+    <div id="pl_list"><p class="muted" style="padding:14px;">Loading…</p></div>
+    <div style="padding:8px 16px 14px;"><button id="pl_more" class="posbtn" style="display:none;">Show more</button></div>
+  </section>
+  <section class="card" style="margin-bottom:24px;">
+    <div class="card-head"><span>🧾 <strong>How to read this</strong></span></div>
+    <p class="muted" style="font-size:12px; line-height:1.65; padding:12px 16px 14px;" id="pp_note"></p>
+  </section>
+</main>
+<script src="js/nav_badge.js"></script>
+<script>
+const $ = (id) => document.getElementById(id);
+let DATA = null, POS = 'ALL', QUERY = '', SHOWN = 40;
+
+const MK_LABEL = {
+  pass_yds: 'Passing yards', pass_cmp: 'Completions', pass_td: 'Passing TDs',
+  pass_int: 'INT thrown', rush_yds: 'Rushing yards', rec_yds: 'Receiving yards',
+  rec: 'Receptions', longest_reception: 'Longest reception',
+  longest_rush: 'Longest rush', anytime_td: 'Anytime TD'
+};
+
+function filtered() {
+  const q = QUERY.toLowerCase();
+  return (DATA.players || []).filter(p =>
+    (POS === 'ALL' || p.pos === POS) &&
+    (!q || (p.player || '').toLowerCase().includes(q) || (p.team || '').toLowerCase().includes(q)));
+}
+
+function marketsHtml(p) {
+  const mk = p.markets || {};
+  let rows = '<div class="mk-row head"><span>Market</span><span>Median</span><span>Mean</span><span>p10–p90</span><span>Model P(over) by line</span></div>';
+  Object.keys(MK_LABEL).forEach(k => {
+    const m = mk[k];
+    if (!m) return;
+    let chips = '';
+    if (k === 'anytime_td') {
+      chips = `<span class="lnchip">TD yes <b class="o">${Math.round((m.p_yes || 0) * 100)}%</b></span>`;
+    } else {
+      chips = Object.entries(m.lines || {}).map(([ln, pv]) => {
+        const pct = Math.round(pv * 100);
+        const cls = pv >= 0.5 ? 'o' : 'u';
+        return `<span class="lnchip">${ln}: <b class="${cls}">${pct}%</b></span>`;
+      }).join('');
+    }
+    rows += `<div class="mk-row">
+      <span>${MK_LABEL[k]}</span>
+      <span>${m.median ?? '—'}</span>
+      <span>${m.mean ?? '—'}</span>
+      <span class="muted">${m.p10 != null ? m.p10 + '–' + m.p90 : '—'}</span>
+      <span>${chips}</span></div>`;
+  });
+  return rows;
+}
+
+function render() {
+  const rows = filtered();
+  $('pl_list').innerHTML = rows.slice(0, SHOWN).map((p, i) => {
+    const dk = p.dk_points || {};
+    return `<div class="pl-card" data-i="${i}">
+      <div class="pl-head" data-toggle="1">
+        <span><strong>${p.player}</strong> <span class="muted" style="font-size:10px;">${p.team}</span> <span class="srcb">${p.source || ''}</span></span>
+        <span>${p.pos}</span>
+        <span class="muted" style="font-size:10.5px;">${p.matchup || '—'}</span>
+        <span style="font-weight:700;">${dk.mean ?? '—'}</span>
+        <span class="muted">${dk.floor != null ? dk.floor + '–' + dk.ceiling : '—'}</span>
+        <span>${p.dk_salary ? '$' + p.dk_salary.toLocaleString() : '—'}</span>
+        <span class="muted">▾</span>
+      </div>
+      <div class="pl-body">${marketsHtml(p)}</div>
+    </div>`;
+  }).join('') || '<p class="muted" style="padding:14px;">No players match.</p>';
+  $('pl_more').style.display = rows.length > SHOWN ? 'inline-block' : 'none';
+}
+
+fetch('data/nfl_player_projections.json?t=' + Date.now(), { cache: 'no-cache' })
+  .then(r => r.json())
+  .then(d => {
+    DATA = d;
+    const n = d.n_players || 0;
+    $('m_players').textContent = n;
+    $('m_mode').textContent = (d.mode || '—').toUpperCase();
+    $('m_week').textContent = d.week_start || '—';
+    let mkts = 0;
+    (d.players || []).forEach(p => { mkts += Object.keys(p.markets || {}).length; });
+    $('m_markets').textContent = mkts.toLocaleString();
+    $('pp_status').textContent = `${n} players · generated ${(d.generated_at || '').replace('T', ' ')} UTC`;
+    if (d.mode === 'preview') {
+      const pb = $('prevBanner');
+      pb.innerHTML = '<b style="color:#5096dc;">Week 1 preview.</b> These are projections for the upcoming regular-season slate, published for study — <b>not picks</b>. Nothing here enters the ledger until the season starts; the props board goes live Week 1 automatically.';
+      pb.style.display = 'block';
+    }
+    $('pp_note').textContent = d.note || '';
+    const posList = ['ALL', 'QB', 'RB', 'WR', 'TE'];
+    $('pos_filters').innerHTML = posList.map(p =>
+      `<button class="posbtn ${p === 'ALL' ? 'on' : ''}" data-pos="${p}">${p}</button>`).join('');
+    $('pos_filters').addEventListener('click', (e) => {
+      const b = e.target.closest('[data-pos]');
+      if (!b) return;
+      POS = b.dataset.pos; SHOWN = 40;
+      document.querySelectorAll('.posbtn[data-pos]').forEach(x => x.classList.toggle('on', x === b));
+      render();
+    });
+    $('q').addEventListener('input', (e) => { QUERY = e.target.value; SHOWN = 40; render(); });
+    $('pl_list').addEventListener('click', (e) => {
+      const h = e.target.closest('[data-toggle]');
+      if (h) h.parentElement.classList.toggle('open');
+    });
+    $('pl_more').addEventListener('click', () => { SHOWN += 60; render(); });
+    render();
+  })
+  .catch(err => { $('pp_status').textContent = 'Could not load projections (' + err.message + ')'; });
+</script>
+</body>
+</html>

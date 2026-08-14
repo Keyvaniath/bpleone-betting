@@ -166,7 +166,9 @@ fetch("data/nfl_player_props.json?t=" + Date.now(), { cache: "no-cache" })
     if (!el) return;
     const strong = d.strong_edges || [];
     if (d.preseason_note || !strong.length) {
-      el.innerHTML = '<p class="muted" style="padding:14px;">' + (d.preseason_note || 'No model props today.') + '</p>';
+      const pv = d.preview || {};
+      el.innerHTML = '<p class="muted" style="padding:14px;">' + (d.preseason_note || 'No model props today.') +
+        (pv.n_players ? ' <a href="nfl-players.html" style="color:#d4a04a;font-weight:600;">Week 1 preview is live: ' + pv.n_players + ' players, every market projected →</a>' : '') + '</p>';
       const meta = document.getElementById('pr_meta');
       if (meta) meta.textContent = (d.season_status || '').toUpperCase();
       return;

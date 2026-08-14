@@ -51,16 +51,13 @@ import urllib.request
 from typing import Any, Dict, List, Optional, Tuple
 
 import nfl_player_props as npp
+import nfl_baselines as nb
 
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 SAL_CACHE = os.path.join(DATA_DIR, "nfl_dfs_salaries.json")
-BASE_CACHE = os.path.join(DATA_DIR, "nfl_2025_baselines.json")
 OUT = os.path.join(DATA_DIR, "nfl_dfs.json")
 
 SIM_N = 2000            # per-player sims (mean se ~0.3 pts; props desk uses 4000 on 28)
-MIN_GP_2025 = 6         # min 2025 games for a usable season baseline
-MIN_GP_CUR = 3          # min current-season games for a gamelog-only baseline
-FETCH_CAP = int(os.environ.get("NFL_DFS_FETCH_CAP", "120"))  # new baseline fetches per run
 SALARY_CAP = 50000
 BUDGET_VARIANTS = (45000, 48000, 50000)
 NFL_2026_WEEK1 = "2026-09-08"
@@ -103,15 +100,9 @@ def _write(p: str, obj: Any) -> None:
         json.dump(obj, f, indent=2)
 
 
-_SUFFIXES = (" jr", " sr", " ii", " iii", " iv", " v")
-
-
-def _norm_name(s: Any) -> str:
-    n = re.sub(r"[^a-z ]", "", str(s or "").lower()).strip()
-    for suf in _SUFFIXES:
-        if n.endswith(suf):
-            n = n[: -len(suf)].strip()
-    return re.sub(r"\s+", " ", n)
+# Name normalization + roster/baseline machinery live in nfl_baselines (shared
+# with the props desk so the two universes can't drift).
+_norm_name = nb.norm_name
 
 
 # --------------------------------------------------------------------------
@@ -180,145 +171,17 @@ def fetch_slate() -> Optional[Dict[str, Any]]:
 
 
 # --------------------------------------------------------------------------
-# 2. 2025 baselines (ESPN athlete statistics, cached forever)
+# 2./3. Baselines + projections (shared machinery in nfl_baselines)
 # --------------------------------------------------------------------------
-
-def _roster_index() -> Dict[str, List[Dict[str, Any]]]:
-    """norm_name -> [{id, pos, team}] from rosters_nfl.json (collisions kept)."""
-    idx: Dict[str, List[Dict[str, Any]]] = {}
-    rost = _load(os.path.join(DATA_DIR, "rosters_nfl.json"))
-    teams = rost.get("teams")
-    teams_iter = teams.values() if isinstance(teams, dict) else (teams or [])
-    for t in teams_iter:
-        ab = (t.get("abbreviation") or "").upper()
-        for pl in t.get("players") or []:
-            idx.setdefault(_norm_name(pl.get("name")), []).append(
-                {"id": str(pl.get("id")), "pos": (pl.get("position") or "").upper(), "team": ab})
-    return idx
-
-
-_STAT_KEEP = {
-    "general": ("gamesPlayed", "fumblesLost"),
-    "passing": ("passingYards", "passingTouchdowns", "interceptions",
-                 "completions", "passingAttempts"),
-    "rushing": ("rushingAttempts", "rushingYards", "rushingTouchdowns"),
-    "receiving": ("receptions", "receivingTargets", "receivingYards",
-                   "receivingTouchdowns"),
-}
-
-
-def _fetch_baseline(espn_id: str) -> Dict[str, Any]:
-    url = ("https://sports.core.api.espn.com/v2/sports/football/leagues/nfl/"
-           f"seasons/2025/types/2/athletes/{espn_id}/statistics")
-    try:
-        s = _get(url, timeout=20)
-    except Exception:
-        return {"no_data": True}
-    out: Dict[str, Any] = {}
-    for c in ((s.get("splits") or {}).get("categories")) or []:
-        keep = _STAT_KEEP.get(c.get("name"))
-        if not keep:
-            continue
-        for x in c.get("stats") or []:
-            if x.get("name") in keep:
-                out[x["name"]] = x.get("value")
-    if not out.get("gamesPlayed"):
-        return {"no_data": True}
-    return out
-
-
-def ensure_baselines(needed: List[Tuple[str, str]]) -> Dict[str, Any]:
-    """needed = [(espn_id, display_name)]. Fetch at most FETCH_CAP new ids per
-    run; cache everything (incl. no_data markers so rookies aren't re-fetched)."""
-    cache = _load(BASE_CACHE)
-    entries = cache.get("by_id") or {}
-    fetched = 0
-    for espn_id, name in needed:
-        if espn_id in entries:
-            continue
-        if fetched >= FETCH_CAP:
-            break
-        bl = _fetch_baseline(espn_id)
-        bl["name"] = name
-        entries[espn_id] = bl
-        fetched += 1
-    if fetched:
-        _write(BASE_CACHE, {"season": 2025,
-                            "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
-                            "n_players": len(entries), "by_id": entries})
-        print(f"[nfl-dfs] fetched {fetched} new 2025 baselines (cache: {len(entries)})")
-    return entries
-
-
-# --------------------------------------------------------------------------
-# 3. Projections (skill players through the props MC; DST via Vegas)
-# --------------------------------------------------------------------------
-
-def _info_from_2025(bl: Dict[str, Any], pos: str) -> Optional[Dict[str, Any]]:
-    gp = bl.get("gamesPlayed") or 0
-    if gp < MIN_GP_2025:
-        return None
-    info: Dict[str, Any] = {"pos": pos}
-    pass_y = (bl.get("passingYards") or 0) / gp
-    rush_y = (bl.get("rushingYards") or 0) / gp
-    rec_y = (bl.get("receivingYards") or 0) / gp
-    rec = (bl.get("receptions") or 0) / gp
-    if pos == "QB" and pass_y >= 60:
-        info["pass_yds"] = round(pass_y, 1)
-        info["pass_td"] = round((bl.get("passingTouchdowns") or 0) / gp, 2)
-    if rush_y >= 8:
-        info["rush_yds"] = round(rush_y, 1)
-    if rec >= 1.2 and rec_y >= 8:
-        info["rec"] = round(rec, 2)
-        info["rec_yds"] = round(rec_y, 1)
-    tds = ((bl.get("rushingTouchdowns") or 0) + (bl.get("receivingTouchdowns") or 0)) / gp
-    if "rush_yds" in info or "rec_yds" in info:
-        info["td_rate"] = round(tds, 2)
-    return info if any(k in info for k in ("pass_yds", "rush_yds", "rec_yds")) else None
-
-
-def _info_from_gamelogs(gl_rows: List[Dict[str, Any]], pos: str) -> Optional[Dict[str, Any]]:
-    """Current-season fallback baseline (covers rookies once they have games)."""
-    if len(gl_rows) < MIN_GP_CUR:
-        return None
-    n = len(gl_rows)
-    avg = lambda k: sum(float(g.get(k) or 0) for g in gl_rows) / n
-    info: Dict[str, Any] = {"pos": pos}
-    if pos == "QB" and avg("pass_yds") >= 60:
-        info["pass_yds"] = round(avg("pass_yds"), 1)
-        info["pass_td"] = round(avg("pass_td"), 2)
-    if avg("rush_yds") >= 8:
-        info["rush_yds"] = round(avg("rush_yds"), 1)
-    if avg("rec") >= 1.2:
-        info["rec"] = round(avg("rec"), 2)
-        info["rec_yds"] = round(avg("rec_yds"), 1)
-    if "rush_yds" in info or "rec_yds" in info:
-        info["td_rate"] = round(avg("rush_td") + avg("rec_td"), 2)
-    return info if any(k in info for k in ("pass_yds", "rush_yds", "rec_yds")) else None
-
 
 def _pct(sorted_xs: List[float], q: float) -> float:
     i = min(len(sorted_xs) - 1, max(0, int(q * len(sorted_xs))))
     return sorted_xs[i]
 
 
-def _dk_points(sims: Dict[str, List[float]], n: int) -> List[float]:
-    z = [0.0] * n
-    py = sims.get("pass_yds") or z
-    ptd = sims.get("pass_td") or z
-    pint = sims.get("pass_int") or z
-    ry = sims.get("rush_yds") or z
-    rtd = sims.get("rush_td") or z
-    rec = sims.get("rec") or z
-    recy = sims.get("rec_yds") or z
-    rectd = sims.get("rec_td") or z
-    out = []
-    for i in range(n):
-        fp = (0.04 * py[i] + 4.0 * ptd[i] - 1.0 * pint[i] + (3.0 if py[i] >= 300 else 0.0)
-              + 0.10 * ry[i] + 6.0 * rtd[i] + (3.0 if ry[i] >= 100 else 0.0)
-              + 1.00 * rec[i] + 0.10 * recy[i] + 6.0 * rectd[i] + (3.0 if recy[i] >= 100 else 0.0))
-        out.append(fp)
-    return out
+# DK Classic scoring lives in nfl_player_props.dk_points_from_sims (one scorer,
+# shared with the props/projections artifact so the two can never disagree).
+_dk_points = npp.dk_points_from_sims
 
 
 def _opp_of(player_team: str, game: str) -> Optional[str]:
@@ -498,7 +361,7 @@ def run() -> Dict[str, Any]:
     skill = [p for p in players if p.get("pos") in ("QB", "RB", "WR", "TE")]
     dsts = [p for p in players if p.get("pos") == "DST"]
 
-    roster_idx = _roster_index()
+    roster_idx = nb.roster_index()
     gl_all = _load(os.path.join(DATA_DIR, "nfl_player_gamelogs.json")).get("by_name") or {}
 
     # Resolve espn ids for the slate's skill players (team-aware on collisions).
@@ -515,32 +378,15 @@ def run() -> Dict[str, Any]:
             needed.append((cands[0]["id"], p["name"]))
         elif cands:
             ambiguous += 1
-    baselines = ensure_baselines(needed)
+    baselines = nb.ensure_baselines(needed)
 
     projections: List[Dict[str, Any]] = []
     unprojected: List[Dict[str, Any]] = []
     for p in skill:
         opp = _opp_of(p["team"], p.get("game") or "")
         nm = _norm_name(p["name"])
-        info = None
-        source = None
-        # curated DB first (priors maintained by hand), then 2025 season, then
-        # current-season gamelogs (rookie path).
-        db_info = npp.NFL_PLAYER_DB.get(nm)
-        espn_id = resolved.get(p["name"])
-        bl = baselines.get(espn_id) if espn_id else None
-        if bl and not bl.get("no_data"):
-            info = _info_from_2025(bl, p["pos"])
-            source = "season2025"
-        if db_info:
-            info = dict(info or {})
-            info.update(db_info)      # curated priors win on conflicts
-            source = "curated+2025" if source else "curated"
-        if info is None:
-            gl_rows = gl_all.get(nm)
-            gl_rows = gl_rows if isinstance(gl_rows, list) else ((gl_rows or {}).get("games") or [])
-            info = _info_from_gamelogs(gl_rows, p["pos"])
-            source = "gamelogs" if info else None
+        info, source = nb.resolve_info(nm, p["pos"], resolved.get(p["name"]),
+                                       baselines, gl_all, npp.NFL_PLAYER_DB)
         if info is None:
             unprojected.append(p)
             continue

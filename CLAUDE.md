@@ -41,6 +41,25 @@ bpleone-site/
 
 ## Current deployment state (LIVE)
 
+- **2026-08-13 (latest) — NFL PROPS UNIVERSE WIDENED + WEEK 1 PREVIEW +
+  PLAYER EXPLORER:** shared baseline machinery extracted to nfl_baselines.py
+  (roster/id resolution, cached 2025 season baselines, info-dict ladder) --
+  BOTH nfl_player_props and nfl_dfs import it so the universes can't drift
+  (refactor verified result-identical: 201 projected, optimal 150.8 @ 50k).
+  nfl_player_props v2: the in-season universe is now EVERY baseline-resolvable
+  skill player on the slate (curated 28 sim at SIM_N=4000, wide universe at
+  SIM_N_WIDE=2000), not just the hand-curated DB. During preseason the PICKS
+  gate stands (rows/strong_edges empty -- the ledger collector reads ONLY
+  strong_edges) but the desk publishes a WEEK 1 PREVIEW off the DK slate:
+  preview_rows (top 150 leans, collector-invisible keys) + the new data-rich
+  artifact data/nfl_player_projections.json (191 players, per-market
+  mean/median/p10/p90 + P(over) at EVERY standard line + DK pts + salary
+  join; mode preview|live). nfl-players.html = the explorer (search, pos
+  filters, expandable per-player market tables) -- in nav Players menu +
+  directory. dk_points_from_sims moved into nfl_player_props (nfl_dfs
+  delegates). At Week 1 everything flips live automatically: picks resume on
+  the WIDENED universe, artifact switches to mode 'live'.
+
 - **2026-08-13 (later) — NFL DFS DESK (nfl_dfs.py -> data/nfl_dfs.json ->
   nfl-dfs.html):** weekly DraftKings projections from OUR Monte Carlo + exact
   salary-cap optimal lineups. Salaries come from DK's PUBLIC endpoints

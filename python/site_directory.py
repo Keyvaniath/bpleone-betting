@@ -128,6 +128,7 @@ GROUPS: List[Dict[str, Any]] = [
     ]},
     {"group": "Player Props by Sport", "pages": [
         {"href": "player.html",        "label": "MLB Player Search"},
+        {"href": "nfl-players.html",   "label": "🏈 NFL Players — full MC distributions", "sport_key": "nfl"},
         {"href": "nba-players.html",   "label": "NBA Players",  "sport_key": "nba"},
         {"href": "wnba-players.html",  "label": "WNBA Players", "sport_key": "wnba"},
         {"href": "nhl-players.html",   "label": "NHL Players",  "sport_key": "nhl"},
