@@ -6,7 +6,7 @@ _0% lineups confirmed · 10 rookie SPs_
 
 ## Slate
 - **14 games** scheduled
-- **29 best bets** scored: 0 DK · 0 PP · 9 NRFI · 0 SGP
+- **27 best bets** scored: 0 DK · 0 PP · 9 NRFI · 0 SGP
 - **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$37.2
 - **MC simulation:** EV +$92.95, 76% P(profit), p05 $-109.21 / p95 $272.59
 
@@ -34,13 +34,6 @@ _0% lineups confirmed · 10 rookie SPs_
 - **COL @ SFG YRFI (1st-inning OVER 0.5)** (low):
    - Edge +19.4% looks big but only 0 settled props on this player — model unproven
 
-## Weather leans
-- **UNDER lean** (wind in + cold): COL @ SFG
-
-## Hot streaks
-**Batters heating up:** Jackson Merrill (heat +2.79), Griffin Conine (heat +2.56), Abimelec Ortiz (heat +1.06)
-**Pitchers on a run:** Sandy Alcantara (heat +5.01), Gerrit Cole (heat +2.25), Michael King (heat +2.02)
-
 ## Bullpens GASSED tonight
 San Diego Padres, Texas Rangers, Toronto Blue Jays, Minnesota Twins, Philadelphia Phillies, Chicago White Sox, New York Yankees, Chicago Cubs
 _Lean late-inning OVER on these games; fade their save situations._
@@ -49,10 +42,10 @@ _Lean late-inning OVER on these games; fade their save situations._
 - **YRFI** (1st-inning OVER): WSN @ NYM, TEX @ OAK, STL @ CHC, KCR @ LAA, COL @ SFG
 
 ## Golf -- FedEx St. Jude Championship
-- **Leader:** Michael Thorbjornsen (-5) at #1
+- **Leader:** Sungjae Im (-8) at #1
 - **Field:** 69 players  |  Status: In Progress
-- **Play of the Tournament:** Jordan Spieth WIN @ +578 (model 14.8%, HIGH)
-   - P(win) 14.8% with 2 round(s) left -- sweet-spot value at #2 (-5).
+- **Play of the Tournament:** Adam Scott TOP5 @ +548 (model 15.4%, HIGH)
+   - P(top 5) 15.4% -- lower variance than outright but compelling line.
 
 ## NBA -- PRESEASON
 - Miami Heat @ Toronto Raptors (0-0 vs 0-0)  | P(home) 55.0% fair -122 | Scheduled
@@ -65,10 +58,14 @@ _Lean late-inning OVER on these games; fade their save situations._
 - Chicago Blackhawks @ Minnesota Wild (0-0-0 vs 0-0-0)  | P(home) 52.9% fair -112 | Scheduled
 
 ## KBO -- 2026 Korean Baseball
-- Doosan Bears @ KIA Tigers | P(home) 60.9% fair -156 | total 9 R
-- **KBO POD:** KIA Tigers ML vs Doosan Bears (KBO) (HIGH)
+- Hanwha Eagles @ Samsung Lions | P(home) 67.5% fair -208 | total 9 R
+- NC Dinos @ Lotte Giants | P(home) 49.8% fair +101 | total 9 R
+- Doosan Bears @ KIA Tigers | P(home) 60.9% fair -156 | total 8 R
+- SSG Landers @ LG Twins | P(home) 59.5% fair -147 | total 9 R
+- Kiwoom Heroes @ KT Wiz | P(home) 66.8% fair -201 | total 10 R
+- **KBO POD:** LG Twins ML vs SSG Landers (KBO) (HIGH)
 
-## LoL Esports -- 0 live, 30 upcoming
+## LoL Esports -- 1 live, 30 upcoming
 - [LEC] Shifters vs SK Gaming BO3 | P(A) 46.8% fair +114/-114
 - [LEC] Team Vitality vs GIANTX BO3 | P(A) 50.1% fair -100/+100
 - [NACL] TBD vs TBD BO3 | P(A) 50.0% fair -100/-100
@@ -76,7 +73,7 @@ _Lean late-inning OVER on these games; fade their save situations._
 - [LPL] Shenzhen NINJAS IN PYJAMAS vs Suzhou LNG Esports BO3 | P(A) 64.0% fair -178/+178
 - **LoL POT:** Shopify Rebellion ML vs Dignitas (LCS, BO3) (HIGH)
 
-## Player Play of the Day -- across all sports (3473 candidates scanned)
+## Player Play of the Day -- across all sports (3491 candidates scanned)
 - **[LOL]** Inspired UNDER 3.5 Kills | model 61.7% fair -161 (ELITE)
 - **[LOL]** ShowMaker OVER 3.5 Kills | model 62.5% fair -167 (ELITE)
 - **[LOL]** Peyz OVER 4.5 Kills | model 61.3% fair -158 (ELITE)
@@ -86,5 +83,5 @@ _Lean late-inning OVER on these games; fade their save situations._
 ## Self-learning calibration (esports + KBO)
 - **LOL:** 58 settled | brier 0.2642 | ECE 0.1358
    - Model over-confident; subtract 12.0pp at next inference
-- **KBO:** 46 settled | brier 0.2769 | ECE 0.1942
-   - Model over-confident; subtract 16.8pp at next inference
+- **KBO:** 48 settled | brier 0.2805 | ECE 0.2112
+   - Model over-confident; subtract 18.6pp at next inference

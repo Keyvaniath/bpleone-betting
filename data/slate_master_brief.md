@@ -1,13 +1,13 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-08-14T14:13:30 UTC_
+_Generated 2026-08-14T15:02:06 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -16
+- **Score:** -9
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
 - **Total STRONG:** 16
-- **Total FADES:** 80
+- **Total FADES:** 73
 
 ## Lock of the Night
 - **Subject:** Kyle Freeland
@@ -17,11 +17,11 @@ _Generated 2026-08-14T14:13:30 UTC_
 - **Details:** COL @ SFG
 
 ## Top 5 Curated Picks
-1. **GOLF / Jordan Spieth** (GOLF_PLAYER, score=117.14)
-   - Play: Jordan Spieth (PLAYER_STRONG)
+1. **GOLF / Sungjae Im** (GOLF_PLAYER, score=196.93)
+   - Play: Sungjae Im (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Michael Thorbjornsen** (GOLF_PLAYER, score=104.07)
-   - Play: Michael Thorbjornsen (PLAYER_STRONG)
+2. **GOLF / Patrick Cantlay** (GOLF_PLAYER, score=109.43)
+   - Play: Patrick Cantlay (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
 3. **MLB / Clay Holmes** (MLB_PITCHER, score=57.08)
    - Play: Clay Holmes (PITCHER_STRONG)
@@ -29,9 +29,9 @@ _Generated 2026-08-14T14:13:30 UTC_
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
-  - Jordan Spieth top 10 finish
-  - Michael Thorbjornsen top 10 finish
-  - Michael Kim top 10 finish
+  - Sungjae Im top 10 finish
+  - Patrick Cantlay top 10 finish
+  - Min Woo Lee top 10 finish
 
 ## Slate ROI Projection
 - **Picks:** 1
@@ -44,9 +44,9 @@ _Generated 2026-08-14T14:13:30 UTC_
   - Fade angle: team total UNDER
 - **NBA** / MIA (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NHL** / stuart skinner (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
 - **NHL** / adin hill (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / marc-andre fleury (GOALIE_FADE)
+- **NHL** / stuart skinner (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / anthony stolarz (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO

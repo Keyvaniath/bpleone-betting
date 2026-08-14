@@ -1,13 +1,13 @@
 # EdgeStat Daily Summary — 2026-08-14
 
-## 🏥 Model Health: 64.5/100 [OK]
+## 🏥 Model Health: 61.8/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.9/100
+  - 🟢 Calibration Freshness: 99.6/100
   - 🔴 Hit Rate Trend: 0/100
-  - 🔴 Brier Trend: 28.4/100
+  - 🔴 Brier Trend: 29.3/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 100.0/100
-  - 🟢 Edge Count: 88.6/100
+  - 🟢 Data Health: 95.5/100
+  - 🟡 Edge Count: 68.6/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.588)
@@ -22,14 +22,14 @@
 5. **COL @ SFG YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
-- [WHALE] **[MLB]** NYY @ TOR ML_AWAY -- 69% / +12.9% (score 3.5)
-- [STRONG] **[MLB]** NYY @ TOR NYY_ML -- 74% / +21.3% (score 2.5)
+- [WHALE] **[MLB]** NYY @ TOR ML_AWAY -- 68% / +13.1% (score 3.5)
+- [STRONG] **[MLB]** NYY @ TOR NYY_ML -- 74% / +21.7% (score 2.5)
 
 ## 📡 Sharp Action (Line Movement)
 - [STRONG] **NYY @ TOR** ml_away: 52.61% → 60.47% (+7.9pp)
 
 ## 📉 Strong UNDER Signals
-- [STRONG 5.5] **CHW @ DET** model 7.26 vs market 8.5
+- [STRONG 5.8] **CHW @ DET** model 7.12 vs market 8.5
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -64,10 +64,9 @@
 - Hot teams: **3** | Cold teams: **1** | Over-heavy: 0 | Under-heavy: 7
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (37)
-- STEAM_MOVE: **32**
-- COMPOUND_BULLPEN: **3**
-- PEN_MISMATCH: **2**
+## ⚠️ Anomaly Detector (35)
+- STEAM_MOVE: **34**
+- COMPOUND_BULLPEN: **1**
   - CHI @ SEA (WNBA): TOTAL steam since open: ML -1.9pp toward CHI; total +2 (OVER) (4 snapshots)
   - NY @ IND (WNBA): TOTAL steam since open: ML +0.9pp toward IND; total -2 (UNDER) (5 snapshots)
   - PHX @ LA (WNBA): TOTAL steam since open: ML -0.9pp toward PHX; total +2 (OVER) (4 snapshots)
@@ -76,7 +75,7 @@
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$1.35**
+- Expected EV: **$1.36**
   - #1 [NRFI] $50 on WSN @ NYM YRFI (1st-inning OVER 0.5) (P=75%)
   - #2 [NRFI] $50 on TEX @ OAK YRFI (1st-inning OVER 0.5) (P=69%)
   - #3 [NRFI] $50 on STL @ CHC YRFI (1st-inning OVER 0.5) (P=68%)
@@ -111,11 +110,11 @@
   - [LEAN] **Joel Álvarez** (23-4-0) vs Chidi Njokuani -- fair -134
 
 ## ⛳ Golf Player Heat (from FedEx St. Jude Championship)
-  - 🔥 T1 **Michael Thorbjornsen** (USA): -5 total -- finished T1
-  - 🔥 T2 **Jordan Spieth** (USA): -5 total -- finished T2
-  - 🔥 T3 **Kurt Kitayama** (USA): -5 total -- finished T3
+  - 🔥 T1 **Sungjae Im** (South Korea): -8 total -- finished T1
+  - 🔥 T2 **Keith Mitchell** (USA): -5 total -- finished T2
+  - 🔥 T3 **Patrick Cantlay** (USA): -5 total -- finished T3
   - 🔥 T4 **Jake Knapp** (USA): -5 total -- finished T4
-  - 🔥 T5 **Michael Kim** (USA): -5 total -- finished T5
+  - 🔥 T5 **Min Woo Lee** (Australia): -5 total -- finished T5
 
 ## 🔥 MLB Batter Heat (40 HOT / 55 COLD)
   - 🔥 **Spencer Torkelson** (DET): L14 .375 / season .232 (+143pts)
