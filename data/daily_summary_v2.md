@@ -1,13 +1,13 @@
 # EdgeStat Daily Summary — 2026-08-14
 
-## 🏥 Model Health: 61.2/100 [OK]
+## 🏥 Model Health: 62.4/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.9/100
+  - 🟢 Calibration Freshness: 100.0/100
   - 🔴 Hit Rate Trend: 0/100
   - 🔴 Brier Trend: 29.3/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 95.5/100
-  - 🟡 Edge Count: 62.9/100
+  - 🟡 Edge Count: 74.3/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.588)
@@ -26,10 +26,10 @@
 - [STRONG] **[MLB]** NYY @ TOR NYY_ML -- 74% / +21.7% (score 2.5)
 
 ## 📡 Sharp Action (Line Movement)
-- [STRONG] **NYY @ TOR** ml_away: 52.61% → 60.47% (+7.9pp)
+- [STRONG] **NYY @ TOR** ml_away: 52.61% → 59.84% (+7.2pp)
 
 ## 📉 Strong UNDER Signals
-- [STRONG 5.6] **CHW @ DET** model 7.2 vs market 8.5
+- [STRONG 5.4] **CHW @ DET** model 7.28 vs market 8.5
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -65,9 +65,9 @@
 - Hot teams: **3** | Cold teams: **1** | Over-heavy: 0 | Under-heavy: 7
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (38)
+## ⚠️ Anomaly Detector (40)
 - RESIDUAL_DIVERGENCE: **2**
-- STEAM_MOVE: **35**
+- STEAM_MOVE: **37**
 - COMPOUND_BULLPEN: **1**
   - Indiana Fever (WNBA): Indiana Fever OUTPERFORMING expected margin by 6.3pts in recent games -- model bias may persist
   - Seattle Storm (WNBA): Seattle Storm OUTPERFORMING expected margin by 6.0pts in recent games -- model bias may persist
@@ -85,14 +85,14 @@
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
 ## 🎯 Convergence Picks (5 stacked games)
-- ELITE: **1** · HIGH: 1 · MED: 3
-  - [ELITE] Los Angeles Sparks @ New York Liberty : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
-  - [HIGH] Atlanta Dream @ Connecticut Sun : 3 signals (HEAT_COLD, ATS, ATS)
+- ELITE: **0** · HIGH: 2 · MED: 3
+  - [HIGH] Dallas Wings @ Indiana Fever : 3 signals (PREGAME, HEAT_COLD, ANOMALY)
+  - [HIGH] Portland Fire @ Seattle Storm : 3 signals (PREGAME, ANOMALY, ATS)
   - [MED] LA Galaxy @ Houston Dynamo FC : 2 signals (HEAT_COLD, ATS)
   - [MED] Inter Miami CF @ Nashville SC : 2 signals (PREGAME, ATS)
   - [MED] Coventry City @ Arsenal : 2 signals (PREGAME, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (6)
+## ⚾ Top MLB Pitcher K Plays (7)
 - **Gerrit Cole** OVER 5.5 K (73%) fair -270
 - **Chase Burns** OVER 4.5 K (71%) fair -251
 - **Kumar Rocker** OVER 4.5 K (71%) fair -251
@@ -112,13 +112,13 @@
   - [LEAN] **Joel Álvarez** (23-4-0) vs Chidi Njokuani -- fair -134
 
 ## ⛳ Golf Player Heat (from FedEx St. Jude Championship)
-  - 🔥 T1 **Sungjae Im** (South Korea): -9 total -- finished T1
-  - 🔥 T2 **Sudarshan Yellamaraju** (Canada): -5 total -- finished T2
-  - 🔥 T3 **Jake Knapp** (USA): -5 total -- finished T3
-  - 🔥 T4 **Chris Gotterup** (USA): -5 total -- finished T4
-  - 🔥 T5 **Bud Cauley** (USA): -5 total -- finished T5
+  - 🔥 T1 **Sungjae Im** (South Korea): -8 total -- finished T1
+  - 🔥 T2 **Scottie Scheffler** (USA): -8 total -- finished T2
+  - 🔥 T3 **Nico Echavarria** (Colombia): -6 total -- finished T3
+  - 🔥 T4 **Ludvig Åberg** (Sweden): -6 total -- finished T4
+  - 🔥 T5 **Kurt Kitayama** (USA): -6 total -- finished T5
 
-## 🔥 MLB Batter Heat (40 HOT / 55 COLD)
+## 🔥 MLB Batter Heat (39 HOT / 53 COLD)
   - 🔥 **Spencer Torkelson** (DET): L14 .375 / season .232 (+143pts)
   - 🔥 **Freddy Fermin** (SD): L14 .333 / season .194 (+139pts)
   - 🔥 **Cam Smith** (HOU): L14 .354 / season .224 (+130pts)
