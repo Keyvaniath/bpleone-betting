@@ -2711,9 +2711,12 @@ def _resettle_on_revision(history: List[Dict[str, Any]]) -> int:
 
 def _wager_key(p) -> tuple:
     """A pick's WAGER identity -- what bet this is, independent of which board
-    surfaced it or which day it was snapshotted. One wager = one position."""
-    return (_safe_id(p.get("sport")), _safe_id(p.get("player_or_matchup")),
-            _safe_id(p.get("market")))
+    surfaced it or which day it was snapshotted. One wager = one position.
+    CASE-INSENSITIVE (2026-08-14): sharp_strong emits 'ml_away' while the boards
+    emit 'ML_AWAY' -- with a case-sensitive key the same lost moneyline counted
+    TWICE (three double-counted losses found in the 8/10-8/13 window alone)."""
+    return (_safe_id(p.get("sport")).lower(), _safe_id(p.get("player_or_matchup")).lower(),
+            _safe_id(p.get("market")).lower())
 
 
 def _collapse_duplicate_wagers(history) -> int:
@@ -2769,6 +2772,28 @@ def _collapse_duplicate_wagers(history) -> int:
             extra["voided"] = True
             extra["voided_at"] = dt.datetime.now().isoformat(timespec="seconds")
             extra["voided_reason"] = "duplicate wager: same bet already pending; collapsed to the first copy"
+            n += 1
+    # SAME-DAY settled dups (2026-08-14): the byte-identical-outcome pass above
+    # misses copies whose outcome payloads differ in formatting (case-variant
+    # market strings graded through different source paths -- e.g. top_25_board's
+    # ML_AWAY vs sharp_strong's ml_away for the same game). Same wager + same
+    # GAME DATE + same result is one position by definition for daily sports;
+    # event re-adds (different snapshot dates) stay covered by the outcome-JSON
+    # pass, so this adds no risk there.
+    sday: Dict[tuple, List[Dict[str, Any]]] = {}
+    for p in history:
+        if not p.get("settled") or p.get("voided") or not p.get("result"):
+            continue
+        sday.setdefault(_wager_key(p) + ((p.get("date") or "")[:10], p["result"]), []).append(p)
+    for k, g in sday.items():
+        if len(g) < 2:
+            continue
+        g.sort(key=lambda x: (x.get("recorded_at") or "", x.get("settled_at") or ""))
+        for extra in g[1:]:
+            extra["voided"] = True
+            extra["voided_at"] = dt.datetime.now().isoformat(timespec="seconds")
+            extra["voided_reason"] = ("duplicate wager: same-day same-result copy "
+                                      "(case-variant market); collapsed to the first copy")
             n += 1
     return n
 
