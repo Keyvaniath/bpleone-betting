@@ -41,6 +41,21 @@ bpleone-site/
 
 ## Current deployment state (LIVE)
 
+- **2026-08-14 — CASE-INSENSITIVE WAGER KEY (the third duplicate leak):**
+  sharp_strong emits lowercase markets ('ml_away') while the boards emit
+  'ML_AWAY' -- the case-sensitive _wager_key gave the same moneyline two
+  identities, so the ADD-GUARD waved the second copy through and BOTH counted
+  (3 double-counted losses in 8/10-8/13 alone). _wager_key now lowercases all
+  components, and _collapse_duplicate_wagers gained a SAME-DAY pass (same
+  wager + same game date + same result = one position) that catches settled
+  copies whose outcome payloads differ in formatting -- the byte-identical
+  pass had been missing those twin-board copies all along (190 historical
+  dups voided on first run: 89 top_25_board + 101 lock_of_day). Curated
+  corrected to 618-241 / +15.4% all-time, last-30 -8.0%. Numbers moved DOWN
+  on wins -- correct, do not restore. Any NEW source must emit markets in
+  the boards' casing, but the key no longer cares.
+
+
 - **2026-08-13 (latest) — NFL PROPS UNIVERSE WIDENED + WEEK 1 PREVIEW +
   PLAYER EXPLORER:** shared baseline machinery extracted to nfl_baselines.py
   (roster/id resolution, cached 2025 season baselines, info-dict ladder) --
