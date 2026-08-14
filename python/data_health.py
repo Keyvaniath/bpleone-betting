@@ -88,9 +88,17 @@ def _check_mlb():
         findings.append(f"today.json count off: local={n_local} vs upstream pre-game={n_pregame} (total={n_upstream_total}, live={n_live}, final={n_final})")
     age = _age_min("live_state.json")
     if age is None: age = 999
-    if n_live > 0 and (n_local_live == 0 or age > 30):
+    # Live-state lags upstream at EVERY first pitch until the next live poll
+    # lands, and GitHub cron jitter can stretch the 15-min cadence to ~45.
+    # That transition is YELLOW ("catching up"); red is reserved for a
+    # genuinely stalled poller (no live rows AND the file is old).
+    if n_live > 0 and n_local_live == 0 and age > 20:
         status = "red"
-        findings.append(f"MLB has {n_live} live games but live_state.json shows {n_local_live} (age {age}min)")
+        findings.append(f"MLB has {n_live} live games but live_state.json shows {n_local_live} (age {age}min) -- live poller stalled")
+    elif n_live > 0 and (n_local_live == 0 or age > 30):
+        if status == "green":
+            status = "yellow"
+        findings.append(f"live poll catching up: upstream live={n_live}, local={n_local_live} (age {age}min)")
     if not findings:
         findings.append(f"{n_upstream_total} total ({n_pregame} pre / {n_live} live / {n_final} final), local pre={n_local}, live={n_local_live}")
     return {"feed": "mlb", "status": status, "findings": findings,
