@@ -1,13 +1,20 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-08-14T06:17:24 UTC_
+_Generated 2026-08-14T14:13:30 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -18
+- **Score:** -16
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 15
-- **Total FADES:** 78
+- **Total STRONG:** 16
+- **Total FADES:** 80
+
+## Lock of the Night
+- **Subject:** Kyle Freeland
+- **Source:** ELITE_BOARD
+- **Sport:** MLB
+- **Score:** 15.0
+- **Details:** COL @ SFG
 
 ## Top 5 Curated Picks
 1. **GOLF / Jordan Spieth** (GOLF_PLAYER, score=117.14)
@@ -16,6 +23,9 @@ _Generated 2026-08-14T06:17:24 UTC_
 2. **GOLF / Michael Thorbjornsen** (GOLF_PLAYER, score=104.07)
    - Play: Michael Thorbjornsen (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
+3. **MLB / Clay Holmes** (MLB_PITCHER, score=57.08)
+   - Play: Clay Holmes (PITCHER_STRONG)
+   - Rationale: Cross-sport top pick (MLB_PITCHER)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
@@ -24,19 +34,19 @@ _Generated 2026-08-14T06:17:24 UTC_
   - Michael Kim top 10 finish
 
 ## Slate ROI Projection
-- **Picks:** 0
-- **Avg edge:** 0%
+- **Picks:** 1
+- **Avg edge:** -0.91%
 - **Expected ROI (1/4 Kelly):** 0.0%
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **MLB** / Aaron Nola (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **NBA** / MIA (TEAM_FADE)
-  - Fade angle: team total UNDER
 - **NBA** / TOR (TEAM_FADE)
   - Fade angle: team total UNDER
-- **MLB** / Taj Bradley (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **MLB** / Shane Drohan (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **NBA** / MIA (TEAM_FADE)
+  - Fade angle: team total UNDER
+- **NHL** / stuart skinner (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / adin hill (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / marc-andre fleury (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO

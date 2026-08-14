@@ -1,25 +1,35 @@
 # EdgeStat Daily Summary — 2026-08-14
 
-## 🏥 Model Health: 63.4/100 [OK]
+## 🏥 Model Health: 64.5/100 [OK]
 - Operational but room to improve - check yellow components
   - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 0/100
-  - 🔴 Brier Trend: 48.0/100
+  - 🔴 Brier Trend: 28.4/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 86.4/100
-  - 🟡 Edge Count: 65.7/100
+  - 🟢 Data Health: 100.0/100
+  - 🟢 Edge Count: 88.6/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.589)
-- **Total games on board:** 157
-- **Strong home favorites:** 11 | **Strong road dogs:** 2
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.588)
+- **Total games on board:** 153
+- **Strong home favorites:** 10 | **Strong road dogs:** 1
 
 ## 🎯 Top 5 Best Bets
-1. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
-2. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
-3. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
-4. **GOLF Jordan Spieth WIN @ 578 (FedEx St. Jude Championship)** (78/100 ★★★★★)
-5. **GOLF Min Woo Lee TOP5 @ 580 (FedEx St. Jude Championship)** (78/100 ★★★★★)
+1. **WSN @ NYM YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+2. **TEX @ OAK YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+3. **STL @ CHC YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+4. **KCR @ LAA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+5. **COL @ SFG YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
+
+## 🐋 Whale Picks (Max Confluence)
+- [WHALE] **[MLB]** NYY @ TOR ML_AWAY -- 69% / +12.9% (score 3.5)
+- [STRONG] **[MLB]** NYY @ TOR NYY_ML -- 74% / +21.3% (score 2.5)
+
+## 📡 Sharp Action (Line Movement)
+- [STRONG] **NYY @ TOR** ml_away: 52.61% → 60.47% (+7.9pp)
+
+## 📉 Strong UNDER Signals
+- [STRONG 5.5] **CHW @ DET** model 7.26 vs market 8.5
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -54,35 +64,39 @@
 - Hot teams: **3** | Cold teams: **1** | Over-heavy: 0 | Under-heavy: 7
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (30)
-- STEAM_MOVE: **30**
+## ⚠️ Anomaly Detector (37)
+- STEAM_MOVE: **32**
+- COMPOUND_BULLPEN: **3**
+- PEN_MISMATCH: **2**
   - CHI @ SEA (WNBA): TOTAL steam since open: ML -1.9pp toward CHI; total +2 (OVER) (4 snapshots)
   - NY @ IND (WNBA): TOTAL steam since open: ML +0.9pp toward IND; total -2 (UNDER) (5 snapshots)
   - PHX @ LA (WNBA): TOTAL steam since open: ML -0.9pp toward PHX; total +2 (OVER) (4 snapshots)
   - LAD @ ARI (MLB): ML/TOTAL steam since open: ML +7.7pp toward ARI; total +0.5 (OVER) (7 snapshots)
   - TBR @ OAK (MLB): ML/TOTAL steam since open: ML -6.2pp toward TBR; total -1 (UNDER) (5 snapshots)
 
-## 💰 Today's Portfolio (10 picks)
-- Total stake: **$335.0** (33.5% of $1000 bankroll)
-- Expected EV: **$-8.04**
-  - #1 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
-  - #2 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
-  - #3 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
-  - #4 [GOLF] $35 on GOLF Jordan Spieth WIN @ 578 (FedEx St. Jude Championship) (P=15%)
-  - #5 [GOLF] $35 on GOLF Min Woo Lee TOP5 @ 580 (FedEx St. Jude Championship) (P=15%)
+## 💰 Today's Portfolio (9 picks)
+- Total stake: **$345.0** (34.5% of $1000 bankroll)
+- Expected EV: **$1.35**
+  - #1 [NRFI] $50 on WSN @ NYM YRFI (1st-inning OVER 0.5) (P=75%)
+  - #2 [NRFI] $50 on TEX @ OAK YRFI (1st-inning OVER 0.5) (P=69%)
+  - #3 [NRFI] $50 on STL @ CHC YRFI (1st-inning OVER 0.5) (P=68%)
+  - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
+  - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
 ## 🎯 Convergence Picks (5 stacked games)
-- ELITE: **0** · HIGH: 1 · MED: 4
-  - [HIGH] Atlanta Dream @ Connecticut Sun : 3 signals (PREGAME, ATS, ATS)
-  - [MED] Los Angeles Sparks @ New York Liberty : 2 signals (HEAT_COLD, ATS)
+- ELITE: **1** · HIGH: 1 · MED: 3
+  - [ELITE] Los Angeles Sparks @ New York Liberty : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
+  - [HIGH] Atlanta Dream @ Connecticut Sun : 3 signals (HEAT_COLD, ATS, ATS)
   - [MED] LA Galaxy @ Houston Dynamo FC : 2 signals (HEAT_COLD, ATS)
   - [MED] Inter Miami CF @ Nashville SC : 2 signals (PREGAME, ATS)
   - [MED] Coventry City @ Arsenal : 2 signals (PREGAME, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (3)
-- **Jacob deGrom** OVER 5.5 K (75%) fair -301
-- **Taj Bradley** OVER 5.5 K (71%) fair -250
-- **Shane Drohan** OVER 4.5 K (68%) fair -213
+## ⚾ Top MLB Pitcher K Plays (6)
+- **Gerrit Cole** OVER 5.5 K (73%) fair -270
+- **Chase Burns** OVER 4.5 K (71%) fair -251
+- **Kumar Rocker** OVER 4.5 K (71%) fair -251
+- **Gavin Williams** OVER 7.5 K (70%) fair -238
+- **Peter Lambert** OVER 4.5 K (70%) fair -232
 
 ## 🏀 NBA Player Heat (2 HOT / 1 COLD)
   - 🔥 **Scottie Barnes** (TOR): L5 24.4/7.6/9.6 vs season 18.6/5.8/8.8 [PTS +5.8]
