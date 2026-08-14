@@ -1,12 +1,12 @@
 # Tonight's Slate Brief — 2026-08-14
 
-## Slate Quality: 54/100 (LOW)
-_0% lineups confirmed · 10 rookie SPs_
-**Recommendation:** Defensive sizing tonight; stick to highest-confidence plays.
+## Slate Quality: 59/100 (MEDIUM)
+_10% lineups confirmed · 10 rookie SPs_
+**Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
 - **14 games** scheduled
-- **27 best bets** scored: 0 DK · 0 PP · 9 NRFI · 0 SGP
+- **31 best bets** scored: 0 DK · 0 PP · 9 NRFI · 0 SGP
 - **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$37.2
 - **MC simulation:** EV +$92.95, 76% P(profit), p05 $-109.21 / p95 $272.59
 
@@ -22,7 +22,7 @@ _0% lineups confirmed · 10 rookie SPs_
 5. **COL @ SFG YRFI (1st-inning OVER 0.5)**  (79/100 ****, edge +19.4%)
    - P(YRFI) 65.4% vs baseline 46.0%
 
-## ⚠️ Trap Warnings — 8 flagged
+## ⚠️ Trap Warnings — 9 flagged
 - **WSN @ NYM YRFI (1st-inning OVER 0.5)** (low):
    - Edge +28.8% looks big but only 0 settled props on this player — model unproven
 - **TEX @ OAK YRFI (1st-inning OVER 0.5)** (low):
@@ -42,10 +42,10 @@ _Lean late-inning OVER on these games; fade their save situations._
 - **YRFI** (1st-inning OVER): WSN @ NYM, TEX @ OAK, STL @ CHC, KCR @ LAA, COL @ SFG
 
 ## Golf -- FedEx St. Jude Championship
-- **Leader:** Sungjae Im (-8) at #1
+- **Leader:** Sungjae Im (-9) at #1
 - **Field:** 69 players  |  Status: In Progress
-- **Play of the Tournament:** Adam Scott TOP5 @ +548 (model 15.4%, HIGH)
-   - P(top 5) 15.4% -- lower variance than outright but compelling line.
+- **Play of the Tournament:** Adam Scott TOP5 @ +566 (model 15.0%, HIGH)
+   - P(top 5) 15.0% -- lower variance than outright but compelling line.
 
 ## NBA -- PRESEASON
 - Miami Heat @ Toronto Raptors (0-0 vs 0-0)  | P(home) 55.0% fair -122 | Scheduled
@@ -66,11 +66,11 @@ _Lean late-inning OVER on these games; fade their save situations._
 - **KBO POD:** LG Twins ML vs SSG Landers (KBO) (HIGH)
 
 ## LoL Esports -- 1 live, 30 upcoming
-- [LEC] Shifters vs SK Gaming BO3 | P(A) 46.8% fair +114/-114
-- [LEC] Team Vitality vs GIANTX BO3 | P(A) 50.1% fair -100/+100
+- [LEC] GIANTX vs Team Vitality BO3 | P(A) 49.9% fair +100/-100
 - [NACL] TBD vs TBD BO3 | P(A) 50.0% fair -100/-100
 - [NACL] TBD vs TBD BO3 | P(A) 50.0% fair -100/-100
 - [LPL] Shenzhen NINJAS IN PYJAMAS vs Suzhou LNG Esports BO3 | P(A) 64.0% fair -178/+178
+- [LCK] Hanwha Life Esports vs kt Rolster BO3 | P(A) 58.1% fair -138/+138
 - **LoL POT:** Shopify Rebellion ML vs Dignitas (LCS, BO3) (HIGH)
 
 ## Player Play of the Day -- across all sports (3491 candidates scanned)

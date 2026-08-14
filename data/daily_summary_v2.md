@@ -1,18 +1,18 @@
 # EdgeStat Daily Summary — 2026-08-14
 
-## 🏥 Model Health: 61.8/100 [OK]
+## 🏥 Model Health: 61.2/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.6/100
+  - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 0/100
   - 🔴 Brier Trend: 29.3/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 95.5/100
-  - 🟡 Edge Count: 68.6/100
+  - 🟡 Edge Count: 62.9/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.588)
-- **Total games on board:** 153
-- **Strong home favorites:** 10 | **Strong road dogs:** 1
+- **Total games on board:** 155
+- **Strong home favorites:** 11 | **Strong road dogs:** 1
 
 ## 🎯 Top 5 Best Bets
 1. **WSN @ NYM YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
@@ -29,7 +29,7 @@
 - [STRONG] **NYY @ TOR** ml_away: 52.61% → 60.47% (+7.9pp)
 
 ## 📉 Strong UNDER Signals
-- [STRONG 5.8] **CHW @ DET** model 7.12 vs market 8.5
+- [STRONG 5.6] **CHW @ DET** model 7.2 vs market 8.5
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -57,21 +57,23 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (1)
+## ⚡ Pre-Game HIGH Conviction (2)
 - [MLS] **Orlando City SC** HOME (1-1 L10) · model 74.0% fair -284
+- [WNBA] **Indiana Fever** HOME (3-2 L10) · model 69.3% fair -226
 
 ## 🔥/❄️ Heat / Cold Signals
 - Hot teams: **3** | Cold teams: **1** | Over-heavy: 0 | Under-heavy: 7
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (35)
-- STEAM_MOVE: **34**
+## ⚠️ Anomaly Detector (38)
+- RESIDUAL_DIVERGENCE: **2**
+- STEAM_MOVE: **35**
 - COMPOUND_BULLPEN: **1**
+  - Indiana Fever (WNBA): Indiana Fever OUTPERFORMING expected margin by 6.3pts in recent games -- model bias may persist
+  - Seattle Storm (WNBA): Seattle Storm OUTPERFORMING expected margin by 6.0pts in recent games -- model bias may persist
   - CHI @ SEA (WNBA): TOTAL steam since open: ML -1.9pp toward CHI; total +2 (OVER) (4 snapshots)
   - NY @ IND (WNBA): TOTAL steam since open: ML +0.9pp toward IND; total -2 (UNDER) (5 snapshots)
   - PHX @ LA (WNBA): TOTAL steam since open: ML -0.9pp toward PHX; total +2 (OVER) (4 snapshots)
-  - LAD @ ARI (MLB): ML/TOTAL steam since open: ML +7.7pp toward ARI; total +0.5 (OVER) (7 snapshots)
-  - TBR @ OAK (MLB): ML/TOTAL steam since open: ML -6.2pp toward TBR; total -1 (UNDER) (5 snapshots)
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
@@ -110,11 +112,11 @@
   - [LEAN] **Joel Álvarez** (23-4-0) vs Chidi Njokuani -- fair -134
 
 ## ⛳ Golf Player Heat (from FedEx St. Jude Championship)
-  - 🔥 T1 **Sungjae Im** (South Korea): -8 total -- finished T1
-  - 🔥 T2 **Keith Mitchell** (USA): -5 total -- finished T2
-  - 🔥 T3 **Patrick Cantlay** (USA): -5 total -- finished T3
-  - 🔥 T4 **Jake Knapp** (USA): -5 total -- finished T4
-  - 🔥 T5 **Min Woo Lee** (Australia): -5 total -- finished T5
+  - 🔥 T1 **Sungjae Im** (South Korea): -9 total -- finished T1
+  - 🔥 T2 **Sudarshan Yellamaraju** (Canada): -5 total -- finished T2
+  - 🔥 T3 **Jake Knapp** (USA): -5 total -- finished T3
+  - 🔥 T4 **Chris Gotterup** (USA): -5 total -- finished T4
+  - 🔥 T5 **Bud Cauley** (USA): -5 total -- finished T5
 
 ## 🔥 MLB Batter Heat (40 HOT / 55 COLD)
   - 🔥 **Spencer Torkelson** (DET): L14 .375 / season .232 (+143pts)

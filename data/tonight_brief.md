@@ -22,12 +22,12 @@ _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 - **NYY @ TOR** ml_away: line moved 52.61% → 60.47% (+7.9pp)
 
 ## 📉 Under Bets
-- **CHW @ DET** UNDER 8.5 — model 7.2 [STRONG signal]
+- **CHW @ DET** UNDER 8.5 — model 7.28 [STRONG signal]
 
 ## 🎰 Tonight's Best Parlay
 - **Choi Jeong** one_plus_tb + **Jose Pirela** one_plus_tb
 - Joint 53% · fair +264 · edge +94.6%
 
 ---
-_Generated 2026-08-14T15:01:58_
+_Generated 2026-08-14T18:07:45_
 _Full breakdown: /tonight · Full history: /locks-of-day_

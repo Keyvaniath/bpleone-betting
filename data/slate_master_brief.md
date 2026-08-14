@@ -1,13 +1,13 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-08-14T15:02:06 UTC_
+_Generated 2026-08-14T18:07:52 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -9
+- **Score:** 2
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 16
-- **Total FADES:** 73
+- **Total STRONG:** 19
+- **Total FADES:** 74
 
 ## Lock of the Night
 - **Subject:** Kyle Freeland
@@ -17,21 +17,27 @@ _Generated 2026-08-14T15:02:06 UTC_
 - **Details:** COL @ SFG
 
 ## Top 5 Curated Picks
-1. **GOLF / Sungjae Im** (GOLF_PLAYER, score=196.93)
+1. **GOLF / Sungjae Im** (GOLF_PLAYER, score=209.21)
    - Play: Sungjae Im (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Patrick Cantlay** (GOLF_PLAYER, score=109.43)
-   - Play: Patrick Cantlay (PLAYER_STRONG)
+2. **WNBA / satou sabally** (WNBA_PLAYER, score=113.58)
+   - Play: satou sabally (PLAYER_STRONG)
+   - Rationale: Cross-sport top pick (WNBA_PLAYER)
+3. **GOLF / Jordan Spieth** (GOLF_PLAYER, score=93.21)
+   - Play: Jordan Spieth (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-3. **MLB / Clay Holmes** (MLB_PITCHER, score=57.08)
+4. **WNBA / kelsey mitchell** (WNBA_PLAYER, score=76.42)
+   - Play: kelsey mitchell (PLAYER_STRONG)
+   - Rationale: Cross-sport top pick (WNBA_PLAYER)
+5. **MLB / Clay Holmes** (MLB_PITCHER, score=57.08)
    - Play: Clay Holmes (PITCHER_STRONG)
    - Rationale: Cross-sport top pick (MLB_PITCHER)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
   - Sungjae Im top 10 finish
-  - Patrick Cantlay top 10 finish
-  - Min Woo Lee top 10 finish
+  - Jordan Spieth top 10 finish
+  - Sudarshan Yellamaraju top 10 finish
 
 ## Slate ROI Projection
 - **Picks:** 1
@@ -44,9 +50,9 @@ _Generated 2026-08-14T15:02:06 UTC_
   - Fade angle: team total UNDER
 - **NBA** / MIA (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NHL** / adin hill (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / stuart skinner (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
 - **NHL** / anthony stolarz (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / marc-andre fleury (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / joseph woll (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
