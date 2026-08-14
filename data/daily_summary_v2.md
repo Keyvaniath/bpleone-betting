@@ -1,25 +1,25 @@
-# EdgeStat Daily Summary — 2026-08-13
+# EdgeStat Daily Summary — 2026-08-14
 
-## 🏥 Model Health: 65.0/100 [OK]
+## 🏥 Model Health: 63.4/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 100.0/100
+  - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 0/100
   - 🔴 Brier Trend: 48.0/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 95.5/100
-  - 🟡 Edge Count: 62.9/100
+  - 🟢 Data Health: 86.4/100
+  - 🟡 Edge Count: 65.7/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.591)
-- **Total games on board:** 144
-- **Strong home favorites:** 12 | **Strong road dogs:** 2
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.589)
+- **Total games on board:** 157
+- **Strong home favorites:** 11 | **Strong road dogs:** 2
 
 ## 🎯 Top 5 Best Bets
-1. **CIN @ CHW YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-2. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
-3. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
-4. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
-5. **GOLF Viktor Hovland TOP5 @ 558 (FedEx St. Jude Championship)** (78/100 ★★★★★)
+1. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
+2. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
+3. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
+4. **GOLF Jordan Spieth WIN @ 578 (FedEx St. Jude Championship)** (78/100 ★★★★★)
+5. **GOLF Min Woo Lee TOP5 @ 580 (FedEx St. Jude Championship)** (78/100 ★★★★★)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -47,30 +47,29 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (2)
+## ⚡ Pre-Game HIGH Conviction (1)
 - [MLS] **Orlando City SC** HOME (1-1 L10) · model 74.0% fair -284
-- [WNBA] **Atlanta Dream** AWAY (3-2 L10) · model 72.3% fair -261
 
 ## 🔥/❄️ Heat / Cold Signals
-- Hot teams: **3** | Cold teams: **1** | Over-heavy: 0 | Under-heavy: 5
+- Hot teams: **3** | Cold teams: **1** | Over-heavy: 0 | Under-heavy: 7
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (27)
-- STEAM_MOVE: **27**
+## ⚠️ Anomaly Detector (30)
+- STEAM_MOVE: **30**
   - CHI @ SEA (WNBA): TOTAL steam since open: ML -1.9pp toward CHI; total +2 (OVER) (4 snapshots)
   - NY @ IND (WNBA): TOTAL steam since open: ML +0.9pp toward IND; total -2 (UNDER) (5 snapshots)
   - PHX @ LA (WNBA): TOTAL steam since open: ML -0.9pp toward PHX; total +2 (OVER) (4 snapshots)
-  - ATL @ CON (WNBA): TOTAL steam since open: ML -0.4pp toward ATL; total -2 (UNDER) (4 snapshots)
   - LAD @ ARI (MLB): ML/TOTAL steam since open: ML +7.7pp toward ARI; total +0.5 (OVER) (7 snapshots)
+  - TBR @ OAK (MLB): ML/TOTAL steam since open: ML -6.2pp toward TBR; total -1 (UNDER) (5 snapshots)
 
-## 💰 Today's Portfolio (9 picks)
-- Total stake: **$330.0** (33.0% of $1000 bankroll)
-- Expected EV: **$-4.51**
-  - #1 [NRFI] $50 on CIN @ CHW YRFI (1st-inning OVER 0.5) (P=73%)
-  - #2 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
-  - #3 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
-  - #4 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
-  - #5 [GOLF] $35 on GOLF Viktor Hovland TOP5 @ 558 (FedEx St. Jude Championship) (P=15%)
+## 💰 Today's Portfolio (10 picks)
+- Total stake: **$335.0** (33.5% of $1000 bankroll)
+- Expected EV: **$-8.04**
+  - #1 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
+  - #2 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
+  - #3 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
+  - #4 [GOLF] $35 on GOLF Jordan Spieth WIN @ 578 (FedEx St. Jude Championship) (P=15%)
+  - #5 [GOLF] $35 on GOLF Min Woo Lee TOP5 @ 580 (FedEx St. Jude Championship) (P=15%)
 
 ## 🎯 Convergence Picks (5 stacked games)
 - ELITE: **0** · HIGH: 1 · MED: 4
@@ -102,19 +101,19 @@
   - 🔥 T2 **Jordan Spieth** (USA): -5 total -- finished T2
   - 🔥 T3 **Kurt Kitayama** (USA): -5 total -- finished T3
   - 🔥 T4 **Jake Knapp** (USA): -5 total -- finished T4
-  - 🔥 T5 **Tommy Fleetwood** (England): -4 total -- finished T5
+  - 🔥 T5 **Michael Kim** (USA): -5 total -- finished T5
 
-## 🔥 MLB Batter Heat (44 HOT / 57 COLD)
+## 🔥 MLB Batter Heat (40 HOT / 55 COLD)
   - 🔥 **Spencer Torkelson** (DET): L14 .375 / season .232 (+143pts)
   - 🔥 **Freddy Fermin** (SD): L14 .333 / season .194 (+139pts)
-  - 🔥 **Royce Lewis** (MIN): L14 .379 / season .245 (+134pts)
   - 🔥 **Cam Smith** (HOU): L14 .354 / season .224 (+130pts)
+  - 🔥 **Royce Lewis** (MIN): L14 .362 / season .241 (+121pts)
   - 🔥 **Jacob Young** (WSH): L14 .368 / season .248 (+120pts)
-  - ❄️ **Nicky Lopez** (TEX): L14 .108 / season .269 (-161pts) -- FADE props
   - ❄️ **Carlos Cortes** (ATH): L14 .097 / season .258 (-161pts) -- FADE props
+  - ❄️ **Tommy Edman** (LAD): L14 .120 / season .270 (-150pts) -- FADE props
   - ❄️ **Tristan Peters** (CWS): L14 .114 / season .263 (-149pts) -- FADE props
-  - ❄️ **Wyatt Langford** (TEX): L14 .109 / season .253 (-144pts) -- FADE props
-  - ❄️ **Trevor Larnach** (MIN): L14 .130 / season .270 (-140pts) -- FADE props
+  - ❄️ **Nicky Lopez** (TEX): L14 .132 / season .268 (-136pts) -- FADE props
+  - ❄️ **Ben Rice** (NYY): L14 .125 / season .256 (-131pts) -- FADE props
 
 ## 📈 Streak Regression Alerts (1)
 - [MLS] Houston Dynamo FC on W3 L10 3-0 -- Houston Dynamo FC on W3 -- no historical sample
@@ -127,6 +126,6 @@
   - ⚠️ batter_rbis (Brier Δ -0.0052)
 
 ## 🤖 Self-Training Status
-- **WNBA**: n=41 games · hit rate 65.8% · bias -7.8pp [calibration applied]
+- **WNBA**: n=41 games · hit rate 58.5% · bias -10.1pp [calibration applied]
 - **MLS**: n=32 games · hit rate 50.0% · bias -16.4pp [calibration applied]
-- **MLB**: n=189 games · hit rate 54.0% · bias -2.9pp [calibration applied]
+- **MLB**: n=188 games · hit rate 55.3% · bias -1.0pp
