@@ -1,10 +1,10 @@
 # EdgeStat Daily Summary — 2026-08-15
 
-## 🏥 Model Health: 65.8/100 [OK]
+## 🏥 Model Health: 65.9/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.9/100
+  - 🟢 Calibration Freshness: 99.7/100
   - 🔴 Hit Rate Trend: 0/100
-  - 🔴 Brier Trend: 29.2/100
+  - 🔴 Brier Trend: 29.8/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 100.0/100
   - 🟢 Edge Count: 100/100
@@ -54,9 +54,10 @@
 - Hot teams: **3** | Cold teams: **1** | Over-heavy: 0 | Under-heavy: 5
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (41)
+## ⚠️ Anomaly Detector (43)
 - STEAM_MOVE: **40**
 - COMPOUND_BULLPEN: **1**
+- PEN_MISMATCH: **2**
   - CHI @ SEA (WNBA): TOTAL steam since open: ML -1.9pp toward CHI; total +2 (OVER) (4 snapshots)
   - NY @ IND (WNBA): TOTAL steam since open: ML +0.9pp toward IND; total -2 (UNDER) (5 snapshots)
   - PHX @ LA (WNBA): TOTAL steam since open: ML -0.9pp toward PHX; total +2 (OVER) (4 snapshots)
@@ -65,7 +66,7 @@
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$-3.16**
+- Expected EV: **$-3.1**
   - #1 [NRFI] $50 on MIA @ CIN YRFI (1st-inning OVER 0.5) (P=72%)
   - #2 [NRFI] $50 on BOS @ PIT YRFI (1st-inning OVER 0.5) (P=67%)
   - #3 [NRFI] $35 on COL @ SFG YRFI (1st-inning OVER 0.5) (P=66%)
@@ -106,7 +107,7 @@
   - 🔥 T4 **Ludvig Åberg** (Sweden): -7 total -- finished T4
   - 🔥 T5 **Brian Harman** (USA): -6 total -- finished T5
 
-## 🔥 MLB Batter Heat (40 HOT / 59 COLD)
+## 🔥 MLB Batter Heat (41 HOT / 59 COLD)
   - 🔥 **Spencer Torkelson** (DET): L14 .393 / season .232 (+161pts)
   - 🔥 **Freddy Fermin** (SD): L14 .351 / season .194 (+157pts)
   - 🔥 **Jac Caglianone** (KC): L14 .411 / season .273 (+138pts)

@@ -1,14 +1,14 @@
 # Tonight's Slate Brief — 2026-08-15
 
-## Slate Quality: 54/100 (LOW)
-_0% lineups confirmed · 16 rookie SPs_
-**Recommendation:** Defensive sizing tonight; stick to highest-confidence plays.
+## Slate Quality: 57/100 (MEDIUM)
+_6% lineups confirmed · 16 rookie SPs_
+**Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
 - **15 games** scheduled
-- **43 best bets** scored: 12 DK · 0 PP · 11 NRFI · 0 SGP
+- **44 best bets** scored: 12 DK · 0 PP · 11 NRFI · 1 SGP
 - **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$33.61
-- **MC simulation:** EV +$92.4, 78% P(profit), p05 $-116.27 / p95 $277.06
+- **MC simulation:** EV +$99.95, 78% P(profit), p05 $-120.61 / p95 $306.41
 
 ## Top 5 Best Bets
 1. **MIA @ CIN YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +26.5%)
@@ -23,7 +23,7 @@ _0% lineups confirmed · 16 rookie SPs_
    - Player prop quality score 1.1935
    - Elite player
 
-## ⚠️ Trap Warnings — 17 flagged
+## ⚠️ Trap Warnings — 18 flagged
 - **Alex Bregman UNDER 0.5 batter hits** (high):
    - Edge +11.7% looks big but only 0 settled props on this player — model unproven
    - Batter heating up: heating up: 1.006 ops recent vs 0.750 season (+0.256)
@@ -35,14 +35,19 @@ _0% lineups confirmed · 16 rookie SPs_
    - Batter heating up: heating up: 0.951 ops recent vs 0.849 season (+0.102)
 - **MIA @ CIN YRFI (1st-inning OVER 0.5)** (low):
    - Edge +26.5% looks big but only 0 settled props on this player — model unproven
-- **BOS @ PIT YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +21.5% looks big but only 0 settled props on this player — model unproven
+- **CHW @ DET 2-leg SGP @ -114** (low):
+   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
 
 ## Weather leans
 - **UNDER lean** (wind in + cold): COL @ SFG
 
 ## Hot streaks
 **Batters heating up:** Alex Bregman (heat +3.80), Miguel Vargas (heat +2.70), Ian Happ (heat +1.47)
+
+## Top correlation-aware SGPs
+- **CHW @ DET** 2-leg @ -114 fair (joint 0.53, EV +25.0%)
+   - Corey Julks UNDER 0.5 batter hits
+   - Eduardo Valencia OVER 0.5 batter hits
 
 ## Bullpens GASSED tonight
 Seattle Mariners, Tampa Bay Rays, Texas Rangers, Toronto Blue Jays, Chicago White Sox, Los Angeles Angels, Detroit Tigers
@@ -55,8 +60,8 @@ _Lean late-inning OVER on these games; fade their save situations._
 ## Golf -- FedEx St. Jude Championship
 - **Leader:** Scottie Scheffler (-11) at #1
 - **Field:** 69 players  |  Status: In Progress
-- **Play of the Tournament:** Wyndham Clark TOP5 @ +559 (model 15.2%, HIGH)
-   - P(top 5) 15.2% -- lower variance than outright but compelling line.
+- **Play of the Tournament:** Patrick Cantlay TOP5 @ +549 (model 15.4%, HIGH)
+   - P(top 5) 15.4% -- lower variance than outright but compelling line.
 
 ## NBA -- PRESEASON
 - Miami Heat @ Toronto Raptors (0-0 vs 0-0)  | P(home) 55.0% fair -122 | Scheduled
@@ -71,7 +76,10 @@ _Lean late-inning OVER on these games; fade their save situations._
 ## KBO -- 2026 Korean Baseball
 - Hanwha Eagles @ Samsung Lions | P(home) 64.4% fair -181 | total 10 R
 - NC Dinos @ Lotte Giants | P(home) 49.1% fair +104 | total 10 R
-- **KBO POD:** Samsung Lions ML vs Hanwha Eagles (KBO) (MED)
+- Doosan Bears @ KIA Tigers | P(home) 58.8% fair -143 | total 9 R
+- SSG Landers @ LG Twins | P(home) 57.5% fair -135 | total 9 R
+- Kiwoom Heroes @ KT Wiz | P(home) 63.6% fair -175 | total 10 R
+- **KBO POD:** KIA Tigers ML vs Doosan Bears (KBO) (HIGH)
 
 ## LoL Esports -- 0 live, 30 upcoming
 - [LEC] SK Gaming vs Fnatic BO3 | P(A) 55.9% fair -127/+127
@@ -81,7 +89,7 @@ _Lean late-inning OVER on these games; fade their save situations._
 - [LCS] Disguised vs Team Liquid Alienware BO3 | P(A) 27.7% fair +261/-261
 - **LoL POT:** Shopify Rebellion ML vs Dignitas (LCS, BO3) (HIGH)
 
-## Player Play of the Day -- across all sports (3478 candidates scanned)
+## Player Play of the Day -- across all sports (3489 candidates scanned)
 - **[LOL]** Inspired UNDER 3.5 Kills | model 61.7% fair -161 (ELITE)
 - **[LOL]** ShowMaker OVER 3.5 Kills | model 62.5% fair -167 (ELITE)
 - **[LOL]** Peyz OVER 4.5 Kills | model 61.3% fair -158 (ELITE)
@@ -91,5 +99,5 @@ _Lean late-inning OVER on these games; fade their save situations._
 ## Self-learning calibration (esports + KBO)
 - **LOL:** 58 settled | brier 0.2642 | ECE 0.1358
    - Model over-confident; subtract 12.0pp at next inference
-- **KBO:** 50 settled | brier 0.2787 | ECE 0.2074
-   - Model over-confident; subtract 18.3pp at next inference
+- **KBO:** 51 settled | brier 0.2766 | ECE 0.1952
+   - Model over-confident; subtract 17.2pp at next inference

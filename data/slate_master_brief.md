@@ -1,5 +1,5 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-08-15T13:27:12 UTC_
+_Generated 2026-08-15T14:31:46 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
@@ -17,10 +17,10 @@ _Generated 2026-08-15T13:27:12 UTC_
 - **Details:** TEX @ OAK
 
 ## Top 5 Curated Picks
-1. **GOLF / Scottie Scheffler** (GOLF_PLAYER, score=216.86)
+1. **GOLF / Scottie Scheffler** (GOLF_PLAYER, score=216.71)
    - Play: Scottie Scheffler (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Viktor Hovland** (GOLF_PLAYER, score=175.79)
+2. **GOLF / Viktor Hovland** (GOLF_PLAYER, score=175.93)
    - Play: Viktor Hovland (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
 3. **MLB / Sean Manaea** (MLB_PITCHER, score=59.0)
@@ -43,13 +43,13 @@ _Generated 2026-08-15T13:27:12 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **NBA** / MIA (TEAM_FADE)
-  - Fade angle: team total UNDER
 - **NBA** / TOR (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NHL** / connor hellebuyck (GOALIE_FADE)
+- **NBA** / MIA (TEAM_FADE)
+  - Fade angle: team total UNDER
+- **NHL** / thatcher demko (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / adin hill (GOALIE_FADE)
+- **NHL** / calvin pickard (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
 - **NHL** / samsonov ilya (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
