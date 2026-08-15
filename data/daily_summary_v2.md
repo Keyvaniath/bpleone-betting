@@ -2,7 +2,7 @@
 
 ## 🏥 Model Health: 65.9/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.7/100
+  - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 0/100
   - 🔴 Brier Trend: 29.8/100
   - 🟢 Pipeline Audit: 100.0/100
@@ -10,9 +10,9 @@
   - 🟢 Edge Count: 100/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.587)
-- **Total games on board:** 158
-- **Strong home favorites:** 10 | **Strong road dogs:** 1
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.588)
+- **Total games on board:** 160
+- **Strong home favorites:** 11 | **Strong road dogs:** 1
 
 ## 🎯 Top 5 Best Bets
 1. **MIA @ CIN YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
@@ -20,6 +20,12 @@
 3. **COL @ SFG YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
 4. **MIL @ LAD YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
 5. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
+
+## 📡 Sharp Action (Line Movement)
+- [MODERATE] **STL @ CHC** ml_home: 56.9% → 61.83% (+4.9pp)
+
+## 📉 Strong UNDER Signals
+- [STRONG 6.1] **NYY @ TOR** model 7.22 vs market 8.5
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -54,19 +60,19 @@
 - Hot teams: **3** | Cold teams: **1** | Over-heavy: 0 | Under-heavy: 5
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (43)
-- STEAM_MOVE: **40**
+## ⚠️ Anomaly Detector (46)
+- STEAM_MOVE: **43**
 - COMPOUND_BULLPEN: **1**
 - PEN_MISMATCH: **2**
+  - MIL @ LAD (MLB): ML steam since open: ML -16.1pp toward MIL (9 snapshots)
   - CHI @ SEA (WNBA): TOTAL steam since open: ML -1.9pp toward CHI; total +2 (OVER) (4 snapshots)
   - NY @ IND (WNBA): TOTAL steam since open: ML +0.9pp toward IND; total -2 (UNDER) (5 snapshots)
   - PHX @ LA (WNBA): TOTAL steam since open: ML -0.9pp toward PHX; total +2 (OVER) (4 snapshots)
   - POR @ SEA (WNBA): TOTAL steam since open: ML +1.2pp toward SEA; total +2 (OVER) (4 snapshots)
-  - LAD @ ARI (MLB): ML/TOTAL steam since open: ML +7.7pp toward ARI; total +0.5 (OVER) (7 snapshots)
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$-3.1**
+- Expected EV: **$-3.17**
   - #1 [NRFI] $50 on MIA @ CIN YRFI (1st-inning OVER 0.5) (P=72%)
   - #2 [NRFI] $50 on BOS @ PIT YRFI (1st-inning OVER 0.5) (P=67%)
   - #3 [NRFI] $35 on COL @ SFG YRFI (1st-inning OVER 0.5) (P=66%)
@@ -107,17 +113,17 @@
   - 🔥 T4 **Ludvig Åberg** (Sweden): -7 total -- finished T4
   - 🔥 T5 **Brian Harman** (USA): -6 total -- finished T5
 
-## 🔥 MLB Batter Heat (41 HOT / 59 COLD)
-  - 🔥 **Spencer Torkelson** (DET): L14 .393 / season .232 (+161pts)
+## 🔥 MLB Batter Heat (41 HOT / 62 COLD)
   - 🔥 **Freddy Fermin** (SD): L14 .351 / season .194 (+157pts)
   - 🔥 **Jac Caglianone** (KC): L14 .411 / season .273 (+138pts)
   - 🔥 **Geraldo Perdomo** (AZ): L14 .386 / season .252 (+134pts)
+  - 🔥 **Spencer Torkelson** (DET): L14 .364 / season .230 (+134pts)
   - 🔥 **Jeff McNeil** (ATH): L14 .396 / season .263 (+133pts)
-  - ❄️ **Ben Rice** (NYY): L14 .106 / season .253 (-147pts) -- FADE props
+  - ❄️ **Ben Rice** (NYY): L14 .106 / season .252 (-146pts) -- FADE props
   - ❄️ **Wyatt Langford** (TEX): L14 .109 / season .249 (-140pts) -- FADE props
   - ❄️ **Garrett Mitchell** (MIL): L14 .111 / season .249 (-138pts) -- FADE props
+  - ❄️ **Heliot Ramos** (NYY): L14 .109 / season .245 (-136pts) -- FADE props
   - ❄️ **Carlos Cortes** (ATH): L14 .125 / season .260 (-135pts) -- FADE props
-  - ❄️ **William Contreras** (MIL): L14 .120 / season .255 (-135pts) -- FADE props
 
 ## 📈 Streak Regression Alerts (1)
 - [MLS] Houston Dynamo FC on W3 L10 3-0 -- Houston Dynamo FC on W3 -- no historical sample

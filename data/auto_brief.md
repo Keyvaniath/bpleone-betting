@@ -1,14 +1,14 @@
 # Tonight's Slate Brief — 2026-08-15
 
-## Slate Quality: 57/100 (MEDIUM)
-_6% lineups confirmed · 16 rookie SPs_
-**Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
+## Slate Quality: 80/100 (HIGH)
+_80% lineups confirmed · 11 rookie SPs_
+**Recommendation:** Play normal Kelly sizing.
 
 ## Slate
-- **15 games** scheduled
-- **44 best bets** scored: 12 DK · 0 PP · 11 NRFI · 1 SGP
+- **10 games** scheduled
+- **43 best bets** scored: 12 DK · 0 PP · 11 NRFI · 0 SGP
 - **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$33.61
-- **MC simulation:** EV +$99.95, 78% P(profit), p05 $-120.61 / p95 $306.41
+- **MC simulation:** EV +$92.4, 78% P(profit), p05 $-116.27 / p95 $277.06
 
 ## Top 5 Best Bets
 1. **MIA @ CIN YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +26.5%)
@@ -23,31 +23,22 @@ _6% lineups confirmed · 16 rookie SPs_
    - Player prop quality score 1.1935
    - Elite player
 
-## ⚠️ Trap Warnings — 18 flagged
+## ⚠️ Trap Warnings — 16 flagged
 - **Alex Bregman UNDER 0.5 batter hits** (high):
    - Edge +11.7% looks big but only 0 settled props on this player — model unproven
-   - Batter heating up: heating up: 1.006 ops recent vs 0.750 season (+0.256)
+   - Batter heating up: heating up: 0.971 ops recent vs 0.749 season (+0.222)
 - **Eduardo Valencia OVER 0.5 batter hits** (high):
    - Edge +11.1% looks big but only 0 settled props on this player — model unproven
-   - Batter cooling: cooling: 1.108 ops recent vs 1.253 season (-0.145)
-- **Seiya Suzuki UNDER 0.5 batter hits** (high):
-   - Edge +10.4% looks big but only 0 settled props on this player — model unproven
-   - Batter heating up: heating up: 0.951 ops recent vs 0.849 season (+0.102)
+   - Batter cooling: cooling: 1.200 ops recent vs 1.291 season (-0.091)
 - **MIA @ CIN YRFI (1st-inning OVER 0.5)** (low):
    - Edge +26.5% looks big but only 0 settled props on this player — model unproven
-- **CHW @ DET 2-leg SGP @ -114** (low):
-   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
-
-## Weather leans
-- **UNDER lean** (wind in + cold): COL @ SFG
+- **BOS @ PIT YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +21.5% looks big but only 0 settled props on this player — model unproven
+- **COL @ SFG YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +19.7% looks big but only 0 settled props on this player — model unproven
 
 ## Hot streaks
-**Batters heating up:** Alex Bregman (heat +3.80), Miguel Vargas (heat +2.70), Ian Happ (heat +1.47)
-
-## Top correlation-aware SGPs
-- **CHW @ DET** 2-leg @ -114 fair (joint 0.53, EV +25.0%)
-   - Corey Julks UNDER 0.5 batter hits
-   - Eduardo Valencia OVER 0.5 batter hits
+**Batters heating up:** Seiya Suzuki (heat +3.78), Ian Happ (heat +3.34), Alex Bregman (heat +3.09)
 
 ## Bullpens GASSED tonight
 Seattle Mariners, Tampa Bay Rays, Texas Rangers, Toronto Blue Jays, Chicago White Sox, Los Angeles Angels, Detroit Tigers
@@ -60,7 +51,7 @@ _Lean late-inning OVER on these games; fade their save situations._
 ## Golf -- FedEx St. Jude Championship
 - **Leader:** Scottie Scheffler (-11) at #1
 - **Field:** 69 players  |  Status: In Progress
-- **Play of the Tournament:** Patrick Cantlay TOP5 @ +549 (model 15.4%, HIGH)
+- **Play of the Tournament:** Patrick Cantlay TOP5 @ +551 (model 15.4%, HIGH)
    - P(top 5) 15.4% -- lower variance than outright but compelling line.
 
 ## NBA -- PRESEASON
@@ -81,12 +72,12 @@ _Lean late-inning OVER on these games; fade their save situations._
 - Kiwoom Heroes @ KT Wiz | P(home) 63.6% fair -175 | total 10 R
 - **KBO POD:** KIA Tigers ML vs Doosan Bears (KBO) (HIGH)
 
-## LoL Esports -- 0 live, 30 upcoming
-- [LEC] SK Gaming vs Fnatic BO3 | P(A) 55.9% fair -127/+127
-- [CBLOL] FURIA vs RED Kalunga BO3 | P(A) 74.2% fair -288/+288
-- [LEC] Shifters vs G2 Esports BO3 | P(A) 23.0% fair +335/-335
-- [CBLOL] Vivo Keyd Stars vs LOS BO3 | P(A) 46.1% fair +117/-117
-- [LCS] Disguised vs Team Liquid Alienware BO3 | P(A) 27.7% fair +261/-261
+## LoL Esports -- 1 live, 25 upcoming
+- [LCS] Team Liquid Alienware vs Disguised BO3 | P(A) 72.3% fair -261/+261
+- [LCS] Shopify Rebellion vs Dignitas BO3 | P(A) 59.9% fair -149/+149
+- [LCK Challengers] T1 Esports Academy vs DNS Challengers BO3 | P(A) 62.6% fair -167/+167
+- [LPL] Beijing JDG Esports vs LGD GAMING BO3 | P(A) 53.6% fair -116/+116
+- [LCK] T1 vs Gen.G Esports BO3 | P(A) 46.4% fair +116/-116
 - **LoL POT:** Shopify Rebellion ML vs Dignitas (LCS, BO3) (HIGH)
 
 ## Player Play of the Day -- across all sports (3489 candidates scanned)
