@@ -1,17 +1,17 @@
 # EdgeStat Daily Summary — 2026-08-15
 
-## 🏥 Model Health: 65.9/100 [OK]
+## 🏥 Model Health: 69.6/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.9/100
+  - 🟢 Calibration Freshness: 100.0/100
   - 🔴 Hit Rate Trend: 0/100
-  - 🔴 Brier Trend: 29.8/100
+  - 🔴 Brier Trend: 48.0/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 100.0/100
   - 🟢 Edge Count: 100/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.588)
-- **Total games on board:** 160
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.587)
+- **Total games on board:** 168
 - **Strong home favorites:** 11 | **Strong road dogs:** 1
 
 ## 🎯 Top 5 Best Bets
@@ -22,10 +22,8 @@
 5. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
 
 ## 📡 Sharp Action (Line Movement)
-- [MODERATE] **STL @ CHC** ml_home: 56.9% → 61.83% (+4.9pp)
-
-## 📉 Strong UNDER Signals
-- [STRONG 6.1] **NYY @ TOR** model 7.22 vs market 8.5
+- [STRONG] **MIA @ CIN** ml_away: 50.74% → 56.14% (+5.4pp)
+- [MODERATE] **PHI @ MIN** under_9.5: 50.0% → 54.55% (+4.5pp)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -60,11 +58,10 @@
 - Hot teams: **3** | Cold teams: **1** | Over-heavy: 0 | Under-heavy: 5
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (46)
-- STEAM_MOVE: **43**
-- COMPOUND_BULLPEN: **1**
-- PEN_MISMATCH: **2**
-  - MIL @ LAD (MLB): ML steam since open: ML -16.1pp toward MIL (9 snapshots)
+## ⚠️ Anomaly Detector (45)
+- STEAM_MOVE: **44**
+- PEN_MISMATCH: **1**
+  - MIL @ LAD (MLB): ML steam since open: ML -16.1pp toward MIL (10 snapshots)
   - CHI @ SEA (WNBA): TOTAL steam since open: ML -1.9pp toward CHI; total +2 (OVER) (4 snapshots)
   - NY @ IND (WNBA): TOTAL steam since open: ML +0.9pp toward IND; total -2 (UNDER) (5 snapshots)
   - PHX @ LA (WNBA): TOTAL steam since open: ML -0.9pp toward PHX; total +2 (OVER) (4 snapshots)
@@ -80,19 +77,19 @@
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
 ## 🎯 Convergence Picks (5 stacked games)
-- ELITE: **0** · HIGH: 1 · MED: 4
-  - [HIGH] Dallas Wings @ Indiana Fever : 3 signals (HEAT_COLD, ATS, ATS)
-  - [MED] Portland Fire @ Seattle Storm : 2 signals (ATS, ATS)
+- ELITE: **0** · HIGH: 0 · MED: 5
+  - [MED] New York Liberty @ Connecticut Sun : 2 signals (HEAT_COLD, ATS)
+  - [MED] Minnesota Lynx @ Las Vegas Aces : 2 signals (HEAT_COLD, ATS)
   - [MED] LA Galaxy @ Houston Dynamo FC : 2 signals (HEAT_COLD, ATS)
   - [MED] Inter Miami CF @ Nashville SC : 2 signals (PREGAME, ATS)
   - [MED] Coventry City @ Arsenal : 2 signals (PREGAME, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (10)
+## ⚾ Top MLB Pitcher K Plays (7)
 - **Reid Detmers** OVER 4.5 K (78%) fair -347
 - **MacKenzie Gore** OVER 4.5 K (78%) fair -347
-- **Troy Melton** OVER 4.5 K (75%) fair -295
-- **Cam Schlittler** OVER 6.5 K (72%) fair -258
+- **Wandy Peralta** OVER 7.5 K (73%) fair -273
 - **Jesús Luzardo** OVER 6.5 K (72%) fair -252
+- **Jacob Misiorowski** OVER 7.5 K (69%) fair -223
 
 ## 🏀 NBA Player Heat (2 HOT / 1 COLD)
   - 🔥 **Scottie Barnes** (TOR): L5 24.4/7.6/9.6 vs season 18.6/5.8/8.8 [PTS +5.8]
@@ -107,25 +104,27 @@
   - [LEAN] **Joel Álvarez** (23-4-0) vs Chidi Njokuani -- fair -134
 
 ## ⛳ Golf Player Heat (from FedEx St. Jude Championship)
-  - 🔥 T1 **Scottie Scheffler** (USA): -11 total -- finished T1
-  - 🔥 T2 **Viktor Hovland** (Norway): -8 total -- finished T2
-  - 🔥 T3 **Sungjae Im** (South Korea): -8 total -- finished T3
-  - 🔥 T4 **Ludvig Åberg** (Sweden): -7 total -- finished T4
-  - 🔥 T5 **Brian Harman** (USA): -6 total -- finished T5
+  - 🔥 T1 **Scottie Scheffler** (USA): -13 total -- finished T1
+  - 🔥 T2 **Sam Burns** (USA): -11 total -- finished T2
+  - 🔥 T3 **Sungjae Im** (South Korea): -10 total -- finished T3
+  - 🔥 T4 **Tommy Fleetwood** (England): -8 total -- finished T4
+  - 🔥 T5 **Si Woo Kim** (South Korea): -7 total -- finished T5
 
-## 🔥 MLB Batter Heat (41 HOT / 62 COLD)
+## 🔥 MLB Batter Heat (43 HOT / 64 COLD)
   - 🔥 **Freddy Fermin** (SD): L14 .351 / season .194 (+157pts)
+  - 🔥 **Austin Wells** (NYY): L14 .333 / season .180 (+153pts)
   - 🔥 **Jac Caglianone** (KC): L14 .411 / season .273 (+138pts)
   - 🔥 **Geraldo Perdomo** (AZ): L14 .386 / season .252 (+134pts)
   - 🔥 **Spencer Torkelson** (DET): L14 .364 / season .230 (+134pts)
-  - 🔥 **Jeff McNeil** (ATH): L14 .396 / season .263 (+133pts)
-  - ❄️ **Ben Rice** (NYY): L14 .106 / season .252 (-146pts) -- FADE props
+  - ❄️ **Ben Rice** (NYY): L14 .104 / season .251 (-147pts) -- FADE props
   - ❄️ **Wyatt Langford** (TEX): L14 .109 / season .249 (-140pts) -- FADE props
   - ❄️ **Garrett Mitchell** (MIL): L14 .111 / season .249 (-138pts) -- FADE props
-  - ❄️ **Heliot Ramos** (NYY): L14 .109 / season .245 (-136pts) -- FADE props
+  - ❄️ **Heliot Ramos** (NYY): L14 .106 / season .244 (-138pts) -- FADE props
   - ❄️ **Carlos Cortes** (ATH): L14 .125 / season .260 (-135pts) -- FADE props
 
-## 📈 Streak Regression Alerts (1)
+## 📈 Streak Regression Alerts (3)
+- [WNBA] Los Angeles Sparks on L3 L10 1-4 -- Los Angeles Sparks on L3 -- no historical sample
+- [WNBA] Minnesota Lynx on W3 L10 4-1 -- Minnesota Lynx on W3 -- no historical sample
 - [MLS] Houston Dynamo FC on W3 L10 3-0 -- Houston Dynamo FC on W3 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)

@@ -4,32 +4,31 @@
 
 _Pipeline health: **DEGRADED** (14/15 artifacts ok; 1 empty, 0 stale)._ 
 
-_Generated at 2026-08-15T21:07:05 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-08-15T22:22:32 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
 **MIL @ LAD - MIL_ML**
-- Market: +140
+- Market: +143
 - Model probability: 59.4%
-- Raw edge: +42.57%
+- Raw edge: +44.4%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
 
-## Full Slate (10 games)
+## Full Slate (9 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 6:10p ET | BAL @ TBR | Tropicana Field | indoor | OVER_7.5 +9.83% |
-| 6:40p ET | MIA @ CIN | Great American Ball Park | 81F 3mph | OVER_9.5 +25.83% |
-| 7:10p ET | SDP @ CLE | Progressive Field | 73F 4mph | UNDER_8.5 +16.03% |
+| 6:40p ET | MIA @ CIN | Great American Ball Park | 80F 4mph | OVER_9.5 +26.83% |
+| 7:10p ET | SDP @ CLE | Progressive Field | 71F 4mph | UNDER_8.5 +17.49% |
 | 7:10p ET | SEA @ HOU | Daikin Park | indoor | OVER_8.0 +2.96% |
-| 7:10p ET | PHI @ MIN | Target Field | 73F 8mph | UNDER_9.5 +17.41% |
-| 7:15p ET | BOS @ PIT | PNC Park | 74F 2mph | OVER_8.0 +13.26% |
-| 7:15p ET | ARI @ ATL | Truist Park | 80F 2mph | OVER_8.5 +22.45% |
-| 7:15p ET | MIL @ LAD | UNIQLO Field at Dodger Stadium | 69F 5mph | MIL_ML +42.57% |
-| 9:38p ET | KCR @ LAA | Angel Stadium | 70F 3mph | UNDER_9.5 +30.39% |
-| 9:40p ET | TEX @ OAK | Sutter Health Park | 66F 7mph | UNDER_10.5 +8.63% |
+| 7:10p ET | PHI @ MIN | Target Field | 74F 9mph | UNDER_9.5 +14.98% |
+| 7:15p ET | BOS @ PIT | PNC Park | 73F 4mph | OVER_8.0 +15.87% |
+| 7:15p ET | ARI @ ATL | Truist Park | 80F 1mph | OVER_9.0 +8.45% |
+| 7:15p ET | MIL @ LAD | UNIQLO Field at Dodger Stadium | 68F 6mph | MIL_ML +44.4% |
+| 9:38p ET | KCR @ LAA | Angel Stadium | 70F 3mph | UNDER_9.5 +32.8% |
+| 9:40p ET | TEX @ OAK | Sutter Health Park | 66F 6mph | UNDER_10.5 +10.46% |
 
 ## Parlays - top 5
 
@@ -54,20 +53,19 @@ _Generated at 2026-08-15T21:07:05 UTC. Game lines source: **Bovada (fallback -- 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
 
-Cumulative graded plays: 8395. Wins: 3167. Hit rate: 37.7%.
+Cumulative graded plays: 8396. Wins: 3167. Hit rate: 37.7%.
 
 ## Auxiliary Markets (Model Fair Prices)
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| ARI @ ATL | 54.6% | -120 | 3.04 | +144 | -144 |
-| BAL @ TBR | 46.7% | +114 | 3.81 | +107 | -107 |
-| BOS @ PIT | 32.5% | +208 | 5.59 | +188 | -188 |
-| KCR @ LAA | 50.5% | -102 | 3.45 | +159 | -159 |
-| MIA @ CIN | 27.5% | +263 | 6.35 | +384 | -384 |
-| MIL @ LAD | 34.4% | +191 | 5.5 | +258 | -258 |
-| PHI @ MIN | 42.2% | +137 | 4.52 | +241 | -241 |
-| SDP @ CLE | 44.5% | +125 | 4.12 | +202 | -202 |
+| ARI @ ATL | 54.6% | -120 | 3.05 | +145 | -145 |
+| BOS @ PIT | 32.5% | +208 | 5.52 | +187 | -187 |
+| KCR @ LAA | 50.5% | -102 | 3.44 | +159 | -159 |
+| MIA @ CIN | 27.5% | +263 | 6.31 | +385 | -385 |
+| MIL @ LAD | 34.4% | +191 | 5.48 | +258 | -258 |
+| PHI @ MIN | 42.2% | +137 | 4.56 | +240 | -240 |
+| SDP @ CLE | 44.5% | +125 | 4.14 | +202 | -202 |
 | SEA @ HOU | 40.3% | +148 | 4.55 | +136 | -136 |
 | TEX @ OAK | 52.5% | -111 | 3.34 | +233 | -233 |
 
