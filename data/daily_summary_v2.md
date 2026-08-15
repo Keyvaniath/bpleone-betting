@@ -1,34 +1,25 @@
 # EdgeStat Daily Summary — 2026-08-15
 
-## 🏥 Model Health: 60.6/100 [OK]
+## 🏥 Model Health: 65.8/100 [OK]
 - Operational but room to improve - check yellow components
   - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 0/100
-  - 🔴 Brier Trend: 29.3/100
+  - 🔴 Brier Trend: 29.2/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 86.4/100
-  - 🟡 Edge Count: 74.3/100
+  - 🟢 Data Health: 100.0/100
+  - 🟢 Edge Count: 100/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.585)
-- **Total games on board:** 168
-- **Strong home favorites:** 10 | **Strong road dogs:** 2
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.587)
+- **Total games on board:** 158
+- **Strong home favorites:** 10 | **Strong road dogs:** 1
 
 ## 🎯 Top 5 Best Bets
-1. **WSN @ NYM YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-2. **TEX @ OAK YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-3. **KCR @ LAA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-4. **BAL @ TBR YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-5. **COL @ SFG YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
-
-## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** ARI @ ATL ATL_ML -- 66% / +25.4% (score 2.5)
-
-## 📡 Sharp Action (Line Movement)
-- [ELITE] **NYY @ TOR** ml_away: 52.61% → 65.28% (+12.7pp)
-
-## 📉 Strong UNDER Signals
-- [STRONG 5.8] **CHW @ DET** model 7.1 vs market 8.5
+1. **MIA @ CIN YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+2. **BOS @ PIT YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+3. **COL @ SFG YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
+4. **MIL @ LAD YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
+5. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -74,27 +65,27 @@
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$0.1**
-  - #1 [NRFI] $50 on WSN @ NYM YRFI (1st-inning OVER 0.5) (P=75%)
-  - #2 [NRFI] $50 on TEX @ OAK YRFI (1st-inning OVER 0.5) (P=69%)
-  - #3 [NRFI] $50 on KCR @ LAA YRFI (1st-inning OVER 0.5) (P=67%)
+- Expected EV: **$-3.16**
+  - #1 [NRFI] $50 on MIA @ CIN YRFI (1st-inning OVER 0.5) (P=72%)
+  - #2 [NRFI] $50 on BOS @ PIT YRFI (1st-inning OVER 0.5) (P=67%)
+  - #3 [NRFI] $35 on COL @ SFG YRFI (1st-inning OVER 0.5) (P=66%)
   - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
 ## 🎯 Convergence Picks (5 stacked games)
-- ELITE: **0** · HIGH: 2 · MED: 3
-  - [HIGH] Dallas Wings @ Indiana Fever : 3 signals (PREGAME, HEAT_COLD, ANOMALY)
-  - [HIGH] Portland Fire @ Seattle Storm : 3 signals (PREGAME, ANOMALY, ATS)
+- ELITE: **0** · HIGH: 1 · MED: 4
+  - [HIGH] Dallas Wings @ Indiana Fever : 3 signals (HEAT_COLD, ATS, ATS)
+  - [MED] Portland Fire @ Seattle Storm : 2 signals (ATS, ATS)
   - [MED] LA Galaxy @ Houston Dynamo FC : 2 signals (HEAT_COLD, ATS)
   - [MED] Inter Miami CF @ Nashville SC : 2 signals (PREGAME, ATS)
   - [MED] Coventry City @ Arsenal : 2 signals (PREGAME, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (6)
-- **Gerrit Cole** OVER 5.5 K (73%) fair -270
-- **Kumar Rocker** OVER 4.5 K (71%) fair -251
-- **Gavin Williams** OVER 7.5 K (70%) fair -238
-- **Peter Lambert** OVER 4.5 K (70%) fair -232
-- **Yoshinobu Yamamoto** OVER 4.5 K (70%) fair -232
+## ⚾ Top MLB Pitcher K Plays (10)
+- **Reid Detmers** OVER 4.5 K (78%) fair -347
+- **MacKenzie Gore** OVER 4.5 K (78%) fair -347
+- **Troy Melton** OVER 4.5 K (75%) fair -295
+- **Cam Schlittler** OVER 6.5 K (72%) fair -258
+- **Jesús Luzardo** OVER 6.5 K (72%) fair -252
 
 ## 🏀 NBA Player Heat (2 HOT / 1 COLD)
   - 🔥 **Scottie Barnes** (TOR): L5 24.4/7.6/9.6 vs season 18.6/5.8/8.8 [PTS +5.8]
