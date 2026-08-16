@@ -1,10 +1,10 @@
 # EdgeStat Daily Summary — 2026-08-16
 
-## 🏥 Model Health: 65.2/100 [OK]
+## 🏥 Model Health: 65.6/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.9/100
+  - 🟢 Calibration Freshness: 100.0/100
   - 🔴 Hit Rate Trend: 0/100
-  - 🔴 Brier Trend: 26.1/100
+  - 🔴 Brier Trend: 28.2/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 100.0/100
   - 🟢 Edge Count: 100/100
@@ -12,7 +12,7 @@
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.577)
 - **Total games on board:** 163
-- **Strong home favorites:** 6 | **Strong road dogs:** 0
+- **Strong home favorites:** 6 | **Strong road dogs:** 1
 
 ## 🎯 Top 5 Best Bets
 1. **WSN @ NYM YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
@@ -20,12 +20,6 @@
 3. **PHI @ MIN YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 4. **SDP @ CLE YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 5. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
-
-## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** MIA @ CIN MIA_ML -- 67% / +22.4% (score 2.5)
-
-## 📡 Sharp Action (Line Movement)
-- [MODERATE] **MIA @ CIN** ml_away: 50.74% → 54.55% (+3.8pp)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -53,8 +47,7 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (3)
-- [WNBA] **Atlanta Dream** HOME (3-2 L10) · model 63.1% fair -171
+## ⚡ Pre-Game HIGH Conviction (2)
 - [MLS] **Austin FC** HOME (0-1 L10) · model 63.1% fair -171
 - [MLS] **Seattle Sounders FC** HOME (0-1 L10) · model 62.2% fair -164
 
@@ -62,11 +55,10 @@
 - Hot teams: **3** | Cold teams: **4** | Over-heavy: 0 | Under-heavy: 4
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (57)
+## ⚠️ Anomaly Detector (52)
 - RESIDUAL_DIVERGENCE: **3**
 - STEAM_MOVE: **48**
-- COMPOUND_BULLPEN: **4**
-- PEN_MISMATCH: **2**
+- COMPOUND_BULLPEN: **1**
   - Atlanta Dream (WNBA): Atlanta Dream OUTPERFORMING expected margin by 11.8pts in recent games -- model bias may persist
   - Indiana Fever (WNBA): Indiana Fever OUTPERFORMING expected margin by 12.2pts in recent games -- model bias may persist
   - Phoenix Mercury (WNBA): Phoenix Mercury UNDERPERFORMING expected margin by 6.5pts in recent games -- model bias may persist
@@ -83,19 +75,15 @@
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
 ## 🎯 Convergence Picks (8 stacked games)
-- ELITE: **0** · HIGH: 4 · MED: 4
-  - [HIGH] Minnesota Lynx @ Las Vegas Aces : 3 signals (HEAT_COLD, HEAT_COLD, ATS)
+- ELITE: **2** · HIGH: 4 · MED: 2
+  - [ELITE] Indiana Fever @ Atlanta Dream : 5 signals (PREGAME, ANOMALY, ANOMALY, ATS)
+  - [ELITE] Chicago Sky @ Seattle Storm : 4 signals (PREGAME, HEAT_COLD, ATS, ATS)
+  - [HIGH] Portland Fire @ Phoenix Mercury : 3 signals (PREGAME, ANOMALY, ATS)
   - [HIGH] Philadelphia Union @ New York City FC : 3 signals (PREGAME, ATS, ATS)
   - [HIGH] FC Dallas @ Austin FC : 3 signals (PREGAME, ATS, ATS)
-  - [HIGH] Vancouver Whitecaps @ Seattle Sounders FC : 3 signals (PREGAME, ATS, ATS)
-  - [MED] New York Liberty @ Connecticut Sun : 2 signals (HEAT_COLD, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (13)
-- **Jacob Lopez** OVER 4.5 K (76%) fair -325
-- **Noah Cameron** OVER 4.5 K (73%) fair -275
-- **Trevor Rogers** OVER 4.5 K (71%) fair -251
-- **Blade Tidwell** OVER 7.5 K (71%) fair -245
-- **Sean Burke** OVER 6.5 K (70%) fair -235
+## ⚾ Top MLB Pitcher K Plays (1)
+- **Bryan Woo** OVER 4.5 K (68%) fair -210
 
 ## 🏀 NBA Player Heat (2 HOT / 1 COLD)
   - 🔥 **Scottie Barnes** (TOR): L5 24.4/7.6/9.6 vs season 18.6/5.8/8.8 [PTS +5.8]
@@ -110,23 +98,30 @@
   - [COIN_FLIP] **Mackenzie Dern** (17-5-0) vs Gillian Robertson -- fair -126
 
 ## ⛳ Golf Player Heat (from FedEx St. Jude Championship)
-  - 🔥 T1 **Scottie Scheffler** (USA): -13 total -- finished T1
-  - 🔥 T2 **Sam Burns** (USA): -11 total -- finished T2
-  - 🔥 T3 **Sungjae Im** (South Korea): -11 total -- finished T3
-  - 🔥 T4 **Jake Knapp** (USA): -8 total -- finished T4
-  - 🔥 T5 **Tommy Fleetwood** (England): -8 total -- finished T5
+  - 🔥 T1 **Scottie Scheffler** (USA): -16 total -- finished T1
+  - 🔥 T2 **Alex Noren** (Sweden): -9 total -- finished T2
+  - 🔥 T3 **Si Woo Kim** (South Korea): -9 total -- finished T3
+  - 🔥 T6 **Wyndham Clark** (USA): -7 total -- finished T6, Sunday -0.2 vs tourney avg
+  - 🔥 T7 **Tommy Fleetwood** (England): -7 total -- finished T7
+  - ❄️ **Aaron Rai** (England): Sunday +6.2 vs tourney avg
+  - ❄️ **Brian Harman** (USA): Sunday +5.5 vs tourney avg
+  - ❄️ **Sungjae Im** (South Korea): Sunday +5.0 vs tourney avg
 
-## 🔥 MLB Batter Heat (50 HOT / 68 COLD)
+## 🔥 MLB Batter Heat (47 HOT / 67 COLD)
   - 🔥 **Victor Robles** (SEA): L14 .429 / season .264 (+165pts)
   - 🔥 **Alec Bohm** (PHI): L14 .396 / season .242 (+154pts)
-  - 🔥 **Austin Wynns** (TEX): L14 .286 / season .148 (+138pts)
   - 🔥 **Jac Caglianone** (KC): L14 .407 / season .272 (+135pts)
   - 🔥 **Royce Lewis** (MIN): L14 .375 / season .243 (+132pts)
+  - 🔥 **Randal Grichuk** (CWS): L14 .406 / season .276 (+130pts)
   - ❄️ **Ben Rice** (NYY): L14 .102 / season .251 (-149pts) -- FADE props
   - ❄️ **Heliot Ramos** (NYY): L14 .106 / season .244 (-138pts) -- FADE props
   - ❄️ **Carlos Cortes** (ATH): L14 .125 / season .260 (-135pts) -- FADE props
   - ❄️ **Garrett Mitchell** (MIL): L14 .114 / season .249 (-135pts) -- FADE props
-  - ❄️ **Carter Jensen** (KC): L14 .085 / season .217 (-132pts) -- FADE props
+  - ❄️ **Max Muncy** (ATH): L14 .118 / season .249 (-131pts) -- FADE props
+
+## 📈 Streak Regression Alerts (2)
+- [WNBA] Chicago Sky on L3 L10 1-4 -- Chicago Sky on L3 -- no historical sample
+- [WNBA] Indiana Fever on W3 L10 3-2 -- Indiana Fever on W3 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**

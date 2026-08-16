@@ -1,64 +1,27 @@
 {
-  "generated_at": "2026-08-16T21:13:42",
+  "generated_at": "2026-08-16T22:24:24",
   "n_pitchers_with_edges": 2,
   "PITCHER_PLAY_OF_THE_DAY": {
-    "pitcher": "Hunter Brown",
-    "composite_score": 0.259,
-    "n_strong_edges": 2,
+    "pitcher": "Bryan Woo",
+    "composite_score": 0.252,
+    "n_strong_edges": 1,
     "net_direction": "STRONG_UNDER",
     "directions_OVER": 0,
-    "directions_UNDER": 2,
+    "directions_UNDER": 1,
     "edges": [
       {
-        "source": "strikeouts",
-        "market": "K_UNDER_5.5",
+        "source": "win",
+        "market": "PITCHER_WIN_NO",
         "direction": "UNDER",
-        "p": 0.637,
-        "fair_odds": -175,
-        "edge_class": "STRONG_UNDER",
-        "weight": 1.0
-      },
-      {
-        "source": "hits_allowed",
-        "market": "H_UNDER_5.0",
-        "direction": "UNDER",
-        "p": 0.662,
-        "fair_odds": -196,
-        "edge_class": "STRONG_UNDER",
-        "weight": 0.75
+        "p": 0.796,
+        "fair_odds": -389,
+        "edge_class": "STRONG_NO",
+        "weight": 0.85
       }
     ]
   },
   "method_note": "Aggregates STRONG edges across 11 pitcher prop modules. Composite = sum(edge_pct * source_weight) per starter. Net direction = STRONG_OVER/UNDER if 2x majority OVER/UNDER, LEAN_OVER/UNDER if simple majority, MIXED otherwise.",
   "top_15_pitchers": [
-    {
-      "pitcher": "Hunter Brown",
-      "composite_score": 0.259,
-      "n_strong_edges": 2,
-      "net_direction": "STRONG_UNDER",
-      "directions_OVER": 0,
-      "directions_UNDER": 2,
-      "edges": [
-        {
-          "source": "strikeouts",
-          "market": "K_UNDER_5.5",
-          "direction": "UNDER",
-          "p": 0.637,
-          "fair_odds": -175,
-          "edge_class": "STRONG_UNDER",
-          "weight": 1.0
-        },
-        {
-          "source": "hits_allowed",
-          "market": "H_UNDER_5.0",
-          "direction": "UNDER",
-          "p": 0.662,
-          "fair_odds": -196,
-          "edge_class": "STRONG_UNDER",
-          "weight": 0.75
-        }
-      ]
-    },
     {
       "pitcher": "Bryan Woo",
       "composite_score": 0.252,
@@ -75,6 +38,34 @@
           "fair_odds": -389,
           "edge_class": "STRONG_NO",
           "weight": 0.85
+        }
+      ]
+    },
+    {
+      "pitcher": "Hunter Brown",
+      "composite_score": 0.246,
+      "n_strong_edges": 2,
+      "net_direction": "MIXED",
+      "directions_OVER": 1,
+      "directions_UNDER": 1,
+      "edges": [
+        {
+          "source": "strikeouts",
+          "market": "K_OVER_5.5",
+          "direction": "OVER",
+          "p": 0.624,
+          "fair_odds": -166,
+          "edge_class": "STRONG_OVER",
+          "weight": 1.0
+        },
+        {
+          "source": "hits_allowed",
+          "market": "H_UNDER_5.0",
+          "direction": "UNDER",
+          "p": 0.662,
+          "fair_odds": -196,
+          "edge_class": "STRONG_UNDER",
+          "weight": 0.75
         }
       ]
     }

@@ -15,7 +15,7 @@ _5 picks consolidated from POD + Alpha + Book Edges + Parlay-of-Day._
 ## 📊 Book Edges
 
 - **SEA @ HOU · AWAY (AWAY)** · TEAM_ML
-  Prob 50.2% · Odds +110 · Edge +5.5% · Kelly 0.050
+  Prob 50.2% · Odds +111 · Edge +5.9% · Kelly 0.053
 - **SEA @ HOU · UNDER · O/U 7.5** · TOTAL_UNDER
   Prob 53.9% · Odds -110 · Edge +2.9% · Kelly 0.032
 
@@ -25,5 +25,5 @@ _5 picks consolidated from POD + Alpha + Book Edges + Parlay-of-Day._
   Prob 53.4% · Odds +264 · Edge +94.6% · Kelly 0.050
 
 ---
-_Generated 2026-08-16T21:13:49 UTC by EdgeStat._
+_Generated 2026-08-16T22:24:30 UTC by EdgeStat._
 _Stakes assume ¼-Kelly fractional sizing on a flat bankroll._
