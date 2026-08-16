@@ -4,14 +4,14 @@
 
 _Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
 
-_Generated at 2026-08-16T13:35:01 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-08-16T14:30:25 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
 **MIA @ CIN - OVER_8.5**
 - Market: -110
-- Model probability: 81.7%
-- Raw edge: +56.04%
+- Model probability: 85.2%
+- Raw edge: +62.72%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
@@ -21,45 +21,45 @@ _Generated at 2026-08-16T13:35:01 UTC. Game lines source: **Bovada (fallback -- 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
 | 12:15p ET | BAL @ TBR | Tropicana Field | indoor | OVER_7.5 +16.8% |
-| 1:35p ET | BOS @ PIT | PNC Park | 85F 9mph | OVER_8.5 +30.09% |
-| 1:35p ET | ARI @ ATL | Truist Park | 96F 6mph | ARI_ML +17.03% |
-| 1:37p ET | NYY @ TOR | Rogers Centre | indoor | UNDER_7.0 +10.98% |
-| 1:40p ET | WSN @ NYM | Citi Field | 76F 14mph | OVER_8.5 +29.58% |
-| 1:40p ET | SDP @ CLE | Progressive Field | 79F 9mph | SDP_ML +20.23% |
-| 1:40p ET | CHW @ DET | Comerica Park | 83F 9mph | OVER_8.0 +17.51% |
-| 1:40p ET | MIA @ CIN | Great American Ball Park | 87F 7mph | OVER_8.5 +56.04% |
+| 1:35p ET | BOS @ PIT | PNC Park | 82F 5mph | OVER_8.0 +32.68% |
+| 1:35p ET | ARI @ ATL | Truist Park | 96F 7mph | ARI_ML +17.65% |
+| 1:37p ET | NYY @ TOR | Rogers Centre | indoor | NYY_ML +10.27% |
+| 1:40p ET | WSN @ NYM | Citi Field | 76F 11mph | OVER_8.5 +24.88% |
+| 1:40p ET | SDP @ CLE | Progressive Field | 83F 10mph | SDP_ML +20.51% |
+| 1:40p ET | CHW @ DET | Comerica Park | 85F 14mph | OVER_8.0 +26.62% |
+| 1:40p ET | MIA @ CIN | Great American Ball Park | 91F 11mph | OVER_8.5 +62.72% |
 | 2:10p ET | PHI @ MIN | Target Field | 82F 10mph | OVER_9.5 +44.06% |
-| 3:15p ET | STL @ CHC | Wrigley Field | 78F 7mph | OVER_8.5 +40.15% |
-| 4:05p ET | COL @ SFG | Oracle Park | 66F 11mph | -- |
+| 3:15p ET | STL @ CHC | Wrigley Field | 76F 2mph | OVER_9.0 +19.1% |
+| 4:05p ET | COL @ SFG | Oracle Park | 66F 14mph | -- |
 | 4:05p ET | TEX @ OAK | Sutter Health Park | 93F 7mph | OVER_9.5 +34.1% |
-| 4:07p ET | KCR @ LAA | Angel Stadium | 83F 9mph | KCR_ML +32.89% |
+| 4:07p ET | KCR @ LAA | Angel Stadium | 83F 8mph | OVER_8.5 +40.32% |
 | 4:10p ET | MIL @ LAD | UNIQLO Field at Dodger Stadium | 79F 9mph | OVER_7.0 +34.63% |
 | 7:20p ET | SEA @ HOU | Daikin Park | indoor | OVER_7.5 +9.49% |
 
 ## Parlays - top 5
 
-- **2-leg @ +213 (prob 47.9%, EV +49.77%)**
-  - Luis Garcia Jr. OVER 0.5 batter_hits (-157, model 74.3%)
-  - TEX @ OAK OVER_10.0 (-110, model 64.5%)
-- **2-leg @ +231 (prob 45.2%, EV +49.71%)**
-  - Rafael Flores OVER 0.5 batter_hits (-136, model 70.0%)
-  - TEX @ OAK OVER_10.0 (-110, model 64.5%)
-- **2-leg @ +213 (prob 47.8%, EV +49.47%)**
-  - Luis Garcia Jr. OVER 0.5 batter_hits (-157, model 74.3%)
-  - STL @ CHC OVER_8.5 (-110, model 64.4%)
-- **2-leg @ +231 (prob 45.1%, EV +49.41%)**
-  - Rafael Flores OVER 0.5 batter_hits (-136, model 70.0%)
-  - STL @ CHC OVER_8.5 (-110, model 64.4%)
+- **2-leg @ +276 (prob 39.7%, EV +49.33%)**
+  - Spencer Jones OVER 0.5 batter_hits (+101, model 61.7%)
+  - SDP @ CLE SDP_ML (-115, model 64.5%)
+- **2-leg @ +351 (prob 33.1%, EV +49.23%)**
+  - WSN @ NYM WSN_ML (+141, model 51.4%)
+  - SDP @ CLE SDP_ML (-115, model 64.5%)
 - **2-leg @ +273 (prob 40.0%, EV +48.95%)**
   - Spencer Jones OVER 0.5 batter_hits (+101, model 61.7%)
   - Dylan Beavers OVER 0.5 batter_hits (-117, model 64.8%)
+- **2-leg @ +347 (prob 33.3%, EV +48.84%)**
+  - Dylan Beavers OVER 0.5 batter_hits (-117, model 64.8%)
+  - WSN @ NYM WSN_ML (+141, model 51.4%)
+- **2-leg @ +226 (prob 45.7%, EV +48.8%)**
+  - Coby Mayo OVER 0.5 batter_hits (-101, model 61.5%)
+  - Luis Garcia Jr. OVER 0.5 batter_hits (-157, model 74.3%)
 
 ## Self-Learning Loop
 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
-| batter total bases | 9 | 44.4% | 52.6% | 1.163 | 0.916 |
 | batter hits | 14 | 57.1% | 49.8% | 0.878 | 1.097 |
+| batter total bases | 9 | 44.4% | 52.6% | 1.163 | 0.916 |
 
 Cumulative graded plays: 8622. Wins: 3232. Hit rate: 37.5%.
 
@@ -67,21 +67,21 @@ Cumulative graded plays: 8622. Wins: 3232. Hit rate: 37.5%.
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| ARI @ ATL | 50.2% | -101 | 3.49 | +224 | -224 |
+| ARI @ ATL | 50.2% | -101 | 3.52 | +223 | -223 |
 | BAL @ TBR | 30.7% | +226 | 5.9 | +149 | -149 |
-| BOS @ PIT | 49.1% | +104 | 3.74 | +204 | -204 |
-| CHW @ DET | 63.3% | -173 | 2.39 | +169 | -169 |
-| COL @ SFG | 36.0% | +178 | 5.49 | +146 | -146 |
-| KCR @ LAA | 37.7% | +165 | 5.16 | +420 | -420 |
-| MIA @ CIN | 40.2% | +149 | 4.66 | +493 | -493 |
-| MIL @ LAD | 50.5% | -102 | 3.56 | -105 | +105 |
+| BOS @ PIT | 49.1% | +104 | 3.67 | +205 | -205 |
+| CHW @ DET | 63.3% | -173 | 2.45 | +167 | -167 |
+| COL @ SFG | 36.0% | +178 | 5.58 | +145 | -145 |
+| KCR @ LAA | 37.7% | +165 | 5.15 | +419 | -419 |
+| MIA @ CIN | 40.2% | +149 | 4.72 | +500 | -500 |
+| MIL @ LAD | 50.5% | -102 | 3.54 | -105 | +105 |
 | NYY @ TOR | 63.8% | -176 | 2.25 | +214 | -214 |
-| PHI @ MIN | 33.8% | +196 | 5.5 | +167 | -167 |
-| SDP @ CLE | 34.0% | +194 | 5.42 | +325 | -325 |
+| PHI @ MIN | 33.8% | +196 | 5.49 | +167 | -167 |
+| SDP @ CLE | 34.0% | +194 | 5.3 | +325 | -325 |
 | SEA @ HOU | 43.6% | +129 | 4.14 | +180 | -180 |
-| STL @ CHC | 36.2% | +177 | 5.06 | -101 | +101 |
-| TEX @ OAK | 48.9% | +105 | 3.75 | +495 | -495 |
-| WSN @ NYM | 29.8% | +236 | 6.56 | +175 | -175 |
+| STL @ CHC | 36.2% | +177 | 5.09 | +101 | -101 |
+| TEX @ OAK | 48.9% | +105 | 3.74 | +495 | -495 |
+| WSN @ NYM | 29.8% | +236 | 6.44 | +176 | -176 |
 
 ## Team Form (last 10)
 
@@ -102,7 +102,7 @@ Cumulative graded plays: 8622. Wins: 3232. Hit rate: 37.5%.
 
 ## Loop Activity (since last refresh)
 
-- Confidence delta: **-0.3**
+- Confidence delta: **+0.0**
 
 ## Model Recommendations (operator review)
 

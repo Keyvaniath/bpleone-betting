@@ -1,14 +1,14 @@
 # Tonight's Slate Brief — 2026-08-16
 
-## Slate Quality: 52/100 (LOW)
-_0% lineups confirmed · 13 rookie SPs_
-**Recommendation:** Defensive sizing tonight; stick to highest-confidence plays.
+## Slate Quality: 57/100 (MEDIUM)
+_6% lineups confirmed · 13 rookie SPs_
+**Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
 - **15 games** scheduled
-- **50 best bets** scored: 21 DK · 0 PP · 11 NRFI · 0 SGP
+- **50 best bets** scored: 21 DK · 0 PP · 11 NRFI · 1 SGP
 - **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$33.2
-- **MC simulation:** EV +$108.9, 78% P(profit), p05 $-133.6 / p95 $322.46
+- **MC simulation:** EV +$140.3, 83% P(profit), p05 $-103.68 / p95 $373.57
 
 ## Top 5 Best Bets
 1. **WSN @ NYM YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +24.2%)
@@ -38,11 +38,13 @@ _0% lineups confirmed · 13 rookie SPs_
 - **George Lombard Jr. OVER 0.5 batter hits** (low):
    - Edge +27.0% looks big but only 0 settled props on this player — model unproven
 
-## Weather leans
-- **UNDER lean** (wind in + cold): WSN @ NYM
-
 ## Hot streaks
 **Batters heating up:** Trent Grisham (heat +4.05), Pete Alonso (heat +4.00), Rafael Flores (heat +3.13)
+
+## Top correlation-aware SGPs
+- **BOS @ PIT** 2-leg @ +138 fair (joint 0.42, EV +25.0%)
+   - Andruw Monasterio OVER 0.5 batter hits
+   - Connor Wong OVER 0.5 batter hits
 
 ## Bullpens GASSED tonight
 Pittsburgh Pirates, San Diego Padres, Seattle Mariners, Tampa Bay Rays, Toronto Blue Jays, Atlanta Braves, Chicago White Sox, Boston Red Sox
@@ -67,12 +69,12 @@ _Lean late-inning OVER on these games; fade their save situations._
 - Winnipeg Jets @ Edmonton Oilers (0-0-0 vs 0-0-0)  | P(home) 52.9% fair -112 | Scheduled
 - Chicago Blackhawks @ Minnesota Wild (0-0-0 vs 0-0-0)  | P(home) 52.9% fair -112 | Scheduled
 
-## LoL Esports -- 0 live, 24 upcoming
-- [LCK Challengers] T1 Esports Academy vs DNS Challengers BO3 | P(A) 62.6% fair -167/+167
+## LoL Esports -- 0 live, 23 upcoming
 - [LEC] Natus Vincere vs Movistar KOI BO3 | P(A) 50.6% fair -103/+103
 - [CBLOL] LOUD vs LEVIATÁN BO3 | P(A) 57.8% fair -137/+137
 - [LEC] Fnatic vs G2 Esports BO3 | P(A) 27.8% fair +260/-260
 - [CBLOL] paiN Gaming vs Fluxo W7M BO3 | P(A) 55.2% fair -123/+123
+- [LCS] Cloud9 Kia vs FlyQuest BO3 | P(A) 49.3% fair +103/-103
 - **LoL POT:** G2 Esports 2-0 SWEEP vs Fnatic (LEC) (HIGH)
 
 ## Player Play of the Day -- across all sports (3472 candidates scanned)

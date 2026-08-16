@@ -1,5 +1,5 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-08-16T13:34:51 UTC_
+_Generated 2026-08-16T14:30:04 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
@@ -20,7 +20,7 @@ _Generated 2026-08-16T13:34:51 UTC_
 1. **GOLF / Scottie Scheffler** (GOLF_PLAYER, score=218.14)
    - Play: Scottie Scheffler (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Sam Burns** (GOLF_PLAYER, score=205.21)
+2. **GOLF / Sam Burns** (GOLF_PLAYER, score=205.07)
    - Play: Sam Burns (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
 3. **MLB / Tarik Skubal** (MLB_PITCHER, score=63.83)
@@ -47,9 +47,9 @@ _Generated 2026-08-16T13:34:51 UTC_
   - Fade angle: team total UNDER
 - **NBA** / MIA (TEAM_FADE)
   - Fade angle: team total UNDER
+- **NHL** / calvin pickard (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / stuart skinner (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
 - **NHL** / jake oettinger (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / joseph woll (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / logan thompson_2 (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
