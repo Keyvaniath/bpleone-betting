@@ -1,29 +1,34 @@
-# EdgeStat Daily Summary — 2026-08-15
+# EdgeStat Daily Summary — 2026-08-16
 
-## 🏥 Model Health: 69.6/100 [OK]
+## 🏥 Model Health: 67.8/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 100.0/100
+  - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 0/100
   - 🔴 Brier Trend: 48.0/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 100.0/100
+  - 🟢 Data Health: 90.9/100
   - 🟢 Edge Count: 100/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.587)
-- **Total games on board:** 168
-- **Strong home favorites:** 11 | **Strong road dogs:** 1
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.574)
+- **Total games on board:** 160
+- **Strong home favorites:** 1 | **Strong road dogs:** 1
 
 ## 🎯 Top 5 Best Bets
 1. **MIA @ CIN YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 2. **BOS @ PIT YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-3. **COL @ SFG YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
-4. **MIL @ LAD YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
-5. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
+3. **MIL @ LAD YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
+4. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
+5. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
+
+## 🐋 Whale Picks (Max Confluence)
+- [STRONG] **[MLB]** MIA @ CIN MIA_ML -- 67% / +21.2% (score 2.5)
 
 ## 📡 Sharp Action (Line Movement)
-- [STRONG] **MIA @ CIN** ml_away: 50.74% → 56.14% (+5.4pp)
-- [MODERATE] **PHI @ MIN** under_9.5: 50.0% → 54.55% (+4.5pp)
+- [STRONG] **MIA @ CIN** ml_away: 50.74% → 55.75% (+5.0pp)
+
+## 📉 Strong UNDER Signals
+- [STRONG 5.2] **KCR @ LAA** model 8.17 vs market 9.5
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -51,17 +56,14 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (1)
-- [MLS] **Orlando City SC** HOME (1-1 L10) · model 74.0% fair -284
-
 ## 🔥/❄️ Heat / Cold Signals
-- Hot teams: **3** | Cold teams: **1** | Over-heavy: 0 | Under-heavy: 5
+- Hot teams: **3** | Cold teams: **4** | Over-heavy: 0 | Under-heavy: 4
 - Heating-up players: **20** | Cooling-down: 20
 
 ## ⚠️ Anomaly Detector (45)
 - STEAM_MOVE: **44**
 - PEN_MISMATCH: **1**
-  - MIL @ LAD (MLB): ML steam since open: ML -16.1pp toward MIL (10 snapshots)
+  - MIL @ LAD (MLB): ML steam since open: ML -16.7pp toward MIL (11 snapshots)
   - CHI @ SEA (WNBA): TOTAL steam since open: ML -1.9pp toward CHI; total +2 (OVER) (4 snapshots)
   - NY @ IND (WNBA): TOTAL steam since open: ML +0.9pp toward IND; total -2 (UNDER) (5 snapshots)
   - PHX @ LA (WNBA): TOTAL steam since open: ML -0.9pp toward PHX; total +2 (OVER) (4 snapshots)
@@ -69,10 +71,10 @@
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$-3.17**
+- Expected EV: **$-3.18**
   - #1 [NRFI] $50 on MIA @ CIN YRFI (1st-inning OVER 0.5) (P=72%)
   - #2 [NRFI] $50 on BOS @ PIT YRFI (1st-inning OVER 0.5) (P=67%)
-  - #3 [NRFI] $35 on COL @ SFG YRFI (1st-inning OVER 0.5) (P=66%)
+  - #3 [NRFI] $35 on MIL @ LAD YRFI (1st-inning OVER 0.5) (P=66%)
   - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
@@ -106,21 +108,21 @@
 ## ⛳ Golf Player Heat (from FedEx St. Jude Championship)
   - 🔥 T1 **Scottie Scheffler** (USA): -13 total -- finished T1
   - 🔥 T2 **Sam Burns** (USA): -11 total -- finished T2
-  - 🔥 T3 **Sungjae Im** (South Korea): -10 total -- finished T3
-  - 🔥 T4 **Tommy Fleetwood** (England): -8 total -- finished T4
-  - 🔥 T5 **Si Woo Kim** (South Korea): -7 total -- finished T5
+  - 🔥 T3 **Sungjae Im** (South Korea): -11 total -- finished T3
+  - 🔥 T4 **Jake Knapp** (USA): -8 total -- finished T4
+  - 🔥 T5 **Tommy Fleetwood** (England): -8 total -- finished T5
 
-## 🔥 MLB Batter Heat (43 HOT / 64 COLD)
-  - 🔥 **Freddy Fermin** (SD): L14 .351 / season .194 (+157pts)
+## 🔥 MLB Batter Heat (49 HOT / 66 COLD)
+  - 🔥 **Victor Robles** (SEA): L14 .429 / season .264 (+165pts)
   - 🔥 **Austin Wells** (NYY): L14 .333 / season .180 (+153pts)
-  - 🔥 **Jac Caglianone** (KC): L14 .411 / season .273 (+138pts)
-  - 🔥 **Geraldo Perdomo** (AZ): L14 .386 / season .252 (+134pts)
+  - 🔥 **Steven Kwan** (CLE): L14 .411 / season .268 (+143pts)
   - 🔥 **Spencer Torkelson** (DET): L14 .364 / season .230 (+134pts)
+  - 🔥 **Geraldo Perdomo** (AZ): L14 .379 / season .249 (+130pts)
+  - ❄️ **Max Muncy** (ATH): L14 .088 / season .249 (-161pts) -- FADE props
   - ❄️ **Ben Rice** (NYY): L14 .104 / season .251 (-147pts) -- FADE props
-  - ❄️ **Wyatt Langford** (TEX): L14 .109 / season .249 (-140pts) -- FADE props
-  - ❄️ **Garrett Mitchell** (MIL): L14 .111 / season .249 (-138pts) -- FADE props
   - ❄️ **Heliot Ramos** (NYY): L14 .106 / season .244 (-138pts) -- FADE props
   - ❄️ **Carlos Cortes** (ATH): L14 .125 / season .260 (-135pts) -- FADE props
+  - ❄️ **Garrett Mitchell** (MIL): L14 .114 / season .249 (-135pts) -- FADE props
 
 ## 📈 Streak Regression Alerts (3)
 - [WNBA] Los Angeles Sparks on L3 L10 1-4 -- Los Angeles Sparks on L3 -- no historical sample
@@ -134,7 +136,10 @@
   - ⚠️ batter_home_runs (Brier Δ -0.0086)
   - ⚠️ batter_rbis (Brier Δ -0.0052)
 
+## 🧠 Training Convergence
+- ELITE: **0** · HEALTHY: 0 · OK: 0 · DEGRADED: **2**
+
 ## 🤖 Self-Training Status
-- **WNBA**: n=40 games · hit rate 57.5% · bias -9.6pp [calibration applied]
-- **MLS**: n=32 games · hit rate 50.0% · bias -16.4pp [calibration applied]
-- **MLB**: n=187 games · hit rate 54.5% · bias -2.3pp [calibration applied]
+- **WNBA**: n=41 games · hit rate 61.0% · bias -13.1pp [calibration applied]
+- **MLS**: n=28 games · hit rate 46.4% · bias -11.7pp [calibration applied]
+- **MLB**: n=187 games · hit rate 51.3% · bias -1.0pp
