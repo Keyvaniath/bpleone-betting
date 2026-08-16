@@ -1,13 +1,20 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-08-16T05:18:26 UTC_
+_Generated 2026-08-16T13:34:51 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -19
+- **Score:** -9
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 14
-- **Total FADES:** 75
+- **Total STRONG:** 15
+- **Total FADES:** 69
+
+## Lock of the Night
+- **Subject:** Dean Kremer
+- **Source:** ELITE_BOARD
+- **Sport:** MLB
+- **Score:** 15.0
+- **Details:** PHI @ MIN
 
 ## Top 5 Curated Picks
 1. **GOLF / Scottie Scheffler** (GOLF_PLAYER, score=218.14)
@@ -16,12 +23,12 @@ _Generated 2026-08-16T05:18:26 UTC_
 2. **GOLF / Sam Burns** (GOLF_PLAYER, score=205.21)
    - Play: Sam Burns (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-3. **MLB / HOME** (MLB_TEAM, score=80.83)
-   - Play: HOME (TEAM_STRONG)
-   - Rationale: Cross-sport top pick (MLB_TEAM)
-4. **MLB / AWAY** (MLB_TEAM, score=76.62)
-   - Play: AWAY (TEAM_STRONG)
-   - Rationale: Cross-sport top pick (MLB_TEAM)
+3. **MLB / Tarik Skubal** (MLB_PITCHER, score=63.83)
+   - Play: Tarik Skubal (PITCHER_STRONG)
+   - Rationale: Cross-sport top pick (MLB_PITCHER)
+4. **MLB / Logan Henderson** (MLB_PITCHER, score=62.83)
+   - Play: Logan Henderson (PITCHER_STRONG)
+   - Rationale: Cross-sport top pick (MLB_PITCHER)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
@@ -30,19 +37,19 @@ _Generated 2026-08-16T05:18:26 UTC_
   - Sungjae Im top 10 finish
 
 ## Slate ROI Projection
-- **Picks:** 0
-- **Avg edge:** 0%
+- **Picks:** 3
+- **Avg edge:** -0.91%
 - **Expected ROI (1/4 Kelly):** 0.0%
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **MLB** / Brady Singer (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **MLB** / J.T. Ginn (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **NBA** / MIA (TEAM_FADE)
-  - Fade angle: team total UNDER
 - **NBA** / TOR (TEAM_FADE)
   - Fade angle: team total UNDER
-- **MLB** / Jacob Misiorowski (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **NBA** / MIA (TEAM_FADE)
+  - Fade angle: team total UNDER
+- **NHL** / jake oettinger (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / joseph woll (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / logan thompson_2 (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
