@@ -1,23 +1,23 @@
 {
-  "generated_at": "2026-08-16T17:14:08",
+  "generated_at": "2026-08-16T17:34:08",
   "stake_assumption": "1u flat per pick",
   "total_picks": 10000,
-  "n_settled": 8622,
-  "n_pending": 278,
-  "n_void": 1100,
-  "wins": 3229,
+  "n_settled": 8624,
+  "n_pending": 268,
+  "n_void": 1108,
+  "wins": 3231,
   "losses": 5386,
   "pushes": 7,
-  "hit_rate": 0.3748,
-  "net_units": -1679.593,
-  "roi_pct": -19.5,
+  "hit_rate": 0.375,
+  "net_units": -1678.783,
+  "roi_pct": -19.48,
   "n_calibrated_picks": 9635,
   "calibrated_reliability": {
-    "n": 8514,
-    "ece_raw": 0.0939,
-    "ece_calibrated": 0.0153,
-    "brier_raw": 0.21094,
-    "brier_calibrated": 0.19301,
+    "n": 8516,
+    "ece_raw": 0.0938,
+    "ece_calibrated": 0.0152,
+    "brier_raw": 0.21091,
+    "brier_calibrated": 0.19299,
     "note": "In-sample over the settled ledger (the isotonic transform is fit on these same outcomes); held-out 70/30 validation is in recalibration_map.json. p_predicted = raw model prob (kept untouched for the learning loop); p_calibrated = honest prob stamped per pick. Lower ECE/Brier on the calibrated column = the displayed % is truer."
   },
   "curated": {
@@ -48,10 +48,10 @@
     }
   },
   "n_added_this_run": 0,
-  "n_newly_settled_this_run": 0,
+  "n_newly_settled_this_run": 10,
   "n_resettled_this_run": 0,
   "n_voided_this_run": 0,
-  "n_duplicates_collapsed_this_run": 0,
+  "n_duplicates_collapsed_this_run": 8,
   "n_duplicate_adds_blocked_this_run": 114,
   "n_reconciled_settled_voids": 0,
   "n_bootstrapped_from_locks_history": 0,
@@ -480,13 +480,13 @@
       "roi_pct": -59.27
     },
     "soccer_cards_cards_under_5.0": {
-      "n": 49,
-      "wins": 33,
+      "n": 51,
+      "wins": 35,
       "losses": 16,
       "pushes": 0,
-      "net_units": -0.492,
-      "hit_rate": 0.6735,
-      "roi_pct": -1.0
+      "net_units": 0.319,
+      "hit_rate": 0.6863,
+      "roi_pct": 0.63
     },
     "soccer_btts_btts_yes": {
       "n": 15,
@@ -1992,12 +1992,12 @@
       "hit_rate": 0.25
     },
     "cards_under": {
-      "n": 49,
-      "wins": 33,
+      "n": 51,
+      "wins": 35,
       "losses": 16,
       "pushes": 0,
-      "net_units": -0.492,
-      "hit_rate": 0.6735
+      "net_units": 0.319,
+      "hit_rate": 0.6863
     },
     "btts_yes": {
       "n": 15,
@@ -2442,12 +2442,12 @@
       "hit_rate": 0.25
     },
     "cards_under": {
-      "n": 49,
-      "wins": 33,
+      "n": 51,
+      "wins": 35,
       "losses": 16,
       "pushes": 0,
-      "net_units": -0.492,
-      "hit_rate": 0.6735
+      "net_units": 0.319,
+      "hit_rate": 0.6863
     },
     "btts_yes": {
       "n": 15,
@@ -2590,8 +2590,8 @@
       "wins": 41,
       "losses": 49,
       "pushes": 0,
-      "pending": 9,
-      "void": 78,
+      "pending": 1,
+      "void": 86,
       "net_units": 98.81,
       "hit_rate": 0.4556,
       "roi_pct": 109.79,
@@ -2664,15 +2664,15 @@
     },
     "MLS": {
       "n": 153,
-      "settled": 138,
-      "wins": 96,
+      "settled": 140,
+      "wins": 98,
       "losses": 42,
       "pushes": 0,
-      "pending": 10,
+      "pending": 8,
       "void": 5,
-      "net_units": -0.89,
-      "hit_rate": 0.6957,
-      "roi_pct": -0.64,
+      "net_units": -0.079,
+      "hit_rate": 0.7,
+      "roi_pct": -0.06,
       "markets": 4
     },
     "F1": {
@@ -2755,10 +2755,10 @@
     }
   },
   "last_7_days": {
-    "wins": 275,
+    "wins": 277,
     "losses": 679,
-    "net_units": -265.666,
-    "hit_rate": 0.2883
+    "net_units": -264.856,
+    "hit_rate": 0.2897
   },
   "picks": [
     {
@@ -257118,11 +257118,22 @@
       "matchup": "Lucas Fernando vs Rafael Tobias",
       "date": "2026-08-16",
       "pick_id": "ufc_r1_fight_r1_finish_yes|UFC|Lucas_Fernando_vs_Rafael_Tobias|FIGHT_R1_FINISH_YES|2026-08-16",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "lost",
+      "payout_units": -1.0,
       "recorded_at": "2026-08-16T05:30:16",
-      "p_calibrated": 0.4347
+      "p_calibrated": 0.4347,
+      "outcome": {
+        "fight": "Lucas Fernando vs Rafael Tobias",
+        "winner": "Lucas Fernando",
+        "ended_round": 3,
+        "market": "FIGHT_R1_FINISH_YES",
+        "verify": "Lucas Fernando def. opponent (ended R3) \u2014 FIGHT_R1_FINISH_YES"
+      },
+      "settled_at": "2026-08-16T17:34:08",
+      "voided": true,
+      "voided_at": "2026-08-16T17:34:09",
+      "voided_reason": "duplicate wager: same event/bet recorded more than once (event re-add or twin board); collapsed to the first copy"
     },
     {
       "source": "ufc_r1_fight_r1_finish_yes",
@@ -257135,11 +257146,22 @@
       "matchup": "Dustin Stoltzfus vs Mansur Abdul-Malik",
       "date": "2026-08-16",
       "pick_id": "ufc_r1_fight_r1_finish_yes|UFC|Dustin_Stoltzfus_vs_Mansur_Abdul_Malik|FIGHT_R1_FINISH_YES|2026-08-16",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "lost",
+      "payout_units": -1.0,
       "recorded_at": "2026-08-16T05:30:16",
-      "p_calibrated": 0.4063
+      "p_calibrated": 0.4063,
+      "outcome": {
+        "fight": "Dustin Stoltzfus vs Mansur Abdul-Malik",
+        "winner": "Dustin Stoltzfus",
+        "ended_round": 2,
+        "market": "FIGHT_R1_FINISH_YES",
+        "verify": "Dustin Stoltzfus def. opponent (ended R2) \u2014 FIGHT_R1_FINISH_YES"
+      },
+      "settled_at": "2026-08-16T17:34:08",
+      "voided": true,
+      "voided_at": "2026-08-16T17:34:09",
+      "voided_reason": "duplicate wager: same event/bet recorded more than once (event re-add or twin board); collapsed to the first copy"
     },
     {
       "source": "ufc_r1_fight_r1_finish_yes",
@@ -257152,11 +257174,22 @@
       "matchup": "Vicente Luque vs Tresean Gore",
       "date": "2026-08-16",
       "pick_id": "ufc_r1_fight_r1_finish_yes|UFC|Vicente_Luque_vs_Tresean_Gore|FIGHT_R1_FINISH_YES|2026-08-16",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "lost",
+      "payout_units": -1.0,
       "recorded_at": "2026-08-16T05:30:16",
-      "p_calibrated": 0.399
+      "p_calibrated": 0.399,
+      "outcome": {
+        "fight": "Vicente Luque vs Tresean Gore",
+        "winner": "Tresean Gore",
+        "ended_round": 3,
+        "market": "FIGHT_R1_FINISH_YES",
+        "verify": "Tresean Gore def. opponent (ended R3) \u2014 FIGHT_R1_FINISH_YES"
+      },
+      "settled_at": "2026-08-16T17:34:08",
+      "voided": true,
+      "voided_at": "2026-08-16T17:34:09",
+      "voided_reason": "duplicate wager: same event/bet recorded more than once (event re-add or twin board); collapsed to the first copy"
     },
     {
       "source": "ufc_r1_fight_r1_finish_yes",
@@ -257169,11 +257202,22 @@
       "matchup": "Islam Makhachev vs Ian Machado Garry",
       "date": "2026-08-16",
       "pick_id": "ufc_r1_fight_r1_finish_yes|UFC|Islam_Makhachev_vs_Ian_Machado_Garry|FIGHT_R1_FINISH_YES|2026-08-16",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "lost",
+      "payout_units": -1.0,
       "recorded_at": "2026-08-16T05:30:16",
-      "p_calibrated": 0.3724
+      "p_calibrated": 0.3724,
+      "outcome": {
+        "fight": "Islam Makhachev vs Ian Machado Garry",
+        "winner": "Islam Makhachev",
+        "ended_round": 5,
+        "market": "FIGHT_R1_FINISH_YES",
+        "verify": "Islam Makhachev def. opponent (ended R5) \u2014 FIGHT_R1_FINISH_YES"
+      },
+      "settled_at": "2026-08-16T17:34:09",
+      "voided": true,
+      "voided_at": "2026-08-16T17:34:09",
+      "voided_reason": "duplicate wager: same event/bet recorded more than once (event re-add or twin board); collapsed to the first copy"
     },
     {
       "source": "ufc_r1_fight_r1_finish_yes",
@@ -257186,11 +257230,22 @@
       "matchup": "Chidi Njokuani vs Joel \u00c1lvarez",
       "date": "2026-08-16",
       "pick_id": "ufc_r1_fight_r1_finish_yes|UFC|Chidi_Njokuani_vs_Joel__lvarez|FIGHT_R1_FINISH_YES|2026-08-16",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "lost",
+      "payout_units": -1.0,
       "recorded_at": "2026-08-16T05:30:16",
-      "p_calibrated": 0.3677
+      "p_calibrated": 0.3677,
+      "outcome": {
+        "fight": "Chidi Njokuani vs Joel \u00c1lvarez",
+        "winner": "Chidi Njokuani",
+        "ended_round": 3,
+        "market": "FIGHT_R1_FINISH_YES",
+        "verify": "Chidi Njokuani def. opponent (ended R3) \u2014 FIGHT_R1_FINISH_YES"
+      },
+      "settled_at": "2026-08-16T17:34:09",
+      "voided": true,
+      "voided_at": "2026-08-16T17:34:09",
+      "voided_reason": "duplicate wager: same event/bet recorded more than once (event re-add or twin board); collapsed to the first copy"
     },
     {
       "source": "ufc_r1_fight_r1_finish_yes",
@@ -257203,11 +257258,22 @@
       "matchup": "Neil Magny vs Ramiz Brahimaj",
       "date": "2026-08-16",
       "pick_id": "ufc_r1_fight_r1_finish_yes|UFC|Neil_Magny_vs_Ramiz_Brahimaj|FIGHT_R1_FINISH_YES|2026-08-16",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "lost",
+      "payout_units": -1.0,
       "recorded_at": "2026-08-16T05:30:16",
-      "p_calibrated": 0.3677
+      "p_calibrated": 0.3677,
+      "outcome": {
+        "fight": "Neil Magny vs Ramiz Brahimaj",
+        "winner": "Neil Magny",
+        "ended_round": 2,
+        "market": "FIGHT_R1_FINISH_YES",
+        "verify": "Neil Magny def. opponent (ended R2) \u2014 FIGHT_R1_FINISH_YES"
+      },
+      "settled_at": "2026-08-16T17:34:09",
+      "voided": true,
+      "voided_at": "2026-08-16T17:34:09",
+      "voided_reason": "duplicate wager: same event/bet recorded more than once (event re-add or twin board); collapsed to the first copy"
     },
     {
       "source": "ufc_r1_fight_r1_finish_yes",
@@ -257220,11 +257286,22 @@
       "matchup": "Jalin Turner vs Kau\u00ea Fernandes",
       "date": "2026-08-16",
       "pick_id": "ufc_r1_fight_r1_finish_yes|UFC|Jalin_Turner_vs_Kau__Fernandes|FIGHT_R1_FINISH_YES|2026-08-16",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "won",
+      "payout_units": 4.19,
       "recorded_at": "2026-08-16T05:30:16",
-      "p_calibrated": 0.3677
+      "p_calibrated": 0.3677,
+      "outcome": {
+        "fight": "Jalin Turner vs Kau\u00ea Fernandes",
+        "winner": "Jalin Turner",
+        "ended_round": 1,
+        "market": "FIGHT_R1_FINISH_YES",
+        "verify": "Jalin Turner def. opponent (ended R1) \u2014 FIGHT_R1_FINISH_YES"
+      },
+      "settled_at": "2026-08-16T17:34:09",
+      "voided": true,
+      "voided_at": "2026-08-16T17:34:09",
+      "voided_reason": "duplicate wager: same event/bet recorded more than once (event re-add or twin board); collapsed to the first copy"
     },
     {
       "source": "ufc_r1_fight_r1_finish_yes",
@@ -257237,11 +257314,22 @@
       "matchup": "Edson Barboza vs Esteban Ribovics",
       "date": "2026-08-16",
       "pick_id": "ufc_r1_fight_r1_finish_yes|UFC|Edson_Barboza_vs_Esteban_Ribovics|FIGHT_R1_FINISH_YES|2026-08-16",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "lost",
+      "payout_units": -1.0,
       "recorded_at": "2026-08-16T05:30:16",
-      "p_calibrated": 0.3677
+      "p_calibrated": 0.3677,
+      "outcome": {
+        "fight": "Edson Barboza vs Esteban Ribovics",
+        "winner": "Esteban Ribovics",
+        "ended_round": 2,
+        "market": "FIGHT_R1_FINISH_YES",
+        "verify": "Esteban Ribovics def. opponent (ended R2) \u2014 FIGHT_R1_FINISH_YES"
+      },
+      "settled_at": "2026-08-16T17:34:09",
+      "voided": true,
+      "voided_at": "2026-08-16T17:34:09",
+      "voided_reason": "duplicate wager: same event/bet recorded more than once (event re-add or twin board); collapsed to the first copy"
     },
     {
       "source": "golf_top_10",
@@ -257288,11 +257376,25 @@
       "matchup": "St. Louis CITY SC @ San Jose Earthquakes",
       "date": "2026-08-16",
       "pick_id": "soccer_cards_cards_under_5_0|MLS|St__Louis_CITY_SC___San_Jose_Earthquakes|CARDS_UNDER_5_0|2026-08-16",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "won",
+      "payout_units": 0.4167,
       "recorded_at": "2026-08-16T05:30:16",
-      "p_calibrated": 0.6799
+      "p_calibrated": 0.6799,
+      "outcome": {
+        "final_score": "St. Louis CITY SC 3-1 San Jose Earthquakes",
+        "total_cards": 3,
+        "total_goals": 4,
+        "scorers": [
+          "daniel edelman",
+          "simon becher",
+          "beau leroux",
+          "simon becher"
+        ],
+        "market": "CARDS_UNDER_5.0",
+        "verify": "St. Louis CITY SC 3-1 San Jose Earthquakes: 3 cards (line 5.0) \u2014 CARDS_UNDER_5.0"
+      },
+      "settled_at": "2026-08-16T17:34:09"
     },
     {
       "source": "soccer_cards_cards_under_5.0",
@@ -257305,11 +257407,23 @@
       "matchup": "Minnesota United FC @ Real Salt Lake",
       "date": "2026-08-16",
       "pick_id": "soccer_cards_cards_under_5_0|MLS|Minnesota_United_FC___Real_Salt_Lake|CARDS_UNDER_5_0|2026-08-16",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "won",
+      "payout_units": 0.3937,
       "recorded_at": "2026-08-16T05:30:16",
-      "p_calibrated": 0.6823
+      "p_calibrated": 0.6823,
+      "outcome": {
+        "final_score": "Minnesota United FC 1-1 Real Salt Lake",
+        "total_cards": 4,
+        "total_goals": 2,
+        "scorers": [
+          "sergi solans",
+          "joaqu\u00edn pereyra"
+        ],
+        "market": "CARDS_UNDER_5.0",
+        "verify": "Minnesota United FC 1-1 Real Salt Lake: 4 cards (line 5.0) \u2014 CARDS_UNDER_5.0"
+      },
+      "settled_at": "2026-08-16T17:34:09"
     },
     {
       "source": "tennis_games_total_games_under_22.5",
