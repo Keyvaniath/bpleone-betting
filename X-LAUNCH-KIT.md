@@ -1,6 +1,18 @@
 # EdgeStat on X — Launch Kit
 
-> ## ⚠️ STATUS 2026-07-30: X SUSPENDED — APPEAL PENDING
+> ## ✅ STATUS 2026-08-18: EDGESTAT IS LIVE ON X — @edgestatbets
+> Brand-new account created BY BRANDON 8/18 on the dedicated Gmail
+> (edgestatbets@gmail.com) — deliberately separate from the suspended
+> @Bpleonresearch (appeal status still unknown; risk was flagged, launch was
+> Brandon's call). Profile fully dressed: name EdgeStat, bio (NB: X rejects
+> angle brackets in bios — "Receipts over hype", never ">"), SoCal,
+> betting.bpleone.com, ES-monogram pfp + wordmark banner (agent-uploaded via
+> the mounted data-testid=fileInput inputs — X allows this, Bluesky doesn't).
+> Announcement posted; daily flow = the 9:03am task text or alpha-pick.html's
+> one-tap 𝕏 button. THE RULE: machine writes every word, Brandon presses
+> every Post. No automation, no scheduling, no API posting — ever.
+>
+> ## (superseded) ⚠️ STATUS 2026-07-30: X SUSPENDED — APPEAL PENDING
 > **@Bpleonresearch was suspended Tue Jul 21 2026** (notice from notify@x.com).
 > Reason cited verbatim: **"Violating our rules against inauthentic behaviors"**
 > — i.e. the tool-assisted drafting/queuing of posts in early July.
