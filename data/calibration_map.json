@@ -1,35 +1,36 @@
 {
-  "generated_at": "2026-08-17T05:24:59",
+  "generated_at": "2026-08-17T13:29:56",
   "n_families": 56,
   "n_curated_out": 12,
-  "n_calibrated": 15,
-  "n_model_only": 29,
+  "n_calibrated": 16,
+  "n_model_only": 28,
   "n_overconfident": 3,
-  "units_protected_by_curation": -1927.8,
+  "units_protected_by_curation": -1931.3,
   "guard_impact": {
     "all": {
-      "n": 8691,
-      "net_units": -1695.7,
-      "roi_pct": -19.5,
-      "hit_rate": 0.3753
+      "n": 8737,
+      "net_units": -1696.2,
+      "roi_pct": -19.4,
+      "hit_rate": 0.376
     },
     "after_curation": {
-      "n": 1772,
-      "net_units": 232.1,
-      "roi_pct": 13.1,
-      "hit_rate": 0.6986
+      "n": 1786,
+      "net_units": 235.1,
+      "roi_pct": 13.2,
+      "hit_rate": 0.6993
     },
     "curated_out": {
-      "n": 6919,
-      "net_units": -1927.8,
-      "roi_pct": -27.9,
-      "hit_rate": 0.2925
+      "n": 6951,
+      "net_units": -1931.3,
+      "roi_pct": -27.8,
+      "hit_rate": 0.2929
     }
   },
   "desk_curation": {
     "summary": {
       "n_desks": 11,
       "profitable": [
+        "MLB",
         "MLB-PP",
         "UFC",
         "WNBA"
@@ -71,29 +72,29 @@
       },
       {
         "sport": "WNBA",
-        "n": 341,
-        "wins": 256,
-        "net_raw": 46.7,
-        "net_curated": 46.7,
-        "n_curated": 341,
+        "n": 353,
+        "wins": 265,
+        "net_raw": 47.9,
+        "net_curated": 47.9,
+        "n_curated": 353,
         "hit_rate": 0.7507,
-        "roi_raw": 13.7,
-        "roi_curated": 13.7,
+        "roi_raw": 13.6,
+        "roi_curated": 13.6,
         "proven_negative_desk": false,
         "status": "profitable"
       },
       {
         "sport": "MLB",
-        "n": 6618,
-        "wins": 1976,
-        "net_raw": -1834.7,
-        "net_curated": 7.8,
-        "n_curated": 418,
+        "n": 6647,
+        "wins": 1985,
+        "net_raw": -1841.7,
+        "net_curated": 9.5,
+        "n_curated": 420,
         "hit_rate": 0.2986,
         "roi_raw": -27.7,
-        "roi_curated": 1.9,
+        "roi_curated": 2.3,
         "proven_negative_desk": false,
-        "status": "marginal"
+        "status": "profitable"
       },
       {
         "sport": "MLS",
@@ -110,13 +111,13 @@
       },
       {
         "sport": "GOLF",
-        "n": 675,
-        "wins": 279,
-        "net_raw": -72.7,
+        "n": 680,
+        "wins": 284,
+        "net_raw": -67.5,
         "net_curated": 0.0,
         "n_curated": 0,
-        "hit_rate": 0.4133,
-        "roi_raw": -10.8,
+        "hit_rate": 0.4176,
+        "roi_raw": -9.9,
         "roi_curated": null,
         "proven_negative_desk": false,
         "status": "marginal"
@@ -188,9 +189,9 @@
       }
     ]
   },
-  "overall_avg_model_pred": 0.4607,
-  "overall_realized_hit_rate": 0.3753,
-  "overall_overconfidence_gap": 0.0854,
+  "overall_avg_model_pred": 0.4608,
+  "overall_realized_hit_rate": 0.376,
+  "overall_overconfidence_gap": 0.0848,
   "method_note": "Per market family, the model's average predicted probability vs the realized hit rate over all settled bets in that family. Positive overconfidence_gap = the model was too high. Families proven to lose money are curated out of the boards; well-sampled families have their displayed probabilities calibrated toward the realized rate.",
   "families": [
     {
@@ -250,12 +251,12 @@
     },
     {
       "family": "mlb_hrr_2.5_over",
-      "n_settled": 564,
-      "avg_model_pred": 0.553,
-      "realized_hit_rate": 0.2163,
-      "overconfidence_gap": 0.3366,
-      "net_units": -341.44,
-      "roi_pct": -60.5,
+      "n_settled": 566,
+      "avg_model_pred": 0.5529,
+      "realized_hit_rate": 0.2155,
+      "overconfidence_gap": 0.3373,
+      "net_units": -343.44,
+      "roi_pct": -60.7,
       "status": "curated_out",
       "miscalibration": "overconfident"
     },
@@ -293,6 +294,17 @@
       "miscalibration": "ok"
     },
     {
+      "family": "home_total_over",
+      "n_settled": 155,
+      "avg_model_pred": 0.651,
+      "realized_hit_rate": 0.8387,
+      "overconfidence_gap": -0.1877,
+      "net_units": 44.52,
+      "roi_pct": 28.7,
+      "status": "calibrated",
+      "miscalibration": "ok"
+    },
+    {
       "family": "mlb_hrr_4.5_under",
       "n_settled": 30,
       "avg_model_pred": 0.8138,
@@ -300,17 +312,6 @@
       "overconfidence_gap": -0.1862,
       "net_units": 1.37,
       "roi_pct": 4.6,
-      "status": "calibrated",
-      "miscalibration": "ok"
-    },
-    {
-      "family": "home_total_over",
-      "n_settled": 152,
-      "avg_model_pred": 0.651,
-      "realized_hit_rate": 0.8355,
-      "overconfidence_gap": -0.1845,
-      "net_units": 42.92,
-      "roi_pct": 28.2,
       "status": "calibrated",
       "miscalibration": "ok"
     },
@@ -359,24 +360,24 @@
       "miscalibration": "ok"
     },
     {
-      "family": "over",
-      "n_settled": 154,
-      "avg_model_pred": 0.6324,
-      "realized_hit_rate": 0.513,
-      "overconfidence_gap": 0.1194,
-      "net_units": -8.32,
-      "roi_pct": -5.4,
+      "family": "mlb_hit_0.5_under",
+      "n_settled": 355,
+      "avg_model_pred": 0.5518,
+      "realized_hit_rate": 0.4338,
+      "overconfidence_gap": 0.118,
+      "net_units": -73.74,
+      "roi_pct": -20.8,
       "status": "curated_out",
       "miscalibration": "priced_short"
     },
     {
-      "family": "mlb_hit_0.5_under",
-      "n_settled": 353,
-      "avg_model_pred": 0.5518,
-      "realized_hit_rate": 0.4334,
-      "overconfidence_gap": 0.1184,
-      "net_units": -73.52,
-      "roi_pct": -20.8,
+      "family": "over",
+      "n_settled": 155,
+      "avg_model_pred": 0.6333,
+      "realized_hit_rate": 0.5161,
+      "overconfidence_gap": 0.1172,
+      "net_units": -7.41,
+      "roi_pct": -4.8,
       "status": "curated_out",
       "miscalibration": "priced_short"
     },
@@ -393,23 +394,23 @@
     },
     {
       "family": "mlb_tb_2.5_over",
-      "n_settled": 1050,
-      "avg_model_pred": 0.328,
-      "realized_hit_rate": 0.2238,
-      "overconfidence_gap": 0.1042,
-      "net_units": -332.4,
-      "roi_pct": -31.7,
+      "n_settled": 1058,
+      "avg_model_pred": 0.3276,
+      "realized_hit_rate": 0.2231,
+      "overconfidence_gap": 0.1045,
+      "net_units": -336.61,
+      "roi_pct": -31.8,
       "status": "curated_out",
       "miscalibration": "priced_short"
     },
     {
       "family": "mlb_hr_0.5_over",
-      "n_settled": 1038,
-      "avg_model_pred": 0.2445,
-      "realized_hit_rate": 0.1407,
-      "overconfidence_gap": 0.1039,
-      "net_units": -400.1,
-      "roi_pct": -38.5,
+      "n_settled": 1042,
+      "avg_model_pred": 0.2443,
+      "realized_hit_rate": 0.1401,
+      "overconfidence_gap": 0.1042,
+      "net_units": -404.1,
+      "roi_pct": -38.8,
       "status": "curated_out",
       "miscalibration": "priced_short"
     },
@@ -437,12 +438,12 @@
     },
     {
       "family": "mlb_xbh_0.5_over",
-      "n_settled": 2417,
-      "avg_model_pred": 0.3754,
-      "realized_hit_rate": 0.2909,
-      "overconfidence_gap": 0.0846,
-      "net_units": -534.02,
-      "roi_pct": -22.1,
+      "n_settled": 2424,
+      "avg_model_pred": 0.3753,
+      "realized_hit_rate": 0.2913,
+      "overconfidence_gap": 0.0841,
+      "net_units": -532.4,
+      "roi_pct": -22.0,
       "status": "curated_out",
       "miscalibration": "priced_short"
     },
@@ -470,36 +471,25 @@
     },
     {
       "family": "mlb_walk_0.5_over",
-      "n_settled": 161,
-      "avg_model_pred": 0.4656,
-      "realized_hit_rate": 0.3975,
-      "overconfidence_gap": 0.0681,
-      "net_units": -24.57,
-      "roi_pct": -15.3,
+      "n_settled": 164,
+      "avg_model_pred": 0.4658,
+      "realized_hit_rate": 0.3963,
+      "overconfidence_gap": 0.0694,
+      "net_units": -25.34,
+      "roi_pct": -15.5,
       "status": "curated_out",
       "miscalibration": "priced_short"
     },
     {
       "family": "top",
-      "n_settled": 710,
-      "avg_model_pred": 0.4754,
-      "realized_hit_rate": 0.4099,
-      "overconfidence_gap": 0.0655,
-      "net_units": -89.58,
-      "roi_pct": -12.6,
+      "n_settled": 715,
+      "avg_model_pred": 0.4758,
+      "realized_hit_rate": 0.414,
+      "overconfidence_gap": 0.0619,
+      "net_units": -84.37,
+      "roi_pct": -11.8,
       "status": "curated_out",
       "miscalibration": "priced_short"
-    },
-    {
-      "family": "blk_stl_over",
-      "n_settled": 28,
-      "avg_model_pred": 0.6577,
-      "realized_hit_rate": 0.7143,
-      "overconfidence_gap": -0.0566,
-      "net_units": 2.36,
-      "roi_pct": 8.4,
-      "status": "model_only",
-      "miscalibration": "ok"
     },
     {
       "family": "ast_over",
@@ -513,24 +503,13 @@
       "miscalibration": "ok"
     },
     {
-      "family": "ml_away",
-      "n_settled": 65,
-      "avg_model_pred": 0.6125,
-      "realized_hit_rate": 0.5692,
-      "overconfidence_gap": 0.0433,
-      "net_units": 5.9,
-      "roi_pct": 9.1,
-      "status": "calibrated",
-      "miscalibration": "ok"
-    },
-    {
       "family": "blk_stl_under",
-      "n_settled": 54,
+      "n_settled": 56,
       "avg_model_pred": 0.6715,
-      "realized_hit_rate": 0.6296,
-      "overconfidence_gap": 0.0419,
-      "net_units": -3.82,
-      "roi_pct": -7.1,
+      "realized_hit_rate": 0.625,
+      "overconfidence_gap": 0.0465,
+      "net_units": -4.29,
+      "roi_pct": -7.7,
       "status": "calibrated",
       "miscalibration": "ok"
     },
@@ -542,6 +521,17 @@
       "overconfidence_gap": 0.0417,
       "net_units": -4.87,
       "roi_pct": -6.4,
+      "status": "calibrated",
+      "miscalibration": "ok"
+    },
+    {
+      "family": "blk_stl_over",
+      "n_settled": 30,
+      "avg_model_pred": 0.6587,
+      "realized_hit_rate": 0.7,
+      "overconfidence_gap": -0.0413,
+      "net_units": 1.79,
+      "roi_pct": 6.0,
       "status": "calibrated",
       "miscalibration": "ok"
     },
@@ -579,6 +569,17 @@
       "miscalibration": "ok"
     },
     {
+      "family": "ml_away",
+      "n_settled": 66,
+      "avg_model_pred": 0.6126,
+      "realized_hit_rate": 0.5758,
+      "overconfidence_gap": 0.0368,
+      "net_units": 6.74,
+      "roi_pct": 10.2,
+      "status": "calibrated",
+      "miscalibration": "ok"
+    },
+    {
       "family": "mlb_rbi_0.5_under",
       "n_settled": 20,
       "avg_model_pred": 0.786,
@@ -590,13 +591,24 @@
       "miscalibration": "ok"
     },
     {
+      "family": "3pm_over",
+      "n_settled": 26,
+      "avg_model_pred": 0.6573,
+      "realized_hit_rate": 0.6923,
+      "overconfidence_gap": -0.035,
+      "net_units": 1.21,
+      "roi_pct": 4.7,
+      "status": "model_only",
+      "miscalibration": "ok"
+    },
+    {
       "family": "3pm_under",
-      "n_settled": 62,
-      "avg_model_pred": 0.6756,
-      "realized_hit_rate": 0.7097,
-      "overconfidence_gap": -0.034,
-      "net_units": 2.87,
-      "roi_pct": 4.6,
+      "n_settled": 65,
+      "avg_model_pred": 0.6771,
+      "realized_hit_rate": 0.7077,
+      "overconfidence_gap": -0.0306,
+      "net_units": 2.69,
+      "roi_pct": 4.1,
       "status": "calibrated",
       "miscalibration": "ok"
     },
@@ -634,17 +646,6 @@
       "miscalibration": "ok"
     },
     {
-      "family": "3pm_over",
-      "n_settled": 24,
-      "avg_model_pred": 0.6541,
-      "realized_hit_rate": 0.6667,
-      "overconfidence_gap": -0.0126,
-      "net_units": 0.34,
-      "roi_pct": 1.4,
-      "status": "model_only",
-      "miscalibration": "ok"
-    },
-    {
       "family": "cards_under",
       "n_settled": 55,
       "avg_model_pred": 0.6808,
@@ -657,12 +658,12 @@
     },
     {
       "family": "under",
-      "n_settled": 98,
-      "avg_model_pred": 0.6084,
-      "realized_hit_rate": 0.602,
-      "overconfidence_gap": 0.0064,
-      "net_units": 9.91,
-      "roi_pct": 10.1,
+      "n_settled": 99,
+      "avg_model_pred": 0.6083,
+      "realized_hit_rate": 0.6061,
+      "overconfidence_gap": 0.0022,
+      "net_units": 10.81,
+      "roi_pct": 10.9,
       "status": "calibrated",
       "miscalibration": "ok"
     },

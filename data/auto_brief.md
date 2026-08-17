@@ -6,47 +6,48 @@ _0% lineups confirmed · 8 rookie SPs_
 
 ## Slate
 - **11 games** scheduled
-- **32 best bets** scored: 18 DK · 0 PP · 1 NRFI · 0 SGP
-- **MC simulation:** EV +$82.02, 72% P(profit), p05 $-151.45 / p95 $309.77
+- **43 best bets** scored: 18 DK · 0 PP · 9 NRFI · 0 SGP
+- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$35.69
+- **MC simulation:** EV +$87.27, 79% P(profit), p05 $-119.65 / p95 $259.0
 
 ## Top 5 Best Bets
-1. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
+1. **STL @ CIN YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +27.1%)
+   - P(YRFI) 73.1% vs baseline 46.0%
+2. **OAK @ KCR YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +23.0%)
+   - P(YRFI) 69.0% vs baseline 46.0%
+3. **LAD @ COL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +22.5%)
+   - P(YRFI) 68.5% vs baseline 46.0%
+4. **CHW @ CHC YRFI (1st-inning OVER 0.5)**  (78/100 ****, edge +18.4%)
+   - P(YRFI) 64.4% vs baseline 46.0%
+5. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
    - Player prop quality score 1.1935
    - Elite player
-2. **LOL ShowMaker OVER 3.5 Kills**  (78/100 ****, edge —)
-   - Player prop quality score 1.1892
-   - Elite player
-3. **LOL Peyz OVER 4.5 Kills**  (78/100 ****, edge —)
-   - Player prop quality score 1.184
-   - Elite player
-4. **LOL LYON vs Sentinels SWEEP @ None**  (76/100 *****, edge —)
-   - Model 43.2% (fair None)
-   - LCS
-5. **LOL WeiboGaming vs Suzhou LNG Esports ML @ -172**  (76/100 *****, edge —)
-   - Model 63.3% (fair -172)
-   - LPL
 
-## ⚠️ Trap Warnings — 13 flagged
+## ⚠️ Trap Warnings — 22 flagged
+- **Corbin Carroll UNDER 0.5 batter hits** (high):
+   - Edge +15.8% looks big but only 0 settled props on this player — model unproven
+   - Batter heating up: heating up: 0.919 ops recent vs 0.834 season (+0.085)
+- **Ryan Waldschmidt OVER 0.5 batter hits** (high):
+   - Edge +9.6% looks big but only 0 settled props on this player — model unproven
+   - Batter cooling: cooling: 0.591 ops recent vs 0.718 season (-0.127)
+- **Bryson Stott UNDER 0.5 batter hits** (high):
+   - Edge +8.4% looks big but only 0 settled props on this player — model unproven
+   - Batter heating up: heating up: 1.022 ops recent vs 0.759 season (+0.263)
+- **Chandler Simpson UNDER 1.5 batter total bases** (high):
+   - Edge +8.4% looks big but only 0 settled props on this player — model unproven
+   - Batter heating up: heating up: 0.887 ops recent vs 0.704 season (+0.183)
 - **Kyle Schwarber UNDER 0.5 batter hits** (low):
    - Edge +27.8% looks big but only 0 settled props on this player — model unproven
-- **Corbin Carroll UNDER 0.5 batter hits** (low):
-   - Edge +15.8% looks big but only 0 settled props on this player — model unproven
-- **Geraldo Perdomo UNDER 0.5 batter hits** (low):
-   - Edge +13.9% looks big but only 0 settled props on this player — model unproven
-- **Kevin McGonigle UNDER 0.5 batter hits** (low):
-   - Edge +12.4% looks big but only 0 settled props on this player — model unproven
-- **Tyler Locklear OVER 0.5 batter hits** (low):
-   - Edge +12.1% looks big but only 0 settled props on this player — model unproven
 
 ## Hot streaks
-**Batters heating up:** Rafael Flores (heat +3.58), Trent Grisham (heat +2.58), Randy Arozarena (heat +2.22)
+**Batters heating up:** Rafael Flores (heat +3.58), Corbin Carroll (heat +2.25), Gunnar Henderson (heat +1.86)
 
 ## Bullpens GASSED tonight
-Pittsburgh Pirates, San Diego Padres, Seattle Mariners, Tampa Bay Rays, Toronto Blue Jays, Atlanta Braves, Chicago White Sox, Miami Marlins
+Pittsburgh Pirates, San Diego Padres, San Francisco Giants, St. Louis Cardinals, Tampa Bay Rays, Texas Rangers, Toronto Blue Jays, Minnesota Twins
 _Lean late-inning OVER on these games; fade their save situations._
 
 ## NRFI/YRFI strong leans
-- **YRFI** (1st-inning OVER): SEA @ HOU
+- **YRFI** (1st-inning OVER): STL @ CIN, OAK @ KCR, LAD @ COL, CHW @ CHC, STL @ CIN
 
 ## NBA -- PRESEASON
 - Miami Heat @ Toronto Raptors (0-0 vs 0-0)  | P(home) 55.0% fair -122 | Scheduled
@@ -66,12 +67,12 @@ _Lean late-inning OVER on these games; fade their save situations._
 - Kiwoom Heroes @ Lotte Giants | P(home) 61.5% fair -160 | total 10 R
 - **KBO POD:** LG Twins ML vs KT Wiz (KBO) (HIGH)
 
-## LoL Esports -- 0 live, 19 upcoming
-- [LCK Challengers] DK Challengers vs kt Challengers BO3 | P(A) 52.1% fair -109/+109
-- [PCS] SillySilly Gaming vs Sponge Gaming BO3 | P(A) 50.4% fair -102/+102
-- [LCK Challengers] KRX Challengers vs HLE Challengers BO3 | P(A) 61.3% fair -159/+159
-- [PCS] Embrace Whatever Happens vs Reignfall BO3 | P(A) 50.4% fair -102/+102
+## LoL Esports -- 0 live, 16 upcoming
 - [LEC] Team Heretics vs Natus Vincere BO3 | P(A) 46.9% fair +113/-113
+- [NLC] Brod & Friends vs DMG Esports BO3 | P(A) 50.8% fair -103/+103
+- [NLC] Bulldog Esports vs Lund Esports Organization BO3 | P(A) 49.8% fair +101/-101
+- [LEC] GIANTX vs Karmine Corp BO3 | P(A) 33.0% fair +203/-203
+- [NLC] Lundqvist Lightside vs VES BO3 | P(A) 46.5% fair +115/-115
 - **LoL POT:** WeiboGaming ML vs Suzhou LNG Esports (LPL, BO3) (HIGH)
 
 ## Player Play of the Day -- across all sports (3491 candidates scanned)

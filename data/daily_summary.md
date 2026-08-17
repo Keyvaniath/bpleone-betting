@@ -1,17 +1,17 @@
 # EdgeStat Daily Brief - 2026-08-17
 
-**Model Confidence: 27.1/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
+**Model Confidence: 27.0/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
 
 _Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
 
-_Generated at 2026-08-17T05:37:14 UTC. Game lines source: **placeholder -110 (no real book today)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-08-17T13:45:24 UTC. Game lines source: **placeholder -110 (no real book today)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
 **LAD @ COL - LAD_ML**
 - Market: +100
-- Model probability: 94.7%
-- Raw edge: +89.48%
+- Model probability: 94.8%
+- Raw edge: +89.7%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
@@ -20,59 +20,59 @@ _Generated at 2026-08-17T05:37:14 UTC. Game lines source: **placeholder -110 (no
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 1:40p ET | STL @ CIN | Great American Ball Park | 82F 12mph | OVER_8.5 +46.11% |
-| 6:40p ET | STL @ CIN | Great American Ball Park | 82F 12mph | OVER_8.5 +43.26% |
+| 1:40p ET | STL @ CIN | Great American Ball Park | 85F 5mph | OVER_8.5 +37.85% |
+| 6:40p ET | STL @ CIN | Great American Ball Park | 85F 5mph | OVER_8.5 +34.79% |
 | 6:05p ET | BAL @ TBR | Tropicana Field | indoor | TBR_ML +23.55% |
-| 6:40p ET | MIA @ PHI | Citizens Bank Park | 77F 4mph | PHI_ML +14.17% |
-| 7:05p ET | DET @ PIT | PNC Park | 69F 3mph | OVER_8.5 +2.09% |
-| 7:10p ET | ARI @ BOS | Fenway Park | 71F 3mph | OVER_8.5 +30.72% |
-| 7:10p ET | SDP @ NYM | Citi Field | 77F 3mph | UNDER_8.5 +19.93% |
-| 7:40p ET | OAK @ KCR | Kauffman Stadium | 80F 6mph | OVER_8.5 +62.17% |
-| 7:40p ET | ATL @ MIN | Target Field | 67F 4mph | OVER_8.5 +32.02% |
+| 6:40p ET | MIA @ PHI | Citizens Bank Park | 78F 3mph | PHI_ML +14.12% |
+| 7:05p ET | DET @ PIT | PNC Park | 72F 2mph | OVER_8.5 +2.69% |
+| 7:10p ET | ARI @ BOS | Fenway Park | 68F 3mph | OVER_8.5 +28.48% |
+| 7:10p ET | SDP @ NYM | Citi Field | 74F 5mph | UNDER_8.5 +18.86% |
+| 7:40p ET | OAK @ KCR | Kauffman Stadium | 79F 6mph | OVER_8.5 +61.67% |
+| 7:40p ET | ATL @ MIN | Target Field | 73F 5mph | OVER_8.5 +37.93% |
 | 8:05p ET | CHW @ CHC | Wrigley Field | 66F 5mph | OVER_8.5 +42.54% |
-| 8:40p ET | LAD @ COL | Coors Field | 77F 4mph | LAD_ML +89.48% |
+| 8:40p ET | LAD @ COL | Coors Field | 77F 3mph | LAD_ML +89.7% |
 
 ## Parlays - top 5
 
-- **2-leg @ +282 (prob 38.9%, EV +48.46%)**
-  - STL @ CIN STL_ML (+100, model 62.4%)
-  - ARI @ BOS OVER_9.0 (-110, model 62.3%)
-- **2-leg @ +282 (prob 38.8%, EV +48.22%)**
-  - STL @ CIN STL_ML (+100, model 62.4%)
-  - MIA @ PHI OVER_8.0 (-110, model 62.2%)
-- **2-leg @ +282 (prob 38.5%, EV +47.17%)**
-  - STL @ CIN STL_ML (+100, model 62.4%)
-  - LAD @ COL OVER_11.0 (-110, model 61.8%)
-- **2-leg @ +480 (prob 24.9%, EV +44.56%)**
+- **2-leg @ +282 (prob 38.7%, EV +47.72%)**
+  - STL @ CIN STL_ML (+100, model 62.1%)
+  - SDP @ NYM UNDER_8.5 (-110, model 62.3%)
+- **2-leg @ +264 (prob 40.3%, EV +46.86%)**
+  - BAL @ TBR TBR_ML (-110, model 64.7%)
+  - SDP @ NYM UNDER_8.5 (-110, model 62.3%)
+- **2-leg @ +480 (prob 24.8%, EV +43.98%)**
   - Corbin Carroll UNDER 0.5 batter_hits (+190, model 40.0%)
-  - STL @ CIN STL_ML (+100, model 62.4%)
-- **2-leg @ +282 (prob 37.8%, EV +44.29%)**
-  - STL @ CIN STL_ML (+100, model 62.4%)
-  - ATL @ MIN OVER_9.0 (-110, model 60.6%)
+  - STL @ CIN STL_ML (+100, model 62.1%)
+- **2-leg @ +454 (prob 25.9%, EV +43.15%)**
+  - Corbin Carroll UNDER 0.5 batter_hits (+190, model 40.0%)
+  - BAL @ TBR TBR_ML (-110, model 64.7%)
+- **2-leg @ +282 (prob 37.1%, EV +41.84%)**
+  - STL @ CIN STL_ML (+100, model 62.1%)
+  - MIA @ PHI PHI_ML (-110, model 59.8%)
 
 ## Self-Learning Loop
 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
-| batter total bases | 11 | 45.5% | 52.1% | 1.132 | 0.924 |
 | batter hits | 34 | 58.8% | 58.3% | 0.991 | 1.008 |
+| batter total bases | 11 | 45.5% | 52.1% | 1.132 | 0.924 |
 
-Cumulative graded plays: 8705. Wins: 3269. Hit rate: 37.6%.
+Cumulative graded plays: 8746. Wins: 3288. Hit rate: 37.6%.
 
 ## Auxiliary Markets (Model Fair Prices)
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| ARI @ BOS | 46.9% | +113 | 3.72 | -116 | +116 |
+| ARI @ BOS | 46.9% | +113 | 3.72 | -115 | +115 |
 | ATL @ MIN | 51.1% | -105 | 3.43 | +281 | -281 |
 | BAL @ TBR | 42.4% | +136 | 4.29 | -104 | +104 |
-| CHW @ CHC | 35.6% | +181 | 5.35 | +130 | -130 |
-| DET @ PIT | 43.4% | +130 | 4.2 | +155 | -155 |
-| LAD @ COL | 31.5% | +217 | 5.92 | +3416 | -3416 |
-| MIA @ PHI | 58.4% | -140 | 2.68 | +114 | -114 |
-| OAK @ KCR | 31.0% | +223 | 5.74 | -152 | +152 |
-| SDP @ NYM | 44.1% | +127 | 4.02 | +143 | -143 |
-| STL @ CIN | 36.7% | +173 | 5.41 | +201 | -201 |
+| CHW @ CHC | 35.6% | +181 | 5.31 | +130 | -130 |
+| DET @ PIT | 43.4% | +130 | 4.22 | +155 | -155 |
+| LAD @ COL | 31.5% | +217 | 5.66 | +3503 | -3503 |
+| MIA @ PHI | 58.4% | -140 | 2.72 | +114 | -114 |
+| OAK @ KCR | 31.0% | +223 | 5.71 | -151 | +151 |
+| SDP @ NYM | 44.1% | +127 | 3.96 | +143 | -143 |
+| STL @ CIN | 36.7% | +173 | 5.11 | +202 | -202 |
 
 ## Travel / Rest Flags
 
@@ -98,7 +98,7 @@ Cumulative graded plays: 8705. Wins: 3269. Hit rate: 37.6%.
 
 ## Loop Activity (since last refresh)
 
-- Confidence delta: **+0.2**
+- Confidence delta: **-0.1**
 
 ## Model Recommendations (operator review)
 
