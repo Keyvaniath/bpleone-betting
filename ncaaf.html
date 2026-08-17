@@ -60,6 +60,10 @@
     </div>
     <div id="sb_list"><p class="muted" style="padding:14px;">Loading…</p></div>
   </section>
+  <section class="card" style="margin-bottom:24px;">
+    <div class="card-head"><span>📈 <strong>Live Book Lines</strong> <span class="muted" style="font-size:10px;">DraftKings via ESPN — free feed, refreshed by the heartbeat</span></span><span class="muted" id="ln_meta">--</span></div>
+    <div id="ln_list"><p class="muted" style="padding:14px;">Loading…</p></div>
+  </section>
 </main>
 <script src="js/nav_badge.js"></script>
 <script src="js/bet_tracker.js"></script>
@@ -97,6 +101,32 @@ fetch("data/ncaaf_state.json?t=" + Date.now(), { cache: "no-cache" })
   .catch(err => {
     document.getElementById("sb_list").innerHTML = `<p class="muted" style="padding:14px;">Could not load ncaaf_state.json (${err.message}).</p>`;
   });
+// Live book lines (espn_odds free feed -- NCAAF added to the odds stack 8/13).
+fetch("data/espn_odds.json?t=" + Date.now(), { cache: "no-cache" })
+  .then(r => r.json())
+  .then(d => {
+    const rows = (d.games || []).filter(g => (g.sport || '').toUpperCase() === 'NCAAF');
+    const el = document.getElementById('ln_list');
+    if (!el) return;
+    const cols = 'grid-template-columns:1.6fr 90px 90px 90px 110px;';
+    if (!rows.length) {
+      el.innerHTML = '<p class="muted" style="padding:14px;">No NCAAF lines on the free feed right now — ESPN posts book lines close to game day.</p>';
+      return;
+    }
+    el.innerHTML = '<div class="sb-row head" style="' + cols + '"><span>Matchup</span><span>Away ML</span><span>Home ML</span><span>Spread</span><span>Total</span></div>' +
+      rows.map(g => {
+        const m = g.market || {};
+        return '<div class="sb-row" style="' + cols + '">' +
+          '<span><strong>' + g.matchup + '</strong></span>' +
+          '<span>' + fmtAmer(m.ml_away) + '</span>' +
+          '<span>' + fmtAmer(m.ml_home) + '</span>' +
+          '<span>' + (m.spread != null ? m.spread : '—') + '</span>' +
+          '<span>' + (m.total != null ? 'O/U ' + m.total : '—') + '</span></div>';
+      }).join('');
+    const meta = document.getElementById('ln_meta');
+    if (meta) meta.textContent = rows.length + ' games · ' + (d.generated_at || '').replace('T', ' ') + ' UTC';
+  }).catch(() => {});
+
 setInterval(() => location.reload(), 5 * 60 * 1000);
 </script>
 </body>

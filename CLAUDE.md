@@ -41,6 +41,21 @@ bpleone-site/
 
 ## Current deployment state (LIVE)
 
+- **2026-08-18 — DFS RECEIPTS LOOP + NCAAF LINES + BOTH SOCIALS LIVE:**
+  (1) nfl_dfs_receipts.py -> data/nfl_dfs_receipts.json -> the "Lineup
+  Receipts" card on nfl-dfs.html: published lineups SNAPSHOT all week and
+  FREEZE at the slate date (last playable version wins, same immutability
+  philosophy as the alpha locks), then score the day after from real box
+  scores via actual_dk_points() (self-tested vs hand examples; DNP scores 0,
+  disclosed per-slot; DST partial PA-tier-only, labeled). Cumulative
+  proj-vs-actual bias per build. Scored slates never edited. Week 1
+  (2026-09-13) already armed. (2) ncaaf.html gained the Live Book Lines card
+  (espn_odds NCAAF rows -- ~99 games priced; Week 0 kicks 8/22).
+  (3) SOCIALS: X @edgestatbets + Bluesky @edgestat.bsky.social both
+  BROADCASTING (see X-LAUNCH-KIT header) -- machine writes, Brandon presses
+  every Post, forever.
+
+
 - **2026-08-17 — WEEKEND AUDIT: settle-vocab bridge, {TEAM}_ML wagers, quota
   torch, lock resilience.** Four connected fixes: (1) MLB game-line settling
   could NEVER match Washington/Arizona/Athletics (substring match tolerates

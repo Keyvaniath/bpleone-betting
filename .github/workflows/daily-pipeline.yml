@@ -983,6 +983,11 @@ jobs:
       - name: NFL DFS (DraftKings salaries -> MC projections -> optimal lineups)
         working-directory: python
         run: python nfl_dfs.py || true
+      # Receipts: snapshot published lineups (freeze at slate date), score them
+      # from real box scores the day after. The DFS desk's accountability loop.
+      - name: NFL DFS receipts (grade published lineups vs box scores)
+        working-directory: python
+        run: python nfl_dfs_receipts.py || true
       - name: NCAA Football scoreboard
         working-directory: python
         run: python ncaaf_pipeline.py

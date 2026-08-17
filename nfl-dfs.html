@@ -74,6 +74,10 @@
     <div style="padding:8px 16px;"><button id="pj_more" class="posbtn" style="display:none;">Show all</button></div>
   </section>
 
+  <section class="card" style="margin-bottom:24px; border-left:3px solid #58c878;">
+    <div class="card-head"><span>🧾 <strong>Lineup Receipts</strong> <span class="muted" style="font-size:10px;">published lineups graded vs real box scores — frozen at kickoff, never edited</span></span><span class="muted" id="rc_meta">--</span></div>
+    <div id="rc_body"><p class="muted" style="padding:14px;">Loading…</p></div>
+  </section>
   <section class="card" style="margin-bottom:24px;">
     <div class="card-head"><span>🧾 <strong>Method &amp; honesty notes</strong></span></div>
     <p id="mn_text" class="muted" style="font-size:12px; line-height:1.65; padding:12px 16px 4px;"></p>
@@ -172,6 +176,46 @@ fetch('data/nfl_dfs.json?t=' + Date.now(), { cache: 'no-cache' })
     $('mn_disc').innerHTML = (d.disclosures || []).map(x => '<li>' + x + '</li>').join('');
   })
   .catch(err => { $('dfs_status').textContent = 'Could not load nfl_dfs.json (' + err.message + ')'; });
+
+// Lineup receipts: the accountability loop. Pre-season it shows what's armed;
+// once slates score it shows projected-vs-actual per build, never edited.
+fetch('data/nfl_dfs_receipts.json?t=' + Date.now(), { cache: 'no-cache' })
+  .then(r => r.json())
+  .then(d => {
+    const el = $('rc_body');
+    if (!el) return;
+    const slates = d.slates || {};
+    const keys = Object.keys(slates).sort().reverse();
+    $('rc_meta').textContent = (d.n_slates_scored || 0) + ' scored / ' + (d.n_slates_tracked || 0) + ' tracked';
+    if (!keys.length) {
+      el.innerHTML = '<p class="muted" style="padding:14px;">No slates tracked yet.</p>';
+      return;
+    }
+    let html = '';
+    const cum = d.cumulative || {};
+    if (Object.keys(cum).length) {
+      html += '<div style="display:flex; gap:0; flex-wrap:wrap; border-bottom:1px solid rgba(255,255,255,.06);">' +
+        Object.entries(cum).map(([b, c]) =>
+          `<div style="flex:1 1 140px; padding:10px 14px; border-right:1px solid rgba(255,255,255,.06);">
+             <div style="font-size:9.5px; text-transform:uppercase; color:var(--muted,#888);">${b} · ${c.n_slates} slate(s)</div>
+             <div style="font-family:'JetBrains Mono',monospace; font-size:14px; margin-top:2px;">proj ${c.avg_projected} → <b>${c.avg_actual}</b> <span style="color:${c.avg_bias >= 0 ? '#58c878' : '#e35a5a'};">(${c.avg_bias >= 0 ? '+' : ''}${c.avg_bias})</span></div>
+           </div>`).join('') + '</div>';
+    }
+    keys.slice(0, 4).forEach(k => {
+      const s = slates[k];
+      if (s.scored && s.results) {
+        html += `<div style="padding:8px 16px 2px; font-size:11px; color:var(--muted,#888); text-transform:uppercase; letter-spacing:.5px;">Slate ${k} — scored</div>`;
+        html += Object.entries(s.results).map(([b, r]) =>
+          `<div style="display:grid; grid-template-columns:110px 1fr 110px 110px 70px; gap:10px; padding:5px 16px; font-family:'JetBrains Mono',monospace; font-size:12px;">
+             <span>${b}</span><span class="muted" style="font-size:10.5px;">${(r.slots || []).map(x => x.name.split(' ').slice(-1)[0]).join(' · ')}</span>
+             <span>proj ${r.proj_total}</span><span><b>actual ${r.actual_total}</b></span>
+             <span class="muted">${r.n_dnp ? r.n_dnp + ' DNP' : ''}</span></div>`).join('');
+      } else {
+        html += `<div style="padding:10px 16px; font-size:12.5px;" class="muted">Slate <b>${k}</b> — lineups snapshotted${s.frozen ? ' & frozen at kickoff' : ', refreshing until kickoff'}. First receipts land the morning after the games.</div>`;
+      }
+    });
+    el.innerHTML = html;
+  }).catch(() => { const el = $('rc_body'); if (el) el.innerHTML = '<p class="muted" style="padding:14px;">Receipts feed not available yet.</p>'; });
 </script>
 </body>
 </html>
