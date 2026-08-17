@@ -2,35 +2,33 @@
 
 **Model Confidence: 27.0/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
 
-_Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
+_Pipeline health: **DEGRADED** (14/15 artifacts ok; 1 empty, 0 stale)._ 
 
-_Generated at 2026-08-17T17:35:49 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-08-17T22:29:45 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
-**OAK @ KCR - OVER_9.0**
-- Market: -110
-- Model probability: 80.0%
-- Raw edge: +52.79%
+**LAD @ COL - LAD_ML**
+- Market: -174
+- Model probability: 94.9%
+- Raw edge: +49.38%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
 
-## Full Slate (11 games)
+## Full Slate (9 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 1:40p ET | STL @ CIN | Great American Ball Park | 84F 10mph | OVER_9.0 +20.41% |
-| 6:40p ET | STL @ CIN | Great American Ball Park | 84F 10mph | OVER_9.0 +23.77% |
-| 6:05p ET | BAL @ TBR | Tropicana Field | indoor | OVER_7.5 +7.53% |
-| 6:40p ET | MIA @ PHI | Citizens Bank Park | 78F 4mph | MIA_ML +24.57% |
-| 7:05p ET | DET @ PIT | PNC Park | 71F 4mph | OVER_8.5 +5.44% |
-| 7:10p ET | ARI @ BOS | Fenway Park | 70F 3mph | BOS_ML +22.51% |
-| 7:10p ET | SDP @ NYM | Citi Field | 71F 3mph | UNDER_8.0 +10.95% |
-| 7:40p ET | OAK @ KCR | Kauffman Stadium | 78F 6mph | OVER_9.0 +52.79% |
-| 7:40p ET | ATL @ MIN | Target Field | 73F 5mph | OVER_9.5 +15.52% |
-| 8:05p ET | CHW @ CHC | Wrigley Field | 66F 5mph | OVER_8.0 +51.55% |
-| 8:40p ET | LAD @ COL | Coors Field | 79F 2mph | LAD_ML +30.0% |
+| 6:40p ET | STL @ CIN | Great American Ball Park | 73F 4mph | STL_ML +8.02% |
+| 6:40p ET | MIA @ PHI | Citizens Bank Park | 78F 4mph | MIA_ML +20.55% |
+| 7:05p ET | DET @ PIT | PNC Park | 71F 4mph | OVER_8.0 +17.93% |
+| 7:10p ET | ARI @ BOS | Fenway Park | 70F 3mph | OVER_8.5 +20.01% |
+| 7:10p ET | SDP @ NYM | Citi Field | 71F 3mph | UNDER_8.5 +24.13% |
+| 7:40p ET | OAK @ KCR | Kauffman Stadium | 78F 6mph | OVER_10.0 +34.4% |
+| 7:40p ET | ATL @ MIN | Target Field | 73F 5mph | OVER_8.5 +37.93% |
+| 8:05p ET | CHW @ CHC | Wrigley Field | 66F 5mph | OVER_10.0 +9.35% |
+| 8:40p ET | LAD @ COL | Coors Field | 79F 2mph | LAD_ML +49.38% |
 
 ## Parlays - top 5
 
@@ -65,14 +63,13 @@ Cumulative graded plays: 8778. Wins: 3300. Hit rate: 37.6%.
 |---|---|---|---|---|---|
 | ARI @ BOS | 65.9% | -193 | 2.05 | -147 | +147 |
 | ATL @ MIN | 51.1% | -105 | 3.42 | +281 | -281 |
-| BAL @ TBR | 42.4% | +136 | 4.29 | -104 | +104 |
 | CHW @ CHC | 35.6% | +181 | 5.35 | +130 | -130 |
 | DET @ PIT | 43.4% | +130 | 4.27 | +154 | -154 |
 | LAD @ COL | 31.5% | +217 | 5.76 | +3511 | -3511 |
 | MIA @ PHI | 58.4% | -140 | 2.75 | +114 | -114 |
 | OAK @ KCR | 31.0% | +223 | 5.72 | -151 | +151 |
 | SDP @ NYM | 44.1% | +127 | 4.02 | +145 | -145 |
-| STL @ CIN | 45.8% | +119 | 4.17 | +242 | -242 |
+| STL @ CIN | 45.8% | +119 | 4.02 | +237 | -237 |
 
 ## Travel / Rest Flags
 

@@ -1,36 +1,35 @@
 {
-  "generated_at": "2026-08-17T17:27:57",
-  "n_families": 56,
+  "generated_at": "2026-08-17T22:21:04",
+  "n_families": 71,
   "n_curated_out": 12,
   "n_calibrated": 16,
-  "n_model_only": 28,
-  "n_overconfident": 3,
-  "units_protected_by_curation": -1933.3,
+  "n_model_only": 43,
+  "n_overconfident": 4,
+  "units_protected_by_curation": -1934.5,
   "guard_impact": {
     "all": {
-      "n": 8739,
-      "net_units": -1698.2,
-      "roi_pct": -19.4,
+      "n": 8769,
+      "net_units": -1707.9,
+      "roi_pct": -19.5,
       "hit_rate": 0.3759
     },
     "after_curation": {
-      "n": 1786,
-      "net_units": 235.1,
-      "roi_pct": 13.2,
-      "hit_rate": 0.6993
+      "n": 1811,
+      "net_units": 226.6,
+      "roi_pct": 12.5,
+      "hit_rate": 0.6946
     },
     "curated_out": {
-      "n": 6953,
-      "net_units": -1933.3,
+      "n": 6958,
+      "net_units": -1934.5,
       "roi_pct": -27.8,
-      "hit_rate": 0.2928
+      "hit_rate": 0.2929
     }
   },
   "desk_curation": {
     "summary": {
       "n_desks": 11,
       "profitable": [
-        "MLB",
         "MLB-PP",
         "UFC",
         "WNBA"
@@ -85,16 +84,16 @@
       },
       {
         "sport": "MLB",
-        "n": 6649,
-        "wins": 1985,
-        "net_raw": -1843.7,
-        "net_curated": 9.5,
-        "n_curated": 420,
-        "hit_rate": 0.2985,
+        "n": 6681,
+        "wins": 1996,
+        "net_raw": -1853.4,
+        "net_curated": 1.0,
+        "n_curated": 445,
+        "hit_rate": 0.2988,
         "roi_raw": -27.7,
-        "roi_curated": 2.3,
+        "roi_curated": 0.2,
         "proven_negative_desk": false,
-        "status": "profitable"
+        "status": "marginal"
       },
       {
         "sport": "MLS",
@@ -189,9 +188,9 @@
       }
     ]
   },
-  "overall_avg_model_pred": 0.4607,
+  "overall_avg_model_pred": 0.4614,
   "overall_realized_hit_rate": 0.3759,
-  "overall_overconfidence_gap": 0.0848,
+  "overall_overconfidence_gap": 0.0855,
   "method_note": "Per market family, the model's average predicted probability vs the realized hit rate over all settled bets in that family. Positive overconfidence_gap = the model was too high. Families proven to lose money are curated out of the boards; well-sampled families have their displayed probabilities calibrated toward the realized rate.",
   "families": [
     {
@@ -349,6 +348,17 @@
       "miscalibration": "ok"
     },
     {
+      "family": "over",
+      "n_settled": 160,
+      "avg_model_pred": 0.6364,
+      "realized_hit_rate": 0.5125,
+      "overconfidence_gap": 0.1239,
+      "net_units": -8.59,
+      "roi_pct": -5.4,
+      "status": "curated_out",
+      "miscalibration": "overconfident"
+    },
+    {
       "family": "home_ml",
       "n_settled": 33,
       "avg_model_pred": 0.5758,
@@ -367,17 +377,6 @@
       "overconfidence_gap": 0.118,
       "net_units": -73.74,
       "roi_pct": -20.8,
-      "status": "curated_out",
-      "miscalibration": "priced_short"
-    },
-    {
-      "family": "over",
-      "n_settled": 155,
-      "avg_model_pred": 0.6333,
-      "realized_hit_rate": 0.5161,
-      "overconfidence_gap": 0.1172,
-      "net_units": -7.41,
-      "roi_pct": -4.8,
       "status": "curated_out",
       "miscalibration": "priced_short"
     },
@@ -558,28 +557,6 @@
       "miscalibration": "ok"
     },
     {
-      "family": "ml_home",
-      "n_settled": 35,
-      "avg_model_pred": 0.6369,
-      "realized_hit_rate": 0.6,
-      "overconfidence_gap": 0.0369,
-      "net_units": 3.51,
-      "roi_pct": 10.0,
-      "status": "calibrated",
-      "miscalibration": "ok"
-    },
-    {
-      "family": "ml_away",
-      "n_settled": 66,
-      "avg_model_pred": 0.6126,
-      "realized_hit_rate": 0.5758,
-      "overconfidence_gap": 0.0368,
-      "net_units": 6.74,
-      "roi_pct": 10.2,
-      "status": "calibrated",
-      "miscalibration": "ok"
-    },
-    {
       "family": "mlb_rbi_0.5_under",
       "n_settled": 20,
       "avg_model_pred": 0.786,
@@ -624,6 +601,28 @@
       "miscalibration": "ok"
     },
     {
+      "family": "ml_away",
+      "n_settled": 65,
+      "avg_model_pred": 0.6134,
+      "realized_hit_rate": 0.5846,
+      "overconfidence_gap": 0.0288,
+      "net_units": 7.74,
+      "roi_pct": 11.9,
+      "status": "calibrated",
+      "miscalibration": "ok"
+    },
+    {
+      "family": "ml_home",
+      "n_settled": 34,
+      "avg_model_pred": 0.6388,
+      "realized_hit_rate": 0.6176,
+      "overconfidence_gap": 0.0212,
+      "net_units": 4.51,
+      "roi_pct": 13.3,
+      "status": "calibrated",
+      "miscalibration": "ok"
+    },
+    {
       "family": "home_clean_sheet_no",
       "n_settled": 162,
       "avg_model_pred": 0.7471,
@@ -658,12 +657,12 @@
     },
     {
       "family": "under",
-      "n_settled": 99,
-      "avg_model_pred": 0.6083,
-      "realized_hit_rate": 0.6061,
-      "overconfidence_gap": 0.0022,
-      "net_units": 10.81,
-      "roi_pct": 10.9,
+      "n_settled": 101,
+      "avg_model_pred": 0.6077,
+      "realized_hit_rate": 0.6139,
+      "overconfidence_gap": -0.0062,
+      "net_units": 12.22,
+      "roi_pct": 12.1,
       "status": "calibrated",
       "miscalibration": "ok"
     },
@@ -807,6 +806,171 @@
       "overconfidence_gap": -0.22,
       "net_units": 0.28,
       "roi_pct": 28.2,
+      "status": "model_only",
+      "miscalibration": "ok"
+    },
+    {
+      "family": "wsn_ml",
+      "n_settled": 3,
+      "avg_model_pred": 0.6028,
+      "realized_hit_rate": 0.3333,
+      "overconfidence_gap": 0.2695,
+      "net_units": -1.09,
+      "roi_pct": -36.4,
+      "status": "model_only",
+      "miscalibration": "ok"
+    },
+    {
+      "family": "chw_ml",
+      "n_settled": 3,
+      "avg_model_pred": 0.6243,
+      "realized_hit_rate": 0.3333,
+      "overconfidence_gap": 0.291,
+      "net_units": -1.07,
+      "roi_pct": -35.8,
+      "status": "model_only",
+      "miscalibration": "ok"
+    },
+    {
+      "family": "lad_ml",
+      "n_settled": 2,
+      "avg_model_pred": 0.6106,
+      "realized_hit_rate": 0.0,
+      "overconfidence_gap": 0.6106,
+      "net_units": -2.0,
+      "roi_pct": -100.0,
+      "status": "model_only",
+      "miscalibration": "ok"
+    },
+    {
+      "family": "min_ml",
+      "n_settled": 2,
+      "avg_model_pred": 0.6066,
+      "realized_hit_rate": 0.0,
+      "overconfidence_gap": 0.6066,
+      "net_units": -2.0,
+      "roi_pct": -100.0,
+      "status": "model_only",
+      "miscalibration": "ok"
+    },
+    {
+      "family": "mia_ml",
+      "n_settled": 1,
+      "avg_model_pred": 0.5529,
+      "realized_hit_rate": 0.0,
+      "overconfidence_gap": 0.5529,
+      "net_units": -1.0,
+      "roi_pct": -100.0,
+      "status": "model_only",
+      "miscalibration": "ok"
+    },
+    {
+      "family": "mil_ml",
+      "n_settled": 1,
+      "avg_model_pred": 0.6452,
+      "realized_hit_rate": 0.0,
+      "overconfidence_gap": 0.6452,
+      "net_units": -1.0,
+      "roi_pct": -100.0,
+      "status": "model_only",
+      "miscalibration": "ok"
+    },
+    {
+      "family": "bos_ml",
+      "n_settled": 2,
+      "avg_model_pred": 0.6424,
+      "realized_hit_rate": 0.5,
+      "overconfidence_gap": 0.1424,
+      "net_units": -0.09,
+      "roi_pct": -4.5,
+      "status": "model_only",
+      "miscalibration": "ok"
+    },
+    {
+      "family": "pit_ml",
+      "n_settled": 1,
+      "avg_model_pred": 0.6396,
+      "realized_hit_rate": 0.0,
+      "overconfidence_gap": 0.6396,
+      "net_units": -1.0,
+      "roi_pct": -100.0,
+      "status": "model_only",
+      "miscalibration": "ok"
+    },
+    {
+      "family": "hou_ml",
+      "n_settled": 1,
+      "avg_model_pred": 0.598,
+      "realized_hit_rate": 0.0,
+      "overconfidence_gap": 0.598,
+      "net_units": -1.0,
+      "roi_pct": -100.0,
+      "status": "model_only",
+      "miscalibration": "ok"
+    },
+    {
+      "family": "atl_ml",
+      "n_settled": 1,
+      "avg_model_pred": 0.615,
+      "realized_hit_rate": 0.0,
+      "overconfidence_gap": 0.615,
+      "net_units": -1.0,
+      "roi_pct": -100.0,
+      "status": "model_only",
+      "miscalibration": "ok"
+    },
+    {
+      "family": "phi_ml",
+      "n_settled": 2,
+      "avg_model_pred": 0.6056,
+      "realized_hit_rate": 0.5,
+      "overconfidence_gap": 0.1056,
+      "net_units": -0.11,
+      "roi_pct": -5.4,
+      "status": "model_only",
+      "miscalibration": "ok"
+    },
+    {
+      "family": "nyy_ml",
+      "n_settled": 2,
+      "avg_model_pred": 0.6574,
+      "realized_hit_rate": 0.5,
+      "overconfidence_gap": 0.1574,
+      "net_units": -0.09,
+      "roi_pct": -4.5,
+      "status": "model_only",
+      "miscalibration": "ok"
+    },
+    {
+      "family": "tex_ml",
+      "n_settled": 2,
+      "avg_model_pred": 0.691,
+      "realized_hit_rate": 0.5,
+      "overconfidence_gap": 0.191,
+      "net_units": -0.3,
+      "roi_pct": -15.0,
+      "status": "model_only",
+      "miscalibration": "ok"
+    },
+    {
+      "family": "det_ml",
+      "n_settled": 1,
+      "avg_model_pred": 0.6584,
+      "realized_hit_rate": 1.0,
+      "overconfidence_gap": -0.3416,
+      "net_units": 0.79,
+      "roi_pct": 78.7,
+      "status": "model_only",
+      "miscalibration": "ok"
+    },
+    {
+      "family": "ari_ml",
+      "n_settled": 1,
+      "avg_model_pred": 0.5524,
+      "realized_hit_rate": 0.0,
+      "overconfidence_gap": 0.5524,
+      "net_units": -1.0,
+      "roi_pct": -100.0,
       "status": "model_only",
       "miscalibration": "ok"
     }

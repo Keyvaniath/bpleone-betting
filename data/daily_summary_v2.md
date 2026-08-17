@@ -2,7 +2,7 @@
 
 ## 🏥 Model Health: 67.0/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.9/100
+  - 🟢 Calibration Freshness: 100.0/100
   - 🔴 Hit Rate Trend: 0/100
   - 🔴 Brier Trend: 34.9/100
   - 🟢 Pipeline Audit: 100.0/100
@@ -10,8 +10,8 @@
   - 🟢 Edge Count: 100/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.578)
-- **Total games on board:** 173
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.573)
+- **Total games on board:** 99
 - **Strong home favorites:** 10 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
@@ -56,8 +56,8 @@
 - Hot teams: **4** | Cold teams: **3** | Over-heavy: 0 | Under-heavy: 7
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (50)
-- STEAM_MOVE: **45**
+## ⚠️ Anomaly Detector (52)
+- STEAM_MOVE: **47**
 - COMPOUND_BULLPEN: **4**
 - PEN_MISMATCH: **1**
   - MIL @ LAD (MLB): ML steam since open: ML -16.7pp toward MIL (11 snapshots)
@@ -75,13 +75,13 @@
   - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
-## 🎯 Convergence Picks (13 stacked games)
-- ELITE: **3** · HIGH: 3 · MED: 7
-  - [ELITE] Chicago Sky @ Seattle Storm : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
+## 🎯 Convergence Picks (10 stacked games)
+- ELITE: **2** · HIGH: 2 · MED: 6
   - [ELITE] New England Revolution @ D.C. United : 4 signals (PREGAME, HEAT_COLD, ATS, ATS)
   - [ELITE] Houston Dynamo FC @ Vancouver Whitecaps : 4 signals (PREGAME, HEAT_COLD, ATS, ATS)
-  - [HIGH] Indiana Fever @ Atlanta Dream : 3 signals (HEAT_COLD, HEAT_COLD, ATS)
   - [HIGH] CF Montréal @ Columbus Crew : 3 signals (PREGAME, ATS, ATS)
+  - [HIGH] FC Dallas @ Real Salt Lake : 3 signals (PREGAME, ATS, ATS)
+  - [MED] New York City FC @ FC Cincinnati : 2 signals (PREGAME, ATS)
 
 ## ⚾ Top MLB Pitcher K Plays (6)
 - **Cristopher Sánchez** OVER 5.5 K (77%) fair -328
@@ -112,19 +112,20 @@
   - ❄️ **Sungjae Im** (South Korea): Sunday +5.8 vs tourney avg
   - ❄️ **Brian Harman** (USA): Sunday +5.5 vs tourney avg
 
-## 🔥 MLB Batter Heat (46 HOT / 64 COLD)
+## 🔥 MLB Batter Heat (48 HOT / 61 COLD)
   - 🔥 **Victor Robles** (SEA): L14 .429 / season .264 (+165pts)
   - 🔥 **Alec Bohm** (PHI): L14 .396 / season .242 (+154pts)
+  - 🔥 **Pete Alonso** (BAL): L14 .404 / season .265 (+139pts)
   - 🔥 **Cam Smith** (HOU): L14 .362 / season .223 (+139pts)
   - 🔥 **Jac Caglianone** (KC): L14 .407 / season .272 (+135pts)
-  - 🔥 **Royce Lewis** (MIN): L14 .375 / season .243 (+132pts)
   - ❄️ **Ben Rice** (NYY): L14 .102 / season .251 (-149pts) -- FADE props
   - ❄️ **Heliot Ramos** (NYY): L14 .106 / season .244 (-138pts) -- FADE props
   - ❄️ **Carlos Cortes** (ATH): L14 .125 / season .260 (-135pts) -- FADE props
   - ❄️ **Garrett Mitchell** (MIL): L14 .114 / season .249 (-135pts) -- FADE props
-  - ❄️ **Elly De La Cruz** (CIN): L14 .137 / season .262 (-125pts) -- FADE props
+  - ❄️ **Jesús Sánchez** (TOR): L14 .138 / season .261 (-123pts) -- FADE props
 
-## 📈 Streak Regression Alerts (2)
+## 📈 Streak Regression Alerts (3)
+- [WNBA] Golden State Valkyries on W4 L10 4-0 -- Golden State Valkyries on W4 -- no historical sample
 - [MLS] New England Revolution on L3 L10 0-3 -- New England Revolution on L3 -- no historical sample
 - [MLS] Houston Dynamo FC on W3 L10 3-0 -- Houston Dynamo FC on W3 -- no historical sample
 
