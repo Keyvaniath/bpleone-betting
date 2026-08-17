@@ -250,16 +250,22 @@ def optimize(pool: List[Dict[str, Any]], obj_key: str,
              caps: Tuple[int, ...] = BUDGET_VARIANTS) -> Dict[str, Any]:
     """Exact DP. pool rows need: name, pos, salary, and obj_key (points).
     Returns {cap: {lineup, salary_used, total}} for each requested cap."""
+    # LINEUP-PAYLOAD DP (2026-08-17): cells store their FULL lineup (tuple of
+    # pool indices), not parent pointers -- pointer walk-back is unsound in a
+    # value-overwriting knapsack table (an ancestor cell can improve after a
+    # descendant records provenance; the mixed-path reconstruction seated the
+    # same OF twice on the MLB desk's first real slate). Same fix here because
+    # the flaw was latent and identical.
     unit = 100
     max_units = max(caps) // unit
     states = _count_states()
     s_index = {s: i for i, s in enumerate(states)}
     NEG = float("-inf")
-    # best[state_i][sal] = points ; take[state_i][sal] = (player_i, prev_state_i, prev_sal)
     best = [[NEG] * (max_units + 1) for _ in states]
-    take: List[List[Optional[Tuple[int, int, int]]]] = [[None] * (max_units + 1) for _ in states]
+    lus: List[List[Optional[Tuple[int, ...]]]] = [[None] * (max_units + 1) for _ in states]
     start_i = s_index[(0, 0, 0, 0, 0)]
     best[start_i][0] = 0.0
+    lus[start_i][0] = ()
 
     order = sorted(range(len(states)), key=lambda i: -sum(states[i]))  # high count first
     for pi, p in enumerate(pool):
@@ -277,7 +283,8 @@ def optimize(pool: List[Dict[str, Any]], obj_key: str,
             ni = s_index.get(tuple(new))
             if ni is None:
                 continue
-            row, nrow, trow = best[si], best[ni], take[ni]
+            row, lrow = best[si], lus[si]
+            nrow, nlu = best[ni], lus[ni]
             for sal in range(max_units - w, -1, -1):
                 cur = row[sal]
                 if cur == NEG:
@@ -285,7 +292,7 @@ def optimize(pool: List[Dict[str, Any]], obj_key: str,
                 cand = cur + v
                 if cand > nrow[sal + w]:
                     nrow[sal + w] = cand
-                    trow[sal + w] = (pi, si, sal)
+                    nlu[sal + w] = lrow[sal] + (pi,)
 
     results: Dict[int, Dict[str, Any]] = {}
     valid_states = [s_index[s] for s in states
@@ -300,17 +307,14 @@ def optimize(pool: List[Dict[str, Any]], obj_key: str,
             for sal in range(cu + 1):
                 if row[sal] > top:
                     top, at = row[sal], (si, sal)
-        if at is None:
+        if at is None or lus[at[0]][at[1]] is None:
             results[cap] = {"lineup": [], "salary_used": 0, "total": 0.0,
                             "note": "no feasible lineup at this cap"}
             continue
-        lineup = []
-        si, sal = at
-        while take[si][sal] is not None:
-            pi, psi, psal = take[si][sal]
-            lineup.append(pool[pi])
-            si, sal = psi, psal
-        lineup.reverse()
+        picks = lus[at[0]][at[1]]
+        assert len(set(picks)) == len(picks), \
+            "optimizer invariant violated: duplicate player in lineup"
+        lineup = [pool[pi] for pi in picks]
         results[cap] = {
             "lineup": lineup,
             "salary_used": sum(int(p["salary"]) for p in lineup),

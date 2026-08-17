@@ -115,6 +115,7 @@ GROUPS: List[Dict[str, Any]] = [
         {"href": "convergence.html",     "label": "Convergence", "shim": True},
     ]},
     {"group": "Parlays & DFS", "pages": [
+        {"href": "mlb-dfs.html",             "label": "⚾ MLB DFS — DK Projections & Optimal Lineup"},
         {"href": "nfl-dfs.html",             "label": "🏈 NFL DFS — DK Projections & Optimal Lineups"},
         {"href": "cross-sport-parlays.html", "label": "🎰 Cross-Sport Parlays"},
         {"href": "props-parlay.html",        "label": "Props-Only Parlays"},

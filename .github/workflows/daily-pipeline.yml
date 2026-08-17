@@ -209,6 +209,13 @@ jobs:
         working-directory: python
         run: python props_pipeline.py
 
+      # MLB DFS: DK Classic salaries (free public lobby) + season-rate mean
+      # projections (statsapi, disk-cached) + exact dual-eligibility optimizer.
+      # Free-data only -- no paid-quota cost.
+      - name: MLB DFS (DK salaries -> projections -> optimal lineup)
+        working-directory: python
+        run: python mlb_dfs.py || true
+
       # Unify today.json (model line + market + recs) with every per-matchup prop
       # into one card per game -> data/mlb_game_cards.json, powering the clickable
       # per-game detail view (game.html). Runs after props so it can join them.

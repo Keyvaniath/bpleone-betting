@@ -40,6 +40,9 @@ import nfl_baselines as nb     # shared roster/2025-baseline resolution (2026-08
 
 SIM_N = 4000        # simulations per curated-DB player per slate
 SIM_N_WIDE = 2000   # simulations for the widened (2025-baseline) universe
+NFL_2026_WEEK1 = "2026-09-08"   # the picks gate holds until this date regardless
+                                 # of what ESPN's season label says (it flips to
+                                 # "off-season" between preseason weeks)
 
 
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
@@ -478,7 +481,11 @@ def run() -> Dict[str, Any]:
     # until the regular season; payload stays shape-identical so no consumer
     # breaks, and the page can render the why.
     season_status = str(state.get("season_status") or "").lower()
-    if season_status == "preseason":
+    # DATE-HARDENED GATE (2026-08-18): between preseason weeks ESPN's scoreboard
+    # empties and the label flips to "off-season" -- a string-keyed gate would
+    # silently reopen when the next preseason slate entered the horizon. Until
+    # Week 1 the gate holds no matter what the label says.
+    if season_status == "preseason" or dt.date.today().isoformat() < NFL_2026_WEEK1:
         # PICKS stay gated (rows/strong_edges empty -> the ledger collector,
         # which reads ONLY strong_edges, collects nothing). But the desk still
         # publishes a WEEK 1 PREVIEW BOARD off the DK slate: full projections +

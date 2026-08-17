@@ -41,6 +41,26 @@ bpleone-site/
 
 ## Current deployment state (LIVE)
 
+- **2026-08-17 (late) — MLB DFS DESK + NFL gate date-hardening + all-desk
+  audit:** (1) mlb_dfs.py -> data/mlb_dfs.json -> mlb-dfs.html: DK MLB
+  Classic (ContestTypeId 28 -- NOT 21; per-sport ids differ) salaries from
+  the free lobby; v1 MEAN projections labeled as such (hitters = season
+  per-game rates via props_pipeline._batter_season, pitchers = season
+  per-start rates via stats_repo, PROBABLE STARTERS ONLY from
+  matchups.json -- never the 380-arm bullpen pool); exact 0/1 DP optimizer
+  with FULL DUAL-ELIGIBILITY (a '2B/SS' may be seated at either slot; DP
+  tries each eligible position per transition; brute-force-verified
+  self-test runs every invocation). Roster P,P,C,1B,2B,3B,SS,OFx3 @ $50k.
+  v2 path = the NFL desk's Monte Carlo treatment (distributions,
+  park/platoon/lineup-order). Free-data only, no paid-quota cost. Wired in
+  daily-pipeline (unconditional step), directory, mlb.html + nfl-dfs.html
+  cross-links. (2) NFL preseason gate DATE-HARDENED: between preseason
+  weeks ESPN's label flips to "off-season", so the picks gate now holds
+  until NFL_2026_WEEK1 regardless of the label. (3) All-desk audit: health
+  green, 0/17 coverage flags; 8 sports live (MLB/WNBA/KBO/CS2/Tennis/Golf/
+  UFC/F1), the rest correctly dormant with next-dates.
+
+
 - **2026-08-18 — DFS RECEIPTS LOOP + NCAAF LINES + BOTH SOCIALS LIVE:**
   (1) nfl_dfs_receipts.py -> data/nfl_dfs_receipts.json -> the "Lineup
   Receipts" card on nfl-dfs.html: published lineups SNAPSHOT all week and

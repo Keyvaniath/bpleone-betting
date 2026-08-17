@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="MLB DFS Desk · EdgeStat — DraftKings Classic projections from season rates and an exact salary-cap optimal lineup with full dual-eligibility. Informational only, 21+.">
+<link rel="canonical" href="https://betting.bpleone.com/mlb-dfs.html">
+<meta name="theme-color" content="#0d1017">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EdgeStat">
+<meta property="og:title" content="MLB DFS Desk — Projections &amp; Optimal Lineup | EdgeStat">
+<meta property="og:description" content="DraftKings MLB Classic projections + an exact salary-cap optimal lineup (dual-eligibility handled exactly). Informational only, 21+.">
+<meta property="og:url" content="https://betting.bpleone.com/mlb-dfs.html">
+<meta property="og:image" content="https://betting.bpleone.com/assets/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://betting.bpleone.com/assets/og-card.png">
+<meta name="twitter:title" content="MLB DFS Desk — Projections &amp; Optimal Lineup | EdgeStat">
+<meta name="twitter:description" content="DraftKings MLB Classic projections + exact optimal lineup. Informational only, 21+.">
+<title>MLB DFS Desk — DraftKings Projections &amp; Optimal Lineup | EdgeStat</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .dfs-row { display:grid; grid-template-columns: 1.5fr 70px 46px 110px 70px 64px 64px 120px; gap:10px; padding:9px 14px; border-bottom:1px solid rgba(255,255,255,0.04); font-family:'JetBrains Mono',monospace; font-size:12px; align-items:center; }
+  .dfs-row.head { background:rgba(255,255,255,0.04); color:var(--muted,#888); font-size:10px; text-transform:uppercase; position:sticky; top:0; }
+  .lu-card { flex:1 1 320px; border:1px solid rgba(255,255,255,.08); border-radius:10px; overflow:hidden; }
+  .lu-head { padding:10px 14px; font-weight:700; border-bottom:1px solid rgba(255,255,255,.06); display:flex; justify-content:space-between; align-items:baseline; }
+  .lu-slot { display:grid; grid-template-columns: 44px 1.5fr 44px 70px 56px; gap:8px; padding:6px 14px; border-bottom:1px solid rgba(255,255,255,.04); font-family:'JetBrains Mono',monospace; font-size:11.5px; }
+  .posbtn { background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.12); color:var(--text-2,#b9c3d4); font-size:11px; padding:5px 14px; border-radius:999px; cursor:pointer; }
+  .posbtn.on { background:rgba(212,160,74,.18); border-color:#d4a04a; color:#d4a04a; font-weight:700; }
+  .srcb { font-size:9px; padding:1px 6px; border-radius:6px; background:rgba(255,255,255,.06); color:var(--muted,#8a93a6); }
+</style>
+<script src="js/nav.js"></script>
+</head>
+<body class="page-mlb-dfs">
+<header class="topbar">
+  <div class="brand">
+    <a href="index.html" class="logo"><span class="logo-mark">⟁</span><span class="logo-text">Edge<span class="accent">Stat</span></span></a>
+    <span class="tagline">by bpleone</span>
+  </div>
+  <nav class="mainnav"><!-- nav.js injects here --></nav>
+  <div class="topbar-actions"><div class="ticker">DFS</div></div>
+</header>
+<main class="container">
+  <section class="page-head">
+    <h1>⚾ MLB DFS Desk <span class="muted" style="font-size:14px;font-weight:400;">— DraftKings Classic projections &amp; exact optimal lineup</span></h1>
+    <p id="dfs_status" class="muted">Loading slate…</p>
+  </section>
+  <section style="margin:0 0 18px; padding:9px 16px; border:1px solid rgba(80,150,220,.4); border-left:3px solid #5096dc; border-radius:8px; background:rgba(80,150,220,.07); font-size:12px; color:var(--text-2,#b9c3d4); line-height:1.55;">
+    <b style="color:#5096dc;">v1 — mean projections.</b> Season per-game rates (probable starters per-start), no
+    lineup-order / park / platoon / weather adjustment yet and no floor–ceiling columns. The Monte Carlo
+    treatment the <a href="nfl-dfs.html" style="color:#d4a04a;">NFL desk</a> gets is the v2 path. Confirm lineups before lock — a hitter who sits scores 0.
+  </section>
+  <section class="metric-strip">
+    <div class="metric"><span class="metric-num" id="m_slate">--</span><span class="metric-label">Slate Games</span></div>
+    <div class="metric"><span class="metric-num" id="m_sal">--</span><span class="metric-label">Salaried Players</span></div>
+    <div class="metric"><span class="metric-num" id="m_proj">--</span><span class="metric-label">Projected</span></div>
+    <div class="metric"><span class="metric-num" id="m_sp">--</span><span class="metric-label">Probable SPs</span></div>
+  </section>
+
+  <section class="card" style="margin-bottom:24px;">
+    <div class="card-head"><span>🧮 <strong>Optimal Lineup</strong> <span class="muted" style="font-size:10px;">exact DP · $50,000 · P,P,C,1B,2B,3B,SS,OF×3 · dual-eligibility handled exactly</span></span><span class="muted" id="lu_meta">--</span></div>
+    <div id="lu_wrap" style="display:flex; gap:14px; flex-wrap:wrap; padding:14px;"><p class="muted">Loading…</p></div>
+    <div id="lu_budget" class="muted" style="padding:0 16px 12px; font-size:11.5px; font-family:'JetBrains Mono',monospace;"></div>
+  </section>
+
+  <section class="card" style="margin-bottom:24px;">
+    <div class="card-head"><span>📊 <strong>Player Projections</strong> <span class="muted" style="font-size:10px;">DK points · season-rate means</span></span><span class="muted" id="pj_meta">--</span></div>
+    <div id="pos_filters" style="display:flex; gap:8px; padding:10px 14px 4px; flex-wrap:wrap;"></div>
+    <div style="overflow-x:auto;">
+      <div style="min-width:820px;">
+        <div class="dfs-row head">
+          <span>Player</span><span>Pos</span><span>Team</span><span>Game</span><span>Salary</span><span>Proj</span><span>Val/$K</span><span>Source</span>
+        </div>
+        <div id="pj_list"><p class="muted" style="padding:14px;">Loading…</p></div>
+      </div>
+    </div>
+    <div style="padding:8px 16px;"><button id="pj_more" class="posbtn" style="display:none;">Show all</button></div>
+  </section>
+
+  <section class="card" style="margin-bottom:24px;">
+    <div class="card-head"><span>🧾 <strong>Method &amp; honesty notes</strong></span></div>
+    <p id="mn_text" class="muted" style="font-size:12px; line-height:1.65; padding:12px 16px 4px;"></p>
+    <ul id="mn_disc" style="font-size:11.5px; color:var(--muted,#8a93a6); line-height:1.6; padding:4px 16px 14px 34px;"></ul>
+  </section>
+</main>
+<script src="js/nav_badge.js"></script>
+<script>
+const $ = (id) => document.getElementById(id);
+let DATA = null, POS = 'ALL', SHOWN = 60;
+const fmtSal = (s) => s == null ? '—' : '$' + s.toLocaleString();
+
+function filtered() {
+  return (DATA.projections || []).filter(p =>
+    POS === 'ALL' || (p.elig || []).includes(POS));
+}
+function render() {
+  const rows = filtered();
+  $('pj_list').innerHTML = rows.slice(0, SHOWN).map(p => `<div class="dfs-row">
+      <span><strong>${p.name}</strong>${p.status && p.status !== 'None' ? ' <span style="color:#d4a04a;font-weight:700;">' + p.status + '</span>' : ''}</span>
+      <span>${p.pos}</span>
+      <span class="muted">${p.team}</span>
+      <span class="muted" style="font-size:10.5px;">${p.game || '—'}</span>
+      <span>${fmtSal(p.salary)}</span>
+      <span style="font-weight:700;">${p.proj}</span>
+      <span>${p.value ?? '—'}</span>
+      <span><span class="srcb">${p.source}</span></span>
+    </div>`).join('') || '<p class="muted" style="padding:14px;">No players for this filter.</p>';
+  $('pj_more').style.display = rows.length > SHOWN ? 'inline-block' : 'none';
+}
+
+fetch('data/mlb_dfs.json?t=' + Date.now(), { cache: 'no-cache' })
+  .then(r => r.json())
+  .then(d => {
+    DATA = d;
+    if (!d.slate) {
+      $('dfs_status').textContent = d.note || 'No slate available.';
+      $('lu_wrap').innerHTML = '<p class="muted">' + (d.note || 'No slate.') + '</p>';
+      $('pj_list').innerHTML = '<p class="muted" style="padding:14px;">' + (d.note || 'No slate.') + '</p>';
+      return;
+    }
+    const u = d.universe || {};
+    $('dfs_status').innerHTML = `DraftKings MLB Classic <b>${d.slate.start}</b>${d.slate.suffix ? ' ' + d.slate.suffix : ' (Main)'} · draft group ${d.slate.draft_group_id} · refreshed ${(d.generated_at || '').replace('T', ' ')}`;
+    $('m_slate').textContent = d.slate.n_games ?? '--';
+    $('m_sal').textContent = d.slate.n_salaried ?? '--';
+    $('m_proj').textContent = u.n_projected ?? '--';
+    $('m_sp').textContent = u.n_probable_sp ?? '--';
+
+    const b = (d.lineups || {}).optimal;
+    const lw = $('lu_wrap');
+    if (b && (b.slots || []).length) {
+      lw.innerHTML = `<div class="lu-card">
+        <div class="lu-head"><span>⭐ Optimal <span class="muted" style="font-size:10px;font-weight:400;">max mean projection</span></span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:12px;">${b.proj_total} pts · ${fmtSal(b.salary_used)}</span></div>
+        ${b.slots.map(s => `<div class="lu-slot"><span class="muted">${s.slot}</span><span><strong>${s.name}</strong></span><span class="muted">${s.team}</span><span>${fmtSal(s.salary)}</span><span style="font-weight:700;">${s.proj}</span></div>`).join('')}
+      </div>`;
+    } else {
+      lw.innerHTML = '<p class="muted">No feasible lineup yet (pool too thin — often pre-probables early in the day).</p>';
+    }
+    const bt = d.budget_variants || [];
+    if (bt.length) {
+      $('lu_budget').textContent = 'Budget sensitivity: ' + bt.map(x => `$${x.cap / 1000}k → ${x.proj_total ?? '—'} pts`).join(' · ');
+    }
+    $('lu_meta').textContent = 'objective: mean DK points';
+
+    const posList = ['ALL', 'P', 'C', '1B', '2B', '3B', 'SS', 'OF'];
+    $('pos_filters').innerHTML = posList.map(p =>
+      `<button class="posbtn ${p === 'ALL' ? 'on' : ''}" data-pos="${p}">${p}</button>`).join('');
+    $('pos_filters').addEventListener('click', (e) => {
+      const btn = e.target.closest('[data-pos]');
+      if (!btn) return;
+      POS = btn.dataset.pos; SHOWN = 60;
+      document.querySelectorAll('.posbtn[data-pos]').forEach(x => x.classList.toggle('on', x === btn));
+      render();
+    });
+    $('pj_more').addEventListener('click', () => { SHOWN = 10000; render(); });
+    $('pj_meta').textContent = (d.projections || []).length + ' projected · ' + (u.n_unprojected || 0) + ' unprojected';
+    render();
+    $('mn_text').textContent = d.method_note || '';
+    $('mn_disc').innerHTML = (d.disclosures || []).map(x => '<li>' + x + '</li>').join('');
+  })
+  .catch(err => { $('dfs_status').textContent = 'Could not load mlb_dfs.json (' + err.message + ')'; });
+</script>
+</body>
+</html>
