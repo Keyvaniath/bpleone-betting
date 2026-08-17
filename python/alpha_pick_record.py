@@ -165,7 +165,12 @@ def _is_mlb_moneyline(p: Dict[str, Any]) -> bool:
     exact same v2 gate as the props. Totals stay OUT of the flagship pool."""
     if str(p.get("sport") or "").upper() not in _MLB_SPORTS:
         return False
-    return str(p.get("market") or "").upper().startswith("ML_")
+    mk = str(p.get("market") or "").upper()
+    # Board vocabularies for the same wager: ML_AWAY / ML_HOME, {TEAM}_ML
+    # (e.g. STL_ML -- the copy the dup-collapse usually KEEPS since it records
+    # first), and rlm_strong's "HOME ML"/"AWAY ML".
+    return (mk.startswith("ML_") or mk.endswith("_ML")
+            or mk in ("HOME ML", "AWAY ML"))
 
 
 def _family(market: Any) -> str:
@@ -267,6 +272,21 @@ def run() -> Dict[str, Any]:
     ungated_by_day: Dict[str, Dict[tuple, Dict[str, Any]]] = {}
     for p in picks:
         if p.get("voided"):
+            # Duplicate-wager voids still describe a REAL wager whose kept twin
+            # counts -- a locked v2 selection must stay resolvable even when the
+            # exact copy it locked onto was later collapsed as the duplicate
+            # (2026-08-17: the WSN_ML/ML_AWAY collapse flipped a published pick
+            # day to 'NO PICK' because the locked copy got voided).
+            if not str(p.get("voided_reason") or "").startswith("duplicate wager"):
+                continue
+            if (p.get("date") or "")[:10] < V2_RULE_DATE:
+                continue
+            day = (p.get("date") or "")[:10]
+            if _is_player_prop(p) or _is_mlb_moneyline(p):
+                k = (_norm(p.get("player_or_matchup")), _norm(p.get("market")),
+                     p.get("fair_american"))
+                p["market_family"] = _family(p.get("market"))
+                ungated_by_day.setdefault(day, {}).setdefault(k, p)
             continue
         day = (p.get("date") or "")[:10]
         # v1 pool: MLB player props only. v2 pool (>= rule date): props + MLB
@@ -308,8 +328,20 @@ def run() -> Dict[str, Any]:
         return (x["_roi"], x.get("prob") or 0, str(x.get("player_or_matchup") or ""))
 
     def _lock_key(p: Dict[str, Any]) -> str:
-        return "|".join([_norm(p.get("player_or_matchup")), _norm(p.get("market")),
-                         str(p.get("fair_american"))])
+        mu = _norm(p.get("player_or_matchup"))
+        mk = _norm(p.get("market"))
+        # Same canonicalization as the tracker's wager key: '{team}_ml' is the
+        # ml_away/ml_home wager for that side, so a lock survives whichever
+        # vocabulary the surviving duplicate copy happens to carry.
+        if mk.endswith("ml") and len(mk) > 2 and "@" in str(p.get("player_or_matchup") or ""):
+            team = mk[:-2]
+            raw = str(p.get("player_or_matchup"))
+            away, _, home = [_norm(s) for s in raw.partition("@")]
+            if team and (away.startswith(team) or team.startswith(away)):
+                mk = "mlaway"
+            elif team and (home.startswith(team) or team.startswith(home)):
+                mk = "mlhome"
+        return "|".join([mu, mk, str(p.get("fair_american"))])
 
     def _ensure_roi(p: Dict[str, Any]) -> None:
         """A locked pick that today's calibration map would now gate out still
@@ -353,8 +385,26 @@ def run() -> Dict[str, Any]:
         else:
             lock = locks.get(day)
             if lock is not None:
-                idx = {_lock_key(p): p for p in (ungated_by_day.get(day) or {}).values()}
-                picks_today = [idx[k] for k in (lock.get("keys") or []) if k in idx]
+                pool_all = list((ungated_by_day.get(day) or {}).values())
+                # Two-tier resolution: a LIVE (non-voided) copy of the locked
+                # wager always wins; a dup-voided copy is the last resort (its
+                # surviving twin normally covers it via the canonicalized key).
+                idx_live = {_lock_key(p): p for p in pool_all if not p.get("voided")}
+                idx_all = {_lock_key(p): p for p in pool_all}
+                picks_today = []
+                for k in (lock.get("keys") or []):
+                    pref = "|".join(k.split("|")[:2]) + "|"
+                    hit = idx_live.get(k)
+                    if hit is None:
+                        hit = next((v for kk, v in sorted(idx_live.items())
+                                    if kk.startswith(pref)), None)
+                    if hit is None:
+                        hit = idx_all.get(k)
+                    if hit is None:
+                        hit = next((v for kk, v in sorted(idx_all.items())
+                                    if kk.startswith(pref)), None)
+                    if hit is not None:
+                        picks_today.append(hit)
                 for pk in picks_today:
                     _ensure_roi(pk)
                 if not picks_today and not lock.get("no_pick"):

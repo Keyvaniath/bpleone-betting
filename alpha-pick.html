@@ -223,6 +223,7 @@ fetch('data/alpha_pick_record.json?t=' + Date.now()).then(function (r) { return 
       var parts = name.split('@');
       return ((m === 'ML_HOME' ? parts[1] : parts[0]) || '').trim() + ' moneyline';
     }
+    if (m.slice(-3) === '_ML') { return m.slice(0, -3) + ' moneyline'; }
     return String(m).replace(/_/g, ' ').toLowerCase();
   };
   // today's callout — v2 makes "no pick" a real published outcome, so say it plainly
@@ -234,7 +235,8 @@ fetch('data/alpha_pick_record.json?t=' + Date.now()).then(function (r) { return 
       tEl.style.display = 'block';
     } else if (td.result === 'pending') {
       var tprob = td.model_prob_calibrated || td.model_prob;
-      var isML = String(td.market || '').toUpperCase().indexOf('ML_') === 0;
+      var _mkU = String(td.market || '').toUpperCase();
+      var isML = _mkU.indexOf('ML_') === 0 || _mkU.slice(-3) === '_ML';
       var head = isML ? mkH(td.market, td.player_or_matchup) : (td.player_or_matchup || '');
       var sub = isML ? '(' + (td.player_or_matchup || '') + ')' : mkH(td.market, td.player_or_matchup);
       tEl.innerHTML = '<span style="color:var(--muted,#888);font-size:10px;text-transform:uppercase;letter-spacing:.5px;">Today (' + td.date + ')</span><br>' +
@@ -330,6 +332,7 @@ fetch('data/alpha_pick_record.json?t=' + Date.now()).then(function (r) { return 
       var parts = name.split('@');
       return ((m === 'ML_HOME' ? parts[1] : parts[0]) || '').trim() + ' moneyline';
     }
+    if (m.slice(-3) === '_ML') { return m.slice(0, -3) + ' moneyline'; }
     return String(m).replace(/_/g, ' ').toLowerCase();
   };
   if (t && t.no_pick) {

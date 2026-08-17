@@ -21,6 +21,13 @@ on:
 permissions:
   contents: write
 
+# Global paid-odds budget: The Odds API monthly quota is thin (free tier).
+# 14/day = props(8) + one multi-book snapshot(3) + one pipeline enrich(3);
+# extra dispatches gracefully fall back to the FREE ESPN lines. August 2026
+# lesson: an unguarded 3-credit call in the 2h heartbeat burned ~36/day.
+env:
+  ODDS_DAILY_CAP: '14'
+
 jobs:
   build:
     runs-on: ubuntu-latest

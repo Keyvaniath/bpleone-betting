@@ -2320,13 +2320,21 @@ def _settle_picks(history: List[Dict[str, Any]]) -> int:
             # "under_"/"over_" but are NOT full-game totals; a true game total is
             # exactly "over_X"/"under_X" with nothing else.
             is_game_line = (("ml_home" in market) or ("ml_away" in market)
+                            or re.fullmatch(r"[a-z]{2,4}_ml", market) is not None
                             or re.fullmatch(r"(over|under)_\d+(?:\.\d+)?", market) is not None)
             if is_game_line:
                 matchup = (p.get("player_or_matchup") or "").lower()
                 for g in historical_mlb:
                     g_date = (g.get("date") or "")[:10]
                     if g_date != p.get("date"): continue
-                    g_mu = f"{g.get('away_abbrev','')} @ {g.get('home_abbrev','')}".lower()
+                    # ESPN->model abbrev bridge (2026-08-17): the substring match
+                    # tolerates prefix vocab differences (KC in KCR, SD in SDP)
+                    # but NOT rewrites -- WSH/WSN, AZ/ARI, ATH/OAK never matched,
+                    # so those teams' game lines could never settle and aged into
+                    # "unsettleable" voids (wins and losses alike -- silent bias).
+                    _ab = lambda s: {"wsh": "wsn", "az": "ari", "ath": "oak"}.get(
+                        (s or "").lower(), (s or "").lower())
+                    g_mu = f"{_ab(g.get('away_abbrev'))} @ {_ab(g.get('home_abbrev'))}"
                     if matchup not in g_mu and g_mu not in matchup: continue
                     if g.get("home_score") is None: continue
                     home_s = g.get("home_score") or 0
@@ -2345,6 +2353,16 @@ def _settle_picks(history: List[Dict[str, Any]]) -> int:
                         result = "won" if home_s > away_s else "lost"
                     elif "ml_away" in market:
                         result = "won" if away_s > home_s else "lost"
+                    elif re.fullmatch(r"[a-z]{2,4}_ml", market):
+                        # '{TEAM}_ML' vocab (e.g. WSN_ML): resolve which side the
+                        # named team is, then grade that side.
+                        _team = _ab(market[:-3])
+                        if _team == _ab(g.get("away_abbrev")):
+                            result = "won" if away_s > home_s else "lost"
+                        elif _team == _ab(g.get("home_abbrev")):
+                            result = "won" if home_s > away_s else "lost"
+                        else:
+                            break   # named team isn't in the matched game
                     # Record the real final score that settled it (verifiable).
                     away_ab = g.get("away_abbrev", ""); home_ab = g.get("home_abbrev", "")
                     p["outcome"] = {
@@ -2714,9 +2732,23 @@ def _wager_key(p) -> tuple:
     surfaced it or which day it was snapshotted. One wager = one position.
     CASE-INSENSITIVE (2026-08-14): sharp_strong emits 'ml_away' while the boards
     emit 'ML_AWAY' -- with a case-sensitive key the same lost moneyline counted
-    TWICE (three double-counted losses found in the 8/10-8/13 window alone)."""
-    return (_safe_id(p.get("sport")).lower(), _safe_id(p.get("player_or_matchup")).lower(),
-            _safe_id(p.get("market")).lower())
+    TWICE (three double-counted losses found in the 8/10-8/13 window alone).
+    SEMANTIC CANONICALIZATION (2026-08-17): '{TEAM}_ML' (e.g. WSN_ML) is the
+    same wager as ml_away/ml_home for that side of the matchup -- twin boards
+    emitted both vocabularies for one bet, which double-counted it the moment
+    both copies graded."""
+    mk = _safe_id(p.get("market")).lower()
+    m = re.fullmatch(r"([a-z]{2,4})_ml", mk)
+    if m:
+        mu = str(p.get("player_or_matchup") or "").lower()
+        away, _, home = [s.strip() for s in mu.partition("@")]
+        team = m.group(1)
+        if "@" in mu and team:
+            if away == team or away.startswith(team) or team.startswith(away):
+                mk = "ml_away"
+            elif home == team or home.startswith(team) or team.startswith(home):
+                mk = "ml_home"
+    return (_safe_id(p.get("sport")).lower(), _safe_id(p.get("player_or_matchup")).lower(), mk)
 
 
 def _collapse_duplicate_wagers(history) -> int:

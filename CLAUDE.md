@@ -41,6 +41,28 @@ bpleone-site/
 
 ## Current deployment state (LIVE)
 
+- **2026-08-17 — WEEKEND AUDIT: settle-vocab bridge, {TEAM}_ML wagers, quota
+  torch, lock resilience.** Four connected fixes: (1) MLB game-line settling
+  could NEVER match Washington/Arizona/Athletics (substring match tolerates
+  prefixes like KC-in-KCR but not rewrites WSH/WSN, AZ/ARI, ATH/OAK) -- those
+  teams' picks silently aged into 'unsettleable' voids, wins and losses alike;
+  an abbrev bridge in the matcher settled 45 stuck picks incl. the 8/14 WSN
+  Alpha loss (graded honestly into v2's 3-4). (2) '{TEAM}_ML' (e.g. STL_ML)
+  is now graded AND canonicalized to ml_home/ml_away in _wager_key, so twin
+  vocab copies collapse instead of double-counting when both grade.
+  (3) THE QUOTA TORCH: multi_book_lines burned 3 paid Odds-API credits per
+  2-hour heartbeat (~36/day) on 8-book GAME lines the free ESPN feed already
+  covers -- August's reset quota fell to 4 credits in days. Now once-per-day
+  (sticky had_odds_api flag) + a global ODDS_DAILY_CAP=14 env in both
+  workflows (props 8 + multi-book 3 + pipeline enrich 3); paid props are dark
+  until Sept 1 (4 credits < RESERVE) and September's 500 survives.
+  (4) v2 lock resolution is dup-collapse-proof: dup-voided copies stay in the
+  ungated index, live copies win two-tier resolution, _lock_key canonicalizes
+  {TEAM}_ML, and _is_mlb_moneyline accepts ML_*/{TEAM}_ML/'HOME ML' vocabs --
+  a published pick day can no longer flip to NO PICK because its locked copy
+  got collapsed. Humanizers (tweet + page) render {TEAM}_ML as 'STL moneyline'.
+
+
 - **2026-08-14 — CASE-INSENSITIVE WAGER KEY (the third duplicate leak):**
   sharp_strong emits lowercase markets ('ml_away') while the boards emit
   'ML_AWAY' -- the case-sensitive _wager_key gave the same moneyline two

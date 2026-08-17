@@ -89,10 +89,15 @@ def _pick_line(p: Dict[str, Any], lead: str = "") -> str:
     tail = f" ({od})" if od else ""
     probtxt = f" · model {round(prob * 100)}%" if isinstance(prob, (int, float)) else ""
     m = str(p.get("market") or "").upper()
-    if m in ("ML_HOME", "ML_AWAY") and "@" in name:
-        away, _, home = [s.strip() for s in name.partition("@")]
-        side = home if m == "ML_HOME" else away
-        return f"{lead}{side} moneyline ({name}){tail}{probtxt}"
+    if "@" in name:
+        side = None
+        if m in ("ML_HOME", "ML_AWAY", "HOME ML", "AWAY ML"):
+            away, _, home = [s.strip() for s in name.partition("@")]
+            side = home if m in ("ML_HOME", "HOME ML") else away
+        elif m.endswith("_ML"):
+            side = m[:-3]     # '{TEAM}_ML' vocab (the copy the dup-collapse keeps)
+        if side:
+            return f"{lead}{side} moneyline ({name}){tail}{probtxt}"
     return f"{lead}{name} — {mk}{tail}{probtxt}"
 
 
@@ -136,9 +141,12 @@ def _yesterday_receipt(history: List[Dict[str, Any]], today: Optional[str]) -> O
         except (TypeError, ValueError):
             pass
         m = str(h.get("market") or "").upper()
-        if m in ("ML_HOME", "ML_AWAY") and "@" in name:
+        if "@" in name and (m in ("ML_HOME", "ML_AWAY", "HOME ML", "AWAY ML") or m.endswith("_ML")):
             away, _, home = [s.strip() for s in name.partition("@")]
-            side = home if m == "ML_HOME" else away
+            if m in ("ML_HOME", "ML_AWAY", "HOME ML", "AWAY ML"):
+                side = home if m in ("ML_HOME", "HOME ML") else away
+            else:
+                side = m[:-3]
             return f"{lead}: {side} moneyline ({name}) {mark}{put}"
         mk = _humanize_market(h.get("market"))
         return f"{lead}: {name} {mk} {mark}{put}"

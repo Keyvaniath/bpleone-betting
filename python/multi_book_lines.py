@@ -165,10 +165,24 @@ def _fetch_draftkings_mlb() -> Dict[str, Dict[str, Any]]:
     return out
 
 
+def _paid_fetch_already_today() -> bool:
+    """ONCE-PER-DAY guard (2026-08-17): this module runs in the 2-hour heartbeat,
+    so its 3-credit Odds-API call fired ~12x/day and burned ~36 paid credits
+    daily on 8-book GAME lines -- data the free ESPN feed already refreshes in
+    the same heartbeat. That torched the August quota to 4 credits in days.
+    The paid multi-book snapshot adds line-shop depth; once a day is plenty."""
+    prev = _load(OUT)
+    if str(prev.get("generated_at", ""))[:10] != dt.date.today().isoformat():
+        return False
+    return bool(prev.get("had_odds_api"))
+
+
 def _fetch_odds_api_mlb() -> Dict[str, Dict[str, Any]]:
     """Fetch from The Odds API if key set. Returns dict by matchup key."""
     key = os.environ.get("ODDS_API_KEY")
     if not key or not _budget_ok(3): return {}
+    if _paid_fetch_already_today():
+        return {}
     url = f"{ODDS_API_URL}?apiKey={key}&regions=us&markets=h2h,spreads,totals&oddsFormat=american"
     data = _http(url, timeout=12)
     if not data or not isinstance(data, list): return {}
@@ -369,11 +383,15 @@ def run() -> Dict[str, Any]:
         "generated_at": dt.datetime.utcnow().isoformat(timespec="seconds"),
         "n_games": len(rows),
         "n_books_polled": len({b for r in rows for b in r["books"].keys()}),
+        # Sticky same-day flag: the once-per-day paid-fetch guard reads this, so
+        # a later heartbeat that (correctly) skipped the paid call must not
+        # reset it and re-trigger spending on the next run.
+        "had_odds_api": bool(odds_api) or _paid_fetch_already_today(),
         "sources_used": [
             ("DraftKings", "live" if dk else "blocked (geo)"),
             ("ESPN scoreboard", "live" if espn else "empty"),
             ("Bovada", "live" if bovada else "empty"),
-            ("OddsAPI", "live" if odds_api else "skipped (no key)"),
+            ("OddsAPI", "live" if odds_api else "skipped (quota-guarded or no key)"),
         ],
         "rows": rows,
         "n_arbitrage_found": len(arbs),
