@@ -1,8 +1,8 @@
 # EdgeStat Daily Summary — 2026-08-17
 
-## 🏥 Model Health: 66.9/100 [OK]
+## 🏥 Model Health: 67.0/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.4/100
+  - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 0/100
   - 🔴 Brier Trend: 34.9/100
   - 🟢 Pipeline Audit: 100.0/100
@@ -10,16 +10,16 @@
   - 🟢 Edge Count: 100/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.577)
-- **Total games on board:** 172
-- **Strong home favorites:** 9 | **Strong road dogs:** 0
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.578)
+- **Total games on board:** 173
+- **Strong home favorites:** 10 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
-1. **STL @ CIN YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-2. **OAK @ KCR YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-3. **LAD @ COL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-4. **CHW @ CHC YRFI (1st-inning OVER 0.5)** (78/100 ★★★★)
-5. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
+1. **OAK @ KCR YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+2. **LAD @ COL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+3. **CHW @ CHC YRFI (1st-inning OVER 0.5)** (78/100 ★★★★)
+4. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
+5. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -56,8 +56,8 @@
 - Hot teams: **4** | Cold teams: **3** | Over-heavy: 0 | Under-heavy: 7
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (48)
-- STEAM_MOVE: **43**
+## ⚠️ Anomaly Detector (50)
+- STEAM_MOVE: **45**
 - COMPOUND_BULLPEN: **4**
 - PEN_MISMATCH: **1**
   - MIL @ LAD (MLB): ML steam since open: ML -16.7pp toward MIL (11 snapshots)
@@ -68,10 +68,10 @@
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$0.27**
-  - #1 [NRFI] $50 on STL @ CIN YRFI (1st-inning OVER 0.5) (P=73%)
-  - #2 [NRFI] $50 on OAK @ KCR YRFI (1st-inning OVER 0.5) (P=69%)
-  - #3 [NRFI] $50 on LAD @ COL YRFI (1st-inning OVER 0.5) (P=68%)
+- Expected EV: **$-5.77**
+  - #1 [NRFI] $50 on OAK @ KCR YRFI (1st-inning OVER 0.5) (P=69%)
+  - #2 [NRFI] $50 on LAD @ COL YRFI (1st-inning OVER 0.5) (P=68%)
+  - #3 [NRFI] $35 on CHW @ CHC YRFI (1st-inning OVER 0.5) (P=64%)
   - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 

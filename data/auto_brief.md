@@ -1,26 +1,27 @@
 # Tonight's Slate Brief — 2026-08-17
 
-## Slate Quality: 57/100 (MEDIUM)
-_4% lineups confirmed · 9 rookie SPs_
+## Slate Quality: 58/100 (MEDIUM)
+_9% lineups confirmed · 10 rookie SPs_
 **Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
 - **11 games** scheduled
 - **43 best bets** scored: 18 DK · 0 PP · 9 NRFI · 0 SGP
-- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$35.69
-- **MC simulation:** EV +$87.27, 79% P(profit), p05 $-119.65 / p95 $259.0
+- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$31.23
+- **MC simulation:** EV +$65.97, 73% P(profit), p05 $-121.85 / p95 $239.01
 
 ## Top 5 Best Bets
-1. **STL @ CIN YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +27.1%)
-   - P(YRFI) 73.1% vs baseline 46.0%
-2. **OAK @ KCR YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +23.0%)
+1. **OAK @ KCR YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +23.0%)
    - P(YRFI) 69.0% vs baseline 46.0%
-3. **LAD @ COL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +22.5%)
+2. **LAD @ COL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +22.5%)
    - P(YRFI) 68.5% vs baseline 46.0%
-4. **CHW @ CHC YRFI (1st-inning OVER 0.5)**  (78/100 ****, edge +18.4%)
+3. **CHW @ CHC YRFI (1st-inning OVER 0.5)**  (78/100 ****, edge +18.4%)
    - P(YRFI) 64.4% vs baseline 46.0%
-5. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
+4. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
    - Player prop quality score 1.1935
+   - Elite player
+5. **LOL ShowMaker OVER 3.5 Kills**  (78/100 ****, edge —)
+   - Player prop quality score 1.1892
    - Elite player
 
 ## ⚠️ Trap Warnings — 22 flagged
@@ -47,7 +48,7 @@ Pittsburgh Pirates, San Diego Padres, San Francisco Giants, St. Louis Cardinals,
 _Lean late-inning OVER on these games; fade their save situations._
 
 ## NRFI/YRFI strong leans
-- **YRFI** (1st-inning OVER): STL @ CIN, OAK @ KCR, LAD @ COL, CHW @ CHC, STL @ CIN
+- **YRFI** (1st-inning OVER): OAK @ KCR, LAD @ COL, CHW @ CHC, STL @ CIN, BAL @ TBR
 
 ## NBA -- PRESEASON
 - Miami Heat @ Toronto Raptors (0-0 vs 0-0)  | P(home) 55.0% fair -122 | Scheduled
@@ -67,12 +68,12 @@ _Lean late-inning OVER on these games; fade their save situations._
 - Kiwoom Heroes @ Lotte Giants | P(home) 61.5% fair -160 | total 10 R
 - **KBO POD:** LG Twins ML vs KT Wiz (KBO) (HIGH)
 
-## LoL Esports -- 0 live, 16 upcoming
-- [LEC] Team Heretics vs Natus Vincere BO3 | P(A) 46.9% fair +113/-113
-- [NLC] Brod & Friends vs DMG Esports BO3 | P(A) 50.8% fair -103/+103
+## LoL Esports -- 2 live, 13 upcoming
+- [NLC] DMG Esports vs Brod & Friends BO3 | P(A) 49.2% fair +103/-103
+- [LEC] Karmine Corp vs GIANTX BO3 | P(A) 67.0% fair -203/+203
 - [NLC] Bulldog Esports vs Lund Esports Organization BO3 | P(A) 49.8% fair +101/-101
-- [LEC] GIANTX vs Karmine Corp BO3 | P(A) 33.0% fair +203/-203
 - [NLC] Lundqvist Lightside vs VES BO3 | P(A) 46.5% fair +115/-115
+- [LCK Challengers] DNS Challengers vs NS Challengers BO3 | P(A) 54.4% fair -119/+119
 - **LoL POT:** WeiboGaming ML vs Suzhou LNG Esports (LPL, BO3) (HIGH)
 
 ## Player Play of the Day -- across all sports (3491 candidates scanned)
