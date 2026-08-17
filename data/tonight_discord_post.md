@@ -1,5 +1,5 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:8 F:48
+_NO_ACTION_NIGHT_ | L:0 S:8 F:46
 
 :dart: **Top Picks:**
 1. [GOLF] Scottie Scheffler -- Scottie Scheffler (PLAYER_STRONG)

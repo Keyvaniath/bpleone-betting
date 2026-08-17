@@ -1,13 +1,13 @@
 # EdgeStat Daily Summary — 2026-08-17
 
-## 🏥 Model Health: 64.5/100 [OK]
+## 🏥 Model Health: 66.9/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.9/100
+  - 🟢 Calibration Freshness: 99.4/100
   - 🔴 Hit Rate Trend: 0/100
-  - 🔴 Brier Trend: 33.9/100
+  - 🔴 Brier Trend: 34.9/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 100.0/100
-  - 🟡 Edge Count: 77.1/100
+  - 🟢 Edge Count: 100/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.577)
@@ -56,10 +56,10 @@
 - Hot teams: **4** | Cold teams: **3** | Over-heavy: 0 | Under-heavy: 7
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (54)
+## ⚠️ Anomaly Detector (48)
 - STEAM_MOVE: **43**
-- COMPOUND_BULLPEN: **6**
-- PEN_MISMATCH: **5**
+- COMPOUND_BULLPEN: **4**
+- PEN_MISMATCH: **1**
   - MIL @ LAD (MLB): ML steam since open: ML -16.7pp toward MIL (11 snapshots)
   - KCR @ LAA (MLB): ML/TOTAL steam since open: ML -11.0pp toward KCR; total +0.5 (OVER) (4 snapshots)
   - CHI @ SEA (WNBA): TOTAL steam since open: ML -1.9pp toward CHI; total +2 (OVER) (4 snapshots)

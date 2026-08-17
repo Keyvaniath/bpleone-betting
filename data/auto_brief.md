@@ -1,7 +1,7 @@
 # Tonight's Slate Brief — 2026-08-17
 
-## Slate Quality: 55/100 (MEDIUM)
-_0% lineups confirmed · 8 rookie SPs_
+## Slate Quality: 57/100 (MEDIUM)
+_4% lineups confirmed · 9 rookie SPs_
 **Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate

@@ -4,14 +4,14 @@
 
 _Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
 
-_Generated at 2026-08-17T13:45:24 UTC. Game lines source: **placeholder -110 (no real book today)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-08-17T14:32:44 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
-**LAD @ COL - LAD_ML**
-- Market: +100
-- Model probability: 94.8%
-- Raw edge: +89.7%
+**OAK @ KCR - OVER_9.0**
+- Market: -110
+- Model probability: 80.3%
+- Raw edge: +53.38%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
@@ -20,35 +20,35 @@ _Generated at 2026-08-17T13:45:24 UTC. Game lines source: **placeholder -110 (no
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 1:40p ET | STL @ CIN | Great American Ball Park | 85F 5mph | OVER_8.5 +37.85% |
-| 6:40p ET | STL @ CIN | Great American Ball Park | 85F 5mph | OVER_8.5 +34.79% |
-| 6:05p ET | BAL @ TBR | Tropicana Field | indoor | TBR_ML +23.55% |
-| 6:40p ET | MIA @ PHI | Citizens Bank Park | 78F 3mph | PHI_ML +14.12% |
-| 7:05p ET | DET @ PIT | PNC Park | 72F 2mph | OVER_8.5 +2.69% |
-| 7:10p ET | ARI @ BOS | Fenway Park | 68F 3mph | OVER_8.5 +28.48% |
-| 7:10p ET | SDP @ NYM | Citi Field | 74F 5mph | UNDER_8.5 +18.86% |
-| 7:40p ET | OAK @ KCR | Kauffman Stadium | 79F 6mph | OVER_8.5 +61.67% |
-| 7:40p ET | ATL @ MIN | Target Field | 73F 5mph | OVER_8.5 +37.93% |
-| 8:05p ET | CHW @ CHC | Wrigley Field | 66F 5mph | OVER_8.5 +42.54% |
-| 8:40p ET | LAD @ COL | Coors Field | 77F 3mph | LAD_ML +89.7% |
+| 1:40p ET | STL @ CIN | Great American Ball Park | 85F 5mph | OVER_9.0 +12.63% |
+| 6:40p ET | STL @ CIN | Great American Ball Park | 85F 5mph | OVER_9.0 +16.05% |
+| 6:05p ET | BAL @ TBR | Tropicana Field | indoor | OVER_7.5 +7.53% |
+| 6:40p ET | MIA @ PHI | Citizens Bank Park | 78F 3mph | MIA_ML +26.7% |
+| 7:05p ET | DET @ PIT | PNC Park | 72F 2mph | OVER_8.0 +15.33% |
+| 7:10p ET | ARI @ BOS | Fenway Park | 68F 3mph | OVER_9.0 +16.61% |
+| 7:10p ET | SDP @ NYM | Citi Field | 74F 5mph | UNDER_8.0 +5.57% |
+| 7:40p ET | OAK @ KCR | Kauffman Stadium | 79F 6mph | OVER_9.0 +53.38% |
+| 7:40p ET | ATL @ MIN | Target Field | 73F 5mph | OVER_9.0 +26.72% |
+| 8:05p ET | CHW @ CHC | Wrigley Field | 66F 5mph | OVER_8.0 +51.55% |
+| 8:40p ET | LAD @ COL | Coors Field | 77F 3mph | OVER_10.5 +31.65% |
 
 ## Parlays - top 5
 
-- **2-leg @ +282 (prob 38.7%, EV +47.72%)**
-  - STL @ CIN STL_ML (+100, model 62.1%)
-  - SDP @ NYM UNDER_8.5 (-110, model 62.3%)
-- **2-leg @ +264 (prob 40.3%, EV +46.86%)**
-  - BAL @ TBR TBR_ML (-110, model 64.7%)
-  - SDP @ NYM UNDER_8.5 (-110, model 62.3%)
-- **2-leg @ +480 (prob 24.8%, EV +43.98%)**
+- **2-leg @ +264 (prob 37.7%, EV +37.44%)**
+  - MIA @ PHI OVER_8.0 (-110, model 61.7%)
+  - ARI @ BOS OVER_9.0 (-110, model 61.1%)
+- **2-leg @ +264 (prob 37.5%, EV +36.79%)**
+  - STL @ CIN OVER_9.0 (-110, model 60.8%)
+  - MIA @ PHI OVER_8.0 (-110, model 61.7%)
+- **2-leg @ +454 (prob 24.7%, EV +36.56%)**
   - Corbin Carroll UNDER 0.5 batter_hits (+190, model 40.0%)
-  - STL @ CIN STL_ML (+100, model 62.1%)
-- **2-leg @ +454 (prob 25.9%, EV +43.15%)**
-  - Corbin Carroll UNDER 0.5 batter_hits (+190, model 40.0%)
-  - BAL @ TBR TBR_ML (-110, model 64.7%)
-- **2-leg @ +282 (prob 37.1%, EV +41.84%)**
-  - STL @ CIN STL_ML (+100, model 62.1%)
-  - MIA @ PHI PHI_ML (-110, model 59.8%)
+  - MIA @ PHI OVER_8.0 (-110, model 61.7%)
+- **2-leg @ +264 (prob 37.3%, EV +35.93%)**
+  - MIA @ PHI OVER_8.0 (-110, model 61.7%)
+  - DET @ PIT OVER_8.0 (-110, model 60.4%)
+- **2-leg @ +264 (prob 37.1%, EV +35.33%)**
+  - STL @ CIN OVER_9.0 (-110, model 60.8%)
+  - ARI @ BOS OVER_9.0 (-110, model 61.1%)
 
 ## Self-Learning Loop
 
@@ -72,7 +72,7 @@ Cumulative graded plays: 8746. Wins: 3288. Hit rate: 37.6%.
 | MIA @ PHI | 58.4% | -140 | 2.72 | +114 | -114 |
 | OAK @ KCR | 31.0% | +223 | 5.71 | -151 | +151 |
 | SDP @ NYM | 44.1% | +127 | 3.96 | +143 | -143 |
-| STL @ CIN | 36.7% | +173 | 5.11 | +202 | -202 |
+| STL @ CIN | 45.8% | +119 | 3.98 | +242 | -242 |
 
 ## Travel / Rest Flags
 
@@ -98,7 +98,7 @@ Cumulative graded plays: 8746. Wins: 3288. Hit rate: 37.6%.
 
 ## Loop Activity (since last refresh)
 
-- Confidence delta: **-0.1**
+- Confidence delta: **+0.0**
 
 ## Model Recommendations (operator review)
 

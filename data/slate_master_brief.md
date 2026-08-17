@@ -1,13 +1,13 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-08-17T13:45:12 UTC_
+_Generated 2026-08-17T14:32:31 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -16
+- **Score:** -14
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
 - **Total STRONG:** 8
-- **Total FADES:** 48
+- **Total FADES:** 46
 
 ## Top 5 Curated Picks
 1. **GOLF / Scottie Scheffler** (GOLF_PLAYER, score=219.29)
@@ -40,9 +40,9 @@ _Generated 2026-08-17T13:45:12 UTC_
   - Fade angle: team total UNDER
 - **NBA** / TOR (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NHL** / connor hellebuyck (GOALIE_FADE)
+- **NHL** / joseph woll (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / stuart skinner (GOALIE_FADE)
+- **NHL** / logan thompson_2 (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / marc-andre fleury (GOALIE_FADE)
+- **NHL** / jake oettinger (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
