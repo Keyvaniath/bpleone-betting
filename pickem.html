@@ -265,6 +265,17 @@ fetch("data/pickem.json", { cache: "no-cache" })
   .then(r => r.json())
   .then(payload => {
     state.all = payload.props || [];
+    // Honest dark-feed state: PrizePicks has hard-blocked our fetcher since
+    // 2026-07-09 (bot wall). An empty board gets the real why, not a shrug.
+    if (!state.all.length) {
+      document.getElementById("ppList").innerHTML =
+        `<p class="empty" style="font-style:normal;line-height:1.7;">The PrizePicks feed is <b>dark</b> — their bot-protection began hard-blocking
+        our fetcher on 2026-07-09, and we don't masquerade as a browser to get around it
+        (<a href="data-sources.html" style="color:#7fb0e8;">how we fetch</a>).
+        The board returns automatically if the public feed reopens or a licensed props source is wired.
+        The soft-line families' settled history is preserved in the
+        <a href="track-record.html" style="color:#7fb0e8;">track record</a>.</p>`;
+    }
     setMetric("raw", payload.raw_pp_props ?? "--");
     setMetric("modeled", payload.modeled_props ?? "--");
     setMetric("qualifies", state.all.filter(p =>
@@ -274,7 +285,7 @@ fetch("data/pickem.json", { cache: "no-cache" })
     setMetric("refresh", (payload.generated_at || "").slice(11, 16));
     document.getElementById("pickemRefreshed").textContent =
       payload.generated_at ? `refreshed ${payload.generated_at.replace("T", " ")} UTC` : "";
-    renderList();
+    if (state.all.length) renderList();   // keep the dark-feed banner when the board is empty
     document.getElementById("filterMarket").addEventListener("change", e => { state.market = e.target.value; renderList(); });
     document.getElementById("filterProb").addEventListener("change", e => { state.prob = parseFloat(e.target.value); renderList(); });
     document.getElementById("filterAdv").addEventListener("change", e => { state.adv = e.target.value; renderList(); });
