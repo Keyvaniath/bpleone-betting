@@ -41,6 +41,26 @@ bpleone-site/
 
 ## Current deployment state (LIVE)
 
+- **2026-08-18 (late) — PROVENANCE LAYER + attribution audit:** every headline
+  number now shows its why/how/source. (1) Alpha v2 gate emits a `why` chain
+  (raw prob -> family n/realized/shift -> implied prob -> edge vs the +2% bar);
+  alpha-pick.html renders it on today's pick; methodology.html#alpha-v2
+  documents the 4-step rule with the lock file linked. AUDIT CATCH: the
+  '{TEAM}_ML' vocab never reached prob_calibration's family map, so those picks
+  were gated on the RAW prob with zero family evidence -- _market_for_cal() in
+  alpha_pick_record canonicalizes to ML_AWAY/ML_HOME before every calibration
+  call (history + record_v2 verified byte-identical; forward days now carry
+  real family evidence). (2) DFS provenance: mlb_dfs rows carry sample+mlb.com
+  link; nfl_dfs + nfl_player_projections rows carry gp_2025/espn_id + espn.com
+  link; all three pages render them. (3) STALE-ATTRIBUTION SWEEP: 'Bovada'
+  claims corrected on book-edges/top-edges/index/game (lines are DK via ESPN's
+  free feed since 2026-06); book_vs_model_team stamps line_source
+  (espn_dk|matchups_snapshot) on every edge row. props.html banner corrected
+  (was: '401'; truth: valid key, quota spent, resumes ~Sept 1) and pickem.html
+  explains the PP bot-wall dark state instead of an empty grid.
+  data-sources.html rebuilt: every feed w/ URL + cadence + the honest-UA
+  policy + direct links to the public JSON artifacts.
+
 - **2026-08-18 — MLB DFS DAILY RECEIPTS:** mlb_dfs_receipts.py ->
   data/mlb_dfs_receipts.json -> the "Daily Lineup Receipts" card on
   mlb-dfs.html. MLB slates run daily, so this grades the published optimal
