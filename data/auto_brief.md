@@ -1,14 +1,14 @@
-# Tonight's Slate Brief — 2026-08-17
+# Tonight's Slate Brief — 2026-08-18
 
-## Slate Quality: 58/100 (MEDIUM)
-_9% lineups confirmed · 10 rookie SPs_
-**Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
+## Slate Quality: 54/100 (LOW)
+_0% lineups confirmed · 11 rookie SPs_
+**Recommendation:** Defensive sizing tonight; stick to highest-confidence plays.
 
 ## Slate
-- **11 games** scheduled
-- **43 best bets** scored: 18 DK · 0 PP · 9 NRFI · 0 SGP
+- **15 games** scheduled
+- **23 best bets** scored: 0 DK · 0 PP · 7 NRFI · 0 SGP
 - **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$31.23
-- **MC simulation:** EV +$65.97, 73% P(profit), p05 $-121.85 / p95 $239.01
+- **MC simulation:** EV +$59.02, 73% P(profit), p05 $-112.8 / p95 $209.02
 
 ## Top 5 Best Bets
 1. **OAK @ KCR YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +23.0%)
@@ -24,31 +24,31 @@ _9% lineups confirmed · 10 rookie SPs_
    - Player prop quality score 1.1892
    - Elite player
 
-## ⚠️ Trap Warnings — 22 flagged
-- **Corbin Carroll UNDER 0.5 batter hits** (high):
-   - Edge +15.8% looks big but only 0 settled props on this player — model unproven
-   - Batter heating up: heating up: 0.919 ops recent vs 0.834 season (+0.085)
-- **Ryan Waldschmidt OVER 0.5 batter hits** (high):
-   - Edge +9.6% looks big but only 0 settled props on this player — model unproven
-   - Batter cooling: cooling: 0.591 ops recent vs 0.718 season (-0.127)
-- **Bryson Stott UNDER 0.5 batter hits** (high):
-   - Edge +8.4% looks big but only 0 settled props on this player — model unproven
-   - Batter heating up: heating up: 1.022 ops recent vs 0.759 season (+0.263)
-- **Chandler Simpson UNDER 1.5 batter total bases** (high):
-   - Edge +8.4% looks big but only 0 settled props on this player — model unproven
-   - Batter heating up: heating up: 0.887 ops recent vs 0.704 season (+0.183)
-- **Kyle Schwarber UNDER 0.5 batter hits** (low):
-   - Edge +27.8% looks big but only 0 settled props on this player — model unproven
+## ⚠️ Trap Warnings — 7 flagged
+- **OAK @ KCR YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +23.0% looks big but only 0 settled props on this player — model unproven
+- **LAD @ COL YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +22.5% looks big but only 0 settled props on this player — model unproven
+- **CHW @ CHC YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +18.4% looks big but only 0 settled props on this player — model unproven
+- **ARI @ BOS NRFI (no run 1st inning)** (low):
+   - Edge +11.9% looks big but only 0 settled props on this player — model unproven
+- **DET @ PIT YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +10.6% looks big but only 0 settled props on this player — model unproven
+
+## Weather leans
+- **OVER lean** (wind out + warm): OAK @ KCR
 
 ## Hot streaks
-**Batters heating up:** Rafael Flores (heat +3.58), Corbin Carroll (heat +2.25), Gunnar Henderson (heat +1.86)
+**Batters heating up:** Alex Bregman (heat +5.69), Christian Encarnacion-Strand (heat +4.65), Pete Crow-Armstrong (heat +4.60)
 
 ## Bullpens GASSED tonight
 Pittsburgh Pirates, San Diego Padres, San Francisco Giants, St. Louis Cardinals, Tampa Bay Rays, Texas Rangers, Toronto Blue Jays, Minnesota Twins
 _Lean late-inning OVER on these games; fade their save situations._
 
 ## NRFI/YRFI strong leans
-- **YRFI** (1st-inning OVER): OAK @ KCR, LAD @ COL, CHW @ CHC, STL @ CIN, BAL @ TBR
+- **YRFI** (1st-inning OVER): OAK @ KCR, LAD @ COL, CHW @ CHC, DET @ PIT
+- **NRFI** (1st-inning UNDER): ARI @ BOS
 
 ## NBA -- PRESEASON
 - Miami Heat @ Toronto Raptors (0-0 vs 0-0)  | P(home) 55.0% fair -122 | Scheduled
@@ -61,22 +61,22 @@ _Lean late-inning OVER on these games; fade their save situations._
 - Chicago Blackhawks @ Minnesota Wild (0-0-0 vs 0-0-0)  | P(home) 52.9% fair -112 | Scheduled
 
 ## KBO -- 2026 Korean Baseball
-- KIA Tigers @ Hanwha Eagles | P(home) 31.7% fair +215 | total 9 R
-- KT Wiz @ LG Twins | P(home) 61.1% fair -157 | total 9 R
-- Doosan Bears @ NC Dinos | P(home) 47.9% fair +109 | total 9 R
-- SSG Landers @ Samsung Lions | P(home) 56.8% fair -132 | total 9 R
-- Kiwoom Heroes @ Lotte Giants | P(home) 61.5% fair -160 | total 10 R
+- KIA Tigers @ Hanwha Eagles | P(home) 35.2% fair +184 | total 10 R
+- KT Wiz @ LG Twins | P(home) 59.6% fair -147 | total 10 R
+- Doosan Bears @ NC Dinos | P(home) 47.2% fair +112 | total 10 R
+- SSG Landers @ Samsung Lions | P(home) 54.8% fair -121 | total 10 R
+- Kiwoom Heroes @ Lotte Giants | P(home) 58.3% fair -140 | total 10 R
 - **KBO POD:** LG Twins ML vs KT Wiz (KBO) (HIGH)
 
-## LoL Esports -- 2 live, 13 upcoming
-- [NLC] DMG Esports vs Brod & Friends BO3 | P(A) 49.2% fair +103/-103
-- [LEC] Karmine Corp vs GIANTX BO3 | P(A) 67.0% fair -203/+203
-- [NLC] Bulldog Esports vs Lund Esports Organization BO3 | P(A) 49.8% fair +101/-101
-- [NLC] Lundqvist Lightside vs VES BO3 | P(A) 46.5% fair +115/-115
+## LoL Esports -- 0 live, 12 upcoming
 - [LCK Challengers] DNS Challengers vs NS Challengers BO3 | P(A) 54.4% fair -119/+119
+- [PCS] Frank Esports vs CTBC Flying Oyster Academy BO3 | P(A) 49.6% fair +102/-102
+- [LCK Challengers] Gen.G Global Academy vs BRO Challengers BO3 | P(A) 45.0% fair +122/-122
+- [LCK Challengers] kt Challengers vs T1 Esports Academy BO3 | P(A) 41.7% fair +140/-140
+- [LCK Challengers] HLE Challengers vs BNK FEARX Youth BO3 | P(A) 42.8% fair +134/-134
 - **LoL POT:** WeiboGaming ML vs Suzhou LNG Esports (LPL, BO3) (HIGH)
 
-## Player Play of the Day -- across all sports (3491 candidates scanned)
+## Player Play of the Day -- across all sports (3486 candidates scanned)
 - **[LOL]** Inspired UNDER 3.5 Kills | model 61.7% fair -161 (ELITE)
 - **[LOL]** ShowMaker OVER 3.5 Kills | model 62.5% fair -167 (ELITE)
 - **[LOL]** Peyz OVER 4.5 Kills | model 61.3% fair -158 (ELITE)

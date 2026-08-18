@@ -1,18 +1,18 @@
-# EdgeStat Daily Summary — 2026-08-17
+# EdgeStat Daily Summary — 2026-08-18
 
-## 🏥 Model Health: 67.0/100 [OK]
+## 🏥 Model Health: 65.1/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 100.0/100
+  - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 0/100
   - 🔴 Brier Trend: 34.9/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 100.0/100
+  - 🟢 Data Health: 90.9/100
   - 🟢 Edge Count: 100/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.573)
-- **Total games on board:** 99
-- **Strong home favorites:** 10 | **Strong road dogs:** 0
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.571)
+- **Total games on board:** 98
+- **Strong home favorites:** 9 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
 1. **OAK @ KCR YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
@@ -53,11 +53,11 @@
 - [MLS] **FC Cincinnati** HOME (1-1 L10) · model 65.1% fair -187
 
 ## 🔥/❄️ Heat / Cold Signals
-- Hot teams: **4** | Cold teams: **3** | Over-heavy: 0 | Under-heavy: 7
+- Hot teams: **4** | Cold teams: **3** | Over-heavy: 0 | Under-heavy: 4
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (52)
-- STEAM_MOVE: **47**
+## ⚠️ Anomaly Detector (48)
+- STEAM_MOVE: **43**
 - COMPOUND_BULLPEN: **4**
 - PEN_MISMATCH: **1**
   - MIL @ LAD (MLB): ML steam since open: ML -16.7pp toward MIL (11 snapshots)
@@ -83,12 +83,12 @@
   - [HIGH] FC Dallas @ Real Salt Lake : 3 signals (PREGAME, ATS, ATS)
   - [MED] New York City FC @ FC Cincinnati : 2 signals (PREGAME, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (6)
+## ⚾ Top MLB Pitcher K Plays (5)
 - **Cristopher Sánchez** OVER 5.5 K (77%) fair -328
 - **Blake Snell** OVER 5.5 K (76%) fair -314
 - **Carmen Mlodzinski** OVER 5.5 K (71%) fair -240
 - **Nolan McLean** OVER 5.5 K (65%) fair -184
-- **Brandon Young** OVER 4.5 K (64%) fair -180
+- **Shota Imanaga** OVER 4.5 K (60%) fair -151
 
 ## 🏀 NBA Player Heat (2 HOT / 1 COLD)
   - 🔥 **Scottie Barnes** (TOR): L5 24.4/7.6/9.6 vs season 18.6/5.8/8.8 [PTS +5.8]
@@ -96,8 +96,8 @@
   - ❄️ **Brandon Ingram** (TOR): L5 12.0 vs season 19.1 [PTS -7.1] -- FADE OVER props
 
 ## 🥊 UFC Fight Matchups (Dana White's Contender Series: Season 10, Week 2)
-  - [LEAN] **Trent Miller** (8-3-0) vs Douglas Rodrigues -- fair -171
   - [LEAN] **Taner Trembley** (7-0-0) vs Roman Puga -- fair -147
+  - [COIN_FLIP] **Douglas Rodrigues** (7-1-0) vs Trent Miller -- fair -130
   - [COIN_FLIP] **Namo Fazil** (10-1-0) vs Kaik Brito -- fair -120
   - [COIN_FLIP] **Mahamed Aly** (5-1-0) vs Alik Lorenz -- fair -114
   - [COIN_FLIP] **Logan Paxton** (10-1-0) vs Cristian Pérez -- fair -102
@@ -112,17 +112,17 @@
   - ❄️ **Sungjae Im** (South Korea): Sunday +5.8 vs tourney avg
   - ❄️ **Brian Harman** (USA): Sunday +5.5 vs tourney avg
 
-## 🔥 MLB Batter Heat (48 HOT / 61 COLD)
+## 🔥 MLB Batter Heat (44 HOT / 63 COLD)
+  - 🔥 **Jac Caglianone** (KC): L14 .444 / season .276 (+168pts)
   - 🔥 **Victor Robles** (SEA): L14 .429 / season .264 (+165pts)
-  - 🔥 **Alec Bohm** (PHI): L14 .396 / season .242 (+154pts)
-  - 🔥 **Pete Alonso** (BAL): L14 .404 / season .265 (+139pts)
+  - 🔥 **Pete Alonso** (BAL): L14 .412 / season .267 (+145pts)
   - 🔥 **Cam Smith** (HOU): L14 .362 / season .223 (+139pts)
-  - 🔥 **Jac Caglianone** (KC): L14 .407 / season .272 (+135pts)
+  - 🔥 **Randal Grichuk** (CWS): L14 .412 / season .277 (+135pts)
   - ❄️ **Ben Rice** (NYY): L14 .102 / season .251 (-149pts) -- FADE props
   - ❄️ **Heliot Ramos** (NYY): L14 .106 / season .244 (-138pts) -- FADE props
-  - ❄️ **Carlos Cortes** (ATH): L14 .125 / season .260 (-135pts) -- FADE props
   - ❄️ **Garrett Mitchell** (MIL): L14 .114 / season .249 (-135pts) -- FADE props
   - ❄️ **Jesús Sánchez** (TOR): L14 .138 / season .261 (-123pts) -- FADE props
+  - ❄️ **Jeremy Peña** (HOU): L14 .167 / season .288 (-121pts) -- FADE props
 
 ## 📈 Streak Regression Alerts (3)
 - [WNBA] Golden State Valkyries on W4 L10 4-0 -- Golden State Valkyries on W4 -- no historical sample
@@ -140,6 +140,6 @@
 - ELITE: **0** · HEALTHY: 0 · OK: 0 · DEGRADED: **2**
 
 ## 🤖 Self-Training Status
-- **WNBA**: n=40 games · hit rate 62.5% · bias -5.0pp [calibration applied]
+- **WNBA**: n=38 games · hit rate 65.8% · bias -4.9pp [calibration applied]
 - **MLS**: n=32 games · hit rate 53.1% · bias -9.1pp [calibration applied]
-- **MLB**: n=187 games · hit rate 50.8% · bias +0.8pp
+- **MLB**: n=190 games · hit rate 52.6% · bias -0.9pp

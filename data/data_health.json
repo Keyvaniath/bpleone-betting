@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-08-18T04:49:40",
+  "generated_at": "2026-08-18T05:17:29",
   "overall": "yellow",
-  "n_green": 9,
-  "n_yellow": 2,
+  "n_green": 10,
+  "n_yellow": 1,
   "n_red": 0,
   "checks": [
     {
@@ -13,29 +13,29 @@
       ],
       "n_stale": 0,
       "ages_h": {
-        "today.json": 6.3,
+        "today.json": 0.0,
         "ledger_summary.json": 0.0,
-        "sport_coverage.json": 6.4,
-        "todays_top_plays.json": 6.4,
-        "alpha_pick_of_day.json": 6.4,
-        "alerts_feed.json": 1.6,
-        "calibration_map.json": 6.5,
-        "espn_odds.json": 1.6
+        "sport_coverage.json": 0.0,
+        "todays_top_plays.json": 0.0,
+        "alpha_pick_of_day.json": 0.0,
+        "alerts_feed.json": 0.3,
+        "calibration_map.json": 0.1,
+        "espn_odds.json": 0.0
       }
     },
     {
       "feed": "mlb",
-      "status": "yellow",
+      "status": "green",
       "findings": [
-        "today.json count off: local=9 vs upstream pre-game=15 (total=15, live=0, final=0)"
+        "15 total (15 pre / 0 live / 0 final), local pre=15, live=0"
       ],
       "upstream_count": 15,
       "upstream_pregame": 15,
       "upstream_live": 0,
       "upstream_final": 0,
-      "local_count": 9,
+      "local_count": 15,
       "local_live": 0,
-      "live_state_age_min": 0
+      "live_state_age_min": 9
     },
     {
       "feed": "nba",
@@ -46,7 +46,7 @@
       "upstream_count": 1,
       "local_count": 1,
       "upstream_live": 0,
-      "local_age_min": 0
+      "local_age_min": 6
     },
     {
       "feed": "wnba",
@@ -57,7 +57,7 @@
       "upstream_count": 1,
       "local_count": 1,
       "upstream_live": 0,
-      "local_age_min": 0
+      "local_age_min": 9
     },
     {
       "feed": "nhl",
@@ -68,7 +68,7 @@
       "upstream_count": 7,
       "local_count": 7,
       "upstream_live": 0,
-      "local_age_min": 0
+      "local_age_min": 6
     },
     {
       "feed": "mls",
@@ -79,7 +79,7 @@
       "upstream_count": 15,
       "local_count": 15,
       "upstream_live": 0,
-      "local_age_min": 0
+      "local_age_min": 9
     },
     {
       "feed": "epl",
@@ -90,27 +90,28 @@
       "upstream_count": 1,
       "local_count": 1,
       "upstream_live": 0,
-      "local_age_min": 0
+      "local_age_min": 9
     },
     {
       "feed": "pitcher_matchup",
-      "status": "yellow",
+      "status": "green",
       "findings": [
-        "only 0/28 pre-game probables in local",
-        "missing: ['Andrew Abbott', 'Braxton Ashcraft', 'Bryce Miller']..."
+        "28/28 pre-game probables matched"
       ],
       "upstream_count": 28,
-      "local_count": 18,
-      "matched": 0
+      "local_count": 29,
+      "matched": 28
     },
     {
       "feed": "props",
-      "status": "green",
+      "status": "yellow",
       "findings": [
-        "0 props across 4 games"
+        "Odds key VALID but quota EXHAUSTED (4 left) -- the key works, there's just no request budget to fetch props. Raise the plan tier (or cut fetch frequency); you do NOT need a new key.",
+        "Game lines + model/calibration boards unaffected (they don't need the paid key)."
       ],
       "n_props": 0,
-      "n_games": 4
+      "n_games": 0,
+      "odds_key_state": "exhausted"
     },
     {
       "feed": "golf",
@@ -120,7 +121,7 @@
       ],
       "upstream_players": 69,
       "local_players": 69,
-      "local_age_min": 0
+      "local_age_min": 9
     },
     {
       "feed": "desks",
@@ -130,13 +131,13 @@
       ],
       "n_stale": 0,
       "ages_h": {
-        "tennis_state.json": 6.4,
-        "ufc_state.json": 6.3,
-        "f1_state.json": 6.3,
-        "kbo_state.json": 0.7,
-        "cs_state.json": 0.7,
-        "cws_state.json": 6.3,
-        "worldcup_cards.json": 1.6
+        "tennis_state.json": 0.0,
+        "ufc_state.json": 6.8,
+        "f1_state.json": 6.8,
+        "kbo_state.json": 0.5,
+        "cs_state.json": 0.5,
+        "cws_state.json": 6.8,
+        "worldcup_cards.json": 0.0
       }
     }
   ]

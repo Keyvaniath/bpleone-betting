@@ -1,4 +1,4 @@
-# 🌙 Tonight's Brief — 2026-08-17
+# 🌙 Tonight's Brief — 2026-08-18
 
 _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 
@@ -14,5 +14,5 @@ _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 - Joint 53% · fair +264 · edge +94.6%
 
 ---
-_Generated 2026-08-17T22:28:18_
+_Generated 2026-08-18T05:17:00_
 _Full breakdown: /tonight · Full history: /locks-of-day_
