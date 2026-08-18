@@ -325,7 +325,8 @@ def _wide_candidates(team_set: set, gl: Dict[str, Any]) -> Dict[str, Dict[str, A
                                        baselines, gl, NFL_PLAYER_DB)
         if info:
             out[pl["norm"]] = {"info": info, "source": source, "pos": pl["pos"],
-                               "team": tm, "name": pl["name"]}
+                               "team": tm, "name": pl["name"],
+                               "espn_id": pl["id"]}
     return out
 
 
@@ -430,7 +431,10 @@ def _generate(game_specs: List[Any], candidates: Dict[str, Dict[str, Any]],
             det = _detail_from_sims(sims)
             det.update({"player": cand["name"], "norm": nm, "pos": cand["pos"],
                         "team": cand["team"], "opp": opp, "matchup": matchup,
-                        "game_date": game_date, "source": cand.get("source")})
+                        "game_date": game_date, "source": cand.get("source"),
+                        "espn_id": cand.get("espn_id"),
+                        "src_url": (f"https://www.espn.com/nfl/player/_/id/{cand['espn_id']}"
+                                    if cand.get("espn_id") else None)})
             details.append(det)
     return rows, details
 

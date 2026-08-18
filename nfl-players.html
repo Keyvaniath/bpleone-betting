@@ -119,6 +119,16 @@ function marketsHtml(p) {
       <span class="muted">${m.p10 != null ? m.p10 + '–' + m.p90 : '—'}</span>
       <span>${chips}</span></div>`;
   });
+  // provenance footer: what the sim was seeded from + the primary source
+  const srcTxt = {
+    'curated+2025': 'curated priors over 2025 ESPN season rates',
+    'season2025': '2025 ESPN season per-game rates',
+    'curated': 'curated baseline priors',
+    'gamelogs': 'current-season gamelogs (rookie path)'
+  }[p.source] || p.source || 'baseline';
+  rows += `<div style="padding:8px 12px;font-size:10.5px;color:var(--muted,#8a93a6);border-top:1px solid rgba(255,255,255,.05);">
+    How: play-level Monte Carlo (${p.source && p.source.includes('curated') ? '4,000' : '2,000'} sims) seeded from ${srcTxt}, opponent-adjusted vs ${p.opp || 'opp'} pass/rush defense.
+    ${p.src_url ? '<a href="' + p.src_url + '" target="_blank" rel="noopener" style="color:#5aa2e3;">player stats at ESPN ↗</a> · ' : ''}<a href="methodology.html" style="color:#5aa2e3;">full method</a></div>`;
   return rows;
 }
 
