@@ -1,7 +1,24 @@
 {
-  "generated_at": "2026-08-18T01:09:30",
-  "n_recommendations": 1,
+  "generated_at": "2026-08-18T03:45:09",
+  "n_recommendations": 2,
   "recommendations": [
+    {
+      "key": "calibration.n_prior_default",
+      "current": 5,
+      "suggested": 7,
+      "direction": "increase",
+      "severity": "medium",
+      "rationale": "1 market(s) had correction_factor swing >0.05 between consecutive refreshes -- prior anchor isn't damping enough. Raising N_PRIOR will stabilize.",
+      "evidence": {
+        "swinging_markets": [
+          {
+            "market": "batter_hits",
+            "cf_swing": 0.0788,
+            "n": 54
+          }
+        ]
+      }
+    },
     {
       "key": "live_edges.edge_threshold_pp",
       "current": 3.5,
@@ -15,5 +32,5 @@
       }
     }
   ],
-  "summary": "1 suggested override: live_edges.edge_threshold_pp (decrease)."
+  "summary": "2 suggested overrides -- review on /config."
 }
