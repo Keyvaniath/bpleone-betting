@@ -344,6 +344,8 @@ def run() -> Dict[str, Any]:
         nm = _norm(p.get("name"))
         proj = None
         source = None
+        season = {}
+        pid = None
         if is_pitcher:
             # probable starters only
             pid = probables.get(nm)
@@ -369,6 +371,9 @@ def run() -> Dict[str, Any]:
         if proj is None:
             unprojected += 1
             continue
+        # Provenance: the sample the mean was taken over + the primary-source
+        # link (statsapi per-player page via mlb.com, which resolves bare ids).
+        sample = int((season or {}).get("gamesStarted" if is_pitcher else "gamesPlayed") or 0)
         projections.append({
             "name": p.get("name"), "pos": p.get("pos"), "elig": elig,
             "team": p.get("team"), "game": p.get("game"),
@@ -376,6 +381,9 @@ def run() -> Dict[str, Any]:
             "proj": proj,
             "value": round(proj / (p["salary"] / 1000.0), 2) if p.get("salary") else None,
             "source": source,
+            "sample": sample,
+            "mlb_id": pid,
+            "src_url": f"https://www.mlb.com/player/{pid}" if pid else None,
         })
 
     # Lineup pool: prune per slot family (keep it exact but fast).

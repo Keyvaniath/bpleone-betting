@@ -53,16 +53,22 @@
 
   <h2>Providers by desk</h2>
   <table class="src">
-    <thead><tr><th>Provider</th><th>Powers</th><th>Access</th></tr></thead>
+    <thead><tr><th>Provider</th><th>Powers</th><th>Refresh</th><th>Access</th></tr></thead>
     <tbody>
-      <tr><td><strong>MLB Stats API</strong></td><td>MLB schedules, probables, results, player stats</td><td><span class="pill free">public API</span></td></tr>
-      <tr><td><strong>ESPN</strong></td><td>NBA / WNBA / NHL / soccer / golf / tennis / UFC / F1 / NCAA scoreboards &amp; finals</td><td><span class="pill free">public API</span></td></tr>
-      <tr><td><strong>Daum Sports</strong></td><td>KBO (Korean baseball) schedule &amp; finals</td><td><span class="pill free">public API</span></td></tr>
-      <tr><td><strong>bo3.gg / Liquipedia</strong></td><td>Counter-Strike (CS2) matches &amp; results</td><td><span class="pill free">public API</span></td></tr>
-      <tr><td><strong>The Odds API</strong></td><td>Sportsbook game lines (when licensed); player-prop lines</td><td><span class="pill need">commercial key</span></td></tr>
-      <tr><td><strong>PrizePicks (public menu)</strong></td><td>DFS pick'em lines for the value board</td><td><span class="pill free">public API</span></td></tr>
+      <tr><td><strong><a href="https://statsapi.mlb.com/api/v1/schedule?sportId=1" target="_blank" rel="noopener">MLB Stats API</a></strong><br><span class="pill free" style="font-size:8.5px;">statsapi.mlb.com</span></td><td>MLB schedules, probable starters, box scores, per-player gamelogs &amp; season stats — feeds the matchup grid, every MLB prop settlement, DFS projections, and the DFS lineup receipts</td><td>3×/day pipeline + 2-hour heartbeat</td><td><span class="pill free">public API</span></td></tr>
+      <tr><td><strong><a href="https://site.api.espn.com/apis/site/v2/sports/baseball/mlb/scoreboard" target="_blank" rel="noopener">ESPN scoreboard API</a></strong><br><span class="pill free" style="font-size:8.5px;">site.api.espn.com</span></td><td>Live DraftKings game lines (moneyline / spread / total) + finals for MLB, NFL, NCAAF, NCAAB, NBA, WNBA, NHL, soccer, golf, tennis, UFC, F1 — feeds the book-lines cards, line movement, CLV tracking, and game-line settlement</td><td>2-hour heartbeat (~12×/day), line-move snapshots kept 8 days</td><td><span class="pill free">public API</span></td></tr>
+      <tr><td><strong><a href="https://www.espn.com/nfl/players" target="_blank" rel="noopener">ESPN core athlete API</a></strong><br><span class="pill free" style="font-size:8.5px;">sports.core.api.espn.com</span></td><td>NFL rosters + 2025 season per-game baselines behind the NFL player projections and DFS sims (each player row links to their ESPN page)</td><td>one-time cache + top-ups ≤120 players/run</td><td><span class="pill free">public API</span></td></tr>
+      <tr><td><strong><a href="https://www.draftkings.com/lobby" target="_blank" rel="noopener">DraftKings public lobby</a></strong><br><span class="pill free" style="font-size:8.5px;">draftkings.com / api.draftkings.com</span></td><td>DFS Classic slates &amp; salaries (NFL weekly, MLB daily) — the salary side of every optimal lineup</td><td>daily</td><td><span class="pill free">public endpoints</span></td></tr>
+      <tr><td><strong>Daum Sports</strong></td><td>KBO (Korean baseball) schedule &amp; finals</td><td>daily</td><td><span class="pill free">public API</span></td></tr>
+      <tr><td><strong>bo3.gg</strong></td><td>Counter-Strike (CS2) matches &amp; results</td><td>daily</td><td><span class="pill free">public API</span></td></tr>
+      <tr><td><strong><a href="https://the-odds-api.com/" target="_blank" rel="noopener">The Odds API</a></strong></td><td>Multi-sportsbook game lines (8-book compare) and player-prop book lines</td><td>quota-budgeted: multi-book 1×/day; props capped 14 req/day</td><td><span class="pill need">commercial key</span></td></tr>
+      <tr><td><strong>PrizePicks (public menu)</strong></td><td>DFS pick'em lines for the value board</td><td>dormant — feed blocked upstream since 2026-07-09; boards say so rather than showing stale lines</td><td><span class="pill free">public API</span></td></tr>
     </tbody>
   </table>
+
+  <h2>How we fetch — and how you can verify</h2>
+  <p><strong>Honest user-agent.</strong> Every request identifies itself as <code style="font-size:12px;">EdgeStat/1.0</code> — we never masquerade as a browser to scrape harder, and when a provider blocks us (as PrizePicks did) the affected boards go dark and say why instead of silently serving stale data.</p>
+  <p><strong>Every number on this site traces to a public JSON artifact you can open yourself.</strong> The pipeline commits its outputs to the same repository that serves the site — for example <a href="data/espn_odds.json" target="_blank">espn_odds.json</a> (the raw book lines), <a href="data/all_picks_ledger.json" target="_blank">all_picks_ledger.json</a> (the full settled pick ledger behind the track record), <a href="data/alpha_v2_selections.json" target="_blank">alpha_v2_selections.json</a> (the append-only Alpha pick locks — published days can never be rewritten), <a href="data/mlb_dfs.json" target="_blank">mlb_dfs.json</a> / <a href="data/nfl_dfs.json" target="_blank">nfl_dfs.json</a> (DFS projections with per-player source links), and <a href="data/recalibration_map.json" target="_blank">recalibration_map.json</a> (the family calibration evidence). If a page claims it, the artifact shows it.</p>
 
   <h2>Our own work</h2>
   <p>All models, ELO/Glicko ratings, Monte Carlo simulators, projections, calibration, and the settled track record are produced by EdgeStat's own code from the inputs above. We do not resell raw third-party data; we publish derived analytics. See our <a href="methodology.html">Methodology</a> and <a href="calibration-map.html">Calibration</a>.</p>

@@ -405,6 +405,10 @@ def run() -> Dict[str, Any]:
         fps = sorted(_dk_points(sims, n))
         mean = sum(fps) / n
         sd = (sum((x - mean) ** 2 for x in fps) / n) ** 0.5
+        # Provenance: the baseline sample behind the sim + a primary-source link.
+        espn_id = resolved.get(p["name"])
+        bl = baselines.get(espn_id) if espn_id else None
+        gp_2025 = int(bl.get("gamesPlayed") or 0) if (bl and not bl.get("no_data")) else None
         projections.append({
             "name": p["name"], "pos": p["pos"], "team": p["team"],
             "opp": opp, "game": p.get("game"), "salary": p["salary"],
@@ -415,6 +419,10 @@ def run() -> Dict[str, Any]:
             "sd": round(sd, 2),
             "value": round(mean / (p["salary"] / 1000.0), 2) if p["salary"] else None,
             "source": source,
+            "gp_2025": gp_2025,
+            "espn_id": espn_id,
+            "src_url": (f"https://www.espn.com/nfl/player/_/id/{espn_id}"
+                        if espn_id else None),
         })
 
     # DST projections (Vegas-implied; league-average flat when no lines yet).

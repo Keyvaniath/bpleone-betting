@@ -96,8 +96,11 @@ function renderProjections() {
   const rows = (DATA.projections || []).filter(p => POS === 'ALL' || p.pos === POS);
   const html = rows.slice(0, SHOWN).map(p => {
     const st = p.status && p.status !== 'None' ? ` <span class="stat-q">${p.status}</span>` : '';
+    const nm = p.src_url
+      ? `<a href="${p.src_url}" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dotted rgba(255,255,255,.25);" title="Player page at ESPN (primary source for the 2025 baseline)">${p.name}</a>`
+      : p.name;
     return `<div class="dfs-row">
-      <span><strong>${p.name}</strong>${st}</span>
+      <span><strong>${nm}</strong>${st}</span>
       <span>${p.pos}</span>
       <span class="muted" style="font-size:10.5px;">${p.game || '—'}</span>
       <span>${fmtSal(p.salary)}</span>
@@ -105,7 +108,7 @@ function renderProjections() {
       <span class="muted">${p.floor}</span>
       <span style="color:#58c878;">${p.ceiling}</span>
       <span>${p.value ?? '—'}</span>
-      <span><span class="srcb">${p.source}</span></span>
+      <span><span class="srcb" title="baseline behind the Monte Carlo sim">${p.source}${p.gp_2025 ? ' · ' + p.gp_2025 + ' gm ’25' : ''}</span></span>
     </div>`;
   }).join('');
   $('pj_list').innerHTML = html || '<p class="muted" style="padding:14px;">No projections for this filter.</p>';

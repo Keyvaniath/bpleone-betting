@@ -101,14 +101,14 @@ function filtered() {
 function render() {
   const rows = filtered();
   $('pj_list').innerHTML = rows.slice(0, SHOWN).map(p => `<div class="dfs-row">
-      <span><strong>${p.name}</strong>${p.status && p.status !== 'None' ? ' <span style="color:#d4a04a;font-weight:700;">' + p.status + '</span>' : ''}</span>
+      <span><strong>${p.src_url ? '<a href="' + p.src_url + '" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dotted rgba(255,255,255,.25);" title="Season stats at mlb.com (primary source)">' + p.name + '</a>' : p.name}</strong>${p.status && p.status !== 'None' ? ' <span style="color:#d4a04a;font-weight:700;">' + p.status + '</span>' : ''}</span>
       <span>${p.pos}</span>
       <span class="muted">${p.team}</span>
       <span class="muted" style="font-size:10.5px;">${p.game || '—'}</span>
       <span>${fmtSal(p.salary)}</span>
       <span style="font-weight:700;">${p.proj}</span>
       <span>${p.value ?? '—'}</span>
-      <span><span class="srcb">${p.source}</span></span>
+      <span><span class="srcb" title="${p.source === 'season_per_start' ? 'mean of DK points over this season\'s starts' : 'mean of DK points per game this season'}">${p.source}${p.sample ? ' · n=' + p.sample : ''}</span></span>
     </div>`).join('') || '<p class="muted" style="padding:14px;">No players for this filter.</p>';
   $('pj_more').style.display = rows.length > SHOWN ? 'inline-block' : 'none';
 }

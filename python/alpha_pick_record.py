@@ -95,18 +95,38 @@ V2_MIN_EDGE = 0.02  # min calibrated EV -- clears fair-odds rounding noise, dema
 
 
 def _v2_gate(raw_prob: float, dec_odds: float, market: Any):
-    """Curation gate for v2 days. None = excluded; else (calibrated_EV, calibrated_prob)."""
+    """Curation gate for v2 days. None = excluded; else
+    (calibrated_EV, calibrated_prob, why) -- `why` is the full published
+    reasoning chain: raw prob, the calibration family's real evidence
+    (n settled, realized rate, shift applied), the implied probability at the
+    recorded odds, and the edge that cleared the gate. Numbers with sources,
+    not vibes."""
     if pc.is_proven_negative(market) or pc.is_overconfident(market):
         return None
-    p_cal, _meta = pc.empirical_calibrate(raw_prob, market)
+    p_cal, meta = pc.empirical_calibrate(raw_prob, market)
     if p_cal is None:
         p_cal = raw_prob   # unmapped family: raw prob at fair odds = EV 0 -> fails the edge bar
+        meta = {"method": "identity (unmapped family)", "family": None}
     if not (MIN_PROB <= p_cal <= MAX_PROB):
         return None
     ev = p_cal * dec_odds - 1
     if ev < V2_MIN_EDGE:
         return None
-    return ev, round(p_cal, 4)
+    implied = 1.0 / dec_odds if dec_odds else None
+    why = {
+        "raw_prob": round(raw_prob, 4),
+        "calibrated_prob": round(p_cal, 4),
+        "calibration_method": meta.get("method"),
+        "family": meta.get("family"),
+        "family_n_settled": meta.get("n"),
+        "family_realized": meta.get("realized"),
+        "calibration_shift": meta.get("shift"),
+        "implied_prob_at_odds": round(implied, 4) if implied is not None else None,
+        "edge_pct": round(ev * 100, 2),
+        "gate": f"cleared: calibrated EV {ev*100:.1f}% >= +{V2_MIN_EDGE:.0%} bar, "
+                f"family neither proven-negative nor overconfident",
+    }
+    return ev, round(p_cal, 4), why
 
 
 def _load(p) -> Any:
@@ -171,6 +191,30 @@ def _is_mlb_moneyline(p: Dict[str, Any]) -> bool:
     # first), and rlm_strong's "HOME ML"/"AWAY ML".
     return (mk.startswith("ML_") or mk.endswith("_ML")
             or mk in ("HOME ML", "AWAY ML"))
+
+
+def _market_for_cal(p: Dict[str, Any]) -> Any:
+    """Market string to hand prob_calibration. The '{TEAM}_ML' / 'HOME ML' /
+    'AWAY ML' vocab twins carry no side prob_calibration can map to a family,
+    so those picks were silently calibrated 'model_only' -- gated and displayed
+    on the RAW prob with zero family evidence (caught in the 2026-08-18 provenance
+    audit: the WSN_ML pick showed family=null while ml_away sat on n=65 of ledger
+    evidence). Canonicalize to ML_AWAY/ML_HOME exactly like _lock_key does."""
+    mk_raw = str(p.get("market") or "")
+    mk = mk_raw.upper()
+    if mk in ("HOME ML", "ML_HOME"):
+        return "ML_HOME"
+    if mk in ("AWAY ML", "ML_AWAY"):
+        return "ML_AWAY"
+    if mk.endswith("_ML") and "@" in str(p.get("player_or_matchup") or ""):
+        team = _norm(mk[:-3])
+        raw = str(p.get("player_or_matchup"))
+        away, _, home = [_norm(s) for s in raw.partition("@")]
+        if team and (away.startswith(team) or team.startswith(away)):
+            return "ML_AWAY"
+        if team and (home.startswith(team) or team.startswith(home)):
+            return "ML_HOME"
+    return p.get("market")
 
 
 def _family(market: Any) -> str:
@@ -318,10 +362,10 @@ def run() -> Dict[str, Any]:
             seen.add(dedup_key)
             p["market_family"] = _family(p.get("market"))
             ungated_by_day.setdefault(day, {})[dedup_key] = p
-            gate = _v2_gate(prob, d, p.get("market"))
+            gate = _v2_gate(prob, d, _market_for_cal(p))
             if gate is None:
                 continue
-            p["_roi"], p["_p_cal"] = gate
+            p["_roi"], p["_p_cal"], p["_why"] = gate
             by_day.setdefault(day, []).append(p)
 
     def _rank_key(x):
@@ -345,11 +389,32 @@ def run() -> Dict[str, Any]:
 
     def _ensure_roi(p: Dict[str, Any]) -> None:
         """A locked pick that today's calibration map would now gate out still
-        needs a display EV (the lock outranks the gate -- published is published)."""
+        needs a display EV (the lock outranks the gate -- published is published).
+        Also attaches the why chain so locked picks show their work too."""
         if "_roi" not in p:
             d = _dec(p.get("fair_american")) or 1.0
-            p_cal, _m = pc.empirical_calibrate(p.get("prob"), p.get("market"))
-            p["_roi"] = ((p_cal if p_cal is not None else (p.get("prob") or 0)) * d) - 1
+            mk_cal = _market_for_cal(p)
+            gate = _v2_gate(p.get("prob") or 0, d, mk_cal)
+            if gate is not None:
+                p["_roi"], p["_p_cal"], p["_why"] = gate
+                return
+            p_cal, meta = pc.empirical_calibrate(p.get("prob"), mk_cal)
+            pc_eff = p_cal if p_cal is not None else (p.get("prob") or 0)
+            p["_roi"] = pc_eff * d - 1
+            p["_p_cal"] = round(pc_eff, 4)
+            p["_why"] = {
+                "raw_prob": round(p.get("prob") or 0, 4),
+                "calibrated_prob": round(pc_eff, 4),
+                "calibration_method": (meta or {}).get("method"),
+                "family": (meta or {}).get("family"),
+                "family_n_settled": (meta or {}).get("n"),
+                "family_realized": (meta or {}).get("realized"),
+                "calibration_shift": (meta or {}).get("shift"),
+                "implied_prob_at_odds": round(1.0 / d, 4) if d else None,
+                "edge_pct": round(p["_roi"] * 100, 2),
+                "gate": ("published under lock: this day's selection locked when it "
+                         "cleared the gate; today's calibration map has since moved"),
+            }
 
     def _pick_slate(ranked: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
         picks_today, used_fams = [], set()
@@ -426,6 +491,8 @@ def run() -> Dict[str, Any]:
                 r["rule"] = "v2"
                 if pk.get("_p_cal") is not None:
                     r["model_prob_calibrated"] = pk["_p_cal"]
+                if pk.get("_why"):
+                    r["why"] = pk["_why"]
             if i == 0:
                 one_rows.append(dict(r))   # One Pick history row carries no slot key (v1 shape)
             r["slot"] = i
