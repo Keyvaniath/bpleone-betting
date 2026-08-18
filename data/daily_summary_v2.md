@@ -2,7 +2,7 @@
 
 ## 🏥 Model Health: 62.5/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.5/100
+  - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 0/100
   - 🔴 Brier Trend: 33.0/100
   - 🟢 Pipeline Audit: 100.0/100
@@ -10,9 +10,9 @@
   - 🟡 Edge Count: 68.6/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.571)
-- **Total games on board:** 99
-- **Strong home favorites:** 9 | **Strong road dogs:** 0
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.565)
+- **Total games on board:** 103
+- **Strong home favorites:** 10 | **Strong road dogs:** 2
 
 ## 🎯 Top 5 Best Bets
 1. **OAK @ KCR YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
@@ -47,24 +47,27 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (3)
+## ⚡ Pre-Game HIGH Conviction (5)
+- [WNBA] **Indiana Fever** AWAY (4-1 L10) · model 73.8% fair -282
 - [MLS] **Colorado Rapids** HOME (2-0 L10) · model 71.4% fair -249
 - [MLS] **Columbus Crew** HOME (0-2 L10) · model 70.2% fair -236
 - [MLS] **FC Cincinnati** HOME (1-1 L10) · model 65.1% fair -187
+- [WNBA] **New York Liberty** AWAY (4-1 L10) · model 64.2% fair -179
 
 ## 🔥/❄️ Heat / Cold Signals
 - Hot teams: **4** | Cold teams: **3** | Over-heavy: 0 | Under-heavy: 4
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (48)
-- STEAM_MOVE: **43**
+## ⚠️ Anomaly Detector (58)
+- RESIDUAL_DIVERGENCE: **4**
+- STEAM_MOVE: **49**
 - PEN_MISMATCH: **2**
 - COMPOUND_BULLPEN: **3**
+  - Connecticut Sun (WNBA): Connecticut Sun UNDERPERFORMING expected margin by 15.5pts in recent games -- model bias may persist
+  - Indiana Fever (WNBA): Indiana Fever OUTPERFORMING expected margin by 9.7pts in recent games -- model bias may persist
+  - Chicago Sky (WNBA): Chicago Sky UNDERPERFORMING expected margin by 7.8pts in recent games -- model bias may persist
+  - Atlanta Dream (WNBA): Atlanta Dream OUTPERFORMING expected margin by 9.4pts in recent games -- model bias may persist
   - MIL @ LAD (MLB): ML steam since open: ML -16.7pp toward MIL (11 snapshots)
-  - KCR @ LAA (MLB): ML/TOTAL steam since open: ML -11.0pp toward KCR; total +0.5 (OVER) (4 snapshots)
-  - CHI @ SEA (WNBA): TOTAL steam since open: ML -1.9pp toward CHI; total +2 (OVER) (4 snapshots)
-  - NY @ IND (WNBA): TOTAL steam since open: ML +0.9pp toward IND; total -2 (UNDER) (5 snapshots)
-  - PHX @ LA (WNBA): TOTAL steam since open: ML -0.9pp toward PHX; total +2 (OVER) (4 snapshots)
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
@@ -112,7 +115,7 @@
   - ❄️ **Sungjae Im** (South Korea): Sunday +5.8 vs tourney avg
   - ❄️ **Brian Harman** (USA): Sunday +5.5 vs tourney avg
 
-## 🔥 MLB Batter Heat (44 HOT / 63 COLD)
+## 🔥 MLB Batter Heat (43 HOT / 63 COLD)
   - 🔥 **Jac Caglianone** (KC): L14 .444 / season .276 (+168pts)
   - 🔥 **Victor Robles** (SEA): L14 .429 / season .264 (+165pts)
   - 🔥 **Pete Alonso** (BAL): L14 .412 / season .267 (+145pts)

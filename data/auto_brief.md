@@ -1,12 +1,12 @@
 # Tonight's Slate Brief — 2026-08-18
 
-## Slate Quality: 55/100 (MEDIUM)
-_0% lineups confirmed · 11 rookie SPs_
-**Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
+## Slate Quality: 82/100 (HIGH)
+_90% lineups confirmed · 12 rookie SPs_
+**Recommendation:** Play normal Kelly sizing.
 
 ## Slate
 - **15 games** scheduled
-- **29 best bets** scored: 0 DK · 0 PP · 13 NRFI · 0 SGP
+- **31 best bets** scored: 0 DK · 0 PP · 13 NRFI · 0 SGP
 - **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$48.65
 - **MC simulation:** EV +$177.49, 85% P(profit), p05 $-103.37 / p95 $432.13
 
@@ -59,13 +59,13 @@ _Lean late-inning OVER on these games; fade their save situations._
 - Kiwoom Heroes @ Lotte Giants | P(home) 58.3% fair -140 | total 10 R
 - **KBO POD:** LG Twins ML vs KT Wiz (KBO) (HIGH)
 
-## LoL Esports -- 0 live, 11 upcoming
+## LoL Esports -- 0 live, 15 upcoming
 - [LCK Challengers] kt Challengers vs T1 Esports Academy BO3 | P(A) 41.7% fair +140/-140
 - [LCK Challengers] HLE Challengers vs BNK FEARX Youth BO3 | P(A) 42.8% fair +134/-134
 - [LPL] Suzhou LNG Esports vs WeiboGaming BO3 | P(A) 36.7% fair +172/-172
 - [LPL] Anyone's Legend vs TOP ESPORTS BO3 | P(A) 65.6% fair -191/+191
 - [LCK] Gen.G Esports vs kt Rolster BO3 | P(A) 67.5% fair -208/+208
-- **LoL POT:** WeiboGaming ML vs Suzhou LNG Esports (LPL, BO3) (HIGH)
+- **LoL POT:** Dplus KIA ML vs Hanwha Life Esports (LCK, BO3) (HIGH)
 
 ## Player Play of the Day -- across all sports (3460 candidates scanned)
 - **[LOL]** Inspired UNDER 3.5 Kills | model 61.7% fair -161 (ELITE)
