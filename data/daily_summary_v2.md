@@ -1,25 +1,25 @@
 # EdgeStat Daily Summary — 2026-08-18
 
-## 🏥 Model Health: 65.1/100 [OK]
+## 🏥 Model Health: 61.7/100 [OK]
 - Operational but room to improve - check yellow components
   - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 0/100
-  - 🔴 Brier Trend: 34.9/100
+  - 🔴 Brier Trend: 37.2/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 90.9/100
-  - 🟢 Edge Count: 100/100
+  - 🟢 Data Health: 95.5/100
+  - 🔴 Edge Count: 51.4/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.571)
-- **Total games on board:** 98
+- **Total games on board:** 99
 - **Strong home favorites:** 9 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
 1. **OAK @ KCR YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-2. **LAD @ COL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-3. **CHW @ CHC YRFI (1st-inning OVER 0.5)** (78/100 ★★★★)
-4. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
-5. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
+2. **SFG @ CLE YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+3. **MIA @ PHI YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+4. **LAD @ COL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+5. **ARI @ BOS YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -56,10 +56,10 @@
 - Hot teams: **4** | Cold teams: **3** | Over-heavy: 0 | Under-heavy: 4
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (48)
+## ⚠️ Anomaly Detector (46)
 - STEAM_MOVE: **43**
-- COMPOUND_BULLPEN: **4**
 - PEN_MISMATCH: **1**
+- COMPOUND_BULLPEN: **2**
   - MIL @ LAD (MLB): ML steam since open: ML -16.7pp toward MIL (11 snapshots)
   - KCR @ LAA (MLB): ML/TOTAL steam since open: ML -11.0pp toward KCR; total +0.5 (OVER) (4 snapshots)
   - CHI @ SEA (WNBA): TOTAL steam since open: ML -1.9pp toward CHI; total +2 (OVER) (4 snapshots)
@@ -68,27 +68,27 @@
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$-5.77**
-  - #1 [NRFI] $50 on OAK @ KCR YRFI (1st-inning OVER 0.5) (P=69%)
-  - #2 [NRFI] $50 on LAD @ COL YRFI (1st-inning OVER 0.5) (P=68%)
-  - #3 [NRFI] $35 on CHW @ CHC YRFI (1st-inning OVER 0.5) (P=64%)
+- Expected EV: **$16.19**
+  - #1 [NRFI] $50 on OAK @ KCR YRFI (1st-inning OVER 0.5) (P=78%)
+  - #2 [NRFI] $50 on SFG @ CLE YRFI (1st-inning OVER 0.5) (P=77%)
+  - #3 [NRFI] $50 on MIA @ PHI YRFI (1st-inning OVER 0.5) (P=76%)
   - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
-## 🎯 Convergence Picks (10 stacked games)
-- ELITE: **2** · HIGH: 2 · MED: 6
+## 🎯 Convergence Picks (11 stacked games)
+- ELITE: **2** · HIGH: 3 · MED: 6
   - [ELITE] New England Revolution @ D.C. United : 4 signals (PREGAME, HEAT_COLD, ATS, ATS)
   - [ELITE] Houston Dynamo FC @ Vancouver Whitecaps : 4 signals (PREGAME, HEAT_COLD, ATS, ATS)
+  - [HIGH] Dallas Wings @ Golden State Valkyries : 3 signals (HEAT_COLD, HEAT_COLD, ATS)
   - [HIGH] CF Montréal @ Columbus Crew : 3 signals (PREGAME, ATS, ATS)
   - [HIGH] FC Dallas @ Real Salt Lake : 3 signals (PREGAME, ATS, ATS)
-  - [MED] New York City FC @ FC Cincinnati : 2 signals (PREGAME, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (5)
-- **Cristopher Sánchez** OVER 5.5 K (77%) fair -328
-- **Blake Snell** OVER 5.5 K (76%) fair -314
-- **Carmen Mlodzinski** OVER 5.5 K (71%) fair -240
-- **Nolan McLean** OVER 5.5 K (65%) fair -184
-- **Shota Imanaga** OVER 4.5 K (60%) fair -151
+## ⚾ Top MLB Pitcher K Plays (10)
+- **Jack Perkins** OVER 6.5 K (74%) fair -290
+- **Cal Quantrill** OVER 4.5 K (73%) fair -265
+- **Bryce Miller** OVER 4.5 K (71%) fair -250
+- **Carlos Rodón** OVER 4.5 K (68%) fair -212
+- **Zack Wheeler** OVER 5.5 K (68%) fair -210
 
 ## 🏀 NBA Player Heat (2 HOT / 1 COLD)
   - 🔥 **Scottie Barnes** (TOR): L5 24.4/7.6/9.6 vs season 18.6/5.8/8.8 [PTS +5.8]
@@ -124,8 +124,7 @@
   - ❄️ **Jesús Sánchez** (TOR): L14 .138 / season .261 (-123pts) -- FADE props
   - ❄️ **Jeremy Peña** (HOU): L14 .167 / season .288 (-121pts) -- FADE props
 
-## 📈 Streak Regression Alerts (3)
-- [WNBA] Golden State Valkyries on W4 L10 4-0 -- Golden State Valkyries on W4 -- no historical sample
+## 📈 Streak Regression Alerts (2)
 - [MLS] New England Revolution on L3 L10 0-3 -- New England Revolution on L3 -- no historical sample
 - [MLS] Houston Dynamo FC on W3 L10 3-0 -- Houston Dynamo FC on W3 -- no historical sample
 
