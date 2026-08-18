@@ -116,6 +116,19 @@
     </p>
   </div>
 
+  <div class="deep" id="alpha-v2">
+    <span class="tag">Alpha Pick · selection rule v2</span>
+    <h3>How the daily flagship pick is chosen — the exact chain</h3>
+    <p>Every candidate on the slate (MLB player props + MLB moneylines) runs the same gauntlet, in order:</p>
+    <p style="margin:6px 0 6px 12px;">
+      <b>1.</b> Its market family must not be <b>proven-negative</b> (lost ≥ 5u over n ≥ 25 settled) or <b>overconfident</b> (predicted exceeds realized by ≥ 12pp) — see the curation section above.<br>
+      <b>2.</b> The raw model probability is <b>calibrated against the family's real settled record</b> (Bayesian blend toward realized rate, isotonic-recalibrated) — the pick page shows raw → calibrated with the family's n and realized rate.<br>
+      <b>3.</b> The calibrated probability must sit in the conviction band, and calibrated <b>EV at the recorded odds must clear +2%</b>. Nothing qualifies → an honest <b>NO-PICK day</b>, published like any other result.<br>
+      <b>4.</b> Highest calibrated EV wins; the day's selection <b>locks on first sight</b> in an append-only file and replays from the lock forever — a published day can never be quietly rewritten by later data.
+    </p>
+    <p class="muted2" style="font-size:12px;">Rule v2 is date-gated at 2026-08-10; earlier days replay under v1 byte-identically and the two records are disclosed separately on the <a href="alpha-pick.html">pick page</a>. The lock file is public: <a href="data/alpha_v2_selections.json" target="_blank">alpha_v2_selections.json</a>.</p>
+  </div>
+
   <div class="deep">
     <span class="tag">Book-shading · defer to the sharp close</span>
     <h3>Model overconfidence can't print a fake edge</h3>

@@ -263,7 +263,7 @@ fetch('data/alpha_pick_record.json?t=' + Date.now()).then(function (r) { return 
             ? ' → calibrated <b style="color:#e8eef7;">' + pct(w.calibrated_prob) + '</b> against the <b>' + w.family + '</b> family\'s real settled record (n=' + w.family_n_settled + ', realized ' + pct(w.family_realized) + (w.calibration_shift != null ? ', shift ' + (w.calibration_shift >= 0 ? '+' : '') + (w.calibration_shift * 100).toFixed(1) + 'pp' : '') + ')'
             : ' (no family map yet — raw prob used, which prices the pick conservatively)') +
           ' · the book\'s odds imply <b style="color:#e8eef7;">' + pct(w.implied_prob_at_odds) + '</b> → calibrated edge <b style="color:#58c878;">+' + w.edge_pct + '%</b> clears the +2% v2 bar.' +
-          ' <a href="calibration-map.html" style="color:#5aa2e3;">family evidence</a> · <a href="methodology.html" style="color:#5aa2e3;">method</a> · <a href="track-record.html" style="color:#5aa2e3;">full ledger</a>' +
+          ' <a href="calibration-map.html" style="color:#5aa2e3;">family evidence</a> · <a href="methodology.html#alpha-v2" style="color:#5aa2e3;">method</a> · <a href="track-record.html" style="color:#5aa2e3;">full ledger</a>' +
           '</div>';
       }
       tEl.style.display = 'block';
