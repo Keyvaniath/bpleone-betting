@@ -68,9 +68,11 @@
 
 <h1>Book Edges (Team Moneyline)</h1>
 <div class="sub">
-  REAL <strong>model-vs-book</strong> comparison using current Bovada ML lines
-  from matchups.json. Edge % = model_prob × book_decimal − 1, after de-vigging
-  the book's pair to remove juice. Filter: model probability in [30%, 78%],
+  REAL <strong>model-vs-book</strong> comparison against live DraftKings moneylines
+  (<a href="data-sources.html" style="color:#7fb0e8;">ESPN's free odds feed</a>, refreshed every
+  heartbeat; frozen snapshot lines as fallback — each edge row stamps its
+  <code style="font-size:11px;">line_source</code>). Edge % = model_prob × book_decimal − 1, after
+  de-vigging the book's pair to remove juice. Filter: model probability in [30%, 78%],
   3%+ edge.
 </div>
 
@@ -115,8 +117,9 @@
 
 <div class="explainer">
   <strong>How to read this:</strong> Edge is calculated against ACTUAL book
-  prices (Bovada from matchups.json), not against model fair-odds. A +12%
-  edge means the model thinks $1 on this side returns $1.12 long-run.
+  prices (live DraftKings lines via ESPN's free feed; frozen snapshot as
+  fallback), not against model fair-odds. A +12% edge means the model thinks
+  $1 on this side returns $1.12 long-run.
 </div>
 
 <div class="explainer warn">

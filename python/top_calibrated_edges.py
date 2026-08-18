@@ -4,7 +4,9 @@ EdgeStat -- unified Top Calibrated Edges report.
 Combines TWO sources of edge into ONE daily action list:
 
   1. Real book-vs-model edges (book_vs_model_team.json)
-     - Uses ACTUAL Bovada decimal odds
+     - Uses ACTUAL book decimal odds (live DraftKings game lines via ESPN's
+       free feed since 2026-06; the frozen Bovada snapshot is the fallback --
+       the old "Bovada" attribution here was stale)
      - calibrated_prob already Bayesian-shrunk toward book
      - calibrated_edge_pct is the honest number
 
@@ -127,8 +129,9 @@ def run() -> Dict[str, Any]:
         "by_source_type": by_type,
         "top_10": all_edges[:10],
         "top_25": all_edges[:25],
-        "method_note": "Unified calibrated-edges report. REAL_BOOK = actual Bovada-priced "
-                       "(post-shrinkage). MODEL_PROP = model fair-priced (with similar "
+        "method_note": "Unified calibrated-edges report. REAL_BOOK = priced against the "
+                       "live book line (DraftKings game lines via ESPN's free feed, "
+                       "post-shrinkage). MODEL_PROP = model fair-priced (with similar "
                        "Bayesian shrinkage toward fair-breakeven). Surface 1%+ edges only.",
     }
     os.makedirs(os.path.dirname(OUT), exist_ok=True)

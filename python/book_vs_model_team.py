@@ -123,6 +123,9 @@ def run() -> Dict[str, Any]:
         ml_away_book = market.get("ml_away")
         total_book = market.get("total")
         if ml_home_book is None or ml_away_book is None: continue
+        # Provenance: which feed priced this game (stamped on every edge row).
+        line_source = ("espn_dk" if g.get("matchup") in espn_by
+                       else "matchups_snapshot")
 
         matchup = g.get("matchup")
         model_g = model_by_key.get(matchup) or {}
@@ -181,6 +184,7 @@ def run() -> Dict[str, Any]:
                 "kelly_fraction": round(max(0, (model_p * book_dec - 1) / (book_dec - 1)), 4) if book_dec > 1 else 0,
                 "kelly_calibrated": round(max(0, (calibrated_p * book_dec - 1) / (book_dec - 1)), 4) if book_dec > 1 else 0,
                 "is_underdog": book_ml > 0,
+                "line_source": line_source,
             })
 
         # ----- TOTALS (Over/Under) book-vs-model edge -----
@@ -219,6 +223,7 @@ def run() -> Dict[str, Any]:
                     "calibrated_edge_pct": round(calibrated_edge_tot * 100, 2),
                     "kelly_fraction": round(max(0, (tot_p * tot_dec - 1) / (tot_dec - 1)), 4),
                     "kelly_calibrated": round(max(0, (calibrated_p_tot * tot_dec - 1) / (tot_dec - 1)), 4),
+                    "line_source": line_source,
                 })
 
     # Sort by CALIBRATED edge (post-shrinkage) — this is the honest ranking
