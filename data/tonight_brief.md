@@ -2,6 +2,9 @@
 
 _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 
+## 💪 STRONG (1 picks)
+- [MLB] SEA @ MIL MIL_ML · 66% / +20.6%
+
 ## 🔒 5 Daily Locks
 - **Choi Jeong** one_plus_tb (KBO) -- 73% / +39.8%
 - **Jose Pirela** one_plus_tb (KBO) -- 73% / +39.2%
@@ -14,5 +17,5 @@ _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 - Joint 53% · fair +264 · edge +94.6%
 
 ---
-_Generated 2026-08-18T21:16:13_
+_Generated 2026-08-18T22:33:33_
 _Full breakdown: /tonight · Full history: /locks-of-day_

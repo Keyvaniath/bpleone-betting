@@ -4,14 +4,14 @@
 
 _Pipeline health: **WARNING** (12/15 artifacts ok; 3 empty, 0 stale)._ 
 
-_Generated at 2026-08-18T21:18:05 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-08-18T22:35:17 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
 **LAD @ COL - OVER_11.0**
 - Market: -110
-- Model probability: 92.8%
-- Raw edge: +77.11%
+- Model probability: 91.7%
+- Raw edge: +75.13%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
@@ -21,20 +21,20 @@ _Generated at 2026-08-18T21:18:05 UTC. Game lines source: **Bovada (fallback -- 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
 | 6:35p ET | NYY @ BAL | Oriole Park at Camden Yards | 76F 5mph | -- |
-| 6:40p ET | DET @ PIT | PNC Park | 70F 4mph | OVER_8.0 +14.24% |
-| 6:40p ET | SFG @ CLE | Progressive Field | 70F 5mph | SFG_ML +22.85% |
-| 6:40p ET | STL @ CIN | Great American Ball Park | 73F 2mph | STL_ML +37.09% |
+| 6:40p ET | DET @ PIT | PNC Park | 71F 4mph | OVER_8.0 +14.99% |
+| 6:40p ET | SFG @ CLE | Progressive Field | 70F 4mph | SFG_ML +24.75% |
+| 6:40p ET | STL @ CIN | Great American Ball Park | 72F 0mph | STL_ML +36.84% |
 | 6:40p ET | TOR @ TBR | Tropicana Field | indoor | -- |
-| 6:40p ET | MIA @ PHI | Citizens Bank Park | 77F 3mph | MIA_ML +10.44% |
-| 7:10p ET | ARI @ BOS | Fenway Park | 67F 4mph | BOS_ML +32.28% |
-| 7:10p ET | SDP @ NYM | Citi Field | 73F 4mph | NYM_ML +18.08% |
-| 7:40p ET | OAK @ KCR | Kauffman Stadium | 78F 8mph | OAK_ML +22.3% |
-| 7:40p ET | ATL @ MIN | Target Field | 70F 6mph | ATL_ML +28.4% |
+| 6:40p ET | MIA @ PHI | Citizens Bank Park | 78F 3mph | MIA_ML +10.45% |
+| 7:10p ET | ARI @ BOS | Fenway Park | 68F 4mph | BOS_ML +32.35% |
+| 7:10p ET | SDP @ NYM | Citi Field | 74F 4mph | NYM_ML +18.1% |
+| 7:40p ET | OAK @ KCR | Kauffman Stadium | 79F 8mph | OAK_ML +24.4% |
+| 7:40p ET | ATL @ MIN | Target Field | 70F 7mph | ATL_ML +28.51% |
 | 7:40p ET | SEA @ MIL | American Family Field | indoor | MIL_ML +25.71% |
 | 8:05p ET | WSN @ TEX | Globe Life Field | indoor | OVER_7.5 +59.87% |
-| 8:05p ET | CHW @ CHC | Wrigley Field | 66F 14mph | CHW_ML +22.1% |
-| 8:10p ET | LAA @ HOU | Daikin Park | indoor | OVER_9.0 +39.98% |
-| 8:40p ET | LAD @ COL | Coors Field | 76F 11mph | OVER_11.0 +77.11% |
+| 8:05p ET | CHW @ CHC | Wrigley Field | 68F 4mph | CHW_ML +22.15% |
+| 8:10p ET | LAA @ HOU | Daikin Park | indoor | OVER_8.5 +49.95% |
+| 8:40p ET | LAD @ COL | Coors Field | 75F 6mph | OVER_11.0 +75.13% |
 
 ## Parlays - top 5
 
@@ -58,8 +58,8 @@ _Generated at 2026-08-18T21:18:05 UTC. Game lines source: **Bovada (fallback -- 
 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
-| batter hits | 54 | 63.0% | 57.4% | 0.912 | 1.087 |
 | batter total bases | 15 | 40.0% | 50.4% | 1.241 | 0.862 |
+| batter hits | 54 | 63.0% | 57.4% | 0.912 | 1.087 |
 
 Cumulative graded plays: 8867. Wins: 3322. Hit rate: 37.5%.
 
@@ -67,16 +67,16 @@ Cumulative graded plays: 8867. Wins: 3322. Hit rate: 37.5%.
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| ARI @ BOS | 28.7% | +249 | 6.11 | -237 | +237 |
-| ATL @ MIN | 34.9% | +187 | 5.23 | +312 | -312 |
-| CHW @ CHC | 20.8% | +381 | 7.68 | +164 | -164 |
-| DET @ PIT | 54.6% | -120 | 3.09 | +156 | -156 |
+| ARI @ BOS | 28.7% | +249 | 6.15 | -237 | +237 |
+| ATL @ MIN | 34.9% | +187 | 5.22 | +312 | -312 |
+| CHW @ CHC | 20.8% | +381 | 7.91 | +167 | -167 |
+| DET @ PIT | 54.6% | -120 | 3.07 | +156 | -156 |
 | LAA @ HOU | 37.0% | +170 | 4.97 | -146 | +146 |
-| LAD @ COL | 28.3% | +253 | 5.84 | +235 | -235 |
-| MIA @ PHI | 24.0% | +317 | 7.07 | +184 | -184 |
+| LAD @ COL | 28.3% | +253 | 6.06 | +269 | -269 |
+| MIA @ PHI | 24.0% | +317 | 7.11 | +184 | -184 |
 | NYY @ BAL | 41.6% | +140 | 4.26 | +207 | -207 |
-| OAK @ KCR | 27.9% | +258 | 6.05 | +186 | -186 |
-| SDP @ NYM | 47.4% | +111 | 3.79 | +149 | -149 |
+| OAK @ KCR | 27.9% | +258 | 6.06 | +185 | -185 |
+| SDP @ NYM | 47.4% | +111 | 3.81 | +149 | -149 |
 | SEA @ MIL | 36.6% | +173 | 5.02 | -127 | +127 |
 | SFG @ CLE | 22.5% | +344 | 7.65 | +150 | -150 |
 | STL @ CIN | 35.9% | +179 | 5.11 | +272 | -272 |

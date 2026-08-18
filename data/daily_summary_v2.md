@@ -1,13 +1,13 @@
 # EdgeStat Daily Summary — 2026-08-18
 
-## 🏥 Model Health: 62.5/100 [OK]
+## 🏥 Model Health: 67.0/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.9/100
+  - 🟢 Calibration Freshness: 100.0/100
   - 🔴 Hit Rate Trend: 0/100
-  - 🔴 Brier Trend: 33.0/100
+  - 🔴 Brier Trend: 52.4/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 95.5/100
-  - 🟡 Edge Count: 68.6/100
+  - 🟡 Edge Count: 74.3/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.565)
@@ -20,6 +20,9 @@
 3. **MIA @ PHI YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 4. **LAD @ COL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 5. **ARI @ BOS YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+
+## 🐋 Whale Picks (Max Confluence)
+- [STRONG] **[MLB]** SEA @ MIL MIL_ML -- 66% / +20.6% (score 2.5)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -78,17 +81,17 @@
   - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
-## 🎯 Convergence Picks (11 stacked games)
-- ELITE: **2** · HIGH: 3 · MED: 6
+## 🎯 Convergence Picks (14 stacked games)
+- ELITE: **4** · HIGH: 3 · MED: 7
+  - [ELITE] Los Angeles Sparks @ Connecticut Sun : 5 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ATS)
+  - [ELITE] Indiana Fever @ Toronto Tempo : 5 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
   - [ELITE] New England Revolution @ D.C. United : 4 signals (PREGAME, HEAT_COLD, ATS, ATS)
   - [ELITE] Houston Dynamo FC @ Vancouver Whitecaps : 4 signals (PREGAME, HEAT_COLD, ATS, ATS)
-  - [HIGH] Dallas Wings @ Golden State Valkyries : 3 signals (HEAT_COLD, HEAT_COLD, ATS)
-  - [HIGH] CF Montréal @ Columbus Crew : 3 signals (PREGAME, ATS, ATS)
-  - [HIGH] FC Dallas @ Real Salt Lake : 3 signals (PREGAME, ATS, ATS)
+  - [HIGH] Atlanta Dream @ Las Vegas Aces : 3 signals (PREGAME, HEAT_COLD, ANOMALY)
 
-## ⚾ Top MLB Pitcher K Plays (10)
-- **Jack Perkins** OVER 6.5 K (74%) fair -290
+## ⚾ Top MLB Pitcher K Plays (9)
 - **Cal Quantrill** OVER 4.5 K (73%) fair -265
+- **Bryan Hudson** OVER 6.5 K (72%) fair -254
 - **Bryce Miller** OVER 4.5 K (71%) fair -250
 - **Carlos Rodón** OVER 4.5 K (68%) fair -212
 - **Zack Wheeler** OVER 5.5 K (68%) fair -210
@@ -105,15 +108,12 @@
   - [COIN_FLIP] **Mahamed Aly** (5-1-0) vs Alik Lorenz -- fair -114
   - [COIN_FLIP] **Logan Paxton** (10-1-0) vs Cristian Pérez -- fair -102
 
-## ⛳ Golf Player Heat (from FedEx St. Jude Championship)
-  - 🔥 T1 **Scottie Scheffler** (USA): -17 total -- finished T1
-  - 🔥 T2 **Si Woo Kim** (South Korea): -9 total -- finished T2
-  - 🔥 T3 **Alex Noren** (Sweden): -8 total -- finished T3
-  - 🔥 T5 **Wyndham Clark** (USA): -7 total -- finished T5, Sunday -0.2 vs tourney avg
-  - 🔥 T7 **Xander Schauffele** (USA): -6 total -- finished T7, Sunday -1.5 vs tourney avg
-  - ❄️ **Aaron Rai** (England): Sunday +6.2 vs tourney avg
-  - ❄️ **Sungjae Im** (South Korea): Sunday +5.8 vs tourney avg
-  - ❄️ **Brian Harman** (USA): Sunday +5.5 vs tourney avg
+## ⛳ Golf Player Heat (from BMW Championship)
+  - 🔥 T1 **Justin Thomas** (USA): +0 total -- finished T1
+  - 🔥 T2 **Sahith Theegala** (USA): +0 total -- finished T2
+  - 🔥 T3 **Sepp Straka** (Austria): +0 total -- finished T3
+  - 🔥 T4 **Sungjae Im** (South Korea): +0 total -- finished T4
+  - 🔥 T5 **Aaron Rai** (England): +0 total -- finished T5
 
 ## 🔥 MLB Batter Heat (43 HOT / 63 COLD)
   - 🔥 **Jac Caglianone** (KC): L14 .444 / season .276 (+168pts)
@@ -127,7 +127,10 @@
   - ❄️ **Jesús Sánchez** (TOR): L14 .138 / season .261 (-123pts) -- FADE props
   - ❄️ **Jeremy Peña** (HOU): L14 .167 / season .288 (-121pts) -- FADE props
 
-## 📈 Streak Regression Alerts (2)
+## 📈 Streak Regression Alerts (5)
+- [WNBA] Los Angeles Sparks on L4 L10 1-4 -- Los Angeles Sparks on L4 -- no historical sample
+- [WNBA] Toronto Tempo on L4 L10 0-4 -- Toronto Tempo on L4 -- no historical sample
+- [WNBA] Indiana Fever on W4 L10 4-1 -- Indiana Fever on W4 -- no historical sample
 - [MLS] New England Revolution on L3 L10 0-3 -- New England Revolution on L3 -- no historical sample
 - [MLS] Houston Dynamo FC on W3 L10 3-0 -- Houston Dynamo FC on W3 -- no historical sample
 
