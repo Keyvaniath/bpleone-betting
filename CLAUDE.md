@@ -41,6 +41,18 @@ bpleone-site/
 
 ## Current deployment state (LIVE)
 
+- **2026-08-18 — MLB DFS DAILY RECEIPTS:** mlb_dfs_receipts.py ->
+  data/mlb_dfs_receipts.json -> the "Daily Lineup Receipts" card on
+  mlb-dfs.html. MLB slates run daily, so this grades the published optimal
+  EVERY MORNING (snapshot all slate day, freeze at day's end = the last
+  pre-lock pipeline refresh, score next morning from statsapi box scores
+  with the exact DK MLB formula; no-box-row scores 0 flagged; scored slates
+  never edited; cumulative proj-vs-actual bias accrues). player_gamelogs
+  now also stores sb/hbp (batters) and win (pitchers) -- DK components the
+  feed lacked; rows logged before 8/18 score those as 0 (disclosed). Wired
+  after mlb_dfs in daily-pipeline.
+
+
 - **2026-08-17 (late) — MLB DFS DESK + NFL gate date-hardening + all-desk
   audit:** (1) mlb_dfs.py -> data/mlb_dfs.json -> mlb-dfs.html: DK MLB
   Classic (ContestTypeId 28 -- NOT 21; per-sport ids differ) salaries from

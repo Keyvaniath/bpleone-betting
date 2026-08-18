@@ -215,6 +215,11 @@ jobs:
       - name: MLB DFS (DK salaries -> projections -> optimal lineup)
         working-directory: python
         run: python mlb_dfs.py || true
+      # Daily accountability: snapshot/freeze the published optimal, grade
+      # yesterday's from real box scores every morning.
+      - name: MLB DFS receipts (grade yesterday's published lineup)
+        working-directory: python
+        run: python mlb_dfs_receipts.py || true
 
       # Unify today.json (model line + market + recs) with every per-matchup prop
       # into one card per game -> data/mlb_game_cards.json, powering the clickable

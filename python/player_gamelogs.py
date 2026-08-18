@@ -170,6 +170,9 @@ def _batter_gamelog(pid: int, n: int = GAMELOG_DEPTH) -> List[Dict[str, Any]]:
                 "k": int(st.get("strikeOuts") or 0),
                 "bb": int(st.get("baseOnBalls") or 0),
                 "pa": int(st.get("plateAppearances") or 0),
+                # DFS receipts need these (DK: SB +5, HBP +2) -- added 2026-08-18.
+                "sb": int(st.get("stolenBases") or 0),
+                "hbp": int(st.get("hitByPitch") or 0),
             })
         return out
     except Exception:
@@ -215,6 +218,8 @@ def _pitcher_gamelog(pid: int, n: int = GAMELOG_DEPTH) -> List[Dict[str, Any]]:
                 "h": int(st.get("hits") or 0),
                 "hr": int(st.get("homeRuns") or 0),
                 "bf": int(st.get("battersFaced") or 0),
+                # DFS receipts: DK W +4 -- per-game win credit (added 2026-08-18).
+                "win": int(st.get("wins") or 0),
             })
         if out:
             return out
