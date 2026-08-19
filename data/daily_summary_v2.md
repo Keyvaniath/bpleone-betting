@@ -1,12 +1,12 @@
 # EdgeStat Daily Summary — 2026-08-19
 
-## 🏥 Model Health: 66.1/100 [OK]
+## 🏥 Model Health: 67.0/100 [OK]
 - Operational but room to improve - check yellow components
   - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 0/100
   - 🔴 Brier Trend: 52.4/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 90.9/100
+  - 🟢 Data Health: 95.5/100
   - 🟡 Edge Count: 74.3/100
 
 ## 🌐 Slate Overview
@@ -15,14 +15,11 @@
 - **Strong home favorites:** 9 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
-1. **CHW @ CHC YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-2. **SFG @ CLE YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-3. **MIA @ PHI YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-4. **OAK @ KCR YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-5. **LAD @ COL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-
-## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** SEA @ MIL MIL_ML -- 66% / +20.6% (score 2.5)
+1. **DET @ PIT YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+2. **WSN @ TEX YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+3. **SDP @ NYM YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+4. **ATL @ MIN YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
+5. **NYY @ BAL YRFI (1st-inning OVER 0.5)** (78/100 ★★★★)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -59,10 +56,10 @@
 - Hot teams: **4** | Cold teams: **3** | Over-heavy: 0 | Under-heavy: 7
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (56)
+## ⚠️ Anomaly Detector (55)
 - STEAM_MOVE: **51**
+- COMPOUND_BULLPEN: **2**
 - PEN_MISMATCH: **2**
-- COMPOUND_BULLPEN: **3**
   - MIL @ LAD (MLB): ML steam since open: ML -16.7pp toward MIL (11 snapshots)
   - KCR @ LAA (MLB): ML/TOTAL steam since open: ML -11.0pp toward KCR; total +0.5 (OVER) (4 snapshots)
   - CHI @ SEA (WNBA): TOTAL steam since open: ML -1.9pp toward CHI; total +2 (OVER) (4 snapshots)
@@ -71,27 +68,27 @@
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$16.9**
-  - #1 [NRFI] $50 on CHW @ CHC YRFI (1st-inning OVER 0.5) (P=79%)
-  - #2 [NRFI] $50 on SFG @ CLE YRFI (1st-inning OVER 0.5) (P=77%)
-  - #3 [NRFI] $50 on MIA @ PHI YRFI (1st-inning OVER 0.5) (P=76%)
+- Expected EV: **$-5.63**
+  - #1 [NRFI] $50 on DET @ PIT YRFI (1st-inning OVER 0.5) (P=70%)
+  - #2 [NRFI] $50 on WSN @ TEX YRFI (1st-inning OVER 0.5) (P=66%)
+  - #3 [NRFI] $50 on SDP @ NYM YRFI (1st-inning OVER 0.5) (P=66%)
   - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
-## 🎯 Convergence Picks (14 stacked games)
-- ELITE: **4** · HIGH: 3 · MED: 7
-  - [ELITE] Los Angeles Sparks @ Connecticut Sun : 5 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ATS)
-  - [ELITE] Indiana Fever @ Toronto Tempo : 5 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
+## 🎯 Convergence Picks (13 stacked games)
+- ELITE: **3** · HIGH: 4 · MED: 6
+  - [ELITE] Indiana Fever @ Toronto Tempo : 4 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ATS)
   - [ELITE] New England Revolution @ D.C. United : 4 signals (PREGAME, HEAT_COLD, ATS, ATS)
   - [ELITE] Houston Dynamo FC @ Vancouver Whitecaps : 4 signals (PREGAME, HEAT_COLD, ATS, ATS)
-  - [HIGH] Atlanta Dream @ Las Vegas Aces : 3 signals (PREGAME, HEAT_COLD, ANOMALY)
+  - [HIGH] New York Liberty @ Chicago Sky : 3 signals (HEAT_COLD, HEAT_COLD, ATS)
+  - [HIGH] Atlanta Dream @ Las Vegas Aces : 3 signals (HEAT_COLD, HEAT_COLD, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (9)
-- **Cal Quantrill** OVER 4.5 K (73%) fair -265
-- **Bryan Hudson** OVER 6.5 K (72%) fair -254
-- **Bryce Miller** OVER 4.5 K (71%) fair -250
-- **Carlos Rodón** OVER 4.5 K (68%) fair -212
-- **Zack Wheeler** OVER 5.5 K (68%) fair -210
+## ⚾ Top MLB Pitcher K Plays (12)
+- **Paul Skenes** OVER 4.5 K (78%) fair -347
+- **Logan Gilbert** OVER 4.5 K (78%) fair -347
+- **Aaron Nola** OVER 4.5 K (76%) fair -321
+- **Taj Bradley** OVER 4.5 K (73%) fair -271
+- **Chase Burns** OVER 4.5 K (73%) fair -271
 
 ## 🏀 NBA Player Heat (2 HOT / 1 COLD)
   - 🔥 **Scottie Barnes** (TOR): L5 24.4/7.6/9.6 vs season 18.6/5.8/8.8 [PTS +5.8]
@@ -99,11 +96,11 @@
   - ❄️ **Brandon Ingram** (TOR): L5 12.0 vs season 19.1 [PTS -7.1] -- FADE OVER props
 
 ## 🥊 UFC Fight Matchups (Dana White's Contender Series: Season 10, Week 2)
-  - [LEAN] **Taner Trembley** (7-0-0) vs Roman Puga -- fair -147
-  - [COIN_FLIP] **Douglas Rodrigues** (7-1-0) vs Trent Miller -- fair -130
-  - [COIN_FLIP] **Namo Fazil** (10-1-0) vs Kaik Brito -- fair -120
-  - [COIN_FLIP] **Mahamed Aly** (5-1-0) vs Alik Lorenz -- fair -114
-  - [COIN_FLIP] **Logan Paxton** (10-1-0) vs Cristian Pérez -- fair -102
+  - [COIN_FLIP] **Alik Lorenz** (8-2-0) vs Mahamed Aly -- fair -122
+  - [COIN_FLIP] **Cristian Pérez** (15-2-0) vs Logan Paxton -- fair -119
+  - [COIN_FLIP] **Taner Trembley** (7-1-0) vs Roman Puga -- fair -104
+  - [COIN_FLIP] **Trent Miller** (10-3-0) vs Douglas Rodrigues -- fair -101
+  - [COIN_FLIP] **Kaik Brito** (20-6-0) vs Namo Fazil -- fair -101
 
 ## ⛳ Golf Player Heat (from BMW Championship)
   - 🔥 T1 **Justin Thomas** (USA): +0 total -- finished T1
@@ -124,10 +121,7 @@
   - ❄️ **Elly De La Cruz** (CIN): L14 .135 / season .259 (-124pts) -- FADE props
   - ❄️ **Ozzie Albies** (ATL): L14 .130 / season .251 (-121pts) -- FADE props
 
-## 📈 Streak Regression Alerts (5)
-- [WNBA] Los Angeles Sparks on L4 L10 1-4 -- Los Angeles Sparks on L4 -- no historical sample
-- [WNBA] Toronto Tempo on L4 L10 0-4 -- Toronto Tempo on L4 -- no historical sample
-- [WNBA] Indiana Fever on W4 L10 4-1 -- Indiana Fever on W4 -- no historical sample
+## 📈 Streak Regression Alerts (2)
 - [MLS] New England Revolution on L3 L10 0-3 -- New England Revolution on L3 -- no historical sample
 - [MLS] Houston Dynamo FC on W3 L10 3-0 -- Houston Dynamo FC on W3 -- no historical sample
 

@@ -1,21 +1,21 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-08-19T05:27:03 UTC_
+_Generated 2026-08-19T13:41:18 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -4
+- **Score:** -8
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 14
-- **Total FADES:** 60
+- **Total STRONG:** 11
+- **Total FADES:** 52
 
 ## Top 5 Curated Picks
-1. **MLB / HOME** (MLB_TEAM, score=87.79)
-   - Play: HOME (TEAM_STRONG)
-   - Rationale: Cross-sport top pick (MLB_TEAM)
-2. **MLB / AWAY** (MLB_TEAM, score=79.21)
-   - Play: AWAY (TEAM_STRONG)
-   - Rationale: Cross-sport top pick (MLB_TEAM)
+1. **MLB / Cade Cavalli** (MLB_PITCHER, score=60.17)
+   - Play: Cade Cavalli (PITCHER_STRONG)
+   - Rationale: Cross-sport top pick (MLB_PITCHER)
+2. **MLB / Logan Gilbert** (MLB_PITCHER, score=59.33)
+   - Play: Logan Gilbert (PITCHER_STRONG)
+   - Rationale: Cross-sport top pick (MLB_PITCHER)
 3. **GOLF / Scottie Scheffler** (GOLF_PLAYER, score=52.79)
    - Play: Scottie Scheffler (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
@@ -40,9 +40,9 @@ _Generated 2026-08-19T05:27:03 UTC_
   - Fade angle: team total UNDER
 - **NBA** / MIA (TEAM_FADE)
   - Fade angle: team total UNDER
-- **MLB** / Braxton Ashcraft (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **MLB** / José Soriano (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **MLB** / Keider Montero (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **NHL** / adin hill (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / calvin pickard (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / marc-andre fleury (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
