@@ -4,32 +4,31 @@
 
 _Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
 
-_Generated at 2026-08-19T21:12:01 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-08-19T22:29:03 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
 **LAD @ COL - OVER_11.5**
 - Market: -110
-- Model probability: 86.7%
-- Raw edge: +65.43%
+- Model probability: 84.7%
+- Raw edge: +61.68%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
 
-## Full Slate (10 games)
+## Full Slate (9 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 6:05p ET | MIA @ PHI | Citizens Bank Park | 78F 4mph | MIA_ML +44.22% |
-| 6:35p ET | NYY @ BAL | Oriole Park at Camden Yards | 79F 4mph | OVER_8.0 +30.4% |
-| 6:40p ET | SFG @ CLE | Progressive Field | 72F 4mph | SFG_ML +23.94% |
-| 6:40p ET | STL @ CIN | Great American Ball Park | 73F 2mph | CIN_ML +10.88% |
+| 6:35p ET | NYY @ BAL | Oriole Park at Camden Yards | 79F 3mph | OVER_8.0 +28.81% |
+| 6:40p ET | SFG @ CLE | Progressive Field | 71F 4mph | SFG_ML +23.95% |
+| 6:40p ET | STL @ CIN | Great American Ball Park | 72F 4mph | CIN_ML +10.97% |
 | 6:40p ET | TOR @ TBR | Tropicana Field | indoor | TBR_ML +36.99% |
-| 7:40p ET | OAK @ KCR | Kauffman Stadium | 73F 3mph | OVER_8.5 +51.99% |
+| 7:40p ET | OAK @ KCR | Kauffman Stadium | 73F 4mph | OVER_8.5 +53.34% |
 | 7:40p ET | SEA @ MIL | American Family Field | indoor | MIL_ML +23.42% |
 | 8:05p ET | WSN @ TEX | Globe Life Field | indoor | OVER_7.5 +53.71% |
 | 8:10p ET | LAA @ HOU | Daikin Park | indoor | LAA_ML +6.59% |
-| 8:40p ET | LAD @ COL | Coors Field | 77F 7mph | OVER_11.5 +65.43% |
+| 8:40p ET | LAD @ COL | Coors Field | 77F 4mph | OVER_11.5 +61.68% |
 
 ## Parlays - top 5
 
@@ -58,23 +57,22 @@ _Generated at 2026-08-19T21:12:01 UTC. Game lines source: **Bovada (fallback -- 
 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
-| batter hits | 54 | 63.0% | 57.4% | 0.912 | 1.087 |
 | batter total bases | 15 | 40.0% | 50.4% | 1.241 | 0.862 |
+| batter hits | 54 | 63.0% | 57.4% | 0.912 | 1.087 |
 
-Cumulative graded plays: 9110. Wins: 3391. Hit rate: 37.2%.
+Cumulative graded plays: 9116. Wins: 3393. Hit rate: 37.2%.
 
 ## Auxiliary Markets (Model Fair Prices)
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
 | LAA @ HOU | 54.1% | -118 | 3.07 | +122 | -122 |
-| LAD @ COL | 39.6% | +153 | 4.82 | +350 | -350 |
-| MIA @ PHI | 50.5% | -102 | 3.49 | +341 | -341 |
-| NYY @ BAL | 35.6% | +181 | 5.19 | +227 | -227 |
-| OAK @ KCR | 24.2% | +314 | 6.99 | -127 | +127 |
+| LAD @ COL | 39.6% | +153 | 4.55 | +348 | -348 |
+| NYY @ BAL | 35.6% | +181 | 5.1 | +228 | -228 |
+| OAK @ KCR | 24.2% | +314 | 6.9 | -127 | +127 |
 | SEA @ MIL | 54.4% | -119 | 3.04 | -125 | +125 |
-| SFG @ CLE | 47.4% | +111 | 3.71 | +157 | -157 |
-| STL @ CIN | 41.1% | +143 | 4.42 | +126 | -126 |
+| SFG @ CLE | 47.4% | +111 | 3.7 | +157 | -157 |
+| STL @ CIN | 41.1% | +143 | 4.48 | +126 | -126 |
 | TOR @ TBR | 55.5% | -125 | 2.94 | -364 | +364 |
 | WSN @ TEX | 33.6% | +198 | 5.45 | +372 | -372 |
 

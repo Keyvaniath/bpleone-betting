@@ -2,7 +2,7 @@
 
 ## 🏥 Model Health: 65.4/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.9/100
+  - 🟢 Calibration Freshness: 100.0/100
   - 🔴 Hit Rate Trend: 0/100
   - 🔴 Brier Trend: 48.8/100
   - 🟢 Pipeline Audit: 100.0/100
@@ -20,6 +20,14 @@
 3. **SDP @ NYM YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 4. **ATL @ MIN YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
 5. **NYY @ BAL YRFI (1st-inning OVER 0.5)** (78/100 ★★★★)
+
+## 🐋 Whale Picks (Max Confluence)
+- [STRONG] **[MLB]** TOR @ TBR ML_HOME -- 72% / +13.8% (score 2.8)
+- [STRONG] **[MLB]** TOR @ TBR TBR_ML -- 78% / +22.2% (score 2.5)
+
+## 📡 Sharp Action (Line Movement)
+- [STRONG] **WSN @ TEX** ml_away: 42.74% → 48.08% (+5.3pp)
+- [MODERATE] **TOR @ TBR** ml_home: 58.68% → 63.5% (+4.8pp)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -56,9 +64,10 @@
 - Hot teams: **4** | Cold teams: **3** | Over-heavy: 0 | Under-heavy: 7
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (53)
-- STEAM_MOVE: **52**
+## ⚠️ Anomaly Detector (56)
+- STEAM_MOVE: **54**
 - PEN_MISMATCH: **1**
+- COMPOUND_BULLPEN: **1**
   - MIL @ LAD (MLB): ML steam since open: ML -16.7pp toward MIL (11 snapshots)
   - KCR @ LAA (MLB): ML/TOTAL steam since open: ML -11.0pp toward KCR; total +0.5 (OVER) (4 snapshots)
   - CHI @ SEA (WNBA): TOTAL steam since open: ML -1.9pp toward CHI; total +2 (OVER) (4 snapshots)
@@ -74,20 +83,20 @@
   - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
-## 🎯 Convergence Picks (13 stacked games)
-- ELITE: **3** · HIGH: 4 · MED: 6
-  - [ELITE] Indiana Fever @ Toronto Tempo : 4 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ATS)
+## 🎯 Convergence Picks (12 stacked games)
+- ELITE: **2** · HIGH: 4 · MED: 6
   - [ELITE] New England Revolution @ D.C. United : 4 signals (PREGAME, HEAT_COLD, ATS, ATS)
   - [ELITE] Houston Dynamo FC @ Vancouver Whitecaps : 4 signals (PREGAME, HEAT_COLD, ATS, ATS)
-  - [HIGH] New York Liberty @ Chicago Sky : 3 signals (HEAT_COLD, HEAT_COLD, ATS)
-  - [HIGH] Atlanta Dream @ Las Vegas Aces : 3 signals (HEAT_COLD, HEAT_COLD, ATS)
+  - [HIGH] Toronto Tempo @ Washington Mystics : 3 signals (HEAT_COLD, HEAT_COLD, ATS)
+  - [HIGH] Minnesota Lynx @ Golden State Valkyries : 3 signals (HEAT_COLD, HEAT_COLD, ATS)
+  - [HIGH] CF Montréal @ Columbus Crew : 3 signals (PREGAME, ATS, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (12)
-- **Paul Skenes** OVER 4.5 K (78%) fair -347
+## ⚾ Top MLB Pitcher K Plays (8)
 - **Logan Gilbert** OVER 4.5 K (78%) fair -347
 - **Aaron Nola** OVER 4.5 K (76%) fair -321
-- **Taj Bradley** OVER 4.5 K (73%) fair -271
 - **Chase Burns** OVER 4.5 K (73%) fair -271
+- **Drew Rasmussen** OVER 4.5 K (71%) fair -251
+- **Cade Cavalli** OVER 5.5 K (64%) fair -179
 
 ## 🏀 NBA Player Heat (2 HOT / 1 COLD)
   - 🔥 **Scottie Barnes** (TOR): L5 24.4/7.6/9.6 vs season 18.6/5.8/8.8 [PTS +5.8]
@@ -108,10 +117,10 @@
   - 🔥 T4 **Sungjae Im** (South Korea): +0 total -- finished T4
   - 🔥 T5 **Aaron Rai** (England): +0 total -- finished T5
 
-## 🔥 MLB Batter Heat (43 HOT / 67 COLD)
+## 🔥 MLB Batter Heat (41 HOT / 65 COLD)
   - 🔥 **Jac Caglianone** (KC): L14 .463 / season .278 (+185pts)
   - 🔥 **Victor Robles** (SEA): L14 .444 / season .260 (+184pts)
-  - 🔥 **Alec Bohm** (PHI): L14 .396 / season .244 (+152pts)
+  - 🔥 **Alec Bohm** (PHI): L14 .400 / season .244 (+156pts)
   - 🔥 **Cam Smith** (HOU): L14 .356 / season .223 (+133pts)
   - 🔥 **Pete Alonso** (BAL): L14 .396 / season .267 (+129pts)
   - ❄️ **David Fry** (CLE): L14 .000 / season .182 (-182pts) -- FADE props
@@ -120,7 +129,10 @@
   - ❄️ **Heliot Ramos** (NYY): L14 .106 / season .242 (-136pts) -- FADE props
   - ❄️ **Spencer Horwitz** (PIT): L14 .125 / season .256 (-131pts) -- FADE props
 
-## 📈 Streak Regression Alerts (2)
+## 📈 Streak Regression Alerts (5)
+- [WNBA] Toronto Tempo on L4 L10 0-4 -- Toronto Tempo on L4 -- no historical sample
+- [WNBA] Golden State Valkyries on W4 L10 4-0 -- Golden State Valkyries on W4 -- no historical sample
+- [WNBA] Minnesota Lynx on W4 L10 4-1 -- Minnesota Lynx on W4 -- no historical sample
 - [MLS] New England Revolution on L3 L10 0-3 -- New England Revolution on L3 -- no historical sample
 - [MLS] Houston Dynamo FC on W3 L10 3-0 -- Houston Dynamo FC on W3 -- no historical sample
 
