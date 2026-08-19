@@ -1,14 +1,14 @@
 # Tonight's Slate Brief — 2026-08-19
 
-## Slate Quality: 55/100 (MEDIUM)
-_0% lineups confirmed · 13 rookie SPs_
+## Slate Quality: 59/100 (MEDIUM)
+_13% lineups confirmed · 13 rookie SPs_
 **Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
 - **15 games** scheduled
-- **29 best bets** scored: 0 DK · 0 PP · 11 NRFI · 0 SGP
+- **28 best bets** scored: 0 DK · 0 PP · 10 NRFI · 0 SGP
 - **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$30.4
-- **MC simulation:** EV +$103.66, 77% P(profit), p05 $-118.65 / p95 $314.1
+- **MC simulation:** EV +$98.54, 80% P(profit), p05 $-124.16 / p95 $294.66
 
 ## Top 5 Best Bets
 1. **DET @ PIT YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +24.2%)
@@ -22,7 +22,7 @@ _0% lineups confirmed · 13 rookie SPs_
 5. **NYY @ BAL YRFI (1st-inning OVER 0.5)**  (78/100 ****, edge +18.4%)
    - P(YRFI) 64.4% vs baseline 46.0%
 
-## ⚠️ Trap Warnings — 10 flagged
+## ⚠️ Trap Warnings — 9 flagged
 - **DET @ PIT YRFI (1st-inning OVER 0.5)** (low):
    - Edge +24.2% looks big but only 0 settled props on this player — model unproven
 - **WSN @ TEX YRFI (1st-inning OVER 0.5)** (low):

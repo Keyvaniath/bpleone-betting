@@ -1,13 +1,13 @@
 # EdgeStat Daily Summary — 2026-08-19
 
-## 🏥 Model Health: 67.0/100 [OK]
+## 🏥 Model Health: 62.8/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.9/100
+  - 🟢 Calibration Freshness: 99.7/100
   - 🔴 Hit Rate Trend: 0/100
-  - 🔴 Brier Trend: 52.4/100
+  - 🔴 Brier Trend: 34.2/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 95.5/100
-  - 🟡 Edge Count: 74.3/100
+  - 🟡 Edge Count: 68.6/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.571)
@@ -20,6 +20,9 @@
 3. **SDP @ NYM YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 4. **ATL @ MIN YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
 5. **NYY @ BAL YRFI (1st-inning OVER 0.5)** (78/100 ★★★★)
+
+## 🐋 Whale Picks (Max Confluence)
+- [STRONG] **[MLB]** ATL @ MIN ATL_ML -- 66% / +21.3% (score 2.5)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -56,10 +59,9 @@
 - Hot teams: **4** | Cold teams: **3** | Over-heavy: 0 | Under-heavy: 7
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (55)
+## ⚠️ Anomaly Detector (52)
 - STEAM_MOVE: **51**
-- COMPOUND_BULLPEN: **2**
-- PEN_MISMATCH: **2**
+- PEN_MISMATCH: **1**
   - MIL @ LAD (MLB): ML steam since open: ML -16.7pp toward MIL (11 snapshots)
   - KCR @ LAA (MLB): ML/TOTAL steam since open: ML -11.0pp toward KCR; total +0.5 (OVER) (4 snapshots)
   - CHI @ SEA (WNBA): TOTAL steam since open: ML -1.9pp toward CHI; total +2 (OVER) (4 snapshots)
