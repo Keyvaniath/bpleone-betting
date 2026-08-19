@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-08-19T14:50:11",
-  "n_settled": 9108,
+  "generated_at": "2026-08-19T21:11:02",
+  "n_settled": 9110,
   "span": [
     "2026-05-19",
     "2026-08-19"
@@ -8,15 +8,15 @@
   "n_days": 93,
   "in_sample": {
     "raw_roi": -19.9,
-    "raw_n": 9099,
+    "raw_n": 9101,
     "curated_roi": 12.3,
-    "curated_n": 1837,
-    "curated_hit": 69.2,
+    "curated_n": 1838,
+    "curated_hit": 69.3,
     "families_cut": 22,
     "curated_roi_ci": {
-      "roi_lo": 8.3,
-      "roi_hi": 16.1,
-      "n": 1837,
+      "roi_lo": 8.2,
+      "roi_hi": 16.4,
+      "n": 1838,
       "positive": true
     }
   },
@@ -28,11 +28,11 @@
       "test_end": "2026-08-19",
       "train_n": 6158,
       "families_cut": 23,
-      "test_raw_roi": -24.4,
-      "test_oos_roi": 6.7,
-      "test_oos_hit": 57.9,
-      "test_oos_n": 437,
-      "test_leak_roi": 9.0
+      "test_raw_roi": -24.3,
+      "test_oos_roi": 7.1,
+      "test_oos_hit": 58.1,
+      "test_oos_n": 439,
+      "test_leak_roi": 9.2
     },
     {
       "split": "70/30",
@@ -42,10 +42,10 @@
       "train_n": 6480,
       "families_cut": 23,
       "test_raw_roi": -25.3,
-      "test_oos_roi": 5.7,
-      "test_oos_hit": 56.0,
-      "test_oos_n": 339,
-      "test_leak_roi": 10.4
+      "test_oos_roi": 6.2,
+      "test_oos_hit": 56.3,
+      "test_oos_n": 341,
+      "test_leak_roi": 10.7
     },
     {
       "split": "80/20",
@@ -54,23 +54,23 @@
       "test_end": "2026-08-19",
       "train_n": 7139,
       "families_cut": 22,
-      "test_raw_roi": -25.2,
-      "test_oos_roi": -1.3,
-      "test_oos_hit": 54.6,
-      "test_oos_n": 269,
-      "test_leak_roi": 5.2
+      "test_raw_roi": -25.1,
+      "test_oos_roi": -0.6,
+      "test_oos_hit": 55.0,
+      "test_oos_n": 271,
+      "test_leak_roi": 5.5
     }
   ],
   "holdout_70_ci": {
-    "roi_lo": -6.7,
-    "roi_hi": 18.6,
-    "n": 339,
+    "roi_lo": -6.0,
+    "roi_hi": 19.2,
+    "n": 341,
     "positive": false
   },
   "holdout_robust_ci": {
     "roi_lo": -15.2,
-    "roi_hi": 3.1,
-    "n": 295,
+    "roi_hi": 3.6,
+    "n": 296,
     "positive": false
   },
   "persistence": {
@@ -100,21 +100,21 @@
         "net": -166.5
       },
       {
-        "family": "mlb_tb_2.5_over",
+        "family": "tb_3plus_yes",
         "n": 370,
         "net": -146.6
       },
       {
-        "family": "tb_3plus_yes",
+        "family": "mlb_tb_2.5_over",
         "n": 370,
         "net": -146.6
       }
     ]
   },
   "concentration": {
-    "n_surviving_families": 34,
-    "curated_net": 19.3,
-    "curated_n": 339,
+    "n_surviving_families": 35,
+    "curated_net": 21.1,
+    "curated_n": 341,
     "top2": [
       {
         "family": "fight_r1_finish_yes",
@@ -130,9 +130,9 @@
       }
     ],
     "net_top2": 55.3,
-    "net_ex_top2": -36.0,
-    "roi_ex_flagged": -6.0,
-    "n_ex_flagged": 295,
+    "net_ex_top2": -34.2,
+    "roi_ex_flagged": -5.7,
+    "n_ex_flagged": 296,
     "top_contributors": [
       {
         "family": "fight_r1_finish_yes",
@@ -199,9 +199,17 @@
         "roi": 91.7,
         "hit": 100.0,
         "flagged": true
+      },
+      {
+        "family": "chc_ml",
+        "n": 1,
+        "net": 0.9,
+        "roi": 90.9,
+        "hit": 100.0,
+        "flagged": true
       }
     ],
-    "note": "Concentrated: the top 2 of 34 surviving families produced +55u; the other 32 combined LOST 36u. One pillar is flagged small-sample and quarantined; excluding flagged families the held-out edge is -6.0% (n=295)."
+    "note": "Concentrated: the top 2 of 35 surviving families produced +55u; the other 33 combined LOST 34u. One pillar is flagged small-sample and quarantined; excluding flagged families the held-out edge is -5.7% (n=296)."
   },
   "caveats": [
     "Short sample: ~1 month, single MLB season. The held-out tail is genuinely unseen but adjacent in time -- not a cross-season or cross-regime test.",
@@ -209,5 +217,5 @@
     "ROI is measured at the model's fair price / settled outcome. It does NOT yet prove we beat the closing line (CLV) -- that requires the live odds feed.",
     "The 95% CI shows the edge is significant WITHIN this sample (it's not sampling noise), but says nothing about regime change -- it's still ~1 month of one season. It also treats picks as independent, so same-slate correlation makes the true interval a touch wider than shown."
   ],
-  "headline": "The curation derived on early data still returns +5.7% on the unseen later window, and the families it cut went on to lose 1363u out-of-sample."
+  "headline": "The curation derived on early data still returns +6.2% on the unseen later window, and the families it cut went on to lose 1363u out-of-sample."
 }

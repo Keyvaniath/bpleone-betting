@@ -1,11 +1,11 @@
 # Tonight's Slate Brief — 2026-08-19
 
-## Slate Quality: 59/100 (MEDIUM)
-_13% lineups confirmed · 13 rookie SPs_
-**Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
+## Slate Quality: 83/100 (HIGH)
+_90% lineups confirmed · 8 rookie SPs_
+**Recommendation:** Play normal Kelly sizing.
 
 ## Slate
-- **15 games** scheduled
+- **10 games** scheduled
 - **28 best bets** scored: 0 DK · 0 PP · 10 NRFI · 0 SGP
 - **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$30.4
 - **MC simulation:** EV +$98.54, 80% P(profit), p05 $-124.16 / p95 $294.66
@@ -33,6 +33,9 @@ _13% lineups confirmed · 13 rookie SPs_
    - Edge +20.0% looks big but only 0 settled props on this player — model unproven
 - **NYY @ BAL YRFI (1st-inning OVER 0.5)** (low):
    - Edge +18.4% looks big but only 0 settled props on this player — model unproven
+
+## Hot streaks
+**Batters heating up:** Miguel Vargas (heat +1.74), Tristan Peters (heat +0.95), Colt Keith (heat +0.83)
 
 ## Bullpens GASSED tonight
 Athletics, Pittsburgh Pirates, St. Louis Cardinals, Tampa Bay Rays, Minnesota Twins, Philadelphia Phillies, Chicago White Sox, Miami Marlins
@@ -64,13 +67,13 @@ _Lean late-inning OVER on these games; fade their save situations._
 - Kiwoom Heroes @ Lotte Giants | P(home) 61.6% fair -160 | total 9 R
 - **KBO POD:** Lotte Giants ML vs Kiwoom Heroes (KBO) (HIGH)
 
-## LoL Esports -- 0 live, 10 upcoming
+## LoL Esports -- 0 live, 23 upcoming
 - [LCK Challengers] kt Challengers vs T1 Esports Academy BO3 | P(A) 41.7% fair +140/-140
 - [LCK Challengers] BNK FEARX Youth vs HLE Challengers BO3 | P(A) 57.2% fair -134/+134
-- [NLC] Verdant vs Bulldog Esports BO3 | P(A) 58.1% fair -138/+138
-- [NLC] Bardicted to U vs Arctic Pandas BO3 | P(A) 43.0% fair +132/-132
 - [LCK Challengers] DK Challengers vs DNS Challengers BO3 | P(A) 51.3% fair -105/+105
-- **LoL POT:** Dplus KIA ML vs Hanwha Life Esports (LCK, BO3) (HIGH)
+- [LCK Challengers] BRO Challengers vs KRX Challengers BO3 | P(A) 36.1% fair +177/-177
+- [LCK] Dplus KIA vs Hanwha Life Esports BO3 | P(A) 58.3% fair -140/+140
+- **LoL POT:** T1 ML vs kt Rolster (LCK, BO3) (HIGH)
 
 ## Player Play of the Day -- across all sports (3463 candidates scanned)
 - **[LOL]** Inspired UNDER 3.5 Kills | model 61.7% fair -161 (ELITE)

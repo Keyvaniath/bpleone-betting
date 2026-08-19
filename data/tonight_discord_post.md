@@ -1,5 +1,5 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:11 F:52
+_NO_ACTION_NIGHT_ | L:0 S:9 F:53
 
 :dart: **Top Picks:**
 1. [MLB] Cade Cavalli -- Cade Cavalli (PITCHER_STRONG)

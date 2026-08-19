@@ -1,18 +1,18 @@
 # EdgeStat Daily Summary — 2026-08-19
 
-## 🏥 Model Health: 62.8/100 [OK]
+## 🏥 Model Health: 65.4/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.7/100
+  - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 0/100
-  - 🔴 Brier Trend: 34.2/100
+  - 🔴 Brier Trend: 48.8/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 95.5/100
-  - 🟡 Edge Count: 68.6/100
+  - 🟡 Edge Count: 65.7/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.571)
-- **Total games on board:** 99
-- **Strong home favorites:** 9 | **Strong road dogs:** 0
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.573)
+- **Total games on board:** 101
+- **Strong home favorites:** 10 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
 1. **DET @ PIT YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
@@ -20,9 +20,6 @@
 3. **SDP @ NYM YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 4. **ATL @ MIN YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
 5. **NYY @ BAL YRFI (1st-inning OVER 0.5)** (78/100 ★★★★)
-
-## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** ATL @ MIN ATL_ML -- 66% / +21.3% (score 2.5)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -59,8 +56,8 @@
 - Hot teams: **4** | Cold teams: **3** | Over-heavy: 0 | Under-heavy: 7
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (52)
-- STEAM_MOVE: **51**
+## ⚠️ Anomaly Detector (53)
+- STEAM_MOVE: **52**
 - PEN_MISMATCH: **1**
   - MIL @ LAD (MLB): ML steam since open: ML -16.7pp toward MIL (11 snapshots)
   - KCR @ LAA (MLB): ML/TOTAL steam since open: ML -11.0pp toward KCR; total +0.5 (OVER) (4 snapshots)
@@ -111,17 +108,17 @@
   - 🔥 T4 **Sungjae Im** (South Korea): +0 total -- finished T4
   - 🔥 T5 **Aaron Rai** (England): +0 total -- finished T5
 
-## 🔥 MLB Batter Heat (48 HOT / 67 COLD)
+## 🔥 MLB Batter Heat (43 HOT / 67 COLD)
   - 🔥 **Jac Caglianone** (KC): L14 .463 / season .278 (+185pts)
   - 🔥 **Victor Robles** (SEA): L14 .444 / season .260 (+184pts)
   - 🔥 **Alec Bohm** (PHI): L14 .396 / season .244 (+152pts)
   - 🔥 **Cam Smith** (HOU): L14 .356 / season .223 (+133pts)
   - 🔥 **Pete Alonso** (BAL): L14 .396 / season .267 (+129pts)
+  - ❄️ **David Fry** (CLE): L14 .000 / season .182 (-182pts) -- FADE props
   - ❄️ **Ben Rice** (NYY): L14 .098 / season .249 (-151pts) -- FADE props
   - ❄️ **Jeremy Peña** (HOU): L14 .136 / season .284 (-148pts) -- FADE props
   - ❄️ **Heliot Ramos** (NYY): L14 .106 / season .242 (-136pts) -- FADE props
-  - ❄️ **Elly De La Cruz** (CIN): L14 .135 / season .259 (-124pts) -- FADE props
-  - ❄️ **Ozzie Albies** (ATL): L14 .130 / season .251 (-121pts) -- FADE props
+  - ❄️ **Spencer Horwitz** (PIT): L14 .125 / season .256 (-131pts) -- FADE props
 
 ## 📈 Streak Regression Alerts (2)
 - [MLS] New England Revolution on L3 L10 0-3 -- New England Revolution on L3 -- no historical sample

@@ -1,13 +1,13 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-08-19T14:50:20 UTC_
+_Generated 2026-08-19T21:11:10 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -8
+- **Score:** -17
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 11
-- **Total FADES:** 52
+- **Total STRONG:** 9
+- **Total FADES:** 53
 
 ## Top 5 Curated Picks
 1. **MLB / Cade Cavalli** (MLB_PITCHER, score=60.17)
@@ -40,9 +40,9 @@ _Generated 2026-08-19T14:50:20 UTC_
   - Fade angle: team total UNDER
 - **NBA** / TOR (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NHL** / kevin lankinen (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / connor hellebuyck (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / stuart skinner (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
+- **MLB** / Michael King (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Clay Holmes (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Paul Skenes (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
