@@ -1,25 +1,25 @@
-# EdgeStat Daily Summary — 2026-08-18
+# EdgeStat Daily Summary — 2026-08-19
 
-## 🏥 Model Health: 67.0/100 [OK]
+## 🏥 Model Health: 66.1/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 100.0/100
+  - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 0/100
   - 🔴 Brier Trend: 52.4/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 95.5/100
+  - 🟢 Data Health: 90.9/100
   - 🟡 Edge Count: 74.3/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.565)
-- **Total games on board:** 103
-- **Strong home favorites:** 10 | **Strong road dogs:** 2
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.571)
+- **Total games on board:** 99
+- **Strong home favorites:** 9 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
-1. **OAK @ KCR YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+1. **CHW @ CHC YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 2. **SFG @ CLE YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 3. **MIA @ PHI YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-4. **LAD @ COL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-5. **ARI @ BOS YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+4. **OAK @ KCR YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+5. **LAD @ COL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
 - [STRONG] **[MLB]** SEA @ MIL MIL_ML -- 66% / +20.6% (score 2.5)
@@ -50,32 +50,29 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (5)
-- [WNBA] **Indiana Fever** AWAY (4-1 L10) · model 73.8% fair -282
+## ⚡ Pre-Game HIGH Conviction (3)
 - [MLS] **Colorado Rapids** HOME (2-0 L10) · model 71.4% fair -249
 - [MLS] **Columbus Crew** HOME (0-2 L10) · model 70.2% fair -236
 - [MLS] **FC Cincinnati** HOME (1-1 L10) · model 65.1% fair -187
-- [WNBA] **New York Liberty** AWAY (4-1 L10) · model 64.2% fair -179
 
 ## 🔥/❄️ Heat / Cold Signals
-- Hot teams: **4** | Cold teams: **3** | Over-heavy: 0 | Under-heavy: 4
+- Hot teams: **4** | Cold teams: **3** | Over-heavy: 0 | Under-heavy: 7
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (58)
-- RESIDUAL_DIVERGENCE: **4**
-- STEAM_MOVE: **49**
+## ⚠️ Anomaly Detector (56)
+- STEAM_MOVE: **51**
 - PEN_MISMATCH: **2**
 - COMPOUND_BULLPEN: **3**
-  - Connecticut Sun (WNBA): Connecticut Sun UNDERPERFORMING expected margin by 15.5pts in recent games -- model bias may persist
-  - Indiana Fever (WNBA): Indiana Fever OUTPERFORMING expected margin by 9.7pts in recent games -- model bias may persist
-  - Chicago Sky (WNBA): Chicago Sky UNDERPERFORMING expected margin by 7.8pts in recent games -- model bias may persist
-  - Atlanta Dream (WNBA): Atlanta Dream OUTPERFORMING expected margin by 9.4pts in recent games -- model bias may persist
   - MIL @ LAD (MLB): ML steam since open: ML -16.7pp toward MIL (11 snapshots)
+  - KCR @ LAA (MLB): ML/TOTAL steam since open: ML -11.0pp toward KCR; total +0.5 (OVER) (4 snapshots)
+  - CHI @ SEA (WNBA): TOTAL steam since open: ML -1.9pp toward CHI; total +2 (OVER) (4 snapshots)
+  - NY @ IND (WNBA): TOTAL steam since open: ML +0.9pp toward IND; total -2 (UNDER) (5 snapshots)
+  - PHX @ LA (WNBA): TOTAL steam since open: ML -0.9pp toward PHX; total +2 (OVER) (4 snapshots)
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$16.19**
-  - #1 [NRFI] $50 on OAK @ KCR YRFI (1st-inning OVER 0.5) (P=78%)
+- Expected EV: **$16.9**
+  - #1 [NRFI] $50 on CHW @ CHC YRFI (1st-inning OVER 0.5) (P=79%)
   - #2 [NRFI] $50 on SFG @ CLE YRFI (1st-inning OVER 0.5) (P=77%)
   - #3 [NRFI] $50 on MIA @ PHI YRFI (1st-inning OVER 0.5) (P=76%)
   - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
@@ -115,17 +112,17 @@
   - 🔥 T4 **Sungjae Im** (South Korea): +0 total -- finished T4
   - 🔥 T5 **Aaron Rai** (England): +0 total -- finished T5
 
-## 🔥 MLB Batter Heat (43 HOT / 63 COLD)
-  - 🔥 **Jac Caglianone** (KC): L14 .444 / season .276 (+168pts)
-  - 🔥 **Victor Robles** (SEA): L14 .429 / season .264 (+165pts)
-  - 🔥 **Pete Alonso** (BAL): L14 .412 / season .267 (+145pts)
-  - 🔥 **Cam Smith** (HOU): L14 .362 / season .223 (+139pts)
-  - 🔥 **Randal Grichuk** (CWS): L14 .412 / season .277 (+135pts)
-  - ❄️ **Ben Rice** (NYY): L14 .102 / season .251 (-149pts) -- FADE props
-  - ❄️ **Heliot Ramos** (NYY): L14 .106 / season .244 (-138pts) -- FADE props
-  - ❄️ **Garrett Mitchell** (MIL): L14 .114 / season .249 (-135pts) -- FADE props
-  - ❄️ **Jesús Sánchez** (TOR): L14 .138 / season .261 (-123pts) -- FADE props
-  - ❄️ **Jeremy Peña** (HOU): L14 .167 / season .288 (-121pts) -- FADE props
+## 🔥 MLB Batter Heat (48 HOT / 67 COLD)
+  - 🔥 **Jac Caglianone** (KC): L14 .463 / season .278 (+185pts)
+  - 🔥 **Victor Robles** (SEA): L14 .444 / season .260 (+184pts)
+  - 🔥 **Alec Bohm** (PHI): L14 .396 / season .244 (+152pts)
+  - 🔥 **Cam Smith** (HOU): L14 .356 / season .223 (+133pts)
+  - 🔥 **Pete Alonso** (BAL): L14 .396 / season .267 (+129pts)
+  - ❄️ **Ben Rice** (NYY): L14 .098 / season .249 (-151pts) -- FADE props
+  - ❄️ **Jeremy Peña** (HOU): L14 .136 / season .284 (-148pts) -- FADE props
+  - ❄️ **Heliot Ramos** (NYY): L14 .106 / season .242 (-136pts) -- FADE props
+  - ❄️ **Elly De La Cruz** (CIN): L14 .135 / season .259 (-124pts) -- FADE props
+  - ❄️ **Ozzie Albies** (ATL): L14 .130 / season .251 (-121pts) -- FADE props
 
 ## 📈 Streak Regression Alerts (5)
 - [WNBA] Los Angeles Sparks on L4 L10 1-4 -- Los Angeles Sparks on L4 -- no historical sample
@@ -145,6 +142,6 @@
 - ELITE: **0** · HEALTHY: 0 · OK: 0 · DEGRADED: **2**
 
 ## 🤖 Self-Training Status
-- **WNBA**: n=38 games · hit rate 65.8% · bias -4.9pp [calibration applied]
+- **WNBA**: n=41 games · hit rate 65.8% · bias -5.2pp [calibration applied]
 - **MLS**: n=32 games · hit rate 53.1% · bias -9.1pp [calibration applied]
-- **MLB**: n=190 games · hit rate 52.6% · bias -0.9pp
+- **MLB**: n=190 games · hit rate 50.5% · bias +0.8pp

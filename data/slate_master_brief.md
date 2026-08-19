@@ -1,27 +1,27 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-08-18T22:33:39 UTC_
+_Generated 2026-08-19T05:27:03 UTC_
 
 ## Slate Quality
-- **Tier:** STRONG_NIGHT
-- **Score:** 77
-- **Advisory:** Solid slate. Pick top STRONG/LOCK picks; consider Kelly 25-50% sizing.
+- **Tier:** NO_ACTION_NIGHT
+- **Score:** -4
+- **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 32
-- **Total FADES:** 51
+- **Total STRONG:** 14
+- **Total FADES:** 60
 
 ## Top 5 Curated Picks
-1. **WNBA / breanna stewart** (WNBA_PLAYER, score=111.17)
-   - Play: breanna stewart (PLAYER_STRONG)
-   - Rationale: Cross-sport top pick (WNBA_PLAYER)
-2. **MLB / Pete Alonso** (MLB_BATTER, score=104.56)
-   - Play: Pete Alonso (BATTER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_BATTER)
-3. **WNBA / kelsey mitchell** (WNBA_PLAYER, score=104.25)
-   - Play: kelsey mitchell (PLAYER_STRONG)
-   - Rationale: Cross-sport top pick (WNBA_PLAYER)
-4. **MLB / Alex Bregman** (MLB_BATTER, score=102.5)
-   - Play: Alex Bregman (BATTER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_BATTER)
+1. **MLB / HOME** (MLB_TEAM, score=87.79)
+   - Play: HOME (TEAM_STRONG)
+   - Rationale: Cross-sport top pick (MLB_TEAM)
+2. **MLB / AWAY** (MLB_TEAM, score=79.21)
+   - Play: AWAY (TEAM_STRONG)
+   - Rationale: Cross-sport top pick (MLB_TEAM)
+3. **GOLF / Scottie Scheffler** (GOLF_PLAYER, score=52.79)
+   - Play: Scottie Scheffler (PLAYER_STRONG)
+   - Rationale: Cross-sport top pick (GOLF_PLAYER)
+4. **GOLF / Rory McIlroy** (GOLF_PLAYER, score=51.36)
+   - Play: Rory McIlroy (PLAYER_STRONG)
+   - Rationale: Cross-sport top pick (GOLF_PLAYER)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
@@ -36,13 +36,13 @@ _Generated 2026-08-18T22:33:39 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **NBA** / MIA (TEAM_FADE)
-  - Fade angle: team total UNDER
 - **NBA** / TOR (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NHL** / connor hellebuyck (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / filip gustavsson (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / samsonov ilya (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
+- **NBA** / MIA (TEAM_FADE)
+  - Fade angle: team total UNDER
+- **MLB** / Braxton Ashcraft (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / José Soriano (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Keider Montero (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
