@@ -1,4 +1,4 @@
-# 🌙 Tonight's Brief — 2026-08-19
+# 🌙 Tonight's Brief — 2026-08-20
 
 _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 
@@ -14,7 +14,6 @@ _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 - **Austin Dean** one_plus_tb (KBO) -- 73% / +38.5%
 
 ## 📡 Sharp Money Following Model
-- **WSN @ TEX** ml_away: line moved 42.74% → 48.08% (+5.3pp)
 - **TOR @ TBR** ml_home: line moved 58.68% → 63.5% (+4.8pp)
 
 ## 🎰 Tonight's Best Parlay
@@ -22,5 +21,5 @@ _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 - Joint 53% · fair +264 · edge +94.6%
 
 ---
-_Generated 2026-08-19T22:28:05_
+_Generated 2026-08-20T05:18:02_
 _Full breakdown: /tonight · Full history: /locks-of-day_

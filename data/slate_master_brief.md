@@ -1,28 +1,21 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-08-19T22:28:12 UTC_
+_Generated 2026-08-20T05:18:08 UTC_
 
 ## Slate Quality
-- **Tier:** MODEST_NIGHT
-- **Score:** 27
-- **Advisory:** Light slate. Limit to 1-3 strongest plays; use 25% Kelly or less.
+- **Tier:** NO_ACTION_NIGHT
+- **Score:** -13
+- **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 20
-- **Total FADES:** 53
-
-## Lock of the Night
-- **Subject:** Kumar Rocker
-- **Source:** ELITE_BOARD
-- **Sport:** MLB
-- **Score:** 15.0
-- **Details:** WSN @ TEX
+- **Total STRONG:** 11
+- **Total FADES:** 57
 
 ## Top 5 Curated Picks
-1. **MLB / Pete Alonso** (MLB_BATTER, score=118.62)
-   - Play: Pete Alonso (BATTER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_BATTER)
-2. **MLB / Alec Burleson** (MLB_BATTER, score=96.31)
-   - Play: Alec Burleson (BATTER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_BATTER)
+1. **MLB / AWAY** (MLB_TEAM, score=87.58)
+   - Play: AWAY (TEAM_STRONG)
+   - Rationale: Cross-sport top pick (MLB_TEAM)
+2. **MLB / HOME** (MLB_TEAM, score=79.0)
+   - Play: HOME (TEAM_STRONG)
+   - Rationale: Cross-sport top pick (MLB_TEAM)
 3. **GOLF / Scottie Scheffler** (GOLF_PLAYER, score=52.79)
    - Play: Scottie Scheffler (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
@@ -37,19 +30,19 @@ _Generated 2026-08-19T22:28:12 UTC_
   - Collin Morikawa top 10 finish
 
 ## Slate ROI Projection
-- **Picks:** 1
-- **Avg edge:** -0.91%
+- **Picks:** 0
+- **Avg edge:** 0%
 - **Expected ROI (1/4 Kelly):** 0.0%
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **NBA** / MIA (TEAM_FADE)
-  - Fade angle: team total UNDER
+- **MLB** / Kumar Rocker (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
 - **NBA** / TOR (TEAM_FADE)
   - Fade angle: team total UNDER
-- **MLB** / Aaron Nola (PITCHER_FADE)
+- **NBA** / MIA (TEAM_FADE)
+  - Fade angle: team total UNDER
+- **MLB** / Logan Gilbert (PITCHER_FADE)
   - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **MLB** / Sandy Alcantara (PITCHER_FADE)
+- **MLB** / Walbert Ureña (PITCHER_FADE)
   - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **NHL** / filip gustavsson (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO

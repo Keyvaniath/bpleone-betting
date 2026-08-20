@@ -1,32 +1,31 @@
-# EdgeStat Daily Summary — 2026-08-19
+# EdgeStat Daily Summary — 2026-08-20
 
-## 🏥 Model Health: 65.4/100 [OK]
+## 🏥 Model Health: 64.5/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 100.0/100
+  - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 0/100
   - 🔴 Brier Trend: 48.8/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 95.5/100
+  - 🟢 Data Health: 90.9/100
   - 🟡 Edge Count: 65.7/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.573)
-- **Total games on board:** 101
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.581)
+- **Total games on board:** 97
 - **Strong home favorites:** 10 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
-1. **DET @ PIT YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+1. **OAK @ KCR YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 2. **WSN @ TEX YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-3. **SDP @ NYM YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-4. **ATL @ MIN YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
-5. **NYY @ BAL YRFI (1st-inning OVER 0.5)** (78/100 ★★★★)
+3. **NYY @ BAL YRFI (1st-inning OVER 0.5)** (78/100 ★★★★)
+4. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
+5. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
 - [STRONG] **[MLB]** TOR @ TBR ML_HOME -- 72% / +13.8% (score 2.8)
 - [STRONG] **[MLB]** TOR @ TBR TBR_ML -- 78% / +22.2% (score 2.5)
 
 ## 📡 Sharp Action (Line Movement)
-- [STRONG] **WSN @ TEX** ml_away: 42.74% → 48.08% (+5.3pp)
 - [MODERATE] **TOR @ TBR** ml_home: 58.68% → 63.5% (+4.8pp)
 
 ## 🔒 Locks of the Day -- Track Record
@@ -56,30 +55,30 @@
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
 ## ⚡ Pre-Game HIGH Conviction (3)
-- [MLS] **Colorado Rapids** HOME (2-0 L10) · model 71.4% fair -249
-- [MLS] **Columbus Crew** HOME (0-2 L10) · model 70.2% fair -236
-- [MLS] **FC Cincinnati** HOME (1-1 L10) · model 65.1% fair -187
+- [MLS] **CF Montréal** HOME (1-2 L10) · model 70.0% fair -233
+- [MLS] **Orlando City SC** HOME (0-3 L10) · model 64.6% fair -183
+- [MLS] **FC Cincinnati** HOME (2-1 L10) · model 62.1% fair -164
 
 ## 🔥/❄️ Heat / Cold Signals
-- Hot teams: **4** | Cold teams: **3** | Over-heavy: 0 | Under-heavy: 7
+- Hot teams: **5** | Cold teams: **13** | Over-heavy: 0 | Under-heavy: 6
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (56)
-- STEAM_MOVE: **54**
+## ⚠️ Anomaly Detector (53)
+- STEAM_MOVE: **51**
 - PEN_MISMATCH: **1**
 - COMPOUND_BULLPEN: **1**
   - MIL @ LAD (MLB): ML steam since open: ML -16.7pp toward MIL (11 snapshots)
   - KCR @ LAA (MLB): ML/TOTAL steam since open: ML -11.0pp toward KCR; total +0.5 (OVER) (4 snapshots)
-  - CHI @ SEA (WNBA): TOTAL steam since open: ML -1.9pp toward CHI; total +2 (OVER) (4 snapshots)
-  - NY @ IND (WNBA): TOTAL steam since open: ML +0.9pp toward IND; total -2 (UNDER) (5 snapshots)
   - PHX @ LA (WNBA): TOTAL steam since open: ML -0.9pp toward PHX; total +2 (OVER) (4 snapshots)
+  - POR @ SEA (WNBA): TOTAL steam since open: ML +1.2pp toward SEA; total +2 (OVER) (4 snapshots)
+  - TOR @ WSH (WNBA): ML/TOTAL steam since open: ML +6.3pp toward WSH; total -2 (UNDER) (5 snapshots)
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$-5.63**
-  - #1 [NRFI] $50 on DET @ PIT YRFI (1st-inning OVER 0.5) (P=70%)
+- Expected EV: **$-2.08**
+  - #1 [NRFI] $50 on OAK @ KCR YRFI (1st-inning OVER 0.5) (P=76%)
   - #2 [NRFI] $50 on WSN @ TEX YRFI (1st-inning OVER 0.5) (P=66%)
-  - #3 [NRFI] $50 on SDP @ NYM YRFI (1st-inning OVER 0.5) (P=66%)
+  - #3 [NRFI] $35 on NYY @ BAL YRFI (1st-inning OVER 0.5) (P=64%)
   - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
@@ -91,12 +90,12 @@
   - [HIGH] Minnesota Lynx @ Golden State Valkyries : 3 signals (HEAT_COLD, HEAT_COLD, ATS)
   - [HIGH] CF Montréal @ Columbus Crew : 3 signals (PREGAME, ATS, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (8)
+## ⚾ Top MLB Pitcher K Plays (7)
 - **Logan Gilbert** OVER 4.5 K (78%) fair -347
-- **Aaron Nola** OVER 4.5 K (76%) fair -321
 - **Chase Burns** OVER 4.5 K (73%) fair -271
 - **Drew Rasmussen** OVER 4.5 K (71%) fair -251
 - **Cade Cavalli** OVER 5.5 K (64%) fair -179
+- **Roki Sasaki** OVER 4.5 K (58%) fair -141
 
 ## 🏀 NBA Player Heat (2 HOT / 1 COLD)
   - 🔥 **Scottie Barnes** (TOR): L5 24.4/7.6/9.6 vs season 18.6/5.8/8.8 [PTS +5.8]
@@ -117,16 +116,16 @@
   - 🔥 T4 **Sungjae Im** (South Korea): +0 total -- finished T4
   - 🔥 T5 **Aaron Rai** (England): +0 total -- finished T5
 
-## 🔥 MLB Batter Heat (41 HOT / 65 COLD)
-  - 🔥 **Jac Caglianone** (KC): L14 .463 / season .278 (+185pts)
+## 🔥 MLB Batter Heat (42 HOT / 66 COLD)
+  - 🔥 **Jac Caglianone** (KC): L14 .471 / season .279 (+192pts)
   - 🔥 **Victor Robles** (SEA): L14 .444 / season .260 (+184pts)
-  - 🔥 **Alec Bohm** (PHI): L14 .400 / season .244 (+156pts)
-  - 🔥 **Cam Smith** (HOU): L14 .356 / season .223 (+133pts)
+  - 🔥 **LaMonte Wade Jr.** (HOU): L14 .360 / season .226 (+134pts)
   - 🔥 **Pete Alonso** (BAL): L14 .396 / season .267 (+129pts)
+  - 🔥 **Cam Smith** (HOU): L14 .349 / season .222 (+127pts)
   - ❄️ **David Fry** (CLE): L14 .000 / season .182 (-182pts) -- FADE props
-  - ❄️ **Ben Rice** (NYY): L14 .098 / season .249 (-151pts) -- FADE props
-  - ❄️ **Jeremy Peña** (HOU): L14 .136 / season .284 (-148pts) -- FADE props
-  - ❄️ **Heliot Ramos** (NYY): L14 .106 / season .242 (-136pts) -- FADE props
+  - ❄️ **Jeremy Peña** (HOU): L14 .107 / season .283 (-176pts) -- FADE props
+  - ❄️ **Oswald Peraza** (LAA): L14 .080 / season .226 (-146pts) -- FADE props
+  - ❄️ **Heliot Ramos** (NYY): L14 .109 / season .242 (-133pts) -- FADE props
   - ❄️ **Spencer Horwitz** (PIT): L14 .125 / season .256 (-131pts) -- FADE props
 
 ## 📈 Streak Regression Alerts (5)
@@ -147,6 +146,6 @@
 - ELITE: **0** · HEALTHY: 0 · OK: 0 · DEGRADED: **2**
 
 ## 🤖 Self-Training Status
-- **WNBA**: n=41 games · hit rate 65.8% · bias -5.2pp [calibration applied]
-- **MLS**: n=32 games · hit rate 53.1% · bias -9.1pp [calibration applied]
-- **MLB**: n=190 games · hit rate 50.5% · bias +0.8pp
+- **WNBA**: n=39 games · hit rate 59.0% · bias +0.3pp
+- **MLS**: n=46 games · hit rate 50.0% · bias +0.7pp
+- **MLB**: n=190 games · hit rate 46.8% · bias +1.7pp
