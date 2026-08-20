@@ -1,13 +1,13 @@
 # EdgeStat Daily Summary — 2026-08-20
 
-## 🏥 Model Health: 61.8/100 [OK]
+## 🏥 Model Health: 61.6/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.9/100
+  - 🟢 Calibration Freshness: 99.6/100
   - 🔴 Hit Rate Trend: 0/100
-  - 🔴 Brier Trend: 37.8/100
+  - 🔴 Brier Trend: 34.4/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 95.5/100
-  - 🔴 Edge Count: 51.4/100
+  - 🔴 Edge Count: 57.1/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.569)
@@ -22,7 +22,7 @@
 5. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
 
 ## 📡 Sharp Action (Line Movement)
-- [MODERATE] **TOR @ TBR** ml_home: 58.68% → 63.5% (+4.8pp)
+- [MODERATE] **LAA @ HOU** ml_home: 61.54% → 65.52% (+4.0pp)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -59,33 +59,33 @@
 - Hot teams: **5** | Cold teams: **13** | Over-heavy: 0 | Under-heavy: 6
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (63)
+## ⚠️ Anomaly Detector (68)
 - RESIDUAL_DIVERGENCE: **6**
-- STEAM_MOVE: **53**
-- COMPOUND_BULLPEN: **2**
-- PEN_MISMATCH: **2**
+- STEAM_MOVE: **55**
+- COMPOUND_BULLPEN: **3**
+- PEN_MISMATCH: **4**
   - Charlotte FC (MLS): Charlotte FC OUTPERFORMING expected margin by 6.2pts in recent games -- model bias may persist
   - FC Cincinnati (MLS): FC Cincinnati UNDERPERFORMING expected margin by 10.8pts in recent games -- model bias may persist
   - Orlando City SC (MLS): Orlando City SC OUTPERFORMING expected margin by 11.9pts in recent games -- model bias may persist
   - Philadelphia Union (MLS): Philadelphia Union UNDERPERFORMING expected margin by 8.5pts in recent games -- model bias may persist
   - St. Louis CITY SC (MLS): St. Louis CITY SC UNDERPERFORMING expected margin by 8.5pts in recent games -- model bias may persist
 
-## 💰 Today's Portfolio (10 picks)
-- Total stake: **$335.0** (33.5% of $1000 bankroll)
-- Expected EV: **$-12.51**
+## 💰 Today's Portfolio (12 picks)
+- Total stake: **$345.0** (34.5% of $1000 bankroll)
+- Expected EV: **$-30.98**
   - #1 [NRFI] $35 on SFG @ CLE YRFI (1st-inning OVER 0.5) (P=65%)
   - #2 [NRFI] $35 on LAA @ HOU YRFI (1st-inning OVER 0.5) (P=64%)
   - #3 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #4 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
 
-## 🎯 Convergence Picks (14 stacked games)
-- ELITE: **7** · HIGH: 3 · MED: 4
+## 🎯 Convergence Picks (15 stacked games)
+- ELITE: **9** · HIGH: 1 · MED: 5
   - [ELITE] Real Salt Lake @ Orlando City SC : 6 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
-  - [ELITE] Seattle Sounders FC @ FC Cincinnati : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
+  - [ELITE] D.C. United @ Charlotte FC : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
+  - [ELITE] Houston Dynamo FC @ St. Louis CITY SC : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
   - [ELITE] Minnesota Lynx @ Golden State Valkyries : 4 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ATS)
-  - [ELITE] D.C. United @ Charlotte FC : 4 signals (HEAT_COLD, ANOMALY, ATS, ATS)
-  - [ELITE] Philadelphia Union @ Austin FC : 4 signals (PREGAME, ANOMALY, ATS, ATS)
+  - [ELITE] Seattle Sounders FC @ FC Cincinnati : 4 signals (HEAT_COLD, ANOMALY, ATS, ATS)
 
 ## ⚾ Top MLB Pitcher K Plays (6)
 - **Jacob deGrom** OVER 4.5 K (76%) fair -318

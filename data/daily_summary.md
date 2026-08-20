@@ -4,14 +4,14 @@
 
 _Pipeline health: **WARNING** (12/15 artifacts ok; 3 empty, 0 stale)._ 
 
-_Generated at 2026-08-20T13:50:20 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-08-20T14:45:53 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
 **WSN @ TEX - WSN_ML**
-- Market: +139
+- Market: +141
 - Model probability: 63.0%
-- Raw edge: +50.54%
+- Raw edge: +51.8%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
@@ -20,45 +20,45 @@ _Generated at 2026-08-20T13:50:20 UTC. Game lines source: **Bovada (fallback -- 
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 12:40p ET | STL @ CIN | Great American Ball Park | 80F 5mph | OVER_9.0 +27.91% |
-| 1:10p ET | SFG @ CLE | Progressive Field | 79F 13mph | SFG_ML +49.45% |
+| 12:40p ET | STL @ CIN | Great American Ball Park | 80F 6mph | OVER_9.0 +29.57% |
+| 1:10p ET | SFG @ CLE | Progressive Field | 78F 13mph | SFG_ML +48.88% |
 | 1:10p ET | TOR @ TBR | Tropicana Field | indoor | OVER_7.0 +35.96% |
 | 2:10p ET | OAK @ KCR | Kauffman Stadium | 85F 5mph | OVER_8.0 +39.81% |
 | 2:10p ET | ATL @ CHW | Rate Field | 73F 8mph | OVER_8.5 +42.92% |
-| 2:10p ET | SEA @ MIL | American Family Field | indoor | MIL_ML +9.6% |
-| 6:35p ET | NYY @ BAL | Oriole Park at Camden Yards | 73F 3mph | NYY_ML +8.95% |
-| 8:05p ET | WSN @ TEX | Globe Life Field | indoor | WSN_ML +50.54% |
+| 2:10p ET | SEA @ MIL | American Family Field | indoor | MIL_ML +8.6% |
+| 6:35p ET | NYY @ BAL | Oriole Park at Camden Yards | 69F 6mph | OVER_7.5 +20.0% |
+| 8:05p ET | WSN @ TEX | Globe Life Field | indoor | WSN_ML +51.8% |
 | 8:10p ET | LAA @ HOU | Daikin Park | indoor | HOU_ML +12.44% |
 
 ## Parlays - top 5
 
-- **3-leg @ +664 (prob 19.6%, EV +49.88%)**
-  - STL @ CIN STL_ML (+100, model 58.7%)
-  - NYY @ BAL NYY_ML (+100, model 59.9%)
-  - NYY @ BAL UNDER_8.5 (-110, model 55.8%)
-- **3-leg @ +629 (prob 20.5%, EV +49.44%)**
-  - SFG @ CLE SFG_ML (+100, model 54.9%)
-  - SEA @ MIL MIL_ML (-110, model 63.2%)
-  - WSN @ TEX OVER_8.5 (-110, model 59.1%)
-- **3-leg @ +629 (prob 20.5%, EV +49.41%)**
-  - ATL @ CHW CHW_ML (-110, model 54.2%)
-  - SEA @ MIL MIL_ML (-110, model 63.2%)
-  - NYY @ BAL NYY_ML (+100, model 59.9%)
-- **3-leg @ +664 (prob 19.4%, EV +48.52%)**
-  - SFG @ CLE SFG_ML (+100, model 54.9%)
-  - NYY @ BAL NYY_ML (+100, model 59.9%)
-  - WSN @ TEX OVER_8.5 (-110, model 59.1%)
-- **3-leg @ +629 (prob 20.2%, EV +47.48%)**
-  - STL @ CIN STL_ML (+100, model 58.7%)
-  - SFG @ CLE UNDER_8.5 (-110, model 54.6%)
-  - SEA @ MIL MIL_ML (-110, model 63.2%)
+- **3-leg @ +434 (prob 27.5%, EV +47.13%)**
+  - NYY @ BAL OVER_7.5 (-110, model 62.9%)
+  - NYY @ BAL NYY_ML (-123, model 60.1%)
+  - LAA @ HOU HOU_ML (-184, model 72.9%)
+- **3-leg @ +407 (prob 28.9%, EV +46.54%)**
+  - SEA @ MIL MIL_ML (-139, model 63.2%)
+  - NYY @ BAL OVER_7.5 (-110, model 62.9%)
+  - LAA @ HOU HOU_ML (-184, model 72.9%)
+- **3-leg @ +558 (prob 22.2%, EV +45.98%)**
+  - STL @ CIN STL_ML (-111, model 58.7%)
+  - NYY @ BAL OVER_7.5 (-110, model 62.9%)
+  - NYY @ BAL NYY_ML (-123, model 60.1%)
+- **3-leg @ +524 (prob 23.3%, EV +45.4%)**
+  - STL @ CIN STL_ML (-111, model 58.7%)
+  - SEA @ MIL MIL_ML (-139, model 63.2%)
+  - NYY @ BAL OVER_7.5 (-110, model 62.9%)
+- **3-leg @ +463 (prob 25.7%, EV +44.72%)**
+  - NYY @ BAL OVER_7.5 (-110, model 62.9%)
+  - LAA @ HOU HOU_ML (-184, model 72.9%)
+  - LAA @ HOU OVER_8.5 (-110, model 56.2%)
 
 ## Self-Learning Loop
 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
-| batter hits | 54 | 63.0% | 57.4% | 0.912 | 1.087 |
 | batter total bases | 15 | 40.0% | 50.4% | 1.241 | 0.862 |
+| batter hits | 54 | 63.0% | 57.4% | 0.912 | 1.087 |
 
 Cumulative graded plays: 9316. Wins: 3458. Hit rate: 37.1%.
 
@@ -66,13 +66,13 @@ Cumulative graded plays: 9316. Wins: 3458. Hit rate: 37.1%.
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| ATL @ CHW | 45.7% | +119 | 3.71 | +137 | -137 |
+| ATL @ CHW | 45.7% | +119 | 3.72 | +137 | -137 |
 | LAA @ HOU | 35.9% | +178 | 5.12 | -156 | +156 |
-| NYY @ BAL | 51.5% | -106 | 3.26 | +264 | -264 |
-| OAK @ KCR | 40.0% | +150 | 4.45 | +152 | -152 |
+| NYY @ BAL | 51.5% | -106 | 3.17 | +264 | -264 |
+| OAK @ KCR | 40.0% | +150 | 4.42 | +152 | -152 |
 | SEA @ MIL | 40.4% | +147 | 4.53 | +101 | -101 |
-| SFG @ CLE | 35.0% | +186 | 4.82 | +214 | -214 |
-| STL @ CIN | 38.3% | +161 | 4.96 | +234 | -234 |
+| SFG @ CLE | 35.0% | +186 | 4.84 | +214 | -214 |
+| STL @ CIN | 38.3% | +161 | 4.98 | +234 | -234 |
 | TOR @ TBR | 44.9% | +123 | 4.0 | -233 | +233 |
 | WSN @ TEX | 41.6% | +141 | 4.39 | +292 | -292 |
 
@@ -95,7 +95,7 @@ Cumulative graded plays: 9316. Wins: 3458. Hit rate: 37.1%.
 
 ## Loop Activity (since last refresh)
 
-- Confidence delta: **+0.1**
+- Confidence delta: **+0.0**
 
 ## Model Recommendations (operator review)
 

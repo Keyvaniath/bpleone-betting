@@ -1,12 +1,12 @@
 # Tonight's Slate Brief — 2026-08-20
 
-## Slate Quality: 55/100 (MEDIUM)
-_5% lineups confirmed · 7 rookie SPs_
+## Slate Quality: 63/100 (MEDIUM)
+_33% lineups confirmed · 7 rookie SPs_
 **Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
 - **9 games** scheduled
-- **25 best bets** scored: 0 DK · 0 PP · 8 NRFI · 0 SGP
+- **23 best bets** scored: 0 DK · 0 PP · 8 NRFI · 0 SGP
 - **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$23.22
 - **MC simulation:** EV +$47.81, 67% P(profit), p05 $-122.88 / p95 $196.45
 
@@ -62,10 +62,14 @@ _Lean late-inning OVER on these games; fade their save situations._
 - Chicago Blackhawks @ Minnesota Wild (0-0-0 vs 0-0-0)  | P(home) 52.9% fair -112 | Scheduled
 
 ## KBO -- 2026 Korean Baseball
-- SSG Landers @ Samsung Lions | P(home) 56.5% fair -130 | total 9 R
-- **KBO POD:** Samsung Lions ML vs SSG Landers (KBO) (MED)
+- KIA Tigers @ Kiwoom Heroes | P(home) 27.7% fair +262 | total 9 R
+- KT Wiz @ SSG Landers | P(home) 54.3% fair -119 | total 9 R
+- LG Twins @ Hanwha Eagles | P(home) 34.6% fair +189 | total 9 R
+- Lotte Giants @ Doosan Bears | P(home) 60.6% fair -154 | total 9 R
+- Samsung Lions @ NC Dinos | P(home) 45.4% fair +120 | total 9 R
+- **KBO POD:** Doosan Bears ML vs Lotte Giants (KBO) (HIGH)
 
-## LoL Esports -- 0 live, 22 upcoming
+## LoL Esports -- 0 live, 24 upcoming
 - [LCK Challengers] DK Challengers vs DNS Challengers BO3 | P(A) 51.3% fair -105/+105
 - [LCK Challengers] KRX Challengers vs BRO Challengers BO3 | P(A) 63.8% fair -177/+177
 - [NACL] Conviction vs Cupid Esports BO3 | P(A) 34.2% fair +193/-193
@@ -73,7 +77,7 @@ _Lean late-inning OVER on these games; fade their save situations._
 - [LCK Challengers] BNK FEARX Youth vs Gen.G Global Academy BO3 | P(A) 67.5% fair -208/+208
 - **LoL POT:** T1 ML vs kt Rolster (LCK, BO3) (HIGH)
 
-## Player Play of the Day -- across all sports (3447 candidates scanned)
+## Player Play of the Day -- across all sports (3462 candidates scanned)
 - **[LOL]** Inspired UNDER 3.5 Kills | model 61.7% fair -161 (ELITE)
 - **[LOL]** ShowMaker OVER 3.5 Kills | model 62.5% fair -167 (ELITE)
 - **[LOL]** Peyz OVER 4.5 Kills | model 61.3% fair -158 (ELITE)
