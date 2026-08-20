@@ -1,25 +1,19 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-08-20T05:18:08 UTC_
+_Generated 2026-08-20T13:50:02 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -13
+- **Score:** -18
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 11
-- **Total FADES:** 57
+- **Total STRONG:** 7
+- **Total FADES:** 46
 
 ## Top 5 Curated Picks
-1. **MLB / AWAY** (MLB_TEAM, score=87.58)
-   - Play: AWAY (TEAM_STRONG)
-   - Rationale: Cross-sport top pick (MLB_TEAM)
-2. **MLB / HOME** (MLB_TEAM, score=79.0)
-   - Play: HOME (TEAM_STRONG)
-   - Rationale: Cross-sport top pick (MLB_TEAM)
-3. **GOLF / Scottie Scheffler** (GOLF_PLAYER, score=52.79)
+1. **GOLF / Scottie Scheffler** (GOLF_PLAYER, score=52.79)
    - Play: Scottie Scheffler (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-4. **GOLF / Rory McIlroy** (GOLF_PLAYER, score=51.36)
+2. **GOLF / Rory McIlroy** (GOLF_PLAYER, score=51.36)
    - Play: Rory McIlroy (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
 
@@ -36,13 +30,13 @@ _Generated 2026-08-20T05:18:08 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **MLB** / Kumar Rocker (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
 - **NBA** / TOR (TEAM_FADE)
   - Fade angle: team total UNDER
 - **NBA** / MIA (TEAM_FADE)
   - Fade angle: team total UNDER
-- **MLB** / Logan Gilbert (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **MLB** / Walbert Ureña (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **NHL** / connor hellebuyck (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / samsonov ilya (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / joseph woll (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
