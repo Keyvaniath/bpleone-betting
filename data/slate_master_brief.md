@@ -1,33 +1,36 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-08-20T14:45:15 UTC_
+_Generated 2026-08-20T21:15:25 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -10
+- **Score:** 0
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 9
-- **Total FADES:** 46
+- **Total STRONG:** 13
+- **Total FADES:** 52
 
 ## Top 5 Curated Picks
-1. **MLB / Alec Burleson** (MLB_BATTER, score=93.5)
-   - Play: Alec Burleson (BATTER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_BATTER)
-2. **MLB / Jordan Walker** (MLB_BATTER, score=89.0)
-   - Play: Jordan Walker (BATTER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_BATTER)
-3. **GOLF / Scottie Scheffler** (GOLF_PLAYER, score=52.79)
-   - Play: Scottie Scheffler (PLAYER_STRONG)
+1. **WNBA / satou sabally** (WNBA_PLAYER, score=116.08)
+   - Play: satou sabally (PLAYER_STRONG)
+   - Rationale: Cross-sport top pick (WNBA_PLAYER)
+2. **MLB / HOME** (MLB_TEAM, score=80.29)
+   - Play: HOME (TEAM_STRONG)
+   - Rationale: Cross-sport top pick (MLB_TEAM)
+3. **WNBA / allisha gray** (WNBA_PLAYER, score=78.75)
+   - Play: allisha gray (PLAYER_STRONG)
+   - Rationale: Cross-sport top pick (WNBA_PLAYER)
+4. **GOLF / Sungjae Im** (GOLF_PLAYER, score=69.14)
+   - Play: Sungjae Im (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-4. **GOLF / Rory McIlroy** (GOLF_PLAYER, score=51.36)
-   - Play: Rory McIlroy (PLAYER_STRONG)
+5. **GOLF / Aaron Rai** (GOLF_PLAYER, score=63.57)
+   - Play: Aaron Rai (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
+  - Sungjae Im top 10 finish
+  - Aaron Rai top 10 finish
   - Scottie Scheffler top 10 finish
-  - Rory McIlroy top 10 finish
-  - Collin Morikawa top 10 finish
 
 ## Slate ROI Projection
 - **Picks:** 0
@@ -36,13 +39,13 @@ _Generated 2026-08-20T14:45:15 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
+- **MLB** / Shane Bieber (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
 - **NBA** / MIA (TEAM_FADE)
   - Fade angle: team total UNDER
 - **NBA** / TOR (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NHL** / stuart skinner (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / logan thompson_2 (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / thatcher demko (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
+- **MLB** / Brady Singer (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Landen Roupp (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES

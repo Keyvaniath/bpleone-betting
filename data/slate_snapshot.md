@@ -14,12 +14,12 @@ _6 picks consolidated from POD + Alpha + Book Edges + Parlay-of-Day._
 
 ## 📊 Book Edges
 
-- **SFG @ CLE · AWAY (AWAY)** · TEAM_ML
-  Prob 43.3% · Odds +171 · Edge +17.3% · Kelly 0.101
 - **WSN @ TEX · AWAY (AWAY)** · TEAM_ML
-  Prob 46.8% · Odds +141 · Edge +12.7% · Kelly 0.090
-- **SFG @ CLE · OVER · O/U 7.0** · TOTAL_OVER
-  Prob 58.3% · Odds -110 · Edge +11.3% · Kelly 0.124
+  Prob 42.2% · Odds +168 · Edge +13.2% · Kelly 0.078
+- **NYY @ BAL · AWAY (AWAY)** · TEAM_ML
+  Prob 57.1% · Odds -104 · Edge +12.1% · Kelly 0.126
+- **NYY @ BAL · OVER · O/U 7.5** · TOTAL_OVER
+  Prob 58.0% · Odds -110 · Edge +10.7% · Kelly 0.118
 
 ## 🎲 Parlay
 
@@ -27,5 +27,5 @@ _6 picks consolidated from POD + Alpha + Book Edges + Parlay-of-Day._
   Prob 53.4% · Odds +264 · Edge +94.6% · Kelly 0.050
 
 ---
-_Generated 2026-08-20T14:45:20 UTC by EdgeStat._
+_Generated 2026-08-20T21:15:30 UTC by EdgeStat._
 _Stakes assume ¼-Kelly fractional sizing on a flat bankroll._

@@ -1,14 +1,13 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:9 F:46
+_NO_ACTION_NIGHT_ | L:0 S:13 F:52
 
 :dart: **Top Picks:**
-1. [MLB] Alec Burleson -- Alec Burleson (BATTER_STRONG)
-2. [MLB] Jordan Walker -- Jordan Walker (BATTER_STRONG)
-3. [GOLF] Scottie Scheffler -- Scottie Scheffler (PLAYER_STRONG)
+1. [WNBA] satou sabally -- satou sabally (PLAYER_STRONG)
+2. [MLB] HOME -- HOME (TEAM_STRONG)
+3. [WNBA] allisha gray -- allisha gray (PLAYER_STRONG)
 
 :chains: **Top Parlays:**
-- [MLB] Alec Burleson (3 legs, p=0.2533)
-- [MLB] Jordan Walker (3 legs, p=0.1598)
+- [WNBA] satou sabally (2 legs, p=0.3465)
 
 :coin: Bankroll Advisory: STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 

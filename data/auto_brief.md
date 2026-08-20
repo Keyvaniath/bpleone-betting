@@ -1,12 +1,12 @@
 # Tonight's Slate Brief — 2026-08-20
 
-## Slate Quality: 63/100 (MEDIUM)
-_33% lineups confirmed · 7 rookie SPs_
-**Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
+## Slate Quality: 97/100 (HIGH)
+_100% lineups confirmed · 1 rookie SPs_
+**Recommendation:** Play normal Kelly sizing.
 
 ## Slate
-- **9 games** scheduled
-- **23 best bets** scored: 0 DK · 0 PP · 8 NRFI · 0 SGP
+- **3 games** scheduled
+- **30 best bets** scored: 0 DK · 0 PP · 8 NRFI · 0 SGP
 - **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$23.22
 - **MC simulation:** EV +$47.81, 67% P(profit), p05 $-122.88 / p95 $196.45
 
@@ -37,8 +37,8 @@ _33% lineups confirmed · 7 rookie SPs_
 - **SEA @ MIL YRFI (1st-inning OVER 0.5)** (low):
    - Edge +13.6% looks big but only 0 settled props on this player — model unproven
 
-## Weather leans
-- **OVER lean** (wind out + warm): SFG @ CLE
+## Hot streaks
+**Batters heating up:** Alejandro Kirk (heat +3.05), Jordan Walker (heat +1.43), Yandy Díaz (heat +1.07)
 
 ## Bullpens GASSED tonight
 Athletics, San Francisco Giants, St. Louis Cardinals, Tampa Bay Rays, Toronto Blue Jays, Minnesota Twins, Philadelphia Phillies, Chicago White Sox
@@ -48,8 +48,10 @@ _Lean late-inning OVER on these games; fade their save situations._
 - **YRFI** (1st-inning OVER): SFG @ CLE, LAA @ HOU, STL @ CIN, OAK @ KCR, SEA @ MIL
 
 ## Golf -- BMW Championship
-- **Leader:** Justin Thomas (E) at #1
-- **Field:** 50 players  |  Status: Scheduled
+- **Leader:** Sungjae Im (-1) at #1
+- **Field:** 50 players  |  Status: In Progress
+- **Play of the Tournament:** Xander Schauffele TOP5 @ +571 (model 14.9%, HIGH)
+   - P(top 5) 14.9% -- lower variance than outright but compelling line.
 
 ## NBA -- PRESEASON
 - Miami Heat @ Toronto Raptors (0-0 vs 0-0)  | P(home) 55.0% fair -122 | Scheduled
@@ -69,10 +71,10 @@ _Lean late-inning OVER on these games; fade their save situations._
 - Samsung Lions @ NC Dinos | P(home) 45.4% fair +120 | total 9 R
 - **KBO POD:** Doosan Bears ML vs Lotte Giants (KBO) (HIGH)
 
-## LoL Esports -- 0 live, 24 upcoming
+## LoL Esports -- 1 live, 30 upcoming
+- [NACL] Conviction vs Cupid Esports BO3 | P(A) 34.2% fair +193/-193
 - [LCK Challengers] DK Challengers vs DNS Challengers BO3 | P(A) 51.3% fair -105/+105
 - [LCK Challengers] KRX Challengers vs BRO Challengers BO3 | P(A) 63.8% fair -177/+177
-- [NACL] Conviction vs Cupid Esports BO3 | P(A) 34.2% fair +193/-193
 - [NACL] Maryville University vs Dorado Gaming BO3 | P(A) 39.2% fair +155/-155
 - [LCK Challengers] BNK FEARX Youth vs Gen.G Global Academy BO3 | P(A) 67.5% fair -208/+208
 - **LoL POT:** T1 ML vs kt Rolster (LCK, BO3) (HIGH)
