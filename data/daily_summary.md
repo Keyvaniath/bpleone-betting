@@ -2,26 +2,25 @@
 
 **Model Confidence: 18.9/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
 
-_Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
+_Pipeline health: **WARNING** (12/15 artifacts ok; 3 empty, 0 stale)._ 
 
-_Generated at 2026-08-20T21:16:21 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-08-20T22:33:28 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
 **WSN @ TEX - WSN_ML**
-- Market: +152
+- Market: +156
 - Model probability: 63.0%
-- Raw edge: +58.73%
+- Raw edge: +61.25%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
 
-## Full Slate (3 games)
+## Full Slate (2 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 6:35p ET | NYY @ BAL | Oriole Park at Camden Yards | 70F 6mph | OVER_7.5 +20.73% |
-| 8:05p ET | WSN @ TEX | Globe Life Field | indoor | WSN_ML +58.73% |
+| 8:05p ET | WSN @ TEX | Globe Life Field | indoor | WSN_ML +61.25% |
 | 8:10p ET | LAA @ HOU | Daikin Park | indoor | OVER_8.0 +19.63% |
 
 ## Parlays - top 5
@@ -56,7 +55,6 @@ Cumulative graded plays: 9318. Wins: 3460. Hit rate: 37.1%.
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
 | LAA @ HOU | 35.9% | +178 | 5.12 | -156 | +156 |
-| NYY @ BAL | 51.5% | -106 | 3.2 | +264 | -264 |
 | WSN @ TEX | 41.6% | +141 | 4.39 | +292 | -292 |
 
 ## Team Form (last 10)
