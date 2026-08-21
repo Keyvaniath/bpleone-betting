@@ -1,12 +1,12 @@
 # Tonight's Slate Brief — 2026-08-21
 
-## Slate Quality: 55/100 (MEDIUM)
-_0% lineups confirmed · 14 rookie SPs_
-**Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
+## Slate Quality: 76/100 (HIGH)
+_67% lineups confirmed · 14 rookie SPs_
+**Recommendation:** Play normal Kelly sizing.
 
 ## Slate
-- **15 games** scheduled
-- **30 best bets** scored: 0 DK · 0 PP · 9 NRFI · 0 SGP
+- **14 games** scheduled
+- **32 best bets** scored: 0 DK · 0 PP · 9 NRFI · 0 SGP
 - **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$32.34
 - **MC simulation:** EV +$91.18, 79% P(profit), p05 $-113.74 / p95 $287.54
 
@@ -46,10 +46,10 @@ _Lean late-inning OVER on these games; fade their save situations._
 - **NRFI** (1st-inning UNDER): DET @ KCR, SFG @ BOS
 
 ## Golf -- BMW Championship
-- **Leader:** Gary Woodland (-6) at #1
+- **Leader:** Michael Thorbjornsen (-6) at #1
 - **Field:** 50 players  |  Status: In Progress
-- **Play of the Tournament:** Michael Thorbjornsen TOP5 @ +571 (model 14.9%, HIGH)
-   - P(top 5) 14.9% -- lower variance than outright but compelling line.
+- **Play of the Tournament:** Michael Thorbjornsen WIN @ +692 (model 12.6%, HIGH)
+   - P(win) 12.6% with 1 round(s) left -- sweet-spot value at #1 (-6).
 
 ## NBA -- PRESEASON
 - Miami Heat @ Toronto Raptors (0-0 vs 0-0)  | P(home) 55.0% fair -122 | Scheduled
@@ -69,12 +69,12 @@ _Lean late-inning OVER on these games; fade their save situations._
 - Samsung Lions @ NC Dinos | P(home) 46.3% fair +116 | total 10 R
 - **KBO POD:** Doosan Bears ML vs Lotte Giants (KBO) (HIGH)
 
-## LoL Esports -- 0 live, 30 upcoming
-- [LEC] Team Heretics vs SK Gaming BO3 | P(A) 47.5% fair +110/-110
-- [LEC] Natus Vincere vs Team Vitality BO3 | P(A) 43.2% fair +132/-132
-- [NACL] Contingent Esports vs NRG BO3 | P(A) 31.7% fair +215/-215
+## LoL Esports -- 1 live, 30 upcoming
+- [NACL] NRG vs Contingent Esports BO3 | P(A) 68.3% fair -215/+215
 - [NACL] Winthrop University vs Ole Miss Esports BO3 | P(A) 56.3% fair -129/+129
 - [LPL] LGD GAMING vs Xi'an Team WE BO3 | P(A) 61.6% fair -160/+160
+- [LCK] Dplus KIA vs Gen.G Esports BO3 | P(A) 47.5% fair +111/-111
+- [LPL] Shenzhen NINJAS IN PYJAMAS vs Invictus Gaming BO3 | P(A) 49.7% fair +101/-101
 - **LoL POT:** Sentinels ML vs Disguised (LCS, BO3) (HIGH)
 
 ## Player Play of the Day -- across all sports (3460 candidates scanned)

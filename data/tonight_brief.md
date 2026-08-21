@@ -9,13 +9,10 @@ _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 - **Mel Rojas Jr.** one_plus_tb (KBO) -- 73% / +38.5%
 - **Austin Dean** one_plus_tb (KBO) -- 73% / +38.5%
 
-## 📉 Under Bets
-- **ATL @ MIL** UNDER 8.5 — model 6.62 [ELITE signal]
-
 ## 🎰 Tonight's Best Parlay
 - **Choi Jeong** one_plus_tb + **Jose Pirela** one_plus_tb
 - Joint 53% · fair +264 · edge +94.6%
 
 ---
-_Generated 2026-08-21T14:48:21_
+_Generated 2026-08-21T21:15:08_
 _Full breakdown: /tonight · Full history: /locks-of-day_

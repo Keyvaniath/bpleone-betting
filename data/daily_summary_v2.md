@@ -1,18 +1,18 @@
 # EdgeStat Daily Summary — 2026-08-21
 
-## 🏥 Model Health: 63.8/100 [OK]
+## 🏥 Model Health: 63.5/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.7/100
+  - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 0/100
   - 🔴 Brier Trend: 36.6/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 95.5/100
-  - 🟡 Edge Count: 74.3/100
+  - 🟡 Edge Count: 71.4/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.569)
-- **Total games on board:** 98
-- **Strong home favorites:** 7 | **Strong road dogs:** 2
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.567)
+- **Total games on board:** 101
+- **Strong home favorites:** 8 | **Strong road dogs:** 4
 
 ## 🎯 Top 5 Best Bets
 1. **TBR @ BAL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
@@ -50,8 +50,10 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (3)
+## ⚡ Pre-Game HIGH Conviction (5)
 - [MLS] **Charlotte FC** HOME (1-2 L10) · model 74.1% fair -287
+- [WNBA] **Golden State Valkyries** AWAY (4-1 L10) · model 70.5% fair -239
+- [WNBA] **Minnesota Lynx** AWAY (5-0 L10) · model 64.3% fair -180
 - [MLS] **Houston Dynamo FC** AWAY (4-0 L10) · model 63.5% fair -174
 - [MLS] **Colorado Rapids** AWAY (3-0 L10) · model 62.3% fair -165
 
@@ -59,19 +61,19 @@
 - Hot teams: **4** | Cold teams: **13** | Over-heavy: 0 | Under-heavy: 7
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (63)
-- RESIDUAL_DIVERGENCE: **6**
-- STEAM_MOVE: **54**
+## ⚠️ Anomaly Detector (67)
+- RESIDUAL_DIVERGENCE: **7**
+- STEAM_MOVE: **57**
 - PEN_MISMATCH: **3**
+  - Washington Mystics (WNBA): Washington Mystics UNDERPERFORMING expected margin by 7.2pts in recent games -- model bias may persist
   - Charlotte FC (MLS): Charlotte FC OUTPERFORMING expected margin by 6.2pts in recent games -- model bias may persist
   - FC Cincinnati (MLS): FC Cincinnati UNDERPERFORMING expected margin by 10.8pts in recent games -- model bias may persist
   - Orlando City SC (MLS): Orlando City SC OUTPERFORMING expected margin by 11.9pts in recent games -- model bias may persist
   - Philadelphia Union (MLS): Philadelphia Union UNDERPERFORMING expected margin by 8.5pts in recent games -- model bias may persist
-  - St. Louis CITY SC (MLS): St. Louis CITY SC UNDERPERFORMING expected margin by 8.5pts in recent games -- model bias may persist
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$-5.18**
+- Expected EV: **$-5.19**
   - #1 [NRFI] $50 on TBR @ BAL YRFI (1st-inning OVER 0.5) (P=71%)
   - #2 [NRFI] $50 on MIN @ SDP YRFI (1st-inning OVER 0.5) (P=68%)
   - #3 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
@@ -106,13 +108,13 @@
   - [LEAN] **Shamil Gaziev** (14-3-0) vs Kennedy Nzechukwu -- fair -137
 
 ## ⛳ Golf Player Heat (from BMW Championship)
-  - 🔥 T1 **Gary Woodland** (USA): -6 total -- finished T1
-  - 🔥 T2 **Wyndham Clark** (USA): -6 total -- finished T2
+  - 🔥 T1 **Michael Thorbjornsen** (USA): -6 total -- finished T1
+  - 🔥 T2 **Ryo Hisatsune** (Japan): -6 total -- finished T2
   - 🔥 T3 **Rory McIlroy** (Northern Ireland): -6 total -- finished T3
   - 🔥 T4 **J.J. Spaun** (USA): -6 total -- finished T4
   - 🔥 T5 **Chris Gotterup** (USA): -6 total -- finished T5
 
-## 🔥 MLB Batter Heat (44 HOT / 65 COLD)
+## 🔥 MLB Batter Heat (43 HOT / 67 COLD)
   - 🔥 **Jac Caglianone** (KC): L14 .471 / season .279 (+192pts)
   - 🔥 **Victor Robles** (SEA): L14 .444 / season .260 (+184pts)
   - 🔥 **Pete Alonso** (BAL): L14 .434 / season .269 (+165pts)

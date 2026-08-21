@@ -1,33 +1,36 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-08-21T14:48:28 UTC_
+_Generated 2026-08-21T21:15:16 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -10
+- **Score:** -4
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 14
-- **Total FADES:** 66
+- **Total STRONG:** 15
+- **Total FADES:** 64
 
 ## Top 5 Curated Picks
-1. **GOLF / Rory McIlroy** (GOLF_PLAYER, score=163.0)
+1. **GOLF / Rory McIlroy** (GOLF_PLAYER, score=156.07)
    - Play: Rory McIlroy (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Wyndham Clark** (GOLF_PLAYER, score=149.86)
+2. **GOLF / Wyndham Clark** (GOLF_PLAYER, score=140.5)
    - Play: Wyndham Clark (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-3. **MLB / Jesús Luzardo** (MLB_PITCHER, score=64.0)
+3. **WNBA / napheesa collier** (WNBA_PLAYER, score=139.08)
+   - Play: napheesa collier (PLAYER_STRONG)
+   - Rationale: Cross-sport top pick (WNBA_PLAYER)
+4. **MLB / Jesús Luzardo** (MLB_PITCHER, score=64.0)
    - Play: Jesús Luzardo (PITCHER_STRONG)
    - Rationale: Cross-sport top pick (MLB_PITCHER)
-4. **MLB / Noah Cameron** (MLB_PITCHER, score=58.42)
-   - Play: Noah Cameron (PITCHER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_PITCHER)
+5. **WNBA / angel reese** (WNBA_PLAYER, score=58.42)
+   - Play: angel reese (PLAYER_STRONG)
+   - Rationale: Cross-sport top pick (WNBA_PLAYER)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
   - Rory McIlroy top 10 finish
   - Wyndham Clark top 10 finish
-  - Gary Woodland top 10 finish
+  - Michael Thorbjornsen top 10 finish
 
 ## Slate ROI Projection
 - **Picks:** 0
@@ -40,9 +43,9 @@ _Generated 2026-08-21T14:48:28 UTC_
   - Fade angle: team total UNDER
 - **NBA** / MIA (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NHL** / casey desmith (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / anthony stolarz (GOALIE_FADE)
+- **NHL** / calvin pickard (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
 - **NHL** / joseph woll (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / connor hellebuyck (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
