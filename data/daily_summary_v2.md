@@ -1,18 +1,18 @@
 # EdgeStat Daily Summary — 2026-08-21
 
-## 🏥 Model Health: 63.5/100 [OK]
+## 🏥 Model Health: 64.1/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.9/100
+  - 🟢 Calibration Freshness: 100.0/100
   - 🔴 Hit Rate Trend: 0/100
   - 🔴 Brier Trend: 36.6/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 95.5/100
-  - 🟡 Edge Count: 71.4/100
+  - 🟡 Edge Count: 77.1/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.567)
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.562)
 - **Total games on board:** 101
-- **Strong home favorites:** 8 | **Strong road dogs:** 4
+- **Strong home favorites:** 7 | **Strong road dogs:** 4
 
 ## 🎯 Top 5 Best Bets
 1. **TBR @ BAL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
@@ -20,9 +20,6 @@
 3. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
 4. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
 5. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
-
-## 📉 Strong UNDER Signals
-- [ELITE 7.0] **ATL @ MIL** model 6.62 vs market 8.5
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -61,10 +58,10 @@
 - Hot teams: **4** | Cold teams: **13** | Over-heavy: 0 | Under-heavy: 7
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (67)
+## ⚠️ Anomaly Detector (66)
 - RESIDUAL_DIVERGENCE: **7**
 - STEAM_MOVE: **57**
-- PEN_MISMATCH: **3**
+- PEN_MISMATCH: **2**
   - Washington Mystics (WNBA): Washington Mystics UNDERPERFORMING expected margin by 7.2pts in recent games -- model bias may persist
   - Charlotte FC (MLS): Charlotte FC OUTPERFORMING expected margin by 6.2pts in recent games -- model bias may persist
   - FC Cincinnati (MLS): FC Cincinnati UNDERPERFORMING expected margin by 10.8pts in recent games -- model bias may persist
@@ -80,15 +77,15 @@
   - #4 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
 
-## 🎯 Convergence Picks (15 stacked games)
-- ELITE: **10** · HIGH: 1 · MED: 4
+## 🎯 Convergence Picks (14 stacked games)
+- ELITE: **9** · HIGH: 2 · MED: 3
   - [ELITE] Real Salt Lake @ Orlando City SC : 6 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
+  - [ELITE] Minnesota Lynx @ Washington Mystics : 5 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
   - [ELITE] D.C. United @ Charlotte FC : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
   - [ELITE] Houston Dynamo FC @ St. Louis CITY SC : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
-  - [ELITE] Indiana Fever @ Dallas Wings : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
-  - [ELITE] Atlanta Dream @ Los Angeles Sparks : 4 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ATS)
+  - [ELITE] Seattle Sounders FC @ FC Cincinnati : 4 signals (HEAT_COLD, ANOMALY, ATS, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (13)
+## ⚾ Top MLB Pitcher K Plays (12)
 - **Noah Cameron** OVER 4.5 K (76%) fair -321
 - **Jesús Luzardo** OVER 6.5 K (76%) fair -310
 - **Cam Schlittler** OVER 6.5 K (75%) fair -302
@@ -108,13 +105,13 @@
   - [LEAN] **Shamil Gaziev** (14-3-0) vs Kennedy Nzechukwu -- fair -137
 
 ## ⛳ Golf Player Heat (from BMW Championship)
-  - 🔥 T1 **Michael Thorbjornsen** (USA): -6 total -- finished T1
-  - 🔥 T2 **Ryo Hisatsune** (Japan): -6 total -- finished T2
-  - 🔥 T3 **Rory McIlroy** (Northern Ireland): -6 total -- finished T3
-  - 🔥 T4 **J.J. Spaun** (USA): -6 total -- finished T4
-  - 🔥 T5 **Chris Gotterup** (USA): -6 total -- finished T5
+  - 🔥 T1 **J.J. Spaun** (USA): -10 total -- finished T1
+  - 🔥 T2 **Gary Woodland** (USA): -10 total -- finished T2
+  - 🔥 T3 **Wyndham Clark** (USA): -10 total -- finished T3
+  - 🔥 T4 **Sungjae Im** (South Korea): -9 total -- finished T4
+  - 🔥 T5 **Chris Gotterup** (USA): -9 total -- finished T5
 
-## 🔥 MLB Batter Heat (43 HOT / 67 COLD)
+## 🔥 MLB Batter Heat (43 HOT / 66 COLD)
   - 🔥 **Jac Caglianone** (KC): L14 .471 / season .279 (+192pts)
   - 🔥 **Victor Robles** (SEA): L14 .444 / season .260 (+184pts)
   - 🔥 **Pete Alonso** (BAL): L14 .434 / season .269 (+165pts)
@@ -126,12 +123,12 @@
   - ❄️ **Heliot Ramos** (NYY): L14 .109 / season .243 (-134pts) -- FADE props
   - ❄️ **Spencer Horwitz** (PIT): L14 .125 / season .256 (-131pts) -- FADE props
 
-## 📈 Streak Regression Alerts (12)
+## 📈 Streak Regression Alerts (14)
+- [WNBA] Minnesota Lynx on W5 L10 5-0 -- Minnesota Lynx on W5 -- no historical sample
+- [WNBA] Toronto Tempo on L4 L10 0-4 -- Toronto Tempo on L4 -- no historical sample
 - [MLS] D.C. United on L3 L10 0-3 -- D.C. United on L3 -- no historical sample
 - [MLS] Seattle Sounders FC on L3 L10 0-3 -- Seattle Sounders FC on L3 -- no historical sample
 - [MLS] Inter Miami CF on L3 L10 0-3 -- Inter Miami CF on L3 -- no historical sample
-- [MLS] Orlando City SC on L3 L10 0-3 -- Orlando City SC on L3 -- no historical sample
-- [MLS] Real Salt Lake on L3 L10 0-3 -- Real Salt Lake on L3 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**
