@@ -1,27 +1,27 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-08-21T05:29:33 UTC_
+_Generated 2026-08-21T13:43:49 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -11
+- **Score:** -12
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
 - **Total STRONG:** 14
-- **Total FADES:** 67
+- **Total FADES:** 68
 
 ## Top 5 Curated Picks
-1. **GOLF / Rory McIlroy** (GOLF_PLAYER, score=165.79)
+1. **GOLF / Rory McIlroy** (GOLF_PLAYER, score=163.0)
    - Play: Rory McIlroy (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Wyndham Clark** (GOLF_PLAYER, score=152.64)
+2. **GOLF / Wyndham Clark** (GOLF_PLAYER, score=149.86)
    - Play: Wyndham Clark (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-3. **MLB / AWAY** (MLB_TEAM, score=77.33)
-   - Play: AWAY (TEAM_STRONG)
-   - Rationale: Cross-sport top pick (MLB_TEAM)
-4. **MLB / HOME** (MLB_TEAM, score=75.54)
-   - Play: HOME (TEAM_STRONG)
-   - Rationale: Cross-sport top pick (MLB_TEAM)
+3. **MLB / Cam Schlittler** (MLB_PITCHER, score=64.42)
+   - Play: Cam Schlittler (PITCHER_STRONG)
+   - Rationale: Cross-sport top pick (MLB_PITCHER)
+4. **MLB / Jesús Luzardo** (MLB_PITCHER, score=64.0)
+   - Play: Jesús Luzardo (PITCHER_STRONG)
+   - Rationale: Cross-sport top pick (MLB_PITCHER)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
@@ -36,13 +36,13 @@ _Generated 2026-08-21T05:29:33 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **MLB** / Grayson Rodriguez (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
 - **NBA** / TOR (TEAM_FADE)
   - Fade angle: team total UNDER
 - **NBA** / MIA (TEAM_FADE)
   - Fade angle: team total UNDER
-- **MLB** / Andrew Alvarez (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **MLB** / Peter Lambert (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **NHL** / logan thompson_2 (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / casey desmith (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / connor hellebuyck (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO

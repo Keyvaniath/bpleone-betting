@@ -1,25 +1,25 @@
 # EdgeStat Daily Summary — 2026-08-21
 
-## 🏥 Model Health: 61.3/100 [OK]
+## 🏥 Model Health: 61.7/100 [OK]
 - Operational but room to improve - check yellow components
   - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 0/100
-  - 🔴 Brier Trend: 34.4/100
+  - 🔴 Brier Trend: 35.7/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 86.4/100
-  - 🟡 Edge Count: 71.4/100
+  - 🟢 Data Health: 95.5/100
+  - 🔴 Edge Count: 54.3/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.586)
-- **Total games on board:** 114
-- **Strong home favorites:** 16 | **Strong road dogs:** 5
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.569)
+- **Total games on board:** 98
+- **Strong home favorites:** 7 | **Strong road dogs:** 2
 
 ## 🎯 Top 5 Best Bets
-1. **LAA @ HOU YRFI (1st-inning OVER 0.5)** (78/100 ★★★★)
-2. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
-3. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
-4. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
-5. **GOLF Michael Thorbjornsen TOP5 @ 574 (BMW Championship)** (78/100 ★★★★★)
+1. **TBR @ BAL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+2. **MIN @ SDP YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+3. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
+4. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
+5. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -56,36 +56,40 @@
 - Hot teams: **4** | Cold teams: **13** | Over-heavy: 0 | Under-heavy: 7
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (62)
+## ⚠️ Anomaly Detector (66)
 - RESIDUAL_DIVERGENCE: **6**
-- STEAM_MOVE: **55**
-- PEN_MISMATCH: **1**
+- STEAM_MOVE: **53**
+- PEN_MISMATCH: **4**
+- COMPOUND_BULLPEN: **3**
   - Charlotte FC (MLS): Charlotte FC OUTPERFORMING expected margin by 6.2pts in recent games -- model bias may persist
   - FC Cincinnati (MLS): FC Cincinnati UNDERPERFORMING expected margin by 10.8pts in recent games -- model bias may persist
   - Orlando City SC (MLS): Orlando City SC OUTPERFORMING expected margin by 11.9pts in recent games -- model bias may persist
   - Philadelphia Union (MLS): Philadelphia Union UNDERPERFORMING expected margin by 8.5pts in recent games -- model bias may persist
   - St. Louis CITY SC (MLS): St. Louis CITY SC UNDERPERFORMING expected margin by 8.5pts in recent games -- model bias may persist
 
-## 💰 Today's Portfolio (10 picks)
-- Total stake: **$335.0** (33.5% of $1000 bankroll)
-- Expected EV: **$-13.29**
-  - #1 [NRFI] $35 on LAA @ HOU YRFI (1st-inning OVER 0.5) (P=64%)
-  - #2 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
-  - #3 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
-  - #4 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
-  - #5 [GOLF] $35 on GOLF Michael Thorbjornsen TOP5 @ 574 (BMW Championship) (P=15%)
+## 💰 Today's Portfolio (9 picks)
+- Total stake: **$345.0** (34.5% of $1000 bankroll)
+- Expected EV: **$-5.18**
+  - #1 [NRFI] $50 on TBR @ BAL YRFI (1st-inning OVER 0.5) (P=71%)
+  - #2 [NRFI] $50 on MIN @ SDP YRFI (1st-inning OVER 0.5) (P=68%)
+  - #3 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
+  - #4 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
+  - #5 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
 
-## 🎯 Convergence Picks (16 stacked games)
-- ELITE: **10** · HIGH: 2 · MED: 4
+## 🎯 Convergence Picks (15 stacked games)
+- ELITE: **10** · HIGH: 1 · MED: 4
   - [ELITE] Real Salt Lake @ Orlando City SC : 6 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
-  - [ELITE] Atlanta Dream @ Los Angeles Sparks : 5 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
   - [ELITE] D.C. United @ Charlotte FC : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
   - [ELITE] Houston Dynamo FC @ St. Louis CITY SC : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
-  - [ELITE] Indiana Fever @ Dallas Wings : 4 signals (PREGAME, HEAT_COLD, HEAT_COLD, ATS)
+  - [ELITE] Indiana Fever @ Dallas Wings : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
+  - [ELITE] Atlanta Dream @ Los Angeles Sparks : 4 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (2)
-- **Jacob deGrom** OVER 4.5 K (76%) fair -318
-- **Peter Lambert** OVER 4.5 K (73%) fair -271
+## ⚾ Top MLB Pitcher K Plays (13)
+- **Noah Cameron** OVER 4.5 K (76%) fair -321
+- **Jesús Luzardo** OVER 6.5 K (76%) fair -310
+- **Cam Schlittler** OVER 6.5 K (75%) fair -302
+- **MacKenzie Gore** OVER 4.5 K (75%) fair -295
+- **Yoshinobu Yamamoto** OVER 4.5 K (75%) fair -295
 
 ## 🏀 NBA Player Heat (2 HOT / 1 COLD)
   - 🔥 **Scottie Barnes** (TOR): L5 24.4/7.6/9.6 vs season 18.6/5.8/8.8 [PTS +5.8]
@@ -118,12 +122,12 @@
   - ❄️ **Heliot Ramos** (NYY): L14 .109 / season .243 (-134pts) -- FADE props
   - ❄️ **Spencer Horwitz** (PIT): L14 .125 / season .256 (-131pts) -- FADE props
 
-## 📈 Streak Regression Alerts (14)
-- [WNBA] Indiana Fever on W5 L10 5-0 -- Indiana Fever on W5 -- no historical sample
-- [WNBA] Los Angeles Sparks on L5 L10 0-5 -- Los Angeles Sparks on L5 -- no historical sample
+## 📈 Streak Regression Alerts (12)
 - [MLS] D.C. United on L3 L10 0-3 -- D.C. United on L3 -- no historical sample
 - [MLS] Seattle Sounders FC on L3 L10 0-3 -- Seattle Sounders FC on L3 -- no historical sample
 - [MLS] Inter Miami CF on L3 L10 0-3 -- Inter Miami CF on L3 -- no historical sample
+- [MLS] Orlando City SC on L3 L10 0-3 -- Orlando City SC on L3 -- no historical sample
+- [MLS] Real Salt Lake on L3 L10 0-3 -- Real Salt Lake on L3 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**
