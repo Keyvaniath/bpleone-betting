@@ -1,13 +1,13 @@
 # EdgeStat Daily Summary — 2026-08-21
 
-## 🏥 Model Health: 61.7/100 [OK]
+## 🏥 Model Health: 63.8/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.9/100
+  - 🟢 Calibration Freshness: 99.7/100
   - 🔴 Hit Rate Trend: 0/100
-  - 🔴 Brier Trend: 35.7/100
+  - 🔴 Brier Trend: 36.6/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 95.5/100
-  - 🔴 Edge Count: 54.3/100
+  - 🟡 Edge Count: 74.3/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.569)
@@ -20,6 +20,9 @@
 3. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
 4. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
 5. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
+
+## 📉 Strong UNDER Signals
+- [ELITE 7.0] **ATL @ MIL** model 6.62 vs market 8.5
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -56,11 +59,10 @@
 - Hot teams: **4** | Cold teams: **13** | Over-heavy: 0 | Under-heavy: 7
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (66)
+## ⚠️ Anomaly Detector (63)
 - RESIDUAL_DIVERGENCE: **6**
-- STEAM_MOVE: **53**
-- PEN_MISMATCH: **4**
-- COMPOUND_BULLPEN: **3**
+- STEAM_MOVE: **54**
+- PEN_MISMATCH: **3**
   - Charlotte FC (MLS): Charlotte FC OUTPERFORMING expected margin by 6.2pts in recent games -- model bias may persist
   - FC Cincinnati (MLS): FC Cincinnati UNDERPERFORMING expected margin by 10.8pts in recent games -- model bias may persist
   - Orlando City SC (MLS): Orlando City SC OUTPERFORMING expected margin by 11.9pts in recent games -- model bias may persist
