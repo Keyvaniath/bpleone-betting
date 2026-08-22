@@ -6,52 +6,45 @@ _0% lineups confirmed · 13 rookie SPs_
 
 ## Slate
 - **15 games** scheduled
-- **30 best bets** scored: 0 DK · 0 PP · 9 NRFI · 0 SGP
-- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$31.23
-- **MC simulation:** EV +$90.06, 78% P(profit), p05 $-113.74 / p95 $287.54
+- **34 best bets** scored: 0 DK · 0 PP · 13 NRFI · 0 SGP
+- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$52.42
+- **MC simulation:** EV +$123.39, 83% P(profit), p05 $-88.06 / p95 $315.19
 
 ## Top 5 Best Bets
-1. **TBR @ BAL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +24.7%)
-   - P(YRFI) 70.7% vs baseline 46.0%
-2. **MIN @ SDP YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +20.7%)
-   - P(YRFI) 66.7% vs baseline 46.0%
-3. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
-   - Player prop quality score 1.1935
-   - Elite player
-4. **LOL ShowMaker OVER 3.5 Kills**  (78/100 ****, edge —)
-   - Player prop quality score 1.1892
-   - Elite player
-5. **LOL Peyz OVER 4.5 Kills**  (78/100 ****, edge —)
-   - Player prop quality score 1.184
-   - Elite player
+1. **CLE @ COL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +41.4%)
+   - P(YRFI) 87.4% vs baseline 46.0%
+2. **SFG @ BOS YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +26.3%)
+   - P(YRFI) 72.3% vs baseline 46.0%
+3. **STL @ PHI YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +22.2%)
+   - P(YRFI) 68.2% vs baseline 46.0%
+4. **NYM @ CHW YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +21.5%)
+   - P(YRFI) 67.5% vs baseline 46.0%
+5. **PIT @ LAD YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +20.9%)
+   - P(YRFI) 66.9% vs baseline 46.0%
 
-## ⚠️ Trap Warnings — 9 flagged
-- **TBR @ BAL YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +24.7% looks big but only 0 settled props on this player — model unproven
-- **MIN @ SDP YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +20.7% looks big but only 0 settled props on this player — model unproven
-- **OAK @ HOU YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +17.8% looks big but only 0 settled props on this player — model unproven
+## ⚠️ Trap Warnings — 12 flagged
 - **CLE @ COL YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +16.2% looks big but only 0 settled props on this player — model unproven
-- **CHC @ SEA YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +14.0% looks big but only 0 settled props on this player — model unproven
-
-## Hot streaks
-**Batters heating up:** Pete Alonso (heat +5.67), Max Muncy (heat +4.95), Ryan Vilade (heat +4.76)
+   - Edge +41.4% looks big but only 0 settled props on this player — model unproven
+- **SFG @ BOS YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +26.3% looks big but only 0 settled props on this player — model unproven
+- **STL @ PHI YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +22.2% looks big but only 0 settled props on this player — model unproven
+- **NYM @ CHW YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +21.5% looks big but only 0 settled props on this player — model unproven
+- **PIT @ LAD YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +20.9% looks big but only 0 settled props on this player — model unproven
 
 ## Bullpens GASSED tonight
-Athletics, Seattle Mariners, San Francisco Giants, Tampa Bay Rays, Texas Rangers, Chicago White Sox, New York Yankees, Milwaukee Brewers
+Athletics, Seattle Mariners, San Francisco Giants, St. Louis Cardinals, Texas Rangers, Toronto Blue Jays, New York Yankees, Milwaukee Brewers
 _Lean late-inning OVER on these games; fade their save situations._
 
 ## NRFI/YRFI strong leans
-- **YRFI** (1st-inning OVER): TBR @ BAL, MIN @ SDP, OAK @ HOU, CLE @ COL, CHC @ SEA
-- **NRFI** (1st-inning UNDER): DET @ KCR, SFG @ BOS
+- **YRFI** (1st-inning OVER): CLE @ COL, SFG @ BOS, STL @ PHI, NYM @ CHW, PIT @ LAD
 
 ## Golf -- BMW Championship
 - **Leader:** Wyndham Clark (-12) at #1
 - **Field:** 50 players  |  Status: In Progress
-- **Play of the Tournament:** Russell Henley TOP5 @ +582 (model 14.7%, HIGH)
+- **Play of the Tournament:** Russell Henley TOP5 @ +578 (model 14.7%, HIGH)
    - P(top 5) 14.7% -- lower variance than outright but compelling line.
 
 ## NBA -- PRESEASON
@@ -72,12 +65,12 @@ _Lean late-inning OVER on these games; fade their save situations._
 - Samsung Lions @ NC Dinos | P(home) 43.8% fair +128 | total 8 R
 - **KBO POD:** Doosan Bears ML vs Lotte Giants (KBO) (HIGH)
 
-## LoL Esports -- 0 live, 29 upcoming
-- [LPL] LGD GAMING vs Xi'an Team WE BO3 | P(A) 61.6% fair -160/+160
-- [LCK] Dplus KIA vs Gen.G Esports BO3 | P(A) 47.5% fair +111/-111
-- [LPL] Shenzhen NINJAS IN PYJAMAS vs Invictus Gaming BO3 | P(A) 49.7% fair +101/-101
-- [LCK] DN SOOPers vs KIWOOM DRX BO3 | P(A) 63.2% fair -171/+171
-- [LPL] Beijing JDG Esports vs TOP ESPORTS BO3 | P(A) 54.9% fair -122/+122
+## LoL Esports -- 0 live, 24 upcoming
+- [LEC] Shifters vs Fnatic BO3 | P(A) 34.8% fair +188/-188
+- [CBLOL] LEVIATÁN vs Vivo Keyd Stars BO3 | P(A) 40.8% fair +145/-145
+- [LEC] SK Gaming vs Movistar KOI BO3 | P(A) 35.4% fair +182/-182
+- [CBLOL] paiN Gaming vs FURIA BO3 | P(A) 29.0% fair +245/-245
+- [LCS] Sentinels vs FlyQuest BO3 | P(A) 51.4% fair -106/+106
 - **LoL POT:** Sentinels ML vs Disguised (LCS, BO3) (HIGH)
 
 ## Player Play of the Day -- across all sports (3463 candidates scanned)
