@@ -1,13 +1,13 @@
 # EdgeStat Daily Summary — 2026-08-22
 
-## 🏥 Model Health: 65.1/100 [OK]
+## 🏥 Model Health: 69.2/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.9/100
+  - 🟢 Calibration Freshness: 100.0/100
   - 🔴 Hit Rate Trend: 0/100
-  - 🔴 Brier Trend: 38.8/100
+  - 🔴 Brier Trend: 56.2/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 95.5/100
-  - 🟢 Edge Count: 82.9/100
+  - 🟢 Edge Count: 88.6/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.568)
@@ -78,20 +78,20 @@
   - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
-## 🎯 Convergence Picks (14 stacked games)
-- ELITE: **9** · HIGH: 1 · MED: 4
+## 🎯 Convergence Picks (15 stacked games)
+- ELITE: **11** · HIGH: 1 · MED: 3
+  - [ELITE] Connecticut Sun @ Los Angeles Sparks : 7 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
   - [ELITE] Real Salt Lake @ Orlando City SC : 6 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
   - [ELITE] D.C. United @ Charlotte FC : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
   - [ELITE] Houston Dynamo FC @ St. Louis CITY SC : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
-  - [ELITE] Minnesota Lynx @ Washington Mystics : 4 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ATS)
-  - [ELITE] Seattle Sounders FC @ FC Cincinnati : 4 signals (HEAT_COLD, ANOMALY, ATS, ATS)
+  - [ELITE] Indiana Fever @ New York Liberty : 4 signals (PREGAME, HEAT_COLD, ATS, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (10)
-- **Logan Henderson** OVER 4.5 K (78%) fair -347
-- **Eury Pérez** OVER 4.5 K (78%) fair -347
+## ⚾ Top MLB Pitcher K Plays (7)
 - **Tarik Skubal** OVER 5.5 K (76%) fair -314
 - **Jacob Lopez** OVER 4.5 K (76%) fair -311
 - **David Peterson** OVER 4.5 K (70%) fair -239
+- **Christian Scott** OVER 4.5 K (69%) fair -220
+- **Blade Tidwell** OVER 5.5 K (66%) fair -190
 
 ## 🏀 NBA Player Heat (2 HOT / 1 COLD)
   - 🔥 **Scottie Barnes** (TOR): L5 24.4/7.6/9.6 vs season 18.6/5.8/8.8 [PTS +5.8]
@@ -106,17 +106,17 @@
   - [LEAN] **Shamil Gaziev** (14-3-0) vs Kennedy Nzechukwu -- fair -137
 
 ## ⛳ Golf Player Heat (from BMW Championship)
-  - 🔥 T1 **Wyndham Clark** (USA): -12 total -- finished T1
-  - 🔥 T2 **Gary Woodland** (USA): -11 total -- finished T2
-  - 🔥 T3 **J.J. Spaun** (USA): -10 total -- finished T3
-  - 🔥 T4 **Sungjae Im** (South Korea): -9 total -- finished T4
-  - 🔥 T5 **Chris Gotterup** (USA): -9 total -- finished T5
+  - 🔥 T1 **Wyndham Clark** (USA): -18 total -- finished T1
+  - 🔥 T2 **Rory McIlroy** (Northern Ireland): -12 total -- finished T2
+  - 🔥 T3 **Chris Gotterup** (USA): -12 total -- finished T3
+  - 🔥 T4 **Patrick Cantlay** (USA): -11 total -- finished T4
+  - 🔥 T5 **Gary Woodland** (USA): -11 total -- finished T5
 
-## 🔥 MLB Batter Heat (38 HOT / 69 COLD)
+## 🔥 MLB Batter Heat (41 HOT / 68 COLD)
   - 🔥 **Victor Robles** (SEA): L14 .444 / season .260 (+184pts)
+  - 🔥 **Alec Bohm** (PHI): L14 .426 / season .247 (+179pts)
   - 🔥 **Pete Alonso** (BAL): L14 .444 / season .271 (+173pts)
   - 🔥 **Jac Caglianone** (KC): L14 .442 / season .277 (+165pts)
-  - 🔥 **Alec Bohm** (PHI): L14 .400 / season .246 (+154pts)
   - 🔥 **Alejandro Kirk** (TOR): L14 .412 / season .283 (+129pts)
   - ❄️ **David Fry** (CLE): L14 .000 / season .182 (-182pts) -- FADE props
   - ❄️ **Jeremy Peña** (HOU): L14 .107 / season .283 (-176pts) -- FADE props
@@ -124,12 +124,12 @@
   - ❄️ **Elly De La Cruz** (CIN): L14 .113 / season .257 (-144pts) -- FADE props
   - ❄️ **Spencer Horwitz** (PIT): L14 .115 / season .252 (-137pts) -- FADE props
 
-## 📈 Streak Regression Alerts (12)
+## 📈 Streak Regression Alerts (13)
+- [WNBA] Los Angeles Sparks on L6 L10 0-5 -- Los Angeles Sparks on L6 -- no historical sample
 - [MLS] D.C. United on L3 L10 0-3 -- D.C. United on L3 -- no historical sample
 - [MLS] Seattle Sounders FC on L3 L10 0-3 -- Seattle Sounders FC on L3 -- no historical sample
 - [MLS] Inter Miami CF on L3 L10 0-3 -- Inter Miami CF on L3 -- no historical sample
 - [MLS] Orlando City SC on L3 L10 0-3 -- Orlando City SC on L3 -- no historical sample
-- [MLS] Real Salt Lake on L3 L10 0-3 -- Real Salt Lake on L3 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**

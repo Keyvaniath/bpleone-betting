@@ -4,34 +4,33 @@
 
 _Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
 
-_Generated at 2026-08-22T21:12:26 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-08-22T22:27:16 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
 **CLE @ COL - COL_ML**
 - Market: +139
-- Model probability: 67.5%
-- Raw edge: +61.4%
+- Model probability: 67.3%
+- Raw edge: +60.89%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
 
-## Full Slate (12 games)
+## Full Slate (11 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 6:05p ET | STL @ PHI | Citizens Bank Park | 70F 4mph | STL_ML +23.18% |
-| 7:05p ET | TBR @ BAL | Oriole Park at Camden Yards | 73F 3mph | TBR_ML +23.79% |
-| 7:05p ET | LAA @ TEX | Globe Life Field | indoor | OVER_8.0 +30.17% |
+| 7:05p ET | TBR @ BAL | Oriole Park at Camden Yards | 72F 2mph | TBR_ML +23.63% |
+| 7:05p ET | LAA @ TEX | Globe Life Field | indoor | TEX_ML +23.45% |
 | 7:10p ET | OAK @ HOU | Daikin Park | indoor | OVER_8.0 +60.31% |
-| 7:10p ET | NYM @ CHW | Rate Field | 66F 6mph | -- |
-| 7:15p ET | DET @ KCR | Kauffman Stadium | 74F 5mph | DET_ML +20.8% |
-| 7:15p ET | PIT @ LAD | UNIQLO Field at Dodger Stadium | 74F 4mph | OVER_8.5 +17.47% |
+| 7:10p ET | NYM @ CHW | Rate Field | 67F 5mph | -- |
+| 7:15p ET | DET @ KCR | Kauffman Stadium | 73F 5mph | OVER_8.0 +21.39% |
+| 7:15p ET | PIT @ LAD | UNIQLO Field at Dodger Stadium | 76F 4mph | OVER_8.5 +19.0% |
 | 7:15p ET | CHC @ SEA | T-Mobile Park | indoor | CHC_ML +30.26% |
-| 7:15p ET | SFG @ BOS | Fenway Park | 65F 3mph | OVER_8.0 +13.78% |
+| 7:15p ET | SFG @ BOS | Fenway Park | 66F 3mph | OVER_8.0 +14.54% |
 | 8:10p ET | CIN @ ARI | Chase Field | indoor | ARI_ML +29.41% |
-| 8:10p ET | CLE @ COL | Coors Field | 71F 17mph | COL_ML +61.4% |
-| 8:40p ET | MIN @ SDP | Petco Park | 72F 3mph | SDP_ML +16.27% |
+| 8:10p ET | CLE @ COL | Coors Field | 76F 11mph | COL_ML +60.89% |
+| 8:40p ET | MIN @ SDP | Petco Park | 72F 2mph | SDP_ML +16.15% |
 
 ## Parlays - top 5
 
@@ -63,7 +62,7 @@ _Generated at 2026-08-22T21:12:26 UTC. Game lines source: **Bovada (fallback -- 
 | batter hits | 54 | 63.0% | 57.4% | 0.912 | 1.087 |
 | batter total bases | 15 | 40.0% | 50.4% | 1.241 | 0.862 |
 
-Cumulative graded plays: 9600. Wins: 3538. Hit rate: 36.9%.
+Cumulative graded plays: 9602. Wins: 3538. Hit rate: 36.8%.
 
 ## Auxiliary Markets (Model Fair Prices)
 
@@ -71,16 +70,15 @@ Cumulative graded plays: 9600. Wins: 3538. Hit rate: 36.9%.
 |---|---|---|---|---|---|
 | CHC @ SEA | 44.6% | +124 | 4.04 | +409 | -409 |
 | CIN @ ARI | 46.6% | +114 | 3.81 | -150 | +150 |
-| CLE @ COL | 12.6% | +694 | 11.42 | -131 | +131 |
-| DET @ KCR | 44.5% | +125 | 3.93 | +297 | -297 |
+| CLE @ COL | 12.6% | +694 | 11.12 | -129 | +129 |
+| DET @ KCR | 44.5% | +125 | 3.92 | +297 | -297 |
 | LAA @ TEX | 43.8% | +128 | 4.12 | -219 | +219 |
-| MIN @ SDP | 40.6% | +146 | 4.48 | -116 | +116 |
-| NYM @ CHW | 32.5% | +208 | 5.72 | +172 | -172 |
+| MIN @ SDP | 40.6% | +146 | 4.46 | -116 | +116 |
+| NYM @ CHW | 32.5% | +208 | 5.77 | +172 | -172 |
 | OAK @ HOU | 40.5% | +147 | 4.52 | -120 | +120 |
-| PIT @ LAD | 33.1% | +202 | 5.65 | -160 | +160 |
-| SFG @ BOS | 27.7% | +261 | 6.35 | -102 | +102 |
-| STL @ PHI | 36.1% | +177 | 5.11 | +173 | -173 |
-| TBR @ BAL | 38.8% | +158 | 4.8 | +315 | -315 |
+| PIT @ LAD | 33.1% | +202 | 5.63 | -160 | +160 |
+| SFG @ BOS | 27.7% | +261 | 6.3 | -102 | +102 |
+| TBR @ BAL | 38.8% | +158 | 4.77 | +315 | -315 |
 
 ## Team Form (last 10)
 

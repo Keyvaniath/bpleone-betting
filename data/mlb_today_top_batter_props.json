@@ -1,20 +1,29 @@
 {
-  "generated_at": "2026-08-22T21:11:07",
-  "n_batters_with_edges": 165,
+  "generated_at": "2026-08-22T22:25:54",
+  "n_batters_with_edges": 189,
   "BATTER_PLAY_OF_THE_DAY": {
-    "batter": "Zac Veen",
-    "composite_score": 1.046,
-    "n_strong_edges": 5,
-    "net_direction": "MIXED",
-    "directions_OVER": 2,
+    "batter": "Jo Adell",
+    "composite_score": 1.407,
+    "n_strong_edges": 6,
+    "net_direction": "LEAN_OVER",
+    "directions_OVER": 3,
     "directions_UNDER": 2,
     "edges": [
+      {
+        "source": "hr_yn",
+        "market": "TO_HIT_HR_YES",
+        "direction": "OVER",
+        "p": 0.149,
+        "fair_odds": 573,
+        "edge_class": "STRONG_YES",
+        "weight": 0.95
+      },
       {
         "source": "rbi",
         "market": "RBI_1PLUS_YES",
         "direction": "OVER",
-        "p": 0.875,
-        "fair_odds": -700,
+        "p": 0.857,
+        "fair_odds": -600,
         "edge_class": "STRONG_YES",
         "weight": 0.95
       },
@@ -22,26 +31,17 @@
         "source": "2plus_hits",
         "market": "HITS_2PLUS_NO",
         "direction": "UNDER",
-        "p": 0.87,
-        "fair_odds": -669,
+        "p": 0.839,
+        "fair_odds": -522,
         "edge_class": "STRONG_NO",
         "weight": 1.05
-      },
-      {
-        "source": "3plus_tb",
-        "market": "TB_3PLUS_YES",
-        "direction": "OVER",
-        "p": 0.358,
-        "fair_odds": 179,
-        "edge_class": "STRONG_YES",
-        "weight": 0.9
       },
       {
         "source": "doubles_xbh",
         "market": "1_PLUS_XBH",
         "direction": "?",
-        "p": 0.414,
-        "fair_odds": 142,
+        "p": 0.328,
+        "fair_odds": 205,
         "edge_class": "STRONG_1_PLUS_XBH",
         "weight": 0.85
       },
@@ -49,78 +49,41 @@
         "source": "run_yn",
         "market": "TO_SCORE_RUN_NO",
         "direction": "UNDER",
-        "p": 0.625,
-        "fair_odds": -167,
+        "p": 0.643,
+        "fair_odds": -180,
         "edge_class": "STRONG_NO",
         "weight": 0.8
+      },
+      {
+        "source": "strikeouts",
+        "market": "K_1PLUS_YES",
+        "direction": "OVER",
+        "p": 0.669,
+        "fair_odds": -203,
+        "edge_class": "STRONG_YES_1PLUS",
+        "weight": 0.7
       }
     ]
   },
   "method_note": "Aggregates STRONG edges across 11 batter prop modules. Composite = sum(edge_pct * source_weight) per batter. STRONG_OVER/UNDER if 2x majority direction, LEAN otherwise.",
   "top_25_batters": [
     {
-      "batter": "Zac Veen",
-      "composite_score": 1.046,
-      "n_strong_edges": 5,
-      "net_direction": "MIXED",
-      "directions_OVER": 2,
+      "batter": "Jo Adell",
+      "composite_score": 1.407,
+      "n_strong_edges": 6,
+      "net_direction": "LEAN_OVER",
+      "directions_OVER": 3,
       "directions_UNDER": 2,
       "edges": [
         {
-          "source": "rbi",
-          "market": "RBI_1PLUS_YES",
+          "source": "hr_yn",
+          "market": "TO_HIT_HR_YES",
           "direction": "OVER",
-          "p": 0.875,
-          "fair_odds": -700,
+          "p": 0.149,
+          "fair_odds": 573,
           "edge_class": "STRONG_YES",
           "weight": 0.95
         },
-        {
-          "source": "2plus_hits",
-          "market": "HITS_2PLUS_NO",
-          "direction": "UNDER",
-          "p": 0.87,
-          "fair_odds": -669,
-          "edge_class": "STRONG_NO",
-          "weight": 1.05
-        },
-        {
-          "source": "3plus_tb",
-          "market": "TB_3PLUS_YES",
-          "direction": "OVER",
-          "p": 0.358,
-          "fair_odds": 179,
-          "edge_class": "STRONG_YES",
-          "weight": 0.9
-        },
-        {
-          "source": "doubles_xbh",
-          "market": "1_PLUS_XBH",
-          "direction": "?",
-          "p": 0.414,
-          "fair_odds": 142,
-          "edge_class": "STRONG_1_PLUS_XBH",
-          "weight": 0.85
-        },
-        {
-          "source": "run_yn",
-          "market": "TO_SCORE_RUN_NO",
-          "direction": "UNDER",
-          "p": 0.625,
-          "fair_odds": -167,
-          "edge_class": "STRONG_NO",
-          "weight": 0.8
-        }
-      ]
-    },
-    {
-      "batter": "Jo Adell",
-      "composite_score": 1.044,
-      "n_strong_edges": 5,
-      "net_direction": "MIXED",
-      "directions_OVER": 2,
-      "directions_UNDER": 2,
-      "edges": [
         {
           "source": "rbi",
           "market": "RBI_1PLUS_YES",
@@ -143,8 +106,8 @@
           "source": "doubles_xbh",
           "market": "1_PLUS_XBH",
           "direction": "?",
-          "p": 0.363,
-          "fair_odds": 176,
+          "p": 0.328,
+          "fair_odds": 205,
           "edge_class": "STRONG_1_PLUS_XBH",
           "weight": 0.85
         },
@@ -169,38 +132,184 @@
       ]
     },
     {
-      "batter": "Andrew Benintendi",
-      "composite_score": 0.89,
-      "n_strong_edges": 4,
-      "net_direction": "STRONG_UNDER",
-      "directions_OVER": 1,
+      "batter": "Zac Veen",
+      "composite_score": 1.303,
+      "n_strong_edges": 7,
+      "net_direction": "MIXED",
+      "directions_OVER": 3,
       "directions_UNDER": 3,
       "edges": [
+        {
+          "source": "hit_yn",
+          "market": "TO_RECORD_HIT_NO",
+          "direction": "UNDER",
+          "p": 0.522,
+          "fair_odds": -109,
+          "edge_class": "STRONG_NO",
+          "weight": 1.0
+        },
+        {
+          "source": "hr_yn",
+          "market": "TO_HIT_HR_YES",
+          "direction": "OVER",
+          "p": 0.208,
+          "fair_odds": 380,
+          "edge_class": "STRONG_YES",
+          "weight": 0.95
+        },
+        {
+          "source": "rbi",
+          "market": "RBI_1PLUS_YES",
+          "direction": "OVER",
+          "p": 0.875,
+          "fair_odds": -700,
+          "edge_class": "STRONG_YES",
+          "weight": 0.95
+        },
         {
           "source": "2plus_hits",
           "market": "HITS_2PLUS_NO",
           "direction": "UNDER",
-          "p": 0.864,
-          "fair_odds": -633,
+          "p": 0.87,
+          "fair_odds": -669,
           "edge_class": "STRONG_NO",
           "weight": 1.05
         },
         {
+          "source": "3plus_tb",
+          "market": "TB_3PLUS_YES",
+          "direction": "OVER",
+          "p": 0.389,
+          "fair_odds": 157,
+          "edge_class": "STRONG_YES",
+          "weight": 0.9
+        },
+        {
           "source": "doubles_xbh",
-          "market": "NO_XBH",
-          "direction": "UNDER",
-          "p": 0.824,
-          "fair_odds": -468,
-          "edge_class": "STRONG_NO_XBH",
+          "market": "1_PLUS_XBH",
+          "direction": "?",
+          "p": 0.431,
+          "fair_odds": 132,
+          "edge_class": "STRONG_1_PLUS_XBH",
           "weight": 0.85
         },
         {
           "source": "run_yn",
           "market": "TO_SCORE_RUN_NO",
           "direction": "UNDER",
-          "p": 0.643,
-          "fair_odds": -180,
+          "p": 0.625,
+          "fair_odds": -167,
           "edge_class": "STRONG_NO",
+          "weight": 0.8
+        }
+      ]
+    },
+    {
+      "batter": "Wilyer Abreu",
+      "composite_score": 1.289,
+      "n_strong_edges": 5,
+      "net_direction": "STRONG_OVER",
+      "directions_OVER": 5,
+      "directions_UNDER": 0,
+      "edges": [
+        {
+          "source": "hit_yn",
+          "market": "TO_RECORD_HIT_YES",
+          "direction": "OVER",
+          "p": 0.814,
+          "fair_odds": -439,
+          "edge_class": "STRONG_YES",
+          "weight": 1.0
+        },
+        {
+          "source": "hr_yn",
+          "market": "TO_HIT_HR_YES",
+          "direction": "OVER",
+          "p": 0.144,
+          "fair_odds": 594,
+          "edge_class": "STRONG_YES",
+          "weight": 0.95
+        },
+        {
+          "source": "rbi",
+          "market": "RBI_1PLUS_YES",
+          "direction": "OVER",
+          "p": 0.786,
+          "fair_odds": -367,
+          "edge_class": "STRONG_YES",
+          "weight": 0.95
+        },
+        {
+          "source": "run_yn",
+          "market": "TO_SCORE_RUN_YES",
+          "direction": "OVER",
+          "p": 0.786,
+          "fair_odds": -367,
+          "edge_class": "STRONG_YES",
+          "weight": 0.8
+        },
+        {
+          "source": "strikeouts",
+          "market": "K_1PLUS_YES",
+          "direction": "OVER",
+          "p": 0.695,
+          "fair_odds": -228,
+          "edge_class": "STRONG_YES_1PLUS",
+          "weight": 0.7
+        }
+      ]
+    },
+    {
+      "batter": "Vinnie Pasquantino",
+      "composite_score": 1.246,
+      "n_strong_edges": 6,
+      "net_direction": "STRONG_OVER",
+      "directions_OVER": 5,
+      "directions_UNDER": 0,
+      "edges": [
+        {
+          "source": "hit_yn",
+          "market": "TO_RECORD_HIT_YES",
+          "direction": "OVER",
+          "p": 0.868,
+          "fair_odds": -655,
+          "edge_class": "STRONG_YES",
+          "weight": 1.0
+        },
+        {
+          "source": "hr_yn",
+          "market": "TO_HIT_HR_YES",
+          "direction": "OVER",
+          "p": 0.163,
+          "fair_odds": 512,
+          "edge_class": "STRONG_YES",
+          "weight": 0.95
+        },
+        {
+          "source": "3plus_tb",
+          "market": "TB_3PLUS_YES",
+          "direction": "OVER",
+          "p": 0.391,
+          "fair_odds": 156,
+          "edge_class": "STRONG_YES",
+          "weight": 0.9
+        },
+        {
+          "source": "doubles_xbh",
+          "market": "1_PLUS_XBH",
+          "direction": "?",
+          "p": 0.368,
+          "fair_odds": 171,
+          "edge_class": "STRONG_1_PLUS_XBH",
+          "weight": 0.85
+        },
+        {
+          "source": "run_yn",
+          "market": "TO_SCORE_RUN_YES",
+          "direction": "OVER",
+          "p": 0.786,
+          "fair_odds": -367,
+          "edge_class": "STRONG_YES",
           "weight": 0.8
         },
         {
@@ -216,12 +325,21 @@
     },
     {
       "batter": "Tyler O'Neill",
-      "composite_score": 0.884,
-      "n_strong_edges": 4,
-      "net_direction": "STRONG_UNDER",
-      "directions_OVER": 1,
+      "composite_score": 1.212,
+      "n_strong_edges": 5,
+      "net_direction": "LEAN_UNDER",
+      "directions_OVER": 2,
       "directions_UNDER": 3,
       "edges": [
+        {
+          "source": "hr_yn",
+          "market": "TO_HIT_HR_YES",
+          "direction": "OVER",
+          "p": 0.17,
+          "fair_odds": 488,
+          "edge_class": "STRONG_YES",
+          "weight": 0.95
+        },
         {
           "source": "2plus_hits",
           "market": "HITS_2PLUS_NO",
@@ -235,10 +353,663 @@
           "source": "doubles_xbh",
           "market": "NO_XBH",
           "direction": "UNDER",
-          "p": 0.846,
-          "fair_odds": -549,
+          "p": 0.826,
+          "fair_odds": -476,
           "edge_class": "STRONG_NO_XBH",
           "weight": 0.85
+        },
+        {
+          "source": "run_yn",
+          "market": "TO_SCORE_RUN_NO",
+          "direction": "UNDER",
+          "p": 0.643,
+          "fair_odds": -180,
+          "edge_class": "STRONG_NO",
+          "weight": 0.8
+        },
+        {
+          "source": "strikeouts",
+          "market": "K_1PLUS_YES",
+          "direction": "OVER",
+          "p": 0.715,
+          "fair_odds": -251,
+          "edge_class": "STRONG_YES_1PLUS",
+          "weight": 0.7
+        }
+      ]
+    },
+    {
+      "batter": "Kevin McGonigle",
+      "composite_score": 1.085,
+      "n_strong_edges": 4,
+      "net_direction": "STRONG_OVER",
+      "directions_OVER": 4,
+      "directions_UNDER": 0,
+      "edges": [
+        {
+          "source": "hit_yn",
+          "market": "TO_RECORD_HIT_YES",
+          "direction": "OVER",
+          "p": 0.819,
+          "fair_odds": -453,
+          "edge_class": "STRONG_YES",
+          "weight": 1.0
+        },
+        {
+          "source": "hr_yn",
+          "market": "TO_HIT_HR_YES",
+          "direction": "OVER",
+          "p": 0.221,
+          "fair_odds": 352,
+          "edge_class": "STRONG_YES",
+          "weight": 0.95
+        },
+        {
+          "source": "rbi",
+          "market": "RBI_1PLUS_YES",
+          "direction": "OVER",
+          "p": 0.786,
+          "fair_odds": -367,
+          "edge_class": "STRONG_YES",
+          "weight": 0.95
+        },
+        {
+          "source": "run_yn",
+          "market": "TO_SCORE_RUN_YES",
+          "direction": "OVER",
+          "p": 0.786,
+          "fair_odds": -367,
+          "edge_class": "STRONG_YES",
+          "weight": 0.8
+        }
+      ]
+    },
+    {
+      "batter": "Brett Sullivan",
+      "composite_score": 1.073,
+      "n_strong_edges": 5,
+      "net_direction": "STRONG_OVER",
+      "directions_OVER": 3,
+      "directions_UNDER": 1,
+      "edges": [
+        {
+          "source": "hr_yn",
+          "market": "TO_HIT_HR_YES",
+          "direction": "OVER",
+          "p": 0.227,
+          "fair_odds": 341,
+          "edge_class": "STRONG_YES",
+          "weight": 0.95
+        },
+        {
+          "source": "rbi",
+          "market": "RBI_1PLUS_YES",
+          "direction": "OVER",
+          "p": 0.857,
+          "fair_odds": -600,
+          "edge_class": "STRONG_YES",
+          "weight": 0.95
+        },
+        {
+          "source": "2plus_hits",
+          "market": "HITS_2PLUS_NO",
+          "direction": "UNDER",
+          "p": 0.814,
+          "fair_odds": -438,
+          "edge_class": "STRONG_NO",
+          "weight": 1.05
+        },
+        {
+          "source": "3plus_tb",
+          "market": "TB_3PLUS_YES",
+          "direction": "OVER",
+          "p": 0.391,
+          "fair_odds": 156,
+          "edge_class": "STRONG_YES",
+          "weight": 0.9
+        },
+        {
+          "source": "doubles_xbh",
+          "market": "1_PLUS_XBH",
+          "direction": "?",
+          "p": 0.445,
+          "fair_odds": 124,
+          "edge_class": "STRONG_1_PLUS_XBH",
+          "weight": 0.85
+        }
+      ]
+    },
+    {
+      "batter": "Coby Mayo",
+      "composite_score": 0.976,
+      "n_strong_edges": 4,
+      "net_direction": "STRONG_OVER",
+      "directions_OVER": 3,
+      "directions_UNDER": 1,
+      "edges": [
+        {
+          "source": "hr_yn",
+          "market": "TO_HIT_HR_YES",
+          "direction": "OVER",
+          "p": 0.172,
+          "fair_odds": 480,
+          "edge_class": "STRONG_YES",
+          "weight": 0.95
+        },
+        {
+          "source": "2plus_hits",
+          "market": "HITS_2PLUS_NO",
+          "direction": "UNDER",
+          "p": 0.839,
+          "fair_odds": -522,
+          "edge_class": "STRONG_NO",
+          "weight": 1.05
+        },
+        {
+          "source": "3plus_tb",
+          "market": "TB_3PLUS_YES",
+          "direction": "OVER",
+          "p": 0.37,
+          "fair_odds": 170,
+          "edge_class": "STRONG_YES",
+          "weight": 0.9
+        },
+        {
+          "source": "strikeouts",
+          "market": "K_1PLUS_YES",
+          "direction": "OVER",
+          "p": 0.774,
+          "fair_odds": -342,
+          "edge_class": "STRONG_YES_1PLUS",
+          "weight": 0.7
+        }
+      ]
+    },
+    {
+      "batter": "Chandler Simpson",
+      "composite_score": 0.947,
+      "n_strong_edges": 5,
+      "net_direction": "LEAN_UNDER",
+      "directions_OVER": 2,
+      "directions_UNDER": 3,
+      "edges": [
+        {
+          "source": "hit_yn",
+          "market": "TO_RECORD_HIT_YES",
+          "direction": "OVER",
+          "p": 0.844,
+          "fair_odds": -541,
+          "edge_class": "STRONG_YES",
+          "weight": 1.0
+        },
+        {
+          "source": "2plus_hits",
+          "market": "HITS_2PLUS_YES",
+          "direction": "OVER",
+          "p": 0.466,
+          "fair_odds": 114,
+          "edge_class": "STRONG_YES",
+          "weight": 1.05
+        },
+        {
+          "source": "run_yn",
+          "market": "TO_SCORE_RUN_NO",
+          "direction": "UNDER",
+          "p": 0.714,
+          "fair_odds": -250,
+          "edge_class": "STRONG_NO",
+          "weight": 0.8
+        },
+        {
+          "source": "walks",
+          "market": "WALK_1PLUS_NO",
+          "direction": "UNDER",
+          "p": 0.817,
+          "fair_odds": -446,
+          "edge_class": "STRONG_NO",
+          "weight": 0.75
+        },
+        {
+          "source": "strikeouts",
+          "market": "K_1PLUS_NO",
+          "direction": "UNDER",
+          "p": 0.726,
+          "fair_odds": -265,
+          "edge_class": "STRONG_NO_1PLUS",
+          "weight": 0.7
+        }
+      ]
+    },
+    {
+      "batter": "Mickey Gasper",
+      "composite_score": 0.93,
+      "n_strong_edges": 4,
+      "net_direction": "LEAN_UNDER",
+      "directions_OVER": 1,
+      "directions_UNDER": 2,
+      "edges": [
+        {
+          "source": "hr_yn",
+          "market": "TO_HIT_HR_YES",
+          "direction": "OVER",
+          "p": 0.251,
+          "fair_odds": 299,
+          "edge_class": "STRONG_YES",
+          "weight": 0.95
+        },
+        {
+          "source": "2plus_hits",
+          "market": "HITS_2PLUS_NO",
+          "direction": "UNDER",
+          "p": 0.864,
+          "fair_odds": -636,
+          "edge_class": "STRONG_NO",
+          "weight": 1.05
+        },
+        {
+          "source": "doubles_xbh",
+          "market": "1_PLUS_XBH",
+          "direction": "?",
+          "p": 0.335,
+          "fair_odds": 198,
+          "edge_class": "STRONG_1_PLUS_XBH",
+          "weight": 0.85
+        },
+        {
+          "source": "run_yn",
+          "market": "TO_SCORE_RUN_NO",
+          "direction": "UNDER",
+          "p": 0.714,
+          "fair_odds": -250,
+          "edge_class": "STRONG_NO",
+          "weight": 0.8
+        }
+      ]
+    },
+    {
+      "batter": "Jonny DeLuca",
+      "composite_score": 0.921,
+      "n_strong_edges": 4,
+      "net_direction": "STRONG_UNDER",
+      "directions_OVER": 0,
+      "directions_UNDER": 4,
+      "edges": [
+        {
+          "source": "rbi",
+          "market": "RBI_1PLUS_NO",
+          "direction": "UNDER",
+          "p": 0.786,
+          "fair_odds": -367,
+          "edge_class": "STRONG_NO",
+          "weight": 0.95
+        },
+        {
+          "source": "2plus_hits",
+          "market": "HITS_2PLUS_NO",
+          "direction": "UNDER",
+          "p": 0.788,
+          "fair_odds": -371,
+          "edge_class": "STRONG_NO",
+          "weight": 1.05
+        },
+        {
+          "source": "run_yn",
+          "market": "TO_SCORE_RUN_NO",
+          "direction": "UNDER",
+          "p": 0.643,
+          "fair_odds": -180,
+          "edge_class": "STRONG_NO",
+          "weight": 0.8
+        },
+        {
+          "source": "walks",
+          "market": "WALK_1PLUS_NO",
+          "direction": "UNDER",
+          "p": 0.81,
+          "fair_odds": -428,
+          "edge_class": "STRONG_NO",
+          "weight": 0.75
+        }
+      ]
+    },
+    {
+      "batter": "Bryan Reynolds",
+      "composite_score": 0.917,
+      "n_strong_edges": 4,
+      "net_direction": "LEAN_UNDER",
+      "directions_OVER": 1,
+      "directions_UNDER": 2,
+      "edges": [
+        {
+          "source": "rbi",
+          "market": "RBI_1PLUS_NO",
+          "direction": "UNDER",
+          "p": 0.786,
+          "fair_odds": -367,
+          "edge_class": "STRONG_NO",
+          "weight": 0.95
+        },
+        {
+          "source": "2plus_hits",
+          "market": "HITS_2PLUS_NO",
+          "direction": "UNDER",
+          "p": 0.789,
+          "fair_odds": -373,
+          "edge_class": "STRONG_NO",
+          "weight": 1.05
+        },
+        {
+          "source": "doubles_xbh",
+          "market": "1_PLUS_XBH",
+          "direction": "?",
+          "p": 0.338,
+          "fair_odds": 196,
+          "edge_class": "STRONG_1_PLUS_XBH",
+          "weight": 0.85
+        },
+        {
+          "source": "strikeouts",
+          "market": "K_1PLUS_YES",
+          "direction": "OVER",
+          "p": 0.792,
+          "fair_odds": -382,
+          "edge_class": "STRONG_YES_1PLUS",
+          "weight": 0.7
+        }
+      ]
+    },
+    {
+      "batter": "Christian Encarnacion-Strand",
+      "composite_score": 0.897,
+      "n_strong_edges": 3,
+      "net_direction": "LEAN_OVER",
+      "directions_OVER": 2,
+      "directions_UNDER": 1,
+      "edges": [
+        {
+          "source": "hr_yn",
+          "market": "TO_HIT_HR_YES",
+          "direction": "OVER",
+          "p": 0.218,
+          "fair_odds": 360,
+          "edge_class": "STRONG_YES",
+          "weight": 0.95
+        },
+        {
+          "source": "rbi",
+          "market": "RBI_1PLUS_YES",
+          "direction": "OVER",
+          "p": 0.786,
+          "fair_odds": -367,
+          "edge_class": "STRONG_YES",
+          "weight": 0.95
+        },
+        {
+          "source": "2plus_hits",
+          "market": "HITS_2PLUS_NO",
+          "direction": "UNDER",
+          "p": 0.84,
+          "fair_odds": -523,
+          "edge_class": "STRONG_NO",
+          "weight": 1.05
+        }
+      ]
+    },
+    {
+      "batter": "Miguel Amaya",
+      "composite_score": 0.867,
+      "n_strong_edges": 3,
+      "net_direction": "LEAN_UNDER",
+      "directions_OVER": 1,
+      "directions_UNDER": 2,
+      "edges": [
+        {
+          "source": "hr_yn",
+          "market": "TO_HIT_HR_YES",
+          "direction": "OVER",
+          "p": 0.143,
+          "fair_odds": 599,
+          "edge_class": "STRONG_YES",
+          "weight": 0.95
+        },
+        {
+          "source": "2plus_hits",
+          "market": "HITS_2PLUS_NO",
+          "direction": "UNDER",
+          "p": 0.84,
+          "fair_odds": -523,
+          "edge_class": "STRONG_NO",
+          "weight": 1.05
+        },
+        {
+          "source": "run_yn",
+          "market": "TO_SCORE_RUN_NO",
+          "direction": "UNDER",
+          "p": 0.714,
+          "fair_odds": -250,
+          "edge_class": "STRONG_NO",
+          "weight": 0.8
+        }
+      ]
+    },
+    {
+      "batter": "Gabriel Moreno",
+      "composite_score": 0.861,
+      "n_strong_edges": 4,
+      "net_direction": "STRONG_OVER",
+      "directions_OVER": 4,
+      "directions_UNDER": 0,
+      "edges": [
+        {
+          "source": "hit_yn",
+          "market": "TO_RECORD_HIT_YES",
+          "direction": "OVER",
+          "p": 0.886,
+          "fair_odds": -780,
+          "edge_class": "STRONG_YES",
+          "weight": 1.0
+        },
+        {
+          "source": "hr_yn",
+          "market": "TO_HIT_HR_YES",
+          "direction": "OVER",
+          "p": 0.181,
+          "fair_odds": 452,
+          "edge_class": "STRONG_YES",
+          "weight": 0.95
+        },
+        {
+          "source": "2plus_hits",
+          "market": "HITS_2PLUS_YES",
+          "direction": "OVER",
+          "p": 0.466,
+          "fair_odds": 115,
+          "edge_class": "STRONG_YES",
+          "weight": 1.05
+        },
+        {
+          "source": "strikeouts",
+          "market": "K_1PLUS_YES",
+          "direction": "OVER",
+          "p": 0.695,
+          "fair_odds": -228,
+          "edge_class": "STRONG_YES_1PLUS",
+          "weight": 0.7
+        }
+      ]
+    },
+    {
+      "batter": "Corey Seager",
+      "composite_score": 0.855,
+      "n_strong_edges": 4,
+      "net_direction": "STRONG_OVER",
+      "directions_OVER": 3,
+      "directions_UNDER": 0,
+      "edges": [
+        {
+          "source": "hit_yn",
+          "market": "TO_RECORD_HIT_YES",
+          "direction": "OVER",
+          "p": 0.816,
+          "fair_odds": -442,
+          "edge_class": "STRONG_YES",
+          "weight": 1.0
+        },
+        {
+          "source": "hr_yn",
+          "market": "TO_HIT_HR_YES",
+          "direction": "OVER",
+          "p": 0.202,
+          "fair_odds": 396,
+          "edge_class": "STRONG_YES",
+          "weight": 0.95
+        },
+        {
+          "source": "doubles_xbh",
+          "market": "1_PLUS_XBH",
+          "direction": "?",
+          "p": 0.344,
+          "fair_odds": 191,
+          "edge_class": "STRONG_1_PLUS_XBH",
+          "weight": 0.85
+        },
+        {
+          "source": "strikeouts",
+          "market": "K_1PLUS_YES",
+          "direction": "OVER",
+          "p": 0.676,
+          "fair_odds": -209,
+          "edge_class": "STRONG_YES_1PLUS",
+          "weight": 0.7
+        }
+      ]
+    },
+    {
+      "batter": "Liam Hicks",
+      "composite_score": 0.853,
+      "n_strong_edges": 4,
+      "net_direction": "LEAN_UNDER",
+      "directions_OVER": 1,
+      "directions_UNDER": 2,
+      "edges": [
+        {
+          "source": "hr_yn",
+          "market": "TO_HIT_HR_YES",
+          "direction": "OVER",
+          "p": 0.215,
+          "fair_odds": 364,
+          "edge_class": "STRONG_YES",
+          "weight": 0.95
+        },
+        {
+          "source": "2plus_hits",
+          "market": "HITS_2PLUS_NO",
+          "direction": "UNDER",
+          "p": 0.788,
+          "fair_odds": -372,
+          "edge_class": "STRONG_NO",
+          "weight": 1.05
+        },
+        {
+          "source": "doubles_xbh",
+          "market": "1_PLUS_XBH",
+          "direction": "?",
+          "p": 0.37,
+          "fair_odds": 170,
+          "edge_class": "STRONG_1_PLUS_XBH",
+          "weight": 0.85
+        },
+        {
+          "source": "strikeouts",
+          "market": "K_1PLUS_NO",
+          "direction": "UNDER",
+          "p": 0.742,
+          "fair_odds": -287,
+          "edge_class": "STRONG_NO_1PLUS",
+          "weight": 0.7
+        }
+      ]
+    },
+    {
+      "batter": "Pete Alonso",
+      "composite_score": 0.852,
+      "n_strong_edges": 5,
+      "net_direction": "STRONG_OVER",
+      "directions_OVER": 5,
+      "directions_UNDER": 0,
+      "edges": [
+        {
+          "source": "hit_yn",
+          "market": "TO_RECORD_HIT_YES",
+          "direction": "OVER",
+          "p": 0.908,
+          "fair_odds": -983,
+          "edge_class": "STRONG_YES",
+          "weight": 1.0
+        },
+        {
+          "source": "hr_yn",
+          "market": "TO_HIT_HR_YES",
+          "direction": "OVER",
+          "p": 0.404,
+          "fair_odds": 148,
+          "edge_class": "STRONG_YES",
+          "weight": 0.95
+        },
+        {
+          "source": "2plus_hits",
+          "market": "HITS_2PLUS_YES",
+          "direction": "OVER",
+          "p": 0.511,
+          "fair_odds": -104,
+          "edge_class": "STRONG_YES",
+          "weight": 1.05
+        },
+        {
+          "source": "run_yn",
+          "market": "TO_SCORE_RUN_YES",
+          "direction": "OVER",
+          "p": 0.786,
+          "fair_odds": -367,
+          "edge_class": "STRONG_YES",
+          "weight": 0.8
+        },
+        {
+          "source": "strikeouts",
+          "market": "K_1PLUS_YES",
+          "direction": "OVER",
+          "p": 0.66,
+          "fair_odds": -194,
+          "edge_class": "STRONG_YES_1PLUS",
+          "weight": 0.7
+        }
+      ]
+    },
+    {
+      "batter": "Bryce Eldridge",
+      "composite_score": 0.844,
+      "n_strong_edges": 4,
+      "net_direction": "MIXED",
+      "directions_OVER": 2,
+      "directions_UNDER": 2,
+      "edges": [
+        {
+          "source": "hr_yn",
+          "market": "TO_HIT_HR_YES",
+          "direction": "OVER",
+          "p": 0.202,
+          "fair_odds": 396,
+          "edge_class": "STRONG_YES",
+          "weight": 0.95
+        },
+        {
+          "source": "2plus_hits",
+          "market": "HITS_2PLUS_NO",
+          "direction": "UNDER",
+          "p": 0.813,
+          "fair_odds": -436,
+          "edge_class": "STRONG_NO",
+          "weight": 1.05
         },
         {
           "source": "run_yn",
@@ -261,48 +1032,112 @@
       ]
     },
     {
-      "batter": "Colt Keith",
+      "batter": "Alex Bregman",
       "composite_score": 0.842,
-      "n_strong_edges": 4,
-      "net_direction": "STRONG_UNDER",
-      "directions_OVER": 0,
-      "directions_UNDER": 3,
+      "n_strong_edges": 5,
+      "net_direction": "STRONG_OVER",
+      "directions_OVER": 4,
+      "directions_UNDER": 0,
       "edges": [
         {
-          "source": "rbi",
-          "market": "RBI_1PLUS_NO",
-          "direction": "UNDER",
-          "p": 0.786,
-          "fair_odds": -367,
-          "edge_class": "STRONG_NO",
-          "weight": 0.95
+          "source": "hit_yn",
+          "market": "TO_RECORD_HIT_YES",
+          "direction": "OVER",
+          "p": 0.843,
+          "fair_odds": -539,
+          "edge_class": "STRONG_YES",
+          "weight": 1.0
         },
         {
-          "source": "2plus_hits",
-          "market": "HITS_2PLUS_NO",
-          "direction": "UNDER",
-          "p": 0.839,
-          "fair_odds": -522,
-          "edge_class": "STRONG_NO",
-          "weight": 1.05
+          "source": "hr_yn",
+          "market": "TO_HIT_HR_YES",
+          "direction": "OVER",
+          "p": 0.409,
+          "fair_odds": 145,
+          "edge_class": "STRONG_YES",
+          "weight": 0.95
         },
         {
           "source": "doubles_xbh",
           "market": "1_PLUS_XBH",
           "direction": "?",
-          "p": 0.383,
-          "fair_odds": 161,
+          "p": 0.444,
+          "fair_odds": 125,
           "edge_class": "STRONG_1_PLUS_XBH",
           "weight": 0.85
         },
         {
           "source": "run_yn",
-          "market": "TO_SCORE_RUN_NO",
-          "direction": "UNDER",
-          "p": 0.643,
-          "fair_odds": -180,
-          "edge_class": "STRONG_NO",
+          "market": "TO_SCORE_RUN_YES",
+          "direction": "OVER",
+          "p": 0.786,
+          "fair_odds": -367,
+          "edge_class": "STRONG_YES",
           "weight": 0.8
+        },
+        {
+          "source": "strikeouts",
+          "market": "K_1PLUS_YES",
+          "direction": "OVER",
+          "p": 0.695,
+          "fair_odds": -228,
+          "edge_class": "STRONG_YES_1PLUS",
+          "weight": 0.7
+        }
+      ]
+    },
+    {
+      "batter": "Willson Contreras",
+      "composite_score": 0.836,
+      "n_strong_edges": 5,
+      "net_direction": "STRONG_OVER",
+      "directions_OVER": 4,
+      "directions_UNDER": 0,
+      "edges": [
+        {
+          "source": "hr_yn",
+          "market": "TO_HIT_HR_YES",
+          "direction": "OVER",
+          "p": 0.287,
+          "fair_odds": 248,
+          "edge_class": "STRONG_YES",
+          "weight": 0.95
+        },
+        {
+          "source": "rbi",
+          "market": "RBI_1PLUS_YES",
+          "direction": "OVER",
+          "p": 0.786,
+          "fair_odds": -367,
+          "edge_class": "STRONG_YES",
+          "weight": 0.95
+        },
+        {
+          "source": "doubles_xbh",
+          "market": "1_PLUS_XBH",
+          "direction": "?",
+          "p": 0.415,
+          "fair_odds": 141,
+          "edge_class": "STRONG_1_PLUS_XBH",
+          "weight": 0.85
+        },
+        {
+          "source": "run_yn",
+          "market": "TO_SCORE_RUN_YES",
+          "direction": "OVER",
+          "p": 0.714,
+          "fair_odds": -250,
+          "edge_class": "STRONG_YES",
+          "weight": 0.8
+        },
+        {
+          "source": "strikeouts",
+          "market": "K_1PLUS_YES",
+          "direction": "OVER",
+          "p": 0.669,
+          "fair_odds": -203,
+          "edge_class": "STRONG_YES_1PLUS",
+          "weight": 0.7
         }
       ]
     },
@@ -344,649 +1179,12 @@
       ]
     },
     {
-      "batter": "Brett Sullivan",
-      "composite_score": 0.827,
+      "batter": "Colt Keith",
+      "composite_score": 0.828,
       "n_strong_edges": 4,
-      "net_direction": "LEAN_OVER",
-      "directions_OVER": 2,
-      "directions_UNDER": 1,
-      "edges": [
-        {
-          "source": "rbi",
-          "market": "RBI_1PLUS_YES",
-          "direction": "OVER",
-          "p": 0.857,
-          "fair_odds": -600,
-          "edge_class": "STRONG_YES",
-          "weight": 0.95
-        },
-        {
-          "source": "2plus_hits",
-          "market": "HITS_2PLUS_NO",
-          "direction": "UNDER",
-          "p": 0.814,
-          "fair_odds": -438,
-          "edge_class": "STRONG_NO",
-          "weight": 1.05
-        },
-        {
-          "source": "3plus_tb",
-          "market": "TB_3PLUS_YES",
-          "direction": "OVER",
-          "p": 0.381,
-          "fair_odds": 162,
-          "edge_class": "STRONG_YES",
-          "weight": 0.9
-        },
-        {
-          "source": "doubles_xbh",
-          "market": "1_PLUS_XBH",
-          "direction": "?",
-          "p": 0.44,
-          "fair_odds": 127,
-          "edge_class": "STRONG_1_PLUS_XBH",
-          "weight": 0.85
-        }
-      ]
-    },
-    {
-      "batter": "Tommy Edman",
-      "composite_score": 0.807,
-      "n_strong_edges": 4,
-      "net_direction": "STRONG_UNDER",
-      "directions_OVER": 1,
-      "directions_UNDER": 3,
-      "edges": [
-        {
-          "source": "rbi",
-          "market": "RBI_1PLUS_NO",
-          "direction": "UNDER",
-          "p": 0.786,
-          "fair_odds": -367,
-          "edge_class": "STRONG_NO",
-          "weight": 0.95
-        },
-        {
-          "source": "2plus_hits",
-          "market": "HITS_2PLUS_NO",
-          "direction": "UNDER",
-          "p": 0.788,
-          "fair_odds": -371,
-          "edge_class": "STRONG_NO",
-          "weight": 1.05
-        },
-        {
-          "source": "run_yn",
-          "market": "TO_SCORE_RUN_NO",
-          "direction": "UNDER",
-          "p": 0.643,
-          "fair_odds": -180,
-          "edge_class": "STRONG_NO",
-          "weight": 0.8
-        },
-        {
-          "source": "strikeouts",
-          "market": "K_1PLUS_YES",
-          "direction": "OVER",
-          "p": 0.669,
-          "fair_odds": -203,
-          "edge_class": "STRONG_YES_1PLUS",
-          "weight": 0.7
-        }
-      ]
-    },
-    {
-      "batter": "Julio Rodr\u00edguez",
-      "composite_score": 0.806,
-      "n_strong_edges": 4,
-      "net_direction": "STRONG_UNDER",
-      "directions_OVER": 1,
-      "directions_UNDER": 3,
-      "edges": [
-        {
-          "source": "rbi",
-          "market": "RBI_1PLUS_NO",
-          "direction": "UNDER",
-          "p": 0.786,
-          "fair_odds": -367,
-          "edge_class": "STRONG_NO",
-          "weight": 0.95
-        },
-        {
-          "source": "2plus_hits",
-          "market": "HITS_2PLUS_NO",
-          "direction": "UNDER",
-          "p": 0.787,
-          "fair_odds": -370,
-          "edge_class": "STRONG_NO",
-          "weight": 1.05
-        },
-        {
-          "source": "run_yn",
-          "market": "TO_SCORE_RUN_NO",
-          "direction": "UNDER",
-          "p": 0.643,
-          "fair_odds": -180,
-          "edge_class": "STRONG_NO",
-          "weight": 0.8
-        },
-        {
-          "source": "strikeouts",
-          "market": "K_1PLUS_YES",
-          "direction": "OVER",
-          "p": 0.669,
-          "fair_odds": -203,
-          "edge_class": "STRONG_YES_1PLUS",
-          "weight": 0.7
-        }
-      ]
-    },
-    {
-      "batter": "Bryan Reynolds",
-      "composite_score": 0.78,
-      "n_strong_edges": 3,
-      "net_direction": "LEAN_UNDER",
-      "directions_OVER": 1,
-      "directions_UNDER": 2,
-      "edges": [
-        {
-          "source": "rbi",
-          "market": "RBI_1PLUS_NO",
-          "direction": "UNDER",
-          "p": 0.786,
-          "fair_odds": -367,
-          "edge_class": "STRONG_NO",
-          "weight": 0.95
-        },
-        {
-          "source": "2plus_hits",
-          "market": "HITS_2PLUS_NO",
-          "direction": "UNDER",
-          "p": 0.789,
-          "fair_odds": -373,
-          "edge_class": "STRONG_NO",
-          "weight": 1.05
-        },
-        {
-          "source": "strikeouts",
-          "market": "K_1PLUS_YES",
-          "direction": "OVER",
-          "p": 0.792,
-          "fair_odds": -382,
-          "edge_class": "STRONG_YES_1PLUS",
-          "weight": 0.7
-        }
-      ]
-    },
-    {
-      "batter": "Jos\u00e9 Ram\u00edrez",
-      "composite_score": 0.751,
-      "n_strong_edges": 3,
-      "net_direction": "LEAN_UNDER",
-      "directions_OVER": 1,
-      "directions_UNDER": 2,
-      "edges": [
-        {
-          "source": "2plus_hits",
-          "market": "HITS_2PLUS_NO",
-          "direction": "UNDER",
-          "p": 0.814,
-          "fair_odds": -437,
-          "edge_class": "STRONG_NO",
-          "weight": 1.05
-        },
-        {
-          "source": "doubles_xbh",
-          "market": "NO_XBH",
-          "direction": "UNDER",
-          "p": 0.835,
-          "fair_odds": -504,
-          "edge_class": "STRONG_NO_XBH",
-          "weight": 0.85
-        },
-        {
-          "source": "strikeouts",
-          "market": "K_1PLUS_YES",
-          "direction": "OVER",
-          "p": 0.695,
-          "fair_odds": -228,
-          "edge_class": "STRONG_YES_1PLUS",
-          "weight": 0.7
-        }
-      ]
-    },
-    {
-      "batter": "Christian Encarnacion-Strand",
-      "composite_score": 0.747,
-      "n_strong_edges": 3,
-      "net_direction": "LEAN_OVER",
-      "directions_OVER": 2,
-      "directions_UNDER": 1,
-      "edges": [
-        {
-          "source": "rbi",
-          "market": "RBI_1PLUS_YES",
-          "direction": "OVER",
-          "p": 0.786,
-          "fair_odds": -367,
-          "edge_class": "STRONG_YES",
-          "weight": 0.95
-        },
-        {
-          "source": "2plus_hits",
-          "market": "HITS_2PLUS_NO",
-          "direction": "UNDER",
-          "p": 0.84,
-          "fair_odds": -523,
-          "edge_class": "STRONG_NO",
-          "weight": 1.05
-        },
-        {
-          "source": "strikeouts",
-          "market": "K_1PLUS_YES",
-          "direction": "OVER",
-          "p": 0.669,
-          "fair_odds": -203,
-          "edge_class": "STRONG_YES_1PLUS",
-          "weight": 0.7
-        }
-      ]
-    },
-    {
-      "batter": "JJ Wetherholt",
-      "composite_score": 0.739,
-      "n_strong_edges": 3,
-      "net_direction": "LEAN_UNDER",
-      "directions_OVER": 1,
-      "directions_UNDER": 2,
-      "edges": [
-        {
-          "source": "rbi",
-          "market": "RBI_1PLUS_NO",
-          "direction": "UNDER",
-          "p": 0.786,
-          "fair_odds": -367,
-          "edge_class": "STRONG_NO",
-          "weight": 0.95
-        },
-        {
-          "source": "2plus_hits",
-          "market": "HITS_2PLUS_NO",
-          "direction": "UNDER",
-          "p": 0.815,
-          "fair_odds": -439,
-          "edge_class": "STRONG_NO",
-          "weight": 1.05
-        },
-        {
-          "source": "strikeouts",
-          "market": "K_1PLUS_YES",
-          "direction": "OVER",
-          "p": 0.695,
-          "fair_odds": -228,
-          "edge_class": "STRONG_YES_1PLUS",
-          "weight": 0.7
-        }
-      ]
-    },
-    {
-      "batter": "Jung Hoo Lee",
-      "composite_score": 0.72,
-      "n_strong_edges": 3,
-      "net_direction": "LEAN_UNDER",
-      "directions_OVER": 1,
-      "directions_UNDER": 2,
-      "edges": [
-        {
-          "source": "rbi",
-          "market": "RBI_1PLUS_NO",
-          "direction": "UNDER",
-          "p": 0.786,
-          "fair_odds": -367,
-          "edge_class": "STRONG_NO",
-          "weight": 0.95
-        },
-        {
-          "source": "2plus_hits",
-          "market": "HITS_2PLUS_NO",
-          "direction": "UNDER",
-          "p": 0.814,
-          "fair_odds": -437,
-          "edge_class": "STRONG_NO",
-          "weight": 1.05
-        },
-        {
-          "source": "strikeouts",
-          "market": "K_1PLUS_YES",
-          "direction": "OVER",
-          "p": 0.669,
-          "fair_odds": -203,
-          "edge_class": "STRONG_YES_1PLUS",
-          "weight": 0.7
-        }
-      ]
-    },
-    {
-      "batter": "Mickey Gasper",
-      "composite_score": 0.702,
-      "n_strong_edges": 3,
-      "net_direction": "STRONG_UNDER",
-      "directions_OVER": 0,
-      "directions_UNDER": 2,
-      "edges": [
-        {
-          "source": "2plus_hits",
-          "market": "HITS_2PLUS_NO",
-          "direction": "UNDER",
-          "p": 0.864,
-          "fair_odds": -636,
-          "edge_class": "STRONG_NO",
-          "weight": 1.05
-        },
-        {
-          "source": "doubles_xbh",
-          "market": "1_PLUS_XBH",
-          "direction": "?",
-          "p": 0.325,
-          "fair_odds": 208,
-          "edge_class": "STRONG_1_PLUS_XBH",
-          "weight": 0.85
-        },
-        {
-          "source": "run_yn",
-          "market": "TO_SCORE_RUN_NO",
-          "direction": "UNDER",
-          "p": 0.714,
-          "fair_odds": -250,
-          "edge_class": "STRONG_NO",
-          "weight": 0.8
-        }
-      ]
-    },
-    {
-      "batter": "Wyatt Langford",
-      "composite_score": 0.701,
-      "n_strong_edges": 3,
-      "net_direction": "LEAN_UNDER",
-      "directions_OVER": 1,
-      "directions_UNDER": 2,
-      "edges": [
-        {
-          "source": "rbi",
-          "market": "RBI_1PLUS_NO",
-          "direction": "UNDER",
-          "p": 0.786,
-          "fair_odds": -367,
-          "edge_class": "STRONG_NO",
-          "weight": 0.95
-        },
-        {
-          "source": "doubles_xbh",
-          "market": "NO_XBH",
-          "direction": "UNDER",
-          "p": 0.844,
-          "fair_odds": -542,
-          "edge_class": "STRONG_NO_XBH",
-          "weight": 0.85
-        },
-        {
-          "source": "strikeouts",
-          "market": "K_1PLUS_YES",
-          "direction": "OVER",
-          "p": 0.695,
-          "fair_odds": -228,
-          "edge_class": "STRONG_YES_1PLUS",
-          "weight": 0.7
-        }
-      ]
-    },
-    {
-      "batter": "Jonny DeLuca",
-      "composite_score": 0.689,
-      "n_strong_edges": 3,
       "net_direction": "STRONG_UNDER",
       "directions_OVER": 0,
       "directions_UNDER": 3,
-      "edges": [
-        {
-          "source": "rbi",
-          "market": "RBI_1PLUS_NO",
-          "direction": "UNDER",
-          "p": 0.786,
-          "fair_odds": -367,
-          "edge_class": "STRONG_NO",
-          "weight": 0.95
-        },
-        {
-          "source": "2plus_hits",
-          "market": "HITS_2PLUS_NO",
-          "direction": "UNDER",
-          "p": 0.788,
-          "fair_odds": -371,
-          "edge_class": "STRONG_NO",
-          "weight": 1.05
-        },
-        {
-          "source": "run_yn",
-          "market": "TO_SCORE_RUN_NO",
-          "direction": "UNDER",
-          "p": 0.643,
-          "fair_odds": -180,
-          "edge_class": "STRONG_NO",
-          "weight": 0.8
-        }
-      ]
-    },
-    {
-      "batter": "Joshua B\u00e1ez",
-      "composite_score": 0.678,
-      "n_strong_edges": 4,
-      "net_direction": "LEAN_OVER",
-      "directions_OVER": 2,
-      "directions_UNDER": 1,
-      "edges": [
-        {
-          "source": "2plus_hits",
-          "market": "HITS_2PLUS_NO",
-          "direction": "UNDER",
-          "p": 0.869,
-          "fair_odds": -665,
-          "edge_class": "STRONG_NO",
-          "weight": 1.05
-        },
-        {
-          "source": "3plus_tb",
-          "market": "TB_3PLUS_YES",
-          "direction": "OVER",
-          "p": 0.395,
-          "fair_odds": 153,
-          "edge_class": "STRONG_YES",
-          "weight": 0.9
-        },
-        {
-          "source": "doubles_xbh",
-          "market": "1_PLUS_XBH",
-          "direction": "?",
-          "p": 0.409,
-          "fair_odds": 145,
-          "edge_class": "STRONG_1_PLUS_XBH",
-          "weight": 0.85
-        },
-        {
-          "source": "strikeouts",
-          "market": "K_1PLUS_YES",
-          "direction": "OVER",
-          "p": 0.669,
-          "fair_odds": -203,
-          "edge_class": "STRONG_YES_1PLUS",
-          "weight": 0.7
-        }
-      ]
-    },
-    {
-      "batter": "Edmundo Sosa",
-      "composite_score": 0.672,
-      "n_strong_edges": 3,
-      "net_direction": "LEAN_UNDER",
-      "directions_OVER": 1,
-      "directions_UNDER": 2,
-      "edges": [
-        {
-          "source": "2plus_hits",
-          "market": "HITS_2PLUS_NO",
-          "direction": "UNDER",
-          "p": 0.864,
-          "fair_odds": -634,
-          "edge_class": "STRONG_NO",
-          "weight": 1.05
-        },
-        {
-          "source": "run_yn",
-          "market": "TO_SCORE_RUN_NO",
-          "direction": "UNDER",
-          "p": 0.714,
-          "fair_odds": -250,
-          "edge_class": "STRONG_NO",
-          "weight": 0.8
-        },
-        {
-          "source": "strikeouts",
-          "market": "K_1PLUS_YES",
-          "direction": "OVER",
-          "p": 0.669,
-          "fair_odds": -203,
-          "edge_class": "STRONG_YES_1PLUS",
-          "weight": 0.7
-        }
-      ]
-    },
-    {
-      "batter": "Willson Contreras",
-      "composite_score": 0.667,
-      "n_strong_edges": 4,
-      "net_direction": "STRONG_OVER",
-      "directions_OVER": 3,
-      "directions_UNDER": 0,
-      "edges": [
-        {
-          "source": "rbi",
-          "market": "RBI_1PLUS_YES",
-          "direction": "OVER",
-          "p": 0.786,
-          "fair_odds": -367,
-          "edge_class": "STRONG_YES",
-          "weight": 0.95
-        },
-        {
-          "source": "doubles_xbh",
-          "market": "1_PLUS_XBH",
-          "direction": "?",
-          "p": 0.375,
-          "fair_odds": 167,
-          "edge_class": "STRONG_1_PLUS_XBH",
-          "weight": 0.85
-        },
-        {
-          "source": "run_yn",
-          "market": "TO_SCORE_RUN_YES",
-          "direction": "OVER",
-          "p": 0.714,
-          "fair_odds": -250,
-          "edge_class": "STRONG_YES",
-          "weight": 0.8
-        },
-        {
-          "source": "strikeouts",
-          "market": "K_1PLUS_YES",
-          "direction": "OVER",
-          "p": 0.669,
-          "fair_odds": -203,
-          "edge_class": "STRONG_YES_1PLUS",
-          "weight": 0.7
-        }
-      ]
-    },
-    {
-      "batter": "Wilyer Abreu",
-      "composite_score": 0.637,
-      "n_strong_edges": 3,
-      "net_direction": "STRONG_OVER",
-      "directions_OVER": 3,
-      "directions_UNDER": 0,
-      "edges": [
-        {
-          "source": "rbi",
-          "market": "RBI_1PLUS_YES",
-          "direction": "OVER",
-          "p": 0.786,
-          "fair_odds": -367,
-          "edge_class": "STRONG_YES",
-          "weight": 0.95
-        },
-        {
-          "source": "run_yn",
-          "market": "TO_SCORE_RUN_YES",
-          "direction": "OVER",
-          "p": 0.786,
-          "fair_odds": -367,
-          "edge_class": "STRONG_YES",
-          "weight": 0.8
-        },
-        {
-          "source": "strikeouts",
-          "market": "K_1PLUS_YES",
-          "direction": "OVER",
-          "p": 0.695,
-          "fair_odds": -228,
-          "edge_class": "STRONG_YES_1PLUS",
-          "weight": 0.7
-        }
-      ]
-    },
-    {
-      "batter": "Oneil Cruz",
-      "composite_score": 0.629,
-      "n_strong_edges": 3,
-      "net_direction": "MIXED",
-      "directions_OVER": 1,
-      "directions_UNDER": 1,
-      "edges": [
-        {
-          "source": "2plus_hits",
-          "market": "HITS_2PLUS_NO",
-          "direction": "UNDER",
-          "p": 0.814,
-          "fair_odds": -437,
-          "edge_class": "STRONG_NO",
-          "weight": 1.05
-        },
-        {
-          "source": "doubles_xbh",
-          "market": "1_PLUS_XBH",
-          "direction": "?",
-          "p": 0.369,
-          "fair_odds": 171,
-          "edge_class": "STRONG_1_PLUS_XBH",
-          "weight": 0.85
-        },
-        {
-          "source": "strikeouts",
-          "market": "K_1PLUS_YES",
-          "direction": "OVER",
-          "p": 0.769,
-          "fair_odds": -333,
-          "edge_class": "STRONG_YES_1PLUS",
-          "weight": 0.7
-        }
-      ]
-    },
-    {
-      "batter": "Zach McKinstry",
-      "composite_score": 0.628,
-      "n_strong_edges": 2,
-      "net_direction": "STRONG_UNDER",
-      "directions_OVER": 0,
-      "directions_UNDER": 2,
       "edges": [
         {
           "source": "rbi",
@@ -1002,26 +1200,7 @@
           "market": "HITS_2PLUS_NO",
           "direction": "UNDER",
           "p": 0.839,
-          "fair_odds": -523,
-          "edge_class": "STRONG_NO",
-          "weight": 1.05
-        }
-      ]
-    },
-    {
-      "batter": "Yordan Alvarez",
-      "composite_score": 0.628,
-      "n_strong_edges": 3,
-      "net_direction": "MIXED",
-      "directions_OVER": 1,
-      "directions_UNDER": 1,
-      "edges": [
-        {
-          "source": "2plus_hits",
-          "market": "HITS_2PLUS_NO",
-          "direction": "UNDER",
-          "p": 0.788,
-          "fair_odds": -372,
+          "fair_odds": -522,
           "edge_class": "STRONG_NO",
           "weight": 1.05
         },
@@ -1029,38 +1208,47 @@
           "source": "doubles_xbh",
           "market": "1_PLUS_XBH",
           "direction": "?",
-          "p": 0.339,
-          "fair_odds": 195,
+          "p": 0.399,
+          "fair_odds": 151,
           "edge_class": "STRONG_1_PLUS_XBH",
           "weight": 0.85
         },
         {
-          "source": "strikeouts",
-          "market": "K_1PLUS_YES",
-          "direction": "OVER",
-          "p": 0.769,
-          "fair_odds": -332,
-          "edge_class": "STRONG_YES_1PLUS",
-          "weight": 0.7
+          "source": "run_yn",
+          "market": "TO_SCORE_RUN_NO",
+          "direction": "UNDER",
+          "p": 0.643,
+          "fair_odds": -180,
+          "edge_class": "STRONG_NO",
+          "weight": 0.8
         }
       ]
     },
     {
-      "batter": "Brandon Nimmo",
-      "composite_score": 0.619,
-      "n_strong_edges": 3,
-      "net_direction": "LEAN_UNDER",
+      "batter": "Danny Jansen",
+      "composite_score": 0.822,
+      "n_strong_edges": 4,
+      "net_direction": "STRONG_UNDER",
       "directions_OVER": 1,
-      "directions_UNDER": 2,
+      "directions_UNDER": 3,
       "edges": [
         {
-          "source": "2plus_hits",
-          "market": "HITS_2PLUS_NO",
+          "source": "hit_yn",
+          "market": "TO_RECORD_HIT_NO",
           "direction": "UNDER",
-          "p": 0.814,
-          "fair_odds": -436,
+          "p": 0.767,
+          "fair_odds": -329,
           "edge_class": "STRONG_NO",
-          "weight": 1.05
+          "weight": 1.0
+        },
+        {
+          "source": "rbi",
+          "market": "RBI_1PLUS_NO",
+          "direction": "UNDER",
+          "p": 0.786,
+          "fair_odds": -367,
+          "edge_class": "STRONG_NO",
+          "weight": 0.95
         },
         {
           "source": "run_yn",
@@ -1070,6 +1258,52 @@
           "fair_odds": -250,
           "edge_class": "STRONG_NO",
           "weight": 0.8
+        },
+        {
+          "source": "strikeouts",
+          "market": "K_1PLUS_YES",
+          "direction": "OVER",
+          "p": 0.66,
+          "fair_odds": -194,
+          "edge_class": "STRONG_YES_1PLUS",
+          "weight": 0.7
+        }
+      ]
+    },
+    {
+      "batter": "Nathaniel Lowe",
+      "composite_score": 0.813,
+      "n_strong_edges": 4,
+      "net_direction": "STRONG_OVER",
+      "directions_OVER": 4,
+      "directions_UNDER": 0,
+      "edges": [
+        {
+          "source": "hr_yn",
+          "market": "TO_HIT_HR_YES",
+          "direction": "OVER",
+          "p": 0.171,
+          "fair_odds": 486,
+          "edge_class": "STRONG_YES",
+          "weight": 0.95
+        },
+        {
+          "source": "rbi",
+          "market": "RBI_1PLUS_YES",
+          "direction": "OVER",
+          "p": 0.786,
+          "fair_odds": -367,
+          "edge_class": "STRONG_YES",
+          "weight": 0.95
+        },
+        {
+          "source": "3plus_tb",
+          "market": "TB_3PLUS_YES",
+          "direction": "OVER",
+          "p": 0.377,
+          "fair_odds": 165,
+          "edge_class": "STRONG_YES",
+          "weight": 0.9
         },
         {
           "source": "strikeouts",

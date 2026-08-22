@@ -1,27 +1,20 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-08-22T21:11:07 UTC_
+_Generated 2026-08-22T22:25:54 UTC_
 
 ## Slate Quality
-- **Tier:** NO_ACTION_NIGHT
-- **Score:** 3
-- **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
+- **Tier:** MODEST_NIGHT
+- **Score:** 45
+- **Advisory:** Light slate. Limit to 1-3 strongest plays; use 25% Kelly or less.
 - **Total LOCKs:** 0
-- **Total STRONG:** 17
-- **Total FADES:** 65
-
-## Lock of the Night
-- **Subject:** Brandon Young
-- **Source:** ELITE_BOARD
-- **Sport:** MLB
-- **Score:** 15.0
-- **Details:** TBR @ BAL
+- **Total STRONG:** 27
+- **Total FADES:** 63
 
 ## Top 5 Curated Picks
-1. **GOLF / Wyndham Clark** (GOLF_PLAYER, score=211.21)
+1. **GOLF / Wyndham Clark** (GOLF_PLAYER, score=219.29)
    - Play: Wyndham Clark (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Gary Woodland** (GOLF_PLAYER, score=192.36)
-   - Play: Gary Woodland (PLAYER_STRONG)
+2. **GOLF / Rory McIlroy** (GOLF_PLAYER, score=198.64)
+   - Play: Rory McIlroy (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
 3. **WNBA / caitlin clark** (WNBA_PLAYER, score=120.33)
    - Play: caitlin clark (PLAYER_STRONG)
@@ -29,16 +22,19 @@ _Generated 2026-08-22T21:11:07 UTC_
 4. **WNBA / breanna stewart** (WNBA_PLAYER, score=120.25)
    - Play: breanna stewart (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (WNBA_PLAYER)
+5. **MLB / Alex Bregman** (MLB_BATTER, score=119.19)
+   - Play: Alex Bregman (BATTER_STRONG)
+   - Rationale: Cross-sport top pick (MLB_BATTER)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
   - Wyndham Clark top 10 finish
-  - Gary Woodland top 10 finish
-  - J.J. Spaun top 10 finish
+  - Rory McIlroy top 10 finish
+  - Chris Gotterup top 10 finish
 
 ## Slate ROI Projection
-- **Picks:** 1
-- **Avg edge:** -0.91%
+- **Picks:** 0
+- **Avg edge:** 0%
 - **Expected ROI (1/4 Kelly):** 0.0%
 - **Expected P&L on $100:** $0.0
 
@@ -47,9 +43,9 @@ _Generated 2026-08-22T21:11:07 UTC_
   - Fade angle: team total UNDER
 - **NBA** / TOR (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NHL** / anthony stolarz (GOALIE_FADE)
+- **NHL** / marc-andre fleury (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / calvin pickard (GOALIE_FADE)
+- **NHL** / kevin lankinen (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / connor hellebuyck (GOALIE_FADE)
+- **NHL** / samsonov ilya (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
