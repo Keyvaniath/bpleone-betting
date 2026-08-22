@@ -1,33 +1,33 @@
 {
- "generated_at": "2026-08-21T22:36:50",
+ "generated_at": "2026-08-22T05:20:27",
  "stake_assumption": "1u flat per pick",
  "total_picks": 10000,
- "n_settled": 9407,
- "n_pending": 330,
- "n_void": 263,
- "wins": 3484,
- "losses": 5914,
+ "n_settled": 9414,
+ "n_pending": 435,
+ "n_void": 151,
+ "wins": 3489,
+ "losses": 5916,
  "pushes": 9,
- "hit_rate": 0.3707,
- "net_units": -1893.844,
- "roi_pct": -20.15,
- "n_calibrated_picks": 9816,
+ "hit_rate": 0.371,
+ "net_units": -1892.578,
+ "roi_pct": -20.12,
+ "n_calibrated_picks": 9808,
  "calibrated_reliability": {
-  "n": 9297,
+  "n": 9303,
   "ece_raw": 0.0947,
-  "ece_calibrated": 0.0144,
-  "brier_raw": 0.21002,
+  "ece_calibrated": 0.0149,
+  "brier_raw": 0.21,
   "brier_calibrated": 0.19244,
   "note": "In-sample over the settled ledger (the isotonic transform is fit on these same outcomes); held-out 70/30 validation is in recalibration_map.json. p_predicted = raw model prob (kept untouched for the learning loop); p_calibrated = honest prob stamped per pick. Lower ECE/Brier on the calibrated column = the displayed % is truer."
  },
  "curated": {
-  "n_settled": 926,
-  "wins": 643,
-  "losses": 274,
+  "n_settled": 930,
+  "wins": 646,
+  "losses": 275,
   "pushes": 9,
-  "hit_rate": 0.7012,
-  "net_units": 121.264,
-  "roi_pct": 13.22,
+  "hit_rate": 0.7014,
+  "net_units": 122.632,
+  "roi_pct": 13.32,
   "sources": [
    "consensus_hit_elite",
    "consensus_hit_strong",
@@ -40,19 +40,19 @@
   ],
   "definition": "Featured/recommended plays only -- Lock of the Day, Top 25, Whale, Sharp, Consensus (hit), Under Alerts, POD. Excludes the experimental prop feeds, which are tracked to train the model, not bet.",
   "last_30": {
-   "wins": 61,
+   "wins": 60,
    "losses": 81,
-   "net_units": -25.94,
-   "roi_pct": -18.27,
-   "hit_rate": 0.4296
+   "net_units": -27.339,
+   "roi_pct": -19.39,
+   "hit_rate": 0.4255
   }
  },
- "n_added_this_run": 0,
- "n_newly_settled_this_run": 0,
- "n_resettled_this_run": 0,
+ "n_added_this_run": 4,
+ "n_newly_settled_this_run": 5,
+ "n_resettled_this_run": 1,
  "n_voided_this_run": 0,
  "n_duplicates_collapsed_this_run": 0,
- "n_duplicate_adds_blocked_this_run": 120,
+ "n_duplicate_adds_blocked_this_run": 224,
  "n_reconciled_settled_voids": 0,
  "n_bootstrapped_from_locks_history": 0,
  "by_source": {
@@ -282,13 +282,13 @@
    "roi_pct": 13.33
   },
   "top_25_board": {
-   "n": 444,
-   "wins": 269,
-   "losses": 169,
+   "n": 447,
+   "wins": 271,
+   "losses": 170,
    "pushes": 6,
-   "net_units": 52.333,
-   "hit_rate": 0.6142,
-   "roi_pct": 11.95
+   "net_units": 52.791,
+   "hit_rate": 0.6145,
+   "roi_pct": 11.97
   },
   "mlb_run_to_score_run_yes": {
    "n": 12,
@@ -390,13 +390,13 @@
    "roi_pct": 19.69
   },
   "mlb_under_alert": {
-   "n": 26,
-   "wins": 14,
+   "n": 27,
+   "wins": 15,
    "losses": 10,
    "pushes": 2,
-   "net_units": 2.74,
-   "hit_rate": 0.5833,
-   "roi_pct": 11.42
+   "net_units": 3.65,
+   "hit_rate": 0.6,
+   "roi_pct": 14.6
   },
   "pod": {
    "n": 22,
@@ -444,13 +444,13 @@
    "roi_pct": -24.51
   },
   "wnba_3pm_3pm_over_0.5": {
-   "n": 21,
+   "n": 22,
    "wins": 15,
-   "losses": 6,
+   "losses": 7,
    "pushes": 0,
-   "net_units": 1.441,
-   "hit_rate": 0.7143,
-   "roi_pct": 6.86
+   "net_units": 0.441,
+   "hit_rate": 0.6818,
+   "roi_pct": 2.0
   },
   "wnba_blkstl_blk_stl_over_1.5": {
    "n": 14,
@@ -552,13 +552,13 @@
    "roi_pct": 6.47
   },
   "wnba_blkstl_blk_stl_over_0.5": {
-   "n": 18,
-   "wins": 16,
+   "n": 19,
+   "wins": 17,
    "losses": 2,
    "pushes": 0,
-   "net_units": 5.817,
-   "hit_rate": 0.8889,
-   "roi_pct": 32.32
+   "net_units": 6.268,
+   "hit_rate": 0.8947,
+   "roi_pct": 32.99
   },
   "wnba_alts_home_total_over_77.2": {
    "n": 5,
@@ -1497,13 +1497,13 @@
    "roi_pct": 2.13
   },
   "tennis_games_total_games_over_19.5": {
-   "n": 4,
-   "wins": 3,
+   "n": 5,
+   "wins": 4,
    "losses": 1,
    "pushes": 0,
-   "net_units": 0.394,
-   "hit_rate": 0.75,
-   "roi_pct": 9.85
+   "net_units": 0.84,
+   "hit_rate": 0.8,
+   "roi_pct": 16.8
   },
   "tennis_games_total_games_under_22.5": {
    "n": 4,
@@ -1844,12 +1844,12 @@
    "hit_rate": 0.75
   },
   "under": {
-   "n": 108,
-   "wins": 63,
+   "n": 109,
+   "wins": 64,
    "losses": 40,
    "pushes": 5,
-   "net_units": 11.905,
-   "hit_rate": 0.6117
+   "net_units": 12.815,
+   "hit_rate": 0.6154
   },
   "over": {
    "n": 167,
@@ -1909,11 +1909,11 @@
   },
   "ml_away": {
    "n": 65,
-   "wins": 38,
-   "losses": 27,
+   "wins": 37,
+   "losses": 28,
    "pushes": 0,
-   "net_units": 7.734,
-   "hit_rate": 0.5846
+   "net_units": 5.694,
+   "hit_rate": 0.5692
   },
   "to_score_run_yes": {
    "n": 12,
@@ -1996,20 +1996,20 @@
    "hit_rate": 0.9
   },
   "3pm_over": {
-   "n": 26,
+   "n": 27,
    "wins": 18,
-   "losses": 8,
+   "losses": 9,
    "pushes": 0,
-   "net_units": 1.216,
-   "hit_rate": 0.6923
+   "net_units": 0.216,
+   "hit_rate": 0.6667
   },
   "blk_stl_over": {
-   "n": 33,
-   "wins": 23,
+   "n": 34,
+   "wins": 24,
    "losses": 10,
    "pushes": 0,
-   "net_units": 1.691,
-   "hit_rate": 0.697
+   "net_units": 2.142,
+   "hit_rate": 0.7059
   },
   "tb_3plus_no": {
    "n": 4,
@@ -2140,12 +2140,12 @@
    "hit_rate": 0.3103
   },
   "total_games_over": {
-   "n": 19,
-   "wins": 14,
+   "n": 20,
+   "wins": 15,
    "losses": 5,
    "pushes": 0,
-   "net_units": 1.526,
-   "hit_rate": 0.7368
+   "net_units": 1.972,
+   "hit_rate": 0.75
   },
   "away_clean_sheet_no": {
    "n": 1,
@@ -2164,12 +2164,12 @@
    "hit_rate": 0.3333
   },
   "chw_ml": {
-   "n": 3,
-   "wins": 1,
+   "n": 4,
+   "wins": 2,
    "losses": 2,
    "pushes": 0,
-   "net_units": -1.074,
-   "hit_rate": 0.3333
+   "net_units": -0.394,
+   "hit_rate": 0.5
   },
   "lad_ml": {
    "n": 2,
@@ -2236,20 +2236,20 @@
    "hit_rate": 0.0
   },
   "phi_ml": {
-   "n": 2,
-   "wins": 1,
-   "losses": 1,
-   "pushes": 0,
-   "net_units": -0.107,
-   "hit_rate": 0.5
-  },
-  "nyy_ml": {
    "n": 3,
    "wins": 2,
    "losses": 1,
    "pushes": 0,
-   "net_units": 0.703,
+   "net_units": 0.802,
    "hit_rate": 0.6667
+  },
+  "nyy_ml": {
+   "n": 4,
+   "wins": 3,
+   "losses": 1,
+   "pushes": 0,
+   "net_units": 1.612,
+   "hit_rate": 0.75
   },
   "tex_ml": {
    "n": 2,
@@ -2414,12 +2414,12 @@
    "hit_rate": 0.75
   },
   "under": {
-   "n": 108,
-   "wins": 63,
+   "n": 109,
+   "wins": 64,
    "losses": 40,
    "pushes": 5,
-   "net_units": 11.905,
-   "hit_rate": 0.6117
+   "net_units": 12.815,
+   "hit_rate": 0.6154
   },
   "over": {
    "n": 167,
@@ -2487,11 +2487,11 @@
   },
   "ml_away": {
    "n": 65,
-   "wins": 38,
-   "losses": 27,
+   "wins": 37,
+   "losses": 28,
    "pushes": 0,
-   "net_units": 7.734,
-   "hit_rate": 0.5846
+   "net_units": 5.694,
+   "hit_rate": 0.5692
   },
   "mlb_hrr_3.5_under": {
    "n": 412,
@@ -2582,20 +2582,20 @@
    "hit_rate": 0.8889
   },
   "3pm_over": {
-   "n": 26,
+   "n": 27,
    "wins": 18,
-   "losses": 8,
+   "losses": 9,
    "pushes": 0,
-   "net_units": 1.216,
-   "hit_rate": 0.6923
+   "net_units": 0.216,
+   "hit_rate": 0.6667
   },
   "blk_stl_over": {
-   "n": 33,
-   "wins": 23,
+   "n": 34,
+   "wins": 24,
    "losses": 10,
    "pushes": 0,
-   "net_units": 1.691,
-   "hit_rate": 0.697
+   "net_units": 2.142,
+   "hit_rate": 0.7059
   },
   "mlb_tb_2.5_under": {
    "n": 6,
@@ -2726,12 +2726,12 @@
    "hit_rate": 0.3103
   },
   "total_games_over": {
-   "n": 19,
-   "wins": 14,
+   "n": 20,
+   "wins": 15,
    "losses": 5,
    "pushes": 0,
-   "net_units": 1.526,
-   "hit_rate": 0.7368
+   "net_units": 1.972,
+   "hit_rate": 0.75
   },
   "away_clean_sheet_no": {
    "n": 1,
@@ -2750,12 +2750,12 @@
    "hit_rate": 0.3333
   },
   "chw_ml": {
-   "n": 3,
-   "wins": 1,
+   "n": 4,
+   "wins": 2,
    "losses": 2,
    "pushes": 0,
-   "net_units": -1.074,
-   "hit_rate": 0.3333
+   "net_units": -0.394,
+   "hit_rate": 0.5
   },
   "lad_ml": {
    "n": 2,
@@ -2822,20 +2822,20 @@
    "hit_rate": 0.0
   },
   "phi_ml": {
-   "n": 2,
-   "wins": 1,
-   "losses": 1,
-   "pushes": 0,
-   "net_units": -0.107,
-   "hit_rate": 0.5
-  },
-  "nyy_ml": {
    "n": 3,
    "wins": 2,
    "losses": 1,
    "pushes": 0,
-   "net_units": 0.703,
+   "net_units": 0.802,
    "hit_rate": 0.6667
+  },
+  "nyy_ml": {
+   "n": 4,
+   "wins": 3,
+   "losses": 1,
+   "pushes": 0,
+   "net_units": 1.612,
+   "hit_rate": 0.75
   },
   "tex_ml": {
    "n": 2,
@@ -2880,39 +2880,39 @@
  },
  "by_sport": {
   "MLB": {
-   "n": 7458,
-   "settled": 7238,
-   "wins": 2140,
-   "losses": 5089,
+   "n": 7546,
+   "settled": 7242,
+   "wins": 2143,
+   "losses": 5090,
    "pushes": 9,
-   "pending": 166,
-   "void": 54,
-   "net_units": -2033.334,
-   "hit_rate": 0.296,
-   "roi_pct": -28.13,
+   "pending": 266,
+   "void": 38,
+   "net_units": -2031.966,
+   "hit_rate": 0.2963,
+   "roi_pct": -28.09,
    "markets": 32
   },
   "UFC": {
-   "n": 139,
+   "n": 116,
    "settled": 97,
    "wins": 42,
    "losses": 55,
    "pushes": 0,
-   "pending": 6,
-   "void": 36,
+   "pending": 7,
+   "void": 12,
    "net_units": 95.19,
    "hit_rate": 0.433,
    "roi_pct": 98.13,
    "markets": 1
   },
   "GOLF": {
-   "n": 729,
+   "n": 723,
    "settled": 680,
    "wins": 284,
    "losses": 396,
    "pushes": 0,
-   "pending": 37,
-   "void": 12,
+   "pending": 43,
+   "void": 0,
    "net_units": -67.505,
    "hit_rate": 0.4176,
    "roi_pct": -9.93,
@@ -2945,30 +2945,30 @@
    "markets": 2
   },
   "WNBA": {
-   "n": 420,
-   "settled": 371,
-   "wins": 278,
-   "losses": 93,
+   "n": 406,
+   "settled": 373,
+   "wins": 279,
+   "losses": 94,
    "pushes": 0,
-   "pending": 35,
-   "void": 14,
-   "net_units": 49.763,
-   "hit_rate": 0.7493,
-   "roi_pct": 13.41,
+   "pending": 33,
+   "void": 0,
+   "net_units": 49.213,
+   "hit_rate": 0.748,
+   "roi_pct": 13.19,
    "markets": 4
   },
   "EPL": {
-   "n": 23,
+   "n": 24,
    "settled": 23,
    "wins": 13,
    "losses": 10,
    "pushes": 0,
-   "pending": 0,
+   "pending": 1,
    "void": 0,
    "net_units": -2.919,
    "hit_rate": 0.5652,
    "roi_pct": -12.69,
-   "markets": 4
+   "markets": 5
   },
   "MLS": {
    "n": 208,
@@ -3010,39 +3010,26 @@
    "markets": 9
   },
   "TENNIS": {
-   "n": 95,
-   "settled": 68,
-   "wins": 34,
+   "n": 85,
+   "settled": 69,
+   "wins": 35,
    "losses": 34,
    "pushes": 0,
-   "pending": 17,
-   "void": 10,
-   "net_units": -18.149,
-   "hit_rate": 0.5,
-   "roi_pct": -26.69,
+   "pending": 16,
+   "void": 0,
+   "net_units": -17.703,
+   "hit_rate": 0.5072,
+   "roi_pct": -25.66,
    "markets": 5
   },
-  "NFL": {
-   "n": 35,
-   "settled": 0,
-   "wins": 0,
-   "losses": 0,
-   "pushes": 0,
-   "pending": 0,
-   "void": 35,
-   "net_units": 0.0,
-   "hit_rate": null,
-   "roi_pct": null,
-   "markets": 8
-  },
   "NBA": {
-   "n": 5,
+   "n": 4,
    "settled": 0,
    "wins": 0,
    "losses": 0,
    "pushes": 0,
    "pending": 4,
-   "void": 1,
+   "void": 0,
    "net_units": 0.0,
    "hit_rate": null,
    "roi_pct": null,
@@ -3063,199 +3050,13 @@
   }
  },
  "last_7_days": {
-  "wins": 323,
-  "losses": 715,
-  "net_units": -311.493,
-  "hit_rate": 0.3112
+  "wins": 291,
+  "losses": 634,
+  "net_units": -275.063,
+  "hit_rate": 0.3146
  },
  "note": "Unified pick ledger -- records every pick the model surfaces (top_25 board, whales, consensus, unders, sharp action, locks, POD) and settles each against actual outcomes. Per-source W-L feeds back into calibration so the model learns which modules are reliable. THIS is the training signal.",
  "picks": [
-  {
-   "source": "mlb_hrr_3_plus_hrr",
-   "projection": 2.86,
-   "sport": "MLB",
-   "player_or_matchup": "Alejandro Kirk",
-   "market": "3_plus_hrr",
-   "prob": 0.545,
-   "fair_american": -120,
-   "p_predicted": 0.545,
-   "matchup": "TOR @ TBR",
-   "date": "2026-08-19",
-   "pick_id": "mlb_hrr_3_plus_hrr|MLB|Alejandro_Kirk|3_plus_hrr|2026-08-19",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.8333,
-   "recorded_at": "2026-08-19T21:19:07",
-   "p_calibrated": 0.2626,
-   "outcome": {
-    "stat": "hrr",
-    "actual": 5,
-    "line": 3.0,
-    "side": "OVER/YES",
-    "verify": "Alejandro Kirk \u2014 hrr = 5 (line 3.0, bet OVER/YES) on 2026-08-19",
-    "check": "verified"
-   },
-   "settled_at": "2026-08-20T10:51:02"
-  },
-  {
-   "source": "mlb_hrr_3_plus_hrr",
-   "projection": 2.82,
-   "sport": "MLB",
-   "player_or_matchup": "Cam Smith",
-   "market": "3_plus_hrr",
-   "prob": 0.535,
-   "fair_american": -115,
-   "p_predicted": 0.535,
-   "matchup": "LAA @ HOU",
-   "date": "2026-08-19",
-   "pick_id": "mlb_hrr_3_plus_hrr|MLB|Cam_Smith|3_plus_hrr|2026-08-19",
-   "settled": true,
-   "result": "lost",
-   "payout_units": -1.0,
-   "recorded_at": "2026-08-19T21:19:07",
-   "p_calibrated": 0.2626,
-   "outcome": {
-    "stat": "hrr",
-    "actual": 1,
-    "line": 3.0,
-    "side": "OVER/YES",
-    "verify": "Cam Smith \u2014 hrr = 1 (line 3.0, bet OVER/YES) on 2026-08-19",
-    "check": "verified"
-   },
-   "settled_at": "2026-08-20T10:51:02"
-  },
-  {
-   "source": "mlb_hrr_3_plus_hrr",
-   "projection": 2.81,
-   "sport": "MLB",
-   "player_or_matchup": "Richie Palacios",
-   "market": "3_plus_hrr",
-   "prob": 0.532,
-   "fair_american": -114,
-   "p_predicted": 0.532,
-   "matchup": "TOR @ TBR",
-   "date": "2026-08-19",
-   "pick_id": "mlb_hrr_3_plus_hrr|MLB|Richie_Palacios|3_plus_hrr|2026-08-19",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.8772,
-   "recorded_at": "2026-08-19T21:19:07",
-   "p_calibrated": 0.2626,
-   "outcome": {
-    "stat": "hrr",
-    "actual": 4,
-    "line": 3.0,
-    "side": "OVER/YES",
-    "verify": "Richie Palacios \u2014 hrr = 4 (line 3.0, bet OVER/YES) on 2026-08-19",
-    "check": "verified"
-   },
-   "settled_at": "2026-08-20T10:51:02"
-  },
-  {
-   "source": "mlb_hrr_3_plus_hrr",
-   "projection": 2.74,
-   "sport": "MLB",
-   "player_or_matchup": "Bryson Stott",
-   "market": "3_plus_hrr",
-   "prob": 0.516,
-   "fair_american": -107,
-   "p_predicted": 0.516,
-   "matchup": "MIA @ PHI",
-   "date": "2026-08-19",
-   "pick_id": "mlb_hrr_3_plus_hrr|MLB|Bryson_Stott|3_plus_hrr|2026-08-19",
-   "settled": true,
-   "result": "lost",
-   "payout_units": -1.0,
-   "recorded_at": "2026-08-19T21:19:07",
-   "p_calibrated": 0.2626,
-   "outcome": {
-    "stat": "hrr",
-    "actual": 0,
-    "line": 3.0,
-    "side": "OVER/YES",
-    "verify": "Bryson Stott \u2014 hrr = 0 (line 3.0, bet OVER/YES) on 2026-08-19",
-    "check": "verified"
-   },
-   "settled_at": "2026-08-20T10:51:02"
-  },
-  {
-   "source": "mlb_hit_to_record_hit_no",
-   "sport": "MLB",
-   "player_or_matchup": "Christian Koss",
-   "market": "TO_RECORD_HIT_NO",
-   "prob": 0.506,
-   "fair_american": -102,
-   "p_predicted": 0.506,
-   "matchup": "SFG @ CLE",
-   "date": "2026-08-19",
-   "pick_id": "mlb_hit_to_record_hit_no|MLB|Christian_Koss|TO_RECORD_HIT_NO|2026-08-19",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.9804,
-   "recorded_at": "2026-08-19T22:45:29",
-   "p_calibrated": 0.4073,
-   "outcome": {
-    "stat": "hits",
-    "actual": 0,
-    "line": 0.5,
-    "side": "UNDER/NO",
-    "verify": "Christian Koss \u2014 hits = 0 (line 0.5, bet UNDER/NO) on 2026-08-19",
-    "check": "verified"
-   },
-   "settled_at": "2026-08-20T10:51:02"
-  },
-  {
-   "source": "mlb_hit_to_record_hit_no",
-   "sport": "MLB",
-   "player_or_matchup": "Wyatt Langford",
-   "market": "TO_RECORD_HIT_NO",
-   "prob": 0.508,
-   "fair_american": -103,
-   "p_predicted": 0.508,
-   "matchup": "WSN @ TEX",
-   "date": "2026-08-19",
-   "pick_id": "mlb_hit_to_record_hit_no|MLB|Wyatt_Langford|TO_RECORD_HIT_NO|2026-08-19",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.9709,
-   "recorded_at": "2026-08-19T22:45:29",
-   "p_calibrated": 0.4077,
-   "outcome": {
-    "stat": "hits",
-    "actual": 0,
-    "line": 0.5,
-    "side": "UNDER/NO",
-    "verify": "Wyatt Langford \u2014 hits = 0 (line 0.5, bet UNDER/NO) on 2026-08-19",
-    "check": "verified"
-   },
-   "settled_at": "2026-08-20T10:51:02"
-  },
-  {
-   "source": "mlb_hit_to_record_hit_no",
-   "sport": "MLB",
-   "player_or_matchup": "Christian Yelich",
-   "market": "TO_RECORD_HIT_NO",
-   "prob": 0.516,
-   "fair_american": -106,
-   "p_predicted": 0.516,
-   "matchup": "SEA @ MIL",
-   "date": "2026-08-19",
-   "pick_id": "mlb_hit_to_record_hit_no|MLB|Christian_Yelich|TO_RECORD_HIT_NO|2026-08-19",
-   "settled": true,
-   "result": "lost",
-   "payout_units": -1.0,
-   "recorded_at": "2026-08-19T22:45:29",
-   "p_calibrated": 0.4172,
-   "outcome": {
-    "stat": "hits",
-    "actual": 1,
-    "line": 0.5,
-    "side": "UNDER/NO",
-    "verify": "Christian Yelich \u2014 hits = 1 (line 0.5, bet UNDER/NO) on 2026-08-19",
-    "check": "verified"
-   },
-   "settled_at": "2026-08-20T10:51:02"
-  },
   {
    "source": "mlb_hit_to_record_hit_no",
    "sport": "MLB",
@@ -6191,6 +5992,32 @@
    "settled_at": "2026-08-21T05:57:21"
   },
   {
+   "source": "tennis_games_total_games_over_19.5",
+   "sport": "TENNIS",
+   "player_or_matchup": "Frances Tiafoe vs Lorenzo Musetti",
+   "market": "TOTAL_GAMES_OVER_19.5",
+   "prob": 0.691,
+   "fair_american": -224,
+   "p_predicted": 0.691,
+   "matchup": "Frances Tiafoe vs Lorenzo Musetti",
+   "date": "2026-08-20",
+   "pick_id": "tennis_games_total_games_over_19_5|TENNIS|Frances_Tiafoe_vs_Lorenzo_Musetti|TOTAL_GAMES_OVER_19_5|2026-08-20",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.4464,
+   "recorded_at": "2026-08-20T05:24:29",
+   "p_calibrated": 0.691,
+   "outcome": {
+    "match": "Frances Tiafoe vs Lorenzo Musetti",
+    "winner": "Frances Tiafoe",
+    "sets": "2-0",
+    "total_games": 25,
+    "market": "TOTAL_GAMES_OVER_19.5",
+    "verify": "Frances Tiafoe won 2-0 (25 games) \u2014 TOTAL_GAMES_OVER_19.5"
+   },
+   "settled_at": "2026-08-22T05:20:27"
+  },
+  {
    "source": "top_25_board",
    "sport": "MLB",
    "player_or_matchup": "LAA @ HOU",
@@ -8376,6 +8203,150 @@
     "verify": "Coventry City 0-3 Arsenal: home clean sheet = True \u2014 HOME_CLEAN_SHEET_NO"
    },
    "settled_at": "2026-08-21T21:47:08"
+  },
+  {
+   "source": "wnba_3pm_3pm_over_0.5",
+   "sport": "WNBA",
+   "player_or_matchup": "azura stevens",
+   "market": "3PM_OVER_0.5",
+   "prob": 0.646,
+   "fair_american": -182,
+   "p_predicted": 0.646,
+   "matchup": "ATL @ LAS",
+   "date": "2026-08-21",
+   "pick_id": "wnba_3pm_3pm_over_0_5|WNBA|azura_stevens|3PM_OVER_0_5|2026-08-21",
+   "settled": true,
+   "result": "lost",
+   "payout_units": -1.0,
+   "recorded_at": "2026-08-20T21:21:23",
+   "p_calibrated": 0.646,
+   "outcome": {
+    "stat": "fg3m",
+    "actual": 0,
+    "line": 0.5,
+    "side": "OVER",
+    "verify": "azura stevens \u2014 fg3m = 0 (line 0.5, bet over) on 2026-08-21"
+   },
+   "settled_at": "2026-08-22T01:53:51"
+  },
+  {
+   "source": "wnba_blkstl_blk_stl_over_0.5",
+   "sport": "WNBA",
+   "player_or_matchup": "tiffany hayes",
+   "market": "BLK_STL_OVER_0.5",
+   "prob": 0.689,
+   "fair_american": -222,
+   "p_predicted": 0.689,
+   "matchup": "CON @ LVA",
+   "date": "2026-08-21",
+   "pick_id": "wnba_blkstl_blk_stl_over_0_5|WNBA|tiffany_hayes|BLK_STL_OVER_0_5|2026-08-21",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.4505,
+   "recorded_at": "2026-08-20T21:21:23",
+   "p_calibrated": 0.7015,
+   "outcome": {
+    "stat": "blk_stl",
+    "actual": 1,
+    "line": 0.5,
+    "side": "OVER",
+    "verify": "tiffany hayes \u2014 blk_stl = 1 (line 0.5, bet over) on 2026-08-21"
+   },
+   "settled_at": "2026-08-22T01:53:51"
+  },
+  {
+   "source": "top_25_board",
+   "sport": "MLB",
+   "player_or_matchup": "STL @ PHI",
+   "market": "PHI_ML",
+   "prob": 0.641,
+   "raw_prob": 0.6703,
+   "edge_pct": 22.4,
+   "fair_american": -110,
+   "primary_source_module": "today_reco",
+   "date": "2026-08-21",
+   "pick_id": "top_25_board|MLB|STL___PHI|PHI_ML|2026-08-21",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.9091,
+   "recorded_at": "2026-08-21T05:57:21",
+   "p_calibrated": 0.641,
+   "outcome": {
+    "final_score": "STL 6 @ PHI 7",
+    "total_runs": 13,
+    "verify": "STL @ PHI: final 6-7 (total 13 runs) on 2026-08-21"
+   },
+   "settled_at": "2026-08-22T05:20:27"
+  },
+  {
+   "source": "top_25_board",
+   "sport": "MLB",
+   "player_or_matchup": "NYM @ CHW",
+   "market": "CHW_ML",
+   "prob": 0.6461,
+   "raw_prob": 0.6588,
+   "edge_pct": 8.6,
+   "fair_american": -147,
+   "primary_source_module": "today_reco",
+   "date": "2026-08-21",
+   "pick_id": "top_25_board|MLB|NYM___CHW|CHW_ML|2026-08-21",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.6803,
+   "recorded_at": "2026-08-21T05:57:21",
+   "p_calibrated": 0.6461,
+   "outcome": {
+    "final_score": "NYM 4 @ CHW 6",
+    "total_runs": 10,
+    "verify": "NYM @ CHW: final 4-6 (total 10 runs) on 2026-08-21"
+   },
+   "settled_at": "2026-08-22T05:20:27"
+  },
+  {
+   "source": "top_25_board",
+   "sport": "MLB",
+   "player_or_matchup": "TOR @ NYY",
+   "market": "NYY_ML",
+   "prob": 0.6477,
+   "raw_prob": 0.7303,
+   "edge_pct": 23.7,
+   "fair_american": -110,
+   "primary_source_module": "today_reco",
+   "date": "2026-08-21",
+   "pick_id": "top_25_board|MLB|TOR___NYY|NYY_ML|2026-08-21",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.9091,
+   "recorded_at": "2026-08-21T13:43:33",
+   "p_calibrated": 0.6477,
+   "outcome": {
+    "final_score": "TOR 1 @ NYY 3",
+    "total_runs": 4,
+    "verify": "TOR @ NYY: final 1-3 (total 4 runs) on 2026-08-21"
+   },
+   "settled_at": "2026-08-22T05:20:27"
+  },
+  {
+   "source": "mlb_under_alert",
+   "sport": "MLB",
+   "player_or_matchup": "ATL @ MIL",
+   "market": "UNDER_8.5",
+   "prob": null,
+   "tier": "ELITE",
+   "under_signal_score": 7.0,
+   "date": "2026-08-21",
+   "pick_id": "mlb_under_alert|MLB|ATL___MIL|UNDER_8_5|2026-08-21",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.91,
+   "recorded_at": "2026-08-21T13:43:33",
+   "outcome": {
+    "final_score": "ATL 1 @ MIL 2",
+    "total_runs": 3,
+    "verify": "ATL @ MIL: final 1-2 (total 3) on 2026-08-21",
+    "check": "verified"
+   },
+   "settled_at": "2026-08-22T05:20:27"
   }
  ],
  "recent_window": 200,
@@ -8383,5 +8354,5 @@
   "2026-05-19",
   "2026-08-21"
  ],
- "digest_generated_at": "2026-08-21T22:36:51"
+ "digest_generated_at": "2026-08-22T05:20:28"
 }

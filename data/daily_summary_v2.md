@@ -1,18 +1,18 @@
-# EdgeStat Daily Summary — 2026-08-21
+# EdgeStat Daily Summary — 2026-08-22
 
-## 🏥 Model Health: 64.1/100 [OK]
+## 🏥 Model Health: 63.2/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 100.0/100
+  - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 0/100
   - 🔴 Brier Trend: 36.6/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 95.5/100
+  - 🟢 Data Health: 90.9/100
   - 🟡 Edge Count: 77.1/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.562)
-- **Total games on board:** 101
-- **Strong home favorites:** 7 | **Strong road dogs:** 4
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.582)
+- **Total games on board:** 112
+- **Strong home favorites:** 15 | **Strong road dogs:** 5
 
 ## 🎯 Top 5 Best Bets
 1. **TBR @ BAL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
@@ -47,32 +47,30 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (5)
+## ⚡ Pre-Game HIGH Conviction (3)
 - [MLS] **Charlotte FC** HOME (1-2 L10) · model 74.1% fair -287
-- [WNBA] **Golden State Valkyries** AWAY (4-1 L10) · model 70.5% fair -239
-- [WNBA] **Minnesota Lynx** AWAY (5-0 L10) · model 64.3% fair -180
 - [MLS] **Houston Dynamo FC** AWAY (4-0 L10) · model 63.5% fair -174
 - [MLS] **Colorado Rapids** AWAY (3-0 L10) · model 62.3% fair -165
 
 ## 🔥/❄️ Heat / Cold Signals
-- Hot teams: **4** | Cold teams: **13** | Over-heavy: 0 | Under-heavy: 7
+- Hot teams: **4** | Cold teams: **11** | Over-heavy: 0 | Under-heavy: 6
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (66)
-- RESIDUAL_DIVERGENCE: **7**
-- STEAM_MOVE: **57**
+## ⚠️ Anomaly Detector (63)
+- RESIDUAL_DIVERGENCE: **6**
+- STEAM_MOVE: **55**
 - PEN_MISMATCH: **2**
-  - Washington Mystics (WNBA): Washington Mystics UNDERPERFORMING expected margin by 7.2pts in recent games -- model bias may persist
   - Charlotte FC (MLS): Charlotte FC OUTPERFORMING expected margin by 6.2pts in recent games -- model bias may persist
   - FC Cincinnati (MLS): FC Cincinnati UNDERPERFORMING expected margin by 10.8pts in recent games -- model bias may persist
   - Orlando City SC (MLS): Orlando City SC OUTPERFORMING expected margin by 11.9pts in recent games -- model bias may persist
   - Philadelphia Union (MLS): Philadelphia Union UNDERPERFORMING expected margin by 8.5pts in recent games -- model bias may persist
+  - St. Louis CITY SC (MLS): St. Louis CITY SC UNDERPERFORMING expected margin by 8.5pts in recent games -- model bias may persist
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$-5.19**
+- Expected EV: **$-6.1**
   - #1 [NRFI] $50 on TBR @ BAL YRFI (1st-inning OVER 0.5) (P=71%)
-  - #2 [NRFI] $50 on MIN @ SDP YRFI (1st-inning OVER 0.5) (P=68%)
+  - #2 [NRFI] $50 on MIN @ SDP YRFI (1st-inning OVER 0.5) (P=67%)
   - #3 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #4 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
@@ -105,23 +103,23 @@
   - [LEAN] **Shamil Gaziev** (14-3-0) vs Kennedy Nzechukwu -- fair -137
 
 ## ⛳ Golf Player Heat (from BMW Championship)
-  - 🔥 T1 **J.J. Spaun** (USA): -10 total -- finished T1
-  - 🔥 T2 **Gary Woodland** (USA): -10 total -- finished T2
-  - 🔥 T3 **Wyndham Clark** (USA): -10 total -- finished T3
+  - 🔥 T1 **Wyndham Clark** (USA): -12 total -- finished T1
+  - 🔥 T2 **Gary Woodland** (USA): -11 total -- finished T2
+  - 🔥 T3 **J.J. Spaun** (USA): -10 total -- finished T3
   - 🔥 T4 **Sungjae Im** (South Korea): -9 total -- finished T4
   - 🔥 T5 **Chris Gotterup** (USA): -9 total -- finished T5
 
-## 🔥 MLB Batter Heat (43 HOT / 66 COLD)
-  - 🔥 **Jac Caglianone** (KC): L14 .471 / season .279 (+192pts)
+## 🔥 MLB Batter Heat (38 HOT / 68 COLD)
   - 🔥 **Victor Robles** (SEA): L14 .444 / season .260 (+184pts)
-  - 🔥 **Pete Alonso** (BAL): L14 .434 / season .269 (+165pts)
-  - 🔥 **Alec Bohm** (PHI): L14 .367 / season .242 (+125pts)
-  - 🔥 **Alejandro Kirk** (TOR): L14 .400 / season .282 (+118pts)
+  - 🔥 **Pete Alonso** (BAL): L14 .444 / season .271 (+173pts)
+  - 🔥 **Jac Caglianone** (KC): L14 .442 / season .277 (+165pts)
+  - 🔥 **Alec Bohm** (PHI): L14 .400 / season .246 (+154pts)
+  - 🔥 **Alejandro Kirk** (TOR): L14 .417 / season .284 (+133pts)
   - ❄️ **David Fry** (CLE): L14 .000 / season .182 (-182pts) -- FADE props
   - ❄️ **Jeremy Peña** (HOU): L14 .107 / season .283 (-176pts) -- FADE props
-  - ❄️ **TJ Friedl** (CIN): L14 .000 / season .157 (-157pts) -- FADE props
-  - ❄️ **Heliot Ramos** (NYY): L14 .109 / season .243 (-134pts) -- FADE props
-  - ❄️ **Spencer Horwitz** (PIT): L14 .125 / season .256 (-131pts) -- FADE props
+  - ❄️ **Dillon Dingler** (DET): L14 .102 / season .252 (-150pts) -- FADE props
+  - ❄️ **Elly De La Cruz** (CIN): L14 .113 / season .257 (-144pts) -- FADE props
+  - ❄️ **Spencer Horwitz** (PIT): L14 .115 / season .252 (-137pts) -- FADE props
 
 ## 📈 Streak Regression Alerts (14)
 - [WNBA] Minnesota Lynx on W5 L10 5-0 -- Minnesota Lynx on W5 -- no historical sample
@@ -138,6 +136,7 @@
   - ⚠️ batter_rbis (Brier Δ -0.0052)
 
 ## 🤖 Self-Training Status
-- **WNBA**: n=39 games · hit rate 64.1% · bias -6.3pp [calibration applied]
-- **MLS**: n=46 games · hit rate 50.0% · bias +0.7pp
-- **MLB**: n=188 games · hit rate 48.4% · bias +3.4pp [calibration applied]
+- **WNBA**: n=39 games · hit rate 64.1% · bias -10.9pp [calibration applied]
+- **MLS**: n=45 games · hit rate 51.1% · bias +0.7pp
+- **EPL**: n=1 games · hit rate 100.0% · bias -40.8pp
+- **MLB**: n=187 games · hit rate 51.3% · bias +0.2pp

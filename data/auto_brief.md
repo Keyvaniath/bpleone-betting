@@ -1,20 +1,20 @@
-# Tonight's Slate Brief — 2026-08-21
+# Tonight's Slate Brief — 2026-08-22
 
-## Slate Quality: 76/100 (HIGH)
-_67% lineups confirmed · 14 rookie SPs_
-**Recommendation:** Play normal Kelly sizing.
+## Slate Quality: 55/100 (MEDIUM)
+_0% lineups confirmed · 13 rookie SPs_
+**Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
-- **14 games** scheduled
-- **32 best bets** scored: 0 DK · 0 PP · 9 NRFI · 0 SGP
-- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$32.34
-- **MC simulation:** EV +$91.18, 79% P(profit), p05 $-113.74 / p95 $287.54
+- **15 games** scheduled
+- **30 best bets** scored: 0 DK · 0 PP · 9 NRFI · 0 SGP
+- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$31.23
+- **MC simulation:** EV +$90.06, 78% P(profit), p05 $-113.74 / p95 $287.54
 
 ## Top 5 Best Bets
 1. **TBR @ BAL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +24.7%)
    - P(YRFI) 70.7% vs baseline 46.0%
-2. **MIN @ SDP YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +21.9%)
-   - P(YRFI) 67.9% vs baseline 46.0%
+2. **MIN @ SDP YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +20.7%)
+   - P(YRFI) 66.7% vs baseline 46.0%
 3. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
    - Player prop quality score 1.1935
    - Elite player
@@ -29,13 +29,16 @@ _67% lineups confirmed · 14 rookie SPs_
 - **TBR @ BAL YRFI (1st-inning OVER 0.5)** (low):
    - Edge +24.7% looks big but only 0 settled props on this player — model unproven
 - **MIN @ SDP YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +21.9% looks big but only 0 settled props on this player — model unproven
+   - Edge +20.7% looks big but only 0 settled props on this player — model unproven
 - **OAK @ HOU YRFI (1st-inning OVER 0.5)** (low):
    - Edge +17.8% looks big but only 0 settled props on this player — model unproven
 - **CLE @ COL YRFI (1st-inning OVER 0.5)** (low):
    - Edge +16.2% looks big but only 0 settled props on this player — model unproven
 - **CHC @ SEA YRFI (1st-inning OVER 0.5)** (low):
    - Edge +14.0% looks big but only 0 settled props on this player — model unproven
+
+## Hot streaks
+**Batters heating up:** Pete Alonso (heat +5.67), Max Muncy (heat +4.95), Ryan Vilade (heat +4.76)
 
 ## Bullpens GASSED tonight
 Athletics, Seattle Mariners, San Francisco Giants, Tampa Bay Rays, Texas Rangers, Chicago White Sox, New York Yankees, Milwaukee Brewers
@@ -46,10 +49,10 @@ _Lean late-inning OVER on these games; fade their save situations._
 - **NRFI** (1st-inning UNDER): DET @ KCR, SFG @ BOS
 
 ## Golf -- BMW Championship
-- **Leader:** Michael Thorbjornsen (-6) at #1
+- **Leader:** Wyndham Clark (-12) at #1
 - **Field:** 50 players  |  Status: In Progress
-- **Play of the Tournament:** Michael Thorbjornsen WIN @ +692 (model 12.6%, HIGH)
-   - P(win) 12.6% with 1 round(s) left -- sweet-spot value at #1 (-6).
+- **Play of the Tournament:** Russell Henley TOP5 @ +582 (model 14.7%, HIGH)
+   - P(top 5) 14.7% -- lower variance than outright but compelling line.
 
 ## NBA -- PRESEASON
 - Miami Heat @ Toronto Raptors (0-0 vs 0-0)  | P(home) 55.0% fair -122 | Scheduled
@@ -62,22 +65,22 @@ _Lean late-inning OVER on these games; fade their save situations._
 - Chicago Blackhawks @ Minnesota Wild (0-0-0 vs 0-0-0)  | P(home) 52.9% fair -112 | Scheduled
 
 ## KBO -- 2026 Korean Baseball
-- KIA Tigers @ Kiwoom Heroes | P(home) 31.8% fair +214 | total 10 R
-- KT Wiz @ SSG Landers | P(home) 54.8% fair -121 | total 10 R
-- LG Twins @ Hanwha Eagles | P(home) 37.8% fair +165 | total 10 R
-- Lotte Giants @ Doosan Bears | P(home) 61.2% fair -158 | total 10 R
-- Samsung Lions @ NC Dinos | P(home) 46.3% fair +116 | total 10 R
+- KIA Tigers @ Kiwoom Heroes | P(home) 27.3% fair +267 | total 9 R
+- KT Wiz @ SSG Landers | P(home) 54.3% fair -119 | total 8 R
+- LG Twins @ Hanwha Eagles | P(home) 33.8% fair +196 | total 9 R
+- Lotte Giants @ Doosan Bears | P(home) 60.7% fair -154 | total 9 R
+- Samsung Lions @ NC Dinos | P(home) 43.8% fair +128 | total 8 R
 - **KBO POD:** Doosan Bears ML vs Lotte Giants (KBO) (HIGH)
 
-## LoL Esports -- 1 live, 30 upcoming
-- [NACL] NRG vs Contingent Esports BO3 | P(A) 68.3% fair -215/+215
-- [NACL] Winthrop University vs Ole Miss Esports BO3 | P(A) 56.3% fair -129/+129
+## LoL Esports -- 0 live, 29 upcoming
 - [LPL] LGD GAMING vs Xi'an Team WE BO3 | P(A) 61.6% fair -160/+160
 - [LCK] Dplus KIA vs Gen.G Esports BO3 | P(A) 47.5% fair +111/-111
 - [LPL] Shenzhen NINJAS IN PYJAMAS vs Invictus Gaming BO3 | P(A) 49.7% fair +101/-101
+- [LCK] DN SOOPers vs KIWOOM DRX BO3 | P(A) 63.2% fair -171/+171
+- [LPL] Beijing JDG Esports vs TOP ESPORTS BO3 | P(A) 54.9% fair -122/+122
 - **LoL POT:** Sentinels ML vs Disguised (LCS, BO3) (HIGH)
 
-## Player Play of the Day -- across all sports (3460 candidates scanned)
+## Player Play of the Day -- across all sports (3463 candidates scanned)
 - **[LOL]** Inspired UNDER 3.5 Kills | model 61.7% fair -161 (ELITE)
 - **[LOL]** ShowMaker OVER 3.5 Kills | model 62.5% fair -167 (ELITE)
 - **[LOL]** Peyz OVER 4.5 Kills | model 61.3% fair -158 (ELITE)
