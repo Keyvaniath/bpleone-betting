@@ -1,12 +1,12 @@
 # Tonight's Slate Brief — 2026-08-22
 
-## Slate Quality: 55/100 (MEDIUM)
-_0% lineups confirmed · 14 rookie SPs_
-**Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
+## Slate Quality: 78/100 (HIGH)
+_83% lineups confirmed · 13 rookie SPs_
+**Recommendation:** Play normal Kelly sizing.
 
 ## Slate
-- **15 games** scheduled
-- **34 best bets** scored: 0 DK · 0 PP · 13 NRFI · 0 SGP
+- **12 games** scheduled
+- **36 best bets** scored: 0 DK · 0 PP · 13 NRFI · 0 SGP
 - **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$52.42
 - **MC simulation:** EV +$123.39, 83% P(profit), p05 $-88.06 / p95 $315.19
 
@@ -33,6 +33,9 @@ _0% lineups confirmed · 14 rookie SPs_
    - Edge +21.5% looks big but only 0 settled props on this player — model unproven
 - **PIT @ LAD YRFI (1st-inning OVER 0.5)** (low):
    - Edge +20.9% looks big but only 0 settled props on this player — model unproven
+
+## Weather leans
+- **UNDER lean** (wind in + cold): CLE @ COL
 
 ## Bullpens GASSED tonight
 Athletics, Seattle Mariners, San Francisco Giants, St. Louis Cardinals, Texas Rangers, Toronto Blue Jays, New York Yankees, Milwaukee Brewers
@@ -65,12 +68,12 @@ _Lean late-inning OVER on these games; fade their save situations._
 - Samsung Lions @ NC Dinos | P(home) 43.8% fair +128 | total 8 R
 - **KBO POD:** Doosan Bears ML vs Lotte Giants (KBO) (HIGH)
 
-## LoL Esports -- 0 live, 24 upcoming
-- [LEC] Shifters vs Fnatic BO3 | P(A) 34.8% fair +188/-188
-- [CBLOL] LEVIATÁN vs Vivo Keyd Stars BO3 | P(A) 40.8% fair +145/-145
-- [LEC] SK Gaming vs Movistar KOI BO3 | P(A) 35.4% fair +182/-182
-- [CBLOL] paiN Gaming vs FURIA BO3 | P(A) 29.0% fair +245/-245
+## LoL Esports -- 1 live, 20 upcoming
 - [LCS] Sentinels vs FlyQuest BO3 | P(A) 51.4% fair -106/+106
+- [LCS] Dignitas vs Disguised BO3 | P(A) 53.7% fair -116/+116
+- [LPL] THUNDER TALK GAMING vs LGD GAMING BO3 | P(A) 31.9% fair +214/-214
+- [LCK] Hanwha Life Esports vs T1 BO3 | P(A) 57.7% fair -137/+137
+- [LPL] Beijing JDG Esports vs EDWARD GAMING BO3 | P(A) 61.9% fair -163/+163
 - **LoL POT:** Sentinels ML vs Disguised (LCS, BO3) (HIGH)
 
 ## Player Play of the Day -- across all sports (3463 candidates scanned)

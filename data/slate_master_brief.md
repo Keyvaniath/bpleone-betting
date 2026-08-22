@@ -1,13 +1,13 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-08-22T14:32:41 UTC_
+_Generated 2026-08-22T21:11:07 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -14
+- **Score:** 3
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 13
-- **Total FADES:** 66
+- **Total STRONG:** 17
+- **Total FADES:** 65
 
 ## Lock of the Night
 - **Subject:** Brandon Young
@@ -23,12 +23,12 @@ _Generated 2026-08-22T14:32:41 UTC_
 2. **GOLF / Gary Woodland** (GOLF_PLAYER, score=192.36)
    - Play: Gary Woodland (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-3. **MLB / Logan Henderson** (MLB_PITCHER, score=61.67)
-   - Play: Logan Henderson (PITCHER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_PITCHER)
-4. **MLB / Eury Pérez** (MLB_PITCHER, score=60.08)
-   - Play: Eury Pérez (PITCHER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_PITCHER)
+3. **WNBA / caitlin clark** (WNBA_PLAYER, score=120.33)
+   - Play: caitlin clark (PLAYER_STRONG)
+   - Rationale: Cross-sport top pick (WNBA_PLAYER)
+4. **WNBA / breanna stewart** (WNBA_PLAYER, score=120.25)
+   - Play: breanna stewart (PLAYER_STRONG)
+   - Rationale: Cross-sport top pick (WNBA_PLAYER)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
@@ -43,13 +43,13 @@ _Generated 2026-08-22T14:32:41 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **NBA** / TOR (TEAM_FADE)
-  - Fade angle: team total UNDER
 - **NBA** / MIA (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NHL** / samsonov ilya (GOALIE_FADE)
+- **NBA** / TOR (TEAM_FADE)
+  - Fade angle: team total UNDER
+- **NHL** / anthony stolarz (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / marc-andre fleury (GOALIE_FADE)
+- **NHL** / calvin pickard (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / joseph woll (GOALIE_FADE)
+- **NHL** / connor hellebuyck (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO

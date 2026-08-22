@@ -1,18 +1,18 @@
 # EdgeStat Daily Summary — 2026-08-22
 
-## 🏥 Model Health: 63.2/100 [OK]
+## 🏥 Model Health: 65.1/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.2/100
+  - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 0/100
   - 🔴 Brier Trend: 38.8/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 86.4/100
+  - 🟢 Data Health: 95.5/100
   - 🟢 Edge Count: 82.9/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.569)
-- **Total games on board:** 102
-- **Strong home favorites:** 7 | **Strong road dogs:** 2
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.568)
+- **Total games on board:** 101
+- **Strong home favorites:** 8 | **Strong road dogs:** 3
 
 ## 🎯 Top 5 Best Bets
 1. **CLE @ COL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
@@ -47,25 +47,27 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (3)
+## ⚡ Pre-Game HIGH Conviction (4)
 - [MLS] **Charlotte FC** HOME (1-2 L10) · model 74.1% fair -287
 - [MLS] **Houston Dynamo FC** AWAY (4-0 L10) · model 63.5% fair -174
+- [WNBA] **Atlanta Dream** AWAY (4-1 L10) · model 62.5% fair -167
 - [MLS] **Colorado Rapids** AWAY (3-0 L10) · model 62.3% fair -165
 
 ## 🔥/❄️ Heat / Cold Signals
 - Hot teams: **4** | Cold teams: **11** | Over-heavy: 0 | Under-heavy: 6
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (63)
-- RESIDUAL_DIVERGENCE: **6**
-- STEAM_MOVE: **55**
+## ⚠️ Anomaly Detector (73)
+- STREAK_MISMATCH: **1**
+- RESIDUAL_DIVERGENCE: **9**
+- STEAM_MOVE: **61**
 - COMPOUND_BULLPEN: **1**
 - PEN_MISMATCH: **1**
+  - Los Angeles Sparks (WNBA): Los Angeles Sparks on L6 streak but model still favors them (73%) -- may be overvalued
+  - Los Angeles Sparks (WNBA): Los Angeles Sparks UNDERPERFORMING expected margin by 6.4pts in recent games -- model bias may persist
+  - Connecticut Sun (WNBA): Connecticut Sun UNDERPERFORMING expected margin by 8.1pts in recent games -- model bias may persist
+  - Atlanta Dream (WNBA): Atlanta Dream OUTPERFORMING expected margin by 11.8pts in recent games -- model bias may persist
   - Charlotte FC (MLS): Charlotte FC OUTPERFORMING expected margin by 7.0pts in recent games -- model bias may persist
-  - FC Cincinnati (MLS): FC Cincinnati UNDERPERFORMING expected margin by 11.5pts in recent games -- model bias may persist
-  - Orlando City SC (MLS): Orlando City SC OUTPERFORMING expected margin by 11.9pts in recent games -- model bias may persist
-  - Philadelphia Union (MLS): Philadelphia Union UNDERPERFORMING expected margin by 8.5pts in recent games -- model bias may persist
-  - St. Louis CITY SC (MLS): St. Louis CITY SC UNDERPERFORMING expected margin by 8.5pts in recent games -- model bias may persist
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
@@ -76,8 +78,8 @@
   - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
-## 🎯 Convergence Picks (15 stacked games)
-- ELITE: **9** · HIGH: 1 · MED: 5
+## 🎯 Convergence Picks (14 stacked games)
+- ELITE: **9** · HIGH: 1 · MED: 4
   - [ELITE] Real Salt Lake @ Orlando City SC : 6 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
   - [ELITE] D.C. United @ Charlotte FC : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
   - [ELITE] Houston Dynamo FC @ St. Louis CITY SC : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
@@ -110,12 +112,12 @@
   - 🔥 T4 **Sungjae Im** (South Korea): -9 total -- finished T4
   - 🔥 T5 **Chris Gotterup** (USA): -9 total -- finished T5
 
-## 🔥 MLB Batter Heat (38 HOT / 68 COLD)
+## 🔥 MLB Batter Heat (38 HOT / 69 COLD)
   - 🔥 **Victor Robles** (SEA): L14 .444 / season .260 (+184pts)
   - 🔥 **Pete Alonso** (BAL): L14 .444 / season .271 (+173pts)
   - 🔥 **Jac Caglianone** (KC): L14 .442 / season .277 (+165pts)
   - 🔥 **Alec Bohm** (PHI): L14 .400 / season .246 (+154pts)
-  - 🔥 **Alejandro Kirk** (TOR): L14 .417 / season .284 (+133pts)
+  - 🔥 **Alejandro Kirk** (TOR): L14 .412 / season .283 (+129pts)
   - ❄️ **David Fry** (CLE): L14 .000 / season .182 (-182pts) -- FADE props
   - ❄️ **Jeremy Peña** (HOU): L14 .107 / season .283 (-176pts) -- FADE props
   - ❄️ **Dillon Dingler** (DET): L14 .102 / season .252 (-150pts) -- FADE props
