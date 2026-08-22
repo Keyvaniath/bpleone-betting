@@ -1,17 +1,17 @@
 # EdgeStat Daily Summary — 2026-08-22
 
-## 🏥 Model Health: 61.6/100 [OK]
+## 🏥 Model Health: 63.2/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.9/100
+  - 🟢 Calibration Freshness: 99.2/100
   - 🔴 Hit Rate Trend: 0/100
-  - 🔴 Brier Trend: 26.9/100
+  - 🔴 Brier Trend: 38.8/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 95.5/100
-  - 🟡 Edge Count: 71.4/100
+  - 🟢 Data Health: 86.4/100
+  - 🟢 Edge Count: 82.9/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.568)
-- **Total games on board:** 98
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.569)
+- **Total games on board:** 102
 - **Strong home favorites:** 7 | **Strong road dogs:** 2
 
 ## 🎯 Top 5 Best Bets
@@ -56,11 +56,11 @@
 - Hot teams: **4** | Cold teams: **11** | Over-heavy: 0 | Under-heavy: 6
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (64)
+## ⚠️ Anomaly Detector (63)
 - RESIDUAL_DIVERGENCE: **6**
-- STEAM_MOVE: **54**
-- PEN_MISMATCH: **3**
+- STEAM_MOVE: **55**
 - COMPOUND_BULLPEN: **1**
+- PEN_MISMATCH: **1**
   - Charlotte FC (MLS): Charlotte FC OUTPERFORMING expected margin by 7.0pts in recent games -- model bias may persist
   - FC Cincinnati (MLS): FC Cincinnati UNDERPERFORMING expected margin by 11.5pts in recent games -- model bias may persist
   - Orlando City SC (MLS): Orlando City SC OUTPERFORMING expected margin by 11.9pts in recent games -- model bias may persist
