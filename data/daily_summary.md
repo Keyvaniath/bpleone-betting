@@ -4,14 +4,14 @@
 
 _Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
 
-_Generated at 2026-08-23T21:14:55 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-08-23T22:28:06 UTC. Game lines source: **placeholder -110 (no real book today)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
 **ATL @ MIL - MIL_ML**
-- Market: -116
+- Market: -110
 - Model probability: 62.1%
-- Raw edge: +15.59%
+- Raw edge: +18.51%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
@@ -20,7 +20,7 @@ _Generated at 2026-08-23T21:14:55 UTC. Game lines source: **Bovada (fallback -- 
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 7:10p ET | ATL @ MIL | Journey Bank Ballpark | 70F 0mph | MIL_ML +15.59% |
+| 7:10p ET | ATL @ MIL | Journey Bank Ballpark | 70F 0mph | MIL_ML +18.51% |
 
 ## Parlays - top 1
 
@@ -35,7 +35,7 @@ _Generated at 2026-08-23T21:14:55 UTC. Game lines source: **Bovada (fallback -- 
 | batter total bases | 15 | 40.0% | 50.4% | 1.241 | 0.862 |
 | batter hits | 54 | 63.0% | 57.4% | 0.912 | 1.087 |
 
-Cumulative graded plays: 9758. Wins: 3594. Hit rate: 36.8%.
+Cumulative graded plays: 9776. Wins: 3597. Hit rate: 36.8%.
 
 ## Auxiliary Markets (Model Fair Prices)
 

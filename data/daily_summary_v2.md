@@ -1,18 +1,18 @@
 # EdgeStat Daily Summary — 2026-08-23
 
-## 🏥 Model Health: 61.9/100 [OK]
+## 🏥 Model Health: 62.5/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.9/100
+  - 🟢 Calibration Freshness: 100.0/100
   - 🔴 Hit Rate Trend: 0/100
   - 🔴 Brier Trend: 28.5/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 95.5/100
-  - 🟡 Edge Count: 71.4/100
+  - 🟡 Edge Count: 77.1/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.564)
-- **Total games on board:** 91
-- **Strong home favorites:** 2 | **Strong road dogs:** 1
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.557)
+- **Total games on board:** 90
+- **Strong home favorites:** 0 | **Strong road dogs:** 1
 
 ## 🎯 Top 5 Best Bets
 1. **WSN @ MIA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
@@ -20,9 +20,6 @@
 3. **SFG @ BOS YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 4. **CHC @ SEA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 5. **TBR @ BAL YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
-
-## 📡 Sharp Action (Line Movement)
-- [ELITE] **NYM @ CHW** ml_home: 60.78% → 94.12% (+33.3pp)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -57,11 +54,9 @@
 - Hot teams: **3** | Cold teams: **8** | Over-heavy: 0 | Under-heavy: 5
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (73)
+## ⚠️ Anomaly Detector (71)
 - RESIDUAL_DIVERGENCE: **3**
-- STEAM_MOVE: **67**
-- PEN_MISMATCH: **1**
-- COMPOUND_BULLPEN: **2**
+- STEAM_MOVE: **68**
   - Seattle Storm (WNBA): Seattle Storm UNDERPERFORMING expected margin by 8.3pts in recent games -- model bias may persist
   - Chicago Sky (WNBA): Chicago Sky OUTPERFORMING expected margin by 6.6pts in recent games -- model bias may persist
   - New England Revolution (MLS): New England Revolution OUTPERFORMING expected margin by 6.7pts in recent games -- model bias may persist
@@ -77,18 +72,16 @@
   - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
-## 🎯 Convergence Picks (3 stacked games)
-- ELITE: **0** · HIGH: 3 · MED: 0
-  - [HIGH] Indiana Fever @ New York Liberty : 3 signals (HEAT_COLD, HEAT_COLD, ATS)
-  - [HIGH] Atlanta Dream @ Phoenix Mercury : 3 signals (HEAT_COLD, HEAT_COLD, ATS)
-  - [HIGH] New York City FC @ New England Revolution : 3 signals (PREGAME, ANOMALY, ATS)
+## 🎯 Convergence Picks (5 stacked games)
+- ELITE: **1** · HIGH: 0 · MED: 4
+  - [ELITE] Indiana Fever @ Chicago Sky : 4 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
+  - [MED] Seattle Storm @ Dallas Wings : 2 signals (ANOMALY, ATS)
+  - [MED] Washington Mystics @ Portland Fire : 2 signals (HEAT_COLD, ATS)
+  - [MED] Las Vegas Aces @ Toronto Tempo : 2 signals (PREGAME, HEAT_COLD)
+  - [MED] New York City FC @ New England Revolution : 2 signals (ANOMALY, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (9)
-- **Brady Basso** OVER 7.5 K (73%) fair -271
-- **Nolan McLean** OVER 4.5 K (73%) fair -271
-- **Cristopher Sánchez** OVER 5.5 K (72%) fair -253
-- **Shota Imanaga** OVER 4.5 K (71%) fair -251
-- **Carlos Rodón** OVER 4.5 K (68%) fair -213
+## ⚾ Top MLB Pitcher K Plays (1)
+- **Shane Drohan** OVER 4.5 K (65%) fair -188
 
 ## 🏀 NBA Player Heat (2 HOT / 1 COLD)
   - 🔥 **Scottie Barnes** (TOR): L5 24.4/7.6/9.6 vs season 18.6/5.8/8.8 [PTS +5.8]
@@ -103,23 +96,29 @@
   - [LEAN] **Shamil Gaziev** (15-3-0) vs Kennedy Nzechukwu -- fair -150
 
 ## ⛳ Golf Player Heat (from BMW Championship)
-  - 🔥 T1 **Wyndham Clark** (USA): -17 total -- finished T1
-  - 🔥 T2 **Rory McIlroy** (Northern Ireland): -12 total -- finished T2
-  - 🔥 T3 **Patrick Cantlay** (USA): -12 total -- finished T3
-  - 🔥 T4 **Chris Gotterup** (USA): -11 total -- finished T4
-  - 🔥 T5 **Gary Woodland** (USA): -11 total -- finished T5
+  - 🔥 T1 **Rory McIlroy** (Northern Ireland): -14 total -- finished T1
+  - 🔥 T3 **Chris Gotterup** (USA): -12 total -- finished T3
+  - 🔥 T4 **Gary Woodland** (USA): -12 total -- finished T4
+  - 🔥 T6 **Collin Morikawa** (USA): -11 total -- finished T6
+  - 🔥 T7 **Robert MacIntyre** (Scotland): -10 total -- finished T7, Sunday -2.5 vs tourney avg
+  - ❄️ **Wyndham Clark** (USA): Sunday +6.5 vs tourney avg
+  - ❄️ **Eric Cole** (USA): Sunday +6.2 vs tourney avg
+  - ❄️ **J.J. Spaun** (USA): Sunday +4.2 vs tourney avg
 
-## 🔥 MLB Batter Heat (44 HOT / 66 COLD)
+## 🔥 MLB Batter Heat (45 HOT / 70 COLD)
   - 🔥 **Pete Alonso** (BAL): L14 .463 / season .270 (+193pts)
   - 🔥 **Alec Bohm** (PHI): L14 .420 / season .248 (+172pts)
   - 🔥 **Jac Caglianone** (KC): L14 .442 / season .276 (+166pts)
-  - 🔥 **Max Muncy** (LAD): L14 .342 / season .215 (+127pts)
   - 🔥 **Vinnie Pasquantino** (KC): L14 .360 / season .245 (+115pts)
+  - 🔥 **Randal Grichuk** (CWS): L14 .387 / season .281 (+106pts)
   - ❄️ **Dillon Dingler** (DET): L14 .071 / season .253 (-182pts) -- FADE props
   - ❄️ **David Fry** (CLE): L14 .000 / season .182 (-182pts) -- FADE props
   - ❄️ **Joc Pederson** (TEX): L14 .067 / season .235 (-168pts) -- FADE props
+  - ❄️ **Byron Buxton** (MIN): L14 .102 / season .251 (-149pts) -- FADE props
   - ❄️ **Tyler Tolbert** (KC): L14 .138 / season .286 (-148pts) -- FADE props
-  - ❄️ **Nicky Lopez** (TEX): L14 .111 / season .259 (-148pts) -- FADE props
+
+## 📈 Streak Regression Alerts (1)
+- [WNBA] Chicago Sky on W3 L10 3-2 -- Chicago Sky on W3 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**

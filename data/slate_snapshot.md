@@ -15,9 +15,9 @@ _5 picks consolidated from POD + Alpha + Book Edges + Parlay-of-Day._
 ## 📊 Book Edges
 
 - **ATL @ MIL · HOME (HOME)** · TEAM_ML
-  Prob 59.0% · Odds -112 · Edge +11.6% · Kelly 0.130
-- **ATL @ MIL · OVER · O/U 8.0** · TOTAL_OVER
-  Prob 56.0% · Odds -110 · Edge +7.0% · Kelly 0.076
+  Prob 58.6% · Odds -109 · Edge +12.3% · Kelly 0.135
+- **ATL @ MIL · UNDER · O/U 8.0** · TOTAL_UNDER
+  Prob 54.9% · Odds -110 · Edge +4.9% · Kelly 0.053
 
 ## 🎲 Parlay
 
@@ -25,5 +25,5 @@ _5 picks consolidated from POD + Alpha + Book Edges + Parlay-of-Day._
   Prob 53.4% · Odds +264 · Edge +94.6% · Kelly 0.050
 
 ---
-_Generated 2026-08-23T21:14:37 UTC by EdgeStat._
+_Generated 2026-08-23T22:27:44 UTC by EdgeStat._
 _Stakes assume ¼-Kelly fractional sizing on a flat bankroll._
