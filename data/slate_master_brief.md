@@ -1,36 +1,33 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-08-22T22:25:54 UTC_
+_Generated 2026-08-23T05:21:34 UTC_
 
 ## Slate Quality
-- **Tier:** MODEST_NIGHT
-- **Score:** 45
-- **Advisory:** Light slate. Limit to 1-3 strongest plays; use 25% Kelly or less.
+- **Tier:** NO_ACTION_NIGHT
+- **Score:** -7
+- **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 27
-- **Total FADES:** 63
+- **Total STRONG:** 15
+- **Total FADES:** 67
 
 ## Top 5 Curated Picks
-1. **GOLF / Wyndham Clark** (GOLF_PLAYER, score=219.29)
+1. **GOLF / Wyndham Clark** (GOLF_PLAYER, score=219.14)
    - Play: Wyndham Clark (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Rory McIlroy** (GOLF_PLAYER, score=198.64)
+2. **GOLF / Rory McIlroy** (GOLF_PLAYER, score=199.36)
    - Play: Rory McIlroy (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-3. **WNBA / caitlin clark** (WNBA_PLAYER, score=120.33)
-   - Play: caitlin clark (PLAYER_STRONG)
-   - Rationale: Cross-sport top pick (WNBA_PLAYER)
-4. **WNBA / breanna stewart** (WNBA_PLAYER, score=120.25)
-   - Play: breanna stewart (PLAYER_STRONG)
-   - Rationale: Cross-sport top pick (WNBA_PLAYER)
-5. **MLB / Alex Bregman** (MLB_BATTER, score=119.19)
-   - Play: Alex Bregman (BATTER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_BATTER)
+3. **MLB / HOME** (MLB_TEAM, score=111.87)
+   - Play: HOME (TEAM_STRONG)
+   - Rationale: Cross-sport top pick (MLB_TEAM)
+4. **MLB / AWAY** (MLB_TEAM, score=91.38)
+   - Play: AWAY (TEAM_STRONG)
+   - Rationale: Cross-sport top pick (MLB_TEAM)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
   - Wyndham Clark top 10 finish
   - Rory McIlroy top 10 finish
-  - Chris Gotterup top 10 finish
+  - Patrick Cantlay top 10 finish
 
 ## Slate ROI Projection
 - **Picks:** 0
@@ -43,9 +40,9 @@ _Generated 2026-08-22T22:25:54 UTC_
   - Fade angle: team total UNDER
 - **NBA** / TOR (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NHL** / marc-andre fleury (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / kevin lankinen (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / samsonov ilya (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
+- **MLB** / Tarik Skubal (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Tanner Bibee (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Brandon Young (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES

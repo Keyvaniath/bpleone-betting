@@ -1,25 +1,25 @@
-# EdgeStat Daily Summary — 2026-08-22
+# EdgeStat Daily Summary — 2026-08-23
 
-## 🏥 Model Health: 69.2/100 [OK]
+## 🏥 Model Health: 67.4/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 100.0/100
+  - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 0/100
   - 🔴 Brier Trend: 56.2/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 95.5/100
+  - 🟢 Data Health: 86.4/100
   - 🟢 Edge Count: 88.6/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.568)
-- **Total games on board:** 101
-- **Strong home favorites:** 8 | **Strong road dogs:** 3
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.57)
+- **Total games on board:** 92
+- **Strong home favorites:** 4 | **Strong road dogs:** 2
 
 ## 🎯 Top 5 Best Bets
 1. **CLE @ COL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 2. **SFG @ BOS YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-3. **STL @ PHI YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-4. **NYM @ CHW YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-5. **PIT @ LAD YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+3. **NYM @ CHW YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+4. **PIT @ LAD YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+5. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -47,34 +47,27 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (4)
-- [MLS] **Charlotte FC** HOME (1-2 L10) · model 74.1% fair -287
-- [MLS] **Houston Dynamo FC** AWAY (4-0 L10) · model 63.5% fair -174
-- [WNBA] **Atlanta Dream** AWAY (4-1 L10) · model 62.5% fair -167
-- [MLS] **Colorado Rapids** AWAY (3-0 L10) · model 62.3% fair -165
-
 ## 🔥/❄️ Heat / Cold Signals
-- Hot teams: **4** | Cold teams: **11** | Over-heavy: 0 | Under-heavy: 6
+- Hot teams: **3** | Cold teams: **8** | Over-heavy: 0 | Under-heavy: 5
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (73)
-- STREAK_MISMATCH: **1**
-- RESIDUAL_DIVERGENCE: **9**
+## ⚠️ Anomaly Detector (64)
+- RESIDUAL_DIVERGENCE: **1**
 - STEAM_MOVE: **61**
 - COMPOUND_BULLPEN: **1**
 - PEN_MISMATCH: **1**
-  - Los Angeles Sparks (WNBA): Los Angeles Sparks on L6 streak but model still favors them (73%) -- may be overvalued
-  - Los Angeles Sparks (WNBA): Los Angeles Sparks UNDERPERFORMING expected margin by 6.4pts in recent games -- model bias may persist
-  - Connecticut Sun (WNBA): Connecticut Sun UNDERPERFORMING expected margin by 8.1pts in recent games -- model bias may persist
-  - Atlanta Dream (WNBA): Atlanta Dream OUTPERFORMING expected margin by 11.8pts in recent games -- model bias may persist
-  - Charlotte FC (MLS): Charlotte FC OUTPERFORMING expected margin by 7.0pts in recent games -- model bias may persist
+  - Colorado Rapids (MLS): Colorado Rapids UNDERPERFORMING expected margin by 11.2pts in recent games -- model bias may persist
+  - MIL @ LAD (MLB): ML steam since open: ML -16.7pp toward MIL (11 snapshots)
+  - WSH @ DET (NFL): ML/TOTAL steam since open: ML -15.7pp toward WSH; total -1 (UNDER) (14 snapshots)
+  - NYJ @ PIT (NFL): ML/TOTAL steam since open: ML +11.5pp toward PIT; total +2 (OVER) (11 snapshots)
+  - KCR @ LAA (MLB): ML/TOTAL steam since open: ML -11.0pp toward KCR; total +0.5 (OVER) (4 snapshots)
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$13.28**
+- Expected EV: **$12.77**
   - #1 [NRFI] $50 on CLE @ COL YRFI (1st-inning OVER 0.5) (P=87%)
   - #2 [NRFI] $50 on SFG @ BOS YRFI (1st-inning OVER 0.5) (P=72%)
-  - #3 [NRFI] $50 on STL @ PHI YRFI (1st-inning OVER 0.5) (P=68%)
+  - #3 [NRFI] $50 on NYM @ CHW YRFI (1st-inning OVER 0.5) (P=68%)
   - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
@@ -99,30 +92,30 @@
   - ❄️ **Brandon Ingram** (TOR): L5 12.0 vs season 19.1 [PTS -7.1] -- FADE OVER props
 
 ## 🥊 UFC Fight Matchups (UFC Fight Night: Hernandez vs. Rodrigues)
+  - [FAVORITE] **Shanelle Dyer** (8-1-0) vs Elise Reed -- fair -198
   - [LEAN] **Jeisla Chaves** (8-0-0) vs Carli Judice -- fair -178
-  - [LEAN] **Shanelle Dyer** (7-1-0) vs Elise Reed -- fair -176
-  - [LEAN] **Stan Dorsainvil** (5-0-0) vs Gauge Young -- fair -156
+  - [LEAN] **Stan Dorsainvil** (6-0-0) vs Gauge Young -- fair -174
   - [LEAN] **Anthony Wint** (7-0-0) vs Terrance Chatman -- fair -147
   - [LEAN] **Shamil Gaziev** (14-3-0) vs Kennedy Nzechukwu -- fair -137
 
 ## ⛳ Golf Player Heat (from BMW Championship)
-  - 🔥 T1 **Wyndham Clark** (USA): -18 total -- finished T1
+  - 🔥 T1 **Wyndham Clark** (USA): -17 total -- finished T1
   - 🔥 T2 **Rory McIlroy** (Northern Ireland): -12 total -- finished T2
-  - 🔥 T3 **Chris Gotterup** (USA): -12 total -- finished T3
-  - 🔥 T4 **Patrick Cantlay** (USA): -11 total -- finished T4
+  - 🔥 T3 **Patrick Cantlay** (USA): -12 total -- finished T3
+  - 🔥 T4 **Chris Gotterup** (USA): -11 total -- finished T4
   - 🔥 T5 **Gary Woodland** (USA): -11 total -- finished T5
 
-## 🔥 MLB Batter Heat (41 HOT / 68 COLD)
+## 🔥 MLB Batter Heat (40 HOT / 66 COLD)
+  - 🔥 **Pete Alonso** (BAL): L14 .481 / season .273 (+208pts)
   - 🔥 **Victor Robles** (SEA): L14 .444 / season .260 (+184pts)
-  - 🔥 **Alec Bohm** (PHI): L14 .426 / season .247 (+179pts)
-  - 🔥 **Pete Alonso** (BAL): L14 .444 / season .271 (+173pts)
-  - 🔥 **Jac Caglianone** (KC): L14 .442 / season .277 (+165pts)
+  - 🔥 **Alec Bohm** (PHI): L14 .420 / season .248 (+172pts)
+  - 🔥 **Jac Caglianone** (KC): L14 .442 / season .276 (+166pts)
   - 🔥 **Alejandro Kirk** (TOR): L14 .412 / season .283 (+129pts)
+  - ❄️ **Dillon Dingler** (DET): L14 .071 / season .253 (-182pts) -- FADE props
   - ❄️ **David Fry** (CLE): L14 .000 / season .182 (-182pts) -- FADE props
   - ❄️ **Jeremy Peña** (HOU): L14 .107 / season .283 (-176pts) -- FADE props
-  - ❄️ **Dillon Dingler** (DET): L14 .102 / season .252 (-150pts) -- FADE props
-  - ❄️ **Elly De La Cruz** (CIN): L14 .113 / season .257 (-144pts) -- FADE props
-  - ❄️ **Spencer Horwitz** (PIT): L14 .115 / season .252 (-137pts) -- FADE props
+  - ❄️ **Byron Buxton** (MIN): L14 .100 / season .251 (-151pts) -- FADE props
+  - ❄️ **Nicky Lopez** (TEX): L14 .111 / season .259 (-148pts) -- FADE props
 
 ## 📈 Streak Regression Alerts (13)
 - [WNBA] Los Angeles Sparks on L6 L10 0-5 -- Los Angeles Sparks on L6 -- no historical sample
@@ -139,7 +132,7 @@
   - ⚠️ batter_rbis (Brier Δ -0.0052)
 
 ## 🤖 Self-Training Status
-- **WNBA**: n=39 games · hit rate 64.1% · bias -10.9pp [calibration applied]
-- **MLS**: n=45 games · hit rate 51.1% · bias +0.7pp
-- **EPL**: n=1 games · hit rate 100.0% · bias -40.8pp
-- **MLB**: n=188 games · hit rate 51.6% · bias +0.0pp
+- **WNBA**: n=39 games · hit rate 61.5% · bias -12.5pp [calibration applied]
+- **MLS**: n=44 games · hit rate 45.5% · bias +2.6pp [calibration applied]
+- **EPL**: n=6 games · hit rate 83.3% · bias -24.1pp
+- **MLB**: n=188 games · hit rate 50.5% · bias +0.4pp

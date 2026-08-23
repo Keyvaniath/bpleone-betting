@@ -1,102 +1,105 @@
-# EdgeStat Daily Brief - 2026-08-22
+# EdgeStat Daily Brief - 2026-08-23
 
-**Model Confidence: 19.7/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
+**Model Confidence: 19.5/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
 
-_Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
+_Pipeline health: **WARNING** (12/15 artifacts ok; 3 empty, 0 stale)._ 
 
-_Generated at 2026-08-22T22:27:16 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-08-23T05:21:44 UTC. Game lines source: **placeholder -110 (no real book today)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
-**CLE @ COL - COL_ML**
-- Market: +139
-- Model probability: 67.3%
-- Raw edge: +60.89%
+**CLE @ COL - OVER_8.5**
+- Market: -110
+- Model probability: 95.0%
+- Raw edge: +81.39%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
 
-## Full Slate (11 games)
+## Full Slate (15 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 7:05p ET | TBR @ BAL | Oriole Park at Camden Yards | 72F 2mph | TBR_ML +23.63% |
-| 7:05p ET | LAA @ TEX | Globe Life Field | indoor | TEX_ML +23.45% |
-| 7:10p ET | OAK @ HOU | Daikin Park | indoor | OVER_8.0 +60.31% |
-| 7:10p ET | NYM @ CHW | Rate Field | 67F 5mph | -- |
-| 7:15p ET | DET @ KCR | Kauffman Stadium | 73F 5mph | OVER_8.0 +21.39% |
-| 7:15p ET | PIT @ LAD | UNIQLO Field at Dodger Stadium | 76F 4mph | OVER_8.5 +19.0% |
-| 7:15p ET | CHC @ SEA | T-Mobile Park | indoor | CHC_ML +30.26% |
-| 7:15p ET | SFG @ BOS | Fenway Park | 66F 3mph | OVER_8.0 +14.54% |
-| 8:10p ET | CIN @ ARI | Chase Field | indoor | ARI_ML +29.41% |
-| 8:10p ET | CLE @ COL | Coors Field | 76F 11mph | COL_ML +60.89% |
-| 8:40p ET | MIN @ SDP | Petco Park | 72F 2mph | SDP_ML +16.15% |
+| 1:35p ET | TBR @ BAL | Oriole Park at Camden Yards | 84F 11mph | OVER_8.5 +33.24% |
+| 1:35p ET | STL @ PHI | Citizens Bank Park | 83F 10mph | PHI_ML +24.2% |
+| 1:35p ET | TOR @ NYY | Yankee Stadium | 78F 7mph | NYY_ML +24.99% |
+| 1:40p ET | WSN @ MIA | loanDepot park | indoor | OVER_8.5 +43.91% |
+| 2:10p ET | DET @ KCR | Kauffman Stadium | 86F 7mph | OVER_8.5 +12.89% |
+| 2:10p ET | OAK @ HOU | Daikin Park | indoor | OVER_8.5 +34.9% |
+| 2:10p ET | NYM @ CHW | Rate Field | 73F 6mph | CHW_ML +22.12% |
+| 2:35p ET | LAA @ TEX | Globe Life Field | indoor | UNDER_8.5 +10.66% |
+| 3:10p ET | CLE @ COL | Coors Field | 93F 15mph | OVER_8.5 +81.39% |
+| 3:15p ET | SFG @ BOS | Fenway Park | 70F 6mph | BOS_ML +18.23% |
+| 4:10p ET | PIT @ LAD | UNIQLO Field at Dodger Stadium | 89F 9mph | LAD_ML +60.06% |
+| 4:10p ET | CHC @ SEA | T-Mobile Park | indoor | CHC_ML +29.8% |
+| 4:10p ET | MIN @ SDP | Petco Park | 83F 4mph | OVER_8.5 +9.78% |
+| 4:15p ET | CIN @ ARI | Chase Field | indoor | OVER_8.5 +29.13% |
+| 7:10p ET | ATL @ MIL | Journey Bank Ballpark | 70F 0mph | MIL_ML +18.51% |
 
 ## Parlays - top 5
 
-- **3-leg @ +596 (prob 21.3%, EV +47.93%)**
-  - TBR @ BAL OVER_8.5 (-110, model 62.0%)
-  - LAA @ TEX OVER_8.5 (-110, model 62.1%)
-  - CHC @ SEA UNDER_8.5 (-110, model 55.2%)
-- **3-leg @ +596 (prob 21.2%, EV +47.82%)**
-  - TBR @ BAL OVER_8.5 (-110, model 62.0%)
-  - LAA @ TEX OVER_8.5 (-110, model 62.1%)
-  - CIN @ ARI UNDER_8.5 (-110, model 55.2%)
-- **3-leg @ +596 (prob 21.1%, EV +46.9%)**
-  - LAA @ TEX OVER_8.5 (-110, model 62.1%)
-  - PIT @ LAD OVER_8.5 (-110, model 61.5%)
-  - CHC @ SEA UNDER_8.5 (-110, model 55.2%)
-- **3-leg @ +596 (prob 21.1%, EV +46.8%)**
-  - LAA @ TEX OVER_8.5 (-110, model 62.1%)
-  - PIT @ LAD OVER_8.5 (-110, model 61.5%)
-  - CIN @ ARI UNDER_8.5 (-110, model 55.2%)
-- **3-leg @ +596 (prob 21.1%, EV +46.48%)**
-  - TBR @ BAL OVER_8.5 (-110, model 62.0%)
-  - PIT @ LAD OVER_8.5 (-110, model 61.5%)
-  - CHC @ SEA UNDER_8.5 (-110, model 55.2%)
+- **2-leg @ +282 (prob 39.0%, EV +48.81%)**
+  - TOR @ NYY NYY_ML (-110, model 65.5%)
+  - OAK @ HOU OAK_ML (+100, model 59.5%)
+- **2-leg @ +264 (prob 40.6%, EV +48.13%)**
+  - TOR @ NYY NYY_ML (-110, model 65.5%)
+  - ATL @ MIL MIL_ML (-110, model 62.1%)
+- **2-leg @ +282 (prob 38.7%, EV +47.88%)**
+  - STL @ PHI PHI_ML (-110, model 65.1%)
+  - OAK @ HOU OAK_ML (+100, model 59.5%)
+- **2-leg @ +264 (prob 40.4%, EV +47.2%)**
+  - STL @ PHI PHI_ML (-110, model 65.1%)
+  - ATL @ MIL MIL_ML (-110, model 62.1%)
+- **2-leg @ +264 (prob 40.4%, EV +47.13%)**
+  - TOR @ NYY NYY_ML (-110, model 65.5%)
+  - SFG @ BOS BOS_ML (-110, model 61.7%)
 
 ## Self-Learning Loop
 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
-| batter hits | 54 | 63.0% | 57.4% | 0.912 | 1.087 |
 | batter total bases | 15 | 40.0% | 50.4% | 1.241 | 0.862 |
+| batter hits | 54 | 63.0% | 57.4% | 0.912 | 1.087 |
 
-Cumulative graded plays: 9602. Wins: 3538. Hit rate: 36.8%.
+Cumulative graded plays: 9609. Wins: 3549. Hit rate: 36.9%.
 
 ## Auxiliary Markets (Model Fair Prices)
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| CHC @ SEA | 44.6% | +124 | 4.04 | +409 | -409 |
-| CIN @ ARI | 46.6% | +114 | 3.81 | -150 | +150 |
-| CLE @ COL | 12.6% | +694 | 11.12 | -129 | +129 |
-| DET @ KCR | 44.5% | +125 | 3.92 | +297 | -297 |
-| LAA @ TEX | 43.8% | +128 | 4.12 | -219 | +219 |
-| MIN @ SDP | 40.6% | +146 | 4.46 | -116 | +116 |
-| NYM @ CHW | 32.5% | +208 | 5.77 | +172 | -172 |
-| OAK @ HOU | 40.5% | +147 | 4.52 | -120 | +120 |
-| PIT @ LAD | 33.1% | +202 | 5.63 | -160 | +160 |
-| SFG @ BOS | 27.7% | +261 | 6.3 | -102 | +102 |
-| TBR @ BAL | 38.8% | +158 | 4.77 | +315 | -315 |
+| ATL @ MIL | 41.4% | +141 | 4.41 | +107 | -107 |
+| CHC @ SEA | 33.1% | +202 | 5.53 | +328 | -328 |
+| CIN @ ARI | 39.1% | +155 | 4.69 | +136 | -136 |
+| CLE @ COL | 28.6% | +250 | 5.82 | +181 | -181 |
+| DET @ KCR | 47.0% | +113 | 3.61 | +206 | -206 |
+| LAA @ TEX | 41.5% | +141 | 4.4 | +154 | -154 |
+| MIN @ SDP | 42.5% | +135 | 4.36 | +148 | -148 |
+| NYM @ CHW | 50.3% | -101 | 3.29 | -102 | +102 |
+| OAK @ HOU | 39.0% | +157 | 4.71 | +244 | -244 |
+| PIT @ LAD | 47.9% | +109 | 3.81 | -299 | +299 |
+| SFG @ BOS | 32.5% | +208 | 5.48 | +106 | -106 |
+| STL @ PHI | 60.0% | -150 | 2.64 | -108 | +108 |
+| TBR @ BAL | 35.0% | +186 | 5.29 | +176 | -176 |
+| TOR @ NYY | 49.5% | +102 | 3.55 | -109 | +109 |
+| WSN @ MIA | 24.6% | +307 | 7.01 | +105 | -105 |
 
 ## Team Form (last 10)
 
-**Hot:** MIL 7-3 (W3, +32), LAA 6-4 (L1, +23), SD 7-3 (W1, +17), STL 6-4 (L1, +16), PHI 8-2 (W7, +16)
+**Hot:** MIL 7-3 (W3, +32), LAA 6-4 (W1, +25), PHI 8-2 (W8, +24), SD 7-3 (W2, +18), BOS 6-4 (W2, +17)
 
-**Cold:** SEA 5-5 (W1, -26), ATH 2-8 (L5, -21), COL 4-6 (L4, -20), CIN 4-6 (L2, -20), TEX 4-6 (W2, -15)
+**Cold:** SEA 6-4 (W2, -22), HOU 4-6 (L1, -18), TEX 4-6 (L1, -17), MIN 4-6 (L2, -16), TB 3-7 (L3, -16)
 
 ## Gassed Bullpens (> 8.0 IP in 2 days)
 
-- TOR: 11.2 IP across 3 games
-- ATL: 9.0 IP across 3 games
-- NYY: 10.5 IP across 3 games
-- MIL: 11.1 IP across 3 games
-- HOU: 9.1 IP across 2 games
+- PIT: 9.2 IP across 2 games
+- SD: 8.1 IP across 2 games
+- TOR: 9.2 IP across 2 games
+- CWS: 9.1 IP across 2 games
+- AZ: 8.3 IP across 2 games
 
 ## Loop Activity (since last refresh)
 
-- Confidence delta: **+0.0**
+- Confidence delta: **-0.2**
 
 ## Model Recommendations (operator review)
 
@@ -108,4 +111,4 @@ _The model is suggesting 1 parameter tweak based on its own performance. Apply v
 ---
 
 _EdgeStat is a research desk. Bet responsibly. 21+. 1-800-GAMBLER._
-_Source: github.com/Keyvaniath/bpleone-betting - last settled 2026-08-22._
+_Source: github.com/Keyvaniath/bpleone-betting - last settled 2026-08-23._
