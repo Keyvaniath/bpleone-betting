@@ -1,17 +1,17 @@
 # EdgeStat Daily Summary — 2026-08-23
 
-## 🏥 Model Health: 58.5/100 [OK]
+## 🏥 Model Health: 61.9/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.7/100
+  - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 0/100
   - 🔴 Brier Trend: 28.5/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟡 Data Health: 77.3/100
-  - 🟡 Edge Count: 74.3/100
+  - 🟢 Data Health: 95.5/100
+  - 🟡 Edge Count: 71.4/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.567)
-- **Total games on board:** 90
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.564)
+- **Total games on board:** 91
 - **Strong home favorites:** 2 | **Strong road dogs:** 1
 
 ## 🎯 Top 5 Best Bets
@@ -20,6 +20,9 @@
 3. **SFG @ BOS YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 4. **CHC @ SEA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 5. **TBR @ BAL YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
+
+## 📡 Sharp Action (Line Movement)
+- [ELITE] **NYM @ CHW** ml_home: 60.78% → 94.12% (+33.3pp)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -48,38 +51,37 @@
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
 ## ⚡ Pre-Game HIGH Conviction (1)
-- [MLS] **New England Revolution** HOME (1-2 L10) · model 68.0% fair -213
+- [WNBA] **Las Vegas Aces** AWAY (3-3 L10) · model 68.6% fair -219
 
 ## 🔥/❄️ Heat / Cold Signals
 - Hot teams: **3** | Cold teams: **8** | Over-heavy: 0 | Under-heavy: 5
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (64)
-- STEAM_MOVE: **61**
+## ⚠️ Anomaly Detector (73)
+- RESIDUAL_DIVERGENCE: **3**
+- STEAM_MOVE: **67**
 - PEN_MISMATCH: **1**
 - COMPOUND_BULLPEN: **2**
+  - Seattle Storm (WNBA): Seattle Storm UNDERPERFORMING expected margin by 8.3pts in recent games -- model bias may persist
+  - Chicago Sky (WNBA): Chicago Sky OUTPERFORMING expected margin by 6.6pts in recent games -- model bias may persist
+  - New England Revolution (MLS): New England Revolution OUTPERFORMING expected margin by 6.7pts in recent games -- model bias may persist
   - MIL @ LAD (MLB): ML steam since open: ML -16.7pp toward MIL (11 snapshots)
   - WSH @ DET (NFL): ML/TOTAL steam since open: ML -15.7pp toward WSH; total -1 (UNDER) (14 snapshots)
-  - NYJ @ PIT (NFL): ML/TOTAL steam since open: ML +11.5pp toward PIT; total +2 (OVER) (11 snapshots)
-  - KCR @ LAA (MLB): ML/TOTAL steam since open: ML -11.0pp toward KCR; total +0.5 (OVER) (4 snapshots)
-  - DAL @ ARI (NFL): ML/TOTAL steam since open: ML -10.3pp toward DAL; total +1 (OVER) (7 snapshots)
 
 ## 💰 Today's Portfolio (9 picks)
-- Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$3.13**
+- Total stake: **$330.0** (33.0% of $1000 bankroll)
+- Expected EV: **$3.15**
   - #1 [NRFI] $50 on WSN @ MIA YRFI (1st-inning OVER 0.5) (P=75%)
   - #2 [NRFI] $50 on CLE @ COL YRFI (1st-inning OVER 0.5) (P=71%)
   - #3 [NRFI] $50 on SFG @ BOS YRFI (1st-inning OVER 0.5) (P=68%)
   - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
-## 🎯 Convergence Picks (18 stacked games)
-- ELITE: **1** · HIGH: 7 · MED: 10
-  - [ELITE] Columbus Crew @ Nashville SC : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
+## 🎯 Convergence Picks (3 stacked games)
+- ELITE: **0** · HIGH: 3 · MED: 0
   - [HIGH] Indiana Fever @ New York Liberty : 3 signals (HEAT_COLD, HEAT_COLD, ATS)
   - [HIGH] Atlanta Dream @ Phoenix Mercury : 3 signals (HEAT_COLD, HEAT_COLD, ATS)
-  - [HIGH] Seattle Sounders FC @ FC Cincinnati : 3 signals (HEAT_COLD, ATS, ATS)
-  - [HIGH] Toronto FC @ Inter Miami CF : 3 signals (HEAT_COLD, ATS, ATS)
+  - [HIGH] New York City FC @ New England Revolution : 3 signals (PREGAME, ANOMALY, ATS)
 
 ## ⚾ Top MLB Pitcher K Plays (9)
 - **Brady Basso** OVER 7.5 K (73%) fair -271
@@ -107,16 +109,16 @@
   - 🔥 T4 **Chris Gotterup** (USA): -11 total -- finished T4
   - 🔥 T5 **Gary Woodland** (USA): -11 total -- finished T5
 
-## 🔥 MLB Batter Heat (41 HOT / 66 COLD)
-  - 🔥 **Pete Alonso** (BAL): L14 .481 / season .273 (+208pts)
-  - 🔥 **Victor Robles** (SEA): L14 .444 / season .260 (+184pts)
+## 🔥 MLB Batter Heat (44 HOT / 66 COLD)
+  - 🔥 **Pete Alonso** (BAL): L14 .463 / season .270 (+193pts)
   - 🔥 **Alec Bohm** (PHI): L14 .420 / season .248 (+172pts)
   - 🔥 **Jac Caglianone** (KC): L14 .442 / season .276 (+166pts)
-  - 🔥 **Alejandro Kirk** (TOR): L14 .412 / season .283 (+129pts)
+  - 🔥 **Max Muncy** (LAD): L14 .342 / season .215 (+127pts)
+  - 🔥 **Vinnie Pasquantino** (KC): L14 .360 / season .245 (+115pts)
   - ❄️ **Dillon Dingler** (DET): L14 .071 / season .253 (-182pts) -- FADE props
   - ❄️ **David Fry** (CLE): L14 .000 / season .182 (-182pts) -- FADE props
-  - ❄️ **Jeremy Peña** (HOU): L14 .107 / season .283 (-176pts) -- FADE props
-  - ❄️ **Byron Buxton** (MIN): L14 .100 / season .251 (-151pts) -- FADE props
+  - ❄️ **Joc Pederson** (TEX): L14 .067 / season .235 (-168pts) -- FADE props
+  - ❄️ **Tyler Tolbert** (KC): L14 .138 / season .286 (-148pts) -- FADE props
   - ❄️ **Nicky Lopez** (TEX): L14 .111 / season .259 (-148pts) -- FADE props
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)

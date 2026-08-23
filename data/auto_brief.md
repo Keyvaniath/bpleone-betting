@@ -1,12 +1,12 @@
 # Tonight's Slate Brief — 2026-08-23
 
-## Slate Quality: 54/100 (LOW)
-_0% lineups confirmed · 11 rookie SPs_
-**Recommendation:** Defensive sizing tonight; stick to highest-confidence plays.
+## Slate Quality: 97/100 (HIGH)
+_100% lineups confirmed · 1 rookie SPs_
+**Recommendation:** Play normal Kelly sizing.
 
 ## Slate
-- **15 games** scheduled
-- **30 best bets** scored: 0 DK · 0 PP · 13 NRFI · 0 SGP
+- **1 games** scheduled
+- **32 best bets** scored: 0 DK · 0 PP · 13 NRFI · 0 SGP
 - **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$40.12
 - **MC simulation:** EV +$105.51, 79% P(profit), p05 $-101.64 / p95 $300.03
 
@@ -34,9 +34,6 @@ _0% lineups confirmed · 11 rookie SPs_
 - **TBR @ BAL YRFI (1st-inning OVER 0.5)** (low):
    - Edge +19.0% looks big but only 0 settled props on this player — model unproven
 
-## Weather leans
-- **OVER lean** (wind out + warm): DET @ KCR
-
 ## Bullpens GASSED tonight
 Pittsburgh Pirates, San Diego Padres, Seattle Mariners, San Francisco Giants, St. Louis Cardinals, Texas Rangers, Toronto Blue Jays, Atlanta Braves
 _Lean late-inning OVER on these games; fade their save situations._
@@ -47,7 +44,7 @@ _Lean late-inning OVER on these games; fade their save situations._
 ## Golf -- BMW Championship
 - **Leader:** Wyndham Clark (-17) at #1
 - **Field:** 50 players  |  Status: In Progress
-- **Play of the Tournament:** Jacob Bridgeman TOP10 @ +674 (model 12.9%, HIGH)
+- **Play of the Tournament:** Jacob Bridgeman TOP10 @ +675 (model 12.9%, MED)
    - P(top 10) 12.9% -- safest finish bet (#14 (-6)).
 
 ## NBA -- PRESEASON
@@ -60,12 +57,12 @@ _Lean late-inning OVER on these games; fade their save situations._
 - Winnipeg Jets @ Edmonton Oilers (0-0-0 vs 0-0-0)  | P(home) 52.9% fair -112 | Scheduled
 - Chicago Blackhawks @ Minnesota Wild (0-0-0 vs 0-0-0)  | P(home) 52.9% fair -112 | Scheduled
 
-## LoL Esports -- 0 live, 15 upcoming
-- [LEC] Team Heretics vs GIANTX BO3 | P(A) 46.2% fair +116/-116
-- [CBLOL] RED Kalunga vs Fluxo W7M BO3 | P(A) 53.8% fair -117/+117
-- [LEC] Shifters vs Karmine Corp BO3 | P(A) 16.3% fair +515/-515
-- [CBLOL] LOS vs LOUD BO3 | P(A) 55.7% fair -126/+126
-- [LCS] Disguised vs Sentinels BO3 | P(A) 39.6% fair +153/-153
+## LoL Esports -- 1 live, 11 upcoming
+- [LCS] Sentinels vs Disguised BO3 | P(A) 60.4% fair -153/+153
+- [LCS] Dignitas vs FlyQuest BO3 | P(A) 44.1% fair +127/-127
+- [LCK Challengers] DNS Challengers vs KRX Challengers BO5 | P(A) 24.2% fair +313/-313
+- [LCK Challengers] BNK FEARX Youth vs HLE Challengers BO5 | P(A) 70.1% fair -234/+234
+- [LEC] Natus Vincere vs Fnatic BO3 | P(A) 44.8% fair +123/-123
 - **LoL POT:** Sentinels ML vs Disguised (LCS, BO3) (HIGH)
 
 ## Player Play of the Day -- across all sports (3443 candidates scanned)
