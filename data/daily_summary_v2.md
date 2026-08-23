@@ -1,25 +1,25 @@
 # EdgeStat Daily Summary — 2026-08-23
 
-## 🏥 Model Health: 67.4/100 [OK]
+## 🏥 Model Health: 61.9/100 [OK]
 - Operational but room to improve - check yellow components
   - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 0/100
-  - 🔴 Brier Trend: 56.2/100
+  - 🔴 Brier Trend: 30.0/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 86.4/100
-  - 🟢 Edge Count: 88.6/100
+  - 🟢 Data Health: 95.5/100
+  - 🟡 Edge Count: 68.6/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.57)
-- **Total games on board:** 92
-- **Strong home favorites:** 4 | **Strong road dogs:** 2
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.563)
+- **Total games on board:** 85
+- **Strong home favorites:** 0 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
-1. **CLE @ COL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-2. **SFG @ BOS YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-3. **NYM @ CHW YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-4. **PIT @ LAD YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-5. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
+1. **WSN @ MIA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+2. **CLE @ COL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+3. **SFG @ BOS YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+4. **CHC @ SEA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+5. **TBR @ BAL YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -52,39 +52,38 @@
 - Heating-up players: **20** | Cooling-down: 20
 
 ## ⚠️ Anomaly Detector (64)
-- RESIDUAL_DIVERGENCE: **1**
 - STEAM_MOVE: **61**
-- COMPOUND_BULLPEN: **1**
+- COMPOUND_BULLPEN: **2**
 - PEN_MISMATCH: **1**
-  - Colorado Rapids (MLS): Colorado Rapids UNDERPERFORMING expected margin by 11.2pts in recent games -- model bias may persist
   - MIL @ LAD (MLB): ML steam since open: ML -16.7pp toward MIL (11 snapshots)
   - WSH @ DET (NFL): ML/TOTAL steam since open: ML -15.7pp toward WSH; total -1 (UNDER) (14 snapshots)
   - NYJ @ PIT (NFL): ML/TOTAL steam since open: ML +11.5pp toward PIT; total +2 (OVER) (11 snapshots)
   - KCR @ LAA (MLB): ML/TOTAL steam since open: ML -11.0pp toward KCR; total +0.5 (OVER) (4 snapshots)
+  - DAL @ ARI (NFL): ML/TOTAL steam since open: ML -10.3pp toward DAL; total +1 (OVER) (7 snapshots)
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$12.77**
-  - #1 [NRFI] $50 on CLE @ COL YRFI (1st-inning OVER 0.5) (P=87%)
-  - #2 [NRFI] $50 on SFG @ BOS YRFI (1st-inning OVER 0.5) (P=72%)
-  - #3 [NRFI] $50 on NYM @ CHW YRFI (1st-inning OVER 0.5) (P=68%)
+- Expected EV: **$3.09**
+  - #1 [NRFI] $50 on WSN @ MIA YRFI (1st-inning OVER 0.5) (P=75%)
+  - #2 [NRFI] $50 on CLE @ COL YRFI (1st-inning OVER 0.5) (P=71%)
+  - #3 [NRFI] $50 on SFG @ BOS YRFI (1st-inning OVER 0.5) (P=68%)
   - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
-## 🎯 Convergence Picks (15 stacked games)
-- ELITE: **11** · HIGH: 1 · MED: 3
-  - [ELITE] Connecticut Sun @ Los Angeles Sparks : 7 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
-  - [ELITE] Real Salt Lake @ Orlando City SC : 6 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
-  - [ELITE] D.C. United @ Charlotte FC : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
-  - [ELITE] Houston Dynamo FC @ St. Louis CITY SC : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
-  - [ELITE] Indiana Fever @ New York Liberty : 4 signals (PREGAME, HEAT_COLD, ATS, ATS)
+## 🎯 Convergence Picks (18 stacked games)
+- ELITE: **1** · HIGH: 7 · MED: 10
+  - [ELITE] Columbus Crew @ Nashville SC : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
+  - [HIGH] Indiana Fever @ New York Liberty : 3 signals (HEAT_COLD, HEAT_COLD, ATS)
+  - [HIGH] Atlanta Dream @ Phoenix Mercury : 3 signals (HEAT_COLD, HEAT_COLD, ATS)
+  - [HIGH] Seattle Sounders FC @ FC Cincinnati : 3 signals (HEAT_COLD, ATS, ATS)
+  - [HIGH] Toronto FC @ Inter Miami CF : 3 signals (HEAT_COLD, ATS, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (7)
-- **Tarik Skubal** OVER 5.5 K (76%) fair -314
-- **Jacob Lopez** OVER 4.5 K (76%) fair -311
-- **David Peterson** OVER 4.5 K (70%) fair -239
-- **Christian Scott** OVER 4.5 K (69%) fair -220
-- **Blade Tidwell** OVER 5.5 K (66%) fair -190
+## ⚾ Top MLB Pitcher K Plays (9)
+- **Brady Basso** OVER 7.5 K (73%) fair -271
+- **Nolan McLean** OVER 4.5 K (73%) fair -271
+- **Cristopher Sánchez** OVER 5.5 K (72%) fair -253
+- **Shota Imanaga** OVER 4.5 K (71%) fair -251
+- **Carlos Rodón** OVER 4.5 K (68%) fair -213
 
 ## 🏀 NBA Player Heat (2 HOT / 1 COLD)
   - 🔥 **Scottie Barnes** (TOR): L5 24.4/7.6/9.6 vs season 18.6/5.8/8.8 [PTS +5.8]
@@ -93,10 +92,10 @@
 
 ## 🥊 UFC Fight Matchups (UFC Fight Night: Hernandez vs. Rodrigues)
   - [FAVORITE] **Shanelle Dyer** (8-1-0) vs Elise Reed -- fair -198
-  - [LEAN] **Jeisla Chaves** (8-0-0) vs Carli Judice -- fair -178
+  - [FAVORITE] **Anthony Wint** (8-0-0) vs Terrance Chatman -- fair -193
   - [LEAN] **Stan Dorsainvil** (6-0-0) vs Gauge Young -- fair -174
-  - [LEAN] **Anthony Wint** (7-0-0) vs Terrance Chatman -- fair -147
-  - [LEAN] **Shamil Gaziev** (14-3-0) vs Kennedy Nzechukwu -- fair -137
+  - [LEAN] **Marcio Barbosa** (19-2-0) vs Ryan Kuse -- fair -158
+  - [LEAN] **Shamil Gaziev** (15-3-0) vs Kennedy Nzechukwu -- fair -150
 
 ## ⛳ Golf Player Heat (from BMW Championship)
   - 🔥 T1 **Wyndham Clark** (USA): -17 total -- finished T1
@@ -116,13 +115,6 @@
   - ❄️ **Jeremy Peña** (HOU): L14 .107 / season .283 (-176pts) -- FADE props
   - ❄️ **Byron Buxton** (MIN): L14 .100 / season .251 (-151pts) -- FADE props
   - ❄️ **Nicky Lopez** (TEX): L14 .111 / season .259 (-148pts) -- FADE props
-
-## 📈 Streak Regression Alerts (13)
-- [WNBA] Los Angeles Sparks on L6 L10 0-5 -- Los Angeles Sparks on L6 -- no historical sample
-- [MLS] D.C. United on L3 L10 0-3 -- D.C. United on L3 -- no historical sample
-- [MLS] Seattle Sounders FC on L3 L10 0-3 -- Seattle Sounders FC on L3 -- no historical sample
-- [MLS] Inter Miami CF on L3 L10 0-3 -- Inter Miami CF on L3 -- no historical sample
-- [MLS] Orlando City SC on L3 L10 0-3 -- Orlando City SC on L3 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**
