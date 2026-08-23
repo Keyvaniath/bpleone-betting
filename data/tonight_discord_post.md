@@ -1,5 +1,5 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:13 F:62
+_NO_ACTION_NIGHT_ | L:0 S:13 F:64
 
 :lock: **LOCK:** Walker Buehler (MLB)
 

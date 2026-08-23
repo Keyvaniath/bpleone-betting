@@ -1,12 +1,12 @@
 # Tonight's Slate Brief — 2026-08-23
 
-## Slate Quality: 55/100 (MEDIUM)
+## Slate Quality: 54/100 (LOW)
 _0% lineups confirmed · 11 rookie SPs_
-**Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
+**Recommendation:** Defensive sizing tonight; stick to highest-confidence plays.
 
 ## Slate
 - **15 games** scheduled
-- **31 best bets** scored: 0 DK · 0 PP · 13 NRFI · 0 SGP
+- **30 best bets** scored: 0 DK · 0 PP · 13 NRFI · 0 SGP
 - **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$40.12
 - **MC simulation:** EV +$105.51, 79% P(profit), p05 $-101.64 / p95 $300.03
 
@@ -33,6 +33,9 @@ _0% lineups confirmed · 11 rookie SPs_
    - Edge +20.9% looks big but only 0 settled props on this player — model unproven
 - **TBR @ BAL YRFI (1st-inning OVER 0.5)** (low):
    - Edge +19.0% looks big but only 0 settled props on this player — model unproven
+
+## Weather leans
+- **OVER lean** (wind out + warm): DET @ KCR
 
 ## Bullpens GASSED tonight
 Pittsburgh Pirates, San Diego Padres, Seattle Mariners, San Francisco Giants, St. Louis Cardinals, Texas Rangers, Toronto Blue Jays, Atlanta Braves

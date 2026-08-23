@@ -1,18 +1,18 @@
 # EdgeStat Daily Summary — 2026-08-23
 
-## 🏥 Model Health: 61.9/100 [OK]
+## 🏥 Model Health: 58.5/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.9/100
+  - 🟢 Calibration Freshness: 99.7/100
   - 🔴 Hit Rate Trend: 0/100
-  - 🔴 Brier Trend: 30.0/100
+  - 🔴 Brier Trend: 28.5/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 95.5/100
-  - 🟡 Edge Count: 68.6/100
+  - 🟡 Data Health: 77.3/100
+  - 🟡 Edge Count: 74.3/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.563)
-- **Total games on board:** 85
-- **Strong home favorites:** 0 | **Strong road dogs:** 0
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.567)
+- **Total games on board:** 90
+- **Strong home favorites:** 2 | **Strong road dogs:** 1
 
 ## 🎯 Top 5 Best Bets
 1. **WSN @ MIA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
@@ -47,14 +47,17 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
+## ⚡ Pre-Game HIGH Conviction (1)
+- [MLS] **New England Revolution** HOME (1-2 L10) · model 68.0% fair -213
+
 ## 🔥/❄️ Heat / Cold Signals
 - Hot teams: **3** | Cold teams: **8** | Over-heavy: 0 | Under-heavy: 5
 - Heating-up players: **20** | Cooling-down: 20
 
 ## ⚠️ Anomaly Detector (64)
 - STEAM_MOVE: **61**
-- COMPOUND_BULLPEN: **2**
 - PEN_MISMATCH: **1**
+- COMPOUND_BULLPEN: **2**
   - MIL @ LAD (MLB): ML steam since open: ML -16.7pp toward MIL (11 snapshots)
   - WSH @ DET (NFL): ML/TOTAL steam since open: ML -15.7pp toward WSH; total -1 (UNDER) (14 snapshots)
   - NYJ @ PIT (NFL): ML/TOTAL steam since open: ML +11.5pp toward PIT; total +2 (OVER) (11 snapshots)
@@ -63,7 +66,7 @@
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$3.09**
+- Expected EV: **$3.13**
   - #1 [NRFI] $50 on WSN @ MIA YRFI (1st-inning OVER 0.5) (P=75%)
   - #2 [NRFI] $50 on CLE @ COL YRFI (1st-inning OVER 0.5) (P=71%)
   - #3 [NRFI] $50 on SFG @ BOS YRFI (1st-inning OVER 0.5) (P=68%)
@@ -104,7 +107,7 @@
   - 🔥 T4 **Chris Gotterup** (USA): -11 total -- finished T4
   - 🔥 T5 **Gary Woodland** (USA): -11 total -- finished T5
 
-## 🔥 MLB Batter Heat (40 HOT / 66 COLD)
+## 🔥 MLB Batter Heat (41 HOT / 66 COLD)
   - 🔥 **Pete Alonso** (BAL): L14 .481 / season .273 (+208pts)
   - 🔥 **Victor Robles** (SEA): L14 .444 / season .260 (+184pts)
   - 🔥 **Alec Bohm** (PHI): L14 .420 / season .248 (+172pts)
