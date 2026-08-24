@@ -4,14 +4,14 @@
 
 _Pipeline health: **WARNING** (12/15 artifacts ok; 3 empty, 0 stale)._ 
 
-_Generated at 2026-08-24T13:45:23 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-08-24T14:54:25 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
 **COL @ WSN - OVER_8.0**
 - Market: -110
-- Model probability: 90.5%
-- Raw edge: +72.69%
+- Model probability: 90.6%
+- Raw edge: +73.05%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
@@ -20,39 +20,38 @@ _Generated at 2026-08-24T13:45:23 UTC. Game lines source: **Bovada (fallback -- 
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 6:40p ET | TBR @ DET | Comerica Park | 71F 3mph | OVER_7.5 +8.3% |
-| 6:40p ET | BOS @ MIA | loanDepot park | indoor | BOS_ML +5.21% |
-| 6:45p ET | COL @ WSN | Nationals Park | 71F 4mph | OVER_8.0 +72.69% |
+| 6:40p ET | TBR @ DET | Comerica Park | 70F 4mph | OVER_7.5 +9.21% |
+| 6:40p ET | BOS @ MIA | loanDepot park | indoor | OVER_7.0 +6.95% |
+| 6:45p ET | COL @ WSN | Nationals Park | 72F 4mph | OVER_8.0 +73.05% |
 | 7:40p ET | TEX @ CHW | Rate Field | 65F 6mph | OVER_8.0 +32.35% |
-| 9:38p ET | CLE @ LAA | Angel Stadium | 73F 4mph | CLE_ML +4.41% |
+| 9:38p ET | CLE @ LAA | Angel Stadium | 73F 3mph | CLE_ML +4.31% |
 | 9:40p ET | CHC @ ARI | Chase Field | indoor | OVER_9.0 +40.79% |
-| 9:40p ET | PIT @ SDP | Petco Park | 70F 1mph | PIT_ML +22.12% |
-| 9:40p ET | MIN @ OAK | Sutter Health Park | 72F 7mph | OVER_10.5 +53.52% |
-| 9:40p ET | PHI @ SEA | T-Mobile Park | indoor | PHI_ML +12.52% |
-| 9:45p ET | CIN @ SFG | Oracle Park | 58F 11mph | SFG_ML +10.85% |
+| 9:40p ET | PIT @ SDP | Petco Park | 70F 4mph | PIT_ML +22.97% |
+| 9:40p ET | MIN @ OAK | Sutter Health Park | 71F 7mph | OVER_10.5 +52.86% |
+| 9:40p ET | PHI @ SEA | T-Mobile Park | indoor | PHI_ML +15.25% |
+| 9:45p ET | CIN @ SFG | Oracle Park | 58F 11mph | SFG_ML +10.38% |
 
 ## Parlays - top 5
 
-- **3-leg @ +362 (prob 32.4%, EV +49.73%)**
-  - COL @ WSN WSN_ML (-197, model 81.8%)
-  - CLE @ LAA CLE_ML (-165, model 65.0%)
-  - PIT @ SDP OVER_7.5 (-110, model 60.9%)
-- **3-leg @ +532 (prob 23.6%, EV +49.36%)**
-  - BOS @ MIA BOS_ML (-136, model 60.6%)
-  - PIT @ SDP PIT_ML (-110, model 64.0%)
-  - PIT @ SDP OVER_7.5 (-110, model 60.9%)
-- **3-leg @ +534 (prob 23.5%, EV +49.01%)**
+- **3-leg @ +578 (prob 22.0%, EV +49.39%)**
+  - COL @ WSN WSN_ML (-198, model 81.9%)
+  - CIN @ SFG SFG_ML (+136, model 46.8%)
+  - CIN @ SFG UNDER_7.5 (-110, model 57.5%)
+- **2-leg @ +187 (prob 52.0%, EV +49.3%)**
+  - COL @ WSN WSN_ML (-198, model 81.9%)
+  - PIT @ SDP OVER_7.5 (-110, model 63.5%)
+- **3-leg @ +764 (prob 17.3%, EV +49.08%)**
+  - PIT @ SDP PIT_ML (-109, model 64.1%)
+  - CIN @ SFG SFG_ML (+136, model 46.8%)
+  - CIN @ SFG UNDER_7.5 (-110, model 57.5%)
+- **3-leg @ +394 (prob 30.2%, EV +49.06%)**
+  - COL @ WSN WSN_ML (-198, model 81.9%)
   - TEX @ CHW CHW_ML (-135, model 60.3%)
-  - PIT @ SDP PIT_ML (-110, model 64.0%)
-  - PIT @ SDP OVER_7.5 (-110, model 60.9%)
-- **3-leg @ +571 (prob 22.2%, EV +48.82%)**
-  - TBR @ DET OVER_7.5 (-110, model 56.7%)
-  - PIT @ SDP PIT_ML (-110, model 64.0%)
-  - PHI @ SEA PHI_ML (-119, model 61.1%)
-- **3-leg @ +471 (prob 26.0%, EV +48.54%)**
-  - PIT @ SDP PIT_ML (-110, model 64.0%)
-  - MIN @ OAK MIN_ML (-160, model 66.5%)
-  - PHI @ SEA PHI_ML (-119, model 61.1%)
+  - PHI @ SEA PHI_ML (-113, model 61.1%)
+- **3-leg @ +532 (prob 23.5%, EV +48.81%)**
+  - BOS @ MIA BOS_ML (-132, model 60.6%)
+  - PIT @ SDP OVER_7.5 (-110, model 63.5%)
+  - PHI @ SEA PHI_ML (-113, model 61.1%)
 
 ## Self-Learning Loop
 
@@ -69,14 +68,14 @@ Cumulative graded plays: 9810. Wins: 3615. Hit rate: 36.9%.
 |---|---|---|---|---|---|
 | BOS @ MIA | 47.5% | +111 | 3.72 | +280 | -280 |
 | CHC @ ARI | 23.4% | +327 | 7.26 | +576 | -576 |
-| CIN @ SFG | 48.5% | +106 | 3.88 | +205 | -205 |
-| CLE @ LAA | 57.8% | -137 | 2.78 | +340 | -340 |
-| COL @ WSN | 38.1% | +163 | 4.7 | -277 | +277 |
-| MIN @ OAK | 32.7% | +206 | 5.77 | +312 | -312 |
+| CIN @ SFG | 48.5% | +106 | 3.87 | +205 | -205 |
+| CLE @ LAA | 57.8% | -137 | 2.79 | +340 | -340 |
+| COL @ WSN | 38.1% | +163 | 4.73 | -278 | +278 |
+| MIN @ OAK | 32.7% | +206 | 5.78 | +311 | -311 |
 | PHI @ SEA | 45.7% | +119 | 3.91 | +296 | -296 |
-| PIT @ SDP | 51.8% | -108 | 3.31 | +314 | -314 |
-| TBR @ DET | 43.8% | +128 | 4.18 | +252 | -252 |
-| TEX @ CHW | 30.2% | +231 | 5.77 | +110 | -110 |
+| PIT @ SDP | 51.8% | -108 | 3.38 | +314 | -314 |
+| TBR @ DET | 43.8% | +128 | 4.19 | +252 | -252 |
+| TEX @ CHW | 30.2% | +231 | 5.78 | +110 | -110 |
 
 ## Travel / Rest Flags
 

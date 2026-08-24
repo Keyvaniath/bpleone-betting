@@ -1,5 +1,5 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-08-24T13:45:14 UTC_
+_Generated 2026-08-24T14:54:16 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
@@ -17,11 +17,11 @@ _Generated 2026-08-24T13:45:14 UTC_
 - **Details:** TEX @ CHW
 
 ## Top 5 Curated Picks
-1. **GOLF / Collin Morikawa** (GOLF_PLAYER, score=219.29)
-   - Play: Collin Morikawa (PLAYER_STRONG)
-   - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Rory McIlroy** (GOLF_PLAYER, score=219.29)
+1. **GOLF / Rory McIlroy** (GOLF_PLAYER, score=219.29)
    - Play: Rory McIlroy (PLAYER_STRONG)
+   - Rationale: Cross-sport top pick (GOLF_PLAYER)
+2. **GOLF / Chris Gotterup** (GOLF_PLAYER, score=219.29)
+   - Play: Chris Gotterup (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
 3. **MLB / Parker Messick** (MLB_PITCHER, score=58.83)
    - Play: Parker Messick (PITCHER_STRONG)
@@ -32,9 +32,9 @@ _Generated 2026-08-24T13:45:14 UTC_
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
-  - Collin Morikawa top 10 finish
   - Rory McIlroy top 10 finish
   - Chris Gotterup top 10 finish
+  - Patrick Cantlay top 10 finish
 
 ## Slate ROI Projection
 - **Picks:** 2
@@ -43,13 +43,13 @@ _Generated 2026-08-24T13:45:14 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **NBA** / MIA (TEAM_FADE)
-  - Fade angle: team total UNDER
 - **NBA** / TOR (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NHL** / jake oettinger (GOALIE_FADE)
+- **NBA** / MIA (TEAM_FADE)
+  - Fade angle: team total UNDER
+- **NHL** / kevin lankinen (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / thatcher demko (GOALIE_FADE)
+- **NHL** / connor hellebuyck (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / marc-andre fleury (GOALIE_FADE)
+- **NHL** / samsonov ilya (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO

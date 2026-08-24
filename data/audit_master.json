@@ -13,30 +13,30 @@
       "stderr_truncated": ""
     },
     "data": {
-      "duration_s": 2.0,
+      "duration_s": 1.9,
       "exit_code": 0,
-      "summary": "SUMMARY: 385 ok / 2 empty / 282 flagged / 0 stale24h / 0 stale72h",
+      "summary": "SUMMARY: 381 ok / 2 empty / 286 flagged / 0 stale24h / 0 stale72h",
       "stderr_truncated": ""
     },
     "data_health": {
-      "duration_s": 0.5,
+      "duration_s": 1.6,
       "exit_code": 0,
       "summary": "[OK] desks              | 7 desk producers fresh",
       "stderr_truncated": ""
     }
   },
-  "generated_at": "2026-08-24T13:45:37",
-  "total_duration_s": 4.2,
+  "generated_at": "2026-08-24T14:54:41",
+  "total_duration_s": 5.3,
   "artifacts": {
     "module_import_audit.json": {
-      "generated_at": "2026-08-24T13:45:34",
+      "generated_at": "2026-08-24T14:54:38",
       "n_total": 614,
       "n_ok": 614,
       "n_fail": 0,
       "failures": []
     },
     "html_audit.json": {
-      "generated_at": "2026-08-24T13:45:35",
+      "generated_at": "2026-08-24T14:54:38",
       "summary": {
         "ok": 118,
         "no_nav_js": 14,
@@ -224,14 +224,14 @@
       }
     },
     "data_stub_audit.json": {
-      "generated_at": "2026-08-24T13:45:36",
+      "generated_at": "2026-08-24T14:54:40",
       "summary": {
         "empty": 2,
         "stub_flagged": 0,
-        "zero_count": 282,
+        "zero_count": 286,
         "stale_24h": 0,
         "stale_72h": 0,
-        "ok": 385
+        "ok": 381
       },
       "empty": [
         [
@@ -323,6 +323,10 @@
         [
           "data_freshness_audit.json",
           "n_stale_or_missing=0"
+        ],
+        [
+          "data_health.json",
+          "n_red=0"
         ],
         [
           "data_source_health.json",
@@ -469,6 +473,10 @@
           "n_added_this_run=0; n_newly_settled_this_run=0"
         ],
         [
+          "lol_state.json",
+          "n_live=0"
+        ],
+        [
           "mlb_batter_2plus_hits_props.json",
           "n_batters=0; n_strong_edges=0"
         ],
@@ -590,7 +598,7 @@
         ],
         [
           "mlb_game_preview.json",
-          "n_locks=0; n_strong=0; n_lean=0"
+          "n_locks=0; n_strong=0"
         ],
         [
           "mlb_game_run_diff_props.json",
@@ -1181,12 +1189,20 @@
           "n_strong_edges=0"
         ],
         [
-          "soccer_extended_props.json",
-          "n_games=0; n_sweet_spot=0"
-        ],
-        [
           "soccer_first_half_alignment.json",
           "n_alignments=0; n_first_half_alignment=0"
+        ],
+        [
+          "soccer_first_to_score_props.json",
+          "n_strong_edges=0"
+        ],
+        [
+          "soccer_goalscorer_2plus.json",
+          "n_strong_edges=0"
+        ],
+        [
+          "soccer_goalscorer_props.json",
+          "n_strong_edges=0"
         ],
         [
           "soccer_goalscorer_sgp_builder.json",
@@ -1377,11 +1393,11 @@
       "stale_72h": []
     },
     "data_health.json": {
-      "generated_at": "2026-08-24T13:45:37",
-      "overall": "red",
-      "n_green": 9,
+      "generated_at": "2026-08-24T14:54:41",
+      "overall": "yellow",
+      "n_green": 10,
       "n_yellow": 1,
-      "n_red": 1,
+      "n_red": 0,
       "checks": [
         {
           "feed": "freshness",
@@ -1396,8 +1412,8 @@
             "sport_coverage.json": 0.0,
             "todays_top_plays.json": 0.0,
             "alpha_pick_of_day.json": 0.0,
-            "alerts_feed.json": 0.4,
-            "calibration_map.json": 0.1,
+            "alerts_feed.json": 1.1,
+            "calibration_map.json": 0.2,
             "espn_odds.json": 0.0
           }
         },
@@ -1413,7 +1429,7 @@
           "upstream_final": 0,
           "local_count": 10,
           "local_live": 0,
-          "live_state_age_min": 9
+          "live_state_age_min": 15
         },
         {
           "feed": "nba",
@@ -1424,7 +1440,7 @@
           "upstream_count": 1,
           "local_count": 1,
           "upstream_live": 0,
-          "local_age_min": 7
+          "local_age_min": 12
         },
         {
           "feed": "wnba",
@@ -1435,7 +1451,7 @@
           "upstream_count": 4,
           "local_count": 4,
           "upstream_live": 0,
-          "local_age_min": 9
+          "local_age_min": 15
         },
         {
           "feed": "nhl",
@@ -1446,7 +1462,7 @@
           "upstream_count": 7,
           "local_count": 7,
           "upstream_live": 0,
-          "local_age_min": 7
+          "local_age_min": 12
         },
         {
           "feed": "mls",
@@ -1457,18 +1473,18 @@
           "upstream_count": 2,
           "local_count": 2,
           "upstream_live": 0,
-          "local_age_min": 9
+          "local_age_min": 15
         },
         {
           "feed": "epl",
-          "status": "red",
+          "status": "green",
           "findings": [
-            "EPL count mismatch: local=3 vs ESPN=1"
+            "1 events matched (0 live)"
           ],
           "upstream_count": 1,
-          "local_count": 3,
+          "local_count": 1,
           "upstream_live": 0,
-          "local_age_min": 9
+          "local_age_min": 15
         },
         {
           "feed": "pitcher_matchup",
@@ -1499,7 +1515,7 @@
           ],
           "upstream_players": 50,
           "local_players": 50,
-          "local_age_min": 9
+          "local_age_min": 15
         },
         {
           "feed": "desks",
@@ -1510,11 +1526,11 @@
           "n_stale": 0,
           "ages_h": {
             "tennis_state.json": 0.0,
-            "ufc_state.json": 8.0,
-            "f1_state.json": 8.1,
-            "kbo_state.json": 7.9,
-            "cs_state.json": 7.9,
-            "cws_state.json": 8.1,
+            "ufc_state.json": 1.1,
+            "f1_state.json": 1.1,
+            "kbo_state.json": 1.1,
+            "cs_state.json": 1.1,
+            "cws_state.json": 1.1,
             "worldcup_cards.json": 0.0
           }
         }

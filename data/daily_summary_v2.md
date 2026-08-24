@@ -1,17 +1,17 @@
 # EdgeStat Daily Summary — 2026-08-24
 
-## 🏥 Model Health: 56.8/100 [OK]
+## 🏥 Model Health: 57.7/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.9/100
+  - 🟢 Calibration Freshness: 99.7/100
   - 🔴 Hit Rate Trend: 0/100
-  - 🔴 Brier Trend: 31.4/100
+  - 🔴 Brier Trend: 32.3/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 95.5/100
-  - 🔴 Edge Count: 14.3/100
+  - 🟢 Data Health: 86.4/100
+  - 🔴 Edge Count: 40.0/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.563)
-- **Total games on board:** 85
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.564)
+- **Total games on board:** 86
 - **Strong home favorites:** 0 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
@@ -51,10 +51,10 @@
 - Hot teams: **4** | Cold teams: **11** | Over-heavy: 0 | Under-heavy: 6
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (64)
+## ⚠️ Anomaly Detector (67)
 - STEAM_MOVE: **61**
-- COMPOUND_BULLPEN: **2**
-- PEN_MISMATCH: **1**
+- COMPOUND_BULLPEN: **4**
+- PEN_MISMATCH: **2**
   - WSH @ DET (NFL): ML/TOTAL steam since open: ML -15.7pp toward WSH; total -1 (UNDER) (14 snapshots)
   - NYJ @ PIT (NFL): ML/TOTAL steam since open: ML +11.5pp toward PIT; total +2 (OVER) (11 snapshots)
   - KCR @ LAA (MLB): ML/TOTAL steam since open: ML -11.0pp toward KCR; total +0.5 (OVER) (4 snapshots)

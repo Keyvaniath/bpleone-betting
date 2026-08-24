@@ -1,8 +1,8 @@
 # Tonight's Slate Brief — 2026-08-24
 
-## Slate Quality: 53/100 (LOW)
+## Slate Quality: 55/100 (MEDIUM)
 _0% lineups confirmed · 7 rookie SPs_
-**Recommendation:** Defensive sizing tonight; stick to highest-confidence plays.
+**Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
 - **10 games** scheduled
@@ -36,9 +36,6 @@ _0% lineups confirmed · 7 rookie SPs_
 - **TBR @ DET YRFI (1st-inning OVER 0.5)** (low):
    - Edge +10.2% looks big but only 0 settled props on this player — model unproven
 
-## Weather leans
-- **UNDER lean** (wind in + cold): CIN @ SFG
-
 ## Bullpens GASSED tonight
 Athletics, Pittsburgh Pirates, San Diego Padres, Seattle Mariners, St. Louis Cardinals, Tampa Bay Rays, Atlanta Braves, Chicago White Sox
 _Lean late-inning OVER on these games; fade their save situations._
@@ -64,7 +61,7 @@ _Lean late-inning OVER on these games; fade their save situations._
 - Samsung Lions @ Kiwoom Heroes | P(home) 36.9% fair +171 | total 10 R
 - **KBO POD:** LG Twins ML vs NC Dinos (KBO) (HIGH)
 
-## LoL Esports -- 0 live, 10 upcoming
+## LoL Esports -- 1 live, 9 upcoming
 - [LEC] Natus Vincere vs Fnatic BO3 | P(A) 44.8% fair +123/-123
 - [NLC] Deer Gaming vs DMG Esports BO3 | P(A) 53.7% fair -116/+116
 - [LEC] GIANTX vs G2 Esports BO3 | P(A) 37.9% fair +164/-164
