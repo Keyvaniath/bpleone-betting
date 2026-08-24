@@ -1,25 +1,25 @@
 # EdgeStat Daily Summary — 2026-08-24
 
-## 🏥 Model Health: 60.7/100 [OK]
+## 🏥 Model Health: 56.8/100 [OK]
 - Operational but room to improve - check yellow components
   - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 0/100
-  - 🔴 Brier Trend: 28.5/100
+  - 🔴 Brier Trend: 31.4/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 86.4/100
-  - 🟡 Edge Count: 77.1/100
+  - 🟢 Data Health: 95.5/100
+  - 🔴 Edge Count: 14.3/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.568)
-- **Total games on board:** 86
-- **Strong home favorites:** 1 | **Strong road dogs:** 0
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.563)
+- **Total games on board:** 85
+- **Strong home favorites:** 0 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
-1. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
-2. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
-3. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
-4. **LOL G2 Esports vs GIANTX ML @ -164** (76/100 ★★★★★)
-5. **LOL FlyQuest vs Dignitas ML @ -127** (76/100 ★★★★★)
+1. **CHC @ ARI YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+2. **TEX @ CHW YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+3. **MIN @ OAK YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+4. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
+5. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -51,44 +51,51 @@
 - Hot teams: **4** | Cold teams: **11** | Over-heavy: 0 | Under-heavy: 6
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (61)
+## ⚠️ Anomaly Detector (64)
 - STEAM_MOVE: **61**
+- COMPOUND_BULLPEN: **2**
+- PEN_MISMATCH: **1**
   - WSH @ DET (NFL): ML/TOTAL steam since open: ML -15.7pp toward WSH; total -1 (UNDER) (14 snapshots)
   - NYJ @ PIT (NFL): ML/TOTAL steam since open: ML +11.5pp toward PIT; total +2 (OVER) (11 snapshots)
   - KCR @ LAA (MLB): ML/TOTAL steam since open: ML -11.0pp toward KCR; total +0.5 (OVER) (4 snapshots)
   - DAL @ ARI (NFL): ML/TOTAL steam since open: ML -10.3pp toward DAL; total +1 (OVER) (7 snapshots)
   - TOR @ WSH (WNBA): ML/TOTAL steam since open: ML +6.3pp toward WSH; total -2 (UNDER) (5 snapshots)
 
-## 💰 Today's Portfolio (5 picks)
-- Total stake: **$175.0** (17.5% of $1000 bankroll)
-- Expected EV: **$-11.83**
-  - #1 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
-  - #2 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
-  - #3 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
-  - #4 [NRFI] $35 on ATL @ MIL YRFI (1st-inning OVER 0.5) (P=59%)
-  - #5 [NBA] $35 on NBA Toronto Raptors ML (0-0) vs Miami Heat (P=55%)
+## 💰 Today's Portfolio (8 picks)
+- Total stake: **$325.0** (32.5% of $1000 bankroll)
+- Expected EV: **$2.63**
+  - #1 [NRFI] $50 on CHC @ ARI YRFI (1st-inning OVER 0.5) (P=77%)
+  - #2 [NRFI] $50 on TEX @ CHW YRFI (1st-inning OVER 0.5) (P=70%)
+  - #3 [NRFI] $50 on MIN @ OAK YRFI (1st-inning OVER 0.5) (P=67%)
+  - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
+  - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
-## 🎯 Convergence Picks (4 stacked games)
-- ELITE: **1** · HIGH: 0 · MED: 3
-  - [ELITE] Indiana Fever @ Chicago Sky : 4 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
+## 🎯 Convergence Picks (8 stacked games)
+- ELITE: **2** · HIGH: 0 · MED: 6
+  - [ELITE] Las Vegas Aces @ Toronto Tempo : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
+  - [ELITE] Sporting Kansas City @ Atlanta United FC : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
+  - [MED] Seattle Storm @ Dallas Wings : 2 signals (HEAT_COLD, ATS)
   - [MED] Washington Mystics @ Portland Fire : 2 signals (HEAT_COLD, ATS)
-  - [MED] Las Vegas Aces @ Toronto Tempo : 2 signals (PREGAME, HEAT_COLD)
-  - [MED] New York City FC @ New England Revolution : 2 signals (ANOMALY, ATS)
+  - [MED] New York City FC @ New England Revolution : 2 signals (HEAT_COLD, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (1)
-- **Shane Drohan** OVER 4.5 K (65%) fair -188
+## ⚾ Top MLB Pitcher K Plays (8)
+- **Logan Gilbert** OVER 4.5 K (75%) fair -295
+- **Drew Rasmussen** OVER 4.5 K (71%) fair -251
+- **Braxton Ashcraft** OVER 4.5 K (71%) fair -251
+- **Cade Cavalli** OVER 5.5 K (71%) fair -250
+- **Chase Burns** OVER 4.5 K (70%) fair -232
 
 ## 🏀 NBA Player Heat (2 HOT / 1 COLD)
   - 🔥 **Scottie Barnes** (TOR): L5 24.4/7.6/9.6 vs season 18.6/5.8/8.8 [PTS +5.8]
   - 🔥 **RJ Barrett** (TOR): L5 24.6/7.6/4.0 vs season 21.4/5.5/3.6 [REB +2.1]
   - ❄️ **Brandon Ingram** (TOR): L5 12.0 vs season 19.1 [PTS -7.1] -- FADE OVER props
 
-## 🥊 UFC Fight Matchups (UFC Fight Night: Hernandez vs. Rodrigues)
-  - [FAVORITE] **Shanelle Dyer** (8-1-0) vs Elise Reed -- fair -198
-  - [FAVORITE] **Anthony Wint** (8-0-0) vs Terrance Chatman -- fair -193
-  - [LEAN] **Stan Dorsainvil** (6-0-0) vs Gauge Young -- fair -174
-  - [LEAN] **Marcio Barbosa** (19-2-0) vs Ryan Kuse -- fair -158
-  - [LEAN] **Shamil Gaziev** (15-3-0) vs Kennedy Nzechukwu -- fair -150
+## 🥊 UFC Fight Matchups (Dana White's Contender Series: Season 10, Week 3)
+  - [LEAN] **Bella Mir** (4-0-0) vs Alex Apodaca -- fair -178
+  - [LEAN] **Sean Clancy Jr.** (8-0-0) vs Gary Balletto -- fair -156
+  - [LEAN] **Ronald Humphrey** (4-0-0) vs Alexis Miranda -- fair -150
+  - [LEAN] **Mario Piazzon** (12-1-0) vs Guilherme Uriel -- fair -145
+  - [COIN_FLIP] **Carlos Petruzzella** (15-1-0) vs Nick Galanti -- fair -124
 
 ## ⛳ Golf Player Heat (from BMW Championship)
   - 🔥 T2 **Patrick Cantlay** (USA): -14 total -- finished T2
@@ -111,9 +118,6 @@
   - ❄️ **Joc Pederson** (TEX): L14 .067 / season .235 (-168pts) -- FADE props
   - ❄️ **Byron Buxton** (MIN): L14 .102 / season .251 (-149pts) -- FADE props
   - ❄️ **Tyler Tolbert** (KC): L14 .138 / season .286 (-148pts) -- FADE props
-
-## 📈 Streak Regression Alerts (1)
-- [WNBA] Chicago Sky on W3 L10 3-2 -- Chicago Sky on W3 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**

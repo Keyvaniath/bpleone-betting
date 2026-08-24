@@ -1,42 +1,55 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-08-24T05:41:41 UTC_
+_Generated 2026-08-24T13:45:14 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -25
+- **Score:** -19
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 5
-- **Total FADES:** 45
+- **Total STRONG:** 7
+- **Total FADES:** 47
+
+## Lock of the Night
+- **Subject:** Kumar Rocker
+- **Source:** ELITE_BOARD
+- **Sport:** MLB
+- **Score:** 15.0
+- **Details:** TEX @ CHW
 
 ## Top 5 Curated Picks
-1. **GOLF / Chris Gotterup** (GOLF_PLAYER, score=219.29)
-   - Play: Chris Gotterup (PLAYER_STRONG)
+1. **GOLF / Collin Morikawa** (GOLF_PLAYER, score=219.29)
+   - Play: Collin Morikawa (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
 2. **GOLF / Rory McIlroy** (GOLF_PLAYER, score=219.29)
    - Play: Rory McIlroy (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
+3. **MLB / Parker Messick** (MLB_PITCHER, score=58.83)
+   - Play: Parker Messick (PITCHER_STRONG)
+   - Rationale: Cross-sport top pick (MLB_PITCHER)
+4. **MLB / Robbie Ray** (MLB_PITCHER, score=56.92)
+   - Play: Robbie Ray (PITCHER_STRONG)
+   - Rationale: Cross-sport top pick (MLB_PITCHER)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
-  - Chris Gotterup top 10 finish
+  - Collin Morikawa top 10 finish
   - Rory McIlroy top 10 finish
-  - Wyndham Clark top 10 finish
+  - Chris Gotterup top 10 finish
 
 ## Slate ROI Projection
-- **Picks:** 0
-- **Avg edge:** 0%
+- **Picks:** 2
+- **Avg edge:** -0.91%
 - **Expected ROI (1/4 Kelly):** 0.0%
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **NBA** / TOR (TEAM_FADE)
-  - Fade angle: team total UNDER
 - **NBA** / MIA (TEAM_FADE)
   - Fade angle: team total UNDER
-- **MLB** / Shane Drohan (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **MLB** / Tyler Mahle (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **NHL** / samsonov ilya (GOALIE_FADE)
+- **NBA** / TOR (TEAM_FADE)
+  - Fade angle: team total UNDER
+- **NHL** / jake oettinger (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / thatcher demko (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / marc-andre fleury (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
