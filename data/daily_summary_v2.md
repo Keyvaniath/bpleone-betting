@@ -1,25 +1,25 @@
-# EdgeStat Daily Summary — 2026-08-23
+# EdgeStat Daily Summary — 2026-08-24
 
-## 🏥 Model Health: 62.5/100 [OK]
+## 🏥 Model Health: 60.7/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 100.0/100
+  - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 0/100
   - 🔴 Brier Trend: 28.5/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 95.5/100
+  - 🟢 Data Health: 86.4/100
   - 🟡 Edge Count: 77.1/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.557)
-- **Total games on board:** 90
-- **Strong home favorites:** 0 | **Strong road dogs:** 1
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.568)
+- **Total games on board:** 86
+- **Strong home favorites:** 1 | **Strong road dogs:** 0
 
 ## 🎯 Top 5 Best Bets
-1. **WSN @ MIA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-2. **CLE @ COL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-3. **SFG @ BOS YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-4. **CHC @ SEA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-5. **TBR @ BAL YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
+1. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
+2. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
+3. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
+4. **LOL G2 Esports vs GIANTX ML @ -164** (76/100 ★★★★★)
+5. **LOL FlyQuest vs Dignitas ML @ -127** (76/100 ★★★★★)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -47,35 +47,30 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (1)
-- [WNBA] **Las Vegas Aces** AWAY (3-3 L10) · model 68.6% fair -219
-
 ## 🔥/❄️ Heat / Cold Signals
-- Hot teams: **3** | Cold teams: **8** | Over-heavy: 0 | Under-heavy: 5
+- Hot teams: **4** | Cold teams: **11** | Over-heavy: 0 | Under-heavy: 6
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (71)
-- RESIDUAL_DIVERGENCE: **3**
-- STEAM_MOVE: **68**
-  - Seattle Storm (WNBA): Seattle Storm UNDERPERFORMING expected margin by 8.3pts in recent games -- model bias may persist
-  - Chicago Sky (WNBA): Chicago Sky OUTPERFORMING expected margin by 6.6pts in recent games -- model bias may persist
-  - New England Revolution (MLS): New England Revolution OUTPERFORMING expected margin by 6.7pts in recent games -- model bias may persist
-  - MIL @ LAD (MLB): ML steam since open: ML -16.7pp toward MIL (11 snapshots)
+## ⚠️ Anomaly Detector (61)
+- STEAM_MOVE: **61**
   - WSH @ DET (NFL): ML/TOTAL steam since open: ML -15.7pp toward WSH; total -1 (UNDER) (14 snapshots)
+  - NYJ @ PIT (NFL): ML/TOTAL steam since open: ML +11.5pp toward PIT; total +2 (OVER) (11 snapshots)
+  - KCR @ LAA (MLB): ML/TOTAL steam since open: ML -11.0pp toward KCR; total +0.5 (OVER) (4 snapshots)
+  - DAL @ ARI (NFL): ML/TOTAL steam since open: ML -10.3pp toward DAL; total +1 (OVER) (7 snapshots)
+  - TOR @ WSH (WNBA): ML/TOTAL steam since open: ML +6.3pp toward WSH; total -2 (UNDER) (5 snapshots)
 
-## 💰 Today's Portfolio (9 picks)
-- Total stake: **$330.0** (33.0% of $1000 bankroll)
-- Expected EV: **$3.15**
-  - #1 [NRFI] $50 on WSN @ MIA YRFI (1st-inning OVER 0.5) (P=75%)
-  - #2 [NRFI] $50 on CLE @ COL YRFI (1st-inning OVER 0.5) (P=71%)
-  - #3 [NRFI] $50 on SFG @ BOS YRFI (1st-inning OVER 0.5) (P=68%)
-  - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
-  - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
+## 💰 Today's Portfolio (5 picks)
+- Total stake: **$175.0** (17.5% of $1000 bankroll)
+- Expected EV: **$-11.83**
+  - #1 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
+  - #2 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
+  - #3 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
+  - #4 [NRFI] $35 on ATL @ MIL YRFI (1st-inning OVER 0.5) (P=59%)
+  - #5 [NBA] $35 on NBA Toronto Raptors ML (0-0) vs Miami Heat (P=55%)
 
-## 🎯 Convergence Picks (5 stacked games)
-- ELITE: **1** · HIGH: 0 · MED: 4
+## 🎯 Convergence Picks (4 stacked games)
+- ELITE: **1** · HIGH: 0 · MED: 3
   - [ELITE] Indiana Fever @ Chicago Sky : 4 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
-  - [MED] Seattle Storm @ Dallas Wings : 2 signals (ANOMALY, ATS)
   - [MED] Washington Mystics @ Portland Fire : 2 signals (HEAT_COLD, ATS)
   - [MED] Las Vegas Aces @ Toronto Tempo : 2 signals (PREGAME, HEAT_COLD)
   - [MED] New York City FC @ New England Revolution : 2 signals (ANOMALY, ATS)
@@ -96,16 +91,16 @@
   - [LEAN] **Shamil Gaziev** (15-3-0) vs Kennedy Nzechukwu -- fair -150
 
 ## ⛳ Golf Player Heat (from BMW Championship)
-  - 🔥 T1 **Rory McIlroy** (Northern Ireland): -14 total -- finished T1
-  - 🔥 T3 **Chris Gotterup** (USA): -12 total -- finished T3
-  - 🔥 T4 **Gary Woodland** (USA): -12 total -- finished T4
-  - 🔥 T6 **Collin Morikawa** (USA): -11 total -- finished T6
-  - 🔥 T7 **Robert MacIntyre** (Scotland): -10 total -- finished T7, Sunday -2.5 vs tourney avg
-  - ❄️ **Wyndham Clark** (USA): Sunday +6.5 vs tourney avg
-  - ❄️ **Eric Cole** (USA): Sunday +6.2 vs tourney avg
+  - 🔥 T2 **Patrick Cantlay** (USA): -14 total -- finished T2
+  - 🔥 T3 **Rory McIlroy** (Northern Ireland): -13 total -- finished T3
+  - 🔥 T4 **Collin Morikawa** (USA): -12 total -- finished T4
+  - 🔥 T5 **Chris Gotterup** (USA): -12 total -- finished T5
+  - 🔥 T6 **Gary Woodland** (USA): -12 total -- finished T6
+  - ❄️ **Eric Cole** (USA): Sunday +5.8 vs tourney avg
+  - ❄️ **Wyndham Clark** (USA): Sunday +4.2 vs tourney avg
   - ❄️ **J.J. Spaun** (USA): Sunday +4.2 vs tourney avg
 
-## 🔥 MLB Batter Heat (45 HOT / 70 COLD)
+## 🔥 MLB Batter Heat (46 HOT / 70 COLD)
   - 🔥 **Pete Alonso** (BAL): L14 .463 / season .270 (+193pts)
   - 🔥 **Alec Bohm** (PHI): L14 .420 / season .248 (+172pts)
   - 🔥 **Jac Caglianone** (KC): L14 .442 / season .276 (+166pts)
@@ -128,7 +123,7 @@
   - ⚠️ batter_rbis (Brier Δ -0.0052)
 
 ## 🤖 Self-Training Status
-- **WNBA**: n=39 games · hit rate 61.5% · bias -12.5pp [calibration applied]
-- **MLS**: n=44 games · hit rate 45.5% · bias +2.6pp [calibration applied]
-- **EPL**: n=6 games · hit rate 83.3% · bias -24.1pp
-- **MLB**: n=188 games · hit rate 50.5% · bias +0.4pp
+- **WNBA**: n=39 games · hit rate 59.0% · bias -3.5pp [calibration applied]
+- **MLS**: n=46 games · hit rate 45.6% · bias +2.9pp [calibration applied]
+- **EPL**: n=9 games · hit rate 77.8% · bias -24.1pp
+- **MLB**: n=188 games · hit rate 53.2% · bias +1.3pp
