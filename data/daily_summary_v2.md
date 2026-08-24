@@ -1,18 +1,18 @@
 # EdgeStat Daily Summary — 2026-08-24
 
-## 🏥 Model Health: 57.7/100 [OK]
+## 🏥 Model Health: 59.5/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.7/100
+  - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 0/100
   - 🔴 Brier Trend: 32.3/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 86.4/100
+  - 🟢 Data Health: 95.5/100
   - 🔴 Edge Count: 40.0/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.564)
-- **Total games on board:** 86
-- **Strong home favorites:** 0 | **Strong road dogs:** 0
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.557)
+- **Total games on board:** 88
+- **Strong home favorites:** 1 | **Strong road dogs:** 2
 
 ## 🎯 Top 5 Best Bets
 1. **CHC @ ARI YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
@@ -47,31 +47,36 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
+## ⚡ Pre-Game HIGH Conviction (2)
+- [WNBA] **Minnesota Lynx** HOME (4-0 L10) · model 73.3% fair -274
+- [WNBA] **Atlanta Dream** AWAY (5-1 L10) · model 70.7% fair -241
+
 ## 🔥/❄️ Heat / Cold Signals
 - Hot teams: **4** | Cold teams: **11** | Over-heavy: 0 | Under-heavy: 6
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (67)
+## ⚠️ Anomaly Detector (69)
+- RESIDUAL_DIVERGENCE: **2**
 - STEAM_MOVE: **61**
 - COMPOUND_BULLPEN: **4**
 - PEN_MISMATCH: **2**
+  - Los Angeles Sparks (WNBA): Los Angeles Sparks UNDERPERFORMING expected margin by 6.0pts in recent games -- model bias may persist
+  - Atlanta Dream (WNBA): Atlanta Dream OUTPERFORMING expected margin by 11.1pts in recent games -- model bias may persist
   - WSH @ DET (NFL): ML/TOTAL steam since open: ML -15.7pp toward WSH; total -1 (UNDER) (14 snapshots)
   - NYJ @ PIT (NFL): ML/TOTAL steam since open: ML +11.5pp toward PIT; total +2 (OVER) (11 snapshots)
   - KCR @ LAA (MLB): ML/TOTAL steam since open: ML -11.0pp toward KCR; total +0.5 (OVER) (4 snapshots)
-  - DAL @ ARI (NFL): ML/TOTAL steam since open: ML -10.3pp toward DAL; total +1 (OVER) (7 snapshots)
-  - TOR @ WSH (WNBA): ML/TOTAL steam since open: ML +6.3pp toward WSH; total -2 (UNDER) (5 snapshots)
 
-## 💰 Today's Portfolio (8 picks)
-- Total stake: **$325.0** (32.5% of $1000 bankroll)
-- Expected EV: **$2.63**
+## 💰 Today's Portfolio (9 picks)
+- Total stake: **$345.0** (34.5% of $1000 bankroll)
+- Expected EV: **$3.84**
   - #1 [NRFI] $50 on CHC @ ARI YRFI (1st-inning OVER 0.5) (P=77%)
   - #2 [NRFI] $50 on TEX @ CHW YRFI (1st-inning OVER 0.5) (P=70%)
   - #3 [NRFI] $50 on MIN @ OAK YRFI (1st-inning OVER 0.5) (P=67%)
   - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
-## 🎯 Convergence Picks (8 stacked games)
-- ELITE: **2** · HIGH: 0 · MED: 6
+## 🎯 Convergence Picks (5 stacked games)
+- ELITE: **2** · HIGH: 0 · MED: 3
   - [ELITE] Las Vegas Aces @ Toronto Tempo : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
   - [ELITE] Sporting Kansas City @ Atlanta United FC : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
   - [MED] Seattle Storm @ Dallas Wings : 2 signals (HEAT_COLD, ATS)
@@ -107,7 +112,7 @@
   - ❄️ **Wyndham Clark** (USA): Sunday +4.2 vs tourney avg
   - ❄️ **J.J. Spaun** (USA): Sunday +4.2 vs tourney avg
 
-## 🔥 MLB Batter Heat (46 HOT / 70 COLD)
+## 🔥 MLB Batter Heat (47 HOT / 69 COLD)
   - 🔥 **Pete Alonso** (BAL): L14 .463 / season .270 (+193pts)
   - 🔥 **Alec Bohm** (PHI): L14 .420 / season .248 (+172pts)
   - 🔥 **Jac Caglianone** (KC): L14 .442 / season .276 (+166pts)

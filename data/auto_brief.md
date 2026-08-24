@@ -1,12 +1,12 @@
 # Tonight's Slate Brief — 2026-08-24
 
-## Slate Quality: 55/100 (MEDIUM)
-_0% lineups confirmed · 7 rookie SPs_
+## Slate Quality: 67/100 (MEDIUM)
+_45% lineups confirmed · 8 rookie SPs_
 **Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
 - **10 games** scheduled
-- **19 best bets** scored: 0 DK · 0 PP · 7 NRFI · 0 SGP
+- **20 best bets** scored: 0 DK · 0 PP · 7 NRFI · 0 SGP
 - **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$39.7
 - **MC simulation:** EV +$64.84, 72% P(profit), p05 $-97.07 / p95 $208.31
 
@@ -36,6 +36,9 @@ _0% lineups confirmed · 7 rookie SPs_
 - **TBR @ DET YRFI (1st-inning OVER 0.5)** (low):
    - Edge +10.2% looks big but only 0 settled props on this player — model unproven
 
+## Weather leans
+- **UNDER lean** (wind in + cold): CIN @ SFG
+
 ## Bullpens GASSED tonight
 Athletics, Pittsburgh Pirates, San Diego Padres, Seattle Mariners, St. Louis Cardinals, Tampa Bay Rays, Atlanta Braves, Chicago White Sox
 _Lean late-inning OVER on these games; fade their save situations._
@@ -61,15 +64,15 @@ _Lean late-inning OVER on these games; fade their save situations._
 - Samsung Lions @ Kiwoom Heroes | P(home) 36.9% fair +171 | total 10 R
 - **KBO POD:** LG Twins ML vs NC Dinos (KBO) (HIGH)
 
-## LoL Esports -- 1 live, 9 upcoming
-- [LEC] Natus Vincere vs Fnatic BO3 | P(A) 44.8% fair +123/-123
-- [NLC] Deer Gaming vs DMG Esports BO3 | P(A) 53.7% fair -116/+116
-- [LEC] GIANTX vs G2 Esports BO3 | P(A) 37.9% fair +164/-164
-- [NLC] Ruddy Corporation vs VES BO3 | P(A) 51.4% fair -106/+106
+## LoL Esports -- 0 live, 6 upcoming
 - [LCK Challengers] KRX Challengers vs BNK FEARX Youth BO5 | P(A) 48.8% fair +105/-105
+- [LCK] kt Rolster vs HANJIN BRION BO5 | P(A) 31.1% fair +222/-222
+- [NLC] Bardicted to U vs Bulldog Esports BO3 | P(A) 46.9% fair +113/-113
+- [NLC] VES vs DMG Esports BO3 | P(A) 52.4% fair -110/+110
+- [NACL] Dorado Gaming vs Conviction BO5 | P(A) 66.5% fair -199/+199
 - **LoL POT:** NONGSHIM RED FORCE ML vs BNK FEARX (LCK, BO5) (HIGH)
 
-## Player Play of the Day -- across all sports (3460 candidates scanned)
+## Player Play of the Day -- across all sports (3477 candidates scanned)
 - **[LOL]** Inspired UNDER 3.5 Kills | model 61.7% fair -161 (ELITE)
 - **[LOL]** ShowMaker OVER 3.5 Kills | model 62.5% fair -167 (ELITE)
 - **[LOL]** Peyz OVER 4.5 Kills | model 61.3% fair -158 (ELITE)
@@ -77,7 +80,7 @@ _Lean late-inning OVER on these games; fade their save situations._
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | model 61.0% fair -157 (ELITE)
 
 ## Self-learning calibration (esports + KBO)
-- **LOL:** 66 settled | brier 0.2544 | ECE 0.1072
-   - Model over-confident; subtract 9.8pp at next inference
+- **LOL:** 67 settled | brier 0.2564 | ECE 0.1149
+   - Model over-confident; subtract 10.6pp at next inference
 - **KBO:** 61 settled | brier 0.2641 | ECE 0.1312
    - Model over-confident; subtract 11.2pp at next inference

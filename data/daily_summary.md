@@ -4,14 +4,14 @@
 
 _Pipeline health: **WARNING** (12/15 artifacts ok; 3 empty, 0 stale)._ 
 
-_Generated at 2026-08-24T14:54:25 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-08-24T21:23:00 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
 **COL @ WSN - OVER_8.0**
 - Market: -110
-- Model probability: 90.6%
-- Raw edge: +73.05%
+- Model probability: 90.3%
+- Raw edge: +72.31%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
@@ -20,45 +20,43 @@ _Generated at 2026-08-24T14:54:25 UTC. Game lines source: **Bovada (fallback -- 
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 6:40p ET | TBR @ DET | Comerica Park | 70F 4mph | OVER_7.5 +9.21% |
-| 6:40p ET | BOS @ MIA | loanDepot park | indoor | OVER_7.0 +6.95% |
-| 6:45p ET | COL @ WSN | Nationals Park | 72F 4mph | OVER_8.0 +73.05% |
-| 7:40p ET | TEX @ CHW | Rate Field | 65F 6mph | OVER_8.0 +32.35% |
-| 9:38p ET | CLE @ LAA | Angel Stadium | 73F 3mph | CLE_ML +4.31% |
-| 9:40p ET | CHC @ ARI | Chase Field | indoor | OVER_9.0 +40.79% |
-| 9:40p ET | PIT @ SDP | Petco Park | 70F 4mph | PIT_ML +22.97% |
-| 9:40p ET | MIN @ OAK | Sutter Health Park | 71F 7mph | OVER_10.5 +52.86% |
-| 9:40p ET | PHI @ SEA | T-Mobile Park | indoor | PHI_ML +15.25% |
-| 9:45p ET | CIN @ SFG | Oracle Park | 58F 11mph | SFG_ML +10.38% |
+| 6:40p ET | TBR @ DET | Comerica Park | 70F 4mph | OVER_7.5 +6.64% |
+| 6:40p ET | BOS @ MIA | loanDepot park | indoor | BOS_ML +7.27% |
+| 6:45p ET | COL @ WSN | Nationals Park | 70F 4mph | OVER_8.0 +72.31% |
+| 7:40p ET | TEX @ CHW | Rate Field | 65F 7mph | CHW_ML +38.65% |
+| 9:38p ET | CLE @ LAA | Angel Stadium | 74F 4mph | CLE_ML +10.2% |
+| 9:40p ET | CHC @ ARI | Chase Field | indoor | OVER_8.5 +50.67% |
+| 9:40p ET | PIT @ SDP | Petco Park | 72F 2mph | PIT_ML +24.52% |
+| 9:40p ET | MIN @ OAK | Sutter Health Park | 71F 7mph | OVER_9.5 +67.58% |
+| 9:40p ET | PHI @ SEA | T-Mobile Park | indoor | PHI_ML +21.68% |
+| 9:45p ET | CIN @ SFG | Oracle Park | 58F 11mph | CIN_ML +23.1% |
 
 ## Parlays - top 5
 
-- **3-leg @ +578 (prob 22.0%, EV +49.39%)**
-  - COL @ WSN WSN_ML (-198, model 81.9%)
-  - CIN @ SFG SFG_ML (+136, model 46.8%)
-  - CIN @ SFG UNDER_7.5 (-110, model 57.5%)
-- **2-leg @ +187 (prob 52.0%, EV +49.3%)**
-  - COL @ WSN WSN_ML (-198, model 81.9%)
-  - PIT @ SDP OVER_7.5 (-110, model 63.5%)
-- **3-leg @ +764 (prob 17.3%, EV +49.08%)**
-  - PIT @ SDP PIT_ML (-109, model 64.1%)
-  - CIN @ SFG SFG_ML (+136, model 46.8%)
-  - CIN @ SFG UNDER_7.5 (-110, model 57.5%)
-- **3-leg @ +394 (prob 30.2%, EV +49.06%)**
-  - COL @ WSN WSN_ML (-198, model 81.9%)
-  - TEX @ CHW CHW_ML (-135, model 60.3%)
-  - PHI @ SEA PHI_ML (-113, model 61.1%)
-- **3-leg @ +532 (prob 23.5%, EV +48.81%)**
-  - BOS @ MIA BOS_ML (-132, model 60.6%)
-  - PIT @ SDP OVER_7.5 (-110, model 63.5%)
-  - PHI @ SEA PHI_ML (-113, model 61.1%)
+- **2-leg @ +287 (prob 38.7%, EV +49.78%)**
+  - PHI @ SEA PHI_ML (-101, model 61.1%)
+  - CIN @ SFG CIN_ML (-106, model 63.3%)
+- **2-leg @ +271 (prob 40.3%, EV +49.59%)**
+  - PIT @ SDP PIT_ML (-106, model 64.1%)
+  - PHI @ SEA UNDER_7.5 (-110, model 62.9%)
+- **3-leg @ +549 (prob 23.0%, EV +49.53%)**
+  - TBR @ DET TBR_ML (-128, model 58.7%)
+  - TEX @ CHW OVER_8.0 (-110, model 62.3%)
+  - PHI @ SEA UNDER_7.5 (-110, model 62.9%)
+- **3-leg @ +462 (prob 26.5%, EV +48.69%)**
+  - CLE @ LAA CLE_ML (-144, model 65.0%)
+  - MIN @ OAK MIN_ML (-150, model 66.5%)
+  - PHI @ SEA PHI_ML (-101, model 61.1%)
+- **2-leg @ +187 (prob 51.8%, EV +48.62%)**
+  - COL @ WSN WSN_ML (-210, model 81.8%)
+  - CIN @ SFG CIN_ML (-106, model 63.3%)
 
 ## Self-Learning Loop
 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
-| batter total bases | 15 | 40.0% | 50.4% | 1.241 | 0.862 |
 | batter hits | 54 | 63.0% | 57.4% | 0.912 | 1.087 |
+| batter total bases | 15 | 40.0% | 50.4% | 1.241 | 0.862 |
 
 Cumulative graded plays: 9810. Wins: 3615. Hit rate: 36.9%.
 
@@ -68,14 +66,14 @@ Cumulative graded plays: 9810. Wins: 3615. Hit rate: 36.9%.
 |---|---|---|---|---|---|
 | BOS @ MIA | 47.5% | +111 | 3.72 | +280 | -280 |
 | CHC @ ARI | 23.4% | +327 | 7.26 | +576 | -576 |
-| CIN @ SFG | 48.5% | +106 | 3.87 | +205 | -205 |
-| CLE @ LAA | 57.8% | -137 | 2.79 | +340 | -340 |
-| COL @ WSN | 38.1% | +163 | 4.73 | -278 | +278 |
-| MIN @ OAK | 32.7% | +206 | 5.78 | +311 | -311 |
+| CIN @ SFG | 34.2% | +193 | 5.76 | +308 | -308 |
+| CLE @ LAA | 57.8% | -137 | 2.81 | +340 | -340 |
+| COL @ WSN | 38.1% | +163 | 4.71 | -276 | +276 |
+| MIN @ OAK | 32.7% | +206 | 5.78 | +312 | -312 |
 | PHI @ SEA | 45.7% | +119 | 3.91 | +296 | -296 |
-| PIT @ SDP | 51.8% | -108 | 3.38 | +314 | -314 |
-| TBR @ DET | 43.8% | +128 | 4.19 | +252 | -252 |
-| TEX @ CHW | 30.2% | +231 | 5.78 | +110 | -110 |
+| PIT @ SDP | 51.8% | -108 | 3.33 | +314 | -314 |
+| TBR @ DET | 43.8% | +128 | 4.19 | +253 | -253 |
+| TEX @ CHW | 31.3% | +219 | 5.53 | -130 | +130 |
 
 ## Travel / Rest Flags
 
