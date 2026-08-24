@@ -1,18 +1,18 @@
 # EdgeStat Daily Summary — 2026-08-24
 
-## 🏥 Model Health: 59.5/100 [OK]
+## 🏥 Model Health: 59.9/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.9/100
+  - 🟢 Calibration Freshness: 100.0/100
   - 🔴 Hit Rate Trend: 0/100
   - 🔴 Brier Trend: 32.3/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 95.5/100
-  - 🔴 Edge Count: 40.0/100
+  - 🔴 Edge Count: 42.9/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.557)
-- **Total games on board:** 88
-- **Strong home favorites:** 1 | **Strong road dogs:** 2
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.562)
+- **Total games on board:** 87
+- **Strong home favorites:** 1 | **Strong road dogs:** 1
 
 ## 🎯 Top 5 Best Bets
 1. **CHC @ ARI YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
@@ -20,6 +20,12 @@
 3. **MIN @ OAK YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 4. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
 5. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
+
+## 🐋 Whale Picks (Max Confluence)
+- [STRONG] **[MLB]** CHC @ ARI CHC_ML -- 67% / +28.5% (score 2.5)
+
+## 📉 Strong UNDER Signals
+- [STRONG 5.9] **PHI @ SEA** model 6.79 vs market 7.5
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -55,9 +61,9 @@
 - Hot teams: **4** | Cold teams: **11** | Over-heavy: 0 | Under-heavy: 6
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (69)
+## ⚠️ Anomaly Detector (70)
 - RESIDUAL_DIVERGENCE: **2**
-- STEAM_MOVE: **61**
+- STEAM_MOVE: **62**
 - COMPOUND_BULLPEN: **4**
 - PEN_MISMATCH: **2**
   - Los Angeles Sparks (WNBA): Los Angeles Sparks UNDERPERFORMING expected margin by 6.0pts in recent games -- model bias may persist
@@ -75,12 +81,11 @@
   - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
-## 🎯 Convergence Picks (5 stacked games)
-- ELITE: **2** · HIGH: 0 · MED: 3
-  - [ELITE] Las Vegas Aces @ Toronto Tempo : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
+## 🎯 Convergence Picks (4 stacked games)
+- ELITE: **3** · HIGH: 0 · MED: 1
+  - [ELITE] Atlanta Dream @ Los Angeles Sparks : 8 signals (PREGAME, HEAT_COLD, HEAT_COLD, HEAT_COLD)
+  - [ELITE] Golden State Valkyries @ Minnesota Lynx : 4 signals (PREGAME, HEAT_COLD, ATS, ATS)
   - [ELITE] Sporting Kansas City @ Atlanta United FC : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
-  - [MED] Seattle Storm @ Dallas Wings : 2 signals (HEAT_COLD, ATS)
-  - [MED] Washington Mystics @ Portland Fire : 2 signals (HEAT_COLD, ATS)
   - [MED] New York City FC @ New England Revolution : 2 signals (HEAT_COLD, ATS)
 
 ## ⚾ Top MLB Pitcher K Plays (8)
@@ -123,6 +128,10 @@
   - ❄️ **Joc Pederson** (TEX): L14 .067 / season .235 (-168pts) -- FADE props
   - ❄️ **Byron Buxton** (MIN): L14 .102 / season .251 (-149pts) -- FADE props
   - ❄️ **Tyler Tolbert** (KC): L14 .138 / season .286 (-148pts) -- FADE props
+
+## 📈 Streak Regression Alerts (2)
+- [WNBA] Minnesota Lynx on W4 L10 4-0 -- Minnesota Lynx on W4 -- no historical sample
+- [WNBA] Atlanta Dream on W3 L10 4-1 -- Atlanta Dream on W3 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**

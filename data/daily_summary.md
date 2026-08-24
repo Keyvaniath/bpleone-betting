@@ -4,14 +4,14 @@
 
 _Pipeline health: **WARNING** (12/15 artifacts ok; 3 empty, 0 stale)._ 
 
-_Generated at 2026-08-24T21:23:00 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-08-24T22:37:08 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
 **COL @ WSN - OVER_8.0**
 - Market: -110
-- Model probability: 90.3%
-- Raw edge: +72.31%
+- Model probability: 90.1%
+- Raw edge: +71.93%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
@@ -20,16 +20,16 @@ _Generated at 2026-08-24T21:23:00 UTC. Game lines source: **Bovada (fallback -- 
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 6:40p ET | TBR @ DET | Comerica Park | 70F 4mph | OVER_7.5 +6.64% |
+| 6:40p ET | TBR @ DET | Comerica Park | 69F 3mph | TBR_ML +4.51% |
 | 6:40p ET | BOS @ MIA | loanDepot park | indoor | BOS_ML +7.27% |
-| 6:45p ET | COL @ WSN | Nationals Park | 70F 4mph | OVER_8.0 +72.31% |
-| 7:40p ET | TEX @ CHW | Rate Field | 65F 7mph | CHW_ML +38.65% |
-| 9:38p ET | CLE @ LAA | Angel Stadium | 74F 4mph | CLE_ML +10.2% |
+| 6:45p ET | COL @ WSN | Nationals Park | 69F 4mph | OVER_8.0 +71.93% |
+| 7:40p ET | TEX @ CHW | Rate Field | 66F 7mph | CHW_ML +38.71% |
+| 9:38p ET | CLE @ LAA | Angel Stadium | 74F 5mph | CLE_ML +10.29% |
 | 9:40p ET | CHC @ ARI | Chase Field | indoor | OVER_8.5 +50.67% |
 | 9:40p ET | PIT @ SDP | Petco Park | 72F 2mph | PIT_ML +24.52% |
-| 9:40p ET | MIN @ OAK | Sutter Health Park | 71F 7mph | OVER_9.5 +67.58% |
+| 9:40p ET | MIN @ OAK | Sutter Health Park | 72F 8mph | OVER_9.5 +69.05% |
 | 9:40p ET | PHI @ SEA | T-Mobile Park | indoor | PHI_ML +21.68% |
-| 9:45p ET | CIN @ SFG | Oracle Park | 58F 11mph | CIN_ML +23.1% |
+| 9:45p ET | CIN @ SFG | Oracle Park | 58F 12mph | CIN_ML +23.2% |
 
 ## Parlays - top 5
 
@@ -55,10 +55,10 @@ _Generated at 2026-08-24T21:23:00 UTC. Game lines source: **Bovada (fallback -- 
 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
-| batter hits | 54 | 63.0% | 57.4% | 0.912 | 1.087 |
 | batter total bases | 15 | 40.0% | 50.4% | 1.241 | 0.862 |
+| batter hits | 54 | 63.0% | 57.4% | 0.912 | 1.087 |
 
-Cumulative graded plays: 9810. Wins: 3615. Hit rate: 36.9%.
+Cumulative graded plays: 9764. Wins: 3586. Hit rate: 36.7%.
 
 ## Auxiliary Markets (Model Fair Prices)
 
@@ -66,14 +66,14 @@ Cumulative graded plays: 9810. Wins: 3615. Hit rate: 36.9%.
 |---|---|---|---|---|---|
 | BOS @ MIA | 47.5% | +111 | 3.72 | +280 | -280 |
 | CHC @ ARI | 23.4% | +327 | 7.26 | +576 | -576 |
-| CIN @ SFG | 34.2% | +193 | 5.76 | +308 | -308 |
-| CLE @ LAA | 57.8% | -137 | 2.81 | +340 | -340 |
-| COL @ WSN | 38.1% | +163 | 4.71 | -276 | +276 |
-| MIN @ OAK | 32.7% | +206 | 5.78 | +312 | -312 |
+| CIN @ SFG | 34.2% | +193 | 5.78 | +308 | -308 |
+| CLE @ LAA | 57.8% | -137 | 2.82 | +340 | -340 |
+| COL @ WSN | 38.1% | +163 | 4.7 | -275 | +275 |
+| MIN @ OAK | 32.7% | +206 | 5.81 | +312 | -312 |
 | PHI @ SEA | 45.7% | +119 | 3.91 | +296 | -296 |
-| PIT @ SDP | 51.8% | -108 | 3.33 | +314 | -314 |
-| TBR @ DET | 43.8% | +128 | 4.19 | +253 | -253 |
-| TEX @ CHW | 31.3% | +219 | 5.53 | -130 | +130 |
+| PIT @ SDP | 51.8% | -108 | 3.32 | +314 | -314 |
+| TBR @ DET | 43.8% | +128 | 4.12 | +253 | -253 |
+| TEX @ CHW | 31.3% | +219 | 5.54 | -130 | +130 |
 
 ## Travel / Rest Flags
 
