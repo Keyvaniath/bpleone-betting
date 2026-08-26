@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-08-25T22:24:44",
-  "n_settled": 9605,
+  "generated_at": "2026-08-26T02:17:28",
+  "n_settled": 9607,
   "n_families_transformed": 28,
   "n_families_bucketed": 15,
   "ece_before": 0.0945,
   "ece_after": 0.0149,
   "ece_improvement": 0.0796,
-  "brier_before": 0.20895,
-  "brier_after": 0.19083,
+  "brier_before": 0.20897,
+  "brier_after": 0.19085,
   "method_note": "Per market family, a monotonic (isotonic) curve maps the model's predicted probability to the realized hit rate, learned from settled outcomes. Bucketed for well-sampled families (preserves ranking), a family-average Bayesian blend for mid-sample, identity below that. ECE = expected calibration error (lower = the displayed % is truer). This makes the model honest at the source; it does not create edge (that needs a market price).",
   "families": [
     {
@@ -455,15 +455,15 @@
     },
     {
       "family": "blk_stl_under",
-      "n": 63,
+      "n": 64,
       "method": "family_avg",
-      "avg_pred_raw": 0.6718,
-      "avg_pred_calibrated": 0.6542,
-      "realized": 0.6508,
-      "ece_raw": 0.0818,
-      "ece_calibrated": 0.0034,
+      "avg_pred_raw": 0.6713,
+      "avg_pred_calibrated": 0.6586,
+      "realized": 0.6562,
+      "ece_raw": 0.0749,
+      "ece_calibrated": 0.0023,
       "transform": {
-        "realized": 0.6508
+        "realized": 0.6562
       }
     },
     {
@@ -523,6 +523,19 @@
       "ece_calibrated": 0.0029,
       "transform": {
         "realized": 0.6282
+      }
+    },
+    {
+      "family": "3pm_under",
+      "n": 75,
+      "method": "family_avg",
+      "avg_pred_raw": 0.6759,
+      "avg_pred_calibrated": 0.6564,
+      "realized": 0.6533,
+      "ece_raw": 0.0467,
+      "ece_calibrated": 0.0031,
+      "transform": {
+        "realized": 0.6533
       }
     },
     {
@@ -702,19 +715,6 @@
       "ece_calibrated": 0.0038,
       "transform": {
         "realized": 0.6842
-      }
-    },
-    {
-      "family": "3pm_under",
-      "n": 74,
-      "method": "family_avg",
-      "avg_pred_raw": 0.6754,
-      "avg_pred_calibrated": 0.664,
-      "realized": 0.6622,
-      "ece_raw": 0.057,
-      "ece_calibrated": 0.0546,
-      "transform": {
-        "realized": 0.6622
       }
     },
     {
