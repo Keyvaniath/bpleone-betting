@@ -4,46 +4,23 @@
 
 _Pipeline health: **WARNING** (12/15 artifacts ok; 3 empty, 0 stale)._ 
 
-_Generated at 2026-08-27T22:47:37 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-08-27T23:51:20 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
-**LAD @ ATL - OVER_6.5**
-- Market: -110
-- Model probability: 70.0%
-- Raw edge: +33.54%
+**ARI @ SFG - SFG_ML**
+- Market: +104
+- Model probability: 61.3%
+- Raw edge: +25.08%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
 
-## Full Slate (4 games)
+## Full Slate (1 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 7:07p ET | KCR @ TOR | Rogers Centre | indoor | KCR_ML +13.84% |
-| 7:10p ET | MIL @ NYM | Citi Field | 72F 3mph | MIL_ML +17.28% |
-| 7:15p ET | LAD @ ATL | Truist Park | 75F 4mph | OVER_6.5 +33.54% |
-| 9:45p ET | ARI @ SFG | Oracle Park | 63F 3mph | SFG_ML +23.15% |
-
-## Parlays - top 5
-
-- **3-leg @ +584 (prob 21.9%, EV +49.65%)**
-  - HOU @ NYY OVER_8.0 (-110, model 64.3%)
-  - KCR @ TOR KCR_ML (-114, model 60.6%)
-  - KCR @ TOR OVER_8.0 (-110, model 56.1%)
-- **2-leg @ +200 (prob 48.1%, EV +43.95%)**
-  - MIL @ NYM MIL_ML (-204, model 78.4%)
-  - ARI @ SFG SFG_ML (+101, model 61.3%)
-- **2-leg @ +184 (prob 50.4%, EV +43.51%)**
-  - HOU @ NYY OVER_8.0 (-110, model 64.3%)
-  - MIL @ NYM MIL_ML (-204, model 78.4%)
-- **3-leg @ +434 (prob 26.7%, EV +42.48%)**
-  - KCR @ TOR KCR_ML (-114, model 60.6%)
-  - KCR @ TOR OVER_8.0 (-110, model 56.1%)
-  - MIL @ NYM MIL_ML (-204, model 78.4%)
-- **2-leg @ +277 (prob 37.1%, EV +40.19%)**
-  - KCR @ TOR KCR_ML (-114, model 60.6%)
-  - ARI @ SFG SFG_ML (+101, model 61.3%)
+| 9:45p ET | ARI @ SFG | Oracle Park | 63F 4mph | SFG_ML +25.08% |
 
 ## Self-Learning Loop
 
@@ -52,17 +29,13 @@ _Generated at 2026-08-27T22:47:37 UTC. Game lines source: **Bovada (fallback -- 
 | batter hits | 54 | 63.0% | 57.4% | 0.912 | 1.087 |
 | batter total bases | 15 | 40.0% | 50.4% | 1.241 | 0.862 |
 
-Cumulative graded plays: 9758. Wins: 3528. Hit rate: 36.2%.
+Cumulative graded plays: 9654. Wins: 3476. Hit rate: 36.0%.
 
 ## Auxiliary Markets (Model Fair Prices)
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| ARI @ SFG | 31.6% | +216 | 5.87 | +110 | -110 |
-| HOU @ NYY | 44.4% | +125 | 4.06 | -- | -- |
-| KCR @ TOR | 31.9% | +214 | 5.71 | +269 | -269 |
-| LAD @ ATL | 59.0% | -144 | 2.66 | +156 | -156 |
-| MIL @ NYM | 52.3% | -110 | 3.23 | +708 | -708 |
+| ARI @ SFG | 31.6% | +216 | 5.89 | +110 | -110 |
 
 ## Team Form (last 10)
 
@@ -83,7 +56,7 @@ Cumulative graded plays: 9758. Wins: 3528. Hit rate: 36.2%.
 
 ## Loop Activity (since last refresh)
 
-- Confidence delta: **+0.4**
+- Confidence delta: **+0.0**
 
 ## Model Recommendations (operator review)
 

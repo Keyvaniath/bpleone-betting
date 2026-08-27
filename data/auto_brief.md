@@ -1,46 +1,55 @@
 # Tonight's Slate Brief — 2026-08-27
 
-## Slate Quality: 88/100 (HIGH)
-_100% lineups confirmed · 4 rookie SPs_
+## Slate Quality: 97/100 (HIGH)
+_100% lineups confirmed · 1 rookie SPs_
 **Recommendation:** Play normal Kelly sizing.
 
 ## Slate
-- **4 games** scheduled
-- **25 best bets** scored: 0 DK · 0 PP · 8 NRFI · 0 SGP
-- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$38.63
-- **MC simulation:** EV +$76.59, 81% P(profit), p05 $-89.59 / p95 $235.93
+- **1 games** scheduled
+- **28 best bets** scored: 0 DK · 0 PP · 3 NRFI · 0 SGP
+- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$30.3
+- **MC simulation:** EV +$31.35, 70% P(profit), p05 $-84.54 / p95 $106.36
 
 ## Top 5 Best Bets
-1. **CHC @ ARI YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +30.6%)
-   - P(YRFI) 76.6% vs baseline 46.0%
-2. **TEX @ CHW YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +22.7%)
-   - P(YRFI) 68.7% vs baseline 46.0%
-3. **MIN @ OAK YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +21.3%)
-   - P(YRFI) 67.3% vs baseline 46.0%
-4. **CIN @ SFG YRFI (1st-inning OVER 0.5)**  (79/100 ****, edge +19.8%)
-   - P(YRFI) 65.8% vs baseline 46.0%
-5. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
+1. **ARI @ SFG YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +22.4%)
+   - P(YRFI) 68.4% vs baseline 46.0%
+2. **KCR @ TOR YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +22.1%)
+   - P(YRFI) 68.1% vs baseline 46.0%
+3. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
    - Player prop quality score 1.1935
    - Elite player
+4. **LOL ShowMaker OVER 3.5 Kills**  (78/100 ****, edge —)
+   - Player prop quality score 1.1892
+   - Elite player
+5. **LOL Peyz OVER 4.5 Kills**  (78/100 ****, edge —)
+   - Player prop quality score 1.184
+   - Elite player
 
-## ⚠️ Trap Warnings — 7 flagged
-- **CHC @ ARI YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +30.6% looks big but only 0 settled props on this player — model unproven
-- **TEX @ CHW YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +22.7% looks big but only 0 settled props on this player — model unproven
-- **MIN @ OAK YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +21.3% looks big but only 0 settled props on this player — model unproven
-- **CIN @ SFG YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +19.8% looks big but only 0 settled props on this player — model unproven
-- **COL @ WSN YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +15.9% looks big but only 0 settled props on this player — model unproven
+## ⚠️ Trap Warnings — 4 flagged
+- **ARI @ SFG YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +22.4% looks big but only 0 settled props on this player — model unproven
+- **KCR @ TOR YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +22.1% looks big but only 0 settled props on this player — model unproven
+- **GOLF 3-leg parlay @ +1901** (low):
+   - Edge +10.1% looks big but only 0 settled props on this player — model unproven
+- **HOU @ NYY YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +9.6% looks big but only 0 settled props on this player — model unproven
+
+## Hot streaks
+**Batters heating up:** Geraldo Perdomo (heat +1.75), Nolan Arenado (heat +1.73), Gabriel Moreno (heat +1.33)
 
 ## Bullpens GASSED tonight
-Athletics, Pittsburgh Pirates, San Diego Padres, Seattle Mariners, St. Louis Cardinals, Tampa Bay Rays, Atlanta Braves, Chicago White Sox
+Seattle Mariners, San Francisco Giants, St. Louis Cardinals, Tampa Bay Rays, Texas Rangers, Toronto Blue Jays, Atlanta Braves, Chicago White Sox
 _Lean late-inning OVER on these games; fade their save situations._
 
 ## NRFI/YRFI strong leans
-- **YRFI** (1st-inning OVER): CHC @ ARI, TEX @ CHW, MIN @ OAK, CIN @ SFG, COL @ WSN
+- **YRFI** (1st-inning OVER): ARI @ SFG, KCR @ TOR
+
+## Golf -- TOUR Championship
+- **Leader:** Min Woo Lee (-8) at #1
+- **Field:** 30 players  |  Status: In Progress
+- **Play of the Tournament:** Sam Burns TOP5 @ +561 (model 15.1%, HIGH)
+   - P(top 5) 15.1% -- lower variance than outright but compelling line.
 
 ## NBA -- PRESEASON
 - Miami Heat @ Toronto Raptors (0-0 vs 0-0)  | P(home) 55.0% fair -122 | Scheduled

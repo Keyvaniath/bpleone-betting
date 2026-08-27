@@ -1,33 +1,36 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-08-27T22:46:31 UTC_
+_Generated 2026-08-27T23:50:54 UTC_
 
 ## Slate Quality
-- **Tier:** NO_ACTION_NIGHT
-- **Score:** 9
-- **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
+- **Tier:** MODEST_NIGHT
+- **Score:** 21
+- **Advisory:** Light slate. Limit to 1-3 strongest plays; use 25% Kelly or less.
 - **Total LOCKs:** 0
-- **Total STRONG:** 16
-- **Total FADES:** 55
+- **Total STRONG:** 20
+- **Total FADES:** 59
 
 ## Top 5 Curated Picks
-1. **GOLF / Chris Gotterup** (GOLF_PLAYER, score=219.29)
-   - Play: Chris Gotterup (PLAYER_STRONG)
+1. **GOLF / Min Woo Lee** (GOLF_PLAYER, score=190.07)
+   - Play: Min Woo Lee (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Rory McIlroy** (GOLF_PLAYER, score=219.29)
-   - Play: Rory McIlroy (PLAYER_STRONG)
+2. **GOLF / Viktor Hovland** (GOLF_PLAYER, score=141.21)
+   - Play: Viktor Hovland (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-3. **MLB / AWAY** (MLB_TEAM, score=86.17)
-   - Play: AWAY (TEAM_STRONG)
-   - Rationale: Cross-sport top pick (MLB_TEAM)
-4. **MLB / HOME** (MLB_TEAM, score=82.83)
-   - Play: HOME (TEAM_STRONG)
-   - Rationale: Cross-sport top pick (MLB_TEAM)
+3. **WNBA / breanna stewart** (WNBA_PLAYER, score=95.0)
+   - Play: breanna stewart (PLAYER_STRONG)
+   - Rationale: Cross-sport top pick (WNBA_PLAYER)
+4. **WNBA / kahleah copper** (WNBA_PLAYER, score=93.5)
+   - Play: kahleah copper (PLAYER_STRONG)
+   - Rationale: Cross-sport top pick (WNBA_PLAYER)
+5. **MLB / Rafael Devers** (MLB_BATTER, score=80.0)
+   - Play: Rafael Devers (BATTER_STRONG)
+   - Rationale: Cross-sport top pick (MLB_BATTER)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
-  - Chris Gotterup top 10 finish
-  - Rory McIlroy top 10 finish
-  - Patrick Cantlay top 10 finish
+  - Min Woo Lee top 10 finish
+  - Viktor Hovland top 10 finish
+  - Collin Morikawa top 10 finish
 
 ## Slate ROI Projection
 - **Picks:** 0
@@ -36,13 +39,13 @@ _Generated 2026-08-27T22:46:31 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **MLB** / Ryan Feltner (PITCHER_FADE)
+- **MLB** / Hayden Wesneski (PITCHER_FADE)
   - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **NBA** / TOR (TEAM_FADE)
-  - Fade angle: team total UNDER
 - **NBA** / MIA (TEAM_FADE)
   - Fade angle: team total UNDER
-- **MLB** / Cade Cavalli (PITCHER_FADE)
+- **NBA** / TOR (TEAM_FADE)
+  - Fade angle: team total UNDER
+- **MLB** / Chris Sale (PITCHER_FADE)
   - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **MLB** / Drew Rasmussen (PITCHER_FADE)
+- **MLB** / Noah Cameron (PITCHER_FADE)
   - Fade angle: K UNDER + outs UNDER + 4+ER YES
