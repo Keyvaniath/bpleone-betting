@@ -1,33 +1,33 @@
 {
-  "generated_at": "2026-08-27T07:04:17",
+  "generated_at": "2026-08-27T09:58:11",
   "stake_assumption": "1u flat per pick",
   "total_picks": 10000,
-  "n_settled": 9811,
-  "n_pending": 122,
-  "n_void": 67,
-  "wins": 3541,
-  "losses": 6261,
+  "n_settled": 9752,
+  "n_pending": 248,
+  "n_void": 0,
+  "wins": 3507,
+  "losses": 6236,
   "pushes": 9,
-  "hit_rate": 0.3613,
-  "net_units": -2053.456,
-  "roi_pct": -20.95,
-  "n_calibrated_picks": 9868,
+  "hit_rate": 0.36,
+  "net_units": -2044.087,
+  "roi_pct": -20.98,
+  "n_calibrated_picks": 9827,
   "calibrated_reliability": {
-    "n": 9700,
-    "ece_raw": 0.0956,
-    "ece_calibrated": 0.0155,
-    "brier_raw": 0.20855,
-    "brier_calibrated": 0.19016,
+    "n": 9641,
+    "ece_raw": 0.0955,
+    "ece_calibrated": 0.0147,
+    "brier_raw": 0.20827,
+    "brier_calibrated": 0.19012,
     "note": "In-sample over the settled ledger (the isotonic transform is fit on these same outcomes); held-out 70/30 validation is in recalibration_map.json. p_predicted = raw model prob (kept untouched for the learning loop); p_calibrated = honest prob stamped per pick. Lower ECE/Brier on the calibrated column = the displayed % is truer."
   },
   "curated": {
-    "n_settled": 937,
-    "wins": 650,
-    "losses": 278,
+    "n_settled": 922,
+    "wins": 637,
+    "losses": 276,
     "pushes": 9,
-    "hit_rate": 0.7004,
-    "net_units": 123.36,
-    "roi_pct": 13.29,
+    "hit_rate": 0.6977,
+    "net_units": 118.907,
+    "roi_pct": 13.02,
     "sources": [
       "consensus_hit_elite",
       "consensus_hit_strong",
@@ -47,177 +47,15 @@
       "hit_rate": 0.3969
     }
   },
-  "n_added_this_run": 12,
-  "n_newly_settled_this_run": 55,
+  "n_added_this_run": 126,
+  "n_newly_settled_this_run": 0,
   "n_resettled_this_run": 0,
-  "n_voided_this_run": 79,
-  "n_duplicates_collapsed_this_run": 101,
-  "n_duplicate_adds_blocked_this_run": 219,
+  "n_voided_this_run": 0,
+  "n_duplicates_collapsed_this_run": 34,
+  "n_duplicate_adds_blocked_this_run": 91,
   "n_reconciled_settled_voids": 0,
-  "n_bootstrapped_from_locks_history": 101,
+  "n_bootstrapped_from_locks_history": 34,
   "by_source": {
-    "mlb_hrr_3_plus_hrr": {
-      "n": 641,
-      "wins": 137,
-      "losses": 504,
-      "pushes": 0,
-      "net_units": -391.085,
-      "hit_rate": 0.2137,
-      "roi_pct": -61.01
-    },
-    "mlb_total_bases_2plus": {
-      "n": 47,
-      "wins": 13,
-      "losses": 34,
-      "pushes": 0,
-      "net_units": -27.816,
-      "hit_rate": 0.2766,
-      "roi_pct": -59.18
-    },
-    "lock_of_day": {
-      "n": 347,
-      "wins": 293,
-      "losses": 54,
-      "pushes": 0,
-      "net_units": 46.241,
-      "hit_rate": 0.8444,
-      "roi_pct": 13.33
-    },
-    "top_25_board": {
-      "n": 452,
-      "wins": 275,
-      "losses": 171,
-      "pushes": 6,
-      "net_units": 55.518,
-      "hit_rate": 0.6166,
-      "roi_pct": 12.45
-    },
-    "golf_top_20": {
-      "n": 330,
-      "wins": 167,
-      "losses": 163,
-      "pushes": 0,
-      "net_units": -25.313,
-      "hit_rate": 0.5061,
-      "roi_pct": -7.67
-    },
-    "mlb_game_total_game_total_under_9.5": {
-      "n": 24,
-      "wins": 17,
-      "losses": 7,
-      "pushes": 0,
-      "net_units": 3.778,
-      "hit_rate": 0.7083,
-      "roi_pct": 15.74
-    },
-    "mlb_game_total_game_total_over_7.5": {
-      "n": 6,
-      "wins": 4,
-      "losses": 2,
-      "pushes": 0,
-      "net_units": 0.367,
-      "hit_rate": 0.6667,
-      "roi_pct": 6.12
-    },
-    "mlb_game_total_game_total_over_6.5": {
-      "n": 7,
-      "wins": 6,
-      "losses": 1,
-      "pushes": 0,
-      "net_units": 1.7,
-      "hit_rate": 0.8571,
-      "roi_pct": 24.29
-    },
-    "mlb_2plus_hits_hits_2plus_no": {
-      "n": 34,
-      "wins": 27,
-      "losses": 7,
-      "pushes": 0,
-      "net_units": -0.979,
-      "hit_rate": 0.7941,
-      "roi_pct": -2.88
-    },
-    "mlb_rbi_1plus_rbi_1plus_yes": {
-      "n": 7,
-      "wins": 1,
-      "losses": 6,
-      "pushes": 0,
-      "net_units": -5.728,
-      "hit_rate": 0.1429,
-      "roi_pct": -81.83
-    },
-    "mlb_run_to_score_run_yes": {
-      "n": 12,
-      "wins": 3,
-      "losses": 9,
-      "pushes": 0,
-      "net_units": -7.8,
-      "hit_rate": 0.25,
-      "roi_pct": -65.0
-    },
-    "mlb_run_to_score_run_no": {
-      "n": 38,
-      "wins": 26,
-      "losses": 12,
-      "pushes": 0,
-      "net_units": 0.786,
-      "hit_rate": 0.6842,
-      "roi_pct": 2.07
-    },
-    "wnba_alts_home_total_over_79.5": {
-      "n": 1,
-      "wins": 1,
-      "losses": 0,
-      "pushes": 0,
-      "net_units": 0.535,
-      "hit_rate": 1.0,
-      "roi_pct": 53.5
-    },
-    "wnba_alts_home_total_over_80.1": {
-      "n": 1,
-      "wins": 1,
-      "losses": 0,
-      "pushes": 0,
-      "net_units": 0.535,
-      "hit_rate": 1.0,
-      "roi_pct": 53.5
-    },
-    "wnba_alts_home_total_over_81.3": {
-      "n": 3,
-      "wins": 2,
-      "losses": 1,
-      "pushes": 0,
-      "net_units": 0.07,
-      "hit_rate": 0.6667,
-      "roi_pct": 2.33
-    },
-    "wnba_3pm_3pm_under_2.5": {
-      "n": 25,
-      "wins": 17,
-      "losses": 8,
-      "pushes": 0,
-      "net_units": -0.172,
-      "hit_rate": 0.68,
-      "roi_pct": -0.69
-    },
-    "wnba_blkstl_blk_stl_under_3.5": {
-      "n": 11,
-      "wins": 7,
-      "losses": 4,
-      "pushes": 0,
-      "net_units": -0.436,
-      "hit_rate": 0.6364,
-      "roi_pct": -3.96
-    },
-    "wnba_blkstl_blk_stl_under_2.5": {
-      "n": 29,
-      "wins": 21,
-      "losses": 8,
-      "pushes": 0,
-      "net_units": 2.117,
-      "hit_rate": 0.7241,
-      "roi_pct": 7.3
-    },
     "mlb_bk_k_1plus_yes": {
       "n": 62,
       "wins": 36,
@@ -245,6 +83,15 @@
       "hit_rate": 0.2858,
       "roi_pct": -23.33
     },
+    "mlb_hrr_3_plus_hrr": {
+      "n": 629,
+      "wins": 133,
+      "losses": 496,
+      "pushes": 0,
+      "net_units": -385.325,
+      "hit_rate": 0.2114,
+      "roi_pct": -61.26
+    },
     "mlb_hrr_2_plus_hrr": {
       "n": 5,
       "wins": 2,
@@ -253,6 +100,51 @@
       "net_units": -2.26,
       "hit_rate": 0.4,
       "roi_pct": -45.2
+    },
+    "mlb_total_bases_2plus": {
+      "n": 35,
+      "wins": 10,
+      "losses": 25,
+      "pushes": 0,
+      "net_units": -19.727,
+      "hit_rate": 0.2857,
+      "roi_pct": -56.36
+    },
+    "lock_of_day": {
+      "n": 339,
+      "wins": 286,
+      "losses": 53,
+      "pushes": 0,
+      "net_units": 45.981,
+      "hit_rate": 0.8437,
+      "roi_pct": 13.56
+    },
+    "top_25_board": {
+      "n": 445,
+      "wins": 269,
+      "losses": 170,
+      "pushes": 6,
+      "net_units": 51.325,
+      "hit_rate": 0.6128,
+      "roi_pct": 11.69
+    },
+    "mlb_2plus_hits_hits_2plus_no": {
+      "n": 30,
+      "wins": 24,
+      "losses": 6,
+      "pushes": 0,
+      "net_units": -0.744,
+      "hit_rate": 0.8,
+      "roi_pct": -2.48
+    },
+    "mlb_rbi_1plus_rbi_1plus_yes": {
+      "n": 6,
+      "wins": 1,
+      "losses": 5,
+      "pushes": 0,
+      "net_units": -4.727,
+      "hit_rate": 0.1667,
+      "roi_pct": -78.78
     },
     "mlb_rbi_1plus_rbi_1plus_no": {
       "n": 7,
@@ -271,6 +163,24 @@
       "net_units": 14.77,
       "hit_rate": 0.6267,
       "roi_pct": 19.69
+    },
+    "mlb_run_to_score_run_yes": {
+      "n": 11,
+      "wins": 3,
+      "losses": 8,
+      "pushes": 0,
+      "net_units": -6.8,
+      "hit_rate": 0.2727,
+      "roi_pct": -61.82
+    },
+    "mlb_run_to_score_run_no": {
+      "n": 36,
+      "wins": 24,
+      "losses": 12,
+      "pushes": 0,
+      "net_units": -0.014,
+      "hit_rate": 0.6667,
+      "roi_pct": -0.04
     },
     "mlb_hit_to_record_hit_yes": {
       "n": 9,
@@ -307,6 +217,15 @@
       "net_units": -61.297,
       "hit_rate": 0.348,
       "roi_pct": -19.22
+    },
+    "golf_top_20": {
+      "n": 329,
+      "wins": 167,
+      "losses": 162,
+      "pushes": 0,
+      "net_units": -24.313,
+      "hit_rate": 0.5076,
+      "roi_pct": -7.39
     },
     "mlb_bw_walk_1plus_yes": {
       "n": 209,
@@ -353,6 +272,24 @@
       "hit_rate": 0.3333,
       "roi_pct": -44.3
     },
+    "mlb_game_total_game_total_under_9.5": {
+      "n": 21,
+      "wins": 15,
+      "losses": 6,
+      "pushes": 0,
+      "net_units": 3.774,
+      "hit_rate": 0.7143,
+      "roi_pct": 17.97
+    },
+    "mlb_game_total_game_total_over_6.5": {
+      "n": 6,
+      "wins": 5,
+      "losses": 1,
+      "pushes": 0,
+      "net_units": 1.271,
+      "hit_rate": 0.8333,
+      "roi_pct": 21.18
+    },
     "pod": {
       "n": 24,
       "wins": 11,
@@ -361,6 +298,15 @@
       "net_units": -2.001,
       "hit_rate": 0.4783,
       "roi_pct": -8.7
+    },
+    "mlb_game_total_game_total_over_7.5": {
+      "n": 5,
+      "wins": 3,
+      "losses": 2,
+      "pushes": 0,
+      "net_units": -0.179,
+      "hit_rate": 0.6,
+      "roi_pct": -3.58
     },
     "mlb_game_total_game_total_over_8.5": {
       "n": 1,
@@ -415,6 +361,15 @@
       "net_units": -4.124,
       "hit_rate": 0.4667,
       "roi_pct": -27.49
+    },
+    "wnba_blkstl_blk_stl_under_2.5": {
+      "n": 28,
+      "wins": 20,
+      "losses": 8,
+      "pushes": 0,
+      "net_units": 1.679,
+      "hit_rate": 0.7143,
+      "roi_pct": 6.0
     },
     "mlb_3plus_tb_tb_3plus_no": {
       "n": 4,
@@ -713,6 +668,15 @@
       "hit_rate": 0.5,
       "roi_pct": -23.4
     },
+    "wnba_blkstl_blk_stl_under_3.5": {
+      "n": 10,
+      "wins": 7,
+      "losses": 3,
+      "pushes": 0,
+      "net_units": 0.564,
+      "hit_rate": 0.7,
+      "roi_pct": 5.64
+    },
     "wc_model_home_ml": {
       "n": 33,
       "wins": 23,
@@ -767,6 +731,15 @@
       "hit_rate": 0.75,
       "roi_pct": 14.97
     },
+    "wnba_alts_home_total_over_81.3": {
+      "n": 2,
+      "wins": 1,
+      "losses": 1,
+      "pushes": 0,
+      "net_units": -0.465,
+      "hit_rate": 0.5,
+      "roi_pct": -23.25
+    },
     "wnba_alts_home_total_over_78.2": {
       "n": 6,
       "wins": 6,
@@ -793,6 +766,15 @@
       "net_units": -0.438,
       "hit_rate": 0.5,
       "roi_pct": -21.9
+    },
+    "wnba_3pm_3pm_under_2.5": {
+      "n": 24,
+      "wins": 16,
+      "losses": 8,
+      "pushes": 0,
+      "net_units": -0.616,
+      "hit_rate": 0.6667,
+      "roi_pct": -2.57
     },
     "wnba_blkstl_blk_stl_under_1.5": {
       "n": 11,
@@ -1750,134 +1732,6 @@
     }
   },
   "by_market_family": {
-    "3_plus_hrr": {
-      "n": 641,
-      "wins": 137,
-      "losses": 504,
-      "pushes": 0,
-      "net_units": -391.085,
-      "hit_rate": 0.2137
-    },
-    "2_plus_total_bases": {
-      "n": 47,
-      "wins": 13,
-      "losses": 34,
-      "pushes": 0,
-      "net_units": -27.816,
-      "hit_rate": 0.2766
-    },
-    "pp_batter_hrr": {
-      "n": 468,
-      "wins": 387,
-      "losses": 81,
-      "pushes": 0,
-      "net_units": 104.12,
-      "hit_rate": 0.8269
-    },
-    "pp_batter_runs": {
-      "n": 1,
-      "wins": 1,
-      "losses": 0,
-      "pushes": 0,
-      "net_units": 0.046,
-      "hit_rate": 1.0
-    },
-    "pp_batter_rbis": {
-      "n": 6,
-      "wins": 5,
-      "losses": 1,
-      "pushes": 0,
-      "net_units": 0.168,
-      "hit_rate": 0.8333
-    },
-    "ml_away": {
-      "n": 65,
-      "wins": 37,
-      "losses": 28,
-      "pushes": 0,
-      "net_units": 5.694,
-      "hit_rate": 0.5692
-    },
-    "top": {
-      "n": 751,
-      "wins": 313,
-      "losses": 438,
-      "pushes": 0,
-      "net_units": -88.386,
-      "hit_rate": 0.4168
-    },
-    "under": {
-      "n": 106,
-      "wins": 63,
-      "losses": 38,
-      "pushes": 5,
-      "net_units": 14.371,
-      "hit_rate": 0.6238
-    },
-    "over": {
-      "n": 165,
-      "wins": 82,
-      "losses": 79,
-      "pushes": 4,
-      "net_units": -8.825,
-      "hit_rate": 0.5093
-    },
-    "hits_2plus_no": {
-      "n": 34,
-      "wins": 27,
-      "losses": 7,
-      "pushes": 0,
-      "net_units": -0.979,
-      "hit_rate": 0.7941
-    },
-    "rbi_1plus_yes": {
-      "n": 7,
-      "wins": 1,
-      "losses": 6,
-      "pushes": 0,
-      "net_units": -5.728,
-      "hit_rate": 0.1429
-    },
-    "to_score_run_yes": {
-      "n": 12,
-      "wins": 3,
-      "losses": 9,
-      "pushes": 0,
-      "net_units": -7.8,
-      "hit_rate": 0.25
-    },
-    "to_score_run_no": {
-      "n": 38,
-      "wins": 26,
-      "losses": 12,
-      "pushes": 0,
-      "net_units": 0.786,
-      "hit_rate": 0.6842
-    },
-    "home_total_over": {
-      "n": 177,
-      "wins": 148,
-      "losses": 29,
-      "pushes": 0,
-      "net_units": 50.18,
-      "hit_rate": 0.8362
-    },
-    "3pm_under": {
-      "n": 75,
-      "wins": 49,
-      "losses": 26,
-      "pushes": 0,
-      "net_units": -2.813,
-      "hit_rate": 0.6533
-    },
-    "blk_stl_under": {
-      "n": 65,
-      "wins": 43,
-      "losses": 22,
-      "pushes": 0,
-      "net_units": -1.295,
-      "hit_rate": 0.6615
-    },
     "k_1plus_yes": {
       "n": 62,
       "wins": 36,
@@ -1902,6 +1756,14 @@
       "net_units": -643.18,
       "hit_rate": 0.2858
     },
+    "3_plus_hrr": {
+      "n": 629,
+      "wins": 133,
+      "losses": 496,
+      "pushes": 0,
+      "net_units": -385.325,
+      "hit_rate": 0.2114
+    },
     "2_plus_hrr": {
       "n": 5,
       "wins": 2,
@@ -1910,6 +1772,22 @@
       "net_units": -2.26,
       "hit_rate": 0.4
     },
+    "2_plus_total_bases": {
+      "n": 35,
+      "wins": 10,
+      "losses": 25,
+      "pushes": 0,
+      "net_units": -19.727,
+      "hit_rate": 0.2857
+    },
+    "pp_batter_hrr": {
+      "n": 461,
+      "wins": 381,
+      "losses": 80,
+      "pushes": 0,
+      "net_units": 103.217,
+      "hit_rate": 0.8265
+    },
     "ml_home": {
       "n": 34,
       "wins": 21,
@@ -1917,6 +1795,22 @@
       "pushes": 0,
       "net_units": 4.513,
       "hit_rate": 0.6176
+    },
+    "hits_2plus_no": {
+      "n": 30,
+      "wins": 24,
+      "losses": 6,
+      "pushes": 0,
+      "net_units": -0.744,
+      "hit_rate": 0.8
+    },
+    "rbi_1plus_yes": {
+      "n": 6,
+      "wins": 1,
+      "losses": 5,
+      "pushes": 0,
+      "net_units": -4.727,
+      "hit_rate": 0.1667
     },
     "rbi_1plus_no": {
       "n": 7,
@@ -1934,6 +1828,22 @@
       "net_units": 13.77,
       "hit_rate": 0.6184
     },
+    "to_score_run_yes": {
+      "n": 11,
+      "wins": 3,
+      "losses": 8,
+      "pushes": 0,
+      "net_units": -6.8,
+      "hit_rate": 0.2727
+    },
+    "to_score_run_no": {
+      "n": 36,
+      "wins": 24,
+      "losses": 12,
+      "pushes": 0,
+      "net_units": -0.014,
+      "hit_rate": 0.6667
+    },
     "to_record_hit_yes": {
       "n": 9,
       "wins": 8,
@@ -1949,6 +1859,14 @@
       "pushes": 0,
       "net_units": -98.846,
       "hit_rate": 0.4286
+    },
+    "top": {
+      "n": 750,
+      "wins": 313,
+      "losses": 437,
+      "pushes": 0,
+      "net_units": -87.386,
+      "hit_rate": 0.4173
     },
     "walk_1plus_yes": {
       "n": 209,
@@ -1974,6 +1892,30 @@
       "net_units": -504.986,
       "hit_rate": 0.1393
     },
+    "ml_away": {
+      "n": 62,
+      "wins": 34,
+      "losses": 28,
+      "pushes": 0,
+      "net_units": 3.053,
+      "hit_rate": 0.5484
+    },
+    "under": {
+      "n": 102,
+      "wins": 60,
+      "losses": 37,
+      "pushes": 5,
+      "net_units": 13.458,
+      "hit_rate": 0.6186
+    },
+    "over": {
+      "n": 161,
+      "wins": 79,
+      "losses": 78,
+      "pushes": 4,
+      "net_units": -9.709,
+      "hit_rate": 0.5032
+    },
     "pp_batter_total_bases": {
       "n": 20,
       "wins": 18,
@@ -1981,6 +1923,30 @@
       "pushes": 0,
       "net_units": 0.704,
       "hit_rate": 0.9
+    },
+    "pp_batter_rbis": {
+      "n": 5,
+      "wins": 4,
+      "losses": 1,
+      "pushes": 0,
+      "net_units": 0.122,
+      "hit_rate": 0.8
+    },
+    "home_total_over": {
+      "n": 174,
+      "wins": 145,
+      "losses": 29,
+      "pushes": 0,
+      "net_units": 48.575,
+      "hit_rate": 0.8333
+    },
+    "3pm_under": {
+      "n": 74,
+      "wins": 48,
+      "losses": 26,
+      "pushes": 0,
+      "net_units": -3.257,
+      "hit_rate": 0.6486
     },
     "3pm_over": {
       "n": 27,
@@ -1997,6 +1963,14 @@
       "pushes": 0,
       "net_units": 1.583,
       "hit_rate": 0.6944
+    },
+    "blk_stl_under": {
+      "n": 63,
+      "wins": 42,
+      "losses": 21,
+      "pushes": 0,
+      "net_units": -0.73,
+      "hit_rate": 0.6667
     },
     "tb_3plus_no": {
       "n": 4,
@@ -2336,150 +2310,6 @@
     }
   },
   "by_canonical": {
-    "mlb_hrr_2.5_over": {
-      "n": 641,
-      "wins": 137,
-      "losses": 504,
-      "pushes": 0,
-      "net_units": -391.085,
-      "hit_rate": 0.2137
-    },
-    "mlb_tb_1.5_over": {
-      "n": 47,
-      "wins": 13,
-      "losses": 34,
-      "pushes": 0,
-      "net_units": -27.816,
-      "hit_rate": 0.2766
-    },
-    "mlb_hrr_0.5_over": {
-      "n": 16,
-      "wins": 12,
-      "losses": 4,
-      "pushes": 0,
-      "net_units": 1.682,
-      "hit_rate": 0.75
-    },
-    "mlb_run_1.5_under": {
-      "n": 1,
-      "wins": 1,
-      "losses": 0,
-      "pushes": 0,
-      "net_units": 0.046,
-      "hit_rate": 1.0
-    },
-    "mlb_rbi_1.5_under": {
-      "n": 6,
-      "wins": 5,
-      "losses": 1,
-      "pushes": 0,
-      "net_units": 0.168,
-      "hit_rate": 0.8333
-    },
-    "mlb_hrr_4.5_under": {
-      "n": 30,
-      "wins": 30,
-      "losses": 0,
-      "pushes": 0,
-      "net_units": 1.38,
-      "hit_rate": 1.0
-    },
-    "ml_away": {
-      "n": 65,
-      "wins": 37,
-      "losses": 28,
-      "pushes": 0,
-      "net_units": 5.694,
-      "hit_rate": 0.5692
-    },
-    "top": {
-      "n": 751,
-      "wins": 313,
-      "losses": 438,
-      "pushes": 0,
-      "net_units": -88.386,
-      "hit_rate": 0.4168
-    },
-    "under": {
-      "n": 106,
-      "wins": 63,
-      "losses": 38,
-      "pushes": 5,
-      "net_units": 14.371,
-      "hit_rate": 0.6238
-    },
-    "over": {
-      "n": 165,
-      "wins": 82,
-      "losses": 79,
-      "pushes": 4,
-      "net_units": -8.825,
-      "hit_rate": 0.5093
-    },
-    "mlb_hrr_3.5_under": {
-      "n": 412,
-      "wins": 340,
-      "losses": 72,
-      "pushes": 0,
-      "net_units": 103.952,
-      "hit_rate": 0.8252
-    },
-    "mlb_hit_1.5_under": {
-      "n": 34,
-      "wins": 27,
-      "losses": 7,
-      "pushes": 0,
-      "net_units": -0.979,
-      "hit_rate": 0.7941
-    },
-    "mlb_rbi_0.5_over": {
-      "n": 7,
-      "wins": 1,
-      "losses": 6,
-      "pushes": 0,
-      "net_units": -5.728,
-      "hit_rate": 0.1429
-    },
-    "mlb_run_0.5_over": {
-      "n": 12,
-      "wins": 3,
-      "losses": 9,
-      "pushes": 0,
-      "net_units": -7.8,
-      "hit_rate": 0.25
-    },
-    "mlb_run_0.5_under": {
-      "n": 38,
-      "wins": 26,
-      "losses": 12,
-      "pushes": 0,
-      "net_units": 0.786,
-      "hit_rate": 0.6842
-    },
-    "home_total_over": {
-      "n": 177,
-      "wins": 148,
-      "losses": 29,
-      "pushes": 0,
-      "net_units": 50.18,
-      "hit_rate": 0.8362
-    },
-    "3pm_under": {
-      "n": 75,
-      "wins": 49,
-      "losses": 26,
-      "pushes": 0,
-      "net_units": -2.813,
-      "hit_rate": 0.6533
-    },
-    "blk_stl_under": {
-      "n": 65,
-      "wins": 43,
-      "losses": 22,
-      "pushes": 0,
-      "net_units": -1.295,
-      "hit_rate": 0.6615
-    },
     "mlb_bk_0.5_over": {
       "n": 62,
       "wins": 36,
@@ -2504,6 +2334,14 @@
       "net_units": -643.18,
       "hit_rate": 0.2858
     },
+    "mlb_hrr_2.5_over": {
+      "n": 629,
+      "wins": 133,
+      "losses": 496,
+      "pushes": 0,
+      "net_units": -385.325,
+      "hit_rate": 0.2114
+    },
     "mlb_hrr_1.5_over": {
       "n": 5,
       "wins": 2,
@@ -2512,6 +2350,22 @@
       "net_units": -2.26,
       "hit_rate": 0.4
     },
+    "mlb_tb_1.5_over": {
+      "n": 35,
+      "wins": 10,
+      "losses": 25,
+      "pushes": 0,
+      "net_units": -19.727,
+      "hit_rate": 0.2857
+    },
+    "mlb_hrr_3.5_under": {
+      "n": 409,
+      "wins": 337,
+      "losses": 72,
+      "pushes": 0,
+      "net_units": 103.125,
+      "hit_rate": 0.824
+    },
     "ml_home": {
       "n": 34,
       "wins": 21,
@@ -2519,6 +2373,22 @@
       "pushes": 0,
       "net_units": 4.513,
       "hit_rate": 0.6176
+    },
+    "mlb_hit_1.5_under": {
+      "n": 30,
+      "wins": 24,
+      "losses": 6,
+      "pushes": 0,
+      "net_units": -0.744,
+      "hit_rate": 0.8
+    },
+    "mlb_rbi_0.5_over": {
+      "n": 6,
+      "wins": 1,
+      "losses": 5,
+      "pushes": 0,
+      "net_units": -4.727,
+      "hit_rate": 0.1667
     },
     "mlb_rbi_0.5_under": {
       "n": 7,
@@ -2536,6 +2406,22 @@
       "net_units": 13.937,
       "hit_rate": 0.6471
     },
+    "mlb_run_0.5_over": {
+      "n": 11,
+      "wins": 3,
+      "losses": 8,
+      "pushes": 0,
+      "net_units": -6.8,
+      "hit_rate": 0.2727
+    },
+    "mlb_run_0.5_under": {
+      "n": 36,
+      "wins": 24,
+      "losses": 12,
+      "pushes": 0,
+      "net_units": -0.014,
+      "hit_rate": 0.6667
+    },
     "mlb_hit_0.5_under": {
       "n": 462,
       "wins": 198,
@@ -2543,6 +2429,14 @@
       "pushes": 0,
       "net_units": -98.846,
       "hit_rate": 0.4286
+    },
+    "top": {
+      "n": 750,
+      "wins": 313,
+      "losses": 437,
+      "pushes": 0,
+      "net_units": -87.386,
+      "hit_rate": 0.4173
     },
     "mlb_walk_0.5_over": {
       "n": 209,
@@ -2576,6 +2470,30 @@
       "net_units": -2.894,
       "hit_rate": 0.5
     },
+    "ml_away": {
+      "n": 62,
+      "wins": 34,
+      "losses": 28,
+      "pushes": 0,
+      "net_units": 3.053,
+      "hit_rate": 0.5484
+    },
+    "under": {
+      "n": 102,
+      "wins": 60,
+      "losses": 37,
+      "pushes": 5,
+      "net_units": 13.458,
+      "hit_rate": 0.6186
+    },
+    "over": {
+      "n": 161,
+      "wins": 79,
+      "losses": 78,
+      "pushes": 4,
+      "net_units": -9.709,
+      "hit_rate": 0.5032
+    },
     "mlb_tb_3.5_under": {
       "n": 18,
       "wins": 16,
@@ -2583,6 +2501,30 @@
       "pushes": 0,
       "net_units": 0.612,
       "hit_rate": 0.8889
+    },
+    "mlb_rbi_1.5_under": {
+      "n": 5,
+      "wins": 4,
+      "losses": 1,
+      "pushes": 0,
+      "net_units": 0.122,
+      "hit_rate": 0.8
+    },
+    "home_total_over": {
+      "n": 174,
+      "wins": 145,
+      "losses": 29,
+      "pushes": 0,
+      "net_units": 48.575,
+      "hit_rate": 0.8333
+    },
+    "3pm_under": {
+      "n": 74,
+      "wins": 48,
+      "losses": 26,
+      "pushes": 0,
+      "net_units": -3.257,
+      "hit_rate": 0.6486
     },
     "3pm_over": {
       "n": 27,
@@ -2600,6 +2542,14 @@
       "net_units": 1.583,
       "hit_rate": 0.6944
     },
+    "blk_stl_under": {
+      "n": 63,
+      "wins": 42,
+      "losses": 21,
+      "pushes": 0,
+      "net_units": -0.73,
+      "hit_rate": 0.6667
+    },
     "mlb_tb_2.5_under": {
       "n": 6,
       "wins": 6,
@@ -2607,6 +2557,14 @@
       "pushes": 0,
       "net_units": 0.478,
       "hit_rate": 1.0
+    },
+    "mlb_hrr_0.5_over": {
+      "n": 13,
+      "wins": 10,
+      "losses": 3,
+      "pushes": 0,
+      "net_units": 1.652,
+      "hit_rate": 0.7692
     },
     "mlb_bk_0.5_under": {
       "n": 6,
@@ -2687,6 +2645,14 @@
       "pushes": 0,
       "net_units": -2.112,
       "hit_rate": 0.5
+    },
+    "mlb_hrr_4.5_under": {
+      "n": 29,
+      "wins": 29,
+      "losses": 0,
+      "pushes": 0,
+      "net_units": 1.334,
+      "hit_rate": 1.0
     },
     "away_plus": {
       "n": 1,
@@ -2939,55 +2905,55 @@
   },
   "by_sport": {
     "MLB": {
-      "n": 7594,
-      "settled": 7502,
-      "wins": 2113,
-      "losses": 5380,
+      "n": 7647,
+      "settled": 7459,
+      "wins": 2092,
+      "losses": 5358,
       "pushes": 9,
-      "pending": 92,
+      "pending": 188,
       "void": 0,
-      "net_units": -2187.191,
-      "hit_rate": 0.282,
-      "roi_pct": -29.19,
+      "net_units": -2176.342,
+      "hit_rate": 0.2808,
+      "roi_pct": -29.21,
       "markets": 32
     },
     "MLB-PP": {
-      "n": 565,
-      "settled": 498,
-      "wins": 414,
-      "losses": 84,
+      "n": 489,
+      "settled": 489,
+      "wins": 406,
+      "losses": 83,
       "pushes": 0,
       "pending": 0,
-      "void": 67,
-      "net_units": 105.176,
-      "hit_rate": 0.8313,
-      "roi_pct": 21.12,
+      "void": 0,
+      "net_units": 104.181,
+      "hit_rate": 0.8303,
+      "roi_pct": 21.3,
       "markets": 2
     },
     "GOLF": {
-      "n": 709,
-      "settled": 709,
+      "n": 708,
+      "settled": 708,
       "wins": 298,
-      "losses": 411,
+      "losses": 410,
       "pushes": 0,
       "pending": 0,
       "void": 0,
-      "net_units": -69.151,
-      "hit_rate": 0.4203,
-      "roi_pct": -9.75,
+      "net_units": -68.154,
+      "hit_rate": 0.4209,
+      "roi_pct": -9.63,
       "markets": 3
     },
     "WNBA": {
-      "n": 424,
-      "settled": 403,
-      "wins": 298,
-      "losses": 105,
+      "n": 418,
+      "settled": 397,
+      "wins": 293,
+      "losses": 104,
       "pushes": 0,
       "pending": 21,
       "void": 0,
-      "net_units": 47.851,
-      "hit_rate": 0.7395,
-      "roi_pct": 11.87,
+      "net_units": 46.371,
+      "hit_rate": 0.738,
+      "roi_pct": 11.68,
       "markets": 4
     },
     "EPL": {
@@ -3030,17 +2996,17 @@
       "markets": 4
     },
     "NHL": {
-      "n": 11,
+      "n": 35,
       "settled": 11,
       "wins": 4,
       "losses": 7,
       "pushes": 0,
-      "pending": 0,
+      "pending": 24,
       "void": 0,
       "net_units": -5.112,
       "hit_rate": 0.3636,
       "roi_pct": -46.47,
-      "markets": 3
+      "markets": 6
     },
     "F1": {
       "n": 47,
@@ -3093,6 +3059,19 @@
       "hit_rate": null,
       "roi_pct": null,
       "markets": 3
+    },
+    "KBO": {
+      "n": 6,
+      "settled": 0,
+      "wins": 0,
+      "losses": 0,
+      "pushes": 0,
+      "pending": 6,
+      "void": 0,
+      "net_units": 0.0,
+      "hit_rate": null,
+      "roi_pct": null,
+      "markets": 1
     }
   },
   "last_7_days": {
