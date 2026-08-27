@@ -1,25 +1,25 @@
-# EdgeStat Daily Summary — 2026-08-24
+# EdgeStat Daily Summary — 2026-08-27
 
-## 🏥 Model Health: 59.9/100 [OK]
+## 🏥 Model Health: 57.0/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 100.0/100
+  - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 0/100
-  - 🔴 Brier Trend: 32.3/100
+  - 🔴 Brier Trend: 36.1/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 95.5/100
+  - 🟡 Data Health: 77.3/100
   - 🔴 Edge Count: 42.9/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.562)
-- **Total games on board:** 87
-- **Strong home favorites:** 1 | **Strong road dogs:** 1
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.558)
+- **Total games on board:** 100
+- **Strong home favorites:** 7 | **Strong road dogs:** 3
 
 ## 🎯 Top 5 Best Bets
 1. **CHC @ ARI YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 2. **TEX @ CHW YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 3. **MIN @ OAK YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-4. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
-5. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
+4. **CIN @ SFG YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
+5. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
 - [STRONG] **[MLB]** CHC @ ARI CHC_ML -- 67% / +28.5% (score 2.5)
@@ -53,30 +53,35 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (2)
-- [WNBA] **Minnesota Lynx** HOME (4-0 L10) · model 73.3% fair -274
-- [WNBA] **Atlanta Dream** AWAY (5-1 L10) · model 70.7% fair -241
+## ⚡ Pre-Game HIGH Conviction (7)
+- [EPL] **Manchester City** AWAY (1-0 L10) · model 74.4% fair -290
+- [MLS] **Portland Timbers** HOME (1-2 L10) · model 66.7% fair -200
+- [MLS] **LAFC** AWAY (0-3 L10) · model 65.2% fair -187
+- [MLS] **Colorado Rapids** HOME (2-1 L10) · model 64.9% fair -185
+- [MLS] **Houston Dynamo FC** HOME (3-1 L10) · model 63.7% fair -175
+- [MLS] **Vancouver Whitecaps** AWAY (2-1 L10) · model 62.9% fair -170
+- [MLS] **San Diego FC** HOME (2-1 L10) · model 62.2% fair -165
 
 ## 🔥/❄️ Heat / Cold Signals
-- Hot teams: **4** | Cold teams: **11** | Over-heavy: 0 | Under-heavy: 6
+- Hot teams: **3** | Cold teams: **11** | Over-heavy: 0 | Under-heavy: 5
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (70)
-- RESIDUAL_DIVERGENCE: **2**
-- STEAM_MOVE: **62**
+## ⚠️ Anomaly Detector (85)
+- RESIDUAL_DIVERGENCE: **12**
+- STEAM_MOVE: **67**
 - COMPOUND_BULLPEN: **4**
 - PEN_MISMATCH: **2**
-  - Los Angeles Sparks (WNBA): Los Angeles Sparks UNDERPERFORMING expected margin by 6.0pts in recent games -- model bias may persist
-  - Atlanta Dream (WNBA): Atlanta Dream OUTPERFORMING expected margin by 11.1pts in recent games -- model bias may persist
-  - WSH @ DET (NFL): ML/TOTAL steam since open: ML -15.7pp toward WSH; total -1 (UNDER) (14 snapshots)
-  - NYJ @ PIT (NFL): ML/TOTAL steam since open: ML +11.5pp toward PIT; total +2 (OVER) (11 snapshots)
-  - KCR @ LAA (MLB): ML/TOTAL steam since open: ML -11.0pp toward KCR; total +0.5 (OVER) (4 snapshots)
+  - Chicago Fire FC (MLS): Chicago Fire FC UNDERPERFORMING expected margin by 9.3pts in recent games -- model bias may persist
+  - Atlanta United FC (MLS): Atlanta United FC UNDERPERFORMING expected margin by 8.2pts in recent games -- model bias may persist
+  - Columbus Crew (MLS): Columbus Crew OUTPERFORMING expected margin by 8.7pts in recent games -- model bias may persist
+  - LAFC (MLS): LAFC OUTPERFORMING expected margin by 9.3pts in recent games -- model bias may persist
+  - Inter Miami CF (MLS): Inter Miami CF OUTPERFORMING expected margin by 10.4pts in recent games -- model bias may persist
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$3.84**
+- Expected EV: **$1.8**
   - #1 [NRFI] $50 on CHC @ ARI YRFI (1st-inning OVER 0.5) (P=77%)
-  - #2 [NRFI] $50 on TEX @ CHW YRFI (1st-inning OVER 0.5) (P=70%)
+  - #2 [NRFI] $50 on TEX @ CHW YRFI (1st-inning OVER 0.5) (P=69%)
   - #3 [NRFI] $50 on MIN @ OAK YRFI (1st-inning OVER 0.5) (P=67%)
   - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
@@ -117,17 +122,17 @@
   - ❄️ **Wyndham Clark** (USA): Sunday +4.2 vs tourney avg
   - ❄️ **J.J. Spaun** (USA): Sunday +4.2 vs tourney avg
 
-## 🔥 MLB Batter Heat (47 HOT / 69 COLD)
-  - 🔥 **Pete Alonso** (BAL): L14 .463 / season .270 (+193pts)
-  - 🔥 **Alec Bohm** (PHI): L14 .420 / season .248 (+172pts)
-  - 🔥 **Jac Caglianone** (KC): L14 .442 / season .276 (+166pts)
-  - 🔥 **Vinnie Pasquantino** (KC): L14 .360 / season .245 (+115pts)
-  - 🔥 **Randal Grichuk** (CWS): L14 .387 / season .281 (+106pts)
-  - ❄️ **Dillon Dingler** (DET): L14 .071 / season .253 (-182pts) -- FADE props
-  - ❄️ **David Fry** (CLE): L14 .000 / season .182 (-182pts) -- FADE props
-  - ❄️ **Joc Pederson** (TEX): L14 .067 / season .235 (-168pts) -- FADE props
-  - ❄️ **Byron Buxton** (MIN): L14 .102 / season .251 (-149pts) -- FADE props
-  - ❄️ **Tyler Tolbert** (KC): L14 .138 / season .286 (-148pts) -- FADE props
+## 🔥 MLB Batter Heat (35 HOT / 58 COLD)
+  - 🔥 **Alec Bohm** (PHI): L14 .392 / season .245 (+147pts)
+  - 🔥 **Pete Alonso** (BAL): L14 .418 / season .274 (+144pts)
+  - 🔥 **Miguel Vargas** (CWS): L14 .388 / season .251 (+137pts)
+  - 🔥 **Lawrence Butler** (ATH): L14 .360 / season .227 (+133pts)
+  - 🔥 **Jac Caglianone** (KC): L14 .404 / season .274 (+130pts)
+  - ❄️ **Nick Fortes** (TB): L14 .107 / season .263 (-156pts) -- FADE props
+  - ❄️ **Brandon Nimmo** (TEX): L14 .109 / season .259 (-150pts) -- FADE props
+  - ❄️ **Dillon Dingler** (DET): L14 .111 / season .254 (-143pts) -- FADE props
+  - ❄️ **Joc Pederson** (TEX): L14 .097 / season .237 (-140pts) -- FADE props
+  - ❄️ **Cole Young** (SEA): L14 .113 / season .248 (-135pts) -- FADE props
 
 ## 📈 Streak Regression Alerts (2)
 - [WNBA] Minnesota Lynx on W4 L10 4-0 -- Minnesota Lynx on W4 -- no historical sample
@@ -141,7 +146,7 @@
   - ⚠️ batter_rbis (Brier Δ -0.0052)
 
 ## 🤖 Self-Training Status
-- **WNBA**: n=39 games · hit rate 59.0% · bias -3.5pp [calibration applied]
+- **WNBA**: n=38 games · hit rate 60.5% · bias -1.8pp
 - **MLS**: n=46 games · hit rate 45.6% · bias +2.9pp [calibration applied]
-- **EPL**: n=9 games · hit rate 77.8% · bias -24.1pp
-- **MLB**: n=188 games · hit rate 53.2% · bias +1.3pp
+- **EPL**: n=10 games · hit rate 70.0% · bias -15.8pp
+- **MLB**: n=188 games · hit rate 55.3% · bias -0.1pp

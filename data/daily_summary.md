@@ -1,108 +1,89 @@
-# EdgeStat Daily Brief - 2026-08-24
+# EdgeStat Daily Brief - 2026-08-27
 
-**Model Confidence: 19.4/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
+**Model Confidence: 19.1/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
 
 _Pipeline health: **WARNING** (12/15 artifacts ok; 3 empty, 0 stale)._ 
 
-_Generated at 2026-08-24T22:37:08 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-08-27T22:47:37 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
-**COL @ WSN - OVER_8.0**
+**LAD @ ATL - OVER_6.5**
 - Market: -110
-- Model probability: 90.1%
-- Raw edge: +71.93%
+- Model probability: 70.0%
+- Raw edge: +33.54%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
 
-## Full Slate (10 games)
+## Full Slate (4 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 6:40p ET | TBR @ DET | Comerica Park | 69F 3mph | TBR_ML +4.51% |
-| 6:40p ET | BOS @ MIA | loanDepot park | indoor | BOS_ML +7.27% |
-| 6:45p ET | COL @ WSN | Nationals Park | 69F 4mph | OVER_8.0 +71.93% |
-| 7:40p ET | TEX @ CHW | Rate Field | 66F 7mph | CHW_ML +38.71% |
-| 9:38p ET | CLE @ LAA | Angel Stadium | 74F 5mph | CLE_ML +10.29% |
-| 9:40p ET | CHC @ ARI | Chase Field | indoor | OVER_8.5 +50.67% |
-| 9:40p ET | PIT @ SDP | Petco Park | 72F 2mph | PIT_ML +24.52% |
-| 9:40p ET | MIN @ OAK | Sutter Health Park | 72F 8mph | OVER_9.5 +69.05% |
-| 9:40p ET | PHI @ SEA | T-Mobile Park | indoor | PHI_ML +21.68% |
-| 9:45p ET | CIN @ SFG | Oracle Park | 58F 12mph | CIN_ML +23.2% |
+| 7:07p ET | KCR @ TOR | Rogers Centre | indoor | KCR_ML +13.84% |
+| 7:10p ET | MIL @ NYM | Citi Field | 72F 3mph | MIL_ML +17.28% |
+| 7:15p ET | LAD @ ATL | Truist Park | 75F 4mph | OVER_6.5 +33.54% |
+| 9:45p ET | ARI @ SFG | Oracle Park | 63F 3mph | SFG_ML +23.15% |
 
 ## Parlays - top 5
 
-- **2-leg @ +287 (prob 38.7%, EV +49.78%)**
-  - PHI @ SEA PHI_ML (-101, model 61.1%)
-  - CIN @ SFG CIN_ML (-106, model 63.3%)
-- **2-leg @ +271 (prob 40.3%, EV +49.59%)**
-  - PIT @ SDP PIT_ML (-106, model 64.1%)
-  - PHI @ SEA UNDER_7.5 (-110, model 62.9%)
-- **3-leg @ +549 (prob 23.0%, EV +49.53%)**
-  - TBR @ DET TBR_ML (-128, model 58.7%)
-  - TEX @ CHW OVER_8.0 (-110, model 62.3%)
-  - PHI @ SEA UNDER_7.5 (-110, model 62.9%)
-- **3-leg @ +462 (prob 26.5%, EV +48.69%)**
-  - CLE @ LAA CLE_ML (-144, model 65.0%)
-  - MIN @ OAK MIN_ML (-150, model 66.5%)
-  - PHI @ SEA PHI_ML (-101, model 61.1%)
-- **2-leg @ +187 (prob 51.8%, EV +48.62%)**
-  - COL @ WSN WSN_ML (-210, model 81.8%)
-  - CIN @ SFG CIN_ML (-106, model 63.3%)
+- **3-leg @ +584 (prob 21.9%, EV +49.65%)**
+  - HOU @ NYY OVER_8.0 (-110, model 64.3%)
+  - KCR @ TOR KCR_ML (-114, model 60.6%)
+  - KCR @ TOR OVER_8.0 (-110, model 56.1%)
+- **2-leg @ +200 (prob 48.1%, EV +43.95%)**
+  - MIL @ NYM MIL_ML (-204, model 78.4%)
+  - ARI @ SFG SFG_ML (+101, model 61.3%)
+- **2-leg @ +184 (prob 50.4%, EV +43.51%)**
+  - HOU @ NYY OVER_8.0 (-110, model 64.3%)
+  - MIL @ NYM MIL_ML (-204, model 78.4%)
+- **3-leg @ +434 (prob 26.7%, EV +42.48%)**
+  - KCR @ TOR KCR_ML (-114, model 60.6%)
+  - KCR @ TOR OVER_8.0 (-110, model 56.1%)
+  - MIL @ NYM MIL_ML (-204, model 78.4%)
+- **2-leg @ +277 (prob 37.1%, EV +40.19%)**
+  - KCR @ TOR KCR_ML (-114, model 60.6%)
+  - ARI @ SFG SFG_ML (+101, model 61.3%)
 
 ## Self-Learning Loop
 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
-| batter total bases | 15 | 40.0% | 50.4% | 1.241 | 0.862 |
 | batter hits | 54 | 63.0% | 57.4% | 0.912 | 1.087 |
+| batter total bases | 15 | 40.0% | 50.4% | 1.241 | 0.862 |
 
-Cumulative graded plays: 9764. Wins: 3586. Hit rate: 36.7%.
+Cumulative graded plays: 9758. Wins: 3528. Hit rate: 36.2%.
 
 ## Auxiliary Markets (Model Fair Prices)
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| BOS @ MIA | 47.5% | +111 | 3.72 | +280 | -280 |
-| CHC @ ARI | 23.4% | +327 | 7.26 | +576 | -576 |
-| CIN @ SFG | 34.2% | +193 | 5.78 | +308 | -308 |
-| CLE @ LAA | 57.8% | -137 | 2.82 | +340 | -340 |
-| COL @ WSN | 38.1% | +163 | 4.7 | -275 | +275 |
-| MIN @ OAK | 32.7% | +206 | 5.81 | +312 | -312 |
-| PHI @ SEA | 45.7% | +119 | 3.91 | +296 | -296 |
-| PIT @ SDP | 51.8% | -108 | 3.32 | +314 | -314 |
-| TBR @ DET | 43.8% | +128 | 4.12 | +253 | -253 |
-| TEX @ CHW | 31.3% | +219 | 5.54 | -130 | +130 |
-
-## Travel / Rest Flags
-
-- **COL @ WSN** (away): travel + back-to-back (+2h tz shift)
-- **CLE @ LAA** (home): travel + back-to-back (-2h tz shift)
-- **MIN @ OAK** (home): travel + back-to-back (-2h tz shift)
-- **PHI @ SEA** (away): travel + back-to-back (-3h tz shift)
-- **CIN @ SFG** (home): travel + back-to-back (-3h tz shift)
+| ARI @ SFG | 31.6% | +216 | 5.87 | +110 | -110 |
+| HOU @ NYY | 44.4% | +125 | 4.06 | -- | -- |
+| KCR @ TOR | 31.9% | +214 | 5.71 | +269 | -269 |
+| LAD @ ATL | 59.0% | -144 | 2.66 | +156 | -156 |
+| MIL @ NYM | 52.3% | -110 | 3.23 | +708 | -708 |
 
 ## Team Form (last 10)
 
-**Hot:** MIL 7-3 (L1, +31), PHI 9-1 (W9, +28), KC 9-1 (W8, +23), LAA 5-5 (L1, +20), BOS 7-3 (W3, +20)
+**Hot:** MIL 7-3 (W1, +38), CLE 8-2 (W7, +23), KC 9-1 (L1, +22), SD 6-4 (W1, +19), NYY 7-3 (W1, +17)
 
-**Cold:** SEA 6-4 (L1, -34), MIN 4-6 (L3, -20), COL 3-7 (L6, -18), CIN 3-7 (L1, -18), TB 3-7 (W1, -18)
+**Cold:** SEA 6-4 (L1, -33), COL 2-8 (L1, -25), HOU 3-7 (L1, -24), STL 4-6 (W1, -19), DET 2-8 (L1, -15)
 
 ## Gassed Bullpens (> 8.0 IP in 2 days)
 
-- ATH: 11.0 IP across 2 games
-- PIT: 10.0 IP across 2 games
-- SD: 9.1 IP across 2 games
-- CWS: 13.1 IP across 2 games
-- NYY: 8.8 IP across 2 games
-- AZ: 9.8 IP across 2 games
-- CHC: 8.5 IP across 2 games
-- COL: 10.0 IP across 2 games
+- SF: 8.7 IP across 2 games
+- STL: 13.6 IP across 3 games
+- TB: 8.2 IP across 2 games
+- TEX: 8.2 IP across 2 games
+- TOR: 8.2 IP across 2 games
+- CWS: 9.4 IP across 2 games
+- MIA: 9.2 IP across 2 games
+- MIL: 11.6 IP across 2 games
 
 ## Loop Activity (since last refresh)
 
-- Confidence delta: **+0.0**
+- Confidence delta: **+0.4**
 
 ## Model Recommendations (operator review)
 
@@ -114,4 +95,4 @@ _The model is suggesting 1 parameter tweak based on its own performance. Apply v
 ---
 
 _EdgeStat is a research desk. Bet responsibly. 21+. 1-800-GAMBLER._
-_Source: github.com/Keyvaniath/bpleone-betting - last settled 2026-08-23._
+_Source: github.com/Keyvaniath/bpleone-betting - last settled 2026-08-27._

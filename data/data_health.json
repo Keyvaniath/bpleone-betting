@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-27T07:04:19",
+  "generated_at": "2026-08-27T22:47:52",
   "overall": "red",
   "n_green": 7,
   "n_yellow": 3,
@@ -7,38 +7,36 @@
   "checks": [
     {
       "feed": "freshness",
-      "status": "red",
+      "status": "green",
       "findings": [
-        "sport_coverage.json: 56h old (>28h)",
-        "todays_top_plays.json: 56h old (>28h)",
-        "alpha_pick_of_day.json: 56h old (>30h)",
-        "calibration_map.json: 57h old (>30h)"
+        "8 core artifacts fresh"
       ],
-      "n_stale": 4,
+      "n_stale": 0,
       "ages_h": {
-        "today.json": 4.6,
+        "today.json": 0.0,
         "ledger_summary.json": 0.0,
-        "sport_coverage.json": 56.5,
-        "todays_top_plays.json": 56.5,
-        "alpha_pick_of_day.json": 56.5,
-        "alerts_feed.json": 7.3,
-        "calibration_map.json": 56.7,
-        "espn_odds.json": 7.4
+        "sport_coverage.json": 0.0,
+        "todays_top_plays.json": 0.0,
+        "alpha_pick_of_day.json": 0.0,
+        "alerts_feed.json": 2.2,
+        "calibration_map.json": 0.1,
+        "espn_odds.json": 0.0
       }
     },
     {
       "feed": "mlb",
-      "status": "green",
+      "status": "yellow",
       "findings": [
-        "7 total (7 pre / 0 live / 0 final), local pre=7, live=0"
+        "today.json count off: local=4 vs upstream pre-game=2 (total=7, live=3, final=2)",
+        "live poll catching up: upstream live=3, local=0 (age 11min)"
       ],
       "upstream_count": 7,
-      "upstream_pregame": 7,
-      "upstream_live": 0,
-      "upstream_final": 0,
-      "local_count": 7,
+      "upstream_pregame": 2,
+      "upstream_live": 3,
+      "upstream_final": 2,
+      "local_count": 4,
       "local_live": 0,
-      "live_state_age_min": 0
+      "live_state_age_min": 11
     },
     {
       "feed": "nba",
@@ -49,7 +47,7 @@
       "upstream_count": 1,
       "local_count": 1,
       "upstream_live": 0,
-      "local_age_min": 0
+      "local_age_min": 8
     },
     {
       "feed": "wnba",
@@ -60,7 +58,7 @@
       "upstream_count": 2,
       "local_count": 2,
       "upstream_live": 0,
-      "local_age_min": 0
+      "local_age_min": 11
     },
     {
       "feed": "nhl",
@@ -71,18 +69,18 @@
       "upstream_count": 7,
       "local_count": 7,
       "upstream_live": 0,
-      "local_age_min": 0
+      "local_age_min": 8
     },
     {
       "feed": "mls",
-      "status": "green",
+      "status": "red",
       "findings": [
-        "14 events matched (0 live)"
+        "MLS count mismatch: local=14 vs ESPN=13"
       ],
-      "upstream_count": 14,
+      "upstream_count": 13,
       "local_count": 14,
       "upstream_live": 0,
-      "local_age_min": 0
+      "local_age_min": 11
     },
     {
       "feed": "epl",
@@ -93,18 +91,17 @@
       "upstream_count": 1,
       "local_count": 1,
       "upstream_live": 0,
-      "local_age_min": 0
+      "local_age_min": 11
     },
     {
       "feed": "pitcher_matchup",
-      "status": "yellow",
+      "status": "green",
       "findings": [
-        "only 0/13 pre-game probables in local",
-        "missing: ['Chris Sale', 'Gabriel Hughes', 'Gerrit Cole']..."
+        "4/4 pre-game probables matched"
       ],
-      "upstream_count": 13,
-      "local_count": 20,
-      "matched": 0
+      "upstream_count": 4,
+      "local_count": 10,
+      "matched": 4
     },
     {
       "feed": "props",
@@ -125,27 +122,26 @@
       ],
       "upstream_players": 30,
       "local_players": 50,
-      "local_age_min": 1
+      "local_age_min": 11
     },
     {
       "feed": "desks",
       "status": "yellow",
       "findings": [
-        "tennis_state.json: 56h old (>18h)",
-        "ufc_state.json: 56h old (>36h)",
-        "f1_state.json: 56h old (>30h)",
-        "cws_state.json: 56h old (>36h)",
+        "ufc_state.json: 72h old (>36h)",
+        "f1_state.json: 72h old (>30h)",
+        "cws_state.json: 72h old (>36h)",
         "Desk producer(s) quiet -- likely off-season/between-events, but verify the feed if unexpected."
       ],
-      "n_stale": 4,
+      "n_stale": 3,
       "ages_h": {
-        "tennis_state.json": 56.5,
-        "ufc_state.json": 56.4,
-        "f1_state.json": 56.4,
-        "kbo_state.json": 7.1,
-        "cs_state.json": 7.1,
-        "cws_state.json": 56.4,
-        "worldcup_cards.json": 7.4
+        "tennis_state.json": 0.0,
+        "ufc_state.json": 72.2,
+        "f1_state.json": 72.2,
+        "kbo_state.json": 15.7,
+        "cs_state.json": 15.7,
+        "cws_state.json": 72.2,
+        "worldcup_cards.json": 0.0
       }
     }
   ]
