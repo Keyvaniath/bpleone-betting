@@ -1,7 +1,53 @@
 {
-  "generated_at": "2026-08-31T00:07:36",
-  "matchup": "CIN @ COL",
-  "label": "CIN_ML",
-  "error": "No matching game in matchups.json",
-  "factors": []
+  "generated_at": "2026-08-31T05:30:07",
+  "matchup": "BAL @ COL",
+  "label": "OVER_10.5",
+  "model_fair_total": null,
+  "market_total": 10.5,
+  "factors": [
+    {
+      "name": "Starting Pitcher (TBD vs Gordon)",
+      "contribution": 0.324,
+      "unit": "runs",
+      "detail": "TBD ERA 4.20 vs Gordon ERA 5.38 (avg 4.79 vs league 4.20)"
+    },
+    {
+      "name": "Lineup Strength (OPS)",
+      "contribution": 0.029,
+      "unit": "runs",
+      "detail": "avg team OPS 0.726 vs league 0.720"
+    },
+    {
+      "name": "Bullpen Freshness (IP last 2d)",
+      "contribution": 0.265,
+      "unit": "runs",
+      "detail": "avg pen IP last 2d: 9.3 (>4 = tired)"
+    },
+    {
+      "name": "Park Factor (Coors Field)",
+      "contribution": -0.331,
+      "unit": "runs",
+      "detail": "carry index 0.22 vs neutral 0.50"
+    },
+    {
+      "name": "Weather (69F)",
+      "contribution": -0.036,
+      "unit": "runs",
+      "detail": "69F (warmer = more carry), wind 3 mph"
+    },
+    {
+      "name": "Umpire (?)",
+      "contribution": -0.0,
+      "unit": "runs",
+      "detail": "K mult 1.00 (>1.0 = tight zone, fewer runs)"
+    },
+    {
+      "name": "Pitcher Recent Form (3 starts vs season)",
+      "contribution": -0.609,
+      "unit": "runs",
+      "detail": "mean recent-vs-season ERA delta"
+    }
+  ],
+  "total_contribution_runs": -0.358,
+  "note": "Each factor is the marginal expected-runs contribution to the game total. Positive = pushes total UP (favors OVER). Negative = favors UNDER. Sum across factors approximates the model's edge vs league baseline."
 }
