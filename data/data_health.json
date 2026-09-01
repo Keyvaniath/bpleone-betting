@@ -1,43 +1,43 @@
 {
-  "generated_at": "2026-09-01T00:38:37",
+  "generated_at": "2026-09-01T05:40:16",
   "overall": "red",
-  "n_green": 6,
-  "n_yellow": 4,
+  "n_green": 7,
+  "n_yellow": 3,
   "n_red": 1,
   "checks": [
     {
       "feed": "freshness",
       "status": "red",
       "findings": [
-        "sport_coverage.json: 97h old (>28h)",
-        "todays_top_plays.json: 97h old (>28h)",
-        "alpha_pick_of_day.json: 97h old (>30h)",
-        "calibration_map.json: 97h old (>30h)"
+        "sport_coverage.json: 102h old (>28h)",
+        "todays_top_plays.json: 102h old (>28h)",
+        "alpha_pick_of_day.json: 102h old (>30h)",
+        "calibration_map.json: 102h old (>30h)"
       ],
       "n_stale": 4,
       "ages_h": {
-        "today.json": 3.0,
+        "today.json": 4.7,
         "ledger_summary.json": 0.0,
-        "sport_coverage.json": 96.8,
-        "todays_top_plays.json": 96.8,
-        "alpha_pick_of_day.json": 96.8,
-        "alerts_feed.json": 1.7,
-        "calibration_map.json": 97.0,
-        "espn_odds.json": 1.7
+        "sport_coverage.json": 101.8,
+        "todays_top_plays.json": 101.8,
+        "alpha_pick_of_day.json": 101.8,
+        "alerts_feed.json": 0.3,
+        "calibration_map.json": 102.0,
+        "espn_odds.json": 0.4
       }
     },
     {
       "feed": "mlb",
-      "status": "yellow",
+      "status": "green",
       "findings": [
-        "today.json count off: local=12 vs upstream pre-game=15 (total=15, live=0, final=0)"
+        "15 total (15 pre / 0 live / 0 final), local pre=15, live=0"
       ],
       "upstream_count": 15,
       "upstream_pregame": 15,
       "upstream_live": 0,
       "upstream_final": 0,
-      "local_count": 12,
-      "local_live": 9,
+      "local_count": 15,
+      "local_live": 0,
       "live_state_age_min": 0
     },
     {
@@ -77,10 +77,10 @@
       "feed": "mls",
       "status": "green",
       "findings": [
-        "2 events matched (0 live)"
+        "1 events matched (0 live)"
       ],
-      "upstream_count": 2,
-      "local_count": 2,
+      "upstream_count": 1,
+      "local_count": 1,
       "upstream_live": 0,
       "local_age_min": 0
     },
@@ -99,10 +99,10 @@
       "feed": "pitcher_matchup",
       "status": "yellow",
       "findings": [
-        "only 0/27 pre-game probables in local",
-        "missing: ['AJ Smith-Shawver', 'Bryan Woo', 'Connor Prielipp']..."
+        "only 0/29 pre-game probables in local",
+        "missing: ['AJ Smith-Shawver', 'Andrew Morris', 'Brady Basso']..."
       ],
-      "upstream_count": 27,
+      "upstream_count": 29,
       "local_count": 2,
       "matched": 0
     },
@@ -110,12 +110,11 @@
       "feed": "props",
       "status": "yellow",
       "findings": [
-        "Odds key VALID but quota EXHAUSTED (4 left) -- the key works, there's just no request budget to fetch props. Raise the plan tier (or cut fetch frequency); you do NOT need a new key.",
-        "Game lines + model/calibration boards unaffected (they don't need the paid key)."
+        "Odds key ACTIVE (quota available) but props.json has 0 props -- check run_props_batch / upstream player-prop availability."
       ],
       "n_props": 0,
       "n_games": 0,
-      "odds_key_state": "exhausted"
+      "odds_key_state": "active"
     },
     {
       "feed": "golf",
@@ -125,27 +124,27 @@
       ],
       "upstream_players": 30,
       "local_players": 30,
-      "local_age_min": 0
+      "local_age_min": 1
     },
     {
       "feed": "desks",
       "status": "yellow",
       "findings": [
-        "tennis_state.json: 97h old (>18h)",
-        "ufc_state.json: 97h old (>36h)",
-        "f1_state.json: 97h old (>30h)",
-        "cws_state.json: 97h old (>36h)",
+        "tennis_state.json: 102h old (>18h)",
+        "ufc_state.json: 102h old (>36h)",
+        "f1_state.json: 102h old (>30h)",
+        "cws_state.json: 102h old (>36h)",
         "Desk producer(s) quiet -- likely off-season/between-events, but verify the feed if unexpected."
       ],
       "n_stale": 4,
       "ages_h": {
-        "tennis_state.json": 96.8,
-        "ufc_state.json": 96.8,
-        "f1_state.json": 96.8,
-        "kbo_state.json": 3.4,
-        "cs_state.json": 3.4,
-        "cws_state.json": 96.8,
-        "worldcup_cards.json": 1.7
+        "tennis_state.json": 101.8,
+        "ufc_state.json": 101.8,
+        "f1_state.json": 101.8,
+        "kbo_state.json": 5.0,
+        "cs_state.json": 5.0,
+        "cws_state.json": 101.8,
+        "worldcup_cards.json": 0.4
       }
     }
   ]
