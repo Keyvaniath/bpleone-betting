@@ -68,6 +68,36 @@ def _player_ids_today() -> Dict[int, Dict[str, str]]:
 LEDGER_PATH = os.path.join(DATA_DIR, "all_picks_ledger.json")
 
 
+def _dfs_lineup_players() -> List[Dict[str, str]]:
+    """{name, kind} for every player in the published MLB DFS lineup + any
+    UNSCORED receipt slate. THE SECOND SETTLEMENT-UNIVERSE HOLE (2026-09-02):
+    DFS lineup players never enter the betting ledger (by design), so when the
+    props boards went quota-dark the gamelog fetch universe shrank to ~nothing
+    and the receipts grader scored 7-9 of 10 slots per slate as 'no box row ->
+    0' -- 11 slates published avg 17 actual DK pts vs 116 projected, a -99
+    'bias' that was a DATA GAP, not a projection miss. The grader's universe
+    must include everyone the receipts will grade."""
+    out: List[Dict[str, str]] = []
+    seen: Set[str] = set()
+    def _take(slots):
+        for s in slots or []:
+            nm = str(s.get("name") or "").strip()
+            if not nm or nm.lower() in seen:
+                continue
+            seen.add(nm.lower())
+            kind = "pitcher" if str(s.get("slot", "")).startswith("P") else "batter"
+            # slots carry mlb_id since 2026-09-02 -- fetch by id when present
+            # (name resolution once returned the WRONG Max Muncy).
+            out.append({"name": nm, "kind": kind, "id": s.get("mlb_id")})
+    dfs = _load(os.path.join(DATA_DIR, "mlb_dfs.json"))
+    _take(((dfs.get("lineups") or {}).get("optimal") or {}).get("slots"))
+    rec = _load(os.path.join(DATA_DIR, "mlb_dfs_receipts.json"))
+    for entry in (rec.get("slates") or {}).values():
+        if not entry.get("scored"):
+            _take((entry.get("optimal") or {}).get("slots"))
+    return out
+
+
 def _pending_ledger_players() -> List[Dict[str, str]]:
     """{name, kind} for every player on a PENDING MLB ledger pick.
 
@@ -252,19 +282,24 @@ def run() -> Dict[str, Any]:
     # people-search (sr.pitcher_id_by_name is a generic person lookup).
     have_names = {str(v.get("name") or "").lower() for v in pids.values()}
     n_ledger = 0
-    for info in _pending_ledger_players():
+    # DFS lineup players join the fetch set (2026-09-02) -- the receipts grader
+    # reads this cache, so its universe must cover them (see _dfs_lineup_players).
+    for info in _pending_ledger_players() + _dfs_lineup_players():
         if len(pids) >= MAX_PLAYERS:
             break
         if info["name"].lower() in have_names:
             continue
-        pid = sr.pitcher_id_by_name(info["name"])
+        # A row that already knows its mlb id (DFS lineup slots) skips name
+        # resolution entirely -- names are not unique (two Max Muncys).
+        pid = info.get("id") or sr.pitcher_id_by_name(info["name"])
         if pid and int(pid) not in pids:
-            pids[int(pid)] = info
+            pids[int(pid)] = {"name": info["name"], "kind": info["kind"]}
             have_names.add(info["name"].lower())
             n_ledger += 1
     pids_limited = dict(list(pids.items())[:MAX_PLAYERS])
     print(f"  pulling gamelogs for {len(pids_limited)} players "
-          f"({len(pids) - n_ledger} with props today + {n_ledger} from pending ledger picks)")
+          f"({len(pids) - n_ledger} with props today + {n_ledger} from pending "
+          f"ledger picks + DFS lineups)")
     out: Dict[str, Any] = {}
     for i, (pid, info) in enumerate(pids_limited.items()):
         if i % 50 == 0:

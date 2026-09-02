@@ -44,8 +44,15 @@ def _http(url: str) -> Optional[Dict[str, Any]]:
         return None
 
 
-def _summarize(ev: Dict[str, Any]) -> Optional[Dict[str, Any]]:
-    """Pull the bits we need from an ESPN event."""
+def _summarize(ev: Dict[str, Any], board_date: Optional[str] = None) -> Optional[Dict[str, Any]]:
+    """Pull the bits we need from an ESPN event.
+
+    board_date (2026-09-02): the calendar day the scoreboard was QUERIED for.
+    ev['date'] is a UTC timestamp, so a west-coast night game (10pm ET = 02:00
+    UTC next day) got stamped one day late -- e.g. the real 8/27 ARI @ SF final
+    sat in this file dated 8/28, where no pick could ever match it. Every
+    consumer (settlement, alpha grading) keys picks by the ET schedule day, so
+    the file must stamp the day ESPN's own schedule calls the game."""
     status = (ev.get("status") or {}).get("type", {})
     if not status.get("completed"):
         return None
@@ -65,7 +72,7 @@ def _summarize(ev: Dict[str, Any]) -> Optional[Dict[str, Any]]:
         return None
     return {
         "id": ev.get("id"),
-        "date": (ev.get("date") or "")[:10],
+        "date": board_date or (ev.get("date") or "")[:10],
         "home_team": (home.get("team") or {}).get("displayName"),
         "away_team": (away.get("team") or {}).get("displayName"),
         "home_abbrev": (home.get("team") or {}).get("abbreviation"),
@@ -92,7 +99,7 @@ def fetch_sport_history(sport_key: str, espn_path: str, days: int) -> Dict[str, 
         if not sb:
             continue
         for ev in (sb.get("events") or []):
-            summary = _summarize(ev)
+            summary = _summarize(ev, board_date=date.isoformat())
             if summary:
                 out.append(summary)
     return {

@@ -1453,12 +1453,19 @@ def _collect_picks_from_sources() -> List[Dict[str, Any]]:
             "matchup": r.get("matchup"),
         })
 
-    # Reverse Line Movement (strong = book moved >=6pp against public favorite)
+    # Reverse Line Movement (strong = book moved >=6pp against public favorite).
+    # DATE-INTEGRITY GATE (2026-09-02): rows must carry game_date (the producer
+    # now emits same-day moves only). Undated rows came from series-conflated
+    # snapshots -- 75 fake "STRONG RLM" picks entered the ledger unsettleable
+    # before this gate; never accept an RLM row that can't name its game's day.
     rlm = _load(os.path.join(DATA_DIR, "reverse_line_movement.json"))
     for r in (rlm.get("strong_only") or []):
+        if not r.get("game_date"):
+            continue
         out.append({
             "source": "rlm_strong",
             "sport": "MLB",
+            "date": r.get("game_date"),
             "player_or_matchup": r.get("matchup"),
             "market": r.get("pick"),  # "HOME ML" or "AWAY ML"
             "prob": None,  # not a prob-based signal, sharp money following
@@ -2319,6 +2326,13 @@ def _settle_picks(history: List[Dict[str, Any]]) -> int:
             # total ONLY. Props like team_sb_under_0.5 / inning totals contain
             # "under_"/"over_" but are NOT full-game totals; a true game total is
             # exactly "over_X"/"under_X" with nothing else.
+            # 'HOME ML'/'AWAY ML' (rlm_strong, found 2026-09-02 with 75 stuck
+            # pendings and ZERO ever settled) normalizes to ml_home/ml_away here
+            # so the branch below grades it like any other moneyline vocab.
+            if market in ("home ml", "home_ml"):
+                market = "ml_home"
+            elif market in ("away ml", "away_ml"):
+                market = "ml_away"
             is_game_line = (("ml_home" in market) or ("ml_away" in market)
                             or re.fullmatch(r"[a-z]{2,4}_ml", market) is not None
                             or re.fullmatch(r"(over|under)_\d+(?:\.\d+)?", market) is not None)
@@ -2355,14 +2369,20 @@ def _settle_picks(history: List[Dict[str, Any]]) -> int:
                         result = "won" if away_s > home_s else "lost"
                     elif re.fullmatch(r"[a-z]{2,4}_ml", market):
                         # '{TEAM}_ML' vocab (e.g. WSN_ML): resolve which side the
-                        # named team is, then grade that side.
+                        # named team is, then grade that side. PREFIX-TOLERANT
+                        # (2026-09-02): exact == could never match the prefix
+                        # vocab pairs (SFG/SF, KCR/KC, TBR/TB, SDP/SD) -- the
+                        # matchup substring tolerated them but this compare
+                        # didn't, so e.g. SFG_ML sat pending forever.
                         _team = _ab(market[:-3])
-                        if _team == _ab(g.get("away_abbrev")):
+                        _aw, _hm = _ab(g.get("away_abbrev")), _ab(g.get("home_abbrev"))
+                        _same = lambda a, b: bool(a and b) and (a == b or a.startswith(b) or b.startswith(a))
+                        if _same(_team, _aw) and not _same(_team, _hm):
                             result = "won" if away_s > home_s else "lost"
-                        elif _team == _ab(g.get("home_abbrev")):
+                        elif _same(_team, _hm) and not _same(_team, _aw):
                             result = "won" if home_s > away_s else "lost"
                         else:
-                            break   # named team isn't in the matched game
+                            break   # named team isn't (unambiguously) in the matched game
                     # Record the real final score that settled it (verifiable).
                     away_ab = g.get("away_abbrev", ""); home_ab = g.get("home_abbrev", "")
                     p["outcome"] = {
@@ -2514,6 +2534,10 @@ def _reconcile_settled_voids(history: List[Dict[str, Any]]) -> int:
             # unpriceable by the season-baseline model, win or lose).
             if str(p.get("voided_reason") or "").startswith("preseason"):
                 continue
+            # RLM date-conflation voids are intentional (2026-09-02): those rows
+            # never named a real single game, so no later grade is trustworthy.
+            if str(p.get("voided_reason") or "").startswith("rlm"):
+                continue
             p["voided"] = False
             p.pop("voided_reason", None)
             p.pop("voided_at", None)
@@ -2569,6 +2593,8 @@ def _recompute_result(p: Dict[str, Any], historical_mlb, by_name) -> Optional[st
     stays auditable. This is the single grading authority shared by the backfill
     and re-settlement passes, so the two never disagree."""
     market = (p.get("market") or "").lower()
+    if market in ("home ml", "home_ml"): market = "ml_home"
+    elif market in ("away ml", "away_ml"): market = "ml_away"
     is_game_line = (("ml_home" in market) or ("ml_away" in market)
                     or re.fullmatch(r"(over|under)_\d+(?:\.\d+)?", market) is not None)
     if is_game_line:
@@ -2631,6 +2657,8 @@ def _regrade_strict(p: Dict[str, Any], historical_mlb, by_name) -> Optional[str]
     -- those must never be auto-flipped (we can't know which game it was). Sets
     p['outcome'] only when it resolves unambiguously."""
     market = (p.get("market") or "").lower()
+    if market in ("home ml", "home_ml"): market = "ml_home"
+    elif market in ("away ml", "away_ml"): market = "ml_away"
     is_game_line = (("ml_home" in market) or ("ml_away" in market)
                     or re.fullmatch(r"(over|under)_\d+(?:\.\d+)?", market) is not None)
     if is_game_line:
@@ -2738,8 +2766,14 @@ def _wager_key(p) -> tuple:
     emitted both vocabularies for one bet, which double-counted it the moment
     both copies graded."""
     mk = _safe_id(p.get("market")).lower()
+    # 'HOME ML'/'AWAY ML' (rlm_strong's space vocab, 2026-09-02) is the same
+    # wager as ml_home/ml_away -- canonicalize so twin copies collapse.
+    if mk in ("home ml", "home_ml"):
+        mk = "ml_home"
+    elif mk in ("away ml", "away_ml"):
+        mk = "ml_away"
     m = re.fullmatch(r"([a-z]{2,4})_ml", mk)
-    if m:
+    if m and mk not in ("ml_home", "ml_away"):
         mu = str(p.get("player_or_matchup") or "").lower()
         away, _, home = [s.strip() for s in mu.partition("@")]
         team = m.group(1)
@@ -2906,6 +2940,25 @@ def run() -> Dict[str, Any]:
     # Retire preseason NFL props BEFORE settlement -- a preseason pick must
     # never grade into the record (see _void_preseason_nfl).
     n_preseason_voided = _void_preseason_nfl(history)
+
+    # Retire the series-conflated RLM picks BEFORE settlement (2026-09-02,
+    # idempotent): every rlm_strong pick dated on/before the fix never named a
+    # real single game (open/close compared across DIFFERENT games of a series,
+    # off a stale May snapshot cache) -- 0 of 75 ever settled. They must never
+    # grade; dated rows from the fixed producer (game_date, same-day moves)
+    # settle normally.
+    n_rlm_voided = 0
+    for p in history:
+        if (str(p.get("source") or "") == "rlm_strong" and not p.get("settled")
+                and not p.get("voided") and str(p.get("date") or "") <= "2026-09-02"):
+            p["voided"] = True
+            p["voided_at"] = dt.datetime.now().isoformat(timespec="seconds")
+            p["voided_reason"] = ("rlm date-conflation: open/close compared across "
+                                  "different games of a series (matchup-keyed snapshot "
+                                  "cache) -- no identifiable game; producer fixed 2026-09-02")
+            n_rlm_voided += 1
+    if n_rlm_voided:
+        print(f"  voided {n_rlm_voided} series-conflated rlm_strong picks (no identifiable game)")
 
     # Settle anything pending
     n_newly_settled = _settle_picks(history)

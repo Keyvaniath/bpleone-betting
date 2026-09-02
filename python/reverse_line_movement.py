@@ -63,14 +63,32 @@ def run() -> Dict[str, Any]:
 
     rlm_picks: List[Dict[str, Any]] = []
 
+    today = dt.date.today().isoformat()
+    yesterday = (dt.date.today() - dt.timedelta(days=1)).isoformat()
     for g in games_obj:
         snapshots = g.get("snapshots") or []
         # Filter to pre-game snapshots only (in-game movement is reactive, not sharp)
         pre = [s for s in snapshots if s.get("state") == "pre"]
         if len(pre) < 2: continue
 
-        open_snap = pre[0]
-        close_snap = pre[-1]
+        # SAME-GAME ONLY (2026-09-02): live_clv keys by MATCHUP, so one entry
+        # accumulates a whole SERIES -- comparing pre[0] vs pre[-1] across days
+        # produced fabricated "moves" like -260 -> +107 (Friday's game vs
+        # Sunday's game, different starters). 75 such fake "STRONG RLM" picks
+        # entered the ledger unsettleable (no single identifiable game).
+        # Use only the LATEST day's snapshots, and only when that day is fresh
+        # (today/yesterday) -- a stale cache must produce zero picks, not
+        # months-old "moves" stamped with today's date.
+        by_day: Dict[str, List[Dict[str, Any]]] = {}
+        for s in pre:
+            by_day.setdefault(str(s.get("t") or "")[:10], []).append(s)
+        latest_day = max(by_day)
+        if latest_day not in (today, yesterday): continue
+        day_pre = by_day[latest_day]
+        if len(day_pre) < 2: continue
+
+        open_snap = day_pre[0]
+        close_snap = day_pre[-1]
 
         # Home side analysis
         for side, ml_key, opp_ml_key in [("home", "home_ml", "away_ml"),
@@ -95,6 +113,7 @@ def run() -> Dict[str, Any]:
                 strength = "STRONG" if abs(delta_pp) >= STRONG_RLM_LINE_PP else "STANDARD"
                 rlm_picks.append({
                     "matchup": g.get("matchup"),
+                    "game_date": latest_day,   # the day whose snapshots produced the move
                     "pick": f"{side.upper()} ML",
                     "side": side.upper(),
                     "public_pct": round(opening_implied, 1),

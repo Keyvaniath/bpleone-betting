@@ -313,7 +313,11 @@ def _slotify(lineup: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
         label = pos if ROSTER_MAX.get(pos, 1) == 1 else f"{pos}{counters[pos]}"
         out.append({"slot": label, "name": r.get("name"), "team": r.get("team"),
                     "pos": r.get("pos"), "salary": r.get("salary"),
-                    "proj": r.get("proj")})
+                    "proj": r.get("proj"),
+                    # mlb_id rides along (2026-09-02) so the receipts grader and
+                    # the gamelog fetcher key by PLAYER ID -- name resolution
+                    # graded the wrong Max Muncy (LAD's) for the ATH lineup slot.
+                    "mlb_id": r.get("mlb_id")})
     return out
 
 
@@ -387,7 +391,27 @@ def run() -> Dict[str, Any]:
         })
 
     # Lineup pool: prune per slot family (keep it exact but fast).
-    playable = [p for p in projections if p.get("status") not in ("O", "OUT", "IR")]
+    # ACTIVITY GATE (2026-09-02): season-rate means can't see the IL -- DK left
+    # several long-injured Athletics unstatused and the optimizer kept seating
+    # them (Langeliers, out since 7/24, anchored C for a week of 0-point slots).
+    # When the gamelog cache KNOWS a player and their newest game is >7 days
+    # old, they're benched from the lineup pool (projection row remains,
+    # labeled). No cache entry = no opinion (don't bench the unknown).
+    gl_cache = _load(os.path.join(DATA_DIR, "player_gamelogs.json")).get("by_player_id") or {}
+    stale_cut = (dt.date.today() - dt.timedelta(days=7)).isoformat()
+    def _known_inactive(p) -> bool:
+        e = gl_cache.get(str(p.get("mlb_id") or ""))
+        if not e or not (e.get("games") or []):
+            return False
+        newest = max(str(g.get("date"))[:10] for g in e["games"] if g.get("date"))
+        return newest < stale_cut
+    n_benched = 0
+    for p in projections:
+        if _known_inactive(p):
+            p["status"] = (p.get("status") or "") + " STALE>7d"
+            n_benched += 1
+    playable = [p for p in projections if p.get("status") not in ("O", "OUT", "IR")
+                and "STALE>7d" not in str(p.get("status") or "")]
     def _top(pred, n_by_proj, n_by_value):
         rows = [p for p in playable if pred(p)]
         by_p = sorted(rows, key=lambda x: -(x["proj"] or 0))[:n_by_proj]

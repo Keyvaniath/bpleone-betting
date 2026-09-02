@@ -119,13 +119,28 @@ def run() -> Dict[str, Any]:
             entry["frozen"] = True
             entry["frozen_at"] = dt.datetime.now().isoformat(timespec="seconds")
 
+    # 1b. RESCORE SWEEP (2026-09-02, idempotent): 11 slates were scored while
+    # the gamelog fetch universe excluded DFS lineup players (the props boards
+    # were quota-dark, so nearly nobody got fetched) -- 7-9 of 10 slots scored
+    # 'no box row -> 0' for players who PLAYED, publishing a fake -99 avg bias.
+    # Those weren't results; they were a data gap. Reset any slate scored
+    # before the universe fix whose result has >=5 zero-DNP slots: it rescores
+    # honestly below once box rows exist, or stays unscored + disclosed when
+    # the box scores have aged out of fetch depth. Honest slates keep their
+    # scores; slates rescored keep a 'rescored_reason' audit note.
+    # (The 2026-09-02 one-shot retraction of coverage-gap scores already ran;
+    # the inline unfetched/below-window handling below prevents a recurrence.
+    # A high-DNP slate can now be REAL -- the 8/19-8/31 lineups genuinely
+    # seated 3-6 IL ghosts (DK left long-injured Athletics unstatused), so a
+    # DNP-count retract sweep would churn honest scores forever.)
+
     # 2. score frozen, unscored, >= 1 day old
     raw_gl = _load(GL_PATH).get("by_player_id") or {}
     gl_by_name: Dict[str, Dict[str, Any]] = {}
     for pid, e in raw_gl.items():
         gl_by_name.setdefault(_norm(e.get("name")), e)
     for sdate, entry in slates.items():
-        if entry.get("scored") or not entry.get("frozen"):
+        if entry.get("scored") or entry.get("unscoreable") or not entry.get("frozen"):
             continue
         if sdate >= today:
             continue
@@ -133,29 +148,77 @@ def run() -> Dict[str, Any]:
         slots_out: List[Dict[str, Any]] = []
         actual_total = 0.0
         n_dnp = 0
+        n_unfetched = 0
         any_scored = False
         for s in b.get("slots") or []:
             is_p = str(s.get("slot", "")).startswith("P")
-            row = _box_row(gl_by_name, s.get("name") or "", sdate)
-            if row is None:
-                slots_out.append({"slot": s.get("slot"), "name": s.get("name"),
+            nm = s.get("name") or ""
+            # ID-FIRST (2026-09-02): the lineup slot's mlb_id keys the gamelog
+            # cache directly -- name matching graded the WRONG Max Muncy (two
+            # active players share the name). Name lookup is the fallback for
+            # slates frozen before slots carried ids.
+            gl_entry = raw_gl.get(str(s.get("mlb_id") or "")) or gl_by_name.get(_norm(nm))
+            if gl_entry is None:
+                # Player ABSENT from the gamelog cache: unfetched, not "sat".
+                # Scoring this as 0 is what corrupted 11 slates -- defer instead.
+                n_unfetched += 1
+                slots_out.append({"slot": s.get("slot"), "name": nm,
                                   "team": s.get("team"), "proj": s.get("proj"),
-                                  "actual": 0.0, "note": "no box row -> 0 (sat or unsampled)"})
-                n_dnp += 1
+                                  "actual": None, "note": "not in gamelog cache (unfetched)"})
+                continue
+            row = next((r for r in gl_entry.get("games") or []
+                        if str(r.get("date"))[:10] == sdate[:10]), None)
+            if row is None:
+                # No row for the slate date. Only a true DNP when the player's
+                # cached window actually COVERS that date -- the cache holds the
+                # last 14 games, so an old slate date can sit BELOW the window
+                # (oldest cached game is newer than the slate) and 'absent'
+                # means unknowable, not sat. Scoring those 0 was the second
+                # false-zero path (caught 2026-09-02 rescoring the reset slates).
+                g_dates = [str(g.get("date"))[:10] for g in gl_entry.get("games") or [] if g.get("date")]
+                covered = bool(g_dates) and min(g_dates) <= sdate[:10]
+                if covered:
+                    slots_out.append({"slot": s.get("slot"), "name": nm,
+                                      "team": s.get("team"), "proj": s.get("proj"),
+                                      "actual": 0.0, "note": "window covers date, no game -> DNP 0"})
+                    n_dnp += 1
+                else:
+                    n_unfetched += 1
+                    slots_out.append({"slot": s.get("slot"), "name": nm,
+                                      "team": s.get("team"), "proj": s.get("proj"),
+                                      "actual": None, "note": "slate date below cached window (unknowable)"})
                 continue
             act = pitcher_actual_dk(row) if is_p else batter_actual_dk(row)
             actual_total += act
             any_scored = True
-            slots_out.append({"slot": s.get("slot"), "name": s.get("name"),
+            slots_out.append({"slot": s.get("slot"), "name": nm,
                               "team": s.get("team"), "proj": s.get("proj"),
                               "actual": act})
-        if any_scored:
+        # Coverage gate: score only when at most 2 slots are unfetched --
+        # otherwise wait for the widened gamelog universe to fill (or, if the
+        # box scores aged out of fetch depth, stay unscored + disclosed).
+        if any_scored and n_unfetched <= 2:
             entry["scored"] = True
             entry["scored_at"] = dt.datetime.now().isoformat(timespec="seconds")
             entry["result"] = {"proj_total": b.get("proj_total"),
                                "actual_total": round(actual_total, 2),
                                "salary_used": b.get("salary_used"),
-                               "n_dnp": n_dnp, "slots": slots_out}
+                               "n_dnp": n_dnp, "n_unfetched": n_unfetched,
+                               "slots": slots_out}
+        elif n_unfetched > 2:
+            # The 14-game window only moves FORWARD -- a slate ~16+ days old
+            # can never regain coverage. Terminal disclosure, not fake zeros.
+            age_days = (dt.date.today() - dt.date.fromisoformat(sdate[:10])).days
+            if age_days > 16:
+                entry["unscoreable"] = True
+                entry["unscoreable_reason"] = (
+                    f"box scores aged out of the 14-game fetch window before the "
+                    f"settlement-universe fix (2026-09-02) covered DFS lineups -- "
+                    f"{n_unfetched}/10 slots unknowable; never scored, never guessed")
+            else:
+                entry["awaiting_box_coverage"] = (
+                    f"{n_unfetched}/10 lineup players not yet in the gamelog cache -- "
+                    "scoring deferred until the fetch universe covers them")
 
     # 3. cumulative
     scored = [(d, e) for d, e in sorted(slates.items()) if e.get("scored")]
@@ -184,6 +247,8 @@ def run() -> Dict[str, Any]:
             "SB/HBP (hitters) and W (pitchers) joined the box feed 2026-08-18; earlier rows score those components 0 (small understatement).",
             "CG / no-hitter bonuses ignored (~0.05 pts EV).",
             "Mean-based v1 projections are the benchmark being graded -- see the mlb-dfs method notes.",
+            "CORRECTION 2026-09-02: 11 slates (8/19-8/30) were originally scored while the box-score fetch universe excluded DFS lineup players -- their zeros were unverifiable. All were retracted and rescored from full per-player box logs (id-keyed; a slot scores 0 only when that player's log covers the date with no game).",
+            "HONEST FINDING from the rescore: the big projected-vs-actual gap is REAL -- DraftKings kept several long-injured Athletics salaried with no O/IR status (Rooker out since 6/08, Langeliers 7/24, Kurtz 7/31, Soderstrom 8/14), season-rate v1 projections priced them healthy, and the optimizer seated 3-6 of these ghosts per slate for two weeks. Fixed 2026-09-02: players whose latest box-log game is >7 days old are benched from the lineup pool (STALE>7d). The scored history stands as-is -- those were the published lineups.",
         ],
     }
     _write(payload)
