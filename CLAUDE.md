@@ -41,6 +41,33 @@ bpleone-site/
 
 ## Current deployment state (LIVE)
 
+- **2026-09-02 — THE 6-DAY PIPELINE OUTAGE (read before touching
+  verify_calibration):** daily-pipeline failed EVERY run 8/28-9/02 because
+  verify_calibration pinned specific families (to_score_run_no empirical,
+  mlb_tb_1.5_over overconfident) whose ledger stats DRIFTED out from under the
+  checks -- guards must probe families chosen from the LIVE sets, never
+  hardcode a family name as an expectation. Everything downstream was dark 6
+  days (finals, settlement, alpha locks) while the heartbeat kept the site
+  looking alive. Four settlement bugs found clearing the backlog: (1) finals
+  stamped event-UTC dates (west-coast night games slid +1 day; ARI@SF 8/27 sat
+  unmatched at 8/28) -- historical_games now stamps the queried board day;
+  (2) 'HOME ML'/'AWAY ML' space vocab never graded (0 settled ever) -- now
+  normalized in settle/recompute/regrade/_wager_key; (3) rlm_strong was
+  UNSOUND: live_clv keys by matchup so open/close spanned DIFFERENT games of a
+  series off a stale May cache -- producer now same-day+fresh only, collector
+  requires game_date, 67 conflated picks voided ('rlm' void reason is
+  intentional, never resurrect); (4) {TEAM}_ML grading used exact abbrev ==
+  (SFG/SF etc. never matched) -- now prefix-tolerant. MLB DFS receipts
+  corrected: gamelog universe includes DFS lineup players (2nd
+  settlement-universe hole), slots score 0 only when the player's ID-KEYED log
+  covers the date, lineup slots carry mlb_id (name matching graded the wrong
+  Max Muncy), 11 coverage-gap slates retracted + rescored. HONEST FINDING (do
+  not 'fix'): the -66 avg receipt bias is REAL -- DK left long-injured
+  Athletics unstatused (Rooker out since 6/08) and v1 seated 3-6 ghosts/slate;
+  the pool now benches players whose latest box-log game is >7d old
+  (STALE>7d). Alpha day 8/27 dropped out of v2 per the aged-out-lock rule (the
+  real SFG ML +101 WON but its ledger row was cap-pruned; do not restate).
+
 - **2026-08-18 (late) — PROVENANCE LAYER + attribution audit:** every headline
   number now shows its why/how/source. (1) Alpha v2 gate emits a `why` chain
   (raw prob -> family n/realized/shift -> implied prob -> edge vs the +2% bar);
