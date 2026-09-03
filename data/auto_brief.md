@@ -1,53 +1,53 @@
 # Tonight's Slate Brief — 2026-09-03
 
-## Slate Quality: 55/100 (MEDIUM)
-_0% lineups confirmed · 8 rookie SPs_
+## Slate Quality: 60/100 (MEDIUM)
+_14% lineups confirmed · 6 rookie SPs_
 **Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
-- **9 games** scheduled
-- **25 best bets** scored: 8 DK · 0 PP · 3 NRFI · 0 SGP
-- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$35.26
-- **MC simulation:** EV +$79.17, 79% P(profit), p05 $-105.29 / p95 $227.32
+- **7 games** scheduled
+- **29 best bets** scored: 8 DK · 0 PP · 6 NRFI · 0 SGP
+- **Auto-portfolio:** 2 picks, $86.69 stake (8.67%), expected +$15.8
+- **MC simulation:** EV +$30.64, 65% P(profit), p05 $-109.53 / p95 $169.99
 
 ## Top 5 Best Bets
-1. **CHW @ HOU YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +25.9%)
-   - P(YRFI) 71.9% vs baseline 46.0%
-2. **STL @ LAD YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +23.8%)
-   - P(YRFI) 69.8% vs baseline 46.0%
-3. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
+1. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
    - Player prop quality score 1.1935
    - Elite player
-4. **LOL ShowMaker OVER 3.5 Kills**  (78/100 ****, edge —)
+2. **LOL ShowMaker OVER 3.5 Kills**  (78/100 ****, edge —)
    - Player prop quality score 1.1892
    - Elite player
-5. **LOL Peyz OVER 4.5 Kills**  (78/100 ****, edge —)
+3. **LOL Peyz OVER 4.5 Kills**  (78/100 ****, edge —)
    - Player prop quality score 1.184
    - Elite player
+4. **SFG @ PIT YRFI (1st-inning OVER 0.5)**  (77/100 ****, edge +17.8%)
+   - P(YRFI) 63.8% vs baseline 46.0%
+5. **KBO NC Dinos vs Kiwoom Heroes ML @ -145**  (76/100 *****, edge —)
+   - Model 59.3% (fair -145)
+   - 
 
-## ⚠️ Trap Warnings — 9 flagged
-- **CHW @ HOU YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +25.9% looks big but only 0 settled props on this player — model unproven
-- **STL @ LAD YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +23.8% looks big but only 0 settled props on this player — model unproven
+## ⚠️ Trap Warnings — 12 flagged
+- **SFG @ PIT YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +17.8% looks big but only 0 settled props on this player — model unproven
 - **Bryce Eldridge OVER 1.5 batter total bases** (low):
    - Edge +17.3% looks big but only 0 settled props on this player — model unproven
-- **NYY @ LAA NRFI (no run 1st inning)** (low):
-   - Edge +16.2% looks big but only 0 settled props on this player — model unproven
 - **Oneil Cruz OVER 1.5 batter total bases** (low):
    - Edge +15.6% looks big but only 0 settled props on this player — model unproven
+- **Rafael Devers OVER 1.5 batter total bases** (low):
+   - Edge +15.0% looks big but only 0 settled props on this player — model unproven
+- **Chase DeLauter OVER 1.5 batter total bases** (low):
+   - Edge +13.6% looks big but only 0 settled props on this player — model unproven
 
 ## Hot streaks
-**Batters heating up:** Sal Stewart (heat +4.79), Tyler Stephenson (heat +4.13), Ty France (heat +3.73)
-**Pitchers on a run:** Yoshinobu Yamamoto (heat +1.67), Cam Schlittler (heat +0.88)
+**Batters heating up:** Patrick Bailey (heat +3.60), George Springer (heat +2.35), Brandon Lowe (heat +1.50)
+**Pitchers on a run:** Cal Quantrill (heat +4.42), Tarik Skubal (heat +0.15)
 
 ## Bullpens GASSED tonight
-Athletics, San Diego Padres, San Francisco Giants, Toronto Blue Jays, Minnesota Twins, Atlanta Braves, Chicago White Sox, Miami Marlins
+Athletics, Pittsburgh Pirates, San Francisco Giants, St. Louis Cardinals, Tampa Bay Rays, Texas Rangers, Toronto Blue Jays, Minnesota Twins
 _Lean late-inning OVER on these games; fade their save situations._
 
 ## NRFI/YRFI strong leans
-- **YRFI** (1st-inning OVER): CHW @ HOU, STL @ LAD
-- **NRFI** (1st-inning UNDER): NYY @ LAA
+- **YRFI** (1st-inning OVER): SFG @ PIT, TOR @ CLE, STL @ LAD, BOS @ BAL, OAK @ SEA
 
 ## Golf -- Biltmore Championship Asheville
 - **Leader:** ? (?) at #?
@@ -71,7 +71,7 @@ _Lean late-inning OVER on these games; fade their save situations._
 - Samsung Lions @ LG Twins | P(home) 55.3% fair -124 | total 8 R
 - **KBO POD:** NC Dinos ML vs Kiwoom Heroes (KBO) (HIGH)
 
-## LoL Esports -- 0 live, 23 upcoming
+## LoL Esports -- 0 live, 28 upcoming
 - [NACL] Contingent Esports vs Maryville University BO5 | P(A) 50.2% fair -101/+101
 - [LCK] kt Rolster vs Dplus KIA BO5 | P(A) 27.6% fair +262/-262
 - [PCS] Reignfall vs SillySilly Gaming BO5 | P(A) 48.5% fair +106/-106
