@@ -314,12 +314,13 @@ DESK_FRESHNESS = [
     ("tennis_state.json", 18), ("ufc_state.json", 36), ("f1_state.json", 30),
     ("kbo_state.json", 18), ("cs_state.json", 18), ("cws_state.json", 36),
     ("worldcup_cards.json", 18),
-    # CFB desk (2026-09-03). The model re-prices on the heartbeat, so 6h stale
-    # means the step stopped running; the ratings only change when games finish
-    # (weekly), so 200h covers a normal Sunday-to-Saturday gap plus slack.
-    # Registered so a dead CFB producer is VISIBLE -- the ncaaf finals file sat
-    # at zero games for a whole season precisely because nothing watched it.
-    ("cfb_model.json", 6), ("cfb_ratings.json", 200),
+    # CFB desk (2026-09-03). Registered so a dead CFB producer is VISIBLE --
+    # the ncaaf finals file sat at zero games for a whole season precisely
+    # because nothing watched it. The model re-prices on the 2-hour heartbeat
+    # (18h tolerates cron jitter and a quiet night); the ratings run daily, so
+    # 30h catches a dead producer within a day. An earlier 200h on the ratings
+    # was uselessly loose -- it would have taken a week to notice.
+    ("cfb_model.json", 18), ("cfb_ratings.json", 30),
 ]
 
 

@@ -89,12 +89,25 @@ def _deep(d, *keys):
     return d
 
 
+# Per-sport scoreboard query params. THE COLLEGE TRUNCATION (2026-09-03): the
+# bare college-football scoreboard returns a CURATED subset -- 25 events on a
+# day with 99. `limit` alone does nothing; `groups=80` (the FBS group) is what
+# unlocks the full slate, and limit must then be raised because CFB Saturdays
+# run past the default page size. Same shape applies to college basketball
+# (group 50 = D-I). The pro leagues take no params and are unaffected.
+SPORT_QUERY = {
+    "ncaaf": "?groups=80&limit=400",
+    "ncaab": "?groups=50&limit=400",
+}
+
+
 def fetch_sport(sport: str) -> List[Dict[str, Any]]:
     path = SPORT_PATHS.get(sport)
     if not path:
         return []
+    q = SPORT_QUERY.get(sport, "")
     try:
-        data = _get(f"https://site.api.espn.com/apis/site/v2/sports/{path}/scoreboard")
+        data = _get(f"https://site.api.espn.com/apis/site/v2/sports/{path}/scoreboard{q}")
     except Exception as e:
         print(f"[espn-odds] {sport} fetch failed: {e!r}")
         return []

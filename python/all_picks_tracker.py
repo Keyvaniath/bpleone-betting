@@ -41,7 +41,19 @@ except Exception:  # taxonomy is optional; fall back to the generic family
 
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 OUT = os.path.join(DATA_DIR, "all_picks_ledger.json")
-MAX_PICKS = 10000
+# RAISED 10000 -> 14000 (2026-09-03). The ledger had reached the old cap with
+# ZERO eviction headroom: 9840 settled, 160 pending, 0 voided, 0 stale pendings.
+# The eviction ladder below is correct -- it spends voided rows and dead
+# pendings before touching history -- but with none of those left, every pick
+# added was tail-cutting the OLDEST SETTLED RESULT. The public track record was
+# silently shrinking by exactly as many rows as the desks produced each day,
+# which is the same erosion caught on 2026-07-06 (settled fell 6526 -> 6357),
+# returning by a different route now that the signal-free rows are exhausted.
+# Discovered while adding the CFB desk: a new pick source against a zero-
+# headroom ledger buys its rows with real settled history. Raising the cap does
+# not restate anything -- past evictions are already gone from the artifact
+# (recoverable from git) -- it stops the bleeding going forward.
+MAX_PICKS = 14000
 
 
 def _load(p):
