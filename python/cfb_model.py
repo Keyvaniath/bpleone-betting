@@ -131,9 +131,19 @@ def _et_date(commence_utc: Any) -> Optional[str]:
 # a computation. These are the bars, checked every run against the REAL ledger,
 # and published in the artifact so the desk's status is never a claim someone
 # has to trust.
-GRAD_MIN_SETTLED = 100      # a season's worth of graded picks, not a hot week
-GRAD_MIN_ROI = 0.0          # must not be losing money
-GRAD_MIN_CI_FLOOR = -0.05   # bootstrap floor: allow variance, forbid a hole
+#
+# WHAT THESE BARS ARE, AND WHAT THEY ARE NOT (be precise, because the honest
+# version of this is unflattering): at the volume this gate produces -- roughly
+# 0-4 picks per Saturday -- a full season yields well under 100 settled picks,
+# and even 100 picks CANNOT distinguish a +3% edge from zero. Separating those
+# at two sigma needs thousands of bets. So these bars are a FLOOR, not proof of
+# skill: they say the plumbing settles, the calibration has a real sample, and
+# the desk is not visibly bleeding. Clearing them opens a review by a human who
+# then has to look at CLV -- did the line move toward us -- which is the only
+# metric with any power at this sample size. Nothing here ever claims that a
+# profitable-looking 100 picks is evidence of an edge.
+GRAD_MIN_SETTLED = 100
+GRAD_MIN_ROI = 0.0
 LEDGER_PATH = os.path.join(DATA_DIR, "all_picks_ledger.json")
 
 
@@ -165,12 +175,19 @@ def graduation_status() -> Dict[str, Any]:
         "net_units": round(net, 2),
         "roi_pct": round(roi * 100, 2) if roi is not None else None,
         "bars": {"min_settled": GRAD_MIN_SETTLED,
-                 "min_roi_pct": GRAD_MIN_ROI * 100,
-                 "min_ci_floor_pct": GRAD_MIN_CI_FLOOR * 100},
+                 "min_roi_pct": GRAD_MIN_ROI * 100},
         "unmet": unmet,
         "note": ("Until every bar is met these picks stay off the curated "
                  "boards and out of the headline record. Promotion is a "
                  "deliberate human step, never automatic."),
+        "power_disclosure": (
+            "These bars are a FLOOR, not proof of an edge. At this desk's "
+            f"volume ({GRAD_MIN_SETTLED} settled picks is more than a full "
+            "season of them) the sample still cannot tell a +3% edge apart "
+            "from zero -- that needs thousands of bets. Clearing the bars "
+            "means the settlement works, the calibration has a real sample, "
+            "and the desk is not bleeding; it opens a human review whose "
+            "actual evidence is closing-line value, not this ROI."),
     }
 
 

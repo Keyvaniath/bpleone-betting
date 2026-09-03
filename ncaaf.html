@@ -226,8 +226,9 @@ fetch("data/cfb_model.json?t=" + Date.now(), { cache: "no-cache" })
         `Moneylines only; no spreads, totals, or player props.<br>` +
         `<b style="color:#e8eef7;">Graduation:</b> ${gr.n_settled || 0} of ${bars.min_settled || '—'} settled picks ${progress}` +
         (gr.roi_pct != null ? `· running ${gr.roi_pct >= 0 ? '+' : ''}${gr.roi_pct}% ROI (${gr.wins}-${gr.losses}) ` : '· no graded picks yet ') +
-        `— ${gr.graduated ? '<span style="color:#58c878;font-weight:700;">bars met; promotion is a deliberate review step</span>' : 'still experimental' + (gr.unmet && gr.unmet.length ? ': ' + gr.unmet.join('; ') : '')}. ` +
-        `<a href="track-record.html" style="color:#5aa2e3;">the record that has earned it</a>`;
+        `— ${gr.graduated ? '<span style="color:#58c878;font-weight:700;">bars met; promotion is a deliberate review step</span>' : 'still experimental' + (gr.unmet && gr.unmet.length ? ': ' + gr.unmet.join('; ') : '')}.` +
+        (gr.power_disclosure ? `<br><span style="color:var(--muted,#8a93a6);font-size:11px;">${gr.power_disclosure}</span>` : '') +
+        ` <a href="track-record.html" style="color:#5aa2e3;">the record that has earned it</a>`;
     }
     if (meta) meta.textContent = `${d.n_rated || 0}/${d.n_games || 0} games rated · ${(d.generated_at || '').replace('T', ' ')}`;
     const edges = d.edges || [];

@@ -222,7 +222,21 @@ def _settle_game_market(pick: Dict[str, Any]) -> Optional[str]:
     market = (pick.get("market") or "").lower()
     for g in games:
         g_date = (g.get("date") or "")[:10]
+        # THE EMPTY-MATCHUP MIS-GRADE (fixed 2026-09-03): none of the
+        # historical_<sport>.json files written by historical_games.py carry a
+        # 'matchup' or 'name' key -- they carry home_abbrev/away_abbrev. So
+        # g_mu was ALWAYS "", and the guard below ("g_mu not in matchup") is
+        # trivially False for an empty string, so the `continue` never fired
+        # and every game-line lock graded against the FIRST game on its date.
+        # Demonstrated: a MEM @ UNLV pick that lost graded 'won' off SJSU @ USC.
+        # Build the key from abbrevs, and refuse to grade if we cannot.
         g_mu = (g.get("matchup") or g.get("name") or "").lower()
+        if not g_mu:
+            a_ab, h_ab = g.get("away_abbrev"), g.get("home_abbrev")
+            if a_ab and h_ab:
+                g_mu = f"{a_ab} @ {h_ab}".lower()
+        if not g_mu or not matchup:
+            continue          # fail closed: never grade without a real matchup
         if g_date != date_s: continue
         if "ml_home" in market or "ml_away" in market:
             if matchup not in g_mu and g_mu not in matchup: continue
