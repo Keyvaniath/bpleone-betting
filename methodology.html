@@ -129,6 +129,15 @@
     <p class="muted2" style="font-size:12px;">Rule v2 is date-gated at 2026-08-10; earlier days replay under v1 byte-identically and the two records are disclosed separately on the <a href="alpha-pick.html">pick page</a>. The lock file is public: <a href="data/alpha_v2_selections.json" target="_blank">alpha_v2_selections.json</a>.</p>
   </div>
 
+  <div class="deep" id="cfb-model">
+    <span class="tag">College football · a new desk, on probation</span>
+    <h3>How a model earns its way onto the boards</h3>
+    <p>The CFB desk is the clearest example of what "experimental" means here. Its ratings are <b>Elo with margin-of-victory damping</b>, fit on real ESPN results rather than win-pct, and every constant was <b>measured on the prior season by walk-forward</b>, not borrowed from a football model built for the NFL. Two college-specific facts shaped it: games against FCS opponents average a <b>34.0-point margin</b> versus 16.4 between FBS teams (so those opponents pool into one rating at reduced weight — beating a cupcake by 40 must not mint rating), and last season's ratings turn out to be worth keeping only <b>~45%</b> of the way, because college rosters churn far harder than the pros'.</p>
+    <p>The receipts are published in both regimes, because one of them flatters the model: it predicts <b>70.3%</b> of games correctly (0.191 Brier) once a season has four weeks of its own data, but only <b>64.6%</b> (0.206 Brier) predicting off prior-season ratings alone — which is where it stands every September. A sharp closing line sits around 0.19 Brier. <b>So this model is not beating the market on its own</b>, and the desk says exactly that instead of implying otherwise: every probability is shrunk hard toward the book, and only genuine divergence survives.</p>
+    <p><b>Nothing from this desk touches the curated boards or the headline record.</b> Its picks are recorded as an experimental family purely to build a settled record, and promotion is gated on published bars — 100 settled picks at non-negative ROI — that are <i>computed against the ledger on every run</i> and shown on the <a href="ncaaf.html">CFB desk</a>, not asserted in prose. Meeting them opens a review; it does not auto-promote anything.</p>
+    <p class="muted2" style="font-size:12px;">v1 prices moneylines only — no spreads, totals, or player props. Reproduce the constant search with <span class="mono">python cfb_ratings.py --tune</span>.</p>
+  </div>
+
   <div class="deep">
     <span class="tag">Book-shading · defer to the sharp close</span>
     <h3>Model overconfidence can't print a fake edge</h3>

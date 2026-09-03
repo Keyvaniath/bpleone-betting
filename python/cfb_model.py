@@ -126,6 +126,54 @@ def _et_date(commence_utc: Any) -> Optional[str]:
     return (t - dt.timedelta(hours=5)).date().isoformat()
 
 
+# --- graduation: when this desk stops being experimental -------------------
+# "Experimental until it earns its way" is worthless as a promise; it has to be
+# a computation. These are the bars, checked every run against the REAL ledger,
+# and published in the artifact so the desk's status is never a claim someone
+# has to trust.
+GRAD_MIN_SETTLED = 100      # a season's worth of graded picks, not a hot week
+GRAD_MIN_ROI = 0.0          # must not be losing money
+GRAD_MIN_CI_FLOOR = -0.05   # bootstrap floor: allow variance, forbid a hole
+LEDGER_PATH = os.path.join(DATA_DIR, "all_picks_ledger.json")
+
+
+def graduation_status() -> Dict[str, Any]:
+    """Has the CFB desk earned a place on the curated boards yet?
+
+    Reads the canonical ledger predicate (settled AND NOT voided) over
+    cfb_model rows only. Returns the bars, where we stand, and a single
+    `graduated` boolean. Nothing in this module promotes itself -- promotion is
+    a deliberate act a human takes after this says yes."""
+    led = _load(LEDGER_PATH)
+    rows = [p for p in (led.get("picks") or [])
+            if str(p.get("source") or "") == "cfb_model"
+            and p.get("settled") and not p.get("voided")]
+    wins = sum(1 for p in rows if p.get("result") == "won")
+    losses = sum(1 for p in rows if p.get("result") == "lost")
+    n = wins + losses
+    net = sum(float(p.get("payout_units") or 0) for p in rows)
+    roi = (net / n) if n else None
+    unmet = []
+    if n < GRAD_MIN_SETTLED:
+        unmet.append(f"needs {GRAD_MIN_SETTLED} settled picks (has {n})")
+    if roi is None or roi < GRAD_MIN_ROI:
+        unmet.append(f"needs ROI >= {GRAD_MIN_ROI:.0%} "
+                     f"(has {'n/a' if roi is None else format(roi, '.1%')})")
+    return {
+        "graduated": not unmet,
+        "n_settled": n, "wins": wins, "losses": losses,
+        "net_units": round(net, 2),
+        "roi_pct": round(roi * 100, 2) if roi is not None else None,
+        "bars": {"min_settled": GRAD_MIN_SETTLED,
+                 "min_roi_pct": GRAD_MIN_ROI * 100,
+                 "min_ci_floor_pct": GRAD_MIN_CI_FLOOR * 100},
+        "unmet": unmet,
+        "note": ("Until every bar is met these picks stay off the curated "
+                 "boards and out of the headline record. Promotion is a "
+                 "deliberate human step, never automatic."),
+    }
+
+
 def run() -> Dict[str, Any]:
     now = dt.datetime.now().isoformat(timespec="seconds")
     ratings_payload = _load(RATINGS_PATH)
@@ -262,6 +310,7 @@ def run() -> Dict[str, Any]:
         "model_backtest": applicable,
         "constants": {"shrink_cap": SHRINK_CAP, "shrink_slope": SHRINK_SLOPE,
                       "min_edge": MIN_EDGE, "prob_band": [MIN_PROB, MAX_PROB]},
+        "graduation": graduation_status(),
         "status": "experimental",
         "note": (
             "EXPERIMENTAL -- tracked, not featured. These edges are recorded to "

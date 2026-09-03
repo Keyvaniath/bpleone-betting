@@ -210,9 +210,18 @@ fetch("data/cfb_model.json?t=" + Date.now(), { cache: "no-cache" })
     const list = document.getElementById('ed_list');
     const meta = document.getElementById('ed_meta');
     if (banner) {
+      const gr = d.graduation || {};
+      const bars = gr.bars || {};
+      const progress = gr.n_settled != null && bars.min_settled
+        ? `<span style="display:inline-block;width:90px;height:6px;background:rgba(255,255,255,.08);border-radius:3px;vertical-align:middle;margin:0 6px;"><span style="display:block;width:${Math.min(100, Math.round(100 * gr.n_settled / bars.min_settled))}%;height:6px;background:#d4a04a;border-radius:3px;"></span></span>`
+        : '';
       banner.innerHTML =
         `<b style="color:#d4a04a;">Tracked, not featured.</b> These are recorded to build a settled record and are deliberately kept off every curated board until they have one — a brand-new model has not earned a place in the public numbers. ` +
-        `Moneylines only; no spreads, totals, or player props. <a href="track-record.html" style="color:#5aa2e3;">the record that has earned it</a>`;
+        `Moneylines only; no spreads, totals, or player props.<br>` +
+        `<b style="color:#e8eef7;">Graduation:</b> ${gr.n_settled || 0} of ${bars.min_settled || '—'} settled picks ${progress}` +
+        (gr.roi_pct != null ? `· running ${gr.roi_pct >= 0 ? '+' : ''}${gr.roi_pct}% ROI (${gr.wins}-${gr.losses}) ` : '· no graded picks yet ') +
+        `— ${gr.graduated ? '<span style="color:#58c878;font-weight:700;">bars met; promotion is a deliberate review step</span>' : 'still experimental' + (gr.unmet && gr.unmet.length ? ': ' + gr.unmet.join('; ') : '')}. ` +
+        `<a href="track-record.html" style="color:#5aa2e3;">the record that has earned it</a>`;
     }
     if (meta) meta.textContent = `${d.n_rated || 0}/${d.n_games || 0} games rated · ${(d.generated_at || '').replace('T', ' ')}`;
     const edges = d.edges || [];
