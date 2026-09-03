@@ -1,17 +1,17 @@
-# EdgeStat Daily Brief - 2026-09-02
+# EdgeStat Daily Brief - 2026-09-03
 
 **Model Confidence: 21.0/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
 
-_Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
+_Pipeline health: **DEGRADED** (14/15 artifacts ok; 1 empty, 0 stale)._ 
 
-_Generated at 2026-09-02T20:57:07 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-09-03T00:02:29 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
-**DET @ MIN - OVER_8.5**
-- Market: -110
-- Model probability: 71.8%
-- Raw edge: +37.11%
+**OAK @ SEA - OAK_ML**
+- Market: +173
+- Model probability: 59.2%
+- Raw edge: +61.58%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
@@ -20,15 +20,15 @@ _Generated at 2026-09-02T20:57:07 UTC. Game lines source: **Bovada (fallback -- 
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 6:40p ET | SFG @ PIT | PNC Park | 82F 6mph | OVER_8.5 +17.91% |
-| 6:40p ET | NYM @ TBR | Tropicana Field | indoor | -- |
-| 6:40p ET | TOR @ CLE | Progressive Field | 84F 7mph | UNDER_8.0 +26.81% |
-| 7:40p ET | DET @ MIN | Target Field | 78F 4mph | OVER_8.5 +37.11% |
-| 7:40p ET | MIA @ KCR | Kauffman Stadium | 88F 6mph | MIA_ML +7.18% |
-| 7:40p ET | MIL @ CHC | Wrigley Field | 80F 6mph | MIL_ML +22.81% |
-| 8:10p ET | CHW @ HOU | Daikin Park | indoor | CHW_ML +23.05% |
-| 9:38p ET | NYY @ LAA | Angel Stadium | 67F 3mph | NYY_ML +12.31% |
-| 10:10p ET | STL @ LAD | UNIQLO Field at Dodger Stadium | 63F 4mph | OVER_7.5 +19.18% |
+| 12:35p ET | SFG @ PIT | PNC Park | 70F 0mph | OVER_8.5 +10.05% |
+| 1:10p ET | TOR @ CLE | Progressive Field | 96F 12mph | OVER_8.0 +8.93% |
+| 2:10p ET | CHW @ HOU | Daikin Park | indoor | OVER_8.5 +33.42% |
+| 7:15p ET | BOS @ BAL | Oriole Park at Camden Yards | 77F 6mph | BOS_ML +18.66% |
+| 7:15p ET | MIL @ CHC | Wrigley Field | 72F 2mph | OVER_8.5 +18.94% |
+| 7:40p ET | MIA @ KCR | Kauffman Stadium | 88F 6mph | OVER_9.0 +11.66% |
+| 8:05p ET | TBR @ TEX | Globe Life Field | indoor | OVER_7.5 +30.95% |
+| 9:40p ET | OAK @ SEA | T-Mobile Park | indoor | OAK_ML +61.58% |
+| 10:10p ET | STL @ LAD | UNIQLO Field at Dodger Stadium | 67F 3mph | UNDER_7.5 +2.75% |
 
 ## Parlays - top 5
 
@@ -52,24 +52,25 @@ _Generated at 2026-09-02T20:57:07 UTC. Game lines source: **Bovada (fallback -- 
 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
-| batter total bases | 25 | 40.0% | 46.5% | 1.155 | 0.892 |
 | batter hits | 66 | 60.6% | 56.0% | 0.924 | 1.075 |
+| batter total bases | 25 | 40.0% | 46.5% | 1.155 | 0.892 |
 
-Cumulative graded plays: 9786. Wins: 3518. Hit rate: 35.9%.
+Cumulative graded plays: 9789. Wins: 3518. Hit rate: 35.9%.
 
 ## Auxiliary Markets (Model Fair Prices)
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| CHW @ HOU | 28.1% | +256 | 6.35 | +182 | -182 |
-| DET @ MIN | 32.0% | +212 | 5.55 | +246 | -246 |
-| MIA @ KCR | 53.0% | -113 | 3.24 | +225 | -225 |
-| MIL @ CHC | 51.3% | -106 | 3.46 | +310 | -310 |
-| NYM @ TBR | 50.8% | -103 | 3.39 | -110 | +110 |
-| NYY @ LAA | 70.2% | -236 | 1.77 | +461 | -461 |
-| SFG @ PIT | 39.1% | +156 | 4.84 | +135 | -135 |
-| STL @ LAD | 51.0% | -104 | 3.34 | -179 | +179 |
-| TOR @ CLE | 58.2% | -139 | 2.83 | +271 | -271 |
+| BOS @ BAL | -- | -- | -- | +345 | -345 |
+| CHW @ HOU | 28.1% | +256 | 6.35 | +160 | -160 |
+| MIA @ KCR | -- | -- | -- | +239 | -239 |
+| MIL @ CHC | -- | -- | -- | +155 | -155 |
+| NYY @ LAA | 70.2% | -236 | 1.77 | -- | -- |
+| OAK @ SEA | -- | -- | -- | +246 | -246 |
+| SFG @ PIT | -- | -- | -- | +118 | -118 |
+| STL @ LAD | 30.2% | +231 | 6.04 | -143 | +143 |
+| TBR @ TEX | -- | -- | -- | +300 | -300 |
+| TOR @ CLE | -- | -- | -- | +199 | -199 |
 
 ## Team Form (last 10)
 

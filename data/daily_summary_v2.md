@@ -1,18 +1,18 @@
 # EdgeStat Daily Summary — 2026-09-02
 
-## 🏥 Model Health: 59.9/100 [OK]
+## 🏥 Model Health: 67.0/100 [OK]
 - Operational but room to improve - check yellow components
   - 🟢 Calibration Freshness: 100.0/100
   - 🔴 Hit Rate Trend: 0/100
-  - 🔴 Brier Trend: 35.0/100
+  - 🔴 Brier Trend: 53.5/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 81.8/100
-  - 🟡 Edge Count: 65.7/100
+  - 🟢 Data Health: 100.0/100
+  - 🟡 Edge Count: 62.9/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.562)
-- **Total games on board:** 92
-- **Strong home favorites:** 3 | **Strong road dogs:** 3
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.575)
+- **Total games on board:** 95
+- **Strong home favorites:** 10 | **Strong road dogs:** 5
 
 ## 🎯 Top 5 Best Bets
 1. **ARI @ SFG YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
@@ -20,6 +20,9 @@
 3. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
 4. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
 5. **GOLF Sam Burns TOP5 @ 561 (TOUR Championship)** (78/100 ★★★★★)
+
+## 📡 Sharp Action (Line Movement)
+- [ELITE] **MIL @ CHC** ml_away: 42.55% → 52.38% (+9.8pp)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -47,24 +50,27 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (3)
+## ⚡ Pre-Game HIGH Conviction (5)
+- [NCAAF] **Arkansas-Pine Bluff Golden Lions** AWAY (None L10) · model 74.9% fair -299
+- [NCAAF] **Furman Paladins** AWAY (None L10) · model 74.9% fair -299
 - [WNBA] **Dallas Wings** HOME (4-0 L10) · model 74.8% fair -297
-- [MLS] **Nashville SC** AWAY (4-0 L10) · model 73.5% fair -278
+- [MLS] **Nashville SC** AWAY (4-0 L10) · model 72.9% fair -270
 - [WNBA] **Washington Mystics** AWAY (4-2 L10) · model 67.8% fair -210
 
 ## 🔥/❄️ Heat / Cold Signals
 - Hot teams: **3** | Cold teams: **12** | Over-heavy: 0 | Under-heavy: 4
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (65)
-- RESIDUAL_DIVERGENCE: **6**
-- STEAM_MOVE: **58**
-- COMPOUND_BULLPEN: **1**
-  - Atlanta Dream (WNBA): Atlanta Dream OUTPERFORMING expected margin by 7.9pts in recent games -- model bias may persist
-  - Connecticut Sun (WNBA): Connecticut Sun UNDERPERFORMING expected margin by 6.5pts in recent games -- model bias may persist
-  - Chicago Sky (WNBA): Chicago Sky UNDERPERFORMING expected margin by 12.3pts in recent games -- model bias may persist
-  - Dallas Wings (WNBA): Dallas Wings OUTPERFORMING expected margin by 10.4pts in recent games -- model bias may persist
-  - Portland Fire (WNBA): Portland Fire UNDERPERFORMING expected margin by 11.2pts in recent games -- model bias may persist
+## ⚠️ Anomaly Detector (73)
+- RESIDUAL_DIVERGENCE: **7**
+- STEAM_MOVE: **61**
+- COMPOUND_BULLPEN: **3**
+- PEN_MISMATCH: **2**
+  - Connecticut Sun (WNBA): Connecticut Sun UNDERPERFORMING expected margin by 10.8pts in recent games -- model bias may persist
+  - Chicago Sky (WNBA): Chicago Sky UNDERPERFORMING expected margin by 20.1pts in recent games -- model bias may persist
+  - Washington Mystics (WNBA): Washington Mystics UNDERPERFORMING expected margin by 6.7pts in recent games -- model bias may persist
+  - Phoenix Mercury (WNBA): Phoenix Mercury OUTPERFORMING expected margin by 11.9pts in recent games -- model bias may persist
+  - Las Vegas Aces (WNBA): Las Vegas Aces OUTPERFORMING expected margin by 8.5pts in recent games -- model bias may persist
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$330.0** (33.0% of $1000 bankroll)
@@ -75,51 +81,51 @@
   - #4 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
   - #5 [GOLF] $35 on GOLF Sam Burns TOP5 @ 561 (TOUR Championship) (P=15%)
 
-## 🎯 Convergence Picks (16 stacked games)
-- ELITE: **9** · HIGH: 5 · MED: 2
-  - [ELITE] Philadelphia Union @ Red Bull New York : 6 signals (PREGAME, HEAT_COLD, ANOMALY, ANOMALY)
-  - [ELITE] Chicago Fire FC @ Seattle Sounders FC : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
-  - [ELITE] LAFC @ D.C. United : 5 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
-  - [ELITE] CF Montréal @ Inter Miami CF : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
-  - [ELITE] New York City FC @ Toronto FC : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
+## 🎯 Convergence Picks (6 stacked games)
+- ELITE: **5** · HIGH: 1 · MED: 0
+  - [ELITE] Washington Mystics @ Chicago Sky : 7 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
+  - [ELITE] Nashville SC @ New York City FC : 7 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
+  - [ELITE] Connecticut Sun @ Atlanta Dream : 4 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ATS)
+  - [ELITE] Los Angeles Sparks @ Dallas Wings : 4 signals (PREGAME, HEAT_COLD, ATS, ATS)
+  - [ELITE] Las Vegas Aces @ Seattle Storm : 4 signals (HEAT_COLD, ANOMALY, ATS, ATS)
+
+## ⚾ Top MLB Pitcher K Plays (6)
+- **Reid Detmers** OVER 4.5 K (76%) fair -321
+- **Dylan Cease** OVER 6.5 K (76%) fair -310
+- **David Peterson** OVER 4.5 K (72%) fair -258
+- **Eury Pérez** OVER 4.5 K (71%) fair -251
+- **Yoshinobu Yamamoto** OVER 5.5 K (65%) fair -184
 
 ## 🏀 NBA Player Heat (2 HOT / 1 COLD)
   - 🔥 **Scottie Barnes** (TOR): L5 24.4/7.6/9.6 vs season 18.6/5.8/8.8 [PTS +5.8]
   - 🔥 **RJ Barrett** (TOR): L5 24.6/7.6/4.0 vs season 21.4/5.5/3.6 [REB +2.1]
   - ❄️ **Brandon Ingram** (TOR): L5 12.0 vs season 19.1 [PTS -7.1] -- FADE OVER props
 
-## 🥊 UFC Fight Matchups (UFC Fight Night: Nurmagomedov vs. Song)
-  - [LEAN] **Umar Nurmagomedov** (20-1-0) vs Song Yadong -- fair -175
-  - [LEAN] **Rei Tsuruya** (11-1-0) vs Kevin Borjas -- fair -162
-  - [LEAN] **Jingnan Xiong** (19-3-0) vs Julia Polastri -- fair -149
-  - [COIN_FLIP] **Levi Rodrigues Jr.** (5-1-0) vs Liu Ce -- fair -121
-  - [COIN_FLIP] **Ding Meng** (35-10-0) vs Cameron Nelson -- fair -120
+## 🥊 UFC Fight Matchups (Dana White's Contender Series: Season 10, Week 4)
+  - [LEAN] **Gabriel Lorenço** (8-1-0) vs Charlie Cleveland -- fair -138
+  - [LEAN] **Modestino Rodrigues** (8-1-0) vs Brandon Holmes -- fair -138
+  - [LEAN] **Adam Darby** (8-1-0) vs Patrick Rivera -- fair -134
+  - [COIN_FLIP] **Silvestre Sanchez** (10-1-0) vs Liam McCracken -- fair -130
+  - [COIN_FLIP] **Adam Livingston** (8-1-0) vs Hunter Smith -- fair -123
 
-## ⛳ Golf Player Heat (from TOUR Championship)
-  - 🔥 T1 **Min Woo Lee** (Australia): -8 total -- finished T1
-  - 🔥 T2 **Viktor Hovland** (Norway): -6 total -- finished T2
-  - 🔥 T3 **Collin Morikawa** (USA): -6 total -- finished T3
-  - 🔥 T4 **Chris Gotterup** (USA): -6 total -- finished T4
-  - 🔥 T5 **Ryan Gerard** (USA): -5 total -- finished T5
-
-## 🔥 MLB Batter Heat (51 HOT / 66 COLD)
-  - 🔥 **Tyrone Taylor** (CHC): L14 .485 / season .283 (+202pts)
+## 🔥 MLB Batter Heat (48 HOT / 61 COLD)
+  - 🔥 **Tyrone Taylor** (CHC): L14 .516 / season .283 (+233pts)
   - 🔥 **Jazz Chisholm Jr.** (NYY): L14 .405 / season .232 (+173pts)
-  - 🔥 **George Springer** (TOR): L14 .404 / season .251 (+153pts)
-  - 🔥 **William Contreras** (MIL): L14 .411 / season .273 (+138pts)
+  - 🔥 **George Springer** (TOR): L14 .413 / season .249 (+164pts)
+  - 🔥 **William Contreras** (MIL): L14 .415 / season .274 (+141pts)
   - 🔥 **Lawrence Butler** (ATH): L14 .367 / season .231 (+136pts)
-  - ❄️ **Cole Young** (SEA): L14 .104 / season .246 (-142pts) -- FADE props
-  - ❄️ **Taylor Ward** (SEA): L14 .091 / season .229 (-138pts) -- FADE props
-  - ❄️ **CJ Abrams** (WSH): L14 .130 / season .267 (-137pts) -- FADE props
+  - ❄️ **Cole Young** (SEA): L14 .098 / season .244 (-146pts) -- FADE props
+  - ❄️ **Taylor Ward** (SEA): L14 .083 / season .227 (-144pts) -- FADE props
+  - ❄️ **CJ Abrams** (WSH): L14 .127 / season .267 (-140pts) -- FADE props
   - ❄️ **Jose Siri** (LAA): L14 .091 / season .228 (-137pts) -- FADE props
-  - ❄️ **Nasim Nuñez** (WSH): L14 .093 / season .214 (-121pts) -- FADE props
+  - ❄️ **Jake Mangum** (PIT): L14 .154 / season .285 (-131pts) -- FADE props
 
-## 📈 Streak Regression Alerts (12)
-- [WNBA] Phoenix Mercury on L3 L10 0-3 -- Phoenix Mercury on L3 -- no historical sample
-- [MLS] Seattle Sounders FC on L3 L10 0-3 -- Seattle Sounders FC on L3 -- no historical sample
-- [MLS] Atlanta United FC on W3 L10 3-0 -- Atlanta United FC on W3 -- no historical sample
-- [MLS] D.C. United on L3 L10 0-3 -- D.C. United on L3 -- no historical sample
-- [MLS] LAFC on L3 L10 0-3 -- LAFC on L3 -- no historical sample
+## 📈 Streak Regression Alerts (6)
+- [WNBA] Connecticut Sun on L3 L10 1-4 -- Connecticut Sun on L3 -- no historical sample
+- [WNBA] Chicago Sky on L3 L10 1-3 -- Chicago Sky on L3 -- no historical sample
+- [WNBA] Dallas Wings on W4 L10 4-0 -- Dallas Wings on W4 -- no historical sample
+- [WNBA] Las Vegas Aces on W3 L10 3-0 -- Las Vegas Aces on W3 -- no historical sample
+- [MLS] New York City FC on L4 L10 0-4 -- New York City FC on L4 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**
