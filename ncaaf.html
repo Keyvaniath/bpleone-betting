@@ -154,6 +154,7 @@ fetch("data/cfb_ratings.json?t=" + Date.now(), { cache: "no-cache" })
     const bt = d.applicable_backtest || d.backtest_prior_season || {};
     const mid = d.backtest_prior_season || {};
     const early = d.backtest_early_season || {};
+    const vm = d.vs_market || null;
     const rec = document.getElementById('rt_receipts');
     if (rec) {
       const pct = (x) => x == null ? '—' : (x * 100).toFixed(1) + '%';
@@ -161,9 +162,14 @@ fetch("data/cfb_ratings.json?t=" + Date.now(), { cache: "no-cache" })
         `<b style="color:#e8eef7;">What this model actually does, measured out-of-sample.</b> ` +
         (early.n ? `Predicting the <b>start</b> of a season from the prior season alone: <b style="color:#e8eef7;">${pct(early.accuracy)}</b> accuracy, ${early.brier} Brier (n=${early.n}). ` : '') +
         (mid.n ? `Once a season has four weeks of its own data: <b style="color:#e8eef7;">${pct(mid.accuracy)}</b>, ${mid.brier} Brier (n=${mid.n}). ` : '') +
-        `Today it is in the <b>${String(d.regime || '').replace('_', ' ')}</b> regime, so the first number is the honest one. ` +
-        `A sharp closing line lands near 0.19 Brier — this model is <i>not</i> beating the market on its own, which is exactly why every edge below is shrunk hard toward the book. ` +
-        `<a href="methodology.html" style="color:#5aa2e3;">method</a> · <a href="data-sources.html" style="color:#5aa2e3;">sources</a>`;
+        `Today it is in the <b>${String(d.regime || '').replace('_', ' ')}</b> regime, so the first number is the honest one.` +
+        (vm && vm.n
+          ? `<br><b style="color:#e8eef7;">And measured head-to-head against the closing line on ${vm.n} identical games:</b> ` +
+            `the market scored <b style="color:#e8eef7;">${vm.market_brier}</b> Brier (${pct(vm.market_accuracy)} accuracy), this model <b style="color:#e35a5a;">${vm.model_brier}</b> (${pct(vm.model_accuracy)}). ` +
+            `<b>The closing line is sharper than we are</b>, and we agree with it ${pct(vm.same_side_pct)} of the time. ` +
+            `That is the whole reason every edge below is shrunk hard toward the book: we are looking for the ${(100 - vm.same_side_pct * 100).toFixed(0)}% where we disagree, not claiming to out-price the market.`
+          : ` This model is not assumed to beat the market — run <span class="mono">cfb_ratings.py --vs-market</span> to measure it.`) +
+        ` <a href="methodology.html#cfb-model" style="color:#5aa2e3;">method</a> · <a href="data-sources.html" style="color:#5aa2e3;">sources</a>`;
     }
     if (!RT_ALL.length) {
       list.innerHTML = '<p class="muted" style="padding:14px;">No ratings yet — run the CFB ratings step.</p>';

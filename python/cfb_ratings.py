@@ -226,6 +226,134 @@ def early_season_backtest(prior_games: List[Dict[str, Any]],
             "brier": round(brier / n, 4), "weeks": f"1-{max_week}"}
 
 
+def _load_json(path: str) -> Dict[str, Any]:
+    if not os.path.exists(path):
+        return {}
+    try:
+        with open(path, encoding="utf-8") as f:
+            return json.load(f)
+    except Exception:
+        return {}
+
+
+MARKET_BENCHMARK = os.path.join(DATA_DIR, "cfb_market_benchmark.json")
+_CORE_EVENTS = ("https://sports.core.api.espn.com/v2/sports/football/leagues/"
+                "college-football/events")
+
+
+def _close_ml(event_id: Any) -> Optional[Tuple[int, int]]:
+    """Closing moneyline pair for a finished game, from ESPN's core API.
+    The payload nests inconsistently -- some records carry
+    close.american, others close.moneyLine.american -- so try both."""
+    import urllib.request
+
+    def _am(node):
+        if not isinstance(node, dict):
+            return None
+        for path in (("american",), ("moneyLine", "american")):
+            cur = node
+            for k in path:
+                cur = cur.get(k) if isinstance(cur, dict) else None
+            if cur:
+                try:
+                    return int(str(cur).replace("+", ""))
+                except ValueError:
+                    pass
+        return None
+
+    url = f"{_CORE_EVENTS}/{event_id}/competitions/{event_id}/odds"
+    try:
+        req = urllib.request.Request(url, headers=crc.HEADERS)
+        with urllib.request.urlopen(req, timeout=20) as r:
+            o = json.loads(r.read().decode("utf-8"))
+    except Exception:
+        return None
+    for p in (o.get("items") or []):
+        h = _am((p.get("homeTeamOdds") or {}).get("close"))
+        a = _am((p.get("awayTeamOdds") or {}).get("close"))
+        if h is not None and a is not None:
+            return h, a
+    return None
+
+
+def measure_vs_market(season: int = 2025, sample: int = 350) -> Dict[str, Any]:
+    """THE NUMBER THAT KEEPS THIS DESK HONEST.
+
+    Scores our walk-forward probabilities against the CLOSING LINE on the SAME
+    games. Publishing 'our Brier is 0.19' next to an unmeasured claim about the
+    market would be exactly the kind of implied comparison this site exists not
+    to make -- so we measure it. Run explicitly (`--vs-market`); it costs one
+    core-API call per game, so the result is cached in
+    data/cfb_market_benchmark.json and read by the desk rather than recomputed
+    on every pipeline run."""
+    import concurrent.futures as cf
+    import random
+    import cfb_model as cm
+
+    fbs = crc.fbs_team_ids(season)
+    games = _tag_fbs(list(crc.load(season).get("games") or []), fbs)
+    by_week: Dict[int, List[Dict[str, Any]]] = {}
+    for g in games:
+        if g.get("season_type") != 2:
+            continue
+        by_week.setdefault(int(g.get("week") or 0), []).append(g)
+    r: Dict[str, float] = {}
+    rows: List[Tuple[Any, float, float]] = []
+    for wk in sorted(by_week):
+        if wk >= 4:
+            for g in by_week[wk]:
+                if not g.get("is_fbs_matchup"):
+                    continue
+                h, a = _key(g, "home"), _key(g, "away")
+                if FCS_KEY in (h, a):
+                    continue
+                hs, as_ = g.get("home_score") or 0, g.get("away_score") or 0
+                if hs == as_:
+                    continue
+                rows.append((g["id"],
+                             win_prob(r.get(h, BASE_ELO), r.get(a, BASE_ELO),
+                                      bool(g.get("neutral"))),
+                             1.0 if hs > as_ else 0.0))
+        r = fit(by_week[wk], r)
+    random.Random(7).shuffle(rows)
+    rows = rows[:sample]
+    with cf.ThreadPoolExecutor(max_workers=12) as ex:
+        odds = list(ex.map(lambda t: _close_ml(t[0]), rows))
+    n = 0
+    mb = mm = 0.0
+    b_corr = m_corr = agree = 0
+    for (eid, pm, y), o in zip(rows, odds):
+        if not o:
+            continue
+        bh, _ba = cm._devig_pair(o[0], o[1])
+        if bh is None:
+            continue
+        n += 1
+        mb += (bh - y) ** 2
+        mm += (pm - y) ** 2
+        b_corr += 1 if ((bh >= 0.5) == (y == 1.0)) else 0
+        m_corr += 1 if ((pm >= 0.5) == (y == 1.0)) else 0
+        agree += 1 if ((bh >= 0.5) == (pm >= 0.5)) else 0
+    if not n:
+        return {"n": 0, "note": "no closing lines retrieved"}
+    out = {
+        "season": season, "n": n,
+        "market_brier": round(mb / n, 4),
+        "model_brier": round(mm / n, 4),
+        "market_accuracy": round(b_corr / n, 4),
+        "model_accuracy": round(m_corr / n, 4),
+        "same_side_pct": round(agree / n, 4),
+        "measured_at": dt.date.today().isoformat(),
+        "source": "ESPN core API closing moneylines (ESPN BET), de-vigged",
+        "verdict": ("the closing line is sharper than this model"
+                    if mb / n < mm / n else
+                    "this model edged the closing line on this sample"),
+    }
+    with open(MARKET_BENCHMARK, "w", encoding="utf-8") as f:
+        json.dump(out, f, indent=2)
+    return out
+
+
 def _load_season(season: int, fbs_ids: set) -> List[Dict[str, Any]]:
     d = crc.load(season)
     if not d.get("games"):
@@ -314,6 +442,8 @@ def run() -> Dict[str, Any]:
                       "ELO_PER_POINT": ELO_PER_POINT},
         "backtest_prior_season": bt,
         "backtest_early_season": bt_early,
+        # Measured head-to-head vs the closing line (cached; --vs-market).
+        "vs_market": _load_json(MARKET_BENCHMARK),
         # Which number honestly describes TODAY's ratings.
         "regime": ("early_season" if n_cur < 150 else "in_season"),
         "applicable_backtest": (bt_early if n_cur < 150 else bt),
@@ -368,7 +498,13 @@ def _self_test() -> bool:
 
 if __name__ == "__main__":
     import sys
-    if "--tune" in sys.argv:
+    if "--vs-market" in sys.argv:
+        o = measure_vs_market()
+        print(f"[vs-market] n={o.get('n')} | market Brier {o.get('market_brier')} "
+              f"(acc {o.get('market_accuracy')}) vs model {o.get('model_brier')} "
+              f"(acc {o.get('model_accuracy')}) | same side {o.get('same_side_pct')}")
+        print(f"  -> {o.get('verdict')}")
+    elif "--tune" in sys.argv:
         _tune()
     elif "--backtest" in sys.argv:
         fbs = crc.fbs_team_ids(2025)
