@@ -46,14 +46,33 @@ OUT = os.path.join(DATA_DIR, "cfb_model.json")
 ODDS_PATH = os.path.join(DATA_DIR, "espn_odds.json")
 RATINGS_PATH = os.path.join(DATA_DIR, "cfb_ratings.json")
 
-# Defer harder than the MLB desk (cap 0.80): that model has thousands of
-# settled games; this one has zero and a measured early-season Brier (0.207)
-# no better than a closing line's. A 0.90 cap means even a wild disagreement
-# keeps at most 10% of our own opinion until we have earned more.
+# SHRINKAGE, MEASURED RATHER THAN GUESSED.
+# The MLB desk uses w_book = min(0.80, gap x 3.0): weight the book more the
+# WIDER the disagreement. Ported here unchanged, that rule had a hole an
+# adversarial review caught -- at a 5pp disagreement it hands the MODEL 82.5%
+# of the weight, and this model is measurably WORSE than the closing line
+# (0.2026 vs 0.1866 Brier on n=343 identical 2025 games).
+#
+# So the blend weight was fit directly on those 343 games. Brier by fixed book
+# weight: 0.00 -> 0.2026, 0.30 -> 0.1927, 0.60 -> 0.1872, 0.80 -> 0.1860,
+# 0.85 -> 0.1860 (min), 1.00 -> 0.1866. The optimum is ~0.85 and the curve is
+# nearly FLAT from 0.70 to 1.00 -- i.e. our model contributes almost nothing
+# beyond the market, and pretending otherwise would be the dishonest read.
+# The floor is therefore the measured optimum, and the gap term may only push
+# the book's weight HIGHER, never below it.
+BOOK_WEIGHT_FLOOR = 0.85    # measured optimum (2025, n=343)
 SHRINK_CAP = 0.90
 SHRINK_SLOPE = 3.5
 
-MIN_EDGE = 0.04          # 4% -- deliberately above the MLB desk's 3%
+# 3% -- the house bar for a BOOK-PRICED game line (book_vs_model_team uses the
+# same). This started at 4%, which was chosen to compensate for a shrink that
+# left the model 82.5% of the weight at small disagreements. That shrink is now
+# fit to data (BOOK_WEIGHT_FLOOR), so the extra point was double-counting the
+# same conservatism rather than adding any. Stated plainly because the change
+# was made right after observing the old pair produced zero picks: the gate was
+# corrected because its premise changed, and these picks remain experimental
+# and off every curated board either way. Expect ~1 qualifying play per slate.
+MIN_EDGE = 0.03
 MIN_PROB, MAX_PROB = 0.35, 0.80   # no lottery dogs, no -600 chalk
 
 # Experimental family prefix. Markets are named so prob_calibration can learn
@@ -95,10 +114,13 @@ def _devig_pair(home_ml, away_ml) -> Tuple[Optional[float], Optional[float]]:
 
 
 def _shrink_toward_book(model_p: float, book_devig: float) -> float:
+    """Blend our probability toward the book's. The book's weight starts at the
+    MEASURED optimum (BOOK_WEIGHT_FLOOR) and the disagreement term can only
+    raise it -- never lower it. See the constants above for the fit."""
     if model_p is None or book_devig is None:
         return model_p
     gap = abs(model_p - book_devig)
-    w = min(SHRINK_CAP, gap * SHRINK_SLOPE)
+    w = min(SHRINK_CAP, max(BOOK_WEIGHT_FLOOR, gap * SHRINK_SLOPE))
     return model_p * (1 - w) + book_devig * w
 
 
@@ -380,6 +402,14 @@ def _self_test() -> bool:
         print(f"  FAIL shrink bounds: {s}"); ok = False
     if not (abs(s - 0.50) < abs(s - 0.70)):
         print(f"  FAIL shrink defers to book on a wide gap: {s}"); ok = False
+    # THE REGRESSION THIS GUARDS: a SMALL disagreement must still defer to the
+    # book. The gap-only rule gave the model 82.5% weight at 5pp, for a model
+    # measured worse than the market.
+    s_small = _shrink_toward_book(0.55, 0.50)
+    if abs(s_small - 0.50) > abs(s_small - 0.55):
+        print(f"  FAIL small-gap shrink keeps too much model: {s_small}"); ok = False
+    if not (0.50 <= s_small <= 0.50 + 0.05 * (1 - BOOK_WEIGHT_FLOOR) + 1e-9):
+        print(f"  FAIL small-gap book weight below the measured floor: {s_small}"); ok = False
     # agreement is a no-op
     if abs(_shrink_toward_book(0.55, 0.55) - 0.55) > 1e-9:
         print("  FAIL shrink is identity on agreement"); ok = False
