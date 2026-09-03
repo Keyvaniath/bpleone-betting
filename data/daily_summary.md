@@ -2,31 +2,27 @@
 
 **Model Confidence: 19.8/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
 
-_Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
+_Pipeline health: **DEGRADED** (14/15 artifacts ok; 1 empty, 0 stale)._ 
 
-_Generated at 2026-09-03T17:40:44 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-09-03T23:57:11 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
 **OAK @ SEA - OAK_ML**
-- Market: +178
+- Market: +180
 - Model probability: 59.2%
-- Raw edge: +64.54%
+- Raw edge: +65.72%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
 
-## Full Slate (7 games)
+## Full Slate (3 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 2:10p ET | CHW @ HOU | Daikin Park | indoor | OVER_8.5 +30.91% |
-| 7:15p ET | BOS @ BAL | Oriole Park at Camden Yards | 79F 2mph | BOS_ML +22.08% |
-| 7:15p ET | MIL @ CHC | Wrigley Field | 71F 2mph | OVER_8.5 +18.69% |
-| 7:40p ET | MIA @ KCR | Kauffman Stadium | 88F 6mph | MIA_ML +17.91% |
-| 8:05p ET | TBR @ TEX | Globe Life Field | indoor | OVER_8.0 +16.28% |
-| 9:40p ET | OAK @ SEA | T-Mobile Park | indoor | OAK_ML +64.54% |
-| 10:10p ET | STL @ LAD | UNIQLO Field at Dodger Stadium | 63F 4mph | UNDER_8.0 +15.83% |
+| 8:05p ET | TBR @ TEX | Globe Life Field | indoor | TBR_ML +20.86% |
+| 9:40p ET | OAK @ SEA | T-Mobile Park | indoor | OAK_ML +65.72% |
+| 10:10p ET | STL @ LAD | UNIQLO Field at Dodger Stadium | 63F 2mph | UNDER_7.5 +6.05% |
 
 ## Parlays - top 5
 
@@ -50,21 +46,17 @@ _Generated at 2026-09-03T17:40:44 UTC. Game lines source: **Bovada (fallback -- 
 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
-| batter total bases | 33 | 45.5% | 45.4% | 0.998 | 1.002 |
 | batter hits | 80 | 57.5% | 56.9% | 0.989 | 1.010 |
+| batter total bases | 33 | 45.5% | 45.4% | 0.998 | 1.002 |
 
-Cumulative graded plays: 9853. Wins: 3534. Hit rate: 35.9%.
+Cumulative graded plays: 9841. Wins: 3524. Hit rate: 35.8%.
 
 ## Auxiliary Markets (Model Fair Prices)
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| BOS @ BAL | 43.4% | +130 | 4.13 | +367 | -367 |
-| CHW @ HOU | 44.3% | +126 | 4.07 | +152 | -152 |
-| MIA @ KCR | 50.2% | -101 | 3.54 | +248 | -248 |
-| MIL @ CHC | 49.7% | +101 | 3.5 | +164 | -164 |
 | OAK @ SEA | 43.8% | +129 | 4.13 | +246 | -246 |
-| STL @ LAD | 42.6% | +134 | 4.27 | -145 | +145 |
+| STL @ LAD | 42.6% | +134 | 4.25 | -143 | +143 |
 | TBR @ TEX | 51.3% | -106 | 3.33 | +287 | -287 |
 
 ## Travel / Rest Flags
@@ -93,7 +85,6 @@ Cumulative graded plays: 9853. Wins: 3534. Hit rate: 35.9%.
 ## Loop Activity (since last refresh)
 
 - Confidence delta: **+0.0**
-- New anomalies flagged: 1
 
 ## Model Recommendations (operator review)
 

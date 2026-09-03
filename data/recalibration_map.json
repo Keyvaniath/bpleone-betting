@@ -1,15 +1,28 @@
 {
-  "generated_at": "2026-09-03T17:40:55",
-  "n_settled": 9736,
-  "n_families_transformed": 25,
+  "generated_at": "2026-09-03T23:57:23",
+  "n_settled": 9724,
+  "n_families_transformed": 24,
   "n_families_bucketed": 15,
-  "ece_before": 0.0941,
+  "ece_before": 0.0945,
   "ece_after": 0.0132,
-  "ece_improvement": 0.0809,
-  "brier_before": 0.20801,
-  "brier_after": 0.19033,
+  "ece_improvement": 0.0813,
+  "brier_before": 0.20812,
+  "brier_after": 0.19038,
   "method_note": "Per market family, a monotonic (isotonic) curve maps the model's predicted probability to the realized hit rate, learned from settled outcomes. Bucketed for well-sampled families (preserves ranking), a family-average Bayesian blend for mid-sample, identity below that. ECE = expected calibration error (lower = the displayed % is truer). This makes the model honest at the source; it does not create edge (that needs a market price).",
   "families": [
+    {
+      "family": "total_games_under",
+      "n": 31,
+      "method": "family_avg",
+      "avg_pred_raw": 0.7015,
+      "avg_pred_calibrated": 0.405,
+      "realized": 0.2903,
+      "ece_raw": 0.4112,
+      "ece_calibrated": 0.1147,
+      "transform": {
+        "realized": 0.2903
+      }
+    },
     {
       "family": "mlb_hrr_2.5_over",
       "n": 643,
@@ -54,19 +67,6 @@
             0.2576
           ]
         ]
-      }
-    },
-    {
-      "family": "total_games_under",
-      "n": 30,
-      "method": "family_avg",
-      "avg_pred_raw": 0.701,
-      "avg_pred_calibrated": 0.4146,
-      "realized": 0.3,
-      "ece_raw": 0.401,
-      "ece_calibrated": 0.1146,
-      "transform": {
-        "realized": 0.3
       }
     },
     {
@@ -644,19 +644,6 @@
       }
     },
     {
-      "family": "mlb_bk_0.5_over",
-      "n": 41,
-      "method": "family_avg",
-      "avg_pred_raw": 0.7005,
-      "avg_pred_calibrated": 0.6869,
-      "realized": 0.6829,
-      "ece_raw": 0.0175,
-      "ece_calibrated": 0.0039,
-      "transform": {
-        "realized": 0.6829
-      }
-    },
-    {
       "family": "ml_home",
       "n": 32,
       "method": "family_avg",
@@ -668,6 +655,17 @@
       "transform": {
         "realized": 0.625
       }
+    },
+    {
+      "family": "mlb_bk_0.5_over",
+      "n": 28,
+      "method": "identity",
+      "avg_pred_raw": 0.6853,
+      "avg_pred_calibrated": 0.6853,
+      "realized": 0.6071,
+      "ece_raw": 0.0781,
+      "ece_calibrated": 0.0781,
+      "transform": null
     },
     {
       "family": "mlb_hit_1.5_under",

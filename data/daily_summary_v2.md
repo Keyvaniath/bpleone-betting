@@ -1,13 +1,13 @@
 # EdgeStat Daily Summary — 2026-09-03
 
-## 🏥 Model Health: 66.0/100 [OK]
+## 🏥 Model Health: 67.5/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.9/100
+  - 🟢 Calibration Freshness: 100.0/100
   - 🔴 Hit Rate Trend: 0/100
-  - 🔴 Brier Trend: 51.7/100
+  - 🔴 Brier Trend: 53.4/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 100.0/100
-  - 🔴 Edge Count: 57.1/100
+  - 🟡 Edge Count: 68.6/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.574)
@@ -22,7 +22,7 @@
 5. **KBO NC Dinos vs Kiwoom Heroes ML @ -145** (76/100 ★★★★★)
 
 ## 📡 Sharp Action (Line Movement)
-- [MODERATE] **MIA @ KCR** ml_away: 50.25% → 54.34% (+4.1pp)
+- [ELITE] **STL @ LAD** ml_home: 64.41% → 74.36% (+9.9pp)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -61,11 +61,11 @@
 - Hot teams: **4** | Cold teams: **12** | Over-heavy: 0 | Under-heavy: 2
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (69)
+## ⚠️ Anomaly Detector (107)
 - RESIDUAL_DIVERGENCE: **8**
-- STEAM_MOVE: **59**
+- STEAM_MOVE: **96**
 - PEN_MISMATCH: **1**
-- COMPOUND_BULLPEN: **1**
+- COMPOUND_BULLPEN: **2**
   - Connecticut Sun (WNBA): Connecticut Sun UNDERPERFORMING expected margin by 10.0pts in recent games -- model bias may persist
   - Chicago Sky (WNBA): Chicago Sky UNDERPERFORMING expected margin by 17.6pts in recent games -- model bias may persist
   - Washington Mystics (WNBA): Washington Mystics UNDERPERFORMING expected margin by 6.2pts in recent games -- model bias may persist
@@ -89,7 +89,7 @@
   - [ELITE] Los Angeles Sparks @ Dallas Wings : 4 signals (PREGAME, HEAT_COLD, ATS, ATS)
   - [ELITE] Phoenix Mercury @ Portland Fire : 4 signals (PREGAME, ANOMALY, ANOMALY, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (6)
+## ⚾ Top MLB Pitcher K Plays (5)
 - **Logan Henderson** OVER 4.5 K (78%) fair -347
 - **Cal Quantrill** OVER 4.5 K (71%) fair -251
 - **Hunter Brown** OVER 4.5 K (70%) fair -232
@@ -108,7 +108,7 @@
   - [LEAN] **Losene Keita** (16-2-0) vs Muhammad Naimov -- fair -135
   - [LEAN] **Kurtis Campbell** (8-1-0) vs Trevor Peek -- fair -135
 
-## 🔥 MLB Batter Heat (56 HOT / 68 COLD)
+## 🔥 MLB Batter Heat (53 HOT / 64 COLD)
   - 🔥 **Tyrone Taylor** (CHC): L14 .500 / season .284 (+216pts)
   - 🔥 **Thomas Saggese** (STL): L14 .444 / season .239 (+205pts)
   - 🔥 **George Springer** (TOR): L14 .426 / season .251 (+175pts)
