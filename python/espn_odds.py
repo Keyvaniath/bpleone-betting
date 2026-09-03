@@ -118,9 +118,16 @@ def fetch_sport(sport: str) -> List[Dict[str, Any]]:
         status = _deep(comp, "status", "type", "state")  # pre / in / post
         out.append({
             "sport": sport.upper(),
+            # ESPN's own event id. Carried so downstream desks can settle a pick
+            # against the EXACT game instead of re-deriving it from
+            # matchup+date -- date matching has burned this repo twice (UTC
+            # shear moved west-coast night games a day; doubleheaders made a
+            # matchup+date pair ambiguous). An id has neither failure mode.
+            "event_id": str(e.get("id") or ""),
             "matchup": f"{away_ab} @ {home_ab}",
             "away": away_ab,
             "home": home_ab,
+            "neutral": bool(comp.get("neutralSite")),
             "commence_time": e.get("date"),
             "status": status,
             "provider": _deep(o, "provider", "name"),

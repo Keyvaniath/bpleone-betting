@@ -1474,6 +1474,33 @@ def _collect_picks_from_sources() -> List[Dict[str, Any]]:
             "line_delta_pp": r.get("line_delta_pp"),
         })
 
+    # College-football model edges (EXPERIMENTAL, cfb_model_*). Tracked to
+    # build a settled record, never featured on a curated board -- the same
+    # posture the World Cup desk takes. Every row must carry an event_id and a
+    # game_date: the RLM incident (2026-09-02) proved that a source which
+    # cannot name the exact game it is betting produces unsettleable picks, so
+    # rows without both are dropped here rather than rotting in the ledger.
+    cfb = _load(os.path.join(DATA_DIR, "cfb_model.json"))
+    for r in (cfb.get("edges") or []):
+        if not r.get("event_id") or not r.get("game_date"):
+            continue
+        out.append({
+            "source": "cfb_model",
+            "sport": "NCAAF",
+            # NOTE: 'game_date' (not 'date') -- the finalizer below pops this key
+            # and uses it as the pick's date; a pick that sets 'date' directly
+            # gets it overwritten with the snapshot day, which is precisely how
+            # a Saturday game ends up filed on the Tuesday it was generated.
+            "game_date": r.get("game_date"),
+            "event_id": r.get("event_id"),
+            "player_or_matchup": r.get("matchup"),
+            "market": r.get("market"),   # cfb_model_ml_home / cfb_model_ml_away
+            "prob": r.get("calibrated_prob"),
+            "p_predicted": r.get("model_prob_raw"),   # RAW, so the learning loop stays non-circular
+            "fair_american": r.get("book_american"),  # priced at the REAL book line
+            "experimental": True,
+        })
+
     # World Cup 3-way model picks -- the WC desk feeds the learning loop. These
     # are seeded-band model probs (experimental firehose: tracked to train, not
     # featured); families learn fast at 73 group matches in 18 days. Markets use
@@ -1805,6 +1832,69 @@ def _fb_stat(source: str, market: str):
         nums = re.findall(r"\d+(?:\.\d+)?", s)
         line = float(nums[-1]) if nums else None
     return stat, line, side
+
+
+def _grade_cfb_pick(pick: Dict[str, Any],
+                    games: List[Dict[str, Any]]) -> Optional[str]:
+    """Grade a college-football GAME LINE against real finals.
+
+    Settles by ESPN EVENT ID first (cfb_model stamps `event_id` on every pick),
+    which is immune to the two date bugs that have bitten this repo: UTC shear
+    moving a night game to the next calendar day, and matchup+date being
+    ambiguous. The date path is only a fallback for older rows, and it accepts
+    a +/-1 day window ONLY when exactly one game matches -- safe in college
+    football because a team plays once a week, so a matchup cannot recur
+    within a day of itself. Ambiguity returns None (never guess).
+
+    Markets: cfb_model_ml_home / cfb_model_ml_away (contains ml_home/ml_away).
+    """
+    m = (pick.get("market") or "").lower()
+    if "ml_home" not in m and "ml_away" not in m:
+        return None            # v1 prices moneylines only
+
+    eid = str(pick.get("event_id") or "")
+    g = None
+    if eid:
+        g = next((x for x in games if str(x.get("id") or "") == eid), None)
+    if g is None:
+        matchup = (pick.get("player_or_matchup") or "").strip().lower()
+        pdate = str(pick.get("date") or "")[:10]
+        cands = []
+        for x in games:
+            if x.get("home_score") is None:
+                continue
+            g_mu = f"{x.get('away_abbrev','')} @ {x.get('home_abbrev','')}".lower()
+            if matchup != g_mu:
+                continue
+            gd = str(x.get("date") or "")[:10]
+            if gd == pdate:
+                cands.append(x)
+            elif pdate:
+                try:
+                    if abs((dt.date.fromisoformat(gd)
+                            - dt.date.fromisoformat(pdate)).days) <= 1:
+                        cands.append(x)
+                except Exception:
+                    pass
+        if len(cands) != 1:
+            return None        # zero or ambiguous -> refuse to grade
+        g = cands[0]
+
+    if not g or g.get("home_score") is None:
+        return None
+    hs = g.get("home_score") or 0
+    as_ = g.get("away_score") or 0
+    if hs == as_:
+        return "push"
+    a_ab, h_ab = g.get("away_abbrev", ""), g.get("home_abbrev", "")
+    pick["outcome"] = {
+        "final_score": f"{a_ab} {as_} @ {h_ab} {hs}",
+        "verify": (f"{a_ab} @ {h_ab}: final {as_}-{hs} on {str(g.get('date'))[:10]}"
+                   f"{' (ESPN event ' + str(g.get('id')) + ')' if g.get('id') else ''}"),
+    }
+    if "ml_home" in m:
+        return "won" if hs > as_ else "lost"
+    return "won" if as_ > hs else "lost"
 
 
 def _grade_nfl_pick(pick: Dict[str, Any], by_name: Dict[str, Any],
@@ -2278,6 +2368,7 @@ def _settle_picks(history: List[Dict[str, Any]]) -> int:
     nba_games = _load(os.path.join(DATA_DIR, "nba_historical.json")).get("games") or []
     nfl_by_name = {_norm_name(k): v for k, v in (_load(os.path.join(DATA_DIR, "nfl_player_gamelogs.json")).get("by_name") or {}).items()}
     nfl_games = _load(os.path.join(DATA_DIR, "nfl_historical.json")).get("games") or []
+    ncaaf_games = _load(os.path.join(DATA_DIR, "historical_ncaaf.json")).get("games") or []
     nhl_by_name = {_norm_name(k): v for k, v in (_load(os.path.join(DATA_DIR, "nhl_player_gamelogs.json")).get("by_name") or {}).items()}
     nhl_games = _load(os.path.join(DATA_DIR, "nhl_historical.json")).get("games") or []
     # Individual / match sports (golf finish, tennis match result, UFC fight result)
@@ -2308,6 +2399,12 @@ def _settle_picks(history: List[Dict[str, Any]]) -> int:
             result = _grade_wnba_pick(p, nba_by_name, nba_games)   # same basketball grader
         elif sport == "NFL":
             result = _grade_nfl_pick(p, nfl_by_name, nfl_games)
+        elif sport in ("NCAAF", "CFB"):
+            # Without this branch an NCAAF pick fell through to the MLB default
+            # and tried to settle against baseball finals -- it could never
+            # grade and would age into an unsettleable void (the exact silent
+            # rot that hid 'HOME ML' for a full season).
+            result = _grade_cfb_pick(p, ncaaf_games)
         elif sport == "NHL":
             result = _grade_nhl_pick(p, nhl_by_name, nhl_games)
         elif sport == "GOLF":

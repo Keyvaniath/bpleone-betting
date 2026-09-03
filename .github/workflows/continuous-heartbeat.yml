@@ -146,6 +146,15 @@ jobs:
         working-directory: python
         run: python espn_odds.py || true
 
+      # CFB edges re-price against the refreshed lines (ratings only change when
+      # games finish, so the daily run owns those; this just re-shrinks against
+      # the current book). Cheap: no fetching beyond what espn_odds already did.
+      - name: CFB model-vs-book edges (re-price vs refreshed lines)
+        timeout-minutes: 2
+        continue-on-error: true
+        working-directory: python
+        run: python cfb_model.py || true
+
       # Line movement / steam from the free odds history (open->current per game)
       - name: Line movement / steam detector (free odds)
         working-directory: python

@@ -54,12 +54,33 @@
   </section>
   <section class="card" style="margin-bottom: 24px; border-left: 3px solid #bf5700;">
     <div class="card-head"><span>🏈 <strong>NCAA Football Board</strong></span><span class="muted" id="sb_meta">--</span></div>
-    <p class="muted" style="font-size: 11px; padding: 8px 16px 0;">Win probability derived from synthetic ELO of season win-pct + home-field adjustment. Score-aware live update when state is in-progress.</p>
-    <div class="sb-row head">
-      <span>Matchup</span><span>Records</span><span>Score</span><span>P(home)</span><span>Home Fair</span><span>Away Fair</span><span>Status</span>
+    <p class="muted" style="font-size: 11px; padding: 8px 16px 0;">Live scores and status from ESPN. Win probabilities are <b>not</b> shown here — they belong to the Elo model below, which is fit on real results rather than derived from win-pct.</p>
+    <div class="sb-row head" style="grid-template-columns:1.8fr 120px 90px 120px;">
+      <span>Matchup</span><span>Records</span><span>Score</span><span>Status</span>
     </div>
     <div id="sb_list"><p class="muted" style="padding:14px;">Loading…</p></div>
   </section>
+  <section class="card" style="margin-bottom:24px; border-left:3px solid #d4a04a;">
+    <div class="card-head">
+      <span>🧪 <strong>Model vs Book</strong>
+        <span style="font-size:9.5px;font-weight:700;padding:2px 7px;border-radius:4px;background:rgba(212,160,74,.18);color:#d4a04a;margin-left:6px;">EXPERIMENTAL</span>
+      </span>
+      <span class="muted" id="ed_meta">--</span>
+    </div>
+    <div id="ed_banner" style="padding:10px 16px;font-size:11.5px;line-height:1.65;color:var(--text-2,#9fb0c8);border-bottom:1px solid rgba(255,255,255,.06);"></div>
+    <div id="ed_list"><p class="muted" style="padding:14px;">Loading…</p></div>
+  </section>
+
+  <section class="card" style="margin-bottom:24px;">
+    <div class="card-head"><span>📊 <strong>EdgeStat Elo Ratings</strong> <span class="muted" style="font-size:10px;">fit on real ESPN results — margin-damped, FCS-pooled</span></span><span class="muted" id="rt_meta">--</span></div>
+    <div id="rt_receipts" style="padding:10px 16px;font-size:11.5px;line-height:1.7;color:var(--text-2,#9fb0c8);border-bottom:1px solid rgba(255,255,255,.06);"></div>
+    <div class="sb-row head" style="grid-template-columns:48px 1.4fr 110px 120px 1fr;">
+      <span>#</span><span>Team</span><span>Elo</span><span>Games '26</span><span>How much is last season?</span>
+    </div>
+    <div id="rt_list"><p class="muted" style="padding:14px;">Loading…</p></div>
+    <div style="padding:10px 16px;"><button id="rt_more" class="posbtn" style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);color:var(--text-2,#b9c3d4);font-size:11px;padding:5px 14px;border-radius:999px;cursor:pointer;display:none;">Show all teams</button></div>
+  </section>
+
   <section class="card" style="margin-bottom:24px;">
     <div class="card-head"><span>📈 <strong>Live Book Lines</strong> <span class="muted" style="font-size:10px;">DraftKings via ESPN — free feed, refreshed by the heartbeat</span></span><span class="muted" id="ln_meta">--</span></div>
     <div id="ln_list"><p class="muted" style="padding:14px;">Loading…</p></div>
@@ -85,14 +106,10 @@ fetch("data/ncaaf_state.json?t=" + Date.now(), { cache: "no-cache" })
       const cls = g.state === 'in' ? 'live' : g.state === 'post' ? 'final' : '';
       const pillCls = g.state === 'in' ? 'live' : g.state === 'post' ? 'final' : 'sched';
       const scoreText = g.state === 'pre' ? '—' : `${g.away_score ?? '?'}-${g.home_score ?? '?'}`;
-      const betKey = `NCAAF|${g.home_team}|ML|${g.fair_home_american}`;
-      return `<div class="sb-row ${cls}" data-bet-key="${betKey}" data-bet-label="${g.home_team} ML vs ${g.away_team}" data-bet-play="ML" data-bet-src="NCAAF">
+      return `<div class="sb-row ${cls}" style="grid-template-columns:1.8fr 120px 90px 120px;">
         <span><strong>${g.matchup}</strong></span>
         <span class="muted" style="font-size:10px;">${g.away_record} / ${g.home_record}</span>
         <span style="font-weight:700;">${scoreText}</span>
-        <span style="color:${g.p_home_win >= 0.6 ? '#58c878' : g.p_home_win <= 0.4 ? '#e35a5a' : 'var(--text-2,#aaa)'}; font-weight:700;">${(g.p_home_win * 100).toFixed(1)}%</span>
-        <span>${fmtAmer(g.fair_home_american)}</span>
-        <span>${fmtAmer(g.fair_away_american)}</span>
         <span class="pill ${pillCls}">${g.status || g.state || '—'}</span>
       </div>`;
     }).join("");
@@ -126,6 +143,105 @@ fetch("data/espn_odds.json?t=" + Date.now(), { cache: "no-cache" })
     const meta = document.getElementById('ln_meta');
     if (meta) meta.textContent = rows.length + ' games · ' + (d.generated_at || '').replace('T', ' ') + ' UTC';
   }).catch(() => {});
+
+// ---- EdgeStat Elo ratings + the honest backtest receipts ----
+let RT_ALL = [], RT_SHOWN = 25;
+fetch("data/cfb_ratings.json?t=" + Date.now(), { cache: "no-cache" })
+  .then(r => r.json())
+  .then(d => {
+    const list = document.getElementById('rt_list');
+    RT_ALL = d.ratings || [];
+    const bt = d.applicable_backtest || d.backtest_prior_season || {};
+    const mid = d.backtest_prior_season || {};
+    const early = d.backtest_early_season || {};
+    const rec = document.getElementById('rt_receipts');
+    if (rec) {
+      const pct = (x) => x == null ? '—' : (x * 100).toFixed(1) + '%';
+      rec.innerHTML =
+        `<b style="color:#e8eef7;">What this model actually does, measured out-of-sample.</b> ` +
+        (early.n ? `Predicting the <b>start</b> of a season from the prior season alone: <b style="color:#e8eef7;">${pct(early.accuracy)}</b> accuracy, ${early.brier} Brier (n=${early.n}). ` : '') +
+        (mid.n ? `Once a season has four weeks of its own data: <b style="color:#e8eef7;">${pct(mid.accuracy)}</b>, ${mid.brier} Brier (n=${mid.n}). ` : '') +
+        `Today it is in the <b>${String(d.regime || '').replace('_', ' ')}</b> regime, so the first number is the honest one. ` +
+        `A sharp closing line lands near 0.19 Brier — this model is <i>not</i> beating the market on its own, which is exactly why every edge below is shrunk hard toward the book. ` +
+        `<a href="methodology.html" style="color:#5aa2e3;">method</a> · <a href="data-sources.html" style="color:#5aa2e3;">sources</a>`;
+    }
+    if (!RT_ALL.length) {
+      list.innerHTML = '<p class="muted" style="padding:14px;">No ratings yet — run the CFB ratings step.</p>';
+      return;
+    }
+    renderRatings();
+    const meta = document.getElementById('rt_meta');
+    if (meta) meta.textContent = `${d.n_teams} teams · ${d.n_games_this_season} games this season · ${(d.generated_at || '').replace('T', ' ')}`;
+    const btn = document.getElementById('rt_more');
+    if (btn && RT_ALL.length > RT_SHOWN) {
+      btn.style.display = 'inline-block';
+      btn.onclick = () => { RT_SHOWN = RT_ALL.length; renderRatings(); btn.style.display = 'none'; };
+    }
+  })
+  .catch(() => {
+    const l = document.getElementById('rt_list');
+    if (l) l.innerHTML = '<p class="muted" style="padding:14px;">Ratings artifact not available.</p>';
+  });
+
+function renderRatings() {
+  document.getElementById('rt_list').innerHTML = RT_ALL.slice(0, RT_SHOWN).map(t => {
+    const pw = t.prior_weight;
+    const bar = Math.round((pw || 0) * 100);
+    return `<div class="sb-row" style="grid-template-columns:48px 1.4fr 110px 120px 1fr;">
+      <span class="muted">${t.rank}</span>
+      <span><strong>${t.team}</strong></span>
+      <span style="font-weight:700;">${t.rating.toFixed(0)}</span>
+      <span class="muted">${t.games_this_season}</span>
+      <span title="Share of this rating still carried over from last season">
+        <span style="display:inline-block;width:64px;height:6px;background:rgba(255,255,255,.08);border-radius:3px;vertical-align:middle;">
+          <span style="display:block;width:${bar}%;height:6px;background:#d4a04a;border-radius:3px;"></span>
+        </span>
+        <span class="muted" style="font-size:10px;margin-left:6px;">${bar}% last season</span>
+      </span>
+    </div>`;
+  }).join('');
+}
+
+// ---- Experimental model-vs-book edges ----
+fetch("data/cfb_model.json?t=" + Date.now(), { cache: "no-cache" })
+  .then(r => r.json())
+  .then(d => {
+    const banner = document.getElementById('ed_banner');
+    const list = document.getElementById('ed_list');
+    const meta = document.getElementById('ed_meta');
+    if (banner) {
+      banner.innerHTML =
+        `<b style="color:#d4a04a;">Tracked, not featured.</b> These are recorded to build a settled record and are deliberately kept off every curated board until they have one — a brand-new model has not earned a place in the public numbers. ` +
+        `Moneylines only; no spreads, totals, or player props. <a href="track-record.html" style="color:#5aa2e3;">the record that has earned it</a>`;
+    }
+    if (meta) meta.textContent = `${d.n_rated || 0}/${d.n_games || 0} games rated · ${(d.generated_at || '').replace('T', ' ')}`;
+    const edges = d.edges || [];
+    if (!edges.length) {
+      list.innerHTML =
+        `<p class="muted" style="padding:14px;line-height:1.7;">` +
+        `<b style="color:#e8eef7;">No qualifying edge on the board.</b> ` +
+        `${d.n_rated || 0} of ${d.n_games || 0} priced games were ratable` +
+        (d.n_unrated ? ` (${d.n_unrated} skipped — an unrated, usually non-FBS, opponent)` : '') +
+        `, and after shrinking toward the book none cleared the ${(d.constants && d.constants.min_edge != null ? (d.constants.min_edge * 100).toFixed(0) : '4')}% bar inside the ` +
+        `${d.constants ? (d.constants.prob_band[0] * 100).toFixed(0) + '–' + (d.constants.prob_band[1] * 100).toFixed(0) + '%' : ''} probability band. ` +
+        `That is the expected outcome most days: agreeing with a sharp market is not a failure, and we would rather post nothing than manufacture a play.</p>`;
+      return;
+    }
+    const cols = 'grid-template-columns:1.5fr 70px 90px 90px 80px 1.6fr;';
+    list.innerHTML = '<div class="sb-row head" style="' + cols + '"><span>Matchup</span><span>Side</span><span>Book</span><span>Model</span><span>Edge</span><span>Why</span></div>' +
+      edges.map(e => `<div class="sb-row" style="${cols}">
+        <span><strong>${e.matchup}</strong><br><span class="muted" style="font-size:10px;">${e.game_date || ''}</span></span>
+        <span style="font-weight:700;">${e.team}</span>
+        <span>${fmtAmer(e.book_american)}</span>
+        <span>${(e.calibrated_prob * 100).toFixed(1)}%</span>
+        <span style="color:#58c878;font-weight:700;">+${e.edge_pct}%</span>
+        <span class="muted" style="font-size:10.5px;line-height:1.5;">${e.why || ''}</span>
+      </div>`).join('');
+  })
+  .catch(() => {
+    const l = document.getElementById('ed_list');
+    if (l) l.innerHTML = '<p class="muted" style="padding:14px;">Model artifact not available.</p>';
+  });
 
 setInterval(() => location.reload(), 5 * 60 * 1000);
 </script>

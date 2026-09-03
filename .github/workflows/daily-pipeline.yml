@@ -595,6 +595,21 @@ jobs:
           python espn_event_results.py ufc || true
           python espn_event_results.py f1 || true
           python espn_event_results.py soccer || true
+      # College football desk. MUST run BEFORE the ledger build so the day's
+      # experimental edges are collected in the same run, and AFTER
+      # historical_games (line ~406) so settlement has fresh finals. Reads the
+      # DraftKings lines espn_odds refreshed on the heartbeat. All three steps
+      # are '|| true': a dark CFB feed must never abort the pipeline (the
+      # display-code-must-not-abort rule), it just publishes no edges.
+      - name: CFB results cache (top up this season's FBS finals)
+        working-directory: python
+        run: python cfb_results_cache.py || true
+      - name: CFB Elo ratings (fit on real results, walk-forward backtested)
+        working-directory: python
+        run: python cfb_ratings.py || true
+      - name: CFB model-vs-book edges (EXPERIMENTAL - tracked, not featured)
+        working-directory: python
+        run: python cfb_model.py || true
       - name: All-picks unified ledger (every surfaced pick -> training signal)
         working-directory: python
         run: python all_picks_tracker.py
