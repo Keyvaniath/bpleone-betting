@@ -48,6 +48,12 @@ SPORTS: List[Tuple[str, str, str, List[str], Optional[str], Optional[str], List[
     ("LOL",      "LoL",            "lol.html",      ["LOL"],           "lol_state.json",       "lol_pot_history.json",    ["lol_props.json", "lol_player_props.json"]),
     ("CS",       "CS",             "cs.html",       ["CS"],            "cs_state.json",        "cs_pot_history.json",     ["cs_props.json", "cs_player_props.json"]),
     ("CWS",      "NCAA Baseball",  "cws.html",      ["CWS", "NCAA-BB"],"cws_state.json",       "cws_pot_history.json",    ["cws_*.json"]),
+    # College football (2026-09-03). Registered even though the desk is
+    # EXPERIMENTAL and will show 0 settled for a long while -- an unlisted desk
+    # is an invisible one, and the whole point of this row is that a dark or
+    # non-settling CFB feed shows up here instead of going unnoticed the way
+    # historical_ncaaf.json did for a full season.
+    ("NCAAF",    "College Football","ncaaf.html",   ["NCAAF", "CFB"],  "ncaaf_state.json",     None,                      ["cfb_model.json"]),
 ]
 
 
