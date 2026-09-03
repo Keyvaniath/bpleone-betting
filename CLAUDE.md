@@ -41,6 +41,29 @@ bpleone-site/
 
 ## Current deployment state (LIVE)
 
+- **2026-09-03 — THE LEDGER WAS EATING ITS OWN TRACK RECORD (read before adding
+  any new pick source):** all_picks_ledger hit MAX_PICKS=10000 with **zero
+  eviction headroom** -- 9840 settled, 160 pending, 0 voided, 0 stale pendings.
+  The eviction ladder is correct (voided rows -> dead pendings -> tail-cut last)
+  but with nothing signal-free left to spend, **every pick added was tail-cutting
+  the oldest SETTLED result**: the public record was shrinking daily by however
+  many picks the desks produced. Same erosion as 2026-07-06 (settled 6526 ->
+  6357), returning by a different route once the voided rows ran out. Raised
+  MAX_PICKS 10000 -> **14000** (no restatement -- past evictions are already
+  gone from the artifact, recoverable from git; this stops it forward).
+  **RULE: before wiring a new pick source, check eviction headroom
+  (voided + stale pendings). At zero headroom a new desk buys its rows with
+  real settled history.**
+
+- **2026-09-03 — COLLEGE SCOREBOARD TRUNCATION (espn_odds, 25 of 99 games):**
+  the BARE ESPN scoreboard returns a CURATED SUBSET for college sports -- 25
+  NCAAF events on a day with 99. `limit` alone does nothing; **`groups=80`
+  (FBS) is the unlock** (`groups=50` for NCAAB D-I). Added `SPORT_QUERY` in
+  espn_odds (per-sport params; pro leagues take none and are untouched). This
+  is the SAME trap as the week-form scoreboard in cfb_results_cache -- assume
+  any college ESPN endpoint truncates until proven otherwise. Effect: NCAAF
+  25 -> 99 games, ratable 19 -> 51, first qualifying CFB edge surfaced.
+
 - **2026-09-03 — THE EMPTY-MATCHUP MIS-GRADE (locks_of_day, live bug, predates
   CFB):** `_settle_game_market` built its game key as
   `g.get("matchup") or g.get("name") or ""` -- but NO `historical_<sport>.json`
