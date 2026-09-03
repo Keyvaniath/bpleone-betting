@@ -41,6 +41,24 @@ bpleone-site/
 
 ## Current deployment state (LIVE)
 
+- **2026-09-03 — THE EMPTY-MATCHUP MIS-GRADE (locks_of_day, live bug, predates
+  CFB):** `_settle_game_market` built its game key as
+  `g.get("matchup") or g.get("name") or ""` -- but NO `historical_<sport>.json`
+  file carries either key (historical_games.py writes home_abbrev/away_abbrev).
+  So g_mu was ALWAYS empty, and the guard `matchup not in g_mu and g_mu not in
+  matchup` is trivially False for an empty string (`"" in anything` is True),
+  so the `continue` never fired and **every game-line lock settled against the
+  FIRST game on its date.** Demonstrated on real data: a MEM @ UNLV pick whose
+  home side LOST graded 'won' off SJSU @ USC. Affected NFL/WNBA/MLS/EPL/NCAAB/
+  NCAAF (MLB failed safe -- its mapping points at a filename that doesn't
+  exist). Fixed: key built from abbrevs, and FAIL CLOSED (return None) when the
+  key or the pick's matchup is empty. **RULE: a settlement matcher must never
+  treat an empty key as a match -- assert the key is non-empty before
+  comparing.** Found by an adversarial review panel, not by a test; the same
+  panel also corrected the CFB graduation bar's implied claim (100 settled
+  picks cannot distinguish a +3% edge from zero -- the bars are a FLOOR that
+  opens a CLV-based human review, and the desk now says so).
+
 - **2026-09-03 — COLLEGE FOOTBALL DESK (new sport, built end-to-end):**
   CFB had lines + scores but no model, no picks, and NO SETTLEMENT BRANCH (an
   NCAAF pick would have fallen through to the MLB default and tried to grade
@@ -89,6 +107,18 @@ bpleone-site/
   run) and re-priced on the heartbeat; both cfb artifacts registered in
   data_health DESK_FRESHNESS. v1 is MONEYLINES ONLY -- no spreads, totals, or
   player props, and no CFB DFS. Method documented at methodology.html#cfb-model.
+  **MEASURED vs THE MARKET (do not replace with an assertion):** the desk used
+  to claim "a sharp close is ~0.19 Brier" to justify its shrinkage -- that was
+  asserted, never measured. `cfb_ratings.py --vs-market` now scores our
+  walk-forward probs against ESPN's CLOSING moneylines on the SAME games and
+  caches data/cfb_market_benchmark.json. Result (n=343, 2025 FBS, weeks 4+):
+  **market 0.1866 Brier / 74.1% acc vs model 0.2026 / 69.1%, same side 81%** --
+  the closing line is SHARPER than this model, and the desk says so in those
+  words. NB ESPN nests closing prices inconsistently (close.american on some
+  records, close.moneyLine.american on others); an extractor that handles only
+  one silently returns zero lines for every game. cfb_model also FAILS CLOSED
+  if prob_calibration can't import (publishing ungated picks is worse than
+  going dark).
 
 - **2026-09-02 — THE 6-DAY PIPELINE OUTAGE (read before touching
   verify_calibration):** daily-pipeline failed EVERY run 8/28-9/02 because
