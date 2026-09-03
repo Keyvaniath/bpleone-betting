@@ -41,6 +41,55 @@ bpleone-site/
 
 ## Current deployment state (LIVE)
 
+- **2026-09-03 — COLLEGE FOOTBALL DESK (new sport, built end-to-end):**
+  CFB had lines + scores but no model, no picks, and NO SETTLEMENT BRANCH (an
+  NCAAF pick would have fallen through to the MLB default and tried to grade
+  against baseball finals). Three new modules:
+  `cfb_results_cache.py` (every FBS game of a season from ESPN) ->
+  `cfb_ratings.py` (Elo + MoV damping) -> `cfb_model.py` (model-vs-book edges).
+  **TWO ESPN TRAPS, both verified:** (1) the college-football scoreboard's WEEK
+  form REQUIRES `groups=80` -- without it a week returns 16 events instead of
+  53 (the DATE form is unaffected, which is why historical_games.py was fine);
+  always pass `limit=400`, CFB Saturdays run 60+ games. (2) the site API's
+  `/teams?groups=80` SILENTLY IGNORES the filter and returns all 760 teams
+  across every division -- it flagged all 934 of 2025's games as FBS-vs-FBS.
+  The real FBS list (146) comes from the CORE api
+  (`sports.core.api.../seasons/<yr>/types/2/groups/80/teams`), ids parsed from
+  the $ref urls so it stays one call.
+  **EVERY CONSTANT IS MEASURED** (`python cfb_ratings.py --tune` reproduces):
+  K=55, HFA=60 from a 2025 walk-forward grid; CARRYOVER=0.45 tuned by
+  predicting the START of 2025 from 2024 (n=195) -- ~55% regression to the
+  mean, CFB rosters churn far harder than the NFL's. FCS opponents pool into
+  ONE rating at 35% weight (2025: FCS games averaged a 34.0-pt margin vs 16.4
+  FBS-vs-FBS, so MoV-naive Elo would mint rating off cupcakes).
+  **THE HONEST NUMBERS (do not restate upward):** 70.3% acc / 0.1907 Brier
+  walk-forward mid-season (n=617), but only 64.6% / 0.2063 off prior-season
+  ratings (n=195) -- the September regime. Bucket calibration is clean (gaps
+  +0.001..+0.060, no systematic bias). A sharp close is ~0.19 Brier, so THIS
+  MODEL DOES NOT BEAT THE MARKET ALONE; that is why cfb_model shrinks toward
+  the book at cap 0.90 (harder than the MLB desk's 0.80 -- that model has
+  thousands of settled games, this one has zero) and requires a 4% edge in a
+  35-80% band. Typical output is 0-4 edges/slate; ZERO IS A NORMAL, HONEST
+  RESULT and the page explains it rather than manufacturing a play.
+  **EXPERIMENTAL, and it is enforced:** picks enter the ledger as `cfb_model_*`
+  (tracked-not-featured, the worldcup precedent), and `graduation_status()`
+  computes the promotion bars against the real ledger every run (100 settled
+  picks at non-negative ROI) and publishes them on the desk. Promotion is a
+  deliberate human step; nothing self-promotes.
+  **SETTLEMENT:** `_grade_cfb_pick` settles by ESPN EVENT ID (espn_odds now
+  carries `event_id` + `neutral` for ALL sports -- that is what makes it
+  possible), immune to the UTC date shear and matchup ambiguity that have bitten
+  this repo twice. The date path is a fallback accepting +/-1 day ONLY when
+  exactly one game matches (safe: college teams play weekly) and refuses to
+  guess otherwise. The ledger collector DROPS any edge lacking event_id or
+  game_date -- the RLM lesson enforced at intake. NB the collector must emit
+  `game_date` (not `date`): the finalizer pops that key, and a pick setting
+  `date` directly gets it overwritten with the snapshot day.
+  Wired into daily-pipeline BEFORE all_picks_tracker (so edges land the same
+  run) and re-priced on the heartbeat; both cfb artifacts registered in
+  data_health DESK_FRESHNESS. v1 is MONEYLINES ONLY -- no spreads, totals, or
+  player props, and no CFB DFS. Method documented at methodology.html#cfb-model.
+
 - **2026-09-02 — THE 6-DAY PIPELINE OUTAGE (read before touching
   verify_calibration):** daily-pipeline failed EVERY run 8/28-9/02 because
   verify_calibration pinned specific families (to_score_run_no empirical,
