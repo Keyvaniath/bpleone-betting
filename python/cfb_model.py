@@ -188,6 +188,20 @@ def run() -> Dict[str, Any]:
                      "No edges published."),
         })
 
+    # FAIL CLOSED on the honesty layer. Every EdgeStat board routes its probs
+    # through prob_calibration; if that import failed we must publish NOTHING
+    # rather than a board of uncalibrated, unguarded picks. Losing the desk for
+    # a run is recoverable -- publishing ungated picks is not.
+    if pc is None:
+        return _write({
+            "generated_at": now, "n_games": 0, "n_edges": 0,
+            "regime": "unknown", "edges": [], "games": [],
+            "status": "experimental",
+            "note": ("prob_calibration unavailable -- no edges published. Every "
+                     "surfaced probability must pass the curation/overconfidence "
+                     "guards, so the desk goes dark rather than skip them."),
+        })
+
     by_team = {_norm_team(r["team"]): r for r in ratings_payload["ratings"]}
     regime = ratings_payload.get("regime") or "unknown"
     applicable = ratings_payload.get("applicable_backtest") or {}
@@ -253,11 +267,10 @@ def run() -> Dict[str, Any]:
             # Honesty layer: the same engine every other EdgeStat board uses.
             # A family with no settled history returns method 'model_only' and
             # is admitted; once it HAS history, curation can bury it.
-            p_cal, meta = (pc.empirical_calibrate(p_shrunk, market)
-                           if pc else (p_shrunk, {"method": "unavailable"}))
+            p_cal, meta = pc.empirical_calibrate(p_shrunk, market)
             if p_cal is None:
                 p_cal = p_shrunk
-            if pc and (pc.is_proven_negative(market) or pc.is_overconfident(market)):
+            if pc.is_proven_negative(market) or pc.is_overconfident(market):
                 continue
             if not (MIN_PROB <= p_cal <= MAX_PROB):
                 continue
