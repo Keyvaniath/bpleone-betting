@@ -29,7 +29,10 @@ SPORTS = [
     ("mls",   "soccer/usa.1",                     21),  # fewer matches per day
     ("epl",   "soccer/eng.1",                     21),
     ("nfl",   "football/nfl",                      7),  # off-season; less needed
-    ("ncaaf", "football/college-football",         3),  # 99/day = too many
+    # 8 days, not 3 (2026-09-02): CFB plays SATURDAY -- a 3-day window run
+    # early in the week skipped the whole slate and the file sat at 0 games
+    # all season. Cost is one scoreboard call per day queried, not per game.
+    ("ncaaf", "football/college-football",         8),
     ("cws",   "baseball/college-baseball",         7),
     ("mlb",   "baseball/mlb",                     14),
 ]
