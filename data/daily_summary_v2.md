@@ -1,18 +1,18 @@
 # EdgeStat Daily Summary — 2026-09-04
 
-## 🏥 Model Health: 66.7/100 [OK]
+## 🏥 Model Health: 69.0/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.9/100
+  - 🟢 Calibration Freshness: 100.0/100
   - 🔴 Hit Rate Trend: 0/100
-  - 🔴 Brier Trend: 55.1/100
+  - 🔴 Brier Trend: 55.0/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 100.0/100
-  - 🔴 Edge Count: 57.1/100
+  - 🟢 Edge Count: 80.0/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.573)
-- **Total games on board:** 93
-- **Strong home favorites:** 9 | **Strong road dogs:** 4
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.568)
+- **Total games on board:** 92
+- **Strong home favorites:** 8 | **Strong road dogs:** 4
 
 ## 🎯 Top 5 Best Bets
 1. **OAK @ SEA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
@@ -22,7 +22,11 @@
 5. **BOS @ BAL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** TOR @ KCR KCR_ML -- 67% / +24.3% (score 2.5)
+- [STRONG] **[MLB]** TOR @ KCR KCR_ML -- 66% / +25.9% (score 2.5)
+
+## 📉 Strong UNDER Signals
+- [STRONG 5.5] **ATL @ PHI** model 7.23 vs market 8.5
+- [STRONG 5.0] **NYY @ SDP** model 6.83 vs market 8.5
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -60,11 +64,11 @@
 - Hot teams: **3** | Cold teams: **12** | Over-heavy: 0 | Under-heavy: 2
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (107)
+## ⚠️ Anomaly Detector (108)
 - RESIDUAL_DIVERGENCE: **8**
-- STEAM_MOVE: **91**
+- STEAM_MOVE: **95**
 - PEN_MISMATCH: **3**
-- COMPOUND_BULLPEN: **5**
+- COMPOUND_BULLPEN: **2**
   - Connecticut Sun (WNBA): Connecticut Sun UNDERPERFORMING expected margin by 8.3pts in recent games -- model bias may persist
   - Chicago Sky (WNBA): Chicago Sky UNDERPERFORMING expected margin by 17.6pts in recent games -- model bias may persist
   - Dallas Wings (WNBA): Dallas Wings OUTPERFORMING expected margin by 9.5pts in recent games -- model bias may persist
@@ -81,12 +85,12 @@
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
 ## 🎯 Convergence Picks (6 stacked games)
-- ELITE: **5** · HIGH: 0 · MED: 1
+- ELITE: **4** · HIGH: 1 · MED: 1
   - [ELITE] Nashville SC @ New York City FC : 7 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
   - [ELITE] Washington Mystics @ Chicago Sky : 6 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
   - [ELITE] Los Angeles Sparks @ Dallas Wings : 6 signals (PREGAME, HEAT_COLD, ANOMALY, ANOMALY)
   - [ELITE] Connecticut Sun @ Atlanta Dream : 5 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ATS)
-  - [ELITE] Phoenix Mercury @ Portland Fire : 4 signals (PREGAME, ANOMALY, ANOMALY, ATS)
+  - [HIGH] Phoenix Mercury @ Portland Fire : 3 signals (ANOMALY, ANOMALY, ATS)
 
 ## ⚾ Top MLB Pitcher K Plays (12)
 - **Chris Sale** OVER 6.5 K (75%) fair -302
@@ -107,17 +111,17 @@
   - [LEAN] **Losene Keita** (16-2-0) vs Muhammad Naimov -- fair -135
   - [LEAN] **Kurtis Campbell** (8-1-0) vs Trevor Peek -- fair -135
 
-## 🔥 MLB Batter Heat (51 HOT / 66 COLD)
+## 🔥 MLB Batter Heat (49 HOT / 70 COLD)
   - 🔥 **Tyrone Taylor** (CHC): L14 .500 / season .284 (+216pts)
   - 🔥 **Thomas Saggese** (STL): L14 .433 / season .242 (+191pts)
   - 🔥 **George Springer** (TOR): L14 .426 / season .251 (+175pts)
+  - 🔥 **Bryce Harper** (PHI): L14 .417 / season .274 (+143pts)
   - 🔥 **Jazz Chisholm Jr.** (NYY): L14 .372 / season .231 (+141pts)
-  - 🔥 **Bryce Harper** (PHI): L14 .408 / season .275 (+133pts)
-  - ❄️ **Jose Siri** (LAA): L14 .081 / season .223 (-142pts) -- FADE props
   - ❄️ **CJ Abrams** (WSH): L14 .127 / season .267 (-140pts) -- FADE props
+  - ❄️ **Jose Siri** (LAA): L14 .083 / season .222 (-139pts) -- FADE props
   - ❄️ **Taylor Ward** (SEA): L14 .089 / season .226 (-137pts) -- FADE props
-  - ❄️ **Nasim Nuñez** (WSH): L14 .093 / season .214 (-121pts) -- FADE props
-  - ❄️ **Francisco Alvarez** (NYM): L14 .111 / season .231 (-120pts) -- FADE props
+  - ❄️ **Riley Greene** (DET): L14 .137 / season .267 (-130pts) -- FADE props
+  - ❄️ **Griffin Conine** (MIA): L14 .122 / season .248 (-126pts) -- FADE props
 
 ## 📈 Streak Regression Alerts (5)
 - [WNBA] Connecticut Sun on L3 L10 1-4 -- Connecticut Sun on L3 -- no historical sample
