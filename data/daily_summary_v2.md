@@ -1,28 +1,25 @@
-# EdgeStat Daily Summary — 2026-09-03
+# EdgeStat Daily Summary — 2026-09-04
 
-## 🏥 Model Health: 67.5/100 [OK]
+## 🏥 Model Health: 65.7/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 100.0/100
+  - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 0/100
   - 🔴 Brier Trend: 53.4/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 100.0/100
+  - 🟢 Data Health: 90.9/100
   - 🟡 Edge Count: 68.6/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.574)
-- **Total games on board:** 95
+- **Total games on board:** 111
 - **Strong home favorites:** 10 | **Strong road dogs:** 5
 
 ## 🎯 Top 5 Best Bets
 1. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
 2. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
 3. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
-4. **SFG @ PIT YRFI (1st-inning OVER 0.5)** (77/100 ★★★★)
-5. **KBO NC Dinos vs Kiwoom Heroes ML @ -145** (76/100 ★★★★★)
-
-## 📡 Sharp Action (Line Movement)
-- [ELITE] **STL @ LAD** ml_home: 64.41% → 74.36% (+9.9pp)
+4. **KBO NC Dinos vs Kiwoom Heroes ML @ -145** (76/100 ★★★★★)
+5. **KBO Lotte Giants vs Hanwha Eagles ML @ -136** (76/100 ★★★★★)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -54,32 +51,31 @@
 - [NCAAF] **Arkansas-Pine Bluff Golden Lions** AWAY (None L10) · model 74.9% fair -299
 - [NCAAF] **Furman Paladins** AWAY (None L10) · model 74.9% fair -299
 - [MLS] **Nashville SC** AWAY (4-0 L10) · model 72.9% fair -270
-- [WNBA] **Dallas Wings** HOME (4-0 L10) · model 71.8% fair -255
+- [WNBA] **Dallas Wings** HOME (3-0 L10) · model 71.8% fair -255
 - [WNBA] **Washington Mystics** AWAY (3-2 L10) · model 70.8% fair -242
 
 ## 🔥/❄️ Heat / Cold Signals
-- Hot teams: **4** | Cold teams: **12** | Over-heavy: 0 | Under-heavy: 2
+- Hot teams: **3** | Cold teams: **12** | Over-heavy: 0 | Under-heavy: 2
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (107)
+## ⚠️ Anomaly Detector (101)
 - RESIDUAL_DIVERGENCE: **8**
-- STEAM_MOVE: **96**
-- PEN_MISMATCH: **1**
-- COMPOUND_BULLPEN: **2**
+- STEAM_MOVE: **92**
+- COMPOUND_BULLPEN: **1**
   - Connecticut Sun (WNBA): Connecticut Sun UNDERPERFORMING expected margin by 10.0pts in recent games -- model bias may persist
   - Chicago Sky (WNBA): Chicago Sky UNDERPERFORMING expected margin by 17.6pts in recent games -- model bias may persist
   - Washington Mystics (WNBA): Washington Mystics UNDERPERFORMING expected margin by 6.2pts in recent games -- model bias may persist
   - Portland Fire (WNBA): Portland Fire OUTPERFORMING expected margin by 6.0pts in recent games -- model bias may persist
   - Phoenix Mercury (WNBA): Phoenix Mercury OUTPERFORMING expected margin by 10.6pts in recent games -- model bias may persist
 
-## 💰 Today's Portfolio (10 picks)
-- Total stake: **$335.0** (33.5% of $1000 bankroll)
-- Expected EV: **$-17.76**
+## 💰 Today's Portfolio (11 picks)
+- Total stake: **$340.0** (34.0% of $1000 bankroll)
+- Expected EV: **$-16.33**
   - #1 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #2 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
   - #3 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
-  - #4 [NRFI] $35 on SFG @ PIT YRFI (1st-inning OVER 0.5) (P=64%)
-  - #5 [KBO] $35 on KBO NC Dinos vs Kiwoom Heroes ML @ -145 (P=59%)
+  - #4 [KBO] $35 on KBO NC Dinos vs Kiwoom Heroes ML @ -145 (P=59%)
+  - #5 [KBO] $35 on KBO Lotte Giants vs Hanwha Eagles ML @ -136 (P=58%)
 
 ## 🎯 Convergence Picks (6 stacked games)
 - ELITE: **6** · HIGH: 0 · MED: 0
@@ -89,10 +85,8 @@
   - [ELITE] Los Angeles Sparks @ Dallas Wings : 4 signals (PREGAME, HEAT_COLD, ATS, ATS)
   - [ELITE] Phoenix Mercury @ Portland Fire : 4 signals (PREGAME, ANOMALY, ANOMALY, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (5)
-- **Logan Henderson** OVER 4.5 K (78%) fair -347
+## ⚾ Top MLB Pitcher K Plays (3)
 - **Cal Quantrill** OVER 4.5 K (71%) fair -251
-- **Hunter Brown** OVER 4.5 K (70%) fair -232
 - **Tarik Skubal** OVER 6.5 K (69%) fair -219
 - **Jack Perkins** OVER 7.5 K (68%) fair -216
 
@@ -108,17 +102,17 @@
   - [LEAN] **Losene Keita** (16-2-0) vs Muhammad Naimov -- fair -135
   - [LEAN] **Kurtis Campbell** (8-1-0) vs Trevor Peek -- fair -135
 
-## 🔥 MLB Batter Heat (53 HOT / 64 COLD)
+## 🔥 MLB Batter Heat (51 HOT / 66 COLD)
   - 🔥 **Tyrone Taylor** (CHC): L14 .500 / season .284 (+216pts)
-  - 🔥 **Thomas Saggese** (STL): L14 .444 / season .239 (+205pts)
+  - 🔥 **Thomas Saggese** (STL): L14 .433 / season .242 (+191pts)
   - 🔥 **George Springer** (TOR): L14 .426 / season .251 (+175pts)
   - 🔥 **Jazz Chisholm Jr.** (NYY): L14 .372 / season .231 (+141pts)
-  - 🔥 **Lawrence Butler** (ATH): L14 .367 / season .231 (+136pts)
-  - ❄️ **Cole Young** (SEA): L14 .098 / season .244 (-146pts) -- FADE props
-  - ❄️ **Taylor Ward** (SEA): L14 .083 / season .227 (-144pts) -- FADE props
+  - 🔥 **Bryce Harper** (PHI): L14 .408 / season .275 (+133pts)
   - ❄️ **Jose Siri** (LAA): L14 .081 / season .223 (-142pts) -- FADE props
   - ❄️ **CJ Abrams** (WSH): L14 .127 / season .267 (-140pts) -- FADE props
+  - ❄️ **Taylor Ward** (SEA): L14 .089 / season .226 (-137pts) -- FADE props
   - ❄️ **Nasim Nuñez** (WSH): L14 .093 / season .214 (-121pts) -- FADE props
+  - ❄️ **Francisco Alvarez** (NYM): L14 .111 / season .231 (-120pts) -- FADE props
 
 ## 📈 Streak Regression Alerts (6)
 - [WNBA] Connecticut Sun on L3 L10 1-4 -- Connecticut Sun on L3 -- no historical sample
@@ -136,9 +130,10 @@
 
 ## 🧠 Training Convergence
 - ELITE: **0** · HEALTHY: 0 · OK: 0 · DEGRADED: **2**
+  - ⚠️ **batter_hits**: DIVERGENT - consistent same-sign moves (structural issue) (cf=0.9462)
 
 ## 🤖 Self-Training Status
-- **WNBA**: n=32 games · hit rate 59.4% · bias +3.0pp [calibration applied]
+- **WNBA**: n=29 games · hit rate 51.7% · bias +6.1pp [calibration applied]
 - **MLS**: n=60 games · hit rate 45.0% · bias +2.3pp [calibration applied]
 - **EPL**: n=20 games · hit rate 65.0% · bias -14.0pp [calibration applied]
-- **MLB**: n=189 games · hit rate 53.4% · bias -2.0pp
+- **MLB**: n=189 games · hit rate 54.5% · bias -2.9pp [calibration applied]
