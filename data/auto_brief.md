@@ -5,49 +5,50 @@ _0% lineups confirmed · 12 rookie SPs_
 **Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
-- **16 games** scheduled
-- **25 best bets** scored: 8 DK · 0 PP · 2 NRFI · 0 SGP
-- **MC simulation:** EV +$9.92, 61% P(profit), p05 $-86.87 / p95 $78.97
+- **15 games** scheduled
+- **33 best bets** scored: 8 DK · 0 PP · 12 NRFI · 0 SGP
+- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$45.25
+- **MC simulation:** EV +$148.94, 81% P(profit), p05 $-100.4 / p95 $376.85
 
 ## Top 5 Best Bets
-1. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
-   - Player prop quality score 1.1935
-   - Elite player
-2. **LOL ShowMaker OVER 3.5 Kills**  (78/100 ****, edge —)
-   - Player prop quality score 1.1892
-   - Elite player
-3. **LOL Peyz OVER 4.5 Kills**  (78/100 ****, edge —)
-   - Player prop quality score 1.184
-   - Elite player
-4. **KBO NC Dinos vs Kiwoom Heroes ML @ -145**  (76/100 *****, edge —)
-   - Model 59.3% (fair -145)
-   - 
-5. **KBO Lotte Giants vs Hanwha Eagles ML @ -136**  (76/100 *****, edge —)
-   - Model 57.7% (fair -136)
-   - 
+1. **OAK @ SEA YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +32.9%)
+   - P(YRFI) 78.8% vs baseline 46.0%
+2. **STL @ COL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +27.3%)
+   - P(YRFI) 73.3% vs baseline 46.0%
+3. **ARI @ HOU YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +25.5%)
+   - P(YRFI) 71.5% vs baseline 46.0%
+4. **TOR @ KCR YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +21.8%)
+   - P(YRFI) 67.8% vs baseline 46.0%
+5. **BOS @ BAL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +20.9%)
+   - P(YRFI) 67.0% vs baseline 46.0%
 
-## ⚠️ Trap Warnings — 8 flagged
-- **Jackson Chourio UNDER 1.5 batter hits** (low):
+## ⚠️ Trap Warnings — 17 flagged
+- **Jackson Chourio UNDER 1.5 batter hits** (high):
    - Edge +18.0% looks big but only 0 settled props on this player — model unproven
-- **Dillon Dingler OVER 1.5 batter total bases** (low):
+   - Batter heating up: heating up: 0.942 ops recent vs 0.827 season (+0.115)
+- **Dillon Dingler OVER 1.5 batter total bases** (high):
    - Edge +13.4% looks big but only 0 settled props on this player — model unproven
-- **STL @ LAD YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +11.4% looks big but only 0 settled props on this player — model unproven
-- **Nathaniel Lowe OVER 1.5 batter total bases** (low):
+   - Batter cooling: cooling: 0.356 ops recent vs 0.779 season (-0.423)
+- **Nathaniel Lowe OVER 1.5 batter total bases** (high):
    - Edge +10.4% looks big but only 0 settled props on this player — model unproven
-- **OAK @ SEA YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +10.2% looks big but only 0 settled props on this player — model unproven
+   - Batter cooling: cooling: 0.543 ops recent vs 0.626 season (-0.083)
+- **William Contreras UNDER 1.5 batter hits** (high):
+   - Edge +9.8% looks big but only 0 settled props on this player — model unproven
+   - Batter heating up: heating up: 1.045 ops recent vs 0.743 season (+0.302)
+- **Christian Yelich UNDER 1.5 batter hits** (high):
+   - Edge +8.8% looks big but only 0 settled props on this player — model unproven
+   - Batter heating up: heating up: 0.958 ops recent vs 0.712 season (+0.246)
 
 ## Hot streaks
-**Batters heating up:** Rafael Devers (heat +4.46), Brandon Lowe (heat +4.15), Patrick Bailey (heat +4.14)
-**Pitchers on a run:** Jack Perkins (heat +3.88), Tarik Skubal (heat -0.46)
+**Batters heating up:** Patrick Bailey (heat +3.18), Sal Stewart (heat +2.04), Cooper Pratt (heat +1.49)
+**Pitchers on a run:** Erick Fedde (heat +1.06), Daniel Lynch IV (heat +0.22)
 
 ## Bullpens GASSED tonight
-Athletics, Pittsburgh Pirates, San Francisco Giants, St. Louis Cardinals, Tampa Bay Rays, Texas Rangers, Toronto Blue Jays, Minnesota Twins
+Athletics, Pittsburgh Pirates, Seattle Mariners, San Francisco Giants, St. Louis Cardinals, Tampa Bay Rays, Texas Rangers, Toronto Blue Jays
 _Lean late-inning OVER on these games; fade their save situations._
 
 ## NRFI/YRFI strong leans
-- **YRFI** (1st-inning OVER): STL @ LAD, OAK @ SEA
+- **YRFI** (1st-inning OVER): OAK @ SEA, STL @ COL, ARI @ HOU, TOR @ KCR, BOS @ BAL
 
 ## Golf -- Biltmore Championship Asheville
 - **Leader:** ? (?) at #?
@@ -66,7 +67,10 @@ _Lean late-inning OVER on these games; fade their save situations._
 ## KBO -- 2026 Korean Baseball
 - Hanwha Eagles @ Lotte Giants | P(home) 57.4% fair -135 | total 10 R
 - KT Wiz @ KIA Tigers | P(home) 63.7% fair -176 | total 9 R
-- **KBO POD:** Lotte Giants ML vs Hanwha Eagles (KBO) (HIGH)
+- NC Dinos @ Kiwoom Heroes | P(home) 40.3% fair +148 | total 10 R
+- Doosan Bears @ SSG Landers | P(home) 51.5% fair -106 | total 9 R
+- Samsung Lions @ LG Twins | P(home) 55.4% fair -124 | total 9 R
+- **KBO POD:** NC Dinos ML vs Kiwoom Heroes (KBO) (HIGH)
 
 ## LoL Esports -- 0 live, 27 upcoming
 - [NACL] Winthrop University vs Cupid Esports BO5 | P(A) 43.7% fair +129/-129
@@ -76,7 +80,7 @@ _Lean late-inning OVER on these games; fade their save situations._
 - [PCS] SillySilly Gaming vs CTBC Flying Oyster Academy BO5 | P(A) 55.1% fair -123/+123
 - **LoL POT:** LGD GAMING ML vs TBD (LPL, BO5) (HIGH)
 
-## Player Play of the Day -- across all sports (3462 candidates scanned)
+## Player Play of the Day -- across all sports (3473 candidates scanned)
 - **[LOL]** Inspired UNDER 3.5 Kills | model 61.7% fair -161 (ELITE)
 - **[LOL]** ShowMaker OVER 3.5 Kills | model 62.5% fair -167 (ELITE)
 - **[LOL]** Peyz OVER 4.5 Kills | model 61.3% fair -158 (ELITE)
@@ -86,5 +90,5 @@ _Lean late-inning OVER on these games; fade their save situations._
 ## Self-learning calibration (esports + KBO)
 - **LOL:** 69 settled | brier 0.2587 | ECE 0.1284
    - Model over-confident; subtract 12.0pp at next inference
-- **KBO:** 66 settled | brier 0.2594 | ECE 0.1065
+- **KBO:** 68 settled | brier 0.259 | ECE 0.1059
    - Model over-confident; subtract 8.8pp at next inference

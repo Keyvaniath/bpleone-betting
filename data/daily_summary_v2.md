@@ -1,25 +1,28 @@
 # EdgeStat Daily Summary — 2026-09-04
 
-## 🏥 Model Health: 65.7/100 [OK]
+## 🏥 Model Health: 66.7/100 [OK]
 - Operational but room to improve - check yellow components
   - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 0/100
-  - 🔴 Brier Trend: 53.4/100
+  - 🔴 Brier Trend: 55.1/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 90.9/100
-  - 🟡 Edge Count: 68.6/100
+  - 🟢 Data Health: 100.0/100
+  - 🔴 Edge Count: 57.1/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.574)
-- **Total games on board:** 111
-- **Strong home favorites:** 10 | **Strong road dogs:** 5
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.573)
+- **Total games on board:** 93
+- **Strong home favorites:** 9 | **Strong road dogs:** 4
 
 ## 🎯 Top 5 Best Bets
-1. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
-2. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
-3. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
-4. **KBO NC Dinos vs Kiwoom Heroes ML @ -145** (76/100 ★★★★★)
-5. **KBO Lotte Giants vs Hanwha Eagles ML @ -136** (76/100 ★★★★★)
+1. **OAK @ SEA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+2. **STL @ COL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+3. **ARI @ HOU YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+4. **TOR @ KCR YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+5. **BOS @ BAL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+
+## 🐋 Whale Picks (Max Confluence)
+- [STRONG] **[MLB]** TOR @ KCR KCR_ML -- 67% / +24.3% (score 2.5)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -47,48 +50,50 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (5)
-- [NCAAF] **Arkansas-Pine Bluff Golden Lions** AWAY (None L10) · model 74.9% fair -299
+## ⚡ Pre-Game HIGH Conviction (4)
 - [NCAAF] **Furman Paladins** AWAY (None L10) · model 74.9% fair -299
+- [WNBA] **Washington Mystics** AWAY (3-2 L10) · model 73.5% fair -277
 - [MLS] **Nashville SC** AWAY (4-0 L10) · model 72.9% fair -270
-- [WNBA] **Dallas Wings** HOME (3-0 L10) · model 71.8% fair -255
-- [WNBA] **Washington Mystics** AWAY (3-2 L10) · model 70.8% fair -242
+- [WNBA] **Dallas Wings** HOME (3-0 L10) · model 69.1% fair -224
 
 ## 🔥/❄️ Heat / Cold Signals
 - Hot teams: **3** | Cold teams: **12** | Over-heavy: 0 | Under-heavy: 2
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (101)
+## ⚠️ Anomaly Detector (107)
 - RESIDUAL_DIVERGENCE: **8**
-- STEAM_MOVE: **92**
-- COMPOUND_BULLPEN: **1**
-  - Connecticut Sun (WNBA): Connecticut Sun UNDERPERFORMING expected margin by 10.0pts in recent games -- model bias may persist
+- STEAM_MOVE: **91**
+- PEN_MISMATCH: **3**
+- COMPOUND_BULLPEN: **5**
+  - Connecticut Sun (WNBA): Connecticut Sun UNDERPERFORMING expected margin by 8.3pts in recent games -- model bias may persist
   - Chicago Sky (WNBA): Chicago Sky UNDERPERFORMING expected margin by 17.6pts in recent games -- model bias may persist
-  - Washington Mystics (WNBA): Washington Mystics UNDERPERFORMING expected margin by 6.2pts in recent games -- model bias may persist
+  - Dallas Wings (WNBA): Dallas Wings OUTPERFORMING expected margin by 9.5pts in recent games -- model bias may persist
+  - Los Angeles Sparks (WNBA): Los Angeles Sparks OUTPERFORMING expected margin by 6.7pts in recent games -- model bias may persist
   - Portland Fire (WNBA): Portland Fire OUTPERFORMING expected margin by 6.0pts in recent games -- model bias may persist
-  - Phoenix Mercury (WNBA): Phoenix Mercury OUTPERFORMING expected margin by 10.6pts in recent games -- model bias may persist
 
-## 💰 Today's Portfolio (11 picks)
-- Total stake: **$340.0** (34.0% of $1000 bankroll)
-- Expected EV: **$-16.33**
-  - #1 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
-  - #2 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
-  - #3 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
-  - #4 [KBO] $35 on KBO NC Dinos vs Kiwoom Heroes ML @ -145 (P=59%)
-  - #5 [KBO] $35 on KBO Lotte Giants vs Hanwha Eagles ML @ -136 (P=58%)
+## 💰 Today's Portfolio (9 picks)
+- Total stake: **$345.0** (34.5% of $1000 bankroll)
+- Expected EV: **$10.08**
+  - #1 [NRFI] $50 on OAK @ SEA YRFI (1st-inning OVER 0.5) (P=79%)
+  - #2 [NRFI] $50 on STL @ COL YRFI (1st-inning OVER 0.5) (P=73%)
+  - #3 [NRFI] $50 on ARI @ HOU YRFI (1st-inning OVER 0.5) (P=71%)
+  - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
+  - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
 ## 🎯 Convergence Picks (6 stacked games)
-- ELITE: **6** · HIGH: 0 · MED: 0
-  - [ELITE] Washington Mystics @ Chicago Sky : 7 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
+- ELITE: **5** · HIGH: 0 · MED: 1
   - [ELITE] Nashville SC @ New York City FC : 7 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
+  - [ELITE] Washington Mystics @ Chicago Sky : 6 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
+  - [ELITE] Los Angeles Sparks @ Dallas Wings : 6 signals (PREGAME, HEAT_COLD, ANOMALY, ANOMALY)
   - [ELITE] Connecticut Sun @ Atlanta Dream : 5 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ATS)
-  - [ELITE] Los Angeles Sparks @ Dallas Wings : 4 signals (PREGAME, HEAT_COLD, ATS, ATS)
   - [ELITE] Phoenix Mercury @ Portland Fire : 4 signals (PREGAME, ANOMALY, ANOMALY, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (3)
-- **Cal Quantrill** OVER 4.5 K (71%) fair -251
-- **Tarik Skubal** OVER 6.5 K (69%) fair -219
-- **Jack Perkins** OVER 7.5 K (68%) fair -216
+## ⚾ Top MLB Pitcher K Plays (12)
+- **Chris Sale** OVER 6.5 K (75%) fair -302
+- **Kade Morris** OVER 7.5 K (75%) fair -300
+- **Blake Snell** OVER 5.5 K (72%) fair -262
+- **Shane Drohan** OVER 4.5 K (71%) fair -251
+- **Nolan McLean** OVER 4.5 K (70%) fair -232
 
 ## 🏀 NBA Player Heat (2 HOT / 1 COLD)
   - 🔥 **Scottie Barnes** (TOR): L5 24.4/7.6/9.6 vs season 18.6/5.8/8.8 [PTS +5.8]
@@ -114,12 +119,12 @@
   - ❄️ **Nasim Nuñez** (WSH): L14 .093 / season .214 (-121pts) -- FADE props
   - ❄️ **Francisco Alvarez** (NYM): L14 .111 / season .231 (-120pts) -- FADE props
 
-## 📈 Streak Regression Alerts (6)
+## 📈 Streak Regression Alerts (5)
 - [WNBA] Connecticut Sun on L3 L10 1-4 -- Connecticut Sun on L3 -- no historical sample
 - [WNBA] Chicago Sky on L3 L10 1-3 -- Chicago Sky on L3 -- no historical sample
-- [WNBA] Dallas Wings on W4 L10 4-0 -- Dallas Wings on W4 -- no historical sample
-- [WNBA] Las Vegas Aces on W3 L10 3-0 -- Las Vegas Aces on W3 -- no historical sample
+- [WNBA] Dallas Wings on W3 L10 3-0 -- Dallas Wings on W3 -- no historical sample
 - [MLS] New York City FC on L4 L10 0-4 -- New York City FC on L4 -- no historical sample
+- [MLS] Nashville SC on W4 L10 4-0 -- Nashville SC on W4 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**
