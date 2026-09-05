@@ -1,28 +1,28 @@
 # EdgeStat Daily Summary — 2026-09-05
 
-## 🏥 Model Health: 67.2/100 [OK]
+## 🏥 Model Health: 69.2/100 [OK]
 - Operational but room to improve - check yellow components
   - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 0/100
-  - 🔴 Brier Trend: 55.0/100
+  - 🔴 Brier Trend: 56.1/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 90.9/100
+  - 🟢 Data Health: 100.0/100
   - 🟢 Edge Count: 80.0/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.575)
-- **Total games on board:** 128
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.57)
+- **Total games on board:** 109
 - **Strong home favorites:** 17 | **Strong road dogs:** 8
 
 ## 🎯 Top 5 Best Bets
-1. **OAK @ SEA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-2. **STL @ COL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-3. **ARI @ HOU YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-4. **TOR @ KCR YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-5. **DET @ CLE YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
+1. **TOR @ KCR YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+2. **OAK @ SEA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+3. **STL @ COL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+4. **MIL @ CIN YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+5. **ARI @ HOU YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 
-## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** TOR @ KCR KCR_ML -- 67% / +26.4% (score 2.5)
+## 📡 Sharp Action (Line Movement)
+- [STRONG] **ARI @ HOU** ml_away: 46.73% → 52.38% (+5.7pp)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -50,56 +50,56 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (12)
+## ⚡ Pre-Game HIGH Conviction (11)
 - [NCAAF] **Furman Paladins** AWAY (None L10) · model 74.9% fair -299
-- [WNBA] **Washington Mystics** AWAY (3-1 L10) · model 73.5% fair -277
-- [MLS] **Vancouver Whitecaps** HOME (3-1 L10) · model 72.4% fair -262
-- [MLS] **Chicago Fire FC** AWAY (2-2 L10) · model 71.5% fair -251
-- [WNBA] **Dallas Wings** HOME (3-0 L10) · model 69.1% fair -224
-- [MLS] **FC Cincinnati** HOME (1-3 L10) · model 68.8% fair -220
-- [MLS] **Portland Timbers** HOME (1-3 L10) · model 66.8% fair -201
-- [MLS] **Colorado Rapids** AWAY (3-1 L10) · model 65.1% fair -186
-- [MLS] **New England Revolution** AWAY (2-2 L10) · model 64.3% fair -180
-- [EPL] **Fulham** HOME (0-2 L10) · model 63.9% fair -177
+- [MLS] **Vancouver Whitecaps** HOME (3-1 L10) · model 74.6% fair -294
+- [WNBA] **Washington Mystics** AWAY (3-1 L10) · model 72.5% fair -263
+- [MLS] **FC Cincinnati** HOME (1-3 L10) · model 71.1% fair -246
+- [WNBA] **Dallas Wings** HOME (3-0 L10) · model 70.1% fair -235
+- [MLS] **Chicago Fire FC** AWAY (2-2 L10) · model 69.2% fair -225
+- [MLS] **Portland Timbers** HOME (1-3 L10) · model 69.1% fair -223
+- [EPL] **Fulham** HOME (0-2 L10) · model 63.5% fair -174
+- [EPL] **Sunderland** AWAY (1-1 L10) · model 63.1% fair -171
+- [EPL] **Tottenham Hotspur** AWAY (0-2 L10) · model 63.1% fair -171
 
 ## 🔥/❄️ Heat / Cold Signals
 - Hot teams: **2** | Cold teams: **12** | Over-heavy: 0 | Under-heavy: 1
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (117)
-- RESIDUAL_DIVERGENCE: **19**
-- STEAM_MOVE: **96**
-- PEN_MISMATCH: **1**
-- COMPOUND_BULLPEN: **1**
+## ⚠️ Anomaly Detector (128)
+- RESIDUAL_DIVERGENCE: **22**
+- STEAM_MOVE: **101**
+- PEN_MISMATCH: **3**
+- COMPOUND_BULLPEN: **2**
+  - Atlanta Dream (WNBA): Atlanta Dream UNDERPERFORMING expected margin by 7.0pts in recent games -- model bias may persist
   - Connecticut Sun (WNBA): Connecticut Sun UNDERPERFORMING expected margin by 8.3pts in recent games -- model bias may persist
-  - Chicago Sky (WNBA): Chicago Sky UNDERPERFORMING expected margin by 17.6pts in recent games -- model bias may persist
+  - Chicago Sky (WNBA): Chicago Sky UNDERPERFORMING expected margin by 16.0pts in recent games -- model bias may persist
+  - Washington Mystics (WNBA): Washington Mystics UNDERPERFORMING expected margin by 8.5pts in recent games -- model bias may persist
   - Dallas Wings (WNBA): Dallas Wings OUTPERFORMING expected margin by 9.5pts in recent games -- model bias may persist
-  - Los Angeles Sparks (WNBA): Los Angeles Sparks OUTPERFORMING expected margin by 6.7pts in recent games -- model bias may persist
-  - Portland Fire (WNBA): Portland Fire OUTPERFORMING expected margin by 6.0pts in recent games -- model bias may persist
 
 ## 💰 Today's Portfolio (9 picks)
-- Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$10.07**
-  - #1 [NRFI] $50 on OAK @ SEA YRFI (1st-inning OVER 0.5) (P=79%)
-  - #2 [NRFI] $50 on STL @ COL YRFI (1st-inning OVER 0.5) (P=73%)
-  - #3 [NRFI] $50 on ARI @ HOU YRFI (1st-inning OVER 0.5) (P=71%)
+- Total stake: **$330.0** (33.0% of $1000 bankroll)
+- Expected EV: **$-1.22**
+  - #1 [NRFI] $50 on TOR @ KCR YRFI (1st-inning OVER 0.5) (P=76%)
+  - #2 [NRFI] $50 on OAK @ SEA YRFI (1st-inning OVER 0.5) (P=75%)
+  - #3 [NRFI] $50 on STL @ COL YRFI (1st-inning OVER 0.5) (P=74%)
   - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
-## 🎯 Convergence Picks (6 stacked games)
-- ELITE: **4** · HIGH: 1 · MED: 1
-  - [ELITE] Nashville SC @ New York City FC : 7 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
-  - [ELITE] Washington Mystics @ Chicago Sky : 6 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
+## 🎯 Convergence Picks (19 stacked games)
+- ELITE: **12** · HIGH: 4 · MED: 3
+  - [ELITE] Washington Mystics @ Chicago Sky : 6 signals (PREGAME, HEAT_COLD, ANOMALY, ANOMALY)
   - [ELITE] Los Angeles Sparks @ Dallas Wings : 6 signals (PREGAME, HEAT_COLD, ANOMALY, ANOMALY)
-  - [ELITE] Connecticut Sun @ Atlanta Dream : 5 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ATS)
-  - [HIGH] Phoenix Mercury @ Portland Fire : 3 signals (ANOMALY, ANOMALY, ATS)
+  - [ELITE] Colorado Rapids @ Columbus Crew : 6 signals (PREGAME, HEAT_COLD, ANOMALY, ANOMALY)
+  - [ELITE] Red Bull New York @ Seattle Sounders FC : 6 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
+  - [ELITE] LAFC @ Real Salt Lake : 6 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
 
-## ⚾ Top MLB Pitcher K Plays (6)
-- **Kade Morris** OVER 7.5 K (75%) fair -300
-- **Blake Snell** OVER 5.5 K (72%) fair -262
-- **Daniel Lynch IV** OVER 7.5 K (69%) fair -223
-- **Erick Fedde** OVER 5.5 K (67%) fair -200
-- **Cristian Javier** OVER 4.5 K (59%) fair -146
+## ⚾ Top MLB Pitcher K Plays (10)
+- **Anthony Molina** OVER 6.5 K (78%) fair -353
+- **Jacob deGrom** OVER 4.5 K (77%) fair -327
+- **Parker Messick** OVER 4.5 K (76%) fair -321
+- **Cade Cavalli** OVER 5.5 K (73%) fair -270
+- **Matthew Liberatore** OVER 5.5 K (68%) fair -214
 
 ## 🏀 NBA Player Heat (2 HOT / 1 COLD)
   - 🔥 **Scottie Barnes** (TOR): L5 24.4/7.6/9.6 vs season 18.6/5.8/8.8 [PTS +5.8]
@@ -125,12 +125,12 @@
   - ❄️ **Riley Greene** (DET): L14 .137 / season .267 (-130pts) -- FADE props
   - ❄️ **Juan Soto** (NYM): L14 .156 / season .277 (-121pts) -- FADE props
 
-## 📈 Streak Regression Alerts (5)
+## 📈 Streak Regression Alerts (11)
 - [WNBA] Connecticut Sun on L3 L10 1-4 -- Connecticut Sun on L3 -- no historical sample
-- [WNBA] Chicago Sky on L3 L10 1-3 -- Chicago Sky on L3 -- no historical sample
+- [WNBA] Chicago Sky on L3 L10 0-3 -- Chicago Sky on L3 -- no historical sample
 - [WNBA] Dallas Wings on W3 L10 3-0 -- Dallas Wings on W3 -- no historical sample
-- [MLS] New York City FC on L4 L10 0-4 -- New York City FC on L4 -- no historical sample
-- [MLS] Nashville SC on W4 L10 4-0 -- Nashville SC on W4 -- no historical sample
+- [MLS] Columbus Crew on L4 L10 0-4 -- Columbus Crew on L4 -- no historical sample
+- [MLS] D.C. United on L4 L10 0-4 -- D.C. United on L4 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**

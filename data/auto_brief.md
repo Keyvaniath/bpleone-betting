@@ -6,44 +6,47 @@ _0% lineups confirmed · 9 rookie SPs_
 
 ## Slate
 - **15 games** scheduled
-- **33 best bets** scored: 7 DK · 0 PP · 7 NRFI · 0 SGP
-- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$45.25
-- **MC simulation:** EV +$101.25, 75% P(profit), p05 $-102.85 / p95 $278.95
+- **36 best bets** scored: 7 DK · 0 PP · 12 NRFI · 0 SGP
+- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$44.55
+- **MC simulation:** EV +$152.26, 88% P(profit), p05 $-76.22 / p95 $373.87
 
 ## Top 5 Best Bets
-1. **OAK @ SEA YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +32.9%)
-   - P(YRFI) 78.8% vs baseline 46.0%
-2. **STL @ COL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +27.3%)
-   - P(YRFI) 73.3% vs baseline 46.0%
-3. **ARI @ HOU YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +25.5%)
-   - P(YRFI) 71.5% vs baseline 46.0%
-4. **TOR @ KCR YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +21.8%)
-   - P(YRFI) 67.8% vs baseline 46.0%
-5. **DET @ CLE YRFI (1st-inning OVER 0.5)**  (79/100 ****, edge +19.7%)
-   - P(YRFI) 65.7% vs baseline 46.0%
+1. **TOR @ KCR YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +30.3%)
+   - P(YRFI) 76.3% vs baseline 46.0%
+2. **OAK @ SEA YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +29.1%)
+   - P(YRFI) 75.1% vs baseline 46.0%
+3. **STL @ COL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +28.1%)
+   - P(YRFI) 74.1% vs baseline 46.0%
+4. **MIL @ CIN YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +27.0%)
+   - P(YRFI) 73.0% vs baseline 46.0%
+5. **ARI @ HOU YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +25.7%)
+   - P(YRFI) 71.7% vs baseline 46.0%
 
-## ⚠️ Trap Warnings — 10 flagged
-- **OAK @ SEA YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +32.9% looks big but only 0 settled props on this player — model unproven
-- **STL @ COL YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +27.3% looks big but only 0 settled props on this player — model unproven
-- **ARI @ HOU YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +25.5% looks big but only 0 settled props on this player — model unproven
-- **Juan Soto OVER 1.5 batter total bases** (low):
+## ⚠️ Trap Warnings — 16 flagged
+- **Juan Soto OVER 1.5 batter total bases** (high):
    - Edge +22.3% looks big but only 0 settled props on this player — model unproven
+   - Batter cooling: cooling: 0.737 ops recent vs 0.934 season (-0.197)
+- **Jung Hoo Lee OVER 1.5 batter total bases** (high):
+   - Edge +14.0% looks big but only 0 settled props on this player — model unproven
+   - Batter cooling: cooling: 0.465 ops recent vs 0.732 season (-0.267)
+- **Otto Lopez OVER 1.5 batter total bases** (high):
+   - Edge +8.8% looks big but only 0 settled props on this player — model unproven
+   - Batter cooling: cooling: 0.619 ops recent vs 0.774 season (-0.155)
 - **TOR @ KCR YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +21.8% looks big but only 0 settled props on this player — model unproven
+   - Edge +30.3% looks big but only 0 settled props on this player — model unproven
+- **OAK @ SEA YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +29.1% looks big but only 0 settled props on this player — model unproven
 
 ## Hot streaks
-**Batters heating up:** Cal Raleigh (heat +5.09), Alika Williams (heat +4.51), Joshua Báez (heat +4.02)
-**Pitchers on a run:** Andre Pallante (heat +0.90), Daniel Lynch IV (heat -0.54)
+**Batters heating up:** Alex Bregman (heat +4.09), Pete Crow-Armstrong (heat +3.66), Francisco Lindor (heat +1.85)
+**Pitchers on a run:** Drew Rasmussen (heat -0.18), Tyler Glasnow (heat -2.34)
 
 ## Bullpens GASSED tonight
-Athletics, Pittsburgh Pirates, Seattle Mariners, San Francisco Giants, St. Louis Cardinals, Tampa Bay Rays, Texas Rangers, Toronto Blue Jays
+Athletics, Pittsburgh Pirates, Seattle Mariners, San Francisco Giants, St. Louis Cardinals, Texas Rangers, Toronto Blue Jays, Chicago White Sox
 _Lean late-inning OVER on these games; fade their save situations._
 
 ## NRFI/YRFI strong leans
-- **YRFI** (1st-inning OVER): OAK @ SEA, STL @ COL, ARI @ HOU, TOR @ KCR, DET @ CLE
+- **YRFI** (1st-inning OVER): TOR @ KCR, OAK @ SEA, STL @ COL, MIL @ CIN, ARI @ HOU
 
 ## Golf -- Biltmore Championship Asheville
 - **Leader:** ? (?) at #?
@@ -60,18 +63,22 @@ _Lean late-inning OVER on these games; fade their save situations._
 - Chicago Blackhawks @ Minnesota Wild (0-0-0 vs 0-0-0)  | P(home) 52.9% fair -112 | Scheduled
 
 ## KBO -- 2026 Korean Baseball
-- Samsung Lions @ LG Twins | P(home) 55.4% fair -124 | total 9 R
-- **KBO POD:** LG Twins ML vs Samsung Lions (KBO) (MED)
+- NC Dinos @ Kiwoom Heroes | P(home) 43.1% fair +132 | total 10 R
+- Hanwha Eagles @ Lotte Giants | P(home) 55.2% fair -123 | total 10 R
+- KT Wiz @ KIA Tigers | P(home) 62.4% fair -166 | total 9 R
+- Doosan Bears @ SSG Landers | P(home) 51.2% fair -105 | total 9 R
+- Samsung Lions @ LG Twins | P(home) 55.3% fair -124 | total 9 R
+- **KBO POD:** KIA Tigers ML vs KT Wiz (KBO) (HIGH)
 
-## LoL Esports -- 2 live, 24 upcoming
-- [PCS] CTBC Flying Oyster Academy vs SillySilly Gaming BO5 | P(A) 44.9% fair +123/-123
-- [LEC] G2 Esports vs Team Vitality BO5 | P(A) 42.9% fair +133/-133
+## LoL Esports -- 2 live, 22 upcoming
 - [LEC] Karmine Corp vs GIANTX BO5 | P(A) 73.8% fair -281/+281
-- [CBLOL] Vivo Keyd Stars vs paiN Gaming BO5 | P(A) 68.0% fair -212/+212
+- [CBLOL] paiN Gaming vs Vivo Keyd Stars BO5 | P(A) 32.0% fair +212/-212
 - [LCS] Sentinels vs Cloud9 Kia BO3 | P(A) 51.3% fair -105/+105
-- **LoL POT:** LGD GAMING ML vs TBD (LPL, BO5) (HIGH)
+- [LCS] Dignitas vs Team Liquid Alienware BO3 | P(A) 21.7% fair +361/-361
+- [LJL] New Meta vs FENNEL BO5 | P(A) 41.7% fair +140/-140
+- **LoL POT:** BILIBILI GAMING ML vs Anyone's Legend (LPL, BO5) (HIGH)
 
-## Player Play of the Day -- across all sports (3458 candidates scanned)
+## Player Play of the Day -- across all sports (3471 candidates scanned)
 - **[LOL]** Inspired UNDER 3.5 Kills | model 61.7% fair -161 (ELITE)
 - **[LOL]** ShowMaker OVER 3.5 Kills | model 62.5% fair -167 (ELITE)
 - **[LOL]** Peyz OVER 4.5 Kills | model 61.3% fair -158 (ELITE)
@@ -81,5 +88,5 @@ _Lean late-inning OVER on these games; fade their save situations._
 ## Self-learning calibration (esports + KBO)
 - **LOL:** 69 settled | brier 0.2587 | ECE 0.1284
    - Model over-confident; subtract 12.0pp at next inference
-- **KBO:** 69 settled | brier 0.2581 | ECE 0.0979
-   - Model over-confident; subtract 8.1pp at next inference
+- **KBO:** 70 settled | brier 0.2565 | ECE 0.0911
+   - Model over-confident; subtract 7.4pp at next inference
