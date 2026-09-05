@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-09-05T16:45:36",
-  "n_settled": 9802,
+  "generated_at": "2026-09-05T23:42:43",
+  "n_settled": 9811,
   "n_families_transformed": 24,
   "n_families_bucketed": 15,
-  "ece_before": 0.0944,
+  "ece_before": 0.0941,
   "ece_after": 0.0129,
-  "ece_improvement": 0.0815,
-  "brier_before": 0.20816,
-  "brier_after": 0.19037,
+  "ece_improvement": 0.0812,
+  "brier_before": 0.20825,
+  "brier_after": 0.19043,
   "method_note": "Per market family, a monotonic (isotonic) curve maps the model's predicted probability to the realized hit rate, learned from settled outcomes. Bucketed for well-sampled families (preserves ranking), a family-average Bayesian blend for mid-sample, identity below that. ECE = expected calibration error (lower = the displayed % is truer). This makes the model honest at the source; it does not create edge (that needs a market price).",
   "families": [
     {
@@ -70,6 +70,36 @@
       }
     },
     {
+      "family": "fight_r1_finish_yes",
+      "n": 120,
+      "method": "bucketed",
+      "avg_pred_raw": 0.2263,
+      "avg_pred_calibrated": 0.3672,
+      "realized": 0.425,
+      "ece_raw": 0.1987,
+      "ece_calibrated": 0.0578,
+      "transform": {
+        "anchors": [
+          [
+            0.1884,
+            0.3534
+          ],
+          [
+            0.2043,
+            0.3534
+          ],
+          [
+            0.2342,
+            0.3534
+          ],
+          [
+            0.2782,
+            0.4128
+          ]
+        ]
+      }
+    },
+    {
       "family": "mlb_hit_1.5_over",
       "n": 186,
       "method": "bucketed",
@@ -122,36 +152,6 @@
       "ece_calibrated": 0.0532,
       "transform": {
         "realized": 1.0
-      }
-    },
-    {
-      "family": "fight_r1_finish_yes",
-      "n": 111,
-      "method": "bucketed",
-      "avg_pred_raw": 0.227,
-      "avg_pred_calibrated": 0.3623,
-      "realized": 0.4234,
-      "ece_raw": 0.1964,
-      "ece_calibrated": 0.078,
-      "transform": {
-        "anchors": [
-          [
-            0.1893,
-            0.3409
-          ],
-          [
-            0.2056,
-            0.3409
-          ],
-          [
-            0.2351,
-            0.3409
-          ],
-          [
-            0.2785,
-            0.4335
-          ]
-        ]
       }
     },
     {

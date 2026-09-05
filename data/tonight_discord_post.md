@@ -1,5 +1,5 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:7 F:47
+_NO_ACTION_NIGHT_ | L:0 S:3 F:46
 
 :lock: **LOCK:** Matthew Liberatore (MLB)
 

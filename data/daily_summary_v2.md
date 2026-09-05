@@ -1,18 +1,18 @@
 # EdgeStat Daily Summary — 2026-09-05
 
-## 🏥 Model Health: 69.2/100 [OK]
+## 🏥 Model Health: 69.8/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.9/100
+  - 🟢 Calibration Freshness: 100.0/100
   - 🔴 Hit Rate Trend: 0/100
-  - 🔴 Brier Trend: 56.1/100
+  - 🔴 Brier Trend: 54.6/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 100.0/100
-  - 🟢 Edge Count: 80.0/100
+  - 🟢 Edge Count: 88.6/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.57)
-- **Total games on board:** 109
-- **Strong home favorites:** 17 | **Strong road dogs:** 8
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.568)
+- **Total games on board:** 102
+- **Strong home favorites:** 16 | **Strong road dogs:** 6
 
 ## 🎯 Top 5 Best Bets
 1. **TOR @ KCR YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
@@ -22,7 +22,7 @@
 5. **ARI @ HOU YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 
 ## 📡 Sharp Action (Line Movement)
-- [STRONG] **ARI @ HOU** ml_away: 46.73% → 52.38% (+5.7pp)
+- [STRONG] **ARI @ HOU** ml_away: 46.73% → 52.61% (+5.9pp)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -50,7 +50,7 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (11)
+## ⚡ Pre-Game HIGH Conviction (8)
 - [NCAAF] **Furman Paladins** AWAY (None L10) · model 74.9% fair -299
 - [MLS] **Vancouver Whitecaps** HOME (3-1 L10) · model 74.6% fair -294
 - [WNBA] **Washington Mystics** AWAY (3-1 L10) · model 72.5% fair -263
@@ -58,19 +58,17 @@
 - [WNBA] **Dallas Wings** HOME (3-0 L10) · model 70.1% fair -235
 - [MLS] **Chicago Fire FC** AWAY (2-2 L10) · model 69.2% fair -225
 - [MLS] **Portland Timbers** HOME (1-3 L10) · model 69.1% fair -223
-- [EPL] **Fulham** HOME (0-2 L10) · model 63.5% fair -174
-- [EPL] **Sunderland** AWAY (1-1 L10) · model 63.1% fair -171
-- [EPL] **Tottenham Hotspur** AWAY (0-2 L10) · model 63.1% fair -171
+- [MLS] **Colorado Rapids** AWAY (3-1 L10) · model 62.8% fair -169
 
 ## 🔥/❄️ Heat / Cold Signals
 - Hot teams: **2** | Cold teams: **12** | Over-heavy: 0 | Under-heavy: 1
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (128)
+## ⚠️ Anomaly Detector (133)
 - RESIDUAL_DIVERGENCE: **22**
-- STEAM_MOVE: **101**
-- PEN_MISMATCH: **3**
-- COMPOUND_BULLPEN: **2**
+- STEAM_MOVE: **104**
+- PEN_MISMATCH: **4**
+- COMPOUND_BULLPEN: **3**
   - Atlanta Dream (WNBA): Atlanta Dream UNDERPERFORMING expected margin by 7.0pts in recent games -- model bias may persist
   - Connecticut Sun (WNBA): Connecticut Sun UNDERPERFORMING expected margin by 8.3pts in recent games -- model bias may persist
   - Chicago Sky (WNBA): Chicago Sky UNDERPERFORMING expected margin by 16.0pts in recent games -- model bias may persist
@@ -110,20 +108,20 @@
   - [LEAN] **Salahdine Parnasse** (23-2-0) vs Dan Hooker -- fair -167
   - [LEAN] **Mario Pinto** (12-0-0) vs Ryan Spann -- fair -158
   - [LEAN] **Felipe Lima** (14-2-0) vs Morgan Charrière -- fair -147
+  - [LEAN] **Delphine Benouaich** (8-2-0) vs Sofia Montenegro -- fair -136
   - [LEAN] **Losene Keita** (16-2-0) vs Muhammad Naimov -- fair -135
-  - [LEAN] **Kurtis Campbell** (8-1-0) vs Trevor Peek -- fair -135
 
-## 🔥 MLB Batter Heat (51 HOT / 69 COLD)
+## 🔥 MLB Batter Heat (52 HOT / 70 COLD)
   - 🔥 **Tyrone Taylor** (CHC): L14 .500 / season .284 (+216pts)
   - 🔥 **Thomas Saggese** (STL): L14 .433 / season .245 (+188pts)
+  - 🔥 **Myles Straw** (TOR): L14 .387 / season .236 (+151pts)
+  - 🔥 **Michael Massey** (KC): L14 .429 / season .279 (+150pts)
   - 🔥 **Cal Raleigh** (SEA): L14 .326 / season .176 (+150pts)
-  - 🔥 **Elly De La Cruz** (CIN): L14 .404 / season .276 (+128pts)
-  - 🔥 **Jazz Chisholm Jr.** (NYY): L14 .357 / season .229 (+128pts)
   - ❄️ **Taylor Ward** (SEA): L14 .071 / season .225 (-154pts) -- FADE props
   - ❄️ **CJ Abrams** (WSH): L14 .123 / season .265 (-142pts) -- FADE props
   - ❄️ **Jose Siri** (LAA): L14 .081 / season .220 (-139pts) -- FADE props
-  - ❄️ **Riley Greene** (DET): L14 .137 / season .267 (-130pts) -- FADE props
-  - ❄️ **Juan Soto** (NYM): L14 .156 / season .277 (-121pts) -- FADE props
+  - ❄️ **Juan Soto** (NYM): L14 .152 / season .274 (-122pts) -- FADE props
+  - ❄️ **Gary Sánchez** (MIL): L14 .083 / season .204 (-121pts) -- FADE props
 
 ## 📈 Streak Regression Alerts (11)
 - [WNBA] Connecticut Sun on L3 L10 1-4 -- Connecticut Sun on L3 -- no historical sample

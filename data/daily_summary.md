@@ -2,38 +2,26 @@
 
 **Model Confidence: 27.6/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
 
-_Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
+_Pipeline health: **DEGRADED** (14/15 artifacts ok; 1 empty, 0 stale)._ 
 
-_Generated at 2026-09-05T16:45:24 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-09-05T23:42:34 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
-**STL @ COL - OVER_11.0**
+**STL @ COL - OVER_11.5**
 - Market: -110
-- Model probability: 82.0%
-- Raw edge: +56.62%
+- Model probability: 75.1%
+- Raw edge: +43.34%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
 
-## Full Slate (15 games)
+## Full Slate (3 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 4:10p ET | SFG @ NYM | Citi Field | 73F 4mph | SFG_ML +22.25% |
-| 4:10p ET | CHC @ MIA | loanDepot park | indoor | OVER_8.5 +25.99% |
-| 6:05p ET | ATL @ PHI | Citizens Bank Park | 70F 2mph | ATL_ML +20.16% |
-| 6:10p ET | DET @ CLE | Progressive Field | 66F 3mph | DET_ML +13.99% |
-| 6:40p ET | LAA @ PIT | PNC Park | 69F 3mph | PIT_ML +11.48% |
-| 6:40p ET | MIL @ CIN | Great American Ball Park | 79F 5mph | OVER_9.0 +39.42% |
-| 7:05p ET | BOS @ BAL | Oriole Park at Camden Yards | 72F 6mph | OVER_8.0 +28.51% |
-| 7:05p ET | TBR @ TEX | Globe Life Field | indoor | OVER_6.5 +33.18% |
-| 7:10p ET | TOR @ KCR | Kauffman Stadium | 90F 7mph | KCR_ML +27.45% |
-| 7:10p ET | MIN @ CHW | Rate Field | 73F 14mph | OVER_8.5 +49.89% |
-| 7:15p ET | ARI @ HOU | Daikin Park | indoor | OVER_9.0 +45.05% |
-| 7:15p ET | NYY @ SDP | Petco Park | 75F 6mph | NYY_ML +39.85% |
-| 8:10p ET | STL @ COL | Coors Field | 79F 8mph | OVER_11.0 +56.62% |
-| 9:10p ET | WSN @ LAD | UNIQLO Field at Dodger Stadium | 70F 3mph | OVER_7.0 +40.29% |
+| 8:10p ET | STL @ COL | Coors Field | 75F 6mph | OVER_11.5 +43.34% |
+| 9:10p ET | WSN @ LAD | UNIQLO Field at Dodger Stadium | 71F 2mph | WSN_ML +8.22% |
 | 9:40p ET | OAK @ SEA | T-Mobile Park | indoor | OVER_7.5 +39.78% |
 
 ## Parlays - top 5
@@ -61,27 +49,15 @@ _Generated at 2026-09-05T16:45:24 UTC. Game lines source: **Bovada (fallback -- 
 | batter total bases | 46 | 43.5% | 45.2% | 1.038 | 0.968 |
 | batter hits | 115 | 53.9% | 56.3% | 1.043 | 0.961 |
 
-Cumulative graded plays: 9920. Wins: 3554. Hit rate: 35.8%.
+Cumulative graded plays: 9929. Wins: 3559. Hit rate: 35.8%.
 
 ## Auxiliary Markets (Model Fair Prices)
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| ARI @ HOU | 28.3% | +254 | 6.32 | +440 | -440 |
-| ATL @ PHI | 35.5% | +181 | 5.11 | +180 | -180 |
-| BOS @ BAL | 40.4% | +148 | 4.36 | +318 | -318 |
-| CHC @ MIA | 61.5% | -159 | 2.43 | +177 | -177 |
-| DET @ CLE | 47.6% | +110 | 3.66 | +175 | -175 |
-| LAA @ PIT | 40.2% | +149 | 4.48 | -154 | +154 |
-| MIL @ CIN | 27.0% | +271 | 6.54 | +698 | -698 |
-| MIN @ CHW | 35.0% | +185 | 4.75 | +164 | -164 |
-| NYY @ SDP | 56.9% | -132 | 2.71 | +362 | -362 |
 | OAK @ SEA | 24.9% | +302 | 6.96 | -108 | +108 |
-| SFG @ NYM | 50.4% | -102 | 3.36 | +179 | -179 |
-| STL @ COL | 25.9% | +286 | 7.09 | +164 | -164 |
-| TBR @ TEX | 39.7% | +152 | 4.62 | +261 | -261 |
-| TOR @ KCR | 23.7% | +322 | 7.02 | -122 | +122 |
-| WSN @ LAD | 59.2% | -145 | 2.65 | +104 | -104 |
+| STL @ COL | 25.9% | +286 | 6.89 | +165 | -165 |
+| WSN @ LAD | 59.2% | -145 | 2.64 | +105 | -105 |
 
 ## Team Form (last 10)
 
@@ -102,7 +78,7 @@ Cumulative graded plays: 9920. Wins: 3554. Hit rate: 35.8%.
 
 ## Loop Activity (since last refresh)
 
-- Confidence delta: **+0.1**
+- Confidence delta: **+0.0**
 
 ## Model Recommendations (operator review)
 
@@ -114,4 +90,4 @@ _The model is suggesting 1 parameter tweak based on its own performance. Apply v
 ---
 
 _EdgeStat is a research desk. Bet responsibly. 21+. 1-800-GAMBLER._
-_Source: github.com/Keyvaniath/bpleone-betting - last settled 2026-09-04._
+_Source: github.com/Keyvaniath/bpleone-betting - last settled 2026-09-05._

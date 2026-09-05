@@ -1,23 +1,23 @@
 {
- "generated_at": "2026-09-05T16:44:59",
+ "generated_at": "2026-09-05T23:41:07",
  "stake_assumption": "1u flat per pick",
  "total_picks": 10274,
- "n_settled": 9920,
- "n_pending": 239,
+ "n_settled": 9929,
+ "n_pending": 230,
  "n_void": 115,
- "wins": 3551,
- "losses": 6359,
+ "wins": 3555,
+ "losses": 6364,
  "pushes": 10,
- "hit_rate": 0.3583,
- "net_units": -2054.447,
- "roi_pct": -20.73,
+ "hit_rate": 0.3584,
+ "net_units": -2043.737,
+ "roi_pct": -20.6,
  "n_calibrated_picks": 10162,
  "calibrated_reliability": {
-  "n": 9802,
-  "ece_raw": 0.0944,
-  "ece_calibrated": 0.013,
-  "brier_raw": 0.20816,
-  "brier_calibrated": 0.19038,
+  "n": 9811,
+  "ece_raw": 0.0941,
+  "ece_calibrated": 0.0129,
+  "brier_raw": 0.20825,
+  "brier_calibrated": 0.19043,
   "note": "In-sample over the settled ledger (the isotonic transform is fit on these same outcomes); held-out 70/30 validation is in recalibration_map.json. p_predicted = raw model prob (kept untouched for the learning loop); p_calibrated = honest prob stamped per pick. Lower ECE/Brier on the calibrated column = the displayed % is truer."
  },
  "curated": {
@@ -48,11 +48,11 @@
   }
  },
  "n_added_this_run": 0,
- "n_newly_settled_this_run": 7,
+ "n_newly_settled_this_run": 8,
  "n_resettled_this_run": 0,
  "n_voided_this_run": 0,
  "n_duplicates_collapsed_this_run": 0,
- "n_duplicate_adds_blocked_this_run": 59,
+ "n_duplicate_adds_blocked_this_run": 55,
  "n_reconciled_settled_voids": 0,
  "n_bootstrapped_from_locks_history": 0,
  "by_source": {
@@ -408,13 +408,13 @@
    "roi_pct": 22.24
   },
   "ufc_r1_fight_r1_finish_yes": {
-   "n": 111,
-   "wins": 47,
-   "losses": 64,
+   "n": 120,
+   "wins": 51,
+   "losses": 69,
    "pushes": 0,
-   "net_units": 101.23,
-   "hit_rate": 0.4234,
-   "roi_pct": 91.2
+   "net_units": 111.94,
+   "hit_rate": 0.425,
+   "roi_pct": 93.28
   },
   "mlb_2plus_hits_hits_2plus_yes": {
    "n": 186,
@@ -2015,12 +2015,12 @@
    "hit_rate": 0.5333
   },
   "fight_r1_finish_yes": {
-   "n": 111,
-   "wins": 47,
-   "losses": 64,
+   "n": 120,
+   "wins": 51,
+   "losses": 69,
    "pushes": 0,
-   "net_units": 101.23,
-   "hit_rate": 0.4234
+   "net_units": 111.94,
+   "hit_rate": 0.425
   },
   "hits_2plus_yes": {
    "n": 186,
@@ -2649,12 +2649,12 @@
    "hit_rate": 0.5333
   },
   "fight_r1_finish_yes": {
-   "n": 111,
-   "wins": 47,
-   "losses": 64,
+   "n": 120,
+   "wins": 51,
+   "losses": 69,
    "pushes": 0,
-   "net_units": 101.23,
-   "hit_rate": 0.4234
+   "net_units": 111.94,
+   "hit_rate": 0.425
   },
   "mlb_hit_1.5_over": {
    "n": 186,
@@ -3069,15 +3069,15 @@
   },
   "UFC": {
    "n": 121,
-   "settled": 111,
-   "wins": 47,
-   "losses": 64,
+   "settled": 120,
+   "wins": 51,
+   "losses": 69,
    "pushes": 0,
-   "pending": 9,
+   "pending": 0,
    "void": 1,
-   "net_units": 101.23,
-   "hit_rate": 0.4234,
-   "roi_pct": 91.2,
+   "net_units": 111.94,
+   "hit_rate": 0.425,
+   "roi_pct": 93.28,
    "markets": 1
   },
   "MLS": {
@@ -3199,282 +3199,13 @@
   }
  },
  "last_7_days": {
-  "wins": 84,
-  "losses": 152,
-  "net_units": -61.284,
-  "hit_rate": 0.3559
+  "wins": 88,
+  "losses": 157,
+  "net_units": -50.574,
+  "hit_rate": 0.3592
  },
  "note": "Unified pick ledger -- records every pick the model surfaces (top_25 board, whales, consensus, unders, sharp action, locks, POD) and settles each against actual outcomes. Per-source W-L feeds back into calibration so the model learns which modules are reliable. THIS is the training signal.",
  "picks": [
-  {
-   "source": "soccer_cards_cards_under_5.0",
-   "sport": "MLS",
-   "player_or_matchup": "Real Salt Lake @ Colorado Rapids",
-   "market": "CARDS_UNDER_5.0",
-   "prob": 0.699,
-   "fair_american": -232,
-   "p_predicted": 0.699,
-   "matchup": "Real Salt Lake @ Colorado Rapids",
-   "date": "2026-08-30",
-   "pick_id": "soccer_cards_cards_under_5_0|MLS|Real_Salt_Lake___Colorado_Rapids|CARDS_UNDER_5_0|2026-08-30",
-   "settled": true,
-   "result": "lost",
-   "payout_units": -1.0,
-   "recorded_at": "2026-08-27T23:50:36",
-   "p_calibrated": 0.6681,
-   "outcome": {
-    "final_score": "Real Salt Lake 0-1 Colorado Rapids",
-    "total_cards": 8,
-    "total_goals": 1,
-    "scorers": [
-     "reggie cannon"
-    ],
-    "market": "CARDS_UNDER_5.0",
-    "verify": "Real Salt Lake 0-1 Colorado Rapids: 8 cards (line 5.0) \u2014 CARDS_UNDER_5.0"
-   },
-   "settled_at": "2026-08-30T05:47:52"
-  },
-  {
-   "source": "soccer_cards_cards_under_5.0",
-   "sport": "MLS",
-   "player_or_matchup": "Austin FC @ Portland Timbers",
-   "market": "CARDS_UNDER_5.0",
-   "prob": 0.709,
-   "fair_american": -243,
-   "p_predicted": 0.709,
-   "matchup": "Austin FC @ Portland Timbers",
-   "date": "2026-08-30",
-   "pick_id": "soccer_cards_cards_under_5_0|MLS|Austin_FC___Portland_Timbers|CARDS_UNDER_5_0|2026-08-30",
-   "settled": true,
-   "result": "lost",
-   "payout_units": -1.0,
-   "recorded_at": "2026-08-27T23:50:36",
-   "p_calibrated": 0.6777,
-   "outcome": {
-    "final_score": "Austin FC 2-1 Portland Timbers",
-    "total_cards": 5,
-    "total_goals": 3,
-    "scorers": [
-     "facundo torres",
-     "antony",
-     "oleksandr svatok"
-    ],
-    "market": "CARDS_UNDER_5.0",
-    "verify": "Austin FC 2-1 Portland Timbers: 5 cards (line 5.0) \u2014 CARDS_UNDER_5.0"
-   },
-   "settled_at": "2026-08-30T05:47:52"
-  },
-  {
-   "source": "soccer_total_total_under_3.5",
-   "sport": "MLS",
-   "player_or_matchup": "FC Cincinnati @ Nashville SC",
-   "market": "TOTAL_UNDER_3.5",
-   "prob": 0.647,
-   "fair_american": -183,
-   "p_predicted": 0.647,
-   "matchup": "FC Cincinnati @ Nashville SC",
-   "date": "2026-08-30",
-   "pick_id": "soccer_total_total_under_3_5|MLS|FC_Cincinnati___Nashville_SC|TOTAL_UNDER_3_5|2026-08-30",
-   "settled": true,
-   "result": "lost",
-   "payout_units": -1.0,
-   "recorded_at": "2026-08-27T23:50:36",
-   "p_calibrated": 0.6441,
-   "outcome": {
-    "final_score": "FC Cincinnati 0-4 Nashville SC",
-    "total_cards": 5,
-    "total_goals": 4,
-    "scorers": [
-     "sam surridge",
-     "hany mukhtar",
-     "bryan acosta",
-     "ahmed qasim"
-    ],
-    "market": "TOTAL_UNDER_3.5",
-    "verify": "FC Cincinnati 0-4 Nashville SC: 4 goals (line 3.5) \u2014 TOTAL_UNDER_3.5"
-   },
-   "settled_at": "2026-08-30T05:47:52"
-  },
-  {
-   "source": "soccer_total_total_under_3.5",
-   "sport": "MLS",
-   "player_or_matchup": "Vancouver Whitecaps @ Sporting Kansas City",
-   "market": "TOTAL_UNDER_3.5",
-   "prob": 0.647,
-   "fair_american": -183,
-   "p_predicted": 0.647,
-   "matchup": "Vancouver Whitecaps @ Sporting Kansas City",
-   "date": "2026-08-30",
-   "pick_id": "soccer_total_total_under_3_5|MLS|Vancouver_Whitecaps___Sporting_Kansas_Ci|TOTAL_UNDER_3_5|2026-08-30",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.5464,
-   "recorded_at": "2026-08-27T23:50:36",
-   "p_calibrated": 0.6441,
-   "outcome": {
-    "final_score": "Vancouver Whitecaps 3-0 Sporting Kansas City",
-    "total_cards": 4,
-    "total_goals": 3,
-    "scorers": [
-     "thomas m\u00fcller",
-     "brian white",
-     "rayan elloumi"
-    ],
-    "market": "TOTAL_UNDER_3.5",
-    "verify": "Vancouver Whitecaps 3-0 Sporting Kansas City: 3 goals (line 3.5) \u2014 TOTAL_UNDER_3.5"
-   },
-   "settled_at": "2026-08-30T05:47:52"
-  },
-  {
-   "source": "soccer_total_total_under_3.5",
-   "sport": "MLS",
-   "player_or_matchup": "Austin FC @ Portland Timbers",
-   "market": "TOTAL_UNDER_3.5",
-   "prob": 0.647,
-   "fair_american": -183,
-   "p_predicted": 0.647,
-   "matchup": "Austin FC @ Portland Timbers",
-   "date": "2026-08-30",
-   "pick_id": "soccer_total_total_under_3_5|MLS|Austin_FC___Portland_Timbers|TOTAL_UNDER_3_5|2026-08-30",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.5464,
-   "recorded_at": "2026-08-27T23:50:36",
-   "p_calibrated": 0.6441,
-   "outcome": {
-    "final_score": "Austin FC 2-1 Portland Timbers",
-    "total_cards": 5,
-    "total_goals": 3,
-    "scorers": [
-     "facundo torres",
-     "antony",
-     "oleksandr svatok"
-    ],
-    "market": "TOTAL_UNDER_3.5",
-    "verify": "Austin FC 2-1 Portland Timbers: 3 goals (line 3.5) \u2014 TOTAL_UNDER_3.5"
-   },
-   "settled_at": "2026-08-30T05:47:52"
-  },
-  {
-   "source": "soccer_clean_sheet_home_clean_sheet_no",
-   "sport": "MLS",
-   "player_or_matchup": "San Jose Earthquakes @ Houston Dynamo FC",
-   "market": "HOME_CLEAN_SHEET_NO",
-   "prob": 0.735,
-   "fair_american": -277,
-   "p_predicted": 0.735,
-   "matchup": "San Jose Earthquakes @ Houston Dynamo FC",
-   "date": "2026-08-30",
-   "pick_id": "soccer_clean_sheet_home_clean_sheet_no|MLS|San_Jose_Earthquakes___Houston_Dynamo_FC|HOME_CLEAN_SHEET_NO|2026-08-30",
-   "settled": true,
-   "result": "lost",
-   "payout_units": -1.0,
-   "recorded_at": "2026-08-27T23:50:36",
-   "p_calibrated": 0.7475,
-   "outcome": {
-    "final_score": "San Jose Earthquakes 0-0 Houston Dynamo FC",
-    "total_cards": 1,
-    "total_goals": 0,
-    "scorers": [],
-    "market": "HOME_CLEAN_SHEET_NO",
-    "verify": "San Jose Earthquakes 0-0 Houston Dynamo FC: home clean sheet = True \u2014 HOME_CLEAN_SHEET_NO"
-   },
-   "settled_at": "2026-08-30T05:47:52"
-  },
-  {
-   "source": "soccer_clean_sheet_home_clean_sheet_no",
-   "sport": "MLS",
-   "player_or_matchup": "Orlando City SC @ Minnesota United FC",
-   "market": "HOME_CLEAN_SHEET_NO",
-   "prob": 0.747,
-   "fair_american": -296,
-   "p_predicted": 0.747,
-   "matchup": "Orlando City SC @ Minnesota United FC",
-   "date": "2026-08-30",
-   "pick_id": "soccer_clean_sheet_home_clean_sheet_no|MLS|Orlando_City_SC___Minnesota_United_FC|HOME_CLEAN_SHEET_NO|2026-08-30",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.3378,
-   "recorded_at": "2026-08-27T23:50:36",
-   "p_calibrated": 0.7594,
-   "outcome": {
-    "final_score": "Orlando City SC 3-3 Minnesota United FC",
-    "total_cards": 5,
-    "total_goals": 6,
-    "scorers": [
-     "daryl dike",
-     "antoine griezmann",
-     "marcus caldeira",
-     "anthony markanich",
-     "kelvin yeboah",
-     "tyrese spicer"
-    ],
-    "market": "HOME_CLEAN_SHEET_NO",
-    "verify": "Orlando City SC 3-3 Minnesota United FC: home clean sheet = False \u2014 HOME_CLEAN_SHEET_NO"
-   },
-   "settled_at": "2026-08-30T05:47:52"
-  },
-  {
-   "source": "soccer_clean_sheet_home_clean_sheet_no",
-   "sport": "MLS",
-   "player_or_matchup": "FC Cincinnati @ Nashville SC",
-   "market": "HOME_CLEAN_SHEET_NO",
-   "prob": 0.722,
-   "fair_american": -260,
-   "p_predicted": 0.722,
-   "matchup": "FC Cincinnati @ Nashville SC",
-   "date": "2026-08-30",
-   "pick_id": "soccer_clean_sheet_home_clean_sheet_no|MLS|FC_Cincinnati___Nashville_SC|HOME_CLEAN_SHEET_NO|2026-08-30",
-   "settled": true,
-   "result": "lost",
-   "payout_units": -1.0,
-   "recorded_at": "2026-08-27T23:50:36",
-   "p_calibrated": 0.6071,
-   "outcome": {
-    "final_score": "FC Cincinnati 0-4 Nashville SC",
-    "total_cards": 5,
-    "total_goals": 4,
-    "scorers": [
-     "sam surridge",
-     "hany mukhtar",
-     "bryan acosta",
-     "ahmed qasim"
-    ],
-    "market": "HOME_CLEAN_SHEET_NO",
-    "verify": "FC Cincinnati 0-4 Nashville SC: home clean sheet = True \u2014 HOME_CLEAN_SHEET_NO"
-   },
-   "settled_at": "2026-08-30T05:47:52"
-  },
-  {
-   "source": "soccer_clean_sheet_home_clean_sheet_no",
-   "sport": "MLS",
-   "player_or_matchup": "Vancouver Whitecaps @ Sporting Kansas City",
-   "market": "HOME_CLEAN_SHEET_NO",
-   "prob": 0.753,
-   "fair_american": -305,
-   "p_predicted": 0.753,
-   "matchup": "Vancouver Whitecaps @ Sporting Kansas City",
-   "date": "2026-08-30",
-   "pick_id": "soccer_clean_sheet_home_clean_sheet_no|MLS|Vancouver_Whitecaps___Sporting_Kansas_Ci|HOME_CLEAN_SHEET_NO|2026-08-30",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.3279,
-   "recorded_at": "2026-08-27T23:50:36",
-   "p_calibrated": 0.7594,
-   "outcome": {
-    "final_score": "Vancouver Whitecaps 3-0 Sporting Kansas City",
-    "total_cards": 4,
-    "total_goals": 3,
-    "scorers": [
-     "thomas m\u00fcller",
-     "brian white",
-     "rayan elloumi"
-    ],
-    "market": "HOME_CLEAN_SHEET_NO",
-    "verify": "Vancouver Whitecaps 3-0 Sporting Kansas City: home clean sheet = False \u2014 HOME_CLEAN_SHEET_NO"
-   },
-   "settled_at": "2026-08-30T05:47:52"
-  },
   {
    "source": "soccer_clean_sheet_home_clean_sheet_no",
    "sport": "MLS",
@@ -3918,7 +3649,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-09-02T01:24:01",
-   "p_calibrated": 0.3409,
+   "p_calibrated": 0.3464,
    "outcome": {
     "fight": "Ding Meng vs Cam Nelson",
     "winner": "Cam Nelson",
@@ -3943,7 +3674,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-09-02T01:24:01",
-   "p_calibrated": 0.3409,
+   "p_calibrated": 0.3464,
    "outcome": {
     "fight": "Sean Woodson vs Jack Jenkins",
     "winner": "Sean Woodson",
@@ -3968,7 +3699,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-09-02T01:24:01",
-   "p_calibrated": 0.5454,
+   "p_calibrated": 0.5392,
    "outcome": {
     "tournament": "TOUR Championship",
     "finish": "T18",
@@ -3993,7 +3724,7 @@
    "result": "won",
    "payout_units": 0.8929,
    "recorded_at": "2026-09-02T01:24:01",
-   "p_calibrated": 0.5303,
+   "p_calibrated": 0.5295,
    "outcome": {
     "tournament": "TOUR Championship",
     "finish": "T4",
@@ -4018,7 +3749,7 @@
    "result": "won",
    "payout_units": 0.9174,
    "recorded_at": "2026-09-02T01:24:01",
-   "p_calibrated": 0.5241,
+   "p_calibrated": 0.5262,
    "outcome": {
     "tournament": "TOUR Championship",
     "finish": "T3",
@@ -4043,7 +3774,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-09-02T01:24:01",
-   "p_calibrated": 0.3466,
+   "p_calibrated": 0.3463,
    "outcome": {
     "tournament": "TOUR Championship",
     "finish": "T11",
@@ -4068,7 +3799,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-09-02T01:24:01",
-   "p_calibrated": 0.2945,
+   "p_calibrated": 0.2948,
    "outcome": {
     "tournament": "TOUR Championship",
     "finish": "T18",
@@ -4093,7 +3824,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-09-02T01:24:01",
-   "p_calibrated": 0.2936,
+   "p_calibrated": 0.2941,
    "outcome": {
     "tournament": "TOUR Championship",
     "finish": "T11",
@@ -4118,7 +3849,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-09-02T01:24:01",
-   "p_calibrated": 0.2882,
+   "p_calibrated": 0.2892,
    "outcome": {
     "tournament": "TOUR Championship",
     "finish": "T21",
@@ -4143,7 +3874,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-09-02T01:24:01",
-   "p_calibrated": 0.2802,
+   "p_calibrated": 0.2823,
    "outcome": {
     "tournament": "TOUR Championship",
     "finish": "T29",
@@ -4168,7 +3899,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-09-02T01:24:01",
-   "p_calibrated": 0.2802,
+   "p_calibrated": 0.2823,
    "outcome": {
     "tournament": "TOUR Championship",
     "finish": "T26",
@@ -4193,7 +3924,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-09-02T01:24:01",
-   "p_calibrated": 0.2802,
+   "p_calibrated": 0.2823,
    "outcome": {
     "tournament": "TOUR Championship",
     "finish": "T14",
@@ -4218,7 +3949,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-09-02T01:24:01",
-   "p_calibrated": 0.5454,
+   "p_calibrated": 0.5392,
    "outcome": {
     "tournament": "TOUR Championship",
     "finish": "T21",
@@ -4243,7 +3974,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-09-02T01:24:01",
-   "p_calibrated": 0.5454,
+   "p_calibrated": 0.5392,
    "outcome": {
     "tournament": "TOUR Championship",
     "finish": "T28",
@@ -4268,7 +3999,7 @@
    "result": "won",
    "payout_units": 0.4149,
    "recorded_at": "2026-09-02T01:24:01",
-   "p_calibrated": 0.5454,
+   "p_calibrated": 0.5392,
    "outcome": {
     "tournament": "TOUR Championship",
     "finish": "T14",
@@ -4293,7 +4024,7 @@
    "result": "won",
    "payout_units": 0.5464,
    "recorded_at": "2026-09-02T01:24:01",
-   "p_calibrated": 0.5454,
+   "p_calibrated": 0.5392,
    "outcome": {
     "tournament": "TOUR Championship",
     "finish": "T4",
@@ -4318,7 +4049,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-09-02T01:24:01",
-   "p_calibrated": 0.5454,
+   "p_calibrated": 0.5392,
    "outcome": {
     "tournament": "TOUR Championship",
     "finish": "T27",
@@ -4343,7 +4074,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-09-02T01:24:01",
-   "p_calibrated": 0.5454,
+   "p_calibrated": 0.5392,
    "outcome": {
     "tournament": "TOUR Championship",
     "finish": "T21",
@@ -4368,7 +4099,7 @@
    "result": "won",
    "payout_units": 0.9804,
    "recorded_at": "2026-09-02T01:24:01",
-   "p_calibrated": 0.5067,
+   "p_calibrated": 0.5166,
    "outcome": {
     "tournament": "TOUR Championship",
     "finish": "T18",
@@ -4393,7 +4124,7 @@
    "result": "won",
    "payout_units": 1.15,
    "recorded_at": "2026-09-02T01:24:01",
-   "p_calibrated": 0.37,
+   "p_calibrated": 0.3707,
    "outcome": {
     "tournament": "TOUR Championship",
     "finish": "T4",
@@ -6378,7 +6109,7 @@
    "result": "won",
    "payout_units": 2.96,
    "recorded_at": "2026-09-03T00:20:52",
-   "p_calibrated": 0.377,
+   "p_calibrated": 0.3797,
    "outcome": {
     "fight": "Brandon Holmes vs Modestino Rodrigues",
     "winner": "Modestino Rodrigues",
@@ -6403,7 +6134,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-09-03T00:20:52",
-   "p_calibrated": 0.3409,
+   "p_calibrated": 0.3464,
    "outcome": {
     "fight": "Patrick Rivera vs Adam Darby",
     "winner": "Adam Darby",
@@ -6428,7 +6159,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-09-03T00:20:52",
-   "p_calibrated": 0.3409,
+   "p_calibrated": 0.3464,
    "outcome": {
     "fight": "Liam McCracken vs Silvestre Sanchez",
     "winner": "Silvestre Sanchez",
@@ -6453,7 +6184,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-09-03T00:20:52",
-   "p_calibrated": 0.3409,
+   "p_calibrated": 0.3464,
    "outcome": {
     "fight": "Adam Livingston vs Hunter Smith",
     "winner": "Adam Livingston",
@@ -7119,6 +6850,56 @@
   {
    "source": "ufc_r1_fight_r1_finish_yes",
    "sport": "UFC",
+   "player_or_matchup": "Modestas Bukauskas vs Oumar Sy",
+   "market": "FIGHT_R1_FINISH_YES",
+   "prob": 0.295,
+   "fair_american": 239,
+   "p_predicted": 0.295,
+   "matchup": "Modestas Bukauskas vs Oumar Sy",
+   "date": "2026-09-03",
+   "pick_id": "ufc_r1_fight_r1_finish_yes|UFC|Modestas_Bukauskas_vs_Oumar_Sy|FIGHT_R1_FINISH_YES|2026-09-03",
+   "settled": true,
+   "result": "lost",
+   "payout_units": -1.0,
+   "recorded_at": "2026-09-03T19:01:18",
+   "p_calibrated": 0.4335,
+   "outcome": {
+    "fight": "Modestas Bukauskas vs Oumar Sy",
+    "winner": "Modestas Bukauskas",
+    "ended_round": 2,
+    "market": "FIGHT_R1_FINISH_YES",
+    "verify": "Modestas Bukauskas def. opponent (ended R2) \u2014 FIGHT_R1_FINISH_YES"
+   },
+   "settled_at": "2026-09-05T23:41:07"
+  },
+  {
+   "source": "ufc_r1_fight_r1_finish_yes",
+   "sport": "UFC",
+   "player_or_matchup": "Michael Page vs Nursulton Ruziboev",
+   "market": "FIGHT_R1_FINISH_YES",
+   "prob": 0.253,
+   "fair_american": 295,
+   "p_predicted": 0.253,
+   "matchup": "Michael Page vs Nursulton Ruziboev",
+   "date": "2026-09-03",
+   "pick_id": "ufc_r1_fight_r1_finish_yes|UFC|Michael_Page_vs_Nursulton_Ruziboev|FIGHT_R1_FINISH_YES|2026-09-03",
+   "settled": true,
+   "result": "lost",
+   "payout_units": -1.0,
+   "recorded_at": "2026-09-03T19:01:18",
+   "p_calibrated": 0.3817,
+   "outcome": {
+    "fight": "Michael Page vs Nursulton Ruziboev",
+    "winner": "Michael Page",
+    "ended_round": 3,
+    "market": "FIGHT_R1_FINISH_YES",
+    "verify": "Michael Page def. opponent (ended R3) \u2014 FIGHT_R1_FINISH_YES"
+   },
+   "settled_at": "2026-09-05T23:41:07"
+  },
+  {
+   "source": "ufc_r1_fight_r1_finish_yes",
+   "sport": "UFC",
    "player_or_matchup": "Luis Felipe Dias vs Matthieu Letho Duclos",
    "market": "FIGHT_R1_FINISH_YES",
    "prob": 0.25,
@@ -7131,7 +6912,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-09-03T19:01:18",
-   "p_calibrated": 0.3727,
+   "p_calibrated": 0.3756,
    "outcome": {
     "fight": "Lawrence Lui vs Hector Santiago",
     "winner": "Hector Santiago",
@@ -7140,6 +6921,156 @@
     "verify": "Hector Santiago def. opponent (ended R2) \u2014 FIGHT_R1_FINISH_YES"
    },
    "settled_at": "2026-09-04T11:27:11"
+  },
+  {
+   "source": "ufc_r1_fight_r1_finish_yes",
+   "sport": "UFC",
+   "player_or_matchup": "Punahele Soriano vs Daniil Donchenko",
+   "market": "FIGHT_R1_FINISH_YES",
+   "prob": 0.213,
+   "fair_american": 370,
+   "p_predicted": 0.213,
+   "matchup": "Punahele Soriano vs Daniil Donchenko",
+   "date": "2026-09-03",
+   "pick_id": "ufc_r1_fight_r1_finish_yes|UFC|Punahele_Soriano_vs_Daniil_Donchenko|FIGHT_R1_FINISH_YES|2026-09-03",
+   "settled": true,
+   "result": "lost",
+   "payout_units": -1.0,
+   "recorded_at": "2026-09-03T19:01:18",
+   "p_calibrated": 0.3464,
+   "outcome": {
+    "fight": "Punahele Soriano vs Daniil Donchenko",
+    "winner": "Daniil Donchenko",
+    "ended_round": 3,
+    "market": "FIGHT_R1_FINISH_YES",
+    "verify": "Daniil Donchenko def. opponent (ended R3) \u2014 FIGHT_R1_FINISH_YES"
+   },
+   "settled_at": "2026-09-05T23:41:07"
+  },
+  {
+   "source": "ufc_r1_fight_r1_finish_yes",
+   "sport": "UFC",
+   "player_or_matchup": "Far\u00e9s Ziam vs Axel Sola",
+   "market": "FIGHT_R1_FINISH_YES",
+   "prob": 0.197,
+   "fair_american": 408,
+   "p_predicted": 0.197,
+   "matchup": "Far\u00e9s Ziam vs Axel Sola",
+   "date": "2026-09-03",
+   "pick_id": "ufc_r1_fight_r1_finish_yes|UFC|Far_s_Ziam_vs_Axel_Sola|FIGHT_R1_FINISH_YES|2026-09-03",
+   "settled": true,
+   "result": "won",
+   "payout_units": 4.08,
+   "recorded_at": "2026-09-03T19:01:18",
+   "p_calibrated": 0.3464,
+   "outcome": {
+    "fight": "Far\u00e9s Ziam vs Axel Sola",
+    "winner": "Axel Sola",
+    "ended_round": 1,
+    "market": "FIGHT_R1_FINISH_YES",
+    "verify": "Axel Sola def. opponent (ended R1) \u2014 FIGHT_R1_FINISH_YES"
+   },
+   "settled_at": "2026-09-05T23:41:07"
+  },
+  {
+   "source": "ufc_r1_fight_r1_finish_yes",
+   "sport": "UFC",
+   "player_or_matchup": "Dan Hooker vs Salahdine Parnasse",
+   "market": "FIGHT_R1_FINISH_YES",
+   "prob": 0.195,
+   "fair_american": 414,
+   "p_predicted": 0.195,
+   "matchup": "Dan Hooker vs Salahdine Parnasse",
+   "date": "2026-09-03",
+   "pick_id": "ufc_r1_fight_r1_finish_yes|UFC|Dan_Hooker_vs_Salahdine_Parnasse|FIGHT_R1_FINISH_YES|2026-09-03",
+   "settled": true,
+   "result": "won",
+   "payout_units": 4.14,
+   "recorded_at": "2026-09-03T19:01:18",
+   "p_calibrated": 0.3464,
+   "outcome": {
+    "fight": "Dan Hooker vs Salahdine Parnasse",
+    "winner": "Salahdine Parnasse",
+    "ended_round": 1,
+    "market": "FIGHT_R1_FINISH_YES",
+    "verify": "Salahdine Parnasse def. opponent (ended R1) \u2014 FIGHT_R1_FINISH_YES"
+   },
+   "settled_at": "2026-09-05T23:41:07"
+  },
+  {
+   "source": "ufc_r1_fight_r1_finish_yes",
+   "sport": "UFC",
+   "player_or_matchup": "Nathaniel Wood vs Pavel Andrusca",
+   "market": "FIGHT_R1_FINISH_YES",
+   "prob": 0.186,
+   "fair_american": 439,
+   "p_predicted": 0.186,
+   "matchup": "Nathaniel Wood vs Pavel Andrusca",
+   "date": "2026-09-03",
+   "pick_id": "ufc_r1_fight_r1_finish_yes|UFC|Nathaniel_Wood_vs_Pavel_Andrusca|FIGHT_R1_FINISH_YES|2026-09-03",
+   "settled": true,
+   "result": "lost",
+   "payout_units": -1.0,
+   "recorded_at": "2026-09-03T19:01:18",
+   "p_calibrated": 0.3464,
+   "outcome": {
+    "fight": "Nathaniel Wood vs Pavel Andrusca",
+    "winner": "Pavel Andrusca",
+    "ended_round": 3,
+    "market": "FIGHT_R1_FINISH_YES",
+    "verify": "Pavel Andrusca def. opponent (ended R3) \u2014 FIGHT_R1_FINISH_YES"
+   },
+   "settled_at": "2026-09-05T23:41:07"
+  },
+  {
+   "source": "ufc_r1_fight_r1_finish_yes",
+   "sport": "UFC",
+   "player_or_matchup": "Muhammad Naimov vs Losene Keita",
+   "market": "FIGHT_R1_FINISH_YES",
+   "prob": 0.182,
+   "fair_american": 449,
+   "p_predicted": 0.182,
+   "matchup": "Muhammad Naimov vs Losene Keita",
+   "date": "2026-09-03",
+   "pick_id": "ufc_r1_fight_r1_finish_yes|UFC|Muhammad_Naimov_vs_Losene_Keita|FIGHT_R1_FINISH_YES|2026-09-03",
+   "settled": true,
+   "result": "won",
+   "payout_units": 4.49,
+   "recorded_at": "2026-09-03T19:01:18",
+   "p_calibrated": 0.3464,
+   "outcome": {
+    "fight": "Muhammad Naimov vs Losene Keita",
+    "winner": "Losene Keita",
+    "ended_round": 1,
+    "market": "FIGHT_R1_FINISH_YES",
+    "verify": "Losene Keita def. opponent (ended R1) \u2014 FIGHT_R1_FINISH_YES"
+   },
+   "settled_at": "2026-09-05T23:41:07"
+  },
+  {
+   "source": "ufc_r1_fight_r1_finish_yes",
+   "sport": "UFC",
+   "player_or_matchup": "Trevor Peek vs Kurtis Campbell",
+   "market": "FIGHT_R1_FINISH_YES",
+   "prob": 0.182,
+   "fair_american": 451,
+   "p_predicted": 0.182,
+   "matchup": "Trevor Peek vs Kurtis Campbell",
+   "date": "2026-09-03",
+   "pick_id": "ufc_r1_fight_r1_finish_yes|UFC|Trevor_Peek_vs_Kurtis_Campbell|FIGHT_R1_FINISH_YES|2026-09-03",
+   "settled": true,
+   "result": "lost",
+   "payout_units": -1.0,
+   "recorded_at": "2026-09-03T19:01:18",
+   "p_calibrated": 0.3464,
+   "outcome": {
+    "fight": "Trevor Peek vs Kurtis Campbell",
+    "winner": "Kurtis Campbell",
+    "ended_round": 3,
+    "market": "FIGHT_R1_FINISH_YES",
+    "verify": "Kurtis Campbell def. opponent (ended R3) \u2014 FIGHT_R1_FINISH_YES"
+   },
+   "settled_at": "2026-09-05T23:41:07"
   },
   {
    "source": "mlb_3plus_tb_tb_3plus_yes",
@@ -7262,7 +7193,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-08-27T23:50:36",
-   "p_calibrated": 0.5454,
+   "p_calibrated": 0.5392,
    "outcome": {
     "event": "Pirelli Italian Grand Prix",
     "session": "qualifying",
@@ -7287,7 +7218,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-08-27T23:50:36",
-   "p_calibrated": 0.5454,
+   "p_calibrated": 0.5392,
    "outcome": {
     "event": "Pirelli Italian Grand Prix",
     "session": "qualifying",
@@ -7312,7 +7243,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-08-27T23:50:36",
-   "p_calibrated": 0.5454,
+   "p_calibrated": 0.5392,
    "outcome": {
     "event": "Pirelli Italian Grand Prix",
     "session": "qualifying",
@@ -7337,7 +7268,7 @@
    "result": "won",
    "payout_units": 0.6061,
    "recorded_at": "2026-08-27T23:50:36",
-   "p_calibrated": 0.5454,
+   "p_calibrated": 0.5392,
    "outcome": {
     "event": "Pirelli Italian Grand Prix",
     "session": "qualifying",
@@ -7362,7 +7293,7 @@
    "result": "won",
    "payout_units": 0.6579,
    "recorded_at": "2026-08-27T23:50:36",
-   "p_calibrated": 0.5454,
+   "p_calibrated": 0.5392,
    "outcome": {
     "event": "Pirelli Italian Grand Prix",
     "session": "qualifying",
@@ -7387,7 +7318,7 @@
    "result": "won",
    "payout_units": 0.5464,
    "recorded_at": "2026-08-27T23:50:36",
-   "p_calibrated": 0.5454,
+   "p_calibrated": 0.5392,
    "outcome": {
     "event": "Pirelli Italian Grand Prix",
     "session": "qualifying",
@@ -7412,7 +7343,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-08-27T23:50:36",
-   "p_calibrated": 0.5454,
+   "p_calibrated": 0.5392,
    "outcome": {
     "event": "Pirelli Italian Grand Prix",
     "session": "qualifying",
@@ -8430,12 +8361,37 @@
     "verify": "ATH @ SEA: final 7-6 (total 13 runs) on 2026-09-04"
    },
    "settled_at": "2026-09-05T12:13:46"
+  },
+  {
+   "source": "ufc_r1_fight_r1_finish_yes",
+   "sport": "UFC",
+   "player_or_matchup": "Luis Felipe Dias vs Matthieu Letho Duclos",
+   "market": "FIGHT_R1_FINISH_YES",
+   "prob": 0.25,
+   "fair_american": 300,
+   "p_predicted": 0.25,
+   "matchup": "Luis Felipe Dias vs Matthieu Letho Duclos",
+   "date": "2026-09-05",
+   "pick_id": "ufc_r1_fight_r1_finish_yes|UFC|Luis_Felipe_Dias_vs_Matthieu_Letho_Duclo|FIGHT_R1_FINISH_YES|2026-09-05",
+   "settled": true,
+   "result": "won",
+   "payout_units": 3.0,
+   "recorded_at": "2026-09-05T05:13:03",
+   "p_calibrated": 0.3756,
+   "outcome": {
+    "fight": "Luis Felipe Dias vs Matthieu Letho Duclos",
+    "winner": "Matthieu Letho Duclos",
+    "ended_round": 1,
+    "market": "FIGHT_R1_FINISH_YES",
+    "verify": "Matthieu Letho Duclos def. opponent (ended R1) \u2014 FIGHT_R1_FINISH_YES"
+   },
+   "settled_at": "2026-09-05T17:51:18"
   }
  ],
  "recent_window": 200,
  "date_range": [
   "2026-05-19",
-  "2026-09-04"
+  "2026-09-05"
  ],
- "digest_generated_at": "2026-09-05T16:45:00"
+ "digest_generated_at": "2026-09-05T23:41:08"
 }

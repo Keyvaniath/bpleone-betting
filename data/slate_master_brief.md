@@ -1,13 +1,13 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-09-05T16:45:15 UTC_
+_Generated 2026-09-05T23:41:21 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -19
+- **Score:** -34
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 7
-- **Total FADES:** 47
+- **Total STRONG:** 3
+- **Total FADES:** 46
 
 ## Lock of the Night
 - **Subject:** Matthew Liberatore
@@ -26,9 +26,6 @@ _Generated 2026-09-05T16:45:15 UTC_
 3. **WNBA / Angel Reese** (WNBA_PLAYER, score=60.83)
    - Play: Angel Reese (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (WNBA_PLAYER)
-4. **MLB / Carlos Rodón** (MLB_PITCHER, score=60.58)
-   - Play: Carlos Rodón (PITCHER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_PITCHER)
 
 ## Slate ROI Projection
 - **Picks:** 1
@@ -37,13 +34,13 @@ _Generated 2026-09-05T16:45:15 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **NBA** / MIA (TEAM_FADE)
-  - Fade angle: team total UNDER
+- **MLB** / Anthony Kay (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
 - **NBA** / TOR (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NHL** / casey desmith (GOALIE_FADE)
+- **NBA** / MIA (TEAM_FADE)
+  - Fade angle: team total UNDER
+- **NHL** / joseph woll (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / anthony stolarz (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / stuart skinner (GOALIE_FADE)
+- **NHL** / kevin lankinen (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
