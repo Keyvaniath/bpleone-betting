@@ -1,32 +1,28 @@
-# EdgeStat Daily Summary — 2026-09-04
+# EdgeStat Daily Summary — 2026-09-05
 
-## 🏥 Model Health: 69.0/100 [OK]
+## 🏥 Model Health: 67.2/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 100.0/100
+  - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 0/100
   - 🔴 Brier Trend: 55.0/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 100.0/100
+  - 🟢 Data Health: 90.9/100
   - 🟢 Edge Count: 80.0/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.568)
-- **Total games on board:** 92
-- **Strong home favorites:** 8 | **Strong road dogs:** 4
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.575)
+- **Total games on board:** 128
+- **Strong home favorites:** 17 | **Strong road dogs:** 8
 
 ## 🎯 Top 5 Best Bets
 1. **OAK @ SEA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 2. **STL @ COL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 3. **ARI @ HOU YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 4. **TOR @ KCR YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-5. **BOS @ BAL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+5. **DET @ CLE YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** TOR @ KCR KCR_ML -- 66% / +25.9% (score 2.5)
-
-## 📉 Strong UNDER Signals
-- [STRONG 5.5] **ATL @ PHI** model 7.23 vs market 8.5
-- [STRONG 5.0] **NYY @ SDP** model 6.83 vs market 8.5
+- [STRONG] **[MLB]** TOR @ KCR KCR_ML -- 67% / +26.4% (score 2.5)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -54,21 +50,27 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (4)
+## ⚡ Pre-Game HIGH Conviction (12)
 - [NCAAF] **Furman Paladins** AWAY (None L10) · model 74.9% fair -299
-- [WNBA] **Washington Mystics** AWAY (3-2 L10) · model 73.5% fair -277
-- [MLS] **Nashville SC** AWAY (4-0 L10) · model 72.9% fair -270
+- [WNBA] **Washington Mystics** AWAY (3-1 L10) · model 73.5% fair -277
+- [MLS] **Vancouver Whitecaps** HOME (3-1 L10) · model 72.4% fair -262
+- [MLS] **Chicago Fire FC** AWAY (2-2 L10) · model 71.5% fair -251
 - [WNBA] **Dallas Wings** HOME (3-0 L10) · model 69.1% fair -224
+- [MLS] **FC Cincinnati** HOME (1-3 L10) · model 68.8% fair -220
+- [MLS] **Portland Timbers** HOME (1-3 L10) · model 66.8% fair -201
+- [MLS] **Colorado Rapids** AWAY (3-1 L10) · model 65.1% fair -186
+- [MLS] **New England Revolution** AWAY (2-2 L10) · model 64.3% fair -180
+- [EPL] **Fulham** HOME (0-2 L10) · model 63.9% fair -177
 
 ## 🔥/❄️ Heat / Cold Signals
-- Hot teams: **3** | Cold teams: **12** | Over-heavy: 0 | Under-heavy: 2
+- Hot teams: **2** | Cold teams: **12** | Over-heavy: 0 | Under-heavy: 1
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (108)
-- RESIDUAL_DIVERGENCE: **8**
-- STEAM_MOVE: **95**
-- PEN_MISMATCH: **3**
-- COMPOUND_BULLPEN: **2**
+## ⚠️ Anomaly Detector (117)
+- RESIDUAL_DIVERGENCE: **19**
+- STEAM_MOVE: **96**
+- PEN_MISMATCH: **1**
+- COMPOUND_BULLPEN: **1**
   - Connecticut Sun (WNBA): Connecticut Sun UNDERPERFORMING expected margin by 8.3pts in recent games -- model bias may persist
   - Chicago Sky (WNBA): Chicago Sky UNDERPERFORMING expected margin by 17.6pts in recent games -- model bias may persist
   - Dallas Wings (WNBA): Dallas Wings OUTPERFORMING expected margin by 9.5pts in recent games -- model bias may persist
@@ -77,7 +79,7 @@
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$10.08**
+- Expected EV: **$10.07**
   - #1 [NRFI] $50 on OAK @ SEA YRFI (1st-inning OVER 0.5) (P=79%)
   - #2 [NRFI] $50 on STL @ COL YRFI (1st-inning OVER 0.5) (P=73%)
   - #3 [NRFI] $50 on ARI @ HOU YRFI (1st-inning OVER 0.5) (P=71%)
@@ -92,12 +94,12 @@
   - [ELITE] Connecticut Sun @ Atlanta Dream : 5 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ATS)
   - [HIGH] Phoenix Mercury @ Portland Fire : 3 signals (ANOMALY, ANOMALY, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (12)
-- **Chris Sale** OVER 6.5 K (75%) fair -302
+## ⚾ Top MLB Pitcher K Plays (6)
 - **Kade Morris** OVER 7.5 K (75%) fair -300
 - **Blake Snell** OVER 5.5 K (72%) fair -262
-- **Shane Drohan** OVER 4.5 K (71%) fair -251
-- **Nolan McLean** OVER 4.5 K (70%) fair -232
+- **Daniel Lynch IV** OVER 7.5 K (69%) fair -223
+- **Erick Fedde** OVER 5.5 K (67%) fair -200
+- **Cristian Javier** OVER 4.5 K (59%) fair -146
 
 ## 🏀 NBA Player Heat (2 HOT / 1 COLD)
   - 🔥 **Scottie Barnes** (TOR): L5 24.4/7.6/9.6 vs season 18.6/5.8/8.8 [PTS +5.8]
@@ -111,17 +113,17 @@
   - [LEAN] **Losene Keita** (16-2-0) vs Muhammad Naimov -- fair -135
   - [LEAN] **Kurtis Campbell** (8-1-0) vs Trevor Peek -- fair -135
 
-## 🔥 MLB Batter Heat (49 HOT / 70 COLD)
+## 🔥 MLB Batter Heat (51 HOT / 69 COLD)
   - 🔥 **Tyrone Taylor** (CHC): L14 .500 / season .284 (+216pts)
-  - 🔥 **Thomas Saggese** (STL): L14 .433 / season .242 (+191pts)
-  - 🔥 **George Springer** (TOR): L14 .426 / season .251 (+175pts)
-  - 🔥 **Bryce Harper** (PHI): L14 .417 / season .274 (+143pts)
-  - 🔥 **Jazz Chisholm Jr.** (NYY): L14 .372 / season .231 (+141pts)
-  - ❄️ **CJ Abrams** (WSH): L14 .127 / season .267 (-140pts) -- FADE props
-  - ❄️ **Jose Siri** (LAA): L14 .083 / season .222 (-139pts) -- FADE props
-  - ❄️ **Taylor Ward** (SEA): L14 .089 / season .226 (-137pts) -- FADE props
+  - 🔥 **Thomas Saggese** (STL): L14 .433 / season .245 (+188pts)
+  - 🔥 **Cal Raleigh** (SEA): L14 .326 / season .176 (+150pts)
+  - 🔥 **Elly De La Cruz** (CIN): L14 .404 / season .276 (+128pts)
+  - 🔥 **Jazz Chisholm Jr.** (NYY): L14 .357 / season .229 (+128pts)
+  - ❄️ **Taylor Ward** (SEA): L14 .071 / season .225 (-154pts) -- FADE props
+  - ❄️ **CJ Abrams** (WSH): L14 .123 / season .265 (-142pts) -- FADE props
+  - ❄️ **Jose Siri** (LAA): L14 .081 / season .220 (-139pts) -- FADE props
   - ❄️ **Riley Greene** (DET): L14 .137 / season .267 (-130pts) -- FADE props
-  - ❄️ **Griffin Conine** (MIA): L14 .122 / season .248 (-126pts) -- FADE props
+  - ❄️ **Juan Soto** (NYM): L14 .156 / season .277 (-121pts) -- FADE props
 
 ## 📈 Streak Regression Alerts (5)
 - [WNBA] Connecticut Sun on L3 L10 1-4 -- Connecticut Sun on L3 -- no historical sample
@@ -139,10 +141,9 @@
 
 ## 🧠 Training Convergence
 - ELITE: **0** · HEALTHY: 0 · OK: 0 · DEGRADED: **2**
-  - ⚠️ **batter_hits**: DIVERGENT - consistent same-sign moves (structural issue) (cf=0.9462)
 
 ## 🤖 Self-Training Status
-- **WNBA**: n=29 games · hit rate 51.7% · bias +6.1pp [calibration applied]
-- **MLS**: n=60 games · hit rate 45.0% · bias +2.3pp [calibration applied]
-- **EPL**: n=20 games · hit rate 65.0% · bias -14.0pp [calibration applied]
-- **MLB**: n=189 games · hit rate 54.5% · bias -2.9pp [calibration applied]
+- **WNBA**: n=26 games · hit rate 65.4% · bias +6.4pp [calibration applied]
+- **MLS**: n=61 games · hit rate 44.3% · bias +1.6pp
+- **EPL**: n=21 games · hit rate 61.9% · bias -10.5pp [calibration applied]
+- **MLB**: n=190 games · hit rate 47.4% · bias -1.2pp

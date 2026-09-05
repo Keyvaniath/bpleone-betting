@@ -1,9 +1,9 @@
-# 🌙 Tonight's Brief — 2026-09-04
+# 🌙 Tonight's Brief — 2026-09-05
 
 _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 
 ## 💪 STRONG (1 picks)
-- [MLB] TOR @ KCR KCR_ML · 66% / +25.9%
+- [MLB] TOR @ KCR KCR_ML · 67% / +26.4%
 
 ## 🔒 5 Daily Locks
 - **Choi Jeong** one_plus_tb (KBO) -- 73% / +39.8%
@@ -17,5 +17,5 @@ _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 - Joint 53% · fair +264 · edge +94.6%
 
 ---
-_Generated 2026-09-04T23:47:29_
+_Generated 2026-09-05T12:13:56_
 _Full breakdown: /tonight · Full history: /locks-of-day_
