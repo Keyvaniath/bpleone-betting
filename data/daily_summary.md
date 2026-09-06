@@ -2,38 +2,25 @@
 
 **Model Confidence: 20.0/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
 
-_Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
+_Pipeline health: **DEGRADED** (14/15 artifacts ok; 1 empty, 0 stale)._ 
 
-_Generated at 2026-09-06T17:01:12 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-09-06T23:35:23 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
-**BOS @ BAL - OVER_7.0**
+**WSN @ LAD - OVER_8.0**
 - Market: -110
-- Model probability: 78.1%
-- Raw edge: +49.16%
+- Model probability: 72.4%
+- Raw edge: +38.12%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
 
-## Full Slate (14 games)
+## Full Slate (1 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 1:10p ET | ATL @ PHI | Citizens Bank Park | 78F 5mph | OVER_8.0 +42.04% |
-| 1:35p ET | BOS @ BAL | Oriole Park at Camden Yards | 82F 7mph | OVER_7.0 +49.16% |
-| 1:35p ET | LAA @ PIT | PNC Park | 75F 8mph | OVER_7.0 +13.04% |
-| 1:40p ET | DET @ CLE | Progressive Field | 76F 12mph | OVER_7.0 +34.51% |
-| 1:40p ET | SFG @ NYM | Citi Field | 73F 4mph | OVER_8.0 +11.16% |
-| 1:40p ET | CHC @ MIA | loanDepot park | indoor | OVER_8.0 +25.18% |
-| 2:10p ET | ARI @ HOU | Daikin Park | indoor | OVER_8.0 +10.55% |
-| 2:10p ET | TOR @ KCR | Kauffman Stadium | 98F 9mph | KCR_ML +21.43% |
-| 2:35p ET | TBR @ TEX | Globe Life Field | indoor | OVER_7.5 +30.56% |
-| 3:10p ET | STL @ COL | Coors Field | 93F 8mph | OVER_11.0 +41.75% |
-| 4:10p ET | OAK @ SEA | T-Mobile Park | indoor | OAK_ML +31.56% |
-| 4:10p ET | NYY @ SDP | Petco Park | 95F 9mph | NYY_ML +23.98% |
-| 6:20p ET | MIN @ CHW | Rate Field | 71F 10mph | OVER_8.5 +35.56% |
-| 10:10p ET | WSN @ LAD | UNIQLO Field at Dodger Stadium | 72F 0mph | OVER_8.0 +36.39% |
+| 10:10p ET | WSN @ LAD | UNIQLO Field at Dodger Stadium | 70F 2mph | OVER_8.0 +38.12% |
 
 ## Parlays - top 5
 
@@ -57,29 +44,16 @@ _Generated at 2026-09-06T17:01:12 UTC. Game lines source: **Bovada (fallback -- 
 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
-| batter total bases | 52 | 44.2% | 45.3% | 1.023 | 0.980 |
 | batter hits | 132 | 54.5% | 56.0% | 1.026 | 0.976 |
+| batter total bases | 52 | 44.2% | 45.3% | 1.023 | 0.980 |
 
-Cumulative graded plays: 10054. Wins: 3607. Hit rate: 35.9%.
+Cumulative graded plays: 10057. Wins: 3607. Hit rate: 35.9%.
 
 ## Auxiliary Markets (Model Fair Prices)
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| ARI @ HOU | 36.4% | +175 | 5.06 | +149 | -149 |
-| ATL @ PHI | 48.7% | +105 | 3.49 | +285 | -285 |
-| BOS @ BAL | 29.4% | +240 | 5.86 | +328 | -328 |
-| CHC @ MIA | 63.2% | -172 | 2.3 | +399 | -399 |
-| DET @ CLE | 41.6% | +141 | 4.09 | +149 | -149 |
-| LAA @ PIT | 41.9% | +138 | 4.13 | -140 | +140 |
-| MIN @ CHW | 59.8% | -149 | 2.42 | -126 | +126 |
-| NYY @ SDP | 58.3% | -140 | 2.53 | +343 | -343 |
-| OAK @ SEA | 29.0% | +245 | 6.19 | +175 | -175 |
-| SFG @ NYM | 46.4% | +116 | 3.75 | +122 | -122 |
-| STL @ COL | 45.0% | +122 | 4.04 | +190 | -190 |
-| TBR @ TEX | 38.4% | +160 | 4.78 | +212 | -212 |
-| TOR @ KCR | 32.9% | +204 | 5.29 | +108 | -108 |
-| WSN @ LAD | 34.4% | +191 | 5.34 | +158 | -158 |
+| WSN @ LAD | 34.4% | +191 | 5.3 | +158 | -158 |
 
 ## Team Form (last 10)
 
@@ -100,7 +74,7 @@ Cumulative graded plays: 10054. Wins: 3607. Hit rate: 35.9%.
 
 ## Loop Activity (since last refresh)
 
-- Confidence delta: **-0.1**
+- Confidence delta: **+0.0**
 
 ## Model Recommendations (operator review)
 
