@@ -1,55 +1,60 @@
 # Tonight's Slate Brief — 2026-09-06
 
-## Slate Quality: 54/100 (LOW)
-_0% lineups confirmed · 15 rookie SPs_
-**Recommendation:** Defensive sizing tonight; stick to highest-confidence plays.
+## Slate Quality: 73/100 (MEDIUM)
+_67% lineups confirmed · 15 rookie SPs_
+**Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
-- **15 games** scheduled
-- **30 best bets** scored: 11 DK · 0 PP · 2 NRFI · 0 SGP
-- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$42.48
-- **MC simulation:** EV +$49.33, 78% P(profit), p05 $-60.54 / p95 $130.36
+- **14 games** scheduled
+- **41 best bets** scored: 11 DK · 0 PP · 12 NRFI · 1 SGP
+- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$39.81
+- **MC simulation:** EV +$121.14, 81% P(profit), p05 $-101.68 / p95 $331.59
 
 ## Top 5 Best Bets
-1. **OAK @ SEA YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +29.1%)
-   - P(YRFI) 75.1% vs baseline 46.0%
-2. **STL @ COL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +28.1%)
-   - P(YRFI) 74.1% vs baseline 46.0%
-3. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
-   - Player prop quality score 1.1935
-   - Elite player
-4. **LOL ShowMaker OVER 3.5 Kills**  (78/100 ****, edge —)
-   - Player prop quality score 1.1892
-   - Elite player
-5. **LOL Peyz OVER 4.5 Kills**  (78/100 ****, edge —)
-   - Player prop quality score 1.184
-   - Elite player
+1. **MIL @ CIN YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +29.4%)
+   - P(YRFI) 75.4% vs baseline 46.0%
+2. **OAK @ SEA YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +25.0%)
+   - P(YRFI) 71.0% vs baseline 46.0%
+3. **BOS @ BAL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +24.6%)
+   - P(YRFI) 70.6% vs baseline 46.0%
+4. **TOR @ KCR YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +21.1%)
+   - P(YRFI) 67.1% vs baseline 46.0%
+5. **WSN @ LAD YRFI (1st-inning OVER 0.5)**  (79/100 ****, edge +19.6%)
+   - P(YRFI) 65.6% vs baseline 46.0%
 
-## ⚠️ Trap Warnings — 10 flagged
-- **OAK @ SEA YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +29.1% looks big but only 0 settled props on this player — model unproven
-- **STL @ COL YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +28.1% looks big but only 0 settled props on this player — model unproven
-- **Matt Olson OVER 1.5 batter total bases** (low):
+## ⚠️ Trap Warnings — 21 flagged
+- **Matt Olson OVER 1.5 batter total bases** (high):
    - Edge +21.7% looks big but only 0 settled props on this player — model unproven
-- **Elly De La Cruz OVER 1.5 batter total bases** (low):
-   - Edge +19.4% looks big but only 0 settled props on this player — model unproven
-- **Sal Stewart OVER 1.5 batter total bases** (low):
-   - Edge +18.9% looks big but only 0 settled props on this player — model unproven
+   - Batter cooling: cooling: 0.462 ops recent vs 0.838 season (-0.376)
+- **Kyle Schwarber OVER 1.5 batter total bases** (high):
+   - Edge +13.6% looks big but only 0 settled props on this player — model unproven
+   - Batter cooling: cooling: 0.722 ops recent vs 0.876 season (-0.154)
+- **Jake Bauers OVER 1.5 batter total bases** (high):
+   - Edge +11.2% looks big but only 0 settled props on this player — model unproven
+   - Batter cooling: cooling: 0.684 ops recent vs 0.879 season (-0.195)
+- **MIL @ CIN YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +29.4% looks big but only 0 settled props on this player — model unproven
+- **OAK @ SEA YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
 
 ## Weather leans
-- **OVER lean** (wind out + warm): DET @ CLE
+- **OVER lean** (wind out + warm): DET @ CLE, TOR @ KCR
 
 ## Hot streaks
-**Batters heating up:** Alex Bregman (heat +5.37), Pete Crow-Armstrong (heat +3.98), Francisco Lindor (heat +3.97)
-**Pitchers on a run:** Cade Cavalli (heat +1.57), Tyler Glasnow (heat -1.40)
+**Batters heating up:** Ronald Acuna Jr. (heat +1.66), Dane Myers (heat +1.28), Cooper Pratt (heat +1.25)
+**Pitchers on a run:** Gavin Williams (heat +6.63), Ian Seymour (heat +3.23)
+
+## Top correlation-aware SGPs
+- **ATL @ PHI** 2-leg @ +165 fair (joint 0.38, EV +25.0%)
+   - Drake Baldwin OVER 0.5 batter hits
+   - Bryce Harper OVER 0.5 batter hits
 
 ## Bullpens GASSED tonight
-Athletics, Pittsburgh Pirates, Seattle Mariners, San Francisco Giants, St. Louis Cardinals, Texas Rangers, Toronto Blue Jays, Chicago White Sox
+Athletics, Pittsburgh Pirates, San Diego Padres, Seattle Mariners, San Francisco Giants, St. Louis Cardinals, Texas Rangers, Toronto Blue Jays
 _Lean late-inning OVER on these games; fade their save situations._
 
 ## NRFI/YRFI strong leans
-- **YRFI** (1st-inning OVER): OAK @ SEA, STL @ COL
+- **YRFI** (1st-inning OVER): MIL @ CIN, OAK @ SEA, BOS @ BAL, TOR @ KCR, WSN @ LAD
 
 ## Golf -- Biltmore Championship Asheville
 - **Leader:** ? (?) at #?
@@ -65,13 +70,13 @@ _Lean late-inning OVER on these games; fade their save situations._
 - Winnipeg Jets @ Edmonton Oilers (0-0-0 vs 0-0-0)  | P(home) 52.9% fair -112 | Scheduled
 - Chicago Blackhawks @ Minnesota Wild (0-0-0 vs 0-0-0)  | P(home) 52.9% fair -112 | Scheduled
 
-## LoL Esports -- 1 live, 22 upcoming
-- [PCS] CTBC Flying Oyster Academy vs Frank Esports BO5 | P(A) 45.5% fair +120/-120
-- [LPL] Xi'an Team WE vs Invictus Gaming BO5 | P(A) 26.0% fair +284/-284
-- [LPL] LGD GAMING vs Shenzhen NINJAS IN PYJAMAS BO5 | P(A) 45.1% fair +122/-122
-- [LEC] G2 Esports vs Karmine Corp BO5 | P(A) 33.3% fair +200/-200
-- [CBLOL] FURIA vs RED Kalunga BO5 | P(A) 85.8% fair -604/+604
-- **LoL POT:** Invictus Gaming ML vs TBD (LPL, BO5) (HIGH)
+## LoL Esports -- 2 live, 20 upcoming
+- [LEC] Karmine Corp vs G2 Esports BO5 | P(A) 66.7% fair -200/+200
+- [CBLOL] RED Kalunga vs FURIA BO5 | P(A) 14.2% fair +604/-604
+- [LCS] FlyQuest vs Shopify Rebellion BO3 | P(A) 46.1% fair +117/-117
+- [LCS] Disguised vs LYON BO3 | P(A) 20.8% fair +381/-381
+- [LCK Challengers] KRX Challengers vs DNS Challengers BO5 | P(A) 68.6% fair -218/+218
+- **LoL POT:** Hanwha Life Esports ML vs T1 (LCK, BO5) (HIGH)
 
 ## Player Play of the Day -- across all sports (3454 candidates scanned)
 - **[LOL]** Inspired UNDER 3.5 Kills | model 61.7% fair -161 (ELITE)
