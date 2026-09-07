@@ -1,25 +1,25 @@
-# EdgeStat Daily Summary — 2026-09-06
+# EdgeStat Daily Summary — 2026-09-07
 
-## 🏥 Model Health: 70.5/100 [HEALTHY]
-- Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 100.0/100
+## 🏥 Model Health: 69.6/100 [OK]
+- Operational but room to improve - check yellow components
+  - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 0/100
   - 🔴 Brier Trend: 57.2/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 95.5/100
+  - 🟢 Data Health: 90.9/100
   - 🟢 Edge Count: 100/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.551)
-- **Total games on board:** 87
-- **Strong home favorites:** 8 | **Strong road dogs:** 4
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.559)
+- **Total games on board:** 104
+- **Strong home favorites:** 9 | **Strong road dogs:** 4
 
 ## 🎯 Top 5 Best Bets
-1. **MIL @ CIN YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-2. **OAK @ SEA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-3. **BOS @ BAL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-4. **TOR @ KCR YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-5. **WSN @ LAD YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
+1. **ATL @ PHI 4-leg SGP @ +161** (100/100 ★★★★★)
+2. **WSN @ LAD YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
+3. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
+4. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
+5. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -47,51 +47,46 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (5)
-- [WNBA] **Washington Mystics** AWAY (3-1 L10) · model 72.3% fair -261
-- [WNBA] **Dallas Wings** HOME (3-0 L10) · model 70.3% fair -237
+## ⚡ Pre-Game HIGH Conviction (6)
+- [WNBA] **Washington Mystics** AWAY (2-1 L10) · model 72.3% fair -261
+- [WNBA] **Dallas Wings** HOME (2-0 L10) · model 70.3% fair -237
 - [MLS] **Houston Dynamo FC** HOME (1-3 L10) · model 68.9% fair -222
 - [MLS] **Colorado Rapids** AWAY (2-2 L10) · model 63.8% fair -177
+- [MLS] **Portland Timbers** HOME (2-2 L10) · model 62.8% fair -169
 - [MLS] **LAFC** HOME (0-4 L10) · model 62.5% fair -166
 
 ## 🔥/❄️ Heat / Cold Signals
-- Hot teams: **3** | Cold teams: **19** | Over-heavy: 0 | Under-heavy: 2
+- Hot teams: **3** | Cold teams: **19** | Over-heavy: 0 | Under-heavy: 0
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (122)
+## ⚠️ Anomaly Detector (108)
 - RESIDUAL_DIVERGENCE: **20**
-- STEAM_MOVE: **97**
-- COMPOUND_BULLPEN: **4**
-- PEN_MISMATCH: **1**
+- STEAM_MOVE: **88**
   - Atlanta Dream (WNBA): Atlanta Dream UNDERPERFORMING expected margin by 11.0pts in recent games -- model bias may persist
   - Connecticut Sun (WNBA): Connecticut Sun UNDERPERFORMING expected margin by 12.6pts in recent games -- model bias may persist
   - Chicago Sky (WNBA): Chicago Sky UNDERPERFORMING expected margin by 12.7pts in recent games -- model bias may persist
   - Washington Mystics (WNBA): Washington Mystics UNDERPERFORMING expected margin by 8.5pts in recent games -- model bias may persist
   - Dallas Wings (WNBA): Dallas Wings OUTPERFORMING expected margin by 10.4pts in recent games -- model bias may persist
 
-## 💰 Today's Portfolio (9 picks)
-- Total stake: **$330.0** (33.0% of $1000 bankroll)
-- Expected EV: **$-2.35**
-  - #1 [NRFI] $50 on MIL @ CIN YRFI (1st-inning OVER 0.5) (P=75%)
-  - #2 [NRFI] $50 on OAK @ SEA YRFI (1st-inning OVER 0.5) (P=71%)
-  - #3 [NRFI] $50 on BOS @ BAL YRFI (1st-inning OVER 0.5) (P=71%)
-  - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
-  - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
+## 💰 Today's Portfolio (12 picks)
+- Total stake: **$345.0** (34.5% of $1000 bankroll)
+- Expected EV: **$-34.26**
+  - #1 [SGP] $50 on ATL @ PHI 4-leg SGP @ +161 (P=38%)
+  - #2 [NRFI] $35 on WSN @ LAD YRFI (1st-inning OVER 0.5) (P=66%)
+  - #3 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
+  - #4 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
+  - #5 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
 
-## 🎯 Convergence Picks (18 stacked games)
-- ELITE: **11** · HIGH: 1 · MED: 6
+## 🎯 Convergence Picks (17 stacked games)
+- ELITE: **11** · HIGH: 1 · MED: 5
   - [ELITE] Washington Mystics @ Chicago Sky : 6 signals (PREGAME, HEAT_COLD, ANOMALY, ANOMALY)
   - [ELITE] Los Angeles Sparks @ Dallas Wings : 6 signals (PREGAME, HEAT_COLD, ANOMALY, ANOMALY)
   - [ELITE] FC Cincinnati @ Philadelphia Union : 6 signals (PREGAME, HEAT_COLD, ANOMALY, ANOMALY)
   - [ELITE] New England Revolution @ New York City FC : 6 signals (PREGAME, HEAT_COLD, ANOMALY, ANOMALY)
   - [ELITE] Red Bull New York @ LAFC : 6 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
 
-## ⚾ Top MLB Pitcher K Plays (14)
-- **Payton Tolle** OVER 5.5 K (76%) fair -314
-- **Ian Seymour** OVER 5.5 K (75%) fair -292
-- **Aaron Nola** OVER 4.5 K (73%) fair -271
-- **Paul Skenes** OVER 4.5 K (73%) fair -271
-- **Bryan Woo** OVER 4.5 K (70%) fair -232
+## ⚾ Top MLB Pitcher K Plays (1)
+- **Justin Wrobleski** OVER 4.5 K (59%) fair -145
 
 ## 🏀 NBA Player Heat (2 HOT / 1 COLD)
   - 🔥 **Scottie Barnes** (TOR): L5 24.4/7.6/9.6 vs season 18.6/5.8/8.8 [PTS +5.8]
@@ -114,8 +109,8 @@
   - ❄️ **Taylor Ward** (SEA): L14 .050 / season .224 (-174pts) -- FADE props
   - ❄️ **Jose Siri** (LAA): L14 .061 / season .219 (-158pts) -- FADE props
   - ❄️ **Brandon Marsh** (PHI): L14 .125 / season .267 (-142pts) -- FADE props
-  - ❄️ **CJ Abrams** (WSH): L14 .140 / season .265 (-125pts) -- FADE props
-  - ❄️ **Jake Mangum** (PIT): L14 .171 / season .285 (-114pts) -- FADE props
+  - ❄️ **Nasim Nuñez** (WSH): L14 .077 / season .211 (-134pts) -- FADE props
+  - ❄️ **Miguel Rojas** (LAD): L14 .154 / season .269 (-115pts) -- FADE props
 
 ## 📈 Streak Regression Alerts (12)
 - [WNBA] Connecticut Sun on L3 L10 1-3 -- Connecticut Sun on L3 -- no historical sample
@@ -133,9 +128,10 @@
 
 ## 🧠 Training Convergence
 - ELITE: **0** · HEALTHY: 0 · OK: 0 · DEGRADED: **2**
+  - ⚠️ **batter_total_bases**: DIVERGENT - consistent same-sign moves (structural issue) (cf=1.0123)
 
 ## 🤖 Self-Training Status
-- **WNBA**: n=23 games · hit rate 60.9% · bias +8.4pp [calibration applied]
-- **MLS**: n=63 games · hit rate 27.0% · bias +1.6pp
-- **EPL**: n=28 games · hit rate 50.0% · bias -1.6pp
-- **MLB**: n=190 games · hit rate 48.4% · bias +1.9pp
+- **WNBA**: n=19 games · hit rate 63.2% · bias +1.9pp
+- **MLS**: n=59 games · hit rate 27.1% · bias +1.1pp
+- **EPL**: n=30 games · hit rate 50.0% · bias -1.8pp
+- **MLB**: n=190 games · hit rate 46.3% · bias +1.2pp
