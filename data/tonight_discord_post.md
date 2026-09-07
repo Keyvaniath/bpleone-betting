@@ -1,5 +1,5 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:2 F:43
+_NO_ACTION_NIGHT_ | L:0 S:2 F:49
 
 :dart: **Top Picks:**
 1. [WNBA] A'Ja Wilson -- A'Ja Wilson (PLAYER_STRONG)

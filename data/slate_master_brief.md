@@ -1,13 +1,13 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-09-07T14:40:33 UTC_
+_Generated 2026-09-07T18:46:51 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -35
+- **Score:** -41
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
 - **Total STRONG:** 2
-- **Total FADES:** 43
+- **Total FADES:** 49
 
 ## Top 5 Curated Picks
 1. **WNBA / A'Ja Wilson** (WNBA_PLAYER, score=63.83)
@@ -28,9 +28,9 @@ _Generated 2026-09-07T14:40:33 UTC_
   - Fade angle: team total UNDER
 - **NBA** / MIA (TEAM_FADE)
   - Fade angle: team total UNDER
-- **MLB** / Andrew Alvarez (PITCHER_FADE)
+- **MLB** / Jesús Luzardo (PITCHER_FADE)
   - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **NHL** / logan thompson_2 (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / casey desmith (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
+- **MLB** / Noah Cameron (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Trevor Rogers (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES

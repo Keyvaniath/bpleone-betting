@@ -1,60 +1,53 @@
 # Tonight's Slate Brief — 2026-09-07
 
-## Slate Quality: 64/100 (MEDIUM)
-_36% lineups confirmed · 7 rookie SPs_
+## Slate Quality: 60/100 (MEDIUM)
+_20% lineups confirmed · 4 rookie SPs_
 **Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
-- **11 games** scheduled
-- **18 best bets** scored: 0 DK · 0 PP · 1 NRFI · 2 SGP
-- **Auto-portfolio:** 1 picks, $50.0 stake (5.0%), expected +$12.6
-- **MC simulation:** EV +$12.6, 65% P(profit), p05 $-50.0 / p95 $45.45
+- **5 games** scheduled
+- **26 best bets** scored: 0 DK · 0 PP · 9 NRFI · 0 SGP
+- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$30.26
+- **MC simulation:** EV +$81.65, 71% P(profit), p05 $-115.02 / p95 $262.85
 
 ## Top 5 Best Bets
-1. **ATL @ PHI 4-leg SGP @ +161**  (100/100 *****, edge +314.8%)
-   - Joint prob 0.383 (correlation boost +0.267)
-   - Leg: Trea Turner OVER 0.5 batter hits
-2. **WSN @ LAD YRFI (1st-inning OVER 0.5)**  (79/100 ****, edge +19.6%)
-   - P(YRFI) 65.6% vs baseline 46.0%
-3. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
+1. **LAA @ BOS YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +23.7%)
+   - P(YRFI) 69.7% vs baseline 46.0%
+2. **NYM @ MIA YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +20.8%)
+   - P(YRFI) 66.8% vs baseline 46.0%
+3. **CHC @ MIL YRFI (1st-inning OVER 0.5)**  (78/100 ****, edge +18.7%)
+   - P(YRFI) 64.7% vs baseline 46.0%
+4. **CLE @ BAL YRFI (1st-inning OVER 0.5)**  (78/100 ****, edge +18.6%)
+   - P(YRFI) 64.6% vs baseline 46.0%
+5. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
    - Player prop quality score 1.1935
    - Elite player
-4. **LOL ShowMaker OVER 3.5 Kills**  (78/100 ****, edge —)
-   - Player prop quality score 1.1892
-   - Elite player
-5. **LOL Peyz OVER 4.5 Kills**  (78/100 ****, edge —)
-   - Player prop quality score 1.184
-   - Elite player
 
-## ⚠️ Trap Warnings — 3 flagged
-- **ATL @ PHI 4-leg SGP @ +161** (low):
-   - Edge +314.8% looks big but only 0 settled props on this player — model unproven
-- **NYM @ MIA 2-leg SGP @ +113** (low):
-   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
-- **WSN @ LAD YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +19.6% looks big but only 0 settled props on this player — model unproven
+## ⚠️ Trap Warnings — 7 flagged
+- **LAA @ BOS YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +23.7% looks big but only 0 settled props on this player — model unproven
+- **NYM @ MIA YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +20.8% looks big but only 0 settled props on this player — model unproven
+- **CHC @ MIL YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +18.7% looks big but only 0 settled props on this player — model unproven
+- **CLE @ BAL YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +18.6% looks big but only 0 settled props on this player — model unproven
+- **CIN @ LAD YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +15.1% looks big but only 0 settled props on this player — model unproven
 
 ## Weather leans
 - **OVER lean** (wind out + warm): WSN @ SDP
 
 ## Hot streaks
-**Batters heating up:** Ronald Acuna Jr. (heat +2.66), Elly De La Cruz (heat +1.69), Mookie Betts (heat +1.69)
-
-## Top correlation-aware SGPs
-- **ATL @ PHI** 4-leg @ +161 fair (joint 0.38, EV +314.83%)
-   - Trea Turner OVER 0.5 batter hits
-   - Ozzie Albies OVER 0.5 batter hits
-   - Ozzie Albies UNDER 1.5 batter total bases
-- **NYM @ MIA** 2-leg @ +113 fair (joint 0.47, EV +25.0%)
-   - Nick Morabito UNDER 0.5 batter hits
-   - Bo Bichette OVER 0.5 batter hits
+**Batters heating up:** Gabriel Moreno (heat +2.33), Brett Baty (heat +2.25), Jordan Lawlar (heat +2.12)
+**Pitchers on a run:** Noah Cameron (heat +9.00), Brayan Bello (heat -1.16)
 
 ## Bullpens GASSED tonight
-Athletics, Pittsburgh Pirates, San Diego Padres, Seattle Mariners, San Francisco Giants, St. Louis Cardinals, Texas Rangers, Toronto Blue Jays
+Athletics, Pittsburgh Pirates, San Diego Padres, St. Louis Cardinals, Tampa Bay Rays, Texas Rangers, Atlanta Braves, Chicago White Sox
 _Lean late-inning OVER on these games; fade their save situations._
 
 ## NRFI/YRFI strong leans
-- **YRFI** (1st-inning OVER): WSN @ LAD
+- **YRFI** (1st-inning OVER): LAA @ BOS, NYM @ MIA, CHC @ MIL, CLE @ BAL, CIN @ LAD
 
 ## Golf -- Biltmore Championship Asheville
 - **Leader:** ? (?) at #?
@@ -78,12 +71,12 @@ _Lean late-inning OVER on these games; fade their save situations._
 - Kiwoom Heroes @ LG Twins | P(home) 74.0% fair -284 | total 9 R
 - **KBO POD:** Doosan Bears ML vs Hanwha Eagles (KBO) (HIGH)
 
-## LoL Esports -- 0 live, 19 upcoming
-- [NLC] Arctic Pandas vs Ruddy Corporation BO5 | P(A) 49.1% fair +104/-104
+## LoL Esports -- 1 live, 20 upcoming
 - [NACL] Conviction vs NRG BO5 | P(A) 25.7% fair +289/-289
 - [LCK Challengers] T1 Esports Academy vs kt Challengers BO5 | P(A) 56.1% fair -128/+128
 - [LCK Challengers] DK Challengers vs NS Challengers BO5 | P(A) 59.2% fair -145/+145
 - [LPL] LGD GAMING vs Invictus Gaming BO5 | P(A) 51.4% fair -106/+106
+- [LCK Challengers] TBD vs DNS Challengers BO5 | P(A) 50.2% fair -101/+101
 - **LoL POT:** Hanwha Life Esports ML vs T1 (LCK, BO5) (HIGH)
 
 ## Player Play of the Day -- across all sports (3473 candidates scanned)
