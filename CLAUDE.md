@@ -41,6 +41,34 @@ bpleone-site/
 
 ## Current deployment state (LIVE)
 
+- **2026-09-08 (later) — MOBILE/PWA PASS + NFL-DFS MULTI-DAY SLATE FIX:**
+  (1) **PWA**: manifest.json + assets/icons (from the brand mark; the site had
+  NO favicon before) linked from every page's <head>; sw.js caches the app
+  SHELL only, network-first, and NEVER data/*.json -- an installed app must not
+  show a stale pick. Install-to-home-screen works on iOS/Android; that is the
+  "mobile version" path (no store, no native build).
+  (2) **Dense rows on phones**: style.css's blanket
+  `[style*="grid-template-columns"] {1fr !important}` (the ≤720px collapse for
+  layout grids) was also flattening every data row to ONE column -- a 5-cell
+  rating row was 169px tall. Row classes (.sb-row/.dfs-row/.mk-row/.lu-slot/
+  .pl-head/.op-row) are now excluded, keep their inline template, get a
+  min-width, and scroll sideways inside the card; nav.js tags cards that
+  actually overflow with .is-scrollable ("swipe →" hint). **RULE: any new
+  inline-grid data row needs a class from that list or it will stack on
+  phones.** (3) **Homepage accordion** on ≤720px only (first 4 cards open,
+  rest toggle from their header; 21,000px -> 11,990px). nav.js width detection
+  falls back to clientWidth and bails on 0 -- a hidden tab reads innerWidth 0,
+  which looked like "phone" and collapsed a desktop page during testing.
+  (4) **Preview server**: .claude/serve.py honors PORT (autoPort) after a port
+  collision with the other session's dev server. (5) **NFL DFS receipts**: DK
+  dates the weekly Main slate by its FIRST kickoff -- Week 1's 16-game group is
+  stamped 09-09 (Thu) though 13 games play Sun 09-13 + 1 Mon. The scorer fired
+  at age>=1 with a 3-day window -> would have graded Week 1 on Friday with
+  every Sun/Mon starter as DNP->0 and frozen it as scored. Now SLATE_SPAN_DAYS=6
+  for players + DST and scoring waits for the full span. NB the 09-13 receipt
+  entry is a DIFFERENT draft group (151307 vs 153054), not a duplicate --
+  the 085506c5f7 commit message is wrong on that point; nothing was dropped.
+
 - **2026-09-08 — NFL WEEK 1 OPENED + THE 'IL' HOLE + LOSSLESS EVICTION:**
   (1) **The NFL gate flipped correctly on schedule.** ESPN still reports
   season_status "off-season" (Week 1 kicks 9/10-9/15), but the DATE-HARDENED
