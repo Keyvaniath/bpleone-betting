@@ -2,7 +2,7 @@
 
 ## 🏥 Model Health: 65.0/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 100.0/100
+  - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 0/100
   - 🔴 Brier Trend: 49.4/100
   - 🟢 Pipeline Audit: 100.0/100
@@ -10,16 +10,16 @@
   - 🟡 Edge Count: 60.0/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.552)
-- **Total games on board:** 85
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.556)
+- **Total games on board:** 101
 - **Strong home favorites:** 8 | **Strong road dogs:** 4
 
 ## 🎯 Top 5 Best Bets
-1. **LAA @ BOS YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-2. **NYM @ MIA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-3. **CHC @ MIL YRFI (1st-inning OVER 0.5)** (78/100 ★★★★)
-4. **CLE @ BAL YRFI (1st-inning OVER 0.5)** (78/100 ★★★★)
-5. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
+1. **CIN @ LAD YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
+2. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
+3. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
+4. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
+5. **KBO Doosan Bears vs Hanwha Eagles ML @ -144** (76/100 ★★★★★)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -59,24 +59,24 @@
 - Hot teams: **3** | Cold teams: **19** | Over-heavy: 0 | Under-heavy: 0
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (110)
+## ⚠️ Anomaly Detector (106)
 - RESIDUAL_DIVERGENCE: **18**
-- STEAM_MOVE: **89**
-- COMPOUND_BULLPEN: **3**
+- STEAM_MOVE: **86**
+- COMPOUND_BULLPEN: **2**
   - Atlanta Dream (WNBA): Atlanta Dream UNDERPERFORMING expected margin by 11.0pts in recent games -- model bias may persist
   - Connecticut Sun (WNBA): Connecticut Sun UNDERPERFORMING expected margin by 12.6pts in recent games -- model bias may persist
   - Washington Mystics (WNBA): Washington Mystics UNDERPERFORMING expected margin by 9.7pts in recent games -- model bias may persist
   - Los Angeles Sparks (WNBA): Los Angeles Sparks OUTPERFORMING expected margin by 15.0pts in recent games -- model bias may persist
   - Phoenix Mercury (WNBA): Phoenix Mercury OUTPERFORMING expected margin by 11.7pts in recent games -- model bias may persist
 
-## 💰 Today's Portfolio (9 picks)
-- Total stake: **$330.0** (33.0% of $1000 bankroll)
-- Expected EV: **$-6.27**
-  - #1 [NRFI] $50 on LAA @ BOS YRFI (1st-inning OVER 0.5) (P=70%)
-  - #2 [NRFI] $50 on NYM @ MIA YRFI (1st-inning OVER 0.5) (P=67%)
-  - #3 [NRFI] $35 on CHC @ MIL YRFI (1st-inning OVER 0.5) (P=65%)
-  - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
-  - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
+## 💰 Today's Portfolio (12 picks)
+- Total stake: **$345.0** (34.5% of $1000 bankroll)
+- Expected EV: **$-10.4**
+  - #1 [NRFI] $35 on CIN @ LAD YRFI (1st-inning OVER 0.5) (P=66%)
+  - #2 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
+  - #3 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
+  - #4 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
+  - #5 [KBO] $35 on KBO Doosan Bears vs Hanwha Eagles ML @ -144 (P=59%)
 
 ## 🎯 Convergence Picks (19 stacked games)
 - ELITE: **10** · HIGH: 3 · MED: 6
@@ -86,11 +86,9 @@
   - [ELITE] Connecticut Sun @ Atlanta Dream : 5 signals (HEAT_COLD, ANOMALY, ANOMALY, ATS)
   - [ELITE] Columbus Crew @ D.C. United : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (5)
+## ⚾ Top MLB Pitcher K Plays (3)
 - **Dylan Cease** OVER 6.5 K (72%) fair -252
-- **Nick Pivetta** OVER 4.5 K (71%) fair -251
 - **Chase Burns** OVER 5.5 K (68%) fair -214
-- **Joe Ryan** OVER 4.5 K (68%) fair -213
 - **Logan Webb** OVER 4.5 K (59%) fair -143
 
 ## 🏀 NBA Player Heat (2 HOT / 1 COLD)
@@ -105,17 +103,17 @@
   - [COIN_FLIP] **Isaac Moreno** (8-0-0) vs Reginaldo Junior -- fair -118
   - [COIN_FLIP] **Quentin Pasley** (3-0-0) vs Arlind Berisha -- fair -100
 
-## 🔥 MLB Batter Heat (55 HOT / 67 COLD)
+## 🔥 MLB Batter Heat (55 HOT / 69 COLD)
   - 🔥 **Tyrone Taylor** (CHC): L14 .528 / season .286 (+242pts)
-  - 🔥 **Thomas Saggese** (STL): L14 .500 / season .270 (+230pts)
-  - 🔥 **Myles Straw** (TOR): L14 .424 / season .239 (+185pts)
+  - 🔥 **Thomas Saggese** (STL): L14 .500 / season .276 (+224pts)
   - 🔥 **Cal Raleigh** (SEA): L14 .367 / season .183 (+184pts)
-  - 🔥 **Elly De La Cruz** (CIN): L14 .448 / season .280 (+168pts)
+  - 🔥 **Myles Straw** (TOR): L14 .419 / season .238 (+181pts)
+  - 🔥 **Rafael Devers** (SF): L14 .415 / season .260 (+155pts)
   - ❄️ **Taylor Ward** (SEA): L14 .050 / season .224 (-174pts) -- FADE props
   - ❄️ **Jose Siri** (LAA): L14 .067 / season .219 (-152pts) -- FADE props
+  - ❄️ **Shohei Ohtani** (LAD): L14 .130 / season .277 (-147pts) -- FADE props
   - ❄️ **CJ Abrams** (WSH): L14 .123 / season .262 (-139pts) -- FADE props
   - ❄️ **Colt Keith** (DET): L14 .129 / season .258 (-129pts) -- FADE props
-  - ❄️ **Nasim Nuñez** (WSH): L14 .083 / season .211 (-128pts) -- FADE props
 
 ## 📈 Streak Regression Alerts (10)
 - [WNBA] Connecticut Sun on L3 L10 1-3 -- Connecticut Sun on L3 -- no historical sample
@@ -132,10 +130,11 @@
   - ⚠️ batter_rbis (Brier Δ -0.0052)
 
 ## 🧠 Training Convergence
-- ELITE: **0** · HEALTHY: 0 · OK: 1 · DEGRADED: **1**
+- ELITE: **0** · HEALTHY: 1 · OK: 0 · DEGRADED: **1**
+  - ⚠️ **batter_total_bases**: DIVERGENT - consistent same-sign moves (structural issue) (cf=1.0137)
 
 ## 🤖 Self-Training Status
-- **WNBA**: n=19 games · hit rate 63.2% · bias +1.9pp
+- **WNBA**: n=17 games · hit rate 64.7% · bias -7.7pp [calibration applied]
 - **MLS**: n=59 games · hit rate 27.1% · bias +1.1pp
 - **EPL**: n=30 games · hit rate 50.0% · bias -1.8pp
-- **MLB**: n=190 games · hit rate 46.3% · bias +1.2pp
+- **MLB**: n=191 games · hit rate 45.6% · bias -1.8pp
