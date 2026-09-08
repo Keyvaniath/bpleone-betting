@@ -2894,6 +2894,69 @@ def _wager_key(p) -> tuple:
     return (_safe_id(p.get("sport")).lower(), _safe_id(p.get("player_or_matchup")).lower(), mk)
 
 
+
+ARCHIVE_PATH = os.path.join(DATA_DIR, "ledger_archive.json")
+
+
+def _archive_evicted(picks: List[Dict[str, Any]]) -> int:
+    """Append evicted picks to a COLD ARCHIVE before they leave the ledger.
+
+    Eviction used to be destructive: a row that fell out of the MAX_PICKS
+    window was gone from the artifact forever, so the published settled count
+    could silently shrink as the window slid (the 2026-07-06 erosion, and again
+    on 2026-09-03 once the voided rows ran out). Bounding the working file is
+    fine -- destroying settled results is not.
+
+    Only a compact projection is kept (identity + outcome + payout), roughly a
+    tenth the size of a full row, which is everything needed to recompute the
+    all-time record or audit any single graded pick. Settled rows are archived;
+    voided and never-graded pendings carry no signal and are simply dropped.
+    """
+    keep = [p for p in picks if p.get("settled") and not p.get("voided")]
+    if not keep:
+        return 0
+    prev = _load(ARCHIVE_PATH)
+    rows = prev.get("picks") or []
+    seen = {r.get("pick_id") for r in rows}
+    added = 0
+    for p in keep:
+        if p.get("pick_id") in seen:
+            continue
+        rows.append({
+            "pick_id": p.get("pick_id"),
+            "source": p.get("source"),
+            "sport": p.get("sport"),
+            "date": p.get("date"),
+            "player_or_matchup": p.get("player_or_matchup"),
+            "market": p.get("market"),
+            "prob": p.get("prob"),
+            "fair_american": p.get("fair_american"),
+            "result": p.get("result"),
+            "payout_units": p.get("payout_units"),
+            "settled_at": p.get("settled_at"),
+        })
+        seen.add(p.get("pick_id"))
+        added += 1
+    payload = {
+        "note": ("Cold archive of SETTLED picks evicted from the working ledger "
+                 "when it exceeded MAX_PICKS. Compact by design; nothing here is "
+                 "deleted. The live headline record is computed on the working "
+                 "ledger, so these rows are the part of the history that has "
+                 "aged out of that window -- reported separately, never dropped."),
+        "n_picks": len(rows),
+        "updated_at": dt.datetime.now().isoformat(timespec="seconds"),
+        "picks": rows,
+    }
+    try:
+        with open(ARCHIVE_PATH, "w", encoding="utf-8") as f:
+            json.dump(payload, f, indent=2)
+    except OSError:
+        return 0
+    print(f"  archived {added} evicted settled pick(s) -> data/ledger_archive.json "
+          f"({len(rows)} total)")
+    return added
+
+
 def _collapse_duplicate_wagers(history) -> int:
     """One wager must count ONCE in the public record. Two historical leak paths
     violated that (caught by the 2026-07-11 site audit):
@@ -3117,8 +3180,14 @@ def run() -> Dict[str, Any]:
         if len(drop) < overflow:
             drop |= set(stale_pend_idx[:overflow - len(drop)])
         if drop:
+            _archive_evicted([p for i, p in enumerate(history) if i in drop])
             history = [p for i, p in enumerate(history) if i not in drop]
         if len(history) > MAX_PICKS:
+            # LOSSLESS TAIL-CUT (2026-09-08): this branch drops SETTLED history,
+            # so the rows are archived compactly before they leave the working
+            # ledger. A settled result must never be destroyed just because the
+            # window moved -- it is the public record.
+            _archive_evicted(history[:len(history) - MAX_PICKS])
             history = history[-MAX_PICKS:]
 
     # Honest prob at the SOURCE: stamp each pick's calibrated probability ADDITIVELY
@@ -3394,6 +3463,27 @@ def run() -> Dict[str, Any]:
     with open(OUT, "w") as f: json.dump(payload, f, indent=2)
     # Compact summary (all rollups, minus the multi-MB picks array) so the public
     # track-record page renders by-sport / by-source without pulling the full ledger.
+    # ARCHIVE VISIBILITY (2026-09-08): settled rows that aged out of the
+    # MAX_PICKS window live in the cold archive. The headline record is still
+    # computed on the working ledger ONLY -- merging the archive in would
+    # silently restate every published number -- but the counts are surfaced
+    # here so "aged out of the window" can never masquerade as "never happened".
+    _arch = _load(ARCHIVE_PATH)
+    _arows = _arch.get("picks") or []
+    if _arows:
+        _aw = sum(1 for r in _arows if r.get("result") == "won")
+        _al = sum(1 for r in _arows if r.get("result") == "lost")
+        payload["archived_history"] = {
+            "n_settled": len(_arows), "wins": _aw, "losses": _al,
+            "net_units": round(sum(float(r.get("payout_units") or 0) for r in _arows), 2),
+            "oldest": min((str(r.get("date") or "") for r in _arows), default=None),
+            "newest": max((str(r.get("date") or "") for r in _arows), default=None),
+            "note": ("Settled picks that aged out of the working ledger window. "
+                     "NOT included in the headline record above (including them "
+                     "would restate published numbers); kept in full at "
+                     "data/ledger_archive.json so nothing is ever destroyed."),
+        }
+
     summary = {k: v for k, v in payload.items() if k != "picks"}
     with open(os.path.join(DATA_DIR, "ledger_summary.json"), "w") as f:
         json.dump(summary, f, indent=2)

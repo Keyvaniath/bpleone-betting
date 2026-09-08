@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-08T13:07:38",
+  "generated_at": "2026-09-08T09:37:26",
   "n_slates_tracked": 22,
   "n_slates_scored": 21,
   "cumulative": {
@@ -3859,12 +3859,12 @@
           },
           {
             "slot": "P2",
-            "name": "Sean Burke",
-            "team": "CWS",
+            "name": "Jack Perkins",
+            "team": "ATH",
             "pos": "SP",
-            "salary": 8200,
-            "proj": 20.74,
-            "mlb_id": 680732
+            "salary": 5500,
+            "proj": 17.9,
+            "mlb_id": 678022
           },
           {
             "slot": "C",
@@ -3877,12 +3877,12 @@
           },
           {
             "slot": "1B",
-            "name": "Matt Olson",
-            "team": "ATL",
+            "name": "Bryce Eldridge",
+            "team": "SF",
             "pos": "1B",
-            "salary": 5000,
-            "proj": 8.58,
-            "mlb_id": 621566
+            "salary": 3500,
+            "proj": 7.37,
+            "mlb_id": 805811
           },
           {
             "slot": "2B",
@@ -3895,12 +3895,12 @@
           },
           {
             "slot": "3B",
-            "name": "Matt Chapman",
-            "team": "SF",
+            "name": "Max Muncy",
+            "team": "ATH",
             "pos": "3B",
-            "salary": 2000,
-            "proj": 6.48,
-            "mlb_id": 656305
+            "salary": 3300,
+            "proj": 7.39,
+            "mlb_id": 571970
           },
           {
             "slot": "SS",
@@ -3922,27 +3922,27 @@
           },
           {
             "slot": "OF2",
-            "name": "Brent Rooker",
-            "team": "ATH",
+            "name": "Brett Bateman",
+            "team": "TOR",
             "pos": "OF",
-            "salary": 2000,
-            "proj": 7.0,
-            "mlb_id": 667670
+            "salary": 3900,
+            "proj": 7.88,
+            "mlb_id": 703520
           },
           {
             "slot": "OF3",
-            "name": "Ramon Laureano",
-            "team": "SD",
+            "name": "Hector Rodriguez",
+            "team": "CIN",
             "pos": "OF",
-            "salary": 2000,
-            "proj": 6.58,
-            "mlb_id": 657656
+            "salary": 3100,
+            "proj": 7.08,
+            "mlb_id": 699302
           }
         ],
-        "salary_used": 49900,
-        "proj_total": 113.6
+        "salary_used": 50000,
+        "proj_total": 111.84
       },
-      "snapshotted_at": "2026-09-08T13:07:38",
+      "snapshotted_at": "2026-09-08T09:37:26",
       "frozen": false
     }
   },
@@ -3952,6 +3952,7 @@
     "CG / no-hitter bonuses ignored (~0.05 pts EV).",
     "Mean-based v1 projections are the benchmark being graded -- see the mlb-dfs method notes.",
     "CORRECTION 2026-09-02: 11 slates (8/19-8/30) were originally scored while the box-score fetch universe excluded DFS lineup players -- their zeros were unverifiable. All were retracted and rescored from full per-player box logs (id-keyed; a slot scores 0 only when that player's log covers the date with no game).",
+    "ROOT CAUSE FOUND 2026-09-08: the lineup pool excluded statuses (O, OUT, IR) borrowed from football, but BASEBALL USES 'IL'. DraftKings was flagging injured players and the optimizer seated them anyway -- 40 IL players on the 9/08 slate, 34 of them seatable. That is the bulk of the projected-vs-actual gap: receipts averaged 3-6 dead slots per lineup. IL/NA/SUSP are now excluded (DTD is not -- those players usually do play). Slates BEFORE 2026-09-08 carry the old, worse lineups and are left exactly as scored; expect the bias to compress from here, and judge the fix on slates dated 9/09 onward.",
     "HONEST FINDING from the rescore: the big projected-vs-actual gap is REAL -- DraftKings kept several long-injured Athletics salaried with no O/IR status (Rooker out since 6/08, Langeliers 7/24, Kurtz 7/31, Soderstrom 8/14), season-rate v1 projections priced them healthy, and the optimizer seated 3-6 of these ghosts per slate for two weeks. Fixed 2026-09-02: players whose latest box-log game is >7 days old are benched from the lineup pool (STALE>7d). The scored history stands as-is -- those were the published lineups."
   ]
 }

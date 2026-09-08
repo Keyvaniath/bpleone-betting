@@ -410,8 +410,22 @@ def run() -> Dict[str, Any]:
         if _known_inactive(p):
             p["status"] = (p.get("status") or "") + " STALE>7d"
             n_benched += 1
-    playable = [p for p in projections if p.get("status") not in ("O", "OUT", "IR")
-                and "STALE>7d" not in str(p.get("status") or "")]
+    # THE 'IL' HOLE (2026-09-08). The exclusion list was ("O","OUT","IR") --
+    # borrowed from football. BASEBALL USES "IL" (injured list), which was not
+    # in it, so DraftKings was telling us a player was injured and the
+    # optimizer seated him anyway: 40 IL players on this slate, 34 of them
+    # seatable, and the receipts show 3-6 DNP slots per lineup for weeks. The
+    # STALE>7d heuristic added on 09-03 caught ZERO players DK had not already
+    # flagged -- the vendor's own status field was the signal all along.
+    # DTD (day-to-day) is deliberately NOT excluded: those players usually do
+    # play, and benching them would trade a real bias for a coverage loss.
+    _OUT_STATUSES = {"O", "OUT", "IR", "IL", "NA", "SUSP", "SSPD"}
+    def _is_out(p) -> bool:
+        st = str(p.get("status") or "").upper()
+        if "STALE>7D" in st:
+            return True
+        return any(tok in _OUT_STATUSES for tok in st.replace("/", " ").split())
+    playable = [p for p in projections if not _is_out(p)]
     def _top(pred, n_by_proj, n_by_value):
         rows = [p for p in playable if pred(p)]
         by_p = sorted(rows, key=lambda x: -(x["proj"] or 0))[:n_by_proj]
