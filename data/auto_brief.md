@@ -6,48 +6,49 @@ _0% lineups confirmed · 13 rookie SPs_
 
 ## Slate
 - **15 games** scheduled
-- **30 best bets** scored: 10 DK · 0 PP · 2 NRFI · 0 SGP
-- **Auto-portfolio:** 2 picks, $91.84 stake (9.18%), expected +$19.16
-- **MC simulation:** EV +$31.9, 69% P(profit), p05 $-120.03 / p95 $150.75
+- **41 best bets** scored: 10 DK · 0 PP · 12 NRFI · 0 SGP
+- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$34.33
+- **MC simulation:** EV +$111.05, 79% P(profit), p05 $-113.41 / p95 $311.02
 
 ## Top 5 Best Bets
-1. **CIN @ LAD YRFI (1st-inning OVER 0.5)**  (79/100 ****, edge +19.8%)
-   - P(YRFI) 65.8% vs baseline 46.0%
-2. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
-   - Player prop quality score 1.1935
-   - Elite player
-3. **LOL ShowMaker OVER 3.5 Kills**  (78/100 ****, edge —)
-   - Player prop quality score 1.1892
-   - Elite player
-4. **LOL Peyz OVER 4.5 Kills**  (78/100 ****, edge —)
-   - Player prop quality score 1.184
-   - Elite player
-5. **KBO Doosan Bears vs Hanwha Eagles ML @ -144**  (76/100 *****, edge —)
-   - Model 59.0% (fair -144)
-   - 
+1. **TBR @ ATL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +26.8%)
+   - P(YRFI) 72.8% vs baseline 46.0%
+2. **TOR @ OAK YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +21.9%)
+   - P(YRFI) 67.9% vs baseline 46.0%
+3. **NYM @ MIA YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +21.6%)
+   - P(YRFI) 67.6% vs baseline 46.0%
+4. **MIN @ DET YRFI (1st-inning OVER 0.5)**  (79/100 ****, edge +19.4%)
+   - P(YRFI) 65.4% vs baseline 46.0%
+5. **CIN @ LAD YRFI (1st-inning OVER 0.5)**  (79/100 ****, edge +19.2%)
+   - P(YRFI) 65.2% vs baseline 46.0%
 
-## ⚠️ Trap Warnings — 11 flagged
-- **Ryan Jeffers OVER 1.5 batter total bases** (low):
+## ⚠️ Trap Warnings — 21 flagged
+- **Ryan Jeffers OVER 1.5 batter total bases** (high):
    - Edge +22.2% looks big but only 0 settled props on this player — model unproven
-- **Josh Bell OVER 1.5 batter total bases** (low):
-   - Edge +22.2% looks big but only 0 settled props on this player — model unproven
-- **Dillon Dingler OVER 1.5 batter total bases** (low):
+   - Batter cooling: cooling: 0.779 ops recent vs 0.863 season (-0.084)
+- **Dillon Dingler OVER 1.5 batter total bases** (high):
    - Edge +21.6% looks big but only 0 settled props on this player — model unproven
-- **Kody Clemens OVER 1.5 batter total bases** (low):
-   - Edge +20.2% looks big but only 0 settled props on this player — model unproven
-- **CIN @ LAD YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +19.8% looks big but only 0 settled props on this player — model unproven
+   - Batter cooling: cooling: 0.360 ops recent vs 0.764 season (-0.404)
+- **Samuel Basallo OVER 1.5 batter total bases** (high):
+   - Edge +15.7% looks big but only 0 settled props on this player — model unproven
+   - Batter cooling: cooling: 0.456 ops recent vs 0.720 season (-0.264)
+- **Hao-Yu Lee OVER 1.5 batter total bases** (high):
+   - Edge +11.8% looks big but only 0 settled props on this player — model unproven
+   - Batter cooling: cooling: 0.573 ops recent vs 0.721 season (-0.148)
+- **Jo Adell OVER 1.5 batter total bases** (high):
+   - Edge +10.7% looks big but only 0 settled props on this player — model unproven
+   - Batter cooling: cooling: 0.554 ops recent vs 0.734 season (-0.180)
 
 ## Hot streaks
-**Batters heating up:** Ronald Acuna Jr. (heat +5.13), Kyle Stowers (heat +4.67), Kyle Schwarber (heat +4.55)
-**Pitchers on a run:** Chase Burns (heat +5.68), Dylan Cease (heat -4.92)
+**Batters heating up:** Riley Greene (heat +2.63), Josh Bell (heat +0.63), Ryan Jeffers (heat +0.55)
+**Pitchers on a run:** Jack Perkins (heat +9.13), Jacob Misiorowski (heat -6.57)
 
 ## Bullpens GASSED tonight
-Athletics, Pittsburgh Pirates, San Diego Padres, St. Louis Cardinals, Tampa Bay Rays, Texas Rangers, Atlanta Braves, Chicago White Sox
+Athletics, San Diego Padres, San Francisco Giants, St. Louis Cardinals, Texas Rangers, Minnesota Twins, Chicago White Sox, Miami Marlins
 _Lean late-inning OVER on these games; fade their save situations._
 
 ## NRFI/YRFI strong leans
-- **YRFI** (1st-inning OVER): CIN @ LAD, STL @ SFG
+- **YRFI** (1st-inning OVER): TBR @ ATL, TOR @ OAK, NYM @ MIA, MIN @ DET, CIN @ LAD
 
 ## Golf -- Biltmore Championship Asheville
 - **Leader:** ? (?) at #?
@@ -70,8 +71,8 @@ _Lean late-inning OVER on these games; fade their save situations._
 - SSG Landers @ Doosan Bears | P(home) 54.0% fair -117 | total 9 R
 - **KBO POD:** LG Twins ML vs Hanwha Eagles (KBO) (HIGH)
 
-## LoL Esports -- 0 live, 19 upcoming
-- [LCK Challengers] TBD vs DNS Challengers BO5 | P(A) 50.2% fair -101/+101
+## LoL Esports -- 0 live, 23 upcoming
+- [LCK Challengers] NS Challengers vs DNS Challengers BO5 | P(A) 39.9% fair +151/-151
 - [NLC] Verdant vs Deer Gaming BO5 | P(A) 54.5% fair -120/+120
 - [NACL] Maryville University vs NRG BO5 | P(A) 33.1% fair +202/-202
 - [LCK Challengers] DK Challengers vs T1 Esports Academy BO5 | P(A) 39.2% fair +155/-155
