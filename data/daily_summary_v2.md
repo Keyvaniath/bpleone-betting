@@ -1,13 +1,13 @@
-# EdgeStat Daily Summary — 2026-09-07
+# EdgeStat Daily Summary — 2026-09-08
 
-## 🏥 Model Health: 64.7/100 [OK]
+## 🏥 Model Health: 65.0/100 [OK]
 - Operational but room to improve - check yellow components
   - 🟢 Calibration Freshness: 100.0/100
   - 🔴 Hit Rate Trend: 0/100
-  - 🔴 Brier Trend: 55.0/100
+  - 🔴 Brier Trend: 49.4/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 100.0/100
-  - 🔴 Edge Count: 37.1/100
+  - 🟢 Data Health: 95.5/100
+  - 🟡 Edge Count: 60.0/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.552)
@@ -59,11 +59,10 @@
 - Hot teams: **3** | Cold teams: **19** | Over-heavy: 0 | Under-heavy: 0
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (113)
+## ⚠️ Anomaly Detector (110)
 - RESIDUAL_DIVERGENCE: **18**
-- STEAM_MOVE: **88**
-- COMPOUND_BULLPEN: **5**
-- PEN_MISMATCH: **2**
+- STEAM_MOVE: **89**
+- COMPOUND_BULLPEN: **3**
   - Atlanta Dream (WNBA): Atlanta Dream UNDERPERFORMING expected margin by 11.0pts in recent games -- model bias may persist
   - Connecticut Sun (WNBA): Connecticut Sun UNDERPERFORMING expected margin by 12.6pts in recent games -- model bias may persist
   - Washington Mystics (WNBA): Washington Mystics UNDERPERFORMING expected margin by 9.7pts in recent games -- model bias may persist
@@ -87,12 +86,12 @@
   - [ELITE] Connecticut Sun @ Atlanta Dream : 5 signals (HEAT_COLD, ANOMALY, ANOMALY, ATS)
   - [ELITE] Columbus Crew @ D.C. United : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (9)
-- **Brayan Bello** OVER 6.5 K (77%) fair -326
-- **Jesús Luzardo** OVER 6.5 K (72%) fair -252
+## ⚾ Top MLB Pitcher K Plays (5)
 - **Dylan Cease** OVER 6.5 K (72%) fair -252
 - **Nick Pivetta** OVER 4.5 K (71%) fair -251
-- **Jonah Tong** OVER 5.5 K (70%) fair -233
+- **Chase Burns** OVER 5.5 K (68%) fair -214
+- **Joe Ryan** OVER 4.5 K (68%) fair -213
+- **Logan Webb** OVER 4.5 K (59%) fair -143
 
 ## 🏀 NBA Player Heat (2 HOT / 1 COLD)
   - 🔥 **Scottie Barnes** (TOR): L5 24.4/7.6/9.6 vs season 18.6/5.8/8.8 [PTS +5.8]
@@ -106,17 +105,17 @@
   - [COIN_FLIP] **Isaac Moreno** (8-0-0) vs Reginaldo Junior -- fair -118
   - [COIN_FLIP] **Quentin Pasley** (3-0-0) vs Arlind Berisha -- fair -100
 
-## 🔥 MLB Batter Heat (61 HOT / 66 COLD)
-  - 🔥 **Tyrone Taylor** (CHC): L14 .514 / season .283 (+231pts)
+## 🔥 MLB Batter Heat (55 HOT / 67 COLD)
+  - 🔥 **Tyrone Taylor** (CHC): L14 .528 / season .286 (+242pts)
   - 🔥 **Thomas Saggese** (STL): L14 .500 / season .270 (+230pts)
   - 🔥 **Myles Straw** (TOR): L14 .424 / season .239 (+185pts)
   - 🔥 **Cal Raleigh** (SEA): L14 .367 / season .183 (+184pts)
-  - 🔥 **Brett Baty** (NYM): L14 .400 / season .227 (+173pts)
+  - 🔥 **Elly De La Cruz** (CIN): L14 .448 / season .280 (+168pts)
   - ❄️ **Taylor Ward** (SEA): L14 .050 / season .224 (-174pts) -- FADE props
-  - ❄️ **Jose Siri** (LAA): L14 .061 / season .219 (-158pts) -- FADE props
-  - ❄️ **Nasim Nuñez** (WSH): L14 .077 / season .211 (-134pts) -- FADE props
-  - ❄️ **Brandon Marsh** (PHI): L14 .147 / season .267 (-120pts) -- FADE props
-  - ❄️ **Miguel Rojas** (LAD): L14 .154 / season .269 (-115pts) -- FADE props
+  - ❄️ **Jose Siri** (LAA): L14 .067 / season .219 (-152pts) -- FADE props
+  - ❄️ **CJ Abrams** (WSH): L14 .123 / season .262 (-139pts) -- FADE props
+  - ❄️ **Colt Keith** (DET): L14 .129 / season .258 (-129pts) -- FADE props
+  - ❄️ **Nasim Nuñez** (WSH): L14 .083 / season .211 (-128pts) -- FADE props
 
 ## 📈 Streak Regression Alerts (10)
 - [WNBA] Connecticut Sun on L3 L10 1-3 -- Connecticut Sun on L3 -- no historical sample
