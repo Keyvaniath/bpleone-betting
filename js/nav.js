@@ -329,3 +329,58 @@ if ('serviceWorker' in navigator && location.protocol === 'https:') {
   window.addEventListener('load', apply);
   window.addEventListener('resize', apply);
 })();
+
+// ---- Mobile-first: bottom tab bar (2026-09-08) ----
+// On phones the primary navigation is a fixed 5-tab bar (Home / Picks / Alpha
+// / Record / Sports) with 44px+ targets; the top dropdown nav stays for
+// desktop. "Sports" opens a bottom sheet cloned from the live Sports menu so
+// the LIVE dots / next-date hints nav_badge injects come along for free.
+(function () {
+  var TABS = [
+    { href: 'index.html',        label: 'Home',   icon: '⌂' },
+    { href: 'picks.html',        label: 'Picks',  icon: '🎯' },
+    { href: 'alpha-pick.html',   label: 'Alpha',  icon: '★' },
+    { href: 'track-record.html', label: 'Record', icon: '🧾' },
+    { href: '#sports',           label: 'Sports', icon: '🏟' }
+  ];
+  function here() { return (location.pathname.split('/').pop() || 'index.html'); }
+  function build() {
+    if (document.getElementById('tabbar')) return;
+    var bar = document.createElement('nav');
+    bar.id = 'tabbar'; bar.className = 'tabbar'; bar.setAttribute('aria-label', 'Primary');
+    var cur = here();
+    bar.innerHTML = TABS.map(function (t) {
+      var active = t.href === cur || (cur === '' && t.href === 'index.html');
+      return '<a class="tab' + (active ? ' active' : '') + '" href="' + t.href + '"' +
+             (t.href === '#sports' ? ' data-sheet="sports"' : '') + '>' +
+             '<span class="tab-ico" aria-hidden="true">' + t.icon + '</span>' +
+             '<span class="tab-lbl">' + t.label + '</span></a>';
+    }).join('');
+    document.body.appendChild(bar);
+    document.body.classList.add('has-tabbar');
+    bar.querySelector('[data-sheet="sports"]').addEventListener('click', function (e) {
+      e.preventDefault(); openSheet();
+    });
+  }
+  function openSheet() {
+    var old = document.getElementById('sheet'); if (old) { old.remove(); return; }
+    // Clone the live Sports dropdown (links + any injected live badges).
+    var btn = Array.prototype.find.call(document.querySelectorAll('.dd-btn'), function (b) { return /sports/i.test(b.textContent); });
+    var menu = btn && document.getElementById(btn.dataset.dd);
+    var links = menu ? Array.prototype.map.call(menu.querySelectorAll('a'), function (a) { return a.outerHTML; }).join('') : '<a href="directory.html">All sports →</a>';
+    var sheet = document.createElement('div');
+    sheet.id = 'sheet'; sheet.className = 'sheet';
+    sheet.innerHTML = '<div class="sheet-bg"></div><div class="sheet-panel" role="dialog" aria-label="Sports">' +
+      '<div class="sheet-grab"></div><div class="sheet-head">Sports <a href="directory.html" class="sheet-all">everything →</a></div>' +
+      '<div class="sheet-links">' + links + '</div></div>';
+    document.body.appendChild(sheet);
+    sheet.querySelector('.sheet-bg').addEventListener('click', function () { sheet.remove(); });
+    requestAnimationFrame(function () { sheet.classList.add('open'); });
+  }
+  function sync() {
+    var w = __vw(); if (!w) return;
+    if (w <= 720) build(); else { var b = document.getElementById('tabbar'); if (b) { b.remove(); document.body.classList.remove('has-tabbar'); } }
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', sync); else sync();
+  window.addEventListener('resize', sync);
+})();

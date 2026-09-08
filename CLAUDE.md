@@ -68,6 +68,19 @@ bpleone-site/
   for players + DST and scoring waits for the full span. NB the 09-13 receipt
   entry is a DIFFERENT draft group (151307 vs 153054), not a duplicate --
   the 085506c5f7 commit message is wrong on that point; nothing was dropped.
+  (7) **BOTTOM TAB BAR + SPORTS SHEET** (nav.js, ≤720px only): Home / Picks /
+  Alpha / Record / Sports, 60px targets, safe-area aware; "Sports" opens a
+  bottom sheet CLONED from the live Sports dropdown so nav_badge's live dots
+  ride along. body.has-tabbar pads the bottom. Desktop untouched.
+  (8) **DAILY ALPHA EMAIL** (python/alpha_email.py, runs after alpha_tweet):
+  composes subject + plain text + email-safe HTML from the same record ->
+  data/alpha_email.json + emails/alpha-daily-<date>.html + emails/latest.html;
+  alpha-pick.html gets a "Daily email" card (Open in mail = prefilled mailto,
+  Preview HTML, Copy text). **NOTHING SENDS TO ANYONE from code.** The only
+  send path is `--send-self` to ONE owner address, and only when the repo
+  secrets ALPHA_EMAIL_TO / SMTP_USER / SMTP_PASS exist (Gmail app password);
+  the step is wired in daily-pipeline and no-ops without them. Subscriber
+  sending stays Brandon's manual action (durable rule).
   (6) **CACHE-BUMP RULE (bit us the same day):** css/style.css and js/nav.js are
   referenced from 120 pages; prod served the new HTML with the OLD cached
   css/js -- rows still stacked, accordion inert, service worker never

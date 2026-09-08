@@ -3,8 +3,8 @@
    goes to the network, because a stale pick or line shown as current is
    exactly the failure this site exists to avoid. Only static shell assets
    (HTML/CSS/JS/icons) are cached, network-first, so a fresh deploy wins. */
-const VERSION = 'edgestat-shell-20260908b';
-const SHELL = ['/', '/index.html', '/css/style.css?v=20260908b', '/js/nav.js?v=20260908b', '/manifest.json',
+const VERSION = 'edgestat-shell-20260908c';
+const SHELL = ['/', '/index.html', '/css/style.css?v=20260908c', '/js/nav.js?v=20260908c', '/manifest.json',
                '/assets/icons/icon-192.png', '/assets/icons/icon-512.png'];
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(VERSION).then(c => c.addAll(SHELL)).then(() => self.skipWaiting()));

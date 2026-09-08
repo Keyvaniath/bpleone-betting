@@ -25,8 +25,8 @@
 <meta name="twitter:title" content="Alpha Pick of the Day | EdgeStat">
 <meta name="twitter:description" content="Alpha Pick of the Day · EdgeStat — quantitative sports-betting analytics: model edges, calibrated probabilities, and an honest settled track record across MLB, NBA, NHL, golf, tennis, soccer and more. Informational only, 21+.">
 <title>Alpha Pick of the Day | EdgeStat</title>
-<link rel="stylesheet" href="css/style.css?v=20260908b">
-<script src="js/nav.js?v=20260908b"></script>
+<link rel="stylesheet" href="css/style.css?v=20260908c">
+<script src="js/nav.js?v=20260908c"></script>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
   .container { max-width: 1100px; margin: 0 auto; padding: 24px; }
@@ -633,6 +633,23 @@ async function load() {
 
 load();
 setInterval(load, 5 * 60 * 1000);   // 5 min refresh — Worker quota
+</script>
+<script>
+// Daily email: composed by the pipeline from the same record; opens the mail client prefilled. Sending stays yours.
+fetch('data/alpha_email.json?t=' + Date.now(), { cache: 'no-cache' }).then(function (r) { return r.json(); }).then(function (e) {
+  var s = document.createElement('section'); s.className = 'card'; s.style.marginBottom = '24px';
+  s.innerHTML = '<div class="card-head"><span>&#9993;&#65039; <strong>Daily email</strong> <span class="muted" style="font-size:10px;">same pick, inbox-ready &mdash; you press send</span></span><span class="muted">' + (e.date || '') + '</span></div>' +
+    '<div style="padding:12px 16px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;">' +
+    '<a style="background:rgba(212,160,74,.18);border:1px solid #d4a04a;color:#d4a04a;font-weight:700;text-decoration:none;padding:9px 16px;border-radius:999px;font-size:12px;" href="' + e.mailto + '">&#9993;&#65039; Open in mail</a>' +
+    '<a style="border:1px solid rgba(255,255,255,.14);color:var(--text-2,#b9c3d4);text-decoration:none;padding:9px 16px;border-radius:999px;font-size:12px;" href="emails/latest.html" target="_blank" rel="noopener">Preview HTML</a>' +
+    '<button id="em_copy" style="border:1px solid rgba(255,255,255,.14);color:var(--text-2,#b9c3d4);background:none;padding:9px 16px;border-radius:999px;font-size:12px;cursor:pointer;">Copy text</button>' +
+    '<span class="muted" style="font-size:11px;flex-basis:100%;">' + (e.subject || '') + '</span></div>';
+  // alpha-pick has no <main>; anchor the card right after the One Pick panel (opToday's section), else the body.
+  var anchor = document.getElementById('opToday');
+  var host = anchor && (anchor.closest('.card') || anchor.closest('section') || anchor.parentNode);
+  if (host && host.parentNode) { host.parentNode.insertBefore(s, host.nextSibling); } else { document.body.appendChild(s); }
+  document.getElementById('em_copy').onclick = function () { navigator.clipboard.writeText(e.text).then(function () { document.getElementById('em_copy').textContent = 'Copied'; }); };
+}).catch(function () {});
 </script>
 </body>
 </html>

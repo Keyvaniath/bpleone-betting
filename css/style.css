@@ -598,3 +598,36 @@ h3 { font-size: 17px; }
   cursor: pointer; padding: 0 4px;
 }
 .stale-banner-x:hover { opacity: 1; }
+
+/* ---- Mobile-first bottom tab bar (2026-09-08) ---- */
+.tabbar { display: none; }
+@media (max-width: 720px) {
+  body.has-tabbar { padding-bottom: calc(64px + env(safe-area-inset-bottom, 0px)); }
+  .tabbar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 900; display: grid; grid-template-columns: repeat(5, 1fr);
+            height: calc(60px + env(safe-area-inset-bottom, 0px)); padding-bottom: env(safe-area-inset-bottom, 0px);
+            background: rgba(13,16,23,.96); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(255,255,255,.08); }
+  .tabbar .tab { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; min-height: 60px;
+                 color: var(--muted, #8a93a6); text-decoration: none; font-size: 10.5px; letter-spacing: .3px; -webkit-tap-highlight-color: transparent; }
+  .tabbar .tab-ico { font-size: 19px; line-height: 1; }
+  .tabbar .tab.active { color: var(--accent, #d4a04a); }
+  .tabbar .tab.active .tab-lbl { font-weight: 700; }
+  /* the top dropdown nav is desktop's primary; on phones keep it compact and secondary */
+  .mainnav { font-size: 12px; }
+  .mainnav a, .dd-btn { min-height: 40px; display: inline-flex; align-items: center; }
+  .posbtn, button.posbtn { min-height: 40px; }
+  /* Sports bottom sheet */
+  .sheet { position: fixed; inset: 0; z-index: 950; }
+  .sheet-bg { position: absolute; inset: 0; background: rgba(0,0,0,.55); }
+  .sheet-panel { position: absolute; left: 0; right: 0; bottom: 0; max-height: 70vh; overflow-y: auto; background: #12161f;
+                 border-radius: 16px 16px 0 0; border-top: 1px solid rgba(255,255,255,.1); padding: 8px 14px calc(16px + env(safe-area-inset-bottom, 0px));
+                 transform: translateY(100%); transition: transform .22s ease-out; }
+  .sheet.open .sheet-panel { transform: translateY(0); }
+  .sheet-grab { width: 38px; height: 4px; border-radius: 2px; background: rgba(255,255,255,.2); margin: 4px auto 10px; }
+  .sheet-head { display: flex; justify-content: space-between; align-items: baseline; font-weight: 700; font-size: 14px; padding: 2px 4px 8px; }
+  .sheet-all { font-size: 12px; color: var(--accent, #d4a04a); text-decoration: none; }
+  .sheet-links { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+  .sheet-links a { display: flex; align-items: center; min-height: 44px; padding: 8px 12px; border-radius: 10px; background: rgba(255,255,255,.04);
+                   color: var(--text, #e6e9ef); text-decoration: none; font-size: 13px; }
+  .sheet-links a.active { border: 1px solid var(--accent, #d4a04a); }
+}

@@ -628,6 +628,13 @@ jobs:
       - name: Daily Alpha tweet (compose ready-to-post text from the live record)
         working-directory: python
         run: python alpha_tweet.py || true
+      - name: Daily Alpha EMAIL (compose; owner-only send if SMTP secrets exist)
+        working-directory: python
+        env:
+          ALPHA_EMAIL_TO: ${{ secrets.ALPHA_EMAIL_TO }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+        run: python alpha_email.py --send-self || true
       - name: Weekly receipts thread (rolling trailing-week, ready to post any day)
         working-directory: python
         run: python weekly_receipts_thread.py || true
