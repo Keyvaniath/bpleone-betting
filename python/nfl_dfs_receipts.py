@@ -81,10 +81,16 @@ def actual_dk_points(row: Dict[str, Any]) -> float:
     return round(fp, 2)
 
 
+SLATE_SPAN_DAYS = 6   # DK's weekly Main slate runs Thu night -> Mon night
+
+
 def _gamelog_row(gl_by_name: Dict[str, Any], player: str, slate_date: str,
-                 window_days: int = 3) -> Optional[Dict[str, Any]]:
-    """The player's box-score row for the slate (a Sun main slate's games all
-    fall on slate_date, but Thu/Mon slates and date drift get a small window)."""
+                 window_days: int = SLATE_SPAN_DAYS) -> Optional[Dict[str, Any]]:
+    """The player's box-score row for the slate. THE MULTI-DAY SLATE (2026-09-08):
+    DraftKings dates its weekly Main group by its FIRST kickoff -- Week 1's
+    16-game slate is stamped 09-09 (Thursday) though 13 of its games play
+    Sunday 09-13 and one Monday. A 3-day window would have missed every Sunday
+    and Monday player. The window now spans the whole slate."""
     e = gl_by_name.get(nb.norm_name(player))
     rows = e if isinstance(e, list) else ((e or {}).get("games") or [])
     try:
@@ -106,9 +112,17 @@ def _gamelog_row(gl_by_name: Dict[str, Any], player: str, slate_date: str,
 def _dst_actual(team: str, slate_date: str) -> Optional[float]:
     """Partial DST score: points-allowed tier from the schedule finals."""
     state = _load(STATE_PATH)
+    try:
+        d0 = dt.date.fromisoformat(slate_date[:10])
+    except Exception:
+        return None
     for g in state.get("games") or []:
         gd = str(g.get("date") or "")[:10]
-        if gd != slate_date[:10]:
+        try:
+            off = (dt.date.fromisoformat(gd) - d0).days
+        except Exception:
+            continue
+        if not (0 <= off < SLATE_SPAN_DAYS):     # same Thu->Mon window as players
             continue
         mu = str(g.get("matchup") or "")
         # matchup carries full names; match by abbrev via the game's abbrev
@@ -168,7 +182,13 @@ def run() -> Dict[str, Any]:
             age = (dt.date.fromisoformat(today) - dt.date.fromisoformat(sdate)).days
         except Exception:
             continue
-        if age < 1:
+        # Wait for the WHOLE slate to play. Scoring at age>=1 would have graded
+        # Week 1 on Friday morning: the Thursday players score, `any_scored`
+        # flips, every Sunday/Monday starter is written down as "DNP -> 0", and
+        # the slate is frozen as scored forever -- a corrupted receipt by
+        # construction. The slate is only complete SLATE_SPAN_DAYS after its
+        # first kickoff (Thu -> Mon), so that is the earliest honest scoring day.
+        if age < SLATE_SPAN_DAYS:
             continue
         builds_out: Dict[str, Any] = {}
         any_scored = False

@@ -276,3 +276,56 @@
     boot();
   }
 })();
+
+
+
+// Viewport width that survives hidden/prerendered tabs (innerWidth reads 0
+// there, which must never be mistaken for "phone").
+function __vw() { return window.innerWidth || document.documentElement.clientWidth || 0; }
+// ---- PWA + mobile polish (2026-09-08) ----
+// Installable app shell. The worker never caches data/*.json -- live numbers
+// are always fetched -- so "installed" can never mean "stale".
+if ('serviceWorker' in navigator && location.protocol === 'https:') {
+  window.addEventListener('load', function () {
+    navigator.serviceWorker.register('/sw.js').catch(function () {});
+  });
+}
+// Tag any card whose content scrolls sideways on a narrow screen so the CSS
+// can show a "swipe" affordance; re-checked on resize and after data renders.
+(function () {
+  function tag() {
+    var w = __vw(); if (!w) return; if (w > 720) { document.querySelectorAll('.card.is-scrollable').forEach(function (c) { c.classList.remove('is-scrollable'); }); return; }
+    document.querySelectorAll('.card').forEach(function (c) {
+      c.classList.toggle('is-scrollable', c.scrollWidth > c.clientWidth + 4);
+    });
+  }
+  window.addEventListener('load', function () { tag(); setTimeout(tag, 1500); setTimeout(tag, 4000); });
+  window.addEventListener('resize', tag);
+})();
+
+// Homepage accordion on phones: keep the first cards open, collapse the rest
+// behind their headers. Cards inside <main> only; never on desktop.
+(function () {
+  var KEEP_OPEN = 4;
+  function apply() {
+    var isHome = /(^|\/)(index\.html)?$/.test(location.pathname);
+    if (!isHome) return;
+    var cards = document.querySelectorAll('main .card');
+    var w = __vw(); if (!w) return; var mobile = w <= 720;
+    cards.forEach(function (c, i) {
+      var head = c.querySelector(':scope > .card-head');
+      if (!head) return;
+      if (!mobile) { c.classList.remove('is-collapsible', 'is-collapsed'); return; }
+      if (!c.classList.contains('is-collapsible')) {
+        c.classList.add('is-collapsible');
+        head.addEventListener('click', function (e) {
+          if (e.target.closest('a, button, input, select')) return;
+          c.classList.toggle('is-collapsed');
+        });
+        if (i >= KEEP_OPEN) c.classList.add('is-collapsed');
+      }
+    });
+  }
+  window.addEventListener('load', apply);
+  window.addEventListener('resize', apply);
+})();

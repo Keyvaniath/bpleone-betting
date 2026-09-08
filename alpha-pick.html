@@ -3,6 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/icons/icon-32.png">
+<link rel="apple-touch-icon" href="assets/icons/icon-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="EdgeStat">
 <meta name="description" content="Alpha Pick of the Day · EdgeStat — quantitative sports-betting analytics: model edges, calibrated probabilities, and an honest settled track record across MLB, NBA, NHL, golf, tennis, soccer and more. Informational only, 21+.">
 <link rel="canonical" href="https://betting.bpleone.com/alpha-pick.html">
 <meta name="theme-color" content="#0d1017">
@@ -277,7 +283,7 @@ fetch('data/alpha_pick_record.json?t=' + Date.now()).then(function (r) { return 
     else if (res === 'pending') { badge = '•••'; bc = '#888'; }
     else { badge = 'PUSH'; bc = '#d4a04a'; }
     var pu = h.payout_units;
-    return '<div style="display:grid;grid-template-columns:82px 1fr 128px 54px 60px;gap:8px;padding:6px 10px;border-bottom:1px solid rgba(255,255,255,.04);align-items:center;">' +
+    return '<div class="op-row" style="display:grid;grid-template-columns:82px 1fr 128px 54px 60px;gap:8px;padding:6px 10px;border-bottom:1px solid rgba(255,255,255,.04);align-items:center;">' +
       '<span style="color:var(--muted,#888);">' + h.date + '</span>' +
       '<span><b>' + (h.player_or_matchup || '') + '</b> <span style="color:var(--muted,#888);font-size:11px;">' + mkH(h.market, h.player_or_matchup) + '</span></span>' +
       '<span style="color:#9fb0c8;font-size:11px;">' + (h.sport || '') + (h.fair_american != null ? ' @ ' + h.fair_american : '') + '</span>' +

@@ -526,7 +526,28 @@ h3 { font-size: 17px; }
      and an inline style beats the class-based collapse rules above -- so without
      this !important override the second column lands off-screen (~870px wide)
      and forces the whole page to shrink-to-fit (zoom out) on mobile. */
-  [style*="grid-template-columns"] { grid-template-columns: 1fr !important; }
+  /* DATA ROWS ARE THE EXCEPTION (2026-09-08). The collapse above is right for
+     page-layout grids, but it was also flattening every dense data row (.sb-row
+     / .dfs-row / .mk-row / .lu-slot / .pl-head set their columns inline) into a
+     single column -- one 5-cell rating row became a 169px-tall stack, so a
+     25-row table ran ~4,200px on a phone. Rows keep their inline template and
+     scroll HORIZONTALLY inside their card instead (the card already scrolls);
+     a min-width keeps the columns readable rather than crushing the fr tracks
+     to a few px. nav.js adds a "swipe" hint to any card that actually scrolls. */
+  [style*="grid-template-columns"]:not(.sb-row):not(.dfs-row):not(.mk-row):not(.lu-slot):not(.pl-head):not(.op-row) { grid-template-columns: 1fr !important; }
+  .sb-row, .dfs-row, .mk-row, .pl-head { min-width: 560px; }
+  .op-row { min-width: 440px; }
+  .lu-slot { min-width: 420px; }
+  /* HOMEPAGE ACCORDION (2026-09-08). On a phone the dashboard is ~24 cards and
+     21,000px tall -- 26 screens of scrolling. nav.js collapses every card after
+     the first few on index.html and turns each header into a toggle, so the
+     page opens as a short, scannable list. Desktop is untouched. */
+  .card.is-collapsed > :not(.card-head) { display: none !important; }
+  .card.is-collapsible > .card-head { cursor: pointer; user-select: none; }
+  .card.is-collapsible > .card-head::after { content: "BE"; margin-left: auto; padding-left: 10px; color: var(--muted, #8a93a6); font-size: 12px; }
+  .card.is-collapsed > .card-head::after { content: "B8"; }
+  .card.is-scrollable { position: relative; }
+  .card.is-scrollable::after { content: "swipe 92"; position: sticky; left: 0; display: block; width: 100%; text-align: right; padding: 4px 12px; font-size: 10px; letter-spacing: .5px; color: var(--muted, #8a93a6); pointer-events: none; }
   /* Let cards shrink below their content's intrinsic width (flex/grid items
      default to min-width:auto, which otherwise forces a card as wide as its
      widest table/row and overflows the page); keep table wrappers within the
