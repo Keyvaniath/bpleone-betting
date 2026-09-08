@@ -68,6 +68,13 @@ bpleone-site/
   for players + DST and scoring waits for the full span. NB the 09-13 receipt
   entry is a DIFFERENT draft group (151307 vs 153054), not a duplicate --
   the 085506c5f7 commit message is wrong on that point; nothing was dropped.
+  (6) **CACHE-BUMP RULE (bit us the same day):** css/style.css and js/nav.js are
+  referenced from 120 pages; prod served the new HTML with the OLD cached
+  css/js -- rows still stacked, accordion inert, service worker never
+  registered. Any change to style.css or nav.js MUST bump `?v=` on every page
+  (current: ?v=20260908b) and the SW SHELL list in sw.js must carry the same
+  bumped URLs. Verified on prod after the bump: 5-col rows, 20 cards
+  collapsed, SW registered.
 
 - **2026-09-08 — NFL WEEK 1 OPENED + THE 'IL' HOLE + LOSSLESS EVICTION:**
   (1) **The NFL gate flipped correctly on schedule.** ESPN still reports
