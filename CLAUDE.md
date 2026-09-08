@@ -41,6 +41,41 @@ bpleone-site/
 
 ## Current deployment state (LIVE)
 
+- **2026-09-08 — NFL WEEK 1 OPENED + THE 'IL' HOLE + LOSSLESS EVICTION:**
+  (1) **The NFL gate flipped correctly on schedule.** ESPN still reports
+  season_status "off-season" (Week 1 kicks 9/10-9/15), but the DATE-HARDENED
+  gate opened as designed -- nfl_player_props self-reports "regular" and 675
+  strong_edges entered the ledger. This is intended behaviour, not the
+  preseason failure: starters now play full games, so season-baseline
+  projections are valid. Conviction is NOT saturating (only 9 of 676 sit at the
+  0.80 cap; median prob 0.748, median fair -296). WATCH: these are priced at
+  the model's OWN fair odds, so each is ~0-EV by construction -- they profit
+  only if the model is under-confident, and they will settle into the curated
+  book over the next week. Expect the headline curated ROI to move on NFL.
+  (2) **THE 'IL' HOLE (biggest DFS bug to date).** mlb_dfs's lineup pool
+  excluded ("O","OUT","IR") -- a list borrowed from football. **Baseball uses
+  "IL"**, which was never in it, so DK was flagging injured players and the
+  optimizer seated them anyway: 40 IL players on the 9/08 slate, 34 seatable,
+  and receipts had carried 3-6 dead slots per lineup for weeks (avg bias -64,
+  -46 after the 9/03 staleness patch). The STALE>7d heuristic added 9/03 caught
+  ZERO players DK had not already flagged -- **the vendor's status field was
+  the signal all along**; it stays only as a backstop for unstatused players.
+  DTD is deliberately NOT excluded (those players usually play). Judge the fix
+  on slates dated 9/09+; earlier slates keep their original scoring.
+  **RULE: never port a status-code list between sports -- enumerate the
+  vendor's actual values per sport (MLB: IL/DTD; NFL: O/Q/OUT/IR).**
+  (3) **Eviction is now LOSSLESS.** The tail-cut destroyed SETTLED rows when
+  the window overflowed. At ~200 picks/day (727 on 9/08 as NFL opened) the
+  14000 cap binds in ~2 weeks, so evicted settled picks now append to
+  data/ledger_archive.json (compact, idempotent) and ledger_summary reports
+  `archived_history` separately. OPEN DECISION for Brandon: once eviction
+  starts, the headline becomes a ROLLING-WINDOW record. Merging the archive in
+  would make it all-time again but restates published numbers upward -- his
+  call, not an automatic change.
+  (4) CFB desk graded its first pick end-to-end: 9/05 UNLV @ HAW settled off
+  the ESPN event id (a LOSS -- we had HAW home, UNLV won 21-6). 3 picks pending
+  for 9/12. Ratings now carry 99 real 2026 games.
+
 - **2026-09-03 — THE LEDGER WAS EATING ITS OWN TRACK RECORD (read before adding
   any new pick source):** all_picks_ledger hit MAX_PICKS=10000 with **zero
   eviction headroom** -- 9840 settled, 160 pending, 0 voided, 0 stale pendings.
