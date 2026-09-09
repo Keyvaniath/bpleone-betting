@@ -1,9 +1,9 @@
 {
   "phases": {
     "imports": {
-      "duration_s": 1.3,
+      "duration_s": 1.8,
       "exit_code": 0,
-      "summary": "SUMMARY: 617 import-ok / 0 import-fail",
+      "summary": "SUMMARY: 618 import-ok / 0 import-fail",
       "stderr_truncated": ""
     },
     "html": {
@@ -13,30 +13,30 @@
       "stderr_truncated": ""
     },
     "data": {
-      "duration_s": 1.8,
+      "duration_s": 2.2,
       "exit_code": 0,
-      "summary": "SUMMARY: 398 ok / 1 empty / 275 flagged / 0 stale24h / 0 stale72h",
+      "summary": "SUMMARY: 395 ok / 0 empty / 279 flagged / 0 stale24h / 0 stale72h",
       "stderr_truncated": ""
     },
     "data_health": {
-      "duration_s": 0.6,
+      "duration_s": 1.1,
       "exit_code": 0,
       "summary": "[OK] desks              | 9 desk producers fresh",
       "stderr_truncated": ""
     }
   },
-  "generated_at": "2026-09-08T18:00:56",
-  "total_duration_s": 3.8,
+  "generated_at": "2026-09-09T05:36:51",
+  "total_duration_s": 5.2,
   "artifacts": {
     "module_import_audit.json": {
-      "generated_at": "2026-09-08T18:00:54",
-      "n_total": 617,
-      "n_ok": 617,
+      "generated_at": "2026-09-09T05:36:48",
+      "n_total": 618,
+      "n_ok": 618,
       "n_fail": 0,
       "failures": []
     },
     "html_audit.json": {
-      "generated_at": "2026-09-08T18:00:54",
+      "generated_at": "2026-09-09T05:36:48",
       "summary": {
         "ok": 0,
         "no_nav_js": 134,
@@ -345,21 +345,16 @@
       }
     },
     "data_stub_audit.json": {
-      "generated_at": "2026-09-08T18:00:56",
+      "generated_at": "2026-09-09T05:36:50",
       "summary": {
-        "empty": 1,
+        "empty": 0,
         "stub_flagged": 0,
-        "zero_count": 275,
+        "zero_count": 279,
         "stale_24h": 0,
         "stale_72h": 0,
-        "ok": 398
+        "ok": 395
       },
-      "empty": [
-        [
-          ".live_momentum_state.json",
-          "parses to empty {} or []"
-        ]
-      ],
+      "empty": [],
       "zero_count": [
         [
           "anomalies.json",
@@ -379,7 +374,7 @@
         ],
         [
           "confluence_top_5.json",
-          "n_top_5_whales=0; n_top_5_strong=0"
+          "n_top_5_whales=0"
         ],
         [
           "cross_book_arb.json",
@@ -435,11 +430,15 @@
         ],
         [
           "data_health.json",
-          "n_yellow=0; n_red=0"
+          "n_yellow=0"
         ],
         [
           "data_source_health.json",
           "contains 'sample'"
+        ],
+        [
+          "drift_alerts.json",
+          "n_alerts=0"
         ],
         [
           "elite_alerts_board.json",
@@ -468,6 +467,10 @@
         [
           "fade_picks.json",
           "n_fades=0"
+        ],
+        [
+          "game_calibrated.json",
+          "n_games=0"
         ],
         [
           "golf_leaderboard_probability.json",
@@ -534,12 +537,16 @@
           "n_alerts=0"
         ],
         [
+          "kbo_pot_history.json",
+          "n_settled_this_run=0"
+        ],
+        [
           "lineup_churn.json",
           "n_added=0; n_removed=0; n_shifts=0"
         ],
         [
           "lineup_confirmation.json",
-          "n_pending=0"
+          "n_both_posted=0"
         ],
         [
           "live_alerts.json",
@@ -550,8 +557,8 @@
           "n_alerts=0"
         ],
         [
-          "live_momentum.json",
-          "n_games=0; n_alerts=0"
+          "live_locks_status.json",
+          "n_locks_today=0"
         ],
         [
           "live_props.json",
@@ -567,7 +574,7 @@
         ],
         [
           "locks_history.json",
-          "n_added_this_run=0; n_newly_settled_this_run=0"
+          "n_newly_settled_this_run=0"
         ],
         [
           "lol_state.json",
@@ -659,7 +666,7 @@
         ],
         [
           "mlb_dominant_outing_alerts.json",
-          "n_elite=0"
+          "n_alerts=0; n_elite=0"
         ],
         [
           "mlb_doubles_props.json",
@@ -683,7 +690,7 @@
         ],
         [
           "mlb_full_game_pitching_chain.json",
-          "n_chain_lock=0"
+          "n_chain_lock=0; n_chain_strong=0"
         ],
         [
           "mlb_game_first_inning_hit_yn.json",
@@ -695,7 +702,7 @@
         ],
         [
           "mlb_game_preview.json",
-          "n_locks=0; n_strong=0; n_lean=0"
+          "n_locks=0; n_strong=0"
         ],
         [
           "mlb_game_run_diff_props.json",
@@ -716,14 +723,6 @@
         [
           "mlb_hrr_props.json",
           "n_batters=0; n_strong_edges=0"
-        ],
-        [
-          "mlb_innings_1_3_totals.json",
-          "n_strong_edges=0"
-        ],
-        [
-          "mlb_innings_4_6_totals.json",
-          "n_strong_edges=0"
         ],
         [
           "mlb_lineup_quality_index.json",
@@ -767,15 +766,15 @@
         ],
         [
           "mlb_pitcher_confluence_score.json",
-          "n_lock=0"
+          "n_lock=0; n_strong=0; n_fade=0"
         ],
         [
           "mlb_pitcher_edge_composite.json",
-          "n_elite_matchups=0; n_bad_spots=0"
+          "n_elite_matchups=0; n_strong=0; n_bad_spots=0"
         ],
         [
           "mlb_pitcher_fade_alerts.json",
-          "n_elite_fades=0"
+          "n_alerts=0; n_elite_fades=0"
         ],
         [
           "mlb_pitcher_form_tracker.json",
@@ -784,6 +783,10 @@
         [
           "mlb_pitcher_k_distribution_bands.json",
           "n_with_confident_8plus=0"
+        ],
+        [
+          "mlb_pitcher_k_minus_bb.json",
+          "n_pitchers=0; n_strong_edges=0"
         ],
         [
           "mlb_pitcher_k_streak_tracker.json",
@@ -795,7 +798,7 @@
         ],
         [
           "mlb_pitcher_matchup_projection.json",
-          "n_fade_risk=0"
+          "n_ace_spot=0; n_fade_risk=0"
         ],
         [
           "mlb_pitcher_outs_props.json",
@@ -812,6 +815,10 @@
         [
           "mlb_pitcher_rest_advantage.json",
           "n_with_edge=0"
+        ],
+        [
+          "mlb_pitcher_sharp_plays_board.json",
+          "n_prime=0; n_fade=0"
         ],
         [
           "mlb_pitcher_walks_props.json",
@@ -899,6 +906,10 @@
         ],
         [
           "mlb_total_HRs_game.json",
+          "n_strong_edges=0"
+        ],
+        [
+          "mlb_total_K_game.json",
           "n_strong_edges=0"
         ],
         [
@@ -1259,7 +1270,7 @@
         ],
         [
           "prediction_log.json",
-          "n_settled_this_run=0"
+          "n_new_this_run=0; n_settled_this_run=0"
         ],
         [
           "prizepicks_lines.json",
@@ -1466,11 +1477,11 @@
       "stale_72h": []
     },
     "data_health.json": {
-      "generated_at": "2026-09-08T18:00:56",
-      "overall": "green",
-      "n_green": 11,
+      "generated_at": "2026-09-09T05:36:51",
+      "overall": "red",
+      "n_green": 10,
       "n_yellow": 0,
-      "n_red": 0,
+      "n_red": 1,
       "checks": [
         {
           "feed": "freshness",
@@ -1485,8 +1496,8 @@
             "sport_coverage.json": 0.0,
             "todays_top_plays.json": 0.0,
             "alpha_pick_of_day.json": 0.0,
-            "alerts_feed.json": 1.3,
-            "calibration_map.json": 0.2,
+            "alerts_feed.json": 0.7,
+            "calibration_map.json": 0.3,
             "espn_odds.json": 0.0
           }
         },
@@ -1494,15 +1505,15 @@
           "feed": "mlb",
           "status": "green",
           "findings": [
-            "15 total (15 pre / 0 live / 0 final), local pre=15, live=0"
+            "15 total (15 pre / 0 live / 0 final), local pre=15, live=7"
           ],
           "upstream_count": 15,
           "upstream_pregame": 15,
           "upstream_live": 0,
           "upstream_final": 0,
           "local_count": 15,
-          "local_live": 0,
-          "live_state_age_min": 15
+          "local_live": 7,
+          "live_state_age_min": 21
         },
         {
           "feed": "nba",
@@ -1513,7 +1524,7 @@
           "upstream_count": 1,
           "local_count": 1,
           "upstream_live": 0,
-          "local_age_min": 10
+          "local_age_min": 15
         },
         {
           "feed": "wnba",
@@ -1524,7 +1535,7 @@
           "upstream_count": 5,
           "local_count": 5,
           "upstream_live": 0,
-          "local_age_min": 15
+          "local_age_min": 21
         },
         {
           "feed": "nhl",
@@ -1535,7 +1546,7 @@
           "upstream_count": 7,
           "local_count": 7,
           "upstream_live": 0,
-          "local_age_min": 10
+          "local_age_min": 15
         },
         {
           "feed": "mls",
@@ -1546,28 +1557,28 @@
           "upstream_count": 14,
           "local_count": 14,
           "upstream_live": 0,
-          "local_age_min": 15
+          "local_age_min": 21
         },
         {
           "feed": "epl",
-          "status": "green",
+          "status": "red",
           "findings": [
-            "2 events matched (0 live)"
+            "EPL count mismatch: local=2 vs ESPN=7"
           ],
-          "upstream_count": 2,
+          "upstream_count": 7,
           "local_count": 2,
           "upstream_live": 0,
-          "local_age_min": 15
+          "local_age_min": 21
         },
         {
           "feed": "pitcher_matchup",
           "status": "green",
           "findings": [
-            "28/28 pre-game probables matched"
+            "29/29 pre-game probables matched"
           ],
-          "upstream_count": 28,
-          "local_count": 28,
-          "matched": 28
+          "upstream_count": 29,
+          "local_count": 30,
+          "matched": 29
         },
         {
           "feed": "props",
@@ -1586,7 +1597,7 @@
           ],
           "upstream_players": 0,
           "local_players": 0,
-          "local_age_min": 15
+          "local_age_min": 21
         },
         {
           "feed": "desks",
@@ -1597,11 +1608,11 @@
           "n_stale": 0,
           "ages_h": {
             "tennis_state.json": 0.0,
-            "ufc_state.json": 4.7,
-            "f1_state.json": 4.7,
-            "kbo_state.json": 4.7,
-            "cs_state.json": 4.7,
-            "cws_state.json": 4.7,
+            "ufc_state.json": 11.6,
+            "f1_state.json": 11.6,
+            "kbo_state.json": 3.1,
+            "cs_state.json": 3.1,
+            "cws_state.json": 11.6,
             "worldcup_cards.json": 0.0,
             "cfb_model.json": 0.0,
             "cfb_ratings.json": 0.0

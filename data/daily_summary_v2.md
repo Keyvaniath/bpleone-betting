@@ -1,13 +1,13 @@
-# EdgeStat Daily Summary — 2026-09-08
+# EdgeStat Daily Summary — 2026-09-09
 
-## 🏥 Model Health: 64.2/100 [OK]
+## 🏥 Model Health: 65.5/100 [OK]
 - Operational but room to improve - check yellow components
   - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 0/100
-  - 🔴 Brier Trend: 35.4/100
+  - 🔴 Brier Trend: 32.1/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 100.0/100
-  - 🟡 Edge Count: 71.4/100
+  - 🟢 Data Health: 95.5/100
+  - 🟢 Edge Count: 100/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.558)
@@ -22,8 +22,7 @@
 5. **CIN @ LAD YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
 
 ## 📡 Sharp Action (Line Movement)
-- [ELITE] **CIN @ LAD** ml_home: 60.0% → 77.53% (+17.5pp)
-- [MODERATE] **NYM @ MIA** ml_home: 54.34% → 57.63% (+3.3pp)
+- [ELITE] **CIN @ LAD** ml_home: 60.0% → 74.36% (+14.4pp)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -54,7 +53,7 @@
 ## ⚡ Pre-Game HIGH Conviction (6)
 - [NCAAF] **Villanova Wildcats** AWAY (None L10) · model 74.9% fair -299
 - [MLS] **Houston Dynamo FC** HOME (1-3 L10) · model 68.9% fair -222
-- [WNBA] **Washington Mystics** AWAY (2-1 L10) · model 65.5% fair -190
+- [WNBA] **Washington Mystics** AWAY (1-1 L10) · model 65.5% fair -190
 - [MLS] **Colorado Rapids** AWAY (2-2 L10) · model 63.8% fair -177
 - [MLS] **Portland Timbers** HOME (2-2 L10) · model 62.8% fair -169
 - [MLS] **LAFC** HOME (0-4 L10) · model 62.5% fair -166
@@ -63,11 +62,11 @@
 - Hot teams: **3** | Cold teams: **19** | Over-heavy: 0 | Under-heavy: 0
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (124)
+## ⚠️ Anomaly Detector (134)
 - RESIDUAL_DIVERGENCE: **16**
-- STEAM_MOVE: **104**
-- COMPOUND_BULLPEN: **3**
+- STEAM_MOVE: **116**
 - PEN_MISMATCH: **1**
+- COMPOUND_BULLPEN: **1**
   - Connecticut Sun (WNBA): Connecticut Sun UNDERPERFORMING expected margin by 15.1pts in recent games -- model bias may persist
   - Washington Mystics (WNBA): Washington Mystics UNDERPERFORMING expected margin by 6.3pts in recent games -- model bias may persist
   - Phoenix Mercury (WNBA): Phoenix Mercury OUTPERFORMING expected margin by 11.7pts in recent games -- model bias may persist
@@ -84,7 +83,7 @@
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
 ## 🎯 Convergence Picks (19 stacked games)
-- ELITE: **8** · HIGH: 5 · MED: 6
+- ELITE: **8** · HIGH: 4 · MED: 7
   - [ELITE] New England Revolution @ New York City FC : 6 signals (PREGAME, HEAT_COLD, ANOMALY, ANOMALY)
   - [ELITE] Inter Miami CF @ Chicago Fire FC : 6 signals (PREGAME, HEAT_COLD, ANOMALY, ANOMALY)
   - [ELITE] Red Bull New York @ LAFC : 6 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
@@ -110,17 +109,17 @@
   - [COIN_FLIP] **Isaac Moreno** (8-0-0) vs Reginaldo Junior -- fair -118
   - [COIN_FLIP] **Quentin Pasley** (3-0-0) vs Arlind Berisha -- fair -100
 
-## 🔥 MLB Batter Heat (55 HOT / 69 COLD)
-  - 🔥 **Tyrone Taylor** (CHC): L14 .528 / season .286 (+242pts)
-  - 🔥 **Thomas Saggese** (STL): L14 .500 / season .276 (+224pts)
-  - 🔥 **Cal Raleigh** (SEA): L14 .367 / season .183 (+184pts)
-  - 🔥 **Myles Straw** (TOR): L14 .419 / season .238 (+181pts)
-  - 🔥 **Rafael Devers** (SF): L14 .415 / season .260 (+155pts)
+## 🔥 MLB Batter Heat (48 HOT / 71 COLD)
+  - 🔥 **Tyrone Taylor** (CHC): L14 .500 / season .284 (+216pts)
+  - 🔥 **Thomas Saggese** (STL): L14 .475 / season .275 (+200pts)
+  - 🔥 **Cal Raleigh** (SEA): L14 .360 / season .184 (+176pts)
+  - 🔥 **Patrick Bailey** (CLE): L14 .382 / season .207 (+175pts)
+  - 🔥 **Elly De La Cruz** (CIN): L14 .455 / season .283 (+172pts)
+  - ❄️ **Jose Siri** (LAA): L14 .032 / season .219 (-187pts) -- FADE props
   - ❄️ **Taylor Ward** (SEA): L14 .050 / season .224 (-174pts) -- FADE props
-  - ❄️ **Jose Siri** (LAA): L14 .067 / season .219 (-152pts) -- FADE props
+  - ❄️ **Colt Keith** (DET): L14 .094 / season .257 (-163pts) -- FADE props
+  - ❄️ **CJ Abrams** (WSH): L14 .109 / season .261 (-152pts) -- FADE props
   - ❄️ **Shohei Ohtani** (LAD): L14 .130 / season .277 (-147pts) -- FADE props
-  - ❄️ **CJ Abrams** (WSH): L14 .123 / season .262 (-139pts) -- FADE props
-  - ❄️ **Colt Keith** (DET): L14 .129 / season .258 (-129pts) -- FADE props
 
 ## 📈 Streak Regression Alerts (10)
 - [WNBA] Connecticut Sun on L3 L10 1-3 -- Connecticut Sun on L3 -- no historical sample
@@ -137,11 +136,10 @@
   - ⚠️ batter_rbis (Brier Δ -0.0052)
 
 ## 🧠 Training Convergence
-- ELITE: **0** · HEALTHY: 1 · OK: 0 · DEGRADED: **1**
-  - ⚠️ **batter_total_bases**: DIVERGENT - consistent same-sign moves (structural issue) (cf=1.0137)
+- ELITE: **1** · HEALTHY: 1 · OK: 0 · DEGRADED: **0**
 
 ## 🤖 Self-Training Status
-- **WNBA**: n=17 games · hit rate 64.7% · bias -7.7pp [calibration applied]
+- **WNBA**: n=14 games · hit rate 42.9% · bias -5.8pp
 - **MLS**: n=59 games · hit rate 27.1% · bias +1.1pp
 - **EPL**: n=30 games · hit rate 50.0% · bias -1.8pp
-- **MLB**: n=191 games · hit rate 45.6% · bias -1.8pp
+- **MLB**: n=191 games · hit rate 48.7% · bias +0.5pp
