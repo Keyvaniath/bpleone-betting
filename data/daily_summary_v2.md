@@ -4,7 +4,7 @@
 - Operational but room to improve - check yellow components
   - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 0/100
-  - 🔴 Brier Trend: 21.0/100
+  - 🔴 Brier Trend: 20.9/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 100.0/100
   - 🟢 Edge Count: 100/100
@@ -21,8 +21,11 @@
 4. **PIT @ CHW YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
 5. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
 
+## 🐋 Whale Picks (Max Confluence)
+- [STRONG] **[MLB]** LAA @ BOS BOS_ML -- 66% / +25.1% (score 2.5)
+
 ## 📡 Sharp Action (Line Movement)
-- [MODERATE] **CLE @ BAL** under_9.0: 51.22% → 54.55% (+3.3pp)
+- [STRONG] **LAA @ BOS** ml_home: 63.5% → 68.55% (+5.0pp)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -65,10 +68,10 @@
 - Hot teams: **3** | Cold teams: **19** | Over-heavy: 0 | Under-heavy: 0
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (139)
+## ⚠️ Anomaly Detector (138)
 - RESIDUAL_DIVERGENCE: **19**
 - STEAM_MOVE: **116**
-- COMPOUND_BULLPEN: **3**
+- COMPOUND_BULLPEN: **2**
 - PEN_MISMATCH: **1**
   - Connecticut Sun (WNBA): Connecticut Sun UNDERPERFORMING expected margin by 17.0pts in recent games -- model bias may persist
   - Columbus Crew (MLS): Columbus Crew OUTPERFORMING expected margin by 12.9pts in recent games -- model bias may persist
@@ -77,7 +80,7 @@
   - New York City FC (MLS): New York City FC OUTPERFORMING expected margin by 12.3pts in recent games -- model bias may persist
 
 ## 💰 Today's Portfolio (9 picks)
-- Total stake: **$345.0** (34.5% of $1000 bankroll)
+- Total stake: **$330.0** (33.0% of $1000 bankroll)
 - Expected EV: **$4.79**
   - #1 [NRFI] $50 on ARI @ KCR YRFI (1st-inning OVER 0.5) (P=75%)
   - #2 [NRFI] $50 on COL @ NYY YRFI (1st-inning OVER 0.5) (P=74%)
@@ -85,13 +88,13 @@
   - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
-## 🎯 Convergence Picks (18 stacked games)
-- ELITE: **6** · HIGH: 4 · MED: 8
+## 🎯 Convergence Picks (23 stacked games)
+- ELITE: **11** · HIGH: 6 · MED: 6
   - [ELITE] New England Revolution @ New York City FC : 6 signals (PREGAME, HEAT_COLD, ANOMALY, ANOMALY)
   - [ELITE] Inter Miami CF @ Chicago Fire FC : 6 signals (PREGAME, HEAT_COLD, ANOMALY, ANOMALY)
   - [ELITE] Red Bull New York @ LAFC : 6 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
   - [ELITE] Columbus Crew @ D.C. United : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
-  - [ELITE] FC Cincinnati @ Philadelphia Union : 4 signals (PREGAME, ANOMALY, ATS, ATS)
+  - [ELITE] Nottingham Forest @ Aston Villa : 5 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ATS)
 
 ## ⚾ Top MLB Pitcher K Plays (9)
 - **Lake Bachar** OVER 7.5 K (77%) fair -343
@@ -124,7 +127,7 @@
   - ❄️ **CJ Abrams** (WSH): L14 .109 / season .261 (-152pts) -- FADE props
   - ❄️ **Shohei Ohtani** (LAD): L14 .130 / season .277 (-147pts) -- FADE props
 
-## 📈 Streak Regression Alerts (10)
+## 📈 Streak Regression Alerts (16)
 - [WNBA] Connecticut Sun on L3 L10 0-3 -- Connecticut Sun on L3 -- no historical sample
 - [MLS] CF Montréal on L3 L10 1-3 -- CF Montréal on L3 -- no historical sample
 - [MLS] D.C. United on L3 L10 0-3 -- D.C. United on L3 -- no historical sample

@@ -1,5 +1,5 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:3 F:49
+_NO_ACTION_NIGHT_ | L:0 S:3 F:48
 
 :lock: **LOCK:** Foster Griffin (MLB)
 

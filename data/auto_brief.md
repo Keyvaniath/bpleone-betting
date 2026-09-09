@@ -1,12 +1,12 @@
 # Tonight's Slate Brief — 2026-09-09
 
-## Slate Quality: 55/100 (MEDIUM)
-_0% lineups confirmed · 16 rookie SPs_
+## Slate Quality: 58/100 (MEDIUM)
+_17% lineups confirmed · 15 rookie SPs_
 **Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
-- **15 games** scheduled
-- **45 best bets** scored: 12 DK · 0 PP · 11 NRFI · 0 SGP
+- **14 games** scheduled
+- **46 best bets** scored: 12 DK · 0 PP · 11 NRFI · 1 SGP
 - **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$41.86
 - **MC simulation:** EV +$93.64, 80% P(profit), p05 $-100.76 / p95 $271.58
 
@@ -23,7 +23,7 @@ _0% lineups confirmed · 16 rookie SPs_
    - Player prop quality score 1.1935
    - Elite player
 
-## ⚠️ Trap Warnings — 20 flagged
+## ⚠️ Trap Warnings — 21 flagged
 - **Jordan Walker OVER 1.5 batter total bases** (high):
    - Edge +24.1% looks big but only 0 settled props on this player — model unproven
    - Batter cooling: cooling: 0.675 ops recent vs 0.828 season (-0.153)
@@ -40,9 +40,17 @@ _0% lineups confirmed · 16 rookie SPs_
    - Edge +14.1% looks big but only 0 settled props on this player — model unproven
    - Batter cooling: cooling: 0.285 ops recent vs 0.714 season (-0.429)
 
+## Weather leans
+- **OVER lean** (wind out + warm): TOR @ OAK
+
 ## Hot streaks
 **Batters heating up:** Rafael Devers (heat +2.91), Riley Greene (heat +2.65), Ivan Herrera (heat +1.27)
 **Pitchers on a run:** Lake Bachar (heat +4.13), Daniel Lynch IV (heat -8.96)
+
+## Top correlation-aware SGPs
+- **STL @ SFG** 2-leg @ +202 fair (joint 0.33, EV +25.0%)
+   - Drew Cavanaugh OVER 0.5 batter hits
+   - Masyn Winn OVER 0.5 batter hits
 
 ## Bullpens GASSED tonight
 Athletics, San Diego Padres, San Francisco Giants, Minnesota Twins, Atlanta Braves, Chicago White Sox, Miami Marlins, Milwaukee Brewers
@@ -72,7 +80,7 @@ _Lean late-inning OVER on these games; fade their save situations._
 - Kiwoom Heroes @ Doosan Bears | P(home) 68.8% fair -221 | total 9 R
 - **KBO POD:** SSG Landers ML vs Hanwha Eagles (KBO) (MED)
 
-## LoL Esports -- 0 live, 23 upcoming
+## LoL Esports -- 1 live, 25 upcoming
 - [NLC] Verdant vs Deer Gaming BO5 | P(A) 54.5% fair -120/+120
 - [NACL] Maryville University vs NRG BO5 | P(A) 33.1% fair +202/-202
 - [LCK Challengers] DK Challengers vs T1 Esports Academy BO5 | P(A) 39.2% fair +155/-155

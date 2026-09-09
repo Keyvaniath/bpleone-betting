@@ -4,55 +4,54 @@
 
 _Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
 
-_Generated at 2026-09-09T13:19:34 UTC. Game lines source: **placeholder -110 (no real book today)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-09-09T17:53:04 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
-**COL @ NYY - OVER_8.5**
-- Market: -110
-- Model probability: 88.8%
-- Raw edge: +69.59%
+**TEX @ SEA - TEX_ML**
+- Market: +132
+- Model probability: 67.6%
+- Raw edge: +56.91%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
 
-## Full Slate (15 games)
+## Full Slate (14 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 1:10p ET | MIN @ DET | Comerica Park | 75F 9mph | OVER_8.5 +22.11% |
-| 3:05p ET | TOR @ OAK | Sutter Health Park | 98F 5mph | OVER_8.5 +32.05% |
-| 3:45p ET | STL @ SFG | Oracle Park | 92F 11mph | OVER_8.5 +2.75% |
-| 4:10p ET | WSN @ SDP | Petco Park | 89F 6mph | OVER_8.5 +24.11% |
-| 4:10p ET | TEX @ SEA | T-Mobile Park | indoor | TEX_ML +35.26% |
-| 6:35p ET | CLE @ BAL | Oriole Park at Camden Yards | 77F 2mph | BAL_ML +16.14% |
-| 6:40p ET | HOU @ PHI | Citizens Bank Park | 75F 9mph | PHI_ML +24.27% |
+| 3:05p ET | TOR @ OAK | Sutter Health Park | 101F 7mph | OAK_ML +35.59% |
+| 3:45p ET | STL @ SFG | Oracle Park | 92F 12mph | OVER_8.0 +16.96% |
+| 4:10p ET | WSN @ SDP | Petco Park | 90F 4mph | WSN_ML +45.99% |
+| 4:10p ET | TEX @ SEA | T-Mobile Park | indoor | TEX_ML +56.91% |
+| 6:35p ET | CLE @ BAL | Oriole Park at Camden Yards | 77F 3mph | BAL_ML +20.56% |
+| 6:40p ET | HOU @ PHI | Citizens Bank Park | 75F 10mph | OVER_8.0 +27.77% |
 | 6:40p ET | NYM @ MIA | loanDepot park | indoor | UNDER_8.5 +16.49% |
-| 6:45p ET | LAA @ BOS | Fenway Park | 72F 12mph | BOS_ML +62.71% |
-| 7:05p ET | COL @ NYY | Yankee Stadium | 76F 11mph | OVER_8.5 +69.59% |
-| 7:15p ET | TBR @ ATL | Truist Park | 78F 4mph | OVER_8.5 +16.98% |
-| 7:40p ET | ARI @ KCR | Kauffman Stadium | 79F 9mph | OVER_8.5 +31.17% |
-| 7:40p ET | PIT @ CHW | Rate Field | 71F 6mph | OVER_8.5 +31.17% |
-| 7:40p ET | CHC @ MIL | American Family Field | indoor | OVER_8.5 +21.66% |
-| 10:10p ET | CIN @ LAD | UNIQLO Field at Dodger Stadium | 81F 4mph | LAD_ML +52.68% |
+| 6:45p ET | LAA @ BOS | Fenway Park | 70F 12mph | BOS_ML +23.84% |
+| 7:05p ET | COL @ NYY | Yankee Stadium | 75F 10mph | OVER_9.5 +54.1% |
+| 7:15p ET | TBR @ ATL | Truist Park | 78F 4mph | OVER_8.0 +28.66% |
+| 7:40p ET | ARI @ KCR | Kauffman Stadium | 79F 8mph | OVER_8.5 +29.58% |
+| 7:40p ET | PIT @ CHW | Rate Field | 71F 7mph | OVER_9.0 +21.16% |
+| 7:40p ET | CHC @ MIL | American Family Field | indoor | OVER_7.5 +44.24% |
+| 10:10p ET | CIN @ LAD | UNIQLO Field at Dodger Stadium | 83F 4mph | OVER_8.5 +28.93% |
 
 ## Parlays - top 5
 
-- **2-leg @ +264 (prob 41.0%, EV +49.45%)**
-  - HOU @ PHI PHI_ML (-110, model 65.1%)
-  - PIT @ CHW OVER_8.5 (-110, model 63.0%)
-- **2-leg @ +264 (prob 41.0%, EV +49.27%)**
-  - WSN @ SDP OVER_8.5 (-110, model 65.0%)
-  - PIT @ CHW OVER_8.5 (-110, model 63.0%)
-- **2-leg @ +331 (prob 34.6%, EV +49.23%)**
+- **2-leg @ +348 (prob 33.4%, EV +49.59%)**
   - Jordan Walker OVER 1.5 batter_total_bases (+126, model 54.9%)
-  - PIT @ CHW OVER_8.5 (-110, model 63.0%)
-- **2-leg @ +264 (prob 40.8%, EV +48.56%)**
-  - MIN @ DET OVER_8.5 (-110, model 64.0%)
-  - CHC @ MIL OVER_8.5 (-110, model 63.7%)
-- **2-leg @ +337 (prob 33.9%, EV +48.23%)**
+  - CLE @ BAL BAL_ML (-102, model 60.9%)
+- **2-leg @ +278 (prob 39.5%, EV +49.49%)**
+  - WSN @ SDP OVER_8.5 (-110, model 63.6%)
+  - ARI @ KCR KCR_ML (-102, model 62.2%)
+- **2-leg @ +188 (prob 51.8%, EV +49.31%)**
+  - CLE @ BAL BAL_ML (-102, model 60.9%)
+  - LAA @ BOS BOS_ML (-220, model 85.1%)
+- **2-leg @ +292 (prob 37.8%, EV +48.39%)**
+  - CLE @ BAL BAL_ML (-102, model 60.9%)
+  - ARI @ KCR KCR_ML (-102, model 62.2%)
+- **2-leg @ +418 (prob 28.6%, EV +48.0%)**
+  - Jordan Walker OVER 1.5 batter_total_bases (+126, model 54.9%)
   - Dillon Dingler OVER 1.5 batter_total_bases (+129, model 52.1%)
-  - HOU @ PHI PHI_ML (-110, model 65.1%)
 
 ## Self-Learning Loop
 
@@ -67,21 +66,20 @@ Cumulative graded plays: 10277. Wins: 3676. Hit rate: 35.8%.
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| ARI @ KCR | 25.4% | +293 | 6.45 | +100 | -100 |
+| ARI @ KCR | 25.4% | +293 | 6.48 | +101 | -101 |
 | CHC @ MIL | 52.8% | -112 | 3.19 | +157 | -157 |
-| CIN @ LAD | 36.2% | +176 | 5.08 | -234 | +234 |
-| CLE @ BAL | 43.5% | +130 | 4.22 | +113 | -113 |
-| COL @ NYY | 26.0% | +285 | 6.97 | -168 | +168 |
-| HOU @ PHI | 51.9% | -108 | 3.48 | -110 | +110 |
-| LAA @ BOS | 51.4% | -106 | 3.52 | -332 | +332 |
-| MIN @ DET | 39.0% | +156 | 4.75 | +109 | -109 |
+| CIN @ LAD | 36.2% | +176 | 5.16 | -235 | +235 |
+| CLE @ BAL | 43.5% | +130 | 4.24 | +113 | -113 |
+| COL @ NYY | 26.0% | +285 | 6.96 | -167 | +167 |
+| HOU @ PHI | 51.9% | -108 | 3.49 | -111 | +111 |
+| LAA @ BOS | 51.4% | -106 | 3.52 | -329 | +329 |
 | NYM @ MIA | 41.6% | +140 | 4.39 | +138 | -138 |
-| PIT @ CHW | 34.8% | +187 | 5.47 | +125 | -125 |
-| STL @ SFG | 47.1% | +112 | 4.03 | +172 | -172 |
-| TBR @ ATL | 47.2% | +112 | 3.78 | +188 | -188 |
+| PIT @ CHW | 34.8% | +187 | 5.5 | +125 | -125 |
+| STL @ SFG | 47.1% | +112 | 4.06 | +171 | -171 |
+| TBR @ ATL | 47.2% | +112 | 3.81 | +188 | -188 |
 | TEX @ SEA | 32.1% | +211 | 5.68 | +368 | -368 |
-| TOR @ OAK | 52.0% | -108 | 3.32 | +121 | -121 |
-| WSN @ SDP | 44.2% | +126 | 4.19 | +239 | -239 |
+| TOR @ OAK | 52.0% | -108 | 3.31 | +120 | -120 |
+| WSN @ SDP | 44.2% | +126 | 4.12 | +239 | -239 |
 
 ## Team Form (last 10)
 
@@ -99,7 +97,7 @@ Cumulative graded plays: 10277. Wins: 3676. Hit rate: 35.8%.
 
 ## Loop Activity (since last refresh)
 
-- Confidence delta: **-0.1**
+- Confidence delta: **+0.0**
 
 ## Model Recommendations (operator review)
 
