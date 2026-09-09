@@ -1,28 +1,28 @@
 # EdgeStat Daily Summary — 2026-09-09
 
-## 🏥 Model Health: 65.5/100 [OK]
+## 🏥 Model Health: 64.2/100 [OK]
 - Operational but room to improve - check yellow components
   - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 0/100
-  - 🔴 Brier Trend: 32.1/100
+  - 🔴 Brier Trend: 21.0/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 95.5/100
+  - 🟢 Data Health: 100.0/100
   - 🟢 Edge Count: 100/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.558)
-- **Total games on board:** 112
-- **Strong home favorites:** 14 | **Strong road dogs:** 8
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.559)
+- **Total games on board:** 124
+- **Strong home favorites:** 16 | **Strong road dogs:** 10
 
 ## 🎯 Top 5 Best Bets
-1. **TBR @ ATL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-2. **TOR @ OAK YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-3. **NYM @ MIA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-4. **MIN @ DET YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
-5. **CIN @ LAD YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
+1. **ARI @ KCR YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+2. **COL @ NYY YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+3. **TEX @ SEA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+4. **PIT @ CHW YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
+5. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
 
 ## 📡 Sharp Action (Line Movement)
-- [ELITE] **CIN @ LAD** ml_home: 60.0% → 74.36% (+14.4pp)
+- [MODERATE] **CLE @ BAL** under_9.0: 51.22% → 54.55% (+3.3pp)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -50,11 +50,14 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (6)
+## ⚡ Pre-Game HIGH Conviction (9)
 - [NCAAF] **Villanova Wildcats** AWAY (None L10) · model 74.9% fair -299
+- [WNBA] **Dallas Wings** HOME (1-0 L10) · model 74.8% fair -297
+- [EPL] **Arsenal** AWAY (3-0 L10) · model 74.4% fair -290
 - [MLS] **Houston Dynamo FC** HOME (1-3 L10) · model 68.9% fair -222
-- [WNBA] **Washington Mystics** AWAY (1-1 L10) · model 65.5% fair -190
+- [WNBA] **Washington Mystics** AWAY (1-1 L10) · model 67.8% fair -210
 - [MLS] **Colorado Rapids** AWAY (2-2 L10) · model 63.8% fair -177
+- [EPL] **Brentford** AWAY (1-2 L10) · model 63.2% fair -172
 - [MLS] **Portland Timbers** HOME (2-2 L10) · model 62.8% fair -169
 - [MLS] **LAFC** HOME (0-4 L10) · model 62.5% fair -166
 
@@ -62,40 +65,40 @@
 - Hot teams: **3** | Cold teams: **19** | Over-heavy: 0 | Under-heavy: 0
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (134)
-- RESIDUAL_DIVERGENCE: **16**
+## ⚠️ Anomaly Detector (139)
+- RESIDUAL_DIVERGENCE: **19**
 - STEAM_MOVE: **116**
+- COMPOUND_BULLPEN: **3**
 - PEN_MISMATCH: **1**
-- COMPOUND_BULLPEN: **1**
-  - Connecticut Sun (WNBA): Connecticut Sun UNDERPERFORMING expected margin by 15.1pts in recent games -- model bias may persist
-  - Washington Mystics (WNBA): Washington Mystics UNDERPERFORMING expected margin by 6.3pts in recent games -- model bias may persist
-  - Phoenix Mercury (WNBA): Phoenix Mercury OUTPERFORMING expected margin by 11.7pts in recent games -- model bias may persist
+  - Connecticut Sun (WNBA): Connecticut Sun UNDERPERFORMING expected margin by 17.0pts in recent games -- model bias may persist
   - Columbus Crew (MLS): Columbus Crew OUTPERFORMING expected margin by 12.9pts in recent games -- model bias may persist
   - Nashville SC (MLS): Nashville SC UNDERPERFORMING expected margin by 7.8pts in recent games -- model bias may persist
+  - FC Cincinnati (MLS): FC Cincinnati UNDERPERFORMING expected margin by 6.9pts in recent games -- model bias may persist
+  - New York City FC (MLS): New York City FC OUTPERFORMING expected margin by 12.3pts in recent games -- model bias may persist
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$-1.32**
-  - #1 [NRFI] $50 on TBR @ ATL YRFI (1st-inning OVER 0.5) (P=73%)
-  - #2 [NRFI] $50 on TOR @ OAK YRFI (1st-inning OVER 0.5) (P=68%)
-  - #3 [NRFI] $50 on NYM @ MIA YRFI (1st-inning OVER 0.5) (P=68%)
+- Expected EV: **$4.79**
+  - #1 [NRFI] $50 on ARI @ KCR YRFI (1st-inning OVER 0.5) (P=75%)
+  - #2 [NRFI] $50 on COL @ NYY YRFI (1st-inning OVER 0.5) (P=74%)
+  - #3 [NRFI] $50 on TEX @ SEA YRFI (1st-inning OVER 0.5) (P=68%)
   - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
-## 🎯 Convergence Picks (19 stacked games)
-- ELITE: **8** · HIGH: 4 · MED: 7
+## 🎯 Convergence Picks (18 stacked games)
+- ELITE: **6** · HIGH: 4 · MED: 8
   - [ELITE] New England Revolution @ New York City FC : 6 signals (PREGAME, HEAT_COLD, ANOMALY, ANOMALY)
   - [ELITE] Inter Miami CF @ Chicago Fire FC : 6 signals (PREGAME, HEAT_COLD, ANOMALY, ANOMALY)
   - [ELITE] Red Bull New York @ LAFC : 6 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
   - [ELITE] Columbus Crew @ D.C. United : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
-  - [ELITE] Washington Mystics @ Chicago Sky : 4 signals (PREGAME, ANOMALY, ATS, ATS)
+  - [ELITE] FC Cincinnati @ Philadelphia Union : 4 signals (PREGAME, ANOMALY, ATS, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (8)
-- **Reid Detmers** OVER 4.5 K (78%) fair -347
-- **Tarik Skubal** OVER 5.5 K (77%) fair -337
-- **Jacob Misiorowski** OVER 5.5 K (76%) fair -314
-- **Sean Burke** OVER 4.5 K (75%) fair -303
-- **Cam Schlittler** OVER 6.5 K (74%) fair -279
+## ⚾ Top MLB Pitcher K Plays (9)
+- **Lake Bachar** OVER 7.5 K (77%) fair -343
+- **Daniel Lynch IV** OVER 5.5 K (77%) fair -336
+- **Hunter Brown** OVER 4.5 K (75%) fair -295
+- **Braydon Fisher** OVER 6.5 K (74%) fair -286
+- **Kevin Gausman** OVER 4.5 K (71%) fair -251
 
 ## 🏀 NBA Player Heat (2 HOT / 1 COLD)
   - 🔥 **Scottie Barnes** (TOR): L5 24.4/7.6/9.6 vs season 18.6/5.8/8.8 [PTS +5.8]
@@ -103,11 +106,11 @@
   - ❄️ **Brandon Ingram** (TOR): L5 12.0 vs season 19.1 [PTS -7.1] -- FADE OVER props
 
 ## 🥊 UFC Fight Matchups (Dana White's Contender Series: Season 10, Week 5)
-  - [FAVORITE] **Martin Kozák** (6-0-0) vs Christian Echols -- fair -211
-  - [LEAN] **Apollo Gomes** (12-2-0) vs Kwon Won Il -- fair -134
-  - [LEAN] **Christian Natividad** (9-0-0) vs Colton Loud -- fair -133
-  - [COIN_FLIP] **Isaac Moreno** (8-0-0) vs Reginaldo Junior -- fair -118
-  - [COIN_FLIP] **Quentin Pasley** (3-0-0) vs Arlind Berisha -- fair -100
+  - [FAVORITE] **Martin Kozák** (7-0-0) vs Christian Echols -- fair -234
+  - [LEAN] **Christian Natividad** (10-0-0) vs Colton Loud -- fair -167
+  - [LEAN] **Apollo Gomes** (13-2-0) vs Kwon Won Il -- fair -148
+  - [LEAN] **Quentin Pasley** (4-0-0) vs Arlind Berisha -- fair -147
+  - [LEAN] **Isaac Moreno** (9-0-0) vs Reginaldo Junior -- fair -138
 
 ## 🔥 MLB Batter Heat (48 HOT / 71 COLD)
   - 🔥 **Tyrone Taylor** (CHC): L14 .500 / season .284 (+216pts)
@@ -122,7 +125,7 @@
   - ❄️ **Shohei Ohtani** (LAD): L14 .130 / season .277 (-147pts) -- FADE props
 
 ## 📈 Streak Regression Alerts (10)
-- [WNBA] Connecticut Sun on L3 L10 1-3 -- Connecticut Sun on L3 -- no historical sample
+- [WNBA] Connecticut Sun on L3 L10 0-3 -- Connecticut Sun on L3 -- no historical sample
 - [MLS] CF Montréal on L3 L10 1-3 -- CF Montréal on L3 -- no historical sample
 - [MLS] D.C. United on L3 L10 0-3 -- D.C. United on L3 -- no historical sample
 - [MLS] New York City FC on L4 L10 0-4 -- New York City FC on L4 -- no historical sample
