@@ -1,7 +1,53 @@
 {
-  "generated_at": "2026-09-10T06:15:29",
-  "matchup": "COL @ NYY",
-  "label": "NYY_ML",
-  "error": "No matching game in matchups.json",
-  "factors": []
+  "generated_at": "2026-09-10T13:26:06",
+  "matchup": "HOU @ PHI",
+  "label": "OVER_8.5",
+  "model_fair_total": null,
+  "market_total": 8.5,
+  "factors": [
+    {
+      "name": "Starting Pitcher (Javier vs Wheeler)",
+      "contribution": 0.223,
+      "unit": "runs",
+      "detail": "Javier ERA 5.98 vs Wheeler ERA 3.23 (avg 4.61 vs league 4.20)"
+    },
+    {
+      "name": "Lineup Strength (OPS)",
+      "contribution": -0.005,
+      "unit": "runs",
+      "detail": "avg team OPS 0.719 vs league 0.720"
+    },
+    {
+      "name": "Bullpen Freshness (IP last 2d)",
+      "contribution": -0.043,
+      "unit": "runs",
+      "detail": "avg pen IP last 2d: 3.1 (>4 = tired)"
+    },
+    {
+      "name": "Park Factor (Citizens Bank Park)",
+      "contribution": -0.69,
+      "unit": "runs",
+      "detail": "carry index -0.07 vs neutral 0.50"
+    },
+    {
+      "name": "Weather (87F)",
+      "contribution": 0.18,
+      "unit": "runs",
+      "detail": "87F (warmer = more carry), wind 11 mph"
+    },
+    {
+      "name": "Umpire (?)",
+      "contribution": -0.0,
+      "unit": "runs",
+      "detail": "K mult 1.00 (>1.0 = tight zone, fewer runs)"
+    },
+    {
+      "name": "Pitcher Recent Form (3 starts vs season)",
+      "contribution": 0.183,
+      "unit": "runs",
+      "detail": "mean recent-vs-season ERA delta"
+    }
+  ],
+  "total_contribution_runs": -0.152,
+  "note": "Each factor is the marginal expected-runs contribution to the game total. Positive = pushes total UP (favors OVER). Negative = favors UNDER. Sum across factors approximates the model's edge vs league baseline."
 }
