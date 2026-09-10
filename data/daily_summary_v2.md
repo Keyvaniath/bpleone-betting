@@ -1,12 +1,12 @@
-# EdgeStat Daily Summary — 2026-09-09
+# EdgeStat Daily Summary — 2026-09-10
 
-## 🏥 Model Health: 64.2/100 [OK]
+## 🏥 Model Health: 63.2/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.9/100
+  - 🟢 Calibration Freshness: 100.0/100
   - 🔴 Hit Rate Trend: 0/100
-  - 🔴 Brier Trend: 20.9/100
+  - 🔴 Brier Trend: 20.5/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 100.0/100
+  - 🟢 Data Health: 95.5/100
   - 🟢 Edge Count: 100/100
 
 ## 🌐 Slate Overview
@@ -20,12 +20,6 @@
 3. **TEX @ SEA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 4. **PIT @ CHW YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
 5. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
-
-## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** LAA @ BOS BOS_ML -- 66% / +25.1% (score 2.5)
-
-## 📡 Sharp Action (Line Movement)
-- [STRONG] **LAA @ BOS** ml_home: 63.5% → 68.55% (+5.0pp)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -68,9 +62,9 @@
 - Hot teams: **3** | Cold teams: **19** | Over-heavy: 0 | Under-heavy: 0
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (138)
+## ⚠️ Anomaly Detector (140)
 - RESIDUAL_DIVERGENCE: **19**
-- STEAM_MOVE: **116**
+- STEAM_MOVE: **118**
 - COMPOUND_BULLPEN: **2**
 - PEN_MISMATCH: **1**
   - Connecticut Sun (WNBA): Connecticut Sun UNDERPERFORMING expected margin by 17.0pts in recent games -- model bias may persist
@@ -89,7 +83,7 @@
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
 ## 🎯 Convergence Picks (23 stacked games)
-- ELITE: **11** · HIGH: 6 · MED: 6
+- ELITE: **12** · HIGH: 5 · MED: 6
   - [ELITE] New England Revolution @ New York City FC : 6 signals (PREGAME, HEAT_COLD, ANOMALY, ANOMALY)
   - [ELITE] Inter Miami CF @ Chicago Fire FC : 6 signals (PREGAME, HEAT_COLD, ANOMALY, ANOMALY)
   - [ELITE] Red Bull New York @ LAFC : 6 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
@@ -115,17 +109,17 @@
   - [LEAN] **Quentin Pasley** (4-0-0) vs Arlind Berisha -- fair -147
   - [LEAN] **Isaac Moreno** (9-0-0) vs Reginaldo Junior -- fair -138
 
-## 🔥 MLB Batter Heat (48 HOT / 71 COLD)
+## 🔥 MLB Batter Heat (52 HOT / 66 COLD)
   - 🔥 **Tyrone Taylor** (CHC): L14 .500 / season .284 (+216pts)
-  - 🔥 **Thomas Saggese** (STL): L14 .475 / season .275 (+200pts)
-  - 🔥 **Cal Raleigh** (SEA): L14 .360 / season .184 (+176pts)
-  - 🔥 **Patrick Bailey** (CLE): L14 .382 / season .207 (+175pts)
+  - 🔥 **Michael Conforto** (CHC): L14 .423 / season .241 (+182pts)
   - 🔥 **Elly De La Cruz** (CIN): L14 .455 / season .283 (+172pts)
-  - ❄️ **Jose Siri** (LAA): L14 .032 / season .219 (-187pts) -- FADE props
-  - ❄️ **Taylor Ward** (SEA): L14 .050 / season .224 (-174pts) -- FADE props
-  - ❄️ **Colt Keith** (DET): L14 .094 / season .257 (-163pts) -- FADE props
-  - ❄️ **CJ Abrams** (WSH): L14 .109 / season .261 (-152pts) -- FADE props
+  - 🔥 **Thomas Saggese** (STL): L14 .439 / season .268 (+171pts)
+  - 🔥 **Cal Raleigh** (SEA): L14 .347 / season .183 (+164pts)
+  - ❄️ **CJ Abrams** (WSH): L14 .091 / season .259 (-168pts) -- FADE props
+  - ❄️ **Taylor Ward** (SEA): L14 .075 / season .225 (-150pts) -- FADE props
   - ❄️ **Shohei Ohtani** (LAD): L14 .130 / season .277 (-147pts) -- FADE props
+  - ❄️ **Colt Keith** (DET): L14 .125 / season .257 (-132pts) -- FADE props
+  - ❄️ **Jose Siri** (LAA): L14 .094 / season .226 (-132pts) -- FADE props
 
 ## 📈 Streak Regression Alerts (16)
 - [WNBA] Connecticut Sun on L3 L10 0-3 -- Connecticut Sun on L3 -- no historical sample
