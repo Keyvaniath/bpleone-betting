@@ -2,16 +2,16 @@
 
 **Model Confidence: 27.4/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
 
-_Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
+_Pipeline health: **DEGRADED** (14/15 artifacts ok; 1 empty, 0 stale)._ 
 
-_Generated at 2026-09-10T17:47:36 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-09-10T23:55:05 UTC. Game lines source: **placeholder -110 (no real book today)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
-**COL @ NYY - OVER_8.5**
+**CIN @ COL - CIN_ML**
 - Market: -110
-- Model probability: 78.6%
-- Raw edge: +50.03%
+- Model probability: 73.7%
+- Raw edge: +40.74%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
@@ -20,9 +20,9 @@ _Generated at 2026-09-10T17:47:36 UTC. Game lines source: **Bovada (fallback -- 
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 4:10p ET | TEX @ SEA | T-Mobile Park | indoor | TEX_ML +28.44% |
-| 7:05p ET | COL @ NYY | Yankee Stadium | 78F 5mph | OVER_8.5 +50.03% |
-| 7:40p ET | PIT @ CHW | Rate Field | 67F 6mph | OVER_7.5 +34.21% |
+| 7:05p ET | SDP @ LAD | Petco Park | 62F -6mph | LAD_ML +25.43% |
+| 6:45p ET | BOS @ NYY | Yankee Stadium | 71F 12mph | OVER_9.0 +30.97% |
+| 9:40p ET | CIN @ COL | Coors Field | 74F 4mph | CIN_ML +40.74% |
 
 ## Parlays - top 5
 
@@ -55,9 +55,10 @@ Cumulative graded plays: 10358. Wins: 3729. Hit rate: 36.0%.
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| COL @ NYY | 37.9% | +164 | 4.91 | -286 | +286 |
-| PIT @ CHW | 61.5% | -160 | 2.34 | +127 | -127 |
-| TEX @ SEA | 32.6% | +207 | 5.61 | +320 | -320 |
+| BOS @ NYY | -- | -- | -- | +115 | -115 |
+| CIN @ COL | -- | -- | -- | +465 | -465 |
+| PIT @ CHW | 61.5% | -160 | 2.43 | -- | -- |
+| SDP @ LAD | -- | -- | -- | -166 | +166 |
 
 ## Team Form (last 10)
 
@@ -78,7 +79,7 @@ Cumulative graded plays: 10358. Wins: 3729. Hit rate: 36.0%.
 
 ## Loop Activity (since last refresh)
 
-- Confidence delta: **+0.2**
+- Confidence delta: **+0.0**
 
 ## Model Recommendations (operator review)
 

@@ -1,5 +1,5 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-09-10T17:47:15 UTC_
+_Generated 2026-09-10T23:54:35 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
@@ -8,13 +8,6 @@ _Generated 2026-09-10T17:47:15 UTC_
 - **Total LOCKs:** 0
 - **Total STRONG:** 2
 - **Total FADES:** 46
-
-## Lock of the Night
-- **Subject:** Logan Gilbert
-- **Source:** ELITE_BOARD
-- **Sport:** MLB
-- **Score:** 15.0
-- **Details:** TEX @ SEA
 
 ## Top 5 Curated Picks
 1. **WNBA / A'Ja Wilson** (WNBA_PLAYER, score=63.83)
@@ -25,19 +18,19 @@ _Generated 2026-09-10T17:47:15 UTC_
    - Rationale: Cross-sport top pick (WNBA_PLAYER)
 
 ## Slate ROI Projection
-- **Picks:** 2
-- **Avg edge:** -0.91%
+- **Picks:** 0
+- **Avg edge:** 0%
 - **Expected ROI (1/4 Kelly):** 0.0%
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
+- **MLB** / Ryan Feltner (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Logan Gilbert (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
 - **NBA** / MIA (TEAM_FADE)
   - Fade angle: team total UNDER
 - **NBA** / TOR (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NHL** / adin hill (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / marc-andre fleury (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / thatcher demko (GOALIE_FADE)
+- **NHL** / kevin lankinen (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO

@@ -1,17 +1,17 @@
 # EdgeStat Daily Summary — 2026-09-10
 
-## 🏥 Model Health: 65.4/100 [OK]
+## 🏥 Model Health: 64.0/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.9/100
-  - 🔴 Hit Rate Trend: 6.5/100
-  - 🔴 Brier Trend: 21.9/100
+  - 🟢 Calibration Freshness: 100.0/100
+  - 🔴 Hit Rate Trend: 0/100
+  - 🔴 Brier Trend: 19.8/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 100.0/100
-  - 🟢 Edge Count: 97.1/100
+  - 🟢 Edge Count: 100/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.564)
-- **Total games on board:** 123
+- **Total games on board:** 131
 - **Strong home favorites:** 15 | **Strong road dogs:** 8
 
 ## 🎯 Top 5 Best Bets
@@ -20,6 +20,9 @@
 3. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
 4. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
 5. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
+
+## 📡 Sharp Action (Line Movement)
+- [ELITE] **TEX @ SEA** ml_away: 45.66% → 90.0% (+44.3pp)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -60,9 +63,10 @@
 - Hot teams: **3** | Cold teams: **16** | Over-heavy: 0 | Under-heavy: 0
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (133)
+## ⚠️ Anomaly Detector (139)
 - RESIDUAL_DIVERGENCE: **10**
-- STEAM_MOVE: **123**
+- STEAM_MOVE: **128**
+- COMPOUND_BULLPEN: **1**
   - FC Cincinnati (MLS): FC Cincinnati OUTPERFORMING expected margin by 6.6pts in recent games -- model bias may persist
   - Charlotte FC (MLS): Charlotte FC UNDERPERFORMING expected margin by 8.8pts in recent games -- model bias may persist
   - Portland Timbers (MLS): Portland Timbers OUTPERFORMING expected margin by 6.6pts in recent games -- model bias may persist
@@ -86,9 +90,8 @@
   - [ELITE] Minnesota United FC @ St. Louis CITY SC : 4 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
   - [ELITE] New York City FC @ Real Salt Lake : 4 signals (PREGAME, HEAT_COLD, HEAT_COLD, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (3)
+## ⚾ Top MLB Pitcher K Plays (2)
 - **Jacob deGrom** OVER 4.5 K (77%) fair -333
-- **Zack Wheeler** OVER 5.5 K (67%) fair -203
 - **Jared Jones** OVER 4.5 K (62%) fair -166
 
 ## 🏀 NBA Player Heat (2 HOT / 1 COLD)
@@ -103,15 +106,15 @@
   - [LEAN] **Joseph Morales** (15-2-0) vs Brandon Moreno -- fair -137
   - [COIN_FLIP] **Sean King** (6-0-0) vs Jessie Rosas -- fair -129
 
-## 🔥 MLB Batter Heat (49 HOT / 58 COLD)
+## 🔥 MLB Batter Heat (51 HOT / 57 COLD)
   - 🔥 **Tyrone Taylor** (CHC): L14 .500 / season .284 (+216pts)
   - 🔥 **Elly De La Cruz** (CIN): L14 .463 / season .283 (+180pts)
   - 🔥 **Michael Conforto** (CHC): L14 .414 / season .242 (+172pts)
   - 🔥 **Teoscar Hernández** (LAD): L14 .440 / season .269 (+171pts)
   - 🔥 **Thomas Saggese** (STL): L14 .439 / season .268 (+171pts)
   - ❄️ **CJ Abrams** (WSH): L14 .091 / season .259 (-168pts) -- FADE props
-  - ❄️ **Taylor Ward** (SEA): L14 .075 / season .225 (-150pts) -- FADE props
   - ❄️ **Shohei Ohtani** (LAD): L14 .130 / season .277 (-147pts) -- FADE props
+  - ❄️ **Taylor Ward** (SEA): L14 .079 / season .225 (-146pts) -- FADE props
   - ❄️ **Jose Siri** (LAA): L14 .091 / season .225 (-134pts) -- FADE props
   - ❄️ **Colt Keith** (DET): L14 .125 / season .257 (-132pts) -- FADE props
 
