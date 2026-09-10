@@ -1,6 +1,8 @@
 **EdgeStat -- Tonight's Slate**
 _NO_ACTION_NIGHT_ | L:0 S:2 F:46
 
+:lock: **LOCK:** Logan Gilbert (MLB)
+
 :dart: **Top Picks:**
 1. [WNBA] A'Ja Wilson -- A'Ja Wilson (PLAYER_STRONG)
 2. [WNBA] Angel Reese -- Angel Reese (PLAYER_STRONG)

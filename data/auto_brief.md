@@ -1,52 +1,55 @@
 # Tonight's Slate Brief — 2026-09-10
 
-## Slate Quality: 64/100 (MEDIUM)
-_0% lineups confirmed · 2 rookie SPs_
+## Slate Quality: 70/100 (MEDIUM)
+_16% lineups confirmed · 2 rookie SPs_
 **Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
-- **5 games** scheduled
-- **39 best bets** scored: 16 DK · 0 PP · 1 NRFI · 0 SGP
-- **Auto-portfolio:** 1 picks, $50.0 stake (5.0%), expected +$10.91
-- **MC simulation:** EV +$12.04, 63% P(profit), p05 $-67.63 / p95 $61.48
+- **3 games** scheduled
+- **43 best bets** scored: 16 DK · 0 PP · 5 NRFI · 0 SGP
+- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$30.21
+- **MC simulation:** EV +$48.18, 65% P(profit), p05 $-112.66 / p95 $189.17
 
 ## Top 5 Best Bets
-1. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
+1. **HOU @ PHI YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +23.0%)
+   - P(YRFI) 69.0% vs baseline 46.0%
+2. **TEX @ SEA YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +21.4%)
+   - P(YRFI) 67.4% vs baseline 46.0%
+3. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
    - Player prop quality score 1.1935
    - Elite player
-2. **LOL ShowMaker OVER 3.5 Kills**  (78/100 ****, edge —)
+4. **LOL ShowMaker OVER 3.5 Kills**  (78/100 ****, edge —)
    - Player prop quality score 1.1892
    - Elite player
-3. **LOL Peyz OVER 4.5 Kills**  (78/100 ****, edge —)
+5. **LOL Peyz OVER 4.5 Kills**  (78/100 ****, edge —)
    - Player prop quality score 1.184
    - Elite player
-4. **CIN @ LAD YRFI (1st-inning OVER 0.5)**  (77/100 ****, edge +17.8%)
-   - P(YRFI) 63.8% vs baseline 46.0%
-5. **LOL Hanwha Life Esports vs T1 ML @ -150**  (76/100 *****, edge —)
-   - Model 60.0% (fair -150)
-   - LCK
 
-## ⚠️ Trap Warnings — 9 flagged
-- **Yordan Alvarez OVER 1.5 batter total bases** (low):
+## ⚠️ Trap Warnings — 17 flagged
+- **Yordan Alvarez OVER 1.5 batter total bases** (high):
    - Edge +24.4% looks big but only 0 settled props on this player — model unproven
-- **Matt Olson OVER 1.5 batter total bases** (low):
+   - Batter cooling: cooling: 0.696 ops recent vs 1.019 season (-0.323)
+- **Matt Olson OVER 1.5 batter total bases** (high):
    - Edge +22.0% looks big but only 0 settled props on this player — model unproven
-- **Jonathan Aranda OVER 1.5 batter total bases** (low):
-   - Edge +19.8% looks big but only 0 settled props on this player — model unproven
-- **Michael Harris II OVER 1.5 batter total bases** (low):
-   - Edge +18.7% looks big but only 0 settled props on this player — model unproven
-- **CIN @ LAD YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +17.8% looks big but only 0 settled props on this player — model unproven
+   - Batter cooling: cooling: 0.342 ops recent vs 0.827 season (-0.485)
+- **Mauricio Dubon OVER 1.5 batter total bases** (high):
+   - Edge +9.0% looks big but only 0 settled props on this player — model unproven
+   - Batter cooling: cooling: 0.527 ops recent vs 0.691 season (-0.164)
+- **HOU @ PHI YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +23.0% looks big but only 0 settled props on this player — model unproven
+- **TEX @ SEA YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +21.4% looks big but only 0 settled props on this player — model unproven
 
 ## Hot streaks
-**Batters heating up:** Elly De La Cruz (heat +4.89), Riley Greene (heat +2.94), Rafael Devers (heat +2.26)
+**Batters heating up:** Kyle Schwarber (heat +1.89), Cam Smith (heat +1.48), Jonathan Aranda (heat +1.36)
+**Pitchers on a run:** Logan Gilbert (heat +4.79), Zack Wheeler (heat +2.63)
 
 ## Bullpens GASSED tonight
-Athletics, San Diego Padres, San Francisco Giants, Minnesota Twins, Atlanta Braves, Chicago White Sox, Miami Marlins, Milwaukee Brewers
+Athletics, Pittsburgh Pirates, San Diego Padres, Seattle Mariners, San Francisco Giants, Tampa Bay Rays, Texas Rangers, Toronto Blue Jays
 _Lean late-inning OVER on these games; fade their save situations._
 
 ## NRFI/YRFI strong leans
-- **YRFI** (1st-inning OVER): CIN @ LAD
+- **YRFI** (1st-inning OVER): HOU @ PHI, TEX @ SEA, COL @ NYY
 
 ## Golf -- Biltmore Championship Asheville
 - **Leader:** ? (?) at #?

@@ -1,30 +1,28 @@
 # EdgeStat Daily Brief - 2026-09-10
 
-**Model Confidence: 27.2/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
+**Model Confidence: 27.4/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
 
 _Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
 
-_Generated at 2026-09-10T13:27:19 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-09-10T17:47:36 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
-**HOU @ PHI - OVER_8.5**
+**COL @ NYY - OVER_8.5**
 - Market: -110
-- Model probability: 79.9%
-- Raw edge: +52.55%
+- Model probability: 78.6%
+- Raw edge: +50.03%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
 
-## Full Slate (5 games)
+## Full Slate (3 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 12:15p ET | TBR @ ATL | Truist Park | 93F 5mph | OVER_8.5 +31.13% |
-| 1:05p ET | HOU @ PHI | Citizens Bank Park | 87F 11mph | OVER_8.5 +52.55% |
-| 4:10p ET | TEX @ SEA | T-Mobile Park | indoor | TEX_ML +30.97% |
-| 7:05p ET | COL @ NYY | Yankee Stadium | 80F 5mph | OVER_9.0 +41.43% |
-| 7:40p ET | PIT @ CHW | Rate Field | 67F 8mph | OVER_7.5 +37.14% |
+| 4:10p ET | TEX @ SEA | T-Mobile Park | indoor | TEX_ML +28.44% |
+| 7:05p ET | COL @ NYY | Yankee Stadium | 78F 5mph | OVER_8.5 +50.03% |
+| 7:40p ET | PIT @ CHW | Rate Field | 67F 6mph | OVER_7.5 +34.21% |
 
 ## Parlays - top 5
 
@@ -48,8 +46,8 @@ _Generated at 2026-09-10T13:27:19 UTC. Game lines source: **Bovada (fallback -- 
 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
-| batter total bases | 87 | 47.1% | 47.3% | 1.004 | 0.997 |
 | batter hits | 184 | 54.9% | 55.9% | 1.019 | 0.982 |
+| batter total bases | 87 | 47.1% | 47.3% | 1.004 | 0.997 |
 
 Cumulative graded plays: 10358. Wins: 3729. Hit rate: 36.0%.
 
@@ -57,10 +55,8 @@ Cumulative graded plays: 10358. Wins: 3729. Hit rate: 36.0%.
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| COL @ NYY | 37.9% | +164 | 4.85 | -288 | +288 |
-| HOU @ PHI | 31.0% | +223 | 5.81 | -103 | +103 |
-| PIT @ CHW | 61.5% | -160 | 2.32 | +127 | -127 |
-| TBR @ ATL | 45.7% | +119 | 4.03 | +201 | -201 |
+| COL @ NYY | 37.9% | +164 | 4.91 | -286 | +286 |
+| PIT @ CHW | 61.5% | -160 | 2.34 | +127 | -127 |
 | TEX @ SEA | 32.6% | +207 | 5.61 | +320 | -320 |
 
 ## Team Form (last 10)
@@ -82,7 +78,7 @@ Cumulative graded plays: 10358. Wins: 3729. Hit rate: 36.0%.
 
 ## Loop Activity (since last refresh)
 
-- Confidence delta: **-0.1**
+- Confidence delta: **+0.2**
 
 ## Model Recommendations (operator review)
 
