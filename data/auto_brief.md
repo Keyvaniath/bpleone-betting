@@ -1,25 +1,24 @@
 # Tonight's Slate Brief — 2026-09-11
 
-## Slate Quality: 57/100 (MEDIUM)
-_6% lineups confirmed · 9 rookie SPs_
+## Slate Quality: 66/100 (MEDIUM)
+_39% lineups confirmed · 8 rookie SPs_
 **Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
-- **15 games** scheduled
-- **40 best bets** scored: 7 DK · 0 PP · 12 NRFI · 1 SGP
+- **14 games** scheduled
+- **42 best bets** scored: 7 DK · 0 PP · 12 NRFI · 1 SGP
 - **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$49.26
-- **MC simulation:** EV +$121.26, 83% P(profit), p05 $-90.09 / p95 $301.84
+- **MC simulation:** EV +$131.62, 84% P(profit), p05 $-75.72 / p95 $308.44
 
 ## Top 5 Best Bets
-1. **PIT @ CHC 4-leg SGP @ +302**  (100/100 *****, edge +170.6%)
-   - Joint prob 0.249 (correlation boost +0.134)
-   - Leg: Jared Triolo OVER 0.5 batter hits
-2. **CHW @ STL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +37.5%)
+1. **CHW @ STL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +37.5%)
    - P(YRFI) 83.5% vs baseline 46.0%
-3. **CIN @ MIL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +26.8%)
+2. **CIN @ MIL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +26.8%)
    - P(YRFI) 72.8% vs baseline 46.0%
-4. **SEA @ OAK YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +24.9%)
+3. **SEA @ OAK YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +24.9%)
    - P(YRFI) 70.9% vs baseline 46.0%
+4. **TEX @ ARI YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +24.2%)
+   - P(YRFI) 70.2% vs baseline 46.0%
 5. **KCR @ BOS YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +23.6%)
    - P(YRFI) 69.6% vs baseline 46.0%
 
@@ -27,31 +26,33 @@ _6% lineups confirmed · 9 rookie SPs_
 - **Dillon Dingler OVER 1.5 batter total bases** (high):
    - Edge +8.0% looks big but only 0 settled props on this player — model unproven
    - Batter cooling: cooling: 0.346 ops recent vs 0.763 season (-0.417)
-- **PIT @ CHC 4-leg SGP @ +302** (low):
-   - Edge +170.6% looks big but only 0 settled props on this player — model unproven
 - **CHW @ STL YRFI (1st-inning OVER 0.5)** (low):
    - Edge +37.5% looks big but only 0 settled props on this player — model unproven
 - **CIN @ MIL YRFI (1st-inning OVER 0.5)** (low):
    - Edge +26.8% looks big but only 0 settled props on this player — model unproven
+- **COL @ DET 2-leg SGP @ +121** (low):
+   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
 - **SEA @ OAK YRFI (1st-inning OVER 0.5)** (low):
    - Edge +24.9% looks big but only 0 settled props on this player — model unproven
 
+## Weather leans
+- **UNDER lean** (wind in + cold): SDP @ SFG
+
 ## Hot streaks
-**Batters heating up:** Kevin McGonigle (heat +1.63), Kyle Karros (heat +1.27), Jared Triolo (heat +1.12)
+**Batters heating up:** Kevin McGonigle (heat +1.63), Kyle Karros (heat +1.27), Jared Triolo (heat +0.73)
 **Pitchers on a run:** Drew Rasmussen (heat +0.64), Chris Sale (heat -0.99)
 
 ## Top correlation-aware SGPs
-- **PIT @ CHC** 4-leg @ +302 fair (joint 0.25, EV +170.59%)
-   - Jared Triolo OVER 0.5 batter hits
-   - Alex Bregman OVER 0.5 batter hits
-   - Seiya Suzuki OVER 0.5 batter hits
+- **COL @ DET** 2-leg @ +121 fair (joint 0.45, EV +25.0%)
+   - John Peck UNDER 0.5 batter hits
+   - Max Clark OVER 0.5 batter hits
 
 ## Bullpens GASSED tonight
 Pittsburgh Pirates, San Diego Padres, Texas Rangers, Toronto Blue Jays, Atlanta Braves, Chicago White Sox, Miami Marlins, New York Yankees
 _Lean late-inning OVER on these games; fade their save situations._
 
 ## NRFI/YRFI strong leans
-- **YRFI** (1st-inning OVER): CHW @ STL, CIN @ MIL, SEA @ OAK, KCR @ BOS, BAL @ TOR
+- **YRFI** (1st-inning OVER): CHW @ STL, CIN @ MIL, SEA @ OAK, TEX @ ARI, KCR @ BOS
 
 ## Golf -- Biltmore Championship Asheville
 - **Leader:** ? (?) at #?

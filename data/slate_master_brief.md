@@ -1,5 +1,5 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-09-11T17:44:28 UTC_
+_Generated 2026-09-11T19:28:01 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
@@ -37,13 +37,13 @@ _Generated 2026-09-11T17:44:28 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **NBA** / TOR (TEAM_FADE)
-  - Fade angle: team total UNDER
 - **NBA** / MIA (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NHL** / joseph woll (GOALIE_FADE)
+- **NBA** / TOR (TEAM_FADE)
+  - Fade angle: team total UNDER
+- **NHL** / adin hill (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / stuart skinner (GOALIE_FADE)
+- **NHL** / thatcher demko (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / filip gustavsson (GOALIE_FADE)
+- **NHL** / marc-andre fleury (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
