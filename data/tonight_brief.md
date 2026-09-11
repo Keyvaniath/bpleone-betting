@@ -2,6 +2,10 @@
 
 _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 
+## 💪 STRONG (2 picks)
+- [MLB] PHI @ ATL ATL_ML · 67% / +27.0%
+- [MLB] LAA @ WSN WSN_ML · 66% / +25.9%
+
 ## 🔒 5 Daily Locks
 - **Choi Jeong** one_plus_tb (KBO) -- 73% / +39.8%
 - **Jose Pirela** one_plus_tb (KBO) -- 73% / +39.2%
@@ -9,13 +13,10 @@ _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 - **Mel Rojas Jr.** one_plus_tb (KBO) -- 73% / +38.5%
 - **Austin Dean** one_plus_tb (KBO) -- 73% / +38.5%
 
-## 📡 Sharp Money Following Model
-- **CIN @ MIL** ml_home: line moved 60.47% → 66.89% (+6.4pp)
-
 ## 🎰 Tonight's Best Parlay
 - **Choi Jeong** one_plus_tb + **Jose Pirela** one_plus_tb
 - Joint 53% · fair +264 · edge +94.6%
 
 ---
-_Generated 2026-09-11T19:27:54_
+_Generated 2026-09-11T23:56:07_
 _Full breakdown: /tonight · Full history: /locks-of-day_

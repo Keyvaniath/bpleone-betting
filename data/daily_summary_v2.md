@@ -2,7 +2,7 @@
 
 ## 🏥 Model Health: 64.7/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.6/100
+  - 🟢 Calibration Freshness: 100.0/100
   - 🔴 Hit Rate Trend: 0/100
   - 🔴 Brier Trend: 23.6/100
   - 🟢 Pipeline Audit: 100.0/100
@@ -21,8 +21,9 @@
 4. **TEX @ ARI YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 5. **KCR @ BOS YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 
-## 📡 Sharp Action (Line Movement)
-- [STRONG] **CIN @ MIL** ml_home: 60.47% → 66.89% (+6.4pp)
+## 🐋 Whale Picks (Max Confluence)
+- [STRONG] **[MLB]** PHI @ ATL ATL_ML -- 67% / +27.0% (score 2.5)
+- [STRONG] **[MLB]** LAA @ WSN WSN_ML -- 66% / +25.9% (score 2.5)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -63,9 +64,9 @@
 - Hot teams: **3** | Cold teams: **16** | Over-heavy: 0 | Under-heavy: 0
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (144)
+## ⚠️ Anomaly Detector (149)
 - RESIDUAL_DIVERGENCE: **10**
-- STEAM_MOVE: **132**
+- STEAM_MOVE: **137**
 - COMPOUND_BULLPEN: **1**
 - PEN_MISMATCH: **1**
   - FC Cincinnati (MLS): FC Cincinnati OUTPERFORMING expected margin by 6.6pts in recent games -- model bias may persist
@@ -91,7 +92,7 @@
   - [ELITE] Minnesota United FC @ St. Louis CITY SC : 4 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
   - [ELITE] New York City FC @ Real Salt Lake : 4 signals (PREGAME, HEAT_COLD, HEAT_COLD, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (11)
+## ⚾ Top MLB Pitcher K Plays (10)
 - **Miguel Ullola** OVER 7.5 K (78%) fair -355
 - **MacKenzie Gore** OVER 4.5 K (76%) fair -311
 - **Matthew Liberatore** OVER 4.5 K (75%) fair -303
@@ -110,17 +111,17 @@
   - [LEAN] **Joseph Morales** (15-2-0) vs Brandon Moreno -- fair -137
   - [COIN_FLIP] **Sean King** (6-0-0) vs Jessie Rosas -- fair -129
 
-## 🔥 MLB Batter Heat (52 HOT / 61 COLD)
-  - 🔥 **Tyrone Taylor** (CHC): L14 .500 / season .284 (+216pts)
-  - 🔥 **Michael Conforto** (CHC): L14 .429 / season .246 (+183pts)
-  - 🔥 **Elly De La Cruz** (CIN): L14 .463 / season .283 (+180pts)
-  - 🔥 **Teoscar Hernández** (LAD): L14 .440 / season .269 (+171pts)
+## 🔥 MLB Batter Heat (49 HOT / 62 COLD)
+  - 🔥 **Tyrone Taylor** (CHC): L14 .486 / season .282 (+204pts)
+  - 🔥 **Elly De La Cruz** (CIN): L14 .471 / season .283 (+188pts)
   - 🔥 **Thomas Saggese** (STL): L14 .439 / season .268 (+171pts)
-  - ❄️ **CJ Abrams** (WSH): L14 .091 / season .259 (-168pts) -- FADE props
-  - ❄️ **Shohei Ohtani** (LAD): L14 .130 / season .277 (-147pts) -- FADE props
+  - 🔥 **Michael Conforto** (CHC): L14 .400 / season .243 (+157pts)
+  - 🔥 **Myles Straw** (TOR): L14 .393 / season .236 (+157pts)
+  - ❄️ **CJ Abrams** (WSH): L14 .113 / season .260 (-147pts) -- FADE props
   - ❄️ **Taylor Ward** (SEA): L14 .079 / season .225 (-146pts) -- FADE props
   - ❄️ **Jose Siri** (LAA): L14 .091 / season .225 (-134pts) -- FADE props
-  - ❄️ **Colt Keith** (DET): L14 .125 / season .257 (-132pts) -- FADE props
+  - ❄️ **Colt Keith** (DET): L14 .125 / season .256 (-131pts) -- FADE props
+  - ❄️ **Corbin Carroll** (AZ): L14 .118 / season .240 (-122pts) -- FADE props
 
 ## 📈 Streak Regression Alerts (15)
 - [MLS] Red Bull New York on L4 L10 0-4 -- Red Bull New York on L4 -- no historical sample

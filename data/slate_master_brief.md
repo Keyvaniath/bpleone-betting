@@ -1,13 +1,13 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-09-11T19:28:01 UTC_
+_Generated 2026-09-11T23:56:13 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -26
+- **Score:** -39
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 6
-- **Total FADES:** 50
+- **Total STRONG:** 4
+- **Total FADES:** 55
 
 ## Lock of the Night
 - **Subject:** Taj Bradley
@@ -17,15 +17,15 @@ _Generated 2026-09-11T19:28:01 UTC_
 - **Details:** CLE @ MIN
 
 ## Top 5 Curated Picks
-1. **WNBA / A'Ja Wilson** (WNBA_PLAYER, score=63.67)
+1. **MLB / Ronald Acuña Jr.** (MLB_BATTER, score=86.19)
+   - Play: Ronald Acuña Jr. (BATTER_STRONG)
+   - Rationale: Cross-sport top pick (MLB_BATTER)
+2. **MLB / Thomas Saggese** (MLB_BATTER, score=82.06)
+   - Play: Thomas Saggese (BATTER_STRONG)
+   - Rationale: Cross-sport top pick (MLB_BATTER)
+3. **WNBA / A'Ja Wilson** (WNBA_PLAYER, score=63.67)
    - Play: A'Ja Wilson (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (WNBA_PLAYER)
-2. **MLB / Carlos Rodón** (MLB_PITCHER, score=61.0)
-   - Play: Carlos Rodón (PITCHER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_PITCHER)
-3. **MLB / Drew Rasmussen** (MLB_PITCHER, score=60.67)
-   - Play: Drew Rasmussen (PITCHER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_PITCHER)
 4. **WNBA / Angel Reese** (WNBA_PLAYER, score=59.58)
    - Play: Angel Reese (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (WNBA_PLAYER)
@@ -37,13 +37,13 @@ _Generated 2026-09-11T19:28:01 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **NBA** / MIA (TEAM_FADE)
-  - Fade angle: team total UNDER
+- **MLB** / Ryan Gusto (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
 - **NBA** / TOR (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NHL** / adin hill (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / thatcher demko (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / marc-andre fleury (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
+- **NBA** / MIA (TEAM_FADE)
+  - Fade angle: team total UNDER
+- **MLB** / Framber Valdez (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Sonny Gray (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
