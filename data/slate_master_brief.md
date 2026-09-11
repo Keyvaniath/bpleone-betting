@@ -1,19 +1,22 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-09-10T23:54:35 UTC_
+_Generated 2026-09-11T13:20:55 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -38
+- **Score:** -32
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 2
-- **Total FADES:** 46
+- **Total STRONG:** 3
+- **Total FADES:** 44
 
 ## Top 5 Curated Picks
-1. **WNBA / A'Ja Wilson** (WNBA_PLAYER, score=63.83)
+1. **MLB / AWAY** (MLB_TEAM, score=72.42)
+   - Play: AWAY (TEAM_STRONG)
+   - Rationale: Cross-sport top pick (MLB_TEAM)
+2. **WNBA / A'Ja Wilson** (WNBA_PLAYER, score=63.67)
    - Play: A'Ja Wilson (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (WNBA_PLAYER)
-2. **WNBA / Angel Reese** (WNBA_PLAYER, score=59.33)
+3. **WNBA / Angel Reese** (WNBA_PLAYER, score=59.58)
    - Play: Angel Reese (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (WNBA_PLAYER)
 
@@ -24,13 +27,13 @@ _Generated 2026-09-10T23:54:35 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **MLB** / Ryan Feltner (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **MLB** / Logan Gilbert (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **NBA** / MIA (TEAM_FADE)
-  - Fade angle: team total UNDER
 - **NBA** / TOR (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NHL** / kevin lankinen (GOALIE_FADE)
+- **NBA** / MIA (TEAM_FADE)
+  - Fade angle: team total UNDER
+- **MLB** / Jared Jones (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **NHL** / joseph woll (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / calvin pickard (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO

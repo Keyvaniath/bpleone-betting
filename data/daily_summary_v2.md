@@ -1,28 +1,25 @@
-# EdgeStat Daily Summary — 2026-09-10
+# EdgeStat Daily Summary — 2026-09-11
 
-## 🏥 Model Health: 64.0/100 [OK]
+## 🏥 Model Health: 62.1/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 100.0/100
+  - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 0/100
   - 🔴 Brier Trend: 19.8/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 100.0/100
+  - 🟢 Data Health: 90.9/100
   - 🟢 Edge Count: 100/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.564)
-- **Total games on board:** 131
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.565)
+- **Total games on board:** 146
 - **Strong home favorites:** 15 | **Strong road dogs:** 8
 
 ## 🎯 Top 5 Best Bets
-1. **HOU @ PHI YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-2. **TEX @ SEA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-3. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
-4. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
-5. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
-
-## 📡 Sharp Action (Line Movement)
-- [ELITE] **TEX @ SEA** ml_away: 45.66% → 90.0% (+44.3pp)
+1. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
+2. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
+3. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
+4. **KBO KIA Tigers vs SSG Landers ML @ -165** (76/100 ★★★★★)
+5. **LOL Hanwha Life Esports vs T1 ML @ -150** (76/100 ★★★★★)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -54,7 +51,7 @@
 - [NCAAF] **Villanova Wildcats** AWAY (None L10) · model 74.9% fair -299
 - [WNBA] **Dallas Wings** HOME (1-0 L10) · model 74.8% fair -297
 - [EPL] **Arsenal** AWAY (3-0 L10) · model 74.4% fair -290
-- [WNBA] **Washington Mystics** AWAY (1-1 L10) · model 67.8% fair -210
+- [WNBA] **Washington Mystics** AWAY (0-1 L10) · model 67.8% fair -210
 - [MLS] **Real Salt Lake** HOME (0-4 L10) · model 66.6% fair -200
 - [MLS] **St. Louis CITY SC** HOME (2-2 L10) · model 64.5% fair -181
 - [EPL] **Brentford** AWAY (1-2 L10) · model 63.2% fair -172
@@ -63,9 +60,9 @@
 - Hot teams: **3** | Cold teams: **16** | Over-heavy: 0 | Under-heavy: 0
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (139)
+## ⚠️ Anomaly Detector (141)
 - RESIDUAL_DIVERGENCE: **10**
-- STEAM_MOVE: **128**
+- STEAM_MOVE: **130**
 - COMPOUND_BULLPEN: **1**
   - FC Cincinnati (MLS): FC Cincinnati OUTPERFORMING expected margin by 6.6pts in recent games -- model bias may persist
   - Charlotte FC (MLS): Charlotte FC UNDERPERFORMING expected margin by 8.8pts in recent games -- model bias may persist
@@ -73,14 +70,14 @@
   - St. Louis CITY SC (MLS): St. Louis CITY SC UNDERPERFORMING expected margin by 6.5pts in recent games -- model bias may persist
   - LA Galaxy (MLS): LA Galaxy OUTPERFORMING expected margin by 6.5pts in recent games -- model bias may persist
 
-## 💰 Today's Portfolio (9 picks)
-- Total stake: **$330.0** (33.0% of $1000 bankroll)
-- Expected EV: **$-7.65**
-  - #1 [NRFI] $50 on HOU @ PHI YRFI (1st-inning OVER 0.5) (P=69%)
-  - #2 [NRFI] $50 on TEX @ SEA YRFI (1st-inning OVER 0.5) (P=67%)
-  - #3 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
-  - #4 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
-  - #5 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
+## 💰 Today's Portfolio (13 picks)
+- Total stake: **$335.0** (33.5% of $1000 bankroll)
+- Expected EV: **$-7.72**
+  - #1 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
+  - #2 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
+  - #3 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
+  - #4 [KBO] $35 on KBO KIA Tigers vs SSG Landers ML @ -165 (P=62%)
+  - #5 [NBA] $35 on NBA Toronto Raptors ML (0-0) vs Miami Heat (P=55%)
 
 ## 🎯 Convergence Picks (20 stacked games)
 - ELITE: **9** · HIGH: 7 · MED: 4
@@ -90,9 +87,8 @@
   - [ELITE] Minnesota United FC @ St. Louis CITY SC : 4 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
   - [ELITE] New York City FC @ Real Salt Lake : 4 signals (PREGAME, HEAT_COLD, HEAT_COLD, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (2)
-- **Jacob deGrom** OVER 4.5 K (77%) fair -333
-- **Jared Jones** OVER 4.5 K (62%) fair -166
+## ⚾ Top MLB Pitcher K Plays (1)
+- **Jared Jones** OVER 4.5 K (70%) fair -229
 
 ## 🏀 NBA Player Heat (2 HOT / 1 COLD)
   - 🔥 **Scottie Barnes** (TOR): L5 24.4/7.6/9.6 vs season 18.6/5.8/8.8 [PTS +5.8]
@@ -106,7 +102,7 @@
   - [LEAN] **Joseph Morales** (15-2-0) vs Brandon Moreno -- fair -137
   - [COIN_FLIP] **Sean King** (6-0-0) vs Jessie Rosas -- fair -129
 
-## 🔥 MLB Batter Heat (51 HOT / 57 COLD)
+## 🔥 MLB Batter Heat (50 HOT / 59 COLD)
   - 🔥 **Tyrone Taylor** (CHC): L14 .500 / season .284 (+216pts)
   - 🔥 **Elly De La Cruz** (CIN): L14 .463 / season .283 (+180pts)
   - 🔥 **Michael Conforto** (CHC): L14 .414 / season .242 (+172pts)
@@ -133,10 +129,10 @@
   - ⚠️ batter_rbis (Brier Δ -0.0052)
 
 ## 🧠 Training Convergence
-- ELITE: **0** · HEALTHY: 2 · OK: 0 · DEGRADED: **0**
+- ELITE: **0** · HEALTHY: 1 · OK: 0 · DEGRADED: **1**
 
 ## 🤖 Self-Training Status
-- **WNBA**: n=12 games · hit rate 41.7% · bias -12.4pp
+- **WNBA**: n=10 games · hit rate 70.0% · bias -13.4pp
 - **MLS**: n=58 games · hit rate 36.2% · bias -1.5pp
 - **EPL**: n=30 games · hit rate 50.0% · bias -1.8pp
-- **MLB**: n=191 games · hit rate 48.2% · bias +0.2pp
+- **MLB**: n=189 games · hit rate 50.3% · bias -0.2pp
