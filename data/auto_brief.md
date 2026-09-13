@@ -1,60 +1,42 @@
-# Tonight's Slate Brief — 2026-09-12
+# Tonight's Slate Brief — 2026-09-13
 
-## Slate Quality: 66/100 (MEDIUM)
-_36% lineups confirmed · 15 rookie SPs_
+## Slate Quality: 55/100 (MEDIUM)
+_0% lineups confirmed · 13 rookie SPs_
 **Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
 - **15 games** scheduled
-- **49 best bets** scored: 13 DK · 0 PP · 11 NRFI · 2 SGP
+- **34 best bets** scored: 7 DK · 0 PP · 11 NRFI · 0 SGP
 - **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$46.3
 - **MC simulation:** EV +$145.31, 84% P(profit), p05 $-85.72 / p95 $342.63
 
 ## Top 5 Best Bets
-1. **NYM @ NYY 4-leg SGP @ +158**  (100/100 *****, edge +289.6%)
-   - Joint prob 0.388 (correlation boost +0.264)
-   - Leg: Bo Bichette OVER 0.5 batter hits
-2. **SDP @ SFG NRFI (no run 1st inning)**  (80/100 ****, edge +27.2%)
+1. **SDP @ SFG NRFI (no run 1st inning)**  (80/100 ****, edge +27.2%)
    - P(NRFI) 81.2% vs baseline 54.0%
-3. **CIN @ MIL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +26.0%)
+2. **CIN @ MIL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +26.0%)
    - P(YRFI) 72.0% vs baseline 46.0%
-4. **BAL @ TOR YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +23.0%)
+3. **BAL @ TOR YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +23.0%)
    - P(YRFI) 69.0% vs baseline 46.0%
-5. **SEA @ OAK YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +22.6%)
+4. **SEA @ OAK YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +22.6%)
    - P(YRFI) 68.7% vs baseline 46.0%
+5. **TEX @ ARI YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +20.3%)
+   - P(YRFI) 66.3% vs baseline 46.0%
 
-## ⚠️ Trap Warnings — 21 flagged
-- **Juan Soto OVER 1.5 batter total bases** (high):
-   - Edge +22.4% looks big but only 0 settled props on this player — model unproven
-   - Batter cooling: cooling: 0.728 ops recent vs 0.918 season (-0.190)
-- **Ben Rice OVER 1.5 batter total bases** (high):
-   - Edge +18.0% looks big but only 0 settled props on this player — model unproven
-   - Batter cooling: cooling: 0.787 ops recent vs 0.877 season (-0.090)
-- **Hunter Goodman OVER 1.5 batter total bases** (high):
-   - Edge +12.2% looks big but only 0 settled props on this player — model unproven
-   - Batter cooling: cooling: 0.389 ops recent vs 0.826 season (-0.437)
-- **Ali Sanchez OVER 0.5 batter hits** (high):
-   - Edge +11.9% looks big but only 0 settled props on this player — model unproven
-   - Batter cooling: cooling: 0.000 ops recent vs 0.573 season (-0.573)
-- **Ezequiel Tovar OVER 0.5 batter hits** (high):
-   - Edge +10.9% looks big but only 0 settled props on this player — model unproven
-   - Batter cooling: cooling: 0.509 ops recent vs 0.592 season (-0.083)
-
-## Weather leans
-- **UNDER lean** (wind in + cold): SDP @ SFG
+## ⚠️ Trap Warnings — 15 flagged
+- **SDP @ SFG NRFI (no run 1st inning)** (low):
+   - Edge +27.2% looks big but only 0 settled props on this player — model unproven
+- **CIN @ MIL YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +26.0% looks big but only 0 settled props on this player — model unproven
+- **BAL @ TOR YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +23.0% looks big but only 0 settled props on this player — model unproven
+- **SEA @ OAK YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +22.6% looks big but only 0 settled props on this player — model unproven
+- **TEX @ ARI YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +20.3% looks big but only 0 settled props on this player — model unproven
 
 ## Hot streaks
-**Batters heating up:** Riley Greene (heat +3.52), Brett Baty (heat +3.45), A.J. Ewing (heat +2.82)
-**Pitchers on a run:** Spencer Miles (heat +6.57), Tanner Gordon (heat -1.74)
-
-## Top correlation-aware SGPs
-- **NYM @ NYY** 4-leg @ +158 fair (joint 0.39, EV +289.56%)
-   - Bo Bichette OVER 0.5 batter hits
-   - Cody Bellinger OVER 0.5 batter hits
-   - Cody Bellinger UNDER 1.5 batter total bases
-- **COL @ DET** 2-leg @ +165 fair (joint 0.38, EV +25.0%)
-   - Max Clark OVER 0.5 batter hits
-   - Riley Greene OVER 0.5 batter hits
+**Batters heating up:** Brett Baty (heat +5.94), Coby Mayo (heat +5.54), Kazuma Okamoto (heat +4.93)
+**Pitchers on a run:** Spencer Miles (heat +18.00), Tanner Gordon (heat -0.04)
 
 ## Bullpens GASSED tonight
 Pittsburgh Pirates, San Francisco Giants, Chicago White Sox, New York Yankees, Houston Astros
@@ -79,19 +61,19 @@ _Lean late-inning OVER on these games; fade their save situations._
 - Chicago Blackhawks @ Minnesota Wild (0-0-0 vs 0-0-0)  | P(home) 52.9% fair -112 | Scheduled
 
 ## KBO -- 2026 Korean Baseball
-- Hanwha Eagles @ KIA Tigers | P(home) 73.9% fair -283 | total 8 R
-- LG Twins @ Samsung Lions | P(home) 50.0% fair -100 | total 8 R
-- Lotte Giants @ KT Wiz | P(home) 57.4% fair -135 | total 9 R
-- NC Dinos @ Doosan Bears | P(home) 57.8% fair -137 | total 8 R
-- **KBO POD:** Doosan Bears ML vs NC Dinos (KBO) (HIGH)
+- Hanwha Eagles @ KIA Tigers | P(home) 72.8% fair -267 | total 9 R
+- LG Twins @ Samsung Lions | P(home) 49.8% fair +101 | total 9 R
+- Lotte Giants @ KT Wiz | P(home) 57.6% fair -136 | total 9 R
+- NC Dinos @ Doosan Bears | P(home) 57.5% fair -135 | total 9 R
+- **KBO POD:** KT Wiz ML vs Lotte Giants (KBO) (HIGH)
 
-## LoL Esports -- 2 live, 24 upcoming
-- [LEC] Team Vitality vs Movistar KOI BO5 | P(A) 60.8% fair -155/+155
-- [CBLOL] FURIA vs LOS BO5 | P(A) 70.1% fair -234/+234
+## LoL Esports -- 1 live, 24 upcoming
+- [LCK] Gen.G Esports vs Hanwha Life Esports BO5 | P(A) 51.0% fair -104/+104
 - [VCS] Saigon MVKE Academy vs Saigon 9Gaming Esports BO3 | P(A) 46.2% fair +116/-116
 - [VCS] Saigon Warrior vs TP.HCM SN CyberCore Esports BO3 | P(A) 61.2% fair -158/+158
-- [LCS] Cloud9 Kia vs Shopify Rebellion BO5 | P(A) 63.5% fair -174/+174
-- **LoL POT:** Natus Vincere ML vs TBD (LEC, BO5) (HIGH)
+- [VCS] Saigon Warrior vs Saigon 1TAP DINO BO3 | P(A) 61.2% fair -157/+157
+- [LPL] Anyone's Legend vs BILIBILI GAMING BO5 | P(A) 33.5% fair +198/-198
+- **LoL POT:** TBD ML vs Shopify Rebellion (LCS, BO5) (HIGH)
 
 ## Player Play of the Day -- across all sports (3470 candidates scanned)
 - **[LOL]** Inspired UNDER 3.5 Kills | model 61.7% fair -161 (ELITE)

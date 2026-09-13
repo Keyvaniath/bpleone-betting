@@ -1,27 +1,20 @@
 {
-  "generated_at": "2026-09-13T03:18:27",
+  "generated_at": "2026-09-13T05:30:05",
   "sport": "epl",
-  "n_games": 29,
-  "hit_rate": 0.4828,
-  "brier_score": 0.1703,
-  "log_loss": 0.7628,
-  "avg_predicted_home_winprob": 0.5594,
-  "avg_actual_home_winrate": 0.5517,
-  "bias": 0.0077,
+  "n_games": 31,
+  "hit_rate": 0.3548,
+  "brier_score": 0.1438,
+  "log_loss": 0.7456,
+  "avg_predicted_home_winprob": 0.5669,
+  "avg_actual_home_winrate": 0.4516,
+  "bias": 0.1152,
   "reliability_bins": [
-    {
-      "lo": 0.0,
-      "hi": 0.1,
-      "n": 3,
-      "predicted_avg": 0.076,
-      "actual_avg": 0.5
-    },
     {
       "lo": 0.2,
       "hi": 0.3,
-      "n": 3,
-      "predicted_avg": 0.256,
-      "actual_avg": 0.0
+      "n": 7,
+      "predicted_avg": 0.252,
+      "actual_avg": 0.214
     },
     {
       "lo": 0.3,
@@ -31,37 +24,40 @@
       "actual_avg": 0.5
     },
     {
-      "lo": 0.5,
-      "hi": 0.6,
-      "n": 15,
-      "predicted_avg": 0.593,
-      "actual_avg": 0.667
+      "lo": 0.4,
+      "hi": 0.5,
+      "n": 2,
+      "predicted_avg": 0.457,
+      "actual_avg": 0.5
     },
     {
-      "lo": 0.6,
-      "hi": 0.7,
-      "n": 1,
-      "predicted_avg": 0.671,
+      "lo": 0.5,
+      "hi": 0.6,
+      "n": 14,
+      "predicted_avg": 0.586,
       "actual_avg": 0.5
     },
     {
       "lo": 0.8,
       "hi": 0.9,
       "n": 3,
-      "predicted_avg": 0.829,
+      "predicted_avg": 0.86,
       "actual_avg": 0.5
     },
     {
       "lo": 0.9,
       "hi": 1.0,
-      "n": 3,
-      "predicted_avg": 0.952,
-      "actual_avg": 0.667
+      "n": 4,
+      "predicted_avg": 0.945,
+      "actual_avg": 0.625
     }
   ],
   "recommendation": {
-    "applied": false,
-    "note": "model is well-calibrated (<2pp bias)"
+    "applied": true,
+    "bias_pp": 11.5,
+    "shrinkage": 1.0,
+    "recommended_shift": -0.1,
+    "note": "Model over-predicting home by 11.5pp; subtract 10.0pp from P(home) (shrinkage 100%)"
   },
   "n_teams_tracked": 20
 }

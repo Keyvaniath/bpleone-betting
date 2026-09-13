@@ -1,32 +1,28 @@
-# EdgeStat Daily Summary — 2026-09-12
+# EdgeStat Daily Summary — 2026-09-13
 
-## 🏥 Model Health: 66.5/100 [OK]
+## 🏥 Model Health: 64.2/100 [OK]
 - Operational but room to improve - check yellow components
   - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 0/100
-  - 🔴 Brier Trend: 32.5/100
+  - 🔴 Brier Trend: 25.4/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 100.0/100
+  - 🟢 Data Health: 95.5/100
   - 🟢 Edge Count: 100/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.562)
-- **Total games on board:** 130
-- **Strong home favorites:** 13 | **Strong road dogs:** 7
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.561)
+- **Total games on board:** 111
+- **Strong home favorites:** 7 | **Strong road dogs:** 5
 
 ## 🎯 Top 5 Best Bets
-1. **NYM @ NYY 4-leg SGP @ +158** (100/100 ★★★★★)
-2. **SDP @ SFG NRFI (no run 1st inning)** (80/100 ★★★★)
-3. **CIN @ MIL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-4. **BAL @ TOR YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-5. **SEA @ OAK YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+1. **SDP @ SFG NRFI (no run 1st inning)** (80/100 ★★★★)
+2. **CIN @ MIL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+3. **BAL @ TOR YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+4. **SEA @ OAK YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+5. **TEX @ ARI YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 
-## 📡 Sharp Action (Line Movement)
-- [STRONG] **CLE @ MIN** under_9.0: 51.22% → 56.52% (+5.3pp)
-
-## 📉 Strong UNDER Signals
-- [STRONG 5.5] **CLE @ MIN** model 7.51 vs market 9.0
-- [STRONG 5.2] **BAL @ TOR** model 7.66 vs market 8.5
+## 🐋 Whale Picks (Max Confluence)
+- [STRONG] **[MLB]** LAA @ WSN WSN_ML -- 67% / +20.0% (score 2.5)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -54,37 +50,32 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (6)
+## ⚡ Pre-Game HIGH Conviction (2)
 - [WNBA] **Dallas Wings** HOME (1-0 L10) · model 74.8% fair -297
-- [EPL] **Arsenal** AWAY (2-0 L10) · model 74.4% fair -290
 - [WNBA] **Washington Mystics** AWAY (None L10) · model 67.8% fair -210
-- [MLS] **Real Salt Lake** HOME (0-4 L10) · model 66.6% fair -200
-- [MLS] **St. Louis CITY SC** HOME (2-2 L10) · model 64.5% fair -181
-- [EPL] **Brentford** AWAY (1-2 L10) · model 63.2% fair -172
 
 ## 🔥/❄️ Heat / Cold Signals
-- Hot teams: **2** | Cold teams: **15** | Over-heavy: 0 | Under-heavy: 0
+- Hot teams: **5** | Cold teams: **15** | Over-heavy: 0 | Under-heavy: 1
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (151)
-- RESIDUAL_DIVERGENCE: **10**
-- STEAM_MOVE: **139**
-- COMPOUND_BULLPEN: **1**
-- PEN_MISMATCH: **1**
+## ⚠️ Anomaly Detector (150)
+- RESIDUAL_DIVERGENCE: **5**
+- STEAM_MOVE: **142**
+- PEN_MISMATCH: **3**
   - FC Cincinnati (MLS): FC Cincinnati OUTPERFORMING expected margin by 6.6pts in recent games -- model bias may persist
   - Charlotte FC (MLS): Charlotte FC UNDERPERFORMING expected margin by 8.8pts in recent games -- model bias may persist
   - Portland Timbers (MLS): Portland Timbers OUTPERFORMING expected margin by 6.6pts in recent games -- model bias may persist
   - St. Louis CITY SC (MLS): St. Louis CITY SC UNDERPERFORMING expected margin by 6.5pts in recent games -- model bias may persist
   - LA Galaxy (MLS): LA Galaxy OUTPERFORMING expected margin by 6.5pts in recent games -- model bias may persist
 
-## 💰 Today's Portfolio (8 picks)
-- Total stake: **$340.0** (34.0% of $1000 bankroll)
-- Expected EV: **$-11.8**
-  - #1 [SGP] $50 on NYM @ NYY 4-leg SGP @ +158 (P=39%)
-  - #2 [NRFI] $50 on SDP @ SFG NRFI (no run 1st inning) (P=81%)
-  - #3 [NRFI] $50 on CIN @ MIL YRFI (1st-inning OVER 0.5) (P=72%)
-  - #4 [NRFI] $50 on BAL @ TOR YRFI (1st-inning OVER 0.5) (P=69%)
-  - #5 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
+## 💰 Today's Portfolio (9 picks)
+- Total stake: **$345.0** (34.5% of $1000 bankroll)
+- Expected EV: **$9.05**
+  - #1 [NRFI] $50 on SDP @ SFG NRFI (no run 1st inning) (P=81%)
+  - #2 [NRFI] $50 on CIN @ MIL YRFI (1st-inning OVER 0.5) (P=72%)
+  - #3 [NRFI] $50 on BAL @ TOR YRFI (1st-inning OVER 0.5) (P=69%)
+  - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
+  - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
 ## 🎯 Convergence Picks (21 stacked games)
 - ELITE: **8** · HIGH: 8 · MED: 5
@@ -113,17 +104,17 @@
   - [LEAN] **Joseph Morales** (15-2-0) vs Brandon Moreno -- fair -137
   - [COIN_FLIP] **Sean King** (6-0-0) vs Jessie Rosas -- fair -129
 
-## 🔥 MLB Batter Heat (50 HOT / 64 COLD)
-  - 🔥 **Tyrone Taylor** (CHC): L14 .486 / season .282 (+204pts)
-  - 🔥 **Ha-Seong Kim** (ATL): L14 .310 / season .135 (+175pts)
-  - 🔥 **Elly De La Cruz** (CIN): L14 .453 / season .282 (+171pts)
-  - 🔥 **Thomas Saggese** (STL): L14 .432 / season .267 (+165pts)
-  - 🔥 **Michael Conforto** (CHC): L14 .400 / season .243 (+157pts)
+## 🔥 MLB Batter Heat (58 HOT / 61 COLD)
+  - 🔥 **Tyrone Taylor** (CHC): L14 .450 / season .278 (+172pts)
+  - 🔥 **Elly De La Cruz** (CIN): L14 .442 / season .283 (+159pts)
+  - 🔥 **Victor Mesa Jr.** (TB): L14 .410 / season .253 (+157pts)
+  - 🔥 **Myles Straw** (TOR): L14 .393 / season .236 (+157pts)
+  - 🔥 **Thomas Saggese** (STL): L14 .417 / season .267 (+150pts)
+  - ❄️ **Bryson Stott** (PHI): L14 .089 / season .247 (-158pts) -- FADE props
+  - ❄️ **Jeremiah Jackson** (BAL): L14 .077 / season .229 (-152pts) -- FADE props
   - ❄️ **Taylor Ward** (SEA): L14 .086 / season .225 (-139pts) -- FADE props
-  - ❄️ **Wyatt Langford** (TEX): L14 .104 / season .241 (-137pts) -- FADE props
-  - ❄️ **CJ Abrams** (WSH): L14 .127 / season .261 (-134pts) -- FADE props
-  - ❄️ **Colt Keith** (DET): L14 .125 / season .256 (-131pts) -- FADE props
-  - ❄️ **Jose Siri** (LAA): L14 .094 / season .223 (-129pts) -- FADE props
+  - ❄️ **Esteury Ruiz** (MIA): L14 .088 / season .223 (-135pts) -- FADE props
+  - ❄️ **Corbin Carroll** (AZ): L14 .118 / season .238 (-120pts) -- FADE props
 
 ## 📈 Streak Regression Alerts (14)
 - [MLS] Red Bull New York on L4 L10 0-4 -- Red Bull New York on L4 -- no historical sample
@@ -140,10 +131,10 @@
   - ⚠️ batter_rbis (Brier Δ -0.0052)
 
 ## 🧠 Training Convergence
-- ELITE: **1** · HEALTHY: 0 · OK: 0 · DEGRADED: **1**
+- ELITE: **0** · HEALTHY: 1 · OK: 0 · DEGRADED: **1**
 
 ## 🤖 Self-Training Status
-- **WNBA**: n=6 games · hit rate 66.7% · bias -12.4pp
-- **MLS**: n=58 games · hit rate 36.2% · bias -1.5pp
-- **EPL**: n=29 games · hit rate 48.3% · bias +0.8pp
-- **MLB**: n=189 games · hit rate 50.8% · bias -1.4pp
+- **WNBA**: n=4 games · hit rate 50.0% · bias +4.3pp
+- **MLS**: n=57 games · hit rate 38.6% · bias -2.0pp
+- **EPL**: n=31 games · hit rate 35.5% · bias +11.5pp [calibration applied]
+- **MLB**: n=187 games · hit rate 50.3% · bias -0.8pp
