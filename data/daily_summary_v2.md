@@ -1,28 +1,25 @@
 # EdgeStat Daily Summary — 2026-09-13
 
-## 🏥 Model Health: 64.2/100 [OK]
+## 🏥 Model Health: 67.7/100 [OK]
 - Operational but room to improve - check yellow components
   - 🟢 Calibration Freshness: 99.9/100
-  - 🔴 Hit Rate Trend: 0/100
-  - 🔴 Brier Trend: 25.4/100
+  - 🔴 Hit Rate Trend: 17.8/100
+  - 🔴 Brier Trend: 29.1/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 95.5/100
-  - 🟢 Edge Count: 100/100
+  - 🟢 Data Health: 100.0/100
+  - 🟢 Edge Count: 82.9/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.561)
-- **Total games on board:** 111
-- **Strong home favorites:** 7 | **Strong road dogs:** 5
+- **Total games on board:** 98
+- **Strong home favorites:** 5 | **Strong road dogs:** 3
 
 ## 🎯 Top 5 Best Bets
-1. **SDP @ SFG NRFI (no run 1st inning)** (80/100 ★★★★)
-2. **CIN @ MIL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-3. **BAL @ TOR YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-4. **SEA @ OAK YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-5. **TEX @ ARI YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-
-## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** LAA @ WSN WSN_ML -- 67% / +20.0% (score 2.5)
+1. **LAD @ MIA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+2. **SEA @ OAK YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+3. **LAA @ WSN YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+4. **CLE @ MIN YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+5. **CHW @ STL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -58,39 +55,40 @@
 - Hot teams: **5** | Cold teams: **15** | Over-heavy: 0 | Under-heavy: 1
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (150)
-- RESIDUAL_DIVERGENCE: **5**
+## ⚠️ Anomaly Detector (148)
+- RESIDUAL_DIVERGENCE: **2**
 - STEAM_MOVE: **142**
+- COMPOUND_BULLPEN: **1**
 - PEN_MISMATCH: **3**
-  - FC Cincinnati (MLS): FC Cincinnati OUTPERFORMING expected margin by 6.6pts in recent games -- model bias may persist
-  - Charlotte FC (MLS): Charlotte FC UNDERPERFORMING expected margin by 8.8pts in recent games -- model bias may persist
-  - Portland Timbers (MLS): Portland Timbers OUTPERFORMING expected margin by 6.6pts in recent games -- model bias may persist
-  - St. Louis CITY SC (MLS): St. Louis CITY SC UNDERPERFORMING expected margin by 6.5pts in recent games -- model bias may persist
-  - LA Galaxy (MLS): LA Galaxy OUTPERFORMING expected margin by 6.5pts in recent games -- model bias may persist
+  - Philadelphia Union (MLS): Philadelphia Union UNDERPERFORMING expected margin by 10.3pts in recent games -- model bias may persist
+  - Manchester City (EPL): Manchester City UNDERPERFORMING expected margin by 8.3pts in recent games -- model bias may persist
+  - LAF @ CONN (NCAAF): ML/TOTAL steam since open: ML +3.6pp toward CONN; total -6 (UNDER) (4 snapshots)
+  - IDST @ USU (NCAAF): TOTAL steam since open: ML +2.4pp toward USU; total -5 (UNDER) (5 snapshots)
+  - STBK @ BALL (NCAAF): ML/TOTAL steam since open: ML -4.1pp toward STBK; total -5 (UNDER) (8 snapshots)
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$9.05**
-  - #1 [NRFI] $50 on SDP @ SFG NRFI (no run 1st inning) (P=81%)
-  - #2 [NRFI] $50 on CIN @ MIL YRFI (1st-inning OVER 0.5) (P=72%)
-  - #3 [NRFI] $50 on BAL @ TOR YRFI (1st-inning OVER 0.5) (P=69%)
+- Expected EV: **$0.79**
+  - #1 [NRFI] $50 on LAD @ MIA YRFI (1st-inning OVER 0.5) (P=77%)
+  - #2 [NRFI] $50 on SEA @ OAK YRFI (1st-inning OVER 0.5) (P=72%)
+  - #3 [NRFI] $50 on LAA @ WSN YRFI (1st-inning OVER 0.5) (P=69%)
   - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
 ## 🎯 Convergence Picks (21 stacked games)
-- ELITE: **8** · HIGH: 8 · MED: 5
-  - [ELITE] Nottingham Forest @ Aston Villa : 5 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ATS)
-  - [ELITE] Everton @ Tottenham Hotspur : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
-  - [ELITE] Charlotte FC @ FC Cincinnati : 4 signals (HEAT_COLD, ANOMALY, ANOMALY, ATS)
-  - [ELITE] Minnesota United FC @ St. Louis CITY SC : 4 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
-  - [ELITE] New York City FC @ Real Salt Lake : 4 signals (PREGAME, HEAT_COLD, HEAT_COLD, ATS)
+- ELITE: **2** · HIGH: 8 · MED: 11
+  - [ELITE] New York City FC @ Real Salt Lake : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
+  - [ELITE] Everton @ Tottenham Hotspur : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
+  - [HIGH] Los Angeles Sparks @ Dallas Wings : 3 signals (PREGAME, ATS, ATS)
+  - [HIGH] Charlotte FC @ FC Cincinnati : 3 signals (HEAT_COLD, ATS, ATS)
+  - [HIGH] Nashville SC @ Inter Miami CF : 3 signals (HEAT_COLD, HEAT_COLD, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (10)
-- **Tyler Glasnow** OVER 5.5 K (77%) fair -328
-- **Tanner Gordon** OVER 6.5 K (74%) fair -278
-- **Bryan Woo** OVER 4.5 K (73%) fair -271
-- **Gerrit Cole** OVER 4.5 K (70%) fair -232
-- **Tyler Mahle** OVER 4.5 K (70%) fair -232
+## ⚾ Top MLB Pitcher K Plays (9)
+- **Chase Burns** OVER 4.5 K (78%) fair -349
+- **Jacob Lopez** OVER 4.5 K (76%) fair -321
+- **Dylan Cease** OVER 5.5 K (76%) fair -314
+- **Cam Schlittler** OVER 6.5 K (70%) fair -237
+- **Logan Webb** OVER 4.5 K (69%) fair -224
 
 ## 🏀 NBA Player Heat (2 HOT / 1 COLD)
   - 🔥 **Scottie Barnes** (TOR): L5 24.4/7.6/9.6 vs season 18.6/5.8/8.8 [PTS +5.8]
@@ -98,11 +96,11 @@
   - ❄️ **Brandon Ingram** (TOR): L5 12.0 vs season 19.1 [PTS -7.1] -- FADE OVER props
 
 ## 🥊 UFC Fight Matchups (Noche UFC: Silva vs. Delgado)
-  - [LEAN] **Regina Tarin** (8-0-0) vs JJ Aldrich -- fair -181
-  - [LEAN] **David Martinez** (14-1-0) vs Dan Ige -- fair -168
-  - [LEAN] **Tommy Gantt** (12-0-0) vs Drakkar Klose -- fair -145
-  - [LEAN] **Joseph Morales** (15-2-0) vs Brandon Moreno -- fair -137
-  - [COIN_FLIP] **Sean King** (6-0-0) vs Jessie Rosas -- fair -129
+  - [FAVORITE] **Regina Tarin** (9-0-0) vs JJ Aldrich -- fair -192
+  - [LEAN] **David Martinez** (15-1-0) vs Dan Ige -- fair -178
+  - [LEAN] **Sean King III** (7-0-0) vs Jessie Rosas -- fair -158
+  - [LEAN] **Tommy Gantt** (13-0-0) vs Drakkar Klose -- fair -158
+  - [COIN_FLIP] **Tommy McMillen** (12-0-0) vs Marwan Rahiki -- fair -129
 
 ## 🔥 MLB Batter Heat (58 HOT / 61 COLD)
   - 🔥 **Tyrone Taylor** (CHC): L14 .450 / season .278 (+172pts)
@@ -115,13 +113,6 @@
   - ❄️ **Taylor Ward** (SEA): L14 .086 / season .225 (-139pts) -- FADE props
   - ❄️ **Esteury Ruiz** (MIA): L14 .088 / season .223 (-135pts) -- FADE props
   - ❄️ **Corbin Carroll** (AZ): L14 .118 / season .238 (-120pts) -- FADE props
-
-## 📈 Streak Regression Alerts (14)
-- [MLS] Red Bull New York on L4 L10 0-4 -- Red Bull New York on L4 -- no historical sample
-- [MLS] Atlanta United FC on L3 L10 1-3 -- Atlanta United FC on L3 -- no historical sample
-- [MLS] FC Cincinnati on L3 L10 0-3 -- FC Cincinnati on L3 -- no historical sample
-- [MLS] Sporting Kansas City on L3 L10 0-3 -- Sporting Kansas City on L3 -- no historical sample
-- [MLS] Minnesota United FC on L3 L10 1-3 -- Minnesota United FC on L3 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**
