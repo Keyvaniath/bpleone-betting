@@ -1,18 +1,18 @@
 # EdgeStat Daily Summary — 2026-09-13
 
-## 🏥 Model Health: 67.7/100 [OK]
+## 🏥 Model Health: 66.9/100 [OK]
 - Operational but room to improve - check yellow components
   - 🟢 Calibration Freshness: 99.9/100
-  - 🔴 Hit Rate Trend: 17.8/100
-  - 🔴 Brier Trend: 29.1/100
+  - 🔴 Hit Rate Trend: 8.5/100
+  - 🔴 Brier Trend: 30.6/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 100.0/100
-  - 🟢 Edge Count: 82.9/100
+  - 🟢 Edge Count: 91.4/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.561)
-- **Total games on board:** 98
-- **Strong home favorites:** 5 | **Strong road dogs:** 3
+- **Regime today:** BALANCED (avg P(home)=0.549)
+- **Total games on board:** 96
+- **Strong home favorites:** 3 | **Strong road dogs:** 4
 
 ## 🎯 Top 5 Best Bets
 1. **LAD @ MIA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
@@ -55,11 +55,11 @@
 - Hot teams: **5** | Cold teams: **15** | Over-heavy: 0 | Under-heavy: 1
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (148)
+## ⚠️ Anomaly Detector (147)
 - RESIDUAL_DIVERGENCE: **2**
 - STEAM_MOVE: **142**
-- COMPOUND_BULLPEN: **1**
-- PEN_MISMATCH: **3**
+- COMPOUND_BULLPEN: **2**
+- PEN_MISMATCH: **1**
   - Philadelphia Union (MLS): Philadelphia Union UNDERPERFORMING expected margin by 10.3pts in recent games -- model bias may persist
   - Manchester City (EPL): Manchester City UNDERPERFORMING expected margin by 8.3pts in recent games -- model bias may persist
   - LAF @ CONN (NCAAF): ML/TOTAL steam since open: ML +3.6pp toward CONN; total -6 (UNDER) (4 snapshots)
@@ -67,21 +67,21 @@
   - STBK @ BALL (NCAAF): ML/TOTAL steam since open: ML -4.1pp toward STBK; total -5 (UNDER) (8 snapshots)
 
 ## 💰 Today's Portfolio (9 picks)
-- Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$0.79**
+- Total stake: **$330.0** (33.0% of $1000 bankroll)
+- Expected EV: **$-0.82**
   - #1 [NRFI] $50 on LAD @ MIA YRFI (1st-inning OVER 0.5) (P=77%)
   - #2 [NRFI] $50 on SEA @ OAK YRFI (1st-inning OVER 0.5) (P=72%)
   - #3 [NRFI] $50 on LAA @ WSN YRFI (1st-inning OVER 0.5) (P=69%)
   - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
-## 🎯 Convergence Picks (21 stacked games)
-- ELITE: **2** · HIGH: 8 · MED: 11
-  - [ELITE] New York City FC @ Real Salt Lake : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
-  - [ELITE] Everton @ Tottenham Hotspur : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
+## 🎯 Convergence Picks (7 stacked games)
+- ELITE: **1** · HIGH: 3 · MED: 3
+  - [ELITE] Philadelphia Union @ San Diego FC : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
   - [HIGH] Los Angeles Sparks @ Dallas Wings : 3 signals (PREGAME, ATS, ATS)
-  - [HIGH] Charlotte FC @ FC Cincinnati : 3 signals (HEAT_COLD, ATS, ATS)
-  - [HIGH] Nashville SC @ Inter Miami CF : 3 signals (HEAT_COLD, HEAT_COLD, ATS)
+  - [HIGH] New England Revolution @ Chicago Fire FC : 3 signals (HEAT_COLD, ATS, ATS)
+  - [HIGH] Manchester City @ Manchester United : 3 signals (HEAT_COLD, ANOMALY, ATS)
+  - [MED] Connecticut Sun @ Atlanta Dream : 2 signals (ATS, ATS)
 
 ## ⚾ Top MLB Pitcher K Plays (9)
 - **Chase Burns** OVER 4.5 K (78%) fair -349
@@ -113,6 +113,11 @@
   - ❄️ **Taylor Ward** (SEA): L14 .086 / season .225 (-139pts) -- FADE props
   - ❄️ **Esteury Ruiz** (MIA): L14 .088 / season .223 (-135pts) -- FADE props
   - ❄️ **Corbin Carroll** (AZ): L14 .118 / season .238 (-120pts) -- FADE props
+
+## 📈 Streak Regression Alerts (3)
+- [MLS] Chicago Fire FC on L3 L10 0-3 -- Chicago Fire FC on L3 -- no historical sample
+- [MLS] Philadelphia Union on W3 L10 3-0 -- Philadelphia Union on W3 -- no historical sample
+- [EPL] Manchester City on W3 L10 3-0 -- Manchester City on W3 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**

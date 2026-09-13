@@ -1,20 +1,20 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-09-13T13:42:00 UTC_
+_Generated 2026-09-13T17:31:22 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -28
+- **Score:** -26
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
 - **Total STRONG:** 6
-- **Total FADES:** 52
+- **Total FADES:** 50
 
 ## Lock of the Night
-- **Subject:** Jake Irvin
+- **Subject:** Matthew Boyd
 - **Source:** ELITE_BOARD
 - **Sport:** MLB
 - **Score:** 15.0
-- **Details:** LAA @ WSN
+- **Details:** PIT @ CHC
 
 ## Top 5 Curated Picks
 1. **WNBA / A'Ja Wilson** (WNBA_PLAYER, score=63.83)
@@ -31,19 +31,19 @@ _Generated 2026-09-13T13:42:00 UTC_
    - Rationale: Cross-sport top pick (MLB_PITCHER)
 
 ## Slate ROI Projection
-- **Picks:** 2
+- **Picks:** 1
 - **Avg edge:** -0.91%
 - **Expected ROI (1/4 Kelly):** 0.0%
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **NBA** / MIA (TEAM_FADE)
-  - Fade angle: team total UNDER
+- **MLB** / Jake Irvin (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
 - **NBA** / TOR (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NHL** / thatcher demko (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / anthony stolarz (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / samsonov ilya (GOALIE_FADE)
+- **NBA** / MIA (TEAM_FADE)
+  - Fade angle: team total UNDER
+- **MLB** / Gabriel Hughes (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **NHL** / casey desmith (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO

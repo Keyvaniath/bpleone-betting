@@ -1,7 +1,7 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:6 F:52
+_NO_ACTION_NIGHT_ | L:0 S:6 F:50
 
-:lock: **LOCK:** Jake Irvin (MLB)
+:lock: **LOCK:** Matthew Boyd (MLB)
 
 :dart: **Top Picks:**
 1. [WNBA] A'Ja Wilson -- A'Ja Wilson (PLAYER_STRONG)

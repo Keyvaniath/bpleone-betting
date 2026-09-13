@@ -4,55 +4,53 @@
 
 _Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
 
-_Generated at 2026-09-13T13:42:14 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-09-13T17:32:58 UTC. Game lines source: **placeholder -110 (no real book today)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
-**PIT @ CHC - OVER_7.0**
+**SDP @ SFG - UNDER_8.5**
 - Market: -110
-- Model probability: 88.5%
-- Raw edge: +68.99%
+- Model probability: 81.8%
+- Raw edge: +56.16%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
 
-## Full Slate (15 games)
+## Full Slate (13 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 12:10p ET | COL @ DET | Comerica Park | 81F 14mph | OVER_9.0 +43.24% |
-| 1:35p ET | LAA @ WSN | Nationals Park | 88F 6mph | OVER_9.0 +38.58% |
-| 1:35p ET | PHI @ ATL | Truist Park | 83F 4mph | OVER_9.0 +15.81% |
-| 1:35p ET | NYM @ NYY | Yankee Stadium | 79F 7mph | OVER_7.5 +13.54% |
-| 1:37p ET | BAL @ TOR | Rogers Centre | indoor | UNDER_7.5 +12.1% |
-| 1:40p ET | HOU @ TBR | Tropicana Field | indoor | HOU_ML +5.14% |
-| 1:40p ET | LAD @ MIA | loanDepot park | indoor | OVER_8.5 +11.29% |
-| 2:10p ET | CLE @ MIN | Target Field | 71F 9mph | OVER_8.0 +26.47% |
-| 2:10p ET | CIN @ MIL | American Family Field | indoor | OVER_8.0 +21.28% |
-| 2:15p ET | CHW @ STL | Busch Stadium | 88F 10mph | OVER_8.0 +41.81% |
-| 2:20p ET | PIT @ CHC | Wrigley Field | 66F 5mph | OVER_7.0 +68.99% |
-| 3:05p ET | KCR @ BOS | Fenway Park | 67F 2mph | OVER_7.5 +20.9% |
-| 4:05p ET | SEA @ OAK | Sutter Health Park | 82F 7mph | OVER_9.5 +29.78% |
-| 4:10p ET | TEX @ ARI | Chase Field | indoor | TEX_ML +9.38% |
-| 7:20p ET | SDP @ SFG | Oracle Park | 62F 10mph | UNDER_7.5 +36.0% |
+| 1:35p ET | LAA @ WSN | Nationals Park | 86F 4mph | OVER_8.5 +42.98% |
+| 1:35p ET | PHI @ ATL | Truist Park | 83F 4mph | OVER_8.5 +27.74% |
+| 1:37p ET | BAL @ TOR | Rogers Centre | indoor | UNDER_8.5 +37.25% |
+| 1:40p ET | HOU @ TBR | Tropicana Field | indoor | UNDER_8.5 +2.38% |
+| 1:40p ET | LAD @ MIA | loanDepot park | indoor | LAD_ML +12.32% |
+| 2:10p ET | CLE @ MIN | Target Field | 71F 9mph | MIN_ML +26.5% |
+| 2:10p ET | CIN @ MIL | American Family Field | indoor | MIL_ML +22.48% |
+| 2:15p ET | CHW @ STL | Busch Stadium | 88F 9mph | OVER_8.5 +50.49% |
+| 2:20p ET | PIT @ CHC | Wrigley Field | 67F 8mph | OVER_8.5 +50.21% |
+| 3:05p ET | KCR @ BOS | Fenway Park | 67F 4mph | BOS_ML +25.35% |
+| 4:05p ET | SEA @ OAK | Sutter Health Park | 81F 6mph | OVER_8.5 +47.77% |
+| 4:10p ET | TEX @ ARI | Chase Field | indoor | -- |
+| 7:20p ET | SDP @ SFG | Oracle Park | 62F 11mph | UNDER_8.5 +56.16% |
 
 ## Parlays - top 5
 
-- **2-leg @ +264 (prob 39.9%, EV +45.29%)**
-  - CIN @ MIL OVER_8.0 (-110, model 63.5%)
-  - KCR @ BOS OVER_7.5 (-110, model 62.7%)
-- **2-leg @ +454 (prob 25.4%, EV +40.62%)**
+- **2-leg @ +454 (prob 26.0%, EV +44.14%)**
   - Gleyber Torres UNDER 0.5 batter_hits (+190, model 40.0%)
-  - CIN @ MIL OVER_8.0 (-110, model 63.5%)
-- **2-leg @ +456 (prob 25.3%, EV +40.61%)**
+  - CHW @ STL OVER_8.5 (-110, model 65.1%)
+- **2-leg @ +456 (prob 25.9%, EV +44.13%)**
   - Ronald Acuna Jr. UNDER 0.5 batter_hits (+191, model 39.8%)
-  - CIN @ MIL OVER_8.0 (-110, model 63.5%)
-- **2-leg @ +264 (prob 38.5%, EV +40.45%)**
-  - PHI @ ATL OVER_9.0 (-110, model 60.7%)
-  - CIN @ MIL OVER_8.0 (-110, model 63.5%)
-- **2-leg @ +240 (prob 40.9%, EV +38.98%)**
-  - CIN @ MIL OVER_8.0 (-110, model 63.5%)
-  - SDP @ SFG SDP_ML (-128, model 64.3%)
+  - CHW @ STL OVER_8.5 (-110, model 65.1%)
+- **2-leg @ +264 (prob 39.0%, EV +42.17%)**
+  - CIN @ MIL OVER_8.5 (-110, model 59.9%)
+  - CHW @ STL OVER_8.5 (-110, model 65.1%)
+- **2-leg @ +264 (prob 39.0%, EV +42.14%)**
+  - CHW @ STL OVER_8.5 (-110, model 65.1%)
+  - PIT @ CHC CHC_ML (-110, model 59.9%)
+- **2-leg @ +454 (prob 25.7%, EV +42.01%)**
+  - Gleyber Torres UNDER 0.5 batter_hits (+190, model 40.0%)
+  - CIN @ MIL MIL_ML (-110, model 64.2%)
 
 ## Self-Learning Loop
 
@@ -68,19 +66,17 @@ Cumulative graded plays: 10629. Wins: 3848. Hit rate: 36.2%.
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
 | BAL @ TOR | 45.6% | +119 | 3.93 | +143 | -143 |
-| CHW @ STL | 33.7% | +197 | 5.32 | +226 | -226 |
-| CIN @ MIL | 40.6% | +146 | 4.5 | -105 | +105 |
-| CLE @ MIN | 32.9% | +204 | 5.72 | +111 | -111 |
-| COL @ DET | 37.6% | +166 | 5.25 | +176 | -176 |
+| CHW @ STL | 25.7% | +289 | 6.67 | +127 | -127 |
+| CIN @ MIL | 40.6% | +146 | 4.5 | -106 | +106 |
+| CLE @ MIN | 29.6% | +238 | 6.27 | -115 | +115 |
 | HOU @ TBR | 59.2% | -145 | 2.62 | +166 | -166 |
-| KCR @ BOS | 43.9% | +128 | 4.08 | -110 | +110 |
-| LAA @ WSN | 30.8% | +225 | 5.88 | -152 | +152 |
+| KCR @ BOS | 43.9% | +128 | 4.21 | -111 | +111 |
+| LAA @ WSN | 31.7% | +216 | 5.9 | -157 | +157 |
 | LAD @ MIA | 22.8% | +338 | 7.39 | +218 | -218 |
-| NYM @ NYY | 46.1% | +117 | 4.07 | -125 | +125 |
 | PHI @ ATL | 44.1% | +127 | 4.14 | +117 | -117 |
-| PIT @ CHC | 44.0% | +128 | 4.15 | +108 | -108 |
+| PIT @ CHC | 44.0% | +128 | 4.13 | +107 | -107 |
 | SDP @ SFG | 60.8% | -155 | 2.65 | +352 | -352 |
-| SEA @ OAK | 27.7% | +261 | 6.51 | +179 | -179 |
+| SEA @ OAK | 27.7% | +261 | 6.49 | +179 | -179 |
 | TEX @ ARI | 56.2% | -128 | 2.88 | +169 | -169 |
 
 ## Team Form (last 10)
@@ -101,7 +97,7 @@ Cumulative graded plays: 10629. Wins: 3848. Hit rate: 36.2%.
 
 ## Loop Activity (since last refresh)
 
-- Confidence delta: **-0.1**
+- Confidence delta: **+0.0**
 
 ## Model Recommendations (operator review)
 
