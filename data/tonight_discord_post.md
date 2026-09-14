@@ -1,12 +1,9 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:6 F:50
-
-:lock: **LOCK:** Matthew Boyd (MLB)
+_NO_ACTION_NIGHT_ | L:0 S:3 F:58
 
 :dart: **Top Picks:**
-1. [WNBA] A'Ja Wilson -- A'Ja Wilson (PLAYER_STRONG)
-2. [MLB] Dylan Cease -- Dylan Cease (PITCHER_STRONG)
-3. [WNBA] Angel Reese -- Angel Reese (PLAYER_STRONG)
+1. [WNBA] allisha gray -- allisha gray (PLAYER_STRONG)
+2. [WNBA] A'Ja Wilson -- A'Ja Wilson (PLAYER_STRONG)
 
 :coin: Bankroll Advisory: STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 

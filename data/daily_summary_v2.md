@@ -1,18 +1,18 @@
-# EdgeStat Daily Summary — 2026-09-13
+# EdgeStat Daily Summary — 2026-09-14
 
-## 🏥 Model Health: 66.9/100 [OK]
+## 🏥 Model Health: 64.8/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.9/100
-  - 🔴 Hit Rate Trend: 8.5/100
-  - 🔴 Brier Trend: 30.6/100
+  - 🟢 Calibration Freshness: 100.0/100
+  - 🔴 Hit Rate Trend: 4.5/100
+  - 🔴 Brier Trend: 32.4/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 100.0/100
-  - 🟢 Edge Count: 91.4/100
+  - 🟢 Data Health: 95.5/100
+  - 🟢 Edge Count: 82.9/100
 
 ## 🌐 Slate Overview
-- **Regime today:** BALANCED (avg P(home)=0.549)
-- **Total games on board:** 96
-- **Strong home favorites:** 3 | **Strong road dogs:** 4
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.552)
+- **Total games on board:** 94
+- **Strong home favorites:** 3 | **Strong road dogs:** 3
 
 ## 🎯 Top 5 Best Bets
 1. **LAD @ MIA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
@@ -20,6 +20,9 @@
 3. **LAA @ WSN YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 4. **CLE @ MIN YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 5. **CHW @ STL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+
+## 📉 Strong UNDER Signals
+- [STRONG 6.3] **BAL @ TOR** model 7.08 vs market 8.5
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -55,16 +58,16 @@
 - Hot teams: **5** | Cold teams: **15** | Over-heavy: 0 | Under-heavy: 1
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (147)
-- RESIDUAL_DIVERGENCE: **2**
+## ⚠️ Anomaly Detector (146)
+- RESIDUAL_DIVERGENCE: **1**
 - STEAM_MOVE: **142**
 - COMPOUND_BULLPEN: **2**
 - PEN_MISMATCH: **1**
   - Philadelphia Union (MLS): Philadelphia Union UNDERPERFORMING expected margin by 10.3pts in recent games -- model bias may persist
-  - Manchester City (EPL): Manchester City UNDERPERFORMING expected margin by 8.3pts in recent games -- model bias may persist
   - LAF @ CONN (NCAAF): ML/TOTAL steam since open: ML +3.6pp toward CONN; total -6 (UNDER) (4 snapshots)
   - IDST @ USU (NCAAF): TOTAL steam since open: ML +2.4pp toward USU; total -5 (UNDER) (5 snapshots)
   - STBK @ BALL (NCAAF): ML/TOTAL steam since open: ML -4.1pp toward STBK; total -5 (UNDER) (8 snapshots)
+  - RMU @ AKR (NCAAF): TOTAL steam since open: ML -0.9pp toward RMU; total +5 (OVER) (6 snapshots)
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$330.0** (33.0% of $1000 bankroll)
@@ -83,12 +86,12 @@
   - [HIGH] Manchester City @ Manchester United : 3 signals (HEAT_COLD, ANOMALY, ATS)
   - [MED] Connecticut Sun @ Atlanta Dream : 2 signals (ATS, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (9)
+## ⚾ Top MLB Pitcher K Plays (10)
 - **Chase Burns** OVER 4.5 K (78%) fair -349
 - **Jacob Lopez** OVER 4.5 K (76%) fair -321
 - **Dylan Cease** OVER 5.5 K (76%) fair -314
-- **Cam Schlittler** OVER 6.5 K (70%) fair -237
 - **Logan Webb** OVER 4.5 K (69%) fair -224
+- **Joe Ryan** OVER 4.5 K (68%) fair -213
 
 ## 🏀 NBA Player Heat (2 HOT / 1 COLD)
   - 🔥 **Scottie Barnes** (TOR): L5 24.4/7.6/9.6 vs season 18.6/5.8/8.8 [PTS +5.8]
@@ -102,17 +105,17 @@
   - [LEAN] **Tommy Gantt** (13-0-0) vs Drakkar Klose -- fair -158
   - [COIN_FLIP] **Tommy McMillen** (12-0-0) vs Marwan Rahiki -- fair -129
 
-## 🔥 MLB Batter Heat (58 HOT / 61 COLD)
+## 🔥 MLB Batter Heat (55 HOT / 61 COLD)
+  - 🔥 **Victor Mesa Jr.** (TB): L14 .439 / season .261 (+178pts)
   - 🔥 **Tyrone Taylor** (CHC): L14 .450 / season .278 (+172pts)
-  - 🔥 **Elly De La Cruz** (CIN): L14 .442 / season .283 (+159pts)
-  - 🔥 **Victor Mesa Jr.** (TB): L14 .410 / season .253 (+157pts)
-  - 🔥 **Myles Straw** (TOR): L14 .393 / season .236 (+157pts)
-  - 🔥 **Thomas Saggese** (STL): L14 .417 / season .267 (+150pts)
-  - ❄️ **Bryson Stott** (PHI): L14 .089 / season .247 (-158pts) -- FADE props
-  - ❄️ **Jeremiah Jackson** (BAL): L14 .077 / season .229 (-152pts) -- FADE props
+  - 🔥 **Lars Nootbaar** (AZ): L14 .387 / season .240 (+147pts)
+  - 🔥 **Elly De La Cruz** (CIN): L14 .423 / season .284 (+139pts)
+  - 🔥 **Ha-Seong Kim** (ATL): L14 .265 / season .128 (+137pts)
+  - ❄️ **Jeremiah Jackson** (BAL): L14 .080 / season .228 (-148pts) -- FADE props
+  - ❄️ **Andruw Monasterio** (BOS): L14 .093 / season .240 (-147pts) -- FADE props
   - ❄️ **Taylor Ward** (SEA): L14 .086 / season .225 (-139pts) -- FADE props
-  - ❄️ **Esteury Ruiz** (MIA): L14 .088 / season .223 (-135pts) -- FADE props
-  - ❄️ **Corbin Carroll** (AZ): L14 .118 / season .238 (-120pts) -- FADE props
+  - ❄️ **Brandon Marsh** (PHI): L14 .133 / season .264 (-131pts) -- FADE props
+  - ❄️ **José Tena** (WSH): L14 .103 / season .225 (-122pts) -- FADE props
 
 ## 📈 Streak Regression Alerts (3)
 - [MLS] Chicago Fire FC on L3 L10 0-3 -- Chicago Fire FC on L3 -- no historical sample

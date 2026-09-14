@@ -1,38 +1,35 @@
-# EdgeStat Daily Brief - 2026-09-13
+# EdgeStat Daily Brief - 2026-09-14
 
 **Model Confidence: 20.3/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
 
-_Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
+_Pipeline health: **DEGRADED** (14/15 artifacts ok; 1 empty, 0 stale)._ 
 
-_Generated at 2026-09-13T17:32:58 UTC. Game lines source: **placeholder -110 (no real book today)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-09-14T00:03:28 UTC. Game lines source: **placeholder -110 (no real book today)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
-**SDP @ SFG - UNDER_8.5**
-- Market: -110
-- Model probability: 81.8%
-- Raw edge: +56.16%
+**LAD @ CIN - LAD_ML**
+- Market: +100
+- Model probability: 89.7%
+- Raw edge: +79.39%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
 
-## Full Slate (13 games)
+## Full Slate (10 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 1:35p ET | LAA @ WSN | Nationals Park | 86F 4mph | OVER_8.5 +42.98% |
-| 1:35p ET | PHI @ ATL | Truist Park | 83F 4mph | OVER_8.5 +27.74% |
-| 1:37p ET | BAL @ TOR | Rogers Centre | indoor | UNDER_8.5 +37.25% |
-| 1:40p ET | HOU @ TBR | Tropicana Field | indoor | UNDER_8.5 +2.38% |
-| 1:40p ET | LAD @ MIA | loanDepot park | indoor | LAD_ML +12.32% |
-| 2:10p ET | CLE @ MIN | Target Field | 71F 9mph | MIN_ML +26.5% |
-| 2:10p ET | CIN @ MIL | American Family Field | indoor | MIL_ML +22.48% |
-| 2:15p ET | CHW @ STL | Busch Stadium | 88F 9mph | OVER_8.5 +50.49% |
-| 2:20p ET | PIT @ CHC | Wrigley Field | 67F 8mph | OVER_8.5 +50.21% |
-| 3:05p ET | KCR @ BOS | Fenway Park | 67F 4mph | BOS_ML +25.35% |
-| 4:05p ET | SEA @ OAK | Sutter Health Park | 81F 6mph | OVER_8.5 +47.77% |
-| 4:10p ET | TEX @ ARI | Chase Field | indoor | -- |
-| 7:20p ET | SDP @ SFG | Oracle Park | 62F 11mph | UNDER_8.5 +56.16% |
+| 6:40p ET | LAD @ CIN | Great American Ball Park | 66F 6mph | LAD_ML +79.39% |
+| 6:40p ET | CHW @ CLE | Progressive Field | 59F 3mph | CHW_ML +34.1% |
+| 7:07p ET | DET @ TOR | Rogers Centre | indoor | DET_ML +10.81% |
+| 7:10p ET | BAL @ NYM | Citi Field | 58F 7mph | BAL_ML +2.22% |
+| 7:40p ET | ATL @ CHC | Wrigley Field | 66F 15mph | OVER_8.5 +49.21% |
+| 7:40p ET | NYY @ MIN | Target Field | 59F 6mph | NYY_ML +33.64% |
+| 7:45p ET | SFG @ STL | Busch Stadium | 78F 10mph | SFG_ML +10.01% |
+| 8:40p ET | SDP @ COL | Coors Field | 70F 0mph | OVER_8.5 +66.15% |
+| 9:38p ET | SEA @ LAA | Angel Stadium | 70F 0mph | UNDER_8.5 +23.51% |
+| 9:40p ET | MIA @ ARI | Chase Field | indoor | MIA_ML +5.9% |
 
 ## Parlays - top 5
 
@@ -56,28 +53,25 @@ _Generated at 2026-09-13T17:32:58 UTC. Game lines source: **placeholder -110 (no
 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
-| batter total bases | 109 | 45.0% | 47.6% | 1.058 | 0.948 |
 | batter hits | 229 | 55.9% | 56.3% | 1.007 | 0.993 |
+| batter total bases | 109 | 45.0% | 47.6% | 1.058 | 0.948 |
 
-Cumulative graded plays: 10629. Wins: 3848. Hit rate: 36.2%.
+Cumulative graded plays: 11014. Wins: 4128. Hit rate: 37.5%.
 
 ## Auxiliary Markets (Model Fair Prices)
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| BAL @ TOR | 45.6% | +119 | 3.93 | +143 | -143 |
-| CHW @ STL | 25.7% | +289 | 6.67 | +127 | -127 |
-| CIN @ MIL | 40.6% | +146 | 4.5 | -106 | +106 |
-| CLE @ MIN | 29.6% | +238 | 6.27 | -115 | +115 |
-| HOU @ TBR | 59.2% | -145 | 2.62 | +166 | -166 |
-| KCR @ BOS | 43.9% | +128 | 4.21 | -111 | +111 |
-| LAA @ WSN | 31.7% | +216 | 5.9 | -157 | +157 |
-| LAD @ MIA | 22.8% | +338 | 7.39 | +218 | -218 |
-| PHI @ ATL | 44.1% | +127 | 4.14 | +117 | -117 |
-| PIT @ CHC | 44.0% | +128 | 4.13 | +107 | -107 |
-| SDP @ SFG | 60.8% | -155 | 2.65 | +352 | -352 |
-| SEA @ OAK | 27.7% | +261 | 6.49 | +179 | -179 |
-| TEX @ ARI | 56.2% | -128 | 2.88 | +169 | -169 |
+| ATL @ CHC | -- | -- | -- | -107 | +107 |
+| BAL @ NYM | -- | -- | -- | +180 | -180 |
+| CHW @ CLE | -- | -- | -- | +380 | -380 |
+| DET @ TOR | -- | -- | -- | +219 | -219 |
+| LAD @ CIN | -- | -- | -- | +1583 | -1583 |
+| MIA @ ARI | -- | -- | -- | +193 | -193 |
+| NYY @ MIN | -- | -- | -- | +344 | -344 |
+| SDP @ COL | -- | -- | -- | +342 | -342 |
+| SEA @ LAA | -- | -- | -- | +103 | -103 |
+| SFG @ STL | -- | -- | -- | +208 | -208 |
 
 ## Team Form (last 10)
 
