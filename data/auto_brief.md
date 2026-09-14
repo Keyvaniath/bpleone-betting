@@ -1,56 +1,49 @@
-# Tonight's Slate Brief — 2026-09-13
+# Tonight's Slate Brief — 2026-09-14
 
-## Slate Quality: 79/100 (HIGH)
-_80% lineups confirmed · 11 rookie SPs_
-**Recommendation:** Play normal Kelly sizing.
+## Slate Quality: 53/100 (LOW)
+_0% lineups confirmed · 5 rookie SPs_
+**Recommendation:** Defensive sizing tonight; stick to highest-confidence plays.
 
 ## Slate
-- **13 games** scheduled
-- **34 best bets** scored: 7 DK · 0 PP · 13 NRFI · 1 SGP
-- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$42.66
-- **MC simulation:** EV +$112.18, 81% P(profit), p05 $-100.61 / p95 $305.9
+- **10 games** scheduled
+- **30 best bets** scored: 16 DK · 0 PP · 0 NRFI · 0 SGP
+- **MC simulation:** EV +$57.69, 70% P(profit), p05 $-129.18 / p95 $237.08
 
 ## Top 5 Best Bets
-1. **LAD @ MIA YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +31.2%)
-   - P(YRFI) 77.2% vs baseline 46.0%
-2. **SEA @ OAK YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +26.3%)
-   - P(YRFI) 72.3% vs baseline 46.0%
-3. **LAA @ WSN YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +23.2%)
-   - P(YRFI) 69.2% vs baseline 46.0%
-4. **CLE @ MIN YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +21.1%)
-   - P(YRFI) 67.1% vs baseline 46.0%
-5. **CHW @ STL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +20.3%)
-   - P(YRFI) 66.3% vs baseline 46.0%
+1. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
+   - Player prop quality score 1.1935
+   - Elite player
+2. **LOL ShowMaker OVER 3.5 Kills**  (78/100 ****, edge —)
+   - Player prop quality score 1.1892
+   - Elite player
+3. **LOL Peyz OVER 4.5 Kills**  (78/100 ****, edge —)
+   - Player prop quality score 1.184
+   - Elite player
+4. **KBO Samsung Lions vs Lotte Giants ML @ -162**  (76/100 *****, edge —)
+   - Model 61.8% (fair -162)
+   - 
+5. **LOL LYON vs Cloud9 Kia ML @ -184**  (76/100 *****, edge —)
+   - Model 64.8% (fair -184)
+   - LCS
 
-## ⚠️ Trap Warnings — 18 flagged
-- **Michael Harris II OVER 1.5 batter total bases** (high):
-   - Edge +11.7% looks big but only 0 settled props on this player — model unproven
-   - Batter cooling: cooling: 0.636 ops recent vs 0.804 season (-0.168)
-- **Matt Olson OVER 1.5 batter total bases** (high):
-   - Edge +10.9% looks big but only 0 settled props on this player — model unproven
-   - Batter cooling: cooling: 0.370 ops recent vs 0.823 season (-0.453)
-- **LAD @ MIA YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +31.2% looks big but only 0 settled props on this player — model unproven
-- **SEA @ OAK YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +26.3% looks big but only 0 settled props on this player — model unproven
-- **PHI @ ATL 2-leg SGP @ +135** (low):
-   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
+## ⚠️ Trap Warnings — 11 flagged
+- **Juan Brito OVER 0.5 batter hits** (low):
+   - Edge +17.2% looks big but only 0 settled props on this player — model unproven
+- **Chase DeLauter OVER 1.5 batter total bases** (low):
+   - Edge +14.4% looks big but only 0 settled props on this player — model unproven
+- **Colson Montgomery OVER 0.5 batter hits** (low):
+   - Edge +14.1% looks big but only 0 settled props on this player — model unproven
+- **Andrew Benintendi OVER 0.5 batter hits** (low):
+   - Edge +13.5% looks big but only 0 settled props on this player — model unproven
+- **Jo Adell OVER 1.5 batter total bases** (low):
+   - Edge +13.3% looks big but only 0 settled props on this player — model unproven
 
 ## Hot streaks
-**Batters heating up:** Kevin McGonigle (heat +2.24), Riley Greene (heat +1.66), Trea Turner (heat +1.01)
-**Pitchers on a run:** Chase Burns (heat +5.68), Dylan Cease (heat -4.26)
-
-## Top correlation-aware SGPs
-- **PHI @ ATL** 2-leg @ +135 fair (joint 0.43, EV +25.0%)
-   - Luis Arraez OVER 0.5 batter hits
-   - Justin Crawford OVER 0.5 batter hits
+**Batters heating up:** Kevin McGonigle (heat +2.64), Riley Greene (heat +1.79), Trea Turner (heat +1.12)
 
 ## Bullpens GASSED tonight
 Athletics, Pittsburgh Pirates, San Diego Padres, San Francisco Giants, St. Louis Cardinals, Texas Rangers, Toronto Blue Jays, Philadelphia Phillies
 _Lean late-inning OVER on these games; fade their save situations._
-
-## NRFI/YRFI strong leans
-- **YRFI** (1st-inning OVER): LAD @ MIA, SEA @ OAK, LAA @ WSN, CLE @ MIN, CHW @ STL
 
 ## Golf -- Biltmore Championship Asheville
 - **Leader:** ? (?) at #?
@@ -66,15 +59,22 @@ _Lean late-inning OVER on these games; fade their save situations._
 - Winnipeg Jets @ Edmonton Oilers (0-0-0 vs 0-0-0)  | P(home) 52.9% fair -112 | Scheduled
 - Chicago Blackhawks @ Minnesota Wild (0-0-0 vs 0-0-0)  | P(home) 52.9% fair -112 | Scheduled
 
-## LoL Esports -- 1 live, 28 upcoming
-- [CBLOL] paiN Gaming vs LOUD BO5 | P(A) 30.4% fair +229/-229
+## KBO -- 2026 Korean Baseball
+- KIA Tigers @ SSG Landers | P(home) 45.1% fair +122 | total 9 R
+- KT Wiz @ Hanwha Eagles | P(home) 44.7% fair +124 | total 10 R
+- LG Twins @ NC Dinos | P(home) 43.7% fair +129 | total 10 R
+- Lotte Giants @ Samsung Lions | P(home) 61.8% fair -162 | total 10 R
+- **KBO POD:** Samsung Lions ML vs Lotte Giants (KBO) (HIGH)
+
+## LoL Esports -- 0 live, 30 upcoming
 - [VCS] Saigon MVKE Academy vs Saigon 9Gaming Esports BO3 | P(A) 46.2% fair +116/-116
 - [VCS] Saigon Warrior vs TP.HCM SN CyberCore Esports BO3 | P(A) 61.2% fair -158/+158
 - [VCS] Saigon 1TAP DINO vs Saigon Warrior BO3 | P(A) 38.8% fair +157/-157
 - [VCS] Saigon MVKE Academy vs TP.HCM SN CyberCore Esports BO3 | P(A) 53.7% fair -116/+116
-- **LoL POT:** TBD ML vs Shopify Rebellion (LCS, BO5) (HIGH)
+- [NLC] Verdant vs Arctic Pandas BO5 | P(A) 58.9% fair -143/+143
+- **LoL POT:** LYON ML vs Cloud9 Kia (LCS, BO5) (HIGH)
 
-## Player Play of the Day -- across all sports (3454 candidates scanned)
+## Player Play of the Day -- across all sports (3468 candidates scanned)
 - **[LOL]** Inspired UNDER 3.5 Kills | model 61.7% fair -161 (ELITE)
 - **[LOL]** ShowMaker OVER 3.5 Kills | model 62.5% fair -167 (ELITE)
 - **[LOL]** Peyz OVER 4.5 Kills | model 61.3% fair -158 (ELITE)
