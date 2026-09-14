@@ -1,9 +1,10 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:3 F:42
+_NO_ACTION_NIGHT_ | L:0 S:4 F:46
 
 :dart: **Top Picks:**
 1. [WNBA] allisha gray -- allisha gray (PLAYER_STRONG)
 2. [WNBA] A'Ja Wilson -- A'Ja Wilson (PLAYER_STRONG)
+3. [MLB] Tarik Skubal -- Tarik Skubal (PITCHER_STRONG)
 
 :coin: Bankroll Advisory: STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 

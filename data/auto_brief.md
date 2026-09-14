@@ -1,49 +1,65 @@
 # Tonight's Slate Brief — 2026-09-14
 
-## Slate Quality: 53/100 (LOW)
-_0% lineups confirmed · 5 rookie SPs_
-**Recommendation:** Defensive sizing tonight; stick to highest-confidence plays.
+## Slate Quality: 61/100 (MEDIUM)
+_20% lineups confirmed · 5 rookie SPs_
+**Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
 - **10 games** scheduled
-- **30 best bets** scored: 16 DK · 0 PP · 0 NRFI · 0 SGP
-- **MC simulation:** EV +$57.69, 70% P(profit), p05 $-129.18 / p95 $237.08
+- **44 best bets** scored: 16 DK · 0 PP · 8 NRFI · 2 SGP
+- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$46.14
+- **MC simulation:** EV +$122.41, 78% P(profit), p05 $-113.65 / p95 $268.15
 
 ## Top 5 Best Bets
-1. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
-   - Player prop quality score 1.1935
-   - Elite player
-2. **LOL ShowMaker OVER 3.5 Kills**  (78/100 ****, edge —)
-   - Player prop quality score 1.1892
-   - Elite player
-3. **LOL Peyz OVER 4.5 Kills**  (78/100 ****, edge —)
-   - Player prop quality score 1.184
-   - Elite player
-4. **KBO Samsung Lions vs Lotte Giants ML @ -162**  (76/100 *****, edge —)
-   - Model 61.8% (fair -162)
-   - 
-5. **LOL LYON vs Cloud9 Kia ML @ -184**  (76/100 *****, edge —)
-   - Model 64.8% (fair -184)
-   - LCS
+1. **CHW @ CLE 4-leg SGP @ +284**  (100/100 *****, edge +153.2%)
+   - Joint prob 0.260 (correlation boost +0.132)
+   - Leg: Jo Adell OVER 0.5 batter hits
+2. **SDP @ COL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +33.1%)
+   - P(YRFI) 79.1% vs baseline 46.0%
+3. **ATL @ CHC YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +28.0%)
+   - P(YRFI) 74.0% vs baseline 46.0%
+4. **MIA @ ARI YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +24.1%)
+   - P(YRFI) 70.1% vs baseline 46.0%
+5. **BAL @ NYM YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +21.1%)
+   - P(YRFI) 67.1% vs baseline 46.0%
 
-## ⚠️ Trap Warnings — 11 flagged
-- **Juan Brito OVER 0.5 batter hits** (low):
-   - Edge +17.2% looks big but only 0 settled props on this player — model unproven
-- **Chase DeLauter OVER 1.5 batter total bases** (low):
-   - Edge +14.4% looks big but only 0 settled props on this player — model unproven
-- **Colson Montgomery OVER 0.5 batter hits** (low):
-   - Edge +14.1% looks big but only 0 settled props on this player — model unproven
-- **Andrew Benintendi OVER 0.5 batter hits** (low):
+## ⚠️ Trap Warnings — 23 flagged
+- **Andrew Benintendi OVER 0.5 batter hits** (high):
    - Edge +13.5% looks big but only 0 settled props on this player — model unproven
-- **Jo Adell OVER 1.5 batter total bases** (low):
+   - Batter cooling: cooling: 0.464 ops recent vs 0.719 season (-0.255)
+- **Jo Adell OVER 1.5 batter total bases** (high):
    - Edge +13.3% looks big but only 0 settled props on this player — model unproven
+   - Batter cooling: cooling: 0.602 ops recent vs 0.734 season (-0.132)
+- **Hector Rodriguez OVER 0.5 batter hits** (high):
+   - Edge +12.5% looks big but only 0 settled props on this player — model unproven
+   - Batter cooling: cooling: 0.587 ops recent vs 0.688 season (-0.101)
+- **Tristan Peters OVER 0.5 batter hits** (high):
+   - Edge +12.2% looks big but only 0 settled props on this player — model unproven
+   - Batter cooling: cooling: 0.717 ops recent vs 0.806 season (-0.089)
+- **Braden Montgomery OVER 0.5 batter hits** (high):
+   - Edge +10.2% looks big but only 0 settled props on this player — model unproven
+   - Batter cooling: cooling: 0.478 ops recent vs 0.654 season (-0.176)
 
 ## Hot streaks
-**Batters heating up:** Kevin McGonigle (heat +2.64), Riley Greene (heat +1.79), Trea Turner (heat +1.12)
+**Batters heating up:** Eugenio Suarez (heat +2.92), Elly De La Cruz (heat +2.31), Juan Brito (heat +2.24)
+**Pitchers on a run:** Reid Detmers (heat +4.93), Troy Melton (heat -4.46)
+
+## Top correlation-aware SGPs
+- **CHW @ CLE** 4-leg @ +284 fair (joint 0.26, EV +153.2%)
+   - Jo Adell OVER 0.5 batter hits
+   - Jose Ramirez UNDER 1.5 batter total bases
+   - Jose Ramirez OVER 0.5 batter hits
+- **LAD @ CIN** 2-leg @ +111 fair (joint 0.47, EV +25.0%)
+   - Josue De Paula UNDER 0.5 batter hits
+   - Elly De La Cruz OVER 0.5 batter hits
 
 ## Bullpens GASSED tonight
-Athletics, Pittsburgh Pirates, San Diego Padres, San Francisco Giants, St. Louis Cardinals, Texas Rangers, Toronto Blue Jays, Philadelphia Phillies
+Athletics, San Diego Padres, San Francisco Giants, St. Louis Cardinals, Tampa Bay Rays, Texas Rangers, Toronto Blue Jays, Minnesota Twins
 _Lean late-inning OVER on these games; fade their save situations._
+
+## NRFI/YRFI strong leans
+- **YRFI** (1st-inning OVER): SDP @ COL, ATL @ CHC, MIA @ ARI, BAL @ NYM, NYY @ MIN
+- **NRFI** (1st-inning UNDER): CHW @ CLE
 
 ## Golf -- Biltmore Championship Asheville
 - **Leader:** ? (?) at #?
@@ -66,12 +82,12 @@ _Lean late-inning OVER on these games; fade their save situations._
 - Lotte Giants @ Samsung Lions | P(home) 61.8% fair -162 | total 10 R
 - **KBO POD:** Samsung Lions ML vs Lotte Giants (KBO) (HIGH)
 
-## LoL Esports -- 0 live, 30 upcoming
+## LoL Esports -- 1 live, 30 upcoming
+- [EMEA Masters] Movistar KOI Fénix vs Berlin International Gaming BO5 | P(A) 55.0% fair -122/+122
 - [VCS] Saigon MVKE Academy vs Saigon 9Gaming Esports BO3 | P(A) 46.2% fair +116/-116
 - [VCS] Saigon Warrior vs TP.HCM SN CyberCore Esports BO3 | P(A) 61.2% fair -158/+158
 - [VCS] Saigon 1TAP DINO vs Saigon Warrior BO3 | P(A) 38.8% fair +157/-157
 - [VCS] Saigon MVKE Academy vs TP.HCM SN CyberCore Esports BO3 | P(A) 53.7% fair -116/+116
-- [NLC] Verdant vs Arctic Pandas BO5 | P(A) 58.9% fair -143/+143
 - **LoL POT:** LYON ML vs Cloud9 Kia (LCS, BO5) (HIGH)
 
 ## Player Play of the Day -- across all sports (3468 candidates scanned)
