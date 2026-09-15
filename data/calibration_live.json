@@ -1,16 +1,42 @@
 {
-  "generated_at": "2026-09-15T03:31:16",
+  "generated_at": "2026-09-15T11:10:18",
   "lookback_days": 30,
   "shrinkage_n_prior": 5,
   "shrinkage_min_n": 1,
   "shrinkage_note": "Per-market correction = data_weight * raw_correction + (1 - data_weight) * 1.0; data_weight = n / (n + 5). Below n=1 the factor is forced to 1.0. Caps at +/- 25%.",
   "markets": {
-    "batter_singles": {
+    "batter_rbis": {
       "n": 0,
       "correction_factor": 1.0,
-      "n_prior_used": 6,
+      "n_prior_used": 10,
       "data_weight": 0.0,
       "raw_correction": 1.0
+    },
+    "pitcher_strikeouts": {
+      "n": 0,
+      "correction_factor": 1.0,
+      "n_prior_used": 10,
+      "data_weight": 0.0,
+      "raw_correction": 1.0
+    },
+    "batter_total_bases": {
+      "n": 108,
+      "n_with_projection": 108,
+      "implied_over_rate": 0.4724,
+      "actual_over_rate": 0.4537,
+      "bias": 1.0409,
+      "brier": 0.26,
+      "log_loss": 0.7133,
+      "ece": 0.1288,
+      "rmse": 1.946,
+      "plays_n": 73,
+      "plays_won": 32,
+      "plays_lost": 41,
+      "roi_pct": -4.17,
+      "correction_factor": 0.9628,
+      "n_prior_used": 6,
+      "data_weight": 0.9474,
+      "raw_correction": 0.9607
     },
     "batter_doubles": {
       "n": 0,
@@ -38,20 +64,6 @@
       "data_weight": 0.977,
       "raw_correction": 0.9649
     },
-    "batter_home_runs": {
-      "n": 0,
-      "correction_factor": 1.0,
-      "n_prior_used": 12,
-      "data_weight": 0.0,
-      "raw_correction": 1.0
-    },
-    "batter_rbis": {
-      "n": 0,
-      "correction_factor": 1.0,
-      "n_prior_used": 10,
-      "data_weight": 0.0,
-      "raw_correction": 1.0
-    },
     "batter_runs_scored": {
       "n": 0,
       "correction_factor": 1.0,
@@ -59,47 +71,35 @@
       "data_weight": 0.0,
       "raw_correction": 1.0
     },
-    "batter_total_bases": {
-      "n": 108,
-      "n_with_projection": 108,
-      "implied_over_rate": 0.4724,
-      "actual_over_rate": 0.4537,
-      "bias": 1.0409,
-      "brier": 0.26,
-      "log_loss": 0.7133,
-      "ece": 0.1288,
-      "rmse": 1.946,
-      "plays_n": 73,
-      "plays_won": 32,
-      "plays_lost": 41,
-      "roi_pct": -4.17,
-      "correction_factor": 0.9628,
-      "n_prior_used": 6,
-      "data_weight": 0.9474,
-      "raw_correction": 0.9607
-    },
-    "pitcher_strikeouts": {
+    "batter_home_runs": {
       "n": 0,
       "correction_factor": 1.0,
-      "n_prior_used": 10,
+      "n_prior_used": 12,
+      "data_weight": 0.0,
+      "raw_correction": 1.0
+    },
+    "batter_singles": {
+      "n": 0,
+      "correction_factor": 1.0,
+      "n_prior_used": 6,
       "data_weight": 0.0,
       "raw_correction": 1.0
     }
   },
   "games_overall": {
-    "n": 197,
+    "n": 200,
     "n_with_projection": 0,
-    "implied_over_rate": 0.5841,
-    "actual_over_rate": 0.5127,
-    "bias": 1.1386,
-    "brier": 0.2777,
-    "log_loss": 0.9442,
-    "ece": 0.1196,
+    "implied_over_rate": 0.584,
+    "actual_over_rate": 0.52,
+    "bias": 1.1226,
+    "brier": 0.2762,
+    "log_loss": 0.9383,
+    "ece": 0.1115,
     "rmse": null,
     "plays_n": 0,
     "plays_won": 0,
     "plays_lost": 0,
     "roi_pct": 0.0,
-    "correction_factor": 0.8813
+    "correction_factor": 0.8935
   }
 }
