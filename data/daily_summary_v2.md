@@ -1,17 +1,17 @@
-# EdgeStat Daily Summary — 2026-09-14
+# EdgeStat Daily Summary — 2026-09-15
 
-## 🏥 Model Health: 70.8/100 [HEALTHY]
+## 🏥 Model Health: 74.9/100 [HEALTHY]
 - Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 100.0/100
-  - 🔴 Hit Rate Trend: 38.7/100
-  - 🔴 Brier Trend: 38.6/100
+  - 🟢 Calibration Freshness: 99.9/100
+  - 🔴 Hit Rate Trend: 36.4/100
+  - 🔴 Brier Trend: 38.0/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 90.9/100
-  - 🟡 Edge Count: 71.4/100
+  - 🟢 Data Health: 100.0/100
+  - 🟢 Edge Count: 100/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.568)
-- **Total games on board:** 122
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.596)
+- **Total games on board:** 37
 - **Strong home favorites:** 11 | **Strong road dogs:** 6
 
 ## 🎯 Top 5 Best Bets
@@ -58,9 +58,9 @@
 - Hot teams: **5** | Cold teams: **17** | Over-heavy: 0 | Under-heavy: 0
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (108)
-- STEAM_MOVE: **106**
-- COMPOUND_BULLPEN: **2**
+## ⚠️ Anomaly Detector (126)
+- STEAM_MOVE: **122**
+- COMPOUND_BULLPEN: **4**
   - STBK @ BALL (NCAAF): ML/TOTAL steam since open: ML -4.1pp toward STBK; total -5 (UNDER) (8 snapshots)
   - RMU @ AKR (NCAAF): TOTAL steam since open: ML -0.9pp toward RMU; total +5 (OVER) (6 snapshots)
   - ODU @ VT (NCAAF): TOTAL steam since open: ML -0.7pp toward ODU; total -4 (UNDER) (16 snapshots)
@@ -76,13 +76,13 @@
   - #4 [NRFI] $50 on MIA @ ARI YRFI (1st-inning OVER 0.5) (P=70%)
   - #5 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
 
-## 🎯 Convergence Picks (7 stacked games)
-- ELITE: **0** · HIGH: 4 · MED: 3
+## 🎯 Convergence Picks (5 stacked games)
+- ELITE: **0** · HIGH: 2 · MED: 3
   - [HIGH] Los Angeles Sparks @ Dallas Wings : 3 signals (PREGAME, ATS, ATS)
   - [HIGH] Philadelphia Union @ San Diego FC : 3 signals (HEAT_COLD, HEAT_COLD, ATS)
-  - [HIGH] Brighton & Hove Albion @ Coventry City : 3 signals (HEAT_COLD, ATS, ATS)
-  - [HIGH] Manchester City @ Manchester United : 3 signals (HEAT_COLD, ATS, ATS)
   - [MED] Connecticut Sun @ Atlanta Dream : 2 signals (ATS, ATS)
+  - [MED] Phoenix Mercury @ Portland Fire : 2 signals (PREGAME, ATS)
+  - [MED] New England Revolution @ Chicago Fire FC : 2 signals (HEAT_COLD, ATS)
 
 ## ⚾ Top MLB Pitcher K Plays (5)
 - **Gavin Williams** OVER 7.5 K (77%) fair -329
@@ -102,12 +102,12 @@
   - [LEAN] **Luis Hernandez** (7-0-0) vs Hugo Guillon -- fair -133
   - [COIN_FLIP] **Igor Cavalcanti** (13-2-0) vs Oscar Ravello -- fair -124
 
-## 🔥 MLB Batter Heat (55 HOT / 61 COLD)
+## 🔥 MLB Batter Heat (55 HOT / 55 COLD)
   - 🔥 **Victor Mesa Jr.** (TB): L14 .439 / season .261 (+178pts)
   - 🔥 **Tyrone Taylor** (CHC): L14 .450 / season .278 (+172pts)
   - 🔥 **Lars Nootbaar** (AZ): L14 .387 / season .240 (+147pts)
-  - 🔥 **Elly De La Cruz** (CIN): L14 .423 / season .284 (+139pts)
-  - 🔥 **Ha-Seong Kim** (ATL): L14 .265 / season .128 (+137pts)
+  - 🔥 **Thomas Saggese** (STL): L14 .404 / season .266 (+138pts)
+  - 🔥 **Ha-Seong Kim** (ATL): L14 .265 / season .127 (+138pts)
   - ❄️ **Jeremiah Jackson** (BAL): L14 .080 / season .228 (-148pts) -- FADE props
   - ❄️ **Andruw Monasterio** (BOS): L14 .093 / season .240 (-147pts) -- FADE props
   - ❄️ **Taylor Ward** (SEA): L14 .086 / season .225 (-139pts) -- FADE props
@@ -126,5 +126,5 @@
 
 ## 🤖 Self-Training Status
 - **MLS**: n=58 games · hit rate 37.9% · bias +0.7pp
-- **EPL**: n=30 games · hit rate 23.3% · bias +21.6pp [calibration applied]
-- **MLB**: n=188 games · hit rate 48.4% · bias -3.6pp [calibration applied]
+- **EPL**: n=30 games · hit rate 23.3% · bias +15.0pp [calibration applied]
+- **MLB**: n=176 games · hit rate 51.1% · bias -3.7pp [calibration applied]
