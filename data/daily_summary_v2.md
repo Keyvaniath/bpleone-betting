@@ -10,16 +10,16 @@
   - 🟢 Edge Count: 100/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.596)
-- **Total games on board:** 37
-- **Strong home favorites:** 11 | **Strong road dogs:** 6
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.582)
+- **Total games on board:** 40
+- **Strong home favorites:** 11 | **Strong road dogs:** 7
 
 ## 🎯 Top 5 Best Bets
-1. **CHW @ CLE 4-leg SGP @ +284** (100/100 ★★★★★)
-2. **SDP @ COL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-3. **ATL @ CHC YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-4. **MIA @ ARI YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-5. **BAL @ NYM YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+1. **LAD @ CIN YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+2. **MIA @ ARI YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+3. **BAL @ NYM YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+4. **SDP @ COL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+5. **SFG @ STL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -58,23 +58,23 @@
 - Hot teams: **5** | Cold teams: **17** | Over-heavy: 0 | Under-heavy: 0
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (126)
-- STEAM_MOVE: **122**
-- COMPOUND_BULLPEN: **4**
+## ⚠️ Anomaly Detector (119)
+- STEAM_MOVE: **112**
+- COMPOUND_BULLPEN: **7**
   - STBK @ BALL (NCAAF): ML/TOTAL steam since open: ML -4.1pp toward STBK; total -5 (UNDER) (8 snapshots)
   - RMU @ AKR (NCAAF): TOTAL steam since open: ML -0.9pp toward RMU; total +5 (OVER) (6 snapshots)
   - ODU @ VT (NCAAF): TOTAL steam since open: ML -0.7pp toward ODU; total -4 (UNDER) (16 snapshots)
   - WEB @ COLO (NCAAF): TOTAL steam since open: ML -0.9pp toward WEB; total +4 (OVER) (7 snapshots)
-  - SDST @ NU (NCAAF): TOTAL steam since open: ML -0.5pp toward SDST; total +3 (OVER) (9 snapshots)
+  - ALA @ UK (NCAAF): TOTAL steam since open: ML +2.1pp toward UK; total -3 (UNDER) (20 snapshots)
 
-## 💰 Today's Portfolio (8 picks)
-- Total stake: **$340.0** (34.0% of $1000 bankroll)
-- Expected EV: **$-20.74**
-  - #1 [SGP] $50 on CHW @ CLE 4-leg SGP @ +284 (P=26%)
-  - #2 [NRFI] $50 on SDP @ COL YRFI (1st-inning OVER 0.5) (P=79%)
-  - #3 [NRFI] $50 on ATL @ CHC YRFI (1st-inning OVER 0.5) (P=74%)
-  - #4 [NRFI] $50 on MIA @ ARI YRFI (1st-inning OVER 0.5) (P=70%)
-  - #5 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
+## 💰 Today's Portfolio (9 picks)
+- Total stake: **$345.0** (34.5% of $1000 bankroll)
+- Expected EV: **$10.02**
+  - #1 [NRFI] $50 on LAD @ CIN YRFI (1st-inning OVER 0.5) (P=78%)
+  - #2 [NRFI] $50 on MIA @ ARI YRFI (1st-inning OVER 0.5) (P=76%)
+  - #3 [NRFI] $50 on BAL @ NYM YRFI (1st-inning OVER 0.5) (P=70%)
+  - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
+  - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
 ## 🎯 Convergence Picks (5 stacked games)
 - ELITE: **0** · HIGH: 2 · MED: 3
@@ -84,12 +84,12 @@
   - [MED] Phoenix Mercury @ Portland Fire : 2 signals (PREGAME, ATS)
   - [MED] New England Revolution @ Chicago Fire FC : 2 signals (HEAT_COLD, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (5)
-- **Gavin Williams** OVER 7.5 K (77%) fair -329
-- **Reynaldo López** OVER 4.5 K (70%) fair -234
-- **Reid Detmers** OVER 5.5 K (68%) fair -216
-- **Tarik Skubal** OVER 5.5 K (67%) fair -200
-- **Will Warren** OVER 4.5 K (60%) fair -148
+## ⚾ Top MLB Pitcher K Plays (11)
+- **Hunter Brown** OVER 4.5 K (75%) fair -295
+- **Jack Perkins** OVER 6.5 K (74%) fair -287
+- **Yoshinobu Yamamoto** OVER 5.5 K (73%) fair -270
+- **Kevin Gausman** OVER 4.5 K (71%) fair -251
+- **Lake Bachar** OVER 7.5 K (70%) fair -232
 
 ## 🏀 NBA Player Heat (2 HOT / 0 COLD)
   - 🔥 **Scottie Barnes** (TOR): L5 24.4/7.6/9.6 vs season 18.6/5.8/8.8 [PTS +5.8]
@@ -102,17 +102,17 @@
   - [LEAN] **Luis Hernandez** (7-0-0) vs Hugo Guillon -- fair -133
   - [COIN_FLIP] **Igor Cavalcanti** (13-2-0) vs Oscar Ravello -- fair -124
 
-## 🔥 MLB Batter Heat (55 HOT / 55 COLD)
+## 🔥 MLB Batter Heat (59 HOT / 59 COLD)
   - 🔥 **Victor Mesa Jr.** (TB): L14 .439 / season .261 (+178pts)
   - 🔥 **Tyrone Taylor** (CHC): L14 .450 / season .278 (+172pts)
-  - 🔥 **Lars Nootbaar** (AZ): L14 .387 / season .240 (+147pts)
-  - 🔥 **Thomas Saggese** (STL): L14 .404 / season .266 (+138pts)
-  - 🔥 **Ha-Seong Kim** (ATL): L14 .265 / season .127 (+138pts)
+  - 🔥 **Jakob Marsee** (MIA): L14 .380 / season .226 (+154pts)
+  - 🔥 **Thomas Saggese** (STL): L14 .400 / season .268 (+132pts)
+  - 🔥 **Ha-Seong Kim** (ATL): L14 .257 / season .126 (+131pts)
   - ❄️ **Jeremiah Jackson** (BAL): L14 .080 / season .228 (-148pts) -- FADE props
   - ❄️ **Andruw Monasterio** (BOS): L14 .093 / season .240 (-147pts) -- FADE props
-  - ❄️ **Taylor Ward** (SEA): L14 .086 / season .225 (-139pts) -- FADE props
+  - ❄️ **Taylor Ward** (SEA): L14 .091 / season .225 (-134pts) -- FADE props
   - ❄️ **Brandon Marsh** (PHI): L14 .133 / season .264 (-131pts) -- FADE props
-  - ❄️ **José Tena** (WSH): L14 .103 / season .225 (-122pts) -- FADE props
+  - ❄️ **Jung Hoo Lee** (SF): L14 .151 / season .277 (-126pts) -- FADE props
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**
@@ -122,9 +122,9 @@
   - ⚠️ batter_rbis (Brier Δ -0.0052)
 
 ## 🧠 Training Convergence
-- ELITE: **1** · HEALTHY: 0 · OK: 0 · DEGRADED: **1**
+- ELITE: **0** · HEALTHY: 1 · OK: 1 · DEGRADED: **0**
 
 ## 🤖 Self-Training Status
 - **MLS**: n=58 games · hit rate 37.9% · bias +0.7pp
 - **EPL**: n=30 games · hit rate 23.3% · bias +15.0pp [calibration applied]
-- **MLB**: n=176 games · hit rate 51.1% · bias -3.7pp [calibration applied]
+- **MLB**: n=186 games · hit rate 51.1% · bias -3.1pp [calibration applied]
