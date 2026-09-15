@@ -1,14 +1,14 @@
 # Tonight's Slate Brief — 2026-09-15
 
 ## Slate Quality: 55/100 (MEDIUM)
-_0% lineups confirmed · 12 rookie SPs_
+_0% lineups confirmed · 13 rookie SPs_
 **Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
 - **15 games** scheduled
-- **35 best bets** scored: 5 DK · 0 PP · 12 NRFI · 0 SGP
+- **34 best bets** scored: 5 DK · 0 PP · 12 NRFI · 0 SGP
 - **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$46.62
-- **MC simulation:** EV +$150.26, 84% P(profit), p05 $-104.45 / p95 $372.8
+- **MC simulation:** EV +$149.61, 84% P(profit), p05 $-97.99 / p95 $379.26
 
 ## Top 5 Best Bets
 1. **LAD @ CIN YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +31.9%)
@@ -22,7 +22,7 @@ _0% lineups confirmed · 12 rookie SPs_
 5. **SFG @ STL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +20.2%)
    - P(YRFI) 66.2% vs baseline 46.0%
 
-## ⚠️ Trap Warnings — 14 flagged
+## ⚠️ Trap Warnings — 15 flagged
 - **LAD @ CIN YRFI (1st-inning OVER 0.5)** (low):
    - Edge +31.9% looks big but only 0 settled props on this player — model unproven
 - **MIA @ ARI YRFI (1st-inning OVER 0.5)** (low):
@@ -35,11 +35,11 @@ _0% lineups confirmed · 12 rookie SPs_
    - Edge +20.2% looks big but only 0 settled props on this player — model unproven
 
 ## Hot streaks
-**Batters heating up:** Kyle Tucker (heat +3.48), Elly De La Cruz (heat +2.10), Juan Brito (heat +1.86)
-**Pitchers on a run:** Sean Manaea (heat -2.52), Drew Anderson (heat -3.62)
+**Batters heating up:** Victor Mesa Jr. (heat +3.68), Lawrence Butler (heat +3.09), Richie Palacios (heat +2.74)
+**Pitchers on a run:** Braydon Fisher (heat +6.19), Drew Anderson (heat -3.62)
 
 ## Bullpens GASSED tonight
-Athletics, San Diego Padres, San Francisco Giants, St. Louis Cardinals, Tampa Bay Rays, Texas Rangers, Toronto Blue Jays, Minnesota Twins
+San Diego Padres, San Francisco Giants, Minnesota Twins, Atlanta Braves, Chicago White Sox, Miami Marlins, New York Yankees, Arizona Diamondbacks
 _Lean late-inning OVER on these games; fade their save situations._
 
 ## NRFI/YRFI strong leans

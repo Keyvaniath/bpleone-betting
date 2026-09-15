@@ -1,5 +1,5 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-09-15T14:06:52 UTC_
+_Generated 2026-09-15T18:07:23 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
@@ -31,19 +31,19 @@ _Generated 2026-09-15T14:06:52 UTC_
    - Rationale: Cross-sport top pick (MLB_PITCHER)
 
 ## Slate ROI Projection
-- **Picks:** 2
+- **Picks:** 1
 - **Avg edge:** -0.91%
 - **Expected ROI (1/4 Kelly):** 0.0%
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
+- **MLB** / Davis Martin (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
 - **NBA** / MIA (TEAM_FADE)
   - Fade angle: team total UNDER
 - **NBA** / TOR (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NHL** / casey desmith (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / jake oettinger (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
 - **NHL** / calvin pickard (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / marc-andre fleury (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
