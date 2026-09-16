@@ -1,23 +1,23 @@
 {
-  "generated_at": "2026-09-16T19:17:13",
+  "generated_at": "2026-09-16T21:24:17",
   "stake_assumption": "1u flat per pick",
   "total_picks": 12619,
-  "n_settled": 11150,
-  "n_pending": 957,
-  "n_void": 512,
-  "wins": 4179,
+  "n_settled": 11151,
+  "n_pending": 954,
+  "n_void": 514,
+  "wins": 4180,
   "losses": 6961,
   "pushes": 10,
-  "hit_rate": 0.3751,
-  "net_units": -2145.88,
-  "roi_pct": -19.26,
+  "hit_rate": 0.3752,
+  "net_units": -2141.8,
+  "roi_pct": -19.22,
   "n_calibrated_picks": 12499,
   "calibrated_reliability": {
-    "n": 11025,
-    "ece_raw": 0.0889,
+    "n": 11026,
+    "ece_raw": 0.0888,
     "ece_calibrated": 0.0118,
-    "brier_raw": 0.20868,
-    "brier_calibrated": 0.19152,
+    "brier_raw": 0.20872,
+    "brier_calibrated": 0.19154,
     "note": "In-sample over the settled ledger (the isotonic transform is fit on these same outcomes); held-out 70/30 validation is in recalibration_map.json. p_predicted = raw model prob (kept untouched for the learning loop); p_calibrated = honest prob stamped per pick. Lower ECE/Brier on the calibrated column = the displayed % is truer."
   },
   "curated": {
@@ -49,10 +49,10 @@
     }
   },
   "n_added_this_run": 0,
-  "n_newly_settled_this_run": 0,
+  "n_newly_settled_this_run": 3,
   "n_resettled_this_run": 0,
   "n_voided_this_run": 0,
-  "n_duplicates_collapsed_this_run": 0,
+  "n_duplicates_collapsed_this_run": 2,
   "n_duplicate_adds_blocked_this_run": 157,
   "n_reconciled_settled_voids": 0,
   "n_bootstrapped_from_locks_history": 0,
@@ -409,13 +409,13 @@
       "roi_pct": 17.54
     },
     "ufc_r1_fight_r1_finish_yes": {
-      "n": 141,
-      "wins": 58,
+      "n": 142,
+      "wins": 59,
       "losses": 83,
       "pushes": 0,
-      "net_units": 122.59,
-      "hit_rate": 0.4113,
-      "roi_pct": 86.94
+      "net_units": 126.67,
+      "hit_rate": 0.4155,
+      "roi_pct": 89.2
     },
     "mlb_2plus_hits_hits_2plus_yes": {
       "n": 194,
@@ -2124,12 +2124,12 @@
       "hit_rate": 0.5333
     },
     "fight_r1_finish_yes": {
-      "n": 141,
-      "wins": 58,
+      "n": 142,
+      "wins": 59,
       "losses": 83,
       "pushes": 0,
-      "net_units": 122.59,
-      "hit_rate": 0.4113
+      "net_units": 126.67,
+      "hit_rate": 0.4155
     },
     "hits_2plus_yes": {
       "n": 194,
@@ -2950,12 +2950,12 @@
       "hit_rate": 0.5333
     },
     "fight_r1_finish_yes": {
-      "n": 141,
-      "wins": 58,
+      "n": 142,
+      "wins": 59,
       "losses": 83,
       "pushes": 0,
-      "net_units": 122.59,
-      "hit_rate": 0.4113
+      "net_units": 126.67,
+      "hit_rate": 0.4155
     },
     "mlb_hit_1.5_over": {
       "n": 194,
@@ -3562,15 +3562,15 @@
     },
     "UFC": {
       "n": 190,
-      "settled": 141,
-      "wins": 58,
+      "settled": 142,
+      "wins": 59,
       "losses": 83,
       "pushes": 0,
-      "pending": 5,
-      "void": 44,
-      "net_units": 122.59,
-      "hit_rate": 0.4113,
-      "roi_pct": 86.94,
+      "pending": 2,
+      "void": 46,
+      "net_units": 126.67,
+      "hit_rate": 0.4155,
+      "roi_pct": 89.2,
       "markets": 1
     },
     "MLS": {
@@ -3705,10 +3705,10 @@
     }
   },
   "last_7_days": {
-    "wins": 497,
+    "wins": 498,
     "losses": 365,
-    "net_units": -22.61,
-    "hit_rate": 0.5766
+    "net_units": -18.53,
+    "hit_rate": 0.5771
   },
   "picks": [
     {
@@ -315597,11 +315597,22 @@
       "matchup": "Hugo Guillon vs Luis Hernandez",
       "date": "2026-09-16",
       "pick_id": "ufc_r1_fight_r1_finish_yes|UFC|Hugo_Guillon_vs_Luis_Hernandez|FIGHT_R1_FINISH_YES|2026-09-16",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "lost",
+      "payout_units": -1.0,
       "recorded_at": "2026-09-16T07:45:40",
-      "p_calibrated": 0.4043
+      "p_calibrated": 0.4043,
+      "outcome": {
+        "fight": "Hugo Guillon vs Luis Hernandez",
+        "winner": "Luis Hernandez",
+        "ended_round": 2,
+        "market": "FIGHT_R1_FINISH_YES",
+        "verify": "Luis Hernandez def. opponent (ended R2) \u2014 FIGHT_R1_FINISH_YES"
+      },
+      "settled_at": "2026-09-16T21:24:17",
+      "voided": true,
+      "voided_at": "2026-09-16T21:24:17",
+      "voided_reason": "duplicate wager: same event/bet recorded more than once (event re-add or twin board); collapsed to the first copy"
     },
     {
       "source": "ufc_r1_fight_r1_finish_yes",
@@ -315614,11 +315625,19 @@
       "matchup": "Ednilson Santos vs Akbar Abdullaev",
       "date": "2026-09-16",
       "pick_id": "ufc_r1_fight_r1_finish_yes|UFC|Ednilson_Santos_vs_Akbar_Abdullaev|FIGHT_R1_FINISH_YES|2026-09-16",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "won",
+      "payout_units": 4.08,
       "recorded_at": "2026-09-16T07:45:40",
-      "p_calibrated": 0.323
+      "p_calibrated": 0.323,
+      "outcome": {
+        "fight": "Ednilson Santos vs Akbar Abdullaev",
+        "winner": "Akbar Abdullaev",
+        "ended_round": 1,
+        "market": "FIGHT_R1_FINISH_YES",
+        "verify": "Akbar Abdullaev def. opponent (ended R1) \u2014 FIGHT_R1_FINISH_YES"
+      },
+      "settled_at": "2026-09-16T21:24:17"
     },
     {
       "source": "ufc_r1_fight_r1_finish_yes",
@@ -315631,11 +315650,22 @@
       "matchup": "Antonio Monteiro vs Tyshawn Williams",
       "date": "2026-09-16",
       "pick_id": "ufc_r1_fight_r1_finish_yes|UFC|Antonio_Monteiro_vs_Tyshawn_Williams|FIGHT_R1_FINISH_YES|2026-09-16",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "lost",
+      "payout_units": -1.0,
       "recorded_at": "2026-09-16T07:45:40",
-      "p_calibrated": 0.323
+      "p_calibrated": 0.323,
+      "outcome": {
+        "fight": "Antonio Monteiro vs Tyshawn Williams",
+        "winner": "Tyshawn Williams",
+        "ended_round": 3,
+        "market": "FIGHT_R1_FINISH_YES",
+        "verify": "Tyshawn Williams def. opponent (ended R3) \u2014 FIGHT_R1_FINISH_YES"
+      },
+      "settled_at": "2026-09-16T21:24:17",
+      "voided": true,
+      "voided_at": "2026-09-16T21:24:17",
+      "voided_reason": "duplicate wager: same event/bet recorded more than once (event re-add or twin board); collapsed to the first copy"
     },
     {
       "source": "top_25_board",
