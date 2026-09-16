@@ -1,13 +1,13 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-09-16T00:04:14 UTC_
+_Generated 2026-09-16T14:07:46 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -150
+- **Score:** -156
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 7
-- **Total FADES:** 178
+- **Total STRONG:** 6
+- **Total FADES:** 180
 
 ## Top 5 Curated Picks
 1. **WNBA / kelsey plum** (WNBA_PLAYER, score=121.25)
@@ -16,9 +16,6 @@ _Generated 2026-09-16T00:04:14 UTC_
 2. **WNBA / kahleah copper** (WNBA_PLAYER, score=118.33)
    - Play: kahleah copper (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (WNBA_PLAYER)
-3. **MLB / Michael Wacha** (MLB_PITCHER, score=57.25)
-   - Play: Michael Wacha (PITCHER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_PITCHER)
 
 ## Slate ROI Projection
 - **Picks:** 0
@@ -27,13 +24,13 @@ _Generated 2026-09-16T00:04:14 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **MLB** / Blade Tidwell (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
 - **NBA** / MIA (TEAM_FADE)
   - Fade angle: team total UNDER
 - **NBA** / TOR (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NHL** / stuart skinner (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / jake oettinger (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
+- **MLB** / Logan Gilbert (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Kyle Freeland (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Walker Buehler (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
