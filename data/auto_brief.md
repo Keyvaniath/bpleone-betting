@@ -1,51 +1,50 @@
 # Tonight's Slate Brief — 2026-09-16
 
-## Slate Quality: 55/100 (MEDIUM)
-_0% lineups confirmed · 13 rookie SPs_
+## Slate Quality: 58/100 (MEDIUM)
+_8% lineups confirmed · 9 rookie SPs_
 **Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
-- **15 games** scheduled
-- **31 best bets** scored: 8 DK · 0 PP · 4 NRFI · 0 SGP
-- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$35.72
-- **MC simulation:** EV +$59.48, 77% P(profit), p05 $-95.2 / p95 $191.15
+- **12 games** scheduled
+- **39 best bets** scored: 8 DK · 0 PP · 14 NRFI · 0 SGP
+- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$39.37
+- **MC simulation:** EV +$173.14, 83% P(profit), p05 $-105.25 / p95 $425.37
 
 ## Top 5 Best Bets
-1. **MIA @ ARI YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +29.7%)
-   - P(YRFI) 75.7% vs baseline 46.0%
-2. **SDP @ COL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +20.5%)
-   - P(YRFI) 66.5% vs baseline 46.0%
-3. **SEA @ LAA YRFI (1st-inning OVER 0.5)**  (79/100 ****, edge +19.0%)
-   - P(YRFI) 65.0% vs baseline 46.0%
-4. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
-   - Player prop quality score 1.1935
-   - Elite player
-5. **LOL ShowMaker OVER 3.5 Kills**  (78/100 ****, edge —)
-   - Player prop quality score 1.1892
-   - Elite player
+1. **SFG @ STL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +28.3%)
+   - P(YRFI) 74.3% vs baseline 46.0%
+2. **BAL @ NYM YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +25.7%)
+   - P(YRFI) 71.7% vs baseline 46.0%
+3. **BOS @ TEX YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +24.7%)
+   - P(YRFI) 70.7% vs baseline 46.0%
+4. **DET @ TOR YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +23.9%)
+   - P(YRFI) 70.0% vs baseline 46.0%
+5. **CHW @ CLE YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +21.1%)
+   - P(YRFI) 67.1% vs baseline 46.0%
 
-## ⚠️ Trap Warnings — 10 flagged
-- **MIA @ ARI YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +29.7% looks big but only 0 settled props on this player — model unproven
-- **SDP @ COL YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +20.5% looks big but only 0 settled props on this player — model unproven
-- **SEA @ LAA YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +19.0% looks big but only 0 settled props on this player — model unproven
-- **Bryce Eldridge OVER 1.5 batter total bases** (low):
-   - Edge +15.2% looks big but only 0 settled props on this player — model unproven
-- **Randal Grichuk OVER 0.5 batter hits** (low):
-   - Edge +10.4% looks big but only 0 settled props on this player — model unproven
+## ⚠️ Trap Warnings — 21 flagged
+- **Jordan Walker OVER 1.5 batter total bases** (high):
+   - Edge +9.6% looks big but only 0 settled props on this player — model unproven
+   - Batter cooling: cooling: 0.463 ops recent vs 0.818 season (-0.355)
+- **SFG @ STL YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +28.3% looks big but only 0 settled props on this player — model unproven
+- **BAL @ NYM YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +25.7% looks big but only 0 settled props on this player — model unproven
+- **BOS @ TEX YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +24.7% looks big but only 0 settled props on this player — model unproven
+- **DET @ TOR YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +23.9% looks big but only 0 settled props on this player — model unproven
 
 ## Hot streaks
-**Batters heating up:** Victor Mesa Jr. (heat +6.20), Nolan Arenado (heat +5.50), Lawrence Butler (heat +5.07)
-**Pitchers on a run:** Jacob deGrom (heat +6.12), Michael Wacha (heat -5.44)
+**Batters heating up:** Andrew Knizner (heat +2.16), Randal Grichuk (heat +1.93), Steven Kwan (heat +1.18)
+**Pitchers on a run:** Daniel Lynch IV (heat -0.79)
 
 ## Bullpens GASSED tonight
-San Diego Padres, San Francisco Giants, Minnesota Twins, Atlanta Braves, Chicago White Sox, Miami Marlins, New York Yankees, Arizona Diamondbacks
+Toronto Blue Jays, Atlanta Braves, Chicago White Sox, Miami Marlins, Arizona Diamondbacks, Baltimore Orioles, Cincinnati Reds, Cleveland Guardians
 _Lean late-inning OVER on these games; fade their save situations._
 
 ## NRFI/YRFI strong leans
-- **YRFI** (1st-inning OVER): MIA @ ARI, SDP @ COL, SEA @ LAA
+- **YRFI** (1st-inning OVER): SFG @ STL, BAL @ NYM, BOS @ TEX, DET @ TOR, CHW @ CLE
 
 ## Golf -- Biltmore Championship Asheville
 - **Leader:** Ryan Brehm (E) at #1
@@ -65,8 +64,8 @@ _Lean late-inning OVER on these games; fade their save situations._
 - SSG Landers @ NC Dinos | P(home) 49.2% fair +103 | total 9 R
 - Kiwoom Heroes @ KIA Tigers | P(home) 76.2% fair -321 | total 9 R
 
-## LoL Esports -- 0 live, 30 upcoming
-- [NLC] Verdant vs Ruddy Corporation BO5 | P(A) 52.7% fair -111/+111
+## LoL Esports -- 1 live, 30 upcoming
+- [NLC] Ruddy Corporation vs Verdant BO5 | P(A) 47.3% fair +111/-111
 - [LPL] TOP ESPORTS vs Invictus Gaming BO5 | P(A) 26.2% fair +282/-282
 - [LPL] Xi'an Team WE vs Beijing JDG Esports BO5 | P(A) 25.5% fair +292/-292
 - [LEC] Movistar KOI vs Natus Vincere BO5 | P(A) 47.5% fair +111/-111

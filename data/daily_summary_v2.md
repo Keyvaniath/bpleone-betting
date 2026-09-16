@@ -1,13 +1,13 @@
 # EdgeStat Daily Summary — 2026-09-16
 
-## 🏥 Model Health: 65.1/100 [OK]
+## 🏥 Model Health: 65.8/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.9/100
-  - 🔴 Hit Rate Trend: 11.3/100
-  - 🔴 Brier Trend: 27.4/100
+  - 🟢 Calibration Freshness: 100.0/100
+  - 🔴 Hit Rate Trend: 0/100
+  - 🔴 Brier Trend: 41.7/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 95.5/100
-  - 🟢 Edge Count: 82.9/100
+  - 🟢 Data Health: 100.0/100
+  - 🟡 Edge Count: 74.3/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.582)
@@ -15,14 +15,11 @@
 - **Strong home favorites:** 11 | **Strong road dogs:** 7
 
 ## 🎯 Top 5 Best Bets
-1. **MIA @ ARI YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-2. **SDP @ COL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-3. **SEA @ LAA YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
-4. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
-5. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
-
-## 📡 Sharp Action (Line Movement)
-- [MODERATE] **SEA @ LAA** ml_away: 53.49% → 57.98% (+4.5pp)
+1. **SFG @ STL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+2. **BAL @ NYM YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+3. **BOS @ TEX YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+4. **DET @ TOR YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+5. **CHW @ CLE YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -61,9 +58,10 @@
 - Hot teams: **5** | Cold teams: **17** | Over-heavy: 0 | Under-heavy: 0
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (120)
+## ⚠️ Anomaly Detector (123)
 - STEAM_MOVE: **119**
-- COMPOUND_BULLPEN: **1**
+- COMPOUND_BULLPEN: **3**
+- PEN_MISMATCH: **1**
   - STBK @ BALL (NCAAF): ML/TOTAL steam since open: ML -4.1pp toward STBK; total -5 (UNDER) (8 snapshots)
   - RMU @ AKR (NCAAF): TOTAL steam since open: ML -0.9pp toward RMU; total +5 (OVER) (6 snapshots)
   - ODU @ VT (NCAAF): TOTAL steam since open: ML -0.7pp toward ODU; total -4 (UNDER) (16 snapshots)
@@ -71,11 +69,11 @@
   - ALA @ UK (NCAAF): TOTAL steam since open: ML +2.1pp toward UK; total -3 (UNDER) (20 snapshots)
 
 ## 💰 Today's Portfolio (9 picks)
-- Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$-1.83**
-  - #1 [NRFI] $50 on MIA @ ARI YRFI (1st-inning OVER 0.5) (P=76%)
-  - #2 [NRFI] $50 on SDP @ COL YRFI (1st-inning OVER 0.5) (P=66%)
-  - #3 [NRFI] $35 on SEA @ LAA YRFI (1st-inning OVER 0.5) (P=65%)
+- Total stake: **$330.0** (33.0% of $1000 bankroll)
+- Expected EV: **$5.0**
+  - #1 [NRFI] $50 on SFG @ STL YRFI (1st-inning OVER 0.5) (P=74%)
+  - #2 [NRFI] $50 on BAL @ NYM YRFI (1st-inning OVER 0.5) (P=72%)
+  - #3 [NRFI] $50 on BOS @ TEX YRFI (1st-inning OVER 0.5) (P=71%)
   - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
@@ -87,22 +85,23 @@
   - [MED] Phoenix Mercury @ Portland Fire : 2 signals (PREGAME, ATS)
   - [MED] Red Bull New York @ New York City FC : 2 signals (ATS, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (4)
-- **Hunter Brown** OVER 4.5 K (75%) fair -295
-- **Logan Gilbert** OVER 5.5 K (67%) fair -200
-- **Jacob deGrom** OVER 5.5 K (65%) fair -186
-- **Michael Soroka** OVER 4.5 K (60%) fair -153
+## ⚾ Top MLB Pitcher K Plays (11)
+- **Logan Henderson** OVER 4.5 K (78%) fair -347
+- **Anthony Molina** OVER 4.5 K (75%) fair -299
+- **Blake Snell** OVER 5.5 K (72%) fair -262
+- **Parker Messick** OVER 5.5 K (70%) fair -233
+- **Daniel Lynch IV** OVER 5.5 K (69%) fair -226
 
 ## 🏀 NBA Player Heat (2 HOT / 0 COLD)
   - 🔥 **Scottie Barnes** (TOR): L5 24.4/7.6/9.6 vs season 18.6/5.8/8.8 [PTS +5.8]
   - 🔥 **RJ Barrett** (TOR): L5 24.6/7.6/4.0 vs season 21.4/5.5/3.6 [REB +2.1]
 
 ## 🥊 UFC Fight Matchups (Dana White's Contender Series: Season 10, Week 6)
-  - [FAVORITE] **Akbar Abdullaev** (13-0-0) vs Ednilson Santos -- fair -208
-  - [LEAN] **Zevan Hunt** (7-0-0) vs Mayton Perea -- fair -185
+  - [FAVORITE] **Akbar Abdullaev** (14-0-0) vs Ednilson Santos -- fair -222
+  - [LEAN] **Luis Hernandez** (8-0-0) vs Hugo Guillon -- fair -167
   - [LEAN] **Tyshawn Williams** (9-0-0) vs Antonio Monteiro -- fair -160
-  - [LEAN] **Luis Hernandez** (7-0-0) vs Hugo Guillon -- fair -133
-  - [COIN_FLIP] **Igor Cavalcanti** (13-2-0) vs Oscar Ravello -- fair -124
+  - [LEAN] **Igor Cavalcanti** (14-2-0) vs Oscar Ravello -- fair -139
+  - [COIN_FLIP] **Zevan Hunt** (7-1-0) vs Mayton Perea -- fair -130
 
 ## ⛳ Golf Player Heat (from Biltmore Championship Asheville)
   - 🔥 T1 **Ryan Brehm** (USA): +0 total -- finished T1
@@ -111,16 +110,16 @@
   - 🔥 T4 **Justin Lower** (USA): +0 total -- finished T4
   - 🔥 T5 **Nick Hardy** (USA): +0 total -- finished T5
 
-## 🔥 MLB Batter Heat (48 HOT / 58 COLD)
+## 🔥 MLB Batter Heat (48 HOT / 54 COLD)
   - 🔥 **Victor Mesa Jr.** (TB): L14 .419 / season .257 (+162pts)
   - 🔥 **Teoscar Hernández** (LAD): L14 .417 / season .266 (+151pts)
   - 🔥 **Joey Ortiz** (MIL): L14 .415 / season .270 (+145pts)
   - 🔥 **Ha-Seong Kim** (ATL): L14 .257 / season .126 (+131pts)
   - 🔥 **Elly De La Cruz** (CIN): L14 .415 / season .286 (+129pts)
   - ❄️ **Andruw Monasterio** (BOS): L14 .100 / season .239 (-139pts) -- FADE props
+  - ❄️ **Colson Montgomery** (CWS): L14 .067 / season .203 (-136pts) -- FADE props
   - ❄️ **Isaac Collins** (KC): L14 .086 / season .220 (-134pts) -- FADE props
   - ❄️ **Brandon Marsh** (PHI): L14 .133 / season .264 (-131pts) -- FADE props
-  - ❄️ **Jung Hoo Lee** (SF): L14 .148 / season .276 (-128pts) -- FADE props
   - ❄️ **Taylor Ward** (SEA): L14 .097 / season .224 (-127pts) -- FADE props
 
 ## 📈 Streak Regression Alerts (1)
@@ -134,9 +133,9 @@
   - ⚠️ batter_rbis (Brier Δ -0.0052)
 
 ## 🧠 Training Convergence
-- ELITE: **0** · HEALTHY: 1 · OK: 1 · DEGRADED: **0**
+- ELITE: **0** · HEALTHY: 2 · OK: 0 · DEGRADED: **0**
 
 ## 🤖 Self-Training Status
 - **MLS**: n=58 games · hit rate 37.9% · bias +0.7pp
 - **EPL**: n=30 games · hit rate 23.3% · bias +15.0pp [calibration applied]
-- **MLB**: n=186 games · hit rate 49.5% · bias -4.5pp [calibration applied]
+- **MLB**: n=171 games · hit rate 46.8% · bias -4.2pp [calibration applied]
