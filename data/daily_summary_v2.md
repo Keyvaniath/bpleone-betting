@@ -1,13 +1,13 @@
-# EdgeStat Daily Summary — 2026-09-15
+# EdgeStat Daily Summary — 2026-09-16
 
-## 🏥 Model Health: 70.2/100 [HEALTHY]
-- Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 99.9/100
-  - 🔴 Hit Rate Trend: 26.2/100
-  - 🔴 Brier Trend: 32.0/100
+## 🏥 Model Health: 66.0/100 [OK]
+- Operational but room to improve - check yellow components
+  - 🟢 Calibration Freshness: 100.0/100
+  - 🔴 Hit Rate Trend: 11.3/100
+  - 🔴 Brier Trend: 27.4/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 100.0/100
-  - 🟢 Edge Count: 85.7/100
+  - 🟢 Edge Count: 82.9/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.582)
@@ -58,9 +58,10 @@
 - Hot teams: **5** | Cold teams: **17** | Over-heavy: 0 | Under-heavy: 0
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (124)
-- STEAM_MOVE: **117**
-- COMPOUND_BULLPEN: **7**
+## ⚠️ Anomaly Detector (119)
+- STEAM_MOVE: **116**
+- PEN_MISMATCH: **1**
+- COMPOUND_BULLPEN: **2**
   - STBK @ BALL (NCAAF): ML/TOTAL steam since open: ML -4.1pp toward STBK; total -5 (UNDER) (8 snapshots)
   - RMU @ AKR (NCAAF): TOTAL steam since open: ML -0.9pp toward RMU; total +5 (OVER) (6 snapshots)
   - ODU @ VT (NCAAF): TOTAL steam since open: ML -0.7pp toward ODU; total -4 (UNDER) (16 snapshots)
@@ -102,17 +103,24 @@
   - [LEAN] **Luis Hernandez** (7-0-0) vs Hugo Guillon -- fair -133
   - [COIN_FLIP] **Igor Cavalcanti** (13-2-0) vs Oscar Ravello -- fair -124
 
-## 🔥 MLB Batter Heat (59 HOT / 59 COLD)
-  - 🔥 **Victor Mesa Jr.** (TB): L14 .439 / season .261 (+178pts)
-  - 🔥 **Tyrone Taylor** (CHC): L14 .450 / season .278 (+172pts)
+## ⛳ Golf Player Heat (from Biltmore Championship Asheville)
+  - 🔥 T1 **Ryan Brehm** (USA): +0 total -- finished T1
+  - 🔥 T2 **Troy Merritt** (USA): +0 total -- finished T2
+  - 🔥 T3 **Mark Hubbard** (USA): +0 total -- finished T3
+  - 🔥 T4 **Justin Lower** (USA): +0 total -- finished T4
+  - 🔥 T5 **Nick Hardy** (USA): +0 total -- finished T5
+
+## 🔥 MLB Batter Heat (55 HOT / 58 COLD)
+  - 🔥 **Victor Mesa Jr.** (TB): L14 .429 / season .259 (+170pts)
+  - 🔥 **Teoscar Hernández** (LAD): L14 .426 / season .266 (+160pts)
   - 🔥 **Jakob Marsee** (MIA): L14 .380 / season .226 (+154pts)
-  - 🔥 **Thomas Saggese** (STL): L14 .400 / season .268 (+132pts)
+  - 🔥 **Tyrone Taylor** (CHC): L14 .421 / season .278 (+143pts)
   - 🔥 **Ha-Seong Kim** (ATL): L14 .257 / season .126 (+131pts)
-  - ❄️ **Jeremiah Jackson** (BAL): L14 .080 / season .228 (-148pts) -- FADE props
   - ❄️ **Andruw Monasterio** (BOS): L14 .093 / season .240 (-147pts) -- FADE props
+  - ❄️ **Jung Hoo Lee** (SF): L14 .140 / season .276 (-136pts) -- FADE props
   - ❄️ **Taylor Ward** (SEA): L14 .091 / season .225 (-134pts) -- FADE props
   - ❄️ **Brandon Marsh** (PHI): L14 .133 / season .264 (-131pts) -- FADE props
-  - ❄️ **Jung Hoo Lee** (SF): L14 .151 / season .277 (-126pts) -- FADE props
+  - ❄️ **José Tena** (WSH): L14 .103 / season .225 (-122pts) -- FADE props
 
 ## 📈 Streak Regression Alerts (1)
 - [EPL] Brentford on L3 L10 0-3 -- Brentford on L3 -- no historical sample
