@@ -1,37 +1,34 @@
-# EdgeStat Daily Brief - 2026-09-16
+# EdgeStat Daily Brief - 2026-09-17
 
 **Model Confidence: 21.6/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
 
-_Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
+_Pipeline health: **DEGRADED** (14/15 artifacts ok; 1 empty, 0 stale)._ 
 
-_Generated at 2026-09-16T18:09:51 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-09-17T00:12:11 UTC. Game lines source: **placeholder -110 (no real book today)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
-**ATL @ CHC - OVER_7.5**
+**SDP @ COL - OVER_8.5**
 - Market: -110
-- Model probability: 87.5%
-- Raw edge: +67.09%
+- Model probability: 93.5%
+- Raw edge: +78.57%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
 
-## Full Slate (12 games)
+## Full Slate (9 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 3:07p ET | DET @ TOR | Rogers Centre | indoor | DET_ML +43.4% |
-| 6:40p ET | LAD @ CIN | Great American Ball Park | 79F 4mph | OVER_8.0 +53.72% |
-| 6:40p ET | OAK @ TBR | Tropicana Field | indoor | OVER_8.0 +6.46% |
-| 6:40p ET | MIL @ PIT | PNC Park | 77F 5mph | OVER_7.5 +27.26% |
-| 6:45p ET | PHI @ WSN | Nationals Park | 74F 7mph | WSN_ML +55.07% |
-| 7:10p ET | BAL @ NYM | Citi Field | 69F 4mph | UNDER_9.0 +22.15% |
-| 7:40p ET | ATL @ CHC | Wrigley Field | 66F 5mph | OVER_7.5 +67.09% |
-| 8:05p ET | BOS @ TEX | Globe Life Field | indoor | OVER_8.0 +8.37% |
-| 8:10p ET | KCR @ HOU | Daikin Park | indoor | KCR_ML +22.28% |
-| 8:40p ET | SDP @ COL | Coors Field | 70F 2mph | OVER_11.0 +51.46% |
-| 9:38p ET | SEA @ LAA | Angel Stadium | 70F 4mph | UNDER_8.0 +7.2% |
-| 9:40p ET | MIA @ ARI | Chase Field | indoor | MIA_ML +40.15% |
+| 12:35p ET | MIL @ PIT | PNC Park | 82F 9mph | OVER_8.5 +31.82% |
+| 12:40p ET | LAD @ CIN | Great American Ball Park | 93F 9mph | OVER_8.5 +77.96% |
+| 1:10p ET | OAK @ TBR | Tropicana Field | indoor | TBR_ML +64.35% |
+| 3:10p ET | SDP @ COL | Coors Field | 82F 11mph | OVER_8.5 +78.57% |
+| 7:15p ET | KCR @ HOU | Daikin Park | indoor | OVER_8.5 +19.83% |
+| 7:15p ET | PHI @ NYM | Citi Field | 74F 8mph | NYM_ML +12.29% |
+| 7:40p ET | DET @ CHW | Rate Field | 68F 7mph | OVER_8.5 +27.59% |
+| 8:05p ET | BOS @ TEX | Globe Life Field | indoor | BOS_ML +25.2% |
+| 9:38p ET | MIN @ LAA | Angel Stadium | 72F 6mph | MIN_ML +10.15% |
 
 ## Parlays - top 5
 
@@ -58,24 +55,21 @@ _Generated at 2026-09-16T18:09:51 UTC. Game lines source: **Bovada (fallback -- 
 | batter total bases | 113 | 44.2% | 47.0% | 1.063 | 0.944 |
 | batter hits | 253 | 53.0% | 56.1% | 1.058 | 0.946 |
 
-Cumulative graded plays: 11150. Wins: 4182. Hit rate: 37.5%.
+Cumulative graded plays: 11151. Wins: 4184. Hit rate: 37.5%.
 
 ## Auxiliary Markets (Model Fair Prices)
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| ATL @ CHC | 36.5% | +174 | 4.87 | -111 | +111 |
-| BAL @ NYM | 28.3% | +253 | 6.46 | +140 | -140 |
-| BOS @ TEX | 29.3% | +242 | 6.14 | +234 | -234 |
-| DET @ TOR | 30.0% | +233 | 6.01 | +382 | -382 |
-| KCR @ HOU | 36.0% | +178 | 5.11 | +175 | -175 |
-| LAD @ CIN | 35.5% | +182 | 5.15 | +2370 | -2370 |
-| MIA @ ARI | 40.7% | +146 | 4.49 | +317 | -317 |
-| MIL @ PIT | 63.0% | -171 | 2.37 | +286 | -286 |
-| OAK @ TBR | 62.8% | -169 | 2.32 | +110 | -110 |
-| PHI @ WSN | 37.7% | +165 | 5.01 | +120 | -120 |
-| SDP @ COL | 35.6% | +181 | 5.09 | +217 | -217 |
-| SEA @ LAA | 39.7% | +152 | 4.74 | +218 | -218 |
+| BOS @ TEX | 46.1% | +117 | 3.87 | +291 | -291 |
+| DET @ CHW | 53.5% | -115 | 2.99 | +251 | -251 |
+| KCR @ HOU | 26.5% | +277 | 6.64 | +140 | -140 |
+| LAD @ CIN | 18.2% | +448 | 8.99 | +826 | -826 |
+| MIL @ PIT | 27.2% | +267 | 6.78 | +249 | -249 |
+| MIN @ LAA | 53.0% | -113 | 3.26 | +214 | -214 |
+| OAK @ TBR | 45.7% | +119 | 3.91 | -352 | +352 |
+| PHI @ NYM | 50.5% | -102 | 3.57 | +120 | -120 |
+| SDP @ COL | 32.7% | +206 | 5.94 | +175 | -175 |
 
 ## Team Form (last 10)
 
@@ -108,4 +102,4 @@ _The model is suggesting 1 parameter tweak based on its own performance. Apply v
 ---
 
 _EdgeStat is a research desk. Bet responsibly. 21+. 1-800-GAMBLER._
-_Source: github.com/Keyvaniath/bpleone-betting - last settled 2026-09-15._
+_Source: github.com/Keyvaniath/bpleone-betting - last settled 2026-09-16._

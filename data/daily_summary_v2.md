@@ -1,13 +1,13 @@
-# EdgeStat Daily Summary — 2026-09-16
+# EdgeStat Daily Summary — 2026-09-17
 
-## 🏥 Model Health: 65.8/100 [OK]
+## 🏥 Model Health: 67.5/100 [OK]
 - Operational but room to improve - check yellow components
   - 🟢 Calibration Freshness: 100.0/100
-  - 🔴 Hit Rate Trend: 0/100
-  - 🔴 Brier Trend: 41.7/100
+  - 🔴 Hit Rate Trend: 3.4/100
+  - 🔴 Brier Trend: 39.8/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 100.0/100
-  - 🟡 Edge Count: 74.3/100
+  - 🟢 Data Health: 95.5/100
+  - 🟢 Edge Count: 97.1/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.582)
@@ -58,10 +58,9 @@
 - Hot teams: **5** | Cold teams: **17** | Over-heavy: 0 | Under-heavy: 0
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (123)
-- STEAM_MOVE: **119**
-- COMPOUND_BULLPEN: **3**
-- PEN_MISMATCH: **1**
+## ⚠️ Anomaly Detector (134)
+- STEAM_MOVE: **130**
+- COMPOUND_BULLPEN: **4**
   - STBK @ BALL (NCAAF): ML/TOTAL steam since open: ML -4.1pp toward STBK; total -5 (UNDER) (8 snapshots)
   - RMU @ AKR (NCAAF): TOTAL steam since open: ML -0.9pp toward RMU; total +5 (OVER) (6 snapshots)
   - ODU @ VT (NCAAF): TOTAL steam since open: ML -0.7pp toward ODU; total -4 (UNDER) (16 snapshots)
@@ -85,12 +84,12 @@
   - [MED] Phoenix Mercury @ Portland Fire : 2 signals (PREGAME, ATS)
   - [MED] Red Bull New York @ New York City FC : 2 signals (ATS, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (11)
+## ⚾ Top MLB Pitcher K Plays (8)
 - **Logan Henderson** OVER 4.5 K (78%) fair -347
-- **Anthony Molina** OVER 4.5 K (75%) fair -299
 - **Blake Snell** OVER 5.5 K (72%) fair -262
-- **Parker Messick** OVER 5.5 K (70%) fair -233
 - **Daniel Lynch IV** OVER 5.5 K (69%) fair -226
+- **Zack Wheeler** OVER 5.5 K (68%) fair -215
+- **Brady Basso** OVER 4.5 K (65%) fair -188
 
 ## 🏀 NBA Player Heat (2 HOT / 0 COLD)
   - 🔥 **Scottie Barnes** (TOR): L5 24.4/7.6/9.6 vs season 18.6/5.8/8.8 [PTS +5.8]
@@ -110,16 +109,16 @@
   - 🔥 T4 **Justin Lower** (USA): +0 total -- finished T4
   - 🔥 T5 **Nick Hardy** (USA): +0 total -- finished T5
 
-## 🔥 MLB Batter Heat (48 HOT / 54 COLD)
-  - 🔥 **Victor Mesa Jr.** (TB): L14 .419 / season .257 (+162pts)
-  - 🔥 **Teoscar Hernández** (LAD): L14 .417 / season .266 (+151pts)
-  - 🔥 **Joey Ortiz** (MIL): L14 .415 / season .270 (+145pts)
-  - 🔥 **Ha-Seong Kim** (ATL): L14 .257 / season .126 (+131pts)
-  - 🔥 **Elly De La Cruz** (CIN): L14 .415 / season .286 (+129pts)
+## 🔥 MLB Batter Heat (51 HOT / 52 COLD)
+  - 🔥 **Elly De La Cruz** (CIN): L14 .434 / season .287 (+147pts)
+  - 🔥 **Victor Mesa Jr.** (TB): L14 .400 / season .255 (+145pts)
+  - 🔥 **Brice Turang** (MIL): L14 .409 / season .265 (+144pts)
+  - 🔥 **A.J. Ewing** (NYM): L14 .396 / season .256 (+140pts)
+  - 🔥 **Joey Ortiz** (MIL): L14 .410 / season .271 (+139pts)
+  - ❄️ **Brandon Marsh** (PHI): L14 .097 / season .263 (-166pts) -- FADE props
   - ❄️ **Andruw Monasterio** (BOS): L14 .100 / season .239 (-139pts) -- FADE props
   - ❄️ **Colson Montgomery** (CWS): L14 .067 / season .203 (-136pts) -- FADE props
   - ❄️ **Isaac Collins** (KC): L14 .086 / season .220 (-134pts) -- FADE props
-  - ❄️ **Brandon Marsh** (PHI): L14 .133 / season .264 (-131pts) -- FADE props
   - ❄️ **Taylor Ward** (SEA): L14 .097 / season .224 (-127pts) -- FADE props
 
 ## 📈 Streak Regression Alerts (1)
@@ -138,4 +137,4 @@
 ## 🤖 Self-Training Status
 - **MLS**: n=58 games · hit rate 37.9% · bias +0.7pp
 - **EPL**: n=30 games · hit rate 23.3% · bias +15.0pp [calibration applied]
-- **MLB**: n=171 games · hit rate 46.8% · bias -4.2pp [calibration applied]
+- **MLB**: n=175 games · hit rate 53.1% · bias -6.5pp [calibration applied]
