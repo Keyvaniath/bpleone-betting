@@ -1,25 +1,28 @@
 # EdgeStat Daily Summary — 2026-09-17
 
-## 🏥 Model Health: 68.3/100 [OK]
+## 🏥 Model Health: 58.3/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.9/100
-  - 🔴 Hit Rate Trend: 3.4/100
-  - 🔴 Brier Trend: 39.8/100
+  - 🟢 Calibration Freshness: 100.0/100
+  - 🔴 Hit Rate Trend: 0/100
+  - 🔴 Brier Trend: 0/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 100.0/100
-  - 🟢 Edge Count: 97.1/100
+  - 🟢 Edge Count: 82.9/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.554)
-- **Total games on board:** 55
-- **Strong home favorites:** 15 | **Strong road dogs:** 13
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.582)
+- **Total games on board:** 39
+- **Strong home favorites:** 11 | **Strong road dogs:** 7
 
 ## 🎯 Top 5 Best Bets
 1. **LAD @ CIN YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 2. **KCR @ HOU YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-3. **MIL @ PIT YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-4. **SDP @ COL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+3. **SDP @ COL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+4. **MIL @ PIT YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
 5. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
+
+## 📡 Sharp Action (Line Movement)
+- [MODERATE] **OAK @ TBR** ml_home: 70.59% → 73.68% (+3.1pp)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -58,21 +61,21 @@
 - Hot teams: **5** | Cold teams: **17** | Over-heavy: 0 | Under-heavy: 0
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (133)
-- STEAM_MOVE: **131**
+## ⚠️ Anomaly Detector (132)
+- STEAM_MOVE: **130**
 - PEN_MISMATCH: **2**
   - PHX @ POR (WNBA): TOTAL steam since open: ML -2.1pp toward PHX; total -5 (UNDER) (15 snapshots)
   - STBK @ BALL (NCAAF): ML/TOTAL steam since open: ML -4.1pp toward STBK; total -5 (UNDER) (8 snapshots)
   - RMU @ AKR (NCAAF): TOTAL steam since open: ML -0.9pp toward RMU; total +5 (OVER) (6 snapshots)
-  - WSH @ CHI (WNBA): ML/TOTAL steam since open: ML +8.8pp toward CHI; total -4 (UNDER) (8 snapshots)
   - ODU @ VT (NCAAF): TOTAL steam since open: ML -0.7pp toward ODU; total -4 (UNDER) (16 snapshots)
+  - WEB @ COLO (NCAAF): TOTAL steam since open: ML -0.9pp toward WEB; total +4 (OVER) (7 snapshots)
 
 ## 💰 Today's Portfolio (9 picks)
-- Total stake: **$330.0** (33.0% of $1000 bankroll)
-- Expected EV: **$13.75**
-  - #1 [NRFI] $50 on LAD @ CIN YRFI (1st-inning OVER 0.5) (P=82%)
+- Total stake: **$345.0** (34.5% of $1000 bankroll)
+- Expected EV: **$12.65**
+  - #1 [NRFI] $50 on LAD @ CIN YRFI (1st-inning OVER 0.5) (P=86%)
   - #2 [NRFI] $50 on KCR @ HOU YRFI (1st-inning OVER 0.5) (P=73%)
-  - #3 [NRFI] $50 on MIL @ PIT YRFI (1st-inning OVER 0.5) (P=73%)
+  - #3 [NRFI] $50 on SDP @ COL YRFI (1st-inning OVER 0.5) (P=67%)
   - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
@@ -84,7 +87,7 @@
   - [MED] Phoenix Mercury @ Portland Fire : 2 signals (PREGAME, ATS)
   - [MED] Red Bull New York @ New York City FC : 2 signals (ATS, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (7)
+## ⚾ Top MLB Pitcher K Plays (8)
 - **Erick Fedde** OVER 4.5 K (77%) fair -343
 - **Taj Bradley** OVER 4.5 K (76%) fair -321
 - **Aaron Nola** OVER 4.5 K (73%) fair -271
@@ -95,26 +98,26 @@
   - 🔥 **Scottie Barnes** (TOR): L5 24.4/7.6/9.6 vs season 18.6/5.8/8.8 [PTS +5.8]
   - 🔥 **RJ Barrett** (TOR): L5 24.6/7.6/4.0 vs season 21.4/5.5/3.6 [REB +2.1]
 
-## 🥊 UFC Fight Matchups (Dana White's Contender Series: Season 10, Week 6)
-  - [FAVORITE] **Akbar Abdullaev** (14-0-0) vs Ednilson Santos -- fair -222
-  - [LEAN] **Luis Hernandez** (8-0-0) vs Hugo Guillon -- fair -167
-  - [LEAN] **Tyshawn Williams** (9-0-0) vs Antonio Monteiro -- fair -160
-  - [LEAN] **Igor Cavalcanti** (14-2-0) vs Oscar Ravello -- fair -139
-  - [COIN_FLIP] **Zevan Hunt** (7-1-0) vs Mayton Perea -- fair -130
+## 🥊 UFC Fight Matchups (UFC 331: Van vs. Pantoja 2)
+  - [FAVORITE] **Gable Steveson** (4-0-0) vs Sean Sharaf -- fair -215
+  - [LEAN] **Iwo Baraniewski** (9-0-0) vs Alonzo Menifield -- fair -160
+  - [LEAN] **JooSang Yoo** (9-1-0) vs Michael Aswell -- fair -152
+  - [LEAN] **Ryan Gandra** (10-1-0) vs Ozzy Diaz -- fair -151
+  - [LEAN] **Patricio Pitbull** (37-9-0) vs Dooho Choi -- fair -142
 
 ## ⛳ Golf Player Heat (from Biltmore Championship Asheville)
-  - 🔥 T1 **Ryan Brehm** (USA): +0 total -- finished T1
-  - 🔥 T2 **Troy Merritt** (USA): +0 total -- finished T2
-  - 🔥 T3 **Mark Hubbard** (USA): +0 total -- finished T3
-  - 🔥 T4 **Justin Lower** (USA): +0 total -- finished T4
-  - 🔥 T5 **Nick Hardy** (USA): +0 total -- finished T5
+  - 🔥 T1 **Cam Davis** (Australia): -3 total -- finished T1
+  - 🔥 T2 **John Parry** (England): -2 total -- finished T2
+  - 🔥 T3 **Ben Kohles** (USA): -2 total -- finished T3
+  - 🔥 T4 **Hank Lebioda** (USA): -2 total -- finished T4
+  - 🔥 T5 **Will Gordon** (USA): -2 total -- finished T5
 
-## 🔥 MLB Batter Heat (50 HOT / 50 COLD)
+## 🔥 MLB Batter Heat (50 HOT / 49 COLD)
   - 🔥 **Jakob Marsee** (MIA): L14 .388 / season .227 (+161pts)
-  - 🔥 **Elly De La Cruz** (CIN): L14 .426 / season .286 (+140pts)
   - 🔥 **Jackson Merrill** (SD): L14 .393 / season .256 (+137pts)
   - 🔥 **A.J. Ewing** (NYM): L14 .392 / season .256 (+136pts)
-  - 🔥 **Brice Turang** (MIL): L14 .400 / season .265 (+135pts)
+  - 🔥 **Joey Ortiz** (MIL): L14 .405 / season .271 (+134pts)
+  - 🔥 **Victor Mesa Jr.** (TB): L14 .383 / season .252 (+131pts)
   - ❄️ **Brandon Marsh** (PHI): L14 .091 / season .261 (-170pts) -- FADE props
   - ❄️ **Andruw Monasterio** (BOS): L14 .100 / season .239 (-139pts) -- FADE props
   - ❄️ **Colson Montgomery** (CWS): L14 .067 / season .203 (-136pts) -- FADE props

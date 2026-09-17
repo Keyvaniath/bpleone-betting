@@ -1,54 +1,59 @@
 # Tonight's Slate Brief — 2026-09-17
 
-## Slate Quality: 57/100 (MEDIUM)
-_5% lineups confirmed · 5 rookie SPs_
+## Slate Quality: 63/100 (MEDIUM)
+_16% lineups confirmed · 3 rookie SPs_
 **Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
-- **9 games** scheduled
-- **34 best bets** scored: 6 DK · 0 PP · 6 NRFI · 0 SGP
-- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$48.18
-- **MC simulation:** EV +$82.45, 78% P(profit), p05 $-88.09 / p95 $198.26
+- **6 games** scheduled
+- **36 best bets** scored: 6 DK · 0 PP · 6 NRFI · 0 SGP
+- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$52.56
+- **MC simulation:** EV +$80.08, 78% P(profit), p05 $-89.34 / p95 $197.01
 
 ## Top 5 Best Bets
-1. **LAD @ CIN YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +35.8%)
-   - P(YRFI) 81.8% vs baseline 46.0%
+1. **LAD @ CIN YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +40.3%)
+   - P(YRFI) 86.3% vs baseline 46.0%
 2. **KCR @ HOU YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +27.5%)
    - P(YRFI) 73.5% vs baseline 46.0%
-3. **MIL @ PIT YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +26.8%)
-   - P(YRFI) 72.8% vs baseline 46.0%
-4. **SDP @ COL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +21.3%)
+3. **SDP @ COL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +21.3%)
    - P(YRFI) 67.3% vs baseline 46.0%
+4. **MIL @ PIT YRFI (1st-inning OVER 0.5)**  (79/100 ****, edge +19.8%)
+   - P(YRFI) 65.8% vs baseline 46.0%
 5. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
    - Player prop quality score 1.1935
    - Elite player
 
-## ⚠️ Trap Warnings — 8 flagged
+## ⚠️ Trap Warnings — 11 flagged
 - **LAD @ CIN YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +35.8% looks big but only 0 settled props on this player — model unproven
+   - Edge +40.3% looks big but only 0 settled props on this player — model unproven
 - **KCR @ HOU YRFI (1st-inning OVER 0.5)** (low):
    - Edge +27.5% looks big but only 0 settled props on this player — model unproven
-- **MIL @ PIT YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +26.8% looks big but only 0 settled props on this player — model unproven
 - **SDP @ COL YRFI (1st-inning OVER 0.5)** (low):
    - Edge +21.3% looks big but only 0 settled props on this player — model unproven
 - **Oneil Cruz OVER 1.5 batter total bases** (low):
    - Edge +20.4% looks big but only 0 settled props on this player — model unproven
+- **MIL @ PIT YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +19.8% looks big but only 0 settled props on this player — model unproven
+
+## Weather leans
+- **OVER lean** (wind out + warm): SDP @ COL
 
 ## Hot streaks
-**Batters heating up:** Andrew Knizner (heat +2.05), Randal Grichuk (heat +1.97), Chase Meidroth (heat +1.56)
-**Pitchers on a run:** Nolan McLean (heat -3.82), Erick Fedde (heat -4.14)
+**Batters heating up:** Brice Turang (heat +2.54), William Contreras (heat +2.40), Joey Ortiz (heat +1.68)
+**Pitchers on a run:** Erick Fedde (heat -4.14), Tyler Alexander (heat -6.01)
 
 ## Bullpens GASSED tonight
-Toronto Blue Jays, Atlanta Braves, Chicago White Sox, Miami Marlins, Arizona Diamondbacks, Baltimore Orioles, Cincinnati Reds, Cleveland Guardians
+Pittsburgh Pirates, St. Louis Cardinals, Tampa Bay Rays, Texas Rangers, Toronto Blue Jays, Minnesota Twins, Chicago White Sox, Miami Marlins
 _Lean late-inning OVER on these games; fade their save situations._
 
 ## NRFI/YRFI strong leans
-- **YRFI** (1st-inning OVER): LAD @ CIN, KCR @ HOU, MIL @ PIT, SDP @ COL
+- **YRFI** (1st-inning OVER): LAD @ CIN, KCR @ HOU, SDP @ COL, MIL @ PIT
 
 ## Golf -- Biltmore Championship Asheville
-- **Leader:** Ryan Brehm (E) at #1
-- **Field:** 132 players  |  Status: Scheduled
+- **Leader:** Cam Davis (-3) at #1
+- **Field:** 132 players  |  Status: In Progress
+- **Play of the Tournament:** Lucas Glover TOP10 @ +564 (model 15.1%, HIGH)
+   - P(top 10) 15.1% -- safest finish bet (#13 (-1)).
 
 ## NBA -- PRESEASON
 - Miami Heat @ Toronto Raptors (0-0 vs 0-0)  | P(home) 55.0% fair -122 | Scheduled

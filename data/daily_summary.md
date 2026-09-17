@@ -1,52 +1,49 @@
 # EdgeStat Daily Brief - 2026-09-17
 
-**Model Confidence: 21.5/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
+**Model Confidence: 21.4/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
 
 _Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
 
-_Generated at 2026-09-17T14:03:04 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-09-17T18:06:17 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
-**LAD @ CIN - OVER_9.5**
+**SDP @ COL - OVER_10.5**
 - Market: -110
-- Model probability: 88.9%
-- Raw edge: +69.65%
+- Model probability: 82.7%
+- Raw edge: +57.91%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
 
-## Full Slate (9 games)
+## Full Slate (6 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 12:35p ET | MIL @ PIT | PNC Park | 81F 11mph | OVER_8.5 +15.17% |
-| 12:40p ET | LAD @ CIN | Great American Ball Park | 96F 8mph | OVER_9.5 +69.65% |
-| 1:10p ET | OAK @ TBR | Tropicana Field | indoor | OVER_7.5 +48.01% |
-| 3:10p ET | SDP @ COL | Coors Field | 79F 9mph | OVER_11.0 +44.48% |
+| 3:10p ET | SDP @ COL | Coors Field | 76F 14mph | OVER_10.5 +57.91% |
 | 7:15p ET | KCR @ HOU | Daikin Park | indoor | KCR_ML +6.66% |
-| 7:15p ET | PHI @ NYM | Citi Field | 72F 6mph | OVER_8.0 +4.44% |
-| 7:40p ET | DET @ CHW | Rate Field | 68F 11mph | OVER_8.5 +33.89% |
-| 8:05p ET | BOS @ TEX | Globe Life Field | indoor | OVER_7.5 +4.78% |
-| 9:38p ET | MIN @ LAA | Angel Stadium | 67F 2mph | OVER_7.5 +6.81% |
+| 7:15p ET | PHI @ NYM | Citi Field | 74F 6mph | -- |
+| 7:40p ET | DET @ CHW | Rate Field | 68F 10mph | OVER_8.5 +32.36% |
+| 8:05p ET | BOS @ TEX | Globe Life Field | indoor | -- |
+| 9:38p ET | MIN @ LAA | Angel Stadium | 68F 3mph | OVER_7.5 +9.23% |
 
 ## Parlays - top 5
 
-- **2-leg @ +452 (prob 26.2%, EV +44.62%)**
+- **2-leg @ +449 (prob 26.4%, EV +44.78%)**
   - Brice Turang UNDER 0.5 batter_hits (+180, model 43.9%)
-  - DET @ CHW DET_ML (-103, model 59.8%)
-- **2-leg @ +435 (prob 26.9%, EV +43.91%)**
+  - DET @ CHW DET_ML (-104, model 60.1%)
+- **2-leg @ +642 (prob 19.5%, EV +44.72%)**
   - Brice Turang UNDER 0.5 batter_hits (+180, model 43.9%)
-  - DET @ CHW OVER_8.5 (-110, model 61.4%)
-- **2-leg @ +279 (prob 37.7%, EV +42.87%)**
-  - Brice Turang UNDER 0.5 batter_hits (+180, model 43.9%)
-  - OAK @ TBR TBR_ML (-284, model 86.0%)
-- **2-leg @ +460 (prob 25.3%, EV +41.8%)**
+  - SDP @ COL COL_ML (+165, model 44.5%)
+- **2-leg @ +457 (prob 25.5%, EV +41.96%)**
   - Konnor Griffin UNDER 0.5 batter_hits (+184, model 42.4%)
-  - DET @ CHW DET_ML (-103, model 59.8%)
-- **2-leg @ +367 (prob 30.3%, EV +41.78%)**
+  - DET @ CHW DET_ML (-104, model 60.1%)
+- **2-leg @ +365 (prob 30.5%, EV +41.93%)**
   - Oneil Cruz OVER 1.5 batter_total_bases (+137, model 50.8%)
-  - DET @ CHW DET_ML (-103, model 59.8%)
+  - DET @ CHW DET_ML (-104, model 60.1%)
+- **2-leg @ +653 (prob 18.9%, EV +41.9%)**
+  - Konnor Griffin UNDER 0.5 batter_hits (+184, model 42.4%)
+  - SDP @ COL COL_ML (+165, model 44.5%)
 
 ## Self-Learning Loop
 
@@ -62,14 +59,11 @@ Cumulative graded plays: 11221. Wins: 4202. Hit rate: 37.4%.
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
 | BOS @ TEX | 46.3% | +116 | 3.85 | +187 | -187 |
-| DET @ CHW | 53.5% | -115 | 2.93 | +251 | -251 |
+| DET @ CHW | 53.5% | -115 | 2.97 | +251 | -251 |
 | KCR @ HOU | 26.5% | +277 | 6.64 | +145 | -145 |
-| LAD @ CIN | 13.7% | +632 | 10.32 | +766 | -766 |
-| MIL @ PIT | 34.2% | +192 | 5.67 | +163 | -163 |
-| MIN @ LAA | 53.0% | -113 | 3.21 | +217 | -217 |
-| OAK @ TBR | 45.7% | +119 | 3.91 | -350 | +350 |
-| PHI @ NYM | 50.5% | -102 | 3.54 | +128 | -128 |
-| SDP @ COL | 32.7% | +206 | 5.89 | +193 | -193 |
+| MIN @ LAA | 53.0% | -113 | 3.22 | +216 | -216 |
+| PHI @ NYM | 50.5% | -102 | 3.54 | +127 | -127 |
+| SDP @ COL | 32.7% | +206 | 5.1 | +192 | -192 |
 
 ## Travel / Rest Flags
 
