@@ -1,25 +1,25 @@
 # EdgeStat Daily Summary — 2026-09-17
 
-## 🏥 Model Health: 67.5/100 [OK]
+## 🏥 Model Health: 68.3/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 100.0/100
+  - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 3.4/100
   - 🔴 Brier Trend: 39.8/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 95.5/100
+  - 🟢 Data Health: 100.0/100
   - 🟢 Edge Count: 97.1/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.582)
-- **Total games on board:** 39
-- **Strong home favorites:** 11 | **Strong road dogs:** 7
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.554)
+- **Total games on board:** 55
+- **Strong home favorites:** 15 | **Strong road dogs:** 13
 
 ## 🎯 Top 5 Best Bets
-1. **SFG @ STL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-2. **BAL @ NYM YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-3. **BOS @ TEX YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-4. **DET @ TOR YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-5. **CHW @ CLE YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+1. **LAD @ CIN YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+2. **KCR @ HOU YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+3. **MIL @ PIT YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+4. **SDP @ COL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+5. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -58,21 +58,21 @@
 - Hot teams: **5** | Cold teams: **17** | Over-heavy: 0 | Under-heavy: 0
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (134)
-- STEAM_MOVE: **130**
-- COMPOUND_BULLPEN: **4**
+## ⚠️ Anomaly Detector (133)
+- STEAM_MOVE: **131**
+- PEN_MISMATCH: **2**
+  - PHX @ POR (WNBA): TOTAL steam since open: ML -2.1pp toward PHX; total -5 (UNDER) (15 snapshots)
   - STBK @ BALL (NCAAF): ML/TOTAL steam since open: ML -4.1pp toward STBK; total -5 (UNDER) (8 snapshots)
   - RMU @ AKR (NCAAF): TOTAL steam since open: ML -0.9pp toward RMU; total +5 (OVER) (6 snapshots)
+  - WSH @ CHI (WNBA): ML/TOTAL steam since open: ML +8.8pp toward CHI; total -4 (UNDER) (8 snapshots)
   - ODU @ VT (NCAAF): TOTAL steam since open: ML -0.7pp toward ODU; total -4 (UNDER) (16 snapshots)
-  - WEB @ COLO (NCAAF): TOTAL steam since open: ML -0.9pp toward WEB; total +4 (OVER) (7 snapshots)
-  - ALA @ UK (NCAAF): TOTAL steam since open: ML +2.1pp toward UK; total -3 (UNDER) (20 snapshots)
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$330.0** (33.0% of $1000 bankroll)
-- Expected EV: **$5.0**
-  - #1 [NRFI] $50 on SFG @ STL YRFI (1st-inning OVER 0.5) (P=74%)
-  - #2 [NRFI] $50 on BAL @ NYM YRFI (1st-inning OVER 0.5) (P=72%)
-  - #3 [NRFI] $50 on BOS @ TEX YRFI (1st-inning OVER 0.5) (P=71%)
+- Expected EV: **$13.75**
+  - #1 [NRFI] $50 on LAD @ CIN YRFI (1st-inning OVER 0.5) (P=82%)
+  - #2 [NRFI] $50 on KCR @ HOU YRFI (1st-inning OVER 0.5) (P=73%)
+  - #3 [NRFI] $50 on MIL @ PIT YRFI (1st-inning OVER 0.5) (P=73%)
   - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
@@ -84,12 +84,12 @@
   - [MED] Phoenix Mercury @ Portland Fire : 2 signals (PREGAME, ATS)
   - [MED] Red Bull New York @ New York City FC : 2 signals (ATS, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (8)
-- **Logan Henderson** OVER 4.5 K (78%) fair -347
-- **Blake Snell** OVER 5.5 K (72%) fair -262
-- **Daniel Lynch IV** OVER 5.5 K (69%) fair -226
-- **Zack Wheeler** OVER 5.5 K (68%) fair -215
-- **Brady Basso** OVER 4.5 K (65%) fair -188
+## ⚾ Top MLB Pitcher K Plays (7)
+- **Erick Fedde** OVER 4.5 K (77%) fair -343
+- **Taj Bradley** OVER 4.5 K (76%) fair -321
+- **Aaron Nola** OVER 4.5 K (73%) fair -271
+- **Drew Rasmussen** OVER 4.5 K (71%) fair -251
+- **Sonny Gray** OVER 4.5 K (70%) fair -232
 
 ## 🏀 NBA Player Heat (2 HOT / 0 COLD)
   - 🔥 **Scottie Barnes** (TOR): L5 24.4/7.6/9.6 vs season 18.6/5.8/8.8 [PTS +5.8]
@@ -109,17 +109,17 @@
   - 🔥 T4 **Justin Lower** (USA): +0 total -- finished T4
   - 🔥 T5 **Nick Hardy** (USA): +0 total -- finished T5
 
-## 🔥 MLB Batter Heat (51 HOT / 52 COLD)
-  - 🔥 **Elly De La Cruz** (CIN): L14 .434 / season .287 (+147pts)
-  - 🔥 **Victor Mesa Jr.** (TB): L14 .400 / season .255 (+145pts)
-  - 🔥 **Brice Turang** (MIL): L14 .409 / season .265 (+144pts)
-  - 🔥 **A.J. Ewing** (NYM): L14 .396 / season .256 (+140pts)
-  - 🔥 **Joey Ortiz** (MIL): L14 .410 / season .271 (+139pts)
-  - ❄️ **Brandon Marsh** (PHI): L14 .097 / season .263 (-166pts) -- FADE props
+## 🔥 MLB Batter Heat (50 HOT / 50 COLD)
+  - 🔥 **Jakob Marsee** (MIA): L14 .388 / season .227 (+161pts)
+  - 🔥 **Elly De La Cruz** (CIN): L14 .426 / season .286 (+140pts)
+  - 🔥 **Jackson Merrill** (SD): L14 .393 / season .256 (+137pts)
+  - 🔥 **A.J. Ewing** (NYM): L14 .392 / season .256 (+136pts)
+  - 🔥 **Brice Turang** (MIL): L14 .400 / season .265 (+135pts)
+  - ❄️ **Brandon Marsh** (PHI): L14 .091 / season .261 (-170pts) -- FADE props
   - ❄️ **Andruw Monasterio** (BOS): L14 .100 / season .239 (-139pts) -- FADE props
   - ❄️ **Colson Montgomery** (CWS): L14 .067 / season .203 (-136pts) -- FADE props
-  - ❄️ **Isaac Collins** (KC): L14 .086 / season .220 (-134pts) -- FADE props
-  - ❄️ **Taylor Ward** (SEA): L14 .097 / season .224 (-127pts) -- FADE props
+  - ❄️ **Isaac Collins** (KC): L14 .088 / season .221 (-133pts) -- FADE props
+  - ❄️ **Taylor Ward** (SEA): L14 .094 / season .222 (-128pts) -- FADE props
 
 ## 📈 Streak Regression Alerts (1)
 - [EPL] Brentford on L3 L10 0-3 -- Brentford on L3 -- no historical sample
@@ -137,4 +137,4 @@
 ## 🤖 Self-Training Status
 - **MLS**: n=58 games · hit rate 37.9% · bias +0.7pp
 - **EPL**: n=30 games · hit rate 23.3% · bias +15.0pp [calibration applied]
-- **MLB**: n=175 games · hit rate 53.1% · bias -6.5pp [calibration applied]
+- **MLB**: n=186 games · hit rate 51.6% · bias -5.2pp [calibration applied]
