@@ -1,10 +1,10 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:14 F:162
+_NO_ACTION_NIGHT_ | L:0 S:18 F:142
 
 :dart: **Top Picks:**
-1. [WNBA] kelsey plum -- kelsey plum (PLAYER_STRONG)
-2. [WNBA] kahleah copper -- kahleah copper (PLAYER_STRONG)
-3. [MLB] HOME -- HOME (TEAM_STRONG)
+1. [GOLF] Ben Kohles -- Ben Kohles (PLAYER_STRONG)
+2. [GOLF] Chris Kirk -- Chris Kirk (PLAYER_STRONG)
+3. [WNBA] kelsey plum -- kelsey plum (PLAYER_STRONG)
 
 :chains: **Top Parlays:**
 - [WNBA] satou sabally (2 legs, p=0.2871)

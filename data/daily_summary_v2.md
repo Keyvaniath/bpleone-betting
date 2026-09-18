@@ -1,13 +1,13 @@
-# EdgeStat Daily Summary — 2026-09-17
+# EdgeStat Daily Summary — 2026-09-18
 
-## 🏥 Model Health: 58.3/100 [OK]
+## 🏥 Model Health: 66.1/100 [OK]
 - Operational but room to improve - check yellow components
   - 🟢 Calibration Freshness: 100.0/100
   - 🔴 Hit Rate Trend: 0/100
-  - 🔴 Brier Trend: 0/100
+  - 🔴 Brier Trend: 36.4/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 100.0/100
-  - 🟢 Edge Count: 82.9/100
+  - 🟢 Edge Count: 88.6/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.582)
@@ -20,9 +20,6 @@
 3. **SDP @ COL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 4. **MIL @ PIT YRFI (1st-inning OVER 0.5)** (79/100 ★★★★)
 5. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
-
-## 📡 Sharp Action (Line Movement)
-- [MODERATE] **OAK @ TBR** ml_home: 70.59% → 73.68% (+3.1pp)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -61,14 +58,14 @@
 - Hot teams: **5** | Cold teams: **17** | Over-heavy: 0 | Under-heavy: 0
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (132)
-- STEAM_MOVE: **130**
-- PEN_MISMATCH: **2**
-  - PHX @ POR (WNBA): TOTAL steam since open: ML -2.1pp toward PHX; total -5 (UNDER) (15 snapshots)
+## ⚠️ Anomaly Detector (134)
+- STEAM_MOVE: **133**
+- PEN_MISMATCH: **1**
+  - PHX @ POR (WNBA): ML/TOTAL steam since open: ML -4.0pp toward PHX; total -5 (UNDER) (17 snapshots)
   - STBK @ BALL (NCAAF): ML/TOTAL steam since open: ML -4.1pp toward STBK; total -5 (UNDER) (8 snapshots)
   - RMU @ AKR (NCAAF): TOTAL steam since open: ML -0.9pp toward RMU; total +5 (OVER) (6 snapshots)
+  - LT @ BAY (NCAAF): ML/TOTAL steam since open: ML +3.1pp toward BAY; total -5 (UNDER) (8 snapshots)
   - ODU @ VT (NCAAF): TOTAL steam since open: ML -0.7pp toward ODU; total -4 (UNDER) (16 snapshots)
-  - WEB @ COLO (NCAAF): TOTAL steam since open: ML -0.9pp toward WEB; total +4 (OVER) (7 snapshots)
 
 ## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
@@ -87,12 +84,12 @@
   - [MED] Phoenix Mercury @ Portland Fire : 2 signals (PREGAME, ATS)
   - [MED] Red Bull New York @ New York City FC : 2 signals (ATS, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (8)
+## ⚾ Top MLB Pitcher K Plays (5)
 - **Erick Fedde** OVER 4.5 K (77%) fair -343
 - **Taj Bradley** OVER 4.5 K (76%) fair -321
 - **Aaron Nola** OVER 4.5 K (73%) fair -271
-- **Drew Rasmussen** OVER 4.5 K (71%) fair -251
 - **Sonny Gray** OVER 4.5 K (70%) fair -232
+- **Tanner Gordon** OVER 6.5 K (70%) fair -229
 
 ## 🏀 NBA Player Heat (2 HOT / 0 COLD)
   - 🔥 **Scottie Barnes** (TOR): L5 24.4/7.6/9.6 vs season 18.6/5.8/8.8 [PTS +5.8]
@@ -106,22 +103,22 @@
   - [LEAN] **Patricio Pitbull** (37-9-0) vs Dooho Choi -- fair -142
 
 ## ⛳ Golf Player Heat (from Biltmore Championship Asheville)
-  - 🔥 T1 **Cam Davis** (Australia): -3 total -- finished T1
-  - 🔥 T2 **John Parry** (England): -2 total -- finished T2
-  - 🔥 T3 **Ben Kohles** (USA): -2 total -- finished T3
-  - 🔥 T4 **Hank Lebioda** (USA): -2 total -- finished T4
-  - 🔥 T5 **Will Gordon** (USA): -2 total -- finished T5
+  - 🔥 T1 **Ben Kohles** (USA): -6 total -- finished T1
+  - 🔥 T2 **Chris Kirk** (USA): -6 total -- finished T2
+  - 🔥 T3 **Mackenzie Hughes** (Canada): -6 total -- finished T3
+  - 🔥 T4 **Max Greyserman** (USA): -6 total -- finished T4
+  - 🔥 T5 **Cam Davis** (Australia): -5 total -- finished T5
 
-## 🔥 MLB Batter Heat (50 HOT / 49 COLD)
+## 🔥 MLB Batter Heat (54 HOT / 47 COLD)
   - 🔥 **Jakob Marsee** (MIA): L14 .388 / season .227 (+161pts)
-  - 🔥 **Jackson Merrill** (SD): L14 .393 / season .256 (+137pts)
-  - 🔥 **A.J. Ewing** (NYM): L14 .392 / season .256 (+136pts)
-  - 🔥 **Joey Ortiz** (MIL): L14 .405 / season .271 (+134pts)
   - 🔥 **Victor Mesa Jr.** (TB): L14 .383 / season .252 (+131pts)
-  - ❄️ **Brandon Marsh** (PHI): L14 .091 / season .261 (-170pts) -- FADE props
+  - 🔥 **Tyrone Taylor** (CHC): L14 .400 / season .278 (+122pts)
+  - 🔥 **Jackson Merrill** (SD): L14 .375 / season .256 (+119pts)
+  - 🔥 **A.J. Ewing** (NYM): L14 .375 / season .256 (+119pts)
+  - ❄️ **Brandon Marsh** (PHI): L14 .100 / season .261 (-161pts) -- FADE props
   - ❄️ **Andruw Monasterio** (BOS): L14 .100 / season .239 (-139pts) -- FADE props
   - ❄️ **Colson Montgomery** (CWS): L14 .067 / season .203 (-136pts) -- FADE props
-  - ❄️ **Isaac Collins** (KC): L14 .088 / season .221 (-133pts) -- FADE props
+  - ❄️ **Isaac Collins** (KC): L14 .088 / season .220 (-132pts) -- FADE props
   - ❄️ **Taylor Ward** (SEA): L14 .094 / season .222 (-128pts) -- FADE props
 
 ## 📈 Streak Regression Alerts (1)
