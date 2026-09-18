@@ -1,33 +1,27 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-09-18T00:02:21 UTC_
+_Generated 2026-09-18T13:27:14 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -70
+- **Score:** -66
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 18
-- **Total FADES:** 142
+- **Total STRONG:** 10
+- **Total FADES:** 106
 
 ## Top 5 Curated Picks
-1. **GOLF / Ben Kohles** (GOLF_PLAYER, score=123.21)
-   - Play: Ben Kohles (PLAYER_STRONG)
+1. **GOLF / Max Greyserman** (GOLF_PLAYER, score=112.71)
+   - Play: Max Greyserman (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Chris Kirk** (GOLF_PLAYER, score=122.0)
-   - Play: Chris Kirk (PLAYER_STRONG)
+2. **GOLF / Eric Cole** (GOLF_PLAYER, score=111.36)
+   - Play: Eric Cole (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-3. **WNBA / kelsey plum** (WNBA_PLAYER, score=121.25)
-   - Play: kelsey plum (PLAYER_STRONG)
-   - Rationale: Cross-sport top pick (WNBA_PLAYER)
-4. **WNBA / kahleah copper** (WNBA_PLAYER, score=118.33)
-   - Play: kahleah copper (PLAYER_STRONG)
-   - Rationale: Cross-sport top pick (WNBA_PLAYER)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
+  - Max Greyserman top 10 finish
+  - Eric Cole top 10 finish
   - Ben Kohles top 10 finish
-  - Chris Kirk top 10 finish
-  - Mackenzie Hughes top 10 finish
 
 ## Slate ROI Projection
 - **Picks:** 0
@@ -40,9 +34,9 @@ _Generated 2026-09-18T00:02:21 UTC_
   - Fade angle: team total UNDER
 - **NBA** / TOR (TEAM_FADE)
   - Fade angle: team total UNDER
-- **MLB** / Michael King (PITCHER_FADE)
+- **MLB** / Taj Bradley (PITCHER_FADE)
   - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **NHL** / stuart skinner (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / thatcher demko (GOALIE_FADE)
+- **MLB** / Sonny Gray (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **NHL** / casey desmith (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO

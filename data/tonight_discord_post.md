@@ -1,13 +1,9 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:18 F:142
+_NO_ACTION_NIGHT_ | L:0 S:10 F:106
 
 :dart: **Top Picks:**
-1. [GOLF] Ben Kohles -- Ben Kohles (PLAYER_STRONG)
-2. [GOLF] Chris Kirk -- Chris Kirk (PLAYER_STRONG)
-3. [WNBA] kelsey plum -- kelsey plum (PLAYER_STRONG)
-
-:chains: **Top Parlays:**
-- [WNBA] satou sabally (2 legs, p=0.2871)
+1. [GOLF] Max Greyserman -- Max Greyserman (PLAYER_STRONG)
+2. [GOLF] Eric Cole -- Eric Cole (PLAYER_STRONG)
 
 :coin: Bankroll Advisory: STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 
