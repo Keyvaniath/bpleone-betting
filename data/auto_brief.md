@@ -1,58 +1,61 @@
 # Tonight's Slate Brief — 2026-09-19
 
-## Slate Quality: 55/100 (MEDIUM)
-_0% lineups confirmed · 10 rookie SPs_
+## Slate Quality: 59/100 (MEDIUM)
+_13% lineups confirmed · 11 rookie SPs_
 **Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
 - **15 games** scheduled
-- **36 best bets** scored: 7 DK · 0 PP · 6 NRFI · 0 SGP
-- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$25.85
-- **MC simulation:** EV +$47.53, 66% P(profit), p05 $-109.2 / p95 $228.11
+- **43 best bets** scored: 7 DK · 0 PP · 9 NRFI · 1 SGP
+- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$38.66
+- **MC simulation:** EV +$82.83, 80% P(profit), p05 $-88.78 / p95 $230.79
 
 ## Top 5 Best Bets
-1. **MIN @ LAA YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +22.5%)
-   - P(YRFI) 68.5% vs baseline 46.0%
-2. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
+1. **OAK @ CLE YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +27.6%)
+   - P(YRFI) 73.6% vs baseline 46.0%
+2. **SEA @ COL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +25.7%)
+   - P(YRFI) 71.7% vs baseline 46.0%
+3. **MIA @ SDP YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +24.9%)
+   - P(YRFI) 70.9% vs baseline 46.0%
+4. **CHC @ CIN YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +24.0%)
+   - P(YRFI) 70.0% vs baseline 46.0%
+5. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
    - Player prop quality score 1.1935
    - Elite player
-3. **LOL ShowMaker OVER 3.5 Kills**  (78/100 ****, edge —)
-   - Player prop quality score 1.1892
-   - Elite player
-4. **LOL Peyz OVER 4.5 Kills**  (78/100 ****, edge —)
-   - Player prop quality score 1.184
-   - Elite player
-5. **GOLF Jackson Suber TOP5 @ 513 (Biltmore Championship Asheville)**  (78/100 *****, edge —)
-   - P(top 5) 16.3% -- lower variance than outright but compelling line.
 
-## ⚠️ Trap Warnings — 9 flagged
-- **MIN @ LAA YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +22.5% looks big but only 0 settled props on this player — model unproven
-- **Coby Mayo OVER 1.5 batter total bases** (low):
-   - Edge +22.3% looks big but only 0 settled props on this player — model unproven
-- **Pete Alonso OVER 1.5 batter total bases** (low):
-   - Edge +20.0% looks big but only 0 settled props on this player — model unproven
-- **NYY @ ARI YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +17.4% looks big but only 0 settled props on this player — model unproven
-- **Riley Greene OVER 1.5 batter total bases** (low):
-   - Edge +15.3% looks big but only 0 settled props on this player — model unproven
+## ⚠️ Trap Warnings — 15 flagged
+- **OAK @ CLE YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +27.6% looks big but only 0 settled props on this player — model unproven
+- **SEA @ COL YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +25.7% looks big but only 0 settled props on this player — model unproven
+- **DET @ CHW 2-leg SGP @ +171** (low):
+   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
+- **MIA @ SDP YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +24.9% looks big but only 0 settled props on this player — model unproven
+- **CHC @ CIN YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +24.0% looks big but only 0 settled props on this player — model unproven
 
 ## Hot streaks
-**Batters heating up:** Mookie Betts (heat +5.11), Gabriel Moreno (heat +4.97), Ben Rice (heat +4.96)
-**Pitchers on a run:** Tyler Glasnow (heat +12.60), Tyler Phillips (heat +6.13)
+**Batters heating up:** Pete Alonso (heat +2.74), Jeremiah Jackson (heat +1.90), Spencer Torkelson (heat +1.74)
+**Pitchers on a run:** Andrew Alvarez (heat +3.23), Cal Quantrill (heat -0.76)
+
+## Top correlation-aware SGPs
+- **DET @ CHW** 2-leg @ +171 fair (joint 0.37, EV +25.0%)
+   - Colt Keith OVER 0.5 batter hits
+   - Riley Greene OVER 0.5 batter hits
 
 ## Bullpens GASSED tonight
-Athletics, Pittsburgh Pirates, San Diego Padres, Tampa Bay Rays, Texas Rangers, Minnesota Twins, Chicago White Sox, Milwaukee Brewers
+Athletics, Pittsburgh Pirates, San Diego Padres, St. Louis Cardinals, Tampa Bay Rays, Texas Rangers, Philadelphia Phillies, Chicago White Sox
 _Lean late-inning OVER on these games; fade their save situations._
 
 ## NRFI/YRFI strong leans
-- **YRFI** (1st-inning OVER): MIN @ LAA, NYY @ ARI, TOR @ TEX, SEA @ COL, SFG @ LAD
+- **YRFI** (1st-inning OVER): OAK @ CLE, SEA @ COL, MIA @ SDP, CHC @ CIN, MIN @ LAA
 
 ## Golf -- Biltmore Championship Asheville
 - **Leader:** Neal Shipley (-15) at #1
 - **Field:** 132 players  |  Status: In Progress
-- **Play of the Tournament:** Jackson Suber TOP5 @ +513 (model 16.3%, HIGH)
-   - P(top 5) 16.3% -- lower variance than outright but compelling line.
+- **Play of the Tournament:** Austin Smotherman TOP10 @ +562 (model 15.1%, HIGH)
+   - P(top 10) 15.1% -- safest finish bet (#26 (-8)).
 
 ## NBA -- PRESEASON
 - Miami Heat @ Toronto Raptors (0-0 vs 0-0)  | P(home) 55.0% fair -122 | Scheduled
@@ -72,11 +75,11 @@ _Lean late-inning OVER on these games; fade their save situations._
 - Kiwoom Heroes @ SSG Landers | P(home) 68.2% fair -214 | total 10 R
 - **KBO POD:** KIA Tigers ML vs NC Dinos (KBO) (HIGH)
 
-## LoL Esports -- 0 live, 10 upcoming
+## LoL Esports -- 2 live, 8 upcoming
+- [LEC] Karmine Corp vs Movistar KOI BO5 | P(A) 66.5% fair -198/+198
+- [CBLOL] RED Kalunga vs Vivo Keyd Stars BO5 | P(A) 32.0% fair +212/-212
 - [VCS] Saigon 1TAP DINO vs Saigon MVKE Academy BO3 | P(A) 43.7% fair +129/-129
 - [VCS] Saigon 9Gaming Esports vs TP.HCM SN CyberCore Esports BO3 | P(A) 52.5% fair -110/+110
-- [LEC] Movistar KOI vs Karmine Corp BO5 | P(A) 33.6% fair +198/-198
-- [CBLOL] RED Kalunga vs Vivo Keyd Stars BO5 | P(A) 32.0% fair +212/-212
 - [LCS] Cloud9 Kia vs LYON BO5 | P(A) 35.2% fair +184/-184
 - **LoL POT:** LYON ML vs Cloud9 Kia (LCS, BO5) (HIGH)
 

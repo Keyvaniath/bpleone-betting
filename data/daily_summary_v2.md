@@ -1,25 +1,32 @@
 # EdgeStat Daily Summary — 2026-09-19
 
-## 🏥 Model Health: 66.0/100 [OK]
+## 🏥 Model Health: 60.5/100 [OK]
 - Operational but room to improve - check yellow components
   - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 0/100
-  - 🔴 Brier Trend: 34.8/100
+  - 🔴 Brier Trend: 26.6/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 95.5/100
-  - 🟢 Edge Count: 100/100
+  - 🟢 Data Health: 81.8/100
+  - 🟢 Edge Count: 88.6/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.564)
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.565)
 - **Total games on board:** 47
-- **Strong home favorites:** 13 | **Strong road dogs:** 10
+- **Strong home favorites:** 17 | **Strong road dogs:** 9
 
 ## 🎯 Top 5 Best Bets
-1. **MIN @ LAA YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-2. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
-3. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
-4. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
-5. **GOLF Jackson Suber TOP5 @ 513 (Biltmore Championship Asheville)** (78/100 ★★★★★)
+1. **OAK @ CLE YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+2. **SEA @ COL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+3. **MIA @ SDP YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+4. **CHC @ CIN YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+5. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
+
+## 🐋 Whale Picks (Max Confluence)
+- [STRONG] **[MLB]** CHC @ CIN ML_AWAY -- 66% / +13.1% (score 2.8)
+- [STRONG] **[MLB]** CHC @ CIN CHC_ML -- 73% / +24.3% (score 2.5)
+
+## 📡 Sharp Action (Line Movement)
+- [MODERATE] **CHC @ CIN** ml_away: 53.27% → 57.98% (+4.7pp)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -47,45 +54,56 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (3)
+## ⚡ Pre-Game HIGH Conviction (11)
 - [NCAAF] **Georgia Bulldogs** AWAY (None L10) · model 74.9% fair -299
 - [NCAAF] **SMU Mustangs** AWAY (None L10) · model 74.9% fair -299
 - [NCAAF] **New Mexico Lobos** AWAY (None L10) · model 74.9% fair -299
+- [EPL] **Arsenal** AWAY (3-0 L10) · model 73.5% fair -278
+- [MLS] **St. Louis CITY SC** HOME (2-2 L10) · model 73.0% fair -270
+- [MLS] **FC Dallas** HOME (3-1 L10) · model 69.7% fair -230
+- [MLS] **Nashville SC** HOME (1-3 L10) · model 68.3% fair -216
+- [MLS] **San Jose Earthquakes** HOME (2-2 L10) · model 64.8% fair -184
+- [MLS] **New England Revolution** HOME (3-1 L10) · model 64.8% fair -184
+- [MLS] **Portland Timbers** HOME (1-3 L10) · model 64.3% fair -180
 
 ## 🔥/❄️ Heat / Cold Signals
 - Hot teams: **4** | Cold teams: **17** | Over-heavy: 0 | Under-heavy: 1
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (134)
-- STEAM_MOVE: **128**
-- COMPOUND_BULLPEN: **2**
-- PEN_MISMATCH: **4**
-  - PHX @ POR (WNBA): TOTAL steam since open: ML -2.1pp toward PHX; total -6 (UNDER) (19 snapshots)
-  - STBK @ BALL (NCAAF): ML/TOTAL steam since open: ML -4.1pp toward STBK; total -5 (UNDER) (8 snapshots)
-  - RMU @ AKR (NCAAF): TOTAL steam since open: ML -0.9pp toward RMU; total +5 (OVER) (6 snapshots)
-  - ODU @ VT (NCAAF): TOTAL steam since open: ML -0.7pp toward ODU; total -4 (UNDER) (16 snapshots)
-  - WEB @ COLO (NCAAF): TOTAL steam since open: ML -0.9pp toward WEB; total +4 (OVER) (7 snapshots)
+## ⚠️ Anomaly Detector (155)
+- RESIDUAL_DIVERGENCE: **13**
+- STEAM_MOVE: **131**
+- PEN_MISMATCH: **7**
+- COMPOUND_BULLPEN: **4**
+  - CF Montréal (MLS): CF Montréal OUTPERFORMING expected margin by 9.4pts in recent games -- model bias may persist
+  - Charlotte FC (MLS): Charlotte FC UNDERPERFORMING expected margin by 11.4pts in recent games -- model bias may persist
+  - LAFC (MLS): LAFC UNDERPERFORMING expected margin by 8.1pts in recent games -- model bias may persist
+  - FC Dallas (MLS): FC Dallas UNDERPERFORMING expected margin by 8.4pts in recent games -- model bias may persist
+  - FC Cincinnati (MLS): FC Cincinnati OUTPERFORMING expected margin by 10.7pts in recent games -- model bias may persist
 
 ## 💰 Today's Portfolio (9 picks)
-- Total stake: **$330.0** (33.0% of $1000 bankroll)
-- Expected EV: **$-8.04**
-  - #1 [NRFI] $50 on MIN @ LAA YRFI (1st-inning OVER 0.5) (P=68%)
-  - #2 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
-  - #3 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
-  - #4 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
-  - #5 [GOLF] $35 on GOLF Jackson Suber TOP5 @ 513 (Biltmore Championship Ashevil (P=16%)
+- Total stake: **$345.0** (34.5% of $1000 bankroll)
+- Expected EV: **$4.99**
+  - #1 [NRFI] $50 on OAK @ CLE YRFI (1st-inning OVER 0.5) (P=74%)
+  - #2 [NRFI] $50 on SEA @ COL YRFI (1st-inning OVER 0.5) (P=72%)
+  - #3 [NRFI] $50 on MIA @ SDP YRFI (1st-inning OVER 0.5) (P=71%)
+  - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
+  - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
-## 🎯 Convergence Picks (2 stacked games)
-- ELITE: **0** · HIGH: 1 · MED: 1
-  - [HIGH] Chelsea @ Brentford : 3 signals (HEAT_COLD, ATS, ATS)
-  - [MED] Red Bull New York @ New York City FC : 2 signals (ATS, ATS)
+## 🎯 Convergence Picks (5 stacked games)
+- ELITE: **0** · HIGH: 1 · MED: 4
+  - [HIGH] Red Bull New York @ New York City FC : 3 signals (HEAT_COLD, ATS, ATS)
+  - [MED] Indiana Fever @ Toronto Tempo : 2 signals (ATS, ATS)
+  - [MED] New York Liberty @ Minnesota Lynx : 2 signals (ATS, ATS)
+  - [MED] Portland Fire @ Golden State Valkyries : 2 signals (ATS, ATS)
+  - [MED] Chelsea @ Brentford : 2 signals (HEAT_COLD, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (8)
-- **Tyler Glasnow** OVER 5.5 K (77%) fair -328
-- **Bryan Woo** OVER 4.5 K (73%) fair -271
-- **Tyler Mahle** OVER 4.5 K (70%) fair -232
-- **Eduardo Rodriguez** OVER 4.5 K (70%) fair -232
-- **Connor Prielipp** OVER 4.5 K (69%) fair -225
+## ⚾ Top MLB Pitcher K Plays (11)
+- **Jacob Lopez** OVER 4.5 K (73%) fair -275
+- **Tarik Skubal** OVER 5.5 K (71%) fair -250
+- **Cam Schlittler** OVER 6.5 K (70%) fair -237
+- **Joe Ryan** OVER 4.5 K (69%) fair -223
+- **Christian Scott** OVER 4.5 K (68%) fair -214
 
 ## 🏀 NBA Player Heat (2 HOT / 0 COLD)
   - 🔥 **Scottie Barnes** (TOR): L5 24.4/7.6/9.6 vs season 18.6/5.8/8.8 [PTS +5.8]
@@ -103,7 +121,7 @@
   - 🔥 T2 **Ben Kohles** (USA): -14 total -- finished T2
   - 🔥 T3 **Ricky Castillo** (USA): -11 total -- finished T3
   - 🔥 T4 **Max Greyserman** (USA): -11 total -- finished T4
-  - 🔥 T5 **Eric Cole** (USA): -10 total -- finished T5
+  - 🔥 T5 **Adam Schenk** (USA): -10 total -- finished T5
   - ❄️ **Marcelo Rozo** (Colombia): Sunday +5.5 vs tourney avg
   - ❄️ **Kensei Hirata** (Japan): Sunday +5.5 vs tourney avg
   - ❄️ **Tyler Jones** (USA): Sunday +5.5 vs tourney avg
