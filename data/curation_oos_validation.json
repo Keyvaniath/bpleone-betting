@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-09-19T00:06:16",
-  "n_settled": 11258,
+  "generated_at": "2026-09-19T12:56:06",
+  "n_settled": 11283,
   "span": [
     "2026-05-19",
     "2026-09-18"
@@ -8,15 +8,15 @@
   "n_days": 123,
   "in_sample": {
     "raw_roi": -19.3,
-    "raw_n": 11248,
-    "curated_roi": 14.4,
-    "curated_n": 2210,
-    "curated_hit": 69.2,
+    "raw_n": 11273,
+    "curated_roi": 14.5,
+    "curated_n": 2215,
+    "curated_hit": 69.3,
     "families_cut": 22,
     "curated_roi_ci": {
       "roi_lo": 10.5,
-      "roi_hi": 18.3,
-      "n": 2210,
+      "roi_hi": 18.4,
+      "n": 2215,
       "positive": true
     }
   },
@@ -29,10 +29,10 @@
       "train_n": 6470,
       "families_cut": 18,
       "test_raw_roi": -20.9,
-      "test_oos_roi": 3.3,
+      "test_oos_roi": 3.5,
       "test_oos_hit": 62.7,
-      "test_oos_n": 1166,
-      "test_leak_roi": 8.8
+      "test_oos_n": 1173,
+      "test_leak_roi": 9.1
     },
     {
       "split": "70/30",
@@ -42,10 +42,10 @@
       "train_n": 7651,
       "families_cut": 19,
       "test_raw_roi": -21.0,
-      "test_oos_roi": 4.5,
+      "test_oos_roi": 4.7,
       "test_oos_hit": 63.9,
-      "test_oos_n": 924,
-      "test_leak_roi": 9.7
+      "test_oos_n": 931,
+      "test_leak_roi": 9.9
     },
     {
       "split": "80/20",
@@ -54,58 +54,58 @@
       "test_end": "2026-09-18",
       "train_n": 9438,
       "families_cut": 19,
-      "test_raw_roi": -14.2,
-      "test_oos_roi": 4.6,
-      "test_oos_hit": 67.5,
-      "test_oos_n": 803,
-      "test_leak_roi": 9.5
+      "test_raw_roi": -14.3,
+      "test_oos_roi": 4.7,
+      "test_oos_hit": 67.4,
+      "test_oos_n": 811,
+      "test_leak_roi": 9.8
     }
   ],
   "holdout_70_ci": {
-    "roi_lo": -1.9,
-    "roi_hi": 10.4,
-    "n": 924,
+    "roi_lo": -1.5,
+    "roi_hi": 10.6,
+    "n": 931,
     "positive": false
   },
   "holdout_robust_ci": {
-    "roi_lo": -4.0,
-    "roi_hi": 8.4,
-    "n": 904,
+    "roi_lo": -3.5,
+    "roi_hi": 8.5,
+    "n": 911,
     "positive": false
   },
   "persistence": {
     "n_cut": 19,
     "kept_losing": 15,
     "flipped": 2,
-    "test_net_of_cuts": -1583.0,
+    "test_net_of_cuts": -1598.0,
     "worst": [
       {
-        "family": "mlb_xbh_0.5_over",
-        "n": 914,
-        "net": -248.4
+        "family": "1_plus_xbh",
+        "n": 922,
+        "net": -251.5
       },
       {
-        "family": "1_plus_xbh",
-        "n": 914,
-        "net": -248.4
+        "family": "mlb_xbh_0.5_over",
+        "n": 922,
+        "net": -251.5
       },
       {
         "family": "tb_3plus_yes",
-        "n": 520,
-        "net": -177.6
+        "n": 527,
+        "net": -181.1
       },
       {
         "family": "mlb_tb_2.5_over",
-        "n": 520,
-        "net": -177.6
+        "n": 527,
+        "net": -181.1
       },
       {
-        "family": "mlb_hr_0.5_over",
+        "family": "to_hit_hr_yes",
         "n": 393,
         "net": -142.3
       },
       {
-        "family": "to_hit_hr_yes",
+        "family": "mlb_hr_0.5_over",
         "n": 393,
         "net": -142.3
       }
@@ -113,8 +113,8 @@
   },
   "concentration": {
     "n_surviving_families": 68,
-    "curated_net": 41.7,
-    "curated_n": 924,
+    "curated_net": 44.1,
+    "curated_n": 931,
     "top2": [
       {
         "family": "fight_r1_finish_yes",
@@ -130,9 +130,9 @@
       }
     ],
     "net_top2": 51.8,
-    "net_ex_top2": -10.1,
-    "roi_ex_flagged": 2.3,
-    "n_ex_flagged": 904,
+    "net_ex_top2": -7.7,
+    "roi_ex_flagged": 2.6,
+    "n_ex_flagged": 911,
     "top_contributors": [
       {
         "family": "fight_r1_finish_yes",
@@ -273,7 +273,7 @@
         "flagged": true
       }
     ],
-    "note": "Concentrated: the top 2 of 68 surviving families produced +52u; the other 66 combined LOST 10u. One pillar is flagged small-sample and quarantined; excluding flagged families the held-out edge is +2.3% (n=904)."
+    "note": "Concentrated: the top 2 of 68 surviving families produced +52u; the other 66 combined LOST 8u. One pillar is flagged small-sample and quarantined; excluding flagged families the held-out edge is +2.6% (n=911)."
   },
   "caveats": [
     "Short sample: ~1 month, single MLB season. The held-out tail is genuinely unseen but adjacent in time -- not a cross-season or cross-regime test.",
@@ -281,5 +281,5 @@
     "ROI is measured at the model's fair price / settled outcome. It does NOT yet prove we beat the closing line (CLV) -- that requires the live odds feed.",
     "The 95% CI shows the edge is significant WITHIN this sample (it's not sampling noise), but says nothing about regime change -- it's still ~1 month of one season. It also treats picks as independent, so same-slate correlation makes the true interval a touch wider than shown."
   ],
-  "headline": "The curation derived on early data still returns +4.5% on the unseen later window, and the families it cut went on to lose 1583u out-of-sample."
+  "headline": "The curation derived on early data still returns +4.7% on the unseen later window, and the families it cut went on to lose 1598u out-of-sample."
 }

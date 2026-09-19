@@ -1,33 +1,33 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-09-19T00:06:27 UTC_
+_Generated 2026-09-19T12:56:15 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -2
+- **Score:** -27
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 17
-- **Total FADES:** 70
+- **Total STRONG:** 14
+- **Total FADES:** 83
 
 ## Top 5 Curated Picks
-1. **GOLF / Neal Shipley** (GOLF_PLAYER, score=217.43)
+1. **GOLF / Neal Shipley** (GOLF_PLAYER, score=215.57)
    - Play: Neal Shipley (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Ricky Castillo** (GOLF_PLAYER, score=164.57)
-   - Play: Ricky Castillo (PLAYER_STRONG)
+2. **GOLF / Ben Kohles** (GOLF_PLAYER, score=210.14)
+   - Play: Ben Kohles (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-3. **MLB / Tyler Glasnow** (MLB_PITCHER, score=63.08)
-   - Play: Tyler Glasnow (PITCHER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_PITCHER)
-4. **MLB / Gerrit Cole** (MLB_PITCHER, score=58.42)
-   - Play: Gerrit Cole (PITCHER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_PITCHER)
+3. **MLB / HOME** (MLB_TEAM, score=72.42)
+   - Play: HOME (TEAM_STRONG)
+   - Rationale: Cross-sport top pick (MLB_TEAM)
+4. **MLB / AWAY** (MLB_TEAM, score=72.42)
+   - Play: AWAY (TEAM_STRONG)
+   - Rationale: Cross-sport top pick (MLB_TEAM)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
   - Neal Shipley top 10 finish
+  - Ben Kohles top 10 finish
   - Ricky Castillo top 10 finish
-  - Eric Cole top 10 finish
 
 ## Slate ROI Projection
 - **Picks:** 0
@@ -36,13 +36,13 @@ _Generated 2026-09-19T00:06:27 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **NBA** / TOR (TEAM_FADE)
-  - Fade angle: team total UNDER
 - **NBA** / MIA (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NHL** / stuart skinner (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / adin hill (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / thatcher demko (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
+- **NBA** / TOR (TEAM_FADE)
+  - Fade angle: team total UNDER
+- **MLB** / Dylan Cease (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Gerrit Cole (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Tyler Glasnow (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
