@@ -1,18 +1,18 @@
-# EdgeStat Daily Summary — 2026-09-18
+# EdgeStat Daily Summary — 2026-09-19
 
-## 🏥 Model Health: 64.9/100 [OK]
+## 🏥 Model Health: 67.0/100 [OK]
 - Operational but room to improve - check yellow components
   - 🟢 Calibration Freshness: 100.0/100
   - 🔴 Hit Rate Trend: 0/100
-  - 🔴 Brier Trend: 34.3/100
+  - 🔴 Brier Trend: 34.8/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 100.0/100
-  - 🟢 Edge Count: 80.0/100
+  - 🟢 Edge Count: 100/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.59)
-- **Total games on board:** 34
-- **Strong home favorites:** 9 | **Strong road dogs:** 5
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.602)
+- **Total games on board:** 36
+- **Strong home favorites:** 11 | **Strong road dogs:** 5
 
 ## 🎯 Top 5 Best Bets
 1. **DET @ CHW YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
@@ -47,19 +47,20 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (3)
+## ⚡ Pre-Game HIGH Conviction (4)
 - [NCAAF] **Georgia Bulldogs** AWAY (None L10) · model 74.9% fair -299
 - [NCAAF] **SMU Mustangs** AWAY (None L10) · model 74.9% fair -299
 - [NCAAF] **New Mexico Lobos** AWAY (None L10) · model 74.9% fair -299
+- [WNBA] **Minnesota Lynx** HOME (None L10) · model 73.2% fair -273
 
 ## 🔥/❄️ Heat / Cold Signals
 - Hot teams: **5** | Cold teams: **17** | Over-heavy: 0 | Under-heavy: 0
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (131)
-- STEAM_MOVE: **124**
+## ⚠️ Anomaly Detector (138)
+- STEAM_MOVE: **126**
 - COMPOUND_BULLPEN: **5**
-- PEN_MISMATCH: **2**
+- PEN_MISMATCH: **7**
   - PHX @ POR (WNBA): TOTAL steam since open: ML -2.1pp toward PHX; total -6 (UNDER) (19 snapshots)
   - STBK @ BALL (NCAAF): ML/TOTAL steam since open: ML -4.1pp toward STBK; total -5 (UNDER) (8 snapshots)
   - RMU @ AKR (NCAAF): TOTAL steam since open: ML -0.9pp toward RMU; total +5 (OVER) (6 snapshots)
@@ -102,23 +103,23 @@
   - [LEAN] **Patricio Pitbull** (37-9-0) vs Dooho Choi -- fair -142
 
 ## ⛳ Golf Player Heat (from Biltmore Championship Asheville)
-  - 🔥 T1 **Séamus Power** (Ireland): -8 total -- finished T1
-  - 🔥 T2 **Eric Cole** (USA): -8 total -- finished T2
-  - 🔥 T3 **Jacob Bridgeman** (USA): -8 total -- finished T3
-  - 🔥 T4 **Jackson Suber** (USA): -8 total -- finished T4
-  - 🔥 T5 **Neal Shipley** (USA): -8 total -- finished T5
+  - 🔥 T1 **Neal Shipley** (USA): -15 total -- finished T1
+  - 🔥 T2 **Ricky Castillo** (USA): -11 total -- finished T2
+  - 🔥 T3 **Eric Cole** (USA): -10 total -- finished T3
+  - 🔥 T4 **Séamus Power** (Ireland): -9 total -- finished T4
+  - 🔥 T5 **Jacob Bridgeman** (USA): -9 total -- finished T5
 
-## 🔥 MLB Batter Heat (52 HOT / 45 COLD)
+## 🔥 MLB Batter Heat (45 HOT / 51 COLD)
   - 🔥 **Jakob Marsee** (MIA): L14 .388 / season .227 (+161pts)
+  - 🔥 **Brice Turang** (MIL): L14 .419 / season .265 (+154pts)
   - 🔥 **Danny Jansen** (TEX): L14 .341 / season .202 (+139pts)
-  - 🔥 **Victor Mesa Jr.** (TB): L14 .383 / season .252 (+131pts)
-  - 🔥 **Tyrone Taylor** (CHC): L14 .400 / season .278 (+122pts)
-  - 🔥 **Jackson Merrill** (SD): L14 .375 / season .256 (+119pts)
+  - 🔥 **Edmundo Sosa** (PHI): L14 .375 / season .242 (+133pts)
+  - 🔥 **A.J. Ewing** (NYM): L14 .388 / season .256 (+132pts)
   - ❄️ **Andruw Monasterio** (BOS): L14 .100 / season .239 (-139pts) -- FADE props
   - ❄️ **Brandon Marsh** (PHI): L14 .125 / season .262 (-137pts) -- FADE props
   - ❄️ **Isaac Collins** (KC): L14 .083 / season .219 (-136pts) -- FADE props
-  - ❄️ **Colson Montgomery** (CWS): L14 .067 / season .203 (-136pts) -- FADE props
   - ❄️ **Taylor Ward** (SEA): L14 .094 / season .222 (-128pts) -- FADE props
+  - ❄️ **Jung Hoo Lee** (SF): L14 .148 / season .274 (-126pts) -- FADE props
 
 ## 📈 Streak Regression Alerts (1)
 - [EPL] Brentford on L3 L10 0-3 -- Brentford on L3 -- no historical sample

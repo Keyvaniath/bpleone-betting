@@ -1,17 +1,17 @@
-# EdgeStat Daily Brief - 2026-09-18
+# EdgeStat Daily Brief - 2026-09-19
 
 **Model Confidence: 20.4/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
 
-_Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
+_Pipeline health: **DEGRADED** (14/15 artifacts ok; 1 empty, 0 stale)._ 
 
-_Generated at 2026-09-18T17:40:30 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-09-19T00:08:32 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
-**CHC @ CIN - OVER_8.5**
-- Market: -110
-- Model probability: 76.2%
-- Raw edge: +45.56%
+**BOS @ TBR - TBR_ML**
+- Market: +285
+- Model probability: 52.1%
+- Raw edge: +100.52%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
@@ -20,21 +20,21 @@ _Generated at 2026-09-18T17:40:30 UTC. Game lines source: **Bovada (fallback -- 
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 6:40p ET | CHC @ CIN | Great American Ball Park | 73F 4mph | OVER_8.5 +45.56% |
-| 6:40p ET | KCR @ PIT | PNC Park | 65F 2mph | UNDER_8.5 +4.64% |
-| 7:05p ET | MIL @ BAL | Oriole Park at Camden Yards | 72F 7mph | OVER_8.5 +31.85% |
-| 7:10p ET | OAK @ CLE | Progressive Field | 62F 4mph | OVER_8.5 +20.12% |
-| 7:10p ET | BOS @ TBR | Tropicana Field | indoor | BOS_ML +17.37% |
-| 7:15p ET | PHI @ NYM | Citi Field | 70F 11mph | PHI_ML +7.02% |
-| 7:40p ET | DET @ CHW | Rate Field | 66F 9mph | DET_ML +25.93% |
-| 8:05p ET | TOR @ TEX | Globe Life Field | indoor | TOR_ML +5.75% |
-| 8:10p ET | SEA @ COL | Coors Field | 63F 5mph | COL_ML +26.97% |
-| 8:10p ET | ATL @ HOU | Daikin Park | indoor | OVER_8.0 +11.12% |
-| 8:15p ET | WSN @ STL | Busch Stadium | 83F 5mph | OVER_7.5 +31.92% |
-| 9:38p ET | MIN @ LAA | Angel Stadium | 67F 3mph | MIN_ML +23.17% |
-| 9:40p ET | MIA @ SDP | Petco Park | 67F 3mph | SDP_ML +3.67% |
-| 9:40p ET | NYY @ ARI | Chase Field | indoor | NYY_ML +5.9% |
-| 10:15p ET | SFG @ LAD | UNIQLO Field at Dodger Stadium | 64F 4mph | OVER_8.0 +16.86% |
+| 4:05p ET | MIL @ BAL | Oriole Park at Camden Yards | 71F 5mph | OVER_7.5 +42.92% |
+| 4:10p ET | BOS @ TBR | Tropicana Field | indoor | TBR_ML +100.52% |
+| 4:10p ET | PHI @ NYM | Citi Field | 63F 5mph | UNDER_8.5 +12.8% |
+| 6:10p ET | OAK @ CLE | Progressive Field | 70F 1mph | OVER_7.5 +41.02% |
+| 6:40p ET | CHC @ CIN | Great American Ball Park | 73F 5mph | OVER_9.5 +66.65% |
+| 6:40p ET | KCR @ PIT | PNC Park | 68F 4mph | PIT_ML +7.8% |
+| 7:05p ET | TOR @ TEX | Globe Life Field | indoor | TEX_ML +5.24% |
+| 7:10p ET | ATL @ HOU | Daikin Park | indoor | OVER_8.5 +10.13% |
+| 7:10p ET | DET @ CHW | Rate Field | 68F 8mph | OVER_7.5 +38.58% |
+| 7:15p ET | WSN @ STL | Busch Stadium | 84F 4mph | WSN_ML +44.95% |
+| 8:10p ET | SEA @ COL | Coors Field | 67F 5mph | COL_ML +57.05% |
+| 8:10p ET | NYY @ ARI | Chase Field | indoor | NYY_ML +20.65% |
+| 8:40p ET | MIA @ SDP | Petco Park | 68F 4mph | MIA_ML +10.13% |
+| 9:10p ET | SFG @ LAD | UNIQLO Field at Dodger Stadium | 70F 0mph | OVER_8.0 +5.65% |
+| 9:38p ET | MIN @ LAA | Angel Stadium | 68F 2mph | MIN_ML +1.89% |
 
 ## Parlays - top 5
 
@@ -58,30 +58,30 @@ _Generated at 2026-09-18T17:40:30 UTC. Game lines source: **Bovada (fallback -- 
 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
-| batter hits | 264 | 52.3% | 55.8% | 1.067 | 0.939 |
 | batter total bases | 119 | 44.5% | 46.9% | 1.054 | 0.952 |
+| batter hits | 264 | 52.3% | 55.8% | 1.067 | 0.939 |
 
-Cumulative graded plays: 11256. Wins: 4214. Hit rate: 37.4%.
+Cumulative graded plays: 11258. Wins: 4215. Hit rate: 37.4%.
 
 ## Auxiliary Markets (Model Fair Prices)
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| ATL @ HOU | 50.3% | -101 | 3.44 | +183 | -183 |
-| BOS @ TBR | 44.3% | +126 | 4.07 | +214 | -214 |
-| CHC @ CIN | 38.3% | +161 | 4.81 | +388 | -388 |
-| DET @ CHW | 29.0% | +244 | 6.03 | +255 | -255 |
-| KCR @ PIT | 42.7% | +134 | 4.2 | -112 | +112 |
-| MIA @ SDP | 55.6% | -125 | 2.9 | -132 | +132 |
-| MIL @ BAL | 42.5% | +135 | 4.06 | +526 | -526 |
-| MIN @ LAA | 31.5% | +217 | 5.82 | +339 | -339 |
-| NYY @ ARI | 36.6% | +173 | 5.02 | +230 | -230 |
-| OAK @ CLE | 29.5% | +239 | 6.06 | -229 | +229 |
-| PHI @ NYM | 40.1% | +149 | 4.29 | +218 | -218 |
-| SEA @ COL | 45.4% | +120 | 4.07 | +171 | -171 |
-| SFG @ LAD | 42.6% | +135 | 4.29 | -187 | +187 |
-| TOR @ TEX | 39.4% | +154 | 4.65 | +285 | -285 |
-| WSN @ STL | 61.5% | -159 | 2.42 | +309 | -309 |
+| ATL @ HOU | 50.3% | -101 | 3.44 | +143 | -143 |
+| BOS @ TBR | -- | -- | -- | +159 | -159 |
+| CHC @ CIN | -- | -- | -- | +788 | -788 |
+| DET @ CHW | -- | -- | -- | +122 | -122 |
+| KCR @ PIT | -- | -- | -- | +131 | -131 |
+| MIA @ SDP | 55.6% | -125 | 2.89 | +167 | -167 |
+| MIL @ BAL | -- | -- | -- | +250 | -250 |
+| MIN @ LAA | 31.5% | +217 | 5.82 | +206 | -206 |
+| NYY @ ARI | 36.6% | +173 | 5.02 | +410 | -410 |
+| OAK @ CLE | -- | -- | -- | +134 | -134 |
+| PHI @ NYM | -- | -- | -- | +142 | -142 |
+| SEA @ COL | 41.2% | +143 | 4.55 | -101 | +101 |
+| SFG @ LAD | 42.6% | +135 | 4.27 | -208 | +208 |
+| TOR @ TEX | 39.4% | +154 | 4.65 | +151 | -151 |
+| WSN @ STL | 61.5% | -159 | 2.39 | +389 | -389 |
 
 ## Travel / Rest Flags
 
@@ -107,7 +107,7 @@ Cumulative graded plays: 11256. Wins: 4214. Hit rate: 37.4%.
 
 ## Loop Activity (since last refresh)
 
-- Confidence delta: **-0.1**
+- Confidence delta: **+0.0**
 
 ## Model Recommendations (operator review)
 
@@ -119,4 +119,4 @@ _The model is suggesting 1 parameter tweak based on its own performance. Apply v
 ---
 
 _EdgeStat is a research desk. Bet responsibly. 21+. 1-800-GAMBLER._
-_Source: github.com/Keyvaniath/bpleone-betting - last settled 2026-09-17._
+_Source: github.com/Keyvaniath/bpleone-betting - last settled 2026-09-18._
