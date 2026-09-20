@@ -1,18 +1,18 @@
 # EdgeStat Daily Summary — 2026-09-19
 
-## 🏥 Model Health: 60.5/100 [OK]
+## 🏥 Model Health: 67.5/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.9/100
+  - 🟢 Calibration Freshness: 100.0/100
   - 🔴 Hit Rate Trend: 0/100
-  - 🔴 Brier Trend: 26.6/100
+  - 🔴 Brier Trend: 37.6/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 81.8/100
-  - 🟢 Edge Count: 88.6/100
+  - 🟢 Data Health: 100.0/100
+  - 🟢 Edge Count: 100/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.565)
-- **Total games on board:** 47
-- **Strong home favorites:** 17 | **Strong road dogs:** 9
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.626)
+- **Total games on board:** 44
+- **Strong home favorites:** 21 | **Strong road dogs:** 4
 
 ## 🎯 Top 5 Best Bets
 1. **OAK @ CLE YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
@@ -22,11 +22,7 @@
 5. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
 
 ## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** CHC @ CIN ML_AWAY -- 66% / +13.1% (score 2.8)
-- [STRONG] **[MLB]** CHC @ CIN CHC_ML -- 73% / +24.3% (score 2.5)
-
-## 📡 Sharp Action (Line Movement)
-- [MODERATE] **CHC @ CIN** ml_away: 53.27% → 57.98% (+4.7pp)
+- [STRONG] **[MLB]** SFG @ LAD LAD_ML -- 65% / +24.5% (score 2.5)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -54,11 +50,9 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (11)
-- [NCAAF] **Georgia Bulldogs** AWAY (None L10) · model 74.9% fair -299
+## ⚡ Pre-Game HIGH Conviction (8)
 - [NCAAF] **SMU Mustangs** AWAY (None L10) · model 74.9% fair -299
 - [NCAAF] **New Mexico Lobos** AWAY (None L10) · model 74.9% fair -299
-- [EPL] **Arsenal** AWAY (3-0 L10) · model 73.5% fair -278
 - [MLS] **St. Louis CITY SC** HOME (2-2 L10) · model 73.0% fair -270
 - [MLS] **FC Dallas** HOME (3-1 L10) · model 69.7% fair -230
 - [MLS] **Nashville SC** HOME (1-3 L10) · model 68.3% fair -216
@@ -70,11 +64,11 @@
 - Hot teams: **4** | Cold teams: **17** | Over-heavy: 0 | Under-heavy: 1
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (155)
-- RESIDUAL_DIVERGENCE: **13**
-- STEAM_MOVE: **131**
-- PEN_MISMATCH: **7**
+## ⚠️ Anomaly Detector (154)
+- RESIDUAL_DIVERGENCE: **9**
+- STEAM_MOVE: **135**
 - COMPOUND_BULLPEN: **4**
+- PEN_MISMATCH: **6**
   - CF Montréal (MLS): CF Montréal OUTPERFORMING expected margin by 9.4pts in recent games -- model bias may persist
   - Charlotte FC (MLS): Charlotte FC UNDERPERFORMING expected margin by 11.4pts in recent games -- model bias may persist
   - LAFC (MLS): LAFC UNDERPERFORMING expected margin by 8.1pts in recent games -- model bias may persist
@@ -90,20 +84,20 @@
   - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
-## 🎯 Convergence Picks (5 stacked games)
-- ELITE: **0** · HIGH: 1 · MED: 4
-  - [HIGH] Red Bull New York @ New York City FC : 3 signals (HEAT_COLD, ATS, ATS)
-  - [MED] Indiana Fever @ Toronto Tempo : 2 signals (ATS, ATS)
-  - [MED] New York Liberty @ Minnesota Lynx : 2 signals (ATS, ATS)
-  - [MED] Portland Fire @ Golden State Valkyries : 2 signals (ATS, ATS)
-  - [MED] Chelsea @ Brentford : 2 signals (HEAT_COLD, ATS)
+## 🎯 Convergence Picks (21 stacked games)
+- ELITE: **10** · HIGH: 7 · MED: 4
+  - [ELITE] Philadelphia Union @ Sporting Kansas City : 6 signals (PREGAME, HEAT_COLD, ANOMALY, ANOMALY)
+  - [ELITE] Atlanta United FC @ Portland Timbers : 6 signals (PREGAME, HEAT_COLD, ANOMALY, ANOMALY)
+  - [ELITE] Aston Villa @ Tottenham Hotspur : 5 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ATS)
+  - [ELITE] Hull City @ Newcastle United : 5 signals (PREGAME, ANOMALY, ANOMALY, ATS)
+  - [ELITE] LAFC @ San Jose Earthquakes : 4 signals (PREGAME, ANOMALY, ATS, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (11)
+## ⚾ Top MLB Pitcher K Plays (12)
+- **Brayan Bello** OVER 6.5 K (77%) fair -334
+- **Yunior Marte** OVER 6.5 K (77%) fair -326
 - **Jacob Lopez** OVER 4.5 K (73%) fair -275
-- **Tarik Skubal** OVER 5.5 K (71%) fair -250
 - **Cam Schlittler** OVER 6.5 K (70%) fair -237
 - **Joe Ryan** OVER 4.5 K (69%) fair -223
-- **Christian Scott** OVER 4.5 K (68%) fair -214
 
 ## 🏀 NBA Player Heat (2 HOT / 0 COLD)
   - 🔥 **Scottie Barnes** (TOR): L5 24.4/7.6/9.6 vs season 18.6/5.8/8.8 [PTS +5.8]
@@ -117,26 +111,33 @@
   - [LEAN] **Patricio Pitbull** (37-9-0) vs Dooho Choi -- fair -142
 
 ## ⛳ Golf Player Heat (from Biltmore Championship Asheville)
-  - 🔥 T1 **Neal Shipley** (USA): -15 total -- finished T1
-  - 🔥 T2 **Ben Kohles** (USA): -14 total -- finished T2
-  - 🔥 T3 **Ricky Castillo** (USA): -11 total -- finished T3
-  - 🔥 T4 **Max Greyserman** (USA): -11 total -- finished T4
-  - 🔥 T5 **Adam Schenk** (USA): -10 total -- finished T5
+  - 🔥 T1 **Ben Kohles** (USA): -18 total -- finished T1
+  - 🔥 T2 **Ricky Castillo** (USA): -17 total -- finished T2
+  - 🔥 T3 **Neal Shipley** (USA): -17 total -- finished T3
+  - 🔥 T4 **Marco Penge** (England): -16 total -- finished T4
+  - 🔥 T5 **Haotong Li** (China): -15 total -- finished T5
   - ❄️ **Marcelo Rozo** (Colombia): Sunday +5.5 vs tourney avg
   - ❄️ **Kensei Hirata** (Japan): Sunday +5.5 vs tourney avg
   - ❄️ **Tyler Jones** (USA): Sunday +5.5 vs tourney avg
 
-## 🔥 MLB Batter Heat (52 HOT / 52 COLD)
+## 🔥 MLB Batter Heat (51 HOT / 45 COLD)
+  - 🔥 **Brice Turang** (MIL): L14 .452 / season .266 (+186pts)
   - 🔥 **Jakob Marsee** (MIA): L14 .396 / season .228 (+168pts)
-  - 🔥 **Edmundo Sosa** (PHI): L14 .412 / season .249 (+163pts)
-  - 🔥 **Brice Turang** (MIL): L14 .413 / season .266 (+147pts)
-  - 🔥 **Danny Jansen** (TEX): L14 .341 / season .202 (+139pts)
+  - 🔥 **Riley Greene** (DET): L14 .436 / season .286 (+150pts)
   - 🔥 **Jackson Merrill** (SD): L14 .393 / season .256 (+137pts)
+  - 🔥 **Moisés Ballesteros** (LAA): L14 .357 / season .228 (+129pts)
   - ❄️ **Tommy Edman** (LAD): L14 .085 / season .244 (-159pts) -- FADE props
   - ❄️ **Andruw Monasterio** (BOS): L14 .100 / season .239 (-139pts) -- FADE props
-  - ❄️ **Brandon Marsh** (PHI): L14 .129 / season .261 (-132pts) -- FADE props
-  - ❄️ **Isaac Collins** (KC): L14 .088 / season .219 (-131pts) -- FADE props
+  - ❄️ **Jordan Walker** (STL): L14 .140 / season .278 (-138pts) -- FADE props
   - ❄️ **Taylor Ward** (SEA): L14 .094 / season .222 (-128pts) -- FADE props
+  - ❄️ **Brandon Marsh** (PHI): L14 .133 / season .260 (-127pts) -- FADE props
+
+## 📈 Streak Regression Alerts (16)
+- [MLS] CF Montréal on L4 L10 0-4 -- CF Montréal on L4 -- no historical sample
+- [MLS] Orlando City SC on W3 L10 3-1 -- Orlando City SC on W3 -- no historical sample
+- [MLS] FC Dallas on W3 L10 3-1 -- FC Dallas on W3 -- no historical sample
+- [MLS] FC Cincinnati on L3 L10 0-3 -- FC Cincinnati on L3 -- no historical sample
+- [MLS] Minnesota United FC on L4 L10 0-4 -- Minnesota United FC on L4 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**

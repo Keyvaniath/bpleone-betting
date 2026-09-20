@@ -1,55 +1,51 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-09-19T17:12:37 UTC_
+_Generated 2026-09-19T23:59:50 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -13
+- **Score:** -22
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 15
-- **Total FADES:** 73
-
-## Lock of the Night
-- **Subject:** José Soriano
-- **Source:** ELITE_BOARD
-- **Sport:** MLB
-- **Score:** 15.0
-- **Details:** TOR @ TEX
+- **Total STRONG:** 12
+- **Total FADES:** 70
 
 ## Top 5 Curated Picks
-1. **GOLF / Neal Shipley** (GOLF_PLAYER, score=213.79)
-   - Play: Neal Shipley (PLAYER_STRONG)
-   - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Ben Kohles** (GOLF_PLAYER, score=205.5)
+1. **GOLF / Ben Kohles** (GOLF_PLAYER, score=202.43)
    - Play: Ben Kohles (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-3. **MLB / Reid Detmers** (MLB_PITCHER, score=61.0)
+2. **GOLF / Ricky Castillo** (GOLF_PLAYER, score=180.64)
+   - Play: Ricky Castillo (PLAYER_STRONG)
+   - Rationale: Cross-sport top pick (GOLF_PLAYER)
+3. **WNBA / angel reese** (WNBA_PLAYER, score=93.33)
+   - Play: angel reese (PLAYER_STRONG)
+   - Rationale: Cross-sport top pick (WNBA_PLAYER)
+4. **WNBA / allisha gray** (WNBA_PLAYER, score=77.83)
+   - Play: allisha gray (PLAYER_STRONG)
+   - Rationale: Cross-sport top pick (WNBA_PLAYER)
+5. **MLB / Reid Detmers** (MLB_PITCHER, score=61.0)
    - Play: Reid Detmers (PITCHER_STRONG)
-   - Rationale: Cross-sport top pick (MLB_PITCHER)
-4. **MLB / Cal Quantrill** (MLB_PITCHER, score=57.67)
-   - Play: Cal Quantrill (PITCHER_STRONG)
    - Rationale: Cross-sport top pick (MLB_PITCHER)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
-  - Neal Shipley top 10 finish
   - Ben Kohles top 10 finish
   - Ricky Castillo top 10 finish
+  - Neal Shipley top 10 finish
 
 ## Slate ROI Projection
-- **Picks:** 1
-- **Avg edge:** -0.91%
+- **Picks:** 0
+- **Avg edge:** 0%
 - **Expected ROI (1/4 Kelly):** 0.0%
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **NBA** / TOR (TEAM_FADE)
-  - Fade angle: team total UNDER
+- **MLB** / José Soriano (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
 - **NBA** / MIA (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NHL** / marc-andre fleury (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / adin hill (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / jake oettinger (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
+- **NBA** / TOR (TEAM_FADE)
+  - Fade angle: team total UNDER
+- **MLB** / Sean Burke (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **MLB** / Freddy Peralta (PITCHER_FADE)
+  - Fade angle: K UNDER + outs UNDER + 4+ER YES
