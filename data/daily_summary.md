@@ -2,36 +2,27 @@
 
 **Model Confidence: 21.3/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
 
-_Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
+_Pipeline health: **DEGRADED** (14/15 artifacts ok; 1 empty, 0 stale)._ 
 
-_Generated at 2026-09-20T17:34:58 UTC. Game lines source: **placeholder -110 (no real book today)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-09-20T23:56:56 UTC. Game lines source: **placeholder -110 (no real book today)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
-**SEA @ COL - OVER_8.5**
+**CIN @ COL - CIN_ML**
 - Market: -110
-- Model probability: 95.3%
-- Raw edge: +81.96%
+- Model probability: 73.7%
+- Raw edge: +40.74%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
 
-## Full Slate (12 games)
+## Full Slate (3 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 1:35p ET | KCR @ PIT | PNC Park | 72F 6mph | OVER_8.5 +25.27% |
-| 1:40p ET | CHC @ CIN | Great American Ball Park | 91F 3mph | OVER_8.5 +74.24% |
-| 1:40p ET | BOS @ TBR | Tropicana Field | indoor | UNDER_8.5 +13.45% |
-| 2:10p ET | ATL @ HOU | Daikin Park | indoor | ATL_ML +5.37% |
-| 2:15p ET | WSN @ STL | Busch Stadium | 92F 4mph | OVER_8.5 +36.74% |
-| 2:35p ET | TOR @ TEX | Globe Life Field | indoor | UNDER_8.5 +33.67% |
-| 3:10p ET | SEA @ COL | Coors Field | 74F 12mph | OVER_8.5 +81.96% |
-| 4:07p ET | MIN @ LAA | Angel Stadium | 76F 9mph | OVER_8.5 +42.17% |
-| 4:10p ET | SFG @ LAD | UNIQLO Field at Dodger Stadium | 75F 9mph | OVER_8.5 +51.92% |
-| 4:10p ET | MIA @ SDP | Petco Park | 73F 7mph | MIA_ML +8.08% |
-| 4:10p ET | NYY @ ARI | Chase Field | indoor | NYY_ML +43.42% |
-| 7:20p ET | MIL @ BAL | Oriole Park at Camden Yards | 74F 1mph | MIL_ML +61.02% |
+| 7:05p ET | SDP @ LAD | Petco Park | 62F -6mph | LAD_ML +25.43% |
+| 6:45p ET | BOS @ NYY | Yankee Stadium | 71F 12mph | OVER_9.0 +30.97% |
+| 9:40p ET | CIN @ COL | Coors Field | 74F 4mph | CIN_ML +40.74% |
 
 ## Parlays - top 5
 
@@ -58,26 +49,15 @@ _Generated at 2026-09-20T17:34:58 UTC. Game lines source: **placeholder -110 (no
 | batter hits | 298 | 52.0% | 55.4% | 1.065 | 0.940 |
 | batter total bases | 129 | 45.0% | 47.2% | 1.049 | 0.955 |
 
-Cumulative graded plays: 11422. Wins: 4288. Hit rate: 37.5%.
+Cumulative graded plays: 11898. Wins: 4603. Hit rate: 38.7%.
 
 ## Auxiliary Markets (Model Fair Prices)
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| ATL @ HOU | 45.8% | +118 | 3.91 | +190 | -190 |
-| BOS @ TBR | 48.0% | +108 | 3.67 | +162 | -162 |
-| CHC @ CIN | 16.0% | +527 | 9.26 | +691 | -691 |
-| DET @ CHW | 44.7% | +124 | 4.03 | -- | -- |
-| KCR @ PIT | 49.6% | +101 | 3.49 | +110 | -110 |
-| MIA @ SDP | 32.8% | +204 | 5.53 | +202 | -202 |
-| MIL @ BAL | 39.2% | +155 | 4.67 | +765 | -765 |
-| MIN @ LAA | 40.0% | +150 | 4.86 | +275 | -275 |
-| NYY @ ARI | 39.3% | +155 | 4.67 | +440 | -440 |
-| OAK @ CLE | 42.2% | +137 | 4.31 | -- | -- |
-| SEA @ COL | 19.3% | +419 | 7.86 | +160 | -160 |
-| SFG @ LAD | 39.8% | +151 | 4.83 | -215 | +215 |
-| TOR @ TEX | 41.0% | +144 | 4.45 | +163 | -163 |
-| WSN @ STL | 42.1% | +138 | 4.41 | +172 | -172 |
+| BOS @ NYY | -- | -- | -- | +115 | -115 |
+| CIN @ COL | -- | -- | -- | +465 | -465 |
+| SDP @ LAD | -- | -- | -- | -166 | +166 |
 
 ## Team Form (last 10)
 
@@ -98,7 +78,7 @@ Cumulative graded plays: 11422. Wins: 4288. Hit rate: 37.5%.
 
 ## Loop Activity (since last refresh)
 
-- Confidence delta: **+0.1**
+- Confidence delta: **+0.0**
 
 ## Model Recommendations (operator review)
 
