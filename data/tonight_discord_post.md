@@ -1,5 +1,7 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:10 F:42
+_NO_ACTION_NIGHT_ | L:0 S:10 F:73
+
+:lock: **LOCK:** Jack Perkins (MLB)
 
 :dart: **Top Picks:**
 1. [GOLF] Neal Shipley -- Neal Shipley (PLAYER_STRONG)
