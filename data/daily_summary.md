@@ -1,17 +1,17 @@
-# EdgeStat Daily Brief - 2026-09-20
+# EdgeStat Daily Brief - 2026-09-21
 
-**Model Confidence: 21.3/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
+**Model Confidence: 20.8/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
 
-_Pipeline health: **DEGRADED** (14/15 artifacts ok; 1 empty, 0 stale)._ 
+_Pipeline health: **WARNING** (12/15 artifacts ok; 3 empty, 0 stale)._ 
 
-_Generated at 2026-09-20T23:56:56 UTC. Game lines source: **placeholder -110 (no real book today)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-09-21T15:33:06 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
-**CIN @ COL - CIN_ML**
+**TOR @ BAL - OVER_7.5**
 - Market: -110
-- Model probability: 73.7%
-- Raw edge: +40.74%
+- Model probability: 61.4%
+- Raw edge: +17.23%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
@@ -20,65 +20,65 @@ _Generated at 2026-09-20T23:56:56 UTC. Game lines source: **placeholder -110 (no
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 7:05p ET | SDP @ LAD | Petco Park | 62F -6mph | LAD_ML +25.43% |
-| 6:45p ET | BOS @ NYY | Yankee Stadium | 71F 12mph | OVER_9.0 +30.97% |
-| 9:40p ET | CIN @ COL | Coors Field | 74F 4mph | CIN_ML +40.74% |
+| 6:35p ET | TOR @ BAL | Oriole Park at Camden Yards | 66F 8mph | OVER_7.5 +17.23% |
+| 6:40p ET | WSN @ DET | Comerica Park | 56F 6mph | OVER_8.5 +12.63% |
+| 9:45p ET | MIN @ SFG | Oracle Park | 56F 9mph | SFG_ML +5.66% |
 
 ## Parlays - top 5
 
-- **2-leg @ +402 (prob 29.9%, EV +49.92%)**
-  - Carter Jensen UNDER 0.5 batter_hits (+151, model 47.8%)
-  - MIN @ LAA MIN_ML (+100, model 62.5%)
-- **2-leg @ +282 (prob 39.1%, EV +49.17%)**
-  - MIN @ LAA MIN_ML (+100, model 62.5%)
-  - NYY @ ARI OVER_8.5 (-110, model 62.5%)
-- **2-leg @ +442 (prob 27.5%, EV +49.12%)**
-  - Trea Turner UNDER 0.5 batter_hits (+184, model 42.9%)
-  - DET @ CHW OVER_8.5 (-110, model 64.1%)
-- **2-leg @ +264 (prob 40.5%, EV +47.46%)**
-  - OAK @ CLE CLE_ML (-110, model 63.1%)
-  - DET @ CHW OVER_8.5 (-110, model 64.1%)
-- **2-leg @ +422 (prob 28.2%, EV +47.05%)**
-  - Francisco Lindor UNDER 0.5 batter_hits (+161, model 45.1%)
-  - MIN @ LAA MIN_ML (+100, model 62.5%)
+- **2-leg @ +448 (prob 26.9%, EV +47.24%)**
+  - Daylen Lile UNDER 0.5 batter_hits (+187, model 41.2%)
+  - WSN @ DET OVER_8.0 (-110, model 65.3%)
+- **2-leg @ +404 (prob 29.0%, EV +46.23%)**
+  - George Springer UNDER 0.5 batter_hits (+164, model 44.4%)
+  - WSN @ DET OVER_8.0 (-110, model 65.3%)
+- **2-leg @ +264 (prob 40.1%, EV +46.13%)**
+  - TOR @ BAL OVER_7.5 (-110, model 61.4%)
+  - WSN @ DET OVER_8.0 (-110, model 65.3%)
+- **2-leg @ +351 (prob 32.4%, EV +46.05%)**
+  - Dillon Dingler OVER 1.5 batter_total_bases (+136, model 49.6%)
+  - WSN @ DET OVER_8.0 (-110, model 65.3%)
+- **2-leg @ +264 (prob 40.1%, EV +46.01%)**
+  - WSN @ DET OVER_8.0 (-110, model 65.3%)
+  - MIN @ SFG OVER_8.0 (-110, model 61.4%)
 
 ## Self-Learning Loop
 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
-| batter hits | 298 | 52.0% | 55.4% | 1.065 | 0.940 |
-| batter total bases | 129 | 45.0% | 47.2% | 1.049 | 0.955 |
+| batter total bases | 138 | 44.9% | 47.2% | 1.050 | 0.954 |
+| batter hits | 313 | 52.1% | 55.6% | 1.067 | 0.939 |
 
-Cumulative graded plays: 11898. Wins: 4603. Hit rate: 38.7%.
+Cumulative graded plays: 12037. Wins: 4652. Hit rate: 38.6%.
 
 ## Auxiliary Markets (Model Fair Prices)
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| BOS @ NYY | -- | -- | -- | +115 | -115 |
-| CIN @ COL | -- | -- | -- | +465 | -465 |
-| SDP @ LAD | -- | -- | -- | -166 | +166 |
+| MIN @ SFG | 45.4% | +120 | 4.19 | +155 | -155 |
+| TOR @ BAL | 37.0% | +171 | 4.86 | +125 | -125 |
+| WSN @ DET | 41.3% | +142 | 4.44 | +173 | -173 |
 
 ## Team Form (last 10)
 
-**Hot:** LAD 7-3 (W3, +35), MIL 8-2 (W2, +30), SD 9-1 (W4, +27), TB 8-2 (W1, +26), DET 7-3 (L1, +25)
+**Hot:** MIL 8-2 (W3, +32), TB 8-2 (W2, +25), SD 9-1 (W5, +24), LAD 7-3 (W4, +24), CHC 6-4 (W2, +22)
 
-**Cold:** CIN 3-7 (L1, -46), ATH 3-7 (L5, -35), COL 2-8 (W1, -29), MIN 3-7 (L1, -24), HOU 3-7 (L2, -20)
+**Cold:** CIN 3-7 (L2, -41), ATH 3-7 (L6, -34), COL 2-8 (L1, -23), HOU 3-7 (L3, -18), LAA 4-6 (L1, -14)
 
 ## Gassed Bullpens (> 8.0 IP in 2 days)
 
-- ATH: 9.3 IP across 2 games
-- SD: 8.9 IP across 2 games
-- STL: 11.6 IP across 2 games
-- TEX: 11.4 IP across 2 games
-- PHI: 9.4 IP across 2 games
-- MIA: 8.3 IP across 2 games
-- MIL: 9.2 IP across 2 games
-- LAA: 8.1 IP across 2 games
+- PIT: 13.0 IP across 2 games
+- TEX: 10.7 IP across 2 games
+- TOR: 8.3 IP across 2 games
+- LAA: 9.4 IP across 2 games
+- AZ: 9.6 IP across 2 games
+- CIN: 8.0 IP across 2 games
+- COL: 9.0 IP across 2 games
+- LAD: 11.3 IP across 2 games
 
 ## Loop Activity (since last refresh)
 
-- Confidence delta: **+0.0**
+- Confidence delta: **-0.5**
 
 ## Model Recommendations (operator review)
 
@@ -90,4 +90,4 @@ _The model is suggesting 1 parameter tweak based on its own performance. Apply v
 ---
 
 _EdgeStat is a research desk. Bet responsibly. 21+. 1-800-GAMBLER._
-_Source: github.com/Keyvaniath/bpleone-betting - last settled 2026-09-20._
+_Source: github.com/Keyvaniath/bpleone-betting - last settled 2026-09-21._
