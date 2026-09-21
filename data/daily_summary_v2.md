@@ -1,31 +1,25 @@
 # EdgeStat Daily Summary — 2026-09-21
 
-## 🏥 Model Health: 65.2/100 [OK]
+## 🏥 Model Health: 58.9/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.9/100
+  - 🟢 Calibration Freshness: 99.6/100
   - 🔴 Hit Rate Trend: 0/100
-  - 🔴 Brier Trend: 35.3/100
+  - 🔴 Brier Trend: 36.5/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 90.9/100
-  - 🟢 Edge Count: 100/100
+  - 🔴 Edge Count: 34.3/100
 
 ## 🌐 Slate Overview
-- **Regime today:** BALANCED (avg P(home)=0.545)
-- **Total games on board:** 14
-- **Strong home favorites:** 4 | **Strong road dogs:** 3
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.572)
+- **Total games on board:** 32
+- **Strong home favorites:** 10 | **Strong road dogs:** 5
 
 ## 🎯 Top 5 Best Bets
 1. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
 2. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
 3. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
-4. **LOL Saigon 9Gaming Esports vs Saigon 1TAP DINO ML @ -130** (76/100 ★★★★★)
-5. **LOL Saigon MVKE Academy vs Saigon 1TAP DINO ML @ -129** (76/100 ★★★★★)
-
-## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** CIN @ COL CIN_ML -- 65% / +24.4% (score 2.5)
-
-## 📡 Sharp Action (Line Movement)
-- [ELITE] **CIN @ COL** ml_away: 51.46% → 98.68% (+47.2pp)
+4. **TOR @ BAL YRFI (1st-inning OVER 0.5)** (77/100 ★★★★)
+5. **KBO Samsung Lions vs NC Dinos ML @ -159** (76/100 ★★★★★)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -53,45 +47,57 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
+## ⚡ Pre-Game HIGH Conviction (7)
+- [NCAAF] **Georgia Bulldogs** HOME (None L10) · model 74.9% fair -298
+- [NCAAF] **Penn State Nittany Lions** HOME (None L10) · model 74.9% fair -298
+- [NCAAF] **Miami Hurricanes** HOME (None L10) · model 74.9% fair -298
+- [NCAAF] **Alabama Crimson Tide** HOME (None L10) · model 74.9% fair -298
+- [NCAAF] **USC Trojans** HOME (None L10) · model 74.9% fair -298
+- [WNBA] **Dallas Wings** AWAY (2-0 L10) · model 74.4% fair -290
+- [NCAAF] **Houston Cougars** AWAY (None L10) · model 73.9% fair -283
+
 ## 🔥/❄️ Heat / Cold Signals
 - Hot teams: **3** | Cold teams: **18** | Over-heavy: 0 | Under-heavy: 0
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (93)
-- STEAM_MOVE: **93**
+## ⚠️ Anomaly Detector (99)
+- STEAM_MOVE: **99**
   - PHX @ POR (WNBA): TOTAL steam since open: ML -2.1pp toward PHX; total -6 (UNDER) (19 snapshots)
   - OHIO @ USA (NCAAF): ML/TOTAL steam since open: ML +7.4pp toward USA; total -4 (UNDER) (13 snapshots)
   - UND @ NEB (NCAAF): TOTAL steam since open: ML -0.5pp toward UND; total +4 (OVER) (8 snapshots)
   - SDAK @ BOIS (NCAAF): TOTAL steam since open: total +4 (OVER) (8 snapshots)
   - TEM @ TOL (NCAAF): TOTAL steam since open: ML -1.3pp toward TEM; total -3 (UNDER) (11 snapshots)
 
-## 💰 Today's Portfolio (5 picks)
-- Total stake: **$160.0** (16.0% of $1000 bankroll)
-- Expected EV: **$-7.62**
+## 💰 Today's Portfolio (12 picks)
+- Total stake: **$345.0** (34.5% of $1000 bankroll)
+- Expected EV: **$-27.32**
   - #1 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #2 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
   - #3 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
-  - #4 [NBA] $35 on NBA Toronto Raptors ML (0-0) vs Miami Heat (P=55%)
-  - #5 [MLS] $20 on MLS Real Salt Lake ML (8-5-12) at Seattle Sounders FC (P=53%)
+  - #4 [NRFI] $35 on TOR @ BAL YRFI (1st-inning OVER 0.5) (P=63%)
+  - #5 [KBO] $35 on KBO Samsung Lions vs NC Dinos ML @ -159 (P=61%)
 
-## 🎯 Convergence Picks (7 stacked games)
-- ELITE: **1** · HIGH: 1 · MED: 5
-  - [ELITE] San Diego FC @ Inter Miami CF : 6 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
-  - [HIGH] Manchester United @ Fulham : 3 signals (HEAT_COLD, ATS, ATS)
-  - [MED] Minnesota Lynx @ Connecticut Sun : 2 signals (ATS, ATS)
-  - [MED] New York Liberty @ Toronto Tempo : 2 signals (ATS, ATS)
-  - [MED] Washington Mystics @ Indiana Fever : 2 signals (ATS, ATS)
+## 🎯 Convergence Picks (10 stacked games)
+- ELITE: **2** · HIGH: 3 · MED: 5
+  - [ELITE] Real Salt Lake @ Seattle Sounders FC : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
+  - [ELITE] Sunderland @ Manchester City : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
+  - [HIGH] Seattle Storm @ Las Vegas Aces : 3 signals (HEAT_COLD, ATS, ATS)
+  - [HIGH] Liverpool @ AFC Bournemouth : 3 signals (HEAT_COLD, ATS, ATS)
+  - [HIGH] Manchester United @ Fulham : 3 signals (HEAT_COLD, HEAT_COLD, ATS)
+
+## ⚾ Top MLB Pitcher K Plays (1)
+- **Shane Baz** OVER 4.5 K (65%) fair -188
 
 ## 🏀 NBA Player Heat (2 HOT / 0 COLD)
   - 🔥 **Scottie Barnes** (TOR): L5 24.4/7.6/9.6 vs season 18.6/5.8/8.8 [PTS +5.8]
   - 🔥 **RJ Barrett** (TOR): L5 24.6/7.6/4.0 vs season 21.4/5.5/3.6 [REB +2.1]
 
-## 🥊 UFC Fight Matchups (UFC 331: Van vs. Pantoja 2)
-  - [LEAN] **Ryan Gandra** (11-1-0) vs Ozzy Diaz -- fair -172
-  - [LEAN] **Patricio Pitbull** (38-9-0) vs Dooho Choi -- fair -155
-  - [COIN_FLIP] **Robelis Despaigne** (7-2-0) vs Tai Tuivasa -- fair -132
-  - [COIN_FLIP] **Arman Tsarukyan** (24-3-0) vs Mauricio Ruffy -- fair -130
-  - [COIN_FLIP] **Joanderson Brito** (20-5-1) vs Giga Chikadze -- fair -128
+## 🥊 UFC Fight Matchups (Dana White's Contender Series: Season 10, Week 7)
+  - [LEAN] **Emilio Quissua** (8-0-0) vs Damian Piwowarczyk -- fair -174
+  - [COIN_FLIP] **Norbert Növényi Jr.** (10-1-0) vs Theo Haig -- fair -109
+  - [COIN_FLIP] **Piero Guaylupo** (11-0-0) vs Callum Connor -- fair -101
+  - [COIN_FLIP] **Paris Moran** (14-3-0) vs Marcos Degli -- fair -100
+  - [COIN_FLIP] **Jaden Ortega** (6-0-0) vs Alvi Dasuyev -- fair -100
 
 ## ⛳ Golf Player Heat (from Biltmore Championship Asheville)
   - 🔥 T1 **Jacob Bridgeman** (USA): -26 total -- finished T1, Sunday -3.5 vs tourney avg
@@ -115,12 +121,14 @@
   - ❄️ **Ernie Clement** (TOR): L14 .136 / season .265 (-129pts) -- FADE props
   - ❄️ **Taylor Ward** (SEA): L14 .094 / season .222 (-128pts) -- FADE props
 
-## 😴 B2B Fatigue Edges (1)
-- [NHL] FADE Seattle Kraken (away on B2B)
+## 😴 B2B Fatigue Edges (3)
+- [NHL] FADE Washington Capitals (home on B2B)
+- [NHL] FADE New Jersey Devils (home on B2B)
+- [NHL] FADE Colorado Avalanche (away on B2B)
 
 ## 📈 Streak Regression Alerts (2)
-- [MLS] Inter Miami CF on L3 L10 0-3 -- Inter Miami CF on L3 -- no historical sample
-- [MLS] San Diego FC on L3 L10 0-3 -- San Diego FC on L3 -- no historical sample
+- [MLS] Seattle Sounders FC on L3 L10 0-3 -- Seattle Sounders FC on L3 -- no historical sample
+- [MLS] Real Salt Lake on L4 L10 0-4 -- Real Salt Lake on L4 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**

@@ -1,17 +1,17 @@
 # EdgeStat Daily Brief - 2026-09-21
 
-**Model Confidence: 20.8/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
+**Model Confidence: 20.3/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
 
-_Pipeline health: **WARNING** (12/15 artifacts ok; 3 empty, 0 stale)._ 
+_Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
 
-_Generated at 2026-09-21T15:33:06 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-09-21T19:21:45 UTC. Game lines source: **placeholder -110 (no real book today)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
-**TOR @ BAL - OVER_7.5**
+**WSN @ DET - OVER_8.5**
 - Market: -110
-- Model probability: 61.4%
-- Raw edge: +17.23%
+- Model probability: 61.8%
+- Raw edge: +17.93%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
@@ -20,27 +20,27 @@ _Generated at 2026-09-21T15:33:06 UTC. Game lines source: **Bovada (fallback -- 
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 6:35p ET | TOR @ BAL | Oriole Park at Camden Yards | 66F 8mph | OVER_7.5 +17.23% |
-| 6:40p ET | WSN @ DET | Comerica Park | 56F 6mph | OVER_8.5 +12.63% |
-| 9:45p ET | MIN @ SFG | Oracle Park | 56F 9mph | SFG_ML +5.66% |
+| 6:35p ET | TOR @ BAL | Oriole Park at Camden Yards | 66F 9mph | BAL_ML +10.83% |
+| 6:40p ET | WSN @ DET | Comerica Park | 56F 6mph | OVER_8.5 +17.93% |
+| 9:45p ET | MIN @ SFG | Oracle Park | 56F 9mph | OVER_8.5 +4.61% |
 
 ## Parlays - top 5
 
-- **2-leg @ +448 (prob 26.9%, EV +47.24%)**
-  - Daylen Lile UNDER 0.5 batter_hits (+187, model 41.2%)
-  - WSN @ DET OVER_8.0 (-110, model 65.3%)
-- **2-leg @ +404 (prob 29.0%, EV +46.23%)**
+- **2-leg @ +452 (prob 27.0%, EV +48.78%)**
+  - James Wood OVER 1.5 batter_total_bases (+131, model 53.3%)
+  - WSN @ DET WSN_ML (+139, model 50.6%)
+- **2-leg @ +341 (prob 33.2%, EV +46.27%)**
+  - James Wood OVER 1.5 batter_total_bases (+131, model 53.3%)
+  - TOR @ BAL OVER_7.5 (-110, model 62.2%)
+- **2-leg @ +341 (prob 32.9%, EV +45.22%)**
+  - James Wood OVER 1.5 batter_total_bases (+131, model 53.3%)
+  - WSN @ DET OVER_8.5 (-110, model 61.8%)
+- **2-leg @ +510 (prob 23.7%, EV +44.45%)**
+  - James Wood OVER 1.5 batter_total_bases (+131, model 53.3%)
   - George Springer UNDER 0.5 batter_hits (+164, model 44.4%)
-  - WSN @ DET OVER_8.0 (-110, model 65.3%)
-- **2-leg @ +264 (prob 40.1%, EV +46.13%)**
-  - TOR @ BAL OVER_7.5 (-110, model 61.4%)
-  - WSN @ DET OVER_8.0 (-110, model 65.3%)
-- **2-leg @ +351 (prob 32.4%, EV +46.05%)**
-  - Dillon Dingler OVER 1.5 batter_total_bases (+136, model 49.6%)
-  - WSN @ DET OVER_8.0 (-110, model 65.3%)
-- **2-leg @ +264 (prob 40.1%, EV +46.01%)**
-  - WSN @ DET OVER_8.0 (-110, model 65.3%)
-  - MIN @ SFG OVER_8.0 (-110, model 61.4%)
+- **2-leg @ +356 (prob 31.5%, EV +43.56%)**
+  - TOR @ BAL OVER_7.5 (-110, model 62.2%)
+  - WSN @ DET WSN_ML (+139, model 50.6%)
 
 ## Self-Learning Loop
 
@@ -55,9 +55,9 @@ Cumulative graded plays: 12037. Wins: 4652. Hit rate: 38.6%.
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| MIN @ SFG | 45.4% | +120 | 4.19 | +155 | -155 |
-| TOR @ BAL | 37.0% | +171 | 4.86 | +125 | -125 |
-| WSN @ DET | 41.3% | +142 | 4.44 | +173 | -173 |
+| MIN @ SFG | 45.4% | +120 | 4.18 | +155 | -155 |
+| TOR @ BAL | 37.0% | +171 | 4.89 | +125 | -125 |
+| WSN @ DET | 41.3% | +142 | 4.47 | +172 | -172 |
 
 ## Team Form (last 10)
 

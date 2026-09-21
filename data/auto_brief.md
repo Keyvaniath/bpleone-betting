@@ -1,13 +1,14 @@
 # Tonight's Slate Brief — 2026-09-21
 
-## Slate Quality: 55/100 (MEDIUM)
-_0% lineups confirmed · 5 rookie SPs_
+## Slate Quality: 61/100 (MEDIUM)
+_16% lineups confirmed · 5 rookie SPs_
 **Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
 - **3 games** scheduled
-- **17 best bets** scored: 7 DK · 0 PP · 0 NRFI · 0 SGP
-- **MC simulation:** EV +$2.72, 57% P(profit), p05 $-31.76 / p95 $28.87
+- **27 best bets** scored: 7 DK · 0 PP · 3 NRFI · 1 SGP
+- **Auto-portfolio:** 2 picks, $83.07 stake (8.31%), expected +$14.14
+- **MC simulation:** EV +$17.25, 58% P(profit), p05 $-99.51 / p95 $110.48
 
 ## Top 5 Best Bets
 1. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
@@ -19,29 +20,42 @@ _0% lineups confirmed · 5 rookie SPs_
 3. **LOL Peyz OVER 4.5 Kills**  (78/100 ****, edge —)
    - Player prop quality score 1.184
    - Elite player
-4. **LOL Saigon 9Gaming Esports vs Saigon 1TAP DINO ML @ -130**  (76/100 *****, edge —)
-   - Model 56.5% (fair -130)
-   - VCS
-5. **LOL Saigon MVKE Academy vs Saigon 1TAP DINO ML @ -129**  (76/100 *****, edge —)
-   - Model 56.3% (fair -129)
-   - VCS
+4. **TOR @ BAL YRFI (1st-inning OVER 0.5)**  (77/100 ****, edge +17.0%)
+   - P(YRFI) 63.0% vs baseline 46.0%
+5. **KBO Samsung Lions vs NC Dinos ML @ -159**  (76/100 *****, edge —)
+   - Model 61.4% (fair -159)
+   - 
 
-## ⚠️ Trap Warnings — 4 flagged
-- **James Wood OVER 1.5 batter total bases** (low):
+## ⚠️ Trap Warnings — 9 flagged
+- **James Wood OVER 1.5 batter total bases** (high):
    - Edge +23.1% looks big but only 0 settled props on this player — model unproven
-- **Dillon Dingler OVER 1.5 batter total bases** (low):
+   - Batter cooling: cooling: 0.600 ops recent vs 0.903 season (-0.303)
+- **Dillon Dingler OVER 1.5 batter total bases** (high):
    - Edge +17.2% looks big but only 0 settled props on this player — model unproven
-- **CJ Abrams OVER 1.5 batter total bases** (low):
+   - Batter cooling: cooling: 0.470 ops recent vs 0.751 season (-0.281)
+- **CJ Abrams OVER 1.5 batter total bases** (high):
    - Edge +9.4% looks big but only 0 settled props on this player — model unproven
-- **Kevin McGonigle OVER 1.5 batter total bases** (low):
-   - Edge +9.2% looks big but only 0 settled props on this player — model unproven
+   - Batter cooling: cooling: 0.646 ops recent vs 0.828 season (-0.182)
+- **WSN @ DET 2-leg SGP @ +201** (low):
+   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
+- **TOR @ BAL YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +17.0% looks big but only 0 settled props on this player — model unproven
 
 ## Hot streaks
-**Batters heating up:** Vinnie Pasquantino (heat +3.58), Brandon Lowe (heat +3.22), Ronny Simon (heat +1.14)
+**Batters heating up:** Daylen Lile (heat +1.98), Hao-Yu Lee (heat +1.42), Christian Encarnacion-Strand (heat +1.26)
+**Pitchers on a run:** Zebby Matthews (heat +6.69), Blade Tidwell (heat -0.76)
+
+## Top correlation-aware SGPs
+- **WSN @ DET** 2-leg @ +201 fair (joint 0.33, EV +25.0%)
+   - Dillon Dingler OVER 0.5 batter hits
+   - Hao-Yu Lee OVER 0.5 batter hits
 
 ## Bullpens GASSED tonight
 Athletics, Pittsburgh Pirates, San Diego Padres, St. Louis Cardinals, Tampa Bay Rays, Texas Rangers, Toronto Blue Jays, Minnesota Twins
 _Lean late-inning OVER on these games; fade their save situations._
+
+## NRFI/YRFI strong leans
+- **YRFI** (1st-inning OVER): TOR @ BAL, WSN @ DET
 
 ## NBA -- PRESEASON
 - Miami Heat @ Toronto Raptors (0-0 vs 0-0)  | P(home) 55.0% fair -122 | Scheduled
@@ -60,7 +74,7 @@ _Lean late-inning OVER on these games; fade their save situations._
 - Doosan Bears @ Kiwoom Heroes | P(home) 35.7% fair +180 | total 9 R
 - **KBO POD:** Samsung Lions ML vs NC Dinos (KBO) (HIGH)
 
-## LoL Esports -- 0 live, 21 upcoming
+## LoL Esports -- 0 live, 22 upcoming
 - [EMEA Masters] Skillcamp vs Arctic Pandas BO3 | P(A) 27.6% fair +263/-263
 - [EMEA Masters] Unicorns of Love Sexy Edition vs Otter Side BO3 | P(A) 50.0% fair -100/-100
 - [EMEA Masters] Avella SU Esports vs Verdant BO3 | P(A) 19.7% fair +408/-408
@@ -68,7 +82,7 @@ _Lean late-inning OVER on these games; fade their save situations._
 - [EMEA Masters] Pyramid IV Esports vs LODIS BO3 | P(A) 50.0% fair -100/-100
 - **LoL POT:** Saigon Warrior ML vs Saigon 9Gaming Esports (VCS, BO3) (HIGH)
 
-## Player Play of the Day -- across all sports (3470 candidates scanned)
+## Player Play of the Day -- across all sports (3460 candidates scanned)
 - **[LOL]** Inspired UNDER 3.5 Kills | model 61.7% fair -161 (ELITE)
 - **[LOL]** ShowMaker OVER 3.5 Kills | model 62.5% fair -167 (ELITE)
 - **[LOL]** Peyz OVER 4.5 Kills | model 61.3% fair -158 (ELITE)
