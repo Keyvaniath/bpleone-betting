@@ -1,18 +1,18 @@
 # EdgeStat Daily Summary — 2026-09-22
 
-## 🏥 Model Health: 64.7/100 [OK]
+## 🏥 Model Health: 66.3/100 [OK]
 - Operational but room to improve - check yellow components
   - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 0/100
-  - 🔴 Brier Trend: 42.0/100
+  - 🔴 Brier Trend: 40.0/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 100.0/100
-  - 🟡 Edge Count: 62.9/100
+  - 🟢 Edge Count: 82.9/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.574)
-- **Total games on board:** 23
-- **Strong home favorites:** 7 | **Strong road dogs:** 3
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.559)
+- **Total games on board:** 32
+- **Strong home favorites:** 12 | **Strong road dogs:** 7
 
 ## 🎯 Top 5 Best Bets
 1. **NYM @ TEX YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
@@ -20,9 +20,6 @@
 3. **CIN @ ATL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 4. **MIA @ CHC YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
 5. **TOR @ BAL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
-
-## 📡 Sharp Action (Line Movement)
-- [ELITE] **LAA @ OAK** ml_home: 61.54% → 79.38% (+17.8pp)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -50,20 +47,24 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (6)
+## ⚡ Pre-Game HIGH Conviction (10)
 - [NCAAF] **Georgia Bulldogs** HOME (None L10) · model 74.9% fair -298
 - [NCAAF] **Penn State Nittany Lions** HOME (None L10) · model 74.9% fair -298
 - [NCAAF] **Miami Hurricanes** HOME (None L10) · model 74.9% fair -298
 - [NCAAF] **Alabama Crimson Tide** HOME (None L10) · model 74.9% fair -298
 - [NCAAF] **USC Trojans** HOME (None L10) · model 74.9% fair -298
 - [NCAAF] **Houston Cougars** AWAY (None L10) · model 73.9% fair -283
+- [NHL] **Edmonton Oilers** AWAY (1-0 L10) · model 69.0% fair -222
+- [NHL] **New York Rangers** HOME (0-1 L10) · model 62.9% fair -169
+- [NHL] **Calgary Flames** HOME (0-1 L10) · model 62.9% fair -169
+- [NHL] **Los Angeles Kings** HOME (0-1 L10) · model 62.9% fair -169
 
 ## 🔥/❄️ Heat / Cold Signals
 - Hot teams: **5** | Cold teams: **18** | Over-heavy: 0 | Under-heavy: 0
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (110)
-- STEAM_MOVE: **103**
+## ⚠️ Anomaly Detector (117)
+- STEAM_MOVE: **110**
 - COMPOUND_BULLPEN: **5**
 - PEN_MISMATCH: **2**
   - PHX @ POR (WNBA): TOTAL steam since open: ML -2.1pp toward PHX; total -6 (UNDER) (19 snapshots)
@@ -73,8 +74,8 @@
   - VT @ BC (NCAAF): TOTAL steam since open: ML +1.0pp toward BC; total -4 (UNDER) (6 snapshots)
 
 ## 💰 Today's Portfolio (9 picks)
-- Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$16.39**
+- Total stake: **$330.0** (33.0% of $1000 bankroll)
+- Expected EV: **$16.35**
   - #1 [NRFI] $50 on NYM @ TEX YRFI (1st-inning OVER 0.5) (P=79%)
   - #2 [NRFI] $50 on ARI @ COL YRFI (1st-inning OVER 0.5) (P=78%)
   - #3 [NRFI] $50 on CIN @ ATL YRFI (1st-inning OVER 0.5) (P=75%)
@@ -82,12 +83,12 @@
   - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
 ## 🎯 Convergence Picks (9 stacked games)
-- ELITE: **2** · HIGH: 2 · MED: 5
+- ELITE: **2** · HIGH: 4 · MED: 3
   - [ELITE] Real Salt Lake @ Seattle Sounders FC : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
   - [ELITE] Sunderland @ Manchester City : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
+  - [HIGH] Ottawa Senators @ Montreal Canadiens : 3 signals (HEAT_COLD, ATS, ATS)
+  - [HIGH] Atlanta Dream @ New York Liberty : 3 signals (HEAT_COLD, ATS, ATS)
   - [HIGH] Liverpool @ AFC Bournemouth : 3 signals (HEAT_COLD, ATS, ATS)
-  - [HIGH] Manchester United @ Fulham : 3 signals (HEAT_COLD, HEAT_COLD, ATS)
-  - [MED] Colorado Avalanche @ Winnipeg Jets : 2 signals (ATS, ATS)
 
 ## ⚾ Top MLB Pitcher K Plays (11)
 - **Daniel Lynch IV** OVER 4.5 K (77%) fair -337
@@ -117,17 +118,17 @@
   - ❄️ **Eric Cole** (USA): Sunday +5.8 vs tourney avg
   - ❄️ **Marcelo Rozo** (Colombia): Sunday +5.5 vs tourney avg
 
-## 🔥 MLB Batter Heat (57 HOT / 55 COLD)
+## 🔥 MLB Batter Heat (56 HOT / 55 COLD)
   - 🔥 **Jakob Marsee** (MIA): L14 .412 / season .230 (+182pts)
   - 🔥 **Jackson Merrill** (SD): L14 .414 / season .255 (+159pts)
   - 🔥 **Brett Baty** (NYM): L14 .382 / season .235 (+147pts)
   - 🔥 **Nolan Arenado** (AZ): L14 .380 / season .247 (+133pts)
   - 🔥 **Connor Norby** (COL): L14 .375 / season .242 (+133pts)
   - ❄️ **Jordan Walker** (STL): L14 .106 / season .274 (-168pts) -- FADE props
+  - ❄️ **Yandy Díaz** (TB): L14 .143 / season .291 (-148pts) -- FADE props
   - ❄️ **Ernie Clement** (TOR): L14 .116 / season .264 (-148pts) -- FADE props
   - ❄️ **Tommy Edman** (LAD): L14 .106 / season .245 (-139pts) -- FADE props
   - ❄️ **Andruw Monasterio** (BOS): L14 .100 / season .239 (-139pts) -- FADE props
-  - ❄️ **Ryan Jeffers** (MIN): L14 .118 / season .252 (-134pts) -- FADE props
 
 ## 📈 Streak Regression Alerts (2)
 - [MLS] Seattle Sounders FC on L3 L10 0-3 -- Seattle Sounders FC on L3 -- no historical sample
