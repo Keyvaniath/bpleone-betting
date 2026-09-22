@@ -1,18 +1,18 @@
-# EdgeStat Daily Summary — 2026-09-21
+# EdgeStat Daily Summary — 2026-09-22
 
-## 🏥 Model Health: 58.9/100 [OK]
+## 🏥 Model Health: 64.7/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.6/100
+  - 🟢 Calibration Freshness: 100.0/100
   - 🔴 Hit Rate Trend: 0/100
-  - 🔴 Brier Trend: 36.5/100
+  - 🔴 Brier Trend: 42.0/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 90.9/100
-  - 🔴 Edge Count: 34.3/100
+  - 🟢 Data Health: 100.0/100
+  - 🟡 Edge Count: 62.9/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.572)
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.576)
 - **Total games on board:** 32
-- **Strong home favorites:** 10 | **Strong road dogs:** 5
+- **Strong home favorites:** 11 | **Strong road dogs:** 5
 
 ## 🎯 Top 5 Best Bets
 1. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
@@ -60,8 +60,10 @@
 - Hot teams: **3** | Cold teams: **18** | Over-heavy: 0 | Under-heavy: 0
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (99)
-- STEAM_MOVE: **99**
+## ⚠️ Anomaly Detector (119)
+- STEAM_MOVE: **117**
+- COMPOUND_BULLPEN: **1**
+- PEN_MISMATCH: **1**
   - PHX @ POR (WNBA): TOTAL steam since open: ML -2.1pp toward PHX; total -6 (UNDER) (19 snapshots)
   - OHIO @ USA (NCAAF): ML/TOTAL steam since open: ML +7.4pp toward USA; total -4 (UNDER) (13 snapshots)
   - UND @ NEB (NCAAF): TOTAL steam since open: ML -0.5pp toward UND; total +4 (OVER) (8 snapshots)
@@ -77,13 +79,13 @@
   - #4 [NRFI] $35 on TOR @ BAL YRFI (1st-inning OVER 0.5) (P=63%)
   - #5 [KBO] $35 on KBO Samsung Lions vs NC Dinos ML @ -159 (P=61%)
 
-## 🎯 Convergence Picks (10 stacked games)
-- ELITE: **2** · HIGH: 3 · MED: 5
+## 🎯 Convergence Picks (9 stacked games)
+- ELITE: **2** · HIGH: 2 · MED: 5
   - [ELITE] Real Salt Lake @ Seattle Sounders FC : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
   - [ELITE] Sunderland @ Manchester City : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
-  - [HIGH] Seattle Storm @ Las Vegas Aces : 3 signals (HEAT_COLD, ATS, ATS)
   - [HIGH] Liverpool @ AFC Bournemouth : 3 signals (HEAT_COLD, ATS, ATS)
   - [HIGH] Manchester United @ Fulham : 3 signals (HEAT_COLD, HEAT_COLD, ATS)
+  - [MED] Colorado Avalanche @ Winnipeg Jets : 2 signals (ATS, ATS)
 
 ## ⚾ Top MLB Pitcher K Plays (1)
 - **Shane Baz** OVER 4.5 K (65%) fair -188
@@ -109,16 +111,16 @@
   - ❄️ **Eric Cole** (USA): Sunday +5.8 vs tourney avg
   - ❄️ **Marcelo Rozo** (Colombia): Sunday +5.5 vs tourney avg
 
-## 🔥 MLB Batter Heat (60 HOT / 55 COLD)
+## 🔥 MLB Batter Heat (57 HOT / 55 COLD)
   - 🔥 **Jakob Marsee** (MIA): L14 .412 / season .230 (+182pts)
   - 🔥 **Jackson Merrill** (SD): L14 .414 / season .255 (+159pts)
   - 🔥 **Brett Baty** (NYM): L14 .382 / season .235 (+147pts)
   - 🔥 **Nolan Arenado** (AZ): L14 .380 / season .247 (+133pts)
   - 🔥 **Connor Norby** (COL): L14 .375 / season .242 (+133pts)
   - ❄️ **Jordan Walker** (STL): L14 .106 / season .274 (-168pts) -- FADE props
+  - ❄️ **Ernie Clement** (TOR): L14 .119 / season .264 (-145pts) -- FADE props
   - ❄️ **Tommy Edman** (LAD): L14 .106 / season .245 (-139pts) -- FADE props
   - ❄️ **Andruw Monasterio** (BOS): L14 .100 / season .239 (-139pts) -- FADE props
-  - ❄️ **Ernie Clement** (TOR): L14 .136 / season .265 (-129pts) -- FADE props
   - ❄️ **Taylor Ward** (SEA): L14 .094 / season .222 (-128pts) -- FADE props
 
 ## 😴 B2B Fatigue Edges (3)
@@ -144,5 +146,5 @@
 - **NHL**: n=14 games · hit rate 78.6% · bias -17.8pp
 - **WNBA**: n=16 games · hit rate 56.2% · bias +10.8pp [calibration applied]
 - **MLS**: n=58 games · hit rate 44.8% · bias +3.5pp [calibration applied]
-- **EPL**: n=31 games · hit rate 38.7% · bias +15.7pp [calibration applied]
-- **MLB**: n=185 games · hit rate 60.5% · bias -6.3pp [calibration applied]
+- **EPL**: n=30 games · hit rate 36.7% · bias +13.1pp [calibration applied]
+- **MLB**: n=174 games · hit rate 54.6% · bias -6.8pp [calibration applied]

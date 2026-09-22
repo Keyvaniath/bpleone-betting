@@ -1,11 +1,9 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:7 F:51
-
-:lock: **LOCK:** Blade Tidwell (MLB)
+_NO_ACTION_NIGHT_ | L:0 S:7 F:50
 
 :dart: **Top Picks:**
-1. [GOLF] Jacob Bridgeman -- Jacob Bridgeman (PLAYER_STRONG)
-2. [GOLF] J.T. Poston -- J.T. Poston (PLAYER_STRONG)
+1. [GOLF] J.T. Poston -- J.T. Poston (PLAYER_STRONG)
+2. [GOLF] Ricky Castillo -- Ricky Castillo (PLAYER_STRONG)
 3. [WNBA] kahleah copper -- kahleah copper (PLAYER_STRONG)
 
 :coin: Bankroll Advisory: STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
