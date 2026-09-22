@@ -9,10 +9,13 @@ _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 - **Mel Rojas Jr.** one_plus_tb (KBO) -- 73% / +38.5%
 - **Austin Dean** one_plus_tb (KBO) -- 73% / +38.5%
 
+## 📡 Sharp Money Following Model
+- **LAA @ OAK** ml_home: line moved 61.54% → 79.38% (+17.8pp)
+
 ## 🎰 Tonight's Best Parlay
 - **Choi Jeong** one_plus_tb + **Jose Pirela** one_plus_tb
 - Joint 53% · fair +264 · edge +94.6%
 
 ---
-_Generated 2026-09-22T00:43:35_
+_Generated 2026-09-22T13:55:40_
 _Full breakdown: /tonight · Full history: /locks-of-day_

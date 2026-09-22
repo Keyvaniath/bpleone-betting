@@ -2,7 +2,7 @@
 
 ## 🏥 Model Health: 64.7/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 100.0/100
+  - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 0/100
   - 🔴 Brier Trend: 42.0/100
   - 🟢 Pipeline Audit: 100.0/100
@@ -10,16 +10,19 @@
   - 🟡 Edge Count: 62.9/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.576)
-- **Total games on board:** 32
-- **Strong home favorites:** 11 | **Strong road dogs:** 5
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.574)
+- **Total games on board:** 23
+- **Strong home favorites:** 7 | **Strong road dogs:** 3
 
 ## 🎯 Top 5 Best Bets
-1. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
-2. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
-3. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
-4. **TOR @ BAL YRFI (1st-inning OVER 0.5)** (77/100 ★★★★)
-5. **KBO Samsung Lions vs NC Dinos ML @ -159** (76/100 ★★★★★)
+1. **NYM @ TEX YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+2. **ARI @ COL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+3. **CIN @ ATL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+4. **MIA @ CHC YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+5. **TOR @ BAL YRFI (1st-inning OVER 0.5)** (80/100 ★★★★)
+
+## 📡 Sharp Action (Line Movement)
+- [ELITE] **LAA @ OAK** ml_home: 61.54% → 79.38% (+17.8pp)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -47,37 +50,36 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (7)
+## ⚡ Pre-Game HIGH Conviction (6)
 - [NCAAF] **Georgia Bulldogs** HOME (None L10) · model 74.9% fair -298
 - [NCAAF] **Penn State Nittany Lions** HOME (None L10) · model 74.9% fair -298
 - [NCAAF] **Miami Hurricanes** HOME (None L10) · model 74.9% fair -298
 - [NCAAF] **Alabama Crimson Tide** HOME (None L10) · model 74.9% fair -298
 - [NCAAF] **USC Trojans** HOME (None L10) · model 74.9% fair -298
-- [WNBA] **Dallas Wings** AWAY (2-0 L10) · model 74.4% fair -290
 - [NCAAF] **Houston Cougars** AWAY (None L10) · model 73.9% fair -283
 
 ## 🔥/❄️ Heat / Cold Signals
-- Hot teams: **3** | Cold teams: **18** | Over-heavy: 0 | Under-heavy: 0
+- Hot teams: **5** | Cold teams: **18** | Over-heavy: 0 | Under-heavy: 0
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (119)
-- STEAM_MOVE: **117**
-- COMPOUND_BULLPEN: **1**
-- PEN_MISMATCH: **1**
+## ⚠️ Anomaly Detector (110)
+- STEAM_MOVE: **103**
+- COMPOUND_BULLPEN: **5**
+- PEN_MISMATCH: **2**
   - PHX @ POR (WNBA): TOTAL steam since open: ML -2.1pp toward PHX; total -6 (UNDER) (19 snapshots)
   - OHIO @ USA (NCAAF): ML/TOTAL steam since open: ML +7.4pp toward USA; total -4 (UNDER) (13 snapshots)
   - UND @ NEB (NCAAF): TOTAL steam since open: ML -0.5pp toward UND; total +4 (OVER) (8 snapshots)
   - SDAK @ BOIS (NCAAF): TOTAL steam since open: total +4 (OVER) (8 snapshots)
-  - TEM @ TOL (NCAAF): TOTAL steam since open: ML -1.3pp toward TEM; total -3 (UNDER) (11 snapshots)
+  - VT @ BC (NCAAF): TOTAL steam since open: ML +1.0pp toward BC; total -4 (UNDER) (6 snapshots)
 
-## 💰 Today's Portfolio (12 picks)
+## 💰 Today's Portfolio (9 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$-27.32**
-  - #1 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
-  - #2 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
-  - #3 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
-  - #4 [NRFI] $35 on TOR @ BAL YRFI (1st-inning OVER 0.5) (P=63%)
-  - #5 [KBO] $35 on KBO Samsung Lions vs NC Dinos ML @ -159 (P=61%)
+- Expected EV: **$16.39**
+  - #1 [NRFI] $50 on NYM @ TEX YRFI (1st-inning OVER 0.5) (P=79%)
+  - #2 [NRFI] $50 on ARI @ COL YRFI (1st-inning OVER 0.5) (P=78%)
+  - #3 [NRFI] $50 on CIN @ ATL YRFI (1st-inning OVER 0.5) (P=75%)
+  - #4 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
+  - #5 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
 
 ## 🎯 Convergence Picks (9 stacked games)
 - ELITE: **2** · HIGH: 2 · MED: 5
@@ -87,8 +89,12 @@
   - [HIGH] Manchester United @ Fulham : 3 signals (HEAT_COLD, HEAT_COLD, ATS)
   - [MED] Colorado Avalanche @ Winnipeg Jets : 2 signals (ATS, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (1)
-- **Shane Baz** OVER 4.5 K (65%) fair -188
+## ⚾ Top MLB Pitcher K Plays (11)
+- **Daniel Lynch IV** OVER 4.5 K (77%) fair -337
+- **JR Ritchie** OVER 4.5 K (76%) fair -325
+- **Parker Messick** OVER 5.5 K (73%) fair -270
+- **Taj Bradley** OVER 5.5 K (73%) fair -270
+- **Logan Gilbert** OVER 5.5 K (68%) fair -216
 
 ## 🏀 NBA Player Heat (2 HOT / 0 COLD)
   - 🔥 **Scottie Barnes** (TOR): L5 24.4/7.6/9.6 vs season 18.6/5.8/8.8 [PTS +5.8]
@@ -118,15 +124,10 @@
   - 🔥 **Nolan Arenado** (AZ): L14 .380 / season .247 (+133pts)
   - 🔥 **Connor Norby** (COL): L14 .375 / season .242 (+133pts)
   - ❄️ **Jordan Walker** (STL): L14 .106 / season .274 (-168pts) -- FADE props
-  - ❄️ **Ernie Clement** (TOR): L14 .119 / season .264 (-145pts) -- FADE props
+  - ❄️ **Ernie Clement** (TOR): L14 .116 / season .264 (-148pts) -- FADE props
   - ❄️ **Tommy Edman** (LAD): L14 .106 / season .245 (-139pts) -- FADE props
   - ❄️ **Andruw Monasterio** (BOS): L14 .100 / season .239 (-139pts) -- FADE props
-  - ❄️ **Taylor Ward** (SEA): L14 .094 / season .222 (-128pts) -- FADE props
-
-## 😴 B2B Fatigue Edges (3)
-- [NHL] FADE Washington Capitals (home on B2B)
-- [NHL] FADE New Jersey Devils (home on B2B)
-- [NHL] FADE Colorado Avalanche (away on B2B)
+  - ❄️ **Ryan Jeffers** (MIN): L14 .118 / season .252 (-134pts) -- FADE props
 
 ## 📈 Streak Regression Alerts (2)
 - [MLS] Seattle Sounders FC on L3 L10 0-3 -- Seattle Sounders FC on L3 -- no historical sample
@@ -140,11 +141,11 @@
   - ⚠️ batter_rbis (Brier Δ -0.0052)
 
 ## 🧠 Training Convergence
-- ELITE: **1** · HEALTHY: 1 · OK: 0 · DEGRADED: **0**
+- ELITE: **2** · HEALTHY: 0 · OK: 0 · DEGRADED: **0**
 
 ## 🤖 Self-Training Status
-- **NHL**: n=14 games · hit rate 78.6% · bias -17.8pp
-- **WNBA**: n=16 games · hit rate 56.2% · bias +10.8pp [calibration applied]
+- **NHL**: n=22 games · hit rate 72.7% · bias -29.5pp [calibration applied]
+- **WNBA**: n=18 games · hit rate 50.0% · bias +8.3pp [calibration applied]
 - **MLS**: n=58 games · hit rate 44.8% · bias +3.5pp [calibration applied]
 - **EPL**: n=30 games · hit rate 36.7% · bias +13.1pp [calibration applied]
-- **MLB**: n=174 games · hit rate 54.6% · bias -6.8pp [calibration applied]
+- **MLB**: n=177 games · hit rate 54.8% · bias -7.5pp [calibration applied]
