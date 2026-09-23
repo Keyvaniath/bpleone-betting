@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-09-23T19:48:31",
+  "generated_at": "2026-09-23T22:24:54",
   "stake_assumption": "1u flat per pick",
-  "total_picks": 13457,
+  "total_picks": 13458,
   "n_settled": 12070,
-  "n_pending": 438,
+  "n_pending": 439,
   "n_void": 949,
   "wins": 4671,
   "losses": 7389,
@@ -11,7 +11,7 @@
   "hit_rate": 0.3873,
   "net_units": -2245.253,
   "roi_pct": -18.62,
-  "n_calibrated_picks": 13328,
+  "n_calibrated_picks": 13329,
   "calibrated_reliability": {
     "n": 11937,
     "ece_raw": 0.0868,
@@ -49,7 +49,7 @@
       "hit_rate": 0.5931
     }
   },
-  "n_added_this_run": 0,
+  "n_added_this_run": 1,
   "n_newly_settled_this_run": 0,
   "n_resettled_this_run": 0,
   "n_voided_this_run": 0,
@@ -3647,12 +3647,12 @@
   },
   "by_sport": {
     "MLB": {
-      "n": 8661,
+      "n": 8662,
       "settled": 8461,
       "wins": 2378,
       "losses": 6073,
       "pushes": 10,
-      "pending": 50,
+      "pending": 51,
       "void": 150,
       "net_units": -2358.537,
       "hit_rate": 0.2814,
@@ -347246,7 +347246,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-09-22T00:43:23",
-      "p_calibrated": 0.693
+      "p_calibrated": 0.693,
+      "also_sources": [
+        "top_25_board"
+      ]
     },
     {
       "source": "nfl_rec_yds",
@@ -349074,6 +349077,24 @@
       "payout_units": null,
       "recorded_at": "2026-09-23T19:23:25",
       "p_calibrated": 0.5982
+    },
+    {
+      "source": "top_25_board",
+      "sport": "MLB",
+      "player_or_matchup": "STL @ PIT",
+      "market": "OVER_7.0",
+      "prob": 0.5964,
+      "raw_prob": 0.7306,
+      "edge_pct": 13.9,
+      "fair_american": -110,
+      "primary_source_module": "today_reco",
+      "date": "2026-09-23",
+      "pick_id": "top_25_board|MLB|STL___PIT|OVER_7_0|2026-09-23",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-09-23T22:24:54",
+      "p_calibrated": 0.5069
     }
   ],
   "note": "Unified pick ledger -- records every pick the model surfaces (top_25 board, whales, consensus, unders, sharp action, locks, POD) and settles each against actual outcomes. Per-source W-L feeds back into calibration so the model learns which modules are reliable. THIS is the training signal."
