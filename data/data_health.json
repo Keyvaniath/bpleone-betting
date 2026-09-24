@@ -1,41 +1,41 @@
 {
-  "generated_at": "2026-09-24T05:25:37",
+  "generated_at": "2026-09-24T10:18:39",
   "overall": "red",
-  "n_green": 8,
-  "n_yellow": 2,
+  "n_green": 7,
+  "n_yellow": 3,
   "n_red": 1,
   "checks": [
     {
       "feed": "freshness",
       "status": "red",
       "findings": [
-        "sport_coverage.json: 35h old (>28h)",
-        "alpha_pick_of_day.json: 35h old (>30h)"
+        "sport_coverage.json: 40h old (>28h)",
+        "alpha_pick_of_day.json: 40h old (>30h)"
       ],
       "n_stale": 2,
       "ages_h": {
-        "today.json": 5.2,
+        "today.json": 4.9,
         "ledger_summary.json": 0.0,
-        "sport_coverage.json": 35.3,
-        "todays_top_plays.json": 5.0,
-        "alpha_pick_of_day.json": 35.3,
-        "alerts_feed.json": 0.4,
-        "calibration_map.json": 5.2,
-        "espn_odds.json": 0.4
+        "sport_coverage.json": 40.2,
+        "todays_top_plays.json": 4.8,
+        "alpha_pick_of_day.json": 40.2,
+        "alerts_feed.json": 5.3,
+        "calibration_map.json": 4.9,
+        "espn_odds.json": 5.3
       }
     },
     {
       "feed": "mlb",
       "status": "green",
       "findings": [
-        "12 total (12 pre / 0 live / 0 final), local pre=12, live=1"
+        "12 total (12 pre / 0 live / 0 final), local pre=12, live=0"
       ],
       "upstream_count": 12,
       "upstream_pregame": 12,
       "upstream_live": 0,
       "upstream_final": 0,
       "local_count": 12,
-      "local_live": 1,
+      "local_live": 0,
       "live_state_age_min": 0
     },
     {
@@ -97,21 +97,22 @@
       "feed": "pitcher_matchup",
       "status": "yellow",
       "findings": [
-        "only 0/23 pre-game probables in local",
+        "only 0/24 pre-game probables in local",
         "missing: ['Andrew Painter', 'Brady Singer', 'Bryan Woo']..."
       ],
-      "upstream_count": 23,
+      "upstream_count": 24,
       "local_count": 30,
       "matched": 0
     },
     {
       "feed": "props",
-      "status": "green",
+      "status": "yellow",
       "findings": [
-        "0 props across 1 games"
+        "Odds key ACTIVE (quota available) but props.json has 0 props -- check run_props_batch / upstream player-prop availability."
       ],
       "n_props": 0,
-      "n_games": 1
+      "n_games": 0,
+      "odds_key_state": "active"
     },
     {
       "feed": "golf",
@@ -121,28 +122,30 @@
       ],
       "upstream_players": 2,
       "local_players": 2,
-      "local_age_min": 0
+      "local_age_min": 1
     },
     {
       "feed": "desks",
       "status": "yellow",
       "findings": [
-        "tennis_state.json: 35h old (>18h)",
-        "f1_state.json: 35h old (>30h)",
-        "cfb_ratings.json: 35h old (>30h)",
+        "tennis_state.json: 40h old (>18h)",
+        "ufc_state.json: 40h old (>36h)",
+        "f1_state.json: 40h old (>30h)",
+        "cws_state.json: 40h old (>36h)",
+        "cfb_ratings.json: 40h old (>30h)",
         "Desk producer(s) quiet -- likely off-season/between-events, but verify the feed if unexpected."
       ],
-      "n_stale": 3,
+      "n_stale": 5,
       "ages_h": {
-        "tennis_state.json": 35.3,
-        "ufc_state.json": 35.3,
-        "f1_state.json": 35.3,
-        "kbo_state.json": 4.8,
-        "cs_state.json": 4.8,
-        "cws_state.json": 35.3,
-        "worldcup_cards.json": 0.4,
-        "cfb_model.json": 0.4,
-        "cfb_ratings.json": 35.3
+        "tennis_state.json": 40.2,
+        "ufc_state.json": 40.2,
+        "f1_state.json": 40.2,
+        "kbo_state.json": 4.9,
+        "cs_state.json": 4.9,
+        "cws_state.json": 40.2,
+        "worldcup_cards.json": 5.3,
+        "cfb_model.json": 5.3,
+        "cfb_ratings.json": 40.2
       }
     }
   ]
