@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-10-01T04:18:46",
+  "generated_at": "2026-10-01T06:34:36",
   "sport": "mlb",
-  "n_games": 150,
-  "hit_rate": 0.5467,
-  "brier_score": 0.3053,
-  "log_loss": 0.8853,
-  "avg_predicted_home_winprob": 0.5084,
-  "avg_actual_home_winrate": 0.5267,
-  "bias": -0.0183,
+  "n_games": 152,
+  "hit_rate": 0.5526,
+  "brier_score": 0.3021,
+  "log_loss": 0.877,
+  "avg_predicted_home_winprob": 0.5119,
+  "avg_actual_home_winrate": 0.5329,
+  "bias": -0.0209,
   "reliability_bins": [
     {
       "lo": 0.0,
@@ -54,9 +54,9 @@
     {
       "lo": 0.6,
       "hi": 0.7,
-      "n": 9,
-      "predicted_avg": 0.633,
-      "actual_avg": 0.778
+      "n": 10,
+      "predicted_avg": 0.637,
+      "actual_avg": 0.8
     },
     {
       "lo": 0.7,
@@ -68,9 +68,9 @@
     {
       "lo": 0.8,
       "hi": 0.9,
-      "n": 17,
-      "predicted_avg": 0.845,
-      "actual_avg": 0.647
+      "n": 18,
+      "predicted_avg": 0.848,
+      "actual_avg": 0.667
     },
     {
       "lo": 0.9,
@@ -81,8 +81,11 @@
     }
   ],
   "recommendation": {
-    "applied": false,
-    "note": "model is well-calibrated (<2pp bias)"
+    "applied": true,
+    "bias_pp": -2.1,
+    "shrinkage": 1.0,
+    "recommended_shift": 0.0209,
+    "note": "Model under-predicting home by 2.1pp; add 2.1pp to P(home) (shrinkage 100%)"
   },
   "n_teams_tracked": 30
 }
