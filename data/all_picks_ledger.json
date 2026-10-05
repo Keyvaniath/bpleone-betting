@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-10-05T00:54:21",
+  "generated_at": "2026-10-05T05:51:56",
   "stake_assumption": "1u flat per pick",
-  "total_picks": 13650,
+  "total_picks": 13654,
   "n_settled": 12152,
-  "n_pending": 65,
+  "n_pending": 69,
   "n_void": 1433,
   "wins": 4706,
   "losses": 7436,
@@ -11,7 +11,7 @@
   "hit_rate": 0.3876,
   "net_units": -2251.508,
   "roi_pct": -18.54,
-  "n_calibrated_picks": 13515,
+  "n_calibrated_picks": 13518,
   "calibrated_reliability": {
     "n": 12016,
     "ece_raw": 0.0875,
@@ -49,12 +49,12 @@
       "hit_rate": 0.565
     }
   },
-  "n_added_this_run": 2,
+  "n_added_this_run": 4,
   "n_newly_settled_this_run": 0,
   "n_resettled_this_run": 0,
-  "n_voided_this_run": 4,
+  "n_voided_this_run": 0,
   "n_duplicates_collapsed_this_run": 0,
-  "n_duplicate_adds_blocked_this_run": 66,
+  "n_duplicate_adds_blocked_this_run": 63,
   "n_reconciled_settled_voids": 0,
   "n_bootstrapped_from_locks_history": 0,
   "by_source": {
@@ -3647,12 +3647,12 @@
   },
   "by_sport": {
     "MLB": {
-      "n": 8750,
+      "n": 8751,
       "settled": 8533,
       "wins": 2411,
       "losses": 6112,
       "pushes": 10,
-      "pending": 18,
+      "pending": 19,
       "void": 199,
       "net_units": -2359.795,
       "hit_rate": 0.2829,
@@ -3738,12 +3738,12 @@
       "markets": 4
     },
     "NHL": {
-      "n": 244,
+      "n": 247,
       "settled": 30,
       "wins": 14,
       "losses": 16,
       "pushes": 0,
-      "pending": 29,
+      "pending": 32,
       "void": 185,
       "net_units": -7.357,
       "hit_rate": 0.4667,
@@ -354440,7 +354440,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-05T00:54:21",
-      "p_calibrated": 0.6209
+      "p_calibrated": 0.6209,
+      "also_sources": [
+        "sharp_strong"
+      ]
     },
     {
       "source": "pod",
@@ -354457,6 +354460,72 @@
       "payout_units": null,
       "recorded_at": "2026-10-05T00:54:21",
       "p_calibrated": 0.6497
+    },
+    {
+      "source": "mlb_under_alert",
+      "sport": "MLB",
+      "player_or_matchup": "CLE @ BOS",
+      "market": "UNDER_8.5",
+      "prob": null,
+      "tier": "ELITE",
+      "under_signal_score": 7.5,
+      "date": "2026-10-05",
+      "pick_id": "mlb_under_alert|MLB|CLE___BOS|UNDER_8_5|2026-10-05",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-10-05T05:51:56"
+    },
+    {
+      "source": "nhl_skater_blocks_over_1.5",
+      "sport": "NHL",
+      "player_or_matchup": "luke schenn",
+      "market": "BLOCKS_OVER_1.5",
+      "prob": 0.594,
+      "fair_american": -146,
+      "p_predicted": 0.594,
+      "matchup": "TBL @ NSH",
+      "date": "2026-10-05",
+      "pick_id": "nhl_skater_blocks_over_1_5|NHL|luke_schenn|BLOCKS_OVER_1_5|2026-10-05",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-10-05T05:51:56",
+      "p_calibrated": 0.594
+    },
+    {
+      "source": "nhl_skater_hits_over_2.5",
+      "sport": "NHL",
+      "player_or_matchup": "barclay goodrow",
+      "market": "HITS_OVER_2.5",
+      "prob": 0.679,
+      "fair_american": -212,
+      "p_predicted": 0.679,
+      "matchup": "VGK @ SJS",
+      "date": "2026-10-05",
+      "pick_id": "nhl_skater_hits_over_2_5|NHL|barclay_goodrow|HITS_OVER_2_5|2026-10-05",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-10-05T05:51:56",
+      "p_calibrated": 0.679
+    },
+    {
+      "source": "nhl_skater_blocks_over_1.5",
+      "sport": "NHL",
+      "player_or_matchup": "jaccob slavin",
+      "market": "BLOCKS_OVER_1.5",
+      "prob": 0.713,
+      "fair_american": -248,
+      "p_predicted": 0.713,
+      "matchup": "FLA @ CAR",
+      "date": "2026-10-05",
+      "pick_id": "nhl_skater_blocks_over_1_5|NHL|jaccob_slavin|BLOCKS_OVER_1_5|2026-10-05",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-10-05T05:51:56",
+      "p_calibrated": 0.713
     }
   ],
   "note": "Unified pick ledger -- records every pick the model surfaces (top_25 board, whales, consensus, unders, sharp action, locks, POD) and settles each against actual outcomes. Per-source W-L feeds back into calibration so the model learns which modules are reliable. THIS is the training signal."
