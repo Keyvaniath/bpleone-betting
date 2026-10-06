@@ -1,33 +1,33 @@
 {
-  "generated_at": "2026-10-06T09:11:13",
+  "generated_at": "2026-10-06T11:30:25",
   "stake_assumption": "1u flat per pick",
   "total_picks": 13671,
-  "n_settled": 12154,
-  "n_pending": 70,
+  "n_settled": 12155,
+  "n_pending": 69,
   "n_void": 1447,
-  "wins": 4707,
+  "wins": 4708,
   "losses": 7437,
   "pushes": 10,
   "hit_rate": 0.3876,
-  "net_units": -2251.599,
-  "roi_pct": -18.54,
+  "net_units": -2250.69,
+  "roi_pct": -18.53,
   "n_calibrated_picks": 13535,
   "calibrated_reliability": {
-    "n": 12018,
-    "ece_raw": 0.0876,
+    "n": 12019,
+    "ece_raw": 0.0875,
     "ece_calibrated": 0.0115,
     "brier_raw": 0.2096,
     "brier_calibrated": 0.1926,
     "note": "In-sample over the settled ledger (the isotonic transform is fit on these same outcomes); held-out 70/30 validation is in recalibration_map.json. p_predicted = raw model prob (kept untouched for the learning loop); p_calibrated = honest prob stamped per pick. Lower ECE/Brier on the calibrated column = the displayed % is truer."
   },
   "curated": {
-    "n_settled": 1125,
-    "wins": 756,
+    "n_settled": 1126,
+    "wins": 757,
     "losses": 359,
     "pushes": 10,
-    "hit_rate": 0.678,
-    "net_units": 152.494,
-    "roi_pct": 13.68,
+    "hit_rate": 0.6783,
+    "net_units": 153.404,
+    "roi_pct": 13.75,
     "sources": [
       "consensus_hit_elite",
       "consensus_hit_strong",
@@ -42,15 +42,15 @@
     ],
     "definition": "Featured/recommended plays only -- Lock of the Day, Top 25, Whale, Sharp, Consensus (hit), Under Alerts, POD. Excludes the experimental prop feeds, which are tracked to train the model, not bet.",
     "last_30": {
-      "wins": 99,
+      "wins": 100,
       "losses": 75,
-      "net_units": 27.585,
-      "roi_pct": 15.85,
-      "hit_rate": 0.569
+      "net_units": 28.494,
+      "roi_pct": 16.28,
+      "hit_rate": 0.5714
     }
   },
   "n_added_this_run": 0,
-  "n_newly_settled_this_run": 0,
+  "n_newly_settled_this_run": 1,
   "n_resettled_this_run": 0,
   "n_voided_this_run": 0,
   "n_duplicates_collapsed_this_run": 0,
@@ -203,13 +203,13 @@
       "roi_pct": 14.0
     },
     "top_25_board": {
-      "n": 589,
-      "wins": 346,
+      "n": 590,
+      "wins": 347,
       "losses": 237,
       "pushes": 6,
-      "net_units": 56.884,
-      "hit_rate": 0.5935,
-      "roi_pct": 9.76
+      "net_units": 57.793,
+      "hit_rate": 0.5942,
+      "roi_pct": 9.9
     },
     "mlb_game_total_game_total_over_8.5": {
       "n": 1,
@@ -1963,12 +1963,12 @@
       "hit_rate": 1.0
     },
     "under": {
-      "n": 136,
-      "wins": 77,
+      "n": 137,
+      "wins": 78,
       "losses": 54,
       "pushes": 5,
-      "net_units": 11.719,
-      "hit_rate": 0.5878
+      "net_units": 12.628,
+      "hit_rate": 0.5909
     },
     "over": {
       "n": 201,
@@ -2821,12 +2821,12 @@
       "hit_rate": 1.0
     },
     "under": {
-      "n": 136,
-      "wins": 77,
+      "n": 137,
+      "wins": 78,
       "losses": 54,
       "pushes": 5,
-      "net_units": 11.719,
-      "hit_rate": 0.5878
+      "net_units": 12.628,
+      "hit_rate": 0.5909
     },
     "over": {
       "n": 201,
@@ -3648,15 +3648,15 @@
   "by_sport": {
     "MLB": {
       "n": 8754,
-      "settled": 8535,
-      "wins": 2412,
+      "settled": 8536,
+      "wins": 2413,
       "losses": 6113,
       "pushes": 10,
-      "pending": 18,
+      "pending": 17,
       "void": 201,
-      "net_units": -2359.886,
-      "hit_rate": 0.2829,
-      "roi_pct": -27.68,
+      "net_units": -2358.977,
+      "hit_rate": 0.283,
+      "roi_pct": -27.67,
       "markets": 32
     },
     "MLB-PP": {
@@ -3856,10 +3856,10 @@
     }
   },
   "last_7_days": {
-    "wins": 11,
+    "wins": 12,
     "losses": 6,
-    "net_units": 5.161,
-    "hit_rate": 0.6471
+    "net_units": 6.071,
+    "hit_rate": 0.6667
   },
   "picks": [
     {
@@ -354648,11 +354648,18 @@
       "primary_source_module": "today_reco",
       "date": "2026-10-05",
       "pick_id": "top_25_board|MLB|CHW___CLE|UNDER_8_5|2026-10-05",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "won",
+      "payout_units": 0.9091,
       "recorded_at": "2026-10-05T22:17:19",
-      "p_calibrated": 0.5386
+      "p_calibrated": 0.5386,
+      "outcome": {
+        "final_score": "CHW 4 @ CLE 3",
+        "total_runs": 7,
+        "verify": "CHW @ CLE: final 4-3 (total 7) on 2026-10-05",
+        "check": "verified"
+      },
+      "settled_at": "2026-10-06T11:30:25"
     },
     {
       "source": "pod",
