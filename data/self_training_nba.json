@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-10-08T01:31:19",
+  "generated_at": "2026-10-08T06:42:52",
   "sport": "nba",
-  "n_games": 13,
-  "hit_rate": 0.2308,
-  "brier_score": 0.3936,
-  "log_loss": 1.1341,
-  "avg_predicted_home_winprob": 0.519,
-  "avg_actual_home_winrate": 0.3846,
-  "bias": 0.1344,
+  "n_games": 17,
+  "hit_rate": 0.2941,
+  "brier_score": 0.3735,
+  "log_loss": 1.0668,
+  "avg_predicted_home_winprob": 0.5602,
+  "avg_actual_home_winrate": 0.4118,
+  "bias": 0.1484,
   "reliability_bins": [
     {
       "lo": 0.0,
@@ -26,9 +26,16 @@
     {
       "lo": 0.5,
       "hi": 0.6,
-      "n": 10,
+      "n": 12,
       "predicted_avg": 0.55,
-      "actual_avg": 0.3
+      "actual_avg": 0.333
+    },
+    {
+      "lo": 0.8,
+      "hi": 0.9,
+      "n": 2,
+      "predicted_avg": 0.838,
+      "actual_avg": 0.5
     },
     {
       "lo": 0.9,
@@ -39,8 +46,11 @@
     }
   ],
   "recommendation": {
-    "applied": false,
-    "note": "not enough sample size (13 games); need >= 15"
+    "applied": true,
+    "bias_pp": 14.8,
+    "shrinkage": 0.3,
+    "recommended_shift": -0.0445,
+    "note": "Model over-predicting home by 14.8pp; subtract 4.5pp from P(home) (shrinkage 30%)"
   },
-  "n_teams_tracked": 21
+  "n_teams_tracked": 24
 }
