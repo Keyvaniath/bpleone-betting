@@ -1,25 +1,42 @@
 {
-  "generated_at": "2026-10-18T03:09:36",
+  "generated_at": "2026-10-18T05:11:29",
   "sport": "epl",
-  "n_games": 10,
-  "hit_rate": 0.5,
-  "brier_score": 0.1558,
-  "log_loss": 0.6544,
-  "avg_predicted_home_winprob": 0.5925,
-  "avg_actual_home_winrate": 0.65,
-  "bias": -0.0575,
+  "n_games": 15,
+  "hit_rate": 0.5333,
+  "brier_score": 0.2099,
+  "log_loss": 0.7324,
+  "avg_predicted_home_winprob": 0.5431,
+  "avg_actual_home_winrate": 0.5667,
+  "bias": -0.0236,
   "reliability_bins": [
+    {
+      "lo": 0.2,
+      "hi": 0.3,
+      "n": 3,
+      "predicted_avg": 0.256,
+      "actual_avg": 0.333
+    },
     {
       "lo": 0.5,
       "hi": 0.6,
-      "n": 10,
+      "n": 11,
       "predicted_avg": 0.593,
-      "actual_avg": 0.65
+      "actual_avg": 0.682
+    },
+    {
+      "lo": 0.8,
+      "hi": 0.9,
+      "n": 1,
+      "predicted_avg": 0.86,
+      "actual_avg": 0.0
     }
   ],
   "recommendation": {
-    "applied": false,
-    "note": "not enough sample size (10 games); need >= 15"
+    "applied": true,
+    "bias_pp": -2.4,
+    "shrinkage": 0.3,
+    "recommended_shift": 0.0071,
+    "note": "Model under-predicting home by 2.4pp; add 0.7pp to P(home) (shrinkage 30%)"
   },
   "n_teams_tracked": 20
 }
