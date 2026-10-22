@@ -37,8 +37,7 @@ jobs:
 
       - name: Poll live games (gumbo + win expectancy)
         working-directory: python
-        run: python live_games.py
-
+        run: python live_games.py || echo "live_games.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Refresh non-MLB ESPN scoreboards so their live states stay fresh
       # between daily-pipeline runs. All cheap (~1s each, single ESPN call).
       - name: Refresh NBA / NHL / WNBA / MLS / EPL / NCAAF / NFL state
@@ -52,115 +51,94 @@ jobs:
 
       - name: Live game momentum tracker (poll-over-poll P(home) swings)
         working-directory: python
-        run: python live_momentum.py
-
+        run: python live_momentum.py || echo "live_momentum.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Momentum alert dispatcher (Discord + history log)
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
         working-directory: python
-        run: python momentum_alerter.py
-
+        run: python momentum_alerter.py || echo "momentum_alerter.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Poll live CLV (Bovada line drift per game)
         working-directory: python
-        run: python live_clv.py
-
+        run: python live_clv.py || echo "live_clv.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Compute live edges (model p_win vs book live ML)
         working-directory: python
-        run: python live_edges.py
-
+        run: python live_edges.py || echo "live_edges.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # POD P&L tracker -- record today's POD + settle any pending
       - name: POD P&L tracker
         working-directory: python
-        run: python pod_pl_tracker.py
-
+        run: python pod_pl_tracker.py || echo "pod_pl_tracker.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # POD factor decomposition -- real per-factor contributions (10-min refresh)
       - name: POD factor decomposition
         working-directory: python
-        run: python pod_factor_decomp.py
-
+        run: python pod_factor_decomp.py || echo "pod_factor_decomp.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Unified all-picks ledger (every surfaced pick across all modules)
       - name: All-picks unified ledger
         working-directory: python
-        run: python all_picks_tracker.py
-
+        run: python all_picks_tracker.py || echo "all_picks_tracker.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Self-learn shrinkage weights (per-source feedback loop)
       - name: Self-learn shrinkage weights
         working-directory: python
-        run: python self_learn_weights.py
-
+        run: python self_learn_weights.py || echo "self_learn_weights.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Pipeline freshness watchdog -- alarm if any critical file is stale
       - name: Pipeline watchdog (freshness check)
         working-directory: python
-        run: python pipeline_watchdog.py
-
+        run: python pipeline_watchdog.py || echo "pipeline_watchdog.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # In-game prop lock detector (LOCKED_WON / LOCKED_LOST / SWEATING)
       - name: In-game prop lock detector
         working-directory: python
-        run: python in_game_lock_detector.py
-
+        run: python in_game_lock_detector.py || echo "in_game_lock_detector.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Live alerter -- fires Discord on lock transitions + sharp steam + edges
       - name: Live alerter (Discord push)
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
         working-directory: python
-        run: python live_alerter.py
-
+        run: python live_alerter.py || echo "live_alerter.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Live status of today's tracked Locks (WON / LOST / ON_TRACK / AT_RISK / PENDING)
       - name: Live locks status tracker
         working-directory: python
-        run: python live_locks_status.py
-
+        run: python live_locks_status.py || echo "live_locks_status.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Refresh locks CLV with latest line snapshots from live_clv.json
       - name: Locks CLV refresh (closing line value vs entry)
         working-directory: python
-        run: python locks_clv.py
-
+        run: python locks_clv.py || echo "locks_clv.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Sharp action radar -- track how every top-25 pick's line is moving
       - name: Sharp action radar (line movement signal across top 25)
         working-directory: python
-        run: python sharp_action_radar.py
-
+        run: python sharp_action_radar.py || echo "sharp_action_radar.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Reverse Line Movement -- detect when book moves against the public majority
       - name: Reverse Line Movement detector
         working-directory: python
-        run: python reverse_line_movement.py
-
+        run: python reverse_line_movement.py || echo "reverse_line_movement.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Lineup confirmation -- alert if a lock's starter not yet in posted lineup
       - name: Lineup confirmation status
         working-directory: python
-        run: python lineup_confirmation.py
-
+        run: python lineup_confirmation.py || echo "lineup_confirmation.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Pick evolution tracker -- which picks survive every refresh cycle
       - name: Pick evolution tracker
         working-directory: python
-        run: python pick_evolution_tracker.py
-
+        run: python pick_evolution_tracker.py || echo "pick_evolution_tracker.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Live data accuracy audit -- compares local artifacts to MLB/ESPN APIs
       # every cycle, surfaces feed degradation immediately.
       - name: Data health check (live cross-verification)
         working-directory: python
-        run: python data_health.py
-
+        run: python data_health.py || echo "data_health.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Live prop tracker: pulls every DK/PP prop's current in-game stat
       # line + status (WIN, LOSS, CASHING, SWEATING, LIVE, PRE).
       # Frontend auto-refreshes every 60s so Brandon can see in real time
       # which OVERs are cashing and which UNDERs are sweating.
       - name: Track live prop status (DK + PrizePicks)
         working-directory: python
-        run: python live_props.py
-
+        run: python live_props.py || echo "live_props.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Lineup churn watcher: detects scratches between cron cycles, flags
       # affected DK/PP props as STALE on /props + /pickem banners.
       - name: Detect lineup churn since last poll
         working-directory: python
-        run: python lineup_churn.py
-
+        run: python lineup_churn.py || echo "lineup_churn.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Live K-pace alerts: each SP's K count vs prop line, ON PACE FOR
       # OVER / BEHIND PACE / EARLY HOOK. Pulls live box scores.
       - name: K-pace + bullpen warming alerts
         working-directory: python
-        run: python k_pace_alerts.py
-
+        run: python k_pace_alerts.py || echo "k_pace_alerts.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Scratch + in-game removal alerts: fires Discord webhook the moment
       # a player with open props is scratched pre-game or removed mid-game.
       # State persisted in .scratch_alerted.json to avoid double-firing.
@@ -168,88 +146,75 @@ jobs:
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
         working-directory: python
-        run: python scratch_alerts.py
-
+        run: python scratch_alerts.py || echo "scratch_alerts.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Auto-detect "locked" props (already crossed the line + player done).
       - name: Lock detector
         working-directory: python
-        run: python lock_detector.py
-
+        run: python lock_detector.py || echo "lock_detector.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Bullpen warming + save-opportunity detector from MLB feed.
       - name: Bullpen warming watcher
         working-directory: python
-        run: python bullpen_warming.py
-
+        run: python bullpen_warming.py || echo "bullpen_warming.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Injury news scanner: MLB transactions feed, alerts on slate players.
       - name: Injury news scanner (Discord ping)
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
         working-directory: python
-        run: python injury_news.py
-
+        run: python injury_news.py || echo "injury_news.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Live-total drift: score-aware recompute of fair total vs market.
       - name: Live total drift
         working-directory: python
-        run: python live_total_drift.py
-
+        run: python live_total_drift.py || echo "live_total_drift.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Steam radar: multi-cycle line-move trajectory tracking.
       - name: Steam-move radar
         working-directory: python
-        run: python steam_detector.py
-
+        run: python steam_detector.py || echo "steam_detector.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Auto-rebalance: if a scratched player held an auto-portfolio slot,
       # promote the next-rank candidate. Output: data/rebalance_events.json.
       - name: Auto-rebalance portfolio
         working-directory: python
-        run: python auto_rebalance.py
-
+        run: python auto_rebalance.py || echo "auto_rebalance.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # NBA live scoreboard refresh (free ESPN; will catch in-game score updates)
       - name: NBA live scoreboard
         working-directory: python
-        run: python nba_pipeline.py
-
+        run: python nba_pipeline.py || echo "nba_pipeline.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # NHL live scoreboard refresh
       - name: NHL live scoreboard
         working-directory: python
-        run: python nhl_pipeline.py
-
+        run: python nhl_pipeline.py || echo "nhl_pipeline.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # NHL goalie-pull leverage (high-leverage live-bet windows)
       - name: NHL goalie-pull leverage tracker
         working-directory: python
-        run: python nhl_goalie_pull_leverage.py
-
+        run: python nhl_goalie_pull_leverage.py || echo "nhl_goalie_pull_leverage.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Golf live tracker (heaters / stalled / cut-bubble during tournaments)
       - name: Golf live tracker
         working-directory: python
-        run: python golf_live_tracker.py
-
+        run: python golf_live_tracker.py || echo "golf_live_tracker.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # KBO + LoL + CS live refresh (cheap polls, no rate limits)
       - name: KBO live scoreboard
         working-directory: python
-        run: python kbo_pipeline.py
+        run: python kbo_pipeline.py || echo "kbo_pipeline.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: KBO Poisson re-run
         working-directory: python
-        run: python kbo_model.py
+        run: python kbo_model.py || echo "kbo_model.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: LoL Riot esports refresh
         working-directory: python
-        run: python lol_pipeline.py
+        run: python lol_pipeline.py || echo "lol_pipeline.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: LoL ELO re-run (settles completed matches)
         working-directory: python
-        run: python lol_model.py
+        run: python lol_model.py || echo "lol_model.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: CS state refresh
         working-directory: python
-        run: python cs_pipeline.py
+        run: python cs_pipeline.py || echo "cs_pipeline.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: CS ELO re-run
         working-directory: python
-        run: python cs_model.py
-
+        run: python cs_model.py || echo "cs_model.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Esports + KBO live alerts (Discord ping on lead change / POT flip)
       - name: Esports + KBO live alerts (Discord)
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
         working-directory: python
-        run: python esports_alerts.py
-
+        run: python esports_alerts.py || echo "esports_alerts.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Commit if state changed
         env:
           GIT_EDITOR: "true"
@@ -287,6 +252,16 @@ jobs:
             done
             echo "push failed after 3 retries"
           fi
+
+      - name: Failure gate (red run if any module failed)
+        if: always()
+        run: |
+          if [ -s "$RUNNER_TEMP/failed_steps.txt" ]; then
+            echo "::error::$(wc -l < "$RUNNER_TEMP/failed_steps.txt") module(s) failed this run:"
+            sort -u "$RUNNER_TEMP/failed_steps.txt" | sed 's/^/  - /'
+            exit 1
+          fi
+          echo "all modules ran clean"
 
       - name: Notify on live-poll failure
         if: failure()

@@ -41,6 +41,51 @@ bpleone-site/
 
 ## Current deployment state (LIVE)
 
+- **2026-10-22 (newest) — OUTAGE BACKFILL + GRADER FIXES + PHANTOM PICKS:**
+  (1) **779 real picks were voided by the cascade** ("unsettleable: no outcome
+  feed" -- feeds dark, not games missing). `outage_backfill.py` (one-shot,
+  wired just before the ledger step; marker data/outage_backfill_2026_10.json,
+  `--force` to re-run) re-runs every outcome feed once with a lookback to the
+  oldest void (36d), adds the voided MLB players to the gamelog universe, then
+  runs the normal ledger build. Nothing is graded by the backfill itself.
+  Rehearsal on prod: 235 recovered (NFL 129-60, NHL 22-11, F1 4-3, UFC 2-2,
+  tennis 1-1). Still void = true non-plays/feeds with no history (KBO box,
+  MLB favourite run lines, DNP props).
+  (2) **NFL record moved DOWN on purpose:** props stamped the UTC date, so
+  every prime-time (SNF/MNF/TNF) prop's box row sat on the next day and never
+  matched -> ET slate date (nfl_player_props), name suffix normalization,
+  nearest box row within +/-1 day, zero-stat lines = 0 when the player IS in
+  the box. NFL 791 settled -2.4% -> 980 settled 700-280 -3.2%. Don't restore.
+  (3) **NHL grader:** MINUS_1.5 puck lines were graded as +1.5 (always too
+  generous); P-period totals + ANYTIME_GOAL_NO never graded; espn_box_logs
+  read period scores from `value` (ESPN uses displayValue -> all None).
+  **RULE: a grader matching "a row within N days" must take the NEAREST row
+  and refuse an equal-distance tie -- never the first in list order** (a 10/15
+  hits prop was graded on 10/17's game). Applied to skater props AND
+  `_find_nhl_game`. 4 settled picks re-graded (all won->lost), each with a
+  `regraded` audit dict {from_result, from_payout, at, reason}.
+  (4) **NHL PRESEASON leaked into the record** (no generator gate):
+  `_void_preseason_nhl` voids NHL picks dated 9/01-9/28 (opener 9/29,
+  `_NHL_2026_OPENER` -- bump it each season) regardless of result: 71 had
+  settled at -24.4u. Same rule as the NFL; reason 'preseason' is intentional.
+  (5) **PHANTOM PICKS on fake games.** pipeline.py fell back to DEMO_SLATE
+  (SDP@LAD, BOS@NYY, CIN@COL) whenever the MLB schedule was EMPTY, and
+  run_pipeline dropped the is_demo tag -- so on every off-day today.json
+  published demo games as real and mlb_run_line_props / mlb_unders_alerts
+  wrote picks on them (a batch every 5 days: the add-guard blocks while
+  pending, the 4-day void frees it). An empty real schedule now writes
+  `games: []` + `no_games: true` (all 77 wired today.json consumers verified
+  clean on it); demo slates carry `is_demo` and the ledger intake drops MLB
+  picks on a demo matchup. NHL had the same disease from FROZEN generator
+  artifacts during the cascade -> `_nhl_intake` stamps each NHL pick with its
+  game's ET date from nhl_state (abbrev-tolerant: NJD/NJ, TBL/TB) and drops
+  picks not on today's board. Alpha's off-season check ignores voided rows.
+  **RULE: a fallback/demo/stale input must be tagged AND the tag must survive
+  to every artifact -- check intake, not 80 generators.**
+  (6) live-games.yml (40 bare steps, every 20 min) converted to the same
+  record-and-continue + Failure gate pattern -- it had the cascade's exact
+  weakness (one crash skipped the ledger AND the commit).
+
 - **2026-10-22 (latest) — WHY BOTH OUTAGES WERE SILENT: the alert was muted
   since July.** The freshness canary DID trip red during the 30-day cascade
   ("sport_coverage.json: 316h old") -- but health-alert.yml dedupes against an
