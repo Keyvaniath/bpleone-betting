@@ -353,7 +353,7 @@ if __name__ == "__main__":
             post = t.get("postseason_stats") or {}
             blended = t.get("blended_sv_pct")
             blended_txt = f"{blended:.3f}" if blended is not None else "?"
-            print(f"    {t.get('team_abbr','?'):3s} {t.get('goalie_name') or '?'}: "
+            print(f"    {(t.get('team_abbr') or '?'):3s} {t.get('goalie_name') or '?'}: "
                   f"season SV%={ssn.get('sv_pct','?')} ({ssn.get('n_starts',0)} GS) | "
                   f"playoff SV%={post.get('sv_pct','?')} ({post.get('n_starts',0)} GS) | "
                   f"blended {blended_txt}")

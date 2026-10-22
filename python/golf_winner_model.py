@@ -259,6 +259,6 @@ if __name__ == "__main__":
             fa_str = f"{fa:+d}" if isinstance(fa, int) else "—"
             pw = pl.get("p_win") or 0
             pt = pl.get("p_top10") or 0
-            print(f"    {pl.get('name','?'):25} pos#{pl.get('current_pos','?')!s:>3} ({pl.get('current_total','—')}) "
+            print(f"    {(pl.get('name') or '?'):25} pos#{(pl.get('current_pos') or '?')!s:>3} ({pl.get('current_total','—')}) "
                   f"P(win)={pw*100:5.2f}%  fair {fa_str:>5}  "
                   f"P(top10)={pt*100:.1f}%")

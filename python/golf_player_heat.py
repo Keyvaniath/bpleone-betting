@@ -152,10 +152,10 @@ if __name__ == "__main__":
         ttp = _safe(a.get("total_to_par"), "{:+d}")
         lrs = _safe(a.get("last_round_score"), "{:+d}")
         avg = _safe(a.get("avg_round_vs_par"), "{:+.1f}")
-        print(f"  {pos} {a.get('name','?'):25s} ({a.get('country','?'):12s}) "
+        print(f"  {pos} {(a.get('name') or '?'):25s} ({(a.get('country') or '?'):12s}) "
               f"{ttp} total · last R{lrs} (avg {avg}) -- {sig}")
     print("Top 10 COLD (poor closing rounds):")
     for a in p["cold_players"][:10]:
         sig = " · ".join(a.get("signals") or [])
         pos = _safe(a.get("finish_pos"), "T{:>3}")
-        print(f"  {pos} {a.get('name','?'):25s} ({a.get('country','?'):12s}) -- {sig}")
+        print(f"  {pos} {(a.get('name') or '?'):25s} ({(a.get('country') or '?'):12s}) -- {sig}")

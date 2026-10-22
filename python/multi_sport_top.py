@@ -120,5 +120,5 @@ if __name__ == "__main__":
     print(f"Multi-sport top picks: {p['n_sports']} sports surfaced")
     for pk in p["picks"]:
         prob = pk.get("model_prob") or 0
-        print(f"  {pk['sport']:5} ({pk.get('confidence','MED'):4}) -- {pk.get('label','?')[:70]} -- "
+        print(f"  {pk['sport']:5} ({(pk.get('confidence') or 'MED'):4}) -- {pk.get('label','?')[:70]} -- "
               f"{prob*100:.1f}% @ {pk.get('fair_american','?')}")

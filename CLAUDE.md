@@ -41,6 +41,38 @@ bpleone-site/
 
 ## Current deployment state (LIVE)
 
+- **2026-10-22 — THE 30-DAY CASCADE (read before touching any workflow):**
+  daily-pipeline failed EVERY run 9/22-10/22 and **234 of 324 steps were
+  SKIPPED** each time, while the commit step (`if: always()`) still pushed
+  data and the 2-hourly heartbeat kept the ledger settling -- so the site
+  LOOKED alive. Frozen for a month: alpha_pick_record/tweet/email, NFL props +
+  DFS + receipts, CFB ratings (edges re-priced daily against WEEK-4 ratings),
+  top_calibrated_edges, sport_coverage. TRIGGER: the Presidents Cup (a TEAM
+  event) became golf's "active tournament"; ESPN lists team competitors with no
+  athlete names; golf_winner_model then golf_region_props crashed on a DISPLAY
+  print (`f"{x.get('name','?'):20s}"` -- .get's default does NOT apply when the
+  key exists with None). DEADLOCK: golf_region_props runs BEFORE golf_pipeline,
+  so the crash prevented the refresh that would have replaced the bad state.
+  FIXES: (1) golf_pipeline only selects events with >=10 NAMED competitors and
+  drops nameless rows; (2) all 14 `.get(k, dflt):FMT` sites rewritten to
+  `(.get(k) or dflt):FMT` (repo-wide count now 0); (3) **STRUCTURAL: every
+  python step in daily-pipeline (210) and the heartbeat now RECORDS failure to
+  $RUNNER_TEMP/failed_steps.txt and CONTINUES; a final `Failure gate` step
+  (if: always()) turns the run red and names the failed modules.** A broken
+  module is now visible the same day and can no longer darken the other 233.
+  **RULE: never add a bare `run: python X.py` -- append the
+  `|| echo "X.py" >> "$RUNNER_TEMP/failed_steps.txt"` suffix.**
+  ALSO FOUND: nfl_stub.py (an old scaffold, step ~1101) OVERWROTE the real
+  nfl_state.json written by nfl_pipeline.py (~959) with "off-season / 0 games"
+  on EVERY run all season. nfl_player_props only worked because it runs between
+  them; the NFL page, sport_coverage, the heartbeat and NFL DFS receipts' DST
+  scoring all read the stub. nfl_stub now refuses to clobber a real state.
+  State after recovery (local run 10/22): golf on the live Bermuda Championship
+  (120 named players), CFB ratings on 514 2026 games, NFL Week 7 (14 games,
+  583 props), Alpha v2 18-16 +11.51u (+33.9%) over 34 days, curated 769-370
+  +14.2% on 1,149 settled; NFL props 791 settled ~break-even with
+  longest_reception (-9.05u) and rush_yds (-7.61u) crossing the curation bar.
+
 - **2026-09-08 (later) — MOBILE/PWA PASS + NFL-DFS MULTI-DAY SLATE FIX:**
   (1) **PWA**: manifest.json + assets/icons (from the brand mark; the site had
   NO favicon before) linked from every page's <head>; sw.js caches the app

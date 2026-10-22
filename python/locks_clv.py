@@ -216,4 +216,4 @@ if __name__ == "__main__":
     if p["top_clv_winners"]:
         print(f"\n  Top 3 CLV winners:")
         for r in p["top_clv_winners"][:3]:
-            print(f"    {(r['matchup'] or '?')[:30]:30s} {r.get('side','?'):6s} {r['opening_implied_pct']:.1f}% -> {r['closing_implied_pct']:.1f}% (+{r['clv_pp']:.1f}pp)")
+            print(f"    {(r['matchup'] or '?')[:30]:30s} {(r.get('side') or '?'):6s} {r['opening_implied_pct']:.1f}% -> {r['closing_implied_pct']:.1f}% (+{r['clv_pp']:.1f}pp)")

@@ -62,8 +62,7 @@ jobs:
       # Stamp current model version (git SHA + date) for every pick
       - name: Model version stamp
         working-directory: python
-        run: python model_version.py
-
+        run: python model_version.py || echo "model_version.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Sync any user-saved model overrides from Cloudflare KV (no-op if Worker not deployed)
       - name: Sync model overrides from Worker KV
         env:
@@ -97,7 +96,7 @@ jobs:
       # Self-learning -- update every 5 min, all day
       - name: All-picks unified ledger (settle + log)
         working-directory: python
-        run: python all_picks_tracker.py
+        run: python all_picks_tracker.py || echo "all_picks_tracker.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Alpha Pick of the Day track record (settle slip legs off the ledger)
         working-directory: python
         run: python alpha_pod_tracker.py || true
@@ -108,12 +107,10 @@ jobs:
       # Learning Integrity audit BEFORE self-learn so guards are fresh
       - name: Learning Integrity audit (Wilson CI + Brier + ECE + guards)
         working-directory: python
-        run: python learning_integrity.py
-
+        run: python learning_integrity.py || echo "learning_integrity.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Self-learn shrinkage weights (respects integrity guards)
         working-directory: python
-        run: python self_learn_weights.py
-
+        run: python self_learn_weights.py || echo "self_learn_weights.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Strategy-sim replay deck tracks the ledger refresh above so the public
       # equity chart / prove-it strip never lag the settled count intraday.
       - name: Strategy simulator replay deck (intraday refresh)
@@ -204,8 +201,7 @@ jobs:
       # POD P&L (idempotent)
       - name: POD P&L tracker
         working-directory: python
-        run: python pod_pl_tracker.py
-
+        run: python pod_pl_tracker.py || echo "pod_pl_tracker.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Lock status -- live game progress
       - name: Live locks status tracker
         working-directory: python
@@ -218,13 +214,11 @@ jobs:
         timeout-minutes: 1
         continue-on-error: true
         working-directory: python
-        run: python data_source_verification.py
-
+        run: python data_source_verification.py || echo "data_source_verification.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Watchdog freshness alarm
       - name: Pipeline freshness watchdog
         working-directory: python
-        run: python pipeline_watchdog.py
-
+        run: python pipeline_watchdog.py || echo "pipeline_watchdog.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Discord push on lock transitions + sharp steam
       - name: Live alerter (Discord push)
         env:
@@ -293,3 +287,20 @@ jobs:
             done
             echo "push failed after 3 retries"
           fi
+
+      # FAILURE GATE (2026-10-22). Every step above records its failure and lets
+      # the run CONTINUE -- one crashing display print in golf_region_props.py
+      # skipped 234 of 324 steps for 30 days (9/22-10/22) while the commit step
+      # still ran, so the site looked alive with the ledger build, Alpha record,
+      # NFL props/DFS and CFB ratings all frozen. Now everything runs and
+      # commits, and THIS step turns the run red and names what failed, so a
+      # broken module is visible the same day without darkening the rest.
+      - name: Failure gate (red run if any module failed)
+        if: always()
+        run: |
+          if [ -s "$RUNNER_TEMP/failed_steps.txt" ]; then
+            echo "::error::$(wc -l < "$RUNNER_TEMP/failed_steps.txt") module(s) failed this run:"
+            sort -u "$RUNNER_TEMP/failed_steps.txt" | sed 's/^/  - /'
+            exit 1
+          fi
+          echo "all modules ran clean"

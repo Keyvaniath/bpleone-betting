@@ -22,6 +22,20 @@ except Exception:
 
 
 def run():
+    # NEVER CLOBBER THE REAL FEED (2026-10-22). nfl_pipeline.py writes the live
+    # NFL state (season_status 'regular', games, upcoming) earlier in
+    # daily-pipeline; this scaffold ran ~140 steps LATER and overwrote it with
+    # 'off-season / 0 games' on every run all season. nfl_player_props only
+    # worked because it happens to run in between -- every other reader (the
+    # NFL page, sport_coverage, NFL DFS receipts' DST scoring, the heartbeat)
+    # saw the stub. If a real state is on disk, leave it alone.
+    try:
+        with open(OUT_PATH, encoding="utf-8") as f:
+            cur = json.load(f)
+        if cur.get("games") or cur.get("active_season") or cur.get("league") == "NFL":
+            return cur
+    except Exception:
+        pass
     payload = {
         "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
         "enabled": ENABLED,

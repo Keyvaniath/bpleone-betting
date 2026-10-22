@@ -118,6 +118,33 @@ def run() -> Dict[str, Any]:
             json.dump(out, f, indent=2)
         return out
 
+    # TEAM EVENTS ARE NOT STROKE-PLAY FIELDS (2026-10-22). The Presidents Cup /
+    # Ryder Cup appear on the PGA scoreboard with team competitors that carry no
+    # athlete names. Selecting one produced a "field" of nameless rows, crashed
+    # two display prints, and -- because the crash sat early in daily-pipeline
+    # -- skipped every later step (including THIS module) for a month, so the
+    # bad state could never be replaced. Only events with named individual
+    # competitors are eligible.
+    def _has_named_field(e):
+        comps = ((e.get("competitions") or [{}])[0].get("competitors") or [])
+        named = sum(1 for c in comps if (c.get("athlete") or {}).get("displayName")
+                    or (c.get("athlete") or {}).get("fullName"))
+        return named >= 10
+    individual = [e for e in events if _has_named_field(e)]
+    if not individual:
+        out = {
+            "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
+            "active_tournament": None,
+            "note": "No individual stroke-play event on the board (team event or off-week)",
+            "field": [],
+            "upcoming": _upcoming_from_calendar(lb),
+        }
+        os.makedirs(DATA_DIR, exist_ok=True)
+        with open(OUT_PATH, "w") as f:
+            json.dump(out, f, indent=2)
+        return out
+    events = individual
+
     # Prefer the first IN-PROGRESS event; if none, take the most recent
     # COMPLETED event so we can settle. If everything is SCHEDULED then take
     # the soonest upcoming (so the UI shows what's next).
@@ -144,6 +171,8 @@ def run() -> Dict[str, Any]:
         comp = competitions[0]
         for c in (comp.get("competitors") or []):
             parsed = _parse_competitor(c)
+            if not parsed.get("name"):
+                continue          # never publish a nameless "player"
             field.append(parsed)
         # Already sorted by ESPN via the `order` field (1 = leader)
         field.sort(key=lambda p: p.get("order") or 999)

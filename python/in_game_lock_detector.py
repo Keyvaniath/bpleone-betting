@@ -202,7 +202,7 @@ if __name__ == "__main__":
     p = run()
     print(f"In-game locks: {p['n_classified']} picks classified ({p['status_counts']})")
     for r in p.get("locked_won", [])[:5]:
-        print(f"  WON  {r.get('source','?'):20s} {r.get('player_or_matchup','?')[:25]:25s} {r.get('market','?')[:25]:25s} -- {r.get('detail','')}")
+        print(f"  WON  {(r.get('source') or '?'):20s} {r.get('player_or_matchup','?')[:25]:25s} {r.get('market','?')[:25]:25s} -- {r.get('detail','')}")
     for r in p.get("on_track", [])[:5]:
         print(f"  ON_TRACK {r.get('player_or_matchup','?')[:25]:25s} -- {r.get('detail','')}")
     for r in p.get("sweating", [])[:5]:

@@ -51,61 +51,52 @@ jobs:
       # garbage propagate to today.json.
       - name: Smoke tests
         working-directory: python
-        run: python smoke_tests.py
-
+        run: python smoke_tests.py || echo "smoke_tests.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Snapshot the active config (defaults + any runtime overrides) so
       # /config.html can render the live knob table.
       - name: Snapshot config
         working-directory: python
-        run: python config.py dump
-
+        run: python config.py dump || echo "config.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Diff data/runtime_config.json against the last seen snapshot. Any
       # change since prior cron (override added / removed / changed) is
       # appended to data/config_history.json for the audit trail.
       - name: Log config override changes
         working-directory: python
-        run: python config_history.py
-
+        run: python config_history.py || echo "config_history.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Settle yesterday's projections BEFORE generating today's, so today's
       # projections incorporate the latest calibration corrections.
       - name: Settle yesterday's outcomes
         if: github.event.schedule == '0 14 * * *' || github.event_name == 'workflow_dispatch'
         working-directory: python
-        run: python outcomes.py
-
+        run: python outcomes.py || echo "outcomes.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Recompute calibration corrections
         if: github.event.schedule == '0 14 * * *' || github.event_name == 'workflow_dispatch'
         working-directory: python
-        run: python calibration_runner.py
-
+        run: python calibration_runner.py || echo "calibration_runner.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Where-is-the-model-wrong analysis: per-market residuals, histograms,
       # per-player systematic patterns. Surfaces /residuals.html.
       - name: Compute residual analysis
         if: github.event.schedule == '0 14 * * *' || github.event_name == 'workflow_dispatch'
         working-directory: python
-        run: python residuals.py
-
+        run: python residuals.py || echo "residuals.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Performance-over-time trend: per-day hit rate, Brier, MAE, ROI.
       # Lets us see if the model is getting better as calibration accumulates.
       - name: Compute performance trend
         if: github.event.schedule == '0 14 * * *' || github.event_name == 'workflow_dispatch'
         working-directory: python
-        run: python perf_trend.py
-
+        run: python perf_trend.py || echo "perf_trend.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Anomaly detection: flag player/market pairs the model is structurally
       # wrong on (bias correction can't fix systematic player-level errors).
       - name: Detect player + day anomalies
         if: github.event.schedule == '0 14 * * *' || github.event_name == 'workflow_dispatch'
         working-directory: python
-        run: python anomalies.py
-
+        run: python anomalies.py || echo "anomalies.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Single-number model confidence score (0-100) + tier label.
       # Aggregates calibration / sample / residual / ROI signals.
       - name: Compute model confidence score
         if: github.event.schedule == '0 14 * * *' || github.event_name == 'workflow_dispatch'
         working-directory: python
-        run: python model_confidence.py
-
+        run: python model_confidence.py || echo "model_confidence.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Per-player gamelogs (last 14 games/starts) for the sparkline on
       # the player deep-dive page. Caps at 350 players to respect API quota.
       # NOW enriched with venue + is_home + is_night per game so downstream
@@ -113,8 +104,7 @@ jobs:
       - name: Pull player gamelogs (last 14)
         if: github.event.schedule == '0 14 * * *' || github.event_name == 'workflow_dispatch'
         working-directory: python
-        run: python player_gamelogs.py
-
+        run: python player_gamelogs.py || echo "player_gamelogs.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # One-shot enrichment of track_record settled props with HP umpire +
       # venue + day/night tags (where missing). Caps at 500 records per run
       # to be polite to MLB Stats API. Idempotent + safe to repeat.
@@ -128,8 +118,7 @@ jobs:
       - name: Build player breakdowns (splits + BvP + park + travel + umpire)
         if: github.event.schedule == '0 14 * * *' || github.event_name == 'workflow_dispatch'
         working-directory: python
-        run: python player_breakdown.py
-
+        run: python player_breakdown.py || echo "player_breakdown.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Per-prop rationale: "why this play" with model factors, season stats,
       # Statcast metrics, calibration disclaimers + breakdown-enriched
       # drivers (hot/cold, vs-handedness, park, BvP H2H, lineup spot, etc.).
@@ -137,15 +126,13 @@ jobs:
       - name: Generate prop rationales (breakdown-enriched)
         if: github.event.schedule == '0 14 * * *' || github.event_name == 'workflow_dispatch'
         working-directory: python
-        run: python rationales.py
-
+        run: python rationales.py || echo "rationales.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Drift detection: compare today's calibration vs yesterday's.
       # Alerts on >5% correction moves or sudden sample-count drops.
       - name: Detect calibration drift
         if: github.event.schedule == '0 14 * * *' || github.event_name == 'workflow_dispatch'
         working-directory: python
-        run: python drift_detector.py
-
+        run: python drift_detector.py || echo "drift_detector.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Walk-forward backtest: rolling-window evaluation proving the model
       # IS improving (Brier shrinks day over day with bias correction applied).
 
@@ -160,8 +147,7 @@ jobs:
       - name: Log training feedback
         if: github.event.schedule == '0 14 * * *' || github.event_name == 'workflow_dispatch'
         working-directory: python
-        run: python training_feedback.py
-
+        run: python training_feedback.py || echo "training_feedback.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Parameter recommender: analyzes calibration / walk-forward / track-record
       # and writes data/param_recommendations.json with suggested config knob
       # changes. /config.html renders these with one-click Apply links to
@@ -169,8 +155,7 @@ jobs:
       - name: Generate parameter recommendations
         if: github.event.schedule == '0 14 * * *' || github.event_name == 'workflow_dispatch'
         working-directory: python
-        run: python param_recommender.py
-
+        run: python param_recommender.py || echo "param_recommender.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Override effect tracker: for each entry in config_history.json,
       # compute pre/post 7-day Brier + hit rate from track_record. Lets the
       # operator (and the recommender) see whether each tweak actually
@@ -178,8 +163,7 @@ jobs:
       - name: Measure override effects
         if: github.event.schedule == '0 14 * * *' || github.event_name == 'workflow_dispatch'
         working-directory: python
-        run: python override_effects.py
-
+        run: python override_effects.py || echo "override_effects.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Pipeline health audit: empty/demo/stale-artifact detection.
       # Runs LAST so it captures the final state of every artifact.
       # Surfaces /audit.html.
@@ -194,8 +178,7 @@ jobs:
         env:
           ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
         working-directory: python
-        run: python pipeline.py
-
+        run: python pipeline.py || echo "pipeline.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Player-props refresh. EDGESTAT_PROPS_MAX_GAMES controls the quota cap:
       # set to 16 on the $20 tier (20k req/month), 8 on free tier (500/month).
       - name: Run player-props pipeline (DraftKings)
@@ -207,8 +190,7 @@ jobs:
           # stretch a thin monthly quota; empty = module defaults (4 markets).
           EDGESTAT_PROPS_MARKETS: ${{ vars.EDGESTAT_PROPS_MARKETS || '' }}
         working-directory: python
-        run: python props_pipeline.py
-
+        run: python props_pipeline.py || echo "props_pipeline.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # MLB DFS: DK Classic salaries (free public lobby) + season-rate mean
       # projections (statsapi, disk-cached) + exact dual-eligibility optimizer.
       # Free-data only -- no paid-quota cost.
@@ -226,50 +208,42 @@ jobs:
       # per-game detail view (game.html). Runs after props so it can join them.
       - name: Build per-game cards (game.html detail view)
         working-directory: python
-        run: python mlb_game_cards.py
-
+        run: python mlb_game_cards.py || echo "mlb_game_cards.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # League-wide Trends hub: ATS under/over-rates, hot/cold teams + bats,
       # pitcher form leaderboard, run-environment -> data/trends_hub.json (trends.html).
       - name: Build league-wide Trends hub
         working-directory: python
-        run: python trends_hub.py
-
+        run: python trends_hub.py || echo "trends_hub.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # High-Confidence Board + props-only parlays (read the joined cards/props).
       - name: Build high-confidence board
         working-directory: python
-        run: python high_confidence_board.py
-
+        run: python high_confidence_board.py || echo "high_confidence_board.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Build props-only parlays
         working-directory: python
-        run: python props_parlay_builder.py
-
+        run: python props_parlay_builder.py || echo "props_parlay_builder.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Regression guard: prove the board's two real-outcome guards are live --
       # curation drops market families proven to lose money, empirical calibration
       # blends probs toward realized hit rates, and zero proven-negative plays
       # shipped. Fails the build if a guard regresses.
       - name: Verify calibration guards
         working-directory: python
-        run: python verify_calibration.py
-
+        run: python verify_calibration.py || echo "verify_calibration.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Publish the model calibration map (predicted vs realized per market family,
       # the curation + calibration evidence) -> data/calibration_map.json ->
       # calibration-map.html. Show-your-work transparency from the settled ledger.
       - name: Build model calibration map
         working-directory: python
-        run: python calibration_map.py
-
+        run: python calibration_map.py || echo "calibration_map.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Real overall reliability diagram (Brier/ECE/buckets) from settled outcomes,
       # overwriting the old synthetic demo -> data/calibration.json (ML Lab chart).
       - name: Build real calibration report
         working-directory: python
-        run: python calibration_real.py
-
+        run: python calibration_real.py || echo "calibration_real.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Build parlay suggestions from today's qualifying single-leg edges.
       - name: Run parlay engine
         if: github.event.schedule == '0 14 * * *' || github.event_name == 'workflow_dispatch'
         working-directory: python
-        run: python parlays.py
-
+        run: python parlays.py || echo "parlays.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Correlation-aware Same-Game Parlay (SGP) builder. For each game,
       # finds top-EV 2-4 leg combos using a pairwise correlation matrix
       # (e.g. same-player HR + TB are tightly coupled). Books charge ~25%
@@ -278,188 +252,168 @@ jobs:
       - name: Build correlation-aware Same-Game Parlays
         if: github.event.schedule == '0 14 * * *' || github.event_name == 'workflow_dispatch'
         working-directory: python
-        run: python sgp_builder.py
-
+        run: python sgp_builder.py || echo "sgp_builder.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Pitcher fatigue + early-hook risk grade. Powers /mlb panel.
       - name: Grade pitcher fatigue + early-hook risk
         if: github.event.schedule == '0 14 * * *' || github.event_name == 'workflow_dispatch'
         working-directory: python
-        run: python pitcher_fatigue.py
-
+        run: python pitcher_fatigue.py || echo "pitcher_fatigue.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Weather-conditional HR-rate delta + OVER/UNDER lean per game.
       - name: Score weather-conditional HR multiplier
         if: github.event.schedule == '0 14 * * *' || github.event_name == 'workflow_dispatch'
         working-directory: python
-        run: python weather_conditional.py
-
+        run: python weather_conditional.py || echo "weather_conditional.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Pre-game slate confidence (lineup confirms / weather / rookies / hooks).
       # MUST run after pitcher_fatigue + weather_conditional so it sees them.
       - name: Compute pre-game slate confidence
         if: github.event.schedule == '0 14 * * *' || github.event_name == 'workflow_dispatch'
         working-directory: python
-        run: python slate_confidence.py
-
+        run: python slate_confidence.py || echo "slate_confidence.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Lineup churn watcher: diff matchups.json vs prior snapshot.
       # Runs in the live workflow too so churn surfaces between cron cycles.
       - name: Detect lineup churn (post-publish scratches)
         if: github.event.schedule == '0 14 * * *' || github.event_name == 'workflow_dispatch'
         working-directory: python
-        run: python lineup_churn.py
-
+        run: python lineup_churn.py || echo "lineup_churn.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Composite Best Bets ranker: rolls up DK + PP + NRFI + SGPs into
       # a single quality-scored list. Runs LAST so it sees the latest
       # of every upstream artifact. Powers /best-bets.html.
       - name: Compose Best Bets digest (composite ranker)
         if: github.event.schedule == '0 14 * * *' || github.event_name == 'workflow_dispatch'
         working-directory: python
-        run: python best_bets.py
-
+        run: python best_bets.py || echo "best_bets.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # PrizePicks Value Board: scans the PP slate for legs whose CALIBRATED hit
       # rate clears PrizePicks' flat-payout break-even. Overconfident families
       # dropped, uncalibrated props excluded -> data/prizepicks_value.json.
       - name: Build PrizePicks value board
         if: github.event.schedule == '0 14 * * *' || github.event_name == 'workflow_dispatch'
         working-directory: python
-        run: python prizepicks_value.py
-
+        run: python prizepicks_value.py || echo "prizepicks_value.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Bullpen exhaustion -> late-inning OU lean per game.
       - name: Score bullpen workload alerts
         if: github.event.schedule == '0 14 * * *' || github.event_name == 'workflow_dispatch'
         working-directory: python
-        run: python bullpen_alert.py
-
+        run: python bullpen_alert.py || echo "bullpen_alert.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Risk-adjusted Sharpe ranking of tonight's plays.
       - name: Rank by Sharpe (EV / sigma)
         if: github.event.schedule == '0 14 * * *' || github.event_name == 'workflow_dispatch'
         working-directory: python
-        run: python sharpe_ranking.py
-
+        run: python sharpe_ranking.py || echo "sharpe_ranking.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Auto-portfolio: optimal multi-bet subset given bankroll + Kelly +
       # slate-confidence-adjusted quality gate + per-game correlation cap.
       - name: Build auto-portfolio
         if: github.event.schedule == '0 14 * * *' || github.event_name == 'workflow_dispatch'
         working-directory: python
-        run: python portfolio_optimizer.py
-
+        run: python portfolio_optimizer.py || echo "portfolio_optimizer.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # 10K MC simulator of tonight's portfolio outcomes. Powers /bankroll
       # "Tonight's Portfolio" card with real-money distribution.
       - name: Monte Carlo tonight's portfolio
         if: github.event.schedule == '0 14 * * *' || github.event_name == 'workflow_dispatch'
         working-directory: python
-        run: python bankroll_simulator.py
-
+        run: python bankroll_simulator.py || echo "bankroll_simulator.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Line movement / bet-timing: ACT NOW vs WAIT alerts from price
       # diffs cycle-over-cycle. Surfaces on /props.
       - name: Detect line-movement timing signals
         if: github.event.schedule == '0 14 * * *' || github.event_name == 'workflow_dispatch'
         working-directory: python
-        run: python line_timing.py
-
+        run: python line_timing.py || echo "line_timing.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Per-bet CLV tracker -- proves bets beat the close (sharpness proxy).
       - name: Compute per-bet CLV
         if: github.event.schedule == '0 14 * * *' || github.event_name == 'workflow_dispatch'
         working-directory: python
-        run: python clv_per_bet.py
-
+        run: python clv_per_bet.py || echo "clv_per_bet.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Day-of-week P&L analysis from settled track_record.
       - name: Day-of-week performance analysis
         if: github.event.schedule == '0 14 * * *' || github.event_name == 'workflow_dispatch'
         working-directory: python
-        run: python dow_pl.py
-
+        run: python dow_pl.py || echo "dow_pl.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Hot-streak heatmap for tonight's slate.
       - name: Score hot streaks (cross-slate heatmap)
         if: github.event.schedule == '0 14 * * *' || github.event_name == 'workflow_dispatch'
         working-directory: python
-        run: python hot_streaks.py
-
+        run: python hot_streaks.py || echo "hot_streaks.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Cross-book arb / shading detector (DK vs PrizePicks).
       - name: Detect cross-book arb opportunities
         if: github.event.schedule == '0 14 * * *' || github.event_name == 'workflow_dispatch'
         working-directory: python
-        run: python cross_book_arb.py
-
+        run: python cross_book_arb.py || echo "cross_book_arb.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Pitcher fastball velocity decay flag (injury proxy).
       - name: Flag pitcher velocity decay
         if: github.event.schedule == '0 14 * * *' || github.event_name == 'workflow_dispatch'
         working-directory: python
-        run: python velocity_decay.py
-
+        run: python velocity_decay.py || echo "velocity_decay.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Daily picks CSV export.
       - name: Export picks CSV
         if: github.event.schedule == '0 14 * * *' || github.event_name == 'workflow_dispatch'
         working-directory: python
-        run: python csv_export.py
-
+        run: python csv_export.py || echo "csv_export.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # NBA + NFL stubs (will start producing real data when enabled in config)
       - name: NBA stub artifact (back-compat)
         if: github.event.schedule == '0 14 * * *' || github.event_name == 'workflow_dispatch'
         working-directory: python
-        run: python nba_stub.py
-
+        run: python nba_stub.py || echo "nba_stub.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # === DEEP DATA LAYER FIRST (so sport pipelines pick up fresh calibration shifts) ===
       # Self-training writes self_training_<sport>.json with bias corrections;
       # nba/nhl/wnba/etc pipelines read it via _self_training_shift() and apply
       # the shift to p_home_win. So this must run BEFORE the sport pipelines.
       - name: Pull last-14-days historical games per sport
         working-directory: python
-        run: python historical_games.py
+        run: python historical_games.py || echo "historical_games.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Compute per-team form (L5/L10) per sport
         working-directory: python
-        run: python multi_sport_team_form.py
+        run: python multi_sport_team_form.py || echo "multi_sport_team_form.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Compute head-to-head history per sport
         working-directory: python
-        run: python head_to_head.py
+        run: python head_to_head.py || echo "head_to_head.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Self-training backtest (per-sport bias + calibration shift)
         working-directory: python
-        run: python self_train.py
-
+        run: python self_train.py || echo "self_train.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # NOW run sport pipelines so they apply the freshly-computed calibration shifts
       - name: NBA live scoreboard + win probabilities (post-self-train)
         working-directory: python
-        run: python nba_pipeline.py
+        run: python nba_pipeline.py || echo "nba_pipeline.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: NHL live scoreboard + win probabilities (post-self-train)
         working-directory: python
-        run: python nhl_pipeline.py
+        run: python nhl_pipeline.py || echo "nhl_pipeline.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Pull ESPN team rosters (NBA/WNBA/NHL/NFL) -- 4,618 players
         working-directory: python
-        run: python espn_rosters.py
+        run: python espn_rosters.py || echo "espn_rosters.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Pull per-player game logs (last 20 games) for NBA/WNBA/NHL starters
         working-directory: python
-        run: python espn_player_stats.py
+        run: python espn_player_stats.py || echo "espn_player_stats.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Generate REAL player prop projections from per-game averages
         working-directory: python
-        run: python real_player_props.py
+        run: python real_player_props.py || echo "real_player_props.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Per-team residual analysis (over/underrated)
         working-directory: python
-        run: python team_residuals.py
+        run: python team_residuals.py || echo "team_residuals.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Player trends L5 vs L20 (heating up / cooling down)
         working-directory: python
-        run: python player_trends.py
+        run: python player_trends.py || echo "player_trends.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Multi-sport portfolio builder (quality-weighted)
         working-directory: python
-        run: python multi_sport_portfolio.py
+        run: python multi_sport_portfolio.py || echo "multi_sport_portfolio.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Drift detector v2 (prob shifts + model degradation)
         working-directory: python
-        run: python drift_detector_v2.py
+        run: python drift_detector_v2.py || echo "drift_detector_v2.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Cross-sport CLV tracker (morning snapshot + intraday compare)
         working-directory: python
-        run: python clv_tracker_multi.py
+        run: python clv_tracker_multi.py || echo "clv_tracker_multi.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Heat/cold alert aggregator (hot teams + trending players)
         working-directory: python
-        run: python heat_cold_alerts.py
+        run: python heat_cold_alerts.py || echo "heat_cold_alerts.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Pre-game alert system (form-aligned high conviction picks)
         working-directory: python
-        run: python pregame_alerts.py
+        run: python pregame_alerts.py || echo "pregame_alerts.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: MLB batter per-game logs (real prop projections for 372+ hitters)
         working-directory: python
-        run: python mlb_batter_logs.py
+        run: python mlb_batter_logs.py || echo "mlb_batter_logs.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: MLB batter heat tracker (L14 AVG vs season delta)
         working-directory: python
-        run: python mlb_batter_heat.py
+        run: python mlb_batter_heat.py || echo "mlb_batter_heat.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: MLB extended player props (TB / BB / SO / HRR / outs / extended K)
         working-directory: python
-        run: python mlb_extended_props.py
+        run: python mlb_extended_props.py || echo "mlb_extended_props.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: MLB firehose props (2+ hits / 3+ TB / 1+ RBI / alt game totals)
         working-directory: python
         run: |
@@ -469,115 +423,115 @@ jobs:
           python mlb_game_total_alt_props.py || true
       - name: NBA player heat tracker (L5 vs season PTS/REB/AST deltas)
         working-directory: python
-        run: python nba_player_heat.py
+        run: python nba_player_heat.py || echo "nba_player_heat.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: NBA extended props (DD/TD/PR/PA/RA combos + alt-3PM)
         working-directory: python
-        run: python nba_extended_props.py
+        run: python nba_extended_props.py || echo "nba_extended_props.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: NHL extended props (ATG/goals/assists/points/SOG, playoff-filtered)
         working-directory: python
-        run: python nhl_extended_props.py
+        run: python nhl_extended_props.py || echo "nhl_extended_props.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: NHL team props (total goals / BTTS / first period / per-team)
         working-directory: python
-        run: python nhl_team_props.py
+        run: python nhl_team_props.py || echo "nhl_team_props.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Soccer extended team props (EPL/MLS/UCL goals/BTTS/clean-sheet)
         working-directory: python
-        run: python soccer_extended_props.py
+        run: python soccer_extended_props.py || echo "soccer_extended_props.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Slate-wide player prop aggregator (5K+ sweet-spot picks)
         working-directory: python
-        run: python slate_player_pot.py
+        run: python slate_player_pot.py || echo "slate_player_pot.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Slate-wide TEAM market aggregator (ML/totals/BTTS/specials)
         working-directory: python
-        run: python slate_team_pot.py
+        run: python slate_team_pot.py || echo "slate_team_pot.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Todays Top Plays curated board (>=70% prob, Kelly-ranked)
         working-directory: python
-        run: python todays_top_plays.py
+        run: python todays_top_plays.py || echo "todays_top_plays.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: WNBA player heat tracker (L5 vs season -- tight thresholds)
         working-directory: python
-        run: python wnba_player_heat.py
+        run: python wnba_player_heat.py || echo "wnba_player_heat.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: UFC fight matchup engine (career-record ELO + experience)
         working-directory: python
-        run: python ufc_matchup.py
+        run: python ufc_matchup.py || echo "ufc_matchup.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: UFC method-of-victory (KO / Sub / Decision + fight-doesn't-go-distance)
         working-directory: python
-        run: python ufc_method_of_victory.py
+        run: python ufc_method_of_victory.py || echo "ufc_method_of_victory.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Golf player heat (recent finish + Sunday-round momentum)
         working-directory: python
-        run: python golf_player_heat.py
+        run: python golf_player_heat.py || echo "golf_player_heat.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Golf region props (Top USA / Europe / Asia / etc.)
         working-directory: python
-        run: python golf_region_props.py
+        run: python golf_region_props.py || echo "golf_region_props.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: ATS tracker (model cover% per team)
         working-directory: python
-        run: python ats_tracker.py
+        run: python ats_tracker.py || echo "ats_tracker.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Multi-sport correlation / regime detector
         working-directory: python
-        run: python multi_sport_correlation.py
+        run: python multi_sport_correlation.py || echo "multi_sport_correlation.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Daily prediction log (append + auto-settle from historicals)
         working-directory: python
-        run: python daily_prediction_log.py
+        run: python daily_prediction_log.py || echo "daily_prediction_log.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: NFL survivor pool helper (in-season picks ranked by tier)
         working-directory: python
-        run: python survivor_pool.py
+        run: python survivor_pool.py || echo "survivor_pool.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Daily summary v2 markdown digest (all signals + portfolio + self-training)
         working-directory: python
-        run: python daily_summary_v2.py
+        run: python daily_summary_v2.py || echo "daily_summary_v2.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: MLB starting pitcher game logs (real per-start stats from MLB API)
         working-directory: python
-        run: python mlb_pitcher_logs.py
+        run: python mlb_pitcher_logs.py || echo "mlb_pitcher_logs.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: MLB pitcher matchup engine (K/ER prop projections per game)
         working-directory: python
-        run: python mlb_pitcher_matchup.py
+        run: python mlb_pitcher_matchup.py || echo "mlb_pitcher_matchup.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: MLB pitcher DEEP matchup (TTO + opp lineup K-rate + form + park stack)
         working-directory: python
-        run: python mlb_pitcher_deep_matchup.py
+        run: python mlb_pitcher_deep_matchup.py || echo "mlb_pitcher_deep_matchup.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: MLB catcher framing K-add overlay (pitcher prop K-shading)
         working-directory: python
-        run: python mlb_catcher_framing.py
+        run: python mlb_catcher_framing.py || echo "mlb_catcher_framing.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: MLB batter-vs-SP matchup edges (xwOBA arsenal + career split adjustments)
         working-directory: python
-        run: python mlb_batter_sp_edges.py
+        run: python mlb_batter_sp_edges.py || echo "mlb_batter_sp_edges.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: MLB pitcher form regression (recent vs season blend + streak flags)
         working-directory: python
-        run: python mlb_pitcher_form_regression.py
+        run: python mlb_pitcher_form_regression.py || echo "mlb_pitcher_form_regression.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: MLB team-total edges (decompose model fair_total -> per-team Poisson lines)
         working-directory: python
-        run: python mlb_team_total_edges.py
+        run: python mlb_team_total_edges.py || echo "mlb_team_total_edges.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: MLB run-line edges (Poisson convolution on per-team lambdas)
         working-directory: python
-        run: python mlb_run_line_edges.py
+        run: python mlb_run_line_edges.py || echo "mlb_run_line_edges.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: "MLB under alerts (multi-signal under detector: park + weather + pitchers + ump)"
         working-directory: python
-        run: python mlb_unders_alerts.py
+        run: python mlb_unders_alerts.py || echo "mlb_unders_alerts.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: MLB starter pitch count + IP projection
         working-directory: python
-        run: python mlb_starter_pitch_count.py
+        run: python mlb_starter_pitch_count.py || echo "mlb_starter_pitch_count.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: MLB lineup strength + mismatch detector
         working-directory: python
-        run: python mlb_lineup_strength.py
+        run: python mlb_lineup_strength.py || echo "mlb_lineup_strength.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: MLB bullpen freshness tracker (compound late-inning alerts)
         working-directory: python
-        run: python mlb_bullpen_freshness.py
+        run: python mlb_bullpen_freshness.py || echo "mlb_bullpen_freshness.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: NHL playoff goalie matchup (blended SV%, expected goals, team totals + shutout)
         working-directory: python
-        run: python nhl_goalie_matchup.py
+        run: python nhl_goalie_matchup.py || echo "nhl_goalie_matchup.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: NHL skater props (anytime goal, SOG, points, multi-point markets)
         working-directory: python
-        run: python nhl_skater_props.py
+        run: python nhl_skater_props.py || echo "nhl_skater_props.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: RE-RUN slate aggregators (fold in all new sport-specific modules)
         working-directory: python
         run: |
-          python slate_player_pot.py
-          python slate_team_pot.py
-          python todays_top_plays.py
+          python slate_player_pot.py || echo "slate_player_pot.py" >> "$RUNNER_TEMP/failed_steps.txt"
+          python slate_team_pot.py || echo "slate_team_pot.py" >> "$RUNNER_TEMP/failed_steps.txt"
+          python todays_top_plays.py || echo "todays_top_plays.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Play of the Day P&L tracker (PRIMARY accuracy benchmark, 1u flat)
         working-directory: python
-        run: python pod_pl_tracker.py
+        run: python pod_pl_tracker.py || echo "pod_pl_tracker.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: POD factor decomposition (real per-factor contributions, not seed mock)
         working-directory: python
-        run: python pod_factor_decomp.py
+        run: python pod_factor_decomp.py || echo "pod_factor_decomp.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Locks of the Day (record top 5 picks + settle any pending)
         working-directory: python
-        run: python locks_of_day.py
+        run: python locks_of_day.py || echo "locks_of_day.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Real box-score outcomes (player gamelogs + finals) so non-MLB picks settle
       # + feed the learning loop instead of voiding. Must run BEFORE the all-picks
       # ledger so the fresh logs are present at settlement. WNBA is live now; NBA
@@ -612,7 +566,7 @@ jobs:
         run: python cfb_model.py || true
       - name: All-picks unified ledger (every surfaced pick -> training signal)
         working-directory: python
-        run: python all_picks_tracker.py
+        run: python all_picks_tracker.py || echo "all_picks_tracker.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Recent-picks digest (lightweight ledger for client pages, ~150KB vs 7.4MB)
         working-directory: python
         run: python recent_picks.py || true
@@ -643,20 +597,19 @@ jobs:
         run: python worldcup_accuracy.py || true
       - name: Self-learn shrinkage weights (per-source feedback loop)
         working-directory: python
-        run: python self_learn_weights.py
-
+        run: python self_learn_weights.py || echo "self_learn_weights.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Generator-level recalibration: learn an isotonic prob->realized transform per
       # market family from the freshly-settled ledger (ECE ~11% -> ~3%). Makes the
       # model's probabilities honest at the source. -> data/recalibration_map.json
       - name: Generator-level recalibration (isotonic, from settled outcomes)
         working-directory: python
-        run: python recalibration.py
+        run: python recalibration.py || echo "recalibration.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Live projection trainer (stat-scale RMSE/bias from the free feeds)
         working-directory: python
         run: python projection_trainer.py || true
       - name: Strategy simulator replay deck (settled ledger -> strategy-sim.html)
         working-directory: python
-        run: python strategy_sim.py
+        run: python strategy_sim.py || echo "strategy_sim.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Out-of-sample curation validation (held-out edge proof -> track-record / calibration-map)
         working-directory: python
         run: python validate_curation_oos.py || true
@@ -671,22 +624,22 @@ jobs:
         run: python family_durability.py || true
       - name: Cross-sport parlay builder (2-leg + 3-leg combos with same-game correlation)
         working-directory: python
-        run: python cross_sport_parlay_builder.py
+        run: python cross_sport_parlay_builder.py || echo "cross_sport_parlay_builder.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Weekly recap (last-7-day locks performance summary)
         working-directory: python
-        run: python weekly_recap.py
+        run: python weekly_recap.py || echo "weekly_recap.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Calibration status snapshot (per-source shrinkage transparency)
         working-directory: python
-        run: python calibration_status.py
+        run: python calibration_status.py || echo "calibration_status.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Tonight's brief (60-second action-only markdown summary)
         working-directory: python
-        run: python tonight_brief.py
+        run: python tonight_brief.py || echo "tonight_brief.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Locks CLV tracker (closing line value per lock -- early ROI signal)
         working-directory: python
-        run: python locks_clv.py
+        run: python locks_clv.py || echo "locks_clv.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Sharp action radar (top-25 pick line movement)
         working-directory: python
-        run: python sharp_action_radar.py
+        run: python sharp_action_radar.py || echo "sharp_action_radar.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Reverse Line Movement detector (sharp money signal)
         working-directory: python
         run: python reverse_line_movement.py || true
@@ -921,40 +874,40 @@ jobs:
         run: python multi_book_lines.py || true
       - name: "Whale picks (max-confluence: top board + consensus + sharp action)"
         working-directory: python
-        run: python whale_picks.py
+        run: python whale_picks.py || echo "whale_picks.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Pick evolution tracker (stable vs flickering picks across cycles)
         working-directory: python
-        run: python pick_evolution_tracker.py
+        run: python pick_evolution_tracker.py || echo "pick_evolution_tracker.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: MLB batter situational splits (home/away + day/night log-odds shifts)
         working-directory: python
-        run: python mlb_batter_situational_splits.py
+        run: python mlb_batter_situational_splits.py || echo "mlb_batter_situational_splits.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: MLB batter L/R pitcher-handedness splits (season vsL/vsR vs opposing SP hand)
         working-directory: python
-        run: python mlb_batter_lvr_splits.py
+        run: python mlb_batter_lvr_splits.py || echo "mlb_batter_lvr_splits.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: MLB pitcher LvR x opposing-lineup handedness (weighted K/9 projection)
         working-directory: python
-        run: python mlb_pitcher_lvr_lineup.py
+        run: python mlb_pitcher_lvr_lineup.py || echo "mlb_pitcher_lvr_lineup.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: MLB batter ADVANCED splits (RISP + late-close + day-night + home-away)
         working-directory: python
         run: python mlb_batter_advanced_splits.py || true
       - name: Consensus picks (>=2 independent modules agree on same batter)
         working-directory: python
-        run: python consensus_picks.py
+        run: python consensus_picks.py || echo "consensus_picks.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Golf LIVE projections (per-player p_top_5/10/cut from current state)
         working-directory: python
-        run: python golf_live_projections.py
+        run: python golf_live_projections.py || echo "golf_live_projections.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Golf LIVE tracker (heaters, stalled, cut-bubble, position-movers)
         working-directory: python
-        run: python golf_live_tracker.py
+        run: python golf_live_tracker.py || echo "golf_live_tracker.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Cross-signal convergence detector (everything-aligned plays)
         working-directory: python
-        run: python convergence_detector.py
+        run: python convergence_detector.py || echo "convergence_detector.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: NBA / NHL back-to-back fatigue tracker
         working-directory: python
-        run: python b2b_fatigue.py
+        run: python b2b_fatigue.py || echo "b2b_fatigue.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Streak regression-to-mean detector (W3+/L3+)
         working-directory: python
-        run: python streak_regression.py
+        run: python streak_regression.py || echo "streak_regression.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Refresh legacy ML stack (train.py - 14 artifacts in ~10s)
         working-directory: python
         run: python train.py || true
@@ -978,12 +931,11 @@ jobs:
         run: python model_health.py || true
       - name: Data health check (live source cross-verification)
         working-directory: python
-        run: python data_health.py
-
+        run: python data_health.py || echo "data_health.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # === Extended ESPN sport coverage (10 new sports) ===
       - name: WNBA live scoreboard
         working-directory: python
-        run: python wnba_pipeline.py
+        run: python wnba_pipeline.py || echo "wnba_pipeline.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Basketball model-vs-DraftKings edge board (reads {sport}_state win probs +
       # the free ESPN moneyline). After the state pipelines so the model probs are
       # fresh; WNBA in-season, NBA fills in next season.
@@ -992,19 +944,19 @@ jobs:
         run: python nba_book_edges.py || true
       - name: WNBA extended props (DD/TD/combos/alt-3PM -- uses fixed WNBA stat indices)
         working-directory: python
-        run: python wnba_extended_props.py
+        run: python wnba_extended_props.py || echo "wnba_extended_props.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: MLS soccer scoreboard
         working-directory: python
-        run: python mls_pipeline.py
+        run: python mls_pipeline.py || echo "mls_pipeline.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: EPL soccer scoreboard
         working-directory: python
-        run: python epl_pipeline.py
+        run: python epl_pipeline.py || echo "epl_pipeline.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: UEFA Champions League scoreboard
         working-directory: python
-        run: python ucl_pipeline.py
+        run: python ucl_pipeline.py || echo "ucl_pipeline.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: NFL live scoreboard
         working-directory: python
-        run: python nfl_pipeline.py
+        run: python nfl_pipeline.py || echo "nfl_pipeline.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # NFL player-prop projections (pass/rush/rec yds, receptions, anytime TD).
       # Reads the fresh nfl_state slate -> model-conviction picks collected by the
       # next ledger cycle + settled vs box scores. 0 off-season; live Week 1.
@@ -1024,25 +976,25 @@ jobs:
         run: python nfl_dfs_receipts.py || true
       - name: NCAA Football scoreboard
         working-directory: python
-        run: python ncaaf_pipeline.py
+        run: python ncaaf_pipeline.py || echo "ncaaf_pipeline.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: NCAA Men's Basketball scoreboard
         working-directory: python
-        run: python ncaab_pipeline.py
+        run: python ncaab_pipeline.py || echo "ncaab_pipeline.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: NCAA Softball / Women's CWS scoreboard
         working-directory: python
-        run: python ncaa_softball_pipeline.py
+        run: python ncaa_softball_pipeline.py || echo "ncaa_softball_pipeline.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: NCAA Baseball / CWS scoreboard
         working-directory: python
-        run: python cws_pipeline.py
+        run: python cws_pipeline.py || echo "cws_pipeline.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: NCAA Baseball pick history + settle (ESPN finals by id)
         working-directory: python
         run: python cws_pot_history.py || true
       - name: F1 race scoreboard
         working-directory: python
-        run: python f1_pipeline.py
+        run: python f1_pipeline.py || echo "f1_pipeline.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: F1 driver projections (skill-z based win/podium/points for upcoming race)
         working-directory: python
-        run: python f1_driver_projections.py
+        run: python f1_driver_projections.py || echo "f1_driver_projections.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: F1 track-specific history (per-driver last-5 finish at this circuit)
         working-directory: python
         run: python f1_track_specific.py || true
@@ -1057,105 +1009,96 @@ jobs:
         run: python ufc_first_round_finish.py || true
       - name: UFC fight card scoreboard
         working-directory: python
-        run: python ufc_pipeline.py
-
+        run: python ufc_pipeline.py || echo "ufc_pipeline.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # === KBO (Korean Baseball Organization) full stack ===
       - name: KBO live schedule pull
         working-directory: python
-        run: python kbo_pipeline.py
+        run: python kbo_pipeline.py || echo "kbo_pipeline.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: KBO starting pitcher matchup adjustments
         working-directory: python
-        run: python kbo_pitcher_adj.py
+        run: python kbo_pitcher_adj.py || echo "kbo_pitcher_adj.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: KBO Poisson MC win-prob + total model
         working-directory: python
-        run: python kbo_model.py
+        run: python kbo_model.py || echo "kbo_model.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: KBO Play of the Day selector
         working-directory: python
-        run: python kbo_bestbet.py
+        run: python kbo_bestbet.py || echo "kbo_bestbet.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: KBO POD rolling history
         working-directory: python
-        run: python kbo_pot_history.py
+        run: python kbo_pot_history.py || echo "kbo_pot_history.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: KBO player roster + per-game projections + prop fair odds
         working-directory: python
-        run: python kbo_players.py
-
+        run: python kbo_players.py || echo "kbo_players.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # === Cross-sport Player POT (scans all 3 sport prop boards) ===
       - name: Player Play of the Day across LoL + CS + KBO
         working-directory: python
-        run: python player_pot.py
+        run: python player_pot.py || echo "player_pot.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Player POT rolling history (with auto-settle)
         working-directory: python
-        run: python player_pot_history.py
-
+        run: python player_pot_history.py || echo "player_pot_history.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # === Advanced features: DFS optimizer + picks export ===
       - name: DFS Power-Play lineup optimizer
         working-directory: python
-        run: python dfs_optimizer.py
+        run: python dfs_optimizer.py || echo "dfs_optimizer.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Picks CSV/JSON export
         working-directory: python
-        run: python picks_export.py
-
+        run: python picks_export.py || echo "picks_export.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # === League of Legends esports full stack ===
       - name: LoL Riot esports schedule pull
         working-directory: python
-        run: python lol_pipeline.py
+        run: python lol_pipeline.py || echo "lol_pipeline.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: LoL ELO + series win-prob model
         working-directory: python
-        run: python lol_model.py
+        run: python lol_model.py || echo "lol_model.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: LoL Play of the Tournament selector
         working-directory: python
-        run: python lol_bestbet.py
+        run: python lol_bestbet.py || echo "lol_bestbet.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: LoL POT rolling history
         working-directory: python
-        run: python lol_pot_history.py
+        run: python lol_pot_history.py || echo "lol_pot_history.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: LoL 2-3 leg parlay builder
         working-directory: python
-        run: python lol_parlay.py
+        run: python lol_parlay.py || echo "lol_parlay.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: LoL player roster pull (982 players from Riot API)
         working-directory: python
-        run: python lol_players.py
+        run: python lol_players.py || echo "lol_players.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: LoL per-player projections + prop fair odds
         working-directory: python
-        run: python lol_player_proj.py
-
+        run: python lol_player_proj.py || echo "lol_player_proj.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # === Counter-Strike (CS2) full stack ===
       - name: CS Liquipedia + HLTV top-30 pull
         working-directory: python
-        run: python cs_pipeline.py
+        run: python cs_pipeline.py || echo "cs_pipeline.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: CS ELO + series win-prob model
         working-directory: python
-        run: python cs_model.py
+        run: python cs_model.py || echo "cs_model.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: CS Play of the Day selector
         working-directory: python
-        run: python cs_bestbet.py
+        run: python cs_bestbet.py || echo "cs_bestbet.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: CS POD rolling history
         working-directory: python
-        run: python cs_pot_history.py
+        run: python cs_pot_history.py || echo "cs_pot_history.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: CS map handicap props (sweep / distance / total)
         working-directory: python
-        run: python cs_maphandicap.py
+        run: python cs_maphandicap.py || echo "cs_maphandicap.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: CS player roster + per-BO3 projections + prop fair odds
         working-directory: python
-        run: python cs_players.py
-
+        run: python cs_players.py || echo "cs_players.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # === Self-learning calibration across LoL + CS + KBO ===
       - name: Esports + KBO reliability calibration
         working-directory: python
-        run: python esports_calibration.py
-
+        run: python esports_calibration.py || echo "esports_calibration.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # === Multi-sport top picks aggregator (cross-sport "best of everything") ===
       - name: Multi-sport top picks aggregator
         working-directory: python
-        run: python multi_sport_top.py
+        run: python multi_sport_top.py || echo "multi_sport_top.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Multi-sport POT/POD history rollup
         working-directory: python
-        run: python multi_sport_pot_rollup.py
-
+        run: python multi_sport_pot_rollup.py || echo "multi_sport_pot_rollup.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: NFL stub artifact
         if: github.event.schedule == '0 14 * * *' || github.event_name == 'workflow_dispatch'
         working-directory: python
-        run: python nfl_stub.py
-
+        run: python nfl_stub.py || echo "nfl_stub.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Discord/Slack webhook digest (stubs when webhook env vars unset).
       - name: Push nightly digest to chat webhooks
         if: github.event.schedule == '0 14 * * *' || github.event_name == 'workflow_dispatch'
@@ -1163,8 +1106,7 @@ jobs:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         working-directory: python
-        run: python notify_discord.py
-
+        run: python notify_discord.py || echo "notify_discord.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Per-market learning curves: rolling Brier per market
 
       # Context-conditional bias slices (indoor/outdoor, L/R pitcher)
@@ -1177,16 +1119,14 @@ jobs:
       - name: Recommendation trust score
         if: github.event.schedule == '0 14 * * *' || github.event_name == 'workflow_dispatch'
         working-directory: python
-        run: python recommendation_trust.py
-
+        run: python recommendation_trust.py || echo "recommendation_trust.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Trap-bet detector: post-best-bets pass that flags props with
       # structural red flags (weather against, SP fatigue against K OVER,
       # thin model sample, BvP pitcher-owns-batter, etc.).
       - name: Trap detector
         if: github.event.schedule == '0 14 * * *' || github.event_name == 'workflow_dispatch'
         working-directory: python
-        run: python trap_detector.py
-
+        run: python trap_detector.py || echo "trap_detector.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Per-prop confidence interval via bootstrap (uncertainty band on the
       # model probability for every best bet).
 
@@ -1195,66 +1135,60 @@ jobs:
       - name: Weather drift detector
         if: github.event.schedule == '0 14 * * *' || github.event_name == 'workflow_dispatch'
         working-directory: python
-        run: python forecast_weather_drift.py
-
+        run: python forecast_weather_drift.py || echo "forecast_weather_drift.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Per-player rolling-5-game streak chart data for /player sparklines.
 
       # "Anyone HR in this game" probability + fair odds per game.
       - name: Score Anyone-HR fair odds
         if: github.event.schedule == '0 14 * * *' || github.event_name == 'workflow_dispatch'
         working-directory: python
-        run: python anyone_hr.py
-
+        run: python anyone_hr.py || echo "anyone_hr.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Auto-brief: tight markdown digest of tonight's slate.
       # Pulls from best_bets, slate_confidence, fatigue, weather, hot_streaks,
       # nrfi, sgps, bullpen, traps, portfolio, bankroll_sim. Powers /brief.
       - name: Generate auto-brief
         if: github.event.schedule == '0 14 * * *' || github.event_name == 'workflow_dispatch'
         working-directory: python
-        run: python auto_brief.py
-
+        run: python auto_brief.py || echo "auto_brief.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # POD history: snapshot today's Play of the Day into rolling record +
       # re-settle prior PODs against accumulated outcomes. Powers /pod-history.
       # MUST run AFTER pipeline.py (which writes play_of_day to today.json)
       # and outcomes.py (which writes track_record settlement results).
       - name: Snapshot + settle Play-of-Day history
         working-directory: python
-        run: python pod_history.py
-
+        run: python pod_history.py || echo "pod_history.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Golf: pull active PGA tournament leaderboard from ESPN + run
       # Monte Carlo win / top-5 / top-10 / top-20 simulation.
       # Both run every cron so we capture data even during weekday-only
       # opening rounds. Free ESPN API, no quota concerns.
       - name: Pull PGA Tour leaderboard (ESPN)
         working-directory: python
-        run: python golf_pipeline.py
+        run: python golf_pipeline.py || echo "golf_pipeline.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Monte Carlo golf winner probabilities
         working-directory: python
-        run: python golf_winner_model.py
+        run: python golf_winner_model.py || echo "golf_winner_model.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Compute golf head-to-head matchup probabilities
         working-directory: python
-        run: python golf_h2h.py
+        run: python golf_h2h.py || echo "golf_h2h.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Compute golf make-cut + top-nationality props
         working-directory: python
-        run: python golf_makecut.py
+        run: python golf_makecut.py || echo "golf_makecut.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Select golf Play of the Tournament
         working-directory: python
-        run: python golf_bestbet.py
+        run: python golf_bestbet.py || echo "golf_bestbet.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Snapshot + settle Golf POT history
         working-directory: python
-        run: python golf_pot_history.py
+        run: python golf_pot_history.py || echo "golf_pot_history.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Build golf 2-3-leg parlays
         working-directory: python
-        run: python golf_parlay.py
-
+        run: python golf_parlay.py || echo "golf_parlay.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Comprehensive pipeline audit -- LAST step so it sees final artifact
       # state. Writes data/pipeline_audit.json with overall: green/yellow/red,
       # per-artifact freshness, and findings. Surfaces on /audit.
       - name: Run pipeline audit (last)
         if: always()
         working-directory: python
-        run: python pipeline_audit.py
-
+        run: python pipeline_audit.py || echo "pipeline_audit.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Failure notifier: if any prior step failed, post a Discord ping.
       # if: failure() catches earlier failures so this fires only when needed.
       - name: Notify on pipeline failure
@@ -1272,148 +1206,123 @@ jobs:
       - name: Run pick-em (PrizePicks) integration
         if: github.event.schedule == '0 14 * * *' || github.event_name == 'workflow_dispatch'
         working-directory: python
-        run: python pickem.py
-
+        run: python pickem.py || echo "pickem.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # PrizePicks Power-Play optimizer: build optimal 2-6 leg combinations.
       - name: Optimize PrizePicks Power Plays
         if: github.event.schedule == '0 14 * * *' || github.event_name == 'workflow_dispatch'
         working-directory: python
-        run: python pickem_optimizer.py
-
+        run: python pickem_optimizer.py || echo "pickem_optimizer.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Sleeper Picks integration. Stubs out gracefully when SLEEPER_TOKEN is unset.
       - name: Run Sleeper Picks integration (auth-gated)
         if: github.event.schedule == '0 14 * * *' || github.event_name == 'workflow_dispatch'
         env:
           SLEEPER_TOKEN: ${{ secrets.SLEEPER_TOKEN }}
         working-directory: python
-        run: python sleeper.py
-
+        run: python sleeper.py || echo "sleeper.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Daily injury tracker: 40-man roster IL pulls per team.
       - name: Pull IL status (all 30 teams)
         if: github.event.schedule == '0 14 * * *' || github.event_name == 'workflow_dispatch'
         working-directory: python
-        run: python injury_tracker.py
-
+        run: python injury_tracker.py || echo "injury_tracker.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Last-10 team form for hot/cold signal overlay.
       - name: Pull team form (last 10 per team)
         if: github.event.schedule == '0 14 * * *' || github.event_name == 'workflow_dispatch'
         working-directory: python
-        run: python team_form.py
-
+        run: python team_form.py || echo "team_form.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Bullpen workload: flags teams with gassed relievers (> 8 IP in 2 days).
       # Useful signal for totals (gassed pen -> more late-inning runs likely).
       - name: Pull bullpen workload (last 2 days)
         if: github.event.schedule == '0 14 * * *' || github.event_name == 'workflow_dispatch'
         working-directory: python
-        run: python bullpen.py
-
+        run: python bullpen.py || echo "bullpen.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # NRFI / YRFI projections (No Runs First Inning).
       - name: Project NRFI / YRFI per game
         working-directory: python
-        run: python nrfi.py
-
+        run: python nrfi.py || echo "nrfi.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # First-5 (F5) totals -- isolates starting pitcher edge from bullpen.
       - name: Project First-5 totals per game
         working-directory: python
-        run: python first_five.py
-
+        run: python first_five.py || echo "first_five.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Lineup quality aggregator: sum each confirmed batter's xwOBA x PA.
       - name: Score confirmed lineup quality
         working-directory: python
-        run: python lineup_quality.py
-
+        run: python lineup_quality.py || echo "lineup_quality.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Run-line (-1.5 / +1.5) projections via Skellam normal approximation.
       - name: Project run lines
         working-directory: python
-        run: python run_line.py
-
+        run: python run_line.py || echo "run_line.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Travel + rest day signal per team.
       - name: Compute travel + rest day signal
         if: github.event.schedule == '0 14 * * *' || github.event_name == 'workflow_dispatch'
         working-directory: python
-        run: python travel.py
-
+        run: python travel.py || echo "travel.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Pitcher arsenal vs opposing lineup handedness leverage score.
       - name: Score pitcher arsenal vs lineup
         if: github.event.schedule == '0 14 * * *' || github.event_name == 'workflow_dispatch'
         working-directory: python
-        run: python pitch_matchup.py
-
+        run: python pitch_matchup.py || echo "pitch_matchup.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Series momentum / context (Game 2 of series, blowout reactions, etc).
       - name: Compute series context
         if: github.event.schedule == '0 14 * * *' || github.event_name == 'workflow_dispatch'
         working-directory: python
-        run: python series_context.py
-
+        run: python series_context.py || echo "series_context.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Pythagorean expectation (luck-adjusted record per team).
       - name: Pull Pythagorean expectations
         if: github.event.schedule == '0 14 * * *' || github.event_name == 'workflow_dispatch'
         working-directory: python
-        run: python pythag.py
-
+        run: python pythag.py || echo "pythag.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # MLB transactions feed (trades, call-ups, DFAs, IL moves -- last 5 days).
       - name: Pull MLB transactions feed
         if: github.event.schedule == '0 14 * * *' || github.event_name == 'workflow_dispatch'
         working-directory: python
-        run: python transactions.py
-
+        run: python transactions.py || echo "transactions.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Batter recent form (last 14 days hitting per starter in confirmed lineups).
       - name: Pull batter recent form
         if: github.event.schedule == '0 14 * * *' || github.event_name == 'workflow_dispatch'
         working-directory: python
-        run: python batter_form.py
-
+        run: python batter_form.py || echo "batter_form.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Pitcher days of rest (catches short rest / extra rest situations).
       - name: Compute pitcher days of rest
         working-directory: python
-        run: python pitcher_rest.py
-
+        run: python pitcher_rest.py || echo "pitcher_rest.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Research depth score per game (how complete our data stack is).
       - name: Score research depth per game
         working-directory: python
-        run: python research_depth.py
-
+        run: python research_depth.py || echo "research_depth.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Best batter-vs-pitcher xwOBA matchups (leverage / fade spots).
       - name: Score best matchups (batter-vs-pitch xwOBA)
         if: github.event.schedule == '0 14 * * *' || github.event_name == 'workflow_dispatch'
         working-directory: python
-        run: python best_matchups.py
-
+        run: python best_matchups.py || echo "best_matchups.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Model trainer: walk-forward optimization once enough outcomes accumulate.
       - name: Train + tune model parameters
         if: github.event.schedule == '0 14 * * *' || github.event_name == 'workflow_dispatch'
         working-directory: python
-        run: python model_trainer.py
-
+        run: python model_trainer.py || echo "model_trainer.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # CLV computation: compare today's morning snapshot to the latest (near
       # closing) lines. Best run at 6 PM ET, but no harm running every cron.
       - name: Compute Closing Line Value
         working-directory: python
-        run: python clv.py
-
+        run: python clv.py || echo "clv.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # PROP CLV: same open->close lifecycle as clv.py, but for player props --
       # the edge the track record actually rests on. 6 AM freezes the open,
       # 6 PM captures the close; prop_clv.json holds the rollup.
       - name: Compute PROP Closing Line Value
         working-directory: python
-        run: python prop_clv.py
-
+        run: python prop_clv.py || echo "prop_clv.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Attribute prop CLV to each source via the canonical taxonomy -- does each
       # curated feed beat the close on its props? (Fills in as slates accrue.)
       - name: Prop CLV by source (curated-edge confirmation)
         working-directory: python
-        run: python prop_clv_by_source.py
-
+        run: python prop_clv_by_source.py || echo "prop_clv_by_source.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Aggregate today's top plays across DraftKings, PrizePicks, and parlays.
       - name: Aggregate Top Plays across all markets
         working-directory: python
-        run: python top_plays.py
-
+        run: python top_plays.py || echo "top_plays.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Generate the daily markdown brief from all of today's artifacts.
       - name: Generate daily summary brief
         working-directory: python
-        run: python daily_summary.py
-
+        run: python daily_summary.py || echo "daily_summary.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # "The Tape" -- aggregate the strongest active signals into one value-ranked
       # feed (alerts.html). Runs near the END so every source it reads (line
       # movement, RLM, todays_top_plays, worldcup, nba_book_edges) is fresh.
@@ -1425,8 +1334,7 @@ jobs:
       # status (ok/empty/stale/demo). Surfaces on /audit.html.
       - name: Pipeline health audit
         working-directory: python
-        run: python pipeline_health.py
-
+        run: python pipeline_health.py || echo "pipeline_health.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Push to Discord / Slack if webhook URLs are configured as repo secrets.
       - name: Notify channels (Discord / Slack)
         if: github.event.schedule == '0 14 * * *' || github.event_name == 'workflow_dispatch'
@@ -1434,8 +1342,7 @@ jobs:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         working-directory: python
-        run: python notify.py
-
+        run: python notify.py || echo "notify.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Site directory + live-status map (nav badges + Everything page)
         working-directory: python
         run: python site_directory.py || true
@@ -1494,3 +1401,20 @@ jobs:
             echo "push failed after 5 retries"
             exit 1
           fi
+
+      # FAILURE GATE (2026-10-22). Every step above records its failure and lets
+      # the run CONTINUE -- one crashing display print in golf_region_props.py
+      # skipped 234 of 324 steps for 30 days (9/22-10/22) while the commit step
+      # still ran, so the site looked alive with the ledger build, Alpha record,
+      # NFL props/DFS and CFB ratings all frozen. Now everything runs and
+      # commits, and THIS step turns the run red and names what failed, so a
+      # broken module is visible the same day without darkening the rest.
+      - name: Failure gate (red run if any module failed)
+        if: always()
+        run: |
+          if [ -s "$RUNNER_TEMP/failed_steps.txt" ]; then
+            echo "::error::$(wc -l < "$RUNNER_TEMP/failed_steps.txt") module(s) failed this run:"
+            sort -u "$RUNNER_TEMP/failed_steps.txt" | sed 's/^/  - /'
+            exit 1
+          fi
+          echo "all modules ran clean"

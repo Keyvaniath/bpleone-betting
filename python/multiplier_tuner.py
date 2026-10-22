@@ -156,4 +156,4 @@ if __name__ == "__main__":
         amplifiers = {k: v for k, v in info.items() if k.endswith("_amplifier")}
         improvements = {k: v for k, v in info.items() if k.endswith("_improvement")}
         if amplifiers or info.get("note"):
-            print(f"  {market:25} n={info.get('n', '?'):>5} | {amplifiers} | RMSE improvements: {improvements} | {info.get('note', '')}")
+            print(f"  {market:25} n={(info.get('n') or '?'):>5} | {amplifiers} | RMSE improvements: {improvements} | {info.get('note', '')}")

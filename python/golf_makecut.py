@@ -194,5 +194,5 @@ if __name__ == "__main__":
         for pl in p["players"][:5]:
             ta = f"  topUS={pl['p_top_american']*100:.1f}%" if pl.get("p_top_american") else ""
             te = f"  topEU={pl['p_top_european']*100:.1f}%" if pl.get("p_top_european") else ""
-            print(f"    {pl['name']:25} ({pl.get('country','--'):5}) "
+            print(f"    {pl['name']:25} ({(pl.get('country') or '--'):5}) "
                   f"P(cut) = {pl['p_makecut']*100:5.1f}%{ta}{te}")
