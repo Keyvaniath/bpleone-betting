@@ -544,6 +544,30 @@ def run() -> Dict[str, Any]:
     else:
         todays = one_rows[-1] if one_rows else None
 
+    # OFF-SEASON STATE (2026-10-22). The pool is MLB-only by design: replaying
+    # the v2 gate over every other sport's settled ledger produced ZERO
+    # qualifying days outside NFL's two -- not a tuning gap, a structural one
+    # (non-MLB picks are recorded at the model's OWN fair odds, 0-EV by
+    # construction, so none clear +2% calibrated EV at recorded odds). Widening
+    # the pool would be loosening the rule to manufacture output. So when the
+    # MLB slate goes quiet in the autumn, Alpha says so plainly instead of
+    # printing "no pick today" for five months, which reads as a broken page.
+    # Trigger: no MLB ledger day in the last 5 days AND it is Oct-Feb. Opening
+    # Day returns it automatically (new MLB days end the condition).
+    mlb_days = sorted({str(p.get("date"))[:10] for p in picks
+                       if str(p.get("sport") or "").upper() in _MLB_SPORTS})
+    _last_mlb = mlb_days[-1] if mlb_days else None
+    _quiet = (not _last_mlb) or (today - dt.date.fromisoformat(_last_mlb)).days > 5
+    season_state = "offseason" if (_quiet and today.month in (10, 11, 12, 1, 2)) else "in_season"
+    if season_state == "offseason":
+        todays = {"date": today.isoformat(), "offseason": True, "no_pick": True,
+                  "last_mlb_slate": _last_mlb,
+                  "note": ("Alpha is MLB-only and sits out the baseball off-season. "
+                           "No other sport's picks clear the same edge gate (they're "
+                           "priced at the model's own fair odds, not a book line), and "
+                           "we won't loosen the rule to fill the calendar. Back on "
+                           "Opening Day.")}
+
     # --- Alpha Props slate: the One Pick + up to 2 diversified extras (one per market) ---
     n_days_slate = len(slate_history)
     slate_record = _agg(slate_all)
@@ -608,6 +632,7 @@ def run() -> Dict[str, Any]:
         "no_pick_days_v2": {"n": len(no_pick_days), "recent": no_pick_days[-10:]},
         "board": board,          # the diversified curated book -- the "ETF" benchmark
         "todays": todays,
+        "season_state": season_state,
         "streak": _streak(one_rows),
         "props_slate": slate,    # the One Pick + 1-2 diversified "alpha props"
         "history": list(reversed(one_rows)),   # newest first

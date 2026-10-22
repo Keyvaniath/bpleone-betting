@@ -41,6 +41,25 @@ bpleone-site/
 
 ## Current deployment state (LIVE)
 
+- **2026-10-22 (later) — ALPHA OFF-SEASON STATE + the broken no-pick tweet:**
+  (1) **The Alpha pool stays MLB-only, measured not assumed.** Replaying the
+  v2 gate over every other sport's settled ledger picks produced ZERO
+  qualifying days outside NFL's two (MLB: 93 days, 52-38, +23.8%, upper bound
+  -- today's calibration map). Structural reason: non-MLB picks are recorded at
+  the model's OWN fair odds, 0-EV by construction, so none clear +2%
+  calibrated EV at recorded odds. Widening the pool = loosening the rule to
+  manufacture output -- don't. Instead alpha_pick_record publishes
+  `season_state` ("offseason" when no MLB ledger day in 5+ days AND month in
+  Oct-Feb; Opening Day ends it automatically). Off-season: page shows a
+  season-closed callout with the v2 record; alpha_tweet writes tweet=None (no
+  daily post); alpha_email composes a season card and --send-self no-ops.
+  Verified by simulating 2026-11-15 end to end.
+  (2) **Every NO-PICK day's tweet draft was garbage** ("? -- " as the play):
+  `elif one:` treated the no-pick MARKER as a pick, making the honest no-pick
+  branch unreachable. Now `elif one and not one.get("no_pick")`; the real 10/20
+  draft verified. (3) Proof run 39860872402 after the cascade fix: SUCCESS,
+  324/325 steps ran, 0 failed, failure gate "all modules ran clean".
+
 - **2026-10-22 — THE 30-DAY CASCADE (read before touching any workflow):**
   daily-pipeline failed EVERY run 9/22-10/22 and **234 of 324 steps were
   SKIPPED** each time, while the commit step (`if: always()`) still pushed

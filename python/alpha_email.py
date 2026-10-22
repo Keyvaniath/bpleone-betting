@@ -76,7 +76,14 @@ def compose() -> Dict[str, Any]:
     why = today.get("why") or {}
     no_pick = bool(today.get("no_pick"))
 
-    if no_pick:
+    offseason = bool(today.get("offseason"))
+    if offseason:
+        subject = "Alpha Pick: off-season — back on MLB Opening Day"
+        headline = "Alpha is in its off-season."
+        sub = ("The pick pool is MLB-only, and no other sport's picks clear the same "
+               "edge gate. We won't loosen the rule to fill the calendar. The full "
+               "season record stays public below.")
+    elif no_pick:
         subject = f"Alpha Pick {date}: no play today (we don't force bets)"
         headline = "No pick today."
         sub = ("Nothing on the slate cleared the v2 gate — a family with a real "
@@ -176,6 +183,7 @@ def compose() -> Dict[str, Any]:
         "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
         "subject": subject, "text": text, "html": html_body, "mailto": mailto,
         "no_pick": no_pick,
+        "offseason": offseason,
         "note": ("Composed from alpha_pick_record + alpha_tweet every run. Sending is a "
                  "human action; --send-self delivers ONLY to the owner's inbox when SMTP "
                  "secrets are set."),
@@ -196,6 +204,9 @@ def send_self(payload: Dict[str, Any]) -> bool:
     user = os.environ.get("SMTP_USER", "").strip()
     pw = os.environ.get("SMTP_PASS", "").strip()
     host = os.environ.get("SMTP_HOST", "smtp.gmail.com")
+    if payload.get("offseason"):
+        print("[alpha-email] off-season -- no daily send")
+        return False
     if not (to and user and pw):
         print("[alpha-email] no ALPHA_EMAIL_TO/SMTP_USER/SMTP_PASS -- composed only, not sent")
         return False

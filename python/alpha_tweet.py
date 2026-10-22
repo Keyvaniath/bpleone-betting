@@ -185,11 +185,25 @@ def run() -> Dict[str, Any]:
     todays_slate = (slate.get("todays") or {}).get("picks") or []
     one = rec_data.get("todays")
 
+    # Off-season FIRST: the off-season "todays" is a state, not a pick -- left to
+    # the selection below it was rendered as a pick ("? -- ") off a stale slate.
+    if (one or {}).get("offseason"):
+        payload = {"generated_at": dt.datetime.now().isoformat(timespec="seconds"),
+                   "date": one.get("date"), "offseason": True, "no_pick": True,
+                   "tweet": None, "picks": [],
+                   "note": "Alpha off-season (MLB-only pool): no daily tweet until Opening Day."}
+        _write(payload)
+        return payload
+
     # Prefer the full slate (One Pick + diversified props); fall back to the One Pick.
     if todays_slate:
         picks = todays_slate
         date = (slate.get("todays") or {}).get("date") or (one or {}).get("date")
-    elif one:
+    elif one and not one.get("no_pick"):
+        # A NO-PICK day's "todays" is a marker, not a pick. Treating it as one
+        # rendered "? -- " as the day's play in every no-pick draft (found
+        # 2026-10-22 on the 10/20 draft) and made the honest no-pick branch
+        # below unreachable.
         picks = [one]
         date = one.get("date")
     else:

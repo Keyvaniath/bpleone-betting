@@ -243,7 +243,15 @@ fetch('data/alpha_pick_record.json?t=' + Date.now()).then(function (r) { return 
   // today's callout — v2 makes "no pick" a real published outcome, so say it plainly
   var td = d.todays, tEl = document.getElementById('opToday');
   if (tEl && td) {
-    if (td.no_pick) {
+    if (td.offseason) {
+      var rv = d.record_v2 || {};
+      tEl.innerHTML = '<span style="color:#d4a04a;font-weight:600;">Off-season.</span> ' +
+        '<span style="color:var(--text-2,#9fb0c8);">Alpha is MLB-only and sits out the baseball off-season &mdash; ' +
+        'no other sport&rsquo;s picks clear the same edge gate, and we won&rsquo;t loosen the rule to fill the calendar. ' +
+        (rv.n_settled ? 'Rule v2 finished ' + rv.wins + '-' + rv.losses + ', ' + (rv.net_units >= 0 ? '+' : '') + rv.net_units + 'u. ' : '') +
+        'Back on Opening Day.</span>';
+      tEl.style.display = 'block';
+    } else if (td.no_pick) {
       tEl.innerHTML = '<span style="color:#d4a04a;font-weight:600;">No pick today.</span> ' +
         '<span style="color:var(--text-2,#9fb0c8);">Nothing on the slate clears the edge gate — we don\'t force bets.</span>';
       tEl.style.display = 'block';
