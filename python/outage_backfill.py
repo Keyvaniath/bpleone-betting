@@ -34,6 +34,10 @@ MARKER = os.path.join(DATA_DIR, "outage_backfill_2026_10.json")
 LEDGER = os.path.join(DATA_DIR, "all_picks_ledger.json")
 OUTAGE_START = "2026-09-18"     # 4 days before the first failed run (9/22)
 OUTAGE_REASON = "unsettleable: no outcome feed"
+# Bump when a grader fix lands that the long-window outcome data can still
+# serve; the next run re-fetches once and keeps the earlier pass under
+# `previous_passes`. v2 (2026-10-22): MLB run lines had no grading branch.
+BACKFILL_VERSION = 2
 
 
 def _load(p: str) -> Dict[str, Any]:
@@ -115,16 +119,18 @@ def _regrade_nhl_settled() -> Dict[str, Any]:
 
 
 def run(force: bool = False) -> Dict[str, Any]:
-    if os.path.exists(MARKER) and not force:
-        m = _load(MARKER)
-        print(f"[outage-backfill] already ran {m.get('ran_at')} -- skipping")
-        return m
+    prev = _load(MARKER) if os.path.exists(MARKER) else {}
+    if prev and not force and int(prev.get("version") or 1) >= BACKFILL_VERSION:
+        print(f"[outage-backfill] v{prev.get('version') or 1} already ran {prev.get('ran_at')} -- skipping")
+        return prev
+    history_passes = list(prev.pop("previous_passes", []) or []) + ([prev] if prev else [])
 
     led = _load(LEDGER)
     before = led.get("picks") or []
     voids = _outage_voids(before)
     if not voids:
         payload = {"ran_at": dt.datetime.now().isoformat(timespec="seconds"),
+                   "version": BACKFILL_VERSION, "previous_passes": history_passes,
                    "n_outage_voids_before": 0, "note": "nothing to backfill"}
         with open(MARKER, "w", encoding="utf-8") as f:
             json.dump(payload, f, indent=2)
@@ -221,6 +227,8 @@ def run(force: bool = False) -> Dict[str, Any]:
             recovered[sp]["still_void"] += 1
     payload = {
         "ran_at": dt.datetime.now().isoformat(timespec="seconds"),
+        "version": BACKFILL_VERSION,
+        "previous_passes": history_passes,
         "outage": "2026-09-22 -> 2026-10-22 (daily-pipeline cascade)",
         "n_outage_voids_before": len(voids),
         "oldest_pick": oldest,

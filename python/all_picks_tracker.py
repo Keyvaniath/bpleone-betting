@@ -2640,7 +2640,11 @@ def _settle_picks(history: List[Dict[str, Any]]) -> int:
                 market = "ml_away"
             is_game_line = (("ml_home" in market) or ("ml_away" in market)
                             or re.fullmatch(r"[a-z]{2,4}_ml", market) is not None
-                            or re.fullmatch(r"(over|under)_\d+(?:\.\d+)?", market) is not None)
+                            or re.fullmatch(r"(over|under)_\d+(?:\.\d+)?", market) is not None
+                            # Run lines (2026-10-22): HOME/AWAY_MINUS/PLUS_1.5 from
+                            # mlb_run_line_props had NO branch -- 0 ever settled,
+                            # every one aged into an 'unsettleable' void.
+                            or re.fullmatch(r"(home|away)_(plus|minus)_\d+(?:\.\d+)?", market) is not None)
             if is_game_line:
                 matchup = (p.get("player_or_matchup") or "").lower()
                 for g in historical_mlb:
@@ -2668,6 +2672,12 @@ def _settle_picks(history: List[Dict[str, Any]]) -> int:
                         if total == line: result = "push"
                         elif (is_over and total > line) or (not is_over and total < line): result = "won"
                         else: result = "lost"
+                    elif re.fullmatch(r"(home|away)_(plus|minus)_\d+(?:\.\d+)?", market):
+                        _side, _sign, _ln = market.split("_", 2)
+                        _ln = float(_ln)
+                        _diff = (home_s - away_s) if _side == "home" else (away_s - home_s)
+                        _need = _ln if _sign == "minus" else -_ln
+                        result = "push" if _diff == _need else ("won" if _diff > _need else "lost")
                     elif "ml_home" in market:
                         result = "won" if home_s > away_s else "lost"
                     elif "ml_away" in market:
