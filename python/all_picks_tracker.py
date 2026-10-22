@@ -1624,52 +1624,85 @@ def _nhl_intake(out: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
     preseason board, NHL picks are dropped: season-baseline projections don't
     price preseason lineups (the NFL gate's reasoning, same structural flaw).
     """
-    nhl = [p for p in out if str(p.get("sport") or "").upper() == "NHL"]
-    if not nhl:
-        return out
     state = _load(os.path.join(DATA_DIR, "nhl_state.json"))
     if str(state.get("season_status") or "") == "preseason":
-        return [p for p in out if p not in nhl]
+        out = [p for p in out if str(p.get("sport") or "").upper() != "NHL"]
+    out, dropped = _board_dates(out, "NHL", state, "nhl_historical.json", drop_unmatched=True)
+    if dropped:
+        print(f"[all-picks] NHL intake: dropped {dropped} pick(s) not on today's board")
+    # NBA/WNBA: same snapshot-date stamping (a WNBA Finals game-line pick made
+    # 10/22 for the 10/24 game was dated 10/22). Date them; never drop -- those
+    # generators haven't been audited for vocab, so an unmatched pick keeps the
+    # old behaviour rather than vanishing.
+    for sp, st, hist in (("NBA", "nba_state.json", "historical_nba.json"),
+                         ("WNBA", "wnba_state.json", "historical_wnba.json")):
+        out, _ = _board_dates(out, sp, _load(os.path.join(DATA_DIR, st)), hist, drop_unmatched=False)
+    return out
+
+
+def _board_dates(out: List[Dict[str, Any]], sport: str, state: Dict[str, Any],
+                 hist_file: str, drop_unmatched: bool):
+    """Set game_date on `sport` picks from the live board in `state`.
+
+    A pick's matchup side matches a board team by abbreviation (the board's
+    own, or the historical file's abbrev->name map, prefix-tolerant: NJD/NJ,
+    TBL/TB), by full name, by a name prefix ('GOL' -> Golden State) or by the
+    name's initials ('GSV'). The game must match UNIQUELY. Returns
+    (picks, n_dropped); unmatched picks are dropped only when drop_unmatched
+    and the board is non-empty."""
     abbrev: Dict[str, str] = {}
-    for g in (_load(os.path.join(DATA_DIR, "nhl_historical.json")).get("games") or []):
-        for a, n in ((g.get("away_abbrev"), g.get("away_name")), (g.get("home_abbrev"), g.get("home_name"))):
+    for g in (_load(os.path.join(DATA_DIR, hist_file)).get("games") or []):
+        for a, n in ((g.get("away_abbrev"), g.get("away_name") or g.get("away_team")),
+                     (g.get("home_abbrev"), g.get("home_name") or g.get("home_team"))):
             if a and n:
                 abbrev[str(a).upper()] = str(n)
-    when: Dict[str, str] = {}
+    board = []
     for g in (state.get("games") or []):
         day = _et_day(g.get("date"))
         if day and g.get("away_team") and g.get("home_team"):
-            when[f"{g['away_team']} @ {g['home_team']}".lower()] = day
-    def _name(x: str) -> str:
-        # Generators mix ESPN abbrevs (NJ/LA/SJ/TB) with 3-letter ones
-        # (NJD/LAK/SJS/TBL): exact first, then a UNIQUE prefix either way.
-        u = x.strip().upper()
-        if u in abbrev:
-            return abbrev[u]
-        hits = {n for k, n in abbrev.items() if len(u) <= 4 and (u.startswith(k) or k.startswith(u))}
-        return hits.pop() if len(hits) == 1 else x.strip()
+            board.append((day, (g["away_team"], g.get("away_abbrev")), (g["home_team"], g.get("home_abbrev"))))
+
+    def _side_ok(x: str, team: Any) -> bool:
+        name, ab = team
+        u, nl = x.strip().upper(), str(name).lower()
+        if not u:
+            return False
+        if ab and u == str(ab).upper():
+            return True
+        if u.lower() == nl:
+            return True
+        mapped = abbrev.get(u)
+        if mapped is None and len(u) <= 4:
+            hits = {n for k2, n in abbrev.items() if u.startswith(k2) or k2.startswith(u)}
+            mapped = hits.pop() if len(hits) == 1 else None
+        if mapped and mapped.lower() == nl:
+            return True
+        if 3 <= len(u) <= 4:
+            initials = "".join(w[0] for w in nl.split() if w)
+            if nl.startswith(u.lower()) or initials.startswith(u.lower()):
+                return True
+        return False
 
     keep, dropped = [], 0
     for p in out:
-        if p not in nhl or p.get("game_date"):
+        if str(p.get("sport") or "").upper() != sport or p.get("game_date"):
             keep.append(p)
             continue
         parts = re.split(r"\s+@\s+", str(p.get("matchup") or ""), maxsplit=1)
-        full = " @ ".join(_name(x) for x in parts).lower() if len(parts) == 2 else ""
-        if when.get(full):
-            p["game_date"] = when[full]
+        hits = [b for b in board if len(parts) == 2
+                and _side_ok(parts[0], b[1]) and _side_ok(parts[1], b[2])]
+        if len({b[0] for b in hits}) == 1:
+            p["game_date"] = hits[0][0]
             keep.append(p)
-        elif when:
+        elif drop_unmatched and board and not hits:
             # Not on today's board = a STALE artifact (during the 9/22-10/22
             # cascade the NHL generators froze, and their old strong_edges were
             # re-added every 5 days as each pending copy voided -- ~20 phantom
             # picks a batch on games that never happened). Never ledger it.
             dropped += 1
         else:
-            keep.append(p)          # no board to check against: old behaviour
-    if dropped:
-        print(f"[all-picks] NHL intake: dropped {dropped} pick(s) not on today's board")
-    return keep
+            keep.append(p)          # no board / ambiguous: old behaviour
+    return keep, dropped
 
 
 def _batter_stat_and_threshold(market: str):
