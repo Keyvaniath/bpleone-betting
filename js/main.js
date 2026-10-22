@@ -2,7 +2,10 @@
 
 (function() {
 
-  // ---- Live ticker (reads today.json + all_picks_ledger.json for REAL settled picks) ----
+  // ---- Live ticker (reads today.json + recent_picks.json for REAL settled picks) ----
+  // recent_picks.json is the ledger digest (~200KB, last 200 settled, already
+  // settled-AND-not-voided). This used to fetch the full all_picks_ledger.json
+  // (11.5MB) on every page load to show 5 rows -- and counted dup-voided rows.
   function startTicker() {
     const el = document.getElementById('liveTicker');
     if (!el) return;
@@ -10,7 +13,7 @@
 
     Promise.all([
       fetch('data/today.json', { cache: 'no-cache' }).then(r => r.json()).catch(() => ({})),
-      fetch('data/all_picks_ledger.json', { cache: 'no-cache' }).then(r => r.json()).catch(() => ({})),
+      fetch('data/recent_picks.json', { cache: 'no-cache' }).then(r => r.json()).catch(() => ({})),
     ]).then(([today, ledger]) => {
       const lines = [];
       const pod = today.play_of_day;
@@ -28,9 +31,9 @@
         }
       });
       // REAL settled records from unified ledger (no 118k synthetic backfill)
-      const settled = ((ledger.picks || []).filter(p => p.settled)).slice(-5);
+      const settled = ((ledger.picks || []).filter(p => p.settled && !p.voided)).slice(-5);
       settled.forEach(p => {
-        const tag = p.result === 'won' ? 'WON' : p.result === 'lost' ? 'LOST' : p.result.toUpperCase();
+        const tag = p.result === 'won' ? 'WON' : p.result === 'lost' ? 'LOST' : String(p.result || '').toUpperCase();
         const emoji = p.result === 'won' ? '\u{2705}' : p.result === 'lost' ? '\u{274C}' : '\u{1F9FE}';
         lines.push(`${emoji} SETTLED - ${p.player_or_matchup} ${p.market} - ${tag}`);
       });

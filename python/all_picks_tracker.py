@@ -53,7 +53,16 @@ OUT = os.path.join(DATA_DIR, "all_picks_ledger.json")
 # headroom ledger buys its rows with real settled history. Raising the cap does
 # not restate anything -- past evictions are already gone from the artifact
 # (recoverable from git) -- it stops the bleeding going forward.
-MAX_PICKS = 14000
+# RAISED 14000 -> 20000 (2026-10-22). The cap bound again the day the
+# pipeline recovered: 14,000 rows with 957 voided left to spend while NFL
+# (589 props for Week 8), NBA (opening week) and NHL restarted at once --
+# ~5 days before eviction began archiving SETTLED history and the public
+# record silently became a rolling window. Eviction is lossless now
+# (data/ledger_archive.json), but whether the headline is all-time or a
+# window is a published-numbers decision, so this keeps it all-time until
+# that call is made. ~11.5MB at 14k -> ~16.5MB at 20k; client pages read the
+# recent_picks.json digest, never this file.
+MAX_PICKS = 20000
 
 
 def _load(p):

@@ -97,6 +97,9 @@ jobs:
       - name: All-picks unified ledger (settle + log)
         working-directory: python
         run: python all_picks_tracker.py || echo "all_picks_tracker.py" >> "$RUNNER_TEMP/failed_steps.txt"
+      - name: Recent-picks digest (the site ticker reads this, not the 11MB ledger)
+        working-directory: python
+        run: python recent_picks.py || echo "recent_picks.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Alpha Pick of the Day track record (settle slip legs off the ledger)
         working-directory: python
         run: python alpha_pod_tracker.py || true
