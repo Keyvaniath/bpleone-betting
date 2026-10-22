@@ -1,12 +1,12 @@
-# Tonight's Slate Brief — 2026-09-22
+# Tonight's Slate Brief — 2026-10-22
 
-## Slate Quality: 55/100 (MEDIUM)
-_0% lineups confirmed · 11 rookie SPs_
+## Slate Quality: 70/100 (MEDIUM)
+_0% lineups confirmed_
 **Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
-- **14 games** scheduled
-- **34 best bets** scored: 7 DK · 0 PP · 10 NRFI · 0 SGP
+- **3 games** scheduled
+- **40 best bets** scored: 8 DK · 0 PP · 10 NRFI · 0 SGP
 - **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$49.62
 - **MC simulation:** EV +$142.04, 85% P(profit), p05 $-68.43 / p95 $313.81
 
@@ -22,10 +22,7 @@ _0% lineups confirmed · 11 rookie SPs_
 5. **TOR @ BAL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +21.8%)
    - P(YRFI) 67.8% vs baseline 46.0%
 
-## ⚠️ Trap Warnings — 17 flagged
-- **Luis Garcia Jr. OVER 1.5 batter total bases** (high):
-   - Edge +30.1% looks big but only 0 settled props on this player — model unproven
-   - Batter cooling: cooling: 0.643 ops recent vs 0.764 season (-0.121)
+## ⚠️ Trap Warnings — 14 flagged
 - **NYM @ TEX YRFI (1st-inning OVER 0.5)** (low):
    - Edge +33.1% looks big but only 0 settled props on this player — model unproven
 - **ARI @ COL YRFI (1st-inning OVER 0.5)** (low):
@@ -34,10 +31,8 @@ _0% lineups confirmed · 11 rookie SPs_
    - Edge +29.2% looks big but only 0 settled props on this player — model unproven
 - **MIA @ CHC YRFI (1st-inning OVER 0.5)** (low):
    - Edge +23.9% looks big but only 0 settled props on this player — model unproven
-
-## Hot streaks
-**Batters heating up:** Austin Wells (heat +1.75), Heliot Ramos (heat +1.58), George Lombard Jr. (heat +1.46)
-**Pitchers on a run:** Anthony Molina (heat +8.63), Daniel Lynch IV (heat +0.94)
+- **TOR @ BAL YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +21.8% looks big but only 0 settled props on this player — model unproven
 
 ## Bullpens GASSED tonight
 Pittsburgh Pirates, San Francisco Giants, Toronto Blue Jays, Arizona Diamondbacks, Cincinnati Reds, Detroit Tigers, Los Angeles Dodgers
@@ -46,31 +41,30 @@ _Lean late-inning OVER on these games; fade their save situations._
 ## NRFI/YRFI strong leans
 - **YRFI** (1st-inning OVER): NYM @ TEX, ARI @ COL, CIN @ ATL, MIA @ CHC, TOR @ BAL
 
-## NBA -- PRESEASON
-- Miami Heat @ Toronto Raptors (0-0 vs 0-0)  | P(home) 55.0% fair -122 | Scheduled
+## Golf -- Presidents Cup
+- **Leader:** None (0) at #1
+- **Field:** 2 players  |  Status: Scheduled
 
-## NHL -- PRESEASON
-- Philadelphia Flyers @ Boston Bruins (0-1-0 vs 1-0-0)  | P(home) 99.0% fair -9900 | Scheduled
-- Detroit Red Wings @ Pittsburgh Penguins (0-0-1 vs 1-0-0)  | P(home) 92.5% fair -1242 | Scheduled
-- Columbus Blue Jackets @ Buffalo Sabres (1-0-0 vs 0-1-0)  | P(home) 15.9% fair +527 | Scheduled
-- New York Islanders @ New York Rangers (0-1-0 vs 0-1-0)  | P(home) 62.9% fair -169 | Scheduled
-- Florida Panthers @ Carolina Hurricanes (1-0-0 vs 0-1-0)  | P(home) 15.9% fair +527 | Scheduled
+## NBA -- REGULAR
+- Cleveland Cavaliers @ Philadelphia 76ers (0-0 vs 1-0)  | P(home) 88.8% fair -793 | Scheduled
+- Denver Nuggets @ Oklahoma City Thunder (0-0 vs 1-0)  | P(home) 88.8% fair -793 | Scheduled
 
-## KBO -- 2026 Korean Baseball
-- KIA Tigers @ Doosan Bears | P(home) 44.3% fair +126 | total 8 R
-- Lotte Giants @ Hanwha Eagles | P(home) 47.4% fair +111 | total 10 R
-- NC Dinos @ KT Wiz | P(home) 54.6% fair -120 | total 9 R
-- **KBO POD:** KIA Tigers ML vs Doosan Bears (KBO) (MED)
+## NHL -- REGULAR
+- Nashville Predators @ Boston Bruins (3-2-3 vs 7-2-1)  | P(home) 80.7% fair -418 | Scheduled
+- New York Rangers @ Toronto Maple Leafs (7-3-1 vs 5-4-2)  | P(home) 46.9% fair +113 | Scheduled
+- San Jose Sharks @ Ottawa Senators (5-4-1 vs 7-3-0)  | P(home) 76.5% fair -326 | Scheduled
+- Anaheim Ducks @ New Jersey Devils (4-5-0 vs 5-4-0)  | P(home) 72.0% fair -258 | Scheduled
+- Florida Panthers @ Pittsburgh Penguins (5-3-2 vs 3-6-1)  | P(home) 37.1% fair +170 | Scheduled
 
-## LoL Esports -- 0 live, 24 upcoming
-- [EMEA Masters] LODIS vs Skillcamp BO3 | P(A) 49.4% fair +102/-102
-- [EMEA Masters] CITA Kaizen vs Unicorns of Love Sexy Edition BO3 | P(A) 49.6% fair +102/-102
-- [EMEA Masters] Avella SU Esports vs UCAM Esports Club BO3 | P(A) 48.2% fair +107/-107
-- [EMEA Masters] Gamespace M.C. vs Barça Esports BO3 | P(A) 50.4% fair -102/+102
-- [EMEA Masters] Pyramid IV Esports vs Arctic Pandas BO3 | P(A) 28.1% fair +257/-257
-- **LoL POT:** TBD ML vs Shopify Rebellion (LCS, BO5) (HIGH)
+## LoL Esports -- 0 live, 30 upcoming
+- [Worlds] Gen.G Esports vs Invictus Gaming BO1 | P(A) 54.6% fair -120/+120
+- [Worlds] Hanwha Life Esports vs TOP ESPORTS BO1 | P(A) 67.6% fair -209/+209
+- [Worlds] BILIBILI GAMING vs Movistar KOI BO1 | P(A) 63.2% fair -172/+172
+- [Worlds] Anyone's Legend vs Karmine Corp BO1 | P(A) 48.0% fair +108/-108
+- [Worlds] G2 Esports vs Dplus KIA BO1 | P(A) 50.5% fair -102/+102
+- **LoL POT:** Team Liquid Alienware ML vs CTBC Flying Oyster (Worlds, BO1) (HIGH)
 
-## Player Play of the Day -- across all sports (3459 candidates scanned)
+## Player Play of the Day -- across all sports (3447 candidates scanned)
 - **[LOL]** Inspired UNDER 3.5 Kills | model 61.7% fair -161 (ELITE)
 - **[LOL]** ShowMaker OVER 3.5 Kills | model 62.5% fair -167 (ELITE)
 - **[LOL]** Peyz OVER 4.5 Kills | model 61.3% fair -158 (ELITE)

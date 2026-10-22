@@ -1,6 +1,6 @@
-# EdgeStat Slate — 2026-09-22
+# EdgeStat Slate — 2026-10-22
 
-_6 picks consolidated from POD + Alpha + Book Edges + Parlay-of-Day._
+_3 picks consolidated from POD + Alpha + Book Edges + Parlay-of-Day._
 
 ## ⭐ Play of the Day
 
@@ -12,20 +12,11 @@ _6 picks consolidated from POD + Alpha + Book Edges + Parlay-of-Day._
 - **Choi Jeong** · one_plus_tb
   Prob 73.2% · Odds -110 · Edge +39.8% · Kelly 0.250
 
-## 📊 Book Edges
-
-- **MIL @ PHI · AWAY (AWAY)** · TEAM_ML
-  Prob 51.9% · Odds +118 · Edge +13.2% · Kelly 0.112
-- **WSN @ DET · OVER · O/U 8.0** · TOTAL_OVER
-  Prob 58.2% · Odds -110 · Edge +11.1% · Kelly 0.122
-- **MIN @ SFG · UNDER · O/U 7.5** · TOTAL_UNDER
-  Prob 58.1% · Odds -110 · Edge +10.8% · Kelly 0.119
-
 ## 🎲 Parlay
 
 - **Choi Jeong + Jose Pirela** · 2-leg
   Prob 53.4% · Odds +264 · Edge +94.6% · Kelly 0.050
 
 ---
-_Generated 2026-09-22T18:06:52 UTC by EdgeStat._
+_Generated 2026-10-22T22:07:19 UTC by EdgeStat._
 _Stakes assume ¼-Kelly fractional sizing on a flat bankroll._
