@@ -557,11 +557,25 @@ def run() -> Dict[str, Any]:
         # season's Week 1 schedule (months out) -- without this we'd generate
         # props for games that can't settle for months and just void. A game with
         # no date is skipped (can't be dated -> can't settle).
-        gd = (g.get("date") or g.get("start") or "")[:10]
+        # ET SLATE DATE (2026-10-22). g["date"] is ESPN's UTC kickoff, so every
+        # Thursday/Sunday/Monday NIGHT game (8:15pm ET = 00:15Z next day) was
+        # stamped a day late, while espn_box_logs dates box rows by the ET slate
+        # day (-5h). Those picks could never match a box row: they voided every
+        # week and were evicted first, so the NFL record silently excluded every
+        # prime-time game. Use the same -5h rule as the box logs.
+        raw = str(g.get("date") or g.get("start") or "")
+        gdate = None
         try:
-            gdate = dt.date.fromisoformat(gd) if gd else None
+            if len(raw) >= 16:
+                t = dt.datetime.fromisoformat(raw.replace("Z", "+00:00")[:25])
+                gdate = (t - dt.timedelta(hours=5)).date()
+            elif raw:
+                gdate = dt.date.fromisoformat(raw[:10])
         except Exception:
-            gdate = None
+            try:
+                gdate = dt.date.fromisoformat(raw[:10])
+            except Exception:
+                gdate = None
         if gdate is None or not (today <= gdate <= horizon):
             continue
         game_date = gdate.isoformat()

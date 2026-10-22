@@ -554,8 +554,13 @@ def run() -> Dict[str, Any]:
     # printing "no pick today" for five months, which reads as a broken page.
     # Trigger: no MLB ledger day in the last 5 days AND it is Oct-Feb. Opening
     # Day returns it automatically (new MLB days end the condition).
+    # Voided rows don't count: a void means no real game was found (the DEMO
+    # slate leaked phantom MLB picks onto off-days through October -- each
+    # batch voided, but a void-blind check would have read them as a live
+    # season all winter).
     mlb_days = sorted({str(p.get("date"))[:10] for p in picks
-                       if str(p.get("sport") or "").upper() in _MLB_SPORTS})
+                       if str(p.get("sport") or "").upper() in _MLB_SPORTS
+                       and not p.get("voided")})
     _last_mlb = mlb_days[-1] if mlb_days else None
     _quiet = (not _last_mlb) or (today - dt.date.fromisoformat(_last_mlb)).days > 5
     season_state = "offseason" if (_quiet and today.month in (10, 11, 12, 1, 2)) else "in_season"

@@ -1554,6 +1554,21 @@ def _collect_picks_from_sources() -> List[Dict[str, Any]]:
     # player-prop book (heavy favorites that DO cash, +42% ROI) is untouched.
     out = [p for p in out if not _is_mlb_juice_favorite(p)]
 
+    # NHL: stamp each pick with its GAME's ET date and hold the preseason gate.
+    out = _nhl_intake(out)
+
+    # MLB: never ledger a pick on a DEMO matchup. pipeline.py falls back to a
+    # hard-coded DEMO_SLATE when the real pull fails; generators that read
+    # today.json don't check the tag, so the guard lives at intake.
+    _today = _load(os.path.join(DATA_DIR, "today.json"))
+    if _today.get("is_demo"):
+        _demo = {str(g.get("matchup")) for g in (_today.get("games") or []) if g.get("matchup")}
+        _n = len(out)
+        out = [p for p in out if not (str(p.get("sport") or "").upper() == "MLB"
+                                      and str(p.get("matchup") or p.get("player_or_matchup")) in _demo)]
+        if len(out) < _n:
+            print(f"[all-picks] dropped {_n - len(out)} MLB pick(s) on the DEMO slate")
+
     # Stamp all picks with date + ID. A pick may carry its own game_date (e.g. NFL
     # props for a game a few days out) -- settle against THAT date's box score, not
     # the record date. Same prop + same game -> stable pick_id -> deduped, not
@@ -1567,6 +1582,85 @@ def _collect_picks_from_sources() -> List[Dict[str, Any]]:
         p["payout_units"] = None
 
     return out
+
+
+# 2026-27 NHL regular season opened 2026-09-29 (ESPN season type 2). Picks dated
+# before it were taken off preseason slates -- see _void_preseason_nhl.
+_NHL_2026_OPENER = "2026-09-29"
+
+
+def _et_day(iso: str) -> str:
+    """ESPN UTC kickoff -> the US/Eastern slate date ('' when unparseable)."""
+    try:
+        d = dt.datetime.fromisoformat(str(iso).replace("Z", "+00:00"))
+    except Exception:
+        return ""
+    try:
+        from zoneinfo import ZoneInfo
+        return d.astimezone(ZoneInfo("America/New_York")).date().isoformat()
+    except Exception:
+        return (d - dt.timedelta(hours=5)).date().isoformat()
+
+
+def _nhl_intake(out: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    """Give NHL picks their game's date, and take none on preseason slates.
+
+    The NHL generators price whatever slate nhl_state carries, and when the
+    league is idle ESPN serves the NEXT slate -- so a pick made 9/16 on a game
+    played days later was stamped 9/16 and graded against "the first game
+    within +/-2 days" of the wrong date (found 2026-10-22). Every NHL row
+    carries a matchup (full names or 'NSH @ BOS'); resolve it against
+    nhl_state's games and set game_date to that game's ET date. Unresolvable
+    rows keep the snapshot date (the old behaviour). While nhl_state reports a
+    preseason board, NHL picks are dropped: season-baseline projections don't
+    price preseason lineups (the NFL gate's reasoning, same structural flaw).
+    """
+    nhl = [p for p in out if str(p.get("sport") or "").upper() == "NHL"]
+    if not nhl:
+        return out
+    state = _load(os.path.join(DATA_DIR, "nhl_state.json"))
+    if str(state.get("season_status") or "") == "preseason":
+        return [p for p in out if p not in nhl]
+    abbrev: Dict[str, str] = {}
+    for g in (_load(os.path.join(DATA_DIR, "nhl_historical.json")).get("games") or []):
+        for a, n in ((g.get("away_abbrev"), g.get("away_name")), (g.get("home_abbrev"), g.get("home_name"))):
+            if a and n:
+                abbrev[str(a).upper()] = str(n)
+    when: Dict[str, str] = {}
+    for g in (state.get("games") or []):
+        day = _et_day(g.get("date"))
+        if day and g.get("away_team") and g.get("home_team"):
+            when[f"{g['away_team']} @ {g['home_team']}".lower()] = day
+    def _name(x: str) -> str:
+        # Generators mix ESPN abbrevs (NJ/LA/SJ/TB) with 3-letter ones
+        # (NJD/LAK/SJS/TBL): exact first, then a UNIQUE prefix either way.
+        u = x.strip().upper()
+        if u in abbrev:
+            return abbrev[u]
+        hits = {n for k, n in abbrev.items() if len(u) <= 4 and (u.startswith(k) or k.startswith(u))}
+        return hits.pop() if len(hits) == 1 else x.strip()
+
+    keep, dropped = [], 0
+    for p in out:
+        if p not in nhl or p.get("game_date"):
+            keep.append(p)
+            continue
+        parts = re.split(r"\s+@\s+", str(p.get("matchup") or ""), maxsplit=1)
+        full = " @ ".join(_name(x) for x in parts).lower() if len(parts) == 2 else ""
+        if when.get(full):
+            p["game_date"] = when[full]
+            keep.append(p)
+        elif when:
+            # Not on today's board = a STALE artifact (during the 9/22-10/22
+            # cascade the NHL generators froze, and their old strong_edges were
+            # re-added every 5 days as each pending copy voided -- ~20 phantom
+            # picks a batch on games that never happened). Never ledger it.
+            dropped += 1
+        else:
+            keep.append(p)          # no board to check against: old behaviour
+    if dropped:
+        print(f"[all-picks] NHL intake: dropped {dropped} pick(s) not on today's board")
+    return keep
 
 
 def _batter_stat_and_threshold(market: str):
@@ -1958,13 +2052,46 @@ def _grade_nfl_pick(pick: Dict[str, Any], by_name: Dict[str, Any],
             return "won" if won else "lost"
         return None
     # Player prop -> vs the box-score line.
+    # NFL MATCHING FIXES (2026-10-22), each found by replaying the 325 picks
+    # voided during the 9/22-10/22 outage:
+    #  * NAME SUFFIXES: ESPN box names carry "Jr."/"Sr."/"III" ("brian robinson
+    #    jr.") while the props desk keys "brian robinson" -- 31 box names, never
+    #    matchable. Both sides now compare suffix-stripped.
+    #  * DATE: props were stamped with the UTC kickoff date, box rows with the ET
+    #    slate date, so every night game missed by one day. NFL teams play once a
+    #    week, so the nearest row within +/-1 day is unambiguous.
+    #  * PLAYED BUT NO LINE: a player in the box who has no receiving/rushing
+    #    entry recorded none of it (a WR with 0 catches) -> 0, as a book settles.
+    def _nfl_norm(nm):
+        nm = re.sub(r"[.'’]", "", str(nm or "").lower()).strip()
+        return re.sub(r"\s+(jr|sr|ii|iii|iv|v)$", "", nm).strip()
     prec = by_name.get(matchup)
     if not prec:
+        want = _nfl_norm(matchup)
+        prec = next((v for k, v in by_name.items() if _nfl_norm(k) == want), None)
+    if not prec:
         return None
+    try:
+        pd0 = dt.date.fromisoformat(str(pick.get("date"))[:10])
+    except Exception:
+        return None
+    cands = []
     for game in (prec.get("games") or []):
-        if (game.get("date") or "")[:10] != pick.get("date"): continue
+        try:
+            off = abs((dt.date.fromisoformat(str(game.get("date"))[:10]) - pd0).days)
+        except Exception:
+            continue
+        if off <= 1:
+            cands.append((off, game))
+    cands.sort(key=lambda x: x[0])
+    _ZERO_OK = {"rec", "rec_yds", "rec_td", "targets", "longest_reception",
+                "rush_yds", "rush_att", "rush_td", "longest_rush", "anytime_td"}
+    for _off, game in cands[:1]:
         val = game.get(stat)
-        if val is None: continue
+        if val is None:
+            if stat not in _ZERO_OK:
+                continue        # e.g. a passing prop for a player with no passing line
+            val = 0
         over_wins = val > line
         won = (not over_wins) if side == "under" else over_wins
         pick["outcome"] = {"stat": stat, "actual": val, "line": line, "side": side.upper(),
@@ -2283,11 +2410,16 @@ def _find_nhl_game(matchup: str, pdate: str, games: List[Dict[str, Any]]):
     if len(parts) != 2:
         return None
     away, home = parts[0].strip(), parts[1].strip()
+    # Nearest date wins (2026-10-22): the old loop returned the FIRST game
+    # within +/-2 days in list order, so a home-and-home pair could grade a
+    # pick on the other night. Equal-distance candidates -> None (never guess).
+    best, best_d, tie = None, 99, False
     for g in games:
         try:
-            if abs((dt.date.fromisoformat((g.get("date") or "")[:10]) - dt.date.fromisoformat(pdate)).days) > 2:
-                continue
+            gap = abs((dt.date.fromisoformat((g.get("date") or "")[:10]) - dt.date.fromisoformat(pdate)).days)
         except Exception:
+            continue
+        if gap > 2:
             continue
         ga, gh = g.get("away_abbrev", ""), g.get("home_abbrev", "")
         ga_nm, gh_nm = g.get("away_name", ""), g.get("home_name", "")
@@ -2300,8 +2432,38 @@ def _find_nhl_game(matchup: str, pdate: str, games: List[Dict[str, Any]]):
                    or (_last(home) and _last(home) in (gh_nm or "").lower())
                    or (gh and gh.lower() in home.lower()))
         if away_ok and home_ok:
-            return g
-    return None
+            if gap < best_d:
+                best, best_d, tie = g, gap, False
+            elif gap == best_d and g is not best and g.get("date") != (best or {}).get("date"):
+                tie = True
+    return None if tie else best
+
+
+
+def _nearest_row(prec: Optional[Dict[str, Any]], pdate: str, max_days: int = 1) -> Optional[Dict[str, Any]]:
+    """The player's box row closest to the pick date (exact date preferred),
+    within max_days; None when absent or when two rows tie for nearest
+    (ambiguous back-to-back -- never guess)."""
+    if not prec:
+        return None
+    try:
+        d0 = dt.date.fromisoformat(str(pdate)[:10])
+    except Exception:
+        return None
+    scored = []
+    for g in (prec.get("games") or []):
+        try:
+            off = abs((dt.date.fromisoformat(str(g.get("date"))[:10]) - d0).days)
+        except Exception:
+            continue
+        if off <= max_days:
+            scored.append((off, g))
+    if not scored:
+        return None
+    scored.sort(key=lambda x: x[0])
+    if len(scored) > 1 and scored[0][0] == scored[1][0] and scored[0][0] > 0:
+        return None
+    return scored[0][1]
 
 
 def _grade_nhl_pick(pick: Dict[str, Any], by_name: Dict[str, Any],
@@ -2313,24 +2475,60 @@ def _grade_nhl_pick(pick: Dict[str, Any], by_name: Dict[str, Any],
     subj = (pick.get("player_or_matchup") or "").strip()
     pdate = pick.get("date") or ""
 
-    # Period-3 total: no period-scoring feed available -> skip.
-    if "p3" in source or "period" in source or re.match(r"P\dG?_", market):
-        return None
+    # Period totals (P3_OVER_1.5): graded from the box header's period scores.
+    # Until 2026-10-22 these were written off as "no period feed" -- the feed
+    # existed; espn_box_logs read the wrong key ("value" vs "displayValue") and
+    # stored [None, None, None]. Regulation periods only (OT is index 3+).
+    mp = re.match(r"P(\d)G?_(OVER|UNDER)_(\d+(?:\.\d+)?)", market)
+    if mp or "p3" in source or "period" in source:
+        if not mp:
+            return None
+        per, pside, pline = int(mp.group(1)), mp.group(2).lower(), float(mp.group(3))
+        g = _find_nhl_game(subj, pdate, games)
+        if not g:
+            return None
+        hp, ap = g.get("home_periods") or [], g.get("away_periods") or []
+        if len(hp) < per or len(ap) < per or hp[per - 1] is None or ap[per - 1] is None:
+            return None     # still no period data -> never guess
+        tot = hp[per - 1] + ap[per - 1]
+        if tot == pline:
+            return "push"
+        won = (tot > pline) if pside == "over" else (tot < pline)
+        pick["outcome"] = {"period": per, "period_goals": tot, "line": pline, "side": pside.upper(),
+                           "verify": f"{g.get('away_abbrev')} @ {g.get('home_abbrev')}: period {per} goals = {tot} (line {pline}, bet {pside}) on {g.get('date')}"}
+        return "won" if won else "lost"
 
-    # Puck line (game spread): {AWAY,HOME}_PLUS_X / _pl_ source.
-    m = re.search(r"(AWAY|HOME)_PLUS_(\d+(?:\.\d+)?)", market)
+    # Puck line (game spread): {AWAY,HOME}_{PLUS,MINUS}_X / _pl_ source.
+    # MINUS (the favourite giving 1.5) was never matched -- every favourite puck
+    # line voided (found 2026-10-22). Covering -1.5 = winning by 2+.
+    m = re.search(r"(AWAY|HOME)_(PLUS|MINUS)_(\d+(?:\.\d+)?)", market)
     if m or "_pl_" in source:
         g = _find_nhl_game(subj, pdate, games)
         if not g or g.get("home_score") is None:
             return None
         side = "home" if (m and m.group(1) == "HOME") or "home" in source else "away"
-        line = float(m.group(2)) if m else 1.5
+        line = float(m.group(3)) if m else 1.5
+        minus = bool(m and m.group(2) == "MINUS")
         diff = (g["home_score"] - g["away_score"]) if side == "home" else (g["away_score"] - g["home_score"])
-        won = diff > -line   # covers the +line spread (loses by < line, or wins)
+        won = (diff > line) if minus else (diff > -line)
         pick["outcome"] = {"final_score": f"{g.get('away_abbrev')} {g['away_score']} @ {g.get('home_abbrev')} {g['home_score']}",
                            "side": side, "line": line, "market": pick.get("market"),
                            "verify": f"{g.get('away_abbrev')} {g['away_score']} @ {g.get('home_abbrev')} {g['home_score']}: {side} {'+' if line>=0 else ''}{line} — {pick.get('market')}"}
         return "won" if won else "lost"
+
+    # Anytime goal YES / NO -- a binary on the skater's goals, no number in the
+    # market (so the over/under parser below skipped it and it always voided).
+    ag = re.search(r"ANYTIME_GOAL_(YES|NO)", market) or re.search(r"anytime_goal_(yes|no)", source)
+    if ag:
+        prec = by_name.get(_norm_name(subj))
+        row = _nearest_row(prec, pdate, max_days=1)
+        if row is None or row.get("goals") is None:
+            return None
+        scored = row["goals"] >= 1
+        want_yes = ag.group(1).upper() == "YES"
+        pick["outcome"] = {"stat": "goals", "actual": row["goals"], "side": ag.group(1).upper(),
+                           "verify": f"{subj} — goals = {row['goals']} (anytime goal {ag.group(1).lower()}) on {row.get('date')}"}
+        return "won" if scored == want_yes else "lost"
 
     # Skater prop (hits / blocks / shots / points / goals / assists).
     stat = _nhl_stat(source, market)
@@ -2342,12 +2540,10 @@ def _grade_nhl_pick(pick: Dict[str, Any], by_name: Dict[str, Any],
     prec = by_name.get(_norm_name(subj))
     if not prec:
         return None
-    for game in (prec.get("games") or []):
-        try:
-            if abs((dt.date.fromisoformat((game.get("date") or "")[:10]) - dt.date.fromisoformat(pdate)).days) > 2:
-                continue
-        except Exception:
-            continue
+    # NEAREST game, not the first within +/-2 days: NHL teams play back-to-backs,
+    # and list order could grade a prop against the adjacent night's game.
+    game = _nearest_row(prec, pdate, max_days=2)
+    for game in ([game] if game else []):
         val = game.get(stat)
         if val is None:
             continue
@@ -2616,6 +2812,38 @@ def _void_preseason_nfl(history: List[Dict[str, Any]]) -> int:
         p["voided_at"] = dt.datetime.now().isoformat(timespec="seconds")
         p["voided_reason"] = ("preseason: season-baseline projections don't price "
                               "coach-scripted preseason usage; NFL picks start Week 1")
+        n += 1
+    return n
+
+
+def _void_preseason_nhl(history: List[Dict[str, Any]]) -> int:
+    """Void NHL picks dated before the 2026-27 opener (idempotent).
+
+    The NHL generators had no preseason gate: 9/16-9/28 they priced preseason
+    games (split squads, AHL call-ups, goalies in rotation) off season-baseline
+    rates -- the exact flaw that got 95 NFL preseason props retired in August.
+    Applied to ALL of them regardless of result (71 had settled at -24.4u; 54
+    more were outage-voided and would otherwise have been resurrected by the
+    10/22 backfill), so the rule is the window, never the outcome. Picks dated
+    9/27-9/28 may include games from the 9/29 opener (they were stamped with
+    the snapshot day, see _nhl_intake) -- their game date can't be recovered,
+    so they go too. _reconcile_settled_voids treats 'preseason' voids as
+    intentional.
+    """
+    n = 0
+    now = dt.datetime.now().isoformat(timespec="seconds")
+    for p in history:
+        if str(p.get("sport") or "").upper() != "NHL":
+            continue
+        d = str(p.get("date") or "")[:10]
+        if not ("2026-09-01" <= d < _NHL_2026_OPENER):
+            continue
+        if str(p.get("voided_reason") or "").startswith(("preseason", "duplicate wager")):
+            continue
+        p["voided"] = True
+        p["voided_at"] = now
+        p["voided_reason"] = ("preseason: picks made before the 2026-09-29 NHL opener priced "
+                              "preseason lineups off season-baseline rates")
         n += 1
     return n
 
@@ -3112,6 +3340,7 @@ def run() -> Dict[str, Any]:
     # Retire preseason NFL props BEFORE settlement -- a preseason pick must
     # never grade into the record (see _void_preseason_nfl).
     n_preseason_voided = _void_preseason_nfl(history)
+    n_preseason_voided += _void_preseason_nhl(history)
 
     # Retire the series-conflated RLM picks BEFORE settlement (2026-09-02,
     # idempotent): every rlm_strong pick dated on/before the fix never named a

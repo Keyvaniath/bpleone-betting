@@ -119,8 +119,17 @@ def _game_result(summary: Dict[str, Any]):
     away_sc = _to_int(away.get("score"))
 
     def _periods(c):
-        return [_to_int(x.get("value") if isinstance(x, dict) else x)
-                for x in (c.get("linescores") or [])]
+        # ESPN's summary header carries period scores as {"displayValue": "1"}
+        # (no "value" key) -- reading only "value" made every period None, which
+        # is why NHL third-period props were written off as "no period feed".
+        out = []
+        for x in (c.get("linescores") or []):
+            if isinstance(x, dict):
+                v = x.get("value")
+                out.append(_to_int(v if v is not None else x.get("displayValue")))
+            else:
+                out.append(_to_int(x))
+        return out
 
     home_nm = ((home.get("team") or {}).get("displayName") or "")
     away_nm = ((away.get("team") or {}).get("displayName") or "")

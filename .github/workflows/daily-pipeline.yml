@@ -564,6 +564,9 @@ jobs:
       - name: CFB model-vs-book edges (EXPERIMENTAL - tracked, not featured)
         working-directory: python
         run: python cfb_model.py || true
+      - name: One-shot outcome backfill for the 9/22-10/22 outage (no-op after first run)
+        working-directory: python
+        run: python outage_backfill.py || echo "outage_backfill.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: All-picks unified ledger (every surfaced pick -> training signal)
         working-directory: python
         run: python all_picks_tracker.py || echo "all_picks_tracker.py" >> "$RUNNER_TEMP/failed_steps.txt"

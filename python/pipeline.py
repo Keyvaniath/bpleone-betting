@@ -116,6 +116,8 @@ def run_pipeline(games: List[Dict[str, Any]]) -> Dict[str, Any]:
                        if k in ("ump_name", "ump_label", "ump_k_mult")},
             "recommendations": proj.recommendations,
         }
+        if g.get("is_demo"):
+            record["is_demo"] = True
         out_games.append(record)
         # Track the highest-edge play in the slate.
         for r in proj.recommendations:
@@ -126,6 +128,10 @@ def run_pipeline(games: List[Dict[str, Any]]) -> Dict[str, Any]:
         "date": dt.date.today().isoformat(),   # calendar date of the slate (YYYY-MM-DD)
         "games": out_games,
         "play_of_day": best,
+        # Carried through so consumers CAN tell (the per-game tag used to be
+        # dropped here, leaving demo matchups indistinguishable from real ones).
+        "is_demo": any(g.get("is_demo") for g in games),
+        "no_games": not games,
     }
     return manifest
 
@@ -313,8 +319,11 @@ def build_real_slate() -> Optional[List[Dict[str, Any]]]:
         print(f"  [x] schedule fetch failed: {e}")
         return None
     if not sched:
-        print("  [x] no games on today's schedule")
-        return None
+        # A real, EMPTY schedule (off-day, All-Star break, off-season) is an
+        # answer, not a failure: return [] so build_slate writes an empty slate
+        # instead of DEMO_SLATE (2026-10-22, see build_slate).
+        print("  [ok] no games on today's schedule")
+        return []
 
     try:
         # Restrict to takeable books to (a) avoid wasting API quota fetching
@@ -439,6 +448,15 @@ def build_slate(force_demo: bool = False) -> List[Dict[str, Any]]:
     if real:
         print(f"  [ok] real slate: {len(real)} games")
         return real
+    if real == []:
+        # NO GAMES TODAY (2026-10-22). This used to fall through to DEMO_SLATE,
+        # and the is_demo tag never reached today.json (run_pipeline dropped
+        # it) -- so on every MLB off-day SDP @ LAD / BOS @ NYY / CIN @ COL were
+        # published as today's slate and the run-line + under-alert generators
+        # wrote picks on them into the ledger (every 5 days through October,
+        # as each pending copy voided). All 77 wired today.json consumers were
+        # verified to run clean on an empty slate.
+        return []
     print("  [!!] real-data pull failed -- returning DEMO_SLATE TAGGED is_demo=True")
     print("        Downstream snapshot/outcomes/calibration will skip these records.")
     return [dict(g, is_demo=True) for g in DEMO_SLATE]
