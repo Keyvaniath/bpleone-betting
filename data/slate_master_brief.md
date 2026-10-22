@@ -1,13 +1,27 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-10-22T22:07:14 UTC_
+_Generated 2026-10-22T22:31:15 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -81
+- **Score:** -93
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 0
-- **Total FADES:** 81
+- **Total STRONG:** 10
+- **Total FADES:** 133
+
+## Top 5 Curated Picks
+1. **GOLF / Chandler Blanchet** (GOLF_PLAYER, score=138.79)
+   - Play: Chandler Blanchet (PLAYER_STRONG)
+   - Rationale: Cross-sport top pick (GOLF_PLAYER)
+2. **GOLF / Ben Kohles** (GOLF_PLAYER, score=105.71)
+   - Play: Ben Kohles (PLAYER_STRONG)
+   - Rationale: Cross-sport top pick (GOLF_PLAYER)
+
+## Top Events Board
+- **GOLF** / ? (TOURNAMENT_STRONG)
+  - Chandler Blanchet top 10 finish
+  - Ben Kohles top 10 finish
+  - Ben Silverman top 10 finish
 
 ## Slate ROI Projection
 - **Picks:** 0
@@ -16,13 +30,13 @@ _Generated 2026-10-22T22:07:14 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **MLB** / Anthony Kay (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
-- **MLB** / Max Scherzer (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
 - **NBA** / DEN (TEAM_FADE)
-  - Fade angle: team total UNDER
-- **NBA** / CLE (TEAM_FADE)
   - Fade angle: team total UNDER
 - **NBA** / PHI (TEAM_FADE)
   - Fade angle: team total UNDER
+- **NBA** / CLE (TEAM_FADE)
+  - Fade angle: team total UNDER
+- **NHL** / sergei bobrovsky (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / samsonov ilya (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO

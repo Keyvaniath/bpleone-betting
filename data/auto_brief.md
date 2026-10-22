@@ -6,44 +6,38 @@ _0% lineups confirmed_
 
 ## Slate
 - **3 games** scheduled
-- **40 best bets** scored: 8 DK · 0 PP · 10 NRFI · 0 SGP
-- **Auto-portfolio:** 2 picks, $100.0 stake (10.0%), expected +$49.62
-- **MC simulation:** EV +$142.04, 85% P(profit), p05 $-68.43 / p95 $313.81
+- **33 best bets** scored: 8 DK · 0 PP · 0 NRFI · 0 SGP
 
 ## Top 5 Best Bets
-1. **NYM @ TEX YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +33.1%)
-   - P(YRFI) 79.1% vs baseline 46.0%
-2. **ARI @ COL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +31.7%)
-   - P(YRFI) 77.7% vs baseline 46.0%
-3. **CIN @ ATL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +29.2%)
-   - P(YRFI) 75.2% vs baseline 46.0%
-4. **MIA @ CHC YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +23.9%)
-   - P(YRFI) 69.9% vs baseline 46.0%
-5. **TOR @ BAL YRFI (1st-inning OVER 0.5)**  (80/100 ****, edge +21.8%)
-   - P(YRFI) 67.8% vs baseline 46.0%
+1. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
+   - Player prop quality score 1.1935
+   - Elite player
+2. **LOL ShowMaker OVER 3.5 Kills**  (78/100 ****, edge —)
+   - Player prop quality score 1.1892
+   - Elite player
+3. **LOL Peyz OVER 4.5 Kills**  (78/100 ****, edge —)
+   - Player prop quality score 1.184
+   - Elite player
+4. **GOLF Lee Hodges TOP10 @ 667 (Butterfield Bermuda Championship)**  (78/100 *****, edge —)
+   - P(top 10) 13.0% -- safest finish bet (#20 (-5)).
+5. **GOLF Kihei Akina TOP10 @ 676 (Butterfield Bermuda Championship)**  (78/100 *****, edge —)
+   - P(top 10) 12.9% -- safest finish bet (#23 (-5)).
 
-## ⚠️ Trap Warnings — 14 flagged
-- **NYM @ TEX YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +33.1% looks big but only 0 settled props on this player — model unproven
-- **ARI @ COL YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +31.7% looks big but only 0 settled props on this player — model unproven
-- **CIN @ ATL YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +29.2% looks big but only 0 settled props on this player — model unproven
-- **MIA @ CHC YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +23.9% looks big but only 0 settled props on this player — model unproven
-- **TOR @ BAL YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +21.8% looks big but only 0 settled props on this player — model unproven
+## ⚠️ Trap Warnings — 4 flagged
+- **Richie Palacios OVER 0.5 batter hits** (low):
+   - Edge +13.0% looks big but only 0 settled props on this player — model unproven
+- **Liam Hicks OVER 0.5 batter hits** (low):
+   - Edge +10.4% looks big but only 0 settled props on this player — model unproven
+- **Jackson Chourio OVER 1.5 batter total bases** (low):
+   - Edge +9.0% looks big but only 0 settled props on this player — model unproven
+- **David Hamilton OVER 0.5 batter hits** (low):
+   - Edge +8.7% looks big but only 0 settled props on this player — model unproven
 
-## Bullpens GASSED tonight
-Pittsburgh Pirates, San Francisco Giants, Toronto Blue Jays, Arizona Diamondbacks, Cincinnati Reds, Detroit Tigers, Los Angeles Dodgers
-_Lean late-inning OVER on these games; fade their save situations._
-
-## NRFI/YRFI strong leans
-- **YRFI** (1st-inning OVER): NYM @ TEX, ARI @ COL, CIN @ ATL, MIA @ CHC, TOR @ BAL
-
-## Golf -- Presidents Cup
-- **Leader:** None (0) at #1
-- **Field:** 2 players  |  Status: Scheduled
+## Golf -- Butterfield Bermuda Championship
+- **Leader:** Chandler Blanchet (-9) at #1
+- **Field:** 120 players  |  Status: In Progress
+- **Play of the Tournament:** Lee Hodges TOP10 @ +667 (model 13.0%, HIGH)
+   - P(top 10) 13.0% -- safest finish bet (#20 (-5)).
 
 ## NBA -- REGULAR
 - Cleveland Cavaliers @ Philadelphia 76ers (0-0 vs 1-0)  | P(home) 88.8% fair -793 | Scheduled
@@ -64,7 +58,7 @@ _Lean late-inning OVER on these games; fade their save situations._
 - [Worlds] G2 Esports vs Dplus KIA BO1 | P(A) 50.5% fair -102/+102
 - **LoL POT:** Team Liquid Alienware ML vs CTBC Flying Oyster (Worlds, BO1) (HIGH)
 
-## Player Play of the Day -- across all sports (3447 candidates scanned)
+## Player Play of the Day -- across all sports (3431 candidates scanned)
 - **[LOL]** Inspired UNDER 3.5 Kills | model 61.7% fair -161 (ELITE)
 - **[LOL]** ShowMaker OVER 3.5 Kills | model 62.5% fair -167 (ELITE)
 - **[LOL]** Peyz OVER 4.5 Kills | model 61.3% fair -158 (ELITE)
