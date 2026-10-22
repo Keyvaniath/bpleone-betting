@@ -82,6 +82,7 @@ def actual_dk_points(row: Dict[str, Any]) -> float:
 
 
 SLATE_SPAN_DAYS = 6   # DK's weekly Main slate runs Thu night -> Mon night
+BOX_LOG_DAYS = 8      # espn_box_logs nfl days_back -- older box rows are gone
 
 
 def _gamelog_row(gl_by_name: Dict[str, Any], player: str, slate_date: str,
@@ -173,10 +174,23 @@ def run() -> Dict[str, Any]:
                 })
             slates[start] = entry
 
+    # 1b. FREEZE STALE SNAPSHOTS (2026-10-22). The freeze above only touches
+    # the CURRENT slate, so a snapshot whose slate date passed while this module
+    # wasn't running (the 9/22-10/22 cascade) stayed unfrozen forever and was
+    # never even considered for scoring. Any past-dated snapshot freezes as-is:
+    # it is still the last version that was published.
+    for sdate, entry in slates.items():
+        if entry.get("frozen") or not entry.get("lineups"):
+            continue
+        if sdate < today:
+            entry["frozen"] = True
+            entry["frozen_at"] = dt.datetime.now().isoformat(timespec="seconds")
+            entry["frozen_note"] = "frozen late: slate date passed while the module was not running"
+
     # 2. SCORE frozen slates that are >= 1 day old and unscored.
     gl_by_name = _load(GL_PATH).get("by_name") or {}
     for sdate, entry in slates.items():
-        if entry.get("scored") or not entry.get("frozen"):
+        if entry.get("scored") or entry.get("unscoreable") or not entry.get("frozen"):
             continue
         try:
             age = (dt.date.fromisoformat(today) - dt.date.fromisoformat(sdate)).days
@@ -232,6 +246,17 @@ def run() -> Dict[str, Any]:
             entry["scored"] = True
             entry["scored_at"] = dt.datetime.now().isoformat(timespec="seconds")
             entry["results"] = builds_out
+        elif age > SLATE_SPAN_DAYS + BOX_LOG_DAYS:
+            # TERMINAL, NOT RETRIED FOREVER (2026-10-22). The box-score feed
+            # (espn_box_logs nfl) keeps ~8 days; once a slate's last game is
+            # older than that and nothing scored, the box rows are gone for
+            # good. Four slates (9/17-9/24) froze during the 30-day pipeline
+            # cascade and could never be graded. Disclose them, never guess.
+            entry["unscoreable"] = True
+            entry["unscoreable_reason"] = (
+                "box scores aged out of the ~8-day feed window before this slate "
+                "could be graded (the 9/22-10/22 pipeline outage) -- never scored, "
+                "never guessed")
 
     # 3. CUMULATIVE record across scored slates.
     scored = [(d, e) for d, e in sorted(slates.items()) if e.get("scored")]

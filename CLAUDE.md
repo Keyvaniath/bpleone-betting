@@ -41,6 +41,24 @@ bpleone-site/
 
 ## Current deployment state (LIVE)
 
+- **2026-10-22 (latest) — WHY BOTH OUTAGES WERE SILENT: the alert was muted
+  since July.** The freshness canary DID trip red during the 30-day cascade
+  ("sport_coverage.json: 316h old") -- but health-alert.yml dedupes against an
+  OPEN issue, and **issue #45 had been open since 2026-07-01**, so every trip
+  logged "Alert already open: #45" and sent NOTHING (also through the 6-day
+  September outage). FIX: health-alert now CLOSES the alert issue on recovery
+  (with a "recovered" comment) so an open alert always means "dark right now",
+  and while still dark it RE-NOTIFIES with a comment at most once per 22h.
+  **RULE: an alert channel whose dedupe key can stick open is a mute button --
+  every dedupe needs an auto-clear.** Also: NFL DFS receipts gained the MLB
+  desk's terminal `unscoreable` state (box rows age out of espn_box_logs' ~8-day
+  window; 4 slates frozen during the cascade can never be graded -- disclosed,
+  never guessed) plus a stale-snapshot freeze sweep (the freeze only touched the
+  CURRENT slate, so past-dated snapshots stayed open forever). Confirmed the
+  9/08 MLB 'IL' fix: receipt bias -59.8 -> -14.1, dead slots 4.4 -> 0.9/slate.
+  Open watch: NFL DFS optimal runs -61 pts/slate on n=3 (2 clean slates) --
+  part winner's-curse from optimizing on projections, too small to tune yet.
+
 - **2026-10-22 (later) — ALPHA OFF-SEASON STATE + the broken no-pick tweet:**
   (1) **The Alpha pool stays MLB-only, measured not assumed.** Replaying the
   v2 gate over every other sport's settled ledger picks produced ZERO
