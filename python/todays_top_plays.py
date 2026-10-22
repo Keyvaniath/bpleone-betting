@@ -233,6 +233,32 @@ def _load_proven_negative_families():
         return set()
 
 
+UNGRADEABLE_MIN_VOIDS = 20
+
+
+def _load_ungradeable_markets():
+    """(sport, market) pairs that have NEVER settled: >= 20 ledger picks voided
+    as unsettleable and zero graded (2026-10-22). KBO 'one_plus_tb' was on this
+    board 48 times and graded 0 -- there is no KBO box-score feed -- so the
+    master board was publishing picks that could never count, win or lose. A
+    pick we cannot grade is not a pick we can stand behind. Data-driven: the
+    pair returns automatically the day a grader starts settling it."""
+    p = os.path.join(DATA_DIR, "all_picks_ledger.json")
+    if not os.path.exists(p): return set()
+    try:
+        with open(p) as f: picks = json.load(f).get("picks") or []
+    except Exception:
+        return set()
+    voids, graded = {}, set()
+    for x in picks:
+        k = (str(x.get("sport") or "").upper(), str(x.get("market") or "").lower())
+        if x.get("settled") and not x.get("voided"):
+            graded.add(k)
+        elif x.get("voided") and str(x.get("voided_reason") or "").startswith("unsettleable"):
+            voids[k] = voids.get(k, 0) + 1
+    return {k for k, n in voids.items() if n >= UNGRADEABLE_MIN_VOIDS and k not in graded}
+
+
 def _shrink_prob(raw_prob, source, fair_american=None, market=None):
     """Two-stage calibration:
 
@@ -295,6 +321,8 @@ def run() -> Dict[str, Any]:
     if _PROVEN_NEG_CACHE is None:
         _PROVEN_NEG_CACHE = _load_proven_negative_families()
     n_curated_out = 0
+    ungradeable = _load_ungradeable_markets()
+    n_ungradeable_out = 0
 
     candidates: List[Dict[str, Any]] = []
     for src, doc in (("player", player_pot), ("team", team_pot)):
@@ -307,6 +335,9 @@ def run() -> Dict[str, Any]:
             # real sample (e.g. to_hit_hr -92u, k_1plus -84u). ROI, not hit rate.
             if _market_family(x.get("market")) in _PROVEN_NEG_CACHE:
                 n_curated_out += 1
+                continue
+            if (str(x.get("sport") or "").upper(), str(x.get("market") or "").lower()) in ungradeable:
+                n_ungradeable_out += 1
                 continue
             # Get explicit fair_american FIRST so shrinkage can anchor to market
             fair = x.get("fair_american")
@@ -392,6 +423,8 @@ def run() -> Dict[str, Any]:
         "curation_note": ("Featured board excludes market families proven to lose "
                           "money over a real settled sample (ROI, not hit rate). "
                           f"{n_curated_out} candidate(s) filtered this run."),
+        "n_excluded_ungradeable": n_ungradeable_out,
+        "ungradeable_markets": sorted(f"{a}:{b}" for a, b in ungradeable),
         "by_sport": by_sport,
         "top_25": top_25,
         "top_5_by_kelly": sorted(deduped, key=lambda c: -c["kelly_fraction"])[:5],
