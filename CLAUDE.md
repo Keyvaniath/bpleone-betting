@@ -41,6 +41,20 @@ bpleone-site/
 
 ## Current deployment state (LIVE)
 
+- **2026-10-23 (final) — THE HEALTH MONITOR WAS BLIND IN CI:** data_health aged
+  state files by os.path.getmtime, and in an Actions checkout mtime = checkout
+  time, so in the run that PUBLISHES data_health.json every file looked ~0 min
+  old -- the live-poller, golf and per-sport staleness checks could never fire.
+  Ages now come from each artifact's generated_at (mtime fallback). Thresholds
+  track the DELIVERED cadence: live-games.yml is scheduled every 20 min but
+  GitHub runs it ~5x/day, so live data >60 min behind = yellow, >240 = red.
+  Golf now refreshes on the heartbeat (golf_pipeline + golf_live_tracker; it was
+  daily-only) with a 300-min bar. 8 producers added to DESK_FRESHNESS. ALSO
+  this day: every remaining `|| true` workflow step (154) records failure
+  (soft by design: odds_key_preflight, multi_book_lines, alpha_email
+  --send-self, alerters, data_health); daily-pipeline has a concurrency group.
+  **RULE: never measure freshness by file mtime in CI -- read generated_at.**
+
 - **2026-10-23 (latest) — NBA/NHL PROPS WERE PRICED OFF 2024-25 TABLES + PRESEASON:**
   the 27 NBA/NHL/WNBA prop generators carry hard-coded PLAYER_DB tables
   (2024-25 averages AND teams). A real-stats layer existed
