@@ -26,6 +26,7 @@ concurrency:
 
 permissions:
   contents: write
+  issues: write       # the daily Alpha email issue (2026-10-23)
 
 # Global paid-odds budget: The Odds API monthly quota is thin (free tier).
 # 14/day = props(8) + one multi-book snapshot(3) + one pipeline enrich(3);
@@ -598,6 +599,42 @@ jobs:
           SMTP_USER: ${{ secrets.SMTP_USER }}
           SMTP_PASS: ${{ secrets.SMTP_PASS }}
         run: python alpha_email.py --send-self || true
+      # PASSWORD-FREE DAILY EMAIL (Brandon, 2026-10-23): the SMTP path needs an
+      # app password nobody here can enter, so the day's Alpha card is posted
+      # ONCE per date as a comment on one pinned issue, and GitHub emails it to
+      # the owner (his Gmail filter stars + labels bpleone-betting mail).
+      # Public, like the site. Off-season: nothing posted.
+      - name: Daily Alpha email via GitHub issue (one comment per date)
+        if: always()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            let d;
+            try { d = JSON.parse(fs.readFileSync('data/alpha_email.json', 'utf8')); }
+            catch (e) { core.warning('no alpha_email.json: ' + e.message); return; }
+            if (!d || !d.date || !d.text) { core.info('no composed card'); return; }
+            if (d.offseason) { core.info('off-season: no daily Alpha email'); return; }
+            const NL = String.fromCharCode(10);
+            const marker = '<!-- alpha-date:' + d.date + ' -->';
+            const title = '📬 EdgeStat daily Alpha';
+            const { owner, repo } = context.repo;
+            const open = await github.paginate(github.rest.issues.listForRepo, { owner, repo, state: 'open', per_page: 100 });
+            let issue = open.find(i => i.title === title && !i.pull_request);
+            if (!issue) {
+              const body = [
+                '@' + owner + ' -- the daily Alpha Pick card lands here once a day (each comment is emailed to you).',
+                '',
+                'Composed by python/alpha_email.py from the same record as alpha-pick.html. Informational only, 21+.',
+              ].join(NL);
+              issue = (await github.rest.issues.create({ owner, repo, title, body })).data;
+              core.info('created issue #' + issue.number);
+            }
+            const cs = await github.paginate(github.rest.issues.listComments, { owner, repo, issue_number: issue.number, per_page: 100 });
+            if (cs.some(c => (c.body || '').includes(marker))) { core.info('already posted for ' + d.date); return; }
+            const body = ['**' + d.subject + '**', '', d.text, '', marker].join(NL);
+            await github.rest.issues.createComment({ owner, repo, issue_number: issue.number, body });
+            core.info('posted ' + d.date + ' to #' + issue.number);
       - name: Weekly receipts thread (rolling trailing-week, ready to post any day)
         working-directory: python
         run: python weekly_receipts_thread.py || echo "weekly_receipts_thread.py" >> "$RUNNER_TEMP/failed_steps.txt"
