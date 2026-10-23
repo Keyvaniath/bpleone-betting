@@ -1,10 +1,10 @@
 # EdgeStat Daily Summary — 2026-10-23
 
-## 🏥 Model Health: 63.2/100 [OK]
+## 🏥 Model Health: 60.7/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.9/100
-  - 🔴 Hit Rate Trend: 24.5/100
-  - 🔴 Brier Trend: 8.8/100
+  - 🟢 Calibration Freshness: 99.7/100
+  - 🔴 Hit Rate Trend: 20.4/100
+  - 🔴 Brier Trend: 0.4/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 100.0/100
   - 🟡 Edge Count: 65.7/100
@@ -55,14 +55,14 @@
 - Hot teams: **6** | Cold teams: **15** | Over-heavy: 0 | Under-heavy: 21
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (144)
-- RESIDUAL_DIVERGENCE: **12**
+## ⚠️ Anomaly Detector (141)
+- RESIDUAL_DIVERGENCE: **9**
 - STEAM_MOVE: **132**
-  - Denver Nuggets (NBA): Denver Nuggets UNDERPERFORMING expected margin by 10.7pts in recent games -- model bias may persist
-  - Carolina Hurricanes (NHL): Carolina Hurricanes UNDERPERFORMING expected margin by 11.4pts in recent games -- model bias may persist
-  - Seattle Kraken (NHL): Seattle Kraken UNDERPERFORMING expected margin by 7.0pts in recent games -- model bias may persist
   - Atlanta Dream (WNBA): Atlanta Dream OUTPERFORMING expected margin by 12.0pts in recent games -- model bias may persist
   - Golden State Valkyries (WNBA): Golden State Valkyries UNDERPERFORMING expected margin by 9.0pts in recent games -- model bias may persist
+  - Columbus Crew (MLS): Columbus Crew OUTPERFORMING expected margin by 7.7pts in recent games -- model bias may persist
+  - Inter Miami CF (MLS): Inter Miami CF UNDERPERFORMING expected margin by 7.3pts in recent games -- model bias may persist
+  - New York City FC (MLS): New York City FC OUTPERFORMING expected margin by 14.9pts in recent games -- model bias may persist
 
 ## 💰 Today's Portfolio (12 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)

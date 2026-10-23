@@ -1,5 +1,5 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-10-23T06:42:56 UTC_
+_Generated 2026-10-23T07:14:18 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
@@ -36,13 +36,13 @@ _Generated 2026-10-23T06:42:56 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **GOLF** / Charley Hoffman (PLAYER_FADE)
-  - Fade angle: miss cut YES + high round score
 - **GOLF** / Luke List (PLAYER_FADE)
+  - Fade angle: miss cut YES + high round score
+- **GOLF** / Charley Hoffman (PLAYER_FADE)
   - Fade angle: miss cut YES + high round score
 - **GOLF** / Patton Kizzire (PLAYER_FADE)
   - Fade angle: miss cut YES + high round score
 - **GOLF** / Ben James (PLAYER_FADE)
   - Fade angle: miss cut YES + high round score
-- **GOLF** / Christo Lamprecht (PLAYER_FADE)
+- **GOLF** / David Lingmerth (PLAYER_FADE)
   - Fade angle: miss cut YES + high round score
