@@ -68,7 +68,7 @@ jobs:
         env:
           EDGESTAT_WORKER_URL: ${{ secrets.EDGESTAT_WORKER_URL }}
         working-directory: python
-        run: python sync_overrides_from_kv.py || true
+        run: python sync_overrides_from_kv.py || echo "sync_overrides_from_kv.py" >> "$RUNNER_TEMP/failed_steps.txt"
 
       # Fresh WNBA box logs BEFORE settlement -- the grader settles every beat
       # but its inputs only refreshed 2x/day in the pipeline, so in-season WNBA
@@ -78,9 +78,9 @@ jobs:
         continue-on-error: true
         working-directory: python
         run: |
-          python espn_box_logs.py wnba || true
-          python espn_box_logs.py nba || true
-          python espn_event_results.py soccer || true
+          python espn_box_logs.py wnba || echo "espn_box_logs.py" >> "$RUNNER_TEMP/failed_steps.txt"
+          python espn_box_logs.py nba || echo "espn_box_logs.py" >> "$RUNNER_TEMP/failed_steps.txt"
+          python espn_event_results.py soccer || echo "espn_event_results.py" >> "$RUNNER_TEMP/failed_steps.txt"
 
       # World Cup hub stays live through the day: re-price off fresh finals
       # (standings/elo blend) every beat during the tournament.
@@ -89,9 +89,9 @@ jobs:
         continue-on-error: true
         working-directory: python
         run: |
-          python worldcup_pipeline.py || true
-          python worldcup_model.py || true
-          python worldcup_advancement.py || true
+          python worldcup_pipeline.py || echo "worldcup_pipeline.py" >> "$RUNNER_TEMP/failed_steps.txt"
+          python worldcup_model.py || echo "worldcup_model.py" >> "$RUNNER_TEMP/failed_steps.txt"
+          python worldcup_advancement.py || echo "worldcup_advancement.py" >> "$RUNNER_TEMP/failed_steps.txt"
 
       # Self-learning -- update every 5 min, all day
       - name: All-picks unified ledger (settle + log)
@@ -102,10 +102,10 @@ jobs:
         run: python recent_picks.py || echo "recent_picks.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Alpha Pick of the Day track record (settle slip legs off the ledger)
         working-directory: python
-        run: python alpha_pod_tracker.py || true
+        run: python alpha_pod_tracker.py || echo "alpha_pod_tracker.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: World Cup model report card (refresh as picks settle)
         working-directory: python
-        run: python worldcup_accuracy.py || true
+        run: python worldcup_accuracy.py || echo "worldcup_accuracy.py" >> "$RUNNER_TEMP/failed_steps.txt"
 
       # Learning Integrity audit BEFORE self-learn so guards are fresh
       - name: Learning Integrity audit (Wilson CI + Brier + ECE + guards)
@@ -118,7 +118,7 @@ jobs:
       # equity chart / prove-it strip never lag the settled count intraday.
       - name: Strategy simulator replay deck (intraday refresh)
         working-directory: python
-        run: python strategy_sim.py || true
+        run: python strategy_sim.py || echo "strategy_sim.py" >> "$RUNNER_TEMP/failed_steps.txt"
 
       # NBA/WNBA book edges + CLV: snapshot the DraftKings line every beat so the
       # open->close movement (the sharp's metric) actually accrues through the day.
@@ -126,16 +126,16 @@ jobs:
         timeout-minutes: 2
         continue-on-error: true
         working-directory: python
-        run: python nba_book_edges.py || true
+        run: python nba_book_edges.py || echo "nba_book_edges.py" >> "$RUNNER_TEMP/failed_steps.txt"
 
       # Stat-scale projection report card grows as picks settle through the day.
       - name: Live projection trainer (intraday refresh)
         working-directory: python
-        run: python projection_trainer.py || true
+        run: python projection_trainer.py || echo "projection_trainer.py" >> "$RUNNER_TEMP/failed_steps.txt"
 
       - name: Top-5 confluence picker (daily action list)
         working-directory: python
-        run: python confluence_top_5.py || true
+        run: python confluence_top_5.py || echo "confluence_top_5.py" >> "$RUNNER_TEMP/failed_steps.txt"
 
       # FREE odds refresh (ESPN/DraftKings, no key) -- every heartbeat appends a
       # timestamped snapshot to data/odds_history.json so line-movement / steam and
@@ -144,7 +144,7 @@ jobs:
         timeout-minutes: 1
         continue-on-error: true
         working-directory: python
-        run: python espn_odds.py || true
+        run: python espn_odds.py || echo "espn_odds.py" >> "$RUNNER_TEMP/failed_steps.txt"
 
       # CFB edges re-price against the refreshed lines (ratings only change when
       # games finish, so the daily run owns those; this just re-shrinks against
@@ -153,35 +153,35 @@ jobs:
         timeout-minutes: 2
         continue-on-error: true
         working-directory: python
-        run: python cfb_model.py || true
+        run: python cfb_model.py || echo "cfb_model.py" >> "$RUNNER_TEMP/failed_steps.txt"
 
       # Line movement / steam from the free odds history (open->current per game)
       - name: Line movement / steam detector (free odds)
         working-directory: python
-        run: python line_movement.py || true
+        run: python line_movement.py || echo "line_movement.py" >> "$RUNNER_TEMP/failed_steps.txt"
 
       # Book-calibrated game win probs track the moving line all day (game.html
       # sub-line). Local-only join of today.json + the espn_odds refresh above.
       - name: Book-calibrated game win probs (intraday refresh)
         working-directory: python
-        run: python game_calibrated_probs.py || true
+        run: python game_calibrated_probs.py || echo "game_calibrated_probs.py" >> "$RUNNER_TEMP/failed_steps.txt"
 
       # CLV resolves off the LAST pre-game snapshot -- refreshing intraday means
       # the close is the actual close, not yesterday evening's line.
       - name: CLV tracker (open->close on the fresh snapshot)
         working-directory: python
-        run: python clv_tracker.py || true
+        run: python clv_tracker.py || echo "clv_tracker.py" >> "$RUNNER_TEMP/failed_steps.txt"
 
       # Situational anomaly rollup (steam / compound bullpen / pen mismatch / ump)
       # re-aggregates off the fresh odds snapshot so steam alerts surface intraday.
       - name: Anomaly detector (situational rollup refresh)
         working-directory: python
-        run: python anomaly_detector.py || true
+        run: python anomaly_detector.py || echo "anomaly_detector.py" >> "$RUNNER_TEMP/failed_steps.txt"
 
       # Sharp-money detection -- detect line moves continuously
       - name: Reverse Line Movement detector
         working-directory: python
-        run: python reverse_line_movement.py || true
+        run: python reverse_line_movement.py || echo "reverse_line_movement.py" >> "$RUNNER_TEMP/failed_steps.txt"
 
       # Multi-book line shopping (Bovada + ESPN + Odds API if key set)
       - name: Multi-book line aggregator
@@ -208,7 +208,7 @@ jobs:
       # Lock status -- live game progress
       - name: Live locks status tracker
         working-directory: python
-        run: python live_locks_status.py || true
+        run: python live_locks_status.py || echo "live_locks_status.py" >> "$RUNNER_TEMP/failed_steps.txt"
 
       # Data source verification -- ping all external APIs, prove they're live
       # Bounded + non-fatal: pings several external APIs and can hang/slow on a
@@ -235,21 +235,21 @@ jobs:
       # nba_book_edges) has already refreshed this beat.
       - name: Signal tape aggregator (alerts feed)
         working-directory: python
-        run: python alerts_feed.py || true
+        run: python alerts_feed.py || echo "alerts_feed.py" >> "$RUNNER_TEMP/failed_steps.txt"
 
       # Calibration status snapshot
       - name: Calibration status snapshot
         working-directory: python
-        run: python calibration_status.py || true
+        run: python calibration_status.py || echo "calibration_status.py" >> "$RUNNER_TEMP/failed_steps.txt"
 
       # Model health score
       - name: Model health score (always-on)
         working-directory: python
-        run: python model_health.py || true
+        run: python model_health.py || echo "model_health.py" >> "$RUNNER_TEMP/failed_steps.txt"
 
       - name: Site directory live-status refresh
         working-directory: python
-        run: python site_directory.py || true
+        run: python site_directory.py || echo "site_directory.py" >> "$RUNNER_TEMP/failed_steps.txt"
 
       # if: always() -- commit refreshed data even if an earlier best-effort
       # step failed or was bounded out (only the overall job timeout can skip it).

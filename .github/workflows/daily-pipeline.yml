@@ -202,12 +202,12 @@ jobs:
       # Free-data only -- no paid-quota cost.
       - name: MLB DFS (DK salaries -> projections -> optimal lineup)
         working-directory: python
-        run: python mlb_dfs.py || true
+        run: python mlb_dfs.py || echo "mlb_dfs.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Daily accountability: snapshot/freeze the published optimal, grade
       # yesterday's from real box scores every morning.
       - name: MLB DFS receipts (grade yesterday's published lineup)
         working-directory: python
-        run: python mlb_dfs_receipts.py || true
+        run: python mlb_dfs_receipts.py || echo "mlb_dfs_receipts.py" >> "$RUNNER_TEMP/failed_steps.txt"
 
       # Unify today.json (model line + market + recs) with every per-matchup prop
       # into one card per game -> data/mlb_game_cards.json, powering the clickable
@@ -423,10 +423,10 @@ jobs:
       - name: MLB firehose props (2+ hits / 3+ TB / 1+ RBI / alt game totals)
         working-directory: python
         run: |
-          python mlb_batter_2plus_hits_props.py || true
-          python mlb_batter_3plus_tb_props.py || true
-          python mlb_batter_rbi_props.py || true
-          python mlb_game_total_alt_props.py || true
+          python mlb_batter_2plus_hits_props.py || echo "mlb_batter_2plus_hits_props.py" >> "$RUNNER_TEMP/failed_steps.txt"
+          python mlb_batter_3plus_tb_props.py || echo "mlb_batter_3plus_tb_props.py" >> "$RUNNER_TEMP/failed_steps.txt"
+          python mlb_batter_rbi_props.py || echo "mlb_batter_rbi_props.py" >> "$RUNNER_TEMP/failed_steps.txt"
+          python mlb_game_total_alt_props.py || echo "mlb_game_total_alt_props.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: NBA player heat tracker (L5 vs season PTS/REB/AST deltas)
         working-directory: python
         run: python nba_player_heat.py || echo "nba_player_heat.py" >> "$RUNNER_TEMP/failed_steps.txt"
@@ -546,15 +546,15 @@ jobs:
       - name: Box-score logs for settlement (WNBA live; NBA + NFL season-ready)
         working-directory: python
         run: |
-          python espn_box_logs.py wnba || true
-          python espn_box_logs.py nba || true
-          python espn_box_logs.py nfl || true
-          python espn_box_logs.py nhl || true
-          python espn_event_results.py golf || true
-          python espn_event_results.py tennis || true
-          python espn_event_results.py ufc || true
-          python espn_event_results.py f1 || true
-          python espn_event_results.py soccer || true
+          python espn_box_logs.py wnba || echo "espn_box_logs.py" >> "$RUNNER_TEMP/failed_steps.txt"
+          python espn_box_logs.py nba || echo "espn_box_logs.py" >> "$RUNNER_TEMP/failed_steps.txt"
+          python espn_box_logs.py nfl || echo "espn_box_logs.py" >> "$RUNNER_TEMP/failed_steps.txt"
+          python espn_box_logs.py nhl || echo "espn_box_logs.py" >> "$RUNNER_TEMP/failed_steps.txt"
+          python espn_event_results.py golf || echo "espn_event_results.py" >> "$RUNNER_TEMP/failed_steps.txt"
+          python espn_event_results.py tennis || echo "espn_event_results.py" >> "$RUNNER_TEMP/failed_steps.txt"
+          python espn_event_results.py ufc || echo "espn_event_results.py" >> "$RUNNER_TEMP/failed_steps.txt"
+          python espn_event_results.py f1 || echo "espn_event_results.py" >> "$RUNNER_TEMP/failed_steps.txt"
+          python espn_event_results.py soccer || echo "espn_event_results.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # College football desk. MUST run BEFORE the ledger build so the day's
       # experimental edges are collected in the same run, and AFTER
       # historical_games (line ~406) so settlement has fresh finals. Reads the
@@ -563,13 +563,13 @@ jobs:
       # display-code-must-not-abort rule), it just publishes no edges.
       - name: CFB results cache (top up this season's FBS finals)
         working-directory: python
-        run: python cfb_results_cache.py || true
+        run: python cfb_results_cache.py || echo "cfb_results_cache.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: CFB Elo ratings (fit on real results, walk-forward backtested)
         working-directory: python
-        run: python cfb_ratings.py || true
+        run: python cfb_ratings.py || echo "cfb_ratings.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: CFB model-vs-book edges (EXPERIMENTAL - tracked, not featured)
         working-directory: python
-        run: python cfb_model.py || true
+        run: python cfb_model.py || echo "cfb_model.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: One-shot outcome backfill for the 9/22-10/22 outage (no-op after first run)
         working-directory: python
         run: python outage_backfill.py || echo "outage_backfill.py" >> "$RUNNER_TEMP/failed_steps.txt"
@@ -578,19 +578,19 @@ jobs:
         run: python all_picks_tracker.py || echo "all_picks_tracker.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Recent-picks digest (lightweight ledger for client pages, ~150KB vs 7.4MB)
         working-directory: python
-        run: python recent_picks.py || true
+        run: python recent_picks.py || echo "recent_picks.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Tamper-evident ledger fingerprint (hash chain over settled record)
         working-directory: python
-        run: python ledger_hashchain.py || true
+        run: python ledger_hashchain.py || echo "ledger_hashchain.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Alpha Pick of the Day track record (snapshot slip + settle via ledger)
         working-directory: python
-        run: python alpha_pod_tracker.py || true
+        run: python alpha_pod_tracker.py || echo "alpha_pod_tracker.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Alpha "One Pick" record (single best MLB prop/day, backfilled from ledger)
         working-directory: python
-        run: python alpha_pick_record.py || true
+        run: python alpha_pick_record.py || echo "alpha_pick_record.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Daily Alpha tweet (compose ready-to-post text from the live record)
         working-directory: python
-        run: python alpha_tweet.py || true
+        run: python alpha_tweet.py || echo "alpha_tweet.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Daily Alpha EMAIL (compose; owner-only send if SMTP secrets exist)
         working-directory: python
         env:
@@ -600,10 +600,10 @@ jobs:
         run: python alpha_email.py --send-self || true
       - name: Weekly receipts thread (rolling trailing-week, ready to post any day)
         working-directory: python
-        run: python weekly_receipts_thread.py || true
+        run: python weekly_receipts_thread.py || echo "weekly_receipts_thread.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: World Cup model report card (accuracy + calibration from settled picks)
         working-directory: python
-        run: python worldcup_accuracy.py || true
+        run: python worldcup_accuracy.py || echo "worldcup_accuracy.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Self-learn shrinkage weights (per-source feedback loop)
         working-directory: python
         run: python self_learn_weights.py || echo "self_learn_weights.py" >> "$RUNNER_TEMP/failed_steps.txt"
@@ -615,22 +615,22 @@ jobs:
         run: python recalibration.py || echo "recalibration.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Live projection trainer (stat-scale RMSE/bias from the free feeds)
         working-directory: python
-        run: python projection_trainer.py || true
+        run: python projection_trainer.py || echo "projection_trainer.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Strategy simulator replay deck (settled ledger -> strategy-sim.html)
         working-directory: python
         run: python strategy_sim.py || echo "strategy_sim.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Out-of-sample curation validation (held-out edge proof -> track-record / calibration-map)
         working-directory: python
-        run: python validate_curation_oos.py || true
+        run: python validate_curation_oos.py || echo "validate_curation_oos.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Prospective forward-test (no-hindsight; anchor + frozen cut-set persisted)
         working-directory: python
-        run: python forward_test.py || true
+        run: python forward_test.py || echo "forward_test.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Durable-edge deep dive (robustness + sizing for the carry family)
         working-directory: python
-        run: python durable_edge_analysis.py || true
+        run: python durable_edge_analysis.py || echo "durable_edge_analysis.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Family durability scorecard (per-family CI + split-half tiers)
         working-directory: python
-        run: python family_durability.py || true
+        run: python family_durability.py || echo "family_durability.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Cross-sport parlay builder (2-leg + 3-leg combos with same-game correlation)
         working-directory: python
         run: python cross_sport_parlay_builder.py || echo "cross_sport_parlay_builder.py" >> "$RUNNER_TEMP/failed_steps.txt"
@@ -651,231 +651,231 @@ jobs:
         run: python sharp_action_radar.py || echo "sharp_action_radar.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Reverse Line Movement detector (sharp money signal)
         working-directory: python
-        run: python reverse_line_movement.py || true
+        run: python reverse_line_movement.py || echo "reverse_line_movement.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: MLB Total Bases props (1+/2+/3+ TB Poisson projections)
         working-directory: python
-        run: python mlb_total_bases_props.py || true
+        run: python mlb_total_bases_props.py || echo "mlb_total_bases_props.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: MLB HRR (Hits+Runs+RBI) combo prop projections
         working-directory: python
-        run: python mlb_hrr_props.py || true
+        run: python mlb_hrr_props.py || echo "mlb_hrr_props.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: MLB Doubles / Extra-Base Hits prop projections
         working-directory: python
-        run: python mlb_doubles_props.py || true
+        run: python mlb_doubles_props.py || echo "mlb_doubles_props.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: MLB Pitcher Walks (BB) prop projections
         working-directory: python
-        run: python mlb_pitcher_walks_props.py || true
+        run: python mlb_pitcher_walks_props.py || echo "mlb_pitcher_walks_props.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: MLB Pitcher Outs Recorded prop projections
         working-directory: python
-        run: python mlb_pitcher_outs_props.py || true
+        run: python mlb_pitcher_outs_props.py || echo "mlb_pitcher_outs_props.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: NBA player points props (per-player projections)
         working-directory: python
-        run: python nba_player_points_props.py || true
+        run: python nba_player_points_props.py || echo "nba_player_points_props.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: NBA player assists props
         working-directory: python
-        run: python nba_player_assists_props.py || true
+        run: python nba_player_assists_props.py || echo "nba_player_assists_props.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: NBA player rebounds props
         working-directory: python
-        run: python nba_player_rebounds_props.py || true
+        run: python nba_player_rebounds_props.py || echo "nba_player_rebounds_props.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: NHL skater hits + blocks + PIM props
         working-directory: python
-        run: python nhl_skater_hits_blocks_props.py || true
+        run: python nhl_skater_hits_blocks_props.py || echo "nhl_skater_hits_blocks_props.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: NHL goalie saves prop projections
         working-directory: python
-        run: python nhl_goalie_saves_props.py || true
+        run: python nhl_goalie_saves_props.py || echo "nhl_goalie_saves_props.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: NHL per-period totals (1st/2nd/3rd period over/under)
         working-directory: python
-        run: python nhl_period_totals_props.py || true
+        run: python nhl_period_totals_props.py || echo "nhl_period_totals_props.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: NHL anytime goalscorer prop projections
         working-directory: python
-        run: python nhl_anytime_goal_props.py || true
+        run: python nhl_anytime_goal_props.py || echo "nhl_anytime_goal_props.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: NHL skater shots-on-goal (SOG) prop projections
         working-directory: python
-        run: python nhl_skater_sog_props.py || true
+        run: python nhl_skater_sog_props.py || echo "nhl_skater_sog_props.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: NHL skater points (G+A) prop projections
         working-directory: python
-        run: python nhl_skater_points_props.py || true
+        run: python nhl_skater_points_props.py || echo "nhl_skater_points_props.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: NBA player PRA combo prop projections
         working-directory: python
-        run: python nba_player_pra_props.py || true
+        run: python nba_player_pra_props.py || echo "nba_player_pra_props.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: NBA player free-throw attempts (FTA) prop projections
         working-directory: python
-        run: python nba_player_ft_attempts_props.py || true
+        run: python nba_player_ft_attempts_props.py || echo "nba_player_ft_attempts_props.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Soccer total shots prop projections
         working-directory: python
-        run: python soccer_total_shots_props.py || true
+        run: python soccer_total_shots_props.py || echo "soccer_total_shots_props.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: NBA player 3-pointers (3PM) props
         working-directory: python
-        run: python nba_player_threes_props.py || true
+        run: python nba_player_threes_props.py || echo "nba_player_threes_props.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: NBA team alt-totals + 1H/1Q totals + alt-spreads
         working-directory: python
-        run: python nba_team_alts_props.py || true
+        run: python nba_team_alts_props.py || echo "nba_team_alts_props.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: NBA player blocks + steals prop projections
         working-directory: python
-        run: python nba_player_blocks_steals_props.py || true
+        run: python nba_player_blocks_steals_props.py || echo "nba_player_blocks_steals_props.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: NBA double-double yes/no prop projections
         working-directory: python
-        run: python nba_double_double_props.py || true
+        run: python nba_double_double_props.py || echo "nba_double_double_props.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: NBA player turnovers prop projections
         working-directory: python
-        run: python nba_player_turnovers_props.py || true
+        run: python nba_player_turnovers_props.py || echo "nba_player_turnovers_props.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Combo markets (derive from the points/assists/rebounds prop outputs above).
       - name: NBA player combo props (PA / PR / RA)
         working-directory: python
         run: |
-          python nba_player_pa_combo_props.py || true
-          python nba_player_pr_combo_props.py || true
-          python nba_player_ra_combo_props.py || true
+          python nba_player_pa_combo_props.py || echo "nba_player_pa_combo_props.py" >> "$RUNNER_TEMP/failed_steps.txt"
+          python nba_player_pr_combo_props.py || echo "nba_player_pr_combo_props.py" >> "$RUNNER_TEMP/failed_steps.txt"
+          python nba_player_ra_combo_props.py || echo "nba_player_ra_combo_props.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: WNBA player 3-pointers (3PM) props
         working-directory: python
-        run: python wnba_player_threes_props.py || true
+        run: python wnba_player_threes_props.py || echo "wnba_player_threes_props.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: WNBA player blocks+steals combo prop
         working-directory: python
-        run: python wnba_player_blocks_steals_props.py || true
+        run: python wnba_player_blocks_steals_props.py || echo "wnba_player_blocks_steals_props.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: MLB pitcher rest-day advantage model
         working-directory: python
-        run: python mlb_pitcher_rest_advantage.py || true
+        run: python mlb_pitcher_rest_advantage.py || echo "mlb_pitcher_rest_advantage.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: NBA team total points (O/U) prop projections
         working-directory: python
-        run: python nba_team_total_props.py || true
+        run: python nba_team_total_props.py || echo "nba_team_total_props.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: NHL goalie shutout yes/no prop projections
         working-directory: python
-        run: python nhl_goalie_shutout_props.py || true
+        run: python nhl_goalie_shutout_props.py || echo "nhl_goalie_shutout_props.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: NHL first goalscorer prop projections
         working-directory: python
-        run: python nhl_first_goalscorer_props.py || true
+        run: python nhl_first_goalscorer_props.py || echo "nhl_first_goalscorer_props.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Tennis upcoming-slate feed (ESPN -> tennis_state.json)
         working-directory: python
-        run: python tennis_pipeline.py || true
+        run: python tennis_pipeline.py || echo "tennis_pipeline.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Tennis match-win (ELO) prop projections
         working-directory: python
-        run: python tennis_match_win_props.py || true
+        run: python tennis_match_win_props.py || echo "tennis_match_win_props.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Tennis total games prop projections
         working-directory: python
-        run: python tennis_total_games_props.py || true
+        run: python tennis_total_games_props.py || echo "tennis_total_games_props.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Tennis set-score prop projections
         working-directory: python
-        run: python tennis_set_score_props.py || true
+        run: python tennis_set_score_props.py || echo "tennis_set_score_props.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: MLB batter walks (1+) yes/no prop
         working-directory: python
-        run: python mlb_batter_walks_props.py || true
+        run: python mlb_batter_walks_props.py || echo "mlb_batter_walks_props.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: MLB batter strikeout (1+/2+) yes/no prop
         working-directory: python
-        run: python mlb_batter_strikeout_props.py || true
+        run: python mlb_batter_strikeout_props.py || echo "mlb_batter_strikeout_props.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: MLB extra-innings yes/no game prop
         working-directory: python
-        run: python mlb_extra_innings_prop.py || true
+        run: python mlb_extra_innings_prop.py || echo "mlb_extra_innings_prop.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: NHL goalie wins yes/no prop
         working-directory: python
-        run: python nhl_goalie_win_props.py || true
+        run: python nhl_goalie_win_props.py || echo "nhl_goalie_win_props.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Tennis player aces O/U prop
         working-directory: python
-        run: python tennis_aces_props.py || true
+        run: python tennis_aces_props.py || echo "tennis_aces_props.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Tennis POD settlement (snapshot best edge + settle off ESPN finals)
         working-directory: python
-        run: python tennis_pot_history.py || true
+        run: python tennis_pot_history.py || echo "tennis_pot_history.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # World Cup must price BEFORE the prop batch: soccer_goalscorer_props reads
       # worldcup_cards.json for its WC fixtures, so the model has to write the
       # cards first or the scorer props lag a full pipeline run. (soccer finals
       # were already fetched above, so the standings/elo blend is current.)
       - name: 2026 World Cup scoreboard (June 11 - July 19)
         working-directory: python
-        run: python worldcup_pipeline.py || true
+        run: python worldcup_pipeline.py || echo "worldcup_pipeline.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: World Cup 3-way match model (cards + standings)
         working-directory: python
-        run: python worldcup_model.py || true
+        run: python worldcup_model.py || echo "worldcup_model.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: World Cup group-advancement Monte Carlo (P(advance) per team)
         working-directory: python
-        run: python worldcup_advancement.py || true
+        run: python worldcup_advancement.py || echo "worldcup_advancement.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # 2026-05-21: batched runner for all prop modules. Safety net that re-runs
       # the ~62 pure-projection modules in a SINGLE Python process to share
       # startup overhead. Next cycle, the individual steps above can be removed.
       - name: Batched prop-module runner (saves Python startup overhead)
         working-directory: python
-        run: python run_props_batch.py || true
+        run: python run_props_batch.py || echo "run_props_batch.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Runs AFTER run_props_batch + bullpen_freshness so the situational rollup
       # (steam / compound bullpen / pen mismatch / ump extremes) reads THIS run's
       # fresh feeds, not the previous run's.
       - name: Cross-sport anomaly detector (streak / residual / situational rollup)
         working-directory: python
-        run: python anomaly_detector.py || true
+        run: python anomaly_detector.py || echo "anomaly_detector.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: WNBA player rebounds + assists props
         working-directory: python
-        run: python wnba_player_reb_ast_props.py || true
+        run: python wnba_player_reb_ast_props.py || echo "wnba_player_reb_ast_props.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: WNBA team alt-totals + 1H/1Q + alt-spreads
         working-directory: python
-        run: python wnba_team_alts_props.py || true
+        run: python wnba_team_alts_props.py || echo "wnba_team_alts_props.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Soccer total corners props (MLS/EPL/UCL)
         working-directory: python
-        run: python soccer_corners_props.py || true
+        run: python soccer_corners_props.py || echo "soccer_corners_props.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: MLB Pitcher Strikeouts (K) prop projections
         working-directory: python
-        run: python mlb_pitcher_strikeouts_props.py || true
+        run: python mlb_pitcher_strikeouts_props.py || echo "mlb_pitcher_strikeouts_props.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: MLB Pitcher Earned Runs (ER) prop projections
         working-directory: python
-        run: python mlb_pitcher_er_props.py || true
+        run: python mlb_pitcher_er_props.py || echo "mlb_pitcher_er_props.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: MLB Pitcher Hits Allowed prop projections
         working-directory: python
-        run: python mlb_pitcher_hits_allowed_props.py || true
+        run: python mlb_pitcher_hits_allowed_props.py || echo "mlb_pitcher_hits_allowed_props.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: MLB first batter retired prop projections
         working-directory: python
-        run: python mlb_first_batter_retired_props.py || true
+        run: python mlb_first_batter_retired_props.py || echo "mlb_first_batter_retired_props.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: MLB team stolen base total prop projections
         working-directory: python
-        run: python mlb_team_sb_total_props.py || true
+        run: python mlb_team_sb_total_props.py || echo "mlb_team_sb_total_props.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: WNBA player points props
         working-directory: python
-        run: python wnba_player_pts_props.py || true
+        run: python wnba_player_pts_props.py || echo "wnba_player_pts_props.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Golf top-N finish props (top-5/10/20/40)
         working-directory: python
-        run: python golf_top_finish_props.py || true
+        run: python golf_top_finish_props.py || echo "golf_top_finish_props.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Soccer BTTS (Both Teams To Score) prop projections
         working-directory: python
-        run: python soccer_btts_props.py || true
+        run: python soccer_btts_props.py || echo "soccer_btts_props.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Soccer total goals over/under prop projections
         working-directory: python
-        run: python soccer_total_goals_props.py || true
+        run: python soccer_total_goals_props.py || echo "soccer_total_goals_props.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Soccer clean sheet prop projections
         working-directory: python
-        run: python soccer_clean_sheet_props.py || true
+        run: python soccer_clean_sheet_props.py || echo "soccer_clean_sheet_props.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Soccer anytime goalscorer props
         working-directory: python
-        run: python soccer_goalscorer_props.py || true
+        run: python soccer_goalscorer_props.py || echo "soccer_goalscorer_props.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Soccer total cards (yellow + red) prop projections
         working-directory: python
-        run: python soccer_cards_props.py || true
+        run: python soccer_cards_props.py || echo "soccer_cards_props.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: MLB First-5-Innings market (F5 ML + F5 totals, sharp-favored)
         working-directory: python
-        run: python mlb_first5_market.py || true
+        run: python mlb_first5_market.py || echo "mlb_first5_market.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: MLB innings 1-3 total prop projections
         working-directory: python
-        run: python mlb_innings_1_3_totals.py || true
+        run: python mlb_innings_1_3_totals.py || echo "mlb_innings_1_3_totals.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: MLB innings 4-6 total prop projections (bullpen transition)
         working-directory: python
-        run: python mlb_innings_4_6_totals.py || true
+        run: python mlb_innings_4_6_totals.py || echo "mlb_innings_4_6_totals.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: MLB innings 7-9 total prop projections (closer + setup)
         working-directory: python
-        run: python mlb_innings_7_9_totals.py || true
+        run: python mlb_innings_7_9_totals.py || echo "mlb_innings_7_9_totals.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: MLB first inning HR yes/no prop projections
         working-directory: python
-        run: python mlb_first_inning_hr_yn.py || true
+        run: python mlb_first_inning_hr_yn.py || echo "mlb_first_inning_hr_yn.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: MLB to-record-a-hit yes/no per batter
         working-directory: python
-        run: python mlb_to_record_hit_yn.py || true
+        run: python mlb_to_record_hit_yn.py || echo "mlb_to_record_hit_yn.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: MLB pitcher Quality Start (6 IP, ≤3 ER) yes/no prop
         working-directory: python
-        run: python mlb_pitcher_quality_start_props.py || true
+        run: python mlb_pitcher_quality_start_props.py || echo "mlb_pitcher_quality_start_props.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: MLB to-score-a-run yes/no per batter
         working-directory: python
-        run: python mlb_to_score_run_yn.py || true
+        run: python mlb_to_score_run_yn.py || echo "mlb_to_score_run_yn.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: MLB Stolen Base props (delivery x pop time x runner speed)
         working-directory: python
-        run: python mlb_steal_props.py || true
+        run: python mlb_steal_props.py || echo "mlb_steal_props.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: NBA pace-adjusted total projections
         working-directory: python
-        run: python nba_pace_adjusted.py || true
+        run: python nba_pace_adjusted.py || echo "nba_pace_adjusted.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: MLB starter quality composite (0-100 ranking)
         working-directory: python
-        run: python mlb_starter_quality_composite.py || true
+        run: python mlb_starter_quality_composite.py || echo "mlb_starter_quality_composite.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Multi-book line aggregator (Bovada + ESPN + Odds API)
         env:
           ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
@@ -898,7 +898,7 @@ jobs:
         run: python mlb_pitcher_lvr_lineup.py || echo "mlb_pitcher_lvr_lineup.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: MLB batter ADVANCED splits (RISP + late-close + day-night + home-away)
         working-directory: python
-        run: python mlb_batter_advanced_splits.py || true
+        run: python mlb_batter_advanced_splits.py || echo "mlb_batter_advanced_splits.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Consensus picks (>=2 independent modules agree on same batter)
         working-directory: python
         run: python consensus_picks.py || echo "consensus_picks.py" >> "$RUNNER_TEMP/failed_steps.txt"
@@ -919,25 +919,25 @@ jobs:
         run: python streak_regression.py || echo "streak_regression.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Refresh legacy ML stack (train.py - 14 artifacts in ~10s)
         working-directory: python
-        run: python train.py || true
+        run: python train.py || echo "train.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Refresh legacy arbitrage / linemaker / bankroll-MC / kelly-heatmap
         working-directory: python
         run: |
-          python arbitrage.py || true
-          python linemaker.py || true
-          python risk.py || true
+          python arbitrage.py || echo "arbitrage.py" >> "$RUNNER_TEMP/failed_steps.txt"
+          python linemaker.py || echo "linemaker.py" >> "$RUNNER_TEMP/failed_steps.txt"
+          python risk.py || echo "risk.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Live data accuracy audit (cross-check upstream APIs)
         working-directory: python
         run: python data_health.py || true
       - name: Master audit (imports + HTML + data + health)
         working-directory: python
-        run: python _audit_master.py || true
+        run: python _audit_master.py || echo "_audit_master.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Training convergence tracker (per-market learning trajectory)
         working-directory: python
-        run: python training_convergence.py || true
+        run: python training_convergence.py || echo "training_convergence.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Model health score (one-number summary)
         working-directory: python
-        run: python model_health.py || true
+        run: python model_health.py || echo "model_health.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Data health check (live source cross-verification)
         working-directory: python
         run: python data_health.py || echo "data_health.py" >> "$RUNNER_TEMP/failed_steps.txt"
@@ -950,7 +950,7 @@ jobs:
       # fresh; WNBA in-season, NBA fills in next season.
       - name: NBA/WNBA book-edge board (free ESPN odds)
         working-directory: python
-        run: python nba_book_edges.py || true
+        run: python nba_book_edges.py || echo "nba_book_edges.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: WNBA extended props (DD/TD/combos/alt-3PM -- uses fixed WNBA stat indices)
         working-directory: python
         run: python wnba_extended_props.py || echo "wnba_extended_props.py" >> "$RUNNER_TEMP/failed_steps.txt"
@@ -971,7 +971,7 @@ jobs:
       # next ledger cycle + settled vs box scores. 0 off-season; live Week 1.
       - name: NFL player-prop projections (model side -> generate->settle->learn)
         working-directory: python
-        run: python nfl_player_props.py || true
+        run: python nfl_player_props.py || echo "nfl_player_props.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # NFL DFS: DK Classic salaries (public lobby API) + DK-scored Monte Carlo
       # projections + exact salary-cap optimal lineups. Preseason slates are
       # skipped by the module's own gate; baselines cache-fill at <=120/run.
@@ -1000,7 +1000,7 @@ jobs:
         run: python cws_pipeline.py || echo "cws_pipeline.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: NCAA Baseball pick history + settle (ESPN finals by id)
         working-directory: python
-        run: python cws_pot_history.py || true
+        run: python cws_pot_history.py || echo "cws_pot_history.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: F1 race scoreboard
         working-directory: python
         run: python f1_pipeline.py || echo "f1_pipeline.py" >> "$RUNNER_TEMP/failed_steps.txt"
@@ -1009,16 +1009,16 @@ jobs:
         run: python f1_driver_projections.py || echo "f1_driver_projections.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: F1 track-specific history (per-driver last-5 finish at this circuit)
         working-directory: python
-        run: python f1_track_specific.py || true
+        run: python f1_track_specific.py || echo "f1_track_specific.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: F1 qualifying predictor (pole / top-3 / top-6)
         working-directory: python
-        run: python f1_qualifying_predictor.py || true
+        run: python f1_qualifying_predictor.py || echo "f1_qualifying_predictor.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: UFC significant strikes + takedowns prop projections
         working-directory: python
-        run: python ufc_strikes_takedowns_props.py || true
+        run: python ufc_strikes_takedowns_props.py || echo "ufc_strikes_takedowns_props.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: UFC first-round-finish props (settle vs the fight's ending round)
         working-directory: python
-        run: python ufc_first_round_finish.py || true
+        run: python ufc_first_round_finish.py || echo "ufc_first_round_finish.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: UFC fight card scoreboard
         working-directory: python
         run: python ufc_pipeline.py || echo "ufc_pipeline.py" >> "$RUNNER_TEMP/failed_steps.txt"
@@ -1340,7 +1340,7 @@ jobs:
       # movement, RLM, todays_top_plays, worldcup, nba_book_edges) is fresh.
       - name: Signal tape aggregator (alerts feed)
         working-directory: python
-        run: python alerts_feed.py || true
+        run: python alerts_feed.py || echo "alerts_feed.py" >> "$RUNNER_TEMP/failed_steps.txt"
 
       # Health audit: writes data/pipeline_health.json with per-artifact
       # status (ok/empty/stale/demo). Surfaces on /audit.html.
@@ -1357,7 +1357,7 @@ jobs:
         run: python notify.py || echo "notify.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Site directory + live-status map (nav badges + Everything page)
         working-directory: python
-        run: python site_directory.py || true
+        run: python site_directory.py || echo "site_directory.py" >> "$RUNNER_TEMP/failed_steps.txt"
 
       - name: Commit + push if data changed
         # RESILIENCE (added 2026-06-02): run even when an earlier step failed, so a
