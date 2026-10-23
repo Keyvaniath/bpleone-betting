@@ -41,6 +41,16 @@ bpleone-site/
 
 ## Current deployment state (LIVE)
 
+- **2026-10-23 — DAILY ALPHA EMAIL IS LIVE, PASSWORD-FREE (Brandon's choice):**
+  daily-pipeline posts data/alpha_email.json ONCE per date (marker
+  `<!-- alpha-date:YYYY-MM-DD -->`) as a comment on issue #46 "📬 EdgeStat
+  daily Alpha", which @-mentions the owner, so GitHub emails it; off-season
+  posts nothing. Verified: the 10/23 card landed in his Inbox, starred +
+  important + INBOX/CI Failures (his Gmail filter: from notifications@github.com,
+  subject bpleone-betting). NB his inbox is swept to Trash by something other
+  than a filter -- the star/important flags are the defense. The SMTP
+  `--send-self` path stays wired but inert without secrets. Never close #46.
+
 - **2026-10-23 — HEADLINE IS NOW ALL-TIME (Brandon decided: "All-time, merge archive"):**
   ledger_summary's headline = working ledger + data/ledger_archive.json.
   The archive was seeded with 5,946 settled picks the OLD tail-cut eviction
