@@ -4,7 +4,7 @@
 
 _Pipeline health: **WARNING** (12/15 artifacts ok; 3 empty, 0 stale)._ 
 
-_Generated at 2026-10-23T07:41:45 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-10-23T14:06:11 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
@@ -24,26 +24,26 @@ _Generated at 2026-10-23T07:41:45 UTC. Game lines source: **Bovada (fallback -- 
 
 ## Parlays - top 5
 
-- **3-leg @ +575 (prob 19.7%, EV +33.09%)**
+- **3-leg @ +578 (prob 19.7%, EV +33.57%)**
   - Richie Palacios OVER 0.5 batter_hits (+100, model 55.4%)
   - Taylor Walls OVER 0.5 batter_hits (+122, model 49.2%)
-  - TBR @ MIL MIL_ML (-192, model 72.3%)
-- **3-leg @ +453 (prob 23.9%, EV +32.08%)**
+  - TBR @ MIL MIL_ML (-190, model 72.3%)
+- **3-leg @ +455 (prob 23.9%, EV +32.56%)**
   - Richie Palacios OVER 0.5 batter_hits (+100, model 55.4%)
   - Liam Hicks OVER 0.5 batter_hits (-122, model 59.6%)
-  - TBR @ MIL MIL_ML (-192, model 72.3%)
-- **3-leg @ +682 (prob 16.9%, EV +31.84%)**
+  - TBR @ MIL MIL_ML (-190, model 72.3%)
+- **3-leg @ +685 (prob 16.9%, EV +32.31%)**
   - Richie Palacios OVER 0.5 batter_hits (+100, model 55.4%)
   - Brice Turang UNDER 0.5 batter_hits (+157, model 42.1%)
-  - TBR @ MIL MIL_ML (-192, model 72.3%)
-- **3-leg @ +761 (prob 15.2%, EV +30.76%)**
+  - TBR @ MIL MIL_ML (-190, model 72.3%)
+- **3-leg @ +764 (prob 15.2%, EV +31.23%)**
   - Richie Palacios OVER 0.5 batter_hits (+100, model 55.4%)
   - Jackson Chourio UNDER 0.5 batter_hits (+183, model 37.9%)
-  - TBR @ MIL MIL_ML (-192, model 72.3%)
-- **3-leg @ +514 (prob 21.2%, EV +30.2%)**
+  - TBR @ MIL MIL_ML (-190, model 72.3%)
+- **3-leg @ +517 (prob 21.2%, EV +30.67%)**
   - Taylor Walls OVER 0.5 batter_hits (+122, model 49.2%)
   - Liam Hicks OVER 0.5 batter_hits (-122, model 59.6%)
-  - TBR @ MIL MIL_ML (-192, model 72.3%)
+  - TBR @ MIL MIL_ML (-190, model 72.3%)
 
 ## Self-Learning Loop
 
@@ -52,7 +52,7 @@ _Generated at 2026-10-23T07:41:45 UTC. Game lines source: **Bovada (fallback -- 
 | batter hits | 312 | 53.5% | 56.2% | 1.050 | 0.953 |
 | batter total bases | 82 | 34.2% | 41.9% | 1.224 | 0.830 |
 
-Cumulative graded plays: 18394. Wins: 7856. Hit rate: 42.7%.
+Cumulative graded plays: 18517. Wins: 7933. Hit rate: 42.8%.
 
 ## Auxiliary Markets (Model Fair Prices)
 
@@ -80,4 +80,4 @@ _The model is suggesting 1 parameter tweak based on its own performance. Apply v
 ---
 
 _EdgeStat is a research desk. Bet responsibly. 21+. 1-800-GAMBLER._
-_Source: github.com/Keyvaniath/bpleone-betting - last settled 2026-10-22._
+_Source: github.com/Keyvaniath/bpleone-betting - last settled 2026-10-23._

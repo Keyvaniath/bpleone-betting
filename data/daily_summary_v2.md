@@ -2,7 +2,7 @@
 
 ## 🏥 Model Health: 60.7/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.7/100
+  - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 20.4/100
   - 🔴 Brier Trend: 0.4/100
   - 🟢 Pipeline Audit: 100.0/100
@@ -84,13 +84,13 @@
 ## ⚾ Top MLB Pitcher K Plays (1)
 - **Jacob Misiorowski** OVER 4.5 K (75%) fair -303
 
-## 🏀 NBA Player Heat (3 HOT / 7 COLD)
+## 🏀 NBA Player Heat (3 HOT / 3 COLD)
   - 🔥 **Maxime Raynaud** (SAC): L5 20.0/9.8/2.6 vs season 12.5/7.5/1.4 [PTS +7.5, REB +2.3]
   - 🔥 **Cormac Ryan** (MIL): L5 20.2/4.8/2.4 vs season 14.3/2.5/1.7 [PTS +5.9, REB +2.3]
   - 🔥 **Malachi Smith** (TOR): L5 10.2/6.0/5.8 vs season 8.3/3.4/3.3 [REB +2.6, AST +2.5]
   - ❄️ **Shaedon Sharpe** (POR): L5 7.2 vs season 20.8 [PTS -13.6, REB -2.7, AST -2.0] -- FADE OVER props
-  - ❄️ **Jaylon Tyson** (CLE): L5 2.2 vs season 13.2 [PTS -11.0, REB -3.3] -- FADE OVER props
   - ❄️ **Brandon Ingram** (LAC): L5 12.0 vs season 21.5 [PTS -9.5, REB -2.4] -- FADE OVER props
+  - ❄️ **Anthony Black** (ORL): L5 9.6 vs season 15.0 [PTS -5.4, AST -2.5] -- FADE OVER props
 
 ## 🥊 UFC Fight Matchups (UFC 333: Volkanovski vs. Evloev)
   - [LEAN] **Abubakar Vagaev** (25-4-0) vs Jacob Malkoun -- fair -149
@@ -100,11 +100,11 @@
   - [LEAN] **Daniel Santos** (14-3-0) vs Bolaji Oki -- fair -133
 
 ## ⛳ Golf Player Heat (from Butterfield Bermuda Championship)
-  - 🔥 T1 **Chandler Blanchet** (USA): -9 total -- finished T1
-  - 🔥 T2 **Ben Kohles** (USA): -8 total -- finished T2
-  - 🔥 T3 **Ben Silverman** (Canada): -8 total -- finished T3
-  - 🔥 T4 **Danny Walker** (USA): -8 total -- finished T4
-  - 🔥 T5 **Corey Conners** (Canada): -8 total -- finished T5
+  - 🔥 T1 **Chris Kirk** (USA): -10 total -- finished T1
+  - 🔥 T2 **Chandler Blanchet** (USA): -10 total -- finished T2
+  - 🔥 T3 **Emiliano Grillo** (Argentina): -9 total -- finished T3
+  - 🔥 T4 **Andrew Novak** (USA): -9 total -- finished T4
+  - 🔥 T5 **Corey Conners** (Canada): -9 total -- finished T5
 
 ## 🔥 MLB Batter Heat (56 HOT / 81 COLD)
   - 🔥 **Austin Hays** (SD): L14 .444 / season .280 (+164pts)
@@ -133,7 +133,7 @@
   - ⚠️ batter_rbis (Brier Δ -0.0052)
 
 ## 🧠 Training Convergence
-- ELITE: **1** · HEALTHY: 1 · OK: 0 · DEGRADED: **0**
+- ELITE: **1** · HEALTHY: 0 · OK: 1 · DEGRADED: **0**
 
 ## 🤖 Self-Training Status
 - **NBA**: n=60 games · hit rate 58.3% · bias -10.1pp [calibration applied]

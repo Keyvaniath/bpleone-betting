@@ -5,7 +5,7 @@ _4 picks consolidated from POD + Alpha + Book Edges + Parlay-of-Day._
 ## ⭐ Play of the Day
 
 - **TBR @ MIL** · MIL_ML
-  Prob 69.0% · Odds -192 · Edge +4.9% · Kelly 0.095
+  Prob 68.9% · Odds -190 · Edge +5.1% · Kelly 0.098
 
 ## 🎯 Alpha Pick
 
@@ -20,5 +20,5 @@ _4 picks consolidated from POD + Alpha + Book Edges + Parlay-of-Day._
   Prob 70.0% · Odds -198 · Edge +5.4% · Kelly 0.107
 
 ---
-_Generated 2026-10-23T07:41:42 UTC by EdgeStat._
+_Generated 2026-10-23T14:06:06 UTC by EdgeStat._
 _Stakes assume ¼-Kelly fractional sizing on a flat bankroll._

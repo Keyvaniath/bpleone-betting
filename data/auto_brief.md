@@ -39,7 +39,7 @@ _0% lineups confirmed · 1 rookie SPs_
 - **NRFI** (1st-inning UNDER): TBR @ MIL
 
 ## Golf -- Butterfield Bermuda Championship
-- **Leader:** Chandler Blanchet (-9) at #1
+- **Leader:** Chris Kirk (-10) at #1
 - **Field:** 120 players  |  Status: In Progress
 - **Play of the Tournament:** Lee Hodges TOP10 @ +667 (model 13.0%, HIGH)
    - P(top 10) 13.0% -- safest finish bet (#20 (-5)).
