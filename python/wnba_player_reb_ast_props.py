@@ -132,6 +132,11 @@ def _evaluate_line(projection: float, sigma: float, market_prefix: str) -> Dict[
     return {"edge_class": best_edge, "best_market": best_market}
 
 
+# Live current teams over the hard-coded ones, mapped through this module's own
+# _abbr so they match its game codes (2026-10-23, real_stats_lookup).
+PLAYER_DB = __import__("real_stats_lookup").apply_live_teams("wnba", PLAYER_DB, to_code=_abbr)
+
+
 def run() -> Dict[str, Any]:
     state = _load(os.path.join(DATA_DIR, "wnba_state.json"))
     from nba_slate import upcoming_games  # shared slate gate (stale/future/non-imminent)

@@ -107,6 +107,11 @@ def _norm_team(t: str) -> str:
     return full_to_abbr.get(t.lower().strip(), t[:3].upper())
 
 
+# Live current teams over the hard-coded ones, mapped through this module's own
+# _norm_team so they match its game codes (2026-10-23, real_stats_lookup).
+PLAYER_DB = __import__("real_stats_lookup").apply_live_teams("wnba", PLAYER_DB, to_code=_norm_team)
+
+
 def run() -> Dict[str, Any]:
     # WNBA games live in wnba_state.json, not matchups.json
     state = _load(os.path.join(DATA_DIR, "wnba_state.json"))

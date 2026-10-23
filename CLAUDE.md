@@ -63,7 +63,8 @@ bpleone-site/
   after each NBA/NHL table) sets the CURRENT team in the generators' vocab
   (GSW/NYK/NOP/SAS/UTA/WAS; LAK/NJD/SJS/TBL/UTA) and blanks the team of anyone
   on no current roster. WNBA team overlay NOT applied (its tables disagree on
-  codes: CON/CONN, LV/LVA; season over) -- do it before May.
+  codes: CON/CONN, LV/LVA) -- DONE 10/23 via apply_live_teams(to_code=<the
+  module's own _abbr/_norm_team>), so each table keeps its own vocabulary.
 
 - **2026-10-23 (newest) — NFL PROPS JUDGED FROM 10/23 FORWARD (Brandon's call):**
   the form-rule change makes earlier NFL props a different model. Every NFL

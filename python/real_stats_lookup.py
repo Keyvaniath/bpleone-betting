@@ -136,7 +136,8 @@ if __name__ == "__main__":
             print(f"{name} ({sport}): NOT FOUND in ESPN data")
 
 
-def apply_live_teams(sport: str, db: Dict[str, Dict[str, Any]]) -> Dict[str, Dict[str, Any]]:
+def apply_live_teams(sport: str, db: Dict[str, Dict[str, Any]],
+                     to_code=None) -> Dict[str, Dict[str, Any]]:
     """Overwrite each hard-coded entry's `team` with the player's CURRENT team
     (live roster, generators' vocabulary) when the stats feed knows him. The
     static tables still carried 2024-25 teams -- Kevin Durant on PHX -- and
@@ -149,8 +150,12 @@ def apply_live_teams(sport: str, db: Dict[str, Dict[str, Any]]) -> Dict[str, Dic
         if not isinstance(info, dict):
             continue
         rec = _find(idx, name)
-        if rec and rec.get("team_model"):
-            info["team"] = rec["team_model"]
+        # to_code = the module's OWN team normalizer (the function its games go
+        # through), so the player's team lands in exactly the module's vocab --
+        # needed for WNBA, whose tables disagree on codes (CON/CONN, LV/LVA).
+        code = to_code(rec["team"]) if (rec and to_code and rec.get("team")) else (rec or {}).get("team_model")
+        if rec and code:
+            info["team"] = code
         else:
             # On NO current roster (retired / unsigned -- Chris Paul, Fleury,
             # Suter were still being projected). An empty team matches no game.
