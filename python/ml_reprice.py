@@ -49,6 +49,61 @@ def _dec(a) -> float:
     return 1 + a / 100 if a > 0 else 1 + 100 / abs(a)
 
 
+_SEED_CACHE = None
+
+
+def apply_ledger(picks, side_of) -> Dict[str, int]:
+    """IDEMPOTENT, called by EVERY ledger build (all_picks_tracker.run).
+
+    The one-shot version lost a race on its first CI run: live-games rebuilt
+    the ledger from a checkout taken before the re-price and its commit
+    overwrote the corrected rows. Applying the seed inside the build means any
+    workflow's ledger carries the correction. Already-corrected rows are
+    skipped; pending placeholder-priced moneylines get the live DK line so
+    they can never settle at -110."""
+    global _SEED_CACHE
+    if _SEED_CACHE is None:
+        _SEED_CACHE = {r["pick_id"]: r for r in (_load(SEED).get("rows") or [])}
+    seed = _SEED_CACHE
+    now = dt.datetime.now().isoformat(timespec="seconds")
+    n = {"repriced": 0, "voided_unpriced": 0, "pending_priced": 0}
+    for p in picks:
+        r = seed.get(p.get("pick_id"))
+        if r and not p.get("repriced") and not str(p.get("voided_reason") or "").startswith("unpriced"):
+            if r["status"] == "repriced" and p.get("settled"):
+                old = p.get("payout_units")
+                dec = _dec(r["book_american"])
+                p["book_american"] = r["book_american"]
+                p["payout_units"] = (round(dec - 1, 4) if p.get("result") == "won"
+                                     else (-1.0 if p.get("result") == "lost" else 0.0))
+                p["repriced"] = {"at": now, "from_payout": old, "recorded_price": p.get("fair_american"),
+                                 "book_snapshot_at": r.get("snapshot_at"), "chosen": r.get("chosen"),
+                                 "reason": ("2026-10-23: graded at a placeholder -110 the board filled "
+                                            "in when the line was missing; re-priced at the real "
+                                            "DraftKings pre-game moneyline")}
+                n["repriced"] += 1
+            elif r["status"] == "unpriced":
+                p["voided"] = True
+                p["voided_at"] = now
+                p["voided_reason"] = ("unpriced moneyline: graded at a placeholder -110 and no real "
+                                      "pre-game line exists on record -- no honest payout")
+                n["voided_unpriced"] += 1
+    book = (_load(os.path.join(DATA_DIR, "espn_odds.json")).get("by_matchup") or {})
+    for p in picks:
+        if p.get("settled") or p.get("voided") or p.get("book_american") is not None:
+            continue
+        if p.get("fair_american") not in (-110, None):
+            continue
+        sd = side_of(p)
+        if not sd:
+            continue
+        px = (book.get(str(p.get("player_or_matchup") or "")) or {}).get("ml_home" if sd == "home" else "ml_away")
+        if px is not None:
+            p["book_american"] = px
+            n["pending_priced"] += 1
+    return n
+
+
 def run(force: bool = False) -> Dict[str, Any]:
     if os.path.exists(MARKER) and not force:
         m = _load(MARKER)

@@ -3466,6 +3466,15 @@ def run() -> Dict[str, Any]:
     # Retire preseason NFL props BEFORE settlement -- a preseason pick must
     # never grade into the record (see _void_preseason_nfl).
     n_preseason_voided = _void_preseason_nfl(history)
+    # Placeholder-priced moneylines -> the real DK line, every build (idempotent;
+    # see ml_reprice.apply_ledger for why this can't be a one-shot).
+    try:
+        import ml_reprice as _mr
+        _rp = _mr.apply_ledger(history, _is_mlb_moneyline_market)
+        if any(_rp.values()):
+            print(f"  moneyline re-price: {_rp}")
+    except Exception as _e:
+        print(f"  [warn] moneyline re-price skipped: {_e!r}")
     n_preseason_voided += _void_preseason_nhl(history)
 
     # Retire the series-conflated RLM picks BEFORE settlement (2026-09-02,
