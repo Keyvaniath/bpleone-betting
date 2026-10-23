@@ -554,8 +554,10 @@ def run() -> Dict[str, Any]:
                         "(NegBinomial counts x Gamma yards x Poisson TDs, opponent-"
                         "adjusted), DK-scored PER SIMULATION so yardage bonuses land on "
                         "the tail sims. Baselines: curated priors > 2025 season rates > "
-                        "current-season gamelogs (in-season form blends in "
-                        "automatically). DST is Vegas-implied, not the player MC. "
+                        "current-season gamelogs; in-season form = the season-to-date "
+                        "regular-season average, trusted by sample size (n/(n+2)) for "
+                        "yardage AND volume -- never last week alone. Lineups are built "
+                        "on calibrated xFP (see disclosures). DST is Vegas-implied, not the player MC. "
                         "Optimizer is an EXACT DP over position-counts x $100 salary "
                         "buckets (brute-force-verified in the module self-test)."),
         "disclosures": [

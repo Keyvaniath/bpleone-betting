@@ -24,8 +24,10 @@ model mean:
 
 with w (how much of the model's disagreement with salary to trust), ppk and
 p_play (by injury tag x projection band) FITTED on scored pools.
-Leave-one-week-out on Weeks 1-3: lineup bias -64.6 -> -7.3 pts/slate and
-actual skill points 106.0 -> 111.7 (n=3 weeks -- directional, not proof).
+Leave-one-week-out on Weeks 1-3 (skill slots): the published builds scored
+106.0 at a -64.6 bias; calibration alone -> 111.7 / -7.3; with FORM RULE v2
+projections (nfl_player_props, same day) + calibration -> 130.8 / +10.9.
+n=3 weeks -- directional, not proof; the receipts keep score from here.
 
 SELF-REFITTING: nfl_dfs_receipts snapshots the WHOLE projected pool each
 slate (data/nfl_dfs_pool_history.json) and scores every player once the
@@ -51,14 +53,14 @@ PRIOR_PLAY = 0.85         # p_play shrink target
 PRIOR_K = 4               # pseudo-count on p_play cells
 MAX_SLATES = 90           # pool-history retention (newest by slate start)
 
-# Seed = the 2026-10-23 fit (Weeks 1-3, reconstructed from git history).
+# Seed = the 2026-10-23 fit (Weeks 1-3, reconstructed from git history, pools
+# recomputed walk-forward under form rule v2).
+CURRENT_RULE = "form_v2"   # nfl_player_props FORM RULE v2; fit only on matching pools
 SEED = {
-    "w": 0.324,
-    "ppk": {"QB": 3.21, "RB": 1.96, "WR": 2.05, "TE": 2.29},
-    "p_play": {"none|0": 0.75, "none|1": 0.87, "none|2": 0.95,
-               "q|0": 0.51, "q|1": 0.75, "q|2": 0.77},
+    "w": 0.538,
+    "ppk": {"QB": 3.174, "RB": 1.962, "WR": 2.053, "TE": 2.288},
+    "p_play": {"none|2": 0.951, "q|2": 0.745, "none|0": 0.729, "none|1": 0.896, "q|1": 0.771, "q|0": 0.456},
 }
-
 
 def _load(p: str) -> Dict[str, Any]:
     try:
@@ -118,6 +120,7 @@ def snapshot_pool(dfs: Dict[str, Any], today: str) -> None:
     slates[key] = {
         "start": start, "n_games": slate.get("n_games"),
         "snapshotted_at": dfs.get("generated_at"),
+        "projection_rule": CURRENT_RULE,
         "players": [{k: p.get(k) for k in ("name", "pos", "team", "salary", "status", "proj")}
                     for p in (dfs.get("projections") or []) if p.get("pos") in POSITIONS],
         "scored": False,
@@ -179,7 +182,10 @@ def _rows() -> List[Dict[str, Any]]:
     slates = (_load(POOL_HIST).get("slates") or {}).values()
     best: Dict[Tuple[str, str], Tuple[int, Dict[str, Any]]] = {}
     for s in slates:
-        if not s.get("scored"):
+        # A pool priced under a different projection rule answers a different
+        # question (v1's one-game form needed far harder shrinkage: w 0.32 vs
+        # 0.54) -- never mix rules in one fit.
+        if not s.get("scored") or s.get("projection_rule") != CURRENT_RULE:
             continue
         try:
             wk = dt.date.fromisoformat(s["start"]).isocalendar()

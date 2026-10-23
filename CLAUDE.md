@@ -66,6 +66,22 @@ bpleone-site/
   calibrated_v1) and NEVER averaged together. **RULE: never grade an
   optimizer on its own objective -- calibrate what it maximizes, and judge a
   projection model on the whole pool, not the lineup.**
+  **SECOND ROOT CAUSE, same day -- "recent form" was ONE GAME:**
+  nfl_player_props._blend put a flat 65% on the mean of nfl_player_gamelogs,
+  an ~8-day box window = one NFL game, and took volume (att/carries/targets)
+  from it outright; projections swung 10+ pts between runs an hour apart
+  (Golden 15.8 -> 27.1). FORM RULE v2: season-to-date regular-season mean,
+  weight n/(n+2), yardage AND volume; espn_box_logs CFG_NFL `retain_days`
+  160 merges each fetch into the file (seeded from the git-history union);
+  preseason rows are filtered from both the form rule and the gamelog-only
+  baseline (a $3k WR was projected 14.6 off August snaps); box keys matched
+  normalized. Walk-forward Weeks 2-6, same 986 player-games: MAE 6.12 -> 5.76,
+  corr 0.483 -> 0.545, top-20% bias -3.14 -> -0.78 (K grid 2/4/8/16 all beat
+  v1). Pools recomputed walk-forward under v2 -> calibration w 0.32 -> 0.54
+  (fits only on pools with the CURRENT projection_rule). LOWO lineups: shipped
+  106.0 @ -64.6 bias -> v2+calibrated 130.8 @ +10.9 (n=3 weeks, directional).
+  **This also changes the NFL BETTING props** (same simulator): priced off
+  season form, not last week -- judge the nfl_* families from 10/23 forward.
 
 - **2026-10-23 — FOLLOW-THROUGH (same session, all pushed + CI-verified):**
   (1) **A clean run's data was LOST at the commit step**: alpha_email.py

@@ -142,9 +142,42 @@ def _opp_factor(table: Dict[str, float], opp: str) -> float:
     return 1.0 + _DEF_DAMP * (raw - 1.0)
 
 
-def _blend(recent: Optional[float], season: float) -> float:
-    """Weight recent gamelog form over the season prior when we have it."""
-    return round(0.65 * recent + 0.35 * season, 2) if recent is not None else season
+# FORM RULE v2 (2026-10-23). v1 put a FLAT 65% on "recent form" = the mean of
+# whatever nfl_player_gamelogs held -- an ~8-day box window, i.e. ONE NFL game
+# -- and took volume (attempts/carries/targets) from that one game outright.
+# Projections swung 10+ DK points between runs an hour apart (Golden 15.8 ->
+# 27.1, Coker 11.6 -> 22.1) and the optimizer seated whoever had just had a
+# big week. v2: recent = the SEASON-TO-DATE regular-season mean, trusted by
+# sample size, w = n/(n+FORM_K), for yardage AND volume. Walk-forward over
+# Weeks 2-6 (n=986 player-games, same players both rules): MAE 6.12 -> 5.76,
+# corr with actual 0.483 -> 0.545, top-20%-projected bias -3.14 -> -0.78.
+# K grid 2/4/8/16 all beat v1; 2 was best. Needs the season-long box file
+# (espn_box_logs retains NFL rows -- see CFG_NFL retain_days).
+FORM_K = 2.0
+
+
+_NORM_IDX: Dict[int, Dict[str, Any]] = {}
+
+
+def _norm_lookup(gamelogs_by_name, name):
+    idx = _NORM_IDX.get(id(gamelogs_by_name))
+    if idx is None:
+        idx = {nb.norm_name(k): v for k, v in gamelogs_by_name.items()}
+        _NORM_IDX.clear()
+        _NORM_IDX[id(gamelogs_by_name)] = idx
+    return idx.get(nb.norm_name(name))
+
+
+def _form_w(n: int) -> float:
+    return n / (n + FORM_K) if n else 0.0
+
+
+def _blend(recent: Optional[float], season: float, n: int = 0) -> float:
+    """Season prior <- season-to-date form, weighted by how many games back it."""
+    if recent is None or not n:
+        return season
+    w = _form_w(n)
+    return round(w * recent + (1 - w) * season, 2)
 
 
 def _load(p):
@@ -177,12 +210,32 @@ def _american(p: float) -> Optional[int]:
     return int(round(((1 / p) - 1) * 100))
 
 
+def _form_rows(gamelogs_by_name, name):
+    """This player's REGULAR-SEASON box rows before today. Looked up by the raw
+    key, then by the normalized name (box keys keep punctuation -- 'amon-ra st.
+    brown' -- while the desk keys 'amonra st brown'; v1 silently gave those
+    players no form at all)."""
+    prec = gamelogs_by_name.get(name) or _norm_lookup(gamelogs_by_name, name)
+    rows = prec if isinstance(prec, list) else ((prec or {}).get("games") or [])
+    today = dt.date.today().isoformat()
+    return [g for g in rows if NFL_2026_WEEK1 <= str(g.get("date") or "")[:10] < today]
+
+
 def _recent_base(gamelogs_by_name, name, field):
-    """In-season: average the player's recent gamelog for `field` (else None)."""
-    prec = gamelogs_by_name.get(name)
-    if not prec: return None
-    vals = [g.get(field) for g in (prec.get("games") or []) if g.get(field) is not None]
+    """Season-to-date mean of `field` over regular-season games (else None)."""
+    vals = [g.get(field) for g in _form_rows(gamelogs_by_name, name) if g.get(field) is not None]
     return sum(vals) / len(vals) if vals else None
+
+
+def _form_n(gamelogs_by_name, name) -> int:
+    return len(_form_rows(gamelogs_by_name, name))
+
+
+def _vol(gamelogs_by_name, name, field, prior: float) -> float:
+    """Volume (attempts/carries/targets) blended with its season prior by the
+    same sample-size weight -- v1 took one game's volume outright."""
+    recent = _recent_base(gamelogs_by_name, name, field)
+    return _blend(recent, prior, _form_n(gamelogs_by_name, name))
 
 
 def _best_line(mean, sigma, stat, prefix):
@@ -207,26 +260,27 @@ def _sim_player(name: str, info: Dict[str, Any], gl: Dict[str, Any],
     opponent factors to the yardage means, and Monte-Carlo simulate. Returns a
     merged {stat -> samples}."""
     out: Dict[str, List[float]] = {}
+    nf = _form_n(gl, name)
     if info.get("pass_yds"):
-        att = _recent_base(gl, name, "pass_att") or 33.0
-        cmpm = _recent_base(gl, name, "pass_cmp")
-        comp_pct = (cmpm / att) if (cmpm and att) else 0.64
-        exp_yds = _blend(_recent_base(gl, name, "pass_yds"), info["pass_yds"]) * pass_f
+        att = _vol(gl, name, "pass_att", 33.0)
+        cmp_r, att_r = _recent_base(gl, name, "pass_cmp"), _recent_base(gl, name, "pass_att")
+        comp_pct = (cmp_r / att_r) if (cmp_r and att_r) else 0.64   # season-to-date ratio
+        exp_yds = _blend(_recent_base(gl, name, "pass_yds"), info["pass_yds"], nf) * pass_f
         prof = {"att": att, "comp_pct": comp_pct,
                 "ypc": exp_yds / max(1.0, att * comp_pct),
                 "pass_td_pg": (info.get("pass_td") or 1.6) * pass_f,
                 "int_pg": _recent_base(gl, name, "pass_int") or 0.7}
         out.update(_SIM.simulate_qb(prof, n=n, seed=seed))
     if info.get("rush_yds"):
-        car = _recent_base(gl, name, "rush_att") or max(6.0, info["rush_yds"] / 4.3)
-        exp_yds = _blend(_recent_base(gl, name, "rush_yds"), info["rush_yds"]) * rush_f
+        car = _vol(gl, name, "rush_att", max(6.0, info["rush_yds"] / 4.3))
+        exp_yds = _blend(_recent_base(gl, name, "rush_yds"), info["rush_yds"], nf) * rush_f
         prof = {"carries": car, "ypc_rush": exp_yds / max(1.0, car),
                 "rush_td_pg": (info.get("td_rate", 0.4)) * (0.7 if info.get("rec_yds") else 1.0)}
         out.update(_SIM.simulate_rusher(prof, n=n, seed=seed + 1))
     if info.get("rec_yds"):
         recm = info.get("rec") or 5
-        tgt = _recent_base(gl, name, "targets") or max(3.0, recm / 0.65)
-        exp_yds = _blend(_recent_base(gl, name, "rec_yds"), info["rec_yds"]) * pass_f
+        tgt = _vol(gl, name, "targets", max(3.0, recm / 0.65))
+        exp_yds = _blend(_recent_base(gl, name, "rec_yds"), info["rec_yds"], nf) * pass_f
         prof = {"targets": tgt, "catch_rate": min(0.9, recm / tgt if tgt else 0.64),
                 "ypr": exp_yds / max(1.0, recm),
                 "rec_td_pg": (info.get("td_rate", 0.4)) * (0.3 if info.get("rush_yds") else 1.0)}

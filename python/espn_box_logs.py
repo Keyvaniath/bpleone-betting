@@ -51,7 +51,12 @@ HOCKEY_STATS = {"HT": "hits", "BS": "blocks", "G": "goals", "A": "assists", "SOG
 
 CFG_WNBA = {"sport_key": "wnba", "espn_path": "basketball/wnba", "kind": "basketball", "stats": BASKETBALL_STATS}
 CFG_NBA = {"sport_key": "nba", "espn_path": "basketball/nba", "kind": "basketball", "stats": BASKETBALL_STATS}
-CFG_NFL = {"sport_key": "nfl", "espn_path": "football/nfl", "kind": "football"}
+# retain_days (2026-10-23): NFL is WEEKLY, so the default 8-day window held one
+# game per player -- and nfl_player_props treated that as "recent form" (65%
+# weight). The file now MERGES each fetch into the rows already on disk and
+# keeps a season's worth; the fetch window itself is unchanged (cheap).
+CFG_NFL = {"sport_key": "nfl", "espn_path": "football/nfl", "kind": "football",
+           "retain_days": 160}
 CFG_NHL = {"sport_key": "nhl", "espn_path": "hockey/nhl", "kind": "hockey", "stats": HOCKEY_STATS}
 
 
@@ -225,6 +230,36 @@ def _parse_hockey(summary: Dict[str, Any], date: str, stats_cfg: Dict[str, str])
     return list(agg.values())
 
 
+def _merge_retained(sport_key: str, by_name: Dict[str, Dict[str, Any]],
+                    games: List[Dict[str, Any]], anchor: dt.date, retain: int) -> None:
+    """Fold the rows already on disk (within `retain` days) under this fetch.
+    Freshly fetched rows win on the same (player, date) / (game) key."""
+    cutoff = (anchor - dt.timedelta(days=retain)).isoformat()
+    try:
+        with open(os.path.join(DATA_DIR, f"{sport_key}_player_gamelogs.json")) as f:
+            old = json.load(f).get("by_name") or {}
+    except Exception:
+        old = {}
+    for key, prec in old.items():
+        cur = by_name.setdefault(key, {"name": prec.get("name") or key, "games": []})
+        have = {g.get("date") for g in cur["games"]}
+        for g in prec.get("games") or []:
+            if str(g.get("date") or "") >= cutoff and g.get("date") not in have:
+                cur["games"].append(g)
+        cur["games"].sort(key=lambda g: str(g.get("date") or ""), reverse=True)
+    try:
+        with open(os.path.join(DATA_DIR, f"{sport_key}_historical.json")) as f:
+            old_games = json.load(f).get("games") or []
+    except Exception:
+        old_games = []
+    seen = {(g.get("date"), g.get("home_abbrev"), g.get("away_abbrev")) for g in games}
+    for g in old_games:
+        k = (g.get("date"), g.get("home_abbrev"), g.get("away_abbrev"))
+        if str(g.get("date") or "") >= cutoff and k not in seen:
+            seen.add(k)
+            games.append(g)
+
+
 def run(cfg: Dict[str, Any], days_back: int = 8, anchor_date: Optional[str] = None) -> Dict[str, Any]:
     espn_path = cfg["espn_path"]
     sport_key = cfg["sport_key"]
@@ -256,6 +291,10 @@ def run(cfg: Dict[str, Any], days_back: int = 8, anchor_date: Optional[str] = No
             prec = by_name.setdefault(key, {"name": r["name"], "games": []})
             if not any(g.get("date") == r.get("date") for g in prec["games"]):
                 prec["games"].append({k: v for k, v in r.items() if k != "name"})
+
+    retain = int(cfg.get("retain_days") or 0)
+    if retain:
+        _merge_retained(sport_key, by_name, games, anchor, retain)
 
     now = dt.datetime.utcnow().isoformat(timespec="seconds")
     os.makedirs(DATA_DIR, exist_ok=True)

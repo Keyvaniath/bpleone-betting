@@ -172,6 +172,9 @@ def info_from_2025(bl: Dict[str, Any], pos: str) -> Optional[Dict[str, Any]]:
     return info if any(k in info for k in ("pass_yds", "rush_yds", "rec_yds")) else None
 
 
+REG_SEASON_START = "2026-09-08"     # = nfl_player_props.NFL_2026_WEEK1
+
+
 def info_from_gamelogs(gl_rows: List[Dict[str, Any]], pos: str) -> Optional[Dict[str, Any]]:
     """Current-season fallback baseline (covers rookies once they have games)."""
     if len(gl_rows) < MIN_GP_CUR:
@@ -209,7 +212,13 @@ def resolve_info(norm: str, pos: str, espn_id: Optional[str],
         source = "curated+2025" if source else "curated"
     if info is None:
         gl_rows = gl_all.get(norm)
+        if gl_rows is None:
+            gl_rows = next((v for k, v in gl_all.items() if norm_name(k) == norm), None)
         gl_rows = gl_rows if isinstance(gl_rows, list) else ((gl_rows or {}).get("games") or [])
+        # REGULAR SEASON ONLY (2026-10-23): the box file now retains the whole
+        # season, preseason included -- and preseason lines are backups playing
+        # three quarters (a $3,000 WR projected at 14.6 off August snaps).
+        gl_rows = [g for g in gl_rows if str(g.get("date") or "")[:10] >= REG_SEASON_START]
         info = info_from_gamelogs(gl_rows, pos)
         source = "gamelogs" if info else None
     return info, source
