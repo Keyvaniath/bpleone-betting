@@ -1023,6 +1023,9 @@ jobs:
       - name: NFL DFS receipts (grade published lineups vs box scores)
         working-directory: python
         run: python nfl_dfs_receipts.py || echo "nfl_dfs_receipts.py" >> "$RUNNER_TEMP/failed_steps.txt"
+      - name: Fix scorecard (the 10/23 fixes graded live vs what they replaced)
+        working-directory: python
+        run: python fix_scorecard.py || echo "fix_scorecard.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: NCAA Football scoreboard
         working-directory: python
         run: python ncaaf_pipeline.py || echo "ncaaf_pipeline.py" >> "$RUNNER_TEMP/failed_steps.txt"

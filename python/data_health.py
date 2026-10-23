@@ -352,6 +352,7 @@ DESK_FRESHNESS = [
     ("nfl_dfs.json", 30), ("nfl_dfs_receipts.json", 30), ("nfl_dfs_calibration.json", 30),
     ("player_stats_nba.json", 30), ("player_stats_nhl.json", 30), ("player_stats_wnba.json", 30),
     ("alpha_email.json", 30), ("recent_picks.json", 30),
+    ("fix_scorecard.json", 30),
 ]
 
 
