@@ -41,6 +41,26 @@ bpleone-site/
 
 ## Current deployment state (LIVE)
 
+- **2026-10-23 (night) — MONEYLINES WERE GRADED AT A PLACEHOLDER -110 (read before
+  touching any price):** tonight's Alpha read "MIL ML @ -110" with DK at -192.
+  todays_top_plays._fair_odds_for_source filled -110 when a slate had no price
+  yet (and the shrink lost its market anchor, 72% -> 59.8%) -> fake +12.9%
+  edge, inflated payouts, the -150 juice gate bypassed. 77 settled MLB
+  moneylines (76 curated) affected; 10 Alpha v2 days (7 would NOT have cleared
+  the gate at the real price). FIX: `book_american` = the real DK line;
+  `_price_american()` (book first) prices settlement/regrade/juice gate; Alpha
+  `_px()` prices gate/edge/payout (locks still key on recorded fair_american);
+  intake prices every MLB moneyline from espn_odds and DROPS unpriced ones;
+  todays_top_plays never defaults a moneyline. History re-priced from the git
+  history of espn_odds.json (data/ml_reprice_2026_10.json): 68 re-priced, 9
+  'unpriced' voids (never resurrected). **ml_reprice.apply_ledger runs INSIDE
+  every ledger build** -- as a one-shot it was overwritten by a concurrent
+  live-games ledger commit. **RULE: a one-shot data correction to the ledger is
+  not durable (4 workflows rebuild it); make it idempotent and apply it in the
+  build.** Tonight's lock WITHDRAWN pre-game (lock `withdrawn` field; page +
+  email show the correction). Restated: curated 943-436 +17.21% -> 936-434
+  +16.02%; Alpha v2 +11.51u -> +9.59u (+28.2%); Alpha all-time +22.1%.
+
 - **2026-10-23 — DAILY ALPHA EMAIL IS LIVE, PASSWORD-FREE (Brandon's choice):**
   daily-pipeline posts data/alpha_email.json ONCE per date (marker
   `<!-- alpha-date:YYYY-MM-DD -->`) as a comment on issue #46 "📬 EdgeStat

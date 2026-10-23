@@ -251,6 +251,12 @@ fetch('data/alpha_pick_record.json?t=' + Date.now()).then(function (r) { return 
         (rv.n_settled ? 'Rule v2 finished ' + rv.wins + '-' + rv.losses + ', ' + (rv.net_units >= 0 ? '+' : '') + rv.net_units + 'u. ' : '') +
         'Back on Opening Day.</span>';
       tEl.style.display = 'block';
+    } else if (td.withdrawn) {
+      var wd = td.withdrawn || {};
+      tEl.innerHTML = '<span style="color:#e35a5a;font-weight:700;">Correction: today&rsquo;s pick was withdrawn before first pitch.</span> ' +
+        '<span style="color:var(--text-2,#9fb0c8);">It was locked at a placeholder ' + (wd.recorded_price || -110) +
+        ' when the real DraftKings line was ' + (wd.real_price != null ? wd.real_price : '?') + ' &mdash; at the real price it never cleared the +2% edge gate. No play; no result counts.</span>';
+      tEl.style.display = 'block';
     } else if (td.no_pick) {
       tEl.innerHTML = '<span style="color:#d4a04a;font-weight:600;">No pick today.</span> ' +
         '<span style="color:var(--text-2,#9fb0c8);">Nothing on the slate clears the edge gate — we don\'t force bets.</span>';
