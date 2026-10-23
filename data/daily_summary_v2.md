@@ -2,7 +2,7 @@
 
 ## 🏥 Model Health: 63.2/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 100.0/100
+  - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 31.5/100
   - 🔴 Brier Trend: 1.9/100
   - 🟢 Pipeline Audit: 100.0/100
@@ -18,8 +18,8 @@
 1. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
 2. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
 3. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
-4. **GOLF Ren Yonezawa TOP5 @ 583 (Butterfield Bermuda Championship)** (78/100 ★★★★★)
-5. **GOLF Andrew Novak TOP5 @ 547 (Butterfield Bermuda Championship)** (78/100 ★★★★★)
+4. **GOLF Greyson Sigg TOP5 @ 542 (Butterfield Bermuda Championship)** (78/100 ★★★★★)
+5. **GOLF Austin Smotherman TOP5 @ 527 (Butterfield Bermuda Championship)** (78/100 ★★★★★)
 
 ## 📡 Sharp Action (Line Movement)
 - [MODERATE] **TBR @ MIL** ml_home: 62.26% → 65.75% (+3.5pp)
@@ -64,22 +64,22 @@
   - Inter Miami CF (MLS): Inter Miami CF UNDERPERFORMING expected margin by 7.3pts in recent games -- model bias may persist
   - New York City FC (MLS): New York City FC OUTPERFORMING expected margin by 14.9pts in recent games -- model bias may persist
 
-## 💰 Today's Portfolio (12 picks)
-- Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$-4.87**
+## 💰 Today's Portfolio (10 picks)
+- Total stake: **$335.0** (33.5% of $1000 bankroll)
+- Expected EV: **$-6.46**
   - #1 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #2 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
   - #3 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
-  - #4 [GOLF] $35 on GOLF Ren Yonezawa TOP5 @ 583 (Butterfield Bermuda Championsh (P=15%)
-  - #5 [GOLF] $35 on GOLF Andrew Novak TOP5 @ 547 (Butterfield Bermuda Championsh (P=15%)
+  - #4 [GOLF] $35 on GOLF Greyson Sigg TOP5 @ 542 (Butterfield Bermuda Championsh (P=16%)
+  - #5 [GOLF] $35 on GOLF Austin Smotherman TOP5 @ 527 (Butterfield Bermuda Champ (P=16%)
 
-## 🎯 Convergence Picks (25 stacked games)
-- ELITE: **7** · HIGH: 11 · MED: 7
+## 🎯 Convergence Picks (28 stacked games)
+- ELITE: **12** · HIGH: 12 · MED: 4
+  - [ELITE] New Orleans Pelicans @ Utah Jazz : 5 signals (PREGAME, ANOMALY, ANOMALY, ATS)
+  - [ELITE] Memphis Grizzlies @ Golden State Warriors : 5 signals (HEAT_COLD, ANOMALY, ANOMALY, ATS)
+  - [ELITE] LA Clippers @ Los Angeles Lakers : 5 signals (PREGAME, ANOMALY, ANOMALY, ATS)
   - [ELITE] Inter Miami CF @ Red Bull New York : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
   - [ELITE] Seattle Sounders FC @ San Diego FC : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
-  - [ELITE] Winnipeg Jets @ Dallas Stars : 4 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ATS)
-  - [ELITE] Carolina Hurricanes @ Edmonton Oilers : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
-  - [ELITE] Minnesota United FC @ Houston Dynamo FC : 4 signals (PREGAME, HEAT_COLD, ATS, ATS)
 
 ## ⚾ Top MLB Pitcher K Plays (1)
 - **Jacob Misiorowski** OVER 4.5 K (75%) fair -303
@@ -102,11 +102,11 @@
   - [LEAN] **Daniel Santos** (14-3-0) vs Bolaji Oki -- fair -133
 
 ## ⛳ Golf Player Heat (from Butterfield Bermuda Championship)
-  - 🔥 T1 **Corey Conners** (Canada): -11 total -- finished T1
-  - 🔥 T2 **Chandler Blanchet** (USA): -11 total -- finished T2
-  - 🔥 T3 **David Skinns** (England): -10 total -- finished T3
-  - 🔥 T4 **Séamus Power** (Ireland): -10 total -- finished T4
-  - 🔥 T5 **Chris Kirk** (USA): -10 total -- finished T5
+  - 🔥 T1 **Kensei Hirata** (Japan): -13 total -- finished T1
+  - 🔥 T2 **Chandler Blanchet** (USA): -13 total -- finished T2
+  - 🔥 T3 **Séamus Power** (Ireland): -12 total -- finished T3
+  - 🔥 T4 **Corey Conners** (Canada): -12 total -- finished T4
+  - 🔥 T5 **Ben Silverman** (Canada): -12 total -- finished T5
 
 ## 🔥 MLB Batter Heat (56 HOT / 81 COLD)
   - 🔥 **Austin Hays** (SD): L14 .444 / season .280 (+164pts)
@@ -120,12 +120,12 @@
   - ❄️ **Andruw Monasterio** (BOS): L14 .083 / season .233 (-150pts) -- FADE props
   - ❄️ **Jim Jarvis** (ATL): L14 .079 / season .207 (-128pts) -- FADE props
 
-## 📈 Streak Regression Alerts (10)
-- [MLS] CF Montréal on L3 L10 0-3 -- CF Montréal on L3 -- no historical sample
-- [MLS] Inter Miami CF on W3 L10 3-0 -- Inter Miami CF on W3 -- no historical sample
-- [MLS] New York City FC on L3 L10 0-3 -- New York City FC on L3 -- no historical sample
-- [MLS] San Jose Earthquakes on L3 L10 0-3 -- San Jose Earthquakes on L3 -- no historical sample
-- [MLS] Houston Dynamo FC on L3 L10 0-3 -- Houston Dynamo FC on L3 -- no historical sample
+## 📈 Streak Regression Alerts (16)
+- [NBA] Atlanta Hawks on W4 L10 4-0 -- Atlanta Hawks on W4 -- no historical sample
+- [NBA] Dallas Mavericks on L3 L10 1-4 -- Dallas Mavericks on L3 -- no historical sample
+- [NBA] Detroit Pistons on W3 L10 3-1 -- Detroit Pistons on W3 -- no historical sample
+- [NBA] Memphis Grizzlies on W3 L10 3-0 -- Memphis Grizzlies on W3 -- no historical sample
+- [NBA] Sacramento Kings on L4 L10 0-4 -- Sacramento Kings on L4 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**

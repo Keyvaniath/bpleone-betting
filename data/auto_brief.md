@@ -6,9 +6,9 @@ _0% lineups confirmed · 1 rookie SPs_
 
 ## Slate
 - **1 games** scheduled
-- **28 best bets** scored: 6 DK · 0 PP · 1 NRFI · 0 SGP
+- **34 best bets** scored: 6 DK · 0 PP · 1 NRFI · 0 SGP
 - **Auto-portfolio:** 1 picks, $50.0 stake (5.0%), expected +$15.75
-- **MC simulation:** EV +$25.41, 64% P(profit), p05 $-104.83 / p95 $122.81
+- **MC simulation:** EV +$15.75, 69% P(profit), p05 $-50.0 / p95 $45.45
 
 ## Top 5 Best Bets
 1. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
@@ -20,10 +20,10 @@ _0% lineups confirmed · 1 rookie SPs_
 3. **LOL Peyz OVER 4.5 Kills**  (78/100 ****, edge —)
    - Player prop quality score 1.184
    - Elite player
-4. **GOLF Ren Yonezawa TOP5 @ 583 (Butterfield Bermuda Championship)**  (78/100 *****, edge —)
-   - P(top 5) 14.6% -- lower variance than outright but compelling line.
-5. **GOLF Andrew Novak TOP5 @ 547 (Butterfield Bermuda Championship)**  (78/100 *****, edge —)
-   - P(top 5) 15.5% -- lower variance than outright but compelling line.
+4. **GOLF Greyson Sigg TOP5 @ 542 (Butterfield Bermuda Championship)**  (78/100 *****, edge —)
+   - P(top 5) 15.6% -- lower variance than outright but compelling line.
+5. **GOLF Austin Smotherman TOP5 @ 527 (Butterfield Bermuda Championship)**  (78/100 *****, edge —)
+   - P(top 5) 16.0% -- lower variance than outright but compelling line.
 
 ## ⚠️ Trap Warnings — 4 flagged
 - **TBR @ MIL NRFI (no run 1st inning)** (low):
@@ -39,10 +39,10 @@ _0% lineups confirmed · 1 rookie SPs_
 - **NRFI** (1st-inning UNDER): TBR @ MIL
 
 ## Golf -- Butterfield Bermuda Championship
-- **Leader:** Corey Conners (-11) at #1
+- **Leader:** Kensei Hirata (-13) at #1
 - **Field:** 120 players  |  Status: In Progress
-- **Play of the Tournament:** Ren Yonezawa TOP5 @ +583 (model 14.6%, HIGH)
-   - P(top 5) 14.6% -- lower variance than outright but compelling line.
+- **Play of the Tournament:** Greyson Sigg TOP5 @ +542 (model 15.6%, HIGH)
+   - P(top 5) 15.6% -- lower variance than outright but compelling line.
 
 ## NBA -- REGULAR
 - Chicago Bulls @ Milwaukee Bucks (0-1 vs 0-1)  | P(home) 65.0% fair -186 | Scheduled
@@ -56,11 +56,11 @@ _0% lineups confirmed · 1 rookie SPs_
 - Tampa Bay Lightning @ Colorado Avalanche (7-2-0 vs 5-4-1)  | P(home) 38.1% fair +162 | Scheduled
 
 ## LoL Esports -- 1 live, 30 upcoming
-- [Worlds] TOP ESPORTS vs Hanwha Life Esports BO1 | P(A) 32.4% fair +209/-209
-- [Worlds] BILIBILI GAMING vs Movistar KOI BO1 | P(A) 63.2% fair -172/+172
+- [Worlds] Movistar KOI vs BILIBILI GAMING BO1 | P(A) 36.8% fair +172/-172
 - [Worlds] Anyone's Legend vs Karmine Corp BO1 | P(A) 48.0% fair +108/-108
 - [Worlds] G2 Esports vs Dplus KIA BO1 | P(A) 50.5% fair -102/+102
 - [Worlds] Team Liquid Alienware vs CTBC Flying Oyster BO1 | P(A) 58.4% fair -140/+140
+- [Worlds] LOS vs T1 BO1 | P(A) 48.5% fair +106/-106
 - **LoL POT:** Team Liquid Alienware ML vs CTBC Flying Oyster (Worlds, BO1) (HIGH)
 
 ## Player Play of the Day -- across all sports (3431 candidates scanned)

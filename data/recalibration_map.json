@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-10-23T18:28:58",
-  "n_settled": 11418,
+  "generated_at": "2026-10-23T19:44:07",
+  "n_settled": 11415,
   "n_families_transformed": 26,
   "n_families_bucketed": 16,
-  "ece_before": 0.0923,
+  "ece_before": 0.0924,
   "ece_after": 0.0126,
-  "ece_improvement": 0.0797,
-  "brier_before": 0.21126,
-  "brier_after": 0.19358,
+  "ece_improvement": 0.0798,
+  "brier_before": 0.21128,
+  "brier_after": 0.19359,
   "method_note": "Per market family, a monotonic (isotonic) curve maps the model's predicted probability to the realized hit rate, learned from settled outcomes. Bucketed for well-sampled families (preserves ranking), a family-average Bayesian blend for mid-sample, identity below that. ECE = expected calibration error (lower = the displayed % is truer). This makes the model honest at the source; it does not create edge (that needs a market price).",
   "families": [
     {
@@ -465,6 +465,19 @@
       }
     },
     {
+      "family": "ml_away",
+      "n": 59,
+      "method": "family_avg",
+      "avg_pred_raw": 0.61,
+      "avg_pred_calibrated": 0.5397,
+      "realized": 0.5254,
+      "ece_raw": 0.0846,
+      "ece_calibrated": 0.0143,
+      "transform": {
+        "realized": 0.5254
+      }
+    },
+    {
       "family": "top",
       "n": 851,
       "method": "bucketed",
@@ -511,19 +524,6 @@
       }
     },
     {
-      "family": "ml_away",
-      "n": 60,
-      "method": "family_avg",
-      "avg_pred_raw": 0.6114,
-      "avg_pred_calibrated": 0.5463,
-      "realized": 0.5333,
-      "ece_raw": 0.078,
-      "ece_calibrated": 0.013,
-      "transform": {
-        "realized": 0.5333
-      }
-    },
-    {
       "family": "btts_yes",
       "n": 76,
       "method": "family_avg",
@@ -551,15 +551,15 @@
     },
     {
       "family": "ml_home",
-      "n": 39,
+      "n": 38,
       "method": "family_avg",
-      "avg_pred_raw": 0.6421,
-      "avg_pred_calibrated": 0.602,
-      "realized": 0.5897,
-      "ece_raw": 0.0523,
-      "ece_calibrated": 0.0123,
+      "avg_pred_raw": 0.6426,
+      "avg_pred_calibrated": 0.5942,
+      "realized": 0.5789,
+      "ece_raw": 0.0637,
+      "ece_calibrated": 0.0152,
       "transform": {
-        "realized": 0.5897
+        "realized": 0.5789
       }
     },
     {
@@ -1149,13 +1149,13 @@
     },
     {
       "family": "pit_ml",
-      "n": 6,
+      "n": 5,
       "method": "identity",
-      "avg_pred_raw": 0.6581,
-      "avg_pred_calibrated": 0.6581,
-      "realized": 0.5,
-      "ece_raw": 0.1581,
-      "ece_calibrated": 0.1581,
+      "avg_pred_raw": 0.6623,
+      "avg_pred_calibrated": 0.6623,
+      "realized": 0.4,
+      "ece_raw": 0.2623,
+      "ece_calibrated": 0.2623,
       "transform": null
     },
     {

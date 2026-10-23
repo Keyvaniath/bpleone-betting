@@ -17,8 +17,8 @@ _4 picks consolidated from POD + Alpha + Book Edges + Parlay-of-Day._
 - **TBR @ MIL · OVER · O/U 6.5** · TOTAL_OVER
   Prob 57.8% · Odds -110 · Edge +10.3% · Kelly 0.114
 - **TBR @ MIL · HOME (HOME)** · TEAM_ML
-  Prob 69.7% · Odds -192 · Edge +5.9% · Kelly 0.114
+  Prob 69.7% · Odds -193 · Edge +5.9% · Kelly 0.113
 
 ---
-_Generated 2026-10-23T18:28:44 UTC by EdgeStat._
+_Generated 2026-10-23T19:43:52 UTC by EdgeStat._
 _Stakes assume ¼-Kelly fractional sizing on a flat bankroll._
