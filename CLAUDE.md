@@ -41,6 +41,22 @@ bpleone-site/
 
 ## Current deployment state (LIVE)
 
+- **2026-10-23 — HEADLINE IS NOW ALL-TIME (Brandon decided: "All-time, merge archive"):**
+  ledger_summary's headline = working ledger + data/ledger_archive.json.
+  The archive was seeded with 5,946 settled picks the OLD tail-cut eviction
+  destroyed (May 20 - Jun 7), rebuilt from git: each pick at its FINAL state
+  across daily ledger versions, today's void rules re-applied in memory with
+  the live ledger (duplicate collapse dropped 323 phantom copies; 24 recovered
+  twins that would have displaced LIVE rows were dropped instead -- live rows
+  are never altered), audited for same-event repeats (0). Restated: firehose
+  12,448 @ -18.25% -> 18,394 @ -19.19%; curated 769-370 +14.22% -> 943-436
+  +17.21% (the 242 recovered curated picks are MLB/MLB-PP, 0 same-day twins).
+  `working_ledger_only` + `restatement` blocks keep the old basis auditable;
+  track-record shows a dated note. Family evidence, calibration, the NFL era
+  split stay on the WORKING ledger (they describe the current model).
+  strategy_sim includes the archive so "firehose flat" still equals the
+  headline. Eviction archives `also_sources` + `p_predicted` now.
+
 - **2026-10-23 (final) — THE HEALTH MONITOR WAS BLIND IN CI:** data_health aged
   state files by os.path.getmtime, and in an Actions checkout mtime = checkout
   time, so in the run that PUBLISHES data_health.json every file looked ~0 min
@@ -357,8 +373,7 @@ bpleone-site/
   the window overflowed. At ~200 picks/day (727 on 9/08 as NFL opened) the
   14000 cap binds in ~2 weeks, so evicted settled picks now append to
   data/ledger_archive.json (compact, idempotent) and ledger_summary reports
-  `archived_history` separately. OPEN DECISION for Brandon: once eviction
-  starts, the headline becomes a ROLLING-WINDOW record. Merging the archive in
+  `archived_history` separately. DECIDED 2026-10-23: all-time (archive merged) -- see the 10-23 entry. Merging the archive in
   would make it all-time again but restates published numbers upward -- his
   call, not an automatic change.
   (4) CFB desk graded its first pick end-to-end: 9/05 UNLV @ HAW settled off

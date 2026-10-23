@@ -66,6 +66,16 @@ def run() -> Dict[str, Any]:
     neg = pc.proven_negative_families()
     oc = pc.overconfident_families()
 
+    # ALL-TIME, like the headline (2026-10-23): the cold archive's settled rows
+    # (recovered tail-cut history + lossless evictions) ride along, so "firehose
+    # flat, no filters" still reproduces the public record exactly.
+    try:
+        with open(os.path.join(DATA_DIR, "ledger_archive.json"), encoding="utf-8") as _f:
+            _arch = json.load(_f).get("picks") or []
+    except Exception:
+        _arch = []
+    _ids = {p.get("pick_id") for p in picks}
+    picks = list(picks) + [dict(r, settled=True) for r in _arch if r.get("pick_id") not in _ids]
     settled = [p for p in picks if p.get("result") in ("won", "lost", "push") and not p.get("voided")]
     settled.sort(key=lambda p: (p.get("date") or "", p.get("recorded_at") or ""))
 

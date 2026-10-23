@@ -408,7 +408,10 @@
       }).join("");
       const nflNote = Object.keys(nflLines).length
         ? `<p class="muted" style="font-size:11px;margin:10px 0 0;">NFL props are judged from <b>10/23 forward</b>: the simulator's form rule changed (season-to-date form, not last week's single game), so earlier picks are a different model — kept on the record as their own line, never blended into a verdict. Week 8 props were priced 10/22 under the old model; the 10/23+ line fills from Week 9.</p>` : "";
-      document.getElementById("bsGrid").innerHTML = header + rows + nflNote;
+      const rs = d.restatement, wo = d.working_ledger_only;
+      const rsNote = (rs && wo && wo.curated && d.curated)
+        ? `<p class="muted" style="font-size:11px;margin:8px 0 0;"><b>Restated ${rs.date}:</b> the record is now <b>all-time</b>. ${(rs.n_archived_in_headline || 0).toLocaleString()} settled picks that an old eviction rule had dropped from the working file (May–June 2026) were rebuilt from the repository history at each pick's final state, duplicates removed, and folded back in. Curated: ${wo.curated.wins}-${wo.curated.losses} (${wo.curated.roi_pct >= 0 ? "+" : ""}${wo.curated.roi_pct}%) on the working window → ${d.curated.wins}-${d.curated.losses} (${d.curated.roi_pct >= 0 ? "+" : ""}${d.curated.roi_pct}%) all-time. Firehose: ${wo.all.roi_pct}% → ${d.roi_pct}%. <a href="data/ledger_archive.json" target="_blank">archive →</a></p>` : "";
+      document.getElementById("bsGrid").innerHTML = header + rows + nflNote + rsNote;
     }).catch(() => {});
   </script>
 

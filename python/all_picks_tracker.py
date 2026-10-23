@@ -3222,6 +3222,7 @@ def _archive_evicted(picks: List[Dict[str, Any]]) -> int:
         rows.append({
             "pick_id": p.get("pick_id"),
             "source": p.get("source"),
+            "also_sources": p.get("also_sources"),   # curated attribution survives eviction
             "sport": p.get("sport"),
             "date": p.get("date"),
             "player_or_matchup": p.get("player_or_matchup"),
@@ -3231,6 +3232,8 @@ def _archive_evicted(picks: List[Dict[str, Any]]) -> int:
             "result": p.get("result"),
             "payout_units": p.get("payout_units"),
             "settled_at": p.get("settled_at"),
+            "p_predicted": p.get("p_predicted"),
+            "origin": "evicted",
         })
         seen.add(p.get("pick_id"))
         added += 1
@@ -3510,6 +3513,16 @@ def run() -> Dict[str, Any]:
     settled = [p for p in history if p.get("settled") and not p.get("voided")]
     pending = [p for p in history if not p.get("settled") and not p.get("voided")]
     n_void = sum(1 for p in history if p.get("voided"))
+    # ALL-TIME HEADLINE (Brandon's call, 2026-10-23): the record is the working
+    # ledger PLUS the cold archive -- the settled picks the old tail-cut eviction
+    # destroyed (recovered from git) and anything the lossless eviction moves out.
+    # `working` keeps the ledger-only set for the family evidence/calibration
+    # blocks, which describe the CURRENT model and stay on the working window.
+    working = settled
+    _live_ids = {p.get("pick_id") for p in history}
+    archived = [r for r in (_load(ARCHIVE_PATH).get("picks") or [])
+                if r.get("result") in ("won", "lost", "push") and r.get("pick_id") not in _live_ids]
+    settled = working + archived
     wins = sum(1 for p in settled if p["result"] == "won")
     losses = sum(1 for p in settled if p["result"] == "lost")
     pushes = sum(1 for p in settled if p["result"] == "push")
@@ -3575,6 +3588,17 @@ def run() -> Dict[str, Any]:
         "hit_rate": round(c30_w / (c30_w + c30_l), 4) if (c30_w + c30_l) else None,
     }
 
+    # The pre-2026-10-23 basis (working ledger only), kept beside the all-time
+    # headline so the restatement is auditable line by line.
+    def _rec(rows):
+        w_ = sum(1 for p in rows if p["result"] == "won")
+        l_ = sum(1 for p in rows if p["result"] == "lost")
+        n_ = round(sum((p.get("payout_units") or 0) for p in rows), 3)
+        r_ = sum(1 for p in rows if p["result"] != "push")
+        return {"n_settled": len(rows), "wins": w_, "losses": l_, "net_units": n_,
+                "roi_pct": round(n_ / r_ * 100, 2) if r_ else None}
+    _working_only = {"all": _rec(working), "curated": _rec([p for p in working if _is_curated_pick(p)])}
+
     # Per-source breakdown
     by_source: Dict[str, Dict[str, Any]] = {}
     for p in settled:
@@ -3593,7 +3617,7 @@ def run() -> Dict[str, Any]:
     # FAMILY EVIDENCE excludes retired-model NFL props (judged from 10/23
     # forward): prob_calibration's curation reads these two blocks.
     import prob_calibration as _pc
-    judged = [p for p in settled if _pc.judged(p)]
+    judged = [p for p in working if _pc.judged(p)]
 
     # By market family
     by_mkt: Dict[str, Dict[str, Any]] = {}
@@ -3662,7 +3686,7 @@ def run() -> Dict[str, Any]:
     # sport with many picks but 0 settled has no outcome feed wired yet. Carries
     # pending + void counts and ROI alongside the W-L record.
     by_sport: Dict[str, Dict[str, Any]] = {}
-    for p in history:
+    for p in history + [dict(r, settled=True) for r in archived]:   # all-time, archive included
         sp = (p.get("sport") or "?").upper()
         b = by_sport.setdefault(sp, {"n": 0, "settled": 0, "wins": 0, "losses": 0,
                                      "pushes": 0, "pending": 0, "void": 0, "net_units": 0.0,
@@ -3707,7 +3731,7 @@ def run() -> Dict[str, Any]:
     try:
         import calibration as _cal
         r_raw, r_cal, r_y = [], [], []
-        for p in settled:
+        for p in working:          # the current model's calibration, not the archive's
             if p.get("result") not in ("won", "lost"):
                 continue
             raw = p.get("p_predicted") if p.get("p_predicted") is not None else p.get("prob")
@@ -3751,6 +3775,20 @@ def run() -> Dict[str, Any]:
         "n_calibrated_picks": n_calibrated,
         "calibrated_reliability": calibrated_reliability,
         "curated": curated,
+        "headline_basis": "all-time: working ledger + data/ledger_archive.json",
+        "working_ledger_only": _working_only,
+        "restatement": {
+            "date": "2026-10-23",
+            "note": ("The headline became ALL-TIME on 2026-10-23. 5,946 settled picks that the old "
+                     "tail-cut eviction had destroyed (May-June 2026, the 07-06 erosion and the run-up "
+                     "to 09-03) were rebuilt from git history at each pick's final state, with today's "
+                     "duplicate-wager rule re-applied, and folded back in. They are mostly the raw "
+                     "May-June MLB prop firehose (2,961-2,983, -1,256.9u), so the firehose ROI fell; "
+                     "the curated record changed by the curated picks among them. Before this date the "
+                     "published numbers covered the working window only -- working_ledger_only keeps "
+                     "that basis."),
+            "n_archived_in_headline": len(archived),
+        },
         "n_added_this_run": n_added,
         "n_newly_settled_this_run": n_newly_settled,
         "n_resettled_this_run": n_resettled,
@@ -3814,10 +3852,10 @@ def run() -> Dict[str, Any]:
             "net_units": round(sum(float(r.get("payout_units") or 0) for r in _arows), 2),
             "oldest": min((str(r.get("date") or "") for r in _arows), default=None),
             "newest": max((str(r.get("date") or "") for r in _arows), default=None),
-            "note": ("Settled picks that aged out of the working ledger window. "
-                     "NOT included in the headline record above (including them "
-                     "would restate published numbers); kept in full at "
-                     "data/ledger_archive.json so nothing is ever destroyed."),
+            "note": ("Settled picks no longer in the working ledger (recovered tail-cut "
+                     "history + lossless evictions). INCLUDED in the all-time headline "
+                     "since 2026-10-23 (see restatement); kept in full at "
+                     "data/ledger_archive.json."),
         }
 
     summary = {k: v for k, v in payload.items() if k != "picks"}
