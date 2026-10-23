@@ -7,8 +7,8 @@ _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 - **TBR @ MIL** ML_HOME (MLB) -- 69% / +4.2%
 
 ## 📡 Sharp Money Following Model
-- **TBR @ MIL** ml_home: line moved 62.26% → 65.75% (+3.5pp)
+- **TBR @ MIL** ml_home: line moved 62.26% → 66.33% (+4.1pp)
 
 ---
-_Generated 2026-10-23T19:43:40_
+_Generated 2026-10-23T19:59:42_
 _Full breakdown: /tonight · Full history: /locks-of-day_

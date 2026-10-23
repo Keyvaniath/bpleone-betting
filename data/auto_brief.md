@@ -6,7 +6,7 @@ _0% lineups confirmed · 1 rookie SPs_
 
 ## Slate
 - **1 games** scheduled
-- **34 best bets** scored: 6 DK · 0 PP · 1 NRFI · 0 SGP
+- **35 best bets** scored: 6 DK · 0 PP · 1 NRFI · 0 SGP
 - **Auto-portfolio:** 1 picks, $50.0 stake (5.0%), expected +$15.75
 - **MC simulation:** EV +$15.75, 69% P(profit), p05 $-50.0 / p95 $45.45
 
@@ -20,10 +20,11 @@ _0% lineups confirmed · 1 rookie SPs_
 3. **LOL Peyz OVER 4.5 Kills**  (78/100 ****, edge —)
    - Player prop quality score 1.184
    - Elite player
-4. **GOLF Greyson Sigg TOP5 @ 542 (Butterfield Bermuda Championship)**  (78/100 *****, edge —)
-   - P(top 5) 15.6% -- lower variance than outright but compelling line.
-5. **GOLF Austin Smotherman TOP5 @ 527 (Butterfield Bermuda Championship)**  (78/100 *****, edge —)
-   - P(top 5) 16.0% -- lower variance than outright but compelling line.
+4. **GOLF Ben Kohles TOP5 @ 735 (Butterfield Bermuda Championship)**  (78/100 *****, edge —)
+   - P(top 5) 12.0% -- lower variance than outright but compelling line.
+5. **LOL Team Liquid Alienware vs CTBC Flying Oyster ML @ -140**  (76/100 *****, edge —)
+   - Model 58.4% (fair -140)
+   - Worlds
 
 ## ⚠️ Trap Warnings — 4 flagged
 - **TBR @ MIL NRFI (no run 1st inning)** (low):
@@ -41,8 +42,8 @@ _0% lineups confirmed · 1 rookie SPs_
 ## Golf -- Butterfield Bermuda Championship
 - **Leader:** Kensei Hirata (-13) at #1
 - **Field:** 120 players  |  Status: In Progress
-- **Play of the Tournament:** Greyson Sigg TOP5 @ +542 (model 15.6%, HIGH)
-   - P(top 5) 15.6% -- lower variance than outright but compelling line.
+- **Play of the Tournament:** Ben Kohles TOP5 @ +735 (model 12.0%, HIGH)
+   - P(top 5) 12.0% -- lower variance than outright but compelling line.
 
 ## NBA -- REGULAR
 - Chicago Bulls @ Milwaukee Bucks (0-1 vs 0-1)  | P(home) 65.0% fair -186 | Scheduled

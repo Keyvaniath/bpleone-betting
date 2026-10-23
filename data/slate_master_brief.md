@@ -1,19 +1,19 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-10-23T19:43:47 UTC_
+_Generated 2026-10-23T19:59:49 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -34
+- **Score:** -30
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 12
-- **Total FADES:** 82
+- **Total STRONG:** 14
+- **Total FADES:** 86
 
 ## Top 5 Curated Picks
-1. **GOLF / Kensei Hirata** (GOLF_PLAYER, score=172.29)
+1. **GOLF / Kensei Hirata** (GOLF_PLAYER, score=164.07)
    - Play: Kensei Hirata (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Chandler Blanchet** (GOLF_PLAYER, score=171.79)
+2. **GOLF / Chandler Blanchet** (GOLF_PLAYER, score=163.57)
    - Play: Chandler Blanchet (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
 3. **WNBA / allisha gray** (WNBA_PLAYER, score=62.42)
@@ -42,7 +42,7 @@ _Generated 2026-10-23T19:43:47 UTC_
   - Fade angle: PTS UNDER + PRA UNDER (multi-prop)
 - **NBA** / kyrie irving (PLAYER_FADE)
   - Fade angle: PTS UNDER + PRA UNDER (multi-prop)
-- **NBA** / ORL (TEAM_FADE)
-  - Fade angle: team total UNDER
 - **NBA** / SAS (TEAM_FADE)
+  - Fade angle: team total UNDER
+- **NBA** / ORL (TEAM_FADE)
   - Fade angle: team total UNDER

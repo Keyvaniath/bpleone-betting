@@ -1,28 +1,28 @@
 # EdgeStat Daily Summary — 2026-10-23
 
-## 🏥 Model Health: 63.2/100 [OK]
+## 🏥 Model Health: 64.7/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.9/100
-  - 🔴 Hit Rate Trend: 31.5/100
-  - 🔴 Brier Trend: 1.9/100
+  - 🟢 Calibration Freshness: 99.7/100
+  - 🔴 Hit Rate Trend: 33.6/100
+  - 🔴 Brier Trend: 3.1/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 100.0/100
-  - 🟡 Edge Count: 65.7/100
+  - 🟢 Data Health: 95.5/100
+  - 🟢 Edge Count: 82.9/100
 
 ## 🌐 Slate Overview
-- **Regime today:** BALANCED (avg P(home)=0.535)
+- **Regime today:** BALANCED (avg P(home)=0.53)
 - **Total games on board:** 62
-- **Strong home favorites:** 27 | **Strong road dogs:** 20
+- **Strong home favorites:** 26 | **Strong road dogs:** 20
 
 ## 🎯 Top 5 Best Bets
 1. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
 2. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
 3. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
-4. **GOLF Greyson Sigg TOP5 @ 542 (Butterfield Bermuda Championship)** (78/100 ★★★★★)
-5. **GOLF Austin Smotherman TOP5 @ 527 (Butterfield Bermuda Championship)** (78/100 ★★★★★)
+4. **GOLF Ben Kohles TOP5 @ 735 (Butterfield Bermuda Championship)** (78/100 ★★★★★)
+5. **LOL Team Liquid Alienware vs CTBC Flying Oyster ML @ -140** (76/100 ★★★★★)
 
 ## 📡 Sharp Action (Line Movement)
-- [MODERATE] **TBR @ MIL** ml_home: 62.26% → 65.75% (+3.5pp)
+- [MODERATE] **TBR @ MIL** ml_home: 62.26% → 66.33% (+4.1pp)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -55,23 +55,23 @@
 - Hot teams: **6** | Cold teams: **15** | Over-heavy: 0 | Under-heavy: 21
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (141)
-- RESIDUAL_DIVERGENCE: **9**
-- STEAM_MOVE: **132**
-  - Atlanta Dream (WNBA): Atlanta Dream OUTPERFORMING expected margin by 12.0pts in recent games -- model bias may persist
-  - Golden State Valkyries (WNBA): Golden State Valkyries UNDERPERFORMING expected margin by 9.0pts in recent games -- model bias may persist
-  - Columbus Crew (MLS): Columbus Crew OUTPERFORMING expected margin by 7.7pts in recent games -- model bias may persist
-  - Inter Miami CF (MLS): Inter Miami CF UNDERPERFORMING expected margin by 7.3pts in recent games -- model bias may persist
-  - New York City FC (MLS): New York City FC OUTPERFORMING expected margin by 14.9pts in recent games -- model bias may persist
+## ⚠️ Anomaly Detector (160)
+- RESIDUAL_DIVERGENCE: **26**
+- STEAM_MOVE: **134**
+  - Milwaukee Bucks (NBA): Milwaukee Bucks UNDERPERFORMING expected margin by 11.8pts in recent games -- model bias may persist
+  - Boston Celtics (NBA): Boston Celtics OUTPERFORMING expected margin by 7.7pts in recent games -- model bias may persist
+  - New York Knicks (NBA): New York Knicks UNDERPERFORMING expected margin by 6.8pts in recent games -- model bias may persist
+  - Orlando Magic (NBA): Orlando Magic OUTPERFORMING expected margin by 10.3pts in recent games -- model bias may persist
+  - Minnesota Timberwolves (NBA): Minnesota Timberwolves UNDERPERFORMING expected margin by 7.9pts in recent games -- model bias may persist
 
-## 💰 Today's Portfolio (10 picks)
-- Total stake: **$335.0** (33.5% of $1000 bankroll)
-- Expected EV: **$-6.46**
+## 💰 Today's Portfolio (11 picks)
+- Total stake: **$340.0** (34.0% of $1000 bankroll)
+- Expected EV: **$-6.47**
   - #1 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #2 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
   - #3 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
-  - #4 [GOLF] $35 on GOLF Greyson Sigg TOP5 @ 542 (Butterfield Bermuda Championsh (P=16%)
-  - #5 [GOLF] $35 on GOLF Austin Smotherman TOP5 @ 527 (Butterfield Bermuda Champ (P=16%)
+  - #4 [GOLF] $35 on GOLF Ben Kohles TOP5 @ 735 (Butterfield Bermuda Championship (P=12%)
+  - #5 [NRFI] $35 on TBR @ MIL NRFI (no run 1st inning) (P=69%)
 
 ## 🎯 Convergence Picks (28 stacked games)
 - ELITE: **12** · HIGH: 12 · MED: 4
@@ -105,8 +105,8 @@
   - 🔥 T1 **Kensei Hirata** (Japan): -13 total -- finished T1
   - 🔥 T2 **Chandler Blanchet** (USA): -13 total -- finished T2
   - 🔥 T3 **Séamus Power** (Ireland): -12 total -- finished T3
-  - 🔥 T4 **Corey Conners** (Canada): -12 total -- finished T4
-  - 🔥 T5 **Ben Silverman** (Canada): -12 total -- finished T5
+  - 🔥 T4 **Eric Cole** (USA): -12 total -- finished T4
+  - 🔥 T5 **Corey Conners** (Canada): -12 total -- finished T5
 
 ## 🔥 MLB Batter Heat (56 HOT / 81 COLD)
   - 🔥 **Austin Hays** (SD): L14 .444 / season .280 (+164pts)
