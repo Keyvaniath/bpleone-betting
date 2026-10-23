@@ -1,18 +1,18 @@
 # EdgeStat Daily Summary — 2026-10-23
 
-## 🏥 Model Health: 57.3/100 [OK]
+## 🏥 Model Health: 58.8/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.3/100
-  - 🔴 Hit Rate Trend: 0/100
-  - 🔴 Brier Trend: 0/100
+  - 🟢 Calibration Freshness: 99.9/100
+  - 🔴 Hit Rate Trend: 4.1/100
+  - 🔴 Brier Trend: 1.4/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 100.0/100
-  - 🟡 Edge Count: 74.3/100
+  - 🟡 Edge Count: 77.1/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.566)
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.573)
 - **Total games on board:** 63
-- **Strong home favorites:** 27 | **Strong road dogs:** 18
+- **Strong home favorites:** 29 | **Strong road dogs:** 18
 
 ## 🎯 Top 5 Best Bets
 1. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
@@ -71,12 +71,12 @@
   - #5 [GOLF] $35 on GOLF Kihei Akina TOP10 @ 676 (Butterfield Bermuda Championsh (P=13%)
 
 ## 🎯 Convergence Picks (27 stacked games)
-- ELITE: **9** · HIGH: 14 · MED: 4
+- ELITE: **9** · HIGH: 13 · MED: 5
   - [ELITE] Detroit Red Wings @ Vancouver Canucks : 5 signals (PREGAME, HEAT_COLD, HEAT_COLD, HEAT_COLD)
   - [ELITE] Inter Miami CF @ Red Bull New York : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
   - [ELITE] Seattle Sounders FC @ San Diego FC : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
   - [ELITE] Florida Panthers @ Pittsburgh Penguins : 4 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ATS)
-  - [ELITE] Winnipeg Jets @ Dallas Stars : 4 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
+  - [ELITE] Carolina Hurricanes @ Edmonton Oilers : 4 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
 
 ## ⚾ Top MLB Pitcher K Plays (1)
 - **Jacob Misiorowski** OVER 4.5 K (75%) fair -303

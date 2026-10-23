@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-10-23T00:34:15",
-  "n_settled": 12300,
+  "generated_at": "2026-10-23T01:35:25",
+  "n_settled": 12308,
   "n_families_transformed": 35,
   "n_families_bucketed": 20,
   "ece_before": 0.0873,
   "ece_after": 0.0124,
-  "ece_improvement": 0.0749,
-  "brier_before": 0.21007,
-  "brier_after": 0.19325,
+  "ece_improvement": 0.0748,
+  "brier_before": 0.21004,
+  "brier_after": 0.19322,
   "method_note": "Per market family, a monotonic (isotonic) curve maps the model's predicted probability to the realized hit rate, learned from settled outcomes. Bucketed for well-sampled families (preserves ranking), a family-average Bayesian blend for mid-sample, identity below that. ECE = expected calibration error (lower = the displayed % is truer). This makes the model honest at the source; it does not create edge (that needs a market price).",
   "families": [
     {
@@ -577,15 +577,15 @@
     },
     {
       "family": "rush_yds_under",
-      "n": 65,
+      "n": 66,
       "method": "family_avg",
-      "avg_pred_raw": 0.7563,
-      "avg_pred_calibrated": 0.7023,
-      "realized": 0.6923,
-      "ece_raw": 0.064,
-      "ece_calibrated": 0.01,
+      "avg_pred_raw": 0.7567,
+      "avg_pred_calibrated": 0.7062,
+      "realized": 0.697,
+      "ece_raw": 0.0597,
+      "ece_calibrated": 0.0092,
       "transform": {
-        "realized": 0.6923
+        "realized": 0.697
       }
     },
     {
@@ -612,6 +612,19 @@
       "ece_calibrated": 0.0123,
       "transform": {
         "realized": 0.5897
+      }
+    },
+    {
+      "family": "rec_over",
+      "n": 43,
+      "method": "family_avg",
+      "avg_pred_raw": 0.7397,
+      "avg_pred_calibrated": 0.7796,
+      "realized": 0.7907,
+      "ece_raw": 0.051,
+      "ece_calibrated": 0.0111,
+      "transform": {
+        "realized": 0.7907
       }
     },
     {
@@ -704,19 +717,6 @@
             0.8535
           ]
         ]
-      }
-    },
-    {
-      "family": "rec_over",
-      "n": 41,
-      "method": "family_avg",
-      "avg_pred_raw": 0.7397,
-      "avg_pred_calibrated": 0.7713,
-      "realized": 0.7805,
-      "ece_raw": 0.0408,
-      "ece_calibrated": 0.0092,
-      "transform": {
-        "realized": 0.7805
       }
     },
     {
@@ -1487,24 +1487,24 @@
     },
     {
       "family": "longest_rec_over",
-      "n": 22,
+      "n": 23,
       "method": "identity",
-      "avg_pred_raw": 0.7551,
-      "avg_pred_calibrated": 0.7551,
-      "realized": 0.4545,
-      "ece_raw": 0.3005,
-      "ece_calibrated": 0.3005,
+      "avg_pred_raw": 0.7537,
+      "avg_pred_calibrated": 0.7537,
+      "realized": 0.4783,
+      "ece_raw": 0.2754,
+      "ece_calibrated": 0.2754,
       "transform": null
     },
     {
       "family": "longest_rush_over",
-      "n": 26,
+      "n": 27,
       "method": "identity",
-      "avg_pred_raw": 0.7307,
-      "avg_pred_calibrated": 0.7307,
-      "realized": 0.5385,
-      "ece_raw": 0.1922,
-      "ece_calibrated": 0.1922,
+      "avg_pred_raw": 0.7292,
+      "avg_pred_calibrated": 0.7292,
+      "realized": 0.5185,
+      "ece_raw": 0.2107,
+      "ece_calibrated": 0.2107,
       "transform": null
     },
     {
@@ -1520,13 +1520,13 @@
     },
     {
       "family": "rec_yds_over",
-      "n": 25,
+      "n": 27,
       "method": "identity",
-      "avg_pred_raw": 0.7416,
-      "avg_pred_calibrated": 0.7416,
-      "realized": 0.56,
-      "ece_raw": 0.1816,
-      "ece_calibrated": 0.1816,
+      "avg_pred_raw": 0.7425,
+      "avg_pred_calibrated": 0.7425,
+      "realized": 0.5926,
+      "ece_raw": 0.1499,
+      "ece_calibrated": 0.1499,
       "transform": null
     },
     {
@@ -1785,30 +1785,30 @@
     },
     {
       "family": "longest_rec_under",
-      "n": 155,
+      "n": 156,
       "method": "bucketed",
-      "avg_pred_raw": 0.7434,
-      "avg_pred_calibrated": 0.7337,
-      "realized": 0.729,
-      "ece_raw": 0.0278,
-      "ece_calibrated": 0.0459,
+      "avg_pred_raw": 0.7432,
+      "avg_pred_calibrated": 0.7305,
+      "realized": 0.7244,
+      "ece_raw": 0.023,
+      "ece_calibrated": 0.0492,
       "transform": {
         "anchors": [
           [
             0.6764,
-            0.6412
+            0.628
           ],
           [
-            0.7176,
-            0.6412
+            0.7173,
+            0.628
           ],
           [
-            0.7374,
-            0.6802
+            0.7366,
+            0.68
           ],
           [
-            0.7598,
-            0.7059
+            0.7594,
+            0.7135
           ],
           [
             0.7775,

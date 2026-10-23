@@ -4,7 +4,7 @@
 
 _Pipeline health: **WARNING** (12/15 artifacts ok; 3 empty, 0 stale)._ 
 
-_Generated at 2026-10-23T01:05:07 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-10-23T01:35:16 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
@@ -24,26 +24,26 @@ _Generated at 2026-10-23T01:05:07 UTC. Game lines source: **Bovada (fallback -- 
 
 ## Parlays - top 5
 
-- **3-leg @ +568 (prob 19.7%, EV +31.71%)**
+- **3-leg @ +584 (prob 19.7%, EV +34.81%)**
   - Richie Palacios OVER 0.5 batter_hits (+100, model 55.4%)
   - Taylor Walls OVER 0.5 batter_hits (+122, model 49.2%)
-  - TBR @ MIL MIL_ML (-198, model 72.3%)
-- **3-leg @ +448 (prob 23.9%, EV +30.71%)**
+  - TBR @ MIL MIL_ML (-185, model 72.3%)
+- **3-leg @ +461 (prob 23.9%, EV +33.79%)**
   - Richie Palacios OVER 0.5 batter_hits (+100, model 55.4%)
   - Liam Hicks OVER 0.5 batter_hits (-122, model 59.6%)
-  - TBR @ MIL MIL_ML (-198, model 72.3%)
-- **3-leg @ +674 (prob 16.9%, EV +30.47%)**
+  - TBR @ MIL MIL_ML (-185, model 72.3%)
+- **3-leg @ +692 (prob 16.9%, EV +33.54%)**
   - Richie Palacios OVER 0.5 batter_hits (+100, model 55.4%)
   - Brice Turang UNDER 0.5 batter_hits (+157, model 42.1%)
-  - TBR @ MIL MIL_ML (-198, model 72.3%)
-- **3-leg @ +752 (prob 15.2%, EV +29.4%)**
+  - TBR @ MIL MIL_ML (-185, model 72.3%)
+- **3-leg @ +772 (prob 15.2%, EV +32.45%)**
   - Richie Palacios OVER 0.5 batter_hits (+100, model 55.4%)
   - Jackson Chourio UNDER 0.5 batter_hits (+183, model 37.9%)
-  - TBR @ MIL MIL_ML (-198, model 72.3%)
-- **3-leg @ +508 (prob 21.2%, EV +28.85%)**
+  - TBR @ MIL MIL_ML (-185, model 72.3%)
+- **3-leg @ +522 (prob 21.2%, EV +31.89%)**
   - Taylor Walls OVER 0.5 batter_hits (+122, model 49.2%)
   - Liam Hicks OVER 0.5 batter_hits (-122, model 59.6%)
-  - TBR @ MIL MIL_ML (-198, model 72.3%)
+  - TBR @ MIL MIL_ML (-185, model 72.3%)
 
 ## Self-Learning Loop
 
