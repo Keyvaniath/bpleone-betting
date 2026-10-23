@@ -6,9 +6,9 @@ _0% lineups confirmed · 1 rookie SPs_
 
 ## Slate
 - **1 games** scheduled
-- **31 best bets** scored: 6 DK · 0 PP · 1 NRFI · 0 SGP
+- **28 best bets** scored: 6 DK · 0 PP · 1 NRFI · 0 SGP
 - **Auto-portfolio:** 1 picks, $50.0 stake (5.0%), expected +$15.75
-- **MC simulation:** EV +$15.75, 69% P(profit), p05 $-50.0 / p95 $45.45
+- **MC simulation:** EV +$25.41, 64% P(profit), p05 $-104.83 / p95 $122.81
 
 ## Top 5 Best Bets
 1. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
@@ -46,7 +46,7 @@ _0% lineups confirmed · 1 rookie SPs_
 
 ## NBA -- REGULAR
 - Cleveland Cavaliers @ Philadelphia 76ers (0-1 vs 2-0) 106-114 | P(home) 100.0% fair +0 | Final
-- Denver Nuggets @ Oklahoma City Thunder (0-0 vs 1-0) 60-55 | P(home) 25.1% fair +298 | In Progress
+- Denver Nuggets @ Oklahoma City Thunder (0-0 vs 1-0) 64-67 | P(home) 97.5% fair -3868 | In Progress
 
 ## NHL -- REGULAR
 - Nashville Predators @ Boston Bruins (0-0-0 vs 0-0-0) 0-6 | P(home) 100.0% fair +0 | Final

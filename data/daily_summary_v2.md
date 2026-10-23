@@ -1,8 +1,8 @@
 # EdgeStat Daily Summary — 2026-10-23
 
-## 🏥 Model Health: 65.4/100 [OK]
+## 🏥 Model Health: 65.5/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.5/100
+  - 🟢 Calibration Freshness: 100.0/100
   - 🔴 Hit Rate Trend: 24.5/100
   - 🔴 Brier Trend: 17.3/100
   - 🟢 Pipeline Audit: 100.0/100
@@ -11,8 +11,8 @@
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.558)
-- **Total games on board:** 54
-- **Strong home favorites:** 24 | **Strong road dogs:** 16
+- **Total games on board:** 52
+- **Strong home favorites:** 22 | **Strong road dogs:** 16
 
 ## 🎯 Top 5 Best Bets
 1. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
@@ -52,18 +52,18 @@
 - Hot teams: **5** | Cold teams: **15** | Over-heavy: 0 | Under-heavy: 21
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (147)
-- RESIDUAL_DIVERGENCE: **15**
+## ⚠️ Anomaly Detector (145)
+- RESIDUAL_DIVERGENCE: **13**
 - STEAM_MOVE: **132**
   - Denver Nuggets (NBA): Denver Nuggets UNDERPERFORMING expected margin by 10.7pts in recent games -- model bias may persist
-  - Los Angeles Kings (NHL): Los Angeles Kings OUTPERFORMING expected margin by 12.2pts in recent games -- model bias may persist
-  - Winnipeg Jets (NHL): Winnipeg Jets OUTPERFORMING expected margin by 7.7pts in recent games -- model bias may persist
   - Calgary Flames (NHL): Calgary Flames OUTPERFORMING expected margin by 11.7pts in recent games -- model bias may persist
   - Carolina Hurricanes (NHL): Carolina Hurricanes UNDERPERFORMING expected margin by 11.4pts in recent games -- model bias may persist
+  - Seattle Kraken (NHL): Seattle Kraken UNDERPERFORMING expected margin by 7.0pts in recent games -- model bias may persist
+  - Atlanta Dream (WNBA): Atlanta Dream OUTPERFORMING expected margin by 12.0pts in recent games -- model bias may persist
 
-## 💰 Today's Portfolio (11 picks)
-- Total stake: **$340.0** (34.0% of $1000 bankroll)
-- Expected EV: **$-4.42**
+## 💰 Today's Portfolio (12 picks)
+- Total stake: **$345.0** (34.5% of $1000 bankroll)
+- Expected EV: **$-4.9**
   - #1 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #2 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
   - #3 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
@@ -71,12 +71,12 @@
   - #5 [GOLF] $35 on GOLF Kihei Akina TOP10 @ 676 (Butterfield Bermuda Championsh (P=13%)
 
 ## 🎯 Convergence Picks (25 stacked games)
-- ELITE: **6** · HIGH: 14 · MED: 5
+- ELITE: **7** · HIGH: 14 · MED: 4
   - [ELITE] Inter Miami CF @ Red Bull New York : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
   - [ELITE] Seattle Sounders FC @ San Diego FC : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
+  - [ELITE] Winnipeg Jets @ Dallas Stars : 4 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ATS)
   - [ELITE] Detroit Red Wings @ Vancouver Canucks : 4 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ATS)
   - [ELITE] Minnesota United FC @ Houston Dynamo FC : 4 signals (PREGAME, HEAT_COLD, ATS, ATS)
-  - [ELITE] Austin FC @ Sporting Kansas City : 4 signals (PREGAME, HEAT_COLD, HEAT_COLD, ATS)
 
 ## ⚾ Top MLB Pitcher K Plays (1)
 - **Jacob Misiorowski** OVER 4.5 K (75%) fair -303
@@ -111,12 +111,12 @@
   - ❄️ **Andruw Monasterio** (BOS): L14 .083 / season .233 (-150pts) -- FADE props
   - ❄️ **Jim Jarvis** (ATL): L14 .079 / season .207 (-128pts) -- FADE props
 
-## 📈 Streak Regression Alerts (13)
-- [NHL] Dallas Stars on W3 L10 3-2 -- Dallas Stars on W3 -- no historical sample
-- [NHL] Winnipeg Jets on L3 L10 1-4 -- Winnipeg Jets on L3 -- no historical sample
+## 📈 Streak Regression Alerts (11)
 - [NHL] Vancouver Canucks on L6 L10 0-5 -- Vancouver Canucks on L6 -- no historical sample
 - [MLS] CF Montréal on L3 L10 0-3 -- CF Montréal on L3 -- no historical sample
 - [MLS] Inter Miami CF on W3 L10 3-0 -- Inter Miami CF on W3 -- no historical sample
+- [MLS] New York City FC on L3 L10 0-3 -- New York City FC on L3 -- no historical sample
+- [MLS] San Jose Earthquakes on L3 L10 0-3 -- San Jose Earthquakes on L3 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**
@@ -130,7 +130,7 @@
 
 ## 🤖 Self-Training Status
 - **NBA**: n=59 games · hit rate 59.3% · bias -9.2pp [calibration applied]
-- **NHL**: n=96 games · hit rate 49.0% · bias -9.1pp [calibration applied]
+- **NHL**: n=97 games · hit rate 48.4% · bias -9.6pp [calibration applied]
 - **WNBA**: n=5 games · hit rate 40.0% · bias +20.1pp
 - **MLS**: n=47 games · hit rate 36.2% · bias -4.6pp [calibration applied]
 - **EPL**: n=20 games · hit rate 55.0% · bias -10.4pp [calibration applied]
