@@ -83,6 +83,11 @@ def compose() -> Dict[str, Any]:
         sub = ("The pick pool is MLB-only, and no other sport's picks clear the same "
                "edge gate. We won't loosen the rule to fill the calendar. The full "
                "season record stays public below.")
+    elif today.get("withdrawn"):
+        w = today.get("withdrawn") or {}
+        subject = f"CORRECTION — Alpha Pick {date} withdrawn before first pitch"
+        headline = "Today's pick is withdrawn."
+        sub = str(w.get("reason") or "It was priced at a placeholder line, not the real book price.")
     elif no_pick:
         subject = f"Alpha Pick {date}: no play today (we don't force bets)"
         headline = "No pick today."
@@ -184,6 +189,7 @@ def compose() -> Dict[str, Any]:
         "subject": subject, "text": text, "html": html_body, "mailto": mailto,
         "no_pick": no_pick,
         "offseason": offseason,
+        "withdrawn": bool(today.get("withdrawn")),
         "note": ("Composed from alpha_pick_record + alpha_tweet every run. Sending is a "
                  "human action; --send-self delivers ONLY to the owner's inbox when SMTP "
                  "secrets are set."),

@@ -152,11 +152,42 @@ def _calibrated_prob(raw, market):
 MLB_FAV_PRICE_FLOOR = -150
 
 
+def _price_american(p: Dict[str, Any]):
+    """The price a pick is GRADED at: the real book line when known
+    (book_american, stamped at intake or by the 2026-10-23 re-price), else the
+    recorded fair_american. fair_american stays as recorded because the Alpha
+    locks key on it."""
+    b = p.get("book_american")
+    return b if b is not None else p.get("fair_american")
+
+
+def _is_mlb_moneyline_market(p: Dict[str, Any]) -> Optional[str]:
+    """'home' / 'away' when p is an MLB moneyline, else None."""
+    if str(p.get("sport") or "").upper() != "MLB":
+        return None
+    m = str(p.get("market") or "").lower()
+    if "ml_home" in m or m in ("home ml", "home_ml"):
+        return "home"
+    if "ml_away" in m or m in ("away ml", "away_ml"):
+        return "away"
+    t = re.fullmatch(r"([a-z]{2,4})_ml", m)
+    mu = str(p.get("player_or_matchup") or p.get("matchup") or "")
+    if t and "@" in mu:
+        aw, hm = [x.strip().lower() for x in mu.split("@", 1)]
+        team = t.group(1)
+        same = lambda a, b: bool(a and b) and (a == b or a.startswith(b) or b.startswith(a))
+        if same(team, hm) and not same(team, aw):
+            return "home"
+        if same(team, aw) and not same(team, hm):
+            return "away"
+    return None
+
+
 def _is_mlb_juice_favorite(p: Dict[str, Any]) -> bool:
     if (p.get("sport") or "").upper() != "MLB":
         return False
     try:
-        fa = float(p.get("fair_american"))
+        fa = float(_price_american(p))
     except (TypeError, ValueError):
         return False
     return fa <= MLB_FAV_PRICE_FLOOR
@@ -1561,6 +1592,24 @@ def _collect_picks_from_sources() -> List[Dict[str, Any]]:
     # the -150..-200 bucket -> -10.6%). Together that is the bulk of the MLB book's
     # losses. Stop placing them. Scoped to sport "MLB" so the profitable MLB-PP
     # player-prop book (heavy favorites that DO cash, +42% ROI) is untouched.
+    # MONEYLINES CARRY THE REAL PRICE (2026-10-23). A board that lacked a
+    # price filled in a placeholder -110 -- the 10/23 Alpha was MIL ML "@ -110"
+    # when DraftKings had MIL -192: a fake +12.9% edge, a win paid +0.91u not
+    # +0.52u, and the -150 juice gate never saw a favourite. Every MLB
+    # moneyline is now priced from the live DK line (espn_odds) at intake; one
+    # with no real line does not enter the ledger.
+    _book = (_load(os.path.join(DATA_DIR, "espn_odds.json")).get("by_matchup") or {})
+    _priced = []
+    for p in out:
+        sd = _is_mlb_moneyline_market(p)
+        if sd:
+            ln = _book.get(str(p.get("matchup") or p.get("player_or_matchup") or "")) or {}
+            px = ln.get("ml_home" if sd == "home" else "ml_away")
+            if px is None:
+                continue                          # unpriced moneyline: not a pick
+            p["book_american"] = px
+        _priced.append(p)
+    out = _priced
     out = [p for p in out if not _is_mlb_juice_favorite(p)]
 
     # NFL props carry the model rule that PRICED them (judged from 10/23
@@ -2657,7 +2706,7 @@ def _settle_picks(history: List[Dict[str, Any]]) -> int:
 
         market = (p.get("market") or "").lower()
         result = None
-        decimal_odds = _american_to_decimal(p.get("fair_american")) or 1.91
+        decimal_odds = _american_to_decimal(_price_american(p)) or 1.91
 
         sport = (p.get("sport") or "").upper()
         if sport == "WNBA":
@@ -2940,6 +2989,10 @@ def _reconcile_settled_voids(history: List[Dict[str, Any]]) -> int:
             # unpriceable by the season-baseline model, win or lose).
             if str(p.get("voided_reason") or "").startswith("preseason"):
                 continue
+            # Unpriced moneylines (2026-10-23): graded at a placeholder price
+            # with no real line on record -- no honest payout exists.
+            if str(p.get("voided_reason") or "").startswith("unpriced"):
+                continue
             # RLM date-conflation voids are intentional (2026-09-02): those rows
             # never named a real single game, so no later grade is trustworthy.
             if str(p.get("voided_reason") or "").startswith("rlm"):
@@ -3147,7 +3200,7 @@ def _resettle_on_revision(history: List[Dict[str, Any]]) -> int:
             p["outcome"]["check"] = "verified"
             continue
         # Current box score disagrees with what we recorded -> re-settle to truth.
-        decimal_odds = _american_to_decimal(p.get("fair_american")) or 1.91
+        decimal_odds = _american_to_decimal(_price_american(p)) or 1.91
         p["result"] = recomputed
         p["payout_units"] = (round(decimal_odds - 1, 4) if recomputed == "won"
                              else (-1.0 if recomputed == "lost" else 0.0))
@@ -3229,6 +3282,7 @@ def _archive_evicted(picks: List[Dict[str, Any]]) -> int:
             "market": p.get("market"),
             "prob": p.get("prob"),
             "fair_american": p.get("fair_american"),
+            "book_american": p.get("book_american"),
             "result": p.get("result"),
             "payout_units": p.get("payout_units"),
             "settled_at": p.get("settled_at"),
@@ -3521,7 +3575,8 @@ def run() -> Dict[str, Any]:
     working = settled
     _live_ids = {p.get("pick_id") for p in history}
     archived = [r for r in (_load(ARCHIVE_PATH).get("picks") or [])
-                if r.get("result") in ("won", "lost", "push") and r.get("pick_id") not in _live_ids]
+                if r.get("result") in ("won", "lost", "push") and not r.get("voided")
+                and r.get("pick_id") not in _live_ids]
     settled = working + archived
     wins = sum(1 for p in settled if p["result"] == "won")
     losses = sum(1 for p in settled if p["result"] == "lost")

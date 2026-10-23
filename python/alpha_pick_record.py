@@ -239,10 +239,19 @@ def _family(market: Any) -> str:
     return (m.split("_")[0] or "OTHER")              # distinct fallback bucket
 
 
+def _px(pick: Dict[str, Any]):
+    """The REAL price: the book line when known (book_american, 2026-10-23),
+    else the recorded fair_american. Locks keep keying on fair_american; every
+    edge, gate and payout uses this. (The 10/23 MIL pick showed '@ -110' -- a
+    placeholder -- with DraftKings at -192.)"""
+    b = pick.get("book_american")
+    return b if b is not None else pick.get("fair_american")
+
+
 def _flat_payout(pick: Dict[str, Any]) -> float:
     """Flat-1u P/L for a settled pick (independent of the ledger's Kelly stake)."""
     if pick.get("result") == "won":
-        d = _dec(pick.get("fair_american"))
+        d = _dec(_px(pick))
         return round((d - 1) if d else 0.91, 3)
     if pick.get("result") == "lost":
         return -1.0
@@ -261,7 +270,9 @@ def _row(pick: Dict[str, Any], roi: float) -> Dict[str, Any]:
         "market": pick.get("market"),
         "market_family": pick.get("market_family"),
         "model_prob": round(pick.get("prob"), 4) if pick.get("prob") is not None else None,
-        "fair_american": pick.get("fair_american"),
+        "fair_american": _px(pick),
+        **({"recorded_price": pick.get("fair_american")}
+           if pick.get("book_american") is not None and pick.get("book_american") != pick.get("fair_american") else {}),
         "roi_model_pct": round(roi * 100, 1),
         "result": result,
         "payout_units": _flat_payout(pick) if settled or voided else None,
@@ -338,9 +349,9 @@ def run() -> Dict[str, Any]:
         if not _is_player_prop(p) and not (day >= V2_RULE_DATE and _is_mlb_moneyline(p)):
             continue
         prob, fa = p.get("prob"), p.get("fair_american")
-        if prob is None or fa is None:
+        if prob is None or fa is None or _px(p) is None:
             continue
-        d = _dec(fa)
+        d = _dec(_px(p))
         if not d:
             continue
         dedup_key = (_norm(p.get("player_or_matchup")), _norm(p.get("market")), fa)
@@ -392,7 +403,7 @@ def run() -> Dict[str, Any]:
         needs a display EV (the lock outranks the gate -- published is published).
         Also attaches the why chain so locked picks show their work too."""
         if "_roi" not in p:
-            d = _dec(p.get("fair_american")) or 1.0
+            d = _dec(_px(p)) or 1.0
             mk_cal = _market_for_cal(p)
             gate = _v2_gate(p.get("prob") or 0, d, mk_cal)
             if gate is not None:
@@ -449,6 +460,15 @@ def run() -> Dict[str, Any]:
             picks_today = _pick_slate(ranked)
         else:
             lock = locks.get(day)
+            if lock is not None and lock.get("withdrawn"):
+                # WITHDRAWN PRE-GAME (2026-10-23 exception to "published is
+                # published"): the lock was taken on a placeholder price, and the
+                # withdrawal is dated before first pitch -- not hindsight. The
+                # day reads as a disclosed no-pick, never a result.
+                no_pick_days.append(day)
+                slate_history.append({"date": day, "picks": [], "no_pick": True,
+                                      "withdrawn": lock.get("withdrawn")})
+                continue
             if lock is not None:
                 pool_all = list((ungated_by_day.get(day) or {}).values())
                 # Two-tier resolution: a LIVE (non-voided) copy of the locked
@@ -536,6 +556,10 @@ def run() -> Dict[str, Any]:
     latest_day = all_days[-1] if all_days else None
     if one_rows and latest_day and one_rows[-1]["date"] == latest_day:
         todays = one_rows[-1]
+    elif latest_day and (locks.get(latest_day) or {}).get("withdrawn"):
+        w = locks[latest_day]["withdrawn"]
+        todays = {"date": latest_day, "no_pick": True, "withdrawn": w,
+                  "note": ("Today's pick was WITHDRAWN before first pitch: " + str(w.get("reason")))}
     elif latest_day and latest_day >= V2_RULE_DATE:
         todays = {"date": latest_day, "no_pick": True,
                   "note": ("No qualifying pick: nothing on the slate cleared the v2 gate "

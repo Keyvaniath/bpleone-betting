@@ -105,6 +105,36 @@ def _fair_odds_for_source(source, src_type):
     return -110
 
 
+def _is_moneyline(market) -> bool:
+    m = str(market or "").lower()
+    return ("ml_home" in m or "ml_away" in m or m.endswith("_ml") or m in ("home ml", "away ml"))
+
+
+_BOOK_CACHE = None
+
+
+def _book_ml(matchup, market):
+    """The live DraftKings moneyline for this side (espn_odds), else None."""
+    global _BOOK_CACHE
+    if _BOOK_CACHE is None:
+        _BOOK_CACHE = (_load(os.path.join(DATA_DIR, "espn_odds.json")).get("by_matchup") or {})
+    ln = _BOOK_CACHE.get(str(matchup or "")) or {}
+    m = str(market or "").lower()
+    mu = str(matchup or "")
+    if "ml_home" in m or m == "home ml":
+        return ln.get("ml_home")
+    if "ml_away" in m or m == "away ml":
+        return ln.get("ml_away")
+    if m.endswith("_ml") and "@" in mu:
+        team = m[:-3]
+        away, home = [t.strip().lower() for t in mu.split("@", 1)]
+        if home.startswith(team) or team.startswith(home):
+            return ln.get("ml_home")
+        if away.startswith(team) or team.startswith(away):
+            return ln.get("ml_away")
+    return None
+
+
 def _market_family(market):
     """Strip line value so 'HRR_under_3.5' and 'HRR_under_4.5' collapse."""
     if not market: return ""
@@ -341,6 +371,15 @@ def run() -> Dict[str, Any]:
                 continue
             # Get explicit fair_american FIRST so shrinkage can anchor to market
             fair = x.get("fair_american")
+            # MONEYLINES ARE NEVER PRICED BY DEFAULT (2026-10-23). A missing
+            # price used to fall through to -110 below: the 10/23 Alpha was MIL
+            # ML "@ -110" with DraftKings at -192 -- the shrink lost its market
+            # anchor (72% model -> 59.8%) and the EV vs a fake 52.4% implied
+            # looked like +12.9%. Take the live DK line; no line, no candidate.
+            if not isinstance(fair, (int, float)) and _is_moneyline(x.get("market")):
+                fair = _book_ml(x.get("matchup") or x.get("player"), x.get("market"))
+                if fair is None:
+                    continue
             calibrated_prob = _shrink_prob(raw_prob, source, fair if isinstance(fair, (int, float)) else None, market=x.get("market"))
             if calibrated_prob is None or calibrated_prob < MIN_PROB: continue
             # Fall back to source-default fair odds if none provided

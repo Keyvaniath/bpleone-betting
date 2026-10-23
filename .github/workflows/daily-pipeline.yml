@@ -574,6 +574,9 @@ jobs:
       - name: One-shot outcome backfill for the 9/22-10/22 outage (no-op after first run)
         working-directory: python
         run: python outage_backfill.py || echo "outage_backfill.py" >> "$RUNNER_TEMP/failed_steps.txt"
+      - name: One-shot moneyline re-price (placeholder -110 -> real DK line; no-op after first run)
+        working-directory: python
+        run: python ml_reprice.py || echo "ml_reprice.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: All-picks unified ledger (every surfaced pick -> training signal)
         working-directory: python
         run: python all_picks_tracker.py || echo "all_picks_tracker.py" >> "$RUNNER_TEMP/failed_steps.txt"
@@ -616,7 +619,8 @@ jobs:
             if (!d || !d.date || !d.text) { core.info('no composed card'); return; }
             if (d.offseason) { core.info('off-season: no daily Alpha email'); return; }
             const NL = String.fromCharCode(10);
-            const marker = '<!-- alpha-date:' + d.date + ' -->';
+            // A withdrawal is its own post (a correction to that date's card).
+            const marker = '<!-- alpha-date:' + d.date + (d.withdrawn ? ':withdrawn' : '') + ' -->';
             const title = '📬 EdgeStat daily Alpha';
             const { owner, repo } = context.repo;
             const open = await github.paginate(github.rest.issues.listForRepo, { owner, repo, state: 'open', per_page: 100 });
