@@ -1,23 +1,23 @@
 {
- "generated_at": "2026-10-23T01:34:52",
+ "generated_at": "2026-10-23T02:03:03",
  "stake_assumption": "1u flat per pick",
- "total_picks": 14398,
- "n_settled": 12444,
- "n_pending": 1230,
+ "total_picks": 14407,
+ "n_settled": 12445,
+ "n_pending": 1238,
  "n_void": 724,
- "wins": 4888,
+ "wins": 4889,
  "losses": 7546,
  "pushes": 10,
- "hit_rate": 0.3931,
- "net_units": -2269.023,
+ "hit_rate": 0.3932,
+ "net_units": -2268.861,
  "roi_pct": -18.25,
- "n_calibrated_picks": 14256,
+ "n_calibrated_picks": 14265,
  "calibrated_reliability": {
-  "n": 12308,
-  "ece_raw": 0.0873,
+  "n": 12309,
+  "ece_raw": 0.0872,
   "ece_calibrated": 0.0124,
-  "brier_raw": 0.21004,
-  "brier_calibrated": 0.19322,
+  "brier_raw": 0.21003,
+  "brier_calibrated": 0.19321,
   "note": "In-sample over the settled ledger (the isotonic transform is fit on these same outcomes); held-out 70/30 validation is in recalibration_map.json. p_predicted = raw model prob (kept untouched for the learning loop); p_calibrated = honest prob stamped per pick. Lower ECE/Brier on the calibrated column = the displayed % is truer."
  },
  "curated": {
@@ -49,12 +49,12 @@
    "hit_rate": 0.5349
   }
  },
- "n_added_this_run": 3,
- "n_newly_settled_this_run": 0,
+ "n_added_this_run": 9,
+ "n_newly_settled_this_run": 1,
  "n_resettled_this_run": 0,
  "n_voided_this_run": 0,
  "n_duplicates_collapsed_this_run": 0,
- "n_duplicate_adds_blocked_this_run": 67,
+ "n_duplicate_adds_blocked_this_run": 102,
  "n_reconciled_settled_voids": 0,
  "n_bootstrapped_from_locks_history": 0,
  "by_source": {
@@ -1904,13 +1904,13 @@
    "roi_pct": -63.2
   },
   "nhl_anytime_goal_no": {
-   "n": 8,
-   "wins": 7,
+   "n": 9,
+   "wins": 8,
    "losses": 1,
    "pushes": 0,
-   "net_units": -0.094,
-   "hit_rate": 0.875,
-   "roi_pct": -1.18
+   "net_units": 0.068,
+   "hit_rate": 0.8889,
+   "roi_pct": 0.76
   },
   "nhl_skater_hits_over_1.5": {
    "n": 4,
@@ -2798,12 +2798,12 @@
    "hit_rate": 0.1875
   },
   "anytime_goal_no": {
-   "n": 8,
-   "wins": 7,
+   "n": 9,
+   "wins": 8,
    "losses": 1,
    "pushes": 0,
-   "net_units": -0.094,
-   "hit_rate": 0.875
+   "net_units": 0.068,
+   "hit_rate": 0.8889
   },
   "p3_over": {
    "n": 2,
@@ -3688,12 +3688,12 @@
    "hit_rate": 0.25
   },
   "anytime_goal_no": {
-   "n": 8,
-   "wins": 7,
+   "n": 9,
+   "wins": 8,
    "losses": 1,
    "pushes": 0,
-   "net_units": -0.094,
-   "hit_rate": 0.875
+   "net_units": 0.068,
+   "hit_rate": 0.8889
   },
   "p3_over": {
    "n": 2,
@@ -3706,12 +3706,12 @@
  },
  "by_sport": {
   "MLB": {
-   "n": 8700,
+   "n": 8701,
    "settled": 8575,
    "wins": 2431,
    "losses": 6134,
    "pushes": 10,
-   "pending": 15,
+   "pending": 16,
    "void": 110,
    "net_units": -2354.946,
    "hit_rate": 0.2838,
@@ -3798,15 +3798,15 @@
   },
   "NHL": {
    "n": 344,
-   "settled": 62,
-   "wins": 32,
+   "settled": 63,
+   "wins": 33,
    "losses": 30,
    "pushes": 0,
-   "pending": 70,
+   "pending": 69,
    "void": 212,
-   "net_units": -15.8,
-   "hit_rate": 0.5161,
-   "roi_pct": -25.48,
+   "net_units": -15.638,
+   "hit_rate": 0.5238,
+   "roi_pct": -24.82,
    "markets": 9
   },
   "F1": {
@@ -3875,12 +3875,12 @@
    "markets": 1
   },
   "NFL": {
-   "n": 2096,
+   "n": 2104,
    "settled": 988,
    "wins": 706,
    "losses": 282,
    "pushes": 0,
-   "pending": 980,
+   "pending": 988,
    "void": 128,
    "net_units": -31.616,
    "hit_rate": 0.7146,
@@ -3915,39 +3915,13 @@
   }
  },
  "last_7_days": {
-  "wins": 11,
+  "wins": 12,
   "losses": 11,
-  "net_units": -3.581,
-  "hit_rate": 0.5
+  "net_units": -3.42,
+  "hit_rate": 0.5217
  },
  "note": "Unified pick ledger -- records every pick the model surfaces (top_25 board, whales, consensus, unders, sharp action, locks, POD) and settles each against actual outcomes. Per-source W-L feeds back into calibration so the model learns which modules are reliable. THIS is the training signal.",
  "picks": [
-  {
-   "source": "nfl_rush_yds",
-   "sport": "NFL",
-   "player_or_matchup": "cam skattebo",
-   "market": "RUSH_YDS_UNDER_69.5",
-   "prob": 0.76,
-   "fair_american": -316,
-   "p_predicted": 0.76,
-   "matchup": "NYG @ LAR",
-   "date": "2026-09-22",
-   "pick_id": "nfl_rush_yds|NFL|cam_skattebo|RUSH_YDS_UNDER_69_5|2026-09-22",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.3165,
-   "recorded_at": "2026-09-22T01:41:46",
-   "p_calibrated": 0.7067,
-   "voided": false,
-   "outcome": {
-    "stat": "rush_yds",
-    "actual": 36,
-    "line": 69.5,
-    "side": "UNDER",
-    "verify": "cam skattebo \u2014 rush_yds = 36 (line 69.5, bet under) on 2026-09-22"
-   },
-   "settled_at": "2026-10-23T00:24:03"
-  },
   {
    "source": "nfl_longest_rush",
    "sport": "NFL",
@@ -8819,6 +8793,30 @@
    "settled_at": "2026-10-21T06:01:08"
   },
   {
+   "source": "nhl_anytime_goal_no",
+   "sport": "NHL",
+   "player_or_matchup": "sidney crosby",
+   "market": "ANYTIME_GOAL_NO",
+   "prob": 0.861,
+   "fair_american": -618,
+   "p_predicted": 0.861,
+   "matchup": "DET @ PIT",
+   "date": "2026-10-21",
+   "pick_id": "nhl_anytime_goal_no|NHL|sidney_crosby|ANYTIME_GOAL_NO|2026-10-21",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.1618,
+   "recorded_at": "2026-10-21T01:11:03",
+   "p_calibrated": 0.861,
+   "outcome": {
+    "stat": "goals",
+    "actual": 0,
+    "side": "NO",
+    "verify": "sidney crosby \u2014 goals = 0 (anytime goal no) on 2026-10-22"
+   },
+   "settled_at": "2026-10-23T02:03:03"
+  },
+  {
    "source": "nhl_skater_blocks_over_1.5",
    "sport": "NHL",
    "player_or_matchup": "k'andre miller",
@@ -8899,5 +8897,5 @@
   "2026-05-19",
   "2026-10-22"
  ],
- "digest_generated_at": "2026-10-23T01:34:53"
+ "digest_generated_at": "2026-10-23T02:03:04"
 }

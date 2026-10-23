@@ -1,18 +1,18 @@
 # EdgeStat Daily Summary — 2026-10-23
 
-## 🏥 Model Health: 58.8/100 [OK]
+## 🏥 Model Health: 58.5/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.9/100
+  - 🟢 Calibration Freshness: 99.6/100
   - 🔴 Hit Rate Trend: 4.1/100
   - 🔴 Brier Trend: 1.4/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 100.0/100
-  - 🟡 Edge Count: 77.1/100
+  - 🟡 Edge Count: 74.3/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.573)
-- **Total games on board:** 63
-- **Strong home favorites:** 29 | **Strong road dogs:** 18
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.578)
+- **Total games on board:** 59
+- **Strong home favorites:** 27 | **Strong road dogs:** 15
 
 ## 🎯 Top 5 Best Bets
 1. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
@@ -49,7 +49,7 @@
 - [NCAAF] **USC Trojans** AWAY (None L10) · model 68.0% fair -212
 
 ## 🔥/❄️ Heat / Cold Signals
-- Hot teams: **5** | Cold teams: **15** | Over-heavy: 0 | Under-heavy: 23
+- Hot teams: **5** | Cold teams: **15** | Over-heavy: 0 | Under-heavy: 19
 - Heating-up players: **20** | Cooling-down: 20
 
 ## ⚠️ Anomaly Detector (147)
@@ -63,7 +63,7 @@
 
 ## 💰 Today's Portfolio (12 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$-6.1**
+- Expected EV: **$-5.28**
   - #1 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #2 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
   - #3 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
@@ -71,12 +71,12 @@
   - #5 [GOLF] $35 on GOLF Kihei Akina TOP10 @ 676 (Butterfield Bermuda Championsh (P=13%)
 
 ## 🎯 Convergence Picks (27 stacked games)
-- ELITE: **9** · HIGH: 13 · MED: 5
+- ELITE: **8** · HIGH: 14 · MED: 5
   - [ELITE] Detroit Red Wings @ Vancouver Canucks : 5 signals (PREGAME, HEAT_COLD, HEAT_COLD, HEAT_COLD)
   - [ELITE] Inter Miami CF @ Red Bull New York : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
   - [ELITE] Seattle Sounders FC @ San Diego FC : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
   - [ELITE] Florida Panthers @ Pittsburgh Penguins : 4 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ATS)
-  - [ELITE] Carolina Hurricanes @ Edmonton Oilers : 4 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
+  - [ELITE] Utah Mammoth @ Seattle Kraken : 4 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
 
 ## ⚾ Top MLB Pitcher K Plays (1)
 - **Jacob Misiorowski** OVER 4.5 K (75%) fair -303
@@ -113,9 +113,9 @@
 ## 📈 Streak Regression Alerts (15)
 - [NHL] Anaheim Ducks on L4 L10 1-4 -- Anaheim Ducks on L4 -- no historical sample
 - [NHL] Pittsburgh Penguins on L4 L10 1-4 -- Pittsburgh Penguins on L4 -- no historical sample
-- [NHL] Dallas Stars on W3 L10 3-2 -- FADE Dallas Stars (on W3, historically regress 50% of the time)
-- [NHL] Winnipeg Jets on L3 L10 1-4 -- BACK Winnipeg Jets (on L3, historically bounce back 100% of the time)
-- [NHL] Vancouver Canucks on L6 L10 0-5 -- BACK Vancouver Canucks (on L6, historically bounce back 0% of the time)
+- [NHL] Dallas Stars on W3 L10 3-2 -- Dallas Stars on W3 -- no historical sample
+- [NHL] Winnipeg Jets on L3 L10 1-4 -- Winnipeg Jets on L3 -- no historical sample
+- [NHL] Vancouver Canucks on L6 L10 0-5 -- Vancouver Canucks on L6 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**
@@ -130,7 +130,7 @@
 
 ## 🤖 Self-Training Status
 - **NBA**: n=58 games · hit rate 60.3% · bias -8.3pp [calibration applied]
-- **NHL**: n=88 games · hit rate 48.9% · bias -9.2pp [calibration applied]
+- **NHL**: n=92 games · hit rate 48.9% · bias -9.1pp [calibration applied]
 - **WNBA**: n=5 games · hit rate 40.0% · bias +20.1pp
 - **MLS**: n=47 games · hit rate 36.2% · bias -4.6pp [calibration applied]
 - **EPL**: n=20 games · hit rate 55.0% · bias -10.4pp [calibration applied]

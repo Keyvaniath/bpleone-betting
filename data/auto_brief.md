@@ -6,9 +6,9 @@ _0% lineups confirmed · 1 rookie SPs_
 
 ## Slate
 - **1 games** scheduled
-- **31 best bets** scored: 6 DK · 0 PP · 1 NRFI · 0 SGP
+- **29 best bets** scored: 6 DK · 0 PP · 1 NRFI · 0 SGP
 - **Auto-portfolio:** 1 picks, $50.0 stake (5.0%), expected +$15.75
-- **MC simulation:** EV +$15.75, 69% P(profit), p05 $-50.0 / p95 $45.45
+- **MC simulation:** EV +$20.53, 56% P(profit), p05 $-98.45 / p95 $89.5
 
 ## Top 5 Best Bets
 1. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
@@ -45,15 +45,15 @@ _0% lineups confirmed · 1 rookie SPs_
    - P(top 10) 13.0% -- safest finish bet (#20 (-5)).
 
 ## NBA -- REGULAR
-- Cleveland Cavaliers @ Philadelphia 76ers (0-0 vs 1-0) 95-89 | P(home) 12.0% fair +730 | In Progress
-- Denver Nuggets @ Oklahoma City Thunder (0-0 vs 1-0)  | P(home) 92.1% fair -1161 | Scheduled
+- Cleveland Cavaliers @ Philadelphia 76ers (0-0 vs 1-0) 104-112 | P(home) 99.0% fair -9900 | In Progress
+- Denver Nuggets @ Oklahoma City Thunder (0-0 vs 1-0) 2-3 | P(home) 91.6% fair -1086 | In Progress
 
 ## NHL -- REGULAR
-- Nashville Predators @ Boston Bruins (3-2-3 vs 7-2-1) 0-5 | P(home) 99.0% fair -9900 | In Progress
-- New York Rangers @ Toronto Maple Leafs (7-3-1 vs 5-4-2) 3-4 | P(home) 77.8% fair -351 | In Progress
-- San Jose Sharks @ Ottawa Senators (5-4-1 vs 7-3-0) 4-2 | P(home) 23.9% fair +318 | In Progress
-- Anaheim Ducks @ New Jersey Devils (4-5-0 vs 5-4-0) 1-3 | P(home) 97.7% fair -4248 | In Progress
-- Florida Panthers @ Pittsburgh Penguins (5-3-2 vs 3-6-1) 0-3 | P(home) 99.0% fair -9900 | In Progress
+- Nashville Predators @ Boston Bruins (0-0-0 vs 0-0-0) 0-6 | P(home) 100.0% fair +0 | Final
+- New York Rangers @ Toronto Maple Leafs (7-3-1 vs 5-4-2) 4-5 | P(home) 83.8% fair -516 | End of Period
+- San Jose Sharks @ Ottawa Senators (0-0-0 vs 0-0-0) 6-2 | P(home) 0.0% fair +0 | Final
+- Anaheim Ducks @ New Jersey Devils (0-0-0 vs 0-0-0) 1-4 | P(home) 100.0% fair +0 | Final
+- Florida Panthers @ Pittsburgh Penguins (0-0-0 vs 0-0-0) 0-4 | P(home) 100.0% fair +0 | Final
 
 ## LoL Esports -- 0 live, 30 upcoming
 - [Worlds] Gen.G Esports vs Invictus Gaming BO1 | P(A) 54.6% fair -120/+120
