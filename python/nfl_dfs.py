@@ -52,6 +52,7 @@ from typing import Any, Dict, List, Optional, Tuple
 
 import nfl_player_props as npp
 import nfl_baselines as nb
+import nfl_dfs_calibration as ndc
 
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 SAL_CACHE = os.path.join(DATA_DIR, "nfl_dfs_salaries.json")
@@ -460,12 +461,36 @@ def run() -> Dict[str, Any]:
             "source": source,
         })
 
+    # ---- CALIBRATED OBJECTIVE (2026-10-23, see nfl_dfs_calibration) ----
+    # The optimizer used to maximize the raw model mean, so it seated exactly
+    # the players whose projection most exceeded salary -- the over-estimates
+    # (published lineups ran ~60 pts/slate under projection; the model itself
+    # is unbiased across the pool). Every row now carries xfp = the expected
+    # DK points after shrinking toward the salary-implied number and
+    # discounting by the measured play rate for its injury tag; lineups are
+    # built on xfp (ceiling/floor builds use the same shrink on their spread).
+    cal = ndc.load()
+    for p in projections:
+        if p["pos"] == "DST":
+            p["xfp"], p["p_play"] = p["proj"], 1.0
+            p["x_ceiling"], p["x_floor"] = p["ceiling"], p["floor"]
+            continue
+        xfp, pp, implied = ndc.expected(p, cal)
+        w = float(cal.get("w") or 1.0)
+        p["xfp"] = round(xfp, 2)
+        p["p_play"] = round(pp, 3)
+        p["salary_implied"] = round(implied, 2)
+        p["x_ceiling"] = round(pp * (implied + w * ((p["ceiling"] or 0) - implied)), 2)
+        p["x_floor"] = round(pp * (implied + w * ((p["floor"] or 0) - implied)), 2)
+        p["x_value"] = round(xfp / (p["salary"] / 1000.0), 2) if p["salary"] else None
+
     # ---- lineup pools: exclude ruled-out players; prune per position ----
-    playable = [p for p in projections if p.get("status") not in ("O", "IR", "OUT")]
+    # 'D' (doubtful) joined the exclusions 2026-10-23: 5 of 5 sat in Weeks 1-3.
+    playable = [p for p in projections if p.get("status") not in ("O", "IR", "OUT", "D")]
     def _top(pos, n_by_proj, n_by_value):
         rows = [p for p in playable if p["pos"] == pos]
-        by_p = sorted(rows, key=lambda x: -(x["proj"] or 0))[:n_by_proj]
-        by_v = sorted(rows, key=lambda x: -(x["value"] or 0))[:n_by_value]
+        by_p = sorted(rows, key=lambda x: -(x["xfp"] or 0))[:n_by_proj]
+        by_v = sorted(rows, key=lambda x: -(x.get("x_value") or x["value"] or 0))[:n_by_value]
         seen, out = set(), []
         for r in by_p + by_v:
             k = (r["name"], r["team"])
@@ -479,14 +504,20 @@ def run() -> Dict[str, Any]:
     lineups: Dict[str, Any] = {}
     budget_table: List[Dict[str, Any]] = []
     if pool and any(p["pos"] == "DST" for p in pool):
-        for label, key in (("optimal", "proj"), ("ceiling", "ceiling"), ("cash", "floor")):
+        for label, key in (("optimal", "xfp"), ("ceiling", "x_ceiling"), ("cash", "x_floor")):
             res = optimize(pool, key)
             main = res.get(SALARY_CAP) or {}
+            lu = main.get("lineup") or []
+            # Slots carry the CALIBRATED expectation as `proj` (that is the
+            # number receipts grade) and the raw model mean as `model_proj`.
+            slots = [dict(sl, model_proj=sl.get("proj"), proj=sl.get("xfp")) for sl in _slotify(lu)]
             lineups[label] = {
                 "objective": key,
-                "slots": _slotify(main.get("lineup") or []),
+                "proj_basis": "calibrated_v1",
+                "slots": slots,
                 "salary_used": main.get("salary_used"),
-                "proj_total": round(sum(p.get("proj") or 0 for p in main.get("lineup") or []), 2),
+                "proj_total": round(sum(p.get("xfp") or 0 for p in lu), 2),
+                "model_proj_total": round(sum(p.get("proj") or 0 for p in lu), 2),
                 "objective_total": main.get("total"),
             }
             if label == "optimal":
@@ -513,6 +544,9 @@ def run() -> Dict[str, Any]:
                                  for p in top_unproj],
         },
         "projections": sorted(projections, key=lambda x: -(x["proj"] or 0)),
+        "calibration": {"source": cal.get("source"), "w": cal.get("w"), "ppk": cal.get("ppk"),
+                        "n_played": cal.get("n_played"), "weeks": cal.get("weeks"),
+                        "formula": "xfp = p_play * (implied + w*(proj - implied))"},
         "lineups": lineups,
         "budget_variants": budget_table,
         "scoring": "DraftKings Classic (full PPR, 4pt pass TD, 100/300-yd bonuses per-sim)",
@@ -530,6 +564,7 @@ def run() -> Dict[str, Any]:
             "Fumbles lost and 2-pt conversions are not simulated (~0.1-0.3 pts).",
             "Sim groups are independent across pass/rush/receive (slightly narrows dual-threat correlation tails).",
             "DST projection is bookline-derived; with no lines posted it is a flat league-average number -- treat the DST slot as a salary-saver until lines post.",
+            "Lineups are built on xfp, a CALIBRATED expectation: the model mean shrunk toward the DK-salary-implied points (weight w, fitted on scored pools) and multiplied by the measured play rate for the player's injury tag. `proj` is the raw model mean; it is unbiased across the pool but the optimizer's picks are its over-estimates, which is why lineups use xfp.",
             "DFS projections are informational only and never enter the betting ledger. 21+.",
         ],
     }

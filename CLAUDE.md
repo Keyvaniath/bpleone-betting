@@ -41,6 +41,32 @@ bpleone-site/
 
 ## Current deployment state (LIVE)
 
+- **2026-10-23 (latest) — NFL DFS OVER-PROJECTION = THE OPTIMIZER'S CURSE, fixed:**
+  published lineups ran ~-60 pts/slate vs projection. A FULL-POOL backtest
+  (every projected player, Weeks 1-3 mains, rebuilt from git history: last
+  pre-slate nfl_dfs.json x union of committed box logs; n=828, 634 played)
+  showed **the model is UNBIASED across the pool (+0.2/player)**. The gap is
+  selection: the optimizer seats the players whose projection most exceeds
+  salary, i.e. the over-estimates (3.0+ pts/$1k realized 0.82x; <1.5 realized
+  1.58x). Plus injuries: D (doubtful) was never excluded (5/5 sat), Q sat
+  25-53%. FIX = `nfl_dfs_calibration.py`: lineups maximize
+  **xfp = p_play x (implied + w x (proj - implied))**, implied =
+  ppk[pos] x salary/1k; w=0.32 (only a third of the model's disagreement with
+  DK salary holds up), p_play by tag x projection band. Leave-one-week-out:
+  lineup bias -64.6 -> -7.3, actual skill pts 106.0 -> 111.7 (n=3 weeks --
+  directional). Calibrated realization 0.95-1.06 in EVERY value band.
+  SELF-REFITTING: receipts snapshot the whole pool per slate into
+  data/nfl_dfs_pool_history.json (seeded with the reconstruction), score every
+  player after the slate, and the calibration step (before nfl_dfs) refits
+  once >=300 played rows. `proj` stays the raw model mean; lineup slots carry
+  proj = xfp + model_proj. Receipts: DST read only nfl_state (current week ->
+  always "unscored" while its proj counted: ~6 pts phantom bias) -> now
+  nfl_historical first; bias is like-for-like (`proj_scored`); records are
+  split by `proj_basis` (model_raw pre-10/23 at -52.5 like-for-like, vs
+  calibrated_v1) and NEVER averaged together. **RULE: never grade an
+  optimizer on its own objective -- calibrate what it maximizes, and judge a
+  projection model on the whole pool, not the lineup.**
+
 - **2026-10-23 — FOLLOW-THROUGH (same session, all pushed + CI-verified):**
   (1) **A clean run's data was LOST at the commit step**: alpha_email.py
   rewrites the TRACKED emails/latest.html, the commit staged only data/, and

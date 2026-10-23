@@ -35,11 +35,13 @@ import datetime as dt
 from typing import Any, Dict, List, Optional
 
 import nfl_baselines as nb
+import nfl_dfs_calibration as ndc
 
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 DFS_PATH = os.path.join(DATA_DIR, "nfl_dfs.json")
 GL_PATH = os.path.join(DATA_DIR, "nfl_player_gamelogs.json")
 STATE_PATH = os.path.join(DATA_DIR, "nfl_state.json")
+HIST_PATH = os.path.join(DATA_DIR, "nfl_historical.json")
 OUT = os.path.join(DATA_DIR, "nfl_dfs_receipts.json")
 
 # DK DST points-allowed tiers (whole-tier, not interpolated -- actual PA is known).
@@ -110,14 +112,25 @@ def _gamelog_row(gl_by_name: Dict[str, Any], player: str, slate_date: str,
     return best
 
 
+_DK_TO_ESPN = {"WAS": "WSH", "JAC": "JAX", "LA": "LAR"}
+
+
 def _dst_actual(team: str, slate_date: str) -> Optional[float]:
-    """Partial DST score: points-allowed tier from the schedule finals."""
-    state = _load(STATE_PATH)
+    """Partial DST score: points-allowed tier from the schedule finals.
+
+    FINALS SOURCE (2026-10-23): this read only nfl_state.json, which holds the
+    CURRENT week -- by scoring day (6 days after the slate opens) the slate's
+    games had rotated out, so every DST slot said "unscored (no final found)"
+    while its projection still counted in proj_total (~6 pts of phantom
+    bias per slate). nfl_historical.json (dated finals) is read first now."""
     try:
         d0 = dt.date.fromisoformat(slate_date[:10])
     except Exception:
         return None
-    for g in state.get("games") or []:
+    t = _DK_TO_ESPN.get(team, team)
+    games = (list(_load(HIST_PATH).get("games") or [])
+             + list(_load(STATE_PATH).get("games") or []))
+    for g in games:
         gd = str(g.get("date") or "")[:10]
         try:
             off = (dt.date.fromisoformat(gd) - d0).days
@@ -125,16 +138,13 @@ def _dst_actual(team: str, slate_date: str) -> Optional[float]:
             continue
         if not (0 <= off < SLATE_SPAN_DAYS):     # same Thu->Mon window as players
             continue
-        mu = str(g.get("matchup") or "")
-        # matchup carries full names; match by abbrev via the game's abbrev
-        # fields when present, else skip (historical file rotates fast).
         ha, aa = str(g.get("home_abbrev") or "").upper(), str(g.get("away_abbrev") or "").upper()
-        if team not in (ha, aa):
+        if t not in (ha, aa):
             continue
         hs, as_ = g.get("home_score"), g.get("away_score")
         if hs is None or as_ is None:
-            return None
-        pa = float(as_ if team == ha else hs)
+            continue
+        pa = float(as_ if t == ha else hs)
         return _dst_pa_points(pa)
     return None
 
@@ -173,8 +183,13 @@ def _score_lineups(entry: Dict[str, Any], sdate: str,
             slots_out.append({"slot": s.get("slot"), "name": s.get("name"),
                               "team": s.get("team"), "proj": s.get("proj"),
                               "actual": act})
+        # Like-for-like bias: a slot whose actual is unknown (DST with no
+        # final) must not contribute its projection either.
+        proj_scored = sum(float(x.get("proj") or 0) for x in slots_out if x.get("actual") is not None)
         builds_out[bname] = {
             "proj_total": b.get("proj_total"),
+            "proj_scored": round(proj_scored, 2),
+            "proj_basis": b.get("proj_basis") or "model_raw",
             "actual_total": round(actual_total, 2),
             "salary_used": b.get("salary_used"),
             "n_dnp": n_dnp,
@@ -259,6 +274,10 @@ def run() -> Dict[str, Any]:
     dfs = _load(DFS_PATH)
     receipts = _load(OUT)
     slates: Dict[str, Any] = receipts.get("slates") or {}
+
+    # 0. Full projected pool (every player, not just the 8 seated) -> the
+    #    calibration's training data (nfl_dfs_calibration).
+    ndc.snapshot_pool(dfs, today)
 
     # 1. SNAPSHOT / FREEZE the currently-published slate.
     slate = dfs.get("slate") or {}
@@ -346,22 +365,38 @@ def run() -> Dict[str, Any]:
                 "could be graded (the 9/22-10/22 pipeline outage) -- never scored, "
                 "never guessed")
 
+    n_pools = ndc.score_pools(gl_by_name, today, SLATE_SPAN_DAYS, nb.norm_name, actual_dk_points)
+
     # 3. CUMULATIVE record across scored slates.
     scored = [(d, e) for d, e in sorted(slates.items())
               if e.get("scored") and not e.get("retracted")]
-    cum: Dict[str, Any] = {}
+    # Per build AND per projection basis (2026-10-23): slates built on the raw
+    # model mean ('model_raw') and on the calibrated xfp ('calibrated_v1')
+    # answer different questions and are never averaged together. The
+    # top-level `cumulative` is the CURRENT basis; `cumulative_by_basis`
+    # keeps the old one on the record.
+    by_basis: Dict[str, Dict[str, Any]] = {}
     for bname in ("optimal", "ceiling", "cash"):
-        rows = [(e["results"][bname]["proj_total"], e["results"][bname]["actual_total"])
-                for _, e in scored if bname in (e.get("results") or {})
-                and e["results"][bname].get("proj_total") is not None]
-        if rows:
+        groups: Dict[str, List[Any]] = {}
+        for _, e in scored:
+            r = (e.get("results") or {}).get(bname)
+            if not r or r.get("proj_total") is None:
+                continue
+            proj = r.get("proj_scored")
+            if proj is None:      # scored before proj_scored existed: derive it
+                sl = r.get("slots") or []
+                proj = (sum(float(x.get("proj") or 0) for x in sl if x.get("actual") is not None)
+                        if sl else r["proj_total"])
+            groups.setdefault(r.get("proj_basis") or "model_raw", []).append((proj, r["actual_total"]))
+        for basis, rows in groups.items():
             n = len(rows)
-            cum[bname] = {
+            by_basis.setdefault(basis, {})[bname] = {
                 "n_slates": n,
                 "avg_projected": round(sum(r[0] for r in rows) / n, 2),
                 "avg_actual": round(sum(r[1] for r in rows) / n, 2),
                 "avg_bias": round(sum(r[1] - r[0] for r in rows) / n, 2),
             }
+    cum: Dict[str, Any] = by_basis.get("calibrated_v1") or by_basis.get("model_raw") or {}
 
     payload = {
         "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
@@ -370,6 +405,9 @@ def run() -> Dict[str, Any]:
         "n_slates_retracted": sum(1 for e in slates.values() if e.get("retracted")),
         "n_slates_rescored": sum(1 for e in slates.values() if e.get("rescored")),
         "cumulative": cum,
+        "cumulative_basis": "calibrated_v1" if by_basis.get("calibrated_v1") else "model_raw",
+        "cumulative_by_basis": by_basis,
+        "n_pools_scored_this_run": n_pools,
         "slates": slates,
         "method_note": ("Published lineups snapshot all week and FREEZE at the slate "
                         "date (the last version you could actually have played). "
@@ -386,6 +424,8 @@ def run() -> Dict[str, Any]:
             "Fumbles lost / 2-pt conversions are absent from the box feed (~0.1-0.3 pts/slot).",
             "DST actuals are partial (PA tier only) and labeled per-slot.",
             "A projected player with no box row on slate day scores 0 (DNP) -- disclosed per-slot.",
+            "Bias compares like for like: a slot with no actual (DST without a final) is excluded from the projected side too (proj_scored).",
+            "From 2026-10-23 lineups are built and graded on the CALIBRATED expectation (proj_basis calibrated_v1); earlier slates were graded on the raw model mean (model_raw) and stay on the record under cumulative_by_basis, never averaged with the new basis.",
         ],
     }
     receipts_out = payload

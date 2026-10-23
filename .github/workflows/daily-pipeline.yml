@@ -969,14 +969,17 @@ jobs:
       # NFL DFS: DK Classic salaries (public lobby API) + DK-scored Monte Carlo
       # projections + exact salary-cap optimal lineups. Preseason slates are
       # skipped by the module's own gate; baselines cache-fill at <=120/run.
+      - name: NFL DFS calibration (refit xFP from scored full-pool history)
+        working-directory: python
+        run: python nfl_dfs_calibration.py || echo "nfl_dfs_calibration.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: NFL DFS (DraftKings salaries -> MC projections -> optimal lineups)
         working-directory: python
-        run: python nfl_dfs.py || true
+        run: python nfl_dfs.py || echo "nfl_dfs.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Receipts: snapshot published lineups (freeze at slate date), score them
       # from real box scores the day after. The DFS desk's accountability loop.
       - name: NFL DFS receipts (grade published lineups vs box scores)
         working-directory: python
-        run: python nfl_dfs_receipts.py || true
+        run: python nfl_dfs_receipts.py || echo "nfl_dfs_receipts.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: NCAA Football scoreboard
         working-directory: python
         run: python ncaaf_pipeline.py || echo "ncaaf_pipeline.py" >> "$RUNNER_TEMP/failed_steps.txt"

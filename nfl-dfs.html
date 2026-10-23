@@ -27,7 +27,7 @@
 <title>NFL DFS Desk — DraftKings Projections &amp; Optimal Lineups | EdgeStat</title>
 <link rel="stylesheet" href="css/style.css?v=20260908c">
 <style>
-  .dfs-row { display:grid; grid-template-columns: 1.5fr 46px 110px 70px 64px 64px 64px 64px 110px; gap:10px; padding:9px 14px; border-bottom:1px solid rgba(255,255,255,0.04); font-family:'JetBrains Mono',monospace; font-size:12px; align-items:center; }
+  .dfs-row { display:grid; grid-template-columns: 1.5fr 46px 110px 70px 64px 64px 64px 64px 64px 110px; gap:10px; padding:9px 14px; border-bottom:1px solid rgba(255,255,255,0.04); font-family:'JetBrains Mono',monospace; font-size:12px; align-items:center; }
   .dfs-row.head { background:rgba(255,255,255,0.04); color:var(--muted,#888); font-size:10px; text-transform:uppercase; position:sticky; top:0; }
   .lu-card { flex:1 1 300px; border:1px solid rgba(255,255,255,.08); border-radius:10px; overflow:hidden; }
   .lu-head { padding:10px 14px; font-weight:700; border-bottom:1px solid rgba(255,255,255,.06); display:flex; justify-content:space-between; align-items:baseline; }
@@ -71,9 +71,9 @@
     <div class="card-head"><span>📊 <strong>Player Projections</strong> <span class="muted" style="font-size:10px;">DK points per sim — mean · floor p10 · ceiling p90</span></span><span class="muted" id="pj_meta">--</span></div>
     <div id="pos_filters" style="display:flex; gap:8px; padding:10px 14px 4px; flex-wrap:wrap;"></div>
     <div style="overflow-x:auto;">
-      <div style="min-width:860px;">
+      <div style="min-width:930px;">
         <div class="dfs-row head">
-          <span>Player</span><span>Pos</span><span>Game</span><span>Salary</span><span>Proj</span><span>Floor</span><span>Ceil</span><span>Val/$K</span><span>Source</span>
+          <span>Player</span><span>Pos</span><span>Game</span><span>Salary</span><span>Proj</span><span title="Calibrated expected DK points: model mean shrunk toward the salary-implied number x measured play rate. Lineups are built on this.">xFP</span><span>Floor</span><span>Ceil</span><span>Val/$K</span><span>Source</span>
         </div>
         <div id="pj_list"><p class="muted" style="padding:14px;">Loading…</p></div>
       </div>
@@ -110,7 +110,8 @@ function renderProjections() {
       <span>${p.pos}</span>
       <span class="muted" style="font-size:10.5px;">${p.game || '—'}</span>
       <span>${fmtSal(p.salary)}</span>
-      <span style="font-weight:700;">${p.proj}</span>
+      <span class="muted">${p.proj}</span>
+      <span style="font-weight:700;" title="P(play) ${p.p_play ?? '—'} · salary-implied ${p.salary_implied ?? '—'}">${p.xfp ?? '—'}</span>
       <span class="muted">${p.floor}</span>
       <span style="color:#58c878;">${p.ceiling}</span>
       <span>${p.value ?? '—'}</span>
@@ -139,9 +140,9 @@ fetch('data/nfl_dfs.json?t=' + Date.now(), { cache: 'no-cache' })
     $('m_dst').textContent = (u.n_dst_with_lines ?? 0) + '/' + (u.n_dst ?? 0);
 
     // lineups
-    const builds = [['optimal', '⭐ Optimal', 'max mean projection'],
-                    ['ceiling', '🚀 Ceiling', 'max p90 — GPP leverage'],
-                    ['cash', '🛡 Cash', 'max p10 floor — cash games']];
+    const builds = [['optimal', '⭐ Optimal', 'max calibrated expectation (xFP)'],
+                    ['ceiling', '🚀 Ceiling', 'max calibrated p90 — GPP leverage'],
+                    ['cash', '🛡 Cash', 'max calibrated p10 — cash games']];
     const lw = $('lu_wrap');
     lw.innerHTML = '';
     let any = false;
@@ -150,11 +151,11 @@ fetch('data/nfl_dfs.json?t=' + Date.now(), { cache: 'no-cache' })
       if (!b || !(b.slots || []).length) return;
       any = true;
       const rows = b.slots.map(s =>
-        `<div class="lu-slot"><span class="muted">${s.slot}</span><span><strong>${s.name}</strong></span><span class="muted">${s.team}</span><span>${fmtSal(s.salary)}</span><span style="font-weight:700;">${s.proj}</span></div>`).join('');
+        `<div class="lu-slot"><span class="muted">${s.slot}</span><span><strong>${s.name}</strong></span><span class="muted">${s.team}</span><span>${fmtSal(s.salary)}</span><span style="font-weight:700;" title="model mean ${s.model_proj ?? '—'}">${s.proj}</span></div>`).join('');
       lw.insertAdjacentHTML('beforeend',
         `<div class="lu-card">
            <div class="lu-head"><span>${label} <span class="muted" style="font-size:10px;font-weight:400;">${sub}</span></span>
-             <span style="font-family:'JetBrains Mono',monospace;font-size:12px;">${b.proj_total} pts · ${fmtSal(b.salary_used)}</span></div>
+             <span style="font-family:'JetBrains Mono',monospace;font-size:12px;">${b.proj_total} xFP${b.model_proj_total != null ? ' <span class="muted" style="font-size:10px;">(model ' + b.model_proj_total + ')</span>' : ''} · ${fmtSal(b.salary_used)}</span></div>
            ${rows}
          </div>`);
     });
@@ -164,7 +165,12 @@ fetch('data/nfl_dfs.json?t=' + Date.now(), { cache: 'no-cache' })
       $('lu_budget').textContent = 'Budget sensitivity (optimal build): ' +
         bt.map(b => `$${(b.cap / 1000)}k → ${b.proj_total ?? '—'} pts`).join(' · ');
     }
-    $('lu_meta').textContent = 'objectives: mean / p90 / p10';
+    $('lu_meta').textContent = 'objectives: xFP / calibrated p90 / calibrated p10';
+    const cal = d.calibration;
+    if (cal && cal.w != null) {
+      $('lu_budget').insertAdjacentHTML('beforeend',
+        `<div style="margin-top:8px; font-family:inherit; line-height:1.55;">Why lineups use <b>xFP</b>, not the raw model mean: an optimizer seats the players whose projection most exceeds their salary — and those are the over-estimates. Across every projected player the model is unbiased, but the lineups it picked ran ~60 pts/slate under projection. xFP keeps <b>${Math.round(cal.w * 100)}%</b> of the model's disagreement with DK salary (the share that held up on ${cal.n_played} scored player-weeks, ${(cal.weeks || []).length} week(s), ${cal.source}) and discounts by the measured play rate for each injury tag. <a href="data/nfl_dfs_calibration.json" target="_blank">calibration evidence →</a></div>`);
+    }
 
     // projections + filters
     const posList = ['ALL', 'QB', 'RB', 'WR', 'TE', 'DST'];
@@ -203,13 +209,21 @@ fetch('data/nfl_dfs_receipts.json?t=' + Date.now(), { cache: 'no-cache' })
     }
     let html = '';
     const cum = d.cumulative || {};
+    const byb = d.cumulative_by_basis || {};
+    const basisLbl = { calibrated_v1: 'calibrated xFP basis', model_raw: 'raw model basis (pre-10/23)' };
     if (Object.keys(cum).length) {
       html += '<div style="display:flex; gap:0; flex-wrap:wrap; border-bottom:1px solid rgba(255,255,255,.06);">' +
         Object.entries(cum).map(([b, c]) =>
           `<div style="flex:1 1 140px; padding:10px 14px; border-right:1px solid rgba(255,255,255,.06);">
-             <div style="font-size:9.5px; text-transform:uppercase; color:var(--muted,#888);">${b} · ${c.n_slates} slate(s)</div>
+             <div style="font-size:9.5px; text-transform:uppercase; color:var(--muted,#888);">${b} · ${c.n_slates} slate(s) · ${basisLbl[d.cumulative_basis] || ''}</div>
              <div style="font-family:'JetBrains Mono',monospace; font-size:14px; margin-top:2px;">proj ${c.avg_projected} → <b>${c.avg_actual}</b> <span style="color:${c.avg_bias >= 0 ? '#58c878' : '#e35a5a'};">(${c.avg_bias >= 0 ? '+' : ''}${c.avg_bias})</span></div>
            </div>`).join('') + '</div>';
+    }
+    if (d.cumulative_basis === 'model_raw') {
+      html += `<div class="muted" style="padding:8px 16px; font-size:11.5px;">These receipts graded lineups built on the <b>raw model mean</b>. From 10/23 lineups are built on calibrated xFP; the first calibrated receipt lands after the next full slate, and the two bases are never averaged together.</div>`;
+    } else if (byb.model_raw && byb.model_raw.optimal) {
+      const o = byb.model_raw.optimal;
+      html += `<div class="muted" style="padding:8px 16px; font-size:11.5px;">On the record — pre-10/23 raw-model basis, optimal: ${o.n_slates} slate(s), proj ${o.avg_projected} → actual ${o.avg_actual} (${o.avg_bias >= 0 ? '+' : ''}${o.avg_bias}).</div>`;
     }
     keys.slice(0, 4).forEach(k => {
       const s = slates[k];
