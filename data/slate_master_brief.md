@@ -1,13 +1,13 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-10-23T02:36:03 UTC_
+_Generated 2026-10-23T03:29:55 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -61
+- **Score:** -44
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 10
-- **Total FADES:** 101
+- **Total STRONG:** 11
+- **Total FADES:** 88
 
 ## Top 5 Curated Picks
 1. **GOLF / Chandler Blanchet** (GOLF_PLAYER, score=138.79)
@@ -16,6 +16,9 @@ _Generated 2026-10-23T02:36:03 UTC_
 2. **GOLF / Ben Kohles** (GOLF_PLAYER, score=105.71)
    - Play: Ben Kohles (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
+3. **WNBA / allisha gray** (WNBA_PLAYER, score=62.42)
+   - Play: allisha gray (PLAYER_STRONG)
+   - Rationale: Cross-sport top pick (WNBA_PLAYER)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
@@ -32,11 +35,11 @@ _Generated 2026-10-23T02:36:03 UTC_
 ## Top Fades
 - **NBA** / DEN (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NHL** / adin hill (GOALIE_FADE)
+- **NHL** / pyotr kochetkov (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / calvin pickard (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
 - **NHL** / frederik andersen (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / samsonov ilya (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / marc-andre fleury (GOALIE_FADE)
+- **NHL** / tristan jarry (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO

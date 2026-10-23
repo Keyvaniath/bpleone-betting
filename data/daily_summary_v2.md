@@ -1,18 +1,18 @@
 # EdgeStat Daily Summary — 2026-10-23
 
-## 🏥 Model Health: 57.9/100 [OK]
+## 🏥 Model Health: 65.4/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.6/100
-  - 🔴 Hit Rate Trend: 4.1/100
-  - 🔴 Brier Trend: 1.4/100
+  - 🟢 Calibration Freshness: 99.5/100
+  - 🔴 Hit Rate Trend: 24.5/100
+  - 🔴 Brier Trend: 17.3/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 100.0/100
-  - 🟡 Edge Count: 68.6/100
+  - 🟡 Edge Count: 71.4/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.564)
-- **Total games on board:** 57
-- **Strong home favorites:** 25 | **Strong road dogs:** 16
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.558)
+- **Total games on board:** 54
+- **Strong home favorites:** 24 | **Strong road dogs:** 16
 
 ## 🎯 Top 5 Best Bets
 1. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
@@ -49,7 +49,7 @@
 - [NCAAF] **USC Trojans** AWAY (None L10) · model 68.0% fair -212
 
 ## 🔥/❄️ Heat / Cold Signals
-- Hot teams: **5** | Cold teams: **15** | Over-heavy: 0 | Under-heavy: 18
+- Hot teams: **5** | Cold teams: **15** | Over-heavy: 0 | Under-heavy: 21
 - Heating-up players: **20** | Cooling-down: 20
 
 ## ⚠️ Anomaly Detector (147)
@@ -61,9 +61,9 @@
   - Calgary Flames (NHL): Calgary Flames OUTPERFORMING expected margin by 11.7pts in recent games -- model bias may persist
   - Carolina Hurricanes (NHL): Carolina Hurricanes UNDERPERFORMING expected margin by 11.4pts in recent games -- model bias may persist
 
-## 💰 Today's Portfolio (12 picks)
-- Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$-6.42**
+## 💰 Today's Portfolio (11 picks)
+- Total stake: **$340.0** (34.0% of $1000 bankroll)
+- Expected EV: **$-4.42**
   - #1 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #2 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
   - #3 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
@@ -71,15 +71,19 @@
   - #5 [GOLF] $35 on GOLF Kihei Akina TOP10 @ 676 (Butterfield Bermuda Championsh (P=13%)
 
 ## 🎯 Convergence Picks (25 stacked games)
-- ELITE: **7** · HIGH: 13 · MED: 5
-  - [ELITE] Detroit Red Wings @ Vancouver Canucks : 5 signals (PREGAME, HEAT_COLD, HEAT_COLD, HEAT_COLD)
+- ELITE: **6** · HIGH: 14 · MED: 5
   - [ELITE] Inter Miami CF @ Red Bull New York : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
   - [ELITE] Seattle Sounders FC @ San Diego FC : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
-  - [ELITE] Utah Mammoth @ Seattle Kraken : 4 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
+  - [ELITE] Detroit Red Wings @ Vancouver Canucks : 4 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ATS)
   - [ELITE] Minnesota United FC @ Houston Dynamo FC : 4 signals (PREGAME, HEAT_COLD, ATS, ATS)
+  - [ELITE] Austin FC @ Sporting Kansas City : 4 signals (PREGAME, HEAT_COLD, HEAT_COLD, ATS)
 
 ## ⚾ Top MLB Pitcher K Plays (1)
 - **Jacob Misiorowski** OVER 4.5 K (75%) fair -303
+
+## 🏀 NBA Player Heat (1 HOT / 1 COLD)
+  - 🔥 **Marvin Bagley III** (DEN): L5 15.6/6.2/1.4 vs season 10.5/6.1/1.4 [PTS +5.1]
+  - ❄️ **Christian Braun** (DEN): L5 7.6 vs season 12.0 [REB -2.2] -- FADE OVER props
 
 ## 🥊 UFC Fight Matchups (UFC 333: Volkanovski vs. Evloev)
   - [LEAN] **Abubakar Vagaev** (25-4-0) vs Jacob Malkoun -- fair -149
@@ -126,7 +130,7 @@
 
 ## 🤖 Self-Training Status
 - **NBA**: n=59 games · hit rate 59.3% · bias -9.2pp [calibration applied]
-- **NHL**: n=93 games · hit rate 49.5% · bias -9.5pp [calibration applied]
+- **NHL**: n=96 games · hit rate 49.0% · bias -9.1pp [calibration applied]
 - **WNBA**: n=5 games · hit rate 40.0% · bias +20.1pp
 - **MLS**: n=47 games · hit rate 36.2% · bias -4.6pp [calibration applied]
 - **EPL**: n=20 games · hit rate 55.0% · bias -10.4pp [calibration applied]
