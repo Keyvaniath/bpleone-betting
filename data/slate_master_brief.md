@@ -1,5 +1,5 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-10-23T05:18:39 UTC_
+_Generated 2026-10-23T06:42:56 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
@@ -40,9 +40,9 @@ _Generated 2026-10-23T05:18:39 UTC_
   - Fade angle: miss cut YES + high round score
 - **GOLF** / Luke List (PLAYER_FADE)
   - Fade angle: miss cut YES + high round score
-- **GOLF** / David Lingmerth (PLAYER_FADE)
+- **GOLF** / Patton Kizzire (PLAYER_FADE)
+  - Fade angle: miss cut YES + high round score
+- **GOLF** / Ben James (PLAYER_FADE)
   - Fade angle: miss cut YES + high round score
 - **GOLF** / Christo Lamprecht (PLAYER_FADE)
-  - Fade angle: miss cut YES + high round score
-- **GOLF** / Patton Kizzire (PLAYER_FADE)
   - Fade angle: miss cut YES + high round score

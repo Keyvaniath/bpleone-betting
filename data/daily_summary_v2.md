@@ -2,7 +2,7 @@
 
 ## 🏥 Model Health: 63.2/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.6/100
+  - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 24.5/100
   - 🔴 Brier Trend: 8.8/100
   - 🟢 Pipeline Audit: 100.0/100
@@ -20,6 +20,9 @@
 3. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
 4. **GOLF Lee Hodges TOP10 @ 667 (Butterfield Bermuda Championship)** (78/100 ★★★★★)
 5. **GOLF Kihei Akina TOP10 @ 676 (Butterfield Bermuda Championship)** (78/100 ★★★★★)
+
+## 📡 Sharp Action (Line Movement)
+- [MODERATE] **TBR @ MIL** ml_home: 62.26% → 65.75% (+3.5pp)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -52,9 +55,9 @@
 - Hot teams: **6** | Cold teams: **15** | Over-heavy: 0 | Under-heavy: 21
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (143)
+## ⚠️ Anomaly Detector (144)
 - RESIDUAL_DIVERGENCE: **12**
-- STEAM_MOVE: **131**
+- STEAM_MOVE: **132**
   - Denver Nuggets (NBA): Denver Nuggets UNDERPERFORMING expected margin by 10.7pts in recent games -- model bias may persist
   - Carolina Hurricanes (NHL): Carolina Hurricanes UNDERPERFORMING expected margin by 11.4pts in recent games -- model bias may persist
   - Seattle Kraken (NHL): Seattle Kraken UNDERPERFORMING expected margin by 7.0pts in recent games -- model bias may persist
@@ -71,11 +74,11 @@
   - #5 [GOLF] $35 on GOLF Kihei Akina TOP10 @ 676 (Butterfield Bermuda Championsh (P=13%)
 
 ## 🎯 Convergence Picks (25 stacked games)
-- ELITE: **7** · HIGH: 13 · MED: 5
+- ELITE: **7** · HIGH: 11 · MED: 7
   - [ELITE] Inter Miami CF @ Red Bull New York : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
   - [ELITE] Seattle Sounders FC @ San Diego FC : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
   - [ELITE] Winnipeg Jets @ Dallas Stars : 4 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ATS)
-  - [ELITE] Detroit Red Wings @ Vancouver Canucks : 4 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ATS)
+  - [ELITE] Carolina Hurricanes @ Edmonton Oilers : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
   - [ELITE] Minnesota United FC @ Houston Dynamo FC : 4 signals (PREGAME, HEAT_COLD, ATS, ATS)
 
 ## ⚾ Top MLB Pitcher K Plays (1)
@@ -115,12 +118,12 @@
   - ❄️ **Andruw Monasterio** (BOS): L14 .083 / season .233 (-150pts) -- FADE props
   - ❄️ **Jim Jarvis** (ATL): L14 .079 / season .207 (-128pts) -- FADE props
 
-## 📈 Streak Regression Alerts (11)
-- [NHL] Vancouver Canucks on L6 L10 0-5 -- Vancouver Canucks on L6 -- no historical sample
+## 📈 Streak Regression Alerts (10)
 - [MLS] CF Montréal on L3 L10 0-3 -- CF Montréal on L3 -- no historical sample
 - [MLS] Inter Miami CF on W3 L10 3-0 -- Inter Miami CF on W3 -- no historical sample
 - [MLS] New York City FC on L3 L10 0-3 -- New York City FC on L3 -- no historical sample
 - [MLS] San Jose Earthquakes on L3 L10 0-3 -- San Jose Earthquakes on L3 -- no historical sample
+- [MLS] Houston Dynamo FC on L3 L10 0-3 -- Houston Dynamo FC on L3 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**
