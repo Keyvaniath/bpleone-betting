@@ -41,6 +41,35 @@ bpleone-site/
 
 ## Current deployment state (LIVE)
 
+- **2026-10-23 — FOLLOW-THROUGH (same session, all pushed + CI-verified):**
+  (1) **A clean run's data was LOST at the commit step**: alpha_email.py
+  rewrites the TRACKED emails/latest.html, the commit staged only data/, and
+  when main moved mid-run `git rebase` refused on the dirty tree (exit 128).
+  Every committing workflow now rebases `--autostash`; daily-pipeline stages
+  emails/ (the page's email preview had been stuck on 9/08).
+  (2) **NFL names**: the props desk keys "jaxon smithnjigba"/"amonra st
+  brown"; ESPN keeps hyphens -> 0 props on either had EVER graded. Fixed in
+  _grade_nfl_pick's normalizer. **NFL DFS receipts zeroed every punctuated or
+  suffixed player** (raw box keys looked up by nb.norm_name): Achane, Chase,
+  Smith-Njigba, St. Brown, James Cook III scored "DNP -> 0". Fixed + ONE
+  disclosed correction (scorer_version 2): touched slates rescored where box
+  rows survive (`rescored.previous` keeps old totals), RETRACTED where they
+  aged out (9/09, 9/13, 9/14); retraction only fires with a 30+ day box window
+  loaded. Honest result: bias barely moved (-60 -> -59/slate on 0-1 DNPs) --
+  the projection over-shoot is REAL, don't blame the scorer again.
+  (3) **MLB run lines** (HOME/AWAY_MINUS_1.5) had no grading branch -- 0 ever
+  settled; now graded off the final margin. (4) **todays_top_plays excludes
+  never-settling markets** (>=20 unsettleable voids, 0 graded; KBO
+  one_plus_tb was featured 48x, graded 0); data-driven, self-clearing.
+  (5) **NBA/WNBA picks dated by their game** (shared `_board_dates`; a WNBA
+  Finals pick made 10/22 for the 10/24 game was dated 10/22); NBA/WNBA never
+  drop, NHL drops off-board picks. (6) **Ticker perf**: js/main.js (14 pages)
+  fetched the 11.5MB ledger per page load for 5 rows -> recent_picks.json
+  (~208KB; also refreshed on the heartbeat). (7) **MAX_PICKS 14000 -> 20000**
+  (bound again with 957 voids of headroom as NFL/NBA/NHL restarted).
+  outage_backfill is VERSIONED (now v4; `previous_passes` keeps each pass) --
+  bump BACKFILL_VERSION when a grader fix needs the long window once more.
+
 - **2026-10-22 (newest) — OUTAGE BACKFILL + GRADER FIXES + PHANTOM PICKS:**
   (1) **779 real picks were voided by the cascade** ("unsettleable: no outcome
   feed" -- feeds dark, not games missing). `outage_backfill.py` (one-shot,
