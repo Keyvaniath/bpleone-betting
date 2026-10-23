@@ -38,7 +38,8 @@ OUTAGE_REASON = "unsettleable: no outcome feed"
 # serve; the next run re-fetches once and keeps the earlier pass under
 # `previous_passes`. v2 (2026-10-22): MLB run lines had no grading branch.
 # v3 (2026-10-23): NFL names with hyphens (Smith-Njigba, Amon-Ra) never matched.
-BACKFILL_VERSION = 3
+# v4 (2026-10-23): NFL DFS receipts rescore while the long box window is loaded.
+BACKFILL_VERSION = 4
 
 
 def _load(p: str) -> Dict[str, Any]:
@@ -153,6 +154,17 @@ def run(force: bool = False) -> Dict[str, Any]:
             feeds[f"box_{key}"] = r.get("n_games")
         except Exception as e:
             feeds[f"box_{key}"] = f"ERROR {e!r}"
+
+    # 1b. NFL DFS receipts: rescore scorer-v1 slates while the long box window
+    #     is loaded (v3, 2026-10-23 -- see nfl_dfs_receipts._rescore_pass).
+    try:
+        import nfl_dfs_receipts as ndr
+        rr = ndr.run()
+        feeds["nfl_dfs_receipts"] = {"rescored": rr.get("n_slates_rescored"),
+                                     "retracted": rr.get("n_slates_retracted"),
+                                     "cumulative": rr.get("cumulative")}
+    except Exception as e:
+        feeds["nfl_dfs_receipts"] = f"ERROR {e!r}"
 
     # 2. Event results (golf, tennis, UFC, F1, soccer).
     import espn_event_results as eer

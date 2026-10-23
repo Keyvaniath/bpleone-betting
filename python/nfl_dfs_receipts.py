@@ -139,6 +139,121 @@ def _dst_actual(team: str, slate_date: str) -> Optional[float]:
     return None
 
 
+def _score_lineups(entry: Dict[str, Any], sdate: str,
+                   gl_by_name: Dict[str, Any]):
+    """Score every build of one frozen slate -> (builds_out, any_scored)."""
+    builds_out: Dict[str, Any] = {}
+    any_scored = False
+    for bname, b in (entry.get("lineups") or {}).items():
+        slots_out: List[Dict[str, Any]] = []
+        actual_total = 0.0
+        n_dnp = 0
+        for s in b.get("slots") or []:
+            if s.get("pos") == "DST":
+                act = _dst_actual(str(s.get("team") or "").upper(), sdate)
+                slots_out.append({"slot": s.get("slot"), "name": s.get("name"),
+                                  "team": s.get("team"), "proj": s.get("proj"),
+                                  "actual": act,
+                                  "note": "partial: PA tier only" if act is not None
+                                          else "unscored (no final found)"})
+                if act is not None:
+                    actual_total += act
+                    any_scored = True
+                continue
+            row = _gamelog_row(gl_by_name, s.get("name") or "", sdate)
+            if row is None:
+                slots_out.append({"slot": s.get("slot"), "name": s.get("name"),
+                                  "team": s.get("team"), "proj": s.get("proj"),
+                                  "actual": 0.0, "note": "DNP/no box row -> 0"})
+                n_dnp += 1
+                continue
+            act = actual_dk_points(row)
+            actual_total += act
+            any_scored = True
+            slots_out.append({"slot": s.get("slot"), "name": s.get("name"),
+                              "team": s.get("team"), "proj": s.get("proj"),
+                              "actual": act})
+        builds_out[bname] = {
+            "proj_total": b.get("proj_total"),
+            "actual_total": round(actual_total, 2),
+            "salary_used": b.get("salary_used"),
+            "n_dnp": n_dnp,
+            "slots": slots_out,
+        }
+    return builds_out, any_scored
+
+
+def _norm_index(raw: Dict[str, Any]) -> Dict[str, Any]:
+    """Box-log rows keyed by nb.norm_name; on a collision keep the fuller log."""
+    out: Dict[str, Any] = {}
+    for k, v in raw.items():
+        nk = nb.norm_name(k)
+        cur = out.get(nk)
+        n_new = len(v if isinstance(v, list) else (v or {}).get("games") or [])
+        n_cur = len(cur if isinstance(cur, list) else (cur or {}).get("games") or []) if cur else -1
+        if n_new > n_cur:
+            out[nk] = v
+    return out
+
+
+SCORER_VERSION = 2
+
+
+LONG_WINDOW_DAYS = 30   # a box index this wide = the outage backfill's long fetch
+
+
+def _rescore_pass(slates: Dict[str, Any], gl_by_name: Dict[str, Any],
+                  box_from: Optional[str], box_to: Optional[str] = None) -> None:
+    """One disclosed correction (2026-10-23) for slates scored by scorer v1,
+    whose name lookup zeroed every punctuated/suffixed player. Where the box
+    feed still covers the slate, it is RESCORED with the old totals kept under
+    `rescored.previous`; where the rows have aged out it is RETRACTED (kept for
+    audit, excluded from the cumulative) -- a receipt known to be wrong is not
+    left standing, and it is never guessed."""
+    now = dt.datetime.now().isoformat(timespec="seconds")
+    for sdate, entry in slates.items():
+        if not entry.get("scored") or entry.get("retracted"):
+            continue
+        if int(entry.get("scorer_version") or 1) >= SCORER_VERSION:
+            continue
+        prev = {b: {"actual_total": r.get("actual_total"), "n_dnp": r.get("n_dnp")}
+                for b, r in (entry.get("results") or {}).items()}
+        # v1 was exact for plain names (normalized == raw key); only a DNP on a
+        # punctuated/suffixed name can be wrong. Untouched slates are verified.
+        touched = any(str(x.get("note") or "").startswith("DNP")
+                      and nb.norm_name(x.get("name")) != str(x.get("name") or "").lower().strip()
+                      for r in (entry.get("results") or {}).values() for x in (r.get("slots") or []))
+        if not touched:
+            entry["scorer_version"] = SCORER_VERSION
+            continue
+        if box_from and box_from <= sdate:
+            builds_out, any_scored = _score_lineups(entry, sdate, gl_by_name)
+            if any_scored:
+                entry["results"] = builds_out
+                entry["scorer_version"] = SCORER_VERSION
+                entry["rescored"] = {"at": now, "previous": prev,
+                                     "reason": ("scorer v1 looked players up by normalized name against "
+                                                "raw box keys, so punctuated/suffixed names (Amon-Ra St. "
+                                                "Brown, De'Von Achane, Marvin Harrison Jr.) scored 0")}
+                continue
+        # Retract only when a LONG box window is loaded and still can't reach
+        # the slate (the rows are gone for good). On an ordinary run the feed
+        # holds ~8 days, so an older slate just waits for the backfill's pass.
+        try:
+            span = (dt.date.fromisoformat(box_to) - dt.date.fromisoformat(box_from)).days
+        except Exception:
+            span = 0
+        if span < LONG_WINDOW_DAYS:
+            continue
+        entry["retracted"] = True
+        entry["retracted_at"] = now
+        entry["retracted_reason"] = ("scored by scorer v1, which zeroed punctuated/suffixed player "
+                                     "names; the box scores have aged out of the feed, so it cannot "
+                                     "be rescored -- retracted rather than left wrong")
+        entry["scorer_version"] = SCORER_VERSION
+
+
+
 def run() -> Dict[str, Any]:
     today = dt.date.today().isoformat()
     dfs = _load(DFS_PATH)
@@ -188,7 +303,16 @@ def run() -> Dict[str, Any]:
             entry["frozen_note"] = "frozen late: slate date passed while the module was not running"
 
     # 2. SCORE frozen slates that are >= 1 day old and unscored.
-    gl_by_name = _load(GL_PATH).get("by_name") or {}
+    # NAME KEYS (2026-10-23): nfl_player_gamelogs keys are RAW box names
+    # ("amon-ra st. brown", "marvin harrison jr.", "de'von achane") but the
+    # lookup used nb.norm_name(player) -- so every player with punctuation or
+    # a suffix scored "DNP -> 0" (one Week-1 lineup lost Achane, Smith-Njigba
+    # and Wan'Dale Robinson that way). Index by the normalized name instead.
+    gl_by_name = _norm_index(_load(GL_PATH).get("by_name") or {})
+    _bd = sorted({str(r.get("date"))[:10] for v in gl_by_name.values()
+                  for r in (v if isinstance(v, list) else (v or {}).get("games") or [])
+                  if r.get("date")})
+    _rescore_pass(slates, gl_by_name, _bd[0] if _bd else None, _bd[-1] if _bd else None)
     for sdate, entry in slates.items():
         if entry.get("scored") or entry.get("unscoreable") or not entry.get("frozen"):
             continue
@@ -204,48 +328,12 @@ def run() -> Dict[str, Any]:
         # first kickoff (Thu -> Mon), so that is the earliest honest scoring day.
         if age < SLATE_SPAN_DAYS:
             continue
-        builds_out: Dict[str, Any] = {}
-        any_scored = False
-        for bname, b in (entry.get("lineups") or {}).items():
-            slots_out: List[Dict[str, Any]] = []
-            actual_total = 0.0
-            n_dnp = 0
-            for s in b.get("slots") or []:
-                if s.get("pos") == "DST":
-                    act = _dst_actual(str(s.get("team") or "").upper(), sdate)
-                    slots_out.append({"slot": s.get("slot"), "name": s.get("name"),
-                                      "team": s.get("team"), "proj": s.get("proj"),
-                                      "actual": act,
-                                      "note": "partial: PA tier only" if act is not None
-                                              else "unscored (no final found)"})
-                    if act is not None:
-                        actual_total += act
-                        any_scored = True
-                    continue
-                row = _gamelog_row(gl_by_name, s.get("name") or "", sdate)
-                if row is None:
-                    slots_out.append({"slot": s.get("slot"), "name": s.get("name"),
-                                      "team": s.get("team"), "proj": s.get("proj"),
-                                      "actual": 0.0, "note": "DNP/no box row -> 0"})
-                    n_dnp += 1
-                    continue
-                act = actual_dk_points(row)
-                actual_total += act
-                any_scored = True
-                slots_out.append({"slot": s.get("slot"), "name": s.get("name"),
-                                  "team": s.get("team"), "proj": s.get("proj"),
-                                  "actual": act})
-            builds_out[bname] = {
-                "proj_total": b.get("proj_total"),
-                "actual_total": round(actual_total, 2),
-                "salary_used": b.get("salary_used"),
-                "n_dnp": n_dnp,
-                "slots": slots_out,
-            }
+        builds_out, any_scored = _score_lineups(entry, sdate, gl_by_name)
         if any_scored:
             entry["scored"] = True
             entry["scored_at"] = dt.datetime.now().isoformat(timespec="seconds")
             entry["results"] = builds_out
+            entry["scorer_version"] = SCORER_VERSION
         elif age > SLATE_SPAN_DAYS + BOX_LOG_DAYS:
             # TERMINAL, NOT RETRIED FOREVER (2026-10-22). The box-score feed
             # (espn_box_logs nfl) keeps ~8 days; once a slate's last game is
@@ -259,7 +347,8 @@ def run() -> Dict[str, Any]:
                 "never guessed")
 
     # 3. CUMULATIVE record across scored slates.
-    scored = [(d, e) for d, e in sorted(slates.items()) if e.get("scored")]
+    scored = [(d, e) for d, e in sorted(slates.items())
+              if e.get("scored") and not e.get("retracted")]
     cum: Dict[str, Any] = {}
     for bname in ("optimal", "ceiling", "cash"):
         rows = [(e["results"][bname]["proj_total"], e["results"][bname]["actual_total"])
@@ -278,6 +367,8 @@ def run() -> Dict[str, Any]:
         "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
         "n_slates_tracked": len(slates),
         "n_slates_scored": len(scored),
+        "n_slates_retracted": sum(1 for e in slates.values() if e.get("retracted")),
+        "n_slates_rescored": sum(1 for e in slates.values() if e.get("rescored")),
         "cumulative": cum,
         "slates": slates,
         "method_note": ("Published lineups snapshot all week and FREEZE at the slate "
@@ -287,7 +378,10 @@ def run() -> Dict[str, Any]:
                         "your entry would have scored. DST is PARTIAL (points-allowed "
                         "tier only; no free sacks/turnovers feed) and understates real "
                         "DST scores by roughly 4-6 points. Scored slates are never "
-                        "edited."),
+                        "edited -- with ONE disclosed exception (2026-10-23): scorer v1 "
+                        "zeroed players whose names carry punctuation or a suffix; "
+                        "those slates were rescored where box scores survive (old "
+                        "totals kept under 'rescored') and retracted where they don't."),
         "disclosures": [
             "Fumbles lost / 2-pt conversions are absent from the box feed (~0.1-0.3 pts/slot).",
             "DST actuals are partial (PA tier only) and labeled per-slot.",
