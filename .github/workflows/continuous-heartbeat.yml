@@ -97,6 +97,11 @@ jobs:
       - name: All-picks unified ledger (settle + log)
         working-directory: python
         run: python all_picks_tracker.py || echo "all_picks_tracker.py" >> "$RUNNER_TEMP/failed_steps.txt"
+      - name: Golf leaderboard + live tracker (was daily-only; a tournament round moves hourly)
+        working-directory: python
+        run: |
+          python golf_pipeline.py || echo "golf_pipeline.py" >> "$RUNNER_TEMP/failed_steps.txt"
+          python golf_live_tracker.py || echo "golf_live_tracker.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Recent-picks digest (the site ticker reads this, not the 11MB ledger)
         working-directory: python
         run: python recent_picks.py || echo "recent_picks.py" >> "$RUNNER_TEMP/failed_steps.txt"

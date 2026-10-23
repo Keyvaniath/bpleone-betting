@@ -49,9 +49,24 @@ def _load(name):
     except Exception: return None
 
 
+LIVE_YELLOW_MIN = 60
+LIVE_RED_MIN = 240
+GOLF_STALE_MIN = 300     # golf refreshes on the ~2-5h heartbeat + daily pipeline
+
+
 def _age_min(name):
+    """Minutes since the artifact was PRODUCED -- its own generated_at first.
+
+    FILE MTIME LIES IN CI (2026-10-23): this used os.path.getmtime alone, and in
+    a GitHub Actions checkout every file's mtime is the checkout time -- so in
+    the run that publishes data_health.json every state file looked ~0 minutes
+    old, and the live/golf/per-sport staleness checks could NEVER fire. mtime is
+    now only the fallback (no generated_at, or a clock-skewed one)."""
     p = os.path.join(DATA_DIR, name)
     if not os.path.exists(p): return None
+    h = _gen_age_h(_load(name))
+    if h is not None and h >= -0.25:
+        return round(h * 60)
     return round((dt.datetime.now().timestamp() - os.path.getmtime(p)) / 60)
 
 
@@ -92,10 +107,13 @@ def _check_mlb():
     # lands, and GitHub cron jitter can stretch the 15-min cadence to ~45.
     # That transition is YELLOW ("catching up"); red is reserved for a
     # genuinely stalled poller (no live rows AND the file is old).
-    if n_live > 0 and n_local_live == 0 and age > 20:
+    # Thresholds track the poller's DELIVERED cadence: live-games.yml is
+    # scheduled every 20 min but GitHub runs it ~5x/day, so >60 min behind is
+    # normal-but-worth-showing (yellow) and >240 min is a stalled poller (red).
+    if n_live > 0 and n_local_live == 0 and age > LIVE_RED_MIN:
         status = "red"
         findings.append(f"MLB has {n_live} live games but live_state.json shows {n_local_live} (age {age}min) -- live poller stalled")
-    elif n_live > 0 and (n_local_live == 0 or age > 30):
+    elif n_live > 0 and (n_local_live == 0 or age > LIVE_YELLOW_MIN):
         if status == "green":
             status = "yellow"
         findings.append(f"live poll catching up: upstream live={n_live}, local={n_local_live} (age {age}min)")
@@ -128,9 +146,13 @@ def _check_espn(sport, espn_url, local_file):
     if n_local != n_up:
         status = "red" if n_up > 0 else "yellow"
         findings.append(f"{sport.upper()} count mismatch: local={n_local} vs ESPN={n_up}")
-    if n_up_live > 0 and age > 30:
+    if n_up_live > 0 and age > LIVE_RED_MIN:
         status = "red"
         findings.append(f"{sport.upper()} has {n_up_live} live, local age {age}min")
+    elif n_up_live > 0 and age > LIVE_YELLOW_MIN:
+        if status == "green":
+            status = "yellow"
+        findings.append(f"{sport.upper()} live data {age}min behind ({n_up_live} live)")
     if not findings:
         findings.append(f"{n_up} events matched ({n_up_live} live)")
     return {"feed": sport, "status": status, "findings": findings,
@@ -251,7 +273,7 @@ def _check_golf():
     if n_up_players > 0 and n_local == 0:
         status = "red"
         findings.append(f"ESPN has {n_up_players} golfers, local has 0")
-    elif age > 60 and n_active_tourneys > 0:
+    elif age > GOLF_STALE_MIN and n_active_tourneys > 0:
         status = "yellow"
         findings.append(f"golf data {age}min stale during active tournament")
     else:
@@ -321,6 +343,15 @@ DESK_FRESHNESS = [
     # 30h catches a dead producer within a day. An earlier 200h on the ratings
     # was uselessly loose -- it would have taken a week to notice.
     ("cfb_model.json", 18), ("cfb_ratings.json", 30),
+    # Registered 2026-10-23 -- each of these was found broken or new that day,
+    # and every one would have failed silently: the NFL DFS desk + its receipts
+    # + the xFP calibration, the blended NBA/NHL/WNBA baselines every prop
+    # generator now reads, the Alpha email card, and the ticker's ledger digest
+    # (also refreshed on the heartbeat). All run in daily-pipeline 3x/day, so
+    # 30h means "missed a full day of runs".
+    ("nfl_dfs.json", 30), ("nfl_dfs_receipts.json", 30), ("nfl_dfs_calibration.json", 30),
+    ("player_stats_nba.json", 30), ("player_stats_nhl.json", 30), ("player_stats_wnba.json", 30),
+    ("alpha_email.json", 30), ("recent_picks.json", 30),
 ]
 
 
