@@ -1,18 +1,18 @@
 # EdgeStat Daily Summary — 2026-10-23
 
-## 🏥 Model Health: 57.9/100 [OK]
+## 🏥 Model Health: 57.3/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.5/100
+  - 🟢 Calibration Freshness: 99.3/100
   - 🔴 Hit Rate Trend: 0/100
   - 🔴 Brier Trend: 0/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 100.0/100
-  - 🟢 Edge Count: 80.0/100
+  - 🟡 Edge Count: 74.3/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.57)
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.566)
 - **Total games on board:** 63
-- **Strong home favorites:** 29 | **Strong road dogs:** 17
+- **Strong home favorites:** 27 | **Strong road dogs:** 18
 
 ## 🎯 Top 5 Best Bets
 1. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
@@ -21,30 +21,13 @@
 4. **GOLF Lee Hodges TOP10 @ 667 (Butterfield Bermuda Championship)** (78/100 ★★★★★)
 5. **GOLF Kihei Akina TOP10 @ 676 (Butterfield Bermuda Championship)** (78/100 ★★★★★)
 
-## 🐋 Whale Picks (Max Confluence)
-- [STRONG] **[MLB]** CIN @ COL CIN_ML -- 65% / +24.4% (score 2.5)
-
-## 📡 Sharp Action (Line Movement)
-- [ELITE] **CIN @ COL** ml_away: 51.46% → 98.68% (+47.2pp)
-
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
 - Net units: **+10.34u** | ROI: **+45.6%**
 
-**Today's 5 Locks:**
-- [KBO] **Choi Jeong** one_plus_tb · p=73% edge=+39.8% qK=0.062u
-- [KBO] **Jose Pirela** one_plus_tb · p=73% edge=+39.2% qK=0.062u
-- [KBO] **Koo Ja-wook** one_plus_tb · p=73% edge=+38.9% qK=0.062u
-- [KBO] **Mel Rojas Jr.** one_plus_tb · p=73% edge=+38.5% qK=0.062u
-- [KBO] **Austin Dean** one_plus_tb · p=73% edge=+38.5% qK=0.062u
-
-## 🎰 Top Balanced 2-Leg Parlays (40-65% joint)
-- [KBO] Choi Jeong one_plus_tb + [KBO] Jose Pirela one_plus_tb
-  Joint: 53% | Fair: 264 | Edge: +94.6%
-- [KBO] Choi Jeong one_plus_tb + [KBO] Koo Ja-wook one_plus_tb
-  Joint: 53% | Fair: 264 | Edge: +94.1%
-- [KBO] Choi Jeong one_plus_tb + [KBO] Mel Rojas Jr. one_plus_tb
-  Joint: 53% | Fair: 264 | Edge: +93.6%
+**Today's 2 Locks:**
+- [MLB] **TBR @ MIL** MIL_ML · p=69% edge=+4.4% qK=0.022u
+- [MLB] **TBR @ MIL** ML_HOME · p=69% edge=+4.2% qK=0.021u
 
 ## 🎮 Player Play of the Day (cross-sport)
 - **[LOL]** Inspired UNDER 3.5 Kills | MED conviction · model 61.7% fair -161
@@ -53,14 +36,14 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (18)
+## ⚡ Pre-Game HIGH Conviction (16)
 - [NCAAF] **BYU Cougars** AWAY (None L10) · model 74.9% fair -299
 - [NFL] **Pittsburgh Steelers** AWAY (None L10) · model 74.5% fair -291
 - [NFL] **Denver Broncos** AWAY (None L10) · model 74.5% fair -291
 - [NFL] **New York Jets** HOME (None L10) · model 74.3% fair -289
 - [NFL] **Las Vegas Raiders** HOME (None L10) · model 73.3% fair -274
-- [MLS] **Sporting Kansas City** HOME (0-3 L10) · model 73.0% fair -271
 - [NCAAF] **Alabama Crimson Tide** HOME (None L10) · model 72.6% fair -265
+- [MLS] **Sporting Kansas City** HOME (0-3 L10) · model 70.9% fair -244
 - [NCAAF] **Miami Hurricanes** HOME (None L10) · model 70.4% fair -238
 - [NCAAF] **Indiana Hoosiers** AWAY (None L10) · model 68.0% fair -212
 - [NCAAF] **USC Trojans** AWAY (None L10) · model 68.0% fair -212
@@ -69,31 +52,34 @@
 - Hot teams: **5** | Cold teams: **15** | Over-heavy: 0 | Under-heavy: 23
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (156)
-- RESIDUAL_DIVERGENCE: **19**
-- STEAM_MOVE: **137**
-  - Denver Nuggets (NBA): Denver Nuggets UNDERPERFORMING expected margin by 7.3pts in recent games -- model bias may persist
-  - Boston Bruins (NHL): Boston Bruins UNDERPERFORMING expected margin by 7.7pts in recent games -- model bias may persist
-  - Los Angeles Kings (NHL): Los Angeles Kings OUTPERFORMING expected margin by 14.7pts in recent games -- model bias may persist
-  - Vegas Golden Knights (NHL): Vegas Golden Knights UNDERPERFORMING expected margin by 7.0pts in recent games -- model bias may persist
-  - Calgary Flames (NHL): Calgary Flames OUTPERFORMING expected margin by 12.6pts in recent games -- model bias may persist
+## ⚠️ Anomaly Detector (147)
+- RESIDUAL_DIVERGENCE: **16**
+- STEAM_MOVE: **131**
+  - Denver Nuggets (NBA): Denver Nuggets UNDERPERFORMING expected margin by 10.7pts in recent games -- model bias may persist
+  - Boston Bruins (NHL): Boston Bruins UNDERPERFORMING expected margin by 8.8pts in recent games -- model bias may persist
+  - Los Angeles Kings (NHL): Los Angeles Kings OUTPERFORMING expected margin by 12.2pts in recent games -- model bias may persist
+  - Winnipeg Jets (NHL): Winnipeg Jets OUTPERFORMING expected margin by 7.7pts in recent games -- model bias may persist
+  - Calgary Flames (NHL): Calgary Flames OUTPERFORMING expected margin by 11.7pts in recent games -- model bias may persist
 
 ## 💰 Today's Portfolio (12 picks)
-- Total stake: **$330.0** (33.0% of $1000 bankroll)
-- Expected EV: **$-7.54**
+- Total stake: **$345.0** (34.5% of $1000 bankroll)
+- Expected EV: **$-6.1**
   - #1 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #2 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
   - #3 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
   - #4 [GOLF] $35 on GOLF Lee Hodges TOP10 @ 667 (Butterfield Bermuda Championshi (P=13%)
   - #5 [GOLF] $35 on GOLF Kihei Akina TOP10 @ 676 (Butterfield Bermuda Championsh (P=13%)
 
-## 🎯 Convergence Picks (25 stacked games)
-- ELITE: **14** · HIGH: 8 · MED: 3
-  - [ELITE] Florida Panthers @ Pittsburgh Penguins : 6 signals (PREGAME, HEAT_COLD, HEAT_COLD, HEAT_COLD)
-  - [ELITE] Detroit Red Wings @ Vancouver Canucks : 6 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
-  - [ELITE] Austin FC @ Sporting Kansas City : 6 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
-  - [ELITE] Vegas Golden Knights @ St. Louis Blues : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
-  - [ELITE] Utah Mammoth @ Seattle Kraken : 5 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
+## 🎯 Convergence Picks (27 stacked games)
+- ELITE: **9** · HIGH: 14 · MED: 4
+  - [ELITE] Detroit Red Wings @ Vancouver Canucks : 5 signals (PREGAME, HEAT_COLD, HEAT_COLD, HEAT_COLD)
+  - [ELITE] Inter Miami CF @ Red Bull New York : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
+  - [ELITE] Seattle Sounders FC @ San Diego FC : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
+  - [ELITE] Florida Panthers @ Pittsburgh Penguins : 4 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ATS)
+  - [ELITE] Winnipeg Jets @ Dallas Stars : 4 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
+
+## ⚾ Top MLB Pitcher K Plays (1)
+- **Jacob Misiorowski** OVER 4.5 K (75%) fair -303
 
 ## 🏀 NBA Player Heat (0 HOT / 1 COLD)
   - ❄️ **Caleb Love** (PHI): L5 2.6 vs season 10.8 [PTS -8.2, REB -2.1, AST -2.4] -- FADE OVER props
@@ -124,16 +110,12 @@
   - ❄️ **Andruw Monasterio** (BOS): L14 .083 / season .233 (-150pts) -- FADE props
   - ❄️ **Jim Jarvis** (ATL): L14 .079 / season .207 (-128pts) -- FADE props
 
-## 😴 B2B Fatigue Edges (2)
-- [NHL] FADE Ottawa Senators (home on B2B)
-- [NHL] FADE Florida Panthers (away on B2B)
-
 ## 📈 Streak Regression Alerts (15)
 - [NHL] Anaheim Ducks on L4 L10 1-4 -- Anaheim Ducks on L4 -- no historical sample
 - [NHL] Pittsburgh Penguins on L4 L10 1-4 -- Pittsburgh Penguins on L4 -- no historical sample
-- [NHL] Dallas Stars on W3 L10 3-2 -- Dallas Stars on W3 -- no historical sample
-- [NHL] Winnipeg Jets on L3 L10 1-4 -- Winnipeg Jets on L3 -- no historical sample
-- [NHL] Vancouver Canucks on L7 L10 0-5 -- Vancouver Canucks on L7 -- no historical sample
+- [NHL] Dallas Stars on W3 L10 3-2 -- FADE Dallas Stars (on W3, historically regress 50% of the time)
+- [NHL] Winnipeg Jets on L3 L10 1-4 -- BACK Winnipeg Jets (on L3, historically bounce back 100% of the time)
+- [NHL] Vancouver Canucks on L6 L10 0-5 -- BACK Vancouver Canucks (on L6, historically bounce back 0% of the time)
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**
@@ -143,7 +125,8 @@
   - ⚠️ batter_rbis (Brier Δ -0.0052)
 
 ## 🧠 Training Convergence
-- ELITE: **1** · HEALTHY: 1 · OK: 0 · DEGRADED: **0**
+- ELITE: **0** · HEALTHY: 1 · OK: 0 · DEGRADED: **1**
+  - ⚠️ **batter_hits**: DIVERGENT - consistent same-sign moves (structural issue) (cf=0.953)
 
 ## 🤖 Self-Training Status
 - **NBA**: n=58 games · hit rate 60.3% · bias -8.3pp [calibration applied]
