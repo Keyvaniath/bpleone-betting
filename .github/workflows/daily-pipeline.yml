@@ -18,6 +18,12 @@ on:
   workflow_dispatch:        # manual trigger button (use for line-shop refresh)
 
 # Needed for git push (default GITHUB_TOKEN is read-only otherwise).
+# Overlapping dispatches QUEUE instead of racing each other to the commit
+# step (2026-10-23; the race is also covered by rebase --autostash).
+concurrency:
+  group: daily-pipeline
+  cancel-in-progress: false
+
 permissions:
   contents: write
 
