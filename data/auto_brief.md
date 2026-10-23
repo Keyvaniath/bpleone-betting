@@ -6,7 +6,9 @@ _0% lineups confirmed · 1 rookie SPs_
 
 ## Slate
 - **1 games** scheduled
-- **31 best bets** scored: 6 DK · 0 PP · 0 NRFI · 0 SGP
+- **32 best bets** scored: 6 DK · 0 PP · 1 NRFI · 0 SGP
+- **Auto-portfolio:** 1 picks, $50.0 stake (5.0%), expected +$15.75
+- **MC simulation:** EV +$15.75, 69% P(profit), p05 $-50.0 / p95 $45.45
 
 ## Top 5 Best Bets
 1. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
@@ -24,16 +26,17 @@ _0% lineups confirmed · 1 rookie SPs_
    - P(top 10) 12.9% -- safest finish bet (#23 (-5)).
 
 ## ⚠️ Trap Warnings — 4 flagged
-- **Richie Palacios OVER 0.5 batter hits** (high):
+- **TBR @ MIL NRFI (no run 1st inning)** (low):
+   - Edge +14.9% looks big but only 0 settled props on this player — model unproven
+- **Richie Palacios OVER 0.5 batter hits** (low):
    - Edge +10.8% looks big but only 0 settled props on this player — model unproven
-   - Line sharpened against this side (-5c move) -- sharp money knows
-- **Liam Hicks OVER 0.5 batter hits** (high):
-   - Edge +8.4% looks big but only 0 settled props on this player — model unproven
-   - Line sharpened against this side (-6c move) -- sharp money knows
 - **Taylor Walls OVER 0.5 batter hits** (low):
    - Edge +9.2% looks big but only 0 settled props on this player — model unproven
-- **David Hamilton OVER 0.5 batter hits** (low):
-   - Line sharpened against this side (-11c move) -- sharp money knows
+- **Liam Hicks OVER 0.5 batter hits** (low):
+   - Edge +8.4% looks big but only 0 settled props on this player — model unproven
+
+## NRFI/YRFI strong leans
+- **NRFI** (1st-inning UNDER): TBR @ MIL
 
 ## Golf -- Butterfield Bermuda Championship
 - **Leader:** Chandler Blanchet (-9) at #1
@@ -42,15 +45,15 @@ _0% lineups confirmed · 1 rookie SPs_
    - P(top 10) 13.0% -- safest finish bet (#20 (-5)).
 
 ## NBA -- REGULAR
-- Cleveland Cavaliers @ Philadelphia 76ers (0-0 vs 1-0) 56-32 | P(home) 8.6% fair +1064 | In Progress
+- Cleveland Cavaliers @ Philadelphia 76ers (0-0 vs 1-0) 76-62 | P(home) 8.9% fair +1025 | In Progress
 - Denver Nuggets @ Oklahoma City Thunder (0-0 vs 1-0)  | P(home) 92.1% fair -1161 | Scheduled
 
 ## NHL -- REGULAR
-- Nashville Predators @ Boston Bruins (3-2-3 vs 7-2-1) 0-2 | P(home) 88.8% fair -796 | In Progress
-- New York Rangers @ Toronto Maple Leafs (7-3-1 vs 5-4-2) 1-2 | P(home) 60.5% fair -153 | In Progress
-- San Jose Sharks @ Ottawa Senators (5-4-1 vs 7-3-0) 1-1 | P(home) 71.7% fair -253 | End of Period
-- Anaheim Ducks @ New Jersey Devils (4-5-0 vs 5-4-0) 0-2 | P(home) 85.8% fair -606 | In Progress
-- Florida Panthers @ Pittsburgh Penguins (5-3-2 vs 3-6-1) 0-1 | P(home) 54.4% fair -119 | In Progress
+- Nashville Predators @ Boston Bruins (3-2-3 vs 7-2-1) 0-4 | P(home) 99.0% fair -9900 | End of Period
+- New York Rangers @ Toronto Maple Leafs (7-3-1 vs 5-4-2) 3-3 | P(home) 55.2% fair -123 | In Progress
+- San Jose Sharks @ Ottawa Senators (5-4-1 vs 7-3-0) 4-1 | P(home) 22.8% fair +339 | In Progress
+- Anaheim Ducks @ New Jersey Devils (4-5-0 vs 5-4-0) 0-2 | P(home) 92.8% fair -1293 | End of Period
+- Florida Panthers @ Pittsburgh Penguins (5-3-2 vs 3-6-1) 0-2 | P(home) 85.0% fair -564 | End of Period
 
 ## LoL Esports -- 0 live, 30 upcoming
 - [Worlds] Gen.G Esports vs Invictus Gaming BO1 | P(A) 54.6% fair -120/+120

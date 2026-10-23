@@ -1,9 +1,117 @@
 {
-  "ran_at": "2026-10-23T00:24:05",
-  "version": 2,
-  "previous_passes": [],
+  "ran_at": "2026-10-23T01:04:44",
+  "version": 4,
+  "previous_passes": [
+    {
+      "ran_at": "2026-10-23T00:24:05",
+      "version": 2,
+      "outage": "2026-09-22 -> 2026-10-22 (daily-pipeline cascade)",
+      "n_outage_voids_before": 779,
+      "oldest_pick": "2026-09-18",
+      "lookback_days": 37,
+      "feeds": {
+        "box_wnba": 49,
+        "box_nba": 81,
+        "box_nfl": 77,
+        "box_nhl": 218,
+        "events_golf": 3,
+        "events_tennis": 1447,
+        "events_ufc": 82,
+        "events_f1": 3,
+        "events_soccer": 318,
+        "finals_nba": 81,
+        "finals_nhl": 218,
+        "finals_wnba": 49,
+        "finals_mls": 79,
+        "finals_epl": 30,
+        "finals_nfl": 77,
+        "finals_ncaaf": 329,
+        "finals_cws": 0,
+        "finals_mlb": 194,
+        "mlb_gamelogs": 85
+      },
+      "by_sport": {
+        "WNBA": {
+          "still_void": 30
+        },
+        "NFL": {
+          "still_void": 136,
+          "lost": 60,
+          "won": 129
+        },
+        "F1": {
+          "won": 4,
+          "lost": 3
+        },
+        "NBA": {
+          "still_void": 24
+        },
+        "MLB": {
+          "still_void": 99,
+          "lost": 5,
+          "won": 6
+        },
+        "NHL": {
+          "preseason_void": 83,
+          "still_void": 83,
+          "lost": 11,
+          "won": 22
+        },
+        "KBO": {
+          "still_void": 36
+        },
+        "UFC": {
+          "won": 2,
+          "lost": 2,
+          "still_void": 20
+        },
+        "TENNIS": {
+          "lost": 1,
+          "won": 1,
+          "still_void": 22
+        }
+      },
+      "n_recovered": 246,
+      "nhl_regrade": {
+        "n_regraded": 4,
+        "won_to_lost": 4,
+        "lost_to_won": 0,
+        "picks": [
+          {
+            "date": "2026-09-21",
+            "pick": "New York Rangers @ New Jersey Devils",
+            "market": "HOME_MINUS_1.5",
+            "from": "won",
+            "to": "lost"
+          },
+          {
+            "date": "2026-09-21",
+            "pick": "Ottawa Senators @ Montreal Canadiens",
+            "market": "HOME_MINUS_1.5",
+            "from": "won",
+            "to": "lost"
+          },
+          {
+            "date": "2026-09-21",
+            "pick": "St. Louis Blues @ Dallas Stars",
+            "market": "HOME_MINUS_1.5",
+            "from": "won",
+            "to": "lost"
+          },
+          {
+            "date": "2026-10-15",
+            "pick": "barclay goodrow",
+            "market": "HITS_OVER_2.5",
+            "from": "won",
+            "to": "lost"
+          }
+        ]
+      },
+      "note": "Outcome feeds re-run once with a long lookback so picks voided only because the feeds were dark could be graded on their real results. Grading used the normal settlement code; nothing was inferred. Picks whose outcome data no longer exists stay voided."
+    }
+  ],
   "outage": "2026-09-22 -> 2026-10-22 (daily-pipeline cascade)",
-  "n_outage_voids_before": 779,
+  "n_outage_voids_before": 421,
   "oldest_pick": "2026-09-18",
   "lookback_days": 37,
   "feeds": {
@@ -11,6 +119,30 @@
     "box_nba": 81,
     "box_nfl": 77,
     "box_nhl": 218,
+    "nfl_dfs_receipts": {
+      "rescored": 3,
+      "retracted": 3,
+      "cumulative": {
+        "optimal": {
+          "n_slates": 4,
+          "avg_projected": 177.47,
+          "avg_actual": 118.73,
+          "avg_bias": -58.74
+        },
+        "ceiling": {
+          "n_slates": 4,
+          "avg_projected": 177.24,
+          "avg_actual": 110.46,
+          "avg_bias": -66.78
+        },
+        "cash": {
+          "n_slates": 4,
+          "avg_projected": 169.36,
+          "avg_actual": 111.2,
+          "avg_bias": -58.16
+        }
+      }
+    },
     "events_golf": 3,
     "events_tennis": 1447,
     "events_ufc": 82,
@@ -32,77 +164,32 @@
       "still_void": 30
     },
     "NFL": {
-      "still_void": 136,
-      "lost": 60,
-      "won": 129
-    },
-    "F1": {
-      "won": 4,
-      "lost": 3
+      "still_void": 128,
+      "won": 6,
+      "lost": 2
     },
     "NBA": {
-      "still_void": 24
+      "still_void": 25
     },
     "MLB": {
-      "still_void": 99,
-      "lost": 5,
-      "won": 6
-    },
-    "NHL": {
-      "preseason_void": 83,
-      "still_void": 83,
-      "lost": 11,
-      "won": 22
+      "still_void": 99
     },
     "KBO": {
       "still_void": 36
     },
-    "UFC": {
-      "won": 2,
-      "lost": 2,
-      "still_void": 20
-    },
     "TENNIS": {
-      "lost": 1,
-      "won": 1,
-      "still_void": 22
+      "still_void": 12
+    },
+    "NHL": {
+      "still_void": 83
     }
   },
-  "n_recovered": 246,
+  "n_recovered": 8,
   "nhl_regrade": {
-    "n_regraded": 4,
-    "won_to_lost": 4,
+    "n_regraded": 0,
+    "won_to_lost": 0,
     "lost_to_won": 0,
-    "picks": [
-      {
-        "date": "2026-09-21",
-        "pick": "New York Rangers @ New Jersey Devils",
-        "market": "HOME_MINUS_1.5",
-        "from": "won",
-        "to": "lost"
-      },
-      {
-        "date": "2026-09-21",
-        "pick": "Ottawa Senators @ Montreal Canadiens",
-        "market": "HOME_MINUS_1.5",
-        "from": "won",
-        "to": "lost"
-      },
-      {
-        "date": "2026-09-21",
-        "pick": "St. Louis Blues @ Dallas Stars",
-        "market": "HOME_MINUS_1.5",
-        "from": "won",
-        "to": "lost"
-      },
-      {
-        "date": "2026-10-15",
-        "pick": "barclay goodrow",
-        "market": "HITS_OVER_2.5",
-        "from": "won",
-        "to": "lost"
-      }
-    ]
+    "picks": []
   },
   "note": "Outcome feeds re-run once with a long lookback so picks voided only because the feeds were dark could be graded on their real results. Grading used the normal settlement code; nothing was inferred. Picks whose outcome data no longer exists stay voided."
 }

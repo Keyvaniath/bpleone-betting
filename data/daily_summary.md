@@ -2,9 +2,9 @@
 
 **Model Confidence: 9.8/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
 
-_Pipeline health: **WARNING** (11/15 artifacts ok; 4 empty, 0 stale)._ 
+_Pipeline health: **WARNING** (12/15 artifacts ok; 3 empty, 0 stale)._ 
 
-_Generated at 2026-10-23T00:24:28 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-10-23T01:05:07 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
@@ -49,10 +49,10 @@ _Generated at 2026-10-23T00:24:28 UTC. Game lines source: **Bovada (fallback -- 
 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
-| batter hits | 312 | 53.5% | 56.2% | 1.050 | 0.953 |
 | batter total bases | 82 | 34.2% | 41.9% | 1.224 | 0.830 |
+| batter hits | 312 | 53.5% | 56.2% | 1.050 | 0.953 |
 
-Cumulative graded plays: 12436. Wins: 4886. Hit rate: 39.3%.
+Cumulative graded plays: 12444. Wins: 4892. Hit rate: 39.3%.
 
 ## Auxiliary Markets (Model Fair Prices)
 
@@ -68,8 +68,7 @@ Cumulative graded plays: 12436. Wins: 4886. Hit rate: 39.3%.
 
 ## Loop Activity (since last refresh)
 
-- Confidence delta: **+0.2**
-- batter hits: cf +0.0044 (-18 new settled)
+- Confidence delta: **+0.0**
 
 ## Model Recommendations (operator review)
 

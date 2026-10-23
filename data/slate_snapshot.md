@@ -20,5 +20,5 @@ _4 picks consolidated from POD + Alpha + Book Edges + Parlay-of-Day._
   Prob 70.0% · Odds -198 · Edge +5.3% · Kelly 0.106
 
 ---
-_Generated 2026-10-23T00:24:25 UTC by EdgeStat._
+_Generated 2026-10-23T01:05:04 UTC by EdgeStat._
 _Stakes assume ¼-Kelly fractional sizing on a flat bankroll._
