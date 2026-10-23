@@ -1,12 +1,12 @@
-# Tonight's Slate Brief — 2026-10-22
+# Tonight's Slate Brief — 2026-10-23
 
-## Slate Quality: 70/100 (MEDIUM)
-_0% lineups confirmed_
+## Slate Quality: 67/100 (MEDIUM)
+_0% lineups confirmed · 1 rookie SPs_
 **Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
-- **3 games** scheduled
-- **33 best bets** scored: 8 DK · 0 PP · 0 NRFI · 0 SGP
+- **1 games** scheduled
+- **31 best bets** scored: 6 DK · 0 PP · 0 NRFI · 0 SGP
 
 ## Top 5 Best Bets
 1. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
@@ -24,14 +24,16 @@ _0% lineups confirmed_
    - P(top 10) 12.9% -- safest finish bet (#23 (-5)).
 
 ## ⚠️ Trap Warnings — 4 flagged
-- **Richie Palacios OVER 0.5 batter hits** (low):
-   - Edge +13.0% looks big but only 0 settled props on this player — model unproven
-- **Liam Hicks OVER 0.5 batter hits** (low):
-   - Edge +10.4% looks big but only 0 settled props on this player — model unproven
-- **Jackson Chourio OVER 1.5 batter total bases** (low):
-   - Edge +9.0% looks big but only 0 settled props on this player — model unproven
+- **Richie Palacios OVER 0.5 batter hits** (high):
+   - Edge +10.8% looks big but only 0 settled props on this player — model unproven
+   - Line sharpened against this side (-5c move) -- sharp money knows
+- **Liam Hicks OVER 0.5 batter hits** (high):
+   - Edge +8.4% looks big but only 0 settled props on this player — model unproven
+   - Line sharpened against this side (-6c move) -- sharp money knows
+- **Taylor Walls OVER 0.5 batter hits** (low):
+   - Edge +9.2% looks big but only 0 settled props on this player — model unproven
 - **David Hamilton OVER 0.5 batter hits** (low):
-   - Edge +8.7% looks big but only 0 settled props on this player — model unproven
+   - Line sharpened against this side (-11c move) -- sharp money knows
 
 ## Golf -- Butterfield Bermuda Championship
 - **Leader:** Chandler Blanchet (-9) at #1
@@ -40,15 +42,15 @@ _0% lineups confirmed_
    - P(top 10) 13.0% -- safest finish bet (#20 (-5)).
 
 ## NBA -- REGULAR
-- Cleveland Cavaliers @ Philadelphia 76ers (0-0 vs 1-0)  | P(home) 88.8% fair -793 | Scheduled
-- Denver Nuggets @ Oklahoma City Thunder (0-0 vs 1-0)  | P(home) 88.8% fair -793 | Scheduled
+- Cleveland Cavaliers @ Philadelphia 76ers (0-0 vs 1-0) 56-32 | P(home) 8.6% fair +1064 | In Progress
+- Denver Nuggets @ Oklahoma City Thunder (0-0 vs 1-0)  | P(home) 92.1% fair -1161 | Scheduled
 
 ## NHL -- REGULAR
-- Nashville Predators @ Boston Bruins (3-2-3 vs 7-2-1)  | P(home) 80.7% fair -418 | Scheduled
-- New York Rangers @ Toronto Maple Leafs (7-3-1 vs 5-4-2)  | P(home) 46.9% fair +113 | Scheduled
-- San Jose Sharks @ Ottawa Senators (5-4-1 vs 7-3-0)  | P(home) 76.5% fair -326 | Scheduled
-- Anaheim Ducks @ New Jersey Devils (4-5-0 vs 5-4-0)  | P(home) 72.0% fair -258 | Scheduled
-- Florida Panthers @ Pittsburgh Penguins (5-3-2 vs 3-6-1)  | P(home) 37.1% fair +170 | Scheduled
+- Nashville Predators @ Boston Bruins (3-2-3 vs 7-2-1) 0-2 | P(home) 88.8% fair -796 | In Progress
+- New York Rangers @ Toronto Maple Leafs (7-3-1 vs 5-4-2) 1-2 | P(home) 60.5% fair -153 | In Progress
+- San Jose Sharks @ Ottawa Senators (5-4-1 vs 7-3-0) 1-1 | P(home) 71.7% fair -253 | End of Period
+- Anaheim Ducks @ New Jersey Devils (4-5-0 vs 5-4-0) 0-2 | P(home) 85.8% fair -606 | In Progress
+- Florida Panthers @ Pittsburgh Penguins (5-3-2 vs 3-6-1) 0-1 | P(home) 54.4% fair -119 | In Progress
 
 ## LoL Esports -- 0 live, 30 upcoming
 - [Worlds] Gen.G Esports vs Invictus Gaming BO1 | P(A) 54.6% fair -120/+120

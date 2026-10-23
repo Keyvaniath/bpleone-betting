@@ -1,68 +1,64 @@
-# EdgeStat Daily Brief - 2026-10-22
+# EdgeStat Daily Brief - 2026-10-23
 
-**Model Confidence: 9.6/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
+**Model Confidence: 9.8/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
 
 _Pipeline health: **WARNING** (11/15 artifacts ok; 4 empty, 0 stale)._ 
 
-_Generated at 2026-10-22T22:31:24 UTC. Game lines source: **placeholder -110 (no real book today)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-10-23T00:24:28 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
-**CIN @ COL - CIN_ML**
+**TBR @ MIL - OVER_6.5**
 - Market: -110
-- Model probability: 73.7%
-- Raw edge: +40.74%
+- Model probability: 70.9%
+- Raw edge: +35.39%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
 
-## Full Slate (3 games)
+## Full Slate (1 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 7:05p ET | SDP @ LAD | Petco Park | 62F -6mph | LAD_ML +25.43% |
-| 6:45p ET | BOS @ NYY | Yankee Stadium | 71F 12mph | OVER_9.0 +30.97% |
-| 9:40p ET | CIN @ COL | Coors Field | 74F 4mph | CIN_ML +40.74% |
+| 8:00p ET | TBR @ MIL | American Family Field | indoor | OVER_6.5 +35.39% |
 
 ## Parlays - top 5
 
-- **3-leg @ +629 (prob 20.4%, EV +48.71%)**
-  - Richie Palacios OVER 0.5 batter_hits (+105, model 55.1%)
-  - Liam Hicks OVER 0.5 batter_hits (-116, model 59.3%)
-  - CIN @ COL OVER_10.5 (-110, model 62.4%)
-- **3-leg @ +839 (prob 15.6%, EV +46.84%)**
-  - Richie Palacios OVER 0.5 batter_hits (+105, model 55.1%)
-  - Jackson Chourio OVER 1.5 batter_total_bases (+140, model 45.4%)
-  - CIN @ COL OVER_10.5 (-110, model 62.4%)
-- **3-leg @ +679 (prob 18.8%, EV +46.34%)**
-  - Richie Palacios OVER 0.5 batter_hits (+105, model 55.1%)
-  - David Hamilton OVER 0.5 batter_hits (-101, model 54.6%)
-  - CIN @ COL OVER_10.5 (-110, model 62.4%)
-- **3-leg @ +753 (prob 16.8%, EV +43.44%)**
-  - Liam Hicks OVER 0.5 batter_hits (-116, model 59.3%)
-  - Jackson Chourio OVER 1.5 batter_total_bases (+140, model 45.4%)
-  - CIN @ COL OVER_10.5 (-110, model 62.4%)
-- **3-leg @ +607 (prob 20.2%, EV +42.95%)**
-  - Liam Hicks OVER 0.5 batter_hits (-116, model 59.3%)
-  - David Hamilton OVER 0.5 batter_hits (-101, model 54.6%)
-  - CIN @ COL OVER_10.5 (-110, model 62.4%)
+- **3-leg @ +568 (prob 19.7%, EV +31.71%)**
+  - Richie Palacios OVER 0.5 batter_hits (+100, model 55.4%)
+  - Taylor Walls OVER 0.5 batter_hits (+122, model 49.2%)
+  - TBR @ MIL MIL_ML (-198, model 72.3%)
+- **3-leg @ +448 (prob 23.9%, EV +30.71%)**
+  - Richie Palacios OVER 0.5 batter_hits (+100, model 55.4%)
+  - Liam Hicks OVER 0.5 batter_hits (-122, model 59.6%)
+  - TBR @ MIL MIL_ML (-198, model 72.3%)
+- **3-leg @ +674 (prob 16.9%, EV +30.47%)**
+  - Richie Palacios OVER 0.5 batter_hits (+100, model 55.4%)
+  - Brice Turang UNDER 0.5 batter_hits (+157, model 42.1%)
+  - TBR @ MIL MIL_ML (-198, model 72.3%)
+- **3-leg @ +752 (prob 15.2%, EV +29.4%)**
+  - Richie Palacios OVER 0.5 batter_hits (+100, model 55.4%)
+  - Jackson Chourio UNDER 0.5 batter_hits (+183, model 37.9%)
+  - TBR @ MIL MIL_ML (-198, model 72.3%)
+- **3-leg @ +508 (prob 21.2%, EV +28.85%)**
+  - Taylor Walls OVER 0.5 batter_hits (+122, model 49.2%)
+  - Liam Hicks OVER 0.5 batter_hits (-122, model 59.6%)
+  - TBR @ MIL MIL_ML (-198, model 72.3%)
 
 ## Self-Learning Loop
 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
-| batter hits | 330 | 53.3% | 56.3% | 1.055 | 0.949 |
-| batter total bases | 87 | 34.5% | 42.3% | 1.222 | 0.830 |
+| batter hits | 312 | 53.5% | 56.2% | 1.050 | 0.953 |
+| batter total bases | 82 | 34.2% | 41.9% | 1.224 | 0.830 |
 
-Cumulative graded plays: 12204. Wins: 4733. Hit rate: 38.8%.
+Cumulative graded plays: 12436. Wins: 4886. Hit rate: 39.3%.
 
 ## Auxiliary Markets (Model Fair Prices)
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| BOS @ NYY | -- | -- | -- | +115 | -115 |
-| CIN @ COL | -- | -- | -- | +465 | -465 |
-| SDP @ LAD | -- | -- | -- | -166 | +166 |
+| TBR @ MIL | 68.9% | -221 | 1.86 | -147 | +147 |
 
 ## Team Form (last 10)
 
@@ -72,7 +68,8 @@ Cumulative graded plays: 12204. Wins: 4733. Hit rate: 38.8%.
 
 ## Loop Activity (since last refresh)
 
-- Confidence delta: **+0.0**
+- Confidence delta: **+0.2**
+- batter hits: cf +0.0044 (-18 new settled)
 
 ## Model Recommendations (operator review)
 

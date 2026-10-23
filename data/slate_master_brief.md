@@ -1,5 +1,5 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-10-22T22:31:15 UTC_
+_Generated 2026-10-23T00:24:19 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
@@ -32,11 +32,11 @@ _Generated 2026-10-22T22:31:15 UTC_
 ## Top Fades
 - **NBA** / DEN (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NBA** / PHI (TEAM_FADE)
-  - Fade angle: team total UNDER
 - **NBA** / CLE (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NHL** / sergei bobrovsky (GOALIE_FADE)
+- **NBA** / PHI (TEAM_FADE)
+  - Fade angle: team total UNDER
+- **NHL** / thatcher demko (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / samsonov ilya (GOALIE_FADE)
+- **NHL** / alex nedeljkovic (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO

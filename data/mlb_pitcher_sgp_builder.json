@@ -1,8 +1,55 @@
 {
-  "generated_at": "2026-10-22T22:31:15",
-  "n_stacks": 0,
-  "n_prime": 0,
+  "generated_at": "2026-10-23T00:24:19",
+  "n_stacks": 2,
+  "n_prime": 2,
   "rho": 0.45,
   "method_note": "Pitcher same-game stack. Legs (K OVER confident line, ER UNDER 3.5 via Poisson(proj_er), Outs OVER 14.5, Quality Start YES) kept if each >= 0.45. naive_joint=product; correlated_joint=naive+RHO*(min_leg-naive), RHO=0.45 captures same-game positive correlation (naive parlay under-prices these). Tiers PRIME>=.45, STRONG>=.32, VALUE>=.22.",
-  "rows": []
+  "rows": [
+    {
+      "pitcher": "Nick Martinez",
+      "team": "TB",
+      "matchup": "TBR @ MIL",
+      "n_legs": 2,
+      "legs": [
+        {
+          "market": "ER UNDER 3.5",
+          "prob": 0.925
+        },
+        {
+          "market": "Outs OVER 14.5",
+          "prob": 0.682
+        }
+      ],
+      "naive_joint": 0.631,
+      "correlated_joint": 0.654,
+      "correlation_boost_pct": 3.6,
+      "fair_american": -189,
+      "tier": "PRIME_STACK"
+    },
+    {
+      "pitcher": "Jacob Misiorowski",
+      "team": "MIL",
+      "matchup": "TBR @ MIL",
+      "n_legs": 3,
+      "legs": [
+        {
+          "market": "K OVER 4.5",
+          "prob": 0.752
+        },
+        {
+          "market": "ER UNDER 3.5",
+          "prob": 0.955
+        },
+        {
+          "market": "Outs OVER 14.5",
+          "prob": 0.7
+        }
+      ],
+      "naive_joint": 0.503,
+      "correlated_joint": 0.591,
+      "correlation_boost_pct": 17.7,
+      "fair_american": -145,
+      "tier": "PRIME_STACK"
+    }
+  ]
 }

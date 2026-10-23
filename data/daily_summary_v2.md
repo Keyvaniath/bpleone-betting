@@ -1,16 +1,16 @@
-# EdgeStat Daily Summary — 2026-10-22
+# EdgeStat Daily Summary — 2026-10-23
 
-## 🏥 Model Health: 73.9/100 [HEALTHY]
-- Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 99.7/100
-  - 🔴 Hit Rate Trend: 21.1/100
-  - 🔴 Brier Trend: 52.9/100
+## 🏥 Model Health: 57.9/100 [OK]
+- Operational but room to improve - check yellow components
+  - 🟢 Calibration Freshness: 99.5/100
+  - 🔴 Hit Rate Trend: 0/100
+  - 🔴 Brier Trend: 0/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 95.5/100
-  - 🟢 Edge Count: 100/100
+  - 🟢 Data Health: 100.0/100
+  - 🟢 Edge Count: 80.0/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.575)
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.57)
 - **Total games on board:** 63
 - **Strong home favorites:** 29 | **Strong road dogs:** 17
 
@@ -53,25 +53,25 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (21)
+## ⚡ Pre-Game HIGH Conviction (18)
 - [NCAAF] **BYU Cougars** AWAY (None L10) · model 74.9% fair -299
 - [NFL] **Pittsburgh Steelers** AWAY (None L10) · model 74.5% fair -291
 - [NFL] **Denver Broncos** AWAY (None L10) · model 74.5% fair -291
 - [NFL] **New York Jets** HOME (None L10) · model 74.3% fair -289
 - [NFL] **Las Vegas Raiders** HOME (None L10) · model 73.3% fair -274
-- [MLS] **Sporting Kansas City** HOME (0-4 L10) · model 73.0% fair -271
+- [MLS] **Sporting Kansas City** HOME (0-3 L10) · model 73.0% fair -271
 - [NCAAF] **Alabama Crimson Tide** HOME (None L10) · model 72.6% fair -265
-- [NHL] **New Jersey Devils** HOME (4-2 L10) · model 72.0% fair -258
 - [NCAAF] **Miami Hurricanes** HOME (None L10) · model 70.4% fair -238
 - [NCAAF] **Indiana Hoosiers** AWAY (None L10) · model 68.0% fair -212
+- [NCAAF] **USC Trojans** AWAY (None L10) · model 68.0% fair -212
 
 ## 🔥/❄️ Heat / Cold Signals
 - Hot teams: **5** | Cold teams: **15** | Over-heavy: 0 | Under-heavy: 23
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (153)
+## ⚠️ Anomaly Detector (156)
 - RESIDUAL_DIVERGENCE: **19**
-- STEAM_MOVE: **134**
+- STEAM_MOVE: **137**
   - Denver Nuggets (NBA): Denver Nuggets UNDERPERFORMING expected margin by 7.3pts in recent games -- model bias may persist
   - Boston Bruins (NHL): Boston Bruins UNDERPERFORMING expected margin by 7.7pts in recent games -- model bias may persist
   - Los Angeles Kings (NHL): Los Angeles Kings OUTPERFORMING expected margin by 14.7pts in recent games -- model bias may persist
@@ -146,9 +146,9 @@
 - ELITE: **1** · HEALTHY: 1 · OK: 0 · DEGRADED: **0**
 
 ## 🤖 Self-Training Status
-- **NBA**: n=64 games · hit rate 51.6% · bias -5.0pp [calibration applied]
-- **NHL**: n=98 games · hit rate 50.0% · bias -8.3pp [calibration applied]
+- **NBA**: n=58 games · hit rate 60.3% · bias -8.3pp [calibration applied]
+- **NHL**: n=88 games · hit rate 48.9% · bias -9.2pp [calibration applied]
 - **WNBA**: n=5 games · hit rate 40.0% · bias +20.1pp
-- **MLS**: n=48 games · hit rate 41.7% · bias -6.7pp [calibration applied]
+- **MLS**: n=47 games · hit rate 36.2% · bias -4.6pp [calibration applied]
 - **EPL**: n=20 games · hit rate 55.0% · bias -10.4pp [calibration applied]
-- **MLB**: n=12 games · hit rate 66.7% · bias +2.6pp
+- **MLB**: n=11 games · hit rate 72.7% · bias -6.7pp
