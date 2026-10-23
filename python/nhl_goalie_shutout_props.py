@@ -58,6 +58,9 @@ GOALIE_DB = {
     "filip gustavsson":    {"team": "MIN", "sv_pct": 0.913, "gaa": 2.55},
     "alex lyon":           {"team": "DET", "sv_pct": 0.900, "gaa": 3.10},
 }
+# Live current teams over the hard-coded ones (2026-10-23, real_stats_lookup).
+GOALIE_DB = __import__("real_stats_lookup").apply_live_teams("nhl", GOALIE_DB)
+
 
 TEAM_GOALS_PER_GAME = {
     "BOS": 3.1, "FLA": 3.4, "DAL": 3.3, "CAR": 3.4, "EDM": 3.6, "COL": 3.4, "WPG": 3.2,

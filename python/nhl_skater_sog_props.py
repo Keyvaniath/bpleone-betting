@@ -77,6 +77,9 @@ PLAYER_DB = {
     "victor hedman":       {"team": "TBL", "sogg": 2.5},
     "adam fox":            {"team": "NYR", "sogg": 2.0},
 }
+# Live current teams over the hard-coded ones (2026-10-23, real_stats_lookup).
+PLAYER_DB = __import__("real_stats_lookup").apply_live_teams("nhl", PLAYER_DB)
+
 
 # Opp team shots-against-allowed per game. League avg ~30.5
 TEAM_SHOTS_ALLOWED = {

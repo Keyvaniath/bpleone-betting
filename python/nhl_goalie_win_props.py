@@ -63,6 +63,9 @@ GOALIE_DB = {
     "joey daccord":        {"team": "SEA", "sv_pct": 0.907},
     "ukko-pekka luukkonen": {"team": "BUF", "sv_pct": 0.890},
 }
+# Live current teams over the hard-coded ones (2026-10-23, real_stats_lookup).
+GOALIE_DB = __import__("real_stats_lookup").apply_live_teams("nhl", GOALIE_DB)
+
 
 
 def _load(p):

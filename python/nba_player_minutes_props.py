@@ -88,6 +88,9 @@ PLAYER_DB = {
     "bennedict mathurin":       {"team": "IND", "mpg": 28.0},
     "obi toppin":               {"team": "IND", "mpg": 24.0},
 }
+# Live current teams over the hard-coded ones (2026-10-23, real_stats_lookup).
+PLAYER_DB = __import__("real_stats_lookup").apply_live_teams("nba", PLAYER_DB)
+
 
 
 def _load(p):

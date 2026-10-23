@@ -65,6 +65,9 @@ PLAYER_DB = {
     "draymond green":           {"team": "GSW", "ppg": 8.5, "rpg": 6.5, "apg": 6.0},
     "josh giddey":              {"team": "CHI", "ppg": 14.5, "rpg": 8.0, "apg": 7.5},
 }
+# Live current teams over the hard-coded ones (2026-10-23, real_stats_lookup).
+PLAYER_DB = __import__("real_stats_lookup").apply_live_teams("nba", PLAYER_DB)
+
 
 TEAM_PACE = {
     "MEM": 103.9, "WAS": 103.0, "IND": 102.8, "OKC": 100.1, "SAC": 102.3, "BOS": 99.2,

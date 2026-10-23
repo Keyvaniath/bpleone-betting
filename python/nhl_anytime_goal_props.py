@@ -75,6 +75,9 @@ PLAYER_DB = {
     "carter verhaeghe":    {"team": "FLA", "gpg": 0.40},
     "aleksander barkov":   {"team": "FLA", "gpg": 0.40},
 }
+# Live current teams over the hard-coded ones (2026-10-23, real_stats_lookup).
+PLAYER_DB = __import__("real_stats_lookup").apply_live_teams("nhl", PLAYER_DB)
+
 
 # Goalie SV% factors (lower SV% = more goals against)
 # Default 0.910; 0.920+ elite (reduces P score by ~5-8%), 0.895 weak (boosts ~10%)

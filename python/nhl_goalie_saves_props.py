@@ -64,6 +64,9 @@ GOALIE_DB = {
     "alex nedeljkovic":   {"team": "PIT", "sv_pct": 0.901, "team_workload": 1.05},
     "samsonov ilya":      {"team": "VGK", "sv_pct": 0.902, "team_workload": 0.95},
 }
+# Live current teams over the hard-coded ones (2026-10-23, real_stats_lookup).
+GOALIE_DB = __import__("real_stats_lookup").apply_live_teams("nhl", GOALIE_DB)
+
 
 
 def _load(p):

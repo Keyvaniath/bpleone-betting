@@ -86,6 +86,9 @@ PLAYER_DB = {
     "coby white":               {"team": "CHI", "ppg": 20.5, "usage": 0.25},
     "josh giddey":              {"team": "CHI", "ppg": 14.5, "usage": 0.20},
 }
+# Live current teams over the hard-coded ones (2026-10-23, real_stats_lookup).
+PLAYER_DB = __import__("real_stats_lookup").apply_live_teams("nba", PLAYER_DB)
+
 
 # Team pace + DRtg (already in nba_pace_adjusted but re-baked here for self-contained)
 TEAM_PACE = {

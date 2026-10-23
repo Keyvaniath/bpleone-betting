@@ -41,6 +41,30 @@ bpleone-site/
 
 ## Current deployment state (LIVE)
 
+- **2026-10-23 (latest) — NBA/NHL PROPS WERE PRICED OFF 2024-25 TABLES + PRESEASON:**
+  the 27 NBA/NHL/WNBA prop generators carry hard-coded PLAYER_DB tables
+  (2024-25 averages AND teams). A real-stats layer existed
+  (espn_player_stats -> player_stats_<sport>.json -> real_stats_lookup) but:
+  (1) the athlete gamelog it read is CURRENT season only with PRESEASON mixed
+  in (Luka: 1 regular + 3 preseason); (2) its 5-game floor sent every early-
+  season player back to the 2024-25 table; (3) it read only the first 12
+  names per roster, and roster order is NOT depth (Makar, Sabonis, Fox
+  missing); (4) teams always came from the table -- 25 of 62 NBA stars and 6
+  NHL had moved (Giannis MIA, Durant HOU, Davis WAS), priced into the wrong
+  game; retired players (Chris Paul, Fleury, Suter) were still projected.
+  FIX: espn_player_stats is now BULK (statistics/byathlete, regular season
+  only: ~20 calls/league, 27s vs 4 min, NBA 330 -> 472 players, NHL 377 ->
+  821), blending this season toward last season by games played,
+  w = n/(n+K). **K MEASURED on 2025-26 (prior 2024-25, predict next 10 games
+  from first n): NBA K=5 (after 1 game RMSE 6.45 current-only -> 3.57
+  blended); NHL K=30 (skaters want heavy prior; goals favour prior alone).**
+  real_stats_lookup serves `blended` records without the 5-game floor, matches
+  names punctuation/suffix-tolerantly, and `apply_live_teams()` (one line
+  after each NBA/NHL table) sets the CURRENT team in the generators' vocab
+  (GSW/NYK/NOP/SAS/UTA/WAS; LAK/NJD/SJS/TBL/UTA) and blanks the team of anyone
+  on no current roster. WNBA team overlay NOT applied (its tables disagree on
+  codes: CON/CONN, LV/LVA; season over) -- do it before May.
+
 - **2026-10-23 (newest) — NFL PROPS JUDGED FROM 10/23 FORWARD (Brandon's call):**
   the form-rule change makes earlier NFL props a different model. Every NFL
   model prop carries `model_rule` ("form_v1"/"form_v2"), stamped at intake from

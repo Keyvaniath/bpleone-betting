@@ -78,6 +78,9 @@ PLAYER_DB = {
     "nick suzuki":         {"team": "MTL", "gpg": 0.38},
     "elias lindholm":      {"team": "BOS", "gpg": 0.30},
 }
+# Live current teams over the hard-coded ones (2026-10-23, real_stats_lookup).
+PLAYER_DB = __import__("real_stats_lookup").apply_live_teams("nhl", PLAYER_DB)
+
 
 LEAGUE_GAME_GOALS = 6.2  # combined goals per game
 

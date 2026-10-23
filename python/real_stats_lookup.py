@@ -26,6 +26,21 @@ _DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 _CACHE: Dict[str, Dict[str, Any]] = {}
 
 
+def _key(name: str) -> str:
+    """Name key tolerant of punctuation and suffixes: "de'aaron fox" ==
+    "deaaron fox", "jaren jackson jr." == "jaren jackson jr", "j.t. miller"
+    == "jt miller" (the hard-coded tables and ESPN disagree on all three)."""
+    import re as _re
+    n = _re.sub(r"[^a-z ]", "", str(name or "").lower())
+    n = _re.sub(r"\s+(jr|sr|ii|iii|iv)$", "", n.strip())
+    return _re.sub(r"\s+", " ", n).strip()
+
+
+def _find(idx: Dict[str, Dict[str, Any]], name: str) -> Optional[Dict[str, Any]]:
+    nm = (name or "").lower().strip()
+    return idx.get(nm) or idx.get(_key(nm))
+
+
 def _load_sport(sport: str) -> Dict[str, Dict[str, Any]]:
     """Return {player_name_lower: player_record}."""
     key = sport.lower()
@@ -37,7 +52,9 @@ def _load_sport(sport: str) -> Dict[str, Dict[str, Any]]:
             with open(path) as f: d = json.load(f)
             for p in (d.get("players") or []):
                 nm = (p.get("name") or "").lower().strip()
-                if nm: idx[nm] = p
+                if nm:
+                    idx[nm] = p
+                    idx.setdefault(_key(nm), p)   # punctuation/suffix-free alias
         except Exception:
             pass
     _CACHE[key] = idx
@@ -63,10 +80,16 @@ def get_player_stat(
     min_games: ignore real data if player has fewer logged games than this
     """
     idx = _load_sport(sport)
-    rec = idx.get((player_name or "").lower().strip())
+    rec = _find(idx, player_name)
     if rec:
         n_games = rec.get("n_games") or 0
         val = rec.get(stat_key)
+        # BLENDED records (2026-10-23) are already shrunk toward last season by
+        # games played (espn_player_stats.blend_record), so a small current
+        # sample is safe -- the min_games floor only protected raw averages,
+        # and it sent early-season players back to hard-coded 2024-25 tables.
+        if val is not None and rec.get("blended"):
+            return {"value": float(val), "n_games": n_games, "source": "blended"}
         if val is not None and n_games >= min_games:
             return {"value": float(val), "n_games": n_games, "source": "real"}
     if fallback is not None:
@@ -77,7 +100,7 @@ def get_player_stat(
 def get_player_record(sport: str, player_name: str) -> Optional[Dict[str, Any]]:
     """Return full ESPN player record or None."""
     idx = _load_sport(sport)
-    return idx.get((player_name or "").lower().strip())
+    return _find(idx, player_name)
 
 
 def has_real_data(sport: str, player_name: str, min_games: int = 5) -> bool:
@@ -111,3 +134,26 @@ if __name__ == "__main__":
             print(f"{name} ({sport}): {r.get('n_games')} games, {r.get('pts_per_game') or r.get('points_per_game')} ppg/pts")
         else:
             print(f"{name} ({sport}): NOT FOUND in ESPN data")
+
+
+def apply_live_teams(sport: str, db: Dict[str, Dict[str, Any]]) -> Dict[str, Dict[str, Any]]:
+    """Overwrite each hard-coded entry's `team` with the player's CURRENT team
+    (live roster, generators' vocabulary) when the stats feed knows him. The
+    static tables still carried 2024-25 teams -- Kevin Durant on PHX -- and
+    every generator picks players by `info["team"] in (home, away)`, so a
+    traded player was priced into the wrong game. Mutates and returns db."""
+    idx = _load_sport(sport)
+    if not idx:
+        return db                      # no live file: leave the tables as they were
+    for name, info in db.items():
+        if not isinstance(info, dict):
+            continue
+        rec = _find(idx, name)
+        if rec and rec.get("team_model"):
+            info["team"] = rec["team_model"]
+        else:
+            # On NO current roster (retired / unsigned -- Chris Paul, Fleury,
+            # Suter were still being projected). An empty team matches no game.
+            info["team"] = ""
+            info["benched_reason"] = "not on a current roster (live feed)"
+    return db

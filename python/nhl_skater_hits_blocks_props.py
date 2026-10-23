@@ -70,6 +70,9 @@ PLAYER_DB = {
     "evgeni malkin":       {"team": "PIT", "hits_pg": 1.5, "blocks_pg": 0.5, "pim_pg": 0.6},
     "alex ovechkin":       {"team": "WSH", "hits_pg": 1.5, "blocks_pg": 0.5, "pim_pg": 0.4},
 }
+# Live current teams over the hard-coded ones (2026-10-23, real_stats_lookup).
+PLAYER_DB = __import__("real_stats_lookup").apply_live_teams("nhl", PLAYER_DB)
+
 
 
 def _load(p):

@@ -93,6 +93,9 @@ PLAYER_DB = {
     "matt boldy":          {"team": "MIN", "ppg": 0.90},
     "joel eriksson ek":    {"team": "MIN", "ppg": 0.80},
 }
+# Live current teams over the hard-coded ones (2026-10-23, real_stats_lookup).
+PLAYER_DB = __import__("real_stats_lookup").apply_live_teams("nhl", PLAYER_DB)
+
 
 # Per-team goals allowed per game (proxy for "scoring against" defense). League avg ~3.1
 TEAM_GA_PER_GAME = {

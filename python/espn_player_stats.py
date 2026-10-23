@@ -100,7 +100,7 @@ def parse_basketball_log(gamelog: Dict[str, Any], player_name: str,
     this with the wrong sport_key silently corrupts PPG.
     """
     idx = WNBA_IDX if sport_key == "wnba" else NBA_IDX
-    seasons = gamelog.get("seasonTypes") or []
+    seasons = _no_preseason(gamelog.get("seasonTypes") or [])
     # Aggregate across regular season + postseason (most recent N games)
     all_event_stats = []
     for season in seasons:
@@ -147,7 +147,7 @@ def parse_basketball_log(gamelog: Dict[str, Any], player_name: str,
 
 
 def parse_hockey_log(gamelog: Dict[str, Any], player_name: str) -> Dict[str, Any]:
-    seasons = gamelog.get("seasonTypes") or []
+    seasons = _no_preseason(gamelog.get("seasonTypes") or [])
     all_event_stats = []
     for season in seasons:
         for cat in (season.get("categories") or []):
@@ -176,39 +176,161 @@ def parse_hockey_log(gamelog: Dict[str, Any], player_name: str) -> Dict[str, Any
     }
 
 
+# ---------------------------------------------------------------------------
+# PRIOR-SEASON BLEND (2026-10-23)
+# ---------------------------------------------------------------------------
+# The athlete gamelog returns the CURRENT season only, preseason included. Two
+# days into the 2026-27 NBA season every average was built from 1-2
+# regular-season games plus preseason minutes (Luka: 1 + 3), and anyone under
+# the generators' 5-game floor fell back to hard-coded 2024-25 tables. Now:
+# preseason is dropped, last season's full regular-season averages are the
+# prior (one bulk call per league), and this season blends in by games
+# played, w = n/(n+K). K was MEASURED on 2025-26 (prior = 2024-25, predict the
+# next 10 games from the first n): NBA K=5 best or near-best for pts/reb/ast
+# at n=1..20 (after 1 game: current-only RMSE 6.45 pts vs 3.57 blended); NHL
+# skaters want far more prior, K~20-40 (goals even favour the prior alone),
+# so 30. WNBA uses the basketball K.
+BLEND_K = {"nba": 5.0, "wnba": 5.0, "nhl": 30.0}
+BULK_URL = ("https://site.web.api.espn.com/apis/common/v3/sports/{path}/statistics/byathlete"
+            "?region=us&lang=en&contentorigin=espn&isqualified=false&limit=50&page={page}"
+            "&seasontype=2{season_q}")
+# ESPN abbreviations -> the generators' vocabulary (PLAYER_DB team keys).
+MODEL_TEAM = {
+    "nba": {"GS": "GSW", "NY": "NYK", "NO": "NOP", "SA": "SAS", "UTAH": "UTA", "WSH": "WAS"},
+    "nhl": {"LA": "LAK", "NJ": "NJD", "SJ": "SJS", "TB": "TBL", "UTAH": "UTA"},
+    "wnba": {},
+}
+# bulk field -> our per-game key (basketball fields are already averages;
+# hockey fields are season totals, divided by games below)
+_BB_PRIOR = {"avgPoints": "pts_per_game", "avgRebounds": "reb_per_game",
+             "avgAssists": "ast_per_game", "avgThreePointFieldGoalsMade": "threes_per_game",
+             "avgMinutes": "min_per_game", "avgTurnovers": "tov_per_game",
+             "avgBlocks": "blk_per_game", "avgSteals": "stl_per_game",
+             "avgFreeThrowsMade": "ft_made_per_game", "avgFreeThrowsAttempted": "fta_per_game",
+             "fieldGoalPct": "fg_pct"}
+_HK_PRIOR = {"goals": "goals_per_game", "assists": "assists_per_game",
+             "points": "points_per_game", "shotsTotal": "shots_per_game",
+             "plusMinus": "plus_minus_per_game"}
+
+
+def _no_preseason(season_types: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    return [t for t in season_types if "preseason" not in str(t.get("displayName") or "").lower()]
+
+
+def _current_season(espn_path: str) -> Optional[int]:
+    d = _http(BULK_URL.format(path=espn_path, page=1, season_q="")) or {}
+    try:
+        return int((d.get("currentSeason") or d.get("requestedSeason") or {}).get("year"))
+    except Exception:
+        return None
+
+
+def fetch_prior(sport_key: str, espn_path: str, season: int) -> Dict[str, Dict[str, float]]:
+    """{athlete_id: {gp, <per-game keys>}} for a completed regular season."""
+    out: Dict[str, Dict[str, float]] = {}
+    hockey = sport_key == "nhl"
+    for page in range(1, 40):
+        d = _http(BULK_URL.format(path=espn_path, page=page, season_q=f"&season={season}")) or {}
+        names = {c.get("name"): c.get("names") or [] for c in (d.get("categories") or [])}
+        for a in d.get("athletes") or []:
+            vals: Dict[str, float] = {}
+            for c in a.get("categories") or []:
+                for k, v in zip(names.get(c.get("name"), []), c.get("totals") or []):
+                    f = _to_float(v)
+                    if f is not None:
+                        vals[k] = f
+            gp = vals.get("games" if hockey else "gamesPlayed") or 0
+            if not gp:
+                continue
+            rec: Dict[str, float] = {"gp": gp}
+            for src, dst in (_HK_PRIOR if hockey else _BB_PRIOR).items():
+                if src in vals:
+                    rec[dst] = round(vals[src] / gp, 3) if hockey else vals[src]
+            out[str((a.get("athlete") or {}).get("id"))] = rec
+        if page >= int((d.get("pagination") or {}).get("pages") or 0):
+            break
+        time.sleep(0.05)
+    return out
+
+
+def blend_record(cur: Optional[Dict[str, Any]], prior: Optional[Dict[str, float]],
+                 k: float) -> Optional[Dict[str, Any]]:
+    """Season-to-date averages shrunk toward last season by games played."""
+    if not cur and not prior:
+        return None
+    n = int((cur or {}).get("n_games") or 0)
+    w = n / (n + k) if n else 0.0
+    out = dict(cur or {})
+    out["n_games"] = n
+    if prior:
+        keys = {k_ for k_ in prior if k_ != "gp"}
+        out["current"] = {k_: (cur or {}).get(k_) for k_ in keys if (cur or {}).get(k_) is not None}
+        for k_ in keys:
+            c_, p_ = (cur or {}).get(k_), prior.get(k_)
+            if p_ is None:
+                continue
+            out[k_] = round(p_ if (c_ is None or not n) else w * c_ + (1 - w) * p_, 3)
+        out["prior_gp"] = int(prior.get("gp") or 0)
+        out["blend_w_current"] = round(w, 3)
+        out["blend_k"] = k
+        out["blended"] = True
+    return out
+
+
 def fetch_sport(sport_key: str, espn_path: str, top_per_team: int) -> Dict[str, Any]:
+    """Per-game averages for EVERY rostered player: this season's regular-season
+    numbers shrunk toward last season's (blend_record).
+
+    BULK, NOT PER-PLAYER (2026-10-23): this used to pull one gamelog per player
+    for the first `top_per_team` names on each roster -- but roster order is not
+    depth, so stars were simply missing (Cale Makar, Sabonis, De'Aaron Fox) and
+    fell back to hard-coded 2024-25 tables, while the gamelog mixed preseason
+    into the averages. ESPN's statistics/byathlete endpoint returns every
+    player's regular-season averages for a season in ~10-20 paged calls, so the
+    current season and the prior come from the same source. `top_per_team` is
+    kept for the signature only."""
     rosters = _load(os.path.join(DATA_DIR, f"rosters_{sport_key}.json"))
     teams = rosters.get("teams") or {}
+    season = _current_season(espn_path)
+    current = fetch_prior(sport_key, espn_path, season) if season else {}
+    prior = fetch_prior(sport_key, espn_path, season - 1) if season else {}
+    k = BLEND_K.get(sport_key, 5.0)
+    tmap = MODEL_TEAM.get(sport_key) or {}
     player_logs: List[Dict[str, Any]] = []
-    pulled = 0
-    is_basketball = sport_key in ("nba", "wnba")
     for team_id, tb in teams.items():
-        # Take first `top_per_team` players (roster order = depth)
-        for p in (tb.get("players") or [])[:top_per_team]:
-            aid = p.get("id")
-            if not aid: continue
-            gamelog = _http(GAMELOG_URL.format(path=espn_path, aid=aid))
-            if not gamelog: continue
-            if is_basketball:
-                parsed = parse_basketball_log(gamelog, p["name"], sport_key)
-            else:
-                parsed = parse_hockey_log(gamelog, p["name"])
-            if parsed:
-                parsed["athlete_id"] = aid
-                parsed["team"] = tb["name"]
-                parsed["team_abbr"] = tb.get("abbreviation")
-                parsed["position"] = p.get("position")
-                player_logs.append(parsed)
-                pulled += 1
-            time.sleep(0.04)
+        ab = str(tb.get("abbreviation") or "").upper()
+        for p in (tb.get("players") or []):
+            aid = str(p.get("id") or "")
+            if not aid:
+                continue
+            cur = current.get(aid)
+            cur_rec = None
+            if cur:
+                cur_rec = {kk: vv for kk, vv in cur.items() if kk != "gp"}
+                cur_rec["n_games"] = int(cur.get("gp") or 0)
+            rec = blend_record(cur_rec, prior.get(aid), k)
+            if not rec:
+                continue                      # rookie with no games yet: nothing to say
+            rec.update({"name": p.get("name"), "athlete_id": aid, "team": tb.get("name"),
+                        "team_abbr": tb.get("abbreviation"), "team_model": tmap.get(ab, ab),
+                        "position": p.get("position")})
+            player_logs.append(rec)
     payload = {
         "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
         "sport": sport_key,
         "n_players_with_logs": len(player_logs),
+        "season": season,
+        "prior_season": (season - 1) if season else None,
+        "n_current_players": len(current),
+        "n_prior_players": len(prior),
+        "blend": {"k": k, "formula": "w = n/(n+k); value = w*current + (1-w)*prior; regular season only"},
         "players": player_logs,
     }
     out_path = os.path.join(DATA_DIR, f"player_stats_{sport_key}.json")
     os.makedirs(DATA_DIR, exist_ok=True)
+    # Never clobber a useful file with an empty fetch (ESPN hiccup).
+    if not player_logs and os.path.exists(out_path):
+        return dict(payload, n_players_with_logs=0, note="empty fetch -- kept previous file")
     with open(out_path, "w") as f: json.dump(payload, f, indent=2)
     return payload
 

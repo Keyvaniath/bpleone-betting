@@ -72,6 +72,9 @@ PLAYER_DB = {
     "rudy gobert":              {"team": "MIN", "ppg": 12.0, "rpg": 12.0, "apg": 2.0},
     "jaren jackson jr":         {"team": "MEM", "ppg": 22.0, "rpg": 5.5, "apg": 1.7},
 }
+# Live current teams over the hard-coded ones (2026-10-23, real_stats_lookup).
+PLAYER_DB = __import__("real_stats_lookup").apply_live_teams("nba", PLAYER_DB)
+
 
 TEAM_PACE = {
     "MEM": 103.9, "WAS": 103.0, "IND": 102.8, "OKC": 100.1, "SAC": 102.3, "BOS": 99.2,
