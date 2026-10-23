@@ -1,13 +1,13 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-10-23T02:03:25 UTC_
+_Generated 2026-10-23T02:36:03 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -72
+- **Score:** -61
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
 - **Total STRONG:** 10
-- **Total FADES:** 112
+- **Total FADES:** 101
 
 ## Top 5 Curated Picks
 1. **GOLF / Chandler Blanchet** (GOLF_PLAYER, score=138.79)
@@ -32,11 +32,11 @@ _Generated 2026-10-23T02:03:25 UTC_
 ## Top Fades
 - **NBA** / DEN (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NBA** / CLE (TEAM_FADE)
-  - Fade angle: team total UNDER
-- **NBA** / PHI (TEAM_FADE)
-  - Fade angle: team total UNDER
+- **NHL** / adin hill (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
 - **NHL** / frederik andersen (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO
-- **NHL** / anthony stolarz (GOALIE_FADE)
+- **NHL** / samsonov ilya (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / marc-andre fleury (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO

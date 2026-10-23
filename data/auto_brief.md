@@ -6,9 +6,9 @@ _0% lineups confirmed · 1 rookie SPs_
 
 ## Slate
 - **1 games** scheduled
-- **29 best bets** scored: 6 DK · 0 PP · 1 NRFI · 0 SGP
+- **30 best bets** scored: 6 DK · 0 PP · 1 NRFI · 0 SGP
 - **Auto-portfolio:** 1 picks, $50.0 stake (5.0%), expected +$15.75
-- **MC simulation:** EV +$20.53, 56% P(profit), p05 $-98.45 / p95 $89.5
+- **MC simulation:** EV +$16.66, 68% P(profit), p05 $-65.85 / p95 $59.86
 
 ## Top 5 Best Bets
 1. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
@@ -45,12 +45,12 @@ _0% lineups confirmed · 1 rookie SPs_
    - P(top 10) 13.0% -- safest finish bet (#20 (-5)).
 
 ## NBA -- REGULAR
-- Cleveland Cavaliers @ Philadelphia 76ers (0-0 vs 1-0) 104-112 | P(home) 99.0% fair -9900 | In Progress
-- Denver Nuggets @ Oklahoma City Thunder (0-0 vs 1-0) 2-3 | P(home) 91.6% fair -1086 | In Progress
+- Cleveland Cavaliers @ Philadelphia 76ers (0-1 vs 2-0) 106-114 | P(home) 100.0% fair +0 | Final
+- Denver Nuggets @ Oklahoma City Thunder (0-0 vs 1-0) 27-26 | P(home) 70.6% fair -240 | In Progress
 
 ## NHL -- REGULAR
 - Nashville Predators @ Boston Bruins (0-0-0 vs 0-0-0) 0-6 | P(home) 100.0% fair +0 | Final
-- New York Rangers @ Toronto Maple Leafs (7-3-1 vs 5-4-2) 4-5 | P(home) 83.8% fair -516 | End of Period
+- New York Rangers @ Toronto Maple Leafs (0-0-0 vs 0-0-0) 4-5 | P(home) 100.0% fair +0 | Final
 - San Jose Sharks @ Ottawa Senators (0-0-0 vs 0-0-0) 6-2 | P(home) 0.0% fair +0 | Final
 - Anaheim Ducks @ New Jersey Devils (0-0-0 vs 0-0-0) 1-4 | P(home) 100.0% fair +0 | Final
 - Florida Panthers @ Pittsburgh Penguins (0-0-0 vs 0-0-0) 0-4 | P(home) 100.0% fair +0 | Final

@@ -1,18 +1,18 @@
 # EdgeStat Daily Summary — 2026-10-23
 
-## 🏥 Model Health: 58.5/100 [OK]
+## 🏥 Model Health: 57.9/100 [OK]
 - Operational but room to improve - check yellow components
   - 🟢 Calibration Freshness: 99.6/100
   - 🔴 Hit Rate Trend: 4.1/100
   - 🔴 Brier Trend: 1.4/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 100.0/100
-  - 🟡 Edge Count: 74.3/100
+  - 🟡 Edge Count: 68.6/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.578)
-- **Total games on board:** 59
-- **Strong home favorites:** 27 | **Strong road dogs:** 15
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.564)
+- **Total games on board:** 57
+- **Strong home favorites:** 25 | **Strong road dogs:** 16
 
 ## 🎯 Top 5 Best Bets
 1. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
@@ -36,7 +36,7 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (16)
+## ⚡ Pre-Game HIGH Conviction (15)
 - [NCAAF] **BYU Cougars** AWAY (None L10) · model 74.9% fair -299
 - [NFL] **Pittsburgh Steelers** AWAY (None L10) · model 74.5% fair -291
 - [NFL] **Denver Broncos** AWAY (None L10) · model 74.5% fair -291
@@ -49,40 +49,37 @@
 - [NCAAF] **USC Trojans** AWAY (None L10) · model 68.0% fair -212
 
 ## 🔥/❄️ Heat / Cold Signals
-- Hot teams: **5** | Cold teams: **15** | Over-heavy: 0 | Under-heavy: 19
+- Hot teams: **5** | Cold teams: **15** | Over-heavy: 0 | Under-heavy: 18
 - Heating-up players: **20** | Cooling-down: 20
 
 ## ⚠️ Anomaly Detector (147)
-- RESIDUAL_DIVERGENCE: **16**
-- STEAM_MOVE: **131**
+- RESIDUAL_DIVERGENCE: **15**
+- STEAM_MOVE: **132**
   - Denver Nuggets (NBA): Denver Nuggets UNDERPERFORMING expected margin by 10.7pts in recent games -- model bias may persist
-  - Boston Bruins (NHL): Boston Bruins UNDERPERFORMING expected margin by 8.8pts in recent games -- model bias may persist
   - Los Angeles Kings (NHL): Los Angeles Kings OUTPERFORMING expected margin by 12.2pts in recent games -- model bias may persist
   - Winnipeg Jets (NHL): Winnipeg Jets OUTPERFORMING expected margin by 7.7pts in recent games -- model bias may persist
   - Calgary Flames (NHL): Calgary Flames OUTPERFORMING expected margin by 11.7pts in recent games -- model bias may persist
+  - Carolina Hurricanes (NHL): Carolina Hurricanes UNDERPERFORMING expected margin by 11.4pts in recent games -- model bias may persist
 
 ## 💰 Today's Portfolio (12 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
-- Expected EV: **$-5.28**
+- Expected EV: **$-6.42**
   - #1 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #2 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
   - #3 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
   - #4 [GOLF] $35 on GOLF Lee Hodges TOP10 @ 667 (Butterfield Bermuda Championshi (P=13%)
   - #5 [GOLF] $35 on GOLF Kihei Akina TOP10 @ 676 (Butterfield Bermuda Championsh (P=13%)
 
-## 🎯 Convergence Picks (27 stacked games)
-- ELITE: **8** · HIGH: 14 · MED: 5
+## 🎯 Convergence Picks (25 stacked games)
+- ELITE: **7** · HIGH: 13 · MED: 5
   - [ELITE] Detroit Red Wings @ Vancouver Canucks : 5 signals (PREGAME, HEAT_COLD, HEAT_COLD, HEAT_COLD)
   - [ELITE] Inter Miami CF @ Red Bull New York : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
   - [ELITE] Seattle Sounders FC @ San Diego FC : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
-  - [ELITE] Florida Panthers @ Pittsburgh Penguins : 4 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ATS)
   - [ELITE] Utah Mammoth @ Seattle Kraken : 4 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
+  - [ELITE] Minnesota United FC @ Houston Dynamo FC : 4 signals (PREGAME, HEAT_COLD, ATS, ATS)
 
 ## ⚾ Top MLB Pitcher K Plays (1)
 - **Jacob Misiorowski** OVER 4.5 K (75%) fair -303
-
-## 🏀 NBA Player Heat (0 HOT / 1 COLD)
-  - ❄️ **Caleb Love** (PHI): L5 2.6 vs season 10.8 [PTS -8.2, REB -2.1, AST -2.4] -- FADE OVER props
 
 ## 🥊 UFC Fight Matchups (UFC 333: Volkanovski vs. Evloev)
   - [LEAN] **Abubakar Vagaev** (25-4-0) vs Jacob Malkoun -- fair -149
@@ -110,12 +107,12 @@
   - ❄️ **Andruw Monasterio** (BOS): L14 .083 / season .233 (-150pts) -- FADE props
   - ❄️ **Jim Jarvis** (ATL): L14 .079 / season .207 (-128pts) -- FADE props
 
-## 📈 Streak Regression Alerts (15)
-- [NHL] Anaheim Ducks on L4 L10 1-4 -- Anaheim Ducks on L4 -- no historical sample
-- [NHL] Pittsburgh Penguins on L4 L10 1-4 -- Pittsburgh Penguins on L4 -- no historical sample
+## 📈 Streak Regression Alerts (13)
 - [NHL] Dallas Stars on W3 L10 3-2 -- Dallas Stars on W3 -- no historical sample
 - [NHL] Winnipeg Jets on L3 L10 1-4 -- Winnipeg Jets on L3 -- no historical sample
 - [NHL] Vancouver Canucks on L6 L10 0-5 -- Vancouver Canucks on L6 -- no historical sample
+- [MLS] CF Montréal on L3 L10 0-3 -- CF Montréal on L3 -- no historical sample
+- [MLS] Inter Miami CF on W3 L10 3-0 -- Inter Miami CF on W3 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**
@@ -125,12 +122,11 @@
   - ⚠️ batter_rbis (Brier Δ -0.0052)
 
 ## 🧠 Training Convergence
-- ELITE: **0** · HEALTHY: 1 · OK: 0 · DEGRADED: **1**
-  - ⚠️ **batter_hits**: DIVERGENT - consistent same-sign moves (structural issue) (cf=0.953)
+- ELITE: **1** · HEALTHY: 1 · OK: 0 · DEGRADED: **0**
 
 ## 🤖 Self-Training Status
-- **NBA**: n=58 games · hit rate 60.3% · bias -8.3pp [calibration applied]
-- **NHL**: n=92 games · hit rate 48.9% · bias -9.1pp [calibration applied]
+- **NBA**: n=59 games · hit rate 59.3% · bias -9.2pp [calibration applied]
+- **NHL**: n=93 games · hit rate 49.5% · bias -9.5pp [calibration applied]
 - **WNBA**: n=5 games · hit rate 40.0% · bias +20.1pp
 - **MLS**: n=47 games · hit rate 36.2% · bias -4.6pp [calibration applied]
 - **EPL**: n=20 games · hit rate 55.0% · bias -10.4pp [calibration applied]
