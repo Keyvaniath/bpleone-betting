@@ -1563,6 +1563,13 @@ def _collect_picks_from_sources() -> List[Dict[str, Any]]:
     # player-prop book (heavy favorites that DO cash, +42% ROI) is untouched.
     out = [p for p in out if not _is_mlb_juice_favorite(p)]
 
+    # NFL props carry the model rule that PRICED them (judged from 10/23
+    # forward -- see prob_calibration.NFL_FORM_V2_FROM).
+    _rule = _load(os.path.join(DATA_DIR, "nfl_player_props.json")).get("form_rule") or "form_v1"
+    for p in out:
+        if str(p.get("sport") or "").upper() == "NFL" and str(p.get("source") or "").startswith("nfl_"):
+            p["model_rule"] = _rule
+
     # NHL: stamp each pick with its GAME's ET date and hold the preseason gate.
     out = _nhl_intake(out)
 
@@ -3576,9 +3583,14 @@ def run() -> Dict[str, Any]:
         b["hit_rate"] = round(b["wins"] / d, 4) if d > 0 else None
         b["roi_pct"] = round(b["net_units"] / max(1, d) * 100, 2) if d > 0 else None
 
+    # FAMILY EVIDENCE excludes retired-model NFL props (judged from 10/23
+    # forward): prob_calibration's curation reads these two blocks.
+    import prob_calibration as _pc
+    judged = [p for p in settled if _pc.judged(p)]
+
     # By market family
     by_mkt: Dict[str, Dict[str, Any]] = {}
-    for p in settled:
+    for p in judged:
         m = _market_family(p.get("market"))
         b = by_mkt.setdefault(m, {"n": 0, "wins": 0, "losses": 0, "pushes": 0, "net_units": 0.0})
         b["n"] += 1
@@ -3595,7 +3607,7 @@ def run() -> Dict[str, Any]:
     # the learning loop weights on all the evidence for a bet, not 3 fragments.
     # by_market_family is kept alongside for back-compat / stat continuity.
     by_canon: Dict[str, Dict[str, Any]] = {}
-    for p in settled:
+    for p in judged:
         cm = _canon_family(p.get("market"))
         b = by_canon.setdefault(cm, {"n": 0, "wins": 0, "losses": 0, "pushes": 0, "net_units": 0.0})
         b["n"] += 1
@@ -3606,6 +3618,38 @@ def run() -> Dict[str, Any]:
     for cm, b in by_canon.items():
         d = b["wins"] + b["losses"]
         b["hit_rate"] = round(b["wins"] / d, 4) if d > 0 else None
+
+    # NFL PROPS, TWO LINES (2026-10-23): the record before and after the form
+    # rule changed. Never summed into one headline; by_sport NFL stays the
+    # all-picks total for coverage.
+    nfl_by_model: Dict[str, Dict[str, Any]] = {}
+    for p in history:
+        r = _pc.model_rule(p)
+        if not r:
+            continue
+        b = nfl_by_model.setdefault(r, {"n": 0, "settled": 0, "wins": 0, "losses": 0, "pushes": 0,
+                                        "pending": 0, "void": 0, "net_units": 0.0})
+        b["n"] += 1
+        if p.get("voided"):
+            b["void"] += 1
+        elif p.get("settled"):
+            b["settled"] += 1
+            if p["result"] == "won": b["wins"] += 1
+            elif p["result"] == "lost": b["losses"] += 1
+            elif p["result"] == "push": b["pushes"] += 1
+            b["net_units"] = round(b["net_units"] + (p.get("payout_units") or 0), 3)
+        else:
+            b["pending"] += 1
+    for r, b in nfl_by_model.items():
+        d = b["wins"] + b["losses"]
+        b["hit_rate"] = round(b["wins"] / d, 4) if d else None
+        b["roi_pct"] = round(b["net_units"] / d * 100, 2) if d else None
+        b["label"] = ("from 10/23 -- season-to-date form (judged)" if r == "form_v2"
+                      else "before 10/23 -- one-game form (retired; record only)")
+    nfl_props_by_model = {"cutoff": _pc.NFL_FORM_V2_FROM, "current": "form_v2", "lines": nfl_by_model,
+                          "note": ("NFL props are judged from 10/23 forward: the simulator's form rule "
+                                   "changed, so earlier picks are a different model. They stay on the "
+                                   "record as their own line and never feed a family verdict.")}
 
     # By sport -- over ALL picks (not just settled) so coverage gaps surface: a
     # sport with many picks but 0 settled has no outcome feed wired yet. Carries
@@ -3712,6 +3756,7 @@ def run() -> Dict[str, Any]:
         "by_market_family": by_mkt,
         "by_canonical": by_canon,
         "by_sport": by_sport,
+        "nfl_props_by_model": nfl_props_by_model,
         "last_7_days": {
             "wins": l7_w, "losses": l7_l, "net_units": l7_net,
             "hit_rate": round(l7_w / max(1, l7_w + l7_l), 4) if (l7_w + l7_l) > 0 else None,

@@ -41,6 +41,23 @@ bpleone-site/
 
 ## Current deployment state (LIVE)
 
+- **2026-10-23 (newest) — NFL PROPS JUDGED FROM 10/23 FORWARD (Brandon's call):**
+  the form-rule change makes earlier NFL props a different model. Every NFL
+  model prop carries `model_rule` ("form_v1"/"form_v2"), stamped at intake from
+  nfl_player_props.json's `form_rule`; older rows fall back to recorded_at vs
+  prob_calibration.NFL_FORM_V2_FROM (commit 8c762aac8c's deploy). ERA = WHEN
+  PRICED, not game date (Week 8 props priced 10/22 stay v1; the v2 line fills
+  from Week 9). `prob_calibration.judged(p)` is False for v1 rows and gates ALL
+  family verdicts: ledger by_market_family/by_canonical (what curation reads),
+  overconfident_families, sport_curation_report, recalibration's isotonic fit.
+  Consequence: the 4 NFL families v1 had condemned (longest_rush_over,
+  pass_yds_under, rec_yds_over, rush_yds_under) are UN-excluded until v2
+  evidence accrues -- intended. ledger_summary/recent_picks carry
+  `nfl_props_by_model` (two lines, never summed); track-record shows them under
+  NFL, nfl.html above Model Props. by_sport NFL stays the all-picks total.
+  **RULE: when a model changes, split the record by the rule that PRICED each
+  pick, and let no verdict mix eras.**
+
 - **2026-10-23 (latest) — NFL DFS OVER-PROJECTION = THE OPTIMIZER'S CURSE, fixed:**
   published lineups ran ~-60 pts/slate vs projection. A FULL-POOL backtest
   (every projected player, Weeks 1-3 mains, rebuilt from git history: last

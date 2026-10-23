@@ -509,6 +509,7 @@ def _write_projections(details: List[Dict[str, Any]], mode: str,
     details.sort(key=lambda d: -(((d.get("dk_points") or {}).get("mean")) or 0))
     _payload = {
         "generated_at": dt.datetime.utcnow().isoformat(timespec="seconds"),
+        "form_rule": "form_v2",   # stamped onto every ledger pick (judged from 10/23 forward)
         "mode": mode,   # 'preview' (preseason: next regular-season slate) | 'live'
         "week_start": week_start,
         "n_players": len(details),
@@ -569,6 +570,7 @@ def run() -> Dict[str, Any]:
             _write_projections(details, "preview", wk_start)
         out = {
             "generated_at": dt.datetime.utcnow().isoformat(timespec="seconds"),
+        "form_rule": "form_v2",   # stamped onto every ledger pick (judged from 10/23 forward)
             "season_status": season_status,
             "n_props": 0,
             "n_strong_edges": 0,
@@ -655,6 +657,7 @@ def run() -> Dict[str, Any]:
     strong = [r for r in rows if r.get("best_market")]
     out = {
         "generated_at": dt.datetime.utcnow().isoformat(timespec="seconds"),
+        "form_rule": "form_v2",   # stamped onto every ledger pick (judged from 10/23 forward)
         "season_status": season_status or "regular",
         "n_props": len(rows),
         "n_strong_edges": len(strong),

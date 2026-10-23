@@ -66,6 +66,8 @@ def _pairs_by_family() -> Dict[str, List[Tuple[float, int]]]:
     for p in (_load_ledger().get("picks") or []):
         if p.get("voided") or p.get("result") not in ("won", "lost"):
             continue
+        if not pc.judged(p):          # retired-model NFL props (see pc.NFL_FORM_V2_FROM)
+            continue
         pr = p.get("p_predicted")
         if pr is None:
             pr = p.get("prob")

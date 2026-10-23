@@ -372,6 +372,23 @@
       const cols = "84px 76px 54px 64px 70px 50px 78px";
       const header = `<div style="display:grid;grid-template-columns:${cols};gap:10px;padding:6px 0;color:var(--muted,#888);font-size:10px;text-transform:uppercase;">
         <span>Sport</span><span>Record</span><span>Hit%</span><span>ROI</span><span>Net</span><span>Mkts</span><span>Pend/Void</span></div>`;
+      // NFL props are judged from 10/23 forward (form rule changed): two lines
+      // under the NFL total, never summed into one verdict.
+      const nflLines = ((d.nfl_props_by_model || {}).lines) || {};
+      const subRow = (key, label, tip) => {
+        const s = nflLines[key];
+        if (!s) return "";
+        const dec = (s.wins || 0) + (s.losses || 0);
+        const c = s.roi_pct == null ? "var(--muted,#888)" : s.roi_pct >= 0 ? "#58c878" : "#e35a5a";
+        return `<div title="${tip}" style="display:grid;grid-template-columns:${cols};gap:10px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.03);font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted,#9aa3b2);">
+          <span>↳ ${label}</span><span>${dec ? s.wins + "-" + s.losses : "—"}</span>
+          <span>${s.hit_rate != null ? (s.hit_rate * 100).toFixed(1) + "%" : "—"}</span>
+          <span style="color:${c};">${s.roi_pct != null ? (s.roi_pct >= 0 ? "+" : "") + s.roi_pct + "%" : "—"}</span>
+          <span style="color:${c};">${dec ? (s.net_units >= 0 ? "+" : "") + s.net_units + "u" : "—"}</span>
+          <span></span><span>${s.pending || 0}/${s.void || 0}</span></div>`;
+      };
+      const nflSub = subRow("form_v2", "props 10/23+", "NFL props priced by the current model (season-to-date form) -- the line we judge")
+                   + subRow("form_v1", "props pre-10/23", "NFL props priced by the retired one-game-form model -- record only, never feeds a family verdict");
       const rows = sports.map(s => {
         const dec = (s.wins || 0) + (s.losses || 0);
         const roiColor = s.roi_pct == null ? "var(--muted,#888)" : s.roi_pct >= 0 ? "#58c878" : "#e35a5a";
@@ -387,9 +404,11 @@
           <span style="color:${roiColor};">${s.net_units != null ? (s.net_units >= 0 ? "+" : "") + s.net_units + "u" : "—"}</span>
           <span class="muted">${s.markets || 0}</span>
           <span class="muted">${cov}</span>
-        </div>`;
+        </div>` + (s.sport === "NFL" ? nflSub : "");
       }).join("");
-      document.getElementById("bsGrid").innerHTML = header + rows;
+      const nflNote = Object.keys(nflLines).length
+        ? `<p class="muted" style="font-size:11px;margin:10px 0 0;">NFL props are judged from <b>10/23 forward</b>: the simulator's form rule changed (season-to-date form, not last week's single game), so earlier picks are a different model — kept on the record as their own line, never blended into a verdict. Week 8 props were priced 10/22 under the old model; the 10/23+ line fills from Week 9.</p>` : "";
+      document.getElementById("bsGrid").innerHTML = header + rows + nflNote;
     }).catch(() => {});
   </script>
 

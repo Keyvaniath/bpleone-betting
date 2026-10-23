@@ -47,6 +47,33 @@ PRIOR_K = 25.0          # Bayesian prior strength: the model's raw prob counts a
                         # PRIOR_K pseudo-bets, so realized data outweighs it past ~n=25
 
 
+# NFL PROPS ARE JUDGED FROM 10/23 FORWARD (Brandon, 2026-10-23). The NFL
+# simulator's form rule changed (nfl_player_props FORM RULE v2: season-to-date
+# form instead of one game), so picks priced before the switch are a
+# different model. They stay in the record as their own line ("form_v1"), but
+# no family verdict -- proven-negative, overconfident, the isotonic fit, the
+# desk report -- may be drawn from them. Era = when the pick was PRICED
+# (model_rule stamped at intake from the props artifact; older rows fall back
+# to recorded_at vs the deploy time of commit 8c762aac8c).
+NFL_FORM_V2_FROM = "2026-10-23T01:48:00"
+
+
+def model_rule(p: Dict[str, Any]) -> Optional[str]:
+    """'form_v1' / 'form_v2' for NFL model props, None for everything else."""
+    if str(p.get("sport") or "").upper() != "NFL" or not str(p.get("source") or "").startswith("nfl_"):
+        return None
+    r = p.get("model_rule")
+    if r:
+        return r
+    return "form_v2" if str(p.get("recorded_at") or "") >= NFL_FORM_V2_FROM else "form_v1"
+
+
+def judged(p: Dict[str, Any]) -> bool:
+    """May this settled pick count as evidence about its family? (Retired-model
+    NFL props: no.)"""
+    return model_rule(p) != "form_v1"
+
+
 def _load_ledger() -> Dict[str, Any]:
     if not os.path.exists(LEDGER):
         return {}
@@ -161,6 +188,8 @@ def sport_curation_report() -> Dict[str, Dict[str, Any]]:
     agg: Dict[str, Dict[str, Any]] = {}
     for p in picks:
         if not isinstance(p, dict) or not p.get("settled") or p.get("voided"):
+            continue
+        if not judged(p):
             continue
         res = p.get("result") or p.get("outcome")
         if res not in ("won", "lost", "push"):
@@ -279,6 +308,8 @@ def overconfident_families(min_gap: float = OVERCONF_MIN_GAP, min_n: int = OVERC
     agg: Dict[str, Dict[str, float]] = {}
     for p in (d.get("picks") or []):
         if p.get("voided") or not p.get("settled") or p.get("result") not in ("won", "lost"):
+            continue
+        if not judged(p):
             continue
         fam = canon_market_family(p.get("market"))
         pred = p.get("p_predicted")

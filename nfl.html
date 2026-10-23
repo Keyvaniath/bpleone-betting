@@ -78,6 +78,7 @@
   </section>
   <section class="card" style="margin-bottom:24px;">
     <div class="card-head"><span>🎯 <strong>Model Props</strong> <span class="muted" style="font-size:10px;">play-level Monte Carlo · odds-independent · graded on the box score</span></span><span class="muted" id="pr_meta">--</span></div>
+    <div id="pr_record" class="muted" style="padding:8px 16px 0; font-size:11.5px; font-family:'JetBrains Mono',monospace;"></div>
     <div id="pr_list"><p class="muted" style="padding:14px;">Loading…</p></div>
   </section>
   <section class="card" style="margin-bottom:24px; border-left:3px solid #d4a04a;">
@@ -192,6 +193,22 @@ fetch("data/nfl_player_props.json?t=" + Date.now(), { cache: "no-cache" })
       }).join('');
     const meta = document.getElementById('pr_meta');
     if (meta) meta.textContent = (d.n_strong_edges || 0) + ' edges · ' + (d.generated_at || '').replace('T', ' ') + ' UTC';
+  }).catch(() => {});
+
+// Props record, two lines: judged from 10/23 forward (the form rule changed).
+fetch("data/recent_picks.json?t=" + Date.now(), { cache: "no-cache" })
+  .then(r => r.json())
+  .then(d => {
+    const L = ((d.nfl_props_by_model || {}).lines) || {};
+    const el = document.getElementById('pr_record');
+    if (!el || !Object.keys(L).length) return;
+    const fmt = (s) => {
+      const dec = (s.wins || 0) + (s.losses || 0);
+      if (!dec) return (s.pending || 0) + ' pending, none settled yet';
+      return s.wins + '-' + s.losses + ' · ' + (s.roi_pct >= 0 ? '+' : '') + s.roi_pct + '% ROI · ' + (s.net_units >= 0 ? '+' : '') + s.net_units + 'u · ' + (s.pending || 0) + ' pending';
+    };
+    el.innerHTML = (L.form_v2 ? '<div><b style="color:#d4a04a;">Record from 10/23 (judged):</b> ' + fmt(L.form_v2) + '</div>' : '') +
+      (L.form_v1 ? '<div>Before 10/23, retired one-game-form model (record only): ' + fmt(L.form_v1) + '</div>' : '');
   }).catch(() => {});
 
 setInterval(() => location.reload(), 5 * 60 * 1000);
