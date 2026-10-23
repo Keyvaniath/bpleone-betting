@@ -1,18 +1,18 @@
 # EdgeStat Daily Summary — 2026-10-23
 
-## 🏥 Model Health: 65.5/100 [OK]
+## 🏥 Model Health: 63.2/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 100.0/100
+  - 🟢 Calibration Freshness: 99.6/100
   - 🔴 Hit Rate Trend: 24.5/100
-  - 🔴 Brier Trend: 17.3/100
+  - 🔴 Brier Trend: 8.8/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 100.0/100
-  - 🟡 Edge Count: 71.4/100
+  - 🟡 Edge Count: 65.7/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.558)
-- **Total games on board:** 52
-- **Strong home favorites:** 22 | **Strong road dogs:** 16
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.556)
+- **Total games on board:** 48
+- **Strong home favorites:** 20 | **Strong road dogs:** 14
 
 ## 🎯 Top 5 Best Bets
 1. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
@@ -49,17 +49,17 @@
 - [NCAAF] **USC Trojans** AWAY (None L10) · model 68.0% fair -212
 
 ## 🔥/❄️ Heat / Cold Signals
-- Hot teams: **5** | Cold teams: **15** | Over-heavy: 0 | Under-heavy: 21
+- Hot teams: **6** | Cold teams: **15** | Over-heavy: 0 | Under-heavy: 21
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (145)
-- RESIDUAL_DIVERGENCE: **13**
-- STEAM_MOVE: **132**
+## ⚠️ Anomaly Detector (143)
+- RESIDUAL_DIVERGENCE: **12**
+- STEAM_MOVE: **131**
   - Denver Nuggets (NBA): Denver Nuggets UNDERPERFORMING expected margin by 10.7pts in recent games -- model bias may persist
-  - Calgary Flames (NHL): Calgary Flames OUTPERFORMING expected margin by 11.7pts in recent games -- model bias may persist
   - Carolina Hurricanes (NHL): Carolina Hurricanes UNDERPERFORMING expected margin by 11.4pts in recent games -- model bias may persist
   - Seattle Kraken (NHL): Seattle Kraken UNDERPERFORMING expected margin by 7.0pts in recent games -- model bias may persist
   - Atlanta Dream (WNBA): Atlanta Dream OUTPERFORMING expected margin by 12.0pts in recent games -- model bias may persist
+  - Golden State Valkyries (WNBA): Golden State Valkyries UNDERPERFORMING expected margin by 9.0pts in recent games -- model bias may persist
 
 ## 💰 Today's Portfolio (12 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
@@ -71,7 +71,7 @@
   - #5 [GOLF] $35 on GOLF Kihei Akina TOP10 @ 676 (Butterfield Bermuda Championsh (P=13%)
 
 ## 🎯 Convergence Picks (25 stacked games)
-- ELITE: **7** · HIGH: 14 · MED: 4
+- ELITE: **7** · HIGH: 13 · MED: 5
   - [ELITE] Inter Miami CF @ Red Bull New York : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
   - [ELITE] Seattle Sounders FC @ San Diego FC : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
   - [ELITE] Winnipeg Jets @ Dallas Stars : 4 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ATS)
@@ -81,9 +81,13 @@
 ## ⚾ Top MLB Pitcher K Plays (1)
 - **Jacob Misiorowski** OVER 4.5 K (75%) fair -303
 
-## 🏀 NBA Player Heat (1 HOT / 1 COLD)
-  - 🔥 **Marvin Bagley III** (DEN): L5 15.6/6.2/1.4 vs season 10.5/6.1/1.4 [PTS +5.1]
-  - ❄️ **Christian Braun** (DEN): L5 7.6 vs season 12.0 [REB -2.2] -- FADE OVER props
+## 🏀 NBA Player Heat (3 HOT / 7 COLD)
+  - 🔥 **Maxime Raynaud** (SAC): L5 20.0/9.8/2.6 vs season 12.5/7.5/1.4 [PTS +7.5, REB +2.3]
+  - 🔥 **Cormac Ryan** (MIL): L5 20.2/4.8/2.4 vs season 14.3/2.5/1.7 [PTS +5.9, REB +2.3]
+  - 🔥 **Malachi Smith** (TOR): L5 10.2/6.0/5.8 vs season 8.3/3.4/3.3 [REB +2.6, AST +2.5]
+  - ❄️ **Shaedon Sharpe** (POR): L5 7.2 vs season 20.8 [PTS -13.6, REB -2.7, AST -2.0] -- FADE OVER props
+  - ❄️ **Jaylon Tyson** (CLE): L5 2.2 vs season 13.2 [PTS -11.0, REB -3.3] -- FADE OVER props
+  - ❄️ **Brandon Ingram** (LAC): L5 12.0 vs season 21.5 [PTS -9.5, REB -2.4] -- FADE OVER props
 
 ## 🥊 UFC Fight Matchups (UFC 333: Volkanovski vs. Evloev)
   - [LEAN] **Abubakar Vagaev** (25-4-0) vs Jacob Malkoun -- fair -149
@@ -129,8 +133,8 @@
 - ELITE: **1** · HEALTHY: 1 · OK: 0 · DEGRADED: **0**
 
 ## 🤖 Self-Training Status
-- **NBA**: n=59 games · hit rate 59.3% · bias -9.2pp [calibration applied]
-- **NHL**: n=97 games · hit rate 48.4% · bias -9.6pp [calibration applied]
+- **NBA**: n=60 games · hit rate 58.3% · bias -10.1pp [calibration applied]
+- **NHL**: n=100 games · hit rate 48.0% · bias -10.2pp [calibration applied]
 - **WNBA**: n=5 games · hit rate 40.0% · bias +20.1pp
 - **MLS**: n=47 games · hit rate 36.2% · bias -4.6pp [calibration applied]
 - **EPL**: n=20 games · hit rate 55.0% · bias -10.4pp [calibration applied]

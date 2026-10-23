@@ -1,13 +1,13 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-10-23T03:48:20 UTC_
+_Generated 2026-10-23T05:18:39 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -40
+- **Score:** -20
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 11
-- **Total FADES:** 84
+- **Total STRONG:** 12
+- **Total FADES:** 68
 
 ## Top 5 Curated Picks
 1. **GOLF / Chandler Blanchet** (GOLF_PLAYER, score=138.79)
@@ -18,6 +18,9 @@ _Generated 2026-10-23T03:48:20 UTC_
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
 3. **WNBA / allisha gray** (WNBA_PLAYER, score=62.42)
    - Play: allisha gray (PLAYER_STRONG)
+   - Rationale: Cross-sport top pick (WNBA_PLAYER)
+4. **WNBA / angel reese** (WNBA_PLAYER, score=60.0)
+   - Play: angel reese (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (WNBA_PLAYER)
 
 ## Top Events Board
@@ -33,13 +36,13 @@ _Generated 2026-10-23T03:48:20 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **NBA** / DEN (TEAM_FADE)
-  - Fade angle: team total UNDER
-- **NHL** / tristan jarry (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / frederik andersen (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / kevin lankinen (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / pyotr kochetkov (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
+- **GOLF** / Charley Hoffman (PLAYER_FADE)
+  - Fade angle: miss cut YES + high round score
+- **GOLF** / Luke List (PLAYER_FADE)
+  - Fade angle: miss cut YES + high round score
+- **GOLF** / David Lingmerth (PLAYER_FADE)
+  - Fade angle: miss cut YES + high round score
+- **GOLF** / Christo Lamprecht (PLAYER_FADE)
+  - Fade angle: miss cut YES + high round score
+- **GOLF** / Patton Kizzire (PLAYER_FADE)
+  - Fade angle: miss cut YES + high round score

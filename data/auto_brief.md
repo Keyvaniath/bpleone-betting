@@ -46,7 +46,7 @@ _0% lineups confirmed · 1 rookie SPs_
 
 ## NBA -- REGULAR
 - Cleveland Cavaliers @ Philadelphia 76ers (0-1 vs 2-0) 106-114 | P(home) 100.0% fair +0 | Final
-- Denver Nuggets @ Oklahoma City Thunder (0-0 vs 1-0) 64-67 | P(home) 97.5% fair -3868 | In Progress
+- Denver Nuggets @ Oklahoma City Thunder (0-1 vs 2-0) 84-96 | P(home) 100.0% fair +0 | Final
 
 ## NHL -- REGULAR
 - Nashville Predators @ Boston Bruins (0-0-0 vs 0-0-0) 0-6 | P(home) 100.0% fair +0 | Final

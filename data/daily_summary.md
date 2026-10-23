@@ -4,14 +4,14 @@
 
 _Pipeline health: **WARNING** (12/15 artifacts ok; 3 empty, 0 stale)._ 
 
-_Generated at 2026-10-23T03:48:28 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-10-23T05:18:47 UTC. Game lines source: **placeholder -110 (no real book today)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
-**TBR @ MIL - OVER_6.5**
+**TBR @ MIL - MIL_ML**
 - Market: -110
-- Model probability: 70.9%
-- Raw edge: +35.39%
+- Model probability: 72.3%
+- Raw edge: +38.05%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
@@ -20,30 +20,30 @@ _Generated at 2026-10-23T03:48:28 UTC. Game lines source: **Bovada (fallback -- 
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 8:00p ET | TBR @ MIL | American Family Field | indoor | OVER_6.5 +35.39% |
+| 8:00p ET | TBR @ MIL | American Family Field | indoor | MIL_ML +38.05% |
 
 ## Parlays - top 5
 
-- **3-leg @ +584 (prob 19.7%, EV +34.81%)**
+- **3-leg @ +748 (prob 15.4%, EV +30.81%)**
   - Richie Palacios OVER 0.5 batter_hits (+100, model 55.4%)
   - Taylor Walls OVER 0.5 batter_hits (+122, model 49.2%)
-  - TBR @ MIL MIL_ML (-185, model 72.3%)
-- **3-leg @ +461 (prob 23.9%, EV +33.79%)**
+  - TBR @ MIL UNDER_8.5 (-110, model 56.6%)
+- **3-leg @ +595 (prob 18.7%, EV +29.82%)**
   - Richie Palacios OVER 0.5 batter_hits (+100, model 55.4%)
   - Liam Hicks OVER 0.5 batter_hits (-122, model 59.6%)
-  - TBR @ MIL MIL_ML (-185, model 72.3%)
-- **3-leg @ +692 (prob 16.9%, EV +33.54%)**
+  - TBR @ MIL UNDER_8.5 (-110, model 56.6%)
+- **3-leg @ +881 (prob 13.2%, EV +29.58%)**
   - Richie Palacios OVER 0.5 batter_hits (+100, model 55.4%)
   - Brice Turang UNDER 0.5 batter_hits (+157, model 42.1%)
-  - TBR @ MIL MIL_ML (-185, model 72.3%)
-- **3-leg @ +772 (prob 15.2%, EV +32.45%)**
+  - TBR @ MIL UNDER_8.5 (-110, model 56.6%)
+- **3-leg @ +981 (prob 11.9%, EV +28.53%)**
   - Richie Palacios OVER 0.5 batter_hits (+100, model 55.4%)
   - Jackson Chourio UNDER 0.5 batter_hits (+183, model 37.9%)
-  - TBR @ MIL MIL_ML (-185, model 72.3%)
-- **3-leg @ +522 (prob 21.2%, EV +31.89%)**
+  - TBR @ MIL UNDER_8.5 (-110, model 56.6%)
+- **3-leg @ +671 (prob 16.6%, EV +27.98%)**
   - Taylor Walls OVER 0.5 batter_hits (+122, model 49.2%)
   - Liam Hicks OVER 0.5 batter_hits (-122, model 59.6%)
-  - TBR @ MIL MIL_ML (-185, model 72.3%)
+  - TBR @ MIL UNDER_8.5 (-110, model 56.6%)
 
 ## Self-Learning Loop
 
@@ -52,7 +52,7 @@ _Generated at 2026-10-23T03:48:28 UTC. Game lines source: **Bovada (fallback -- 
 | batter total bases | 82 | 34.2% | 41.9% | 1.224 | 0.830 |
 | batter hits | 312 | 53.5% | 56.2% | 1.050 | 0.953 |
 
-Cumulative graded plays: 12447. Wins: 4894. Hit rate: 39.3%.
+Cumulative graded plays: 12448. Wins: 4895. Hit rate: 39.3%.
 
 ## Auxiliary Markets (Model Fair Prices)
 

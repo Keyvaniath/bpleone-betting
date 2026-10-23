@@ -7,5 +7,5 @@ _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 - **TBR @ MIL** ML_HOME (MLB) -- 69% / +4.2%
 
 ---
-_Generated 2026-10-23T03:48:14_
+_Generated 2026-10-23T05:18:32_
 _Full breakdown: /tonight · Full history: /locks-of-day_
