@@ -20,10 +20,10 @@ _0% lineups confirmed · 1 rookie SPs_
 3. **LOL Peyz OVER 4.5 Kills**  (78/100 ****, edge —)
    - Player prop quality score 1.184
    - Elite player
-4. **GOLF Lee Hodges TOP10 @ 667 (Butterfield Bermuda Championship)**  (78/100 *****, edge —)
-   - P(top 10) 13.0% -- safest finish bet (#20 (-5)).
-5. **GOLF Kihei Akina TOP10 @ 676 (Butterfield Bermuda Championship)**  (78/100 *****, edge —)
-   - P(top 10) 12.9% -- safest finish bet (#23 (-5)).
+4. **GOLF Ren Yonezawa TOP5 @ 583 (Butterfield Bermuda Championship)**  (78/100 *****, edge —)
+   - P(top 5) 14.6% -- lower variance than outright but compelling line.
+5. **GOLF Andrew Novak TOP5 @ 547 (Butterfield Bermuda Championship)**  (78/100 *****, edge —)
+   - P(top 5) 15.5% -- lower variance than outright but compelling line.
 
 ## ⚠️ Trap Warnings — 4 flagged
 - **TBR @ MIL NRFI (no run 1st inning)** (low):
@@ -39,28 +39,28 @@ _0% lineups confirmed · 1 rookie SPs_
 - **NRFI** (1st-inning UNDER): TBR @ MIL
 
 ## Golf -- Butterfield Bermuda Championship
-- **Leader:** Chris Kirk (-10) at #1
+- **Leader:** Corey Conners (-11) at #1
 - **Field:** 120 players  |  Status: In Progress
-- **Play of the Tournament:** Lee Hodges TOP10 @ +667 (model 13.0%, HIGH)
-   - P(top 10) 13.0% -- safest finish bet (#20 (-5)).
+- **Play of the Tournament:** Ren Yonezawa TOP5 @ +583 (model 14.6%, HIGH)
+   - P(top 5) 14.6% -- lower variance than outright but compelling line.
 
 ## NBA -- REGULAR
-- Cleveland Cavaliers @ Philadelphia 76ers (0-1 vs 2-0) 106-114 | P(home) 100.0% fair +0 | Final
-- Denver Nuggets @ Oklahoma City Thunder (0-1 vs 2-0) 84-96 | P(home) 100.0% fair +0 | Final
+- Chicago Bulls @ Milwaukee Bucks (0-1 vs 0-1)  | P(home) 65.0% fair -186 | Scheduled
+- New York Knicks @ Boston Celtics (0-1 vs 0-1)  | P(home) 65.0% fair -186 | Scheduled
+- Atlanta Hawks @ Charlotte Hornets (1-0 vs 1-0)  | P(home) 65.0% fair -186 | Scheduled
+- Dallas Mavericks @ Indiana Pacers (0-1 vs 1-0)  | P(home) 99.0% fair -9900 | Scheduled
+- Minnesota Timberwolves @ Orlando Magic (1-0 vs 0-1)  | P(home) 16.4% fair +508 | Scheduled
 
 ## NHL -- REGULAR
-- Nashville Predators @ Boston Bruins (0-0-0 vs 0-0-0) 0-6 | P(home) 100.0% fair +0 | Final
-- New York Rangers @ Toronto Maple Leafs (0-0-0 vs 0-0-0) 4-5 | P(home) 100.0% fair +0 | Final
-- San Jose Sharks @ Ottawa Senators (0-0-0 vs 0-0-0) 6-2 | P(home) 0.0% fair +0 | Final
-- Anaheim Ducks @ New Jersey Devils (0-0-0 vs 0-0-0) 1-4 | P(home) 100.0% fair +0 | Final
-- Florida Panthers @ Pittsburgh Penguins (0-0-0 vs 0-0-0) 0-4 | P(home) 100.0% fair +0 | Final
+- Montreal Canadiens @ Chicago Blackhawks (4-3-2 vs 3-6-0)  | P(home) 41.0% fair +144 | Scheduled
+- Tampa Bay Lightning @ Colorado Avalanche (7-2-0 vs 5-4-1)  | P(home) 38.1% fair +162 | Scheduled
 
-## LoL Esports -- 0 live, 30 upcoming
-- [Worlds] Gen.G Esports vs Invictus Gaming BO1 | P(A) 54.6% fair -120/+120
-- [Worlds] Hanwha Life Esports vs TOP ESPORTS BO1 | P(A) 67.6% fair -209/+209
+## LoL Esports -- 1 live, 30 upcoming
+- [Worlds] TOP ESPORTS vs Hanwha Life Esports BO1 | P(A) 32.4% fair +209/-209
 - [Worlds] BILIBILI GAMING vs Movistar KOI BO1 | P(A) 63.2% fair -172/+172
 - [Worlds] Anyone's Legend vs Karmine Corp BO1 | P(A) 48.0% fair +108/-108
 - [Worlds] G2 Esports vs Dplus KIA BO1 | P(A) 50.5% fair -102/+102
+- [Worlds] Team Liquid Alienware vs CTBC Flying Oyster BO1 | P(A) 58.4% fair -140/+140
 - **LoL POT:** Team Liquid Alienware ML vs CTBC Flying Oyster (Worlds, BO1) (HIGH)
 
 ## Player Play of the Day -- across all sports (3431 candidates scanned)

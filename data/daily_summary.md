@@ -4,7 +4,7 @@
 
 _Pipeline health: **WARNING** (12/15 artifacts ok; 3 empty, 0 stale)._ 
 
-_Generated at 2026-10-23T14:06:11 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-10-23T18:28:48 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
@@ -24,35 +24,35 @@ _Generated at 2026-10-23T14:06:11 UTC. Game lines source: **Bovada (fallback -- 
 
 ## Parlays - top 5
 
-- **3-leg @ +578 (prob 19.7%, EV +33.57%)**
+- **3-leg @ +569 (prob 19.7%, EV +31.93%)**
   - Richie Palacios OVER 0.5 batter_hits (+100, model 55.4%)
   - Taylor Walls OVER 0.5 batter_hits (+122, model 49.2%)
-  - TBR @ MIL MIL_ML (-190, model 72.3%)
-- **3-leg @ +455 (prob 23.9%, EV +32.56%)**
+  - TBR @ MIL MIL_ML (-197, model 72.3%)
+- **3-leg @ +449 (prob 23.9%, EV +30.93%)**
   - Richie Palacios OVER 0.5 batter_hits (+100, model 55.4%)
   - Liam Hicks OVER 0.5 batter_hits (-122, model 59.6%)
-  - TBR @ MIL MIL_ML (-190, model 72.3%)
-- **3-leg @ +685 (prob 16.9%, EV +32.31%)**
+  - TBR @ MIL MIL_ML (-197, model 72.3%)
+- **3-leg @ +675 (prob 16.9%, EV +30.69%)**
   - Richie Palacios OVER 0.5 batter_hits (+100, model 55.4%)
   - Brice Turang UNDER 0.5 batter_hits (+157, model 42.1%)
-  - TBR @ MIL MIL_ML (-190, model 72.3%)
-- **3-leg @ +764 (prob 15.2%, EV +31.23%)**
+  - TBR @ MIL MIL_ML (-197, model 72.3%)
+- **3-leg @ +753 (prob 15.2%, EV +29.62%)**
   - Richie Palacios OVER 0.5 batter_hits (+100, model 55.4%)
   - Jackson Chourio UNDER 0.5 batter_hits (+183, model 37.9%)
-  - TBR @ MIL MIL_ML (-190, model 72.3%)
-- **3-leg @ +517 (prob 21.2%, EV +30.67%)**
+  - TBR @ MIL MIL_ML (-197, model 72.3%)
+- **3-leg @ +509 (prob 21.2%, EV +29.07%)**
   - Taylor Walls OVER 0.5 batter_hits (+122, model 49.2%)
   - Liam Hicks OVER 0.5 batter_hits (-122, model 59.6%)
-  - TBR @ MIL MIL_ML (-190, model 72.3%)
+  - TBR @ MIL MIL_ML (-197, model 72.3%)
 
 ## Self-Learning Loop
 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
-| batter hits | 312 | 53.5% | 56.2% | 1.050 | 0.953 |
 | batter total bases | 82 | 34.2% | 41.9% | 1.224 | 0.830 |
+| batter hits | 312 | 53.5% | 56.2% | 1.050 | 0.953 |
 
-Cumulative graded plays: 18517. Wins: 7933. Hit rate: 42.8%.
+Cumulative graded plays: 18527. Wins: 7941. Hit rate: 42.9%.
 
 ## Auxiliary Markets (Model Fair Prices)
 
