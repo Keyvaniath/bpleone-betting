@@ -234,7 +234,7 @@ jobs:
                 git push && { echo "pushed cleanly"; exit 0; }
                 sleep 3; continue
               fi
-              if git rebase origin/main; then
+              if git rebase --autostash origin/main; then
                 git push && { echo "pushed after rebase"; exit 0; }
               else
                 git checkout --ours . 2>/dev/null || true

@@ -1366,7 +1366,12 @@ jobs:
         run: |
           git config user.name  "edgestat-bot"
           git config user.email "actions@github.com"
-          git add data/
+          # emails/ too (2026-10-22): alpha_email.py rewrites the TRACKED
+          # emails/latest.html, which was never staged -- so it sat stale since
+          # 9/08, and the dirty tree made the rebase below refuse ("cannot
+          # rebase: You have unstaged changes"), losing the whole run's data
+          # whenever main moved mid-run. --autostash covers any other strays.
+          git add data/ emails/
           if git diff --cached --quiet; then
             echo "No data changes — nothing to commit."
           else
@@ -1382,7 +1387,7 @@ jobs:
                 continue
               fi
               # Attempt rebase; on conflict take our version for any data/*.json
-              if git rebase origin/main; then
+              if git rebase --autostash origin/main; then
                 git push && { echo "pushed after rebase"; exit 0; }
               else
                 # Conflict path: take ours for everything, then continue with
