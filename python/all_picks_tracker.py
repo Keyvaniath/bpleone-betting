@@ -1637,6 +1637,13 @@ def _nhl_intake(out: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
     out, dropped = _board_dates(out, "NHL", state, "nhl_historical.json", drop_unmatched=True)
     if dropped:
         print(f"[all-picks] NHL intake: dropped {dropped} pick(s) not on today's board")
+    # PRESEASON GATE for NBA/WNBA too (2026-10-23): the same structural flaw as
+    # the NFL/NHL preseason picks -- season baselines price rotation players
+    # who log garbage-time minutes. While a league's state reports a
+    # preseason board, its picks don't enter the ledger.
+    for sp, st in (("NBA", "nba_state.json"), ("WNBA", "wnba_state.json")):
+        if str(_load(os.path.join(DATA_DIR, st)).get("season_status") or "") == "preseason":
+            out = [p for p in out if str(p.get("sport") or "").upper() != sp]
     # NBA/WNBA: same snapshot-date stamping (a WNBA Finals game-line pick made
     # 10/22 for the 10/24 game was dated 10/22). Date them; never drop -- those
     # generators haven't been audited for vocab, so an unmatched pick keeps the
