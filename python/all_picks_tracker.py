@@ -2104,8 +2104,11 @@ def _grade_nfl_pick(pick: Dict[str, Any], by_name: Dict[str, Any],
     #    week, so the nearest row within +/-1 day is unambiguous.
     #  * PLAYED BUT NO LINE: a player in the box who has no receiving/rushing
     #    entry recorded none of it (a WR with 0 catches) -> 0, as a book settles.
+    #  * HYPHENS: the props desk keys "jaxon smithnjigba" / "amonra st brown";
+    #    ESPN's box keeps "Smith-Njigba" / "Amon-Ra" -- 0 of their props had
+    #    ever graded. Hyphens are stripped on both sides too.
     def _nfl_norm(nm):
-        nm = re.sub(r"[.'’]", "", str(nm or "").lower()).strip()
+        nm = re.sub(r"[.'’-]", "", str(nm or "").lower()).strip()
         return re.sub(r"\s+(jr|sr|ii|iii|iv|v)$", "", nm).strip()
     prec = by_name.get(matchup)
     if not prec:

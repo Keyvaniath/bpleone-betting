@@ -37,7 +37,8 @@ OUTAGE_REASON = "unsettleable: no outcome feed"
 # Bump when a grader fix lands that the long-window outcome data can still
 # serve; the next run re-fetches once and keeps the earlier pass under
 # `previous_passes`. v2 (2026-10-22): MLB run lines had no grading branch.
-BACKFILL_VERSION = 2
+# v3 (2026-10-23): NFL names with hyphens (Smith-Njigba, Amon-Ra) never matched.
+BACKFILL_VERSION = 3
 
 
 def _load(p: str) -> Dict[str, Any]:
