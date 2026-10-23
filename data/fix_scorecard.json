@@ -1,0 +1,125 @@
+{
+  "generated_at": "2026-10-23T07:42:13",
+  "fixes": [
+    {
+      "fix": "NFL DFS lineups on calibrated xFP (optimizer's curse) + form rule v2",
+      "question": "Do published lineups land near their projection, and score more?",
+      "expected": "backtest: bias -64.6 -> ~+11 pts/slate, actual 106 -> ~131",
+      "status": "pending",
+      "new": null,
+      "old": {
+        "n_slates": 4,
+        "avg_projected": 171.23,
+        "avg_actual": 118.73,
+        "avg_bias": -52.5
+      },
+      "read": null
+    },
+    {
+      "fix": "NFL props priced on season-to-date form (v2) instead of last week's game (v1)",
+      "question": "Are v2 props better calibrated (lower Brier) and less negative than v1?",
+      "expected": "walk-forward DK-points MAE 6.12 -> 5.76, corr 0.48 -> 0.55",
+      "status": "pending",
+      "new": {
+        "n": 0,
+        "wins": 0,
+        "losses": 0,
+        "net_units": 0,
+        "roi_pct": null,
+        "hit_rate": null,
+        "brier": null,
+        "log_loss": null
+      },
+      "old": {
+        "n": 988,
+        "wins": 706,
+        "losses": 282,
+        "net_units": -31.63,
+        "roi_pct": -3.2,
+        "hit_rate": 0.7146,
+        "brier": 0.1997,
+        "log_loss": 0.5878
+      },
+      "read": null
+    },
+    {
+      "fix": "NBA props on live blended baselines + current teams (was 2024-25 tables)",
+      "question": "Are the new-baseline props better calibrated than the old-table ones?",
+      "expected": "next-10-game RMSE after 1 game: 6.45 -> 3.57 pts (K=5)",
+      "status": "pending",
+      "new": {
+        "n": 0,
+        "wins": 0,
+        "losses": 0,
+        "net_units": 0,
+        "roi_pct": null,
+        "hit_rate": null,
+        "brier": null,
+        "log_loss": null
+      },
+      "old": {
+        "n": 0,
+        "wins": 0,
+        "losses": 0,
+        "net_units": 0,
+        "roi_pct": null,
+        "hit_rate": null,
+        "brier": null,
+        "log_loss": null
+      },
+      "read": null
+    },
+    {
+      "fix": "NHL props on live blended baselines + current teams (was 2024-25 tables)",
+      "question": "Are the new-baseline props better calibrated than the old-table ones?",
+      "expected": "skater stat RMSE 2-3x lower early season (K=30)",
+      "status": "pending",
+      "new": {
+        "n": 0,
+        "wins": 0,
+        "losses": 0,
+        "net_units": 0,
+        "roi_pct": null,
+        "hit_rate": null,
+        "brier": null,
+        "log_loss": null
+      },
+      "old": {
+        "n": 66,
+        "wins": 34,
+        "losses": 32,
+        "net_units": -17.16,
+        "roi_pct": -26.0,
+        "hit_rate": 0.5152,
+        "brier": 0.2804,
+        "log_loss": 0.7706
+      },
+      "read": null
+    },
+    {
+      "fix": "Outage backfill + NFL/NHL/MLB grader repairs",
+      "question": "How many outage-voided real picks were recovered?",
+      "expected": "measured on day one",
+      "status": "graded",
+      "new": {
+        "recovered_total": 254,
+        "passes": 2
+      },
+      "old": null,
+      "read": "254 picks recovered over 2 pass(es)"
+    }
+  ],
+  "n_graded": 1,
+  "n_total": 5,
+  "still_waiting_on_games": [
+    "NFL DFS lineups on calibrated xFP (optimizer's curse) + form rule v2",
+    "NFL props priced on season-to-date form (v2) instead of last week's game (v1)",
+    "NBA props on live blended baselines + current teams (was 2024-25 tables)",
+    "NHL props on live blended baselines + current teams (was 2024-25 tables)"
+  ],
+  "bars": {
+    "props": 200,
+    "dfs_slates": 4
+  },
+  "note": "Every 2026-10-23 fix graded against the version it replaced, on results settled since. 'graded' = enough results for the comparison to mean something; until then the status says so. Nothing is auto-tuned from this."
+}
