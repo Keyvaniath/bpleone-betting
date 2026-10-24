@@ -1,5 +1,5 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:15 F:54
+_NO_ACTION_NIGHT_ | L:0 S:15 F:52
 
 :dart: **Top Picks:**
 1. [GOLF] Chandler Blanchet -- Chandler Blanchet (PLAYER_STRONG)

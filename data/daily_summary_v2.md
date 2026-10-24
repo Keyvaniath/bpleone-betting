@@ -1,13 +1,13 @@
 # EdgeStat Daily Summary — 2026-10-24
 
-## 🏥 Model Health: 65.9/100 [OK]
+## 🏥 Model Health: 63.1/100 [OK]
 - Operational but room to improve - check yellow components
   - 🟢 Calibration Freshness: 99.9/100
-  - 🔴 Hit Rate Trend: 33.6/100
-  - 🔴 Brier Trend: 3.1/100
+  - 🔴 Hit Rate Trend: 34.4/100
+  - 🔴 Brier Trend: 3.9/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 100.0/100
-  - 🟢 Edge Count: 85.7/100
+  - 🔴 Edge Count: 54.3/100
 
 ## 🌐 Slate Overview
 - **Regime today:** BALANCED (avg P(home)=0.549)
@@ -48,31 +48,31 @@
 - Hot teams: **6** | Cold teams: **16** | Over-heavy: 0 | Under-heavy: 26
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (162)
-- RESIDUAL_DIVERGENCE: **26**
-- STEAM_MOVE: **136**
-  - Boston Celtics (NBA): Boston Celtics OUTPERFORMING expected margin by 7.7pts in recent games -- model bias may persist
-  - New York Knicks (NBA): New York Knicks UNDERPERFORMING expected margin by 6.8pts in recent games -- model bias may persist
-  - Dallas Mavericks (NBA): Dallas Mavericks UNDERPERFORMING expected margin by 6.0pts in recent games -- model bias may persist
-  - Orlando Magic (NBA): Orlando Magic OUTPERFORMING expected margin by 10.3pts in recent games -- model bias may persist
-  - Minnesota Timberwolves (NBA): Minnesota Timberwolves UNDERPERFORMING expected margin by 6.9pts in recent games -- model bias may persist
+## ⚠️ Anomaly Detector (149)
+- RESIDUAL_DIVERGENCE: **9**
+- STEAM_MOVE: **140**
+  - Atlanta Dream (WNBA): Atlanta Dream OUTPERFORMING expected margin by 18.7pts in recent games -- model bias may persist
+  - Golden State Valkyries (WNBA): Golden State Valkyries UNDERPERFORMING expected margin by 18.7pts in recent games -- model bias may persist
+  - Columbus Crew (MLS): Columbus Crew OUTPERFORMING expected margin by 7.7pts in recent games -- model bias may persist
+  - Inter Miami CF (MLS): Inter Miami CF UNDERPERFORMING expected margin by 7.3pts in recent games -- model bias may persist
+  - New York City FC (MLS): New York City FC OUTPERFORMING expected margin by 14.9pts in recent games -- model bias may persist
 
 ## 💰 Today's Portfolio (12 picks)
 - Total stake: **$330.0** (33.0% of $1000 bankroll)
-- Expected EV: **$-7.71**
+- Expected EV: **$-7.32**
   - #1 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #2 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
   - #3 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
   - #4 [GOLF] $35 on GOLF Trace Crowe TOP10 @ 566 (Butterfield Bermuda Championsh (P=15%)
   - #5 [GOLF] $35 on GOLF Jesper Svensson TOP10 @ 570 (Butterfield Bermuda Champi (P=15%)
 
-## 🎯 Convergence Picks (28 stacked games)
-- ELITE: **11** · HIGH: 12 · MED: 5
-  - [ELITE] New Orleans Pelicans @ Utah Jazz : 5 signals (PREGAME, ANOMALY, ANOMALY, ATS)
-  - [ELITE] LA Clippers @ Los Angeles Lakers : 5 signals (PREGAME, ANOMALY, ANOMALY, ATS)
+## 🎯 Convergence Picks (24 stacked games)
+- ELITE: **7** · HIGH: 8 · MED: 9
   - [ELITE] Inter Miami CF @ Red Bull New York : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
   - [ELITE] Seattle Sounders FC @ San Diego FC : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
-  - [ELITE] Dallas Mavericks @ Indiana Pacers : 4 signals (HEAT_COLD, ANOMALY, ATS, ATS)
+  - [ELITE] Detroit Pistons @ Miami Heat : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
+  - [ELITE] Golden State Valkyries @ Atlanta Dream : 4 signals (ANOMALY, ANOMALY, ATS, ATS)
+  - [ELITE] Minnesota United FC @ Houston Dynamo FC : 4 signals (PREGAME, HEAT_COLD, ATS, ATS)
 
 ## ⚾ Top MLB Pitcher K Plays (1)
 - **Logan Henderson** OVER 4.5 K (71%) fair -251
@@ -114,12 +114,12 @@
   - ❄️ **Andruw Monasterio** (BOS): L14 .083 / season .233 (-150pts) -- FADE props
   - ❄️ **Jim Jarvis** (ATL): L14 .079 / season .207 (-128pts) -- FADE props
 
-## 📈 Streak Regression Alerts (15)
-- [NBA] Atlanta Hawks on W4 L10 4-0 -- Atlanta Hawks on W4 -- no historical sample
-- [NBA] Dallas Mavericks on L3 L10 1-3 -- Dallas Mavericks on L3 -- no historical sample
-- [NBA] Detroit Pistons on W3 L10 3-1 -- Detroit Pistons on W3 -- no historical sample
-- [NBA] Sacramento Kings on L4 L10 0-4 -- Sacramento Kings on L4 -- no historical sample
-- [NHL] Tampa Bay Lightning on W3 L10 4-1 -- Tampa Bay Lightning on W3 -- no historical sample
+## 📈 Streak Regression Alerts (10)
+- [MLS] CF Montréal on L3 L10 0-3 -- CF Montréal on L3 -- no historical sample
+- [MLS] Inter Miami CF on W3 L10 3-0 -- Inter Miami CF on W3 -- no historical sample
+- [MLS] New York City FC on L3 L10 0-3 -- New York City FC on L3 -- no historical sample
+- [MLS] San Jose Earthquakes on L3 L10 0-3 -- San Jose Earthquakes on L3 -- no historical sample
+- [MLS] Houston Dynamo FC on L3 L10 0-3 -- Houston Dynamo FC on L3 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**

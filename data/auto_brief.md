@@ -6,7 +6,7 @@ _0% lineups confirmed · 1 rookie SPs_
 
 ## Slate
 - **1 games** scheduled
-- **24 best bets** scored: 3 DK · 0 PP · 1 NRFI · 0 SGP
+- **25 best bets** scored: 3 DK · 0 PP · 1 NRFI · 0 SGP
 - **MC simulation:** EV +$10.53, 62% P(profit), p05 $-66.85 / p95 $60.77
 
 ## Top 5 Best Bets
@@ -24,15 +24,11 @@ _0% lineups confirmed · 1 rookie SPs_
 5. **GOLF Jesper Svensson TOP10 @ 570 (Butterfield Bermuda Championship)**  (78/100 *****, edge —)
    - P(top 10) 14.9% -- safest finish bet (#13 (-9)).
 
-## ⚠️ Trap Warnings — 4 flagged
+## ⚠️ Trap Warnings — 2 flagged
 - **Jackson Chourio OVER 1.5 batter total bases** (low):
    - Edge +12.7% looks big but only 0 settled props on this player — model unproven
 - **TBR @ MIL NRFI (no run 1st inning)** (low):
    - Edge +8.3% looks big but only 0 settled props on this player — model unproven
-- **Richie Palacios OVER 0.5 batter hits** (low):
-   - Line sharpened against this side (-208c move) -- sharp money knows
-- **Yandy Diaz OVER 1.5 batter total bases** (low):
-   - Line sharpened against this side (-9c move) -- sharp money knows
 
 ## Golf -- Butterfield Bermuda Championship
 - **Leader:** Kensei Hirata (-13) at #1
