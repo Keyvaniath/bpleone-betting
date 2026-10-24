@@ -19,10 +19,10 @@ _0% lineups confirmed · 1 rookie SPs_
 3. **LOL Peyz OVER 4.5 Kills**  (78/100 ****, edge —)
    - Player prop quality score 1.184
    - Elite player
-4. **GOLF Trace Crowe TOP10 @ 566 (Butterfield Bermuda Championship)**  (78/100 *****, edge —)
-   - P(top 10) 15.0% -- safest finish bet (#17 (-9)).
-5. **GOLF Jesper Svensson TOP10 @ 570 (Butterfield Bermuda Championship)**  (78/100 *****, edge —)
-   - P(top 10) 14.9% -- safest finish bet (#13 (-9)).
+4. **GOLF Jesper Svensson TOP10 @ 576 (Butterfield Bermuda Championship)**  (78/100 *****, edge —)
+   - P(top 10) 14.8% -- safest finish bet (#13 (-9)).
+5. **GOLF Trace Crowe TOP10 @ 576 (Butterfield Bermuda Championship)**  (78/100 *****, edge —)
+   - P(top 10) 14.8% -- safest finish bet (#17 (-9)).
 
 ## ⚠️ Trap Warnings — 2 flagged
 - **Jackson Chourio OVER 1.5 batter total bases** (low):
@@ -31,24 +31,27 @@ _0% lineups confirmed · 1 rookie SPs_
    - Edge +8.3% looks big but only 0 settled props on this player — model unproven
 
 ## Golf -- Butterfield Bermuda Championship
-- **Leader:** Kensei Hirata (-13) at #1
+- **Leader:** Austin Smotherman (-14) at #1
 - **Field:** 120 players  |  Status: In Progress
-- **Play of the Tournament:** Trace Crowe TOP10 @ +566 (model 15.0%, HIGH)
-   - P(top 10) 15.0% -- safest finish bet (#17 (-9)).
+- **Play of the Tournament:** Jesper Svensson TOP10 @ +576 (model 14.8%, HIGH)
+   - P(top 10) 14.8% -- safest finish bet (#13 (-9)).
 
 ## NBA -- REGULAR
-- Chicago Bulls @ Milwaukee Bucks (1-1 vs 0-2) 132-125 | P(home) 0.0% fair +0 | Final
-- New York Knicks @ Boston Celtics (0-2 vs 1-1) 103-107 | P(home) 100.0% fair +0 | Final
-- Atlanta Hawks @ Charlotte Hornets (2-0 vs 1-1) 128-81 | P(home) 0.0% fair +0 | Final
-- Dallas Mavericks @ Indiana Pacers (1-1 vs 1-1) 121-105 | P(home) 0.0% fair +0 | Final
-- Minnesota Timberwolves @ Orlando Magic (2-0 vs 0-2) 115-93 | P(home) 0.0% fair +0 | Final
+- Miami Heat @ Charlotte Hornets (0-2 vs 1-1)  | P(home) 93.3% fair -1384 | Scheduled
+- Brooklyn Nets @ Cleveland Cavaliers (0-1 vs 0-1)  | P(home) 64.5% fair -182 | Scheduled
+- Milwaukee Bucks @ Philadelphia 76ers (0-2 vs 2-0)  | P(home) 99.0% fair -9900 | Scheduled
+- Washington Wizards @ Chicago Bulls (1-1 vs 1-1)  | P(home) 64.5% fair -182 | Scheduled
+- San Antonio Spurs @ Dallas Mavericks (0-2 vs 1-1)  | P(home) 93.3% fair -1384 | Scheduled
 
 ## NHL -- REGULAR
-- Montreal Canadiens @ Chicago Blackhawks (0-0-0 vs 0-0-0) 4-1 | P(home) 0.0% fair +0 | Final
-- Tampa Bay Lightning @ Colorado Avalanche (0-0-0 vs 0-0-0) 3-6 | P(home) 100.0% fair +0 | Final
+- Anaheim Ducks @ Philadelphia Flyers (4-6-0 vs 3-6-3) 0-0 | P(home) 60.2% fair -152 | In Progress
+- Los Angeles Kings @ New Jersey Devils (2-4-2 vs 6-4-0)  | P(home) 83.7% fair -514 | Scheduled
+- San Jose Sharks @ Boston Bruins (6-4-1 vs 8-2-1)  | P(home) 82.5% fair -473 | Scheduled
+- New York Rangers @ Ottawa Senators (7-4-1 vs 7-4-0)  | P(home) 64.1% fair -178 | Scheduled
+- Nashville Predators @ Pittsburgh Penguins (3-3-3 vs 4-6-1)  | P(home) 53.7% fair -116 | Scheduled
 
-## LoL Esports -- 0 live, 30 upcoming
-- [Worlds] Anyone's Legend vs TOP ESPORTS BO1 | P(A) 68.0% fair -212/+212
+## LoL Esports -- 1 live, 30 upcoming
+- [Worlds] TOP ESPORTS vs Anyone's Legend BO1 | P(A) 32.0% fair +212/-212
 - [Worlds] CTBC Flying Oyster vs Movistar KOI BO1 | P(A) 48.5% fair +106/-106
 - [Worlds] G2 Esports vs LOS BO1 | P(A) 57.8% fair -137/+137
 - [Worlds] LYON vs Karmine Corp BO1 | P(A) 40.7% fair +146/-146

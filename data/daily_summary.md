@@ -4,7 +4,7 @@
 
 _Pipeline health: **WARNING** (11/15 artifacts ok; 4 empty, 0 stale)._ 
 
-_Generated at 2026-10-24T13:11:06 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-10-24T17:31:10 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
@@ -29,7 +29,7 @@ _Generated at 2026-10-24T13:11:06 UTC. Game lines source: **Bovada (fallback -- 
 | batter total bases | 81 | 35.8% | 41.4% | 1.154 | 0.876 |
 | batter hits | 312 | 53.8% | 56.4% | 1.047 | 0.956 |
 
-Cumulative graded plays: 18597. Wins: 7991. Hit rate: 43.0%.
+Cumulative graded plays: 18603. Wins: 7996. Hit rate: 43.0%.
 
 ## Auxiliary Markets (Model Fair Prices)
 
