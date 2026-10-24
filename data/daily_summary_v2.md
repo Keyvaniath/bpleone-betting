@@ -1,25 +1,25 @@
 # EdgeStat Daily Summary — 2026-10-24
 
-## 🏥 Model Health: 62.9/100 [OK]
+## 🏥 Model Health: 64.7/100 [OK]
 - Operational but room to improve - check yellow components
   - 🟢 Calibration Freshness: 99.9/100
-  - 🔴 Hit Rate Trend: 37.4/100
-  - 🔴 Brier Trend: 7.9/100
+  - 🔴 Hit Rate Trend: 37.3/100
+  - 🔴 Brier Trend: 7.8/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 90.9/100
+  - 🟢 Data Health: 100.0/100
   - 🔴 Edge Count: 57.1/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.605)
-- **Total games on board:** 71
-- **Strong home favorites:** 38 | **Strong road dogs:** 15
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.575)
+- **Total games on board:** 67
+- **Strong home favorites:** 33 | **Strong road dogs:** 17
 
 ## 🎯 Top 5 Best Bets
 1. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
 2. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
 3. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
-4. **GOLF Jesper Svensson TOP10 @ 576 (Butterfield Bermuda Championship)** (78/100 ★★★★★)
-5. **GOLF Trace Crowe TOP10 @ 576 (Butterfield Bermuda Championship)** (78/100 ★★★★★)
+4. **GOLF Greyson Sigg TOP5 @ 576 (Butterfield Bermuda Championship)** (78/100 ★★★★★)
+5. **GOLF Cam Davis TOP5 @ 582 (Butterfield Bermuda Championship)** (78/100 ★★★★★)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -32,7 +32,7 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (23)
+## ⚡ Pre-Game HIGH Conviction (21)
 - [NCAAF] **BYU Cougars** AWAY (None L10) · model 74.9% fair -299
 - [NFL] **Pittsburgh Steelers** AWAY (None L10) · model 74.5% fair -291
 - [NFL] **Denver Broncos** AWAY (None L10) · model 74.5% fair -291
@@ -40,39 +40,39 @@
 - [NFL] **Las Vegas Raiders** HOME (None L10) · model 73.3% fair -274
 - [NCAAF] **Alabama Crimson Tide** HOME (None L10) · model 72.6% fair -265
 - [MLS] **Sporting Kansas City** HOME (0-3 L10) · model 70.9% fair -244
-- [NCAAF] **Miami Hurricanes** HOME (None L10) · model 70.4% fair -238
 - [NHL] **Washington Capitals** HOME (2-3 L10) · model 68.4% fair -216
-- [NCAAF] **Indiana Hoosiers** AWAY (None L10) · model 68.0% fair -212
+- [NCAAF] **USC Trojans** AWAY (None L10) · model 68.0% fair -212
+- [NHL] **Seattle Kraken** HOME (4-2 L10) · model 67.9% fair -211
 
 ## 🔥/❄️ Heat / Cold Signals
 - Hot teams: **6** | Cold teams: **16** | Over-heavy: 0 | Under-heavy: 26
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (149)
-- RESIDUAL_DIVERGENCE: **9**
-- STEAM_MOVE: **140**
-  - Atlanta Dream (WNBA): Atlanta Dream OUTPERFORMING expected margin by 18.7pts in recent games -- model bias may persist
-  - Golden State Valkyries (WNBA): Golden State Valkyries UNDERPERFORMING expected margin by 18.7pts in recent games -- model bias may persist
-  - Columbus Crew (MLS): Columbus Crew OUTPERFORMING expected margin by 7.7pts in recent games -- model bias may persist
-  - Inter Miami CF (MLS): Inter Miami CF UNDERPERFORMING expected margin by 7.3pts in recent games -- model bias may persist
-  - New York City FC (MLS): New York City FC OUTPERFORMING expected margin by 14.9pts in recent games -- model bias may persist
+## ⚠️ Anomaly Detector (168)
+- RESIDUAL_DIVERGENCE: **26**
+- STEAM_MOVE: **142**
+  - Charlotte Hornets (NBA): Charlotte Hornets UNDERPERFORMING expected margin by 9.8pts in recent games -- model bias may persist
+  - Cleveland Cavaliers (NBA): Cleveland Cavaliers UNDERPERFORMING expected margin by 11.6pts in recent games -- model bias may persist
+  - Brooklyn Nets (NBA): Brooklyn Nets UNDERPERFORMING expected margin by 9.6pts in recent games -- model bias may persist
+  - Milwaukee Bucks (NBA): Milwaukee Bucks UNDERPERFORMING expected margin by 9.3pts in recent games -- model bias may persist
+  - San Antonio Spurs (NBA): San Antonio Spurs OUTPERFORMING expected margin by 7.8pts in recent games -- model bias may persist
 
-## 💰 Today's Portfolio (12 picks)
-- Total stake: **$330.0** (33.0% of $1000 bankroll)
-- Expected EV: **$-7.28**
+## 💰 Today's Portfolio (10 picks)
+- Total stake: **$335.0** (33.5% of $1000 bankroll)
+- Expected EV: **$-8.94**
   - #1 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #2 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
   - #3 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
-  - #4 [GOLF] $35 on GOLF Jesper Svensson TOP10 @ 576 (Butterfield Bermuda Champi (P=15%)
-  - #5 [GOLF] $35 on GOLF Trace Crowe TOP10 @ 576 (Butterfield Bermuda Championsh (P=15%)
+  - #4 [GOLF] $35 on GOLF Greyson Sigg TOP5 @ 576 (Butterfield Bermuda Championsh (P=15%)
+  - #5 [GOLF] $35 on GOLF Cam Davis TOP5 @ 582 (Butterfield Bermuda Championship) (P=15%)
 
-## 🎯 Convergence Picks (24 stacked games)
-- ELITE: **7** · HIGH: 8 · MED: 9
-  - [ELITE] Inter Miami CF @ Red Bull New York : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
-  - [ELITE] Seattle Sounders FC @ San Diego FC : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
-  - [ELITE] Detroit Pistons @ Miami Heat : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
-  - [ELITE] Golden State Valkyries @ Atlanta Dream : 4 signals (ANOMALY, ANOMALY, ATS, ATS)
-  - [ELITE] Minnesota United FC @ Houston Dynamo FC : 4 signals (PREGAME, HEAT_COLD, ATS, ATS)
+## 🎯 Convergence Picks (34 stacked games)
+- ELITE: **16** · HIGH: 12 · MED: 6
+  - [ELITE] Houston Rockets @ Atlanta Hawks : 6 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
+  - [ELITE] Anaheim Ducks @ Philadelphia Flyers : 6 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ANOMALY)
+  - [ELITE] Brooklyn Nets @ Cleveland Cavaliers : 5 signals (PREGAME, ANOMALY, ANOMALY, ATS)
+  - [ELITE] San Jose Sharks @ Boston Bruins : 5 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ANOMALY)
+  - [ELITE] Detroit Red Wings @ Calgary Flames : 5 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
 
 ## ⚾ Top MLB Pitcher K Plays (1)
 - **Logan Henderson** OVER 4.5 K (71%) fair -251
@@ -83,18 +83,18 @@
   - ❄️ **Caleb Love** (PHI): L5 2.6 vs season 10.4 [PTS -7.8, REB -2.3] -- FADE OVER props
 
 ## 🥊 UFC Fight Matchups (UFC 333: Volkanovski vs. Evloev)
-  - [LEAN] **Abubakar Vagaev** (25-4-0) vs Jacob Malkoun -- fair -149
+  - [LEAN] **Abubakar Vagaev** (26-4-0) vs Jacob Malkoun -- fair -171
+  - [LEAN] **Daniel Santos** (15-3-0) vs Bolaji Oki -- fair -152
+  - [LEAN] **Iasmin Lucindo** (19-6-0) vs Nicolle Caliari -- fair -149
   - [LEAN] **Alexander Volkov** (40-11-0) vs Rizvan Kuniev -- fair -148
   - [LEAN] **Azamat Murzakanov** (16-1-0) vs Dominick Reyes -- fair -144
-  - [LEAN] **Losene Keita** (17-2-0) vs Aaron Pico -- fair -144
-  - [LEAN] **Daniel Santos** (14-3-0) vs Bolaji Oki -- fair -133
 
 ## ⛳ Golf Player Heat (from Butterfield Bermuda Championship)
-  - 🔥 T1 **Austin Smotherman** (USA): -14 total -- finished T1
-  - 🔥 T2 **Séamus Power** (Ireland): -14 total -- finished T2
-  - 🔥 T3 **Chandler Blanchet** (USA): -14 total -- finished T3
-  - 🔥 T4 **Tom Hoge** (USA): -13 total -- finished T4
-  - 🔥 T5 **Eric Cole** (USA): -13 total -- finished T5
+  - 🔥 T1 **Austin Smotherman** (USA): -16 total -- finished T1
+  - 🔥 T2 **Ben Silverman** (Canada): -15 total -- finished T2
+  - 🔥 T3 **Séamus Power** (Ireland): -15 total -- finished T3
+  - 🔥 T4 **Taylor Moore** (USA): -14 total -- finished T4
+  - 🔥 T5 **Tom Hoge** (USA): -13 total -- finished T5
   - ❄️ **Camiko Smith** (Bermuda): Sunday +7.0 vs tourney avg
   - ❄️ **Aldrich Potgieter** (South Africa): Sunday +5.5 vs tourney avg
   - ❄️ **Alejandro Tosti** (Argentina): Sunday +3.0 vs tourney avg
@@ -111,12 +111,16 @@
   - ❄️ **Andruw Monasterio** (BOS): L14 .083 / season .233 (-150pts) -- FADE props
   - ❄️ **Jim Jarvis** (ATL): L14 .079 / season .207 (-128pts) -- FADE props
 
-## 📈 Streak Regression Alerts (10)
-- [MLS] CF Montréal on L3 L10 0-3 -- CF Montréal on L3 -- no historical sample
-- [MLS] Inter Miami CF on W3 L10 3-0 -- Inter Miami CF on W3 -- no historical sample
-- [MLS] New York City FC on L3 L10 0-3 -- New York City FC on L3 -- no historical sample
-- [MLS] San Jose Earthquakes on L3 L10 0-3 -- San Jose Earthquakes on L3 -- no historical sample
-- [MLS] Houston Dynamo FC on L3 L10 0-3 -- Houston Dynamo FC on L3 -- no historical sample
+## 😴 B2B Fatigue Edges (4)
+- [NBA] FADE Milwaukee Bucks (away on B2B)
+- [NHL] FADE Tampa Bay Lightning (away on B2B)
+
+## 📈 Streak Regression Alerts (18)
+- [NBA] Miami Heat on L3 L10 1-4 -- Miami Heat on L3 -- no historical sample
+- [NBA] Atlanta Hawks on W5 L10 5-0 -- Atlanta Hawks on W5 -- no historical sample
+- [NBA] Houston Rockets on W3 L10 3-1 -- Houston Rockets on W3 -- no historical sample
+- [NBA] Phoenix Suns on L3 L10 1-3 -- Phoenix Suns on L3 -- no historical sample
+- [NHL] Philadelphia Flyers on W3 L10 3-2 -- Philadelphia Flyers on W3 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**

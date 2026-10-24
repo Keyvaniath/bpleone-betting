@@ -1,8 +1,8 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:16 F:117
+_NO_ACTION_NIGHT_ | L:0 S:15 F:102
 
 :dart: **Top Picks:**
-1. [GOLF] Kensei Hirata -- Kensei Hirata (PLAYER_STRONG)
+1. [GOLF] Austin Smotherman -- Austin Smotherman (PLAYER_STRONG)
 2. [GOLF] Chandler Blanchet -- Chandler Blanchet (PLAYER_STRONG)
 3. [WNBA] allisha gray -- allisha gray (PLAYER_STRONG)
 

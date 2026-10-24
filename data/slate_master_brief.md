@@ -1,19 +1,19 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-10-24T17:30:59 UTC_
+_Generated 2026-10-24T19:16:17 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -53
+- **Score:** -42
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 16
-- **Total FADES:** 117
+- **Total STRONG:** 15
+- **Total FADES:** 102
 
 ## Top 5 Curated Picks
-1. **GOLF / Kensei Hirata** (GOLF_PLAYER, score=155.07)
-   - Play: Kensei Hirata (PLAYER_STRONG)
+1. **GOLF / Austin Smotherman** (GOLF_PLAYER, score=193.71)
+   - Play: Austin Smotherman (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Chandler Blanchet** (GOLF_PLAYER, score=155.0)
+2. **GOLF / Chandler Blanchet** (GOLF_PLAYER, score=169.5)
    - Play: Chandler Blanchet (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
 3. **WNBA / allisha gray** (WNBA_PLAYER, score=62.42)
@@ -28,9 +28,9 @@ _Generated 2026-10-24T17:30:59 UTC_
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
-  - Kensei Hirata top 10 finish
+  - Austin Smotherman top 10 finish
   - Chandler Blanchet top 10 finish
-  - Séamus Power top 10 finish
+  - Chris Kirk top 10 finish
 
 ## Slate ROI Projection
 - **Picks:** 0
@@ -41,11 +41,11 @@ _Generated 2026-10-24T17:30:59 UTC_
 ## Top Fades
 - **NBA** / tyrese maxey (PLAYER_FADE)
   - Fade angle: PTS UNDER + PRA UNDER (multi-prop)
+- **NBA** / SAS (TEAM_FADE)
+  - Fade angle: team total UNDER
 - **NBA** / CHA (TEAM_FADE)
   - Fade angle: team total UNDER
 - **NBA** / BKN (TEAM_FADE)
-  - Fade angle: team total UNDER
-- **NBA** / SAS (TEAM_FADE)
   - Fade angle: team total UNDER
 - **NBA** / HOU (TEAM_FADE)
   - Fade angle: team total UNDER
