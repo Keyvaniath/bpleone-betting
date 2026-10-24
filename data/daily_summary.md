@@ -1,10 +1,10 @@
 # EdgeStat Daily Brief - 2026-10-24
 
-**Model Confidence: 9.8/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
+**Model Confidence: 9.6/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
 
-_Pipeline health: **WARNING** (12/15 artifacts ok; 3 empty, 0 stale)._ 
+_Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
 
-_Generated at 2026-10-24T00:24:49 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-10-24T05:18:07 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
@@ -22,37 +22,14 @@ _Generated at 2026-10-24T00:24:49 UTC. Game lines source: **Bovada (fallback -- 
 |---|---|---|---|---|
 | 8:00p ET | TBR @ MIL | American Family Field | indoor | OVER_6.5 +34.13% |
 
-## Parlays - top 5
-
-- **3-leg @ +748 (prob 15.4%, EV +30.81%)**
-  - Richie Palacios OVER 0.5 batter_hits (+100, model 55.4%)
-  - Taylor Walls OVER 0.5 batter_hits (+122, model 49.2%)
-  - TBR @ MIL UNDER_8.5 (-110, model 56.6%)
-- **3-leg @ +595 (prob 18.7%, EV +29.82%)**
-  - Richie Palacios OVER 0.5 batter_hits (+100, model 55.4%)
-  - Liam Hicks OVER 0.5 batter_hits (-122, model 59.6%)
-  - TBR @ MIL UNDER_8.5 (-110, model 56.6%)
-- **3-leg @ +881 (prob 13.2%, EV +29.58%)**
-  - Richie Palacios OVER 0.5 batter_hits (+100, model 55.4%)
-  - Brice Turang UNDER 0.5 batter_hits (+157, model 42.1%)
-  - TBR @ MIL UNDER_8.5 (-110, model 56.6%)
-- **3-leg @ +981 (prob 11.9%, EV +28.53%)**
-  - Richie Palacios OVER 0.5 batter_hits (+100, model 55.4%)
-  - Jackson Chourio UNDER 0.5 batter_hits (+183, model 37.9%)
-  - TBR @ MIL UNDER_8.5 (-110, model 56.6%)
-- **3-leg @ +671 (prob 16.6%, EV +27.98%)**
-  - Taylor Walls OVER 0.5 batter_hits (+122, model 49.2%)
-  - Liam Hicks OVER 0.5 batter_hits (-122, model 59.6%)
-  - TBR @ MIL UNDER_8.5 (-110, model 56.6%)
-
 ## Self-Learning Loop
 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
-| batter total bases | 82 | 34.2% | 41.9% | 1.224 | 0.830 |
-| batter hits | 312 | 53.5% | 56.2% | 1.050 | 0.953 |
+| batter hits | 312 | 53.8% | 56.4% | 1.047 | 0.956 |
+| batter total bases | 81 | 35.8% | 41.4% | 1.154 | 0.876 |
 
-Cumulative graded plays: 18520. Wins: 7936. Hit rate: 42.9%.
+Cumulative graded plays: 18521. Wins: 7936. Hit rate: 42.8%.
 
 ## Auxiliary Markets (Model Fair Prices)
 
@@ -62,13 +39,15 @@ Cumulative graded plays: 18520. Wins: 7936. Hit rate: 42.9%.
 
 ## Team Form (last 10)
 
-**Hot:** MIL 7-1 (W5, +13), TB 7-2 (W3, +12), CLE 5-5 (L3, +4), SD 1-3 (L1, -3), LAD 3-5 (L4, -4)
+**Hot:** MIL 7-1 (W6, +13), TB 6-3 (L1, +10), CLE 5-5 (L3, +4), SD 1-2 (L1, -2), ATL 1-2 (L2, -4)
 
-**Cold:** CWS 2-3 (L3, -8), ATL 1-3 (L2, -6), NYY 0-3 (L3, -5), LAD 3-5 (L4, -4), SD 1-3 (L1, -3)
+**Cold:** CWS 1-3 (L3, -11), LAD 2-5 (L4, -6), NYY 0-2 (L2, -4), ATL 1-2 (L2, -4), SD 1-2 (L1, -2)
 
 ## Loop Activity (since last refresh)
 
-- Confidence delta: **+0.0**
+- Confidence delta: **-0.2**
+- batter total bases: cf +0.0184 (4 new settled)
+- batter hits: cf +0.0031 (17 new settled)
 
 ## Model Recommendations (operator review)
 
