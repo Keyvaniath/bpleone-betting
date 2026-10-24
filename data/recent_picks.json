@@ -1,23 +1,23 @@
 {
- "generated_at": "2026-10-24T18:59:55",
+ "generated_at": "2026-10-24T22:33:55",
  "stake_assumption": "1u flat per pick",
- "total_picks": 15040,
- "n_settled": 18603,
- "n_pending": 1645,
+ "total_picks": 15061,
+ "n_settled": 18616,
+ "n_pending": 1653,
  "n_void": 732,
- "wins": 7990,
- "losses": 10601,
+ "wins": 8000,
+ "losses": 10604,
  "pushes": 12,
- "hit_rate": 0.4298,
- "net_units": -3536.498,
- "roi_pct": -19.02,
- "n_calibrated_picks": 14898,
+ "hit_rate": 0.43,
+ "net_units": -3528.649,
+ "roi_pct": -18.97,
+ "n_calibrated_picks": 14919,
  "calibrated_reliability": {
-  "n": 12527,
-  "ece_raw": 0.0859,
-  "ece_calibrated": 0.0118,
-  "brier_raw": 0.21054,
-  "brier_calibrated": 0.1944,
+  "n": 12540,
+  "ece_raw": 0.0857,
+  "ece_calibrated": 0.0117,
+  "brier_raw": 0.21059,
+  "brier_calibrated": 0.19443,
   "note": "In-sample over the settled ledger (the isotonic transform is fit on these same outcomes); held-out 70/30 validation is in recalibration_map.json. p_predicted = raw model prob (kept untouched for the learning loop); p_calibrated = honest prob stamped per pick. Lower ECE/Brier on the calibrated column = the displayed % is truer."
  },
  "curated": {
@@ -53,11 +53,11 @@
  "headline_basis": "all-time: working ledger + data/ledger_archive.json",
  "working_ledger_only": {
   "all": {
-   "n_settled": 12663,
-   "wins": 5033,
-   "losses": 7620,
-   "net_units": -2277.912,
-   "roi_pct": -18.0
+   "n_settled": 12676,
+   "wins": 5043,
+   "losses": 7623,
+   "net_units": -2270.064,
+   "roi_pct": -17.92
   },
   "curated": {
    "n_settled": 1146,
@@ -72,12 +72,12 @@
   "note": "The headline became ALL-TIME on 2026-10-23. 5,946 settled picks that the old tail-cut eviction had destroyed (May-June 2026, the 07-06 erosion and the run-up to 09-03) were rebuilt from git history at each pick's final state, with today's duplicate-wager rule re-applied, and folded back in. They are mostly the raw May-June MLB prop firehose (2,961-2,983, -1,256.9u), so the firehose ROI fell; the curated record changed by the curated picks among them. Before this date the published numbers covered the working window only -- working_ledger_only keeps that basis.",
   "n_archived_in_headline": 5940
  },
- "n_added_this_run": 0,
- "n_newly_settled_this_run": 0,
+ "n_added_this_run": 2,
+ "n_newly_settled_this_run": 11,
  "n_resettled_this_run": 0,
  "n_voided_this_run": 0,
  "n_duplicates_collapsed_this_run": 0,
- "n_duplicate_adds_blocked_this_run": 72,
+ "n_duplicate_adds_blocked_this_run": 70,
  "n_reconciled_settled_voids": 0,
  "n_bootstrapped_from_locks_history": 0,
  "by_source": {
@@ -307,13 +307,13 @@
    "roi_pct": 53.5
   },
   "wnba_3pm_3pm_under_3.5": {
-   "n": 15,
-   "wins": 9,
+   "n": 16,
+   "wins": 10,
    "losses": 6,
    "pushes": 0,
-   "net_units": -1.46,
-   "hit_rate": 0.6,
-   "roi_pct": -9.73
+   "net_units": -0.85,
+   "hit_rate": 0.625,
+   "roi_pct": -5.31
   },
   "wnba_3pm_3pm_over_0.5": {
    "n": 25,
@@ -334,13 +334,13 @@
    "roi_pct": -32.02
   },
   "wnba_blkstl_blk_stl_under_2.5": {
-   "n": 34,
-   "wins": 24,
+   "n": 35,
+   "wins": 25,
    "losses": 10,
    "pushes": 0,
-   "net_units": 1.473,
-   "hit_rate": 0.7059,
-   "roi_pct": 4.33
+   "net_units": 1.961,
+   "hit_rate": 0.7143,
+   "roi_pct": 5.6
   },
   "mlb_3plus_tb_tb_3plus_no": {
    "n": 4,
@@ -433,13 +433,13 @@
    "roi_pct": 13.04
   },
   "ufc_r1_fight_r1_finish_yes": {
-   "n": 162,
-   "wins": 69,
+   "n": 164,
+   "wins": 71,
    "losses": 93,
    "pushes": 0,
-   "net_units": 149.41,
-   "hit_rate": 0.4259,
-   "roi_pct": 92.23
+   "net_units": 156.27,
+   "hit_rate": 0.4329,
+   "roi_pct": 95.29
   },
   "mlb_2plus_hits_hits_2plus_yes": {
    "n": 232,
@@ -514,13 +514,13 @@
    "roi_pct": -1.72
   },
   "wnba_blkstl_blk_stl_over_0.5": {
-   "n": 23,
+   "n": 24,
    "wins": 19,
-   "losses": 4,
+   "losses": 5,
    "pushes": 0,
-   "net_units": 5.147,
-   "hit_rate": 0.8261,
-   "roi_pct": 22.38
+   "net_units": 4.147,
+   "hit_rate": 0.7917,
+   "roi_pct": 17.28
   },
   "wnba_alts_home_total_over_77.2": {
    "n": 5,
@@ -694,13 +694,13 @@
    "roi_pct": -23.4
   },
   "wnba_blkstl_blk_stl_under_3.5": {
-   "n": 13,
-   "wins": 8,
+   "n": 14,
+   "wins": 9,
    "losses": 5,
    "pushes": 0,
-   "net_units": -0.901,
-   "hit_rate": 0.6154,
-   "roi_pct": -6.93
+   "net_units": -0.287,
+   "hit_rate": 0.6429,
+   "roi_pct": -2.05
   },
   "wc_model_home_ml": {
    "n": 33,
@@ -721,13 +721,13 @@
    "roi_pct": 53.84
   },
   "soccer_clean_sheet_home_clean_sheet_no": {
-   "n": 338,
-   "wins": 245,
+   "n": 340,
+   "wins": 247,
    "losses": 93,
    "pushes": 0,
-   "net_units": -10.548,
-   "hit_rate": 0.7249,
-   "roi_pct": -3.12
+   "net_units": -9.858,
+   "hit_rate": 0.7265,
+   "roi_pct": -2.9
   },
   "wnba_alts_home_total_over_74.4": {
    "n": 1,
@@ -793,13 +793,13 @@
    "roi_pct": -60.95
   },
   "wnba_3pm_3pm_under_2.5": {
-   "n": 27,
-   "wins": 19,
+   "n": 28,
+   "wins": 20,
    "losses": 8,
    "pushes": 0,
-   "net_units": 0.802,
-   "hit_rate": 0.7037,
-   "roi_pct": 2.97
+   "net_units": 1.316,
+   "hit_rate": 0.7143,
+   "roi_pct": 4.7
   },
   "wnba_blkstl_blk_stl_under_1.5": {
    "n": 13,
@@ -811,13 +811,13 @@
    "roi_pct": -12.84
   },
   "soccer_total_total_under_3.5": {
-   "n": 163,
-   "wins": 103,
-   "losses": 60,
+   "n": 165,
+   "wins": 104,
+   "losses": 61,
    "pushes": 0,
-   "net_units": -1.521,
-   "hit_rate": 0.6319,
-   "roi_pct": -0.93
+   "net_units": -1.975,
+   "hit_rate": 0.6303,
+   "roi_pct": -1.2
   },
   "consensus_hit_elite": {
    "n": 1,
@@ -1495,13 +1495,13 @@
    "roi_pct": 53.5
   },
   "wnba_ast_over_2.5": {
-   "n": 3,
+   "n": 4,
    "wins": 2,
-   "losses": 1,
+   "losses": 2,
    "pushes": 0,
-   "net_units": 0.064,
-   "hit_rate": 0.6667,
-   "roi_pct": 2.13
+   "net_units": -0.936,
+   "hit_rate": 0.5,
+   "roi_pct": -23.4
   },
   "tennis_games_total_games_over_19.5": {
    "n": 7,
@@ -2069,6 +2069,15 @@
    "net_units": 0.526,
    "hit_rate": 1.0,
    "roi_pct": 52.6
+  },
+  "wnba_ast_under_4.5": {
+   "n": 1,
+   "wins": 1,
+   "losses": 0,
+   "pushes": 0,
+   "net_units": 0.529,
+   "hit_rate": 1.0,
+   "roi_pct": 52.9
   },
   "nhl_pl_away_minus_1.5": {
    "n": 1,
@@ -2720,12 +2729,12 @@
    "hit_rate": 0.8362
   },
   "3pm_under": {
-   "n": 80,
-   "wins": 53,
+   "n": 82,
+   "wins": 55,
    "losses": 27,
    "pushes": 0,
-   "net_units": -1.773,
-   "hit_rate": 0.6625
+   "net_units": -0.65,
+   "hit_rate": 0.6707
   },
   "3pm_over": {
    "n": 33,
@@ -2736,20 +2745,20 @@
    "hit_rate": 0.697
   },
   "blk_stl_over": {
-   "n": 37,
+   "n": 38,
    "wins": 25,
-   "losses": 12,
+   "losses": 13,
    "pushes": 0,
-   "net_units": 0.583,
-   "hit_rate": 0.6757
+   "net_units": -0.417,
+   "hit_rate": 0.6579
   },
   "blk_stl_under": {
-   "n": 66,
-   "wins": 43,
+   "n": 68,
+   "wins": 45,
    "losses": 23,
    "pushes": 0,
-   "net_units": -2.327,
-   "hit_rate": 0.6515
+   "net_units": -1.225,
+   "hit_rate": 0.6618
   },
   "tb_3plus_no": {
    "n": 4,
@@ -2832,12 +2841,12 @@
    "hit_rate": 0.5254
   },
   "fight_r1_finish_yes": {
-   "n": 157,
-   "wins": 67,
+   "n": 159,
+   "wins": 69,
    "losses": 90,
    "pushes": 0,
-   "net_units": 145.76,
-   "hit_rate": 0.4268
+   "net_units": 152.62,
+   "hit_rate": 0.434
   },
   "hits_2plus_yes": {
    "n": 219,
@@ -2864,12 +2873,12 @@
    "hit_rate": 1.0
   },
   "ast_over": {
-   "n": 13,
+   "n": 14,
    "wins": 9,
-   "losses": 4,
+   "losses": 5,
    "pushes": 0,
-   "net_units": 0.849,
-   "hit_rate": 0.6923
+   "net_units": -0.151,
+   "hit_rate": 0.6429
   },
   "home_plus": {
    "n": 12,
@@ -2920,28 +2929,28 @@
    "hit_rate": 0.8889
   },
   "home_clean_sheet_no": {
-   "n": 325,
-   "wins": 237,
+   "n": 327,
+   "wins": 239,
    "losses": 88,
    "pushes": 0,
-   "net_units": -8.147,
-   "hit_rate": 0.7292
+   "net_units": -7.457,
+   "hit_rate": 0.7309
   },
   "ast_under": {
-   "n": 16,
-   "wins": 12,
+   "n": 17,
+   "wins": 13,
    "losses": 4,
    "pushes": 0,
-   "net_units": 2.51,
-   "hit_rate": 0.75
+   "net_units": 3.038,
+   "hit_rate": 0.7647
   },
   "total_under": {
-   "n": 161,
-   "wins": 102,
-   "losses": 59,
+   "n": 163,
+   "wins": 103,
+   "losses": 60,
    "pushes": 0,
-   "net_units": -1.15,
-   "hit_rate": 0.6335
+   "net_units": -1.604,
+   "hit_rate": 0.6319
   },
   "ml_home": {
    "n": 38,
@@ -3538,12 +3547,12 @@
    "hit_rate": 0.8362
   },
   "3pm_under": {
-   "n": 80,
-   "wins": 53,
+   "n": 82,
+   "wins": 55,
    "losses": 27,
    "pushes": 0,
-   "net_units": -1.773,
-   "hit_rate": 0.6625
+   "net_units": -0.65,
+   "hit_rate": 0.6707
   },
   "3pm_over": {
    "n": 33,
@@ -3554,20 +3563,20 @@
    "hit_rate": 0.697
   },
   "blk_stl_over": {
-   "n": 37,
+   "n": 38,
    "wins": 25,
-   "losses": 12,
+   "losses": 13,
    "pushes": 0,
-   "net_units": 0.583,
-   "hit_rate": 0.6757
+   "net_units": -0.417,
+   "hit_rate": 0.6579
   },
   "blk_stl_under": {
-   "n": 66,
-   "wins": 43,
+   "n": 68,
+   "wins": 45,
    "losses": 23,
    "pushes": 0,
-   "net_units": -2.327,
-   "hit_rate": 0.6515
+   "net_units": -1.225,
+   "hit_rate": 0.6618
   },
   "mlb_tb_2.5_under": {
    "n": 6,
@@ -3666,12 +3675,12 @@
    "hit_rate": 0.5254
   },
   "fight_r1_finish_yes": {
-   "n": 157,
-   "wins": 67,
+   "n": 159,
+   "wins": 69,
    "losses": 90,
    "pushes": 0,
-   "net_units": 145.76,
-   "hit_rate": 0.4268
+   "net_units": 152.62,
+   "hit_rate": 0.434
   },
   "mlb_hit_1.5_over": {
    "n": 224,
@@ -3690,12 +3699,12 @@
    "hit_rate": 1.0
   },
   "ast_over": {
-   "n": 13,
+   "n": 14,
    "wins": 9,
-   "losses": 4,
+   "losses": 5,
    "pushes": 0,
-   "net_units": 0.849,
-   "hit_rate": 0.6923
+   "net_units": -0.151,
+   "hit_rate": 0.6429
   },
   "home_plus": {
    "n": 12,
@@ -3754,28 +3763,28 @@
    "hit_rate": 0.8889
   },
   "home_clean_sheet_no": {
-   "n": 325,
-   "wins": 237,
+   "n": 327,
+   "wins": 239,
    "losses": 88,
    "pushes": 0,
-   "net_units": -8.147,
-   "hit_rate": 0.7292
+   "net_units": -7.457,
+   "hit_rate": 0.7309
   },
   "ast_under": {
-   "n": 16,
-   "wins": 12,
+   "n": 17,
+   "wins": 13,
    "losses": 4,
    "pushes": 0,
-   "net_units": 2.51,
-   "hit_rate": 0.75
+   "net_units": 3.038,
+   "hit_rate": 0.7647
   },
   "total_under": {
-   "n": 161,
-   "wins": 102,
-   "losses": 59,
+   "n": 163,
+   "wins": 103,
+   "losses": 60,
    "pushes": 0,
-   "net_units": -1.15,
-   "hit_rate": 0.6335
+   "net_units": -1.604,
+   "hit_rate": 0.6319
   },
   "ml_home": {
    "n": 38,
@@ -4220,12 +4229,12 @@
  },
  "by_sport": {
   "MLB": {
-   "n": 14338,
+   "n": 14339,
    "settled": 14208,
    "wins": 5194,
    "losses": 9002,
    "pushes": 12,
-   "pending": 14,
+   "pending": 15,
    "void": 116,
    "net_units": -3670.517,
    "hit_rate": 0.3659,
@@ -4246,12 +4255,12 @@
    "markets": 2
   },
   "GOLF": {
-   "n": 937,
+   "n": 945,
    "settled": 889,
    "wins": 371,
    "losses": 518,
    "pushes": 0,
-   "pending": 40,
+   "pending": 48,
    "void": 8,
    "net_units": -92.193,
    "hit_rate": 0.4173,
@@ -4260,24 +4269,24 @@
   },
   "WNBA": {
    "n": 485,
-   "settled": 446,
-   "wins": 327,
-   "losses": 119,
+   "settled": 453,
+   "wins": 332,
+   "losses": 121,
    "pushes": 0,
-   "pending": 9,
+   "pending": 2,
    "void": 30,
-   "net_units": 48.204,
-   "hit_rate": 0.7332,
+   "net_units": 48.958,
+   "hit_rate": 0.7329,
    "roi_pct": 10.81,
    "markets": 4
   },
   "EPL": {
-   "n": 179,
+   "n": 181,
    "settled": 170,
    "wins": 105,
    "losses": 65,
    "pushes": 0,
-   "pending": 9,
+   "pending": 11,
    "void": 0,
    "net_units": -12.761,
    "hit_rate": 0.6176,
@@ -4285,29 +4294,29 @@
    "markets": 5
   },
   "UFC": {
-   "n": 214,
-   "settled": 162,
-   "wins": 69,
+   "n": 216,
+   "settled": 164,
+   "wins": 71,
    "losses": 93,
    "pushes": 0,
    "pending": 8,
    "void": 44,
-   "net_units": 149.41,
-   "hit_rate": 0.4259,
-   "roi_pct": 92.23,
+   "net_units": 156.27,
+   "hit_rate": 0.4329,
+   "roi_pct": 95.29,
    "markets": 1
   },
   "MLS": {
    "n": 401,
-   "settled": 372,
-   "wins": 257,
-   "losses": 115,
+   "settled": 376,
+   "wins": 260,
+   "losses": 116,
    "pushes": 0,
-   "pending": 29,
+   "pending": 25,
    "void": 0,
-   "net_units": -5.636,
-   "hit_rate": 0.6909,
-   "roi_pct": -1.52,
+   "net_units": -5.4,
+   "hit_rate": 0.6915,
+   "roi_pct": -1.44,
    "markets": 4
   },
   "NHL": {
@@ -4415,12 +4424,12 @@
    "markets": 1
   },
   "NBA": {
-   "n": 423,
+   "n": 431,
    "settled": 104,
    "wins": 75,
    "losses": 29,
    "pushes": 0,
-   "pending": 291,
+   "pending": 299,
    "void": 28,
    "net_units": 7.543,
    "hit_rate": 0.7212,
@@ -4462,380 +4471,13 @@
   "note": "NFL props are judged from 10/23 forward: the simulator's form rule changed, so earlier picks are a different model. They stay on the record as their own line and never feed a family verdict."
  },
  "last_7_days": {
-  "wins": 157,
-  "losses": 84,
-  "net_units": 2.964,
-  "hit_rate": 0.6515
+  "wins": 167,
+  "losses": 87,
+  "net_units": 10.813,
+  "hit_rate": 0.6575
  },
  "note": "Unified pick ledger -- records every pick the model surfaces (top_25 board, whales, consensus, unders, sharp action, locks, POD) and settles each against actual outcomes. Per-source W-L feeds back into calibration so the model learns which modules are reliable. THIS is the training signal.",
  "picks": [
-  {
-   "source": "soccer_total_total_over_2.5",
-   "sport": "UCL",
-   "player_or_matchup": "LASK Linz @ Sporting CP",
-   "market": "TOTAL_OVER_2.5",
-   "prob": 0.66,
-   "fair_american": -194,
-   "p_predicted": 0.66,
-   "matchup": "LASK Linz @ Sporting CP",
-   "date": "2026-10-21",
-   "pick_id": "soccer_total_total_over_2_5|UCL|LASK_Linz___Sporting_CP|TOTAL_OVER_2_5|2026-10-21",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.5155,
-   "recorded_at": "2026-10-22T22:45:44",
-   "p_calibrated": 0.66,
-   "outcome": {
-    "final_score": "LASK Linz 3-2 Sporting CP",
-    "total_cards": 7,
-    "total_goals": 5,
-    "scorers": [
-     "luis su\u00e1rez",
-     "christoph lang",
-     "sasa kalajdzic",
-     "krystof danek",
-     "luis su\u00e1rez"
-    ],
-    "market": "TOTAL_OVER_2.5",
-    "verify": "LASK Linz 3-2 Sporting CP: 5 goals (line 2.5) \u2014 TOTAL_OVER_2.5"
-   },
-   "settled_at": "2026-10-23T13:34:11"
-  },
-  {
-   "source": "soccer_clean_sheet_home_clean_sheet_no",
-   "sport": "UCL",
-   "player_or_matchup": "Manchester United @ Como",
-   "market": "HOME_CLEAN_SHEET_NO",
-   "prob": 0.775,
-   "fair_american": -344,
-   "p_predicted": 0.775,
-   "matchup": "Manchester United @ Como",
-   "date": "2026-10-21",
-   "pick_id": "soccer_clean_sheet_home_clean_sheet_no|UCL|Manchester_United___Como|HOME_CLEAN_SHEET_NO|2026-10-21",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.2907,
-   "recorded_at": "2026-10-22T22:45:44",
-   "p_calibrated": 0.7541,
-   "outcome": {
-    "final_score": "Manchester United 1-4 Como",
-    "total_cards": 4,
-    "total_goals": 5,
-    "scorers": [
-     "nico paz",
-     "anastasios douvikas",
-     "nico paz",
-     "jacobo ram\u00f3n",
-     "joshua zirkzee"
-    ],
-    "market": "HOME_CLEAN_SHEET_NO",
-    "verify": "Manchester United 1-4 Como: home clean sheet = False \u2014 HOME_CLEAN_SHEET_NO"
-   },
-   "settled_at": "2026-10-23T13:34:11"
-  },
-  {
-   "source": "soccer_clean_sheet_home_clean_sheet_no",
-   "sport": "UCL",
-   "player_or_matchup": "Viking FK @ Aston Villa",
-   "market": "HOME_CLEAN_SHEET_NO",
-   "prob": 0.756,
-   "fair_american": -310,
-   "p_predicted": 0.756,
-   "matchup": "Viking FK @ Aston Villa",
-   "date": "2026-10-21",
-   "pick_id": "soccer_clean_sheet_home_clean_sheet_no|UCL|Viking_FK___Aston_Villa|HOME_CLEAN_SHEET_NO|2026-10-21",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.3226,
-   "recorded_at": "2026-10-22T22:45:44",
-   "p_calibrated": 0.7541,
-   "outcome": {
-    "final_score": "Viking FK 1-3 Aston Villa",
-    "total_cards": 0,
-    "total_goals": 4,
-    "scorers": [
-     "ross barkley",
-     "emiliano buend\u00eda",
-     "peter christiansen"
-    ],
-    "market": "HOME_CLEAN_SHEET_NO",
-    "verify": "Viking FK 1-3 Aston Villa: home clean sheet = False \u2014 HOME_CLEAN_SHEET_NO"
-   },
-   "settled_at": "2026-10-23T13:34:11"
-  },
-  {
-   "source": "soccer_clean_sheet_home_clean_sheet_no",
-   "sport": "UCL",
-   "player_or_matchup": "Lens @ Club Brugge",
-   "market": "HOME_CLEAN_SHEET_NO",
-   "prob": 0.775,
-   "fair_american": -344,
-   "p_predicted": 0.775,
-   "matchup": "Lens @ Club Brugge",
-   "date": "2026-10-21",
-   "pick_id": "soccer_clean_sheet_home_clean_sheet_no|UCL|Lens___Club_Brugge|HOME_CLEAN_SHEET_NO|2026-10-21",
-   "settled": true,
-   "result": "lost",
-   "payout_units": -1.0,
-   "recorded_at": "2026-10-22T22:45:44",
-   "p_calibrated": 0.7541,
-   "outcome": {
-    "final_score": "Lens 0-3 Club Brugge",
-    "total_cards": 4,
-    "total_goals": 3,
-    "scorers": [
-     "hans vanaken",
-     "joaquin seys",
-     "carlos forbs"
-    ],
-    "market": "HOME_CLEAN_SHEET_NO",
-    "verify": "Lens 0-3 Club Brugge: home clean sheet = True \u2014 HOME_CLEAN_SHEET_NO"
-   },
-   "settled_at": "2026-10-23T13:34:11"
-  },
-  {
-   "source": "soccer_clean_sheet_home_clean_sheet_no",
-   "sport": "UCL",
-   "player_or_matchup": "Shakhtar Donetsk @ Internazionale",
-   "market": "HOME_CLEAN_SHEET_NO",
-   "prob": 0.778,
-   "fair_american": -350,
-   "p_predicted": 0.778,
-   "matchup": "Shakhtar Donetsk @ Internazionale",
-   "date": "2026-10-21",
-   "pick_id": "soccer_clean_sheet_home_clean_sheet_no|UCL|Shakhtar_Donetsk___Internazionale|HOME_CLEAN_SHEET_NO|2026-10-21",
-   "settled": true,
-   "result": "lost",
-   "payout_units": -1.0,
-   "recorded_at": "2026-10-22T22:45:44",
-   "p_calibrated": 0.7541,
-   "outcome": {
-    "final_score": "Shakhtar Donetsk 0-1 Internazionale",
-    "total_cards": 6,
-    "total_goals": 1,
-    "scorers": [
-     "carlos augusto"
-    ],
-    "market": "HOME_CLEAN_SHEET_NO",
-    "verify": "Shakhtar Donetsk 0-1 Internazionale: home clean sheet = True \u2014 HOME_CLEAN_SHEET_NO"
-   },
-   "settled_at": "2026-10-23T13:34:11"
-  },
-  {
-   "source": "soccer_clean_sheet_home_clean_sheet_no",
-   "sport": "UCL",
-   "player_or_matchup": "Feyenoord Rotterdam @ Real Betis",
-   "market": "HOME_CLEAN_SHEET_NO",
-   "prob": 0.777,
-   "fair_american": -349,
-   "p_predicted": 0.777,
-   "matchup": "Feyenoord Rotterdam @ Real Betis",
-   "date": "2026-10-21",
-   "pick_id": "soccer_clean_sheet_home_clean_sheet_no|UCL|Feyenoord_Rotterdam___Real_Betis|HOME_CLEAN_SHEET_NO|2026-10-21",
-   "settled": true,
-   "result": "lost",
-   "payout_units": -1.0,
-   "recorded_at": "2026-10-22T22:45:44",
-   "p_calibrated": 0.7541,
-   "outcome": {
-    "final_score": "Feyenoord Rotterdam 0-1 Real Betis",
-    "total_cards": 3,
-    "total_goals": 1,
-    "scorers": [
-     "isco"
-    ],
-    "market": "HOME_CLEAN_SHEET_NO",
-    "verify": "Feyenoord Rotterdam 0-1 Real Betis: home clean sheet = True \u2014 HOME_CLEAN_SHEET_NO"
-   },
-   "settled_at": "2026-10-23T13:34:11"
-  },
-  {
-   "source": "soccer_clean_sheet_home_clean_sheet_no",
-   "sport": "UCL",
-   "player_or_matchup": "RB Leipzig @ Real Madrid",
-   "market": "HOME_CLEAN_SHEET_NO",
-   "prob": 0.777,
-   "fair_american": -349,
-   "p_predicted": 0.777,
-   "matchup": "RB Leipzig @ Real Madrid",
-   "date": "2026-10-21",
-   "pick_id": "soccer_clean_sheet_home_clean_sheet_no|UCL|RB_Leipzig___Real_Madrid|HOME_CLEAN_SHEET_NO|2026-10-21",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.2865,
-   "recorded_at": "2026-10-22T22:45:44",
-   "p_calibrated": 0.7541,
-   "outcome": {
-    "final_score": "RB Leipzig 1-4 Real Madrid",
-    "total_cards": 2,
-    "total_goals": 5,
-    "scorers": [
-     "bernardo silva",
-     "arda g\u00fcler",
-     "kylian mbapp\u00e9",
-     "tidiam gomis",
-     "yan diomande"
-    ],
-    "market": "HOME_CLEAN_SHEET_NO",
-    "verify": "RB Leipzig 1-4 Real Madrid: home clean sheet = False \u2014 HOME_CLEAN_SHEET_NO"
-   },
-   "settled_at": "2026-10-23T13:34:11"
-  },
-  {
-   "source": "soccer_clean_sheet_home_clean_sheet_no",
-   "sport": "UCL",
-   "player_or_matchup": "LASK Linz @ Sporting CP",
-   "market": "HOME_CLEAN_SHEET_NO",
-   "prob": 0.775,
-   "fair_american": -344,
-   "p_predicted": 0.775,
-   "matchup": "LASK Linz @ Sporting CP",
-   "date": "2026-10-21",
-   "pick_id": "soccer_clean_sheet_home_clean_sheet_no|UCL|LASK_Linz___Sporting_CP|HOME_CLEAN_SHEET_NO|2026-10-21",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.2907,
-   "recorded_at": "2026-10-22T22:45:44",
-   "p_calibrated": 0.7541,
-   "outcome": {
-    "final_score": "LASK Linz 3-2 Sporting CP",
-    "total_cards": 7,
-    "total_goals": 5,
-    "scorers": [
-     "luis su\u00e1rez",
-     "christoph lang",
-     "sasa kalajdzic",
-     "krystof danek",
-     "luis su\u00e1rez"
-    ],
-    "market": "HOME_CLEAN_SHEET_NO",
-    "verify": "LASK Linz 3-2 Sporting CP: home clean sheet = False \u2014 HOME_CLEAN_SHEET_NO"
-   },
-   "settled_at": "2026-10-23T13:34:11"
-  },
-  {
-   "source": "nhl_pl_away_plus_1.5",
-   "sport": "NHL",
-   "player_or_matchup": "New York Islanders @ New York Rangers",
-   "market": "AWAY_PLUS_1.5",
-   "prob": 0.675,
-   "fair_american": -208,
-   "p_predicted": 0.675,
-   "matchup": "New York Islanders @ New York Rangers",
-   "date": "2026-10-22",
-   "pick_id": "nhl_pl_away_plus_1_5|NHL|New_York_Islanders___New_York_Rangers|AWAY_PLUS_1_5|2026-10-22",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.4808,
-   "recorded_at": "2026-10-22T05:00:32",
-   "p_calibrated": 0.675,
-   "outcome": {
-    "final_score": "LA 3 @ NYI 2",
-    "side": "away",
-    "line": 1.5,
-    "market": "AWAY_PLUS_1.5",
-    "verify": "LA 3 @ NYI 2: away +1.5 \u2014 AWAY_PLUS_1.5"
-   },
-   "settled_at": "2026-10-23T02:35:41"
-  },
-  {
-   "source": "nhl_anytime_goal_no",
-   "sport": "NHL",
-   "player_or_matchup": "elias pettersson",
-   "market": "ANYTIME_GOAL_NO",
-   "prob": 0.905,
-   "fair_american": -951,
-   "p_predicted": 0.905,
-   "matchup": "VAN @ CGY",
-   "date": "2026-10-22",
-   "pick_id": "nhl_anytime_goal_no|NHL|elias_pettersson|ANYTIME_GOAL_NO|2026-10-22",
-   "settled": true,
-   "result": "lost",
-   "payout_units": -1.0,
-   "recorded_at": "2026-10-22T05:00:32",
-   "p_calibrated": 0.905,
-   "outcome": {
-    "stat": "goals",
-    "actual": 1,
-    "side": "NO",
-    "verify": "elias pettersson \u2014 goals = 1 (anytime goal no) on 2026-10-22"
-   },
-   "settled_at": "2026-10-23T05:50:26"
-  },
-  {
-   "source": "nhl_anytime_goal_no",
-   "sport": "NHL",
-   "player_or_matchup": "jack eichel",
-   "market": "ANYTIME_GOAL_NO",
-   "prob": 0.905,
-   "fair_american": -951,
-   "p_predicted": 0.905,
-   "matchup": "VGK @ SJS",
-   "date": "2026-10-22",
-   "pick_id": "nhl_anytime_goal_no|NHL|jack_eichel|ANYTIME_GOAL_NO|2026-10-22",
-   "settled": true,
-   "result": "lost",
-   "payout_units": -1.0,
-   "recorded_at": "2026-10-22T05:00:32",
-   "p_calibrated": 0.905,
-   "outcome": {
-    "stat": "goals",
-    "actual": 1,
-    "side": "NO",
-    "verify": "jack eichel \u2014 goals = 1 (anytime goal no) on 2026-10-22"
-   },
-   "settled_at": "2026-10-23T03:29:34"
-  },
-  {
-   "source": "nhl_skater_hits_over_2.5",
-   "sport": "NHL",
-   "player_or_matchup": "trent frederic",
-   "market": "HITS_OVER_2.5",
-   "prob": 0.679,
-   "fair_american": -212,
-   "p_predicted": 0.679,
-   "matchup": "EDM @ WPG",
-   "date": "2026-10-22",
-   "pick_id": "nhl_skater_hits_over_2_5|NHL|trent_frederic|HITS_OVER_2_5|2026-10-22",
-   "settled": true,
-   "result": "lost",
-   "payout_units": -1.0,
-   "recorded_at": "2026-10-22T05:00:32",
-   "p_calibrated": 0.679,
-   "outcome": {
-    "stat": "hits",
-    "actual": 1,
-    "line": 2.5,
-    "side": "OVER",
-    "verify": "trent frederic \u2014 hits = 1 (line 2.5, bet over) on 2026-10-20"
-   },
-   "settled_at": "2026-10-22T22:06:53"
-  },
-  {
-   "source": "nhl_skater_blocks_over_1.5",
-   "sport": "NHL",
-   "player_or_matchup": "noah hanifin",
-   "market": "BLOCKS_OVER_1.5",
-   "prob": 0.669,
-   "fair_american": -202,
-   "p_predicted": 0.669,
-   "matchup": "VGK @ SJS",
-   "date": "2026-10-22",
-   "pick_id": "nhl_skater_blocks_over_1_5|NHL|noah_hanifin|BLOCKS_OVER_1_5|2026-10-22",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.495,
-   "recorded_at": "2026-10-22T05:00:32",
-   "p_calibrated": 0.6128,
-   "outcome": {
-    "stat": "blocks",
-    "actual": 2,
-    "line": 1.5,
-    "side": "OVER",
-    "verify": "noah hanifin \u2014 blocks = 2 (line 1.5, bet over) on 2026-10-20"
-   },
-   "settled_at": "2026-10-22T22:06:53"
-  },
   {
    "source": "nba_steals_over_0.5",
    "sport": "NBA",
@@ -6031,6 +5673,31 @@
   {
    "source": "ufc_r1_fight_r1_finish_yes",
    "sport": "UFC",
+   "player_or_matchup": "Azamat Murzakanov vs Dominick Reyes",
+   "market": "FIGHT_R1_FINISH_YES",
+   "prob": 0.299,
+   "fair_american": 235,
+   "p_predicted": 0.299,
+   "matchup": "Azamat Murzakanov vs Dominick Reyes",
+   "date": "2026-10-22",
+   "pick_id": "ufc_r1_fight_r1_finish_yes|UFC|Azamat_Murzakanov_vs_Dominick_Reyes|FIGHT_R1_FINISH_YES|2026-10-22",
+   "settled": true,
+   "result": "won",
+   "payout_units": 2.35,
+   "recorded_at": "2026-10-22T22:45:44",
+   "p_calibrated": 0.4349,
+   "outcome": {
+    "fight": "Azamat Murzakanov vs Dominick Reyes",
+    "winner": "Dominick Reyes",
+    "ended_round": 1,
+    "market": "FIGHT_R1_FINISH_YES",
+    "verify": "Dominick Reyes def. opponent (ended R1) \u2014 FIGHT_R1_FINISH_YES"
+   },
+   "settled_at": "2026-10-24T21:11:17"
+  },
+  {
+   "source": "ufc_r1_fight_r1_finish_yes",
+   "sport": "UFC",
    "player_or_matchup": "Nikita Krylov vs Abdul-Rakhman Yakhyaev",
    "market": "FIGHT_R1_FINISH_YES",
    "prob": 0.299,
@@ -6043,7 +5710,7 @@
    "result": "won",
    "payout_units": 2.34,
    "recorded_at": "2026-10-22T22:45:44",
-   "p_calibrated": 0.4277,
+   "p_calibrated": 0.4349,
    "outcome": {
     "fight": "Nikita Krylov vs Abdul-Rakhman Yakhyaev",
     "winner": "Abdul-Rakhman Yakhyaev",
@@ -6068,7 +5735,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-10-22T22:45:44",
-   "p_calibrated": 0.4277,
+   "p_calibrated": 0.4349,
    "outcome": {
     "fight": "Abubakar Vagaev vs Jacob Malkoun",
     "winner": "Abubakar Vagaev",
@@ -6093,7 +5760,7 @@
    "result": "won",
    "payout_units": 2.97,
    "recorded_at": "2026-10-22T22:45:44",
-   "p_calibrated": 0.4277,
+   "p_calibrated": 0.4349,
    "outcome": {
     "fight": "Abus Magomedov vs Cam Rowston",
     "winner": "Abus Magomedov",
@@ -6118,7 +5785,7 @@
    "result": "lost",
    "payout_units": -1.0,
    "recorded_at": "2026-10-22T22:45:44",
-   "p_calibrated": 0.3314,
+   "p_calibrated": 0.336,
    "outcome": {
     "fight": "Grant Dawson vs Nurullo Aliev",
     "winner": "Grant Dawson",
@@ -6143,7 +5810,7 @@
    "result": "won",
    "payout_units": 4.02,
    "recorded_at": "2026-10-22T22:45:44",
-   "p_calibrated": 0.3314,
+   "p_calibrated": 0.336,
    "outcome": {
     "fight": "Noah Gugnon vs Kody Steele",
     "winner": "Kody Steele",
@@ -6152,6 +5819,31 @@
     "verify": "Kody Steele def. opponent (ended R1) \u2014 FIGHT_R1_FINISH_YES"
    },
    "settled_at": "2026-10-24T17:30:34"
+  },
+  {
+   "source": "ufc_r1_fight_r1_finish_yes",
+   "sport": "UFC",
+   "player_or_matchup": "Aaron Pico vs Losene Keita",
+   "market": "FIGHT_R1_FINISH_YES",
+   "prob": 0.181,
+   "fair_american": 451,
+   "p_predicted": 0.181,
+   "matchup": "Aaron Pico vs Losene Keita",
+   "date": "2026-10-22",
+   "pick_id": "ufc_r1_fight_r1_finish_yes|UFC|Aaron_Pico_vs_Losene_Keita|FIGHT_R1_FINISH_YES|2026-10-22",
+   "settled": true,
+   "result": "won",
+   "payout_units": 4.51,
+   "recorded_at": "2026-10-22T22:45:44",
+   "p_calibrated": 0.336,
+   "outcome": {
+    "fight": "Aaron Pico vs Losene Keita",
+    "winner": "Aaron Pico",
+    "ended_round": 1,
+    "market": "FIGHT_R1_FINISH_YES",
+    "verify": "Aaron Pico def. opponent (ended R1) \u2014 FIGHT_R1_FINISH_YES"
+   },
+   "settled_at": "2026-10-24T21:11:17"
   },
   {
    "source": "nhl_pl_away_plus_1.5",
@@ -9513,12 +9205,309 @@
     "verify": "anthony edwards \u2014 reb_ast = 8 (line 7.5, bet over) on 2026-10-23"
    },
    "settled_at": "2026-10-24T11:14:05"
+  },
+  {
+   "source": "soccer_total_total_under_3.5",
+   "sport": "MLS",
+   "player_or_matchup": "Nashville SC @ CF Montr\u00e9al",
+   "market": "TOTAL_UNDER_3.5",
+   "prob": 0.647,
+   "fair_american": -183,
+   "p_predicted": 0.647,
+   "matchup": "Nashville SC @ CF Montr\u00e9al",
+   "date": "2026-10-24",
+   "pick_id": "soccer_total_total_under_3_5|MLS|Nashville_SC___CF_Montr_al|TOTAL_UNDER_3_5|2026-10-24",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.5464,
+   "recorded_at": "2026-10-22T22:30:58",
+   "p_calibrated": 0.6863,
+   "outcome": {
+    "final_score": "Nashville SC 2-0 CF Montr\u00e9al",
+    "total_cards": 4,
+    "total_goals": 2,
+    "scorers": [
+     "sam surridge"
+    ],
+    "market": "TOTAL_UNDER_3.5",
+    "verify": "Nashville SC 2-0 CF Montr\u00e9al: 2 goals (line 3.5) \u2014 TOTAL_UNDER_3.5"
+   },
+   "settled_at": "2026-10-24T22:33:55"
+  },
+  {
+   "source": "soccer_total_total_under_3.5",
+   "sport": "MLS",
+   "player_or_matchup": "Toronto FC @ Columbus Crew",
+   "market": "TOTAL_UNDER_3.5",
+   "prob": 0.647,
+   "fair_american": -183,
+   "p_predicted": 0.647,
+   "matchup": "Toronto FC @ Columbus Crew",
+   "date": "2026-10-24",
+   "pick_id": "soccer_total_total_under_3_5|MLS|Toronto_FC___Columbus_Crew|TOTAL_UNDER_3_5|2026-10-24",
+   "settled": true,
+   "result": "lost",
+   "payout_units": -1.0,
+   "recorded_at": "2026-10-22T22:30:58",
+   "p_calibrated": 0.6863,
+   "outcome": {
+    "final_score": "Toronto FC 2-4 Columbus Crew",
+    "total_cards": 2,
+    "total_goals": 6,
+    "scorers": [
+     "gonzalo tapia",
+     "malte amundsen",
+     "malte amundsen",
+     "brooks lennon",
+     "d\u00e1niel sall\u00f3i",
+     "josh sargent"
+    ],
+    "market": "TOTAL_UNDER_3.5",
+    "verify": "Toronto FC 2-4 Columbus Crew: 6 goals (line 3.5) \u2014 TOTAL_UNDER_3.5"
+   },
+   "settled_at": "2026-10-24T22:33:55"
+  },
+  {
+   "source": "soccer_clean_sheet_home_clean_sheet_no",
+   "sport": "MLS",
+   "player_or_matchup": "Nashville SC @ CF Montr\u00e9al",
+   "market": "HOME_CLEAN_SHEET_NO",
+   "prob": 0.757,
+   "fair_american": -312,
+   "p_predicted": 0.757,
+   "matchup": "Nashville SC @ CF Montr\u00e9al",
+   "date": "2026-10-24",
+   "pick_id": "soccer_clean_sheet_home_clean_sheet_no|MLS|Nashville_SC___CF_Montr_al|HOME_CLEAN_SHEET_NO|2026-10-24",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.3205,
+   "recorded_at": "2026-10-22T22:30:58",
+   "p_calibrated": 0.7541,
+   "outcome": {
+    "final_score": "Nashville SC 2-0 CF Montr\u00e9al",
+    "total_cards": 4,
+    "total_goals": 2,
+    "scorers": [
+     "sam surridge"
+    ],
+    "market": "HOME_CLEAN_SHEET_NO",
+    "verify": "Nashville SC 2-0 CF Montr\u00e9al: home clean sheet = False \u2014 HOME_CLEAN_SHEET_NO"
+   },
+   "settled_at": "2026-10-24T22:33:55"
+  },
+  {
+   "source": "soccer_clean_sheet_home_clean_sheet_no",
+   "sport": "MLS",
+   "player_or_matchup": "Toronto FC @ Columbus Crew",
+   "market": "HOME_CLEAN_SHEET_NO",
+   "prob": 0.73,
+   "fair_american": -271,
+   "p_predicted": 0.73,
+   "matchup": "Toronto FC @ Columbus Crew",
+   "date": "2026-10-24",
+   "pick_id": "soccer_clean_sheet_home_clean_sheet_no|MLS|Toronto_FC___Columbus_Crew|HOME_CLEAN_SHEET_NO|2026-10-24",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.369,
+   "recorded_at": "2026-10-22T22:30:58",
+   "p_calibrated": 0.672,
+   "outcome": {
+    "final_score": "Toronto FC 2-4 Columbus Crew",
+    "total_cards": 2,
+    "total_goals": 6,
+    "scorers": [
+     "gonzalo tapia",
+     "malte amundsen",
+     "malte amundsen",
+     "brooks lennon",
+     "d\u00e1niel sall\u00f3i",
+     "josh sargent"
+    ],
+    "market": "HOME_CLEAN_SHEET_NO",
+    "verify": "Toronto FC 2-4 Columbus Crew: home clean sheet = False \u2014 HOME_CLEAN_SHEET_NO"
+   },
+   "settled_at": "2026-10-24T22:33:55"
+  },
+  {
+   "source": "wnba_ast_over_2.5",
+   "sport": "WNBA",
+   "player_or_matchup": "allisha gray",
+   "market": "AST_OVER_2.5",
+   "prob": 0.652,
+   "fair_american": -187,
+   "p_predicted": 0.652,
+   "matchup": "GSV @ ATL",
+   "date": "2026-10-24",
+   "pick_id": "wnba_ast_over_2_5|WNBA|allisha_gray|AST_OVER_2_5|2026-10-24",
+   "settled": true,
+   "result": "lost",
+   "payout_units": -1.0,
+   "recorded_at": "2026-10-22T22:30:58",
+   "p_calibrated": 0.652,
+   "outcome": {
+    "stat": "ast",
+    "actual": 0,
+    "line": 2.5,
+    "side": "OVER",
+    "verify": "allisha gray \u2014 ast = 0 (line 2.5, bet over) on 2026-10-24"
+   },
+   "settled_at": "2026-10-24T22:33:55"
+  },
+  {
+   "source": "wnba_3pm_3pm_under_2.5",
+   "sport": "WNBA",
+   "player_or_matchup": "allisha gray",
+   "market": "3PM_UNDER_2.5",
+   "prob": 0.661,
+   "fair_american": -195,
+   "p_predicted": 0.661,
+   "matchup": "GOL @ ATL",
+   "date": "2026-10-24",
+   "pick_id": "wnba_3pm_3pm_under_2_5|WNBA|allisha_gray|3PM_UNDER_2_5|2026-10-24",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.5128,
+   "recorded_at": "2026-10-22T22:30:58",
+   "p_calibrated": 0.6451,
+   "outcome": {
+    "stat": "fg3m",
+    "actual": 0,
+    "line": 2.5,
+    "side": "UNDER",
+    "verify": "allisha gray \u2014 fg3m = 0 (line 2.5, bet under) on 2026-10-24"
+   },
+   "settled_at": "2026-10-24T22:33:55"
+  },
+  {
+   "source": "wnba_ast_under_4.5",
+   "sport": "WNBA",
+   "player_or_matchup": "rhyne howard",
+   "market": "AST_UNDER_4.5",
+   "prob": 0.655,
+   "fair_american": -189,
+   "p_predicted": 0.655,
+   "matchup": "GSV @ ATL",
+   "date": "2026-10-24",
+   "pick_id": "wnba_ast_under_4_5|WNBA|rhyne_howard|AST_UNDER_4_5|2026-10-24",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.5291,
+   "recorded_at": "2026-10-23T03:48:03",
+   "p_calibrated": 0.655,
+   "outcome": {
+    "stat": "ast",
+    "actual": 1,
+    "line": 4.5,
+    "side": "UNDER",
+    "verify": "rhyne howard \u2014 ast = 1 (line 4.5, bet under) on 2026-10-24"
+   },
+   "settled_at": "2026-10-24T22:33:55"
+  },
+  {
+   "source": "wnba_3pm_3pm_under_3.5",
+   "sport": "WNBA",
+   "player_or_matchup": "rhyne howard",
+   "market": "3PM_UNDER_3.5",
+   "prob": 0.622,
+   "fair_american": -164,
+   "p_predicted": 0.622,
+   "matchup": "GOL @ ATL",
+   "date": "2026-10-24",
+   "pick_id": "wnba_3pm_3pm_under_3_5|WNBA|rhyne_howard|3PM_UNDER_3_5|2026-10-24",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.6098,
+   "recorded_at": "2026-10-23T03:48:03",
+   "p_calibrated": 0.5554,
+   "outcome": {
+    "stat": "fg3m",
+    "actual": 2,
+    "line": 3.5,
+    "side": "UNDER",
+    "verify": "rhyne howard \u2014 fg3m = 2 (line 3.5, bet under) on 2026-10-24"
+   },
+   "settled_at": "2026-10-24T22:33:55"
+  },
+  {
+   "source": "wnba_blkstl_blk_stl_under_3.5",
+   "sport": "WNBA",
+   "player_or_matchup": "rhyne howard",
+   "market": "BLK_STL_UNDER_3.5",
+   "prob": 0.62,
+   "fair_american": -163,
+   "p_predicted": 0.62,
+   "matchup": "GOL @ ATL",
+   "date": "2026-10-24",
+   "pick_id": "wnba_blkstl_blk_stl_under_3_5|WNBA|rhyne_howard|BLK_STL_UNDER_3_5|2026-10-24",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.6135,
+   "recorded_at": "2026-10-23T03:48:03",
+   "p_calibrated": 0.6467,
+   "outcome": {
+    "stat": "blk_stl",
+    "actual": 1,
+    "line": 3.5,
+    "side": "UNDER",
+    "verify": "rhyne howard \u2014 blk_stl = 1 (line 3.5, bet under) on 2026-10-24"
+   },
+   "settled_at": "2026-10-24T22:33:55"
+  },
+  {
+   "source": "wnba_blkstl_blk_stl_under_2.5",
+   "sport": "WNBA",
+   "player_or_matchup": "gabby williams",
+   "market": "BLK_STL_UNDER_2.5",
+   "prob": 0.672,
+   "fair_american": -205,
+   "p_predicted": 0.672,
+   "matchup": "GOL @ ATL",
+   "date": "2026-10-24",
+   "pick_id": "wnba_blkstl_blk_stl_under_2_5|WNBA|gabby_williams|BLK_STL_UNDER_2_5|2026-10-24",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.4878,
+   "recorded_at": "2026-10-23T05:50:26",
+   "p_calibrated": 0.6547,
+   "outcome": {
+    "stat": "blk_stl",
+    "actual": 2,
+    "line": 2.5,
+    "side": "UNDER",
+    "verify": "gabby williams \u2014 blk_stl = 2 (line 2.5, bet under) on 2026-10-24"
+   },
+   "settled_at": "2026-10-24T22:33:55"
+  },
+  {
+   "source": "wnba_blkstl_blk_stl_over_0.5",
+   "sport": "WNBA",
+   "player_or_matchup": "tiffany hayes",
+   "market": "BLK_STL_OVER_0.5",
+   "prob": 0.64,
+   "fair_american": -178,
+   "p_predicted": 0.64,
+   "matchup": "GOL @ ATL",
+   "date": "2026-10-24",
+   "pick_id": "wnba_blkstl_blk_stl_over_0_5|WNBA|tiffany_hayes|BLK_STL_OVER_0_5|2026-10-24",
+   "settled": true,
+   "result": "lost",
+   "payout_units": -1.0,
+   "recorded_at": "2026-10-23T05:50:26",
+   "p_calibrated": 0.667,
+   "outcome": {
+    "stat": "blk_stl",
+    "actual": 0,
+    "line": 0.5,
+    "side": "OVER",
+    "verify": "tiffany hayes \u2014 blk_stl = 0 (line 0.5, bet over) on 2026-10-24"
+   },
+   "settled_at": "2026-10-24T22:33:55"
   }
  ],
  "recent_window": 200,
  "date_range": [
   "2026-05-19",
-  "2026-10-23"
+  "2026-10-24"
  ],
- "digest_generated_at": "2026-10-24T18:59:56"
+ "digest_generated_at": "2026-10-24T22:33:57"
 }
