@@ -1,19 +1,19 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-10-23T19:59:49 UTC_
+_Generated 2026-10-24T00:24:40 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
 - **Score:** -30
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 14
-- **Total FADES:** 86
+- **Total STRONG:** 13
+- **Total FADES:** 82
 
 ## Top 5 Curated Picks
-1. **GOLF / Kensei Hirata** (GOLF_PLAYER, score=164.07)
+1. **GOLF / Kensei Hirata** (GOLF_PLAYER, score=162.0)
    - Play: Kensei Hirata (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Chandler Blanchet** (GOLF_PLAYER, score=163.57)
+2. **GOLF / Chandler Blanchet** (GOLF_PLAYER, score=161.07)
    - Play: Chandler Blanchet (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
 3. **WNBA / allisha gray** (WNBA_PLAYER, score=62.42)
@@ -36,13 +36,13 @@ _Generated 2026-10-23T19:59:49 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **NBA** / lamelo ball (PLAYER_FADE)
-  - Fade angle: PTS UNDER + PRA UNDER (multi-prop)
-- **NBA** / anthony edwards (PLAYER_FADE)
-  - Fade angle: PTS UNDER + PRA UNDER (multi-prop)
-- **NBA** / kyrie irving (PLAYER_FADE)
-  - Fade angle: PTS UNDER + PRA UNDER (multi-prop)
 - **NBA** / SAS (TEAM_FADE)
   - Fade angle: team total UNDER
 - **NBA** / ORL (TEAM_FADE)
+  - Fade angle: team total UNDER
+- **NBA** / DET (TEAM_FADE)
+  - Fade angle: team total UNDER
+- **NBA** / NYK (TEAM_FADE)
+  - Fade angle: team total UNDER
+- **NBA** / MIN (TEAM_FADE)
   - Fade angle: team total UNDER

@@ -1,5 +1,5 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:14 F:86
+_NO_ACTION_NIGHT_ | L:0 S:13 F:82
 
 :dart: **Top Picks:**
 1. [GOLF] Kensei Hirata -- Kensei Hirata (PLAYER_STRONG)

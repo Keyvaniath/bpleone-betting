@@ -1,18 +1,18 @@
-# EdgeStat Daily Summary — 2026-10-23
+# EdgeStat Daily Summary — 2026-10-24
 
-## 🏥 Model Health: 64.7/100 [OK]
+## 🏥 Model Health: 65.9/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.7/100
+  - 🟢 Calibration Freshness: 100.0/100
   - 🔴 Hit Rate Trend: 33.6/100
   - 🔴 Brier Trend: 3.1/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 95.5/100
-  - 🟢 Edge Count: 82.9/100
+  - 🟢 Data Health: 100.0/100
+  - 🟢 Edge Count: 85.7/100
 
 ## 🌐 Slate Overview
-- **Regime today:** BALANCED (avg P(home)=0.53)
-- **Total games on board:** 62
-- **Strong home favorites:** 26 | **Strong road dogs:** 20
+- **Regime today:** BALANCED (avg P(home)=0.497)
+- **Total games on board:** 60
+- **Strong home favorites:** 22 | **Strong road dogs:** 23
 
 ## 🎯 Top 5 Best Bets
 1. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
@@ -39,7 +39,7 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (17)
+## ⚡ Pre-Game HIGH Conviction (16)
 - [NCAAF] **BYU Cougars** AWAY (None L10) · model 74.9% fair -299
 - [NFL] **Pittsburgh Steelers** AWAY (None L10) · model 74.5% fair -291
 - [NFL] **Denver Broncos** AWAY (None L10) · model 74.5% fair -291
@@ -52,12 +52,12 @@
 - [NCAAF] **USC Trojans** AWAY (None L10) · model 68.0% fair -212
 
 ## 🔥/❄️ Heat / Cold Signals
-- Hot teams: **6** | Cold teams: **15** | Over-heavy: 0 | Under-heavy: 21
+- Hot teams: **5** | Cold teams: **16** | Over-heavy: 0 | Under-heavy: 21
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (160)
+## ⚠️ Anomaly Detector (167)
 - RESIDUAL_DIVERGENCE: **26**
-- STEAM_MOVE: **134**
+- STEAM_MOVE: **141**
   - Milwaukee Bucks (NBA): Milwaukee Bucks UNDERPERFORMING expected margin by 11.8pts in recent games -- model bias may persist
   - Boston Celtics (NBA): Boston Celtics OUTPERFORMING expected margin by 7.7pts in recent games -- model bias may persist
   - New York Knicks (NBA): New York Knicks UNDERPERFORMING expected margin by 6.8pts in recent games -- model bias may persist
@@ -84,12 +84,12 @@
 ## ⚾ Top MLB Pitcher K Plays (1)
 - **Jacob Misiorowski** OVER 4.5 K (75%) fair -303
 
-## 🏀 NBA Player Heat (6 HOT / 4 COLD)
+## 🏀 NBA Player Heat (5 HOT / 4 COLD)
   - 🔥 **Maxime Raynaud** (SAC): L5 20.0/9.8/2.6 vs season 12.5/7.5/1.4 [PTS +7.5, REB +2.3]
   - 🔥 **Taurean Prince** (DET): L5 16.4/6.2/3.2 vs season 9.2/3.1/1.8 [PTS +7.2, REB +3.1]
-  - 🔥 **Cormac Ryan** (MIL): L5 20.2/4.8/2.4 vs season 14.3/2.5/1.7 [PTS +5.9, REB +2.3]
   - 🔥 **Will Riley** (WSH): L5 15.4/5.4/4.4 vs season 10.3/2.9/2.0 [PTS +5.1, REB +2.5, AST +2.4]
   - 🔥 **Collin Sexton** (LAL): L5 18.2/5.2/3.0 vs season 15.4/2.3/3.3 [REB +2.9]
+  - 🔥 **Malachi Smith** (TOR): L5 10.2/6.0/5.8 vs season 8.3/3.4/3.3 [REB +2.6, AST +2.5]
   - ❄️ **Shaedon Sharpe** (POR): L5 7.2 vs season 20.8 [PTS -13.6, REB -2.7, AST -2.0] -- FADE OVER props
   - ❄️ **Brandon Ingram** (LAC): L5 12.0 vs season 21.5 [PTS -9.5, REB -2.4] -- FADE OVER props
   - ❄️ **Isaiah Stewart** (MEM): L5 3.8 vs season 10.0 [PTS -6.2, REB -3.4] -- FADE OVER props
@@ -107,6 +107,9 @@
   - 🔥 T3 **Séamus Power** (Ireland): -12 total -- finished T3
   - 🔥 T4 **Eric Cole** (USA): -12 total -- finished T4
   - 🔥 T5 **Corey Conners** (Canada): -12 total -- finished T5
+  - ❄️ **Camiko Smith** (Bermuda): Sunday +7.0 vs tourney avg
+  - ❄️ **Aldrich Potgieter** (South Africa): Sunday +5.5 vs tourney avg
+  - ❄️ **Alejandro Tosti** (Argentina): Sunday +3.0 vs tourney avg
 
 ## 🔥 MLB Batter Heat (56 HOT / 81 COLD)
   - 🔥 **Austin Hays** (SD): L14 .444 / season .280 (+164pts)
@@ -138,9 +141,9 @@
 - ELITE: **1** · HEALTHY: 0 · OK: 1 · DEGRADED: **0**
 
 ## 🤖 Self-Training Status
-- **NBA**: n=60 games · hit rate 58.3% · bias -10.1pp [calibration applied]
-- **NHL**: n=100 games · hit rate 48.0% · bias -10.2pp [calibration applied]
-- **WNBA**: n=5 games · hit rate 40.0% · bias +20.1pp
+- **NBA**: n=59 games · hit rate 57.6% · bias -13.5pp [calibration applied]
+- **NHL**: n=96 games · hit rate 49.0% · bias -10.7pp [calibration applied]
+- **WNBA**: n=3 games · hit rate 66.7% · bias +1.4pp
 - **MLS**: n=47 games · hit rate 36.2% · bias -4.6pp [calibration applied]
-- **EPL**: n=20 games · hit rate 55.0% · bias -10.4pp [calibration applied]
+- **EPL**: n=21 games · hit rate 52.4% · bias -8.2pp [calibration applied]
 - **MLB**: n=11 games · hit rate 72.7% · bias -6.7pp

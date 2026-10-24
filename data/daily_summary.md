@@ -1,17 +1,17 @@
-# EdgeStat Daily Brief - 2026-10-23
+# EdgeStat Daily Brief - 2026-10-24
 
 **Model Confidence: 9.8/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
 
 _Pipeline health: **WARNING** (12/15 artifacts ok; 3 empty, 0 stale)._ 
 
-_Generated at 2026-10-23T19:59:59 UTC. Game lines source: **placeholder -110 (no real book today)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-10-24T00:24:49 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
-**TBR @ MIL - MIL_ML**
+**TBR @ MIL - OVER_6.5**
 - Market: -110
-- Model probability: 72.3%
-- Raw edge: +38.05%
+- Model probability: 70.3%
+- Raw edge: +34.13%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
@@ -20,7 +20,7 @@ _Generated at 2026-10-23T19:59:59 UTC. Game lines source: **placeholder -110 (no
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 8:00p ET | TBR @ MIL | American Family Field | indoor | MIL_ML +38.05% |
+| 8:00p ET | TBR @ MIL | American Family Field | indoor | OVER_6.5 +34.13% |
 
 ## Parlays - top 5
 
@@ -49,16 +49,16 @@ _Generated at 2026-10-23T19:59:59 UTC. Game lines source: **placeholder -110 (no
 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
-| batter hits | 312 | 53.5% | 56.2% | 1.050 | 0.953 |
 | batter total bases | 82 | 34.2% | 41.9% | 1.224 | 0.830 |
+| batter hits | 312 | 53.5% | 56.2% | 1.050 | 0.953 |
 
-Cumulative graded plays: 18518. Wins: 7935. Hit rate: 42.9%.
+Cumulative graded plays: 18520. Wins: 7936. Hit rate: 42.9%.
 
 ## Auxiliary Markets (Model Fair Prices)
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| TBR @ MIL | 68.9% | -221 | 1.86 | -147 | +147 |
+| TBR @ MIL | 62.3% | -166 | 2.36 | +167 | -167 |
 
 ## Team Form (last 10)
 
