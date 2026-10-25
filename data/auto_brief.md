@@ -6,7 +6,7 @@ _0% lineups confirmed_
 
 ## Slate
 - **0 games** scheduled
-- **18 best bets** scored: 3 DK · 0 PP · 0 NRFI · 0 SGP
+- **22 best bets** scored: 3 DK · 0 PP · 0 NRFI · 0 SGP
 - **MC simulation:** EV +$4.21, 58% P(profit), p05 $-34.01 / p95 $30.92
 
 ## Top 5 Best Bets
@@ -33,25 +33,25 @@ _Lean late-inning OVER on these games; fade their save situations._
 ## Golf -- Butterfield Bermuda Championship
 - **Leader:** Austin Smotherman (-16) at #1
 - **Field:** 120 players  |  Status: In Progress
-- **Play of the Tournament:** Isaiah Salinda TOP5 @ +777 (model 11.4%, MED)
+- **Play of the Tournament:** Cam Davis TOP5 @ +777 (model 11.4%, MED)
    - P(top 5) 11.4% -- lower variance than outright but compelling line.
 
 ## NBA -- REGULAR
-- Miami Heat @ Charlotte Hornets (0-3 vs 2-1) 110-115 | P(home) 100.0% fair +0 | Final
-- Brooklyn Nets @ Cleveland Cavaliers (0-2 vs 1-1) 121-125 | P(home) 100.0% fair +0 | Final
-- Milwaukee Bucks @ Philadelphia 76ers (0-3 vs 3-0) 116-127 | P(home) 100.0% fair +0 | Final
-- Washington Wizards @ Chicago Bulls (2-1 vs 1-2) 124-120 | P(home) 0.0% fair +0 | Final
-- San Antonio Spurs @ Dallas Mavericks (1-2 vs 1-2) 122-106 | P(home) 0.0% fair +0 | Final
+- Los Angeles Lakers @ Utah Jazz (2-0 vs 1-1)  | P(home) 29.2% fair +242 | Scheduled
+- Indiana Pacers @ Brooklyn Nets (1-1 vs 0-2)  | P(home) 29.2% fair +242 | Scheduled
+- Orlando Magic @ New York Knicks (0-2 vs 0-2)  | P(home) 61.8% fair -162 | Scheduled
+- Toronto Raptors @ Minnesota Timberwolves (2-0 vs 2-0)  | P(home) 61.8% fair -162 | Scheduled
+- LA Clippers @ Oklahoma City Thunder (1-1 vs 2-0)  | P(home) 90.5% fair -954 | Scheduled
 
 ## NHL -- REGULAR
-- Anaheim Ducks @ Philadelphia Flyers (0-0-0 vs 0-0-0) 5-4 | P(home) 0.0% fair +0 | Final
-- Los Angeles Kings @ New Jersey Devils (0-0-0 vs 0-0-0) 1-3 | P(home) 100.0% fair +0 | Final
-- San Jose Sharks @ Boston Bruins (0-0-0 vs 0-0-0) 4-6 | P(home) 100.0% fair +0 | Final
-- New York Rangers @ Ottawa Senators (0-0-0 vs 0-0-0) 4-7 | P(home) 100.0% fair +0 | Final
-- Nashville Predators @ Pittsburgh Penguins (0-0-0 vs 0-0-0) 2-3 | P(home) 100.0% fair +0 | Final
+- Florida Panthers @ Chicago Blackhawks (5-4-2 vs 3-7-0)  | P(home) 38.6% fair +159 | Scheduled
+- New York Islanders @ Dallas Stars (5-3-2 vs 6-3-1)  | P(home) 68.1% fair -214 | Scheduled
+- Montreal Canadiens @ Winnipeg Jets (5-3-2 vs 4-3-3)  | P(home) 57.8% fair -137 | Scheduled
+- Colorado Avalanche @ Nashville Predators (6-4-1 vs 3-3-4)  | P(home) 53.7% fair -116 | Scheduled
+- Minnesota Wild @ Vancouver Canucks (7-3-2 vs 2-9-1)  | P(home) 22.9% fair +337 | Scheduled
 
-## LoL Esports -- 0 live, 24 upcoming
-- [Worlds] Hanwha Life Esports vs Invictus Gaming BO1 | P(A) 49.1% fair +104/-104
+## LoL Esports -- 1 live, 23 upcoming
+- [Worlds] Invictus Gaming vs Hanwha Life Esports BO1 | P(A) 50.9% fair -104/+104
 - [Worlds] G2 Esports vs TOP ESPORTS BO1 | P(A) 65.1% fair -187/+187
 - [Worlds] Movistar KOI vs Dplus KIA BO3 | P(A) 40.5% fair +147/-147
 - [Worlds] Gen.G Esports vs LYON BO3 | P(A) 66.0% fair -194/+194
