@@ -1,18 +1,18 @@
 # EdgeStat Daily Summary — 2026-10-25
 
-## 🏥 Model Health: 69.9/100 [OK]
-- Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.7/100
-  - 🔴 Hit Rate Trend: 56.8/100
-  - 🔴 Brier Trend: 27.5/100
+## 🏥 Model Health: 76.5/100 [HEALTHY]
+- Solid health - some minor issues to monitor
+  - 🟢 Calibration Freshness: 99.9/100
+  - 🟡 Hit Rate Trend: 64.0/100
+  - 🔴 Brier Trend: 35.9/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 90.9/100
-  - 🔴 Edge Count: 48.6/100
+  - 🟢 Data Health: 100.0/100
+  - 🟡 Edge Count: 65.7/100
 
 ## 🌐 Slate Overview
-- **Regime today:** BALANCED (avg P(home)=0.504)
-- **Total games on board:** 28
-- **Strong home favorites:** 10 | **Strong road dogs:** 10
+- **Regime today:** BALANCED (avg P(home)=0.476)
+- **Total games on board:** 27
+- **Strong home favorites:** 9 | **Strong road dogs:** 10
 
 ## 🎯 Top 5 Best Bets
 1. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
@@ -32,19 +32,17 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (5)
+## ⚡ Pre-Game HIGH Conviction (3)
 - [NFL] **Denver Broncos** AWAY (None L10) · model 74.5% fair -291
 - [NFL] **Las Vegas Raiders** HOME (None L10) · model 73.3% fair -274
-- [NBA] **Indiana Pacers** AWAY (1-3 L10) · model 70.8% fair -242
-- [NHL] **Dallas Stars** HOME (4-1 L10) · model 68.1% fair -214
 - [MLS] **LAFC** HOME (1-2 L10) · model 66.7% fair -200
 
 ## 🔥/❄️ Heat / Cold Signals
-- Hot teams: **9** | Cold teams: **18** | Over-heavy: 0 | Under-heavy: 28
+- Hot teams: **9** | Cold teams: **18** | Over-heavy: 0 | Under-heavy: 27
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (150)
-- RESIDUAL_DIVERGENCE: **11**
+## ⚠️ Anomaly Detector (152)
+- RESIDUAL_DIVERGENCE: **13**
 - STEAM_MOVE: **139**
   - Utah Jazz (NBA): Utah Jazz UNDERPERFORMING expected margin by 6.5pts in recent games -- model bias may persist
   - Los Angeles Lakers (NBA): Los Angeles Lakers OUTPERFORMING expected margin by 11.9pts in recent games -- model bias may persist
@@ -54,7 +52,7 @@
 
 ## 💰 Today's Portfolio (12 picks)
 - Total stake: **$330.0** (33.0% of $1000 bankroll)
-- Expected EV: **$-7.31**
+- Expected EV: **$-7.32**
   - #1 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #2 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
   - #3 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
@@ -62,7 +60,7 @@
   - #5 [NBA] $35 on NBA Minnesota Timberwolves ML (2-0) vs Toronto Raptors (P=62%)
 
 ## 🎯 Convergence Picks (14 stacked games)
-- ELITE: **7** · HIGH: 4 · MED: 3
+- ELITE: **7** · HIGH: 3 · MED: 4
   - [ELITE] Detroit Pistons @ Philadelphia 76ers : 6 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
   - [ELITE] New York Islanders @ Dallas Stars : 6 signals (PREGAME, HEAT_COLD, HEAT_COLD, HEAT_COLD)
   - [ELITE] Indiana Pacers @ Brooklyn Nets : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
@@ -95,7 +93,7 @@
   - ❄️ **Aldrich Potgieter** (South Africa): Sunday +5.5 vs tourney avg
   - ❄️ **Alejandro Tosti** (Argentina): Sunday +3.0 vs tourney avg
 
-## 🔥 MLB Batter Heat (56 HOT / 81 COLD)
+## 🔥 MLB Batter Heat (56 HOT / 80 COLD)
   - 🔥 **Austin Hays** (SD): L14 .444 / season .280 (+164pts)
   - 🔥 **Nolan Arenado** (AZ): L14 .404 / season .255 (+149pts)
   - 🔥 **Geraldo Perdomo** (AZ): L14 .392 / season .262 (+130pts)
@@ -132,7 +130,7 @@
 
 ## 🤖 Self-Training Status
 - **NBA**: n=71 games · hit rate 53.5% · bias -6.8pp [calibration applied]
-- **NHL**: n=96 games · hit rate 42.7% · bias -10.7pp [calibration applied]
+- **NHL**: n=92 games · hit rate 41.3% · bias -9.2pp [calibration applied]
 - **WNBA**: n=4 games · hit rate 50.0% · bias +21.7pp
 - **MLS**: n=61 games · hit rate 37.7% · bias -5.0pp [calibration applied]
 - **EPL**: n=25 games · hit rate 52.0% · bias -4.0pp [calibration applied]

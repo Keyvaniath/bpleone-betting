@@ -1,5 +1,5 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:17 F:77
+_NO_ACTION_NIGHT_ | L:0 S:17 F:71
 
 :dart: **Top Picks:**
 1. [GOLF] Séamus Power -- Séamus Power (PLAYER_STRONG)
