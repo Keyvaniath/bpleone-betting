@@ -1,18 +1,18 @@
 # EdgeStat Daily Summary — 2026-10-25
 
-## 🏥 Model Health: 66.9/100 [OK]
+## 🏥 Model Health: 69.9/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.9/100
+  - 🟢 Calibration Freshness: 99.7/100
   - 🔴 Hit Rate Trend: 56.8/100
-  - 🔴 Brier Trend: 27.6/100
+  - 🔴 Brier Trend: 27.5/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 81.8/100
-  - 🔴 Edge Count: 37.1/100
+  - 🟢 Data Health: 90.9/100
+  - 🔴 Edge Count: 48.6/100
 
 ## 🌐 Slate Overview
-- **Regime today:** BALANCED (avg P(home)=0.516)
-- **Total games on board:** 33
-- **Strong home favorites:** 14 | **Strong road dogs:** 12
+- **Regime today:** BALANCED (avg P(home)=0.504)
+- **Total games on board:** 28
+- **Strong home favorites:** 10 | **Strong road dogs:** 10
 
 ## 🎯 Top 5 Best Bets
 1. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
@@ -32,47 +32,42 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (12)
-- [NFL] **Pittsburgh Steelers** AWAY (None L10) · model 74.5% fair -291
+## ⚡ Pre-Game HIGH Conviction (5)
 - [NFL] **Denver Broncos** AWAY (None L10) · model 74.5% fair -291
-- [NFL] **New York Jets** HOME (None L10) · model 74.3% fair -289
 - [NFL] **Las Vegas Raiders** HOME (None L10) · model 73.3% fair -274
 - [NBA] **Indiana Pacers** AWAY (1-3 L10) · model 70.8% fair -242
-- [EPL] **Brighton & Hove Albion** AWAY (2-0 L10) · model 68.9% fair -222
-- [EPL] **Hull City** HOME (0-2 L10) · model 68.9% fair -222
-- [EPL] **Crystal Palace** HOME (1-1 L10) · model 68.6% fair -219
 - [NHL] **Dallas Stars** HOME (4-1 L10) · model 68.1% fair -214
-- [NFL] **New York Giants** AWAY (None L10) · model 67.1% fair -204
+- [MLS] **LAFC** HOME (1-2 L10) · model 66.7% fair -200
 
 ## 🔥/❄️ Heat / Cold Signals
 - Hot teams: **9** | Cold teams: **18** | Over-heavy: 0 | Under-heavy: 28
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (137)
-- RESIDUAL_DIVERGENCE: **1**
-- STEAM_MOVE: **136**
-  - LAFC (MLS): LAFC UNDERPERFORMING expected margin by 11.9pts in recent games -- model bias may persist
-  - KSU @ ASU (NCAAF): ML/TOTAL steam since open: ML +8.2pp toward ASU; total -5 (UNDER) (11 snapshots)
-  - CIN @ BAL (NFL): ML/TOTAL steam since open: ML -16.5pp toward CIN; total -5 (UNDER) (15 snapshots)
-  - CLT @ TEM (NCAAF): TOTAL steam since open: ML -1.4pp toward CLT; total -4 (UNDER) (7 snapshots)
-  - WIS @ UCLA (NCAAF): ML/TOTAL steam since open: ML -6.7pp toward WIS; total -4 (UNDER) (12 snapshots)
+## ⚠️ Anomaly Detector (150)
+- RESIDUAL_DIVERGENCE: **11**
+- STEAM_MOVE: **139**
+  - Utah Jazz (NBA): Utah Jazz UNDERPERFORMING expected margin by 6.5pts in recent games -- model bias may persist
+  - Los Angeles Lakers (NBA): Los Angeles Lakers OUTPERFORMING expected margin by 11.9pts in recent games -- model bias may persist
+  - Brooklyn Nets (NBA): Brooklyn Nets UNDERPERFORMING expected margin by 8.2pts in recent games -- model bias may persist
+  - New York Knicks (NBA): New York Knicks UNDERPERFORMING expected margin by 7.8pts in recent games -- model bias may persist
+  - Toronto Raptors (NBA): Toronto Raptors OUTPERFORMING expected margin by 16.4pts in recent games -- model bias may persist
 
-## 💰 Today's Portfolio (10 picks)
-- Total stake: **$245.0** (24.5% of $1000 bankroll)
-- Expected EV: **$-6.32**
+## 💰 Today's Portfolio (12 picks)
+- Total stake: **$330.0** (33.0% of $1000 bankroll)
+- Expected EV: **$-7.31**
   - #1 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #2 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
   - #3 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
-  - #4 [GOLF] $20 on GOLF Cam Davis TOP5 @ 777 (Butterfield Bermuda Championship) (P=11%)
-  - #5 [GOLF] $20 on GOLF Luke Clanton TOP5 @ 787 (Butterfield Bermuda Championsh (P=11%)
+  - #4 [NBA] $35 on NBA New York Knicks ML (0-2) vs Orlando Magic (P=62%)
+  - #5 [NBA] $35 on NBA Minnesota Timberwolves ML (2-0) vs Toronto Raptors (P=62%)
 
-## 🎯 Convergence Picks (30 stacked games)
-- ELITE: **6** · HIGH: 8 · MED: 16
-  - [ELITE] Milwaukee Bucks @ Philadelphia 76ers : 4 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ATS)
-  - [ELITE] San Antonio Spurs @ Dallas Mavericks : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
-  - [ELITE] Buffalo Sabres @ Washington Capitals : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
-  - [ELITE] Toronto Maple Leafs @ Edmonton Oilers : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
-  - [ELITE] Seattle Sounders FC @ San Diego FC : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
+## 🎯 Convergence Picks (14 stacked games)
+- ELITE: **7** · HIGH: 4 · MED: 3
+  - [ELITE] Detroit Pistons @ Philadelphia 76ers : 6 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
+  - [ELITE] New York Islanders @ Dallas Stars : 6 signals (PREGAME, HEAT_COLD, HEAT_COLD, HEAT_COLD)
+  - [ELITE] Indiana Pacers @ Brooklyn Nets : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
+  - [ELITE] Memphis Grizzlies @ Sacramento Kings : 5 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ATS)
+  - [ELITE] Montreal Canadiens @ Winnipeg Jets : 4 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
 
 ## 🏀 NBA Player Heat (5 HOT / 2 COLD)
   - 🔥 **Olivier-Maxence Prosper** (MEM): L5 19.4/4.2/1.2 vs season 10.0/3.5/1.0 [PTS +9.4]
@@ -111,6 +106,19 @@
   - ❄️ **Tristan Peters** (CWS): L14 .111 / season .265 (-154pts) -- FADE props
   - ❄️ **Andruw Monasterio** (BOS): L14 .083 / season .233 (-150pts) -- FADE props
   - ❄️ **Jim Jarvis** (ATL): L14 .079 / season .207 (-128pts) -- FADE props
+
+## 😴 B2B Fatigue Edges (4)
+- [NBA] FADE Brooklyn Nets (home on B2B)
+- [NBA] FADE Philadelphia 76ers (home on B2B)
+- [NHL] FADE Nashville Predators (home on B2B)
+- [NHL] FADE Minnesota Wild (away on B2B)
+
+## 📈 Streak Regression Alerts (8)
+- [NBA] Brooklyn Nets on L3 L10 1-3 -- Brooklyn Nets on L3 -- no historical sample
+- [NBA] Philadelphia 76ers on W3 L10 3-1 -- Philadelphia 76ers on W3 -- no historical sample
+- [NBA] Detroit Pistons on W4 L10 4-0 -- Detroit Pistons on W4 -- no historical sample
+- [NBA] Sacramento Kings on L4 L10 0-4 -- Sacramento Kings on L4 -- no historical sample
+- [NBA] Memphis Grizzlies on W3 L10 3-0 -- Memphis Grizzlies on W3 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**

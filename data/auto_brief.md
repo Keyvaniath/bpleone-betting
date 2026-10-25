@@ -6,8 +6,7 @@ _0% lineups confirmed_
 
 ## Slate
 - **0 games** scheduled
-- **22 best bets** scored: 3 DK · 0 PP · 0 NRFI · 0 SGP
-- **MC simulation:** EV +$4.21, 58% P(profit), p05 $-34.01 / p95 $30.92
+- **28 best bets** scored: 3 DK · 0 PP · 0 NRFI · 0 SGP
 
 ## Top 5 Best Bets
 1. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
@@ -44,18 +43,18 @@ _Lean late-inning OVER on these games; fade their save situations._
 - LA Clippers @ Oklahoma City Thunder (1-1 vs 2-0)  | P(home) 90.5% fair -954 | Scheduled
 
 ## NHL -- REGULAR
-- Florida Panthers @ Chicago Blackhawks (5-4-2 vs 3-7-0)  | P(home) 38.6% fair +159 | Scheduled
+- Florida Panthers @ Chicago Blackhawks (5-4-2 vs 3-7-0) 0-0 | P(home) 38.6% fair +159 | In Progress
 - New York Islanders @ Dallas Stars (5-3-2 vs 6-3-1)  | P(home) 68.1% fair -214 | Scheduled
 - Montreal Canadiens @ Winnipeg Jets (5-3-2 vs 4-3-3)  | P(home) 57.8% fair -137 | Scheduled
 - Colorado Avalanche @ Nashville Predators (6-4-1 vs 3-3-4)  | P(home) 53.7% fair -116 | Scheduled
 - Minnesota Wild @ Vancouver Canucks (7-3-2 vs 2-9-1)  | P(home) 22.9% fair +337 | Scheduled
 
-## LoL Esports -- 1 live, 23 upcoming
-- [Worlds] Invictus Gaming vs Hanwha Life Esports BO1 | P(A) 50.9% fair -104/+104
-- [Worlds] G2 Esports vs TOP ESPORTS BO1 | P(A) 65.1% fair -187/+187
+## LoL Esports -- 1 live, 21 upcoming
 - [Worlds] Movistar KOI vs Dplus KIA BO3 | P(A) 40.5% fair +147/-147
 - [Worlds] Gen.G Esports vs LYON BO3 | P(A) 66.0% fair -194/+194
 - [Worlds] CTBC Flying Oyster vs T1 BO1 | P(A) 47.7% fair +110/-110
+- [Worlds] BILIBILI GAMING vs Karmine Corp BO1 | P(A) 51.5% fair -106/+106
+- [Worlds] LOS vs Team Secret Whales BO3 | P(A) 57.0% fair -132/+132
 - **LoL POT:** Dplus KIA ML vs Movistar KOI (Worlds, BO3) (HIGH)
 
 ## Player Play of the Day -- across all sports (3431 candidates scanned)
