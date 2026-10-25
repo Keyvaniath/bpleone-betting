@@ -6,8 +6,8 @@ _0% lineups confirmed_
 
 ## Slate
 - **0 games** scheduled
-- **25 best bets** scored: 3 DK · 0 PP · 1 NRFI · 0 SGP
-- **MC simulation:** EV +$13.71, 62% P(profit), p05 $-84.01 / p95 $76.37
+- **18 best bets** scored: 3 DK · 0 PP · 0 NRFI · 0 SGP
+- **MC simulation:** EV +$4.21, 58% P(profit), p05 $-34.01 / p95 $30.92
 
 ## Top 5 Best Bets
 1. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
@@ -19,18 +19,16 @@ _0% lineups confirmed_
 3. **LOL Peyz OVER 4.5 Kills**  (78/100 ****, edge —)
    - Player prop quality score 1.184
    - Elite player
-4. **LOL BILIBILI GAMING vs Team Liquid Alienware ML @ -128**  (76/100 *****, edge —)
-   - Model 56.2% (fair -128)
+4. **LOL Dplus KIA vs Movistar KOI ML @ -147**  (76/100 *****, edge —)
+   - Model 59.5% (fair -147)
    - Worlds
-5. **LOL Dplus KIA vs T1 ML @ -127**  (76/100 *****, edge —)
-   - Model 56.0% (fair -127)
+5. **LOL LOS vs Team Secret Whales ML @ -132**  (76/100 *****, edge —)
+   - Model 57.0% (fair -132)
    - Worlds
 
-## ⚠️ Trap Warnings — 2 flagged
-- **TBR @ MIL NRFI (no run 1st inning)** (low):
-   - Edge +8.3% looks big but only 0 settled props on this player — model unproven
-- **Jackson Chourio OVER 1.5 batter total bases** (low):
-   - Line sharpened against this side (-10c move) -- sharp money knows
+## Bullpens GASSED tonight
+Milwaukee Brewers
+_Lean late-inning OVER on these games; fade their save situations._
 
 ## Golf -- Butterfield Bermuda Championship
 - **Leader:** Austin Smotherman (-16) at #1
@@ -54,7 +52,7 @@ _0% lineups confirmed_
 
 ## LoL Esports -- 0 live, 24 upcoming
 - [Worlds] Hanwha Life Esports vs Invictus Gaming BO1 | P(A) 49.1% fair +104/-104
-- [Worlds] TOP ESPORTS vs G2 Esports BO1 | P(A) 34.9% fair +187/-187
+- [Worlds] G2 Esports vs TOP ESPORTS BO1 | P(A) 65.1% fair -187/+187
 - [Worlds] Movistar KOI vs Dplus KIA BO3 | P(A) 40.5% fair +147/-147
 - [Worlds] Gen.G Esports vs LYON BO3 | P(A) 66.0% fair -194/+194
 - [Worlds] CTBC Flying Oyster vs T1 BO1 | P(A) 47.7% fair +110/-110

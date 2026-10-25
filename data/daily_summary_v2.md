@@ -1,25 +1,25 @@
 # EdgeStat Daily Summary — 2026-10-25
 
-## 🏥 Model Health: 66.9/100 [OK]
-- Operational but room to improve - check yellow components
+## 🏥 Model Health: 74.9/100 [HEALTHY]
+- Solid health - some minor issues to monitor
   - 🟢 Calibration Freshness: 99.9/100
-  - 🔴 Hit Rate Trend: 37.3/100
-  - 🔴 Brier Trend: 7.2/100
+  - 🟡 Hit Rate Trend: 63.3/100
+  - 🔴 Brier Trend: 32.9/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 100.0/100
-  - 🟢 Edge Count: 80.0/100
+  - 🔴 Edge Count: 57.1/100
 
 ## 🌐 Slate Overview
-- **Regime today:** BALANCED (avg P(home)=0.511)
-- **Total games on board:** 32
-- **Strong home favorites:** 12 | **Strong road dogs:** 11
+- **Regime today:** BALANCED (avg P(home)=0.504)
+- **Total games on board:** 16
+- **Strong home favorites:** 5 | **Strong road dogs:** 6
 
 ## 🎯 Top 5 Best Bets
 1. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
 2. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
 3. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
-4. **LOL BILIBILI GAMING vs Team Liquid Alienware ML @ -128** (76/100 ★★★★★)
-5. **LOL Dplus KIA vs T1 ML @ -127** (76/100 ★★★★★)
+4. **LOL Dplus KIA vs Movistar KOI ML @ -147** (76/100 ★★★★★)
+5. **LOL LOS vs Team Secret Whales ML @ -132** (76/100 ★★★★★)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -44,45 +44,40 @@
 - Hot teams: **9** | Cold teams: **18** | Over-heavy: 0 | Under-heavy: 28
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (156)
-- RESIDUAL_DIVERGENCE: **19**
-- STREAK_MISMATCH: **1**
-- STEAM_MOVE: **136**
-  - Cleveland Cavaliers (NBA): Cleveland Cavaliers UNDERPERFORMING expected margin by 11.6pts in recent games -- model bias may persist
-  - Brooklyn Nets (NBA): Brooklyn Nets UNDERPERFORMING expected margin by 9.6pts in recent games -- model bias may persist
-  - Milwaukee Bucks (NBA): Milwaukee Bucks UNDERPERFORMING expected margin by 9.3pts in recent games -- model bias may persist
-  - San Antonio Spurs (NBA): San Antonio Spurs OUTPERFORMING expected margin by 7.8pts in recent games -- model bias may persist
-  - Atlanta Hawks (NBA): Atlanta Hawks on W5 streak but model rates as 42% -- may be undervalued
+## ⚠️ Anomaly Detector (137)
+- STEAM_MOVE: **137**
+  - KSU @ ASU (NCAAF): ML/TOTAL steam since open: ML +8.2pp toward ASU; total -5 (UNDER) (11 snapshots)
+  - CIN @ BAL (NFL): ML/TOTAL steam since open: ML -14.4pp toward CIN; total -5 (UNDER) (14 snapshots)
+  - CLT @ TEM (NCAAF): TOTAL steam since open: ML -1.4pp toward CLT; total -4 (UNDER) (7 snapshots)
+  - WIS @ UCLA (NCAAF): ML/TOTAL steam since open: ML -6.7pp toward WIS; total -4 (UNDER) (12 snapshots)
+  - MASS @ CONN (NCAAF): ML/TOTAL steam since open: ML -3.5pp toward MASS; total +4 (OVER) (8 snapshots)
 
-## 💰 Today's Portfolio (13 picks)
-- Total stake: **$335.0** (33.5% of $1000 bankroll)
-- Expected EV: **$-8.94**
+## 💰 Today's Portfolio (7 picks)
+- Total stake: **$185.0** (18.5% of $1000 bankroll)
+- Expected EV: **$-7.59**
   - #1 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #2 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
   - #3 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
-  - #4 [NBA] $35 on NBA Denver Nuggets ML (0-1) vs New Orleans Pelicans (P=65%)
-  - #5 [NBA] $35 on NBA Phoenix Suns ML (0-1) vs Golden State Warriors (P=65%)
+  - #4 [GOLF] $20 on GOLF Isaiah Salinda TOP5 @ 777 (Butterfield Bermuda Champion (P=11%)
+  - #5 [GOLF] $20 on GOLF Luke Clanton TOP5 @ 787 (Butterfield Bermuda Championsh (P=11%)
 
-## 🎯 Convergence Picks (33 stacked games)
-- ELITE: **11** · HIGH: 14 · MED: 8
-  - [ELITE] Houston Rockets @ Atlanta Hawks : 6 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
-  - [ELITE] Anaheim Ducks @ Philadelphia Flyers : 5 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ATS)
-  - [ELITE] San Jose Sharks @ Boston Bruins : 5 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ANOMALY)
-  - [ELITE] Detroit Red Wings @ Calgary Flames : 5 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
-  - [ELITE] Seattle Sounders FC @ San Diego FC : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
+## 🎯 Convergence Picks (30 stacked games)
+- ELITE: **8** · HIGH: 8 · MED: 14
+  - [ELITE] Seattle Sounders FC @ San Diego FC : 6 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
+  - [ELITE] New York City FC @ Orlando City SC : 5 signals (HEAT_COLD, ANOMALY, ANOMALY, ATS)
+  - [ELITE] St. Louis CITY SC @ Real Salt Lake : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
+  - [ELITE] Milwaukee Bucks @ Philadelphia 76ers : 4 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ATS)
+  - [ELITE] San Antonio Spurs @ Dallas Mavericks : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (1)
-- **Logan Henderson** OVER 4.5 K (71%) fair -251
-
-## 🏀 NBA Player Heat (13 HOT / 13 COLD)
+## 🏀 NBA Player Heat (7 HOT / 7 COLD)
   - 🔥 **Maxime Raynaud** (SAC): L5 20.0/9.8/2.6 vs season 12.5/7.5/1.4 [PTS +7.5, REB +2.3]
-  - 🔥 **Davion Mitchell** (MIA): L5 17.0/1.0/8.7 vs season 10.8/2.2/6.9 [PTS +6.2]
-  - 🔥 **Dylan Harper** (SA): L5 20.0/5.0/3.0 vs season 13.9/3.9/3.8 [PTS +6.1]
   - 🔥 **Cormac Ryan** (MIL): L5 20.2/4.8/2.4 vs season 14.3/2.5/1.7 [PTS +5.9, REB +2.3]
-  - 🔥 **Caleb Wilson** (CHI): L5 22.3/8.0/1.3 vs season 16.5/4.0/0.5 [PTS +5.8, REB +4.0]
+  - 🔥 **Dylan Harper** (SA): L5 20.0/5.0/3.0 vs season 14.9/4.0/3.6 [PTS +5.1]
+  - 🔥 **Jaime Jaquez Jr.** (MIL): L5 20.7/8.7/3.7 vs season 17.4/6.4/4.3 [REB +2.3]
+  - 🔥 **Trae Young** (WSH): L5 22.3/1.7/11.3 vs season 19.6/1.9/9.2 [AST +2.1]
   - ❄️ **Shaedon Sharpe** (POR): L5 7.2 vs season 20.8 [PTS -13.6, REB -2.7, AST -2.0] -- FADE OVER props
   - ❄️ **Brandon Ingram** (LAC): L5 12.0 vs season 21.5 [PTS -9.5, REB -2.4] -- FADE OVER props
-  - ❄️ **Josh Giddey** (CHI): L5 5.7 vs season 13.3 [PTS -7.6] -- FADE OVER props
+  - ❄️ **Josh Giddey** (CHI): L5 5.7 vs season 12.8 [PTS -7.1] -- FADE OVER props
 
 ## 🥊 UFC Fight Matchups (UFC 333: Volkanovski vs. Evloev)
   - [LEAN] **Abubakar Vagaev** (26-4-0) vs Jacob Malkoun -- fair -171
@@ -113,12 +108,12 @@
   - ❄️ **Andruw Monasterio** (BOS): L14 .083 / season .233 (-150pts) -- FADE props
   - ❄️ **Jim Jarvis** (ATL): L14 .079 / season .207 (-128pts) -- FADE props
 
-## 📈 Streak Regression Alerts (15)
-- [NBA] Miami Heat on L3 L10 1-4 -- Miami Heat on L3 -- no historical sample
-- [NBA] Atlanta Hawks on W5 L10 5-0 -- Atlanta Hawks on W5 -- no historical sample
-- [NBA] Houston Rockets on W3 L10 3-1 -- Houston Rockets on W3 -- no historical sample
-- [NBA] Phoenix Suns on L3 L10 1-3 -- Phoenix Suns on L3 -- no historical sample
-- [NHL] Edmonton Oilers on W3 L10 4-1 -- Edmonton Oilers on W3 -- no historical sample
+## 📈 Streak Regression Alerts (10)
+- [MLS] D.C. United on L3 L10 1-4 -- D.C. United on L3 -- no historical sample
+- [MLS] New York City FC on L4 L10 0-4 -- New York City FC on L4 -- no historical sample
+- [MLS] New England Revolution on W3 L10 3-1 -- New England Revolution on W3 -- no historical sample
+- [MLS] San Jose Earthquakes on L4 L10 0-4 -- San Jose Earthquakes on L4 -- no historical sample
+- [MLS] Houston Dynamo FC on L4 L10 0-4 -- Houston Dynamo FC on L4 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**
@@ -128,7 +123,7 @@
   - ⚠️ batter_rbis (Brier Δ -0.0052)
 
 ## 🧠 Training Convergence
-- ELITE: **1** · HEALTHY: 0 · OK: 1 · DEGRADED: **0**
+- ELITE: **0** · HEALTHY: 2 · OK: 0 · DEGRADED: **0**
 
 ## 🤖 Self-Training Status
 - **NBA**: n=71 games · hit rate 53.5% · bias -6.8pp [calibration applied]
