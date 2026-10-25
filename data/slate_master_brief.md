@@ -1,13 +1,13 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-10-25T23:06:53 UTC_
+_Generated 2026-10-25T23:58:34 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -3
+- **Score:** -1
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
 - **Total STRONG:** 17
-- **Total FADES:** 71
+- **Total FADES:** 69
 
 ## Top 5 Curated Picks
 1. **GOLF / Séamus Power** (GOLF_PLAYER, score=190.29)
@@ -39,13 +39,13 @@ _Generated 2026-10-25T23:06:53 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **NBA** / lamelo ball (PLAYER_FADE)
-  - Fade angle: PTS UNDER + PRA UNDER (multi-prop)
 - **NBA** / jalen brunson (PLAYER_FADE)
+  - Fade angle: PTS UNDER + PRA UNDER (multi-prop)
+- **NBA** / lamelo ball (PLAYER_FADE)
   - Fade angle: PTS UNDER + PRA UNDER (multi-prop)
 - **NBA** / ORL (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NBA** / TOR (TEAM_FADE)
-  - Fade angle: team total UNDER
 - **NBA** / LA  (TEAM_FADE)
+  - Fade angle: team total UNDER
+- **NBA** / TOR (TEAM_FADE)
   - Fade angle: team total UNDER

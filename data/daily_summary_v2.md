@@ -1,8 +1,8 @@
 # EdgeStat Daily Summary — 2026-10-25
 
-## 🏥 Model Health: 76.5/100 [HEALTHY]
+## 🏥 Model Health: 76.6/100 [HEALTHY]
 - Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 99.9/100
+  - 🟢 Calibration Freshness: 100.0/100
   - 🟡 Hit Rate Trend: 64.0/100
   - 🔴 Brier Trend: 35.9/100
   - 🟢 Pipeline Audit: 100.0/100
@@ -10,9 +10,9 @@
   - 🟡 Edge Count: 65.7/100
 
 ## 🌐 Slate Overview
-- **Regime today:** BALANCED (avg P(home)=0.476)
-- **Total games on board:** 27
-- **Strong home favorites:** 9 | **Strong road dogs:** 10
+- **Regime today:** BALANCED (avg P(home)=0.463)
+- **Total games on board:** 19
+- **Strong home favorites:** 4 | **Strong road dogs:** 6
 
 ## 🎯 Top 5 Best Bets
 1. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
@@ -32,18 +32,16 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (3)
-- [NFL] **Denver Broncos** AWAY (None L10) · model 74.5% fair -291
-- [NFL] **Las Vegas Raiders** HOME (None L10) · model 73.3% fair -274
+## ⚡ Pre-Game HIGH Conviction (1)
 - [MLS] **LAFC** HOME (1-2 L10) · model 66.7% fair -200
 
 ## 🔥/❄️ Heat / Cold Signals
-- Hot teams: **9** | Cold teams: **18** | Over-heavy: 0 | Under-heavy: 27
+- Hot teams: **9** | Cold teams: **18** | Over-heavy: 0 | Under-heavy: 28
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (152)
+## ⚠️ Anomaly Detector (154)
 - RESIDUAL_DIVERGENCE: **13**
-- STEAM_MOVE: **139**
+- STEAM_MOVE: **141**
   - Utah Jazz (NBA): Utah Jazz UNDERPERFORMING expected margin by 6.5pts in recent games -- model bias may persist
   - Los Angeles Lakers (NBA): Los Angeles Lakers OUTPERFORMING expected margin by 11.9pts in recent games -- model bias may persist
   - Brooklyn Nets (NBA): Brooklyn Nets UNDERPERFORMING expected margin by 8.2pts in recent games -- model bias may persist
@@ -59,19 +57,18 @@
   - #4 [NBA] $35 on NBA New York Knicks ML (0-2) vs Orlando Magic (P=62%)
   - #5 [NBA] $35 on NBA Minnesota Timberwolves ML (2-0) vs Toronto Raptors (P=62%)
 
-## 🎯 Convergence Picks (14 stacked games)
-- ELITE: **7** · HIGH: 3 · MED: 4
+## 🎯 Convergence Picks (13 stacked games)
+- ELITE: **7** · HIGH: 2 · MED: 4
   - [ELITE] Detroit Pistons @ Philadelphia 76ers : 6 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
-  - [ELITE] New York Islanders @ Dallas Stars : 6 signals (PREGAME, HEAT_COLD, HEAT_COLD, HEAT_COLD)
-  - [ELITE] Indiana Pacers @ Brooklyn Nets : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
   - [ELITE] Memphis Grizzlies @ Sacramento Kings : 5 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ATS)
+  - [ELITE] New York Islanders @ Dallas Stars : 5 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ANOMALY)
+  - [ELITE] Indiana Pacers @ Brooklyn Nets : 4 signals (HEAT_COLD, ANOMALY, ATS, ATS)
   - [ELITE] Montreal Canadiens @ Winnipeg Jets : 4 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
 
-## 🏀 NBA Player Heat (5 HOT / 2 COLD)
+## 🏀 NBA Player Heat (4 HOT / 2 COLD)
   - 🔥 **Olivier-Maxence Prosper** (MEM): L5 19.4/4.2/1.2 vs season 10.0/3.5/1.0 [PTS +9.4]
   - 🔥 **Maxime Raynaud** (SAC): L5 20.0/9.8/2.6 vs season 12.5/7.5/1.4 [PTS +7.5, REB +2.3]
   - 🔥 **Taurean Prince** (DET): L5 16.4/6.2/3.2 vs season 9.2/3.1/1.8 [PTS +7.2, REB +3.1]
-  - 🔥 **Blake Hinson** (UTAH): L5 17.0/2.4/1.8 vs season 11.9/2.4/1.1 [PTS +5.1]
   - 🔥 **Malachi Smith** (TOR): L5 10.2/6.0/5.8 vs season 8.3/3.4/3.3 [REB +2.6, AST +2.5]
   - ❄️ **Brandon Ingram** (LAC): L5 12.0 vs season 21.5 [PTS -9.5, REB -2.4] -- FADE OVER props
   - ❄️ **Anthony Black** (ORL): L5 9.6 vs season 15.0 [PTS -5.4, AST -2.5] -- FADE OVER props
@@ -93,7 +90,7 @@
   - ❄️ **Aldrich Potgieter** (South Africa): Sunday +5.5 vs tourney avg
   - ❄️ **Alejandro Tosti** (Argentina): Sunday +3.0 vs tourney avg
 
-## 🔥 MLB Batter Heat (56 HOT / 80 COLD)
+## 🔥 MLB Batter Heat (56 HOT / 81 COLD)
   - 🔥 **Austin Hays** (SD): L14 .444 / season .280 (+164pts)
   - 🔥 **Nolan Arenado** (AZ): L14 .404 / season .255 (+149pts)
   - 🔥 **Geraldo Perdomo** (AZ): L14 .392 / season .262 (+130pts)
@@ -130,7 +127,7 @@
 
 ## 🤖 Self-Training Status
 - **NBA**: n=71 games · hit rate 53.5% · bias -6.8pp [calibration applied]
-- **NHL**: n=92 games · hit rate 41.3% · bias -9.2pp [calibration applied]
+- **NHL**: n=96 games · hit rate 42.7% · bias -10.7pp [calibration applied]
 - **WNBA**: n=4 games · hit rate 50.0% · bias +21.7pp
 - **MLS**: n=61 games · hit rate 37.7% · bias -5.0pp [calibration applied]
 - **EPL**: n=25 games · hit rate 52.0% · bias -4.0pp [calibration applied]
