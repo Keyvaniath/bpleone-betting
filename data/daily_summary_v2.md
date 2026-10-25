@@ -1,18 +1,18 @@
-# EdgeStat Daily Summary — 2026-10-24
+# EdgeStat Daily Summary — 2026-10-25
 
-## 🏥 Model Health: 64.7/100 [OK]
+## 🏥 Model Health: 66.9/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.9/100
+  - 🟢 Calibration Freshness: 100.0/100
   - 🔴 Hit Rate Trend: 37.3/100
-  - 🔴 Brier Trend: 7.8/100
+  - 🔴 Brier Trend: 7.2/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 100.0/100
-  - 🔴 Edge Count: 57.1/100
+  - 🟢 Edge Count: 80.0/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.575)
-- **Total games on board:** 67
-- **Strong home favorites:** 33 | **Strong road dogs:** 17
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.594)
+- **Total games on board:** 62
+- **Strong home favorites:** 31 | **Strong road dogs:** 14
 
 ## 🎯 Top 5 Best Bets
 1. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
@@ -25,6 +25,9 @@
 - All-time: **307-59** (83.9% hit rate)
 - Net units: **+10.34u** | ROI: **+45.6%**
 
+**Today's 1 Locks:**
+- [MLB] **TBR @ MIL** UNDER_8.5 · p=55% edge=+5.6% qK=0.015u
+
 ## 🎮 Player Play of the Day (cross-sport)
 - **[LOL]** Inspired UNDER 3.5 Kills | MED conviction · model 61.7% fair -161
 - **[LOL]** ShowMaker OVER 3.5 Kills | MED conviction · model 62.5% fair -167
@@ -32,7 +35,7 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (21)
+## ⚡ Pre-Game HIGH Conviction (17)
 - [NCAAF] **BYU Cougars** AWAY (None L10) · model 74.9% fair -299
 - [NFL] **Pittsburgh Steelers** AWAY (None L10) · model 74.5% fair -291
 - [NFL] **Denver Broncos** AWAY (None L10) · model 74.5% fair -291
@@ -40,17 +43,17 @@
 - [NFL] **Las Vegas Raiders** HOME (None L10) · model 73.3% fair -274
 - [NCAAF] **Alabama Crimson Tide** HOME (None L10) · model 72.6% fair -265
 - [MLS] **Sporting Kansas City** HOME (0-3 L10) · model 70.9% fair -244
-- [NHL] **Washington Capitals** HOME (2-3 L10) · model 68.4% fair -216
 - [NCAAF] **USC Trojans** AWAY (None L10) · model 68.0% fair -212
 - [NHL] **Seattle Kraken** HOME (4-2 L10) · model 67.9% fair -211
+- [NFL] **New York Giants** AWAY (None L10) · model 67.1% fair -204
 
 ## 🔥/❄️ Heat / Cold Signals
 - Hot teams: **6** | Cold teams: **16** | Over-heavy: 0 | Under-heavy: 26
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (168)
-- RESIDUAL_DIVERGENCE: **26**
-- STEAM_MOVE: **142**
+## ⚠️ Anomaly Detector (164)
+- RESIDUAL_DIVERGENCE: **23**
+- STEAM_MOVE: **141**
   - Charlotte Hornets (NBA): Charlotte Hornets UNDERPERFORMING expected margin by 9.8pts in recent games -- model bias may persist
   - Cleveland Cavaliers (NBA): Cleveland Cavaliers UNDERPERFORMING expected margin by 11.6pts in recent games -- model bias may persist
   - Brooklyn Nets (NBA): Brooklyn Nets UNDERPERFORMING expected margin by 9.6pts in recent games -- model bias may persist
@@ -67,7 +70,7 @@
   - #5 [GOLF] $35 on GOLF Cam Davis TOP5 @ 582 (Butterfield Bermuda Championship) (P=15%)
 
 ## 🎯 Convergence Picks (34 stacked games)
-- ELITE: **16** · HIGH: 12 · MED: 6
+- ELITE: **16** · HIGH: 11 · MED: 7
   - [ELITE] Houston Rockets @ Atlanta Hawks : 6 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
   - [ELITE] Anaheim Ducks @ Philadelphia Flyers : 6 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ANOMALY)
   - [ELITE] Brooklyn Nets @ Cleveland Cavaliers : 5 signals (PREGAME, ANOMALY, ANOMALY, ATS)
@@ -84,17 +87,17 @@
 
 ## 🥊 UFC Fight Matchups (UFC 333: Volkanovski vs. Evloev)
   - [LEAN] **Abubakar Vagaev** (26-4-0) vs Jacob Malkoun -- fair -171
+  - [LEAN] **Alexander Volkov** (41-11-0) vs Rizvan Kuniev -- fair -165
   - [LEAN] **Daniel Santos** (15-3-0) vs Bolaji Oki -- fair -152
   - [LEAN] **Iasmin Lucindo** (19-6-0) vs Nicolle Caliari -- fair -149
-  - [LEAN] **Alexander Volkov** (40-11-0) vs Rizvan Kuniev -- fair -148
-  - [LEAN] **Azamat Murzakanov** (16-1-0) vs Dominick Reyes -- fair -144
+  - [LEAN] **Abdul-Rakhman Yakhyaev** (11-0-0) vs Nikita Krylov -- fair -135
 
 ## ⛳ Golf Player Heat (from Butterfield Bermuda Championship)
   - 🔥 T1 **Austin Smotherman** (USA): -16 total -- finished T1
-  - 🔥 T2 **Ben Silverman** (Canada): -15 total -- finished T2
-  - 🔥 T3 **Séamus Power** (Ireland): -15 total -- finished T3
-  - 🔥 T4 **Taylor Moore** (USA): -14 total -- finished T4
-  - 🔥 T5 **Tom Hoge** (USA): -13 total -- finished T5
+  - 🔥 T2 **Séamus Power** (Ireland): -16 total -- finished T2
+  - 🔥 T3 **Taylor Moore** (USA): -14 total -- finished T3
+  - 🔥 T4 **Ben Silverman** (Canada): -14 total -- finished T4
+  - 🔥 T5 **Corey Conners** (Canada): -14 total -- finished T5
   - ❄️ **Camiko Smith** (Bermuda): Sunday +7.0 vs tourney avg
   - ❄️ **Aldrich Potgieter** (South Africa): Sunday +5.5 vs tourney avg
   - ❄️ **Alejandro Tosti** (Argentina): Sunday +3.0 vs tourney avg

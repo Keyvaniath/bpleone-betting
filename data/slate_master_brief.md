@@ -1,36 +1,33 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-10-24T19:16:17 UTC_
+_Generated 2026-10-25T00:09:46 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -42
+- **Score:** -31
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 15
-- **Total FADES:** 102
+- **Total STRONG:** 17
+- **Total FADES:** 99
 
 ## Top 5 Curated Picks
-1. **GOLF / Austin Smotherman** (GOLF_PLAYER, score=193.71)
+1. **GOLF / Austin Smotherman** (GOLF_PLAYER, score=190.5)
    - Play: Austin Smotherman (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Chandler Blanchet** (GOLF_PLAYER, score=169.5)
-   - Play: Chandler Blanchet (PLAYER_STRONG)
+2. **GOLF / Séamus Power** (GOLF_PLAYER, score=165.0)
+   - Play: Séamus Power (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-3. **WNBA / allisha gray** (WNBA_PLAYER, score=62.42)
-   - Play: allisha gray (PLAYER_STRONG)
-   - Rationale: Cross-sport top pick (WNBA_PLAYER)
-4. **NBA / CHI** (NBA_TEAM, score=60.0)
+3. **NBA / CHI** (NBA_TEAM, score=60.0)
    - Play: CHI (TEAM_STRONG)
    - Rationale: Cross-sport top pick (NBA_TEAM)
-5. **WNBA / angel reese** (WNBA_PLAYER, score=60.0)
-   - Play: angel reese (PLAYER_STRONG)
-   - Rationale: Cross-sport top pick (WNBA_PLAYER)
+4. **MLB / Drew Rasmussen** (MLB_PITCHER, score=58.33)
+   - Play: Drew Rasmussen (PITCHER_STRONG)
+   - Rationale: Cross-sport top pick (MLB_PITCHER)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
   - Austin Smotherman top 10 finish
-  - Chandler Blanchet top 10 finish
-  - Chris Kirk top 10 finish
+  - Séamus Power top 10 finish
+  - Taylor Moore top 10 finish
 
 ## Slate ROI Projection
 - **Picks:** 0
@@ -39,13 +36,13 @@ _Generated 2026-10-24T19:16:17 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **NBA** / tyrese maxey (PLAYER_FADE)
-  - Fade angle: PTS UNDER + PRA UNDER (multi-prop)
+- **NBA** / BKN (TEAM_FADE)
+  - Fade angle: team total UNDER
 - **NBA** / SAS (TEAM_FADE)
   - Fade angle: team total UNDER
 - **NBA** / CHA (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NBA** / BKN (TEAM_FADE)
+- **NBA** / WAS (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NBA** / HOU (TEAM_FADE)
+- **NBA** / DEN (TEAM_FADE)
   - Fade angle: team total UNDER
