@@ -1,13 +1,13 @@
-# Tonight's Slate Brief — 2026-10-24
+# Tonight's Slate Brief — 2026-10-25
 
-## Slate Quality: 67/100 (MEDIUM)
-_0% lineups confirmed · 1 rookie SPs_
+## Slate Quality: 70/100 (MEDIUM)
+_0% lineups confirmed_
 **Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
-- **1 games** scheduled
-- **33 best bets** scored: 3 DK · 0 PP · 1 NRFI · 0 SGP
-- **MC simulation:** EV +$9.5, 62% P(profit), p05 $-50.0 / p95 $45.45
+- **0 games** scheduled
+- **25 best bets** scored: 3 DK · 0 PP · 1 NRFI · 0 SGP
+- **MC simulation:** EV +$13.71, 62% P(profit), p05 $-84.01 / p95 $76.37
 
 ## Top 5 Best Bets
 1. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
@@ -19,44 +19,46 @@ _0% lineups confirmed · 1 rookie SPs_
 3. **LOL Peyz OVER 4.5 Kills**  (78/100 ****, edge —)
    - Player prop quality score 1.184
    - Elite player
-4. **GOLF Greyson Sigg TOP5 @ 576 (Butterfield Bermuda Championship)**  (78/100 *****, edge —)
-   - P(top 5) 14.8% -- lower variance than outright but compelling line.
-5. **GOLF Cam Davis TOP5 @ 582 (Butterfield Bermuda Championship)**  (78/100 *****, edge —)
-   - P(top 5) 14.7% -- lower variance than outright but compelling line.
+4. **LOL BILIBILI GAMING vs Team Liquid Alienware ML @ -128**  (76/100 *****, edge —)
+   - Model 56.2% (fair -128)
+   - Worlds
+5. **LOL Dplus KIA vs T1 ML @ -127**  (76/100 *****, edge —)
+   - Model 56.0% (fair -127)
+   - Worlds
 
 ## ⚠️ Trap Warnings — 2 flagged
-- **Jackson Chourio OVER 1.5 batter total bases** (low):
-   - Edge +12.7% looks big but only 0 settled props on this player — model unproven
 - **TBR @ MIL NRFI (no run 1st inning)** (low):
    - Edge +8.3% looks big but only 0 settled props on this player — model unproven
+- **Jackson Chourio OVER 1.5 batter total bases** (low):
+   - Line sharpened against this side (-10c move) -- sharp money knows
 
 ## Golf -- Butterfield Bermuda Championship
 - **Leader:** Austin Smotherman (-16) at #1
 - **Field:** 120 players  |  Status: In Progress
-- **Play of the Tournament:** Greyson Sigg TOP5 @ +576 (model 14.8%, HIGH)
-   - P(top 5) 14.8% -- lower variance than outright but compelling line.
+- **Play of the Tournament:** Isaiah Salinda TOP5 @ +777 (model 11.4%, MED)
+   - P(top 5) 11.4% -- lower variance than outright but compelling line.
 
 ## NBA -- REGULAR
-- Miami Heat @ Charlotte Hornets (0-2 vs 1-1)  | P(home) 93.3% fair -1384 | Scheduled
-- Brooklyn Nets @ Cleveland Cavaliers (0-1 vs 0-1)  | P(home) 64.5% fair -182 | Scheduled
-- Milwaukee Bucks @ Philadelphia 76ers (0-2 vs 2-0)  | P(home) 99.0% fair -9900 | Scheduled
-- Washington Wizards @ Chicago Bulls (1-1 vs 1-1)  | P(home) 64.5% fair -182 | Scheduled
-- San Antonio Spurs @ Dallas Mavericks (0-2 vs 1-1)  | P(home) 93.3% fair -1384 | Scheduled
+- Miami Heat @ Charlotte Hornets (0-3 vs 2-1) 110-115 | P(home) 100.0% fair +0 | Final
+- Brooklyn Nets @ Cleveland Cavaliers (0-2 vs 1-1) 121-125 | P(home) 100.0% fair +0 | Final
+- Milwaukee Bucks @ Philadelphia 76ers (0-3 vs 3-0) 116-127 | P(home) 100.0% fair +0 | Final
+- Washington Wizards @ Chicago Bulls (2-1 vs 1-2) 124-120 | P(home) 0.0% fair +0 | Final
+- San Antonio Spurs @ Dallas Mavericks (1-2 vs 1-2) 122-106 | P(home) 0.0% fair +0 | Final
 
 ## NHL -- REGULAR
-- Anaheim Ducks @ Philadelphia Flyers (4-6-0 vs 3-6-3) 3-3 | P(home) 60.1% fair -151 | End of Period
-- Los Angeles Kings @ New Jersey Devils (2-4-2 vs 6-4-0)  | P(home) 83.7% fair -514 | Scheduled
-- San Jose Sharks @ Boston Bruins (6-4-1 vs 8-2-1)  | P(home) 82.5% fair -473 | Scheduled
-- New York Rangers @ Ottawa Senators (7-4-1 vs 7-4-0)  | P(home) 64.1% fair -178 | Scheduled
-- Nashville Predators @ Pittsburgh Penguins (3-3-3 vs 4-6-1)  | P(home) 53.7% fair -116 | Scheduled
+- Anaheim Ducks @ Philadelphia Flyers (0-0-0 vs 0-0-0) 5-4 | P(home) 0.0% fair +0 | Final
+- Los Angeles Kings @ New Jersey Devils (0-0-0 vs 0-0-0) 1-3 | P(home) 100.0% fair +0 | Final
+- San Jose Sharks @ Boston Bruins (0-0-0 vs 0-0-0) 4-6 | P(home) 100.0% fair +0 | Final
+- New York Rangers @ Ottawa Senators (0-0-0 vs 0-0-0) 4-7 | P(home) 100.0% fair +0 | Final
+- Nashville Predators @ Pittsburgh Penguins (0-0-0 vs 0-0-0) 2-3 | P(home) 100.0% fair +0 | Final
 
-## LoL Esports -- 1 live, 29 upcoming
-- [Worlds] LOS vs G2 Esports BO1 | P(A) 42.2% fair +137/-137
-- [Worlds] LYON vs Karmine Corp BO1 | P(A) 40.7% fair +146/-146
-- [Worlds] Team Secret Whales vs Invictus Gaming BO1 | P(A) 35.7% fair +180/-180
-- [Worlds] Gen.G Esports vs Hanwha Life Esports BO1 | P(A) 56.0% fair -127/+127
-- [Worlds] T1 vs Dplus KIA BO1 | P(A) 44.0% fair +127/-127
-- **LoL POT:** Karmine Corp ML vs LYON (Worlds, BO1) (HIGH)
+## LoL Esports -- 0 live, 24 upcoming
+- [Worlds] Hanwha Life Esports vs Invictus Gaming BO1 | P(A) 49.1% fair +104/-104
+- [Worlds] TOP ESPORTS vs G2 Esports BO1 | P(A) 34.9% fair +187/-187
+- [Worlds] Movistar KOI vs Dplus KIA BO3 | P(A) 40.5% fair +147/-147
+- [Worlds] Gen.G Esports vs LYON BO3 | P(A) 66.0% fair -194/+194
+- [Worlds] CTBC Flying Oyster vs T1 BO1 | P(A) 47.7% fair +110/-110
+- **LoL POT:** Dplus KIA ML vs Movistar KOI (Worlds, BO3) (HIGH)
 
 ## Player Play of the Day -- across all sports (3431 candidates scanned)
 - **[LOL]** Inspired UNDER 3.5 Kills | model 61.7% fair -161 (ELITE)
@@ -66,7 +68,7 @@ _0% lineups confirmed · 1 rookie SPs_
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | model 61.0% fair -157 (ELITE)
 
 ## Self-learning calibration (esports + KBO)
-- **LOL:** 77 settled | brier 0.2558 | ECE 0.098
+- **LOL:** 79 settled | brier 0.2562 | ECE 0.0976
    - Model over-confident; subtract 9.0pp at next inference
 - **KBO:** 89 settled | brier 0.2509 | ECE 0.0636
    - Model over-confident; subtract 5.0pp at next inference

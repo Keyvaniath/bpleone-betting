@@ -2,7 +2,7 @@
 
 ## 🏥 Model Health: 66.9/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 100.0/100
+  - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 37.3/100
   - 🔴 Brier Trend: 7.2/100
   - 🟢 Pipeline Audit: 100.0/100
@@ -10,23 +10,20 @@
   - 🟢 Edge Count: 80.0/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.594)
-- **Total games on board:** 62
-- **Strong home favorites:** 31 | **Strong road dogs:** 14
+- **Regime today:** BALANCED (avg P(home)=0.511)
+- **Total games on board:** 32
+- **Strong home favorites:** 12 | **Strong road dogs:** 11
 
 ## 🎯 Top 5 Best Bets
 1. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
 2. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
 3. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
-4. **GOLF Greyson Sigg TOP5 @ 576 (Butterfield Bermuda Championship)** (78/100 ★★★★★)
-5. **GOLF Cam Davis TOP5 @ 582 (Butterfield Bermuda Championship)** (78/100 ★★★★★)
+4. **LOL BILIBILI GAMING vs Team Liquid Alienware ML @ -128** (76/100 ★★★★★)
+5. **LOL Dplus KIA vs T1 ML @ -127** (76/100 ★★★★★)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
 - Net units: **+10.34u** | ROI: **+45.6%**
-
-**Today's 1 Locks:**
-- [MLB] **TBR @ MIL** UNDER_8.5 · p=55% edge=+5.6% qK=0.015u
 
 ## 🎮 Player Play of the Day (cross-sport)
 - **[LOL]** Inspired UNDER 3.5 Kills | MED conviction · model 61.7% fair -161
@@ -35,55 +32,57 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (17)
-- [NCAAF] **BYU Cougars** AWAY (None L10) · model 74.9% fair -299
+## ⚡ Pre-Game HIGH Conviction (6)
 - [NFL] **Pittsburgh Steelers** AWAY (None L10) · model 74.5% fair -291
 - [NFL] **Denver Broncos** AWAY (None L10) · model 74.5% fair -291
 - [NFL] **New York Jets** HOME (None L10) · model 74.3% fair -289
 - [NFL] **Las Vegas Raiders** HOME (None L10) · model 73.3% fair -274
-- [NCAAF] **Alabama Crimson Tide** HOME (None L10) · model 72.6% fair -265
-- [MLS] **Sporting Kansas City** HOME (0-3 L10) · model 70.9% fair -244
-- [NCAAF] **USC Trojans** AWAY (None L10) · model 68.0% fair -212
-- [NHL] **Seattle Kraken** HOME (4-2 L10) · model 67.9% fair -211
 - [NFL] **New York Giants** AWAY (None L10) · model 67.1% fair -204
+- [NFL] **Baltimore Ravens** HOME (None L10) · model 64.7% fair -183
 
 ## 🔥/❄️ Heat / Cold Signals
-- Hot teams: **6** | Cold teams: **16** | Over-heavy: 0 | Under-heavy: 26
+- Hot teams: **9** | Cold teams: **18** | Over-heavy: 0 | Under-heavy: 28
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (164)
-- RESIDUAL_DIVERGENCE: **23**
-- STEAM_MOVE: **141**
-  - Charlotte Hornets (NBA): Charlotte Hornets UNDERPERFORMING expected margin by 9.8pts in recent games -- model bias may persist
+## ⚠️ Anomaly Detector (156)
+- RESIDUAL_DIVERGENCE: **19**
+- STREAK_MISMATCH: **1**
+- STEAM_MOVE: **136**
   - Cleveland Cavaliers (NBA): Cleveland Cavaliers UNDERPERFORMING expected margin by 11.6pts in recent games -- model bias may persist
   - Brooklyn Nets (NBA): Brooklyn Nets UNDERPERFORMING expected margin by 9.6pts in recent games -- model bias may persist
   - Milwaukee Bucks (NBA): Milwaukee Bucks UNDERPERFORMING expected margin by 9.3pts in recent games -- model bias may persist
   - San Antonio Spurs (NBA): San Antonio Spurs OUTPERFORMING expected margin by 7.8pts in recent games -- model bias may persist
+  - Atlanta Hawks (NBA): Atlanta Hawks on W5 streak but model rates as 42% -- may be undervalued
 
-## 💰 Today's Portfolio (10 picks)
+## 💰 Today's Portfolio (13 picks)
 - Total stake: **$335.0** (33.5% of $1000 bankroll)
 - Expected EV: **$-8.94**
   - #1 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #2 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
   - #3 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
-  - #4 [GOLF] $35 on GOLF Greyson Sigg TOP5 @ 576 (Butterfield Bermuda Championsh (P=15%)
-  - #5 [GOLF] $35 on GOLF Cam Davis TOP5 @ 582 (Butterfield Bermuda Championship) (P=15%)
+  - #4 [NBA] $35 on NBA Denver Nuggets ML (0-1) vs New Orleans Pelicans (P=65%)
+  - #5 [NBA] $35 on NBA Phoenix Suns ML (0-1) vs Golden State Warriors (P=65%)
 
-## 🎯 Convergence Picks (34 stacked games)
-- ELITE: **16** · HIGH: 11 · MED: 7
+## 🎯 Convergence Picks (33 stacked games)
+- ELITE: **11** · HIGH: 14 · MED: 8
   - [ELITE] Houston Rockets @ Atlanta Hawks : 6 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
-  - [ELITE] Anaheim Ducks @ Philadelphia Flyers : 6 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ANOMALY)
-  - [ELITE] Brooklyn Nets @ Cleveland Cavaliers : 5 signals (PREGAME, ANOMALY, ANOMALY, ATS)
+  - [ELITE] Anaheim Ducks @ Philadelphia Flyers : 5 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ATS)
   - [ELITE] San Jose Sharks @ Boston Bruins : 5 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ANOMALY)
   - [ELITE] Detroit Red Wings @ Calgary Flames : 5 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
+  - [ELITE] Seattle Sounders FC @ San Diego FC : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
 
 ## ⚾ Top MLB Pitcher K Plays (1)
 - **Logan Henderson** OVER 4.5 K (71%) fair -251
 
-## 🏀 NBA Player Heat (2 HOT / 1 COLD)
-  - 🔥 **Gary Trent Jr.** (MIL): L5 14.8/1.2/1.6 vs season 8.1/1.0/1.2 [PTS +6.7]
+## 🏀 NBA Player Heat (13 HOT / 13 COLD)
+  - 🔥 **Maxime Raynaud** (SAC): L5 20.0/9.8/2.6 vs season 12.5/7.5/1.4 [PTS +7.5, REB +2.3]
+  - 🔥 **Davion Mitchell** (MIA): L5 17.0/1.0/8.7 vs season 10.8/2.2/6.9 [PTS +6.2]
+  - 🔥 **Dylan Harper** (SA): L5 20.0/5.0/3.0 vs season 13.9/3.9/3.8 [PTS +6.1]
   - 🔥 **Cormac Ryan** (MIL): L5 20.2/4.8/2.4 vs season 14.3/2.5/1.7 [PTS +5.9, REB +2.3]
-  - ❄️ **Caleb Love** (PHI): L5 2.6 vs season 10.4 [PTS -7.8, REB -2.3] -- FADE OVER props
+  - 🔥 **Caleb Wilson** (CHI): L5 22.3/8.0/1.3 vs season 16.5/4.0/0.5 [PTS +5.8, REB +4.0]
+  - ❄️ **Shaedon Sharpe** (POR): L5 7.2 vs season 20.8 [PTS -13.6, REB -2.7, AST -2.0] -- FADE OVER props
+  - ❄️ **Brandon Ingram** (LAC): L5 12.0 vs season 21.5 [PTS -9.5, REB -2.4] -- FADE OVER props
+  - ❄️ **Josh Giddey** (CHI): L5 5.7 vs season 13.3 [PTS -7.6] -- FADE OVER props
 
 ## 🥊 UFC Fight Matchups (UFC 333: Volkanovski vs. Evloev)
   - [LEAN] **Abubakar Vagaev** (26-4-0) vs Jacob Malkoun -- fair -171
@@ -114,16 +113,12 @@
   - ❄️ **Andruw Monasterio** (BOS): L14 .083 / season .233 (-150pts) -- FADE props
   - ❄️ **Jim Jarvis** (ATL): L14 .079 / season .207 (-128pts) -- FADE props
 
-## 😴 B2B Fatigue Edges (4)
-- [NBA] FADE Milwaukee Bucks (away on B2B)
-- [NHL] FADE Tampa Bay Lightning (away on B2B)
-
-## 📈 Streak Regression Alerts (18)
+## 📈 Streak Regression Alerts (15)
 - [NBA] Miami Heat on L3 L10 1-4 -- Miami Heat on L3 -- no historical sample
 - [NBA] Atlanta Hawks on W5 L10 5-0 -- Atlanta Hawks on W5 -- no historical sample
 - [NBA] Houston Rockets on W3 L10 3-1 -- Houston Rockets on W3 -- no historical sample
 - [NBA] Phoenix Suns on L3 L10 1-3 -- Phoenix Suns on L3 -- no historical sample
-- [NHL] Philadelphia Flyers on W3 L10 3-2 -- Philadelphia Flyers on W3 -- no historical sample
+- [NHL] Edmonton Oilers on W3 L10 4-1 -- Edmonton Oilers on W3 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**
@@ -136,9 +131,9 @@
 - ELITE: **1** · HEALTHY: 0 · OK: 1 · DEGRADED: **0**
 
 ## 🤖 Self-Training Status
-- **NBA**: n=70 games · hit rate 61.4% · bias -9.5pp [calibration applied]
-- **NHL**: n=98 games · hit rate 49.0% · bias -11.0pp [calibration applied]
-- **WNBA**: n=3 games · hit rate 66.7% · bias +1.4pp
-- **MLS**: n=47 games · hit rate 36.2% · bias -4.6pp [calibration applied]
-- **EPL**: n=21 games · hit rate 52.4% · bias -8.2pp [calibration applied]
-- **MLB**: n=12 games · hit rate 75.0% · bias -8.6pp
+- **NBA**: n=71 games · hit rate 53.5% · bias -6.8pp [calibration applied]
+- **NHL**: n=96 games · hit rate 42.7% · bias -10.7pp [calibration applied]
+- **WNBA**: n=4 games · hit rate 50.0% · bias +21.7pp
+- **MLS**: n=61 games · hit rate 37.7% · bias -5.0pp [calibration applied]
+- **EPL**: n=25 games · hit rate 52.0% · bias -4.0pp [calibration applied]
+- **MLB**: n=12 games · hit rate 66.7% · bias -5.7pp
