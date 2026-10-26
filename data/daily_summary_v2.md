@@ -48,9 +48,9 @@
 - Hot teams: **8** | Cold teams: **24** | Over-heavy: 0 | Under-heavy: 31
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (126)
+## ⚠️ Anomaly Detector (127)
 - RESIDUAL_DIVERGENCE: **11**
-- STEAM_MOVE: **115**
+- STEAM_MOVE: **116**
   - Golden State Valkyries (WNBA): Golden State Valkyries UNDERPERFORMING expected margin by 10.3pts in recent games -- model bias may persist
   - Atlanta Dream (WNBA): Atlanta Dream OUTPERFORMING expected margin by 10.3pts in recent games -- model bias may persist
   - CF Montréal (MLS): CF Montréal OUTPERFORMING expected margin by 6.6pts in recent games -- model bias may persist
@@ -58,21 +58,21 @@
   - New England Revolution (MLS): New England Revolution OUTPERFORMING expected margin by 7.8pts in recent games -- model bias may persist
 
 ## 💰 Today's Portfolio (12 picks)
-- Total stake: **$300.0** (30.0% of $1000 bankroll)
-- Expected EV: **$-27.02**
+- Total stake: **$330.0** (33.0% of $1000 bankroll)
+- Expected EV: **$-6.24**
   - #1 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #2 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
   - #3 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
   - #4 [NRFI] $35 on MIL @ TBR NRFI (no run 1st inning) (P=64%)
-  - #5 [WNBA] $20 on WNBA Golden State Valkyries ML (32-12) vs Atlanta Dream (P=60%)
+  - #5 [NBA] $35 on NBA Charlotte Hornets ML (2-1) vs Washington Wizards (P=55%)
 
-## 🎯 Convergence Picks (17 stacked games)
-- ELITE: **5** · HIGH: 4 · MED: 8
-  - [ELITE] Toronto Raptors @ Minnesota Timberwolves : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
-  - [ELITE] New York Islanders @ Dallas Stars : 4 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ATS)
-  - [ELITE] Montreal Canadiens @ Winnipeg Jets : 4 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ATS)
-  - [ELITE] Brentford @ Hull City : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
-  - [ELITE] Leeds United @ Sunderland : 4 signals (HEAT_COLD, HEAT_COLD, ATS, ATS)
+## 🎯 Convergence Picks (31 stacked games)
+- ELITE: **14** · HIGH: 8 · MED: 9
+  - [ELITE] Atlanta Hawks @ Houston Rockets : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ANOMALY)
+  - [ELITE] Los Angeles Kings @ New York Rangers : 5 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ATS)
+  - [ELITE] Toronto Maple Leafs @ Calgary Flames : 5 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
+  - [ELITE] Atlanta United FC @ New York City FC : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
+  - [ELITE] Orlando City SC @ Chicago Fire FC : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
 
 ## ⚾ Top MLB Pitcher K Plays (1)
 - **Robert Gasser** OVER 4.5 K (63%) fair -171
@@ -115,6 +115,18 @@
   - ❄️ **Tristan Peters** (CWS): L14 .111 / season .265 (-154pts) -- FADE props
   - ❄️ **Andruw Monasterio** (BOS): L14 .083 / season .233 (-150pts) -- FADE props
   - ❄️ **Jim Jarvis** (ATL): L14 .079 / season .207 (-128pts) -- FADE props
+
+## 😴 B2B Fatigue Edges (3)
+- [NBA] FADE Minnesota Timberwolves (away on B2B)
+- [NBA] FADE Indiana Pacers (away on B2B)
+- [NBA] FADE Oklahoma City Thunder (home on B2B)
+
+## 📈 Streak Regression Alerts (21)
+- [NBA] Minnesota Timberwolves on W3 L10 3-2 -- Minnesota Timberwolves on W3 -- no historical sample
+- [NBA] Miami Heat on L4 L10 1-4 -- Miami Heat on L4 -- no historical sample
+- [NBA] Milwaukee Bucks on L3 L10 1-4 -- Milwaukee Bucks on L3 -- no historical sample
+- [NBA] Oklahoma City Thunder on W3 L10 4-1 -- Oklahoma City Thunder on W3 -- no historical sample
+- [NBA] Houston Rockets on W4 L10 4-0 -- Houston Rockets on W4 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**

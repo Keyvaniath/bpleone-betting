@@ -6,7 +6,7 @@ _0% lineups confirmed · 1 rookie SPs_
 
 ## Slate
 - **1 games** scheduled
-- **22 best bets** scored: 4 DK · 0 PP · 1 NRFI · 0 SGP
+- **24 best bets** scored: 4 DK · 0 PP · 1 NRFI · 0 SGP
 - **MC simulation:** EV +$15.6, 64% P(profit), p05 $-84.01 / p95 $76.37
 
 ## Top 5 Best Bets
@@ -47,7 +47,7 @@ _0% lineups confirmed · 1 rookie SPs_
 - Toronto Maple Leafs @ Calgary Flames (7-4-2 vs 4-6-0)  | P(home) 41.9% fair +139 | Scheduled
 - Detroit Red Wings @ Edmonton Oilers (4-4-3 vs 8-2-1)  | P(home) 89.2% fair -829 | Scheduled
 
-## LoL Esports -- 0 live, 20 upcoming
+## LoL Esports -- 1 live, 19 upcoming
 - [Worlds] CTBC Flying Oyster vs T1 BO1 | P(A) 47.7% fair +110/-110
 - [Worlds] BILIBILI GAMING vs Karmine Corp BO1 | P(A) 51.5% fair -106/+106
 - [Worlds] LOS vs Team Secret Whales BO3 | P(A) 57.0% fair -132/+132
