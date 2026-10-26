@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-26T05:19:03",
+  "generated_at": "2026-10-26T15:31:53",
   "date": "2026-10-26",
   "n_games": 1,
   "method_note": "Per-game unified card: today.json model+market+recs joined with every per-matchup player/game prop. Live score/win-prob overlaid client-side from live_state.json + live_game.json.",
@@ -35,8 +35,8 @@
         "p_over_market": 0.682
       },
       "market": {
-        "home_ml": -120,
-        "away_ml": -101,
+        "home_ml": -118,
+        "away_ml": -102,
         "total": 7.0,
         "book": "draftkings"
       },
@@ -52,9 +52,9 @@
         {
           "label": "MIL_ML",
           "model_prob": 0.5606,
-          "market_price": -101,
-          "edge_pct": 11.57,
-          "kelly_units": 2.92,
+          "market_price": -102,
+          "edge_pct": 11.03,
+          "kelly_units": 2.81,
           "confidence": "High"
         }
       ],
@@ -86,28 +86,68 @@
             "games_in_sample": 8
           },
           "home": {
-            "wins": 6,
+            "wins": 5,
             "losses": 4,
-            "run_diff": 9,
-            "runs_pg": 4.0,
-            "runs_allowed_pg": 3.1,
+            "run_diff": 6,
+            "runs_pg": 3.89,
+            "runs_allowed_pg": 3.22,
             "streak": "L2",
-            "games_in_sample": 10
+            "games_in_sample": 9
           }
         },
         "ats": {
           "away": {
-            "ats_record": "1-5-0",
-            "cover_pct": 0.167,
+            "ats_record": "1-4-0",
+            "cover_pct": 0.2,
             "signal": "MODEL_OVERRATES"
           },
           "home": null
         },
         "pitcher_form": {
-          "away": null,
-          "home": null
+          "away": {
+            "pitcher": "Robert Gasser",
+            "status": "STEADY",
+            "trend": null,
+            "tier": null,
+            "k9_delta": 0.0,
+            "era_delta": 0.0,
+            "recent_k_per_9_l3": 8.84,
+            "recent_era_l3": 2.09,
+            "form_index": null,
+            "leans": []
+          },
+          "home": {
+            "pitcher": "Freddy Peralta",
+            "status": "STEADY",
+            "trend": null,
+            "tier": null,
+            "k9_delta": 0.0,
+            "era_delta": 0.0,
+            "recent_k_per_9_l3": 6.9,
+            "recent_era_l3": 1.97,
+            "form_index": null,
+            "leans": []
+          }
         },
-        "bullpen": null,
+        "bullpen": {
+          "away_pen": {
+            "score": 35.0,
+            "tier": "NORMAL",
+            "appearances_3d": 0,
+            "pen_ip_3d": 0.0,
+            "pitchers_25plus_24h": 0,
+            "closer_used_yesterday": false
+          },
+          "home_pen": {
+            "score": 35.0,
+            "tier": "NORMAL",
+            "appearances_3d": 12,
+            "pen_ip_3d": 9.0,
+            "pitchers_25plus_24h": 0,
+            "closer_used_yesterday": false
+          },
+          "leans": []
+        },
         "hot_cold": []
       },
       "h2h": {
@@ -119,22 +159,141 @@
           "n": 0
         },
         "recent_meetings": [],
-        "current_series": null
+        "current_series": {
+          "series_number": 3,
+          "prior_results": [
+            {
+              "date": "2026-10-23",
+              "home_score": 2,
+              "away_score": 3,
+              "margin": -1,
+              "winner": "away"
+            },
+            {
+              "date": "2026-10-24",
+              "home_score": 4,
+              "away_score": 5,
+              "margin": -1,
+              "winner": "away"
+            }
+          ],
+          "note": "Series finale; away can sweep"
+        }
       },
       "line_movement": {
         "model_home_implied": 43.9,
         "market": {
-          "home_ml": -120,
-          "away_ml": -101,
+          "home_ml": -118,
+          "away_ml": -102,
           "total": 7.0,
           "book": "draftkings",
-          "home_implied": 54.5
+          "home_implied": 54.1
         },
-        "edge_vs_market_pp": -10.6,
+        "edge_vs_market_pp": -10.2,
         "has_timeseries": false
       },
-      "n_predictions": 0,
-      "predictions": []
+      "n_predictions": 11,
+      "predictions": [
+        {
+          "family": "game",
+          "stat": "Total (alt)",
+          "subject": "MIL @ TBR",
+          "market": "GAME_TOTAL_OVER_6.5",
+          "prob": 0.664,
+          "fair_odds": -198,
+          "edge": "STRONG_TOTAL"
+        },
+        {
+          "family": "pitcher",
+          "stat": "Strikeouts",
+          "subject": "Freddy Peralta",
+          "market": "K_OVER_3.5",
+          "prob": 0.637,
+          "fair_odds": -176,
+          "edge": "STRONG_OVER"
+        },
+        {
+          "family": "pitcher",
+          "stat": "Strikeouts",
+          "subject": "Robert Gasser",
+          "market": "K_OVER_4.5",
+          "prob": 0.631,
+          "fair_odds": -171,
+          "edge": "STRONG_OVER"
+        },
+        {
+          "family": "pitcher",
+          "stat": "Outs",
+          "subject": "Freddy Peralta",
+          "market": "OUTS_UNDER_15.5",
+          "prob": 0.595,
+          "fair_odds": -147,
+          "edge": "STANDARD_UNDER"
+        },
+        {
+          "family": "pitcher",
+          "stat": "Outs",
+          "subject": "Robert Gasser",
+          "market": "OUTS_OVER_15.0",
+          "prob": 0.561,
+          "fair_odds": -128,
+          "edge": "STANDARD_OVER"
+        },
+        {
+          "family": "pitcher",
+          "stat": "Earned runs",
+          "subject": "Freddy Peralta",
+          "market": "Earned runs",
+          "prob": 0.497,
+          "fair_odds": null,
+          "edge": "NONE"
+        },
+        {
+          "family": "pitcher",
+          "stat": "Earned runs",
+          "subject": "Robert Gasser",
+          "market": "Earned runs",
+          "prob": 0.467,
+          "fair_odds": null,
+          "edge": "NONE"
+        },
+        {
+          "family": "pitcher",
+          "stat": "Walks",
+          "subject": "Freddy Peralta",
+          "market": "Walks",
+          "prob": 0.329,
+          "fair_odds": null,
+          "edge": "NONE"
+        },
+        {
+          "family": "pitcher",
+          "stat": "Walks",
+          "subject": "Robert Gasser",
+          "market": "Walks",
+          "prob": 0.305,
+          "fair_odds": null,
+          "edge": "NONE"
+        },
+        {
+          "family": "game",
+          "stat": "Team steals",
+          "subject": "TBR",
+          "market": "Team steals",
+          "prob": 0.066,
+          "fair_odds": null,
+          "edge": "NONE"
+        },
+        {
+          "family": "game",
+          "stat": "Team steals",
+          "subject": "MIL",
+          "market": "Team steals",
+          "prob": 0.032,
+          "fair_odds": null,
+          "edge": "NONE"
+        }
+      ]
     }
   ]
 }

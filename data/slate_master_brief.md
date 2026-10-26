@@ -1,13 +1,13 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-10-26T05:30:59 UTC_
+_Generated 2026-10-26T15:39:50 UTC_
 
 ## Slate Quality
-- **Tier:** MODEST_NIGHT
-- **Score:** 22
-- **Advisory:** Light slate. Limit to 1-3 strongest plays; use 25% Kelly or less.
+- **Tier:** NO_ACTION_NIGHT
+- **Score:** -1
+- **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 16
-- **Total FADES:** 42
+- **Total STRONG:** 18
+- **Total FADES:** 73
 
 ## Top 5 Curated Picks
 1. **GOLF / Séamus Power** (GOLF_PLAYER, score=190.29)
@@ -19,7 +19,10 @@ _Generated 2026-10-26T05:30:59 UTC_
 3. **WNBA / allisha gray** (WNBA_PLAYER, score=62.42)
    - Play: allisha gray (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (WNBA_PLAYER)
-4. **WNBA / angel reese** (WNBA_PLAYER, score=60.0)
+4. **NBA / CHA** (NBA_TEAM, score=60.0)
+   - Play: CHA (TEAM_STRONG)
+   - Rationale: Cross-sport top pick (NBA_TEAM)
+5. **WNBA / angel reese** (WNBA_PLAYER, score=60.0)
    - Play: angel reese (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (WNBA_PLAYER)
 
@@ -36,13 +39,13 @@ _Generated 2026-10-26T05:30:59 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **GOLF** / Lee Hodges (PLAYER_FADE)
-  - Fade angle: miss cut YES + high round score
-- **GOLF** / Hayden Springer (PLAYER_FADE)
-  - Fade angle: miss cut YES + high round score
-- **GOLF** / Lucas Glover (PLAYER_FADE)
-  - Fade angle: miss cut YES + high round score
-- **GOLF** / Kristoffer Ventura (PLAYER_FADE)
-  - Fade angle: miss cut YES + high round score
-- **GOLF** / Ben Martin (PLAYER_FADE)
-  - Fade angle: miss cut YES + high round score
+- **NBA** / lauri markkanen (PLAYER_FADE)
+  - Fade angle: PTS UNDER + PRA UNDER (multi-prop)
+- **NBA** / CHI (TEAM_FADE)
+  - Fade angle: team total UNDER
+- **NBA** / PHX (TEAM_FADE)
+  - Fade angle: team total UNDER
+- **NBA** / MIA (TEAM_FADE)
+  - Fade angle: team total UNDER
+- **NBA** / DAL (TEAM_FADE)
+  - Fade angle: team total UNDER
