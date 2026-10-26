@@ -56,8 +56,12 @@ bpleone-site/
   git-history method) applied by ml_reprice.apply_ledger in every build: 29
   moneylines re-priced from a fake +100 (+3.0u -> -1.31u; 27 top_25_board, 2
   pod; LAD -226 had paid +1.00u), 9 pod totals VOIDED (line 8.5 never existed
-  at DK: real 9.5/11.0/8.0/none), 5 kept (8.5 was real). None curated ->
-  curated headline unchanged 936-434 +16.0%. Alpha v2 18-16 +9.59u -> +9.51u
+  at DK: real 9.5/11.0/8.0/none), 5 kept (8.5 was real). Top 25 + POD ARE
+  curated (curated = by SOURCE; there is no per-pick `curated` flag -- I first
+  checked that nonexistent flag and wrongly said "headline unchanged"):
+  curated 936-434 +16.02% (+219.45u) -> 932-429 +15.91% (+216.50u), disclosed
+  on track-record via ledger_summary.price_corrections (both the 10/23 and
+  10/26 corrections, which the page had never shown). Alpha v2 18-16 +9.59u -> +9.51u
   (+27.97%); all-time 66-38 +22.95u -> +22.87u (+21.99%) -- only 8/17 STL
   (+100 -> DK -109) moves. **RULE: no price default anywhere, of any value;
   search for EVERY placeholder a producer could emit, not the one you saw.**

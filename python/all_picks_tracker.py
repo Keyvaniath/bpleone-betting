@@ -152,6 +152,38 @@ def _calibrated_prob(raw, market):
 MLB_FAV_PRICE_FLOOR = -150
 
 
+def _price_corrections(history):
+    """Disclosure block for the placeholder-price corrections (counts live from
+    the ledger + archive; the before/after headline figures are the measured
+    restatements, fixed history). track-record.html renders it."""
+    rows = list(history) + list(_load(ARCHIVE_PATH).get("picks") or [])
+    seen, rp, vm, vt = set(), {"2026-10-23": 0, "2026-10-26": 0}, 0, 0
+    for p in rows:
+        pid = p.get("pick_id")
+        if pid in seen:
+            continue
+        seen.add(pid)
+        why = str((p.get("repriced") or {}).get("reason") or "")
+        if why[:10] in rp:
+            rp[why[:10]] += 1
+        vr = str(p.get("voided_reason") or "")
+        vm += vr.startswith("unpriced moneyline")
+        vt += vr.startswith("unpriced total")
+    return [
+        {"date": "2026-10-23", "n_repriced": rp["2026-10-23"], "n_voided": vm,
+         "curated_before": "943-436 (+17.21%)", "curated_after": "936-434 (+16.02%)",
+         "note": ("MLB moneylines recorded when no book price was loaded had been graded at a "
+                  "placeholder -110. Each was re-priced at the real DraftKings pre-game line "
+                  "(from the snapshot history), or voided when no real line exists.")},
+        {"date": "2026-10-26", "n_repriced": rp["2026-10-26"], "n_voided": vt,
+         "curated_before": "936-434 (+16.02%)", "curated_after": "932-429 (+15.91%)",
+         "note": ("The same gap on the away side (+100) and the total (8.5): moneylines "
+                  "re-priced at the real DraftKings line; Play-of-the-Day totals whose 8.5 "
+                  "line DraftKings never posted were voided -- a bet on a line that did not "
+                  "exist has no honest result.")},
+    ]
+
+
 def _price_american(p: Dict[str, Any]):
     """The price a pick is GRADED at: the real book line when known
     (book_american, stamped at intake or by the 2026-10-23 re-price), else the
@@ -3841,6 +3873,7 @@ def run() -> Dict[str, Any]:
         "curated": curated,
         "headline_basis": "all-time: working ledger + data/ledger_archive.json",
         "working_ledger_only": _working_only,
+        "price_corrections": _price_corrections(history),
         "restatement": {
             "date": "2026-10-23",
             "note": ("The headline became ALL-TIME on 2026-10-23. 5,946 settled picks that the old "

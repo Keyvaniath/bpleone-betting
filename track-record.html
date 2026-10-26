@@ -411,7 +411,12 @@
       const rs = d.restatement, wo = d.working_ledger_only;
       const rsNote = (rs && wo && wo.curated && d.curated)
         ? `<p class="muted" style="font-size:11px;margin:8px 0 0;"><b>Restated ${rs.date}:</b> the record is now <b>all-time</b>. ${(rs.n_archived_in_headline || 0).toLocaleString()} settled picks that an old eviction rule had dropped from the working file (May–June 2026) were rebuilt from the repository history at each pick's final state, duplicates removed, and folded back in. Curated: ${wo.curated.wins}-${wo.curated.losses} (${wo.curated.roi_pct >= 0 ? "+" : ""}${wo.curated.roi_pct}%) on the working window → ${d.curated.wins}-${d.curated.losses} (${d.curated.roi_pct >= 0 ? "+" : ""}${d.curated.roi_pct}%) all-time. Firehose: ${wo.all.roi_pct}% → ${d.roi_pct}%. <a href="data/ledger_archive.json" target="_blank">archive →</a></p>` : "";
-      document.getElementById("bsGrid").innerHTML = header + rows + nflNote + rsNote;
+      // Price corrections (2026-10-26): every placeholder-price restatement, dated, with
+      // the curated record before and after -- the record says when it was corrected.
+      const pcNote = (d.price_corrections || []).map(c =>
+        `<p class="muted" style="font-size:11px;margin:8px 0 0;"><b>Corrected ${c.date}:</b> ${c.note} ` +
+        `${c.n_repriced} re-priced, ${c.n_voided} voided. Curated ${c.curated_before} → ${c.curated_after}.</p>`).join("");
+      document.getElementById("bsGrid").innerHTML = header + rows + nflNote + rsNote + pcNote;
     }).catch(() => {});
   </script>
 
