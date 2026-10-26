@@ -1,29 +1,70 @@
-# EdgeStat Daily Brief - 2026-10-25
+# EdgeStat Daily Brief - 2026-10-26
 
 **Model Confidence: 10.1/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
 
 _Pipeline health: **WARNING** (9/15 artifacts ok; 6 empty, 0 stale)._ 
 
-_Generated at 2026-10-25T23:58:42 UTC. Game lines source: **placeholder -110 (no real book today)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-10-26T05:31:07 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+
+## Play of the Day
+
+**MIL @ TBR - OVER_7.0**
+- Market: -110
+- Model probability: 68.2%
+- Raw edge: +30.19%
+- Recommended stake: <= 0.5u (model calibrating)
+
+> _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
+
+## Full Slate (1 games)
+
+| Time | Matchup | Park | Weather | Top edge |
+|---|---|---|---|---|
+| 8:00p ET | MIL @ TBR | Tropicana Field | indoor | OVER_7.0 +30.19% |
+
+## Parlays - top 5
+
+- **3-leg @ +698 (prob 16.1%, EV +28.72%)**
+  - Junior Caminero OVER 1.5 batter_total_bases (+122, model 48.9%)
+  - Ryan Vilade OVER 0.5 batter_hits (-124, model 58.9%)
+  - MIL @ TBR MIL_ML (-101, model 56.1%)
+- **3-leg @ +876 (prob 13.1%, EV +28.0%)**
+  - Junior Caminero OVER 1.5 batter_total_bases (+122, model 48.9%)
+  - Jackson Chourio OVER 1.5 batter_total_bases (+121, model 47.8%)
+  - MIL @ TBR MIL_ML (-101, model 56.1%)
+- **3-leg @ +1177 (prob 10.0%, EV +27.18%)**
+  - Junior Caminero OVER 1.5 batter_total_bases (+122, model 48.9%)
+  - Jackson Chourio UNDER 0.5 batter_hits (+189, model 36.4%)
+  - MIL @ TBR MIL_ML (-101, model 56.1%)
+- **3-leg @ +1009 (prob 11.4%, EV +26.32%)**
+  - Junior Caminero OVER 1.5 batter_total_bases (+122, model 48.9%)
+  - William Contreras OVER 1.5 batter_total_bases (+151, model 41.6%)
+  - MIL @ TBR MIL_ML (-101, model 56.1%)
+- **3-leg @ +1111 (prob 10.4%, EV +25.59%)**
+  - Junior Caminero OVER 1.5 batter_total_bases (+122, model 48.9%)
+  - Junior Caminero UNDER 0.5 batter_hits (+174, model 37.9%)
+  - MIL @ TBR MIL_ML (-101, model 56.1%)
 
 ## Self-Learning Loop
 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
-| batter total bases | 84 | 35.7% | 41.4% | 1.157 | 0.874 |
 | batter hits | 330 | 55.1% | 56.5% | 1.024 | 0.977 |
+| batter total bases | 84 | 35.7% | 41.4% | 1.157 | 0.874 |
 
-Cumulative graded plays: 19503. Wins: 8613. Hit rate: 44.2%.
+Cumulative graded plays: 19572. Wins: 8665. Hit rate: 44.3%.
+
+## Auxiliary Markets (Model Fair Prices)
+
+| Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
+|---|---|---|---|---|---|
+| MIL @ TBR | 64.3% | -180 | 2.21 | +222 | -222 |
 
 ## Team Form (last 10)
 
-**Hot:** MIL 7-1 (W7, +13), TB 6-4 (L2, +9), CLE 5-5 (L3, +4), SD 1-1 (L1, -1), NYY 0-2 (L2, -4)
+**Hot:** MIL 7-1 (W7, +13), TB 5-4 (L2, +6), CLE 5-4 (L3, +5), SD 1-1 (L1, -1), NYY 0-1 (L1, -1)
 
-**Cold:** CWS 1-3 (L3, -11), LAD 2-4 (L4, -5), ATL 0-2 (L2, -5), NYY 0-2 (L2, -4), SD 1-1 (L1, -1)
-
-## Gassed Bullpens (> 8.0 IP in 2 days)
-
-- MIL: 8.6 IP across 2 games
+**Cold:** CWS 0-3 (L3, -12), LAD 2-4 (L4, -5), ATL 0-2 (L2, -5), NYY 0-1 (L1, -1), SD 1-1 (L1, -1)
 
 ## Loop Activity (since last refresh)
 
@@ -39,4 +80,4 @@ _The model is suggesting 1 parameter tweak based on its own performance. Apply v
 ---
 
 _EdgeStat is a research desk. Bet responsibly. 21+. 1-800-GAMBLER._
-_Source: github.com/Keyvaniath/bpleone-betting - last settled 2026-10-25._
+_Source: github.com/Keyvaniath/bpleone-betting - last settled 2026-10-26._

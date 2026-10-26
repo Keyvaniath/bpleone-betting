@@ -1,12 +1,12 @@
-# Tonight's Slate Brief — 2026-10-25
+# Tonight's Slate Brief — 2026-10-26
 
-## Slate Quality: 70/100 (MEDIUM)
-_0% lineups confirmed_
+## Slate Quality: 67/100 (MEDIUM)
+_0% lineups confirmed · 1 rookie SPs_
 **Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
-- **0 games** scheduled
-- **26 best bets** scored: 3 DK · 0 PP · 0 NRFI · 0 SGP
+- **1 games** scheduled
+- **20 best bets** scored: 4 DK · 0 PP · 0 NRFI · 0 SGP
 - **MC simulation:** EV +$4.21, 58% P(profit), p05 $-34.01 / p95 $30.92
 
 ## Top 5 Best Bets
@@ -19,12 +19,16 @@ _0% lineups confirmed_
 3. **LOL Peyz OVER 4.5 Kills**  (78/100 ****, edge —)
    - Player prop quality score 1.184
    - Elite player
-4. **LOL Dplus KIA vs Movistar KOI ML @ -147**  (76/100 *****, edge —)
-   - Model 59.5% (fair -147)
-   - Worlds
-5. **LOL LOS vs Team Secret Whales ML @ -132**  (76/100 *****, edge —)
+4. **LOL LOS vs Team Secret Whales ML @ -132**  (76/100 *****, edge —)
    - Model 57.0% (fair -132)
    - Worlds
+5. **LOL Anyone's Legend vs Team Liquid Alienware ML @ -112**  (76/100 *****, edge —)
+   - Model 52.9% (fair -112)
+   - Worlds
+
+## ⚠️ Trap Warnings — 1 flagged
+- **Junior Caminero OVER 1.5 batter total bases** (low):
+   - Edge +8.5% looks big but only 0 settled props on this player — model unproven
 
 ## Bullpens GASSED tonight
 Milwaukee Brewers
@@ -33,29 +37,29 @@ _Lean late-inning OVER on these games; fade their save situations._
 ## Golf -- Butterfield Bermuda Championship
 - **Leader:** Austin Smotherman (-16) at #1
 - **Field:** 120 players  |  Status: In Progress
-- **Play of the Tournament:** Cam Davis TOP5 @ +777 (model 11.4%, MED)
+- **Play of the Tournament:** Isaiah Salinda TOP5 @ +777 (model 11.4%, MED)
    - P(top 5) 11.4% -- lower variance than outright but compelling line.
 
 ## NBA -- REGULAR
-- Los Angeles Lakers @ Utah Jazz (2-0 vs 1-1) 97-92 | P(home) 12.1% fair +726 | In Progress
-- Indiana Pacers @ Brooklyn Nets (1-1 vs 0-2) 39-38 | P(home) 32.6% fair +206 | In Progress
-- Orlando Magic @ New York Knicks (0-2 vs 0-2)  | P(home) 61.8% fair -162 | Scheduled
-- Toronto Raptors @ Minnesota Timberwolves (2-0 vs 2-0)  | P(home) 61.8% fair -162 | Scheduled
-- LA Clippers @ Oklahoma City Thunder (1-1 vs 2-0)  | P(home) 90.5% fair -954 | Scheduled
+- Los Angeles Lakers @ Utah Jazz (3-0 vs 1-2) 132-123 | P(home) 0.0% fair +0 | Final
+- Indiana Pacers @ Brooklyn Nets (2-1 vs 0-3) 136-109 | P(home) 0.0% fair +0 | Final
+- Orlando Magic @ New York Knicks (1-2 vs 0-3) 111-102 | P(home) 0.0% fair +0 | Final
+- Toronto Raptors @ Minnesota Timberwolves (2-1 vs 3-0) 94-117 | P(home) 100.0% fair +0 | Final
+- LA Clippers @ Oklahoma City Thunder (1-2 vs 3-0) 101-108 | P(home) 100.0% fair +0 | Final
 
 ## NHL -- REGULAR
 - Florida Panthers @ Chicago Blackhawks (0-0-0 vs 0-0-0) 3-2 | P(home) 0.0% fair +0 | Final
-- New York Islanders @ Dallas Stars (5-3-2 vs 6-3-1) 1-2 | P(home) 73.3% fair -274 | End of Period
-- Montreal Canadiens @ Winnipeg Jets (5-3-2 vs 4-3-3)  | P(home) 57.0% fair -132 | Scheduled
-- Colorado Avalanche @ Nashville Predators (6-4-1 vs 3-3-4)  | P(home) 52.9% fair -112 | Scheduled
-- Minnesota Wild @ Vancouver Canucks (7-3-2 vs 2-9-1)  | P(home) 22.1% fair +353 | Scheduled
+- New York Islanders @ Dallas Stars (0-0-0 vs 0-0-0) 3-6 | P(home) 100.0% fair +0 | Final
+- Montreal Canadiens @ Winnipeg Jets (0-0-0 vs 0-0-0) 2-1 | P(home) 0.0% fair +0 | Final
+- Colorado Avalanche @ Nashville Predators (0-0-0 vs 0-0-0) 2-6 | P(home) 100.0% fair +0 | Final
+- Minnesota Wild @ Vancouver Canucks (0-0-0 vs 0-0-0) 4-2 | P(home) 0.0% fair +0 | Final
 
-## LoL Esports -- 1 live, 20 upcoming
-- [Worlds] LYON vs Gen.G Esports BO3 | P(A) 34.0% fair +194/-194
+## LoL Esports -- 0 live, 20 upcoming
 - [Worlds] CTBC Flying Oyster vs T1 BO1 | P(A) 47.7% fair +110/-110
 - [Worlds] BILIBILI GAMING vs Karmine Corp BO1 | P(A) 51.5% fair -106/+106
 - [Worlds] LOS vs Team Secret Whales BO3 | P(A) 57.0% fair -132/+132
 - [Worlds] Team Liquid Alienware vs Anyone's Legend BO3 | P(A) 47.1% fair +112/-112
+- [Worlds] TBD vs TBD BO3 | P(A) 50.0% fair -100/-100
 - **LoL POT:** LOS ML vs Team Secret Whales (Worlds, BO3) (HIGH)
 
 ## Player Play of the Day -- across all sports (3431 candidates scanned)

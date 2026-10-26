@@ -1,25 +1,25 @@
-# EdgeStat Daily Summary — 2026-10-25
+# EdgeStat Daily Summary — 2026-10-26
 
-## 🏥 Model Health: 76.6/100 [HEALTHY]
+## 🏥 Model Health: 74.2/100 [HEALTHY]
 - Solid health - some minor issues to monitor
   - 🟢 Calibration Freshness: 100.0/100
   - 🟡 Hit Rate Trend: 64.0/100
   - 🔴 Brier Trend: 35.9/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 100.0/100
-  - 🟡 Edge Count: 65.7/100
+  - 🟢 Data Health: 90.9/100
+  - 🟡 Edge Count: 60.0/100
 
 ## 🌐 Slate Overview
-- **Regime today:** BALANCED (avg P(home)=0.463)
-- **Total games on board:** 19
-- **Strong home favorites:** 4 | **Strong road dogs:** 6
+- **Regime today:** BALANCED (avg P(home)=0.534)
+- **Total games on board:** 6
+- **Strong home favorites:** 1 | **Strong road dogs:** 1
 
 ## 🎯 Top 5 Best Bets
 1. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
 2. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
 3. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
-4. **LOL Dplus KIA vs Movistar KOI ML @ -147** (76/100 ★★★★★)
-5. **LOL LOS vs Team Secret Whales ML @ -132** (76/100 ★★★★★)
+4. **LOL LOS vs Team Secret Whales ML @ -132** (76/100 ★★★★★)
+5. **LOL Anyone's Legend vs Team Liquid Alienware ML @ -112** (76/100 ★★★★★)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -32,46 +32,45 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (1)
-- [MLS] **LAFC** HOME (1-2 L10) · model 66.7% fair -200
-
 ## 🔥/❄️ Heat / Cold Signals
-- Hot teams: **9** | Cold teams: **18** | Over-heavy: 0 | Under-heavy: 28
+- Hot teams: **8** | Cold teams: **24** | Over-heavy: 0 | Under-heavy: 31
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (154)
-- RESIDUAL_DIVERGENCE: **13**
-- STEAM_MOVE: **141**
-  - Utah Jazz (NBA): Utah Jazz UNDERPERFORMING expected margin by 6.5pts in recent games -- model bias may persist
-  - Los Angeles Lakers (NBA): Los Angeles Lakers OUTPERFORMING expected margin by 11.9pts in recent games -- model bias may persist
+## ⚠️ Anomaly Detector (109)
+- RESIDUAL_DIVERGENCE: **11**
+- STEAM_MOVE: **98**
   - Brooklyn Nets (NBA): Brooklyn Nets UNDERPERFORMING expected margin by 8.2pts in recent games -- model bias may persist
   - New York Knicks (NBA): New York Knicks UNDERPERFORMING expected margin by 7.8pts in recent games -- model bias may persist
   - Toronto Raptors (NBA): Toronto Raptors OUTPERFORMING expected margin by 16.4pts in recent games -- model bias may persist
+  - Detroit Pistons (NBA): Detroit Pistons OUTPERFORMING expected margin by 9.1pts in recent games -- model bias may persist
+  - Memphis Grizzlies (NBA): Memphis Grizzlies OUTPERFORMING expected margin by 11.9pts in recent games -- model bias may persist
 
-## 💰 Today's Portfolio (12 picks)
-- Total stake: **$330.0** (33.0% of $1000 bankroll)
-- Expected EV: **$-7.32**
+## 💰 Today's Portfolio (8 picks)
+- Total stake: **$205.0** (20.5% of $1000 bankroll)
+- Expected EV: **$-7.63**
   - #1 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #2 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
   - #3 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
-  - #4 [NBA] $35 on NBA New York Knicks ML (0-2) vs Orlando Magic (P=62%)
-  - #5 [NBA] $35 on NBA Minnesota Timberwolves ML (2-0) vs Toronto Raptors (P=62%)
+  - #4 [GOLF] $20 on GOLF Isaiah Salinda TOP5 @ 777 (Butterfield Bermuda Champion (P=11%)
+  - #5 [GOLF] $20 on GOLF Luke Clanton TOP5 @ 787 (Butterfield Bermuda Championsh (P=11%)
 
-## 🎯 Convergence Picks (13 stacked games)
-- ELITE: **7** · HIGH: 2 · MED: 4
-  - [ELITE] Detroit Pistons @ Philadelphia 76ers : 6 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
+## 🎯 Convergence Picks (12 stacked games)
+- ELITE: **6** · HIGH: 2 · MED: 4
+  - [ELITE] Detroit Pistons @ Philadelphia 76ers : 5 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ATS)
   - [ELITE] Memphis Grizzlies @ Sacramento Kings : 5 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ATS)
   - [ELITE] New York Islanders @ Dallas Stars : 5 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ANOMALY)
   - [ELITE] Indiana Pacers @ Brooklyn Nets : 4 signals (HEAT_COLD, ANOMALY, ATS, ATS)
-  - [ELITE] Montreal Canadiens @ Winnipeg Jets : 4 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
+  - [ELITE] Minnesota Wild @ Vancouver Canucks : 4 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ATS)
 
-## 🏀 NBA Player Heat (4 HOT / 2 COLD)
-  - 🔥 **Olivier-Maxence Prosper** (MEM): L5 19.4/4.2/1.2 vs season 10.0/3.5/1.0 [PTS +9.4]
+## 🏀 NBA Player Heat (14 HOT / 18 COLD)
+  - 🔥 **Ty Jerome** (MEM): L5 34.7/4.3/5.7 vs season 24.5/3.3/5.6 [PTS +10.2]
+  - 🔥 **Zach LaVine** (SAC): L5 29.0/3.7/3.3 vs season 20.9/3.3/2.4 [PTS +8.1]
   - 🔥 **Maxime Raynaud** (SAC): L5 20.0/9.8/2.6 vs season 12.5/7.5/1.4 [PTS +7.5, REB +2.3]
-  - 🔥 **Taurean Prince** (DET): L5 16.4/6.2/3.2 vs season 9.2/3.1/1.8 [PTS +7.2, REB +3.1]
-  - 🔥 **Malachi Smith** (TOR): L5 10.2/6.0/5.8 vs season 8.3/3.4/3.3 [REB +2.6, AST +2.5]
+  - 🔥 **Cormac Ryan** (MIL): L5 20.2/4.8/2.4 vs season 14.3/2.5/1.7 [PTS +5.9, REB +2.3]
+  - 🔥 **Duncan Robinson** (DET): L5 19.7/2.0/2.3 vs season 14.1/2.4/2.1 [PTS +5.5]
+  - ❄️ **Shaedon Sharpe** (POR): L5 7.2 vs season 20.8 [PTS -13.6, REB -2.7, AST -2.0] -- FADE OVER props
   - ❄️ **Brandon Ingram** (LAC): L5 12.0 vs season 21.5 [PTS -9.5, REB -2.4] -- FADE OVER props
-  - ❄️ **Anthony Black** (ORL): L5 9.6 vs season 15.0 [PTS -5.4, AST -2.5] -- FADE OVER props
+  - ❄️ **Jerami Grant** (MEM): L5 8.7 vs season 16.3 [PTS -7.6] -- FADE OVER props
 
 ## 🥊 UFC Fight Matchups (UFC 333: Volkanovski vs. Evloev)
   - [LEAN] **Abubakar Vagaev** (26-4-0) vs Jacob Malkoun -- fair -171
@@ -126,9 +125,9 @@
 - ELITE: **0** · HEALTHY: 2 · OK: 0 · DEGRADED: **0**
 
 ## 🤖 Self-Training Status
-- **NBA**: n=71 games · hit rate 53.5% · bias -6.8pp [calibration applied]
-- **NHL**: n=96 games · hit rate 42.7% · bias -10.7pp [calibration applied]
+- **NBA**: n=74 games · hit rate 56.8% · bias -0.9pp
+- **NHL**: n=98 games · hit rate 42.9% · bias -11.2pp [calibration applied]
 - **WNBA**: n=4 games · hit rate 50.0% · bias +21.7pp
-- **MLS**: n=61 games · hit rate 37.7% · bias -5.0pp [calibration applied]
-- **EPL**: n=25 games · hit rate 52.0% · bias -4.0pp [calibration applied]
-- **MLB**: n=12 games · hit rate 66.7% · bias -5.7pp
+- **MLS**: n=62 games · hit rate 37.1% · bias -4.5pp [calibration applied]
+- **EPL**: n=30 games · hit rate 43.3% · bias -0.6pp
+- **MLB**: n=11 games · hit rate 63.6% · bias -5.8pp
