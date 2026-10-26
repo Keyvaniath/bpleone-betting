@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-26T19:42:35",
+  "generated_at": "2026-10-26T19:48:22",
   "stake_assumption": "1u flat per pick",
   "total_picks": 15450,
   "n_settled": 19725,
@@ -15,7 +15,7 @@
   "calibrated_reliability": {
     "n": 13649,
     "ece_raw": 0.0819,
-    "ece_calibrated": 0.013,
+    "ece_calibrated": 0.0129,
     "brier_raw": 0.21106,
     "brier_calibrated": 0.19606,
     "note": "In-sample over the settled ledger (the isotonic transform is fit on these same outcomes); held-out 70/30 validation is in recalibration_map.json. p_predicted = raw model prob (kept untouched for the learning loop); p_calibrated = honest prob stamped per pick. Lower ECE/Brier on the calibrated column = the displayed % is truer."
@@ -67,6 +67,24 @@
       "roi_pct": 12.66
     }
   },
+  "price_corrections": [
+    {
+      "date": "2026-10-23",
+      "n_repriced": 68,
+      "n_voided": 9,
+      "curated_before": "943-436 (+17.21%)",
+      "curated_after": "936-434 (+16.02%)",
+      "note": "MLB moneylines recorded when no book price was loaded had been graded at a placeholder -110. Each was re-priced at the real DraftKings pre-game line (from the snapshot history), or voided when no real line exists."
+    },
+    {
+      "date": "2026-10-26",
+      "n_repriced": 29,
+      "n_voided": 9,
+      "curated_before": "936-434 (+16.02%)",
+      "curated_after": "932-429 (+15.91%)",
+      "note": "The same gap on the away side (+100) and the total (8.5): moneylines re-priced at the real DraftKings line; Play-of-the-Day totals whose 8.5 line DraftKings never posted were voided -- a bet on a line that did not exist has no honest result."
+    }
+  ],
   "restatement": {
     "date": "2026-10-23",
     "note": "The headline became ALL-TIME on 2026-10-23. 5,946 settled picks that the old tail-cut eviction had destroyed (May-June 2026, the 07-06 erosion and the run-up to 09-03) were rebuilt from git history at each pick's final state, with today's duplicate-wager rule re-applied, and folded back in. They are mostly the raw May-June MLB prop firehose (2,961-2,983, -1,256.9u), so the firehose ROI fell; the curated record changed by the curated picks among them. Before this date the published numbers covered the working window only -- working_ledger_only keeps that basis.",
@@ -6869,7 +6887,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-08T12:37:41",
-      "p_calibrated": 0.6158
+      "p_calibrated": 0.6746
     },
     {
       "source": "mlb_game_total_game_total_over_6.5",
@@ -6893,7 +6911,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-07T15:16:53",
-      "p_calibrated": 0.6152,
+      "p_calibrated": 0.6723,
       "resettle_log": [
         {
           "at": "2026-06-21T05:40:45",
@@ -7951,7 +7969,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-08T12:37:41",
-      "p_calibrated": 0.6598
+      "p_calibrated": 0.6746
     },
     {
       "source": "mlb_game_total_game_total_over_7.5",
@@ -7975,7 +7993,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-08T12:37:41",
-      "p_calibrated": 0.6124
+      "p_calibrated": 0.607
     },
     {
       "source": "mlb_game_total_game_total_over_7.5",
@@ -7999,7 +8017,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-08T12:37:41",
-      "p_calibrated": 0.6114
+      "p_calibrated": 0.5838
     },
     {
       "source": "mlb_game_total_game_total_under_9.5",
@@ -8095,7 +8113,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-08T12:37:41",
-      "p_calibrated": 0.6168
+      "p_calibrated": 0.6746
     },
     {
       "pick_id": "lock_of_day|MLB_PP|Christian_Yelich|PP_batter_total_bases_under_3_5|2026-05-23",
@@ -8504,7 +8522,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-08T12:37:41",
-      "p_calibrated": 0.6118
+      "p_calibrated": 0.5922
     },
     {
       "source": "mlb_run_to_score_run_yes",
@@ -12708,7 +12726,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-09T08:01:13",
-      "p_calibrated": 0.6164
+      "p_calibrated": 0.6746
     },
     {
       "source": "mlb_game_total_game_total_over_6.5",
@@ -12732,7 +12750,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-09T08:01:13",
-      "p_calibrated": 0.6161
+      "p_calibrated": 0.6746
     },
     {
       "source": "mlb_game_total_game_total_over_6.5",
@@ -12756,7 +12774,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-09T08:01:13",
-      "p_calibrated": 0.6156
+      "p_calibrated": 0.6746
     },
     {
       "source": "top_25_board",
@@ -15911,7 +15929,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-09T16:24:14",
-      "p_calibrated": 0.6107
+      "p_calibrated": 0.5802
     },
     {
       "source": "top_25_board",
@@ -17839,7 +17857,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-06-09T08:01:13",
-      "p_calibrated": 0.5944,
+      "p_calibrated": 0.5503,
       "outcome": {
         "final_score": "ATL 5 @ CHW 6",
         "total_runs": 11,
@@ -17935,7 +17953,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-06-09T20:03:44",
-      "p_calibrated": 0.602,
+      "p_calibrated": 0.5642,
       "outcome": {
         "final_score": "LAD 12 @ PIT 3",
         "total_runs": 15,
@@ -17960,7 +17978,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-06-09T20:03:44",
-      "p_calibrated": 0.6008,
+      "p_calibrated": 0.5621,
       "outcome": {
         "final_score": "ATL 5 @ CHW 6",
         "total_runs": 11,
@@ -19751,7 +19769,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-10T01:35:49",
-      "p_calibrated": 0.5981,
+      "p_calibrated": 0.5571,
       "outcome": {
         "final_score": "ATL 1 @ CHW 2",
         "total_runs": 3,
@@ -19776,7 +19794,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-06-10T01:35:49",
-      "p_calibrated": 0.4801,
+      "p_calibrated": 0.4868,
       "outcome": {
         "final_score": "HOU 1 @ LAA 10",
         "total_runs": 11,
@@ -22867,7 +22885,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-10T23:29:28",
-      "p_calibrated": 0.6008,
+      "p_calibrated": 0.5621,
       "outcome": {
         "final_score": "CHC 3 @ COL 7",
         "total_runs": 10,
@@ -22892,7 +22910,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-10T23:29:28",
-      "p_calibrated": 0.5612,
+      "p_calibrated": 0.5046,
       "outcome": {
         "final_score": "ATL 1 @ CHW 2",
         "total_runs": 3,
@@ -23658,7 +23676,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-06-11T00:13:12",
-      "p_calibrated": 0.6008,
+      "p_calibrated": 0.5621,
       "outcome": {
         "final_score": "CHC 9 @ COL 3",
         "total_runs": 12,
@@ -24195,7 +24213,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-06-11T12:43:01",
-      "p_calibrated": 0.5772,
+      "p_calibrated": 0.5132,
       "outcome": {
         "final_score": "SEA 5 @ BAL 7",
         "total_runs": 12,
@@ -24220,7 +24238,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-06-11T12:43:01",
-      "p_calibrated": 0.5199,
+      "p_calibrated": 0.4881,
       "outcome": {
         "final_score": "CHC 9 @ COL 3",
         "total_runs": 12,
@@ -27392,7 +27410,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-06-12T05:39:02",
-      "p_calibrated": 0.5732,
+      "p_calibrated": 0.511,
       "outcome": {
         "final_score": "LAD 2 @ CHW 8",
         "total_runs": 10,
@@ -31911,7 +31929,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-13T02:47:51",
-      "p_calibrated": 0.5905,
+      "p_calibrated": 0.5275,
       "outcome": {
         "final_score": "LAD 7 @ CHW 1",
         "total_runs": 8,
@@ -35555,7 +35573,7 @@
       "result": "push",
       "payout_units": 0.0,
       "recorded_at": "2026-06-13T11:17:38",
-      "p_calibrated": 0.592,
+      "p_calibrated": 0.5368,
       "outcome": {
         "final_score": "LAD 7 @ CHW 1",
         "total_runs": 8,
@@ -35765,7 +35783,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-13T18:07:27",
-      "p_calibrated": 0.5759,
+      "p_calibrated": 0.5125,
       "outcome": {
         "final_score": "LAD 7 @ CHW 1",
         "total_runs": 8,
@@ -39887,7 +39905,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-06-14T05:30:05",
-      "p_calibrated": 0.6118,
+      "p_calibrated": 0.5918,
       "outcome": {
         "final_score": "LAD 4 @ CHW 6",
         "total_runs": 10,
@@ -39911,7 +39929,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-14T05:30:05",
-      "p_calibrated": 0.4795,
+      "p_calibrated": 0.4849,
       "outcome": {
         "final_score": "PHI 0 @ MIL 4",
         "total_runs": 4,
@@ -40103,7 +40121,7 @@
       "result": "push",
       "payout_units": 0.0,
       "recorded_at": "2026-06-14T12:06:41",
-      "p_calibrated": 0.6015,
+      "p_calibrated": 0.5634,
       "outcome": {
         "final_score": "LAD 4 @ CHW 6",
         "total_runs": 10,
@@ -40362,7 +40380,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-14T18:20:26",
-      "p_calibrated": 0.4795,
+      "p_calibrated": 0.4816,
       "outcome": {
         "final_score": "HOU 0 @ KC 4",
         "total_runs": 4,
@@ -40387,7 +40405,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-14T18:20:26",
-      "p_calibrated": 0.4795,
+      "p_calibrated": 0.4812,
       "outcome": {
         "final_score": "STL 4 @ MIN 5",
         "total_runs": 9,
@@ -43131,7 +43149,7 @@
       "result": "won",
       "payout_units": 0.91,
       "recorded_at": "2026-06-16T05:31:12",
-      "p_calibrated": 0.4795,
+      "p_calibrated": 0.4812,
       "outcome": {
         "final_score": "Haiti 0-3 Brazil",
         "total_cards": 4,
@@ -43162,7 +43180,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-06-16T06:28:09",
-      "p_calibrated": 0.5916,
+      "p_calibrated": 0.5347,
       "outcome": {
         "final_score": "CHW 2 @ NYY 12",
         "total_runs": 14,
@@ -43185,7 +43203,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-06-16T06:28:09",
-      "p_calibrated": 0.6462,
+      "p_calibrated": 0.6746,
       "outcome": {
         "final_score": "COL 4 @ CHC 5",
         "total_runs": 9,
@@ -43379,7 +43397,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-16T15:29:49",
-      "p_calibrated": 0.5146,
+      "p_calibrated": 0.4881,
       "outcome": {
         "final_score": "COL 4 @ CHC 5",
         "total_runs": 9,
@@ -43800,7 +43818,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-16T23:28:42",
-      "p_calibrated": 0.49,
+      "p_calibrated": 0.4881,
       "outcome": {
         "final_score": "CLE 1 @ MIL 2",
         "total_runs": 3,
@@ -43825,7 +43843,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-16T23:28:42",
-      "p_calibrated": 0.4795,
+      "p_calibrated": 0.4812,
       "outcome": {
         "final_score": "COL 4 @ CHC 5",
         "total_runs": 9,
@@ -43850,7 +43868,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-16T23:28:42",
-      "p_calibrated": 0.4795,
+      "p_calibrated": 0.4812,
       "outcome": {
         "final_score": "MIN 4 @ TEX 2",
         "total_runs": 6,
@@ -48480,7 +48498,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-06-17T03:26:15",
-      "p_calibrated": 0.49,
+      "p_calibrated": 0.4881,
       "outcome": {
         "final_score": "CLE 4 @ MIL 9",
         "total_runs": 13,
@@ -48505,7 +48523,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-17T03:26:15",
-      "p_calibrated": 0.4795,
+      "p_calibrated": 0.4812,
       "outcome": {
         "final_score": "COL 5 @ CHC 2",
         "total_runs": 7,
@@ -48530,7 +48548,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-06-17T03:26:15",
-      "p_calibrated": 0.4795,
+      "p_calibrated": 0.4812,
       "outcome": {
         "final_score": "MIN 12 @ TEX 2",
         "total_runs": 14,
@@ -51236,7 +51254,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-17T05:45:59",
-      "p_calibrated": 0.5279,
+      "p_calibrated": 0.4881,
       "outcome": {
         "final_score": "TOR 3 @ BOS 0",
         "total_runs": 3,
@@ -51281,7 +51299,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-06-17T05:45:59",
-      "p_calibrated": 0.64,
+      "p_calibrated": 0.6746,
       "outcome": {
         "final_score": "CHW 5 @ NYY 10",
         "total_runs": 15,
@@ -51781,7 +51799,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-06-17T23:26:55",
-      "p_calibrated": 0.4795,
+      "p_calibrated": 0.4812,
       "outcome": {
         "final_score": "CLE 4 @ MIL 9",
         "total_runs": 13,
@@ -53954,7 +53972,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-18T03:25:07",
-      "p_calibrated": 0.4795,
+      "p_calibrated": 0.4812,
       "outcome": {
         "final_score": "CLE 4 @ MIL 2",
         "total_runs": 6,
@@ -55159,7 +55177,7 @@
       "result": "won",
       "payout_units": 0.91,
       "recorded_at": "2026-06-18T05:08:48",
-      "p_calibrated": 0.4795,
+      "p_calibrated": 0.4812,
       "outcome": {
         "final_score": "Iraq 0-3 France",
         "total_cards": 1,
@@ -55272,7 +55290,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-18T05:36:24",
-      "p_calibrated": 0.4795,
+      "p_calibrated": 0.4829,
       "outcome": {
         "final_score": "CHW 5 @ NYY 1",
         "total_runs": 6,
@@ -57740,7 +57758,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-19T05:29:09",
-      "p_calibrated": 0.4795,
+      "p_calibrated": 0.4812,
       "outcome": {
         "final_score": "Congo DR 0-1 Colombia",
         "total_cards": 3,
@@ -58257,7 +58275,7 @@
       "result": "won",
       "payout_units": 0.7042,
       "recorded_at": "2026-06-19T12:50:51",
-      "p_calibrated": 0.4795,
+      "p_calibrated": 0.4812,
       "outcome": {
         "final_score": "TOR 2 @ CHC 16",
         "total_runs": 18,
@@ -61816,7 +61834,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-06-20T01:29:26",
-      "p_calibrated": 0.4869,
+      "p_calibrated": 0.4881,
       "outcome": {
         "final_score": "BAL 5 @ LAD 6",
         "total_runs": 11,
@@ -61841,7 +61859,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-20T01:29:26",
-      "p_calibrated": 0.4795,
+      "p_calibrated": 0.4856,
       "outcome": {
         "final_score": "PIT 3 @ COL 4",
         "total_runs": 7,
@@ -63711,7 +63729,7 @@
       "result": "won",
       "payout_units": 0.91,
       "recorded_at": "2026-06-20T04:44:20",
-      "p_calibrated": 0.4795,
+      "p_calibrated": 0.4812,
       "outcome": {
         "final_score": "Brazil 3-0 Scotland",
         "total_cards": 3,
@@ -63773,7 +63791,7 @@
       "result": "won",
       "payout_units": 0.91,
       "recorded_at": "2026-06-20T04:44:20",
-      "p_calibrated": 0.4795,
+      "p_calibrated": 0.4812,
       "outcome": {
         "final_score": "Haiti 2-4 Morocco",
         "total_cards": 3,
@@ -63806,7 +63824,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-20T05:07:39",
-      "p_calibrated": 0.5226,
+      "p_calibrated": 0.4881,
       "outcome": {
         "final_score": "CHW 1 @ DET 4",
         "total_runs": 5,
@@ -65419,7 +65437,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-20T22:03:45",
-      "p_calibrated": 0.4801,
+      "p_calibrated": 0.4868,
       "outcome": {
         "final_score": "PIT 3 @ COL 4",
         "total_runs": 7,
@@ -65444,7 +65462,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-06-20T22:03:45",
-      "p_calibrated": 0.4795,
+      "p_calibrated": 0.4812,
       "outcome": {
         "final_score": "BAL 5 @ LAD 6",
         "total_runs": 11,
@@ -68912,7 +68930,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-06-21T00:02:05",
-      "p_calibrated": 0.4795,
+      "p_calibrated": 0.4849,
       "outcome": {
         "final_score": "PIT 8 @ COL 6",
         "total_runs": 14,
@@ -68970,7 +68988,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-06-21T00:02:05",
-      "p_calibrated": 0.4795,
+      "p_calibrated": 0.4812,
       "outcome": {
         "final_score": "BAL 12 @ LAD 1",
         "total_runs": 13,
@@ -71830,7 +71848,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-06-21T05:40:45",
-      "p_calibrated": 0.5922,
+      "p_calibrated": 0.5382,
       "outcome": {
         "final_score": "PIT 8 @ COL 6",
         "total_runs": 14,
@@ -71980,7 +71998,7 @@
       "result": "won",
       "payout_units": 0.91,
       "recorded_at": "2026-06-21T10:08:07",
-      "p_calibrated": 0.4795,
+      "p_calibrated": 0.4812,
       "outcome": {
         "final_score": "Netherlands 3-1 Tunisia",
         "total_cards": 0,
@@ -72067,7 +72085,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-21T11:46:47",
-      "p_calibrated": 0.5912,
+      "p_calibrated": 0.5318,
       "outcome": {
         "final_score": "CIN 4 @ NYY 1",
         "total_runs": 5,
@@ -72092,7 +72110,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-06-21T11:46:47",
-      "p_calibrated": 0.5909,
+      "p_calibrated": 0.5304,
       "outcome": {
         "final_score": "MIL 9 @ ATL 4",
         "total_runs": 13,
@@ -72293,7 +72311,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-21T15:59:24",
-      "p_calibrated": 0.4795,
+      "p_calibrated": 0.483,
       "outcome": {
         "final_score": "CIN 4 @ NYY 1",
         "total_runs": 5,
@@ -72343,7 +72361,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-06-21T15:59:24",
-      "p_calibrated": 0.4795,
+      "p_calibrated": 0.4816,
       "outcome": {
         "final_score": "MIL 9 @ ATL 4",
         "total_runs": 13,
@@ -75767,7 +75785,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-22T06:22:34",
-      "p_calibrated": 0.642,
+      "p_calibrated": 0.6746,
       "outcome": {
         "final_score": "LAD 2 @ MIN 1",
         "total_runs": 3,
@@ -75823,7 +75841,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-22T14:27:41",
-      "p_calibrated": 0.4865,
+      "p_calibrated": 0.4881,
       "outcome": {
         "final_score": "MIL 2 @ CIN 1",
         "total_runs": 3,
@@ -76544,7 +76562,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-22T23:24:30",
-      "p_calibrated": 0.4795,
+      "p_calibrated": 0.4812,
       "outcome": {
         "final_score": "ARI 2 @ STL 3",
         "total_runs": 5,
@@ -78825,7 +78843,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-23T00:20:18",
-      "p_calibrated": 0.4795,
+      "p_calibrated": 0.4812,
       "outcome": {
         "final_score": "ARI 4 @ STL 3",
         "total_runs": 7,
@@ -80424,7 +80442,7 @@
       "result": "won",
       "payout_units": 0.91,
       "recorded_at": "2026-06-23T04:33:16",
-      "p_calibrated": 0.4795,
+      "p_calibrated": 0.4812,
       "outcome": {
         "final_score": "Argentina 3-1 Jordan",
         "total_cards": 3,
@@ -80484,7 +80502,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-23T04:33:16",
-      "p_calibrated": 0.4795,
+      "p_calibrated": 0.4812,
       "outcome": {
         "final_score": "England 2-0 Panama",
         "total_cards": 3,
@@ -80546,7 +80564,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-23T11:52:12",
-      "p_calibrated": 0.6563,
+      "p_calibrated": 0.6746,
       "outcome": {
         "final_score": "BAL 6 @ LAA 1",
         "total_runs": 7,
@@ -84236,7 +84254,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-24T11:40:19",
-      "p_calibrated": 0.6187,
+      "p_calibrated": 0.6746,
       "outcome": {
         "final_score": "HOU 3 @ TOR 1",
         "total_runs": 4,
@@ -95880,7 +95898,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-06-27T09:07:59",
-      "p_calibrated": 0.4843,
+      "p_calibrated": 0.4881,
       "outcome": {
         "final_score": "COL 8 @ MIN 5",
         "total_runs": 13,
@@ -97492,7 +97510,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-06-27T23:04:07",
-      "p_calibrated": 0.4795,
+      "p_calibrated": 0.4812,
       "outcome": {
         "final_score": "COL 8 @ MIN 5",
         "total_runs": 13,
@@ -101421,7 +101439,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-28T00:14:10",
-      "p_calibrated": 0.4795,
+      "p_calibrated": 0.4839,
       "outcome": {
         "final_score": "COL 2 @ MIN 3",
         "total_runs": 5,
@@ -105284,7 +105302,7 @@
       "result": "won",
       "payout_units": 0.91,
       "recorded_at": "2026-06-28T04:55:50",
-      "p_calibrated": 0.4795,
+      "p_calibrated": 0.4812,
       "outcome": {
         "final_score": "Austria 0-3 Spain",
         "total_cards": 1,
@@ -109235,7 +109253,7 @@
       "result": "won",
       "payout_units": 0.91,
       "recorded_at": "2026-06-29T05:02:47",
-      "p_calibrated": 0.4795,
+      "p_calibrated": 0.4812,
       "outcome": {
         "final_score": "Cape Verde 2-3 Argentina",
         "total_cards": 2,
@@ -113959,7 +113977,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-30T23:39:59",
-      "p_calibrated": 0.4795,
+      "p_calibrated": 0.4812,
       "outcome": {
         "final_score": "France 1-0 Paraguay",
         "total_cards": 3,
@@ -116171,7 +116189,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-07-01T08:46:39",
-      "p_calibrated": 0.6498,
+      "p_calibrated": 0.6746,
       "outcome": {
         "final_score": "CHW 1 @ BAL 6",
         "total_runs": 7,
@@ -117112,7 +117130,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-07-02T05:02:29",
-      "p_calibrated": 0.5901,
+      "p_calibrated": 0.5253,
       "outcome": {
         "final_score": "MIA 4 @ COL 14",
         "total_runs": 18,
@@ -120834,7 +120852,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-07-03T08:09:22",
-      "p_calibrated": 0.6482,
+      "p_calibrated": 0.6746,
       "outcome": {
         "final_score": "MIN 2 @ NYY 5",
         "total_runs": 7,
@@ -125395,7 +125413,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-07-04T07:44:55",
-      "p_calibrated": 0.6598,
+      "p_calibrated": 0.6746,
       "outcome": {
         "final_score": "MIN 11 @ NYY 4",
         "total_runs": 15,
@@ -133040,7 +133058,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-07-05T11:00:10",
-      "p_calibrated": 0.6598,
+      "p_calibrated": 0.6746,
       "outcome": {
         "final_score": "STL 4 @ CHC 6",
         "total_runs": 10,
@@ -138873,7 +138891,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-07-07T00:19:34",
-      "p_calibrated": 0.4819,
+      "p_calibrated": 0.4876,
       "outcome": {
         "final_score": "COL 7 @ LAD 8",
         "total_runs": 15,
@@ -140172,7 +140190,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-07-07T12:40:18",
-      "p_calibrated": 0.6267,
+      "p_calibrated": 0.6746,
       "outcome": {
         "final_score": "COL 7 @ LAD 8",
         "total_runs": 15,
@@ -142485,7 +142503,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-07-08T01:10:36",
-      "p_calibrated": 0.4813,
+      "p_calibrated": 0.4873,
       "outcome": {
         "final_score": "COL 4 @ LAD 3",
         "total_runs": 7,
@@ -143071,7 +143089,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-07-08T10:31:45",
-      "p_calibrated": 0.5907,
+      "p_calibrated": 0.5289,
       "outcome": {
         "final_score": "CHC 9 @ BAL 7",
         "total_runs": 16,
@@ -143096,7 +143114,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-07-08T10:31:45",
-      "p_calibrated": 0.5332,
+      "p_calibrated": 0.4895,
       "outcome": {
         "final_score": "ATL 3 @ PIT 0",
         "total_runs": 3,
@@ -143846,7 +143864,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-07-09T01:19:05",
-      "p_calibrated": 0.4847,
+      "p_calibrated": 0.4881,
       "outcome": {
         "final_score": "COL 3 @ LAD 4",
         "total_runs": 7,
@@ -145858,7 +145876,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-07-09T23:12:12",
-      "p_calibrated": 0.4795,
+      "p_calibrated": 0.4812,
       "outcome": {
         "final_score": "LAA 13 @ TEX 1",
         "total_runs": 14,
@@ -146378,7 +146396,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-07-10T02:24:16",
-      "p_calibrated": 0.4795,
+      "p_calibrated": 0.4812,
       "outcome": {
         "final_score": "LAA 6 @ TEX 7",
         "total_runs": 13,
@@ -146593,7 +146611,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-07-10T09:55:48",
-      "p_calibrated": 0.5652,
+      "p_calibrated": 0.5067,
       "outcome": {
         "final_score": "COL 2 @ SF 8",
         "total_runs": 10,
@@ -146618,7 +146636,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-07-10T09:55:48",
-      "p_calibrated": 0.5599,
+      "p_calibrated": 0.5039,
       "outcome": {
         "final_score": "CHC 0 @ CIN 4",
         "total_runs": 4,
@@ -147403,7 +147421,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-07-11T01:06:37",
-      "p_calibrated": 0.5901,
+      "p_calibrated": 0.5253,
       "outcome": {
         "final_score": "CHC 5 @ CIN 3",
         "total_runs": 8,
@@ -147504,7 +147522,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-07-11T07:07:37",
-      "p_calibrated": 0.6557,
+      "p_calibrated": 0.6746,
       "outcome": {
         "final_score": "COL 2 @ SF 4",
         "total_runs": 6,
@@ -147943,7 +147961,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-07-11T21:42:22",
-      "p_calibrated": 0.4795,
+      "p_calibrated": 0.4812,
       "outcome": {
         "final_score": "CHC 5 @ CIN 3",
         "total_runs": 8,
@@ -148328,7 +148346,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-07-12T01:44:36",
-      "p_calibrated": 0.5785,
+      "p_calibrated": 0.5139,
       "outcome": {
         "final_score": "LAA 2 @ MIN 4",
         "total_runs": 6,
@@ -148353,7 +148371,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-07-12T01:44:36",
-      "p_calibrated": 0.5652,
+      "p_calibrated": 0.5067,
       "outcome": {
         "final_score": "MIL 5 @ PIT 14",
         "total_runs": 19,
@@ -148457,7 +148475,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-07-12T06:28:16",
-      "p_calibrated": 0.5812,
+      "p_calibrated": 0.5153,
       "outcome": {
         "final_score": "CHC 8 @ CIN 4",
         "total_runs": 12,
@@ -153662,7 +153680,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-07-19T07:28:03",
-      "p_calibrated": 0.5519,
+      "p_calibrated": 0.4996,
       "outcome": {
         "final_score": "MIN 1 @ CHC 10",
         "total_runs": 11,
@@ -153685,7 +153703,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-07-19T07:28:03",
-      "p_calibrated": 0.6598,
+      "p_calibrated": 0.6746,
       "outcome": {
         "final_score": "LAD 8 @ NYY 2",
         "total_runs": 10,
@@ -154641,7 +154659,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-07-19T14:20:41",
-      "p_calibrated": 0.591,
+      "p_calibrated": 0.5311,
       "outcome": {
         "final_score": "CIN 9 @ COL 6",
         "total_runs": 15,
@@ -154666,7 +154684,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-07-19T15:01:46",
-      "p_calibrated": 0.5412,
+      "p_calibrated": 0.4938,
       "outcome": {
         "final_score": "MIA 1 @ MIL 3",
         "total_runs": 4,
@@ -156084,7 +156102,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-07-21T07:31:23",
-      "p_calibrated": 0.4795,
+      "p_calibrated": 0.4849,
       "outcome": {
         "final_score": "CHW 10 @ TEX 3",
         "total_runs": 13,
@@ -156134,7 +156152,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-07-21T15:51:14",
-      "p_calibrated": 0.4869,
+      "p_calibrated": 0.4881,
       "outcome": {
         "final_score": "DET 8 @ CHC 6",
         "total_runs": 14,
@@ -156184,7 +156202,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-07-21T21:54:32",
-      "p_calibrated": 0.5386,
+      "p_calibrated": 0.4924,
       "outcome": {
         "final_score": "MIA 5 @ HOU 8",
         "total_runs": 13,
@@ -157802,7 +157820,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-07-22T10:35:36",
-      "p_calibrated": 0.5984,
+      "p_calibrated": 0.5577,
       "outcome": {
         "final_score": "PIT 5 @ NYY 3",
         "total_runs": 8,
@@ -158038,7 +158056,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-07-22T15:55:39",
-      "p_calibrated": 0.5931,
+      "p_calibrated": 0.544,
       "outcome": {
         "final_score": "LAD 9 @ PHI 5",
         "total_runs": 14,
@@ -158470,7 +158488,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-07-22T23:02:31",
-      "p_calibrated": 0.4795,
+      "p_calibrated": 0.4851,
       "outcome": {
         "final_score": "DET 2 @ CHC 11",
         "total_runs": 13,
@@ -159363,7 +159381,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-07-23T07:23:09",
-      "p_calibrated": 0.4795,
+      "p_calibrated": 0.4831,
       "outcome": {
         "final_score": "MIN 3 @ CLE 1",
         "total_runs": 4,
@@ -160549,7 +160567,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-07-23T15:08:33",
-      "p_calibrated": 0.4795,
+      "p_calibrated": 0.4812,
       "outcome": {
         "final_score": "ARI 10 @ STL 6",
         "total_runs": 16,
@@ -161481,7 +161499,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-07-24T07:23:55",
-      "p_calibrated": 0.5998,
+      "p_calibrated": 0.5602,
       "outcome": {
         "final_score": "COL 5 @ MIL 2",
         "total_runs": 7,
@@ -162394,7 +162412,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-07-24T23:06:40",
-      "p_calibrated": 0.4847,
+      "p_calibrated": 0.4881,
       "outcome": {
         "final_score": "HOU 9 @ CHW 5",
         "total_runs": 14,
@@ -163270,7 +163288,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-07-25T07:10:52",
-      "p_calibrated": 0.5991,
+      "p_calibrated": 0.559,
       "outcome": {
         "final_score": "HOU 4 @ CHW 1",
         "total_runs": 5,
@@ -163445,7 +163463,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-07-25T14:24:33",
-      "p_calibrated": 0.5996,
+      "p_calibrated": 0.5598,
       "outcome": {
         "final_score": "CHC 11 @ PIT 0",
         "total_runs": 11,
@@ -163470,7 +163488,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-07-25T15:14:10",
-      "p_calibrated": 0.4986,
+      "p_calibrated": 0.4881,
       "outcome": {
         "final_score": "COL 5 @ MIL 8",
         "total_runs": 13,
@@ -164557,7 +164575,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-07-25T23:01:12",
-      "p_calibrated": 0.4914,
+      "p_calibrated": 0.4881,
       "outcome": {
         "final_score": "HOU 4 @ CHW 1",
         "total_runs": 5,
@@ -165630,7 +165648,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-07-26T07:25:44",
-      "p_calibrated": 0.605,
+      "p_calibrated": 0.5697,
       "outcome": {
         "final_score": "HOU 3 @ CHW 12",
         "total_runs": 15,
@@ -165655,7 +165673,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-07-26T07:25:44",
-      "p_calibrated": 0.5994,
+      "p_calibrated": 0.5596,
       "outcome": {
         "final_score": "COL 2 @ MIL 11",
         "total_runs": 13,
@@ -165680,7 +165698,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-07-26T07:25:44",
-      "p_calibrated": 0.5969,
+      "p_calibrated": 0.555,
       "outcome": {
         "final_score": "CHC 7 @ PIT 8",
         "total_runs": 15,
@@ -167856,7 +167874,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-07-27T15:39:31",
-      "p_calibrated": 0.4795,
+      "p_calibrated": 0.4829,
       "outcome": {
         "final_score": "NYY 9 @ CHW 5",
         "total_runs": 14,
@@ -168611,7 +168629,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-07-28T07:32:07",
-      "p_calibrated": 0.6013,
+      "p_calibrated": 0.563,
       "outcome": {
         "final_score": "NYY 3 @ CHW 2",
         "total_runs": 5,
@@ -169180,7 +169198,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-07-28T23:02:21",
-      "p_calibrated": 0.494,
+      "p_calibrated": 0.4881,
       "outcome": {
         "final_score": "CHC 10 @ STL 2",
         "total_runs": 12,
@@ -170087,7 +170105,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-07-29T07:38:06",
-      "p_calibrated": 0.6014,
+      "p_calibrated": 0.5632,
       "outcome": {
         "final_score": "ARI 3 @ PIT 0",
         "total_runs": 3,
@@ -170112,7 +170130,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-07-29T07:38:06",
-      "p_calibrated": 0.6001,
+      "p_calibrated": 0.5609,
       "outcome": {
         "final_score": "ATL 2 @ NYM 3",
         "total_runs": 5,
@@ -172801,7 +172819,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-07-30T07:28:13",
-      "p_calibrated": 0.4863,
+      "p_calibrated": 0.4881,
       "outcome": {
         "final_score": "CHC 4 @ STL 2",
         "total_runs": 6,
@@ -173084,7 +173102,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-07-30T15:09:41",
-      "p_calibrated": 0.4817,
+      "p_calibrated": 0.4875,
       "outcome": {
         "final_score": "PIT 2 @ CIN 3",
         "total_runs": 5,
@@ -173109,7 +173127,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-07-30T15:09:41",
-      "p_calibrated": 0.4795,
+      "p_calibrated": 0.4828,
       "outcome": {
         "final_score": "NYY 1 @ CHW 2",
         "total_runs": 3,
@@ -173134,7 +173152,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-07-30T15:09:41",
-      "p_calibrated": 0.4795,
+      "p_calibrated": 0.4812,
       "outcome": {
         "final_score": "CHC 4 @ STL 2",
         "total_runs": 6,
@@ -174517,7 +174535,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-07-30T23:06:18",
-      "p_calibrated": 0.5506,
+      "p_calibrated": 0.4988,
       "outcome": {
         "final_score": "PIT 2 @ CIN 3",
         "total_runs": 5,
@@ -177275,7 +177293,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-08-01T10:12:24",
-      "p_calibrated": 0.4874,
+      "p_calibrated": 0.4881,
       "outcome": {
         "final_score": "NYY 2 @ CHC 5",
         "total_runs": 7,
@@ -181069,7 +181087,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-08-02T07:24:46",
-      "p_calibrated": 0.5759,
+      "p_calibrated": 0.5125,
       "outcome": {
         "final_score": "PIT 2 @ CIN 10",
         "total_runs": 12,
@@ -181119,7 +181137,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-02T10:11:10",
-      "p_calibrated": 0.5947,
+      "p_calibrated": 0.551,
       "outcome": {
         "final_score": "NYY 2 @ CHC 1",
         "total_runs": 3,
@@ -182674,7 +182692,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-03T08:17:12",
-      "p_calibrated": 0.5905,
+      "p_calibrated": 0.5275,
       "outcome": {
         "final_score": "PIT 4 @ MIL 3",
         "total_runs": 7,
@@ -182699,7 +182717,7 @@
       "result": "push",
       "payout_units": 0.0,
       "recorded_at": "2026-08-03T15:46:53",
-      "p_calibrated": 0.5897,
+      "p_calibrated": 0.5225,
       "voided": false,
       "outcome": {
         "final_score": "WSH 3 @ PHI 6",
@@ -183181,7 +183199,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-03T23:30:21",
-      "p_calibrated": 0.4936,
+      "p_calibrated": 0.4881,
       "outcome": {
         "final_score": "PIT 4 @ MIL 3",
         "total_runs": 7,
@@ -184079,7 +184097,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-04T07:33:48",
-      "p_calibrated": 0.4849,
+      "p_calibrated": 0.4881,
       "outcome": {
         "final_score": "LAA 1 @ BAL 3",
         "total_runs": 4,
@@ -184102,7 +184120,7 @@
       "result": "push",
       "payout_units": 0.0,
       "recorded_at": "2026-08-04T07:33:48",
-      "p_calibrated": 0.6467,
+      "p_calibrated": 0.6746,
       "voided": false,
       "outcome": {
         "final_score": "ATH 4 @ CIN 5",
@@ -184179,7 +184197,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-04T17:38:53",
-      "p_calibrated": 0.4795,
+      "p_calibrated": 0.4812,
       "outcome": {
         "final_score": "PIT 2 @ MIL 4",
         "total_runs": 6,
@@ -184204,7 +184222,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-04T19:11:24",
-      "p_calibrated": 0.4795,
+      "p_calibrated": 0.4827,
       "outcome": {
         "final_score": "LAA 1 @ BAL 3",
         "total_runs": 4,
@@ -184304,7 +184322,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-04T22:57:18",
-      "p_calibrated": 0.5799,
+      "p_calibrated": 0.5146,
       "voided": false,
       "outcome": {
         "final_score": "ATH 4 @ CIN 5",
@@ -184462,7 +184480,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-08-05T06:45:36",
-      "p_calibrated": 0.5399,
+      "p_calibrated": 0.4931,
       "voided": false,
       "outcome": {
         "final_score": "WSH 10 @ PHI 4",
@@ -184512,7 +184530,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-08-05T08:07:32",
-      "p_calibrated": 0.493,
+      "p_calibrated": 0.4881,
       "outcome": {
         "final_score": "LAD 6 @ CHC 7",
         "total_runs": 13,
@@ -184537,7 +184555,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-05T17:23:35",
-      "p_calibrated": 0.4795,
+      "p_calibrated": 0.4833,
       "outcome": {
         "final_score": "MIN 1 @ KC 2",
         "total_runs": 3,
@@ -184587,7 +184605,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-05T23:25:54",
-      "p_calibrated": 0.4795,
+      "p_calibrated": 0.4812,
       "outcome": {
         "final_score": "MIN 1 @ KC 2",
         "total_runs": 3,
@@ -184664,7 +184682,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-06T05:16:57",
-      "p_calibrated": 0.4795,
+      "p_calibrated": 0.4812,
       "outcome": {
         "final_score": "LAA 4 @ BAL 1",
         "total_runs": 5,
@@ -184755,7 +184773,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-07T03:38:05",
-      "p_calibrated": 0.649,
+      "p_calibrated": 0.6746,
       "outcome": {
         "final_score": "LAA 4 @ MIA 3",
         "total_runs": 7,
@@ -184882,7 +184900,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-07T17:03:58",
-      "p_calibrated": 0.5506,
+      "p_calibrated": 0.4988,
       "outcome": {
         "final_score": "LAA 4 @ MIA 3",
         "total_runs": 7,
@@ -184907,7 +184925,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-07T22:57:41",
-      "p_calibrated": 0.5692,
+      "p_calibrated": 0.5089,
       "outcome": {
         "final_score": "LAA 4 @ MIA 3",
         "total_runs": 7,
@@ -191916,7 +191934,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-09T06:28:09",
-      "p_calibrated": 0.6421,
+      "p_calibrated": 0.6746,
       "voided": false,
       "outcome": {
         "final_score": "CIN 1 @ WSH 7",
@@ -196909,7 +196927,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-08-11T06:00:19",
-      "p_calibrated": 0.6415,
+      "p_calibrated": 0.6746,
       "voided": false,
       "outcome": {
         "final_score": "CHC 8 @ WSH 6",
@@ -207248,7 +207266,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-13T06:15:36",
-      "p_calibrated": 0.6386,
+      "p_calibrated": 0.6746,
       "outcome": {
         "final_score": "CHC 0 @ WSH 7",
         "total_runs": 7,
@@ -213578,7 +213596,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-15T05:12:23",
-      "p_calibrated": 0.4795,
+      "p_calibrated": 0.4812,
       "outcome": {
         "final_score": "BOS 4 @ PIT 0",
         "total_runs": 4,
@@ -213603,7 +213621,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-15T05:12:23",
-      "p_calibrated": 0.4795,
+      "p_calibrated": 0.4812,
       "outcome": {
         "final_score": "CHW 4 @ DET 3",
         "total_runs": 7,
@@ -213626,7 +213644,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-15T05:12:23",
-      "p_calibrated": 0.6321,
+      "p_calibrated": 0.6746,
       "also_sources": [
         "top_25_board"
       ],
@@ -213829,7 +213847,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-15T13:26:57",
-      "p_calibrated": 0.4797,
+      "p_calibrated": 0.4866,
       "outcome": {
         "final_score": "CHW 4 @ DET 3",
         "total_runs": 7,
@@ -218776,7 +218794,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-08-16T05:18:11",
-      "p_calibrated": 0.6321,
+      "p_calibrated": 0.6746,
       "outcome": {
         "final_score": "BOS 3 @ PIT 8",
         "total_runs": 11,
@@ -223969,7 +223987,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-08-18T05:16:51",
-      "p_calibrated": 0.6598,
+      "p_calibrated": 0.6746,
       "outcome": {
         "final_score": "LAD 11 @ COL 5",
         "total_runs": 16,
@@ -230445,7 +230463,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-19T05:54:12",
-      "p_calibrated": 0.6531,
+      "p_calibrated": 0.6746,
       "outcome": {
         "final_score": "LAD 6 @ COL 4",
         "total_runs": 10,
@@ -236276,7 +236294,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-20T14:44:59",
-      "p_calibrated": 0.4795,
+      "p_calibrated": 0.4812,
       "outcome": {
         "final_score": "TOR 5 @ TB 1",
         "total_runs": 6,
@@ -243898,7 +243916,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-22T05:20:27",
-      "p_calibrated": 0.6378,
+      "p_calibrated": 0.6746,
       "outcome": {
         "final_score": "ATH 0 @ HOU 4",
         "total_runs": 4,
@@ -248911,7 +248929,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-08-23T05:21:18",
-      "p_calibrated": 0.651,
+      "p_calibrated": 0.6746,
       "outcome": {
         "final_score": "CLE 7 @ COL 2",
         "total_runs": 9,
@@ -250326,7 +250344,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-08-24T05:41:23",
-      "p_calibrated": 0.6598,
+      "p_calibrated": 0.6746,
       "outcome": {
         "final_score": "COL 3 @ WSH 13",
         "total_runs": 16,
@@ -253793,7 +253811,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-25T05:46:07",
-      "p_calibrated": 0.6386,
+      "p_calibrated": 0.6746,
       "outcome": {
         "final_score": "COL 3 @ WSH 1",
         "total_runs": 4,
@@ -262217,7 +262235,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-30T07:24:17",
-      "p_calibrated": 0.6598,
+      "p_calibrated": 0.6746,
       "outcome": {
         "final_score": "COL 2 @ ATL 3",
         "total_runs": 5,
@@ -262243,7 +262261,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-31T05:30:07",
-      "p_calibrated": 0.6191,
+      "p_calibrated": 0.6746,
       "outcome": {
         "final_score": "BAL 2 @ COL 1",
         "total_runs": 3,
@@ -262967,7 +262985,7 @@
       "result": "push",
       "payout_units": 0.0,
       "recorded_at": "2026-09-02T06:06:19",
-      "p_calibrated": 0.6351,
+      "p_calibrated": 0.6746,
       "outcome": {
         "final_score": "ATL 9 @ WSH 0",
         "total_runs": 9,
@@ -267222,7 +267240,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-09-04T13:16:44",
-      "p_calibrated": 0.6314,
+      "p_calibrated": 0.6746,
       "outcome": {
         "final_score": "ATH 7 @ SEA 6",
         "total_runs": 13,
@@ -267467,7 +267485,7 @@
       "result": "won",
       "payout_units": 0.6944,
       "recorded_at": "2026-09-04T23:47:20",
-      "p_calibrated": 0.4795,
+      "p_calibrated": 0.4812,
       "outcome": {
         "final_score": "ATH 7 @ SEA 6",
         "total_runs": 13,
@@ -268824,7 +268842,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-05T12:13:46",
-      "p_calibrated": 0.6407,
+      "p_calibrated": 0.6746,
       "outcome": {
         "final_score": "ARI 4 @ HOU 3",
         "total_runs": 7,
@@ -271187,7 +271205,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-09-06T12:37:34",
-      "p_calibrated": 0.6425,
+      "p_calibrated": 0.6746,
       "outcome": {
         "final_score": "MIL 8 @ CIN 12",
         "total_runs": 20,
@@ -274622,7 +274640,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-07T14:40:16",
-      "p_calibrated": 0.628,
+      "p_calibrated": 0.6746,
       "outcome": {
         "final_score": "CHC 3 @ MIL 4",
         "total_runs": 7,
@@ -291442,7 +291460,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-09-11T13:20:42",
-      "p_calibrated": 0.6457,
+      "p_calibrated": 0.6746,
       "outcome": {
         "final_score": "PIT 2 @ CHC 12",
         "total_runs": 14,
@@ -294611,7 +294629,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-09-12T12:32:40",
-      "p_calibrated": 0.6203,
+      "p_calibrated": 0.6746,
       "outcome": {
         "final_score": "NYM 12 @ NYY 2",
         "total_runs": 14,
@@ -295963,7 +295981,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-09-13T05:43:28",
-      "p_calibrated": 0.6598,
+      "p_calibrated": 0.6746,
       "outcome": {
         "final_score": "PIT 4 @ CHC 3",
         "total_runs": 7,
@@ -315977,7 +315995,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-09-17T00:11:49",
-      "p_calibrated": 0.6598,
+      "p_calibrated": 0.6746,
       "outcome": {
         "final_score": "LAD 8 @ CIN 2",
         "total_runs": 10,
@@ -321544,7 +321562,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-09-18T00:34:13",
-      "p_calibrated": 0.6446,
+      "p_calibrated": 0.6746,
       "outcome": {
         "final_score": "PHI 3 @ NYM 6",
         "total_runs": 9,
@@ -328781,7 +328799,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-09-20T00:23:37",
-      "p_calibrated": 0.6598,
+      "p_calibrated": 0.6746,
       "outcome": {
         "final_score": "CHC 9 @ CIN 1",
         "total_runs": 10,
@@ -333488,7 +333506,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-09-21T15:32:46",
-      "p_calibrated": 0.6129,
+      "p_calibrated": 0.6194,
       "outcome": {
         "final_score": "WSH 2 @ DET 9",
         "total_runs": 11,
@@ -334762,7 +334780,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-09-22T00:43:23",
-      "p_calibrated": 0.6569,
+      "p_calibrated": 0.6746,
       "also_sources": [
         "top_25_board"
       ],
@@ -335755,7 +335773,7 @@
       "result": "won",
       "payout_units": 0.6757,
       "recorded_at": "2026-09-22T18:06:26",
-      "p_calibrated": 0.4795,
+      "p_calibrated": 0.4822,
       "also_sources": [
         "top_25_board"
       ],
@@ -335782,7 +335800,7 @@
       "result": "won",
       "payout_units": 0.6757,
       "recorded_at": "2026-09-22T18:06:26",
-      "p_calibrated": 0.4795,
+      "p_calibrated": 0.4822,
       "outcome": {
         "final_score": "MIA 8 @ CHC 2",
         "total_runs": 10,
@@ -335806,7 +335824,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-22T18:06:26",
-      "p_calibrated": 0.4795,
+      "p_calibrated": 0.4812,
       "outcome": {
         "final_score": "STL 0 @ PIT 2",
         "total_runs": 2,
@@ -336563,7 +336581,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-09-22T21:25:47",
-      "p_calibrated": 0.4795,
+      "p_calibrated": 0.4812,
       "voided": true,
       "voided_at": "2026-09-27T00:41:47",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -336584,7 +336602,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-09-22T21:25:47",
-      "p_calibrated": 0.4795,
+      "p_calibrated": 0.4812,
       "outcome": {
         "final_score": "CHW 14 @ KC 11",
         "total_runs": 25,
@@ -336609,7 +336627,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-09-22T21:25:47",
-      "p_calibrated": 0.4795,
+      "p_calibrated": 0.4812,
       "outcome": {
         "final_score": "MIL 4 @ PHI 6",
         "total_runs": 10,
@@ -336634,7 +336652,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-22T21:25:47",
-      "p_calibrated": 0.4795,
+      "p_calibrated": 0.4812,
       "outcome": {
         "final_score": "WSH 3 @ DET 1",
         "total_runs": 4,
@@ -336684,7 +336702,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-23T00:40:42",
-      "p_calibrated": 0.4815,
+      "p_calibrated": 0.4874,
       "outcome": {
         "final_score": "ARI 5 @ COL 3",
         "total_runs": 8,
@@ -336885,7 +336903,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-09-23T05:25:46",
-      "p_calibrated": 0.493,
+      "p_calibrated": 0.4881,
       "voided": true,
       "voided_at": "2026-09-28T01:00:46",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -336906,7 +336924,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-23T05:25:46",
-      "p_calibrated": 0.489,
+      "p_calibrated": 0.4881,
       "outcome": {
         "final_score": "TOR 2 @ BAL 4",
         "total_runs": 6,
@@ -336929,7 +336947,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-23T05:25:46",
-      "p_calibrated": 0.6598,
+      "p_calibrated": 0.6746,
       "outcome": {
         "final_score": "MIA 3 @ CHC 2",
         "total_runs": 5,
@@ -337002,7 +337020,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-23T10:11:24",
-      "p_calibrated": 0.494,
+      "p_calibrated": 0.4881,
       "outcome": {
         "final_score": "MIL 4 @ PHI 1",
         "total_runs": 5,
@@ -337125,7 +337143,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-23T18:26:24",
-      "p_calibrated": 0.4946,
+      "p_calibrated": 0.4881,
       "outcome": {
         "final_score": "MIA 3 @ CHC 2",
         "total_runs": 5,
@@ -337150,7 +337168,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-23T18:26:24",
-      "p_calibrated": 0.4853,
+      "p_calibrated": 0.4881,
       "outcome": {
         "final_score": "TOR 2 @ BAL 4",
         "total_runs": 6,
@@ -337175,7 +337193,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-23T18:26:24",
-      "p_calibrated": 0.4795,
+      "p_calibrated": 0.485,
       "outcome": {
         "final_score": "ARI 5 @ COL 3",
         "total_runs": 8,
@@ -337299,7 +337317,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-23T22:24:54",
-      "p_calibrated": 0.4795,
+      "p_calibrated": 0.4826,
       "outcome": {
         "final_score": "STL 5 @ PIT 1",
         "total_runs": 6,
@@ -337351,7 +337369,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-09-24T00:40:11",
-      "p_calibrated": 0.5013,
+      "p_calibrated": 0.4881,
       "outcome": {
         "final_score": "HOU 7 @ ATH 5",
         "total_runs": 12,
@@ -337375,7 +337393,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-24T00:40:11",
-      "p_calibrated": 0.4928,
+      "p_calibrated": 0.4881,
       "outcome": {
         "final_score": "CLE 1 @ BOS 0",
         "total_runs": 1,
@@ -337400,7 +337418,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-09-24T00:40:11",
-      "p_calibrated": 0.4841,
+      "p_calibrated": 0.4881,
       "outcome": {
         "final_score": "CIN 7 @ ATL 6",
         "total_runs": 13,
@@ -337425,7 +337443,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-24T00:40:11",
-      "p_calibrated": 0.4825,
+      "p_calibrated": 0.4878,
       "outcome": {
         "final_score": "MIA 1 @ CHC 2",
         "total_runs": 3,
@@ -337473,7 +337491,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-24T00:40:11",
-      "p_calibrated": 0.4795,
+      "p_calibrated": 0.4812,
       "outcome": {
         "final_score": "CLE 1 @ BOS 0",
         "total_runs": 1,
@@ -337835,7 +337853,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-25T00:53:20",
-      "p_calibrated": 0.6517,
+      "p_calibrated": 0.6746,
       "outcome": {
         "final_score": "COL 1 @ CHW 6",
         "total_runs": 7,
@@ -339986,7 +340004,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-09-29T01:12:20",
-      "p_calibrated": 0.6216,
+      "p_calibrated": 0.6746,
       "outcome": {
         "final_score": "CHC 0 @ SD 8",
         "total_runs": 8,
@@ -340112,7 +340130,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-09-30T03:27:55",
-      "p_calibrated": 0.6241,
+      "p_calibrated": 0.6746,
       "outcome": {
         "final_score": "BOS 2 @ NYY 9",
         "total_runs": 11,
@@ -340609,7 +340627,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-01T05:47:59",
-      "p_calibrated": 0.6598,
+      "p_calibrated": 0.6746,
       "voided": true,
       "voided_at": "2026-10-06T02:22:48",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -341728,7 +341746,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-04T06:08:49",
-      "p_calibrated": 0.6197,
+      "p_calibrated": 0.6746,
       "voided": true,
       "voided_at": "2026-10-09T00:27:44",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -341798,7 +341816,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-10-05T00:54:21",
-      "p_calibrated": 0.6165,
+      "p_calibrated": 0.6746,
       "outcome": {
         "final_score": "CHW 4 @ CLE 3",
         "total_runs": 7,
@@ -342013,7 +342031,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-10-06T02:22:47",
-      "p_calibrated": 0.6172,
+      "p_calibrated": 0.6746,
       "outcome": {
         "final_score": "LAD 3 @ ATL 1",
         "total_runs": 4,
@@ -343365,7 +343383,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-10-07T05:55:19",
-      "p_calibrated": 0.6179,
+      "p_calibrated": 0.6746,
       "outcome": {
         "final_score": "MIL 3 @ SD 1",
         "total_runs": 4,
@@ -343799,7 +343817,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-10-11T01:31:28",
-      "p_calibrated": 0.6175,
+      "p_calibrated": 0.6746,
       "outcome": {
         "final_score": "LAD 1 @ MIL 2",
         "total_runs": 3,
@@ -344151,7 +344169,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-10-12T02:32:55",
-      "p_calibrated": 0.6376,
+      "p_calibrated": 0.6746,
       "outcome": {
         "final_score": "LAD 4 @ MIL 7",
         "total_runs": 11,
@@ -345265,7 +345283,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-15T01:10:03",
-      "p_calibrated": 0.6007,
+      "p_calibrated": 0.5619,
       "voided": true,
       "voided_at": "2026-10-20T00:03:28",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -346826,7 +346844,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-10-19T11:02:37",
-      "p_calibrated": 0.6135,
+      "p_calibrated": 0.6337,
       "outcome": {
         "final_score": "CLE 3 @ TB 7",
         "total_runs": 10,
@@ -368213,7 +368231,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T00:24:03",
-      "p_calibrated": 0.618
+      "p_calibrated": 0.6746
     },
     {
       "source": "nfl_pass_int",
@@ -382693,7 +382711,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T02:35:40",
-      "p_calibrated": 0.4795
+      "p_calibrated": 0.4831
     },
     {
       "source": "nhl_pl_home_plus_1.5",
@@ -397163,7 +397181,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-26T06:41:29",
-      "p_calibrated": 0.6156
+      "p_calibrated": 0.6746
     },
     {
       "source": "cfb_model",
