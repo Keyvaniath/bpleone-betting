@@ -47,11 +47,11 @@ _0% lineups confirmed · 1 rookie SPs_
 - Toronto Maple Leafs @ Calgary Flames (7-4-2 vs 4-6-0)  | P(home) 41.9% fair +139 | Scheduled
 - Detroit Red Wings @ Edmonton Oilers (4-4-3 vs 8-2-1)  | P(home) 89.2% fair -829 | Scheduled
 
-## LoL Esports -- 1 live, 19 upcoming
-- [Worlds] CTBC Flying Oyster vs T1 BO1 | P(A) 47.7% fair +110/-110
-- [Worlds] BILIBILI GAMING vs Karmine Corp BO1 | P(A) 51.5% fair -106/+106
-- [Worlds] LOS vs Team Secret Whales BO3 | P(A) 57.0% fair -132/+132
+## LoL Esports -- 1 live, 17 upcoming
+- [Worlds] Team Secret Whales vs LOS BO3 | P(A) 43.0% fair +132/-132
 - [Worlds] Team Liquid Alienware vs Anyone's Legend BO3 | P(A) 47.1% fair +112/-112
+- [Worlds] TBD vs TBD BO3 | P(A) 50.0% fair -100/-100
+- [Worlds] TBD vs TBD BO3 | P(A) 50.0% fair -100/-100
 - [Worlds] TBD vs TBD BO3 | P(A) 50.0% fair -100/-100
 - **LoL POT:** LOS ML vs Team Secret Whales (Worlds, BO3) (HIGH)
 

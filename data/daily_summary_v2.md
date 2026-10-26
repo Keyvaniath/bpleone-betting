@@ -1,13 +1,13 @@
 # EdgeStat Daily Summary — 2026-10-26
 
-## 🏥 Model Health: 73.9/100 [HEALTHY]
+## 🏥 Model Health: 71.5/100 [HEALTHY]
 - Solid health - some minor issues to monitor
   - 🟢 Calibration Freshness: 99.9/100
-  - 🟡 Hit Rate Trend: 63.4/100
-  - 🔴 Brier Trend: 34.8/100
+  - 🟡 Hit Rate Trend: 66.9/100
+  - 🔴 Brier Trend: 16.4/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 100.0/100
-  - 🔴 Edge Count: 42.9/100
+  - 🔴 Edge Count: 48.6/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.584)
@@ -48,14 +48,14 @@
 - Hot teams: **8** | Cold teams: **24** | Over-heavy: 0 | Under-heavy: 31
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (127)
-- RESIDUAL_DIVERGENCE: **11**
-- STEAM_MOVE: **116**
-  - Golden State Valkyries (WNBA): Golden State Valkyries UNDERPERFORMING expected margin by 10.3pts in recent games -- model bias may persist
-  - Atlanta Dream (WNBA): Atlanta Dream OUTPERFORMING expected margin by 10.3pts in recent games -- model bias may persist
-  - CF Montréal (MLS): CF Montréal OUTPERFORMING expected margin by 6.6pts in recent games -- model bias may persist
-  - Inter Miami CF (MLS): Inter Miami CF UNDERPERFORMING expected margin by 9.7pts in recent games -- model bias may persist
-  - New England Revolution (MLS): New England Revolution OUTPERFORMING expected margin by 7.8pts in recent games -- model bias may persist
+## ⚠️ Anomaly Detector (138)
+- RESIDUAL_DIVERGENCE: **23**
+- STEAM_MOVE: **115**
+  - Charlotte Hornets (NBA): Charlotte Hornets UNDERPERFORMING expected margin by 7.8pts in recent games -- model bias may persist
+  - Washington Wizards (NBA): Washington Wizards OUTPERFORMING expected margin by 9.2pts in recent games -- model bias may persist
+  - Minnesota Timberwolves (NBA): Minnesota Timberwolves OUTPERFORMING expected margin by 9.8pts in recent games -- model bias may persist
+  - Chicago Bulls (NBA): Chicago Bulls UNDERPERFORMING expected margin by 10.3pts in recent games -- model bias may persist
+  - Miami Heat (NBA): Miami Heat UNDERPERFORMING expected margin by 6.4pts in recent games -- model bias may persist
 
 ## 💰 Today's Portfolio (12 picks)
 - Total stake: **$330.0** (33.0% of $1000 bankroll)

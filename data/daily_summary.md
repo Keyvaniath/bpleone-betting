@@ -4,7 +4,7 @@
 
 _Pipeline health: **WARNING** (12/15 artifacts ok; 3 empty, 0 stale)._ 
 
-_Generated at 2026-10-26T16:58:33 UTC. Game lines source: **placeholder -110 (no real book today)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-10-26T19:02:51 UTC. Game lines source: **placeholder -110 (no real book today)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
@@ -47,8 +47,8 @@ _Generated at 2026-10-26T16:58:33 UTC. Game lines source: **placeholder -110 (no
 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
-| batter hits | 330 | 55.1% | 56.5% | 1.024 | 0.977 |
 | batter total bases | 84 | 35.7% | 41.4% | 1.157 | 0.874 |
+| batter hits | 330 | 55.1% | 56.5% | 1.024 | 0.977 |
 
 Cumulative graded plays: 19734. Wins: 8750. Hit rate: 44.3%.
 
