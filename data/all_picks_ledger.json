@@ -1,23 +1,23 @@
 {
-  "generated_at": "2026-10-26T01:27:06",
+  "generated_at": "2026-10-26T05:16:25",
   "stake_assumption": "1u flat per pick",
-  "total_picks": 15288,
-  "n_settled": 19503,
-  "n_pending": 969,
+  "total_picks": 15295,
+  "n_settled": 19505,
+  "n_pending": 974,
   "n_void": 756,
-  "wins": 8607,
-  "losses": 10884,
+  "wins": 8608,
+  "losses": 10885,
   "pushes": 12,
   "hit_rate": 0.4416,
-  "net_units": -3574.773,
+  "net_units": -3575.227,
   "roi_pct": -18.34,
-  "n_calibrated_picks": 15144,
+  "n_calibrated_picks": 15151,
   "calibrated_reliability": {
-    "n": 13427,
+    "n": 13429,
     "ece_raw": 0.0826,
     "ece_calibrated": 0.0132,
-    "brier_raw": 0.21097,
-    "brier_calibrated": 0.19582,
+    "brier_raw": 0.21098,
+    "brier_calibrated": 0.19583,
     "note": "In-sample over the settled ledger (the isotonic transform is fit on these same outcomes); held-out 70/30 validation is in recalibration_map.json. p_predicted = raw model prob (kept untouched for the learning loop); p_calibrated = honest prob stamped per pick. Lower ECE/Brier on the calibrated column = the displayed % is truer."
   },
   "curated": {
@@ -53,10 +53,10 @@
   "headline_basis": "all-time: working ledger + data/ledger_archive.json",
   "working_ledger_only": {
     "all": {
-      "n_settled": 13563,
-      "wins": 5650,
-      "losses": 7903,
-      "net_units": -2316.188,
+      "n_settled": 13565,
+      "wins": 5651,
+      "losses": 7904,
+      "net_units": -2316.641,
       "roi_pct": -17.09
     },
     "curated": {
@@ -72,12 +72,12 @@
     "note": "The headline became ALL-TIME on 2026-10-23. 5,946 settled picks that the old tail-cut eviction had destroyed (May-June 2026, the 07-06 erosion and the run-up to 09-03) were rebuilt from git history at each pick's final state, with today's duplicate-wager rule re-applied, and folded back in. They are mostly the raw May-June MLB prop firehose (2,961-2,983, -1,256.9u), so the firehose ROI fell; the curated record changed by the curated picks among them. Before this date the published numbers covered the working window only -- working_ledger_only keeps that basis.",
     "n_archived_in_headline": 5940
   },
-  "n_added_this_run": 0,
-  "n_newly_settled_this_run": 7,
+  "n_added_this_run": 7,
+  "n_newly_settled_this_run": 2,
   "n_resettled_this_run": 0,
   "n_voided_this_run": 0,
-  "n_duplicates_collapsed_this_run": 7,
-  "n_duplicate_adds_blocked_this_run": 76,
+  "n_duplicates_collapsed_this_run": 0,
+  "n_duplicate_adds_blocked_this_run": 69,
   "n_reconciled_settled_voids": 0,
   "n_bootstrapped_from_locks_history": 0,
   "by_source": {
@@ -811,13 +811,13 @@
       "roi_pct": -12.84
     },
     "soccer_total_total_under_3.5": {
-      "n": 171,
-      "wins": 109,
-      "losses": 62,
+      "n": 173,
+      "wins": 110,
+      "losses": 63,
       "pushes": 0,
-      "net_units": 0.087,
-      "hit_rate": 0.6374,
-      "roi_pct": 0.05
+      "net_units": -0.367,
+      "hit_rate": 0.6358,
+      "roi_pct": -0.21
     },
     "consensus_hit_elite": {
       "n": 1,
@@ -3152,12 +3152,12 @@
       "hit_rate": 0.7778
     },
     "total_under": {
-      "n": 169,
-      "wins": 108,
-      "losses": 61,
+      "n": 171,
+      "wins": 109,
+      "losses": 62,
       "pushes": 0,
-      "net_units": 0.458,
-      "hit_rate": 0.6391
+      "net_units": 0.004,
+      "hit_rate": 0.6374
     },
     "ml_home": {
       "n": 38,
@@ -3986,12 +3986,12 @@
       "hit_rate": 0.7778
     },
     "total_under": {
-      "n": 169,
-      "wins": 108,
-      "losses": 61,
+      "n": 171,
+      "wins": 109,
+      "losses": 62,
       "pushes": 0,
-      "net_units": 0.458,
-      "hit_rate": 0.6391
+      "net_units": 0.004,
+      "hit_rate": 0.6374
     },
     "ml_home": {
       "n": 38,
@@ -4501,12 +4501,12 @@
       "markets": 5
     },
     "UFC": {
-      "n": 225,
+      "n": 232,
       "settled": 165,
       "wins": 71,
       "losses": 94,
       "pushes": 0,
-      "pending": 1,
+      "pending": 8,
       "void": 59,
       "net_units": 155.27,
       "hit_rate": 0.4303,
@@ -4515,15 +4515,15 @@
     },
     "MLS": {
       "n": 405,
-      "settled": 401,
-      "wins": 275,
-      "losses": 126,
+      "settled": 403,
+      "wins": 276,
+      "losses": 127,
       "pushes": 0,
-      "pending": 4,
+      "pending": 2,
       "void": 0,
-      "net_units": -9.142,
-      "hit_rate": 0.6858,
-      "roi_pct": -2.28,
+      "net_units": -9.596,
+      "hit_rate": 0.6849,
+      "roi_pct": -2.38,
       "markets": 4
     },
     "NHL": {
@@ -4678,10 +4678,10 @@
     "note": "NFL props are judged from 10/23 forward: the simulator's form rule changed, so earlier picks are a different model. They stay on the record as their own line and never feed a family verdict."
   },
   "last_7_days": {
-    "wins": 771,
-    "losses": 361,
-    "net_units": -30.446,
-    "hit_rate": 0.6811
+    "wins": 772,
+    "losses": 362,
+    "net_units": -30.9,
+    "hit_rate": 0.6808
   },
   "picks": [
     {
@@ -391586,11 +391586,26 @@
       "matchup": "Chicago Fire FC @ Atlanta United FC",
       "date": "2026-10-24",
       "pick_id": "soccer_total_total_under_3_5|MLS|Chicago_Fire_FC___Atlanta_United_FC|TOTAL_UNDER_3_5|2026-10-24",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "lost",
+      "payout_units": -1.0,
       "recorded_at": "2026-10-25T16:32:55",
-      "p_calibrated": 0.6941
+      "p_calibrated": 0.6941,
+      "outcome": {
+        "final_score": "Chicago Fire FC 3-2 Atlanta United FC",
+        "total_cards": 7,
+        "total_goals": 5,
+        "scorers": [
+          "tom\u00e1s jacob",
+          "anton saletros",
+          "anzor mekvabishvili",
+          "philip zinckernagel",
+          "breel embolo"
+        ],
+        "market": "TOTAL_UNDER_3.5",
+        "verify": "Chicago Fire FC 3-2 Atlanta United FC: 5 goals (line 3.5) \u2014 TOTAL_UNDER_3.5"
+      },
+      "settled_at": "2026-10-26T05:16:25"
     },
     {
       "source": "soccer_total_total_under_3.5",
@@ -391603,11 +391618,24 @@
       "matchup": "New England Revolution @ Philadelphia Union",
       "date": "2026-10-24",
       "pick_id": "soccer_total_total_under_3_5|MLS|New_England_Revolution___Philadelphia_Un|TOTAL_UNDER_3_5|2026-10-24",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "won",
+      "payout_units": 0.5464,
       "recorded_at": "2026-10-25T16:32:55",
-      "p_calibrated": 0.6941
+      "p_calibrated": 0.6941,
+      "outcome": {
+        "final_score": "New England Revolution 2-1 Philadelphia Union",
+        "total_cards": 3,
+        "total_goals": 3,
+        "scorers": [
+          "dor turgeman",
+          "carles gil",
+          "neil pierre"
+        ],
+        "market": "TOTAL_UNDER_3.5",
+        "verify": "New England Revolution 2-1 Philadelphia Union: 3 goals (line 3.5) \u2014 TOTAL_UNDER_3.5"
+      },
+      "settled_at": "2026-10-26T05:16:25"
     },
     {
       "source": "soccer_cards_cards_under_5.0",
@@ -394463,6 +394491,125 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-26T00:28:05",
+      "p_calibrated": 0.3333
+    },
+    {
+      "source": "ufc_r1_fight_r1_finish_yes",
+      "sport": "UFC",
+      "player_or_matchup": "Nikita Krylov vs Abdul-Rakhman Yakhyaev",
+      "market": "FIGHT_R1_FINISH_YES",
+      "prob": 0.299,
+      "fair_american": 235,
+      "p_predicted": 0.299,
+      "matchup": "Nikita Krylov vs Abdul-Rakhman Yakhyaev",
+      "date": "2026-10-26",
+      "pick_id": "ufc_r1_fight_r1_finish_yes|UFC|Nikita_Krylov_vs_Abdul_Rakhman_Yakhyaev|FIGHT_R1_FINISH_YES|2026-10-26",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-10-26T05:16:25",
+      "p_calibrated": 0.4349
+    },
+    {
+      "source": "ufc_r1_fight_r1_finish_yes",
+      "sport": "UFC",
+      "player_or_matchup": "Azamat Murzakanov vs Dominick Reyes",
+      "market": "FIGHT_R1_FINISH_YES",
+      "prob": 0.297,
+      "fair_american": 236,
+      "p_predicted": 0.297,
+      "matchup": "Azamat Murzakanov vs Dominick Reyes",
+      "date": "2026-10-26",
+      "pick_id": "ufc_r1_fight_r1_finish_yes|UFC|Azamat_Murzakanov_vs_Dominick_Reyes|FIGHT_R1_FINISH_YES|2026-10-26",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-10-26T05:16:25",
+      "p_calibrated": 0.4349
+    },
+    {
+      "source": "ufc_r1_fight_r1_finish_yes",
+      "sport": "UFC",
+      "player_or_matchup": "Abubakar Vagaev vs Jacob Malkoun",
+      "market": "FIGHT_R1_FINISH_YES",
+      "prob": 0.251,
+      "fair_american": 299,
+      "p_predicted": 0.251,
+      "matchup": "Abubakar Vagaev vs Jacob Malkoun",
+      "date": "2026-10-26",
+      "pick_id": "ufc_r1_fight_r1_finish_yes|UFC|Abubakar_Vagaev_vs_Jacob_Malkoun|FIGHT_R1_FINISH_YES|2026-10-26",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-10-26T05:16:25",
+      "p_calibrated": 0.431
+    },
+    {
+      "source": "ufc_r1_fight_r1_finish_yes",
+      "sport": "UFC",
+      "player_or_matchup": "Abus Magomedov vs Cam Rowston",
+      "market": "FIGHT_R1_FINISH_YES",
+      "prob": 0.25,
+      "fair_american": 299,
+      "p_predicted": 0.25,
+      "matchup": "Abus Magomedov vs Cam Rowston",
+      "date": "2026-10-26",
+      "pick_id": "ufc_r1_fight_r1_finish_yes|UFC|Abus_Magomedov_vs_Cam_Rowston|FIGHT_R1_FINISH_YES|2026-10-26",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-10-26T05:16:25",
+      "p_calibrated": 0.4271
+    },
+    {
+      "source": "ufc_r1_fight_r1_finish_yes",
+      "sport": "UFC",
+      "player_or_matchup": "Grant Dawson vs Nurullo Aliev",
+      "market": "FIGHT_R1_FINISH_YES",
+      "prob": 0.201,
+      "fair_american": 398,
+      "p_predicted": 0.201,
+      "matchup": "Grant Dawson vs Nurullo Aliev",
+      "date": "2026-10-26",
+      "pick_id": "ufc_r1_fight_r1_finish_yes|UFC|Grant_Dawson_vs_Nurullo_Aliev|FIGHT_R1_FINISH_YES|2026-10-26",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-10-26T05:16:25",
+      "p_calibrated": 0.3333
+    },
+    {
+      "source": "ufc_r1_fight_r1_finish_yes",
+      "sport": "UFC",
+      "player_or_matchup": "Noah Gugnon vs Kody Steele",
+      "market": "FIGHT_R1_FINISH_YES",
+      "prob": 0.198,
+      "fair_american": 406,
+      "p_predicted": 0.198,
+      "matchup": "Noah Gugnon vs Kody Steele",
+      "date": "2026-10-26",
+      "pick_id": "ufc_r1_fight_r1_finish_yes|UFC|Noah_Gugnon_vs_Kody_Steele|FIGHT_R1_FINISH_YES|2026-10-26",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-10-26T05:16:25",
+      "p_calibrated": 0.3333
+    },
+    {
+      "source": "ufc_r1_fight_r1_finish_yes",
+      "sport": "UFC",
+      "player_or_matchup": "Aaron Pico vs Losene Keita",
+      "market": "FIGHT_R1_FINISH_YES",
+      "prob": 0.181,
+      "fair_american": 453,
+      "p_predicted": 0.181,
+      "matchup": "Aaron Pico vs Losene Keita",
+      "date": "2026-10-26",
+      "pick_id": "ufc_r1_fight_r1_finish_yes|UFC|Aaron_Pico_vs_Losene_Keita|FIGHT_R1_FINISH_YES|2026-10-26",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-10-26T05:16:25",
       "p_calibrated": 0.3333
     }
   ],
