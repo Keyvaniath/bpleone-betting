@@ -29,6 +29,12 @@ import datetime as dt
 from typing import Any, Dict, List, Optional, Tuple
 
 
+def _nz(v, d):
+    """None-safe default (2026-10-26): `.get(k, d)` only covers a MISSING key;
+    a key stored as None still reaches the arithmetic and crashes."""
+    return d if v is None else v
+
+
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 TR_PATH = os.path.join(DATA_DIR, "track_record.json")
 CAL_PATH = os.path.join(DATA_DIR, "calibration_live.json")
@@ -178,10 +184,10 @@ def correction_factor(metrics: Dict[str, Any], market: Optional[str] = None) -> 
     Shrinkage:
         effective_cf = (n / (n + n_prior)) * raw_cf + (n_prior / (n + n_prior)) * 1.0
     """
-    n = metrics.get("n", 0)
+    n = (metrics.get("n") or 0)
     if n < MIN_SAMPLE_FOR_ANY_CORRECTION:
         return 1.0
-    bias = metrics.get("bias", 1.0)
+    bias = _nz(metrics.get("bias"), 1.0)
     if not bias or bias <= 0:
         return 1.0
     n_prior = N_PRIOR_PER_MARKET.get(market, N_PRIOR_DEFAULT) if market else N_PRIOR_DEFAULT
@@ -212,11 +218,11 @@ def run(today: Optional[dt.date] = None) -> Dict[str, Any]:
         m = compute_metrics(subset, today)
         m["correction_factor"] = correction_factor(m, market_key)
         # Make the shrinkage transparent: how much of the raw bias is we trusting?
-        n = m.get("n", 0)
+        n = (m.get("n") or 0)
         n_prior_used = N_PRIOR_PER_MARKET.get(market_key, N_PRIOR_DEFAULT)
         m["n_prior_used"] = n_prior_used
         m["data_weight"] = round(n / (n + n_prior_used), 4) if n > 0 else 0.0
-        m["raw_correction"] = round(max(MIN_CORRECTION, min(MAX_CORRECTION, 1.0 / m.get("bias", 1.0))), 4) if m.get("bias") else 1.0
+        m["raw_correction"] = round(max(MIN_CORRECTION, min(MAX_CORRECTION, 1.0 / _nz(m.get("bias"), 1.0))), 4) if m.get("bias") else 1.0
         markets[market_key] = m
 
     # Game-line over/under metrics

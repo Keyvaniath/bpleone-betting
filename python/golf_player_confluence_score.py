@@ -101,8 +101,8 @@ def run() -> Dict[str, Any]:
     for name in all_players:
         d = dom_idx.get(name, {})
         tr = top_idx.get(name, {})
-        p_lead = lead_idx.get(name, 0)
-        p_cut = cut_idx.get(name, 0)
+        p_lead = (lead_idx.get(name) or 0)
+        p_cut = (cut_idx.get(name) or 0)
         rr = round_idx.get(name, {})
 
         dom_signals = int(d.get("n_signals", 0) or 0)

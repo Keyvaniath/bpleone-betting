@@ -58,7 +58,7 @@ def run() -> Dict[str, Any]:
 
     # 1) Whales (highest priority)
     for w in (whales.get("whales") or [])[:5]:
-        n_sigs = w.get("n_signals", 0)
+        n_sigs = (w.get("n_signals") or 0)
         avg_p = _safe(w.get("avg_probability"))
         score = (n_sigs * 1.5) * (1 + avg_p)  # weight signals * confidence
         candidates.append({
@@ -76,7 +76,7 @@ def run() -> Dict[str, Any]:
     whale_players = {w["player"] for w in candidates}
     for c in (scanner.get("confluence_triples") or [])[:8]:
         if c.get("player") in whale_players: continue
-        n_sigs = c.get("n_signals", 0)
+        n_sigs = (c.get("n_signals") or 0)
         if n_sigs < 3: continue
         signals = c.get("signals") or []
         avg_p = sum(_safe(s.get("p")) for s in signals) / max(len(signals), 1)

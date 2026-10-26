@@ -102,7 +102,7 @@ def run() -> Dict[str, Any]:
 
     totals_now = [_to_par(p.get("total_to_par")) for p in field]
     median = sorted(totals_now)[len(totals_now) // 2]
-    means = [(cur - median) * SKILL_PER_STROKE + ELITE_PRIOR.get(field[i]["name"], 0.0)
+    means = [(cur - median) * SKILL_PER_STROKE + (ELITE_PRIOR.get(field[i]["name"]) or 0.0)
              for i, cur in enumerate(totals_now)]
 
     random.seed(43)

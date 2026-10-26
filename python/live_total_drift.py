@@ -104,8 +104,8 @@ def run() -> Dict[str, Any]:
         cur_inning = ls.get("currentInning") or 1
         half = ls.get("inningHalf") or "Top"
         outs = ls.get("outs") or 0
-        away_r = (ls.get("teams") or {}).get("away", {}).get("runs", 0)
-        home_r = (ls.get("teams") or {}).get("home", {}).get("runs", 0)
+        away_r = ((ls.get("teams") or {}).get("away", {}).get("runs") or 0)
+        home_r = ((ls.get("teams") or {}).get("home", {}).get("runs") or 0)
         score_so_far = away_r + home_r
 
         # Per-game expected total per inning from pre-game model

@@ -91,7 +91,7 @@ def run() -> Dict[str, Any]:
     for name in all_batters:
         e = expl_idx.get(name, {})
         h_trend = heat_idx.get(name, "")
-        p_hr = hr_idx.get(name, 0)
+        p_hr = (hr_idx.get(name) or 0)
         tbr = tb_idx.get(name, {})
         kr = k_idx.get(name, {})
 

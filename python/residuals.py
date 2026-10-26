@@ -191,7 +191,7 @@ def run(today: Optional[dt.date] = None) -> Dict[str, Any]:
         stats["by_projection_band"] = _by_band(subset)
         stats["worst_misses"] = _worst_misses(subset)
         # Direction summary in plain English
-        if abs(stats.get("mean_residual", 0)) < 0.1:
+        if abs((stats.get("mean_residual") or 0)) < 0.1:
             stats["direction"] = "balanced (model centered on actual)"
         elif stats["mean_residual"] < 0:
             stats["direction"] = f"model OVER-predicts by avg {-stats['mean_residual']} -> shrink projections"

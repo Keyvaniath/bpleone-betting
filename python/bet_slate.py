@@ -124,7 +124,7 @@ def run() -> Dict[str, Any]:
     # --- PARLAY: top balanced 2-leg ---
     parlays = _load(os.path.join(DATA_DIR, "cross_sport_parlays.json"))
     par = (parlays.get("balanced_2_leg_picks") or parlays.get("top_2_leg_parlays") or [None])[0]
-    if par and par.get("edge_pct", 0) >= 5.0:
+    if par and (par.get("edge_pct") or 0) >= 5.0:
         names = " + ".join((L.get("player_or_matchup") or "")[:20] for L in par.get("legs", []))
         slate.append({
             "type": "PARLAY",

@@ -106,7 +106,7 @@ def run() -> Dict[str, Any]:
         })
 
     tier_order = {"FIGHT_LOCK": 4, "FIGHT_STRONG": 3, "FIGHT_LEAN": 2, "FIGHT_PASS": 1}
-    previews.sort(key=lambda p: -tier_order.get(p["tier"], 0))
+    previews.sort(key=lambda p: -(tier_order.get(p["tier"]) or 0))
 
     out = {
         "generated_at": dt.datetime.utcnow().isoformat(timespec="seconds"),

@@ -58,7 +58,7 @@ def build_compact_message() -> str:
         parts.append(f"**Play of the Day:** {pod['matchup']} - **{pod['label']}**{precal_tag}")
         mp = pod['market_price']
         mp_str = f"+{mp}" if mp >= 0 else str(mp)
-        kelly = pod.get("kelly_units", 0)
+        kelly = (pod.get("kelly_units") or 0)
         stake_str = "<= 0.5u" if is_precal else f"{kelly}u"
         parts.append(f"  Market: {mp_str} | "
                      f"Model: {pod['model_prob']*100:.1f}% | "

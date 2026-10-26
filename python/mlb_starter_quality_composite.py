@@ -28,6 +28,12 @@ import datetime as dt
 from typing import Any, Dict, List, Optional
 
 
+def _nz(v, d):
+    """None-safe default (2026-10-26): `.get(k, d)` only covers a MISSING key;
+    a key stored as None still reaches the arithmetic and crashes."""
+    return d if v is None else v
+
+
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 OUT = os.path.join(DATA_DIR, "mlb_starter_quality.json")
 
@@ -161,10 +167,10 @@ def run() -> Dict[str, Any]:
 
             era = _safe(pitcher.get("era") or pitcher.get("season", {}).get("era"), 4.20)
             k9 = _safe(pitcher.get("k_per_9") or pitcher.get("season", {}).get("k_per_9"), 8.5)
-            fd = form_by_name.get((name or "").lower(), 0.0)
-            opk = opp_k.get(opp_team, 0.224)
-            tto = tto_by_pitcher.get((name or "").lower(), 1.0)
-            cat = catcher_by_pitcher.get((name or "").lower(), 0.0)
+            fd = (form_by_name.get((name or "").lower()) or 0.0)
+            opk = _nz(opp_k.get(opp_team), 0.224)
+            tto = _nz(tto_by_pitcher.get((name or "").lower()), 1.0)
+            cat = (catcher_by_pitcher.get((name or "").lower()) or 0.0)
 
             score = _score_pitcher(era, k9, fd, opk, park_factor, cat, tto)
             rows.append({

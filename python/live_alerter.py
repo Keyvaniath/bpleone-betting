@@ -77,7 +77,7 @@ def run() -> Dict[str, Any]:
     sharp = _load(os.path.join(DATA_DIR, "sharp_action_radar.json"))
     for s in (sharp.get("positive_signals") or []):
         if s.get("intensity") not in ("STRONG", "ELITE"): continue
-        alert_id = f"sharp|{s.get('matchup')}|{s.get('market')}|{round(s.get('shift_pp',0))}"
+        alert_id = f"sharp|{s.get('matchup')}|{s.get('market')}|{round((s.get('shift_pp') or 0))}"
         if alert_id in fired_ids: continue
         msg = (f"📡 **SHARP STEAM ({s['intensity']})** -- {s['matchup']} {s['market']}: "
                f"line moved {s['opening_implied_pct']}% -> {s['latest_implied_pct']}% "
@@ -94,7 +94,7 @@ def run() -> Dict[str, Any]:
         if alert_id in fired_ids: continue
         side = "favorable" if edge_pp > 0 else "fade"
         msg = (f"⚡ **LIVE EDGE** -- {e.get('matchup','?')} I{e.get('inning','?')}: "
-               f"model {(e.get('model_p',0)*100):.0f}% vs book {(e.get('book_implied',0)*100):.0f}% "
+               f"model {((e.get('model_p') or 0)*100):.0f}% vs book {((e.get('book_implied') or 0)*100):.0f}% "
                f"({edge_pp:+.1f}pp {side})")
         new_alerts.append({"type": "LIVE_EDGE", "id": alert_id, "message": msg, "edge": e})
         new_fired.append(alert_id)

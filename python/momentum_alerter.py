@@ -64,7 +64,7 @@ def run() -> Dict[str, Any]:
         atype = alert.get("alert_type")
         if not atype: continue
         # Build unique key per (game, alert_type, swing direction)
-        key = f"{alert.get('game_pk')}|{atype}|{alert.get('p_home_win_now',0)*100:.0f}"
+        key = f"{alert.get('game_pk')}|{atype}|{(alert.get('p_home_win_now') or 0)*100:.0f}"
         priority = "HIGH" if atype in HIGH_PRIORITY else "MED" if atype in MED_PRIORITY else "LOW"
         if priority == "LOW": continue
         if key in fired:

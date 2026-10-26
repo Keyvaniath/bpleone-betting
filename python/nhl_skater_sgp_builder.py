@@ -103,18 +103,18 @@ def run() -> Dict[str, Any]:
         if _is_over(sog_idx.get(name, {}).get("edge_class") or ""):
             legs.append({"market": "SOG OVER", "p": 0.55})
 
-        p_sog3 = sog3_idx.get(name, 0)
+        p_sog3 = (sog3_idx.get(name) or 0)
         if p_sog3 >= 0.45:
             legs.append({"market": "3+ SOG YES", "p": round(p_sog3, 3)})
 
         if _is_over(pts_idx.get(name, {}).get("edge_class") or ""):
             legs.append({"market": "Points OVER", "p": 0.54})
 
-        p_pts2 = pts2_idx.get(name, 0)
+        p_pts2 = (pts2_idx.get(name) or 0)
         if p_pts2 >= 0.32:
             legs.append({"market": "2+ Points YES", "p": round(p_pts2, 3)})
 
-        p_atg = atg_idx.get(name, 0)
+        p_atg = (atg_idx.get(name) or 0)
         if p_atg >= 0.22:
             legs.append({"market": "Anytime Goal YES", "p": round(p_atg, 3)})
 

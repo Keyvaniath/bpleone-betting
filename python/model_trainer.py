@@ -144,7 +144,7 @@ def train_all() -> Dict[str, Any]:
     for market, recs in by_market.items():
         out[market] = evaluate_market(market, recs)
     # Aggregate status
-    total_settled = sum(m.get("n", 0) for m in out.values())
+    total_settled = sum((m.get("n") or 0) for m in out.values())
     trainable = [m for m in out if out[m].get("trainable")]
     return {
         "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
@@ -184,7 +184,7 @@ def write_trained(payload: Dict[str, Any], path: str = OUT_PATH) -> None:
     print(f"  Total settled props: {payload['total_settled_props']}")
     print(f"  Markets trainable now: {payload['markets_trainable_now']}")
     for market, m in payload.get("per_market", {}).items():
-        if m.get("n", 0) > 0:
+        if (m.get("n") or 0) > 0:
             print(f"  {market:25} n={m['n']:>3}  RMSE={m.get('rmse_projection'):>5}  "
                   f"Brier={m.get('brier'):>6}  bias_corr={m.get('fitted_bias_correction'):>5}  "
                   f"{'TRAINABLE' if m.get('trainable') else 'warmup'}")

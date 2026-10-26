@@ -12,4 +12,7 @@ if __name__ == "__main__":
     p = run(CFG)
     print(f"NCAA MBB: {p['n_games_today']} games")
     for g in p.get("games", [])[:5]:
-        print(f"  {g['matchup']} P(home) = {g['p_home_win']*100:.1f}% fair {g['fair_home_american']:+d}")
+        try:   # display only: one unpriced row must not fail the module
+            print(f"  {g['matchup']} P(home) = {g['p_home_win']*100:.1f}% fair {g['fair_home_american']:+d}")
+        except (TypeError, KeyError, ValueError):
+            print(f"  {g.get('matchup') or g.get('name')} (incomplete row)")

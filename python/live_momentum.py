@@ -53,7 +53,7 @@ def run() -> Dict[str, Any]:
         prev = prev_state.get(pk, {})
         p_prev = prev.get("p_home_win")
         prev_dir = prev.get("last_direction")
-        sustained_n = prev.get("sustained_n", 0)
+        sustained_n = (prev.get("sustained_n") or 0)
         history = prev.get("history", [])
         history.append({"polled_at": polled_at, "p_home_win": round(p_now, 4)})
         history = history[-10:]  # keep last 10 polls

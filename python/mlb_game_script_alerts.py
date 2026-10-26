@@ -98,12 +98,12 @@ def run() -> Dict[str, Any]:
     alerts: List[Dict[str, Any]] = []
     for m in all_matchups:
         signals: Dict[str, int] = {}
-        signals["1ST_INN_RUN_YES"] = 1 if p_first_inn.get(m, 0) >= 0.42 else 0
-        signals["1ST_3_INN_OVER"] = 1 if p_first_3.get(m, 0) >= 0.55 else 0
-        signals["5PLUS_RUNS_GAME"] = 1 if p_5plus.get(m, 0) >= 0.35 else 0
+        signals["1ST_INN_RUN_YES"] = 1 if (p_first_inn.get(m) or 0) >= 0.42 else 0
+        signals["1ST_3_INN_OVER"] = 1 if (p_first_3.get(m) or 0) >= 0.55 else 0
+        signals["5PLUS_RUNS_GAME"] = 1 if (p_5plus.get(m) or 0) >= 0.35 else 0
         signals["GAME_TOTAL_OVER"] = 1 if gt_over.get(m) else 0
         signals["FIRST_5_INN_OVER"] = 1 if first5_over.get(m) else 0
-        signals["RUN_LINE_FAVORED"] = 1 if rl_fav.get(m, 0) >= 0.45 else 0
+        signals["RUN_LINE_FAVORED"] = 1 if (rl_fav.get(m) or 0) >= 0.45 else 0
         signals["EXTRA_INN_UNDER"] = 1 if ei_under.get(m) else 0
 
         n = sum(1 for v in signals.values() if v == 1)
@@ -115,9 +115,9 @@ def run() -> Dict[str, Any]:
             "matchup": m,
             "n_signals": n,
             "signals": signals,
-            "p_1st_inn_run": round(p_first_inn.get(m, 0), 3),
-            "p_5plus_runs": round(p_5plus.get(m, 0), 3),
-            "p_run_line_cover": round(rl_fav.get(m, 0), 3),
+            "p_1st_inn_run": round((p_first_inn.get(m) or 0), 3),
+            "p_5plus_runs": round((p_5plus.get(m) or 0), 3),
+            "p_run_line_cover": round((rl_fav.get(m) or 0), 3),
             "tier": tier,
         })
 

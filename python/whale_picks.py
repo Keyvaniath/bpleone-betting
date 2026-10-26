@@ -77,7 +77,7 @@ def run() -> Dict[str, Any]:
         market = (pick.get("market") or "").lower()
         for (matchup, smarket), s in sharp_signals.items():
             if pm in (matchup or "") and market in (smarket or "").lower():
-                shift = s.get("shift_pp", 0)
+                shift = (s.get("shift_pp") or 0)
                 if shift >= 5:
                     score += 1.5
                     reasons.append(f"Sharp action {s.get('intensity')}: line shifted +{shift}pp our way")
@@ -117,7 +117,7 @@ def run() -> Dict[str, Any]:
 
     tier_counts = {"WHALE": 0, "STRONG": 0, "MODERATE": 0}
     for w in whales:
-        tier_counts[w["tier"]] = tier_counts.get(w["tier"], 0) + 1
+        tier_counts[w["tier"]] = (tier_counts.get(w["tier"]) or 0) + 1
 
     payload = {
         "generated_at": dt.datetime.now().isoformat(timespec="seconds"),

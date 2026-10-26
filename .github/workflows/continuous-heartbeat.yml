@@ -74,6 +74,7 @@ jobs:
       # but its inputs only refreshed 2x/day in the pipeline, so in-season WNBA
       # picks sat ungradeable most of the day. Bounded + non-fatal.
       - name: WNBA box logs (grading inputs for the settle below)
+        id: soft_1
         timeout-minutes: 2
         continue-on-error: true
         working-directory: python
@@ -85,6 +86,7 @@ jobs:
       # World Cup hub stays live through the day: re-price off fresh finals
       # (standings/elo blend) every beat during the tournament.
       - name: World Cup model refresh (in-tournament)
+        id: soft_2
         timeout-minutes: 3
         continue-on-error: true
         working-directory: python
@@ -128,6 +130,7 @@ jobs:
       # NBA/WNBA book edges + CLV: snapshot the DraftKings line every beat so the
       # open->close movement (the sharp's metric) actually accrues through the day.
       - name: NBA/WNBA book-edge + CLV snapshot (free ESPN odds)
+        id: soft_3
         timeout-minutes: 2
         continue-on-error: true
         working-directory: python
@@ -146,6 +149,7 @@ jobs:
       # timestamped snapshot to data/odds_history.json so line-movement / steam and
       # Closing Line Value have real open->close resolution (12 snapshots/day).
       - name: Refresh free ESPN odds + snapshot history
+        id: soft_4
         timeout-minutes: 1
         continue-on-error: true
         working-directory: python
@@ -155,6 +159,7 @@ jobs:
       # games finish, so the daily run owns those; this just re-shrinks against
       # the current book). Cheap: no fetching beyond what espn_odds already did.
       - name: CFB model-vs-book edges (re-price vs refreshed lines)
+        id: soft_5
         timeout-minutes: 2
         continue-on-error: true
         working-directory: python
@@ -193,18 +198,20 @@ jobs:
         env:
           ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
         working-directory: python
-        run: python multi_book_lines.py || true
+        run: python multi_book_lines.py || echo "multi_book_lines.py" >> "$RUNNER_TEMP/failed_steps.txt"
 
       # D1 sync -- push picks history to Cloudflare D1 (Pro plan)
       # Bounded + non-fatal: this network step hangs when the Worker/D1 is
       # unreachable and was eating the whole job budget before the commit ran.
       - name: D1 sync (Cloudflare Pro -- pick history to edge SQL)
+        id: soft_6
         timeout-minutes: 1
         continue-on-error: true
         env:
           EDGESTAT_WORKER_URL: ${{ secrets.EDGESTAT_WORKER_URL }}
+          EDGESTAT_SYNC_TOKEN: ${{ secrets.EDGESTAT_SYNC_TOKEN }}
         working-directory: python
-        run: python d1_sync.py || true
+        run: python d1_sync.py || echo "d1_sync.py" >> "$RUNNER_TEMP/failed_steps.txt"
 
       # POD P&L (idempotent)
       - name: POD P&L tracker
@@ -219,6 +226,7 @@ jobs:
       # Bounded + non-fatal: pings several external APIs and can hang/slow on a
       # dead endpoint; must not be able to starve the commit step below.
       - name: Data source verification (real-time API health)
+        id: soft_7
         timeout-minutes: 1
         continue-on-error: true
         working-directory: python
@@ -232,7 +240,7 @@ jobs:
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
         working-directory: python
-        run: python live_alerter.py || true
+        run: python live_alerter.py || echo "live_alerter.py" >> "$RUNNER_TEMP/failed_steps.txt"
 
       # "The Tape" -- aggregate the strongest active signals (steam / RLM / fresh
       # edges / WC / hoops) into one value-ranked feed. Runs LATE so every source
@@ -305,7 +313,13 @@ jobs:
       # broken module is visible the same day without darkening the rest.
       - name: Failure gate (red run if any module failed)
         if: always()
+        env:
+          # Bounded steps (timeout-minutes + continue-on-error) die before their
+          # `|| echo` can run, so a timeout never reached failed_steps.txt --
+          # D1 sync timed out on every heartbeat for months unseen (2026-10-26).
+          STEPS_JSON: ${{ toJSON(steps) }}
         run: |
+          echo "$STEPS_JSON" | python3 -c 'import json,sys; [print(k+" (step "+v.get("outcome","?")+": timed out or errored)") for k,v in json.load(sys.stdin).items() if k.startswith("soft_") and v.get("outcome") not in ("success","skipped")]' >> "$RUNNER_TEMP/failed_steps.txt" || true
           if [ -s "$RUNNER_TEMP/failed_steps.txt" ]; then
             echo "::error::$(wc -l < "$RUNNER_TEMP/failed_steps.txt") module(s) failed this run:"
             sort -u "$RUNNER_TEMP/failed_steps.txt" | sed 's/^/  - /'

@@ -111,7 +111,7 @@ def run() -> Dict[str, Any]:
         items = data.get(list_key) or []
         for a in items:
             if not isinstance(a, dict): continue
-            n_signals = a.get(signal_field, 0)
+            n_signals = (a.get(signal_field) or 0)
             if n_signals < 5: continue  # only 5+ signal alerts on the elite board
             board.append({
                 "source": source_key,

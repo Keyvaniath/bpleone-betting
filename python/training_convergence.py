@@ -60,7 +60,8 @@ def run() -> Dict[str, Any]:
         deltas = [abs(m["cf_delta"]) for m in moves if m.get("cf_delta") is not None]
         if not deltas:
             results.append({"market": mk, "n_observations": len(moves),
-                             "convergence_score": None, "verdict": "insufficient data"})
+                             "convergence_score": None, "verdict": "insufficient data",
+                             "tier": "INSUFFICIENT", "directional_bias": None})
             continue
         # Use last 7 observations as recent window
         recent_n = min(7, len(deltas))

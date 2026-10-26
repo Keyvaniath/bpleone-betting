@@ -191,8 +191,8 @@ def run() -> Dict[str, Any]:
         if not home_p or not away_p:
             continue
 
-        home_form = form_by_name.get((home_name or "").lower(), 0.0)
-        away_form = form_by_name.get((away_name or "").lower(), 0.0)
+        home_form = (form_by_name.get((home_name or "").lower()) or 0.0)
+        away_form = (form_by_name.get((away_name or "").lower()) or 0.0)
 
         # Pitcher faces opposing team's lineup
         home_proj = _project_pitcher_k(home_p, away_team, lineup_strength, home_form, park_factor)

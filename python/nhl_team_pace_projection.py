@@ -80,7 +80,7 @@ def run() -> Dict[str, Any]:
         # Goal pace
         game_goals = game_sog * LEAGUE_SHOOT_PCT
 
-        line = sog_line.get(m, 0)
+        line = (sog_line.get(m) or 0)
         lean = None
         if line > 0:
             if game_sog >= line + 1.5:

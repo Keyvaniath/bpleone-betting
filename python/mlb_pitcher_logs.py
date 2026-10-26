@@ -95,11 +95,11 @@ def run():
             starts = [s for s in recent if _parse_ip((s.get("stat") or {}).get("inningsPitched", "0")) >= 4]
             if len(starts) < 2: continue
             tot_ip = sum(_parse_ip((s.get("stat") or {}).get("inningsPitched", "0")) for s in starts)
-            tot_so = sum(int((s.get("stat") or {}).get("strikeOuts", 0)) for s in starts)
-            tot_er = sum(int((s.get("stat") or {}).get("earnedRuns", 0)) for s in starts)
-            tot_bb = sum(int((s.get("stat") or {}).get("baseOnBalls", 0)) for s in starts)
-            tot_h = sum(int((s.get("stat") or {}).get("hits", 0)) for s in starts)
-            tot_hr = sum(int((s.get("stat") or {}).get("homeRuns", 0)) for s in starts)
+            tot_so = sum(int(((s.get("stat") or {}).get("strikeOuts") or 0)) for s in starts)
+            tot_er = sum(int(((s.get("stat") or {}).get("earnedRuns") or 0)) for s in starts)
+            tot_bb = sum(int(((s.get("stat") or {}).get("baseOnBalls") or 0)) for s in starts)
+            tot_h = sum(int(((s.get("stat") or {}).get("hits") or 0)) for s in starts)
+            tot_hr = sum(int(((s.get("stat") or {}).get("homeRuns") or 0)) for s in starts)
             n = len(starts)
             avg_ip = tot_ip / n
             avg_k = tot_so / n

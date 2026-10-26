@@ -107,7 +107,7 @@ def run() -> Dict[str, Any]:
 
             era = _safe(pitcher.get("era") or pitcher.get("season", {}).get("era"), 4.20)
             avg_ip = _safe(pitcher.get("avg_ip") or pitcher.get("season", {}).get("avg_ip"), 5.3)
-            form_delta = form_by_name.get((name or "").lower(), 0.0)
+            form_delta = (form_by_name.get((name or "").lower()) or 0.0)
 
             # Base ER expectation
             base_er = era / 9.0 * avg_ip

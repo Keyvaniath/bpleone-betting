@@ -23,6 +23,12 @@ import datetime as dt
 from typing import Any, Dict, List
 
 
+def _nz(v, d):
+    """None-safe default (2026-10-26): `.get(k, d)` only covers a MISSING key;
+    a key stored as None still reaches the arithmetic and crashes."""
+    return d if v is None else v
+
+
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 STATE_PATH = os.path.join(DATA_DIR, "kbo_state.json")
 ELO_PATH = os.path.join(DATA_DIR, "kbo_elo.json")
@@ -105,7 +111,7 @@ def _simulate_game(home_lambda: float, away_lambda: float, n_sims: int) -> Dict[
         home_runs_total += h
         away_runs_total += a
         total = h + a
-        total_dist[total] = total_dist.get(total, 0) + 1
+        total_dist[total] = (total_dist.get(total) or 0) + 1
     p_home_win = home_wins / n_sims
     # Compute fair total via median of total_dist
     sorted_totals = sorted(total_dist.items())
@@ -145,8 +151,8 @@ def run() -> Dict[str, Any]:
             continue
         seen_ids.add(mid)
         h, a = m["home_team"], m["away_team"]
-        elo_h = elo.get(h, 1500)
-        elo_a = elo.get(a, 1500)
+        elo_h = _nz(elo.get(h), 1500)
+        elo_a = _nz(elo.get(a), 1500)
         sh = m.get("home_score") or 0
         sa = m.get("away_score") or 0
         if sh + sa == 0:
@@ -174,8 +180,8 @@ def run() -> Dict[str, Any]:
     preds: List[Dict[str, Any]] = []
     for m in matches:
         h, a = m["home_team"], m["away_team"]
-        elo_h = elo.get(h, 1500)
-        elo_a = elo.get(a, 1500)
+        elo_h = _nz(elo.get(h), 1500)
+        elo_a = _nz(elo.get(a), 1500)
         home_lambda = _expected_runs(elo_h, elo_a, is_home=True)
         away_lambda = _expected_runs(elo_a, elo_h, is_home=False)
 
@@ -185,8 +191,8 @@ def run() -> Dict[str, Any]:
         sp_adjustment = None
         if adj:
             # home SP "runs against" adjustment applies to away_lambda
-            away_lambda += adj.get("home_runs_against_adjustment", 0)
-            home_lambda += adj.get("away_runs_against_adjustment", 0)
+            away_lambda += (adj.get("home_runs_against_adjustment") or 0)
+            home_lambda += (adj.get("away_runs_against_adjustment") or 0)
             away_lambda = max(1.5, away_lambda)
             home_lambda = max(1.5, home_lambda)
             sp_adjustment = adj.get("note")

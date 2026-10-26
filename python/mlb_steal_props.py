@@ -26,6 +26,12 @@ import datetime as dt
 from typing import Any, Dict, List, Optional
 
 
+def _nz(v, d):
+    """None-safe default (2026-10-26): `.get(k, d)` only covers a MISSING key;
+    a key stored as None still reaches the arithmetic and crashes."""
+    return d if v is None else v
+
+
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 OUT = os.path.join(DATA_DIR, "mlb_steal_props.json")
 
@@ -120,7 +126,7 @@ def run() -> Dict[str, Any]:
             pitcher_mult = 1.15 if slow_data.get("tag") == "slow" else (1.05 if slow_data.get("tag") == "moderate" else 1.0)
 
             # Catcher arm modifier
-            opp_catcher_pop = WEAK_ARM_CATCHERS.get(opp_catcher, 1.99)
+            opp_catcher_pop = _nz(WEAK_ARM_CATCHERS.get(opp_catcher), 1.99)
             if opp_catcher_pop >= 2.05: catcher_mult = 1.15
             elif opp_catcher_pop >= 2.00: catcher_mult = 1.05
             elif opp_catcher_pop <= 1.92: catcher_mult = 0.85  # elite arm, runners stay

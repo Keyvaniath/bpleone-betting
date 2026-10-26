@@ -21,6 +21,12 @@ import datetime as dt
 from typing import Any, Dict, List
 
 
+def _nz(v, d):
+    """None-safe default (2026-10-26): `.get(k, d)` only covers a MISSING key;
+    a key stored as None still reaches the arithmetic and crashes."""
+    return d if v is None else v
+
+
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 OUT = os.path.join(DATA_DIR, "nba_double_digit_lead_forecast.json")
 
@@ -82,19 +88,19 @@ def run() -> Dict[str, Any]:
         if not isinstance(r, dict): continue
         if "LOCK" not in (r.get("tier") or ""): continue
         key = f"{r.get('matchup','')}|{(r.get('team','') or '').upper()}"
-        player_locks_by_team[key] = player_locks_by_team.get(key, 0) + 1
+        player_locks_by_team[key] = (player_locks_by_team.get(key) or 0) + 1
 
     forecasts: List[Dict[str, Any]] = []
     for key, e in expl_idx.items():
         matchup, side = (key.split("|", 1) + [""])[:2]
-        n_signals = e.get("n_positive_signals", 0)
+        n_signals = (e.get("n_positive_signals") or 0)
         if n_signals < 4: continue
 
         team_data = team_idx.get(key, {})
         team_tier = team_data.get("tier") or ""
 
-        pace_val = pace_by_matchup.get(matchup, 100.0)
-        n_locks = player_locks_by_team.get(f"{matchup}|{(e.get('team','') or '').upper()}", 0)
+        pace_val = _nz(pace_by_matchup.get(matchup), 100.0)
+        n_locks = (player_locks_by_team.get(f"{matchup}|{(e.get('team','') or '').upper()}") or 0)
 
         signals: Dict[str, int] = {}
         signals["EXPLOSION_5PLUS"] = 1 if n_signals >= 5 else 0

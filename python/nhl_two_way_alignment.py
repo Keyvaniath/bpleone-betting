@@ -66,7 +66,7 @@ def run() -> Dict[str, Any]:
         skater_ceils = skater_ceils_by_matchup.get(matchup, [])
 
         elite_goalies = [g for g in goalies if g.get("tier") == "DOMINANCE_ELITE"
-                         or g.get("n_positive_signals", 0) >= 5]
+                         or (g.get("n_positive_signals") or 0) >= 5]
         if not elite_goalies: continue
 
         for eg in elite_goalies:
@@ -74,7 +74,7 @@ def run() -> Dict[str, Any]:
             # Side B = NOT goalie_team
             side_b_explosions = [e for e in explosions
                                  if (e.get("team") or "").upper() != goalie_team
-                                 and e.get("n_positive_signals", 0) >= 5]
+                                 and (e.get("n_positive_signals") or 0) >= 5]
             if not side_b_explosions: continue
 
             for sb in side_b_explosions:
@@ -82,7 +82,7 @@ def run() -> Dict[str, Any]:
                 # Opposing-team skater LOCK
                 opp_skaters = [s for s in skater_ceils
                                if (s.get("team") or "").upper() == opp_team
-                               and s.get("n_aligned_overs", 0) >= 4]
+                               and (s.get("n_aligned_overs") or 0) >= 4]
 
                 alignments.append({
                     "matchup": matchup,

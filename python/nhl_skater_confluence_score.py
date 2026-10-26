@@ -80,7 +80,7 @@ def run() -> Dict[str, Any]:
     for name in all_skaters:
         c = ceiling_idx.get(name, {})
         m = matchup_idx.get(name, {})
-        p_atg = atg_idx.get(name, 0)
+        p_atg = (atg_idx.get(name) or 0)
         sr = sog_idx.get(name, {})
         pr = pts_idx.get(name, {})
 

@@ -56,7 +56,7 @@ def run() -> Dict[str, Any]:
             t = r.get("tournament", "?")
             p_lead = r.get("p_leader") or r.get("p_top1") or 0
             existing = leader_pick.get(t)
-            if not existing or p_lead > existing.get("p_leader", 0):
+            if not existing or p_lead > (existing.get("p_leader") or 0):
                 leader_pick[t] = {"player": r.get("player"), "p_leader": p_lead}
 
     # Top contenders by composite_score per tournament
@@ -99,7 +99,7 @@ def run() -> Dict[str, Any]:
         for s in strong[:3]:
             angle.append(f"{s.get('player')} top 10 finish")
         if lead.get("player"):
-            angle.append(f"{lead.get('player')} outright winner (p={round(lead.get('p_leader', 0), 3)})")
+            angle.append(f"{lead.get('player')} outright winner (p={round((lead.get('p_leader') or 0), 3)})")
         for f in fades[:3]:
             angle.append(f"FADE {f.get('player')} miss cut YES")
 
@@ -112,7 +112,7 @@ def run() -> Dict[str, Any]:
             "n_players_total": len(players),
             "top_contender": contenders[0].get("player") if contenders else None,
             "leader_pick": lead.get("player"),
-            "leader_pick_p": round(lead.get("p_leader", 0), 3),
+            "leader_pick_p": round((lead.get("p_leader") or 0), 3),
             "top_5_contenders": [
                 {"player": p.get("player"), "tier": p.get("tier"),
                  "score": p.get("composite_score")}
@@ -123,7 +123,7 @@ def run() -> Dict[str, Any]:
 
     tier_order = {"TOURNAMENT_LOCK": 4, "TOURNAMENT_STRONG": 3,
                   "TOURNAMENT_LEAN": 2, "TOURNAMENT_PASS": 1}
-    previews.sort(key=lambda p: -tier_order.get(p["tier"], 0))
+    previews.sort(key=lambda p: -(tier_order.get(p["tier"]) or 0))
 
     out = {
         "generated_at": dt.datetime.utcnow().isoformat(timespec="seconds"),

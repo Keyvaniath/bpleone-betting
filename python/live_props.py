@@ -123,8 +123,8 @@ def _game_state_str(ls: Dict[str, Any]) -> str:
         return ""
     cur = ls.get("currentInning")
     half = ls.get("inningHalf", "")
-    away_r = (ls.get("teams") or {}).get("away", {}).get("runs", 0)
-    home_r = (ls.get("teams") or {}).get("home", {}).get("runs", 0)
+    away_r = ((ls.get("teams") or {}).get("away", {}).get("runs") or 0)
+    home_r = ((ls.get("teams") or {}).get("home", {}).get("runs") or 0)
     outs = ls.get("outs")
     if cur is None:
         return ""

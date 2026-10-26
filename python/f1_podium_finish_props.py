@@ -23,6 +23,12 @@ import datetime as dt
 from typing import Any, Dict, List, Optional
 
 
+def _nz(v, d):
+    """None-safe default (2026-10-26): `.get(k, d)` only covers a MISSING key;
+    a key stored as None still reaches the arithmetic and crashes."""
+    return d if v is None else v
+
+
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 OUT = os.path.join(DATA_DIR, "f1_podium_finish_props.json")
 
@@ -78,7 +84,7 @@ def run() -> Dict[str, Any]:
             elif quali_pos <= 12: p_top5 = 0.12
             else: p_top5 = 0.04
 
-        pace_factor = track_adj.get(name.lower(), 1.0)
+        pace_factor = _nz(track_adj.get(name.lower()), 1.0)
         # ~65% of top-5 qualifiers convert to podium, adjusted by track-pace
         p_podium = p_top5 * 0.65 * pace_factor
         p_podium = max(0.005, min(0.85, p_podium))

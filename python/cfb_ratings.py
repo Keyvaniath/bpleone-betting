@@ -412,13 +412,13 @@ def run() -> Dict[str, Any]:
     played: Dict[str, int] = {}
     for g in cur_games:
         for side in ("home", "away"):
-            played[_key(g, side)] = played.get(_key(g, side), 0) + 1
+            played[_key(g, side)] = (played.get(_key(g, side)) or 0) + 1
 
     rows = []
     for team, rating in ratings.items():
         if team == FCS_KEY:
             continue
-        gp = played.get(team, 0)
+        gp = (played.get(team) or 0)
         rows.append({
             "team": team,
             "rating": round(rating, 1),

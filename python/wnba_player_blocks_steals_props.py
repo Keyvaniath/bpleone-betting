@@ -21,6 +21,12 @@ from typing import Any, Dict, List, Optional
 from wnba_scoring_env import game_env_factor
 
 
+def _nz(v, d):
+    """None-safe default (2026-10-26): `.get(k, d)` only covers a MISSING key;
+    a key stored as None still reaches the arithmetic and crashes."""
+    return d if v is None else v
+
+
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 OUT = os.path.join(DATA_DIR, "wnba_player_blocks_steals_props.json")
 
@@ -141,8 +147,8 @@ def run() -> Dict[str, Any]:
 
         home_pace = TEAM_PACE.get(home, LEAGUE_PACE)
         away_pace = TEAM_PACE.get(away, LEAGUE_PACE)
-        home_opps = TEAM_DEFENSIVE_OPPS.get(home, 1.0)
-        away_opps = TEAM_DEFENSIVE_OPPS.get(away, 1.0)
+        home_opps = _nz(TEAM_DEFENSIVE_OPPS.get(home), 1.0)
+        away_opps = _nz(TEAM_DEFENSIVE_OPPS.get(away), 1.0)
         game_pace = (home_pace + away_pace) / 2
         pace_factor = game_pace / LEAGUE_PACE
         env, _env = game_env_factor(g.get("home_team") or "", g.get("away_team") or "")

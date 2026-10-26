@@ -25,6 +25,12 @@ from typing import Any, Dict, List, Optional
 import stats_repo as sr
 
 
+def _nz(v, d):
+    """None-safe default (2026-10-26): `.get(k, d)` only covers a MISSING key;
+    a key stored as None still reaches the arithmetic and crashes."""
+    return d if v is None else v
+
+
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 OUT_PATH = os.path.join(DATA_DIR, "lineup_quality.json")
 
@@ -47,7 +53,7 @@ def score_lineup(lineup: List[Dict[str, Any]]) -> Dict[str, Any]:
     season_proxy_pa = 0.0    # fallback if no statcast
     details = []
     for b in lineup:
-        pa = PA_BY_ORDER.get(b.get("order"), 4.2)
+        pa = _nz(PA_BY_ORDER.get(b.get("order")), 4.2)
         total_pa += pa
         pid = b.get("id")
         b_stats = sc.batter_stats(pid) if sc and pid else {}

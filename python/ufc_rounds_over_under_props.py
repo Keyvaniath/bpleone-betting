@@ -128,7 +128,7 @@ def run() -> Dict[str, Any]:
             "all_edges": edges,
         })
 
-    rows.sort(key=lambda r: -(r.get("best_edge") or {}).get("p", 0))
+    rows.sort(key=lambda r: -((r.get("best_edge") or {}).get("p") or 0))
     strong = [r for r in rows if r["edge_class"] == "STRONG"]
 
     out = {

@@ -201,7 +201,7 @@ def run() -> Dict[str, Any]:
                 if not athlete_id: continue
                 split = _fetch_split(athlete_id, vs_code, season)
                 n_fetched += 1
-                if not split or split.get("pa", 0) < MIN_SPLIT_PA: continue
+                if not split or (split.get("pa") or 0) < MIN_SPLIT_PA: continue
 
                 hit_shift, hr_shift = _split_shift(split, season_ops_est)
                 adj_hit_p = _sigmoid(_logit(base_hit_p) + hit_shift)
@@ -223,7 +223,7 @@ def run() -> Dict[str, Any]:
                     "split_avg": split.get("avg"),
                     "split_hr": split.get("hr"),
                     "season_ops_estimate": round(season_ops_est, 3),
-                    "ops_delta_in_split": round(split.get("ops", 0) - season_ops_est, 3),
+                    "ops_delta_in_split": round((split.get("ops") or 0) - season_ops_est, 3),
                     "hit_logodds_shift": round(hit_shift, 3),
                     "hr_logodds_shift": round(hr_shift, 3),
                     "base_p_1_plus_hit": round(base_hit_p, 4),

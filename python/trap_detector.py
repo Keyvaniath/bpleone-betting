@@ -91,7 +91,7 @@ def run() -> Dict[str, Any]:
 
         bdp = bd.get(str(pid)) or {}
         acc = bdp.get("model_accuracy") or {}
-        n_props = acc.get("n_props", 0)
+        n_props = (acc.get("n_props") or 0)
 
         # 3. THIN N + LARGE EDGE
         if edge >= 8 and n_props < 10:
@@ -129,7 +129,7 @@ def run() -> Dict[str, Any]:
 
         # 8. BvP red flag (career H2H vs tonight's SP)
         bvp = tonight.get("bvp_career") or {}
-        ab = bvp.get("ab", 0)
+        ab = (bvp.get("ab") or 0)
         if ab >= 10 and bvp.get("ops") is not None:
             if play == "OVER" and bvp["ops"] < 0.500:
                 flags.append(f"Pitcher owns this batter career: {bvp.get('hits',0)}-for-{ab}, {bvp['ops']:.3f} OPS")

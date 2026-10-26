@@ -20,6 +20,12 @@ import time
 import datetime as dt
 from typing import Any, Dict, Optional
 
+
+def _nz(v, d):
+    """None-safe default (2026-10-26): `.get(k, d)` only covers a MISSING key;
+    a key stored as None still reaches the arithmetic and crashes."""
+    return d if v is None else v
+
 try:
     import requests
 except ImportError:
@@ -109,7 +115,7 @@ def get_home_plate_umpire(game_pk: int) -> Dict[str, Any]:
 
 def k_multiplier(game_pk: int) -> float:
     u = get_home_plate_umpire(game_pk)
-    return float(u.get("k_mult", 1.0))
+    return float(_nz(u.get("k_mult"), 1.0))
 
 
 if __name__ == "__main__":

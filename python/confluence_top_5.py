@@ -28,6 +28,12 @@ from typing import Any, Dict, List, Optional
 from collections import defaultdict
 
 
+def _nz(v, d):
+    """None-safe default (2026-10-26): `.get(k, d)` only covers a MISSING key;
+    a key stored as None still reaches the arithmetic and crashes."""
+    return d if v is None else v
+
+
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 OUT = os.path.join(DATA_DIR, "confluence_top_5.json")
 
@@ -114,7 +120,7 @@ def run() -> Dict[str, Any]:
         probs = [_safe(m.get("prob"), 0) for m in members if m.get("prob")]
         avg_prob = sum(probs) / len(probs) if probs else 0
         # Grade-weighted confluence score
-        grade_weight_sum = sum(GRADE_MULT.get(grades.get(s), 1.0) for s in unique_sources)
+        grade_weight_sum = sum(_nz(GRADE_MULT.get(grades.get(s)), 1.0) for s in unique_sources)
         confluence_score = len(unique_sources) * grade_weight_sum * (0.5 + avg_prob)
 
         sample = members[0]

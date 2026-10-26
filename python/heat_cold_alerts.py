@@ -24,6 +24,17 @@ import datetime as dt
 from typing import Any, Dict, List
 
 
+def _fmtv(v, spec, dflt="?"):
+    """Display-safe format (2026-10-26): `{x.get(k):spec}` crashes when the
+    value is None; a label or print must never fail the module."""
+    if v is None:
+        return str(dflt)
+    try:
+        return format(v, spec)
+    except (TypeError, ValueError):
+        return str(v)
+
+
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 OUT_PATH = os.path.join(DATA_DIR, "heat_cold_alerts.json")
 TEAM_SPORTS = ["nba", "nhl", "wnba", "mls", "epl", "cws"]
@@ -45,9 +56,9 @@ def run() -> Dict[str, Any]:
         teams = (tf.get("teams") or {})
         for name, t in teams.items():
             l10 = t.get("L10", {})
-            wpct = l10.get("win_pct", 0)
+            wpct = (l10.get("win_pct") or 0)
             streak = t.get("current_streak", "")
-            over_pct = t.get("over_pct", 0)
+            over_pct = (t.get("over_pct") or 0)
             if wpct >= 0.75 and streak.startswith("W") and int(streak[1:] or 0) >= 3:
                 alerts.append({"type": "TEAM_HOT", "sport": sport, "team": name,
                                 "detail": f"L10 {l10.get('record')} ({wpct*100:.0f}%), streak {streak}"})
@@ -57,7 +68,7 @@ def run() -> Dict[str, Any]:
             if over_pct >= 0.65:
                 alerts.append({"type": "TEAM_HIGH_OVER", "sport": sport, "team": name,
                                 "detail": f"L10 over% {over_pct*100:.0f}%"})
-            if over_pct <= 0.35 and l10.get("n", 0) >= 5:
+            if over_pct <= 0.35 and (l10.get("n") or 0) >= 5:
                 alerts.append({"type": "TEAM_LOW_OVER", "sport": sport, "team": name,
                                 "detail": f"L10 over% {over_pct*100:.0f}%"})
 
@@ -68,19 +79,19 @@ def run() -> Dict[str, Any]:
                 "type": "PLAYER_HEATING_UP", "sport": sport,
                 "player": p["name"], "team": p.get("team_abbr"),
                 "detail": f"L5 {p.get('pts_l5')} vs L20 {p.get('pts_l20')} "
-                           f"({p.get('pts_delta_pct'):+.0f}%)"
+                           f"({_fmtv(p.get('pts_delta_pct'), '+.0f')}%)"
             })
         for p in (pt.get("cooling_down_top10") or []):
             alerts.append({
                 "type": "PLAYER_COOLING_DOWN", "sport": sport,
                 "player": p["name"], "team": p.get("team_abbr"),
                 "detail": f"L5 {p.get('pts_l5')} vs L20 {p.get('pts_l20')} "
-                           f"({p.get('pts_delta_pct'):+.0f}%)"
+                           f"({_fmtv(p.get('pts_delta_pct'), '+.0f')}%)"
             })
 
     by_type = {}
     for a in alerts:
-        by_type[a["type"]] = by_type.get(a["type"], 0) + 1
+        by_type[a["type"]] = (by_type.get(a["type"]) or 0) + 1
 
     payload = {
         "generated_at": dt.datetime.now().isoformat(timespec="seconds"),

@@ -325,9 +325,12 @@ if __name__ == "__main__":
         print(f"  Estimated cut line: {p['cut_line_estimated']}")
         print(f"\n  Top 5 favorites:")
         for fav in p["top_10_favorites"][:5]:
-            print(f"    #{fav['current_pos']:3} {fav['name'][:25]:25s} ({fav['current_to_par']:+d}) "
-                  f"proj final {fav['projected_final_to_par']:+.1f} "
-                  f"P(win)={fav['p_win']*100:.1f}% fair_win {fav.get('fair_win_american','?')}")
+            try:   # display only: one unpriced row must not fail the module
+                print(f"    #{fav['current_pos']:3} {fav['name'][:25]:25s} ({fav['current_to_par']:+d}) "
+                      f"proj final {fav['projected_final_to_par']:+.1f} "
+                      f"P(win)={fav['p_win']*100:.1f}% fair_win {fav.get('fair_win_american','?')}")
+            except (TypeError, KeyError, ValueError):
+                print(f"  {fav.get('matchup') or fav.get('name')} (incomplete row)")
         if p.get("longshots_top_10"):
             print(f"\n  Top 3 long-shots for top-10:")
             for ls in p["longshots_top_10"][:3]:

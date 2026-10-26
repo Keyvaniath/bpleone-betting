@@ -58,19 +58,19 @@ def run() -> Dict[str, Any]:
                 "event": event_name,
                 "tier": tier,
                 "is_lock": tier == lock_tier,
-                "n_lock_signals": (ev.get("n_pitcher_locks", 0) +
-                                   ev.get("n_team_locks", 0) +
-                                   ev.get("n_goalie_locks", 0) +
-                                   ev.get("n_skater_locks", 0) +
-                                   ev.get("n_player_locks", 0) +
-                                   ev.get("n_locks", 0)),
+                "n_lock_signals": ((ev.get("n_pitcher_locks") or 0) +
+                                   (ev.get("n_team_locks") or 0) +
+                                   (ev.get("n_goalie_locks") or 0) +
+                                   (ev.get("n_skater_locks") or 0) +
+                                   (ev.get("n_player_locks") or 0) +
+                                   (ev.get("n_locks") or 0)),
                 "recommended_angles": ev.get("recommended_angles") or [],
             })
-            by_sport[sport] = by_sport.get(sport, 0) + 1
-            by_tier[tier] = by_tier.get(tier, 0) + 1
+            by_sport[sport] = (by_sport.get(sport) or 0) + 1
+            by_tier[tier] = (by_tier.get(tier) or 0) + 1
 
     # Sort: LOCKs first, then by lock signal density
-    events.sort(key=lambda e: (not e["is_lock"], -e.get("n_lock_signals", 0)))
+    events.sort(key=lambda e: (not e["is_lock"], -(e.get("n_lock_signals") or 0)))
 
     out = {
         "generated_at": dt.datetime.utcnow().isoformat(timespec="seconds"),

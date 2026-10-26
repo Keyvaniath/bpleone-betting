@@ -84,7 +84,7 @@ def run() -> Dict[str, Any]:
         h_trend = heat_idx.get(name, "")
         p = pts_idx.get(name, {})
         d = dd_idx.get(name, {})
-        p_20 = pts20_idx.get(name, 0)
+        p_20 = (pts20_idx.get(name) or 0)
 
         ceiling_overs = int(c.get("n_aligned_overs", 0) or 0)
         pts_edge_pp = _safe(p.get("edge_pp") or p.get("edge")) * 100

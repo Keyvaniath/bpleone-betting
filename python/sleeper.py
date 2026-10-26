@@ -141,7 +141,7 @@ def build_payload() -> Dict[str, Any]:
             "market": market,
             "sleeper_line": p.get("line"),
             "dk_line": dk.get("line") if dk else None,
-            "delta": (p.get("line", 0) - dk.get("line", 0)) if dk and p.get("line") is not None else None,
+            "delta": ((p.get("line") or 0) - (dk.get("line") or 0)) if dk and p.get("line") is not None else None,
             "over_payout": p.get("over_payout"),
             "under_payout": p.get("under_payout"),
         })

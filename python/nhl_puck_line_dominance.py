@@ -116,7 +116,7 @@ def run() -> Dict[str, Any]:
         signals["GOALIE_LOCK_OR_STRONG"] = 1
         signals["OPP_TT_UNDER"] = 1 if tt_under_idx.get(f"{matchup}|{opp_side}") else 0
 
-        pl_p = pl_idx.get(key, 0)
+        pl_p = (pl_idx.get(key) or 0)
         signals["PL_COVER_LIVE"] = 1 if pl_p >= 0.42 else 0
 
         team_data = team_idx.get(f"{matchup}|{side}", {})

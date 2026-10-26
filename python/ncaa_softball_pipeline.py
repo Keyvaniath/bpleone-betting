@@ -26,4 +26,7 @@ if __name__ == "__main__":
     p = run(CFG)
     print(f"NCAA Softball: {p['n_games_today']} games")
     for g in p.get("games", [])[:8]:
-        print(f"  {g.get('matchup','?')[:50]:50s} | p_home={_fmtv(g.get('p_home_win'), '.3f', 0)}")
+        try:   # display only: one unpriced row must not fail the module
+            print(f"  {g.get('matchup','?')[:50]:50s} | p_home={_fmtv(g.get('p_home_win'), '.3f', 0)}")
+        except (TypeError, KeyError, ValueError):
+            print(f"  {g.get('matchup') or g.get('name')} (incomplete row)")

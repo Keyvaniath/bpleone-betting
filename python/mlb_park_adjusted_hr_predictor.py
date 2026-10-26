@@ -18,6 +18,12 @@ import datetime as dt
 from typing import Any, Dict, List
 
 
+def _nz(v, d):
+    """None-safe default (2026-10-26): `.get(k, d)` only covers a MISSING key;
+    a key stored as None still reaches the arithmetic and crashes."""
+    return d if v is None else v
+
+
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 OUT = os.path.join(DATA_DIR, "mlb_park_adjusted_hr_predictor.json")
 
@@ -64,7 +70,7 @@ def run() -> Dict[str, Any]:
             p_hr = _safe(r.get("p_hr") or r.get("p"))
             if p_hr <= 0: continue
             matchup = r.get("matchup") or ""
-            park_factor = park_factor_by_matchup.get(matchup, 1.0)
+            park_factor = _nz(park_factor_by_matchup.get(matchup), 1.0)
             park_tier = park_tier_by_matchup.get(matchup, "")
 
             adj_p = p_hr * park_factor

@@ -59,7 +59,7 @@ def run() -> Dict[str, Any]:
         lines.append(f"- {mh.get('interpretation','?')}")
         comps = mh.get("components") or {}
         for name, c in comps.items():
-            score = c.get("score", 0)
+            score = (c.get("score") or 0)
             indicator = "🟢" if score >= 80 else "🟡" if score >= 60 else "🔴"
             lines.append(f"  - {indicator} {name.replace('_',' ').title()}: {score}/100")
         lines.append("")
@@ -91,7 +91,7 @@ def run() -> Dict[str, Any]:
         lines.append("## 🐋 Whale Picks (Max Confluence)")
         for w in top_whales:
             lines.append(f"- [{w['tier']}] **[{w.get('sport')}]** {w.get('player_or_matchup')} "
-                          f"{w.get('market')} -- {w.get('prob',0)*100:.0f}% / +{_fmtv(w.get('edge_pct'), '.1f', 0)}% "
+                          f"{w.get('market')} -- {(w.get('prob') or 0)*100:.0f}% / +{_fmtv(w.get('edge_pct'), '.1f', 0)}% "
                           f"(score {_fmtv(w.get('confluence_score'), '.1f', 0)})")
         lines.append("")
 
@@ -118,11 +118,11 @@ def run() -> Dict[str, Any]:
     # Locks of the Day -- Brandon's track record + today's locks
     locks = _load(os.path.join(DATA_DIR, "locks_history.json"))
     if locks:
-        total = locks.get("total_locks", 0)
-        wins = locks.get("wins", 0)
-        losses = locks.get("losses", 0)
+        total = (locks.get("total_locks") or 0)
+        wins = (locks.get("wins") or 0)
+        losses = (locks.get("losses") or 0)
         hit_rate = locks.get("hit_rate")
-        net = locks.get("net_units", 0)
+        net = (locks.get("net_units") or 0)
         roi = locks.get("roi_pct")
         l7 = locks.get("last_7_days") or {}
         lines.append("## 🔒 Locks of the Day -- Track Record")
@@ -136,7 +136,7 @@ def run() -> Dict[str, Any]:
         if todays:
             lines.append(f"\n**Today's {len(todays)} Locks:**")
             for L in todays:
-                lines.append(f"- [{L.get('sport','?')}] **{L.get('player_or_matchup','?')[:30]}** {L.get('market','?')[:30]} · p={L.get('prob',0)*100:.0f}% edge=+{_fmtv(L.get('edge_pct'), '.1f', 0)}% qK={_fmtv(L.get('unit_size_quarter_kelly'), '.3f', 0)}u")
+                lines.append(f"- [{L.get('sport','?')}] **{L.get('player_or_matchup','?')[:30]}** {L.get('market','?')[:30]} · p={(L.get('prob') or 0)*100:.0f}% edge=+{_fmtv(L.get('edge_pct'), '.1f', 0)}% qK={_fmtv(L.get('unit_size_quarter_kelly'), '.3f', 0)}u")
         lines.append("")
 
     # Cross-sport parlay recommendations
@@ -156,7 +156,7 @@ def run() -> Dict[str, Any]:
     if top5_players:
         lines.append("## 🎮 Player Play of the Day (cross-sport)")
         for p in top5_players[:5]:
-            lines.append(f"- **[{p.get('sport','?')}]** {p.get('label','')} | {p.get('confidence','MED')} conviction · model {p.get('prob',0)*100:.1f}% fair {p.get('fair_american','?')}")
+            lines.append(f"- **[{p.get('sport','?')}]** {p.get('label','')} | {p.get('confidence','MED')} conviction · model {(p.get('prob') or 0)*100:.1f}% fair {p.get('fair_american','?')}")
         lines.append("")
 
     # Pre-game alerts (HIGH conviction)
@@ -221,7 +221,7 @@ def run() -> Dict[str, Any]:
 
     # NBA player heat (L5 vs season splits)
     nh = _load(os.path.join(DATA_DIR, "nba_player_heat.json"))
-    if nh.get("n_hot", 0) > 0 or nh.get("n_cold", 0) > 0:
+    if (nh.get("n_hot") or 0) > 0 or (nh.get("n_cold") or 0) > 0:
         lines.append(f"## 🏀 NBA Player Heat ({nh.get('n_hot',0)} HOT / {nh.get('n_cold',0)} COLD)")
         for a in (nh.get("hot_players") or [])[:5]:
             sig = ", ".join(a.get("signals") or [])
@@ -233,7 +233,7 @@ def run() -> Dict[str, Any]:
 
     # UFC fight matchup
     uf = _load(os.path.join(DATA_DIR, "ufc_matchup.json"))
-    if uf.get("n_fights", 0) > 0:
+    if (uf.get("n_fights") or 0) > 0:
         lines.append(f"## 🥊 UFC Fight Matchups ({uf.get('next_event','?')})")
         for f in (uf.get("fights") or [])[:5]:
             lines.append(f"  - [{f['tier']}] **{f['favorite']}** ({f.get('record_a' if f['favorite']==f['fighter_a'] else 'record_b')}) vs {f['underdog']} -- fair {f['fair_favorite_american']:+d}")
@@ -241,7 +241,7 @@ def run() -> Dict[str, Any]:
 
     # Golf player heat
     gh = _load(os.path.join(DATA_DIR, "golf_player_heat.json"))
-    if gh.get("n_hot", 0) > 0:
+    if (gh.get("n_hot") or 0) > 0:
         lines.append(f"## ⛳ Golf Player Heat (from {gh.get('source_tournament','last event')})")
         for a in (gh.get("hot_players") or [])[:5]:
             sig = " · ".join(a.get("signals") or [])
@@ -253,7 +253,7 @@ def run() -> Dict[str, Any]:
 
     # MLB batter heat (L14 vs season splits)
     bh = _load(os.path.join(DATA_DIR, "mlb_batter_heat.json"))
-    if bh.get("n_hot", 0) > 0 or bh.get("n_cold", 0) > 0:
+    if (bh.get("n_hot") or 0) > 0 or (bh.get("n_cold") or 0) > 0:
         lines.append(f"## 🔥 MLB Batter Heat ({bh.get('n_hot',0)} HOT / {bh.get('n_cold',0)} COLD)")
         for a in (bh.get("hot_batters") or [])[:5]:
             lines.append(f"  - 🔥 **{a['name']}** ({a['team']}): L14 .{a['l14_avg']*1000:03.0f} / season .{a['season_avg']*1000:03.0f} (+{a['delta_pp']:.0f}pts)")
@@ -263,7 +263,7 @@ def run() -> Dict[str, Any]:
 
     # B2B fatigue alerts
     b2b = _load(os.path.join(DATA_DIR, "b2b_fatigue.json"))
-    if b2b.get("n_fatigued_games_today", 0) > 0:
+    if (b2b.get("n_fatigued_games_today") or 0) > 0:
         lines.append(f"## 😴 B2B Fatigue Edges ({b2b['n_fatigued_games_today']})")
         for sport, alerts in (b2b.get("by_sport") or {}).items():
             for a in (alerts or [])[:3]:
@@ -273,7 +273,7 @@ def run() -> Dict[str, Any]:
 
     # Streak regression
     sr = _load(os.path.join(DATA_DIR, "streak_regression.json"))
-    if sr.get("n_alerts", 0) > 0:
+    if (sr.get("n_alerts") or 0) > 0:
         lines.append(f"## 📈 Streak Regression Alerts ({sr['n_alerts']})")
         for a in sr.get("alerts", [])[:5]:
             lines.append(f"- [{a['sport']}] {a['team']} on {a['streak']} L10 {a.get('l10','?')} -- {a.get('recommendation','')[:80]}")
@@ -289,9 +289,9 @@ def run() -> Dict[str, Any]:
         lines.append(f"## 📉 Walk-Forward Trajectory (n_windows={wf.get('window_days',3)}d × {len(wf.get('by_market',{}))} markets)")
         lines.append(f"- 📈 Improving: **{n_imp}** · ➖ Flat: {n_flat} · 📉 Degrading: **{n_deg}**")
         for m in s.get("improving", [])[:3]:
-            lines.append(f"  - ✅ {m['market']} (Brier Δ {m['brier_delta']:+.4f})")
+            lines.append(f"  - ✅ {m['market']} (Brier Δ {_fmtv(m.get('brier_delta'), '+.4f')})")
         for m in s.get("degrading", [])[:3]:
-            lines.append(f"  - ⚠️ {m['market']} (Brier Δ {m['brier_delta']:+.4f})")
+            lines.append(f"  - ⚠️ {m['market']} (Brier Δ {_fmtv(m.get('brier_delta'), '+.4f')})")
         lines.append("")
 
     # Training convergence (per-market learning trajectory)
@@ -312,7 +312,7 @@ def run() -> Dict[str, Any]:
     if st.get("by_sport"):
         lines.append(f"## 🤖 Self-Training Status")
         for sport, info in st["by_sport"].items():
-            n = info.get("n_games", 0)
+            n = (info.get("n_games") or 0)
             hr = info.get("hit_rate")
             bias = info.get("bias")
             applied = info.get("recommendation_applied")

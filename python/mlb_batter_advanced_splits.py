@@ -160,12 +160,12 @@ def run(max_batters: int = 60) -> Dict[str, Any]:
         if not splits: continue
         # Headline: RISP edge vs season
         risp = splits.get("risp", {})
-        if risp.get("pa", 0) >= 20:
+        if (risp.get("pa") or 0) >= 20:
             risp_delta = risp["slg_shrunk"] - priors["slg"]
         else:
             risp_delta = None
         late = splits.get("late_close", {})
-        late_delta = (late.get("avg_shrunk", 0) - priors["avg"]) if late.get("pa", 0) >= 12 else None
+        late_delta = ((late.get("avg_shrunk") or 0) - priors["avg"]) if (late.get("pa") or 0) >= 12 else None
         rows.append({
             "name": b.get("name") or b.get("fullName"),
             "id": b.get("id") or b.get("mlb_id"),
@@ -180,13 +180,13 @@ def run(max_batters: int = 60) -> Dict[str, Any]:
 
     # Top RISP performers (positive delta, big sample)
     risp_movers = sorted(
-        [r for r in rows if r.get("risp_slg_delta") is not None and r.get("risp_pa", 0) >= 25],
+        [r for r in rows if r.get("risp_slg_delta") is not None and (r.get("risp_pa") or 0) >= 25],
         key=lambda r: -(r["risp_slg_delta"] or 0)
     )[:15]
 
     # Top late-close clutch
     clutch = sorted(
-        [r for r in rows if r.get("late_close_avg_delta") is not None and r.get("late_close_pa", 0) >= 15],
+        [r for r in rows if r.get("late_close_avg_delta") is not None and (r.get("late_close_pa") or 0) >= 15],
         key=lambda r: -(r["late_close_avg_delta"] or 0)
     )[:15]
 

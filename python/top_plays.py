@@ -140,7 +140,7 @@ def collect_top_plays(n: int = 12) -> Dict[str, Any]:
             "dk_line": p.get("dk_line"),
             "delta": p.get("delta"),
             "model_prob": best_prob,
-            "quality_score": _quality_score(best_prob, p.get("pp_advantage", 0) * 5),
+            "quality_score": _quality_score(best_prob, (p.get("pp_advantage") or 0) * 5),
         })
 
     plays.sort(key=lambda p: p.get("quality_score", 0), reverse=True)

@@ -10,6 +10,9 @@ CFG = {
 }
 if __name__ == "__main__":
     p = run(CFG)
-    print(f"NCAA Football: {p['n_games_today']} games ({p['season_status']})")
+    print(f"NCAA Football: {p.get('n_games_today', 0)} games ({p.get('season_status', '?')})")
     for g in p.get("games", [])[:10]:
-        print(f"  {g['matchup']} P(home) = {g['p_home_win']*100:.1f}% fair {g['fair_home_american']:+d}/{g['fair_away_american']:+d}")
+        try:   # display only: one unpriced row must not fail the module
+            print(f"  {g['matchup']} P(home) = {g['p_home_win']*100:.1f}% fair {g['fair_home_american']:+d}/{g['fair_away_american']:+d}")
+        except (TypeError, KeyError, ValueError):
+            print(f"  {g.get('matchup') or g.get('name')} (incomplete row)")

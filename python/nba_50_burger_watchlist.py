@@ -76,10 +76,10 @@ def run() -> Dict[str, Any]:
         if score < 9: continue
 
         name = _norm(r.get("player") or "")
-        p_30 = pts30_idx.get(name, 0)
+        p_30 = (pts30_idx.get(name) or 0)
         if p_30 < 0.50: continue
 
-        proj_min = min_idx.get(name, 0)
+        proj_min = (min_idx.get(name) or 0)
         if proj_min < 36: continue
 
         pts_data = pts_idx.get(name, {})

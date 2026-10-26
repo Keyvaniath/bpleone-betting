@@ -25,6 +25,12 @@ from typing import Any, Dict, List, Optional
 from mlb_model import project_game, GameInput, TeamFactor, PitcherFactor, GameContext
 
 
+def _nz(v, d):
+    """None-safe default (2026-10-26): `.get(k, d)` only covers a MISSING key;
+    a key stored as None still reaches the arithmetic and crashes."""
+    return d if v is None else v
+
+
 OUT_PATH = os.path.join(os.path.dirname(__file__), "..", "data", "today.json")
 
 # MLB full team name → 3-letter code used across the model and front-end.
@@ -101,7 +107,7 @@ def run_pipeline(games: List[Dict[str, Any]]) -> Dict[str, Any]:
                 "fair_total": round(proj.fair_total, 2),
                 "p_home_win": round(proj.p_home_win, 4),
                 "p_away_win": round(proj.p_away_win, 4),
-                "p_over_market": round(proj.p_over.get(g.get("market_total", 8.5), 0), 4),
+                "p_over_market": round((proj.p_over.get(g.get("market_total", 8.5)) or 0), 4),
             },
             "market": {
                 "home_ml": g.get("market_ml_home"),
@@ -382,15 +388,15 @@ def build_real_slate() -> Optional[List[Dict[str, Any]]]:
         home_pid, home_pname = pp["home"].get("id"), pp["home"].get("name")
         away_pid, away_pname = pp["away"].get("id"), pp["away"].get("name")
 
-        park_factor = PARK_FACTORS.get(g["venue"], 1.00)
+        park_factor = _nz(PARK_FACTORS.get(g["venue"]), 1.00)
         # Weather for ctx (mlb_model uses temp_f + wind_mph for run-environment).
         try:
             from weather import get_weather
             wx = get_weather(g["venue"], g.get("time"))
         except Exception:
             wx = {}
-        ctx_temp = wx.get("temp_f", 70)
-        ctx_wind = wx.get("wind_mph", 0)
+        ctx_temp = _nz(wx.get("temp_f"), 70)
+        ctx_wind = (wx.get("wind_mph") or 0)
         ctx_indoor = bool(wx.get("indoor"))
         carry = wx.get("carry_index")  # -1..+1 wind-to-CF signal (None if indoor)
         # Home Plate umpire tendency
@@ -399,7 +405,7 @@ def build_real_slate() -> Optional[List[Dict[str, Any]]]:
             ump = get_home_plate_umpire(g["gamePk"]) or {}
         except Exception:
             ump = {}
-        ump_zone_size = (float(ump.get("k_mult", 1.0)) - 1.0)  # +0.04 = wider zone
+        ump_zone_size = (float(_nz(ump.get("k_mult"), 1.0)) - 1.0)  # +0.04 = wider zone
         slate.append({
             "time": _et_time(g["time"]),
             "park": g["venue"],

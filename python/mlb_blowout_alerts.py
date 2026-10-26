@@ -18,6 +18,12 @@ import datetime as dt
 from typing import Any, Dict, List
 
 
+def _nz(v, d):
+    """None-safe default (2026-10-26): `.get(k, d)` only covers a MISSING key;
+    a key stored as None still reaches the arithmetic and crashes."""
+    return d if v is None else v
+
+
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 OUT = os.path.join(DATA_DIR, "mlb_blowout_alerts.json")
 
@@ -104,7 +110,7 @@ def run() -> Dict[str, Any]:
                 break
 
         opp_side = "AWAY" if side == "HOME" else ("HOME" if side == "AWAY" else "")
-        opp_lq = opp_lq_by_matchup_side.get(f"{matchup}|{opp_side}", 50)
+        opp_lq = _nz(opp_lq_by_matchup_side.get(f"{matchup}|{opp_side}"), 50)
         team_data = team_idx.get(f"{matchup}|{side}", {}) if side else {}
         team_tier = team_data.get("tier") or ""
 
@@ -114,7 +120,7 @@ def run() -> Dict[str, Any]:
         signals["PITCHER_LOCK"] = 1 if "LOCK" in pitcher_tier else 0
         signals["WEAK_OPP_LINEUP"] = 1 if 0 < opp_lq <= 35 else 0
         signals["TEAM_STRONG_OR_LOCK"] = 1 if "LOCK" in team_tier or "STRONG" in team_tier else 0
-        signals["RUN_DIFF_5PLUS_LIVE"] = 1 if diff_idx.get(key, 0) >= 0.30 else 0
+        signals["RUN_DIFF_5PLUS_LIVE"] = 1 if (diff_idx.get(key) or 0) >= 0.30 else 0
 
         n_positive = sum(1 for v in signals.values() if v == 1)
         if n_positive < 3: continue

@@ -23,6 +23,12 @@ import datetime as dt
 from typing import Any, Dict, List
 
 
+def _nz(v, d):
+    """None-safe default (2026-10-26): `.get(k, d)` only covers a MISSING key;
+    a key stored as None still reaches the arithmetic and crashes."""
+    return d if v is None else v
+
+
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 OUT = os.path.join(DATA_DIR, "mlb_no_hitter_watchlist.json")
 
@@ -95,7 +101,7 @@ def run() -> Dict[str, Any]:
                 opp_side = "AWAY" if s == "HOME" else "HOME"
                 break
 
-        opp_lq_score = opp_lq.get(f"{matchup}|{opp_side}", 50)
+        opp_lq_score = _nz(opp_lq.get(f"{matchup}|{opp_side}"), 50)
         if opp_lq_score > 35: continue  # opp too strong
 
         six_data = six_plus_idx.get(name, {})
@@ -106,7 +112,7 @@ def run() -> Dict[str, Any]:
         p_no_er = _safe(first_data.get("p_no_er"))
         if p_no_er < 0.75: continue
 
-        p_qs = qs_idx.get(name, 0)
+        p_qs = (qs_idx.get(name) or 0)
         if p_qs < 0.70: continue
 
         # Approximate no-hitter and shutout probabilities

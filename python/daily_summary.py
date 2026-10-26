@@ -175,8 +175,8 @@ def build_summary() -> str:
             if not m.get("n"):
                 continue
             lines.append(f"| {k.replace('_', ' ')} | {m['n']} | "
-                         f"{m.get('actual_over_rate', 0)*100:.1f}% | "
-                         f"{m.get('implied_over_rate', 0)*100:.1f}% | "
+                         f"{(m.get('actual_over_rate') or 0)*100:.1f}% | "
+                         f"{(m.get('implied_over_rate') or 0)*100:.1f}% | "
                          f"{_fmtv(m.get('bias'), '.3f', 1)} | "
                          f"{_fmtv(m.get('correction_factor'), '.3f', 1)} |")
         lines.append("")
@@ -204,13 +204,13 @@ def build_summary() -> str:
             n = nrfi_by_m.get(matchup) or {}
             f = f5_by_m.get(matchup) or {}
             r = rl_by_m.get(matchup) or {}
-            nrfi_str = f"{n.get('p_nrfi', 0) * 100:.1f}%" if n else "--"
-            nrfi_fair = (f"+{n['fair_nrfi_price']}" if n.get('fair_nrfi_price', 0) >= 0
+            nrfi_str = f"{(n.get('p_nrfi') or 0) * 100:.1f}%" if n else "--"
+            nrfi_fair = (f"+{n['fair_nrfi_price']}" if (n.get('fair_nrfi_price') or 0) >= 0
                          else str(n.get('fair_nrfi_price', '--'))) if n else "--"
             f5_str = f.get('fair_total', '--')
-            rl_h = ((f"+{r['fair_home_minus_15']}" if r.get('fair_home_minus_15', 0) >= 0
+            rl_h = ((f"+{r['fair_home_minus_15']}" if (r.get('fair_home_minus_15') or 0) >= 0
                      else str(r.get('fair_home_minus_15')))) if r else "--"
-            rl_a = ((f"+{r['fair_away_plus_15']}" if r.get('fair_away_plus_15', 0) >= 0
+            rl_a = ((f"+{r['fair_away_plus_15']}" if (r.get('fair_away_plus_15') or 0) >= 0
                      else str(r.get('fair_away_plus_15')))) if r else "--"
             lines.append(f"| {matchup} | {nrfi_str} | {nrfi_fair} | {f5_str} | {rl_h} | {rl_a} |")
         lines.append("")
@@ -275,7 +275,7 @@ def build_summary() -> str:
             for m in top:
                 d = m.get("cf_delta")
                 d_str = f"{'+' if (d is not None and d >= 0) else ''}{d}" if d is not None else "--"
-                n_add = m.get("n_added", 0)
+                n_add = (m.get("n_added") or 0)
                 lines.append(f"- {m['market'].replace('_', ' ')}: cf {d_str}"
                              + (f" ({n_add} new settled)" if n_add else ""))
         new_pb = latest.get("new_player_overrides") or []

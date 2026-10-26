@@ -24,6 +24,12 @@ import datetime as dt
 from typing import Any, Dict, List
 
 
+def _nz(v, d):
+    """None-safe default (2026-10-26): `.get(k, d)` only covers a MISSING key;
+    a key stored as None still reaches the arithmetic and crashes."""
+    return d if v is None else v
+
+
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 PLAYERS_PATH = os.path.join(DATA_DIR, "lol_players.json")
 OUT_PATH = os.path.join(DATA_DIR, "lol_player_props.json")
@@ -110,8 +116,8 @@ def _project_player(p: Dict[str, Any]) -> Dict[str, Any]:
     if not base:
         return None
     mean_k, mean_d, mean_a = base
-    league_mult = LEAGUE_TIER.get(league, 0.85)
-    elite_mult = ELITE_PLAYERS.get(name, 1.0)
+    league_mult = _nz(LEAGUE_TIER.get(league), 0.85)
+    elite_mult = _nz(ELITE_PLAYERS.get(name), 1.0)
 
     # Skill multiplier compounds (cap to avoid runaway)
     skill_mult = league_mult * elite_mult
@@ -193,8 +199,8 @@ def run() -> Dict[str, Any]:
         if not proj:
             continue
         projections.append(proj)
-        by_league[proj["league"]] = by_league.get(proj["league"], 0) + 1
-        by_role[proj["role"]] = by_role.get(proj["role"], 0) + 1
+        by_league[proj["league"]] = (by_league.get(proj["league"]) or 0) + 1
+        by_role[proj["role"]] = (by_role.get(proj["role"]) or 0) + 1
         if proj["is_elite"]:
             elite_count += 1
 

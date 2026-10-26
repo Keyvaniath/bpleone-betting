@@ -27,6 +27,23 @@ from typing import Any, Dict, List, Optional
 import stats_repo as sr
 
 
+def _nz(v, d):
+    """None-safe default (2026-10-26): `.get(k, d)` only covers a MISSING key;
+    a key stored as None still reaches the arithmetic and crashes."""
+    return d if v is None else v
+
+
+def _fmtv(v, spec, dflt="?"):
+    """Display-safe format (2026-10-26): `{x.get(k):spec}` crashes when the
+    value is None; a label or print must never fail the module."""
+    if v is None:
+        return str(dflt)
+    try:
+        return format(v, spec)
+    except (TypeError, ValueError):
+        return str(v)
+
+
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 OUT_PATH = os.path.join(DATA_DIR, "nrfi.json")
 
@@ -54,7 +71,7 @@ def project_nrfi(home_pid: Optional[int], away_pid: Optional[int],
             return LEAGUE_ERA, "no_data"
         # Recent-form blend
         recent = sr.pitcher_recent_form(pid, n=3) or {}
-        recent_era = recent.get("era") if recent.get("starts", 0) >= 2 else None
+        recent_era = recent.get("era") if (recent.get("starts") or 0) >= 2 else None
         if recent_era is not None:
             return 0.6 * recent_era + 0.4 * era, "blended"
         return era, "season_only"
@@ -106,7 +123,7 @@ def build_all() -> Dict[str, Any]:
     out_games = []
     for g in m.get("games", []):
         venue = g.get("venue") or g.get("park")
-        pf = PARK_FACTORS.get(venue, 1.0)
+        pf = _nz(PARK_FACTORS.get(venue), 1.0)
         home_p = (g.get("home_pitcher") or {})
         away_p = (g.get("away_pitcher") or {})
         proj = project_nrfi(home_p.get("id"), away_p.get("id"), pf)
@@ -135,8 +152,8 @@ def write_nrfi(payload: Dict[str, Any], path: str = OUT_PATH) -> None:
     print(f"Wrote nrfi -> {path}")
     print(f"  Games projected: {len(payload.get('games', []))}")
     for g in payload.get("games", [])[:5]:
-        print(f"  {g['matchup']:14} | P(NRFI) {g.get('p_nrfi')} (fair {g.get('fair_nrfi_price'):+d}) | "
-              f"P(YRFI) {g.get('p_yrfi')} (fair {g.get('fair_yrfi_price'):+d})")
+        print(f"  {g['matchup']:14} | P(NRFI) {g.get('p_nrfi')} (fair {_fmtv(g.get('fair_nrfi_price'), '+d')}) | "
+              f"P(YRFI) {g.get('p_yrfi')} (fair {_fmtv(g.get('fair_yrfi_price'), '+d')})")
 
 
 if __name__ == "__main__":

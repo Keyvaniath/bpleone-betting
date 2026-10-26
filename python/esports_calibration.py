@@ -108,7 +108,7 @@ def _recommend_multiplier(records: List[Dict[str, Any]]) -> Dict[str, Any]:
     settled = [r for r in records if r.get("outcome") in ("WIN", "LOSS")]
     if len(settled) < MIN_SAMPLE_FOR_RECO:
         return {"applied": False, "note": f"need >= {MIN_SAMPLE_FOR_RECO} settled bets (have {len(settled)})"}
-    pred_mean = sum(r.get("prob", 0) for r in settled) / len(settled)
+    pred_mean = sum((r.get("prob") or 0) for r in settled) / len(settled)
     actual_mean = sum(1.0 if r["outcome"] == "WIN" else 0.0 for r in settled) / len(settled)
     shift = actual_mean - pred_mean
     if abs(shift) < 0.02:

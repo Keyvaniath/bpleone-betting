@@ -48,7 +48,7 @@ def _hand_count(lineup: List[Dict[str, Any]]) -> Dict[str, int]:
         hand = "?"
         if payload and payload.get("people"):
             hand = (payload["people"][0].get("batSide", {}) or {}).get("code", "?")
-        counts[hand] = counts.get(hand, 0) + 1
+        counts[hand] = (counts.get(hand) or 0) + 1
     return counts
 
 
@@ -73,21 +73,21 @@ def project_pitch_matchup(pitcher_block: Dict[str, Any],
 
     worst = max(rated, key=lambda p: p["xwoba"])
     best = min(rated, key=lambda p: p["xwoba"])
-    avg_xwoba = sum(p["xwoba"] * (p.get("usage_pct", 0) / 100) for p in rated) / max(
-        sum(p.get("usage_pct", 0) for p in rated) / 100, 0.01)
+    avg_xwoba = sum(p["xwoba"] * ((p.get("usage_pct") or 0) / 100) for p in rated) / max(
+        sum((p.get("usage_pct") or 0) for p in rated) / 100, 0.01)
 
     narrative: List[str] = []
     leverage = 0
 
     # Worst pitch is high usage AND poor quality -> leverage spot
-    if worst["xwoba"] > 0.380 and worst.get("usage_pct", 0) >= 20:
+    if worst["xwoba"] > 0.380 and (worst.get("usage_pct") or 0) >= 20:
         leverage += 10
         narrative.append(f"Worst pitch ({worst['pitch']}, xwOBA {worst['xwoba']:.3f}) "
                           f"used {worst['usage_pct']:.0f}% of the time -- attackable.")
 
     # Pitcher is a heavy lefty + lineup is RHB-stacked (or vice versa)
-    rhb = hand_mix.get("R", 0)
-    lhb = hand_mix.get("L", 0)
+    rhb = (hand_mix.get("R") or 0)
+    lhb = (hand_mix.get("L") or 0)
     if pitcher_hand == "L" and rhb >= 6:
         leverage += 8
         narrative.append(f"LHP facing R-heavy lineup ({rhb}R / {lhb}L) -- platoon edge to offense.")
@@ -142,8 +142,8 @@ def build_all() -> Dict[str, Any]:
             },
         })
     # Sort by max leverage score across both sides
-    out_games.sort(key=lambda g: max(g["home_pitcher_vs_away_lineup"].get("leverage_score", 0),
-                                       g["away_pitcher_vs_home_lineup"].get("leverage_score", 0)),
+    out_games.sort(key=lambda g: max((g["home_pitcher_vs_away_lineup"].get("leverage_score") or 0),
+                                       (g["away_pitcher_vs_home_lineup"].get("leverage_score") or 0)),
                    reverse=True)
     return {"generated_at": dt.datetime.now().isoformat(timespec="seconds"),
             "games": out_games}

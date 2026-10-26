@@ -18,6 +18,12 @@ import datetime as dt
 from typing import Any, Dict, List
 
 
+def _nz(v, d):
+    """None-safe default (2026-10-26): `.get(k, d)` only covers a MISSING key;
+    a key stored as None still reaches the arithmetic and crashes."""
+    return d if v is None else v
+
+
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 OUT = os.path.join(DATA_DIR, "mlb_pitcher_matchup.json")
 
@@ -60,8 +66,8 @@ def run() -> Dict[str, Any]:
                 "name": hp_raw.get("name"),
                 "team_abbr": g.get("home"),
                 "stats": {
-                    "avg_k": (season.get("k9", 0) / 9.0) * (season.get("ip", 0) / max(1, season.get("starts", 1))),
-                    "avg_er": (season.get("era", 4.0) / 9.0) * (season.get("ip", 0) / max(1, season.get("starts", 1))),
+                    "avg_k": ((season.get("k9") or 0) / 9.0) * ((season.get("ip") or 0) / max(1, _nz(season.get("starts"), 1))),
+                    "avg_er": (_nz(season.get("era"), 4.0) / 9.0) * ((season.get("ip") or 0) / max(1, _nz(season.get("starts"), 1))),
                     "era": season.get("era"),
                     "k_per_9": season.get("k9"),
                 },
@@ -73,8 +79,8 @@ def run() -> Dict[str, Any]:
                 "name": ap_raw.get("name"),
                 "team_abbr": g.get("away"),
                 "stats": {
-                    "avg_k": (season.get("k9", 0) / 9.0) * (season.get("ip", 0) / max(1, season.get("starts", 1))),
-                    "avg_er": (season.get("era", 4.0) / 9.0) * (season.get("ip", 0) / max(1, season.get("starts", 1))),
+                    "avg_k": ((season.get("k9") or 0) / 9.0) * ((season.get("ip") or 0) / max(1, _nz(season.get("starts"), 1))),
+                    "avg_er": (_nz(season.get("era"), 4.0) / 9.0) * ((season.get("ip") or 0) / max(1, _nz(season.get("starts"), 1))),
                     "era": season.get("era"),
                     "k_per_9": season.get("k9"),
                 },

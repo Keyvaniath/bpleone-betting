@@ -234,7 +234,7 @@ def run():
     wins = sum(1 for h in settled if h.get("outcome") == "WIN")
     losses = sum(1 for h in settled if h.get("outcome") == "LOSS")
     pushes = sum(1 for h in settled if h.get("outcome") == "PUSH")
-    net = round(sum(h.get("pl_units", 0) for h in settled), 2)
+    net = round(sum((h.get("pl_units") or 0) for h in settled), 2)
     decided = wins + losses
     record = None
     if decided or pushes:

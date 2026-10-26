@@ -83,9 +83,9 @@ def run() -> Dict[str, Any]:
         if score < 14: continue
 
         name = _norm(r.get("batter") or "")
-        p_hr = hr_idx.get(name, 0)
-        p_tb3 = tb3_idx.get(name, 0)
-        p_speed = speed_idx.get(name, 0)
+        p_hr = (hr_idx.get(name) or 0)
+        p_tb3 = (tb3_idx.get(name) or 0)
+        p_speed = (speed_idx.get(name) or 0)
         park_tier = park_by_matchup.get(r.get("matchup") or "", "")
 
         if p_hr < 0.22: continue

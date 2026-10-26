@@ -100,7 +100,7 @@ def run() -> Dict[str, Any]:
 
     settled = [h for h in hist if h.get("settled")]
     wins = sum(1 for h in settled if h.get("outcome") == "WIN")
-    net = sum(h.get("pl_units", 0) for h in settled)
+    net = sum((h.get("pl_units") or 0) for h in settled)
     stake = len(settled)
 
     payload = {

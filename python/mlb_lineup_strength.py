@@ -21,6 +21,12 @@ import datetime as dt
 from typing import Any, Dict, List
 
 
+def _nz(v, d):
+    """None-safe default (2026-10-26): `.get(k, d)` only covers a MISSING key;
+    a key stored as None still reaches the arithmetic and crashes."""
+    return d if v is None else v
+
+
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 OUT = os.path.join(DATA_DIR, "mlb_lineup_strength.json")
 
@@ -62,7 +68,7 @@ def _lineup_score(lineup: List[Dict[str, Any]], batters_by_name: Dict[str, Any])
     for batter in lineup:
         order = batter.get("order")
         if not order or order > 9: continue
-        weight = ORDER_WEIGHTS.get(order, 1.0)
+        weight = _nz(ORDER_WEIGHTS.get(order), 1.0)
         nlower = (batter.get("name") or "").lower()
         blog = batters_by_name.get(nlower)
         if not blog: continue

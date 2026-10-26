@@ -58,7 +58,7 @@ def series_win_distribution(per_game_probs: List[float]) -> Dict[str, float]:
         wins = seq.count("W")
         losses = n - wins
         key = f"{wins}-{losses}"
-        dist[key] = dist.get(key, 0) + p
+        dist[key] = (dist.get(key) or 0) + p
     return dist
 
 

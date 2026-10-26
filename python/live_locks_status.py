@@ -216,7 +216,7 @@ def run() -> Dict[str, Any]:
             "live_status": status["status"],
             "live_note": status.get("live_note", ""),
         })
-        counts[status["status"]] = counts.get(status["status"], 0) + 1
+        counts[status["status"]] = (counts.get(status["status"]) or 0) + 1
 
     payload = {
         "generated_at": dt.datetime.now().isoformat(timespec="seconds"),

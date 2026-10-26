@@ -26,6 +26,12 @@ import datetime as dt
 from typing import Any, Dict, List, Optional
 
 
+def _nz(v, d):
+    """None-safe default (2026-10-26): `.get(k, d)` only covers a MISSING key;
+    a key stored as None still reaches the arithmetic and crashes."""
+    return d if v is None else v
+
+
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 OUT = os.path.join(DATA_DIR, "nhl_goalie_win_props.json")
 
@@ -106,8 +112,8 @@ def run() -> Dict[str, Any]:
             is_home = info["team"] == home
             opp = away if is_home else home
 
-            team_rating = TEAM_RATING.get(info["team"], 1500)
-            opp_rating = TEAM_RATING.get(opp, 1500)
+            team_rating = _nz(TEAM_RATING.get(info["team"]), 1500)
+            opp_rating = _nz(TEAM_RATING.get(opp), 1500)
             p_team_wins = _team_win_prob(team_rating, opp_rating, is_home)
 
             # P(goalie completes start as starter of record)

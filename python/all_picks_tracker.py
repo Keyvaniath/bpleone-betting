@@ -3890,7 +3890,7 @@ def run() -> Dict[str, Any]:
     new_settled = sum(1 for p in history if p.get("settled") and not p.get("voided"))
     _hw_path = os.path.join(DATA_DIR, "ledger_highwater.json")
     try:
-        _hw = int((json.load(open(_hw_path, encoding="utf-8")) or {}).get("max_settled", 0))
+        _hw = int(((json.load(open(_hw_path, encoding="utf-8")) or {}).get("max_settled") or 0))
     except Exception:
         _hw = 0
     if _hw > 200 and new_settled < _hw * 0.5:

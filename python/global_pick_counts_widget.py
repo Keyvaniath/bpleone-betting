@@ -64,7 +64,7 @@ def run() -> Dict[str, Any]:
         files_scanned += 1
         n_strong = int(d.get("n_strong_edges") or d.get("n_strong") or 0)
         sport = _sport_of(fn)
-        by_sport[sport] = by_sport.get(sport, 0) + n_strong
+        by_sport[sport] = (by_sport.get(sport) or 0) + n_strong
         total_strong += n_strong
 
     # Pull aggregator counts

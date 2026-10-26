@@ -48,6 +48,10 @@ def _roi(nets):
 
 def _boot_ci(nets, seed=7):
     rng = random.Random(seed)
+    # Sorted (2026-10-26): callers build nets from set/dict iteration, whose
+    # order changes with PYTHONHASHSEED -- the "fixed seed" CI jittered 0.1-0.6
+    # pts run to run. A bootstrap only depends on the multiset, so sort it.
+    nets = sorted(nets)
     n = len(nets)
     rois = []
     for _ in range(B):
@@ -103,7 +107,7 @@ def build():
 
     tiers = {}
     for r in rows:
-        tiers[r["tier"]] = tiers.get(r["tier"], 0) + 1
+        tiers[r["tier"]] = (tiers.get(r["tier"]) or 0) + 1
 
     # The "durable book": what betting ONLY the DURABLE tier would have produced.
     dur_fams = {r["family"] for r in rows if r["tier"] == "DURABLE"}

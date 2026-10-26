@@ -81,7 +81,7 @@ def run() -> Dict[str, Any]:
         team = r.get("team", "")
         p = _safe(r.get("p"))
         existing = race_fav.get(m)
-        if not existing or p > existing.get("p", 0):
+        if not existing or p > (existing.get("p") or 0):
             race_fav[m] = {"team": team, "p": p}
 
     half_over: Dict[str, bool] = {}

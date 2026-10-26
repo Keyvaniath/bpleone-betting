@@ -65,7 +65,7 @@ def run() -> Dict[str, Any]:
         ec = (r.get("edge_class") or "").upper()
         if "OVER" in ec:
             m = r.get("match") or r.get("matchup") or ""
-            aces_overs_by_match[m] = aces_overs_by_match.get(m, 0) + 1
+            aces_overs_by_match[m] = (aces_overs_by_match.get(m) or 0) + 1
 
     df_unders_by_match: Dict[str, int] = {}
     for r in (dfs.get("rows") or []):
@@ -73,7 +73,7 @@ def run() -> Dict[str, Any]:
         ec = (r.get("edge_class") or "").upper()
         if "UNDER" in ec:
             m = r.get("match") or r.get("matchup") or ""
-            df_unders_by_match[m] = df_unders_by_match.get(m, 0) + 1
+            df_unders_by_match[m] = (df_unders_by_match.get(m) or 0) + 1
 
     games_over: Dict[str, bool] = {}
     for r in (games.get("rows") or []):
@@ -95,8 +95,8 @@ def run() -> Dict[str, Any]:
     for m in all_matches:
         signals: Dict[str, int] = {}
         signals["CLOSE_MATCH"] = 1 if match_close.get(m) else 0
-        signals["BOTH_ACES_OVER"] = 1 if aces_overs_by_match.get(m, 0) >= 2 else 0
-        signals["LOW_DFS_BOTH"] = 1 if df_unders_by_match.get(m, 0) >= 2 else 0
+        signals["BOTH_ACES_OVER"] = 1 if (aces_overs_by_match.get(m) or 0) >= 2 else 0
+        signals["LOW_DFS_BOTH"] = 1 if (df_unders_by_match.get(m) or 0) >= 2 else 0
         signals["GAMES_OVER"] = 1 if games_over.get(m) else 0
         signals["BREAKS_UNDER"] = 1 if breaks_under.get(m) else 0
 

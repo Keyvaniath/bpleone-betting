@@ -110,7 +110,7 @@ def run() -> Dict[str, Any]:
         elif tt_dir == "LEAN_UNDER": tt_over_strength = -2
         elif tt_dir == "STRONG_UNDER": tt_over_strength = -4
 
-        p_4 = four_idx.get(k, 0)
+        p_4 = (four_idx.get(k) or 0)
         opp_fatigue_bonus = 3 if opp_team in fatigued_teams else 0
         pl_lean = puck_cover.get(matchup, {})
         puck_line_lean = 2 if pl_lean.get("team") == team else 0

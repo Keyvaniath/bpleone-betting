@@ -41,6 +41,17 @@ import datetime as dt
 from typing import Any, Dict, List, Optional
 
 
+def _fmtv(v, spec, dflt="?"):
+    """Display-safe format (2026-10-26): `{x.get(k):spec}` crashes when the
+    value is None; a label or print must never fail the module."""
+    if v is None:
+        return str(dflt)
+    try:
+        return format(v, spec)
+    except (TypeError, ValueError):
+        return str(v)
+
+
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 TR_PATH = os.path.join(DATA_DIR, "track_record.json")
 OUT_PATH = os.path.join(DATA_DIR, "walk_forward.json")
@@ -221,5 +232,5 @@ if __name__ == "__main__":
             continue
         first = windows[0]
         last = windows[-1]
-        print(f"  {market:25} first_brier={first.get('brier'):.4f} last_brier={last.get('brier'):.4f} "
+        print(f"  {market:25} first_brier={_fmtv(first.get('brier'), '.4f')} last_brier={_fmtv(last.get('brier'), '.4f')} "
               f"(n_windows={len(windows)})")

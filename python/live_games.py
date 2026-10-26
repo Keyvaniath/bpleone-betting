@@ -28,6 +28,12 @@ import math
 import datetime as dt
 from typing import Any, Dict, List, Optional
 
+
+def _nz(v, d):
+    """None-safe default (2026-10-26): `.get(k, d)` only covers a MISSING key;
+    a key stored as None still reaches the arithmetic and crashes."""
+    return d if v is None else v
+
 try:
     import requests
 except ImportError:
@@ -71,7 +77,7 @@ RE24 = {
 def _base_state(linescore: Dict[str, Any]) -> Dict[str, Any]:
     """Extract (outs, on_first/second/third, current inning, half) from linescore."""
     inning_state = linescore.get("inningState", "Top")  # Top / Bottom / Middle / End
-    inning = linescore.get("currentInning", 1)
+    inning = _nz(linescore.get("currentInning"), 1)
     outs = (linescore.get("outs") or 0)
     offense = (linescore.get("offense") or {})
     on_first = bool(offense.get("first"))
@@ -89,7 +95,7 @@ def _base_state(linescore: Dict[str, Any]) -> Dict[str, Any]:
 
 def _win_expectancy(home_runs: int, away_runs: int, state: Dict[str, Any]) -> float:
     """Approximate P(home wins) given current state."""
-    inning = state.get("inning", 1)
+    inning = _nz(state.get("inning"), 1)
     is_bottom = state.get("inning_state", "Top").lower() in ("bottom", "middle", "end")
     margin = home_runs - away_runs
     # Expected runs left this half-inning from RE24

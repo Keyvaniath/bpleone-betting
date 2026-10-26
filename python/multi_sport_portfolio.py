@@ -78,7 +78,7 @@ def run() -> Dict[str, Any]:
     # low 2%. This produces a credible "recommended portfolio" view.
     for b in bets_sorted:
         sport = b.get("source", "?")
-        if sport_counts.get(sport, 0) >= MAX_PER_SPORT: continue
+        if (sport_counts.get(sport) or 0) >= MAX_PER_SPORT: continue
         match_key = f"{sport}|{b.get('team') or b.get('player') or b.get('label','')}"
         if match_key in seen_match_keys: continue
 
@@ -100,7 +100,7 @@ def run() -> Dict[str, Any]:
 
         if total_exposure + bet_pct > MAX_TOTAL_PCT: continue
         total_exposure += bet_pct
-        sport_counts[sport] = sport_counts.get(sport, 0) + 1
+        sport_counts[sport] = (sport_counts.get(sport) or 0) + 1
         seen_match_keys.add(match_key)
 
         stake = round(bet_pct * DEFAULT_BANKROLL, 2)

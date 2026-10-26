@@ -74,9 +74,9 @@ def run() -> Dict[str, Any]:
 
     # Weather stability: fraction of games with |hr_mult_delta_pct| < 5
     wx_games = wx.get("by_game") or []
-    stable = sum(1 for g in wx_games if abs(g.get("hr_mult_delta_pct", 0)) < 5)
+    stable = sum(1 for g in wx_games if abs((g.get("hr_mult_delta_pct") or 0)) < 5)
     weather_stability = round(stable / len(wx_games), 3) if wx_games else 1.0
-    extreme_weather = sum(1 for g in wx_games if abs(g.get("hr_mult_delta_pct", 0)) >= 10)
+    extreme_weather = sum(1 for g in wx_games if abs((g.get("hr_mult_delta_pct") or 0)) >= 10)
 
     # Rookie SPs (career < 50 starts)
     rookie_sp = 0

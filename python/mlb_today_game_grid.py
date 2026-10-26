@@ -141,7 +141,7 @@ def run() -> Dict[str, Any]:
             notable_signals.insert(0, f"PARK {park_tier}")
 
         stacks_for_game = stack_idx.get(matchup, [])
-        elite_stack_count = sum(1 for s in stacks_for_game if s.get("stack_score", 0) >= 70)
+        elite_stack_count = sum(1 for s in stacks_for_game if (s.get("stack_score") or 0) >= 70)
 
         out_games.append({
             "matchup": matchup,

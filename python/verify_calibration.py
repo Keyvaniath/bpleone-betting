@@ -158,7 +158,7 @@ check("recalibration is identity for an unknown family",
 #     family realizing ~0.96 should calibrate to near the realized rate, not stay 1.0.
 cp, cm = pc.calibrate_play("batter_hrr", "UNDER", 4.5, 1.0)
 check("calibrate_play(hrr under 4.5, raw 1.0) -> empirical near realized",
-      cm.get("method") == "empirical" and cp is not None and cp < 1.0 and abs(cp - cm.get("realized", 0)) < 0.06,
+      cm.get("method") == "empirical" and cp is not None and cp < 1.0 and abs(cp - (cm.get("realized") or 0)) < 0.06,
       f"cal={None if cp is None else round(cp, 3)} realized={cm.get('realized')}")
 
 # 13. UPSTREAM LEDGER STAMP -- all_picks_tracker stamps an ADDITIVE p_calibrated

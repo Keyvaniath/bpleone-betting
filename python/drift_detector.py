@@ -62,8 +62,8 @@ def run() -> Dict[str, Any]:
         pm = prev_markets.get(mk) or {}
         curr_cf = cm.get("correction_factor")
         prev_cf = pm.get("correction_factor")
-        curr_n = cm.get("n", 0)
-        prev_n = pm.get("n", 0)
+        curr_n = (cm.get("n") or 0)
+        prev_n = (pm.get("n") or 0)
 
         alerts: List[str] = []
         # New market

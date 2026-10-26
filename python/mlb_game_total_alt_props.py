@@ -23,6 +23,12 @@ import datetime as dt
 from typing import Any, Dict, List, Optional
 
 
+def _nz(v, d):
+    """None-safe default (2026-10-26): `.get(k, d)` only covers a MISSING key;
+    a key stored as None still reaches the arithmetic and crashes."""
+    return d if v is None else v
+
+
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 OUT = os.path.join(DATA_DIR, "mlb_game_total_alt_props.json")
 
@@ -83,7 +89,7 @@ def run() -> Dict[str, Any]:
         lam_total = agg["home_runs"] + agg["away_runs"]
         if lam_total <= 0: continue
 
-        book_total = game_total_book.get(matchup, 8.5)
+        book_total = _nz(game_total_book.get(matchup), 8.5)
 
         # Compute P(over) at multiple lines
         results: Dict[str, float] = {}

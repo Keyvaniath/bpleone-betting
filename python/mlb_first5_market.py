@@ -168,8 +168,8 @@ def run() -> Dict[str, Any]:
         home_obp = _safe((g.get("home") or {}).get("obp"), 0.317) or 0.317
         away_obp = _safe((g.get("away") or {}).get("obp"), 0.317) or 0.317
 
-        home_form = form_by_name.get((home_name or "").lower(), 0.0)
-        away_form = form_by_name.get((away_name or "").lower(), 0.0)
+        home_form = (form_by_name.get((home_name or "").lower()) or 0.0)
+        away_form = (form_by_name.get((away_name or "").lower()) or 0.0)
 
         # Home SP faces away lineup
         lam_home_ra = _expected_pitcher_lambda(home_sp, away_obp, park_run_factor, home_form, weather_runs_adj)

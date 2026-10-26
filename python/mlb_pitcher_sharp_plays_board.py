@@ -85,7 +85,7 @@ def run() -> Dict[str, Any]:
         p_qs = _safe(p.get("p_quality_start"))
 
         conviction = composite
-        conviction += {"ACE_SPOT": 15, "STRONG": 8, "FADE_RISK": -15}.get(start_tier, 0)
+        conviction += ({"ACE_SPOT": 15, "STRONG": 8, "FADE_RISK": -15}.get(start_tier) or 0)
         if confident_line >= 8: conviction += 10
         elif confident_line >= 7: conviction += 6
         elif confident_line >= 6: conviction += 3

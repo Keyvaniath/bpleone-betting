@@ -79,15 +79,15 @@ def run() -> Dict[str, Any]:
     top_10_diverse: List[Dict[str, Any]] = []
     for p in all_parlays:
         sport = p["sport"]
-        if seen_sport_counts.get(sport, 0) >= 3: continue
+        if (seen_sport_counts.get(sport) or 0) >= 3: continue
         top_10_diverse.append(p)
-        seen_sport_counts[sport] = seen_sport_counts.get(sport, 0) + 1
+        seen_sport_counts[sport] = (seen_sport_counts.get(sport) or 0) + 1
         if len(top_10_diverse) >= 10: break
 
     # By sport breakdown
     by_sport: Dict[str, int] = {}
     for p in all_parlays:
-        by_sport[p["sport"]] = by_sport.get(p["sport"], 0) + 1
+        by_sport[p["sport"]] = (by_sport.get(p["sport"]) or 0) + 1
 
     out = {
         "generated_at": dt.datetime.utcnow().isoformat(timespec="seconds"),

@@ -113,7 +113,7 @@ def run() -> Dict[str, Any]:
         })
 
     tier_order = {"MATCH_LOCK": 4, "MATCH_STRONG": 3, "MATCH_LEAN": 2, "MATCH_PASS": 1}
-    previews.sort(key=lambda p: -tier_order.get(p["tier"], 0))
+    previews.sort(key=lambda p: -(tier_order.get(p["tier"]) or 0))
 
     out = {
         "generated_at": dt.datetime.utcnow().isoformat(timespec="seconds"),

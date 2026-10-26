@@ -59,7 +59,7 @@ def _fetch_season_avg(team_id, year):
             for sp in (s.get("splits") or []):
                 stat = sp.get("stat") or {}
                 avg = stat.get("avg")
-                ab = stat.get("atBats", 0)
+                ab = (stat.get("atBats") or 0)
                 if avg is not None and ab >= 20:
                     try:
                         out[name] = {"season_avg": float(avg), "season_ab": int(ab)}
@@ -92,8 +92,8 @@ def run() -> Dict[str, Any]:
     for b in batters:
         name = b.get("name")
         s14 = b.get("stats_last_14") or {}
-        l14_ab = s14.get("ab", 0)
-        l14_avg = s14.get("avg", 0)
+        l14_ab = (s14.get("ab") or 0)
+        l14_avg = (s14.get("avg") or 0)
         if l14_ab < MIN_L14_AB: continue
 
         season_info = season_by_name.get(name)

@@ -25,6 +25,12 @@ import datetime as dt
 from typing import Any, Dict, List, Optional
 
 
+def _nz(v, d):
+    """None-safe default (2026-10-26): `.get(k, d)` only covers a MISSING key;
+    a key stored as None still reaches the arithmetic and crashes."""
+    return d if v is None else v
+
+
 def _fmtv(v, spec, dflt="?"):
     """Display-safe format (2026-10-26): `{x.get(k, d):spec}` crashes when the
     key exists with None -- .get's default only applies to a MISSING key --
@@ -262,7 +268,7 @@ def run() -> Dict[str, Any]:
             seen.add(key)
             items.append(it)
             kept += 1
-            if kept >= CAP.get(typ, 10):
+            if kept >= _nz(CAP.get(typ), 10):
                 break
 
     # final order: strongest first across all types (the tape is value-ranked,

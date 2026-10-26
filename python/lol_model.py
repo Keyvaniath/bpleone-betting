@@ -133,6 +133,8 @@ def run() -> Dict[str, Any]:
         payload = {
             "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
             "note": "no matches in state",
+            # same keys as a good payload (the print below reads them)
+            "n_matches": 0, "n_teams_rated": 0, "predictions": [],
             "matches": [],
         }
         _save(OUT_PATH, payload)
@@ -212,8 +214,8 @@ def run() -> Dict[str, Any]:
 
 if __name__ == "__main__":
     p = run()
-    print(f"Wrote {OUT_PATH}: {p['n_matches']} predictions, {p['n_teams_rated']} teams rated")
-    for m in p["predictions"][:8]:
+    print(f"Wrote {OUT_PATH}: {p.get('n_matches', 0)} predictions, {p.get('n_teams_rated', 0)} teams rated")
+    for m in (p.get("predictions") or [])[:8]:
         ams = (m.get("fair_a_american") or 0)
         bms = (m.get("fair_b_american") or 0)
         print(f"  [{m['league']:20}] {m['team_a']:22} ({ams:+5d}) vs {m['team_b']:22} ({bms:+5d}) "

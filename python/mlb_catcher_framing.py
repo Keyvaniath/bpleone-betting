@@ -114,7 +114,7 @@ def run() -> Dict[str, Any]:
             })
 
     # Sort by magnitude of adjustment
-    adjustments.sort(key=lambda a: -abs(a.get("k_per_start_adj", 0)))
+    adjustments.sort(key=lambda a: -abs((a.get("k_per_start_adj") or 0)))
 
     out = {
         "generated_at": dt.datetime.utcnow().isoformat(timespec="seconds"),

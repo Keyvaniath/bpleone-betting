@@ -323,7 +323,7 @@ def project_slate(models: TrainedPropModels) -> List[dict]:
         gbm = {"TB": models.tb, "HR": models.hr, "K": models.k, "H": models.h}[p["stat"]]
         projection = gbm.predict(p["features"])
         # For K props from pitchers, scale up since we trained on hitter-Ks
-        if p["stat"] == "K" and p["features"].get("speed", 0) == 0:
+        if p["stat"] == "K" and (p["features"].get("speed") or 0) == 0:
             projection *= 4.0  # rough proxy: pitchers face ~24 batters; use as multiplier
         prob_over = prop_over_prob(projection, p["line"])
         fair = american_from_prob(prob_over)

@@ -53,9 +53,9 @@ def _team_block(tid: Optional[int]) -> Dict[str, Any]:
         return {"team_id": tid}
     return {
         "team_id": tid,
-        "ops": round(s.get("h_ops", 0), 3) if s.get("h_ops") else None,
-        "obp": round(s.get("h_obp", 0), 3) if s.get("h_obp") else None,
-        "slg": round(s.get("h_slg", 0), 3) if s.get("h_slg") else None,
+        "ops": round((s.get("h_ops") or 0), 3) if s.get("h_ops") else None,
+        "obp": round((s.get("h_obp") or 0), 3) if s.get("h_obp") else None,
+        "slg": round((s.get("h_slg") or 0), 3) if s.get("h_slg") else None,
         "runs": s.get("h_runs"),
         "team_era": s.get("p_era"),
         "team_whip": s.get("p_whip"),
@@ -171,9 +171,9 @@ def _narrative(name: Optional[str], hand: str,
     # 2. Recent form vs season
     if recent and season:
         r_era = recent.get("era"); s_era = season.get("era")
-        if r_era is not None and s_era and r_era < s_era * 0.6 and recent.get("starts", 0) >= 2:
+        if r_era is not None and s_era and r_era < s_era * 0.6 and (recent.get("starts") or 0) >= 2:
             out.append(f"Hot streak: last {recent['starts']} starts ERA {r_era:.2f} --dominating relative to {s_era:.2f} season mark.")
-        elif r_era is not None and s_era and r_era > s_era * 1.6 and recent.get("starts", 0) >= 2:
+        elif r_era is not None and s_era and r_era > s_era * 1.6 and (recent.get("starts") or 0) >= 2:
             out.append(f"Slump: last {recent['starts']} starts ERA {r_era:.2f} --well off his {s_era:.2f} season pace.")
 
     # 3. Platoon splits
@@ -187,12 +187,12 @@ def _narrative(name: Optional[str], hand: str,
             out.append(f"Big platoon split: opponents OPS {vl_ops:.3f} vs L / {vr_ops:.3f} vs R --{weak} hit him hard.")
 
     # 4. Head-to-head vs this opponent
-    if vs_team.get("starts", 0) >= 2 and vs_team.get("ip", 0) >= 5:
+    if (vs_team.get("starts") or 0) >= 2 and (vs_team.get("ip") or 0) >= 5:
         era = vs_team.get("era")
         if era is not None:
             verdict = "owned by them" if era >= 5.0 else "owns them" if era <= 2.5 else "has been competent against them"
             out.append(f"H2H this season: {vs_team['starts']} starts, {vs_team['ip']} IP, {era:.2f} ERA --{verdict}.")
-    elif vs_team.get("starts", 0) == 1:
+    elif (vs_team.get("starts") or 0) == 1:
         st = vs_team
         out.append(f"Has faced this lineup once in 2026: {st.get('ip')} IP, {st.get('er')} ER, {st.get('k')}K / {st.get('bb')}BB.")
 

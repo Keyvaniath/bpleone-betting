@@ -166,7 +166,7 @@ def _load_learned_weights():
             wl = w.get("w_learned")
             if wf is not None and w.get("user_override") is not None:
                 out[src] = wf  # user override -> always apply
-            elif wl is not None and w.get("n_settled", 0) > 0:
+            elif wl is not None and (w.get("n_settled") or 0) > 0:
                 out[src] = wl  # learned with data
         return out
     except Exception:
@@ -190,7 +190,7 @@ def _load_family_weights():
         out = {}
         for fam, w in (d.get("weights_by_family") or {}).items():
             wl = w.get("w_learned")
-            if wl is not None and w.get("n_settled", 0) > 0:
+            if wl is not None and (w.get("n_settled") or 0) > 0:
                 out[fam] = wl
         return out
     except Exception:
@@ -231,7 +231,7 @@ def _load_canonical_weights():
         out = {}
         for fam, w in (d.get("weights_by_canonical") or {}).items():
             wl = w.get("w_learned")
-            if wl is not None and w.get("n_settled", 0) > 0:
+            if wl is not None and (w.get("n_settled") or 0) > 0:
                 out[fam] = wl
         return out
     except Exception:
@@ -285,7 +285,7 @@ def _load_ungradeable_markets():
         if x.get("settled") and not x.get("voided"):
             graded.add(k)
         elif x.get("voided") and str(x.get("voided_reason") or "").startswith("unsettleable"):
-            voids[k] = voids.get(k, 0) + 1
+            voids[k] = (voids.get(k) or 0) + 1
     return {k for k, n in voids.items() if n >= UNGRADEABLE_MIN_VOIDS and k not in graded}
 
 
@@ -431,15 +431,15 @@ def run() -> Dict[str, Any]:
         if len(top_25) >= 25: break
         sp = c.get("sport") or "?"
         pl = (sp, c.get("player_or_matchup") or "?")
-        if sport_count.get(sp, 0) >= MAX_PICKS_PER_SPORT: continue
-        if player_count.get(pl, 0) >= MAX_PICKS_PER_PLAYER: continue
-        sport_count[sp] = sport_count.get(sp, 0) + 1
-        player_count[pl] = player_count.get(pl, 0) + 1
+        if (sport_count.get(sp) or 0) >= MAX_PICKS_PER_SPORT: continue
+        if (player_count.get(pl) or 0) >= MAX_PICKS_PER_PLAYER: continue
+        sport_count[sp] = (sport_count.get(sp) or 0) + 1
+        player_count[pl] = (player_count.get(pl) or 0) + 1
         top_25.append(c)
 
     by_sport: Dict[str, int] = {}
     for c in deduped:
-        by_sport[c["sport"]] = by_sport.get(c["sport"], 0) + 1
+        by_sport[c["sport"]] = (by_sport.get(c["sport"]) or 0) + 1
 
     payload = {
         "generated_at": dt.datetime.now().isoformat(timespec="seconds"),

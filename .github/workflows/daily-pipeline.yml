@@ -179,7 +179,7 @@ jobs:
         env:
           ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
         working-directory: python
-        run: python odds_key_preflight.py || true
+        run: python odds_key_preflight.py || echo "odds_key_preflight.py" >> "$RUNNER_TEMP/failed_steps.txt"
 
       - name: Run daily pipeline (real data → today.json + matchups.json + snapshot)
         env:
@@ -601,7 +601,7 @@ jobs:
           ALPHA_EMAIL_TO: ${{ secrets.ALPHA_EMAIL_TO }}
           SMTP_USER: ${{ secrets.SMTP_USER }}
           SMTP_PASS: ${{ secrets.SMTP_PASS }}
-        run: python alpha_email.py --send-self || true
+        run: python alpha_email.py --send-self || echo "alpha_email.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # PASSWORD-FREE DAILY EMAIL (Brandon, 2026-10-23): the SMTP path needs an
       # app password nobody here can enter, so the day's Alpha card is posted
       # ONCE per date as a comment on one pinned issue, and GitHub emails it to
@@ -921,7 +921,7 @@ jobs:
         env:
           ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
         working-directory: python
-        run: python multi_book_lines.py || true
+        run: python multi_book_lines.py || echo "multi_book_lines.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: "Whale picks (max-confluence: top board + consensus + sharp action)"
         working-directory: python
         run: python whale_picks.py || echo "whale_picks.py" >> "$RUNNER_TEMP/failed_steps.txt"
@@ -969,7 +969,7 @@ jobs:
           python risk.py || echo "risk.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Live data accuracy audit (cross-check upstream APIs)
         working-directory: python
-        run: python data_health.py || true
+        run: python data_health.py || echo "data_health.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Master audit (imports + HTML + data + health)
         working-directory: python
         run: python _audit_master.py || echo "_audit_master.py" >> "$RUNNER_TEMP/failed_steps.txt"

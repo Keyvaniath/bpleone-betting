@@ -25,6 +25,12 @@ import datetime as dt
 from typing import Any, Dict, List, Optional
 
 
+def _nz(v, d):
+    """None-safe default (2026-10-26): `.get(k, d)` only covers a MISSING key;
+    a key stored as None still reaches the arithmetic and crashes."""
+    return d if v is None else v
+
+
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 OUT = os.path.join(DATA_DIR, "soccer_team_score_1h.json")
 
@@ -60,7 +66,7 @@ def _american(p: float) -> Optional[int]:
 def _process_league(state_file: str, league: str) -> List[Dict[str, Any]]:
     state = _load(os.path.join(DATA_DIR, state_file))
     games = state.get("games") or state.get("events") or []
-    base = LEAGUE_BASELINES.get(league, 1.4)
+    base = _nz(LEAGUE_BASELINES.get(league), 1.4)
 
     rows = []
     for g in games:

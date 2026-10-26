@@ -59,7 +59,7 @@ def run() -> Dict[str, Any]:
         lines.append("## 🐋 WHALES (size up max)")
         for w in top_whales[:3]:
             lines.append(f"- **{w.get('sport')}** · {w.get('player_or_matchup')} {w.get('market')} · "
-                          f"{w.get('prob',0)*100:.0f}% / +{_fmtv(w.get('edge_pct'), '.1f', 0)}%")
+                          f"{(w.get('prob') or 0)*100:.0f}% / +{_fmtv(w.get('edge_pct'), '.1f', 0)}%")
             for r in w.get("reasons", [])[:3]:
                 lines.append(f"  - {r}")
         lines.append("")
@@ -68,7 +68,7 @@ def run() -> Dict[str, Any]:
         lines.append(f"## 💪 STRONG ({len(strong_whales)} picks)")
         for w in strong_whales[:5]:
             lines.append(f"- [{w.get('sport')}] {w.get('player_or_matchup')} {w.get('market')} · "
-                          f"{w.get('prob',0)*100:.0f}% / +{_fmtv(w.get('edge_pct'), '.1f', 0)}%")
+                          f"{(w.get('prob') or 0)*100:.0f}% / +{_fmtv(w.get('edge_pct'), '.1f', 0)}%")
         lines.append("")
 
     # Today's locks
@@ -76,7 +76,7 @@ def run() -> Dict[str, Any]:
     if todays_locks:
         lines.append("## 🔒 5 Daily Locks")
         for L in todays_locks:
-            lines.append(f"- **{L.get('player_or_matchup')}** {L.get('market')} ({L.get('sport')}) -- {L.get('prob',0)*100:.0f}% / +{_fmtv(L.get('edge_pct'), '.1f', 0)}%")
+            lines.append(f"- **{L.get('player_or_matchup')}** {L.get('market')} ({L.get('sport')}) -- {(L.get('prob') or 0)*100:.0f}% / +{_fmtv(L.get('edge_pct'), '.1f', 0)}%")
         lines.append("")
 
     # Top sharp signals

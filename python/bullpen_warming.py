@@ -56,8 +56,8 @@ def run() -> Dict[str, Any]:
             ls = feed.get("liveData", {}).get("linescore", {}) or {}
             cur_inning = ls.get("currentInning") or 0
             inning_state = (ls.get("inningState") or "").lower()
-            away_runs = (ls.get("teams") or {}).get("away", {}).get("runs", 0)
-            home_runs = (ls.get("teams") or {}).get("home", {}).get("runs", 0)
+            away_runs = ((ls.get("teams") or {}).get("away", {}).get("runs") or 0)
+            home_runs = ((ls.get("teams") or {}).get("home", {}).get("runs") or 0)
             run_diff = abs(home_runs - away_runs)
             # Save opportunity: 9th inning, leading by <= 3, top of 9th if home leads
             is_save_opp = cur_inning >= 8 and 0 < run_diff <= 3

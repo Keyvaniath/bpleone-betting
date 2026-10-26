@@ -62,7 +62,7 @@ def run() -> Dict[str, Any]:
         if isinstance(r, dict):
             m = r.get("matchup", "")
             p_over = _safe(r.get("p_over"))
-            first_3_p[m] = max(first_3_p.get(m, 0), p_over)
+            first_3_p[m] = max((first_3_p.get(m) or 0), p_over)
 
     inn_4_6_over: Dict[str, bool] = {}
     for r in (inn_4_6.get("rows") or []):
@@ -89,7 +89,7 @@ def run() -> Dict[str, Any]:
     for r in (pitcher_conf.get("rows") or []):
         if isinstance(r, dict) and "LOCK" in (r.get("tier") or ""):
             m = r.get("matchup", "")
-            pitcher_locks_by_matchup[m] = pitcher_locks_by_matchup.get(m, 0) + 1
+            pitcher_locks_by_matchup[m] = (pitcher_locks_by_matchup.get(m) or 0) + 1
 
     blowout_matchups: set = set()
     for a in (blowout.get("alerts") or []):
@@ -102,8 +102,8 @@ def run() -> Dict[str, Any]:
     for m in all_matchups:
         if not m: continue
         signals: Dict[str, int] = {}
-        signals["EARLY_RUN_LIKELY"] = 1 if first_inn_p.get(m, 0) >= 0.45 else 0
-        signals["FIRST_3_OVER"] = 1 if first_3_p.get(m, 0) >= 0.55 else 0
+        signals["EARLY_RUN_LIKELY"] = 1 if (first_inn_p.get(m) or 0) >= 0.45 else 0
+        signals["FIRST_3_OVER"] = 1 if (first_3_p.get(m) or 0) >= 0.55 else 0
         signals["INN_4_6_OVER"] = 1 if inn_4_6_over.get(m) else 0
         signals["INN_7_9_OVER"] = 1 if inn_7_9_over.get(m) else 0
         signals["GAME_TOTAL_OVER"] = 1 if gt_over.get(m) else 0

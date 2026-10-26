@@ -270,6 +270,8 @@ def optimize(pool: List[Dict[str, Any]], obj_key: str,
 
     order = sorted(range(len(states)), key=lambda i: -sum(states[i]))  # high count first
     for pi, p in enumerate(pool):
+        if p.get("salary") is None:   # no DK price -> not rosterable (index kept for lus)
+            continue
         w = int(p["salary"]) // unit
         v = float(p.get(obj_key) or 0.0)
         d = _POS_I[p["pos"]]

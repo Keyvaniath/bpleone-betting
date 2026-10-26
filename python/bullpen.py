@@ -103,9 +103,9 @@ def fetch_team_bullpen_load(team_id: int) -> Dict[str, Any]:
     for r in top_2:
         # Real high-leverage usage: 2 outings with >= 2 IP combined, OR
         # 1 outing with >= 25 pitches (closer's typical full workload).
-        if r.get("appearances", 0) >= 2 and r.get("ip", 0) >= 2.0:
+        if (r.get("appearances") or 0) >= 2 and (r.get("ip") or 0) >= 2.0:
             closer_warning.append(r["name"])
-        elif r.get("pitches", 0) >= 25 and r.get("appearances", 0) == 1:
+        elif (r.get("pitches") or 0) >= 25 and (r.get("appearances") or 0) == 1:
             closer_warning.append(r["name"])
     return {
         "games_inspected": games_inspected,

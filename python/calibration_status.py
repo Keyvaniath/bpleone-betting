@@ -117,7 +117,7 @@ def run() -> Dict[str, Any]:
         # only explicitly-provided market lines do
         has_real_market = isinstance(fair, (int, float)) and fair not in (-110, -136)
         d = sports_with_market if has_real_market else sports_without_market
-        d[sp] = d.get(sp, 0) + 1
+        d[sp] = (d.get(sp) or 0) + 1
 
     payload = {
         "generated_at": dt.datetime.now().isoformat(timespec="seconds"),

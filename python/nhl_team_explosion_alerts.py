@@ -113,7 +113,7 @@ def run() -> Dict[str, Any]:
         signals["TT_OVER"] = 1 if tt_dir in ("STRONG_OVER", "LEAN_OVER") else 0
 
         # 4+ goals
-        p_4 = four_idx.get(key, 0)
+        p_4 = (four_idx.get(key) or 0)
         signals["4PLUS_GOALS_YES"] = 1 if p_4 >= 0.35 else 0
 
         # Opp goalie fatigued

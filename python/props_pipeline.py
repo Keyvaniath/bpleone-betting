@@ -33,6 +33,12 @@ except ImportError:
 import stats_repo as sr
 
 
+def _nz(v, d):
+    """None-safe default (2026-10-26): `.get(k, d)` only covers a MISSING key;
+    a key stored as None still reaches the arithmetic and crashes."""
+    return d if v is None else v
+
+
 ODDS_BASE = "https://api.the-odds-api.com/v4"
 OUT_PATH = os.path.join(os.path.dirname(__file__), "..", "data", "props.json")
 
@@ -279,10 +285,10 @@ def project_pitcher_ks(pid: int, line: float, opp_team_id: Optional[int] = None,
         # Recent-form K/9 blend.
         recent = sr.pitcher_recent_form(pid, n=3)
         recent_k9 = recent.get("k9") if recent and recent.get("k9") else None
-        if recent_k9 is not None and recent.get("starts", 0) >= 2:
+        if recent_k9 is not None and (recent.get("starts") or 0) >= 2:
             blended_k9 = 0.6 * recent_k9 + 0.4 * season_k9
-            recent_ip = recent.get("ip", 0)
-            recent_starts = recent.get("starts", 0)
+            recent_ip = (recent.get("ip") or 0)
+            recent_starts = (recent.get("starts") or 0)
             recent_ip_per_start = (recent_ip / recent_starts) if recent_starts else avg_ip_per_start
             blended_ip = 0.6 * max(3.0, min(7.5, recent_ip_per_start)) + 0.4 * expected_ip
         else:
@@ -887,7 +893,7 @@ def _build_props_from_bovada(markets: List[str], max_games: int) -> Dict[str, An
             skipped += 1
 
         # Apply calibration correction (same as primary path)
-        cf = corrections.get(market_key, 1.0)
+        cf = _nz(corrections.get(market_key), 1.0)
         if p_over is not None and cf != 1.0:
             p_over = max(0.001, min(0.999, p_over * cf))
             dbg["correction_applied"] = round(cf, 4)
@@ -1183,7 +1189,7 @@ def build_props(markets: Optional[List[str]] = None, max_games: int = MAX_GAMES)
                     continue
                 dbg["lineup_status"] = lineup_status
                 # Apply calibration correction from yesterday's outcomes.
-                cf = corrections.get(market_key, 1.0)
+                cf = _nz(corrections.get(market_key), 1.0)
                 p_over_raw = p_over
                 if cf != 1.0:
                     p_over = max(0.001, min(0.999, p_over * cf))

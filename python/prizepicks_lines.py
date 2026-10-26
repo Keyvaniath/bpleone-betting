@@ -98,7 +98,7 @@ def run(leagues: Optional[Dict[str, int]] = None) -> Dict[str, Any]:
         lines.extend(fetch_league(sport, lid))
     by_sport: Dict[str, int] = {}
     for r in lines:
-        by_sport[r["sport"]] = by_sport.get(r["sport"], 0) + 1
+        by_sport[r["sport"]] = (by_sport.get(r["sport"]) or 0) + 1
     result = {
         "generated_at": dt.datetime.utcnow().isoformat(timespec="seconds"),
         "source": "prizepicks public projections API (free, no key)",

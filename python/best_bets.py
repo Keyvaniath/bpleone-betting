@@ -43,6 +43,23 @@ from typing import Any, Dict, List, Optional
 import prob_calibration as pc   # side/line-aware overconfidence guard
 
 
+def _nz(v, d):
+    """None-safe default (2026-10-26): `.get(k, d)` only covers a MISSING key;
+    a key stored as None still reaches the arithmetic and crashes."""
+    return d if v is None else v
+
+
+def _fmtv(v, spec, dflt="?"):
+    """Display-safe format (2026-10-26): `{x.get(k):spec}` crashes when the
+    value is None; a label or print must never fail the module."""
+    if v is None:
+        return str(dflt)
+    try:
+        return format(v, spec)
+    except (TypeError, ValueError):
+        return str(v)
+
+
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 PROPS_PATH = os.path.join(DATA_DIR, "props.json")
 PICKEM_PATH = os.path.join(DATA_DIR, "pickem.json")
@@ -145,7 +162,7 @@ def score_prop(p: Dict[str, Any], bd: Dict[str, Any], wx: Dict[str, Any],
     bdp = bd.get(str(pid)) or {}
     acc = bdp.get("model_accuracy") or {}
     tier = acc.get("trust_tier")
-    if tier == "trusted" and acc.get("n_props", 0) >= 20:
+    if tier == "trusted" and (acc.get("n_props") or 0) >= 20:
         score += 6
         factors.append(f"Player trust: TRUSTED ({int((acc.get('hit_rate') or 0)*100)}% on {acc.get('n_props')} props)")
     elif tier == "untrusted":
@@ -177,7 +194,7 @@ def score_prop(p: Dict[str, Any], bd: Dict[str, Any], wx: Dict[str, Any],
     matchup = _player_team_to_matchup(pid, matchups)
     wg = _weather_for_matchup(matchup, wx)
     if wg and market in ("batter_home_runs", "batter_total_bases", "batter_hits"):
-        mult = wg.get("hr_mult_delta_pct", 0)
+        mult = (wg.get("hr_mult_delta_pct") or 0)
         lean = wg.get("lean")
         if mult >= 6 and play == "OVER":
             score += 4
@@ -310,16 +327,16 @@ def run() -> Dict[str, Any]:
             continue
         candidates.append({
             "source": "SGP",
-            "label": f"{sg.get('matchup')} {top.get('n_legs')}-leg SGP @ {top.get('fair_american'):+d}",
+            "label": f"{sg.get('matchup')} {top.get('n_legs')}-leg SGP @ {_fmtv(top.get('fair_american'), '+d')}",
             "team": None, "player": None, "player_id": None,
             "market": "sgp", "line": top.get("fair_decimal"),
             "play": f"{top.get('n_legs')}-leg",
             "model_prob": top.get("joint_prob"),
             "edge_pct": top.get("ev_pct"),
             "url_anchor": "parlays.html",
-            "quality_score": min(100, 55 + int(top.get("ev_pct", 0) * 0.4)),
-            "stars": 5 if top.get("ev_pct", 0) >= 40 else 4 if top.get("ev_pct", 0) >= 20 else 3,
-            "factors": [f"Joint prob {top.get('joint_prob'):.3f} (correlation boost {top.get('correlation_boost'):+.3f})"] +
+            "quality_score": min(100, 55 + int((top.get("ev_pct") or 0) * 0.4)),
+            "stars": 5 if (top.get("ev_pct") or 0) >= 40 else 4 if (top.get("ev_pct") or 0) >= 20 else 3,
+            "factors": [f"Joint prob {_fmtv(top.get('joint_prob'), '.3f')} (correlation boost {_fmtv(top.get('correlation_boost'), '+.3f')})"] +
                         [f"Leg: {l.get('label')}" for l in (top.get("legs") or [])[:4]],
             "risks": ["SGPs are correlated -- one bad leg sinks the parlay"],
         })
@@ -425,7 +442,9 @@ def run() -> Dict[str, Any]:
     # LoL parlays
     lol_par = _load(os.path.join(DATA_DIR, "lol_parlays.json"))
     for par in (lol_par.get("parlays") or [])[:2]:
-        amer = par.get("parlay_fair_american", 0)
+        amer = par.get("parlay_fair_american")
+        if amer is None:      # an unpriced parlay is not a candidate
+            continue
         candidates.append({
             "source": "LOL",
             "label": f"LOL {par.get('n_legs')}-leg parlay @ {('+' if amer >= 0 else '')}{amer}",
@@ -450,7 +469,7 @@ def run() -> Dict[str, Any]:
         if 0.28 <= p_sweep_a <= 0.50:
             candidates.append({
                 "source": "CS",
-                "label": f"CS {m['team_a']} {(m.get('best_of',3)+1)//2}-0 SWEEP vs {m['team_b']}",
+                "label": f"CS {m['team_a']} {(_nz(m.get('best_of'), 3)+1)//2}-0 SWEEP vs {m['team_b']}",
                 "team": m["team_a"], "player": None, "player_id": None,
                 "market": "cs_sweep", "line": m.get("fair_sweep_a_american"),
                 "play": "SWEEP",
@@ -618,7 +637,7 @@ def run() -> Dict[str, Any]:
             })
 
     # Sort and rank
-    candidates.sort(key=lambda c: -c.get("quality_score", 0))
+    candidates.sort(key=lambda c: -(c.get("quality_score") or 0))
     for i, c in enumerate(candidates[:50]):
         c["rank"] = i + 1
     top = candidates[:50]

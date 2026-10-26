@@ -51,16 +51,22 @@ import datetime as dt
 from typing import Any, Dict, List, Optional, Tuple
 
 
+def _nz(v, d):
+    """None-safe default (2026-10-26): `.get(k, d)` only covers a MISSING key;
+    a key stored as None still reaches the arithmetic and crashes."""
+    return d if v is None else v
+
+
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 TR_PATH = os.path.join(DATA_DIR, "track_record.json")
 OUT_PATH = os.path.join(DATA_DIR, "context_calibration.json")
 
 try:
     import config as _cfg
-    MIN_SLICE_N = _cfg.get("context_calibration.min_slice_n", 80)
-    BIAS_THRESHOLD = _cfg.get("context_calibration.bias_threshold", 0.04)
-    Z_THRESHOLD = _cfg.get("context_calibration.z_threshold", 1.5)
-    MAX_CORRECTION = _cfg.get("context_calibration.max_correction", 1.20)
+    MIN_SLICE_N = _nz(_cfg.get("context_calibration.min_slice_n"), 80)
+    BIAS_THRESHOLD = _nz(_cfg.get("context_calibration.bias_threshold"), 0.04)
+    Z_THRESHOLD = _nz(_cfg.get("context_calibration.z_threshold"), 1.5)
+    MAX_CORRECTION = _nz(_cfg.get("context_calibration.max_correction"), 1.20)
 except Exception:
     MIN_SLICE_N = 80
     BIAS_THRESHOLD = 0.04
@@ -226,7 +232,7 @@ def run() -> Dict[str, Any]:
         # Compute EXTRA bias above the market baseline. Bulk-market
         # calibration handles `mean_residual` already; what's actionable
         # at the context level is `extra_residual` (this slice minus bulk).
-        baseline_resid = (market_baseline.get(market) or {}).get("mean_residual", 0.0)
+        baseline_resid = ((market_baseline.get(market) or {}).get("mean_residual") or 0.0)
         extra = m["mean_residual"] - baseline_resid
         m["extra_residual"] = round(extra, 4)
         # Filter to "interesting" slices: significant z OR large extra bias

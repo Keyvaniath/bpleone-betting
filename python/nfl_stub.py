@@ -60,4 +60,4 @@ def run():
 
 if __name__ == "__main__":
     p = run()
-    print(f"Wrote {OUT_PATH}: NFL stub (enabled={p['enabled']})")
+    print(f"Wrote {OUT_PATH}: NFL stub (enabled={p.get('enabled', 'kept real feed')})")

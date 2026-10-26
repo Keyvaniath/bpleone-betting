@@ -66,7 +66,7 @@ def run() -> Dict[str, Any]:
 
         # Filter explosions to those with 5+ signals
         strong_explosions = [e for e in explosions
-                             if e.get("n_positive_signals", 0) >= 5]
+                             if (e.get("n_positive_signals") or 0) >= 5]
         if not strong_explosions: continue
 
         for se in strong_explosions:
@@ -74,13 +74,13 @@ def run() -> Dict[str, Any]:
             # Side A player ceilings on same team
             side_a_ceilings = [c for c in ceilings
                                if (c.get("team") or "").upper() == side_a_team
-                               and c.get("n_aligned_overs", 0) >= 4]
+                               and (c.get("n_aligned_overs") or 0) >= 4]
             if not side_a_ceilings: continue
 
             # Side B fades (opposing team)
             side_b_fades = [f for f in fades
                             if (f.get("team") or "").upper() != side_a_team
-                            and f.get("n_aligned_unders", 0) >= 3]
+                            and (f.get("n_aligned_unders") or 0) >= 3]
             if not side_b_fades: continue
 
             alignments.append({

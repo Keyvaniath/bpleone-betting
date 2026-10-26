@@ -80,7 +80,7 @@ def build_all() -> Dict[str, Any]:
     by_type: Dict[str, int] = {}
     for t in txns:
         c = t.get("type_code") or "?"
-        by_type[c] = by_type.get(c, 0) + 1
+        by_type[c] = (by_type.get(c) or 0) + 1
     return {
         "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
         "lookback_days": 5,

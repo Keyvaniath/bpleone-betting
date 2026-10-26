@@ -90,7 +90,7 @@ def run():
     pending = [h for h in hist if not h.get("settled") and not h.get("voided")]
     voided = [h for h in hist if h.get("voided")]
     wins = sum(1 for h in settled if h.get("outcome") == "WIN")
-    net = sum(h.get("pl_units", 0) for h in settled)
+    net = sum((h.get("pl_units") or 0) for h in settled)
     payload = {
         "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
         "total_pots": len(hist),

@@ -127,7 +127,7 @@ def write_team_form(payload: Dict[str, Any], path: str = OUT_PATH) -> None:
     print(f"  Teams covered: {len(payload.get('teams', {}))}")
     # Show 3 hottest and 3 coldest teams
     teams = payload.get("teams") or {}
-    sorted_by_diff = sorted(teams.items(), key=lambda kv: -kv[1].get("run_diff", 0))
+    sorted_by_diff = sorted(teams.items(), key=lambda kv: -(kv[1].get("run_diff") or 0))
     print("  Hottest 3 (last 10 run diff):")
     for name, t in sorted_by_diff[:3]:
         print(f"    {name:25} {t.get('wins')}-{t.get('losses')} ({t.get('streak')}), "

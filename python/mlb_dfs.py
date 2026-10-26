@@ -38,6 +38,12 @@ from typing import Any, Dict, List, Optional, Tuple
 import props_pipeline as pp   # resolve_player_id + _batter_season (cached statsapi)
 import stats_repo as sr
 
+
+def _nz(v, d):
+    """None-safe default (2026-10-26): `.get(k, d)` only covers a MISSING key;
+    a key stored as None still reaches the arithmetic and crashes."""
+    return d if v is None else v
+
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 SAL_CACHE = os.path.join(DATA_DIR, "mlb_dfs_salaries.json")
 OUT = os.path.join(DATA_DIR, "mlb_dfs.json")
@@ -309,8 +315,8 @@ def _slotify(lineup: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
     out = []
     for r in rows:
         pos = r.get("slot_pos")
-        counters[pos] = counters.get(pos, 0) + 1
-        label = pos if ROSTER_MAX.get(pos, 1) == 1 else f"{pos}{counters[pos]}"
+        counters[pos] = (counters.get(pos) or 0) + 1
+        label = pos if _nz(ROSTER_MAX.get(pos), 1) == 1 else f"{pos}{counters[pos]}"
         out.append({"slot": label, "name": r.get("name"), "team": r.get("team"),
                     "pos": r.get("pos"), "salary": r.get("salary"),
                     "proj": r.get("proj"),

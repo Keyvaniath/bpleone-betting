@@ -43,11 +43,11 @@ jobs:
       - name: Refresh NBA / NHL / WNBA / MLS / EPL / NCAAF / NFL state
         working-directory: python
         run: |
-          python nba_pipeline.py || true
-          python nhl_pipeline.py || true
-          python wnba_pipeline.py || true
-          python mls_pipeline.py || true
-          python epl_pipeline.py || true
+          python nba_pipeline.py || echo "nba_pipeline.py" >> "$RUNNER_TEMP/failed_steps.txt"
+          python nhl_pipeline.py || echo "nhl_pipeline.py" >> "$RUNNER_TEMP/failed_steps.txt"
+          python wnba_pipeline.py || echo "wnba_pipeline.py" >> "$RUNNER_TEMP/failed_steps.txt"
+          python mls_pipeline.py || echo "mls_pipeline.py" >> "$RUNNER_TEMP/failed_steps.txt"
+          python epl_pipeline.py || echo "epl_pipeline.py" >> "$RUNNER_TEMP/failed_steps.txt"
 
       - name: Live game momentum tracker (poll-over-poll P(home) swings)
         working-directory: python

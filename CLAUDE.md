@@ -41,6 +41,43 @@ bpleone-site/
 
 ## Current deployment state (LIVE)
 
+- **2026-10-26 (pm) — CRASH AUDIT: EVERY CI MODULE REPLAYED ON BAD DAYS.** Method:
+  a sandbox copy replays all 363 python commands of daily-pipeline +
+  heartbeat + live-games + training-loop with the network cut (sitecustomize
+  denies sockets, no-op sleep) under three data states -- as-is, "off-day"
+  (slate lists emptied) and "nulls" (numeric fields of the first record of
+  every list set to None). Round 1: 11 / 13 / 21 modules crashed; now 2 / 2 /
+  2-3, and those are network-only (outcomes.py, smoke_tests.py). Fixed:
+  (1) **`X.get(k, NUM)` feeding math/compare/assignment** -- the default only
+  covers a MISSING key; a stored None crashed. 586 sites in 251 files rewritten
+  mechanically: default 0 -> `(X.get(k) or 0)`, else `_nz(X.get(k), D)` (None-
+  only fallback, keeps a real 0); assignments to a name the function later
+  tests `is None` were left alone. Verified at the AST level (HEAD with the
+  rewrite applied == working tree, modulo the helper) -- that check caught a
+  dropped-paren bug in the first pass (`(a or {}).get(k, 0)` -> `a or {}.get(k)
+  or 0`) before it shipped. **RULE: write `(d.get(k) or 0)` / `_nz(d.get(k),
+  D)`, never `d.get(k, D)` in arithmetic.** (2) **Failure-path payloads must be
+  shape-identical**: espn_generic (8 sport pipelines), lol_model, ufc_matchup,
+  cfb_model, nfl_stub, training_convergence all crashed their own print on the
+  empty/error shape. (3) **espn_generic no longer clobbers a good board with
+  0 games when ESPN is unreachable** (keeps a <6h-old board, flags
+  fetch_error, leaves generated_at so health ages it). (4) **D1 sync had not
+  completed since 6/28**: it re-sent all 15k picks (~150 serial requests)
+  every heartbeat inside a 1-min step, timed out, and the settle pass (after
+  every insert) never ran. Now incremental (digest per pick in
+  data/.d1_sync_digest.json), 30s self-budget, progress saved per chunk,
+  entry_odds = book_american first, red only after 24h with no progress.
+  (5) **Bounded heartbeat steps (timeout-minutes + continue-on-error) timed out
+  invisibly** -- killed before `|| echo` runs. They now carry ids `soft_N` and
+  the gate reads `toJSON(steps)` outcomes. (6) The last 12 python `|| true`
+  steps (live-games sport pipelines, alpha_email, d1_sync, live_alerter,
+  multi_book_lines, preflight, data_health) now record-and-continue. (7) The
+  Worker's /db/log-picks + /db/settle-picks accepted anyone's POST; a
+  SYNC_TOKEN check is staged (enforced only once Brandon sets the Worker
+  secret + EDGESTAT_SYNC_TOKEN GitHub secret and deploys -- no behaviour change
+  until then). Harness: tools/crash_replay/ (README there) -- rerun it after
+  any broad refactor.
+
 - **2026-10-26 — TWO RED WORKFLOWS, NO CASCADE (the 10/22 design working):**
   heartbeat + daily-pipeline went red every run 10/25-10/26 naming exactly
   calibration_status.py and cross_sport_parlay_builder.py while every other

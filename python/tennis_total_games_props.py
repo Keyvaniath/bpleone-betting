@@ -69,7 +69,7 @@ def run() -> Dict[str, Any]:
         if not elo1 or not elo2: continue
         elo_diff = abs(elo1 - elo2)
         surface = m.get("surface", "hard")
-        surface_adj = SURFACE_ADJ.get(surface, 0.0)
+        surface_adj = (SURFACE_ADJ.get(surface) or 0.0)
         format_bo = m.get("format") or "bo3"  # best of 3 default
 
         # Expected total games

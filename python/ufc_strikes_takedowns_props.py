@@ -22,6 +22,12 @@ import datetime as dt
 from typing import Any, Dict, List, Optional
 
 
+def _nz(v, d):
+    """None-safe default (2026-10-26): `.get(k, d)` only covers a MISSING key;
+    a key stored as None still reaches the arithmetic and crashes."""
+    return d if v is None else v
+
+
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 OUT = os.path.join(DATA_DIR, "ufc_strikes_takedowns_props.json")
 
@@ -117,7 +123,7 @@ def run() -> Dict[str, Any]:
             "LIGHT": "LW", "FEATH": "FW", "BANTA": "BW", "FLYWE": "FlyW",
             "WOMEN": None,  # need finer disambiguation
         }
-        expected_mins = EXPECTED_MINS.get(weight_key_map.get(weight, weight), 12.5)
+        expected_mins = _nz(EXPECTED_MINS.get(weight_key_map.get(weight, weight)), 12.5)
         # Multiply by 2 fighters per round? No -- strikes are per fighter.
         # Each fighter's strikes per fight ≈ SLPM * fight_mins.
 

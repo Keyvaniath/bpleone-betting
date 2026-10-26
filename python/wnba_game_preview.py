@@ -59,9 +59,9 @@ def run() -> Dict[str, Any]:
         strong_by_team: Dict[str, int] = {}
         for p in players:
             if "LOCK" in (p.get("tier") or ""):
-                locks_by_team[p.get("team") or ""] = locks_by_team.get(p.get("team") or "", 0) + 1
+                locks_by_team[p.get("team") or ""] = (locks_by_team.get(p.get("team") or "") or 0) + 1
             elif "STRONG" in (p.get("tier") or ""):
-                strong_by_team[p.get("team") or ""] = strong_by_team.get(p.get("team") or "", 0) + 1
+                strong_by_team[p.get("team") or ""] = (strong_by_team.get(p.get("team") or "") or 0) + 1
 
         locks = [p for p in players if "LOCK" in (p.get("tier") or "")]
         strong = [p for p in players if "STRONG" in (p.get("tier") or "")]
@@ -102,8 +102,8 @@ def run() -> Dict[str, Any]:
         })
 
     tier_order = {"GAME_LOCK": 4, "GAME_STRONG": 3, "GAME_LEAN": 2, "GAME_PASS": 1}
-    previews.sort(key=lambda g: (-tier_order.get(g["tier"], 0),
-                                  -g.get("n_player_locks", 0)))
+    previews.sort(key=lambda g: (-(tier_order.get(g["tier"]) or 0),
+                                  -(g.get("n_player_locks") or 0)))
 
     out = {
         "generated_at": dt.datetime.utcnow().isoformat(timespec="seconds"),

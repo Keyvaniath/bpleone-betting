@@ -32,6 +32,12 @@ import datetime as dt
 from typing import Any, Dict, List, Optional
 
 
+def _nz(v, d):
+    """None-safe default (2026-10-26): `.get(k, d)` only covers a MISSING key;
+    a key stored as None still reaches the arithmetic and crashes."""
+    return d if v is None else v
+
+
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 OUT = os.path.join(DATA_DIR, "soccer_corners_props.json")
 
@@ -79,7 +85,7 @@ def _american(p: float) -> Optional[int]:
 def _league_baseline(league: str) -> float:
     """Per-team corners baseline for a league. Returns total expected per match."""
     key = (league or "").lower()
-    base = LEAGUE_BASELINES.get(key, 5.0)  # default ~10/match total
+    base = _nz(LEAGUE_BASELINES.get(key), 5.0)  # default ~10/match total
     return base * 2  # home + away combined
 
 

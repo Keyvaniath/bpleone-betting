@@ -16,6 +16,12 @@ from itertools import combinations
 from typing import Any, Dict, List
 
 
+def _nz(v, d):
+    """None-safe default (2026-10-26): `.get(k, d)` only covers a MISSING key;
+    a key stored as None still reaches the arithmetic and crashes."""
+    return d if v is None else v
+
+
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 PROPS_PATH = os.path.join(DATA_DIR, "lol_props.json")
 OUT_PATH = os.path.join(DATA_DIR, "lol_parlays.json")
@@ -70,7 +76,7 @@ def run() -> Dict[str, Any]:
                 "team": m.get("team_a"), "opponent": m.get("team_b"),
                 "prob": m.get("p_sweep_a"),
                 "fair_american": m.get("fair_sweep_a_american"),
-                "label": f"{m.get('team_a')} {(m.get('best_of',3)+1)//2}-0 sweep ({m.get('league')})",
+                "label": f"{m.get('team_a')} {(_nz(m.get('best_of'), 3)+1)//2}-0 sweep ({m.get('league')})",
             })
 
     # De-dup: only one leg per match_id (can't parlay both sides of same series)

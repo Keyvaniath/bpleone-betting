@@ -12,6 +12,12 @@ from __future__ import annotations
 import os, json, datetime as dt
 from typing import Any, Dict, List
 
+
+def _nz(v, d):
+    """None-safe default (2026-10-26): `.get(k, d)` only covers a MISSING key;
+    a key stored as None still reaches the arithmetic and crashes."""
+    return d if v is None else v
+
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 MATCHUPS_PATH = os.path.join(DATA_DIR, "matchups.json")
 TODAY_PATH = os.path.join(DATA_DIR, "today.json")
@@ -47,7 +53,7 @@ def run() -> Dict[str, Any]:
     for g in matchups.get("games") or []:
         matchup = g.get("matchup")
         park = g.get("park")
-        park_factor = park_factors.get(matchup, 1.0)
+        park_factor = _nz(park_factors.get(matchup), 1.0)
         # Adjust everyone's HR/PA by park factor
         p_no_hr = 1.0
         n_batters = 0

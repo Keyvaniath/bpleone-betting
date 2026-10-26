@@ -79,7 +79,7 @@ def run() -> Dict[str, Any]:
     if bankroll_sim.get("expected_pl") is not None:
         bs = bankroll_sim
         p = bs.get("percentiles") or {}
-        lines.append(f"- **MC simulation:** EV +${bs.get('expected_pl')}, {(bs.get('p_profit',0)*100):.0f}% P(profit), p05 ${p.get('p05')} / p95 ${p.get('p95')}")
+        lines.append(f"- **MC simulation:** EV +${bs.get('expected_pl')}, {((bs.get('p_profit') or 0)*100):.0f}% P(profit), p05 ${p.get('p05')} / p95 ${p.get('p95')}")
     lines.append("")
 
     # Top 5 best bets
@@ -165,9 +165,9 @@ def run() -> Dict[str, Any]:
     strong_nrfi = []
     strong_yrfi = []
     for g in nrfi_games:
-        if (g.get("p_yrfi", 0) - (1 - baseline)) > 0.10:
+        if ((g.get("p_yrfi") or 0) - (1 - baseline)) > 0.10:
             strong_yrfi.append(g.get("matchup"))
-        elif (g.get("p_nrfi", 0) - baseline) > 0.10:
+        elif ((g.get("p_nrfi") or 0) - baseline) > 0.10:
             strong_nrfi.append(g.get("matchup"))
     if strong_yrfi or strong_nrfi:
         lines.append("## NRFI/YRFI strong leans")
@@ -285,12 +285,12 @@ def run() -> Dict[str, Any]:
     # Self-learning calibration block (new sports)
     cal = _load(os.path.join(DATA_DIR, "esports_calibration.json"))
     cal_sports = cal.get("sports") or {}
-    settled_total = sum(s.get("n_settled", 0) for s in cal_sports.values())
+    settled_total = sum((s.get("n_settled") or 0) for s in cal_sports.values())
     if settled_total > 0:
         lines.append("## Self-learning calibration (esports + KBO)")
         for sport in ("lol", "cs", "kbo"):
             s = cal_sports.get(sport, {})
-            if s.get("n_settled", 0) > 0:
+            if (s.get("n_settled") or 0) > 0:
                 lines.append(f"- **{sport.upper()}:** {s['n_settled']} settled | brier {s.get('brier','?')} | ECE {s.get('ece','?')}")
                 reco = s.get("calibration_recommendation", {})
                 if reco.get("applied"):

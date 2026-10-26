@@ -79,7 +79,7 @@ def run() -> Dict[str, Any]:
 
     underdog_finishers: List[Dict[str, Any]] = []
     for name, fighter_data in method_idx.items():
-        odds = odds_by_fighter.get(name, 0)
+        odds = (odds_by_fighter.get(name) or 0)
         # Underdog: American odds >= +150
         if odds < 150: continue
 

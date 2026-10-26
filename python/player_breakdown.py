@@ -60,6 +60,12 @@ import urllib.error
 from typing import Any, Dict, List, Optional
 
 
+def _nz(v, d):
+    """None-safe default (2026-10-26): `.get(k, d)` only covers a MISSING key;
+    a key stored as None still reaches the arithmetic and crashes."""
+    return d if v is None else v
+
+
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 TODAY_PATH = os.path.join(DATA_DIR, "today.json")
 MATCHUPS_PATH = os.path.join(DATA_DIR, "matchups.json")
@@ -74,7 +80,7 @@ HTTP_TIMEOUT = 8
 
 try:
     import config as _cfg
-    MAX_PLAYERS_API = _cfg.get("player_breakdown.max_players_api", 60)
+    MAX_PLAYERS_API = _nz(_cfg.get("player_breakdown.max_players_api"), 60)
 except Exception:
     MAX_PLAYERS_API = 60
 

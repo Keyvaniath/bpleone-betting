@@ -19,6 +19,12 @@ import datetime as dt
 from typing import Any, Dict, List
 
 
+def _nz(v, d):
+    """None-safe default (2026-10-26): `.get(k, d)` only covers a MISSING key;
+    a key stored as None still reaches the arithmetic and crashes."""
+    return d if v is None else v
+
+
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 OUT_PATH = os.path.join(DATA_DIR, "multi_sport_correlation.json")
 
@@ -41,7 +47,7 @@ def run() -> Dict[str, Any]:
         games = [g for g in (state.get("games") or []) if g.get("state") != "post"]
         if not games:
             continue
-        avg_phome = sum(g.get("p_home_win", 0.5) for g in games) / len(games)
+        avg_phome = sum((g.get("p_home_win") or 0.5) for g in games) / len(games)
         home_fav = sum(1 for g in games if (g.get("p_home_win") or 0.5) >= 0.55)
         home_dog = sum(1 for g in games if (g.get("p_home_win") or 0.5) <= 0.45)
         sport_summary[sport] = {
@@ -54,7 +60,7 @@ def run() -> Dict[str, Any]:
 
     # Cross-sport regime
     if today:
-        regime_phome = sum(g.get("p_home_win", 0.5) for g in today) / len(today)
+        regime_phome = sum(_nz(g.get("p_home_win"), 0.5) for g in today) / len(today)
         n_strong_home = sum(1 for g in today if (g.get("p_home_win") or 0.5) >= 0.60)
         n_strong_away = sum(1 for g in today if (g.get("p_home_win") or 0.5) <= 0.40)
     else:

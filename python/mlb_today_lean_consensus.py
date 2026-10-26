@@ -137,7 +137,7 @@ def run() -> Dict[str, Any]:
             dir_counts: Dict[str, int] = {}
             for lean in leans:
                 d = lean.split(":")[0]
-                dir_counts[d] = dir_counts.get(d, 0) + 1
+                dir_counts[d] = (dir_counts.get(d) or 0) + 1
             consensus = _classify(dir_counts)
             game_summary["markets"].append({
                 "market": market,

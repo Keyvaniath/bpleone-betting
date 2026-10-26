@@ -77,11 +77,11 @@ def run() -> Dict[str, Any]:
         score = _safe(conf.get("composite_score"))
         if score < 6: continue
 
-        proj_min = min_idx.get(name, 0)
+        proj_min = (min_idx.get(name) or 0)
         if proj_min < 34: continue
 
-        p_30 = pts30_idx.get(name, 0)
-        p_dd = dd_idx.get(name, 0)
+        p_30 = (pts30_idx.get(name) or 0)
+        p_dd = (dd_idx.get(name) or 0)
 
         watchlist.append({
             "player": conf.get("player") or name.title(),

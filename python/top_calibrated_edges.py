@@ -121,7 +121,7 @@ def run() -> Dict[str, Any]:
     by_type: Dict[str, int] = {}
     for e in all_edges:
         st = e["source_type"]
-        by_type[st] = by_type.get(st, 0) + 1
+        by_type[st] = (by_type.get(st) or 0) + 1
 
     out = {
         "generated_at": dt.datetime.utcnow().isoformat(timespec="seconds"),

@@ -102,10 +102,10 @@ def _props_of_day(top: Dict[str, Any], k: int = 5) -> List[Dict[str, Any]]:
                 return
             name = p.get("player_or_matchup")
             fam = p.get("market_family") or "?"
-            if not name or name in seen_players or fam_count.get(fam, 0) >= fam_cap:
+            if not name or name in seen_players or (fam_count.get(fam) or 0) >= fam_cap:
                 continue
             seen_players.add(name)
-            fam_count[fam] = fam_count.get(fam, 0) + 1
+            fam_count[fam] = (fam_count.get(fam) or 0) + 1
             out.append({
                 "player": name, "team": p.get("team"), "sport": p.get("sport"),
                 "market": _clean_market(p.get("market")), "market_family": fam,

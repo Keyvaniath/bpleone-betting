@@ -230,6 +230,17 @@ async function handleHTTP(request, env) {
   // D1 DATABASE ENDPOINTS (Pro plan -- pick history + backtest)
   // ============================================================
 
+  // WRITE AUTH (2026-10-26): the two D1 write routes were open to anyone --
+  // a POST could settle pending picks as wins in the copy the replayer reads.
+  // Enforced once the SYNC_TOKEN secret exists (`wrangler secret put
+  // SYNC_TOKEN`, same value as the EDGESTAT_SYNC_TOKEN GitHub secret that
+  // d1_sync.py sends); until then behaviour is unchanged so a deploy can't
+  // break the sync.
+  if ((path === "/db/log-picks" || path === "/db/settle-picks") && env.SYNC_TOKEN
+      && request.headers.get("X-EdgeStat-Sync") !== env.SYNC_TOKEN) {
+    return new Response(JSON.stringify({ error: "unauthorized" }), { status: 401, headers: cors });
+  }
+
   // POST /db/log-picks  body: { picks: [...] }  -- bulk insert picks
   // Idempotent: ON CONFLICT (pick_id) DO NOTHING
   if (path === "/db/log-picks" && request.method === "POST") {

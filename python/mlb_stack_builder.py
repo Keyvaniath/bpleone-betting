@@ -29,6 +29,12 @@ import datetime as dt
 from typing import Any, Dict, List
 
 
+def _nz(v, d):
+    """None-safe default (2026-10-26): `.get(k, d)` only covers a MISSING key;
+    a key stored as None still reaches the arithmetic and crashes."""
+    return d if v is None else v
+
+
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 OUT = os.path.join(DATA_DIR, "mlb_stack_builder.json")
 
@@ -50,12 +56,12 @@ def _safe(x, default=0.0):
 
 def _stack_label(stack: List[Dict[str, Any]], park_tier: str) -> str:
     """Label the stack by its character."""
-    avg_pwr = sum(b.get("power_bonus", 0) for b in stack) / max(len(stack), 1)
+    avg_pwr = sum((b.get("power_bonus") or 0) for b in stack) / max(len(stack), 1)
     if park_tier == "HOMER_FRIENDLY" and avg_pwr >= 5:
         return "POWER_STACK"
     if avg_pwr >= 7:
         return "PURE_POWER"
-    if all(b.get("score", 50) >= 60 for b in stack):
+    if all(_nz(b.get("score"), 50) >= 60 for b in stack):
         return "CONTACT_QUALITY"
     return "BALANCED"
 

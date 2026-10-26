@@ -88,7 +88,7 @@ def run() -> Dict[str, Any]:
         matchup = er_data.get("matchup") or k_data.get("matchup") or ""
         side = (er_data.get("side") or k_data.get("side") or "").upper()
         opp_side = "AWAY" if side == "HOME" else ("HOME" if side == "AWAY" else "")
-        opp_fir_p = fir_idx.get((matchup, opp_side), 0)
+        opp_fir_p = (fir_idx.get((matchup, opp_side)) or 0)
         opp_fir_low = opp_fir_p > 0 and opp_fir_p <= 0.45
 
         signals: Dict[str, int] = {}

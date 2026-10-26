@@ -81,7 +81,7 @@ def run() -> Dict[str, Any]:
         c = conf_idx.get(key, {})
         a = alerts_idx.get(key, {})
         g = goals_idx.get(key, {})
-        p_btts = btts_idx.get(key, 0)
+        p_btts = (btts_idx.get(key) or 0)
         cr = corners_idx.get(key, {})
         cdr = cards_idx.get(key, {})
         scorer = top_scorers.get(key, "")
@@ -137,7 +137,7 @@ def run() -> Dict[str, Any]:
         })
 
     tier_order = {"MATCH_LOCK": 4, "MATCH_STRONG": 3, "MATCH_LEAN": 2, "MATCH_PASS": 1}
-    previews.sort(key=lambda p: (-tier_order.get(p["tier"], 0),
+    previews.sort(key=lambda p: (-(tier_order.get(p["tier"]) or 0),
                                   -(p.get("secondary_signals") or 0)))
 
     out = {

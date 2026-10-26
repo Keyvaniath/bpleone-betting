@@ -14,6 +14,12 @@ import os, json, datetime as dt
 from typing import Any, Dict, List
 
 
+def _nz(v, d):
+    """None-safe default (2026-10-26): `.get(k, d)` only covers a MISSING key;
+    a key stored as None still reaches the arithmetic and crashes."""
+    return d if v is None else v
+
+
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 OUT_PATH = os.path.join(DATA_DIR, "player_pot.json")
 
@@ -27,7 +33,7 @@ def _load(p):
 
 def _score_prop(p_over: float, sport: str, elite: bool) -> float:
     """Quality score 0-1.5."""
-    if not (0.04 < p_over < 0.95): return 0.0
+    if p_over is None or not (0.04 < p_over < 0.95): return 0.0
     # Sweet spot
     sweet_over = 1.0 - abs(p_over - 0.62) * 1.8
     sweet_under = 1.0 - abs(p_over - 0.38) * 1.8
@@ -86,7 +92,7 @@ def _scan_cs() -> List[Dict[str, Any]]:
     props = _load(os.path.join(DATA_DIR, "cs_player_props.json"))
     out: List[Dict[str, Any]] = []
     for p in (props.get("players") or []):
-        rating = p.get("rating", 1.0)
+        rating = _nz(p.get("rating"), 1.0)
         elite = rating >= 1.18
         for k in (p.get("props_bo3", {}).get("kills") or []):
             score = _score_prop(k["p_over"], "CS", elite)
@@ -135,7 +141,7 @@ def _scan_kbo() -> List[Dict[str, Any]]:
                     })
             # HR prop for sluggers
             hr = p.get("props", {}).get("hit_a_hr") or {}
-            if hr.get("p", 0) >= 0.20 and (p.get("ops", 0) or 0) >= 0.880:
+            if (hr.get("p") or 0) >= 0.20 and (p.get("ops", 0) or 0) >= 0.880:
                 score = _score_prop(hr["p"], "KBO", elite)
                 if score >= 0.30:
                     out.append({

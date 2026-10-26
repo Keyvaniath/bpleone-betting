@@ -74,8 +74,8 @@ def run() -> Dict[str, Any]:
         prev_v = prev_markets.get(mk) or {}
         cf_now = v.get("correction_factor")
         cf_prev = prev_v.get("correction_factor")
-        n_now = v.get("n", 0)
-        n_prev = prev_v.get("n", 0)
+        n_now = (v.get("n") or 0)
+        n_prev = (prev_v.get("n") or 0)
         if cf_now is None:
             continue
         delta_cf = round(cf_now - cf_prev, 4) if cf_prev is not None else None

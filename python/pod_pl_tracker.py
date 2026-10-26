@@ -326,4 +326,4 @@ if __name__ == "__main__":
         print(f"  Last 30d: {l30['wins']}-{l30['losses']} ({l30['hit_rate']*100:.1f}%) | net {l30['net_units']:+.2f}u")
     if p["todays_pod"]:
         t = p["todays_pod"]
-        print(f"\n  Today's POD: {t['matchup']} {t['label']} @ {t['market_price']} (model {t.get('model_prob',0)*100:.0f}%) -- {t['result'].upper()}")
+        print(f"\n  Today's POD: {t['matchup']} {t['label']} @ {t['market_price']} (model {(t.get('model_prob') or 0)*100:.0f}%) -- {t['result'].upper()}")

@@ -120,7 +120,7 @@ def _load_game_legs() -> List[Dict[str, Any]]:
                 "side": None,
                 "line": None,
                 "price": int(r.get("market_price", -110)),
-                "model_prob": float(r.get("model_prob", 0)),
+                "model_prob": float((r.get("model_prob") or 0)),
                 "edge_pct": r.get("edge_pct"),
                 "game_id": g.get("matchup"),
             })

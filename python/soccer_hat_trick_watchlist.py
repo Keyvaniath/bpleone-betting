@@ -83,7 +83,7 @@ def run() -> Dict[str, Any]:
     watchlist: List[Dict[str, Any]] = []
     for name, g_data in g_idx.items():
         p_score = _safe(g_data.get("p_score") or g_data.get("p"))
-        p_2plus = g2_idx.get(name, 0)
+        p_2plus = (g2_idx.get(name) or 0)
         if p_score < 0.50 or p_2plus < 0.25: continue
 
         match_norm = _norm(g_data.get("match") or g_data.get("matchup") or "")

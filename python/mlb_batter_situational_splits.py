@@ -206,11 +206,11 @@ def run() -> Dict[str, Any]:
         # HR shift: use HR rate splits (smaller absolute moves -- /2 weight)
         hr_split_logodds = None
         if sit["is_home"]:
-            if home.get("hr_rate") is not None and home.get("pa", 0) > 0:
+            if home.get("hr_rate") is not None and (home.get("pa") or 0) > 0:
                 hr_split_logodds = _shrunk_logodds(home.get("hr_rate"), home.get("pa", 0),
                                                     baseline=0.030)
         else:
-            if road.get("hr_rate") is not None and road.get("pa", 0) > 0:
+            if road.get("hr_rate") is not None and (road.get("pa") or 0) > 0:
                 hr_split_logodds = _shrunk_logodds(road.get("hr_rate"), road.get("pa", 0),
                                                     baseline=0.030)
         hr_shift = (hr_split_logodds or 0.0) * 0.5

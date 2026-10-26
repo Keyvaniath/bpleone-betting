@@ -146,7 +146,7 @@ def run() -> Dict[str, int]:
     for sport in SPORTS:
         try:
             p = compute_residuals(sport)
-            n_teams = p.get("n_teams", 0)
+            n_teams = (p.get("n_teams") or 0)
             if not n_teams:
                 results[sport] = "no history (off-season)"
                 continue

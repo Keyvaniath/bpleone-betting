@@ -113,7 +113,7 @@ def run() -> Dict[str, Any]:
             h_per_9 = max(5.0, min(11.5, whip * 9 - bb_per_9))
 
             avg_ip = _safe(pitcher.get("avg_ip") or pitcher.get("season", {}).get("avg_ip"), 5.3)
-            form_delta = form_by_name.get((name or "").lower(), 0.0)
+            form_delta = (form_by_name.get((name or "").lower()) or 0.0)
 
             base_hits = h_per_9 / 9.0 * avg_ip
 

@@ -41,6 +41,23 @@ from typing import Any, Dict, List, Optional
 import stats_repo as sr
 
 
+def _nz(v, d):
+    """None-safe default (2026-10-26): `.get(k, d)` only covers a MISSING key;
+    a key stored as None still reaches the arithmetic and crashes."""
+    return d if v is None else v
+
+
+def _fmtv(v, spec, dflt="?"):
+    """Display-safe format (2026-10-26): `{x.get(k):spec}` crashes when the
+    value is None; a label or print must never fail the module."""
+    if v is None:
+        return str(dflt)
+    try:
+        return format(v, spec)
+    except (TypeError, ValueError):
+        return str(v)
+
+
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 PROPS_PATH = os.path.join(DATA_DIR, "props.json")
 PICKEM_PATH = os.path.join(DATA_DIR, "pickem.json")
@@ -158,13 +175,13 @@ def _drivers_for_matchup(bid: int, ctx: Dict[str, Any], market: str) -> List[str
     # BvP career H2H
     try:
         h2h = sr.pitcher_vs_batter(opp_pid, bid) or {}
-        ab = h2h.get("ab", 0)
+        ab = (h2h.get("ab") or 0)
         if ab >= 3:
             avg = h2h.get("avg") or "?"
             ops = h2h.get("ops") or "?"
-            hits = h2h.get("hits", 0)
-            hr = h2h.get("hr", 0)
-            so = h2h.get("so", 0)
+            hits = (h2h.get("hits") or 0)
+            hr = (h2h.get("hr") or 0)
+            so = (h2h.get("so") or 0)
             line = f"Career vs {opp_name}: {hits}-for-{ab}"
             if hr: line += f", {hr} HR"
             if so >= 2: line += f", {so} K"
@@ -318,8 +335,8 @@ def _drivers_from_breakdown(pid: int, market: str, opp_hand: Optional[str],
 
     # 2. Last 7-day pop vs season
     l7 = (bd.get("form") or {}).get("last_7") or {}
-    if l7.get("n_games", 0) >= 4:
-        if market == "batter_home_runs" and l7.get("hr", 0) >= 2:
+    if (l7.get("n_games") or 0) >= 4:
+        if market == "batter_home_runs" and (l7.get("hr") or 0) >= 2:
             drivers.append(f"Last 7d: {l7['hr']} HR in {l7['n_games']} games")
         elif market == "batter_hits" and l7.get("avg") and l7["avg"] >= 0.300:
             drivers.append(f"Last 7d: {l7['avg']:.3f} AVG in {l7['n_games']} games")
@@ -347,7 +364,7 @@ def _drivers_from_breakdown(pid: int, market: str, opp_hand: Optional[str],
     ps = bd.get("park_splits") or {}
     here = ps.get("at_park") or {}
     other = ps.get("at_other_parks") or {}
-    if here.get("n_games", 0) >= 3 and other.get("n_games", 0) >= 5:
+    if (here.get("n_games") or 0) >= 3 and (other.get("n_games") or 0) >= 5:
         if market in ("batter_hits", "batter_total_bases", "batter_singles"):
             metric = "slg" if market == "batter_total_bases" else "avg"
             h_v = here.get(metric)
@@ -363,7 +380,7 @@ def _drivers_from_breakdown(pid: int, market: str, opp_hand: Optional[str],
 
     # 5. BvP career H2H
     bvp = ((bd.get("tonight") or {}).get("bvp_career")) or {}
-    ab = bvp.get("ab", 0)
+    ab = (bvp.get("ab") or 0)
     if ab >= 5:
         ops = bvp.get("ops")
         if ops is not None and ops >= 0.900:
@@ -376,7 +393,7 @@ def _drivers_from_breakdown(pid: int, market: str, opp_hand: Optional[str],
     lineup_spot = bd.get("lineup_spot") or {}
     if spot and str(spot) in lineup_spot:
         s = lineup_spot[str(spot)]
-        if s.get("atBats", 0) >= 20:
+        if (s.get("atBats") or 0) >= 20:
             ops = s.get("ops")
             try:
                 ops_f = float(ops) if ops else None
@@ -395,7 +412,7 @@ def _drivers_from_breakdown(pid: int, market: str, opp_hand: Optional[str],
     is_night_game = "p" in game_time and any(h in game_time for h in ["5:", "6:", "7:", "8:", "9:", "10:"])
     sit_key = "n" if is_night_game else "d"
     s = sit.get(sit_key) or {}
-    if s.get("atBats", 0) >= 30:
+    if (s.get("atBats") or 0) >= 30:
         ops = s.get("ops")
         try:
             ops_f = float(ops) if ops else None
@@ -417,12 +434,12 @@ def _drivers_from_breakdown(pid: int, market: str, opp_hand: Optional[str],
     # 8. Per-player model accuracy
     acc = bd.get("model_accuracy") or {}
     tier = acc.get("trust_tier")
-    n_props = acc.get("n_props", 0)
+    n_props = (acc.get("n_props") or 0)
     if tier == "trusted" and n_props >= 20:
-        drivers.append(f"Model accuracy on this player: {(acc.get('hit_rate',0)*100):.0f}% over {n_props} props "
+        drivers.append(f"Model accuracy on this player: {((acc.get('hit_rate') or 0)*100):.0f}% over {n_props} props "
                         f"(TRUSTED tier)")
     elif tier == "untrusted" and n_props >= 20:
-        caveats.append(f"Model accuracy on this player: only {(acc.get('hit_rate',0)*100):.0f}% over {n_props} props "
+        caveats.append(f"Model accuracy on this player: only {((acc.get('hit_rate') or 0)*100):.0f}% over {n_props} props "
                         f"(UNTRUSTED -- model has been wrong on this name)")
 
     # 9. Pitch-type edge (top-1 from arsenal)
@@ -434,8 +451,8 @@ def _drivers_from_breakdown(pid: int, market: str, opp_hand: Optional[str],
         if top:
             edge = (top.get("batter_xwoba_vs") or 0) - (top.get("pitcher_xwoba_allowed_overall") or 0)
             if edge >= 0.050:
-                drivers.append(f"Pitch-type edge: {top.get('pitch')} ({top.get('pitcher_usage_pct'):.0f}% usage) -- "
-                                f"batter xwOBA {top.get('batter_xwoba_vs'):.3f} vs SP allows {top.get('pitcher_xwoba_allowed_overall'):.3f}")
+                drivers.append(f"Pitch-type edge: {top.get('pitch')} ({_fmtv(top.get('pitcher_usage_pct'), '.0f')}% usage) -- "
+                                f"batter xwOBA {_fmtv(top.get('batter_xwoba_vs'), '.3f')} vs SP allows {_fmtv(top.get('pitcher_xwoba_allowed_overall'), '.3f')}")
 
     return {"drivers": drivers, "caveats": caveats}
 
@@ -548,7 +565,7 @@ def _build_game_ctx() -> Dict[str, Dict[str, Any]]:
                 home_tid = g["teams"]["home"]["team"]["id"]
                 away_tid = g["teams"]["away"]["team"]["id"]
                 venue = (g.get("venue") or {}).get("name") or ""
-                pf = PARK_FACTORS.get(venue, 1.00)
+                pf = _nz(PARK_FACTORS.get(venue), 1.00)
                 out[away_code] = {
                     "opp_pitcher_id": home_pid, "opp_pitcher_name": home_pname,
                     "opp_team_id": home_tid, "venue": venue, "park_factor": pf,

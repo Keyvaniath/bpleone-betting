@@ -71,10 +71,10 @@ def _build_prop(lam: float, line: float, market: str) -> Dict[str, Any]:
 def project_basketball(p: Dict[str, Any]) -> List[Dict[str, Any]]:
     """Generate prop projections for one basketball player."""
     props = []
-    pg_pts = p.get("pts_per_game", 0)
-    pg_reb = p.get("reb_per_game", 0)
-    pg_ast = p.get("ast_per_game", 0)
-    pg_3pm = p.get("threes_per_game", 0)
+    pg_pts = (p.get("pts_per_game") or 0)
+    pg_reb = (p.get("reb_per_game") or 0)
+    pg_ast = (p.get("ast_per_game") or 0)
+    pg_3pm = (p.get("threes_per_game") or 0)
     # Common book lines hover around the player's mean ±2
     if pg_pts >= 2:
         # 4 PTS lines: rounded .5 around mean
@@ -114,9 +114,9 @@ def project_basketball(p: Dict[str, Any]) -> List[Dict[str, Any]]:
 
 def project_hockey(p: Dict[str, Any]) -> List[Dict[str, Any]]:
     props = []
-    sog = p.get("shots_per_game", 0)
-    pts = p.get("points_per_game", 0)
-    g = p.get("goals_per_game", 0)
+    sog = (p.get("shots_per_game") or 0)
+    pts = (p.get("points_per_game") or 0)
+    g = (p.get("goals_per_game") or 0)
     if sog >= 1:
         base = round(sog)
         for offset in (-0.5, 0.5, 1.5):
@@ -152,9 +152,9 @@ def fetch_sport(sport_key: str) -> Dict[str, Any]:
         })
     # Sort by primary stat desc
     if sport_key in ("nba", "wnba"):
-        out.sort(key=lambda p: -p["stats"].get("pts_per_game", 0))
+        out.sort(key=lambda p: -(p["stats"].get("pts_per_game") or 0))
     else:
-        out.sort(key=lambda p: -p["stats"].get("points_per_game", 0))
+        out.sort(key=lambda p: -(p["stats"].get("points_per_game") or 0))
     payload = {
         "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
         "sport": sport_key,

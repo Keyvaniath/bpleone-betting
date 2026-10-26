@@ -151,9 +151,9 @@ def run() -> Dict[str, Any]:
 
     # Sort by tier strength
     tier_order = {"GAME_LOCK": 4, "GAME_STRONG": 3, "GAME_LEAN": 2, "GAME_PASS": 1}
-    previews.sort(key=lambda g: (-tier_order.get(g["tier"], 0),
-                                  -(g.get("n_pitcher_locks", 0)
-                                    + g.get("n_team_locks", 0))))
+    previews.sort(key=lambda g: (-(tier_order.get(g["tier"]) or 0),
+                                  -((g.get("n_pitcher_locks") or 0)
+                                    + (g.get("n_team_locks") or 0))))
 
     out = {
         "generated_at": dt.datetime.utcnow().isoformat(timespec="seconds"),

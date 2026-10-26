@@ -37,15 +37,21 @@ import datetime as dt
 from typing import Any, Dict, List, Optional
 
 
+def _nz(v, d):
+    """None-safe default (2026-10-26): `.get(k, d)` only covers a MISSING key;
+    a key stored as None still reaches the arithmetic and crashes."""
+    return d if v is None else v
+
+
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 TR_PATH = os.path.join(DATA_DIR, "track_record.json")
 OUT_PATH = os.path.join(DATA_DIR, "learning_curves.json")
 
 try:
     import config as _cfg
-    WINDOW_DAYS = _cfg.get("learning_curves.window_days", 7)
-    STRIDE_DAYS = _cfg.get("learning_curves.stride_days", 1)
-    MIN_PER_WINDOW = _cfg.get("learning_curves.min_per_window", 20)
+    WINDOW_DAYS = _nz(_cfg.get("learning_curves.window_days"), 7)
+    STRIDE_DAYS = _nz(_cfg.get("learning_curves.stride_days"), 1)
+    MIN_PER_WINDOW = _nz(_cfg.get("learning_curves.min_per_window"), 20)
 except Exception:
     WINDOW_DAYS = 7
     STRIDE_DAYS = 1

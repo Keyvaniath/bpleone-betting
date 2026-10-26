@@ -81,9 +81,9 @@ def _score_brier_trend() -> Dict[str, Any]:
 def _score_pipeline_audit() -> Dict[str, Any]:
     """Pipeline audit green/yellow/red counts."""
     d = _load("pipeline_audit.json")
-    n_g = d.get("n_green", 0)
-    n_y = d.get("n_yellow", 0)
-    n_r = d.get("n_red", 0)
+    n_g = (d.get("n_green") or 0)
+    n_y = (d.get("n_yellow") or 0)
+    n_r = (d.get("n_red") or 0)
     total = n_g + n_y + n_r
     if total == 0: return {"score": 0, "note": "no pipeline audit"}
     # green=1.0, yellow=0.5, red=0
@@ -95,9 +95,9 @@ def _score_pipeline_audit() -> Dict[str, Any]:
 def _score_data_health() -> Dict[str, Any]:
     """Live data accuracy check (data_health.json)."""
     d = _load("data_health.json")
-    n_g = d.get("n_green", 0)
-    n_y = d.get("n_yellow", 0)
-    n_r = d.get("n_red", 0)
+    n_g = (d.get("n_green") or 0)
+    n_y = (d.get("n_yellow") or 0)
+    n_r = (d.get("n_red") or 0)
     total = n_g + n_y + n_r
     if total == 0: return {"score": 0, "note": "no data_health"}
     weighted = n_g + n_y * 0.5
@@ -108,7 +108,7 @@ def _score_data_health() -> Dict[str, Any]:
 def _score_edge_count() -> Dict[str, Any]:
     """How many real edges did the model find today?"""
     bb = _load("best_bets.json")
-    n_bets = bb.get("n_bets", 0)
+    n_bets = (bb.get("n_bets") or 0)
     # 100 at >=40 bets, 0 at <=5
     score = max(0, min(100, (n_bets - 5) / (40 - 5) * 100))
     return {"score": round(score, 1), "n_bets": n_bets}

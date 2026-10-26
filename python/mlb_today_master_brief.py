@@ -79,8 +79,8 @@ def run() -> Dict[str, Any]:
     para_parts = [f"Tonight's MLB slate features {n_games} games."]
     if batter_pod.get("batter"):
         net = batter_pod.get("net_direction", "MIXED")
-        n_strong = batter_pod.get("n_strong_edges", 0)
-        composite = batter_pod.get("composite_score", 0)
+        n_strong = (batter_pod.get("n_strong_edges") or 0)
+        composite = (batter_pod.get("composite_score") or 0)
         para_parts.append(
             f"BATTER Play of the Day is {batter_pod['batter']} "
             f"with {n_strong} STRONG signals across our props "
@@ -88,7 +88,7 @@ def run() -> Dict[str, Any]:
         )
     if pitcher_pod.get("pitcher"):
         net = pitcher_pod.get("net_direction", "MIXED")
-        n_strong = pitcher_pod.get("n_strong_edges", 0)
+        n_strong = (pitcher_pod.get("n_strong_edges") or 0)
         para_parts.append(
             f"PITCHER Play of the Day is {pitcher_pod['pitcher']} "
             f"({n_strong} signals, {net.lower()}). "
@@ -97,9 +97,9 @@ def run() -> Dict[str, Any]:
         labels = [f"{s['team']} {s['stack_label']}" for s in elite_stacks[:2]]
         para_parts.append(f"Elite DFS stacks: {', '.join(labels)}. ")
 
-    n_alerts = alerts.get("n_alerts_total", 0)
+    n_alerts = (alerts.get("n_alerts_total") or 0)
     if n_alerts > 0:
-        n_high = alerts.get("n_high_priority", 0)
+        n_high = (alerts.get("n_high_priority") or 0)
         para_parts.append(
             f"{n_alerts} synthesized alerts ({n_high} high-priority) across "
             "pitcher edge, bullpen fatigue, park weather, and team total signals."

@@ -97,11 +97,11 @@ def run() -> Dict[str, Any]:
     candidates.sort(key=lambda c: -c["score"])
     for c in candidates:
         sport = c.get("sport", "?")
-        if seen_sports.get(sport, 0) >= 2: continue
+        if (seen_sports.get(sport) or 0) >= 2: continue
         if any(fp.get("subject") == c.get("subject") and fp.get("source") == c.get("source")
                for fp in final_picks): continue
         final_picks.append(c)
-        seen_sports[sport] = seen_sports.get(sport, 0) + 1
+        seen_sports[sport] = (seen_sports.get(sport) or 0) + 1
         if len(final_picks) >= 5: break
 
     # Top 3 fades

@@ -127,8 +127,8 @@ def run() -> Dict[str, Any]:
         sog_mult *= boost
         pts_mult *= boost
 
-        baseline_sog = baseline.get("sog", 0)
-        baseline_pts = baseline.get("pts", 0)
+        baseline_sog = (baseline.get("sog") or 0)
+        baseline_pts = (baseline.get("pts") or 0)
 
         adj_sog = baseline_sog * sog_mult if baseline_sog else 0
         adj_pts = baseline_pts * pts_mult if baseline_pts else 0

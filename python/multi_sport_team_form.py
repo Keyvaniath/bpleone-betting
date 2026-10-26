@@ -35,8 +35,8 @@ def _last_n_form(games_for_team: List[Dict[str, Any]], n: int) -> Dict[str, Any]
                  "avg_pf": 0, "avg_pa": 0, "diff": 0, "last_results": []}
     wins = sum(1 for g in recent if g.get("won"))
     losses = len(recent) - wins
-    pf = sum(g.get("team_score", 0) for g in recent) / len(recent)
-    pa = sum(g.get("opp_score", 0) for g in recent) / len(recent)
+    pf = sum((g.get("team_score") or 0) for g in recent) / len(recent)
+    pa = sum((g.get("opp_score") or 0) for g in recent) / len(recent)
     return {
         "n": len(recent),
         "record": f"{wins}-{losses}",

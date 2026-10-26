@@ -69,8 +69,8 @@ def run() -> Dict[str, Any]:
         for p in parlay_top:
             sport = p.get("sport") or "?"
             subject = p.get("subject") or "?"
-            n_legs = p.get("n_legs", 0)
-            parlay_p = p.get("parlay_p", 0)
+            n_legs = (p.get("n_legs") or 0)
+            parlay_p = (p.get("parlay_p") or 0)
             lines.append(f"- [{sport}] {subject} ({n_legs} legs, p={parlay_p})")
         lines.append("")
 

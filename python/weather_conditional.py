@@ -190,7 +190,7 @@ def run() -> Dict[str, Any]:
             "carry_index": w.get("carry_index"),
             **info,
         })
-    out.sort(key=lambda x: -abs(x.get("hr_mult_delta_pct", 0)))
+    out.sort(key=lambda x: -abs((x.get("hr_mult_delta_pct") or 0)))
     payload = {
         "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
         "n_games": len(out),

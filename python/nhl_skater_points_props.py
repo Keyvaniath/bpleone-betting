@@ -19,6 +19,12 @@ import datetime as dt
 from typing import Any, Dict, List, Optional
 
 
+def _nz(v, d):
+    """None-safe default (2026-10-26): `.get(k, d)` only covers a MISSING key;
+    a key stored as None still reaches the arithmetic and crashes."""
+    return d if v is None else v
+
+
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 OUT = os.path.join(DATA_DIR, "nhl_skater_points_props.json")
 
@@ -153,8 +159,8 @@ def run() -> Dict[str, Any]:
 
         home_pace = TEAM_PACE.get(home, LEAGUE_GOALS_PER_GAME)
         away_pace = TEAM_PACE.get(away, LEAGUE_GOALS_PER_GAME)
-        home_ga = TEAM_GA_PER_GAME.get(home, 3.1)
-        away_ga = TEAM_GA_PER_GAME.get(away, 3.1)
+        home_ga = _nz(TEAM_GA_PER_GAME.get(home), 3.1)
+        away_ga = _nz(TEAM_GA_PER_GAME.get(away), 3.1)
         game_pace = (home_pace + away_pace) / 2
         pace_factor = game_pace / LEAGUE_GOALS_PER_GAME
 

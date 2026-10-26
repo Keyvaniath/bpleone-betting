@@ -48,7 +48,7 @@ def run() -> Dict[str, Any]:
             race = r.get("race", "?")
             p_podium = r.get("p_podium") or r.get("p") or 0
             existing = podium_pick.get(race)
-            if not existing or p_podium > existing.get("p_podium", 0):
+            if not existing or p_podium > (existing.get("p_podium") or 0):
                 podium_pick[race] = {"driver": r.get("driver"), "p_podium": p_podium}
 
     # Top pole pick per race
@@ -59,7 +59,7 @@ def run() -> Dict[str, Any]:
             race = r.get("race", "?")
             p_pole = r.get("p_pole") or r.get("p_p1") or 0
             existing = pole_pick.get(race)
-            if not existing or p_pole > existing.get("p_pole", 0):
+            if not existing or p_pole > (existing.get("p_pole") or 0):
                 pole_pick[race] = {"driver": r.get("driver"), "p_pole": p_pole}
 
     previews: List[Dict[str, Any]] = []
@@ -86,9 +86,9 @@ def run() -> Dict[str, Any]:
         for d in locks:
             angle.append(f"{d.get('driver')} podium + qual top-3")
         if pl.get("driver"):
-            angle.append(f"{pl.get('driver')} pole position (p={round(pl.get('p_pole', 0), 3)})")
+            angle.append(f"{pl.get('driver')} pole position (p={round((pl.get('p_pole') or 0), 3)})")
         if pp.get("driver"):
-            angle.append(f"{pp.get('driver')} podium (p={round(pp.get('p_podium', 0), 3)})")
+            angle.append(f"{pp.get('driver')} podium (p={round((pp.get('p_podium') or 0), 3)})")
         for s in strong[:2]:
             angle.append(f"{s.get('driver')} top 10 finish")
         for fd in fades[:3]:
@@ -112,7 +112,7 @@ def run() -> Dict[str, Any]:
         })
 
     tier_order = {"RACE_LOCK": 4, "RACE_STRONG": 3, "RACE_LEAN": 2, "RACE_PASS": 1}
-    previews.sort(key=lambda p: -tier_order.get(p["tier"], 0))
+    previews.sort(key=lambda p: -(tier_order.get(p["tier"]) or 0))
 
     out = {
         "generated_at": dt.datetime.utcnow().isoformat(timespec="seconds"),

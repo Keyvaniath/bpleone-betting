@@ -185,7 +185,7 @@ def _self_training_shift(sport_key: str) -> float:
         with open(path) as f: d = json.load(f)
         reco = d.get("recommendation") or {}
         if reco.get("applied"):
-            return float(reco.get("recommended_shift", 0))
+            return float((reco.get("recommended_shift") or 0))
     except Exception:
         pass
     return 0.0
@@ -211,10 +211,35 @@ def run(cfg: Dict[str, Any]) -> Dict[str, Any]:
     url = f"{BASE_URL}/{cfg['espn_path']}/scoreboard"
     sb = _http(url)
     if not sb:
+        # A failed fetch never clobbers the last good board (2026-10-26): it
+        # used to overwrite {sport}_state.json with zero games, so one ESPN
+        # blip blanked the sport until the next run. Keep the last board,
+        # flag the failure, and leave generated_at alone so data_health ages
+        # it honestly. Same keys as a good payload either way (the callers'
+        # prints read season_status -- the old error shape crashed them).
+        now = dt.datetime.now().isoformat(timespec="seconds")
+        prev = {}
+        try:
+            with open(out_path) as f: prev = json.load(f) or {}
+        except Exception:
+            prev = {}
+        try:
+            fresh = (dt.datetime.now() - dt.datetime.fromisoformat(
+                str(prev.get("generated_at"))[:19])).total_seconds() < 6 * 3600
+        except ValueError:
+            fresh = False
+        if prev.get("games") and fresh:   # an older board is yesterday's slate
+            prev["fetch_error"] = "ESPN scoreboard unreachable"
+            prev["fetch_failed_at"] = now
+            prev.setdefault("season_status", "unknown")
+            prev.setdefault("n_games_today", len(prev["games"]))
+            with open(out_path, "w") as f: json.dump(prev, f, indent=2)
+            return prev
         out = {
-            "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
+            "generated_at": now,
             "league": cfg.get("league_label", sport_key),
             "active_season": False,
+            "season_status": "unavailable",
             "error": "ESPN scoreboard unreachable",
             "n_games_today": 0,
             "games": [],
@@ -309,6 +334,6 @@ if __name__ == "__main__":
         "regulation_seconds": 2400, "n_periods": 4,
     }
     p = run(cfg)
-    print(f"WNBA: {p['n_games_today']} games ({p['season_status']})")
+    print(f"WNBA: {p.get('n_games_today', 0)} games ({p.get('season_status', '?')})")
     for g in p["games"][:3]:
         print(f"  {g['matchup']} ({g['away_record']} vs {g['home_record']}) P(home) {g['p_home_win']*100:.1f}% fair {g['fair_home_american']:+d}")

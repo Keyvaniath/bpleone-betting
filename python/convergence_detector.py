@@ -144,12 +144,12 @@ def run() -> Dict[str, Any]:
         for k in keys:
             for sig in ats_signals.get(k, []):
                 signals.append({"type": "ATS", "level": "MED",
-                                "detail": f"{sig['team']} {sig['signal']} ({sig.get('cover_pct',0)*100:.0f}% cover)"})
+                                "detail": f"{sig['team']} {sig['signal']} ({(sig.get('cover_pct') or 0)*100:.0f}% cover)"})
         # Pitcher matchup
         for mkey, m in pitcher_games.items():
             if any(k in mkey for k in keys):
                 best = m.get("best_k_play")
-                if best and best.get("p_over", 0) >= 0.60:
+                if best and (best.get("p_over") or 0) >= 0.60:
                     signals.append({"type": "PITCHER_K", "level": "HIGH",
                                     "detail": f"{best['pitcher']} OVER {best['line']} K ({best['p_over']*100:.0f}%) fair {best.get('fair_over','?')}"})
                 for e in (m.get("er_under_2_5_candidates") or [])[:1]:
@@ -176,7 +176,7 @@ def run() -> Dict[str, Any]:
     convergence.sort(key=lambda c: -c["n_signals"])
     by_tier = {}
     for c in convergence:
-        by_tier[c["tier"]] = by_tier.get(c["tier"], 0) + 1
+        by_tier[c["tier"]] = (by_tier.get(c["tier"]) or 0) + 1
 
     payload = {
         "generated_at": dt.datetime.now().isoformat(timespec="seconds"),

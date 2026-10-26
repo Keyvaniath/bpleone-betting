@@ -88,9 +88,9 @@ def run() -> Dict[str, Any]:
     for key in all_matches:
         a = alert_idx.get(key, {})
         g = goals_idx.get(key, {})
-        p_btts = btts_idx.get(key, 0)
+        p_btts = (btts_idx.get(key) or 0)
         c = corners_idx.get(key, {})
-        p_first = fs_idx.get(key, 0)
+        p_first = (fs_idx.get(key) or 0)
 
         ceiling_overs = int(a.get("n_aligned_overs", 0) or 0)
 

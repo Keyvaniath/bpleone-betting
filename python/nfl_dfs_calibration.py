@@ -42,6 +42,12 @@ import json
 import datetime as dt
 from typing import Any, Dict, List, Optional, Tuple
 
+
+def _nz(v, d):
+    """None-safe default (2026-10-26): `.get(k, d)` only covers a MISSING key;
+    a key stored as None still reaches the arithmetic and crashes."""
+    return d if v is None else v
+
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 POOL_HIST = os.path.join(DATA_DIR, "nfl_dfs_pool_history.json")
 OUT = os.path.join(DATA_DIR, "nfl_dfs_calibration.json")
@@ -95,7 +101,7 @@ def load() -> Dict[str, Any]:
 def expected(p: Dict[str, Any], cal: Dict[str, Any]) -> Tuple[float, float, float]:
     """(xfp, p_play, implied) for one projected skill player."""
     proj = float(p.get("proj") or 0.0)
-    implied = float((cal.get("ppk") or {}).get(p.get("pos"), 2.1)) * float(p.get("salary") or 0) / 1000.0
+    implied = float(_nz((cal.get("ppk") or {}).get(p.get("pos")), 2.1)) * float(p.get("salary") or 0) / 1000.0
     w = float(cal.get("w") or 1.0)
     pp = float((cal.get("p_play") or {}).get(play_key(p.get("status"), proj), PRIOR_PLAY))
     return pp * (implied + w * (proj - implied)), pp, implied

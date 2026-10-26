@@ -101,11 +101,11 @@ def run() -> Dict[str, Any]:
         if _is_over(threes_idx.get(name, {}).get("edge_class") or ""):
             legs.append({"market": "3PM OVER", "p": 0.53})
 
-        p_20 = pts20_idx.get(name, 0)
+        p_20 = (pts20_idx.get(name) or 0)
         if p_20 >= 0.35:
             legs.append({"market": "20+ PTS YES", "p": round(p_20, 3)})
 
-        p_dd = dd_idx.get(name, 0)
+        p_dd = (dd_idx.get(name) or 0)
         if p_dd >= 0.40:
             legs.append({"market": "DD YES", "p": round(p_dd, 3)})
 

@@ -221,7 +221,7 @@ def run() -> Dict[str, Any]:
         # crashed a whole pipeline on a display path before). Say why, publish
         # nothing, fail loud in the note rather than silently emitting picks.
         return _write({
-            "generated_at": now, "n_games": 0, "n_edges": 0,
+            "generated_at": now, "n_games": 0, "n_edges": 0, "n_rated": 0, "n_unrated": 0,
             "regime": "unknown", "edges": [], "games": [],
             "note": ("No CFB ratings artifact -- run cfb_ratings.py first. "
                      "No edges published."),
@@ -233,7 +233,7 @@ def run() -> Dict[str, Any]:
     # a run is recoverable -- publishing ungated picks is not.
     if pc is None:
         return _write({
-            "generated_at": now, "n_games": 0, "n_edges": 0,
+            "generated_at": now, "n_games": 0, "n_edges": 0, "n_rated": 0, "n_unrated": 0,
             "regime": "unknown", "edges": [], "games": [],
             "status": "experimental",
             "note": ("prob_calibration unavailable -- no edges published. Every "
@@ -279,7 +279,7 @@ def run() -> Dict[str, Any]:
             "rated": True,
             "home_rating": rh["rating"], "away_rating": ra["rating"],
             "home_rank": rh.get("rank"), "away_rank": ra.get("rank"),
-            "prior_weight": max(rh.get("prior_weight", 0), ra.get("prior_weight", 0)),
+            "prior_weight": max((rh.get("prior_weight") or 0), (ra.get("prior_weight") or 0)),
             "model_p_home": round(p_home_model, 4),
             "model_spread_home": round(
                 (rh["rating"] + (0 if neutral else cr.HFA_ELO) - ra["rating"])
@@ -424,9 +424,9 @@ if __name__ == "__main__":
     if not _self_test():
         raise SystemExit("cfb_model self-test FAILED")
     p = run()
-    print(f"[cfb-model] {p['n_games']} CFB games ({p['n_rated']} rated, "
-          f"{p['n_unrated']} unrated) -> {p['n_edges']} experimental edges "
-          f"[{p['regime']}]")
+    print(f"[cfb-model] {p.get('n_games', 0)} CFB games ({p.get('n_rated', 0)} rated, "
+          f"{p.get('n_unrated', 0)} unrated) -> {p.get('n_edges', 0)} experimental edges "
+          f"[{p.get('regime')}]")
     for e in p["edges"][:6]:
         print(f"    {e['team']:5s} {e['side']:4s} {e['matchup']:22s} "
               f"{e['book_american']:>5} | model {e['model_prob_raw']:.0%}"

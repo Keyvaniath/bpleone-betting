@@ -91,7 +91,7 @@ def run() -> Dict[str, Any]:
             ):
                 avg_res = team_res.get("avg_residual")
                 if avg_res is None: continue
-                if abs(avg_res) >= 6 and team_res.get("n_home", 0) + team_res.get("n_away", 0) >= 3:
+                if abs(avg_res) >= 6 and (team_res.get("n_home") or 0) + (team_res.get("n_away") or 0) >= 3:
                     direction = "OUTPERFORMING" if avg_res > 0 else "UNDERPERFORMING"
                     alerts.append({
                         "sport": sport.upper(),
@@ -109,7 +109,7 @@ def run() -> Dict[str, Any]:
                 if over_pct is None: continue
                 # Doesn't make sense for soccer (1-3 goal games), skip MLS/EPL
                 if sport in ("mls", "epl"): continue
-                if over_pct >= 0.75 and team_form.get("L10", {}).get("n", 0) >= 8:
+                if over_pct >= 0.75 and (team_form.get("L10", {}).get("n") or 0) >= 8:
                     alerts.append({
                         "sport": sport.upper(),
                         "type": "OVER_HEAVY_TEAM",
@@ -193,8 +193,8 @@ def run() -> Dict[str, Any]:
     by_type: Dict[str, int] = {}
     by_sport: Dict[str, int] = {}
     for a in unique:
-        by_type[a["type"]] = by_type.get(a["type"], 0) + 1
-        by_sport[a["sport"]] = by_sport.get(a["sport"], 0) + 1
+        by_type[a["type"]] = (by_type.get(a["type"]) or 0) + 1
+        by_sport[a["sport"]] = (by_sport.get(a["sport"]) or 0) + 1
 
     payload = {
         "generated_at": dt.datetime.now().isoformat(timespec="seconds"),

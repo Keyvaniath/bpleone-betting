@@ -30,6 +30,12 @@ import math
 import random
 from typing import Any, Dict, List, Optional
 
+
+def _nz(v, d):
+    """None-safe default (2026-10-26): `.get(k, d)` only covers a MISSING key;
+    a key stored as None still reaches the arithmetic and crashes."""
+    return d if v is None else v
+
 N_SIMS_DEFAULT = 10000
 
 # Variance-to-mean ratios + per-event coefficients of variation. CALIBRATED to
@@ -81,9 +87,9 @@ def _gamma_mean_cv(mean: float, cv: float, rng: random.Random) -> float:
 def simulate_qb(p: Dict[str, float], n: int = N_SIMS_DEFAULT, seed: Optional[int] = 0) -> Dict[str, List[float]]:
     """p: att, comp_pct, ypc (yards per completion), pass_td_pg, int_pg."""
     rng = random.Random(seed)
-    att_m = p.get("att", 33.0)
-    cpct = min(0.85, max(0.45, p.get("comp_pct", 0.65)))
-    ypc = p.get("ypc", 11.5)
+    att_m = _nz(p.get("att"), 33.0)
+    cpct = min(0.85, max(0.45, _nz(p.get("comp_pct"), 0.65)))
+    ypc = _nz(p.get("ypc"), 11.5)
     pass_yds, pass_cmp, pass_att, pass_td, pass_int, longest = [], [], [], [], [], []
     for _ in range(n):
         a = max(1, _negbin(att_m, VMR_ATT, rng))
@@ -104,8 +110,8 @@ def simulate_qb(p: Dict[str, float], n: int = N_SIMS_DEFAULT, seed: Optional[int
 def simulate_rusher(p: Dict[str, float], n: int = N_SIMS_DEFAULT, seed: Optional[int] = 0) -> Dict[str, List[float]]:
     """p: carries, ypc_rush (yards per carry), rush_td_pg [+ optional receiving]."""
     rng = random.Random(seed)
-    car_m = p.get("carries", 14.0)
-    ypc = p.get("ypc_rush", 4.3)
+    car_m = _nz(p.get("carries"), 14.0)
+    ypc = _nz(p.get("ypc_rush"), 4.3)
     rush_yds, rush_att, rush_td, longest = [], [], [], []
     for _ in range(n):
         a = max(1, _negbin(car_m, VMR_CARRIES, rng))
@@ -125,10 +131,10 @@ def simulate_rusher(p: Dict[str, float], n: int = N_SIMS_DEFAULT, seed: Optional
 def simulate_receiver(p: Dict[str, float], n: int = N_SIMS_DEFAULT, seed: Optional[int] = 0) -> Dict[str, List[float]]:
     """p: targets, catch_rate, ypr (yards per reception), rec_td_pg."""
     rng = random.Random(seed)
-    tgt_m = p.get("targets", 7.0)
-    crate = min(0.95, max(0.4, p.get("catch_rate", 0.65)))
-    ypr = p.get("ypr", 12.0)
-    rtd_pg = p.get("rec_td_pg", 0.4)
+    tgt_m = _nz(p.get("targets"), 7.0)
+    crate = min(0.95, max(0.4, _nz(p.get("catch_rate"), 0.65)))
+    ypr = _nz(p.get("ypr"), 12.0)
+    rtd_pg = _nz(p.get("rec_td_pg"), 0.4)
     rec, rec_yds, longest, rec_td = [], [], [], []
     for _ in range(n):
         t = max(0, _negbin(tgt_m, VMR_TARGETS, rng))

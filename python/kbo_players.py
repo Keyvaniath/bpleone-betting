@@ -15,6 +15,12 @@ from __future__ import annotations
 import os, json, math, datetime as dt
 from typing import Any, Dict, List
 
+
+def _nz(v, d):
+    """None-safe default (2026-10-26): `.get(k, d)` only covers a MISSING key;
+    a key stored as None still reaches the arithmetic and crashes."""
+    return d if v is None else v
+
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 ROSTER_PATH = os.path.join(DATA_DIR, "kbo_players.json")
 PROPS_PATH = os.path.join(DATA_DIR, "kbo_player_props.json")
@@ -191,7 +197,7 @@ def run() -> Dict[str, Any]:
                 seen.add(sp["name"])
                 # Team lookup: use home_team if home_starter, away_team if away_starter
                 team = adj.get("home_team") if sp_key == "home_starter" else adj.get("away_team")
-                era = sp.get("era", 4.30)
+                era = _nz(sp.get("era"), 4.30)
                 # Project per-start: 6 IP, K rate scales inversely with ERA (better SP = more K)
                 k_rate = max(4.0, 9.5 - era)    # ERA 2.95 -> ~6.5 K/9, ERA 4.85 -> ~4.6 K/9
                 expected_k = round(k_rate * (6.0 / 9.0), 2)

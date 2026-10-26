@@ -106,7 +106,7 @@ def run() -> Dict[str, Any]:
             "stake_pct_of_bankroll": sizes["anchor"],
         })
 
-    total_pct = sum(t.get("stake_pct_of_bankroll", 0) for t in ticket)
+    total_pct = sum((t.get("stake_pct_of_bankroll") or 0) for t in ticket)
 
     out = {
         "generated_at": dt.datetime.utcnow().isoformat(timespec="seconds"),

@@ -22,6 +22,12 @@ import urllib.request
 from typing import Any, Dict, List, Optional
 
 
+def _nz(v, d):
+    """None-safe default (2026-10-26): `.get(k, d)` only covers a MISSING key;
+    a key stored as None still reaches the arithmetic and crashes."""
+    return d if v is None else v
+
+
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 GAMELOG_URL = "https://site.api.espn.com/apis/common/v3/sports/{path}/athletes/{aid}/gamelog"
 
@@ -294,7 +300,7 @@ def fetch_sport(sport_key: str, espn_path: str, top_per_team: int) -> Dict[str, 
     season = _current_season(espn_path)
     current = fetch_prior(sport_key, espn_path, season) if season else {}
     prior = fetch_prior(sport_key, espn_path, season - 1) if season else {}
-    k = BLEND_K.get(sport_key, 5.0)
+    k = _nz(BLEND_K.get(sport_key), 5.0)
     tmap = MODEL_TEAM.get(sport_key) or {}
     player_logs: List[Dict[str, Any]] = []
     for team_id, tb in teams.items():

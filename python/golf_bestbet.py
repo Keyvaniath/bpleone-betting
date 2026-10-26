@@ -23,6 +23,12 @@ import datetime as dt
 from typing import Any, Dict, List
 
 
+def _nz(v, d):
+    """None-safe default (2026-10-26): `.get(k, d)` only covers a MISSING key;
+    a key stored as None still reaches the arithmetic and crashes."""
+    return d if v is None else v
+
+
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 PROPS_PATH = os.path.join(DATA_DIR, "golf_props.json")
 H2H_PATH = os.path.join(DATA_DIR, "golf_h2h.json")
@@ -108,7 +114,7 @@ def run() -> Dict[str, Any]:
             json.dump(payload, f, indent=2)
         return payload
 
-    rounds_left = props.get("rounds_left", 4)
+    rounds_left = _nz(props.get("rounds_left"), 4)
     candidates: List[Dict[str, Any]] = []
 
     # Candidate type 1: WIN bets — top 15 by P(win)
@@ -150,7 +156,7 @@ def run() -> Dict[str, Any]:
     # Candidate type 3: TOP 10 — safer floor for contenders
     for p in props["players"][:60]:
         s = _score(p.get("p_top10", 0), rounds_left=rounds_left)
-        if s > 0 and p.get("p_top10", 0) > 0.12:    # only worthwhile if double-digit
+        if s > 0 and (p.get("p_top10") or 0) > 0.12:    # only worthwhile if double-digit
             candidates.append({
                 "type": "TOP10",
                 "player": p["name"],

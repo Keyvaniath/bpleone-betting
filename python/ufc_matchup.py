@@ -106,7 +106,8 @@ def run() -> Dict[str, Any]:
     events = ufc.get("events") or []
     if not events:
         payload = {"generated_at": dt.datetime.now().isoformat(timespec="seconds"),
-                   "n_fights": 0, "fights": [], "note": "no upcoming UFC events"}
+                   "n_fights": 0, "n_events": 0, "tier_counts": {}, "next_event": None,
+                   "fights": [], "note": "no upcoming UFC events"}
         os.makedirs(DATA_DIR, exist_ok=True)
         with open(OUT, "w") as f: json.dump(payload, f, indent=2)
         return payload
@@ -155,7 +156,7 @@ def run() -> Dict[str, Any]:
     fights_out.sort(key=lambda f: (tier_rank.get(f["tier"], 9), -f["edge_pp"]))
 
     tier_counts = {}
-    for f in fights_out: tier_counts[f["tier"]] = tier_counts.get(f["tier"], 0) + 1
+    for f in fights_out: tier_counts[f["tier"]] = (tier_counts.get(f["tier"]) or 0) + 1
 
     payload = {
         "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
@@ -172,7 +173,7 @@ def run() -> Dict[str, Any]:
 
 if __name__ == "__main__":
     p = run()
-    print(f"UFC matchup: {p['n_fights']} fights across {p['n_events']} event(s)")
+    print(f"UFC matchup: {p.get('n_fights', 0)} fights across {p.get('n_events', 0)} event(s)")
     print(f"  Tier counts: {p.get('tier_counts')}")
     if p["fights"]:
         print(f"  Next event: {p.get('next_event')}")

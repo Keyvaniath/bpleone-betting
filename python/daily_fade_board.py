@@ -82,7 +82,7 @@ def run() -> Dict[str, Any]:
 
     by_sport: Dict[str, int] = {}
     for f in fades:
-        by_sport[f["sport"]] = by_sport.get(f["sport"], 0) + 1
+        by_sport[f["sport"]] = (by_sport.get(f["sport"]) or 0) + 1
 
     out = {
         "generated_at": dt.datetime.utcnow().isoformat(timespec="seconds"),

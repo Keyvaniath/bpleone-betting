@@ -157,7 +157,7 @@ def fetch_sport(sport_key: str, espn_path: str) -> Dict[str, Any]:
         pulled += 1
         time.sleep(0.03)
     # Sort: heating up first (biggest gain), then cooling, then stable
-    trends.sort(key=lambda t: -t.get("pts_delta_pct", 0))
+    trends.sort(key=lambda t: -(t.get("pts_delta_pct") or 0))
     heating = [t for t in trends if t["trend"] == "HEATING_UP"]
     cooling = [t for t in trends if t["trend"] == "COOLING_DOWN"]
     stable = [t for t in trends if t["trend"] == "STABLE"]

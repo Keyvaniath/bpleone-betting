@@ -81,11 +81,11 @@ def _days_rest(pid: int, gamelogs: Dict[str, Any]) -> Optional[int]:
 
 def _fatigue_grade(pch: Dict[str, Any], days_rest: Optional[int]) -> Dict[str, Any]:
     """Compute grade A-F + early-hook risk + K/OU leans."""
-    n = pch.get("n_starts", 0)
-    avg_pc = pch.get("avg_pc", 0)
-    max_pc = pch.get("max_pc", 0)
-    last_pc = pch.get("last_pc", 0)
-    trend = pch.get("trend", 0)   # slope across pcs[]
+    n = (pch.get("n_starts") or 0)
+    avg_pc = (pch.get("avg_pc") or 0)
+    max_pc = (pch.get("max_pc") or 0)
+    last_pc = (pch.get("last_pc") or 0)
+    trend = (pch.get("trend") or 0)   # slope across pcs[]
 
     # Default
     grade = "C"

@@ -91,13 +91,13 @@ def run() -> Dict[str, Any]:
         nm = d.get("name")
         if not nm: continue
         # Only surface top-tier picks (P(podium) > 0.55 or P(top10) > 0.85)
-        if d.get("p_podium", 0) > 0.55:
+        if (d.get("p_podium") or 0) > 0.55:
             _add(picks, "F1", f"{nm} ({race_name})", "PODIUM_top3",
                   d.get("p_podium"), d.get("fair_podium_american"), "f1_driver")
-        if d.get("p_points_top10", 0) > 0.85:
+        if (d.get("p_points_top10") or 0) > 0.85:
             _add(picks, "F1", f"{nm} ({race_name})", "POINTS_top10",
                   d.get("p_points_top10"), d.get("fair_points_american"), "f1_driver")
-        if d.get("p_win", 0) > 0.10:
+        if (d.get("p_win") or 0) > 0.10:
             _add(picks, "F1", f"{nm} ({race_name})", "WIN",
                   d.get("p_win"), d.get("fair_win_american"), "f1_driver")
 
@@ -217,7 +217,7 @@ def run() -> Dict[str, Any]:
     # Sort by prob desc
     picks.sort(key=lambda x: -x["prob"])
     by_sport: Dict[str, int] = {}
-    for p in picks: by_sport[p["sport"]] = by_sport.get(p["sport"], 0) + 1
+    for p in picks: by_sport[p["sport"]] = (by_sport.get(p["sport"]) or 0) + 1
 
     payload = {
         "generated_at": dt.datetime.now().isoformat(timespec="seconds"),

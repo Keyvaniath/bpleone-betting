@@ -74,9 +74,9 @@ def run() -> Dict[str, Any]:
         if score < 14: continue
 
         name = _norm(r.get("goalie") or "")
-        p_so = shutout_idx.get(name, 0)
-        p_win = win_idx.get(name, 0)
-        p_30 = saves30_idx.get(name, 0)
+        p_so = (shutout_idx.get(name) or 0)
+        p_win = (win_idx.get(name) or 0)
+        p_30 = (saves30_idx.get(name) or 0)
         fatigue_status = (r.get("fatigue_status") or "").upper()
 
         if p_so < 0.12: continue

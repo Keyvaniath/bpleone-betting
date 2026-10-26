@@ -157,7 +157,7 @@ def run_projections(teams: List[Team],
         wt = win_totals[t.code]
         dist: Dict[int, float] = {}
         for v in wt:
-            dist[v] = dist.get(v, 0) + 1
+            dist[v] = (dist.get(v) or 0) + 1
         for k in dist:
             dist[k] = round(dist[k] / n_sims, 4)
         out.append(PlayoffOdds(

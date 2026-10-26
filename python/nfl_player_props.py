@@ -38,6 +38,12 @@ from typing import Any, Dict, List, Optional
 import nfl_simulator as _SIM   # play-level Monte Carlo (backtested vs normal-CDF)
 import nfl_baselines as nb     # shared roster/2025-baseline resolution (2026-08-13)
 
+
+def _nz(v, d):
+    """None-safe default (2026-10-26): `.get(k, d)` only covers a MISSING key;
+    a key stored as None still reaches the arithmetic and crashes."""
+    return d if v is None else v
+
 SIM_N = 4000        # simulations per curated-DB player per slate
 SIM_N_WIDE = 2000   # simulations for the widened (2025-baseline) universe
 NFL_2026_WEEK1 = "2026-09-08"   # the picks gate holds until this date regardless
@@ -138,7 +144,7 @@ _DEF_DAMP = 0.6
 
 
 def _opp_factor(table: Dict[str, float], opp: str) -> float:
-    raw = table.get(opp, 1.0)
+    raw = _nz(table.get(opp), 1.0)
     return 1.0 + _DEF_DAMP * (raw - 1.0)
 
 
@@ -275,7 +281,7 @@ def _sim_player(name: str, info: Dict[str, Any], gl: Dict[str, Any],
         car = _vol(gl, name, "rush_att", max(6.0, info["rush_yds"] / 4.3))
         exp_yds = _blend(_recent_base(gl, name, "rush_yds"), info["rush_yds"], nf) * rush_f
         prof = {"carries": car, "ypc_rush": exp_yds / max(1.0, car),
-                "rush_td_pg": (info.get("td_rate", 0.4)) * (0.7 if info.get("rec_yds") else 1.0)}
+                "rush_td_pg": (_nz(info.get("td_rate"), 0.4)) * (0.7 if info.get("rec_yds") else 1.0)}
         out.update(_SIM.simulate_rusher(prof, n=n, seed=seed + 1))
     if info.get("rec_yds"):
         recm = info.get("rec") or 5
@@ -283,7 +289,7 @@ def _sim_player(name: str, info: Dict[str, Any], gl: Dict[str, Any],
         exp_yds = _blend(_recent_base(gl, name, "rec_yds"), info["rec_yds"], nf) * pass_f
         prof = {"targets": tgt, "catch_rate": min(0.9, recm / tgt if tgt else 0.64),
                 "ypr": exp_yds / max(1.0, recm),
-                "rec_td_pg": (info.get("td_rate", 0.4)) * (0.3 if info.get("rush_yds") else 1.0)}
+                "rec_td_pg": (_nz(info.get("td_rate"), 0.4)) * (0.3 if info.get("rush_yds") else 1.0)}
         out.update(_SIM.simulate_receiver(prof, n=n, seed=seed + 2))
     return out
 

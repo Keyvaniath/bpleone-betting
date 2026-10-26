@@ -35,6 +35,12 @@ import datetime as dt
 from typing import Any, Dict, List
 
 
+def _nz(v, d):
+    """None-safe default (2026-10-26): `.get(k, d)` only covers a MISSING key;
+    a key stored as None still reaches the arithmetic and crashes."""
+    return d if v is None else v
+
+
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 BEST_BETS_PATH = os.path.join(DATA_DIR, "best_bets.json")
 SLATE_CONF_PATH = os.path.join(DATA_DIR, "slate_confidence.json")
@@ -94,7 +100,7 @@ def run() -> Dict[str, Any]:
     bankroll = float(rt.get("bankroll.starting_units", BANKROLL_DEFAULT))
     kelly_frac = float(rt.get("plays.kelly_fraction", KELLY_FRACTION_DEFAULT))
     slate_tier = slate.get("tier") or "medium"
-    quality_gate = QUALITY_GATE.get(slate_tier, 72)
+    quality_gate = _nz(QUALITY_GATE.get(slate_tier), 72)
 
     # Score-rank by quality (already done by best_bets) but apply gate
     # Allow DK / PP / NRFI flat plays. SGPs sized separately on /parlays.
@@ -122,7 +128,7 @@ def run() -> Dict[str, Any]:
             continue
         # Game-exposure cap (correlation)
         matchup = _matchup_for_player(b.get("player_id"), matchups) or b.get("matchup") or "??"
-        if game_exposure.get(matchup, 0) >= MAX_BETS_PER_GAME:
+        if (game_exposure.get(matchup) or 0) >= MAX_BETS_PER_GAME:
             skipped["game_cap"] += 1
             continue
         # Nightly exposure cap
@@ -149,7 +155,7 @@ def run() -> Dict[str, Any]:
             "stars": b.get("stars"),
         })
         total_stake += stake
-        game_exposure[matchup] = game_exposure.get(matchup, 0) + 1
+        game_exposure[matchup] = (game_exposure.get(matchup) or 0) + 1
 
     total_ev = sum(p["ev"] for p in picks)
     payload = {

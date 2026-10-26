@@ -83,14 +83,14 @@ def run() -> Dict[str, Any]:
             last_14 = list(reversed(splits))[:14]
             n = len(last_14)
             if n < 5: continue    # need at least 5 games
-            ab = sum(int((s.get("stat") or {}).get("atBats", 0)) for s in last_14)
-            h = sum(int((s.get("stat") or {}).get("hits", 0)) for s in last_14)
-            hr = sum(int((s.get("stat") or {}).get("homeRuns", 0)) for s in last_14)
-            rbi = sum(int((s.get("stat") or {}).get("rbi", 0)) for s in last_14)
-            runs = sum(int((s.get("stat") or {}).get("runs", 0)) for s in last_14)
-            so = sum(int((s.get("stat") or {}).get("strikeOuts", 0)) for s in last_14)
-            bb = sum(int((s.get("stat") or {}).get("baseOnBalls", 0)) for s in last_14)
-            tb = sum(int((s.get("stat") or {}).get("totalBases", 0)) for s in last_14)
+            ab = sum(int(((s.get("stat") or {}).get("atBats") or 0)) for s in last_14)
+            h = sum(int(((s.get("stat") or {}).get("hits") or 0)) for s in last_14)
+            hr = sum(int(((s.get("stat") or {}).get("homeRuns") or 0)) for s in last_14)
+            rbi = sum(int(((s.get("stat") or {}).get("rbi") or 0)) for s in last_14)
+            runs = sum(int(((s.get("stat") or {}).get("runs") or 0)) for s in last_14)
+            so = sum(int(((s.get("stat") or {}).get("strikeOuts") or 0)) for s in last_14)
+            bb = sum(int(((s.get("stat") or {}).get("baseOnBalls") or 0)) for s in last_14)
+            tb = sum(int(((s.get("stat") or {}).get("totalBases") or 0)) for s in last_14)
             if ab < 10:    # bench player
                 continue
             avg = round(h / ab, 3) if ab else 0

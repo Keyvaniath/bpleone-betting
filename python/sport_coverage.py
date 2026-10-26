@@ -154,7 +154,7 @@ def run() -> Dict[str, Any]:
         led = _ledger_track(keys, ledger)
         pot = _pot_track(pot_file)
         settled = max(led["settled"], pot["settled"])
-        pending = max(led["pending"], pot.get("pending", 0))
+        pending = max(led["pending"], (pot.get("pending") or 0))
         tracking = settled > 0
         # status: LIVE if games/props today; else IN-SEASON if recently tracking/
         # pending; else OFF-SEASON.
@@ -166,7 +166,7 @@ def run() -> Dict[str, Any]:
             status = "OFF-SEASON"
         # tracking note: settlement WIRED but awaiting game completion vs no feed
         track_note = None
-        if not tracking and pot.get("pending", 0) > 0:
+        if not tracking and (pot.get("pending") or 0) > 0:
             track_note = f"settlement wired -- {pot['pending']} pending, settles on game completion"
         elif not tracking and (n_props > 0 or n_games > 0 or pending > 0):
             track_note = "picks produced, none settled yet (awaiting an outcome feed)"
@@ -175,7 +175,7 @@ def run() -> Dict[str, Any]:
             track_status = "tracking"
         elif status == "OFF-SEASON":
             track_status = "off-season"
-        elif pot.get("pending", 0) > 0:
+        elif (pot.get("pending") or 0) > 0:
             track_status = "pending"
         elif n_props > 0 or n_games > 0 or pending > 0:
             track_status = "no-feed"

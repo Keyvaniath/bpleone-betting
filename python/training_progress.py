@@ -48,6 +48,12 @@ import datetime as dt
 from typing import Any, Dict, List, Optional
 
 
+def _nz(v, d):
+    """None-safe default (2026-10-26): `.get(k, d)` only covers a MISSING key;
+    a key stored as None still reaches the arithmetic and crashes."""
+    return d if v is None else v
+
+
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 TR_PATH = os.path.join(DATA_DIR, "track_record.json")
 CAL_PATH = os.path.join(DATA_DIR, "calibration_live.json")
@@ -57,7 +63,7 @@ MILESTONES = [200, 500, 1000]
 
 try:
     import config as _cfg
-    N_PRIOR_DEFAULT = _cfg.get("calibration.n_prior_default", 8)
+    N_PRIOR_DEFAULT = _nz(_cfg.get("calibration.n_prior_default"), 8)
     N_PRIOR_PER_MARKET = _cfg.get("calibration.n_prior_per_market", {}) or {}
 except Exception:
     N_PRIOR_DEFAULT = 8
@@ -111,15 +117,15 @@ def run() -> Dict[str, Any]:
         m = r.get("market")
         if not m:
             continue
-        by_market_total[m] = by_market_total.get(m, 0) + 1
+        by_market_total[m] = (by_market_total.get(m) or 0) + 1
         d = _date_of(r)
         if d and d >= cutoff:
-            by_market_recent[m] = by_market_recent.get(m, 0) + 1
+            by_market_recent[m] = (by_market_recent.get(m) or 0) + 1
 
     rows: List[Dict[str, Any]] = []
     for market in sorted(by_market_total.keys()):
         n = by_market_total[market]
-        recent_n = by_market_recent.get(market, 0)
+        recent_n = (by_market_recent.get(market) or 0)
         daily_rate = round(recent_n / 14, 1) if recent_n > 0 else 0.0
         n_prior = N_PRIOR_PER_MARKET.get(market, N_PRIOR_DEFAULT)
         weight_now = _weight(n, n_prior)

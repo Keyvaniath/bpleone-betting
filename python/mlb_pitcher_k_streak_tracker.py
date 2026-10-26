@@ -82,7 +82,7 @@ def run() -> Dict[str, Any]:
         # K streak heuristic
         if expected_k < 7 and recent_k9 < 10: continue
 
-        p_9plus = k9_idx.get(name, 0)
+        p_9plus = (k9_idx.get(name) or 0)
 
         signals: Dict[str, int] = {}
         signals["HIGH_CONFLUENCE"] = 1 if score >= 65 else 0

@@ -93,23 +93,23 @@ def run() -> Dict[str, Any]:
         name = _norm(r.get("batter") or "")
         legs: List[Dict[str, Any]] = []
 
-        p_hr = hr_idx.get(name, 0)
+        p_hr = (hr_idx.get(name) or 0)
         if p_hr >= 0.18:
             legs.append({"market": "HR YES", "p": round(p_hr, 3)})
 
-        p_2plus = hits2_idx.get(name, 0)
+        p_2plus = (hits2_idx.get(name) or 0)
         if p_2plus >= 0.40:
             legs.append({"market": "2+ Hits YES", "p": round(p_2plus, 3)})
 
-        p_rbi = rbi_idx.get(name, 0)
+        p_rbi = (rbi_idx.get(name) or 0)
         if p_rbi >= 0.50:
             legs.append({"market": "1+ RBI YES", "p": round(p_rbi, 3)})
 
-        p_hit = hit_idx.get(name, 0)
+        p_hit = (hit_idx.get(name) or 0)
         if p_hit >= 0.75:
             legs.append({"market": "1+ Hit YES", "p": round(p_hit, 3)})
 
-        p_tb3 = tb3_idx.get(name, 0)
+        p_tb3 = (tb3_idx.get(name) or 0)
         if p_tb3 >= 0.22:
             legs.append({"market": "3+ TB YES", "p": round(p_tb3, 3)})
 

@@ -178,7 +178,7 @@ def run() -> Dict[str, Any]:
         skill = (cur - median_total) * SKILL_PER_STROKE
         # Elite OWGR prior: world-top-30 players get an additive stroke bonus
         # that captures pre-tournament skill not yet reflected in position.
-        elite = ELITE_PRIOR.get(p["name"], 0.0)
+        elite = (ELITE_PRIOR.get(p["name"]) or 0.0)
         player_means.append({
             "name": p["name"],
             "starting_total": cur,

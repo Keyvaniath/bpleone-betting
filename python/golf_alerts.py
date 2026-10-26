@@ -148,7 +148,7 @@ def run() -> Dict[str, Any]:
 
     # 3. Big win-prob shift (>= 10pp)
     for name, cur in cur_pwins.items():
-        prev = last_pwins.get(name, 0)
+        prev = (last_pwins.get(name) or 0)
         delta = cur - prev
         if abs(delta) >= 0.10 and last_pwins:  # only after we have a baseline
             sign = "📈" if delta > 0 else "📉"

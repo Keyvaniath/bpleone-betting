@@ -25,6 +25,12 @@ import datetime as dt
 from typing import Any, Dict, List, Optional
 
 
+def _nz(v, d):
+    """None-safe default (2026-10-26): `.get(k, d)` only covers a MISSING key;
+    a key stored as None still reaches the arithmetic and crashes."""
+    return d if v is None else v
+
+
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 OUT = os.path.join(DATA_DIR, "mlb_team_sb_total_props.json")
 
@@ -97,8 +103,8 @@ def run() -> Dict[str, Any]:
         away, home = [s.strip().upper() for s in matchup_str.split("@", 1)]
 
         for team, opp in ((home, away), (away, home)):
-            base_sb = TEAM_SB_PER_GAME.get(team, 0.55)
-            opp_mult = opp_catcher_adj.get(opp, 1.0)
+            base_sb = _nz(TEAM_SB_PER_GAME.get(team), 0.55)
+            opp_mult = _nz(opp_catcher_adj.get(opp), 1.0)
             expected_sb = base_sb * opp_mult
 
             # Edge classification: line 0.5/1.5/2.5

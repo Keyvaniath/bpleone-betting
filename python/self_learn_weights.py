@@ -34,6 +34,12 @@ import datetime as dt
 from typing import Any, Dict
 
 
+def _nz(v, d):
+    """None-safe default (2026-10-26): `.get(k, d)` only covers a MISSING key;
+    a key stored as None still reaches the arithmetic and crashes."""
+    return d if v is None else v
+
+
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 OUT = os.path.join(DATA_DIR, "learned_weights.json")
 
@@ -106,7 +112,7 @@ def run() -> Dict[str, Any]:
         n = (stats.get("wins") or 0) + (stats.get("losses") or 0)
         hit_rate = stats.get("hit_rate")
         guard = guards.get(source, {})
-        max_delta = guard.get("max_weight_delta", 1.0)
+        max_delta = _nz(guard.get("max_weight_delta"), 1.0)
         use_wilson_lo = guard.get("use_wilson_lo", True)  # safer default
 
         # Observed: use Wilson lower bound for unproven sources, point estimate for proven

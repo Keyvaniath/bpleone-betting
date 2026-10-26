@@ -30,6 +30,12 @@ import datetime as dt
 from typing import Any, Dict, List, Optional
 
 
+def _nz(v, d):
+    """None-safe default (2026-10-26): `.get(k, d)` only covers a MISSING key;
+    a key stored as None still reaches the arithmetic and crashes."""
+    return d if v is None else v
+
+
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 TODAY_PATH = os.path.join(DATA_DIR, "today.json")
 TR_PATH = os.path.join(DATA_DIR, "track_record.json")
@@ -69,7 +75,7 @@ def _settle_game_pod(entry: Dict[str, Any], tr: Dict[str, Any]) -> Dict[str, Any
                     "settled": True,
                     "outcome": "WIN" if hit else "LOSS",
                     "stake_units": entry.get("kelly_units", 1.0),
-                    "pl_units": entry.get("kelly_units", 1.0) * (payout if hit else -1),
+                    "pl_units": _nz(entry.get("kelly_units"), 1.0) * (payout if hit else -1),
                     "actual_result_summary": f"Final: {g.get('home_runs','?')}-{g.get('away_runs','?')}",
                 }
     return {"settled": False, "outcome": "PENDING"}
@@ -114,10 +120,10 @@ def run() -> Dict[str, Any]:
     # 3. Compute aggregate stats from settled
     settled = [h for h in hist if h.get("settled")]
     wins = sum(1 for h in settled if h.get("outcome") == "WIN")
-    net = sum(h.get("pl_units", 0) for h in settled)
-    avg_edge = (sum(h.get("edge_pct", 0) for h in hist) / len(hist)) if hist else 0
-    avg_kelly = (sum(h.get("kelly_units", 0) for h in hist) / len(hist)) if hist else 0
-    total_stake = sum(h.get("kelly_units", 1.0) for h in settled)
+    net = sum((h.get("pl_units") or 0) for h in settled)
+    avg_edge = (sum((h.get("edge_pct") or 0) for h in hist) / len(hist)) if hist else 0
+    avg_kelly = (sum((h.get("kelly_units") or 0) for h in hist) / len(hist)) if hist else 0
+    total_stake = sum(_nz(h.get("kelly_units"), 1.0) for h in settled)
 
     payload = {
         "generated_at": dt.datetime.now().isoformat(timespec="seconds"),

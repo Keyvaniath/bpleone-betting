@@ -172,7 +172,7 @@ def run() -> Dict[str, Any]:
     # Linear trends on dates with enough samples. Pair x with y PER METRIC --
     # zipping a full-length xs against a filtered ys was a latent index-error
     # (never fired on the synthetic feed where every day had every metric).
-    eligible = [d for d in per_day if d.get("graded", 0) >= 10]
+    eligible = [d for d in per_day if (d.get("graded") or 0) >= 10]
     trends: Dict[str, Optional[float]] = {}
     if len(eligible) >= 2:
         def _metric_slope(key: str) -> Optional[float]:

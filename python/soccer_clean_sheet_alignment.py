@@ -25,6 +25,12 @@ import datetime as dt
 from typing import Any, Dict, List
 
 
+def _nz(v, d):
+    """None-safe default (2026-10-26): `.get(k, d)` only covers a MISSING key;
+    a key stored as None still reaches the arithmetic and crashes."""
+    return d if v is None else v
+
+
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 OUT = os.path.join(DATA_DIR, "soccer_clean_sheet_alignment.json")
 
@@ -80,7 +86,7 @@ def run() -> Dict[str, Any]:
                 key = _norm(r.get("match") or r.get("matchup") or "")
                 p_cs = _safe(r.get("p_clean_sheet") or r.get("p"))
                 existing = cs_idx.get(key)
-                if not existing or p_cs > existing.get("p_clean_sheet", 0):
+                if not existing or p_cs > (existing.get("p_clean_sheet") or 0):
                     cs_idx[key] = {"team": r.get("team"), "p_clean_sheet": p_cs}
 
     all_matches = set(btts_idx) | set(goals_idx) | set(fs_idx) | set(cs_idx)
@@ -88,18 +94,18 @@ def run() -> Dict[str, Any]:
     alignments: List[Dict[str, Any]] = []
     for key in all_matches:
         signals: Dict[str, int] = {}
-        p_btts = btts_idx.get(key, 1)
+        p_btts = _nz(btts_idx.get(key), 1)
         signals["BTTS_NO_LIKELY"] = 1 if 0 < p_btts <= 0.45 else 0
 
         goals_ec = (goals_idx.get(key, {}).get("edge_class") or "").upper()
         signals["GOALS_STRONG_UNDER"] = 1 if "STRONG_UNDER" in goals_ec else 0
         signals["GOALS_UNDER_LEAN"] = 1 if "UNDER" in goals_ec and "STRONG" not in goals_ec else 0
 
-        p_first = fs_idx.get(key, 1)
+        p_first = _nz(fs_idx.get(key), 1)
         signals["LOW_EARLY_SCORE"] = 1 if 0 < p_first <= 0.50 else 0
 
         cs_info = cs_idx.get(key, {})
-        p_cs = cs_info.get("p_clean_sheet", 0)
+        p_cs = (cs_info.get("p_clean_sheet") or 0)
         signals["CLEAN_SHEET_LIVE"] = 1 if p_cs >= 0.35 else 0
 
         n_positive = sum(1 for v in signals.values() if v == 1)

@@ -124,7 +124,7 @@ def run() -> Dict[str, Any]:
 
     # Compute aggregate metrics across settled
     if settled:
-        total_brier = sum(e.get("squared_error", 0) for e in settled) / len(settled)
+        total_brier = sum((e.get("squared_error") or 0) for e in settled) / len(settled)
         correct = sum(1 for e in settled if (e.get("pre_game_p_home_win") or 0.5) >= 0.5
                        and e.get("outcome") == "HOME_WIN") + sum(
                    1 for e in settled if (e.get("pre_game_p_home_win") or 0.5) < 0.5

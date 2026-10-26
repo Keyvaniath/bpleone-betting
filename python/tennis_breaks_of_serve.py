@@ -25,6 +25,12 @@ import datetime as dt
 from typing import Any, Dict, List, Optional
 
 
+def _nz(v, d):
+    """None-safe default (2026-10-26): `.get(k, d)` only covers a MISSING key;
+    a key stored as None still reaches the arithmetic and crashes."""
+    return d if v is None else v
+
+
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 OUT = os.path.join(DATA_DIR, "tennis_breaks_of_serve.json")
 
@@ -109,7 +115,7 @@ def run() -> Dict[str, Any]:
     rows: List[Dict[str, Any]] = []
     for m in matches:
         surface = (m.get("surface") or "hard").lower()
-        surf_mult = SURFACE_MULT.get(surface, 1.0)
+        surf_mult = _nz(SURFACE_MULT.get(surface), 1.0)
         format_bo = m.get("format") or "bo3"
         format_mult = 1.50 if format_bo == "bo5" else 1.0
 

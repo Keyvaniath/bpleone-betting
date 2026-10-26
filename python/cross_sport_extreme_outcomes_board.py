@@ -74,8 +74,8 @@ def run() -> Dict[str, Any]:
     by_sport: Dict[str, int] = {}
     by_market: Dict[str, int] = {}
     for p in extreme_picks:
-        by_sport[p["sport"]] = by_sport.get(p["sport"], 0) + 1
-        by_market[p["market"]] = by_market.get(p["market"], 0) + 1
+        by_sport[p["sport"]] = (by_sport.get(p["sport"]) or 0) + 1
+        by_market[p["market"]] = (by_market.get(p["market"]) or 0) + 1
 
     out = {
         "generated_at": dt.datetime.utcnow().isoformat(timespec="seconds"),

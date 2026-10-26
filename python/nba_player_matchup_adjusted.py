@@ -136,9 +136,9 @@ def run() -> Dict[str, Any]:
         #   opp_drtg = 116 (worse D) → 1.03 (boost) ✓
         #   opp_drtg = 110 (better D) → 0.97 (reduce) ✓
 
-        baseline_pts = baseline.get("pts", 0)
-        baseline_reb = baseline.get("reb", 0)
-        baseline_ast = baseline.get("ast", 0)
+        baseline_pts = (baseline.get("pts") or 0)
+        baseline_reb = (baseline.get("reb") or 0)
+        baseline_ast = (baseline.get("ast") or 0)
 
         adj_pts = baseline_pts * pace_mult * drtg_mult if baseline_pts else 0
         adj_reb = baseline_reb * pace_mult if baseline_reb else 0

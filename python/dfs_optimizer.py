@@ -68,7 +68,7 @@ def _collect_player_legs() -> List[Dict[str, Any]]:
     for p in (lol.get("projections") or []):
         if p.get("league") not in TIER1_LOL_LEAGUES: continue
         for kp in (p.get("kill_props") or []):
-            if PROB_MIN <= kp.get("p_over", 0) <= PROB_MAX:
+            if PROB_MIN <= (kp.get("p_over") or 0) <= PROB_MAX:
                 legs.append({
                     "sport": "LOL",
                     "player": p.get("summoner_name"),
@@ -77,7 +77,7 @@ def _collect_player_legs() -> List[Dict[str, Any]]:
                     "label": f"{p.get('summoner_name')} OVER {kp.get('line')} Kills",
                     "prob": kp["p_over"],
                 })
-            elif PROB_MIN <= kp.get("p_under", 0) <= PROB_MAX:
+            elif PROB_MIN <= (kp.get("p_under") or 0) <= PROB_MAX:
                 legs.append({
                     "sport": "LOL",
                     "player": p.get("summoner_name"),
@@ -90,9 +90,9 @@ def _collect_player_legs() -> List[Dict[str, Any]]:
     # CS kill props (top players only, tight band)
     cs = _load(os.path.join(DATA_DIR, "cs_player_props.json"))
     for p in (cs.get("players") or []):
-        if p.get("rating", 0) < 1.08: continue
+        if (p.get("rating") or 0) < 1.08: continue
         for kp in (p.get("props_bo3", {}).get("kills") or []):
-            if PROB_MIN <= kp.get("p_over", 0) <= PROB_MAX:
+            if PROB_MIN <= (kp.get("p_over") or 0) <= PROB_MAX:
                 legs.append({
                     "sport": "CS",
                     "player": p.get("name"),
@@ -108,7 +108,7 @@ def _collect_player_legs() -> List[Dict[str, Any]]:
         if p.get("kind") == "batter":
             for market in ("two_plus_hits", "one_plus_rbi", "one_plus_tb"):
                 pr = p.get("props", {}).get(market) or {}
-                if PROB_MIN <= pr.get("p", 0) <= PROB_MAX:
+                if PROB_MIN <= (pr.get("p") or 0) <= PROB_MAX:
                     legs.append({
                         "sport": "KBO",
                         "player": p["name"],

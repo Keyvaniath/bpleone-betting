@@ -56,8 +56,8 @@ def run() -> Dict[str, Any]:
             home, away = g.get("home_team"), g.get("away_team")
             home_form = _team_form(sport, home)
             away_form = _team_form(sport, away)
-            home_wpct = (home_form.get("L10") or {}).get("win_pct", 0)
-            away_wpct = (away_form.get("L10") or {}).get("win_pct", 0)
+            home_wpct = ((home_form.get("L10") or {}).get("win_pct") or 0)
+            away_wpct = ((away_form.get("L10") or {}).get("win_pct") or 0)
             # Form-aligned = the side we favor also has higher L10 win%
             if sweet_home:
                 aligned = home_wpct >= away_wpct
@@ -98,8 +98,8 @@ def run() -> Dict[str, Any]:
     by_conf: Dict[str, int] = {}
     by_sport: Dict[str, int] = {}
     for a in alerts:
-        by_conf[a["confidence"]] = by_conf.get(a["confidence"], 0) + 1
-        by_sport[a["sport"]] = by_sport.get(a["sport"], 0) + 1
+        by_conf[a["confidence"]] = (by_conf.get(a["confidence"]) or 0) + 1
+        by_sport[a["sport"]] = (by_sport.get(a["sport"]) or 0) + 1
 
     payload = {
         "generated_at": dt.datetime.now().isoformat(timespec="seconds"),

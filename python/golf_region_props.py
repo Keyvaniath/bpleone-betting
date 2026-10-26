@@ -154,11 +154,11 @@ if __name__ == "__main__":
         fav5 = r.get("favorite_top5") or {}
         fav10 = r.get("favorite_top10") or {}
         print(f"  [{r['region']:25s}] n={r['n_players']:3} "
-              f"top5_fav: {(fav5.get('name') or '?'):20s} ({fav5.get('p_top_in_region',0)*100:.0f}%, fair {fav5.get('fair_american','?')}) "
-              f"top10_fav: {(fav10.get('name') or '?'):20s} ({fav10.get('p_top_in_region',0)*100:.0f}%)")
+              f"top5_fav: {(fav5.get('name') or '?'):20s} ({(fav5.get('p_top_in_region') or 0)*100:.0f}%, fair {fav5.get('fair_american','?')}) "
+              f"top10_fav: {(fav10.get('name') or '?'):20s} ({(fav10.get('p_top_in_region') or 0)*100:.0f}%)")
     cross = p.get("top_usa_vs_top_intl") or {}
     usa = cross.get("usa_favorite") or {}
     intl = cross.get("intl_favorite") or {}
     print(f"\nTop USA vs Top International (top10 markets):")
-    print(f"  USA:  {usa.get('name','?')} ({usa.get('country','?')}) {usa.get('p_top_in_region',0)*100:.0f}% fair {usa.get('fair_american','?')}")
-    print(f"  INTL: {intl.get('name','?')} ({intl.get('country','?')}) {intl.get('p_top_in_region',0)*100:.0f}% fair {intl.get('fair_american','?')}")
+    print(f"  USA:  {usa.get('name','?')} ({usa.get('country','?')}) {(usa.get('p_top_in_region') or 0)*100:.0f}% fair {usa.get('fair_american','?')}")
+    print(f"  INTL: {intl.get('name','?')} ({intl.get('country','?')}) {(intl.get('p_top_in_region') or 0)*100:.0f}% fair {intl.get('fair_american','?')}")

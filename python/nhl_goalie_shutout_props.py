@@ -21,6 +21,12 @@ import datetime as dt
 from typing import Any, Dict, List, Optional
 
 
+def _nz(v, d):
+    """None-safe default (2026-10-26): `.get(k, d)` only covers a MISSING key;
+    a key stored as None still reaches the arithmetic and crashes."""
+    return d if v is None else v
+
+
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 OUT = os.path.join(DATA_DIR, "nhl_goalie_shutout_props.json")
 
@@ -103,7 +109,7 @@ def run() -> Dict[str, Any]:
             is_home = info["team"] == home
             opp_team = away if is_home else home
 
-            opp_goals = TEAM_GOALS_PER_GAME.get(opp_team, 3.1)
+            opp_goals = _nz(TEAM_GOALS_PER_GAME.get(opp_team), 3.1)
             # Goalie SV% adjusts expected GA: a 0.928 SV% goalie reduces opp goals
             # by ratio of (1-0.928) / (1-0.910) = 0.72 / 0.90 = 0.80 (allows 80% of avg)
             sv_factor = (1 - info["sv_pct"]) / (1 - 0.910)

@@ -29,6 +29,12 @@ from dataclasses import dataclass
 from typing import Dict
 
 
+def _nz(v, d):
+    """None-safe default (2026-10-26): `.get(k, d)` only covers a MISSING key;
+    a key stored as None still reaches the arithmetic and crashes."""
+    return d if v is None else v
+
+
 @dataclass
 class Player:
     name: str
@@ -59,7 +65,7 @@ POSITION_WEIGHTS = {
 def single_game_wp_hit(player: Player, replacement: Replacement) -> float:
     """Estimated single-game win-probability decrease in PP."""
     diff = player.projected_war_162 - replacement.projected_war_162
-    weight = POSITION_WEIGHTS.get(player.position, 0.01)
+    weight = _nz(POSITION_WEIGHTS.get(player.position), 0.01)
     pp = diff * weight * 100   # convert to PP
     return round(pp, 2)
 

@@ -101,7 +101,7 @@ def _player_elo(name: str, surface: str) -> Optional[int]:
     info = PLAYER_ELO.get(key)
     if not info: return None
     base = info["elo"]
-    adj = info.get(f"{surface}_adj", 0)
+    adj = (info.get(f"{surface}_adj") or 0)
     return base + adj
 
 

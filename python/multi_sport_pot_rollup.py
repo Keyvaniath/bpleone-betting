@@ -51,7 +51,7 @@ def run() -> Dict[str, Any]:
         combined_pending.extend([{**h, "sport": sport} for h in pending])
 
         wins = sum(1 for h in settled if h.get("outcome") == "WIN")
-        net = sum(h.get("pl_units", 0) for h in settled)
+        net = sum((h.get("pl_units") or 0) for h in settled)
         by_sport[sport] = {
             "total": len(hist),
             "settled": len(settled),
@@ -66,7 +66,7 @@ def run() -> Dict[str, Any]:
     # Combined totals
     total_settled = len(combined_settled)
     total_wins = sum(1 for h in combined_settled if h.get("outcome") == "WIN")
-    total_net = sum(h.get("pl_units", 0) for h in combined_settled)
+    total_net = sum((h.get("pl_units") or 0) for h in combined_settled)
 
     payload = {
         "generated_at": dt.datetime.now().isoformat(timespec="seconds"),

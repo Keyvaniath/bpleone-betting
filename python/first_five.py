@@ -21,6 +21,12 @@ from typing import Any, Dict, List, Optional
 import stats_repo as sr
 
 
+def _nz(v, d):
+    """None-safe default (2026-10-26): `.get(k, d)` only covers a MISSING key;
+    a key stored as None still reaches the arithmetic and crashes."""
+    return d if v is None else v
+
+
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 OUT_PATH = os.path.join(DATA_DIR, "first_five.json")
 LEAGUE_ERA = 4.10
@@ -50,7 +56,7 @@ def project_f5(home_pid: Optional[int], away_pid: Optional[int],
         if era is None or era == 0:
             return LEAGUE_ERA
         recent = sr.pitcher_recent_form(pid, n=3) or {}
-        recent_era = recent.get("era") if recent.get("starts", 0) >= 2 else None
+        recent_era = recent.get("era") if (recent.get("starts") or 0) >= 2 else None
         if recent_era is not None:
             return 0.6 * recent_era + 0.4 * era
         return era
@@ -98,7 +104,7 @@ def build_all() -> Dict[str, Any]:
     out_games = []
     for g in m.get("games", []):
         venue = g.get("venue") or g.get("park")
-        pf = PARK_FACTORS.get(venue, 1.0)
+        pf = _nz(PARK_FACTORS.get(venue), 1.0)
         wx = (today_by_match.get(g.get("matchup")) or {}).get("weather") or {}
         carry = wx.get("carry_index")
         env_mult = 1.0

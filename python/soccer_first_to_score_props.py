@@ -30,6 +30,12 @@ import datetime as dt
 from typing import Any, Dict, List, Optional
 
 
+def _nz(v, d):
+    """None-safe default (2026-10-26): `.get(k, d)` only covers a MISSING key;
+    a key stored as None still reaches the arithmetic and crashes."""
+    return d if v is None else v
+
+
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 OUT = os.path.join(DATA_DIR, "soccer_first_to_score_props.json")
 
@@ -65,7 +71,7 @@ def _process_league(state_file: str, league: str) -> List[Dict[str, Any]]:
     state = _load(os.path.join(DATA_DIR, state_file))
     games = state.get("games") or state.get("events") or []
     rows = []
-    base = LEAGUE_BASELINES.get(league, 1.4)
+    base = _nz(LEAGUE_BASELINES.get(league), 1.4)
 
     for g in games:
         status = (g.get("status") or g.get("state") or "").lower()

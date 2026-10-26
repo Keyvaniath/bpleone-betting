@@ -176,7 +176,7 @@ def _self_training_shift(sport_key: str) -> float:
         with open(path) as f: d = json.load(f)
         reco = d.get("recommendation") or {}
         if reco.get("applied"):
-            return float(reco.get("recommended_shift", 0))
+            return float((reco.get("recommended_shift") or 0))
     except Exception:
         pass
     return 0.0

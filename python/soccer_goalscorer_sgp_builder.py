@@ -79,7 +79,7 @@ def run() -> Dict[str, Any]:
             {"market": "Anytime Goal YES", "p": round(p_score, 3)},
         ]
 
-        p_score_2 = goal2_idx.get(name, 0)
+        p_score_2 = (goal2_idx.get(name) or 0)
         if p_score_2 >= 0.18:
             legs.append({"market": "2+ Goals YES", "p": round(p_score_2, 3)})
 

@@ -363,4 +363,4 @@ if __name__ == "__main__":
     print(f"\n  Top 8 picks:")
     for pp in (p.get("top_picks") or [])[:8]:
         print(f"    {pp.get('matchup','?')[:25]:25s} {pp.get('market','?')[:30]:30s} "
-              f"p={pp.get('prob',0)*100:.0f}% fair={pp.get('fair')}")
+              f"p={(pp.get('prob') or 0)*100:.0f}% fair={pp.get('fair')}")

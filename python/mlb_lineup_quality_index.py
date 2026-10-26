@@ -41,6 +41,12 @@ import datetime as dt
 from typing import Any, Dict, List
 
 
+def _nz(v, d):
+    """None-safe default (2026-10-26): `.get(k, d)` only covers a MISSING key;
+    a key stored as None still reaches the arithmetic and crashes."""
+    return d if v is None else v
+
+
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 OUT = os.path.join(DATA_DIR, "mlb_lineup_quality_index.json")
 
@@ -219,8 +225,8 @@ def run() -> Dict[str, Any]:
 
 
 def _advantage_label(side_out: Dict[str, Any]) -> str:
-    home_score = (side_out.get("home") or {}).get("score", 50)
-    away_score = (side_out.get("away") or {}).get("score", 50)
+    home_score = _nz((side_out.get("home") or {}).get("score"), 50)
+    away_score = _nz((side_out.get("away") or {}).get("score"), 50)
     diff = home_score - away_score
     if diff >= 10: return "HOME_STRONG"
     if diff >= 4: return "HOME_LEAN"

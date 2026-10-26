@@ -42,9 +42,10 @@ def _post(url: str, payload: Dict[str, Any], timeout: float = 15.0) -> Optional[
     if not urlopen: return None
     try:
         body = json.dumps(payload).encode("utf-8")
-        req = Request(url, data=body, method="POST",
-                      headers={"Content-Type": "application/json",
-                               "User-Agent": "EdgeStat-Sync/1.0"})
+        headers = {"Content-Type": "application/json", "User-Agent": "EdgeStat-Sync/1.0"}
+        if os.environ.get("EDGESTAT_SYNC_TOKEN"):   # Worker write auth (SYNC_TOKEN)
+            headers["X-EdgeStat-Sync"] = os.environ["EDGESTAT_SYNC_TOKEN"]
+        req = Request(url, data=body, method="POST", headers=headers)
         with urlopen(req, timeout=timeout) as r:
             return json.loads(r.read().decode("utf-8"))
     except HTTPError as e:
@@ -88,7 +89,9 @@ def _normalize_pick(p: Dict[str, Any]) -> Dict[str, Any]:
         "player_or_matchup": p.get("player_or_matchup") or p.get("matchup"),
         "market": p.get("market"),
         "p_predicted": p.get("p_predicted") or p.get("prob"),
-        "entry_odds": p.get("fair_american") or p.get("entry_odds"),
+        # The REAL book price first (2026-10-26): fair_american is the model's own
+        # line -- for a placeholder-priced pick it is the fake -110.
+        "entry_odds": p.get("book_american") or p.get("fair_american") or p.get("entry_odds"),
         "fair_odds": p.get("fair_american"),
         "edge_pct": p.get("edge_pct"),
         "tier": p.get("tier"),
@@ -107,34 +110,62 @@ def _normalize_pick(p: Dict[str, Any]) -> Dict[str, Any]:
     }
 
 
+# Time-boxed, incremental (2026-10-26). The old run re-sent the WHOLE ledger
+# (15k picks = ~150 serial requests) every heartbeat inside a 1-minute step
+# budget: it never finished, the settle pass (which ran after every insert)
+# never ran, and D1 froze at the 6/28 sync. Now only picks whose outcome /
+# payout / price changed since their last successful sync are sent, insert +
+# settle per chunk, progress is saved after every chunk, and the run stops
+# itself well inside the step timeout -- a backlog drains over several runs
+# instead of restarting from zero each time.
+DIGEST = os.path.join(DATA_DIR, ".d1_sync_digest.json")
+BUDGET_S = 30.0          # worst chunk = 2 x 12s requests, inside the 1-min step
+CHUNK = 100
+STALL_RED_H = 24          # exit nonzero (red heartbeat) only after a day with no progress
+
+
+def _sig(p: Dict[str, Any]) -> str:
+    import hashlib
+    m = p.get("metadata") or {}
+    raw = json.dumps([p.get("outcome"), m.get("payout_units"), p.get("entry_odds"),
+                      m.get("closing_odds")], default=str)
+    return hashlib.sha1(raw.encode("utf-8")).hexdigest()[:10]
+
+
+def _key(pid: str) -> str:
+    import hashlib
+    return hashlib.sha1(pid.encode("utf-8")).hexdigest()[:12]
+
+
+def _ok(r: Optional[Dict[str, Any]]) -> bool:
+    return bool(r) and bool(r.get("ok")) and not r.get("error") and not r.get("http_error")
+
+
 def run() -> Dict[str, Any]:
+    import time
+    t0 = time.monotonic()
     worker_url = os.environ.get(WORKER_URL_ENV)
     if not worker_url:
         return {"status": "SKIP", "reason": f"{WORKER_URL_ENV} not set"}
 
-    # Source picks (both fresh ledger + historical)
     ledger = _load(LEDGER)
     history = _load(HISTORY)
-
     all_picks = []
-    # Today's picks (fresh from ledger)
     if isinstance(ledger.get("picks"), list):
         all_picks.extend(ledger["picks"])
     elif isinstance(ledger.get("by_pick_id"), dict):
         all_picks.extend(ledger["by_pick_id"].values())
-    # Historical (older settled picks)
     if isinstance(history.get("picks"), list):
         all_picks.extend(history["picks"])
     elif isinstance(history, list):
         all_picks.extend(history)
 
-    # Dedupe by pick_id and keep latest version (with outcome if available)
+    # Dedupe by pick_id and keep latest version (settled beats pending)
     by_id: Dict[str, Dict[str, Any]] = {}
     for p in all_picks:
         pid = p.get("pick_id")
         if not pid: continue
         existing = by_id.get(pid)
-        # Prefer settled over pending
         if existing and (existing.get("result") or existing.get("outcome")) not in (None, "PENDING", "pending"):
             continue
         by_id[pid] = p
@@ -143,51 +174,77 @@ def run() -> Dict[str, Any]:
     if not picks:
         return {"status": "NO_PICKS", "n": 0}
 
-    # Split into pending (insert) and settled (update)
-    pending_insert = [p for p in picks if (p.get("outcome") or "").upper() == "PENDING"]
-    settled_update = [
-        {
-            "pick_id": p["pick_id"],
-            "outcome": (p["outcome"] or "").upper(),
-            "payout_units": p.get("metadata", {}).get("payout_units"),
-            "closing_odds": p.get("metadata", {}).get("closing_odds"),
-            "settled_at": p.get("metadata", {}).get("settled_at"),
-        }
-        for p in picks
-        if (p.get("outcome") or "").upper() in ("WIN", "LOSS", "PUSH", "VOID")
-    ]
+    digest = _load(DIGEST) or {}
+    prev = _load(SYNC_STATE)
+    todo = [p for p in picks if digest.get(_key(p["pick_id"])) != _sig(p)]
+    # Settled first: outcomes are what the replayer reads.
+    todo.sort(key=lambda p: (p["outcome"] == "PENDING", str(p.get("date") or "")))
 
-    # Bulk insert pending picks (batched to avoid huge payloads)
-    insert_results = []
-    BATCH = 200
-    all_to_log = picks  # log every pick (insert is idempotent via ON CONFLICT)
-    for i in range(0, len(all_to_log), BATCH):
-        batch = all_to_log[i:i+BATCH]
-        r = _post(f"{worker_url}/db/log-picks", {"picks": batch})
-        if r: insert_results.append(r)
+    n_ins = n_set = n_done = 0
+    errors: List[Any] = []
+    for i in range(0, len(todo), CHUNK):
+        if time.monotonic() - t0 > BUDGET_S:
+            break
+        chunk = todo[i:i + CHUNK]
+        r = _post(f"{worker_url}/db/log-picks", {"picks": chunk}, timeout=12.0)
+        if not _ok(r):
+            errors.append(r); break
+        n_ins += int(r.get("inserted") or 0)
+        sets = [{"pick_id": p["pick_id"], "outcome": p["outcome"],
+                 "payout_units": (p.get("metadata") or {}).get("payout_units"),
+                 "closing_odds": (p.get("metadata") or {}).get("closing_odds"),
+                 "settled_at": (p.get("metadata") or {}).get("settled_at")}
+                for p in chunk if p["outcome"] in ("WIN", "LOSS", "PUSH", "VOID")]
+        if sets:
+            r2 = _post(f"{worker_url}/db/settle-picks", {"settlements": sets}, timeout=12.0)
+            if not _ok(r2):
+                errors.append(r2); break
+            n_set += int(r2.get("updated") or 0)
+        for p in chunk:
+            digest[_key(p["pick_id"])] = _sig(p)
+        n_done += len(chunk)
+        with open(DIGEST, "w") as f: json.dump(digest, f, separators=(",", ":"), sort_keys=True)
 
-    # Settle outcomes
-    settle_results = []
-    if settled_update:
-        for i in range(0, len(settled_update), BATCH):
-            batch = settled_update[i:i+BATCH]
-            r = _post(f"{worker_url}/db/settle-picks", {"settlements": batch})
-            if r: settle_results.append(r)
-
-    # Persist sync state
+    now = dt.datetime.utcnow().isoformat(timespec="seconds")
+    backlog = len(todo) - n_done
+    last_progress = now if (n_done or not todo) else (prev.get("last_progress") or prev.get("last_sync"))
     state = {
-        "last_sync": dt.datetime.utcnow().isoformat(timespec="seconds"),
-        "n_picks_synced": len(picks),
-        "n_settled_synced": len(settled_update),
-        "insert_results": insert_results,
-        "settle_results": settle_results,
+        "last_run": now,
+        "last_progress": last_progress,
+        "last_sync": now if not backlog else prev.get("last_sync"),
+        "n_picks_total": len(picks),
+        "n_sent_this_run": n_done,
+        "n_inserted_this_run": n_ins,
+        "n_settled_this_run": n_set,
+        "backlog": backlog,
+        "secs": round(time.monotonic() - t0, 1),
+        "errors": errors[:3],
+        "note": ("Incremental: only picks whose outcome/payout/price changed are sent. The "
+                 "Worker's settle only updates rows still PENDING in D1, so a correction to an "
+                 "already-settled D1 row (re-price, late void) is sent but not applied there."),
     }
     os.makedirs(os.path.dirname(SYNC_STATE), exist_ok=True)
     with open(SYNC_STATE, "w") as f: json.dump(state, f, indent=2)
     return state
 
 
+def _stalled(o: Dict[str, Any]) -> bool:
+    lp = o.get("last_progress")
+    if not o.get("backlog") or not lp:
+        return False
+    try:
+        age = dt.datetime.utcnow() - dt.datetime.fromisoformat(lp)
+    except ValueError:
+        return False
+    return age.total_seconds() > STALL_RED_H * 3600
+
+
 if __name__ == "__main__":
+    import sys
     o = run()
-    print(f"[d1-sync] status={o.get('status', 'OK')}, picks={o.get('n_picks_synced', 0)}, "
-          f"settled={o.get('n_settled_synced', 0)}")
+    print(f"[d1-sync] status={o.get('status', 'OK')} sent={o.get('n_sent_this_run', 0)} "
+          f"settled={o.get('n_settled_this_run', 0)} backlog={o.get('backlog', 0)} "
+          f"secs={o.get('secs')} errors={len(o.get('errors') or [])}")
+    if _stalled(o):
+        print(f"[d1-sync] NO PROGRESS since {o.get('last_progress')} -- Worker/D1 unreachable?")
+        sys.exit(1)

@@ -86,8 +86,8 @@ def run() -> Dict[str, Any]:
     parlays: List[Dict[str, Any]] = []
     for name in all_skaters:
         hb_data = hb_idx.get(name, {})
-        h3_p = h3_idx.get(name, 0)
-        h4_p = h4_idx.get(name, 0)
+        h3_p = (h3_idx.get(name) or 0)
+        h4_p = (h4_idx.get(name) or 0)
         bl_data = blocks_idx.get(name, {})
 
         legs: List[Dict[str, Any]] = []

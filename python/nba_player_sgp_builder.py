@@ -106,7 +106,7 @@ def run() -> Dict[str, Any]:
                     "p": baseline_p,
                 })
 
-        p_30 = pts30_idx.get(name, 0)
+        p_30 = (pts30_idx.get(name) or 0)
         if p_30 >= 0.40:
             legs.append({
                 "market": "30+ PTS YES",

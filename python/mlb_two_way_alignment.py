@@ -75,7 +75,7 @@ def run() -> Dict[str, Any]:
             # Side B = NOT pitcher_team
             side_b_explosions = [e for e in explosions
                                  if (e.get("team") or "").upper() != pitcher_team
-                                 and e.get("n_positive_signals", 0) >= 4]
+                                 and (e.get("n_positive_signals") or 0) >= 4]
             if not side_b_explosions: continue
 
             # Bonus: opposing team must NOT be the same as pitcher's team

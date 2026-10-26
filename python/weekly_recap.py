@@ -121,13 +121,13 @@ def run() -> Dict[str, Any]:
         lines.append("## 🏆 Highlight Reel — Top 5 Wins")
         for w in top_wins:
             payout = w.get("payout_units") or 0
-            lines.append(f"- [{w.get('sport')}] **{w.get('player_or_matchup','?')}** {w.get('market','?')[:30]} · model {w.get('prob',0)*100:.0f}% · +{payout:.3f}u")
+            lines.append(f"- [{w.get('sport')}] **{w.get('player_or_matchup','?')}** {w.get('market','?')[:30]} · model {(w.get('prob') or 0)*100:.0f}% · +{payout:.3f}u")
         lines.append("")
 
     if tough_beats:
         lines.append("## 💔 Tough Beats — Locks That Didn't Land")
         for L in tough_beats:
-            lines.append(f"- [{L.get('sport')}] **{L.get('player_or_matchup','?')}** {L.get('market','?')[:30]} · model {L.get('prob',0)*100:.0f}% pregame")
+            lines.append(f"- [{L.get('sport')}] **{L.get('player_or_matchup','?')}** {L.get('market','?')[:30]} · model {(L.get('prob') or 0)*100:.0f}% pregame")
         lines.append("")
 
     if by_sport:

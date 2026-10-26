@@ -71,7 +71,7 @@ def run() -> Dict[str, Any]:
     alignments: List[Dict[str, Any]] = []
     for key in all_matches:
         signals: Dict[str, int] = {}
-        p_first = fs_idx.get(key, 0)
+        p_first = (fs_idx.get(key) or 0)
         signals["EARLY_GOAL_LIKELY"] = 1 if p_first >= 0.65 else 0
 
         team_1h_rows = team_1h_by_match.get(key, [])

@@ -98,7 +98,7 @@ def write_pythag(payload: Dict[str, Any], path: str = OUT_PATH) -> None:
     teams = payload.get("teams") or {}
     print(f"  Teams covered: {len(teams)}")
     # Print 3 luckiest + 3 unluckiest
-    sorted_by_luck = sorted(teams.items(), key=lambda kv: -kv[1].get("luck_wins", 0))
+    sorted_by_luck = sorted(teams.items(), key=lambda kv: -(kv[1].get("luck_wins") or 0))
     print("  Luckiest 3 (over-performing pythag):")
     for n, t in sorted_by_luck[:3]:
         print(f"    {n:25} actual {t['wins']}-{t['losses']} vs pythag {t['pythag_wins']} (+{t['luck_wins']:.1f} luck)")

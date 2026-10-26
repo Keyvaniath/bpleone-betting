@@ -92,7 +92,7 @@ def _check_mlb():
     n_local = len(local_games)
 
     live_state = _load("live_state.json") or {}
-    n_local_live = live_state.get("games_in_progress", 0)
+    n_local_live = (live_state.get("games_in_progress") or 0)
 
     findings = []
     status = "green"
@@ -265,7 +265,7 @@ def _check_golf():
         if ev.get("status", {}).get("type", {}).get("state") in ("pre", "in"):
             n_active_tourneys += 1
     local = _load("golf_state.json") or {}
-    n_local = local.get("n_players", 0)
+    n_local = (local.get("n_players") or 0)
     age = _age_min("golf_state.json")
     if age is None: age = 999
     findings = []

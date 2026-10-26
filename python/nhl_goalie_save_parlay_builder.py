@@ -95,7 +95,7 @@ def run() -> Dict[str, Any]:
         })
 
         # Leg 2: 30+ saves YES
-        p_30 = saves30_idx.get(name, 0)
+        p_30 = (saves30_idx.get(name) or 0)
         if p_30 >= 0.60:
             legs.append({
                 "market": "30+ Saves YES",
@@ -104,7 +104,7 @@ def run() -> Dict[str, Any]:
             })
 
         # Leg 3: Win YES
-        p_win = win_idx.get(name, 0)
+        p_win = (win_idx.get(name) or 0)
         if p_win >= 0.55:
             legs.append({
                 "market": "Win YES",
@@ -113,7 +113,7 @@ def run() -> Dict[str, Any]:
             })
 
         # Leg 4: Shutout LIVE
-        p_so = shutout_idx.get(name, 0)
+        p_so = (shutout_idx.get(name) or 0)
         if p_so >= 0.12:
             legs.append({
                 "market": "Shutout YES",

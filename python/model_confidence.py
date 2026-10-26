@@ -82,7 +82,7 @@ def run() -> Dict[str, Any]:
     residual_stab = sum(stabilities) / len(stabilities) if stabilities else 0.0
 
     # 4. ROI positivity: fraction of markets with ROI > 0
-    rois = [m.get("roi_pct") for m in markets.values() if m.get("roi_pct") is not None and m.get("plays_n", 0) > 0]
+    rois = [m.get("roi_pct") for m in markets.values() if m.get("roi_pct") is not None and (m.get("plays_n") or 0) > 0]
     if not rois:
         roi_pos = 0.5  # neutral when no ROI signal yet
     else:

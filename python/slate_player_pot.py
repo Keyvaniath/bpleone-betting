@@ -242,7 +242,7 @@ def run() -> Dict[str, Any]:
     # By sport summary
     by_sport: Dict[str, int] = {}
     for p in picks:
-        by_sport[p["sport"]] = by_sport.get(p["sport"], 0) + 1
+        by_sport[p["sport"]] = (by_sport.get(p["sport"]) or 0) + 1
 
     payload = {
         "generated_at": dt.datetime.now().isoformat(timespec="seconds"),

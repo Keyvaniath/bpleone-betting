@@ -119,7 +119,7 @@ def _check_n_prior(cal: Dict[str, Any], prev_cal: Dict[str, Any],
         prev_v = prev_markets.get(mk) or {}
         cf_now = v.get("correction_factor")
         cf_prev = prev_v.get("correction_factor")
-        n = v.get("n", 0)
+        n = (v.get("n") or 0)
         if cf_now is None or cf_prev is None or n < 50:
             continue
         swing = abs(cf_now - cf_prev)
@@ -141,7 +141,7 @@ def _check_n_prior(cal: Dict[str, Any], prev_cal: Dict[str, Any],
     # Too HIGH: large n + still big residual = data isn't getting enough weight
     stuck_markets = []
     for mk, v in curr_markets.items():
-        n = v.get("n", 0)
+        n = (v.get("n") or 0)
         if n < 200:
             continue
         rm = res_markets.get(mk) or {}

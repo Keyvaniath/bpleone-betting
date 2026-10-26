@@ -49,7 +49,7 @@ def run() -> Dict[str, Any]:
         if not m: continue
         # Prefer the higher-signal alert if multiple pitchers per matchup
         existing = fade_by_matchup.get(m)
-        if not existing or a.get("n_negative_signals", 0) > existing.get("n_negative_signals", 0):
+        if not existing or (a.get("n_negative_signals") or 0) > (existing.get("n_negative_signals") or 0):
             fade_by_matchup[m] = a
 
     confluences: List[Dict[str, Any]] = []
@@ -72,8 +72,8 @@ def run() -> Dict[str, Any]:
         if explosion_team and fade_team and explosion_team == fade_team:
             continue  # pitcher is on explosion team, skip
 
-        n_fade = fade_alert.get("n_negative_signals", 0)
-        n_explosion = a.get("n_positive_signals", 0)
+        n_fade = (fade_alert.get("n_negative_signals") or 0)
+        n_explosion = (a.get("n_positive_signals") or 0)
 
         if n_fade >= 5 and n_explosion >= 5:
             tier = "CONFLUENCE_ELITE"

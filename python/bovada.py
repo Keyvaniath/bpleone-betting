@@ -387,7 +387,7 @@ if __name__ == "__main__":
     print(f"  {len(pp)} prop rows")
     by_market: Dict[str, int] = {}
     for r in pp:
-        by_market[r["market"]] = by_market.get(r["market"], 0) + 1
+        by_market[r["market"]] = (by_market.get(r["market"]) or 0) + 1
     for m, n in sorted(by_market.items(), key=lambda x: -x[1]):
         print(f"  {m:30} {n}")
     if pp:

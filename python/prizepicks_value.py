@@ -199,10 +199,10 @@ def run() -> Dict[str, Any]:
         if k in seen:
             continue
         fam = b["family"]
-        if fam_count.get(fam, 0) >= MAX_PER_FAMILY:
+        if (fam_count.get(fam) or 0) >= MAX_PER_FAMILY:
             continue
         seen.add(k)
-        fam_count[fam] = fam_count.get(fam, 0) + 1
+        fam_count[fam] = (fam_count.get(fam) or 0) + 1
         deduped.append(b)
     top = deduped[:MAX_BOARD]
     slates = _build_slates(top, be_by_legs)

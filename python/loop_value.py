@@ -46,6 +46,12 @@ import datetime as dt
 from typing import Any, Dict, List, Optional, Tuple
 
 
+def _nz(v, d):
+    """None-safe default (2026-10-26): `.get(k, d)` only covers a MISSING key;
+    a key stored as None still reaches the arithmetic and crashes."""
+    return d if v is None else v
+
+
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 TR_PATH = os.path.join(DATA_DIR, "track_record.json")
 CAL_PATH = os.path.join(DATA_DIR, "calibration_live.json")
@@ -98,7 +104,7 @@ def _compute(records: List[Dict[str, Any]], cf_by_market: Dict[str, float]
         market = r.get("market")
         if p_cal is None or oh is None or market is None:
             continue
-        cf = cf_by_market.get(market, 1.0)
+        cf = _nz(cf_by_market.get(market), 1.0)
         # Reverse the correction to estimate raw probability:
         # cal = max(eps, min(1-eps, raw * cf))  =>  raw ~= cal / cf
         if cf <= 0:

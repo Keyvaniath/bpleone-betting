@@ -88,7 +88,7 @@ def run() -> Dict[str, Any]:
                 p_score = _safe(r.get("p_score") or r.get("p"))
                 if key:
                     existing = top_scorer.get(key)
-                    if not existing or p_score > existing.get("p_score", 0):
+                    if not existing or p_score > (existing.get("p_score") or 0):
                         top_scorer[key] = {"player": r.get("player"), "p_score": p_score}
 
     all_matches = (set(btts_idx) | set(goals_idx) | set(fs_idx)
@@ -97,21 +97,21 @@ def run() -> Dict[str, Any]:
     alignments: List[Dict[str, Any]] = []
     for key in all_matches:
         signals: Dict[str, int] = {}
-        p_btts = btts_idx.get(key, 0)
+        p_btts = (btts_idx.get(key) or 0)
         signals["BTTS_HIGH"] = 1 if p_btts >= 0.62 else 0
 
         goals_ec = (goals_idx.get(key, {}).get("edge_class") or "").upper()
         signals["GOALS_STRONG_OVER"] = 1 if "STRONG_OVER" in goals_ec else 0
         signals["GOALS_OVER_LEAN"] = 1 if "OVER" in goals_ec and "STRONG" not in goals_ec else 0
 
-        p_first = fs_idx.get(key, 0)
+        p_first = (fs_idx.get(key) or 0)
         signals["FIRST_SCORE_EARLY"] = 1 if p_first >= 0.65 else 0
 
         corners_ec = (corners_idx.get(key, {}).get("edge_class") or "").upper()
         signals["CORNERS_OVER"] = 1 if "OVER" in corners_ec else 0
 
         ts = top_scorer.get(key, {})
-        p_score = ts.get("p_score", 0)
+        p_score = (ts.get("p_score") or 0)
         signals["GOALSCORER_LIVE"] = 1 if p_score >= 0.55 else 0
 
         n_positive = sum(1 for v in signals.values() if v == 1)

@@ -26,6 +26,12 @@ from dataclasses import dataclass, field
 from typing import Dict, List, Optional
 
 
+def _nz(v, d):
+    """None-safe default (2026-10-26): `.get(k, d)` only covers a MISSING key;
+    a key stored as None still reaches the arithmetic and crashes."""
+    return d if v is None else v
+
+
 # --------------------------- Raw inputs ---------------------------
 
 @dataclass
@@ -138,26 +144,26 @@ def extract_features(g: RawGame) -> Dict[str, float]:
     f: Dict[str, float] = {}
 
     # Team strength
-    f["wrc_diff"] = _zscore(g.home_team_stats.get("wrc_plus", 100) - g.away_team_stats.get("wrc_plus", 100),
+    f["wrc_diff"] = _zscore(_nz(g.home_team_stats.get("wrc_plus"), 100) - _nz(g.away_team_stats.get("wrc_plus"), 100),
                             0, LEAGUE["wrc_plus_std"])
-    f["pythag_diff"] = g.home_team_stats.get("pythag_pct", 0.5) - g.away_team_stats.get("pythag_pct", 0.5)
-    f["form_diff_L10"] = g.home_team_stats.get("L10_wins", 5) - g.away_team_stats.get("L10_wins", 5)
-    f["elo_diff"] = _zscore(g.home_ratings.get("elo", 1500) - g.away_ratings.get("elo", 1500),
+    f["pythag_diff"] = _nz(g.home_team_stats.get("pythag_pct"), 0.5) - _nz(g.away_team_stats.get("pythag_pct"), 0.5)
+    f["form_diff_L10"] = _nz(g.home_team_stats.get("L10_wins"), 5) - _nz(g.away_team_stats.get("L10_wins"), 5)
+    f["elo_diff"] = _zscore(_nz(g.home_ratings.get("elo"), 1500) - _nz(g.away_ratings.get("elo"), 1500),
                             0, LEAGUE["elo_std"])
-    f["glicko_diff"] = g.home_ratings.get("glicko", 1500) - g.away_ratings.get("glicko", 1500)
+    f["glicko_diff"] = _nz(g.home_ratings.get("glicko"), 1500) - _nz(g.away_ratings.get("glicko"), 1500)
 
     # Pitching
-    f["xfip_diff"] = g.away_pitcher.get("xfip", 4.0) - g.home_pitcher.get("xfip", 4.0)
-    f["k9_diff"]   = g.home_pitcher.get("k9", 9.2) - g.away_pitcher.get("k9", 9.2)
-    f["bb9_diff"]  = g.away_pitcher.get("bb9", 3.0) - g.home_pitcher.get("bb9", 3.0)
-    f["hr9_diff"]  = g.away_pitcher.get("hr9", 1.1) - g.home_pitcher.get("hr9", 1.1)
+    f["xfip_diff"] = _nz(g.away_pitcher.get("xfip"), 4.0) - _nz(g.home_pitcher.get("xfip"), 4.0)
+    f["k9_diff"]   = _nz(g.home_pitcher.get("k9"), 9.2) - _nz(g.away_pitcher.get("k9"), 9.2)
+    f["bb9_diff"]  = _nz(g.away_pitcher.get("bb9"), 3.0) - _nz(g.home_pitcher.get("bb9"), 3.0)
+    f["hr9_diff"]  = _nz(g.away_pitcher.get("hr9"), 1.1) - _nz(g.home_pitcher.get("hr9"), 1.1)
     f["velocity_trend"] = g.home_pitcher.get("velo_z", 0)
-    f["tto_diff"]  = g.home_pitcher.get("tto_penalty", 1.0) - g.away_pitcher.get("tto_penalty", 1.0)
+    f["tto_diff"]  = _nz(g.home_pitcher.get("tto_penalty"), 1.0) - _nz(g.away_pitcher.get("tto_penalty"), 1.0)
 
     # Bullpen
-    f["bullpen_eraf_diff"] = g.home_bullpen.get("era_fip", 0) - g.away_bullpen.get("era_fip", 0)
+    f["bullpen_eraf_diff"] = (g.home_bullpen.get("era_fip") or 0) - (g.away_bullpen.get("era_fip") or 0)
     f["bullpen_rest"] = g.home_bullpen.get("rest_days", 1)
-    f["bullpen_avail"] = g.home_bullpen.get("available_ip", 5) - g.away_bullpen.get("available_ip", 5)
+    f["bullpen_avail"] = _nz(g.home_bullpen.get("available_ip"), 5) - _nz(g.away_bullpen.get("available_ip"), 5)
 
     # Park & weather
     f["park_factor"] = g.park.get("run_factor", 1.0)
@@ -172,20 +178,20 @@ def extract_features(g: RawGame) -> Dict[str, float]:
     f["ump_k_pct"]     = g.umpire.get("k_pct", 0.22)
 
     # Schedule
-    f["rest_diff"]      = g.schedule.get("home_rest", 1) - g.schedule.get("away_rest", 1)
-    f["travel_diff"]    = g.schedule.get("away_travel_miles", 500) - g.schedule.get("home_travel_miles", 0)
+    f["rest_diff"]      = _nz(g.schedule.get("home_rest"), 1) - _nz(g.schedule.get("away_rest"), 1)
+    f["travel_diff"]    = _nz(g.schedule.get("away_travel_miles"), 500) - (g.schedule.get("home_travel_miles") or 0)
     f["day_after_night"] = 1.0 if g.schedule.get("day_after_night", False) else 0.0
     f["getaway"]         = 1.0 if g.schedule.get("getaway", False) else 0.0
 
     # Lineup
-    f["platoon_advantage"] = g.home_team_stats.get("platoon_adv_count", 4) - g.away_team_stats.get("platoon_adv_count", 4)
+    f["platoon_advantage"] = _nz(g.home_team_stats.get("platoon_adv_count"), 4) - _nz(g.away_team_stats.get("platoon_adv_count"), 4)
     f["lineup_continuity"] = g.home_team_stats.get("lineup_continuity", 1.0)
 
     # Market
-    open_p  = g.market.get("open_implied_home", 0.55)
-    curr_p  = g.market.get("current_implied_home", 0.55)
+    open_p  = _nz(g.market.get("open_implied_home"), 0.55)
+    curr_p  = _nz(g.market.get("current_implied_home"), 0.55)
     f["line_move_pct"]    = (curr_p - open_p) * 100
-    f["sharp_handle_pct"] = g.market.get("home_handle_pct", 50.0) / 100.0
+    f["sharp_handle_pct"] = _nz(g.market.get("home_handle_pct"), 50.0) / 100.0
 
     return f
 

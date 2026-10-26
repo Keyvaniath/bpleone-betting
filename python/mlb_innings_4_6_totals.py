@@ -28,6 +28,12 @@ import datetime as dt
 from typing import Any, Dict, List, Optional
 
 
+def _nz(v, d):
+    """None-safe default (2026-10-26): `.get(k, d)` only covers a MISSING key;
+    a key stored as None still reaches the arithmetic and crashes."""
+    return d if v is None else v
+
+
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 OUT = os.path.join(DATA_DIR, "mlb_innings_4_6_totals.json")
 
@@ -116,8 +122,8 @@ def run() -> Dict[str, Any]:
         tto_mult = 1.15
 
         # Bullpen runs per IP ~ 4.0 ERA league avg + fatigue boost
-        home_bp_fatigue = bullpen_fatigue.get(home, 0.5)
-        away_bp_fatigue = bullpen_fatigue.get(away, 0.5)
+        home_bp_fatigue = _nz(bullpen_fatigue.get(home), 0.5)
+        away_bp_fatigue = _nz(bullpen_fatigue.get(away), 0.5)
         bp_era_home = 4.0 * (1 + home_bp_fatigue * 0.20)
         bp_era_away = 4.0 * (1 + away_bp_fatigue * 0.20)
 

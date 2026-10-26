@@ -101,7 +101,7 @@ def run() -> Dict[str, Any]:
 
     by_source: Dict[str, int] = {}
     for p in all_picks:
-        by_source[p["source"]] = by_source.get(p["source"], 0) + 1
+        by_source[p["source"]] = (by_source.get(p["source"]) or 0) + 1
 
     out = {
         "generated_at": dt.datetime.utcnow().isoformat(timespec="seconds"),
