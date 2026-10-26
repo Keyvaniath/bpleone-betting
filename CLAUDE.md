@@ -41,6 +41,19 @@ bpleone-site/
 
 ## Current deployment state (LIVE)
 
+- **2026-10-26 — TWO RED WORKFLOWS, NO CASCADE (the 10/22 design working):**
+  heartbeat + daily-pipeline went red every run 10/25-10/26 naming exactly
+  calibration_status.py and cross_sport_parlay_builder.py while every other
+  module ran (data stayed fresh, health green). Both were summary PRINTS:
+  `{p.get('k', 0):.1f}` with the key present as None (MLB off-day), and a
+  0-legs payload whose keys differed from the success payload. Fixed with
+  `_fmtv(v, spec, dflt)` at 38 sites in 15 files (format a real value, print
+  the default for None, never raise) and a shape-identical empty payload.
+  **RULE: never write `{x.get(k, d):spec}` -- use `_fmtv(x.get(k), 'spec', d)`;
+  the sweep regex is in the 10/26 commit message.** The new Gmail filter
+  delivered the failure email to Brandon's Inbox (starred) -- the alert loop
+  works end to end.
+
 - **2026-10-23 (night) — MONEYLINES WERE GRADED AT A PLACEHOLDER -110 (read before
   touching any price):** tonight's Alpha read "MIL ML @ -110" with DK at -192.
   todays_top_plays._fair_odds_for_source filled -110 when a slate had no price
