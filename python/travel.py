@@ -27,6 +27,12 @@ except ImportError:
 import stats_repo as sr
 
 
+def _nz(v, d):
+    """None-safe default (2026-10-26): `.get(k, d)` only covers a MISSING key;
+    a key stored as None still reaches the arithmetic and crashes."""
+    return d if v is None else v
+
+
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 OUT_PATH = os.path.join(DATA_DIR, "travel.json")
 
@@ -93,7 +99,7 @@ def project_travel(team_id: int, today_date: str, today_venue: str) -> Dict[str,
     last_venue = (last.get("venue") or {}).get("name") or ""
     last_tz = PARK_TZ.get(last_venue, "ET")
     today_tz = PARK_TZ.get(today_venue, "ET")
-    tz_delta_h = TZ_HOURS.get(today_tz, -5) - TZ_HOURS.get(last_tz, -5)
+    tz_delta_h = _nz(TZ_HOURS.get(today_tz), -5) - _nz(TZ_HOURS.get(last_tz), -5)
     note = ""
     if delta == 0:
         note = "day-of-day double header"

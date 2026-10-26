@@ -23,6 +23,12 @@ import datetime as dt
 from typing import Any, Dict, List, Optional, Tuple
 
 
+def _nz(v, d):
+    """None-safe default (2026-10-26): `.get(k, d)` only covers a MISSING key;
+    a key stored as None still reaches the arithmetic and crashes."""
+    return d if v is None else v
+
+
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 OUT_PATH = os.path.join(DATA_DIR, "parlays.json")
 
@@ -119,7 +125,7 @@ def _load_game_legs() -> List[Dict[str, Any]]:
                 "market": r.get("label"),
                 "side": None,
                 "line": None,
-                "price": int(r.get("market_price", -110)),
+                "price": int(_nz(r.get("market_price"), -110)),
                 "model_prob": float((r.get("model_prob") or 0)),
                 "edge_pct": r.get("edge_pct"),
                 "game_id": g.get("matchup"),

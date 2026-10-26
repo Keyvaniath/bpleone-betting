@@ -41,6 +41,34 @@ bpleone-site/
 
 ## Current deployment state (LIVE)
 
+- **2026-10-26 (eve) — THE OTHER PLACEHOLDERS: +100 AND 8.5 (read with the 10/23
+  entry).** A headless crawl of all 135 live pages (Chrome --dump-dom, console
+  + visible NaN/undefined scan) showed play-of-day "MIL_ML Market price +100 -
+  Total 8.5, book null" with DK at MIL -104 / total 7.0. pipeline.py priced
+  ONLY from The Odds API (no key) and Bovada (0 games from CI IPs) and never
+  read espn_odds.json, then filled `total or 8.5`, `ml_away or 100`, `ml_home
+  or -110`; mlb_model's GameInput defaulted the same and priced every total at
+  -110. The 10/23 re-price searched only for -110, so the +100 away side was
+  never corrected. FIX: pipeline falls back to espn_odds.json DK lines (<6h
+  old), carries real over/under juice; GameInput defaults are None and an
+  unpriced market gets NO edge and NO recommendation (POD can be "no play").
+  HISTORY: data/ml_reprice_2026_10b.json (tools/build_reprice_plus100.py, same
+  git-history method) applied by ml_reprice.apply_ledger in every build: 29
+  moneylines re-priced from a fake +100 (+3.0u -> -1.31u; 27 top_25_board, 2
+  pod; LAD -226 had paid +1.00u), 9 pod totals VOIDED (line 8.5 never existed
+  at DK: real 9.5/11.0/8.0/none), 5 kept (8.5 was real). None curated ->
+  curated headline unchanged 936-434 +16.0%. Alpha v2 18-16 +9.59u -> +9.51u
+  (+27.97%); all-time 66-38 +22.95u -> +22.87u (+21.99%) -- only 8/17 STL
+  (+100 -> DK -109) moves. **RULE: no price default anywhere, of any value;
+  search for EVERY placeholder a producer could emit, not the one you saw.**
+  Also: pipeline_health.json had TWO writers in different shapes (watchdog
+  "OK"/file_health vs pipeline_health.py "ok"/artifacts) -> audit.html showed
+  "7/undefined" and index.html a false "aging" banner; pipeline_health.py now
+  writes artifact_health.json. nhl-players read pts_per_game (data:
+  points_per_game); ml-lab.js threw on a missing #liveBigEvent before drawing
+  the live chart. Scanner gap closed: `.get(k, -110)` (negative literal =
+  UnaryOp) was invisible to scan_getnum.
+
 - **2026-10-26 (pm) — CRASH AUDIT: EVERY CI MODULE REPLAYED ON BAD DAYS.** Method:
   a sandbox copy replays all 363 python commands of daily-pipeline +
   heartbeat + live-games + training-loop with the network cut (sitecustomize

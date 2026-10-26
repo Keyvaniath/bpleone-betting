@@ -143,7 +143,7 @@ fetch("data/real_player_props_nhl.json?t=" + Date.now(), { cache: "no-cache" })
     if (allPlayers.length) {
       const avg = (allPlayers.reduce((s, p) => s + p.n_games, 0) / allPlayers.length).toFixed(1);
       document.getElementById("m_games").textContent = avg;
-      document.getElementById("m_topscorer").textContent = `${allPlayers[0].name.split(' ').pop()} ${allPlayers[0].stats.pts_per_game}`;
+      document.getElementById("m_topscorer").textContent = `${allPlayers[0].name.split(' ').pop()} ${allPlayers[0].stats.points_per_game ?? allPlayers[0].stats.pts_per_game ?? "--"}`;
     }
     renderRoster();
   })

@@ -31,6 +31,11 @@ from typing import Any, Dict
 
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 SEED = os.path.join(DATA_DIR, "ml_reprice_2026_10.json")
+# 2026-10-26 extension: the pipeline's OTHER placeholders -- `ml_away or 100`
+# and `total or 8.5` -- which the -110 search missed (29 moneylines at a fake
+# +100; 9 pod totals on an 8.5 line DraftKings never posted). Built by
+# tools/build_reprice_plus100.py from the same espn_odds.json git history.
+SEED_B = os.path.join(DATA_DIR, "ml_reprice_2026_10b.json")
 MARKER = os.path.join(DATA_DIR, "ml_reprice_2026_10_done.json")
 LEDGER = os.path.join(DATA_DIR, "all_picks_ledger.json")
 ARCHIVE = os.path.join(DATA_DIR, "ledger_archive.json")
@@ -64,9 +69,11 @@ def apply_ledger(picks, side_of) -> Dict[str, int]:
     global _SEED_CACHE
     if _SEED_CACHE is None:
         _SEED_CACHE = {r["pick_id"]: r for r in (_load(SEED).get("rows") or [])}
+        for r in (_load(SEED_B).get("rows") or []):
+            _SEED_CACHE.setdefault(r["pick_id"], r)
     seed = _SEED_CACHE
     now = dt.datetime.now().isoformat(timespec="seconds")
-    n = {"repriced": 0, "voided_unpriced": 0, "pending_priced": 0}
+    n = {"repriced": 0, "voided_unpriced": 0, "voided_unpriced_total": 0, "pending_priced": 0}
     for p in picks:
         r = seed.get(p.get("pick_id"))
         if r and not p.get("repriced") and not str(p.get("voided_reason") or "").startswith("unpriced"):
@@ -78,21 +85,31 @@ def apply_ledger(picks, side_of) -> Dict[str, int]:
                                      else (-1.0 if p.get("result") == "lost" else 0.0))
                 p["repriced"] = {"at": now, "from_payout": old, "recorded_price": p.get("fair_american"),
                                  "book_snapshot_at": r.get("snapshot_at"), "chosen": r.get("chosen"),
-                                 "reason": ("2026-10-23: graded at a placeholder -110 the board filled "
+                                 "reason": (f"{'2026-10-26' if r.get('kind') else '2026-10-23'}: graded at "
+                                            f"a placeholder {r.get('old_fair') or -110} the board filled "
                                             "in when the line was missing; re-priced at the real "
                                             "DraftKings pre-game moneyline")}
                 n["repriced"] += 1
-            elif r["status"] == "unpriced":
+            elif r["status"] == "unpriced" and p.get("settled"):
                 p["voided"] = True
                 p["voided_at"] = now
-                p["voided_reason"] = ("unpriced moneyline: graded at a placeholder -110 and no real "
-                                      "pre-game line exists on record -- no honest payout")
+                p["voided_reason"] = (f"unpriced moneyline: graded at a placeholder {r.get('old_fair') or -110} "
+                                      "and no real pre-game line exists on record -- no honest payout")
                 n["voided_unpriced"] += 1
+            elif r["status"] == "unpriced_total" and p.get("settled"):
+                real = r.get("real_total")
+                p["voided"] = True
+                p["voided_at"] = now
+                p["voided_reason"] = ("unpriced total: graded at the pipeline's placeholder 8.5 line; "
+                                      + (f"DraftKings' real total was {real}" if real is not None
+                                         else "no real pre-game total exists on record")
+                                      + " -- the bet's line never existed")
+                n["voided_unpriced_total"] += 1
     book = (_load(os.path.join(DATA_DIR, "espn_odds.json")).get("by_matchup") or {})
     for p in picks:
         if p.get("settled") or p.get("voided") or p.get("book_american") is not None:
             continue
-        if p.get("fair_american") not in (-110, None):
+        if p.get("fair_american") not in (-110, 100, None):
             continue
         sd = side_of(p)
         if not sd:

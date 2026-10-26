@@ -313,7 +313,20 @@ fetch("data/today.json", { cache: "no-cache" })
   .then(r => r.json())
   .then(d => {
     const pod = d.play_of_day;
-    if (!pod) return;
+    if (!pod) {
+      // No play is a real state (off-day, or no game had a real book line --
+      // the pipeline no longer invents one). Say so instead of "Loading…".
+      const head = document.querySelector(".play-hero");
+      const h1 = head && head.querySelector("h1");
+      if (h1) h1.innerHTML = `No play today <span class="accent">—</span>`;
+      const lede = head && head.querySelector(".lede");
+      if (lede) lede.textContent = d.no_games
+        ? "No MLB games on today's slate."
+        : "Nothing on today's slate cleared the edge bar against a real book line. We don't force plays.";
+      const muted = head && head.querySelector(".muted");
+      if (muted) muted.textContent = (d.generated_at || "").slice(0, 10);
+      return;
+    }
     // Find matching game in slate
     const game = (d.games || []).find(g => g.matchup === pod.matchup);
     const park = game ? game.park : "";

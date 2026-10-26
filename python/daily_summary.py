@@ -69,7 +69,7 @@ def build_summary() -> str:
     travel = _load("travel.json")
     confidence = _load("model_confidence.json")
     anom = _load("anomalies.json")
-    health = _load("pipeline_health.json")
+    health = _load("artifact_health.json")   # pipeline_health.py's artifact audit
     feedback = _load("training_feedback.json")
     param_recs = _load("param_recommendations.json")
 

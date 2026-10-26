@@ -82,9 +82,16 @@ class GameInput:
     away_pitcher: PitcherFactor
     home_pitcher: PitcherFactor
     ctx: GameContext
-    market_total: float = 8.5
-    market_ml_away: int = 100
-    market_ml_home: int = -110
+    # NO PLACEHOLDER PRICES (2026-10-26): these used to default to 8.5 / +100
+    # / -110, and pipeline.py filled the same values in whenever no book was
+    # loaded -- the 10/26 Play of the Day was "MIL ML +100, edge +12.1%" with
+    # DraftKings at MIL -104 / total 7.0. None = no real line: that market gets
+    # no edge and no recommendation.
+    market_total: Optional[float] = None
+    market_ml_away: Optional[int] = None
+    market_ml_home: Optional[int] = None
+    market_over_price: Optional[int] = None    # real totals juice; -110 if unposted
+    market_under_price: Optional[int] = None
 
 
 @dataclass
@@ -168,14 +175,19 @@ def project_game(g: GameInput) -> GameProjection:
     )
 
     # Edges & recommendations.
-    proj.edges = {
-        f"{g.home.code}_ML": edge_pct(p_home, g.market_ml_home),
-        f"{g.away.code}_ML": edge_pct(p_away, g.market_ml_away),
-    }
+    proj.edges = {}
+    if g.market_ml_home is not None:
+        proj.edges[f"{g.home.code}_ML"] = edge_pct(p_home, g.market_ml_home)
+    if g.market_ml_away is not None:
+        proj.edges[f"{g.away.code}_ML"] = edge_pct(p_away, g.market_ml_away)
 
-    over_p = totals.get(g.market_total, total_over_prob(away_l, home_l, g.market_total))
-    proj.edges[f"OVER_{g.market_total}"] = edge_pct(over_p, -110)
-    proj.edges[f"UNDER_{g.market_total}"] = edge_pct(1 - over_p, -110)
+    over_px = g.market_over_price if g.market_over_price is not None else -110
+    under_px = g.market_under_price if g.market_under_price is not None else -110
+    over_p = None
+    if g.market_total is not None:
+        over_p = totals.get(g.market_total, total_over_prob(away_l, home_l, g.market_total))
+        proj.edges[f"OVER_{g.market_total}"] = edge_pct(over_p, over_px)
+        proj.edges[f"UNDER_{g.market_total}"] = edge_pct(1 - over_p, under_px)
 
     # Build recommendation list, sorted by edge.
     for label, edge in sorted(proj.edges.items(), key=lambda x: -x[1]):
@@ -186,9 +198,9 @@ def project_game(g: GameInput) -> GameProjection:
             prob = p_home if team_code == g.home.code else p_away
             market = g.market_ml_home if team_code == g.home.code else g.market_ml_away
         elif label.startswith("OVER_"):
-            prob, market = over_p, -110
+            prob, market = over_p, over_px
         else:
-            prob, market = (1 - over_p), -110
+            prob, market = (1 - over_p), under_px
         proj.recommendations.append({
             "label": label,
             "model_prob": round(prob, 4),

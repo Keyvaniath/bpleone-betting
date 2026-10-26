@@ -18,10 +18,20 @@ def _nz(v, d):
 '''
 
 
+def num_const(a):
+    """A numeric literal, including a negative one (-110 parses as USub(110))."""
+    if isinstance(a, ast.UnaryOp) and isinstance(a.op, ast.USub):
+        a = a.operand
+    return isinstance(a, ast.Constant) and type(a.value) in (int, float)
+
+
+def const_val(a):
+    return -a.operand.value if isinstance(a, ast.UnaryOp) else a.value
+
+
 def is_numget(n):
     return (isinstance(n, ast.Call) and isinstance(n.func, ast.Attribute) and n.func.attr == "get"
-            and len(n.args) == 2 and not n.keywords
-            and isinstance(n.args[1], ast.Constant) and type(n.args[1].value) in (int, float))
+            and len(n.args) == 2 and not n.keywords and num_const(n.args[1]))
 
 
 class V(ast.NodeVisitor):
@@ -110,7 +120,7 @@ def rewrite(src, hits):
         if not isinstance(n.func.value, (ast.Name, ast.Attribute, ast.Call, ast.Subscript)):
             obj = f"({obj})"      # the parens are not part of the receiver node
         key = ast.get_source_segment(src, n.args[0])
-        d = n.args[1].value
+        d = const_val(n.args[1])
         dtxt = ast.get_source_segment(src, n.args[1])
         if d == 0:
             new = f"({obj}.get({key}) or {dtxt})"

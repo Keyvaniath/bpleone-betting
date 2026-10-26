@@ -5,6 +5,13 @@
 
 (function () {
 
+  // Null-safe text write (2026-10-26): 'liveBigEvent' exists on neither page, so
+  // renderLive threw there and the win-expectancy chart after it never drew.
+  function setText(id, v) {
+    const el = document.getElementById(id);
+    if (el) el.textContent = v;
+  }
+
   async function fetchJSON(path) {
     try {
       const r = await fetch(path, { cache: 'no-store' });
@@ -180,16 +187,16 @@
     // Metric strip
     const pre = data.pregame_p_home_win || data.timeline[0].p_home_win;
     const last = data.timeline[data.timeline.length - 1].p_home_win;
-    document.getElementById('liveCurrent').textContent = (last * 100).toFixed(1) + '%';
-    document.getElementById('livePreGame').textContent = (pre * 100).toFixed(1) + '%';
-    document.getElementById('liveSwing').textContent = ((last - pre) * 100).toFixed(1) + 'pp';
+    setText('liveCurrent', (last * 100).toFixed(1) + '%');
+    setText('livePreGame', (pre * 100).toFixed(1) + '%');
+    setText('liveSwing', ((last - pre) * 100).toFixed(1) + 'pp');
     // biggest single event by abs delta
     let biggest = 0;
     for (let i = 1; i < data.timeline.length; i++) {
       const d = Math.abs(data.timeline[i].p_home_win - data.timeline[i - 1].p_home_win);
       if (d > biggest) biggest = d;
     }
-    document.getElementById('liveBigEvent').textContent = (biggest * 100).toFixed(1) + 'pp';
+    setText('liveBigEvent', (biggest * 100).toFixed(1) + 'pp');
 
     // Win expectancy chart
     new Chart(document.getElementById('liveWPChart').getContext('2d'), {

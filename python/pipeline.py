@@ -107,7 +107,8 @@ def run_pipeline(games: List[Dict[str, Any]]) -> Dict[str, Any]:
                 "fair_total": round(proj.fair_total, 2),
                 "p_home_win": round(proj.p_home_win, 4),
                 "p_away_win": round(proj.p_away_win, 4),
-                "p_over_market": round((proj.p_over.get(g.get("market_total", 8.5)) or 0), 4),
+                "p_over_market": (round(proj.p_over.get(g["market_total"]) or 0, 4)
+                                  if g.get("market_total") is not None else None),
             },
             "market": {
                 "home_ml": g.get("market_ml_home"),
@@ -153,9 +154,11 @@ def _to_input(g: Dict[str, Any]) -> GameInput:
         away_pitcher=PitcherFactor(**g["away_pitcher"]),
         home_pitcher=PitcherFactor(**g["home_pitcher"]),
         ctx=GameContext(**ctx),
-        market_total=g.get("market_total", 8.5),
-        market_ml_away=g.get("market_ml_away", 100),
-        market_ml_home=g.get("market_ml_home", -110),
+        market_total=g.get("market_total"),
+        market_ml_away=g.get("market_ml_away"),
+        market_ml_home=g.get("market_ml_home"),
+        market_over_price=g.get("market_over_price"),
+        market_under_price=g.get("market_under_price"),
     )
 
 
@@ -228,6 +231,22 @@ def _american_to_int(price: Any) -> Optional[int]:
 # Sleeper are DFS pick-em — player props only, no h2h/totals — and need a
 # separate pipeline (see TODO in matchup_engine.py / props.html).
 TAKEABLE_BOOKS = ["draftkings"]
+
+
+def _espn_dk_lines(max_age_h: float = 6.0) -> Dict[str, Dict[str, Any]]:
+    """data/espn_odds.json by_matchup ('AWAY @ HOME' codes) if fresh, else {}."""
+    p = os.path.join(os.path.dirname(OUT_PATH), "espn_odds.json")
+    try:
+        with open(p, encoding="utf-8") as f:
+            o = json.load(f) or {}
+        age = dt.datetime.now() - dt.datetime.fromisoformat(str(o.get("generated_at"))[:19])
+        if age.total_seconds() > max_age_h * 3600:
+            print(f"  [x] espn_odds.json is {age.total_seconds() / 3600:.1f}h old -- not used")
+            return {}
+        return o.get("by_matchup") or {}
+    except Exception as e:
+        print(f"  [x] espn_odds.json unreadable: {e}")
+        return {}
 
 
 def _consensus_odds(event: Dict[str, Any], home_name: str, away_name: str,
@@ -371,6 +390,11 @@ def build_real_slate() -> Optional[List[Dict[str, Any]]]:
         except Exception as e:
             print(f"  [x] Bovada fallback failed: {e}")
 
+    # DraftKings via the free ESPN feed (data/espn_odds.json, refreshed by the
+    # heartbeat) -- the same line the ledger grades at (book_american). Fills
+    # any game the sources above did not price. Only a <6h-old snapshot counts.
+    dk_by_matchup = _espn_dk_lines()
+
     slate = []
     for g in sched:
         if g.get("status") not in ("Scheduled", "Pre-Game", "Warmup", "Delayed Start: Rain"):
@@ -382,6 +406,11 @@ def build_real_slate() -> Optional[List[Dict[str, Any]]]:
         away_tid = sr.team_id(away_name)
         ev = odds_by_pair.get((home_name, away_name))
         prices = _consensus_odds(ev, home_name, away_name) if ev else {"ml_home": None, "ml_away": None, "total": None}
+        dk = dk_by_matchup.get(f"{away_code} @ {home_code}") or {}
+        if dk and (prices.get("ml_home") is None or prices.get("ml_away") is None or prices.get("total") is None):
+            prices = {"ml_home": dk.get("ml_home"), "ml_away": dk.get("ml_away"),
+                      "total": dk.get("total"), "over_price": dk.get("over_price"),
+                      "under_price": dk.get("under_price"), "book": dk.get("book") or "draftkings"}
 
         # Probable pitchers with IDs (preferred) or names only (fallback).
         pp = sr.probable_pitchers_for_game(g["gamePk"]) or {"home": {}, "away": {}}
@@ -409,9 +438,12 @@ def build_real_slate() -> Optional[List[Dict[str, Any]]]:
         slate.append({
             "time": _et_time(g["time"]),
             "park": g["venue"],
-            "market_total": prices["total"] or 8.5,
-            "market_ml_away": prices["ml_away"] or 100,
-            "market_ml_home": prices["ml_home"] or -110,
+            # None = no real line (never a placeholder): the model skips it.
+            "market_total": prices.get("total"),
+            "market_ml_away": prices.get("ml_away"),
+            "market_ml_home": prices.get("ml_home"),
+            "market_over_price": prices.get("over_price"),
+            "market_under_price": prices.get("under_price"),
             "market_book": prices.get("book"),
             "away": _team_dict_real(away_tid, away_code),
             "home": _team_dict_real(home_tid, home_code),

@@ -29,7 +29,12 @@ from typing import Any, Dict, List, Optional
 
 
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
-HEALTH_PATH = os.path.join(DATA_DIR, "pipeline_health.json")
+# Own file (2026-10-26): pipeline_watchdog.py (heartbeat + live-games) ALSO
+# wrote pipeline_health.json, in a different shape (overall_status "OK" /
+# file_health) -- whichever ran last won, so audit.html printed "OK: 7/undefined"
+# and index.html showed a false "data sources are aging" banner on this
+# module's lowercase "warning". pipeline_health.json now belongs to the watchdog.
+HEALTH_PATH = os.path.join(DATA_DIR, "artifact_health.json")
 
 
 CHECKS = [

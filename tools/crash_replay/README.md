@@ -14,3 +14,8 @@ scan_getnum.py [--fix]  finds `d.get(k, NUM)` feeding math / compares /
 verify_ast.py <repo>    proves a rewrite is purely mechanical (HEAD + rewrite
                         == working tree at the AST level) and lists files
                         with any other change.
+
+crawl_site.py <repo> <outdir> https://betting.bpleone.com
+                        renders every page headless (Chrome --dump-dom); lists
+                        console errors + visible NaN/undefined/null leaks.
+                        (sw.js CacheStorage errors there are a headless artifact.)

@@ -20,6 +20,12 @@ import datetime as dt
 import urllib.request
 from typing import Any, Dict, List, Optional, Tuple
 
+
+def _nz(v, d):
+    """None-safe default (2026-10-26): `.get(k, d)` only covers a MISSING key;
+    a key stored as None still reaches the arithmetic and crashes."""
+    return d if v is None else v
+
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 OUT = os.path.join(DATA_DIR, "nba_book_edges.json")
 HIST = os.path.join(DATA_DIR, "nba_odds_history.json")
@@ -101,7 +107,7 @@ def _update_history(edges: List[Dict[str, Any]]) -> Dict[str, Any]:
         k = e["_key"]
         seq = snaps.setdefault(k, [])
         bp = e["book_p_home"]
-        if not seq or abs(seq[-1].get("bp", -9) - bp) >= MOVE_EPS:
+        if not seq or abs(_nz(seq[-1].get("bp"), -9) - bp) >= MOVE_EPS:
             seq.append({"ts": now, "bp": bp, "mp": e["model_p_home"], "side": e["lean_side"]})
             snaps[k] = seq[-MAX_SNAPS:]
     # prune old game-days
