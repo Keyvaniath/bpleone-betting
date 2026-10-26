@@ -22,6 +22,19 @@ import datetime as dt
 from typing import Any, Dict, List
 
 
+def _fmtv(v, spec, dflt="?"):
+    """Display-safe format (2026-10-26): `{x.get(k, d):spec}` crashes when the
+    key exists with None -- .get's default only applies to a MISSING key --
+    and a display print must never fail the module (the 30-day cascade
+    started exactly this way)."""
+    if v is None:
+        return str(dflt)
+    try:
+        return format(v, spec)
+    except (TypeError, ValueError):
+        return str(v)
+
+
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 MD_OUT = os.path.join(DATA_DIR, "daily_summary_v2.md")
 JSON_OUT = os.path.join(DATA_DIR, "daily_summary_v2.json")
@@ -78,8 +91,8 @@ def run() -> Dict[str, Any]:
         lines.append("## 🐋 Whale Picks (Max Confluence)")
         for w in top_whales:
             lines.append(f"- [{w['tier']}] **[{w.get('sport')}]** {w.get('player_or_matchup')} "
-                          f"{w.get('market')} -- {w.get('prob',0)*100:.0f}% / +{w.get('edge_pct',0):.1f}% "
-                          f"(score {w.get('confluence_score',0):.1f})")
+                          f"{w.get('market')} -- {w.get('prob',0)*100:.0f}% / +{_fmtv(w.get('edge_pct'), '.1f', 0)}% "
+                          f"(score {_fmtv(w.get('confluence_score'), '.1f', 0)})")
         lines.append("")
 
     # Sharp action signals
@@ -89,7 +102,7 @@ def run() -> Dict[str, Any]:
         lines.append("## 📡 Sharp Action (Line Movement)")
         for s in pos:
             lines.append(f"- [{s.get('intensity')}] **{s.get('matchup')}** {s.get('market')}: "
-                          f"{s.get('opening_implied_pct')}% → {s.get('latest_implied_pct')}% (+{s.get('shift_pp',0):.1f}pp)")
+                          f"{s.get('opening_implied_pct')}% → {s.get('latest_implied_pct')}% (+{_fmtv(s.get('shift_pp'), '.1f', 0)}pp)")
         lines.append("")
 
     # Strong unders
@@ -98,7 +111,7 @@ def run() -> Dict[str, Any]:
     if strong_u:
         lines.append("## 📉 Strong UNDER Signals")
         for u in strong_u:
-            lines.append(f"- [{u.get('tier')} {u.get('under_signal_score',0):.1f}] **{u.get('matchup')}** "
+            lines.append(f"- [{u.get('tier')} {_fmtv(u.get('under_signal_score'), '.1f', 0)}] **{u.get('matchup')}** "
                           f"model {u.get('model_fair_total')} vs market {u.get('market_total')}")
         lines.append("")
 
@@ -118,12 +131,12 @@ def run() -> Dict[str, Any]:
         if roi is not None:
             lines.append(f"- Net units: **{net:+.2f}u** | ROI: **{roi:+.1f}%**")
         if l7.get("hit_rate") is not None:
-            lines.append(f"- Last 7d: {l7.get('wins',0)}-{l7.get('losses',0)} ({(l7['hit_rate']*100):.1f}%) | net {l7.get('net_units',0):+.2f}u")
+            lines.append(f"- Last 7d: {l7.get('wins',0)}-{l7.get('losses',0)} ({(l7['hit_rate']*100):.1f}%) | net {_fmtv(l7.get('net_units'), '+.2f', 0)}u")
         todays = locks.get("todays_locks") or []
         if todays:
             lines.append(f"\n**Today's {len(todays)} Locks:**")
             for L in todays:
-                lines.append(f"- [{L.get('sport','?')}] **{L.get('player_or_matchup','?')[:30]}** {L.get('market','?')[:30]} · p={L.get('prob',0)*100:.0f}% edge=+{L.get('edge_pct',0):.1f}% qK={L.get('unit_size_quarter_kelly',0):.3f}u")
+                lines.append(f"- [{L.get('sport','?')}] **{L.get('player_or_matchup','?')[:30]}** {L.get('market','?')[:30]} · p={L.get('prob',0)*100:.0f}% edge=+{_fmtv(L.get('edge_pct'), '.1f', 0)}% qK={_fmtv(L.get('unit_size_quarter_kelly'), '.3f', 0)}u")
         lines.append("")
 
     # Cross-sport parlay recommendations

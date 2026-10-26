@@ -11,6 +11,19 @@ from __future__ import annotations
 import os, json, datetime as dt
 from typing import Any, Dict, List
 
+
+def _fmtv(v, spec, dflt="?"):
+    """Display-safe format (2026-10-26): `{x.get(k, d):spec}` crashes when the
+    key exists with None -- .get's default only applies to a MISSING key --
+    and a display print must never fail the module (the 30-day cascade
+    started exactly this way)."""
+    if v is None:
+        return str(dflt)
+    try:
+        return format(v, spec)
+    except (TypeError, ValueError):
+        return str(v)
+
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 OUT_PATH = os.path.join(DATA_DIR, "auto_brief.md")
 
@@ -184,7 +197,7 @@ def run() -> Dict[str, Any]:
         if pot:
             opp = f" vs {pot.get('opponent')}" if pot.get("opponent") else ""
             lines.append(f"- **Play of the Tournament:** {pot.get('player')}{opp} {pot.get('type')} @ "
-                         f"{pot.get('fair_american','?'):+d} (model {(pot.get('model_prob') or 0)*100:.1f}%, {pot.get('confidence','MED')})")
+                         f"{_fmtv(pot.get('fair_american'), '+d', '?')} (model {(pot.get('model_prob') or 0)*100:.1f}%, {pot.get('confidence','MED')})")
             lines.append(f"   - {pot.get('reasoning','')}")
         lines.append("")
 
@@ -197,7 +210,7 @@ def run() -> Dict[str, Any]:
             score = f"{g.get('away_score',0)}-{g.get('home_score',0)}" if g.get("state") != "pre" else ""
             ph = (g.get("p_home_win") if g.get("p_home_win") is not None else 0.5) * 100
             lines.append(f"- {g.get('matchup')} ({g.get('away_record','?')} vs {g.get('home_record','?')}) "
-                         f"{score} | P(home) {ph:.1f}% fair {g.get('fair_home_american','?'):+d} | {g.get('status','?')}")
+                         f"{score} | P(home) {ph:.1f}% fair {_fmtv(g.get('fair_home_american'), '+d', '?')} | {g.get('status','?')}")
         lines.append("")
 
     # NHL scoreboard
@@ -209,7 +222,7 @@ def run() -> Dict[str, Any]:
             score = f"{g.get('away_score',0)}-{g.get('home_score',0)}" if g.get("state") != "pre" else ""
             ph = (g.get("p_home_win") if g.get("p_home_win") is not None else 0.5) * 100
             lines.append(f"- {g.get('matchup')} ({g.get('away_record','?')} vs {g.get('home_record','?')}) "
-                         f"{score} | P(home) {ph:.1f}% fair {g.get('fair_home_american','?'):+d} | {g.get('status','?')}")
+                         f"{score} | P(home) {ph:.1f}% fair {_fmtv(g.get('fair_home_american'), '+d', '?')} | {g.get('status','?')}")
         lines.append("")
 
     # KBO scoreboard
@@ -222,7 +235,7 @@ def run() -> Dict[str, Any]:
         for g in kbo_preds[:5]:
             ph = (g.get('p_home_win') if g.get('p_home_win') is not None else 0.5) * 100
             lines.append(f"- {g.get('away_team')} @ {g.get('home_team')} | "
-                         f"P(home) {ph:.1f}% fair {g.get('fair_home_american','?'):+d} "
+                         f"P(home) {ph:.1f}% fair {_fmtv(g.get('fair_home_american'), '+d', '?')} "
                          f"| total {g.get('model_total','?')} R")
         if kbo_pot:
             lines.append(f"- **KBO POD:** {kbo_pot.get('label')} ({kbo_pot.get('confidence','MED')})")
@@ -238,7 +251,7 @@ def run() -> Dict[str, Any]:
         for m in lol_preds[:5]:
             pa = (m.get('p_series_a') if m.get('p_series_a') is not None else 0.5) * 100
             lines.append(f"- [{m.get('league')}] {m.get('team_a')} vs {m.get('team_b')} BO{m.get('best_of',1)} | "
-                         f"P(A) {pa:.1f}% fair {m.get('fair_a_american','?'):+d}/{m.get('fair_b_american','?'):+d}")
+                         f"P(A) {pa:.1f}% fair {_fmtv(m.get('fair_a_american'), '+d', '?')}/{_fmtv(m.get('fair_b_american'), '+d', '?')}")
         if lol_pot:
             lines.append(f"- **LoL POT:** {lol_pot.get('label')} ({lol_pot.get('confidence','MED')})")
         lines.append("")
@@ -253,7 +266,7 @@ def run() -> Dict[str, Any]:
         for m in cs_preds[:5]:
             pa = (m.get('p_series_a') if m.get('p_series_a') is not None else 0.5) * 100
             lines.append(f"- {m.get('team_a')} vs {m.get('team_b')} BO{m.get('best_of',3)} | "
-                         f"P(A) {pa:.1f}% fair {m.get('fair_a_american','?'):+d}/{m.get('fair_b_american','?'):+d}")
+                         f"P(A) {pa:.1f}% fair {_fmtv(m.get('fair_a_american'), '+d', '?')}/{_fmtv(m.get('fair_b_american'), '+d', '?')}")
         if cs_pot:
             lines.append(f"- **CS POD:** {cs_pot.get('label')} ({cs_pot.get('confidence','MED')})")
         lines.append("")

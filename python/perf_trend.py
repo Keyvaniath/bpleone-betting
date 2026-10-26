@@ -28,6 +28,19 @@ import datetime as dt
 from typing import Any, Dict, List, Optional
 
 
+def _fmtv(v, spec, dflt="?"):
+    """Display-safe format (2026-10-26): `{x.get(k, d):spec}` crashes when the
+    key exists with None -- .get's default only applies to a MISSING key --
+    and a display print must never fail the module (the 30-day cascade
+    started exactly this way)."""
+    if v is None:
+        return str(dflt)
+    try:
+        return format(v, spec)
+    except (TypeError, ValueError):
+        return str(v)
+
+
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 TR_PATH = os.path.join(DATA_DIR, "track_record.json")
 PERF_PATH = os.path.join(DATA_DIR, "perf_trend.json")
@@ -194,7 +207,7 @@ if __name__ == "__main__":
     print(f"Wrote {PERF_PATH}")
     print(f"  Days analyzed: {len(p['by_date'])}")
     for d in p["by_date"]:
-        print(f"    {d['date']}: n={d['n']:>4} graded={d.get('graded',0):>4} "
+        print(f"    {d['date']}: n={d['n']:>4} graded={_fmtv(d.get('graded'), '>4', 0)} "
               f"hit={d.get('hit_rate')} brier={d.get('brier')} MAE={d.get('mae_residual')} ROI={d.get('roi_pct')}")
     t = p.get("trends", {})
     if t.get("days_used"):

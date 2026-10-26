@@ -17,6 +17,19 @@ import datetime as dt
 from typing import Any, Dict, List
 
 
+def _fmtv(v, spec, dflt="?"):
+    """Display-safe format (2026-10-26): `{x.get(k, d):spec}` crashes when the
+    key exists with None -- .get's default only applies to a MISSING key --
+    and a display print must never fail the module (the 30-day cascade
+    started exactly this way)."""
+    if v is None:
+        return str(dflt)
+    try:
+        return format(v, spec)
+    except (TypeError, ValueError):
+        return str(v)
+
+
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 OUT_PATH = os.path.join(DATA_DIR, "daily_summary.md")
 
@@ -164,8 +177,8 @@ def build_summary() -> str:
             lines.append(f"| {k.replace('_', ' ')} | {m['n']} | "
                          f"{m.get('actual_over_rate', 0)*100:.1f}% | "
                          f"{m.get('implied_over_rate', 0)*100:.1f}% | "
-                         f"{m.get('bias', 1):.3f} | "
-                         f"{m.get('correction_factor', 1):.3f} |")
+                         f"{_fmtv(m.get('bias'), '.3f', 1)} | "
+                         f"{_fmtv(m.get('correction_factor'), '.3f', 1)} |")
         lines.append("")
         graded = tr.get('n_settled') or 0
         wins = round((tr.get('hit_rate') or 0) * graded)

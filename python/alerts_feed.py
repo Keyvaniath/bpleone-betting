@@ -24,6 +24,19 @@ import json
 import datetime as dt
 from typing import Any, Dict, List, Optional
 
+
+def _fmtv(v, spec, dflt="?"):
+    """Display-safe format (2026-10-26): `{x.get(k, d):spec}` crashes when the
+    key exists with None -- .get's default only applies to a MISSING key --
+    and a display print must never fail the module (the 30-day cascade
+    started exactly this way)."""
+    if v is None:
+        return str(dflt)
+    try:
+        return format(v, spec)
+    except (TypeError, ValueError):
+        return str(v)
+
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 OUT = os.path.join(DATA_DIR, "alerts_feed.json")
 
@@ -108,7 +121,7 @@ def _edge(items: List[Dict[str, Any]], ts: str) -> List[Dict[str, Any]]:
             "type": "EDGE", "icon": "🎯", "sport": p.get("sport") or "",
             "title": f"Model edge: {name}",
             "detail": (f"{mkt} — {prob:.0%} model{(' (' + str(p.get('fair_american')) + ')') if p.get('fair_american') else ''}, "
-                       f"{edge:.0f}% edge, {p.get('unit_size_quarter_kelly', kelly):.2f}u ¼-Kelly"),
+                       f"{edge:.0f}% edge, {_fmtv(p.get('unit_size_quarter_kelly'), '.2f', kelly)}u ¼-Kelly"),
             "score": _clamp(30 + kelly * 200 + edge * 0.3), "ts": ts, "link": "todays-top-plays.html",
         })
     return out

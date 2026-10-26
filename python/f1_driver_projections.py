@@ -27,6 +27,19 @@ import datetime as dt
 from typing import Any, Dict, List
 
 
+def _fmtv(v, spec, dflt="?"):
+    """Display-safe format (2026-10-26): `{x.get(k, d):spec}` crashes when the
+    key exists with None -- .get's default only applies to a MISSING key --
+    and a display print must never fail the module (the 30-day cascade
+    started exactly this way)."""
+    if v is None:
+        return str(dflt)
+    try:
+        return format(v, spec)
+    except (TypeError, ValueError):
+        return str(v)
+
+
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 OUT = os.path.join(DATA_DIR, "f1_driver_projections.json")
 
@@ -192,7 +205,7 @@ if __name__ == "__main__":
         name = (d.get('name') or '?')[:25]
         team = (d.get('team') or '?')[:3]
         print(f"    #{d.get('rank','?')} {name:25s} ({team:3s}) "
-              f"skill {d.get('skill_score',0):.1f} z={d.get('skill_z',0):+.2f}  "
+              f"skill {_fmtv(d.get('skill_score'), '.1f', 0)} z={_fmtv(d.get('skill_z'), '+.2f', 0)}  "
               f"P(win)={d['p_win']*100:.1f}% podium={d['p_podium']*100:.0f}% pts={d['p_points_top10']*100:.0f}%")
     print(f"\n  Top 5 podium candidates:")
     for d in (p.get("top_10_podium") or [])[:5]:

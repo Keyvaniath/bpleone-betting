@@ -15,6 +15,19 @@ import datetime as dt
 from typing import Any, Dict, List
 
 
+def _fmtv(v, spec, dflt="?"):
+    """Display-safe format (2026-10-26): `{x.get(k, d):spec}` crashes when the
+    key exists with None -- .get's default only applies to a MISSING key --
+    and a display print must never fail the module (the 30-day cascade
+    started exactly this way)."""
+    if v is None:
+        return str(dflt)
+    try:
+        return format(v, spec)
+    except (TypeError, ValueError):
+        return str(v)
+
+
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 MD_OUT = os.path.join(DATA_DIR, "tonight_brief.md")
 
@@ -46,7 +59,7 @@ def run() -> Dict[str, Any]:
         lines.append("## 🐋 WHALES (size up max)")
         for w in top_whales[:3]:
             lines.append(f"- **{w.get('sport')}** · {w.get('player_or_matchup')} {w.get('market')} · "
-                          f"{w.get('prob',0)*100:.0f}% / +{w.get('edge_pct',0):.1f}%")
+                          f"{w.get('prob',0)*100:.0f}% / +{_fmtv(w.get('edge_pct'), '.1f', 0)}%")
             for r in w.get("reasons", [])[:3]:
                 lines.append(f"  - {r}")
         lines.append("")
@@ -55,7 +68,7 @@ def run() -> Dict[str, Any]:
         lines.append(f"## 💪 STRONG ({len(strong_whales)} picks)")
         for w in strong_whales[:5]:
             lines.append(f"- [{w.get('sport')}] {w.get('player_or_matchup')} {w.get('market')} · "
-                          f"{w.get('prob',0)*100:.0f}% / +{w.get('edge_pct',0):.1f}%")
+                          f"{w.get('prob',0)*100:.0f}% / +{_fmtv(w.get('edge_pct'), '.1f', 0)}%")
         lines.append("")
 
     # Today's locks
@@ -63,7 +76,7 @@ def run() -> Dict[str, Any]:
     if todays_locks:
         lines.append("## 🔒 5 Daily Locks")
         for L in todays_locks:
-            lines.append(f"- **{L.get('player_or_matchup')}** {L.get('market')} ({L.get('sport')}) -- {L.get('prob',0)*100:.0f}% / +{L.get('edge_pct',0):.1f}%")
+            lines.append(f"- **{L.get('player_or_matchup')}** {L.get('market')} ({L.get('sport')}) -- {L.get('prob',0)*100:.0f}% / +{_fmtv(L.get('edge_pct'), '.1f', 0)}%")
         lines.append("")
 
     # Top sharp signals
@@ -71,7 +84,7 @@ def run() -> Dict[str, Any]:
     if pos_sharp:
         lines.append("## 📡 Sharp Money Following Model")
         for s in pos_sharp:
-            lines.append(f"- **{s.get('matchup')}** {s.get('market')}: line moved {s.get('opening_implied_pct')}% → {s.get('latest_implied_pct')}% (+{s.get('shift_pp',0):.1f}pp)")
+            lines.append(f"- **{s.get('matchup')}** {s.get('market')}: line moved {s.get('opening_implied_pct')}% → {s.get('latest_implied_pct')}% (+{_fmtv(s.get('shift_pp'), '.1f', 0)}pp)")
         lines.append("")
 
     # Strong unders

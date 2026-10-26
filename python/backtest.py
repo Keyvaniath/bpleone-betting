@@ -28,6 +28,19 @@ import datetime as dt
 from typing import Any, Dict, List
 
 
+def _fmtv(v, spec, dflt="?"):
+    """Display-safe format (2026-10-26): `{x.get(k, d):spec}` crashes when the
+    key exists with None -- .get's default only applies to a MISSING key --
+    and a display print must never fail the module (the 30-day cascade
+    started exactly this way)."""
+    if v is None:
+        return str(dflt)
+    try:
+        return format(v, spec)
+    except (TypeError, ValueError):
+        return str(v)
+
+
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 LEDGER = os.path.join(DATA_DIR, "all_picks_ledger.json")
 OUT = os.path.join(DATA_DIR, "backtest.json")
@@ -148,4 +161,4 @@ if __name__ == "__main__":
           f"hit {m['hit_pct']}%, ROI {m['roi_pct']}%, net {m['total_units']}u, "
           f"maxDD {m['max_drawdown']}u")
     print(f"  top sources: " + ", ".join(
-        f"{r['source']} {r.get('net_units', 0):+.1f}u" for r in p["by_source"][:4]))
+        f"{r['source']} {_fmtv(r.get('net_units'), '+.1f', 0)}u" for r in p["by_source"][:4]))

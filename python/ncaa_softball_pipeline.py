@@ -2,6 +2,19 @@
 from __future__ import annotations
 from espn_generic import run
 
+
+def _fmtv(v, spec, dflt="?"):
+    """Display-safe format (2026-10-26): `{x.get(k, d):spec}` crashes when the
+    key exists with None -- .get's default only applies to a MISSING key --
+    and a display print must never fail the module (the 30-day cascade
+    started exactly this way)."""
+    if v is None:
+        return str(dflt)
+    try:
+        return format(v, spec)
+    except (TypeError, ValueError):
+        return str(v)
+
 CFG = {
     "sport_key": "ncaa_softball", "espn_path": "baseball/college-softball",
     "league_label": "NCAA Softball", "hfa_elo": 30,
@@ -13,4 +26,4 @@ if __name__ == "__main__":
     p = run(CFG)
     print(f"NCAA Softball: {p['n_games_today']} games")
     for g in p.get("games", [])[:8]:
-        print(f"  {g.get('matchup','?')[:50]:50s} | p_home={g.get('p_home_win', 0):.3f}")
+        print(f"  {g.get('matchup','?')[:50]:50s} | p_home={_fmtv(g.get('p_home_win'), '.3f', 0)}")

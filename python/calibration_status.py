@@ -21,6 +21,19 @@ import datetime as dt
 from typing import Any, Dict, List
 
 
+def _fmtv(v, spec, dflt="?"):
+    """Display-safe format (2026-10-26): `{x.get(k, d):spec}` crashes when the
+    key exists with None -- .get's default only applies to a MISSING key --
+    and a display print must never fail the module (the 30-day cascade
+    started exactly this way)."""
+    if v is None:
+        return str(dflt)
+    try:
+        return format(v, spec)
+    except (TypeError, ValueError):
+        return str(v)
+
+
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 OUT = os.path.join(DATA_DIR, "calibration_status.json")
 
@@ -141,8 +154,8 @@ if __name__ == "__main__":
     print(f"Calibration Status: {p['calibration_tier']} ({p['calibration_progress_pct']}%)")
     print(f"  {p['calibration_note']}")
     print(f"  Settled locks: {p['n_settled_locks']} | Pending: {p['n_locks_pending']}")
-    print(f"  Avg compression: {p.get('avg_compression_pp', 0):.1f}pp (raw {p.get('avg_raw_prob', 0):.3f} -> cal {p.get('avg_calibrated_prob', 0):.3f})")
-    print(f"  Max raw prob seen: {p.get('max_raw_prob', 0):.3f}")
+    print(f"  Avg compression: {_fmtv(p.get('avg_compression_pp'), '.1f', 0)}pp (raw {_fmtv(p.get('avg_raw_prob'), '.3f', 0)} -> cal {_fmtv(p.get('avg_calibrated_prob'), '.3f', 0)})")
+    print(f"  Max raw prob seen: {_fmtv(p.get('max_raw_prob'), '.3f', 0)}")
     print(f"\n  By source:")
     for src, b in sorted(p["by_source"].items(), key=lambda kv: -kv[1]["n"])[:8]:
         print(f"    {src:30s}  n={b['n']:4d}  w={b['shrinkage_w']:.2f}  raw avg {b['avg_raw_prob']:.3f} -> cal {b['avg_cal_prob']:.3f}  ({b['avg_compression_pp']:+.1f}pp)")

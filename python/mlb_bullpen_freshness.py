@@ -22,6 +22,19 @@ import datetime as dt
 from typing import Any, Dict, List
 
 
+def _fmtv(v, spec, dflt="?"):
+    """Display-safe format (2026-10-26): `{x.get(k, d):spec}` crashes when the
+    key exists with None -- .get's default only applies to a MISSING key --
+    and a display print must never fail the module (the 30-day cascade
+    started exactly this way)."""
+    if v is None:
+        return str(dflt)
+    try:
+        return format(v, spec)
+    except (TypeError, ValueError):
+        return str(v)
+
+
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 OUT = os.path.join(DATA_DIR, "mlb_bullpen_freshness.json")
 
@@ -79,10 +92,10 @@ def run() -> Dict[str, Any]:
         # Home offense gets late-inning OVER if away starter is early hook + away bullpen is gassed
         if (away_proj.get("depth_tier") in ("EARLY_HOOK", "SHORT_LEASH") and
             _classify(away_bp.get("ip_2d")) in ("TIRED", "GASSED")):
-            compound_alerts.append(f"AWAY starter projected short ({away_proj.get('projected_ip_today',0):.1f} IP) + AWAY bullpen {_classify(away_bp.get('ip_2d'))} -> HOME team total OVER late")
+            compound_alerts.append(f"AWAY starter projected short ({_fmtv(away_proj.get('projected_ip_today'), '.1f', 0)} IP) + AWAY bullpen {_classify(away_bp.get('ip_2d'))} -> HOME team total OVER late")
         if (home_proj.get("depth_tier") in ("EARLY_HOOK", "SHORT_LEASH") and
             _classify(home_bp.get("ip_2d")) in ("TIRED", "GASSED")):
-            compound_alerts.append(f"HOME starter projected short ({home_proj.get('projected_ip_today',0):.1f} IP) + HOME bullpen {_classify(home_bp.get('ip_2d'))} -> AWAY team total OVER late")
+            compound_alerts.append(f"HOME starter projected short ({_fmtv(home_proj.get('projected_ip_today'), '.1f', 0)} IP) + HOME bullpen {_classify(home_bp.get('ip_2d'))} -> AWAY team total OVER late")
 
         results.append({
             "matchup": mu,

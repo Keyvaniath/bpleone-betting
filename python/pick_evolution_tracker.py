@@ -30,6 +30,19 @@ import datetime as dt
 from typing import Any, Dict, List
 
 
+def _fmtv(v, spec, dflt="?"):
+    """Display-safe format (2026-10-26): `{x.get(k, d):spec}` crashes when the
+    key exists with None -- .get's default only applies to a MISSING key --
+    and a display print must never fail the module (the 30-day cascade
+    started exactly this way)."""
+    if v is None:
+        return str(dflt)
+    try:
+        return format(v, spec)
+    except (TypeError, ValueError):
+        return str(v)
+
+
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 OUT = os.path.join(DATA_DIR, "pick_evolution.json")
 
@@ -134,4 +147,4 @@ if __name__ == "__main__":
     if p['n_cycles_today'] >= 2:
         print(f"\n  Top 5 stable picks:")
         for x in p['stable_picks'][:5]:
-            print(f"    [{x.get('sport'):7s}] {x.get('player_or_matchup','?')[:25]:25s} {x.get('market','?')[:25]:25s} edge {x.get('edge_pct',0):+.1f}%")
+            print(f"    [{x.get('sport'):7s}] {x.get('player_or_matchup','?')[:25]:25s} {x.get('market','?')[:25]:25s} edge {_fmtv(x.get('edge_pct'), '+.1f', 0)}%")

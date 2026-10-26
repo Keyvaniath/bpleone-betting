@@ -21,6 +21,19 @@ import datetime as dt
 from typing import Any, Dict, List, Optional
 
 
+def _fmtv(v, spec, dflt="?"):
+    """Display-safe format (2026-10-26): `{x.get(k, d):spec}` crashes when the
+    key exists with None -- .get's default only applies to a MISSING key --
+    and a display print must never fail the module (the 30-day cascade
+    started exactly this way)."""
+    if v is None:
+        return str(dflt)
+    try:
+        return format(v, spec)
+    except (TypeError, ValueError):
+        return str(v)
+
+
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 STATE_PATH = os.path.join(DATA_DIR, "golf_state.json")
 PROPS_PATH = os.path.join(DATA_DIR, "golf_props.json")
@@ -150,7 +163,7 @@ def run() -> Dict[str, Any]:
     if last_pot and cur_pot_key and last_pot != cur_pot_key:
         alerts.append({
             "type": "POT_FLIP",
-            "msg": f"⛳ Play of the Tournament FLIPPED at {tname}: now {pot_player}{' vs ' + pot.get('opponent') if pot.get('opponent') else ''} {pot_type} (fair {pot.get('fair_american','?'):+d})",
+            "msg": f"⛳ Play of the Tournament FLIPPED at {tname}: now {pot_player}{' vs ' + pot.get('opponent') if pot.get('opponent') else ''} {pot_type} (fair {_fmtv(pot.get('fair_american'), '+d', '?')})",
         })
 
     # Fire each new alert exactly once

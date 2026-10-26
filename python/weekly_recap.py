@@ -22,6 +22,19 @@ import datetime as dt
 from typing import Any, Dict, List
 
 
+def _fmtv(v, spec, dflt="?"):
+    """Display-safe format (2026-10-26): `{x.get(k, d):spec}` crashes when the
+    key exists with None -- .get's default only applies to a MISSING key --
+    and a display print must never fail the module (the 30-day cascade
+    started exactly this way)."""
+    if v is None:
+        return str(dflt)
+    try:
+        return format(v, spec)
+    except (TypeError, ValueError):
+        return str(v)
+
+
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 MD_OUT = os.path.join(DATA_DIR, "weekly_recap.md")
 JSON_OUT = os.path.join(DATA_DIR, "weekly_recap.json")
@@ -181,4 +194,4 @@ if __name__ == "__main__":
     if p["top_wins"]:
         print(f"  Top 3 wins:")
         for w in p["top_wins"][:3]:
-            print(f"    [{w['sport']}] {w['player_or_matchup'][:25]:25s} +{w.get('payout_units',0):.3f}u")
+            print(f"    [{w['sport']}] {w['player_or_matchup'][:25]:25s} +{_fmtv(w.get('payout_units'), '.3f', 0)}u")

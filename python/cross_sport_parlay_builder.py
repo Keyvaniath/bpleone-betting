@@ -203,10 +203,14 @@ def run() -> Dict[str, Any]:
     # Use top_25 (already deduped + diversified)
     legs = top_plays.get("top_25") or []
     if not legs:
+        # SHAPE-IDENTICAL to the success payload (2026-10-26): this used
+        # different key names, so every consumer -- and this module's own
+        # summary print -- failed on a day with no top plays.
         out = {"generated_at": dt.datetime.now().isoformat(timespec="seconds"),
                 "note": "No top plays available to build parlays from",
-                "n_2_leg": 0, "n_3_leg": 0,
-                "parlays_2_leg": [], "parlays_3_leg": []}
+                "n_input_legs": 0, "n_2_leg": 0, "n_3_leg": 0,
+                "top_2_leg_parlays": [], "top_3_leg_parlays": [],
+                "balanced_2_leg_picks": []}
         with open(OUT, "w") as f: json.dump(out, f, indent=2)
         return out
 
@@ -263,15 +267,15 @@ def run() -> Dict[str, Any]:
 if __name__ == "__main__":
     p = run()
     print(f"Cross-sport parlay builder: {p.get('n_input_legs',0)} input legs")
-    print(f"  2-leg parlays meeting criteria: {p['n_2_leg']}")
-    print(f"  3-leg parlays meeting criteria: {p['n_3_leg']}")
+    print(f"  2-leg parlays meeting criteria: {p.get('n_2_leg', 0)}")
+    print(f"  3-leg parlays meeting criteria: {p.get('n_3_leg', 0)}")
     print(f"\n  Top 5 2-leg parlays (by edge):")
-    for x in p["top_2_leg_parlays"][:5]:
+    for x in (p.get("top_2_leg_parlays") or [])[:5]:
         labels = " + ".join([f"{L['sport']} {L['player_or_matchup'][:15]} {L['market'][:18]}" for L in x['legs']])
         print(f"    {labels}")
         print(f"      joint={x['joint_prob']*100:.0f}% fair={x['fair_parlay_american']} edge={x['edge_pct']:+.1f}%")
     print(f"\n  Top 3 3-leg parlays:")
-    for x in p["top_3_leg_parlays"][:3]:
+    for x in (p.get("top_3_leg_parlays") or [])[:3]:
         labels = " + ".join([f"{L['sport']} {L['player_or_matchup'][:12]}" for L in x['legs']])
         print(f"    {labels}")
         print(f"      joint={x['joint_prob']*100:.0f}% fair={x['fair_parlay_american']} edge={x['edge_pct']:+.1f}%")
