@@ -407,10 +407,13 @@ def build_real_slate() -> Optional[List[Dict[str, Any]]]:
         ev = odds_by_pair.get((home_name, away_name))
         prices = _consensus_odds(ev, home_name, away_name) if ev else {"ml_home": None, "ml_away": None, "total": None}
         dk = dk_by_matchup.get(f"{away_code} @ {home_code}") or {}
-        if dk and (prices.get("ml_home") is None or prices.get("ml_away") is None or prices.get("total") is None):
+        if dk.get("ml_home") is not None and dk.get("ml_away") is not None:
+            # DraftKings is the house price (the ledger grades at it): it wins
+            # whenever it has the game; Odds API / Bovada only fill a gap.
             prices = {"ml_home": dk.get("ml_home"), "ml_away": dk.get("ml_away"),
-                      "total": dk.get("total"), "over_price": dk.get("over_price"),
-                      "under_price": dk.get("under_price"), "book": dk.get("book") or "draftkings"}
+                      "total": dk.get("total") if dk.get("total") is not None else prices.get("total"),
+                      "over_price": dk.get("over_price"), "under_price": dk.get("under_price"),
+                      "book": dk.get("book") or "draftkings"}
 
         # Probable pitchers with IDs (preferred) or names only (fallback).
         pp = sr.probable_pitchers_for_game(g["gamePk"]) or {"home": {}, "away": {}}

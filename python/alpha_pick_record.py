@@ -658,6 +658,18 @@ def run() -> Dict[str, Any]:
         "record": record,
         "record_last_30": record_30,
         "record_v2": record_v2,
+        # Price corrections (2026-10-26): every Alpha day is graded at the real
+        # DraftKings pre-game price; rows recorded at a wrong price carry
+        # recorded_price. The chain of published v2 figures is fixed history.
+        "price_corrections": {
+            "n_rows_repriced": sum(1 for r in one_rows if r.get("recorded_price") is not None),
+            "note": ("Every pick is graded at the real DraftKings pre-game price. Some were recorded at "
+                     "a wrong one -- a placeholder (-110 / +100) when no line had loaded, or an in-play "
+                     "Bovada price (10/13 TBR ML at +940; DraftKings had -137) -- and were re-graded. "
+                     "Rule v2 net: +11.51u as first published, +9.59u after the 10/23 correction, "
+                     f"{record_v2.get('net_units'):+}u after 10/26."
+                     if record_v2.get("net_units") is not None else ""),
+        },
         "no_pick_days_v2": {"n": len(no_pick_days), "recent": no_pick_days[-10:]},
         "board": board,          # the diversified curated book -- the "ETF" benchmark
         "todays": todays,

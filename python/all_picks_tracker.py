@@ -171,16 +171,17 @@ def _price_corrections(history):
         vt += vr.startswith("unpriced total")
     return [
         {"date": "2026-10-23", "n_repriced": rp["2026-10-23"], "n_voided": vm,
-         "curated_before": "943-436 (+17.21%)", "curated_after": "936-434 (+16.02%)",
+         "curated_before": "943-436 (+17.21%)", "curated_after": "936-434 (+16.02%, +219.45u)",
          "note": ("MLB moneylines recorded when no book price was loaded had been graded at a "
                   "placeholder -110. Each was re-priced at the real DraftKings pre-game line "
                   "(from the snapshot history), or voided when no real line exists.")},
         {"date": "2026-10-26", "n_repriced": rp["2026-10-26"], "n_voided": vt,
-         "curated_before": "936-434 (+16.02%)", "curated_after": "932-429 (+15.91%)",
-         "note": ("The same gap on the away side (+100) and the total (8.5): moneylines "
-                  "re-priced at the real DraftKings line; Play-of-the-Day totals whose 8.5 "
-                  "line DraftKings never posted were voided -- a bet on a line that did not "
-                  "exist has no honest result.")},
+         "curated_before": "936-434 (+16.02%, +219.45u)", "curated_after": "932-429 (+14.38%, +195.69u)",
+         "note": ("The same gap on the away side (+100) and the total (8.5), plus Play-of-the-Day "
+                  "moneylines recorded at in-play Bovada prices (10/13 TBR at +940 when DraftKings' "
+                  "pre-game line was -137). Every MLB moneyline is now graded at the DraftKings "
+                  "pre-game line; Play-of-the-Day totals whose 8.5 line DraftKings never posted were "
+                  "voided -- a bet on a line that did not exist has no honest result.")},
     ]
 
 

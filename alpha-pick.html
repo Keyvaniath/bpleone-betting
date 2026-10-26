@@ -229,7 +229,10 @@ fetch('data/alpha_pick_record.json?t=' + Date.now()).then(function (r) { return 
       (+b.roi_pct).toFixed(1) + '%</b> at <b>' + Math.round((b.hit_rate || 0) * 100) + '%</b> across ~' +
       (b.n_settled || 0) + ' plays). ' : '') +
     'That <em>both</em> clear a real edge is the point — it\'s the model + curation, not luck. But one bet a day is far higher variance (~' +
-    r.n_settled + ' bets vs ~' + (b.n_settled || 0) + '): follow the one pick as a headline; the board\'s larger sample is the bankable number.';
+    r.n_settled + ' bets vs ~' + (b.n_settled || 0) + '): follow the one pick as a headline; the board\'s larger sample is the bankable number.' +
+    ((d.price_corrections && d.price_corrections.note)
+      ? '<br><span style="color:#d4a04a;font-weight:600;">Corrected 10/23 + 10/26:</span> ' + d.price_corrections.note
+      : '');
   // human market text (moneylines read as "SIDE moneyline", not "ml away")
   var mkH = function (m, name) {
     m = String(m || '').toUpperCase();

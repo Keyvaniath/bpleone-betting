@@ -41,6 +41,28 @@ bpleone-site/
 
 ## Current deployment state (LIVE)
 
+- **2026-10-26 (night) — IN-PLAY PRICES + THE DK STANDARD FOR ALL HISTORY.** POD's
+  moneyline record (+167% ROI, n=14) was built on impossible prices: TBR +940,
+  PIT +840, CHW +525, DET +398, KCR +310 -- DraftKings pre-game had -137 / +102
+  / -142 / +119 / -111. bovada._market_by_desc took the FIRST "Moneyline"
+  market, and Bovada lists in-play / period markets under the same name (and
+  live events in the same feed). FIX: bovada skips live events + non-full-game
+  periods; pipeline uses the DK line FIRST whenever espn_odds has the game.
+  HISTORY: every settled MLB moneyline without book_american (179 with a DK
+  line) graded at the DK pre-game line -- data/ml_reprice_2026_10c.json, kind
+  dk_standard, lowest precedence after seeds A/B. Gap distribution: 0-5c 93,
+  5-15c 54, 15-50c 24 (all tiny), >50c 8 (+23.50u -> +3.61u: the garbage).
+  14 with no DK line keep their (plausible) recorded price. RESTATED: curated
+  932-429 +216.50u (+15.91%) -> +195.69u (+14.38%), W-L unchanged; **Alpha v2
+  18-16 +9.51u -> -1.63u (-4.79%)**, all-time 66-38 +22.87u -> +11.73u
+  (+11.28%) -- 10/13 TBR "+940" alone was +9.40u of it (real +0.73u). Alpha
+  SELECTS on EV vs the recorded price, so a bad price looked like a huge edge
+  and got picked: price errors concentrate in the selected pick. Disclosed:
+  ledger_summary.price_corrections (track-record) + alpha_pick_record
+  .price_corrections (alpha-pick page). **RULE: a recorded price that implies a
+  >50-cent disagreement with DK is a data error, not an edge -- any selector
+  that ranks on edge vs recorded price must be fed the house price.**
+
 - **2026-10-26 (eve) — THE OTHER PLACEHOLDERS: +100 AND 8.5 (read with the 10/23
   entry).** A headless crawl of all 135 live pages (Chrome --dump-dom, console
   + visible NaN/undefined scan) showed play-of-day "MIL_ML Market price +100 -

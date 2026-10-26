@@ -36,6 +36,10 @@ SEED = os.path.join(DATA_DIR, "ml_reprice_2026_10.json")
 # +100; 9 pod totals on an 8.5 line DraftKings never posted). Built by
 # tools/build_reprice_plus100.py from the same espn_odds.json git history.
 SEED_B = os.path.join(DATA_DIR, "ml_reprice_2026_10b.json")
+# 2026-10-26 DK standard: every other settled MLB moneyline without a book
+# price, graded at the DraftKings pre-game line (POD had been recorded at
+# in-play Bovada prices -- +940 vs DK -137). Lowest precedence: A and B win.
+SEED_C = os.path.join(DATA_DIR, "ml_reprice_2026_10c.json")
 MARKER = os.path.join(DATA_DIR, "ml_reprice_2026_10_done.json")
 LEDGER = os.path.join(DATA_DIR, "all_picks_ledger.json")
 ARCHIVE = os.path.join(DATA_DIR, "ledger_archive.json")
@@ -69,8 +73,9 @@ def apply_ledger(picks, side_of) -> Dict[str, int]:
     global _SEED_CACHE
     if _SEED_CACHE is None:
         _SEED_CACHE = {r["pick_id"]: r for r in (_load(SEED).get("rows") or [])}
-        for r in (_load(SEED_B).get("rows") or []):
-            _SEED_CACHE.setdefault(r["pick_id"], r)
+        for path in (SEED_B, SEED_C):
+            for r in (_load(path).get("rows") or []):
+                _SEED_CACHE.setdefault(r["pick_id"], r)
     seed = _SEED_CACHE
     now = dt.datetime.now().isoformat(timespec="seconds")
     n = {"repriced": 0, "voided_unpriced": 0, "voided_unpriced_total": 0, "pending_priced": 0}
@@ -85,10 +90,13 @@ def apply_ledger(picks, side_of) -> Dict[str, int]:
                                      else (-1.0 if p.get("result") == "lost" else 0.0))
                 p["repriced"] = {"at": now, "from_payout": old, "recorded_price": p.get("fair_american"),
                                  "book_snapshot_at": r.get("snapshot_at"), "chosen": r.get("chosen"),
-                                 "reason": (f"{'2026-10-26' if r.get('kind') else '2026-10-23'}: graded at "
-                                            f"a placeholder {r.get('old_fair') or -110} the board filled "
-                                            "in when the line was missing; re-priced at the real "
-                                            "DraftKings pre-game moneyline")}
+                                 "reason": ((f"2026-10-26: graded at the recorded {r.get('old_fair')}; "
+                                             "re-priced at the real DraftKings pre-game moneyline (the "
+                                             "house standard)") if r.get("kind") == "dk_standard" else
+                                            (f"{'2026-10-26' if r.get('kind') else '2026-10-23'}: graded at "
+                                             f"a placeholder {r.get('old_fair') or -110} the board filled "
+                                             "in when the line was missing; re-priced at the real "
+                                             "DraftKings pre-game moneyline"))}
                 n["repriced"] += 1
             elif r["status"] == "unpriced" and p.get("settled"):
                 p["voided"] = True

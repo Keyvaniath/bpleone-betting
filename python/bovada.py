@@ -86,10 +86,22 @@ def _american(price_dict: Optional[Dict[str, Any]]) -> Optional[int]:
 
 
 def _market_by_desc(group: Dict[str, Any], desc: str) -> Optional[Dict[str, Any]]:
-    """Return the first market in group whose description matches (case-insensitive)."""
+    """The FULL-GAME, PRE-GAME market whose description matches (case-insensitive).
+
+    2026-10-26: this returned the first match, and Bovada lists in-play and
+    partial-period markets under the same name -- Play-of-the-Day moneylines
+    were recorded at +940 / +840 / +525 when DraftKings' pre-game line was
+    -137 / +102 / -142. A live or period market is never a pre-game price."""
     for m in group.get("markets") or []:
-        if (m.get("description") or "").strip().lower() == desc.lower():
-            return m
+        if (m.get("description") or "").strip().lower() != desc.lower():
+            continue
+        per = m.get("period") or {}
+        if per.get("live"):
+            continue
+        pd = (per.get("description") or "Game").strip().lower()
+        if pd not in ("game", "match", "regulation time", "full game"):
+            continue
+        return m
     return None
 
 
@@ -101,6 +113,8 @@ def parse_game_lines(event: Dict[str, Any]) -> Optional[Dict[str, Any]]:
     """
     desc = event.get("description") or ""
     if " @ " not in desc:
+        return None
+    if event.get("live"):          # in-play odds are not a pre-game price
         return None
     away_name, home_name = desc.split(" @ ", 1)
     # Find the "Game Lines" group
