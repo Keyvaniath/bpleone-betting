@@ -40,6 +40,12 @@ SEED_B = os.path.join(DATA_DIR, "ml_reprice_2026_10b.json")
 # price, graded at the DraftKings pre-game line (POD had been recorded at
 # in-play Bovada prices -- +940 vs DK -137). Lowest precedence: A and B win.
 SEED_C = os.path.join(DATA_DIR, "ml_reprice_2026_10c.json")
+# 2026-10-26 totals pass: every settled MLB total vs the lines books posted
+# before first pitch (tools/build_total_lines_audit.py). Top 25 and the Under
+# Alerts read the same 8.5 placeholder POD did; POD's Bovada fallback took
+# in-play totals. repriced_total = DK's line, graded at DK's real juice;
+# unposted_total = no book posted the line pre-game -> voided.
+SEED_D = os.path.join(DATA_DIR, "ml_reprice_2026_10d.json")
 MARKER = os.path.join(DATA_DIR, "ml_reprice_2026_10_done.json")
 LEDGER = os.path.join(DATA_DIR, "all_picks_ledger.json")
 ARCHIVE = os.path.join(DATA_DIR, "ledger_archive.json")
@@ -73,16 +79,40 @@ def apply_ledger(picks, side_of) -> Dict[str, int]:
     global _SEED_CACHE
     if _SEED_CACHE is None:
         _SEED_CACHE = {r["pick_id"]: r for r in (_load(SEED).get("rows") or [])}
-        for path in (SEED_B, SEED_C):
+        for path in (SEED_B, SEED_C, SEED_D):
             for r in (_load(path).get("rows") or []):
-                _SEED_CACHE.setdefault(r["pick_id"], r)
+                # B's line_real rows are no-ops (the 8.5 was real); let D price their juice.
+                cur = _SEED_CACHE.get(r["pick_id"])
+                if cur is None or cur.get("status") == "line_real":
+                    _SEED_CACHE[r["pick_id"]] = r
     seed = _SEED_CACHE
     now = dt.datetime.now().isoformat(timespec="seconds")
-    n = {"repriced": 0, "voided_unpriced": 0, "voided_unpriced_total": 0, "pending_priced": 0}
+    n = {"repriced": 0, "voided_unpriced": 0, "voided_unpriced_total": 0, "pending_priced": 0,
+         "repriced_total": 0, "voided_unposted_total": 0}
     for p in picks:
         r = seed.get(p.get("pick_id"))
-        if r and not p.get("repriced") and not str(p.get("voided_reason") or "").startswith("unpriced"):
-            if r["status"] == "repriced" and p.get("settled"):
+        if r and not p.get("repriced") and not str(p.get("voided_reason") or "").startswith(("unpriced", "unposted")):
+            if r["status"] == "repriced_total" and p.get("settled"):
+                old = p.get("payout_units")
+                p["book_american"] = r["book_american"]
+                p["payout_units"] = (round(_dec(r["book_american"]) - 1, 4) if p.get("result") == "won"
+                                     else (-1.0 if p.get("result") == "lost" else 0.0))
+                p["repriced"] = {"at": now, "from_payout": old, "recorded_price": p.get("fair_american"),
+                                 "book_snapshot_at": r.get("snapshot_at"), "chosen": r.get("chosen"),
+                                 "reason": (f"2026-10-26: total graded at a flat {r.get('old_fair')}; "
+                                            "re-priced at DraftKings' real pre-game over/under juice "
+                                            "(the house standard)")}
+                n["repriced_total"] += 1
+            elif r["status"] == "unposted_total" and p.get("settled"):
+                real = r.get("real_total")
+                p["voided"] = True
+                p["voided_at"] = now
+                p["voided_reason"] = ("unposted total: no book posted this line before first pitch "
+                                      "(the pipeline's 8.5 placeholder or an in-play total)"
+                                      + (f"; DraftKings' pre-game total was {real}" if real is not None else "")
+                                      + " -- the bet's line never existed")
+                n["voided_unposted_total"] += 1
+            elif r["status"] == "repriced" and p.get("settled"):
                 old = p.get("payout_units")
                 dec = _dec(r["book_american"])
                 p["book_american"] = r["book_american"]

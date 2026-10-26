@@ -81,15 +81,18 @@ def run() -> Dict[str, Any]:
     for g in (matchups.get("games") or []):
         m = g.get("matchup") or ""
         if not m: continue
-        total = _safe((g.get("market") or {}).get("total"), 8.5)
-        game_total_book[m] = total
+        if (g.get("market") or {}).get("total") is None:
+            continue   # no book total posted -> no line to anchor the alt ladder
+        game_total_book[m] = _safe((g.get("market") or {}).get("total"), 8.5)
 
     rows: List[Dict[str, Any]] = []
     for matchup, agg in by_matchup.items():
         lam_total = agg["home_runs"] + agg["away_runs"]
         if lam_total <= 0: continue
 
-        book_total = _nz(game_total_book.get(matchup), 8.5)
+        book_total = game_total_book.get(matchup)
+        if book_total is None:
+            continue
 
         # Compute P(over) at multiple lines
         results: Dict[str, float] = {}

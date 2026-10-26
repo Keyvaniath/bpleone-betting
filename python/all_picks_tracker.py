@@ -158,17 +158,21 @@ def _price_corrections(history):
     restatements, fixed history). track-record.html renders it."""
     rows = list(history) + list(_load(ARCHIVE_PATH).get("picks") or [])
     seen, rp, vm, vt = set(), {"2026-10-23": 0, "2026-10-26": 0}, 0, 0
+    rt, vu = 0, 0
     for p in rows:
         pid = p.get("pick_id")
         if pid in seen:
             continue
         seen.add(pid)
         why = str((p.get("repriced") or {}).get("reason") or "")
-        if why[:10] in rp:
+        if why.startswith("2026-10-26: total graded"):
+            rt += 1
+        elif why[:10] in rp:
             rp[why[:10]] += 1
         vr = str(p.get("voided_reason") or "")
         vm += vr.startswith("unpriced moneyline")
         vt += vr.startswith("unpriced total")
+        vu += vr.startswith("unposted total")
     return [
         {"date": "2026-10-23", "n_repriced": rp["2026-10-23"], "n_voided": vm,
          "curated_before": "943-436 (+17.21%)", "curated_after": "936-434 (+16.02%, +219.45u)",
@@ -182,6 +186,14 @@ def _price_corrections(history):
                   "pre-game line was -137). Every MLB moneyline is now graded at the DraftKings "
                   "pre-game line; Play-of-the-Day totals whose 8.5 line DraftKings never posted were "
                   "voided -- a bet on a line that did not exist has no honest result.")},
+        {"date": "2026-10-26", "label": "totals", "n_repriced": rt, "n_voided": vu,
+         "curated_before": "932-429 (+14.38%, +195.69u)", "curated_after": "902-412 (+14.03%, +184.34u)",
+         "note": ("Top 25 and the Under Alerts read the same placeholder 8.5 total, and some "
+                  "totals were taken from in-play boards. Every settled MLB total was checked "
+                  "against the lines books posted before first pitch: picks on a line no book "
+                  "posted pre-game were voided (they had gone 30-17 -- e.g. UNDER 8.5 when the "
+                  "real total was 6.5), and picks on DraftKings' line are now graded at its real "
+                  "over/under juice instead of a flat -110.")},
     ]
 
 
@@ -3024,7 +3036,7 @@ def _reconcile_settled_voids(history: List[Dict[str, Any]]) -> int:
                 continue
             # Unpriced moneylines (2026-10-23): graded at a placeholder price
             # with no real line on record -- no honest payout exists.
-            if str(p.get("voided_reason") or "").startswith("unpriced"):
+            if str(p.get("voided_reason") or "").startswith(("unpriced", "unposted")):
                 continue
             # RLM date-conflation voids are intentional (2026-09-02): those rows
             # never named a real single game, so no later grade is trustworthy.

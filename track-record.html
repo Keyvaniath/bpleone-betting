@@ -414,7 +414,7 @@
       // Price corrections (2026-10-26): every placeholder-price restatement, dated, with
       // the curated record before and after -- the record says when it was corrected.
       const pcNote = (d.price_corrections || []).map(c =>
-        `<p class="muted" style="font-size:11px;margin:8px 0 0;"><b>Corrected ${c.date}:</b> ${c.note} ` +
+        `<p class="muted" style="font-size:11px;margin:8px 0 0;"><b>Corrected ${c.date}${c.label ? " (" + c.label + ")" : ""}:</b> ${c.note} ` +
         `${c.n_repriced} re-priced, ${c.n_voided} voided. Curated ${c.curated_before} → ${c.curated_after}.</p>`).join("");
       document.getElementById("bsGrid").innerHTML = header + rows + nflNote + rsNote + pcNote;
     }).catch(() => {});

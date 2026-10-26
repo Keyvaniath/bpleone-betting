@@ -96,6 +96,10 @@ def run() -> Dict[str, Any]:
         park_run_factor = _safe((park_info or {}).get("run_factor"), 1.0) or 1.0
 
         market = g.get("market") or {}
+        # No book total = no line to beat (2026-10-26: the old 8.5 default
+        # manufactured team-total edges on games with no market posted).
+        if market.get("total") is None:
+            continue
         total_book = _safe(market.get("total"), 8.5)
         # Default team totals: half of game total each side, but we use lineup
         # quality + pitcher to differentiate

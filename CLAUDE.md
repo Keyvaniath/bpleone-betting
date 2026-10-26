@@ -41,6 +41,24 @@ bpleone-site/
 
 ## Current deployment state (LIVE)
 
+- **2026-10-26 (late) — MLB TOTALS: LINES NO BOOK POSTED.** The 10/26 pass voided
+  only POD totals on the 8.5 placeholder; Top 25 and the Under Alerts read the
+  same today.json total. tools/build_total_lines_audit.py checks every settled
+  MLB total (282, all curated) against what books posted BEFORE first pitch
+  (git history of espn_odds.json [DK], odds_history.json [Odds API],
+  multi_book_lines.json [commit time < DK commence_time]). 134 on DK's line ->
+  graded at DK's real over/under juice (repriced_total); 47 on a line no book
+  posted pre-game (mostly "UNDER 8.5" with DK at 6.5-7; POD "UNDER 15.5" /
+  "OVER 4.5" = in-play) -> voided (unposted_total). They had gone 30-17: the
+  fake 8.5 manufactured UNDER edges. 101 on another book's pre-game line or with
+  no DK snapshot stay as recorded (they net -11.1u, so keeping them flatters
+  nothing). Seed data/ml_reprice_2026_10d.json (B's no-op line_real rows yield
+  to it). RESTATED curated 932-429 +195.69u (+14.38%) -> 902-412 +184.34u
+  (+14.03%); Alpha untouched (no Alpha pick was a total). Also: team-total and
+  alt-total modules skip games with no book total instead of assuming 8.5.
+  GOTCHA for these audits: key snapshots by the ET date of commence_time, not
+  the snapshot day -- series games share a matchup string.
+
 - **2026-10-26 (night) — IN-PLAY PRICES + THE DK STANDARD FOR ALL HISTORY.** POD's
   moneyline record (+167% ROI, n=14) was built on impossible prices: TBR +940,
   PIT +840, CHW +525, DET +398, KCR +310 -- DraftKings pre-game had -137 / +102
