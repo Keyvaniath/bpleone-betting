@@ -4,14 +4,14 @@
 
 _Pipeline health: **WARNING** (12/15 artifacts ok; 3 empty, 0 stale)._ 
 
-_Generated at 2026-10-26T19:43:10 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-10-26T20:13:46 UTC. Game lines source: **DraftKings**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
 **MIL @ TBR - OVER_7.0**
-- Market: -110
+- Market: -115
 - Model probability: 68.2%
-- Raw edge: +30.19%
+- Raw edge: +27.5%
 - Recommended stake: <= 0.5u (model calibrating)
 
 > _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
@@ -20,30 +20,30 @@ _Generated at 2026-10-26T19:43:10 UTC. Game lines source: **Bovada (fallback -- 
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 8:00p ET | MIL @ TBR | Tropicana Field | indoor | OVER_7.0 +30.19% |
+| 8:00p ET | MIL @ TBR | Tropicana Field | indoor | OVER_7.0 +27.5% |
 
 ## Parlays - top 5
 
-- **3-leg @ +702 (prob 16.1%, EV +29.36%)**
+- **3-leg @ +694 (prob 16.1%, EV +28.1%)**
   - Junior Caminero OVER 1.5 batter_total_bases (+122, model 48.9%)
   - Ryan Vilade OVER 0.5 batter_hits (-124, model 58.9%)
-  - MIL @ TBR MIL_ML (+100, model 56.1%)
-- **3-leg @ +881 (prob 13.1%, EV +28.63%)**
+  - MIL @ TBR MIL_ML (-102, model 56.1%)
+- **3-leg @ +872 (prob 13.1%, EV +27.37%)**
   - Junior Caminero OVER 1.5 batter_total_bases (+122, model 48.9%)
   - Jackson Chourio OVER 1.5 batter_total_bases (+121, model 47.8%)
-  - MIL @ TBR MIL_ML (+100, model 56.1%)
-- **3-leg @ +1183 (prob 10.0%, EV +27.81%)**
+  - MIL @ TBR MIL_ML (-102, model 56.1%)
+- **3-leg @ +1171 (prob 10.0%, EV +26.56%)**
   - Junior Caminero OVER 1.5 batter_total_bases (+122, model 48.9%)
   - Jackson Chourio UNDER 0.5 batter_hits (+189, model 36.4%)
-  - MIL @ TBR MIL_ML (+100, model 56.1%)
-- **3-leg @ +1014 (prob 11.4%, EV +26.95%)**
+  - MIL @ TBR MIL_ML (-102, model 56.1%)
+- **3-leg @ +1004 (prob 11.4%, EV +25.7%)**
   - Junior Caminero OVER 1.5 batter_total_bases (+122, model 48.9%)
   - William Contreras OVER 1.5 batter_total_bases (+151, model 41.6%)
-  - MIL @ TBR MIL_ML (+100, model 56.1%)
-- **3-leg @ +1117 (prob 10.4%, EV +26.21%)**
+  - MIL @ TBR MIL_ML (-102, model 56.1%)
+- **3-leg @ +1105 (prob 10.4%, EV +24.97%)**
   - Junior Caminero OVER 1.5 batter_total_bases (+122, model 48.9%)
   - Junior Caminero UNDER 0.5 batter_hits (+174, model 37.9%)
-  - MIL @ TBR MIL_ML (+100, model 56.1%)
+  - MIL @ TBR MIL_ML (-102, model 56.1%)
 
 ## Self-Learning Loop
 

@@ -1,36 +1,45 @@
 # Tonight's Slate Brief — 2026-10-26
 
-## Slate Quality: 67/100 (MEDIUM)
-_0% lineups confirmed · 1 rookie SPs_
-**Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
+## Slate Quality: 82/100 (HIGH)
+_50% lineups confirmed · 1 rookie SPs_
+**Recommendation:** Play normal Kelly sizing.
 
 ## Slate
 - **1 games** scheduled
-- **23 best bets** scored: 4 DK · 0 PP · 1 NRFI · 0 SGP
+- **24 best bets** scored: 4 DK · 0 PP · 1 NRFI · 1 SGP
+- **Auto-portfolio:** 1 picks, $50.0 stake (5.0%), expected +$11.4
 - **MC simulation:** EV +$15.6, 64% P(profit), p05 $-84.01 / p95 $76.37
 
 ## Top 5 Best Bets
-1. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
+1. **MIL @ TBR 4-leg SGP @ +141**  (100/100 *****, edge +217.9%)
+   - Joint prob 0.415 (correlation boost +0.252)
+   - Leg: Chandler Simpson UNDER 1.5 batter total bases
+2. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
    - Player prop quality score 1.1935
    - Elite player
-2. **LOL ShowMaker OVER 3.5 Kills**  (78/100 ****, edge —)
+3. **LOL ShowMaker OVER 3.5 Kills**  (78/100 ****, edge —)
    - Player prop quality score 1.1892
    - Elite player
-3. **LOL Peyz OVER 4.5 Kills**  (78/100 ****, edge —)
+4. **LOL Peyz OVER 4.5 Kills**  (78/100 ****, edge —)
    - Player prop quality score 1.184
    - Elite player
-4. **LOL LOS vs Team Secret Whales ML @ -132**  (76/100 *****, edge —)
+5. **LOL LOS vs Team Secret Whales ML @ -132**  (76/100 *****, edge —)
    - Model 57.0% (fair -132)
    - Worlds
-5. **LOL Anyone's Legend vs Team Liquid Alienware ML @ -112**  (76/100 *****, edge —)
-   - Model 52.9% (fair -112)
-   - Worlds
 
-## ⚠️ Trap Warnings — 2 flagged
+## ⚠️ Trap Warnings — 3 flagged
+- **MIL @ TBR 4-leg SGP @ +141** (low):
+   - Edge +217.9% looks big but only 0 settled props on this player — model unproven
 - **MIL @ TBR NRFI (no run 1st inning)** (low):
    - Edge +10.3% looks big but only 0 settled props on this player — model unproven
 - **Junior Caminero OVER 1.5 batter total bases** (low):
    - Edge +8.5% looks big but only 0 settled props on this player — model unproven
+
+## Top correlation-aware SGPs
+- **MIL @ TBR** 4-leg @ +141 fair (joint 0.42, EV +217.88%)
+   - Chandler Simpson UNDER 1.5 batter total bases
+   - Chandler Simpson OVER 0.5 batter hits
+   - Yandy Diaz OVER 0.5 batter hits
 
 ## NRFI/YRFI strong leans
 - **NRFI** (1st-inning UNDER): MIL @ TBR
