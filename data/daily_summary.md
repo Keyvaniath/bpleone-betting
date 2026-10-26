@@ -4,21 +4,23 @@
 
 _Pipeline health: **WARNING** (12/15 artifacts ok; 3 empty, 0 stale)._ 
 
-_Generated at 2026-10-26T19:02:51 UTC. Game lines source: **placeholder -110 (no real book today)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-10-26T19:43:10 UTC. Game lines source: **Bovada (fallback -- DK primary unavailable)**. Pick-em opportunities from PrizePicks._
 
 ## Play of the Day
 
-**MIL @ TBR - MIL_ML**
-- Market: +100
-- Model probability: 56.1%
-- Raw edge: +12.13%
-- Recommended stake: 3.03u Kelly
+**MIL @ TBR - OVER_7.0**
+- Market: -110
+- Model probability: 68.2%
+- Raw edge: +30.19%
+- Recommended stake: <= 0.5u (model calibrating)
+
+> _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
 
 ## Full Slate (1 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 8:00p ET | MIL @ TBR | Tropicana Field | indoor | MIL_ML +12.13% |
+| 8:00p ET | MIL @ TBR | Tropicana Field | indoor | OVER_7.0 +30.19% |
 
 ## Parlays - top 5
 
@@ -50,7 +52,7 @@ _Generated at 2026-10-26T19:02:51 UTC. Game lines source: **placeholder -110 (no
 | batter total bases | 84 | 35.7% | 41.4% | 1.157 | 0.874 |
 | batter hits | 330 | 55.1% | 56.5% | 1.024 | 0.977 |
 
-Cumulative graded plays: 19734. Wins: 8750. Hit rate: 44.3%.
+Cumulative graded plays: 19725. Wins: 8746. Hit rate: 44.3%.
 
 ## Auxiliary Markets (Model Fair Prices)
 

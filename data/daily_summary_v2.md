@@ -1,13 +1,13 @@
 # EdgeStat Daily Summary — 2026-10-26
 
-## 🏥 Model Health: 71.5/100 [HEALTHY]
+## 🏥 Model Health: 72.1/100 [HEALTHY]
 - Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 99.9/100
+  - 🟢 Calibration Freshness: 100.0/100
   - 🟡 Hit Rate Trend: 66.9/100
   - 🔴 Brier Trend: 16.4/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 100.0/100
-  - 🔴 Edge Count: 48.6/100
+  - 🔴 Edge Count: 54.3/100
 
 ## 🌐 Slate Overview
 - **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.584)
@@ -48,9 +48,9 @@
 - Hot teams: **8** | Cold teams: **24** | Over-heavy: 0 | Under-heavy: 31
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (138)
+## ⚠️ Anomaly Detector (143)
 - RESIDUAL_DIVERGENCE: **23**
-- STEAM_MOVE: **115**
+- STEAM_MOVE: **120**
   - Charlotte Hornets (NBA): Charlotte Hornets UNDERPERFORMING expected margin by 7.8pts in recent games -- model bias may persist
   - Washington Wizards (NBA): Washington Wizards OUTPERFORMING expected margin by 9.2pts in recent games -- model bias may persist
   - Minnesota Timberwolves (NBA): Minnesota Timberwolves OUTPERFORMING expected margin by 9.8pts in recent games -- model bias may persist

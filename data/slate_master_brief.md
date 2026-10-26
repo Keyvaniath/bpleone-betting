@@ -1,5 +1,5 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-10-26T19:02:42 UTC_
+_Generated 2026-10-26T19:43:01 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
@@ -10,11 +10,11 @@ _Generated 2026-10-26T19:02:42 UTC_
 - **Total FADES:** 46
 
 ## Top 5 Curated Picks
-1. **GOLF / Corey Conners** (GOLF_PLAYER, score=219.29)
-   - Play: Corey Conners (PLAYER_STRONG)
+1. **GOLF / Ben Silverman** (GOLF_PLAYER, score=219.29)
+   - Play: Ben Silverman (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Taylor Moore** (GOLF_PLAYER, score=219.29)
-   - Play: Taylor Moore (PLAYER_STRONG)
+2. **GOLF / Séamus Power** (GOLF_PLAYER, score=219.29)
+   - Play: Séamus Power (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
 3. **WNBA / allisha gray** (WNBA_PLAYER, score=62.42)
    - Play: allisha gray (PLAYER_STRONG)
@@ -28,9 +28,9 @@ _Generated 2026-10-26T19:02:42 UTC_
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
+  - Ben Silverman top 10 finish
+  - Séamus Power top 10 finish
   - Corey Conners top 10 finish
-  - Taylor Moore top 10 finish
-  - Austin Smotherman top 10 finish
 
 ## Slate ROI Projection
 - **Picks:** 0
@@ -43,9 +43,9 @@ _Generated 2026-10-26T19:02:42 UTC_
   - Fade angle: PTS UNDER + PRA UNDER (multi-prop)
 - **NBA** / CHI (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NBA** / PHX (TEAM_FADE)
-  - Fade angle: team total UNDER
 - **NBA** / MIA (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NBA** / GSW (TEAM_FADE)
+- **NBA** / PHX (TEAM_FADE)
+  - Fade angle: team total UNDER
+- **NBA** / WAS (TEAM_FADE)
   - Fade angle: team total UNDER
