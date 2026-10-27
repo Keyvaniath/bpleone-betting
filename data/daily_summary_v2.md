@@ -1,25 +1,25 @@
-# EdgeStat Daily Summary — 2026-10-26
+# EdgeStat Daily Summary — 2026-10-27
 
-## 🏥 Model Health: 71.1/100 [HEALTHY]
+## 🏥 Model Health: 71.4/100 [HEALTHY]
 - Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 100.0/100
+  - 🟢 Calibration Freshness: 99.9/100
   - 🟡 Hit Rate Trend: 62.6/100
   - 🔴 Brier Trend: 17.3/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 100.0/100
-  - 🔴 Edge Count: 51.4/100
+  - 🔴 Edge Count: 54.3/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.584)
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.583)
 - **Total games on board:** 48
-- **Strong home favorites:** 23 | **Strong road dogs:** 10
+- **Strong home favorites:** 24 | **Strong road dogs:** 10
 
 ## 🎯 Top 5 Best Bets
-1. **MIL @ TBR 4-leg SGP @ +141** (100/100 ★★★★★)
-2. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
-3. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
-4. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
-5. **LOL LOS vs Team Secret Whales ML @ -132** (76/100 ★★★★★)
+1. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
+2. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
+3. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
+4. **LOL LOS vs Team Secret Whales ML @ -132** (76/100 ★★★★★)
+5. **LOL Anyone's Legend vs Team Liquid Alienware ML @ -112** (76/100 ★★★★★)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -32,39 +32,39 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (13)
+## ⚡ Pre-Game HIGH Conviction (11)
 - [NCAAF] **Ole Miss Rebels** HOME (None L10) · model 72.6% fair -265
 - [NCAAF] **Texas Longhorns** HOME (None L10) · model 72.6% fair -265
 - [MLS] **Charlotte FC** HOME (1-3 L10) · model 72.1% fair -259
 - [NBA] **Houston Rockets** HOME (4-0 L10) · model 72.1% fair -258
-- [NBA] **Boston Celtics** HOME (3-1 L10) · model 71.0% fair -245
 - [NCAAF] **Oklahoma State Cowboys** AWAY (None L10) · model 70.2% fair -236
 - [NCAAF] **Missouri Tigers** AWAY (None L10) · model 70.2% fair -236
 - [NCAAF] **Miami Hurricanes** AWAY (None L10) · model 69.1% fair -224
 - [MLS] **Chicago Fire FC** HOME (3-2 L10) · model 68.0% fair -212
 - [MLS] **Inter Miami CF** HOME (3-1 L10) · model 67.8% fair -210
+- [MLS] **St. Louis CITY SC** HOME (1-3 L10) · model 66.2% fair -196
 
 ## 🔥/❄️ Heat / Cold Signals
-- Hot teams: **8** | Cold teams: **24** | Over-heavy: 0 | Under-heavy: 31
+- Hot teams: **10** | Cold teams: **25** | Over-heavy: 0 | Under-heavy: 29
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (142)
+## ⚠️ Anomaly Detector (148)
 - RESIDUAL_DIVERGENCE: **23**
-- STEAM_MOVE: **119**
+- STEAM_MOVE: **125**
   - Charlotte Hornets (NBA): Charlotte Hornets UNDERPERFORMING expected margin by 7.8pts in recent games -- model bias may persist
   - Washington Wizards (NBA): Washington Wizards OUTPERFORMING expected margin by 9.2pts in recent games -- model bias may persist
   - Minnesota Timberwolves (NBA): Minnesota Timberwolves OUTPERFORMING expected margin by 9.8pts in recent games -- model bias may persist
   - Chicago Bulls (NBA): Chicago Bulls UNDERPERFORMING expected margin by 10.3pts in recent games -- model bias may persist
   - Miami Heat (NBA): Miami Heat UNDERPERFORMING expected margin by 6.4pts in recent games -- model bias may persist
 
-## 💰 Today's Portfolio (11 picks)
-- Total stake: **$340.0** (34.0% of $1000 bankroll)
-- Expected EV: **$-25.07**
-  - #1 [SGP] $50 on MIL @ TBR 4-leg SGP @ +141 (P=42%)
-  - #2 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
-  - #3 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
-  - #4 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
-  - #5 [NRFI] $35 on MIL @ TBR NRFI (no run 1st inning) (P=64%)
+## 💰 Today's Portfolio (12 picks)
+- Total stake: **$330.0** (33.0% of $1000 bankroll)
+- Expected EV: **$-6.24**
+  - #1 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
+  - #2 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
+  - #3 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
+  - #4 [NRFI] $35 on MIL @ TBR NRFI (no run 1st inning) (P=64%)
+  - #5 [NBA] $35 on NBA Charlotte Hornets ML (2-1) vs Washington Wizards (P=55%)
 
 ## 🎯 Convergence Picks (31 stacked games)
 - ELITE: **14** · HIGH: 8 · MED: 9
@@ -139,9 +139,9 @@
 - ELITE: **0** · HEALTHY: 2 · OK: 0 · DEGRADED: **0**
 
 ## 🤖 Self-Training Status
-- **NBA**: n=74 games · hit rate 56.8% · bias -0.9pp
-- **NHL**: n=98 games · hit rate 42.9% · bias -11.2pp [calibration applied]
+- **NBA**: n=69 games · hit rate 58.0% · bias +1.1pp
+- **NHL**: n=95 games · hit rate 49.5% · bias -10.8pp [calibration applied]
 - **WNBA**: n=4 games · hit rate 50.0% · bias +21.7pp
 - **MLS**: n=62 games · hit rate 37.1% · bias -4.5pp [calibration applied]
 - **EPL**: n=30 games · hit rate 43.3% · bias -0.6pp
-- **MLB**: n=11 games · hit rate 63.6% · bias -5.8pp
+- **MLB**: n=9 games · hit rate 66.7% · bias -9.7pp

@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-10-26T20:13:58",
-  "n_settled": 11807,
+  "generated_at": "2026-10-27T00:09:46",
+  "n_settled": 11771,
   "n_families_transformed": 29,
   "n_families_bucketed": 18,
-  "ece_before": 0.0903,
-  "ece_after": 0.0122,
-  "ece_improvement": 0.0781,
-  "brier_before": 0.21193,
-  "brier_after": 0.1946,
+  "ece_before": 0.0906,
+  "ece_after": 0.0125,
+  "ece_improvement": 0.0782,
+  "brier_before": 0.21189,
+  "brier_after": 0.19449,
   "method_note": "Per market family, a monotonic (isotonic) curve maps the model's predicted probability to the realized hit rate, learned from settled outcomes. Bucketed for well-sampled families (preserves ranking), a family-average Bayesian blend for mid-sample, identity below that. ECE = expected calibration error (lower = the displayed % is truer). This makes the model honest at the source; it does not create edge (that needs a market price).",
   "families": [
     {
@@ -180,6 +180,48 @@
       }
     },
     {
+      "family": "over",
+      "n": 178,
+      "method": "bucketed",
+      "avg_pred_raw": 0.6446,
+      "avg_pred_calibrated": 0.546,
+      "realized": 0.5056,
+      "ece_raw": 0.1459,
+      "ece_calibrated": 0.0445,
+      "transform": {
+        "anchors": [
+          [
+            0.5737,
+            0.4837
+          ],
+          [
+            0.5942,
+            0.4837
+          ],
+          [
+            0.6016,
+            0.4837
+          ],
+          [
+            0.6108,
+            0.4837
+          ],
+          [
+            0.6192,
+            0.5792
+          ],
+          [
+            0.6728,
+            0.6692
+          ],
+          [
+            0.8423,
+            0.6692
+          ]
+        ]
+      }
+    },
+    {
       "family": "mlb_hit_0.5_under",
       "n": 460,
       "method": "bucketed",
@@ -221,48 +263,6 @@
           [
             0.5922,
             0.4558
-          ]
-        ]
-      }
-    },
-    {
-      "family": "over",
-      "n": 192,
-      "method": "bucketed",
-      "avg_pred_raw": 0.6463,
-      "avg_pred_calibrated": 0.5425,
-      "realized": 0.5052,
-      "ece_raw": 0.145,
-      "ece_calibrated": 0.047,
-      "transform": {
-        "anchors": [
-          [
-            0.575,
-            0.4812
-          ],
-          [
-            0.5948,
-            0.4812
-          ],
-          [
-            0.6027,
-            0.4881
-          ],
-          [
-            0.6112,
-            0.4881
-          ],
-          [
-            0.6198,
-            0.5497
-          ],
-          [
-            0.6791,
-            0.6746
-          ],
-          [
-            0.8439,
-            0.6746
           ]
         ]
       }
@@ -716,6 +716,32 @@
       "ece_calibrated": 0.008,
       "transform": {
         "realized": 0.6061
+      }
+    },
+    {
+      "family": "under",
+      "n": 87,
+      "method": "bucketed",
+      "avg_pred_raw": 0.599,
+      "avg_pred_calibrated": 0.5773,
+      "realized": 0.5632,
+      "ece_raw": 0.0358,
+      "ece_calibrated": 0.0141,
+      "transform": {
+        "anchors": [
+          [
+            0.5798,
+            0.5356
+          ],
+          [
+            0.5953,
+            0.5928
+          ],
+          [
+            0.6219,
+            0.5928
+          ]
+        ]
       }
     },
     {
@@ -1631,36 +1657,6 @@
       "ece_raw": 0.3017,
       "ece_calibrated": 0.3017,
       "transform": null
-    },
-    {
-      "family": "under",
-      "n": 109,
-      "method": "bucketed",
-      "avg_pred_raw": 0.6022,
-      "avg_pred_calibrated": 0.5863,
-      "realized": 0.5963,
-      "ece_raw": 0.0072,
-      "ece_calibrated": 0.01,
-      "transform": {
-        "anchors": [
-          [
-            0.5761,
-            0.5619
-          ],
-          [
-            0.592,
-            0.5735
-          ],
-          [
-            0.6009,
-            0.5735
-          ],
-          [
-            0.6397,
-            0.684
-          ]
-        ]
-      }
     },
     {
       "family": "total_under",
