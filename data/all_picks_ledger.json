@@ -1,33 +1,33 @@
 {
-  "generated_at": "2026-10-26T21:04:27",
+  "generated_at": "2026-10-27T00:09:59",
   "stake_assumption": "1u flat per pick",
   "total_picks": 15451,
-  "n_settled": 19725,
-  "n_pending": 893,
-  "n_void": 773,
-  "wins": 8740,
-  "losses": 10973,
+  "n_settled": 19684,
+  "n_pending": 832,
+  "n_void": 875,
+  "wins": 8711,
+  "losses": 10961,
   "pushes": 12,
-  "hit_rate": 0.4434,
-  "net_units": -3623.227,
-  "roi_pct": -18.38,
+  "hit_rate": 0.4428,
+  "net_units": -3639.059,
+  "roi_pct": -18.5,
   "n_calibrated_picks": 15307,
   "calibrated_reliability": {
-    "n": 13649,
-    "ece_raw": 0.0819,
-    "ece_calibrated": 0.0129,
-    "brier_raw": 0.21106,
-    "brier_calibrated": 0.19606,
+    "n": 13619,
+    "ece_raw": 0.0823,
+    "ece_calibrated": 0.0133,
+    "brier_raw": 0.21107,
+    "brier_calibrated": 0.19605,
     "note": "In-sample over the settled ledger (the isotonic transform is fit on these same outcomes); held-out 70/30 validation is in recalibration_map.json. p_predicted = raw model prob (kept untouched for the learning loop); p_calibrated = honest prob stamped per pick. Lower ECE/Brier on the calibrated column = the displayed % is truer."
   },
   "curated": {
-    "n_settled": 1373,
-    "wins": 932,
-    "losses": 429,
+    "n_settled": 1331,
+    "wins": 903,
+    "losses": 416,
     "pushes": 12,
-    "hit_rate": 0.6848,
-    "net_units": 195.694,
-    "roi_pct": 14.38,
+    "hit_rate": 0.6846,
+    "net_units": 180.861,
+    "roi_pct": 13.71,
     "sources": [
       "consensus_hit_elite",
       "consensus_hit_strong",
@@ -43,28 +43,28 @@
     ],
     "definition": "Featured/recommended plays only -- Lock of the Day, Top 25, Whale, Sharp, Consensus (hit), Under Alerts, POD. Excludes the experimental prop feeds, which are tracked to train the model, not bet.",
     "last_30": {
-      "wins": 31,
-      "losses": 20,
-      "net_units": 5.293,
-      "roi_pct": 10.38,
-      "hit_rate": 0.6078
+      "wins": 19,
+      "losses": 19,
+      "net_units": -4.472,
+      "roi_pct": -11.77,
+      "hit_rate": 0.5
     }
   },
   "headline_basis": "all-time: working ledger + data/ledger_archive.json",
   "working_ledger_only": {
     "all": {
-      "n_settled": 13785,
-      "wins": 5783,
-      "losses": 7992,
-      "net_units": -2364.641,
-      "roi_pct": -17.17
+      "n_settled": 13744,
+      "wins": 5754,
+      "losses": 7980,
+      "net_units": -2380.473,
+      "roi_pct": -17.33
     },
     "curated": {
-      "n_settled": 1137,
-      "wins": 762,
-      "losses": 365,
-      "net_units": 121.92,
-      "roi_pct": 10.82
+      "n_settled": 1095,
+      "wins": 733,
+      "losses": 352,
+      "net_units": 107.087,
+      "roi_pct": 9.87
     }
   },
   "price_corrections": [
@@ -83,6 +83,15 @@
       "curated_before": "936-434 (+16.02%, +219.45u)",
       "curated_after": "932-429 (+14.38%, +195.69u)",
       "note": "The same gap on the away side (+100) and the total (8.5), plus Play-of-the-Day moneylines recorded at in-play Bovada prices (10/13 TBR at +940 when DraftKings' pre-game line was -137). Every MLB moneyline is now graded at the DraftKings pre-game line; Play-of-the-Day totals whose 8.5 line DraftKings never posted were voided -- a bet on a line that did not exist has no honest result."
+    },
+    {
+      "date": "2026-10-26",
+      "label": "totals",
+      "n_repriced": 134,
+      "n_voided": 47,
+      "curated_before": "932-429 (+14.38%, +195.69u)",
+      "curated_after": "902-412 (+14.03%, +184.34u)",
+      "note": "Top 25 and the Under Alerts read the same placeholder 8.5 total, and some totals were taken from in-play boards. Every settled MLB total was checked against the lines books posted before first pitch: picks on a line no book posted pre-game were voided (they had gone 30-17 -- e.g. UNDER 8.5 when the real total was 6.5), and picks on DraftKings' line are now graded at its real over/under juice instead of a flat -110."
     }
   ],
   "restatement": {
@@ -91,12 +100,12 @@
     "n_archived_in_headline": 5940
   },
   "n_added_this_run": 0,
-  "n_newly_settled_this_run": 0,
+  "n_newly_settled_this_run": 6,
   "n_resettled_this_run": 0,
-  "n_voided_this_run": 0,
+  "n_voided_this_run": 57,
   "n_duplicates_collapsed_this_run": 0,
-  "n_duplicate_adds_blocked_this_run": 70,
-  "n_reconciled_settled_voids": 0,
+  "n_duplicate_adds_blocked_this_run": 79,
+  "n_reconciled_settled_voids": 2,
   "n_bootstrapped_from_locks_history": 0,
   "by_source": {
     "mlb_bk_k_1plus_yes": {
@@ -217,22 +226,22 @@
       "roi_pct": -66.4
     },
     "pod": {
-      "n": 62,
-      "wins": 34,
-      "losses": 26,
+      "n": 59,
+      "wins": 30,
+      "losses": 27,
       "pushes": 2,
-      "net_units": 4.725,
-      "hit_rate": 0.5667,
-      "roi_pct": 7.88
+      "net_units": -0.204,
+      "hit_rate": 0.5263,
+      "roi_pct": -0.36
     },
     "mlb_game_total_game_total_over_7.5": {
-      "n": 17,
+      "n": 18,
       "wins": 12,
-      "losses": 5,
+      "losses": 6,
       "pushes": 0,
-      "net_units": 1.978,
-      "hit_rate": 0.7059,
-      "roi_pct": 11.64
+      "net_units": 0.978,
+      "hit_rate": 0.6667,
+      "roi_pct": 5.43
     },
     "lock_of_day": {
       "n": 400,
@@ -244,13 +253,13 @@
       "roi_pct": 17.72
     },
     "top_25_board": {
-      "n": 735,
-      "wins": 451,
-      "losses": 277,
+      "n": 707,
+      "wins": 433,
+      "losses": 267,
       "pushes": 7,
-      "net_units": 88.111,
-      "hit_rate": 0.6195,
-      "roi_pct": 12.1
+      "net_units": 80.685,
+      "hit_rate": 0.6186,
+      "roi_pct": 11.53
     },
     "mlb_game_total_game_total_over_8.5": {
       "n": 1,
@@ -442,13 +451,13 @@
       "roi_pct": -12.52
     },
     "mlb_under_alert": {
-      "n": 52,
-      "wins": 29,
-      "losses": 20,
+      "n": 41,
+      "wins": 22,
+      "losses": 16,
       "pushes": 3,
-      "net_units": 6.39,
-      "hit_rate": 0.5918,
-      "roi_pct": 13.04
+      "net_units": 3.917,
+      "hit_rate": 0.5789,
+      "roi_pct": 10.31
     },
     "ufc_r1_fight_r1_finish_yes": {
       "n": 165,
@@ -3111,20 +3120,20 @@
       "hit_rate": 1.0
     },
     "under": {
-      "n": 144,
-      "wins": 84,
-      "losses": 55,
+      "n": 113,
+      "wins": 61,
+      "losses": 47,
       "pushes": 5,
-      "net_units": 17.082,
-      "hit_rate": 0.6043
+      "net_units": 3.335,
+      "hit_rate": 0.5648
     },
     "over": {
-      "n": 197,
-      "wins": 97,
-      "losses": 95,
+      "n": 186,
+      "wins": 90,
+      "losses": 91,
       "pushes": 5,
-      "net_units": -11.028,
-      "hit_rate": 0.5052
+      "net_units": -13.624,
+      "hit_rate": 0.4972
     },
     "1_plus_xbh": {
       "n": 3252,
@@ -3527,12 +3536,12 @@
       "hit_rate": 0.1667
     },
     "mil_ml": {
-      "n": 15,
-      "wins": 10,
+      "n": 16,
+      "wins": 11,
       "losses": 5,
       "pushes": 0,
-      "net_units": 2.459,
-      "hit_rate": 0.6667
+      "net_units": 2.977,
+      "hit_rate": 0.6875
     },
     "bos_ml": {
       "n": 9,
@@ -3929,20 +3938,20 @@
       "hit_rate": 1.0
     },
     "under": {
-      "n": 144,
-      "wins": 84,
-      "losses": 55,
+      "n": 113,
+      "wins": 61,
+      "losses": 47,
       "pushes": 5,
-      "net_units": 17.082,
-      "hit_rate": 0.6043
+      "net_units": 3.335,
+      "hit_rate": 0.5648
     },
     "over": {
-      "n": 197,
-      "wins": 97,
-      "losses": 95,
+      "n": 186,
+      "wins": 90,
+      "losses": 91,
       "pushes": 5,
-      "net_units": -11.028,
-      "hit_rate": 0.5052
+      "net_units": -13.624,
+      "hit_rate": 0.4972
     },
     "mlb_xbh_0.5_over": {
       "n": 3252,
@@ -4361,12 +4370,12 @@
       "hit_rate": 0.1667
     },
     "mil_ml": {
-      "n": 15,
-      "wins": 10,
+      "n": 16,
+      "wins": 11,
       "losses": 5,
       "pushes": 0,
-      "net_units": 2.459,
-      "hit_rate": 0.6667
+      "net_units": 2.977,
+      "hit_rate": 0.6875
     },
     "bos_ml": {
       "n": 9,
@@ -4716,15 +4725,15 @@
   "by_sport": {
     "MLB": {
       "n": 14362,
-      "settled": 14199,
-      "wins": 5190,
-      "losses": 8997,
+      "settled": 14158,
+      "wins": 5161,
+      "losses": 8985,
       "pushes": 12,
-      "pending": 36,
-      "void": 127,
-      "net_units": -3694.738,
-      "hit_rate": 0.3658,
-      "roi_pct": -26.04,
+      "pending": 23,
+      "void": 181,
+      "net_units": -3710.564,
+      "hit_rate": 0.3648,
+      "roi_pct": -26.23,
       "markets": 36
     },
     "MLB-PP": {
@@ -4759,8 +4768,8 @@
       "wins": 332,
       "losses": 121,
       "pushes": 0,
-      "pending": 9,
-      "void": 30,
+      "pending": 8,
+      "void": 31,
       "net_units": 48.958,
       "hit_rate": 0.7329,
       "roi_pct": 10.81,
@@ -4811,8 +4820,8 @@
       "wins": 101,
       "losses": 81,
       "pushes": 0,
-      "pending": 31,
-      "void": 215,
+      "pending": 8,
+      "void": 238,
       "net_units": -26.147,
       "hit_rate": 0.5549,
       "roi_pct": -14.37,
@@ -4850,8 +4859,8 @@
       "wins": 52,
       "losses": 52,
       "pushes": 0,
-      "pending": 25,
-      "void": 24,
+      "pending": 23,
+      "void": 26,
       "net_units": -27.639,
       "hit_rate": 0.5,
       "roi_pct": -26.58,
@@ -4915,8 +4924,8 @@
       "wins": 159,
       "losses": 74,
       "pushes": 0,
-      "pending": 404,
-      "void": 28,
+      "pending": 382,
+      "void": 50,
       "net_units": 4.798,
       "hit_rate": 0.6824,
       "roi_pct": 2.06,
@@ -4957,10 +4966,10 @@
     "note": "NFL props are judged from 10/23 forward: the simulator's form rule changed, so earlier picks are a different model. They stay on the record as their own line and never feed a family verdict."
   },
   "last_7_days": {
-    "wins": 908,
-    "losses": 455,
-    "net_units": -54.675,
-    "hit_rate": 0.6662
+    "wins": 907,
+    "losses": 457,
+    "net_units": -57.699,
+    "hit_rate": 0.665
   },
   "picks": [
     {
@@ -15920,7 +15929,7 @@
       "pick_id": "top_25_board|MLB|HOU___LAA|OVER_8_5|2026-06-09",
       "settled": true,
       "result": "won",
-      "payout_units": 0.9091,
+      "payout_units": 0.8547,
       "recorded_at": "2026-06-09T01:31:25",
       "outcome": {
         "final_score": "HOU 5 @ LAA 4",
@@ -15929,7 +15938,16 @@
         "check": "verified"
       },
       "settled_at": "2026-06-09T16:24:14",
-      "p_calibrated": 0.5802
+      "p_calibrated": 0.5802,
+      "book_american": -117,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": 0.9091,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-06-09T17:45:42",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "top_25_board",
@@ -15954,7 +15972,16 @@
         "check": "verified"
       },
       "settled_at": "2026-06-09T16:24:14",
-      "p_calibrated": 0.5711
+      "p_calibrated": 0.5711,
+      "book_american": -123,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": -1.0,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-06-09T17:45:42",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "lock_of_day",
@@ -17855,7 +17882,7 @@
       "pick_id": "top_25_board|MLB|ATL___CHW|OVER_9_0|2026-06-09",
       "settled": true,
       "result": "won",
-      "payout_units": 0.9091,
+      "payout_units": 0.8197,
       "recorded_at": "2026-06-09T08:01:13",
       "p_calibrated": 0.5503,
       "outcome": {
@@ -17864,7 +17891,16 @@
         "verify": "ATL @ CHW: final 5-6 (total 11) on 2026-06-09",
         "check": "verified"
       },
-      "settled_at": "2026-06-10T18:27:34"
+      "settled_at": "2026-06-10T18:27:34",
+      "book_american": -122,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": 0.9091,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-06-09T17:45:42",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "mlb_under_alert",
@@ -17878,7 +17914,7 @@
       "pick_id": "mlb_under_alert|MLB|BOS___TBR|UNDER_7_5|2026-06-09",
       "settled": true,
       "result": "won",
-      "payout_units": 0.91,
+      "payout_units": 0.8264,
       "recorded_at": "2026-06-09T08:01:13",
       "outcome": {
         "final_score": "BOS 3 @ TB 4",
@@ -17886,7 +17922,16 @@
         "verify": "BOS @ TB: final 3-4 (total 7) on 2026-06-09",
         "check": "verified"
       },
-      "settled_at": "2026-06-10T18:27:34"
+      "settled_at": "2026-06-10T18:27:34",
+      "book_american": -121,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": 0.91,
+        "recorded_price": null,
+        "book_snapshot_at": "2026-06-09T17:45:42",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat None; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "mlb_under_alert",
@@ -17900,7 +17945,7 @@
       "pick_id": "mlb_under_alert|MLB|PHI___TOR|UNDER_7_5|2026-06-09",
       "settled": true,
       "result": "won",
-      "payout_units": 0.91,
+      "payout_units": 0.8333,
       "recorded_at": "2026-06-09T08:01:13",
       "outcome": {
         "final_score": "PHI 2 @ TOR 3",
@@ -17908,7 +17953,16 @@
         "verify": "PHI @ TOR: final 2-3 (total 5) on 2026-06-09",
         "check": "verified"
       },
-      "settled_at": "2026-06-10T18:27:34"
+      "settled_at": "2026-06-10T18:27:34",
+      "book_american": -120,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": 0.91,
+        "recorded_price": null,
+        "book_snapshot_at": "2026-06-09T17:45:42",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat None; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "top_25_board",
@@ -17951,7 +18005,7 @@
       "pick_id": "top_25_board|MLB|LAD___PIT|OVER_8_5|2026-06-09",
       "settled": true,
       "result": "won",
-      "payout_units": 0.9091,
+      "payout_units": 0.9259,
       "recorded_at": "2026-06-09T20:03:44",
       "p_calibrated": 0.5642,
       "outcome": {
@@ -17960,7 +18014,16 @@
         "verify": "LAD @ PIT: final 12-3 (total 15) on 2026-06-09",
         "check": "verified"
       },
-      "settled_at": "2026-06-10T18:27:34"
+      "settled_at": "2026-06-10T18:27:34",
+      "book_american": -108,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": 0.9091,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-06-09T19:53:36",
+        "chosen": "before_pick",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "top_25_board",
@@ -17976,7 +18039,7 @@
       "pick_id": "top_25_board|MLB|ATL___CHW|OVER_9_5|2026-06-09",
       "settled": true,
       "result": "won",
-      "payout_units": 0.9091,
+      "payout_units": 1.0,
       "recorded_at": "2026-06-09T20:03:44",
       "p_calibrated": 0.5621,
       "outcome": {
@@ -17985,7 +18048,16 @@
         "verify": "ATL @ CHW: final 5-6 (total 11) on 2026-06-09",
         "check": "verified"
       },
-      "settled_at": "2026-06-10T18:27:34"
+      "settled_at": "2026-06-10T18:27:34",
+      "book_american": 100,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": 0.9091,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-06-09T19:53:36",
+        "chosen": "before_pick",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "consensus_hit_strong",
@@ -19776,7 +19848,16 @@
         "verify": "ATL @ CHW: final 1-2 (total 3) on 2026-06-10",
         "check": "verified"
       },
-      "settled_at": "2026-06-11T12:43:01"
+      "settled_at": "2026-06-11T12:43:01",
+      "book_american": -103,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": -1.0,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-06-10T16:11:54",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "top_25_board",
@@ -21653,7 +21734,16 @@
         "verify": "STL @ NYM: final 9-2 (total 11) on 2026-06-10",
         "check": "verified"
       },
-      "settled_at": "2026-06-11T12:43:01"
+      "settled_at": "2026-06-11T12:43:01",
+      "book_american": -118,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": -1.0,
+        "recorded_price": null,
+        "book_snapshot_at": "2026-06-10T18:44:58",
+        "chosen": "before_pick",
+        "reason": "2026-10-26: total graded at a flat None; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "mlb_under_alert",
@@ -21675,7 +21765,16 @@
         "verify": "TEX @ KC: final 6-4 (total 10) on 2026-06-10",
         "check": "verified"
       },
-      "settled_at": "2026-06-11T12:43:01"
+      "settled_at": "2026-06-11T12:43:01",
+      "book_american": -110,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": 0.0,
+        "recorded_price": null,
+        "book_snapshot_at": "2026-06-10T18:44:58",
+        "chosen": "before_pick",
+        "reason": "2026-10-26: total graded at a flat None; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "mlb_2plus_hits_hits_2plus_yes",
@@ -22901,7 +23000,10 @@
         "verify": "CHC @ COL: final 3-7 (total 10) on 2026-06-10",
         "check": "verified"
       },
-      "settled_at": "2026-06-11T12:43:01"
+      "settled_at": "2026-06-11T12:43:01",
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unposted total: no book posted this line before first pitch (the pipeline's 8.5 placeholder or an in-play total); DraftKings' pre-game total was 12.0 -- the bet's line never existed"
     },
     {
       "source": "top_25_board",
@@ -22926,7 +23028,16 @@
         "verify": "ATL @ CHW: final 1-2 (total 3) on 2026-06-10",
         "check": "verified"
       },
-      "settled_at": "2026-06-11T12:43:01"
+      "settled_at": "2026-06-11T12:43:01",
+      "book_american": -120,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": -1.0,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-06-10T22:22:16",
+        "chosen": "before_pick",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "mlb_2plus_hits_hits_2plus_yes",
@@ -23700,7 +23811,10 @@
           "to": "won",
           "reason": "stat revised after settlement; re-graded vs current box score"
         }
-      ]
+      ],
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unposted total: no book posted this line before first pitch (the pipeline's 8.5 placeholder or an in-play total); DraftKings' pre-game total was 11.0 -- the bet's line never existed"
     },
     {
       "source": "top_25_board",
@@ -24220,7 +24334,7 @@
       "pick_id": "top_25_board|MLB|SEA___BAL|OVER_8_5|2026-06-11",
       "settled": true,
       "result": "won",
-      "payout_units": 0.9091,
+      "payout_units": 0.8929,
       "recorded_at": "2026-06-11T12:43:01",
       "p_calibrated": 0.5132,
       "outcome": {
@@ -24229,7 +24343,16 @@
         "verify": "SEA @ BAL: final 5-7 (total 12) on 2026-06-11",
         "check": "verified"
       },
-      "settled_at": "2026-06-12T05:39:02"
+      "settled_at": "2026-06-12T05:39:02",
+      "book_american": -112,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": 0.9091,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-06-11T16:32:13",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "top_25_board",
@@ -24245,7 +24368,7 @@
       "pick_id": "top_25_board|MLB|CHC___COL|OVER_11_0|2026-06-11",
       "settled": true,
       "result": "won",
-      "payout_units": 0.9091,
+      "payout_units": 0.8772,
       "recorded_at": "2026-06-11T12:43:01",
       "p_calibrated": 0.4881,
       "outcome": {
@@ -24262,7 +24385,16 @@
           "to": "won",
           "reason": "stat revised after settlement; re-graded vs current box score"
         }
-      ]
+      ],
+      "book_american": -114,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": 0.9091,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-06-11T16:32:13",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "mlb_under_alert",
@@ -24284,7 +24416,16 @@
         "verify": "STL @ NYM: final 4-5 (total 9) on 2026-06-11",
         "check": "verified"
       },
-      "settled_at": "2026-06-12T05:39:02"
+      "settled_at": "2026-06-12T05:39:02",
+      "book_american": -117,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": 0.0,
+        "recorded_price": null,
+        "book_snapshot_at": "2026-06-11T16:32:13",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat None; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "mlb_under_alert",
@@ -24298,7 +24439,7 @@
       "pick_id": "mlb_under_alert|MLB|TEX___KCR|UNDER_10_5|2026-06-11",
       "settled": true,
       "result": "won",
-      "payout_units": 0.91,
+      "payout_units": 0.8772,
       "recorded_at": "2026-06-11T12:43:01",
       "outcome": {
         "final_score": "TEX 4 @ KC 2",
@@ -24306,7 +24447,16 @@
         "verify": "TEX @ KC: final 4-2 (total 6) on 2026-06-11",
         "check": "verified"
       },
-      "settled_at": "2026-06-12T05:39:02"
+      "settled_at": "2026-06-12T05:39:02",
+      "book_american": -114,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": 0.91,
+        "recorded_price": null,
+        "book_snapshot_at": "2026-06-11T16:32:13",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat None; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "f1_quali_pole",
@@ -27426,7 +27576,7 @@
       "pick_id": "top_25_board|MLB|LAD___CHW|OVER_9_0|2026-06-12",
       "settled": true,
       "result": "won",
-      "payout_units": 0.9091,
+      "payout_units": 0.9524,
       "recorded_at": "2026-06-12T05:39:02",
       "p_calibrated": 0.511,
       "outcome": {
@@ -27435,7 +27585,16 @@
         "verify": "LAD @ CHW: final 2-8 (total 10) on 2026-06-12",
         "check": "verified"
       },
-      "settled_at": "2026-06-13T11:17:38"
+      "settled_at": "2026-06-13T11:17:38",
+      "book_american": -105,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": 0.9091,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-06-12T15:43:57",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "top_25_board",
@@ -27853,7 +28012,7 @@
       "pick_id": "mlb_under_alert|MLB|PHI___MIL|UNDER_7_5|2026-06-12",
       "settled": true,
       "result": "won",
-      "payout_units": 0.91,
+      "payout_units": 0.9804,
       "recorded_at": "2026-06-12T23:48:21",
       "outcome": {
         "final_score": "PHI 0 @ MIL 6",
@@ -27861,7 +28020,16 @@
         "verify": "PHI @ MIL: final 0-6 (total 6) on 2026-06-12",
         "check": "verified"
       },
-      "settled_at": "2026-06-13T12:01:38"
+      "settled_at": "2026-06-13T12:01:38",
+      "book_american": -102,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": 0.91,
+        "recorded_price": null,
+        "book_snapshot_at": "2026-06-12T23:16:20",
+        "chosen": "before_pick",
+        "reason": "2026-10-26: total graded at a flat None; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "mlb_hit_to_record_hit_no",
@@ -31972,7 +32140,10 @@
         "verify": "LAD @ CHW: final 7-1 (total 8) on 2026-06-13",
         "check": "verified"
       },
-      "settled_at": "2026-06-14T05:30:05"
+      "settled_at": "2026-06-14T05:30:05",
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unposted total: no book posted this line before first pitch (the pipeline's 8.5 placeholder or an in-play total); DraftKings' pre-game total was 8.5 -- the bet's line never existed"
     },
     {
       "source": "top_25_board",
@@ -32028,7 +32199,10 @@
         "verify": "PHI @ MIL: final 9-8 (total 17) on 2026-06-13",
         "check": "verified"
       },
-      "settled_at": "2026-06-14T05:30:05"
+      "settled_at": "2026-06-14T05:30:05",
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unposted total: no book posted this line before first pitch (the pipeline's 8.5 placeholder or an in-play total); DraftKings' pre-game total was 8.5 -- the bet's line never existed"
     },
     {
       "source": "lock_of_day",
@@ -35835,7 +36009,16 @@
         "verify": "LAD @ CHW: final 7-1 (total 8) on 2026-06-13",
         "check": "verified"
       },
-      "settled_at": "2026-06-14T08:48:54"
+      "settled_at": "2026-06-14T08:48:54",
+      "book_american": -106,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": -1.0,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-06-13T17:48:48",
+        "chosen": "before_pick",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "mlb_2plus_hits_hits_2plus_yes",
@@ -37750,7 +37933,7 @@
       "pick_id": "top_25_board|MLB|CHC___SFG|UNDER_8_0|2026-06-13",
       "settled": true,
       "result": "won",
-      "payout_units": 0.9091,
+      "payout_units": 0.8547,
       "recorded_at": "2026-06-13T23:03:02",
       "p_calibrated": 0.5692,
       "outcome": {
@@ -37759,7 +37942,16 @@
         "verify": "CHC @ SF: final 5-1 (total 6) on 2026-06-13",
         "check": "verified"
       },
-      "settled_at": "2026-06-14T12:06:41"
+      "settled_at": "2026-06-14T12:06:41",
+      "book_american": -117,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": 0.9091,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-06-13T21:41:07",
+        "chosen": "before_pick",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "top_25_board",
@@ -37784,7 +37976,16 @@
         "verify": "PHI @ MIL: final 9-8 (total 17) on 2026-06-13",
         "check": "verified"
       },
-      "settled_at": "2026-06-14T12:06:41"
+      "settled_at": "2026-06-14T12:06:41",
+      "book_american": -115,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": -1.0,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-06-13T21:41:07",
+        "chosen": "before_pick",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "mlb_2plus_hits_hits_2plus_yes",
@@ -38927,7 +39128,10 @@
         "verify": "PHI @ MIL: final 0-4 (total 4) on 2026-06-14",
         "check": "verified"
       },
-      "settled_at": "2026-06-16T06:28:09"
+      "settled_at": "2026-06-16T06:28:09",
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unposted total: no book posted this line before first pitch (the pipeline's 8.5 placeholder or an in-play total); DraftKings' pre-game total was 6.5 -- the bet's line never existed"
     },
     {
       "source": "lock_of_day",
@@ -39948,7 +40152,7 @@
       "pick_id": "top_25_board|MLB|LAD___CHW|OVER_9_5|2026-06-14",
       "settled": true,
       "result": "won",
-      "payout_units": 0.9091,
+      "payout_units": 0.9804,
       "recorded_at": "2026-06-14T05:30:05",
       "p_calibrated": 0.5918,
       "outcome": {
@@ -39957,7 +40161,16 @@
         "verify": "LAD @ CHW: final 4-6 (total 10) on 2026-06-14",
         "check": "verified"
       },
-      "settled_at": "2026-06-16T06:28:09"
+      "settled_at": "2026-06-16T06:28:09",
+      "book_american": -102,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": 0.9091,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-06-14T17:52:46",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "mlb_game_total_game_total_over_7.5",
@@ -40432,7 +40645,16 @@
         "verify": "HOU @ KC: final 0-4 (total 4) on 2026-06-14",
         "check": "verified"
       },
-      "settled_at": "2026-06-16T06:28:09"
+      "settled_at": "2026-06-16T06:28:09",
+      "book_american": -119,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": -1.0,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-06-14T17:52:46",
+        "chosen": "before_pick",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "top_25_board",
@@ -40457,7 +40679,16 @@
         "verify": "STL @ MIN: final 4-5 (total 9) on 2026-06-14",
         "check": "verified"
       },
-      "settled_at": "2026-06-16T06:28:09"
+      "settled_at": "2026-06-16T06:28:09",
+      "book_american": 101,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": -1.0,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-06-14T17:52:46",
+        "chosen": "before_pick",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "mlb_2plus_hits_hits_2plus_yes",
@@ -43458,7 +43689,16 @@
         "verify": "COL @ CHC: final 4-5 (total 9) on 2026-06-16",
         "check": "verified"
       },
-      "settled_at": "2026-06-17T05:20:23"
+      "settled_at": "2026-06-17T05:20:23",
+      "book_american": -111,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": -1.0,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-06-16T15:29:55",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "mlb_under_alert",
@@ -43472,7 +43712,7 @@
       "pick_id": "mlb_under_alert|MLB|TOR___BOS|UNDER_7_5|2026-06-16",
       "settled": true,
       "result": "won",
-      "payout_units": 0.91,
+      "payout_units": 0.9346,
       "recorded_at": "2026-06-16T15:29:49",
       "outcome": {
         "final_score": "TOR 6 @ BOS 1",
@@ -43480,7 +43720,16 @@
         "verify": "TOR @ BOS: final 6-1 (total 7) on 2026-06-16",
         "check": "verified"
       },
-      "settled_at": "2026-06-17T05:45:59"
+      "settled_at": "2026-06-17T05:45:59",
+      "book_american": -107,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": 0.91,
+        "recorded_price": null,
+        "book_snapshot_at": "2026-06-16T15:29:55",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat None; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "ufc_r1_fight_r1_finish_yes",
@@ -43879,7 +44128,16 @@
         "verify": "CLE @ MIL: final 1-2 (total 3) on 2026-06-16",
         "check": "verified"
       },
-      "settled_at": "2026-06-17T12:51:48"
+      "settled_at": "2026-06-17T12:51:48",
+      "book_american": -117,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": -1.0,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-06-16T22:45:19",
+        "chosen": "before_pick",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "top_25_board",
@@ -43904,7 +44162,16 @@
         "verify": "COL @ CHC: final 4-5 (total 9) on 2026-06-16",
         "check": "verified"
       },
-      "settled_at": "2026-06-17T12:51:48"
+      "settled_at": "2026-06-17T12:51:48",
+      "book_american": -106,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": -1.0,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-06-16T22:45:19",
+        "chosen": "before_pick",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "top_25_board",
@@ -48568,7 +48835,10 @@
         "verify": "CLE @ MIL: final 4-9 (total 13) on 2026-06-17",
         "check": "verified"
       },
-      "settled_at": "2026-06-18T05:36:24"
+      "settled_at": "2026-06-18T05:36:24",
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unposted total: no book posted this line before first pitch (the pipeline's 8.5 placeholder or an in-play total); DraftKings' pre-game total was 7.5 -- the bet's line never existed"
     },
     {
       "source": "top_25_board",
@@ -48593,7 +48863,16 @@
         "verify": "COL @ CHC: final 5-2 (total 7) on 2026-06-17",
         "check": "verified"
       },
-      "settled_at": "2026-06-17T16:08:46"
+      "settled_at": "2026-06-17T16:08:46",
+      "book_american": -110,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": -1.0,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-06-17T16:08:49",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "top_25_board",
@@ -51324,7 +51603,16 @@
         "verify": "TOR @ BOS: final 3-0 (total 3) on 2026-06-17",
         "check": "verified"
       },
-      "settled_at": "2026-06-18T05:36:24"
+      "settled_at": "2026-06-18T05:36:24",
+      "book_american": -105,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": -1.0,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-06-17T16:08:49",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "mlb_under_alert",
@@ -51338,7 +51626,7 @@
       "pick_id": "mlb_under_alert|MLB|LAA___ARI|UNDER_9_0|2026-06-17",
       "settled": true,
       "result": "won",
-      "payout_units": 0.91,
+      "payout_units": 0.9804,
       "recorded_at": "2026-06-17T05:45:59",
       "outcome": {
         "final_score": "LAA 7 @ ARI 0",
@@ -51346,7 +51634,16 @@
         "verify": "LAA @ ARI: final 7-0 (total 7) on 2026-06-17",
         "check": "verified"
       },
-      "settled_at": "2026-06-17T18:11:17"
+      "settled_at": "2026-06-17T18:11:17",
+      "book_american": -102,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": 0.91,
+        "recorded_price": null,
+        "book_snapshot_at": "2026-06-17T16:08:49",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat None; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "pod",
@@ -51360,7 +51657,7 @@
       "pick_id": "pod|MLB|CHW___NYY|OVER_8_5|2026-06-17",
       "settled": true,
       "result": "won",
-      "payout_units": 0.9091,
+      "payout_units": 0.9524,
       "recorded_at": "2026-06-17T05:45:59",
       "p_calibrated": 0.6746,
       "outcome": {
@@ -51369,7 +51666,16 @@
         "verify": "CHW @ NYY: final 5-10 (total 15) on 2026-06-17",
         "check": "verified"
       },
-      "settled_at": "2026-06-18T05:36:24"
+      "settled_at": "2026-06-18T05:36:24",
+      "book_american": -105,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": 0.9091,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-06-17T16:08:49",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "soccer_total_total_under_3.5",
@@ -51452,7 +51758,10 @@
         "verify": "LAA @ ARI: final 1-8 (total 9) on 2026-06-17",
         "check": "verified"
       },
-      "settled_at": "2026-06-18T03:25:07"
+      "settled_at": "2026-06-18T03:25:07",
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unposted total: no book posted this line before first pitch (the pipeline's 8.5 placeholder or an in-play total); DraftKings' pre-game total was 9.0 -- the bet's line never existed"
     },
     {
       "source": "soccer_total_total_under_3.5",
@@ -51860,7 +52169,7 @@
       "pick_id": "top_25_board|MLB|CLE___MIL|OVER_7_5|2026-06-17",
       "settled": true,
       "result": "won",
-      "payout_units": 0.9091,
+      "payout_units": 0.9259,
       "recorded_at": "2026-06-17T23:26:55",
       "p_calibrated": 0.4812,
       "outcome": {
@@ -51869,7 +52178,16 @@
         "verify": "CLE @ MIL: final 4-9 (total 13) on 2026-06-17",
         "check": "verified"
       },
-      "settled_at": "2026-06-18T12:17:25"
+      "settled_at": "2026-06-18T12:17:25",
+      "book_american": -108,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": 0.9091,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-06-17T22:35:39",
+        "chosen": "before_pick",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "top_25_board",
@@ -51885,7 +52203,7 @@
       "pick_id": "top_25_board|MLB|COL___CHC|UNDER_10_0|2026-06-17",
       "settled": true,
       "result": "won",
-      "payout_units": 0.9091,
+      "payout_units": 0.9259,
       "recorded_at": "2026-06-17T23:26:55",
       "p_calibrated": 0.5619,
       "outcome": {
@@ -51894,7 +52212,16 @@
         "verify": "COL @ CHC: final 5-2 (total 7) on 2026-06-17",
         "check": "verified"
       },
-      "settled_at": "2026-06-18T12:17:25"
+      "settled_at": "2026-06-18T12:17:25",
+      "book_american": -108,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": 0.9091,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-06-17T22:35:39",
+        "chosen": "before_pick",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "top_25_board",
@@ -54051,7 +54378,16 @@
         "verify": "CLE @ MIL: final 4-2 (total 6) on 2026-06-18",
         "check": "verified"
       },
-      "settled_at": "2026-06-19T05:55:52"
+      "settled_at": "2026-06-19T05:55:52",
+      "book_american": -107,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": -1.0,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-06-18T15:56:20",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "top_25_board",
@@ -55362,7 +55698,16 @@
         "verify": "NYM @ PHI: final 6-4 (total 10) on 2026-06-18",
         "check": "verified"
       },
-      "settled_at": "2026-06-19T05:55:52"
+      "settled_at": "2026-06-19T05:55:52",
+      "book_american": -110,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": -1.0,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-06-18T15:56:20",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "top_25_board",
@@ -55387,7 +55732,16 @@
         "verify": "CHW @ NYY: final 5-1 (total 6) on 2026-06-18",
         "check": "verified"
       },
-      "settled_at": "2026-06-19T05:55:52"
+      "settled_at": "2026-06-19T05:55:52",
+      "book_american": -114,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": -1.0,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-06-18T15:56:20",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "f1_quali_top_3",
@@ -63921,7 +64275,10 @@
         "verify": "CHW @ DET: final 1-4 (total 5) on 2026-06-20",
         "check": "verified"
       },
-      "settled_at": "2026-06-21T05:40:45"
+      "settled_at": "2026-06-21T05:40:45",
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unposted total: no book posted this line before first pitch (the pipeline's 8.5 placeholder or an in-play total); DraftKings' pre-game total was 9.0 -- the bet's line never existed"
     },
     {
       "source": "golf_top_10",
@@ -65543,7 +65900,16 @@
         "verify": "PIT @ COL: final 3-4 (total 7) on 2026-06-20",
         "check": "verified"
       },
-      "settled_at": "2026-06-21T10:08:07"
+      "settled_at": "2026-06-21T10:08:07",
+      "book_american": -117,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": -1.0,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-06-20T21:42:24",
+        "chosen": "before_pick",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "top_25_board",
@@ -65559,7 +65925,7 @@
       "pick_id": "top_25_board|MLB|BAL___LAD|OVER_8_0|2026-06-20",
       "settled": true,
       "result": "won",
-      "payout_units": 0.9091,
+      "payout_units": 0.8772,
       "recorded_at": "2026-06-20T22:03:45",
       "p_calibrated": 0.4812,
       "outcome": {
@@ -65568,7 +65934,16 @@
         "verify": "BAL @ LAD: final 5-6 (total 11) on 2026-06-20",
         "check": "verified"
       },
-      "settled_at": "2026-06-21T10:08:07"
+      "settled_at": "2026-06-21T10:08:07",
+      "book_american": -114,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": 0.9091,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-06-20T21:42:24",
+        "chosen": "before_pick",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "mlb_2plus_hits_hits_2plus_yes",
@@ -72426,7 +72801,16 @@
         "verify": "CIN @ NYY: final 4-1 (total 5) on 2026-06-21",
         "check": "verified"
       },
-      "settled_at": "2026-06-22T06:22:34"
+      "settled_at": "2026-06-22T06:22:34",
+      "book_american": -102,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": -1.0,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-06-21T15:59:34",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "top_25_board",
@@ -72476,7 +72860,7 @@
       "pick_id": "top_25_board|MLB|MIL___ATL|OVER_9_0|2026-06-21",
       "settled": true,
       "result": "won",
-      "payout_units": 0.9091,
+      "payout_units": 1.01,
       "recorded_at": "2026-06-21T15:59:24",
       "p_calibrated": 0.4816,
       "outcome": {
@@ -72485,7 +72869,16 @@
         "verify": "MIL @ ATL: final 9-4 (total 13) on 2026-06-21",
         "check": "verified"
       },
-      "settled_at": "2026-06-22T06:22:34"
+      "settled_at": "2026-06-22T06:22:34",
+      "book_american": 101,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": 0.9091,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-06-21T15:59:34",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "mlb_2plus_hits_hits_2plus_yes",
@@ -74318,7 +74711,16 @@
         "verify": "NYM @ PHI: final 2-6 (total 8) on 2026-06-21",
         "check": "verified"
       },
-      "settled_at": "2026-06-22T11:21:12"
+      "settled_at": "2026-06-22T11:21:12",
+      "book_american": -105,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": 0.0,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-06-21T21:45:26",
+        "chosen": "before_pick",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "golf_top_20",
@@ -75918,7 +76320,16 @@
         "verify": "LAD @ MIN: final 2-1 (total 3) on 2026-06-22",
         "check": "verified"
       },
-      "settled_at": "2026-06-23T11:52:12"
+      "settled_at": "2026-06-23T11:52:12",
+      "book_american": -114,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": -1.0,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-06-22T18:22:43",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "soccer_total_total_under_3.5",
@@ -75974,7 +76385,16 @@
         "verify": "MIL @ CIN: final 2-1 (total 3) on 2026-06-22",
         "check": "verified"
       },
-      "settled_at": "2026-06-23T11:52:12"
+      "settled_at": "2026-06-23T11:52:12",
+      "book_american": -104,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": -1.0,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-06-22T18:22:43",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "mlb_under_alert",
@@ -75988,7 +76408,7 @@
       "pick_id": "mlb_under_alert|MLB|TEX___MIA|UNDER_8_5|2026-06-22",
       "settled": true,
       "result": "won",
-      "payout_units": 0.91,
+      "payout_units": 0.8772,
       "recorded_at": "2026-06-22T18:22:33",
       "outcome": {
         "final_score": "TEX 4 @ MIA 3",
@@ -75996,7 +76416,16 @@
         "verify": "TEX @ MIA: final 4-3 (total 7) on 2026-06-22",
         "check": "verified"
       },
-      "settled_at": "2026-06-23T11:52:12"
+      "settled_at": "2026-06-23T11:52:12",
+      "book_american": -114,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": 0.91,
+        "recorded_price": null,
+        "book_snapshot_at": "2026-06-22T18:22:43",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat None; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "ufc_r1_fight_r1_finish_yes",
@@ -76704,7 +77133,16 @@
         "verify": "ARI @ STL: final 2-3 (total 5) on 2026-06-22",
         "check": "verified"
       },
-      "settled_at": "2026-06-23T11:52:12"
+      "settled_at": "2026-06-23T11:52:12",
+      "book_american": -117,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": -1.0,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-06-22T22:18:30",
+        "chosen": "before_pick",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "consensus_hit_strong",
@@ -78994,7 +79432,16 @@
         "verify": "ARI @ STL: final 4-3 (total 7) on 2026-06-23",
         "check": "verified"
       },
-      "settled_at": "2026-06-24T11:40:19"
+      "settled_at": "2026-06-24T11:40:19",
+      "book_american": -107,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": -1.0,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-06-23T16:44:40",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "consensus_hit_strong",
@@ -80715,7 +81162,16 @@
         "verify": "BAL @ LAA: final 6-1 (total 7) on 2026-06-23",
         "check": "verified"
       },
-      "settled_at": "2026-06-23T23:52:23"
+      "settled_at": "2026-06-23T23:52:23",
+      "book_american": -101,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": -1.0,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-06-23T16:44:40",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "soccer_total_total_under_3.5",
@@ -80955,7 +81411,7 @@
       "pick_id": "top_25_board|MLB|ATL___SDP|UNDER_8_5|2026-06-23",
       "settled": true,
       "result": "won",
-      "payout_units": 0.9091,
+      "payout_units": 0.885,
       "recorded_at": "2026-06-23T17:48:03",
       "p_calibrated": 0.5735,
       "outcome": {
@@ -80964,7 +81420,16 @@
         "verify": "ATL @ SD: final 0-1 (total 1) on 2026-06-23",
         "check": "verified"
       },
-      "settled_at": "2026-06-24T06:31:49"
+      "settled_at": "2026-06-24T06:31:49",
+      "book_american": -113,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": 0.9091,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-06-23T16:44:40",
+        "chosen": "before_pick",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "ufc_r1_fight_r1_finish_yes",
@@ -84414,7 +84879,16 @@
         "verify": "HOU @ TOR: final 3-1 (total 4) on 2026-06-24",
         "check": "verified"
       },
-      "settled_at": "2026-06-25T11:30:29"
+      "settled_at": "2026-06-25T11:30:29",
+      "book_american": -110,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": -1.0,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-06-24T16:28:12",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "soccer_btts_btts_yes",
@@ -96682,7 +97156,7 @@
       "pick_id": "top_25_board|MLB|PHI___NYM|UNDER_9_0|2026-06-27",
       "settled": true,
       "result": "won",
-      "payout_units": 0.9091,
+      "payout_units": 0.8547,
       "recorded_at": "2026-06-27T14:27:15",
       "p_calibrated": 0.5963,
       "outcome": {
@@ -96691,7 +97165,16 @@
         "verify": "PHI @ NYM: final 2-6 (total 8) on 2026-06-27",
         "check": "verified"
       },
-      "settled_at": "2026-06-28T05:23:00"
+      "settled_at": "2026-06-28T05:23:00",
+      "book_american": -117,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": 0.9091,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-06-27T15:34:59",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "mlb_3plus_tb_tb_3plus_yes",
@@ -97681,7 +98164,16 @@
         "verify": "LAD @ SD: final 1-7 (total 8) on 2026-06-27",
         "check": "verified"
       },
-      "settled_at": "2026-06-28T11:59:49"
+      "settled_at": "2026-06-28T11:59:49",
+      "book_american": -111,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": 0.0,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-06-27T22:02:02",
+        "chosen": "before_pick",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "top_25_board",
@@ -97697,7 +98189,7 @@
       "pick_id": "top_25_board|MLB|COL___MIN|OVER_9_5|2026-06-27",
       "settled": true,
       "result": "won",
-      "payout_units": 0.9091,
+      "payout_units": 0.9259,
       "recorded_at": "2026-06-27T23:04:07",
       "p_calibrated": 0.4812,
       "outcome": {
@@ -97706,7 +98198,16 @@
         "verify": "COL @ MIN: final 8-5 (total 13) on 2026-06-27",
         "check": "verified"
       },
-      "settled_at": "2026-06-28T11:59:49"
+      "settled_at": "2026-06-28T11:59:49",
+      "book_american": -108,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": 0.9091,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-06-27T22:02:02",
+        "chosen": "before_pick",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "top_25_board",
@@ -97722,7 +98223,7 @@
       "pick_id": "top_25_board|MLB|ARI___TBR|UNDER_8_5|2026-06-27",
       "settled": true,
       "result": "won",
-      "payout_units": 0.9091,
+      "payout_units": 0.8696,
       "recorded_at": "2026-06-27T23:04:07",
       "p_calibrated": 0.5735,
       "outcome": {
@@ -97731,7 +98232,16 @@
         "verify": "ARI @ TB: final 2-4 (total 6) on 2026-06-27",
         "check": "verified"
       },
-      "settled_at": "2026-06-28T11:59:49"
+      "settled_at": "2026-06-28T11:59:49",
+      "book_american": -115,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": 0.9091,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-06-27T22:02:02",
+        "chosen": "before_pick",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "top_25_board",
@@ -97747,7 +98257,7 @@
       "pick_id": "top_25_board|MLB|ATL___SFG|UNDER_8_0|2026-06-27",
       "settled": true,
       "result": "won",
-      "payout_units": 0.9091,
+      "payout_units": 0.8475,
       "recorded_at": "2026-06-27T23:04:07",
       "p_calibrated": 0.5619,
       "outcome": {
@@ -97756,7 +98266,16 @@
         "verify": "ATL @ SF: final 3-1 (total 4) on 2026-06-27",
         "check": "verified"
       },
-      "settled_at": "2026-06-28T11:59:49"
+      "settled_at": "2026-06-28T11:59:49",
+      "book_american": -118,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": 0.9091,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-06-27T22:02:02",
+        "chosen": "before_pick",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "consensus_hit_strong",
@@ -101593,7 +102112,7 @@
       "pick_id": "top_25_board|MLB|LAD___SDP|UNDER_8_0|2026-06-28",
       "settled": true,
       "result": "won",
-      "payout_units": 0.9091,
+      "payout_units": 0.8929,
       "recorded_at": "2026-06-28T00:14:10",
       "p_calibrated": 0.5943,
       "outcome": {
@@ -101610,7 +102129,16 @@
           "to": "won",
           "reason": "stat revised after settlement; re-graded vs current box score"
         }
-      ]
+      ],
+      "book_american": -112,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": 0.9091,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-06-28T15:35:56",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "top_25_board",
@@ -117389,7 +117917,7 @@
       "pick_id": "top_25_board|MLB|MIA___COL|OVER_12_0|2026-07-02",
       "settled": true,
       "result": "won",
-      "payout_units": 0.9091,
+      "payout_units": 0.9259,
       "recorded_at": "2026-07-02T05:02:29",
       "p_calibrated": 0.5253,
       "outcome": {
@@ -117406,7 +117934,16 @@
           "to": "won",
           "reason": "stat revised after settlement; re-graded vs current box score"
         }
-      ]
+      ],
+      "book_american": -108,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": 0.9091,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-07-02T16:15:19",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "f1_quali_top_3",
@@ -125681,7 +126218,7 @@
       "pick_id": "pod|MLB|MIN___NYY|OVER_10_0|2026-07-04",
       "settled": true,
       "result": "won",
-      "payout_units": 0.9091,
+      "payout_units": 0.9524,
       "recorded_at": "2026-07-04T07:44:55",
       "p_calibrated": 0.6746,
       "outcome": {
@@ -125690,7 +126227,16 @@
         "verify": "MIN @ NYY: final 11-4 (total 15) on 2026-07-04",
         "check": "verified"
       },
-      "settled_at": "2026-07-05T11:00:10"
+      "settled_at": "2026-07-05T11:00:10",
+      "book_american": -105,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": 0.9091,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-07-04T14:02:45",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "golf_top_5",
@@ -133303,7 +133849,7 @@
       "pick_id": "top_25_board|MLB|TOR___SEA|UNDER_7_5|2026-07-05",
       "settled": true,
       "result": "won",
-      "payout_units": 0.9091,
+      "payout_units": 0.8333,
       "recorded_at": "2026-07-05T11:00:10",
       "p_calibrated": 0.5946,
       "outcome": {
@@ -133312,7 +133858,16 @@
         "verify": "TOR @ SEA: final 0-4 (total 4) on 2026-07-05",
         "check": "verified"
       },
-      "settled_at": "2026-07-06T05:08:47"
+      "settled_at": "2026-07-06T05:08:47",
+      "book_american": -120,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": 0.9091,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-07-05T15:26:07",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "pod",
@@ -133326,7 +133881,7 @@
       "pick_id": "pod|MLB|STL___CHC|OVER_8_0|2026-07-05",
       "settled": true,
       "result": "won",
-      "payout_units": 0.9091,
+      "payout_units": 0.9524,
       "recorded_at": "2026-07-05T11:00:10",
       "p_calibrated": 0.6746,
       "outcome": {
@@ -133343,7 +133898,16 @@
           "to": "won",
           "reason": "stat revised after settlement; re-graded vs current box score"
         }
-      ]
+      ],
+      "book_american": -105,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": 0.9091,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-07-05T15:26:07",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "mlb_game_total_game_total_under_8.5",
@@ -140467,7 +141031,7 @@
       "pick_id": "pod|MLB|COL___LAD|OVER_9_5|2026-07-07",
       "settled": true,
       "result": "won",
-      "payout_units": 0.9091,
+      "payout_units": 0.8929,
       "recorded_at": "2026-07-07T12:40:18",
       "p_calibrated": 0.6746,
       "outcome": {
@@ -140476,7 +141040,16 @@
         "verify": "COL @ LAD: final 7-8 (total 15) on 2026-07-07",
         "check": "verified"
       },
-      "settled_at": "2026-07-08T01:10:36"
+      "settled_at": "2026-07-08T01:10:36",
+      "book_american": -112,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": 0.9091,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-07-07T15:48:03",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "top_25_board",
@@ -143795,7 +144368,10 @@
         "verify": "PHI @ CIN: final 5-11 (total 16) on 2026-07-08",
         "check": "verified"
       },
-      "settled_at": "2026-07-09T11:24:43"
+      "settled_at": "2026-07-09T11:24:43",
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unposted total: no book posted this line before first pitch (the pipeline's 8.5 placeholder or an in-play total); DraftKings' pre-game total was 8.5 -- the bet's line never existed"
     },
     {
       "source": "mlb_3plus_tb_tb_3plus_yes",
@@ -144218,7 +144794,7 @@
       "pick_id": "top_25_board|MLB|BOS___CHW|UNDER_9_0|2026-07-09",
       "settled": true,
       "result": "won",
-      "payout_units": 0.9091,
+      "payout_units": 0.8621,
       "recorded_at": "2026-07-09T01:19:05",
       "p_calibrated": 0.5735,
       "outcome": {
@@ -144227,7 +144803,16 @@
         "verify": "BOS @ CHW: final 2-1 (total 3) on 2026-07-09",
         "check": "verified"
       },
-      "settled_at": "2026-07-10T09:55:48"
+      "settled_at": "2026-07-10T09:55:48",
+      "book_american": -116,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": 0.9091,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-07-09T15:37:32",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "mlb_under_alert",
@@ -144241,7 +144826,7 @@
       "pick_id": "mlb_under_alert|MLB|PHI___CIN|UNDER_9_5|2026-07-09",
       "settled": true,
       "result": "won",
-      "payout_units": 0.91,
+      "payout_units": 0.8696,
       "recorded_at": "2026-07-09T01:19:05",
       "outcome": {
         "final_score": "PHI 1 @ CIN 0",
@@ -144249,7 +144834,16 @@
         "verify": "PHI @ CIN: final 1-0 (total 1) on 2026-07-09",
         "check": "verified"
       },
-      "settled_at": "2026-07-10T09:55:48"
+      "settled_at": "2026-07-10T09:55:48",
+      "book_american": -115,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": 0.91,
+        "recorded_price": null,
+        "book_snapshot_at": "2026-07-09T15:37:32",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat None; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "lock_of_day",
@@ -144541,7 +145135,16 @@
         "verify": "MIL @ STL: final 8-4 (total 12) on 2026-07-09",
         "check": "verified"
       },
-      "settled_at": "2026-07-10T09:55:48"
+      "settled_at": "2026-07-10T09:55:48",
+      "book_american": -114,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": -1.0,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-07-09T15:37:32",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "top_25_board",
@@ -144566,7 +145169,16 @@
         "verify": "ARI @ SD: final 4-10 (total 14) on 2026-07-09",
         "check": "verified"
       },
-      "settled_at": "2026-07-09T21:04:31"
+      "settled_at": "2026-07-09T21:04:31",
+      "book_american": -122,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": -1.0,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-07-09T15:37:32",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "top_25_board",
@@ -144591,7 +145203,16 @@
         "verify": "SEA @ MIA: final 4-8 (total 12) on 2026-07-09",
         "check": "verified"
       },
-      "settled_at": "2026-07-10T09:55:48"
+      "settled_at": "2026-07-10T09:55:48",
+      "book_american": -110,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": -1.0,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-07-09T15:37:32",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "f1_quali_top_3",
@@ -146958,7 +147579,16 @@
         "verify": "CHC @ CIN: final 0-4 (total 4) on 2026-07-10",
         "check": "verified"
       },
-      "settled_at": "2026-07-11T07:07:37"
+      "settled_at": "2026-07-11T07:07:37",
+      "book_american": -102,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": -1.0,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-07-10T15:27:59",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "mlb_under_alert",
@@ -146980,7 +147610,16 @@
         "verify": "SEA @ TB: final 2-7 (total 9) on 2026-07-10",
         "check": "verified"
       },
-      "settled_at": "2026-07-11T07:07:37"
+      "settled_at": "2026-07-11T07:07:37",
+      "book_american": -103,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": -1.0,
+        "recorded_price": null,
+        "book_snapshot_at": "2026-07-10T15:27:59",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat None; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "golf_top_10",
@@ -147560,7 +148199,16 @@
         "verify": "SEA @ TB: final 2-7 (total 9) on 2026-07-10",
         "check": "verified"
       },
-      "settled_at": "2026-07-11T11:27:46"
+      "settled_at": "2026-07-11T11:27:46",
+      "book_american": -106,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": -1.0,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-07-10T21:30:28",
+        "chosen": "before_pick",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "golf_top_10",
@@ -147768,7 +148416,10 @@
         "verify": "SEA @ TB: final 1-6 (total 7) on 2026-07-11",
         "check": "verified"
       },
-      "settled_at": "2026-07-12T01:44:36"
+      "settled_at": "2026-07-12T01:44:36",
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unposted total: no book posted this line before first pitch (the pipeline's 8.5 placeholder or an in-play total); DraftKings' pre-game total was 7.0 -- the bet's line never existed"
     },
     {
       "source": "mlb_xbh_1_plus_xbh",
@@ -147821,7 +148472,16 @@
         "verify": "TOR @ SD: final 5-3 (total 8) on 2026-07-11",
         "check": "verified"
       },
-      "settled_at": "2026-07-11T19:35:46"
+      "settled_at": "2026-07-11T19:35:46",
+      "book_american": -114,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": 0.0,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-07-11T15:26:05",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "pod",
@@ -147844,7 +148504,16 @@
         "verify": "COL @ SF: final 2-4 (total 6) on 2026-07-11",
         "check": "verified"
       },
-      "settled_at": "2026-07-11T19:35:46"
+      "settled_at": "2026-07-11T19:35:46",
+      "book_american": -115,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": -1.0,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-07-11T15:26:05",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "golf_top_10",
@@ -148884,7 +149553,16 @@
         "verify": "SEA @ TB: final 8-2 (total 10) on 2026-07-12",
         "check": "verified"
       },
-      "settled_at": "2026-07-13T08:08:32"
+      "settled_at": "2026-07-13T08:08:32",
+      "book_american": -117,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": -1.0,
+        "recorded_price": null,
+        "book_snapshot_at": "2026-07-12T15:27:41",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat None; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "mlb_hit_to_record_hit_no",
@@ -153039,7 +153717,16 @@
         "verify": "TEX @ ATL: final 7-6 (total 13) on 2026-07-18",
         "check": "verified"
       },
-      "settled_at": "2026-07-19T07:28:03"
+      "settled_at": "2026-07-19T07:28:03",
+      "book_american": -115,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": -1.0,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-07-18T15:18:04",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "mlb_xbh_1_plus_xbh",
@@ -153419,7 +154106,7 @@
       "pick_id": "top_25_board|MLB|PIT___CLE|UNDER_8_5|2026-07-18",
       "settled": true,
       "result": "won",
-      "payout_units": 0.9091,
+      "payout_units": 0.8929,
       "recorded_at": "2026-07-18T21:41:49",
       "p_calibrated": 0.6105,
       "outcome": {
@@ -153428,7 +154115,16 @@
         "verify": "PIT @ CLE: final 7-1 (total 8) on 2026-07-18",
         "check": "verified"
       },
-      "settled_at": "2026-07-19T10:02:05"
+      "settled_at": "2026-07-19T10:02:05",
+      "book_american": -112,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": 0.9091,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-07-18T21:08:40",
+        "chosen": "before_pick",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "sharp_elite",
@@ -154011,7 +154707,7 @@
       "pick_id": "top_25_board|MLB|MIN___CHC|OVER_7_5|2026-07-19",
       "settled": true,
       "result": "won",
-      "payout_units": 0.9091,
+      "payout_units": 0.9174,
       "recorded_at": "2026-07-19T07:28:03",
       "p_calibrated": 0.4996,
       "outcome": {
@@ -154020,7 +154716,16 @@
         "verify": "MIN @ CHC: final 1-10 (total 11) on 2026-07-19",
         "check": "verified"
       },
-      "settled_at": "2026-07-20T08:01:20"
+      "settled_at": "2026-07-20T08:01:20",
+      "book_american": -109,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": 0.9091,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-07-19T15:18:45",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "pod",
@@ -154990,7 +155695,7 @@
       "pick_id": "top_25_board|MLB|CIN___COL|OVER_11_0|2026-07-19",
       "settled": true,
       "result": "won",
-      "payout_units": 0.9091,
+      "payout_units": 0.8929,
       "recorded_at": "2026-07-19T14:20:41",
       "p_calibrated": 0.5311,
       "outcome": {
@@ -154999,7 +155704,16 @@
         "verify": "CIN @ COL: final 9-6 (total 15) on 2026-07-19",
         "check": "verified"
       },
-      "settled_at": "2026-07-20T08:01:20"
+      "settled_at": "2026-07-20T08:01:20",
+      "book_american": -112,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": 0.9091,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-07-19T15:18:45",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "top_25_board",
@@ -155024,7 +155738,16 @@
         "verify": "MIA @ MIL: final 1-3 (total 4) on 2026-07-19",
         "check": "verified"
       },
-      "settled_at": "2026-07-20T08:01:20"
+      "settled_at": "2026-07-20T08:01:20",
+      "book_american": -110,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": -1.0,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-07-19T15:18:45",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "mlb_3plus_tb_tb_3plus_yes",
@@ -156451,7 +157174,7 @@
       "pick_id": "top_25_board|MLB|CHW___TEX|OVER_8_5|2026-07-21",
       "settled": true,
       "result": "won",
-      "payout_units": 0.9091,
+      "payout_units": 0.8475,
       "recorded_at": "2026-07-21T07:31:23",
       "p_calibrated": 0.4849,
       "outcome": {
@@ -156460,7 +157183,16 @@
         "verify": "CHW @ TEX: final 10-3 (total 13) on 2026-07-21",
         "check": "verified"
       },
-      "settled_at": "2026-07-21T19:56:01"
+      "settled_at": "2026-07-21T19:56:01",
+      "book_american": -118,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": 0.9091,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-07-21T15:51:26",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "ufc_r1_fight_r1_finish_yes",
@@ -156501,7 +157233,7 @@
       "pick_id": "top_25_board|MLB|DET___CHC|OVER_8_0|2026-07-21",
       "settled": true,
       "result": "won",
-      "payout_units": 0.9091,
+      "payout_units": 0.8929,
       "recorded_at": "2026-07-21T15:51:14",
       "p_calibrated": 0.4881,
       "outcome": {
@@ -156510,7 +157242,16 @@
         "verify": "DET @ CHC: final 8-6 (total 14) on 2026-07-21",
         "check": "verified"
       },
-      "settled_at": "2026-07-22T03:52:01"
+      "settled_at": "2026-07-22T03:52:01",
+      "book_american": -112,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": 0.9091,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-07-21T15:51:26",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "top_25_board",
@@ -158405,7 +159146,7 @@
       "pick_id": "top_25_board|MLB|LAD___PHI|OVER_9_5|2026-07-22",
       "settled": true,
       "result": "won",
-      "payout_units": 0.9091,
+      "payout_units": 0.9346,
       "recorded_at": "2026-07-22T15:55:39",
       "p_calibrated": 0.544,
       "outcome": {
@@ -158414,7 +159155,16 @@
         "verify": "LAD @ PHI: final 9-5 (total 14) on 2026-07-22",
         "check": "verified"
       },
-      "settled_at": "2026-07-23T07:23:09"
+      "settled_at": "2026-07-23T07:23:09",
+      "book_american": -107,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": 0.9091,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-07-22T15:55:54",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "mlb_3plus_tb_tb_3plus_yes",
@@ -158846,7 +159596,7 @@
       "pick_id": "top_25_board|MLB|DET___CHC|OVER_8_0|2026-07-22",
       "settled": true,
       "result": "won",
-      "payout_units": 0.9091,
+      "payout_units": 0.9174,
       "recorded_at": "2026-07-22T23:02:31",
       "p_calibrated": 0.4851,
       "outcome": {
@@ -158855,7 +159605,16 @@
         "verify": "DET @ CHC: final 2-11 (total 13) on 2026-07-22",
         "check": "verified"
       },
-      "settled_at": "2026-07-23T14:37:26"
+      "settled_at": "2026-07-23T14:37:26",
+      "book_american": -109,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": 0.9091,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-07-22T22:01:16",
+        "chosen": "before_pick",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "mlb_hit_to_record_hit_no",
@@ -159748,7 +160507,16 @@
         "verify": "MIN @ CLE: final 3-1 (total 4) on 2026-07-23",
         "check": "verified"
       },
-      "settled_at": "2026-07-24T07:23:55"
+      "settled_at": "2026-07-24T07:23:55",
+      "book_american": 100,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": -1.0,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-07-23T16:08:57",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "f1_quali_top_3",
@@ -160925,7 +161693,7 @@
       "pick_id": "top_25_board|MLB|ARI___STL|OVER_7_5|2026-07-23",
       "settled": true,
       "result": "won",
-      "payout_units": 0.9091,
+      "payout_units": 0.9804,
       "recorded_at": "2026-07-23T15:08:33",
       "p_calibrated": 0.4812,
       "outcome": {
@@ -160934,7 +161702,16 @@
         "verify": "ARI @ STL: final 10-6 (total 16) on 2026-07-23",
         "check": "verified"
       },
-      "settled_at": "2026-07-24T07:23:55"
+      "settled_at": "2026-07-24T07:23:55",
+      "book_american": -102,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": 0.9091,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-07-23T16:08:57",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "mlb_2plus_hits_hits_2plus_yes",
@@ -161866,7 +162643,16 @@
         "verify": "COL @ MIL: final 5-2 (total 7) on 2026-07-24",
         "check": "verified"
       },
-      "settled_at": "2026-07-25T07:10:52"
+      "settled_at": "2026-07-25T07:10:52",
+      "book_american": -114,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": -1.0,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-07-24T15:37:00",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "golf_top_20",
@@ -163846,7 +164632,7 @@
       "pick_id": "top_25_board|MLB|COL___MIL|OVER_9_0|2026-07-25",
       "settled": true,
       "result": "won",
-      "payout_units": 0.9091,
+      "payout_units": 0.9346,
       "recorded_at": "2026-07-25T15:14:10",
       "p_calibrated": 0.4881,
       "outcome": {
@@ -163855,7 +164641,16 @@
         "verify": "COL @ MIL: final 5-8 (total 13) on 2026-07-25",
         "check": "verified"
       },
-      "settled_at": "2026-07-26T07:25:44"
+      "settled_at": "2026-07-26T07:25:44",
+      "book_american": -107,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": 0.9091,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-07-25T15:14:23",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "golf_top_10",
@@ -164942,7 +165737,16 @@
         "verify": "HOU @ CHW: final 4-1 (total 5) on 2026-07-25",
         "check": "verified"
       },
-      "settled_at": "2026-07-26T11:39:07"
+      "settled_at": "2026-07-26T11:39:07",
+      "book_american": -115,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": -1.0,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-07-25T21:50:01",
+        "chosen": "before_pick",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "mlb_hit_to_record_hit_no",
@@ -166031,7 +166835,7 @@
       "pick_id": "top_25_board|MLB|COL___MIL|OVER_7_5|2026-07-26",
       "settled": true,
       "result": "won",
-      "payout_units": 0.9091,
+      "payout_units": 0.8403,
       "recorded_at": "2026-07-26T07:25:44",
       "p_calibrated": 0.5596,
       "outcome": {
@@ -166040,7 +166844,16 @@
         "verify": "COL @ MIL: final 2-11 (total 13) on 2026-07-26",
         "check": "verified"
       },
-      "settled_at": "2026-07-27T08:17:26"
+      "settled_at": "2026-07-27T08:17:26",
+      "book_american": -119,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": 0.9091,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-07-26T15:13:57",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "top_25_board",
@@ -168250,7 +169063,7 @@
       "pick_id": "top_25_board|MLB|NYY___CHW|OVER_8_5|2026-07-27",
       "settled": true,
       "result": "won",
-      "payout_units": 0.9091,
+      "payout_units": 0.9524,
       "recorded_at": "2026-07-27T15:39:31",
       "p_calibrated": 0.4829,
       "outcome": {
@@ -168259,7 +169072,16 @@
         "verify": "NYY @ CHW: final 9-5 (total 14) on 2026-07-27",
         "check": "verified"
       },
-      "settled_at": "2026-07-28T07:32:07"
+      "settled_at": "2026-07-28T07:32:07",
+      "book_american": -105,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": 0.9091,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-07-27T15:17:56",
+        "chosen": "before_pick",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "mlb_under_alert",
@@ -168281,7 +169103,16 @@
         "verify": "ATL @ NYM: final 3-14 (total 17) on 2026-07-27",
         "check": "verified"
       },
-      "settled_at": "2026-07-28T07:32:07"
+      "settled_at": "2026-07-28T07:32:07",
+      "book_american": -102,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": -1.0,
+        "recorded_price": null,
+        "book_snapshot_at": "2026-07-27T15:17:56",
+        "chosen": "before_pick",
+        "reason": "2026-10-26: total graded at a flat None; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "ufc_r1_fight_r1_finish_yes",
@@ -169023,7 +169854,16 @@
         "verify": "NYY @ CHW: final 3-2 (total 5) on 2026-07-28",
         "check": "verified"
       },
-      "settled_at": "2026-07-29T07:38:06"
+      "settled_at": "2026-07-29T07:38:06",
+      "book_american": -105,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": -1.0,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-07-28T15:15:42",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "wnba_alts_home_total_over_68.4",
@@ -173249,7 +174089,16 @@
         "verify": "CHC @ STL: final 4-2 (total 6) on 2026-07-30",
         "check": "verified"
       },
-      "settled_at": "2026-07-31T11:01:39"
+      "settled_at": "2026-07-31T11:01:39",
+      "book_american": -109,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": -1.0,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-07-30T15:09:54",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "top_25_board",
@@ -173541,7 +174390,16 @@
         "verify": "PIT @ CIN: final 2-3 (total 5) on 2026-07-30",
         "check": "verified"
       },
-      "settled_at": "2026-07-31T11:01:39"
+      "settled_at": "2026-07-31T11:01:39",
+      "book_american": -112,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": -1.0,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-07-30T15:09:54",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "top_25_board",
@@ -173566,7 +174424,16 @@
         "verify": "NYY @ CHW: final 1-2 (total 3) on 2026-07-30",
         "check": "verified"
       },
-      "settled_at": "2026-07-31T11:01:39"
+      "settled_at": "2026-07-31T11:01:39",
+      "book_american": -101,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": -1.0,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-07-30T15:09:54",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "top_25_board",
@@ -175834,7 +176701,7 @@
       "pick_id": "mlb_under_alert|MLB|STL___TOR|UNDER_7_5|2026-07-31",
       "settled": true,
       "result": "won",
-      "payout_units": 0.91,
+      "payout_units": 0.9091,
       "recorded_at": "2026-07-31T11:01:39",
       "outcome": {
         "final_score": "STL 1 @ TOR 3",
@@ -175842,7 +176709,16 @@
         "verify": "STL @ TOR: final 1-3 (total 4) on 2026-07-31",
         "check": "verified"
       },
-      "settled_at": "2026-08-01T10:12:24"
+      "settled_at": "2026-08-01T10:12:24",
+      "book_american": -110,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": 0.91,
+        "recorded_price": null,
+        "book_snapshot_at": "2026-07-31T15:18:31",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat None; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "golf_top_10",
@@ -176559,7 +177435,10 @@
         "verify": "STL @ TOR: final 1-3 (total 4) on 2026-07-31",
         "check": "verified"
       },
-      "settled_at": "2026-08-01T11:36:48"
+      "settled_at": "2026-08-01T11:36:48",
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unposted total: no book posted this line before first pitch (the pipeline's 8.5 placeholder or an in-play total); DraftKings' pre-game total was 7.5 -- the bet's line never existed"
     },
     {
       "source": "top_25_board",
@@ -177750,7 +178629,7 @@
       "pick_id": "top_25_board|MLB|NYY___CHC|OVER_6_5|2026-08-01",
       "settled": true,
       "result": "won",
-      "payout_units": 0.9091,
+      "payout_units": 0.9804,
       "recorded_at": "2026-08-01T10:12:24",
       "p_calibrated": 0.4881,
       "outcome": {
@@ -177759,7 +178638,16 @@
         "verify": "NYY @ CHC: final 2-5 (total 7) on 2026-08-01",
         "check": "verified"
       },
-      "settled_at": "2026-08-02T07:24:46"
+      "settled_at": "2026-08-02T07:24:46",
+      "book_american": -102,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": 0.9091,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-08-01T15:32:47",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "top_25_board",
@@ -178031,7 +178919,7 @@
       "pick_id": "top_25_board|MLB|STL___TOR|UNDER_8_5|2026-08-01",
       "settled": true,
       "result": "won",
-      "payout_units": 0.9091,
+      "payout_units": 0.8929,
       "recorded_at": "2026-08-01T14:20:05",
       "p_calibrated": 0.5735,
       "outcome": {
@@ -178040,7 +178928,16 @@
         "verify": "STL @ TOR: final 1-5 (total 6) on 2026-08-01",
         "check": "verified"
       },
-      "settled_at": "2026-08-02T07:24:46"
+      "settled_at": "2026-08-02T07:24:46",
+      "book_american": -112,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": 0.9091,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-08-01T15:32:47",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "soccer_goalscorer_anytime_goal",
@@ -181562,7 +182459,7 @@
       "pick_id": "top_25_board|MLB|PIT___CIN|OVER_8_5|2026-08-02",
       "settled": true,
       "result": "won",
-      "payout_units": 0.9091,
+      "payout_units": 0.8197,
       "recorded_at": "2026-08-02T07:24:46",
       "p_calibrated": 0.5125,
       "outcome": {
@@ -181571,7 +182468,16 @@
         "verify": "PIT @ CIN: final 2-10 (total 12) on 2026-08-02",
         "check": "verified"
       },
-      "settled_at": "2026-08-03T08:17:12"
+      "settled_at": "2026-08-03T08:17:12",
+      "book_american": -122,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": 0.9091,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-08-02T15:32:32",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "top_25_board",
@@ -181630,7 +182536,16 @@
         "verify": "NYY @ CHC: final 2-1 (total 3) on 2026-08-02",
         "check": "verified"
       },
-      "settled_at": "2026-08-03T08:17:12"
+      "settled_at": "2026-08-03T08:17:12",
+      "book_american": -114,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": -1.0,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-08-02T15:32:32",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "soccer_total_total_under_3.5",
@@ -183219,7 +184134,16 @@
         "total_runs": 9,
         "verify": "WSH @ PHI: final 3-6 (total 9 runs) on 2026-08-03"
       },
-      "settled_at": "2026-08-17T17:35:14"
+      "settled_at": "2026-08-17T17:35:14",
+      "book_american": -120,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": 0.0,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-08-03T15:21:07",
+        "chosen": "before_pick",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "ufc_r1_fight_r1_finish_yes",
@@ -185402,7 +186326,16 @@
         "verify": "LAA @ MIA: final 4-3 (total 7) on 2026-08-07",
         "check": "verified"
       },
-      "settled_at": "2026-08-08T05:39:34"
+      "settled_at": "2026-08-08T05:39:34",
+      "book_american": -120,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": -1.0,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-08-07T17:11:58",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "top_25_board",
@@ -197492,7 +198425,7 @@
       "pick_id": "pod|MLB|CHC___WSN|OVER_9_0|2026-08-11",
       "settled": true,
       "result": "won",
-      "payout_units": 0.9091,
+      "payout_units": 0.9346,
       "recorded_at": "2026-08-11T06:00:19",
       "p_calibrated": 0.6746,
       "voided": false,
@@ -197501,7 +198434,16 @@
         "total_runs": 14,
         "verify": "CHC @ WSH: final 8-6 (total 14 runs) on 2026-08-11"
       },
-      "settled_at": "2026-08-17T17:35:14"
+      "settled_at": "2026-08-17T17:35:14",
+      "book_american": -107,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": 0.9091,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-08-11T15:05:57",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "tennis_games_total_games_under_17.5",
@@ -203571,7 +204513,10 @@
         "verify": "BOS @ TOR: final 4-6 (total 10) on 2026-08-12",
         "check": "verified"
       },
-      "settled_at": "2026-08-13T06:15:36"
+      "settled_at": "2026-08-13T06:15:36",
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unposted total: no book posted this line before first pitch (the pipeline's 8.5 placeholder or an in-play total); DraftKings' pre-game total was 7.0 -- the bet's line never existed"
     },
     {
       "source": "top_25_board",
@@ -207884,7 +208829,16 @@
         "total_runs": 7,
         "verify": "CHC @ WSH: final 0-7 (total 7 runs) on 2026-08-13"
       },
-      "settled_at": "2026-08-17T17:35:14"
+      "settled_at": "2026-08-17T17:35:14",
+      "book_american": -120,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": -1.0,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-08-13T15:02:40",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "tennis_ml_ml_player2",
@@ -211028,7 +211982,16 @@
         "verify": "CHW @ DET: final 9-5 (total 14) on 2026-08-14",
         "check": "verified"
       },
-      "settled_at": "2026-08-15T05:12:23"
+      "settled_at": "2026-08-15T05:12:23",
+      "book_american": -102,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": -1.0,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-08-14T17:14:51",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "sharp_elite",
@@ -214233,7 +215196,16 @@
         "verify": "BOS @ PIT: final 4-0 (total 4) on 2026-08-15",
         "check": "verified"
       },
-      "settled_at": "2026-08-16T05:18:12"
+      "settled_at": "2026-08-16T05:18:12",
+      "book_american": -115,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": -1.0,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-08-15T16:44:19",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "top_25_board",
@@ -214258,7 +215230,16 @@
         "verify": "CHW @ DET: final 4-3 (total 7) on 2026-08-15",
         "check": "verified"
       },
-      "settled_at": "2026-08-16T05:18:12"
+      "settled_at": "2026-08-16T05:18:12",
+      "book_american": -102,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": -1.0,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-08-15T16:44:19",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "pod",
@@ -214284,7 +215265,16 @@
         "verify": "COL @ SF: final 5-2 (total 7) on 2026-08-15",
         "check": "verified"
       },
-      "settled_at": "2026-08-15T17:14:57"
+      "settled_at": "2026-08-15T17:14:57",
+      "book_american": -117,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": -1.0,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-08-15T16:44:19",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "golf_top_5",
@@ -214544,7 +215534,10 @@
         "verify": "NYY @ TOR: final 1-4 (total 5) on 2026-08-15",
         "check": "verified"
       },
-      "settled_at": "2026-08-16T05:18:12"
+      "settled_at": "2026-08-16T05:18:12",
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unposted total: no book posted this line before first pitch (the pipeline's 8.5 placeholder or an in-play total); DraftKings' pre-game total was 7.5 -- the bet's line never existed"
     },
     {
       "source": "mlb_2plus_hits_hits_2plus_yes",
@@ -219449,7 +220442,7 @@
       "pick_id": "pod|MLB|BOS___PIT|OVER_8_0|2026-08-16",
       "settled": true,
       "result": "won",
-      "payout_units": 0.9091,
+      "payout_units": 0.8696,
       "recorded_at": "2026-08-16T05:18:11",
       "p_calibrated": 0.6746,
       "outcome": {
@@ -219458,7 +220451,16 @@
         "verify": "BOS @ PIT: final 3-8 (total 11) on 2026-08-16",
         "check": "verified"
       },
-      "settled_at": "2026-08-17T06:04:32"
+      "settled_at": "2026-08-17T06:04:32",
+      "book_american": -115,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": 0.9091,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-08-16T16:45:03",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "golf_top_10",
@@ -224660,7 +225662,7 @@
       "pick_id": "pod|MLB|LAD___COL|OVER_11_5|2026-08-18",
       "settled": true,
       "result": "won",
-      "payout_units": 0.9091,
+      "payout_units": 0.8547,
       "recorded_at": "2026-08-18T05:16:51",
       "p_calibrated": 0.6746,
       "outcome": {
@@ -224669,7 +225671,16 @@
         "verify": "LAD @ COL: final 11-5 (total 16) on 2026-08-18",
         "check": "verified"
       },
-      "settled_at": "2026-08-18T17:24:00"
+      "settled_at": "2026-08-18T17:24:00",
+      "book_american": -117,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": 0.9091,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-08-18T16:52:23",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "top_25_board",
@@ -231189,7 +232200,16 @@
           "to": "lost",
           "reason": "stat revised after settlement; re-graded vs current box score"
         }
-      ]
+      ],
+      "book_american": -102,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": -1.0,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-08-19T16:50:50",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "tennis_games_total_games_under_22.5",
@@ -239690,7 +240710,10 @@
         "verify": "ATL @ MIL: final 1-2 (total 3) on 2026-08-21",
         "check": "verified"
       },
-      "settled_at": "2026-08-22T05:20:27"
+      "settled_at": "2026-08-22T05:20:27",
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unposted total: no book posted this line before first pitch (the pipeline's 8.5 placeholder or an in-play total); DraftKings' pre-game total was 6.0 -- the bet's line never existed"
     },
     {
       "source": "golf_top_5",
@@ -251107,7 +252130,7 @@
       "pick_id": "pod|MLB|COL___WSN|OVER_8_0|2026-08-24",
       "settled": true,
       "result": "won",
-      "payout_units": 0.9091,
+      "payout_units": 0.8929,
       "recorded_at": "2026-08-24T05:41:23",
       "p_calibrated": 0.6746,
       "outcome": {
@@ -251115,7 +252138,16 @@
         "total_runs": 16,
         "verify": "COL @ WSH: final 3-13 (total 16 runs) on 2026-08-24"
       },
-      "settled_at": "2026-08-27T22:46:15"
+      "settled_at": "2026-08-27T22:46:15",
+      "book_american": -112,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": 0.9091,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-08-24T16:59:04",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "ufc_r1_fight_r1_finish_yes",
@@ -254591,7 +255623,16 @@
         "total_runs": 4,
         "verify": "COL @ WSH: final 3-1 (total 4 runs) on 2026-08-25"
       },
-      "settled_at": "2026-08-27T22:46:15"
+      "settled_at": "2026-08-27T22:46:15",
+      "book_american": -105,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": -1.0,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-08-25T15:09:13",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "mlb_hit_to_record_hit_no",
@@ -262482,7 +263523,10 @@
         "verify": "ARI @ SF: final 7-1 (total 8) on 2026-08-29",
         "check": "verified"
       },
-      "settled_at": "2026-09-02T13:16:48"
+      "settled_at": "2026-09-02T13:16:48",
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unposted total: no book posted this line before first pitch (the pipeline's 8.5 placeholder or an in-play total); DraftKings' pre-game total was 8.5 -- the bet's line never existed"
     },
     {
       "source": "mlb_hit_to_record_hit_no",
@@ -266980,7 +268024,7 @@
       "pick_id": "top_25_board|MLB|STL___LAD|UNDER_8_0|2026-09-03",
       "settled": true,
       "result": "won",
-      "payout_units": 0.9091,
+      "payout_units": 0.8403,
       "recorded_at": "2026-09-03T13:12:58",
       "p_calibrated": 0.5628,
       "outcome": {
@@ -266989,7 +268033,16 @@
         "verify": "STL @ LAD: final 2-3 (total 5) on 2026-09-03",
         "check": "verified"
       },
-      "settled_at": "2026-09-04T13:16:44"
+      "settled_at": "2026-09-04T13:16:44",
+      "book_american": -119,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": 0.9091,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-09-03T16:32:08",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "top_25_board",
@@ -268147,7 +269200,7 @@
       "pick_id": "pod|MLB|OAK___SEA|OVER_7_0|2026-09-04",
       "settled": true,
       "result": "won",
-      "payout_units": 0.9091,
+      "payout_units": 0.8333,
       "recorded_at": "2026-09-04T13:16:44",
       "p_calibrated": 0.6746,
       "outcome": {
@@ -268155,7 +269208,16 @@
         "total_runs": 13,
         "verify": "ATH @ SEA: final 7-6 (total 13 runs) on 2026-09-04"
       },
-      "settled_at": "2026-09-05T12:13:46"
+      "settled_at": "2026-09-05T12:13:46",
+      "book_american": -120,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": 0.9091,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-09-04T16:27:53",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "mlb_game_total_game_total_under_9.5",
@@ -268306,7 +269368,10 @@
         "verify": "NYY @ SD: final 2-3 (total 5) on 2026-09-04",
         "check": "verified"
       },
-      "settled_at": "2026-09-05T12:13:46"
+      "settled_at": "2026-09-05T12:13:46",
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unposted total: no book posted this line before first pitch (the pipeline's 8.5 placeholder or an in-play total); DraftKings' pre-game total was 7.5 -- the bet's line never existed"
     },
     {
       "source": "mlb_under_alert",
@@ -268328,7 +269393,10 @@
         "verify": "ATL @ PHI: final 5-2 (total 7) on 2026-09-04",
         "check": "verified"
       },
-      "settled_at": "2026-09-05T12:13:46"
+      "settled_at": "2026-09-05T12:13:46",
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unposted total: no book posted this line before first pitch (the pipeline's 8.5 placeholder or an in-play total); DraftKings' pre-game total was 6.5 -- the bet's line never existed"
     },
     {
       "source": "top_25_board",
@@ -268344,7 +269412,7 @@
       "pick_id": "top_25_board|MLB|NYY___SDP|UNDER_7_5|2026-09-04",
       "settled": true,
       "result": "won",
-      "payout_units": 0.9091,
+      "payout_units": 0.8197,
       "recorded_at": "2026-09-04T23:47:20",
       "p_calibrated": 0.572,
       "outcome": {
@@ -268353,7 +269421,16 @@
         "verify": "NYY @ SD: final 2-3 (total 5) on 2026-09-04",
         "check": "verified"
       },
-      "settled_at": "2026-09-05T12:13:46"
+      "settled_at": "2026-09-05T12:13:46",
+      "book_american": -122,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": 0.9091,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-09-04T20:50:10",
+        "chosen": "before_pick",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "top_25_board",
@@ -272134,7 +273211,7 @@
       "pick_id": "top_25_board|MLB|TOR___KCR|UNDER_9_5|2026-09-06",
       "settled": true,
       "result": "won",
-      "payout_units": 0.9091,
+      "payout_units": 0.8547,
       "recorded_at": "2026-09-06T12:37:34",
       "p_calibrated": 0.5656,
       "outcome": {
@@ -272143,7 +273220,16 @@
         "verify": "TOR @ KC: final 1-6 (total 7) on 2026-09-06",
         "check": "verified"
       },
-      "settled_at": "2026-09-07T14:40:16"
+      "settled_at": "2026-09-07T14:40:16",
+      "book_american": -117,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": 0.9091,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-09-06T15:32:33",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "pod",
@@ -277263,7 +278349,7 @@
       "pick_id": "top_25_board|MLB|TOR___OAK|UNDER_9_5|2026-09-08",
       "settled": true,
       "result": "won",
-      "payout_units": 0.9091,
+      "payout_units": 0.8621,
       "recorded_at": "2026-09-08T00:03:33",
       "p_calibrated": 0.5619,
       "outcome": {
@@ -277271,7 +278357,16 @@
         "total_runs": 6,
         "verify": "TOR @ ATH: final 4-2 (total 6 runs) on 2026-09-08"
       },
-      "settled_at": "2026-09-09T05:36:07"
+      "settled_at": "2026-09-09T05:36:07",
+      "book_american": -116,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": 0.9091,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-09-08T16:43:22",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "mlb_2plus_hits_hits_2plus_yes",
@@ -292538,7 +293633,7 @@
       "pick_id": "pod|MLB|PIT___CHC|OVER_8_0|2026-09-11",
       "settled": true,
       "result": "won",
-      "payout_units": 0.9091,
+      "payout_units": 0.8403,
       "recorded_at": "2026-09-11T13:20:42",
       "p_calibrated": 0.6746,
       "outcome": {
@@ -292547,7 +293642,16 @@
         "verify": "PIT @ CHC: final 2-12 (total 14) on 2026-09-11",
         "check": "verified"
       },
-      "settled_at": "2026-09-12T12:32:40"
+      "settled_at": "2026-09-12T12:32:40",
+      "book_american": -119,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": 0.9091,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-09-11T16:35:42",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "sharp_strong",
@@ -295659,7 +296763,10 @@
         "verify": "CLE @ MIN: final 3-4 (total 7) on 2026-09-12",
         "check": "verified"
       },
-      "settled_at": "2026-09-13T05:43:28"
+      "settled_at": "2026-09-13T05:43:28",
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unposted total: no book posted this line before first pitch (the pipeline's 8.5 placeholder or an in-play total); DraftKings' pre-game total was 8.0 -- the bet's line never existed"
     },
     {
       "source": "top_25_board",
@@ -295687,7 +296794,16 @@
         "verify": "BAL @ TOR: final 3-7 (total 10) on 2026-09-12",
         "check": "verified"
       },
-      "settled_at": "2026-09-13T05:43:28"
+      "settled_at": "2026-09-13T05:43:28",
+      "book_american": -114,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": -1.0,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-09-12T15:37:17",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "top_25_board",
@@ -295711,7 +296827,16 @@
         "total_runs": 20,
         "verify": "SEA @ ATH: final 19-1 (total 20 runs) on 2026-09-12"
       },
-      "settled_at": "2026-09-13T05:43:28"
+      "settled_at": "2026-09-13T05:43:28",
+      "book_american": -110,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": -1.0,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-09-12T15:37:17",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "pod",
@@ -295725,7 +296850,7 @@
       "pick_id": "pod|MLB|NYM___NYY|OVER_8_0|2026-09-12",
       "settled": true,
       "result": "won",
-      "payout_units": 0.9091,
+      "payout_units": 0.8772,
       "recorded_at": "2026-09-12T12:32:40",
       "p_calibrated": 0.6746,
       "outcome": {
@@ -295734,7 +296859,16 @@
         "verify": "NYM @ NYY: final 12-2 (total 14) on 2026-09-12",
         "check": "verified"
       },
-      "settled_at": "2026-09-13T05:43:28"
+      "settled_at": "2026-09-13T05:43:28",
+      "book_american": -114,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": 0.9091,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-09-12T15:37:17",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "top_25_board",
@@ -295880,7 +297014,16 @@
         "verify": "CHW @ STL: final 6-5 (total 11) on 2026-09-12",
         "check": "verified"
       },
-      "settled_at": "2026-09-13T05:43:28"
+      "settled_at": "2026-09-13T05:43:28",
+      "book_american": -115,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": -1.0,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-09-12T15:37:17",
+        "chosen": "before_pick",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "mlb_3plus_tb_tb_3plus_yes",
@@ -297906,7 +299049,10 @@
         "verify": "BAL @ TOR: final 1-8 (total 9) on 2026-09-13",
         "check": "verified"
       },
-      "settled_at": "2026-09-14T15:25:24"
+      "settled_at": "2026-09-14T15:25:24",
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unposted total: no book posted this line before first pitch (the pipeline's 8.5 placeholder or an in-play total); DraftKings' pre-game total was 7.0 -- the bet's line never existed"
     },
     {
       "source": "mlb_2plus_hits_hits_2plus_yes",
@@ -301318,7 +302464,16 @@
         "verify": "CHW @ CLE: final 6-7 (total 13) on 2026-09-15",
         "check": "verified"
       },
-      "settled_at": "2026-09-16T14:07:23"
+      "settled_at": "2026-09-16T14:07:23",
+      "book_american": -120,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": -1.0,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-09-15T17:06:25",
+        "chosen": "before_pick",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "top_25_board",
@@ -303588,7 +304743,7 @@
       "pick_id": "top_25_board|MLB|BAL___NYM|UNDER_9_0|2026-09-16",
       "settled": true,
       "result": "won",
-      "payout_units": 0.9091,
+      "payout_units": 0.8403,
       "recorded_at": "2026-09-16T14:07:23",
       "p_calibrated": 0.594,
       "outcome": {
@@ -303597,7 +304752,16 @@
         "verify": "BAL @ NYM: final 7-1 (total 8) on 2026-09-16",
         "check": "verified"
       },
-      "settled_at": "2026-09-17T14:02:26"
+      "settled_at": "2026-09-17T14:02:26",
+      "book_american": -119,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": 0.9091,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-09-16T18:09:26",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "cfb_model",
@@ -322784,7 +323948,10 @@
         "verify": "PHI @ NYM: final 3-6 (total 9) on 2026-09-18",
         "check": "verified"
       },
-      "settled_at": "2026-09-19T12:55:57"
+      "settled_at": "2026-09-19T12:55:57",
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unposted total: no book posted this line before first pitch (the pipeline's 8.5 placeholder or an in-play total); DraftKings' pre-game total was 8.5 -- the bet's line never existed"
     },
     {
       "source": "wnba_alts_home_total_over_76.5",
@@ -329068,7 +330235,10 @@
         "verify": "MIN @ LAA: final 5-6 (total 11) on 2026-09-19",
         "check": "verified"
       },
-      "settled_at": "2026-09-20T13:35:22"
+      "settled_at": "2026-09-20T13:35:22",
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unposted total: no book posted this line before first pitch (the pipeline's 8.5 placeholder or an in-play total); DraftKings' pre-game total was 7.5 -- the bet's line never existed"
     },
     {
       "source": "top_25_board",
@@ -329093,7 +330263,10 @@
         "verify": "NYY @ ARI: final 3-5 (total 8) on 2026-09-19",
         "check": "verified"
       },
-      "settled_at": "2026-09-20T13:35:22"
+      "settled_at": "2026-09-20T13:35:22",
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unposted total: no book posted this line before first pitch (the pipeline's 8.5 placeholder or an in-play total); DraftKings' pre-game total was 7.5 -- the bet's line never existed"
     },
     {
       "source": "top_25_board",
@@ -329118,7 +330291,10 @@
         "verify": "MIA @ SD: final 6-7 (total 13) on 2026-09-19",
         "check": "verified"
       },
-      "settled_at": "2026-09-20T13:35:22"
+      "settled_at": "2026-09-20T13:35:22",
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unposted total: no book posted this line before first pitch (the pipeline's 8.5 placeholder or an in-play total); DraftKings' pre-game total was 7.5 -- the bet's line never existed"
     },
     {
       "source": "mlb_2plus_hits_hits_2plus_yes",
@@ -334836,7 +336012,7 @@
       "pick_id": "pod|MLB|WSN___DET|OVER_8_0|2026-09-21",
       "settled": true,
       "result": "won",
-      "payout_units": 0.9091,
+      "payout_units": 0.8475,
       "recorded_at": "2026-09-21T15:32:46",
       "p_calibrated": 0.6194,
       "outcome": {
@@ -334844,7 +336020,16 @@
         "total_runs": 11,
         "verify": "WSH @ DET: final 2-9 (total 11 runs) on 2026-09-21"
       },
-      "settled_at": "2026-09-22T13:55:26"
+      "settled_at": "2026-09-22T13:55:26",
+      "book_american": -118,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": 0.9091,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-09-21T15:32:58",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "soccer_cards_cards_under_5.0",
@@ -336760,7 +337945,16 @@
         "total_runs": 16,
         "verify": "LAA @ ATH: final 7-9 (total 16 runs) on 2026-09-22"
       },
-      "settled_at": "2026-09-23T05:25:46"
+      "settled_at": "2026-09-23T05:25:46",
+      "book_american": -118,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": -1.0,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-09-22T17:02:33",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "wnba_alts_home_total_over_79.2",
@@ -337088,7 +338282,10 @@
         "verify": "CLE @ BOS: final 3-2 (total 5) on 2026-09-22",
         "check": "verified"
       },
-      "settled_at": "2026-09-23T07:49:45"
+      "settled_at": "2026-09-23T07:49:45",
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unposted total: no book posted this line before first pitch (the pipeline's 8.5 placeholder or an in-play total); DraftKings' pre-game total was 6.5 -- the bet's line never existed"
     },
     {
       "source": "mlb_under_alert",
@@ -337959,7 +339156,10 @@
         "verify": "CHW @ KC: final 14-11 (total 25) on 2026-09-22",
         "check": "verified"
       },
-      "settled_at": "2026-09-23T10:11:24"
+      "settled_at": "2026-09-23T10:11:24",
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unposted total: no book posted this line before first pitch (the pipeline's 8.5 placeholder or an in-play total); DraftKings' pre-game total was 8.0 -- the bet's line never existed"
     },
     {
       "source": "top_25_board",
@@ -337975,7 +339175,7 @@
       "pick_id": "top_25_board|MLB|MIL___PHI|OVER_7_0|2026-09-22",
       "settled": true,
       "result": "won",
-      "payout_units": 0.9091,
+      "payout_units": 0.8333,
       "recorded_at": "2026-09-22T21:25:47",
       "p_calibrated": 0.4812,
       "outcome": {
@@ -337984,7 +339184,16 @@
         "verify": "MIL @ PHI: final 4-6 (total 10) on 2026-09-22",
         "check": "verified"
       },
-      "settled_at": "2026-09-23T10:11:24"
+      "settled_at": "2026-09-23T10:11:24",
+      "book_american": -120,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": 0.9091,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-09-22T19:53:16",
+        "chosen": "before_pick",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "top_25_board",
@@ -338008,7 +339217,16 @@
         "total_runs": 4,
         "verify": "WSH @ DET: final 3-1 (total 4 runs) on 2026-09-22"
       },
-      "settled_at": "2026-09-23T10:11:24"
+      "settled_at": "2026-09-23T10:11:24",
+      "book_american": -119,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": -1.0,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-09-22T19:53:16",
+        "chosen": "before_pick",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "mlb_2plus_hits_hits_2plus_yes",
@@ -338059,7 +339277,10 @@
         "verify": "ARI @ COL: final 5-3 (total 8) on 2026-09-23",
         "check": "verified"
       },
-      "settled_at": "2026-09-24T10:18:37"
+      "settled_at": "2026-09-24T10:18:37",
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unposted total: no book posted this line before first pitch (the pipeline's 8.5 placeholder or an in-play total); DraftKings' pre-game total was 11.5 -- the bet's line never existed"
     },
     {
       "source": "top_25_board",
@@ -338084,7 +339305,10 @@
         "verify": "MIN @ SF: final 4-2 (total 6) on 2026-09-23",
         "check": "verified"
       },
-      "settled_at": "2026-09-24T00:40:11"
+      "settled_at": "2026-09-24T00:40:11",
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unposted total: no book posted this line before first pitch (the pipeline's 8.5 placeholder or an in-play total); DraftKings' pre-game total was 8.0 -- the bet's line never existed"
     },
     {
       "source": "mlb_2plus_hits_hits_2plus_yes",
@@ -338290,7 +339514,10 @@
         "verify": "TOR @ BAL: final 2-4 (total 6) on 2026-09-23",
         "check": "verified"
       },
-      "settled_at": "2026-09-24T00:40:11"
+      "settled_at": "2026-09-24T00:40:11",
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unposted total: no book posted this line before first pitch (the pipeline's 8.5 placeholder or an in-play total); DraftKings' pre-game total was 8.0 -- the bet's line never existed"
     },
     {
       "source": "pod",
@@ -338313,7 +339540,10 @@
         "verify": "MIA @ CHC: final 3-2 (total 5) on 2026-09-23",
         "check": "verified"
       },
-      "settled_at": "2026-09-24T10:18:37"
+      "settled_at": "2026-09-24T10:18:37",
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unposted total: no book posted this line before first pitch (the pipeline's 8.5 placeholder or an in-play total); DraftKings' pre-game total was 6.5 -- the bet's line never existed"
     },
     {
       "source": "top_25_board",
@@ -338426,7 +339656,10 @@
         "verify": "CLE @ BOS: final 0-1 (total 1) on 2026-09-23",
         "check": "verified"
       },
-      "settled_at": "2026-09-24T10:18:37"
+      "settled_at": "2026-09-24T10:18:37",
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unposted total: no book posted this line before first pitch (the pipeline's 8.5 placeholder or an in-play total); DraftKings' pre-game total was 6.5 -- the bet's line never existed"
     },
     {
       "source": "nhl_skater_hits_over_1.5",
@@ -338527,7 +339760,16 @@
         "verify": "MIA @ CHC: final 3-2 (total 5) on 2026-09-23",
         "check": "verified"
       },
-      "settled_at": "2026-09-24T10:18:37"
+      "settled_at": "2026-09-24T10:18:37",
+      "book_american": -122,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": -1.0,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-09-23T18:26:28",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "top_25_board",
@@ -338761,7 +340003,10 @@
         "total_runs": 12,
         "verify": "HOU @ ATH: final 7-5 (total 12 runs) on 2026-09-24"
       },
-      "settled_at": "2026-09-25T05:41:42"
+      "settled_at": "2026-09-25T05:41:42",
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unposted total: no book posted this line before first pitch (the pipeline's 8.5 placeholder or an in-play total); DraftKings' pre-game total was 10.5 -- the bet's line never existed"
     },
     {
       "source": "top_25_board",
@@ -338786,7 +340031,10 @@
         "verify": "CLE @ BOS: final 1-0 (total 1) on 2026-09-24",
         "check": "verified"
       },
-      "settled_at": "2026-09-25T05:41:42"
+      "settled_at": "2026-09-25T05:41:42",
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unposted total: no book posted this line before first pitch (the pipeline's 8.5 placeholder or an in-play total); DraftKings' pre-game total was 6.5 -- the bet's line never existed"
     },
     {
       "source": "top_25_board",
@@ -338802,7 +340050,7 @@
       "pick_id": "top_25_board|MLB|CIN___ATL|OVER_7_5|2026-09-24",
       "settled": true,
       "result": "won",
-      "payout_units": 0.9091,
+      "payout_units": 0.8929,
       "recorded_at": "2026-09-24T00:40:11",
       "p_calibrated": 0.4881,
       "outcome": {
@@ -338811,7 +340059,16 @@
         "verify": "CIN @ ATL: final 7-6 (total 13) on 2026-09-24",
         "check": "verified"
       },
-      "settled_at": "2026-09-25T05:41:42"
+      "settled_at": "2026-09-25T05:41:42",
+      "book_american": -112,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": 0.9091,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-09-24T17:18:58",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "top_25_board",
@@ -338972,7 +340229,10 @@
         "verify": "CLE @ BOS: final 1-0 (total 1) on 2026-09-24",
         "check": "verified"
       },
-      "settled_at": "2026-09-25T05:41:42"
+      "settled_at": "2026-09-25T05:41:42",
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unposted total: no book posted this line before first pitch (the pipeline's 8.5 placeholder or an in-play total); DraftKings' pre-game total was 6.5 -- the bet's line never existed"
     },
     {
       "source": "pod",
@@ -339273,7 +340533,16 @@
         "verify": "COL @ CHW: final 1-6 (total 7) on 2026-09-25",
         "check": "verified"
       },
-      "settled_at": "2026-09-26T06:09:29"
+      "settled_at": "2026-09-26T06:09:29",
+      "book_american": -119,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": -1.0,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-09-25T18:42:55",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "nhl_skater_blocks_over_1.5",
@@ -340000,7 +341269,10 @@
         "verify": "LAA @ SEA: final 4-8 (total 12) on 2026-09-26",
         "check": "verified"
       },
-      "settled_at": "2026-09-27T14:04:31"
+      "settled_at": "2026-09-27T14:04:31",
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unposted total: no book posted this line before first pitch (the pipeline's 8.5 placeholder or an in-play total); DraftKings' pre-game total was 7.0 -- the bet's line never existed"
     },
     {
       "source": "mlb_2plus_hits_hits_2plus_yes",
@@ -341514,7 +342786,7 @@
       "pick_id": "pod|MLB|CHC___SDP|OVER_7_0|2026-09-29",
       "settled": true,
       "result": "won",
-      "payout_units": 0.9091,
+      "payout_units": 0.8547,
       "recorded_at": "2026-09-29T01:12:20",
       "p_calibrated": 0.6746,
       "outcome": {
@@ -341523,7 +342795,16 @@
         "verify": "CHC @ SD: final 0-8 (total 8) on 2026-09-29",
         "check": "verified"
       },
-      "settled_at": "2026-09-30T08:41:12"
+      "settled_at": "2026-09-30T08:41:12",
+      "book_american": -117,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": 0.9091,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-09-29T00:32:21",
+        "chosen": "before_pick",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "mlb_2plus_hits_hits_2plus_yes",
@@ -341608,7 +342889,10 @@
         "verify": "BOS @ NYY: final 0-9 (total 9) on 2026-09-29",
         "check": "verified"
       },
-      "settled_at": "2026-09-30T08:41:12"
+      "settled_at": "2026-09-30T08:41:12",
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unposted total: no book posted this line before first pitch (the pipeline's 8.5 placeholder or an in-play total); DraftKings' pre-game total was 6.0 -- the bet's line never existed"
     },
     {
       "source": "mlb_under_alert",
@@ -341649,7 +342933,10 @@
         "verify": "BOS @ NYY: final 2-9 (total 11) on 2026-09-30",
         "check": "verified"
       },
-      "settled_at": "2026-10-01T09:03:47"
+      "settled_at": "2026-10-01T09:03:47",
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unposted total: no book posted this line before first pitch (the pipeline's 8.5 placeholder or an in-play total); DraftKings' pre-game total was 6.5 -- the bet's line never existed"
     },
     {
       "source": "nhl_skater_blocks_over_1.5",
@@ -341746,7 +343033,10 @@
         "verify": "BOS @ NYY: final 2-9 (total 11) on 2026-09-30",
         "check": "verified"
       },
-      "settled_at": "2026-10-01T09:03:47"
+      "settled_at": "2026-10-01T09:03:47",
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unposted total: no book posted this line before first pitch (the pipeline's 8.5 placeholder or an in-play total); DraftKings' pre-game total was 6.5 -- the bet's line never existed"
     },
     {
       "source": "top_25_board",
@@ -341771,7 +343061,10 @@
         "verify": "CHC @ SD: final 1-4 (total 5) on 2026-09-30",
         "check": "verified"
       },
-      "settled_at": "2026-10-01T09:03:47"
+      "settled_at": "2026-10-01T09:03:47",
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unposted total: no book posted this line before first pitch (the pipeline's 8.5 placeholder or an in-play total); DraftKings' pre-game total was 7.0 -- the bet's line never existed"
     },
     {
       "source": "top_25_board",
@@ -343269,7 +344562,10 @@
         "verify": "NYY @ TB: final 0-1 (total 1) on 2026-10-03",
         "check": "verified"
       },
-      "settled_at": "2026-10-04T14:22:00"
+      "settled_at": "2026-10-04T14:22:00",
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unposted total: no book posted this line before first pitch (the pipeline's 8.5 placeholder or an in-play total); DraftKings' pre-game total was 7.0 -- the bet's line never existed"
     },
     {
       "source": "pod",
@@ -343371,7 +344667,7 @@
       "pick_id": "pod|MLB|CHW___CLE|OVER_6_5|2026-10-05",
       "settled": true,
       "result": "won",
-      "payout_units": 0.9091,
+      "payout_units": 0.8772,
       "recorded_at": "2026-10-05T00:54:21",
       "p_calibrated": 0.6746,
       "outcome": {
@@ -343380,7 +344676,16 @@
         "verify": "CHW @ CLE: final 4-3 (total 7) on 2026-10-05",
         "check": "verified"
       },
-      "settled_at": "2026-10-06T02:22:47"
+      "settled_at": "2026-10-06T02:22:47",
+      "book_american": -114,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": 0.9091,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-10-05T17:24:11",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "mlb_under_alert",
@@ -343547,7 +344852,10 @@
         "verify": "NYY @ TB: final 2-5 (total 7) on 2026-10-05",
         "check": "verified"
       },
-      "settled_at": "2026-10-06T15:17:08"
+      "settled_at": "2026-10-06T15:17:08",
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unposted total: no book posted this line before first pitch (the pipeline's 8.5 placeholder or an in-play total); DraftKings' pre-game total was 6.5 -- the bet's line never existed"
     },
     {
       "source": "top_25_board",
@@ -343572,7 +344880,10 @@
         "verify": "CHW @ CLE: final 4-3 (total 7) on 2026-10-05",
         "check": "verified"
       },
-      "settled_at": "2026-10-06T11:30:25"
+      "settled_at": "2026-10-06T11:30:25",
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unposted total: no book posted this line before first pitch (the pipeline's 8.5 placeholder or an in-play total); DraftKings' pre-game total was 6.5 -- the bet's line never existed"
     },
     {
       "source": "pod",
@@ -343919,7 +345230,10 @@
         "verify": "MIL @ SD: final 3-4 (total 7) on 2026-10-06",
         "check": "verified"
       },
-      "settled_at": "2026-10-07T08:49:05"
+      "settled_at": "2026-10-07T08:49:05",
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unposted total: no book posted this line before first pitch (the pipeline's 8.5 placeholder or an in-play total); DraftKings' pre-game total was 7.5 -- the bet's line never existed"
     },
     {
       "source": "top_25_board",
@@ -343944,7 +345258,10 @@
         "verify": "LAD @ ATL: final 3-1 (total 4) on 2026-10-06",
         "check": "verified"
       },
-      "settled_at": "2026-10-07T05:55:19"
+      "settled_at": "2026-10-07T05:55:19",
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unposted total: no book posted this line before first pitch (the pipeline's 8.5 placeholder or an in-play total); DraftKings' pre-game total was 6.5 -- the bet's line never existed"
     },
     {
       "source": "top_25_board",
@@ -343960,7 +345277,7 @@
       "pick_id": "top_25_board|MLB|MIL___SDP|UNDER_7_5|2026-10-06",
       "settled": true,
       "result": "won",
-      "payout_units": 0.9091,
+      "payout_units": 0.8929,
       "recorded_at": "2026-10-06T20:43:56",
       "p_calibrated": 0.5619,
       "outcome": {
@@ -343969,7 +345286,16 @@
         "verify": "MIL @ SD: final 3-4 (total 7) on 2026-10-06",
         "check": "verified"
       },
-      "settled_at": "2026-10-07T08:49:05"
+      "settled_at": "2026-10-07T08:49:05",
+      "book_american": -112,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": 0.9091,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-10-06T18:36:40",
+        "chosen": "before_pick",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "mlb_2plus_hits_hits_2plus_yes",
@@ -344974,7 +346300,16 @@
         "verify": "MIL @ SD: final 3-1 (total 4) on 2026-10-07",
         "check": "verified"
       },
-      "settled_at": "2026-10-08T13:40:48"
+      "settled_at": "2026-10-08T13:40:48",
+      "book_american": -111,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": -1.0,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-10-07T15:46:51",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "top_25_board",
@@ -345426,7 +346761,16 @@
         "verify": "LAD @ MIL: final 1-2 (total 3) on 2026-10-11",
         "check": "verified"
       },
-      "settled_at": "2026-10-12T09:45:20"
+      "settled_at": "2026-10-12T09:45:20",
+      "book_american": -113,
+      "repriced": {
+        "at": "2026-10-27T00:09:59",
+        "from_payout": -1.0,
+        "recorded_price": -110,
+        "book_snapshot_at": "2026-10-11T18:59:44",
+        "chosen": "first_pregame_after",
+        "reason": "2026-10-26: total graded at a flat -110; re-priced at DraftKings' real pre-game over/under juice (the house standard)"
+      }
     },
     {
       "source": "top_25_board",
@@ -345755,7 +347099,10 @@
         "verify": "LAD @ MIL: final 1-2 (total 3) on 2026-10-11",
         "check": "verified"
       },
-      "settled_at": "2026-10-12T15:41:39"
+      "settled_at": "2026-10-12T15:41:39",
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unposted total: no book posted this line before first pitch (the pipeline's 8.5 placeholder or an in-play total); DraftKings' pre-game total was 6.0 -- the bet's line never existed"
     },
     {
       "source": "pod",
@@ -345778,7 +347125,10 @@
         "verify": "LAD @ MIL: final 4-7 (total 11) on 2026-10-12",
         "check": "verified"
       },
-      "settled_at": "2026-10-13T03:11:15"
+      "settled_at": "2026-10-13T03:11:15",
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unposted total: no book posted this line before first pitch (the pipeline's 8.5 placeholder or an in-play total); DraftKings' pre-game total was 7.0 -- the bet's line never existed"
     },
     {
       "source": "mlb_under_alert",
@@ -346713,7 +348063,10 @@
         "verify": "CLE @ TB: final 1-3 (total 4) on 2026-10-13",
         "check": "verified"
       },
-      "settled_at": "2026-10-14T07:45:54"
+      "settled_at": "2026-10-14T07:45:54",
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unposted total: no book posted this line before first pitch (the pipeline's 8.5 placeholder or an in-play total); DraftKings' pre-game total was 6.5 -- the bet's line never existed"
     },
     {
       "source": "nba_alts_home_total_over_109.7",
@@ -346890,14 +348243,19 @@
       "fair_american": -110,
       "date": "2026-10-15",
       "pick_id": "pod|MLB|TBR___CLE|OVER_6_5|2026-10-15",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "lost",
+      "payout_units": -1.0,
       "recorded_at": "2026-10-15T01:10:03",
       "p_calibrated": 0.5619,
-      "voided": true,
-      "voided_at": "2026-10-20T00:03:28",
-      "voided_reason": "unsettleable: no outcome feed within 4 days"
+      "voided": false,
+      "outcome": {
+        "final_score": "TB 2 @ CLE 3",
+        "total_runs": 5,
+        "verify": "TB @ CLE: final 2-3 (total 5) on 2026-10-15",
+        "check": "verified"
+      },
+      "settled_at": "2026-10-27T00:09:59"
     },
     {
       "source": "mlb_under_alert",
@@ -348223,14 +349581,19 @@
       "primary_source_module": "today_reco",
       "date": "2026-10-17",
       "pick_id": "top_25_board|MLB|TBR___CLE|UNDER_8_5|2026-10-17",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "lost",
+      "payout_units": -1.0,
       "recorded_at": "2026-10-17T15:42:37",
       "p_calibrated": 0.5735,
-      "voided": true,
-      "voided_at": "2026-10-22T01:15:09",
-      "voided_reason": "unsettleable: no outcome feed within 4 days"
+      "voided": false,
+      "outcome": {
+        "final_score": "TB 7 @ CLE 3",
+        "total_runs": 10,
+        "verify": "TB @ CLE: final 7-3 (total 10) on 2026-10-17",
+        "check": "verified"
+      },
+      "settled_at": "2026-10-27T00:09:59"
     },
     {
       "source": "nba_alts_home_total_over_109.7",
@@ -348543,7 +349906,10 @@
         "verify": "CLE @ TB: final 3-7 (total 10) on 2026-10-19",
         "check": "verified"
       },
-      "settled_at": "2026-10-20T11:49:35"
+      "settled_at": "2026-10-20T11:49:35",
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unposted total: no book posted this line before first pitch (the pipeline's 8.5 placeholder or an in-play total); DraftKings' pre-game total was 7.0 -- the bet's line never existed"
     },
     {
       "source": "mlb_under_alert",
@@ -349018,7 +350384,10 @@
       "settled": false,
       "result": "pending",
       "payout_units": null,
-      "recorded_at": "2026-10-22T05:00:32"
+      "recorded_at": "2026-10-22T05:00:32",
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_dd_double_double_no",
@@ -349035,7 +350404,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T05:00:32",
-      "p_calibrated": 0.693
+      "p_calibrated": 0.693,
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_tt_team_pts_under_118.5",
@@ -349052,7 +350424,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T05:00:32",
-      "p_calibrated": 0.671
+      "p_calibrated": 0.671,
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_tt_team_pts_under_115.5",
@@ -349069,7 +350444,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T05:00:32",
-      "p_calibrated": 0.657
+      "p_calibrated": 0.657,
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "tennis_ml_ml_player1",
@@ -349144,7 +350522,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T05:00:32",
-      "p_calibrated": 0.717
+      "p_calibrated": 0.717,
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "tennis_aces_aces_under_3.5",
@@ -349161,7 +350542,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T05:00:32",
-      "p_calibrated": 0.709
+      "p_calibrated": 0.709,
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nhl_pl_home_minus_1.5",
@@ -349178,7 +350562,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T05:00:32",
-      "p_calibrated": 0.495
+      "p_calibrated": 0.495,
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nhl_pl_home_minus_1.5",
@@ -349195,7 +350582,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T05:00:32",
-      "p_calibrated": 0.464
+      "p_calibrated": 0.464,
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nhl_pl_away_minus_1.5",
@@ -349212,7 +350602,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T05:00:32",
-      "p_calibrated": 0.423
+      "p_calibrated": 0.423,
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nhl_pl_away_plus_1.5",
@@ -349254,7 +350647,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T05:00:32",
-      "p_calibrated": 0.423
+      "p_calibrated": 0.423,
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nhl_pl_away_minus_1.5",
@@ -349271,7 +350667,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T05:00:32",
-      "p_calibrated": 0.423
+      "p_calibrated": 0.423,
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nhl_pl_away_plus_1.5",
@@ -349288,7 +350687,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T05:00:32",
-      "p_calibrated": 0.675
+      "p_calibrated": 0.675,
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nhl_pl_away_plus_1.5",
@@ -349305,7 +350707,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T05:00:32",
-      "p_calibrated": 0.675
+      "p_calibrated": 0.675,
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nhl_pl_away_minus_1.5",
@@ -349322,7 +350727,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T05:00:32",
-      "p_calibrated": 0.423
+      "p_calibrated": 0.423,
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "mlb_rl_home_minus_1.5",
@@ -349339,7 +350747,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T05:00:32",
-      "p_calibrated": 0.454
+      "p_calibrated": 0.454,
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "mlb_rl_home_minus_1.5",
@@ -349356,7 +350767,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T05:00:32",
-      "p_calibrated": 0.548
+      "p_calibrated": 0.548,
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "mlb_rl_away_minus_1.5",
@@ -349373,7 +350787,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T05:00:32",
-      "p_calibrated": 0.552
+      "p_calibrated": 0.552,
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "mlb_rl_home_minus_1.5",
@@ -349390,7 +350807,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T05:00:32",
-      "p_calibrated": 0.559
+      "p_calibrated": 0.559,
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "mlb_rl_home_minus_1.5",
@@ -349407,7 +350827,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T05:00:32",
-      "p_calibrated": 0.563
+      "p_calibrated": 0.563,
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "mlb_rl_home_minus_1.5",
@@ -349424,7 +350847,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T05:00:32",
-      "p_calibrated": 0.584
+      "p_calibrated": 0.584,
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "mlb_rl_home_minus_1.5",
@@ -349441,7 +350867,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T05:00:32",
-      "p_calibrated": 0.589
+      "p_calibrated": 0.589,
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nhl_period_p3_over_1.5",
@@ -349458,7 +350887,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T05:00:32",
-      "p_calibrated": 0.6141
+      "p_calibrated": 0.6141,
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nhl_period_p3_over_1.5",
@@ -349475,7 +350907,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T05:00:32",
-      "p_calibrated": 0.6141
+      "p_calibrated": 0.6141,
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nhl_period_p3_over_1.5",
@@ -349492,7 +350927,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T05:00:32",
-      "p_calibrated": 0.6141
+      "p_calibrated": 0.6141,
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nhl_period_p3_over_1.5",
@@ -349509,7 +350947,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T05:00:32",
-      "p_calibrated": 0.6141
+      "p_calibrated": 0.6141,
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nhl_period_p3_over_1.5",
@@ -349526,7 +350967,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T05:00:32",
-      "p_calibrated": 0.6141
+      "p_calibrated": 0.6141,
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nhl_period_p3_over_1.5",
@@ -349543,7 +350987,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T05:00:32",
-      "p_calibrated": 0.6141
+      "p_calibrated": 0.6141,
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nhl_period_p3_over_1.5",
@@ -349560,7 +351007,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T05:00:32",
-      "p_calibrated": 0.6141
+      "p_calibrated": 0.6141,
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nhl_period_p3_over_1.5",
@@ -349577,7 +351027,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T05:00:32",
-      "p_calibrated": 0.6141
+      "p_calibrated": 0.6141,
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nhl_period_p3_over_1.5",
@@ -349594,7 +351047,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T05:00:32",
-      "p_calibrated": 0.6141
+      "p_calibrated": 0.6141,
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nhl_period_p3_over_1.5",
@@ -349611,7 +351067,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T05:00:32",
-      "p_calibrated": 0.6141
+      "p_calibrated": 0.6141,
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nhl_anytime_goal_no",
@@ -349701,7 +351160,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T05:00:32",
-      "p_calibrated": 0.5613
+      "p_calibrated": 0.5613,
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nhl_skater_blocks_over_1.5",
@@ -364177,7 +365639,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T22:30:58",
-      "p_calibrated": 0.7401
+      "p_calibrated": 0.7401,
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "wnba_ast_over_2.5",
@@ -364219,7 +365684,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T22:30:58",
-      "p_calibrated": 0.795
+      "p_calibrated": 0.795,
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_blocks_over_1.5",
@@ -364429,7 +365897,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T22:30:58",
-      "p_calibrated": 0.645
+      "p_calibrated": 0.645,
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_tov_tov_over_1.5",
@@ -364606,7 +366077,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T22:30:58",
-      "p_calibrated": 0.6858
+      "p_calibrated": 0.6858,
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_pra_pra_under_31.5",
@@ -364623,7 +366097,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T22:30:58",
-      "p_calibrated": 0.6858
+      "p_calibrated": 0.6858,
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_pra_pra_under_30.5",
@@ -364657,7 +366134,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T22:30:58",
-      "p_calibrated": 0.642
+      "p_calibrated": 0.642,
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_fta_fta_under_6.0",
@@ -364691,7 +366171,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T22:30:58",
-      "p_calibrated": 0.719
+      "p_calibrated": 0.719,
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_fta_fta_under_5.0",
@@ -364708,7 +366191,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T22:30:58",
-      "p_calibrated": 0.674
+      "p_calibrated": 0.674,
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_fta_fta_under_4.0",
@@ -364759,7 +366245,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T22:30:58",
-      "p_calibrated": 0.708
+      "p_calibrated": 0.708,
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_fta_fta_under_4.0",
@@ -364810,7 +366299,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T22:30:58",
-      "p_calibrated": 0.661
+      "p_calibrated": 0.661,
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_tt_team_pts_under_117.5",
@@ -364827,7 +366319,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T22:30:58",
-      "p_calibrated": 0.649
+      "p_calibrated": 0.649,
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_tt_team_pts_under_117.5",
@@ -364844,7 +366339,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T22:30:58",
-      "p_calibrated": 0.663
+      "p_calibrated": 0.663,
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_tt_team_pts_under_114.5",
@@ -364861,7 +366359,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T22:30:58",
-      "p_calibrated": 0.646
+      "p_calibrated": 0.646,
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nhl_pl_home_minus_1.5",
@@ -365078,7 +366579,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T22:30:58",
-      "p_calibrated": 0.498
+      "p_calibrated": 0.498,
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_td_triple_double_yes",
@@ -365095,7 +366599,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T22:30:58",
-      "p_calibrated": 0.6
+      "p_calibrated": 0.6,
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nhl_period_p3_over_1.5",
@@ -365810,7 +367317,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T22:30:58",
-      "p_calibrated": 0.5613
+      "p_calibrated": 0.5613,
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nhl_skater_blocks_over_1.5",
@@ -365827,7 +367337,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T22:30:58",
-      "p_calibrated": 0.5472
+      "p_calibrated": 0.5472,
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nhl_skater_blocks_over_1.5",
@@ -365844,7 +367357,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T22:30:58",
-      "p_calibrated": 0.5613
+      "p_calibrated": 0.5613,
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nhl_skater_blocks_over_1.5",
@@ -365970,7 +367486,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T22:30:58",
-      "p_calibrated": 0.653
+      "p_calibrated": 0.653,
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_ast_ast_over_5.5",
@@ -366079,7 +367598,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T22:30:58",
-      "p_calibrated": 0.664
+      "p_calibrated": 0.664,
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_pr_pr_under_37.5",
@@ -366138,7 +367660,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T22:30:58",
-      "p_calibrated": 0.685
+      "p_calibrated": 0.685,
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_ra_ra_under_25.5",
@@ -366189,7 +367714,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T22:30:58",
-      "p_calibrated": 0.686
+      "p_calibrated": 0.686,
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "pick_id": "lock_of_day|MLB_PP|Drew_Gilbert|PP_batter_hrr_under_3_5|2026-06-08",
@@ -369809,7 +371337,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T22:45:44",
-      "p_calibrated": 0.8254
+      "p_calibrated": 0.8254,
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_alts_home_total_over_109.7",
@@ -369826,7 +371357,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T22:45:44",
-      "p_calibrated": 0.8254
+      "p_calibrated": 0.8254,
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "pod",
@@ -369838,11 +371372,18 @@
       "fair_american": -110,
       "date": "2026-10-23",
       "pick_id": "pod|MLB|TBR___MIL|OVER_6_5|2026-10-23",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "lost",
+      "payout_units": -1.0,
       "recorded_at": "2026-10-23T00:24:03",
-      "p_calibrated": 0.6746
+      "p_calibrated": 0.6746,
+      "outcome": {
+        "final_score": "TB 2 @ MIL 3",
+        "total_runs": 5,
+        "verify": "TB @ MIL: final 2-3 (total 5) on 2026-10-23",
+        "check": "verified"
+      },
+      "settled_at": "2026-10-27T00:09:59"
     },
     {
       "source": "nfl_pass_int",
@@ -379005,12 +380546,18 @@
       "primary_source_module": "today_reco",
       "date": "2026-10-23",
       "pick_id": "top_25_board|MLB|TBR___MIL|MIL_ML|2026-10-23",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "won",
+      "payout_units": 0.5181,
       "recorded_at": "2026-10-23T02:03:03",
       "p_calibrated": 0.5978,
-      "book_american": -193
+      "book_american": -193,
+      "outcome": {
+        "final_score": "TB 2 @ MIL 3",
+        "total_runs": 5,
+        "verify": "TB @ MIL: final 2-3 (total 5 runs) on 2026-10-23"
+      },
+      "settled_at": "2026-10-27T00:09:59"
     },
     {
       "source": "nfl_rec_yds",
@@ -384318,11 +385865,18 @@
       "matchup": "TBR @ MIL",
       "date": "2026-10-23",
       "pick_id": "mlb_game_total_game_total_over_7_5|MLB|TBR___MIL|over_7_5|2026-10-23",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "lost",
+      "payout_units": -1.0,
       "recorded_at": "2026-10-23T02:35:40",
-      "p_calibrated": 0.4831
+      "p_calibrated": 0.4831,
+      "outcome": {
+        "final_score": "TB 2 @ MIL 3",
+        "total_runs": 5,
+        "verify": "TB @ MIL: final 2-3 (total 5) on 2026-10-23",
+        "check": "verified"
+      },
+      "settled_at": "2026-10-27T00:09:59"
     },
     {
       "source": "nhl_pl_home_plus_1.5",
@@ -384744,7 +386298,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T03:48:03",
-      "p_calibrated": 0.887
+      "p_calibrated": 0.887,
+      "voided": true,
+      "voided_at": "2026-10-27T00:09:59",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_reb_reb_over_7.5",
@@ -393136,15 +394693,22 @@
       "primary_source_module": "today_reco",
       "date": "2026-10-24",
       "pick_id": "top_25_board|MLB|TBR___MIL|UNDER_8_5|2026-10-24",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "lost",
+      "payout_units": -1.0,
       "recorded_at": "2026-10-24T21:11:17",
       "also_sources": [
         "sharp_strong",
         "lock_of_day"
       ],
-      "p_calibrated": 0.5619
+      "p_calibrated": 0.5619,
+      "outcome": {
+        "final_score": "TB 4 @ MIL 5",
+        "total_runs": 9,
+        "verify": "TB @ MIL: final 4-5 (total 9) on 2026-10-24",
+        "check": "verified"
+      },
+      "settled_at": "2026-10-27T00:09:59"
     },
     {
       "source": "golf_top_5",
