@@ -2,9 +2,9 @@
 
 **Model Confidence: 10.2/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
 
-_Pipeline health: **WARNING** (12/15 artifacts ok; 3 empty, 0 stale)._ 
+_Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
 
-_Generated at 2026-10-27T00:09:33 UTC. Game lines source: **placeholder -110 (no real book today)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-10-27T00:38:33 UTC. Game lines source: **placeholder -110 (no real book today)**. Pick-em opportunities from PrizePicks._
 
 ## Full Slate (1 games)
 
@@ -14,35 +14,35 @@ _Generated at 2026-10-27T00:09:33 UTC. Game lines source: **placeholder -110 (no
 
 ## Parlays - top 5
 
-- **3-leg @ +644 (prob 17.1%, EV +27.44%)**
+- **3-leg @ +613 (prob 19.6%, EV +39.61%)**
   - Taylor Walls OVER 0.5 batter_hits (+114, model 51.3%)
   - Victor Mesa Jr. OVER 0.5 batter_hits (-134, model 61.1%)
-  - MIL @ TBR MIL_ML (-101, model 54.7%)
-- **3-leg @ +551 (prob 19.4%, EV +26.66%)**
+  - MIL @ TBR OVER_7.5 (-110, model 62.4%)
+- **3-leg @ +525 (prob 22.2%, EV +38.75%)**
   - Taylor Walls OVER 0.5 batter_hits (+114, model 51.3%)
   - Chandler Simpson UNDER 1.5 batter_total_bases (-189, model 69.3%)
-  - MIL @ TBR MIL_ML (-101, model 54.7%)
-- **3-leg @ +678 (prob 16.0%, EV +24.78%)**
+  - MIL @ TBR OVER_7.5 (-110, model 62.4%)
+- **3-leg @ +646 (prob 18.3%, EV +36.69%)**
   - Taylor Walls OVER 0.5 batter_hits (+114, model 51.3%)
   - David Hamilton OVER 0.5 batter_hits (-121, model 57.2%)
-  - MIL @ TBR MIL_ML (-101, model 54.7%)
-- **3-leg @ +824 (prob 13.5%, EV +24.46%)**
+  - MIL @ TBR OVER_7.5 (-110, model 62.4%)
+- **3-leg @ +787 (prob 15.4%, EV +36.34%)**
   - Taylor Walls OVER 0.5 batter_hits (+114, model 51.3%)
   - Junior Caminero OVER 1.5 batter_total_bases (+117, model 48.0%)
-  - MIL @ TBR MIL_ML (-101, model 54.7%)
-- **3-leg @ +841 (prob 13.2%, EV +24.03%)**
+  - MIL @ TBR OVER_7.5 (-110, model 62.4%)
+- **3-leg @ +803 (prob 15.0%, EV +35.87%)**
   - Taylor Walls OVER 0.5 batter_hits (+114, model 51.3%)
   - Jackson Chourio OVER 1.5 batter_total_bases (+121, model 47.0%)
-  - MIL @ TBR MIL_ML (-101, model 54.7%)
+  - MIL @ TBR OVER_7.5 (-110, model 62.4%)
 
 ## Self-Learning Loop
 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
-| batter hits | 315 | 56.2% | 56.6% | 1.006 | 0.994 |
 | batter total bases | 78 | 34.6% | 41.0% | 1.181 | 0.858 |
+| batter hits | 315 | 56.2% | 56.6% | 1.006 | 0.994 |
 
-Cumulative graded plays: 19678. Wins: 8715. Hit rate: 44.3%.
+Cumulative graded plays: 19700. Wins: 8727. Hit rate: 44.3%.
 
 ## Auxiliary Markets (Model Fair Prices)
 
@@ -58,9 +58,7 @@ Cumulative graded plays: 19678. Wins: 8715. Hit rate: 44.3%.
 
 ## Loop Activity (since last refresh)
 
-- Confidence delta: **+0.1**
-- batter hits: cf +0.0166 (-15 new settled)
-- batter total bases: cf -0.0157 (-6 new settled)
+- Confidence delta: **+0.0**
 
 ## Model Recommendations (operator review)
 

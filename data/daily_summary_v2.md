@@ -1,25 +1,25 @@
 # EdgeStat Daily Summary — 2026-10-27
 
-## 🏥 Model Health: 71.4/100 [HEALTHY]
+## 🏥 Model Health: 71.9/100 [HEALTHY]
 - Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 99.9/100
+  - 🟢 Calibration Freshness: 99.7/100
   - 🟡 Hit Rate Trend: 62.6/100
   - 🔴 Brier Trend: 17.3/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 100.0/100
-  - 🔴 Edge Count: 54.3/100
+  - 🟡 Edge Count: 60.0/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.583)
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.594)
 - **Total games on board:** 48
-- **Strong home favorites:** 24 | **Strong road dogs:** 10
+- **Strong home favorites:** 24 | **Strong road dogs:** 9
 
 ## 🎯 Top 5 Best Bets
 1. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
 2. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
 3. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
-4. **LOL LOS vs Team Secret Whales ML @ -132** (76/100 ★★★★★)
-5. **LOL Anyone's Legend vs Team Liquid Alienware ML @ -112** (76/100 ★★★★★)
+4. **LOL Team Liquid Alienware vs LOS ML @ -154** (76/100 ★★★★★)
+5. **LOL Invictus Gaming vs LYON ML @ -143** (76/100 ★★★★★)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **307-59** (83.9% hit rate)
@@ -48,34 +48,31 @@
 - Hot teams: **10** | Cold teams: **25** | Over-heavy: 0 | Under-heavy: 29
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (148)
+## ⚠️ Anomaly Detector (144)
 - RESIDUAL_DIVERGENCE: **23**
-- STEAM_MOVE: **125**
-  - Charlotte Hornets (NBA): Charlotte Hornets UNDERPERFORMING expected margin by 7.8pts in recent games -- model bias may persist
-  - Washington Wizards (NBA): Washington Wizards OUTPERFORMING expected margin by 9.2pts in recent games -- model bias may persist
-  - Minnesota Timberwolves (NBA): Minnesota Timberwolves OUTPERFORMING expected margin by 9.8pts in recent games -- model bias may persist
-  - Chicago Bulls (NBA): Chicago Bulls UNDERPERFORMING expected margin by 10.3pts in recent games -- model bias may persist
-  - Miami Heat (NBA): Miami Heat UNDERPERFORMING expected margin by 6.4pts in recent games -- model bias may persist
+- STEAM_MOVE: **121**
+  - Charlotte Hornets (NBA): Charlotte Hornets UNDERPERFORMING expected margin by 9.8pts in recent games -- model bias may persist
+  - Washington Wizards (NBA): Washington Wizards OUTPERFORMING expected margin by 9.4pts in recent games -- model bias may persist
+  - Minnesota Timberwolves (NBA): Minnesota Timberwolves OUTPERFORMING expected margin by 14.7pts in recent games -- model bias may persist
+  - Chicago Bulls (NBA): Chicago Bulls UNDERPERFORMING expected margin by 11.8pts in recent games -- model bias may persist
+  - Miami Heat (NBA): Miami Heat UNDERPERFORMING expected margin by 9.4pts in recent games -- model bias may persist
 
-## 💰 Today's Portfolio (12 picks)
-- Total stake: **$330.0** (33.0% of $1000 bankroll)
-- Expected EV: **$-6.24**
+## 💰 Today's Portfolio (13 picks)
+- Total stake: **$335.0** (33.5% of $1000 bankroll)
+- Expected EV: **$-12.26**
   - #1 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #2 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
   - #3 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
-  - #4 [NRFI] $35 on MIL @ TBR NRFI (no run 1st inning) (P=64%)
-  - #5 [NBA] $35 on NBA Charlotte Hornets ML (2-1) vs Washington Wizards (P=55%)
+  - #4 [NRFI] $35 on MIL @ TBR YRFI (1st-inning OVER 0.5) (P=57%)
+  - #5 [NBA] $35 on NBA Miami Heat ML (0-3) vs Dallas Mavericks (P=58%)
 
 ## 🎯 Convergence Picks (31 stacked games)
-- ELITE: **14** · HIGH: 8 · MED: 9
+- ELITE: **11** · HIGH: 13 · MED: 7
   - [ELITE] Atlanta Hawks @ Houston Rockets : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ANOMALY)
   - [ELITE] Los Angeles Kings @ New York Rangers : 5 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ATS)
-  - [ELITE] Toronto Maple Leafs @ Calgary Flames : 5 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
   - [ELITE] Atlanta United FC @ New York City FC : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
   - [ELITE] Orlando City SC @ Chicago Fire FC : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
-
-## ⚾ Top MLB Pitcher K Plays (1)
-- **Robert Gasser** OVER 4.5 K (63%) fair -171
+  - [ELITE] Columbus Crew @ FC Dallas : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
 
 ## 🏀 NBA Player Heat (11 HOT / 6 COLD)
   - 🔥 **Olivier-Maxence Prosper** (MEM): L5 19.4/4.2/1.2 vs season 10.0/3.5/1.0 [PTS +9.4]
@@ -116,11 +113,6 @@
   - ❄️ **Andruw Monasterio** (BOS): L14 .083 / season .233 (-150pts) -- FADE props
   - ❄️ **Jim Jarvis** (ATL): L14 .079 / season .207 (-128pts) -- FADE props
 
-## 😴 B2B Fatigue Edges (3)
-- [NBA] FADE Minnesota Timberwolves (away on B2B)
-- [NBA] FADE Indiana Pacers (away on B2B)
-- [NBA] FADE Oklahoma City Thunder (home on B2B)
-
 ## 📈 Streak Regression Alerts (21)
 - [NBA] Minnesota Timberwolves on W3 L10 3-2 -- Minnesota Timberwolves on W3 -- no historical sample
 - [NBA] Miami Heat on L4 L10 1-4 -- Miami Heat on L4 -- no historical sample
@@ -136,7 +128,8 @@
   - ⚠️ batter_rbis (Brier Δ -0.0052)
 
 ## 🧠 Training Convergence
-- ELITE: **0** · HEALTHY: 2 · OK: 0 · DEGRADED: **0**
+- ELITE: **0** · HEALTHY: 1 · OK: 0 · DEGRADED: **1**
+  - ⚠️ **batter_hits**: DIVERGENT - consistent same-sign moves (structural issue) (cf=0.9937)
 
 ## 🤖 Self-Training Status
 - **NBA**: n=69 games · hit rate 58.0% · bias +1.1pp

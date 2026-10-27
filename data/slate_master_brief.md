@@ -1,20 +1,20 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-10-27T00:09:24 UTC_
+_Generated 2026-10-27T00:38:23 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -17
+- **Score:** -15
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
 - **Total STRONG:** 8
-- **Total FADES:** 49
+- **Total FADES:** 47
 
 ## Top 5 Curated Picks
-1. **GOLF / Séamus Power** (GOLF_PLAYER, score=219.29)
-   - Play: Séamus Power (PLAYER_STRONG)
+1. **GOLF / Ben Silverman** (GOLF_PLAYER, score=219.29)
+   - Play: Ben Silverman (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Austin Smotherman** (GOLF_PLAYER, score=219.29)
-   - Play: Austin Smotherman (PLAYER_STRONG)
+2. **GOLF / Séamus Power** (GOLF_PLAYER, score=219.29)
+   - Play: Séamus Power (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
 3. **WNBA / allisha gray** (WNBA_PLAYER, score=62.42)
    - Play: allisha gray (PLAYER_STRONG)
@@ -28,9 +28,9 @@ _Generated 2026-10-27T00:09:24 UTC_
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
+  - Ben Silverman top 10 finish
   - Séamus Power top 10 finish
   - Austin Smotherman top 10 finish
-  - Taylor Moore top 10 finish
 
 ## Slate ROI Projection
 - **Picks:** 0
@@ -43,9 +43,9 @@ _Generated 2026-10-27T00:09:24 UTC_
   - Fade angle: PTS UNDER + PRA UNDER (multi-prop)
 - **NBA** / CHI (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NBA** / PHX (TEAM_FADE)
-  - Fade angle: team total UNDER
 - **NBA** / MIA (TEAM_FADE)
   - Fade angle: team total UNDER
-- **MLB** / Robert Gasser (PITCHER_FADE)
-  - Fade angle: K UNDER + outs UNDER + 4+ER YES
+- **NBA** / PHX (TEAM_FADE)
+  - Fade angle: team total UNDER
+- **NBA** / CLE (TEAM_FADE)
+  - Fade angle: team total UNDER

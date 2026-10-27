@@ -6,8 +6,8 @@ _0% lineups confirmed_
 
 ## Slate
 - **1 games** scheduled
-- **26 best bets** scored: 7 DK · 0 PP · 1 NRFI · 0 SGP
-- **MC simulation:** EV +$21.31, 66% P(profit), p05 $-120.97 / p95 $109.96
+- **25 best bets** scored: 7 DK · 0 PP · 1 NRFI · 0 SGP
+- **MC simulation:** EV +$17.8, 58% P(profit), p05 $-87.52 / p95 $122.93
 
 ## Top 5 Best Bets
 1. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
@@ -19,35 +19,33 @@ _0% lineups confirmed_
 3. **LOL Peyz OVER 4.5 Kills**  (78/100 ****, edge —)
    - Player prop quality score 1.184
    - Elite player
-4. **LOL LOS vs Team Secret Whales ML @ -132**  (76/100 *****, edge —)
-   - Model 57.0% (fair -132)
+4. **LOL Team Liquid Alienware vs LOS ML @ -154**  (76/100 *****, edge —)
+   - Model 60.7% (fair -154)
    - Worlds
-5. **LOL Anyone's Legend vs Team Liquid Alienware ML @ -112**  (76/100 *****, edge —)
-   - Model 52.9% (fair -112)
+5. **LOL Invictus Gaming vs LYON ML @ -143**  (76/100 *****, edge —)
+   - Model 58.8% (fair -143)
    - Worlds
 
-## ⚠️ Trap Warnings — 4 flagged
+## ⚠️ Trap Warnings — 3 flagged
 - **Ryan Vilade OVER 0.5 batter hits** (low):
    - Edge +28.1% looks big but only 0 settled props on this player — model unproven
-- **MIL @ TBR NRFI (no run 1st inning)** (low):
-   - Edge +10.3% looks big but only 0 settled props on this player — model unproven
+- **MIL @ TBR YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +11.1% looks big but only 0 settled props on this player — model unproven
 - **Taylor Walls OVER 0.5 batter hits** (low):
    - Edge +9.8% looks big but only 0 settled props on this player — model unproven
-- **Junior Caminero OVER 1.5 batter total bases** (low):
-   - Line sharpened against this side (-5c move) -- sharp money knows
 
 ## NRFI/YRFI strong leans
-- **NRFI** (1st-inning UNDER): MIL @ TBR
+- **YRFI** (1st-inning OVER): MIL @ TBR
 
 ## NBA -- REGULAR
-- Washington Wizards @ Charlotte Hornets (2-1 vs 2-1) 36-43 | P(home) 90.7% fair -978 | In Progress
-- Minnesota Timberwolves @ Cleveland Cavaliers (3-0 vs 1-1) 56-44 | P(home) 1.1% fair +8574 | In Progress
-- Chicago Bulls @ Boston Celtics (1-2 vs 1-1) 18-24 | P(home) 83.1% fair -491 | In Progress
-- Dallas Mavericks @ Miami Heat (1-2 vs 0-3) 21-17 | P(home) 27.0% fair +271 | In Progress
-- Indiana Pacers @ Milwaukee Bucks (2-1 vs 0-3)  | P(home) 12.7% fair +689 | Scheduled
+- Washington Wizards @ Charlotte Hornets (2-1 vs 2-1) 44-54 | P(home) 97.5% fair -3934 | Halftime
+- Minnesota Timberwolves @ Cleveland Cavaliers (3-0 vs 1-1) 60-50 | P(home) 1.5% fair +6604 | Halftime
+- Chicago Bulls @ Boston Celtics (1-2 vs 1-1) 36-44 | P(home) 92.3% fair -1191 | In Progress
+- Dallas Mavericks @ Miami Heat (1-2 vs 0-3) 30-39 | P(home) 82.6% fair -473 | In Progress
+- Indiana Pacers @ Milwaukee Bucks (2-1 vs 0-3) 6-11 | P(home) 19.1% fair +423 | In Progress
 
 ## NHL -- REGULAR
-- Los Angeles Kings @ New York Rangers (2-5-2 vs 7-5-1) 3-1 | P(home) 60.6% fair -154 | In Progress
+- Los Angeles Kings @ New York Rangers (2-5-2 vs 7-5-1) 4-1 | P(home) 40.9% fair +144 | In Progress
 - Toronto Maple Leafs @ Calgary Flames (7-4-2 vs 4-6-0)  | P(home) 41.9% fair +139 | Scheduled
 - Detroit Red Wings @ Edmonton Oilers (4-4-3 vs 8-2-1)  | P(home) 89.2% fair -829 | Scheduled
 
