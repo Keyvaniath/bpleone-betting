@@ -251,7 +251,11 @@ fetch("data/golf_pot_history.json?t=" + Date.now(), { cache: "no-cache" })
       if ((data.n_settled || 0) + (data.n_pending || 0) > 0) deskLive++;
       return renderDesk(d, data);
     }).join("");
-    document.getElementById("deskCards").innerHTML = html;
+    // Price basis (2026-10-26): no sportsbook line is captured for these desks --
+    // every pick is graded at the model's OWN fair odds, so the ROI measures
+    // calibration, not a bettable return. Say so above the cards.
+    const basis = `<p class="muted" style="font-size:11px; line-height:1.6; margin:0 16px 12px;"><b>How to read these (and the golf card above):</b> no sportsbook line is captured for these desks, so each pick is graded at the model's own fair price (the "Fair" column; KBO totals use an assumed 8.5 line). Betting at your own fair price returns 0% when the model is calibrated, so ROI here measures <b>calibration</b>, not a bettable return: below 0% means the model was overconfident. Not comparable to the main Play of the Day record, which is graded at the DraftKings pre-game line.</p>`;
+    document.getElementById("deskCards").innerHTML = basis + html;
     document.getElementById("deskMeta").textContent = `${deskLive}/${DESKS.length} desks active · ${totSettled} settled · ${totPending} pending`;
   }).catch(err => {
     document.getElementById("deskCards").innerHTML = `<p class="muted" style="padding:14px;">Could not load desk records (${err.message}).</p>`;
