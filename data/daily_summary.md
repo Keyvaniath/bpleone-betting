@@ -4,36 +4,13 @@
 
 _Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
 
-_Generated at 2026-10-27T00:38:33 UTC. Game lines source: **placeholder -110 (no real book today)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-10-27T00:56:56 UTC. Game lines source: **placeholder -110 (no real book today)**. Pick-em opportunities from PrizePicks._
 
 ## Full Slate (1 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
 | 8:00p ET | MIL @ TBR | Tropicana Field | indoor | -- |
-
-## Parlays - top 5
-
-- **3-leg @ +613 (prob 19.6%, EV +39.61%)**
-  - Taylor Walls OVER 0.5 batter_hits (+114, model 51.3%)
-  - Victor Mesa Jr. OVER 0.5 batter_hits (-134, model 61.1%)
-  - MIL @ TBR OVER_7.5 (-110, model 62.4%)
-- **3-leg @ +525 (prob 22.2%, EV +38.75%)**
-  - Taylor Walls OVER 0.5 batter_hits (+114, model 51.3%)
-  - Chandler Simpson UNDER 1.5 batter_total_bases (-189, model 69.3%)
-  - MIL @ TBR OVER_7.5 (-110, model 62.4%)
-- **3-leg @ +646 (prob 18.3%, EV +36.69%)**
-  - Taylor Walls OVER 0.5 batter_hits (+114, model 51.3%)
-  - David Hamilton OVER 0.5 batter_hits (-121, model 57.2%)
-  - MIL @ TBR OVER_7.5 (-110, model 62.4%)
-- **3-leg @ +787 (prob 15.4%, EV +36.34%)**
-  - Taylor Walls OVER 0.5 batter_hits (+114, model 51.3%)
-  - Junior Caminero OVER 1.5 batter_total_bases (+117, model 48.0%)
-  - MIL @ TBR OVER_7.5 (-110, model 62.4%)
-- **3-leg @ +803 (prob 15.0%, EV +35.87%)**
-  - Taylor Walls OVER 0.5 batter_hits (+114, model 51.3%)
-  - Jackson Chourio OVER 1.5 batter_total_bases (+121, model 47.0%)
-  - MIL @ TBR OVER_7.5 (-110, model 62.4%)
 
 ## Self-Learning Loop
 
@@ -42,7 +19,7 @@ _Generated at 2026-10-27T00:38:33 UTC. Game lines source: **placeholder -110 (no
 | batter total bases | 78 | 34.6% | 41.0% | 1.181 | 0.858 |
 | batter hits | 315 | 56.2% | 56.6% | 1.006 | 0.994 |
 
-Cumulative graded plays: 19700. Wins: 8727. Hit rate: 44.3%.
+Cumulative graded plays: 19699. Wins: 8727. Hit rate: 44.3%.
 
 ## Auxiliary Markets (Model Fair Prices)
 

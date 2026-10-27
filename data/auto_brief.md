@@ -6,7 +6,7 @@ _0% lineups confirmed_
 
 ## Slate
 - **1 games** scheduled
-- **25 best bets** scored: 7 DK · 0 PP · 1 NRFI · 0 SGP
+- **24 best bets** scored: 7 DK · 0 PP · 1 NRFI · 0 SGP
 - **MC simulation:** EV +$17.8, 58% P(profit), p05 $-87.52 / p95 $122.93
 
 ## Top 5 Best Bets
@@ -38,15 +38,15 @@ _0% lineups confirmed_
 - **YRFI** (1st-inning OVER): MIL @ TBR
 
 ## NBA -- REGULAR
-- Washington Wizards @ Charlotte Hornets (2-1 vs 2-1) 44-54 | P(home) 97.5% fair -3934 | Halftime
-- Minnesota Timberwolves @ Cleveland Cavaliers (3-0 vs 1-1) 60-50 | P(home) 1.5% fair +6604 | Halftime
-- Chicago Bulls @ Boston Celtics (1-2 vs 1-1) 36-44 | P(home) 92.3% fair -1191 | In Progress
-- Dallas Mavericks @ Miami Heat (1-2 vs 0-3) 30-39 | P(home) 82.6% fair -473 | In Progress
-- Indiana Pacers @ Milwaukee Bucks (2-1 vs 0-3) 6-11 | P(home) 19.1% fair +423 | In Progress
+- Washington Wizards @ Charlotte Hornets (2-1 vs 2-1) 61-68 | P(home) 96.8% fair -2983 | In Progress
+- Minnesota Timberwolves @ Cleveland Cavaliers (3-0 vs 1-1) 69-63 | P(home) 4.2% fair +2304 | In Progress
+- Chicago Bulls @ Boston Celtics (1-2 vs 1-1) 54-66 | P(home) 99.1% fair -11364 | Halftime
+- Dallas Mavericks @ Miami Heat (1-2 vs 0-3) 53-52 | P(home) 34.8% fair +188 | Halftime
+- Indiana Pacers @ Milwaukee Bucks (2-1 vs 0-3) 38-31 | P(home) 5.7% fair +1670 | In Progress
 
 ## NHL -- REGULAR
-- Los Angeles Kings @ New York Rangers (2-5-2 vs 7-5-1) 4-1 | P(home) 40.9% fair +144 | In Progress
-- Toronto Maple Leafs @ Calgary Flames (7-4-2 vs 4-6-0)  | P(home) 41.9% fair +139 | Scheduled
+- Los Angeles Kings @ New York Rangers (2-5-2 vs 7-5-1) 5-2 | P(home) 26.8% fair +274 | In Progress
+- Toronto Maple Leafs @ Calgary Flames (7-4-2 vs 4-6-0) 0-0 | P(home) 41.9% fair +139 | In Progress
 - Detroit Red Wings @ Edmonton Oilers (4-4-3 vs 8-2-1)  | P(home) 89.2% fair -829 | Scheduled
 
 ## LoL Esports -- 0 live, 16 upcoming

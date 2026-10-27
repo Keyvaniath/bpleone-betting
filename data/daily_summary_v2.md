@@ -1,8 +1,8 @@
 # EdgeStat Daily Summary — 2026-10-27
 
-## 🏥 Model Health: 71.9/100 [HEALTHY]
+## 🏥 Model Health: 72.0/100 [HEALTHY]
 - Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 99.7/100
+  - 🟢 Calibration Freshness: 100.0/100
   - 🟡 Hit Rate Trend: 62.6/100
   - 🔴 Brier Trend: 17.3/100
   - 🟢 Pipeline Audit: 100.0/100
@@ -10,9 +10,9 @@
   - 🟡 Edge Count: 60.0/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.594)
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.582)
 - **Total games on board:** 48
-- **Strong home favorites:** 24 | **Strong road dogs:** 9
+- **Strong home favorites:** 24 | **Strong road dogs:** 11
 
 ## 🎯 Top 5 Best Bets
 1. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
@@ -32,17 +32,17 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (11)
+## ⚡ Pre-Game HIGH Conviction (10)
 - [NCAAF] **Ole Miss Rebels** HOME (None L10) · model 72.6% fair -265
 - [NCAAF] **Texas Longhorns** HOME (None L10) · model 72.6% fair -265
 - [MLS] **Charlotte FC** HOME (1-3 L10) · model 72.1% fair -259
-- [NBA] **Houston Rockets** HOME (4-0 L10) · model 72.1% fair -258
 - [NCAAF] **Oklahoma State Cowboys** AWAY (None L10) · model 70.2% fair -236
 - [NCAAF] **Missouri Tigers** AWAY (None L10) · model 70.2% fair -236
 - [NCAAF] **Miami Hurricanes** AWAY (None L10) · model 69.1% fair -224
 - [MLS] **Chicago Fire FC** HOME (3-2 L10) · model 68.0% fair -212
 - [MLS] **Inter Miami CF** HOME (3-1 L10) · model 67.8% fair -210
 - [MLS] **St. Louis CITY SC** HOME (1-3 L10) · model 66.2% fair -196
+- [MLS] **Toronto FC** HOME (2-2 L10) · model 64.7% fair -183
 
 ## 🔥/❄️ Heat / Cold Signals
 - Hot teams: **10** | Cold teams: **25** | Over-heavy: 0 | Under-heavy: 29
@@ -57,14 +57,14 @@
   - Chicago Bulls (NBA): Chicago Bulls UNDERPERFORMING expected margin by 11.8pts in recent games -- model bias may persist
   - Miami Heat (NBA): Miami Heat UNDERPERFORMING expected margin by 9.4pts in recent games -- model bias may persist
 
-## 💰 Today's Portfolio (13 picks)
-- Total stake: **$335.0** (33.5% of $1000 bankroll)
-- Expected EV: **$-12.26**
+## 💰 Today's Portfolio (12 picks)
+- Total stake: **$300.0** (30.0% of $1000 bankroll)
+- Expected EV: **$-12.27**
   - #1 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #2 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
   - #3 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
   - #4 [NRFI] $35 on MIL @ TBR YRFI (1st-inning OVER 0.5) (P=57%)
-  - #5 [NBA] $35 on NBA Miami Heat ML (0-3) vs Dallas Mavericks (P=58%)
+  - #5 [NHL] $20 on NHL Los Angeles Kings ML (2-5-2) at New York Rangers (P=59%)
 
 ## 🎯 Convergence Picks (31 stacked games)
 - ELITE: **11** · HIGH: 13 · MED: 7
