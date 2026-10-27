@@ -2,7 +2,7 @@
 _NO_ACTION_NIGHT_ | L:0 S:8 F:47
 
 :dart: **Top Picks:**
-1. [GOLF] Corey Conners -- Corey Conners (PLAYER_STRONG)
+1. [GOLF] Taylor Moore -- Taylor Moore (PLAYER_STRONG)
 2. [GOLF] Austin Smotherman -- Austin Smotherman (PLAYER_STRONG)
 3. [WNBA] allisha gray -- allisha gray (PLAYER_STRONG)
 

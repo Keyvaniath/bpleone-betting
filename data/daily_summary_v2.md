@@ -1,18 +1,18 @@
 # EdgeStat Daily Summary — 2026-10-27
 
-## 🏥 Model Health: 72.0/100 [HEALTHY]
+## 🏥 Model Health: 71.1/100 [HEALTHY]
 - Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 100.0/100
-  - 🟡 Hit Rate Trend: 62.6/100
-  - 🔴 Brier Trend: 17.3/100
+  - 🟢 Calibration Freshness: 99.6/100
+  - 🟡 Hit Rate Trend: 61.8/100
+  - 🔴 Brier Trend: 16.9/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 100.0/100
-  - 🟡 Edge Count: 60.0/100
+  - 🔴 Edge Count: 54.3/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.582)
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.607)
 - **Total games on board:** 48
-- **Strong home favorites:** 24 | **Strong road dogs:** 11
+- **Strong home favorites:** 25 | **Strong road dogs:** 9
 
 ## 🎯 Top 5 Best Bets
 1. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
@@ -22,8 +22,9 @@
 5. **LOL Invictus Gaming vs LYON ML @ -143** (76/100 ★★★★★)
 
 ## 🔒 Locks of the Day -- Track Record
-- All-time: **307-59** (83.9% hit rate)
-- Net units: **+10.34u** | ROI: **+45.6%**
+- All-time: **308-60** (83.7% hit rate)
+- Net units: **+10.34u** | ROI: **+45.5%**
+- Last 7d: 1-1 (50.0%) | net -0.00u
 
 ## 🎮 Player Play of the Day (cross-sport)
 - **[LOL]** Inspired UNDER 3.5 Kills | MED conviction · model 61.7% fair -161
@@ -67,12 +68,12 @@
   - #5 [NHL] $20 on NHL Los Angeles Kings ML (2-5-2) at New York Rangers (P=59%)
 
 ## 🎯 Convergence Picks (31 stacked games)
-- ELITE: **11** · HIGH: 13 · MED: 7
-  - [ELITE] Atlanta Hawks @ Houston Rockets : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ANOMALY)
+- ELITE: **10** · HIGH: 13 · MED: 8
   - [ELITE] Los Angeles Kings @ New York Rangers : 5 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ATS)
   - [ELITE] Atlanta United FC @ New York City FC : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
   - [ELITE] Orlando City SC @ Chicago Fire FC : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
   - [ELITE] Columbus Crew @ FC Dallas : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
+  - [ELITE] Portland Timbers @ St. Louis CITY SC : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
 
 ## 🏀 NBA Player Heat (11 HOT / 6 COLD)
   - 🔥 **Olivier-Maxence Prosper** (MEM): L5 19.4/4.2/1.2 vs season 10.0/3.5/1.0 [PTS +9.4]
