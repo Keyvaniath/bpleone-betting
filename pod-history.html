@@ -35,6 +35,8 @@
   .pill.win  { background:rgba(88,200,120,0.15); color:#58c878; }
   .pill.loss { background:rgba(227,90,90,0.15); color:#e35a5a; }
   .pill.pending { background:rgba(255,255,255,0.06); color:#999; }
+  .pill.void { background:rgba(255,255,255,0.04); color:#777; text-decoration:line-through; }
+  .pod-row.void { opacity:0.55; }
 </style>
 <script src="js/nav.js?v=20260908c"></script>
 </head>
@@ -96,7 +98,8 @@
     <div class="card-head"><span>📋 What this is</span></div>
     <div style="padding:14px; font-size:13px; line-height:1.7; color: var(--text-2,#aaa);">
       <p><strong>Play of the Day</strong> is the single highest-conviction pick the EdgeStat model surfaces each day — the top-EV, slate-confidence-adjusted, walk-forward-validated bet.</p>
-      <p>Every cron snapshot captures today's POD into a rolling record. Once outcomes settle (via outcomes.py + track_record.json), pending entries flip to WIN/LOSS and contribute to hit-rate, ROI and net-units.</p>
+      <p>Every cron snapshot captures today's POD into a rolling record. Each pick is graded by the all-picks ledger at the house price (the DraftKings pre-game line) against the verified final score — the same grading, and the same corrections, as the main track record.</p>
+      <p id="podCorrection" class="muted" style="font-size:12px;"></p>
       <p>This is the public flagship track record — no edits, no cherry-picks, every pick logged the moment it goes live.</p>
     </div>
   </section>
@@ -122,6 +125,8 @@ fetch("data/pod_pl.json?t=" + Date.now(), { cache: "no-cache" })
     setText("m_avgkelly", "1.0u (flat)");   // Always 1u flat -- not Kelly
 
     document.getElementById("podGen").textContent = `last refresh: ${(d.generated_at || '').replace('T',' ')} · ${d.total_pods || 0} PODs · ${d.n_settled || 0} settled · 1u flat stake`;
+    const cn = document.getElementById("podCorrection");
+    if (cn && d.n_void) cn.innerHTML = `<b>Corrected 2026-10-26:</b> this record used to grade itself, at prices it recorded (including in-play lines like TBR +940 when DraftKings had -137) and against a rolling score feed that sometimes matched the wrong game of a series. It is now graded by the ledger at the DraftKings pre-game line. ${d.n_void} entries are void: an off-day demo game or exhibition, a total no book posted pre-game, or a game with no verified final. Before: 34-28, +4.49u (+7.2%).`;
     document.getElementById("podSummary").textContent =
       d.n_settled > 0
         ? `${d.wins || 0}-${d.losses || 0} settled · ${((d.hit_rate || 0)*100).toFixed(1)}% hit · ${(d.roi_pct || 0).toFixed(1)}% ROI · ${(d.net_units || 0).toFixed(2)}u net (1u flat)`
@@ -129,9 +134,9 @@ fetch("data/pod_pl.json?t=" + Date.now(), { cache: "no-cache" })
 
     const rows = ((d.history || []).slice().reverse()).map(h => {
       const r = h.result || "pending";
-      const cls = r === "won" ? "win" : r === "lost" ? "loss" : "";
+      const cls = r === "won" ? "win" : r === "lost" ? "loss" : r === "void" ? "void" : "";
       const pillCls = cls || "pending";
-      const outcome = r === "won" ? "WIN" : r === "lost" ? "LOSS" : r === "push" ? "PUSH" : "PENDING";
+      const outcome = r === "won" ? "WIN" : r === "lost" ? "LOSS" : r === "push" ? "PUSH" : r === "void" ? "VOID" : "PENDING";
       const amer = (a) => a == null ? "—" : (a >= 0 ? "+" + a : String(a));
       const payout = h.payout_units != null ? ((h.payout_units >= 0 ? "+" : "") + h.payout_units.toFixed(2) + "u") : "—";
       return `<div class="pod-row ${cls}">
@@ -142,8 +147,8 @@ fetch("data/pod_pl.json?t=" + Date.now(), { cache: "no-cache" })
         <span>1.0u</span>
         <span class="muted">${h.model_prob != null ? (h.model_prob * 100).toFixed(0) + '%' : '—'}</span>
         <span>—</span>
-        <span>${amer(h.market_price)}</span>
-        <span class="pill ${pillCls}">${outcome} ${h.payout_units != null ? '· ' + payout : ''}</span>
+        <span title="${h.book_american != null && h.book_american !== h.market_price ? 'recorded at ' + amer(h.market_price) + '; graded at the DraftKings pre-game line' : ''}">${amer(h.book_american != null ? h.book_american : h.market_price)}</span>
+        <span class="pill ${pillCls}" title="${(h.void_reason || '').replace(/"/g, '&quot;')}">${outcome} ${h.payout_units != null && r !== "void" ? '· ' + payout : ''}</span>
       </div>`;
     }).join("");
     document.getElementById("podList").innerHTML = rows || `<p class="muted" style="padding:14px;">No POD history yet — first snapshot will be logged on the next cron.</p>`;

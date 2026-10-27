@@ -620,7 +620,8 @@ fetch("data/pod_pl.json", { cache: "no-cache" })
   .then(pl => {
     const head = document.querySelector("main.container .page-head");
     if (!head) return;
-    const graded = (pl.history || []).filter(p => p.settled);
+    // voids (no real game / a line no book posted) are not bets -- never shown as a LOSS
+    const graded = (pl.history || []).filter(p => p.settled && ["won", "lost", "push"].includes(p.result));
     const wins = pl.wins || 0;
     const losses = pl.losses || 0;
 

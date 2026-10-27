@@ -2,8 +2,8 @@
 EdgeStat -- Play-of-the-Day P&L tracker (PRIMARY accuracy metric).
 
 This is Brandon's accuracy benchmark: ONE pick per day, the highest-edge
-ML / total play from today.json, recorded with a permanent ID. Settled
-the next day from historical_games.json. All-time + last-30-day W-L,
+ML / total play from today.json, recorded with a permanent ID. Graded by
+the all-picks ledger (source "pod") since 2026-10-26. All-time + last-30-day W-L,
 net units (assumes flat 1u stake), ROI%.
 
 What makes this DIFFERENT from locks_of_day:
@@ -96,79 +96,6 @@ def _pick_today_pod() -> Optional[Dict[str, Any]]:
     return best
 
 
-def _settle_pod(pod: Dict[str, Any]) -> Optional[str]:
-    """Cross-reference historical_mlb.json (MLB-only POD) for the outcome.
-
-    CRITICAL: only settle if at least 12 hours have passed since the POD
-    was recorded. Otherwise we risk matching against last night's
-    already-completed game with the same matchup string (UTC date in
-    historical_mlb often spans the calendar boundary -- a game played
-    Mon evening ET is dated Tue in UTC).
-    """
-    if pod.get("settled"):
-        return None
-    # 12-hour cool-off guard
-    try:
-        recorded_at = dt.datetime.fromisoformat(pod.get("recorded_at") or "")
-        if (dt.datetime.now() - recorded_at).total_seconds() < 12 * 3600:
-            return None
-    except Exception:
-        return None
-
-    hist = _load(os.path.join(DATA_DIR, "historical_mlb.json"))
-    games = hist.get("games") or []
-    matchup = (pod.get("matchup") or "").lower()
-    label = (pod.get("label") or "").upper()
-    date_s = pod.get("date")
-    pod_game_pk = pod.get("gamePk")
-    for g in games:
-        # PREFER exact gamePk match (avoids UTC-date-confusion of same matchup
-        # played on consecutive days)
-        is_pk_match = (pod_game_pk and g.get("id") and
-                        str(pod_game_pk) == str(g.get("id")))
-        if not is_pk_match:
-            g_date = (g.get("date") or "")[:10]
-            if g_date != date_s: continue
-            # Build matchup string from abbrevs ("LAD @ SD")
-            g_mu = (g.get("matchup") or "").lower()
-            if not g_mu and g.get("away_abbrev") and g.get("home_abbrev"):
-                g_mu = f"{g['away_abbrev']} @ {g['home_abbrev']}".lower()
-            if not g_mu: continue
-            if matchup not in g_mu and g_mu not in matchup: continue
-        if g.get("home_score") is None: continue
-        home_score = g.get("home_score") or 0
-        away_score = g.get("away_score") or 0
-        total = home_score + away_score
-        # ML_HOME = home team wins
-        if label.endswith("_ML") and label != "OVER_ML" and label != "UNDER_ML":
-            # e.g. NYY_ML -- team name is in the prefix
-            # For ML_HOME / ML_AWAY explicit
-            if label == "ML_HOME" or "HOME" in label:
-                return "won" if home_score > away_score else "lost"
-            if label == "ML_AWAY" or "AWAY" in label:
-                return "won" if away_score > home_score else "lost"
-            # Team abbreviation prefix -- match against matchup
-            team_abbr = label.replace("_ML", "")
-            home_abbr = g_mu.split("@")[-1].strip().split()[0] if "@" in g_mu else ""
-            if team_abbr.lower() in home_abbr or home_abbr.lower() in team_abbr.lower():
-                return "won" if home_score > away_score else "lost"
-            return "won" if away_score > home_score else "lost"
-        if label.startswith("OVER_") or label.startswith("UNDER_"):
-            try:
-                line = float(label.split("_")[-1])
-            except Exception:
-                continue
-            if "OVER_" in label:
-                if total > line: return "won"
-                if total == line: return "push"
-                return "lost"
-            else:
-                if total < line: return "won"
-                if total == line: return "push"
-                return "lost"
-    return None
-
-
 def run() -> Dict[str, Any]:
     state = _load(OUT)
     history = state.get("history") or []
@@ -211,51 +138,62 @@ def run() -> Dict[str, Any]:
             history.append(entry)
             n_added = 1
 
-    # REPAIR (idempotent): fix already-settled entries whose payout was computed
-    # from a glitched price -- re-derive at the model's fair odds and flag.
-    for pod in history:
-        if not pod.get("settled") or pod.get("payout_corrected"):
-            continue
-        dec = pod.get("decimal_odds") or 0
-        mp = pod.get("model_prob")
-        edge = (mp * dec - 1) if (mp and dec) else 0
-        if dec > 11.0 or edge > 1.0:
-            fair = round(1.0 / mp, 3) if mp and mp > 0.05 else 1.91
-            pod["decimal_odds"] = fair
-            pod["price_suspect"] = True
-            pod["payout_corrected"] = True
-            pod["correction_note"] = ("payout re-derived at model fair odds; recorded "
-                                      "price was a feed glitch (implausible for a POD)")
-            if pod.get("result") == "won":
-                pod["payout_units"] = round(fair - 1, 3)
-            elif pod.get("result") == "lost":
-                pod["payout_units"] = -1.0
-
-    # Settle any pending entries
+    # GRADE FROM THE LEDGER (2026-10-26). pod_pl used to grade itself --
+    # matchup-string matching against a rolling scores window (wrong games of a
+    # series: 9/01 CHW ML "won" when CHW lost 3-6), its own recorded prices
+    # (in-play +940, placeholder +100/-110, 8.5 totals) and the off-day
+    # DEMO_SLATE game. The ledger harvests todays_pod as source "pod" and grades
+    # it at the house price against verified finals, with every restatement
+    # applied, so each entry now MIRRORS its ledger row. Entries the ledger never
+    # carried take data/pod_pl_regrade_2026_10.json (tools/build_pod_pl_regrade.py).
+    # Nothing is graded here any more; an entry without either stays pending.
     n_newly_settled = 0
+    led = _load(os.path.join(DATA_DIR, "all_picks_ledger.json")).get("picks") or []
+    arch = _load(os.path.join(DATA_DIR, "ledger_archive.json")).get("picks") or []
+    by_key: Dict[tuple, Dict[str, Any]] = {}
+    for r in list(arch) + list(led):   # working ledger last: it wins
+        if r.get("source") == "pod" or "pod" in (r.get("also_sources") or []):
+            by_key[(str(r.get("date"))[:10], r.get("player_or_matchup"), r.get("market"))] = r
+    seed = {(r["date"], r["matchup"], r["label"]): r
+            for r in (_load(os.path.join(DATA_DIR, "pod_pl_regrade_2026_10.json")).get("rows") or [])}
     for pod in history:
-        if pod.get("settled"): continue
-        result = _settle_pod(pod)
-        if result:
-            pod["settled"] = True
-            pod["result"] = result
-            pod["settled_at"] = dt.datetime.now().isoformat(timespec="seconds")
-            decimal_odds = pod.get("decimal_odds") or 1.91
-            # Flat 1u stake
-            if result == "won":
-                pod["payout_units"] = round(decimal_odds - 1, 3)
-            elif result == "lost":
-                pod["payout_units"] = -1.0
-            else:   # push
-                pod["payout_units"] = 0.0
-            n_newly_settled += 1
+        k = (pod.get("date"), pod.get("matchup"), pod.get("label"))
+        r, sd = by_key.get(k), seed.get(k)
+        was = (pod.get("settled"), pod.get("result"), pod.get("payout_units"))
+        if r is not None:
+            pod["graded_by"] = "ledger"
+            if r.get("voided"):
+                pod.update(settled=True, result="void", payout_units=0.0,
+                           void_reason=r.get("voided_reason"))
+            elif r.get("settled") and r.get("result") in ("won", "lost", "push"):
+                pod.update(settled=True, result=r["result"], payout_units=r.get("payout_units"),
+                           book_american=r.get("book_american"))
+                pod.pop("void_reason", None)
+            else:
+                pod.update(settled=False, result="pending", payout_units=None)
+        elif sd is not None:
+            pod["graded_by"] = "regrade_2026_10"
+            if sd["status"] == "void":
+                pod.update(settled=True, result="void", payout_units=0.0, void_reason=sd.get("reason"))
+            else:
+                pod.update(settled=True, result=sd["result"], payout_units=sd["payout_units"],
+                           book_american=sd.get("book_american"))
+        if (pod.get("settled"), pod.get("result"), pod.get("payout_units")) != was:
+            if pod.get("settled") and not was[0]:
+                n_newly_settled += 1
+            if pod.get("settled") and not pod.get("settled_at"):
+                pod["settled_at"] = dt.datetime.now().isoformat(timespec="seconds")
+        # stale self-grading artefacts from the old path
+        for f in ("payout_corrected", "correction_note"):
+            pod.pop(f, None)
 
     # Cap
     if len(history) > MAX_HISTORY:
         history = history[-MAX_HISTORY:]
 
     # Aggregate
-    settled = [p for p in history if p.get("settled")]
+    voided = [p for p in history if p.get("result") == "void"]
+    settled = [p for p in history if p.get("settled") and p.get("result") in ("won", "lost", "push")]
     pending = [p for p in history if not p.get("settled")]
     wins = sum(1 for p in settled if p["result"] == "won")
     losses = sum(1 for p in settled if p["result"] == "lost")
@@ -287,6 +225,9 @@ def run() -> Dict[str, Any]:
         "total_pods": len(history),
         "n_settled": len(settled),
         "n_pending": len(pending),
+        "n_void": len(voided),
+        "graded_by": ("the all-picks ledger (house price = DraftKings pre-game line, verified "
+                      "finals, every restatement applied); since 2026-10-26"),
         "wins": wins,
         "losses": losses,
         "pushes": pushes,

@@ -41,6 +41,24 @@ bpleone-site/
 
 ## Current deployment state (LIVE)
 
+- **2026-10-26 (late) — POD_PL NOW GRADED BY THE LEDGER.** pod_pl.json (homepage
+  POD card, /pod-history, track-record, mlb.html) graded ITSELF: matchup
+  strings vs a rolling historical_mlb window (4 verified-wrong results, e.g.
+  9/01 CHW ML "won", final CHW 3 @ HOU 6; 7/02 MIA@COL O12 "lost", final 4-14),
+  its own recorded prices (in-play +940, placeholder -110/+100, fake 8.5
+  totals; the "price_suspect" repair paid model-fair odds, still not a real
+  price), and it logged DEMO_SLATE's CIN @ COL -110 and the All-Star game.
+  None of the 10/23-10/26 restatements reached it. NOW: pod_pl_tracker mirrors
+  each entry's ledger row (source pod, or also_sources pod) -- result, payout
+  at book_american, voids -- and never grades. 49 entries the ledger never
+  carried: data/pod_pl_regrade_2026_10.json (tools/build_pod_pl_regrade.py:
+  DK pre-game snapshot -> event_id/price, final by event_id or the ledger's
+  verified final; 12 graded, 37 void). Voids are excluded from W-L. RESTATED
+  34-28 +4.49u (+7.24%) -> 33-25-2 +4.24u (+7.32%), 58 void; disclosed on
+  pod-history. pod_history.json (pod_history.py) is a separate dead tracker
+  (settles on a track_record `play_hit` field that does not exist: 0 of 294
+  ever settled) -- read only by multi_sport_pot_rollup; not on any page.
+
 - **2026-10-26 (late) — MLB TOTALS: LINES NO BOOK POSTED.** The 10/26 pass voided
   only POD totals on the 8.5 placeholder; Top 25 and the Under Alerts read the
   same today.json total. tools/build_total_lines_audit.py checks every settled
