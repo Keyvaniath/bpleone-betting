@@ -1,27 +1,21 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-10-27T15:12:08 UTC_
+_Generated 2026-10-27T19:28:33 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** 6
+- **Score:** -55
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 5
-- **Total FADES:** 14
+- **Total STRONG:** 2
+- **Total FADES:** 63
 
 ## Top 5 Curated Picks
-1. **GOLF / Taylor Moore** (GOLF_PLAYER, score=219.29)
-   - Play: Taylor Moore (PLAYER_STRONG)
-   - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Séamus Power** (GOLF_PLAYER, score=219.29)
-   - Play: Séamus Power (PLAYER_STRONG)
-   - Rationale: Cross-sport top pick (GOLF_PLAYER)
-
-## Top Events Board
-- **GOLF** / ? (TOURNAMENT_STRONG)
-  - Taylor Moore top 10 finish
-  - Séamus Power top 10 finish
-  - Corey Conners top 10 finish
+1. **WNBA / allisha gray** (WNBA_PLAYER, score=62.42)
+   - Play: allisha gray (PLAYER_STRONG)
+   - Rationale: Cross-sport top pick (WNBA_PLAYER)
+2. **WNBA / angel reese** (WNBA_PLAYER, score=60.0)
+   - Play: angel reese (PLAYER_STRONG)
+   - Rationale: Cross-sport top pick (WNBA_PLAYER)
 
 ## Slate ROI Projection
 - **Picks:** 0
@@ -30,13 +24,13 @@ _Generated 2026-10-27T15:12:08 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **F1** / logan sargeant (DRIVER_FADE)
-  - Fade angle: non-podium / outside top 10
-- **F1** / oliver bearman (DRIVER_FADE)
-  - Fade angle: non-podium / outside top 10
-- **F1** / guanyu zhou (DRIVER_FADE)
-  - Fade angle: non-podium / outside top 10
-- **F1** / lance stroll (DRIVER_FADE)
-  - Fade angle: non-podium / outside top 10
-- **F1** / daniel ricciardo (DRIVER_FADE)
-  - Fade angle: non-podium / outside top 10
+- **NBA** / BKN (TEAM_FADE)
+  - Fade angle: team total UNDER
+- **NBA** / DET (TEAM_FADE)
+  - Fade angle: team total UNDER
+- **NBA** / POR (TEAM_FADE)
+  - Fade angle: team total UNDER
+- **NBA** / SAS (TEAM_FADE)
+  - Fade angle: team total UNDER
+- **NBA** / LAL (TEAM_FADE)
+  - Fade angle: team total UNDER

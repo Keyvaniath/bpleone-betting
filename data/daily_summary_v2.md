@@ -10,9 +10,9 @@
   - 🔴 Edge Count: 54.3/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.591)
-- **Total games on board:** 35
-- **Strong home favorites:** 17 | **Strong road dogs:** 6
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.593)
+- **Total games on board:** 50
+- **Strong home favorites:** 24 | **Strong road dogs:** 7
 
 ## 🎯 Top 5 Best Bets
 1. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
@@ -33,17 +33,17 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (10)
+## ⚡ Pre-Game HIGH Conviction (13)
 - [NCAAF] **Ole Miss Rebels** HOME (None L10) · model 72.6% fair -265
 - [NCAAF] **Texas Longhorns** HOME (None L10) · model 72.6% fair -265
 - [MLS] **Charlotte FC** HOME (1-3 L10) · model 72.1% fair -259
+- [NBA] **San Antonio Spurs** HOME (3-2 L10) · model 72.1% fair -258
 - [NCAAF] **Oklahoma State Cowboys** AWAY (None L10) · model 70.2% fair -236
 - [NCAAF] **Missouri Tigers** AWAY (None L10) · model 70.2% fair -236
 - [NCAAF] **Miami Hurricanes** AWAY (None L10) · model 69.1% fair -224
 - [MLS] **Chicago Fire FC** HOME (3-2 L10) · model 68.0% fair -212
 - [MLS] **Inter Miami CF** HOME (3-1 L10) · model 67.8% fair -210
-- [MLS] **St. Louis CITY SC** HOME (1-3 L10) · model 66.2% fair -196
-- [MLS] **Toronto FC** HOME (2-2 L10) · model 64.7% fair -183
+- [NHL] **Dallas Stars** HOME (5-1 L10) · model 67.4% fair -207
 
 ## 🔥/❄️ Heat / Cold Signals
 - Hot teams: **10** | Cold teams: **25** | Over-heavy: 0 | Under-heavy: 37
@@ -58,32 +58,32 @@
   - New York City FC (MLS): New York City FC OUTPERFORMING expected margin by 16.8pts in recent games -- model bias may persist
   - Orlando City SC (MLS): Orlando City SC UNDERPERFORMING expected margin by 6.5pts in recent games -- model bias may persist
 
-## 💰 Today's Portfolio (9 picks)
-- Total stake: **$240.0** (24.0% of $1000 bankroll)
-- Expected EV: **$-12.3**
+## 💰 Today's Portfolio (8 picks)
+- Total stake: **$205.0** (20.5% of $1000 bankroll)
+- Expected EV: **$-7.3**
   - #1 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #2 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
   - #3 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
-  - #4 [NRFI] $35 on MIL @ TBR YRFI (1st-inning OVER 0.5) (P=57%)
-  - #5 [MLS] $20 on MLS Inter Miami CF ML (15-10-6) vs FC Cincinnati (P=68%)
+  - #4 [MLS] $20 on MLS Inter Miami CF ML (15-10-6) vs FC Cincinnati (P=68%)
+  - #5 [MLS] $20 on MLS New York City FC ML (8-11-12) vs Atlanta United FC (P=55%)
 
-## 🎯 Convergence Picks (31 stacked games)
-- ELITE: **10** · HIGH: 13 · MED: 8
-  - [ELITE] Los Angeles Kings @ New York Rangers : 5 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ATS)
+## 🎯 Convergence Picks (27 stacked games)
+- ELITE: **12** · HIGH: 7 · MED: 8
+  - [ELITE] Toronto Maple Leafs @ Calgary Flames : 5 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ATS)
   - [ELITE] Atlanta United FC @ New York City FC : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
   - [ELITE] Orlando City SC @ Chicago Fire FC : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
   - [ELITE] Columbus Crew @ FC Dallas : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
   - [ELITE] Portland Timbers @ St. Louis CITY SC : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
 
-## 🏀 NBA Player Heat (11 HOT / 11 COLD)
+## 🏀 NBA Player Heat (7 HOT / 5 COLD)
   - 🔥 **Maxime Raynaud** (SAC): L5 20.0/9.8/2.6 vs season 12.5/7.5/1.4 [PTS +7.5, REB +2.3]
   - 🔥 **Taurean Prince** (DET): L5 16.4/6.2/3.2 vs season 9.2/3.1/1.8 [PTS +7.2, REB +3.1]
   - 🔥 **Zach LaVine** (SAC): L5 29.0/3.7/3.3 vs season 22.9/3.1/2.7 [PTS +6.1]
-  - 🔥 **Cormac Ryan** (MIL): L5 20.2/4.8/2.4 vs season 14.3/2.5/1.7 [PTS +5.9, REB +2.3]
-  - 🔥 **Ty Jerome** (MEM): L5 29.8/3.5/6.5 vs season 24.2/3.1/6.1 [PTS +5.6]
+  - 🔥 **Devin Carter** (BOS): L5 14.6/5.8/5.0 vs season 8.9/3.3/2.7 [PTS +5.7, REB +2.5, AST +2.3]
+  - 🔥 **Dylan Harper** (SA): L5 20.0/5.0/3.0 vs season 14.9/4.0/3.6 [PTS +5.1]
   - ❄️ **Shaedon Sharpe** (POR): L5 7.2 vs season 20.8 [PTS -13.6, REB -2.7, AST -2.0] -- FADE OVER props
-  - ❄️ **Brandon Ingram** (LAC): L5 12.0 vs season 21.5 [PTS -9.5, REB -2.4] -- FADE OVER props
   - ❄️ **Mikal Bridges** (NY): L5 3.3 vs season 10.2 [PTS -6.9] -- FADE OVER props
+  - ❄️ **De'Andre Hunter** (SAC): L5 5.7 vs season 10.7 [PTS -5.0] -- FADE OVER props
 
 ## 🥊 UFC Fight Matchups (UFC Fight Night: Moicano vs. Nolan)
   - [FAVORITE] **Lucia Szabová** (12-0-0) vs Tainara Lisboa -- fair -234
@@ -92,17 +92,7 @@
   - [LEAN] **Azamat Bekoev** (20-5-0) vs Andre Petroski -- fair -150
   - [LEAN] **Rodrigo Sezinando** (9-2-0) vs Theodor Berggren -- fair -140
 
-## ⛳ Golf Player Heat (from Butterfield Bermuda Championship)
-  - 🔥 T1 **Austin Smotherman** (USA): -16 total -- finished T1
-  - 🔥 T2 **Séamus Power** (Ireland): -15 total -- finished T2
-  - 🔥 T3 **Taylor Moore** (USA): -14 total -- finished T3
-  - 🔥 T4 **Ben Silverman** (Canada): -14 total -- finished T4
-  - 🔥 T5 **Corey Conners** (Canada): -14 total -- finished T5
-  - ❄️ **Camiko Smith** (Bermuda): Sunday +7.0 vs tourney avg
-  - ❄️ **Aldrich Potgieter** (South Africa): Sunday +5.5 vs tourney avg
-  - ❄️ **Alejandro Tosti** (Argentina): Sunday +3.0 vs tourney avg
-
-## 🔥 MLB Batter Heat (56 HOT / 81 COLD)
+## 🔥 MLB Batter Heat (59 HOT / 81 COLD)
   - 🔥 **Austin Hays** (SD): L14 .444 / season .280 (+164pts)
   - 🔥 **Nolan Arenado** (AZ): L14 .404 / season .255 (+149pts)
   - 🔥 **Geraldo Perdomo** (AZ): L14 .392 / season .262 (+130pts)
@@ -114,12 +104,12 @@
   - ❄️ **Andruw Monasterio** (BOS): L14 .083 / season .233 (-150pts) -- FADE props
   - ❄️ **Jim Jarvis** (ATL): L14 .079 / season .207 (-128pts) -- FADE props
 
-## 📈 Streak Regression Alerts (21)
-- [NBA] Minnesota Timberwolves on W3 L10 3-2 -- Minnesota Timberwolves on W3 -- no historical sample
-- [NBA] Miami Heat on L4 L10 1-4 -- Miami Heat on L4 -- no historical sample
-- [NBA] Milwaukee Bucks on L3 L10 1-4 -- Milwaukee Bucks on L3 -- no historical sample
-- [NBA] Oklahoma City Thunder on W3 L10 4-1 -- Oklahoma City Thunder on W3 -- no historical sample
-- [NBA] Houston Rockets on W4 L10 4-0 -- Houston Rockets on W4 -- no historical sample
+## 📈 Streak Regression Alerts (12)
+- [MLS] Charlotte FC on L3 L10 1-3 -- Charlotte FC on L3 -- no historical sample
+- [MLS] CF Montréal on L4 L10 0-4 -- CF Montréal on L4 -- no historical sample
+- [MLS] New England Revolution on W3 L10 3-1 -- New England Revolution on W3 -- no historical sample
+- [MLS] New York City FC on L4 L10 0-4 -- New York City FC on L4 -- no historical sample
+- [MLS] D.C. United on L3 L10 1-4 -- D.C. United on L3 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**

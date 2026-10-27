@@ -1,9 +1,9 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:5 F:14
+_NO_ACTION_NIGHT_ | L:0 S:2 F:63
 
 :dart: **Top Picks:**
-1. [GOLF] Taylor Moore -- Taylor Moore (PLAYER_STRONG)
-2. [GOLF] Séamus Power -- Séamus Power (PLAYER_STRONG)
+1. [WNBA] allisha gray -- allisha gray (PLAYER_STRONG)
+2. [WNBA] angel reese -- angel reese (PLAYER_STRONG)
 
 :coin: Bankroll Advisory: STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 

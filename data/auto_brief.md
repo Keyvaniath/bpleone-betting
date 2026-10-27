@@ -6,8 +6,8 @@ _0% lineups confirmed · 1 rookie SPs_
 
 ## Slate
 - **1 games** scheduled
-- **21 best bets** scored: 7 DK · 0 PP · 1 NRFI · 0 SGP
-- **MC simulation:** EV +$17.8, 58% P(profit), p05 $-87.52 / p95 $122.93
+- **20 best bets** scored: 7 DK · 0 PP · 0 NRFI · 0 SGP
+- **MC simulation:** EV +$15.53, 64% P(profit), p05 $-110.24 / p95 $100.21
 
 ## Top 5 Best Bets
 1. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
@@ -26,28 +26,24 @@ _0% lineups confirmed · 1 rookie SPs_
    - Model 58.8% (fair -143)
    - Worlds
 
-## ⚠️ Trap Warnings — 3 flagged
+## ⚠️ Trap Warnings — 2 flagged
 - **Ryan Vilade OVER 0.5 batter hits** (low):
    - Edge +28.1% looks big but only 0 settled props on this player — model unproven
-- **MIL @ TBR YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +11.1% looks big but only 0 settled props on this player — model unproven
 - **Taylor Walls OVER 0.5 batter hits** (low):
    - Edge +9.8% looks big but only 0 settled props on this player — model unproven
 
-## NRFI/YRFI strong leans
-- **YRFI** (1st-inning OVER): MIL @ TBR
-
 ## NBA -- REGULAR
-- Washington Wizards @ Charlotte Hornets (2-2 vs 3-1) 103-110 | P(home) 100.0% fair +0 | Final
-- Minnesota Timberwolves @ Cleveland Cavaliers (3-1 vs 2-1) 125-127 | P(home) 100.0% fair +0 | Final
-- Chicago Bulls @ Boston Celtics (1-3 vs 2-1) 99-134 | P(home) 100.0% fair +0 | Final
-- Dallas Mavericks @ Miami Heat (2-2 vs 0-4) 113-109 | P(home) 0.0% fair +0 | Final
-- Indiana Pacers @ Milwaukee Bucks (2-2 vs 1-3) 102-110 | P(home) 100.0% fair +0 | Final
+- Brooklyn Nets @ Boston Celtics (0-3 vs 2-1)  | P(home) 91.2% fair -1032 | Scheduled
+- Detroit Pistons @ New York Knicks (3-0 vs 0-3)  | P(home) 6.4% fair +1454 | Scheduled
+- Sacramento Kings @ San Antonio Spurs (0-3 vs 1-2)  | P(home) 72.1% fair -258 | Scheduled
+- Portland Trail Blazers @ Los Angeles Lakers (2-0 vs 3-0)  | P(home) 55.0% fair -122 | Scheduled
 
 ## NHL -- REGULAR
-- Los Angeles Kings @ New York Rangers (0-0-0 vs 0-0-0) 6-3 | P(home) 0.0% fair +0 | Final
-- Toronto Maple Leafs @ Calgary Flames (0-0-0 vs 0-0-0) 2-5 | P(home) 100.0% fair +0 | Final
-- Detroit Red Wings @ Edmonton Oilers (0-0-0 vs 0-0-0) 4-3 | P(home) 0.0% fair +0 | Final
+- Columbus Blue Jackets @ Philadelphia Flyers (4-5-0 vs 3-7-3)  | P(home) 52.1% fair -109 | Scheduled
+- Boston Bruins @ Carolina Hurricanes (9-2-1 vs 9-2-2)  | P(home) 59.1% fair -145 | Scheduled
+- Los Angeles Kings @ Chicago Blackhawks (3-5-2 vs 3-8-0)  | P(home) 48.2% fair +107 | Scheduled
+- Montreal Canadiens @ St. Louis Blues (6-3-2 vs 5-5-1)  | P(home) 48.6% fair +106 | Scheduled
+- New York Islanders @ Nashville Predators (5-4-2 vs 4-3-4)  | P(home) 62.4% fair -166 | Scheduled
 
 ## LoL Esports -- 0 live, 16 upcoming
 - [Worlds] Movistar KOI vs T1 BO3 | P(A) 48.9% fair +105/-105
