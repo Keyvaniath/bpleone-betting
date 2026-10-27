@@ -1,12 +1,12 @@
 # Tonight's Slate Brief — 2026-10-27
 
-## Slate Quality: 70/100 (MEDIUM)
-_0% lineups confirmed_
+## Slate Quality: 67/100 (MEDIUM)
+_0% lineups confirmed · 1 rookie SPs_
 **Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
 - **1 games** scheduled
-- **24 best bets** scored: 7 DK · 0 PP · 1 NRFI · 0 SGP
+- **21 best bets** scored: 7 DK · 0 PP · 1 NRFI · 0 SGP
 - **MC simulation:** EV +$17.8, 58% P(profit), p05 $-87.52 / p95 $122.93
 
 ## Top 5 Best Bets
@@ -38,16 +38,16 @@ _0% lineups confirmed_
 - **YRFI** (1st-inning OVER): MIL @ TBR
 
 ## NBA -- REGULAR
-- Washington Wizards @ Charlotte Hornets (2-1 vs 2-1) 61-68 | P(home) 96.8% fair -2983 | In Progress
-- Minnesota Timberwolves @ Cleveland Cavaliers (3-0 vs 1-1) 69-63 | P(home) 4.2% fair +2304 | In Progress
-- Chicago Bulls @ Boston Celtics (1-2 vs 1-1) 54-66 | P(home) 99.1% fair -11364 | Halftime
-- Dallas Mavericks @ Miami Heat (1-2 vs 0-3) 53-52 | P(home) 34.8% fair +188 | Halftime
-- Indiana Pacers @ Milwaukee Bucks (2-1 vs 0-3) 38-31 | P(home) 5.7% fair +1670 | In Progress
+- Washington Wizards @ Charlotte Hornets (2-2 vs 3-1) 103-110 | P(home) 100.0% fair +0 | Final
+- Minnesota Timberwolves @ Cleveland Cavaliers (3-1 vs 2-1) 125-127 | P(home) 100.0% fair +0 | Final
+- Chicago Bulls @ Boston Celtics (1-3 vs 2-1) 99-134 | P(home) 100.0% fair +0 | Final
+- Dallas Mavericks @ Miami Heat (2-2 vs 0-4) 113-109 | P(home) 0.0% fair +0 | Final
+- Indiana Pacers @ Milwaukee Bucks (2-2 vs 1-3) 102-110 | P(home) 100.0% fair +0 | Final
 
 ## NHL -- REGULAR
-- Los Angeles Kings @ New York Rangers (2-5-2 vs 7-5-1) 5-2 | P(home) 26.8% fair +274 | In Progress
-- Toronto Maple Leafs @ Calgary Flames (7-4-2 vs 4-6-0) 0-0 | P(home) 41.9% fair +139 | In Progress
-- Detroit Red Wings @ Edmonton Oilers (4-4-3 vs 8-2-1)  | P(home) 89.2% fair -829 | Scheduled
+- Los Angeles Kings @ New York Rangers (0-0-0 vs 0-0-0) 6-3 | P(home) 0.0% fair +0 | Final
+- Toronto Maple Leafs @ Calgary Flames (0-0-0 vs 0-0-0) 2-5 | P(home) 100.0% fair +0 | Final
+- Detroit Red Wings @ Edmonton Oilers (0-0-0 vs 0-0-0) 4-3 | P(home) 0.0% fair +0 | Final
 
 ## LoL Esports -- 0 live, 16 upcoming
 - [Worlds] Movistar KOI vs T1 BO3 | P(A) 48.9% fair +105/-105

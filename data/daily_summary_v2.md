@@ -1,18 +1,18 @@
 # EdgeStat Daily Summary — 2026-10-27
 
-## 🏥 Model Health: 71.1/100 [HEALTHY]
-- Solid health - some minor issues to monitor
-  - 🟢 Calibration Freshness: 99.6/100
+## 🏥 Model Health: 69.3/100 [OK]
+- Operational but room to improve - check yellow components
+  - 🟢 Calibration Freshness: 100.0/100
   - 🟡 Hit Rate Trend: 61.8/100
   - 🔴 Brier Trend: 16.9/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 100.0/100
+  - 🟢 Data Health: 90.9/100
   - 🔴 Edge Count: 54.3/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.607)
-- **Total games on board:** 48
-- **Strong home favorites:** 25 | **Strong road dogs:** 9
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.591)
+- **Total games on board:** 35
+- **Strong home favorites:** 17 | **Strong road dogs:** 6
 
 ## 🎯 Top 5 Best Bets
 1. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
@@ -46,26 +46,26 @@
 - [MLS] **Toronto FC** HOME (2-2 L10) · model 64.7% fair -183
 
 ## 🔥/❄️ Heat / Cold Signals
-- Hot teams: **10** | Cold teams: **25** | Over-heavy: 0 | Under-heavy: 29
+- Hot teams: **10** | Cold teams: **25** | Over-heavy: 0 | Under-heavy: 37
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (144)
-- RESIDUAL_DIVERGENCE: **23**
-- STEAM_MOVE: **121**
-  - Charlotte Hornets (NBA): Charlotte Hornets UNDERPERFORMING expected margin by 9.8pts in recent games -- model bias may persist
-  - Washington Wizards (NBA): Washington Wizards OUTPERFORMING expected margin by 9.4pts in recent games -- model bias may persist
-  - Minnesota Timberwolves (NBA): Minnesota Timberwolves OUTPERFORMING expected margin by 14.7pts in recent games -- model bias may persist
-  - Chicago Bulls (NBA): Chicago Bulls UNDERPERFORMING expected margin by 11.8pts in recent games -- model bias may persist
-  - Miami Heat (NBA): Miami Heat UNDERPERFORMING expected margin by 9.4pts in recent games -- model bias may persist
+## ⚠️ Anomaly Detector (131)
+- RESIDUAL_DIVERGENCE: **9**
+- STEAM_MOVE: **122**
+  - CF Montréal (MLS): CF Montréal OUTPERFORMING expected margin by 6.6pts in recent games -- model bias may persist
+  - Inter Miami CF (MLS): Inter Miami CF UNDERPERFORMING expected margin by 9.7pts in recent games -- model bias may persist
+  - New England Revolution (MLS): New England Revolution OUTPERFORMING expected margin by 7.8pts in recent games -- model bias may persist
+  - New York City FC (MLS): New York City FC OUTPERFORMING expected margin by 16.8pts in recent games -- model bias may persist
+  - Orlando City SC (MLS): Orlando City SC UNDERPERFORMING expected margin by 6.5pts in recent games -- model bias may persist
 
-## 💰 Today's Portfolio (12 picks)
-- Total stake: **$300.0** (30.0% of $1000 bankroll)
-- Expected EV: **$-12.27**
+## 💰 Today's Portfolio (9 picks)
+- Total stake: **$240.0** (24.0% of $1000 bankroll)
+- Expected EV: **$-12.3**
   - #1 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #2 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
   - #3 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
   - #4 [NRFI] $35 on MIL @ TBR YRFI (1st-inning OVER 0.5) (P=57%)
-  - #5 [NHL] $20 on NHL Los Angeles Kings ML (2-5-2) at New York Rangers (P=59%)
+  - #5 [MLS] $20 on MLS Inter Miami CF ML (15-10-6) vs FC Cincinnati (P=68%)
 
 ## 🎯 Convergence Picks (31 stacked games)
 - ELITE: **10** · HIGH: 13 · MED: 8
@@ -75,15 +75,15 @@
   - [ELITE] Columbus Crew @ FC Dallas : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
   - [ELITE] Portland Timbers @ St. Louis CITY SC : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
 
-## 🏀 NBA Player Heat (11 HOT / 6 COLD)
-  - 🔥 **Olivier-Maxence Prosper** (MEM): L5 19.4/4.2/1.2 vs season 10.0/3.5/1.0 [PTS +9.4]
-  - 🔥 **Ty Jerome** (MEM): L5 34.7/4.3/5.7 vs season 25.3/3.4/5.7 [PTS +9.3]
-  - 🔥 **Gary Trent Jr.** (MIL): L5 14.8/1.2/1.6 vs season 8.1/1.0/1.2 [PTS +6.7]
+## 🏀 NBA Player Heat (11 HOT / 11 COLD)
+  - 🔥 **Maxime Raynaud** (SAC): L5 20.0/9.8/2.6 vs season 12.5/7.5/1.4 [PTS +7.5, REB +2.3]
+  - 🔥 **Taurean Prince** (DET): L5 16.4/6.2/3.2 vs season 9.2/3.1/1.8 [PTS +7.2, REB +3.1]
+  - 🔥 **Zach LaVine** (SAC): L5 29.0/3.7/3.3 vs season 22.9/3.1/2.7 [PTS +6.1]
   - 🔥 **Cormac Ryan** (MIL): L5 20.2/4.8/2.4 vs season 14.3/2.5/1.7 [PTS +5.9, REB +2.3]
-  - 🔥 **Devin Carter** (BOS): L5 14.6/5.8/5.0 vs season 8.9/3.3/2.7 [PTS +5.7, REB +2.5, AST +2.3]
-  - ❄️ **Josh Giddey** (CHI): L5 5.7 vs season 12.8 [PTS -7.1] -- FADE OVER props
-  - ❄️ **Jerami Grant** (MEM): L5 8.7 vs season 14.9 [PTS -6.2] -- FADE OVER props
-  - ❄️ **Alex Sarr** (WSH): L5 7.7 vs season 13.1 [PTS -5.4] -- FADE OVER props
+  - 🔥 **Ty Jerome** (MEM): L5 29.8/3.5/6.5 vs season 24.2/3.1/6.1 [PTS +5.6]
+  - ❄️ **Shaedon Sharpe** (POR): L5 7.2 vs season 20.8 [PTS -13.6, REB -2.7, AST -2.0] -- FADE OVER props
+  - ❄️ **Brandon Ingram** (LAC): L5 12.0 vs season 21.5 [PTS -9.5, REB -2.4] -- FADE OVER props
+  - ❄️ **Mikal Bridges** (NY): L5 3.3 vs season 10.2 [PTS -6.9] -- FADE OVER props
 
 ## 🥊 UFC Fight Matchups (UFC Fight Night: Moicano vs. Nolan)
   - [FAVORITE] **Lucia Szabová** (12-0-0) vs Tainara Lisboa -- fair -234
@@ -129,13 +129,12 @@
   - ⚠️ batter_rbis (Brier Δ -0.0052)
 
 ## 🧠 Training Convergence
-- ELITE: **0** · HEALTHY: 1 · OK: 0 · DEGRADED: **1**
-  - ⚠️ **batter_hits**: DIVERGENT - consistent same-sign moves (structural issue) (cf=0.9937)
+- ELITE: **0** · HEALTHY: 2 · OK: 0 · DEGRADED: **0**
 
 ## 🤖 Self-Training Status
-- **NBA**: n=69 games · hit rate 58.0% · bias +1.1pp
-- **NHL**: n=95 games · hit rate 49.5% · bias -10.8pp [calibration applied]
-- **WNBA**: n=4 games · hit rate 50.0% · bias +21.7pp
+- **NBA**: n=78 games · hit rate 56.4% · bias -0.6pp
+- **NHL**: n=98 games · hit rate 50.0% · bias -9.5pp [calibration applied]
+- **WNBA**: n=5 games · hit rate 60.0% · bias +8.2pp
 - **MLS**: n=62 games · hit rate 37.1% · bias -4.5pp [calibration applied]
 - **EPL**: n=30 games · hit rate 43.3% · bias -0.6pp
-- **MLB**: n=9 games · hit rate 66.7% · bias -9.7pp
+- **MLB**: n=10 games · hit rate 70.0% · bias -6.1pp
