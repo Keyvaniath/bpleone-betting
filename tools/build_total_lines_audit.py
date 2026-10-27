@@ -185,10 +185,22 @@ def main(report=None):
         print(f"  {name:18s} n={len(b):3d} recorded {sum(float(r['old_payout'] or 0) for r in b):+7.2f}u",
               dict(Counter(r["source"] for r in b)))
     seed = [r for r in rows if r.get("status")]
-    rp = [r for r in seed if r["status"] == "repriced_total"]
+    # Append-only: rows already in the seed stay (an applied row is voided or
+    # repriced, so it is no longer a candidate here and would otherwise drop out
+    # -- and the seed must keep carrying it for every future ledger build).
+    try:
+        with open(OUT, encoding="utf-8") as f:
+            prior = json.load(f).get("rows") or []
+    except Exception:
+        prior = []
+    have = {r["pick_id"] for r in seed}
+    kept = [r for r in prior if r["pick_id"] not in have]
+    seed = kept + seed
+    print(f"seed rows: {len(kept)} kept from the prior seed + {len(seed) - len(kept)} from this pass")
+    rp = [r for r in seed if r["status"] == "repriced_total" and "new_payout" in r]
     print(f"seed: {len(rp)} repriced ({sum(float(r['old_payout'] or 0) for r in rp):+.2f}u -> "
           f"{sum(r['new_payout'] for r in rp):+.2f}u), "
-          f"{sum(1 for r in seed if r['status'] == 'unposted_total')} voided")
+          f"{sum(1 for r in seed if r['status'] == 'unposted_total')} voided (cumulative)")
     with open(OUT, "w", encoding="utf-8") as f:
         json.dump({"note": ("2026-10-26 totals pass: every settled MLB total checked against the lines "
                             "books posted before first pitch (DK espn_odds.json, Odds API odds_history.json, "
