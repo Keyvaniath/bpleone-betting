@@ -252,14 +252,14 @@ def _settle_game_market(pick: Dict[str, Any]) -> Optional[str]:
             continue          # fail closed: never grade without a real matchup
         if g_date != date_s: continue
         if "ml_home" in market or "ml_away" in market:
-            if matchup not in g_mu and g_mu not in matchup: continue
+            if not _same_game(matchup, g_mu): continue
             if g.get("home_score") is None: continue
             winner_is_home = (g.get("home_score") or 0) > (g.get("away_score") or 0)
             if "ml_home" in market:
                 return "won" if winner_is_home else "lost"
             return "lost" if winner_is_home else "won"
         if "over_" in market or "under_" in market:
-            if matchup not in g_mu and g_mu not in matchup: continue
+            if not _same_game(matchup, g_mu): continue
             try:
                 line = float(re.search(r"(\d+(?:\.\d+)?)", market).group(1))
             except Exception:
@@ -270,6 +270,17 @@ def _settle_game_market(pick: Dict[str, Any]) -> Optional[str]:
                 return "won" if total > line else ("push" if total == line else "lost")
             return "won" if total < line else ("push" if total == line else "lost")
     return None
+
+
+def _same_game(a: str, b: str) -> bool:
+    """'AWY @ HOM' vs 'AWY @ HOM', each side prefix-tolerant (TBR/TB, KCR/KC).
+    A whole-string substring test only tolerated the code gap on the HOME side:
+    'tb @ mil' is not inside 'tbr @ mil' (2026-10-26)."""
+    if "@" not in a or "@" not in b:
+        return False
+    (a1, a2), (b1, b2) = ([x.strip() for x in s.split("@", 1)] for s in (a, b))
+    same = lambda x, y: bool(x and y) and (x == y or x.startswith(y) or y.startswith(x))
+    return same(a1, b1) and same(a2, b2)
 
 
 def _settle_player_prop(pick: Dict[str, Any]) -> Optional[str]:

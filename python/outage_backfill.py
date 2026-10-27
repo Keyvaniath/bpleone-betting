@@ -39,7 +39,9 @@ OUTAGE_REASON = "unsettleable: no outcome feed"
 # `previous_passes`. v2 (2026-10-22): MLB run lines had no grading branch.
 # v3 (2026-10-23): NFL names with hyphens (Smith-Njigba, Amon-Ra) never matched.
 # v4 (2026-10-23): NFL DFS receipts rescore while the long box window is loaded.
-BACKFILL_VERSION = 4
+# v5 (2026-10-26): MLB game lines with a TBR/KCR/SDP/SFG team AWAY never matched
+#     (see all_picks_tracker._mlb_same_game) -- the finals window is needed again.
+BACKFILL_VERSION = 5
 
 
 def _load(p: str) -> Dict[str, Any]:

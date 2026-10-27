@@ -41,6 +41,18 @@ bpleone-site/
 
 ## Current deployment state (LIVE)
 
+- **2026-10-26 (late) — AWAY-SIDE TEAM CODES NEVER GRADED.** MLB game lines
+  matched picks to finals by whole-string substring, which tolerates
+  TBR/TB, KCR/KC, SDP/SD, SFG/SF only for the HOME team ('cle @ tb' is inside
+  'cle @ tbr'; 'tb @ mil' is not inside 'tbr @ mil'). With one of those teams
+  AWAY, the pick aged into "unsettleable" (24 curated voids since 9/19, plus
+  every World Series game in Milwaukee sitting pending). Fixed:
+  all_picks_tracker._mlb_same_game (side by side, prefix-tolerant, rewrite
+  aliases) at all three MLB sites; locks_of_day._same_game likewise.
+  outage_backfill v5 refetches the long finals window so the September voids
+  can grade. Picks on games that never existed (Oct "TBR @ NYY", "SDP @ LAD"
+  -- stale-slate phantoms) find no final and stay void, correctly.
+
 - **2026-10-26 (late) — POD_PL NOW GRADED BY THE LEDGER.** pod_pl.json (homepage
   POD card, /pod-history, track-record, mlb.html) graded ITSELF: matchup
   strings vs a rolling historical_mlb window (4 verified-wrong results, e.g.

@@ -2803,15 +2803,9 @@ def _settle_picks(history: List[Dict[str, Any]]) -> int:
                 for g in historical_mlb:
                     g_date = (g.get("date") or "")[:10]
                     if g_date != p.get("date"): continue
-                    # ESPN->model abbrev bridge (2026-08-17): the substring match
-                    # tolerates prefix vocab differences (KC in KCR, SD in SDP)
-                    # but NOT rewrites -- WSH/WSN, AZ/ARI, ATH/OAK never matched,
-                    # so those teams' game lines could never settle and aged into
-                    # "unsettleable" voids (wins and losses alike -- silent bias).
-                    _ab = lambda s: {"wsh": "wsn", "az": "ari", "ath": "oak"}.get(
-                        (s or "").lower(), (s or "").lower())
-                    g_mu = f"{_ab(g.get('away_abbrev'))} @ {_ab(g.get('home_abbrev'))}"
-                    if matchup not in g_mu and g_mu not in matchup: continue
+                    # ESPN->model abbrev bridge: see _mlb_same_game (rewrites
+                    # 2026-08-17; away-side prefix codes 2026-10-26).
+                    if not _mlb_same_game(matchup, g): continue
                     if g.get("home_score") is None: continue
                     home_s = g.get("home_score") or 0
                     away_s = g.get("away_score") or 0
@@ -2842,6 +2836,8 @@ def _settle_picks(history: List[Dict[str, Any]]) -> int:
                         # vocab pairs (SFG/SF, KCR/KC, TBR/TB, SDP/SD) -- the
                         # matchup substring tolerated them but this compare
                         # didn't, so e.g. SFG_ML sat pending forever.
+                        _ab = lambda s: {"wsh": "wsn", "az": "ari", "ath": "oak"}.get(
+                            (s or "").lower(), (s or "").lower())
                         _team = _ab(market[:-3])
                         _aw, _hm = _ab(g.get("away_abbrev")), _ab(g.get("home_abbrev"))
                         _same = lambda a, b: bool(a and b) and (a == b or a.startswith(b) or b.startswith(a))
@@ -3090,6 +3086,25 @@ def _correct_misrouted_grades(history: List[Dict[str, Any]]) -> int:
     return n
 
 
+def _mlb_same_game(matchup: str, g: Dict[str, Any]) -> bool:
+    """True when a pick's 'AWY @ HOM' names the ESPN game g, side by side.
+
+    The old test was a substring check on the whole string, which tolerates
+    model-vs-ESPN code differences (TBR/TB, KCR/KC, SDP/SD, SFG/SF) only for
+    the HOME team: 'cle @ tb' is inside 'cle @ tbr', but 'tb @ mil' is NOT
+    inside 'tbr @ mil'. Every game line with one of those teams AWAY never
+    graded and aged into an 'unsettleable' void (2026-10-26: 24 curated picks,
+    plus the World Series games in Milwaukee). Each side is now compared
+    prefix-tolerantly, after the rewrite aliases (WSH/WSN, AZ/ARI, ATH/OAK)."""
+    mu = str(matchup or "").lower()
+    if "@" not in mu:
+        return False
+    pa, ph = [x.strip() for x in mu.split("@", 1)]
+    ab = lambda s: {"wsh": "wsn", "az": "ari", "ath": "oak"}.get(str(s or "").lower(), str(s or "").lower())
+    same = lambda a, b: bool(a and b) and (a == b or a.startswith(b) or b.startswith(a))
+    return same(pa, ab(g.get("away_abbrev"))) and same(ph, ab(g.get("home_abbrev")))
+
+
 def _recompute_result(p: Dict[str, Any], historical_mlb, by_name) -> Optional[str]:
     """Re-grade a pick against the CURRENT box-score feeds. Returns
     'won'/'lost'/'push', or None when it can't be confidently graded. Side
@@ -3105,8 +3120,7 @@ def _recompute_result(p: Dict[str, Any], historical_mlb, by_name) -> Optional[st
         matchup = (p.get("player_or_matchup") or "").lower()
         for g in historical_mlb:
             if (g.get("date") or "")[:10] != p.get("date"): continue
-            g_mu = f"{g.get('away_abbrev','')} @ {g.get('home_abbrev','')}".lower()
-            if matchup not in g_mu and g_mu not in matchup: continue
+            if not _mlb_same_game(matchup, g): continue
             if g.get("home_score") is None: continue
             home_s = g.get("home_score") or 0; away_s = g.get("away_score") or 0
             total = home_s + away_s
@@ -3170,8 +3184,7 @@ def _regrade_strict(p: Dict[str, Any], historical_mlb, by_name) -> Optional[str]
         matches = []
         for g in historical_mlb:
             if (g.get("date") or "")[:10] != p.get("date"): continue
-            g_mu = f"{g.get('away_abbrev','')} @ {g.get('home_abbrev','')}".lower()
-            if matchup not in g_mu and g_mu not in matchup: continue
+            if not _mlb_same_game(matchup, g): continue
             if g.get("home_score") is None: continue
             matches.append(g)
         if not matches:
