@@ -159,9 +159,28 @@ def _build_rationale(c: Dict[str, Any]) -> str:
     return f"Model {prob*100:.0f}% with +{edge:.1f}% edge vs market fair price (source: {src or 'composite'})."
 
 
+_PROP_KEYS = ("1_plus_hit", "1_plus_hr", "1_plus_rbi", "1_plus_run", "2_plus_hits", "k_over",
+              "er_under", "total_bases", "hrr", "pp_batter", "pts_over", "reb_over",
+              "ast_over", "3pm_over", "pra_over", "double_double", "triple_double")
+_GAME_FILES = {"MLB", "MLB-PP", "NBA", "NHL", "WNBA", "MLS", "EPL", "UCL", "CWS",
+               "NCAAB", "NCAAF", "NFL"}
+
+
+def _gradable(c: Dict[str, Any]) -> bool:
+    """A lock is a public, permanent call -- only make one we can grade.
+    Props settle from player_gamelogs.json (MLB only); game lines from a
+    historical_<sport>.json. KBO "1+ TB" props had neither: 384 KBO locks
+    (May-Oct 2026) could never settle and sat pending on the homepage count."""
+    sport = str(c.get("sport") or "").upper()
+    m = str(c.get("market") or "").lower()
+    if any(k in m for k in _PROP_KEYS):
+        return sport in ("MLB", "MLB-PP")
+    return sport in _GAME_FILES
+
+
 def _build_new_locks(top_plays: Dict[str, Any]) -> List[Dict[str, Any]]:
-    """Pick top N from today's top plays board."""
-    picks = (top_plays.get("top_25") or [])[:N_LOCKS_PER_DAY]
+    """Pick the top N GRADABLE plays from today's top plays board."""
+    picks = [c for c in (top_plays.get("top_25") or []) if _gradable(c)][:N_LOCKS_PER_DAY]
     date_str = _today_date_str()
     out = []
     for c in picks:
@@ -220,7 +239,9 @@ def _settle_game_market(pick: Dict[str, Any]) -> Optional[str]:
     sport = (pick.get("sport") or "").upper()
     date_s = pick.get("date")
     sport_to_file = {
-        "MLB": "historical_games.json", "MLB-PP": "historical_games.json",
+        # historical_games.json never existed -- every MLB game-line lock sat
+        # pending forever (2026-10-26).
+        "MLB": "historical_mlb.json", "MLB-PP": "historical_mlb.json",
         "NBA": "historical_nba.json", "NHL": "historical_nhl.json",
         "WNBA": "historical_wnba.json", "MLS": "historical_mls.json",
         "EPL": "historical_epl.json", "UCL": "historical_ucl.json",
@@ -367,10 +388,40 @@ def run() -> Dict[str, Any]:
     for pick in history:
         pick["rationale"] = _build_rationale(pick)
 
+    # MLB GAME-LINE locks mirror the graded ledger (2026-10-26): the ledger
+    # harvests every lock as source lock_of_day and grades it against verified
+    # finals at the house price (DK pre-game), with the totals restatement
+    # applied (a line no book posted is void). Props keep their own grade --
+    # the two agreed on every overlapping prop.
+    led = {}
+    for r in ((_load(os.path.join(DATA_DIR, "ledger_archive.json")).get("picks") or [])
+              + (_load(os.path.join(DATA_DIR, "all_picks_ledger.json")).get("picks") or [])):
+        if str(r.get("source") or "").startswith("lock_of_day") and str(r.get("sport")).upper() == "MLB":
+            led[(str(r.get("date"))[:10], r.get("player_or_matchup"), r.get("market"))] = r
+    for pick in history:
+        if str(pick.get("sport")).upper() != "MLB" or any(k in str(pick.get("market") or "").lower() for k in _PROP_KEYS):
+            continue
+        r = led.get((pick.get("date"), pick.get("player_or_matchup"), pick.get("market")))
+        if not r:
+            continue
+        if r.get("voided") and not str(r.get("voided_reason") or "").startswith("duplicate wager"):
+            pick.update(settled=False, result="void", payout_units=None,
+                        voided=True, voided_reason=r.get("voided_reason"))
+        elif r.get("settled") and r.get("result") in ("won", "lost", "push"):
+            price = r.get("book_american") if r.get("book_american") is not None else r.get("fair_american")
+            dec = _american_to_decimal(price)
+            stake = pick.get("unit_size_quarter_kelly") or 0.02
+            pick.update(settled=True, result=r["result"], graded_by="ledger", graded_price=price,
+                        settled_at=pick.get("settled_at") or dt.datetime.now().isoformat(timespec="seconds"),
+                        payout_units=(round(stake * (dec - 1), 4) if r["result"] == "won" and dec
+                                      else (round(-stake, 4) if r["result"] == "lost" else 0.0)))
+            pick.pop("voided", None)
+            pick.pop("voided_reason", None)
+
     # Attempt to settle any pending entries
     n_newly_settled = 0
     for pick in history:
-        if pick.get("settled"): continue
+        if pick.get("settled") or pick.get("voided"): continue
         result = _try_settle_pick(pick)
         if result:
             pick["settled"] = True
@@ -387,13 +438,32 @@ def run() -> Dict[str, Any]:
                 pick["payout_units"] = 0.0
             n_newly_settled += 1
 
+    # A lock no feed can grade within a week is VOID, not "pending" forever:
+    # it stays listed, never counts, and the count is published (n_void).
+    _today = dt.date.today()
+    for pick in history:
+        if pick.get("settled") or pick.get("voided"):
+            continue
+        try:
+            age = (_today - dt.date.fromisoformat(str(pick.get("date"))[:10])).days
+        except Exception:
+            continue
+        if age > 7:
+            pick.update(voided=True, result="void", voided_at=dt.datetime.now().isoformat(timespec="seconds"),
+                        voided_reason=(("ungradable: no KBO results feed for player props"
+                                        if str(pick.get("sport")).upper() == "KBO" else
+                                        "ungradable: no final / box score reached the grader within 7 days "
+                                        "(MLB game-line locks pointed at a results file that never existed)")
+                                       + " -- never counted, excluded from the record"))
+
     # Cap history
     if len(history) > MAX_HISTORY:
         history = history[-MAX_HISTORY:]
 
     # Aggregate stats
     settled = [p for p in history if p.get("settled")]
-    pending = [p for p in history if not p.get("settled")]
+    pending = [p for p in history if not p.get("settled") and not p.get("voided")]
+    voided = [p for p in history if p.get("voided")]
     wins = sum(1 for p in settled if p["result"] == "won")
     losses = sum(1 for p in settled if p["result"] == "lost")
     pushes = sum(1 for p in settled if p["result"] == "push")
@@ -447,6 +517,9 @@ def run() -> Dict[str, Any]:
         "total_locks": len(history),
         "n_settled": len(settled),
         "n_pending": len(pending),
+        "n_void": len(voided),
+        "n_void_by_sport": {sp: sum(1 for p in voided if p.get("sport") == sp)
+                            for sp in sorted({p.get("sport") for p in voided})},
         "n_added_this_run": n_added,
         "n_newly_settled_this_run": n_newly_settled,
         "wins": wins,

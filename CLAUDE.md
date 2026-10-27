@@ -41,6 +41,20 @@ bpleone-site/
 
 ## Current deployment state (LIVE)
 
+- **2026-10-26 (late) — LOCKS: 543 OF 921 COULD NEVER SETTLE.** locks_history
+  (homepage Locks card) took top_25[:5] blind: 384 KBO "1+ TB" props (no KBO
+  box feed) and 123 MLB-PP props whose box line never arrived sat "pending"
+  since May; MLB game-line locks read historical_games.json, which never
+  existed. NOW: a lock is made only on a gradable market (_gradable: MLB props
+  via player_gamelogs, game lines via historical_<sport>); MLB game-line locks
+  mirror the ledger's lock_of_day row (verified final, DK price, totals voids;
+  dup-collapse voids ignored); anything still pending after 7 days is VOID
+  (reason stored, n_void + n_void_by_sport published, homepage says so). The
+  settled record is unchanged in substance (307-59 -> 308-60, +45.5% on
+  ¼-Kelly risked; props and ledger agreed on every overlap). The May MLB game
+  locks (35) predate the ledger harvest and the rolling finals window; they
+  were never counted and are void, not regraded (¼-Kelly stakes, <1u total).
+
 - **2026-10-26 (late) — AWAY-SIDE TEAM CODES NEVER GRADED.** MLB game lines
   matched picks to finals by whole-string substring, which tolerates
   TBR/TB, KCR/KC, SDP/SD, SFG/SF only for the HOME team ('cle @ tb' is inside
