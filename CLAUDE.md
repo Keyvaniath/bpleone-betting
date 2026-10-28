@@ -41,6 +41,24 @@ bpleone-site/
 
 ## Current deployment state (LIVE)
 
+- **2026-10-28 (later) — NHL MODEL: GOALIES, SHOTS, REST.** `python/nhl_goalies.py`
+  + seed `tools/build_nhl_goalie_seed.py` -> `data/nhl_goalie_games.json` (2,990
+  NHL boxscores since 2024-25 from api-web.nhle.com: starter flag, shots, saves,
+  TOI, team SOG; grown daily by `ng.grow()` inside the desk, network fail-soft).
+  Goalie q = GSAA/shot shrunk with a 3,000-shot prior; edge = starter q minus the
+  team's last-20-starts average x 28.5 shots (Elo already has the usual goalie).
+  Starters are NOT known when the pipeline runs, so the bettable model uses a
+  PROJECTED starter (primary = most starts in last 10; P(start) = his share x the
+  back-to-back rate: primaries start ~30% on B2Bs vs ~62% otherwise). Model =
+  logistic on [logit(walk-forward Elo), EWMA SOG diff (alpha .08), goalie edge,
+  B2B rest, 1], fitted on LAST season only (prior/alpha tuned there: flat).
+  Result on this season's 197 DK-priced games (log loss): Elo only 0.6739 -> +
+  shots/goalie/rest 0.6630 -> known-starter ceiling 0.6620; **DK close 0.6557
+  (open 0.6566)**. Still NO EDGE: best blend w ~0.05, CI [-0.0007, 0.0008]; w is
+  now forced to 0 whenever the blend doesn't beat the market. nhl.html card shows
+  the model ladder + projected goalies (with % to start, B2B). Don't re-run this
+  test hoping for a different answer with the same public box-score inputs; the
+  next lever would be confirmed starters at bet time or xG/shot-quality data.
 - **2026-10-28 — NFL + NHL: GAME-LINES DESK, ACTIVITY GATE, STALE SOURCES.**
   Brandon wants NFL and NHL as real desks. Audit: no NFL/NHL pick had ever been
   priced at a book line (props pay at the model's OWN fair odds -> the NFL

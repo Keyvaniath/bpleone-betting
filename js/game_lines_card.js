@@ -8,6 +8,19 @@
   const amer = (a) => a == null ? "—" : (a >= 0 ? "+" + a : String(a));
   const pct = (p) => p == null ? "—" : (p * 100).toFixed(1) + "%";
   const esc = (s) => String(s == null ? "" : s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  // NHL (2026-10-28): what each layer of the model buys, in log loss on this
+  // season's DK-priced games (lower is better; DK's close is the bar).
+  const ladder = (s, bt) => {
+    const gm = s.goalie_model;
+    if (!gm) return "";
+    const eo = gm.backtest_elo_only || {}, ks = gm.backtest_known_starter || {};
+    return `<div class="muted" style="margin-top:6px; font-family:'JetBrains Mono',monospace; font-size:11px;">
+        Model ladder (log loss, lower = better): Elo only ${eo.logloss_elo ?? "—"} →
+        + shots, projected goalie, rest ${bt.logloss_elo ?? "—"} →
+        if the starter were known ${ks.logloss_elo ?? "—"} · DraftKings close ${bt.logloss_market ?? "—"}
+      </div>`;
+  };
+  const gl = (g) => g ? `${esc(g.projected || "?")}${g.p_start != null ? " " + Math.round(g.p_start * 100) + "%" : ""}${g.back_to_back ? " · B2B" : ""}` : "";
   fetch("data/game_lines_desk.json?t=" + Date.now(), { cache: "no-cache" })
     .then((r) => r.json())
     .then((d) => {
@@ -26,20 +39,21 @@
             <div class="muted">${esc((s.verdict || "").split(":").slice(1).join(":").trim())}</div>
             <div class="muted" style="margin-top:6px; font-family:'JetBrains Mono',monospace; font-size:11px;">
               Backtest: ${bt.n || 0} games ${esc(bt.first_date || "")} → ${esc(bt.last_date || "")} vs the DK close ·
-              log loss DK ${bt.logloss_market ?? "—"} / Elo ${bt.logloss_elo ?? "—"} / blend ${bt.logloss_blend ?? "—"} (w=${bt.w_fitted ?? "—"}) ·
+              log loss DK ${bt.logloss_market ?? "—"} / model ${bt.logloss_elo ?? "—"} / blend ${bt.logloss_blend ?? "—"} (w=${bt.w_fitted ?? "—"}) ·
               gain 90% CI [${ci[0] ?? "—"}, ${ci[1] ?? "—"}] ·
               out-of-sample half: ${oos.bets || 0} bets, ${oos.roi_pct == null ? "—" : (oos.roi_pct >= 0 ? "+" : "") + oos.roi_pct + "%"}
-            </div></div>`;
+            </div>${ladder(s, bt)}</div>`;
         const rows = (s.board || []).map((r) => {
           const pk = r.pick;
           const pickTxt = pk ? `<strong style="color:#58c878;">${esc(pk.team)} ML ${amer(pk.book_american)}</strong> <span class="muted">EV ${(pk.ev * 100).toFixed(1)}%</span>` : `<span class="muted">no pick</span>`;
           return `<div style="display:grid; grid-template-columns: 90px 1.2fr 1fr 1fr 1fr 1.6fr; gap:10px; padding:7px 16px; border-bottom:1px solid rgba(255,255,255,0.04); font-family:'JetBrains Mono',monospace; font-size:11.5px;">
             <span class="muted">${esc(r.game_date || "")}</span><span><strong>${esc(r.matchup)}</strong></span>
             <span>DK ${amer(r.ml_home)} / ${amer(r.ml_away)}</span>
-            <span class="muted">home DK ${pct(r.p_home_dk)}</span><span class="muted">model ${pct(r.p_home)}</span><span>${pickTxt}</span></div>`;
+            <span class="muted">home DK ${pct(r.p_home_dk)}</span><span class="muted">model ${pct(r.p_home_elo)}</span><span>${pickTxt}</span>
+            ${r.goalies ? `<span></span><span class="muted" style="grid-column: span 5; font-size:10.5px;">projected in net: ${gl(r.goalies.away)} (away) vs ${gl(r.goalies.home)} (home)</span>` : ""}</div>`;
         }).join("");
         el.innerHTML = head + (rows || `<p class="muted" style="padding:12px 16px;">No games on the DraftKings board.</p>`) +
-          `<p class="muted" style="font-size:10.5px; padding:8px 16px 12px; margin:0;">Picks are recorded at the DraftKings price when made and graded on the final score. Not part of the curated record unless the backtest proves out and Brandon promotes it.</p>`;
+          `<p class="muted" style="font-size:10.5px; padding:8px 16px 12px; margin:0;">Picks are recorded at the DraftKings price when made and graded on the final score. Not part of the curated record unless the backtest proves out and Brandon promotes it.${s.goalie_model ? " Goalies are projections: NHL starters are confirmed near puck drop, after this desk runs. % = chance that goalie starts; B2B = second night of a back-to-back." : ""}</p>`;
       });
     })
     .catch(() => els.forEach((el) => { el.innerHTML = `<p class="muted" style="padding:14px;">Game-lines desk unavailable.</p>`; }));

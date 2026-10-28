@@ -189,6 +189,69 @@ def replay(sport: str, finals: List[Dict[str, Any]], params: Dict[str, float],
     return e
 
 
+def pregame_elo(sport: str, finals: List[Dict[str, Any]], params: Dict[str, float]) -> Dict[Tuple[str, str, str], float]:
+    """Walk-forward pre-game Elo home probability for every final (each game
+    rated only on the games before its date)."""
+    e = Elo(sport, params["k"], params["hfa"], params["carry"])
+    out, i = {}, 0
+    for g in finals:
+        while i < len(finals) and finals[i]["date"] < g["date"]:
+            e.new_season(_season_key(sport, finals[i]["date"]))
+            e.update(finals[i])
+            i += 1
+        e.new_season(_season_key(sport, g["date"]))
+        out[(g["date"], g["away"], g["home"])] = e.p_home(g["home"], g["away"], g.get("neutral"))
+    return out
+
+
+# ----------------------------------------------------------- NHL goalies ----
+def nhl_goalie_model(finals: List[Dict[str, Any]], params: Dict[str, float], season_start: str) -> Dict[str, Any]:
+    """The NHL model beyond Elo (2026-10-28): one logistic regression on
+    [logit(walk-forward Elo), shot differential, goalie edge, rest, 1], fitted
+    on LAST season only, so this season stays a clean test against DraftKings.
+    Two variants: `proj` uses the projected starter (what the pipeline knows
+    when it bets), `known` the actual starter (a ceiling -- the DK close
+    already knows who starts). Returns per-game logit adjustments over Elo for
+    the backtest plus the state for today's board."""
+    import nhl_goalies as ng
+    grown = ng.grow()
+    games = ng.ordered_games()
+    feats, state = ng.history_features(games)
+    pre = pregame_elo("nhl", finals, params)
+    last_start = f"{int(season_start[:4]) - 1}-11-01"   # skip October: goalie/usage state still thin
+    cols = {"proj": "goalie_proj", "known": "goalie_known"}
+
+    def x_of(L, f, v):
+        return [L, f["shots"], f[cols[v]], f["rest"], 1.0]
+
+    rows = {v: [] for v in cols}
+    for g in finals:
+        k = (g["date"], g["away"], g["home"])
+        if not (last_start <= g["date"] < season_start) or k not in feats or g["home_score"] == g["away_score"]:
+            continue
+        y = 1.0 if g["home_score"] > g["away_score"] else 0.0
+        for v in cols:
+            rows[v].append((0.0, x_of(_logit(pre[k]), feats[k], v), y))
+    betas = {v: ng.fit_logit_offset(r) for v, r in rows.items()}
+
+    def z(v, L, f):
+        return sum(b * x for b, x in zip(betas[v], x_of(L, f, v)))
+
+    def make(v):
+        return lambda k: (z(v, _logit(pre[k]), feats[k]) - _logit(pre[k])) if k in feats and k in pre and betas[v] else 0.0
+
+    def fit_ll(v):
+        r = rows[v]
+        base = sum(_ll(_sig(x[0]), y) for _, x, y in r) / len(r)
+        model = sum(_ll(_sig(sum(b * xi for b, xi in zip(betas[v], x))), y) for _, x, y in r) / len(r)
+        return {"elo": round(base, 4), "model": round(model, 4)}
+
+    return {"betas": {v: [round(x, 4) for x in b] for v, b in betas.items()},
+            "fit_n": len(rows["proj"]), "fit_logloss": {v: fit_ll(v) for v in rows},
+            "adj": {v: make(v) for v in betas}, "z": z, "state": state, "n_grown": grown,
+            "n_goalie_games": len(games)}
+
+
 # --------------------------------------------------------------- backtest ----
 def _ll(p: float, y: float) -> float:
     p = min(max(p, 1e-6), 1 - 1e-6)
@@ -196,7 +259,7 @@ def _ll(p: float, y: float) -> float:
 
 
 def backtest(sport: str, finals: List[Dict[str, Any]], lines: Dict[str, Any],
-             params: Dict[str, float]) -> Dict[str, Any]:
+             params: Dict[str, float], adj=None) -> Dict[str, Any]:
     """Walk-forward over this season's DK-priced games: before each game date,
     rate with every earlier final; compare log loss of Elo, DK no-vig, and the
     blend at each w; simulate the pick rule at the DK close."""
@@ -224,8 +287,11 @@ def backtest(sport: str, finals: List[Dict[str, Any]], lines: Dict[str, Any],
             elo.update(finals[cursor])
             cursor += 1
         elo.new_season(_season_key(sport, d))
+        p_elo = elo.p_home(k[2], k[1], g.get("neutral"))
+        if adj is not None:
+            p_elo = _sig(_logit(p_elo) + adj(k))
         out.append({"date": d, "matchup": f"{k[1]} @ {k[2]}", "y": 1.0 if g["home_score"] > g["away_score"] else 0.0,
-                    "p_elo": elo.p_home(k[2], k[1], g.get("neutral")), "p_mkt": p_mkt,
+                    "p_elo": p_elo, "p_mkt": p_mkt,
                     "ml_home": c.get("ml_home"), "ml_away": c.get("ml_away")})
     n = len(out)
     if not n:
@@ -342,15 +408,38 @@ def run_sport(sport: str) -> Dict[str, Any]:
     season_start = {"nfl": f"{_season_key('nfl', today.isoformat())}-08-01",
                     "nhl": f"{_season_key('nhl', today.isoformat())}-09-01"}[sport]
     params = fit_params(sport, finals, season_start)
-    bt = backtest(sport, finals, lines, params)
-    w = bt.get("w_fitted", 0.0) if bt.get("n", 0) >= MIN_BACKTEST_N else 0.0
+    gm, extra = None, {}
+    if sport == "nhl":
+        gm = nhl_goalie_model(finals, params, season_start)
+        bt_base = backtest(sport, finals, lines, params)
+        bt = backtest(sport, finals, lines, params, adj=gm["adj"]["proj"])
+        bt_known = backtest(sport, finals, lines, params, adj=gm["adj"]["known"])
+        keys = ("n", "logloss_market", "logloss_elo", "logloss_blend", "w_fitted", "logloss_gain_vs_market",
+                "logloss_gain_ci90", "sim_out_of_sample")
+        extra["goalie_model"] = {
+            "method": ("Logistic model on walk-forward Elo + EWMA shot differential + goalie edge (GSAA/shot, "
+                       "3,000-shot prior, vs the team's last-20-starts average, x 28.5 shots) + back-to-back rest, "
+                       "fitted on last season only. `projected` = primary starter weighted by P(start) -- what "
+                       "the pipeline knows when it bets; `known_starter` = the actual starter, a ceiling only."),
+            "betas_projected": gm["betas"]["proj"], "betas_known_starter": gm["betas"]["known"],
+            "beta_labels": ["logit(Elo)", "per 10 shots of EWMA shot differential", "per goal of goalie edge",
+                            "per back-to-back advantage", "intercept"],
+            "fit_n_last_season": gm["fit_n"], "fit_logloss_last_season": gm["fit_logloss"],
+            "n_goalie_games": gm["n_goalie_games"], "n_boxscores_added_today": gm["n_grown"],
+            "backtest_elo_only": {k: bt_base.get(k) for k in keys},
+            "backtest_known_starter": {k: bt_known.get(k) for k in keys},
+        }
+    else:
+        bt = backtest(sport, finals, lines, params)
     oos = bt.get("sim_out_of_sample") or {}
     beats_market = bool(bt.get("n", 0) >= MIN_BACKTEST_N and bt.get("logloss_blend", 9) < bt.get("logloss_market", 0))
+    # a weight that doesn't beat the market at 4 decimals is noise: lean on nothing
+    w = bt.get("w_fitted", 0.0) if beats_market else 0.0
     ci_lo = (bt.get("logloss_gain_ci90") or (0, 0))[0]
     proven = beats_market and ci_lo > 0 and (oos.get("bets") or 0) >= 50 and (oos.get("roi_pct") or -1) > 0
     if not beats_market:
-        verdict = ("NO EDGE: the model adds nothing to DraftKings' price on this season's games (fitted "
-                   "weight 0) -- no picks")
+        verdict = ("NO EDGE: the model adds nothing to DraftKings' price on this season's games (the "
+                   "best blend is DK's own number) -- no picks")
     elif not proven:
         verdict = ("UNPROVEN: the blend edges the DK close on this season's games, but the gain's 90% interval "
                    f"includes zero or the out-of-sample test is under 50 bets ({oos.get('bets') or 0}). Picks are "
@@ -370,10 +459,32 @@ def run_sport(sport: str) -> Dict[str, Any]:
         p_mkt = _no_vig(m.get("ml_home"), m.get("ml_away"))
         if p_mkt is None:
             continue
+        try:
+            ct = dt.datetime.fromisoformat(str(g.get("commence_time")).replace("Z", "+00:00"))
+            game_date = (ct - dt.timedelta(hours=4)).date().isoformat()
+        except Exception:
+            game_date = None
+        goalies = None
+        if gm and game_date:
+            st = gm["state"]
+            hs, as_ = st.side(h, game_date), st.side(a, game_date)
+            if gm["betas"]["proj"]:
+                f = {"goalie_proj": hs["proj_goals"] - as_["proj_goals"], "rest": int(as_["b2b"]) - int(hs["b2b"]),
+                     "shots": st.shots(h, a)}
+                p_elo = _sig(gm["z"]("proj", _logit(p_elo), f))
+            goalies = {}
+            for side, x in (("home", hs), ("away", as_)):
+                likely_primary = x["p_primary"] >= 0.5 or not x["backup"]
+                goalies[side] = {"projected": x["primary"] if likely_primary else x["backup"],
+                                 "p_start": x["p_primary"] if likely_primary else round(1 - x["p_primary"], 3),
+                                 "primary": x["primary"], "backup": x["backup"], "back_to_back": x["b2b"],
+                                 "edge_goals": round(x["proj_goals"], 3)}
         p = _sig(_logit(p_mkt) + w * (_logit(p_elo) - _logit(p_mkt)))
         row = {"event_id": g.get("event_id"), "matchup": f"{a} @ {h}", "commence": g.get("commence_time"),
                "p_home_elo": round(p_elo, 4), "p_home_dk": round(p_mkt, 4), "p_home": round(p, 4),
-               "ml_home": m.get("ml_home"), "ml_away": m.get("ml_away"), "pick": None}
+               "ml_home": m.get("ml_home"), "ml_away": m.get("ml_away"), "pick": None, "game_date": game_date}
+        if goalies:
+            row["goalies"] = goalies
         best = None
         for side, pp, px in (("home", p, m.get("ml_home")), ("away", 1 - p, m.get("ml_away"))):
             dd = _dec(px)
@@ -384,15 +495,10 @@ def run_sport(sport: str) -> Dict[str, Any]:
                             "prob": round(pp, 4), "book_american": px, "fair_american": _american(pp),
                             "ev": round(ev, 4)}
         row["pick"] = best
-        try:
-            ct = dt.datetime.fromisoformat(str(g.get("commence_time")).replace("Z", "+00:00"))
-            row["game_date"] = (ct - dt.timedelta(hours=4)).date().isoformat()
-        except Exception:
-            row["game_date"] = None
         board.append(row)
     return {"params": params, "w_used": w, "backtest": bt, "beats_market": beats_market, "proven": proven,
             "verdict": verdict, "ratings": {t: round(v, 1) for t, v in sorted(elo.r.items(), key=lambda x: -x[1])},
-            "board": board, "n_picks": sum(1 for r in board if r["pick"])}
+            "board": board, "n_picks": sum(1 for r in board if r["pick"]), **extra}
 
 
 def run() -> Dict[str, Any]:
