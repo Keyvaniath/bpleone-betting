@@ -1,4 +1,4 @@
-# Tonight's Slate Brief — 2026-10-27
+# Tonight's Slate Brief — 2026-10-28
 
 ## Slate Quality: 67/100 (MEDIUM)
 _0% lineups confirmed · 1 rookie SPs_
@@ -6,8 +6,8 @@ _0% lineups confirmed · 1 rookie SPs_
 
 ## Slate
 - **1 games** scheduled
-- **20 best bets** scored: 7 DK · 0 PP · 0 NRFI · 0 SGP
-- **MC simulation:** EV +$15.53, 64% P(profit), p05 $-110.24 / p95 $100.21
+- **24 best bets** scored: 6 DK · 0 PP · 1 NRFI · 0 SGP
+- **MC simulation:** EV +$32.29, 60% P(profit), p05 $-130.1 / p95 $157.43
 
 ## Top 5 Best Bets
 1. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
@@ -26,24 +26,37 @@ _0% lineups confirmed · 1 rookie SPs_
    - Model 58.8% (fair -143)
    - Worlds
 
-## ⚠️ Trap Warnings — 2 flagged
-- **Ryan Vilade OVER 0.5 batter hits** (low):
-   - Edge +28.1% looks big but only 0 settled props on this player — model unproven
+## ⚠️ Trap Warnings — 5 flagged
+- **Richie Palacios OVER 0.5 batter hits** (low):
+   - Edge +14.6% looks big but only 0 settled props on this player — model unproven
+- **MIL @ TBR YRFI (1st-inning OVER 0.5)** (low):
+   - Edge +11.1% looks big but only 0 settled props on this player — model unproven
+- **Victor Mesa Jr. OVER 0.5 batter hits** (low):
+   - Edge +10.1% looks big but only 0 settled props on this player — model unproven
 - **Taylor Walls OVER 0.5 batter hits** (low):
-   - Edge +9.8% looks big but only 0 settled props on this player — model unproven
+   - Edge +9.9% looks big but only 0 settled props on this player — model unproven
+- **Garrett Mitchell OVER 0.5 batter hits** (low):
+   - Edge +8.8% looks big but only 0 settled props on this player — model unproven
+
+## NRFI/YRFI strong leans
+- **YRFI** (1st-inning OVER): MIL @ TBR
+
+## Golf -- VidantaWorld Mexico Open
+- **Leader:** Patton Kizzire (E) at #1
+- **Field:** 120 players  |  Status: Scheduled
 
 ## NBA -- REGULAR
-- Brooklyn Nets @ Boston Celtics (0-3 vs 2-1)  | P(home) 91.2% fair -1032 | Scheduled
-- Detroit Pistons @ New York Knicks (3-0 vs 0-3)  | P(home) 6.4% fair +1454 | Scheduled
-- Sacramento Kings @ San Antonio Spurs (0-3 vs 1-2)  | P(home) 72.1% fair -258 | Scheduled
-- Portland Trail Blazers @ Los Angeles Lakers (2-0 vs 3-0)  | P(home) 55.0% fair -122 | Scheduled
+- Miami Heat @ Atlanta Hawks (0-4 vs 2-2)  | P(home) 83.8% fair -516 | Scheduled
+- Washington Wizards @ Cleveland Cavaliers (2-2 vs 2-1)  | P(home) 71.0% fair -245 | Scheduled
+- Charlotte Hornets @ Detroit Pistons (3-1 vs 3-1)  | P(home) 55.0% fair -122 | Scheduled
+- Philadelphia 76ers @ Indiana Pacers (3-1 vs 2-2)  | P(home) 29.0% fair +245 | Scheduled
+- Orlando Magic @ Toronto Raptors (1-2 vs 2-1)  | P(home) 83.0% fair -489 | Scheduled
 
 ## NHL -- REGULAR
-- Columbus Blue Jackets @ Philadelphia Flyers (4-5-0 vs 3-7-3)  | P(home) 52.1% fair -109 | Scheduled
-- Boston Bruins @ Carolina Hurricanes (9-2-1 vs 9-2-2)  | P(home) 59.1% fair -145 | Scheduled
-- Los Angeles Kings @ Chicago Blackhawks (3-5-2 vs 3-8-0)  | P(home) 48.2% fair +107 | Scheduled
-- Montreal Canadiens @ St. Louis Blues (6-3-2 vs 5-5-1)  | P(home) 48.6% fair +106 | Scheduled
-- New York Islanders @ Nashville Predators (5-4-2 vs 4-3-4)  | P(home) 62.4% fair -166 | Scheduled
+- Philadelphia Flyers @ Washington Capitals (3-7-4 vs 6-4-0)  | P(home) 85.2% fair -575 | Scheduled
+- Calgary Flames @ Edmonton Oilers (5-6-0 vs 8-2-2)  | P(home) 90.2% fair -916 | Scheduled
+- New Jersey Devils @ Colorado Avalanche (8-4-0 vs 6-5-1)  | P(home) 49.9% fair +101 | Scheduled
+- Toronto Maple Leafs @ Seattle Kraken (7-5-2 vs 7-4-1)  | P(home) 68.4% fair -216 | Scheduled
 
 ## LoL Esports -- 0 live, 16 upcoming
 - [Worlds] Movistar KOI vs T1 BO3 | P(A) 48.9% fair +105/-105

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-28T00:54:06",
+  "generated_at": "2026-10-28T15:30:32",
   "date": "2026-10-28",
   "n_games": 1,
   "method_note": "Per-game unified card: today.json model+market+recs joined with every per-matchup player/game prop. Live score/win-prob overlaid client-side from live_state.json + live_game.json.",
@@ -27,36 +27,44 @@
         "ump_k_mult": null
       },
       "model": {
-        "fair_home_ml": 121,
-        "fair_away_ml": -121,
-        "fair_total": 8.58,
-        "p_home_win": 0.4532,
-        "p_away_win": 0.5468,
-        "p_over_market": 0.6882
+        "fair_home_ml": 243,
+        "fair_away_ml": -243,
+        "fair_total": 7.41,
+        "p_home_win": 0.2912,
+        "p_away_win": 0.7088,
+        "p_over_market": 0.6097
       },
       "market": {
-        "home_ml": 102,
-        "away_ml": -123,
-        "total": 7.0,
+        "home_ml": 130,
+        "away_ml": -157,
+        "total": 6.5,
         "book": "draftkings"
       },
       "recommendations": [
         {
-          "label": "OVER_7.0",
-          "model_prob": 0.6882,
-          "market_price": -121,
-          "edge_pct": 25.7,
+          "label": "OVER_6.5",
+          "model_prob": 0.6097,
+          "market_price": -110,
+          "edge_pct": 16.39,
+          "kelly_units": 4.51,
+          "confidence": "High"
+        },
+        {
+          "label": "MIL_ML",
+          "model_prob": 0.7088,
+          "market_price": -157,
+          "edge_pct": 16.03,
           "kelly_units": 5.0,
           "confidence": "High"
         }
       ],
       "pitchers": {
         "away": {
-          "name": "TBD",
-          "hand": null,
-          "era": null,
-          "whip": null,
-          "k9": null
+          "name": "Jacob Misiorowski",
+          "hand": "R",
+          "era": 1.8,
+          "whip": 0.8,
+          "k9": 12.98
         },
         "home": {
           "name": "TBD",
@@ -88,8 +96,16 @@
           }
         },
         "ats": {
-          "away": null,
-          "home": null
+          "away": {
+            "ats_record": "1-4-0",
+            "cover_pct": 0.2,
+            "signal": "MODEL_OVERRATES"
+          },
+          "home": {
+            "ats_record": "5-2-0",
+            "cover_pct": 0.714,
+            "signal": "MODEL_UNDERRATES"
+          }
         },
         "pitcher_form": {
           "away": {
@@ -105,7 +121,7 @@
             "leans": []
           },
           "home": {
-            "pitcher": "Griffin Jax",
+            "pitcher": "TBD",
             "status": "STEADY",
             "trend": null,
             "tier": "NEUTRAL_FORM",
@@ -176,45 +192,27 @@
         }
       },
       "line_movement": {
-        "model_home_implied": 45.3,
+        "model_home_implied": 29.1,
         "market": {
-          "home_ml": 102,
-          "away_ml": -123,
-          "total": 7.0,
+          "home_ml": 130,
+          "away_ml": -157,
+          "total": 6.5,
           "book": "draftkings",
-          "home_implied": 49.5
+          "home_implied": 43.5
         },
-        "edge_vs_market_pp": -4.2,
+        "edge_vs_market_pp": -14.4,
         "has_timeseries": false
       },
-      "n_predictions": 13,
+      "n_predictions": 10,
       "predictions": [
-        {
-          "family": "pitcher",
-          "stat": "Win",
-          "subject": "Griffin Jax",
-          "market": "PITCHER_WIN_NO",
-          "prob": 0.805,
-          "fair_odds": -412,
-          "edge": "STRONG_NO"
-        },
         {
           "family": "pitcher",
           "stat": "Win",
           "subject": "TBD",
           "market": "PITCHER_WIN_NO",
-          "prob": 0.792,
-          "fair_odds": -381,
+          "prob": 0.817,
+          "fair_odds": -448,
           "edge": "STRONG_NO"
-        },
-        {
-          "family": "game",
-          "stat": "Run line",
-          "subject": "MIL @ TBR",
-          "market": "HOME_PLUS_1.5",
-          "prob": 0.673,
-          "fair_odds": -206,
-          "edge": "STRONG_HOME_+1.5"
         },
         {
           "family": "game",
@@ -227,17 +225,8 @@
         },
         {
           "family": "pitcher",
-          "stat": "Hits allowed",
-          "subject": "Griffin Jax",
-          "market": "H_UNDER_5.0",
-          "prob": 0.646,
-          "fair_odds": -183,
-          "edge": "STRONG_UNDER"
-        },
-        {
-          "family": "pitcher",
           "stat": "Outs",
-          "subject": "Griffin Jax",
+          "subject": "TBD",
           "market": "OUTS_UNDER_15.5",
           "prob": 0.595,
           "fair_odds": -147,
@@ -257,23 +246,23 @@
           "stat": "Earned runs",
           "subject": "TBD",
           "market": "Earned runs",
-          "prob": 0.467,
+          "prob": 0.497,
           "fair_odds": null,
           "edge": "NONE"
         },
         {
           "family": "pitcher",
           "stat": "Earned runs",
-          "subject": "Griffin Jax",
+          "subject": "TBD",
           "market": "Earned runs",
-          "prob": 0.387,
+          "prob": 0.467,
           "fair_odds": null,
           "edge": "NONE"
         },
         {
           "family": "pitcher",
           "stat": "Walks",
-          "subject": "Griffin Jax",
+          "subject": "TBD",
           "market": "Walks",
           "prob": 0.329,
           "fair_odds": null,
