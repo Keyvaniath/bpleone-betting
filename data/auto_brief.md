@@ -6,7 +6,7 @@ _0% lineups confirmed · 1 rookie SPs_
 
 ## Slate
 - **1 games** scheduled
-- **33 best bets** scored: 6 DK · 0 PP · 1 NRFI · 0 SGP
+- **35 best bets** scored: 6 DK · 0 PP · 1 NRFI · 0 SGP
 - **MC simulation:** EV +$7.06, 60% P(profit), p05 $-44.04 / p95 $40.04
 
 ## Top 5 Best Bets

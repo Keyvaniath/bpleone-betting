@@ -4,44 +4,36 @@
 
 _Pipeline health: **WARNING** (12/15 artifacts ok; 3 empty, 0 stale)._ 
 
-_Generated at 2026-10-28T16:59:54 UTC. Game lines source: **DraftKings**. Pick-em opportunities from PrizePicks._
-
-## Play of the Day
-
-**MIL @ TBR - MIL_ML**
-- Market: -162
-- Model probability: 70.9%
-- Raw edge: +14.64%
-- Recommended stake: 5.0u Kelly
+_Generated at 2026-10-28T19:35:15 UTC. Game lines source: **DraftKings**. Pick-em opportunities from PrizePicks._
 
 ## Full Slate (1 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 8:00p ET | MIL @ TBR | Tropicana Field | indoor | MIL_ML +14.64% |
+| 8:00p ET | MIL @ TBR | Tropicana Field | indoor | -- |
 
 ## Parlays - top 5
 
-- **3-leg @ +496 (prob 24.6%, EV +46.83%)**
-  - Richie Palacios OVER 0.5 batter_hits (+101, model 57.0%)
-  - MIL @ TBR MIL_ML (-162, model 70.9%)
-  - MIL @ TBR OVER_6.5 (-120, model 61.0%)
-- **3-leg @ +494 (prob 24.4%, EV +44.67%)**
+- **3-leg @ +634 (prob 17.8%, EV +30.6%)**
   - Richie Palacios OVER 0.5 batter_hits (+101, model 57.0%)
   - Victor Mesa Jr. OVER 0.5 batter_hits (-121, model 60.3%)
-  - MIL @ TBR MIL_ML (-162, model 70.9%)
-- **3-leg @ +605 (prob 20.5%, EV +44.32%)**
+  - MIL @ TBR UNDER_6.5 (+100, model 51.7%)
+- **3-leg @ +772 (prob 14.9%, EV +30.28%)**
   - Richie Palacios OVER 0.5 batter_hits (+101, model 57.0%)
   - Taylor Walls OVER 0.5 batter_hits (+117, model 50.6%)
-  - MIL @ TBR MIL_ML (-162, model 70.9%)
-- **3-leg @ +481 (prob 24.6%, EV +42.92%)**
+  - MIL @ TBR UNDER_6.5 (+100, model 51.7%)
+- **3-leg @ +619 (prob 17.9%, EV +29.01%)**
   - Richie Palacios OVER 0.5 batter_hits (+101, model 57.0%)
   - Garrett Mitchell OVER 0.5 batter_hits (-127, model 60.9%)
-  - MIL @ TBR MIL_ML (-162, model 70.9%)
-- **3-leg @ +442 (prob 26.1%, EV +41.12%)**
-  - Victor Mesa Jr. OVER 0.5 batter_hits (-121, model 60.3%)
-  - MIL @ TBR MIL_ML (-162, model 70.9%)
-  - MIL @ TBR OVER_6.5 (-120, model 61.0%)
+  - MIL @ TBR UNDER_6.5 (+100, model 51.7%)
+- **3-leg @ +604 (prob 18.1%, EV +27.36%)**
+  - Richie Palacios OVER 0.5 batter_hits (+101, model 57.0%)
+  - Liam Hicks OVER 0.5 batter_hits (-133, model 61.3%)
+  - MIL @ TBR UNDER_6.5 (+100, model 51.7%)
+- **3-leg @ +1010 (prob 11.4%, EV +26.36%)**
+  - Richie Palacios OVER 0.5 batter_hits (+101, model 57.0%)
+  - William Contreras UNDER 0.5 batter_hits (+176, model 38.6%)
+  - MIL @ TBR UNDER_6.5 (+100, model 51.7%)
 
 ## Self-Learning Loop
 
@@ -50,13 +42,13 @@ _Generated at 2026-10-28T16:59:54 UTC. Game lines source: **DraftKings**. Pick-e
 | batter hits | 349 | 55.6% | 56.7% | 1.020 | 0.981 |
 | batter total bases | 87 | 36.8% | 41.1% | 1.116 | 0.903 |
 
-Cumulative graded plays: 19857. Wins: 8817. Hit rate: 44.4%.
+Cumulative graded plays: 19858. Wins: 8815. Hit rate: 44.4%.
 
 ## Auxiliary Markets (Model Fair Prices)
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| MIL @ TBR | 60.8% | -155 | 2.49 | +457 | -457 |
+| MIL @ TBR | 78.2% | -358 | 1.23 | +285 | -285 |
 
 ## Team Form (last 10)
 

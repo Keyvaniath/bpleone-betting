@@ -10,5 +10,5 @@ _60-second read. Calibration tier: **PRODUCTION** (100% progress)._
 - **MIL @ TBR** ml_away: line moved 50.25% → 54.95% (+4.7pp)
 
 ---
-_Generated 2026-10-28T16:59:40_
+_Generated 2026-10-28T19:34:40_
 _Full breakdown: /tonight · Full history: /locks-of-day_

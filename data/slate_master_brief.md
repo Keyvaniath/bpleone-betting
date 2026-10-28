@@ -1,5 +1,5 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-10-28T16:59:47 UTC_
+_Generated 2026-10-28T19:34:47 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
@@ -27,13 +27,13 @@ _Generated 2026-10-28T16:59:47 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **NBA** / tyrese maxey (PLAYER_FADE)
-  - Fade angle: PTS UNDER + PRA UNDER (multi-prop)
-- **NBA** / shai gilgeous-alexander (PLAYER_FADE)
+- **NBA** / luka doncic (PLAYER_FADE)
   - Fade angle: PTS UNDER + PRA UNDER (multi-prop)
 - **NBA** / anthony edwards (PLAYER_FADE)
   - Fade angle: PTS UNDER + PRA UNDER (multi-prop)
-- **NBA** / luka doncic (PLAYER_FADE)
+- **NBA** / tyrese maxey (PLAYER_FADE)
+  - Fade angle: PTS UNDER + PRA UNDER (multi-prop)
+- **NBA** / shai gilgeous-alexander (PLAYER_FADE)
   - Fade angle: PTS UNDER + PRA UNDER (multi-prop)
 - **NBA** / CHI (TEAM_FADE)
   - Fade angle: team total UNDER

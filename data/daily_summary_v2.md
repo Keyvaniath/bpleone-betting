@@ -1,18 +1,18 @@
 # EdgeStat Daily Summary — 2026-10-28
 
-## 🏥 Model Health: 65.8/100 [OK]
+## 🏥 Model Health: 69.4/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.9/100
-  - 🔴 Hit Rate Trend: 48.3/100
-  - 🔴 Brier Trend: 8.3/100
+  - 🟢 Calibration Freshness: 99.7/100
+  - 🔴 Hit Rate Trend: 47.9/100
+  - 🔴 Brier Trend: 9.1/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 95.5/100
-  - 🔴 Edge Count: 54.3/100
+  - 🟢 Data Health: 100.0/100
+  - 🟢 Edge Count: 80.0/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.582)
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.573)
 - **Total games on board:** 73
-- **Strong home favorites:** 35 | **Strong road dogs:** 16
+- **Strong home favorites:** 33 | **Strong road dogs:** 16
 
 ## 🎯 Top 5 Best Bets
 1. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
@@ -47,18 +47,19 @@
 - [UCL] **Manchester United** HOME (None L10) · model 72.7% fair -267
 - [NCAAF] **Ole Miss Rebels** HOME (None L10) · model 72.6% fair -265
 - [NCAAF] **Texas Longhorns** HOME (None L10) · model 72.6% fair -265
-- [MLS] **Charlotte FC** HOME (1-3 L10) · model 72.5% fair -264
 - [NFL] **Dallas Cowboys** HOME (None L10) · model 72.0% fair -257
+- [MLS] **Nashville SC** HOME (3-1 L10) · model 71.6% fair -253
+- [MLS] **New England Revolution** HOME (3-1 L10) · model 71.4% fair -249
 - [EPL] **AFC Bournemouth** HOME (2-1 L10) · model 71.3% fair -249
-- [NBA] **Philadelphia 76ers** AWAY (3-2 L10) · model 71.0% fair -245
 
 ## 🔥/❄️ Heat / Cold Signals
 - Hot teams: **10** | Cold teams: **22** | Over-heavy: 0 | Under-heavy: 34
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (159)
+## ⚠️ Anomaly Detector (161)
 - RESIDUAL_DIVERGENCE: **22**
-- STEAM_MOVE: **137**
+- STEAM_MOVE: **138**
+- COMPOUND_BULLPEN: **1**
   - Atlanta Hawks (NBA): Atlanta Hawks OUTPERFORMING expected margin by 7.7pts in recent games -- model bias may persist
   - Miami Heat (NBA): Miami Heat UNDERPERFORMING expected margin by 10.2pts in recent games -- model bias may persist
   - Charlotte Hornets (NBA): Charlotte Hornets UNDERPERFORMING expected margin by 6.6pts in recent games -- model bias may persist
@@ -67,7 +68,7 @@
 
 ## 💰 Today's Portfolio (12 picks)
 - Total stake: **$330.0** (33.0% of $1000 bankroll)
-- Expected EV: **$-6.09**
+- Expected EV: **$-6.74**
   - #1 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #2 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
   - #3 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
@@ -75,12 +76,12 @@
   - #5 [NBA] $35 on NBA Detroit Pistons ML (3-1) vs Charlotte Hornets (P=55%)
 
 ## 🎯 Convergence Picks (36 stacked games)
-- ELITE: **13** · HIGH: 13 · MED: 10
+- ELITE: **14** · HIGH: 13 · MED: 9
   - [ELITE] Miami Heat @ Atlanta Hawks : 5 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ANOMALY)
   - [ELITE] Charlotte Hornets @ Detroit Pistons : 5 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
+  - [ELITE] New Jersey Devils @ Colorado Avalanche : 5 signals (PREGAME, HEAT_COLD, HEAT_COLD, HEAT_COLD)
   - [ELITE] Columbus Crew @ FC Dallas : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
   - [ELITE] Houston Dynamo FC @ Seattle Sounders FC : 5 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
-  - [ELITE] Nottingham Forest @ Brentford : 5 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ATS)
 
 ## ⚾ Top MLB Pitcher K Plays (1)
 - **Jacob Misiorowski** OVER 4.5 K (75%) fair -303
