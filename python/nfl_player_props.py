@@ -32,6 +32,7 @@ from __future__ import annotations
 import os
 import json
 import math
+import re
 import datetime as dt
 from typing import Any, Dict, List, Optional
 
@@ -499,6 +500,58 @@ def _generate(game_specs: List[Any], candidates: Dict[str, Dict[str, Any]],
     return rows, details
 
 
+def _active_gate(candidates: Dict[str, Dict[str, Any]], gl: Dict[str, Any],
+                 hist_games: List[Dict[str, Any]]) -> Any:
+    """Drop players who are not playing (2026-10-28).
+
+    The universe is every baseline-resolvable skill player on the roster, with
+    no injury/depth check: of Week 8's ~1,000 props, 228 were on players with no
+    box line (147 had not played in 2+ weeks -- injured or benched -- plus
+    backup QBs like Davis Mills / Joe Flacco), and every one aged into a void.
+    Rule: a player must have a box row in one of his team's last TWO completed
+    regular-season games. Teams with no completed game yet (Week 1) pass."""
+    norm = lambda s: re.sub(r"\s+(jr|sr|ii|iii|iv|v)$", "",
+                            re.sub(r"[.'’-]", "", str(s or "").lower())).strip()
+    seen: Dict[str, set] = {}
+    for k, v in (gl or {}).items():
+        seen.setdefault(norm(k), set()).update(str(r.get("date"))[:10]
+                                               for r in (v.get("games") or []))
+    played: Dict[str, List[str]] = {}
+    for g in hist_games or []:
+        d = str(g.get("date") or "")[:10]
+        if d < NFL_2026_WEEK1 or g.get("home_score") is None:
+            continue
+        for tm in (g.get("home_abbrev"), g.get("away_abbrev")):
+            if tm:
+                played.setdefault(str(tm).upper(), []).append(d)
+
+    def _near(d, ds):
+        try:
+            d0 = dt.date.fromisoformat(d)
+        except Exception:
+            return False
+        for x in ds:
+            try:
+                if abs((dt.date.fromisoformat(x) - d0).days) <= 1:
+                    return True
+            except Exception:
+                pass
+        return False
+
+    keep, dropped = {}, []
+    for nm, cand in candidates.items():
+        recent = sorted(set(played.get(str(cand.get("team") or "").upper(), [])))[-2:]
+        if not recent:
+            keep[nm] = cand
+            continue
+        rows = seen.get(norm(cand.get("name") or nm), set()) | seen.get(norm(nm), set())
+        if any(_near(d, rows) for d in recent):
+            keep[nm] = cand
+        else:
+            dropped.append(cand.get("name") or nm)
+    return keep, dropped
+
+
 PROJ_OUT = os.path.join(DATA_DIR, "nfl_player_projections.json")
 
 
@@ -655,6 +708,8 @@ def run() -> Dict[str, Any]:
     for _, home, away, _d in game_specs:
         all_teams.update((home, away))
     candidates = _wide_candidates(all_teams, gl) if game_specs else {}
+    candidates, inactive = _active_gate(
+        candidates, gl, _load(os.path.join(DATA_DIR, "nfl_historical.json")).get("games") or [])
     rows, details = _generate(game_specs, candidates, gl)
     if details:
         _write_projections(details, "live", min(s[3] for s in game_specs))
@@ -669,6 +724,8 @@ def run() -> Dict[str, Any]:
         "n_strong_edges": len(strong),
         "n_players_in_db": len(NFL_PLAYER_DB),
         "n_players_projected": len(details),
+        "n_inactive_dropped": len(inactive),
+        "inactive_dropped": sorted(inactive)[:200],
         "universe_note": ("Universe = curated priors + 2025 season baselines + "
                           "current-season gamelogs (rookies enter after "
                           f"{nb.MIN_GP_CUR} games)."),

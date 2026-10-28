@@ -41,6 +41,41 @@ bpleone-site/
 
 ## Current deployment state (LIVE)
 
+- **2026-10-28 — NFL + NHL: GAME-LINES DESK, ACTIVITY GATE, STALE SOURCES.**
+  Brandon wants NFL and NHL as real desks. Audit: no NFL/NHL pick had ever been
+  priced at a book line (props pay at the model's OWN fair odds -> the NFL
+  1344-559 -4.0% "record" is calibration, not ROI; now labelled on nfl.html);
+  no NFL/NHL pick ever reached curated. Fixed/built:
+  * game_lines_desk.py (daily-pipeline, before the ledger): MOV Elo (K/HFA fitted
+    on LAST season only) over data/game_finals_{nfl,nhl}.json (seed from
+    tools/build_game_finals_seed.py, ESPN season types 2-3, grown daily from the
+    rolling finals) vs DraftKings no-vig; blend weight w fitted walk-forward on
+    this season's DK-priced games (data/dk_lines_{nfl,nhl}.json, seeded by
+    tools/build_dk_line_history.py from espn_odds git history, grown daily).
+    Verdict gate: PROMISING only if the log-loss gain's 90% bootstrap CI is > 0
+    AND the out-of-sample half has >= 50 bets with ROI > 0. 10/28: NFL UNPROVEN
+    (n=106, LL DK 0.661 / Elo 0.652 / blend 0.648 at w 0.65, CI [-0.012, 0.042],
+    OOS 25 bets +28.7%) -> picks logged as nfl_game_ml at the DK price, NOT
+    curated; NHL NO EDGE (w 0) -> no picks. Card on nfl.html + nhl.html
+    (js/game_lines_card.js). NHL grader gained ML_HOME/ML_AWAY.
+  * self_train.py: the home-bias "calibration shift" applied the FULL bias from
+    n >= 30 (cap 10pp) -- NHL ran +10pp home on n=93 (WSH 85% vs DK 67%). Now
+    n >= 60, |bias| > 2 SE, shrink n/(n+400), cap 5pp: no sport qualifies today.
+  * Activity gate (_block_inactive_players, at intake): an NFL/NHL PLAYER prop
+    is logged only if the player is in the box logs recently (NFL 16d, NHL
+    window). Week 8 NFL had 228 props on non-players (147 hadn't played in 2+
+    weeks; backup QBs); NHL had blocks props on retired defensemen. Also in the
+    generator: nfl_player_props._active_gate (box row in one of the team's last
+    two games).
+  * Staleness guard (_collect_picks_from_sources): a source file whose
+    generated_at is > 48h old contributes nothing (published as
+    stale_sources_skipped). nhl_period_totals_props.json sat stale through the
+    outage and its month-old games (VAN @ CGY, UTA @ LAK, VGK @ SJS -- never
+    played) were re-logged every few days: 48 of NHL's 106 "unsettleable" voids,
+    correctly void. (The rest: early-October puck lines/props past the 7-day
+    nhl_historical window -- not re-checked.)
+  * _norm_name strips generational suffixes (Jr./Sr./II-V).
+
 - **2026-10-26 (late) — LOCKS: 543 OF 921 COULD NEVER SETTLE.** locks_history
   (homepage Locks card) took top_25[:5] blind: 384 KBO "1+ TB" props (no KBO
   box feed) and 123 MLB-PP props whose box line never arrived sat "pending"

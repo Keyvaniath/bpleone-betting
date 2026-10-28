@@ -76,8 +76,12 @@
     <div class="card-head"><span>📈 <strong>Live Book Lines</strong> <span class="muted" style="font-size:10px;">DraftKings via ESPN — free feed, refreshed by the heartbeat</span></span><span class="muted" id="ln_meta">--</span></div>
     <div id="ln_list"><p class="muted" style="padding:14px;">Loading…</p></div>
   </section>
+  <section class="card" style="margin-bottom:24px; border-left:3px solid #58c878;">
+    <div class="card-head"><span>💵 <strong>Game Lines vs DraftKings</strong> <span class="muted" style="font-size:10px;">margin-of-victory Elo, blended toward the DK price by a walk-forward-fitted weight</span></span></div>
+    <div class="game-lines-card" data-sport="nfl"><p class="muted" style="padding:14px;">Loading…</p></div>
+  </section>
   <section class="card" style="margin-bottom:24px;">
-    <div class="card-head"><span>🎯 <strong>Model Props</strong> <span class="muted" style="font-size:10px;">play-level Monte Carlo · odds-independent · graded on the box score</span></span><span class="muted" id="pr_meta">--</span></div>
+    <div class="card-head"><span>🎯 <strong>Model Props</strong> <span class="muted" style="font-size:10px;">play-level Monte Carlo · odds-independent · graded on the box score · paid at the model's own fair odds, so the ROI measures calibration, not a bettable return</span></span><span class="muted" id="pr_meta">--</span></div>
     <div id="pr_record" class="muted" style="padding:8px 16px 0; font-size:11.5px; font-family:'JetBrains Mono',monospace;"></div>
     <div id="pr_list"><p class="muted" style="padding:14px;">Loading…</p></div>
   </section>
@@ -93,6 +97,7 @@
 </main>
 <script src="js/nav_badge.js"></script>
 <script src="js/bet_tracker.js"></script>
+<script src="js/game_lines_card.js"></script>
 <script>
 const fmtAmer = (a) => a == null ? "—" : (a >= 0 ? "+" + a : String(a));
 fetch("data/nfl_state.json?t=" + Date.now(), { cache: "no-cache" })

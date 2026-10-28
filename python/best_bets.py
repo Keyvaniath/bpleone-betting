@@ -591,7 +591,9 @@ def run() -> Dict[str, Any]:
     gp = _load(os.path.join(DATA_DIR, "golf_parlays.json"))
     if (gp.get("parlays") or []):
         for top_par in gp["parlays"][:2]:
-            amer = top_par.get("parlay_fair_american", 0)
+            amer = top_par.get("parlay_fair_american")
+            if amer is None:
+                continue   # an unpriced parlay is not a candidate (and "+None" is not a label)
             legs_summary = "; ".join(l.get("label","") for l in (top_par.get("legs") or [])[:3])
             q = min(100, 60 + int((top_par.get("ev_pct") or 0) * 0.3))
             stars = 4 if (top_par.get("ev_pct") or 0) >= 5 else 3

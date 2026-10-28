@@ -144,31 +144,33 @@ def backtest_sport(sport_key: str) -> Dict[str, Any]:
             "actual_avg": round(sum(p["actual_home_win"] for p in in_bin) / len(in_bin), 3),
         })
 
-    # Recommendation: tiered min-sample with shrinkage on small N
-    # Below 15: zero confidence -- don't apply
-    # 15-29: apply with shrinkage (half the recommended shift)
-    # 30+: apply full shift (still cap at 10pp to avoid runaway corrections)
-    MIN_SAMPLE = 15
-    FULL_SAMPLE = 30
+    # Recommendation (2026-10-28): the old rule applied the FULL measured bias
+    # from n >= 30 (capped 10pp). A home-win rate over 30-90 games has a standard
+    # error of 5-9pp, so it was fitting noise into every game: NHL ran +10pp home
+    # on n=93 (WSH 85% vs DraftKings 70%). Now a shift needs (a) n >= 60, (b) a
+    # bias beyond 2 standard errors, and is then shrunk by n / (n + 400) and capped
+    # at 5pp -- an empirical-Bayes pull toward "no correction".
+    MIN_SAMPLE = 60
+    PRIOR_N = 400
     BIAS_THRESHOLD_PP = 0.02   # 2pp = "well calibrated"
-    MAX_SHIFT_PP = 0.10        # never shift > 10pp
+    MAX_SHIFT_PP = 0.05
+    se = (max(1e-6, avg_actual * (1 - avg_actual)) / n) ** 0.5 if n else 1.0
     if abs(bias) < BIAS_THRESHOLD_PP:
         reco = {"applied": False, "note": "model is well-calibrated (<2pp bias)"}
     elif n < MIN_SAMPLE:
         reco = {"applied": False, "note": f"not enough sample size ({n} games); need >= {MIN_SAMPLE}"}
+    elif abs(bias) < 2 * se:
+        reco = {"applied": False, "bias_pp": round(bias * 100, 1), "se_pp": round(se * 100, 1),
+                "note": (f"bias {bias*100:+.1f}pp is within 2 standard errors ({2*se*100:.1f}pp) of zero "
+                         f"on n={n} -- noise, not a correction")}
     else:
-        # Linear shrinkage for partial samples
-        if n >= FULL_SAMPLE:
-            shrinkage = 1.0
-        else:
-            shrinkage = (n - MIN_SAMPLE) / (FULL_SAMPLE - MIN_SAMPLE)  # 0.0 at 15, 1.0 at 30
-            shrinkage = max(0.3, min(1.0, shrinkage))  # floor at 30% so tiny samples still bend
+        shrinkage = n / (n + PRIOR_N)
         raw_shift = -bias * shrinkage
-        # Cap at MAX_SHIFT_PP
         clamped_shift = max(-MAX_SHIFT_PP, min(MAX_SHIFT_PP, raw_shift))
         reco = {
             "applied": True,
             "bias_pp": round(bias * 100, 1),
+            "se_pp": round(se * 100, 1),
             "shrinkage": round(shrinkage, 3),
             "recommended_shift": round(clamped_shift, 4),
             "note": (f"Model over-predicting home by {bias*100:.1f}pp; subtract "

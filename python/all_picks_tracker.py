@@ -86,7 +86,13 @@ def _norm_name(s) -> str:
     combining accent) -- every by_name build and lookup must go through this or
     the pick silently never matches and voids."""
     s = unicodedata.normalize("NFD", str(s or ""))
-    return "".join(c for c in s if not unicodedata.combining(c)).lower().strip()
+    s = "".join(c for c in s if not unicodedata.combining(c)).lower().strip()
+    # Generational suffixes (2026-10-28): NFL generators write 'travis etienne'
+    # / 'michael pittman', the ESPN box writes 'Travis Etienne Jr.' -- those
+    # props never matched and aged into 'unsettleable' voids. Drop the suffix
+    # (and its periods) on both sides.
+    s = re.sub(r"[\s,]+(jr|sr|ii|iii|iv|v)\.?$", "", s.replace("’", "'"))
+    return s.strip()
 
 
 def _pick_id(source, sport, player_or_matchup, market, date_str):
@@ -238,10 +244,90 @@ def _is_mlb_juice_favorite(p: Dict[str, Any]) -> bool:
     return fa <= MLB_FAV_PRICE_FLOOR
 
 
+INACTIVE_BLOCKED: List[str] = []
+
+
+def _block_inactive_players(picks: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    """Intake gate (2026-10-28): an NFL/NHL PLAYER prop is logged only if the
+    player is actually playing -- present in that sport's box logs recently.
+
+    Generators build from rosters/baselines with no injury or depth check: Week 8
+    NFL had 228 props on players with no box line (injured, benched, backup QBs)
+    and NHL logged blocks props on retired defensemen. Each aged into a void --
+    a record full of bets nobody could have made. Team / game subjects ('@' or a
+    known team name) are exempt, and the gate stands down for a sport whose box
+    feed looks unhealthy (fewer than 150 players) rather than blocking a slate.
+    NHL: anywhere in the feed's rolling window. NFL: a row within 16 days (bye)."""
+    INACTIVE_BLOCKED.clear()
+    today = dt.date.today()
+    feeds = {}
+    for sp, f, days in (("NFL", "nfl_player_gamelogs.json", 16), ("NHL", "nhl_player_gamelogs.json", 21)):
+        by = _load(os.path.join(DATA_DIR, f)).get("by_name") or {}
+        if len(by) < 150:
+            continue
+        cut = (today - dt.timedelta(days=days)).isoformat()
+        names = set()
+        for k, v in by.items():
+            if any(str(g.get("date") or "")[:10] >= cut for g in ((v or {}).get("games") or [])):
+                names.add(_nfl_key(k))
+        hist = _load(os.path.join(DATA_DIR, f"{sp.lower()}_historical.json")).get("games") or []
+        teams = set()
+        for g in hist:
+            for k in ("home_name", "away_name", "home_abbrev", "away_abbrev"):
+                if g.get(k):
+                    teams.add(_nfl_key(g[k]))
+        if names:
+            feeds[sp] = (names, teams)
+    out = []
+    for p in picks:
+        sp = str(p.get("sport") or "").upper()
+        subj = str(p.get("player_or_matchup") or "")
+        if sp in feeds and subj and "@" not in subj:
+            names, teams = feeds[sp]
+            key = _nfl_key(subj)
+            if key not in teams and key not in names:
+                INACTIVE_BLOCKED.append(f"{sp} {subj}")
+                continue
+        out.append(p)
+    return out
+
+
+def _nfl_key(nm) -> str:
+    """Name key tolerant of punctuation and generational suffixes (shared by the
+    NFL/NHL activity gate): 'Ja'Marr Chase' / 'jamarr chase', 'X Jr.' / 'x'."""
+    nm = re.sub(r"[.'’-]", "", _norm_name(nm))
+    return re.sub(r"\s+(jr|sr|ii|iii|iv|v)$", "", re.sub(r"\s+", " ", nm)).strip()
+
+
+SOURCE_MAX_AGE_H = 48
+STALE_SOURCES_SKIPPED: List[str] = []
+
+
 def _collect_picks_from_sources() -> List[Dict[str, Any]]:
     """Pull picks from every surfacing module today and normalize."""
     date_str = _today_date_str()
     out = []
+    # STALENESS GUARD (2026-10-28): intake trusted any source file whatever its
+    # age. During the 9/22-10/22 outage nhl_period_totals_props.json was never
+    # regenerated, and its month-old games (VAN @ CGY, UTA @ LAK, VGK @ SJS) were
+    # re-logged as new picks under each new date -- games that never happened.
+    # A source whose generated_at is older than SOURCE_MAX_AGE_H contributes
+    # nothing; the skipped files are printed and published.
+    STALE_SOURCES_SKIPPED.clear()
+
+    _real_load = globals()["_load"]
+
+    def _load(p):
+        o = _real_load(p)
+        g = o.get("generated_at") if isinstance(o, dict) else None
+        try:
+            age_h = (dt.datetime.now() - dt.datetime.fromisoformat(str(g)[:19])).total_seconds() / 3600
+        except Exception:
+            return o
+        if age_h > SOURCE_MAX_AGE_H:
+            STALE_SOURCES_SKIPPED.append(f"{os.path.basename(p)} ({age_h:.0f}h old)")
+            return {}
+        return o
 
     # Today's Top Plays (top_25) -- the master board
     top = _load(os.path.join(DATA_DIR, "todays_top_plays.json"))
@@ -297,6 +383,30 @@ def _collect_picks_from_sources() -> List[Dict[str, Any]]:
                 "prob": None,
                 "tier": c.get("tier"),
                 "n_agreeing": c.get("n_agreeing"),
+            })
+
+    # NFL / NHL game lines (2026-10-28): moneylines at the DraftKings price,
+    # only when the desk's walk-forward-fitted blend clears its EV bar. Logged as
+    # their own sources (never curated by prefix) -- a forward test of the
+    # backtest, graded at book_american = the DK price at pick time.
+    gld = _load(os.path.join(DATA_DIR, "game_lines_desk.json"))
+    for _sp, _d in ((gld.get("sports") or {}).items()):
+        for r in (_d.get("board") or []):
+            pk = r.get("pick")
+            if not pk or not r.get("game_date"):
+                continue
+            out.append({
+                "source": f"{_sp}_game_ml",
+                "sport": _sp.upper(),
+                "player_or_matchup": r.get("matchup"),
+                "market": pk.get("market"),
+                "prob": pk.get("prob"),
+                "edge_pct": round((pk.get("ev") or 0) * 100, 2),
+                "fair_american": pk.get("fair_american"),
+                "book_american": pk.get("book_american"),
+                "game_date": r.get("game_date"),
+                "event_id": r.get("event_id"),
+                "desk_verdict": ("proven" if _d.get("proven") else "unproven"),
             })
 
     # Strong unders
@@ -2651,6 +2761,21 @@ def _grade_nhl_pick(pick: Dict[str, Any], by_name: Dict[str, Any],
                            "verify": f"{g.get('away_abbrev')} @ {g.get('home_abbrev')}: period {per} goals = {tot} (line {pline}, bet {pside}) on {g.get('date')}"}
         return "won" if won else "lost"
 
+    # Moneyline (2026-10-28, game_lines_desk): ML_HOME / ML_AWAY. An NHL
+    # moneyline includes overtime and the shootout -- the final score decides.
+    if market in ("ML_HOME", "ML_AWAY"):
+        g = _find_nhl_game(subj, pdate, games)
+        if not g or g.get("home_score") is None or g.get("away_score") is None:
+            return None
+        hs, as_ = g["home_score"], g["away_score"]
+        if hs == as_:
+            return None     # not a final
+        won = (hs > as_) if market == "ML_HOME" else (as_ > hs)
+        pick["outcome"] = {"final_score": f"{g.get('away_abbrev')} {as_} @ {g.get('home_abbrev')} {hs}",
+                           "market": market,
+                           "verify": f"{g.get('away_abbrev')} {as_} @ {g.get('home_abbrev')} {hs}: {market}"}
+        return "won" if won else "lost"
+
     # Puck line (game spread): {AWAY,HOME}_{PLUS,MINUS}_X / _pl_ source.
     # MINUS (the favourite giving 1.5) was never matched -- every favourite puck
     # line voided (found 2026-10-22). Covering -1.5 = winning by 2+.
@@ -3457,7 +3582,9 @@ def run() -> Dict[str, Any]:
     n_bootstrapped = _bootstrap_from_locks_history(history, existing_ids)
 
     # Collect today's picks from every source
-    today_picks = _collect_picks_from_sources()
+    today_picks = _block_inactive_players(_collect_picks_from_sources())
+    if INACTIVE_BLOCKED:
+        print(f"  activity gate: {len(INACTIVE_BLOCKED)} NFL/NHL player props on players not playing -- not logged")
     n_added = 0
     now_iso = dt.datetime.now().isoformat(timespec="seconds")
 
@@ -3900,6 +4027,8 @@ def run() -> Dict[str, Any]:
         "headline_basis": "all-time: working ledger + data/ledger_archive.json",
         "working_ledger_only": _working_only,
         "price_corrections": _price_corrections(history),
+        "stale_sources_skipped": list(STALE_SOURCES_SKIPPED),
+        "inactive_player_props_blocked": len(INACTIVE_BLOCKED),
         "restatement": {
             "date": "2026-10-23",
             "note": ("The headline became ALL-TIME on 2026-10-23. 5,946 settled picks that the old "
