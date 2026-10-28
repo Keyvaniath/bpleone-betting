@@ -1,5 +1,5 @@
 {
-"generated_at": "2026-10-28T23:36:23",
+"generated_at": "2026-10-28T23:48:24",
 "method": "Margin-of-victory Elo (K/HFA fitted on last season), blended toward the DraftKings no-vig price by a walk-forward-fitted weight; picks only at >= 4% EV at the DK price.",
 "sports": {
 "nfl": {
@@ -119,18 +119,18 @@
 "matchup": "BAL @ BUF",
 "commence": "2026-11-01T18:00Z",
 "p_home_elo": 0.7208,
-"p_home_dk": 0.6164,
-"p_home": 0.6862,
-"ml_home": -180,
-"ml_away": 150,
+"p_home_dk": 0.6092,
+"p_home": 0.6839,
+"ml_home": -175,
+"ml_away": 145,
 "pick": {
 "side": "home",
 "market": "ML_HOME",
 "team": "BUF",
-"prob": 0.6862,
-"book_american": -180,
-"fair_american": -219,
-"ev": 0.0674
+"prob": 0.6839,
+"book_american": -175,
+"fair_american": -216,
+"ev": 0.0747
 },
 "game_date": "2026-11-01"
 },
@@ -191,10 +191,10 @@
 "matchup": "LV @ NYJ",
 "commence": "2026-11-01T18:00Z",
 "p_home_elo": 0.5132,
-"p_home_dk": 0.5325,
-"p_home": 0.52,
-"ml_home": -125,
-"ml_away": 105,
+"p_home_dk": 0.5261,
+"p_home": 0.5177,
+"ml_home": -122,
+"ml_away": 102,
 "pick": null,
 "game_date": "2026-11-01"
 },
@@ -315,18 +315,18 @@
 "matchup": "PHI @ WSH",
 "commence": "2026-11-02T01:20Z",
 "p_home_elo": 0.5523,
-"p_home_dk": 0.6636,
-"p_home": 0.5925,
-"ml_home": -225,
-"ml_away": 185,
+"p_home_dk": 0.669,
+"p_home": 0.5945,
+"ml_home": -230,
+"ml_away": 190,
 "pick": {
 "side": "away",
 "market": "ML_AWAY",
 "team": "PHI",
-"prob": 0.4075,
-"book_american": 185,
-"fair_american": 145,
-"ev": 0.1614
+"prob": 0.4055,
+"book_american": 190,
+"fair_american": 147,
+"ev": 0.1759
 },
 "game_date": "2026-11-01"
 },
@@ -352,43 +352,43 @@
 "carry": 0.3333333333333333,
 "prior_logloss": 0.6847
 },
-"w_used": 0.0,
+"w_used": 0.1,
 "backtest": {
 "n": 197,
 "first_date": "2026-09-29",
 "last_date": "2026-10-27",
-"logloss_gain_vs_market": 0.0,
+"logloss_gain_vs_market": 0.0001,
 "logloss_gain_ci90": [
--0.0007,
-0.0008
+-0.0014,
+0.0017
 ],
 "logloss_market": 0.6557,
-"logloss_elo": 0.663,
+"logloss_elo": 0.662,
 "logloss_by_w": {
 "0.0": 0.6557,
-"0.05": 0.6557,
-"0.1": 0.6557,
-"0.15": 0.6558,
-"0.2": 0.6559,
-"0.25": 0.6561,
-"0.3": 0.6563,
-"0.35": 0.6565,
-"0.4": 0.6568,
-"0.45": 0.6571,
-"0.5": 0.6574,
-"0.55": 0.6578,
-"0.6": 0.6582,
-"0.65": 0.6587,
-"0.7": 0.6592,
-"0.75": 0.6597,
-"0.8": 0.6603,
-"0.85": 0.6609,
-"0.9": 0.6615,
-"0.95": 0.6622,
-"1.0": 0.663
+"0.05": 0.6556,
+"0.1": 0.6556,
+"0.15": 0.6556,
+"0.2": 0.6557,
+"0.25": 0.6557,
+"0.3": 0.6559,
+"0.35": 0.656,
+"0.4": 0.6563,
+"0.45": 0.6565,
+"0.5": 0.6568,
+"0.55": 0.6571,
+"0.6": 0.6575,
+"0.65": 0.6579,
+"0.7": 0.6584,
+"0.75": 0.6589,
+"0.8": 0.6594,
+"0.85": 0.66,
+"0.9": 0.6606,
+"0.95": 0.6613,
+"1.0": 0.662
 },
-"w_fitted": 0.05,
-"logloss_blend": 0.6557,
+"w_fitted": 0.1,
+"logloss_blend": 0.6556,
 "sim_in_sample": {
 "bets": 0,
 "wins": 0,
@@ -405,9 +405,9 @@
 },
 "home_win_rate": 0.563
 },
-"beats_market": false,
+"beats_market": true,
 "proven": false,
-"verdict": "NO EDGE: the model adds nothing to DraftKings' price on this season's games (the best blend is DK's own number) -- no picks",
+"verdict": "UNPROVEN: the blend edges the DK close on this season's games, but the gain's 90% interval includes zero or the out-of-sample test is under 50 bets (1). Picks are logged at the DK price as a forward test -- NOT curated",
 "ratings": {
 "CAR": 1600.5,
 "COL": 1557.8,
@@ -444,62 +444,37 @@
 },
 "board": [
 {
-"event_id": "401892596",
-"matchup": "PHI @ WSH",
-"commence": "2026-10-28T23:30Z",
-"p_home_elo": 0.6243,
-"p_home_dk": 0.6806,
-"p_home": 0.6806,
-"ml_home": -245,
-"ml_away": 200,
-"pick": null,
-"game_date": "2026-10-28",
-"goalies": {
-"home": {
-"projected": "L. Thompson",
-"p_start": 0.805,
-"primary": "L. Thompson",
-"backup": "C. Lindgren",
-"back_to_back": false,
-"edge_goals": 0.012
-},
-"away": {
-"projected": "J. Woll",
-"p_start": 0.726,
-"primary": "D. Vladar",
-"backup": "J. Woll",
-"back_to_back": true,
-"edge_goals": -0.003
-}
-}
-},
-{
 "event_id": "401892597",
 "matchup": "CGY @ EDM",
 "commence": "2026-10-29T00:30Z",
-"p_home_elo": 0.5805,
+"p_home_elo": 0.5675,
 "p_home_dk": 0.6164,
-"p_home": 0.6164,
+"p_home": 0.6116,
 "ml_home": -180,
 "ml_away": 150,
 "pick": null,
 "game_date": "2026-10-28",
 "goalies": {
+"status": "confirmed",
 "home": {
-"projected": "D. Levi",
-"p_start": 0.69,
+"projected": "T. Jarry",
+"status": "confirmed",
+"p_start": 1.0,
+"edge_goals": -0.036,
+"known_goalie": true,
 "primary": "D. Levi",
 "backup": "C. Ingram",
-"back_to_back": false,
-"edge_goals": 0.015
+"back_to_back": false
 },
 "away": {
 "projected": "D. Cooley",
-"p_start": 0.69,
+"status": "confirmed",
+"p_start": 1.0,
+"edge_goals": 0.023,
+"known_goalie": true,
 "primary": "D. Cooley",
 "backup": "D. Wolf",
-"back_to_back": false,
-"edge_goals": 0.011
+"back_to_back": false
 }
 }
 },
@@ -507,29 +482,34 @@
 "event_id": "401892598",
 "matchup": "NJ @ COL",
 "commence": "2026-10-29T01:00Z",
-"p_home_elo": 0.5452,
+"p_home_elo": 0.531,
 "p_home_dk": 0.5721,
-"p_home": 0.5721,
+"p_home": 0.568,
 "ml_home": -148,
 "ml_away": 124,
 "pick": null,
 "game_date": "2026-10-28",
 "goalies": {
+"status": "confirmed",
 "home": {
 "projected": "M. Blackwood",
-"p_start": 0.69,
+"status": "confirmed",
+"p_start": 1.0,
+"edge_goals": -0.03,
+"known_goalie": true,
 "primary": "M. Blackwood",
 "backup": "S. Wedgewood",
-"back_to_back": false,
-"edge_goals": -0.009
+"back_to_back": false
 },
 "away": {
-"projected": "N. Daws",
-"p_start": 0.671,
+"projected": "J. Allen",
+"status": "confirmed",
+"p_start": 1.0,
+"edge_goals": 0.023,
+"known_goalie": true,
 "primary": "J. Allen",
 "backup": "N. Daws",
-"back_to_back": true,
-"edge_goals": -0.007
+"back_to_back": true
 }
 }
 },
@@ -537,36 +517,42 @@
 "event_id": "401892599",
 "matchup": "TOR @ SEA",
 "commence": "2026-10-29T02:00Z",
-"p_home_elo": 0.513,
+"p_home_elo": 0.5085,
 "p_home_dk": 0.4486,
-"p_home": 0.4486,
+"p_home": 0.4545,
 "ml_home": 114,
 "ml_away": -135,
 "pick": null,
 "game_date": "2026-10-28",
 "goalies": {
+"status": "projected",
 "home": {
-"projected": "J. Daccord",
-"p_start": 0.575,
-"primary": "J. Daccord",
-"backup": "P. Grubauer",
-"back_to_back": false,
-"edge_goals": 0.009
+"projected": "P. Grubauer",
+"status": "expected",
+"p_start": 0.9,
+"edge_goals": -0.025,
+"known_goalie": true,
+"primary": "P. Grubauer",
+"backup": "J. Daccord",
+"back_to_back": false
 },
 "away": {
 "projected": "S. Bobrovsky",
-"p_start": 0.805,
+"status": "confirmed",
+"p_start": 1.0,
+"edge_goals": -0.063,
+"known_goalie": true,
 "primary": "S. Bobrovsky",
 "backup": "A. Stolarz",
-"back_to_back": false,
-"edge_goals": -0.031
+"back_to_back": false
 }
-}
+},
+"pick_blocked": "waiting on both starters to be confirmed"
 }
 ],
 "n_picks": 0,
 "goalie_model": {
-"method": "Logistic model on walk-forward Elo + EWMA shot differential + goalie edge (GSAA/shot, 3,000-shot prior, vs the team's last-20-starts average, x 28.5 shots) + back-to-back rest, fitted on last season only. `projected` = primary starter weighted by P(start) -- what the pipeline knows when it bets; `known_starter` = the actual starter, a ceiling only.",
+"method": "Logistic model on walk-forward Elo + EWMA shot differential + goalie edge (GSAA/shot, 3,000-shot prior, vs the team's last-20-starts average, x 28.5 shots) + back-to-back rest, fitted on last season only. Picks only once ESPN lists BOTH starters as Confirmed, priced with the known-starter model (the headline backtest); until then the board shows the projected model (ESPN's Expected goalie, else the team's primary by P(start)).",
 "betas_projected": [
 0.5289,
 0.4267,
@@ -621,16 +607,16 @@
 "n_games": 99
 }
 },
-"backtest_known_starter": {
+"backtest_projected": {
 "n": 197,
 "logloss_market": 0.6557,
-"logloss_elo": 0.662,
-"logloss_blend": 0.6556,
-"w_fitted": 0.1,
-"logloss_gain_vs_market": 0.0001,
+"logloss_elo": 0.663,
+"logloss_blend": 0.6557,
+"w_fitted": 0.05,
+"logloss_gain_vs_market": 0.0,
 "logloss_gain_ci90": [
--0.0014,
-0.0017
+-0.0007,
+0.0008
 ],
 "sim_out_of_sample": {
 "bets": 1,
@@ -640,6 +626,20 @@
 "w_from_first_half": 0.25,
 "n_games": 99
 }
+},
+"starters_source": "ESPN NHL scoreboard probableStartingGoalie (Expected / Confirmed)",
+"espn_starter_accuracy": {
+"confirmed": {
+"n": 0,
+"correct": 0,
+"rate": null
+},
+"expected": {
+"n": 0,
+"correct": 0,
+"rate": null
+},
+"misses": []
 }
 }
 }
