@@ -1,5 +1,5 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:2 F:63
+_NO_ACTION_NIGHT_ | L:0 S:2 F:175
 
 :dart: **Top Picks:**
 1. [WNBA] allisha gray -- allisha gray (PLAYER_STRONG)

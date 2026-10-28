@@ -1,13 +1,13 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-10-27T19:28:33 UTC_
+_Generated 2026-10-28T01:08:20 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -55
+- **Score:** -167
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
 - **Total STRONG:** 2
-- **Total FADES:** 63
+- **Total FADES:** 175
 
 ## Top 5 Curated Picks
 1. **WNBA / allisha gray** (WNBA_PLAYER, score=62.42)

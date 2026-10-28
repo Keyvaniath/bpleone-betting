@@ -1,26 +1,16 @@
-# EdgeStat Daily Brief - 2026-10-27
+# EdgeStat Daily Brief - 2026-10-28
 
 **Model Confidence: 9.9/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
 
-_Pipeline health: **WARNING** (11/15 artifacts ok; 4 empty, 0 stale)._ 
+_Pipeline health: **WARNING** (12/15 artifacts ok; 3 empty, 0 stale)._ 
 
-_Generated at 2026-10-27T19:28:43 UTC. Game lines source: **DraftKings**. Pick-em opportunities from PrizePicks._
-
-## Play of the Day
-
-**MIL @ TBR - OVER_7.0**
-- Market: -114
-- Model probability: 66.0%
-- Raw edge: +23.92%
-- Recommended stake: <= 0.5u (model calibrating)
-
-> _Edge >= 15% is well above what a properly-calibrated baseball model produces. Treat this as a research signal until 30+ outcomes have flowed through the calibration loop._
+_Generated at 2026-10-28T01:08:29 UTC. Game lines source: **placeholder -110 (no real book today)**. Pick-em opportunities from PrizePicks._
 
 ## Full Slate (1 games)
 
 | Time | Matchup | Park | Weather | Top edge |
 |---|---|---|---|---|
-| 8:00p ET | MIL @ TBR | Tropicana Field | indoor | OVER_7.0 +23.92% |
+| 8:00p ET | MIL @ TBR | Tropicana Field | indoor | -- |
 
 ## Self-Learning Loop
 
@@ -35,7 +25,7 @@ Cumulative graded plays: 19813. Wins: 8793. Hit rate: 44.4%.
 
 | Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
 |---|---|---|---|---|---|
-| MIL @ TBR | 56.6% | -130 | 2.85 | +186 | -186 |
+| MIL @ TBR | 42.9% | +133 | 4.24 | +209 | -209 |
 
 ## Team Form (last 10)
 
@@ -45,7 +35,7 @@ Cumulative graded plays: 19813. Wins: 8793. Hit rate: 44.4%.
 
 ## Loop Activity (since last refresh)
 
-- Confidence delta: **-0.3**
+- Confidence delta: **+0.0**
 
 ## Model Recommendations (operator review)
 

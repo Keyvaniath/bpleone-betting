@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-10-27T23:53:36",
+  "generated_at": "2026-10-28T01:08:01",
   "stake_assumption": "1u flat per pick",
-  "total_picks": 15549,
+  "total_picks": 15551,
   "n_settled": 19813,
-  "n_pending": 811,
-  "n_void": 865,
+  "n_pending": 704,
+  "n_void": 974,
   "wins": 8788,
   "losses": 11012,
   "pushes": 13,
   "hit_rate": 0.4438,
   "net_units": -3652.094,
   "roi_pct": -18.44,
-  "n_calibrated_picks": 15405,
+  "n_calibrated_picks": 15407,
   "calibrated_reliability": {
     "n": 13745,
     "ece_raw": 0.0824,
@@ -43,11 +43,11 @@
     ],
     "definition": "Featured/recommended plays only -- Lock of the Day, Top 25, Whale, Sharp, Consensus (hit), Under Alerts, POD. Excludes the experimental prop feeds, which are tracked to train the model, not bet.",
     "last_30": {
-      "wins": 22,
-      "losses": 19,
-      "net_units": -1.266,
-      "roi_pct": -3.09,
-      "hit_rate": 0.5366
+      "wins": 17,
+      "losses": 16,
+      "net_units": -1.382,
+      "roi_pct": -4.19,
+      "hit_rate": 0.5152
     }
   },
   "headline_basis": "all-time: working ledger + data/ledger_archive.json",
@@ -99,12 +99,12 @@
     "note": "The headline became ALL-TIME on 2026-10-23. 5,946 settled picks that the old tail-cut eviction had destroyed (May-June 2026, the 07-06 erosion and the run-up to 09-03) were rebuilt from git history at each pick's final state, with today's duplicate-wager rule re-applied, and folded back in. They are mostly the raw May-June MLB prop firehose (2,961-2,983, -1,256.9u), so the firehose ROI fell; the curated record changed by the curated picks among them. Before this date the published numbers covered the working window only -- working_ledger_only keeps that basis.",
     "n_archived_in_headline": 5940
   },
-  "n_added_this_run": 0,
+  "n_added_this_run": 2,
   "n_newly_settled_this_run": 0,
   "n_resettled_this_run": 0,
-  "n_voided_this_run": 0,
+  "n_voided_this_run": 109,
   "n_duplicates_collapsed_this_run": 0,
-  "n_duplicate_adds_blocked_this_run": 30,
+  "n_duplicate_adds_blocked_this_run": 33,
   "n_reconciled_settled_voids": 0,
   "n_bootstrapped_from_locks_history": 0,
   "by_source": {
@@ -4819,12 +4819,12 @@
   },
   "by_sport": {
     "MLB": {
-      "n": 14365,
+      "n": 14366,
       "settled": 14173,
       "wins": 5172,
       "losses": 8988,
       "pushes": 13,
-      "pending": 23,
+      "pending": 24,
       "void": 169,
       "net_units": -3703.401,
       "hit_rate": 0.3653,
@@ -4884,12 +4884,12 @@
       "markets": 5
     },
     "UFC": {
-      "n": 241,
+      "n": 242,
       "settled": 166,
       "wins": 71,
       "losses": 95,
       "pushes": 0,
-      "pending": 7,
+      "pending": 8,
       "void": 68,
       "net_units": 154.27,
       "hit_rate": 0.4277,
@@ -4954,8 +4954,8 @@
       "wins": 54,
       "losses": 53,
       "pushes": 0,
-      "pending": 23,
-      "void": 26,
+      "pending": 19,
+      "void": 30,
       "net_units": -27.747,
       "hit_rate": 0.5047,
       "roi_pct": -25.93,
@@ -4993,8 +4993,8 @@
       "wins": 1344,
       "losses": 559,
       "pushes": 0,
-      "pending": 286,
-      "void": 128,
+      "pending": 281,
+      "void": 133,
       "net_units": -76.363,
       "hit_rate": 0.7063,
       "roi_pct": -4.01,
@@ -5019,8 +5019,8 @@
       "wins": 180,
       "losses": 91,
       "pushes": 0,
-      "pending": 397,
-      "void": 50,
+      "pending": 297,
+      "void": 150,
       "net_units": -1.757,
       "hit_rate": 0.6642,
       "roi_pct": -0.65,
@@ -5037,8 +5037,8 @@
         "wins": 1342,
         "losses": 559,
         "pushes": 0,
-        "pending": 280,
-        "void": 128,
+        "pending": 275,
+        "void": 133,
         "net_units": -76.866,
         "hit_rate": 0.7059,
         "roi_pct": -4.04,
@@ -5061,10 +5061,10 @@
     "note": "NFL props are judged from 10/23 forward: the simulator's form rule changed, so earlier picks are a different model. They stay on the record as their own line and never feed a family verdict."
   },
   "last_7_days": {
-    "wins": 974,
-    "losses": 505,
-    "net_units": -76.508,
-    "hit_rate": 0.6586
+    "wins": 971,
+    "losses": 504,
+    "net_units": -77.956,
+    "hit_rate": 0.6583
   },
   "picks": [
     {
@@ -353004,7 +353004,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T22:30:58",
-      "p_calibrated": 0.79
+      "p_calibrated": 0.79,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nfl_longest_rush",
@@ -356587,7 +356590,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T22:30:58",
-      "p_calibrated": 0.759
+      "p_calibrated": 0.759,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nfl_longest_reception",
@@ -360790,7 +360796,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T22:30:58",
-      "p_calibrated": 0.722
+      "p_calibrated": 0.722,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nfl_rec_yds",
@@ -360807,7 +360816,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T22:30:58",
-      "p_calibrated": 0.722
+      "p_calibrated": 0.722,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nfl_longest_reception",
@@ -363274,7 +363286,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T22:30:58",
-      "p_calibrated": 0.686
+      "p_calibrated": 0.686,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nfl_rec",
@@ -366092,7 +366107,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T22:30:58",
-      "p_calibrated": 0.5461
+      "p_calibrated": 0.5461,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_blocks_over_0.5",
@@ -366109,7 +366127,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T22:30:58",
-      "p_calibrated": 0.5345
+      "p_calibrated": 0.5345,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_blocks_over_0.5",
@@ -366126,7 +366147,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T22:30:58",
-      "p_calibrated": 0.5416
+      "p_calibrated": 0.5416,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_steals_over_0.5",
@@ -366143,7 +366167,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T22:30:58",
-      "p_calibrated": 0.628
+      "p_calibrated": 0.628,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_steals_over_0.5",
@@ -366305,7 +366332,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T22:30:58",
-      "p_calibrated": 0.657
+      "p_calibrated": 0.657,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_tov_tov_over_1.5",
@@ -366322,7 +366352,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T22:30:58",
-      "p_calibrated": 0.657
+      "p_calibrated": 0.657,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_pra_pra_under_48.5",
@@ -366339,7 +366372,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T22:30:58",
-      "p_calibrated": 0.661
+      "p_calibrated": 0.661,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_pra_pra_under_46.5",
@@ -366356,7 +366392,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T22:30:58",
-      "p_calibrated": 0.6579
+      "p_calibrated": 0.6579,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_pra_pra_under_41.5",
@@ -366448,7 +366487,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T22:30:58",
-      "p_calibrated": 0.6617
+      "p_calibrated": 0.6617,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_pra_pra_under_32.5",
@@ -366505,7 +366547,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T22:30:58",
-      "p_calibrated": 0.6648
+      "p_calibrated": 0.6648,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_fta_fta_under_9.0",
@@ -366542,7 +366587,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T22:30:58",
-      "p_calibrated": 0.712
+      "p_calibrated": 0.712,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_fta_fta_under_6.0",
@@ -366599,7 +366647,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T22:30:58",
-      "p_calibrated": 0.692
+      "p_calibrated": 0.692,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_fta_fta_under_4.0",
@@ -366616,7 +366667,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T22:30:58",
-      "p_calibrated": 0.692
+      "p_calibrated": 0.692,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_fta_fta_under_4.0",
@@ -366653,7 +366707,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T22:30:58",
-      "p_calibrated": 0.709
+      "p_calibrated": 0.709,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "wnba_blkstl_blk_stl_under_2.5",
@@ -367815,7 +367872,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T22:30:58",
-      "p_calibrated": 0.65
+      "p_calibrated": 0.65,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_reb_reb_under_8.0",
@@ -367857,7 +367917,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T22:30:58",
-      "p_calibrated": 0.622
+      "p_calibrated": 0.622,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_reb_reb_over_2.0",
@@ -367894,7 +367957,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T22:30:58",
-      "p_calibrated": 0.623
+      "p_calibrated": 0.623,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_ast_ast_under_4.0",
@@ -368031,7 +368097,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T22:30:58",
-      "p_calibrated": 0.6887
+      "p_calibrated": 0.6887,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_pr_pr_under_25.0",
@@ -368068,7 +368137,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T22:30:58",
-      "p_calibrated": 0.65
+      "p_calibrated": 0.65,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_ra_ra_over_9.0",
@@ -368085,7 +368157,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T22:30:58",
-      "p_calibrated": 0.711
+      "p_calibrated": 0.711,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_ra_ra_under_10.0",
@@ -386640,7 +386715,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T03:48:03",
-      "p_calibrated": 0.628
+      "p_calibrated": 0.628,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_steals_over_0.5",
@@ -386657,7 +386735,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T03:48:03",
-      "p_calibrated": 0.709
+      "p_calibrated": 0.709,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_3pm_3pm_under_2.5",
@@ -386674,7 +386755,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T03:48:03",
-      "p_calibrated": 0.7146
+      "p_calibrated": 0.7146,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_3pm_3pm_under_1.5",
@@ -386691,7 +386775,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T03:48:03",
-      "p_calibrated": 0.7146
+      "p_calibrated": 0.7146,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "wnba_3pm_3pm_under_3.5",
@@ -386733,7 +386820,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T03:48:03",
-      "p_calibrated": 0.708
+      "p_calibrated": 0.708,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_tov_tov_under_3.5",
@@ -386750,7 +386840,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T03:48:03",
-      "p_calibrated": 0.697
+      "p_calibrated": 0.697,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_tov_tov_under_2.5",
@@ -386767,7 +386860,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T03:48:03",
-      "p_calibrated": 0.669
+      "p_calibrated": 0.669,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_pra_pra_under_50.5",
@@ -386784,7 +386880,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T03:48:03",
-      "p_calibrated": 0.6596
+      "p_calibrated": 0.6596,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_pra_pra_under_44.5",
@@ -386801,7 +386900,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T03:48:03",
-      "p_calibrated": 0.6634
+      "p_calibrated": 0.6634,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_pra_pra_under_29.5",
@@ -386818,7 +386920,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T03:48:03",
-      "p_calibrated": 0.6651
+      "p_calibrated": 0.6651,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_pra_pra_under_28.5",
@@ -386835,7 +386940,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T03:48:03",
-      "p_calibrated": 0.6629
+      "p_calibrated": 0.6629,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_pra_pra_under_26.5",
@@ -386852,7 +386960,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T03:48:03",
-      "p_calibrated": 0.6649
+      "p_calibrated": 0.6649,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_fta_fta_under_8.0",
@@ -386869,7 +386980,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T03:48:03",
-      "p_calibrated": 0.661
+      "p_calibrated": 0.661,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_fta_fta_under_7.0",
@@ -386886,7 +387000,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T03:48:03",
-      "p_calibrated": 0.654
+      "p_calibrated": 0.654,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_fta_fta_under_5.0",
@@ -386903,7 +387020,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T03:48:03",
-      "p_calibrated": 0.675
+      "p_calibrated": 0.675,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "wnba_blkstl_blk_stl_under_3.5",
@@ -386990,7 +387110,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T03:48:03",
-      "p_calibrated": 0.657
+      "p_calibrated": 0.657,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_pr_pr_under_37.5",
@@ -387007,7 +387130,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T03:48:03",
-      "p_calibrated": 0.6699
+      "p_calibrated": 0.6699,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_pr_pr_under_27.0",
@@ -387024,7 +387150,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T03:48:03",
-      "p_calibrated": 0.6934
+      "p_calibrated": 0.6934,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_ra_ra_under_24.5",
@@ -387041,7 +387170,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T03:48:03",
-      "p_calibrated": 0.656
+      "p_calibrated": 0.656,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_ra_ra_under_11.5",
@@ -387058,7 +387190,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T03:48:03",
-      "p_calibrated": 0.699
+      "p_calibrated": 0.699,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nhl_pl_home_plus_1.5",
@@ -387227,7 +387362,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T18:27:45",
-      "p_calibrated": 0.681
+      "p_calibrated": 0.681,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "tennis_aces_aces_over_1.5",
@@ -387244,7 +387382,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T18:27:45",
-      "p_calibrated": 0.651
+      "p_calibrated": 0.651,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "golf_top_10",
@@ -387511,7 +387652,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T19:42:33",
-      "p_calibrated": 0.779
+      "p_calibrated": 0.779,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_dd_double_double_yes",
@@ -387528,7 +387672,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T19:42:33",
-      "p_calibrated": 0.735
+      "p_calibrated": 0.735,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_dd_double_double_yes",
@@ -387545,7 +387692,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T19:42:33",
-      "p_calibrated": 0.731
+      "p_calibrated": 0.731,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_dd_double_double_yes",
@@ -387562,7 +387712,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T19:42:33",
-      "p_calibrated": 0.706
+      "p_calibrated": 0.706,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_dd_double_double_no",
@@ -387579,7 +387732,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T19:42:33",
-      "p_calibrated": 0.66
+      "p_calibrated": 0.66,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_dd_double_double_no",
@@ -387596,7 +387752,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T19:42:33",
-      "p_calibrated": 0.665
+      "p_calibrated": 0.665,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_dd_double_double_no",
@@ -387613,7 +387772,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T19:42:33",
-      "p_calibrated": 0.689
+      "p_calibrated": 0.689,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_dd_double_double_no",
@@ -387630,7 +387792,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T19:42:33",
-      "p_calibrated": 0.702
+      "p_calibrated": 0.702,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_dd_double_double_no",
@@ -387647,7 +387812,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T19:42:33",
-      "p_calibrated": 0.706
+      "p_calibrated": 0.706,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_dd_double_double_no",
@@ -387664,7 +387832,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T19:42:33",
-      "p_calibrated": 0.765
+      "p_calibrated": 0.765,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_steals_over_0.5",
@@ -389254,7 +389425,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T19:42:33",
-      "p_calibrated": 0.65
+      "p_calibrated": 0.65,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_fta_fta_under_9.0",
@@ -389271,7 +389445,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T19:42:33",
-      "p_calibrated": 0.666
+      "p_calibrated": 0.666,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_fta_fta_under_8.5",
@@ -389288,7 +389465,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T19:42:33",
-      "p_calibrated": 0.622
+      "p_calibrated": 0.622,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_fta_fta_under_7.5",
@@ -389322,7 +389502,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T19:42:33",
-      "p_calibrated": 0.658
+      "p_calibrated": 0.658,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_fta_fta_under_7.0",
@@ -389339,7 +389522,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T19:42:33",
-      "p_calibrated": 0.674
+      "p_calibrated": 0.674,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_fta_fta_under_6.5",
@@ -389373,7 +389559,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T19:42:33",
-      "p_calibrated": 0.654
+      "p_calibrated": 0.654,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_fta_fta_under_6.0",
@@ -389407,7 +389596,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T19:42:33",
-      "p_calibrated": 0.693
+      "p_calibrated": 0.693,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_fta_fta_under_5.5",
@@ -389441,7 +389633,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T19:42:33",
-      "p_calibrated": 0.628
+      "p_calibrated": 0.628,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_fta_fta_under_5.0",
@@ -389475,7 +389670,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T19:42:33",
-      "p_calibrated": 0.712
+      "p_calibrated": 0.712,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_fta_fta_under_5.0",
@@ -389492,7 +389690,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T19:42:33",
-      "p_calibrated": 0.714
+      "p_calibrated": 0.714,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_fta_fta_under_4.5",
@@ -389526,7 +389727,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T19:42:33",
-      "p_calibrated": 0.666
+      "p_calibrated": 0.666,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_fta_fta_under_3.5",
@@ -389543,7 +389747,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T19:42:33",
-      "p_calibrated": 0.639
+      "p_calibrated": 0.639,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_tt_team_pts_under_123.5",
@@ -389560,7 +389767,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T19:42:33",
-      "p_calibrated": 0.643
+      "p_calibrated": 0.643,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_tt_team_pts_under_122.5",
@@ -389577,7 +389787,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T19:42:33",
-      "p_calibrated": 0.644
+      "p_calibrated": 0.644,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_tt_team_pts_under_122.5",
@@ -389594,7 +389807,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T19:42:33",
-      "p_calibrated": 0.656
+      "p_calibrated": 0.656,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_tt_team_pts_under_122.5",
@@ -389611,7 +389827,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T19:42:33",
-      "p_calibrated": 0.662
+      "p_calibrated": 0.662,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_tt_team_pts_under_121.5",
@@ -389628,7 +389847,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T19:42:33",
-      "p_calibrated": 0.643
+      "p_calibrated": 0.643,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_tt_team_pts_under_121.5",
@@ -389645,7 +389867,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T19:42:33",
-      "p_calibrated": 0.647
+      "p_calibrated": 0.647,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_tt_team_pts_under_121.5",
@@ -389662,7 +389887,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T19:42:33",
-      "p_calibrated": 0.654
+      "p_calibrated": 0.654,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_tt_team_pts_under_121.5",
@@ -389679,7 +389907,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T19:42:33",
-      "p_calibrated": 0.657
+      "p_calibrated": 0.657,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_tt_team_pts_under_120.5",
@@ -389696,7 +389927,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T19:42:33",
-      "p_calibrated": 0.664
+      "p_calibrated": 0.664,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_tt_team_pts_under_119.5",
@@ -389713,7 +389947,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T19:42:33",
-      "p_calibrated": 0.639
+      "p_calibrated": 0.639,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_tt_team_pts_under_119.5",
@@ -389730,7 +389967,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T19:42:33",
-      "p_calibrated": 0.653
+      "p_calibrated": 0.653,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_tt_team_pts_under_119.5",
@@ -389747,7 +389987,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T19:42:33",
-      "p_calibrated": 0.657
+      "p_calibrated": 0.657,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_tt_team_pts_under_119.5",
@@ -389764,7 +390007,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T19:42:33",
-      "p_calibrated": 0.668
+      "p_calibrated": 0.668,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_tt_team_pts_under_118.5",
@@ -389781,7 +390027,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T19:42:33",
-      "p_calibrated": 0.64
+      "p_calibrated": 0.64,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_tt_team_pts_under_118.5",
@@ -389798,7 +390047,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T19:42:33",
-      "p_calibrated": 0.671
+      "p_calibrated": 0.671,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_tt_team_pts_under_118.5",
@@ -389815,7 +390067,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T19:42:33",
-      "p_calibrated": 0.676
+      "p_calibrated": 0.676,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_tt_team_pts_under_118.5",
@@ -389832,7 +390087,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T19:42:33",
-      "p_calibrated": 0.677
+      "p_calibrated": 0.677,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_tt_team_pts_under_117.5",
@@ -389849,7 +390107,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T19:42:33",
-      "p_calibrated": 0.655
+      "p_calibrated": 0.655,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_tt_team_pts_under_117.5",
@@ -389866,7 +390127,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T19:42:33",
-      "p_calibrated": 0.659
+      "p_calibrated": 0.659,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_tt_team_pts_under_116.5",
@@ -389883,7 +390147,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T19:42:33",
-      "p_calibrated": 0.651
+      "p_calibrated": 0.651,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_tt_team_pts_under_116.5",
@@ -389900,7 +390167,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T19:42:33",
-      "p_calibrated": 0.66
+      "p_calibrated": 0.66,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_tt_team_pts_under_115.5",
@@ -389917,7 +390187,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T19:42:33",
-      "p_calibrated": 0.662
+      "p_calibrated": 0.662,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_tt_team_pts_under_114.5",
@@ -389934,7 +390207,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T19:42:33",
-      "p_calibrated": 0.681
+      "p_calibrated": 0.681,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_tt_team_pts_under_111.5",
@@ -389951,7 +390227,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T19:42:33",
-      "p_calibrated": 0.659
+      "p_calibrated": 0.659,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "tennis_games_total_games_under_21.5",
@@ -389994,7 +390273,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T19:42:33",
-      "p_calibrated": 0.698
+      "p_calibrated": 0.698,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "tennis_aces_aces_under_6.5",
@@ -390011,7 +390293,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T19:42:33",
-      "p_calibrated": 0.675
+      "p_calibrated": 0.675,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nhl_pl_home_plus_1.5",
@@ -390731,7 +391016,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T19:42:33",
-      "p_calibrated": 0.624
+      "p_calibrated": 0.624,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_pa_pa_under_35.0",
@@ -391049,7 +391337,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T19:42:33",
-      "p_calibrated": 0.6915
+      "p_calibrated": 0.6915,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_pa_pa_under_22.5",
@@ -391843,7 +392134,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T19:48:08",
-      "p_calibrated": 0.8165
+      "p_calibrated": 0.8165,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_alts_home_total_over_109.7",
@@ -391860,7 +392154,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T19:48:08",
-      "p_calibrated": 0.8165
+      "p_calibrated": 0.8165,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_alts_home_total_over_109.7",
@@ -391877,7 +392174,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T19:48:08",
-      "p_calibrated": 0.8165
+      "p_calibrated": 0.8165,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_alts_home_total_over_109.7",
@@ -391894,7 +392194,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T19:48:08",
-      "p_calibrated": 0.8165
+      "p_calibrated": 0.8165,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_alts_home_total_over_109.7",
@@ -391911,7 +392214,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T19:48:08",
-      "p_calibrated": 0.8165
+      "p_calibrated": 0.8165,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_alts_home_total_over_109.7",
@@ -391928,7 +392234,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T19:48:08",
-      "p_calibrated": 0.8165
+      "p_calibrated": 0.8165,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_alts_home_total_over_109.7",
@@ -391945,7 +392254,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T19:48:08",
-      "p_calibrated": 0.8165
+      "p_calibrated": 0.8165,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_alts_home_total_over_109.7",
@@ -391962,7 +392274,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T19:48:08",
-      "p_calibrated": 0.8165
+      "p_calibrated": 0.8165,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_alts_home_total_over_109.7",
@@ -391979,7 +392294,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T19:48:08",
-      "p_calibrated": 0.8165
+      "p_calibrated": 0.8165,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_alts_home_total_over_109.7",
@@ -391996,7 +392314,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T19:48:08",
-      "p_calibrated": 0.8165
+      "p_calibrated": 0.8165,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_alts_home_total_over_109.7",
@@ -392013,7 +392334,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T19:48:08",
-      "p_calibrated": 0.8165
+      "p_calibrated": 0.8165,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "nba_alts_home_total_over_109.7",
@@ -392030,7 +392354,10 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-23T19:48:08",
-      "p_calibrated": 0.8165
+      "p_calibrated": 0.8165,
+      "voided": true,
+      "voided_at": "2026-10-28T01:08:01",
+      "voided_reason": "unsettleable: no outcome feed within 4 days"
     },
     {
       "source": "golf_top_10",
@@ -405806,6 +406133,39 @@
       "payout_units": null,
       "recorded_at": "2026-10-27T20:21:50",
       "p_calibrated": 0.701
+    },
+    {
+      "source": "pod",
+      "sport": "MLB",
+      "player_or_matchup": "MIL @ TBR",
+      "market": "OVER_7.0",
+      "prob": 0.6882,
+      "edge_pct": 25.7,
+      "fair_american": -121,
+      "date": "2026-10-28",
+      "pick_id": "pod|MLB|MIL___TBR|OVER_7_0|2026-10-28",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-10-28T01:08:01",
+      "p_calibrated": 0.6524
+    },
+    {
+      "source": "ufc_r1_fight_r1_finish_yes",
+      "sport": "UFC",
+      "player_or_matchup": "Jean-Paul Lebosnoyani vs Farman Hasanov",
+      "market": "FIGHT_R1_FINISH_YES",
+      "prob": 0.218,
+      "fair_american": 358,
+      "p_predicted": 0.218,
+      "matchup": "Jean-Paul Lebosnoyani vs Farman Hasanov",
+      "date": "2026-10-28",
+      "pick_id": "ufc_r1_fight_r1_finish_yes|UFC|Jean_Paul_Lebosnoyani_vs_Farman_Hasanov|FIGHT_R1_FINISH_YES|2026-10-28",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-10-28T01:08:01",
+      "p_calibrated": 0.3339
     }
   ],
   "note": "Unified pick ledger -- records every pick the model surfaces (top_25 board, whales, consensus, unders, sharp action, locks, POD) and settles each against actual outcomes. Per-source W-L feeds back into calibration so the model learns which modules are reliable. THIS is the training signal."
