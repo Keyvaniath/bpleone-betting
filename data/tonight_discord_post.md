@@ -1,5 +1,5 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:3 F:170
+_NO_ACTION_NIGHT_ | L:0 S:3 F:169
 
 :dart: **Top Picks:**
 1. [NBA] CLE -- CLE (TEAM_STRONG)

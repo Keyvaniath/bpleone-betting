@@ -6,8 +6,8 @@ _0% lineups confirmed · 1 rookie SPs_
 
 ## Slate
 - **1 games** scheduled
-- **24 best bets** scored: 6 DK · 0 PP · 1 NRFI · 0 SGP
-- **MC simulation:** EV +$32.29, 60% P(profit), p05 $-130.1 / p95 $157.43
+- **33 best bets** scored: 6 DK · 0 PP · 1 NRFI · 0 SGP
+- **MC simulation:** EV +$7.06, 60% P(profit), p05 $-44.04 / p95 $40.04
 
 ## Top 5 Best Bets
 1. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
@@ -26,11 +26,9 @@ _0% lineups confirmed · 1 rookie SPs_
    - Model 58.8% (fair -143)
    - Worlds
 
-## ⚠️ Trap Warnings — 5 flagged
+## ⚠️ Trap Warnings — 4 flagged
 - **Richie Palacios OVER 0.5 batter hits** (low):
    - Edge +14.6% looks big but only 0 settled props on this player — model unproven
-- **MIL @ TBR YRFI (1st-inning OVER 0.5)** (low):
-   - Edge +11.1% looks big but only 0 settled props on this player — model unproven
 - **Victor Mesa Jr. OVER 0.5 batter hits** (low):
    - Edge +10.1% looks big but only 0 settled props on this player — model unproven
 - **Taylor Walls OVER 0.5 batter hits** (low):
@@ -38,8 +36,9 @@ _0% lineups confirmed · 1 rookie SPs_
 - **Garrett Mitchell OVER 0.5 batter hits** (low):
    - Edge +8.8% looks big but only 0 settled props on this player — model unproven
 
-## NRFI/YRFI strong leans
-- **YRFI** (1st-inning OVER): MIL @ TBR
+## Bullpens GASSED tonight
+Tampa Bay Rays, Milwaukee Brewers
+_Lean late-inning OVER on these games; fade their save situations._
 
 ## Golf -- VidantaWorld Mexico Open
 - **Leader:** Patton Kizzire (E) at #1
@@ -53,10 +52,10 @@ _0% lineups confirmed · 1 rookie SPs_
 - Orlando Magic @ Toronto Raptors (1-2 vs 2-1)  | P(home) 83.0% fair -489 | Scheduled
 
 ## NHL -- REGULAR
-- Philadelphia Flyers @ Washington Capitals (3-7-4 vs 6-4-0)  | P(home) 85.2% fair -575 | Scheduled
-- Calgary Flames @ Edmonton Oilers (5-6-0 vs 8-2-2)  | P(home) 90.2% fair -916 | Scheduled
-- New Jersey Devils @ Colorado Avalanche (8-4-0 vs 6-5-1)  | P(home) 49.9% fair +101 | Scheduled
-- Toronto Maple Leafs @ Seattle Kraken (7-5-2 vs 7-4-1)  | P(home) 68.4% fair -216 | Scheduled
+- Philadelphia Flyers @ Washington Capitals (3-7-4 vs 6-4-0)  | P(home) 75.2% fair -303 | Scheduled
+- Calgary Flames @ Edmonton Oilers (5-6-0 vs 8-2-2)  | P(home) 80.2% fair -404 | Scheduled
+- New Jersey Devils @ Colorado Avalanche (8-4-0 vs 6-5-1)  | P(home) 39.9% fair +151 | Scheduled
+- Toronto Maple Leafs @ Seattle Kraken (7-5-2 vs 7-4-1)  | P(home) 58.4% fair -140 | Scheduled
 
 ## LoL Esports -- 0 live, 16 upcoming
 - [Worlds] Movistar KOI vs T1 BO3 | P(A) 48.9% fair +105/-105

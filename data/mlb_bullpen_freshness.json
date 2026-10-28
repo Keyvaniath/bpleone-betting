@@ -1,40 +1,47 @@
 {
-  "generated_at": "2026-10-28T15:36:11",
+  "generated_at": "2026-10-28T16:58:51",
   "n_games": 1,
-  "n_compound_alerts": 0,
+  "n_compound_alerts": 1,
   "home_bullpen_tiers": {
-    "NORMAL": 1
+    "TIRED": 1
   },
   "away_bullpen_tiers": {
-    "FRESH": 1
+    "TIRED": 1
   },
-  "compound_alerts": [],
+  "compound_alerts": [
+    {
+      "matchup": "MIL @ TBR",
+      "alert": "AWAY starter projected short (4.5 IP) + AWAY bullpen TIRED -> HOME team total OVER late"
+    }
+  ],
   "teams": [
     {
       "team": "MIL",
-      "ip_2d": 3.0,
-      "tier": "FRESH",
-      "fatigue_index": 0.083
+      "ip_2d": 9.6,
+      "tier": "TIRED",
+      "fatigue_index": 0.633
     },
     {
       "team": "TBR",
-      "ip_2d": 4.1,
-      "tier": "NORMAL",
-      "fatigue_index": 0.175
+      "ip_2d": 11.4,
+      "tier": "TIRED",
+      "fatigue_index": 0.783
     }
   ],
   "games": [
     {
       "matchup": "MIL @ TBR",
-      "home_bp_ip_2d": 4.1,
-      "home_bp_tier": "NORMAL",
-      "home_bp_gassed_flag": false,
-      "away_bp_ip_2d": 3.0,
-      "away_bp_tier": "FRESH",
-      "away_bp_gassed_flag": false,
+      "home_bp_ip_2d": 11.4,
+      "home_bp_tier": "TIRED",
+      "home_bp_gassed_flag": true,
+      "away_bp_ip_2d": 9.6,
+      "away_bp_tier": "TIRED",
+      "away_bp_gassed_flag": true,
       "home_starter_depth": null,
       "away_starter_depth": "EARLY_HOOK",
-      "compound_alerts": []
+      "compound_alerts": [
+        "AWAY starter projected short (4.5 IP) + AWAY bullpen TIRED -> HOME team total OVER late"
+      ]
     }
   ],
   "note": "Compound bullpen alerts fire when an EARLY_HOOK starter meets a TIRED/GASSED bullpen -- opposing offense gets late-inning ABs against B-arm relievers. Team-total OVER signal."

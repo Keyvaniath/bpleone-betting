@@ -2,17 +2,17 @@
 
 ## 🏥 Model Health: 65.8/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 100.0/100
-  - 🔴 Hit Rate Trend: 53.8/100
-  - 🔴 Brier Trend: 12.7/100
+  - 🟢 Calibration Freshness: 99.9/100
+  - 🔴 Hit Rate Trend: 48.3/100
+  - 🔴 Brier Trend: 8.3/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟢 Data Health: 90.9/100
-  - 🔴 Edge Count: 42.9/100
+  - 🟢 Data Health: 95.5/100
+  - 🔴 Edge Count: 54.3/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.589)
-- **Total games on board:** 59
-- **Strong home favorites:** 30 | **Strong road dogs:** 13
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.582)
+- **Total games on board:** 73
+- **Strong home favorites:** 35 | **Strong road dogs:** 16
 
 ## 🎯 Top 5 Best Bets
 1. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
@@ -21,10 +21,17 @@
 4. **LOL Team Liquid Alienware vs LOS ML @ -154** (76/100 ★★★★★)
 5. **LOL Invictus Gaming vs LYON ML @ -143** (76/100 ★★★★★)
 
+## 📡 Sharp Action (Line Movement)
+- [MODERATE] **MIL @ TBR** ml_away: 50.25% → 54.95% (+4.7pp)
+
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **308-60** (83.7% hit rate)
 - Net units: **+10.34u** | ROI: **+45.5%**
 - Last 7d: 1-1 (50.0%) | net -0.00u
+
+**Today's 2 Locks:**
+- [MLB] **MIL @ TBR** MIL_ML · p=66% edge=+8.2% qK=0.032u
+- [MLB] **MIL @ TBR** ML_AWAY · p=65% edge=+6.7% qK=0.026u
 
 ## 🎮 Player Play of the Day (cross-sport)
 - **[LOL]** Inspired UNDER 3.5 Kills | MED conviction · model 61.7% fair -161
@@ -33,47 +40,50 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (17)
+## ⚡ Pre-Game HIGH Conviction (23)
+- [UCL] **Atlético Madrid** HOME (None L10) · model 72.7% fair -267
+- [UCL] **Bodo/Glimt** HOME (None L10) · model 72.7% fair -267
+- [UCL] **LASK Linz** HOME (None L10) · model 72.7% fair -267
+- [UCL] **Manchester United** HOME (None L10) · model 72.7% fair -267
 - [NCAAF] **Ole Miss Rebels** HOME (None L10) · model 72.6% fair -265
 - [NCAAF] **Texas Longhorns** HOME (None L10) · model 72.6% fair -265
 - [MLS] **Charlotte FC** HOME (1-3 L10) · model 72.5% fair -264
+- [NFL] **Dallas Cowboys** HOME (None L10) · model 72.0% fair -257
 - [EPL] **AFC Bournemouth** HOME (2-1 L10) · model 71.3% fair -249
 - [NBA] **Philadelphia 76ers** AWAY (3-2 L10) · model 71.0% fair -245
-- [NBA] **San Antonio Spurs** AWAY (4-2 L10) · model 71.0% fair -245
-- [NBA] **Cleveland Cavaliers** HOME (2-1 L10) · model 71.0% fair -245
-- [NCAAF] **Oklahoma State Cowboys** AWAY (None L10) · model 70.2% fair -236
-- [NCAAF] **Missouri Tigers** AWAY (None L10) · model 70.2% fair -236
-- [NCAAF] **Miami Hurricanes** AWAY (None L10) · model 69.1% fair -224
 
 ## 🔥/❄️ Heat / Cold Signals
 - Hot teams: **10** | Cold teams: **22** | Over-heavy: 0 | Under-heavy: 34
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (148)
-- RESIDUAL_DIVERGENCE: **16**
-- STEAM_MOVE: **132**
-  - Los Angeles Lakers (NBA): Los Angeles Lakers OUTPERFORMING expected margin by 11.0pts in recent games -- model bias may persist
-  - Portland Trail Blazers (NBA): Portland Trail Blazers OUTPERFORMING expected margin by 9.7pts in recent games -- model bias may persist
-  - Utah Mammoth (NHL): Utah Mammoth UNDERPERFORMING expected margin by 6.8pts in recent games -- model bias may persist
-  - Vegas Golden Knights (NHL): Vegas Golden Knights UNDERPERFORMING expected margin by 7.1pts in recent games -- model bias may persist
-  - Anaheim Ducks (NHL): Anaheim Ducks OUTPERFORMING expected margin by 6.9pts in recent games -- model bias may persist
+## ⚠️ Anomaly Detector (159)
+- RESIDUAL_DIVERGENCE: **22**
+- STEAM_MOVE: **137**
+  - Atlanta Hawks (NBA): Atlanta Hawks OUTPERFORMING expected margin by 7.7pts in recent games -- model bias may persist
+  - Miami Heat (NBA): Miami Heat UNDERPERFORMING expected margin by 10.2pts in recent games -- model bias may persist
+  - Charlotte Hornets (NBA): Charlotte Hornets UNDERPERFORMING expected margin by 6.6pts in recent games -- model bias may persist
+  - Toronto Raptors (NBA): Toronto Raptors OUTPERFORMING expected margin by 13.8pts in recent games -- model bias may persist
+  - Chicago Bulls (NBA): Chicago Bulls UNDERPERFORMING expected margin by 15.7pts in recent games -- model bias may persist
 
 ## 💰 Today's Portfolio (12 picks)
-- Total stake: **$300.0** (30.0% of $1000 bankroll)
-- Expected EV: **$-28.41**
+- Total stake: **$330.0** (33.0% of $1000 bankroll)
+- Expected EV: **$-6.09**
   - #1 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #2 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
   - #3 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
-  - #4 [NRFI] $35 on MIL @ TBR YRFI (1st-inning OVER 0.5) (P=57%)
-  - #5 [MLS] $20 on MLS Inter Miami CF ML (15-10-6) vs FC Cincinnati (P=68%)
+  - #4 [NBA] $35 on NBA Cleveland Cavaliers ML (2-1) vs Washington Wizards (P=71%)
+  - #5 [NBA] $35 on NBA Detroit Pistons ML (3-1) vs Charlotte Hornets (P=55%)
 
-## 🎯 Convergence Picks (32 stacked games)
-- ELITE: **15** · HIGH: 10 · MED: 7
-  - [ELITE] Portland Trail Blazers @ Los Angeles Lakers : 6 signals (PREGAME, HEAT_COLD, ANOMALY, ANOMALY)
-  - [ELITE] Florida Panthers @ Winnipeg Jets : 5 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ANOMALY)
-  - [ELITE] Buffalo Sabres @ San Jose Sharks : 5 signals (PREGAME, HEAT_COLD, HEAT_COLD, ATS)
+## 🎯 Convergence Picks (36 stacked games)
+- ELITE: **13** · HIGH: 13 · MED: 10
+  - [ELITE] Miami Heat @ Atlanta Hawks : 5 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ANOMALY)
+  - [ELITE] Charlotte Hornets @ Detroit Pistons : 5 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
   - [ELITE] Columbus Crew @ FC Dallas : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
   - [ELITE] Houston Dynamo FC @ Seattle Sounders FC : 5 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
+  - [ELITE] Nottingham Forest @ Brentford : 5 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ATS)
+
+## ⚾ Top MLB Pitcher K Plays (1)
+- **Jacob Misiorowski** OVER 4.5 K (75%) fair -303
 
 ## 🏀 NBA Player Heat (7 HOT / 6 COLD)
   - 🔥 **Gary Trent Jr.** (MIL): L5 14.8/1.2/1.6 vs season 8.1/1.0/1.2 [PTS +6.7]
@@ -111,12 +121,19 @@
   - ❄️ **Andruw Monasterio** (BOS): L14 .083 / season .233 (-150pts) -- FADE props
   - ❄️ **Jim Jarvis** (ATL): L14 .079 / season .207 (-128pts) -- FADE props
 
+## 😴 B2B Fatigue Edges (6)
+- [NBA] FADE Detroit Pistons (home on B2B)
+- [NBA] FADE New York Knicks (away on B2B)
+- [NBA] FADE San Antonio Spurs (away on B2B)
+- [NHL] FADE Philadelphia Flyers (away on B2B)
+- [NHL] FADE New Jersey Devils (away on B2B)
+
 ## 📈 Streak Regression Alerts (24)
-- [NBA] Brooklyn Nets on L4 L10 0-4 -- Brooklyn Nets on L4 -- no historical sample
-- [NBA] New York Knicks on L3 L10 1-3 -- New York Knicks on L3 -- no historical sample
-- [NBA] Detroit Pistons on W5 L10 5-0 -- Detroit Pistons on W5 -- no historical sample
-- [NBA] Sacramento Kings on L4 L10 0-4 -- Sacramento Kings on L4 -- no historical sample
-- [NBA] Los Angeles Lakers on W3 L10 3-1 -- Los Angeles Lakers on W3 -- no historical sample
+- [NBA] Miami Heat on L5 L10 0-5 -- Miami Heat on L5 -- no historical sample
+- [NBA] Houston Rockets on W5 L10 5-0 -- Houston Rockets on W5 -- no historical sample
+- [NBA] New Orleans Pelicans on L3 L10 2-3 -- New Orleans Pelicans on L3 -- no historical sample
+- [NBA] Oklahoma City Thunder on W4 L10 4-1 -- Oklahoma City Thunder on W4 -- no historical sample
+- [NHL] Calgary Flames on W4 L10 4-1 -- Calgary Flames on W4 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**
@@ -130,8 +147,8 @@
 
 ## 🤖 Self-Training Status
 - **NBA**: n=77 games · hit rate 57.1% · bias +0.4pp
-- **NHL**: n=93 games · hit rate 50.5% · bias -10.0pp [calibration applied]
+- **NHL**: n=93 games · hit rate 50.5% · bias -10.0pp
 - **WNBA**: n=5 games · hit rate 60.0% · bias +8.2pp
-- **MLS**: n=61 games · hit rate 34.4% · bias -4.9pp [calibration applied]
+- **MLS**: n=61 games · hit rate 34.4% · bias -4.9pp
 - **EPL**: n=30 games · hit rate 43.3% · bias -0.6pp
 - **MLB**: n=10 games · hit rate 60.0% · bias +2.1pp

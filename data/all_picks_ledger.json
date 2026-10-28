@@ -1,23 +1,23 @@
 {
-  "generated_at": "2026-10-28T16:43:01",
+  "generated_at": "2026-10-28T16:59:21",
   "stake_assumption": "1u flat per pick",
-  "total_picks": 16412,
-  "n_settled": 19852,
-  "n_pending": 1521,
+  "total_picks": 16421,
+  "n_settled": 19857,
+  "n_pending": 1525,
   "n_void": 979,
-  "wins": 8806,
-  "losses": 11033,
+  "wins": 8810,
+  "losses": 11034,
   "pushes": 13,
-  "hit_rate": 0.4439,
-  "net_units": -3664.455,
-  "roi_pct": -18.47,
-  "n_calibrated_picks": 16268,
+  "hit_rate": 0.444,
+  "net_units": -3663.533,
+  "roi_pct": -18.46,
+  "n_calibrated_picks": 16277,
   "calibrated_reliability": {
-    "n": 13784,
-    "ece_raw": 0.0828,
-    "ece_calibrated": 0.0144,
-    "brier_raw": 0.21159,
-    "brier_calibrated": 0.19664,
+    "n": 13789,
+    "ece_raw": 0.0827,
+    "ece_calibrated": 0.0142,
+    "brier_raw": 0.21158,
+    "brier_calibrated": 0.19662,
     "note": "In-sample over the settled ledger (the isotonic transform is fit on these same outcomes); held-out 70/30 validation is in recalibration_map.json. p_predicted = raw model prob (kept untouched for the learning loop); p_calibrated = honest prob stamped per pick. Lower ECE/Brier on the calibrated column = the displayed % is truer."
   },
   "curated": {
@@ -53,11 +53,11 @@
   "headline_basis": "all-time: working ledger + data/ledger_archive.json",
   "working_ledger_only": {
     "all": {
-      "n_settled": 13912,
-      "wins": 5849,
-      "losses": 8052,
-      "net_units": -2405.869,
-      "roi_pct": -17.31
+      "n_settled": 13917,
+      "wins": 5853,
+      "losses": 8053,
+      "net_units": -2404.947,
+      "roi_pct": -17.29
     },
     "curated": {
       "n_settled": 1107,
@@ -94,17 +94,19 @@
       "note": "Top 25 and the Under Alerts read the same placeholder 8.5 total, and some totals were taken from in-play boards. Every settled MLB total was checked against the lines books posted before first pitch: picks on a line no book posted pre-game were voided (they had gone 30-17 -- e.g. UNDER 8.5 when the real total was 6.5), and picks on DraftKings' line are now graded at its real over/under juice instead of a flat -110."
     }
   ],
+  "stale_sources_skipped": [],
+  "inactive_player_props_blocked": 124,
   "restatement": {
     "date": "2026-10-23",
     "note": "The headline became ALL-TIME on 2026-10-23. 5,946 settled picks that the old tail-cut eviction had destroyed (May-June 2026, the 07-06 erosion and the run-up to 09-03) were rebuilt from git history at each pick's final state, with today's duplicate-wager rule re-applied, and folded back in. They are mostly the raw May-June MLB prop firehose (2,961-2,983, -1,256.9u), so the firehose ROI fell; the curated record changed by the curated picks among them. Before this date the published numbers covered the working window only -- working_ledger_only keeps that basis.",
     "n_archived_in_headline": 5940
   },
-  "n_added_this_run": 848,
-  "n_newly_settled_this_run": 31,
+  "n_added_this_run": 9,
+  "n_newly_settled_this_run": 5,
   "n_resettled_this_run": 0,
   "n_voided_this_run": 0,
   "n_duplicates_collapsed_this_run": 0,
-  "n_duplicate_adds_blocked_this_run": 172,
+  "n_duplicate_adds_blocked_this_run": 94,
   "n_reconciled_settled_voids": 0,
   "n_bootstrapped_from_locks_history": 0,
   "by_source": {
@@ -1531,13 +1533,13 @@
       "roi_pct": -23.4
     },
     "tennis_games_total_games_over_19.5": {
-      "n": 7,
-      "wins": 6,
+      "n": 8,
+      "wins": 7,
       "losses": 1,
       "pushes": 0,
-      "net_units": 1.788,
-      "hit_rate": 0.8571,
-      "roi_pct": 25.54
+      "net_units": 2.234,
+      "hit_rate": 0.875,
+      "roi_pct": 27.93
     },
     "tennis_games_total_games_under_22.5": {
       "n": 7,
@@ -2781,6 +2783,15 @@
       "hit_rate": 1.0,
       "roi_pct": 40.3
     },
+    "nba_tov_tov_under_3.0": {
+      "n": 1,
+      "wins": 0,
+      "losses": 1,
+      "pushes": 0,
+      "net_units": -1.0,
+      "hit_rate": 0.0,
+      "roi_pct": -100.0
+    },
     "nba_pra_pra_under_52.5": {
       "n": 1,
       "wins": 0,
@@ -2791,13 +2802,13 @@
       "roi_pct": -100.0
     },
     "nba_pra_pra_under_30.5": {
-      "n": 1,
-      "wins": 1,
+      "n": 2,
+      "wins": 2,
       "losses": 0,
       "pushes": 0,
-      "net_units": 0.42,
+      "net_units": 0.887,
       "hit_rate": 1.0,
-      "roi_pct": 42.0
+      "roi_pct": 44.35
     },
     "nba_pra_pra_under_29.5": {
       "n": 1,
@@ -2854,13 +2865,13 @@
       "roi_pct": -24.35
     },
     "nba_reb_reb_under_7.0": {
-      "n": 2,
-      "wins": 2,
+      "n": 3,
+      "wins": 3,
       "losses": 0,
       "pushes": 0,
-      "net_units": 1.109,
+      "net_units": 1.627,
       "hit_rate": 1.0,
-      "roi_pct": 55.45
+      "roi_pct": 54.23
     },
     "nba_reb_reb_over_3.5": {
       "n": 1,
@@ -2978,6 +2989,15 @@
       "net_units": 0.4,
       "hit_rate": 1.0,
       "roi_pct": 40.0
+    },
+    "nba_pr_pr_under_27.5": {
+      "n": 1,
+      "wins": 1,
+      "losses": 0,
+      "pushes": 0,
+      "net_units": 0.49,
+      "hit_rate": 1.0,
+      "roi_pct": 49.0
     },
     "nba_pr_pr_under_23.5": {
       "n": 2,
@@ -3552,12 +3572,12 @@
       "hit_rate": 0.2826
     },
     "total_games_over": {
-      "n": 30,
-      "wins": 24,
+      "n": 31,
+      "wins": 25,
       "losses": 6,
       "pushes": 0,
-      "net_units": 5.155,
-      "hit_rate": 0.8
+      "net_units": 5.601,
+      "hit_rate": 0.8065
     },
     "away_clean_sheet_no": {
       "n": 1,
@@ -3880,20 +3900,20 @@
       "hit_rate": 0.875
     },
     "tov_under": {
-      "n": 16,
+      "n": 17,
       "wins": 7,
-      "losses": 9,
+      "losses": 10,
       "pushes": 0,
-      "net_units": -5.748,
-      "hit_rate": 0.4375
+      "net_units": -6.748,
+      "hit_rate": 0.4118
     },
     "pra_under": {
-      "n": 60,
-      "wins": 38,
+      "n": 61,
+      "wins": 39,
       "losses": 22,
       "pushes": 0,
-      "net_units": -5.461,
-      "hit_rate": 0.6333
+      "net_units": -4.993,
+      "hit_rate": 0.6393
     },
     "anytime_goal_yes": {
       "n": 1,
@@ -3904,12 +3924,12 @@
       "hit_rate": 0.0
     },
     "reb_under": {
-      "n": 18,
-      "wins": 13,
+      "n": 19,
+      "wins": 14,
       "losses": 5,
       "pushes": 0,
-      "net_units": 2.355,
-      "hit_rate": 0.7222
+      "net_units": 2.874,
+      "hit_rate": 0.7368
     },
     "pa_under": {
       "n": 33,
@@ -3920,12 +3940,12 @@
       "hit_rate": 0.6667
     },
     "pr_under": {
-      "n": 33,
-      "wins": 22,
+      "n": 34,
+      "wins": 23,
       "losses": 11,
       "pushes": 0,
-      "net_units": 0.424,
-      "hit_rate": 0.6667
+      "net_units": 0.914,
+      "hit_rate": 0.6765
     },
     "rec_yds_under": {
       "n": 1,
@@ -4402,12 +4422,12 @@
       "hit_rate": 0.2826
     },
     "total_games_over": {
-      "n": 30,
-      "wins": 24,
+      "n": 31,
+      "wins": 25,
       "losses": 6,
       "pushes": 0,
-      "net_units": 5.155,
-      "hit_rate": 0.8
+      "net_units": 5.601,
+      "hit_rate": 0.8065
     },
     "away_clean_sheet_no": {
       "n": 1,
@@ -4730,20 +4750,20 @@
       "hit_rate": 0.875
     },
     "tov_under": {
-      "n": 16,
+      "n": 17,
       "wins": 7,
-      "losses": 9,
+      "losses": 10,
       "pushes": 0,
-      "net_units": -5.748,
-      "hit_rate": 0.4375
+      "net_units": -6.748,
+      "hit_rate": 0.4118
     },
     "pra_under": {
-      "n": 60,
-      "wins": 38,
+      "n": 61,
+      "wins": 39,
       "losses": 22,
       "pushes": 0,
-      "net_units": -5.461,
-      "hit_rate": 0.6333
+      "net_units": -4.993,
+      "hit_rate": 0.6393
     },
     "anytime_goal_yes": {
       "n": 1,
@@ -4754,12 +4774,12 @@
       "hit_rate": 0.0
     },
     "reb_under": {
-      "n": 18,
-      "wins": 13,
+      "n": 19,
+      "wins": 14,
       "losses": 5,
       "pushes": 0,
-      "net_units": 2.355,
-      "hit_rate": 0.7222
+      "net_units": 2.874,
+      "hit_rate": 0.7368
     },
     "pa_under": {
       "n": 33,
@@ -4770,12 +4790,12 @@
       "hit_rate": 0.6667
     },
     "pr_under": {
-      "n": 33,
-      "wins": 22,
+      "n": 34,
+      "wins": 23,
       "losses": 11,
       "pushes": 0,
-      "net_units": 0.424,
-      "hit_rate": 0.6667
+      "net_units": 0.914,
+      "hit_rate": 0.6765
     },
     "rec_yds_under": {
       "n": 1,
@@ -4959,15 +4979,15 @@
     },
     "TENNIS": {
       "n": 159,
-      "settled": 107,
-      "wins": 54,
+      "settled": 108,
+      "wins": 55,
       "losses": 53,
       "pushes": 0,
-      "pending": 22,
+      "pending": 21,
       "void": 30,
-      "net_units": -27.747,
-      "hit_rate": 0.5047,
-      "roi_pct": -25.93,
+      "net_units": -27.301,
+      "hit_rate": 0.5093,
+      "roi_pct": -25.28,
       "markets": 6
     },
     "UCL": {
@@ -4997,17 +5017,17 @@
       "markets": 1
     },
     "NFL": {
-      "n": 2975,
+      "n": 2984,
       "settled": 1903,
       "wins": 1344,
       "losses": 559,
       "pushes": 0,
-      "pending": 939,
+      "pending": 948,
       "void": 133,
       "net_units": -76.363,
       "hit_rate": 0.7063,
       "roi_pct": -4.01,
-      "markets": 10
+      "markets": 11
     },
     "KBO": {
       "n": 48,
@@ -5024,15 +5044,15 @@
     },
     "NBA": {
       "n": 882,
-      "settled": 279,
-      "wins": 181,
-      "losses": 98,
+      "settled": 283,
+      "wins": 184,
+      "losses": 99,
       "pushes": 0,
-      "pending": 453,
+      "pending": 449,
       "void": 150,
-      "net_units": -8.244,
-      "hit_rate": 0.6487,
-      "roi_pct": -2.95,
+      "net_units": -7.766,
+      "hit_rate": 0.6502,
+      "roi_pct": -2.74,
       "markets": 16
     }
   },
@@ -5054,12 +5074,12 @@
         "label": "before 10/23 -- one-game form (retired; record only)"
       },
       "form_v2": {
-        "n": 666,
+        "n": 675,
         "settled": 2,
         "wins": 2,
         "losses": 0,
         "pushes": 0,
-        "pending": 664,
+        "pending": 673,
         "void": 0,
         "net_units": 0.504,
         "hit_rate": 1.0,
@@ -5070,10 +5090,10 @@
     "note": "NFL props are judged from 10/23 forward: the simulator's form rule changed, so earlier picks are a different model. They stay on the record as their own line and never feed a family verdict."
   },
   "last_7_days": {
-    "wins": 989,
-    "losses": 525,
-    "net_units": -90.317,
-    "hit_rate": 0.6532
+    "wins": 993,
+    "losses": 526,
+    "net_units": -89.395,
+    "hit_rate": 0.6537
   },
   "picks": [
     {
@@ -7000,7 +7020,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-08T12:37:41",
-      "p_calibrated": 0.6524
+      "p_calibrated": 0.6513
     },
     {
       "source": "mlb_game_total_game_total_over_6.5",
@@ -7024,7 +7044,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-07T15:16:53",
-      "p_calibrated": 0.6524,
+      "p_calibrated": 0.6513,
       "resettle_log": [
         {
           "at": "2026-06-21T05:40:45",
@@ -8082,7 +8102,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-08T12:37:41",
-      "p_calibrated": 0.6524
+      "p_calibrated": 0.6513
     },
     {
       "source": "mlb_game_total_game_total_over_7.5",
@@ -8106,7 +8126,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-08T12:37:41",
-      "p_calibrated": 0.6067
+      "p_calibrated": 0.6011
     },
     {
       "source": "mlb_game_total_game_total_over_7.5",
@@ -8130,7 +8150,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-08T12:37:41",
-      "p_calibrated": 0.5894
+      "p_calibrated": 0.5802
     },
     {
       "source": "mlb_game_total_game_total_under_9.5",
@@ -8226,7 +8246,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-08T12:37:41",
-      "p_calibrated": 0.6524
+      "p_calibrated": 0.6513
     },
     {
       "pick_id": "lock_of_day|MLB_PP|Christian_Yelich|PP_batter_total_bases_under_3_5|2026-05-23",
@@ -8635,7 +8655,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-08T12:37:41",
-      "p_calibrated": 0.5957
+      "p_calibrated": 0.5878
     },
     {
       "source": "mlb_run_to_score_run_yes",
@@ -12839,7 +12859,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-09T08:01:13",
-      "p_calibrated": 0.6524
+      "p_calibrated": 0.6513
     },
     {
       "source": "mlb_game_total_game_total_over_6.5",
@@ -12863,7 +12883,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-09T08:01:13",
-      "p_calibrated": 0.6524
+      "p_calibrated": 0.6513
     },
     {
       "source": "mlb_game_total_game_total_over_6.5",
@@ -12887,7 +12907,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-09T08:01:13",
-      "p_calibrated": 0.6524
+      "p_calibrated": 0.6513
     },
     {
       "source": "top_25_board",
@@ -16042,7 +16062,7 @@
         "check": "verified"
       },
       "settled_at": "2026-06-09T16:24:14",
-      "p_calibrated": 0.5868,
+      "p_calibrated": 0.577,
       "book_american": -117,
       "repriced": {
         "at": "2026-10-27T00:09:59",
@@ -17988,7 +18008,7 @@
       "result": "won",
       "payout_units": 0.8197,
       "recorded_at": "2026-06-09T08:01:13",
-      "p_calibrated": 0.5645,
+      "p_calibrated": 0.55,
       "outcome": {
         "final_score": "ATL 5 @ CHW 6",
         "total_runs": 11,
@@ -18111,7 +18131,7 @@
       "result": "won",
       "payout_units": 0.9259,
       "recorded_at": "2026-06-09T20:03:44",
-      "p_calibrated": 0.5749,
+      "p_calibrated": 0.5625,
       "outcome": {
         "final_score": "LAD 12 @ PIT 3",
         "total_runs": 15,
@@ -18145,7 +18165,7 @@
       "result": "won",
       "payout_units": 1.0,
       "recorded_at": "2026-06-09T20:03:44",
-      "p_calibrated": 0.5733,
+      "p_calibrated": 0.5606,
       "outcome": {
         "final_score": "ATL 5 @ CHW 6",
         "total_runs": 11,
@@ -19945,7 +19965,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-10T01:35:49",
-      "p_calibrated": 0.5695,
+      "p_calibrated": 0.5561,
       "outcome": {
         "final_score": "ATL 1 @ CHW 2",
         "total_runs": 3,
@@ -19979,7 +19999,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-06-10T01:35:49",
-      "p_calibrated": 0.4801,
+      "p_calibrated": 0.4766,
       "outcome": {
         "final_score": "HOU 1 @ LAA 10",
         "total_runs": 11,
@@ -20256,7 +20276,7 @@
       "result": "won",
       "payout_units": 0.495,
       "recorded_at": "2026-06-10T01:35:49",
-      "p_calibrated": 0.5428,
+      "p_calibrated": 0.556,
       "outcome": {
         "stat": "blocks",
         "actual": 3,
@@ -20281,7 +20301,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-10T01:35:49",
-      "p_calibrated": 0.5518,
+      "p_calibrated": 0.5644,
       "outcome": {
         "stat": "blocks",
         "actual": 1,
@@ -22045,7 +22065,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-10T21:07:22",
-      "p_calibrated": 0.669,
+      "p_calibrated": 0.6751,
       "outcome": {
         "final_score": "VGK 2 @ CAR 4",
         "side": "away",
@@ -23097,7 +23117,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-10T23:29:28",
-      "p_calibrated": 0.5733,
+      "p_calibrated": 0.5606,
       "outcome": {
         "final_score": "CHC 3 @ COL 7",
         "total_runs": 10,
@@ -23125,7 +23145,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-10T23:29:28",
-      "p_calibrated": 0.5144,
+      "p_calibrated": 0.5192,
       "outcome": {
         "final_score": "ATL 1 @ CHW 2",
         "total_runs": 3,
@@ -23900,7 +23920,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-06-11T00:13:12",
-      "p_calibrated": 0.5733,
+      "p_calibrated": 0.5606,
       "outcome": {
         "final_score": "CHC 9 @ COL 3",
         "total_runs": 12,
@@ -23985,7 +24005,7 @@
       "result": "won",
       "payout_units": 0.495,
       "recorded_at": "2026-06-11T00:13:12",
-      "p_calibrated": 0.5428,
+      "p_calibrated": 0.556,
       "outcome": {
         "stat": "blocks",
         "actual": 3,
@@ -24010,7 +24030,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-11T00:13:12",
-      "p_calibrated": 0.5518,
+      "p_calibrated": 0.5644,
       "outcome": {
         "stat": "blocks",
         "actual": 1,
@@ -24440,7 +24460,7 @@
       "result": "won",
       "payout_units": 0.8929,
       "recorded_at": "2026-06-11T12:43:01",
-      "p_calibrated": 0.5237,
+      "p_calibrated": 0.5248,
       "outcome": {
         "final_score": "SEA 5 @ BAL 7",
         "total_runs": 12,
@@ -24474,7 +24494,7 @@
       "result": "won",
       "payout_units": 0.8772,
       "recorded_at": "2026-06-11T12:43:01",
-      "p_calibrated": 0.4945,
+      "p_calibrated": 0.5057,
       "outcome": {
         "final_score": "CHC 9 @ COL 3",
         "total_runs": 12,
@@ -27258,7 +27278,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-12T00:20:29",
-      "p_calibrated": 0.5428,
+      "p_calibrated": 0.556,
       "outcome": {
         "stat": "blocks",
         "actual": 0,
@@ -27283,7 +27303,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-12T00:20:29",
-      "p_calibrated": 0.5518,
+      "p_calibrated": 0.5644,
       "outcome": {
         "stat": "blocks",
         "actual": 1,
@@ -27682,7 +27702,7 @@
       "result": "won",
       "payout_units": 0.9524,
       "recorded_at": "2026-06-12T05:39:02",
-      "p_calibrated": 0.5214,
+      "p_calibrated": 0.5234,
       "outcome": {
         "final_score": "LAD 2 @ CHW 8",
         "total_runs": 10,
@@ -32237,7 +32257,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-13T02:47:51",
-      "p_calibrated": 0.5393,
+      "p_calibrated": 0.5342,
       "outcome": {
         "final_score": "LAD 7 @ CHW 1",
         "total_runs": 8,
@@ -35896,7 +35916,7 @@
       "result": "push",
       "payout_units": 0.0,
       "recorded_at": "2026-06-13T11:17:38",
-      "p_calibrated": 0.5494,
+      "p_calibrated": 0.5404,
       "outcome": {
         "final_score": "LAD 7 @ CHW 1",
         "total_runs": 8,
@@ -36106,7 +36126,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-13T18:07:27",
-      "p_calibrated": 0.5229,
+      "p_calibrated": 0.5244,
       "outcome": {
         "final_score": "LAD 7 @ CHW 1",
         "total_runs": 8,
@@ -39302,7 +39322,7 @@
       "result": "won",
       "payout_units": 0.495,
       "recorded_at": "2026-06-14T00:01:46",
-      "p_calibrated": 0.5428,
+      "p_calibrated": 0.556,
       "outcome": {
         "stat": "blocks",
         "actual": 2,
@@ -39327,7 +39347,7 @@
       "result": "won",
       "payout_units": 0.4032,
       "recorded_at": "2026-06-14T00:01:46",
-      "p_calibrated": 0.5518,
+      "p_calibrated": 0.5644,
       "outcome": {
         "stat": "blocks",
         "actual": 2,
@@ -40258,7 +40278,7 @@
       "result": "won",
       "payout_units": 0.9804,
       "recorded_at": "2026-06-14T05:30:05",
-      "p_calibrated": 0.5954,
+      "p_calibrated": 0.5874,
       "outcome": {
         "final_score": "LAD 4 @ CHW 6",
         "total_runs": 10,
@@ -40291,7 +40311,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-14T05:30:05",
-      "p_calibrated": 0.4801,
+      "p_calibrated": 0.4766,
       "outcome": {
         "final_score": "PHI 0 @ MIL 4",
         "total_runs": 4,
@@ -40483,7 +40503,7 @@
       "result": "push",
       "payout_units": 0.0,
       "recorded_at": "2026-06-14T12:06:41",
-      "p_calibrated": 0.5742,
+      "p_calibrated": 0.5618,
       "outcome": {
         "final_score": "LAD 4 @ CHW 6",
         "total_runs": 10,
@@ -40742,7 +40762,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-14T18:20:26",
-      "p_calibrated": 0.4801,
+      "p_calibrated": 0.4766,
       "outcome": {
         "final_score": "HOU 0 @ KC 4",
         "total_runs": 4,
@@ -40776,7 +40796,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-14T18:20:26",
-      "p_calibrated": 0.4801,
+      "p_calibrated": 0.4766,
       "outcome": {
         "final_score": "STL 4 @ MIN 5",
         "total_runs": 9,
@@ -43529,7 +43549,7 @@
       "result": "won",
       "payout_units": 0.91,
       "recorded_at": "2026-06-16T05:31:12",
-      "p_calibrated": 0.4801,
+      "p_calibrated": 0.4766,
       "outcome": {
         "final_score": "Haiti 0-3 Brazil",
         "total_cards": 4,
@@ -43560,7 +43580,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-06-16T06:28:09",
-      "p_calibrated": 0.5471,
+      "p_calibrated": 0.539,
       "outcome": {
         "final_score": "CHW 2 @ NYY 12",
         "total_runs": 14,
@@ -43583,7 +43603,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-06-16T06:28:09",
-      "p_calibrated": 0.6524,
+      "p_calibrated": 0.6513,
       "outcome": {
         "final_score": "COL 4 @ CHC 5",
         "total_runs": 9,
@@ -43786,7 +43806,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-16T15:29:49",
-      "p_calibrated": 0.4939,
+      "p_calibrated": 0.5043,
       "outcome": {
         "final_score": "COL 4 @ CHC 5",
         "total_runs": 9,
@@ -44225,7 +44245,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-16T23:28:42",
-      "p_calibrated": 0.4875,
+      "p_calibrated": 0.4913,
       "outcome": {
         "final_score": "CLE 1 @ MIL 2",
         "total_runs": 3,
@@ -44259,7 +44279,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-16T23:28:42",
-      "p_calibrated": 0.4801,
+      "p_calibrated": 0.4766,
       "outcome": {
         "final_score": "COL 4 @ CHC 5",
         "total_runs": 9,
@@ -44293,7 +44313,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-16T23:28:42",
-      "p_calibrated": 0.4801,
+      "p_calibrated": 0.4766,
       "outcome": {
         "final_score": "MIN 4 @ TEX 2",
         "total_runs": 6,
@@ -48932,7 +48952,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-06-17T03:26:15",
-      "p_calibrated": 0.4875,
+      "p_calibrated": 0.4913,
       "outcome": {
         "final_score": "CLE 4 @ MIL 9",
         "total_runs": 13,
@@ -48960,7 +48980,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-17T03:26:15",
-      "p_calibrated": 0.4801,
+      "p_calibrated": 0.4766,
       "outcome": {
         "final_score": "COL 5 @ CHC 2",
         "total_runs": 7,
@@ -48994,7 +49014,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-06-17T03:26:15",
-      "p_calibrated": 0.4801,
+      "p_calibrated": 0.4766,
       "outcome": {
         "final_score": "MIN 12 @ TEX 2",
         "total_runs": 14,
@@ -51700,7 +51720,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-17T05:45:59",
-      "p_calibrated": 0.4955,
+      "p_calibrated": 0.5078,
       "outcome": {
         "final_score": "TOR 3 @ BOS 0",
         "total_runs": 3,
@@ -51763,7 +51783,7 @@
       "result": "won",
       "payout_units": 0.9524,
       "recorded_at": "2026-06-17T05:45:59",
-      "p_calibrated": 0.6524,
+      "p_calibrated": 0.6513,
       "outcome": {
         "final_score": "CHW 5 @ NYY 10",
         "total_runs": 15,
@@ -52275,7 +52295,7 @@
       "result": "won",
       "payout_units": 0.9259,
       "recorded_at": "2026-06-17T23:26:55",
-      "p_calibrated": 0.4801,
+      "p_calibrated": 0.4766,
       "outcome": {
         "final_score": "CLE 4 @ MIL 9",
         "total_runs": 13,
@@ -54475,7 +54495,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-18T03:25:07",
-      "p_calibrated": 0.4801,
+      "p_calibrated": 0.4766,
       "outcome": {
         "final_score": "CLE 4 @ MIL 2",
         "total_runs": 6,
@@ -55698,7 +55718,7 @@
       "result": "won",
       "payout_units": 0.91,
       "recorded_at": "2026-06-18T05:08:48",
-      "p_calibrated": 0.4801,
+      "p_calibrated": 0.4766,
       "outcome": {
         "final_score": "Iraq 0-3 France",
         "total_cards": 1,
@@ -55829,7 +55849,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-18T05:36:24",
-      "p_calibrated": 0.4801,
+      "p_calibrated": 0.4766,
       "outcome": {
         "final_score": "CHW 5 @ NYY 1",
         "total_runs": 6,
@@ -58306,7 +58326,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-19T05:29:09",
-      "p_calibrated": 0.4801,
+      "p_calibrated": 0.4766,
       "outcome": {
         "final_score": "Congo DR 0-1 Colombia",
         "total_cards": 3,
@@ -58823,7 +58843,7 @@
       "result": "won",
       "payout_units": 0.7042,
       "recorded_at": "2026-06-19T12:50:51",
-      "p_calibrated": 0.4801,
+      "p_calibrated": 0.4766,
       "outcome": {
         "final_score": "TOR 2 @ CHC 16",
         "total_runs": 18,
@@ -62382,7 +62402,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-06-20T01:29:26",
-      "p_calibrated": 0.4848,
+      "p_calibrated": 0.4858,
       "outcome": {
         "final_score": "BAL 5 @ LAD 6",
         "total_runs": 11,
@@ -62407,7 +62427,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-20T01:29:26",
-      "p_calibrated": 0.4801,
+      "p_calibrated": 0.4766,
       "outcome": {
         "final_score": "PIT 3 @ COL 4",
         "total_runs": 7,
@@ -64277,7 +64297,7 @@
       "result": "won",
       "payout_units": 0.91,
       "recorded_at": "2026-06-20T04:44:20",
-      "p_calibrated": 0.4801,
+      "p_calibrated": 0.4766,
       "outcome": {
         "final_score": "Brazil 3-0 Scotland",
         "total_cards": 3,
@@ -64339,7 +64359,7 @@
       "result": "won",
       "payout_units": 0.91,
       "recorded_at": "2026-06-20T04:44:20",
-      "p_calibrated": 0.4801,
+      "p_calibrated": 0.4766,
       "outcome": {
         "final_score": "Haiti 2-4 Morocco",
         "total_cards": 3,
@@ -64372,7 +64392,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-20T05:07:39",
-      "p_calibrated": 0.4949,
+      "p_calibrated": 0.5064,
       "outcome": {
         "final_score": "CHW 1 @ DET 4",
         "total_runs": 5,
@@ -65997,7 +66017,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-20T22:03:45",
-      "p_calibrated": 0.4801,
+      "p_calibrated": 0.4766,
       "outcome": {
         "final_score": "PIT 3 @ COL 4",
         "total_runs": 7,
@@ -66031,7 +66051,7 @@
       "result": "won",
       "payout_units": 0.8772,
       "recorded_at": "2026-06-20T22:03:45",
-      "p_calibrated": 0.4801,
+      "p_calibrated": 0.4766,
       "outcome": {
         "final_score": "BAL 5 @ LAD 6",
         "total_runs": 11,
@@ -69508,7 +69528,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-06-21T00:02:05",
-      "p_calibrated": 0.4801,
+      "p_calibrated": 0.4766,
       "outcome": {
         "final_score": "PIT 8 @ COL 6",
         "total_runs": 14,
@@ -69575,7 +69595,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-06-21T00:02:05",
-      "p_calibrated": 0.4801,
+      "p_calibrated": 0.4766,
       "outcome": {
         "final_score": "BAL 12 @ LAD 1",
         "total_runs": 13,
@@ -72435,7 +72455,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-06-21T05:40:45",
-      "p_calibrated": 0.551,
+      "p_calibrated": 0.5413,
       "outcome": {
         "final_score": "PIT 8 @ COL 6",
         "total_runs": 14,
@@ -72585,7 +72605,7 @@
       "result": "won",
       "payout_units": 0.91,
       "recorded_at": "2026-06-21T10:08:07",
-      "p_calibrated": 0.4801,
+      "p_calibrated": 0.4766,
       "outcome": {
         "final_score": "Netherlands 3-1 Tunisia",
         "total_cards": 0,
@@ -72672,7 +72692,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-21T11:46:47",
-      "p_calibrated": 0.544,
+      "p_calibrated": 0.5371,
       "outcome": {
         "final_score": "CIN 4 @ NYY 1",
         "total_runs": 5,
@@ -72697,7 +72717,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-06-21T11:46:47",
-      "p_calibrated": 0.5424,
+      "p_calibrated": 0.5361,
       "outcome": {
         "final_score": "MIL 9 @ ATL 4",
         "total_runs": 13,
@@ -72898,7 +72918,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-21T15:59:24",
-      "p_calibrated": 0.4801,
+      "p_calibrated": 0.4766,
       "outcome": {
         "final_score": "CIN 4 @ NYY 1",
         "total_runs": 5,
@@ -72966,7 +72986,7 @@
       "result": "won",
       "payout_units": 1.01,
       "recorded_at": "2026-06-21T15:59:24",
-      "p_calibrated": 0.4801,
+      "p_calibrated": 0.4766,
       "outcome": {
         "final_score": "MIL 9 @ ATL 4",
         "total_runs": 13,
@@ -76417,7 +76437,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-22T06:22:34",
-      "p_calibrated": 0.6524,
+      "p_calibrated": 0.6513,
       "outcome": {
         "final_score": "LAD 2 @ MIN 1",
         "total_runs": 3,
@@ -76482,7 +76502,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-22T14:27:41",
-      "p_calibrated": 0.4845,
+      "p_calibrated": 0.4852,
       "outcome": {
         "final_score": "MIL 2 @ CIN 1",
         "total_runs": 3,
@@ -77230,7 +77250,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-22T23:24:30",
-      "p_calibrated": 0.4801,
+      "p_calibrated": 0.4766,
       "outcome": {
         "final_score": "ARI 2 @ STL 3",
         "total_runs": 5,
@@ -79529,7 +79549,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-23T00:20:18",
-      "p_calibrated": 0.4801,
+      "p_calibrated": 0.4766,
       "outcome": {
         "final_score": "ARI 4 @ STL 3",
         "total_runs": 7,
@@ -81137,7 +81157,7 @@
       "result": "won",
       "payout_units": 0.91,
       "recorded_at": "2026-06-23T04:33:16",
-      "p_calibrated": 0.4801,
+      "p_calibrated": 0.4766,
       "outcome": {
         "final_score": "Argentina 3-1 Jordan",
         "total_cards": 3,
@@ -81197,7 +81217,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-23T04:33:16",
-      "p_calibrated": 0.4801,
+      "p_calibrated": 0.4766,
       "outcome": {
         "final_score": "England 2-0 Panama",
         "total_cards": 3,
@@ -81259,7 +81279,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-23T11:52:12",
-      "p_calibrated": 0.6524,
+      "p_calibrated": 0.6513,
       "outcome": {
         "final_score": "BAL 6 @ LAA 1",
         "total_runs": 7,
@@ -84976,7 +84996,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-24T11:40:19",
-      "p_calibrated": 0.6524,
+      "p_calibrated": 0.6513,
       "outcome": {
         "final_score": "HOU 3 @ TOR 1",
         "total_runs": 4,
@@ -96665,7 +96685,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-06-27T09:07:59",
-      "p_calibrated": 0.4826,
+      "p_calibrated": 0.4814,
       "outcome": {
         "final_score": "COL 8 @ MIN 5",
         "total_runs": 13,
@@ -98295,7 +98315,7 @@
       "result": "won",
       "payout_units": 0.9259,
       "recorded_at": "2026-06-27T23:04:07",
-      "p_calibrated": 0.4801,
+      "p_calibrated": 0.4766,
       "outcome": {
         "final_score": "COL 8 @ MIN 5",
         "total_runs": 13,
@@ -102260,7 +102280,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-28T00:14:10",
-      "p_calibrated": 0.4801,
+      "p_calibrated": 0.4766,
       "outcome": {
         "final_score": "COL 2 @ MIN 3",
         "total_runs": 5,
@@ -106123,7 +106143,7 @@
       "result": "won",
       "payout_units": 0.91,
       "recorded_at": "2026-06-28T04:55:50",
-      "p_calibrated": 0.4801,
+      "p_calibrated": 0.4766,
       "outcome": {
         "final_score": "Austria 0-3 Spain",
         "total_cards": 1,
@@ -110119,7 +110139,7 @@
       "result": "won",
       "payout_units": 0.91,
       "recorded_at": "2026-06-29T05:02:47",
-      "p_calibrated": 0.4801,
+      "p_calibrated": 0.4766,
       "outcome": {
         "final_score": "Cape Verde 2-3 Argentina",
         "total_cards": 2,
@@ -114861,7 +114881,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-06-30T23:39:59",
-      "p_calibrated": 0.4801,
+      "p_calibrated": 0.4766,
       "outcome": {
         "final_score": "France 1-0 Paraguay",
         "total_cards": 3,
@@ -117073,7 +117093,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-07-01T08:46:39",
-      "p_calibrated": 0.6524,
+      "p_calibrated": 0.6513,
       "outcome": {
         "final_score": "CHW 1 @ BAL 6",
         "total_runs": 7,
@@ -118023,7 +118043,7 @@
       "result": "won",
       "payout_units": 0.9259,
       "recorded_at": "2026-07-02T05:02:29",
-      "p_calibrated": 0.537,
+      "p_calibrated": 0.5328,
       "outcome": {
         "final_score": "MIA 4 @ COL 14",
         "total_runs": 18,
@@ -121763,7 +121783,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-07-03T08:09:22",
-      "p_calibrated": 0.6524,
+      "p_calibrated": 0.6513,
       "outcome": {
         "final_score": "MIN 2 @ NYY 5",
         "total_runs": 7,
@@ -126324,7 +126344,7 @@
       "result": "won",
       "payout_units": 0.9524,
       "recorded_at": "2026-07-04T07:44:55",
-      "p_calibrated": 0.6524,
+      "p_calibrated": 0.6513,
       "outcome": {
         "final_score": "MIN 11 @ NYY 4",
         "total_runs": 15,
@@ -133987,7 +134007,7 @@
       "result": "won",
       "payout_units": 0.9524,
       "recorded_at": "2026-07-05T11:00:10",
-      "p_calibrated": 0.6524,
+      "p_calibrated": 0.6513,
       "outcome": {
         "final_score": "STL 4 @ CHC 6",
         "total_runs": 10,
@@ -139838,7 +139858,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-07-07T00:19:34",
-      "p_calibrated": 0.4806,
+      "p_calibrated": 0.4773,
       "outcome": {
         "final_score": "COL 7 @ LAD 8",
         "total_runs": 15,
@@ -141137,7 +141157,7 @@
       "result": "won",
       "payout_units": 0.8929,
       "recorded_at": "2026-07-07T12:40:18",
-      "p_calibrated": 0.6524,
+      "p_calibrated": 0.6513,
       "outcome": {
         "final_score": "COL 7 @ LAD 8",
         "total_runs": 15,
@@ -143468,7 +143488,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-07-08T01:10:36",
-      "p_calibrated": 0.4801,
+      "p_calibrated": 0.4766,
       "outcome": {
         "final_score": "COL 4 @ LAD 3",
         "total_runs": 7,
@@ -144063,7 +144083,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-07-08T10:31:45",
-      "p_calibrated": 0.5408,
+      "p_calibrated": 0.5352,
       "outcome": {
         "final_score": "CHC 9 @ BAL 7",
         "total_runs": 16,
@@ -144088,7 +144108,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-07-08T10:31:45",
-      "p_calibrated": 0.498,
+      "p_calibrated": 0.5093,
       "outcome": {
         "final_score": "ATL 3 @ PIT 0",
         "total_runs": 3,
@@ -144850,7 +144870,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-07-09T01:19:05",
-      "p_calibrated": 0.483,
+      "p_calibrated": 0.4821,
       "outcome": {
         "final_score": "COL 3 @ LAD 4",
         "total_runs": 7,
@@ -146916,7 +146936,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-07-09T23:12:12",
-      "p_calibrated": 0.4801,
+      "p_calibrated": 0.4766,
       "outcome": {
         "final_score": "LAA 13 @ TEX 1",
         "total_runs": 14,
@@ -147436,7 +147456,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-07-10T02:24:16",
-      "p_calibrated": 0.4801,
+      "p_calibrated": 0.4766,
       "outcome": {
         "final_score": "LAA 6 @ TEX 7",
         "total_runs": 13,
@@ -147651,7 +147671,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-07-10T09:55:48",
-      "p_calibrated": 0.5167,
+      "p_calibrated": 0.5206,
       "outcome": {
         "final_score": "COL 2 @ SF 8",
         "total_runs": 10,
@@ -147676,7 +147696,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-07-10T09:55:48",
-      "p_calibrated": 0.5136,
+      "p_calibrated": 0.5187,
       "outcome": {
         "final_score": "CHC 0 @ CIN 4",
         "total_runs": 4,
@@ -148488,7 +148508,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-07-11T01:06:37",
-      "p_calibrated": 0.537,
+      "p_calibrated": 0.5328,
       "outcome": {
         "final_score": "CHC 5 @ CIN 3",
         "total_runs": 8,
@@ -148601,7 +148621,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-07-11T07:07:37",
-      "p_calibrated": 0.6524,
+      "p_calibrated": 0.6513,
       "outcome": {
         "final_score": "COL 2 @ SF 4",
         "total_runs": 6,
@@ -149058,7 +149078,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-07-11T21:42:22",
-      "p_calibrated": 0.4801,
+      "p_calibrated": 0.4766,
       "outcome": {
         "final_score": "CHC 5 @ CIN 3",
         "total_runs": 8,
@@ -149443,7 +149463,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-07-12T01:44:36",
-      "p_calibrated": 0.5245,
+      "p_calibrated": 0.5253,
       "outcome": {
         "final_score": "LAA 2 @ MIN 4",
         "total_runs": 6,
@@ -149468,7 +149488,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-07-12T01:44:36",
-      "p_calibrated": 0.5167,
+      "p_calibrated": 0.5206,
       "outcome": {
         "final_score": "MIL 5 @ PIT 14",
         "total_runs": 19,
@@ -149581,7 +149601,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-07-12T06:28:16",
-      "p_calibrated": 0.5261,
+      "p_calibrated": 0.5262,
       "outcome": {
         "final_score": "CHC 8 @ CIN 4",
         "total_runs": 12,
@@ -154813,7 +154833,7 @@
       "result": "won",
       "payout_units": 0.9174,
       "recorded_at": "2026-07-19T07:28:03",
-      "p_calibrated": 0.5089,
+      "p_calibrated": 0.5159,
       "outcome": {
         "final_score": "MIN 1 @ CHC 10",
         "total_runs": 11,
@@ -154845,7 +154865,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-07-19T07:28:03",
-      "p_calibrated": 0.6524,
+      "p_calibrated": 0.6513,
       "outcome": {
         "final_score": "LAD 8 @ NYY 2",
         "total_runs": 10,
@@ -155801,7 +155821,7 @@
       "result": "won",
       "payout_units": 0.8929,
       "recorded_at": "2026-07-19T14:20:41",
-      "p_calibrated": 0.5432,
+      "p_calibrated": 0.5366,
       "outcome": {
         "final_score": "CIN 9 @ COL 6",
         "total_runs": 15,
@@ -155835,7 +155855,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-07-19T15:01:46",
-      "p_calibrated": 0.5027,
+      "p_calibrated": 0.5121,
       "outcome": {
         "final_score": "MIA 1 @ MIL 3",
         "total_runs": 4,
@@ -157280,7 +157300,7 @@
       "result": "won",
       "payout_units": 0.8475,
       "recorded_at": "2026-07-21T07:31:23",
-      "p_calibrated": 0.4801,
+      "p_calibrated": 0.4766,
       "outcome": {
         "final_score": "CHW 10 @ TEX 3",
         "total_runs": 13,
@@ -157339,7 +157359,7 @@
       "result": "won",
       "payout_units": 0.8929,
       "recorded_at": "2026-07-21T15:51:14",
-      "p_calibrated": 0.4848,
+      "p_calibrated": 0.4858,
       "outcome": {
         "final_score": "DET 8 @ CHC 6",
         "total_runs": 14,
@@ -157398,7 +157418,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-07-21T21:54:32",
-      "p_calibrated": 0.5011,
+      "p_calibrated": 0.5112,
       "outcome": {
         "final_score": "MIA 5 @ HOU 8",
         "total_runs": 13,
@@ -159016,7 +159036,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-07-22T10:35:36",
-      "p_calibrated": 0.57,
+      "p_calibrated": 0.5566,
       "outcome": {
         "final_score": "PIT 5 @ NYY 3",
         "total_runs": 8,
@@ -159252,7 +159272,7 @@
       "result": "won",
       "payout_units": 0.9346,
       "recorded_at": "2026-07-22T15:55:39",
-      "p_calibrated": 0.5572,
+      "p_calibrated": 0.5451,
       "outcome": {
         "final_score": "LAD 9 @ PHI 5",
         "total_runs": 14,
@@ -159702,7 +159722,7 @@
       "result": "won",
       "payout_units": 0.9174,
       "recorded_at": "2026-07-22T23:02:31",
-      "p_calibrated": 0.4801,
+      "p_calibrated": 0.4766,
       "outcome": {
         "final_score": "DET 2 @ CHC 11",
         "total_runs": 13,
@@ -160604,7 +160624,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-07-23T07:23:09",
-      "p_calibrated": 0.4801,
+      "p_calibrated": 0.4766,
       "outcome": {
         "final_score": "MIN 3 @ CLE 1",
         "total_runs": 4,
@@ -161799,7 +161819,7 @@
       "result": "won",
       "payout_units": 0.9804,
       "recorded_at": "2026-07-23T15:08:33",
-      "p_calibrated": 0.4801,
+      "p_calibrated": 0.4766,
       "outcome": {
         "final_score": "ARI 10 @ STL 6",
         "total_runs": 16,
@@ -162740,7 +162760,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-07-24T07:23:55",
-      "p_calibrated": 0.5719,
+      "p_calibrated": 0.5589,
       "outcome": {
         "final_score": "COL 5 @ MIL 2",
         "total_runs": 7,
@@ -163662,7 +163682,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-07-24T23:06:40",
-      "p_calibrated": 0.483,
+      "p_calibrated": 0.4821,
       "outcome": {
         "final_score": "HOU 9 @ CHW 5",
         "total_runs": 14,
@@ -164538,7 +164558,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-07-25T07:10:52",
-      "p_calibrated": 0.5709,
+      "p_calibrated": 0.5578,
       "outcome": {
         "final_score": "HOU 4 @ CHW 1",
         "total_runs": 5,
@@ -164713,7 +164733,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-07-25T14:24:33",
-      "p_calibrated": 0.5716,
+      "p_calibrated": 0.5585,
       "outcome": {
         "final_score": "CHC 11 @ PIT 0",
         "total_runs": 11,
@@ -164738,7 +164758,7 @@
       "result": "won",
       "payout_units": 0.9346,
       "recorded_at": "2026-07-25T15:14:10",
-      "p_calibrated": 0.4918,
+      "p_calibrated": 0.5002,
       "outcome": {
         "final_score": "COL 5 @ MIL 8",
         "total_runs": 13,
@@ -165834,7 +165854,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-07-25T23:01:12",
-      "p_calibrated": 0.4887,
+      "p_calibrated": 0.4937,
       "outcome": {
         "final_score": "HOU 4 @ CHW 1",
         "total_runs": 5,
@@ -166916,7 +166936,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-07-26T07:25:44",
-      "p_calibrated": 0.5789,
+      "p_calibrated": 0.5675,
       "outcome": {
         "final_score": "HOU 3 @ CHW 12",
         "total_runs": 15,
@@ -166941,7 +166961,7 @@
       "result": "won",
       "payout_units": 0.8403,
       "recorded_at": "2026-07-26T07:25:44",
-      "p_calibrated": 0.5714,
+      "p_calibrated": 0.5584,
       "outcome": {
         "final_score": "COL 2 @ MIL 11",
         "total_runs": 13,
@@ -166975,7 +166995,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-07-26T07:25:44",
-      "p_calibrated": 0.568,
+      "p_calibrated": 0.5542,
       "outcome": {
         "final_score": "CHC 7 @ PIT 8",
         "total_runs": 15,
@@ -169169,7 +169189,7 @@
       "result": "won",
       "payout_units": 0.9524,
       "recorded_at": "2026-07-27T15:39:31",
-      "p_calibrated": 0.4801,
+      "p_calibrated": 0.4766,
       "outcome": {
         "final_score": "NYY 9 @ CHW 5",
         "total_runs": 14,
@@ -169951,7 +169971,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-07-28T07:32:07",
-      "p_calibrated": 0.5739,
+      "p_calibrated": 0.5614,
       "outcome": {
         "final_score": "NYY 3 @ CHW 2",
         "total_runs": 5,
@@ -170547,7 +170567,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-07-28T23:02:21",
-      "p_calibrated": 0.4908,
+      "p_calibrated": 0.4982,
       "outcome": {
         "final_score": "CHC 10 @ STL 2",
         "total_runs": 12,
@@ -171454,7 +171474,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-07-29T07:38:06",
-      "p_calibrated": 0.5741,
+      "p_calibrated": 0.5616,
       "outcome": {
         "final_score": "ARI 3 @ PIT 0",
         "total_runs": 3,
@@ -171479,7 +171499,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-07-29T07:38:06",
-      "p_calibrated": 0.5723,
+      "p_calibrated": 0.5595,
       "outcome": {
         "final_score": "ATL 2 @ NYM 3",
         "total_runs": 5,
@@ -174186,7 +174206,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-07-30T07:28:13",
-      "p_calibrated": 0.4843,
+      "p_calibrated": 0.4848,
       "outcome": {
         "final_score": "CHC 4 @ STL 2",
         "total_runs": 6,
@@ -174487,7 +174507,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-07-30T15:09:41",
-      "p_calibrated": 0.4804,
+      "p_calibrated": 0.4769,
       "outcome": {
         "final_score": "PIT 2 @ CIN 3",
         "total_runs": 5,
@@ -174521,7 +174541,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-07-30T15:09:41",
-      "p_calibrated": 0.4801,
+      "p_calibrated": 0.4766,
       "outcome": {
         "final_score": "NYY 1 @ CHW 2",
         "total_runs": 3,
@@ -174555,7 +174575,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-07-30T15:09:41",
-      "p_calibrated": 0.4801,
+      "p_calibrated": 0.4766,
       "outcome": {
         "final_score": "CHC 4 @ STL 2",
         "total_runs": 6,
@@ -175938,7 +175958,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-07-30T23:06:18",
-      "p_calibrated": 0.5082,
+      "p_calibrated": 0.5154,
       "outcome": {
         "final_score": "PIT 2 @ CIN 3",
         "total_runs": 5,
@@ -178735,7 +178755,7 @@
       "result": "won",
       "payout_units": 0.9804,
       "recorded_at": "2026-08-01T10:12:24",
-      "p_calibrated": 0.4853,
+      "p_calibrated": 0.4869,
       "outcome": {
         "final_score": "NYY 2 @ CHC 5",
         "total_runs": 7,
@@ -182565,7 +182585,7 @@
       "result": "won",
       "payout_units": 0.8197,
       "recorded_at": "2026-08-02T07:24:46",
-      "p_calibrated": 0.5229,
+      "p_calibrated": 0.5244,
       "outcome": {
         "final_score": "PIT 2 @ CIN 10",
         "total_runs": 12,
@@ -182633,7 +182653,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-02T10:11:10",
-      "p_calibrated": 0.565,
+      "p_calibrated": 0.5506,
       "outcome": {
         "final_score": "NYY 2 @ CHC 1",
         "total_runs": 3,
@@ -184206,7 +184226,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-03T08:17:12",
-      "p_calibrated": 0.5393,
+      "p_calibrated": 0.5342,
       "outcome": {
         "final_score": "PIT 4 @ MIL 3",
         "total_runs": 7,
@@ -184231,7 +184251,7 @@
       "result": "push",
       "payout_units": 0.0,
       "recorded_at": "2026-08-03T15:46:53",
-      "p_calibrated": 0.5338,
+      "p_calibrated": 0.5309,
       "voided": false,
       "outcome": {
         "final_score": "WSH 3 @ PHI 6",
@@ -184722,7 +184742,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-03T23:30:21",
-      "p_calibrated": 0.4905,
+      "p_calibrated": 0.4975,
       "outcome": {
         "final_score": "PIT 4 @ MIL 3",
         "total_runs": 7,
@@ -185620,7 +185640,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-04T07:33:48",
-      "p_calibrated": 0.4831,
+      "p_calibrated": 0.4824,
       "outcome": {
         "final_score": "LAA 1 @ BAL 3",
         "total_runs": 4,
@@ -185643,7 +185663,7 @@
       "result": "push",
       "payout_units": 0.0,
       "recorded_at": "2026-08-04T07:33:48",
-      "p_calibrated": 0.6524,
+      "p_calibrated": 0.6513,
       "voided": false,
       "outcome": {
         "final_score": "ATH 4 @ CIN 5",
@@ -185720,7 +185740,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-04T17:38:53",
-      "p_calibrated": 0.4801,
+      "p_calibrated": 0.4766,
       "outcome": {
         "final_score": "PIT 2 @ MIL 4",
         "total_runs": 6,
@@ -185745,7 +185765,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-04T19:11:24",
-      "p_calibrated": 0.4801,
+      "p_calibrated": 0.4766,
       "outcome": {
         "final_score": "LAA 1 @ BAL 3",
         "total_runs": 4,
@@ -185845,7 +185865,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-04T22:57:18",
-      "p_calibrated": 0.5253,
+      "p_calibrated": 0.5258,
       "voided": false,
       "outcome": {
         "final_score": "ATH 4 @ CIN 5",
@@ -186003,7 +186023,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-08-05T06:45:36",
-      "p_calibrated": 0.5019,
+      "p_calibrated": 0.5116,
       "voided": false,
       "outcome": {
         "final_score": "WSH 10 @ PHI 4",
@@ -186053,7 +186073,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-08-05T08:07:32",
-      "p_calibrated": 0.49,
+      "p_calibrated": 0.4965,
       "outcome": {
         "final_score": "LAD 6 @ CHC 7",
         "total_runs": 13,
@@ -186078,7 +186098,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-05T17:23:35",
-      "p_calibrated": 0.4801,
+      "p_calibrated": 0.4766,
       "outcome": {
         "final_score": "MIN 1 @ KC 2",
         "total_runs": 3,
@@ -186128,7 +186148,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-05T23:25:54",
-      "p_calibrated": 0.4801,
+      "p_calibrated": 0.4766,
       "outcome": {
         "final_score": "MIN 1 @ KC 2",
         "total_runs": 3,
@@ -186205,7 +186225,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-06T05:16:57",
-      "p_calibrated": 0.4801,
+      "p_calibrated": 0.4766,
       "outcome": {
         "final_score": "LAA 4 @ BAL 1",
         "total_runs": 5,
@@ -186296,7 +186316,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-07T03:38:05",
-      "p_calibrated": 0.6524,
+      "p_calibrated": 0.6513,
       "outcome": {
         "final_score": "LAA 4 @ MIA 3",
         "total_runs": 7,
@@ -186423,7 +186443,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-07T17:03:58",
-      "p_calibrated": 0.5082,
+      "p_calibrated": 0.5154,
       "outcome": {
         "final_score": "LAA 4 @ MIA 3",
         "total_runs": 7,
@@ -186457,7 +186477,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-07T22:57:41",
-      "p_calibrated": 0.5191,
+      "p_calibrated": 0.522,
       "outcome": {
         "final_score": "LAA 4 @ MIA 3",
         "total_runs": 7,
@@ -193484,7 +193504,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-09T06:28:09",
-      "p_calibrated": 0.6524,
+      "p_calibrated": 0.6513,
       "voided": false,
       "outcome": {
         "final_score": "CIN 1 @ WSH 7",
@@ -198531,7 +198551,7 @@
       "result": "won",
       "payout_units": 0.9346,
       "recorded_at": "2026-08-11T06:00:19",
-      "p_calibrated": 0.6524,
+      "p_calibrated": 0.6513,
       "voided": false,
       "outcome": {
         "final_score": "CHC 8 @ WSH 6",
@@ -208927,7 +208947,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-13T06:15:36",
-      "p_calibrated": 0.6524,
+      "p_calibrated": 0.6513,
       "outcome": {
         "final_score": "CHC 0 @ WSH 7",
         "total_runs": 7,
@@ -215293,7 +215313,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-15T05:12:23",
-      "p_calibrated": 0.4801,
+      "p_calibrated": 0.4766,
       "outcome": {
         "final_score": "BOS 4 @ PIT 0",
         "total_runs": 4,
@@ -215327,7 +215347,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-15T05:12:23",
-      "p_calibrated": 0.4801,
+      "p_calibrated": 0.4766,
       "outcome": {
         "final_score": "CHW 4 @ DET 3",
         "total_runs": 7,
@@ -215359,7 +215379,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-15T05:12:23",
-      "p_calibrated": 0.6524,
+      "p_calibrated": 0.6513,
       "also_sources": [
         "top_25_board"
       ],
@@ -215571,7 +215591,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-15T13:26:57",
-      "p_calibrated": 0.4801,
+      "p_calibrated": 0.4766,
       "outcome": {
         "final_score": "CHW 4 @ DET 3",
         "total_runs": 7,
@@ -220548,7 +220568,7 @@
       "result": "won",
       "payout_units": 0.8696,
       "recorded_at": "2026-08-16T05:18:11",
-      "p_calibrated": 0.6524,
+      "p_calibrated": 0.6513,
       "outcome": {
         "final_score": "BOS 3 @ PIT 8",
         "total_runs": 11,
@@ -225768,7 +225788,7 @@
       "result": "won",
       "payout_units": 0.8547,
       "recorded_at": "2026-08-18T05:16:51",
-      "p_calibrated": 0.6524,
+      "p_calibrated": 0.6513,
       "outcome": {
         "final_score": "LAD 11 @ COL 5",
         "total_runs": 16,
@@ -232289,7 +232309,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-19T05:54:12",
-      "p_calibrated": 0.6524,
+      "p_calibrated": 0.6513,
       "outcome": {
         "final_score": "LAD 6 @ COL 4",
         "total_runs": 10,
@@ -238165,7 +238185,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-20T14:44:59",
-      "p_calibrated": 0.4801,
+      "p_calibrated": 0.4766,
       "outcome": {
         "final_score": "TOR 5 @ TB 1",
         "total_runs": 6,
@@ -245799,7 +245819,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-22T05:20:27",
-      "p_calibrated": 0.6524,
+      "p_calibrated": 0.6513,
       "outcome": {
         "final_score": "ATH 0 @ HOU 4",
         "total_runs": 4,
@@ -250812,7 +250832,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-08-23T05:21:18",
-      "p_calibrated": 0.6524,
+      "p_calibrated": 0.6513,
       "outcome": {
         "final_score": "CLE 7 @ COL 2",
         "total_runs": 9,
@@ -252236,7 +252256,7 @@
       "result": "won",
       "payout_units": 0.8929,
       "recorded_at": "2026-08-24T05:41:23",
-      "p_calibrated": 0.6524,
+      "p_calibrated": 0.6513,
       "outcome": {
         "final_score": "COL 3 @ WSH 13",
         "total_runs": 16,
@@ -255721,7 +255741,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-25T05:46:07",
-      "p_calibrated": 0.6524,
+      "p_calibrated": 0.6513,
       "outcome": {
         "final_score": "COL 3 @ WSH 1",
         "total_runs": 4,
@@ -264175,7 +264195,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-30T07:24:17",
-      "p_calibrated": 0.6524,
+      "p_calibrated": 0.6513,
       "outcome": {
         "final_score": "COL 2 @ ATL 3",
         "total_runs": 5,
@@ -264201,7 +264221,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-08-31T05:30:07",
-      "p_calibrated": 0.6524,
+      "p_calibrated": 0.6513,
       "outcome": {
         "final_score": "BAL 2 @ COL 1",
         "total_runs": 3,
@@ -264970,7 +264990,7 @@
       "result": "push",
       "payout_units": 0.0,
       "recorded_at": "2026-09-02T06:06:19",
-      "p_calibrated": 0.6524,
+      "p_calibrated": 0.6513,
       "outcome": {
         "final_score": "ATL 9 @ WSH 0",
         "total_runs": 9,
@@ -269306,7 +269326,7 @@
       "result": "won",
       "payout_units": 0.8333,
       "recorded_at": "2026-09-04T13:16:44",
-      "p_calibrated": 0.6524,
+      "p_calibrated": 0.6513,
       "outcome": {
         "final_score": "ATH 7 @ SEA 6",
         "total_runs": 13,
@@ -269584,7 +269604,7 @@
       "result": "won",
       "payout_units": 0.6944,
       "recorded_at": "2026-09-04T23:47:20",
-      "p_calibrated": 0.4801,
+      "p_calibrated": 0.4766,
       "outcome": {
         "final_score": "ATH 7 @ SEA 6",
         "total_runs": 13,
@@ -270950,7 +270970,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-05T12:13:46",
-      "p_calibrated": 0.6524,
+      "p_calibrated": 0.6513,
       "outcome": {
         "final_score": "ARI 4 @ HOU 3",
         "total_runs": 7,
@@ -273349,7 +273369,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-09-06T12:37:34",
-      "p_calibrated": 0.6524,
+      "p_calibrated": 0.6513,
       "outcome": {
         "final_score": "MIL 8 @ CIN 12",
         "total_runs": 20,
@@ -276811,7 +276831,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-07T14:40:16",
-      "p_calibrated": 0.6524,
+      "p_calibrated": 0.6513,
       "outcome": {
         "final_score": "CHC 3 @ MIL 4",
         "total_runs": 7,
@@ -293739,7 +293759,7 @@
       "result": "won",
       "payout_units": 0.8403,
       "recorded_at": "2026-09-11T13:20:42",
-      "p_calibrated": 0.6524,
+      "p_calibrated": 0.6513,
       "outcome": {
         "final_score": "PIT 2 @ CHC 12",
         "total_runs": 14,
@@ -296956,7 +296976,7 @@
       "result": "won",
       "payout_units": 0.8772,
       "recorded_at": "2026-09-12T12:32:40",
-      "p_calibrated": 0.6524,
+      "p_calibrated": 0.6513,
       "outcome": {
         "final_score": "NYM 12 @ NYY 2",
         "total_runs": 14,
@@ -298353,7 +298373,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-09-13T05:43:28",
-      "p_calibrated": 0.6524,
+      "p_calibrated": 0.6513,
       "outcome": {
         "final_score": "PIT 4 @ CHC 3",
         "total_runs": 7,
@@ -302868,7 +302888,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-09-16T00:27:50",
-      "p_calibrated": 0.718,
+      "p_calibrated": 0.6887,
       "voided": true,
       "voided_at": "2026-10-23T00:24:03",
       "voided_reason": "preseason: picks made before the 2026-09-29 NHL opener priced preseason lineups off season-baseline rates"
@@ -302888,7 +302908,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-09-16T00:27:50",
-      "p_calibrated": 0.718,
+      "p_calibrated": 0.6887,
       "voided": true,
       "voided_at": "2026-10-23T00:24:03",
       "voided_reason": "preseason: picks made before the 2026-09-29 NHL opener priced preseason lineups off season-baseline rates"
@@ -302908,7 +302928,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-09-16T00:27:50",
-      "p_calibrated": 0.718,
+      "p_calibrated": 0.6887,
       "voided": true,
       "voided_at": "2026-10-23T00:24:03",
       "voided_reason": "preseason: picks made before the 2026-09-29 NHL opener priced preseason lineups off season-baseline rates"
@@ -302928,7 +302948,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-09-16T00:27:50",
-      "p_calibrated": 0.718,
+      "p_calibrated": 0.6887,
       "voided": true,
       "voided_at": "2026-10-23T00:24:03",
       "voided_reason": "preseason: picks made before the 2026-09-29 NHL opener priced preseason lineups off season-baseline rates"
@@ -302948,7 +302968,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-09-16T00:27:50",
-      "p_calibrated": 0.718,
+      "p_calibrated": 0.6887,
       "voided": true,
       "voided_at": "2026-10-23T00:24:03",
       "voided_reason": "preseason: picks made before the 2026-09-29 NHL opener priced preseason lineups off season-baseline rates"
@@ -302968,7 +302988,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-09-16T00:27:50",
-      "p_calibrated": 0.718,
+      "p_calibrated": 0.6887,
       "voided": true,
       "voided_at": "2026-10-23T00:24:03",
       "voided_reason": "preseason: picks made before the 2026-09-29 NHL opener priced preseason lineups off season-baseline rates"
@@ -302988,7 +303008,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-09-16T00:27:50",
-      "p_calibrated": 0.718,
+      "p_calibrated": 0.6887,
       "voided": true,
       "voided_at": "2026-10-23T00:24:03",
       "voided_reason": "preseason: picks made before the 2026-09-29 NHL opener priced preseason lineups off season-baseline rates"
@@ -303008,7 +303028,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-09-16T00:27:50",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-23T00:24:03",
       "voided_reason": "preseason: picks made before the 2026-09-29 NHL opener priced preseason lineups off season-baseline rates"
@@ -303028,7 +303048,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-09-16T00:27:50",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-23T00:24:03",
       "voided_reason": "preseason: picks made before the 2026-09-29 NHL opener priced preseason lineups off season-baseline rates"
@@ -303048,7 +303068,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-09-16T00:27:50",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-23T00:24:03",
       "voided_reason": "preseason: picks made before the 2026-09-29 NHL opener priced preseason lineups off season-baseline rates"
@@ -303068,7 +303088,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-09-16T00:27:50",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-23T00:24:03",
       "voided_reason": "preseason: picks made before the 2026-09-29 NHL opener priced preseason lineups off season-baseline rates"
@@ -303088,7 +303108,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-09-16T00:27:50",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-23T00:24:03",
       "voided_reason": "preseason: picks made before the 2026-09-29 NHL opener priced preseason lineups off season-baseline rates"
@@ -303108,7 +303128,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-09-16T00:27:50",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-23T00:24:03",
       "voided_reason": "preseason: picks made before the 2026-09-29 NHL opener priced preseason lineups off season-baseline rates"
@@ -303128,7 +303148,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-09-16T00:27:50",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-23T00:24:03",
       "voided_reason": "preseason: picks made before the 2026-09-29 NHL opener priced preseason lineups off season-baseline rates"
@@ -303208,7 +303228,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-09-16T00:27:50",
-      "p_calibrated": 0.5518,
+      "p_calibrated": 0.5644,
       "voided": true,
       "voided_at": "2026-10-23T00:24:03",
       "voided_reason": "preseason: picks made before the 2026-09-29 NHL opener priced preseason lineups off season-baseline rates"
@@ -303228,7 +303248,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-09-16T00:27:50",
-      "p_calibrated": 0.5518,
+      "p_calibrated": 0.5644,
       "voided": true,
       "voided_at": "2026-10-23T00:24:03",
       "voided_reason": "preseason: picks made before the 2026-09-29 NHL opener priced preseason lineups off season-baseline rates"
@@ -303248,7 +303268,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-09-16T00:27:50",
-      "p_calibrated": 0.5428,
+      "p_calibrated": 0.556,
       "voided": true,
       "voided_at": "2026-10-23T00:24:03",
       "voided_reason": "preseason: picks made before the 2026-09-29 NHL opener priced preseason lineups off season-baseline rates"
@@ -303268,7 +303288,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-09-16T00:27:50",
-      "p_calibrated": 0.5379,
+      "p_calibrated": 0.5514,
       "voided": true,
       "voided_at": "2026-10-23T00:24:03",
       "voided_reason": "preseason: picks made before the 2026-09-29 NHL opener priced preseason lineups off season-baseline rates"
@@ -303288,7 +303308,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-09-16T00:27:50",
-      "p_calibrated": 0.5518,
+      "p_calibrated": 0.5644,
       "voided": true,
       "voided_at": "2026-10-23T00:24:03",
       "voided_reason": "preseason: picks made before the 2026-09-29 NHL opener priced preseason lineups off season-baseline rates"
@@ -303308,7 +303328,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-09-16T00:27:50",
-      "p_calibrated": 0.5276,
+      "p_calibrated": 0.5417,
       "voided": true,
       "voided_at": "2026-10-23T00:24:03",
       "voided_reason": "preseason: picks made before the 2026-09-29 NHL opener priced preseason lineups off season-baseline rates"
@@ -318487,7 +318507,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-09-17T00:11:49",
-      "p_calibrated": 0.6524,
+      "p_calibrated": 0.6513,
       "outcome": {
         "final_score": "LAD 8 @ CIN 2",
         "total_runs": 10,
@@ -324054,7 +324074,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-09-18T00:34:13",
-      "p_calibrated": 0.6524,
+      "p_calibrated": 0.6513,
       "outcome": {
         "final_score": "PHI 3 @ NYM 6",
         "total_runs": 9,
@@ -331401,7 +331421,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-09-20T00:23:37",
-      "p_calibrated": 0.6524,
+      "p_calibrated": 0.6513,
       "outcome": {
         "final_score": "CHC 9 @ CIN 1",
         "total_runs": 10,
@@ -333030,7 +333050,7 @@
       "result": "won",
       "payout_units": 0.3922,
       "recorded_at": "2026-09-20T18:25:38",
-      "p_calibrated": 0.718,
+      "p_calibrated": 0.6887,
       "outcome": {
         "final_score": "NYI 1 @ NJ 2",
         "side": "away",
@@ -333058,7 +333078,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-20T18:25:38",
-      "p_calibrated": 0.718,
+      "p_calibrated": 0.6887,
       "outcome": {
         "final_score": "SJ 2 @ ANA 6",
         "side": "away",
@@ -333086,7 +333106,7 @@
       "result": "won",
       "payout_units": 0.3922,
       "recorded_at": "2026-09-20T18:25:38",
-      "p_calibrated": 0.718,
+      "p_calibrated": 0.6887,
       "outcome": {
         "final_score": "WSH 2 @ BOS 3",
         "side": "away",
@@ -333114,7 +333134,7 @@
       "result": "won",
       "payout_units": 0.3922,
       "recorded_at": "2026-09-20T18:25:38",
-      "p_calibrated": 0.718,
+      "p_calibrated": 0.6887,
       "outcome": {
         "final_score": "NSH 1 @ TB 2",
         "side": "away",
@@ -333142,7 +333162,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-20T18:25:38",
-      "p_calibrated": 0.718,
+      "p_calibrated": 0.6887,
       "outcome": {
         "final_score": "UTA 1 @ COL 4",
         "side": "away",
@@ -333170,7 +333190,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-20T18:25:38",
-      "p_calibrated": 0.718,
+      "p_calibrated": 0.6887,
       "outcome": {
         "final_score": "CAR 3 @ FLA 6",
         "side": "away",
@@ -333198,7 +333218,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-20T18:25:38",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-23T00:24:03",
       "voided_reason": "preseason: picks made before the 2026-09-29 NHL opener priced preseason lineups off season-baseline rates",
@@ -333226,7 +333246,7 @@
       "result": "won",
       "payout_units": 0.5747,
       "recorded_at": "2026-09-20T18:25:38",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-23T00:24:03",
       "voided_reason": "preseason: picks made before the 2026-09-29 NHL opener priced preseason lineups off season-baseline rates",
@@ -333254,7 +333274,7 @@
       "result": "won",
       "payout_units": 0.5747,
       "recorded_at": "2026-09-20T18:25:38",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-23T00:24:03",
       "voided_reason": "preseason: picks made before the 2026-09-29 NHL opener priced preseason lineups off season-baseline rates",
@@ -333282,7 +333302,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-20T18:25:38",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-23T00:24:03",
       "voided_reason": "preseason: picks made before the 2026-09-29 NHL opener priced preseason lineups off season-baseline rates",
@@ -333310,7 +333330,7 @@
       "result": "won",
       "payout_units": 0.5747,
       "recorded_at": "2026-09-20T18:25:38",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-23T00:24:03",
       "voided_reason": "preseason: picks made before the 2026-09-29 NHL opener priced preseason lineups off season-baseline rates",
@@ -333338,7 +333358,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-20T18:25:38",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-23T00:24:03",
       "voided_reason": "preseason: picks made before the 2026-09-29 NHL opener priced preseason lineups off season-baseline rates",
@@ -333366,7 +333386,7 @@
       "result": "won",
       "payout_units": 0.5747,
       "recorded_at": "2026-09-20T18:25:38",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-23T00:24:03",
       "voided_reason": "preseason: picks made before the 2026-09-29 NHL opener priced preseason lineups off season-baseline rates",
@@ -333394,7 +333414,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-09-20T18:25:38",
-      "p_calibrated": 0.5276,
+      "p_calibrated": 0.5417,
       "voided": true,
       "voided_at": "2026-10-23T00:24:03",
       "voided_reason": "preseason: picks made before the 2026-09-29 NHL opener priced preseason lineups off season-baseline rates"
@@ -333442,7 +333462,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-20T18:25:38",
-      "p_calibrated": 0.5379,
+      "p_calibrated": 0.5514,
       "voided": true,
       "voided_at": "2026-10-23T00:24:03",
       "voided_reason": "preseason: picks made before the 2026-09-29 NHL opener priced preseason lineups off season-baseline rates",
@@ -333546,7 +333566,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-20T18:25:38",
-      "p_calibrated": 0.5379,
+      "p_calibrated": 0.5514,
       "outcome": {
         "stat": "blocks",
         "actual": 0,
@@ -333574,7 +333594,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-09-20T18:25:38",
-      "p_calibrated": 0.5518,
+      "p_calibrated": 0.5644,
       "voided": true,
       "voided_at": "2026-10-23T00:24:03",
       "voided_reason": "preseason: picks made before the 2026-09-29 NHL opener priced preseason lineups off season-baseline rates"
@@ -336139,7 +336159,7 @@
       "result": "won",
       "payout_units": 0.8475,
       "recorded_at": "2026-09-21T15:32:46",
-      "p_calibrated": 0.6159,
+      "p_calibrated": 0.6123,
       "outcome": {
         "final_score": "WSH 2 @ DET 9",
         "total_runs": 11,
@@ -336230,7 +336250,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-21T19:21:06",
-      "p_calibrated": 0.718,
+      "p_calibrated": 0.6887,
       "outcome": {
         "final_score": "PHI 2 @ WSH 5",
         "side": "away",
@@ -336258,7 +336278,7 @@
       "result": "won",
       "payout_units": 0.3922,
       "recorded_at": "2026-09-21T19:21:06",
-      "p_calibrated": 0.718,
+      "p_calibrated": 0.6887,
       "outcome": {
         "final_score": "DET 0 @ CBJ 1",
         "side": "away",
@@ -336286,7 +336306,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-21T19:21:06",
-      "p_calibrated": 0.718,
+      "p_calibrated": 0.6887,
       "outcome": {
         "final_score": "BUF 1 @ PIT 4",
         "side": "away",
@@ -336444,7 +336464,7 @@
       "result": "won",
       "payout_units": 0.5747,
       "recorded_at": "2026-09-21T19:21:06",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-23T00:24:03",
       "voided_reason": "preseason: picks made before the 2026-09-29 NHL opener priced preseason lineups off season-baseline rates",
@@ -336472,7 +336492,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-21T19:21:06",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-23T00:24:03",
       "voided_reason": "preseason: picks made before the 2026-09-29 NHL opener priced preseason lineups off season-baseline rates",
@@ -336500,7 +336520,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-21T19:21:06",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-23T00:24:03",
       "voided_reason": "preseason: picks made before the 2026-09-29 NHL opener priced preseason lineups off season-baseline rates",
@@ -336528,7 +336548,7 @@
       "result": "won",
       "payout_units": 0.5747,
       "recorded_at": "2026-09-21T19:21:06",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-23T00:24:03",
       "voided_reason": "preseason: picks made before the 2026-09-29 NHL opener priced preseason lineups off season-baseline rates",
@@ -336556,7 +336576,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-21T19:21:06",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-23T00:24:03",
       "voided_reason": "preseason: picks made before the 2026-09-29 NHL opener priced preseason lineups off season-baseline rates",
@@ -336584,7 +336604,7 @@
       "result": "won",
       "payout_units": 0.5747,
       "recorded_at": "2026-09-21T19:21:06",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-23T00:24:03",
       "voided_reason": "preseason: picks made before the 2026-09-29 NHL opener priced preseason lineups off season-baseline rates",
@@ -336612,7 +336632,7 @@
       "result": "won",
       "payout_units": 0.5747,
       "recorded_at": "2026-09-21T19:21:06",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-23T00:24:03",
       "voided_reason": "preseason: picks made before the 2026-09-29 NHL opener priced preseason lineups off season-baseline rates",
@@ -336640,7 +336660,7 @@
       "result": "won",
       "payout_units": 0.5747,
       "recorded_at": "2026-09-21T19:21:06",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-23T00:24:03",
       "voided_reason": "preseason: picks made before the 2026-09-29 NHL opener priced preseason lineups off season-baseline rates",
@@ -336715,7 +336735,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-09-21T19:21:06",
-      "p_calibrated": 0.5276,
+      "p_calibrated": 0.5417,
       "voided": true,
       "voided_at": "2026-10-23T00:24:03",
       "voided_reason": "preseason: picks made before the 2026-09-29 NHL opener priced preseason lineups off season-baseline rates"
@@ -336763,7 +336783,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-09-21T19:21:06",
-      "p_calibrated": 0.5518,
+      "p_calibrated": 0.5644,
       "voided": true,
       "voided_at": "2026-10-23T00:24:03",
       "voided_reason": "preseason: picks made before the 2026-09-29 NHL opener priced preseason lineups off season-baseline rates"
@@ -336783,7 +336803,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-21T19:21:06",
-      "p_calibrated": 0.5379,
+      "p_calibrated": 0.5514,
       "voided": true,
       "voided_at": "2026-10-23T00:24:03",
       "voided_reason": "preseason: picks made before the 2026-09-29 NHL opener priced preseason lineups off season-baseline rates",
@@ -337441,7 +337461,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-22T00:43:23",
-      "p_calibrated": 0.6524,
+      "p_calibrated": 0.6513,
       "also_sources": [
         "top_25_board"
       ],
@@ -338460,7 +338480,7 @@
       "result": "won",
       "payout_units": 0.6757,
       "recorded_at": "2026-09-22T18:06:26",
-      "p_calibrated": 0.4801,
+      "p_calibrated": 0.4766,
       "also_sources": [
         "top_25_board"
       ],
@@ -338487,7 +338507,7 @@
       "result": "won",
       "payout_units": 0.6757,
       "recorded_at": "2026-09-22T18:06:26",
-      "p_calibrated": 0.4801,
+      "p_calibrated": 0.4766,
       "outcome": {
         "final_score": "MIA 8 @ CHC 2",
         "total_runs": 10,
@@ -338511,7 +338531,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-22T18:06:26",
-      "p_calibrated": 0.4801,
+      "p_calibrated": 0.4766,
       "outcome": {
         "final_score": "STL 0 @ PIT 2",
         "total_runs": 2,
@@ -338619,7 +338639,7 @@
       "result": "won",
       "payout_units": 0.4808,
       "recorded_at": "2026-09-22T19:28:35",
-      "p_calibrated": 0.675,
+      "p_calibrated": 0.6767,
       "voided": true,
       "voided_at": "2026-10-23T00:24:03",
       "voided_reason": "preseason: picks made before the 2026-09-29 NHL opener priced preseason lineups off season-baseline rates",
@@ -338703,7 +338723,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-22T19:28:35",
-      "p_calibrated": 0.675,
+      "p_calibrated": 0.6767,
       "voided": true,
       "voided_at": "2026-10-23T00:24:03",
       "voided_reason": "preseason: picks made before the 2026-09-29 NHL opener priced preseason lineups off season-baseline rates",
@@ -338731,7 +338751,7 @@
       "result": "won",
       "payout_units": 0.4808,
       "recorded_at": "2026-09-22T19:28:35",
-      "p_calibrated": 0.675,
+      "p_calibrated": 0.6767,
       "voided": true,
       "voided_at": "2026-10-23T00:24:03",
       "voided_reason": "preseason: picks made before the 2026-09-29 NHL opener priced preseason lineups off season-baseline rates",
@@ -338787,7 +338807,7 @@
       "result": "won",
       "payout_units": 0.5747,
       "recorded_at": "2026-09-22T19:28:35",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-23T00:24:03",
       "voided_reason": "preseason: picks made before the 2026-09-29 NHL opener priced preseason lineups off season-baseline rates",
@@ -338815,7 +338835,7 @@
       "result": "won",
       "payout_units": 0.5747,
       "recorded_at": "2026-09-22T19:28:35",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-23T00:24:03",
       "voided_reason": "preseason: picks made before the 2026-09-29 NHL opener priced preseason lineups off season-baseline rates",
@@ -338843,7 +338863,7 @@
       "result": "won",
       "payout_units": 0.5747,
       "recorded_at": "2026-09-22T19:28:35",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-23T00:24:03",
       "voided_reason": "preseason: picks made before the 2026-09-29 NHL opener priced preseason lineups off season-baseline rates",
@@ -338871,7 +338891,7 @@
       "result": "won",
       "payout_units": 0.5747,
       "recorded_at": "2026-09-22T19:28:35",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-23T00:24:03",
       "voided_reason": "preseason: picks made before the 2026-09-29 NHL opener priced preseason lineups off season-baseline rates",
@@ -338899,7 +338919,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-22T19:28:35",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-23T00:24:03",
       "voided_reason": "preseason: picks made before the 2026-09-29 NHL opener priced preseason lineups off season-baseline rates",
@@ -338927,7 +338947,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-22T19:28:35",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-23T00:24:03",
       "voided_reason": "preseason: picks made before the 2026-09-29 NHL opener priced preseason lineups off season-baseline rates",
@@ -338955,7 +338975,7 @@
       "result": "won",
       "payout_units": 0.5747,
       "recorded_at": "2026-09-22T19:28:35",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-23T00:24:03",
       "voided_reason": "preseason: picks made before the 2026-09-29 NHL opener priced preseason lineups off season-baseline rates",
@@ -338983,7 +339003,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-22T19:28:35",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-23T00:24:03",
       "voided_reason": "preseason: picks made before the 2026-09-29 NHL opener priced preseason lineups off season-baseline rates",
@@ -339011,7 +339031,7 @@
       "result": "won",
       "payout_units": 0.5747,
       "recorded_at": "2026-09-22T19:28:35",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-23T00:24:03",
       "voided_reason": "preseason: picks made before the 2026-09-29 NHL opener priced preseason lineups off season-baseline rates",
@@ -339039,7 +339059,7 @@
       "result": "won",
       "payout_units": 0.5747,
       "recorded_at": "2026-09-22T19:28:35",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-23T00:24:03",
       "voided_reason": "preseason: picks made before the 2026-09-29 NHL opener priced preseason lineups off season-baseline rates",
@@ -339163,7 +339183,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-09-22T19:28:35",
-      "p_calibrated": 0.5518,
+      "p_calibrated": 0.5644,
       "voided": true,
       "voided_at": "2026-10-23T00:24:03",
       "voided_reason": "preseason: picks made before the 2026-09-29 NHL opener priced preseason lineups off season-baseline rates"
@@ -339211,7 +339231,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-22T19:28:35",
-      "p_calibrated": 0.5428,
+      "p_calibrated": 0.556,
       "voided": true,
       "voided_at": "2026-10-23T00:24:03",
       "voided_reason": "preseason: picks made before the 2026-09-29 NHL opener priced preseason lineups off season-baseline rates",
@@ -339239,7 +339259,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-22T19:28:35",
-      "p_calibrated": 0.5379,
+      "p_calibrated": 0.5514,
       "outcome": {
         "stat": "blocks",
         "actual": 0,
@@ -339268,7 +339288,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-22T21:25:47",
-      "p_calibrated": 0.4801,
+      "p_calibrated": 0.4766,
       "voided": false,
       "outcome": {
         "final_score": "TB 0 @ NYY 2",
@@ -339293,7 +339313,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-09-22T21:25:47",
-      "p_calibrated": 0.4801,
+      "p_calibrated": 0.4766,
       "outcome": {
         "final_score": "CHW 14 @ KC 11",
         "total_runs": 25,
@@ -339321,7 +339341,7 @@
       "result": "won",
       "payout_units": 0.8333,
       "recorded_at": "2026-09-22T21:25:47",
-      "p_calibrated": 0.4801,
+      "p_calibrated": 0.4766,
       "outcome": {
         "final_score": "MIL 4 @ PHI 6",
         "total_runs": 10,
@@ -339355,7 +339375,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-22T21:25:47",
-      "p_calibrated": 0.4801,
+      "p_calibrated": 0.4766,
       "outcome": {
         "final_score": "WSH 3 @ DET 1",
         "total_runs": 4,
@@ -339415,7 +339435,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-23T00:40:42",
-      "p_calibrated": 0.4803,
+      "p_calibrated": 0.4766,
       "outcome": {
         "final_score": "ARI 5 @ COL 3",
         "total_runs": 8,
@@ -339631,7 +339651,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-09-23T05:25:46",
-      "p_calibrated": 0.49,
+      "p_calibrated": 0.4965,
       "voided": false,
       "outcome": {
         "final_score": "TB 2 @ NYY 9",
@@ -339657,7 +339677,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-23T05:25:46",
-      "p_calibrated": 0.4866,
+      "p_calibrated": 0.4896,
       "outcome": {
         "final_score": "TOR 2 @ BAL 4",
         "total_runs": 6,
@@ -339683,7 +339703,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-23T05:25:46",
-      "p_calibrated": 0.6524,
+      "p_calibrated": 0.6513,
       "outcome": {
         "final_score": "MIA 3 @ CHC 2",
         "total_runs": 5,
@@ -339777,7 +339797,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-23T10:11:24",
-      "p_calibrated": 0.4908,
+      "p_calibrated": 0.4982,
       "outcome": {
         "final_score": "MIL 4 @ PHI 1",
         "total_runs": 5,
@@ -339874,7 +339894,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-23T10:11:24",
-      "p_calibrated": 0.5379,
+      "p_calibrated": 0.5514,
       "voided": true,
       "voided_at": "2026-10-23T00:24:03",
       "voided_reason": "preseason: picks made before the 2026-09-29 NHL opener priced preseason lineups off season-baseline rates",
@@ -339903,7 +339923,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-23T18:26:24",
-      "p_calibrated": 0.4913,
+      "p_calibrated": 0.4992,
       "outcome": {
         "final_score": "MIA 3 @ CHC 2",
         "total_runs": 5,
@@ -339937,7 +339957,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-23T18:26:24",
-      "p_calibrated": 0.4835,
+      "p_calibrated": 0.4831,
       "outcome": {
         "final_score": "TOR 2 @ BAL 4",
         "total_runs": 6,
@@ -339962,7 +339982,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-23T18:26:24",
-      "p_calibrated": 0.4801,
+      "p_calibrated": 0.4766,
       "outcome": {
         "final_score": "ARI 5 @ COL 3",
         "total_runs": 8,
@@ -340086,7 +340106,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-23T22:24:54",
-      "p_calibrated": 0.4801,
+      "p_calibrated": 0.4766,
       "outcome": {
         "final_score": "STL 5 @ PIT 1",
         "total_runs": 6,
@@ -340147,7 +340167,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-09-24T00:40:11",
-      "p_calibrated": 0.4922,
+      "p_calibrated": 0.5009,
       "outcome": {
         "final_score": "HOU 7 @ ATH 5",
         "total_runs": 12,
@@ -340174,7 +340194,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-24T00:40:11",
-      "p_calibrated": 0.4898,
+      "p_calibrated": 0.4961,
       "outcome": {
         "final_score": "CLE 1 @ BOS 0",
         "total_runs": 1,
@@ -340202,7 +340222,7 @@
       "result": "won",
       "payout_units": 0.8929,
       "recorded_at": "2026-09-24T00:40:11",
-      "p_calibrated": 0.4824,
+      "p_calibrated": 0.4811,
       "outcome": {
         "final_score": "CIN 7 @ ATL 6",
         "total_runs": 13,
@@ -340236,7 +340256,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-24T00:40:11",
-      "p_calibrated": 0.4811,
+      "p_calibrated": 0.4783,
       "outcome": {
         "final_score": "MIA 1 @ CHC 2",
         "total_runs": 3,
@@ -340284,7 +340304,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-24T00:40:11",
-      "p_calibrated": 0.4801,
+      "p_calibrated": 0.4766,
       "outcome": {
         "final_score": "CLE 1 @ BOS 0",
         "total_runs": 1,
@@ -340676,7 +340696,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-25T00:53:20",
-      "p_calibrated": 0.6524,
+      "p_calibrated": 0.6513,
       "outcome": {
         "final_score": "COL 1 @ CHW 6",
         "total_runs": 7,
@@ -340709,7 +340729,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-09-25T00:53:20",
-      "p_calibrated": 0.5276,
+      "p_calibrated": 0.5417,
       "voided": true,
       "voided_at": "2026-10-23T00:24:03",
       "voided_reason": "preseason: picks made before the 2026-09-29 NHL opener priced preseason lineups off season-baseline rates"
@@ -340749,7 +340769,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-25T00:53:20",
-      "p_calibrated": 0.5518,
+      "p_calibrated": 0.5644,
       "voided": true,
       "voided_at": "2026-10-23T00:24:03",
       "voided_reason": "preseason: picks made before the 2026-09-29 NHL opener priced preseason lineups off season-baseline rates",
@@ -341240,7 +341260,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-26T05:08:11",
-      "p_calibrated": 0.5276,
+      "p_calibrated": 0.5417,
       "voided": true,
       "voided_at": "2026-10-23T00:24:03",
       "voided_reason": "preseason: picks made before the 2026-09-29 NHL opener priced preseason lineups off season-baseline rates",
@@ -341894,7 +341914,7 @@
       "result": "won",
       "payout_units": 0.4808,
       "recorded_at": "2026-09-27T03:21:28",
-      "p_calibrated": 0.675,
+      "p_calibrated": 0.6767,
       "voided": true,
       "voided_at": "2026-10-23T00:24:03",
       "voided_reason": "preseason: picks made before the 2026-09-29 NHL opener priced preseason lineups off season-baseline rates",
@@ -341970,7 +341990,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-09-27T03:21:28",
-      "p_calibrated": 0.675,
+      "p_calibrated": 0.6767,
       "voided": true,
       "voided_at": "2026-10-23T00:24:03",
       "voided_reason": "preseason: picks made before the 2026-09-29 NHL opener priced preseason lineups off season-baseline rates"
@@ -341990,7 +342010,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-09-27T03:21:28",
-      "p_calibrated": 0.675,
+      "p_calibrated": 0.6767,
       "voided": true,
       "voided_at": "2026-10-23T00:24:03",
       "voided_reason": "preseason: picks made before the 2026-09-29 NHL opener priced preseason lineups off season-baseline rates"
@@ -342170,7 +342190,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-09-27T03:21:28",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-23T00:24:03",
       "voided_reason": "preseason: picks made before the 2026-09-29 NHL opener priced preseason lineups off season-baseline rates"
@@ -342190,7 +342210,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-09-27T03:21:28",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-23T00:24:03",
       "voided_reason": "preseason: picks made before the 2026-09-29 NHL opener priced preseason lineups off season-baseline rates"
@@ -342210,7 +342230,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-09-27T03:21:28",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-23T00:24:03",
       "voided_reason": "preseason: picks made before the 2026-09-29 NHL opener priced preseason lineups off season-baseline rates"
@@ -342230,7 +342250,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-09-27T03:21:28",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-23T00:24:03",
       "voided_reason": "preseason: picks made before the 2026-09-29 NHL opener priced preseason lineups off season-baseline rates"
@@ -342250,7 +342270,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-27T03:21:28",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-23T00:24:03",
       "voided_reason": "preseason: picks made before the 2026-09-29 NHL opener priced preseason lineups off season-baseline rates",
@@ -342278,7 +342298,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-09-27T03:21:28",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-23T00:24:03",
       "voided_reason": "preseason: picks made before the 2026-09-29 NHL opener priced preseason lineups off season-baseline rates"
@@ -342298,7 +342318,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-09-27T03:21:28",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-23T00:24:03",
       "voided_reason": "preseason: picks made before the 2026-09-29 NHL opener priced preseason lineups off season-baseline rates"
@@ -342318,7 +342338,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-09-27T03:21:28",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-23T00:24:03",
       "voided_reason": "preseason: picks made before the 2026-09-29 NHL opener priced preseason lineups off season-baseline rates"
@@ -342338,7 +342358,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-09-27T03:21:28",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-23T00:24:03",
       "voided_reason": "preseason: picks made before the 2026-09-29 NHL opener priced preseason lineups off season-baseline rates"
@@ -342358,7 +342378,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-09-27T03:21:28",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-23T00:24:03",
       "voided_reason": "preseason: picks made before the 2026-09-29 NHL opener priced preseason lineups off season-baseline rates"
@@ -342460,7 +342480,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-09-27T03:21:28",
-      "p_calibrated": 0.5518,
+      "p_calibrated": 0.5644,
       "voided": true,
       "voided_at": "2026-10-23T00:24:03",
       "voided_reason": "preseason: picks made before the 2026-09-29 NHL opener priced preseason lineups off season-baseline rates"
@@ -342480,7 +342500,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-09-27T03:21:28",
-      "p_calibrated": 0.5428,
+      "p_calibrated": 0.556,
       "voided": true,
       "voided_at": "2026-10-23T00:24:03",
       "voided_reason": "preseason: picks made before the 2026-09-29 NHL opener priced preseason lineups off season-baseline rates",
@@ -342788,7 +342808,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-09-28T05:33:18",
-      "p_calibrated": 0.5379,
+      "p_calibrated": 0.5514,
       "voided": true,
       "voided_at": "2026-10-23T00:24:03",
       "voided_reason": "preseason: picks made before the 2026-09-29 NHL opener priced preseason lineups off season-baseline rates"
@@ -342942,7 +342962,7 @@
       "result": "won",
       "payout_units": 0.8547,
       "recorded_at": "2026-09-29T01:12:20",
-      "p_calibrated": 0.6524,
+      "p_calibrated": 0.6513,
       "outcome": {
         "final_score": "CHC 0 @ SD 8",
         "total_runs": 8,
@@ -343080,7 +343100,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-09-30T03:27:55",
-      "p_calibrated": 0.6524,
+      "p_calibrated": 0.6513,
       "outcome": {
         "final_score": "BOS 2 @ NYY 9",
         "total_runs": 11,
@@ -343107,7 +343127,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-09-30T03:27:55",
-      "p_calibrated": 0.5276,
+      "p_calibrated": 0.5417,
       "voided": true,
       "voided_at": "2026-10-05T00:54:21",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -343153,7 +343173,7 @@
       "result": "won",
       "payout_units": 0.4032,
       "recorded_at": "2026-09-30T03:27:55",
-      "p_calibrated": 0.5518,
+      "p_calibrated": 0.5644,
       "voided": false,
       "outcome": {
         "stat": "blocks",
@@ -343570,7 +343590,7 @@
       "result": "won",
       "payout_units": 0.6849,
       "recorded_at": "2026-10-01T01:20:54",
-      "p_calibrated": 0.5276,
+      "p_calibrated": 0.5417,
       "voided": false,
       "outcome": {
         "stat": "blocks",
@@ -343595,7 +343615,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-01T05:47:59",
-      "p_calibrated": 0.6524,
+      "p_calibrated": 0.6513,
       "voided": true,
       "voided_at": "2026-10-06T02:22:48",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -343918,7 +343938,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-02T05:42:41",
-      "p_calibrated": 0.675,
+      "p_calibrated": 0.6767,
       "voided": true,
       "voided_at": "2026-10-07T00:06:59",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -343978,7 +343998,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-02T05:42:41",
-      "p_calibrated": 0.675,
+      "p_calibrated": 0.6767,
       "voided": true,
       "voided_at": "2026-10-07T00:06:59",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -343998,7 +344018,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-02T05:42:41",
-      "p_calibrated": 0.675,
+      "p_calibrated": 0.6767,
       "voided": true,
       "voided_at": "2026-10-07T00:06:59",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -344178,7 +344198,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-02T05:42:41",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-07T00:06:59",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -344198,7 +344218,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-02T05:42:41",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-07T00:06:59",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -344218,7 +344238,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-02T05:42:41",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-07T00:06:59",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -344238,7 +344258,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-02T05:42:41",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-07T00:06:59",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -344258,7 +344278,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-02T05:42:41",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-07T00:06:59",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -344278,7 +344298,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-02T05:42:41",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-07T00:06:59",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -344298,7 +344318,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-02T05:42:41",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-07T00:06:59",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -344318,7 +344338,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-02T05:42:41",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-07T00:06:59",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -344338,7 +344358,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-02T05:42:41",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-07T00:06:59",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -344358,7 +344378,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-02T05:42:41",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-07T00:06:59",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -344443,7 +344463,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-02T05:42:41",
-      "p_calibrated": 0.5518,
+      "p_calibrated": 0.5644,
       "voided": true,
       "voided_at": "2026-10-07T00:06:59",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -344463,7 +344483,7 @@
       "result": "won",
       "payout_units": 0.495,
       "recorded_at": "2026-10-02T05:42:41",
-      "p_calibrated": 0.5428,
+      "p_calibrated": 0.556,
       "voided": false,
       "outcome": {
         "stat": "blocks",
@@ -344625,7 +344645,7 @@
       "result": "won",
       "payout_units": 0.5495,
       "recorded_at": "2026-10-03T05:26:41",
-      "p_calibrated": 0.5379,
+      "p_calibrated": 0.5514,
       "voided": false,
       "outcome": {
         "stat": "blocks",
@@ -344739,7 +344759,7 @@
       "result": "push",
       "payout_units": 0.0,
       "recorded_at": "2026-10-04T06:08:49",
-      "p_calibrated": 0.6524,
+      "p_calibrated": 0.6513,
       "voided": false,
       "outcome": {
         "final_score": "SD 3 @ MIL 4",
@@ -344832,7 +344852,7 @@
       "result": "won",
       "payout_units": 0.8772,
       "recorded_at": "2026-10-05T00:54:21",
-      "p_calibrated": 0.6524,
+      "p_calibrated": 0.6513,
       "outcome": {
         "final_score": "CHW 4 @ CLE 3",
         "total_runs": 7,
@@ -344883,7 +344903,7 @@
       "result": "won",
       "payout_units": 0.6849,
       "recorded_at": "2026-10-05T05:51:56",
-      "p_calibrated": 0.5276,
+      "p_calibrated": 0.5417,
       "voided": false,
       "outcome": {
         "stat": "blocks",
@@ -344935,7 +344955,7 @@
       "result": "won",
       "payout_units": 0.4032,
       "recorded_at": "2026-10-05T05:51:56",
-      "p_calibrated": 0.5518,
+      "p_calibrated": 0.5644,
       "voided": false,
       "outcome": {
         "stat": "blocks",
@@ -345062,7 +345082,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-10-06T02:22:47",
-      "p_calibrated": 0.6524,
+      "p_calibrated": 0.6513,
       "outcome": {
         "final_score": "LAD 3 @ ATL 1",
         "total_runs": 4,
@@ -345359,7 +345379,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-10-06T06:30:51",
-      "p_calibrated": 0.5276,
+      "p_calibrated": 0.5417,
       "voided": false,
       "outcome": {
         "stat": "blocks",
@@ -345776,7 +345796,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-10-07T00:09:57",
-      "p_calibrated": 0.675,
+      "p_calibrated": 0.6767,
       "voided": false,
       "outcome": {
         "final_score": "NYI 2 @ NYR 5",
@@ -345842,7 +345862,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-07T00:09:57",
-      "p_calibrated": 0.675,
+      "p_calibrated": 0.6767,
       "voided": true,
       "voided_at": "2026-10-12T02:32:55",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -345862,7 +345882,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-07T00:09:57",
-      "p_calibrated": 0.675,
+      "p_calibrated": 0.6767,
       "voided": true,
       "voided_at": "2026-10-12T02:32:55",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -346042,7 +346062,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-07T00:09:57",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-12T02:32:55",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -346062,7 +346082,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-07T00:09:57",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-12T02:32:55",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -346082,7 +346102,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-07T00:09:57",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-12T02:32:55",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -346102,7 +346122,7 @@
       "result": "won",
       "payout_units": 0.5747,
       "recorded_at": "2026-10-07T00:09:57",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": false,
       "outcome": {
         "period": 3,
@@ -346128,7 +346148,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-07T00:09:57",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-12T02:32:55",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -346148,7 +346168,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-07T00:09:57",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-12T02:32:55",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -346168,7 +346188,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-07T00:09:57",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-12T02:32:55",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -346188,7 +346208,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-07T00:09:57",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-12T02:32:55",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -346208,7 +346228,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-07T00:09:57",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-12T02:32:55",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -346228,7 +346248,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-07T00:09:57",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-12T02:32:55",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -346319,7 +346339,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-07T00:09:57",
-      "p_calibrated": 0.5518,
+      "p_calibrated": 0.5644,
       "voided": true,
       "voided_at": "2026-10-12T02:32:55",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -346339,7 +346359,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-07T00:09:57",
-      "p_calibrated": 0.5428,
+      "p_calibrated": 0.556,
       "voided": true,
       "voided_at": "2026-10-12T02:32:55",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -346461,7 +346481,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-10-07T05:55:19",
-      "p_calibrated": 0.6524,
+      "p_calibrated": 0.6513,
       "outcome": {
         "final_score": "MIL 3 @ SD 1",
         "total_runs": 4,
@@ -346589,7 +346609,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-10-08T06:16:19",
-      "p_calibrated": 0.5379,
+      "p_calibrated": 0.5514,
       "voided": false,
       "outcome": {
         "stat": "blocks",
@@ -346850,7 +346870,7 @@
       "result": "won",
       "payout_units": 0.6849,
       "recorded_at": "2026-10-10T05:53:04",
-      "p_calibrated": 0.5276,
+      "p_calibrated": 0.5417,
       "voided": false,
       "outcome": {
         "stat": "blocks",
@@ -346902,7 +346922,7 @@
       "result": "won",
       "payout_units": 0.4032,
       "recorded_at": "2026-10-10T05:53:04",
-      "p_calibrated": 0.5518,
+      "p_calibrated": 0.5644,
       "voided": false,
       "outcome": {
         "stat": "blocks",
@@ -346927,7 +346947,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-10-11T01:31:28",
-      "p_calibrated": 0.6524,
+      "p_calibrated": 0.6513,
       "outcome": {
         "final_score": "LAD 1 @ MIL 2",
         "total_runs": 3,
@@ -347238,7 +347258,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-10-11T05:58:53",
-      "p_calibrated": 0.5276,
+      "p_calibrated": 0.5417,
       "voided": false,
       "outcome": {
         "stat": "blocks",
@@ -347291,7 +347311,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-10-12T02:32:55",
-      "p_calibrated": 0.6524,
+      "p_calibrated": 0.6513,
       "outcome": {
         "final_score": "LAD 4 @ MIL 7",
         "total_runs": 11,
@@ -347596,7 +347616,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-12T06:08:48",
-      "p_calibrated": 0.675,
+      "p_calibrated": 0.6767,
       "voided": true,
       "voided_at": "2026-10-17T00:27:02",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -347656,7 +347676,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-12T06:08:48",
-      "p_calibrated": 0.675,
+      "p_calibrated": 0.6767,
       "voided": true,
       "voided_at": "2026-10-17T00:27:02",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -347676,7 +347696,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-12T06:08:48",
-      "p_calibrated": 0.675,
+      "p_calibrated": 0.6767,
       "voided": true,
       "voided_at": "2026-10-17T00:27:02",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -347856,7 +347876,7 @@
       "result": "won",
       "payout_units": 0.5747,
       "recorded_at": "2026-10-12T06:08:48",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": false,
       "outcome": {
         "period": 3,
@@ -347882,7 +347902,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-12T06:08:48",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-17T00:27:02",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -347902,7 +347922,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-12T06:08:48",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-17T00:27:02",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -347922,7 +347942,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-12T06:08:48",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-17T00:27:02",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -347942,7 +347962,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-12T06:08:48",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-17T00:27:02",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -347962,7 +347982,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-12T06:08:48",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-17T00:27:02",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -347982,7 +348002,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-12T06:08:48",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-17T00:27:02",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -348002,7 +348022,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-12T06:08:48",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-17T00:27:02",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -348022,7 +348042,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-12T06:08:48",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-17T00:27:02",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -348042,7 +348062,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-12T06:08:48",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-17T00:27:02",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -348133,7 +348153,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-12T06:08:48",
-      "p_calibrated": 0.5518,
+      "p_calibrated": 0.5644,
       "voided": true,
       "voided_at": "2026-10-17T00:27:02",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -348153,7 +348173,7 @@
       "result": "won",
       "payout_units": 0.495,
       "recorded_at": "2026-10-12T06:08:48",
-      "p_calibrated": 0.5428,
+      "p_calibrated": 0.556,
       "voided": false,
       "outcome": {
         "stat": "blocks",
@@ -348328,7 +348348,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-10-13T03:11:15",
-      "p_calibrated": 0.5379,
+      "p_calibrated": 0.5514,
       "voided": false,
       "outcome": {
         "stat": "blocks",
@@ -348420,7 +348440,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-10-15T01:10:03",
-      "p_calibrated": 0.5731,
+      "p_calibrated": 0.5604,
       "voided": false,
       "outcome": {
         "final_score": "TB 2 @ CLE 3",
@@ -348463,7 +348483,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-10-15T04:50:54",
-      "p_calibrated": 0.5276,
+      "p_calibrated": 0.5417,
       "voided": false,
       "outcome": {
         "stat": "blocks",
@@ -348521,7 +348541,7 @@
       "result": "won",
       "payout_units": 0.4032,
       "recorded_at": "2026-10-15T04:50:54",
-      "p_calibrated": 0.5518,
+      "p_calibrated": 0.5644,
       "voided": false,
       "outcome": {
         "stat": "blocks",
@@ -348907,7 +348927,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-10-16T00:45:18",
-      "p_calibrated": 0.5276,
+      "p_calibrated": 0.5417,
       "voided": false,
       "outcome": {
         "stat": "blocks",
@@ -349169,7 +349189,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-17T00:34:34",
-      "p_calibrated": 0.675,
+      "p_calibrated": 0.6767,
       "voided": true,
       "voided_at": "2026-10-22T01:15:09",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -349229,7 +349249,7 @@
       "result": "won",
       "payout_units": 0.4808,
       "recorded_at": "2026-10-17T00:34:34",
-      "p_calibrated": 0.675,
+      "p_calibrated": 0.6767,
       "voided": false,
       "outcome": {
         "final_score": "VAN 2 @ FLA 3",
@@ -349255,7 +349275,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-17T00:34:34",
-      "p_calibrated": 0.675,
+      "p_calibrated": 0.6767,
       "voided": true,
       "voided_at": "2026-10-22T01:15:09",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -349435,7 +349455,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-17T00:34:34",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-22T01:15:09",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -349455,7 +349475,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-17T00:34:34",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-22T01:15:09",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -349475,7 +349495,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-17T00:34:34",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-22T01:15:09",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -349495,7 +349515,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-17T00:34:34",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-22T01:15:09",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -349515,7 +349535,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-17T00:34:34",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-22T01:15:09",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -349535,7 +349555,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-17T00:34:34",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-22T01:15:09",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -349555,7 +349575,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-17T00:34:34",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-22T01:15:09",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -349575,7 +349595,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-17T00:34:34",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-22T01:15:09",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -349595,7 +349615,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-17T00:34:34",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-22T01:15:09",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -349615,7 +349635,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-17T00:34:34",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-22T01:15:09",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -349711,7 +349731,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-17T00:34:34",
-      "p_calibrated": 0.5518,
+      "p_calibrated": 0.5644,
       "voided": true,
       "voided_at": "2026-10-22T01:15:09",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -349731,7 +349751,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-10-17T00:34:34",
-      "p_calibrated": 0.5428,
+      "p_calibrated": 0.556,
       "voided": false,
       "outcome": {
         "stat": "blocks",
@@ -349855,7 +349875,7 @@
       "result": "won",
       "payout_units": 0.5495,
       "recorded_at": "2026-10-18T04:44:12",
-      "p_calibrated": 0.5379,
+      "p_calibrated": 0.5514,
       "outcome": {
         "stat": "blocks",
         "actual": 2,
@@ -349993,7 +350013,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-10-19T11:02:37",
-      "p_calibrated": 0.6266,
+      "p_calibrated": 0.6253,
       "outcome": {
         "final_score": "CLE 3 @ TB 7",
         "total_runs": 10,
@@ -350138,7 +350158,7 @@
       "result": "won",
       "payout_units": 0.6849,
       "recorded_at": "2026-10-20T04:45:20",
-      "p_calibrated": 0.5276,
+      "p_calibrated": 0.5417,
       "outcome": {
         "stat": "blocks",
         "actual": 2,
@@ -350188,7 +350208,7 @@
       "result": "won",
       "payout_units": 0.4032,
       "recorded_at": "2026-10-20T04:45:20",
-      "p_calibrated": 0.5518,
+      "p_calibrated": 0.5644,
       "outcome": {
         "stat": "blocks",
         "actual": 2,
@@ -350536,7 +350556,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-10-21T01:11:03",
-      "p_calibrated": 0.5276,
+      "p_calibrated": 0.5417,
       "outcome": {
         "stat": "blocks",
         "actual": 0,
@@ -350797,7 +350817,7 @@
       "result": "won",
       "payout_units": 0.4808,
       "recorded_at": "2026-10-22T05:00:32",
-      "p_calibrated": 0.675,
+      "p_calibrated": 0.6767,
       "outcome": {
         "final_score": "LA 3 @ NYI 2",
         "side": "away",
@@ -350862,7 +350882,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T05:00:32",
-      "p_calibrated": 0.675,
+      "p_calibrated": 0.6767,
       "voided": true,
       "voided_at": "2026-10-27T00:09:59",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -350882,7 +350902,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T05:00:32",
-      "p_calibrated": 0.675,
+      "p_calibrated": 0.6767,
       "voided": true,
       "voided_at": "2026-10-27T00:09:59",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -351062,7 +351082,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T05:00:32",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-27T00:09:59",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -351082,7 +351102,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T05:00:32",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-27T00:09:59",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -351102,7 +351122,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T05:00:32",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-27T00:09:59",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -351122,7 +351142,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T05:00:32",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-27T00:09:59",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -351142,7 +351162,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T05:00:32",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-27T00:09:59",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -351162,7 +351182,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T05:00:32",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-27T00:09:59",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -351182,7 +351202,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T05:00:32",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-27T00:09:59",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -351202,7 +351222,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T05:00:32",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-27T00:09:59",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -351222,7 +351242,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T05:00:32",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-27T00:09:59",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -351242,7 +351262,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T05:00:32",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "voided": true,
       "voided_at": "2026-10-27T00:09:59",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -351335,7 +351355,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T05:00:32",
-      "p_calibrated": 0.5518,
+      "p_calibrated": 0.5644,
       "voided": true,
       "voided_at": "2026-10-27T00:09:59",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -351355,7 +351375,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-10-22T05:00:32",
-      "p_calibrated": 0.5428,
+      "p_calibrated": 0.556,
       "outcome": {
         "stat": "blocks",
         "actual": 1,
@@ -366116,7 +366136,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T22:30:58",
-      "p_calibrated": 0.5461,
+      "p_calibrated": 0.559,
       "voided": true,
       "voided_at": "2026-10-28T01:08:01",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -366136,7 +366156,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T22:30:58",
-      "p_calibrated": 0.5345,
+      "p_calibrated": 0.5482,
       "voided": true,
       "voided_at": "2026-10-28T01:08:01",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -366156,7 +366176,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T22:30:58",
-      "p_calibrated": 0.5416,
+      "p_calibrated": 0.5548,
       "voided": true,
       "voided_at": "2026-10-28T01:08:01",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -366958,7 +366978,7 @@
       "result": "won",
       "payout_units": 0.5208,
       "recorded_at": "2026-10-22T22:30:58",
-      "p_calibrated": 0.658,
+      "p_calibrated": 0.672,
       "outcome": {
         "final_score": "WPG 2 @ DAL 3",
         "side": "away",
@@ -366983,7 +367003,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-10-22T22:30:58",
-      "p_calibrated": 0.707,
+      "p_calibrated": 0.6857,
       "outcome": {
         "final_score": "UTA 3 @ SEA 5",
         "side": "away",
@@ -367073,7 +367093,7 @@
       "result": "won",
       "payout_units": 0.5747,
       "recorded_at": "2026-10-22T22:30:58",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "outcome": {
         "period": 3,
         "period_goals": 2,
@@ -367098,7 +367118,7 @@
       "result": "won",
       "payout_units": 0.5747,
       "recorded_at": "2026-10-22T22:30:58",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "outcome": {
         "period": 3,
         "period_goals": 2,
@@ -367123,7 +367143,7 @@
       "result": "won",
       "payout_units": 0.5747,
       "recorded_at": "2026-10-22T22:30:58",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "outcome": {
         "period": 3,
         "period_goals": 3,
@@ -367148,7 +367168,7 @@
       "result": "won",
       "payout_units": 0.5747,
       "recorded_at": "2026-10-22T22:30:58",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "outcome": {
         "period": 3,
         "period_goals": 3,
@@ -367173,7 +367193,7 @@
       "result": "won",
       "payout_units": 0.5747,
       "recorded_at": "2026-10-22T22:30:58",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "outcome": {
         "period": 3,
         "period_goals": 2,
@@ -367198,7 +367218,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-10-22T22:30:58",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "outcome": {
         "period": 3,
         "period_goals": 1,
@@ -367223,7 +367243,7 @@
       "result": "won",
       "payout_units": 0.5747,
       "recorded_at": "2026-10-22T22:30:58",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "outcome": {
         "period": 3,
         "period_goals": 4,
@@ -367248,7 +367268,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-10-22T22:30:58",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "outcome": {
         "period": 3,
         "period_goals": 1,
@@ -367273,7 +367293,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-10-22T22:30:58",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "outcome": {
         "period": 3,
         "period_goals": 1,
@@ -367298,7 +367318,7 @@
       "result": "won",
       "payout_units": 0.5747,
       "recorded_at": "2026-10-22T22:30:58",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "outcome": {
         "period": 3,
         "period_goals": 4,
@@ -367323,7 +367343,7 @@
       "result": "won",
       "payout_units": 0.5747,
       "recorded_at": "2026-10-22T22:30:58",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "outcome": {
         "period": 3,
         "period_goals": 4,
@@ -367348,7 +367368,7 @@
       "result": "won",
       "payout_units": 0.5747,
       "recorded_at": "2026-10-22T22:30:58",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "outcome": {
         "period": 3,
         "period_goals": 2,
@@ -367565,7 +367585,7 @@
       "result": "won",
       "payout_units": 0.6849,
       "recorded_at": "2026-10-22T22:30:58",
-      "p_calibrated": 0.5276,
+      "p_calibrated": 0.5417,
       "outcome": {
         "stat": "blocks",
         "actual": 2,
@@ -367618,7 +367638,7 @@
       "result": "won",
       "payout_units": 0.5495,
       "recorded_at": "2026-10-22T22:30:58",
-      "p_calibrated": 0.5379,
+      "p_calibrated": 0.5514,
       "outcome": {
         "stat": "blocks",
         "actual": 2,
@@ -367643,7 +367663,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-10-22T22:30:58",
-      "p_calibrated": 0.5276,
+      "p_calibrated": 0.5417,
       "outcome": {
         "stat": "blocks",
         "actual": 0,
@@ -367771,7 +367791,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T22:30:58",
-      "p_calibrated": 0.5518,
+      "p_calibrated": 0.5644,
       "voided": true,
       "voided_at": "2026-10-27T00:09:59",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -367791,7 +367811,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T22:30:58",
-      "p_calibrated": 0.5379,
+      "p_calibrated": 0.5514,
       "voided": true,
       "voided_at": "2026-10-27T00:09:59",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -367811,7 +367831,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-22T22:30:58",
-      "p_calibrated": 0.5518,
+      "p_calibrated": 0.5644,
       "voided": true,
       "voided_at": "2026-10-27T00:09:59",
       "voided_reason": "unsettleable: no outcome feed within 4 days"
@@ -367831,7 +367851,7 @@
       "result": "won",
       "payout_units": 0.4032,
       "recorded_at": "2026-10-22T22:30:58",
-      "p_calibrated": 0.5518,
+      "p_calibrated": 0.5644,
       "outcome": {
         "stat": "blocks",
         "actual": 3,
@@ -367856,7 +367876,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-10-22T22:30:58",
-      "p_calibrated": 0.5276,
+      "p_calibrated": 0.5417,
       "outcome": {
         "stat": "blocks",
         "actual": 1,
@@ -371848,7 +371868,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-10-23T00:24:03",
-      "p_calibrated": 0.6524,
+      "p_calibrated": 0.6513,
       "outcome": {
         "final_score": "TB 2 @ MIL 3",
         "total_runs": 5,
@@ -381048,7 +381068,7 @@
       "result": "won",
       "payout_units": 0.4587,
       "recorded_at": "2026-10-23T00:43:49",
-      "p_calibrated": 0.686,
+      "p_calibrated": 0.6798,
       "outcome": {
         "final_score": "NYR 4 @ TOR 5",
         "side": "away",
@@ -381098,7 +381118,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-10-23T00:43:49",
-      "p_calibrated": 0.712,
+      "p_calibrated": 0.6871,
       "outcome": {
         "final_score": "FLA 0 @ PIT 4",
         "side": "away",
@@ -381148,7 +381168,7 @@
       "result": "won",
       "payout_units": 0.4386,
       "recorded_at": "2026-10-23T01:34:52",
-      "p_calibrated": 0.695,
+      "p_calibrated": 0.6823,
       "outcome": {
         "final_score": "LA 3 @ NYI 2",
         "side": "away",
@@ -381173,7 +381193,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-10-23T01:34:52",
-      "p_calibrated": 0.676,
+      "p_calibrated": 0.677,
       "outcome": {
         "final_score": "VGK 2 @ STL 6",
         "side": "away",
@@ -386600,7 +386620,7 @@
       "result": "won",
       "payout_units": 0.5263,
       "recorded_at": "2026-10-23T02:35:40",
-      "p_calibrated": 0.655,
+      "p_calibrated": 0.6711,
       "outcome": {
         "final_score": "CAR 5 @ EDM 6",
         "side": "away",
@@ -386625,7 +386645,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-10-23T02:35:40",
-      "p_calibrated": 0.4801,
+      "p_calibrated": 0.4766,
       "outcome": {
         "final_score": "TB 2 @ MIL 3",
         "total_runs": 5,
@@ -386674,7 +386694,7 @@
       "result": "won",
       "payout_units": 0.5,
       "recorded_at": "2026-10-23T03:29:34",
-      "p_calibrated": 0.666,
+      "p_calibrated": 0.6742,
       "outcome": {
         "final_score": "MIN 1 @ CGY 2",
         "side": "away",
@@ -387970,7 +387990,7 @@
       "result": "won",
       "payout_units": 0.3906,
       "recorded_at": "2026-10-23T19:42:33",
-      "p_calibrated": 0.553,
+      "p_calibrated": 0.5655,
       "outcome": {
         "stat": "blk",
         "actual": 2,
@@ -388020,7 +388040,7 @@
       "result": "won",
       "payout_units": 0.5714,
       "recorded_at": "2026-10-23T19:42:33",
-      "p_calibrated": 0.5361,
+      "p_calibrated": 0.5497,
       "outcome": {
         "stat": "blk",
         "actual": 1,
@@ -390372,7 +390392,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-10-23T19:42:33",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "outcome": {
         "period": 3,
         "period_goals": 1,
@@ -390397,7 +390417,7 @@
       "result": "won",
       "payout_units": 0.5747,
       "recorded_at": "2026-10-23T19:42:33",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "outcome": {
         "period": 3,
         "period_goals": 3,
@@ -390447,7 +390467,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-10-23T19:42:33",
-      "p_calibrated": 0.5379,
+      "p_calibrated": 0.5514,
       "outcome": {
         "stat": "blocks",
         "actual": 0,
@@ -394135,7 +394155,7 @@
       "result": "won",
       "payout_units": 0.4566,
       "recorded_at": "2026-10-24T18:31:25",
-      "p_calibrated": 0.687,
+      "p_calibrated": 0.6801,
       "outcome": {
         "final_score": "ANA 5 @ PHI 4",
         "side": "away",
@@ -394210,7 +394230,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-10-24T18:31:25",
-      "p_calibrated": 0.67,
+      "p_calibrated": 0.6753,
       "outcome": {
         "final_score": "NYR 4 @ OTT 7",
         "side": "away",
@@ -394235,7 +394255,7 @@
       "result": "won",
       "payout_units": 0.4,
       "recorded_at": "2026-10-24T18:31:25",
-      "p_calibrated": 0.715,
+      "p_calibrated": 0.6879,
       "outcome": {
         "final_score": "NSH 2 @ PIT 3",
         "side": "away",
@@ -394260,7 +394280,7 @@
       "result": "won",
       "payout_units": 0.5376,
       "recorded_at": "2026-10-24T18:31:25",
-      "p_calibrated": 0.651,
+      "p_calibrated": 0.67,
       "outcome": {
         "final_score": "BUF 3 @ WSH 4",
         "side": "away",
@@ -394360,7 +394380,7 @@
       "result": "won",
       "payout_units": 0.4167,
       "recorded_at": "2026-10-24T18:31:25",
-      "p_calibrated": 0.706,
+      "p_calibrated": 0.6854,
       "outcome": {
         "final_score": "TB 4 @ UTA 5",
         "side": "away",
@@ -394410,7 +394430,7 @@
       "result": "won",
       "payout_units": 0.5319,
       "recorded_at": "2026-10-24T18:31:25",
-      "p_calibrated": 0.653,
+      "p_calibrated": 0.6706,
       "outcome": {
         "final_score": "MIN 5 @ SEA 1",
         "side": "away",
@@ -394435,7 +394455,7 @@
       "result": "won",
       "payout_units": 0.5747,
       "recorded_at": "2026-10-24T18:31:25",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "outcome": {
         "period": 3,
         "period_goals": 3,
@@ -394460,7 +394480,7 @@
       "result": "won",
       "payout_units": 0.5747,
       "recorded_at": "2026-10-24T18:31:25",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "outcome": {
         "period": 3,
         "period_goals": 2,
@@ -394485,7 +394505,7 @@
       "result": "won",
       "payout_units": 0.5747,
       "recorded_at": "2026-10-24T18:31:25",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "outcome": {
         "period": 3,
         "period_goals": 6,
@@ -394510,7 +394530,7 @@
       "result": "won",
       "payout_units": 0.5747,
       "recorded_at": "2026-10-24T18:31:25",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "outcome": {
         "period": 3,
         "period_goals": 4,
@@ -394535,7 +394555,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-10-24T18:31:25",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "outcome": {
         "period": 3,
         "period_goals": 1,
@@ -394560,7 +394580,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-10-24T18:31:25",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "outcome": {
         "period": 3,
         "period_goals": 1,
@@ -394585,7 +394605,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-10-24T18:31:25",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "outcome": {
         "period": 3,
         "period_goals": 0,
@@ -394610,7 +394630,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-10-24T18:31:25",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "outcome": {
         "period": 3,
         "period_goals": 1,
@@ -394635,7 +394655,7 @@
       "result": "won",
       "payout_units": 0.5747,
       "recorded_at": "2026-10-24T18:31:25",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "outcome": {
         "period": 3,
         "period_goals": 5,
@@ -394660,7 +394680,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-10-24T18:31:25",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "outcome": {
         "period": 3,
         "period_goals": 0,
@@ -394685,7 +394705,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-10-24T18:31:25",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "outcome": {
         "period": 3,
         "period_goals": 0,
@@ -394710,7 +394730,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-10-24T18:31:25",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "outcome": {
         "period": 3,
         "period_goals": 1,
@@ -394735,7 +394755,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-10-24T18:31:25",
-      "p_calibrated": 0.5379,
+      "p_calibrated": 0.5514,
       "outcome": {
         "stat": "blocks",
         "actual": 1,
@@ -394785,7 +394805,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-10-24T18:31:25",
-      "p_calibrated": 0.5276,
+      "p_calibrated": 0.5417,
       "outcome": {
         "stat": "blocks",
         "actual": 1,
@@ -394835,7 +394855,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-10-24T18:31:25",
-      "p_calibrated": 0.5428,
+      "p_calibrated": 0.556,
       "outcome": {
         "stat": "blocks",
         "actual": 0,
@@ -394860,7 +394880,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-10-24T18:31:25",
-      "p_calibrated": 0.5379,
+      "p_calibrated": 0.5514,
       "outcome": {
         "stat": "blocks",
         "actual": 0,
@@ -394888,7 +394908,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-10-24T18:31:25",
-      "p_calibrated": 0.5518,
+      "p_calibrated": 0.5644,
       "outcome": {
         "stat": "blocks",
         "actual": 0,
@@ -394913,7 +394933,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-10-24T18:31:25",
-      "p_calibrated": 0.5276,
+      "p_calibrated": 0.5417,
       "outcome": {
         "stat": "blocks",
         "actual": 0,
@@ -396492,11 +396512,20 @@
       "matchup": "Frances Tiafoe vs Lorenzo Musetti",
       "date": "2026-10-25",
       "pick_id": "tennis_games_total_games_over_19_5|TENNIS|Frances_Tiafoe_vs_Lorenzo_Musetti|TOTAL_GAMES_OVER_19_5|2026-10-25",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "won",
+      "payout_units": 0.4464,
       "recorded_at": "2026-10-25T01:09:00",
-      "p_calibrated": 0.7689
+      "p_calibrated": 0.7689,
+      "outcome": {
+        "match": "Frances Tiafoe vs Lorenzo Musetti",
+        "winner": "Lorenzo Musetti",
+        "sets": "0-2",
+        "total_games": 25,
+        "market": "TOTAL_GAMES_OVER_19.5",
+        "verify": "Lorenzo Musetti won 0-2 (25 games) \u2014 TOTAL_GAMES_OVER_19.5"
+      },
+      "settled_at": "2026-10-28T16:59:21"
     },
     {
       "source": "tennis_sets_straight_sets_player1_yes",
@@ -397854,7 +397883,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-10-25T18:40:02",
-      "p_calibrated": 0.5495,
+      "p_calibrated": 0.5623,
       "outcome": {
         "stat": "blk",
         "actual": 1,
@@ -397896,7 +397925,7 @@
       "result": "won",
       "payout_units": 0.4739,
       "recorded_at": "2026-10-25T18:40:02",
-      "p_calibrated": 0.5446,
+      "p_calibrated": 0.5577,
       "outcome": {
         "stat": "blk",
         "actual": 1,
@@ -397946,7 +397975,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-10-25T18:40:02",
-      "p_calibrated": 0.5359,
+      "p_calibrated": 0.5495,
       "outcome": {
         "stat": "blk",
         "actual": 0,
@@ -398318,11 +398347,19 @@
       "matchup": "LAL @ UTA",
       "date": "2026-10-25",
       "pick_id": "nba_tov_tov_under_3_0|NBA|jaren_jackson_jr|TOV_UNDER_3_0|2026-10-25",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "lost",
+      "payout_units": -1.0,
       "recorded_at": "2026-10-25T18:40:02",
-      "p_calibrated": 0.72
+      "p_calibrated": 0.72,
+      "outcome": {
+        "stat": "to",
+        "actual": 4,
+        "line": 3.0,
+        "side": "UNDER",
+        "verify": "jaren jackson jr \u2014 to = 4 (line 3.0, bet under) on 2026-10-25"
+      },
+      "settled_at": "2026-10-28T16:59:21"
     },
     {
       "source": "nba_pra_pra_under_52.5",
@@ -398761,11 +398798,19 @@
       "matchup": "LAL @ UTA",
       "date": "2026-10-25",
       "pick_id": "nba_pra_pra_under_30_5|NBA|jaren_jackson_jr|PRA_UNDER_30_5|2026-10-25",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "won",
+      "payout_units": 0.4673,
       "recorded_at": "2026-10-25T18:40:02",
-      "p_calibrated": 0.6414
+      "p_calibrated": 0.6414,
+      "outcome": {
+        "stat": "pra",
+        "actual": 23,
+        "line": 30.5,
+        "side": "UNDER",
+        "verify": "jaren jackson jr \u2014 pra = 23 (line 30.5, bet under) on 2026-10-25"
+      },
+      "settled_at": "2026-10-28T16:59:21"
     },
     {
       "source": "nba_pra_pra_under_30.5",
@@ -399324,7 +399369,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-10-25T18:40:02",
-      "p_calibrated": 0.652,
+      "p_calibrated": 0.6703,
       "outcome": {
         "final_score": "NYI 3 @ DAL 6",
         "side": "away",
@@ -399349,7 +399394,7 @@
       "result": "won",
       "payout_units": 0.4329,
       "recorded_at": "2026-10-25T18:40:02",
-      "p_calibrated": 0.698,
+      "p_calibrated": 0.6831,
       "outcome": {
         "final_score": "MTL 2 @ WPG 1",
         "side": "away",
@@ -399374,7 +399419,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-10-25T18:40:02",
-      "p_calibrated": 0.715,
+      "p_calibrated": 0.6879,
       "outcome": {
         "final_score": "COL 2 @ NSH 6",
         "side": "away",
@@ -399399,7 +399444,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-10-25T18:40:02",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "outcome": {
         "period": 3,
         "period_goals": 1,
@@ -399424,7 +399469,7 @@
       "result": "won",
       "payout_units": 0.5747,
       "recorded_at": "2026-10-25T18:40:02",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "outcome": {
         "period": 3,
         "period_goals": 3,
@@ -399449,7 +399494,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-10-25T18:40:02",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "outcome": {
         "period": 3,
         "period_goals": 1,
@@ -399474,7 +399519,7 @@
       "result": "won",
       "payout_units": 0.5747,
       "recorded_at": "2026-10-25T18:40:02",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "outcome": {
         "period": 3,
         "period_goals": 2,
@@ -399499,7 +399544,7 @@
       "result": "won",
       "payout_units": 0.5747,
       "recorded_at": "2026-10-25T18:40:02",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "outcome": {
         "period": 3,
         "period_goals": 3,
@@ -399548,7 +399593,7 @@
       "result": "won",
       "payout_units": 0.6849,
       "recorded_at": "2026-10-25T18:40:02",
-      "p_calibrated": 0.5276,
+      "p_calibrated": 0.5417,
       "outcome": {
         "stat": "blocks",
         "actual": 2,
@@ -399886,11 +399931,19 @@
       "matchup": "LAL @ UTA",
       "date": "2026-10-25",
       "pick_id": "nba_reb_reb_under_7_0|NBA|jaren_jackson_jr|REB_UNDER_7_0|2026-10-25",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "won",
+      "payout_units": 0.5181,
       "recorded_at": "2026-10-25T18:40:02",
-      "p_calibrated": 0.659
+      "p_calibrated": 0.659,
+      "outcome": {
+        "stat": "reb",
+        "actual": 2,
+        "line": 7.0,
+        "side": "UNDER",
+        "verify": "jaren jackson jr \u2014 reb = 2 (line 7.0, bet under) on 2026-10-25"
+      },
+      "settled_at": "2026-10-28T16:59:21"
     },
     {
       "source": "nba_reb_reb_under_7.0",
@@ -400663,11 +400716,19 @@
       "matchup": "LAL @ UTA",
       "date": "2026-10-25",
       "pick_id": "nba_pr_pr_under_27_5|NBA|jaren_jackson_jr|PR_UNDER_27_5|2026-10-25",
-      "settled": false,
-      "result": "pending",
-      "payout_units": null,
+      "settled": true,
+      "result": "won",
+      "payout_units": 0.4902,
       "recorded_at": "2026-10-25T18:40:02",
-      "p_calibrated": 0.6681
+      "p_calibrated": 0.6681,
+      "outcome": {
+        "stat": "pts_reb",
+        "actual": 22,
+        "line": 27.5,
+        "side": "UNDER",
+        "verify": "jaren jackson jr \u2014 pts_reb = 22 (line 27.5, bet under) on 2026-10-25"
+      },
+      "settled_at": "2026-10-28T16:59:21"
     },
     {
       "source": "nba_pr_pr_under_25.0",
@@ -401402,7 +401463,7 @@
       "result": "won",
       "payout_units": 0.9091,
       "recorded_at": "2026-10-26T06:41:29",
-      "p_calibrated": 0.6524,
+      "p_calibrated": 0.6513,
       "outcome": {
         "final_score": "MIL 10 @ TB 1",
         "total_runs": 11,
@@ -402134,7 +402195,7 @@
       "result": "won",
       "payout_units": 0.4902,
       "recorded_at": "2026-10-26T16:46:58",
-      "p_calibrated": 0.5432,
+      "p_calibrated": 0.5564,
       "outcome": {
         "stat": "blk",
         "actual": 1,
@@ -403264,7 +403325,7 @@
       "result": "won",
       "payout_units": 0.5747,
       "recorded_at": "2026-10-26T16:46:58",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "outcome": {
         "period": 3,
         "period_goals": 2,
@@ -403289,7 +403350,7 @@
       "result": "won",
       "payout_units": 0.5747,
       "recorded_at": "2026-10-26T16:46:58",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "outcome": {
         "period": 3,
         "period_goals": 3,
@@ -403314,7 +403375,7 @@
       "result": "won",
       "payout_units": 0.5747,
       "recorded_at": "2026-10-26T16:46:58",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "outcome": {
         "period": 3,
         "period_goals": 4,
@@ -403364,7 +403425,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-10-26T16:46:58",
-      "p_calibrated": 0.5276,
+      "p_calibrated": 0.5417,
       "outcome": {
         "stat": "blocks",
         "actual": 0,
@@ -404443,7 +404504,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-10-27T00:37:53",
-      "p_calibrated": 0.5712,
+      "p_calibrated": 0.5582,
       "outcome": {
         "final_score": "MIL 3 @ TB 4",
         "total_runs": 7,
@@ -404484,7 +404545,7 @@
       "result": "won",
       "payout_units": 0.4587,
       "recorded_at": "2026-10-27T00:37:53",
-      "p_calibrated": 0.685,
+      "p_calibrated": 0.6795,
       "outcome": {
         "final_score": "LA 6 @ NYR 3",
         "side": "away",
@@ -404616,7 +404677,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-10-27T01:31:39",
-      "p_calibrated": 0.708,
+      "p_calibrated": 0.6859,
       "outcome": {
         "final_score": "TOR 2 @ CGY 5",
         "side": "away",
@@ -405263,7 +405324,7 @@
       "result": "won",
       "payout_units": 0.3861,
       "recorded_at": "2026-10-27T20:21:50",
-      "p_calibrated": 0.721,
+      "p_calibrated": 0.6896,
       "outcome": {
         "final_score": "CBJ 4 @ PHI 3",
         "side": "away",
@@ -405288,7 +405349,7 @@
       "result": "won",
       "payout_units": 0.4464,
       "recorded_at": "2026-10-27T20:21:50",
-      "p_calibrated": 0.692,
+      "p_calibrated": 0.6815,
       "outcome": {
         "final_score": "BOS 1 @ CAR 2",
         "side": "away",
@@ -405363,7 +405424,7 @@
       "result": "won",
       "payout_units": 0.4762,
       "recorded_at": "2026-10-27T20:21:50",
-      "p_calibrated": 0.677,
+      "p_calibrated": 0.6773,
       "outcome": {
         "final_score": "NYI 4 @ NSH 3",
         "side": "away",
@@ -405388,7 +405449,7 @@
       "result": "won",
       "payout_units": 0.5263,
       "recorded_at": "2026-10-27T20:21:50",
-      "p_calibrated": 0.655,
+      "p_calibrated": 0.6711,
       "outcome": {
         "final_score": "NJ 5 @ DAL 1",
         "side": "away",
@@ -405413,7 +405474,7 @@
       "result": "won",
       "payout_units": 0.4016,
       "recorded_at": "2026-10-27T20:21:50",
-      "p_calibrated": 0.713,
+      "p_calibrated": 0.6873,
       "outcome": {
         "final_score": "FLA 5 @ WPG 1",
         "side": "away",
@@ -405438,7 +405499,7 @@
       "result": "won",
       "payout_units": 0.4484,
       "recorded_at": "2026-10-27T20:21:50",
-      "p_calibrated": 0.69,
+      "p_calibrated": 0.6809,
       "outcome": {
         "final_score": "MIN 3 @ UTA 1",
         "side": "away",
@@ -405463,7 +405524,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-10-27T20:21:50",
-      "p_calibrated": 0.684,
+      "p_calibrated": 0.6792,
       "outcome": {
         "final_score": "OTT 1 @ VGK 4",
         "side": "away",
@@ -405513,7 +405574,7 @@
       "result": "won",
       "payout_units": 0.5181,
       "recorded_at": "2026-10-27T20:21:50",
-      "p_calibrated": 0.659,
+      "p_calibrated": 0.6723,
       "outcome": {
         "final_score": "BUF 2 @ SJ 0",
         "side": "away",
@@ -405538,7 +405599,7 @@
       "result": "won",
       "payout_units": 0.5747,
       "recorded_at": "2026-10-27T20:21:50",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "outcome": {
         "period": 3,
         "period_goals": 2,
@@ -405563,7 +405624,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-10-27T20:21:50",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "outcome": {
         "period": 3,
         "period_goals": 1,
@@ -405588,7 +405649,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-10-27T20:21:50",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "outcome": {
         "period": 3,
         "period_goals": 1,
@@ -405613,7 +405674,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-10-27T20:21:50",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "outcome": {
         "period": 3,
         "period_goals": 1,
@@ -405638,7 +405699,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-10-27T20:21:50",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "outcome": {
         "period": 3,
         "period_goals": 1,
@@ -405663,7 +405724,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-10-27T20:21:50",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "outcome": {
         "period": 3,
         "period_goals": 1,
@@ -405688,7 +405749,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-10-27T20:21:50",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "outcome": {
         "period": 3,
         "period_goals": 1,
@@ -405713,7 +405774,7 @@
       "result": "won",
       "payout_units": 0.5747,
       "recorded_at": "2026-10-27T20:21:50",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "outcome": {
         "period": 3,
         "period_goals": 3,
@@ -405738,7 +405799,7 @@
       "result": "won",
       "payout_units": 0.5747,
       "recorded_at": "2026-10-27T20:21:50",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "outcome": {
         "period": 3,
         "period_goals": 4,
@@ -405763,7 +405824,7 @@
       "result": "won",
       "payout_units": 0.5747,
       "recorded_at": "2026-10-27T20:21:50",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "outcome": {
         "period": 3,
         "period_goals": 5,
@@ -405788,7 +405849,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-10-27T20:21:50",
-      "p_calibrated": 0.6382,
+      "p_calibrated": 0.587,
       "outcome": {
         "period": 3,
         "period_goals": 1,
@@ -405837,7 +405898,7 @@
       "result": "won",
       "payout_units": 0.6849,
       "recorded_at": "2026-10-27T20:21:50",
-      "p_calibrated": 0.5276,
+      "p_calibrated": 0.5417,
       "outcome": {
         "stat": "blocks",
         "actual": 2,
@@ -405893,7 +405954,7 @@
       "result": "lost",
       "payout_units": -1.0,
       "recorded_at": "2026-10-27T20:21:50",
-      "p_calibrated": 0.5379,
+      "p_calibrated": 0.5514,
       "outcome": {
         "stat": "blocks",
         "actual": 0,
@@ -405918,7 +405979,7 @@
       "result": "won",
       "payout_units": 0.6849,
       "recorded_at": "2026-10-27T20:21:50",
-      "p_calibrated": 0.5276,
+      "p_calibrated": 0.5417,
       "outcome": {
         "stat": "blocks",
         "actual": 2,
@@ -406024,7 +406085,7 @@
       "result": "won",
       "payout_units": 0.495,
       "recorded_at": "2026-10-27T20:21:50",
-      "p_calibrated": 0.5428,
+      "p_calibrated": 0.556,
       "outcome": {
         "stat": "blocks",
         "actual": 2,
@@ -406049,7 +406110,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-27T20:21:50",
-      "p_calibrated": 0.5379
+      "p_calibrated": 0.5514
     },
     {
       "source": "nhl_skater_blocks_over_1.5",
@@ -406066,7 +406127,7 @@
       "result": "won",
       "payout_units": 0.4032,
       "recorded_at": "2026-10-27T20:21:50",
-      "p_calibrated": 0.5518,
+      "p_calibrated": 0.5644,
       "outcome": {
         "stat": "blocks",
         "actual": 2,
@@ -406495,7 +406556,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-28T01:08:01",
-      "p_calibrated": 0.6524
+      "p_calibrated": 0.6513
     },
     {
       "source": "ufc_r1_fight_r1_finish_yes",
@@ -419063,7 +419124,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-28T16:43:01",
-      "p_calibrated": 0.5432
+      "p_calibrated": 0.5564
     },
     {
       "source": "nba_blocks_over_1.5",
@@ -419080,7 +419141,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-28T16:43:01",
-      "p_calibrated": 0.5333
+      "p_calibrated": 0.547
     },
     {
       "source": "nba_blocks_over_0.5",
@@ -419097,7 +419158,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-28T16:43:01",
-      "p_calibrated": 0.5514
+      "p_calibrated": 0.564
     },
     {
       "source": "nba_steals_over_0.5",
@@ -419131,7 +419192,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-28T16:43:01",
-      "p_calibrated": 0.5434
+      "p_calibrated": 0.5566
     },
     {
       "source": "nba_steals_over_0.5",
@@ -420763,7 +420824,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-28T16:43:01",
-      "p_calibrated": 0.651
+      "p_calibrated": 0.67
     },
     {
       "source": "nhl_period_p3_over_1.5",
@@ -420780,7 +420841,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-28T16:43:01",
-      "p_calibrated": 0.6382
+      "p_calibrated": 0.587
     },
     {
       "source": "nhl_period_p3_over_1.5",
@@ -420797,7 +420858,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-28T16:43:01",
-      "p_calibrated": 0.6382
+      "p_calibrated": 0.587
     },
     {
       "source": "nhl_period_p3_over_1.5",
@@ -420814,7 +420875,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-28T16:43:01",
-      "p_calibrated": 0.6382
+      "p_calibrated": 0.587
     },
     {
       "source": "nhl_period_p3_over_1.5",
@@ -420831,7 +420892,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-28T16:43:01",
-      "p_calibrated": 0.6382
+      "p_calibrated": 0.587
     },
     {
       "source": "nhl_skater_hits_over_2.5",
@@ -420882,7 +420943,7 @@
       "result": "pending",
       "payout_units": null,
       "recorded_at": "2026-10-28T16:43:01",
-      "p_calibrated": 0.5276
+      "p_calibrated": 0.5417
     },
     {
       "source": "nba_reb_reb_over_9.0",
@@ -421835,6 +421896,186 @@
       "payout_units": null,
       "recorded_at": "2026-10-28T16:43:01",
       "p_calibrated": 0.711
+    },
+    {
+      "source": "nfl_game_ml",
+      "sport": "NFL",
+      "player_or_matchup": "BAL @ BUF",
+      "market": "ML_HOME",
+      "prob": 0.6839,
+      "edge_pct": 7.47,
+      "fair_american": -216,
+      "book_american": -175,
+      "event_id": "401873026",
+      "desk_verdict": "unproven",
+      "model_rule": "form_v2",
+      "date": "2026-11-01",
+      "pick_id": "nfl_game_ml|NFL|BAL___BUF|ML_HOME|2026-11-01",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-10-28T16:59:21",
+      "p_calibrated": 0.6001
+    },
+    {
+      "source": "nfl_game_ml",
+      "sport": "NFL",
+      "player_or_matchup": "ARI @ DAL",
+      "market": "ML_AWAY",
+      "prob": 0.2839,
+      "edge_pct": 7.87,
+      "fair_american": 252,
+      "book_american": 280,
+      "event_id": "401873024",
+      "desk_verdict": "unproven",
+      "model_rule": "form_v2",
+      "date": "2026-11-01",
+      "pick_id": "nfl_game_ml|NFL|ARI___DAL|ML_AWAY|2026-11-01",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-10-28T16:59:21",
+      "p_calibrated": 0.4846
+    },
+    {
+      "source": "nfl_game_ml",
+      "sport": "NFL",
+      "player_or_matchup": "MIN @ DET",
+      "market": "ML_AWAY",
+      "prob": 0.4951,
+      "edge_pct": 19.8,
+      "fair_american": 102,
+      "book_american": 142,
+      "event_id": "401873030",
+      "desk_verdict": "unproven",
+      "model_rule": "form_v2",
+      "date": "2026-11-01",
+      "pick_id": "nfl_game_ml|NFL|MIN___DET|ML_AWAY|2026-11-01",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-10-28T16:59:21",
+      "p_calibrated": 0.5203
+    },
+    {
+      "source": "nfl_game_ml",
+      "sport": "NFL",
+      "player_or_matchup": "CLE @ PIT",
+      "market": "ML_AWAY",
+      "prob": 0.4162,
+      "edge_pct": 5.72,
+      "fair_american": 140,
+      "book_american": 154,
+      "event_id": "401873027",
+      "desk_verdict": "unproven",
+      "model_rule": "form_v2",
+      "date": "2026-11-01",
+      "pick_id": "nfl_game_ml|NFL|CLE___PIT|ML_AWAY|2026-11-01",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-10-28T16:59:21",
+      "p_calibrated": 0.5069
+    },
+    {
+      "source": "nfl_game_ml",
+      "sport": "NFL",
+      "player_or_matchup": "ATL @ TB",
+      "market": "ML_AWAY",
+      "prob": 0.5163,
+      "edge_pct": 10.49,
+      "fair_american": -107,
+      "book_american": 114,
+      "event_id": "401873025",
+      "desk_verdict": "unproven",
+      "model_rule": "form_v2",
+      "date": "2026-11-01",
+      "pick_id": "nfl_game_ml|NFL|ATL___TB|ML_AWAY|2026-11-01",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-10-28T16:59:21",
+      "p_calibrated": 0.5239
+    },
+    {
+      "source": "nfl_game_ml",
+      "sport": "NFL",
+      "player_or_matchup": "LAC @ LAR",
+      "market": "ML_HOME",
+      "prob": 0.8018,
+      "edge_pct": 7.09,
+      "fair_american": -405,
+      "book_american": -298,
+      "event_id": "401873032",
+      "desk_verdict": "unproven",
+      "model_rule": "form_v2",
+      "date": "2026-11-01",
+      "pick_id": "nfl_game_ml|NFL|LAC___LAR|ML_HOME|2026-11-01",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-10-28T16:59:21",
+      "p_calibrated": 0.6273
+    },
+    {
+      "source": "nfl_game_ml",
+      "sport": "NFL",
+      "player_or_matchup": "KC @ DEN",
+      "market": "ML_HOME",
+      "prob": 0.6089,
+      "edge_pct": 20.59,
+      "fair_american": -156,
+      "book_american": -102,
+      "event_id": "401873033",
+      "desk_verdict": "unproven",
+      "model_rule": "form_v2",
+      "date": "2026-11-01",
+      "pick_id": "nfl_game_ml|NFL|KC___DEN|ML_HOME|2026-11-01",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-10-28T16:59:21",
+      "p_calibrated": 0.5828
+    },
+    {
+      "source": "nfl_game_ml",
+      "sport": "NFL",
+      "player_or_matchup": "NE @ MIA",
+      "market": "ML_AWAY",
+      "prob": 0.7916,
+      "edge_pct": 4.7,
+      "fair_american": -380,
+      "book_american": -310,
+      "event_id": "401873034",
+      "desk_verdict": "unproven",
+      "model_rule": "form_v2",
+      "date": "2026-11-01",
+      "pick_id": "nfl_game_ml|NFL|NE___MIA|ML_AWAY|2026-11-01",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-10-28T16:59:21",
+      "p_calibrated": 0.5704
+    },
+    {
+      "source": "nfl_game_ml",
+      "sport": "NFL",
+      "player_or_matchup": "PHI @ WSH",
+      "market": "ML_AWAY",
+      "prob": 0.4032,
+      "edge_pct": 18.94,
+      "fair_american": 148,
+      "book_american": 195,
+      "event_id": "401873035",
+      "desk_verdict": "unproven",
+      "model_rule": "form_v2",
+      "date": "2026-11-01",
+      "pick_id": "nfl_game_ml|NFL|PHI___WSH|ML_AWAY|2026-11-01",
+      "settled": false,
+      "result": "pending",
+      "payout_units": null,
+      "recorded_at": "2026-10-28T16:59:21",
+      "p_calibrated": 0.5047
     }
   ],
   "note": "Unified pick ledger -- records every pick the model surfaces (top_25 board, whales, consensus, unders, sharp action, locks, POD) and settles each against actual outcomes. Per-source W-L feeds back into calibration so the model learns which modules are reliable. THIS is the training signal."
