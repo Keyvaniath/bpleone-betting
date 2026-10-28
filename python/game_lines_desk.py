@@ -400,6 +400,15 @@ def grow_lines(sport: str) -> Dict[str, Any]:
     return ev
 
 
+def ng_score(gm: Dict[str, Any]) -> Dict[str, Any]:
+    """ESPN starter-call accuracy vs the boxscore starter (from the log)."""
+    import nhl_goalies as ng
+    try:
+        return ng.score_probables(ng.ordered_games())
+    except Exception as e:
+        return {"error": repr(e)}
+
+
 # ------------------------------------------------------------------- run ----
 def run_sport(sport: str) -> Dict[str, Any]:
     finals = load_finals(sport)
@@ -412,22 +421,27 @@ def run_sport(sport: str) -> Dict[str, Any]:
     if sport == "nhl":
         gm = nhl_goalie_model(finals, params, season_start)
         bt_base = backtest(sport, finals, lines, params)
-        bt = backtest(sport, finals, lines, params, adj=gm["adj"]["proj"])
-        bt_known = backtest(sport, finals, lines, params, adj=gm["adj"]["known"])
+        bt_proj = backtest(sport, finals, lines, params, adj=gm["adj"]["proj"])
+        # NHL picks are made only once BOTH starters are confirmed, so the model
+        # being bet -- and judged -- is the known-starter one.
+        bt = backtest(sport, finals, lines, params, adj=gm["adj"]["known"])
         keys = ("n", "logloss_market", "logloss_elo", "logloss_blend", "w_fitted", "logloss_gain_vs_market",
                 "logloss_gain_ci90", "sim_out_of_sample")
         extra["goalie_model"] = {
             "method": ("Logistic model on walk-forward Elo + EWMA shot differential + goalie edge (GSAA/shot, "
                        "3,000-shot prior, vs the team's last-20-starts average, x 28.5 shots) + back-to-back rest, "
-                       "fitted on last season only. `projected` = primary starter weighted by P(start) -- what "
-                       "the pipeline knows when it bets; `known_starter` = the actual starter, a ceiling only."),
+                       "fitted on last season only. Picks only once ESPN lists BOTH starters as Confirmed, priced "
+                       "with the known-starter model (the headline backtest); until then the board shows the "
+                       "projected model (ESPN's Expected goalie, else the team's primary by P(start))."),
             "betas_projected": gm["betas"]["proj"], "betas_known_starter": gm["betas"]["known"],
             "beta_labels": ["logit(Elo)", "per 10 shots of EWMA shot differential", "per goal of goalie edge",
                             "per back-to-back advantage", "intercept"],
             "fit_n_last_season": gm["fit_n"], "fit_logloss_last_season": gm["fit_logloss"],
             "n_goalie_games": gm["n_goalie_games"], "n_boxscores_added_today": gm["n_grown"],
             "backtest_elo_only": {k: bt_base.get(k) for k in keys},
-            "backtest_known_starter": {k: bt_known.get(k) for k in keys},
+            "backtest_projected": {k: bt_proj.get(k) for k in keys},
+            "starters_source": "ESPN NHL scoreboard probableStartingGoalie (Expected / Confirmed)",
+            "espn_starter_accuracy": ng_score(gm),
         }
     else:
         bt = backtest(sport, finals, lines, params)
@@ -450,6 +464,16 @@ def run_sport(sport: str) -> Dict[str, Any]:
     elo = replay(sport, finals, params)
     board = []
     odds = _load(os.path.join(DATA_DIR, "espn_odds.json"))
+    probs = {}
+    if gm:
+        import nhl_goalies as ng
+        dates = []
+        for g in odds.get("games") or []:
+            if g.get("sport") == "NHL" and g.get("status") == "pre":
+                dates.append(ng._et_date(g.get("commence_time")))
+        probs = ng.espn_probables(dates)
+        if probs:
+            ng.log_probables(probs)
     for g in odds.get("games") or []:
         m = g.get("market") or {}
         if g.get("sport") != sport.upper() or g.get("status") != "pre" or m.get("ml_home") is None:
@@ -464,31 +488,52 @@ def run_sport(sport: str) -> Dict[str, Any]:
             game_date = (ct - dt.timedelta(hours=4)).date().isoformat()
         except Exception:
             game_date = None
-        goalies = None
+        goalies, may_pick, blocked = None, True, None
         if gm and game_date:
             st = gm["state"]
-            hs, as_ = st.side(h, game_date), st.side(a, game_date)
-            if gm["betas"]["proj"]:
-                f = {"goalie_proj": hs["proj_goals"] - as_["proj_goals"], "rest": int(as_["b2b"]) - int(hs["b2b"]),
-                     "shots": st.shots(h, a)}
+            pr = probs.get((game_date, a, h)) or {}
+            named = {sd: (pr.get(sd) or {}) for sd in ("home", "away")}
+            gid = {sd: st.resolve(team, named[sd].get("name")) for sd, team in (("home", h), ("away", a))}
+            confirmed = all(named[sd].get("status") == "confirmed" for sd in ("home", "away"))
+            hs = st.side(h, game_date, expected=gid["home"] if named["home"].get("status") == "expected" else None)
+            as_ = st.side(a, game_date, expected=gid["away"] if named["away"].get("status") == "expected" else None)
+            rest, shots = int(as_["b2b"]) - int(hs["b2b"]), st.shots(h, a)
+            if confirmed and gm["betas"]["known"]:
+                f = {"goalie_known": st.known(h, gid["home"]) - st.known(a, gid["away"]), "rest": rest, "shots": shots}
+                p_elo = _sig(gm["z"]("known", _logit(p_elo), f))
+            elif gm["betas"]["proj"]:
+                f = {"goalie_proj": hs["proj_goals"] - as_["proj_goals"], "rest": rest, "shots": shots}
                 p_elo = _sig(gm["z"]("proj", _logit(p_elo), f))
-            goalies = {}
-            for side, x in (("home", hs), ("away", as_)):
-                likely_primary = x["p_primary"] >= 0.5 or not x["backup"]
-                goalies[side] = {"projected": x["primary"] if likely_primary else x["backup"],
-                                 "p_start": x["p_primary"] if likely_primary else round(1 - x["p_primary"], 3),
-                                 "primary": x["primary"], "backup": x["backup"], "back_to_back": x["b2b"],
-                                 "edge_goals": round(x["proj_goals"], 3)}
+            if not confirmed:
+                may_pick, blocked = False, "waiting on both starters to be confirmed"
+            goalies = {"status": "confirmed" if confirmed else "projected"}
+            for side, x, team in (("home", hs, h), ("away", as_, a)):
+                nm, stt = named[side].get("name"), named[side].get("status")
+                if stt == "confirmed":
+                    g_out = {"projected": nm, "status": "confirmed", "p_start": 1.0,
+                             "edge_goals": round(st.known(team, gid[side]), 3), "known_goalie": gid[side] is not None}
+                elif stt == "expected":
+                    g_out = {"projected": nm, "status": "expected", "p_start": x["p_primary"],
+                             "edge_goals": round(x["proj_goals"], 3), "known_goalie": gid[side] is not None}
+                else:
+                    likely_primary = x["p_primary"] >= 0.5 or not x["backup"]
+                    g_out = {"projected": x["primary"] if likely_primary else x["backup"], "status": "model",
+                             "p_start": x["p_primary"] if likely_primary else round(1 - x["p_primary"], 3),
+                             "edge_goals": round(x["proj_goals"], 3)}
+                g_out.update({"primary": x["primary"], "backup": x["backup"], "back_to_back": x["b2b"]})
+                goalies[side] = g_out
         p = _sig(_logit(p_mkt) + w * (_logit(p_elo) - _logit(p_mkt)))
         row = {"event_id": g.get("event_id"), "matchup": f"{a} @ {h}", "commence": g.get("commence_time"),
                "p_home_elo": round(p_elo, 4), "p_home_dk": round(p_mkt, 4), "p_home": round(p, 4),
                "ml_home": m.get("ml_home"), "ml_away": m.get("ml_away"), "pick": None, "game_date": game_date}
         if goalies:
             row["goalies"] = goalies
+        if blocked:
+            row["pick_blocked"] = blocked
         best = None
         for side, pp, px in (("home", p, m.get("ml_home")), ("away", 1 - p, m.get("ml_away"))):
             dd = _dec(px)
-            if dd and w > 0:
+            if dd and w > 0 and may_pick:
                 ev = pp * dd - 1
                 if ev >= MIN_EDGE and (best is None or ev > best["ev"]):
                     best = {"side": side, "market": f"ML_{side.upper()}", "team": h if side == "home" else a,

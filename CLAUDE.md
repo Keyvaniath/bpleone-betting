@@ -41,6 +41,25 @@ bpleone-site/
 
 ## Current deployment state (LIVE)
 
+- **2026-10-28 (night) — NHL CONFIRMED STARTERS AT BET TIME.** Source: ESPN NHL
+  scoreboard `competitors[].probables[name=probableStartingGoalie]` with status
+  `expected` | `confirmed` (`nhl_goalies.espn_probables`; ESPN shortName ->
+  NHL goalie id via `GoalieState.resolve`, unseen goalie = league average).
+  RULE: an NHL game is priced with the KNOWN-starter model and may pick ONLY
+  when both sides are Confirmed; otherwise `pick_blocked` and the row shows
+  ESPN's Expected goalie (as primary at EXPECTED_P 0.90) or the model's
+  projection. Headline NHL backtest = known-starter (that's what gets bet):
+  0.6620 vs DK 0.6557, blend 0.6556 at w=0.10 -> verdict flips to UNPROVEN by
+  0.0001 (CI [-0.0014, 0.0017]); at w=0.10 a 4% EV pick is near-impossible.
+  Gate left as written (don't move it after seeing a result). Bet time: the
+  desk + `espn_odds.py` now also run in live-games.yml (15-min cron) and
+  continuous-heartbeat.yml right before all_picks_tracker, so the ledger
+  (first-in wins) logs the pick soon after confirmation at the then-current
+  DK price. GH cron is lossy (live-games fired 3x on 10/28), so "soon" can be
+  hours; a reliable trigger needs the Worker cron (SYNC_TOKEN, Brandon).
+  `data/nhl_starters_log.json` keeps the last pre-game ESPN read per game +
+  first_confirmed_at; `goalie_model.espn_starter_accuracy` scores it vs the
+  boxscore starter (shown on the card once n > 0).
 - **2026-10-28 (later) — NHL MODEL: GOALIES, SHOTS, REST.** `python/nhl_goalies.py`
   + seed `tools/build_nhl_goalie_seed.py` -> `data/nhl_goalie_games.json` (2,990
   NHL boxscores since 2024-25 from api-web.nhle.com: starter flag, shots, saves,

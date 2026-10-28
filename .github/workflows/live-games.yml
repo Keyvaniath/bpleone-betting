@@ -71,6 +71,17 @@ jobs:
       - name: POD factor decomposition
         working-directory: python
         run: python pod_factor_decomp.py || echo "pod_factor_decomp.py" >> "$RUNNER_TEMP/failed_steps.txt"
+      # NHL bet-time (2026-10-28): NHL game-line picks wait for BOTH starters
+      # to be Confirmed on ESPN, which happens between morning skate and puck
+      # drop -- after the daily runs. Fresh DK lines + the desk every poll so
+      # the ledger logs the pick (first-in wins) within ~15 min of confirmation,
+      # at the price then. ~2s total.
+      - name: DraftKings odds refresh (ESPN, all sports)
+        working-directory: python
+        run: python espn_odds.py > /dev/null || echo "espn_odds.py" >> "$RUNNER_TEMP/failed_steps.txt"
+      - name: NFL + NHL game-lines desk (confirmed NHL starters)
+        working-directory: python
+        run: python game_lines_desk.py || echo "game_lines_desk.py" >> "$RUNNER_TEMP/failed_steps.txt"
       # Unified all-picks ledger (every surfaced pick across all modules)
       - name: All-picks unified ledger
         working-directory: python

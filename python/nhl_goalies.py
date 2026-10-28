@@ -18,12 +18,16 @@ inputs the market prices and Elo can't see:
      (alpha 0.08, ~12-game memory). Shot share predicts future wins better than
      goals over short windows.
 
-Starters are NOT confirmed when the pipeline runs (10 AM / 6 PM ET; the NHL API
-names starters only at puck drop), so the desk uses a PROJECTED starter: the
-team's primary (most starts in its last 10) with a probability estimated from
-history (lower on back-to-backs), else its backup. The backtest reports both
-the projected model (what we can actually bet) and the known-starter model (the
-ceiling, since the DK close already knows who starts).
+STARTERS (2026-10-28 later): ESPN's scoreboard carries each team's
+`probableStartingGoalie` with a status -- "Expected" (beat-reporter / morning
+skate read) or "Confirmed". `espn_probables` reads it every run and
+`log_probables` keeps the latest pre-game read per game in
+data/nhl_starters_log.json, so ESPN's calls get scored against who actually
+started. The desk prices a game with the KNOWN-starter model only when both
+starters are Confirmed, and only then may it pick (first-in wins in the ledger,
+so the logged price is the price at confirmation). Otherwise it shows the
+PROJECTED starter: ESPN's Expected goalie at EXPECTED_P, else the team's
+primary (most starts in its last 10) with a back-to-back-aware probability.
 
 Data: data/nhl_goalie_games.json (seeded by tools/build_nhl_goalie_seed.py,
 grown here each run from the last few days' boxscores; network failures are
@@ -54,6 +58,9 @@ SHOTS_PER_GAME = 28.5    # league shots on goal per team-game, roughly
 PRIMARY_WINDOW = 10      # "primary" = most starts in the team's last 10 games
 BASE_WINDOW = 20         # team baseline = average q of the starters in its last 20
 SHOT_ALPHA = 0.08        # EWMA weight on the newest game's shot differential
+EXPECTED_P = 0.90        # P(ESPN's "Expected" goalie starts); measured in the starters log
+ESPN_SB = "https://site.api.espn.com/apis/site/v2/sports/hockey/nhl/scoreboard"
+LOG_PATH = os.path.join(DATA_DIR, "nhl_starters_log.json")
 
 
 def _team(a: Optional[str]) -> str:
@@ -236,13 +243,38 @@ class GoalieState:
         recent = list(self.starts[team])
         return sum(self.q(g) for g in recent) / len(recent) if recent else 0.0
 
-    def side(self, team: str, date: str, starter=None) -> Dict[str, Any]:
+    def resolve(self, team: str, short_name: Optional[str]):
+        """ESPN short name ('T. Jarry') -> NHL goalie id; prefer goalies who
+        have started for this team. None if we've never seen him."""
+        if not short_name:
+            return None
+        nm = short_name.strip().lower()
+        ids = [g for g, n in self.name.items() if str(n or "").strip().lower() == nm]
+        if not ids:
+            last = nm.split()[-1]
+            ids = [g for g, n in self.name.items() if str(n or "").strip().lower().split()[-1:] == [last]]
+        mine = [g for g in ids if g in self.starts[team]]
+        return (mine or ids or [None])[0]
+
+    def known(self, team: str, gid) -> float:
+        """Goals-per-game edge of a known starter vs the team's usual; a goalie
+        we've never seen counts as league average."""
+        if not self.starts[team]:
+            return 0.0
+        return ((self.q(gid) if gid is not None else 0.0) - self.baseline(team)) * SHOTS_PER_GAME
+
+    def side(self, team: str, date: str, starter=None, expected=None) -> Dict[str, Any]:
         """Goals-per-game edge of this side's goalie vs the team's usual, for a
-        known starter (if given) and the projected one."""
+        known starter (if given) and the projected one. `expected` = the goalie
+        id ESPN lists as Expected: he becomes the projection's primary."""
         base = self.baseline(team)
         b2b = self.b2b(team, date)
         prim, backup, share = self._primary_backup(team)
         pp = self.p_primary(share, b2b)
+        if expected is not None:
+            if expected != prim:
+                prim, backup = expected, (prim if prim is not None else backup)
+            pp = EXPECTED_P
         if prim is None:
             proj = 0.0
         elif backup is None:
@@ -284,6 +316,102 @@ class GoalieState:
     def shots(self, home: str, away: str) -> float:
         """Home-minus-away EWMA shot differential, in units of 10 shots."""
         return (self.shot_diff[home] - self.shot_diff[away]) / 10
+
+
+# ------------------------------------------------------------- starters ----
+def _et_date(iso: Optional[str]) -> Optional[str]:
+    try:
+        t = dt.datetime.fromisoformat(str(iso).replace("Z", "+00:00"))
+        return (t - dt.timedelta(hours=4)).date().isoformat()
+    except Exception:
+        return None
+
+
+def espn_probables(dates: List[str]) -> Dict[Tuple[str, str, str], Dict[str, Any]]:
+    """{(et_date, away, home): {"home": {...}, "away": {...}, "state": ...}}
+    from ESPN's NHL scoreboard; each side {"name", "full", "status"} with
+    status 'confirmed' | 'expected' | None. Network failure = {}."""
+    out = {}
+    for d in sorted(set(x for x in dates if x)):
+        sb = _get(f"{ESPN_SB}?dates={d.replace('-', '')}") or {}
+        for ev in sb.get("events") or []:
+            comp = (ev.get("competitions") or [{}])[0]
+            side = {c.get("homeAway"): c for c in comp.get("competitors") or []}
+            if "home" not in side or "away" not in side:
+                continue
+            row = {"state": ((comp.get("status") or {}).get("type") or {}).get("state"),
+                   "espn_event_id": ev.get("id")}
+            for hs in ("home", "away"):
+                pr = next((x for x in side[hs].get("probables") or []
+                           if x.get("name") == "probableStartingGoalie"), None)
+                ath = (pr or {}).get("athlete") or {}
+                row[hs] = {"name": ath.get("shortName"), "full": ath.get("fullName"),
+                           "status": ((pr or {}).get("status") or {}).get("type") if pr else None}
+            key = (_et_date(ev.get("date")) or d, _team((side["away"].get("team") or {}).get("abbreviation")),
+                   _team((side["home"].get("team") or {}).get("abbreviation")))
+            out[key] = row
+    return out
+
+
+def log_probables(probs: Dict[Tuple[str, str, str], Dict[str, Any]]) -> None:
+    """Keep the latest PRE-GAME read per game (plus when each side was first
+    confirmed) so ESPN's calls can be scored against the boxscore starter."""
+    try:
+        with open(LOG_PATH, encoding="utf-8") as f:
+            doc = json.load(f)
+    except Exception:
+        doc = {"games": {}}
+    now = dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
+    g = doc.setdefault("games", {})
+    for (d, a, h), row in probs.items():
+        if row.get("state") != "pre":
+            continue
+        cur = g.setdefault(f"{d}|{a}|{h}", {"date": d, "away_team": a, "home_team": h})
+        for sd in ("home", "away"):
+            x = row.get(sd) or {}
+            if not x.get("name"):
+                continue
+            prev = cur.get(sd) or {}
+            new = {"name": x["name"], "status": x.get("status"), "at": now,
+                   "first_confirmed_at": prev.get("first_confirmed_at")}
+            if x.get("status") == "confirmed" and not new["first_confirmed_at"]:
+                new["first_confirmed_at"] = now
+            cur[sd] = new
+    doc["generated_at"] = now
+    with open(LOG_PATH, "w", encoding="utf-8") as f:
+        json.dump(doc, f, indent=0)
+
+
+def score_probables(games: List[Dict[str, Any]]) -> Dict[str, Any]:
+    """How often ESPN's last pre-game Expected / Confirmed goalie actually
+    started (boxscore starter flag)."""
+    try:
+        with open(LOG_PATH, encoding="utf-8") as f:
+            log = json.load(f).get("games") or {}
+    except Exception:
+        return {}
+    by = {(g["date"], g["away"], g["home"]): g for g in games}
+    tally = {"confirmed": [0, 0], "expected": [0, 0]}
+    misses = []
+    for k, row in log.items():
+        g = by.get((row["date"], row["away_team"], row["home_team"]))
+        if not g:
+            continue
+        for sd in ("home", "away"):
+            x = row.get(sd) or {}
+            st = x.get("status")
+            if st not in tally:
+                continue
+            rows = g["goalies"].get(sd) or []
+            actual = next((r["name"] for r in rows if r["starter"]), None)
+            hit = str(actual or "").lower() == str(x.get("name") or "").lower()
+            tally[st][0] += int(hit)
+            tally[st][1] += 1
+            if not hit:
+                misses.append({"game": k, "side": sd, "said": x.get("name"), "status": st, "started": actual})
+    out = {st: {"n": n, "correct": c, "rate": round(c / n, 3) if n else None} for st, (c, n) in tally.items()}
+    out["misses"] = misses[-20:]
+    return out
 
 
 def starter_of(g: Dict[str, Any], side: str):

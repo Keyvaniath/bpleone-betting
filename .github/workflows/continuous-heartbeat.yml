@@ -95,6 +95,16 @@ jobs:
           python worldcup_model.py || echo "worldcup_model.py" >> "$RUNNER_TEMP/failed_steps.txt"
           python worldcup_advancement.py || echo "worldcup_advancement.py" >> "$RUNNER_TEMP/failed_steps.txt"
 
+      # NHL bet-time (2026-10-28): fresh DK lines + the game-lines desk right
+      # before the ledger, so an NHL pick whose starters were just Confirmed on
+      # ESPN is logged at the current price (GH cron drops many live-games
+      # fires; this is a second chance). ~2s.
+      - name: DraftKings odds + NFL/NHL game-lines desk (pre-ledger)
+        working-directory: python
+        run: |
+          python espn_odds.py > /dev/null || echo "espn_odds.py" >> "$RUNNER_TEMP/failed_steps.txt"
+          python game_lines_desk.py || echo "game_lines_desk.py" >> "$RUNNER_TEMP/failed_steps.txt"
+
       # Self-learning -- update every 5 min, all day
       - name: All-picks unified ledger (settle + log)
         working-directory: python
