@@ -1,28 +1,25 @@
 # EdgeStat Daily Summary — 2026-10-28
 
-## 🏥 Model Health: 69.4/100 [OK]
+## 🏥 Model Health: 70.0/100 [OK]
 - Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.7/100
+  - 🟢 Calibration Freshness: 99.9/100
   - 🔴 Hit Rate Trend: 47.9/100
   - 🔴 Brier Trend: 9.1/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 100.0/100
-  - 🟢 Edge Count: 80.0/100
+  - 🟢 Edge Count: 85.7/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.573)
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.57)
 - **Total games on board:** 73
 - **Strong home favorites:** 33 | **Strong road dogs:** 16
 
 ## 🎯 Top 5 Best Bets
-1. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
-2. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
-3. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
-4. **LOL Team Liquid Alienware vs LOS ML @ -154** (76/100 ★★★★★)
-5. **LOL Invictus Gaming vs LYON ML @ -143** (76/100 ★★★★★)
-
-## 📡 Sharp Action (Line Movement)
-- [MODERATE] **MIL @ TBR** ml_away: 50.25% → 54.95% (+4.7pp)
+1. **MIL @ TBR NRFI (no run 1st inning)** (80/100 ★★★★)
+2. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
+3. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
+4. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
+5. **LOL Team Liquid Alienware vs LOS ML @ -154** (76/100 ★★★★★)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **308-60** (83.7% hit rate)
@@ -40,7 +37,7 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (23)
+## ⚡ Pre-Game HIGH Conviction (21)
 - [UCL] **Atlético Madrid** HOME (None L10) · model 72.7% fair -267
 - [UCL] **Bodo/Glimt** HOME (None L10) · model 72.7% fair -267
 - [UCL] **LASK Linz** HOME (None L10) · model 72.7% fair -267
@@ -56,9 +53,9 @@
 - Hot teams: **10** | Cold teams: **22** | Over-heavy: 0 | Under-heavy: 34
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (161)
+## ⚠️ Anomaly Detector (169)
 - RESIDUAL_DIVERGENCE: **22**
-- STEAM_MOVE: **138**
+- STEAM_MOVE: **146**
 - COMPOUND_BULLPEN: **1**
   - Atlanta Hawks (NBA): Atlanta Hawks OUTPERFORMING expected margin by 7.7pts in recent games -- model bias may persist
   - Miami Heat (NBA): Miami Heat UNDERPERFORMING expected margin by 10.2pts in recent games -- model bias may persist
@@ -66,22 +63,22 @@
   - Toronto Raptors (NBA): Toronto Raptors OUTPERFORMING expected margin by 13.8pts in recent games -- model bias may persist
   - Chicago Bulls (NBA): Chicago Bulls UNDERPERFORMING expected margin by 15.7pts in recent games -- model bias may persist
 
-## 💰 Today's Portfolio (12 picks)
-- Total stake: **$330.0** (33.0% of $1000 bankroll)
-- Expected EV: **$-6.74**
-  - #1 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
-  - #2 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
-  - #3 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
-  - #4 [NBA] $35 on NBA Cleveland Cavaliers ML (2-1) vs Washington Wizards (P=71%)
-  - #5 [NBA] $35 on NBA Detroit Pistons ML (3-1) vs Charlotte Hornets (P=55%)
+## 💰 Today's Portfolio (11 picks)
+- Total stake: **$340.0** (34.0% of $1000 bankroll)
+- Expected EV: **$-2.24**
+  - #1 [NRFI] $50 on MIL @ TBR NRFI (no run 1st inning) (P=78%)
+  - #2 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
+  - #3 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
+  - #4 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
+  - #5 [NBA] $35 on NBA Cleveland Cavaliers ML (2-1) vs Washington Wizards (P=71%)
 
-## 🎯 Convergence Picks (36 stacked games)
-- ELITE: **14** · HIGH: 13 · MED: 9
+## 🎯 Convergence Picks (35 stacked games)
+- ELITE: **13** · HIGH: 15 · MED: 7
   - [ELITE] Miami Heat @ Atlanta Hawks : 5 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ANOMALY)
   - [ELITE] Charlotte Hornets @ Detroit Pistons : 5 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
   - [ELITE] New Jersey Devils @ Colorado Avalanche : 5 signals (PREGAME, HEAT_COLD, HEAT_COLD, HEAT_COLD)
+  - [ELITE] Red Bull New York @ New England Revolution : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
   - [ELITE] Columbus Crew @ FC Dallas : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
-  - [ELITE] Houston Dynamo FC @ Seattle Sounders FC : 5 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
 
 ## ⚾ Top MLB Pitcher K Plays (1)
 - **Jacob Misiorowski** OVER 4.5 K (75%) fair -303

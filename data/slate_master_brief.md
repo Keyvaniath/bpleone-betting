@@ -1,12 +1,12 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-10-28T19:34:47 UTC_
+_Generated 2026-10-28T23:36:43 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -157
+- **Score:** -153
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 3
+- **Total STRONG:** 4
 - **Total FADES:** 169
 
 ## Top 5 Curated Picks
@@ -19,6 +19,9 @@ _Generated 2026-10-28T19:34:47 UTC_
 3. **WNBA / angel reese** (WNBA_PLAYER, score=60.0)
    - Play: angel reese (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (WNBA_PLAYER)
+4. **MLB / Drew Rasmussen** (MLB_PITCHER, score=58.33)
+   - Play: Drew Rasmussen (PITCHER_STRONG)
+   - Rationale: Cross-sport top pick (MLB_PITCHER)
 
 ## Slate ROI Projection
 - **Picks:** 0
@@ -27,13 +30,13 @@ _Generated 2026-10-28T19:34:47 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **NBA** / luka doncic (PLAYER_FADE)
+- **NBA** / shai gilgeous-alexander (PLAYER_FADE)
   - Fade angle: PTS UNDER + PRA UNDER (multi-prop)
 - **NBA** / anthony edwards (PLAYER_FADE)
   - Fade angle: PTS UNDER + PRA UNDER (multi-prop)
 - **NBA** / tyrese maxey (PLAYER_FADE)
   - Fade angle: PTS UNDER + PRA UNDER (multi-prop)
-- **NBA** / shai gilgeous-alexander (PLAYER_FADE)
+- **NBA** / luka doncic (PLAYER_FADE)
   - Fade angle: PTS UNDER + PRA UNDER (multi-prop)
 - **NBA** / CHI (TEAM_FADE)
   - Fade angle: team total UNDER
