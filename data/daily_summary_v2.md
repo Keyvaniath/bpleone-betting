@@ -1,18 +1,18 @@
-# EdgeStat Daily Summary — 2026-10-28
+# EdgeStat Daily Summary — 2026-10-29
 
-## 🏥 Model Health: 70.0/100 [OK]
-- Operational but room to improve - check yellow components
-  - 🟢 Calibration Freshness: 99.9/100
+## 🏥 Model Health: 70.3/100 [HEALTHY]
+- Solid health - some minor issues to monitor
+  - 🟢 Calibration Freshness: 100.0/100
   - 🔴 Hit Rate Trend: 47.9/100
   - 🔴 Brier Trend: 9.1/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 100.0/100
-  - 🟢 Edge Count: 85.7/100
+  - 🟢 Edge Count: 88.6/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.57)
-- **Total games on board:** 73
-- **Strong home favorites:** 33 | **Strong road dogs:** 16
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.563)
+- **Total games on board:** 71
+- **Strong home favorites:** 32 | **Strong road dogs:** 16
 
 ## 🎯 Top 5 Best Bets
 1. **MIL @ TBR NRFI (no run 1st inning)** (80/100 ★★★★)
@@ -37,7 +37,7 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (21)
+## ⚡ Pre-Game HIGH Conviction (16)
 - [UCL] **Atlético Madrid** HOME (None L10) · model 72.7% fair -267
 - [UCL] **Bodo/Glimt** HOME (None L10) · model 72.7% fair -267
 - [UCL] **LASK Linz** HOME (None L10) · model 72.7% fair -267
@@ -46,11 +46,11 @@
 - [NCAAF] **Texas Longhorns** HOME (None L10) · model 72.6% fair -265
 - [NFL] **Dallas Cowboys** HOME (None L10) · model 72.0% fair -257
 - [MLS] **Nashville SC** HOME (3-1 L10) · model 71.6% fair -253
-- [MLS] **New England Revolution** HOME (3-1 L10) · model 71.4% fair -249
 - [EPL] **AFC Bournemouth** HOME (2-1 L10) · model 71.3% fair -249
+- [NCAAF] **Oklahoma State Cowboys** AWAY (None L10) · model 70.2% fair -236
 
 ## 🔥/❄️ Heat / Cold Signals
-- Hot teams: **10** | Cold teams: **22** | Over-heavy: 0 | Under-heavy: 34
+- Hot teams: **11** | Cold teams: **24** | Over-heavy: 0 | Under-heavy: 23
 - Heating-up players: **20** | Cooling-down: 20
 
 ## ⚠️ Anomaly Detector (169)
@@ -72,13 +72,13 @@
   - #4 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
   - #5 [NBA] $35 on NBA Cleveland Cavaliers ML (2-1) vs Washington Wizards (P=71%)
 
-## 🎯 Convergence Picks (35 stacked games)
-- ELITE: **13** · HIGH: 15 · MED: 7
+## 🎯 Convergence Picks (34 stacked games)
+- ELITE: **13** · HIGH: 15 · MED: 6
   - [ELITE] Miami Heat @ Atlanta Hawks : 5 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ANOMALY)
-  - [ELITE] Charlotte Hornets @ Detroit Pistons : 5 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
   - [ELITE] New Jersey Devils @ Colorado Avalanche : 5 signals (PREGAME, HEAT_COLD, HEAT_COLD, HEAT_COLD)
   - [ELITE] Red Bull New York @ New England Revolution : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
   - [ELITE] Columbus Crew @ FC Dallas : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
+  - [ELITE] Nottingham Forest @ Brentford : 5 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ATS)
 
 ## ⚾ Top MLB Pitcher K Plays (1)
 - **Jacob Misiorowski** OVER 4.5 K (75%) fair -303
@@ -141,12 +141,12 @@
   - ⚠️ batter_rbis (Brier Δ -0.0052)
 
 ## 🧠 Training Convergence
-- ELITE: **0** · HEALTHY: 2 · OK: 0 · DEGRADED: **0**
+- ELITE: **1** · HEALTHY: 0 · OK: 1 · DEGRADED: **0**
 
 ## 🤖 Self-Training Status
-- **NBA**: n=77 games · hit rate 57.1% · bias +0.4pp
-- **NHL**: n=93 games · hit rate 50.5% · bias -10.0pp
+- **NBA**: n=63 games · hit rate 54.0% · bias +2.6pp
+- **NHL**: n=91 games · hit rate 49.5% · bias -10.7pp [calibration applied]
 - **WNBA**: n=5 games · hit rate 60.0% · bias +8.2pp
 - **MLS**: n=61 games · hit rate 34.4% · bias -4.9pp
 - **EPL**: n=30 games · hit rate 43.3% · bias -0.6pp
-- **MLB**: n=10 games · hit rate 60.0% · bias +2.1pp
+- **MLB**: n=9 games · hit rate 55.6% · bias +1.7pp

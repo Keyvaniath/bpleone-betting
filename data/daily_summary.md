@@ -1,24 +1,10 @@
-# EdgeStat Daily Brief - 2026-10-28
+# EdgeStat Daily Brief - 2026-10-29
 
 **Model Confidence: 9.4/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
 
-_Pipeline health: **WARNING** (12/15 artifacts ok; 3 empty, 0 stale)._ 
+_Pipeline health: **WARNING** (13/15 artifacts ok; 2 empty, 0 stale)._ 
 
-_Generated at 2026-10-28T23:37:13 UTC. Game lines source: **DraftKings**. Pick-em opportunities from PrizePicks._
-
-## Play of the Day
-
-**MIL @ TBR - OVER_6.0**
-- Market: -112
-- Model probability: 56.1%
-- Raw edge: +6.19%
-- Recommended stake: 1.73u Kelly
-
-## Full Slate (1 games)
-
-| Time | Matchup | Park | Weather | Top edge |
-|---|---|---|---|---|
-| 8:00p ET | MIL @ TBR | Tropicana Field | indoor | OVER_6.0 +6.19% |
+_Generated at 2026-10-29T01:41:20 UTC. Game lines source: **placeholder -110 (no real book today)**. Pick-em opportunities from PrizePicks._
 
 ## Parlays - top 5
 
@@ -50,13 +36,7 @@ _Generated at 2026-10-28T23:37:13 UTC. Game lines source: **DraftKings**. Pick-e
 | batter hits | 349 | 55.6% | 56.7% | 1.020 | 0.981 |
 | batter total bases | 87 | 36.8% | 41.1% | 1.116 | 0.903 |
 
-Cumulative graded plays: 19861. Wins: 8818. Hit rate: 44.4%.
-
-## Auxiliary Markets (Model Fair Prices)
-
-| Matchup | NRFI % | NRFI fair | F5 total | RL home -1.5 fair | RL away +1.5 fair |
-|---|---|---|---|---|---|
-| MIL @ TBR | 78.2% | -358 | 1.23 | +285 | -285 |
+Cumulative graded plays: 19873. Wins: 8824. Hit rate: 44.4%.
 
 ## Team Form (last 10)
 
@@ -83,4 +63,4 @@ _The model is suggesting 1 parameter tweak based on its own performance. Apply v
 ---
 
 _EdgeStat is a research desk. Bet responsibly. 21+. 1-800-GAMBLER._
-_Source: github.com/Keyvaniath/bpleone-betting - last settled 2026-10-27._
+_Source: github.com/Keyvaniath/bpleone-betting - last settled 2026-10-28._
