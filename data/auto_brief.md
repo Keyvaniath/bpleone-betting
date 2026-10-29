@@ -6,7 +6,7 @@ _0% lineups confirmed_
 
 ## Slate
 - **0 games** scheduled
-- **22 best bets** scored: 0 DK · 0 PP · 0 NRFI · 0 SGP
+- **30 best bets** scored: 0 DK · 0 PP · 0 NRFI · 0 SGP
 
 ## Top 5 Best Bets
 1. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
@@ -18,20 +18,26 @@ _0% lineups confirmed_
 3. **LOL Peyz OVER 4.5 Kills**  (78/100 ****, edge —)
    - Player prop quality score 1.184
    - Elite player
-4. **LOL Team Liquid Alienware vs LOS ML @ -154**  (76/100 *****, edge —)
-   - Model 60.7% (fair -154)
-   - Worlds
-5. **LOL Karmine Corp vs CTBC Flying Oyster ML @ -206**  (76/100 *****, edge —)
-   - Model 67.3% (fair -206)
-   - Worlds
+4. **GOLF Denny McCarthy WIN @ 533 (VidantaWorld Mexico Open)**  (78/100 *****, edge —)
+   - P(win) 15.8% with 2 round(s) left -- sweet-spot value at #1 (-4).
+5. **GOLF Max Homa TOP5 @ 593 (VidantaWorld Mexico Open)**  (78/100 *****, edge —)
+   - P(top 5) 14.4% -- lower variance than outright but compelling line.
+
+## ⚠️ Trap Warnings — 2 flagged
+- **GOLF 3-leg parlay @ +1900** (low):
+   - Edge +10.2% looks big but only 0 settled props on this player — model unproven
+- **GOLF 3-leg parlay @ +1900** (low):
+   - Edge +10.2% looks big but only 0 settled props on this player — model unproven
 
 ## Bullpens GASSED tonight
 Tampa Bay Rays, Milwaukee Brewers
 _Lean late-inning OVER on these games; fade their save situations._
 
 ## Golf -- VidantaWorld Mexico Open
-- **Leader:** Patton Kizzire (E) at #1
+- **Leader:** Denny McCarthy (-4) at #1
 - **Field:** 120 players  |  Status: In Progress
+- **Play of the Tournament:** Denny McCarthy WIN @ +533 (model 15.8%, HIGH)
+   - P(win) 15.8% with 2 round(s) left -- sweet-spot value at #1 (-4).
 
 ## NBA -- REGULAR
 - Cleveland Cavaliers @ Atlanta Hawks (3-1 vs 2-3)  | P(home) 21.4% fair +368 | Scheduled
@@ -39,11 +45,11 @@ _Lean late-inning OVER on these games; fade their save situations._
 - Memphis Grizzlies @ Portland Trail Blazers (4-0 vs 3-0)  | P(home) 55.0% fair -122 | Scheduled
 
 ## NHL -- REGULAR
-- Winnipeg Jets @ Tampa Bay Lightning (4-5-3 vs 7-3-1)  | P(home) 76.5% fair -325 | Scheduled
-- Utah Mammoth @ Pittsburgh Penguins (8-5-0 vs 5-6-1)  | P(home) 39.7% fair +152 | Scheduled
-- Columbus Blue Jackets @ Carolina Hurricanes (5-5-0 vs 10-2-2)  | P(home) 82.9% fair -486 | Scheduled
-- Chicago Blackhawks @ Detroit Red Wings (4-8-0 vs 5-4-3)  | P(home) 75.1% fair -302 | Scheduled
-- Boston Bruins @ St. Louis Blues (9-3-1 vs 5-6-1)  | P(home) 28.4% fair +252 | Scheduled
+- Winnipeg Jets @ Tampa Bay Lightning (4-5-3 vs 7-3-1)  | P(home) 66.8% fair -202 | Scheduled
+- Utah Mammoth @ Pittsburgh Penguins (8-5-0 vs 5-6-1)  | P(home) 46.8% fair +114 | Scheduled
+- Columbus Blue Jackets @ Carolina Hurricanes (5-5-0 vs 10-2-2)  | P(home) 70.3% fair -236 | Scheduled
+- Chicago Blackhawks @ Detroit Red Wings (4-8-0 vs 5-4-3)  | P(home) 64.5% fair -182 | Scheduled
+- Boston Bruins @ St. Louis Blues (9-3-1 vs 5-6-1)  | P(home) 51.6% fair -107 | Scheduled
 
 ## LoL Esports -- 0 live, 14 upcoming
 - [Worlds] CTBC Flying Oyster vs Karmine Corp BO3 | P(A) 32.7% fair +206/-206

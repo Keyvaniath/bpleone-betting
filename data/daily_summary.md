@@ -2,16 +2,16 @@
 
 **Model Confidence: 9.3/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
 
-_Pipeline health: **WARNING** (10/15 artifacts ok; 5 empty, 0 stale)._ 
+_Pipeline health: **WARNING** (7/15 artifacts ok; 8 empty, 0 stale)._ 
 
-_Generated at 2026-10-29T15:51:16 UTC. Game lines source: **placeholder -110 (no real book today)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-10-29T16:32:46 UTC. Game lines source: **placeholder -110 (no real book today)**. Pick-em opportunities from PrizePicks._
 
 ## Self-Learning Loop
 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
-| batter total bases | 90 | 36.7% | 41.3% | 1.124 | 0.897 |
 | batter hits | 367 | 55.0% | 56.8% | 1.031 | 0.970 |
+| batter total bases | 90 | 36.7% | 41.3% | 1.124 | 0.897 |
 
 Cumulative graded plays: 19965. Wins: 8882. Hit rate: 44.5%.
 
@@ -28,7 +28,7 @@ Cumulative graded plays: 19965. Wins: 8882. Hit rate: 44.5%.
 
 ## Loop Activity (since last refresh)
 
-- Confidence delta: **-0.1**
+- Confidence delta: **+0.0**
 
 ## Model Recommendations (operator review)
 
