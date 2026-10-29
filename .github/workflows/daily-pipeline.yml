@@ -579,7 +579,11 @@ jobs:
         run: python ml_reprice.py || echo "ml_reprice.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: NFL + NHL game-lines desk (MOV Elo vs the DraftKings price, walk-forward gated)
         working-directory: python
-        run: python game_lines_desk.py || echo "game_lines_desk.py" >> "$RUNNER_TEMP/failed_steps.txt"
+        # 2026-10-29: fresh DK lines first -- the desk read a 2h-old heartbeat
+        # snapshot taken before ESPN's morning rollover and priced an empty NHL board.
+        run: |
+          python espn_odds.py > /dev/null || echo "espn_odds.py" >> "$RUNNER_TEMP/failed_steps.txt"
+          python game_lines_desk.py || echo "game_lines_desk.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: All-picks unified ledger (every surfaced pick -> training signal)
         working-directory: python
         run: python all_picks_tracker.py || echo "all_picks_tracker.py" >> "$RUNNER_TEMP/failed_steps.txt"

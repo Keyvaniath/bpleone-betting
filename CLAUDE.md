@@ -41,6 +41,19 @@ bpleone-site/
 
 ## Current deployment state (LIVE)
 
+- **2026-10-29 — ESPN MORNING ROLLOVER + FORWARD-TEST CLV.** The 10 AM ET
+  daily run priced an EMPTY NHL board: the desk read the 9 AM heartbeat's
+  espn_odds.json, and ESPN's bare scoreboard still shows YESTERDAY's games
+  until a late-morning rollover (4 finished NHL games, 0 of the night's 11).
+  Fix: `espn_odds.fetch_sport` also requests `dates=<today ET>` for the daily
+  leagues (DATED_SPORTS mlb/nba/wnba/nhl/ncaab; merged, deduped by event id,
+  today's copy last); daily-pipeline runs espn_odds right before the desk.
+  `game_lines_desk.forward_test` scores the ledger's <sport>_game_ml picks:
+  W-L/units at the logged price + CLV vs the DK close (`clv_pts` = implied
+  prob of the close minus implied prob of our price, + = beat; `clv_ev` = EV at
+  the no-vig close, which is ~-4% for a line that never moved). On the card.
+  First read (pre-kickoff, close = latest): 9 NFL picks, avg -0.24 pts, beat
+  2/9, flat 3/9. ESPN starter calls so far: Confirmed 5/5, Expected 1/1.
 - **2026-10-28 (night) — NHL CONFIRMED STARTERS AT BET TIME.** Source: ESPN NHL
   scoreboard `competitors[].probables[name=probableStartingGoalie]` with status
   `expected` | `confirmed` (`nhl_goalies.espn_probables`; ESPN shortName ->

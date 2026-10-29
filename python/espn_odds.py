@@ -101,18 +101,52 @@ SPORT_QUERY = {
 }
 
 
+# THE MORNING ROLLOVER (2026-10-29): the bare scoreboard for the daily-slate
+# leagues keeps showing YESTERDAY's games until ESPN rolls the day over in late
+# morning ET. The 9 AM ET heartbeat snapshot had 4 finished NHL games and none
+# of the 11 on that night's slate, so the 10 AM daily run priced an empty NHL
+# board. For these leagues also ask for today's ET date explicitly and merge
+# (deduped by event id; today's copy last so matchup-keyed joins take it).
+DATED_SPORTS = {"mlb", "nba", "wnba", "nhl", "ncaab"}
+
+
+def _today_et() -> str:
+    try:
+        from zoneinfo import ZoneInfo
+        return dt.datetime.now(ZoneInfo("America/New_York")).strftime("%Y%m%d")
+    except Exception:
+        return (dt.datetime.utcnow() - dt.timedelta(hours=4)).strftime("%Y%m%d")
+
+
 def fetch_sport(sport: str) -> List[Dict[str, Any]]:
     path = SPORT_PATHS.get(sport)
     if not path:
         return []
     q = SPORT_QUERY.get(sport, "")
-    try:
-        data = _get(f"https://site.api.espn.com/apis/site/v2/sports/{path}/scoreboard{q}")
-    except Exception as e:
-        print(f"[espn-odds] {sport} fetch failed: {e!r}")
+    base = f"https://site.api.espn.com/apis/site/v2/sports/{path}/scoreboard"
+    urls = [base + q]
+    if sport in DATED_SPORTS:
+        urls.append(base + (q + "&" if q else "?") + f"dates={_today_et()}")
+    events: List[Dict[str, Any]] = []
+    for u in urls:
+        try:
+            events.extend(_get(u).get("events") or [])
+        except Exception as e:
+            print(f"[espn-odds] {sport} fetch failed ({u.rsplit('/', 1)[-1]}): {e!r}")
+    if not events:
         return []
+    last = {}
+    for e in events:
+        last[str(e.get("id"))] = e
+    seen, ordered = set(), []
+    for e in reversed(events):
+        k = str(e.get("id"))
+        if k not in seen:
+            seen.add(k)
+            ordered.append(last[k])
+    events = list(reversed(ordered))
     out: List[Dict[str, Any]] = []
-    for e in (data.get("events") or []):
+    for e in events:
         comp = (e.get("competitions") or [{}])[0]
         teams = {t.get("homeAway"): t for t in (comp.get("competitors") or [])}
         home, away = teams.get("home") or {}, teams.get("away") or {}

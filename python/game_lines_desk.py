@@ -400,6 +400,57 @@ def grow_lines(sport: str) -> Dict[str, Any]:
     return ev
 
 
+def forward_test(sport: str, lines: Dict[str, Any]) -> Dict[str, Any]:
+    """Score the desk's LOGGED picks (ledger source <sport>_game_ml) two ways:
+    W-L/units at the logged DK price, and closing-line value -- the logged
+    price's EV at DraftKings' no-vig closing probability (the last pre-game
+    snapshot; for games not yet started, the latest one, marked open). CLV
+    converges far faster than W-L: a model that beats the close on average is
+    seeing something before the market does; one that doesn't, isn't."""
+    led = _load(os.path.join(DATA_DIR, "all_picks_ledger.json"))
+    rows = [p for p in (led.get("picks") or []) if p.get("source") == f"{sport}_game_ml" and not p.get("voided")]
+    now = dt.datetime.now(dt.timezone.utc)
+    out, clvs, beat = [], [], 0
+    w = l_ = 0
+    units = 0.0
+    for p in rows:
+        ev = lines.get(str(p.get("event_id") or "")) or {}
+        c = ev.get("close") or {}
+        side = "home" if str(p.get("market", "")).upper().endswith("HOME") else "away"
+        fair_h = _no_vig(c.get("ml_home"), c.get("ml_away"))
+        dd = _dec(p.get("book_american"))
+        try:
+            started = dt.datetime.fromisoformat(str(ev.get("commence")).replace("Z", "+00:00")) <= now
+        except Exception:
+            started = False
+        clv, pts = None, None
+        close_px = c.get("ml_home") if side == "home" else c.get("ml_away")
+        dc = _dec(close_px)
+        if fair_h is not None and dd and dc:
+            pf = fair_h if side == "home" else 1 - fair_h
+            clv = round(pf * dd - 1, 4)                     # EV of our price at the no-vig close (vig included)
+            pts = round((1 / dc - 1 / dd) * 100, 2)          # implied-prob points we beat the close by
+            clvs.append((clv, pts))
+            beat += pts > 0
+        res = p.get("result")
+        if p.get("settled") and res in ("win", "loss"):
+            w += res == "win"
+            l_ += res == "loss"
+            units += (dd - 1) if res == "win" else -1.0
+        out.append({"date": p.get("date"), "matchup": p.get("player_or_matchup"), "market": p.get("market"),
+                    "logged_price": p.get("book_american"),
+                    "close_price": c.get("ml_home") if side == "home" else c.get("ml_away"),
+                    "close_final": started, "clv_ev": clv, "clv_pts": pts, "result": res})
+    n = len(clvs)
+    return {"n_logged": len(rows), "settled_w": w, "settled_l": l_, "units": round(units, 2),
+            "avg_clv_ev": round(sum(c[0] for c in clvs) / n, 4) if n else None,
+            "avg_clv_pts": round(sum(c[1] for c in clvs) / n, 2) if n else None,
+            "beat_close_pct": round(beat / n * 100, 1) if n else None,
+            "flat_close_pct": round(sum(1 for c in clvs if c[1] == 0) / n * 100, 1) if n else None, "n_clv": n,
+            "n_close_final": sum(1 for r in out if r["close_final"] and r["clv_ev"] is not None),
+            "picks": out[-40:]}
+
+
 def ng_score(gm: Dict[str, Any]) -> Dict[str, Any]:
     """ESPN starter-call accuracy vs the boxscore starter (from the log)."""
     import nhl_goalies as ng
@@ -543,7 +594,8 @@ def run_sport(sport: str) -> Dict[str, Any]:
         board.append(row)
     return {"params": params, "w_used": w, "backtest": bt, "beats_market": beats_market, "proven": proven,
             "verdict": verdict, "ratings": {t: round(v, 1) for t, v in sorted(elo.r.items(), key=lambda x: -x[1])},
-            "board": board, "n_picks": sum(1 for r in board if r["pick"]), **extra}
+            "board": board, "n_picks": sum(1 for r in board if r["pick"]),
+            "forward_test": forward_test(sport, lines), **extra}
 
 
 def run() -> Dict[str, Any]:

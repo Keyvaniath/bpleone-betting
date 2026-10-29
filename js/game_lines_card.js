@@ -22,6 +22,19 @@
         ${ac.n ? `· ESPN "Confirmed" starter right ${ac.correct}/${ac.n}` : ""}
       </div>`;
   };
+  // Forward test (2026-10-29): the picks actually logged, scored at the logged
+  // DK price and against the DK close (implied-probability points; + = we got a
+  // better number than the close). CLV says more, sooner, than a W-L record.
+  const fwd = (s) => {
+    const f = s.forward_test;
+    if (!f || !f.n_logged) return "";
+    const sg = (v) => v == null ? "—" : (v > 0 ? "+" : "") + v;
+    const fin = f.n_close_final === f.n_clv ? "" : ` (${f.n_clv - f.n_close_final} not kicked off yet: close = latest line)`;
+    return `<div class="muted" style="margin-top:6px; font-family:'JetBrains Mono',monospace; font-size:11px;">
+        Forward test: ${f.n_logged} picks logged · settled ${f.settled_w}-${f.settled_l} (${sg(f.units)}u) ·
+        vs the DK close: avg ${sg(f.avg_clv_pts)} pts, beat ${f.beat_close_pct ?? "—"}%, flat ${f.flat_close_pct ?? "—"}%${fin}
+      </div>`;
+  };
   const gl = (g) => {
     if (!g) return "";
     const tag = g.status === "confirmed" ? " ✓ confirmed"
@@ -50,7 +63,7 @@
               log loss DK ${bt.logloss_market ?? "—"} / model ${bt.logloss_elo ?? "—"} / blend ${bt.logloss_blend ?? "—"} (w=${bt.w_fitted ?? "—"}) ·
               gain 90% CI [${ci[0] ?? "—"}, ${ci[1] ?? "—"}] ·
               out-of-sample half: ${oos.bets || 0} bets, ${oos.roi_pct == null ? "—" : (oos.roi_pct >= 0 ? "+" : "") + oos.roi_pct + "%"}
-            </div>${ladder(s, bt)}</div>`;
+            </div>${ladder(s, bt)}${fwd(s)}</div>`;
         const rows = (s.board || []).map((r) => {
           const pk = r.pick;
           const pickTxt = pk ? `<strong style="color:#58c878;">${esc(pk.team)} ML ${amer(pk.book_american)}</strong> <span class="muted">EV ${(pk.ev * 100).toFixed(1)}%</span>` : `<span class="muted">no pick</span>`;
