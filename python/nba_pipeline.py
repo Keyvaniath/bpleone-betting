@@ -213,8 +213,38 @@ def _self_training_shift(sport_key: str) -> float:
     return 0.0
 
 
+
+def _scoreboard_with_today():
+    """The bare scoreboard keeps showing YESTERDAY's games until ESPN's
+    late-morning ET rollover (2026-10-29: the 06:10Z state had 0 games today
+    and only last night's finals, so every morning consumer saw no slate).
+    Merge it with an explicit dates=<today ET> request, deduped by event id
+    (the bare board still carries a late game running past midnight ET)."""
+    try:
+        from zoneinfo import ZoneInfo
+        today = dt.datetime.now(ZoneInfo("America/New_York")).strftime("%Y%m%d")
+    except Exception:
+        today = (dt.datetime.utcnow() - dt.timedelta(hours=4)).strftime("%Y%m%d")
+    base = _http(ESPN_SCOREBOARD)
+    dated = _http(f"{ESPN_SCOREBOARD}?dates={today}")
+    if not base and not dated:
+        return base
+    seen, events = set(), []
+    for ev in ((base or {}).get("events") or []) + ((dated or {}).get("events") or []):
+        k = str(ev.get("id"))
+        if k not in seen:
+            seen.add(k)
+            events.append(ev)
+    # keep the bare board's season/day block (the dated response has none)
+    out = dict(base or dated)
+    out["events"] = events
+    if not out.get("season"):
+        ls = ((out.get("leagues") or [{}])[0].get("season") or {})
+        out["season"] = {"type": ls.get("type"), "year": ls.get("year")}
+    return out
+
 def run() -> Dict[str, Any]:
-    sb = _http(ESPN_SCOREBOARD)
+    sb = _scoreboard_with_today()
     cal_shift = _self_training_shift("nba")
     if not sb:
         out = {

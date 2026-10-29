@@ -1858,6 +1858,30 @@ def _nhl_intake(out: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
     return out
 
 
+STARTED_BLOCKED: List[str] = []   # picks on games already live/final at intake
+PAST_DATE_BLOCKED: List[str] = []  # picks whose game date is before today (ET)
+
+
+def _block_past_dated(picks: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    """A pick dated before today (US/Eastern) is either logged after its game
+    or mis-dated -- neither is a pre-game record (2026-10-29 audit: 103 rows,
+    soccer/F1/NHL, recorded a day or more after their game date; none curated).
+    Never ledger it."""
+    try:
+        from zoneinfo import ZoneInfo
+        today = dt.datetime.now(ZoneInfo("America/New_York")).date().isoformat()
+    except Exception:
+        today = (dt.datetime.utcnow() - dt.timedelta(hours=4)).date().isoformat()
+    keep = []
+    for p in picks:
+        d = str(p.get("game_date") or p.get("date") or "")[:10]
+        if len(d) == 10 and d < today:
+            PAST_DATE_BLOCKED.append(p.get("pick_id"))
+            continue
+        keep.append(p)
+    return keep
+
+
 def _board_dates(out: List[Dict[str, Any]], sport: str, state: Dict[str, Any],
                  hist_file: str, drop_unmatched: bool):
     """Set game_date on `sport` picks from the live board in `state`.
@@ -1878,7 +1902,8 @@ def _board_dates(out: List[Dict[str, Any]], sport: str, state: Dict[str, Any],
     for g in (state.get("games") or []):
         day = _et_day(g.get("date"))
         if day and g.get("away_team") and g.get("home_team"):
-            board.append((day, (g["away_team"], g.get("away_abbrev")), (g["home_team"], g.get("home_abbrev"))))
+            board.append((day, (g["away_team"], g.get("away_abbrev")), (g["home_team"], g.get("home_abbrev")),
+                          str(g.get("state") or "")))
 
     def _side_ok(x: str, team: Any) -> bool:
         name, ab = team
@@ -1911,6 +1936,12 @@ def _board_dates(out: List[Dict[str, Any]], sport: str, state: Dict[str, Any],
                 and _side_ok(parts[0], b[1]) and _side_ok(parts[1], b[2])]
         if len({b[0] for b in hits}) == 1:
             p["game_date"] = hits[0][0]
+            if all(b[3] in ("in", "post") for b in hits):
+                # STARTED (2026-10-29): the board keeps live + finished games,
+                # and a ledger pass that runs after puck drop would record a
+                # pre-game pick as if it were pre-game. Not a pre-game record.
+                STARTED_BLOCKED.append(p.get("pick_id"))
+                continue
             keep.append(p)
         elif drop_unmatched and board and not hits:
             # Not on today's board = a STALE artifact (during the 9/22-10/22
@@ -3582,7 +3613,11 @@ def run() -> Dict[str, Any]:
     n_bootstrapped = _bootstrap_from_locks_history(history, existing_ids)
 
     # Collect today's picks from every source
-    today_picks = _block_inactive_players(_collect_picks_from_sources())
+    today_picks = _block_past_dated(_block_inactive_players(_collect_picks_from_sources()))
+    if STARTED_BLOCKED:
+        print(f"  started gate: {len(STARTED_BLOCKED)} pick(s) on games already live/final -- not logged")
+    if PAST_DATE_BLOCKED:
+        print(f"  past-date gate: {len(PAST_DATE_BLOCKED)} pick(s) dated before today (ET) -- not logged")
     if INACTIVE_BLOCKED:
         print(f"  activity gate: {len(INACTIVE_BLOCKED)} NFL/NHL player props on players not playing -- not logged")
     n_added = 0
@@ -4029,6 +4064,8 @@ def run() -> Dict[str, Any]:
         "price_corrections": _price_corrections(history),
         "stale_sources_skipped": list(STALE_SOURCES_SKIPPED),
         "inactive_player_props_blocked": len(INACTIVE_BLOCKED),
+        "started_game_picks_blocked": len(STARTED_BLOCKED),
+        "past_dated_picks_blocked": len(PAST_DATE_BLOCKED),
         "restatement": {
             "date": "2026-10-23",
             "note": ("The headline became ALL-TIME on 2026-10-23. 5,946 settled picks that the old "

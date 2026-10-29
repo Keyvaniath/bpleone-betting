@@ -381,7 +381,13 @@ jobs:
         run: python nba_pipeline.py || echo "nba_pipeline.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: NHL live scoreboard + win probabilities (post-self-train)
         working-directory: python
-        run: python nhl_pipeline.py || echo "nhl_pipeline.py" >> "$RUNNER_TEMP/failed_steps.txt"
+        # 2026-10-29: the desk first, so nhl_state's pre-game prior (which every
+        # NHL prop module prices off) is the desk model for TODAY's games, not
+        # the previous run's board.
+        run: |
+          python espn_odds.py > /dev/null || echo "espn_odds.py" >> "$RUNNER_TEMP/failed_steps.txt"
+          python game_lines_desk.py > /dev/null || echo "game_lines_desk.py" >> "$RUNNER_TEMP/failed_steps.txt"
+          python nhl_pipeline.py || echo "nhl_pipeline.py" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Pull ESPN team rosters (NBA/WNBA/NHL/NFL) -- 4,618 players
         working-directory: python
         run: python espn_rosters.py || echo "espn_rosters.py" >> "$RUNNER_TEMP/failed_steps.txt"
@@ -1406,6 +1412,19 @@ jobs:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         working-directory: python
         run: python notify.py || echo "notify.py" >> "$RUNNER_TEMP/failed_steps.txt"
+      # LATE LEDGER PASS (2026-10-29): ~60 generators run AFTER the first
+      # ledger pass above (NHL/NBA/NFL props, tennis, soccer, whale + consensus
+      # picks), so the ledger was reading the PREVIOUS run's files: on 10/29 the
+      # 10 AM pass dropped 11 NHL picks as "not on today's board" (last night's
+      # slate) and logged none of the 23 for that night's games. Second pass now
+      # that every file is today's. Idempotent: existing pick_ids and open
+      # wagers are skipped (first-in wins).
+      - name: All-picks ledger, late pass (picks from generators that run after the first pass)
+        working-directory: python
+        run: |
+          python game_lines_desk.py > /dev/null || echo "game_lines_desk.py" >> "$RUNNER_TEMP/failed_steps.txt"
+          python all_picks_tracker.py || echo "all_picks_tracker.py (late pass)" >> "$RUNNER_TEMP/failed_steps.txt"
+          python recent_picks.py || echo "recent_picks.py (late pass)" >> "$RUNNER_TEMP/failed_steps.txt"
       - name: Site directory + live-status map (nav badges + Everything page)
         working-directory: python
         run: python site_directory.py || echo "site_directory.py" >> "$RUNNER_TEMP/failed_steps.txt"

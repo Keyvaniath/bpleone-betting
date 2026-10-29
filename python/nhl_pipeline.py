@@ -110,6 +110,27 @@ def _live_win_prob(p_prior: float, h_score: int, a_score: int,
     return 1 / (1 + math.exp(-blend))
 
 
+# THE DESK PRIOR (2026-10-29): the pre-game prior below is an Elo built from
+# W-L record alone -- Brier 0.33 on this season's games, worse than a coin --
+# and every NHL prop module prices off it. The game-lines desk carries a fitted
+# model (MOV Elo + shot differential + goalie edge with confirmed/expected
+# starters + rest; log loss 0.662 vs the old model's ~0.93 on the same
+# season). When the desk has priced a game (by ESPN event id), its model
+# probability -- NOT the DK blend; props are model outputs -- is the prior, and
+# the self-training home shift (fitted on the old model's errors) is skipped.
+_DESK_PRIOR: Dict[str, float] = {}
+
+
+def _load_desk_prior() -> Dict[str, float]:
+    try:
+        with open(os.path.join(DATA_DIR, "game_lines_desk.json"), encoding="utf-8") as f:
+            board = ((json.load(f).get("sports") or {}).get("nhl") or {}).get("board") or []
+        return {str(r["event_id"]): float(r["p_home_elo"]) for r in board
+                if r.get("event_id") and r.get("p_home_elo") is not None}
+    except Exception:
+        return {}
+
+
 def _parse_game(comp: Dict[str, Any], status: Dict[str, Any]) -> Dict[str, Any]:
     competitors = comp.get("competitors") or []
     home = next((c for c in competitors if c.get("homeAway") == "home"), competitors[0] if competitors else {})
@@ -131,6 +152,10 @@ def _parse_game(comp: Dict[str, Any], status: Dict[str, Any]) -> Dict[str, Any]:
     h_elo = _winpct_to_elo(h_rec["win_pct"])
     a_elo = _winpct_to_elo(a_rec["win_pct"])
     p_prior = _elo_winprob(h_elo, a_elo)
+    p_legacy = p_prior
+    desk_p = _DESK_PRIOR.get(str(comp.get("id")))
+    if desk_p is not None:
+        p_prior = desk_p
 
     state = (status.get("type") or {}).get("state")
     period = (status.get("period") or 0)
@@ -161,6 +186,8 @@ def _parse_game(comp: Dict[str, Any], status: Dict[str, Any]) -> Dict[str, Any]:
         "home_elo": round(h_elo, 1),
         "away_elo": round(a_elo, 1),
         "p_home_win_pregame": round(p_prior, 4),
+        "p_model": "game_lines_desk" if desk_p is not None else "record_elo",
+        "p_home_win_legacy": round(p_legacy, 4),
         "p_home_win": round(p_home_win, 4),
         "fair_home_american": _american(p_home_win),
         "fair_away_american": _american(1 - p_home_win),
@@ -182,8 +209,40 @@ def _self_training_shift(sport_key: str) -> float:
     return 0.0
 
 
+
+def _scoreboard_with_today():
+    """The bare scoreboard keeps showing YESTERDAY's games until ESPN's
+    late-morning ET rollover (2026-10-29: the 06:10Z state had 0 games today
+    and only last night's finals, so every morning consumer saw no slate).
+    Merge it with an explicit dates=<today ET> request, deduped by event id
+    (the bare board still carries a late game running past midnight ET)."""
+    try:
+        from zoneinfo import ZoneInfo
+        today = dt.datetime.now(ZoneInfo("America/New_York")).strftime("%Y%m%d")
+    except Exception:
+        today = (dt.datetime.utcnow() - dt.timedelta(hours=4)).strftime("%Y%m%d")
+    base = _http(ESPN_SCOREBOARD)
+    dated = _http(f"{ESPN_SCOREBOARD}?dates={today}")
+    if not base and not dated:
+        return base
+    seen, events = set(), []
+    for ev in ((base or {}).get("events") or []) + ((dated or {}).get("events") or []):
+        k = str(ev.get("id"))
+        if k not in seen:
+            seen.add(k)
+            events.append(ev)
+    # keep the bare board's season/day block (the dated response has none)
+    out = dict(base or dated)
+    out["events"] = events
+    if not out.get("season"):
+        ls = ((out.get("leagues") or [{}])[0].get("season") or {})
+        out["season"] = {"type": ls.get("type"), "year": ls.get("year")}
+    return out
+
 def run() -> Dict[str, Any]:
-    sb = _http(ESPN_SCOREBOARD)
+    sb = _scoreboard_with_today()
+    _DESK_PRIOR.clear()
+    _DESK_PRIOR.update(_load_desk_prior())
     cal_shift = _self_training_shift("nhl")
     if not sb:
         out = {
@@ -205,7 +264,7 @@ def run() -> Dict[str, Any]:
         if not comps:
             continue
         g = _parse_game(comps[0], ev.get("status") or {})
-        if cal_shift != 0 and g.get("state") != "post":
+        if cal_shift != 0 and g.get("state") != "post" and g.get("p_model") != "game_lines_desk":
             raw = g.get("p_home_win")
             if raw is not None:
                 shifted = max(0.01, min(0.99, raw + cal_shift))
@@ -257,7 +316,9 @@ def run() -> Dict[str, Any]:
         "n_upcoming": len(upcoming),
         "next_game_date": next_date,
         "calibration_shift_pp": round(cal_shift * 100, 1) if cal_shift else 0,
-        "self_training_applied": cal_shift != 0,
+        # applied only to games still on the legacy record-Elo prior
+        "self_training_applied": any(g.get("calibration_shift_pp") for g in games),
+        "n_games_desk_prior": sum(1 for g in games if g.get("p_model") == "game_lines_desk"),
         "games": games,
         "enabled": True,
         "note": (f"{len(today_games)} NHL game(s) on the board today ({season_label})." if today_games

@@ -41,6 +41,25 @@ bpleone-site/
 
 ## Current deployment state (LIVE)
 
+- **2026-10-29 (later) — LEDGER TIMING + NHL PRIOR.** (1) LATE LEDGER PASS: ~60
+  generators (all NHL/NBA/NFL props, tennis, soccer, whale, consensus) run
+  AFTER the daily ledger step, so the ledger read the previous run's files;
+  on 10/29 it dropped 11 NHL picks as off-board and logged none of the 23 for
+  that night. daily-pipeline now runs the desk + all_picks_tracker +
+  recent_picks again just before site_directory/commit (idempotent). (2)
+  nhl_pipeline/nba_pipeline `_scoreboard_with_today()`: bare ESPN board +
+  dates=<today ET>, merged by event id, season block kept from the bare board
+  (the dated response has none -> season_status "unknown" broke the preseason
+  gates on the first try). (3) NHL PRIOR: nhl_state's pre-game p_home_win (what
+  every NHL prop module prices off) came from a W-L-record Elo, Brier 0.33;
+  now the desk's model prob (`p_model: game_lines_desk`, legacy kept as
+  p_home_win_legacy), self-train home shift skipped for those games. Daily
+  pipeline runs espn_odds + desk right before nhl_pipeline. (4) INTAKE GATES:
+  `STARTED_BLOCKED` (board game live/final -> not logged; NHL/NBA/WNBA via
+  _board_dates) and `PAST_DATE_BLOCKED` (game_date < today ET). Audit found 103
+  unvoided rows recorded >= 1 day after their game date (soccer 95, F1 5,
+  NHL 2, WC 1; 66-37, -3.84u, NONE curated); left in place, flagged to
+  Brandon -- voiding them is his call (it would raise units).
 - **2026-10-29 — ESPN MORNING ROLLOVER + FORWARD-TEST CLV.** The 10 AM ET
   daily run priced an EMPTY NHL board: the desk read the 9 AM heartbeat's
   espn_odds.json, and ESPN's bare scoreboard still shows YESTERDAY's games
