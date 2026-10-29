@@ -1,19 +1,19 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-10-29T16:32:38 UTC_
+_Generated 2026-10-29T19:43:53 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -111
+- **Score:** -104
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 9
-- **Total FADES:** 147
+- **Total STRONG:** 11
+- **Total FADES:** 148
 
 ## Top 5 Curated Picks
-1. **GOLF / Denny McCarthy** (GOLF_PLAYER, score=106.64)
+1. **GOLF / Denny McCarthy** (GOLF_PLAYER, score=135.64)
    - Play: Denny McCarthy (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Austin Eckroat** (GOLF_PLAYER, score=74.14)
+2. **GOLF / Austin Eckroat** (GOLF_PLAYER, score=69.14)
    - Play: Austin Eckroat (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
 3. **WNBA / allisha gray** (WNBA_PLAYER, score=62.42)
@@ -30,7 +30,7 @@ _Generated 2026-10-29T16:32:38 UTC_
 - **GOLF** / ? (TOURNAMENT_STRONG)
   - Denny McCarthy top 10 finish
   - Austin Eckroat top 10 finish
-  - Jeremy Paul top 10 finish
+  - Joel Dahmen top 10 finish
 
 ## Slate ROI Projection
 - **Picks:** 0
@@ -43,9 +43,9 @@ _Generated 2026-10-29T16:32:38 UTC_
   - Fade angle: team total UNDER
 - **NBA** / POR (TEAM_FADE)
   - Fade angle: team total UNDER
+- **NHL** / linus ullmark (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / logan thompson (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
 - **NHL** / ukko-pekka luukkonen (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / juuse saros (GOALIE_FADE)
-  - Fade angle: saves UNDER + win NO
-- **NHL** / jeremy swayman (GOALIE_FADE)
   - Fade angle: saves UNDER + win NO

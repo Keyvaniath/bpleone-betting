@@ -1,5 +1,5 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:9 F:147
+_NO_ACTION_NIGHT_ | L:0 S:11 F:148
 
 :dart: **Top Picks:**
 1. [GOLF] Denny McCarthy -- Denny McCarthy (PLAYER_STRONG)
