@@ -1,25 +1,22 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-10-29T01:41:12 UTC_
+_Generated 2026-10-29T15:51:08 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -151
+- **Score:** -155
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 4
+- **Total STRONG:** 3
 - **Total FADES:** 167
 
 ## Top 5 Curated Picks
-1. **MLB / AWAY** (MLB_TEAM, score=74.71)
-   - Play: AWAY (TEAM_STRONG)
-   - Rationale: Cross-sport top pick (MLB_TEAM)
-2. **MLB / HOME** (MLB_TEAM, score=72.71)
-   - Play: HOME (TEAM_STRONG)
-   - Rationale: Cross-sport top pick (MLB_TEAM)
-3. **WNBA / allisha gray** (WNBA_PLAYER, score=62.42)
+1. **WNBA / allisha gray** (WNBA_PLAYER, score=62.42)
    - Play: allisha gray (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (WNBA_PLAYER)
-4. **WNBA / angel reese** (WNBA_PLAYER, score=60.0)
+2. **NBA / NOP** (NBA_TEAM, score=60.0)
+   - Play: NOP (TEAM_STRONG)
+   - Rationale: Cross-sport top pick (NBA_TEAM)
+3. **WNBA / angel reese** (WNBA_PLAYER, score=60.0)
    - Play: angel reese (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (WNBA_PLAYER)
 
@@ -30,13 +27,13 @@ _Generated 2026-10-29T01:41:12 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **NBA** / anthony edwards (PLAYER_FADE)
-  - Fade angle: PTS UNDER + PRA UNDER (multi-prop)
-- **NBA** / shai gilgeous-alexander (PLAYER_FADE)
-  - Fade angle: PTS UNDER + PRA UNDER (multi-prop)
-- **NBA** / luka doncic (PLAYER_FADE)
-  - Fade angle: PTS UNDER + PRA UNDER (multi-prop)
-- **NBA** / TOR (TEAM_FADE)
+- **NBA** / POR (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NBA** / CHI (TEAM_FADE)
+- **NBA** / ATL (TEAM_FADE)
   - Fade angle: team total UNDER
+- **NHL** / ilya sorokin (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / charlie lindgren (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO
+- **NHL** / casey desmith (GOALIE_FADE)
+  - Fade angle: saves UNDER + win NO

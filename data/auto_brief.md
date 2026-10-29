@@ -1,78 +1,56 @@
-# Tonight's Slate Brief — 2026-10-28
+# Tonight's Slate Brief — 2026-10-29
 
-## Slate Quality: 97/100 (HIGH)
-_100% lineups confirmed · 1 rookie SPs_
-**Recommendation:** Play normal Kelly sizing.
+## Slate Quality: 70/100 (MEDIUM)
+_0% lineups confirmed_
+**Recommendation:** Slightly smaller bets; skip pre-cal edges (>15%).
 
 ## Slate
-- **1 games** scheduled
-- **36 best bets** scored: 6 DK · 0 PP · 1 NRFI · 1 SGP
-- **Auto-portfolio:** 1 picks, $50.0 stake (5.0%), expected +$24.63
-- **MC simulation:** EV +$24.62, 78% P(profit), p05 $-50.0 / p95 $45.45
+- **0 games** scheduled
+- **22 best bets** scored: 0 DK · 0 PP · 0 NRFI · 0 SGP
 
 ## Top 5 Best Bets
-1. **MIL @ TBR NRFI (no run 1st inning)**  (80/100 ****, edge +24.2%)
-   - P(NRFI) 78.2% vs baseline 54.0%
-2. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
+1. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
    - Player prop quality score 1.1935
    - Elite player
-3. **LOL ShowMaker OVER 3.5 Kills**  (78/100 ****, edge —)
+2. **LOL ShowMaker OVER 3.5 Kills**  (78/100 ****, edge —)
    - Player prop quality score 1.1892
    - Elite player
-4. **LOL Peyz OVER 4.5 Kills**  (78/100 ****, edge —)
+3. **LOL Peyz OVER 4.5 Kills**  (78/100 ****, edge —)
    - Player prop quality score 1.184
    - Elite player
-5. **LOL Team Liquid Alienware vs LOS ML @ -154**  (76/100 *****, edge —)
+4. **LOL Team Liquid Alienware vs LOS ML @ -154**  (76/100 *****, edge —)
    - Model 60.7% (fair -154)
    - Worlds
-
-## ⚠️ Trap Warnings — 6 flagged
-- **MIL @ TBR 2-leg SGP @ +112** (low):
-   - Edge +25.0% looks big but only 0 settled props on this player — model unproven
-- **MIL @ TBR NRFI (no run 1st inning)** (low):
-   - Edge +24.2% looks big but only 0 settled props on this player — model unproven
-- **Richie Palacios OVER 0.5 batter hits** (low):
-   - Edge +14.6% looks big but only 0 settled props on this player — model unproven
-- **Victor Mesa Jr. OVER 0.5 batter hits** (low):
-   - Edge +10.1% looks big but only 0 settled props on this player — model unproven
-- **Taylor Walls OVER 0.5 batter hits** (low):
-   - Edge +9.9% looks big but only 0 settled props on this player — model unproven
-
-## Top correlation-aware SGPs
-- **MIL @ TBR** 2-leg @ +112 fair (joint 0.47, EV +25.0%)
-   - Jackson Chourio UNDER 1.5 batter hits
-   - Chandler Simpson OVER 0.5 batter hits
+5. **LOL Karmine Corp vs CTBC Flying Oyster ML @ -206**  (76/100 *****, edge —)
+   - Model 67.3% (fair -206)
+   - Worlds
 
 ## Bullpens GASSED tonight
 Tampa Bay Rays, Milwaukee Brewers
 _Lean late-inning OVER on these games; fade their save situations._
 
-## NRFI/YRFI strong leans
-- **NRFI** (1st-inning UNDER): MIL @ TBR
-
 ## Golf -- VidantaWorld Mexico Open
 - **Leader:** Patton Kizzire (E) at #1
-- **Field:** 120 players  |  Status: Scheduled
+- **Field:** 120 players  |  Status: In Progress
 
 ## NBA -- REGULAR
-- Miami Heat @ Atlanta Hawks (0-4 vs 2-2) 12-14 | P(home) 83.4% fair -504 | In Progress
-- Washington Wizards @ Cleveland Cavaliers (2-2 vs 2-1) 15-9 | P(home) 60.7% fair -154 | In Progress
-- Charlotte Hornets @ Detroit Pistons (3-1 vs 3-1) 13-6 | P(home) 41.3% fair +142 | In Progress
-- Philadelphia 76ers @ Indiana Pacers (3-1 vs 2-2) 10-10 | P(home) 30.9% fair +224 | In Progress
-- Orlando Magic @ Toronto Raptors (1-2 vs 2-1)  | P(home) 83.0% fair -489 | Scheduled
+- Cleveland Cavaliers @ Atlanta Hawks (3-1 vs 2-3)  | P(home) 21.4% fair +368 | Scheduled
+- Sacramento Kings @ New Orleans Pelicans (0-4 vs 0-4)  | P(home) 55.0% fair -122 | Scheduled
+- Memphis Grizzlies @ Portland Trail Blazers (4-0 vs 3-0)  | P(home) 55.0% fair -122 | Scheduled
 
 ## NHL -- REGULAR
-- Philadelphia Flyers @ Washington Capitals (3-7-4 vs 6-4-0)  | P(home) 75.2% fair -303 | Scheduled
-- Calgary Flames @ Edmonton Oilers (5-6-0 vs 8-2-2)  | P(home) 80.2% fair -404 | Scheduled
-- New Jersey Devils @ Colorado Avalanche (8-4-0 vs 6-5-1)  | P(home) 39.9% fair +151 | Scheduled
-- Toronto Maple Leafs @ Seattle Kraken (7-5-2 vs 7-4-1)  | P(home) 58.4% fair -140 | Scheduled
+- Winnipeg Jets @ Tampa Bay Lightning (4-5-3 vs 7-3-1)  | P(home) 76.5% fair -325 | Scheduled
+- Utah Mammoth @ Pittsburgh Penguins (8-5-0 vs 5-6-1)  | P(home) 39.7% fair +152 | Scheduled
+- Columbus Blue Jackets @ Carolina Hurricanes (5-5-0 vs 10-2-2)  | P(home) 82.9% fair -486 | Scheduled
+- Chicago Blackhawks @ Detroit Red Wings (4-8-0 vs 5-4-3)  | P(home) 75.1% fair -302 | Scheduled
+- Boston Bruins @ St. Louis Blues (9-3-1 vs 5-6-1)  | P(home) 28.4% fair +252 | Scheduled
 
-## LoL Esports -- 1 live, 14 upcoming
-- [Worlds] LYON vs Invictus Gaming BO3 | P(A) 41.2% fair +143/-143
+## LoL Esports -- 0 live, 14 upcoming
 - [Worlds] CTBC Flying Oyster vs Karmine Corp BO3 | P(A) 32.7% fair +206/-206
 - [Worlds] BILIBILI GAMING vs TOP ESPORTS BO3 | P(A) 77.4% fair -342/+342
 - [Worlds] Team Liquid Alienware vs LOS BO3 | P(A) 60.7% fair -154/+154
 - [Worlds] G2 Esports vs Hanwha Life Esports BO3 | P(A) 47.8% fair +109/-109
+- [Worlds] TBD vs TBD BO3 | P(A) 50.0% fair -100/-100
 - **LoL POT:** Team Liquid Alienware ML vs LOS (Worlds, BO3) (HIGH)
 
 ## Player Play of the Day -- across all sports (3431 candidates scanned)

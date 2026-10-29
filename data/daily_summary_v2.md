@@ -10,25 +10,21 @@
   - 🟢 Edge Count: 88.6/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.563)
-- **Total games on board:** 71
-- **Strong home favorites:** 32 | **Strong road dogs:** 16
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.574)
+- **Total games on board:** 66
+- **Strong home favorites:** 28 | **Strong road dogs:** 13
 
 ## 🎯 Top 5 Best Bets
-1. **MIL @ TBR NRFI (no run 1st inning)** (80/100 ★★★★)
-2. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
-3. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
-4. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
-5. **LOL Team Liquid Alienware vs LOS ML @ -154** (76/100 ★★★★★)
+1. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
+2. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
+3. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
+4. **LOL Team Liquid Alienware vs LOS ML @ -154** (76/100 ★★★★★)
+5. **LOL Karmine Corp vs CTBC Flying Oyster ML @ -206** (76/100 ★★★★★)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **308-60** (83.7% hit rate)
 - Net units: **+10.34u** | ROI: **+45.5%**
 - Last 7d: 1-1 (50.0%) | net -0.00u
-
-**Today's 2 Locks:**
-- [MLB] **MIL @ TBR** MIL_ML · p=66% edge=+8.2% qK=0.032u
-- [MLB] **MIL @ TBR** ML_AWAY · p=65% edge=+6.7% qK=0.026u
 
 ## 🎮 Player Play of the Day (cross-sport)
 - **[LOL]** Inspired UNDER 3.5 Kills | MED conviction · model 61.7% fair -161
@@ -37,7 +33,7 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (16)
+## ⚡ Pre-Game HIGH Conviction (18)
 - [UCL] **Atlético Madrid** HOME (None L10) · model 72.7% fair -267
 - [UCL] **Bodo/Glimt** HOME (None L10) · model 72.7% fair -267
 - [UCL] **LASK Linz** HOME (None L10) · model 72.7% fair -267
@@ -45,53 +41,49 @@
 - [NCAAF] **Ole Miss Rebels** HOME (None L10) · model 72.6% fair -265
 - [NCAAF] **Texas Longhorns** HOME (None L10) · model 72.6% fair -265
 - [NFL] **Dallas Cowboys** HOME (None L10) · model 72.0% fair -257
-- [MLS] **Nashville SC** HOME (3-1 L10) · model 71.6% fair -253
+- [NHL] **Boston Bruins** AWAY (4-2 L10) · model 71.6% fair -252
 - [EPL] **AFC Bournemouth** HOME (2-1 L10) · model 71.3% fair -249
 - [NCAAF] **Oklahoma State Cowboys** AWAY (None L10) · model 70.2% fair -236
 
 ## 🔥/❄️ Heat / Cold Signals
-- Hot teams: **11** | Cold teams: **24** | Over-heavy: 0 | Under-heavy: 23
+- Hot teams: **9** | Cold teams: **21** | Over-heavy: 0 | Under-heavy: 57
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (169)
-- RESIDUAL_DIVERGENCE: **22**
-- STEAM_MOVE: **146**
-- COMPOUND_BULLPEN: **1**
-  - Atlanta Hawks (NBA): Atlanta Hawks OUTPERFORMING expected margin by 7.7pts in recent games -- model bias may persist
-  - Miami Heat (NBA): Miami Heat UNDERPERFORMING expected margin by 10.2pts in recent games -- model bias may persist
-  - Charlotte Hornets (NBA): Charlotte Hornets UNDERPERFORMING expected margin by 6.6pts in recent games -- model bias may persist
-  - Toronto Raptors (NBA): Toronto Raptors OUTPERFORMING expected margin by 13.8pts in recent games -- model bias may persist
-  - Chicago Bulls (NBA): Chicago Bulls UNDERPERFORMING expected margin by 15.7pts in recent games -- model bias may persist
+## ⚠️ Anomaly Detector (151)
+- RESIDUAL_DIVERGENCE: **7**
+- STEAM_MOVE: **144**
+  - Atlanta Dream (WNBA): Atlanta Dream OUTPERFORMING expected margin by 6.5pts in recent games -- model bias may persist
+  - Golden State Valkyries (WNBA): Golden State Valkyries UNDERPERFORMING expected margin by 6.5pts in recent games -- model bias may persist
+  - Orlando City SC (MLS): Orlando City SC UNDERPERFORMING expected margin by 6.5pts in recent games -- model bias may persist
+  - Columbus Crew (MLS): Columbus Crew OUTPERFORMING expected margin by 7.8pts in recent games -- model bias may persist
+  - New York City FC (MLS): New York City FC OUTPERFORMING expected margin by 14.2pts in recent games -- model bias may persist
 
-## 💰 Today's Portfolio (11 picks)
-- Total stake: **$340.0** (34.0% of $1000 bankroll)
-- Expected EV: **$-2.24**
-  - #1 [NRFI] $50 on MIL @ TBR NRFI (no run 1st inning) (P=78%)
-  - #2 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
-  - #3 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
-  - #4 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
-  - #5 [NBA] $35 on NBA Cleveland Cavaliers ML (2-1) vs Washington Wizards (P=71%)
+## 💰 Today's Portfolio (15 picks)
+- Total stake: **$345.0** (34.5% of $1000 bankroll)
+- Expected EV: **$-23.89**
+  - #1 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
+  - #2 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
+  - #3 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
+  - #4 [MLS] $20 on MLS Charlotte FC ML (14-8-10) vs Orlando City SC (P=60%)
+  - #5 [MLS] $20 on MLS FC Cincinnati ML (11-10-11) vs Philadelphia Union (P=52%)
 
-## 🎯 Convergence Picks (34 stacked games)
-- ELITE: **13** · HIGH: 15 · MED: 6
-  - [ELITE] Miami Heat @ Atlanta Hawks : 5 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ANOMALY)
-  - [ELITE] New Jersey Devils @ Colorado Avalanche : 5 signals (PREGAME, HEAT_COLD, HEAT_COLD, HEAT_COLD)
-  - [ELITE] Red Bull New York @ New England Revolution : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
+## 🎯 Convergence Picks (33 stacked games)
+- ELITE: **11** · HIGH: 11 · MED: 11
+  - [ELITE] Houston Rockets @ Milwaukee Bucks : 5 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ANOMALY)
+  - [ELITE] Golden State Warriors @ Minnesota Timberwolves : 5 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ANOMALY)
   - [ELITE] Columbus Crew @ FC Dallas : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ATS)
   - [ELITE] Nottingham Forest @ Brentford : 5 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ATS)
+  - [ELITE] Denver Nuggets @ New Orleans Pelicans : 4 signals (HEAT_COLD, ANOMALY, ATS, ATS)
 
-## ⚾ Top MLB Pitcher K Plays (1)
-- **Jacob Misiorowski** OVER 4.5 K (75%) fair -303
-
-## 🏀 NBA Player Heat (7 HOT / 6 COLD)
-  - 🔥 **Gary Trent Jr.** (MIL): L5 14.8/1.2/1.6 vs season 8.1/1.0/1.2 [PTS +6.7]
-  - 🔥 **Cormac Ryan** (MIL): L5 20.2/4.8/2.4 vs season 14.3/2.5/1.7 [PTS +5.9, REB +2.3]
-  - 🔥 **Brook Lopez** (LAC): L5 18.0/5.3/1.0 vs season 12.1/4.2/1.2 [PTS +5.9]
-  - 🔥 **Blake Hinson** (UTAH): L5 17.0/2.4/1.8 vs season 11.9/2.4/1.1 [PTS +5.1]
-  - 🔥 **Malachi Smith** (TOR): L5 10.2/6.0/5.8 vs season 8.3/3.4/3.3 [REB +2.6, AST +2.5]
-  - ❄️ **Brandon Ingram** (LAC): L5 12.0 vs season 21.5 [PTS -9.5, REB -2.4] -- FADE OVER props
-  - ❄️ **Nikola Vucevic** (ORL): L5 1.7 vs season 10.1 [PTS -8.4, REB -4.0] -- FADE OVER props
-  - ❄️ **Bennedict Mathurin** (NO): L5 8.0 vs season 14.0 [PTS -6.0] -- FADE OVER props
+## 🏀 NBA Player Heat (5 HOT / 5 COLD)
+  - 🔥 **Olivier-Maxence Prosper** (MEM): L5 19.4/4.2/1.2 vs season 10.0/3.5/1.0 [PTS +9.4]
+  - 🔥 **Maxime Raynaud** (SAC): L5 20.0/9.8/2.6 vs season 12.5/7.5/1.4 [PTS +7.5, REB +2.3]
+  - 🔥 **Ty Jerome** (MEM): L5 29.8/3.5/6.5 vs season 24.2/3.1/6.1 [PTS +5.6]
+  - 🔥 **Domantas Sabonis** (SAC): L5 19.0/16.5/7.2 vs season 17.2/13.7/5.5 [REB +2.8]
+  - 🔥 **Cedric Coward** (MEM): L5 13.3/9.7/2.0 vs season 13.5/7.3/2.5 [REB +2.3]
+  - ❄️ **Shaedon Sharpe** (POR): L5 7.2 vs season 20.8 [PTS -13.6, REB -2.7, AST -2.0] -- FADE OVER props
+  - ❄️ **Malik Monk** (SAC): L5 3.0 vs season 8.9 [PTS -5.9] -- FADE OVER props
+  - ❄️ **Bennedict Mathurin** (NO): L5 7.2 vs season 13.0 [PTS -5.8] -- FADE OVER props
 
 ## 🥊 UFC Fight Matchups (UFC Fight Night: Moicano vs. Nolan)
   - [FAVORITE] **Lucia Szabová** (12-0-0) vs Tainara Lisboa -- fair -234
@@ -119,19 +111,12 @@
   - ❄️ **Andruw Monasterio** (BOS): L14 .083 / season .233 (-150pts) -- FADE props
   - ❄️ **Jim Jarvis** (ATL): L14 .079 / season .207 (-128pts) -- FADE props
 
-## 😴 B2B Fatigue Edges (6)
-- [NBA] FADE Detroit Pistons (home on B2B)
-- [NBA] FADE New York Knicks (away on B2B)
-- [NBA] FADE San Antonio Spurs (away on B2B)
-- [NHL] FADE Philadelphia Flyers (away on B2B)
-- [NHL] FADE New Jersey Devils (away on B2B)
-
-## 📈 Streak Regression Alerts (24)
-- [NBA] Miami Heat on L5 L10 0-5 -- Miami Heat on L5 -- no historical sample
-- [NBA] Houston Rockets on W5 L10 5-0 -- Houston Rockets on W5 -- no historical sample
-- [NBA] New Orleans Pelicans on L3 L10 2-3 -- New Orleans Pelicans on L3 -- no historical sample
-- [NBA] Oklahoma City Thunder on W4 L10 4-1 -- Oklahoma City Thunder on W4 -- no historical sample
-- [NHL] Calgary Flames on W4 L10 4-1 -- Calgary Flames on W4 -- no historical sample
+## 📈 Streak Regression Alerts (26)
+- [NBA] Milwaukee Bucks on L3 L10 1-3 -- Milwaukee Bucks on L3 -- no historical sample
+- [NBA] Houston Rockets on W4 L10 4-0 -- Houston Rockets on W4 -- no historical sample
+- [NBA] Minnesota Timberwolves on W3 L10 3-1 -- Minnesota Timberwolves on W3 -- no historical sample
+- [NBA] Golden State Warriors on L3 L10 1-3 -- Golden State Warriors on L3 -- no historical sample
+- [NBA] New Orleans Pelicans on L3 L10 1-3 -- New Orleans Pelicans on L3 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**
@@ -141,12 +126,12 @@
   - ⚠️ batter_rbis (Brier Δ -0.0052)
 
 ## 🧠 Training Convergence
-- ELITE: **1** · HEALTHY: 0 · OK: 1 · DEGRADED: **0**
+- ELITE: **1** · HEALTHY: 1 · OK: 0 · DEGRADED: **0**
 
 ## 🤖 Self-Training Status
-- **NBA**: n=63 games · hit rate 54.0% · bias +2.6pp
-- **NHL**: n=91 games · hit rate 49.5% · bias -10.7pp [calibration applied]
+- **NBA**: n=82 games · hit rate 56.1% · bias +2.3pp
+- **NHL**: n=95 games · hit rate 48.4% · bias -13.0pp [calibration applied]
 - **WNBA**: n=5 games · hit rate 60.0% · bias +8.2pp
-- **MLS**: n=61 games · hit rate 34.4% · bias -4.9pp
+- **MLS**: n=75 games · hit rate 40.0% · bias -3.0pp
 - **EPL**: n=30 games · hit rate 43.3% · bias -0.6pp
-- **MLB**: n=9 games · hit rate 55.6% · bias +1.7pp
+- **MLB**: n=10 games · hit rate 60.0% · bias +3.8pp
