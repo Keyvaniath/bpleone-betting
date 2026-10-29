@@ -1,23 +1,23 @@
 {
- "generated_at": "2026-10-29T17:12:51",
+ "generated_at": "2026-10-29T19:42:49",
  "stake_assumption": "1u flat per pick",
  "total_picks": 16563,
- "n_settled": 19965,
- "n_pending": 1474,
+ "n_settled": 19966,
+ "n_pending": 1473,
  "n_void": 1064,
- "wins": 8877,
+ "wins": 8878,
  "losses": 11075,
  "pushes": 13,
  "hit_rate": 0.4449,
- "net_units": -3671.783,
+ "net_units": -3671.248,
  "roi_pct": -18.4,
  "n_calibrated_picks": 16419,
  "calibrated_reliability": {
-  "n": 13897,
+  "n": 13898,
   "ece_raw": 0.0824,
   "ece_calibrated": 0.0141,
-  "brier_raw": 0.21178,
-  "brier_calibrated": 0.19685,
+  "brier_raw": 0.21177,
+  "brier_calibrated": 0.19684,
   "note": "In-sample over the settled ledger (the isotonic transform is fit on these same outcomes); held-out 70/30 validation is in recalibration_map.json. p_predicted = raw model prob (kept untouched for the learning loop); p_calibrated = honest prob stamped per pick. Lower ECE/Brier on the calibrated column = the displayed % is truer."
  },
  "curated": {
@@ -53,11 +53,11 @@
  "headline_basis": "all-time: working ledger + data/ledger_archive.json",
  "working_ledger_only": {
   "all": {
-   "n_settled": 14025,
-   "wins": 5920,
+   "n_settled": 14026,
+   "wins": 5921,
    "losses": 8094,
-   "net_units": -2413.197,
-   "roi_pct": -17.22
+   "net_units": -2412.662,
+   "roi_pct": -17.21
   },
   "curated": {
    "n_settled": 1109,
@@ -103,8 +103,8 @@
   "note": "The headline became ALL-TIME on 2026-10-23. 5,946 settled picks that the old tail-cut eviction had destroyed (May-June 2026, the 07-06 erosion and the run-up to 09-03) were rebuilt from git history at each pick's final state, with today's duplicate-wager rule re-applied, and folded back in. They are mostly the raw May-June MLB prop firehose (2,961-2,983, -1,256.9u), so the firehose ROI fell; the curated record changed by the curated picks among them. Before this date the published numbers covered the working window only -- working_ledger_only keeps that basis.",
   "n_archived_in_headline": 5940
  },
- "n_added_this_run": 1,
- "n_newly_settled_this_run": 0,
+ "n_added_this_run": 0,
+ "n_newly_settled_this_run": 1,
  "n_resettled_this_run": 0,
  "n_voided_this_run": 0,
  "n_duplicates_collapsed_this_run": 0,
@@ -554,13 +554,13 @@
    "roi_pct": 17.28
   },
   "wnba_alts_home_total_over_77.2": {
-   "n": 5,
-   "wins": 4,
+   "n": 6,
+   "wins": 5,
    "losses": 1,
    "pushes": 0,
-   "net_units": 1.14,
-   "hit_rate": 0.8,
-   "roi_pct": 22.8
+   "net_units": 1.675,
+   "hit_rate": 0.8333,
+   "roi_pct": 27.92
   },
   "wnba_alts_home_total_over_79.3": {
    "n": 4,
@@ -3391,12 +3391,12 @@
    "hit_rate": 0.4094
   },
   "home_total_over": {
-   "n": 178,
-   "wins": 148,
+   "n": 179,
+   "wins": 149,
    "losses": 30,
    "pushes": 0,
-   "net_units": 49.18,
-   "hit_rate": 0.8315
+   "net_units": 49.715,
+   "hit_rate": 0.8324
   },
   "3pm_under": {
    "n": 104,
@@ -4225,12 +4225,12 @@
    "hit_rate": 0.4094
   },
   "home_total_over": {
-   "n": 178,
-   "wins": 148,
+   "n": 179,
+   "wins": 149,
    "losses": 30,
    "pushes": 0,
-   "net_units": 49.18,
-   "hit_rate": 0.8315
+   "net_units": 49.715,
+   "hit_rate": 0.8324
   },
   "3pm_under": {
    "n": 104,
@@ -4971,15 +4971,15 @@
   },
   "WNBA": {
    "n": 493,
-   "settled": 454,
-   "wins": 332,
+   "settled": 455,
+   "wins": 333,
    "losses": 122,
    "pushes": 0,
-   "pending": 7,
+   "pending": 6,
    "void": 32,
-   "net_units": 47.958,
-   "hit_rate": 0.7313,
-   "roi_pct": 10.56,
+   "net_units": 48.493,
+   "hit_rate": 0.7319,
+   "roi_pct": 10.66,
    "markets": 4
   },
   "EPL": {
@@ -5173,38 +5173,13 @@
   "note": "NFL props are judged from 10/23 forward: the simulator's form rule changed, so earlier picks are a different model. They stay on the record as their own line and never feed a family verdict."
  },
  "last_7_days": {
-  "wins": 1038,
+  "wins": 1039,
   "losses": 556,
-  "net_units": -97.067,
-  "hit_rate": 0.6512
+  "net_units": -96.532,
+  "hit_rate": 0.6514
  },
  "note": "Unified pick ledger -- records every pick the model surfaces (top_25 board, whales, consensus, unders, sharp action, locks, POD) and settles each against actual outcomes. Per-source W-L feeds back into calibration so the model learns which modules are reliable. THIS is the training signal.",
  "picks": [
-  {
-   "source": "nhl_period_p3_over_1.5",
-   "sport": "NHL",
-   "player_or_matchup": "TOR @ CGY",
-   "market": "P3_OVER_1.5",
-   "prob": 0.636,
-   "fair_american": -174,
-   "p_predicted": 0.636,
-   "matchup": "TOR @ CGY",
-   "date": "2026-10-26",
-   "pick_id": "nhl_period_p3_over_1_5|NHL|TOR___CGY|P3_OVER_1_5|2026-10-26",
-   "settled": true,
-   "result": "won",
-   "payout_units": 0.5747,
-   "recorded_at": "2026-10-26T16:46:58",
-   "p_calibrated": 0.6132,
-   "outcome": {
-    "period": 3,
-    "period_goals": 3,
-    "line": 1.5,
-    "side": "OVER",
-    "verify": "TOR @ CGY: period 3 goals = 3 (line 1.5, bet over) on 2026-10-26"
-   },
-   "settled_at": "2026-10-27T15:11:47"
-  },
   {
    "source": "nhl_period_p3_over_1.5",
    "sport": "NHL",
@@ -10335,6 +10310,31 @@
     "verify": "San Diego FC 1-4 Vancouver Whitecaps: home clean sheet = False \u2014 HOME_CLEAN_SHEET_NO"
    },
    "settled_at": "2026-10-29T05:58:40"
+  },
+  {
+   "source": "wnba_alts_home_total_over_77.2",
+   "sport": "WNBA",
+   "player_or_matchup": "GOL @ ATL",
+   "market": "HOME_TOTAL_OVER_77.2",
+   "prob": 0.651,
+   "fair_american": -187,
+   "p_predicted": 0.651,
+   "matchup": "GOL @ ATL",
+   "date": "2026-10-29",
+   "pick_id": "wnba_alts_home_total_over_77_2|WNBA|GOL___ATL|HOME_TOTAL_OVER_77_2|2026-10-29",
+   "settled": true,
+   "result": "won",
+   "payout_units": 0.5348,
+   "recorded_at": "2026-10-27T20:21:50",
+   "p_calibrated": 0.7418,
+   "outcome": {
+    "final_score": "GS 69 @ ATL 80",
+    "team_total": 80,
+    "line": 77.2,
+    "side": "OVER",
+    "verify": "GS @ ATL: home scored 80 (line 77.2, bet over) on 2026-10-29"
+   },
+   "settled_at": "2026-10-29T19:42:49"
   }
  ],
  "recent_window": 200,
@@ -10342,5 +10342,5 @@
   "2026-05-19",
   "2026-10-29"
  ],
- "digest_generated_at": "2026-10-29T17:12:53"
+ "digest_generated_at": "2026-10-29T19:42:52"
 }
