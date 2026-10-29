@@ -41,6 +41,22 @@ bpleone-site/
 
 ## Current deployment state (LIVE)
 
+- **2026-10-29 (night) — NFL QB MODEL.** The NFL desk logged PHI +195 at WSH
+  on 10/28 with Hurts out (McKee started PHI's last game): its "edges" were
+  partly the market pricing backup QBs. `python/nfl_qbs.py` + seed
+  `tools/build_nfl_qb_seed.py` -> `data/nfl_qb_games.json` (392 ESPN summaries,
+  2025-26 on; grown each run from the dated scoreboard, last 8 days). QB value
+  = ANY/A per dropback shrunk (250 db) toward REPLACEMENT (league - 1.0);
+  edge = starter minus team's last-8-starts average x 35 db (/10). Model =
+  logistic [logit(Elo), QB edge, 1] fitted on last season with actual
+  starters (betas ~[0.98, 0.21, 0.05]). This season vs DK close: Elo 0.6520
+  -> + QB 0.6448 (DK 0.6613), blend 0.6438 at w=0.80, CI [-0.013, 0.048],
+  OOS 32 bets +25.2% -> still UNPROVEN. Live starter = regular / last start
+  vs ESPN's injury report (summary `injuries`, one call per game): Out /
+  Doubtful / IR -> next QB; Questionable starter or a regular-vs-last-start
+  conflict the report doesn't settle -> `pick_blocked` "QB uncertain".
+  `MODEL_VERSION` stamped on picks (ledger `desk_model`); forward_test
+  `by_model` scores versions separately (the 9 10/28 picks = v1).
 - **2026-10-29 (later) — LEDGER TIMING + NHL PRIOR.** (1) LATE LEDGER PASS: ~60
   generators (all NHL/NBA/NFL props, tennis, soccer, whale, consensus) run
   AFTER the daily ledger step, so the ledger read the previous run's files;

@@ -11,6 +11,13 @@
   // NHL (2026-10-28): what each layer of the model buys, in log loss on this
   // season's DK-priced games (lower is better; DK's close is the bar).
   const ladder = (s, bt) => {
+    const qm = s.qb_model;
+    if (qm) {
+      const eo = qm.backtest_elo_only || {};
+      return `<div class="muted" style="margin-top:6px; font-family:'JetBrains Mono',monospace; font-size:11px;">
+        Model ladder (log loss, lower = better): Elo only ${eo.logloss_elo ?? "—"} → + starting QB ${bt.logloss_elo ?? "—"} · DraftKings close ${bt.logloss_market ?? "—"}
+      </div>`;
+    }
     const gm = s.goalie_model;
     if (!gm) return "";
     const eo = gm.backtest_elo_only || {}, pj = gm.backtest_projected || {};
@@ -30,11 +37,15 @@
     if (!f || !f.n_logged) return "";
     const sg = (v) => v == null ? "—" : (v > 0 ? "+" : "") + v;
     const fin = f.n_close_final === f.n_clv ? "" : ` (${f.n_clv - f.n_close_final} not kicked off yet: close = latest line)`;
+    const bm = Object.entries(f.by_model || {}).map(([k, v]) => `${esc(k)}: ${v.n} picks, ${sg(v.avg_clv_pts)} pts`).join(" · ");
     return `<div class="muted" style="margin-top:6px; font-family:'JetBrains Mono',monospace; font-size:11px;">
-        Forward test: ${f.n_logged} picks logged · settled ${f.settled_w}-${f.settled_l} (${sg(f.units)}u) ·
+        ${bm && Object.keys(f.by_model).length > 1 ? "By model version — " + bm + "<br>" : ""}Forward test: ${f.n_logged} picks logged · settled ${f.settled_w}-${f.settled_l} (${sg(f.units)}u) ·
         vs the DK close: avg ${sg(f.avg_clv_pts)} pts, beat ${f.beat_close_pct ?? "—"}%, flat ${f.flat_close_pct ?? "—"}%${fin}
       </div>`;
   };
+  // NFL (2026-10-29): projected starting QB + his edge over the team's usual
+  // starter (yards/game, from ANY/A); status from ESPN's injury report.
+  const qbl = (q) => q ? `${esc(q.qb || "?")}${q.status && q.status !== "active" ? " (" + esc(q.status) + ")" : ""}${Math.round((q.edge || 0) * 10) ? " " + (q.edge > 0 ? "+" : "") + Math.round(q.edge * 10) + " yds" : ""}` : "";
   const gl = (g) => {
     if (!g) return "";
     const tag = g.status === "confirmed" ? " ✓ confirmed"
@@ -71,6 +82,7 @@
             <span class="muted">${esc(r.game_date || "")}</span><span><strong>${esc(r.matchup)}</strong></span>
             <span>DK ${amer(r.ml_home)} / ${amer(r.ml_away)}</span>
             <span class="muted">home DK ${pct(r.p_home_dk)}</span><span class="muted">model ${pct(r.p_home_elo)}</span><span>${pickTxt}</span>
+            ${r.qbs ? `<span></span><span class="muted" style="grid-column: span 5; font-size:10.5px;">QBs: ${qbl(r.qbs.away)} (away) vs ${qbl(r.qbs.home)} (home)${r.pick_blocked ? " · " + esc(r.pick_blocked) : ""}</span>` : ""}
             ${r.goalies ? `<span></span><span class="muted" style="grid-column: span 5; font-size:10.5px;">in net: ${gl(r.goalies.away)} (away) vs ${gl(r.goalies.home)} (home)${r.pick_blocked ? " · no pick until both are confirmed" : ""}</span>` : ""}</div>`;
         }).join("");
         el.innerHTML = head + (rows || `<p class="muted" style="padding:12px 16px;">No games on the DraftKings board.</p>`) +

@@ -44,6 +44,10 @@ PARAMS = {
 MIN_EDGE = 0.04          # 4% expected value at the DK price
 W_GRID = [i / 20 for i in range(21)]
 MIN_BACKTEST_N = 60      # below this, w stays 0 (not enough evidence to lean on)
+# Stamped on every logged pick (ledger `desk_model`) so the forward test can
+# score each model version on its own picks. Picks logged before a version
+# existed carry none -> "v1".
+MODEL_VERSION = {"nfl": "v2-qb (2026-10-29)", "nhl": "v2-goalie-shots-rest (2026-10-28)"}
 
 
 def _load(p: str) -> Dict[str, Any]:
@@ -252,6 +256,42 @@ def nhl_goalie_model(finals: List[Dict[str, Any]], params: Dict[str, float], sea
             "n_goalie_games": len(games)}
 
 
+# ----------------------------------------------------------- NFL QBs ----
+def nfl_qb_model(finals: List[Dict[str, Any]], params: Dict[str, float], season_start: str) -> Dict[str, Any]:
+    """The NFL model beyond Elo (2026-10-29): logistic regression on
+    [logit(walk-forward Elo), QB edge, 1] with the ACTUAL starter, fitted on
+    LAST season only. Live, the starter is projected from the last start /
+    regular + ESPN's injury report, and a game whose QB situation is
+    uncertain is never picked (see nfl_qbs.project)."""
+    import nfl_qbs as nq
+    grown = nq.grow()
+    games = nq.ordered_games()
+    feats, state = nq.history_features(games)
+    pre = pregame_elo("nfl", finals, params)
+    last_start = f"{int(season_start[:4]) - 1}-09-20"   # skip the first two weeks: usage state still empty
+    rows = []
+    for g in finals:
+        k = (g["date"], g["away"], g["home"])
+        if not (last_start <= g["date"] < season_start) or k not in feats or k not in pre or g["home_score"] == g["away_score"]:
+            continue
+        rows.append((0.0, [_logit(pre[k]), feats[k]["qb"], 1.0], 1.0 if g["home_score"] > g["away_score"] else 0.0))
+    import nhl_goalies as _fit   # shared offset-logistic fitter
+    betas = _fit.fit_logit_offset(rows)
+
+    def z(L, qb):
+        return betas[0] * L + betas[1] * qb + betas[2] if betas else L
+
+    def adj(k):
+        return (z(_logit(pre[k]), feats[k]["qb"]) - _logit(pre[k])) if betas and k in feats and k in pre else 0.0
+
+    fit_ll = None
+    if rows:
+        fit_ll = {"elo": round(sum(_ll(_sig(x[0]), y) for _, x, y in rows) / len(rows), 4),
+                  "model": round(sum(_ll(_sig(z(x[0], x[1])), y) for _, x, y in rows) / len(rows), 4)}
+    return {"betas": [round(b, 4) for b in betas], "fit_n": len(rows), "fit_logloss": fit_ll,
+            "adj": adj, "z": z, "state": state, "n_grown": grown, "n_qb_games": len(games)}
+
+
 # --------------------------------------------------------------- backtest ----
 def _ll(p: float, y: float) -> float:
     p = min(max(p, 1e-6), 1 - 1e-6)
@@ -411,6 +451,7 @@ def forward_test(sport: str, lines: Dict[str, Any]) -> Dict[str, Any]:
     rows = [p for p in (led.get("picks") or []) if p.get("source") == f"{sport}_game_ml" and not p.get("voided")]
     now = dt.datetime.now(dt.timezone.utc)
     out, clvs, beat = [], [], 0
+    by_model: Dict[str, Dict[str, Any]] = {}
     w = l_ = 0
     units = 0.0
     for p in rows:
@@ -432,6 +473,10 @@ def forward_test(sport: str, lines: Dict[str, Any]) -> Dict[str, Any]:
             pts = round((1 / dc - 1 / dd) * 100, 2)          # implied-prob points we beat the close by
             clvs.append((clv, pts))
             beat += pts > 0
+            bm = by_model.setdefault(p.get("desk_model") or "v1", {"n": 0, "sum_pts": 0.0, "beat": 0})
+            bm["n"] += 1
+            bm["sum_pts"] += pts
+            bm["beat"] += pts > 0
         res = p.get("result")
         if p.get("settled") and res in ("win", "loss"):
             w += res == "win"
@@ -448,6 +493,8 @@ def forward_test(sport: str, lines: Dict[str, Any]) -> Dict[str, Any]:
             "beat_close_pct": round(beat / n * 100, 1) if n else None,
             "flat_close_pct": round(sum(1 for c in clvs if c[1] == 0) / n * 100, 1) if n else None, "n_clv": n,
             "n_close_final": sum(1 for r in out if r["close_final"] and r["clv_ev"] is not None),
+            "by_model": {k: {"n": v["n"], "avg_clv_pts": round(v["sum_pts"] / v["n"], 2),
+                             "beat_close_pct": round(v["beat"] / v["n"] * 100, 1)} for k, v in by_model.items()},
             "picks": out[-40:]}
 
 
@@ -495,7 +542,22 @@ def run_sport(sport: str) -> Dict[str, Any]:
             "espn_starter_accuracy": ng_score(gm),
         }
     else:
-        bt = backtest(sport, finals, lines, params)
+        qm = nfl_qb_model(finals, params, season_start)
+        bt_base = backtest(sport, finals, lines, params)
+        bt = backtest(sport, finals, lines, params, adj=qm["adj"])
+        keys = ("n", "logloss_market", "logloss_elo", "logloss_blend", "w_fitted", "logloss_gain_vs_market",
+                "logloss_gain_ci90", "sim_out_of_sample")
+        extra["qb_model"] = {
+            "method": ("Logistic model on walk-forward Elo + QB edge (ANY/A per dropback, 250-dropback prior "
+                       "toward replacement level, vs the team's last-8-starts average, x 35 dropbacks), fitted "
+                       "on last season with the actual starter. Live: projected starter from the last start / "
+                       "regular + ESPN's injury report; an uncertain QB situation blocks the pick."),
+            "betas": qm["betas"], "beta_labels": ["logit(Elo)", "per 10 yds/game of QB edge", "intercept"],
+            "fit_n_last_season": qm["fit_n"], "fit_logloss_last_season": qm["fit_logloss"],
+            "n_qb_games": qm["n_qb_games"], "n_games_added_today": qm["n_grown"],
+            "backtest_elo_only": {k: bt_base.get(k) for k in keys},
+        }
+        gm = None
     oos = bt.get("sim_out_of_sample") or {}
     beats_market = bool(bt.get("n", 0) >= MIN_BACKTEST_N and bt.get("logloss_blend", 9) < bt.get("logloss_market", 0))
     # a weight that doesn't beat the market at 4 decimals is noise: lean on nothing
@@ -540,6 +602,17 @@ def run_sport(sport: str) -> Dict[str, Any]:
         except Exception:
             game_date = None
         goalies, may_pick, blocked = None, True, None
+        qbs = None
+        if sport == "nfl" and extra.get("qb_model") and g.get("event_id"):
+            import nfl_qbs as nq
+            st = qm["state"]
+            inj = nq.injuries(str(g["event_id"]))
+            qbs = {"home": nq.project(st, h, inj.get(h, {})), "away": nq.project(st, a, inj.get(a, {}))}
+            if qm["betas"]:
+                p_elo = _sig(qm["z"](_logit(p_elo), qbs["home"]["edge"] - qbs["away"]["edge"]))
+            unsure = [f"{t}: {qbs[sd]['note']}" for sd, t in (("away", a), ("home", h)) if not qbs[sd]["certain"]]
+            if unsure:
+                may_pick, blocked = False, "QB uncertain -- " + "; ".join(unsure)
         if gm and game_date:
             st = gm["state"]
             pr = probs.get((game_date, a, h)) or {}
@@ -579,6 +652,8 @@ def run_sport(sport: str) -> Dict[str, Any]:
                "ml_home": m.get("ml_home"), "ml_away": m.get("ml_away"), "pick": None, "game_date": game_date}
         if goalies:
             row["goalies"] = goalies
+        if qbs:
+            row["qbs"] = {sd: {k: v for k, v in x.items() if k != "qb_id"} for sd, x in qbs.items()}
         if blocked:
             row["pick_blocked"] = blocked
         best = None
@@ -592,7 +667,7 @@ def run_sport(sport: str) -> Dict[str, Any]:
                             "ev": round(ev, 4)}
         row["pick"] = best
         board.append(row)
-    return {"params": params, "w_used": w, "backtest": bt, "beats_market": beats_market, "proven": proven,
+    return {"model_version": MODEL_VERSION.get(sport), "params": params, "w_used": w, "backtest": bt, "beats_market": beats_market, "proven": proven,
             "verdict": verdict, "ratings": {t: round(v, 1) for t, v in sorted(elo.r.items(), key=lambda x: -x[1])},
             "board": board, "n_picks": sum(1 for r in board if r["pick"]),
             "forward_test": forward_test(sport, lines), **extra}

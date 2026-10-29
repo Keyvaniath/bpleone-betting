@@ -407,6 +407,7 @@ def _collect_picks_from_sources() -> List[Dict[str, Any]]:
                 "game_date": r.get("game_date"),
                 "event_id": r.get("event_id"),
                 "desk_verdict": ("proven" if _d.get("proven") else "unproven"),
+                "desk_model": _d.get("model_version"),
             })
 
     # Strong unders
