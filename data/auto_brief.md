@@ -6,7 +6,7 @@ _0% lineups confirmed_
 
 ## Slate
 - **0 games** scheduled
-- **25 best bets** scored: 0 DK · 0 PP · 0 NRFI · 0 SGP
+- **29 best bets** scored: 0 DK · 0 PP · 0 NRFI · 0 SGP
 
 ## Top 5 Best Bets
 1. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
@@ -18,20 +18,16 @@ _0% lineups confirmed_
 3. **LOL Peyz OVER 4.5 Kills**  (78/100 ****, edge —)
    - Player prop quality score 1.184
    - Elite player
-4. **GOLF Kensei Hirata WIN @ 593 (VidantaWorld Mexico Open)**  (78/100 *****, edge —)
-   - P(win) 14.4% with 2 round(s) left -- sweet-spot value at #2 (-8).
-5. **GOLF Matthieu Pavon TOP5 @ 555 (VidantaWorld Mexico Open)**  (78/100 *****, edge —)
-   - P(top 5) 15.3% -- lower variance than outright but compelling line.
-
-## Bullpens GASSED tonight
-Tampa Bay Rays, Milwaukee Brewers
-_Lean late-inning OVER on these games; fade their save situations._
+4. **GOLF Alvaro Ortiz WIN @ 679 (VidantaWorld Mexico Open)**  (78/100 *****, edge —)
+   - P(win) 12.8% with 1 round(s) left -- sweet-spot value at #1 (-8).
+5. **GOLF Matthieu Pavon WIN @ 721 (VidantaWorld Mexico Open)**  (78/100 *****, edge —)
+   - P(win) 12.2% with 1 round(s) left -- sweet-spot value at #2 (-8).
 
 ## Golf -- VidantaWorld Mexico Open
-- **Leader:** Karl Vilips (-9) at #1
+- **Leader:** Alvaro Ortiz (-8) at #1
 - **Field:** 120 players  |  Status: In Progress
-- **Play of the Tournament:** Kensei Hirata WIN @ +593 (model 14.4%, HIGH)
-   - P(win) 14.4% with 2 round(s) left -- sweet-spot value at #2 (-8).
+- **Play of the Tournament:** Alvaro Ortiz WIN @ +679 (model 12.8%, HIGH)
+   - P(win) 12.8% with 1 round(s) left -- sweet-spot value at #1 (-8).
 
 ## NBA -- REGULAR
 - Charlotte Hornets @ Washington Wizards (3-2 vs 2-3)  | P(home) 35.2% fair +184 | Scheduled
@@ -42,8 +38,8 @@ _Lean late-inning OVER on these games; fade their save situations._
 
 ## NHL -- REGULAR
 - New Jersey Devils @ Vegas Golden Knights (8-5-0 vs 9-4-1)  | P(home) 50.4% fair -102 | Scheduled
-- Winnipeg Jets @ Florida Panthers (4-6-3 vs 7-4-2)  | P(home) 62.7% fair -168 | Scheduled
-- Seattle Kraken @ Calgary Flames (8-4-1 vs 5-7-0)  | P(home) 51.8% fair -107 | Scheduled
+- Winnipeg Jets @ Florida Panthers (4-6-3 vs 7-4-2)  | P(home) 63.0% fair -170 | Scheduled
+- Seattle Kraken @ Calgary Flames (8-4-1 vs 5-7-0)  | P(home) 52.1% fair -109 | Scheduled
 
 ## LoL Esports -- 0 live, 12 upcoming
 - [Worlds] Team Liquid Alienware vs LOS BO3 | P(A) 60.7% fair -154/+154

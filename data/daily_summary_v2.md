@@ -1,25 +1,25 @@
 # EdgeStat Daily Summary — 2026-10-30
 
-## 🏥 Model Health: 66.2/100 [OK]
+## 🏥 Model Health: 67.2/100 [OK]
 - Operational but room to improve - check yellow components
   - 🟢 Calibration Freshness: 100.0/100
-  - 🔴 Hit Rate Trend: 50.8/100
-  - 🔴 Brier Trend: 14.5/100
+  - 🔴 Hit Rate Trend: 48.6/100
+  - 🔴 Brier Trend: 13.4/100
   - 🟢 Pipeline Audit: 100.0/100
-  - 🟡 Data Health: 77.3/100
-  - 🟡 Edge Count: 77.1/100
+  - 🟢 Data Health: 95.5/100
+  - 🔴 Edge Count: 57.1/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.575)
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.572)
 - **Total games on board:** 64
-- **Strong home favorites:** 28 | **Strong road dogs:** 15
+- **Strong home favorites:** 27 | **Strong road dogs:** 15
 
 ## 🎯 Top 5 Best Bets
 1. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
 2. **LOL ShowMaker OVER 3.5 Kills** (78/100 ★★★★)
 3. **LOL Peyz OVER 4.5 Kills** (78/100 ★★★★)
-4. **GOLF Kensei Hirata WIN @ 593 (VidantaWorld Mexico Open)** (78/100 ★★★★★)
-5. **GOLF Matthieu Pavon TOP5 @ 555 (VidantaWorld Mexico Open)** (78/100 ★★★★★)
+4. **GOLF Alvaro Ortiz WIN @ 679 (VidantaWorld Mexico Open)** (78/100 ★★★★★)
+5. **GOLF Matthieu Pavon WIN @ 721 (VidantaWorld Mexico Open)** (78/100 ★★★★★)
 
 ## 🔒 Locks of the Day -- Track Record
 - All-time: **310-60** (83.8% hit rate)
@@ -61,20 +61,20 @@
 
 ## 💰 Today's Portfolio (12 picks)
 - Total stake: **$330.0** (33.0% of $1000 bankroll)
-- Expected EV: **$-7.7**
+- Expected EV: **$-6.18**
   - #1 [LOL] $35 on LOL Inspired UNDER 3.5 Kills (P=62%)
   - #2 [LOL] $35 on LOL ShowMaker OVER 3.5 Kills (P=62%)
   - #3 [LOL] $35 on LOL Peyz OVER 4.5 Kills (P=61%)
-  - #4 [GOLF] $35 on GOLF Kensei Hirata WIN @ 593 (VidantaWorld Mexico Open) (P=14%)
-  - #5 [GOLF] $35 on GOLF Matthieu Pavon TOP5 @ 555 (VidantaWorld Mexico Open) (P=15%)
+  - #4 [GOLF] $35 on GOLF Alvaro Ortiz WIN @ 679 (VidantaWorld Mexico Open) (P=13%)
+  - #5 [GOLF] $35 on GOLF Matthieu Pavon WIN @ 721 (VidantaWorld Mexico Open) (P=12%)
 
-## 🎯 Convergence Picks (28 stacked games)
-- ELITE: **12** · HIGH: 7 · MED: 9
+## 🎯 Convergence Picks (29 stacked games)
+- ELITE: **15** · HIGH: 5 · MED: 9
+  - [ELITE] Winnipeg Jets @ Florida Panthers : 8 signals (PREGAME, HEAT_COLD, HEAT_COLD, HEAT_COLD)
   - [ELITE] San Diego FC @ St. Louis CITY SC : 6 signals (PREGAME, HEAT_COLD, HEAT_COLD, HEAT_COLD)
-  - [ELITE] Memphis Grizzlies @ Portland Trail Blazers : 5 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
-  - [ELITE] Buffalo Sabres @ Anaheim Ducks : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ANOMALY)
-  - [ELITE] D.C. United @ Columbus Crew : 5 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ANOMALY)
-  - [ELITE] CF Montréal @ New York City FC : 5 signals (PREGAME, HEAT_COLD, ANOMALY, ANOMALY)
+  - [ELITE] Detroit Pistons @ Brooklyn Nets : 5 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ATS)
+  - [ELITE] Houston Rockets @ Dallas Mavericks : 5 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
+  - [ELITE] Los Angeles Lakers @ Golden State Warriors : 5 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ATS)
 
 ## 🏀 NBA Player Heat (2 HOT / 4 COLD)
   - 🔥 **Devin Carter** (BOS): L5 14.6/5.8/5.0 vs season 8.9/3.3/2.7 [PTS +5.7, REB +2.5, AST +2.3]
@@ -91,11 +91,11 @@
   - [LEAN] **Farman Hasanov** (5-0-0) vs Jean-Paul Lebosnoyani -- fair -138
 
 ## ⛳ Golf Player Heat (from VidantaWorld Mexico Open)
-  - 🔥 T1 **Karl Vilips** (Australia): -9 total -- finished T1
-  - 🔥 T2 **Kensei Hirata** (Japan): -8 total -- finished T2
-  - 🔥 T3 **Garrick Higgo** (South Africa): -7 total -- finished T3
-  - 🔥 T4 **Jeffrey Kang** (USA): -7 total -- finished T4
-  - 🔥 T5 **Adrien Dumont de Chassart** (Belgium): -7 total -- finished T5
+  - 🔥 T1 **Alvaro Ortiz** (Mexico): -8 total -- finished T1
+  - 🔥 T2 **Matthieu Pavon** (France): -8 total -- finished T2
+  - 🔥 T3 **Max Greyserman** (USA): -8 total -- finished T3
+  - 🔥 T4 **Jeffrey Kang** (USA): -8 total -- finished T4
+  - 🔥 T5 **Adrien Dumont de Chassart** (Belgium): -8 total -- finished T5
 
 ## 🔥 MLB Batter Heat (55 HOT / 68 COLD)
   - 🔥 **Nolan Arenado** (AZ): L14 .404 / season .255 (+149pts)
@@ -109,12 +109,15 @@
   - ❄️ **Andruw Monasterio** (BOS): L14 .083 / season .233 (-150pts) -- FADE props
   - ❄️ **Jim Jarvis** (ATL): L14 .079 / season .207 (-128pts) -- FADE props
 
-## 📈 Streak Regression Alerts (24)
-- [NBA] Atlanta Hawks on L3 L10 2-3 -- Atlanta Hawks on L3 -- no historical sample
-- [NBA] Cleveland Cavaliers on W3 L10 3-1 -- Cleveland Cavaliers on W3 -- no historical sample
-- [NBA] New Orleans Pelicans on L4 L10 1-4 -- New Orleans Pelicans on L4 -- no historical sample
-- [NBA] Sacramento Kings on L5 L10 0-5 -- Sacramento Kings on L5 -- no historical sample
-- [NBA] Portland Trail Blazers on W3 L10 3-1 -- Portland Trail Blazers on W3 -- no historical sample
+## 😴 B2B Fatigue Edges (1)
+- [NHL] FADE Winnipeg Jets (away on B2B)
+
+## 📈 Streak Regression Alerts (21)
+- [NBA] Boston Celtics on W3 L10 4-1 -- Boston Celtics on W3 -- no historical sample
+- [NBA] Chicago Bulls on L3 L10 1-4 -- Chicago Bulls on L3 -- no historical sample
+- [NBA] Brooklyn Nets on L4 L10 0-4 -- Brooklyn Nets on L4 -- no historical sample
+- [NBA] Houston Rockets on W5 L10 5-0 -- Houston Rockets on W5 -- no historical sample
+- [NBA] LA Clippers on L3 L10 1-3 -- LA Clippers on L3 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**
