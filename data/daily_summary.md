@@ -1,17 +1,17 @@
-# EdgeStat Daily Brief - 2026-10-29
+# EdgeStat Daily Brief - 2026-10-30
 
 **Model Confidence: 9.3/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
 
 _Pipeline health: **WARNING** (7/15 artifacts ok; 8 empty, 0 stale)._ 
 
-_Generated at 2026-10-29T19:44:03 UTC. Game lines source: **placeholder -110 (no real book today)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-10-30T01:46:36 UTC. Game lines source: **placeholder -110 (no real book today)**. Pick-em opportunities from PrizePicks._
 
 ## Self-Learning Loop
 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
-| batter total bases | 90 | 36.7% | 41.3% | 1.124 | 0.897 |
-| batter hits | 367 | 55.0% | 56.8% | 1.031 | 0.970 |
+| batter total bases | 83 | 37.4% | 40.4% | 1.080 | 0.931 |
+| batter hits | 349 | 55.3% | 56.8% | 1.027 | 0.974 |
 
 Cumulative graded plays: 19966. Wins: 8883. Hit rate: 44.5%.
 
@@ -29,6 +29,8 @@ Cumulative graded plays: 19966. Wins: 8883. Hit rate: 44.5%.
 ## Loop Activity (since last refresh)
 
 - Confidence delta: **+0.0**
+- batter total bases: cf +0.0345 (-7 new settled)
+- batter hits: cf +0.0036 (-18 new settled)
 
 ## Model Recommendations (operator review)
 

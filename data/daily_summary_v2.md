@@ -1,18 +1,18 @@
-# EdgeStat Daily Summary — 2026-10-29
+# EdgeStat Daily Summary — 2026-10-30
 
-## 🏥 Model Health: 69.3/100 [OK]
+## 🏥 Model Health: 69.9/100 [OK]
 - Operational but room to improve - check yellow components
   - 🟢 Calibration Freshness: 100.0/100
   - 🔴 Hit Rate Trend: 50.8/100
   - 🔴 Brier Trend: 14.5/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 95.5/100
-  - 🟡 Edge Count: 71.4/100
+  - 🟡 Edge Count: 77.1/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.573)
-- **Total games on board:** 66
-- **Strong home favorites:** 26 | **Strong road dogs:** 10
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.59)
+- **Total games on board:** 65
+- **Strong home favorites:** 29 | **Strong road dogs:** 10
 
 ## 🎯 Top 5 Best Bets
 1. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
@@ -33,7 +33,7 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (18)
+## ⚡ Pre-Game HIGH Conviction (15)
 - [UCL] **Atlético Madrid** HOME (None L10) · model 72.7% fair -267
 - [UCL] **Bodo/Glimt** HOME (None L10) · model 72.7% fair -267
 - [UCL] **LASK Linz** HOME (None L10) · model 72.7% fair -267
@@ -46,13 +46,13 @@
 - [NCAAF] **Missouri Tigers** AWAY (None L10) · model 70.2% fair -236
 
 ## 🔥/❄️ Heat / Cold Signals
-- Hot teams: **9** | Cold teams: **21** | Over-heavy: 0 | Under-heavy: 57
+- Hot teams: **9** | Cold teams: **21** | Over-heavy: 0 | Under-heavy: 49
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (163)
-- RESIDUAL_DIVERGENCE: **13**
+## ⚠️ Anomaly Detector (164)
+- RESIDUAL_DIVERGENCE: **11**
 - STREAK_MISMATCH: **3**
-- STEAM_MOVE: **147**
+- STEAM_MOVE: **150**
   - Sacramento Kings (NBA): Sacramento Kings UNDERPERFORMING expected margin by 10.0pts in recent games -- model bias may persist
   - Memphis Grizzlies (NBA): Memphis Grizzlies on W5 streak but model rates as 45% -- may be undervalued
   - Portland Trail Blazers (NBA): Portland Trail Blazers OUTPERFORMING expected margin by 9.7pts in recent games -- model bias may persist
@@ -69,7 +69,7 @@
   - #5 [GOLF] $35 on GOLF Erik van Rooyen TOP5 @ 721 (VidantaWorld Mexico Open) (P=12%)
 
 ## 🎯 Convergence Picks (31 stacked games)
-- ELITE: **14** · HIGH: 11 · MED: 6
+- ELITE: **15** · HIGH: 10 · MED: 6
   - [ELITE] Winnipeg Jets @ Tampa Bay Lightning : 6 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
   - [ELITE] San Diego FC @ St. Louis CITY SC : 6 signals (PREGAME, HEAT_COLD, HEAT_COLD, HEAT_COLD)
   - [ELITE] Sacramento Kings @ New Orleans Pelicans : 5 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
@@ -94,18 +94,18 @@
   - [LEAN] **Farman Hasanov** (5-0-0) vs Jean-Paul Lebosnoyani -- fair -138
 
 ## ⛳ Golf Player Heat (from VidantaWorld Mexico Open)
-  - 🔥 T1 **Ben Griffin** (USA): -5 total -- finished T1
-  - 🔥 T2 **Denny McCarthy** (USA): -4 total -- finished T2
-  - 🔥 T3 **Austin Eckroat** (USA): -4 total -- finished T3
-  - 🔥 T4 **Christiaan Bezuidenhout** (South Africa): -4 total -- finished T4
-  - 🔥 T5 **Kensei Hirata** (Japan): -4 total -- finished T5
+  - 🔥 T1 **Karl Vilips** (Australia): -9 total -- finished T1
+  - 🔥 T2 **Kensei Hirata** (Japan): -8 total -- finished T2
+  - 🔥 T3 **Ben Griffin** (USA): -7 total -- finished T3
+  - 🔥 T4 **Marco Penge** (England): -7 total -- finished T4
+  - 🔥 T5 **Garrick Higgo** (South Africa): -7 total -- finished T5
 
-## 🔥 MLB Batter Heat (59 HOT / 79 COLD)
-  - 🔥 **Austin Hays** (SD): L14 .444 / season .280 (+164pts)
+## 🔥 MLB Batter Heat (55 HOT / 69 COLD)
   - 🔥 **Nolan Arenado** (AZ): L14 .404 / season .255 (+149pts)
   - 🔥 **Geraldo Perdomo** (AZ): L14 .392 / season .262 (+130pts)
   - 🔥 **Xander Bogaerts** (SD): L14 .354 / season .231 (+123pts)
-  - 🔥 **Mauricio Dubón** (ATL): L14 .396 / season .276 (+120pts)
+  - 🔥 **Spencer Torkelson** (DET): L14 .350 / season .230 (+120pts)
+  - 🔥 **Sam Antonacci** (CWS): L14 .391 / season .277 (+114pts)
   - ❄️ **Ernie Clement** (TOR): L14 .091 / season .259 (-168pts) -- FADE props
   - ❄️ **Jordan Walker** (STL): L14 .106 / season .269 (-163pts) -- FADE props
   - ❄️ **Tristan Peters** (CWS): L14 .111 / season .265 (-154pts) -- FADE props
@@ -131,12 +131,12 @@
   - ⚠️ batter_rbis (Brier Δ -0.0052)
 
 ## 🧠 Training Convergence
-- ELITE: **1** · HEALTHY: 1 · OK: 0 · DEGRADED: **0**
+- ELITE: **1** · HEALTHY: 0 · OK: 1 · DEGRADED: **0**
 
 ## 🤖 Self-Training Status
-- **NBA**: n=82 games · hit rate 56.1% · bias +2.3pp
-- **NHL**: n=95 games · hit rate 48.4% · bias -13.0pp [calibration applied]
-- **WNBA**: n=5 games · hit rate 60.0% · bias +8.2pp
+- **NBA**: n=80 games · hit rate 58.8% · bias +3.3pp
+- **NHL**: n=84 games · hit rate 54.8% · bias -11.0pp [calibration applied]
+- **WNBA**: n=6 games · hit rate 50.0% · bias -4.1pp
 - **MLS**: n=75 games · hit rate 40.0% · bias -3.0pp
 - **EPL**: n=30 games · hit rate 43.3% · bias -0.6pp
-- **MLB**: n=10 games · hit rate 60.0% · bias +3.8pp
+- **MLB**: n=8 games · hit rate 62.5% · bias -9.6pp
