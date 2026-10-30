@@ -1,19 +1,19 @@
 # EdgeStat Daily Brief - 2026-10-30
 
-**Model Confidence: 9.3/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
+**Model Confidence: 9.8/100 [RED]** -- Calibration warming up. Research signal only; no real-money sizing yet.
 
 _Pipeline health: **WARNING** (7/15 artifacts ok; 8 empty, 0 stale)._ 
 
-_Generated at 2026-10-30T01:46:36 UTC. Game lines source: **placeholder -110 (no real book today)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-10-30T15:31:23 UTC. Game lines source: **placeholder -110 (no real book today)**. Pick-em opportunities from PrizePicks._
 
 ## Self-Learning Loop
 
 | Market | n settled | Hit rate | Model implied | Bias | Correction |
 |---|---|---|---|---|---|
-| batter total bases | 83 | 37.4% | 40.4% | 1.080 | 0.931 |
 | batter hits | 349 | 55.3% | 56.8% | 1.027 | 0.974 |
+| batter total bases | 83 | 37.4% | 40.4% | 1.080 | 0.931 |
 
-Cumulative graded plays: 19966. Wins: 8883. Hit rate: 44.5%.
+Cumulative graded plays: 20038. Wins: 8935. Hit rate: 44.6%.
 
 ## Team Form (last 10)
 
@@ -21,16 +21,9 @@ Cumulative graded plays: 19966. Wins: 8883. Hit rate: 44.5%.
 
 **Cold:** LAD 0-4 (L4, -10), CLE 3-4 (L3, -5), CWS 0-1 (L1, -2), TB 5-5 (L1, -2), MIL 8-1 (W1, 23)
 
-## Gassed Bullpens (> 8.0 IP in 2 days)
-
-- TB: 10.9 IP across 2 games
-- MIL: 9.0 IP across 2 games
-
 ## Loop Activity (since last refresh)
 
-- Confidence delta: **+0.0**
-- batter total bases: cf +0.0345 (-7 new settled)
-- batter hits: cf +0.0036 (-18 new settled)
+- Confidence delta: **+0.5**
 
 ## Model Recommendations (operator review)
 

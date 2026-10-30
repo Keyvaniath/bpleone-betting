@@ -1,4 +1,4 @@
-# Tonight's Slate Brief — 2026-10-29
+# Tonight's Slate Brief — 2026-10-30
 
 ## Slate Quality: 70/100 (MEDIUM)
 _0% lineups confirmed_
@@ -6,7 +6,7 @@ _0% lineups confirmed_
 
 ## Slate
 - **0 games** scheduled
-- **32 best bets** scored: 0 DK · 0 PP · 0 NRFI · 0 SGP
+- **25 best bets** scored: 0 DK · 0 PP · 0 NRFI · 0 SGP
 
 ## Top 5 Best Bets
 1. **LOL Inspired UNDER 3.5 Kills**  (78/100 ****, edge —)
@@ -18,42 +18,38 @@ _0% lineups confirmed_
 3. **LOL Peyz OVER 4.5 Kills**  (78/100 ****, edge —)
    - Player prop quality score 1.184
    - Elite player
-4. **GOLF Max Homa TOP5 @ 716 (VidantaWorld Mexico Open)**  (78/100 *****, edge —)
-   - P(top 5) 12.3% -- lower variance than outright but compelling line.
-5. **GOLF Erik van Rooyen TOP5 @ 721 (VidantaWorld Mexico Open)**  (78/100 *****, edge —)
-   - P(top 5) 12.2% -- lower variance than outright but compelling line.
-
-## ⚠️ Trap Warnings — 1 flagged
-- **GOLF 3-leg parlay @ +1900** (low):
-   - Edge +10.1% looks big but only 0 settled props on this player — model unproven
+4. **GOLF Kensei Hirata WIN @ 593 (VidantaWorld Mexico Open)**  (78/100 *****, edge —)
+   - P(win) 14.4% with 2 round(s) left -- sweet-spot value at #2 (-8).
+5. **GOLF Matthieu Pavon TOP5 @ 555 (VidantaWorld Mexico Open)**  (78/100 *****, edge —)
+   - P(top 5) 15.3% -- lower variance than outright but compelling line.
 
 ## Bullpens GASSED tonight
 Tampa Bay Rays, Milwaukee Brewers
 _Lean late-inning OVER on these games; fade their save situations._
 
 ## Golf -- VidantaWorld Mexico Open
-- **Leader:** Ben Griffin (-5) at #1
+- **Leader:** Karl Vilips (-9) at #1
 - **Field:** 120 players  |  Status: In Progress
-- **Play of the Tournament:** Max Homa TOP5 @ +716 (model 12.3%, HIGH)
-   - P(top 5) 12.3% -- lower variance than outright but compelling line.
+- **Play of the Tournament:** Kensei Hirata WIN @ +593 (model 14.4%, HIGH)
+   - P(win) 14.4% with 2 round(s) left -- sweet-spot value at #2 (-8).
 
 ## NBA -- REGULAR
-- Cleveland Cavaliers @ Atlanta Hawks (3-1 vs 2-3)  | P(home) 21.4% fair +368 | Scheduled
-- Sacramento Kings @ New Orleans Pelicans (0-4 vs 0-4)  | P(home) 55.0% fair -122 | Scheduled
-- Memphis Grizzlies @ Portland Trail Blazers (4-0 vs 3-0)  | P(home) 55.0% fair -122 | Scheduled
+- Charlotte Hornets @ Washington Wizards (3-2 vs 2-3)  | P(home) 35.2% fair +184 | Scheduled
+- Chicago Bulls @ Boston Celtics (1-4 vs 3-1)  | P(home) 93.6% fair -1468 | Scheduled
+- Detroit Pistons @ Brooklyn Nets (4-1 vs 0-4)  | P(home) 6.8% fair +1379 | Scheduled
+- New York Knicks @ Philadelphia 76ers (2-3 vs 4-1)  | P(home) 88.0% fair -734 | Scheduled
+- Orlando Magic @ Toronto Raptors (1-3 vs 3-1)  | P(home) 91.7% fair -1101 | Scheduled
 
 ## NHL -- REGULAR
-- Winnipeg Jets @ Tampa Bay Lightning (4-5-3 vs 7-3-1)  | P(home) 66.8% fair -202 | Scheduled
-- Utah Mammoth @ Pittsburgh Penguins (8-5-0 vs 5-6-1)  | P(home) 46.8% fair +114 | Scheduled
-- Columbus Blue Jackets @ Carolina Hurricanes (5-5-0 vs 10-2-2)  | P(home) 69.7% fair -229 | Scheduled
-- Chicago Blackhawks @ Detroit Red Wings (4-8-0 vs 5-4-3)  | P(home) 64.5% fair -182 | Scheduled
-- Boston Bruins @ St. Louis Blues (9-3-1 vs 5-6-1)  | P(home) 52.2% fair -109 | Scheduled
+- New Jersey Devils @ Vegas Golden Knights (8-5-0 vs 9-4-1)  | P(home) 50.4% fair -102 | Scheduled
+- Winnipeg Jets @ Florida Panthers (4-6-3 vs 7-4-2)  | P(home) 62.7% fair -168 | Scheduled
+- Seattle Kraken @ Calgary Flames (8-4-1 vs 5-7-0)  | P(home) 51.8% fair -107 | Scheduled
 
-## LoL Esports -- 0 live, 14 upcoming
-- [Worlds] CTBC Flying Oyster vs Karmine Corp BO3 | P(A) 32.7% fair +206/-206
-- [Worlds] BILIBILI GAMING vs TOP ESPORTS BO3 | P(A) 77.4% fair -342/+342
+## LoL Esports -- 0 live, 12 upcoming
 - [Worlds] Team Liquid Alienware vs LOS BO3 | P(A) 60.7% fair -154/+154
 - [Worlds] G2 Esports vs Hanwha Life Esports BO3 | P(A) 47.8% fair +109/-109
+- [Worlds] TBD vs TBD BO3 | P(A) 50.0% fair -100/-100
+- [Worlds] TBD vs TBD BO3 | P(A) 50.0% fair -100/-100
 - [Worlds] TBD vs TBD BO3 | P(A) 50.0% fair -100/-100
 - **LoL POT:** Team Liquid Alienware ML vs LOS (Worlds, BO3) (HIGH)
 

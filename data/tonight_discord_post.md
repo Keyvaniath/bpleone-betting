@@ -1,10 +1,9 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:8 F:124
+_NO_ACTION_NIGHT_ | L:0 S:13 F:104
 
 :dart: **Top Picks:**
-1. [GOLF] Kensei Hirata -- Kensei Hirata (PLAYER_STRONG)
-2. [GOLF] Ben Griffin -- Ben Griffin (PLAYER_STRONG)
-3. [NBA] NOP -- NOP (TEAM_STRONG)
+1. [GOLF] Karl Vilips -- Karl Vilips (PLAYER_STRONG)
+2. [GOLF] Kensei Hirata -- Kensei Hirata (PLAYER_STRONG)
 
 :coin: Bankroll Advisory: STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 
