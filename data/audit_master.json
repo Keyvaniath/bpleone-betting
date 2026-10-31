@@ -1,7 +1,7 @@
 {
   "phases": {
     "imports": {
-      "duration_s": 2.3,
+      "duration_s": 1.9,
       "exit_code": 0,
       "summary": "SUMMARY: 625 import-ok / 0 import-fail",
       "stderr_truncated": ""
@@ -13,9 +13,9 @@
       "stderr_truncated": ""
     },
     "data": {
-      "duration_s": 2.4,
+      "duration_s": 2.2,
       "exit_code": 0,
-      "summary": "SUMMARY: 400 ok / 3 empty / 294 flagged / 0 stale24h / 0 stale72h",
+      "summary": "SUMMARY: 403 ok / 3 empty / 291 flagged / 0 stale24h / 0 stale72h",
       "stderr_truncated": ""
     },
     "data_health": {
@@ -25,18 +25,18 @@
       "stderr_truncated": ""
     }
   },
-  "generated_at": "2026-10-31T01:31:24",
-  "total_duration_s": 5.1,
+  "generated_at": "2026-10-31T14:56:01",
+  "total_duration_s": 4.6,
   "artifacts": {
     "module_import_audit.json": {
-      "generated_at": "2026-10-31T01:31:21",
+      "generated_at": "2026-10-31T14:55:58",
       "n_total": 625,
       "n_ok": 625,
       "n_fail": 0,
       "failures": []
     },
     "html_audit.json": {
-      "generated_at": "2026-10-31T01:31:21",
+      "generated_at": "2026-10-31T14:55:58",
       "summary": {
         "ok": 0,
         "no_nav_js": 134,
@@ -345,14 +345,14 @@
       }
     },
     "data_stub_audit.json": {
-      "generated_at": "2026-10-31T01:31:24",
+      "generated_at": "2026-10-31T14:56:00",
       "summary": {
         "empty": 3,
         "stub_flagged": 0,
-        "zero_count": 294,
+        "zero_count": 291,
         "stale_24h": 0,
         "stale_72h": 0,
-        "ok": 400
+        "ok": 403
       },
       "empty": [
         [
@@ -466,16 +466,16 @@
           "n_stale_or_missing=0"
         ],
         [
-          "data_health.json",
-          "n_red=0"
-        ],
-        [
           "data_source_health.json",
           "contains 'sample'"
         ],
         [
           "elite_alerts_board.json",
           "n_elites=0"
+        ],
+        [
+          "esports_alerts.json",
+          "n_new_alerts=0"
         ],
         [
           "f1_driver_confluence_score.json",
@@ -511,7 +511,7 @@
         ],
         [
           "golf_player_heat.json",
-          "n_cold=0; n_withdrew=0"
+          "n_withdrew=0"
         ],
         [
           "golf_tournament_preview.json",
@@ -592,6 +592,10 @@
         [
           "locks_history.json",
           "n_pending=0; n_added_this_run=0; n_newly_settled_this_run=0"
+        ],
+        [
+          "lol_state.json",
+          "n_live=0"
         ],
         [
           "mlb_batter_2plus_hits_props.json",
@@ -1091,7 +1095,7 @@
         ],
         [
           "nba_game_preview.json",
-          "n_locks=0; n_strong=0; n_lean=0"
+          "n_locks=0; n_strong=0"
         ],
         [
           "nba_garbage_time_alerts.json",
@@ -1151,15 +1155,19 @@
         ],
         [
           "nba_team_confluence_score.json",
-          "n_lock=0; n_strong=0"
+          "n_lock=0"
         ],
         [
           "nba_team_explosion_alerts.json",
-          "n_alerts=0; n_elite=0"
+          "n_elite=0"
         ],
         [
           "nba_three_pt_streak_alerts.json",
           "n_alerts=0; n_elite=0"
+        ],
+        [
+          "nba_triple_double_props.json",
+          "n_strong_edges=0"
         ],
         [
           "nba_triple_double_watchlist.json",
@@ -1168,14 +1176,6 @@
         [
           "nba_two_way_alignment.json",
           "n_alignments=0"
-        ],
-        [
-          "nfl_dfs_receipts.json",
-          "n_pools_scored_this_run=0"
-        ],
-        [
-          "nhl_anytime_goal_props.json",
-          "n_strong=0"
         ],
         [
           "nhl_first_goalscorer_alerts.json",
@@ -1242,10 +1242,6 @@
           "n_skaters=0; n_strong_edges=0"
         ],
         [
-          "nhl_skater_3plus_hits.json",
-          "n_strong_edges=0"
-        ],
-        [
           "nhl_skater_3plus_sog.json",
           "n_skaters=0; n_strong_edges=0"
         ],
@@ -1258,12 +1254,8 @@
           "n_skaters=0; n_strong_edges=0"
         ],
         [
-          "nhl_skater_blocks_alt.json",
-          "n_strong_edges=0"
-        ],
-        [
           "nhl_skater_ceiling_stack.json",
-          "n_alerts=0; n_elite=0; n_strong=0"
+          "n_elite=0; n_strong=0"
         ],
         [
           "nhl_skater_confluence_score.json",
@@ -1328,10 +1320,6 @@
         [
           "portfolio.json",
           "n_picked=0"
-        ],
-        [
-          "prediction_log.json",
-          "n_new_this_run=0"
         ],
         [
           "prizepicks_lines.json",
@@ -1550,11 +1538,11 @@
       "stale_72h": []
     },
     "data_health.json": {
-      "generated_at": "2026-10-31T01:31:24",
-      "overall": "yellow",
-      "n_green": 10,
+      "generated_at": "2026-10-31T14:56:01",
+      "overall": "red",
+      "n_green": 8,
       "n_yellow": 1,
-      "n_red": 0,
+      "n_red": 2,
       "checks": [
         {
           "feed": "freshness",
@@ -1569,8 +1557,8 @@
             "sport_coverage.json": 0.0,
             "todays_top_plays.json": 0.0,
             "alpha_pick_of_day.json": 0.0,
-            "alerts_feed.json": 1.6,
-            "calibration_map.json": 0.2,
+            "alerts_feed.json": 2.2,
+            "calibration_map.json": 0.1,
             "espn_odds.json": 0.0
           }
         },
@@ -1586,18 +1574,18 @@
           "upstream_final": 0,
           "local_count": 0,
           "local_live": 0,
-          "live_state_age_min": 10
+          "live_state_age_min": 8
         },
         {
           "feed": "nba",
-          "status": "green",
+          "status": "red",
           "findings": [
-            "10 events matched (8 live)"
+            "NBA count mismatch: local=17 vs ESPN=10"
           ],
           "upstream_count": 10,
-          "local_count": 10,
-          "upstream_live": 8,
-          "local_age_min": 9
+          "local_count": 17,
+          "upstream_live": 0,
+          "local_age_min": 7
         },
         {
           "feed": "wnba",
@@ -1608,18 +1596,18 @@
           "upstream_count": 1,
           "local_count": 1,
           "upstream_live": 0,
-          "local_age_min": 95
+          "local_age_min": 290
         },
         {
           "feed": "nhl",
-          "status": "green",
+          "status": "red",
           "findings": [
-            "3 events matched (2 live)"
+            "NHL count mismatch: local=13 vs ESPN=3"
           ],
           "upstream_count": 3,
-          "local_count": 3,
-          "upstream_live": 2,
-          "local_age_min": 9
+          "local_count": 13,
+          "upstream_live": 0,
+          "local_age_min": 7
         },
         {
           "feed": "mls",
@@ -1630,7 +1618,7 @@
           "upstream_count": 9,
           "local_count": 9,
           "upstream_live": 0,
-          "local_age_min": 95
+          "local_age_min": 290
         },
         {
           "feed": "epl",
@@ -1641,7 +1629,7 @@
           "upstream_count": 8,
           "local_count": 8,
           "upstream_live": 0,
-          "local_age_min": 95
+          "local_age_min": 290
         },
         {
           "feed": "pitcher_matchup",
@@ -1671,7 +1659,7 @@
           ],
           "upstream_players": 120,
           "local_players": 120,
-          "local_age_min": 97
+          "local_age_min": 130
         },
         {
           "feed": "desks",
@@ -1682,23 +1670,23 @@
           "n_stale": 0,
           "ages_h": {
             "tennis_state.json": 0.0,
-            "ufc_state.json": 6.4,
-            "f1_state.json": 6.4,
-            "kbo_state.json": 1.6,
-            "cs_state.json": 1.6,
-            "cws_state.json": 6.4,
+            "ufc_state.json": 13.4,
+            "f1_state.json": 13.4,
+            "kbo_state.json": 4.8,
+            "cs_state.json": 4.8,
+            "cws_state.json": 13.4,
             "worldcup_cards.json": 0.0,
             "cfb_model.json": 0.0,
             "cfb_ratings.json": 0.0,
-            "nfl_dfs.json": 6.4,
-            "nfl_dfs_receipts.json": 6.4,
-            "nfl_dfs_calibration.json": 6.4,
+            "nfl_dfs.json": 13.4,
+            "nfl_dfs_receipts.json": 13.4,
+            "nfl_dfs_calibration.json": 13.4,
             "player_stats_nba.json": 0.1,
             "player_stats_nhl.json": 0.1,
             "player_stats_wnba.json": 0.1,
             "alpha_email.json": 0.0,
             "recent_picks.json": 0.0,
-            "fix_scorecard.json": 6.4
+            "fix_scorecard.json": 13.4
           }
         }
       ]

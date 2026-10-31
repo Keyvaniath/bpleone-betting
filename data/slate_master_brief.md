@@ -1,33 +1,36 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-10-31T01:31:01 UTC_
+_Generated 2026-10-31T14:55:41 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -11
+- **Score:** -47
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 15
-- **Total FADES:** 71
+- **Total STRONG:** 13
+- **Total FADES:** 99
 
 ## Top 5 Curated Picks
-1. **GOLF / Adrien Dumont de Chassart** (GOLF_PLAYER, score=179.5)
-   - Play: Adrien Dumont de Chassart (PLAYER_STRONG)
+1. **GOLF / Andrew Novak** (GOLF_PLAYER, score=201.64)
+   - Play: Andrew Novak (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Matthieu Pavon** (GOLF_PLAYER, score=148.43)
-   - Play: Matthieu Pavon (PLAYER_STRONG)
+2. **GOLF / Kihei Akina** (GOLF_PLAYER, score=116.71)
+   - Play: Kihei Akina (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-3. **WNBA / allisha gray** (WNBA_PLAYER, score=62.42)
+3. **NBA / MEM** (NBA_TEAM, score=70.0)
+   - Play: MEM (TEAM_STRONG)
+   - Rationale: Cross-sport top pick (NBA_TEAM)
+4. **WNBA / allisha gray** (WNBA_PLAYER, score=62.42)
    - Play: allisha gray (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (WNBA_PLAYER)
-4. **WNBA / angel reese** (WNBA_PLAYER, score=60.0)
+5. **WNBA / angel reese** (WNBA_PLAYER, score=60.0)
    - Play: angel reese (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (WNBA_PLAYER)
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
-  - Adrien Dumont de Chassart top 10 finish
+  - Andrew Novak top 10 finish
+  - Kihei Akina top 10 finish
   - Matthieu Pavon top 10 finish
-  - Mackenzie Hughes top 10 finish
 
 ## Slate ROI Projection
 - **Picks:** 0
@@ -36,13 +39,13 @@ _Generated 2026-10-31T01:31:01 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
+- **NBA** / jaylen brown (PLAYER_FADE)
+  - Fade angle: PTS UNDER + PRA UNDER (multi-prop)
+- **NBA** / donovan mitchell (PLAYER_FADE)
+  - Fade angle: PTS UNDER + PRA UNDER (multi-prop)
 - **NBA** / anthony edwards (PLAYER_FADE)
   - Fade angle: PTS UNDER + PRA UNDER (multi-prop)
-- **NBA** / luka doncic (PLAYER_FADE)
+- **NBA** / lauri markkanen (PLAYER_FADE)
   - Fade angle: PTS UNDER + PRA UNDER (multi-prop)
-- **NBA** / TOR (TEAM_FADE)
-  - Fade angle: team total UNDER
-- **NBA** / CHI (TEAM_FADE)
-  - Fade angle: team total UNDER
-- **NBA** / BKN (TEAM_FADE)
+- **NBA** / HOU (TEAM_FADE)
   - Fade angle: team total UNDER
