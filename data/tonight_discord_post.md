@@ -1,9 +1,9 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:13 F:96
+_NO_ACTION_NIGHT_ | L:0 S:15 F:71
 
 :dart: **Top Picks:**
-1. [GOLF] Matthieu Pavon -- Matthieu Pavon (PLAYER_STRONG)
-2. [GOLF] Alvaro Ortiz -- Alvaro Ortiz (PLAYER_STRONG)
+1. [GOLF] Adrien Dumont de Chassart -- Adrien Dumont de Chassart (PLAYER_STRONG)
+2. [GOLF] Matthieu Pavon -- Matthieu Pavon (PLAYER_STRONG)
 3. [WNBA] allisha gray -- allisha gray (PLAYER_STRONG)
 
 :coin: Bankroll Advisory: STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.

@@ -1,18 +1,18 @@
-# EdgeStat Daily Summary — 2026-10-30
+# EdgeStat Daily Summary — 2026-10-31
 
-## 🏥 Model Health: 67.2/100 [OK]
+## 🏥 Model Health: 68.7/100 [OK]
 - Operational but room to improve - check yellow components
   - 🟢 Calibration Freshness: 100.0/100
-  - 🔴 Hit Rate Trend: 48.6/100
-  - 🔴 Brier Trend: 13.4/100
+  - 🔴 Hit Rate Trend: 50.5/100
+  - 🔴 Brier Trend: 13.2/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟢 Data Health: 95.5/100
-  - 🔴 Edge Count: 57.1/100
+  - 🟡 Edge Count: 68.6/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.572)
-- **Total games on board:** 64
-- **Strong home favorites:** 27 | **Strong road dogs:** 15
+- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.583)
+- **Total games on board:** 63
+- **Strong home favorites:** 28 | **Strong road dogs:** 13
 
 ## 🎯 Top 5 Best Bets
 1. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
@@ -33,7 +33,7 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (19)
+## ⚡ Pre-Game HIGH Conviction (15)
 - [UCL] **Atlético Madrid** HOME (None L10) · model 72.7% fair -267
 - [UCL] **Bodo/Glimt** HOME (None L10) · model 72.7% fair -267
 - [UCL] **LASK Linz** HOME (None L10) · model 72.7% fair -267
@@ -46,13 +46,13 @@
 - [NCAAF] **Missouri Tigers** AWAY (None L10) · model 70.2% fair -236
 
 ## 🔥/❄️ Heat / Cold Signals
-- Hot teams: **8** | Cold teams: **20** | Over-heavy: 0 | Under-heavy: 61
+- Hot teams: **9** | Cold teams: **21** | Over-heavy: 0 | Under-heavy: 43
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (172)
-- RESIDUAL_DIVERGENCE: **15**
+## ⚠️ Anomaly Detector (177)
+- RESIDUAL_DIVERGENCE: **17**
 - STREAK_MISMATCH: **2**
-- STEAM_MOVE: **155**
+- STEAM_MOVE: **158**
   - Chicago Bulls (NBA): Chicago Bulls UNDERPERFORMING expected margin by 15.6pts in recent games -- model bias may persist
   - Brooklyn Nets (NBA): Brooklyn Nets UNDERPERFORMING expected margin by 6.5pts in recent games -- model bias may persist
   - New York Knicks (NBA): New York Knicks OUTPERFORMING expected margin by 6.2pts in recent games -- model bias may persist
@@ -69,7 +69,7 @@
   - #5 [GOLF] $35 on GOLF Matthieu Pavon WIN @ 721 (VidantaWorld Mexico Open) (P=12%)
 
 ## 🎯 Convergence Picks (29 stacked games)
-- ELITE: **15** · HIGH: 5 · MED: 9
+- ELITE: **16** · HIGH: 5 · MED: 8
   - [ELITE] Winnipeg Jets @ Florida Panthers : 8 signals (PREGAME, HEAT_COLD, HEAT_COLD, HEAT_COLD)
   - [ELITE] San Diego FC @ St. Louis CITY SC : 6 signals (PREGAME, HEAT_COLD, HEAT_COLD, HEAT_COLD)
   - [ELITE] Detroit Pistons @ Brooklyn Nets : 5 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ATS)
@@ -91,11 +91,11 @@
   - [LEAN] **Farman Hasanov** (5-0-0) vs Jean-Paul Lebosnoyani -- fair -138
 
 ## ⛳ Golf Player Heat (from VidantaWorld Mexico Open)
-  - 🔥 T1 **Alvaro Ortiz** (Mexico): -8 total -- finished T1
-  - 🔥 T2 **Matthieu Pavon** (France): -8 total -- finished T2
-  - 🔥 T3 **Max Greyserman** (USA): -8 total -- finished T3
-  - 🔥 T4 **Jeffrey Kang** (USA): -8 total -- finished T4
-  - 🔥 T5 **Adrien Dumont de Chassart** (Belgium): -8 total -- finished T5
+  - 🔥 T1 **Andrew Novak** (USA): -14 total -- finished T1
+  - 🔥 T2 **Kihei Akina** (USA): -11 total -- finished T2
+  - 🔥 T3 **Matthieu Pavon** (France): -11 total -- finished T3
+  - 🔥 T4 **Adrien Dumont de Chassart** (Belgium): -11 total -- finished T4
+  - 🔥 T5 **Ben Griffin** (USA): -11 total -- finished T5
 
 ## 🔥 MLB Batter Heat (55 HOT / 68 COLD)
   - 🔥 **Nolan Arenado** (AZ): L14 .404 / season .255 (+149pts)
@@ -130,8 +130,8 @@
 - ELITE: **1** · HEALTHY: 0 · OK: 1 · DEGRADED: **0**
 
 ## 🤖 Self-Training Status
-- **NBA**: n=83 games · hit rate 59.0% · bias +2.4pp
-- **NHL**: n=95 games · hit rate 55.8% · bias -9.6pp
+- **NBA**: n=58 games · hit rate 60.3% · bias +6.7pp
+- **NHL**: n=94 games · hit rate 56.4% · bias -8.9pp
 - **WNBA**: n=6 games · hit rate 50.0% · bias -4.1pp
 - **MLS**: n=75 games · hit rate 40.0% · bias -3.0pp
 - **EPL**: n=30 games · hit rate 43.3% · bias -0.6pp

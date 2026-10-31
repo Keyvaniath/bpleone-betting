@@ -1,20 +1,20 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-10-30T19:09:13 UTC_
+_Generated 2026-10-31T01:31:01 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -44
+- **Score:** -11
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
-- **Total STRONG:** 13
-- **Total FADES:** 96
+- **Total STRONG:** 15
+- **Total FADES:** 71
 
 ## Top 5 Curated Picks
-1. **GOLF / Matthieu Pavon** (GOLF_PLAYER, score=115.21)
-   - Play: Matthieu Pavon (PLAYER_STRONG)
+1. **GOLF / Adrien Dumont de Chassart** (GOLF_PLAYER, score=179.5)
+   - Play: Adrien Dumont de Chassart (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
-2. **GOLF / Alvaro Ortiz** (GOLF_PLAYER, score=114.64)
-   - Play: Alvaro Ortiz (PLAYER_STRONG)
+2. **GOLF / Matthieu Pavon** (GOLF_PLAYER, score=148.43)
+   - Play: Matthieu Pavon (PLAYER_STRONG)
    - Rationale: Cross-sport top pick (GOLF_PLAYER)
 3. **WNBA / allisha gray** (WNBA_PLAYER, score=62.42)
    - Play: allisha gray (PLAYER_STRONG)
@@ -25,9 +25,9 @@ _Generated 2026-10-30T19:09:13 UTC_
 
 ## Top Events Board
 - **GOLF** / ? (TOURNAMENT_STRONG)
+  - Adrien Dumont de Chassart top 10 finish
   - Matthieu Pavon top 10 finish
-  - Alvaro Ortiz top 10 finish
-  - Max Greyserman top 10 finish
+  - Mackenzie Hughes top 10 finish
 
 ## Slate ROI Projection
 - **Picks:** 0
@@ -36,13 +36,13 @@ _Generated 2026-10-30T19:09:13 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
-- **NBA** / luka doncic (PLAYER_FADE)
-  - Fade angle: PTS UNDER + PRA UNDER (multi-prop)
 - **NBA** / anthony edwards (PLAYER_FADE)
+  - Fade angle: PTS UNDER + PRA UNDER (multi-prop)
+- **NBA** / luka doncic (PLAYER_FADE)
   - Fade angle: PTS UNDER + PRA UNDER (multi-prop)
 - **NBA** / TOR (TEAM_FADE)
   - Fade angle: team total UNDER
 - **NBA** / CHI (TEAM_FADE)
   - Fade angle: team total UNDER
-- **NBA** / DET (TEAM_FADE)
+- **NBA** / BKN (TEAM_FADE)
   - Fade angle: team total UNDER

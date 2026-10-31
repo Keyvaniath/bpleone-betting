@@ -1,19 +1,24 @@
 {
-  "generated_at": "2026-10-30T19:10:04",
+  "generated_at": "2026-10-31T01:31:52",
   "fixes": [
     {
       "fix": "NFL DFS lineups on calibrated xFP (optimizer's curse) + form rule v2",
       "question": "Do published lineups land near their projection, and score more?",
       "expected": "backtest: bias -64.6 -> ~+11 pts/slate, actual 106 -> ~131",
-      "status": "pending",
-      "new": null,
+      "status": "early",
+      "new": {
+        "n_slates": 1,
+        "avg_projected": 122.65,
+        "avg_actual": 139.6,
+        "avg_bias": 16.95
+      },
       "old": {
         "n_slates": 5,
         "avg_projected": 173.73,
         "avg_actual": 108.16,
         "avg_bias": -65.56
       },
-      "read": null
+      "read": "calibrated: proj 122.65 -> actual 139.6 (bias 16.95) over 1 slate(s) vs raw-model bias -65.56 over 5"
     },
     {
       "fix": "NFL props priced on season-to-date form (v2) instead of last week's game (v1)",
