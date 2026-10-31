@@ -4,7 +4,7 @@
 
 _Pipeline health: **WARNING** (7/15 artifacts ok; 8 empty, 0 stale)._ 
 
-_Generated at 2026-10-31T14:55:48 UTC. Game lines source: **placeholder -110 (no real book today)**. Pick-em opportunities from PrizePicks._
+_Generated at 2026-10-31T18:22:06 UTC. Game lines source: **placeholder -110 (no real book today)**. Pick-em opportunities from PrizePicks._
 
 ## Self-Learning Loop
 
@@ -13,7 +13,7 @@ _Generated at 2026-10-31T14:55:48 UTC. Game lines source: **placeholder -110 (no
 | batter total bases | 76 | 34.2% | 39.9% | 1.163 | 0.870 |
 | batter hits | 331 | 53.5% | 56.9% | 1.064 | 0.941 |
 
-Cumulative graded plays: 20106. Wins: 8977. Hit rate: 44.6%.
+Cumulative graded plays: 20122. Wins: 8986. Hit rate: 44.7%.
 
 ## Team Form (last 10)
 
@@ -23,7 +23,7 @@ Cumulative graded plays: 20106. Wins: 8977. Hit rate: 44.6%.
 
 ## Loop Activity (since last refresh)
 
-- Confidence delta: **+0.5**
+- Confidence delta: **+0.0**
 
 ## Model Recommendations (operator review)
 

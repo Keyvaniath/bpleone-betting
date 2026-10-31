@@ -1,13 +1,13 @@
 # EdgeStat — Tonight's Master Brief
-_Generated 2026-10-31T14:55:41 UTC_
+_Generated 2026-10-31T18:21:57 UTC_
 
 ## Slate Quality
 - **Tier:** NO_ACTION_NIGHT
-- **Score:** -47
+- **Score:** -46
 - **Advisory:** STAND DOWN. Slate has no aligned conviction. Skip betting tonight or watch only.
 - **Total LOCKs:** 0
 - **Total STRONG:** 13
-- **Total FADES:** 99
+- **Total FADES:** 98
 
 ## Top 5 Curated Picks
 1. **GOLF / Andrew Novak** (GOLF_PLAYER, score=201.64)
@@ -39,13 +39,13 @@ _Generated 2026-10-31T14:55:41 UTC_
 - **Expected P&L on $100:** $0.0
 
 ## Top Fades
+- **NBA** / lauri markkanen (PLAYER_FADE)
+  - Fade angle: PTS UNDER + PRA UNDER (multi-prop)
 - **NBA** / jaylen brown (PLAYER_FADE)
   - Fade angle: PTS UNDER + PRA UNDER (multi-prop)
 - **NBA** / donovan mitchell (PLAYER_FADE)
   - Fade angle: PTS UNDER + PRA UNDER (multi-prop)
 - **NBA** / anthony edwards (PLAYER_FADE)
-  - Fade angle: PTS UNDER + PRA UNDER (multi-prop)
-- **NBA** / lauri markkanen (PLAYER_FADE)
   - Fade angle: PTS UNDER + PRA UNDER (multi-prop)
 - **NBA** / HOU (TEAM_FADE)
   - Fade angle: team total UNDER

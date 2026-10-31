@@ -1,5 +1,5 @@
 **EdgeStat -- Tonight's Slate**
-_NO_ACTION_NIGHT_ | L:0 S:13 F:99
+_NO_ACTION_NIGHT_ | L:0 S:13 F:98
 
 :dart: **Top Picks:**
 1. [GOLF] Andrew Novak -- Andrew Novak (PLAYER_STRONG)

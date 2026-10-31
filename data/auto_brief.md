@@ -36,21 +36,21 @@ _0% lineups confirmed_
    - P(top 10) 12.7% -- safest finish bet (#20 (-8)).
 
 ## NBA -- REGULAR
-- Charlotte Hornets @ Washington Wizards (3-3 vs 3-3) 79-95 | P(home) 100.0% fair +0 | Final
-- Chicago Bulls @ Boston Celtics (1-5 vs 4-1) 111-125 | P(home) 100.0% fair +0 | Final
-- Detroit Pistons @ Brooklyn Nets (5-1 vs 0-5) 110-94 | P(home) 0.0% fair +0 | Final
-- New York Knicks @ Philadelphia 76ers (2-4 vs 5-1) 93-98 | P(home) 100.0% fair +0 | Final
-- Orlando Magic @ Toronto Raptors (2-3 vs 3-2) 121-114 | P(home) 0.0% fair +0 | Final
+- Portland Trail Blazers @ Utah Jazz (3-1 vs 1-4)  | P(home) 9.2% fair +981 | Scheduled
+- Philadelphia 76ers @ Charlotte Hornets (5-1 vs 3-3)  | P(home) 19.7% fair +409 | Scheduled
+- Atlanta Hawks @ New Orleans Pelicans (3-3 vs 1-4)  | P(home) 23.4% fair +327 | Scheduled
+- Sacramento Kings @ Memphis Grizzlies (0-5 vs 5-0)  | P(home) 95.6% fair -2175 | Scheduled
+- Cleveland Cavaliers @ Milwaukee Bucks (3-2 vs 1-4)  | P(home) 16.9% fair +491 | Scheduled
 
 ## NHL -- REGULAR
-- New Jersey Devils @ Vegas Golden Knights (0-0-0 vs 0-0-0) 5-2 | P(home) 0.0% fair +0 | Final
-- Winnipeg Jets @ Florida Panthers (0-0-0 vs 0-0-0) 2-5 | P(home) 100.0% fair +0 | Final
-- Seattle Kraken @ Calgary Flames (0-0-0 vs 0-0-0) 2-6 | P(home) 100.0% fair +0 | Final
-- Chicago Blackhawks @ Boston Bruins (4-9-0 vs 9-4-1)  | P(home) 66.8% fair -201 | Scheduled
-- St. Louis Blues @ Detroit Red Wings (6-6-1 vs 6-4-3)  | P(home) 53.8% fair -116 | Scheduled
+- Chicago Blackhawks @ Boston Bruins (4-9-0 vs 9-4-1) 2-1 | P(home) 61.8% fair -162 | In Progress
+- St. Louis Blues @ Detroit Red Wings (6-6-1 vs 6-4-3) 1-2 | P(home) 67.8% fair -210 | In Progress
+- Tampa Bay Lightning @ Nashville Predators (8-3-1 vs 4-4-5) 0-0 | P(home) 31.6% fair +216 | In Progress
+- Edmonton Oilers @ New York Islanders (9-2-2 vs 7-4-2) 0-0 | P(home) 35.0% fair +186 | In Progress
+- Buffalo Sabres @ Los Angeles Kings (6-4-3 vs 4-6-2)  | P(home) 44.1% fair +127 | Scheduled
 
-## LoL Esports -- 0 live, 10 upcoming
-- [Worlds] Movistar KOI vs Karmine Corp BO3 | P(A) 34.6% fair +189/-189
+## LoL Esports -- 1 live, 9 upcoming
+- [Worlds] Karmine Corp vs Movistar KOI BO3 | P(A) 65.4% fair -189/+189
 - [Worlds] LOS vs LYON BO3 | P(A) 45.9% fair +118/-118
 - [Worlds] Hanwha Life Esports vs BILIBILI GAMING BO3 | P(A) 44.8% fair +123/-123
 - [Worlds] TBD vs TBD BO5 | P(A) 50.0% fair -100/-100

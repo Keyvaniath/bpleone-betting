@@ -1,18 +1,18 @@
 # EdgeStat Daily Summary — 2026-10-31
 
-## 🏥 Model Health: 65.1/100 [OK]
+## 🏥 Model Health: 65.8/100 [OK]
 - Operational but room to improve - check yellow components
   - 🟢 Calibration Freshness: 100.0/100
-  - 🔴 Hit Rate Trend: 50.5/100
-  - 🔴 Brier Trend: 13.2/100
+  - 🔴 Hit Rate Trend: 53.2/100
+  - 🔴 Brier Trend: 14.3/100
   - 🟢 Pipeline Audit: 100.0/100
   - 🟡 Data Health: 77.3/100
   - 🟡 Edge Count: 68.6/100
 
 ## 🌐 Slate Overview
-- **Regime today:** HOME_FAVORITE_DAY (avg P(home)=0.554)
-- **Total games on board:** 68
-- **Strong home favorites:** 26 | **Strong road dogs:** 15
+- **Regime today:** BALANCED (avg P(home)=0.547)
+- **Total games on board:** 67
+- **Strong home favorites:** 26 | **Strong road dogs:** 16
 
 ## 🎯 Top 5 Best Bets
 1. **LOL Inspired UNDER 3.5 Kills** (78/100 ★★★★)
@@ -33,7 +33,7 @@
 - **[LOL]** Hope OVER 4.5 Kills | MED conviction · model 61.3% fair -158
 - **[CS]** torzsi OVER 40.5 Kills (BO3) | MED conviction · model 61.0% fair -157
 
-## ⚡ Pre-Game HIGH Conviction (16)
+## ⚡ Pre-Game HIGH Conviction (14)
 - [UCL] **Atlético Madrid** HOME (None L10) · model 72.7% fair -267
 - [UCL] **Bodo/Glimt** HOME (None L10) · model 72.7% fair -267
 - [UCL] **LASK Linz** HOME (None L10) · model 72.7% fair -267
@@ -49,15 +49,15 @@
 - Hot teams: **7** | Cold teams: **22** | Over-heavy: 0 | Under-heavy: 58
 - Heating-up players: **20** | Cooling-down: 20
 
-## ⚠️ Anomaly Detector (176)
-- RESIDUAL_DIVERGENCE: **16**
+## ⚠️ Anomaly Detector (178)
+- RESIDUAL_DIVERGENCE: **14**
 - STREAK_MISMATCH: **2**
-- STEAM_MOVE: **158**
-  - Utah Jazz (NBA): Utah Jazz UNDERPERFORMING expected margin by 6.0pts in recent games -- model bias may persist
-  - Charlotte Hornets (NBA): Charlotte Hornets UNDERPERFORMING expected margin by 11.9pts in recent games -- model bias may persist
-  - San Antonio Spurs (NBA): San Antonio Spurs OUTPERFORMING expected margin by 9.0pts in recent games -- model bias may persist
-  - Minnesota Timberwolves (NBA): Minnesota Timberwolves OUTPERFORMING expected margin by 6.2pts in recent games -- model bias may persist
-  - Oklahoma City Thunder (NBA): Oklahoma City Thunder UNDERPERFORMING expected margin by 7.0pts in recent games -- model bias may persist
+- STEAM_MOVE: **162**
+  - Charlotte Hornets (NBA): Charlotte Hornets UNDERPERFORMING expected margin by 11.3pts in recent games -- model bias may persist
+  - Sacramento Kings (NBA): Sacramento Kings UNDERPERFORMING expected margin by 7.6pts in recent games -- model bias may persist
+  - San Antonio Spurs (NBA): San Antonio Spurs OUTPERFORMING expected margin by 10.0pts in recent games -- model bias may persist
+  - Tampa Bay Lightning (NHL): Tampa Bay Lightning UNDERPERFORMING expected margin by 7.1pts in recent games -- model bias may persist
+  - Buffalo Sabres (NHL): Buffalo Sabres OUTPERFORMING expected margin by 6.8pts in recent games -- model bias may persist
 
 ## 💰 Today's Portfolio (15 picks)
 - Total stake: **$345.0** (34.5% of $1000 bankroll)
@@ -68,13 +68,13 @@
   - #4 [NHL] $20 on NHL Boston Bruins ML (9-4-1) vs Chicago Blackhawks (P=67%)
   - #5 [GOLF] $20 on GOLF Brice Garnett TOP10 @ 685 (VidantaWorld Mexico Open) (P=13%)
 
-## 🎯 Convergence Picks (26 stacked games)
-- ELITE: **12** · HIGH: 7 · MED: 7
-  - [ELITE] Winnipeg Jets @ Florida Panthers : 7 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ANOMALY)
+## 🎯 Convergence Picks (43 stacked games)
+- ELITE: **25** · HIGH: 10 · MED: 8
+  - [ELITE] Seattle Kraken @ Calgary Flames : 6 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
   - [ELITE] San Diego FC @ St. Louis CITY SC : 6 signals (PREGAME, HEAT_COLD, HEAT_COLD, HEAT_COLD)
-  - [ELITE] Detroit Pistons @ Brooklyn Nets : 5 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ATS)
-  - [ELITE] Atlanta Dream @ Golden State Valkyries : 5 signals (PREGAME, HEAT_COLD, HEAT_COLD, ANOMALY)
-  - [ELITE] D.C. United @ Columbus Crew : 5 signals (HEAT_COLD, HEAT_COLD, HEAT_COLD, ANOMALY)
+  - [ELITE] Philadelphia 76ers @ Charlotte Hornets : 5 signals (HEAT_COLD, HEAT_COLD, ANOMALY, ATS)
+  - [ELITE] Chicago Blackhawks @ Boston Bruins : 5 signals (PREGAME, HEAT_COLD, HEAT_COLD, ATS)
+  - [ELITE] Columbus Blue Jackets @ Dallas Stars : 5 signals (PREGAME, HEAT_COLD, HEAT_COLD, ATS)
 
 ## 🏀 NBA Player Heat (4 HOT / 5 COLD)
   - 🔥 **Maxime Raynaud** (SAC): L5 20.0/9.8/2.6 vs season 12.5/7.5/1.4 [PTS +7.5, REB +2.3]
@@ -113,12 +113,17 @@
   - ❄️ **Andruw Monasterio** (BOS): L14 .083 / season .233 (-150pts) -- FADE props
   - ❄️ **Jim Jarvis** (ATL): L14 .079 / season .207 (-128pts) -- FADE props
 
-## 📈 Streak Regression Alerts (21)
-- [NBA] Brooklyn Nets on L3 L10 0-3 -- Brooklyn Nets on L3 -- no historical sample
-- [NBA] Detroit Pistons on W4 L10 4-0 -- Detroit Pistons on W4 -- no historical sample
-- [NBA] Houston Rockets on W4 L10 4-0 -- Houston Rockets on W4 -- no historical sample
-- [NBA] LA Clippers on L3 L10 1-3 -- LA Clippers on L3 -- no historical sample
-- [NBA] Los Angeles Lakers on W4 L10 4-0 -- Los Angeles Lakers on W4 -- no historical sample
+## 😴 B2B Fatigue Edges (3)
+- [NBA] FADE Minnesota Timberwolves (away on B2B)
+- [NBA] FADE Houston Rockets (home on B2B)
+- [NHL] FADE Calgary Flames (away on B2B)
+
+## 📈 Streak Regression Alerts (20)
+- [NBA] Utah Jazz on L3 L10 1-4 -- Utah Jazz on L3 -- no historical sample
+- [NBA] Memphis Grizzlies on W5 L10 5-0 -- Memphis Grizzlies on W5 -- no historical sample
+- [NBA] Sacramento Kings on L5 L10 0-5 -- Sacramento Kings on L5 -- no historical sample
+- [NBA] San Antonio Spurs on W3 L10 3-2 -- San Antonio Spurs on W3 -- no historical sample
+- [NHL] Montreal Canadiens on W4 L10 4-1 -- Montreal Canadiens on W4 -- no historical sample
 
 ## 📉 Walk-Forward Trajectory (n_windows=3d × 8 markets)
 - 📈 Improving: **1** · ➖ Flat: 4 · 📉 Degrading: **3**
